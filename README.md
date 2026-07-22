@@ -14,10 +14,15 @@ I started from bschwind's repo and kept all the existing examples working throug
 
 ### Status
 
-- **8,700+ opaque types** and **164,000+ extern "C" functions** across **324 Rust modules**
-- Parses **5,065 OCCT headers** with automatic dependency resolution
-- Only **94 symbols** skipped (mostly platform-specific or external dependency types)
-- **446 enums** generated as `#[repr(i32)]` Rust enums
+- Tracks **OCCT 8.0.0** (`V8_0_0_p1`)
+- **~8,000 opaque types** and **~144,000 extern "C" functions** across **307 Rust modules**
+- Parses **~5,000 OCCT headers** with automatic dependency resolution
+- **283 enums** generated as `#[repr(i32)]` Rust enums
+- **200+ NCollection instantiations** (lists, arrays, maps, `HArray1`/`HSequence`, …) wrapped
+  with full methods + `Iterator` support, including collections of primitive scalars
+- Only **~720 symbols** skipped — mostly platform-specific or external-dependency types
+  (X11/macOS/FFmpeg/glTF), the new-in-8.0 `BRepGraphInc` graph API, and a handful of
+  internal template signatures
 - Passes unit tests and golden STEP-file tests on macOS and Linux
 - Untested APIs likely have issues — this is a large surface area
 
@@ -36,19 +41,22 @@ The binding pipeline has three main pieces:
 
 2. **`scripts/regenerate-bindings.sh`** — Orchestrates the generator: builds it in release mode, cleans the output directory, and runs it against the TOML configuration.
 
-3. **`opencascade-sys`** — The generated crate. Contains `generated/ffi.rs` (a single `extern "C"` block with all types and functions), `generated/wrappers.cpp` (C++ glue code), and 324 per-module re-export files providing ergonomic short names.
+3. **`opencascade-sys`** — The generated crate. Type definitions live in `generated/ffi_types.rs`; `extern "C"` function declarations and their C++ glue are split per OCCT toolkit (`generated/ffi_extern_TK*.rs` + `generated/wrappers_TK*.cpp`) to enable parallel compilation; and 307 per-module re-export files provide ergonomic short names.
 
-Configuration lives in `crates/opencascade-sys/bindings.toml`, which controls which OCCT modules/headers to include, symbol-level exclusions, type overrides, and template instantiations.
+Configuration lives in `crates/opencascade-sys/bindings.toml`, which controls which OCCT modules/headers to include, symbol-level exclusions, type overrides, and template instantiations. Deprecated OCCT 8.0 backward-compatibility aliases are excluded automatically (see `exclude_deprecated_headers`), so bindings target the canonical `NCollection_*<T>` types.
 
-### Porting from the old hand-written bindings
+### Porting guide
 
-If you're migrating code that used the previous `opencascade-sys` API, see [crates/opencascade-sys/PORTING.md](crates/opencascade-sys/PORTING.md) for a detailed guide on the API differences and migration patterns.
+[crates/opencascade-sys/PORTING.md](crates/opencascade-sys/PORTING.md) is a guide to
+translating C++ OCCT code into Rust with these bindings (module structure, constructors,
+ownership, handles, collections, enums, …). It also has a section on migrating Rust code
+written against an older, pre-8.0 version of these bindings.
 
 ## Dependencies
 
 * Rust toolchain (https://rustup.rs/)
 * CMake (https://cmake.org/)
-* A C++ compiler with C++11 support
+* A C++ compiler with C++17 support (required by OCCT 8.0)
 * libclang (for regenerating bindings — not needed for just building)
 
 ## Building

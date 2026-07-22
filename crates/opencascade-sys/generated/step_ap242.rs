@@ -7,13 +7,13 @@
 #![allow(non_snake_case)]
 
 // Handle type re-exports (targets of handle upcasts/downcasts)
-pub use crate::ffi_types::HandleStandardTransient;
+pub use crate::ffi_types::Handle_Standard_Transient;
 
 // ========================
 // From StepAP242_DraughtingModelItemAssociation.hxx
 // ========================
 
-/// **Source:** `StepAP242_DraughtingModelItemAssociation.hxx`:28 - `StepAP242_DraughtingModelItemAssociation`
+/// **Source:** `StepAP242_DraughtingModelItemAssociation.hxx`:24 - `StepAP242_DraughtingModelItemAssociation`
 /// Added for Dimensional Tolerances
 pub use crate::ffi_types::StepAP242_DraughtingModelItemAssociation as DraughtingModelItemAssociation;
 
@@ -26,7 +26,7 @@ unsafe impl crate::CppDeletable for DraughtingModelItemAssociation {
 }
 
 impl DraughtingModelItemAssociation {
-    /// **Source:** `StepAP242_DraughtingModelItemAssociation.hxx`:32 - `StepAP242_DraughtingModelItemAssociation::StepAP242_DraughtingModelItemAssociation()`
+    /// **Source:** `StepAP242_DraughtingModelItemAssociation.hxx`:28 - `StepAP242_DraughtingModelItemAssociation::StepAP242_DraughtingModelItemAssociation()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -35,8 +35,8 @@ impl DraughtingModelItemAssociation {
         }
     }
 
-    /// **Source:** `StepAP242_DraughtingModelItemAssociation.hxx`:34 - `StepAP242_DraughtingModelItemAssociation::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `StepAP242_DraughtingModelItemAssociation.hxx`:30 - `StepAP242_DraughtingModelItemAssociation::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKDESTEP::StepAP242_DraughtingModelItemAssociation_dynamic_type(
@@ -46,7 +46,7 @@ impl DraughtingModelItemAssociation {
         }
     }
 
-    /// **Source:** `StepAP242_DraughtingModelItemAssociation.hxx`:34 - `StepAP242_DraughtingModelItemAssociation::get_type_name()`
+    /// **Source:** `StepAP242_DraughtingModelItemAssociation.hxx`:30 - `StepAP242_DraughtingModelItemAssociation::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -58,8 +58,8 @@ impl DraughtingModelItemAssociation {
         .into_owned()
     }
 
-    /// **Source:** `StepAP242_DraughtingModelItemAssociation.hxx`:34 - `StepAP242_DraughtingModelItemAssociation::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    /// **Source:** `StepAP242_DraughtingModelItemAssociation.hxx`:30 - `StepAP242_DraughtingModelItemAssociation::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKDESTEP::StepAP242_DraughtingModelItemAssociation_get_type_descriptor()))
         }
@@ -98,7 +98,7 @@ impl DraughtingModelItemAssociation {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStepAP242DraughtingModelItemAssociation> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_StepAP242_DraughtingModelItemAssociation> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDESTEP::StepAP242_DraughtingModelItemAssociation_to_handle(
@@ -108,14 +108,14 @@ impl DraughtingModelItemAssociation {
         }
     }
 
-    /// Inherited: **Source:** `StepAP242_ItemIdentifiedRepresentationUsage.hxx`:41 - `StepAP242_ItemIdentifiedRepresentationUsage::Init()`
+    /// Inherited: **Source:** `StepAP242_ItemIdentifiedRepresentationUsage.hxx`:40 - `StepAP242_ItemIdentifiedRepresentationUsage::Init()`
     pub fn init(
         &mut self,
-        theName: &crate::ffi_types::HandleTCollectionHAsciiString,
-        theDescription: &crate::ffi_types::HandleTCollectionHAsciiString,
+        theName: &crate::ffi_types::Handle_TCollection_HAsciiString,
+        theDescription: &crate::ffi_types::Handle_TCollection_HAsciiString,
         theDefinition: &ItemIdentifiedRepresentationUsageDefinition,
-        theUsedRepresentation: &crate::ffi_types::HandleStepReprRepresentation,
-        theIdentifiedItem: &crate::ffi_types::HandleStepReprHArray1OfRepresentationItem,
+        theUsedRepresentation: &crate::ffi_types::Handle_StepRepr_Representation,
+        theIdentifiedItem: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepAP242_DraughtingModelItemAssociation_inherited_Init(
@@ -130,7 +130,7 @@ impl DraughtingModelItemAssociation {
     }
 
     /// Inherited: **Source:** `StepAP242_ItemIdentifiedRepresentationUsage.hxx`:49 - `StepAP242_ItemIdentifiedRepresentationUsage::SetName()`
-    pub fn set_name(&mut self, theName: &crate::ffi_types::HandleTCollectionHAsciiString) {
+    pub fn set_name(&mut self, theName: &crate::ffi_types::Handle_TCollection_HAsciiString) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepAP242_DraughtingModelItemAssociation_inherited_SetName(
                 self as *mut Self,
@@ -140,7 +140,7 @@ impl DraughtingModelItemAssociation {
     }
 
     /// Inherited: **Source:** `StepAP242_ItemIdentifiedRepresentationUsage.hxx`:52 - `StepAP242_ItemIdentifiedRepresentationUsage::Name()`
-    pub fn name(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTCollectionHAsciiString> {
+    pub fn name(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_TCollection_HAsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDESTEP::StepAP242_DraughtingModelItemAssociation_inherited_Name(
@@ -153,7 +153,7 @@ impl DraughtingModelItemAssociation {
     /// Inherited: **Source:** `StepAP242_ItemIdentifiedRepresentationUsage.hxx`:55 - `StepAP242_ItemIdentifiedRepresentationUsage::SetDescription()`
     pub fn set_description(
         &mut self,
-        theDescription: &crate::ffi_types::HandleTCollectionHAsciiString,
+        theDescription: &crate::ffi_types::Handle_TCollection_HAsciiString,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepAP242_DraughtingModelItemAssociation_inherited_SetDescription(self as *mut Self, theDescription)
@@ -161,7 +161,9 @@ impl DraughtingModelItemAssociation {
     }
 
     /// Inherited: **Source:** `StepAP242_ItemIdentifiedRepresentationUsage.hxx`:61 - `StepAP242_ItemIdentifiedRepresentationUsage::Description()`
-    pub fn description(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTCollectionHAsciiString> {
+    pub fn description(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_TCollection_HAsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::StepAP242_DraughtingModelItemAssociation_inherited_Description(self as *const Self)))
         }
@@ -184,78 +186,80 @@ impl DraughtingModelItemAssociation {
     /// Inherited: **Source:** `StepAP242_ItemIdentifiedRepresentationUsage.hxx`:77 - `StepAP242_ItemIdentifiedRepresentationUsage::SetUsedRepresentation()`
     pub fn set_used_representation(
         &mut self,
-        theUsedRepresentation: &crate::ffi_types::HandleStepReprRepresentation,
+        theUsedRepresentation: &crate::ffi_types::Handle_StepRepr_Representation,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepAP242_DraughtingModelItemAssociation_inherited_SetUsedRepresentation(self as *mut Self, theUsedRepresentation)
         })
     }
 
-    /// Inherited: **Source:** `StepAP242_ItemIdentifiedRepresentationUsage.hxx`:83 - `StepAP242_ItemIdentifiedRepresentationUsage::UsedRepresentation()`
+    /// Inherited: **Source:** `StepAP242_ItemIdentifiedRepresentationUsage.hxx`:84 - `StepAP242_ItemIdentifiedRepresentationUsage::UsedRepresentation()`
     pub fn used_representation(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStepReprRepresentation> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_StepRepr_Representation> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::StepAP242_DraughtingModelItemAssociation_inherited_UsedRepresentation(self as *const Self)))
         }
     }
 
-    /// Inherited: **Source:** `StepAP242_ItemIdentifiedRepresentationUsage.hxx`:86 - `StepAP242_ItemIdentifiedRepresentationUsage::IdentifiedItem()`
+    /// Inherited: **Source:** `StepAP242_ItemIdentifiedRepresentationUsage.hxx`:90 - `StepAP242_ItemIdentifiedRepresentationUsage::IdentifiedItem()`
     pub fn identified_item(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStepReprHArray1OfRepresentationItem> {
+    ) -> crate::OwnedPtr<
+        crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
+    > {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::StepAP242_DraughtingModelItemAssociation_inherited_IdentifiedItem(self as *const Self)))
         }
     }
 
-    /// Inherited: **Source:** `StepAP242_ItemIdentifiedRepresentationUsage.hxx`:92 - `StepAP242_ItemIdentifiedRepresentationUsage::NbIdentifiedItem()`
+    /// Inherited: **Source:** `StepAP242_ItemIdentifiedRepresentationUsage.hxx`:97 - `StepAP242_ItemIdentifiedRepresentationUsage::NbIdentifiedItem()`
     pub fn nb_identified_item(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepAP242_DraughtingModelItemAssociation_inherited_NbIdentifiedItem(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `StepAP242_ItemIdentifiedRepresentationUsage.hxx`:98 - `StepAP242_ItemIdentifiedRepresentationUsage::SetIdentifiedItem()`
+    /// Inherited: **Source:** `StepAP242_ItemIdentifiedRepresentationUsage.hxx`:103 - `StepAP242_ItemIdentifiedRepresentationUsage::SetIdentifiedItem()`
     pub fn set_identified_item(
         &mut self,
-        theIdentifiedItem: &crate::ffi_types::HandleStepReprHArray1OfRepresentationItem,
+        theIdentifiedItem: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepAP242_DraughtingModelItemAssociation_inherited_SetIdentifiedItem(self as *mut Self, theIdentifiedItem)
         })
     }
 
-    /// Inherited: **Source:** `StepAP242_ItemIdentifiedRepresentationUsage.hxx`:105 - `StepAP242_ItemIdentifiedRepresentationUsage::IdentifiedItemValue()`
+    /// Inherited: **Source:** `StepAP242_ItemIdentifiedRepresentationUsage.hxx`:111 - `StepAP242_ItemIdentifiedRepresentationUsage::IdentifiedItemValue()`
     pub fn identified_item_value(
         &self,
         num: i32,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStepReprRepresentationItem> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_StepRepr_RepresentationItem> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::StepAP242_DraughtingModelItemAssociation_inherited_IdentifiedItemValue(self as *const Self, num)))
         }
     }
 
-    /// Inherited: **Source:** `StepAP242_ItemIdentifiedRepresentationUsage.hxx`:111 - `StepAP242_ItemIdentifiedRepresentationUsage::SetIdentifiedItemValue()`
+    /// Inherited: **Source:** `StepAP242_ItemIdentifiedRepresentationUsage.hxx`:117 - `StepAP242_ItemIdentifiedRepresentationUsage::SetIdentifiedItemValue()`
     pub fn set_identified_item_value(
         &mut self,
         num: i32,
-        theItem: &crate::ffi_types::HandleStepReprRepresentationItem,
+        theItem: &crate::ffi_types::Handle_StepRepr_RepresentationItem,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepAP242_DraughtingModelItemAssociation_inherited_SetIdentifiedItemValue(self as *mut Self, num, theItem)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepAP242_DraughtingModelItemAssociation_inherited_IsInstance(self as *const Self, theType)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepAP242_DraughtingModelItemAssociation_inherited_IsKind(
                 self as *const Self,
@@ -264,7 +268,7 @@ impl DraughtingModelItemAssociation {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -280,28 +284,28 @@ impl DraughtingModelItemAssociation {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepAP242_DraughtingModelItemAssociation_inherited_GetRefCount(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepAP242_DraughtingModelItemAssociation_inherited_IncrementRefCounter(self as *mut Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepAP242_DraughtingModelItemAssociation_inherited_DecrementRefCounter(self as *mut Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepAP242_DraughtingModelItemAssociation_inherited_Delete(
@@ -311,23 +315,23 @@ impl DraughtingModelItemAssociation {
     }
 }
 
-pub use crate::ffi_types::HandleStepAP242DraughtingModelItemAssociation;
+pub use crate::ffi_types::Handle_StepAP242_DraughtingModelItemAssociation;
 
-unsafe impl crate::CppDeletable for HandleStepAP242DraughtingModelItemAssociation {
+unsafe impl crate::CppDeletable for Handle_StepAP242_DraughtingModelItemAssociation {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKDESTEP::HandleStepAP242DraughtingModelItemAssociation_destructor(
+            crate::ffi_extern_TKDESTEP::Handle_StepAP242_DraughtingModelItemAssociation_destructor(
                 ptr,
             );
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleStepAP242DraughtingModelItemAssociation {
+unsafe impl crate::CppCopyable for Handle_StepAP242_DraughtingModelItemAssociation {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
         unsafe {
             crate::check_result(
-                crate::ffi_extern_TKDESTEP::HandleStepAP242DraughtingModelItemAssociation_clone(
+                crate::ffi_extern_TKDESTEP::Handle_StepAP242_DraughtingModelItemAssociation_clone(
                     ptr,
                 ),
             )
@@ -335,11 +339,11 @@ unsafe impl crate::CppCopyable for HandleStepAP242DraughtingModelItemAssociation
     }
 }
 
-impl HandleStepAP242DraughtingModelItemAssociation {
+impl Handle_StepAP242_DraughtingModelItemAssociation {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
         unsafe {
-            crate::ffi_extern_TKDESTEP::HandleStepAP242DraughtingModelItemAssociation_is_null(
+            crate::ffi_extern_TKDESTEP::Handle_StepAP242_DraughtingModelItemAssociation_is_null(
                 self as *const Self,
             )
         }
@@ -349,7 +353,7 @@ impl HandleStepAP242DraughtingModelItemAssociation {
     pub fn get(&self) -> &crate::ffi_types::StepAP242_DraughtingModelItemAssociation {
         unsafe {
             &*crate::check_result(
-                crate::ffi_extern_TKDESTEP::HandleStepAP242DraughtingModelItemAssociation_get(
+                crate::ffi_extern_TKDESTEP::Handle_StepAP242_DraughtingModelItemAssociation_get(
                     self as *const Self,
                 ),
             )
@@ -360,7 +364,7 @@ impl HandleStepAP242DraughtingModelItemAssociation {
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::StepAP242_DraughtingModelItemAssociation {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi_extern_TKDESTEP::HandleStepAP242DraughtingModelItemAssociation_get_mut(
+                crate::ffi_extern_TKDESTEP::Handle_StepAP242_DraughtingModelItemAssociation_get_mut(
                     self as *mut Self,
                 ),
             )
@@ -370,18 +374,18 @@ impl HandleStepAP242DraughtingModelItemAssociation {
     /// Upcast Handle<StepAP242_DraughtingModelItemAssociation> to Handle<StepAP242_ItemIdentifiedRepresentationUsage>
     pub fn to_handle_item_identified_representation_usage(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStepAP242ItemIdentifiedRepresentationUsage> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_StepAP242_ItemIdentifiedRepresentationUsage> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepAP242DraughtingModelItemAssociation_to_HandleStepAP242ItemIdentifiedRepresentationUsage(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::Handle_StepAP242_DraughtingModelItemAssociation_to_Handle_StepAP242_ItemIdentifiedRepresentationUsage(self as *const Self)))
         }
     }
 
     /// Upcast Handle<StepAP242_DraughtingModelItemAssociation> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepAP242DraughtingModelItemAssociation_to_HandleStandardTransient(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::Handle_StepAP242_DraughtingModelItemAssociation_to_Handle_Standard_Transient(self as *const Self)))
         }
     }
 }
@@ -390,7 +394,7 @@ impl HandleStepAP242DraughtingModelItemAssociation {
 // From StepAP242_GeometricItemSpecificUsage.hxx
 // ========================
 
-/// **Source:** `StepAP242_GeometricItemSpecificUsage.hxx`:28 - `StepAP242_GeometricItemSpecificUsage`
+/// **Source:** `StepAP242_GeometricItemSpecificUsage.hxx`:24 - `StepAP242_GeometricItemSpecificUsage`
 /// Added for Dimensional Tolerances
 pub use crate::ffi_types::StepAP242_GeometricItemSpecificUsage as GeometricItemSpecificUsage;
 
@@ -403,7 +407,7 @@ unsafe impl crate::CppDeletable for GeometricItemSpecificUsage {
 }
 
 impl GeometricItemSpecificUsage {
-    /// **Source:** `StepAP242_GeometricItemSpecificUsage.hxx`:32 - `StepAP242_GeometricItemSpecificUsage::StepAP242_GeometricItemSpecificUsage()`
+    /// **Source:** `StepAP242_GeometricItemSpecificUsage.hxx`:28 - `StepAP242_GeometricItemSpecificUsage::StepAP242_GeometricItemSpecificUsage()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -412,8 +416,8 @@ impl GeometricItemSpecificUsage {
         }
     }
 
-    /// **Source:** `StepAP242_GeometricItemSpecificUsage.hxx`:34 - `StepAP242_GeometricItemSpecificUsage::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `StepAP242_GeometricItemSpecificUsage.hxx`:30 - `StepAP242_GeometricItemSpecificUsage::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKDESTEP::StepAP242_GeometricItemSpecificUsage_dynamic_type(
@@ -423,7 +427,7 @@ impl GeometricItemSpecificUsage {
         }
     }
 
-    /// **Source:** `StepAP242_GeometricItemSpecificUsage.hxx`:34 - `StepAP242_GeometricItemSpecificUsage::get_type_name()`
+    /// **Source:** `StepAP242_GeometricItemSpecificUsage.hxx`:30 - `StepAP242_GeometricItemSpecificUsage::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -434,8 +438,8 @@ impl GeometricItemSpecificUsage {
         .into_owned()
     }
 
-    /// **Source:** `StepAP242_GeometricItemSpecificUsage.hxx`:34 - `StepAP242_GeometricItemSpecificUsage::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    /// **Source:** `StepAP242_GeometricItemSpecificUsage.hxx`:30 - `StepAP242_GeometricItemSpecificUsage::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKDESTEP::StepAP242_GeometricItemSpecificUsage_get_type_descriptor()))
         }
@@ -474,7 +478,7 @@ impl GeometricItemSpecificUsage {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStepAP242GeometricItemSpecificUsage> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_StepAP242_GeometricItemSpecificUsage> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDESTEP::StepAP242_GeometricItemSpecificUsage_to_handle(
@@ -484,14 +488,14 @@ impl GeometricItemSpecificUsage {
         }
     }
 
-    /// Inherited: **Source:** `StepAP242_ItemIdentifiedRepresentationUsage.hxx`:41 - `StepAP242_ItemIdentifiedRepresentationUsage::Init()`
+    /// Inherited: **Source:** `StepAP242_ItemIdentifiedRepresentationUsage.hxx`:40 - `StepAP242_ItemIdentifiedRepresentationUsage::Init()`
     pub fn init(
         &mut self,
-        theName: &crate::ffi_types::HandleTCollectionHAsciiString,
-        theDescription: &crate::ffi_types::HandleTCollectionHAsciiString,
+        theName: &crate::ffi_types::Handle_TCollection_HAsciiString,
+        theDescription: &crate::ffi_types::Handle_TCollection_HAsciiString,
         theDefinition: &ItemIdentifiedRepresentationUsageDefinition,
-        theUsedRepresentation: &crate::ffi_types::HandleStepReprRepresentation,
-        theIdentifiedItem: &crate::ffi_types::HandleStepReprHArray1OfRepresentationItem,
+        theUsedRepresentation: &crate::ffi_types::Handle_StepRepr_Representation,
+        theIdentifiedItem: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepAP242_GeometricItemSpecificUsage_inherited_Init(
@@ -506,7 +510,7 @@ impl GeometricItemSpecificUsage {
     }
 
     /// Inherited: **Source:** `StepAP242_ItemIdentifiedRepresentationUsage.hxx`:49 - `StepAP242_ItemIdentifiedRepresentationUsage::SetName()`
-    pub fn set_name(&mut self, theName: &crate::ffi_types::HandleTCollectionHAsciiString) {
+    pub fn set_name(&mut self, theName: &crate::ffi_types::Handle_TCollection_HAsciiString) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepAP242_GeometricItemSpecificUsage_inherited_SetName(
                 self as *mut Self,
@@ -516,7 +520,7 @@ impl GeometricItemSpecificUsage {
     }
 
     /// Inherited: **Source:** `StepAP242_ItemIdentifiedRepresentationUsage.hxx`:52 - `StepAP242_ItemIdentifiedRepresentationUsage::Name()`
-    pub fn name(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTCollectionHAsciiString> {
+    pub fn name(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_TCollection_HAsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDESTEP::StepAP242_GeometricItemSpecificUsage_inherited_Name(
@@ -529,7 +533,7 @@ impl GeometricItemSpecificUsage {
     /// Inherited: **Source:** `StepAP242_ItemIdentifiedRepresentationUsage.hxx`:55 - `StepAP242_ItemIdentifiedRepresentationUsage::SetDescription()`
     pub fn set_description(
         &mut self,
-        theDescription: &crate::ffi_types::HandleTCollectionHAsciiString,
+        theDescription: &crate::ffi_types::Handle_TCollection_HAsciiString,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepAP242_GeometricItemSpecificUsage_inherited_SetDescription(self as *mut Self, theDescription)
@@ -537,7 +541,9 @@ impl GeometricItemSpecificUsage {
     }
 
     /// Inherited: **Source:** `StepAP242_ItemIdentifiedRepresentationUsage.hxx`:61 - `StepAP242_ItemIdentifiedRepresentationUsage::Description()`
-    pub fn description(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTCollectionHAsciiString> {
+    pub fn description(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_TCollection_HAsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::StepAP242_GeometricItemSpecificUsage_inherited_Description(self as *const Self)))
         }
@@ -563,71 +569,73 @@ impl GeometricItemSpecificUsage {
     /// Inherited: **Source:** `StepAP242_ItemIdentifiedRepresentationUsage.hxx`:77 - `StepAP242_ItemIdentifiedRepresentationUsage::SetUsedRepresentation()`
     pub fn set_used_representation(
         &mut self,
-        theUsedRepresentation: &crate::ffi_types::HandleStepReprRepresentation,
+        theUsedRepresentation: &crate::ffi_types::Handle_StepRepr_Representation,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepAP242_GeometricItemSpecificUsage_inherited_SetUsedRepresentation(self as *mut Self, theUsedRepresentation)
         })
     }
 
-    /// Inherited: **Source:** `StepAP242_ItemIdentifiedRepresentationUsage.hxx`:83 - `StepAP242_ItemIdentifiedRepresentationUsage::UsedRepresentation()`
+    /// Inherited: **Source:** `StepAP242_ItemIdentifiedRepresentationUsage.hxx`:84 - `StepAP242_ItemIdentifiedRepresentationUsage::UsedRepresentation()`
     pub fn used_representation(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStepReprRepresentation> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_StepRepr_Representation> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::StepAP242_GeometricItemSpecificUsage_inherited_UsedRepresentation(self as *const Self)))
         }
     }
 
-    /// Inherited: **Source:** `StepAP242_ItemIdentifiedRepresentationUsage.hxx`:86 - `StepAP242_ItemIdentifiedRepresentationUsage::IdentifiedItem()`
+    /// Inherited: **Source:** `StepAP242_ItemIdentifiedRepresentationUsage.hxx`:90 - `StepAP242_ItemIdentifiedRepresentationUsage::IdentifiedItem()`
     pub fn identified_item(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStepReprHArray1OfRepresentationItem> {
+    ) -> crate::OwnedPtr<
+        crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
+    > {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::StepAP242_GeometricItemSpecificUsage_inherited_IdentifiedItem(self as *const Self)))
         }
     }
 
-    /// Inherited: **Source:** `StepAP242_ItemIdentifiedRepresentationUsage.hxx`:92 - `StepAP242_ItemIdentifiedRepresentationUsage::NbIdentifiedItem()`
+    /// Inherited: **Source:** `StepAP242_ItemIdentifiedRepresentationUsage.hxx`:97 - `StepAP242_ItemIdentifiedRepresentationUsage::NbIdentifiedItem()`
     pub fn nb_identified_item(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepAP242_GeometricItemSpecificUsage_inherited_NbIdentifiedItem(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `StepAP242_ItemIdentifiedRepresentationUsage.hxx`:98 - `StepAP242_ItemIdentifiedRepresentationUsage::SetIdentifiedItem()`
+    /// Inherited: **Source:** `StepAP242_ItemIdentifiedRepresentationUsage.hxx`:103 - `StepAP242_ItemIdentifiedRepresentationUsage::SetIdentifiedItem()`
     pub fn set_identified_item(
         &mut self,
-        theIdentifiedItem: &crate::ffi_types::HandleStepReprHArray1OfRepresentationItem,
+        theIdentifiedItem: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepAP242_GeometricItemSpecificUsage_inherited_SetIdentifiedItem(self as *mut Self, theIdentifiedItem)
         })
     }
 
-    /// Inherited: **Source:** `StepAP242_ItemIdentifiedRepresentationUsage.hxx`:105 - `StepAP242_ItemIdentifiedRepresentationUsage::IdentifiedItemValue()`
+    /// Inherited: **Source:** `StepAP242_ItemIdentifiedRepresentationUsage.hxx`:111 - `StepAP242_ItemIdentifiedRepresentationUsage::IdentifiedItemValue()`
     pub fn identified_item_value(
         &self,
         num: i32,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStepReprRepresentationItem> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_StepRepr_RepresentationItem> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::StepAP242_GeometricItemSpecificUsage_inherited_IdentifiedItemValue(self as *const Self, num)))
         }
     }
 
-    /// Inherited: **Source:** `StepAP242_ItemIdentifiedRepresentationUsage.hxx`:111 - `StepAP242_ItemIdentifiedRepresentationUsage::SetIdentifiedItemValue()`
+    /// Inherited: **Source:** `StepAP242_ItemIdentifiedRepresentationUsage.hxx`:117 - `StepAP242_ItemIdentifiedRepresentationUsage::SetIdentifiedItemValue()`
     pub fn set_identified_item_value(
         &mut self,
         num: i32,
-        theItem: &crate::ffi_types::HandleStepReprRepresentationItem,
+        theItem: &crate::ffi_types::Handle_StepRepr_RepresentationItem,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepAP242_GeometricItemSpecificUsage_inherited_SetIdentifiedItemValue(self as *mut Self, num, theItem)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepAP242_GeometricItemSpecificUsage_inherited_IsInstance(
                 self as *const Self,
@@ -636,8 +644,8 @@ impl GeometricItemSpecificUsage {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepAP242_GeometricItemSpecificUsage_inherited_IsKind(
                 self as *const Self,
@@ -646,7 +654,7 @@ impl GeometricItemSpecificUsage {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -662,7 +670,7 @@ impl GeometricItemSpecificUsage {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepAP242_GeometricItemSpecificUsage_inherited_GetRefCount(
@@ -671,21 +679,21 @@ impl GeometricItemSpecificUsage {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepAP242_GeometricItemSpecificUsage_inherited_IncrementRefCounter(self as *mut Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepAP242_GeometricItemSpecificUsage_inherited_DecrementRefCounter(self as *mut Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepAP242_GeometricItemSpecificUsage_inherited_Delete(
@@ -695,31 +703,31 @@ impl GeometricItemSpecificUsage {
     }
 }
 
-pub use crate::ffi_types::HandleStepAP242GeometricItemSpecificUsage;
+pub use crate::ffi_types::Handle_StepAP242_GeometricItemSpecificUsage;
 
-unsafe impl crate::CppDeletable for HandleStepAP242GeometricItemSpecificUsage {
+unsafe impl crate::CppDeletable for Handle_StepAP242_GeometricItemSpecificUsage {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKDESTEP::HandleStepAP242GeometricItemSpecificUsage_destructor(ptr);
+            crate::ffi_extern_TKDESTEP::Handle_StepAP242_GeometricItemSpecificUsage_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleStepAP242GeometricItemSpecificUsage {
+unsafe impl crate::CppCopyable for Handle_StepAP242_GeometricItemSpecificUsage {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
         unsafe {
             crate::check_result(
-                crate::ffi_extern_TKDESTEP::HandleStepAP242GeometricItemSpecificUsage_clone(ptr),
+                crate::ffi_extern_TKDESTEP::Handle_StepAP242_GeometricItemSpecificUsage_clone(ptr),
             )
         }
     }
 }
 
-impl HandleStepAP242GeometricItemSpecificUsage {
+impl Handle_StepAP242_GeometricItemSpecificUsage {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
         unsafe {
-            crate::ffi_extern_TKDESTEP::HandleStepAP242GeometricItemSpecificUsage_is_null(
+            crate::ffi_extern_TKDESTEP::Handle_StepAP242_GeometricItemSpecificUsage_is_null(
                 self as *const Self,
             )
         }
@@ -729,7 +737,7 @@ impl HandleStepAP242GeometricItemSpecificUsage {
     pub fn get(&self) -> &crate::ffi_types::StepAP242_GeometricItemSpecificUsage {
         unsafe {
             &*crate::check_result(
-                crate::ffi_extern_TKDESTEP::HandleStepAP242GeometricItemSpecificUsage_get(
+                crate::ffi_extern_TKDESTEP::Handle_StepAP242_GeometricItemSpecificUsage_get(
                     self as *const Self,
                 ),
             )
@@ -740,7 +748,7 @@ impl HandleStepAP242GeometricItemSpecificUsage {
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::StepAP242_GeometricItemSpecificUsage {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi_extern_TKDESTEP::HandleStepAP242GeometricItemSpecificUsage_get_mut(
+                crate::ffi_extern_TKDESTEP::Handle_StepAP242_GeometricItemSpecificUsage_get_mut(
                     self as *mut Self,
                 ),
             )
@@ -750,18 +758,18 @@ impl HandleStepAP242GeometricItemSpecificUsage {
     /// Upcast Handle<StepAP242_GeometricItemSpecificUsage> to Handle<StepAP242_ItemIdentifiedRepresentationUsage>
     pub fn to_handle_item_identified_representation_usage(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStepAP242ItemIdentifiedRepresentationUsage> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_StepAP242_ItemIdentifiedRepresentationUsage> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepAP242GeometricItemSpecificUsage_to_HandleStepAP242ItemIdentifiedRepresentationUsage(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::Handle_StepAP242_GeometricItemSpecificUsage_to_Handle_StepAP242_ItemIdentifiedRepresentationUsage(self as *const Self)))
         }
     }
 
     /// Upcast Handle<StepAP242_GeometricItemSpecificUsage> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepAP242GeometricItemSpecificUsage_to_HandleStandardTransient(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::Handle_StepAP242_GeometricItemSpecificUsage_to_Handle_Standard_Transient(self as *const Self)))
         }
     }
 }
@@ -770,7 +778,7 @@ impl HandleStepAP242GeometricItemSpecificUsage {
 // From StepAP242_IdAttribute.hxx
 // ========================
 
-/// **Source:** `StepAP242_IdAttribute.hxx`:28 - `StepAP242_IdAttribute`
+/// **Source:** `StepAP242_IdAttribute.hxx`:25 - `StepAP242_IdAttribute`
 pub use crate::ffi_types::StepAP242_IdAttribute as IdAttribute;
 
 unsafe impl crate::CppDeletable for IdAttribute {
@@ -782,7 +790,7 @@ unsafe impl crate::CppDeletable for IdAttribute {
 }
 
 impl IdAttribute {
-    /// **Source:** `StepAP242_IdAttribute.hxx`:33 - `StepAP242_IdAttribute::StepAP242_IdAttribute()`
+    /// **Source:** `StepAP242_IdAttribute.hxx`:30 - `StepAP242_IdAttribute::StepAP242_IdAttribute()`
     /// Returns a IdAttribute
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
@@ -792,11 +800,11 @@ impl IdAttribute {
         }
     }
 
-    /// **Source:** `StepAP242_IdAttribute.hxx`:36 - `StepAP242_IdAttribute::Init()`
+    /// **Source:** `StepAP242_IdAttribute.hxx`:33 - `StepAP242_IdAttribute::Init()`
     /// Init all field own and inherited
     pub fn init(
         &mut self,
-        theAttributeValue: &crate::ffi_types::HandleTCollectionHAsciiString,
+        theAttributeValue: &crate::ffi_types::Handle_TCollection_HAsciiString,
         theIdentifiedItem: &IdAttributeSelect,
     ) {
         crate::check_void_result(unsafe {
@@ -808,10 +816,10 @@ impl IdAttribute {
         })
     }
 
-    /// **Source:** `StepAP242_IdAttribute.hxx`:40 - `StepAP242_IdAttribute::SetAttributeValue()`
+    /// **Source:** `StepAP242_IdAttribute.hxx`:37 - `StepAP242_IdAttribute::SetAttributeValue()`
     pub fn set_attribute_value(
         &mut self,
-        theAttributeValue: &crate::ffi_types::HandleTCollectionHAsciiString,
+        theAttributeValue: &crate::ffi_types::Handle_TCollection_HAsciiString,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepAP242_IdAttribute_set_attribute_value(
@@ -821,11 +829,11 @@ impl IdAttribute {
         })
     }
 
-    /// **Source:** `StepAP242_IdAttribute.hxx`:46 - `StepAP242_IdAttribute::AttributeValue()`
+    /// **Source:** `StepAP242_IdAttribute.hxx`:43 - `StepAP242_IdAttribute::AttributeValue()`
     /// Returns field AttributeValue
     pub fn attribute_value(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleTCollectionHAsciiString> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_TCollection_HAsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDESTEP::StepAP242_IdAttribute_attribute_value(
@@ -835,7 +843,7 @@ impl IdAttribute {
         }
     }
 
-    /// **Source:** `StepAP242_IdAttribute.hxx`:49 - `StepAP242_IdAttribute::SetIdentifiedItem()`
+    /// **Source:** `StepAP242_IdAttribute.hxx`:46 - `StepAP242_IdAttribute::SetIdentifiedItem()`
     /// Set field IdentifiedItem
     pub fn set_identified_item(&mut self, theIdentifiedItem: &IdAttributeSelect) {
         crate::check_void_result(unsafe {
@@ -846,7 +854,7 @@ impl IdAttribute {
         })
     }
 
-    /// **Source:** `StepAP242_IdAttribute.hxx`:55 - `StepAP242_IdAttribute::IdentifiedItem()`
+    /// **Source:** `StepAP242_IdAttribute.hxx`:52 - `StepAP242_IdAttribute::IdentifiedItem()`
     /// Returns IdentifiedItem
     pub fn identified_item(&self) -> crate::OwnedPtr<IdAttributeSelect> {
         unsafe {
@@ -858,8 +866,8 @@ impl IdAttribute {
         }
     }
 
-    /// **Source:** `StepAP242_IdAttribute.hxx`:57 - `StepAP242_IdAttribute::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `StepAP242_IdAttribute.hxx`:54 - `StepAP242_IdAttribute::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKDESTEP::StepAP242_IdAttribute_dynamic_type(
                 self as *const Self,
@@ -867,7 +875,7 @@ impl IdAttribute {
         }
     }
 
-    /// **Source:** `StepAP242_IdAttribute.hxx`:57 - `StepAP242_IdAttribute::get_type_name()`
+    /// **Source:** `StepAP242_IdAttribute.hxx`:54 - `StepAP242_IdAttribute::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -878,8 +886,8 @@ impl IdAttribute {
         .into_owned()
     }
 
-    /// **Source:** `StepAP242_IdAttribute.hxx`:57 - `StepAP242_IdAttribute::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    /// **Source:** `StepAP242_IdAttribute.hxx`:54 - `StepAP242_IdAttribute::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKDESTEP::StepAP242_IdAttribute_get_type_descriptor(),
@@ -912,7 +920,7 @@ impl IdAttribute {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStepAP242IdAttribute> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_StepAP242_IdAttribute> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDESTEP::StepAP242_IdAttribute_to_handle(obj.into_raw()),
@@ -920,8 +928,8 @@ impl IdAttribute {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepAP242_IdAttribute_inherited_IsInstance(
                 self as *const Self,
@@ -930,8 +938,8 @@ impl IdAttribute {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepAP242_IdAttribute_inherited_IsKind(
                 self as *const Self,
@@ -940,7 +948,7 @@ impl IdAttribute {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -956,7 +964,7 @@ impl IdAttribute {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepAP242_IdAttribute_inherited_GetRefCount(
@@ -965,7 +973,7 @@ impl IdAttribute {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepAP242_IdAttribute_inherited_IncrementRefCounter(
@@ -974,7 +982,7 @@ impl IdAttribute {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepAP242_IdAttribute_inherited_DecrementRefCounter(
@@ -983,7 +991,7 @@ impl IdAttribute {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepAP242_IdAttribute_inherited_Delete(self as *const Self)
@@ -991,36 +999,36 @@ impl IdAttribute {
     }
 }
 
-pub use crate::ffi_types::HandleStepAP242IdAttribute;
+pub use crate::ffi_types::Handle_StepAP242_IdAttribute;
 
-unsafe impl crate::CppDeletable for HandleStepAP242IdAttribute {
+unsafe impl crate::CppDeletable for Handle_StepAP242_IdAttribute {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKDESTEP::HandleStepAP242IdAttribute_destructor(ptr);
+            crate::ffi_extern_TKDESTEP::Handle_StepAP242_IdAttribute_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleStepAP242IdAttribute {
+unsafe impl crate::CppCopyable for Handle_StepAP242_IdAttribute {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
         unsafe {
-            crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepAP242IdAttribute_clone(ptr))
+            crate::check_result(crate::ffi_extern_TKDESTEP::Handle_StepAP242_IdAttribute_clone(ptr))
         }
     }
 }
 
-impl HandleStepAP242IdAttribute {
+impl Handle_StepAP242_IdAttribute {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
         unsafe {
-            crate::ffi_extern_TKDESTEP::HandleStepAP242IdAttribute_is_null(self as *const Self)
+            crate::ffi_extern_TKDESTEP::Handle_StepAP242_IdAttribute_is_null(self as *const Self)
         }
     }
 
     /// Dereference this Handle to access the underlying StepAP242_IdAttribute
     pub fn get(&self) -> &crate::ffi_types::StepAP242_IdAttribute {
         unsafe {
-            &*crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepAP242IdAttribute_get(
+            &*crate::check_result(crate::ffi_extern_TKDESTEP::Handle_StepAP242_IdAttribute_get(
                 self as *const Self,
             ))
         }
@@ -1030,7 +1038,7 @@ impl HandleStepAP242IdAttribute {
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::StepAP242_IdAttribute {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi_extern_TKDESTEP::HandleStepAP242IdAttribute_get_mut(self as *mut Self),
+                crate::ffi_extern_TKDESTEP::Handle_StepAP242_IdAttribute_get_mut(self as *mut Self),
             )
         }
     }
@@ -1038,13 +1046,9 @@ impl HandleStepAP242IdAttribute {
     /// Upcast Handle<StepAP242_IdAttribute> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKDESTEP::HandleStepAP242IdAttribute_to_HandleStandardTransient(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::Handle_StepAP242_IdAttribute_to_Handle_Standard_Transient(self as *const Self)))
         }
     }
 }
@@ -1090,7 +1094,7 @@ impl IdAttributeSelect {
     /// 11 -> ShapeAspect
     /// 12 -> ShapeAspectRelationship
     /// 0 else
-    pub fn case_num(&self, ent: &crate::ffi_types::HandleStandardTransient) -> i32 {
+    pub fn case_num(&self, ent: &crate::ffi_types::Handle_Standard_Transient) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepAP242_IdAttributeSelect_case_num(
                 self as *const Self,
@@ -1101,7 +1105,7 @@ impl IdAttributeSelect {
 
     /// **Source:** `StepAP242_IdAttributeSelect.hxx`:63 - `StepAP242_IdAttributeSelect::Action()`
     /// returns Value as a Action (Null if another type)
-    pub fn action(&self) -> crate::OwnedPtr<crate::ffi_types::HandleStepBasicAction> {
+    pub fn action(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_StepBasic_Action> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDESTEP::StepAP242_IdAttributeSelect_action(self as *const Self),
@@ -1111,7 +1115,7 @@ impl IdAttributeSelect {
 
     /// **Source:** `StepAP242_IdAttributeSelect.hxx`:66 - `StepAP242_IdAttributeSelect::Address()`
     /// returns Value as a Address (Null if another type)
-    pub fn address(&self) -> crate::OwnedPtr<crate::ffi_types::HandleStepBasicAddress> {
+    pub fn address(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_StepBasic_Address> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDESTEP::StepAP242_IdAttributeSelect_address(
@@ -1125,7 +1129,7 @@ impl IdAttributeSelect {
     /// returns Value as a ApplicationContext (Null if another type)
     pub fn application_context(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStepBasicApplicationContext> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_StepBasic_ApplicationContext> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDESTEP::StepAP242_IdAttributeSelect_application_context(
@@ -1139,7 +1143,7 @@ impl IdAttributeSelect {
     /// returns Value as a DimensionalSize (Null if another type)
     pub fn dimensional_size(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStepShapeDimensionalSize> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_StepShape_DimensionalSize> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDESTEP::StepAP242_IdAttributeSelect_dimensional_size(
@@ -1153,7 +1157,7 @@ impl IdAttributeSelect {
     /// returns Value as a GeometricTolerance (Null if another type)
     pub fn geometric_tolerance(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStepDimTolGeometricTolerance> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_StepDimTol_GeometricTolerance> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDESTEP::StepAP242_IdAttributeSelect_geometric_tolerance(
@@ -1165,7 +1169,7 @@ impl IdAttributeSelect {
 
     /// **Source:** `StepAP242_IdAttributeSelect.hxx`:78 - `StepAP242_IdAttributeSelect::Group()`
     /// returns Value as a Group (Null if another type)
-    pub fn group(&self) -> crate::OwnedPtr<crate::ffi_types::HandleStepBasicGroup> {
+    pub fn group(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_StepBasic_Group> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDESTEP::StepAP242_IdAttributeSelect_group(self as *const Self),
@@ -1177,7 +1181,7 @@ impl IdAttributeSelect {
     /// returns Value as a ProductCategory (Null if another type)
     pub fn product_category(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStepBasicProductCategory> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_StepBasic_ProductCategory> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDESTEP::StepAP242_IdAttributeSelect_product_category(
@@ -1191,7 +1195,7 @@ impl IdAttributeSelect {
     /// returns Value as a PropertyDefinition (Null if another type)
     pub fn property_definition(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStepReprPropertyDefinition> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_StepRepr_PropertyDefinition> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDESTEP::StepAP242_IdAttributeSelect_property_definition(
@@ -1205,7 +1209,7 @@ impl IdAttributeSelect {
     /// returns Value as a Representation (Null if another type)
     pub fn representation(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStepReprRepresentation> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_StepRepr_Representation> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDESTEP::StepAP242_IdAttributeSelect_representation(
@@ -1217,7 +1221,7 @@ impl IdAttributeSelect {
 
     /// **Source:** `StepAP242_IdAttributeSelect.hxx`:90 - `StepAP242_IdAttributeSelect::ShapeAspect()`
     /// returns Value as a ShapeAspect (Null if another type)
-    pub fn shape_aspect(&self) -> crate::OwnedPtr<crate::ffi_types::HandleStepReprShapeAspect> {
+    pub fn shape_aspect(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_StepRepr_ShapeAspect> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDESTEP::StepAP242_IdAttributeSelect_shape_aspect(
@@ -1231,7 +1235,7 @@ impl IdAttributeSelect {
     /// returns Value as a ShapeAspectRelationship (Null if another type)
     pub fn shape_aspect_relationship(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStepReprShapeAspectRelationship> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_StepRepr_ShapeAspectRelationship> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDESTEP::StepAP242_IdAttributeSelect_shape_aspect_relationship(
@@ -1264,7 +1268,7 @@ impl IdAttributeSelect {
     }
 
     /// Inherited: **Source:** `StepData_SelectType.hxx`:64 - `StepData_SelectType::Matches()`
-    pub fn matches(&self, ent: &crate::ffi_types::HandleStandardTransient) -> bool {
+    pub fn matches(&self, ent: &crate::ffi_types::Handle_Standard_Transient) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepAP242_IdAttributeSelect_inherited_Matches(
                 self as *const Self,
@@ -1274,7 +1278,7 @@ impl IdAttributeSelect {
     }
 
     /// Inherited: **Source:** `StepData_SelectType.hxx`:69 - `StepData_SelectType::SetValue()`
-    pub fn set_value(&mut self, ent: &crate::ffi_types::HandleStandardTransient) {
+    pub fn set_value(&mut self, ent: &crate::ffi_types::Handle_Standard_Transient) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepAP242_IdAttributeSelect_inherited_SetValue(
                 self as *mut Self,
@@ -1293,7 +1297,7 @@ impl IdAttributeSelect {
     }
 
     /// Inherited: **Source:** `StepData_SelectType.hxx`:76 - `StepData_SelectType::Value()`
-    pub fn value(&self) -> &crate::ffi_types::HandleStandardTransient {
+    pub fn value(&self) -> &crate::ffi_types::Handle_Standard_Transient {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKDESTEP::StepAP242_IdAttributeSelect_inherited_Value(
@@ -1313,7 +1317,7 @@ impl IdAttributeSelect {
     }
 
     /// Inherited: **Source:** `StepData_SelectType.hxx`:83 - `StepData_SelectType::Type()`
-    pub fn type_(&self) -> crate::OwnedPtr<crate::ffi_types::HandleStandardType> {
+    pub fn type_(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Type> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDESTEP::StepAP242_IdAttributeSelect_inherited_Type(
@@ -1333,7 +1337,7 @@ impl IdAttributeSelect {
     }
 
     /// Inherited: **Source:** `StepData_SelectType.hxx`:94 - `StepData_SelectType::Description()`
-    pub fn description(&self) -> crate::OwnedPtr<crate::ffi_types::HandleStepDataPDescr> {
+    pub fn description(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_StepData_PDescr> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDESTEP::StepAP242_IdAttributeSelect_inherited_Description(
@@ -1344,7 +1348,7 @@ impl IdAttributeSelect {
     }
 
     /// Inherited: **Source:** `StepData_SelectType.hxx`:104 - `StepData_SelectType::NewMember()`
-    pub fn new_member(&self) -> crate::OwnedPtr<crate::ffi_types::HandleStepDataSelectMember> {
+    pub fn new_member(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_StepData_SelectMember> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDESTEP::StepAP242_IdAttributeSelect_inherited_NewMember(
@@ -1355,7 +1359,7 @@ impl IdAttributeSelect {
     }
 
     /// Inherited: **Source:** `StepData_SelectType.hxx`:111 - `StepData_SelectType::CaseMem()`
-    pub fn case_mem(&self, ent: &crate::ffi_types::HandleStepDataSelectMember) -> i32 {
+    pub fn case_mem(&self, ent: &crate::ffi_types::Handle_StepData_SelectMember) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepAP242_IdAttributeSelect_inherited_CaseMem(
                 self as *const Self,
@@ -1374,7 +1378,7 @@ impl IdAttributeSelect {
     }
 
     /// Inherited: **Source:** `StepData_SelectType.hxx`:118 - `StepData_SelectType::Member()`
-    pub fn member(&self) -> crate::OwnedPtr<crate::ffi_types::HandleStepDataSelectMember> {
+    pub fn member(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_StepData_SelectMember> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDESTEP::StepAP242_IdAttributeSelect_inherited_Member(
@@ -1445,7 +1449,7 @@ impl IdAttributeSelect {
 // From StepAP242_ItemIdentifiedRepresentationUsage.hxx
 // ========================
 
-/// **Source:** `StepAP242_ItemIdentifiedRepresentationUsage.hxx`:33 - `StepAP242_ItemIdentifiedRepresentationUsage`
+/// **Source:** `StepAP242_ItemIdentifiedRepresentationUsage.hxx`:32 - `StepAP242_ItemIdentifiedRepresentationUsage`
 pub use crate::ffi_types::StepAP242_ItemIdentifiedRepresentationUsage as ItemIdentifiedRepresentationUsage;
 
 unsafe impl crate::CppDeletable for ItemIdentifiedRepresentationUsage {
@@ -1457,7 +1461,7 @@ unsafe impl crate::CppDeletable for ItemIdentifiedRepresentationUsage {
 }
 
 impl ItemIdentifiedRepresentationUsage {
-    /// **Source:** `StepAP242_ItemIdentifiedRepresentationUsage.hxx`:38 - `StepAP242_ItemIdentifiedRepresentationUsage::StepAP242_ItemIdentifiedRepresentationUsage()`
+    /// **Source:** `StepAP242_ItemIdentifiedRepresentationUsage.hxx`:37 - `StepAP242_ItemIdentifiedRepresentationUsage::StepAP242_ItemIdentifiedRepresentationUsage()`
     /// Returns a ItemIdentifiedRepresentationUsage
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
@@ -1467,15 +1471,15 @@ impl ItemIdentifiedRepresentationUsage {
         }
     }
 
-    /// **Source:** `StepAP242_ItemIdentifiedRepresentationUsage.hxx`:41 - `StepAP242_ItemIdentifiedRepresentationUsage::Init()`
+    /// **Source:** `StepAP242_ItemIdentifiedRepresentationUsage.hxx`:40 - `StepAP242_ItemIdentifiedRepresentationUsage::Init()`
     /// Init all fields own and inherited
     pub fn init(
         &mut self,
-        theName: &crate::ffi_types::HandleTCollectionHAsciiString,
-        theDescription: &crate::ffi_types::HandleTCollectionHAsciiString,
+        theName: &crate::ffi_types::Handle_TCollection_HAsciiString,
+        theDescription: &crate::ffi_types::Handle_TCollection_HAsciiString,
         theDefinition: &ItemIdentifiedRepresentationUsageDefinition,
-        theUsedRepresentation: &crate::ffi_types::HandleStepReprRepresentation,
-        theIdentifiedItem: &crate::ffi_types::HandleStepReprHArray1OfRepresentationItem,
+        theUsedRepresentation: &crate::ffi_types::Handle_StepRepr_Representation,
+        theIdentifiedItem: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepAP242_ItemIdentifiedRepresentationUsage_init(
@@ -1491,7 +1495,7 @@ impl ItemIdentifiedRepresentationUsage {
 
     /// **Source:** `StepAP242_ItemIdentifiedRepresentationUsage.hxx`:49 - `StepAP242_ItemIdentifiedRepresentationUsage::SetName()`
     /// Set field Name
-    pub fn set_name(&mut self, theName: &crate::ffi_types::HandleTCollectionHAsciiString) {
+    pub fn set_name(&mut self, theName: &crate::ffi_types::Handle_TCollection_HAsciiString) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepAP242_ItemIdentifiedRepresentationUsage_set_name(
                 self as *mut Self,
@@ -1502,7 +1506,7 @@ impl ItemIdentifiedRepresentationUsage {
 
     /// **Source:** `StepAP242_ItemIdentifiedRepresentationUsage.hxx`:52 - `StepAP242_ItemIdentifiedRepresentationUsage::Name()`
     /// Returns field Name
-    pub fn name(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTCollectionHAsciiString> {
+    pub fn name(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_TCollection_HAsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDESTEP::StepAP242_ItemIdentifiedRepresentationUsage_name(
@@ -1516,7 +1520,7 @@ impl ItemIdentifiedRepresentationUsage {
     /// Set field Description
     pub fn set_description(
         &mut self,
-        theDescription: &crate::ffi_types::HandleTCollectionHAsciiString,
+        theDescription: &crate::ffi_types::Handle_TCollection_HAsciiString,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepAP242_ItemIdentifiedRepresentationUsage_set_description(
@@ -1528,7 +1532,9 @@ impl ItemIdentifiedRepresentationUsage {
 
     /// **Source:** `StepAP242_ItemIdentifiedRepresentationUsage.hxx`:61 - `StepAP242_ItemIdentifiedRepresentationUsage::Description()`
     /// Returns field Description
-    pub fn description(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTCollectionHAsciiString> {
+    pub fn description(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_TCollection_HAsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDESTEP::StepAP242_ItemIdentifiedRepresentationUsage_description(
@@ -1565,34 +1571,36 @@ impl ItemIdentifiedRepresentationUsage {
     /// Set field UsedRepresentation
     pub fn set_used_representation(
         &mut self,
-        theUsedRepresentation: &crate::ffi_types::HandleStepReprRepresentation,
+        theUsedRepresentation: &crate::ffi_types::Handle_StepRepr_Representation,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepAP242_ItemIdentifiedRepresentationUsage_set_used_representation(self as *mut Self, theUsedRepresentation)
         })
     }
 
-    /// **Source:** `StepAP242_ItemIdentifiedRepresentationUsage.hxx`:83 - `StepAP242_ItemIdentifiedRepresentationUsage::UsedRepresentation()`
+    /// **Source:** `StepAP242_ItemIdentifiedRepresentationUsage.hxx`:84 - `StepAP242_ItemIdentifiedRepresentationUsage::UsedRepresentation()`
     /// Returns field UsedRepresentation
     pub fn used_representation(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStepReprRepresentation> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_StepRepr_Representation> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::StepAP242_ItemIdentifiedRepresentationUsage_used_representation(self as *const Self)))
         }
     }
 
-    /// **Source:** `StepAP242_ItemIdentifiedRepresentationUsage.hxx`:86 - `StepAP242_ItemIdentifiedRepresentationUsage::IdentifiedItem()`
+    /// **Source:** `StepAP242_ItemIdentifiedRepresentationUsage.hxx`:90 - `StepAP242_ItemIdentifiedRepresentationUsage::IdentifiedItem()`
     /// Returns field IdentifiedItem
     pub fn identified_item(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStepReprHArray1OfRepresentationItem> {
+    ) -> crate::OwnedPtr<
+        crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
+    > {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::StepAP242_ItemIdentifiedRepresentationUsage_identified_item(self as *const Self)))
         }
     }
 
-    /// **Source:** `StepAP242_ItemIdentifiedRepresentationUsage.hxx`:92 - `StepAP242_ItemIdentifiedRepresentationUsage::NbIdentifiedItem()`
+    /// **Source:** `StepAP242_ItemIdentifiedRepresentationUsage.hxx`:97 - `StepAP242_ItemIdentifiedRepresentationUsage::NbIdentifiedItem()`
     /// Returns number of identified items
     pub fn nb_identified_item(&self) -> i32 {
         crate::check_result(unsafe {
@@ -1600,54 +1608,54 @@ impl ItemIdentifiedRepresentationUsage {
         })
     }
 
-    /// **Source:** `StepAP242_ItemIdentifiedRepresentationUsage.hxx`:98 - `StepAP242_ItemIdentifiedRepresentationUsage::SetIdentifiedItem()`
+    /// **Source:** `StepAP242_ItemIdentifiedRepresentationUsage.hxx`:103 - `StepAP242_ItemIdentifiedRepresentationUsage::SetIdentifiedItem()`
     /// Set field IdentifiedItem
     pub fn set_identified_item(
         &mut self,
-        theIdentifiedItem: &crate::ffi_types::HandleStepReprHArray1OfRepresentationItem,
+        theIdentifiedItem: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepRepr_RepresentationItem,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepAP242_ItemIdentifiedRepresentationUsage_set_identified_item(self as *mut Self, theIdentifiedItem)
         })
     }
 
-    /// **Source:** `StepAP242_ItemIdentifiedRepresentationUsage.hxx`:105 - `StepAP242_ItemIdentifiedRepresentationUsage::IdentifiedItemValue()`
+    /// **Source:** `StepAP242_ItemIdentifiedRepresentationUsage.hxx`:111 - `StepAP242_ItemIdentifiedRepresentationUsage::IdentifiedItemValue()`
     /// Returns identified item with given number
     pub fn identified_item_value(
         &self,
         num: i32,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStepReprRepresentationItem> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_StepRepr_RepresentationItem> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::StepAP242_ItemIdentifiedRepresentationUsage_identified_item_value(self as *const Self, num)))
         }
     }
 
-    /// **Source:** `StepAP242_ItemIdentifiedRepresentationUsage.hxx`:111 - `StepAP242_ItemIdentifiedRepresentationUsage::SetIdentifiedItemValue()`
+    /// **Source:** `StepAP242_ItemIdentifiedRepresentationUsage.hxx`:117 - `StepAP242_ItemIdentifiedRepresentationUsage::SetIdentifiedItemValue()`
     /// Set identified item with given number
     pub fn set_identified_item_value(
         &mut self,
         num: i32,
-        theItem: &crate::ffi_types::HandleStepReprRepresentationItem,
+        theItem: &crate::ffi_types::Handle_StepRepr_RepresentationItem,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepAP242_ItemIdentifiedRepresentationUsage_set_identified_item_value(self as *mut Self, num, theItem)
         })
     }
 
-    /// **Source:** `StepAP242_ItemIdentifiedRepresentationUsage.hxx`:117 - `StepAP242_ItemIdentifiedRepresentationUsage::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `StepAP242_ItemIdentifiedRepresentationUsage.hxx`:123 - `StepAP242_ItemIdentifiedRepresentationUsage::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKDESTEP::StepAP242_ItemIdentifiedRepresentationUsage_dynamic_type(self as *const Self)))
         }
     }
 
-    /// **Source:** `StepAP242_ItemIdentifiedRepresentationUsage.hxx`:117 - `StepAP242_ItemIdentifiedRepresentationUsage::get_type_name()`
+    /// **Source:** `StepAP242_ItemIdentifiedRepresentationUsage.hxx`:123 - `StepAP242_ItemIdentifiedRepresentationUsage::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe { std::ffi::CStr::from_ptr(crate::check_result(crate::ffi_extern_TKDESTEP::StepAP242_ItemIdentifiedRepresentationUsage_get_type_name())) }.to_string_lossy().into_owned()
     }
 
-    /// **Source:** `StepAP242_ItemIdentifiedRepresentationUsage.hxx`:117 - `StepAP242_ItemIdentifiedRepresentationUsage::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    /// **Source:** `StepAP242_ItemIdentifiedRepresentationUsage.hxx`:123 - `StepAP242_ItemIdentifiedRepresentationUsage::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKDESTEP::StepAP242_ItemIdentifiedRepresentationUsage_get_type_descriptor()))
         }
@@ -1670,7 +1678,7 @@ impl ItemIdentifiedRepresentationUsage {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStepAP242ItemIdentifiedRepresentationUsage> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_StepAP242_ItemIdentifiedRepresentationUsage> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDESTEP::StepAP242_ItemIdentifiedRepresentationUsage_to_handle(
@@ -1680,15 +1688,15 @@ impl ItemIdentifiedRepresentationUsage {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepAP242_ItemIdentifiedRepresentationUsage_inherited_IsInstance(self as *const Self, theType)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepAP242_ItemIdentifiedRepresentationUsage_inherited_IsKind(
                 self as *const Self,
@@ -1697,7 +1705,7 @@ impl ItemIdentifiedRepresentationUsage {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -1711,28 +1719,28 @@ impl ItemIdentifiedRepresentationUsage {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepAP242_ItemIdentifiedRepresentationUsage_inherited_GetRefCount(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepAP242_ItemIdentifiedRepresentationUsage_inherited_IncrementRefCounter(self as *mut Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepAP242_ItemIdentifiedRepresentationUsage_inherited_DecrementRefCounter(self as *mut Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepAP242_ItemIdentifiedRepresentationUsage_inherited_Delete(
@@ -1742,35 +1750,29 @@ impl ItemIdentifiedRepresentationUsage {
     }
 }
 
-pub use crate::ffi_types::HandleStepAP242ItemIdentifiedRepresentationUsage;
+pub use crate::ffi_types::Handle_StepAP242_ItemIdentifiedRepresentationUsage;
 
-unsafe impl crate::CppDeletable for HandleStepAP242ItemIdentifiedRepresentationUsage {
+unsafe impl crate::CppDeletable for Handle_StepAP242_ItemIdentifiedRepresentationUsage {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKDESTEP::HandleStepAP242ItemIdentifiedRepresentationUsage_destructor(
-                ptr,
-            );
+            crate::ffi_extern_TKDESTEP::Handle_StepAP242_ItemIdentifiedRepresentationUsage_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleStepAP242ItemIdentifiedRepresentationUsage {
+unsafe impl crate::CppCopyable for Handle_StepAP242_ItemIdentifiedRepresentationUsage {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
         unsafe {
-            crate::check_result(
-                crate::ffi_extern_TKDESTEP::HandleStepAP242ItemIdentifiedRepresentationUsage_clone(
-                    ptr,
-                ),
-            )
+            crate::check_result(crate::ffi_extern_TKDESTEP::Handle_StepAP242_ItemIdentifiedRepresentationUsage_clone(ptr))
         }
     }
 }
 
-impl HandleStepAP242ItemIdentifiedRepresentationUsage {
+impl Handle_StepAP242_ItemIdentifiedRepresentationUsage {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
         unsafe {
-            crate::ffi_extern_TKDESTEP::HandleStepAP242ItemIdentifiedRepresentationUsage_is_null(
+            crate::ffi_extern_TKDESTEP::Handle_StepAP242_ItemIdentifiedRepresentationUsage_is_null(
                 self as *const Self,
             )
         }
@@ -1780,7 +1782,7 @@ impl HandleStepAP242ItemIdentifiedRepresentationUsage {
     pub fn get(&self) -> &crate::ffi_types::StepAP242_ItemIdentifiedRepresentationUsage {
         unsafe {
             &*crate::check_result(
-                crate::ffi_extern_TKDESTEP::HandleStepAP242ItemIdentifiedRepresentationUsage_get(
+                crate::ffi_extern_TKDESTEP::Handle_StepAP242_ItemIdentifiedRepresentationUsage_get(
                     self as *const Self,
                 ),
             )
@@ -1792,16 +1794,16 @@ impl HandleStepAP242ItemIdentifiedRepresentationUsage {
         &mut self,
     ) -> &mut crate::ffi_types::StepAP242_ItemIdentifiedRepresentationUsage {
         unsafe {
-            &mut *crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepAP242ItemIdentifiedRepresentationUsage_get_mut(self as *mut Self))
+            &mut *crate::check_result(crate::ffi_extern_TKDESTEP::Handle_StepAP242_ItemIdentifiedRepresentationUsage_get_mut(self as *mut Self))
         }
     }
 
     /// Upcast Handle<StepAP242_ItemIdentifiedRepresentationUsage> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepAP242ItemIdentifiedRepresentationUsage_to_HandleStandardTransient(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::Handle_StepAP242_ItemIdentifiedRepresentationUsage_to_Handle_Standard_Transient(self as *const Self)))
         }
     }
 
@@ -1810,10 +1812,10 @@ impl HandleStepAP242ItemIdentifiedRepresentationUsage {
     /// Returns `None` if the handle does not point to a `StepAP242_DraughtingModelItemAssociation` (or subclass).
     pub fn downcast_to_draughting_model_item_association(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleStepAP242DraughtingModelItemAssociation>>
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_StepAP242_DraughtingModelItemAssociation>>
     {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKDESTEP::HandleStepAP242ItemIdentifiedRepresentationUsage_downcast_to_HandleStepAP242DraughtingModelItemAssociation(self as *const Self)
+            crate::ffi_extern_TKDESTEP::Handle_StepAP242_ItemIdentifiedRepresentationUsage_downcast_to_Handle_StepAP242_DraughtingModelItemAssociation(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -1827,9 +1829,10 @@ impl HandleStepAP242ItemIdentifiedRepresentationUsage {
     /// Returns `None` if the handle does not point to a `StepAP242_GeometricItemSpecificUsage` (or subclass).
     pub fn downcast_to_geometric_item_specific_usage(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleStepAP242GeometricItemSpecificUsage>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_StepAP242_GeometricItemSpecificUsage>>
+    {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKDESTEP::HandleStepAP242ItemIdentifiedRepresentationUsage_downcast_to_HandleStepAP242GeometricItemSpecificUsage(self as *const Self)
+            crate::ffi_extern_TKDESTEP::Handle_StepAP242_ItemIdentifiedRepresentationUsage_downcast_to_Handle_StepAP242_GeometricItemSpecificUsage(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -1883,7 +1886,7 @@ impl ItemIdentifiedRepresentationUsageDefinition {
     /// 16 -> ShapeAspect
     /// 17 -> ShapeAspectRelationship
     /// 0 else
-    pub fn case_num(&self, ent: &crate::ffi_types::HandleStandardTransient) -> i32 {
+    pub fn case_num(&self, ent: &crate::ffi_types::Handle_Standard_Transient) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepAP242_ItemIdentifiedRepresentationUsageDefinition_case_num(self as *const Self, ent)
         })
@@ -1893,168 +1896,168 @@ impl ItemIdentifiedRepresentationUsageDefinition {
     /// returns Value as a AppliedApprovalAssignment (Null if another type)
     pub fn applied_approval_assignment(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStepAP214AppliedApprovalAssignment> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_StepAP214_AppliedApprovalAssignment> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::StepAP242_ItemIdentifiedRepresentationUsageDefinition_applied_approval_assignment(self as *const Self)))
         }
     }
 
-    /// **Source:** `StepAP242_ItemIdentifiedRepresentationUsageDefinition.hxx`:77 - `StepAP242_ItemIdentifiedRepresentationUsageDefinition::AppliedDateAndTimeAssignment()`
+    /// **Source:** `StepAP242_ItemIdentifiedRepresentationUsageDefinition.hxx`:78 - `StepAP242_ItemIdentifiedRepresentationUsageDefinition::AppliedDateAndTimeAssignment()`
     /// returns Value as a AppliedDateAndTimeAssignment (Null if another type)
     pub fn applied_date_and_time_assignment(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStepAP214AppliedDateAndTimeAssignment> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_StepAP214_AppliedDateAndTimeAssignment> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::StepAP242_ItemIdentifiedRepresentationUsageDefinition_applied_date_and_time_assignment(self as *const Self)))
         }
     }
 
-    /// **Source:** `StepAP242_ItemIdentifiedRepresentationUsageDefinition.hxx`:81 - `StepAP242_ItemIdentifiedRepresentationUsageDefinition::AppliedDateAssignment()`
+    /// **Source:** `StepAP242_ItemIdentifiedRepresentationUsageDefinition.hxx`:82 - `StepAP242_ItemIdentifiedRepresentationUsageDefinition::AppliedDateAssignment()`
     /// returns Value as a AppliedDateAssignment (Null if another type)
     pub fn applied_date_assignment(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStepAP214AppliedDateAssignment> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_StepAP214_AppliedDateAssignment> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::StepAP242_ItemIdentifiedRepresentationUsageDefinition_applied_date_assignment(self as *const Self)))
         }
     }
 
-    /// **Source:** `StepAP242_ItemIdentifiedRepresentationUsageDefinition.hxx`:84 - `StepAP242_ItemIdentifiedRepresentationUsageDefinition::AppliedDocumentReference()`
+    /// **Source:** `StepAP242_ItemIdentifiedRepresentationUsageDefinition.hxx`:85 - `StepAP242_ItemIdentifiedRepresentationUsageDefinition::AppliedDocumentReference()`
     /// returns Value as a AppliedDocumentReference (Null if another type)
     pub fn applied_document_reference(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStepAP214AppliedDocumentReference> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_StepAP214_AppliedDocumentReference> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::StepAP242_ItemIdentifiedRepresentationUsageDefinition_applied_document_reference(self as *const Self)))
         }
     }
 
-    /// **Source:** `StepAP242_ItemIdentifiedRepresentationUsageDefinition.hxx`:88 - `StepAP242_ItemIdentifiedRepresentationUsageDefinition::AppliedExternalIdentificationAssignment()`
+    /// **Source:** `StepAP242_ItemIdentifiedRepresentationUsageDefinition.hxx`:89 - `StepAP242_ItemIdentifiedRepresentationUsageDefinition::AppliedExternalIdentificationAssignment()`
     /// returns Value as a AppliedExternalIdentificationAssignment (Null if another type)
     pub fn applied_external_identification_assignment(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStepAP214AppliedExternalIdentificationAssignment>
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_StepAP214_AppliedExternalIdentificationAssignment>
     {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::StepAP242_ItemIdentifiedRepresentationUsageDefinition_applied_external_identification_assignment(self as *const Self)))
         }
     }
 
-    /// **Source:** `StepAP242_ItemIdentifiedRepresentationUsageDefinition.hxx`:91 - `StepAP242_ItemIdentifiedRepresentationUsageDefinition::AppliedGroupAssignment()`
+    /// **Source:** `StepAP242_ItemIdentifiedRepresentationUsageDefinition.hxx`:92 - `StepAP242_ItemIdentifiedRepresentationUsageDefinition::AppliedGroupAssignment()`
     /// returns Value as a AppliedGroupAssignment (Null if another type)
     pub fn applied_group_assignment(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStepAP214AppliedGroupAssignment> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_StepAP214_AppliedGroupAssignment> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::StepAP242_ItemIdentifiedRepresentationUsageDefinition_applied_group_assignment(self as *const Self)))
         }
     }
 
-    /// **Source:** `StepAP242_ItemIdentifiedRepresentationUsageDefinition.hxx`:94 - `StepAP242_ItemIdentifiedRepresentationUsageDefinition::AppliedOrganizationAssignment()`
+    /// **Source:** `StepAP242_ItemIdentifiedRepresentationUsageDefinition.hxx`:96 - `StepAP242_ItemIdentifiedRepresentationUsageDefinition::AppliedOrganizationAssignment()`
     /// returns Value as a AppliedOrganizationAssignment (Null if another type)
     pub fn applied_organization_assignment(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStepAP214AppliedOrganizationAssignment> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_StepAP214_AppliedOrganizationAssignment> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::StepAP242_ItemIdentifiedRepresentationUsageDefinition_applied_organization_assignment(self as *const Self)))
         }
     }
 
-    /// **Source:** `StepAP242_ItemIdentifiedRepresentationUsageDefinition.hxx`:99 - `StepAP242_ItemIdentifiedRepresentationUsageDefinition::AppliedPersonAndOrganizationAssignment()`
+    /// **Source:** `StepAP242_ItemIdentifiedRepresentationUsageDefinition.hxx`:100 - `StepAP242_ItemIdentifiedRepresentationUsageDefinition::AppliedPersonAndOrganizationAssignment()`
     /// returns Value as a AppliedPersonAndOrganizationAssignment (Null if another type)
     pub fn applied_person_and_organization_assignment(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStepAP214AppliedPersonAndOrganizationAssignment>
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_StepAP214_AppliedPersonAndOrganizationAssignment>
     {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::StepAP242_ItemIdentifiedRepresentationUsageDefinition_applied_person_and_organization_assignment(self as *const Self)))
         }
     }
 
-    /// **Source:** `StepAP242_ItemIdentifiedRepresentationUsageDefinition.hxx`:103 - `StepAP242_ItemIdentifiedRepresentationUsageDefinition::AppliedSecurityClassificationAssignment()`
+    /// **Source:** `StepAP242_ItemIdentifiedRepresentationUsageDefinition.hxx`:104 - `StepAP242_ItemIdentifiedRepresentationUsageDefinition::AppliedSecurityClassificationAssignment()`
     /// returns Value as a AppliedSecurityClassificationAssignment (Null if another type)
     pub fn applied_security_classification_assignment(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStepAP214AppliedSecurityClassificationAssignment>
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_StepAP214_AppliedSecurityClassificationAssignment>
     {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::StepAP242_ItemIdentifiedRepresentationUsageDefinition_applied_security_classification_assignment(self as *const Self)))
         }
     }
 
-    /// **Source:** `StepAP242_ItemIdentifiedRepresentationUsageDefinition.hxx`:106 - `StepAP242_ItemIdentifiedRepresentationUsageDefinition::DimensionalSize()`
+    /// **Source:** `StepAP242_ItemIdentifiedRepresentationUsageDefinition.hxx`:107 - `StepAP242_ItemIdentifiedRepresentationUsageDefinition::DimensionalSize()`
     /// returns Value as a DimensionalSize (Null if another type)
     pub fn dimensional_size(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStepShapeDimensionalSize> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_StepShape_DimensionalSize> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::StepAP242_ItemIdentifiedRepresentationUsageDefinition_dimensional_size(self as *const Self)))
         }
     }
 
-    /// **Source:** `StepAP242_ItemIdentifiedRepresentationUsageDefinition.hxx`:109 - `StepAP242_ItemIdentifiedRepresentationUsageDefinition::GeneralProperty()`
+    /// **Source:** `StepAP242_ItemIdentifiedRepresentationUsageDefinition.hxx`:110 - `StepAP242_ItemIdentifiedRepresentationUsageDefinition::GeneralProperty()`
     /// returns Value as a GeneralProperty (Null if another type)
     pub fn general_property(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStepBasicGeneralProperty> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_StepBasic_GeneralProperty> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::StepAP242_ItemIdentifiedRepresentationUsageDefinition_general_property(self as *const Self)))
         }
     }
 
-    /// **Source:** `StepAP242_ItemIdentifiedRepresentationUsageDefinition.hxx`:112 - `StepAP242_ItemIdentifiedRepresentationUsageDefinition::GeometricTolerance()`
+    /// **Source:** `StepAP242_ItemIdentifiedRepresentationUsageDefinition.hxx`:113 - `StepAP242_ItemIdentifiedRepresentationUsageDefinition::GeometricTolerance()`
     /// returns Value as a GeometricTolerance (Null if another type)
     pub fn geometric_tolerance(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStepDimTolGeometricTolerance> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_StepDimTol_GeometricTolerance> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::StepAP242_ItemIdentifiedRepresentationUsageDefinition_geometric_tolerance(self as *const Self)))
         }
     }
 
-    /// **Source:** `StepAP242_ItemIdentifiedRepresentationUsageDefinition.hxx`:115 - `StepAP242_ItemIdentifiedRepresentationUsageDefinition::ProductDefinitionRelationship()`
+    /// **Source:** `StepAP242_ItemIdentifiedRepresentationUsageDefinition.hxx`:117 - `StepAP242_ItemIdentifiedRepresentationUsageDefinition::ProductDefinitionRelationship()`
     /// returns Value as a ProductDefinitionRelationship (Null if another type)
     pub fn product_definition_relationship(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStepBasicProductDefinitionRelationship> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_StepBasic_ProductDefinitionRelationship> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::StepAP242_ItemIdentifiedRepresentationUsageDefinition_product_definition_relationship(self as *const Self)))
         }
     }
 
-    /// **Source:** `StepAP242_ItemIdentifiedRepresentationUsageDefinition.hxx`:119 - `StepAP242_ItemIdentifiedRepresentationUsageDefinition::PropertyDefinition()`
+    /// **Source:** `StepAP242_ItemIdentifiedRepresentationUsageDefinition.hxx`:120 - `StepAP242_ItemIdentifiedRepresentationUsageDefinition::PropertyDefinition()`
     /// returns Value as a PropertyDefinition (Null if another type)
     pub fn property_definition(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStepReprPropertyDefinition> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_StepRepr_PropertyDefinition> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::StepAP242_ItemIdentifiedRepresentationUsageDefinition_property_definition(self as *const Self)))
         }
     }
 
-    /// **Source:** `StepAP242_ItemIdentifiedRepresentationUsageDefinition.hxx`:122 - `StepAP242_ItemIdentifiedRepresentationUsageDefinition::PropertyDefinitionRelationship()`
+    /// **Source:** `StepAP242_ItemIdentifiedRepresentationUsageDefinition.hxx`:124 - `StepAP242_ItemIdentifiedRepresentationUsageDefinition::PropertyDefinitionRelationship()`
     /// returns Value as a PropertyDefinitionRelationship (Null if another type)
     pub fn property_definition_relationship(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStepReprPropertyDefinitionRelationship> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_StepRepr_PropertyDefinitionRelationship> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::StepAP242_ItemIdentifiedRepresentationUsageDefinition_property_definition_relationship(self as *const Self)))
         }
     }
 
-    /// **Source:** `StepAP242_ItemIdentifiedRepresentationUsageDefinition.hxx`:126 - `StepAP242_ItemIdentifiedRepresentationUsageDefinition::ShapeAspect()`
+    /// **Source:** `StepAP242_ItemIdentifiedRepresentationUsageDefinition.hxx`:127 - `StepAP242_ItemIdentifiedRepresentationUsageDefinition::ShapeAspect()`
     /// returns Value as a ShapeAspect (Null if another type)
-    pub fn shape_aspect(&self) -> crate::OwnedPtr<crate::ffi_types::HandleStepReprShapeAspect> {
+    pub fn shape_aspect(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_StepRepr_ShapeAspect> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::StepAP242_ItemIdentifiedRepresentationUsageDefinition_shape_aspect(self as *const Self)))
         }
     }
 
-    /// **Source:** `StepAP242_ItemIdentifiedRepresentationUsageDefinition.hxx`:129 - `StepAP242_ItemIdentifiedRepresentationUsageDefinition::ShapeAspectRelationship()`
+    /// **Source:** `StepAP242_ItemIdentifiedRepresentationUsageDefinition.hxx`:130 - `StepAP242_ItemIdentifiedRepresentationUsageDefinition::ShapeAspectRelationship()`
     /// returns Value as a ShapeAspectRelationship (Null if another type)
     pub fn shape_aspect_relationship(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStepReprShapeAspectRelationship> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_StepRepr_ShapeAspectRelationship> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::StepAP242_ItemIdentifiedRepresentationUsageDefinition_shape_aspect_relationship(self as *const Self)))
         }
@@ -2075,14 +2078,14 @@ impl ItemIdentifiedRepresentationUsageDefinition {
     }
 
     /// Inherited: **Source:** `StepData_SelectType.hxx`:64 - `StepData_SelectType::Matches()`
-    pub fn matches(&self, ent: &crate::ffi_types::HandleStandardTransient) -> bool {
+    pub fn matches(&self, ent: &crate::ffi_types::Handle_Standard_Transient) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepAP242_ItemIdentifiedRepresentationUsageDefinition_inherited_Matches(self as *const Self, ent)
         })
     }
 
     /// Inherited: **Source:** `StepData_SelectType.hxx`:69 - `StepData_SelectType::SetValue()`
-    pub fn set_value(&mut self, ent: &crate::ffi_types::HandleStandardTransient) {
+    pub fn set_value(&mut self, ent: &crate::ffi_types::Handle_Standard_Transient) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepAP242_ItemIdentifiedRepresentationUsageDefinition_inherited_SetValue(self as *mut Self, ent)
         })
@@ -2096,7 +2099,7 @@ impl ItemIdentifiedRepresentationUsageDefinition {
     }
 
     /// Inherited: **Source:** `StepData_SelectType.hxx`:76 - `StepData_SelectType::Value()`
-    pub fn value(&self) -> &crate::ffi_types::HandleStandardTransient {
+    pub fn value(&self) -> &crate::ffi_types::Handle_Standard_Transient {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKDESTEP::StepAP242_ItemIdentifiedRepresentationUsageDefinition_inherited_Value(self as *const Self)))
         }
@@ -2110,7 +2113,7 @@ impl ItemIdentifiedRepresentationUsageDefinition {
     }
 
     /// Inherited: **Source:** `StepData_SelectType.hxx`:83 - `StepData_SelectType::Type()`
-    pub fn type_(&self) -> crate::OwnedPtr<crate::ffi_types::HandleStandardType> {
+    pub fn type_(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Type> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::StepAP242_ItemIdentifiedRepresentationUsageDefinition_inherited_Type(self as *const Self)))
         }
@@ -2124,21 +2127,21 @@ impl ItemIdentifiedRepresentationUsageDefinition {
     }
 
     /// Inherited: **Source:** `StepData_SelectType.hxx`:94 - `StepData_SelectType::Description()`
-    pub fn description(&self) -> crate::OwnedPtr<crate::ffi_types::HandleStepDataPDescr> {
+    pub fn description(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_StepData_PDescr> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::StepAP242_ItemIdentifiedRepresentationUsageDefinition_inherited_Description(self as *const Self)))
         }
     }
 
     /// Inherited: **Source:** `StepData_SelectType.hxx`:104 - `StepData_SelectType::NewMember()`
-    pub fn new_member(&self) -> crate::OwnedPtr<crate::ffi_types::HandleStepDataSelectMember> {
+    pub fn new_member(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_StepData_SelectMember> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::StepAP242_ItemIdentifiedRepresentationUsageDefinition_inherited_NewMember(self as *const Self)))
         }
     }
 
     /// Inherited: **Source:** `StepData_SelectType.hxx`:111 - `StepData_SelectType::CaseMem()`
-    pub fn case_mem(&self, ent: &crate::ffi_types::HandleStepDataSelectMember) -> i32 {
+    pub fn case_mem(&self, ent: &crate::ffi_types::Handle_StepData_SelectMember) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepAP242_ItemIdentifiedRepresentationUsageDefinition_inherited_CaseMem(self as *const Self, ent)
         })
@@ -2152,7 +2155,7 @@ impl ItemIdentifiedRepresentationUsageDefinition {
     }
 
     /// Inherited: **Source:** `StepData_SelectType.hxx`:118 - `StepData_SelectType::Member()`
-    pub fn member(&self) -> crate::OwnedPtr<crate::ffi_types::HandleStepDataSelectMember> {
+    pub fn member(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_StepData_SelectMember> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::StepAP242_ItemIdentifiedRepresentationUsageDefinition_inherited_Member(self as *const Self)))
         }

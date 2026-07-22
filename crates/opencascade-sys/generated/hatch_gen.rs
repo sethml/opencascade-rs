@@ -656,7 +656,7 @@ impl PointOnElement {
 // From HatchGen_PointOnHatching.hxx
 // ========================
 
-/// **Source:** `HatchGen_PointOnHatching.hxx`:30 - `HatchGen_PointOnHatching`
+/// **Source:** `HatchGen_PointOnHatching.hxx`:31 - `HatchGen_PointOnHatching`
 pub use crate::ffi_types::HatchGen_PointOnHatching as PointOnHatching;
 
 unsafe impl crate::CppDeletable for PointOnHatching {
@@ -668,7 +668,7 @@ unsafe impl crate::CppDeletable for PointOnHatching {
 }
 
 impl PointOnHatching {
-    /// **Source:** `HatchGen_PointOnHatching.hxx`:36 - `HatchGen_PointOnHatching::HatchGen_PointOnHatching()`
+    /// **Source:** `HatchGen_PointOnHatching.hxx`:37 - `HatchGen_PointOnHatching::HatchGen_PointOnHatching()`
     /// Creates an empty point.
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
@@ -678,7 +678,7 @@ impl PointOnHatching {
         }
     }
 
-    /// **Source:** `HatchGen_PointOnHatching.hxx`:39 - `HatchGen_PointOnHatching::HatchGen_PointOnHatching()`
+    /// **Source:** `HatchGen_PointOnHatching.hxx`:40 - `HatchGen_PointOnHatching::HatchGen_PointOnHatching()`
     /// Creates a point from an intersection point.
     pub fn new_intersectionpoint(
         Point: &crate::int_res2d::IntersectionPoint,
@@ -692,7 +692,7 @@ impl PointOnHatching {
         }
     }
 
-    /// **Source:** `HatchGen_PointOnHatching.hxx`:42 - `HatchGen_PointOnHatching::AddPoint()`
+    /// **Source:** `HatchGen_PointOnHatching.hxx`:43 - `HatchGen_PointOnHatching::AddPoint()`
     /// Adds a point on element to the point.
     pub fn add_point(&mut self, Point: &PointOnElement, Confusion: f64) {
         crate::check_void_result(unsafe {
@@ -762,9 +762,9 @@ impl PointOnHatching {
         })
     }
 
-    /// **Source:** `HatchGen_PointOnHatching.hxx`:73 - `HatchGen_PointOnHatching::IsEqual()`
-    /// Tests if the  point is equal to an other.
-    /// A  point on hatching P1 is said to be equal to an
+    /// **Source:** `HatchGen_PointOnHatching.hxx`:72 - `HatchGen_PointOnHatching::IsEqual()`
+    /// Tests if the point is equal to an other.
+    /// A point on hatching P1 is said to be equal to an
     /// other P2 if :
     /// | P2.myParam - P1.myParam | <= Confusion
     pub fn is_equal(&self, Point: &PointOnHatching, Confusion: f64) -> bool {
@@ -777,7 +777,7 @@ impl PointOnHatching {
         })
     }
 
-    /// **Source:** `HatchGen_PointOnHatching.hxx`:80 - `HatchGen_PointOnHatching::IsGreater()`
+    /// **Source:** `HatchGen_PointOnHatching.hxx`:78 - `HatchGen_PointOnHatching::IsGreater()`
     /// Tests if the point is greater than an other.
     /// A point on hatching P1 is said to be greater than an
     /// other P2 if :
@@ -792,7 +792,7 @@ impl PointOnHatching {
         })
     }
 
-    /// **Source:** `HatchGen_PointOnHatching.hxx`:84 - `HatchGen_PointOnHatching::Dump()`
+    /// **Source:** `HatchGen_PointOnHatching.hxx`:82 - `HatchGen_PointOnHatching::Dump()`
     /// Dump of the point.
     pub fn dump(&self, Index: i32) {
         crate::check_void_result(unsafe {

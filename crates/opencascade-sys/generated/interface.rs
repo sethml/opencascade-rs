@@ -7,9 +7,13 @@
 #![allow(non_snake_case)]
 
 /// Classifies checks
-/// OK : check is empty  Warning : Warning, no Fail   Fail : Fail
-/// Others to query :
-/// Any : any status   Message : Warning/Fail  NoFail : Warning/OK
+/// OK     : check is empty
+/// Warning: Warning, no Fail
+/// Fail   : Fail
+/// Others to query:
+/// Any    : any status
+/// Message: Warning/Fail
+/// NoFail : Warning/OK
 /// C++ enum: `Interface_CheckStatus`
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 #[repr(i32)]
@@ -127,34 +131,33 @@ impl TryFrom<i32> for ParamType {
 
 // Handle type re-exports (targets of handle upcasts/downcasts)
 pub use crate::ffi_types::{
-    HandleHeaderSectionProtocol, HandleIFSelectSignAncestor, HandleIFSelectSignCategory,
-    HandleIFSelectSignMultiple, HandleIFSelectSignType, HandleIFSelectSignValidity,
-    HandleIFSelectSignature, HandleIGESAppliGeneralModule, HandleIGESAppliProtocol,
-    HandleIGESAppliReadWriteModule, HandleIGESBasicGeneralModule, HandleIGESBasicProtocol,
-    HandleIGESBasicReadWriteModule, HandleIGESDataDefaultGeneral, HandleIGESDataFileProtocol,
-    HandleIGESDataIGESModel, HandleIGESDataIGESReaderData, HandleIGESDataProtocol,
-    HandleIGESDefsGeneralModule, HandleIGESDefsProtocol, HandleIGESDefsReadWriteModule,
-    HandleIGESDimenGeneralModule, HandleIGESDimenProtocol, HandleIGESDimenReadWriteModule,
-    HandleIGESDrawGeneralModule, HandleIGESDrawProtocol, HandleIGESDrawReadWriteModule,
-    HandleIGESGeomGeneralModule, HandleIGESGeomProtocol, HandleIGESGeomReadWriteModule,
-    HandleIGESGraphGeneralModule, HandleIGESGraphProtocol, HandleIGESGraphReadWriteModule,
-    HandleIGESSelectIGESName, HandleIGESSelectIGESTypeForm, HandleIGESSelectSignColor,
-    HandleIGESSelectSignLevelNumber, HandleIGESSelectSignStatus, HandleIGESSolidGeneralModule,
-    HandleIGESSolidProtocol, HandleIGESSolidReadWriteModule, HandleMoniToolSignText,
-    HandleMoniToolTypedValue, HandleRWHeaderSectionGeneralModule,
-    HandleRWHeaderSectionReadWriteModule, HandleSTEPSelectionsSelectDerived, HandleStandardFailure,
-    HandleStandardTransient, HandleStepAP214Protocol, HandleStepDataDefaultGeneral,
-    HandleStepDataFileProtocol, HandleStepDataProtocol, HandleStepDataStepModel,
-    HandleStepDataStepReaderData, HandleStepSelectStepType, HandleTransferDispatchControl,
-    HandleTransferTransferDeadLoop, HandleTransferTransferFailure,
-    HandleXSControlSignTransferStatus,
+    Handle_HeaderSection_Protocol, Handle_IFSelect_SignAncestor, Handle_IFSelect_SignCategory,
+    Handle_IFSelect_SignMultiple, Handle_IFSelect_SignType, Handle_IFSelect_SignValidity,
+    Handle_IFSelect_Signature, Handle_IGESAppli_GeneralModule, Handle_IGESAppli_Protocol,
+    Handle_IGESAppli_ReadWriteModule, Handle_IGESBasic_GeneralModule, Handle_IGESBasic_Protocol,
+    Handle_IGESBasic_ReadWriteModule, Handle_IGESData_DefaultGeneral, Handle_IGESData_FileProtocol,
+    Handle_IGESData_IGESModel, Handle_IGESData_IGESReaderData, Handle_IGESData_Protocol,
+    Handle_IGESDefs_GeneralModule, Handle_IGESDefs_Protocol, Handle_IGESDefs_ReadWriteModule,
+    Handle_IGESDimen_GeneralModule, Handle_IGESDimen_Protocol, Handle_IGESDimen_ReadWriteModule,
+    Handle_IGESDraw_GeneralModule, Handle_IGESDraw_Protocol, Handle_IGESDraw_ReadWriteModule,
+    Handle_IGESGeom_GeneralModule, Handle_IGESGeom_Protocol, Handle_IGESGeom_ReadWriteModule,
+    Handle_IGESGraph_GeneralModule, Handle_IGESGraph_Protocol, Handle_IGESGraph_ReadWriteModule,
+    Handle_IGESSelect_IGESName, Handle_IGESSelect_IGESTypeForm, Handle_IGESSelect_SignColor,
+    Handle_IGESSelect_SignLevelNumber, Handle_IGESSelect_SignStatus,
+    Handle_IGESSolid_GeneralModule, Handle_IGESSolid_Protocol, Handle_IGESSolid_ReadWriteModule,
+    Handle_MoniTool_SignText, Handle_MoniTool_TypedValue, Handle_RWHeaderSection_GeneralModule,
+    Handle_RWHeaderSection_ReadWriteModule, Handle_STEPSelections_SelectDerived,
+    Handle_Standard_Transient, Handle_StepAP214_Protocol, Handle_StepData_DefaultGeneral,
+    Handle_StepData_FileProtocol, Handle_StepData_Protocol, Handle_StepData_StepModel,
+    Handle_StepData_StepReaderData, Handle_StepSelect_StepType, Handle_Transfer_DispatchControl,
+    Handle_XSControl_SignTransferStatus,
 };
 
 // ========================
 // From Interface_BitMap.hxx
 // ========================
 
-/// **Source:** `Interface_BitMap.hxx`:40 - `Interface_BitMap`
+/// **Source:** `Interface_BitMap.hxx`:43 - `Interface_BitMap`
 /// A bit map simply allows to associate a boolean flag to each
 /// item of a list, such as a list of entities, etc... numbered
 /// between 1 and a positive count nbitems
@@ -194,7 +197,7 @@ impl std::borrow::ToOwned for BitMap {
 }
 
 impl BitMap {
-    /// **Source:** `Interface_BitMap.hxx`:46 - `Interface_BitMap::Interface_BitMap()`
+    /// **Source:** `Interface_BitMap.hxx`:49 - `Interface_BitMap::Interface_BitMap()`
     /// Creates a empty BitMap
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
@@ -204,7 +207,7 @@ impl BitMap {
         }
     }
 
-    /// **Source:** `Interface_BitMap.hxx`:52 - `Interface_BitMap::Interface_BitMap()`
+    /// **Source:** `Interface_BitMap.hxx`:55 - `Interface_BitMap::Interface_BitMap()`
     /// Creates a BitMap for <nbitems> items
     /// One flag is defined, n0 0
     /// <resflags> prepares allocation for <resflags> more flags
@@ -217,7 +220,7 @@ impl BitMap {
         }
     }
 
-    /// **Source:** `Interface_BitMap.hxx`:52 - `Interface_BitMap::Interface_BitMap()`
+    /// **Source:** `Interface_BitMap.hxx`:55 - `Interface_BitMap::Interface_BitMap()`
     /// Creates a BitMap for <nbitems> items
     /// One flag is defined, n0 0
     /// <resflags> prepares allocation for <resflags> more flags
@@ -226,7 +229,7 @@ impl BitMap {
         Self::new_int2(nbitems, 0)
     }
 
-    /// **Source:** `Interface_BitMap.hxx`:59 - `Interface_BitMap::Initialize()`
+    /// **Source:** `Interface_BitMap.hxx`:61 - `Interface_BitMap::Initialize()`
     /// Initialize empty bit by <nbitems> items
     /// One flag is defined, n0 0
     /// <resflags> prepares allocation for <resflags> more flags
@@ -253,7 +256,7 @@ impl BitMap {
         })
     }
 
-    /// **Source:** `Interface_BitMap.hxx`:73 - `Interface_BitMap::Reservate()`
+    /// **Source:** `Interface_BitMap.hxx`:72 - `Interface_BitMap::Reservate()`
     /// Reservates for a count of more flags
     pub fn reservate(&mut self, moreflags: i32) {
         crate::check_void_result(unsafe {
@@ -261,7 +264,7 @@ impl BitMap {
         })
     }
 
-    /// **Source:** `Interface_BitMap.hxx`:78 - `Interface_BitMap::SetLength()`
+    /// **Source:** `Interface_BitMap.hxx`:77 - `Interface_BitMap::SetLength()`
     /// Sets for a new count of items, which can be either less or
     /// greater than the former one
     /// For new items, their flags start at false
@@ -271,7 +274,7 @@ impl BitMap {
         })
     }
 
-    /// **Source:** `Interface_BitMap.hxx`:83 - `Interface_BitMap::AddFlag()`
+    /// **Source:** `Interface_BitMap.hxx`:82 - `Interface_BitMap::AddFlag()`
     /// Adds a flag, a name can be attached to it
     /// Returns its flag number
     /// Makes required reservation
@@ -285,7 +288,7 @@ impl BitMap {
         })
     }
 
-    /// **Source:** `Interface_BitMap.hxx`:87 - `Interface_BitMap::AddSomeFlags()`
+    /// **Source:** `Interface_BitMap.hxx`:86 - `Interface_BitMap::AddSomeFlags()`
     /// Adds several flags (<more>) with no name
     /// Returns the number of last added flag
     pub fn add_some_flags(&mut self, more: i32) -> i32 {
@@ -294,7 +297,7 @@ impl BitMap {
         })
     }
 
-    /// **Source:** `Interface_BitMap.hxx`:91 - `Interface_BitMap::RemoveFlag()`
+    /// **Source:** `Interface_BitMap.hxx`:90 - `Interface_BitMap::RemoveFlag()`
     /// Removes a flag given its number.
     /// Returns True if done, false if num is out of range
     pub fn remove_flag(&mut self, num: i32) -> bool {
@@ -303,7 +306,7 @@ impl BitMap {
         })
     }
 
-    /// **Source:** `Interface_BitMap.hxx`:97 - `Interface_BitMap::SetFlagName()`
+    /// **Source:** `Interface_BitMap.hxx`:96 - `Interface_BitMap::SetFlagName()`
     /// Sets a name for a flag, given its number
     /// name can be empty (to erase the name of a flag)
     /// Returns True if done, false if : num is out of range, or
@@ -319,7 +322,7 @@ impl BitMap {
         })
     }
 
-    /// **Source:** `Interface_BitMap.hxx`:101 - `Interface_BitMap::NbFlags()`
+    /// **Source:** `Interface_BitMap.hxx`:99 - `Interface_BitMap::NbFlags()`
     /// Returns the count of flags (flag 0 not included)
     pub fn nb_flags(&self) -> i32 {
         crate::check_result(unsafe {
@@ -327,7 +330,7 @@ impl BitMap {
         })
     }
 
-    /// **Source:** `Interface_BitMap.hxx`:104 - `Interface_BitMap::Length()`
+    /// **Source:** `Interface_BitMap.hxx`:102 - `Interface_BitMap::Length()`
     /// Returns the count of items (i.e. the length of the bitmap)
     pub fn length(&self) -> i32 {
         crate::check_result(unsafe {
@@ -335,7 +338,7 @@ impl BitMap {
         })
     }
 
-    /// **Source:** `Interface_BitMap.hxx`:107 - `Interface_BitMap::FlagName()`
+    /// **Source:** `Interface_BitMap.hxx`:105 - `Interface_BitMap::FlagName()`
     /// Returns the name recorded for a flag, or an empty string
     pub fn flag_name(&self, num: i32) -> std::string::String {
         unsafe {
@@ -347,7 +350,7 @@ impl BitMap {
         .into_owned()
     }
 
-    /// **Source:** `Interface_BitMap.hxx`:110 - `Interface_BitMap::FlagNumber()`
+    /// **Source:** `Interface_BitMap.hxx`:108 - `Interface_BitMap::FlagNumber()`
     /// Returns the number or a flag given its name, or zero
     pub fn flag_number(&self, name: &str) -> i32 {
         let c_name = std::ffi::CString::new(name).unwrap();
@@ -359,7 +362,7 @@ impl BitMap {
         })
     }
 
-    /// **Source:** `Interface_BitMap.hxx`:115 - `Interface_BitMap::Value()`
+    /// **Source:** `Interface_BitMap.hxx`:113 - `Interface_BitMap::Value()`
     /// Returns the value (true/false) of a flag, from :
     /// - the number of the item
     /// - the flag number, by default 0
@@ -369,7 +372,7 @@ impl BitMap {
         })
     }
 
-    /// **Source:** `Interface_BitMap.hxx`:119 - `Interface_BitMap::SetValue()`
+    /// **Source:** `Interface_BitMap.hxx`:116 - `Interface_BitMap::SetValue()`
     /// Sets a new value for a flag
     pub fn set_value(&self, item: i32, val: bool, flag: i32) {
         crate::check_void_result(unsafe {
@@ -382,7 +385,7 @@ impl BitMap {
         })
     }
 
-    /// **Source:** `Interface_BitMap.hxx`:124 - `Interface_BitMap::SetTrue()`
+    /// **Source:** `Interface_BitMap.hxx`:119 - `Interface_BitMap::SetTrue()`
     /// Sets a flag to True
     pub fn set_true(&self, item: i32, flag: i32) {
         crate::check_void_result(unsafe {
@@ -390,7 +393,7 @@ impl BitMap {
         })
     }
 
-    /// **Source:** `Interface_BitMap.hxx`:127 - `Interface_BitMap::SetFalse()`
+    /// **Source:** `Interface_BitMap.hxx`:122 - `Interface_BitMap::SetFalse()`
     /// Sets a flag to False
     pub fn set_false(&self, item: i32, flag: i32) {
         crate::check_void_result(unsafe {
@@ -398,7 +401,7 @@ impl BitMap {
         })
     }
 
-    /// **Source:** `Interface_BitMap.hxx`:131 - `Interface_BitMap::CTrue()`
+    /// **Source:** `Interface_BitMap.hxx`:126 - `Interface_BitMap::CTrue()`
     /// Returns the former value for a flag and sets it to True
     /// (before : value returned; after : True)
     pub fn c_true(&self, item: i32, flag: i32) -> bool {
@@ -407,7 +410,7 @@ impl BitMap {
         })
     }
 
-    /// **Source:** `Interface_BitMap.hxx`:136 - `Interface_BitMap::CFalse()`
+    /// **Source:** `Interface_BitMap.hxx`:130 - `Interface_BitMap::CFalse()`
     /// Returns the former value for a flag and sets it to False
     /// (before : value returned; after : False)
     pub fn c_false(&self, item: i32, flag: i32) -> bool {
@@ -416,7 +419,7 @@ impl BitMap {
         })
     }
 
-    /// **Source:** `Interface_BitMap.hxx`:141 - `Interface_BitMap::Init()`
+    /// **Source:** `Interface_BitMap.hxx`:134 - `Interface_BitMap::Init()`
     /// Initialises all the values of Flag Number <flag> to a given
     /// value <val>
     pub fn init(&self, val: bool, flag: i32) {
@@ -425,7 +428,7 @@ impl BitMap {
         })
     }
 
-    /// **Source:** `Interface_BitMap.hxx`:144 - `Interface_BitMap::Clear()`
+    /// **Source:** `Interface_BitMap.hxx`:137 - `Interface_BitMap::Clear()`
     /// Clear all field of bit map
     pub fn clear(&mut self) {
         crate::check_void_result(unsafe {
@@ -438,7 +441,7 @@ impl BitMap {
 // From Interface_Category.hxx
 // ========================
 
-/// **Source:** `Interface_Category.hxx`:54 - `Interface_Category`
+/// **Source:** `Interface_Category.hxx`:55 - `Interface_Category`
 /// This class manages categories
 /// A category is defined by a name and a number, and can be
 /// seen as a way of rough classification, i.e. less precise than
@@ -451,10 +454,10 @@ impl BitMap {
 /// Drawing (Drawing, Views, Annotations, Pictures, Sketches ...)
 /// Structure (Component & Part, Groups & Patterns ...)
 /// Description (Meta-Data : Relations, Properties, Product ...)
-/// Auxiliary   (those which do not enter in the above list)
+/// Auxiliary (those which do not enter in the above list)
 /// and some dedicated categories
-/// FEA , Kinematics , Piping , etc...
-/// plus Professional  for other dedicated non-classed categories
+/// FEA, Kinematics, Piping, etc...
+/// plus Professional for other dedicated non-classed categories
 ///
 /// In addition, this class provides a way to compute then quickly
 /// query category numbers for an entire model.
@@ -471,7 +474,7 @@ unsafe impl crate::CppDeletable for Category {
 }
 
 impl Category {
-    /// **Source:** `Interface_Category.hxx`:60 - `Interface_Category::Interface_Category()`
+    /// **Source:** `Interface_Category.hxx`:61 - `Interface_Category::Interface_Category()`
     /// Creates a Category, with no protocol yet
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
@@ -481,10 +484,10 @@ impl Category {
         }
     }
 
-    /// **Source:** `Interface_Category.hxx`:67 - `Interface_Category::Interface_Category()`
+    /// **Source:** `Interface_Category.hxx`:68 - `Interface_Category::Interface_Category()`
     /// Creates a Category with a given protocol
     pub fn new_handleinterfaceprotocol(
-        theProtocol: &crate::ffi_types::HandleInterfaceProtocol,
+        theProtocol: &crate::ffi_types::Handle_Interface_Protocol,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -495,10 +498,10 @@ impl Category {
         }
     }
 
-    /// **Source:** `Interface_Category.hxx`:74 - `Interface_Category::Interface_Category()`
+    /// **Source:** `Interface_Category.hxx`:75 - `Interface_Category::Interface_Category()`
     /// Creates a Category with a given GTool
     pub fn new_handleinterfacegtool(
-        theGTool: &crate::ffi_types::HandleInterfaceGTool,
+        theGTool: &crate::ffi_types::Handle_Interface_GTool,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -507,9 +510,9 @@ impl Category {
         }
     }
 
-    /// **Source:** `Interface_Category.hxx`:81 - `Interface_Category::SetProtocol()`
+    /// **Source:** `Interface_Category.hxx`:82 - `Interface_Category::SetProtocol()`
     /// Sets/Changes Protocol
-    pub fn set_protocol(&mut self, theProtocol: &crate::ffi_types::HandleInterfaceProtocol) {
+    pub fn set_protocol(&mut self, theProtocol: &crate::ffi_types::Handle_Interface_Protocol) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_Category_set_protocol(
                 self as *mut Self,
@@ -518,12 +521,12 @@ impl Category {
         })
     }
 
-    /// **Source:** `Interface_Category.hxx`:88 - `Interface_Category::CatNum()`
+    /// **Source:** `Interface_Category.hxx`:89 - `Interface_Category::CatNum()`
     /// Determines the Category Number for an entity in its context,
     /// by using general service CategoryNumber
     pub fn cat_num(
         &mut self,
-        theEnt: &crate::ffi_types::HandleStandardTransient,
+        theEnt: &crate::ffi_types::Handle_Standard_Transient,
         theShares: &ShareTool,
     ) -> i32 {
         crate::check_result(unsafe {
@@ -535,7 +538,7 @@ impl Category {
         })
     }
 
-    /// **Source:** `Interface_Category.hxx`:92 - `Interface_Category::ClearNums()`
+    /// **Source:** `Interface_Category.hxx`:93 - `Interface_Category::ClearNums()`
     /// Clears the recorded list of category numbers for a Model
     pub fn clear_nums(&mut self) {
         crate::check_void_result(unsafe {
@@ -543,7 +546,7 @@ impl Category {
         })
     }
 
-    /// **Source:** `Interface_Category.hxx`:99 - `Interface_Category::Compute()`
+    /// **Source:** `Interface_Category.hxx`:100 - `Interface_Category::Compute()`
     /// Computes the Category Number for each entity and records it,
     /// in an array (ent.number -> category number)
     /// Hence, it can be queried by the method Num.
@@ -551,7 +554,7 @@ impl Category {
     /// be used in a wider context (which detains also a Graph, etc)
     pub fn compute(
         &mut self,
-        theModel: &crate::ffi_types::HandleInterfaceInterfaceModel,
+        theModel: &crate::ffi_types::Handle_Interface_InterfaceModel,
         theShares: &ShareTool,
     ) {
         crate::check_void_result(unsafe {
@@ -563,7 +566,7 @@ impl Category {
         })
     }
 
-    /// **Source:** `Interface_Category.hxx`:104 - `Interface_Category::Num()`
+    /// **Source:** `Interface_Category.hxx`:105 - `Interface_Category::Num()`
     /// Returns the category number recorded for an entity number
     /// Returns 0 if out of range
     pub fn num(&self, theNumEnt: i32) -> i32 {
@@ -572,7 +575,7 @@ impl Category {
         })
     }
 
-    /// **Source:** `Interface_Category.hxx`:108 - `Interface_Category::AddCategory()`
+    /// **Source:** `Interface_Category.hxx`:109 - `Interface_Category::AddCategory()`
     /// Records a new Category defined by its names, produces a number
     /// New if not yet recorded
     pub fn add_category(theName: &str) -> i32 {
@@ -582,7 +585,7 @@ impl Category {
         })
     }
 
-    /// **Source:** `Interface_Category.hxx`:111 - `Interface_Category::NbCategories()`
+    /// **Source:** `Interface_Category.hxx`:112 - `Interface_Category::NbCategories()`
     /// Returns the count of recorded categories
     pub fn nb_categories() -> i32 {
         crate::check_result(unsafe {
@@ -590,7 +593,7 @@ impl Category {
         })
     }
 
-    /// **Source:** `Interface_Category.hxx`:114 - `Interface_Category::Name()`
+    /// **Source:** `Interface_Category.hxx`:115 - `Interface_Category::Name()`
     /// Returns the name of a category, according to its number
     pub fn name(theNum: i32) -> std::string::String {
         unsafe {
@@ -602,7 +605,7 @@ impl Category {
         .into_owned()
     }
 
-    /// **Source:** `Interface_Category.hxx`:117 - `Interface_Category::Number()`
+    /// **Source:** `Interface_Category.hxx`:118 - `Interface_Category::Number()`
     /// Returns the number of a category, according to its name
     pub fn number(theName: &str) -> i32 {
         let c_theName = std::ffi::CString::new(theName).unwrap();
@@ -611,7 +614,7 @@ impl Category {
         })
     }
 
-    /// **Source:** `Interface_Category.hxx`:121 - `Interface_Category::Init()`
+    /// **Source:** `Interface_Category.hxx`:122 - `Interface_Category::Init()`
     /// Default initialisation
     /// (protected against several calls : passes only once)
     pub fn init() {
@@ -623,7 +626,7 @@ impl Category {
 // From Interface_Check.hxx
 // ========================
 
-/// **Source:** `Interface_Check.hxx`:48 - `Interface_Check`
+/// **Source:** `Interface_Check.hxx`:47 - `Interface_Check`
 /// Defines a Check, as a list of Fail or Warning Messages under
 /// a literal form, which can be empty. A Check can also bring an
 /// Entity, which is the Entity to which the messages apply
@@ -646,7 +649,7 @@ unsafe impl crate::CppDeletable for Check {
 }
 
 impl Check {
-    /// **Source:** `Interface_Check.hxx`:54 - `Interface_Check::Interface_Check()`
+    /// **Source:** `Interface_Check.hxx`:53 - `Interface_Check::Interface_Check()`
     /// Allows definition of a Sequence. Used also for Global Check
     /// of an InterfaceModel (which stores global messages for file)
     pub fn new() -> crate::OwnedPtr<Self> {
@@ -657,10 +660,10 @@ impl Check {
         }
     }
 
-    /// **Source:** `Interface_Check.hxx`:57 - `Interface_Check::Interface_Check()`
+    /// **Source:** `Interface_Check.hxx`:56 - `Interface_Check::Interface_Check()`
     /// Defines a Check on an Entity
     pub fn new_handlestandardtransient(
-        anentity: &crate::ffi_types::HandleStandardTransient,
+        anentity: &crate::ffi_types::Handle_Standard_Transient,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -669,7 +672,7 @@ impl Check {
         }
     }
 
-    /// **Source:** `Interface_Check.hxx`:60 - `Interface_Check::SendFail()`
+    /// **Source:** `Interface_Check.hxx`:59 - `Interface_Check::SendFail()`
     /// New name for AddFail (Msg)
     pub fn send_fail(&mut self, amsg: &crate::message::Msg) {
         crate::check_void_result(unsafe {
@@ -677,11 +680,11 @@ impl Check {
         })
     }
 
-    /// **Source:** `Interface_Check.hxx`:63 - `Interface_Check::AddFail()`
+    /// **Source:** `Interface_Check.hxx`:62 - `Interface_Check::AddFail()`
     /// Records a new Fail message
     pub fn add_fail_handletcollectionhasciistring(
         &mut self,
-        amess: &crate::ffi_types::HandleTCollectionHAsciiString,
+        amess: &crate::ffi_types::Handle_TCollection_HAsciiString,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_Check_add_fail_handletcollectionhasciistring(
@@ -691,12 +694,12 @@ impl Check {
         })
     }
 
-    /// **Source:** `Interface_Check.hxx`:66 - `Interface_Check::AddFail()`
+    /// **Source:** `Interface_Check.hxx`:65 - `Interface_Check::AddFail()`
     /// Records a new Fail message under two forms : final,original
     pub fn add_fail_handletcollectionhasciistring2(
         &mut self,
-        amess: &crate::ffi_types::HandleTCollectionHAsciiString,
-        orig: &crate::ffi_types::HandleTCollectionHAsciiString,
+        amess: &crate::ffi_types::Handle_TCollection_HAsciiString,
+        orig: &crate::ffi_types::Handle_TCollection_HAsciiString,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_Check_add_fail_handletcollectionhasciistring2(
@@ -707,7 +710,7 @@ impl Check {
         })
     }
 
-    /// **Source:** `Interface_Check.hxx`:72 - `Interface_Check::AddFail()`
+    /// **Source:** `Interface_Check.hxx`:71 - `Interface_Check::AddFail()`
     /// Records a new Fail message given as "error text" directly
     /// If <orig> is given, a distinct original form is recorded
     /// else (D), the original form equates <amess>
@@ -723,7 +726,7 @@ impl Check {
         })
     }
 
-    /// **Source:** `Interface_Check.hxx`:75 - `Interface_Check::AddFail()`
+    /// **Source:** `Interface_Check.hxx`:74 - `Interface_Check::AddFail()`
     /// Records a new Fail from the definition of a Msg (Original+Value)
     pub fn add_fail_msg(&mut self, amsg: &crate::message::Msg) {
         crate::check_void_result(unsafe {
@@ -731,7 +734,7 @@ impl Check {
         })
     }
 
-    /// **Source:** `Interface_Check.hxx`:78 - `Interface_Check::HasFailed()`
+    /// **Source:** `Interface_Check.hxx`:77 - `Interface_Check::HasFailed()`
     /// Returns True if Check brings at least one Fail Message
     pub fn has_failed(&self) -> bool {
         crate::check_result(unsafe {
@@ -739,7 +742,7 @@ impl Check {
         })
     }
 
-    /// **Source:** `Interface_Check.hxx`:81 - `Interface_Check::NbFails()`
+    /// **Source:** `Interface_Check.hxx`:80 - `Interface_Check::NbFails()`
     /// Returns count of recorded Fails
     pub fn nb_fails(&self) -> i32 {
         crate::check_result(unsafe {
@@ -747,10 +750,14 @@ impl Check {
         })
     }
 
-    /// **Source:** `Interface_Check.hxx`:85 - `Interface_Check::Fail()`
+    /// **Source:** `Interface_Check.hxx`:84 - `Interface_Check::Fail()`
     /// Returns Fail Message as a String
     /// Final form by default, Original form if <final> is False
-    pub fn fail(&self, num: i32, final_: bool) -> &crate::ffi_types::HandleTCollectionHAsciiString {
+    pub fn fail(
+        &self,
+        num: i32,
+        final_: bool,
+    ) -> &crate::ffi_types::Handle_TCollection_HAsciiString {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKXSBase::Interface_Check_fail(
                 self as *const Self,
@@ -760,7 +767,7 @@ impl Check {
         }
     }
 
-    /// **Source:** `Interface_Check.hxx`:91 - `Interface_Check::CFail()`
+    /// **Source:** `Interface_Check.hxx`:89 - `Interface_Check::CFail()`
     /// Same as above, but returns a CString (to be printed ...)
     /// Final form by default, Original form if <final> is False
     pub fn c_fail(&self, num: i32, final_: bool) -> std::string::String {
@@ -777,14 +784,16 @@ impl Check {
         .into_owned()
     }
 
-    /// **Source:** `Interface_Check.hxx`:97 - `Interface_Check::Fails()`
+    /// **Source:** `Interface_Check.hxx`:94 - `Interface_Check::Fails()`
     /// Returns the list of Fails, for a frontal-engine logic
     /// Final forms by default, Original forms if <final> is False
     /// Can be empty
     pub fn fails(
         &self,
         final_: bool,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleTColStdHSequenceOfHAsciiString> {
+    ) -> crate::OwnedPtr<
+        crate::ffi_types::Handle_NCollection_HSequence_opencascade_handle_TCollection_HAsciiString,
+    > {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKXSBase::Interface_Check_fails(self as *const Self, final_),
@@ -792,7 +801,7 @@ impl Check {
         }
     }
 
-    /// **Source:** `Interface_Check.hxx`:101 - `Interface_Check::SendWarning()`
+    /// **Source:** `Interface_Check.hxx`:98 - `Interface_Check::SendWarning()`
     /// New name for AddWarning
     pub fn send_warning(&mut self, amsg: &crate::message::Msg) {
         crate::check_void_result(unsafe {
@@ -800,11 +809,11 @@ impl Check {
         })
     }
 
-    /// **Source:** `Interface_Check.hxx`:104 - `Interface_Check::AddWarning()`
+    /// **Source:** `Interface_Check.hxx`:101 - `Interface_Check::AddWarning()`
     /// Records a new Warning message
     pub fn add_warning_handletcollectionhasciistring(
         &mut self,
-        amess: &crate::ffi_types::HandleTCollectionHAsciiString,
+        amess: &crate::ffi_types::Handle_TCollection_HAsciiString,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_Check_add_warning_handletcollectionhasciistring(
@@ -814,12 +823,12 @@ impl Check {
         })
     }
 
-    /// **Source:** `Interface_Check.hxx`:107 - `Interface_Check::AddWarning()`
+    /// **Source:** `Interface_Check.hxx`:104 - `Interface_Check::AddWarning()`
     /// Records a new Warning message under two forms : final,original
     pub fn add_warning_handletcollectionhasciistring2(
         &mut self,
-        amess: &crate::ffi_types::HandleTCollectionHAsciiString,
-        orig: &crate::ffi_types::HandleTCollectionHAsciiString,
+        amess: &crate::ffi_types::Handle_TCollection_HAsciiString,
+        orig: &crate::ffi_types::Handle_TCollection_HAsciiString,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_Check_add_warning_handletcollectionhasciistring2(
@@ -830,7 +839,7 @@ impl Check {
         })
     }
 
-    /// **Source:** `Interface_Check.hxx`:113 - `Interface_Check::AddWarning()`
+    /// **Source:** `Interface_Check.hxx`:110 - `Interface_Check::AddWarning()`
     /// Records a Warning message given as "warning message" directly
     /// If <orig> is given, a distinct original form is recorded
     /// else (D), the original form equates <amess>
@@ -846,7 +855,7 @@ impl Check {
         })
     }
 
-    /// **Source:** `Interface_Check.hxx`:116 - `Interface_Check::AddWarning()`
+    /// **Source:** `Interface_Check.hxx`:113 - `Interface_Check::AddWarning()`
     /// Records a new Warning from the definition of a Msg (Original+Value)
     pub fn add_warning_msg(&mut self, amsg: &crate::message::Msg) {
         crate::check_void_result(unsafe {
@@ -854,7 +863,7 @@ impl Check {
         })
     }
 
-    /// **Source:** `Interface_Check.hxx`:119 - `Interface_Check::HasWarnings()`
+    /// **Source:** `Interface_Check.hxx`:116 - `Interface_Check::HasWarnings()`
     /// Returns True if Check brings at least one Warning Message
     pub fn has_warnings(&self) -> bool {
         crate::check_result(unsafe {
@@ -862,7 +871,7 @@ impl Check {
         })
     }
 
-    /// **Source:** `Interface_Check.hxx`:122 - `Interface_Check::NbWarnings()`
+    /// **Source:** `Interface_Check.hxx`:119 - `Interface_Check::NbWarnings()`
     /// Returns count of recorded Warning messages
     pub fn nb_warnings(&self) -> i32 {
         crate::check_result(unsafe {
@@ -870,14 +879,14 @@ impl Check {
         })
     }
 
-    /// **Source:** `Interface_Check.hxx`:126 - `Interface_Check::Warning()`
+    /// **Source:** `Interface_Check.hxx`:123 - `Interface_Check::Warning()`
     /// Returns Warning message as a String
     /// Final form by default, Original form if <final> is False
     pub fn warning(
         &self,
         num: i32,
         final_: bool,
-    ) -> &crate::ffi_types::HandleTCollectionHAsciiString {
+    ) -> &crate::ffi_types::Handle_TCollection_HAsciiString {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKXSBase::Interface_Check_warning(
                 self as *const Self,
@@ -887,7 +896,7 @@ impl Check {
         }
     }
 
-    /// **Source:** `Interface_Check.hxx`:132 - `Interface_Check::CWarning()`
+    /// **Source:** `Interface_Check.hxx`:129 - `Interface_Check::CWarning()`
     /// Same as above, but returns a CString (to be printed ...)
     /// Final form by default, Original form if <final> is False
     pub fn c_warning(&self, num: i32, final_: bool) -> std::string::String {
@@ -904,14 +913,16 @@ impl Check {
         .into_owned()
     }
 
-    /// **Source:** `Interface_Check.hxx`:138 - `Interface_Check::Warnings()`
+    /// **Source:** `Interface_Check.hxx`:135 - `Interface_Check::Warnings()`
     /// Returns the list of Warnings, for a frontal-engine logic
     /// Final forms by default, Original forms if <final> is False
     /// Can be empty
     pub fn warnings(
         &self,
         final_: bool,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleTColStdHSequenceOfHAsciiString> {
+    ) -> crate::OwnedPtr<
+        crate::ffi_types::Handle_NCollection_HSequence_opencascade_handle_TCollection_HAsciiString,
+    > {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKXSBase::Interface_Check_warnings(self as *const Self, final_),
@@ -919,7 +930,7 @@ impl Check {
         }
     }
 
-    /// **Source:** `Interface_Check.hxx`:143 - `Interface_Check::SendMsg()`
+    /// **Source:** `Interface_Check.hxx`:139 - `Interface_Check::SendMsg()`
     /// Records an information message
     /// This does not change the status of the Check
     pub fn send_msg(&mut self, amsg: &crate::message::Msg) {
@@ -928,7 +939,7 @@ impl Check {
         })
     }
 
-    /// **Source:** `Interface_Check.hxx`:146 - `Interface_Check::NbInfoMsgs()`
+    /// **Source:** `Interface_Check.hxx`:142 - `Interface_Check::NbInfoMsgs()`
     /// Returns the count of recorded information messages
     pub fn nb_info_msgs(&self) -> i32 {
         crate::check_result(unsafe {
@@ -936,13 +947,13 @@ impl Check {
         })
     }
 
-    /// **Source:** `Interface_Check.hxx`:149 - `Interface_Check::InfoMsg()`
+    /// **Source:** `Interface_Check.hxx`:145 - `Interface_Check::InfoMsg()`
     /// Returns information message as a String
     pub fn info_msg(
         &self,
         num: i32,
         final_: bool,
-    ) -> &crate::ffi_types::HandleTCollectionHAsciiString {
+    ) -> &crate::ffi_types::Handle_TCollection_HAsciiString {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKXSBase::Interface_Check_info_msg(
                 self as *const Self,
@@ -952,7 +963,7 @@ impl Check {
         }
     }
 
-    /// **Source:** `Interface_Check.hxx`:155 - `Interface_Check::CInfoMsg()`
+    /// **Source:** `Interface_Check.hxx`:151 - `Interface_Check::CInfoMsg()`
     /// Same as above, but returns a CString (to be printed ...)
     /// Final form by default, Original form if <final> is False
     pub fn c_info_msg(&self, num: i32, final_: bool) -> std::string::String {
@@ -969,14 +980,16 @@ impl Check {
         .into_owned()
     }
 
-    /// **Source:** `Interface_Check.hxx`:161 - `Interface_Check::InfoMsgs()`
+    /// **Source:** `Interface_Check.hxx`:157 - `Interface_Check::InfoMsgs()`
     /// Returns the list of Info Msg, for a frontal-engine logic
     /// Final forms by default, Original forms if <final> is False
     /// Can be empty
     pub fn info_msgs(
         &self,
         final_: bool,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleTColStdHSequenceOfHAsciiString> {
+    ) -> crate::OwnedPtr<
+        crate::ffi_types::Handle_NCollection_HSequence_opencascade_handle_TCollection_HAsciiString,
+    > {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKXSBase::Interface_Check_info_msgs(self as *const Self, final_),
@@ -984,7 +997,7 @@ impl Check {
         }
     }
 
-    /// **Source:** `Interface_Check.hxx`:165 - `Interface_Check::Status()`
+    /// **Source:** `Interface_Check.hxx`:160 - `Interface_Check::Status()`
     /// Returns the Check Status : OK, Warning or Fail
     pub fn status(&self) -> crate::interface::CheckStatus {
         crate::interface::CheckStatus::try_from(crate::check_result(unsafe {
@@ -993,7 +1006,7 @@ impl Check {
         .unwrap()
     }
 
-    /// **Source:** `Interface_Check.hxx`:169 - `Interface_Check::Complies()`
+    /// **Source:** `Interface_Check.hxx`:164 - `Interface_Check::Complies()`
     /// Tells if Check Status complies with a given one
     /// (i.e. also status for query)
     pub fn complies_checkstatus(&self, status: crate::interface::CheckStatus) -> bool {
@@ -1005,7 +1018,7 @@ impl Check {
         })
     }
 
-    /// **Source:** `Interface_Check.hxx`:178 - `Interface_Check::Complies()`
+    /// **Source:** `Interface_Check.hxx`:173 - `Interface_Check::Complies()`
     /// Tells if a message is brought by a Check, as follows :
     /// <incl> = 0 : <mess> exactly matches one of the messages
     /// <incl> < 0 : <mess> is contained by one of the messages
@@ -1015,7 +1028,7 @@ impl Check {
     /// other values are ignored (answer will be false)
     pub fn complies_handletcollectionhasciistring_int_checkstatus(
         &self,
-        mess: &crate::ffi_types::HandleTCollectionHAsciiString,
+        mess: &crate::ffi_types::Handle_TCollection_HAsciiString,
         incl: i32,
         status: crate::interface::CheckStatus,
     ) -> bool {
@@ -1024,7 +1037,7 @@ impl Check {
         })
     }
 
-    /// **Source:** `Interface_Check.hxx`:184 - `Interface_Check::HasEntity()`
+    /// **Source:** `Interface_Check.hxx`:179 - `Interface_Check::HasEntity()`
     /// Returns True if a Check is devoted to an entity; else, it is
     /// global (for InterfaceModel's storing of global error messages)
     pub fn has_entity(&self) -> bool {
@@ -1033,9 +1046,9 @@ impl Check {
         })
     }
 
-    /// **Source:** `Interface_Check.hxx`:187 - `Interface_Check::Entity()`
+    /// **Source:** `Interface_Check.hxx`:182 - `Interface_Check::Entity()`
     /// Returns the entity on which the Check has been defined
-    pub fn entity(&self) -> &crate::ffi_types::HandleStandardTransient {
+    pub fn entity(&self) -> &crate::ffi_types::Handle_Standard_Transient {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKXSBase::Interface_Check_entity(
                 self as *const Self,
@@ -1043,7 +1056,7 @@ impl Check {
         }
     }
 
-    /// **Source:** `Interface_Check.hxx`:191 - `Interface_Check::Clear()`
+    /// **Source:** `Interface_Check.hxx`:186 - `Interface_Check::Clear()`
     /// Clears a check, in order to receive information from transfer
     /// (Messages and Entity)
     pub fn clear(&mut self) {
@@ -1052,7 +1065,7 @@ impl Check {
         })
     }
 
-    /// **Source:** `Interface_Check.hxx`:194 - `Interface_Check::ClearFails()`
+    /// **Source:** `Interface_Check.hxx`:189 - `Interface_Check::ClearFails()`
     /// Clears the Fail Messages (for instance to keep only Warnings)
     pub fn clear_fails(&mut self) {
         crate::check_void_result(unsafe {
@@ -1060,7 +1073,7 @@ impl Check {
         })
     }
 
-    /// **Source:** `Interface_Check.hxx`:197 - `Interface_Check::ClearWarnings()`
+    /// **Source:** `Interface_Check.hxx`:192 - `Interface_Check::ClearWarnings()`
     /// Clears the Warning Messages (for instance to keep only Fails)
     pub fn clear_warnings(&mut self) {
         crate::check_void_result(unsafe {
@@ -1068,7 +1081,7 @@ impl Check {
         })
     }
 
-    /// **Source:** `Interface_Check.hxx`:200 - `Interface_Check::ClearInfoMsgs()`
+    /// **Source:** `Interface_Check.hxx`:195 - `Interface_Check::ClearInfoMsgs()`
     /// Clears the Info Messages
     pub fn clear_info_msgs(&mut self) {
         crate::check_void_result(unsafe {
@@ -1076,7 +1089,7 @@ impl Check {
         })
     }
 
-    /// **Source:** `Interface_Check.hxx`:210 - `Interface_Check::Remove()`
+    /// **Source:** `Interface_Check.hxx`:205 - `Interface_Check::Remove()`
     /// Removes the messages which comply with <mess>, as follows :
     /// <incl> = 0 : <mess> exactly matches one of the messages
     /// <incl> < 0 : <mess> is contained by one of the messages
@@ -1087,7 +1100,7 @@ impl Check {
     /// Returns True if at least one message has been removed, False else
     pub fn remove(
         &mut self,
-        mess: &crate::ffi_types::HandleTCollectionHAsciiString,
+        mess: &crate::ffi_types::Handle_TCollection_HAsciiString,
         incl: i32,
         status: crate::interface::CheckStatus,
     ) -> bool {
@@ -1101,7 +1114,7 @@ impl Check {
         })
     }
 
-    /// **Source:** `Interface_Check.hxx`:225 - `Interface_Check::Mend()`
+    /// **Source:** `Interface_Check.hxx`:220 - `Interface_Check::Mend()`
     /// Mends messages, according <pref> and <num>
     /// According to <num>, works on the whole list of Fails if = 0(D)
     /// or only one Fail message, given its rank
@@ -1124,40 +1137,40 @@ impl Check {
         })
     }
 
-    /// **Source:** `Interface_Check.hxx`:229 - `Interface_Check::SetEntity()`
+    /// **Source:** `Interface_Check.hxx`:223 - `Interface_Check::SetEntity()`
     /// Receives an entity result of a Transfer
-    pub fn set_entity(&mut self, anentity: &crate::ffi_types::HandleStandardTransient) {
+    pub fn set_entity(&mut self, anentity: &crate::ffi_types::Handle_Standard_Transient) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_Check_set_entity(self as *mut Self, anentity)
         })
     }
 
-    /// **Source:** `Interface_Check.hxx`:233 - `Interface_Check::GetEntity()`
+    /// **Source:** `Interface_Check.hxx`:227 - `Interface_Check::GetEntity()`
     /// same as SetEntity (old form kept for compatibility)
     /// Warning : Does nothing if Entity field is not yet clear
-    pub fn get_entity(&mut self, anentity: &crate::ffi_types::HandleStandardTransient) {
+    pub fn get_entity(&mut self, anentity: &crate::ffi_types::Handle_Standard_Transient) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_Check_get_entity(self as *mut Self, anentity)
         })
     }
 
-    /// **Source:** `Interface_Check.hxx`:237 - `Interface_Check::GetMessages()`
+    /// **Source:** `Interface_Check.hxx`:231 - `Interface_Check::GetMessages()`
     /// Copies messages stored in another Check, cumulating
     /// Does not regard other's Entity. Used to cumulate messages
-    pub fn get_messages(&mut self, other: &crate::ffi_types::HandleInterfaceCheck) {
+    pub fn get_messages(&mut self, other: &crate::ffi_types::Handle_Interface_Check) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_Check_get_messages(self as *mut Self, other)
         })
     }
 
-    /// **Source:** `Interface_Check.hxx`:243 - `Interface_Check::GetAsWarning()`
+    /// **Source:** `Interface_Check.hxx`:237 - `Interface_Check::GetAsWarning()`
     /// Copies messages converted into Warning messages
     /// If failsonly is true, only Fails are taken, and converted
     /// else, Warnings are taken too. Does not regard Entity
     /// Used to keep Fail messages as Warning, after a recovery
     pub fn get_as_warning(
         &mut self,
-        other: &crate::ffi_types::HandleInterfaceCheck,
+        other: &crate::ffi_types::Handle_Interface_Check,
         failsonly: bool,
     ) {
         crate::check_void_result(unsafe {
@@ -1169,7 +1182,7 @@ impl Check {
         })
     }
 
-    /// **Source:** `Interface_Check.hxx`:253 - `Interface_Check::Print()`
+    /// **Source:** `Interface_Check.hxx`:247 - `Interface_Check::Print()`
     /// Prints the messages of the check to an Messenger
     /// <level> = 1 : only fails
     /// <level> = 2 : fails and warnings
@@ -1183,7 +1196,7 @@ impl Check {
         })
     }
 
-    /// **Source:** `Interface_Check.hxx`:260 - `Interface_Check::Trace()`
+    /// **Source:** `Interface_Check.hxx`:252 - `Interface_Check::Trace()`
     /// Prints the messages of the check to the default trace file
     /// By default, according to the default standard level
     /// Else, according level (see method Print)
@@ -1193,8 +1206,8 @@ impl Check {
         })
     }
 
-    /// **Source:** `Interface_Check.hxx`:263 - `Interface_Check::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `Interface_Check.hxx`:254 - `Interface_Check::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKXSBase::Interface_Check_dynamic_type(
                 self as *const Self,
@@ -1202,7 +1215,7 @@ impl Check {
         }
     }
 
-    /// **Source:** `Interface_Check.hxx`:263 - `Interface_Check::get_type_name()`
+    /// **Source:** `Interface_Check.hxx`:254 - `Interface_Check::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -1213,8 +1226,8 @@ impl Check {
         .into_owned()
     }
 
-    /// **Source:** `Interface_Check.hxx`:263 - `Interface_Check::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    /// **Source:** `Interface_Check.hxx`:254 - `Interface_Check::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKXSBase::Interface_Check_get_type_descriptor(),
@@ -1247,7 +1260,7 @@ impl Check {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleInterfaceCheck> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Interface_Check> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKXSBase::Interface_Check_to_handle(obj.into_raw()),
@@ -1255,8 +1268,8 @@ impl Check {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_Check_inherited_IsInstance(
                 self as *const Self,
@@ -1265,8 +1278,8 @@ impl Check {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_Check_inherited_IsKind(
                 self as *const Self,
@@ -1275,7 +1288,7 @@ impl Check {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -1289,14 +1302,14 @@ impl Check {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_Check_inherited_GetRefCount(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_Check_inherited_IncrementRefCounter(
@@ -1305,7 +1318,7 @@ impl Check {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_Check_inherited_DecrementRefCounter(
@@ -1314,7 +1327,7 @@ impl Check {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_Check_inherited_Delete(self as *const Self)
@@ -1322,32 +1335,34 @@ impl Check {
     }
 }
 
-pub use crate::ffi_types::HandleInterfaceCheck;
+pub use crate::ffi_types::Handle_Interface_Check;
 
-unsafe impl crate::CppDeletable for HandleInterfaceCheck {
+unsafe impl crate::CppDeletable for Handle_Interface_Check {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKXSBase::HandleInterfaceCheck_destructor(ptr);
+            crate::ffi_extern_TKXSBase::Handle_Interface_Check_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleInterfaceCheck {
+unsafe impl crate::CppCopyable for Handle_Interface_Check {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        unsafe { crate::check_result(crate::ffi_extern_TKXSBase::HandleInterfaceCheck_clone(ptr)) }
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKXSBase::Handle_Interface_Check_clone(ptr))
+        }
     }
 }
 
-impl HandleInterfaceCheck {
+impl Handle_Interface_Check {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
-        unsafe { crate::ffi_extern_TKXSBase::HandleInterfaceCheck_is_null(self as *const Self) }
+        unsafe { crate::ffi_extern_TKXSBase::Handle_Interface_Check_is_null(self as *const Self) }
     }
 
     /// Dereference this Handle to access the underlying Interface_Check
     pub fn get(&self) -> &crate::ffi_types::Interface_Check {
         unsafe {
-            &*crate::check_result(crate::ffi_extern_TKXSBase::HandleInterfaceCheck_get(
+            &*crate::check_result(crate::ffi_extern_TKXSBase::Handle_Interface_Check_get(
                 self as *const Self,
             ))
         }
@@ -1356,7 +1371,7 @@ impl HandleInterfaceCheck {
     /// Dereference this Handle to mutably access the underlying Interface_Check
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::Interface_Check {
         unsafe {
-            &mut *crate::check_result(crate::ffi_extern_TKXSBase::HandleInterfaceCheck_get_mut(
+            &mut *crate::check_result(crate::ffi_extern_TKXSBase::Handle_Interface_Check_get_mut(
                 self as *mut Self,
             ))
         }
@@ -1365,10 +1380,10 @@ impl HandleInterfaceCheck {
     /// Upcast Handle<Interface_Check> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKXSBase::HandleInterfaceCheck_to_HandleStandardTransient(
+                crate::ffi_extern_TKXSBase::Handle_Interface_Check_to_Handle_Standard_Transient(
                     self as *const Self,
                 ),
             ))
@@ -1380,7 +1395,7 @@ impl HandleInterfaceCheck {
 // From Interface_CheckFailure.hxx
 // ========================
 
-/// **Source:** `Interface_CheckFailure.hxx`:36 - `Interface_CheckFailure`
+/// **Source:** `Interface_CheckFailure.hxx`:32 - `Interface_CheckFailure`
 pub use crate::ffi_types::Interface_CheckFailure as CheckFailure;
 
 unsafe impl crate::CppDeletable for CheckFailure {
@@ -1392,16 +1407,7 @@ unsafe impl crate::CppDeletable for CheckFailure {
 }
 
 impl CheckFailure {
-    /// **Source:** `Interface_CheckFailure.hxx`:36 - `Interface_CheckFailure::Interface_CheckFailure()`
-    pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKXSBase::Interface_CheckFailure_ctor(),
-            ))
-        }
-    }
-
-    /// **Source:** `Interface_CheckFailure.hxx`:36 - `Interface_CheckFailure::Interface_CheckFailure()`
+    /// **Source:** `Interface_CheckFailure.hxx`:32 - `Interface_CheckFailure::Interface_CheckFailure()`
     pub fn new_charptr(theMessage: &str) -> crate::OwnedPtr<Self> {
         let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
         unsafe {
@@ -1413,7 +1419,7 @@ impl CheckFailure {
         }
     }
 
-    /// **Source:** `Interface_CheckFailure.hxx`:36 - `Interface_CheckFailure::Interface_CheckFailure()`
+    /// **Source:** `Interface_CheckFailure.hxx`:32 - `Interface_CheckFailure::Interface_CheckFailure()`
     pub fn new_charptr2(theMessage: &str, theStackTrace: &str) -> crate::OwnedPtr<Self> {
         let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
         let c_theStackTrace = std::ffi::CString::new(theStackTrace).unwrap();
@@ -1427,81 +1433,17 @@ impl CheckFailure {
         }
     }
 
-    /// **Source:** `Interface_CheckFailure.hxx`:36 - `Interface_CheckFailure::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `Interface_CheckFailure.hxx`:32 - `Interface_CheckFailure::ExceptionType()`
+    pub fn exception_type(&self) -> std::string::String {
         unsafe {
-            &*(crate::check_result(
-                crate::ffi_extern_TKXSBase::Interface_CheckFailure_dynamic_type(
+            std::ffi::CStr::from_ptr(crate::check_result(
+                crate::ffi_extern_TKXSBase::Interface_CheckFailure_exception_type(
                     self as *const Self,
                 ),
             ))
         }
-    }
-
-    /// **Source:** `Interface_CheckFailure.hxx`:36 - `Interface_CheckFailure::Raise()`
-    pub fn raise_charptr(theMessage: &str) {
-        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKXSBase::Interface_CheckFailure_raise_charptr(c_theMessage.as_ptr())
-        })
-    }
-
-    /// **Source:** `Interface_CheckFailure.hxx`:36 - `Interface_CheckFailure::Raise()`
-    pub fn raise_sstream(theMessage: &mut crate::ffi_types::Standard_SStream) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKXSBase::Interface_CheckFailure_raise_sstream(theMessage)
-        })
-    }
-
-    /// **Source:** `Interface_CheckFailure.hxx`:36 - `Interface_CheckFailure::NewInstance()`
-    pub fn new_instance_charptr(
-        theMessage: &str,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleInterfaceCheckFailure> {
-        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKXSBase::Interface_CheckFailure_new_instance_charptr(
-                    c_theMessage.as_ptr(),
-                ),
-            ))
-        }
-    }
-
-    /// **Source:** `Interface_CheckFailure.hxx`:36 - `Interface_CheckFailure::NewInstance()`
-    pub fn new_instance_charptr2(
-        theMessage: &str,
-        theStackTrace: &str,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleInterfaceCheckFailure> {
-        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
-        let c_theStackTrace = std::ffi::CString::new(theStackTrace).unwrap();
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKXSBase::Interface_CheckFailure_new_instance_charptr2(
-                    c_theMessage.as_ptr(),
-                    c_theStackTrace.as_ptr(),
-                ),
-            ))
-        }
-    }
-
-    /// **Source:** `Interface_CheckFailure.hxx`:36 - `Interface_CheckFailure::get_type_name()`
-    pub fn get_type_name() -> std::string::String {
-        unsafe {
-            std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi_extern_TKXSBase::Interface_CheckFailure_get_type_name(),
-            ))
-        }
         .to_string_lossy()
         .into_owned()
-    }
-
-    /// **Source:** `Interface_CheckFailure.hxx`:36 - `Interface_CheckFailure::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
-        unsafe {
-            &*(crate::check_result(
-                crate::ffi_extern_TKXSBase::Interface_CheckFailure_get_type_descriptor(),
-            ))
-        }
     }
 
     /// Upcast to Interface_InterfaceError
@@ -1548,40 +1490,7 @@ impl CheckFailure {
         }
     }
 
-    /// Upcast to Standard_Transient
-    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        unsafe {
-            &*crate::check_result(
-                crate::ffi_extern_TKXSBase::Interface_CheckFailure_as_Standard_Transient(
-                    self as *const Self,
-                ),
-            )
-        }
-    }
-
-    /// Upcast to Standard_Transient (mutable)
-    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        unsafe {
-            &mut *crate::check_result(
-                crate::ffi_extern_TKXSBase::Interface_CheckFailure_as_Standard_Transient_mut(
-                    self as *mut Self,
-                ),
-            )
-        }
-    }
-
-    /// Wrap in a Handle (reference-counted smart pointer)
-    pub fn to_handle(
-        obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleInterfaceCheckFailure> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKXSBase::Interface_CheckFailure_to_handle(obj.into_raw()),
-            ))
-        }
-    }
-
-    /// Inherited: **Source:** `Standard_Failure.hxx`:58 - `Standard_Failure::Print()`
+    /// Inherited: **Source:** `Standard_Failure.hxx`:73 - `Standard_Failure::Print()`
     pub fn print(&self, theStream: &mut crate::ffi_types::Standard_OStream) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_CheckFailure_inherited_Print(
@@ -1590,175 +1499,13 @@ impl CheckFailure {
             )
         })
     }
-
-    /// Inherited: **Source:** `Standard_Failure.hxx`:72 - `Standard_Failure::Reraise()`
-    pub fn reraise(&mut self) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKXSBase::Interface_CheckFailure_inherited_Reraise(self as *mut Self)
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Failure.hxx`:112 - `Standard_Failure::Jump()`
-    pub fn jump(&mut self) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKXSBase::Interface_CheckFailure_inherited_Jump(self as *mut Self)
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKXSBase::Interface_CheckFailure_inherited_IsInstance(
-                self as *const Self,
-                theType,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKXSBase::Interface_CheckFailure_inherited_IsKind(
-                self as *const Self,
-                theType,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
-    pub fn this(&self) -> Option<&crate::standard::Transient> {
-        {
-            let __val = crate::check_result(unsafe {
-                crate::ffi_extern_TKXSBase::Interface_CheckFailure_inherited_This(
-                    self as *const Self,
-                )
-            });
-            if __val.is_null() {
-                None
-            } else {
-                Some(unsafe { &*__val })
-            }
-        }
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
-    pub fn get_ref_count(&self) -> i32 {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKXSBase::Interface_CheckFailure_inherited_GetRefCount(
-                self as *const Self,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
-    pub fn increment_ref_counter(&mut self) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKXSBase::Interface_CheckFailure_inherited_IncrementRefCounter(
-                self as *mut Self,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
-    pub fn decrement_ref_counter(&mut self) -> i32 {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKXSBase::Interface_CheckFailure_inherited_DecrementRefCounter(
-                self as *mut Self,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
-    pub fn delete(&self) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKXSBase::Interface_CheckFailure_inherited_Delete(self as *const Self)
-        })
-    }
-}
-
-pub use crate::ffi_types::HandleInterfaceCheckFailure;
-
-unsafe impl crate::CppDeletable for HandleInterfaceCheckFailure {
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            crate::ffi_extern_TKXSBase::HandleInterfaceCheckFailure_destructor(ptr);
-        }
-    }
-}
-
-unsafe impl crate::CppCopyable for HandleInterfaceCheckFailure {
-    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        unsafe {
-            crate::check_result(crate::ffi_extern_TKXSBase::HandleInterfaceCheckFailure_clone(ptr))
-        }
-    }
-}
-
-impl HandleInterfaceCheckFailure {
-    /// Returns `true` if this Handle is null (doesn't point to any object).
-    pub fn is_null(&self) -> bool {
-        unsafe {
-            crate::ffi_extern_TKXSBase::HandleInterfaceCheckFailure_is_null(self as *const Self)
-        }
-    }
-
-    /// Dereference this Handle to access the underlying Interface_CheckFailure
-    pub fn get(&self) -> &crate::ffi_types::Interface_CheckFailure {
-        unsafe {
-            &*crate::check_result(crate::ffi_extern_TKXSBase::HandleInterfaceCheckFailure_get(
-                self as *const Self,
-            ))
-        }
-    }
-
-    /// Dereference this Handle to mutably access the underlying Interface_CheckFailure
-    pub fn get_mut(&mut self) -> &mut crate::ffi_types::Interface_CheckFailure {
-        unsafe {
-            &mut *crate::check_result(
-                crate::ffi_extern_TKXSBase::HandleInterfaceCheckFailure_get_mut(self as *mut Self),
-            )
-        }
-    }
-
-    /// Upcast Handle<Interface_CheckFailure> to Handle<Interface_InterfaceError>
-    pub fn to_handle_interface_error(
-        &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleInterfaceInterfaceError> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKXSBase::HandleInterfaceCheckFailure_to_HandleInterfaceInterfaceError(self as *const Self)))
-        }
-    }
-
-    /// Upcast Handle<Interface_CheckFailure> to Handle<Standard_Failure>
-    pub fn to_handle_failure(&self) -> crate::OwnedPtr<crate::ffi_types::HandleStandardFailure> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKXSBase::HandleInterfaceCheckFailure_to_HandleStandardFailure(
-                    self as *const Self,
-                ),
-            ))
-        }
-    }
-
-    /// Upcast Handle<Interface_CheckFailure> to Handle<Standard_Transient>
-    pub fn to_handle_transient(
-        &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKXSBase::HandleInterfaceCheckFailure_to_HandleStandardTransient(
-                    self as *const Self,
-                ),
-            ))
-        }
-    }
 }
 
 // ========================
 // From Interface_CheckIterator.hxx
 // ========================
 
-/// **Source:** `Interface_CheckIterator.hxx`:42 - `Interface_CheckIterator`
+/// **Source:** `Interface_CheckIterator.hxx`:43 - `Interface_CheckIterator`
 /// Result of a Check operation (especially from InterfaceModel)
 pub use crate::ffi_types::Interface_CheckIterator as CheckIterator;
 
@@ -1771,7 +1518,7 @@ unsafe impl crate::CppDeletable for CheckIterator {
 }
 
 impl CheckIterator {
-    /// **Source:** `Interface_CheckIterator.hxx`:48 - `Interface_CheckIterator::Interface_CheckIterator()`
+    /// **Source:** `Interface_CheckIterator.hxx`:49 - `Interface_CheckIterator::Interface_CheckIterator()`
     /// Creates an empty CheckIterator
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
@@ -1781,7 +1528,7 @@ impl CheckIterator {
         }
     }
 
-    /// **Source:** `Interface_CheckIterator.hxx`:52 - `Interface_CheckIterator::Interface_CheckIterator()`
+    /// **Source:** `Interface_CheckIterator.hxx`:53 - `Interface_CheckIterator::Interface_CheckIterator()`
     /// Creates a CheckIterator with a name (displayed by Print as a
     /// title)
     pub fn new_charptr(name: &str) -> crate::OwnedPtr<Self> {
@@ -1793,7 +1540,7 @@ impl CheckIterator {
         }
     }
 
-    /// **Source:** `Interface_CheckIterator.hxx`:55 - `Interface_CheckIterator::SetName()`
+    /// **Source:** `Interface_CheckIterator.hxx`:56 - `Interface_CheckIterator::SetName()`
     /// Sets / Changes the name
     pub fn set_name(&mut self, name: &str) {
         let c_name = std::ffi::CString::new(name).unwrap();
@@ -1805,7 +1552,7 @@ impl CheckIterator {
         })
     }
 
-    /// **Source:** `Interface_CheckIterator.hxx`:58 - `Interface_CheckIterator::Name()`
+    /// **Source:** `Interface_CheckIterator.hxx`:59 - `Interface_CheckIterator::Name()`
     /// Returns the recorded name (can be empty)
     pub fn name(&self) -> std::string::String {
         unsafe {
@@ -1817,18 +1564,18 @@ impl CheckIterator {
         .into_owned()
     }
 
-    /// **Source:** `Interface_CheckIterator.hxx`:62 - `Interface_CheckIterator::SetModel()`
+    /// **Source:** `Interface_CheckIterator.hxx`:63 - `Interface_CheckIterator::SetModel()`
     /// Defines a Model, used to locate entities (not required, if it
     /// is absent, entities are simply less documented)
-    pub fn set_model(&mut self, model: &crate::ffi_types::HandleInterfaceInterfaceModel) {
+    pub fn set_model(&mut self, model: &crate::ffi_types::Handle_Interface_InterfaceModel) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_CheckIterator_set_model(self as *mut Self, model)
         })
     }
 
-    /// **Source:** `Interface_CheckIterator.hxx`:65 - `Interface_CheckIterator::Model()`
+    /// **Source:** `Interface_CheckIterator.hxx`:66 - `Interface_CheckIterator::Model()`
     /// Returns the stored model (can be a null handle)
-    pub fn model(&self) -> crate::OwnedPtr<crate::ffi_types::HandleInterfaceInterfaceModel> {
+    pub fn model(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_Interface_InterfaceModel> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKXSBase::Interface_CheckIterator_model(self as *const Self),
@@ -1836,7 +1583,7 @@ impl CheckIterator {
         }
     }
 
-    /// **Source:** `Interface_CheckIterator.hxx`:68 - `Interface_CheckIterator::Clear()`
+    /// **Source:** `Interface_CheckIterator.hxx`:69 - `Interface_CheckIterator::Clear()`
     /// Clears the list of checks
     pub fn clear(&mut self) {
         crate::check_void_result(unsafe {
@@ -1844,7 +1591,7 @@ impl CheckIterator {
         })
     }
 
-    /// **Source:** `Interface_CheckIterator.hxx`:73 - `Interface_CheckIterator::Merge()`
+    /// **Source:** `Interface_CheckIterator.hxx`:74 - `Interface_CheckIterator::Merge()`
     /// Merges another CheckIterator into <me>, i.e. adds each of its
     /// Checks. Content of <other> remains unchanged.
     /// Takes also the Model but not the Name
@@ -1854,24 +1601,24 @@ impl CheckIterator {
         })
     }
 
-    /// **Source:** `Interface_CheckIterator.hxx`:79 - `Interface_CheckIterator::Add()`
+    /// **Source:** `Interface_CheckIterator.hxx`:80 - `Interface_CheckIterator::Add()`
     /// Adds a Check to the list to be iterated
     /// This Check is Accompanied by Entity Number in the Model
     /// (0 for Global Check or Entity unknown in the Model), if 0 and
     /// Model is recorded in <me>, it is computed
-    pub fn add(&mut self, ach: &crate::ffi_types::HandleInterfaceCheck, num: i32) {
+    pub fn add(&mut self, ach: &crate::ffi_types::Handle_Interface_Check, num: i32) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_CheckIterator_add(self as *mut Self, ach, num)
         })
     }
 
-    /// **Source:** `Interface_CheckIterator.hxx`:86 - `Interface_CheckIterator::Check()`
+    /// **Source:** `Interface_CheckIterator.hxx`:87 - `Interface_CheckIterator::Check()`
     /// Returns the Check which was attached to an Entity given its
     /// Number in the Model. <num>=0 is for the Global Check.
     /// If no Check was recorded for this Number, returns an empty
     /// Check.
     /// Remark : Works apart from the iteration methods (no interference)
-    pub fn check_int(&self, num: i32) -> &crate::ffi_types::HandleInterfaceCheck {
+    pub fn check_int(&self, num: i32) -> &crate::ffi_types::Handle_Interface_Check {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKXSBase::Interface_CheckIterator_check_int(
                 self as *const Self,
@@ -1880,7 +1627,7 @@ impl CheckIterator {
         }
     }
 
-    /// **Source:** `Interface_CheckIterator.hxx`:92 - `Interface_CheckIterator::Check()`
+    /// **Source:** `Interface_CheckIterator.hxx`:93 - `Interface_CheckIterator::Check()`
     /// Returns the Check attached to an Entity
     /// If no Check was recorded for this Entity, returns an empty
     /// Check.
@@ -1893,8 +1640,8 @@ impl CheckIterator {
     /// not outlive whichever source it actually borrows from.
     pub unsafe fn check_handlestandardtransient(
         &self,
-        ent: &crate::ffi_types::HandleStandardTransient,
-    ) -> &crate::ffi_types::HandleInterfaceCheck {
+        ent: &crate::ffi_types::Handle_Standard_Transient,
+    ) -> &crate::ffi_types::Handle_Interface_Check {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKXSBase::Interface_CheckIterator_check_handlestandardtransient(
@@ -1905,12 +1652,12 @@ impl CheckIterator {
         }
     }
 
-    /// **Source:** `Interface_CheckIterator.hxx`:98 - `Interface_CheckIterator::CCheck()`
+    /// **Source:** `Interface_CheckIterator.hxx`:100 - `Interface_CheckIterator::CCheck()`
     /// Returns the Check bound to an Entity Number (0 : Global)
     /// in order to be consulted or completed on the spot
     /// I.e. returns the Check if is already exists, or adds it then
     /// returns the new empty Check
-    pub fn c_check_int(&mut self, num: i32) -> &mut crate::ffi_types::HandleInterfaceCheck {
+    pub fn c_check_int(&mut self, num: i32) -> &mut crate::ffi_types::Handle_Interface_Check {
         unsafe {
             &mut *(crate::check_result(
                 crate::ffi_extern_TKXSBase::Interface_CheckIterator_c_check_int(
@@ -1921,7 +1668,7 @@ impl CheckIterator {
         }
     }
 
-    /// **Source:** `Interface_CheckIterator.hxx`:104 - `Interface_CheckIterator::CCheck()`
+    /// **Source:** `Interface_CheckIterator.hxx`:106 - `Interface_CheckIterator::CCheck()`
     /// Returns the Check bound to an Entity, in order to be consulted
     /// or completed on the spot
     /// I.e. returns the Check if is already exists, or adds it then
@@ -1934,8 +1681,8 @@ impl CheckIterator {
     /// not outlive whichever source it actually borrows from.
     pub unsafe fn c_check_handlestandardtransient(
         &mut self,
-        ent: &crate::ffi_types::HandleStandardTransient,
-    ) -> &mut crate::ffi_types::HandleInterfaceCheck {
+        ent: &crate::ffi_types::Handle_Standard_Transient,
+    ) -> &mut crate::ffi_types::Handle_Interface_Check {
         unsafe {
             &mut *(crate::check_result(
                 crate::ffi_extern_TKXSBase::Interface_CheckIterator_c_check_handlestandardtransient(
@@ -1946,7 +1693,7 @@ impl CheckIterator {
         }
     }
 
-    /// **Source:** `Interface_CheckIterator.hxx`:108 - `Interface_CheckIterator::IsEmpty()`
+    /// **Source:** `Interface_CheckIterator.hxx`:110 - `Interface_CheckIterator::IsEmpty()`
     /// Returns True if : no Fail has been recorded if <failsonly> is
     /// True, no Check at all if <failsonly> is False
     pub fn is_empty(&self, failsonly: bool) -> bool {
@@ -1958,7 +1705,7 @@ impl CheckIterator {
         })
     }
 
-    /// **Source:** `Interface_CheckIterator.hxx`:111 - `Interface_CheckIterator::Status()`
+    /// **Source:** `Interface_CheckIterator.hxx`:113 - `Interface_CheckIterator::Status()`
     /// Returns worst status among : OK, Warning, Fail
     pub fn status(&self) -> crate::interface::CheckStatus {
         crate::interface::CheckStatus::try_from(crate::check_result(unsafe {
@@ -1967,9 +1714,9 @@ impl CheckIterator {
         .unwrap()
     }
 
-    /// **Source:** `Interface_CheckIterator.hxx`:116 - `Interface_CheckIterator::Complies()`
+    /// **Source:** `Interface_CheckIterator.hxx`:118 - `Interface_CheckIterator::Complies()`
     /// Tells if this check list complies with a given status :
-    /// OK (i.e. empty),  Warning (at least one Warning, but no Fail),
+    /// OK (i.e. empty), Warning (at least one Warning, but no Fail),
     /// Fail (at least one), Message (not OK), NoFail, Any
     pub fn complies(&self, status: crate::interface::CheckStatus) -> bool {
         crate::check_result(unsafe {
@@ -1980,7 +1727,7 @@ impl CheckIterator {
         })
     }
 
-    /// **Source:** `Interface_CheckIterator.hxx`:121 - `Interface_CheckIterator::Extract()`
+    /// **Source:** `Interface_CheckIterator.hxx`:123 - `Interface_CheckIterator::Extract()`
     /// Returns a CheckIterator which contains the checks which comply
     /// with a given status
     /// Each check is added completely (no split Warning/Fail)
@@ -1998,7 +1745,7 @@ impl CheckIterator {
         }
     }
 
-    /// **Source:** `Interface_CheckIterator.hxx`:132 - `Interface_CheckIterator::Extract()`
+    /// **Source:** `Interface_CheckIterator.hxx`:134 - `Interface_CheckIterator::Extract()`
     /// Returns a CheckIterator which contains the check which comply
     /// with a message, plus some conditions as follows :
     /// <incl> = 0 : <mess> exactly matches one of the messages
@@ -2027,7 +1774,7 @@ impl CheckIterator {
         }
     }
 
-    /// **Source:** `Interface_CheckIterator.hxx`:144 - `Interface_CheckIterator::Remove()`
+    /// **Source:** `Interface_CheckIterator.hxx`:146 - `Interface_CheckIterator::Remove()`
     /// Removes the messages of all Checks, under these conditions :
     /// <incl> = 0 : <mess> exactly matches one of the messages
     /// <incl> < 0 : <mess> is contained by one of the messages
@@ -2048,7 +1795,7 @@ impl CheckIterator {
         })
     }
 
-    /// **Source:** `Interface_CheckIterator.hxx`:152 - `Interface_CheckIterator::Checkeds()`
+    /// **Source:** `Interface_CheckIterator.hxx`:154 - `Interface_CheckIterator::Checkeds()`
     /// Returns the list of entities concerned by a Check
     /// Only fails if <failsonly> is True, else all non-empty checks
     /// If <global> is true, adds the model for a global check
@@ -2057,7 +1804,9 @@ impl CheckIterator {
         &self,
         failsonly: bool,
         global: bool,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleTColStdHSequenceOfTransient> {
+    ) -> crate::OwnedPtr<
+        crate::ffi_types::Handle_NCollection_HSequence_opencascade_handle_Standard_Transient,
+    > {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKXSBase::Interface_CheckIterator_checkeds(
@@ -2069,7 +1818,7 @@ impl CheckIterator {
         }
     }
 
-    /// **Source:** `Interface_CheckIterator.hxx`:160 - `Interface_CheckIterator::Start()`
+    /// **Source:** `Interface_CheckIterator.hxx`:162 - `Interface_CheckIterator::Start()`
     /// Starts Iteration. Thus, it is possible to restart it
     /// Remark : an iteration may be done with a const Iterator
     /// While its content is modified (through a pointer), this allows
@@ -2080,7 +1829,7 @@ impl CheckIterator {
         })
     }
 
-    /// **Source:** `Interface_CheckIterator.hxx`:163 - `Interface_CheckIterator::More()`
+    /// **Source:** `Interface_CheckIterator.hxx`:165 - `Interface_CheckIterator::More()`
     /// Returns True if there are more Checks to get
     pub fn more(&self) -> bool {
         crate::check_result(unsafe {
@@ -2088,7 +1837,7 @@ impl CheckIterator {
         })
     }
 
-    /// **Source:** `Interface_CheckIterator.hxx`:166 - `Interface_CheckIterator::Next()`
+    /// **Source:** `Interface_CheckIterator.hxx`:168 - `Interface_CheckIterator::Next()`
     /// Sets Iteration to next Item
     pub fn next(&self) {
         crate::check_void_result(unsafe {
@@ -2096,11 +1845,11 @@ impl CheckIterator {
         })
     }
 
-    /// **Source:** `Interface_CheckIterator.hxx`:171 - `Interface_CheckIterator::Value()`
+    /// **Source:** `Interface_CheckIterator.hxx`:173 - `Interface_CheckIterator::Value()`
     /// Returns Check currently Iterated
     /// It brings all other information (status, messages, ...)
     /// The Number of the Entity in the Model is given by Number below
-    pub fn value(&self) -> &crate::ffi_types::HandleInterfaceCheck {
+    pub fn value(&self) -> &crate::ffi_types::Handle_Interface_Check {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKXSBase::Interface_CheckIterator_value(
                 self as *const Self,
@@ -2108,7 +1857,7 @@ impl CheckIterator {
         }
     }
 
-    /// **Source:** `Interface_CheckIterator.hxx`:175 - `Interface_CheckIterator::Number()`
+    /// **Source:** `Interface_CheckIterator.hxx`:177 - `Interface_CheckIterator::Number()`
     /// Returns Number of Entity for the Check currently iterated
     /// or 0 for GlobalCheck
     pub fn number(&self) -> i32 {
@@ -2117,7 +1866,7 @@ impl CheckIterator {
         })
     }
 
-    /// **Source:** `Interface_CheckIterator.hxx`:185 - `Interface_CheckIterator::Print()`
+    /// **Source:** `Interface_CheckIterator.hxx`:187 - `Interface_CheckIterator::Print()`
     /// Prints the list of Checks with their attached Numbers
     /// If <failsonly> is True, prints only Fail messages
     /// If <failsonly> is False, prints all messages
@@ -2149,7 +1898,7 @@ impl CheckIterator {
     pub fn print_ostream_handleinterfaceinterfacemodel_bool_int(
         &self,
         S: &mut crate::ffi_types::Standard_OStream,
-        model: &crate::ffi_types::HandleInterfaceInterfaceModel,
+        model: &crate::ffi_types::Handle_Interface_InterfaceModel,
         failsonly: bool,
         final_: i32,
     ) {
@@ -2190,8 +1939,8 @@ impl CheckTool {
     /// and Modules, selected through a Protocol, to work on a Model
     /// Moreover, Protocol recognizes Unknown Entities
     pub fn new_handleinterfaceinterfacemodel_handleinterfaceprotocol(
-        model: &crate::ffi_types::HandleInterfaceInterfaceModel,
-        protocol: &crate::ffi_types::HandleInterfaceProtocol,
+        model: &crate::ffi_types::Handle_Interface_InterfaceModel,
+        protocol: &crate::ffi_types::Handle_Interface_Protocol,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKXSBase::Interface_CheckTool_ctor_handleinterfaceinterfacemodel_handleinterfaceprotocol(model, protocol)))
@@ -2203,7 +1952,7 @@ impl CheckTool {
     /// and Modules, selected through a Protocol, to work on a Model
     /// Protocol and so on are taken from the Model (its GTool)
     pub fn new_handleinterfaceinterfacemodel(
-        model: &crate::ffi_types::HandleInterfaceInterfaceModel,
+        model: &crate::ffi_types::Handle_Interface_InterfaceModel,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -2227,7 +1976,7 @@ impl CheckTool {
 
     /// **Source:** `Interface_CheckTool.hxx`:58 - `Interface_CheckTool::Interface_CheckTool()`
     pub fn new_handleinterfacehgraph(
-        hgraph: &crate::ffi_types::HandleInterfaceHGraph,
+        hgraph: &crate::ffi_types::Handle_Interface_HGraph,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -2244,9 +1993,9 @@ impl CheckTool {
     /// use a Graph as required to control context
     pub fn fill_check(
         &mut self,
-        ent: &crate::ffi_types::HandleStandardTransient,
+        ent: &crate::ffi_types::Handle_Standard_Transient,
         sh: &ShareTool,
-        ach: &mut crate::ffi_types::HandleInterfaceCheck,
+        ach: &mut crate::ffi_types::Handle_Interface_Check,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_CheckTool_fill_check(
@@ -2262,7 +2011,7 @@ impl CheckTool {
     /// Utility method which Prints the content of a Check
     pub fn print_handleinterfacecheck_ostream(
         &self,
-        ach: &crate::ffi_types::HandleInterfaceCheck,
+        ach: &crate::ffi_types::Handle_Interface_Check,
         S: &mut crate::ffi_types::Standard_OStream,
     ) {
         crate::check_void_result(unsafe {
@@ -2295,7 +2044,7 @@ impl CheckTool {
     /// **Source:** `Interface_CheckTool.hxx`:79 - `Interface_CheckTool::Check()`
     /// Returns the Check associated to an Entity identified by
     /// its Number in a Model.
-    pub fn check(&mut self, num: i32) -> crate::OwnedPtr<crate::ffi_types::HandleInterfaceCheck> {
+    pub fn check(&mut self, num: i32) -> crate::OwnedPtr<crate::ffi_types::Handle_Interface_Check> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKXSBase::Interface_CheckTool_check(self as *mut Self, num),
@@ -2400,7 +2149,7 @@ impl CheckTool {
 // From Interface_CopyControl.hxx
 // ========================
 
-/// **Source:** `Interface_CopyControl.hxx`:34 - `Interface_CopyControl`
+/// **Source:** `Interface_CopyControl.hxx`:31 - `Interface_CopyControl`
 /// This deferred class describes the services required by
 /// CopyTool to work. They are very simple and correspond
 /// basically to the management of an indexed map.
@@ -2418,7 +2167,7 @@ unsafe impl crate::CppDeletable for CopyControl {
 }
 
 impl CopyControl {
-    /// **Source:** `Interface_CopyControl.hxx`:40 - `Interface_CopyControl::Clear()`
+    /// **Source:** `Interface_CopyControl.hxx`:37 - `Interface_CopyControl::Clear()`
     /// Clears List of Copy Results. Gets Ready to begin another Copy
     /// Process.
     pub fn clear(&mut self) {
@@ -2427,35 +2176,35 @@ impl CopyControl {
         })
     }
 
-    /// **Source:** `Interface_CopyControl.hxx`:43 - `Interface_CopyControl::Bind()`
+    /// **Source:** `Interface_CopyControl.hxx`:40 - `Interface_CopyControl::Bind()`
     /// Bind a Result to a Starting Entity identified by its Number
     pub fn bind(
         &mut self,
-        ent: &crate::ffi_types::HandleStandardTransient,
-        res: &crate::ffi_types::HandleStandardTransient,
+        ent: &crate::ffi_types::Handle_Standard_Transient,
+        res: &crate::ffi_types::Handle_Standard_Transient,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_CopyControl_bind(self as *mut Self, ent, res)
         })
     }
 
-    /// **Source:** `Interface_CopyControl.hxx`:50 - `Interface_CopyControl::Search()`
+    /// **Source:** `Interface_CopyControl.hxx`:47 - `Interface_CopyControl::Search()`
     /// Searches for the Result bound to a Startingf Entity identified
     /// by its Number.
     /// If Found, returns True and fills <res>
     /// Else, returns False and nullifies <res>
     pub fn search(
         &self,
-        ent: &crate::ffi_types::HandleStandardTransient,
-        res: &mut crate::ffi_types::HandleStandardTransient,
+        ent: &crate::ffi_types::Handle_Standard_Transient,
+        res: &mut crate::ffi_types::Handle_Standard_Transient,
     ) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_CopyControl_search(self as *const Self, ent, res)
         })
     }
 
-    /// **Source:** `Interface_CopyControl.hxx`:53 - `Interface_CopyControl::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `Interface_CopyControl.hxx`:50 - `Interface_CopyControl::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKXSBase::Interface_CopyControl_dynamic_type(
                 self as *const Self,
@@ -2463,7 +2212,7 @@ impl CopyControl {
         }
     }
 
-    /// **Source:** `Interface_CopyControl.hxx`:53 - `Interface_CopyControl::get_type_name()`
+    /// **Source:** `Interface_CopyControl.hxx`:50 - `Interface_CopyControl::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -2474,8 +2223,8 @@ impl CopyControl {
         .into_owned()
     }
 
-    /// **Source:** `Interface_CopyControl.hxx`:53 - `Interface_CopyControl::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    /// **Source:** `Interface_CopyControl.hxx`:50 - `Interface_CopyControl::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKXSBase::Interface_CopyControl_get_type_descriptor(),
@@ -2505,8 +2254,8 @@ impl CopyControl {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_CopyControl_inherited_IsInstance(
                 self as *const Self,
@@ -2515,8 +2264,8 @@ impl CopyControl {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_CopyControl_inherited_IsKind(
                 self as *const Self,
@@ -2525,7 +2274,7 @@ impl CopyControl {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -2541,7 +2290,7 @@ impl CopyControl {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_CopyControl_inherited_GetRefCount(
@@ -2550,7 +2299,7 @@ impl CopyControl {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_CopyControl_inherited_IncrementRefCounter(
@@ -2559,7 +2308,7 @@ impl CopyControl {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_CopyControl_inherited_DecrementRefCounter(
@@ -2568,7 +2317,7 @@ impl CopyControl {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_CopyControl_inherited_Delete(self as *const Self)
@@ -2576,36 +2325,36 @@ impl CopyControl {
     }
 }
 
-pub use crate::ffi_types::HandleInterfaceCopyControl;
+pub use crate::ffi_types::Handle_Interface_CopyControl;
 
-unsafe impl crate::CppDeletable for HandleInterfaceCopyControl {
+unsafe impl crate::CppDeletable for Handle_Interface_CopyControl {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKXSBase::HandleInterfaceCopyControl_destructor(ptr);
+            crate::ffi_extern_TKXSBase::Handle_Interface_CopyControl_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleInterfaceCopyControl {
+unsafe impl crate::CppCopyable for Handle_Interface_CopyControl {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
         unsafe {
-            crate::check_result(crate::ffi_extern_TKXSBase::HandleInterfaceCopyControl_clone(ptr))
+            crate::check_result(crate::ffi_extern_TKXSBase::Handle_Interface_CopyControl_clone(ptr))
         }
     }
 }
 
-impl HandleInterfaceCopyControl {
+impl Handle_Interface_CopyControl {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
         unsafe {
-            crate::ffi_extern_TKXSBase::HandleInterfaceCopyControl_is_null(self as *const Self)
+            crate::ffi_extern_TKXSBase::Handle_Interface_CopyControl_is_null(self as *const Self)
         }
     }
 
     /// Dereference this Handle to access the underlying Interface_CopyControl
     pub fn get(&self) -> &crate::ffi_types::Interface_CopyControl {
         unsafe {
-            &*crate::check_result(crate::ffi_extern_TKXSBase::HandleInterfaceCopyControl_get(
+            &*crate::check_result(crate::ffi_extern_TKXSBase::Handle_Interface_CopyControl_get(
                 self as *const Self,
             ))
         }
@@ -2615,7 +2364,7 @@ impl HandleInterfaceCopyControl {
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::Interface_CopyControl {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi_extern_TKXSBase::HandleInterfaceCopyControl_get_mut(self as *mut Self),
+                crate::ffi_extern_TKXSBase::Handle_Interface_CopyControl_get_mut(self as *mut Self),
             )
         }
     }
@@ -2623,13 +2372,9 @@ impl HandleInterfaceCopyControl {
     /// Upcast Handle<Interface_CopyControl> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKXSBase::HandleInterfaceCopyControl_to_HandleStandardTransient(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKXSBase::Handle_Interface_CopyControl_to_Handle_Standard_Transient(self as *const Self)))
         }
     }
 
@@ -2638,9 +2383,9 @@ impl HandleInterfaceCopyControl {
     /// Returns `None` if the handle does not point to a `Interface_CopyMap` (or subclass).
     pub fn downcast_to_copy_map(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleInterfaceCopyMap>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_Interface_CopyMap>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKXSBase::HandleInterfaceCopyControl_downcast_to_HandleInterfaceCopyMap(self as *const Self)
+            crate::ffi_extern_TKXSBase::Handle_Interface_CopyControl_downcast_to_Handle_Interface_CopyMap(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -2654,9 +2399,9 @@ impl HandleInterfaceCopyControl {
     /// Returns `None` if the handle does not point to a `Transfer_DispatchControl` (or subclass).
     pub fn downcast_to_dispatch_control(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleTransferDispatchControl>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_Transfer_DispatchControl>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKXSBase::HandleInterfaceCopyControl_downcast_to_HandleTransferDispatchControl(self as *const Self)
+            crate::ffi_extern_TKXSBase::Handle_Interface_CopyControl_downcast_to_Handle_Transfer_DispatchControl(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -2670,7 +2415,7 @@ impl HandleInterfaceCopyControl {
 // From Interface_CopyMap.hxx
 // ========================
 
-/// **Source:** `Interface_CopyMap.hxx`:35 - `Interface_CopyMap`
+/// **Source:** `Interface_CopyMap.hxx`:33 - `Interface_CopyMap`
 /// Manages a Map for the need of single Transfers, such as Copies
 /// In such transfer, Starting Entities are read from a unique
 /// Starting Model, and each transferred Entity is bound to one
@@ -2686,10 +2431,10 @@ unsafe impl crate::CppDeletable for CopyMap {
 }
 
 impl CopyMap {
-    /// **Source:** `Interface_CopyMap.hxx`:40 - `Interface_CopyMap::Interface_CopyMap()`
+    /// **Source:** `Interface_CopyMap.hxx`:38 - `Interface_CopyMap::Interface_CopyMap()`
     /// Creates a CopyMap adapted to work from a Model
     pub fn new_handleinterfaceinterfacemodel(
-        amodel: &crate::ffi_types::HandleInterfaceInterfaceModel,
+        amodel: &crate::ffi_types::Handle_Interface_InterfaceModel,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -2700,7 +2445,7 @@ impl CopyMap {
         }
     }
 
-    /// **Source:** `Interface_CopyMap.hxx`:43 - `Interface_CopyMap::Clear()`
+    /// **Source:** `Interface_CopyMap.hxx`:41 - `Interface_CopyMap::Clear()`
     /// Clears Transfer List. Gets Ready to begin another Transfer
     pub fn clear(&mut self) {
         crate::check_void_result(unsafe {
@@ -2708,9 +2453,9 @@ impl CopyMap {
         })
     }
 
-    /// **Source:** `Interface_CopyMap.hxx`:46 - `Interface_CopyMap::Model()`
+    /// **Source:** `Interface_CopyMap.hxx`:44 - `Interface_CopyMap::Model()`
     /// Returns the InterfaceModel used at Creation time
-    pub fn model(&self) -> crate::OwnedPtr<crate::ffi_types::HandleInterfaceInterfaceModel> {
+    pub fn model(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_Interface_InterfaceModel> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKXSBase::Interface_CopyMap_model(self as *const Self),
@@ -2718,36 +2463,36 @@ impl CopyMap {
         }
     }
 
-    /// **Source:** `Interface_CopyMap.hxx`:50 - `Interface_CopyMap::Bind()`
+    /// **Source:** `Interface_CopyMap.hxx`:48 - `Interface_CopyMap::Bind()`
     /// Binds a Starting Entity identified by its Number <num> in the
     /// Starting Model, to a Result of Transfer <res>
     pub fn bind(
         &mut self,
-        ent: &crate::ffi_types::HandleStandardTransient,
-        res: &crate::ffi_types::HandleStandardTransient,
+        ent: &crate::ffi_types::Handle_Standard_Transient,
+        res: &crate::ffi_types::Handle_Standard_Transient,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_CopyMap_bind(self as *mut Self, ent, res)
         })
     }
 
-    /// **Source:** `Interface_CopyMap.hxx`:57 - `Interface_CopyMap::Search()`
+    /// **Source:** `Interface_CopyMap.hxx`:55 - `Interface_CopyMap::Search()`
     /// Search for the result of a Starting Object (i.e. an Entity,
     /// identified by its Number <num> in the Starting Model)
     /// Returns True  if a  Result is Bound (and fills <res>)
     /// Returns False if no result is Bound (and nullifies <res>)
     pub fn search(
         &self,
-        ent: &crate::ffi_types::HandleStandardTransient,
-        res: &mut crate::ffi_types::HandleStandardTransient,
+        ent: &crate::ffi_types::Handle_Standard_Transient,
+        res: &mut crate::ffi_types::Handle_Standard_Transient,
     ) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_CopyMap_search(self as *const Self, ent, res)
         })
     }
 
-    /// **Source:** `Interface_CopyMap.hxx`:60 - `Interface_CopyMap::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `Interface_CopyMap.hxx`:58 - `Interface_CopyMap::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKXSBase::Interface_CopyMap_dynamic_type(
                 self as *const Self,
@@ -2755,7 +2500,7 @@ impl CopyMap {
         }
     }
 
-    /// **Source:** `Interface_CopyMap.hxx`:60 - `Interface_CopyMap::get_type_name()`
+    /// **Source:** `Interface_CopyMap.hxx`:58 - `Interface_CopyMap::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -2766,8 +2511,8 @@ impl CopyMap {
         .into_owned()
     }
 
-    /// **Source:** `Interface_CopyMap.hxx`:60 - `Interface_CopyMap::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    /// **Source:** `Interface_CopyMap.hxx`:58 - `Interface_CopyMap::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKXSBase::Interface_CopyMap_get_type_descriptor(),
@@ -2822,7 +2567,7 @@ impl CopyMap {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleInterfaceCopyMap> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Interface_CopyMap> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKXSBase::Interface_CopyMap_to_handle(obj.into_raw()),
@@ -2830,8 +2575,8 @@ impl CopyMap {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_CopyMap_inherited_IsInstance(
                 self as *const Self,
@@ -2840,8 +2585,8 @@ impl CopyMap {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_CopyMap_inherited_IsKind(
                 self as *const Self,
@@ -2850,7 +2595,7 @@ impl CopyMap {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -2864,14 +2609,14 @@ impl CopyMap {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_CopyMap_inherited_GetRefCount(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_CopyMap_inherited_IncrementRefCounter(
@@ -2880,7 +2625,7 @@ impl CopyMap {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_CopyMap_inherited_DecrementRefCounter(
@@ -2889,7 +2634,7 @@ impl CopyMap {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_CopyMap_inherited_Delete(self as *const Self)
@@ -2897,34 +2642,34 @@ impl CopyMap {
     }
 }
 
-pub use crate::ffi_types::HandleInterfaceCopyMap;
+pub use crate::ffi_types::Handle_Interface_CopyMap;
 
-unsafe impl crate::CppDeletable for HandleInterfaceCopyMap {
+unsafe impl crate::CppDeletable for Handle_Interface_CopyMap {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKXSBase::HandleInterfaceCopyMap_destructor(ptr);
+            crate::ffi_extern_TKXSBase::Handle_Interface_CopyMap_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleInterfaceCopyMap {
+unsafe impl crate::CppCopyable for Handle_Interface_CopyMap {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
         unsafe {
-            crate::check_result(crate::ffi_extern_TKXSBase::HandleInterfaceCopyMap_clone(ptr))
+            crate::check_result(crate::ffi_extern_TKXSBase::Handle_Interface_CopyMap_clone(ptr))
         }
     }
 }
 
-impl HandleInterfaceCopyMap {
+impl Handle_Interface_CopyMap {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
-        unsafe { crate::ffi_extern_TKXSBase::HandleInterfaceCopyMap_is_null(self as *const Self) }
+        unsafe { crate::ffi_extern_TKXSBase::Handle_Interface_CopyMap_is_null(self as *const Self) }
     }
 
     /// Dereference this Handle to access the underlying Interface_CopyMap
     pub fn get(&self) -> &crate::ffi_types::Interface_CopyMap {
         unsafe {
-            &*crate::check_result(crate::ffi_extern_TKXSBase::HandleInterfaceCopyMap_get(
+            &*crate::check_result(crate::ffi_extern_TKXSBase::Handle_Interface_CopyMap_get(
                 self as *const Self,
             ))
         }
@@ -2933,7 +2678,7 @@ impl HandleInterfaceCopyMap {
     /// Dereference this Handle to mutably access the underlying Interface_CopyMap
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::Interface_CopyMap {
         unsafe {
-            &mut *crate::check_result(crate::ffi_extern_TKXSBase::HandleInterfaceCopyMap_get_mut(
+            &mut *crate::check_result(crate::ffi_extern_TKXSBase::Handle_Interface_CopyMap_get_mut(
                 self as *mut Self,
             ))
         }
@@ -2942,23 +2687,19 @@ impl HandleInterfaceCopyMap {
     /// Upcast Handle<Interface_CopyMap> to Handle<Interface_CopyControl>
     pub fn to_handle_copy_control(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleInterfaceCopyControl> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Interface_CopyControl> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKXSBase::HandleInterfaceCopyMap_to_HandleInterfaceCopyControl(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKXSBase::Handle_Interface_CopyMap_to_Handle_Interface_CopyControl(self as *const Self)))
         }
     }
 
     /// Upcast Handle<Interface_CopyMap> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKXSBase::HandleInterfaceCopyMap_to_HandleStandardTransient(
+                crate::ffi_extern_TKXSBase::Handle_Interface_CopyMap_to_Handle_Standard_Transient(
                     self as *const Self,
                 ),
             ))
@@ -2986,7 +2727,7 @@ impl HandleInterfaceCopyMap {
 /// copy different parts of a starting Model to several Targets),
 /// or incremental : in that case, it is possible to know what is
 /// the content of the last increment (defined by last call to
-/// ClearLastFlags  and queried by call to LastCopiedAfter)
+/// ClearLastFlags and queried by call to LastCopiedAfter)
 ///
 /// Works in two times : first, create the list of copied Entities
 /// second, pushes them to a target Model (manages also Model's
@@ -3010,7 +2751,7 @@ impl CopyTool {
     /// Creates a CopyTool adapted to work from a Model. Works
     /// with a General Service Library, given as an argument
     pub fn new_handleinterfaceinterfacemodel_generallib(
-        amodel: &crate::ffi_types::HandleInterfaceInterfaceModel,
+        amodel: &crate::ffi_types::Handle_Interface_InterfaceModel,
         lib: &GeneralLib,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -3021,8 +2762,8 @@ impl CopyTool {
     /// **Source:** `Interface_CopyTool.hxx`:71 - `Interface_CopyTool::Interface_CopyTool()`
     /// Same as above, but Library is defined through a Protocol
     pub fn new_handleinterfaceinterfacemodel_handleinterfaceprotocol(
-        amodel: &crate::ffi_types::HandleInterfaceInterfaceModel,
-        protocol: &crate::ffi_types::HandleInterfaceProtocol,
+        amodel: &crate::ffi_types::Handle_Interface_InterfaceModel,
+        protocol: &crate::ffi_types::Handle_Interface_Protocol,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKXSBase::Interface_CopyTool_ctor_handleinterfaceinterfacemodel_handleinterfaceprotocol(amodel, protocol)))
@@ -3032,7 +2773,7 @@ impl CopyTool {
     /// **Source:** `Interface_CopyTool.hxx`:75 - `Interface_CopyTool::Interface_CopyTool()`
     /// Same as above, but works with the Active Protocol
     pub fn new_handleinterfaceinterfacemodel(
-        amodel: &crate::ffi_types::HandleInterfaceInterfaceModel,
+        amodel: &crate::ffi_types::Handle_Interface_InterfaceModel,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -3045,7 +2786,7 @@ impl CopyTool {
 
     /// **Source:** `Interface_CopyTool.hxx`:78 - `Interface_CopyTool::Model()`
     /// Returns the Model on which the CopyTool works
-    pub fn model(&self) -> crate::OwnedPtr<crate::ffi_types::HandleInterfaceInterfaceModel> {
+    pub fn model(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_Interface_InterfaceModel> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKXSBase::Interface_CopyTool_model(self as *const Self),
@@ -3057,7 +2798,7 @@ impl CopyTool {
     /// Changes the Map of Result for another one. This allows to work
     /// with a more sophisticated Mapping Control than the Standard
     /// one which is CopyMap (e.g. TransferProcess from Transfer)
-    pub fn set_control(&mut self, othermap: &crate::ffi_types::HandleInterfaceCopyControl) {
+    pub fn set_control(&mut self, othermap: &crate::ffi_types::Handle_Interface_CopyControl) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_CopyTool_set_control(self as *mut Self, othermap)
         })
@@ -3065,7 +2806,7 @@ impl CopyTool {
 
     /// **Source:** `Interface_CopyTool.hxx`:86 - `Interface_CopyTool::Control()`
     /// Returns the object used for Control
-    pub fn control(&self) -> crate::OwnedPtr<crate::ffi_types::HandleInterfaceCopyControl> {
+    pub fn control(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_Interface_CopyControl> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKXSBase::Interface_CopyTool_control(self as *const Self),
@@ -3103,8 +2844,8 @@ impl CopyTool {
     /// It can be redefined for special uses.
     pub fn copy(
         &mut self,
-        entfrom: &crate::ffi_types::HandleStandardTransient,
-        entto: &mut crate::ffi_types::HandleStandardTransient,
+        entfrom: &crate::ffi_types::Handle_Standard_Transient,
+        entto: &mut crate::ffi_types::Handle_Standard_Transient,
         mapped: bool,
         errstat: bool,
     ) -> bool {
@@ -3127,8 +2868,8 @@ impl CopyTool {
     /// recognizes the Content : see method Copy)
     pub fn transferred(
         &mut self,
-        ent: &crate::ffi_types::HandleStandardTransient,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+        ent: &crate::ffi_types::Handle_Standard_Transient,
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKXSBase::Interface_CopyTool_transferred(self as *mut Self, ent),
@@ -3136,7 +2877,7 @@ impl CopyTool {
         }
     }
 
-    /// **Source:** `Interface_CopyTool.hxx`:127 - `Interface_CopyTool::Bind()`
+    /// **Source:** `Interface_CopyTool.hxx`:128 - `Interface_CopyTool::Bind()`
     /// Defines a Result for the Transfer of a Starting object.
     /// Used by method Transferred (which performs a normal Copy),
     /// but can also be called to enforce a result : in the latter
@@ -3144,29 +2885,29 @@ impl CopyTool {
     /// Transfers which are performed
     pub fn bind(
         &mut self,
-        ent: &crate::ffi_types::HandleStandardTransient,
-        res: &crate::ffi_types::HandleStandardTransient,
+        ent: &crate::ffi_types::Handle_Standard_Transient,
+        res: &crate::ffi_types::Handle_Standard_Transient,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_CopyTool_bind(self as *mut Self, ent, res)
         })
     }
 
-    /// **Source:** `Interface_CopyTool.hxx`:133 - `Interface_CopyTool::Search()`
+    /// **Source:** `Interface_CopyTool.hxx`:134 - `Interface_CopyTool::Search()`
     /// Search for the result of a Starting Object (i.e. an Entity)
-    /// Returns True  if a  Result is Bound (and fills "result")
+    /// Returns True if a Result is Bound (and fills "result")
     /// Returns False if no result is Bound
     pub fn search(
         &self,
-        ent: &crate::ffi_types::HandleStandardTransient,
-        res: &mut crate::ffi_types::HandleStandardTransient,
+        ent: &crate::ffi_types::Handle_Standard_Transient,
+        res: &mut crate::ffi_types::Handle_Standard_Transient,
     ) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_CopyTool_search(self as *const Self, ent, res)
         })
     }
 
-    /// **Source:** `Interface_CopyTool.hxx`:140 - `Interface_CopyTool::ClearLastFlags()`
+    /// **Source:** `Interface_CopyTool.hxx`:141 - `Interface_CopyTool::ClearLastFlags()`
     /// Clears LastFlags only. This allows to know what Entities are
     /// copied after its call (see method LastCopiedAfter). It can be
     /// used when copies are done by increments, which must be
@@ -3177,7 +2918,7 @@ impl CopyTool {
         })
     }
 
-    /// **Source:** `Interface_CopyTool.hxx`:150 - `Interface_CopyTool::LastCopiedAfter()`
+    /// **Source:** `Interface_CopyTool.hxx`:151 - `Interface_CopyTool::LastCopiedAfter()`
     /// Returns an copied Entity and its Result which were operated
     /// after last call to ClearLastFlags. It returns the first
     /// "Last Copied Entity" which Number follows <numfrom>, Zero if
@@ -3189,8 +2930,8 @@ impl CopyTool {
     pub fn last_copied_after(
         &self,
         numfrom: i32,
-        ent: &mut crate::ffi_types::HandleStandardTransient,
-        res: &mut crate::ffi_types::HandleStandardTransient,
+        ent: &mut crate::ffi_types::Handle_Standard_Transient,
+        res: &mut crate::ffi_types::Handle_Standard_Transient,
     ) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_CopyTool_last_copied_after(
@@ -3202,16 +2943,16 @@ impl CopyTool {
         })
     }
 
-    /// **Source:** `Interface_CopyTool.hxx`:156 - `Interface_CopyTool::TransferEntity()`
+    /// **Source:** `Interface_CopyTool.hxx`:157 - `Interface_CopyTool::TransferEntity()`
     /// Transfers one Entity and records result into the Transfer List
     /// Calls method Transferred
-    pub fn transfer_entity(&mut self, ent: &crate::ffi_types::HandleStandardTransient) {
+    pub fn transfer_entity(&mut self, ent: &crate::ffi_types::Handle_Standard_Transient) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_CopyTool_transfer_entity(self as *mut Self, ent)
         })
     }
 
-    /// **Source:** `Interface_CopyTool.hxx`:165 - `Interface_CopyTool::RenewImpliedRefs()`
+    /// **Source:** `Interface_CopyTool.hxx`:166 - `Interface_CopyTool::RenewImpliedRefs()`
     /// Renews the Implied References. These References do not involve
     /// Copying of referenced Entities. For such a Reference, if the
     /// Entity which defines it AND the referenced Entity are both
@@ -3225,10 +2966,10 @@ impl CopyTool {
         })
     }
 
-    /// **Source:** `Interface_CopyTool.hxx`:169 - `Interface_CopyTool::FillModel()`
+    /// **Source:** `Interface_CopyTool.hxx`:170 - `Interface_CopyTool::FillModel()`
     /// Fills a Model with the result of the transfer (TransferList)
     /// Commands copy of Header too, and calls RenewImpliedRefs
-    pub fn fill_model(&mut self, bmodel: &crate::ffi_types::HandleInterfaceInterfaceModel) {
+    pub fn fill_model(&mut self, bmodel: &crate::ffi_types::Handle_Interface_InterfaceModel) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_CopyTool_fill_model(self as *mut Self, bmodel)
         })
@@ -3250,7 +2991,7 @@ impl CopyTool {
         }
     }
 
-    /// **Source:** `Interface_CopyTool.hxx`:182 - `Interface_CopyTool::RootResult()`
+    /// **Source:** `Interface_CopyTool.hxx`:181 - `Interface_CopyTool::RootResult()`
     /// Returns the list of Root copied Entities (those which were
     /// asked for copy by the user of CopyTool, not by copying
     /// another Entity)
@@ -3270,7 +3011,7 @@ impl CopyTool {
 // From Interface_EntityCluster.hxx
 // ========================
 
-/// **Source:** `Interface_EntityCluster.hxx`:40 - `Interface_EntityCluster`
+/// **Source:** `Interface_EntityCluster.hxx`:37 - `Interface_EntityCluster`
 /// Auxiliary class for EntityList. An EntityList designates an
 /// EntityCluster, which brings itself an fixed maximum count of
 /// Entities. If it is full, it gives access to another cluster
@@ -3292,7 +3033,7 @@ unsafe impl crate::CppDeletable for EntityCluster {
 }
 
 impl EntityCluster {
-    /// **Source:** `Interface_EntityCluster.hxx`:45 - `Interface_EntityCluster::Interface_EntityCluster()`
+    /// **Source:** `Interface_EntityCluster.hxx`:42 - `Interface_EntityCluster::Interface_EntityCluster()`
     /// Creates an empty, non-chained, EntityCluster
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
@@ -3302,10 +3043,10 @@ impl EntityCluster {
         }
     }
 
-    /// **Source:** `Interface_EntityCluster.hxx`:48 - `Interface_EntityCluster::Interface_EntityCluster()`
+    /// **Source:** `Interface_EntityCluster.hxx`:45 - `Interface_EntityCluster::Interface_EntityCluster()`
     /// Creates a non-chained EntityCluster, filled with one Entity
     pub fn new_handlestandardtransient(
-        ent: &crate::ffi_types::HandleStandardTransient,
+        ent: &crate::ffi_types::Handle_Standard_Transient,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -3316,47 +3057,47 @@ impl EntityCluster {
         }
     }
 
-    /// **Source:** `Interface_EntityCluster.hxx`:52 - `Interface_EntityCluster::Interface_EntityCluster()`
+    /// **Source:** `Interface_EntityCluster.hxx`:49 - `Interface_EntityCluster::Interface_EntityCluster()`
     /// Creates an empty EntityCluster, chained with another one
     /// (that is, put BEFORE this other one in the list)
     pub fn new_handleinterfaceentitycluster(
-        ec: &crate::ffi_types::HandleInterfaceEntityCluster,
+        ec: &crate::ffi_types::Handle_Interface_EntityCluster,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKXSBase::Interface_EntityCluster_ctor_handleinterfaceentitycluster(ec)))
         }
     }
 
-    /// **Source:** `Interface_EntityCluster.hxx`:56 - `Interface_EntityCluster::Interface_EntityCluster()`
+    /// **Source:** `Interface_EntityCluster.hxx`:53 - `Interface_EntityCluster::Interface_EntityCluster()`
     /// Creates an EntityCluster, filled with a first Entity, and
     /// chained to another EntityCluster (BEFORE it, as above)
     pub fn new_handlestandardtransient_handleinterfaceentitycluster(
-        ant: &crate::ffi_types::HandleStandardTransient,
-        ec: &crate::ffi_types::HandleInterfaceEntityCluster,
+        ant: &crate::ffi_types::Handle_Standard_Transient,
+        ec: &crate::ffi_types::Handle_Interface_EntityCluster,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKXSBase::Interface_EntityCluster_ctor_handlestandardtransient_handleinterfaceentitycluster(ant, ec)))
         }
     }
 
-    /// **Source:** `Interface_EntityCluster.hxx`:62 - `Interface_EntityCluster::Append()`
+    /// **Source:** `Interface_EntityCluster.hxx`:59 - `Interface_EntityCluster::Append()`
     /// Appends an Entity to the Cluster. If it is not full, adds the
     /// entity directly inside itself. Else, transmits to its Next
     /// and Creates it if it does not yet exist
-    pub fn append(&mut self, ent: &crate::ffi_types::HandleStandardTransient) {
+    pub fn append(&mut self, ent: &crate::ffi_types::Handle_Standard_Transient) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_EntityCluster_append(self as *mut Self, ent)
         })
     }
 
-    /// **Source:** `Interface_EntityCluster.hxx`:68 - `Interface_EntityCluster::Remove()`
+    /// **Source:** `Interface_EntityCluster.hxx`:65 - `Interface_EntityCluster::Remove()`
     /// Removes an Entity from the Cluster. If it is not found, calls
     /// its Next one to do so.
     /// Returns True if it becomes itself empty, False else
     /// (thus, a Cluster which becomes empty is deleted from the list)
     pub fn remove_handlestandardtransient(
         &mut self,
-        ent: &crate::ffi_types::HandleStandardTransient,
+        ent: &crate::ffi_types::Handle_Standard_Transient,
     ) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_EntityCluster_remove_handlestandardtransient(
@@ -3366,7 +3107,7 @@ impl EntityCluster {
         })
     }
 
-    /// **Source:** `Interface_EntityCluster.hxx`:73 - `Interface_EntityCluster::Remove()`
+    /// **Source:** `Interface_EntityCluster.hxx`:70 - `Interface_EntityCluster::Remove()`
     /// Removes an Entity from the Cluster, given its rank. If <num>
     /// is greater than NbLocal, calls its Next with (num - NbLocal),
     /// Returns True if it becomes itself empty, False else
@@ -3376,7 +3117,7 @@ impl EntityCluster {
         })
     }
 
-    /// **Source:** `Interface_EntityCluster.hxx`:76 - `Interface_EntityCluster::NbEntities()`
+    /// **Source:** `Interface_EntityCluster.hxx`:73 - `Interface_EntityCluster::NbEntities()`
     /// Returns total count of Entities (including Next)
     pub fn nb_entities(&self) -> i32 {
         crate::check_result(unsafe {
@@ -3384,10 +3125,10 @@ impl EntityCluster {
         })
     }
 
-    /// **Source:** `Interface_EntityCluster.hxx`:80 - `Interface_EntityCluster::Value()`
+    /// **Source:** `Interface_EntityCluster.hxx`:77 - `Interface_EntityCluster::Value()`
     /// Returns the Entity identified by its rank in the list
     /// (including Next)
-    pub fn value(&self, num: i32) -> &crate::ffi_types::HandleStandardTransient {
+    pub fn value(&self, num: i32) -> &crate::ffi_types::Handle_Standard_Transient {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKXSBase::Interface_EntityCluster_value(
                 self as *const Self,
@@ -3396,9 +3137,9 @@ impl EntityCluster {
         }
     }
 
-    /// **Source:** `Interface_EntityCluster.hxx`:83 - `Interface_EntityCluster::SetValue()`
+    /// **Source:** `Interface_EntityCluster.hxx`:80 - `Interface_EntityCluster::SetValue()`
     /// Changes an Entity given its rank.
-    pub fn set_value(&mut self, num: i32, ent: &crate::ffi_types::HandleStandardTransient) {
+    pub fn set_value(&mut self, num: i32, ent: &crate::ffi_types::Handle_Standard_Transient) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_EntityCluster_set_value(
                 self as *mut Self,
@@ -3408,7 +3149,7 @@ impl EntityCluster {
         })
     }
 
-    /// **Source:** `Interface_EntityCluster.hxx`:86 - `Interface_EntityCluster::FillIterator()`
+    /// **Source:** `Interface_EntityCluster.hxx`:83 - `Interface_EntityCluster::FillIterator()`
     /// Fills an Iterator with designated Entities (includes Next)
     pub fn fill_iterator(&self, iter: &mut EntityIterator) {
         crate::check_void_result(unsafe {
@@ -3419,8 +3160,8 @@ impl EntityCluster {
         })
     }
 
-    /// **Source:** `Interface_EntityCluster.hxx`:94 - `Interface_EntityCluster::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `Interface_EntityCluster.hxx`:91 - `Interface_EntityCluster::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKXSBase::Interface_EntityCluster_dynamic_type(
@@ -3430,7 +3171,7 @@ impl EntityCluster {
         }
     }
 
-    /// **Source:** `Interface_EntityCluster.hxx`:94 - `Interface_EntityCluster::get_type_name()`
+    /// **Source:** `Interface_EntityCluster.hxx`:91 - `Interface_EntityCluster::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -3441,8 +3182,8 @@ impl EntityCluster {
         .into_owned()
     }
 
-    /// **Source:** `Interface_EntityCluster.hxx`:94 - `Interface_EntityCluster::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    /// **Source:** `Interface_EntityCluster.hxx`:91 - `Interface_EntityCluster::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKXSBase::Interface_EntityCluster_get_type_descriptor(),
@@ -3475,7 +3216,7 @@ impl EntityCluster {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleInterfaceEntityCluster> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Interface_EntityCluster> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKXSBase::Interface_EntityCluster_to_handle(obj.into_raw()),
@@ -3483,8 +3224,8 @@ impl EntityCluster {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_EntityCluster_inherited_IsInstance(
                 self as *const Self,
@@ -3493,8 +3234,8 @@ impl EntityCluster {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_EntityCluster_inherited_IsKind(
                 self as *const Self,
@@ -3503,7 +3244,7 @@ impl EntityCluster {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -3519,7 +3260,7 @@ impl EntityCluster {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_EntityCluster_inherited_GetRefCount(
@@ -3528,7 +3269,7 @@ impl EntityCluster {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_EntityCluster_inherited_IncrementRefCounter(
@@ -3537,7 +3278,7 @@ impl EntityCluster {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_EntityCluster_inherited_DecrementRefCounter(
@@ -3546,7 +3287,7 @@ impl EntityCluster {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_EntityCluster_inherited_Delete(
@@ -3556,36 +3297,38 @@ impl EntityCluster {
     }
 }
 
-pub use crate::ffi_types::HandleInterfaceEntityCluster;
+pub use crate::ffi_types::Handle_Interface_EntityCluster;
 
-unsafe impl crate::CppDeletable for HandleInterfaceEntityCluster {
+unsafe impl crate::CppDeletable for Handle_Interface_EntityCluster {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKXSBase::HandleInterfaceEntityCluster_destructor(ptr);
+            crate::ffi_extern_TKXSBase::Handle_Interface_EntityCluster_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleInterfaceEntityCluster {
+unsafe impl crate::CppCopyable for Handle_Interface_EntityCluster {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
         unsafe {
-            crate::check_result(crate::ffi_extern_TKXSBase::HandleInterfaceEntityCluster_clone(ptr))
+            crate::check_result(crate::ffi_extern_TKXSBase::Handle_Interface_EntityCluster_clone(
+                ptr,
+            ))
         }
     }
 }
 
-impl HandleInterfaceEntityCluster {
+impl Handle_Interface_EntityCluster {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
         unsafe {
-            crate::ffi_extern_TKXSBase::HandleInterfaceEntityCluster_is_null(self as *const Self)
+            crate::ffi_extern_TKXSBase::Handle_Interface_EntityCluster_is_null(self as *const Self)
         }
     }
 
     /// Dereference this Handle to access the underlying Interface_EntityCluster
     pub fn get(&self) -> &crate::ffi_types::Interface_EntityCluster {
         unsafe {
-            &*crate::check_result(crate::ffi_extern_TKXSBase::HandleInterfaceEntityCluster_get(
+            &*crate::check_result(crate::ffi_extern_TKXSBase::Handle_Interface_EntityCluster_get(
                 self as *const Self,
             ))
         }
@@ -3595,7 +3338,9 @@ impl HandleInterfaceEntityCluster {
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::Interface_EntityCluster {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi_extern_TKXSBase::HandleInterfaceEntityCluster_get_mut(self as *mut Self),
+                crate::ffi_extern_TKXSBase::Handle_Interface_EntityCluster_get_mut(
+                    self as *mut Self,
+                ),
             )
         }
     }
@@ -3603,13 +3348,9 @@ impl HandleInterfaceEntityCluster {
     /// Upcast Handle<Interface_EntityCluster> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKXSBase::HandleInterfaceEntityCluster_to_HandleStandardTransient(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKXSBase::Handle_Interface_EntityCluster_to_Handle_Standard_Transient(self as *const Self)))
         }
     }
 }
@@ -3618,7 +3359,7 @@ impl HandleInterfaceEntityCluster {
 // From Interface_EntityIterator.hxx
 // ========================
 
-/// **Source:** `Interface_EntityIterator.hxx`:33 - `Interface_EntityIterator`
+/// **Source:** `Interface_EntityIterator.hxx`:35 - `Interface_EntityIterator`
 /// Defines an Iterator on Entities.
 /// Allows considering of various criteria
 pub use crate::ffi_types::Interface_EntityIterator as EntityIterator;
@@ -3632,7 +3373,7 @@ unsafe impl crate::CppDeletable for EntityIterator {
 }
 
 impl EntityIterator {
-    /// **Source:** `Interface_EntityIterator.hxx`:39 - `Interface_EntityIterator::Interface_EntityIterator()`
+    /// **Source:** `Interface_EntityIterator.hxx`:41 - `Interface_EntityIterator::Interface_EntityIterator()`
     /// Defines an empty iterator (see AddList & AddItem)
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
@@ -3642,27 +3383,30 @@ impl EntityIterator {
         }
     }
 
-    /// **Source:** `Interface_EntityIterator.hxx`:42 - `Interface_EntityIterator::Interface_EntityIterator()`
+    /// **Source:** `Interface_EntityIterator.hxx`:44 - `Interface_EntityIterator::Interface_EntityIterator()`
     /// Defines an iterator on a list, directly i.e. without copying it
-    pub fn new_handletcolstdhsequenceoftransient(
-        list: &crate::ffi_types::HandleTColStdHSequenceOfTransient,
+    pub fn new_handlencollectionhsequenceopencascadehandlestandardtransient(
+        list: &crate::ffi_types::Handle_NCollection_HSequence_opencascade_handle_Standard_Transient,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKXSBase::Interface_EntityIterator_ctor_handletcolstdhsequenceoftransient(list)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKXSBase::Interface_EntityIterator_ctor_handlencollectionhsequenceopencascadehandlestandardtransient(list)))
         }
     }
 
-    /// **Source:** `Interface_EntityIterator.hxx`:45 - `Interface_EntityIterator::AddList()`
+    /// **Source:** `Interface_EntityIterator.hxx`:48 - `Interface_EntityIterator::AddList()`
     /// Gets a list of entities and adds its to the iteration list
-    pub fn add_list(&mut self, list: &crate::ffi_types::HandleTColStdHSequenceOfTransient) {
+    pub fn add_list(
+        &mut self,
+        list: &crate::ffi_types::Handle_NCollection_HSequence_opencascade_handle_Standard_Transient,
+    ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_EntityIterator_add_list(self as *mut Self, list)
         })
     }
 
-    /// **Source:** `Interface_EntityIterator.hxx`:48 - `Interface_EntityIterator::AddItem()`
+    /// **Source:** `Interface_EntityIterator.hxx`:52 - `Interface_EntityIterator::AddItem()`
     /// Adds to the iteration list a defined entity
-    pub fn add_item(&mut self, anentity: &crate::ffi_types::HandleStandardTransient) {
+    pub fn add_item(&mut self, anentity: &crate::ffi_types::Handle_Standard_Transient) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_EntityIterator_add_item(
                 self as *mut Self,
@@ -3671,9 +3415,9 @@ impl EntityIterator {
         })
     }
 
-    /// **Source:** `Interface_EntityIterator.hxx`:51 - `Interface_EntityIterator::GetOneItem()`
+    /// **Source:** `Interface_EntityIterator.hxx`:55 - `Interface_EntityIterator::GetOneItem()`
     /// same as AddItem (kept for compatibility)
-    pub fn get_one_item(&mut self, anentity: &crate::ffi_types::HandleStandardTransient) {
+    pub fn get_one_item(&mut self, anentity: &crate::ffi_types::Handle_Standard_Transient) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_EntityIterator_get_one_item(
                 self as *mut Self,
@@ -3682,10 +3426,10 @@ impl EntityIterator {
         })
     }
 
-    /// **Source:** `Interface_EntityIterator.hxx`:55 - `Interface_EntityIterator::SelectType()`
-    /// Selects entities with are Kind of a given type,  keep only
+    /// **Source:** `Interface_EntityIterator.hxx`:59 - `Interface_EntityIterator::SelectType()`
+    /// Selects entities with are Kind of a given type, keep only
     /// them (is keep is True) or reject only them (if keep is False)
-    pub fn select_type(&mut self, atype: &crate::ffi_types::HandleStandardType, keep: bool) {
+    pub fn select_type(&mut self, atype: &crate::ffi_types::Handle_Standard_Type, keep: bool) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_EntityIterator_select_type(
                 self as *mut Self,
@@ -3695,7 +3439,7 @@ impl EntityIterator {
         })
     }
 
-    /// **Source:** `Interface_EntityIterator.hxx`:59 - `Interface_EntityIterator::NbEntities()`
+    /// **Source:** `Interface_EntityIterator.hxx`:63 - `Interface_EntityIterator::NbEntities()`
     /// Returns count of entities which will be iterated on
     /// Calls Start if not yet done
     pub fn nb_entities(&self) -> i32 {
@@ -3704,9 +3448,9 @@ impl EntityIterator {
         })
     }
 
-    /// **Source:** `Interface_EntityIterator.hxx`:62 - `Interface_EntityIterator::NbTyped()`
+    /// **Source:** `Interface_EntityIterator.hxx`:66 - `Interface_EntityIterator::NbTyped()`
     /// Returns count of entities of a given type (kind of)
-    pub fn nb_typed(&self, type_: &crate::ffi_types::HandleStandardType) -> i32 {
+    pub fn nb_typed(&self, type_: &crate::ffi_types::Handle_Standard_Type) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_EntityIterator_nb_typed(
                 self as *const Self,
@@ -3715,11 +3459,11 @@ impl EntityIterator {
         })
     }
 
-    /// **Source:** `Interface_EntityIterator.hxx`:65 - `Interface_EntityIterator::Typed()`
+    /// **Source:** `Interface_EntityIterator.hxx`:69 - `Interface_EntityIterator::Typed()`
     /// Returns the list of entities of a given type (kind of)
     pub fn typed(
         &self,
-        type_: &crate::ffi_types::HandleStandardType,
+        type_: &crate::ffi_types::Handle_Standard_Type,
     ) -> crate::OwnedPtr<EntityIterator> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -3731,7 +3475,7 @@ impl EntityIterator {
         }
     }
 
-    /// **Source:** `Interface_EntityIterator.hxx`:68 - `Interface_EntityIterator::Start()`
+    /// **Source:** `Interface_EntityIterator.hxx`:72 - `Interface_EntityIterator::Start()`
     /// Allows re-iteration (useless for the first iteration)
     pub fn start(&self) {
         crate::check_void_result(unsafe {
@@ -3739,7 +3483,7 @@ impl EntityIterator {
         })
     }
 
-    /// **Source:** `Interface_EntityIterator.hxx`:72 - `Interface_EntityIterator::More()`
+    /// **Source:** `Interface_EntityIterator.hxx`:76 - `Interface_EntityIterator::More()`
     /// Says if there are other entities (vertices) to iterate
     /// the first time, calls Start
     pub fn more(&self) -> bool {
@@ -3748,7 +3492,7 @@ impl EntityIterator {
         })
     }
 
-    /// **Source:** `Interface_EntityIterator.hxx`:75 - `Interface_EntityIterator::Next()`
+    /// **Source:** `Interface_EntityIterator.hxx`:79 - `Interface_EntityIterator::Next()`
     /// Sets iteration to the next entity (vertex) to give
     pub fn next(&self) {
         crate::check_void_result(unsafe {
@@ -3756,10 +3500,10 @@ impl EntityIterator {
         })
     }
 
-    /// **Source:** `Interface_EntityIterator.hxx`:79 - `Interface_EntityIterator::Value()`
+    /// **Source:** `Interface_EntityIterator.hxx`:83 - `Interface_EntityIterator::Value()`
     /// Returns the current Entity iterated, to be used by Interface
     /// tools
-    pub fn value(&self) -> &crate::ffi_types::HandleStandardTransient {
+    pub fn value(&self) -> &crate::ffi_types::Handle_Standard_Transient {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKXSBase::Interface_EntityIterator_value(
                 self as *const Self,
@@ -3767,12 +3511,16 @@ impl EntityIterator {
         }
     }
 
-    /// **Source:** `Interface_EntityIterator.hxx`:85 - `Interface_EntityIterator::Content()`
+    /// **Source:** `Interface_EntityIterator.hxx`:89 - `Interface_EntityIterator::Content()`
     /// Returns the content of the Iterator, accessed through a Handle
     /// to be used by a frontal-engine logic
     /// Returns an empty Sequence if the Iterator is empty
     /// Calls Start if not yet done
-    pub fn content(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTColStdHSequenceOfTransient> {
+    pub fn content(
+        &self,
+    ) -> crate::OwnedPtr<
+        crate::ffi_types::Handle_NCollection_HSequence_opencascade_handle_Standard_Transient,
+    > {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKXSBase::Interface_EntityIterator_content(self as *const Self),
@@ -3780,7 +3528,7 @@ impl EntityIterator {
         }
     }
 
-    /// **Source:** `Interface_EntityIterator.hxx`:88 - `Interface_EntityIterator::Destroy()`
+    /// **Source:** `Interface_EntityIterator.hxx`:93 - `Interface_EntityIterator::Destroy()`
     /// Clears data of iteration
     pub fn destroy(&mut self) {
         crate::check_void_result(unsafe {
@@ -3843,7 +3591,7 @@ impl EntityList {
     /// **Source:** `Interface_EntityList.hxx`:58 - `Interface_EntityList::Append()`
     /// Appends an Entity, that is to the END of the list
     /// (keeps order, but works slowerly than Add, see below)
-    pub fn append(&mut self, ent: &crate::ffi_types::HandleStandardTransient) {
+    pub fn append(&mut self, ent: &crate::ffi_types::Handle_Standard_Transient) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_EntityList_append(self as *mut Self, ent)
         })
@@ -3852,7 +3600,7 @@ impl EntityList {
     /// **Source:** `Interface_EntityList.hxx`:62 - `Interface_EntityList::Add()`
     /// Adds an Entity to the list, that is, with NO REGARD about the
     /// order (faster than Append if count becomes greater than 10)
-    pub fn add(&mut self, ent: &crate::ffi_types::HandleStandardTransient) {
+    pub fn add(&mut self, ent: &crate::ffi_types::Handle_Standard_Transient) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_EntityList_add(self as *mut Self, ent)
         })
@@ -3862,7 +3610,7 @@ impl EntityList {
     /// Removes an Entity from the list, if it is there
     pub fn remove_handlestandardtransient(
         &mut self,
-        ent: &crate::ffi_types::HandleStandardTransient,
+        ent: &crate::ffi_types::Handle_Standard_Transient,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_EntityList_remove_handlestandardtransient(
@@ -3899,7 +3647,7 @@ impl EntityList {
     /// **Source:** `Interface_EntityList.hxx`:78 - `Interface_EntityList::Value()`
     /// Returns an Item given its number. Beware about the way the
     /// list was filled (see above, Add and Append)
-    pub fn value(&self, num: i32) -> &crate::ffi_types::HandleStandardTransient {
+    pub fn value(&self, num: i32) -> &crate::ffi_types::Handle_Standard_Transient {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKXSBase::Interface_EntityList_value(
                 self as *const Self,
@@ -3911,7 +3659,7 @@ impl EntityList {
     /// **Source:** `Interface_EntityList.hxx`:82 - `Interface_EntityList::SetValue()`
     /// Returns an Item given its number. Beware about the way the
     /// list was filled (see above, Add and Append)
-    pub fn set_value(&mut self, num: i32, ent: &crate::ffi_types::HandleStandardTransient) {
+    pub fn set_value(&mut self, num: i32, ent: &crate::ffi_types::Handle_Standard_Transient) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_EntityList_set_value(self as *mut Self, num, ent)
         })
@@ -3931,7 +3679,7 @@ impl EntityList {
 
     /// **Source:** `Interface_EntityList.hxx`:89 - `Interface_EntityList::NbTypedEntities()`
     /// Returns count of Entities of a given Type (0 : none)
-    pub fn nb_typed_entities(&self, atype: &crate::ffi_types::HandleStandardType) -> i32 {
+    pub fn nb_typed_entities(&self, atype: &crate::ffi_types::Handle_Standard_Type) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_EntityList_nb_typed_entities(
                 self as *const Self,
@@ -3946,9 +3694,9 @@ impl EntityList {
     /// If num > 0, returns the num-th entity of this type
     pub fn typed_entity(
         &self,
-        atype: &crate::ffi_types::HandleStandardType,
+        atype: &crate::ffi_types::Handle_Standard_Type,
         num: i32,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKXSBase::Interface_EntityList_typed_entity(
@@ -4086,7 +3834,7 @@ impl FileParameter {
 // From Interface_FileReaderData.hxx
 // ========================
 
-/// **Source:** `Interface_FileReaderData.hxx`:51 - `Interface_FileReaderData`
+/// **Source:** `Interface_FileReaderData.hxx`:47 - `Interface_FileReaderData`
 /// This class defines services which permit to access Data issued
 /// from a File, in a form which does not depend of physical
 /// format : thus, each Record has an attached ParamList (to be
@@ -4113,7 +3861,7 @@ unsafe impl crate::CppDeletable for FileReaderData {
 }
 
 impl FileReaderData {
-    /// **Source:** `Interface_FileReaderData.hxx`:57 - `Interface_FileReaderData::NbRecords()`
+    /// **Source:** `Interface_FileReaderData.hxx`:53 - `Interface_FileReaderData::NbRecords()`
     /// Returns the count of registered records
     /// That is, value given for Initialization (can be redefined)
     pub fn nb_records(&self) -> i32 {
@@ -4122,7 +3870,7 @@ impl FileReaderData {
         })
     }
 
-    /// **Source:** `Interface_FileReaderData.hxx`:65 - `Interface_FileReaderData::NbEntities()`
+    /// **Source:** `Interface_FileReaderData.hxx`:61 - `Interface_FileReaderData::NbEntities()`
     /// Returns the count of entities. Depending of each norm, records
     /// can be Entities or SubParts (SubList in STEP, SubGroup in SET
     /// ...). NbEntities counts only Entities, not Subs
@@ -4135,7 +3883,7 @@ impl FileReaderData {
         })
     }
 
-    /// **Source:** `Interface_FileReaderData.hxx`:70 - `Interface_FileReaderData::FindNextRecord()`
+    /// **Source:** `Interface_FileReaderData.hxx`:66 - `Interface_FileReaderData::FindNextRecord()`
     /// Determines the record number defining an Entity following a
     /// given record number. Specific to each sub-class of
     /// FileReaderData. Returning zero means no record found
@@ -4148,7 +3896,7 @@ impl FileReaderData {
         })
     }
 
-    /// **Source:** `Interface_FileReaderData.hxx`:73 - `Interface_FileReaderData::InitParams()`
+    /// **Source:** `Interface_FileReaderData.hxx`:69 - `Interface_FileReaderData::InitParams()`
     /// attaches an empty ParamList to a Record
     pub fn init_params(&mut self, num: i32) {
         crate::check_void_result(unsafe {
@@ -4156,7 +3904,7 @@ impl FileReaderData {
         })
     }
 
-    /// **Source:** `Interface_FileReaderData.hxx`:80 - `Interface_FileReaderData::AddParam()`
+    /// **Source:** `Interface_FileReaderData.hxx`:76 - `Interface_FileReaderData::AddParam()`
     /// Adds a parameter to record no "num" and fills its fields
     /// (EntityNumber is optional)
     /// Warning : <aval> is assumed to be memory-managed elsewhere : it is NOT
@@ -4181,7 +3929,7 @@ impl FileReaderData {
         })
     }
 
-    /// **Source:** `Interface_FileReaderData.hxx`:88 - `Interface_FileReaderData::AddParam()`
+    /// **Source:** `Interface_FileReaderData.hxx`:84 - `Interface_FileReaderData::AddParam()`
     /// Same as above, but gets a AsciiString from TCollection
     /// Remark that the content of the AsciiString is locally copied
     /// (because its content is most often lost after using)
@@ -4197,7 +3945,7 @@ impl FileReaderData {
         })
     }
 
-    /// **Source:** `Interface_FileReaderData.hxx`:96 - `Interface_FileReaderData::AddParam()`
+    /// **Source:** `Interface_FileReaderData.hxx`:92 - `Interface_FileReaderData::AddParam()`
     /// Same as above, but gets a complete FileParameter
     /// Warning : Content of <FP> is NOT copied : its original address and space
     /// in memory are assumed to be managed elsewhere (see ParamSet)
@@ -4211,7 +3959,7 @@ impl FileReaderData {
         })
     }
 
-    /// **Source:** `Interface_FileReaderData.hxx`:100 - `Interface_FileReaderData::SetParam()`
+    /// **Source:** `Interface_FileReaderData.hxx`:96 - `Interface_FileReaderData::SetParam()`
     /// Sets a new value for a parameter of a record, given by :
     /// num : record number; nump : parameter number in the record
     pub fn set_param(&mut self, num: i32, nump: i32, FP: &FileParameter) {
@@ -4225,7 +3973,7 @@ impl FileReaderData {
         })
     }
 
-    /// **Source:** `Interface_FileReaderData.hxx`:106 - `Interface_FileReaderData::NbParams()`
+    /// **Source:** `Interface_FileReaderData.hxx`:100 - `Interface_FileReaderData::NbParams()`
     /// Returns count of parameters attached to record "num"
     /// If <num> = 0, returns the total recorded count of parameters
     pub fn nb_params(&self, num: i32) -> i32 {
@@ -4234,10 +3982,13 @@ impl FileReaderData {
         })
     }
 
-    /// **Source:** `Interface_FileReaderData.hxx`:110 - `Interface_FileReaderData::Params()`
+    /// **Source:** `Interface_FileReaderData.hxx`:104 - `Interface_FileReaderData::Params()`
     /// Returns the complete ParamList of a record (read only)
     /// num = 0 to return the whole param list for the file
-    pub fn params(&self, num: i32) -> crate::OwnedPtr<crate::ffi_types::HandleInterfaceParamList> {
+    pub fn params(
+        &self,
+        num: i32,
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Interface_ParamList> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKXSBase::Interface_FileReaderData_params(
@@ -4248,7 +3999,7 @@ impl FileReaderData {
         }
     }
 
-    /// **Source:** `Interface_FileReaderData.hxx`:114 - `Interface_FileReaderData::Param()`
+    /// **Source:** `Interface_FileReaderData.hxx`:108 - `Interface_FileReaderData::Param()`
     /// Returns parameter "nump" of record "num", as a complete
     /// FileParameter
     pub fn param(&self, num: i32, nump: i32) -> &FileParameter {
@@ -4261,7 +4012,7 @@ impl FileReaderData {
         }
     }
 
-    /// **Source:** `Interface_FileReaderData.hxx`:118 - `Interface_FileReaderData::ChangeParam()`
+    /// **Source:** `Interface_FileReaderData.hxx`:111 - `Interface_FileReaderData::ChangeParam()`
     /// Same as above, but in order to be modified on place
     pub fn change_param(&mut self, num: i32, nump: i32) -> &mut FileParameter {
         unsafe {
@@ -4275,7 +4026,7 @@ impl FileReaderData {
         }
     }
 
-    /// **Source:** `Interface_FileReaderData.hxx`:124 - `Interface_FileReaderData::ParamType()`
+    /// **Source:** `Interface_FileReaderData.hxx`:116 - `Interface_FileReaderData::ParamType()`
     /// Returns type of parameter "nump" of record "num"
     /// Returns literal value of parameter "nump" of record "num"
     /// was C++ : return const &
@@ -4290,7 +4041,7 @@ impl FileReaderData {
         .unwrap()
     }
 
-    /// **Source:** `Interface_FileReaderData.hxx`:129 - `Interface_FileReaderData::ParamCValue()`
+    /// **Source:** `Interface_FileReaderData.hxx`:120 - `Interface_FileReaderData::ParamCValue()`
     /// Same as above, but as a CString
     /// was C++ : return const
     pub fn param_c_value(&self, num: i32, nump: i32) -> std::string::String {
@@ -4307,7 +4058,7 @@ impl FileReaderData {
         .into_owned()
     }
 
-    /// **Source:** `Interface_FileReaderData.hxx`:134 - `Interface_FileReaderData::IsParamDefined()`
+    /// **Source:** `Interface_FileReaderData.hxx`:124 - `Interface_FileReaderData::IsParamDefined()`
     /// Returns True if parameter "nump" of record "num" is defined
     /// (it is not if its type is ParamVoid)
     pub fn is_param_defined(&self, num: i32, nump: i32) -> bool {
@@ -4320,7 +4071,7 @@ impl FileReaderData {
         })
     }
 
-    /// **Source:** `Interface_FileReaderData.hxx`:141 - `Interface_FileReaderData::ParamNumber()`
+    /// **Source:** `Interface_FileReaderData.hxx`:130 - `Interface_FileReaderData::ParamNumber()`
     /// Returns record number of an entity referenced by a parameter
     /// of type Ident; 0 if no EntityNumber has been determined
     /// Note that it is used to reference Entities but also Sublists
@@ -4335,10 +4086,14 @@ impl FileReaderData {
         })
     }
 
-    /// **Source:** `Interface_FileReaderData.hxx`:146 - `Interface_FileReaderData::ParamEntity()`
+    /// **Source:** `Interface_FileReaderData.hxx`:134 - `Interface_FileReaderData::ParamEntity()`
     /// Returns the StepEntity referenced by a parameter
     /// Error if none
-    pub fn param_entity(&self, num: i32, nump: i32) -> &crate::ffi_types::HandleStandardTransient {
+    pub fn param_entity(
+        &self,
+        num: i32,
+        nump: i32,
+    ) -> &crate::ffi_types::Handle_Standard_Transient {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKXSBase::Interface_FileReaderData_param_entity(
@@ -4350,7 +4105,7 @@ impl FileReaderData {
         }
     }
 
-    /// **Source:** `Interface_FileReaderData.hxx`:151 - `Interface_FileReaderData::ParamFirstRank()`
+    /// **Source:** `Interface_FileReaderData.hxx`:139 - `Interface_FileReaderData::ParamFirstRank()`
     /// Returns the absolute rank of the beginning of a record
     /// (its list is from ParamFirstRank+1 to ParamFirstRank+NbParams)
     pub fn param_first_rank(&self, num: i32) -> i32 {
@@ -4362,9 +4117,9 @@ impl FileReaderData {
         })
     }
 
-    /// **Source:** `Interface_FileReaderData.hxx`:154 - `Interface_FileReaderData::BoundEntity()`
+    /// **Source:** `Interface_FileReaderData.hxx`:142 - `Interface_FileReaderData::BoundEntity()`
     /// Returns the entity bound to a record, set by SetEntities
-    pub fn bound_entity(&self, num: i32) -> &crate::ffi_types::HandleStandardTransient {
+    pub fn bound_entity(&self, num: i32) -> &crate::ffi_types::Handle_Standard_Transient {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKXSBase::Interface_FileReaderData_bound_entity(
@@ -4375,9 +4130,9 @@ impl FileReaderData {
         }
     }
 
-    /// **Source:** `Interface_FileReaderData.hxx`:157 - `Interface_FileReaderData::BindEntity()`
+    /// **Source:** `Interface_FileReaderData.hxx`:145 - `Interface_FileReaderData::BindEntity()`
     /// Binds an entity to a record
-    pub fn bind_entity(&mut self, num: i32, ent: &crate::ffi_types::HandleStandardTransient) {
+    pub fn bind_entity(&mut self, num: i32, ent: &crate::ffi_types::Handle_Standard_Transient) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_FileReaderData_bind_entity(
                 self as *mut Self,
@@ -4387,7 +4142,7 @@ impl FileReaderData {
         })
     }
 
-    /// **Source:** `Interface_FileReaderData.hxx`:169 - `Interface_FileReaderData::SetErrorLoad()`
+    /// **Source:** `Interface_FileReaderData.hxx`:156 - `Interface_FileReaderData::SetErrorLoad()`
     /// Sets the status "Error Load" on, to overside check fails
     /// <val> True  : declares unloaded
     /// <val> False : declares loaded
@@ -4406,7 +4161,7 @@ impl FileReaderData {
         })
     }
 
-    /// **Source:** `Interface_FileReaderData.hxx`:173 - `Interface_FileReaderData::IsErrorLoad()`
+    /// **Source:** `Interface_FileReaderData.hxx`:160 - `Interface_FileReaderData::IsErrorLoad()`
     /// Returns True if the status "Error Load" has been set (to True
     /// or False)
     pub fn is_error_load(&self) -> bool {
@@ -4415,7 +4170,7 @@ impl FileReaderData {
         })
     }
 
-    /// **Source:** `Interface_FileReaderData.hxx`:177 - `Interface_FileReaderData::ResetErrorLoad()`
+    /// **Source:** `Interface_FileReaderData.hxx`:164 - `Interface_FileReaderData::ResetErrorLoad()`
     /// Returns the former value of status "Error Load" then resets it
     /// Used to read the status then ensure it is reset
     pub fn reset_error_load(&mut self) -> bool {
@@ -4424,7 +4179,7 @@ impl FileReaderData {
         })
     }
 
-    /// **Source:** `Interface_FileReaderData.hxx`:180 - `Interface_FileReaderData::Destroy()`
+    /// **Source:** `Interface_FileReaderData.hxx`:167 - `Interface_FileReaderData::Destroy()`
     /// Destructor (waiting for memory management)
     pub fn destroy(&mut self) {
         crate::check_void_result(unsafe {
@@ -4432,8 +4187,8 @@ impl FileReaderData {
         })
     }
 
-    /// **Source:** `Interface_FileReaderData.hxx`:187 - `Interface_FileReaderData::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `Interface_FileReaderData.hxx`:174 - `Interface_FileReaderData::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKXSBase::Interface_FileReaderData_dynamic_type(
@@ -4443,7 +4198,7 @@ impl FileReaderData {
         }
     }
 
-    /// **Source:** `Interface_FileReaderData.hxx`:185 - `Interface_FileReaderData::Fastof()`
+    /// **Source:** `Interface_FileReaderData.hxx`:172 - `Interface_FileReaderData::Fastof()`
     /// Same spec.s as standard <atof> but 5 times faster
     pub fn fastof(str: &str) -> f64 {
         let c_str = std::ffi::CString::new(str).unwrap();
@@ -4452,7 +4207,7 @@ impl FileReaderData {
         })
     }
 
-    /// **Source:** `Interface_FileReaderData.hxx`:187 - `Interface_FileReaderData::get_type_name()`
+    /// **Source:** `Interface_FileReaderData.hxx`:174 - `Interface_FileReaderData::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -4463,8 +4218,8 @@ impl FileReaderData {
         .into_owned()
     }
 
-    /// **Source:** `Interface_FileReaderData.hxx`:187 - `Interface_FileReaderData::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    /// **Source:** `Interface_FileReaderData.hxx`:174 - `Interface_FileReaderData::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKXSBase::Interface_FileReaderData_get_type_descriptor(),
@@ -4494,8 +4249,8 @@ impl FileReaderData {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_FileReaderData_inherited_IsInstance(
                 self as *const Self,
@@ -4504,8 +4259,8 @@ impl FileReaderData {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_FileReaderData_inherited_IsKind(
                 self as *const Self,
@@ -4514,7 +4269,7 @@ impl FileReaderData {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -4530,7 +4285,7 @@ impl FileReaderData {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_FileReaderData_inherited_GetRefCount(
@@ -4539,7 +4294,7 @@ impl FileReaderData {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_FileReaderData_inherited_IncrementRefCounter(
@@ -4548,7 +4303,7 @@ impl FileReaderData {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_FileReaderData_inherited_DecrementRefCounter(
@@ -4557,7 +4312,7 @@ impl FileReaderData {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_FileReaderData_inherited_Delete(
@@ -4567,38 +4322,38 @@ impl FileReaderData {
     }
 }
 
-pub use crate::ffi_types::HandleInterfaceFileReaderData;
+pub use crate::ffi_types::Handle_Interface_FileReaderData;
 
-unsafe impl crate::CppDeletable for HandleInterfaceFileReaderData {
+unsafe impl crate::CppDeletable for Handle_Interface_FileReaderData {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKXSBase::HandleInterfaceFileReaderData_destructor(ptr);
+            crate::ffi_extern_TKXSBase::Handle_Interface_FileReaderData_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleInterfaceFileReaderData {
+unsafe impl crate::CppCopyable for Handle_Interface_FileReaderData {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
         unsafe {
-            crate::check_result(crate::ffi_extern_TKXSBase::HandleInterfaceFileReaderData_clone(
+            crate::check_result(crate::ffi_extern_TKXSBase::Handle_Interface_FileReaderData_clone(
                 ptr,
             ))
         }
     }
 }
 
-impl HandleInterfaceFileReaderData {
+impl Handle_Interface_FileReaderData {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
         unsafe {
-            crate::ffi_extern_TKXSBase::HandleInterfaceFileReaderData_is_null(self as *const Self)
+            crate::ffi_extern_TKXSBase::Handle_Interface_FileReaderData_is_null(self as *const Self)
         }
     }
 
     /// Dereference this Handle to access the underlying Interface_FileReaderData
     pub fn get(&self) -> &crate::ffi_types::Interface_FileReaderData {
         unsafe {
-            &*crate::check_result(crate::ffi_extern_TKXSBase::HandleInterfaceFileReaderData_get(
+            &*crate::check_result(crate::ffi_extern_TKXSBase::Handle_Interface_FileReaderData_get(
                 self as *const Self,
             ))
         }
@@ -4608,7 +4363,7 @@ impl HandleInterfaceFileReaderData {
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::Interface_FileReaderData {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi_extern_TKXSBase::HandleInterfaceFileReaderData_get_mut(
+                crate::ffi_extern_TKXSBase::Handle_Interface_FileReaderData_get_mut(
                     self as *mut Self,
                 ),
             )
@@ -4618,9 +4373,9 @@ impl HandleInterfaceFileReaderData {
     /// Upcast Handle<Interface_FileReaderData> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKXSBase::HandleInterfaceFileReaderData_to_HandleStandardTransient(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKXSBase::Handle_Interface_FileReaderData_to_Handle_Standard_Transient(self as *const Self)))
         }
     }
 
@@ -4629,9 +4384,9 @@ impl HandleInterfaceFileReaderData {
     /// Returns `None` if the handle does not point to a `IGESData_IGESReaderData` (or subclass).
     pub fn downcast_to_iges_reader_data(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleIGESDataIGESReaderData>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_IGESData_IGESReaderData>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKXSBase::HandleInterfaceFileReaderData_downcast_to_HandleIGESDataIGESReaderData(self as *const Self)
+            crate::ffi_extern_TKXSBase::Handle_Interface_FileReaderData_downcast_to_Handle_IGESData_IGESReaderData(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -4645,9 +4400,9 @@ impl HandleInterfaceFileReaderData {
     /// Returns `None` if the handle does not point to a `StepData_StepReaderData` (or subclass).
     pub fn downcast_to_step_reader_data(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleStepDataStepReaderData>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_StepData_StepReaderData>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKXSBase::HandleInterfaceFileReaderData_downcast_to_HandleStepDataStepReaderData(self as *const Self)
+            crate::ffi_extern_TKXSBase::Handle_Interface_FileReaderData_downcast_to_Handle_StepData_StepReaderData(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -4661,7 +4416,7 @@ impl HandleInterfaceFileReaderData {
 // From Interface_FileReaderTool.hxx
 // ========================
 
-/// **Source:** `Interface_FileReaderTool.hxx`:48 - `Interface_FileReaderTool`
+/// **Source:** `Interface_FileReaderTool.hxx`:50 - `Interface_FileReaderTool`
 /// Defines services which are required to load an InterfaceModel
 /// from a File. Typically, it may firstly transform a system
 /// file into a FileReaderData object, then work on it, not longer
@@ -4686,12 +4441,12 @@ unsafe impl crate::CppDeletable for FileReaderTool {
 }
 
 impl FileReaderTool {
-    /// **Source:** `Interface_FileReaderTool.hxx`:54 - `Interface_FileReaderTool::SetData()`
+    /// **Source:** `Interface_FileReaderTool.hxx`:56 - `Interface_FileReaderTool::SetData()`
     /// Sets Data to a FileReaderData. Works with a Protocol
     pub fn set_data(
         &mut self,
-        reader: &crate::ffi_types::HandleInterfaceFileReaderData,
-        protocol: &crate::ffi_types::HandleInterfaceProtocol,
+        reader: &crate::ffi_types::Handle_Interface_FileReaderData,
+        protocol: &crate::ffi_types::Handle_Interface_Protocol,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_FileReaderTool_set_data(
@@ -4702,9 +4457,9 @@ impl FileReaderTool {
         })
     }
 
-    /// **Source:** `Interface_FileReaderTool.hxx`:58 - `Interface_FileReaderTool::Protocol()`
+    /// **Source:** `Interface_FileReaderTool.hxx`:60 - `Interface_FileReaderTool::Protocol()`
     /// Returns the Protocol given at creation time
-    pub fn protocol(&self) -> crate::OwnedPtr<crate::ffi_types::HandleInterfaceProtocol> {
+    pub fn protocol(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_Interface_Protocol> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKXSBase::Interface_FileReaderTool_protocol(self as *const Self),
@@ -4712,9 +4467,9 @@ impl FileReaderTool {
         }
     }
 
-    /// **Source:** `Interface_FileReaderTool.hxx`:61 - `Interface_FileReaderTool::Data()`
+    /// **Source:** `Interface_FileReaderTool.hxx`:63 - `Interface_FileReaderTool::Data()`
     /// Returns the FileReaderData which is used to work
-    pub fn data(&self) -> crate::OwnedPtr<crate::ffi_types::HandleInterfaceFileReaderData> {
+    pub fn data(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_Interface_FileReaderData> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKXSBase::Interface_FileReaderTool_data(self as *const Self),
@@ -4722,9 +4477,9 @@ impl FileReaderTool {
         }
     }
 
-    /// **Source:** `Interface_FileReaderTool.hxx`:64 - `Interface_FileReaderTool::SetModel()`
+    /// **Source:** `Interface_FileReaderTool.hxx`:66 - `Interface_FileReaderTool::SetModel()`
     /// Stores a Model. Used when the Model has been loaded
-    pub fn set_model(&mut self, amodel: &crate::ffi_types::HandleInterfaceInterfaceModel) {
+    pub fn set_model(&mut self, amodel: &crate::ffi_types::Handle_Interface_InterfaceModel) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_FileReaderTool_set_model(
                 self as *mut Self,
@@ -4733,9 +4488,9 @@ impl FileReaderTool {
         })
     }
 
-    /// **Source:** `Interface_FileReaderTool.hxx`:67 - `Interface_FileReaderTool::Model()`
+    /// **Source:** `Interface_FileReaderTool.hxx`:69 - `Interface_FileReaderTool::Model()`
     /// Returns the stored Model
-    pub fn model(&self) -> crate::OwnedPtr<crate::ffi_types::HandleInterfaceInterfaceModel> {
+    pub fn model(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_Interface_InterfaceModel> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKXSBase::Interface_FileReaderTool_model(self as *const Self),
@@ -4743,9 +4498,9 @@ impl FileReaderTool {
         }
     }
 
-    /// **Source:** `Interface_FileReaderTool.hxx`:70 - `Interface_FileReaderTool::SetMessenger()`
+    /// **Source:** `Interface_FileReaderTool.hxx`:72 - `Interface_FileReaderTool::SetMessenger()`
     /// Sets Messenger used for outputting messages
-    pub fn set_messenger(&mut self, messenger: &crate::ffi_types::HandleMessageMessenger) {
+    pub fn set_messenger(&mut self, messenger: &crate::ffi_types::Handle_Message_Messenger) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_FileReaderTool_set_messenger(
                 self as *mut Self,
@@ -4754,11 +4509,11 @@ impl FileReaderTool {
         })
     }
 
-    /// **Source:** `Interface_FileReaderTool.hxx`:75 - `Interface_FileReaderTool::Messenger()`
+    /// **Source:** `Interface_FileReaderTool.hxx`:77 - `Interface_FileReaderTool::Messenger()`
     /// Returns Messenger used for outputting messages.
     /// The returned object is guaranteed to be non-null;
     /// default is Message::Messenger().
-    pub fn messenger(&self) -> crate::OwnedPtr<crate::ffi_types::HandleMessageMessenger> {
+    pub fn messenger(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_Message_Messenger> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKXSBase::Interface_FileReaderTool_messenger(self as *const Self),
@@ -4766,7 +4521,7 @@ impl FileReaderTool {
         }
     }
 
-    /// **Source:** `Interface_FileReaderTool.hxx`:83 - `Interface_FileReaderTool::SetTraceLevel()`
+    /// **Source:** `Interface_FileReaderTool.hxx`:85 - `Interface_FileReaderTool::SetTraceLevel()`
     /// Sets trace level used for outputting messages
     /// - 0: no trace at all
     /// - 1: errors
@@ -4782,7 +4537,7 @@ impl FileReaderTool {
         })
     }
 
-    /// **Source:** `Interface_FileReaderTool.hxx`:86 - `Interface_FileReaderTool::TraceLevel()`
+    /// **Source:** `Interface_FileReaderTool.hxx`:88 - `Interface_FileReaderTool::TraceLevel()`
     /// Returns trace level used for outputting messages.
     pub fn trace_level(&self) -> i32 {
         crate::check_result(unsafe {
@@ -4790,7 +4545,7 @@ impl FileReaderTool {
         })
     }
 
-    /// **Source:** `Interface_FileReaderTool.hxx`:93 - `Interface_FileReaderTool::SetErrorHandle()`
+    /// **Source:** `Interface_FileReaderTool.hxx`:95 - `Interface_FileReaderTool::SetErrorHandle()`
     /// Allows controlling whether exception raisings are handled
     /// If err is False, they are not (hence, dbx can take control)
     /// If err is True, they are, and they are traced
@@ -4805,7 +4560,7 @@ impl FileReaderTool {
         })
     }
 
-    /// **Source:** `Interface_FileReaderTool.hxx`:96 - `Interface_FileReaderTool::ErrorHandle()`
+    /// **Source:** `Interface_FileReaderTool.hxx`:98 - `Interface_FileReaderTool::ErrorHandle()`
     /// Returns ErrorHandle flag
     pub fn error_handle(&self) -> bool {
         crate::check_result(unsafe {
@@ -4813,7 +4568,7 @@ impl FileReaderTool {
         })
     }
 
-    /// **Source:** `Interface_FileReaderTool.hxx`:102 - `Interface_FileReaderTool::SetEntities()`
+    /// **Source:** `Interface_FileReaderTool.hxx`:104 - `Interface_FileReaderTool::SetEntities()`
     /// Fills records with empty entities; once done, each entity can
     /// ask the FileReaderTool for any entity referenced through an
     /// identifier. Calls Recognize which is specific to each specific
@@ -4824,7 +4579,7 @@ impl FileReaderTool {
         })
     }
 
-    /// **Source:** `Interface_FileReaderTool.hxx`:114 - `Interface_FileReaderTool::Recognize()`
+    /// **Source:** `Interface_FileReaderTool.hxx`:116 - `Interface_FileReaderTool::Recognize()`
     /// Recognizes a record, given its number. Specific to each
     /// Interface; called by SetEntities. It can call the basic method
     /// RecognizeByLib.
@@ -4838,8 +4593,8 @@ impl FileReaderTool {
     pub fn recognize(
         &mut self,
         num: i32,
-        ach: &mut crate::ffi_types::HandleInterfaceCheck,
-        ent: &mut crate::ffi_types::HandleStandardTransient,
+        ach: &mut crate::ffi_types::Handle_Interface_Check,
+        ent: &mut crate::ffi_types::Handle_Standard_Transient,
     ) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_FileReaderTool_recognize(
@@ -4851,7 +4606,7 @@ impl FileReaderTool {
         })
     }
 
-    /// **Source:** `Interface_FileReaderTool.hxx`:127 - `Interface_FileReaderTool::RecognizeByLib()`
+    /// **Source:** `Interface_FileReaderTool.hxx`:129 - `Interface_FileReaderTool::RecognizeByLib()`
     /// Recognizes a record with the help of Libraries. Can be used
     /// to implement the method Recognize.
     /// <rlib> is used to find Protocol and CaseNumber to apply
@@ -4866,8 +4621,8 @@ impl FileReaderTool {
         num: i32,
         glib: &mut GeneralLib,
         rlib: &mut ReaderLib,
-        ach: &mut crate::ffi_types::HandleInterfaceCheck,
-        ent: &mut crate::ffi_types::HandleStandardTransient,
+        ach: &mut crate::ffi_types::Handle_Interface_Check,
+        ent: &mut crate::ffi_types::Handle_Standard_Transient,
     ) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_FileReaderTool_recognize_by_lib(
@@ -4881,13 +4636,13 @@ impl FileReaderTool {
         })
     }
 
-    /// **Source:** `Interface_FileReaderTool.hxx`:138 - `Interface_FileReaderTool::UnknownEntity()`
+    /// **Source:** `Interface_FileReaderTool.hxx`:140 - `Interface_FileReaderTool::UnknownEntity()`
     /// Provides an unknown entity, specific to the Interface
     /// called by SetEntities when Recognize has failed (Unknown alone)
     /// or by LoadModel when an Entity has caused a Fail on reading
     /// (to keep at least its literal description)
     /// Uses Protocol to do it
-    pub fn unknown_entity(&self) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    pub fn unknown_entity(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKXSBase::Interface_FileReaderTool_unknown_entity(
@@ -4897,9 +4652,9 @@ impl FileReaderTool {
         }
     }
 
-    /// **Source:** `Interface_FileReaderTool.hxx`:141 - `Interface_FileReaderTool::NewModel()`
+    /// **Source:** `Interface_FileReaderTool.hxx`:143 - `Interface_FileReaderTool::NewModel()`
     /// Creates an empty Model of the norm. Uses Protocol to do it
-    pub fn new_model(&self) -> crate::OwnedPtr<crate::ffi_types::HandleInterfaceInterfaceModel> {
+    pub fn new_model(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_Interface_InterfaceModel> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKXSBase::Interface_FileReaderTool_new_model(self as *const Self),
@@ -4907,7 +4662,7 @@ impl FileReaderTool {
         }
     }
 
-    /// **Source:** `Interface_FileReaderTool.hxx`:152 - `Interface_FileReaderTool::LoadModel()`
+    /// **Source:** `Interface_FileReaderTool.hxx`:154 - `Interface_FileReaderTool::LoadModel()`
     /// Reads and fills Entities from the FileReaderData set by
     /// SetData to an InterfaceModel.
     /// It enchains required operations, the specific ones correspond
@@ -4917,7 +4672,7 @@ impl FileReaderTool {
     /// It Can raise any error which can occur during a load
     /// operation, unless Error Handling is set.
     /// This method can also be redefined if judged necessary.
-    pub fn load_model(&mut self, amodel: &crate::ffi_types::HandleInterfaceInterfaceModel) {
+    pub fn load_model(&mut self, amodel: &crate::ffi_types::Handle_Interface_InterfaceModel) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_FileReaderTool_load_model(
                 self as *mut Self,
@@ -4926,7 +4681,7 @@ impl FileReaderTool {
         })
     }
 
-    /// **Source:** `Interface_FileReaderTool.hxx`:158 - `Interface_FileReaderTool::LoadedEntity()`
+    /// **Source:** `Interface_FileReaderTool.hxx`:160 - `Interface_FileReaderTool::LoadedEntity()`
     /// Reads, Fills and Returns one Entity read from a Record of the
     /// FileReaderData. This Method manages also case of Fail or
     /// Warning, by producing a ReportEntyty plus , for a Fail, a
@@ -4934,7 +4689,7 @@ impl FileReaderTool {
     pub fn loaded_entity(
         &mut self,
         num: i32,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKXSBase::Interface_FileReaderTool_loaded_entity(
@@ -4945,11 +4700,11 @@ impl FileReaderTool {
         }
     }
 
-    /// **Source:** `Interface_FileReaderTool.hxx`:163 - `Interface_FileReaderTool::BeginRead()`
+    /// **Source:** `Interface_FileReaderTool.hxx`:165 - `Interface_FileReaderTool::BeginRead()`
     /// Fills model's header; each Interface defines for its Model its
     /// own file header; this method fills it from FileReaderTool.+
     /// It is called by AnalyseFile from InterfaceModel
-    pub fn begin_read(&mut self, amodel: &crate::ffi_types::HandleInterfaceInterfaceModel) {
+    pub fn begin_read(&mut self, amodel: &crate::ffi_types::Handle_Interface_InterfaceModel) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_FileReaderTool_begin_read(
                 self as *mut Self,
@@ -4958,13 +4713,13 @@ impl FileReaderTool {
         })
     }
 
-    /// **Source:** `Interface_FileReaderTool.hxx`:177 - `Interface_FileReaderTool::AnalyseRecord()`
+    /// **Source:** `Interface_FileReaderTool.hxx`:179 - `Interface_FileReaderTool::AnalyseRecord()`
     /// Fills an Entity, given record no; specific to each Interface,
     /// called by AnalyseFile from InterfaceModel (which manages its
     /// calling arguments)
     /// To work, each Interface can define a method in its proper
     /// Transient class, like this (given as an example) :
-    /// AnalyseRecord (me  : mutable; FR     : in out FileReaderTool;
+    /// AnalyseRecord (me : mutable; FR : in out FileReaderTool;
     /// num : Integer; acheck : in out Check)
     /// returns Boolean;
     /// and call it from AnalyseRecord
@@ -4974,8 +4729,8 @@ impl FileReaderTool {
     pub fn analyse_record(
         &mut self,
         num: i32,
-        anent: &crate::ffi_types::HandleStandardTransient,
-        acheck: &mut crate::ffi_types::HandleInterfaceCheck,
+        anent: &crate::ffi_types::Handle_Standard_Transient,
+        acheck: &mut crate::ffi_types::Handle_Interface_Check,
     ) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_FileReaderTool_analyse_record(
@@ -4987,16 +4742,16 @@ impl FileReaderTool {
         })
     }
 
-    /// **Source:** `Interface_FileReaderTool.hxx`:185 - `Interface_FileReaderTool::EndRead()`
+    /// **Source:** `Interface_FileReaderTool.hxx`:187 - `Interface_FileReaderTool::EndRead()`
     /// Ends file reading after reading all the entities
     /// default is doing nothing; redefinable as necessary
-    pub fn end_read(&mut self, amodel: &crate::ffi_types::HandleInterfaceInterfaceModel) {
+    pub fn end_read(&mut self, amodel: &crate::ffi_types::Handle_Interface_InterfaceModel) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_FileReaderTool_end_read(self as *mut Self, amodel)
         })
     }
 
-    /// **Source:** `Interface_FileReaderTool.hxx`:188 - `Interface_FileReaderTool::Clear()`
+    /// **Source:** `Interface_FileReaderTool.hxx`:190 - `Interface_FileReaderTool::Clear()`
     /// Clear fields
     pub fn clear(&mut self) {
         crate::check_void_result(unsafe {
@@ -5012,11 +4767,11 @@ impl FileReaderTool {
 /// **Source:** `Interface_FloatWriter.hxx`:34 - `Interface_FloatWriter`
 /// This class converts a floating number (Real) to a string
 /// It can be used if the standard C-C++ output functions
-/// (sprintf or std::cout<<) are not convenient. That is to say :
+/// (Sprintf or std::cout<<) are not convenient. That is to say :
 /// - to suppress trailing '0' and 'E+00' (if desired)
 /// - to control exponent output and floating point output
 ///
-/// Formats are given in the form used by printf-sprintf
+/// Formats are given in the form used by printf-Sprintf
 pub use crate::ffi_types::Interface_FloatWriter as FloatWriter;
 
 unsafe impl crate::CppDeletable for FloatWriter {
@@ -5029,7 +4784,7 @@ unsafe impl crate::CppDeletable for FloatWriter {
 
 impl FloatWriter {
     /// **Source:** `Interface_FloatWriter.hxx`:46 - `Interface_FloatWriter::Interface_FloatWriter()`
-    /// Creates a FloatWriter ready to work, with default options  -
+    /// Creates a FloatWriter ready to work, with default options
     /// - zero suppress option is set
     /// - main format is set to "%E"
     /// - secondary format is set to "%f" for values between 0.1 and
@@ -5045,7 +4800,7 @@ impl FloatWriter {
     }
 
     /// **Source:** `Interface_FloatWriter.hxx`:46 - `Interface_FloatWriter::Interface_FloatWriter()`
-    /// Creates a FloatWriter ready to work, with default options  -
+    /// Creates a FloatWriter ready to work, with default options
     /// - zero suppress option is set
     /// - main format is set to "%E"
     /// - secondary format is set to "%f" for values between 0.1 and
@@ -5072,7 +4827,7 @@ impl FloatWriter {
         })
     }
 
-    /// **Source:** `Interface_FloatWriter.hxx`:61 - `Interface_FloatWriter::SetFormatForRange()`
+    /// **Source:** `Interface_FloatWriter.hxx`:60 - `Interface_FloatWriter::SetFormatForRange()`
     /// Sets a secondary Format for Real, to be applied between R1 and
     /// R2 (in absolute values). A Call to SetRealForm cancels this
     /// secondary form if <reset> is True.
@@ -5091,7 +4846,7 @@ impl FloatWriter {
         })
     }
 
-    /// **Source:** `Interface_FloatWriter.hxx`:70 - `Interface_FloatWriter::SetZeroSuppress()`
+    /// **Source:** `Interface_FloatWriter.hxx`:67 - `Interface_FloatWriter::SetZeroSuppress()`
     /// Sets Sending Real Parameters to suppress trailing Zeros and
     /// Null Exponent ("E+00"), if <mode> is given True, Resets this
     /// mode if <mode> is False (in addition to Real Forms)
@@ -5106,7 +4861,7 @@ impl FloatWriter {
         })
     }
 
-    /// **Source:** `Interface_FloatWriter.hxx`:73 - `Interface_FloatWriter::SetDefaults()`
+    /// **Source:** `Interface_FloatWriter.hxx`:70 - `Interface_FloatWriter::SetDefaults()`
     /// Sets again options to the defaults given by Create
     pub fn set_defaults(&mut self, chars: i32) {
         crate::check_void_result(unsafe {
@@ -5114,7 +4869,7 @@ impl FloatWriter {
         })
     }
 
-    /// **Source:** `Interface_FloatWriter.hxx`:78 - `Interface_FloatWriter::Options()`
+    /// **Source:** `Interface_FloatWriter.hxx`:75 - `Interface_FloatWriter::Options()`
     /// Returns active options : <zerosup> is the option ZeroSuppress,
     /// <range> is True if a range is set, False else
     /// R1,R2 give the range (if it is set)
@@ -5130,7 +4885,7 @@ impl FloatWriter {
         })
     }
 
-    /// **Source:** `Interface_FloatWriter.hxx`:85 - `Interface_FloatWriter::MainFormat()`
+    /// **Source:** `Interface_FloatWriter.hxx`:79 - `Interface_FloatWriter::MainFormat()`
     /// Returns the main format
     /// was C++ : return const
     pub fn main_format(&self) -> std::string::String {
@@ -5143,7 +4898,7 @@ impl FloatWriter {
         .into_owned()
     }
 
-    /// **Source:** `Interface_FloatWriter.hxx`:90 - `Interface_FloatWriter::FormatForRange()`
+    /// **Source:** `Interface_FloatWriter.hxx`:84 - `Interface_FloatWriter::FormatForRange()`
     /// Returns the format for range, if set
     /// Meaningful only if <range> from Options is True
     /// was C++ : return const
@@ -5159,7 +4914,7 @@ impl FloatWriter {
         .into_owned()
     }
 
-    /// **Source:** `Interface_FloatWriter.hxx`:97 - `Interface_FloatWriter::Write()`
+    /// **Source:** `Interface_FloatWriter.hxx`:91 - `Interface_FloatWriter::Write()`
     /// Writes a Real value <val> to a string <text> by using the
     /// options. Returns the useful Length of produced string.
     /// It calls the class method Convert.
@@ -5176,7 +4931,7 @@ impl FloatWriter {
         })
     }
 
-    /// **Source:** `Interface_FloatWriter.hxx`:103 - `Interface_FloatWriter::Convert()`
+    /// **Source:** `Interface_FloatWriter.hxx`:96 - `Interface_FloatWriter::Convert()`
     /// This class method converts a Real Value to a string, given
     /// options given as arguments. It can be called independently.
     /// Warning : even if declared in, content of <text> will be modified
@@ -5210,7 +4965,7 @@ impl FloatWriter {
 // From Interface_GTool.hxx
 // ========================
 
-/// **Source:** `Interface_GTool.hxx`:42 - `Interface_GTool`
+/// **Source:** `Interface_GTool.hxx`:39 - `Interface_GTool`
 /// GTool - General Tool for a Model
 /// Provides the functions performed by Protocol/GeneralModule for
 /// entities of a Model, and recorded in a GeneralLib
@@ -5228,7 +4983,7 @@ unsafe impl crate::CppDeletable for GTool {
 }
 
 impl GTool {
-    /// **Source:** `Interface_GTool.hxx`:47 - `Interface_GTool::Interface_GTool()`
+    /// **Source:** `Interface_GTool.hxx`:44 - `Interface_GTool::Interface_GTool()`
     /// Creates an empty, not set, GTool
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
@@ -5238,11 +4993,11 @@ impl GTool {
         }
     }
 
-    /// **Source:** `Interface_GTool.hxx`:51 - `Interface_GTool::Interface_GTool()`
+    /// **Source:** `Interface_GTool.hxx`:48 - `Interface_GTool::Interface_GTool()`
     /// Creates a GTool from a Protocol
     /// Optional starting count of entities
     pub fn new_handleinterfaceprotocol_int(
-        proto: &crate::ffi_types::HandleInterfaceProtocol,
+        proto: &crate::ffi_types::Handle_Interface_Protocol,
         nbent: i32,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -5254,26 +5009,26 @@ impl GTool {
         }
     }
 
-    /// **Source:** `Interface_GTool.hxx`:51 - `Interface_GTool::Interface_GTool()`
+    /// **Source:** `Interface_GTool.hxx`:48 - `Interface_GTool::Interface_GTool()`
     /// Creates a GTool from a Protocol
     /// Optional starting count of entities
     pub fn new_handleinterfaceprotocol(
-        proto: &crate::ffi_types::HandleInterfaceProtocol,
+        proto: &crate::ffi_types::Handle_Interface_Protocol,
     ) -> crate::OwnedPtr<Self> {
         Self::new_handleinterfaceprotocol_int(proto, 0)
     }
 
-    /// **Source:** `Interface_GTool.hxx`:55 - `Interface_GTool::SetSignType()`
+    /// **Source:** `Interface_GTool.hxx`:52 - `Interface_GTool::SetSignType()`
     /// Sets a new SignType
-    pub fn set_sign_type(&mut self, sign: &crate::ffi_types::HandleInterfaceSignType) {
+    pub fn set_sign_type(&mut self, sign: &crate::ffi_types::Handle_Interface_SignType) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_GTool_set_sign_type(self as *mut Self, sign)
         })
     }
 
-    /// **Source:** `Interface_GTool.hxx`:58 - `Interface_GTool::SignType()`
+    /// **Source:** `Interface_GTool.hxx`:55 - `Interface_GTool::SignType()`
     /// Returns the SignType. Can be null
-    pub fn sign_type(&self) -> crate::OwnedPtr<crate::ffi_types::HandleInterfaceSignType> {
+    pub fn sign_type(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_Interface_SignType> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKXSBase::Interface_GTool_sign_type(self as *const Self),
@@ -5281,14 +5036,14 @@ impl GTool {
         }
     }
 
-    /// **Source:** `Interface_GTool.hxx`:63 - `Interface_GTool::SignValue()`
+    /// **Source:** `Interface_GTool.hxx`:60 - `Interface_GTool::SignValue()`
     /// Returns the Signature for a Transient Object in a Model
     /// It calls SignType to do that
     /// If SignType is not defined, return ClassName of <ent>
     pub fn sign_value(
         &self,
-        ent: &crate::ffi_types::HandleStandardTransient,
-        model: &crate::ffi_types::HandleInterfaceInterfaceModel,
+        ent: &crate::ffi_types::Handle_Standard_Transient,
+        model: &crate::ffi_types::Handle_Interface_InterfaceModel,
     ) -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -5303,7 +5058,7 @@ impl GTool {
         .into_owned()
     }
 
-    /// **Source:** `Interface_GTool.hxx`:67 - `Interface_GTool::SignName()`
+    /// **Source:** `Interface_GTool.hxx`:64 - `Interface_GTool::SignName()`
     /// Returns the Name of the SignType, or "Class Name"
     pub fn sign_name(&self) -> std::string::String {
         unsafe {
@@ -5315,13 +5070,13 @@ impl GTool {
         .into_owned()
     }
 
-    /// **Source:** `Interface_GTool.hxx`:72 - `Interface_GTool::SetProtocol()`
+    /// **Source:** `Interface_GTool.hxx`:69 - `Interface_GTool::SetProtocol()`
     /// Sets a new Protocol
     /// if <enforce> is False and the new Protocol equates the old one
     /// then nothing is done
     pub fn set_protocol(
         &mut self,
-        proto: &crate::ffi_types::HandleInterfaceProtocol,
+        proto: &crate::ffi_types::Handle_Interface_Protocol,
         enforce: bool,
     ) {
         crate::check_void_result(unsafe {
@@ -5333,9 +5088,9 @@ impl GTool {
         })
     }
 
-    /// **Source:** `Interface_GTool.hxx`:76 - `Interface_GTool::Protocol()`
-    /// Returns the Protocol.  Warning : it can be Null
-    pub fn protocol(&self) -> crate::OwnedPtr<crate::ffi_types::HandleInterfaceProtocol> {
+    /// **Source:** `Interface_GTool.hxx`:73 - `Interface_GTool::Protocol()`
+    /// Returns the Protocol. Warning: it can be Null
+    pub fn protocol(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_Interface_Protocol> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKXSBase::Interface_GTool_protocol(self as *const Self),
@@ -5343,7 +5098,7 @@ impl GTool {
         }
     }
 
-    /// **Source:** `Interface_GTool.hxx`:79 - `Interface_GTool::Lib()`
+    /// **Source:** `Interface_GTool.hxx`:76 - `Interface_GTool::Lib()`
     /// Returns the GeneralLib itself
     pub fn lib(&mut self) -> &mut GeneralLib {
         unsafe {
@@ -5353,7 +5108,7 @@ impl GTool {
         }
     }
 
-    /// **Source:** `Interface_GTool.hxx`:85 - `Interface_GTool::Reservate()`
+    /// **Source:** `Interface_GTool.hxx`:82 - `Interface_GTool::Reservate()`
     /// Reservates maps for a count of entities
     /// <enforce> False : minimum count
     /// <enforce> True  : clears former reservations
@@ -5364,7 +5119,7 @@ impl GTool {
         })
     }
 
-    /// **Source:** `Interface_GTool.hxx`:90 - `Interface_GTool::ClearEntities()`
+    /// **Source:** `Interface_GTool.hxx`:86 - `Interface_GTool::ClearEntities()`
     /// Clears the maps which record, for each already recorded entity
     /// its Module and Case Number
     pub fn clear_entities(&mut self) {
@@ -5373,15 +5128,15 @@ impl GTool {
         })
     }
 
-    /// **Source:** `Interface_GTool.hxx`:96 - `Interface_GTool::Select()`
+    /// **Source:** `Interface_GTool.hxx`:92 - `Interface_GTool::Select()`
     /// Selects for an entity, its Module and Case Number
     /// It is optimised : once done for each entity, the result is
     /// mapped and the GeneralLib is not longer queried
     /// <enforce> True overpasses this optimisation
     pub fn select(
         &mut self,
-        ent: &crate::ffi_types::HandleStandardTransient,
-        gmod: &mut crate::ffi_types::HandleInterfaceGeneralModule,
+        ent: &crate::ffi_types::Handle_Standard_Transient,
+        gmod: &mut crate::ffi_types::Handle_Interface_GeneralModule,
         CN: &mut i32,
         enforce: bool,
     ) -> bool {
@@ -5396,8 +5151,8 @@ impl GTool {
         })
     }
 
-    /// **Source:** `Interface_GTool.hxx`:101 - `Interface_GTool::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `Interface_GTool.hxx`:97 - `Interface_GTool::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKXSBase::Interface_GTool_dynamic_type(
                 self as *const Self,
@@ -5405,7 +5160,7 @@ impl GTool {
         }
     }
 
-    /// **Source:** `Interface_GTool.hxx`:101 - `Interface_GTool::get_type_name()`
+    /// **Source:** `Interface_GTool.hxx`:97 - `Interface_GTool::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -5416,8 +5171,8 @@ impl GTool {
         .into_owned()
     }
 
-    /// **Source:** `Interface_GTool.hxx`:101 - `Interface_GTool::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    /// **Source:** `Interface_GTool.hxx`:97 - `Interface_GTool::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKXSBase::Interface_GTool_get_type_descriptor(),
@@ -5450,7 +5205,7 @@ impl GTool {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleInterfaceGTool> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Interface_GTool> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKXSBase::Interface_GTool_to_handle(obj.into_raw()),
@@ -5458,8 +5213,8 @@ impl GTool {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_GTool_inherited_IsInstance(
                 self as *const Self,
@@ -5468,8 +5223,8 @@ impl GTool {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_GTool_inherited_IsKind(
                 self as *const Self,
@@ -5478,7 +5233,7 @@ impl GTool {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -5492,14 +5247,14 @@ impl GTool {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_GTool_inherited_GetRefCount(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_GTool_inherited_IncrementRefCounter(
@@ -5508,7 +5263,7 @@ impl GTool {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_GTool_inherited_DecrementRefCounter(
@@ -5517,7 +5272,7 @@ impl GTool {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_GTool_inherited_Delete(self as *const Self)
@@ -5525,32 +5280,34 @@ impl GTool {
     }
 }
 
-pub use crate::ffi_types::HandleInterfaceGTool;
+pub use crate::ffi_types::Handle_Interface_GTool;
 
-unsafe impl crate::CppDeletable for HandleInterfaceGTool {
+unsafe impl crate::CppDeletable for Handle_Interface_GTool {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKXSBase::HandleInterfaceGTool_destructor(ptr);
+            crate::ffi_extern_TKXSBase::Handle_Interface_GTool_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleInterfaceGTool {
+unsafe impl crate::CppCopyable for Handle_Interface_GTool {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        unsafe { crate::check_result(crate::ffi_extern_TKXSBase::HandleInterfaceGTool_clone(ptr)) }
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKXSBase::Handle_Interface_GTool_clone(ptr))
+        }
     }
 }
 
-impl HandleInterfaceGTool {
+impl Handle_Interface_GTool {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
-        unsafe { crate::ffi_extern_TKXSBase::HandleInterfaceGTool_is_null(self as *const Self) }
+        unsafe { crate::ffi_extern_TKXSBase::Handle_Interface_GTool_is_null(self as *const Self) }
     }
 
     /// Dereference this Handle to access the underlying Interface_GTool
     pub fn get(&self) -> &crate::ffi_types::Interface_GTool {
         unsafe {
-            &*crate::check_result(crate::ffi_extern_TKXSBase::HandleInterfaceGTool_get(
+            &*crate::check_result(crate::ffi_extern_TKXSBase::Handle_Interface_GTool_get(
                 self as *const Self,
             ))
         }
@@ -5559,7 +5316,7 @@ impl HandleInterfaceGTool {
     /// Dereference this Handle to mutably access the underlying Interface_GTool
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::Interface_GTool {
         unsafe {
-            &mut *crate::check_result(crate::ffi_extern_TKXSBase::HandleInterfaceGTool_get_mut(
+            &mut *crate::check_result(crate::ffi_extern_TKXSBase::Handle_Interface_GTool_get_mut(
                 self as *mut Self,
             ))
         }
@@ -5568,10 +5325,10 @@ impl HandleInterfaceGTool {
     /// Upcast Handle<Interface_GTool> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKXSBase::HandleInterfaceGTool_to_HandleStandardTransient(
+                crate::ffi_extern_TKXSBase::Handle_Interface_GTool_to_Handle_Standard_Transient(
                     self as *const Self,
                 ),
             ))
@@ -5601,7 +5358,7 @@ impl GeneralLib {
     /// This creation gets the Modules from the global set, those
     /// which are bound to the given Protocol and its Resources
     pub fn new_handleinterfaceprotocol(
-        aprotocol: &crate::ffi_types::HandleInterfaceProtocol,
+        aprotocol: &crate::ffi_types::Handle_Interface_Protocol,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -5627,7 +5384,7 @@ impl GeneralLib {
     /// Adds a couple (Module-Protocol) to the Library, given the
     /// class of a Protocol. Takes Resources into account.
     /// (if <aprotocol> is not of type TheProtocol, it is not added)
-    pub fn add_protocol(&mut self, aprotocol: &crate::ffi_types::HandleStandardTransient) {
+    pub fn add_protocol(&mut self, aprotocol: &crate::ffi_types::Handle_Standard_Transient) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_GeneralLib_add_protocol(
                 self as *mut Self,
@@ -5664,8 +5421,8 @@ impl GeneralLib {
     /// (Select can work on any criterium, such as Object DynamicType)
     pub fn select(
         &self,
-        obj: &crate::ffi_types::HandleStandardTransient,
-        module: &mut crate::ffi_types::HandleInterfaceGeneralModule,
+        obj: &crate::ffi_types::Handle_Standard_Transient,
+        module: &mut crate::ffi_types::Handle_Interface_GeneralModule,
         CN: &mut i32,
     ) -> bool {
         crate::check_result(unsafe {
@@ -5705,7 +5462,7 @@ impl GeneralLib {
 
     /// **Source:** `Interface_GeneralLib.hxx`:87 - `Interface_GeneralLib::Module()`
     /// Returns the current Module in the Iteration
-    pub fn module(&self) -> &crate::ffi_types::HandleInterfaceGeneralModule {
+    pub fn module(&self) -> &crate::ffi_types::Handle_Interface_GeneralModule {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKXSBase::Interface_GeneralLib_module(
                 self as *const Self,
@@ -5715,7 +5472,7 @@ impl GeneralLib {
 
     /// **Source:** `Interface_GeneralLib.hxx`:90 - `Interface_GeneralLib::Protocol()`
     /// Returns the current Protocol in the Iteration
-    pub fn protocol(&self) -> &crate::ffi_types::HandleInterfaceProtocol {
+    pub fn protocol(&self) -> &crate::ffi_types::Handle_Interface_Protocol {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKXSBase::Interface_GeneralLib_protocol(
                 self as *const Self,
@@ -5727,8 +5484,8 @@ impl GeneralLib {
     /// Adds a couple (Module-Protocol) into the global definition set
     /// for this class of Library.
     pub fn set_global(
-        amodule: &crate::ffi_types::HandleInterfaceGeneralModule,
-        aprotocol: &crate::ffi_types::HandleInterfaceProtocol,
+        amodule: &crate::ffi_types::Handle_Interface_GeneralModule,
+        aprotocol: &crate::ffi_types::Handle_Interface_Protocol,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_GeneralLib_set_global(amodule, aprotocol)
@@ -5740,13 +5497,13 @@ impl GeneralLib {
 // From Interface_GeneralModule.hxx
 // ========================
 
-/// **Source:** `Interface_GeneralModule.hxx`:43 - `Interface_GeneralModule`
+/// **Source:** `Interface_GeneralModule.hxx`:40 - `Interface_GeneralModule`
 /// This class defines general services, which must be provided
 /// for each type of Entity (i.e. of Transient Object processed
 /// by an Interface) : Shared List, Check, Copy, Delete, Category
 ///
 /// To optimise processing (e.g. firstly bind an Entity to a Module
-/// then calls  Module), each recognized Entity Type corresponds
+/// then calls Module), each recognized Entity Type corresponds
 /// to a Case Number, determined by the Protocol each class of
 /// GeneralModule belongs to.
 pub use crate::ffi_types::Interface_GeneralModule as GeneralModule;
@@ -5760,7 +5517,7 @@ unsafe impl crate::CppDeletable for GeneralModule {
 }
 
 impl GeneralModule {
-    /// **Source:** `Interface_GeneralModule.hxx`:52 - `Interface_GeneralModule::FillShared()`
+    /// **Source:** `Interface_GeneralModule.hxx`:49 - `Interface_GeneralModule::FillShared()`
     /// Specific filling of the list of Entities shared by an Entity
     /// <ent>, according a Case Number <CN> (formerly computed by
     /// CaseNum), considered in the context of a Model <model>
@@ -5768,9 +5525,9 @@ impl GeneralModule {
     /// Can be redefined to use the model for working
     pub fn fill_shared(
         &self,
-        model: &crate::ffi_types::HandleInterfaceInterfaceModel,
+        model: &crate::ffi_types::Handle_Interface_InterfaceModel,
         CN: i32,
-        ent: &crate::ffi_types::HandleStandardTransient,
+        ent: &crate::ffi_types::Handle_Standard_Transient,
         iter: &mut EntityIterator,
     ) {
         crate::check_void_result(unsafe {
@@ -5784,14 +5541,14 @@ impl GeneralModule {
         })
     }
 
-    /// **Source:** `Interface_GeneralModule.hxx`:60 - `Interface_GeneralModule::FillSharedCase()`
+    /// **Source:** `Interface_GeneralModule.hxx`:57 - `Interface_GeneralModule::FillSharedCase()`
     /// Specific filling of the list of Entities shared by an Entity
     /// <ent>, according a Case Number <CN> (formerly computed by
     /// CaseNum). Can use the internal utility method Share, below
     pub fn fill_shared_case(
         &self,
         CN: i32,
-        ent: &crate::ffi_types::HandleStandardTransient,
+        ent: &crate::ffi_types::Handle_Standard_Transient,
         iter: &mut EntityIterator,
     ) {
         crate::check_void_result(unsafe {
@@ -5804,12 +5561,12 @@ impl GeneralModule {
         })
     }
 
-    /// **Source:** `Interface_GeneralModule.hxx`:65 - `Interface_GeneralModule::Share()`
+    /// **Source:** `Interface_GeneralModule.hxx`:62 - `Interface_GeneralModule::Share()`
     /// Adds an Entity to a Shared List (uses GetOneItem on <iter>)
     pub fn share(
         &self,
         iter: &mut EntityIterator,
-        shared: &crate::ffi_types::HandleStandardTransient,
+        shared: &crate::ffi_types::Handle_Standard_Transient,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_GeneralModule_share(
@@ -5820,7 +5577,7 @@ impl GeneralModule {
         })
     }
 
-    /// **Source:** `Interface_GeneralModule.hxx`:76 - `Interface_GeneralModule::ListImplied()`
+    /// **Source:** `Interface_GeneralModule.hxx`:73 - `Interface_GeneralModule::ListImplied()`
     /// List the Implied References of <ent> considered in the context
     /// of a Model <model> : i.e. the Entities which are Referenced
     /// while not considered as Shared (not copied if <ent> is,
@@ -5831,9 +5588,9 @@ impl GeneralModule {
     /// Can be redefined to use the model for working
     pub fn list_implied(
         &self,
-        model: &crate::ffi_types::HandleInterfaceInterfaceModel,
+        model: &crate::ffi_types::Handle_Interface_InterfaceModel,
         CN: i32,
-        ent: &crate::ffi_types::HandleStandardTransient,
+        ent: &crate::ffi_types::Handle_Standard_Transient,
         iter: &mut EntityIterator,
     ) {
         crate::check_void_result(unsafe {
@@ -5847,7 +5604,7 @@ impl GeneralModule {
         })
     }
 
-    /// **Source:** `Interface_GeneralModule.hxx`:89 - `Interface_GeneralModule::ListImpliedCase()`
+    /// **Source:** `Interface_GeneralModule.hxx`:86 - `Interface_GeneralModule::ListImpliedCase()`
     /// List the Implied References of <ent> (see above)
     /// are Referenced while not considered as Shared (not copied if
     /// <ent> is, references not renewed by CopyCase but by
@@ -5859,7 +5616,7 @@ impl GeneralModule {
     pub fn list_implied_case(
         &self,
         CN: i32,
-        ent: &crate::ffi_types::HandleStandardTransient,
+        ent: &crate::ffi_types::Handle_Standard_Transient,
         iter: &mut EntityIterator,
     ) {
         crate::check_void_result(unsafe {
@@ -5872,15 +5629,15 @@ impl GeneralModule {
         })
     }
 
-    /// **Source:** `Interface_GeneralModule.hxx`:95 - `Interface_GeneralModule::CheckCase()`
+    /// **Source:** `Interface_GeneralModule.hxx`:92 - `Interface_GeneralModule::CheckCase()`
     /// Specific Checking of an Entity <ent>
     /// Can check context queried through a ShareTool, as required
     pub fn check_case(
         &self,
         CN: i32,
-        ent: &crate::ffi_types::HandleStandardTransient,
+        ent: &crate::ffi_types::Handle_Standard_Transient,
         shares: &ShareTool,
-        ach: &mut crate::ffi_types::HandleInterfaceCheck,
+        ach: &mut crate::ffi_types::Handle_Interface_Check,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_GeneralModule_check_case(
@@ -5893,12 +5650,12 @@ impl GeneralModule {
         })
     }
 
-    /// **Source:** `Interface_GeneralModule.hxx`:104 - `Interface_GeneralModule::CanCopy()`
+    /// **Source:** `Interface_GeneralModule.hxx`:101 - `Interface_GeneralModule::CanCopy()`
     /// Specific answer to the question "is Copy properly implemented"
     /// Remark that it should be in phase with the implementation of
     /// NewVoid+CopyCase/NewCopyCase
     /// Default returns always False, can be redefined
-    pub fn can_copy(&self, CN: i32, ent: &crate::ffi_types::HandleStandardTransient) -> bool {
+    pub fn can_copy(&self, CN: i32, ent: &crate::ffi_types::Handle_Standard_Transient) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_GeneralModule_can_copy(
                 self as *const Self,
@@ -5908,7 +5665,7 @@ impl GeneralModule {
         })
     }
 
-    /// **Source:** `Interface_GeneralModule.hxx`:126 - `Interface_GeneralModule::Dispatch()`
+    /// **Source:** `Interface_GeneralModule.hxx`:123 - `Interface_GeneralModule::Dispatch()`
     /// Dispatches an entity
     /// Returns True if it works by copy, False if it just duplicates
     /// the starting Handle
@@ -5931,8 +5688,8 @@ impl GeneralModule {
     pub fn dispatch(
         &self,
         CN: i32,
-        entfrom: &crate::ffi_types::HandleStandardTransient,
-        entto: &mut crate::ffi_types::HandleStandardTransient,
+        entfrom: &crate::ffi_types::Handle_Standard_Transient,
+        entto: &mut crate::ffi_types::Handle_Standard_Transient,
         TC: &mut CopyTool,
     ) -> bool {
         crate::check_result(unsafe {
@@ -5946,11 +5703,15 @@ impl GeneralModule {
         })
     }
 
-    /// **Source:** `Interface_GeneralModule.hxx`:134 - `Interface_GeneralModule::NewVoid()`
+    /// **Source:** `Interface_GeneralModule.hxx`:131 - `Interface_GeneralModule::NewVoid()`
     /// Creates a new void entity <entto> according to a Case Number
     /// This entity remains to be filled, by reading from a file or
     /// by copying from another entity of same type (see CopyCase)
-    pub fn new_void(&self, CN: i32, entto: &mut crate::ffi_types::HandleStandardTransient) -> bool {
+    pub fn new_void(
+        &self,
+        CN: i32,
+        entto: &mut crate::ffi_types::Handle_Standard_Transient,
+    ) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_GeneralModule_new_void(
                 self as *const Self,
@@ -5960,15 +5721,15 @@ impl GeneralModule {
         })
     }
 
-    /// **Source:** `Interface_GeneralModule.hxx`:140 - `Interface_GeneralModule::CopyCase()`
+    /// **Source:** `Interface_GeneralModule.hxx`:137 - `Interface_GeneralModule::CopyCase()`
     /// Specific Copy ("Deep") from <entfrom> to <entto> (same type)
     /// by using a CopyTool which provides its working Map.
     /// Use method Transferred from CopyTool to work
     pub fn copy_case(
         &self,
         CN: i32,
-        entfrom: &crate::ffi_types::HandleStandardTransient,
-        entto: &crate::ffi_types::HandleStandardTransient,
+        entfrom: &crate::ffi_types::Handle_Standard_Transient,
+        entto: &crate::ffi_types::Handle_Standard_Transient,
         TC: &mut CopyTool,
     ) {
         crate::check_void_result(unsafe {
@@ -5982,7 +5743,7 @@ impl GeneralModule {
         })
     }
 
-    /// **Source:** `Interface_GeneralModule.hxx`:152 - `Interface_GeneralModule::NewCopiedCase()`
+    /// **Source:** `Interface_GeneralModule.hxx`:149 - `Interface_GeneralModule::NewCopiedCase()`
     /// Specific operator (create+copy) defaulted to do nothing.
     /// It can be redefined : When it is not possible to work in two
     /// steps (NewVoid then CopyCase). This can occur when there is
@@ -5993,8 +5754,8 @@ impl GeneralModule {
     pub fn new_copied_case(
         &self,
         CN: i32,
-        entfrom: &crate::ffi_types::HandleStandardTransient,
-        entto: &mut crate::ffi_types::HandleStandardTransient,
+        entfrom: &crate::ffi_types::Handle_Standard_Transient,
+        entto: &mut crate::ffi_types::Handle_Standard_Transient,
         TC: &mut CopyTool,
     ) -> bool {
         crate::check_result(unsafe {
@@ -6008,7 +5769,7 @@ impl GeneralModule {
         })
     }
 
-    /// **Source:** `Interface_GeneralModule.hxx`:161 - `Interface_GeneralModule::RenewImpliedCase()`
+    /// **Source:** `Interface_GeneralModule.hxx`:158 - `Interface_GeneralModule::RenewImpliedCase()`
     /// Specific Copying of Implied References
     /// A Default is provided which does nothing (must current case !)
     /// Already copied references (by CopyFrom) must remain unchanged
@@ -6016,8 +5777,8 @@ impl GeneralModule {
     pub fn renew_implied_case(
         &self,
         CN: i32,
-        entfrom: &crate::ffi_types::HandleStandardTransient,
-        entto: &crate::ffi_types::HandleStandardTransient,
+        entfrom: &crate::ffi_types::Handle_Standard_Transient,
+        entto: &crate::ffi_types::Handle_Standard_Transient,
         TC: &CopyTool,
     ) {
         crate::check_void_result(unsafe {
@@ -6031,7 +5792,7 @@ impl GeneralModule {
         })
     }
 
-    /// **Source:** `Interface_GeneralModule.hxx`:190 - `Interface_GeneralModule::WhenDeleteCase()`
+    /// **Source:** `Interface_GeneralModule.hxx`:187 - `Interface_GeneralModule::WhenDeleteCase()`
     /// Prepares an entity to be deleted. What does it mean :
     /// Basically, any class of entity may define its own destructor
     /// By default, it does nothing but calling destructors on fields
@@ -6059,7 +5820,7 @@ impl GeneralModule {
     pub fn when_delete_case(
         &self,
         CN: i32,
-        ent: &crate::ffi_types::HandleStandardTransient,
+        ent: &crate::ffi_types::Handle_Standard_Transient,
         dispatched: bool,
     ) {
         crate::check_void_result(unsafe {
@@ -6072,7 +5833,7 @@ impl GeneralModule {
         })
     }
 
-    /// **Source:** `Interface_GeneralModule.hxx`:198 - `Interface_GeneralModule::CategoryNumber()`
+    /// **Source:** `Interface_GeneralModule.hxx`:195 - `Interface_GeneralModule::CategoryNumber()`
     /// Returns a category number which characterizes an entity
     /// Category Numbers are managed by the class Category
     /// <shares> can be used to evaluate this number in the context
@@ -6080,7 +5841,7 @@ impl GeneralModule {
     pub fn category_number(
         &self,
         CN: i32,
-        ent: &crate::ffi_types::HandleStandardTransient,
+        ent: &crate::ffi_types::Handle_Standard_Transient,
         shares: &ShareTool,
     ) -> i32 {
         crate::check_result(unsafe {
@@ -6093,7 +5854,7 @@ impl GeneralModule {
         })
     }
 
-    /// **Source:** `Interface_GeneralModule.hxx`:209 - `Interface_GeneralModule::Name()`
+    /// **Source:** `Interface_GeneralModule.hxx`:206 - `Interface_GeneralModule::Name()`
     /// Determines if an entity brings a Name (or widerly, if a Name
     /// can be attached to it, through the ShareTool
     /// By default, returns a Null Handle (no name can be produced)
@@ -6104,9 +5865,9 @@ impl GeneralModule {
     pub fn name(
         &self,
         CN: i32,
-        ent: &crate::ffi_types::HandleStandardTransient,
+        ent: &crate::ffi_types::Handle_Standard_Transient,
         shares: &ShareTool,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleTCollectionHAsciiString> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_TCollection_HAsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKXSBase::Interface_GeneralModule_name(
@@ -6119,8 +5880,8 @@ impl GeneralModule {
         }
     }
 
-    /// **Source:** `Interface_GeneralModule.hxx`:214 - `Interface_GeneralModule::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `Interface_GeneralModule.hxx`:211 - `Interface_GeneralModule::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKXSBase::Interface_GeneralModule_dynamic_type(
@@ -6130,7 +5891,7 @@ impl GeneralModule {
         }
     }
 
-    /// **Source:** `Interface_GeneralModule.hxx`:214 - `Interface_GeneralModule::get_type_name()`
+    /// **Source:** `Interface_GeneralModule.hxx`:211 - `Interface_GeneralModule::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -6141,8 +5902,8 @@ impl GeneralModule {
         .into_owned()
     }
 
-    /// **Source:** `Interface_GeneralModule.hxx`:214 - `Interface_GeneralModule::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    /// **Source:** `Interface_GeneralModule.hxx`:211 - `Interface_GeneralModule::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKXSBase::Interface_GeneralModule_get_type_descriptor(),
@@ -6172,8 +5933,8 @@ impl GeneralModule {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_GeneralModule_inherited_IsInstance(
                 self as *const Self,
@@ -6182,8 +5943,8 @@ impl GeneralModule {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_GeneralModule_inherited_IsKind(
                 self as *const Self,
@@ -6192,7 +5953,7 @@ impl GeneralModule {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -6208,7 +5969,7 @@ impl GeneralModule {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_GeneralModule_inherited_GetRefCount(
@@ -6217,7 +5978,7 @@ impl GeneralModule {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_GeneralModule_inherited_IncrementRefCounter(
@@ -6226,7 +5987,7 @@ impl GeneralModule {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_GeneralModule_inherited_DecrementRefCounter(
@@ -6235,7 +5996,7 @@ impl GeneralModule {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_GeneralModule_inherited_Delete(
@@ -6245,36 +6006,38 @@ impl GeneralModule {
     }
 }
 
-pub use crate::ffi_types::HandleInterfaceGeneralModule;
+pub use crate::ffi_types::Handle_Interface_GeneralModule;
 
-unsafe impl crate::CppDeletable for HandleInterfaceGeneralModule {
+unsafe impl crate::CppDeletable for Handle_Interface_GeneralModule {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKXSBase::HandleInterfaceGeneralModule_destructor(ptr);
+            crate::ffi_extern_TKXSBase::Handle_Interface_GeneralModule_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleInterfaceGeneralModule {
+unsafe impl crate::CppCopyable for Handle_Interface_GeneralModule {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
         unsafe {
-            crate::check_result(crate::ffi_extern_TKXSBase::HandleInterfaceGeneralModule_clone(ptr))
+            crate::check_result(crate::ffi_extern_TKXSBase::Handle_Interface_GeneralModule_clone(
+                ptr,
+            ))
         }
     }
 }
 
-impl HandleInterfaceGeneralModule {
+impl Handle_Interface_GeneralModule {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
         unsafe {
-            crate::ffi_extern_TKXSBase::HandleInterfaceGeneralModule_is_null(self as *const Self)
+            crate::ffi_extern_TKXSBase::Handle_Interface_GeneralModule_is_null(self as *const Self)
         }
     }
 
     /// Dereference this Handle to access the underlying Interface_GeneralModule
     pub fn get(&self) -> &crate::ffi_types::Interface_GeneralModule {
         unsafe {
-            &*crate::check_result(crate::ffi_extern_TKXSBase::HandleInterfaceGeneralModule_get(
+            &*crate::check_result(crate::ffi_extern_TKXSBase::Handle_Interface_GeneralModule_get(
                 self as *const Self,
             ))
         }
@@ -6284,7 +6047,9 @@ impl HandleInterfaceGeneralModule {
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::Interface_GeneralModule {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi_extern_TKXSBase::HandleInterfaceGeneralModule_get_mut(self as *mut Self),
+                crate::ffi_extern_TKXSBase::Handle_Interface_GeneralModule_get_mut(
+                    self as *mut Self,
+                ),
             )
         }
     }
@@ -6292,13 +6057,9 @@ impl HandleInterfaceGeneralModule {
     /// Upcast Handle<Interface_GeneralModule> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKXSBase::HandleInterfaceGeneralModule_to_HandleStandardTransient(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKXSBase::Handle_Interface_GeneralModule_to_Handle_Standard_Transient(self as *const Self)))
         }
     }
 
@@ -6307,9 +6068,9 @@ impl HandleInterfaceGeneralModule {
     /// Returns `None` if the handle does not point to a `IGESAppli_GeneralModule` (or subclass).
     pub fn downcast_to_iges_appli_general_module(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleIGESAppliGeneralModule>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_IGESAppli_GeneralModule>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKXSBase::HandleInterfaceGeneralModule_downcast_to_HandleIGESAppliGeneralModule(self as *const Self)
+            crate::ffi_extern_TKXSBase::Handle_Interface_GeneralModule_downcast_to_Handle_IGESAppli_GeneralModule(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -6323,9 +6084,9 @@ impl HandleInterfaceGeneralModule {
     /// Returns `None` if the handle does not point to a `IGESBasic_GeneralModule` (or subclass).
     pub fn downcast_to_iges_basic_general_module(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleIGESBasicGeneralModule>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_IGESBasic_GeneralModule>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKXSBase::HandleInterfaceGeneralModule_downcast_to_HandleIGESBasicGeneralModule(self as *const Self)
+            crate::ffi_extern_TKXSBase::Handle_Interface_GeneralModule_downcast_to_Handle_IGESBasic_GeneralModule(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -6339,9 +6100,9 @@ impl HandleInterfaceGeneralModule {
     /// Returns `None` if the handle does not point to a `IGESData_DefaultGeneral` (or subclass).
     pub fn downcast_to_iges_data_default_general(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleIGESDataDefaultGeneral>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_IGESData_DefaultGeneral>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKXSBase::HandleInterfaceGeneralModule_downcast_to_HandleIGESDataDefaultGeneral(self as *const Self)
+            crate::ffi_extern_TKXSBase::Handle_Interface_GeneralModule_downcast_to_Handle_IGESData_DefaultGeneral(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -6355,9 +6116,9 @@ impl HandleInterfaceGeneralModule {
     /// Returns `None` if the handle does not point to a `IGESDefs_GeneralModule` (or subclass).
     pub fn downcast_to_iges_defs_general_module(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleIGESDefsGeneralModule>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_IGESDefs_GeneralModule>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKXSBase::HandleInterfaceGeneralModule_downcast_to_HandleIGESDefsGeneralModule(self as *const Self)
+            crate::ffi_extern_TKXSBase::Handle_Interface_GeneralModule_downcast_to_Handle_IGESDefs_GeneralModule(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -6371,9 +6132,9 @@ impl HandleInterfaceGeneralModule {
     /// Returns `None` if the handle does not point to a `IGESDimen_GeneralModule` (or subclass).
     pub fn downcast_to_iges_dimen_general_module(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleIGESDimenGeneralModule>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_IGESDimen_GeneralModule>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKXSBase::HandleInterfaceGeneralModule_downcast_to_HandleIGESDimenGeneralModule(self as *const Self)
+            crate::ffi_extern_TKXSBase::Handle_Interface_GeneralModule_downcast_to_Handle_IGESDimen_GeneralModule(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -6387,9 +6148,9 @@ impl HandleInterfaceGeneralModule {
     /// Returns `None` if the handle does not point to a `IGESDraw_GeneralModule` (or subclass).
     pub fn downcast_to_iges_draw_general_module(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleIGESDrawGeneralModule>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_IGESDraw_GeneralModule>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKXSBase::HandleInterfaceGeneralModule_downcast_to_HandleIGESDrawGeneralModule(self as *const Self)
+            crate::ffi_extern_TKXSBase::Handle_Interface_GeneralModule_downcast_to_Handle_IGESDraw_GeneralModule(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -6403,9 +6164,9 @@ impl HandleInterfaceGeneralModule {
     /// Returns `None` if the handle does not point to a `IGESGeom_GeneralModule` (or subclass).
     pub fn downcast_to_iges_geom_general_module(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleIGESGeomGeneralModule>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_IGESGeom_GeneralModule>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKXSBase::HandleInterfaceGeneralModule_downcast_to_HandleIGESGeomGeneralModule(self as *const Self)
+            crate::ffi_extern_TKXSBase::Handle_Interface_GeneralModule_downcast_to_Handle_IGESGeom_GeneralModule(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -6419,9 +6180,9 @@ impl HandleInterfaceGeneralModule {
     /// Returns `None` if the handle does not point to a `IGESGraph_GeneralModule` (or subclass).
     pub fn downcast_to_iges_graph_general_module(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleIGESGraphGeneralModule>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_IGESGraph_GeneralModule>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKXSBase::HandleInterfaceGeneralModule_downcast_to_HandleIGESGraphGeneralModule(self as *const Self)
+            crate::ffi_extern_TKXSBase::Handle_Interface_GeneralModule_downcast_to_Handle_IGESGraph_GeneralModule(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -6435,9 +6196,9 @@ impl HandleInterfaceGeneralModule {
     /// Returns `None` if the handle does not point to a `IGESSolid_GeneralModule` (or subclass).
     pub fn downcast_to_iges_solid_general_module(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleIGESSolidGeneralModule>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_IGESSolid_GeneralModule>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKXSBase::HandleInterfaceGeneralModule_downcast_to_HandleIGESSolidGeneralModule(self as *const Self)
+            crate::ffi_extern_TKXSBase::Handle_Interface_GeneralModule_downcast_to_Handle_IGESSolid_GeneralModule(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -6451,9 +6212,9 @@ impl HandleInterfaceGeneralModule {
     /// Returns `None` if the handle does not point to a `RWHeaderSection_GeneralModule` (or subclass).
     pub fn downcast_to_rw_header_section_general_module(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleRWHeaderSectionGeneralModule>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_RWHeaderSection_GeneralModule>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKXSBase::HandleInterfaceGeneralModule_downcast_to_HandleRWHeaderSectionGeneralModule(self as *const Self)
+            crate::ffi_extern_TKXSBase::Handle_Interface_GeneralModule_downcast_to_Handle_RWHeaderSection_GeneralModule(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -6467,9 +6228,9 @@ impl HandleInterfaceGeneralModule {
     /// Returns `None` if the handle does not point to a `StepData_DefaultGeneral` (or subclass).
     pub fn downcast_to_step_data_default_general(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleStepDataDefaultGeneral>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_StepData_DefaultGeneral>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKXSBase::HandleInterfaceGeneralModule_downcast_to_HandleStepDataDefaultGeneral(self as *const Self)
+            crate::ffi_extern_TKXSBase::Handle_Interface_GeneralModule_downcast_to_Handle_StepData_DefaultGeneral(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -6483,7 +6244,7 @@ impl HandleInterfaceGeneralModule {
 // From Interface_GlobalNodeOfGeneralLib.hxx
 // ========================
 
-/// **Source:** `Interface_GlobalNodeOfGeneralLib.hxx`:33 - `Interface_GlobalNodeOfGeneralLib`
+/// **Source:** `Interface_GlobalNodeOfGeneralLib.hxx`:30 - `Interface_GlobalNodeOfGeneralLib`
 pub use crate::ffi_types::Interface_GlobalNodeOfGeneralLib as GlobalNodeOfGeneralLib;
 
 unsafe impl crate::CppDeletable for GlobalNodeOfGeneralLib {
@@ -6495,7 +6256,7 @@ unsafe impl crate::CppDeletable for GlobalNodeOfGeneralLib {
 }
 
 impl GlobalNodeOfGeneralLib {
-    /// **Source:** `Interface_GlobalNodeOfGeneralLib.hxx`:38 - `Interface_GlobalNodeOfGeneralLib::Interface_GlobalNodeOfGeneralLib()`
+    /// **Source:** `Interface_GlobalNodeOfGeneralLib.hxx`:35 - `Interface_GlobalNodeOfGeneralLib::Interface_GlobalNodeOfGeneralLib()`
     /// Creates an empty GlobalNode, with no Next
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
@@ -6505,15 +6266,15 @@ impl GlobalNodeOfGeneralLib {
         }
     }
 
-    /// **Source:** `Interface_GlobalNodeOfGeneralLib.hxx`:44 - `Interface_GlobalNodeOfGeneralLib::Add()`
+    /// **Source:** `Interface_GlobalNodeOfGeneralLib.hxx`:41 - `Interface_GlobalNodeOfGeneralLib::Add()`
     /// Adds a Module bound with a Protocol to the list : does
     /// nothing if already in the list, THAT IS, Same Type (exact
     /// match) and Same State (that is, IsEqual is not required)
     /// Once added, stores its attached Protocol in correspondence
     pub fn add(
         &mut self,
-        amodule: &crate::ffi_types::HandleInterfaceGeneralModule,
-        aprotocol: &crate::ffi_types::HandleInterfaceProtocol,
+        amodule: &crate::ffi_types::Handle_Interface_GeneralModule,
+        aprotocol: &crate::ffi_types::Handle_Interface_Protocol,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_GlobalNodeOfGeneralLib_add(
@@ -6524,9 +6285,9 @@ impl GlobalNodeOfGeneralLib {
         })
     }
 
-    /// **Source:** `Interface_GlobalNodeOfGeneralLib.hxx`:48 - `Interface_GlobalNodeOfGeneralLib::Module()`
+    /// **Source:** `Interface_GlobalNodeOfGeneralLib.hxx`:45 - `Interface_GlobalNodeOfGeneralLib::Module()`
     /// Returns the Module stored in a given GlobalNode
-    pub fn module(&self) -> &crate::ffi_types::HandleInterfaceGeneralModule {
+    pub fn module(&self) -> &crate::ffi_types::Handle_Interface_GeneralModule {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKXSBase::Interface_GlobalNodeOfGeneralLib_module(
@@ -6536,9 +6297,9 @@ impl GlobalNodeOfGeneralLib {
         }
     }
 
-    /// **Source:** `Interface_GlobalNodeOfGeneralLib.hxx`:51 - `Interface_GlobalNodeOfGeneralLib::Protocol()`
+    /// **Source:** `Interface_GlobalNodeOfGeneralLib.hxx`:48 - `Interface_GlobalNodeOfGeneralLib::Protocol()`
     /// Returns the attached Protocol stored in a given GlobalNode
-    pub fn protocol(&self) -> &crate::ffi_types::HandleInterfaceProtocol {
+    pub fn protocol(&self) -> &crate::ffi_types::Handle_Interface_Protocol {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKXSBase::Interface_GlobalNodeOfGeneralLib_protocol(
@@ -6548,10 +6309,10 @@ impl GlobalNodeOfGeneralLib {
         }
     }
 
-    /// **Source:** `Interface_GlobalNodeOfGeneralLib.hxx`:55 - `Interface_GlobalNodeOfGeneralLib::Next()`
+    /// **Source:** `Interface_GlobalNodeOfGeneralLib.hxx`:52 - `Interface_GlobalNodeOfGeneralLib::Next()`
     /// Returns the Next GlobalNode. If none is defined, returned
     /// value is a Null Handle
-    pub fn next(&self) -> &crate::ffi_types::HandleInterfaceGlobalNodeOfGeneralLib {
+    pub fn next(&self) -> &crate::ffi_types::Handle_Interface_GlobalNodeOfGeneralLib {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKXSBase::Interface_GlobalNodeOfGeneralLib_next(
@@ -6561,8 +6322,8 @@ impl GlobalNodeOfGeneralLib {
         }
     }
 
-    /// **Source:** `Interface_GlobalNodeOfGeneralLib.hxx`:57 - `Interface_GlobalNodeOfGeneralLib::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `Interface_GlobalNodeOfGeneralLib.hxx`:54 - `Interface_GlobalNodeOfGeneralLib::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKXSBase::Interface_GlobalNodeOfGeneralLib_dynamic_type(
@@ -6572,7 +6333,7 @@ impl GlobalNodeOfGeneralLib {
         }
     }
 
-    /// **Source:** `Interface_GlobalNodeOfGeneralLib.hxx`:57 - `Interface_GlobalNodeOfGeneralLib::get_type_name()`
+    /// **Source:** `Interface_GlobalNodeOfGeneralLib.hxx`:54 - `Interface_GlobalNodeOfGeneralLib::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -6583,8 +6344,8 @@ impl GlobalNodeOfGeneralLib {
         .into_owned()
     }
 
-    /// **Source:** `Interface_GlobalNodeOfGeneralLib.hxx`:57 - `Interface_GlobalNodeOfGeneralLib::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    /// **Source:** `Interface_GlobalNodeOfGeneralLib.hxx`:54 - `Interface_GlobalNodeOfGeneralLib::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKXSBase::Interface_GlobalNodeOfGeneralLib_get_type_descriptor(),
@@ -6613,7 +6374,7 @@ impl GlobalNodeOfGeneralLib {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleInterfaceGlobalNodeOfGeneralLib> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Interface_GlobalNodeOfGeneralLib> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKXSBase::Interface_GlobalNodeOfGeneralLib_to_handle(
@@ -6623,8 +6384,8 @@ impl GlobalNodeOfGeneralLib {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_GlobalNodeOfGeneralLib_inherited_IsInstance(
                 self as *const Self,
@@ -6633,8 +6394,8 @@ impl GlobalNodeOfGeneralLib {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_GlobalNodeOfGeneralLib_inherited_IsKind(
                 self as *const Self,
@@ -6643,7 +6404,7 @@ impl GlobalNodeOfGeneralLib {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -6659,7 +6420,7 @@ impl GlobalNodeOfGeneralLib {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_GlobalNodeOfGeneralLib_inherited_GetRefCount(
@@ -6668,21 +6429,21 @@ impl GlobalNodeOfGeneralLib {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_GlobalNodeOfGeneralLib_inherited_IncrementRefCounter(self as *mut Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_GlobalNodeOfGeneralLib_inherited_DecrementRefCounter(self as *mut Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_GlobalNodeOfGeneralLib_inherited_Delete(
@@ -6692,31 +6453,31 @@ impl GlobalNodeOfGeneralLib {
     }
 }
 
-pub use crate::ffi_types::HandleInterfaceGlobalNodeOfGeneralLib;
+pub use crate::ffi_types::Handle_Interface_GlobalNodeOfGeneralLib;
 
-unsafe impl crate::CppDeletable for HandleInterfaceGlobalNodeOfGeneralLib {
+unsafe impl crate::CppDeletable for Handle_Interface_GlobalNodeOfGeneralLib {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKXSBase::HandleInterfaceGlobalNodeOfGeneralLib_destructor(ptr);
+            crate::ffi_extern_TKXSBase::Handle_Interface_GlobalNodeOfGeneralLib_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleInterfaceGlobalNodeOfGeneralLib {
+unsafe impl crate::CppCopyable for Handle_Interface_GlobalNodeOfGeneralLib {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
         unsafe {
             crate::check_result(
-                crate::ffi_extern_TKXSBase::HandleInterfaceGlobalNodeOfGeneralLib_clone(ptr),
+                crate::ffi_extern_TKXSBase::Handle_Interface_GlobalNodeOfGeneralLib_clone(ptr),
             )
         }
     }
 }
 
-impl HandleInterfaceGlobalNodeOfGeneralLib {
+impl Handle_Interface_GlobalNodeOfGeneralLib {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
         unsafe {
-            crate::ffi_extern_TKXSBase::HandleInterfaceGlobalNodeOfGeneralLib_is_null(
+            crate::ffi_extern_TKXSBase::Handle_Interface_GlobalNodeOfGeneralLib_is_null(
                 self as *const Self,
             )
         }
@@ -6726,7 +6487,7 @@ impl HandleInterfaceGlobalNodeOfGeneralLib {
     pub fn get(&self) -> &crate::ffi_types::Interface_GlobalNodeOfGeneralLib {
         unsafe {
             &*crate::check_result(
-                crate::ffi_extern_TKXSBase::HandleInterfaceGlobalNodeOfGeneralLib_get(
+                crate::ffi_extern_TKXSBase::Handle_Interface_GlobalNodeOfGeneralLib_get(
                     self as *const Self,
                 ),
             )
@@ -6737,7 +6498,7 @@ impl HandleInterfaceGlobalNodeOfGeneralLib {
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::Interface_GlobalNodeOfGeneralLib {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi_extern_TKXSBase::HandleInterfaceGlobalNodeOfGeneralLib_get_mut(
+                crate::ffi_extern_TKXSBase::Handle_Interface_GlobalNodeOfGeneralLib_get_mut(
                     self as *mut Self,
                 ),
             )
@@ -6747,9 +6508,9 @@ impl HandleInterfaceGlobalNodeOfGeneralLib {
     /// Upcast Handle<Interface_GlobalNodeOfGeneralLib> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKXSBase::HandleInterfaceGlobalNodeOfGeneralLib_to_HandleStandardTransient(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKXSBase::Handle_Interface_GlobalNodeOfGeneralLib_to_Handle_Standard_Transient(self as *const Self)))
         }
     }
 }
@@ -6758,7 +6519,7 @@ impl HandleInterfaceGlobalNodeOfGeneralLib {
 // From Interface_GlobalNodeOfReaderLib.hxx
 // ========================
 
-/// **Source:** `Interface_GlobalNodeOfReaderLib.hxx`:33 - `Interface_GlobalNodeOfReaderLib`
+/// **Source:** `Interface_GlobalNodeOfReaderLib.hxx`:30 - `Interface_GlobalNodeOfReaderLib`
 pub use crate::ffi_types::Interface_GlobalNodeOfReaderLib as GlobalNodeOfReaderLib;
 
 unsafe impl crate::CppDeletable for GlobalNodeOfReaderLib {
@@ -6770,7 +6531,7 @@ unsafe impl crate::CppDeletable for GlobalNodeOfReaderLib {
 }
 
 impl GlobalNodeOfReaderLib {
-    /// **Source:** `Interface_GlobalNodeOfReaderLib.hxx`:38 - `Interface_GlobalNodeOfReaderLib::Interface_GlobalNodeOfReaderLib()`
+    /// **Source:** `Interface_GlobalNodeOfReaderLib.hxx`:35 - `Interface_GlobalNodeOfReaderLib::Interface_GlobalNodeOfReaderLib()`
     /// Creates an empty GlobalNode, with no Next
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
@@ -6780,15 +6541,15 @@ impl GlobalNodeOfReaderLib {
         }
     }
 
-    /// **Source:** `Interface_GlobalNodeOfReaderLib.hxx`:44 - `Interface_GlobalNodeOfReaderLib::Add()`
+    /// **Source:** `Interface_GlobalNodeOfReaderLib.hxx`:41 - `Interface_GlobalNodeOfReaderLib::Add()`
     /// Adds a Module bound with a Protocol to the list : does
     /// nothing if already in the list, THAT IS, Same Type (exact
     /// match) and Same State (that is, IsEqual is not required)
     /// Once added, stores its attached Protocol in correspondence
     pub fn add(
         &mut self,
-        amodule: &crate::ffi_types::HandleInterfaceReaderModule,
-        aprotocol: &crate::ffi_types::HandleInterfaceProtocol,
+        amodule: &crate::ffi_types::Handle_Interface_ReaderModule,
+        aprotocol: &crate::ffi_types::Handle_Interface_Protocol,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_GlobalNodeOfReaderLib_add(
@@ -6799,9 +6560,9 @@ impl GlobalNodeOfReaderLib {
         })
     }
 
-    /// **Source:** `Interface_GlobalNodeOfReaderLib.hxx`:48 - `Interface_GlobalNodeOfReaderLib::Module()`
+    /// **Source:** `Interface_GlobalNodeOfReaderLib.hxx`:45 - `Interface_GlobalNodeOfReaderLib::Module()`
     /// Returns the Module stored in a given GlobalNode
-    pub fn module(&self) -> &crate::ffi_types::HandleInterfaceReaderModule {
+    pub fn module(&self) -> &crate::ffi_types::Handle_Interface_ReaderModule {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKXSBase::Interface_GlobalNodeOfReaderLib_module(
@@ -6811,9 +6572,9 @@ impl GlobalNodeOfReaderLib {
         }
     }
 
-    /// **Source:** `Interface_GlobalNodeOfReaderLib.hxx`:51 - `Interface_GlobalNodeOfReaderLib::Protocol()`
+    /// **Source:** `Interface_GlobalNodeOfReaderLib.hxx`:48 - `Interface_GlobalNodeOfReaderLib::Protocol()`
     /// Returns the attached Protocol stored in a given GlobalNode
-    pub fn protocol(&self) -> &crate::ffi_types::HandleInterfaceProtocol {
+    pub fn protocol(&self) -> &crate::ffi_types::Handle_Interface_Protocol {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKXSBase::Interface_GlobalNodeOfReaderLib_protocol(
@@ -6823,10 +6584,10 @@ impl GlobalNodeOfReaderLib {
         }
     }
 
-    /// **Source:** `Interface_GlobalNodeOfReaderLib.hxx`:55 - `Interface_GlobalNodeOfReaderLib::Next()`
+    /// **Source:** `Interface_GlobalNodeOfReaderLib.hxx`:52 - `Interface_GlobalNodeOfReaderLib::Next()`
     /// Returns the Next GlobalNode. If none is defined, returned
     /// value is a Null Handle
-    pub fn next(&self) -> &crate::ffi_types::HandleInterfaceGlobalNodeOfReaderLib {
+    pub fn next(&self) -> &crate::ffi_types::Handle_Interface_GlobalNodeOfReaderLib {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKXSBase::Interface_GlobalNodeOfReaderLib_next(
@@ -6836,8 +6597,8 @@ impl GlobalNodeOfReaderLib {
         }
     }
 
-    /// **Source:** `Interface_GlobalNodeOfReaderLib.hxx`:57 - `Interface_GlobalNodeOfReaderLib::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `Interface_GlobalNodeOfReaderLib.hxx`:54 - `Interface_GlobalNodeOfReaderLib::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKXSBase::Interface_GlobalNodeOfReaderLib_dynamic_type(
@@ -6847,7 +6608,7 @@ impl GlobalNodeOfReaderLib {
         }
     }
 
-    /// **Source:** `Interface_GlobalNodeOfReaderLib.hxx`:57 - `Interface_GlobalNodeOfReaderLib::get_type_name()`
+    /// **Source:** `Interface_GlobalNodeOfReaderLib.hxx`:54 - `Interface_GlobalNodeOfReaderLib::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -6858,8 +6619,8 @@ impl GlobalNodeOfReaderLib {
         .into_owned()
     }
 
-    /// **Source:** `Interface_GlobalNodeOfReaderLib.hxx`:57 - `Interface_GlobalNodeOfReaderLib::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    /// **Source:** `Interface_GlobalNodeOfReaderLib.hxx`:54 - `Interface_GlobalNodeOfReaderLib::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKXSBase::Interface_GlobalNodeOfReaderLib_get_type_descriptor(),
@@ -6888,7 +6649,7 @@ impl GlobalNodeOfReaderLib {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleInterfaceGlobalNodeOfReaderLib> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Interface_GlobalNodeOfReaderLib> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKXSBase::Interface_GlobalNodeOfReaderLib_to_handle(
@@ -6898,8 +6659,8 @@ impl GlobalNodeOfReaderLib {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_GlobalNodeOfReaderLib_inherited_IsInstance(
                 self as *const Self,
@@ -6908,8 +6669,8 @@ impl GlobalNodeOfReaderLib {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_GlobalNodeOfReaderLib_inherited_IsKind(
                 self as *const Self,
@@ -6918,7 +6679,7 @@ impl GlobalNodeOfReaderLib {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -6934,7 +6695,7 @@ impl GlobalNodeOfReaderLib {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_GlobalNodeOfReaderLib_inherited_GetRefCount(
@@ -6943,21 +6704,21 @@ impl GlobalNodeOfReaderLib {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_GlobalNodeOfReaderLib_inherited_IncrementRefCounter(self as *mut Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_GlobalNodeOfReaderLib_inherited_DecrementRefCounter(self as *mut Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_GlobalNodeOfReaderLib_inherited_Delete(
@@ -6967,31 +6728,31 @@ impl GlobalNodeOfReaderLib {
     }
 }
 
-pub use crate::ffi_types::HandleInterfaceGlobalNodeOfReaderLib;
+pub use crate::ffi_types::Handle_Interface_GlobalNodeOfReaderLib;
 
-unsafe impl crate::CppDeletable for HandleInterfaceGlobalNodeOfReaderLib {
+unsafe impl crate::CppDeletable for Handle_Interface_GlobalNodeOfReaderLib {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKXSBase::HandleInterfaceGlobalNodeOfReaderLib_destructor(ptr);
+            crate::ffi_extern_TKXSBase::Handle_Interface_GlobalNodeOfReaderLib_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleInterfaceGlobalNodeOfReaderLib {
+unsafe impl crate::CppCopyable for Handle_Interface_GlobalNodeOfReaderLib {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
         unsafe {
             crate::check_result(
-                crate::ffi_extern_TKXSBase::HandleInterfaceGlobalNodeOfReaderLib_clone(ptr),
+                crate::ffi_extern_TKXSBase::Handle_Interface_GlobalNodeOfReaderLib_clone(ptr),
             )
         }
     }
 }
 
-impl HandleInterfaceGlobalNodeOfReaderLib {
+impl Handle_Interface_GlobalNodeOfReaderLib {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
         unsafe {
-            crate::ffi_extern_TKXSBase::HandleInterfaceGlobalNodeOfReaderLib_is_null(
+            crate::ffi_extern_TKXSBase::Handle_Interface_GlobalNodeOfReaderLib_is_null(
                 self as *const Self,
             )
         }
@@ -7001,7 +6762,7 @@ impl HandleInterfaceGlobalNodeOfReaderLib {
     pub fn get(&self) -> &crate::ffi_types::Interface_GlobalNodeOfReaderLib {
         unsafe {
             &*crate::check_result(
-                crate::ffi_extern_TKXSBase::HandleInterfaceGlobalNodeOfReaderLib_get(
+                crate::ffi_extern_TKXSBase::Handle_Interface_GlobalNodeOfReaderLib_get(
                     self as *const Self,
                 ),
             )
@@ -7012,7 +6773,7 @@ impl HandleInterfaceGlobalNodeOfReaderLib {
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::Interface_GlobalNodeOfReaderLib {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi_extern_TKXSBase::HandleInterfaceGlobalNodeOfReaderLib_get_mut(
+                crate::ffi_extern_TKXSBase::Handle_Interface_GlobalNodeOfReaderLib_get_mut(
                     self as *mut Self,
                 ),
             )
@@ -7022,9 +6783,9 @@ impl HandleInterfaceGlobalNodeOfReaderLib {
     /// Upcast Handle<Interface_GlobalNodeOfReaderLib> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKXSBase::HandleInterfaceGlobalNodeOfReaderLib_to_HandleStandardTransient(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKXSBase::Handle_Interface_GlobalNodeOfReaderLib_to_Handle_Standard_Transient(self as *const Self)))
         }
     }
 }
@@ -7033,7 +6794,7 @@ impl HandleInterfaceGlobalNodeOfReaderLib {
 // From Interface_Graph.hxx
 // ========================
 
-/// **Source:** `Interface_Graph.hxx`:62 - `Interface_Graph`
+/// **Source:** `Interface_Graph.hxx`:66 - `Interface_Graph`
 /// Gives basic data structure for operating and storing
 /// graph results (usage is normally internal)
 /// Entities are Mapped according their Number in the Model
@@ -7080,14 +6841,14 @@ impl std::borrow::ToOwned for Graph {
 }
 
 impl Graph {
-    /// **Source:** `Interface_Graph.hxx`:72 - `Interface_Graph::Interface_Graph()`
+    /// **Source:** `Interface_Graph.hxx`:76 - `Interface_Graph::Interface_Graph()`
     /// Creates an empty graph, ready to receive Entities from amodel
     /// Note that this way of Creation allows <me> to verify that
     /// Entities to work with are contained in <amodel>
     /// Basic Shared and Sharing lists are obtained from a General
     /// Services Library, given directly as an argument
     pub fn new_handleinterfaceinterfacemodel_generallib_bool(
-        amodel: &crate::ffi_types::HandleInterfaceInterfaceModel,
+        amodel: &crate::ffi_types::Handle_Interface_InterfaceModel,
         lib: &GeneralLib,
         theModeStats: bool,
     ) -> crate::OwnedPtr<Self> {
@@ -7096,11 +6857,11 @@ impl Graph {
         }
     }
 
-    /// **Source:** `Interface_Graph.hxx`:77 - `Interface_Graph::Interface_Graph()`
+    /// **Source:** `Interface_Graph.hxx`:81 - `Interface_Graph::Interface_Graph()`
     /// Same as above, but the Library is defined through a Protocol
     pub fn new_handleinterfaceinterfacemodel_handleinterfaceprotocol_bool(
-        amodel: &crate::ffi_types::HandleInterfaceInterfaceModel,
-        protocol: &crate::ffi_types::HandleInterfaceProtocol,
+        amodel: &crate::ffi_types::Handle_Interface_InterfaceModel,
+        protocol: &crate::ffi_types::Handle_Interface_Protocol,
         theModeStats: bool,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -7108,11 +6869,11 @@ impl Graph {
         }
     }
 
-    /// **Source:** `Interface_Graph.hxx`:82 - `Interface_Graph::Interface_Graph()`
+    /// **Source:** `Interface_Graph.hxx`:86 - `Interface_Graph::Interface_Graph()`
     /// Same as above, but the Library is defined through a Protocol
     pub fn new_handleinterfaceinterfacemodel_handleinterfacegtool_bool(
-        amodel: &crate::ffi_types::HandleInterfaceInterfaceModel,
-        gtool: &crate::ffi_types::HandleInterfaceGTool,
+        amodel: &crate::ffi_types::Handle_Interface_InterfaceModel,
+        gtool: &crate::ffi_types::Handle_Interface_GTool,
         theModeStats: bool,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -7120,10 +6881,10 @@ impl Graph {
         }
     }
 
-    /// **Source:** `Interface_Graph.hxx`:87 - `Interface_Graph::Interface_Graph()`
+    /// **Source:** `Interface_Graph.hxx`:91 - `Interface_Graph::Interface_Graph()`
     /// Same a above but works with the Protocol recorded in the Model
     pub fn new_handleinterfaceinterfacemodel_bool(
-        amodel: &crate::ffi_types::HandleInterfaceInterfaceModel,
+        amodel: &crate::ffi_types::Handle_Interface_InterfaceModel,
         theModeStats: bool,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -7136,46 +6897,46 @@ impl Graph {
         }
     }
 
-    /// **Source:** `Interface_Graph.hxx`:72 - `Interface_Graph::Interface_Graph()`
+    /// **Source:** `Interface_Graph.hxx`:76 - `Interface_Graph::Interface_Graph()`
     /// Creates an empty graph, ready to receive Entities from amodel
     /// Note that this way of Creation allows <me> to verify that
     /// Entities to work with are contained in <amodel>
     /// Basic Shared and Sharing lists are obtained from a General
     /// Services Library, given directly as an argument
     pub fn new_handleinterfaceinterfacemodel_generallib(
-        amodel: &crate::ffi_types::HandleInterfaceInterfaceModel,
+        amodel: &crate::ffi_types::Handle_Interface_InterfaceModel,
         lib: &GeneralLib,
     ) -> crate::OwnedPtr<Self> {
         Self::new_handleinterfaceinterfacemodel_generallib_bool(amodel, lib, true)
     }
 
-    /// **Source:** `Interface_Graph.hxx`:77 - `Interface_Graph::Interface_Graph()`
+    /// **Source:** `Interface_Graph.hxx`:81 - `Interface_Graph::Interface_Graph()`
     /// Same as above, but the Library is defined through a Protocol
     pub fn new_handleinterfaceinterfacemodel_handleinterfaceprotocol(
-        amodel: &crate::ffi_types::HandleInterfaceInterfaceModel,
-        protocol: &crate::ffi_types::HandleInterfaceProtocol,
+        amodel: &crate::ffi_types::Handle_Interface_InterfaceModel,
+        protocol: &crate::ffi_types::Handle_Interface_Protocol,
     ) -> crate::OwnedPtr<Self> {
         Self::new_handleinterfaceinterfacemodel_handleinterfaceprotocol_bool(amodel, protocol, true)
     }
 
-    /// **Source:** `Interface_Graph.hxx`:82 - `Interface_Graph::Interface_Graph()`
+    /// **Source:** `Interface_Graph.hxx`:86 - `Interface_Graph::Interface_Graph()`
     /// Same as above, but the Library is defined through a Protocol
     pub fn new_handleinterfaceinterfacemodel_handleinterfacegtool(
-        amodel: &crate::ffi_types::HandleInterfaceInterfaceModel,
-        gtool: &crate::ffi_types::HandleInterfaceGTool,
+        amodel: &crate::ffi_types::Handle_Interface_InterfaceModel,
+        gtool: &crate::ffi_types::Handle_Interface_GTool,
     ) -> crate::OwnedPtr<Self> {
         Self::new_handleinterfaceinterfacemodel_handleinterfacegtool_bool(amodel, gtool, true)
     }
 
-    /// **Source:** `Interface_Graph.hxx`:87 - `Interface_Graph::Interface_Graph()`
+    /// **Source:** `Interface_Graph.hxx`:91 - `Interface_Graph::Interface_Graph()`
     /// Same a above but works with the Protocol recorded in the Model
     pub fn new_handleinterfaceinterfacemodel(
-        amodel: &crate::ffi_types::HandleInterfaceInterfaceModel,
+        amodel: &crate::ffi_types::Handle_Interface_InterfaceModel,
     ) -> crate::OwnedPtr<Self> {
         Self::new_handleinterfaceinterfacemodel_bool(amodel, true)
     }
 
-    /// **Source:** `Interface_Graph.hxx`:101 - `Interface_Graph::Reset()`
+    /// **Source:** `Interface_Graph.hxx`:104 - `Interface_Graph::Reset()`
     /// Erases data, making graph ready to rebegin from void
     /// (also resets Shared lists redefinitions)
     pub fn reset(&mut self) {
@@ -7184,7 +6945,7 @@ impl Graph {
         })
     }
 
-    /// **Source:** `Interface_Graph.hxx`:105 - `Interface_Graph::ResetStatus()`
+    /// **Source:** `Interface_Graph.hxx`:108 - `Interface_Graph::ResetStatus()`
     /// Erases Status (Values and Flags of Presence), making graph
     /// ready to rebegin from void. Does not concerns Shared lists
     pub fn reset_status(&mut self) {
@@ -7193,7 +6954,7 @@ impl Graph {
         })
     }
 
-    /// **Source:** `Interface_Graph.hxx`:108 - `Interface_Graph::Size()`
+    /// **Source:** `Interface_Graph.hxx`:111 - `Interface_Graph::Size()`
     /// Returns size (max nb of entities, i.e. Model's nb of entities)
     pub fn size(&self) -> i32 {
         crate::check_result(unsafe {
@@ -7201,7 +6962,7 @@ impl Graph {
         })
     }
 
-    /// **Source:** `Interface_Graph.hxx`:111 - `Interface_Graph::NbStatuses()`
+    /// **Source:** `Interface_Graph.hxx`:114 - `Interface_Graph::NbStatuses()`
     /// Returns size of array of statuses
     pub fn nb_statuses(&self) -> i32 {
         crate::check_result(unsafe {
@@ -7209,18 +6970,18 @@ impl Graph {
         })
     }
 
-    /// **Source:** `Interface_Graph.hxx`:117 - `Interface_Graph::EntityNumber()`
+    /// **Source:** `Interface_Graph.hxx`:120 - `Interface_Graph::EntityNumber()`
     /// Returns the Number of the entity in the Map, computed at
     /// creation time (Entities loaded from the Model)
     /// Returns 0 if <ent> not contained by Model used to create <me>
     /// (that is, <ent> is unknown from <me>)
-    pub fn entity_number(&self, ent: &crate::ffi_types::HandleStandardTransient) -> i32 {
+    pub fn entity_number(&self, ent: &crate::ffi_types::Handle_Standard_Transient) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_Graph_entity_number(self as *const Self, ent)
         })
     }
 
-    /// **Source:** `Interface_Graph.hxx`:122 - `Interface_Graph::IsPresent()`
+    /// **Source:** `Interface_Graph.hxx`:125 - `Interface_Graph::IsPresent()`
     /// Returns True if an Entity is noted as present in the graph
     /// (See methods Get... which determine this status)
     /// Returns False if <num> is out of range too
@@ -7230,13 +6991,13 @@ impl Graph {
         })
     }
 
-    /// **Source:** `Interface_Graph.hxx`:127 - `Interface_Graph::IsPresent()`
+    /// **Source:** `Interface_Graph.hxx`:130 - `Interface_Graph::IsPresent()`
     /// Same as above but directly on an Entity <ent> : if it is not
     /// contained in the Model, returns False. Else calls
-    /// IsPresent(num)  with <num> given by EntityNumber
+    /// IsPresent(num) with <num> given by EntityNumber
     pub fn is_present_handlestandardtransient(
         &self,
-        ent: &crate::ffi_types::HandleStandardTransient,
+        ent: &crate::ffi_types::Handle_Standard_Transient,
     ) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_Graph_is_present_handlestandardtransient(
@@ -7246,9 +7007,9 @@ impl Graph {
         })
     }
 
-    /// **Source:** `Interface_Graph.hxx`:130 - `Interface_Graph::Entity()`
+    /// **Source:** `Interface_Graph.hxx`:133 - `Interface_Graph::Entity()`
     /// Returns mapped Entity given its no (if it is present)
-    pub fn entity(&self, num: i32) -> &crate::ffi_types::HandleStandardTransient {
+    pub fn entity(&self, num: i32) -> &crate::ffi_types::Handle_Standard_Transient {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKXSBase::Interface_Graph_entity(
                 self as *const Self,
@@ -7257,7 +7018,7 @@ impl Graph {
         }
     }
 
-    /// **Source:** `Interface_Graph.hxx`:133 - `Interface_Graph::Status()`
+    /// **Source:** `Interface_Graph.hxx`:136 - `Interface_Graph::Status()`
     /// Returns Status associated to a numero (only to read it)
     pub fn status(&self, num: i32) -> i32 {
         crate::check_result(unsafe {
@@ -7265,7 +7026,7 @@ impl Graph {
         })
     }
 
-    /// **Source:** `Interface_Graph.hxx`:136 - `Interface_Graph::SetStatus()`
+    /// **Source:** `Interface_Graph.hxx`:139 - `Interface_Graph::SetStatus()`
     /// Modifies Status associated to a numero
     pub fn set_status(&mut self, num: i32, stat: i32) {
         crate::check_void_result(unsafe {
@@ -7273,7 +7034,7 @@ impl Graph {
         })
     }
 
-    /// **Source:** `Interface_Graph.hxx`:139 - `Interface_Graph::RemoveItem()`
+    /// **Source:** `Interface_Graph.hxx`:142 - `Interface_Graph::RemoveItem()`
     /// Clears Entity and sets Status to 0, for a numero
     pub fn remove_item(&mut self, num: i32) {
         crate::check_void_result(unsafe {
@@ -7281,7 +7042,7 @@ impl Graph {
         })
     }
 
-    /// **Source:** `Interface_Graph.hxx`:142 - `Interface_Graph::ChangeStatus()`
+    /// **Source:** `Interface_Graph.hxx`:145 - `Interface_Graph::ChangeStatus()`
     /// Changes all status which value is oldstat to new value newstat
     pub fn change_status(&mut self, oldstat: i32, newstat: i32) {
         crate::check_void_result(unsafe {
@@ -7293,7 +7054,7 @@ impl Graph {
         })
     }
 
-    /// **Source:** `Interface_Graph.hxx`:145 - `Interface_Graph::RemoveStatus()`
+    /// **Source:** `Interface_Graph.hxx`:148 - `Interface_Graph::RemoveStatus()`
     /// Removes all items of which status has a given value stat
     pub fn remove_status(&mut self, stat: i32) {
         crate::check_void_result(unsafe {
@@ -7301,7 +7062,7 @@ impl Graph {
         })
     }
 
-    /// **Source:** `Interface_Graph.hxx`:148 - `Interface_Graph::BitMap()`
+    /// **Source:** `Interface_Graph.hxx`:151 - `Interface_Graph::BitMap()`
     /// Returns the Bit Map in order to read or edit flag values
     pub fn bit_map(&self) -> &BitMap {
         unsafe {
@@ -7311,7 +7072,7 @@ impl Graph {
         }
     }
 
-    /// **Source:** `Interface_Graph.hxx`:151 - `Interface_Graph::CBitMap()`
+    /// **Source:** `Interface_Graph.hxx`:154 - `Interface_Graph::CBitMap()`
     /// Returns the Bit Map in order to edit it (add new flags)
     pub fn c_bit_map(&mut self) -> &mut BitMap {
         unsafe {
@@ -7321,9 +7082,9 @@ impl Graph {
         }
     }
 
-    /// **Source:** `Interface_Graph.hxx`:154 - `Interface_Graph::Model()`
+    /// **Source:** `Interface_Graph.hxx`:157 - `Interface_Graph::Model()`
     /// Returns the Model with which this Graph was created
-    pub fn model(&self) -> &crate::ffi_types::HandleInterfaceInterfaceModel {
+    pub fn model(&self) -> &crate::ffi_types::Handle_Interface_InterfaceModel {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKXSBase::Interface_Graph_model(
                 self as *const Self,
@@ -7331,7 +7092,7 @@ impl Graph {
         }
     }
 
-    /// **Source:** `Interface_Graph.hxx`:157 - `Interface_Graph::GetFromModel()`
+    /// **Source:** `Interface_Graph.hxx`:160 - `Interface_Graph::GetFromModel()`
     /// Loads Graph with all Entities contained in the Model
     pub fn get_from_model(&mut self) {
         crate::check_void_result(unsafe {
@@ -7339,7 +7100,7 @@ impl Graph {
         })
     }
 
-    /// **Source:** `Interface_Graph.hxx`:164 - `Interface_Graph::GetFromEntity()`
+    /// **Source:** `Interface_Graph.hxx`:167 - `Interface_Graph::GetFromEntity()`
     /// Gets an Entity, plus its shared ones (at every level) if
     /// "shared" is True. New items are set to status "newstat"
     /// Items already present in graph remain unchanged
@@ -7347,7 +7108,7 @@ impl Graph {
     /// account if there are some
     pub fn get_from_entity_handlestandardtransient_bool_int(
         &mut self,
-        ent: &crate::ffi_types::HandleStandardTransient,
+        ent: &crate::ffi_types::Handle_Standard_Transient,
         shared: bool,
         newstat: i32,
     ) {
@@ -7356,7 +7117,7 @@ impl Graph {
         })
     }
 
-    /// **Source:** `Interface_Graph.hxx`:175 - `Interface_Graph::GetFromEntity()`
+    /// **Source:** `Interface_Graph.hxx`:178 - `Interface_Graph::GetFromEntity()`
     /// Gets an Entity, plus its shared ones (at every level) if
     /// "shared" is True. New items are set to status "newstat".
     /// Items already present in graph are processed as follows :
@@ -7366,7 +7127,7 @@ impl Graph {
     /// if cumul is False, to overlapstat (enforce)
     pub fn get_from_entity_handlestandardtransient_bool_int2_bool(
         &mut self,
-        ent: &crate::ffi_types::HandleStandardTransient,
+        ent: &crate::ffi_types::Handle_Standard_Transient,
         shared: bool,
         newstat: i32,
         overlapstat: i32,
@@ -7377,7 +7138,7 @@ impl Graph {
         })
     }
 
-    /// **Source:** `Interface_Graph.hxx`:184 - `Interface_Graph::GetFromIter()`
+    /// **Source:** `Interface_Graph.hxx`:187 - `Interface_Graph::GetFromIter()`
     /// Gets Entities given by an EntityIterator. Entities which were
     /// not yet present in the graph are mapped with status "newstat"
     /// Entities already present remain unchanged
@@ -7391,7 +7152,7 @@ impl Graph {
         })
     }
 
-    /// **Source:** `Interface_Graph.hxx`:197 - `Interface_Graph::GetFromIter()`
+    /// **Source:** `Interface_Graph.hxx`:199 - `Interface_Graph::GetFromIter()`
     /// Gets Entities given by an EntityIterator and distinguishes
     /// those already present in the Graph :
     /// - new entities added to the Graph with status "newstst"
@@ -7420,7 +7181,7 @@ impl Graph {
         })
     }
 
-    /// **Source:** `Interface_Graph.hxx`:203 - `Interface_Graph::GetFromGraph()`
+    /// **Source:** `Interface_Graph.hxx`:205 - `Interface_Graph::GetFromGraph()`
     /// Gets all present items from another graph
     pub fn get_from_graph_graph(&mut self, agraph: &Graph) {
         crate::check_void_result(unsafe {
@@ -7431,7 +7192,7 @@ impl Graph {
         })
     }
 
-    /// **Source:** `Interface_Graph.hxx`:206 - `Interface_Graph::GetFromGraph()`
+    /// **Source:** `Interface_Graph.hxx`:208 - `Interface_Graph::GetFromGraph()`
     /// Gets items from another graph which have a specific Status
     pub fn get_from_graph_graph_int(&mut self, agraph: &Graph, stat: i32) {
         crate::check_void_result(unsafe {
@@ -7443,23 +7204,25 @@ impl Graph {
         })
     }
 
-    /// **Source:** `Interface_Graph.hxx`:212 - `Interface_Graph::HasShareErrors()`
+    /// **Source:** `Interface_Graph.hxx`:214 - `Interface_Graph::HasShareErrors()`
     /// Returns True if <ent> or the list of entities shared by <ent>
     /// (not redefined) contains items unknown from this Graph
     /// Remark : apart from the status HasShareError, these items
     /// are ignored
-    pub fn has_share_errors(&self, ent: &crate::ffi_types::HandleStandardTransient) -> bool {
+    pub fn has_share_errors(&self, ent: &crate::ffi_types::Handle_Standard_Transient) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_Graph_has_share_errors(self as *const Self, ent)
         })
     }
 
-    /// **Source:** `Interface_Graph.hxx`:215 - `Interface_Graph::GetShareds()`
+    /// **Source:** `Interface_Graph.hxx`:217 - `Interface_Graph::GetShareds()`
     /// Returns the sequence of Entities Shared by an Entity
     pub fn get_shareds(
         &self,
-        ent: &crate::ffi_types::HandleStandardTransient,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleTColStdHSequenceOfTransient> {
+        ent: &crate::ffi_types::Handle_Standard_Transient,
+    ) -> crate::OwnedPtr<
+        crate::ffi_types::Handle_NCollection_HSequence_opencascade_handle_Standard_Transient,
+    > {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKXSBase::Interface_Graph_get_shareds(self as *const Self, ent),
@@ -7467,13 +7230,13 @@ impl Graph {
         }
     }
 
-    /// **Source:** `Interface_Graph.hxx`:221 - `Interface_Graph::Shareds()`
+    /// **Source:** `Interface_Graph.hxx`:224 - `Interface_Graph::Shareds()`
     /// Returns the list of Entities Shared by an Entity, as recorded
     /// by the Graph. That is, by default Basic Shared List, else it
     /// can be redefined by methods SetShare, SetNoShare ... see below
     pub fn shareds(
         &self,
-        ent: &crate::ffi_types::HandleStandardTransient,
+        ent: &crate::ffi_types::Handle_Standard_Transient,
     ) -> crate::OwnedPtr<EntityIterator> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -7482,12 +7245,12 @@ impl Graph {
         }
     }
 
-    /// **Source:** `Interface_Graph.hxx`:225 - `Interface_Graph::Sharings()`
+    /// **Source:** `Interface_Graph.hxx`:229 - `Interface_Graph::Sharings()`
     /// Returns the list of Entities which Share an Entity, computed
     /// from the Basic or Redefined Shared Lists
     pub fn sharings(
         &self,
-        ent: &crate::ffi_types::HandleStandardTransient,
+        ent: &crate::ffi_types::Handle_Standard_Transient,
     ) -> crate::OwnedPtr<EntityIterator> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -7496,12 +7259,14 @@ impl Graph {
         }
     }
 
-    /// **Source:** `Interface_Graph.hxx`:228 - `Interface_Graph::GetSharings()`
+    /// **Source:** `Interface_Graph.hxx`:232 - `Interface_Graph::GetSharings()`
     /// Returns the sequence of Entities Sharings by an Entity
     pub fn get_sharings(
         &self,
-        ent: &crate::ffi_types::HandleStandardTransient,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleTColStdHSequenceOfTransient> {
+        ent: &crate::ffi_types::Handle_Standard_Transient,
+    ) -> crate::OwnedPtr<
+        crate::ffi_types::Handle_NCollection_HSequence_opencascade_handle_Standard_Transient,
+    > {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKXSBase::Interface_Graph_get_sharings(self as *const Self, ent),
@@ -7509,14 +7274,14 @@ impl Graph {
         }
     }
 
-    /// **Source:** `Interface_Graph.hxx`:234 - `Interface_Graph::TypedSharings()`
+    /// **Source:** `Interface_Graph.hxx`:239 - `Interface_Graph::TypedSharings()`
     /// Returns the list of sharings entities, AT ANY LEVEL, which are
     /// kind of a given type. A sharing entity kind of this type
     /// ends the exploration of its branch
     pub fn typed_sharings(
         &self,
-        ent: &crate::ffi_types::HandleStandardTransient,
-        type_: &crate::ffi_types::HandleStandardType,
+        ent: &crate::ffi_types::Handle_Standard_Transient,
+        type_: &crate::ffi_types::Handle_Standard_Type,
     ) -> crate::OwnedPtr<EntityIterator> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -7529,7 +7294,7 @@ impl Graph {
         }
     }
 
-    /// **Source:** `Interface_Graph.hxx`:239 - `Interface_Graph::RootEntities()`
+    /// **Source:** `Interface_Graph.hxx`:244 - `Interface_Graph::RootEntities()`
     /// Returns the Entities which are not Shared (their Sharing List
     /// is empty) in the Model
     pub fn root_entities(&self) -> crate::OwnedPtr<EntityIterator> {
@@ -7540,15 +7305,15 @@ impl Graph {
         }
     }
 
-    /// **Source:** `Interface_Graph.hxx`:245 - `Interface_Graph::Name()`
+    /// **Source:** `Interface_Graph.hxx`:250 - `Interface_Graph::Name()`
     /// Determines the name attached to an entity, by using the
     /// general service Name in GeneralModule
     /// Returns a null handle if no name could be computed or if
     /// the entity is not in the model
     pub fn name(
         &self,
-        ent: &crate::ffi_types::HandleStandardTransient,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleTCollectionHAsciiString> {
+        ent: &crate::ffi_types::Handle_Standard_Transient,
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_TCollection_HAsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKXSBase::Interface_Graph_name(self as *const Self, ent),
@@ -7556,10 +7321,12 @@ impl Graph {
         }
     }
 
-    /// **Source:** `Interface_Graph.hxx`:250 - `Interface_Graph::SharingTable()`
+    /// **Source:** `Interface_Graph.hxx`:255 - `Interface_Graph::SharingTable()`
     /// Returns the Table of Sharing lists. Used to Create
     /// another Graph from <me>
-    pub fn sharing_table(&self) -> &crate::ffi_types::HandleTColStdHArray1OfListOfInteger {
+    pub fn sharing_table(
+        &self,
+    ) -> &crate::ffi_types::Handle_NCollection_HArray1_NCollection_List_int {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKXSBase::Interface_Graph_sharing_table(
                 self as *const Self,
@@ -7567,7 +7334,7 @@ impl Graph {
         }
     }
 
-    /// **Source:** `Interface_Graph.hxx`:253 - `Interface_Graph::ModeStat()`
+    /// **Source:** `Interface_Graph.hxx`:259 - `Interface_Graph::ModeStat()`
     /// Returns mode responsible for computation of statuses;
     pub fn mode_stat(&self) -> bool {
         crate::check_result(unsafe {
@@ -7627,19 +7394,19 @@ impl GraphContent {
         }
     }
 
-    /// **Source:** `Interface_GraphContent.hxx`:51 - `Interface_GraphContent::Interface_GraphContent()`
+    /// **Source:** `Interface_GraphContent.hxx`:50 - `Interface_GraphContent::Interface_GraphContent()`
     /// Creates an Iterator with Shared entities of an entity
     /// (equivalente to EntityIterator but with a Graph)
     pub fn new_graph_handlestandardtransient(
         agraph: &Graph,
-        ent: &crate::ffi_types::HandleStandardTransient,
+        ent: &crate::ffi_types::Handle_Standard_Transient,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKXSBase::Interface_GraphContent_ctor_graph_handlestandardtransient(agraph, ent)))
         }
     }
 
-    /// **Source:** `Interface_GraphContent.hxx`:56 - `Interface_GraphContent::GetFromGraph()`
+    /// **Source:** `Interface_GraphContent.hxx`:55 - `Interface_GraphContent::GetFromGraph()`
     /// Gets all Entities designated by a Graph (once created), adds
     /// them to those already recorded
     pub fn get_from_graph_graph(&mut self, agraph: &Graph) {
@@ -7651,7 +7418,7 @@ impl GraphContent {
         })
     }
 
-    /// **Source:** `Interface_GraphContent.hxx`:60 - `Interface_GraphContent::GetFromGraph()`
+    /// **Source:** `Interface_GraphContent.hxx`:59 - `Interface_GraphContent::GetFromGraph()`
     /// Gets entities from a graph which have a specific Status value
     /// (one created), adds them to those already recorded
     pub fn get_from_graph_graph_int(&mut self, agraph: &Graph, stat: i32) {
@@ -7664,7 +7431,7 @@ impl GraphContent {
         })
     }
 
-    /// **Source:** `Interface_GraphContent.hxx`:65 - `Interface_GraphContent::Result()`
+    /// **Source:** `Interface_GraphContent.hxx`:64 - `Interface_GraphContent::Result()`
     /// Returns Result under the exact form of an EntityIterator :
     /// Can be used when EntityIterator itself is required (as a
     /// returned value for instance), without way for a sub-class
@@ -7676,7 +7443,7 @@ impl GraphContent {
         }
     }
 
-    /// **Source:** `Interface_GraphContent.hxx`:69 - `Interface_GraphContent::Begin()`
+    /// **Source:** `Interface_GraphContent.hxx`:68 - `Interface_GraphContent::Begin()`
     /// Does the Evaluation before starting the iteration itself
     /// (in out)
     pub fn begin(&mut self) {
@@ -7685,7 +7452,7 @@ impl GraphContent {
         })
     }
 
-    /// **Source:** `Interface_GraphContent.hxx`:74 - `Interface_GraphContent::Evaluate()`
+    /// **Source:** `Interface_GraphContent.hxx`:73 - `Interface_GraphContent::Evaluate()`
     /// Evaluates list of Entities to be iterated. Called by Start
     /// Default is set to doing nothing : intended to be redefined
     /// by each sub-class
@@ -7717,8 +7484,11 @@ impl GraphContent {
         }
     }
 
-    /// Inherited: **Source:** `Interface_EntityIterator.hxx`:45 - `Interface_EntityIterator::AddList()`
-    pub fn add_list(&mut self, list: &crate::ffi_types::HandleTColStdHSequenceOfTransient) {
+    /// Inherited: **Source:** `Interface_EntityIterator.hxx`:48 - `Interface_EntityIterator::AddList()`
+    pub fn add_list(
+        &mut self,
+        list: &crate::ffi_types::Handle_NCollection_HSequence_opencascade_handle_Standard_Transient,
+    ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_GraphContent_inherited_AddList(
                 self as *mut Self,
@@ -7727,8 +7497,8 @@ impl GraphContent {
         })
     }
 
-    /// Inherited: **Source:** `Interface_EntityIterator.hxx`:48 - `Interface_EntityIterator::AddItem()`
-    pub fn add_item(&mut self, anentity: &crate::ffi_types::HandleStandardTransient) {
+    /// Inherited: **Source:** `Interface_EntityIterator.hxx`:52 - `Interface_EntityIterator::AddItem()`
+    pub fn add_item(&mut self, anentity: &crate::ffi_types::Handle_Standard_Transient) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_GraphContent_inherited_AddItem(
                 self as *mut Self,
@@ -7737,8 +7507,8 @@ impl GraphContent {
         })
     }
 
-    /// Inherited: **Source:** `Interface_EntityIterator.hxx`:51 - `Interface_EntityIterator::GetOneItem()`
-    pub fn get_one_item(&mut self, anentity: &crate::ffi_types::HandleStandardTransient) {
+    /// Inherited: **Source:** `Interface_EntityIterator.hxx`:55 - `Interface_EntityIterator::GetOneItem()`
+    pub fn get_one_item(&mut self, anentity: &crate::ffi_types::Handle_Standard_Transient) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_GraphContent_inherited_GetOneItem(
                 self as *mut Self,
@@ -7747,8 +7517,8 @@ impl GraphContent {
         })
     }
 
-    /// Inherited: **Source:** `Interface_EntityIterator.hxx`:55 - `Interface_EntityIterator::SelectType()`
-    pub fn select_type(&mut self, atype: &crate::ffi_types::HandleStandardType, keep: bool) {
+    /// Inherited: **Source:** `Interface_EntityIterator.hxx`:59 - `Interface_EntityIterator::SelectType()`
+    pub fn select_type(&mut self, atype: &crate::ffi_types::Handle_Standard_Type, keep: bool) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_GraphContent_inherited_SelectType(
                 self as *mut Self,
@@ -7758,7 +7528,7 @@ impl GraphContent {
         })
     }
 
-    /// Inherited: **Source:** `Interface_EntityIterator.hxx`:59 - `Interface_EntityIterator::NbEntities()`
+    /// Inherited: **Source:** `Interface_EntityIterator.hxx`:63 - `Interface_EntityIterator::NbEntities()`
     pub fn nb_entities(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_GraphContent_inherited_NbEntities(
@@ -7767,8 +7537,8 @@ impl GraphContent {
         })
     }
 
-    /// Inherited: **Source:** `Interface_EntityIterator.hxx`:62 - `Interface_EntityIterator::NbTyped()`
-    pub fn nb_typed(&self, type_: &crate::ffi_types::HandleStandardType) -> i32 {
+    /// Inherited: **Source:** `Interface_EntityIterator.hxx`:66 - `Interface_EntityIterator::NbTyped()`
+    pub fn nb_typed(&self, type_: &crate::ffi_types::Handle_Standard_Type) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_GraphContent_inherited_NbTyped(
                 self as *const Self,
@@ -7777,10 +7547,10 @@ impl GraphContent {
         })
     }
 
-    /// Inherited: **Source:** `Interface_EntityIterator.hxx`:65 - `Interface_EntityIterator::Typed()`
+    /// Inherited: **Source:** `Interface_EntityIterator.hxx`:69 - `Interface_EntityIterator::Typed()`
     pub fn typed(
         &self,
-        type_: &crate::ffi_types::HandleStandardType,
+        type_: &crate::ffi_types::Handle_Standard_Type,
     ) -> crate::OwnedPtr<EntityIterator> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -7792,29 +7562,29 @@ impl GraphContent {
         }
     }
 
-    /// Inherited: **Source:** `Interface_EntityIterator.hxx`:68 - `Interface_EntityIterator::Start()`
+    /// Inherited: **Source:** `Interface_EntityIterator.hxx`:72 - `Interface_EntityIterator::Start()`
     pub fn start(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_GraphContent_inherited_Start(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `Interface_EntityIterator.hxx`:72 - `Interface_EntityIterator::More()`
+    /// Inherited: **Source:** `Interface_EntityIterator.hxx`:76 - `Interface_EntityIterator::More()`
     pub fn more(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_GraphContent_inherited_More(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `Interface_EntityIterator.hxx`:75 - `Interface_EntityIterator::Next()`
+    /// Inherited: **Source:** `Interface_EntityIterator.hxx`:79 - `Interface_EntityIterator::Next()`
     pub fn next(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_GraphContent_inherited_Next(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `Interface_EntityIterator.hxx`:79 - `Interface_EntityIterator::Value()`
-    pub fn value(&self) -> &crate::ffi_types::HandleStandardTransient {
+    /// Inherited: **Source:** `Interface_EntityIterator.hxx`:83 - `Interface_EntityIterator::Value()`
+    pub fn value(&self) -> &crate::ffi_types::Handle_Standard_Transient {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKXSBase::Interface_GraphContent_inherited_Value(
@@ -7824,8 +7594,12 @@ impl GraphContent {
         }
     }
 
-    /// Inherited: **Source:** `Interface_EntityIterator.hxx`:85 - `Interface_EntityIterator::Content()`
-    pub fn content(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTColStdHSequenceOfTransient> {
+    /// Inherited: **Source:** `Interface_EntityIterator.hxx`:89 - `Interface_EntityIterator::Content()`
+    pub fn content(
+        &self,
+    ) -> crate::OwnedPtr<
+        crate::ffi_types::Handle_NCollection_HSequence_opencascade_handle_Standard_Transient,
+    > {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKXSBase::Interface_GraphContent_inherited_Content(
@@ -7835,7 +7609,7 @@ impl GraphContent {
         }
     }
 
-    /// Inherited: **Source:** `Interface_EntityIterator.hxx`:88 - `Interface_EntityIterator::Destroy()`
+    /// Inherited: **Source:** `Interface_EntityIterator.hxx`:93 - `Interface_EntityIterator::Destroy()`
     pub fn destroy(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_GraphContent_inherited_Destroy(self as *mut Self)
@@ -7844,293 +7618,10 @@ impl GraphContent {
 }
 
 // ========================
-// From Interface_HArray1OfHAsciiString.hxx
-// ========================
-
-/// **Source:** `Interface_HArray1OfHAsciiString.hxx`:24 - `Interface_HArray1OfHAsciiString`
-pub use crate::ffi_types::Interface_HArray1OfHAsciiString as HArray1OfHAsciiString;
-
-unsafe impl crate::CppDeletable for HArray1OfHAsciiString {
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            crate::ffi_extern_TKXSBase::Interface_HArray1OfHAsciiString_destructor(ptr);
-        }
-    }
-}
-
-impl HArray1OfHAsciiString {
-    /// **Source:** `Interface_HArray1OfHAsciiString.hxx`:24 - `Interface_HArray1OfHAsciiString::Interface_HArray1OfHAsciiString()`
-    pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKXSBase::Interface_HArray1OfHAsciiString_ctor(),
-            ))
-        }
-    }
-
-    /// **Source:** `Interface_HArray1OfHAsciiString.hxx`:24 - `Interface_HArray1OfHAsciiString::Interface_HArray1OfHAsciiString()`
-    pub fn new_int2(theLower: i32, theUpper: i32) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKXSBase::Interface_HArray1OfHAsciiString_ctor_int2(
-                    theLower, theUpper,
-                ),
-            ))
-        }
-    }
-
-    /// **Source:** `Interface_HArray1OfHAsciiString.hxx`:24 - `Interface_HArray1OfHAsciiString::Interface_HArray1OfHAsciiString()`
-    pub fn new_int2_handletcollectionhasciistring(
-        theLower: i32,
-        theUpper: i32,
-        theValue: &crate::ffi_types::HandleTCollectionHAsciiString,
-    ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKXSBase::Interface_HArray1OfHAsciiString_ctor_int2_handletcollectionhasciistring(theLower, theUpper, theValue)))
-        }
-    }
-
-    /// **Source:** `Interface_HArray1OfHAsciiString.hxx`:24 - `Interface_HArray1OfHAsciiString::Interface_HArray1OfHAsciiString()`
-    pub fn new_handletcollectionhasciistring_int2_bool(
-        theBegin: &crate::ffi_types::HandleTCollectionHAsciiString,
-        theLower: i32,
-        theUpper: i32,
-        arg3: bool,
-    ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKXSBase::Interface_HArray1OfHAsciiString_ctor_handletcollectionhasciistring_int2_bool(theBegin, theLower, theUpper, arg3)))
-        }
-    }
-
-    /// **Source:** `Interface_HArray1OfHAsciiString.hxx`:24 - `Interface_HArray1OfHAsciiString::Interface_HArray1OfHAsciiString()`
-    pub fn new_array1ofhasciistring(
-        theOther: &crate::ffi_types::Interface_Array1OfHAsciiString,
-    ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKXSBase::Interface_HArray1OfHAsciiString_ctor_array1ofhasciistring(theOther)))
-        }
-    }
-
-    /// **Source:** `Interface_HArray1OfHAsciiString.hxx`:24 - `Interface_HArray1OfHAsciiString::Array1()`
-    pub fn array1(&self) -> &crate::ffi_types::Interface_Array1OfHAsciiString {
-        unsafe {
-            &*(crate::check_result(
-                crate::ffi_extern_TKXSBase::Interface_HArray1OfHAsciiString_array1(
-                    self as *const Self,
-                ),
-            ))
-        }
-    }
-
-    /// **Source:** `Interface_HArray1OfHAsciiString.hxx`:24 - `Interface_HArray1OfHAsciiString::ChangeArray1()`
-    pub fn change_array1(&mut self) -> &mut crate::ffi_types::Interface_Array1OfHAsciiString {
-        unsafe {
-            &mut *(crate::check_result(
-                crate::ffi_extern_TKXSBase::Interface_HArray1OfHAsciiString_change_array1(
-                    self as *mut Self,
-                ),
-            ))
-        }
-    }
-
-    /// **Source:** `Interface_HArray1OfHAsciiString.hxx`:24 - `Interface_HArray1OfHAsciiString::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
-        unsafe {
-            &*(crate::check_result(
-                crate::ffi_extern_TKXSBase::Interface_HArray1OfHAsciiString_dynamic_type(
-                    self as *const Self,
-                ),
-            ))
-        }
-    }
-
-    /// **Source:** `Interface_HArray1OfHAsciiString.hxx`:24 - `Interface_HArray1OfHAsciiString::get_type_name()`
-    pub fn get_type_name() -> std::string::String {
-        unsafe {
-            std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi_extern_TKXSBase::Interface_HArray1OfHAsciiString_get_type_name(),
-            ))
-        }
-        .to_string_lossy()
-        .into_owned()
-    }
-
-    /// **Source:** `Interface_HArray1OfHAsciiString.hxx`:24 - `Interface_HArray1OfHAsciiString::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
-        unsafe {
-            &*(crate::check_result(
-                crate::ffi_extern_TKXSBase::Interface_HArray1OfHAsciiString_get_type_descriptor(),
-            ))
-        }
-    }
-
-    /// Upcast to Standard_Transient
-    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        unsafe {
-            &*crate::check_result(
-                crate::ffi_extern_TKXSBase::Interface_HArray1OfHAsciiString_as_Standard_Transient(
-                    self as *const Self,
-                ),
-            )
-        }
-    }
-
-    /// Upcast to Standard_Transient (mutable)
-    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        unsafe {
-            &mut *crate::check_result(crate::ffi_extern_TKXSBase::Interface_HArray1OfHAsciiString_as_Standard_Transient_mut(self as *mut Self))
-        }
-    }
-
-    /// Wrap in a Handle (reference-counted smart pointer)
-    pub fn to_handle(
-        obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleInterfaceHArray1OfHAsciiString> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKXSBase::Interface_HArray1OfHAsciiString_to_handle(
-                    obj.into_raw(),
-                ),
-            ))
-        }
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKXSBase::Interface_HArray1OfHAsciiString_inherited_IsInstance(
-                self as *const Self,
-                theType,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKXSBase::Interface_HArray1OfHAsciiString_inherited_IsKind(
-                self as *const Self,
-                theType,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
-    pub fn this(&self) -> Option<&crate::standard::Transient> {
-        {
-            let __val = crate::check_result(unsafe {
-                crate::ffi_extern_TKXSBase::Interface_HArray1OfHAsciiString_inherited_This(
-                    self as *const Self,
-                )
-            });
-            if __val.is_null() {
-                None
-            } else {
-                Some(unsafe { &*__val })
-            }
-        }
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
-    pub fn get_ref_count(&self) -> i32 {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKXSBase::Interface_HArray1OfHAsciiString_inherited_GetRefCount(
-                self as *const Self,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
-    pub fn increment_ref_counter(&mut self) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKXSBase::Interface_HArray1OfHAsciiString_inherited_IncrementRefCounter(self as *mut Self)
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
-    pub fn decrement_ref_counter(&mut self) -> i32 {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKXSBase::Interface_HArray1OfHAsciiString_inherited_DecrementRefCounter(self as *mut Self)
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
-    pub fn delete(&self) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKXSBase::Interface_HArray1OfHAsciiString_inherited_Delete(
-                self as *const Self,
-            )
-        })
-    }
-}
-
-pub use crate::ffi_types::HandleInterfaceHArray1OfHAsciiString;
-
-unsafe impl crate::CppDeletable for HandleInterfaceHArray1OfHAsciiString {
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            crate::ffi_extern_TKXSBase::HandleInterfaceHArray1OfHAsciiString_destructor(ptr);
-        }
-    }
-}
-
-unsafe impl crate::CppCopyable for HandleInterfaceHArray1OfHAsciiString {
-    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        unsafe {
-            crate::check_result(
-                crate::ffi_extern_TKXSBase::HandleInterfaceHArray1OfHAsciiString_clone(ptr),
-            )
-        }
-    }
-}
-
-impl HandleInterfaceHArray1OfHAsciiString {
-    /// Returns `true` if this Handle is null (doesn't point to any object).
-    pub fn is_null(&self) -> bool {
-        unsafe {
-            crate::ffi_extern_TKXSBase::HandleInterfaceHArray1OfHAsciiString_is_null(
-                self as *const Self,
-            )
-        }
-    }
-
-    /// Dereference this Handle to access the underlying Interface_HArray1OfHAsciiString
-    pub fn get(&self) -> &crate::ffi_types::Interface_HArray1OfHAsciiString {
-        unsafe {
-            &*crate::check_result(
-                crate::ffi_extern_TKXSBase::HandleInterfaceHArray1OfHAsciiString_get(
-                    self as *const Self,
-                ),
-            )
-        }
-    }
-
-    /// Dereference this Handle to mutably access the underlying Interface_HArray1OfHAsciiString
-    pub fn get_mut(&mut self) -> &mut crate::ffi_types::Interface_HArray1OfHAsciiString {
-        unsafe {
-            &mut *crate::check_result(
-                crate::ffi_extern_TKXSBase::HandleInterfaceHArray1OfHAsciiString_get_mut(
-                    self as *mut Self,
-                ),
-            )
-        }
-    }
-
-    /// Upcast Handle<Interface_HArray1OfHAsciiString> to Handle<Standard_Transient>
-    pub fn to_handle_transient(
-        &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKXSBase::HandleInterfaceHArray1OfHAsciiString_to_HandleStandardTransient(self as *const Self)))
-        }
-    }
-}
-
-// ========================
 // From Interface_HGraph.hxx
 // ========================
 
-/// **Source:** `Interface_HGraph.hxx`:36 - `Interface_HGraph`
+/// **Source:** `Interface_HGraph.hxx`:33 - `Interface_HGraph`
 /// This class allows to store a redefinable Graph, via a Handle
 /// (useful for an Object which can work on several successive
 /// Models, with the same general conditions)
@@ -8145,7 +7636,7 @@ unsafe impl crate::CppDeletable for HGraph {
 }
 
 impl HGraph {
-    /// **Source:** `Interface_HGraph.hxx`:42 - `Interface_HGraph::Interface_HGraph()`
+    /// **Source:** `Interface_HGraph.hxx`:39 - `Interface_HGraph::Interface_HGraph()`
     /// Creates an HGraph directly from a Graph.
     /// Remark that the starting Graph is duplicated
     pub fn new_graph(agraph: &Graph) -> crate::OwnedPtr<Self> {
@@ -8156,10 +7647,10 @@ impl HGraph {
         }
     }
 
-    /// **Source:** `Interface_HGraph.hxx`:45 - `Interface_HGraph::Interface_HGraph()`
+    /// **Source:** `Interface_HGraph.hxx`:42 - `Interface_HGraph::Interface_HGraph()`
     /// Creates an HGraph with a Graph created from <amodel> and <lib>
     pub fn new_handleinterfaceinterfacemodel_generallib_bool(
-        amodel: &crate::ffi_types::HandleInterfaceInterfaceModel,
+        amodel: &crate::ffi_types::Handle_Interface_InterfaceModel,
         lib: &GeneralLib,
         theModeStats: bool,
     ) -> crate::OwnedPtr<Self> {
@@ -8168,12 +7659,12 @@ impl HGraph {
         }
     }
 
-    /// **Source:** `Interface_HGraph.hxx`:51 - `Interface_HGraph::Interface_HGraph()`
+    /// **Source:** `Interface_HGraph.hxx`:48 - `Interface_HGraph::Interface_HGraph()`
     /// Creates an HGraph with a graph itself created from <amodel>
     /// and <protocol>
     pub fn new_handleinterfaceinterfacemodel_handleinterfaceprotocol_bool(
-        amodel: &crate::ffi_types::HandleInterfaceInterfaceModel,
-        protocol: &crate::ffi_types::HandleInterfaceProtocol,
+        amodel: &crate::ffi_types::Handle_Interface_InterfaceModel,
+        protocol: &crate::ffi_types::Handle_Interface_Protocol,
         theModeStats: bool,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -8181,12 +7672,12 @@ impl HGraph {
         }
     }
 
-    /// **Source:** `Interface_HGraph.hxx`:57 - `Interface_HGraph::Interface_HGraph()`
+    /// **Source:** `Interface_HGraph.hxx`:54 - `Interface_HGraph::Interface_HGraph()`
     /// Creates an HGraph with a graph itself created from <amodel>
     /// and <protocol>
     pub fn new_handleinterfaceinterfacemodel_handleinterfacegtool_bool(
-        amodel: &crate::ffi_types::HandleInterfaceInterfaceModel,
-        gtool: &crate::ffi_types::HandleInterfaceGTool,
+        amodel: &crate::ffi_types::Handle_Interface_InterfaceModel,
+        gtool: &crate::ffi_types::Handle_Interface_GTool,
         theModeStats: bool,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -8194,10 +7685,10 @@ impl HGraph {
         }
     }
 
-    /// **Source:** `Interface_HGraph.hxx`:62 - `Interface_HGraph::Interface_HGraph()`
+    /// **Source:** `Interface_HGraph.hxx`:59 - `Interface_HGraph::Interface_HGraph()`
     /// Same a above, but works with the GTool in the model
     pub fn new_handleinterfaceinterfacemodel_bool(
-        amodel: &crate::ffi_types::HandleInterfaceInterfaceModel,
+        amodel: &crate::ffi_types::Handle_Interface_InterfaceModel,
         theModeStats: bool,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -8205,44 +7696,44 @@ impl HGraph {
         }
     }
 
-    /// **Source:** `Interface_HGraph.hxx`:45 - `Interface_HGraph::Interface_HGraph()`
+    /// **Source:** `Interface_HGraph.hxx`:42 - `Interface_HGraph::Interface_HGraph()`
     /// Creates an HGraph with a Graph created from <amodel> and <lib>
     pub fn new_handleinterfaceinterfacemodel_generallib(
-        amodel: &crate::ffi_types::HandleInterfaceInterfaceModel,
+        amodel: &crate::ffi_types::Handle_Interface_InterfaceModel,
         lib: &GeneralLib,
     ) -> crate::OwnedPtr<Self> {
         Self::new_handleinterfaceinterfacemodel_generallib_bool(amodel, lib, true)
     }
 
-    /// **Source:** `Interface_HGraph.hxx`:51 - `Interface_HGraph::Interface_HGraph()`
+    /// **Source:** `Interface_HGraph.hxx`:48 - `Interface_HGraph::Interface_HGraph()`
     /// Creates an HGraph with a graph itself created from <amodel>
     /// and <protocol>
     pub fn new_handleinterfaceinterfacemodel_handleinterfaceprotocol(
-        amodel: &crate::ffi_types::HandleInterfaceInterfaceModel,
-        protocol: &crate::ffi_types::HandleInterfaceProtocol,
+        amodel: &crate::ffi_types::Handle_Interface_InterfaceModel,
+        protocol: &crate::ffi_types::Handle_Interface_Protocol,
     ) -> crate::OwnedPtr<Self> {
         Self::new_handleinterfaceinterfacemodel_handleinterfaceprotocol_bool(amodel, protocol, true)
     }
 
-    /// **Source:** `Interface_HGraph.hxx`:57 - `Interface_HGraph::Interface_HGraph()`
+    /// **Source:** `Interface_HGraph.hxx`:54 - `Interface_HGraph::Interface_HGraph()`
     /// Creates an HGraph with a graph itself created from <amodel>
     /// and <protocol>
     pub fn new_handleinterfaceinterfacemodel_handleinterfacegtool(
-        amodel: &crate::ffi_types::HandleInterfaceInterfaceModel,
-        gtool: &crate::ffi_types::HandleInterfaceGTool,
+        amodel: &crate::ffi_types::Handle_Interface_InterfaceModel,
+        gtool: &crate::ffi_types::Handle_Interface_GTool,
     ) -> crate::OwnedPtr<Self> {
         Self::new_handleinterfaceinterfacemodel_handleinterfacegtool_bool(amodel, gtool, true)
     }
 
-    /// **Source:** `Interface_HGraph.hxx`:62 - `Interface_HGraph::Interface_HGraph()`
+    /// **Source:** `Interface_HGraph.hxx`:59 - `Interface_HGraph::Interface_HGraph()`
     /// Same a above, but works with the GTool in the model
     pub fn new_handleinterfaceinterfacemodel(
-        amodel: &crate::ffi_types::HandleInterfaceInterfaceModel,
+        amodel: &crate::ffi_types::Handle_Interface_InterfaceModel,
     ) -> crate::OwnedPtr<Self> {
         Self::new_handleinterfaceinterfacemodel_bool(amodel, true)
     }
 
-    /// **Source:** `Interface_HGraph.hxx`:69 - `Interface_HGraph::Graph()`
+    /// **Source:** `Interface_HGraph.hxx`:66 - `Interface_HGraph::Graph()`
     /// Returns the Graph contained in <me>, for Read Only Operations
     /// Remark that it is returns as "const &"
     /// Getting it in a new variable instead of a reference would be
@@ -8255,7 +7746,7 @@ impl HGraph {
         }
     }
 
-    /// **Source:** `Interface_HGraph.hxx`:73 - `Interface_HGraph::CGraph()`
+    /// **Source:** `Interface_HGraph.hxx`:70 - `Interface_HGraph::CGraph()`
     /// Same as above, but for Read-Write Operations
     /// Then, The Graph will be modified in the HGraph itself
     pub fn c_graph(&mut self) -> &mut Graph {
@@ -8266,8 +7757,8 @@ impl HGraph {
         }
     }
 
-    /// **Source:** `Interface_HGraph.hxx`:75 - `Interface_HGraph::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `Interface_HGraph.hxx`:72 - `Interface_HGraph::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKXSBase::Interface_HGraph_dynamic_type(
                 self as *const Self,
@@ -8275,7 +7766,7 @@ impl HGraph {
         }
     }
 
-    /// **Source:** `Interface_HGraph.hxx`:75 - `Interface_HGraph::get_type_name()`
+    /// **Source:** `Interface_HGraph.hxx`:72 - `Interface_HGraph::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -8286,8 +7777,8 @@ impl HGraph {
         .into_owned()
     }
 
-    /// **Source:** `Interface_HGraph.hxx`:75 - `Interface_HGraph::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    /// **Source:** `Interface_HGraph.hxx`:72 - `Interface_HGraph::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKXSBase::Interface_HGraph_get_type_descriptor(),
@@ -8320,7 +7811,7 @@ impl HGraph {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleInterfaceHGraph> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Interface_HGraph> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKXSBase::Interface_HGraph_to_handle(obj.into_raw()),
@@ -8328,8 +7819,8 @@ impl HGraph {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_HGraph_inherited_IsInstance(
                 self as *const Self,
@@ -8338,8 +7829,8 @@ impl HGraph {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_HGraph_inherited_IsKind(
                 self as *const Self,
@@ -8348,7 +7839,7 @@ impl HGraph {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -8362,14 +7853,14 @@ impl HGraph {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_HGraph_inherited_GetRefCount(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_HGraph_inherited_IncrementRefCounter(
@@ -8378,7 +7869,7 @@ impl HGraph {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_HGraph_inherited_DecrementRefCounter(
@@ -8387,7 +7878,7 @@ impl HGraph {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_HGraph_inherited_Delete(self as *const Self)
@@ -8395,32 +7886,34 @@ impl HGraph {
     }
 }
 
-pub use crate::ffi_types::HandleInterfaceHGraph;
+pub use crate::ffi_types::Handle_Interface_HGraph;
 
-unsafe impl crate::CppDeletable for HandleInterfaceHGraph {
+unsafe impl crate::CppDeletable for Handle_Interface_HGraph {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKXSBase::HandleInterfaceHGraph_destructor(ptr);
+            crate::ffi_extern_TKXSBase::Handle_Interface_HGraph_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleInterfaceHGraph {
+unsafe impl crate::CppCopyable for Handle_Interface_HGraph {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        unsafe { crate::check_result(crate::ffi_extern_TKXSBase::HandleInterfaceHGraph_clone(ptr)) }
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKXSBase::Handle_Interface_HGraph_clone(ptr))
+        }
     }
 }
 
-impl HandleInterfaceHGraph {
+impl Handle_Interface_HGraph {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
-        unsafe { crate::ffi_extern_TKXSBase::HandleInterfaceHGraph_is_null(self as *const Self) }
+        unsafe { crate::ffi_extern_TKXSBase::Handle_Interface_HGraph_is_null(self as *const Self) }
     }
 
     /// Dereference this Handle to access the underlying Interface_HGraph
     pub fn get(&self) -> &crate::ffi_types::Interface_HGraph {
         unsafe {
-            &*crate::check_result(crate::ffi_extern_TKXSBase::HandleInterfaceHGraph_get(
+            &*crate::check_result(crate::ffi_extern_TKXSBase::Handle_Interface_HGraph_get(
                 self as *const Self,
             ))
         }
@@ -8429,7 +7922,7 @@ impl HandleInterfaceHGraph {
     /// Dereference this Handle to mutably access the underlying Interface_HGraph
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::Interface_HGraph {
         unsafe {
-            &mut *crate::check_result(crate::ffi_extern_TKXSBase::HandleInterfaceHGraph_get_mut(
+            &mut *crate::check_result(crate::ffi_extern_TKXSBase::Handle_Interface_HGraph_get_mut(
                 self as *mut Self,
             ))
         }
@@ -8438,294 +7931,13 @@ impl HandleInterfaceHGraph {
     /// Upcast Handle<Interface_HGraph> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKXSBase::HandleInterfaceHGraph_to_HandleStandardTransient(
+                crate::ffi_extern_TKXSBase::Handle_Interface_HGraph_to_Handle_Standard_Transient(
                     self as *const Self,
                 ),
             ))
-        }
-    }
-}
-
-// ========================
-// From Interface_HSequenceOfCheck.hxx
-// ========================
-
-/// **Source:** `Interface_HSequenceOfCheck.hxx`:23 - `Interface_HSequenceOfCheck`
-pub use crate::ffi_types::Interface_HSequenceOfCheck as HSequenceOfCheck;
-
-unsafe impl crate::CppDeletable for HSequenceOfCheck {
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            crate::ffi_extern_TKXSBase::Interface_HSequenceOfCheck_destructor(ptr);
-        }
-    }
-}
-
-impl HSequenceOfCheck {
-    /// **Source:** `Interface_HSequenceOfCheck.hxx`:23 - `Interface_HSequenceOfCheck::Interface_HSequenceOfCheck()`
-    pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKXSBase::Interface_HSequenceOfCheck_ctor(),
-            ))
-        }
-    }
-
-    /// **Source:** `Interface_HSequenceOfCheck.hxx`:23 - `Interface_HSequenceOfCheck::Interface_HSequenceOfCheck()`
-    pub fn new_sequenceofcheck(
-        theOther: &crate::ffi_types::Interface_SequenceOfCheck,
-    ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKXSBase::Interface_HSequenceOfCheck_ctor_sequenceofcheck(
-                    theOther,
-                ),
-            ))
-        }
-    }
-
-    /// **Source:** `Interface_HSequenceOfCheck.hxx`:23 - `Interface_HSequenceOfCheck::Sequence()`
-    pub fn sequence(&self) -> &crate::ffi_types::Interface_SequenceOfCheck {
-        unsafe {
-            &*(crate::check_result(
-                crate::ffi_extern_TKXSBase::Interface_HSequenceOfCheck_sequence(
-                    self as *const Self,
-                ),
-            ))
-        }
-    }
-
-    /// **Source:** `Interface_HSequenceOfCheck.hxx`:23 - `Interface_HSequenceOfCheck::Append()`
-    pub fn append_handleinterfacecheck(
-        &mut self,
-        theItem: &crate::ffi_types::HandleInterfaceCheck,
-    ) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKXSBase::Interface_HSequenceOfCheck_append_handleinterfacecheck(
-                self as *mut Self,
-                theItem,
-            )
-        })
-    }
-
-    /// **Source:** `Interface_HSequenceOfCheck.hxx`:23 - `Interface_HSequenceOfCheck::Append()`
-    pub fn append_sequenceofcheck(
-        &mut self,
-        theSequence: &mut crate::ffi_types::Interface_SequenceOfCheck,
-    ) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKXSBase::Interface_HSequenceOfCheck_append_sequenceofcheck(
-                self as *mut Self,
-                theSequence,
-            )
-        })
-    }
-
-    /// **Source:** `Interface_HSequenceOfCheck.hxx`:23 - `Interface_HSequenceOfCheck::ChangeSequence()`
-    pub fn change_sequence(&mut self) -> &mut crate::ffi_types::Interface_SequenceOfCheck {
-        unsafe {
-            &mut *(crate::check_result(
-                crate::ffi_extern_TKXSBase::Interface_HSequenceOfCheck_change_sequence(
-                    self as *mut Self,
-                ),
-            ))
-        }
-    }
-
-    /// **Source:** `Interface_HSequenceOfCheck.hxx`:23 - `Interface_HSequenceOfCheck::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
-        unsafe {
-            &*(crate::check_result(
-                crate::ffi_extern_TKXSBase::Interface_HSequenceOfCheck_dynamic_type(
-                    self as *const Self,
-                ),
-            ))
-        }
-    }
-
-    /// **Source:** `Interface_HSequenceOfCheck.hxx`:23 - `Interface_HSequenceOfCheck::get_type_name()`
-    pub fn get_type_name() -> std::string::String {
-        unsafe {
-            std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi_extern_TKXSBase::Interface_HSequenceOfCheck_get_type_name(),
-            ))
-        }
-        .to_string_lossy()
-        .into_owned()
-    }
-
-    /// **Source:** `Interface_HSequenceOfCheck.hxx`:23 - `Interface_HSequenceOfCheck::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
-        unsafe {
-            &*(crate::check_result(
-                crate::ffi_extern_TKXSBase::Interface_HSequenceOfCheck_get_type_descriptor(),
-            ))
-        }
-    }
-
-    /// Upcast to Standard_Transient
-    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        unsafe {
-            &*crate::check_result(
-                crate::ffi_extern_TKXSBase::Interface_HSequenceOfCheck_as_Standard_Transient(
-                    self as *const Self,
-                ),
-            )
-        }
-    }
-
-    /// Upcast to Standard_Transient (mutable)
-    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        unsafe {
-            &mut *crate::check_result(
-                crate::ffi_extern_TKXSBase::Interface_HSequenceOfCheck_as_Standard_Transient_mut(
-                    self as *mut Self,
-                ),
-            )
-        }
-    }
-
-    /// Wrap in a Handle (reference-counted smart pointer)
-    pub fn to_handle(
-        obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleInterfaceHSequenceOfCheck> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKXSBase::Interface_HSequenceOfCheck_to_handle(obj.into_raw()),
-            ))
-        }
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKXSBase::Interface_HSequenceOfCheck_inherited_IsInstance(
-                self as *const Self,
-                theType,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKXSBase::Interface_HSequenceOfCheck_inherited_IsKind(
-                self as *const Self,
-                theType,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
-    pub fn this(&self) -> Option<&crate::standard::Transient> {
-        {
-            let __val = crate::check_result(unsafe {
-                crate::ffi_extern_TKXSBase::Interface_HSequenceOfCheck_inherited_This(
-                    self as *const Self,
-                )
-            });
-            if __val.is_null() {
-                None
-            } else {
-                Some(unsafe { &*__val })
-            }
-        }
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
-    pub fn get_ref_count(&self) -> i32 {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKXSBase::Interface_HSequenceOfCheck_inherited_GetRefCount(
-                self as *const Self,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
-    pub fn increment_ref_counter(&mut self) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKXSBase::Interface_HSequenceOfCheck_inherited_IncrementRefCounter(
-                self as *mut Self,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
-    pub fn decrement_ref_counter(&mut self) -> i32 {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKXSBase::Interface_HSequenceOfCheck_inherited_DecrementRefCounter(
-                self as *mut Self,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
-    pub fn delete(&self) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKXSBase::Interface_HSequenceOfCheck_inherited_Delete(
-                self as *const Self,
-            )
-        })
-    }
-}
-
-pub use crate::ffi_types::HandleInterfaceHSequenceOfCheck;
-
-unsafe impl crate::CppDeletable for HandleInterfaceHSequenceOfCheck {
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            crate::ffi_extern_TKXSBase::HandleInterfaceHSequenceOfCheck_destructor(ptr);
-        }
-    }
-}
-
-unsafe impl crate::CppCopyable for HandleInterfaceHSequenceOfCheck {
-    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        unsafe {
-            crate::check_result(crate::ffi_extern_TKXSBase::HandleInterfaceHSequenceOfCheck_clone(
-                ptr,
-            ))
-        }
-    }
-}
-
-impl HandleInterfaceHSequenceOfCheck {
-    /// Returns `true` if this Handle is null (doesn't point to any object).
-    pub fn is_null(&self) -> bool {
-        unsafe {
-            crate::ffi_extern_TKXSBase::HandleInterfaceHSequenceOfCheck_is_null(self as *const Self)
-        }
-    }
-
-    /// Dereference this Handle to access the underlying Interface_HSequenceOfCheck
-    pub fn get(&self) -> &crate::ffi_types::Interface_HSequenceOfCheck {
-        unsafe {
-            &*crate::check_result(crate::ffi_extern_TKXSBase::HandleInterfaceHSequenceOfCheck_get(
-                self as *const Self,
-            ))
-        }
-    }
-
-    /// Dereference this Handle to mutably access the underlying Interface_HSequenceOfCheck
-    pub fn get_mut(&mut self) -> &mut crate::ffi_types::Interface_HSequenceOfCheck {
-        unsafe {
-            &mut *crate::check_result(
-                crate::ffi_extern_TKXSBase::HandleInterfaceHSequenceOfCheck_get_mut(
-                    self as *mut Self,
-                ),
-            )
-        }
-    }
-
-    /// Upcast Handle<Interface_HSequenceOfCheck> to Handle<Standard_Transient>
-    pub fn to_handle_transient(
-        &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKXSBase::HandleInterfaceHSequenceOfCheck_to_HandleStandardTransient(self as *const Self)))
         }
     }
 }
@@ -8734,7 +7946,7 @@ impl HandleInterfaceHSequenceOfCheck {
 // From Interface_IntList.hxx
 // ========================
 
-/// **Source:** `Interface_IntList.hxx`:53 - `Interface_IntList`
+/// **Source:** `Interface_IntList.hxx`:54 - `Interface_IntList`
 /// This class detains the data which describe a Graph. A Graph
 /// has two lists, one for shared refs, one for sharing refs
 /// (the reverses). Each list comprises, for each Entity of the
@@ -8771,7 +7983,7 @@ unsafe impl crate::CppDeletable for IntList {
 }
 
 impl IntList {
-    /// **Source:** `Interface_IntList.hxx`:59 - `Interface_IntList::Interface_IntList()`
+    /// **Source:** `Interface_IntList.hxx`:60 - `Interface_IntList::Interface_IntList()`
     /// Creates empty IntList.
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
@@ -8781,7 +7993,7 @@ impl IntList {
         }
     }
 
-    /// **Source:** `Interface_IntList.hxx`:62 - `Interface_IntList::Interface_IntList()`
+    /// **Source:** `Interface_IntList.hxx`:63 - `Interface_IntList::Interface_IntList()`
     /// Creates an IntList for <nbe> entities
     pub fn new_int(nbe: i32) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -8791,7 +8003,7 @@ impl IntList {
         }
     }
 
-    /// **Source:** `Interface_IntList.hxx`:67 - `Interface_IntList::Interface_IntList()`
+    /// **Source:** `Interface_IntList.hxx`:68 - `Interface_IntList::Interface_IntList()`
     /// Creates an IntList from another one.
     /// if <copied> is True, copies data
     /// else, data are not copied, only the header object is
@@ -8803,7 +8015,7 @@ impl IntList {
         }
     }
 
-    /// **Source:** `Interface_IntList.hxx`:70 - `Interface_IntList::Initialize()`
+    /// **Source:** `Interface_IntList.hxx`:71 - `Interface_IntList::Initialize()`
     /// Initialize IntList by number of entities.
     pub fn initialize(&mut self, nbe: i32) {
         crate::check_void_result(unsafe {
@@ -8811,25 +8023,38 @@ impl IntList {
         })
     }
 
-    /// **Source:** `Interface_IntList.hxx`:73 - `Interface_IntList::Internals()`
-    /// Returns internal values, used for copying
-    pub fn internals(
-        &self,
-        nbrefs: &mut i32,
-        ents: &mut crate::ffi_types::HandleTColStdHArray1OfInteger,
-        refs: &mut crate::ffi_types::HandleTColStdHArray1OfInteger,
-    ) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKXSBase::Interface_IntList_internals(
-                self as *const Self,
-                nbrefs,
-                ents,
-                refs,
-            )
+    /// **Source:** `Interface_IntList.hxx`:75 - `Interface_IntList::NbReferences()`
+    /// Returns count of stored references.
+    /// @return number of references
+    pub fn nb_references(&self) -> i32 {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKXSBase::Interface_IntList_nb_references(self as *const Self)
         })
     }
 
-    /// **Source:** `Interface_IntList.hxx`:78 - `Interface_IntList::NbEntities()`
+    /// **Source:** `Interface_IntList.hxx`:79 - `Interface_IntList::Entities()`
+    /// Returns entity headers used to describe the lists.
+    /// @return handle to the array of entity headers
+    pub fn entities(&self) -> &crate::ffi_types::Handle_NCollection_HArray1_int {
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKXSBase::Interface_IntList_entities(
+                self as *const Self,
+            )))
+        }
+    }
+
+    /// **Source:** `Interface_IntList.hxx`:83 - `Interface_IntList::References()`
+    /// Returns the packed references storage.
+    /// @return handle to the array of packed references
+    pub fn references(&self) -> &crate::ffi_types::Handle_NCollection_HArray1_int {
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKXSBase::Interface_IntList_references(
+                self as *const Self,
+            )))
+        }
+    }
+
+    /// **Source:** `Interface_IntList.hxx`:93 - `Interface_IntList::NbEntities()`
     /// Returns count of entities to be acknowledged
     pub fn nb_entities(&self) -> i32 {
         crate::check_result(unsafe {
@@ -8837,7 +8062,7 @@ impl IntList {
         })
     }
 
-    /// **Source:** `Interface_IntList.hxx`:81 - `Interface_IntList::SetNbEntities()`
+    /// **Source:** `Interface_IntList.hxx`:96 - `Interface_IntList::SetNbEntities()`
     /// Changes the count of entities (ignored if decreased)
     pub fn set_nb_entities(&mut self, nbe: i32) {
         crate::check_void_result(unsafe {
@@ -8845,7 +8070,7 @@ impl IntList {
         })
     }
 
-    /// **Source:** `Interface_IntList.hxx`:84 - `Interface_IntList::SetNumber()`
+    /// **Source:** `Interface_IntList.hxx`:99 - `Interface_IntList::SetNumber()`
     /// Sets an entity number as current (for read and fill)
     pub fn set_number(&mut self, number: i32) {
         crate::check_void_result(unsafe {
@@ -8853,7 +8078,7 @@ impl IntList {
         })
     }
 
-    /// **Source:** `Interface_IntList.hxx`:87 - `Interface_IntList::Number()`
+    /// **Source:** `Interface_IntList.hxx`:102 - `Interface_IntList::Number()`
     /// Returns the current entity number
     pub fn number(&self) -> i32 {
         crate::check_result(unsafe {
@@ -8861,7 +8086,7 @@ impl IntList {
         })
     }
 
-    /// **Source:** `Interface_IntList.hxx`:93 - `Interface_IntList::List()`
+    /// **Source:** `Interface_IntList.hxx`:108 - `Interface_IntList::List()`
     /// Returns an IntList, identical to <me> but set to a specified
     /// entity Number
     /// By default, not copied (in order to be read)
@@ -8878,7 +8103,7 @@ impl IntList {
         }
     }
 
-    /// **Source:** `Interface_IntList.hxx`:100 - `Interface_IntList::SetRedefined()`
+    /// **Source:** `Interface_IntList.hxx`:114 - `Interface_IntList::SetRedefined()`
     /// Sets current entity list to be redefined or not
     /// This is used in a Graph for redefinition list : it can be
     /// disable (no redefinition, i.e. list is cleared), or enabled
@@ -8889,7 +8114,7 @@ impl IntList {
         })
     }
 
-    /// **Source:** `Interface_IntList.hxx`:106 - `Interface_IntList::Reservate()`
+    /// **Source:** `Interface_IntList.hxx`:120 - `Interface_IntList::Reservate()`
     /// Makes a reservation for <count> references to be later
     /// attached to the current entity. If required, it increases
     /// the size of array used to store refs. Remark that if count is
@@ -8900,7 +8125,7 @@ impl IntList {
         })
     }
 
-    /// **Source:** `Interface_IntList.hxx`:110 - `Interface_IntList::Add()`
+    /// **Source:** `Interface_IntList.hxx`:124 - `Interface_IntList::Add()`
     /// Adds a reference (as an integer value, an entity number) to
     /// the current entity number. Zero is ignored
     pub fn add(&mut self, ref_: i32) {
@@ -8909,7 +8134,7 @@ impl IntList {
         })
     }
 
-    /// **Source:** `Interface_IntList.hxx`:113 - `Interface_IntList::Length()`
+    /// **Source:** `Interface_IntList.hxx`:127 - `Interface_IntList::Length()`
     /// Returns the count of refs attached to current entity number
     pub fn length(&self) -> i32 {
         crate::check_result(unsafe {
@@ -8917,7 +8142,7 @@ impl IntList {
         })
     }
 
-    /// **Source:** `Interface_IntList.hxx`:117 - `Interface_IntList::IsRedefined()`
+    /// **Source:** `Interface_IntList.hxx`:131 - `Interface_IntList::IsRedefined()`
     /// Returns True if the list for a number
     /// (default is taken as current) is "redefined" (useful for empty list)
     pub fn is_redefined(&self, num: i32) -> bool {
@@ -8926,7 +8151,7 @@ impl IntList {
         })
     }
 
-    /// **Source:** `Interface_IntList.hxx`:121 - `Interface_IntList::Value()`
+    /// **Source:** `Interface_IntList.hxx`:135 - `Interface_IntList::Value()`
     /// Returns a reference number in the list for current number,
     /// according to its rank
     pub fn value(&self, num: i32) -> i32 {
@@ -8935,7 +8160,7 @@ impl IntList {
         })
     }
 
-    /// **Source:** `Interface_IntList.hxx`:125 - `Interface_IntList::Remove()`
+    /// **Source:** `Interface_IntList.hxx`:139 - `Interface_IntList::Remove()`
     /// Removes an item in the list for current number, given its rank
     /// Returns True if done, False else
     pub fn remove(&mut self, num: i32) -> bool {
@@ -8944,7 +8169,7 @@ impl IntList {
         })
     }
 
-    /// **Source:** `Interface_IntList.hxx`:128 - `Interface_IntList::Clear()`
+    /// **Source:** `Interface_IntList.hxx`:142 - `Interface_IntList::Clear()`
     /// Clears all data, hence each entity number has an empty list
     pub fn clear(&mut self) {
         crate::check_void_result(unsafe {
@@ -8952,7 +8177,7 @@ impl IntList {
         })
     }
 
-    /// **Source:** `Interface_IntList.hxx`:132 - `Interface_IntList::AdjustSize()`
+    /// **Source:** `Interface_IntList.hxx`:146 - `Interface_IntList::AdjustSize()`
     /// Resizes lists to exact sizes. For list of refs, a positive
     /// margin can be added.
     pub fn adjust_size(&mut self, margin: i32) {
@@ -8966,7 +8191,7 @@ impl IntList {
 // From Interface_IntVal.hxx
 // ========================
 
-/// **Source:** `Interface_IntVal.hxx`:30 - `Interface_IntVal`
+/// **Source:** `Interface_IntVal.hxx`:27 - `Interface_IntVal`
 /// An Integer through a Handle (i.e. managed as TShared)
 pub use crate::ffi_types::Interface_IntVal as IntVal;
 
@@ -8979,7 +8204,7 @@ unsafe impl crate::CppDeletable for IntVal {
 }
 
 impl IntVal {
-    /// **Source:** `Interface_IntVal.hxx`:34 - `Interface_IntVal::Interface_IntVal()`
+    /// **Source:** `Interface_IntVal.hxx`:31 - `Interface_IntVal::Interface_IntVal()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -8988,14 +8213,14 @@ impl IntVal {
         }
     }
 
-    /// **Source:** `Interface_IntVal.hxx`:36 - `Interface_IntVal::Value()`
+    /// **Source:** `Interface_IntVal.hxx`:33 - `Interface_IntVal::Value()`
     pub fn value(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_IntVal_value(self as *const Self)
         })
     }
 
-    /// **Source:** `Interface_IntVal.hxx`:38 - `Interface_IntVal::CValue()`
+    /// **Source:** `Interface_IntVal.hxx`:35 - `Interface_IntVal::CValue()`
     pub fn c_value(&mut self) -> &mut i32 {
         unsafe {
             &mut *(crate::check_result(crate::ffi_extern_TKXSBase::Interface_IntVal_c_value(
@@ -9004,8 +8229,8 @@ impl IntVal {
         }
     }
 
-    /// **Source:** `Interface_IntVal.hxx`:40 - `Interface_IntVal::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `Interface_IntVal.hxx`:37 - `Interface_IntVal::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKXSBase::Interface_IntVal_dynamic_type(
                 self as *const Self,
@@ -9013,7 +8238,7 @@ impl IntVal {
         }
     }
 
-    /// **Source:** `Interface_IntVal.hxx`:40 - `Interface_IntVal::get_type_name()`
+    /// **Source:** `Interface_IntVal.hxx`:37 - `Interface_IntVal::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -9024,8 +8249,8 @@ impl IntVal {
         .into_owned()
     }
 
-    /// **Source:** `Interface_IntVal.hxx`:40 - `Interface_IntVal::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    /// **Source:** `Interface_IntVal.hxx`:37 - `Interface_IntVal::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKXSBase::Interface_IntVal_get_type_descriptor(),
@@ -9058,7 +8283,7 @@ impl IntVal {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleInterfaceIntVal> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Interface_IntVal> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKXSBase::Interface_IntVal_to_handle(obj.into_raw()),
@@ -9066,8 +8291,8 @@ impl IntVal {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_IntVal_inherited_IsInstance(
                 self as *const Self,
@@ -9076,8 +8301,8 @@ impl IntVal {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_IntVal_inherited_IsKind(
                 self as *const Self,
@@ -9086,7 +8311,7 @@ impl IntVal {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -9100,14 +8325,14 @@ impl IntVal {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_IntVal_inherited_GetRefCount(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_IntVal_inherited_IncrementRefCounter(
@@ -9116,7 +8341,7 @@ impl IntVal {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_IntVal_inherited_DecrementRefCounter(
@@ -9125,7 +8350,7 @@ impl IntVal {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_IntVal_inherited_Delete(self as *const Self)
@@ -9133,32 +8358,34 @@ impl IntVal {
     }
 }
 
-pub use crate::ffi_types::HandleInterfaceIntVal;
+pub use crate::ffi_types::Handle_Interface_IntVal;
 
-unsafe impl crate::CppDeletable for HandleInterfaceIntVal {
+unsafe impl crate::CppDeletable for Handle_Interface_IntVal {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKXSBase::HandleInterfaceIntVal_destructor(ptr);
+            crate::ffi_extern_TKXSBase::Handle_Interface_IntVal_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleInterfaceIntVal {
+unsafe impl crate::CppCopyable for Handle_Interface_IntVal {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        unsafe { crate::check_result(crate::ffi_extern_TKXSBase::HandleInterfaceIntVal_clone(ptr)) }
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKXSBase::Handle_Interface_IntVal_clone(ptr))
+        }
     }
 }
 
-impl HandleInterfaceIntVal {
+impl Handle_Interface_IntVal {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
-        unsafe { crate::ffi_extern_TKXSBase::HandleInterfaceIntVal_is_null(self as *const Self) }
+        unsafe { crate::ffi_extern_TKXSBase::Handle_Interface_IntVal_is_null(self as *const Self) }
     }
 
     /// Dereference this Handle to access the underlying Interface_IntVal
     pub fn get(&self) -> &crate::ffi_types::Interface_IntVal {
         unsafe {
-            &*crate::check_result(crate::ffi_extern_TKXSBase::HandleInterfaceIntVal_get(
+            &*crate::check_result(crate::ffi_extern_TKXSBase::Handle_Interface_IntVal_get(
                 self as *const Self,
             ))
         }
@@ -9167,7 +8394,7 @@ impl HandleInterfaceIntVal {
     /// Dereference this Handle to mutably access the underlying Interface_IntVal
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::Interface_IntVal {
         unsafe {
-            &mut *crate::check_result(crate::ffi_extern_TKXSBase::HandleInterfaceIntVal_get_mut(
+            &mut *crate::check_result(crate::ffi_extern_TKXSBase::Handle_Interface_IntVal_get_mut(
                 self as *mut Self,
             ))
         }
@@ -9176,10 +8403,10 @@ impl HandleInterfaceIntVal {
     /// Upcast Handle<Interface_IntVal> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKXSBase::HandleInterfaceIntVal_to_HandleStandardTransient(
+                crate::ffi_extern_TKXSBase::Handle_Interface_IntVal_to_Handle_Standard_Transient(
                     self as *const Self,
                 ),
             ))
@@ -9191,7 +8418,7 @@ impl HandleInterfaceIntVal {
 // From Interface_InterfaceError.hxx
 // ========================
 
-/// **Source:** `Interface_InterfaceError.hxx`:36 - `Interface_InterfaceError`
+/// **Source:** `Interface_InterfaceError.hxx`:32 - `Interface_InterfaceError`
 pub use crate::ffi_types::Interface_InterfaceError as InterfaceError;
 
 unsafe impl crate::CppDeletable for InterfaceError {
@@ -9203,16 +8430,7 @@ unsafe impl crate::CppDeletable for InterfaceError {
 }
 
 impl InterfaceError {
-    /// **Source:** `Interface_InterfaceError.hxx`:36 - `Interface_InterfaceError::Interface_InterfaceError()`
-    pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKXSBase::Interface_InterfaceError_ctor(),
-            ))
-        }
-    }
-
-    /// **Source:** `Interface_InterfaceError.hxx`:36 - `Interface_InterfaceError::Interface_InterfaceError()`
+    /// **Source:** `Interface_InterfaceError.hxx`:32 - `Interface_InterfaceError::Interface_InterfaceError()`
     pub fn new_charptr(theMessage: &str) -> crate::OwnedPtr<Self> {
         let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
         unsafe {
@@ -9224,7 +8442,7 @@ impl InterfaceError {
         }
     }
 
-    /// **Source:** `Interface_InterfaceError.hxx`:36 - `Interface_InterfaceError::Interface_InterfaceError()`
+    /// **Source:** `Interface_InterfaceError.hxx`:32 - `Interface_InterfaceError::Interface_InterfaceError()`
     pub fn new_charptr2(theMessage: &str, theStackTrace: &str) -> crate::OwnedPtr<Self> {
         let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
         let c_theStackTrace = std::ffi::CString::new(theStackTrace).unwrap();
@@ -9238,83 +8456,17 @@ impl InterfaceError {
         }
     }
 
-    /// **Source:** `Interface_InterfaceError.hxx`:36 - `Interface_InterfaceError::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `Interface_InterfaceError.hxx`:32 - `Interface_InterfaceError::ExceptionType()`
+    pub fn exception_type(&self) -> std::string::String {
         unsafe {
-            &*(crate::check_result(
-                crate::ffi_extern_TKXSBase::Interface_InterfaceError_dynamic_type(
+            std::ffi::CStr::from_ptr(crate::check_result(
+                crate::ffi_extern_TKXSBase::Interface_InterfaceError_exception_type(
                     self as *const Self,
                 ),
             ))
         }
-    }
-
-    /// **Source:** `Interface_InterfaceError.hxx`:36 - `Interface_InterfaceError::Raise()`
-    pub fn raise_charptr(theMessage: &str) {
-        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKXSBase::Interface_InterfaceError_raise_charptr(
-                c_theMessage.as_ptr(),
-            )
-        })
-    }
-
-    /// **Source:** `Interface_InterfaceError.hxx`:36 - `Interface_InterfaceError::Raise()`
-    pub fn raise_sstream(theMessage: &mut crate::ffi_types::Standard_SStream) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKXSBase::Interface_InterfaceError_raise_sstream(theMessage)
-        })
-    }
-
-    /// **Source:** `Interface_InterfaceError.hxx`:36 - `Interface_InterfaceError::NewInstance()`
-    pub fn new_instance_charptr(
-        theMessage: &str,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleInterfaceInterfaceError> {
-        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKXSBase::Interface_InterfaceError_new_instance_charptr(
-                    c_theMessage.as_ptr(),
-                ),
-            ))
-        }
-    }
-
-    /// **Source:** `Interface_InterfaceError.hxx`:36 - `Interface_InterfaceError::NewInstance()`
-    pub fn new_instance_charptr2(
-        theMessage: &str,
-        theStackTrace: &str,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleInterfaceInterfaceError> {
-        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
-        let c_theStackTrace = std::ffi::CString::new(theStackTrace).unwrap();
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKXSBase::Interface_InterfaceError_new_instance_charptr2(
-                    c_theMessage.as_ptr(),
-                    c_theStackTrace.as_ptr(),
-                ),
-            ))
-        }
-    }
-
-    /// **Source:** `Interface_InterfaceError.hxx`:36 - `Interface_InterfaceError::get_type_name()`
-    pub fn get_type_name() -> std::string::String {
-        unsafe {
-            std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi_extern_TKXSBase::Interface_InterfaceError_get_type_name(),
-            ))
-        }
         .to_string_lossy()
         .into_owned()
-    }
-
-    /// **Source:** `Interface_InterfaceError.hxx`:36 - `Interface_InterfaceError::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
-        unsafe {
-            &*(crate::check_result(
-                crate::ffi_extern_TKXSBase::Interface_InterfaceError_get_type_descriptor(),
-            ))
-        }
     }
 
     /// Upcast to Standard_Failure
@@ -9339,40 +8491,7 @@ impl InterfaceError {
         }
     }
 
-    /// Upcast to Standard_Transient
-    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        unsafe {
-            &*crate::check_result(
-                crate::ffi_extern_TKXSBase::Interface_InterfaceError_as_Standard_Transient(
-                    self as *const Self,
-                ),
-            )
-        }
-    }
-
-    /// Upcast to Standard_Transient (mutable)
-    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        unsafe {
-            &mut *crate::check_result(
-                crate::ffi_extern_TKXSBase::Interface_InterfaceError_as_Standard_Transient_mut(
-                    self as *mut Self,
-                ),
-            )
-        }
-    }
-
-    /// Wrap in a Handle (reference-counted smart pointer)
-    pub fn to_handle(
-        obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleInterfaceInterfaceError> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKXSBase::Interface_InterfaceError_to_handle(obj.into_raw()),
-            ))
-        }
-    }
-
-    /// Inherited: **Source:** `Standard_Failure.hxx`:58 - `Standard_Failure::Print()`
+    /// Inherited: **Source:** `Standard_Failure.hxx`:73 - `Standard_Failure::Print()`
     pub fn print(&self, theStream: &mut crate::ffi_types::Standard_OStream) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_InterfaceError_inherited_Print(
@@ -9381,234 +8500,13 @@ impl InterfaceError {
             )
         })
     }
-
-    /// Inherited: **Source:** `Standard_Failure.hxx`:72 - `Standard_Failure::Reraise()`
-    pub fn reraise(&mut self) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKXSBase::Interface_InterfaceError_inherited_Reraise(
-                self as *mut Self,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Failure.hxx`:112 - `Standard_Failure::Jump()`
-    pub fn jump(&mut self) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKXSBase::Interface_InterfaceError_inherited_Jump(self as *mut Self)
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKXSBase::Interface_InterfaceError_inherited_IsInstance(
-                self as *const Self,
-                theType,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKXSBase::Interface_InterfaceError_inherited_IsKind(
-                self as *const Self,
-                theType,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
-    pub fn this(&self) -> Option<&crate::standard::Transient> {
-        {
-            let __val = crate::check_result(unsafe {
-                crate::ffi_extern_TKXSBase::Interface_InterfaceError_inherited_This(
-                    self as *const Self,
-                )
-            });
-            if __val.is_null() {
-                None
-            } else {
-                Some(unsafe { &*__val })
-            }
-        }
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
-    pub fn get_ref_count(&self) -> i32 {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKXSBase::Interface_InterfaceError_inherited_GetRefCount(
-                self as *const Self,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
-    pub fn increment_ref_counter(&mut self) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKXSBase::Interface_InterfaceError_inherited_IncrementRefCounter(
-                self as *mut Self,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
-    pub fn decrement_ref_counter(&mut self) -> i32 {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKXSBase::Interface_InterfaceError_inherited_DecrementRefCounter(
-                self as *mut Self,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
-    pub fn delete(&self) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKXSBase::Interface_InterfaceError_inherited_Delete(
-                self as *const Self,
-            )
-        })
-    }
-}
-
-pub use crate::ffi_types::HandleInterfaceInterfaceError;
-
-unsafe impl crate::CppDeletable for HandleInterfaceInterfaceError {
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            crate::ffi_extern_TKXSBase::HandleInterfaceInterfaceError_destructor(ptr);
-        }
-    }
-}
-
-unsafe impl crate::CppCopyable for HandleInterfaceInterfaceError {
-    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        unsafe {
-            crate::check_result(crate::ffi_extern_TKXSBase::HandleInterfaceInterfaceError_clone(
-                ptr,
-            ))
-        }
-    }
-}
-
-impl HandleInterfaceInterfaceError {
-    /// Returns `true` if this Handle is null (doesn't point to any object).
-    pub fn is_null(&self) -> bool {
-        unsafe {
-            crate::ffi_extern_TKXSBase::HandleInterfaceInterfaceError_is_null(self as *const Self)
-        }
-    }
-
-    /// Dereference this Handle to access the underlying Interface_InterfaceError
-    pub fn get(&self) -> &crate::ffi_types::Interface_InterfaceError {
-        unsafe {
-            &*crate::check_result(crate::ffi_extern_TKXSBase::HandleInterfaceInterfaceError_get(
-                self as *const Self,
-            ))
-        }
-    }
-
-    /// Dereference this Handle to mutably access the underlying Interface_InterfaceError
-    pub fn get_mut(&mut self) -> &mut crate::ffi_types::Interface_InterfaceError {
-        unsafe {
-            &mut *crate::check_result(
-                crate::ffi_extern_TKXSBase::HandleInterfaceInterfaceError_get_mut(
-                    self as *mut Self,
-                ),
-            )
-        }
-    }
-
-    /// Upcast Handle<Interface_InterfaceError> to Handle<Standard_Failure>
-    pub fn to_handle_failure(&self) -> crate::OwnedPtr<crate::ffi_types::HandleStandardFailure> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKXSBase::HandleInterfaceInterfaceError_to_HandleStandardFailure(
-                    self as *const Self,
-                ),
-            ))
-        }
-    }
-
-    /// Upcast Handle<Interface_InterfaceError> to Handle<Standard_Transient>
-    pub fn to_handle_transient(
-        &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKXSBase::HandleInterfaceInterfaceError_to_HandleStandardTransient(self as *const Self)))
-        }
-    }
-
-    /// Downcast Handle<Interface_InterfaceError> to Handle<Interface_CheckFailure>
-    ///
-    /// Returns `None` if the handle does not point to a `Interface_CheckFailure` (or subclass).
-    pub fn downcast_to_check_failure(
-        &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleInterfaceCheckFailure>> {
-        let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKXSBase::HandleInterfaceInterfaceError_downcast_to_HandleInterfaceCheckFailure(self as *const Self)
-        });
-        if __val.is_null() {
-            None
-        } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(__val) })
-        }
-    }
-
-    /// Downcast Handle<Interface_InterfaceError> to Handle<Interface_InterfaceMismatch>
-    ///
-    /// Returns `None` if the handle does not point to a `Interface_InterfaceMismatch` (or subclass).
-    pub fn downcast_to_interface_mismatch(
-        &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleInterfaceInterfaceMismatch>> {
-        let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKXSBase::HandleInterfaceInterfaceError_downcast_to_HandleInterfaceInterfaceMismatch(self as *const Self)
-        });
-        if __val.is_null() {
-            None
-        } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(__val) })
-        }
-    }
-
-    /// Downcast Handle<Interface_InterfaceError> to Handle<Transfer_TransferDeadLoop>
-    ///
-    /// Returns `None` if the handle does not point to a `Transfer_TransferDeadLoop` (or subclass).
-    pub fn downcast_to_transfer_dead_loop(
-        &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleTransferTransferDeadLoop>> {
-        let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKXSBase::HandleInterfaceInterfaceError_downcast_to_HandleTransferTransferDeadLoop(self as *const Self)
-        });
-        if __val.is_null() {
-            None
-        } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(__val) })
-        }
-    }
-
-    /// Downcast Handle<Interface_InterfaceError> to Handle<Transfer_TransferFailure>
-    ///
-    /// Returns `None` if the handle does not point to a `Transfer_TransferFailure` (or subclass).
-    pub fn downcast_to_transfer_failure(
-        &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleTransferTransferFailure>> {
-        let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKXSBase::HandleInterfaceInterfaceError_downcast_to_HandleTransferTransferFailure(self as *const Self)
-        });
-        if __val.is_null() {
-            None
-        } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(__val) })
-        }
-    }
 }
 
 // ========================
 // From Interface_InterfaceMismatch.hxx
 // ========================
 
-/// **Source:** `Interface_InterfaceMismatch.hxx`:36 - `Interface_InterfaceMismatch`
+/// **Source:** `Interface_InterfaceMismatch.hxx`:32 - `Interface_InterfaceMismatch`
 pub use crate::ffi_types::Interface_InterfaceMismatch as InterfaceMismatch;
 
 unsafe impl crate::CppDeletable for InterfaceMismatch {
@@ -9620,16 +8518,7 @@ unsafe impl crate::CppDeletable for InterfaceMismatch {
 }
 
 impl InterfaceMismatch {
-    /// **Source:** `Interface_InterfaceMismatch.hxx`:36 - `Interface_InterfaceMismatch::Interface_InterfaceMismatch()`
-    pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKXSBase::Interface_InterfaceMismatch_ctor(),
-            ))
-        }
-    }
-
-    /// **Source:** `Interface_InterfaceMismatch.hxx`:36 - `Interface_InterfaceMismatch::Interface_InterfaceMismatch()`
+    /// **Source:** `Interface_InterfaceMismatch.hxx`:32 - `Interface_InterfaceMismatch::Interface_InterfaceMismatch()`
     pub fn new_charptr(theMessage: &str) -> crate::OwnedPtr<Self> {
         let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
         unsafe {
@@ -9641,7 +8530,7 @@ impl InterfaceMismatch {
         }
     }
 
-    /// **Source:** `Interface_InterfaceMismatch.hxx`:36 - `Interface_InterfaceMismatch::Interface_InterfaceMismatch()`
+    /// **Source:** `Interface_InterfaceMismatch.hxx`:32 - `Interface_InterfaceMismatch::Interface_InterfaceMismatch()`
     pub fn new_charptr2(theMessage: &str, theStackTrace: &str) -> crate::OwnedPtr<Self> {
         let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
         let c_theStackTrace = std::ffi::CString::new(theStackTrace).unwrap();
@@ -9655,83 +8544,17 @@ impl InterfaceMismatch {
         }
     }
 
-    /// **Source:** `Interface_InterfaceMismatch.hxx`:36 - `Interface_InterfaceMismatch::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `Interface_InterfaceMismatch.hxx`:32 - `Interface_InterfaceMismatch::ExceptionType()`
+    pub fn exception_type(&self) -> std::string::String {
         unsafe {
-            &*(crate::check_result(
-                crate::ffi_extern_TKXSBase::Interface_InterfaceMismatch_dynamic_type(
+            std::ffi::CStr::from_ptr(crate::check_result(
+                crate::ffi_extern_TKXSBase::Interface_InterfaceMismatch_exception_type(
                     self as *const Self,
                 ),
             ))
         }
-    }
-
-    /// **Source:** `Interface_InterfaceMismatch.hxx`:36 - `Interface_InterfaceMismatch::Raise()`
-    pub fn raise_charptr(theMessage: &str) {
-        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKXSBase::Interface_InterfaceMismatch_raise_charptr(
-                c_theMessage.as_ptr(),
-            )
-        })
-    }
-
-    /// **Source:** `Interface_InterfaceMismatch.hxx`:36 - `Interface_InterfaceMismatch::Raise()`
-    pub fn raise_sstream(theMessage: &mut crate::ffi_types::Standard_SStream) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKXSBase::Interface_InterfaceMismatch_raise_sstream(theMessage)
-        })
-    }
-
-    /// **Source:** `Interface_InterfaceMismatch.hxx`:36 - `Interface_InterfaceMismatch::NewInstance()`
-    pub fn new_instance_charptr(
-        theMessage: &str,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleInterfaceInterfaceMismatch> {
-        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKXSBase::Interface_InterfaceMismatch_new_instance_charptr(
-                    c_theMessage.as_ptr(),
-                ),
-            ))
-        }
-    }
-
-    /// **Source:** `Interface_InterfaceMismatch.hxx`:36 - `Interface_InterfaceMismatch::NewInstance()`
-    pub fn new_instance_charptr2(
-        theMessage: &str,
-        theStackTrace: &str,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleInterfaceInterfaceMismatch> {
-        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
-        let c_theStackTrace = std::ffi::CString::new(theStackTrace).unwrap();
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKXSBase::Interface_InterfaceMismatch_new_instance_charptr2(
-                    c_theMessage.as_ptr(),
-                    c_theStackTrace.as_ptr(),
-                ),
-            ))
-        }
-    }
-
-    /// **Source:** `Interface_InterfaceMismatch.hxx`:36 - `Interface_InterfaceMismatch::get_type_name()`
-    pub fn get_type_name() -> std::string::String {
-        unsafe {
-            std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi_extern_TKXSBase::Interface_InterfaceMismatch_get_type_name(),
-            ))
-        }
         .to_string_lossy()
         .into_owned()
-    }
-
-    /// **Source:** `Interface_InterfaceMismatch.hxx`:36 - `Interface_InterfaceMismatch::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
-        unsafe {
-            &*(crate::check_result(
-                crate::ffi_extern_TKXSBase::Interface_InterfaceMismatch_get_type_descriptor(),
-            ))
-        }
     }
 
     /// Upcast to Interface_InterfaceError
@@ -9774,40 +8597,7 @@ impl InterfaceMismatch {
         }
     }
 
-    /// Upcast to Standard_Transient
-    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        unsafe {
-            &*crate::check_result(
-                crate::ffi_extern_TKXSBase::Interface_InterfaceMismatch_as_Standard_Transient(
-                    self as *const Self,
-                ),
-            )
-        }
-    }
-
-    /// Upcast to Standard_Transient (mutable)
-    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        unsafe {
-            &mut *crate::check_result(
-                crate::ffi_extern_TKXSBase::Interface_InterfaceMismatch_as_Standard_Transient_mut(
-                    self as *mut Self,
-                ),
-            )
-        }
-    }
-
-    /// Wrap in a Handle (reference-counted smart pointer)
-    pub fn to_handle(
-        obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleInterfaceInterfaceMismatch> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKXSBase::Interface_InterfaceMismatch_to_handle(obj.into_raw()),
-            ))
-        }
-    }
-
-    /// Inherited: **Source:** `Standard_Failure.hxx`:58 - `Standard_Failure::Print()`
+    /// Inherited: **Source:** `Standard_Failure.hxx`:73 - `Standard_Failure::Print()`
     pub fn print(&self, theStream: &mut crate::ffi_types::Standard_OStream) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_InterfaceMismatch_inherited_Print(
@@ -9816,179 +8606,13 @@ impl InterfaceMismatch {
             )
         })
     }
-
-    /// Inherited: **Source:** `Standard_Failure.hxx`:72 - `Standard_Failure::Reraise()`
-    pub fn reraise(&mut self) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKXSBase::Interface_InterfaceMismatch_inherited_Reraise(
-                self as *mut Self,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Failure.hxx`:112 - `Standard_Failure::Jump()`
-    pub fn jump(&mut self) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKXSBase::Interface_InterfaceMismatch_inherited_Jump(
-                self as *mut Self,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKXSBase::Interface_InterfaceMismatch_inherited_IsInstance(
-                self as *const Self,
-                theType,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKXSBase::Interface_InterfaceMismatch_inherited_IsKind(
-                self as *const Self,
-                theType,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
-    pub fn this(&self) -> Option<&crate::standard::Transient> {
-        {
-            let __val = crate::check_result(unsafe {
-                crate::ffi_extern_TKXSBase::Interface_InterfaceMismatch_inherited_This(
-                    self as *const Self,
-                )
-            });
-            if __val.is_null() {
-                None
-            } else {
-                Some(unsafe { &*__val })
-            }
-        }
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
-    pub fn get_ref_count(&self) -> i32 {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKXSBase::Interface_InterfaceMismatch_inherited_GetRefCount(
-                self as *const Self,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
-    pub fn increment_ref_counter(&mut self) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKXSBase::Interface_InterfaceMismatch_inherited_IncrementRefCounter(
-                self as *mut Self,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
-    pub fn decrement_ref_counter(&mut self) -> i32 {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKXSBase::Interface_InterfaceMismatch_inherited_DecrementRefCounter(
-                self as *mut Self,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
-    pub fn delete(&self) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKXSBase::Interface_InterfaceMismatch_inherited_Delete(
-                self as *const Self,
-            )
-        })
-    }
-}
-
-pub use crate::ffi_types::HandleInterfaceInterfaceMismatch;
-
-unsafe impl crate::CppDeletable for HandleInterfaceInterfaceMismatch {
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            crate::ffi_extern_TKXSBase::HandleInterfaceInterfaceMismatch_destructor(ptr);
-        }
-    }
-}
-
-unsafe impl crate::CppCopyable for HandleInterfaceInterfaceMismatch {
-    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        unsafe {
-            crate::check_result(crate::ffi_extern_TKXSBase::HandleInterfaceInterfaceMismatch_clone(
-                ptr,
-            ))
-        }
-    }
-}
-
-impl HandleInterfaceInterfaceMismatch {
-    /// Returns `true` if this Handle is null (doesn't point to any object).
-    pub fn is_null(&self) -> bool {
-        unsafe {
-            crate::ffi_extern_TKXSBase::HandleInterfaceInterfaceMismatch_is_null(
-                self as *const Self,
-            )
-        }
-    }
-
-    /// Dereference this Handle to access the underlying Interface_InterfaceMismatch
-    pub fn get(&self) -> &crate::ffi_types::Interface_InterfaceMismatch {
-        unsafe {
-            &*crate::check_result(crate::ffi_extern_TKXSBase::HandleInterfaceInterfaceMismatch_get(
-                self as *const Self,
-            ))
-        }
-    }
-
-    /// Dereference this Handle to mutably access the underlying Interface_InterfaceMismatch
-    pub fn get_mut(&mut self) -> &mut crate::ffi_types::Interface_InterfaceMismatch {
-        unsafe {
-            &mut *crate::check_result(
-                crate::ffi_extern_TKXSBase::HandleInterfaceInterfaceMismatch_get_mut(
-                    self as *mut Self,
-                ),
-            )
-        }
-    }
-
-    /// Upcast Handle<Interface_InterfaceMismatch> to Handle<Interface_InterfaceError>
-    pub fn to_handle_interface_error(
-        &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleInterfaceInterfaceError> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKXSBase::HandleInterfaceInterfaceMismatch_to_HandleInterfaceInterfaceError(self as *const Self)))
-        }
-    }
-
-    /// Upcast Handle<Interface_InterfaceMismatch> to Handle<Standard_Failure>
-    pub fn to_handle_failure(&self) -> crate::OwnedPtr<crate::ffi_types::HandleStandardFailure> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKXSBase::HandleInterfaceInterfaceMismatch_to_HandleStandardFailure(self as *const Self)))
-        }
-    }
-
-    /// Upcast Handle<Interface_InterfaceMismatch> to Handle<Standard_Transient>
-    pub fn to_handle_transient(
-        &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKXSBase::HandleInterfaceInterfaceMismatch_to_HandleStandardTransient(self as *const Self)))
-        }
-    }
 }
 
 // ========================
 // From Interface_InterfaceModel.hxx
 // ========================
 
-/// **Source:** `Interface_InterfaceModel.hxx`:66 - `Interface_InterfaceModel`
+/// **Source:** `Interface_InterfaceModel.hxx`:65 - `Interface_InterfaceModel`
 /// Defines an (Indexed) Set of data corresponding to a complete
 /// Transfer by a File Interface, i.e. File Header and Transient
 /// Entities (Objects) contained in a File. Contained Entities are
@@ -10026,7 +8650,7 @@ unsafe impl crate::CppDeletable for InterfaceModel {
 }
 
 impl InterfaceModel {
-    /// **Source:** `Interface_InterfaceModel.hxx`:71 - `Interface_InterfaceModel::Destroy()`
+    /// **Source:** `Interface_InterfaceModel.hxx`:70 - `Interface_InterfaceModel::Destroy()`
     /// Clears the list of entities (service WhenDelete)
     pub fn destroy(&mut self) {
         crate::check_void_result(unsafe {
@@ -10034,11 +8658,11 @@ impl InterfaceModel {
         })
     }
 
-    /// **Source:** `Interface_InterfaceModel.hxx`:78 - `Interface_InterfaceModel::SetProtocol()`
+    /// **Source:** `Interface_InterfaceModel.hxx`:77 - `Interface_InterfaceModel::SetProtocol()`
     /// Sets a Protocol for this Model
     /// It is also set by a call to AddWithRefs with Protocol
     /// It is used for : DumpHeader (as required), ClearEntities ...
-    pub fn set_protocol(&mut self, proto: &crate::ffi_types::HandleInterfaceProtocol) {
+    pub fn set_protocol(&mut self, proto: &crate::ffi_types::Handle_Interface_Protocol) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_InterfaceModel_set_protocol(
                 self as *mut Self,
@@ -10047,10 +8671,10 @@ impl InterfaceModel {
         })
     }
 
-    /// **Source:** `Interface_InterfaceModel.hxx`:82 - `Interface_InterfaceModel::Protocol()`
+    /// **Source:** `Interface_InterfaceModel.hxx`:81 - `Interface_InterfaceModel::Protocol()`
     /// Returns the Protocol which has been set by SetProtocol, or
     /// AddWithRefs with Protocol
-    pub fn protocol(&self) -> crate::OwnedPtr<crate::ffi_types::HandleInterfaceProtocol> {
+    pub fn protocol(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_Interface_Protocol> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKXSBase::Interface_InterfaceModel_protocol(self as *const Self),
@@ -10058,9 +8682,9 @@ impl InterfaceModel {
         }
     }
 
-    /// **Source:** `Interface_InterfaceModel.hxx`:85 - `Interface_InterfaceModel::SetGTool()`
+    /// **Source:** `Interface_InterfaceModel.hxx`:84 - `Interface_InterfaceModel::SetGTool()`
     /// Sets a GTool for this model, which already defines a Protocol
-    pub fn set_g_tool(&mut self, gtool: &crate::ffi_types::HandleInterfaceGTool) {
+    pub fn set_g_tool(&mut self, gtool: &crate::ffi_types::Handle_Interface_GTool) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_InterfaceModel_set_g_tool(
                 self as *mut Self,
@@ -10069,9 +8693,9 @@ impl InterfaceModel {
         })
     }
 
-    /// **Source:** `Interface_InterfaceModel.hxx`:88 - `Interface_InterfaceModel::GTool()`
+    /// **Source:** `Interface_InterfaceModel.hxx`:87 - `Interface_InterfaceModel::GTool()`
     /// Returns the GTool, set by SetProtocol or by SetGTool
-    pub fn g_tool(&self) -> crate::OwnedPtr<crate::ffi_types::HandleInterfaceGTool> {
+    pub fn g_tool(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_Interface_GTool> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKXSBase::Interface_InterfaceModel_g_tool(self as *const Self),
@@ -10079,7 +8703,7 @@ impl InterfaceModel {
         }
     }
 
-    /// **Source:** `Interface_InterfaceModel.hxx`:94 - `Interface_InterfaceModel::DispatchStatus()`
+    /// **Source:** `Interface_InterfaceModel.hxx`:93 - `Interface_InterfaceModel::DispatchStatus()`
     /// Returns the Dispatch Status, either for get or set
     /// A Model which is produced from Dispatch may share entities
     /// with the original (according to the Protocol), hence these
@@ -10094,7 +8718,7 @@ impl InterfaceModel {
         }
     }
 
-    /// **Source:** `Interface_InterfaceModel.hxx`:99 - `Interface_InterfaceModel::Clear()`
+    /// **Source:** `Interface_InterfaceModel.hxx`:98 - `Interface_InterfaceModel::Clear()`
     /// Erases contained data; used when a Model is copied to others :
     /// the new copied ones begin from clear
     /// Clear calls specific method ClearHeader (see below)
@@ -10104,7 +8728,7 @@ impl InterfaceModel {
         })
     }
 
-    /// **Source:** `Interface_InterfaceModel.hxx`:103 - `Interface_InterfaceModel::ClearEntities()`
+    /// **Source:** `Interface_InterfaceModel.hxx`:102 - `Interface_InterfaceModel::ClearEntities()`
     /// Clears the entities; uses the general service WhenDelete, in
     /// addition to the standard Memory Manager; can be redefined
     pub fn clear_entities(&mut self) {
@@ -10113,7 +8737,7 @@ impl InterfaceModel {
         })
     }
 
-    /// **Source:** `Interface_InterfaceModel.hxx`:107 - `Interface_InterfaceModel::ClearLabels()`
+    /// **Source:** `Interface_InterfaceModel.hxx`:106 - `Interface_InterfaceModel::ClearLabels()`
     /// Erases information about labels, if any : specific to each
     /// norm
     pub fn clear_labels(&mut self) {
@@ -10122,7 +8746,7 @@ impl InterfaceModel {
         })
     }
 
-    /// **Source:** `Interface_InterfaceModel.hxx`:110 - `Interface_InterfaceModel::ClearHeader()`
+    /// **Source:** `Interface_InterfaceModel.hxx`:109 - `Interface_InterfaceModel::ClearHeader()`
     /// Clears Model's header : specific to each norm
     pub fn clear_header(&mut self) {
         crate::check_void_result(unsafe {
@@ -10130,7 +8754,7 @@ impl InterfaceModel {
         })
     }
 
-    /// **Source:** `Interface_InterfaceModel.hxx`:113 - `Interface_InterfaceModel::NbEntities()`
+    /// **Source:** `Interface_InterfaceModel.hxx`:112 - `Interface_InterfaceModel::NbEntities()`
     /// Returns count of contained Entities
     pub fn nb_entities(&self) -> i32 {
         crate::check_result(unsafe {
@@ -10138,10 +8762,10 @@ impl InterfaceModel {
         })
     }
 
-    /// **Source:** `Interface_InterfaceModel.hxx`:117 - `Interface_InterfaceModel::Contains()`
+    /// **Source:** `Interface_InterfaceModel.hxx`:116 - `Interface_InterfaceModel::Contains()`
     /// Returns True if a Model contains an Entity (for a ReportEntity,
     /// looks for the ReportEntity itself AND its Concerned Entity)
-    pub fn contains(&self, anentity: &crate::ffi_types::HandleStandardTransient) -> bool {
+    pub fn contains(&self, anentity: &crate::ffi_types::Handle_Standard_Transient) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_InterfaceModel_contains(
                 self as *const Self,
@@ -10150,13 +8774,13 @@ impl InterfaceModel {
         })
     }
 
-    /// **Source:** `Interface_InterfaceModel.hxx`:124 - `Interface_InterfaceModel::Number()`
+    /// **Source:** `Interface_InterfaceModel.hxx`:123 - `Interface_InterfaceModel::Number()`
     /// Returns the Number of an Entity in the Model if it contains it.
     /// Else returns 0. For a ReportEntity, looks at Concerned Entity.
-    /// Returns the Directory entry   Number of  an Entity in
-    /// the  Model if it contains it.   Else returns  0.  For a
-    /// ReportEntity, looks at Concerned Entity.
-    pub fn number(&self, anentity: &crate::ffi_types::HandleStandardTransient) -> i32 {
+    /// Returns the Directory entry Number of an Entity in
+    /// the Model if it contains it. Else returns 0.
+    /// For a ReportEntity, looks at Concerned Entity.
+    pub fn number(&self, anentity: &crate::ffi_types::Handle_Standard_Transient) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_InterfaceModel_number(
                 self as *const Self,
@@ -10165,7 +8789,7 @@ impl InterfaceModel {
         })
     }
 
-    /// **Source:** `Interface_InterfaceModel.hxx`:133 - `Interface_InterfaceModel::Value()`
+    /// **Source:** `Interface_InterfaceModel.hxx`:132 - `Interface_InterfaceModel::Value()`
     /// Returns an Entity identified by its number in the Model
     /// Each sub-class of InterfaceModel can define its own method
     /// Entity to return its specific class of Entity (e.g. for VDA,
@@ -10173,7 +8797,7 @@ impl InterfaceModel {
     /// Remark : For a Reported Entity, (Erroneous, Corrected, Unknown), this
     /// method returns this Reported Entity.
     /// See ReportEntity for other questions.
-    pub fn value(&self, num: i32) -> &crate::ffi_types::HandleStandardTransient {
+    pub fn value(&self, num: i32) -> &crate::ffi_types::Handle_Standard_Transient {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKXSBase::Interface_InterfaceModel_value(
                 self as *const Self,
@@ -10182,24 +8806,24 @@ impl InterfaceModel {
         }
     }
 
-    /// **Source:** `Interface_InterfaceModel.hxx`:138 - `Interface_InterfaceModel::NbTypes()`
+    /// **Source:** `Interface_InterfaceModel.hxx`:137 - `Interface_InterfaceModel::NbTypes()`
     /// Returns the count of DISTINCT types under which an entity may
     /// be processed. Defined by the Protocol, which gives default as
     /// 1 (dynamic Type).
-    pub fn nb_types(&self, ent: &crate::ffi_types::HandleStandardTransient) -> i32 {
+    pub fn nb_types(&self, ent: &crate::ffi_types::Handle_Standard_Transient) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_InterfaceModel_nb_types(self as *const Self, ent)
         })
     }
 
-    /// **Source:** `Interface_InterfaceModel.hxx`:142 - `Interface_InterfaceModel::Type()`
+    /// **Source:** `Interface_InterfaceModel.hxx`:141 - `Interface_InterfaceModel::Type()`
     /// Returns a type, given its rank : defined by the Protocol
     /// (by default, the first one)
     pub fn type_(
         &self,
-        ent: &crate::ffi_types::HandleStandardTransient,
+        ent: &crate::ffi_types::Handle_Standard_Transient,
         num: i32,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardType> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Type> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKXSBase::Interface_InterfaceModel_type_(
@@ -10211,7 +8835,7 @@ impl InterfaceModel {
         }
     }
 
-    /// **Source:** `Interface_InterfaceModel.hxx`:150 - `Interface_InterfaceModel::TypeName()`
+    /// **Source:** `Interface_InterfaceModel.hxx`:149 - `Interface_InterfaceModel::TypeName()`
     /// Returns the type name of an entity, from the list of types
     /// (one or more ...)
     /// <complete> True (D) gives the complete type, else packages are
@@ -10219,7 +8843,7 @@ impl InterfaceModel {
     /// WARNING : buffered, to be immediately copied or printed
     pub fn type_name(
         &self,
-        ent: &crate::ffi_types::HandleStandardTransient,
+        ent: &crate::ffi_types::Handle_Standard_Transient,
         complete: bool,
     ) -> std::string::String {
         unsafe {
@@ -10235,7 +8859,7 @@ impl InterfaceModel {
         .into_owned()
     }
 
-    /// **Source:** `Interface_InterfaceModel.hxx`:158 - `Interface_InterfaceModel::EntityState()`
+    /// **Source:** `Interface_InterfaceModel.hxx`:157 - `Interface_InterfaceModel::EntityState()`
     /// Returns the State of an entity, given its number
     pub fn entity_state(&self, num: i32) -> crate::interface::DataState {
         crate::interface::DataState::try_from(crate::check_result(unsafe {
@@ -10247,7 +8871,7 @@ impl InterfaceModel {
         .unwrap()
     }
 
-    /// **Source:** `Interface_InterfaceModel.hxx`:170 - `Interface_InterfaceModel::IsReportEntity()`
+    /// **Source:** `Interface_InterfaceModel.hxx`:168 - `Interface_InterfaceModel::IsReportEntity()`
     /// Returns True if <num> identifies a ReportEntity in the Model
     /// Hence, ReportEntity can be called.
     ///
@@ -10267,7 +8891,7 @@ impl InterfaceModel {
         })
     }
 
-    /// **Source:** `Interface_InterfaceModel.hxx`:178 - `Interface_InterfaceModel::ReportEntity()`
+    /// **Source:** `Interface_InterfaceModel.hxx`:175 - `Interface_InterfaceModel::ReportEntity()`
     /// Returns a ReportEntity identified by its number in the Model,
     /// or a Null Handle If <num> does not identify a ReportEntity.
     ///
@@ -10277,7 +8901,7 @@ impl InterfaceModel {
         &self,
         num: i32,
         semantic: bool,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleInterfaceReportEntity> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Interface_ReportEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKXSBase::Interface_InterfaceModel_report_entity(
@@ -10289,7 +8913,7 @@ impl InterfaceModel {
         }
     }
 
-    /// **Source:** `Interface_InterfaceModel.hxx`:185 - `Interface_InterfaceModel::IsErrorEntity()`
+    /// **Source:** `Interface_InterfaceModel.hxx`:182 - `Interface_InterfaceModel::IsErrorEntity()`
     /// Returns True if <num> identifies an Error Entity : in this
     /// case, a ReportEntity brings Fail Messages and possibly an
     /// "undefined" Content, see IsRedefinedEntity
@@ -10302,7 +8926,7 @@ impl InterfaceModel {
         })
     }
 
-    /// **Source:** `Interface_InterfaceModel.hxx`:192 - `Interface_InterfaceModel::IsRedefinedContent()`
+    /// **Source:** `Interface_InterfaceModel.hxx`:189 - `Interface_InterfaceModel::IsRedefinedContent()`
     /// Returns True if <num> identifies an Entity which content is
     /// redefined through a ReportEntity (i.e. with literal data only)
     /// This happens when an entity is syntactically erroneous in the
@@ -10317,7 +8941,7 @@ impl InterfaceModel {
         })
     }
 
-    /// **Source:** `Interface_InterfaceModel.hxx`:197 - `Interface_InterfaceModel::ClearReportEntity()`
+    /// **Source:** `Interface_InterfaceModel.hxx`:194 - `Interface_InterfaceModel::ClearReportEntity()`
     /// Removes the ReportEntity attached to Entity <num>. Returns
     /// True if done, False if no ReportEntity was attached to <num>.
     /// Warning : the caller must assume that this clearing is meaningful
@@ -10330,14 +8954,14 @@ impl InterfaceModel {
         })
     }
 
-    /// **Source:** `Interface_InterfaceModel.hxx`:202 - `Interface_InterfaceModel::SetReportEntity()`
+    /// **Source:** `Interface_InterfaceModel.hxx`:199 - `Interface_InterfaceModel::SetReportEntity()`
     /// Sets or Replaces a ReportEntity for the Entity <num>. Returns
     /// True if Report is replaced, False if it has been replaced
     /// Warning : the caller must assume that this setting is meaningful
     pub fn set_report_entity(
         &mut self,
         num: i32,
-        rep: &crate::ffi_types::HandleInterfaceReportEntity,
+        rep: &crate::ffi_types::Handle_Interface_ReportEntity,
     ) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_InterfaceModel_set_report_entity(
@@ -10348,14 +8972,14 @@ impl InterfaceModel {
         })
     }
 
-    /// **Source:** `Interface_InterfaceModel.hxx`:210 - `Interface_InterfaceModel::AddReportEntity()`
+    /// **Source:** `Interface_InterfaceModel.hxx`:206 - `Interface_InterfaceModel::AddReportEntity()`
     /// Adds a ReportEntity as such. Returns False if the concerned
     /// entity is not recorded in the Model
     /// Else, adds it into, either the main report list or the
     /// list for semantic checks, then returns True
     pub fn add_report_entity(
         &mut self,
-        rep: &crate::ffi_types::HandleInterfaceReportEntity,
+        rep: &crate::ffi_types::Handle_Interface_ReportEntity,
         semantic: bool,
     ) -> bool {
         crate::check_result(unsafe {
@@ -10367,7 +8991,7 @@ impl InterfaceModel {
         })
     }
 
-    /// **Source:** `Interface_InterfaceModel.hxx`:215 - `Interface_InterfaceModel::IsUnknownEntity()`
+    /// **Source:** `Interface_InterfaceModel.hxx`:211 - `Interface_InterfaceModel::IsUnknownEntity()`
     /// Returns True if <num> identifies an Unknown Entity : in this
     /// case, a ReportEntity with no Check Messages designates it.
     pub fn is_unknown_entity(&self, num: i32) -> bool {
@@ -10379,7 +9003,7 @@ impl InterfaceModel {
         })
     }
 
-    /// **Source:** `Interface_InterfaceModel.hxx`:222 - `Interface_InterfaceModel::FillSemanticChecks()`
+    /// **Source:** `Interface_InterfaceModel.hxx`:218 - `Interface_InterfaceModel::FillSemanticChecks()`
     /// Fills the list of semantic checks.
     /// This list is computed (by CheckTool). Hence, it can be stored
     /// in the model for later queries
@@ -10395,7 +9019,7 @@ impl InterfaceModel {
         })
     }
 
-    /// **Source:** `Interface_InterfaceModel.hxx`:226 - `Interface_InterfaceModel::HasSemanticChecks()`
+    /// **Source:** `Interface_InterfaceModel.hxx`:222 - `Interface_InterfaceModel::HasSemanticChecks()`
     /// Returns True if semantic checks have been filled
     pub fn has_semantic_checks(&self) -> bool {
         crate::check_result(unsafe {
@@ -10405,13 +9029,13 @@ impl InterfaceModel {
         })
     }
 
-    /// **Source:** `Interface_InterfaceModel.hxx`:233 - `Interface_InterfaceModel::Check()`
+    /// **Source:** `Interface_InterfaceModel.hxx`:229 - `Interface_InterfaceModel::Check()`
     /// Returns the check attached to an entity, designated by its
     /// Number. 0 for global check
     /// <semantic> True  : recorded semantic check
     /// <semantic> False : recorded syntactic check (see ReportEntity)
     /// If no check is recorded for <num>, returns an empty Check
-    pub fn check(&self, num: i32, syntactic: bool) -> &crate::ffi_types::HandleInterfaceCheck {
+    pub fn check(&self, num: i32, syntactic: bool) -> &crate::ffi_types::Handle_Interface_Check {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKXSBase::Interface_InterfaceModel_check(
                 self as *const Self,
@@ -10421,7 +9045,7 @@ impl InterfaceModel {
         }
     }
 
-    /// **Source:** `Interface_InterfaceModel.hxx`:240 - `Interface_InterfaceModel::Reservate()`
+    /// **Source:** `Interface_InterfaceModel.hxx`:236 - `Interface_InterfaceModel::Reservate()`
     /// Does a reservation for the List of Entities (for optimized
     /// storage management). If it is not called, storage management
     /// can be less efficient. <nbent> is the expected count of
@@ -10432,7 +9056,7 @@ impl InterfaceModel {
         })
     }
 
-    /// **Source:** `Interface_InterfaceModel.hxx`:249 - `Interface_InterfaceModel::AddEntity()`
+    /// **Source:** `Interface_InterfaceModel.hxx`:245 - `Interface_InterfaceModel::AddEntity()`
     /// Internal method for adding an Entity. Used by file reading
     /// (defined by each Interface) and Transfer tools. It adds the
     /// entity required to be added, not its refs : see AddWithRefs.
@@ -10440,7 +9064,7 @@ impl InterfaceModel {
     /// Reports, its Concerned Entity (Erroneous or Corrected, else
     /// Unknown) is added to the list of Entities.
     /// That is, the ReportEntity must be created before Adding
-    pub fn add_entity(&mut self, anentity: &crate::ffi_types::HandleStandardTransient) {
+    pub fn add_entity(&mut self, anentity: &crate::ffi_types::Handle_Standard_Transient) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_InterfaceModel_add_entity(
                 self as *mut Self,
@@ -10449,7 +9073,7 @@ impl InterfaceModel {
         })
     }
 
-    /// **Source:** `Interface_InterfaceModel.hxx`:262 - `Interface_InterfaceModel::AddWithRefs()`
+    /// **Source:** `Interface_InterfaceModel.hxx`:258 - `Interface_InterfaceModel::AddWithRefs()`
     /// Adds to the Model, an Entity with all its References, as they
     /// are defined by General Services FillShared and ListImplied.
     /// Process is recursive (any sub-levels) if <level> = 0 (Default)
@@ -10463,8 +9087,8 @@ impl InterfaceModel {
     /// ensure the consistency of an adding made by steps)
     pub fn add_with_refs_handlestandardtransient_handleinterfaceprotocol_int_bool(
         &mut self,
-        anent: &crate::ffi_types::HandleStandardTransient,
-        proto: &crate::ffi_types::HandleInterfaceProtocol,
+        anent: &crate::ffi_types::Handle_Standard_Transient,
+        proto: &crate::ffi_types::Handle_Interface_Protocol,
         level: i32,
         listall: bool,
     ) {
@@ -10473,11 +9097,11 @@ impl InterfaceModel {
         })
     }
 
-    /// **Source:** `Interface_InterfaceModel.hxx`:268 - `Interface_InterfaceModel::AddWithRefs()`
+    /// **Source:** `Interface_InterfaceModel.hxx`:264 - `Interface_InterfaceModel::AddWithRefs()`
     /// Same as above, but works with the Protocol of the Model
     pub fn add_with_refs_handlestandardtransient_int_bool(
         &mut self,
-        anent: &crate::ffi_types::HandleStandardTransient,
+        anent: &crate::ffi_types::Handle_Standard_Transient,
         level: i32,
         listall: bool,
     ) {
@@ -10486,11 +9110,11 @@ impl InterfaceModel {
         })
     }
 
-    /// **Source:** `Interface_InterfaceModel.hxx`:273 - `Interface_InterfaceModel::AddWithRefs()`
+    /// **Source:** `Interface_InterfaceModel.hxx`:269 - `Interface_InterfaceModel::AddWithRefs()`
     /// Same as above, but works with an already created GeneralLib
     pub fn add_with_refs_handlestandardtransient_generallib_int_bool(
         &mut self,
-        anent: &crate::ffi_types::HandleStandardTransient,
+        anent: &crate::ffi_types::Handle_Standard_Transient,
         lib: &GeneralLib,
         level: i32,
         listall: bool,
@@ -10500,12 +9124,12 @@ impl InterfaceModel {
         })
     }
 
-    /// **Source:** `Interface_InterfaceModel.hxx`:279 - `Interface_InterfaceModel::ReplaceEntity()`
+    /// **Source:** `Interface_InterfaceModel.hxx`:275 - `Interface_InterfaceModel::ReplaceEntity()`
     /// Replace Entity with Number=nument on other entity - "anent"
     pub fn replace_entity(
         &mut self,
         nument: i32,
-        anent: &crate::ffi_types::HandleStandardTransient,
+        anent: &crate::ffi_types::Handle_Standard_Transient,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_InterfaceModel_replace_entity(
@@ -10516,7 +9140,7 @@ impl InterfaceModel {
         })
     }
 
-    /// **Source:** `Interface_InterfaceModel.hxx`:287 - `Interface_InterfaceModel::ReverseOrders()`
+    /// **Source:** `Interface_InterfaceModel.hxx`:283 - `Interface_InterfaceModel::ReverseOrders()`
     /// Reverses the Numbers of the Entities, between <after> and the
     /// total count of Entities. Thus, the entities :
     /// 1,2 ... after, after+1 ... nb-1, nb  become numbered as :
@@ -10531,7 +9155,7 @@ impl InterfaceModel {
         })
     }
 
-    /// **Source:** `Interface_InterfaceModel.hxx`:294 - `Interface_InterfaceModel::ChangeOrder()`
+    /// **Source:** `Interface_InterfaceModel.hxx`:290 - `Interface_InterfaceModel::ChangeOrder()`
     /// Changes the Numbers of some Entities : <oldnum> is moved to
     /// <newnum>, same for <count> entities. Thus :
     /// 1,2 ... newnum-1 newnum ... oldnum .. oldnum+count oldnum+count+1 .. gives
@@ -10548,7 +9172,7 @@ impl InterfaceModel {
         })
     }
 
-    /// **Source:** `Interface_InterfaceModel.hxx`:300 - `Interface_InterfaceModel::GetFromTransfer()`
+    /// **Source:** `Interface_InterfaceModel.hxx`:294 - `Interface_InterfaceModel::GetFromTransfer()`
     /// Gets contents from an EntityIterator, prepared by a
     /// Transfer tool (e.g TransferCopy). Starts from clear
     pub fn get_from_transfer(&mut self, aniter: &EntityIterator) {
@@ -10560,10 +9184,10 @@ impl InterfaceModel {
         })
     }
 
-    /// **Source:** `Interface_InterfaceModel.hxx`:304 - `Interface_InterfaceModel::GetFromAnother()`
+    /// **Source:** `Interface_InterfaceModel.hxx`:298 - `Interface_InterfaceModel::GetFromAnother()`
     /// Gets header (data specific of a defined Interface) from
     /// another InterfaceModel; called from TransferCopy
-    pub fn get_from_another(&mut self, other: &crate::ffi_types::HandleInterfaceInterfaceModel) {
+    pub fn get_from_another(&mut self, other: &crate::ffi_types::Handle_Interface_InterfaceModel) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_InterfaceModel_get_from_another(
                 self as *mut Self,
@@ -10572,14 +9196,14 @@ impl InterfaceModel {
         })
     }
 
-    /// **Source:** `Interface_InterfaceModel.hxx`:310 - `Interface_InterfaceModel::NewEmptyModel()`
+    /// **Source:** `Interface_InterfaceModel.hxx`:305 - `Interface_InterfaceModel::NewEmptyModel()`
     /// Returns a New Empty Model, same type as <me> (whatever its
     /// Type); called to Copy parts a Model into other ones, then
     /// followed by a call to GetFromAnother (Header) then filling
     /// with specified Entities, themselves copied
     pub fn new_empty_model(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleInterfaceInterfaceModel> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Interface_InterfaceModel> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKXSBase::Interface_InterfaceModel_new_empty_model(
@@ -10589,7 +9213,7 @@ impl InterfaceModel {
         }
     }
 
-    /// **Source:** `Interface_InterfaceModel.hxx`:314 - `Interface_InterfaceModel::SetCategoryNumber()`
+    /// **Source:** `Interface_InterfaceModel.hxx`:309 - `Interface_InterfaceModel::SetCategoryNumber()`
     /// Records a category number for an entity number
     /// Returns True when done, False if <num> is out of range
     pub fn set_category_number(&mut self, num: i32, val: i32) -> bool {
@@ -10602,7 +9226,7 @@ impl InterfaceModel {
         })
     }
 
-    /// **Source:** `Interface_InterfaceModel.hxx`:319 - `Interface_InterfaceModel::CategoryNumber()`
+    /// **Source:** `Interface_InterfaceModel.hxx`:313 - `Interface_InterfaceModel::CategoryNumber()`
     /// Returns the recorded category number for a given entity number
     /// 0 if none was defined for this entity
     pub fn category_number(&self, num: i32) -> i32 {
@@ -10614,7 +9238,7 @@ impl InterfaceModel {
         })
     }
 
-    /// **Source:** `Interface_InterfaceModel.hxx`:322 - `Interface_InterfaceModel::FillIterator()`
+    /// **Source:** `Interface_InterfaceModel.hxx`:316 - `Interface_InterfaceModel::FillIterator()`
     /// Allows an EntityIterator to get a list of Entities
     pub fn fill_iterator(&self, iter: &mut EntityIterator) {
         crate::check_void_result(unsafe {
@@ -10625,7 +9249,7 @@ impl InterfaceModel {
         })
     }
 
-    /// **Source:** `Interface_InterfaceModel.hxx`:326 - `Interface_InterfaceModel::Entities()`
+    /// **Source:** `Interface_InterfaceModel.hxx`:320 - `Interface_InterfaceModel::Entities()`
     /// Returns the list of all Entities, as an Iterator on Entities
     /// (the Entities themselves, not the Reports)
     pub fn entities(&self) -> crate::OwnedPtr<EntityIterator> {
@@ -10636,7 +9260,7 @@ impl InterfaceModel {
         }
     }
 
-    /// **Source:** `Interface_InterfaceModel.hxx`:335 - `Interface_InterfaceModel::Reports()`
+    /// **Source:** `Interface_InterfaceModel.hxx`:328 - `Interface_InterfaceModel::Reports()`
     /// Returns the list of all ReportEntities, i.e. data about
     /// Entities read with Error or Warning information
     /// (each item has to be casted to Report Entity then it can be
@@ -10654,7 +9278,7 @@ impl InterfaceModel {
         }
     }
 
-    /// **Source:** `Interface_InterfaceModel.hxx`:340 - `Interface_InterfaceModel::Redefineds()`
+    /// **Source:** `Interface_InterfaceModel.hxx`:333 - `Interface_InterfaceModel::Redefineds()`
     /// Returns the list of ReportEntities which redefine data
     /// (generally, if concerned entity is "Error", a literal content
     /// is added to it : this is a "redefined entity"
@@ -10668,10 +9292,10 @@ impl InterfaceModel {
         }
     }
 
-    /// **Source:** `Interface_InterfaceModel.hxx`:344 - `Interface_InterfaceModel::GlobalCheck()`
+    /// **Source:** `Interface_InterfaceModel.hxx`:337 - `Interface_InterfaceModel::GlobalCheck()`
     /// Returns the GlobalCheck, which memorizes messages global to
     /// the file (not specific to an Entity), especially Header
-    pub fn global_check(&self, syntactic: bool) -> &crate::ffi_types::HandleInterfaceCheck {
+    pub fn global_check(&self, syntactic: bool) -> &crate::ffi_types::Handle_Interface_Check {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKXSBase::Interface_InterfaceModel_global_check(
@@ -10682,10 +9306,10 @@ impl InterfaceModel {
         }
     }
 
-    /// **Source:** `Interface_InterfaceModel.hxx`:349 - `Interface_InterfaceModel::SetGlobalCheck()`
+    /// **Source:** `Interface_InterfaceModel.hxx`:342 - `Interface_InterfaceModel::SetGlobalCheck()`
     /// Allows to modify GlobalCheck, after getting then completing it
     /// Remark : it is SYNTACTIC check. Semantics, see FillChecks
-    pub fn set_global_check(&mut self, ach: &crate::ffi_types::HandleInterfaceCheck) {
+    pub fn set_global_check(&mut self, ach: &crate::ffi_types::Handle_Interface_Check) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_InterfaceModel_set_global_check(
                 self as *mut Self,
@@ -10694,12 +9318,12 @@ impl InterfaceModel {
         })
     }
 
-    /// **Source:** `Interface_InterfaceModel.hxx`:355 - `Interface_InterfaceModel::VerifyCheck()`
+    /// **Source:** `Interface_InterfaceModel.hxx`:348 - `Interface_InterfaceModel::VerifyCheck()`
     /// Minimum Semantic Global Check on data in model (header)
     /// Can only check basic Data. See also GlobalCheck from Protocol
     /// for a check which takes the Graph into account
     /// Default does nothing, can be redefined
-    pub fn verify_check(&self, ach: &mut crate::ffi_types::HandleInterfaceCheck) {
+    pub fn verify_check(&self, ach: &mut crate::ffi_types::Handle_Interface_Check) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_InterfaceModel_verify_check(
                 self as *const Self,
@@ -10708,7 +9332,7 @@ impl InterfaceModel {
         })
     }
 
-    /// **Source:** `Interface_InterfaceModel.hxx`:360 - `Interface_InterfaceModel::DumpHeader()`
+    /// **Source:** `Interface_InterfaceModel.hxx`:353 - `Interface_InterfaceModel::DumpHeader()`
     /// Dumps Header in a short, easy to read, form, onto a Stream
     /// <level> allows to print more or less parts of the header,
     /// if necessary. 0 for basic print
@@ -10722,7 +9346,7 @@ impl InterfaceModel {
         })
     }
 
-    /// **Source:** `Interface_InterfaceModel.hxx`:370 - `Interface_InterfaceModel::Print()`
+    /// **Source:** `Interface_InterfaceModel.hxx`:362 - `Interface_InterfaceModel::Print()`
     /// Prints identification of a given entity in <me>, in order to
     /// be printed in a list or phrase
     /// <mode> < 0 : prints only its number
@@ -10732,7 +9356,7 @@ impl InterfaceModel {
     /// If <ent> is unknown, prints "??/its type"
     pub fn print(
         &self,
-        ent: &crate::ffi_types::HandleStandardTransient,
+        ent: &crate::ffi_types::Handle_Standard_Transient,
         s: &mut crate::ffi_types::Standard_OStream,
         mode: i32,
     ) {
@@ -10746,13 +9370,13 @@ impl InterfaceModel {
         })
     }
 
-    /// **Source:** `Interface_InterfaceModel.hxx`:377 - `Interface_InterfaceModel::PrintLabel()`
+    /// **Source:** `Interface_InterfaceModel.hxx`:369 - `Interface_InterfaceModel::PrintLabel()`
     /// Prints label specific to each norm, for a given entity.
     /// Must only print label itself, in order to be included in a
     /// phrase. Can call the result of StringLabel, but not obliged.
     pub fn print_label(
         &self,
-        ent: &crate::ffi_types::HandleStandardTransient,
+        ent: &crate::ffi_types::Handle_Standard_Transient,
         S: &mut crate::ffi_types::Standard_OStream,
     ) {
         crate::check_void_result(unsafe {
@@ -10764,13 +9388,13 @@ impl InterfaceModel {
         })
     }
 
-    /// **Source:** `Interface_InterfaceModel.hxx`:383 - `Interface_InterfaceModel::PrintToLog()`
+    /// **Source:** `Interface_InterfaceModel.hxx`:375 - `Interface_InterfaceModel::PrintToLog()`
     /// Prints label specific to each norm in log format, for
     /// a given entity.
     /// By default, just calls PrintLabel, can be redefined
     pub fn print_to_log(
         &self,
-        ent: &crate::ffi_types::HandleStandardTransient,
+        ent: &crate::ffi_types::Handle_Standard_Transient,
         S: &mut crate::ffi_types::Standard_OStream,
     ) {
         crate::check_void_result(unsafe {
@@ -10782,14 +9406,14 @@ impl InterfaceModel {
         })
     }
 
-    /// **Source:** `Interface_InterfaceModel.hxx`:389 - `Interface_InterfaceModel::StringLabel()`
+    /// **Source:** `Interface_InterfaceModel.hxx`:381 - `Interface_InterfaceModel::StringLabel()`
     /// Returns a string with the label attached to a given entity.
     /// Warning : While this string may be edited on the spot, if it is a read
     /// field, the returned value must be copied before.
     pub fn string_label(
         &self,
-        ent: &crate::ffi_types::HandleStandardTransient,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleTCollectionHAsciiString> {
+        ent: &crate::ffi_types::Handle_Standard_Transient,
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_TCollection_HAsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKXSBase::Interface_InterfaceModel_string_label(
@@ -10800,7 +9424,7 @@ impl InterfaceModel {
         }
     }
 
-    /// **Source:** `Interface_InterfaceModel.hxx`:402 - `Interface_InterfaceModel::NextNumberForLabel()`
+    /// **Source:** `Interface_InterfaceModel.hxx`:394 - `Interface_InterfaceModel::NextNumberForLabel()`
     /// Searches a label which matches with one entity.
     /// Begins from <lastnum>+1 (default:1) and scans the entities
     /// until <NbEntities>. For the first which matches <label>,
@@ -10823,8 +9447,8 @@ impl InterfaceModel {
         })
     }
 
-    /// **Source:** `Interface_InterfaceModel.hxx`:424 - `Interface_InterfaceModel::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `Interface_InterfaceModel.hxx`:415 - `Interface_InterfaceModel::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKXSBase::Interface_InterfaceModel_dynamic_type(
@@ -10834,7 +9458,7 @@ impl InterfaceModel {
         }
     }
 
-    /// **Source:** `Interface_InterfaceModel.hxx`:155 - `Interface_InterfaceModel::ClassName()`
+    /// **Source:** `Interface_InterfaceModel.hxx`:154 - `Interface_InterfaceModel::ClassName()`
     /// From a CDL Type Name, returns the Class part (package dropped)
     /// WARNING : buffered, to be immediately copied or printed
     pub fn class_name(typnam: &str) -> std::string::String {
@@ -10848,7 +9472,7 @@ impl InterfaceModel {
         .into_owned()
     }
 
-    /// **Source:** `Interface_InterfaceModel.hxx`:408 - `Interface_InterfaceModel::HasTemplate()`
+    /// **Source:** `Interface_InterfaceModel.hxx`:399 - `Interface_InterfaceModel::HasTemplate()`
     /// Returns true if a template is attached to a given name
     pub fn has_template(name: &str) -> bool {
         let c_name = std::ffi::CString::new(name).unwrap();
@@ -10857,11 +9481,11 @@ impl InterfaceModel {
         })
     }
 
-    /// **Source:** `Interface_InterfaceModel.hxx`:411 - `Interface_InterfaceModel::Template()`
+    /// **Source:** `Interface_InterfaceModel.hxx`:402 - `Interface_InterfaceModel::Template()`
     /// Returns the template model attached to a name, or a Null Handle
     pub fn template(
         name: &str,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleInterfaceInterfaceModel> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Interface_InterfaceModel> {
         let c_name = std::ffi::CString::new(name).unwrap();
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -10870,14 +9494,14 @@ impl InterfaceModel {
         }
     }
 
-    /// **Source:** `Interface_InterfaceModel.hxx`:417 - `Interface_InterfaceModel::SetTemplate()`
+    /// **Source:** `Interface_InterfaceModel.hxx`:408 - `Interface_InterfaceModel::SetTemplate()`
     /// Records a new template model with a name. If the name was
     /// already recorded, the corresponding template is replaced by
     /// the new one. Then, WARNING : test HasTemplate to avoid
     /// surprises
     pub fn set_template(
         name: &str,
-        model: &crate::ffi_types::HandleInterfaceInterfaceModel,
+        model: &crate::ffi_types::Handle_Interface_InterfaceModel,
     ) -> bool {
         let c_name = std::ffi::CString::new(name).unwrap();
         crate::check_result(unsafe {
@@ -10888,10 +9512,11 @@ impl InterfaceModel {
         })
     }
 
-    /// **Source:** `Interface_InterfaceModel.hxx`:422 - `Interface_InterfaceModel::ListTemplates()`
+    /// **Source:** `Interface_InterfaceModel.hxx`:413 - `Interface_InterfaceModel::ListTemplates()`
     /// Returns the complete list of names attached to template models
-    pub fn list_templates(
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleTColStdHSequenceOfHAsciiString> {
+    pub fn list_templates() -> crate::OwnedPtr<
+        crate::ffi_types::Handle_NCollection_HSequence_opencascade_handle_TCollection_HAsciiString,
+    > {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKXSBase::Interface_InterfaceModel_list_templates(),
@@ -10899,7 +9524,7 @@ impl InterfaceModel {
         }
     }
 
-    /// **Source:** `Interface_InterfaceModel.hxx`:424 - `Interface_InterfaceModel::get_type_name()`
+    /// **Source:** `Interface_InterfaceModel.hxx`:415 - `Interface_InterfaceModel::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -10910,8 +9535,8 @@ impl InterfaceModel {
         .into_owned()
     }
 
-    /// **Source:** `Interface_InterfaceModel.hxx`:424 - `Interface_InterfaceModel::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    /// **Source:** `Interface_InterfaceModel.hxx`:415 - `Interface_InterfaceModel::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKXSBase::Interface_InterfaceModel_get_type_descriptor(),
@@ -10941,8 +9566,8 @@ impl InterfaceModel {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_InterfaceModel_inherited_IsInstance(
                 self as *const Self,
@@ -10951,8 +9576,8 @@ impl InterfaceModel {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_InterfaceModel_inherited_IsKind(
                 self as *const Self,
@@ -10961,7 +9586,7 @@ impl InterfaceModel {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -10977,7 +9602,7 @@ impl InterfaceModel {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_InterfaceModel_inherited_GetRefCount(
@@ -10986,7 +9611,7 @@ impl InterfaceModel {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_InterfaceModel_inherited_IncrementRefCounter(
@@ -10995,7 +9620,7 @@ impl InterfaceModel {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_InterfaceModel_inherited_DecrementRefCounter(
@@ -11004,7 +9629,7 @@ impl InterfaceModel {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_InterfaceModel_inherited_Delete(
@@ -11014,38 +9639,38 @@ impl InterfaceModel {
     }
 }
 
-pub use crate::ffi_types::HandleInterfaceInterfaceModel;
+pub use crate::ffi_types::Handle_Interface_InterfaceModel;
 
-unsafe impl crate::CppDeletable for HandleInterfaceInterfaceModel {
+unsafe impl crate::CppDeletable for Handle_Interface_InterfaceModel {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKXSBase::HandleInterfaceInterfaceModel_destructor(ptr);
+            crate::ffi_extern_TKXSBase::Handle_Interface_InterfaceModel_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleInterfaceInterfaceModel {
+unsafe impl crate::CppCopyable for Handle_Interface_InterfaceModel {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
         unsafe {
-            crate::check_result(crate::ffi_extern_TKXSBase::HandleInterfaceInterfaceModel_clone(
+            crate::check_result(crate::ffi_extern_TKXSBase::Handle_Interface_InterfaceModel_clone(
                 ptr,
             ))
         }
     }
 }
 
-impl HandleInterfaceInterfaceModel {
+impl Handle_Interface_InterfaceModel {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
         unsafe {
-            crate::ffi_extern_TKXSBase::HandleInterfaceInterfaceModel_is_null(self as *const Self)
+            crate::ffi_extern_TKXSBase::Handle_Interface_InterfaceModel_is_null(self as *const Self)
         }
     }
 
     /// Dereference this Handle to access the underlying Interface_InterfaceModel
     pub fn get(&self) -> &crate::ffi_types::Interface_InterfaceModel {
         unsafe {
-            &*crate::check_result(crate::ffi_extern_TKXSBase::HandleInterfaceInterfaceModel_get(
+            &*crate::check_result(crate::ffi_extern_TKXSBase::Handle_Interface_InterfaceModel_get(
                 self as *const Self,
             ))
         }
@@ -11055,7 +9680,7 @@ impl HandleInterfaceInterfaceModel {
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::Interface_InterfaceModel {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi_extern_TKXSBase::HandleInterfaceInterfaceModel_get_mut(
+                crate::ffi_extern_TKXSBase::Handle_Interface_InterfaceModel_get_mut(
                     self as *mut Self,
                 ),
             )
@@ -11065,9 +9690,9 @@ impl HandleInterfaceInterfaceModel {
     /// Upcast Handle<Interface_InterfaceModel> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKXSBase::HandleInterfaceInterfaceModel_to_HandleStandardTransient(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKXSBase::Handle_Interface_InterfaceModel_to_Handle_Standard_Transient(self as *const Self)))
         }
     }
 
@@ -11076,9 +9701,9 @@ impl HandleInterfaceInterfaceModel {
     /// Returns `None` if the handle does not point to a `IGESData_IGESModel` (or subclass).
     pub fn downcast_to_iges_model(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleIGESDataIGESModel>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_IGESData_IGESModel>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKXSBase::HandleInterfaceInterfaceModel_downcast_to_HandleIGESDataIGESModel(self as *const Self)
+            crate::ffi_extern_TKXSBase::Handle_Interface_InterfaceModel_downcast_to_Handle_IGESData_IGESModel(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -11092,9 +9717,9 @@ impl HandleInterfaceInterfaceModel {
     /// Returns `None` if the handle does not point to a `StepData_StepModel` (or subclass).
     pub fn downcast_to_step_model(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleStepDataStepModel>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_StepData_StepModel>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKXSBase::HandleInterfaceInterfaceModel_downcast_to_HandleStepDataStepModel(self as *const Self)
+            crate::ffi_extern_TKXSBase::Handle_Interface_InterfaceModel_downcast_to_Handle_StepData_StepModel(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -11236,7 +9861,7 @@ impl LineBuffer {
     /// Same as above, but <str> is known through a Handle
     pub fn move_handletcollectionhasciistring(
         &mut self,
-        str: &crate::ffi_types::HandleTCollectionHAsciiString,
+        str: &crate::ffi_types::Handle_TCollection_HAsciiString,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_LineBuffer_move_handletcollectionhasciistring(
@@ -11248,7 +9873,7 @@ impl LineBuffer {
 
     /// **Source:** `Interface_LineBuffer.hxx`:78 - `Interface_LineBuffer::Moved()`
     /// Same as above, but generates the HAsciiString
-    pub fn moved(&mut self) -> crate::OwnedPtr<crate::ffi_types::HandleTCollectionHAsciiString> {
+    pub fn moved(&mut self) -> crate::OwnedPtr<crate::ffi_types::Handle_TCollection_HAsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKXSBase::Interface_LineBuffer_moved(self as *mut Self),
@@ -11340,7 +9965,7 @@ impl MSG {
     /// with operator () attached to Value
     /// Then, to have a translated message, write in C++ :
     ///
-    /// Interface_MSG("...mykey...")  which returns a CString
+    /// Interface_MSG("...mykey...") which returns a CString
     /// See also some help which follow
     pub fn new_charptr(key: &str) -> crate::OwnedPtr<Self> {
         let c_key = std::ffi::CString::new(key).unwrap();
@@ -11354,11 +9979,11 @@ impl MSG {
     /// **Source:** `Interface_MSG.hxx`:67 - `Interface_MSG::Interface_MSG()`
     /// Translates a message which contains one integer variable
     /// It is just a help which avoid the following :
-    /// char mess[100];  sprintf(mess,Interface_MSG("code"),ival);
-    /// then  AddFail(mess);
-    /// replaced by  AddFail (Interface_MSG("code",ival));
+    /// char mess[100]; Sprintf(mess,Interface_MSG("code"),ival);
+    /// then AddFail(mess);
+    /// replaced by AddFail (Interface_MSG("code",ival));
     ///
-    /// The basic message is intended to be in  C-sprintf  format,
+    /// The basic message is intended to be in C-Sprintf format,
     /// with one %d form in it
     pub fn new_charptr_int(key: &str, i1: i32) -> crate::OwnedPtr<Self> {
         let c_key = std::ffi::CString::new(key).unwrap();
@@ -11373,7 +9998,7 @@ impl MSG {
     /// Translates a message which contains two integer variables
     /// As for one integer, it is just a writing help
     ///
-    /// The basic message is intended to be in  C-sprintf  format
+    /// The basic message is intended to be in C-Sprintf format
     /// with two %d forms in it
     pub fn new_charptr_int2(key: &str, i1: i32, i2: i32) -> crate::OwnedPtr<Self> {
         let c_key = std::ffi::CString::new(key).unwrap();
@@ -11384,13 +10009,13 @@ impl MSG {
         }
     }
 
-    /// **Source:** `Interface_MSG.hxx`:85 - `Interface_MSG::Interface_MSG()`
+    /// **Source:** `Interface_MSG.hxx`:83 - `Interface_MSG::Interface_MSG()`
     /// Translates a message which contains one real variable
     /// <intervals> if set, commands the variable to be rounded to an
     /// interval (see below, method Intervals)
     /// As for one integer, it is just a writing help
     ///
-    /// The basic message is intended to be in  C-sprintf  format
+    /// The basic message is intended to be in C-Sprintf format
     /// with one %f form (or equivalent : %e etc) in it
     pub fn new_charptr_real_int(key: &str, r1: f64, intervals: i32) -> crate::OwnedPtr<Self> {
         let c_key = std::ffi::CString::new(key).unwrap();
@@ -11405,11 +10030,11 @@ impl MSG {
         }
     }
 
-    /// **Source:** `Interface_MSG.hxx`:94 - `Interface_MSG::Interface_MSG()`
+    /// **Source:** `Interface_MSG.hxx`:90 - `Interface_MSG::Interface_MSG()`
     /// Translates a message which contains one string variable
     /// As for one integer, it is just a writing help
     ///
-    /// The basic message is intended to be in  C-sprintf  format
+    /// The basic message is intended to be in C-Sprintf format
     /// with one %s form in it
     pub fn new_charptr2(key: &str, str: &str) -> crate::OwnedPtr<Self> {
         let c_key = std::ffi::CString::new(key).unwrap();
@@ -11424,13 +10049,13 @@ impl MSG {
         }
     }
 
-    /// **Source:** `Interface_MSG.hxx`:103 - `Interface_MSG::Interface_MSG()`
+    /// **Source:** `Interface_MSG.hxx`:99 - `Interface_MSG::Interface_MSG()`
     /// Translates a message which contains one integer and one
     /// string variables
     /// As for one integer, it is just a writing help
     /// Used for instance to say "Param n0.<ival> i.e. <str> is not.."
     ///
-    /// The basic message is intended to be in  C-sprintf  format
+    /// The basic message is intended to be in C-Sprintf format
     /// with one %d then one %s forms in it
     pub fn new_charptr_int_charptr(key: &str, ival: i32, str: &str) -> crate::OwnedPtr<Self> {
         let c_key = std::ffi::CString::new(key).unwrap();
@@ -11446,19 +10071,19 @@ impl MSG {
         }
     }
 
-    /// **Source:** `Interface_MSG.hxx`:85 - `Interface_MSG::Interface_MSG()`
+    /// **Source:** `Interface_MSG.hxx`:83 - `Interface_MSG::Interface_MSG()`
     /// Translates a message which contains one real variable
     /// <intervals> if set, commands the variable to be rounded to an
     /// interval (see below, method Intervals)
     /// As for one integer, it is just a writing help
     ///
-    /// The basic message is intended to be in  C-sprintf  format
+    /// The basic message is intended to be in C-Sprintf format
     /// with one %f form (or equivalent : %e etc) in it
     pub fn new_charptr_real(key: &str, r1: f64) -> crate::OwnedPtr<Self> {
         Self::new_charptr_real_int(key, r1, -1)
     }
 
-    /// **Source:** `Interface_MSG.hxx`:108 - `Interface_MSG::Destroy()`
+    /// **Source:** `Interface_MSG.hxx`:102 - `Interface_MSG::Destroy()`
     /// Optimised destructor (applies for additional forms of Create)
     pub fn destroy(&mut self) {
         crate::check_void_result(unsafe {
@@ -11466,7 +10091,7 @@ impl MSG {
         })
     }
 
-    /// **Source:** `Interface_MSG.hxx`:115 - `Interface_MSG::Value()`
+    /// **Source:** `Interface_MSG.hxx`:109 - `Interface_MSG::Value()`
     /// Returns the translated message, in a functional form with
     /// operator ()
     /// was C++ : return const
@@ -11480,14 +10105,14 @@ impl MSG {
         .into_owned()
     }
 
-    /// **Source:** `Interface_MSG.hxx`:120 - `Interface_MSG::Read()`
+    /// **Source:** `Interface_MSG.hxx`:114 - `Interface_MSG::Read()`
     /// Reads a list of messages from a stream, returns read count
     /// 0 means empty file, -1 means error
     pub fn read_istream(S: &mut crate::ffi_types::Standard_IStream) -> i32 {
         crate::check_result(unsafe { crate::ffi_extern_TKXSBase::Interface_MSG_read_istream(S) })
     }
 
-    /// **Source:** `Interface_MSG.hxx`:123 - `Interface_MSG::Read()`
+    /// **Source:** `Interface_MSG.hxx`:117 - `Interface_MSG::Read()`
     /// Reads a list of messages from a file defined by its name
     pub fn read_charptr(file: &str) -> i32 {
         let c_file = std::ffi::CString::new(file).unwrap();
@@ -11496,7 +10121,7 @@ impl MSG {
         })
     }
 
-    /// **Source:** `Interface_MSG.hxx`:128 - `Interface_MSG::Write()`
+    /// **Source:** `Interface_MSG.hxx`:122 - `Interface_MSG::Write()`
     /// Writes the list of messages recorded to be translated, to a
     /// stream. Writes all the list (Default) or only keys which begin
     /// by <rootkey>. Returns the count of written messages
@@ -11507,7 +10132,7 @@ impl MSG {
         })
     }
 
-    /// **Source:** `Interface_MSG.hxx`:134 - `Interface_MSG::IsKey()`
+    /// **Source:** `Interface_MSG.hxx`:127 - `Interface_MSG::IsKey()`
     /// Returns True if a given message is surely a key
     /// (according to the form adopted for keys)
     /// (before activating messages, answer is false)
@@ -11518,7 +10143,7 @@ impl MSG {
         })
     }
 
-    /// **Source:** `Interface_MSG.hxx`:140 - `Interface_MSG::Translated()`
+    /// **Source:** `Interface_MSG.hxx`:133 - `Interface_MSG::Translated()`
     /// Returns the item recorded for a key.
     /// Returns the key itself if :
     /// - it is not recorded (then, the trace system is activated)
@@ -11534,7 +10159,7 @@ impl MSG {
         .into_owned()
     }
 
-    /// **Source:** `Interface_MSG.hxx`:145 - `Interface_MSG::Record()`
+    /// **Source:** `Interface_MSG.hxx`:138 - `Interface_MSG::Record()`
     /// Fills the dictionary with a couple (key-item)
     /// If a key is already recorded, it is possible to :
     /// - keep the last definition, and activate the trace system
@@ -11546,7 +10171,7 @@ impl MSG {
         })
     }
 
-    /// **Source:** `Interface_MSG.hxx`:150 - `Interface_MSG::SetTrace()`
+    /// **Source:** `Interface_MSG.hxx`:143 - `Interface_MSG::SetTrace()`
     /// Sets the trace system to work when activated, as follow :
     /// - if <toprint>  is True, print immediately on standard output
     /// - if <torecord> is True, record it for further print
@@ -11556,7 +10181,7 @@ impl MSG {
         })
     }
 
-    /// **Source:** `Interface_MSG.hxx`:160 - `Interface_MSG::SetMode()`
+    /// **Source:** `Interface_MSG.hxx`:152 - `Interface_MSG::SetMode()`
     /// Sets the main modes for MSG :
     /// - if <running> is True, translation works normally
     /// - if <running> is False, translated item equate keys
@@ -11570,7 +10195,7 @@ impl MSG {
         })
     }
 
-    /// **Source:** `Interface_MSG.hxx`:165 - `Interface_MSG::PrintTrace()`
+    /// **Source:** `Interface_MSG.hxx`:156 - `Interface_MSG::PrintTrace()`
     /// Prints the recorded errors (without title; can be empty, this
     /// is the normally expected case)
     pub fn print_trace(S: &mut crate::ffi_types::Standard_OStream) {
@@ -11579,7 +10204,7 @@ impl MSG {
         })
     }
 
-    /// **Source:** `Interface_MSG.hxx`:182 - `Interface_MSG::Intervalled()`
+    /// **Source:** `Interface_MSG.hxx`:173 - `Interface_MSG::Intervalled()`
     /// Returns an "intervalled" value from a starting real <val> :
     /// i.e. a value which is rounded on an interval limit
     /// Interval limits are defined to be in a coarsely "geometric"
@@ -11601,11 +10226,11 @@ impl MSG {
         })
     }
 
-    /// **Source:** `Interface_MSG.hxx`:191 - `Interface_MSG::TDate()`
+    /// **Source:** `Interface_MSG.hxx`:182 - `Interface_MSG::TDate()`
     /// Codes a date as a text, from its numeric value (-> seconds) :
-    /// YYYY-MM-DD:HH-MN-SS  fixed format, completed by leading zeros
+    /// YYYY-MM-DD:HH-MN-SS fixed format, completed by leading zeros
     /// Another format can be provided, as follows :
-    /// C:%d ...   C like format, preceded by  C:
+    /// C:%d ...   C like format, preceded by C:
     /// S:...      format to call system (not yet implemented)
     pub fn t_date(text: &str, yy: i32, mm: i32, dd: i32, hh: i32, mn: i32, ss: i32, format: &str) {
         let c_text = std::ffi::CString::new(text).unwrap();
@@ -11624,7 +10249,7 @@ impl MSG {
         })
     }
 
-    /// **Source:** `Interface_MSG.hxx`:204 - `Interface_MSG::NDate()`
+    /// **Source:** `Interface_MSG.hxx`:195 - `Interface_MSG::NDate()`
     /// Decodes a date to numeric integer values
     /// Returns True if OK, False if text does not fit with required
     /// format. Incomplete forms are allowed (for instance, for only
@@ -11652,7 +10277,7 @@ impl MSG {
         })
     }
 
-    /// **Source:** `Interface_MSG.hxx`:214 - `Interface_MSG::CDate()`
+    /// **Source:** `Interface_MSG.hxx`:205 - `Interface_MSG::CDate()`
     /// Returns a value about comparison of two dates
     /// 0 : equal. <0 text1 anterior. >0 text1 posterior
     pub fn c_date(text1: &str, text2: &str) -> i32 {
@@ -11663,11 +10288,11 @@ impl MSG {
         })
     }
 
-    /// **Source:** `Interface_MSG.hxx`:221 - `Interface_MSG::Blanks()`
+    /// **Source:** `Interface_MSG.hxx`:211 - `Interface_MSG::Blanks()`
     /// Returns a blank string, of length between 0 and <max>, to fill
-    /// the printing of a numeric value <val>, i.e. :
+    /// the printing of a numeric value <val>, i.e.
     /// If val < 10 , max-1 blanks
-    /// If val between 10 and 99, max-2 blanks  ...   etc...
+    /// If val between 10 and 99, max-2 blanks ... etc...
     pub fn blanks_int2(val: i32, max: i32) -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -11678,11 +10303,11 @@ impl MSG {
         .into_owned()
     }
 
-    /// **Source:** `Interface_MSG.hxx`:228 - `Interface_MSG::Blanks()`
+    /// **Source:** `Interface_MSG.hxx`:217 - `Interface_MSG::Blanks()`
     /// Returns a blank string, to complete a given string <val> up to
-    /// <max> characters :
+    /// <max> characters:
     /// If strlen(val) is 0, max blanks
-    /// If strlen(val) is 5, max-5 blanks    etc...
+    /// If strlen(val) is 5, max-5 blanks etc...
     pub fn blanks_charptr_int(val: &str, max: i32) -> std::string::String {
         let c_val = std::ffi::CString::new(val).unwrap();
         unsafe {
@@ -11694,7 +10319,7 @@ impl MSG {
         .into_owned()
     }
 
-    /// **Source:** `Interface_MSG.hxx`:232 - `Interface_MSG::Blanks()`
+    /// **Source:** `Interface_MSG.hxx`:220 - `Interface_MSG::Blanks()`
     /// Returns a blank string of <count> blanks (mini 0, maxi 76)
     pub fn blanks_int(count: i32) -> std::string::String {
         unsafe {
@@ -11706,11 +10331,11 @@ impl MSG {
         .into_owned()
     }
 
-    /// **Source:** `Interface_MSG.hxx`:239 - `Interface_MSG::Print()`
-    /// Prints a String on an Output Stream, as follows :
-    /// Accompanied with blanks, to give up to <max> charis at all,
-    /// justified according just :
-    /// -1 (D) : left     0 : center    1 : right
+    /// **Source:** `Interface_MSG.hxx`:227 - `Interface_MSG::Print()`
+    /// Prints a String on an Output Stream, as follows:
+    /// Accompanied with blanks, to give up to <max> chars at all,
+    /// justified accordingly:
+    /// -1 (D) : left 0 : center 1 : right
     /// Maximum 76 characters
     pub fn print(S: &mut crate::ffi_types::Standard_OStream, val: &str, max: i32, just: i32) {
         let c_val = std::ffi::CString::new(val).unwrap();
@@ -11724,7 +10349,7 @@ impl MSG {
 // From Interface_NodeOfGeneralLib.hxx
 // ========================
 
-/// **Source:** `Interface_NodeOfGeneralLib.hxx`:33 - `Interface_NodeOfGeneralLib`
+/// **Source:** `Interface_NodeOfGeneralLib.hxx`:30 - `Interface_NodeOfGeneralLib`
 pub use crate::ffi_types::Interface_NodeOfGeneralLib as NodeOfGeneralLib;
 
 unsafe impl crate::CppDeletable for NodeOfGeneralLib {
@@ -11736,7 +10361,7 @@ unsafe impl crate::CppDeletable for NodeOfGeneralLib {
 }
 
 impl NodeOfGeneralLib {
-    /// **Source:** `Interface_NodeOfGeneralLib.hxx`:38 - `Interface_NodeOfGeneralLib::Interface_NodeOfGeneralLib()`
+    /// **Source:** `Interface_NodeOfGeneralLib.hxx`:35 - `Interface_NodeOfGeneralLib::Interface_NodeOfGeneralLib()`
     /// Creates an empty Node, with no Next
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
@@ -11746,10 +10371,10 @@ impl NodeOfGeneralLib {
         }
     }
 
-    /// **Source:** `Interface_NodeOfGeneralLib.hxx`:42 - `Interface_NodeOfGeneralLib::AddNode()`
+    /// **Source:** `Interface_NodeOfGeneralLib.hxx`:39 - `Interface_NodeOfGeneralLib::AddNode()`
     /// Adds a couple (Module,Protocol), that is, stores it into
     /// itself if not yet done, else creates a Next Node to do it
-    pub fn add_node(&mut self, anode: &crate::ffi_types::HandleInterfaceGlobalNodeOfGeneralLib) {
+    pub fn add_node(&mut self, anode: &crate::ffi_types::Handle_Interface_GlobalNodeOfGeneralLib) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_NodeOfGeneralLib_add_node(
                 self as *mut Self,
@@ -11758,9 +10383,9 @@ impl NodeOfGeneralLib {
         })
     }
 
-    /// **Source:** `Interface_NodeOfGeneralLib.hxx`:45 - `Interface_NodeOfGeneralLib::Module()`
+    /// **Source:** `Interface_NodeOfGeneralLib.hxx`:42 - `Interface_NodeOfGeneralLib::Module()`
     /// Returns the Module designated by a precise Node
-    pub fn module(&self) -> &crate::ffi_types::HandleInterfaceGeneralModule {
+    pub fn module(&self) -> &crate::ffi_types::Handle_Interface_GeneralModule {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKXSBase::Interface_NodeOfGeneralLib_module(
                 self as *const Self,
@@ -11768,9 +10393,9 @@ impl NodeOfGeneralLib {
         }
     }
 
-    /// **Source:** `Interface_NodeOfGeneralLib.hxx`:48 - `Interface_NodeOfGeneralLib::Protocol()`
+    /// **Source:** `Interface_NodeOfGeneralLib.hxx`:45 - `Interface_NodeOfGeneralLib::Protocol()`
     /// Returns the Protocol designated by a precise Node
-    pub fn protocol(&self) -> &crate::ffi_types::HandleInterfaceProtocol {
+    pub fn protocol(&self) -> &crate::ffi_types::Handle_Interface_Protocol {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKXSBase::Interface_NodeOfGeneralLib_protocol(
@@ -11780,10 +10405,10 @@ impl NodeOfGeneralLib {
         }
     }
 
-    /// **Source:** `Interface_NodeOfGeneralLib.hxx`:52 - `Interface_NodeOfGeneralLib::Next()`
+    /// **Source:** `Interface_NodeOfGeneralLib.hxx`:49 - `Interface_NodeOfGeneralLib::Next()`
     /// Returns the Next Node. If none was defined, returned value
     /// is a Null Handle
-    pub fn next(&self) -> &crate::ffi_types::HandleInterfaceNodeOfGeneralLib {
+    pub fn next(&self) -> &crate::ffi_types::Handle_Interface_NodeOfGeneralLib {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKXSBase::Interface_NodeOfGeneralLib_next(
                 self as *const Self,
@@ -11791,8 +10416,8 @@ impl NodeOfGeneralLib {
         }
     }
 
-    /// **Source:** `Interface_NodeOfGeneralLib.hxx`:54 - `Interface_NodeOfGeneralLib::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `Interface_NodeOfGeneralLib.hxx`:51 - `Interface_NodeOfGeneralLib::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKXSBase::Interface_NodeOfGeneralLib_dynamic_type(
@@ -11802,7 +10427,7 @@ impl NodeOfGeneralLib {
         }
     }
 
-    /// **Source:** `Interface_NodeOfGeneralLib.hxx`:54 - `Interface_NodeOfGeneralLib::get_type_name()`
+    /// **Source:** `Interface_NodeOfGeneralLib.hxx`:51 - `Interface_NodeOfGeneralLib::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -11813,8 +10438,8 @@ impl NodeOfGeneralLib {
         .into_owned()
     }
 
-    /// **Source:** `Interface_NodeOfGeneralLib.hxx`:54 - `Interface_NodeOfGeneralLib::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    /// **Source:** `Interface_NodeOfGeneralLib.hxx`:51 - `Interface_NodeOfGeneralLib::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKXSBase::Interface_NodeOfGeneralLib_get_type_descriptor(),
@@ -11847,7 +10472,7 @@ impl NodeOfGeneralLib {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleInterfaceNodeOfGeneralLib> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Interface_NodeOfGeneralLib> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKXSBase::Interface_NodeOfGeneralLib_to_handle(obj.into_raw()),
@@ -11855,8 +10480,8 @@ impl NodeOfGeneralLib {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_NodeOfGeneralLib_inherited_IsInstance(
                 self as *const Self,
@@ -11865,8 +10490,8 @@ impl NodeOfGeneralLib {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_NodeOfGeneralLib_inherited_IsKind(
                 self as *const Self,
@@ -11875,7 +10500,7 @@ impl NodeOfGeneralLib {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -11891,7 +10516,7 @@ impl NodeOfGeneralLib {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_NodeOfGeneralLib_inherited_GetRefCount(
@@ -11900,7 +10525,7 @@ impl NodeOfGeneralLib {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_NodeOfGeneralLib_inherited_IncrementRefCounter(
@@ -11909,7 +10534,7 @@ impl NodeOfGeneralLib {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_NodeOfGeneralLib_inherited_DecrementRefCounter(
@@ -11918,7 +10543,7 @@ impl NodeOfGeneralLib {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_NodeOfGeneralLib_inherited_Delete(
@@ -11928,40 +10553,44 @@ impl NodeOfGeneralLib {
     }
 }
 
-pub use crate::ffi_types::HandleInterfaceNodeOfGeneralLib;
+pub use crate::ffi_types::Handle_Interface_NodeOfGeneralLib;
 
-unsafe impl crate::CppDeletable for HandleInterfaceNodeOfGeneralLib {
+unsafe impl crate::CppDeletable for Handle_Interface_NodeOfGeneralLib {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKXSBase::HandleInterfaceNodeOfGeneralLib_destructor(ptr);
+            crate::ffi_extern_TKXSBase::Handle_Interface_NodeOfGeneralLib_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleInterfaceNodeOfGeneralLib {
+unsafe impl crate::CppCopyable for Handle_Interface_NodeOfGeneralLib {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
         unsafe {
-            crate::check_result(crate::ffi_extern_TKXSBase::HandleInterfaceNodeOfGeneralLib_clone(
-                ptr,
-            ))
+            crate::check_result(
+                crate::ffi_extern_TKXSBase::Handle_Interface_NodeOfGeneralLib_clone(ptr),
+            )
         }
     }
 }
 
-impl HandleInterfaceNodeOfGeneralLib {
+impl Handle_Interface_NodeOfGeneralLib {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
         unsafe {
-            crate::ffi_extern_TKXSBase::HandleInterfaceNodeOfGeneralLib_is_null(self as *const Self)
+            crate::ffi_extern_TKXSBase::Handle_Interface_NodeOfGeneralLib_is_null(
+                self as *const Self,
+            )
         }
     }
 
     /// Dereference this Handle to access the underlying Interface_NodeOfGeneralLib
     pub fn get(&self) -> &crate::ffi_types::Interface_NodeOfGeneralLib {
         unsafe {
-            &*crate::check_result(crate::ffi_extern_TKXSBase::HandleInterfaceNodeOfGeneralLib_get(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKXSBase::Handle_Interface_NodeOfGeneralLib_get(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -11969,7 +10598,7 @@ impl HandleInterfaceNodeOfGeneralLib {
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::Interface_NodeOfGeneralLib {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi_extern_TKXSBase::HandleInterfaceNodeOfGeneralLib_get_mut(
+                crate::ffi_extern_TKXSBase::Handle_Interface_NodeOfGeneralLib_get_mut(
                     self as *mut Self,
                 ),
             )
@@ -11979,9 +10608,9 @@ impl HandleInterfaceNodeOfGeneralLib {
     /// Upcast Handle<Interface_NodeOfGeneralLib> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKXSBase::HandleInterfaceNodeOfGeneralLib_to_HandleStandardTransient(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKXSBase::Handle_Interface_NodeOfGeneralLib_to_Handle_Standard_Transient(self as *const Self)))
         }
     }
 }
@@ -11990,7 +10619,7 @@ impl HandleInterfaceNodeOfGeneralLib {
 // From Interface_NodeOfReaderLib.hxx
 // ========================
 
-/// **Source:** `Interface_NodeOfReaderLib.hxx`:33 - `Interface_NodeOfReaderLib`
+/// **Source:** `Interface_NodeOfReaderLib.hxx`:30 - `Interface_NodeOfReaderLib`
 pub use crate::ffi_types::Interface_NodeOfReaderLib as NodeOfReaderLib;
 
 unsafe impl crate::CppDeletable for NodeOfReaderLib {
@@ -12002,7 +10631,7 @@ unsafe impl crate::CppDeletable for NodeOfReaderLib {
 }
 
 impl NodeOfReaderLib {
-    /// **Source:** `Interface_NodeOfReaderLib.hxx`:38 - `Interface_NodeOfReaderLib::Interface_NodeOfReaderLib()`
+    /// **Source:** `Interface_NodeOfReaderLib.hxx`:35 - `Interface_NodeOfReaderLib::Interface_NodeOfReaderLib()`
     /// Creates an empty Node, with no Next
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
@@ -12012,18 +10641,18 @@ impl NodeOfReaderLib {
         }
     }
 
-    /// **Source:** `Interface_NodeOfReaderLib.hxx`:42 - `Interface_NodeOfReaderLib::AddNode()`
+    /// **Source:** `Interface_NodeOfReaderLib.hxx`:39 - `Interface_NodeOfReaderLib::AddNode()`
     /// Adds a couple (Module,Protocol), that is, stores it into
     /// itself if not yet done, else creates a Next Node to do it
-    pub fn add_node(&mut self, anode: &crate::ffi_types::HandleInterfaceGlobalNodeOfReaderLib) {
+    pub fn add_node(&mut self, anode: &crate::ffi_types::Handle_Interface_GlobalNodeOfReaderLib) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_NodeOfReaderLib_add_node(self as *mut Self, anode)
         })
     }
 
-    /// **Source:** `Interface_NodeOfReaderLib.hxx`:45 - `Interface_NodeOfReaderLib::Module()`
+    /// **Source:** `Interface_NodeOfReaderLib.hxx`:42 - `Interface_NodeOfReaderLib::Module()`
     /// Returns the Module designated by a precise Node
-    pub fn module(&self) -> &crate::ffi_types::HandleInterfaceReaderModule {
+    pub fn module(&self) -> &crate::ffi_types::Handle_Interface_ReaderModule {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKXSBase::Interface_NodeOfReaderLib_module(
                 self as *const Self,
@@ -12031,9 +10660,9 @@ impl NodeOfReaderLib {
         }
     }
 
-    /// **Source:** `Interface_NodeOfReaderLib.hxx`:48 - `Interface_NodeOfReaderLib::Protocol()`
+    /// **Source:** `Interface_NodeOfReaderLib.hxx`:45 - `Interface_NodeOfReaderLib::Protocol()`
     /// Returns the Protocol designated by a precise Node
-    pub fn protocol(&self) -> &crate::ffi_types::HandleInterfaceProtocol {
+    pub fn protocol(&self) -> &crate::ffi_types::Handle_Interface_Protocol {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKXSBase::Interface_NodeOfReaderLib_protocol(
                 self as *const Self,
@@ -12041,10 +10670,10 @@ impl NodeOfReaderLib {
         }
     }
 
-    /// **Source:** `Interface_NodeOfReaderLib.hxx`:52 - `Interface_NodeOfReaderLib::Next()`
+    /// **Source:** `Interface_NodeOfReaderLib.hxx`:49 - `Interface_NodeOfReaderLib::Next()`
     /// Returns the Next Node. If none was defined, returned value
     /// is a Null Handle
-    pub fn next(&self) -> &crate::ffi_types::HandleInterfaceNodeOfReaderLib {
+    pub fn next(&self) -> &crate::ffi_types::Handle_Interface_NodeOfReaderLib {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKXSBase::Interface_NodeOfReaderLib_next(
                 self as *const Self,
@@ -12052,8 +10681,8 @@ impl NodeOfReaderLib {
         }
     }
 
-    /// **Source:** `Interface_NodeOfReaderLib.hxx`:54 - `Interface_NodeOfReaderLib::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `Interface_NodeOfReaderLib.hxx`:51 - `Interface_NodeOfReaderLib::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKXSBase::Interface_NodeOfReaderLib_dynamic_type(
@@ -12063,7 +10692,7 @@ impl NodeOfReaderLib {
         }
     }
 
-    /// **Source:** `Interface_NodeOfReaderLib.hxx`:54 - `Interface_NodeOfReaderLib::get_type_name()`
+    /// **Source:** `Interface_NodeOfReaderLib.hxx`:51 - `Interface_NodeOfReaderLib::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -12074,8 +10703,8 @@ impl NodeOfReaderLib {
         .into_owned()
     }
 
-    /// **Source:** `Interface_NodeOfReaderLib.hxx`:54 - `Interface_NodeOfReaderLib::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    /// **Source:** `Interface_NodeOfReaderLib.hxx`:51 - `Interface_NodeOfReaderLib::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKXSBase::Interface_NodeOfReaderLib_get_type_descriptor(),
@@ -12108,7 +10737,7 @@ impl NodeOfReaderLib {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleInterfaceNodeOfReaderLib> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Interface_NodeOfReaderLib> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKXSBase::Interface_NodeOfReaderLib_to_handle(obj.into_raw()),
@@ -12116,8 +10745,8 @@ impl NodeOfReaderLib {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_NodeOfReaderLib_inherited_IsInstance(
                 self as *const Self,
@@ -12126,8 +10755,8 @@ impl NodeOfReaderLib {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_NodeOfReaderLib_inherited_IsKind(
                 self as *const Self,
@@ -12136,7 +10765,7 @@ impl NodeOfReaderLib {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -12152,7 +10781,7 @@ impl NodeOfReaderLib {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_NodeOfReaderLib_inherited_GetRefCount(
@@ -12161,7 +10790,7 @@ impl NodeOfReaderLib {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_NodeOfReaderLib_inherited_IncrementRefCounter(
@@ -12170,7 +10799,7 @@ impl NodeOfReaderLib {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_NodeOfReaderLib_inherited_DecrementRefCounter(
@@ -12179,7 +10808,7 @@ impl NodeOfReaderLib {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_NodeOfReaderLib_inherited_Delete(
@@ -12189,38 +10818,40 @@ impl NodeOfReaderLib {
     }
 }
 
-pub use crate::ffi_types::HandleInterfaceNodeOfReaderLib;
+pub use crate::ffi_types::Handle_Interface_NodeOfReaderLib;
 
-unsafe impl crate::CppDeletable for HandleInterfaceNodeOfReaderLib {
+unsafe impl crate::CppDeletable for Handle_Interface_NodeOfReaderLib {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKXSBase::HandleInterfaceNodeOfReaderLib_destructor(ptr);
+            crate::ffi_extern_TKXSBase::Handle_Interface_NodeOfReaderLib_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleInterfaceNodeOfReaderLib {
+unsafe impl crate::CppCopyable for Handle_Interface_NodeOfReaderLib {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
         unsafe {
-            crate::check_result(crate::ffi_extern_TKXSBase::HandleInterfaceNodeOfReaderLib_clone(
+            crate::check_result(crate::ffi_extern_TKXSBase::Handle_Interface_NodeOfReaderLib_clone(
                 ptr,
             ))
         }
     }
 }
 
-impl HandleInterfaceNodeOfReaderLib {
+impl Handle_Interface_NodeOfReaderLib {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
         unsafe {
-            crate::ffi_extern_TKXSBase::HandleInterfaceNodeOfReaderLib_is_null(self as *const Self)
+            crate::ffi_extern_TKXSBase::Handle_Interface_NodeOfReaderLib_is_null(
+                self as *const Self,
+            )
         }
     }
 
     /// Dereference this Handle to access the underlying Interface_NodeOfReaderLib
     pub fn get(&self) -> &crate::ffi_types::Interface_NodeOfReaderLib {
         unsafe {
-            &*crate::check_result(crate::ffi_extern_TKXSBase::HandleInterfaceNodeOfReaderLib_get(
+            &*crate::check_result(crate::ffi_extern_TKXSBase::Handle_Interface_NodeOfReaderLib_get(
                 self as *const Self,
             ))
         }
@@ -12230,7 +10861,7 @@ impl HandleInterfaceNodeOfReaderLib {
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::Interface_NodeOfReaderLib {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi_extern_TKXSBase::HandleInterfaceNodeOfReaderLib_get_mut(
+                crate::ffi_extern_TKXSBase::Handle_Interface_NodeOfReaderLib_get_mut(
                     self as *mut Self,
                 ),
             )
@@ -12240,9 +10871,9 @@ impl HandleInterfaceNodeOfReaderLib {
     /// Upcast Handle<Interface_NodeOfReaderLib> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKXSBase::HandleInterfaceNodeOfReaderLib_to_HandleStandardTransient(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKXSBase::Handle_Interface_NodeOfReaderLib_to_Handle_Standard_Transient(self as *const Self)))
         }
     }
 }
@@ -12251,7 +10882,7 @@ impl HandleInterfaceNodeOfReaderLib {
 // From Interface_ParamList.hxx
 // ========================
 
-/// **Source:** `Interface_ParamList.hxx`:29 - `Interface_ParamList`
+/// **Source:** `Interface_ParamList.hxx`:27 - `Interface_ParamList`
 pub use crate::ffi_types::Interface_ParamList as ParamList;
 
 unsafe impl crate::CppDeletable for ParamList {
@@ -12263,7 +10894,7 @@ unsafe impl crate::CppDeletable for ParamList {
 }
 
 impl ParamList {
-    /// **Source:** `Interface_ParamList.hxx`:34 - `Interface_ParamList::Interface_ParamList()`
+    /// **Source:** `Interface_ParamList.hxx`:32 - `Interface_ParamList::Interface_ParamList()`
     /// Creates an vector with size of memory block equal to theIncrement
     pub fn new_int(theIncrement: i32) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -12273,13 +10904,13 @@ impl ParamList {
         }
     }
 
-    /// **Source:** `Interface_ParamList.hxx`:34 - `Interface_ParamList::Interface_ParamList()`
+    /// **Source:** `Interface_ParamList.hxx`:32 - `Interface_ParamList::Interface_ParamList()`
     /// Creates an vector with size of memory block equal to theIncrement
     pub fn new() -> crate::OwnedPtr<Self> {
         Self::new_int(256)
     }
 
-    /// **Source:** `Interface_ParamList.hxx`:37 - `Interface_ParamList::Length()`
+    /// **Source:** `Interface_ParamList.hxx`:35 - `Interface_ParamList::Length()`
     /// Returns the number of elements of <me>.
     pub fn length(&self) -> i32 {
         crate::check_result(unsafe {
@@ -12287,7 +10918,7 @@ impl ParamList {
         })
     }
 
-    /// **Source:** `Interface_ParamList.hxx`:41 - `Interface_ParamList::Lower()`
+    /// **Source:** `Interface_ParamList.hxx`:39 - `Interface_ParamList::Lower()`
     /// Returns the lower bound.
     /// Warning
     pub fn lower(&self) -> i32 {
@@ -12296,7 +10927,7 @@ impl ParamList {
         })
     }
 
-    /// **Source:** `Interface_ParamList.hxx`:45 - `Interface_ParamList::Upper()`
+    /// **Source:** `Interface_ParamList.hxx`:43 - `Interface_ParamList::Upper()`
     /// Returns the upper bound.
     /// Warning
     pub fn upper(&self) -> i32 {
@@ -12305,7 +10936,7 @@ impl ParamList {
         })
     }
 
-    /// **Source:** `Interface_ParamList.hxx`:48 - `Interface_ParamList::SetValue()`
+    /// **Source:** `Interface_ParamList.hxx`:46 - `Interface_ParamList::SetValue()`
     /// Assigns the value <Value> to the <Index>-th item of this array.
     pub fn set_value(&mut self, Index: i32, Value: &FileParameter) {
         crate::check_void_result(unsafe {
@@ -12317,8 +10948,8 @@ impl ParamList {
         })
     }
 
-    /// **Source:** `Interface_ParamList.hxx`:52 - `Interface_ParamList::Value()`
-    /// Return the value of  the  <Index>th element of the
+    /// **Source:** `Interface_ParamList.hxx`:50 - `Interface_ParamList::Value()`
+    /// Return the value of the <Index>th element of the
     /// array.
     pub fn value(&self, Index: i32) -> &FileParameter {
         unsafe {
@@ -12329,8 +10960,8 @@ impl ParamList {
         }
     }
 
-    /// **Source:** `Interface_ParamList.hxx`:61 - `Interface_ParamList::ChangeValue()`
-    /// return the value  of the <Index>th element  of the
+    /// **Source:** `Interface_ParamList.hxx`:56 - `Interface_ParamList::ChangeValue()`
+    /// return the value of the <Index>th element of the
     /// array.
     pub fn change_value(&mut self, Index: i32) -> &mut FileParameter {
         unsafe {
@@ -12343,15 +10974,15 @@ impl ParamList {
         }
     }
 
-    /// **Source:** `Interface_ParamList.hxx`:65 - `Interface_ParamList::Clear()`
+    /// **Source:** `Interface_ParamList.hxx`:60 - `Interface_ParamList::Clear()`
     pub fn clear(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_ParamList_clear(self as *mut Self)
         })
     }
 
-    /// **Source:** `Interface_ParamList.hxx`:67 - `Interface_ParamList::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `Interface_ParamList.hxx`:62 - `Interface_ParamList::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKXSBase::Interface_ParamList_dynamic_type(
                 self as *const Self,
@@ -12359,7 +10990,7 @@ impl ParamList {
         }
     }
 
-    /// **Source:** `Interface_ParamList.hxx`:67 - `Interface_ParamList::get_type_name()`
+    /// **Source:** `Interface_ParamList.hxx`:62 - `Interface_ParamList::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -12370,8 +11001,8 @@ impl ParamList {
         .into_owned()
     }
 
-    /// **Source:** `Interface_ParamList.hxx`:67 - `Interface_ParamList::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    /// **Source:** `Interface_ParamList.hxx`:62 - `Interface_ParamList::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKXSBase::Interface_ParamList_get_type_descriptor(),
@@ -12404,7 +11035,7 @@ impl ParamList {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleInterfaceParamList> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Interface_ParamList> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKXSBase::Interface_ParamList_to_handle(obj.into_raw()),
@@ -12412,8 +11043,8 @@ impl ParamList {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_ParamList_inherited_IsInstance(
                 self as *const Self,
@@ -12422,8 +11053,8 @@ impl ParamList {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_ParamList_inherited_IsKind(
                 self as *const Self,
@@ -12432,7 +11063,7 @@ impl ParamList {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -12446,7 +11077,7 @@ impl ParamList {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_ParamList_inherited_GetRefCount(
@@ -12455,7 +11086,7 @@ impl ParamList {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_ParamList_inherited_IncrementRefCounter(
@@ -12464,7 +11095,7 @@ impl ParamList {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_ParamList_inherited_DecrementRefCounter(
@@ -12473,7 +11104,7 @@ impl ParamList {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_ParamList_inherited_Delete(self as *const Self)
@@ -12481,34 +11112,36 @@ impl ParamList {
     }
 }
 
-pub use crate::ffi_types::HandleInterfaceParamList;
+pub use crate::ffi_types::Handle_Interface_ParamList;
 
-unsafe impl crate::CppDeletable for HandleInterfaceParamList {
+unsafe impl crate::CppDeletable for Handle_Interface_ParamList {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKXSBase::HandleInterfaceParamList_destructor(ptr);
+            crate::ffi_extern_TKXSBase::Handle_Interface_ParamList_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleInterfaceParamList {
+unsafe impl crate::CppCopyable for Handle_Interface_ParamList {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
         unsafe {
-            crate::check_result(crate::ffi_extern_TKXSBase::HandleInterfaceParamList_clone(ptr))
+            crate::check_result(crate::ffi_extern_TKXSBase::Handle_Interface_ParamList_clone(ptr))
         }
     }
 }
 
-impl HandleInterfaceParamList {
+impl Handle_Interface_ParamList {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
-        unsafe { crate::ffi_extern_TKXSBase::HandleInterfaceParamList_is_null(self as *const Self) }
+        unsafe {
+            crate::ffi_extern_TKXSBase::Handle_Interface_ParamList_is_null(self as *const Self)
+        }
     }
 
     /// Dereference this Handle to access the underlying Interface_ParamList
     pub fn get(&self) -> &crate::ffi_types::Interface_ParamList {
         unsafe {
-            &*crate::check_result(crate::ffi_extern_TKXSBase::HandleInterfaceParamList_get(
+            &*crate::check_result(crate::ffi_extern_TKXSBase::Handle_Interface_ParamList_get(
                 self as *const Self,
             ))
         }
@@ -12517,19 +11150,19 @@ impl HandleInterfaceParamList {
     /// Dereference this Handle to mutably access the underlying Interface_ParamList
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::Interface_ParamList {
         unsafe {
-            &mut *crate::check_result(crate::ffi_extern_TKXSBase::HandleInterfaceParamList_get_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKXSBase::Handle_Interface_ParamList_get_mut(self as *mut Self),
+            )
         }
     }
 
     /// Upcast Handle<Interface_ParamList> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKXSBase::HandleInterfaceParamList_to_HandleStandardTransient(
+                crate::ffi_extern_TKXSBase::Handle_Interface_ParamList_to_Handle_Standard_Transient(
                     self as *const Self,
                 ),
             ))
@@ -12541,7 +11174,7 @@ impl HandleInterfaceParamList {
 // From Interface_ParamSet.hxx
 // ========================
 
-/// **Source:** `Interface_ParamSet.hxx`:35 - `Interface_ParamSet`
+/// **Source:** `Interface_ParamSet.hxx`:32 - `Interface_ParamSet`
 /// Defines an ordered set of FileParameters, in a way to be
 /// efficient as in memory requirement or in speed
 pub use crate::ffi_types::Interface_ParamSet as ParamSet;
@@ -12555,7 +11188,7 @@ unsafe impl crate::CppDeletable for ParamSet {
 }
 
 impl ParamSet {
-    /// **Source:** `Interface_ParamSet.hxx`:43 - `Interface_ParamSet::Interface_ParamSet()`
+    /// **Source:** `Interface_ParamSet.hxx`:40 - `Interface_ParamSet::Interface_ParamSet()`
     /// Creates an empty ParamSet, beginning at number "nst" and of
     /// initial reservation "nres" : the "nres" first parameters
     /// which follow "ndeb" (included) will be put in an Array
@@ -12568,7 +11201,7 @@ impl ParamSet {
         }
     }
 
-    /// **Source:** `Interface_ParamSet.hxx`:43 - `Interface_ParamSet::Interface_ParamSet()`
+    /// **Source:** `Interface_ParamSet.hxx`:40 - `Interface_ParamSet::Interface_ParamSet()`
     /// Creates an empty ParamSet, beginning at number "nst" and of
     /// initial reservation "nres" : the "nres" first parameters
     /// which follow "ndeb" (included) will be put in an Array
@@ -12577,7 +11210,7 @@ impl ParamSet {
         Self::new_int2(nres, 1)
     }
 
-    /// **Source:** `Interface_ParamSet.hxx`:53 - `Interface_ParamSet::Append()`
+    /// **Source:** `Interface_ParamSet.hxx`:50 - `Interface_ParamSet::Append()`
     /// Adds a parameter defined as its Value (CString and length) and
     /// Type. Optional EntityNumber (for FileReaderData) can be given
     /// Allows a better memory management than Appending a
@@ -12605,7 +11238,7 @@ impl ParamSet {
         })
     }
 
-    /// **Source:** `Interface_ParamSet.hxx`:61 - `Interface_ParamSet::Append()`
+    /// **Source:** `Interface_ParamSet.hxx`:58 - `Interface_ParamSet::Append()`
     /// Adds a parameter at the end of the ParamSet (transparent
     /// about reservation and "Next")
     /// Returns new count of recorded Parameters
@@ -12618,7 +11251,7 @@ impl ParamSet {
         })
     }
 
-    /// **Source:** `Interface_ParamSet.hxx`:64 - `Interface_ParamSet::NbParams()`
+    /// **Source:** `Interface_ParamSet.hxx`:61 - `Interface_ParamSet::NbParams()`
     /// Returns the total count of parameters (including nexts)
     pub fn nb_params(&self) -> i32 {
         crate::check_result(unsafe {
@@ -12626,7 +11259,7 @@ impl ParamSet {
         })
     }
 
-    /// **Source:** `Interface_ParamSet.hxx`:67 - `Interface_ParamSet::Param()`
+    /// **Source:** `Interface_ParamSet.hxx`:64 - `Interface_ParamSet::Param()`
     /// Returns a parameter identified by its number
     pub fn param(&self, num: i32) -> &FileParameter {
         unsafe {
@@ -12637,7 +11270,7 @@ impl ParamSet {
         }
     }
 
-    /// **Source:** `Interface_ParamSet.hxx`:70 - `Interface_ParamSet::ChangeParam()`
+    /// **Source:** `Interface_ParamSet.hxx`:67 - `Interface_ParamSet::ChangeParam()`
     /// Same as above, but in order to be modified on place
     pub fn change_param(&mut self, num: i32) -> &mut FileParameter {
         unsafe {
@@ -12647,7 +11280,7 @@ impl ParamSet {
         }
     }
 
-    /// **Source:** `Interface_ParamSet.hxx`:73 - `Interface_ParamSet::SetParam()`
+    /// **Source:** `Interface_ParamSet.hxx`:70 - `Interface_ParamSet::SetParam()`
     /// Changes a parameter identified by its number
     pub fn set_param(&mut self, num: i32, FP: &FileParameter) {
         crate::check_void_result(unsafe {
@@ -12655,7 +11288,7 @@ impl ParamSet {
         })
     }
 
-    /// **Source:** `Interface_ParamSet.hxx`:78 - `Interface_ParamSet::Params()`
+    /// **Source:** `Interface_ParamSet.hxx`:75 - `Interface_ParamSet::Params()`
     /// Builds and returns the sub-list corresponding to parameters,
     /// from "num" included, with count "nb"
     /// If <num> and <nb> are zero, returns the whole list
@@ -12663,7 +11296,7 @@ impl ParamSet {
         &self,
         num: i32,
         nb: i32,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleInterfaceParamList> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Interface_ParamList> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKXSBase::Interface_ParamSet_params(self as *const Self, num, nb),
@@ -12671,7 +11304,7 @@ impl ParamSet {
         }
     }
 
-    /// **Source:** `Interface_ParamSet.hxx`:82 - `Interface_ParamSet::Destroy()`
+    /// **Source:** `Interface_ParamSet.hxx`:78 - `Interface_ParamSet::Destroy()`
     /// Destructor (waiting for transparent memory management)
     pub fn destroy(&mut self) {
         crate::check_void_result(unsafe {
@@ -12679,8 +11312,8 @@ impl ParamSet {
         })
     }
 
-    /// **Source:** `Interface_ParamSet.hxx`:86 - `Interface_ParamSet::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `Interface_ParamSet.hxx`:82 - `Interface_ParamSet::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKXSBase::Interface_ParamSet_dynamic_type(
                 self as *const Self,
@@ -12688,7 +11321,7 @@ impl ParamSet {
         }
     }
 
-    /// **Source:** `Interface_ParamSet.hxx`:86 - `Interface_ParamSet::get_type_name()`
+    /// **Source:** `Interface_ParamSet.hxx`:82 - `Interface_ParamSet::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -12699,8 +11332,8 @@ impl ParamSet {
         .into_owned()
     }
 
-    /// **Source:** `Interface_ParamSet.hxx`:86 - `Interface_ParamSet::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    /// **Source:** `Interface_ParamSet.hxx`:82 - `Interface_ParamSet::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKXSBase::Interface_ParamSet_get_type_descriptor(),
@@ -12733,7 +11366,7 @@ impl ParamSet {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleInterfaceParamSet> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Interface_ParamSet> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKXSBase::Interface_ParamSet_to_handle(obj.into_raw()),
@@ -12741,8 +11374,8 @@ impl ParamSet {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_ParamSet_inherited_IsInstance(
                 self as *const Self,
@@ -12751,8 +11384,8 @@ impl ParamSet {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_ParamSet_inherited_IsKind(
                 self as *const Self,
@@ -12761,7 +11394,7 @@ impl ParamSet {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -12775,7 +11408,7 @@ impl ParamSet {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_ParamSet_inherited_GetRefCount(
@@ -12784,7 +11417,7 @@ impl ParamSet {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_ParamSet_inherited_IncrementRefCounter(
@@ -12793,7 +11426,7 @@ impl ParamSet {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_ParamSet_inherited_DecrementRefCounter(
@@ -12802,7 +11435,7 @@ impl ParamSet {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_ParamSet_inherited_Delete(self as *const Self)
@@ -12810,34 +11443,36 @@ impl ParamSet {
     }
 }
 
-pub use crate::ffi_types::HandleInterfaceParamSet;
+pub use crate::ffi_types::Handle_Interface_ParamSet;
 
-unsafe impl crate::CppDeletable for HandleInterfaceParamSet {
+unsafe impl crate::CppDeletable for Handle_Interface_ParamSet {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKXSBase::HandleInterfaceParamSet_destructor(ptr);
+            crate::ffi_extern_TKXSBase::Handle_Interface_ParamSet_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleInterfaceParamSet {
+unsafe impl crate::CppCopyable for Handle_Interface_ParamSet {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
         unsafe {
-            crate::check_result(crate::ffi_extern_TKXSBase::HandleInterfaceParamSet_clone(ptr))
+            crate::check_result(crate::ffi_extern_TKXSBase::Handle_Interface_ParamSet_clone(ptr))
         }
     }
 }
 
-impl HandleInterfaceParamSet {
+impl Handle_Interface_ParamSet {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
-        unsafe { crate::ffi_extern_TKXSBase::HandleInterfaceParamSet_is_null(self as *const Self) }
+        unsafe {
+            crate::ffi_extern_TKXSBase::Handle_Interface_ParamSet_is_null(self as *const Self)
+        }
     }
 
     /// Dereference this Handle to access the underlying Interface_ParamSet
     pub fn get(&self) -> &crate::ffi_types::Interface_ParamSet {
         unsafe {
-            &*crate::check_result(crate::ffi_extern_TKXSBase::HandleInterfaceParamSet_get(
+            &*crate::check_result(crate::ffi_extern_TKXSBase::Handle_Interface_ParamSet_get(
                 self as *const Self,
             ))
         }
@@ -12846,19 +11481,19 @@ impl HandleInterfaceParamSet {
     /// Dereference this Handle to mutably access the underlying Interface_ParamSet
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::Interface_ParamSet {
         unsafe {
-            &mut *crate::check_result(crate::ffi_extern_TKXSBase::HandleInterfaceParamSet_get_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKXSBase::Handle_Interface_ParamSet_get_mut(self as *mut Self),
+            )
         }
     }
 
     /// Upcast Handle<Interface_ParamSet> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKXSBase::HandleInterfaceParamSet_to_HandleStandardTransient(
+                crate::ffi_extern_TKXSBase::Handle_Interface_ParamSet_to_Handle_Standard_Transient(
                     self as *const Self,
                 ),
             ))
@@ -12870,7 +11505,7 @@ impl HandleInterfaceParamSet {
 // From Interface_Protocol.hxx
 // ========================
 
-/// **Source:** `Interface_Protocol.hxx`:40 - `Interface_Protocol`
+/// **Source:** `Interface_Protocol.hxx`:37 - `Interface_Protocol`
 /// General description of Interface Protocols. A Protocol defines
 /// a set of Entity types. This class provides also the notion of
 /// Active Protocol, as a working context, defined once then
@@ -12890,7 +11525,7 @@ unsafe impl crate::CppDeletable for Protocol {
 }
 
 impl Protocol {
-    /// **Source:** `Interface_Protocol.hxx`:56 - `Interface_Protocol::NbResources()`
+    /// **Source:** `Interface_Protocol.hxx`:53 - `Interface_Protocol::NbResources()`
     /// Returns count of Protocol used as Resources (level one)
     pub fn nb_resources(&self) -> i32 {
         crate::check_result(unsafe {
@@ -12898,9 +11533,12 @@ impl Protocol {
         })
     }
 
-    /// **Source:** `Interface_Protocol.hxx`:59 - `Interface_Protocol::Resource()`
+    /// **Source:** `Interface_Protocol.hxx`:56 - `Interface_Protocol::Resource()`
     /// Returns a Resource, given its rank (between 1 and NbResources)
-    pub fn resource(&self, num: i32) -> crate::OwnedPtr<crate::ffi_types::HandleInterfaceProtocol> {
+    pub fn resource(
+        &self,
+        num: i32,
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Interface_Protocol> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKXSBase::Interface_Protocol_resource(self as *const Self, num),
@@ -12908,46 +11546,46 @@ impl Protocol {
         }
     }
 
-    /// **Source:** `Interface_Protocol.hxx`:64 - `Interface_Protocol::CaseNumber()`
+    /// **Source:** `Interface_Protocol.hxx`:61 - `Interface_Protocol::CaseNumber()`
     /// Returns a unique positive CaseNumber for each Recognized
     /// Object. By default, recognition is based on Type(1)
     /// By default, calls the following one which is deferred.
-    pub fn case_number(&self, obj: &crate::ffi_types::HandleStandardTransient) -> i32 {
+    pub fn case_number(&self, obj: &crate::ffi_types::Handle_Standard_Transient) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_Protocol_case_number(self as *const Self, obj)
         })
     }
 
-    /// **Source:** `Interface_Protocol.hxx`:68 - `Interface_Protocol::IsDynamicType()`
+    /// **Source:** `Interface_Protocol.hxx`:65 - `Interface_Protocol::IsDynamicType()`
     /// Returns True if type of <obj> is that defined from CDL
     /// This is the default but it may change according implementation
-    pub fn is_dynamic_type(&self, obj: &crate::ffi_types::HandleStandardTransient) -> bool {
+    pub fn is_dynamic_type(&self, obj: &crate::ffi_types::Handle_Standard_Transient) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_Protocol_is_dynamic_type(self as *const Self, obj)
         })
     }
 
-    /// **Source:** `Interface_Protocol.hxx`:75 - `Interface_Protocol::NbTypes()`
+    /// **Source:** `Interface_Protocol.hxx`:71 - `Interface_Protocol::NbTypes()`
     /// Returns the count of DISTINCT types under which an entity may
     /// be processed. Each one is candidate to be recognized by
     /// TypeNumber, <obj> is then processed according it
     /// By default, returns 1 (the DynamicType)
-    pub fn nb_types(&self, obj: &crate::ffi_types::HandleStandardTransient) -> i32 {
+    pub fn nb_types(&self, obj: &crate::ffi_types::Handle_Standard_Transient) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_Protocol_nb_types(self as *const Self, obj)
         })
     }
 
-    /// **Source:** `Interface_Protocol.hxx`:81 - `Interface_Protocol::Type()`
+    /// **Source:** `Interface_Protocol.hxx`:77 - `Interface_Protocol::Type()`
     /// Returns a type under which <obj> can be recognized and
     /// processed, according its rank in its definition list (see
     /// NbTypes).
     /// By default, returns DynamicType
     pub fn type_(
         &self,
-        obj: &crate::ffi_types::HandleStandardTransient,
+        obj: &crate::ffi_types::Handle_Standard_Transient,
         nt: i32,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardType> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Type> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKXSBase::Interface_Protocol_type_(self as *const Self, obj, nt),
@@ -12955,16 +11593,16 @@ impl Protocol {
         }
     }
 
-    /// **Source:** `Interface_Protocol.hxx`:86 - `Interface_Protocol::TypeNumber()`
+    /// **Source:** `Interface_Protocol.hxx`:82 - `Interface_Protocol::TypeNumber()`
     /// Returns a unique positive CaseNumber for each Recognized Type,
     /// Returns Zero for "<type> not recognized"
-    pub fn type_number(&self, atype: &crate::ffi_types::HandleStandardType) -> i32 {
+    pub fn type_number(&self, atype: &crate::ffi_types::Handle_Standard_Type) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_Protocol_type_number(self as *const Self, atype)
         })
     }
 
-    /// **Source:** `Interface_Protocol.hxx`:96 - `Interface_Protocol::GlobalCheck()`
+    /// **Source:** `Interface_Protocol.hxx`:92 - `Interface_Protocol::GlobalCheck()`
     /// Evaluates a Global Check for a model (with its Graph)
     /// Returns True when done, False if data in model do not apply
     ///
@@ -12976,16 +11614,16 @@ impl Protocol {
     pub fn global_check(
         &self,
         G: &Graph,
-        ach: &mut crate::ffi_types::HandleInterfaceCheck,
+        ach: &mut crate::ffi_types::Handle_Interface_Check,
     ) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_Protocol_global_check(self as *const Self, G, ach)
         })
     }
 
-    /// **Source:** `Interface_Protocol.hxx`:100 - `Interface_Protocol::NewModel()`
+    /// **Source:** `Interface_Protocol.hxx`:96 - `Interface_Protocol::NewModel()`
     /// Creates an empty Model of the considered Norm
-    pub fn new_model(&self) -> crate::OwnedPtr<crate::ffi_types::HandleInterfaceInterfaceModel> {
+    pub fn new_model(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_Interface_InterfaceModel> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKXSBase::Interface_Protocol_new_model(self as *const Self),
@@ -12993,11 +11631,11 @@ impl Protocol {
         }
     }
 
-    /// **Source:** `Interface_Protocol.hxx`:103 - `Interface_Protocol::IsSuitableModel()`
+    /// **Source:** `Interface_Protocol.hxx`:99 - `Interface_Protocol::IsSuitableModel()`
     /// Returns True if <model> is a Model of the considered Norm
     pub fn is_suitable_model(
         &self,
-        model: &crate::ffi_types::HandleInterfaceInterfaceModel,
+        model: &crate::ffi_types::Handle_Interface_InterfaceModel,
     ) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_Protocol_is_suitable_model(
@@ -13007,9 +11645,9 @@ impl Protocol {
         })
     }
 
-    /// **Source:** `Interface_Protocol.hxx`:107 - `Interface_Protocol::UnknownEntity()`
+    /// **Source:** `Interface_Protocol.hxx`:103 - `Interface_Protocol::UnknownEntity()`
     /// Creates a new Unknown Entity for the considered Norm
-    pub fn unknown_entity(&self) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    pub fn unknown_entity(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKXSBase::Interface_Protocol_unknown_entity(self as *const Self),
@@ -13017,11 +11655,11 @@ impl Protocol {
         }
     }
 
-    /// **Source:** `Interface_Protocol.hxx`:112 - `Interface_Protocol::IsUnknownEntity()`
+    /// **Source:** `Interface_Protocol.hxx`:108 - `Interface_Protocol::IsUnknownEntity()`
     /// Returns True if <ent> is an Unknown Entity for the Norm, i.e.
     /// same Type as them created by method UnknownEntity
-    /// (for an Entity out of the Norm, answer can be unpredicable)
-    pub fn is_unknown_entity(&self, ent: &crate::ffi_types::HandleStandardTransient) -> bool {
+    /// (for an Entity out of the Norm, answer can be unpredictable)
+    pub fn is_unknown_entity(&self, ent: &crate::ffi_types::Handle_Standard_Transient) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_Protocol_is_unknown_entity(
                 self as *const Self,
@@ -13030,8 +11668,8 @@ impl Protocol {
         })
     }
 
-    /// **Source:** `Interface_Protocol.hxx`:115 - `Interface_Protocol::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `Interface_Protocol.hxx`:111 - `Interface_Protocol::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKXSBase::Interface_Protocol_dynamic_type(
                 self as *const Self,
@@ -13039,10 +11677,10 @@ impl Protocol {
         }
     }
 
-    /// **Source:** `Interface_Protocol.hxx`:46 - `Interface_Protocol::Active()`
+    /// **Source:** `Interface_Protocol.hxx`:43 - `Interface_Protocol::Active()`
     /// Returns the Active Protocol, if defined (else, returns a
     /// Null Handle, which means "no defined active protocol")
-    pub fn active() -> crate::OwnedPtr<crate::ffi_types::HandleInterfaceProtocol> {
+    pub fn active() -> crate::OwnedPtr<crate::ffi_types::Handle_Interface_Protocol> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKXSBase::Interface_Protocol_active(),
@@ -13050,16 +11688,16 @@ impl Protocol {
         }
     }
 
-    /// **Source:** `Interface_Protocol.hxx`:50 - `Interface_Protocol::SetActive()`
+    /// **Source:** `Interface_Protocol.hxx`:47 - `Interface_Protocol::SetActive()`
     /// Sets a given Protocol to be the Active one (for the users of
     /// Active, see just above). Applies to every sub-type of Protocol
-    pub fn set_active(aprotocol: &crate::ffi_types::HandleInterfaceProtocol) {
+    pub fn set_active(aprotocol: &crate::ffi_types::Handle_Interface_Protocol) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_Protocol_set_active(aprotocol)
         })
     }
 
-    /// **Source:** `Interface_Protocol.hxx`:53 - `Interface_Protocol::ClearActive()`
+    /// **Source:** `Interface_Protocol.hxx`:50 - `Interface_Protocol::ClearActive()`
     /// Erases the Active Protocol (hence it becomes undefined)
     pub fn clear_active() {
         crate::check_void_result(unsafe {
@@ -13067,7 +11705,7 @@ impl Protocol {
         })
     }
 
-    /// **Source:** `Interface_Protocol.hxx`:115 - `Interface_Protocol::get_type_name()`
+    /// **Source:** `Interface_Protocol.hxx`:111 - `Interface_Protocol::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -13078,8 +11716,8 @@ impl Protocol {
         .into_owned()
     }
 
-    /// **Source:** `Interface_Protocol.hxx`:115 - `Interface_Protocol::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    /// **Source:** `Interface_Protocol.hxx`:111 - `Interface_Protocol::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKXSBase::Interface_Protocol_get_type_descriptor(),
@@ -13109,8 +11747,8 @@ impl Protocol {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_Protocol_inherited_IsInstance(
                 self as *const Self,
@@ -13119,8 +11757,8 @@ impl Protocol {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_Protocol_inherited_IsKind(
                 self as *const Self,
@@ -13129,7 +11767,7 @@ impl Protocol {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -13143,7 +11781,7 @@ impl Protocol {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_Protocol_inherited_GetRefCount(
@@ -13152,7 +11790,7 @@ impl Protocol {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_Protocol_inherited_IncrementRefCounter(
@@ -13161,7 +11799,7 @@ impl Protocol {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_Protocol_inherited_DecrementRefCounter(
@@ -13170,7 +11808,7 @@ impl Protocol {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_Protocol_inherited_Delete(self as *const Self)
@@ -13178,34 +11816,36 @@ impl Protocol {
     }
 }
 
-pub use crate::ffi_types::HandleInterfaceProtocol;
+pub use crate::ffi_types::Handle_Interface_Protocol;
 
-unsafe impl crate::CppDeletable for HandleInterfaceProtocol {
+unsafe impl crate::CppDeletable for Handle_Interface_Protocol {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKXSBase::HandleInterfaceProtocol_destructor(ptr);
+            crate::ffi_extern_TKXSBase::Handle_Interface_Protocol_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleInterfaceProtocol {
+unsafe impl crate::CppCopyable for Handle_Interface_Protocol {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
         unsafe {
-            crate::check_result(crate::ffi_extern_TKXSBase::HandleInterfaceProtocol_clone(ptr))
+            crate::check_result(crate::ffi_extern_TKXSBase::Handle_Interface_Protocol_clone(ptr))
         }
     }
 }
 
-impl HandleInterfaceProtocol {
+impl Handle_Interface_Protocol {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
-        unsafe { crate::ffi_extern_TKXSBase::HandleInterfaceProtocol_is_null(self as *const Self) }
+        unsafe {
+            crate::ffi_extern_TKXSBase::Handle_Interface_Protocol_is_null(self as *const Self)
+        }
     }
 
     /// Dereference this Handle to access the underlying Interface_Protocol
     pub fn get(&self) -> &crate::ffi_types::Interface_Protocol {
         unsafe {
-            &*crate::check_result(crate::ffi_extern_TKXSBase::HandleInterfaceProtocol_get(
+            &*crate::check_result(crate::ffi_extern_TKXSBase::Handle_Interface_Protocol_get(
                 self as *const Self,
             ))
         }
@@ -13214,19 +11854,19 @@ impl HandleInterfaceProtocol {
     /// Dereference this Handle to mutably access the underlying Interface_Protocol
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::Interface_Protocol {
         unsafe {
-            &mut *crate::check_result(crate::ffi_extern_TKXSBase::HandleInterfaceProtocol_get_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKXSBase::Handle_Interface_Protocol_get_mut(self as *mut Self),
+            )
         }
     }
 
     /// Upcast Handle<Interface_Protocol> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKXSBase::HandleInterfaceProtocol_to_HandleStandardTransient(
+                crate::ffi_extern_TKXSBase::Handle_Interface_Protocol_to_Handle_Standard_Transient(
                     self as *const Self,
                 ),
             ))
@@ -13238,9 +11878,9 @@ impl HandleInterfaceProtocol {
     /// Returns `None` if the handle does not point to a `HeaderSection_Protocol` (or subclass).
     pub fn downcast_to_header_section_protocol(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleHeaderSectionProtocol>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_HeaderSection_Protocol>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKXSBase::HandleInterfaceProtocol_downcast_to_HandleHeaderSectionProtocol(self as *const Self)
+            crate::ffi_extern_TKXSBase::Handle_Interface_Protocol_downcast_to_Handle_HeaderSection_Protocol(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -13254,11 +11894,9 @@ impl HandleInterfaceProtocol {
     /// Returns `None` if the handle does not point to a `IGESAppli_Protocol` (or subclass).
     pub fn downcast_to_iges_appli_protocol(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleIGESAppliProtocol>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_IGESAppli_Protocol>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKXSBase::HandleInterfaceProtocol_downcast_to_HandleIGESAppliProtocol(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKXSBase::Handle_Interface_Protocol_downcast_to_Handle_IGESAppli_Protocol(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -13272,11 +11910,9 @@ impl HandleInterfaceProtocol {
     /// Returns `None` if the handle does not point to a `IGESBasic_Protocol` (or subclass).
     pub fn downcast_to_iges_basic_protocol(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleIGESBasicProtocol>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_IGESBasic_Protocol>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKXSBase::HandleInterfaceProtocol_downcast_to_HandleIGESBasicProtocol(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKXSBase::Handle_Interface_Protocol_downcast_to_Handle_IGESBasic_Protocol(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -13290,9 +11926,9 @@ impl HandleInterfaceProtocol {
     /// Returns `None` if the handle does not point to a `IGESData_FileProtocol` (or subclass).
     pub fn downcast_to_iges_data_file_protocol(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleIGESDataFileProtocol>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_IGESData_FileProtocol>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKXSBase::HandleInterfaceProtocol_downcast_to_HandleIGESDataFileProtocol(self as *const Self)
+            crate::ffi_extern_TKXSBase::Handle_Interface_Protocol_downcast_to_Handle_IGESData_FileProtocol(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -13306,11 +11942,9 @@ impl HandleInterfaceProtocol {
     /// Returns `None` if the handle does not point to a `IGESData_Protocol` (or subclass).
     pub fn downcast_to_iges_data_protocol(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleIGESDataProtocol>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_IGESData_Protocol>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKXSBase::HandleInterfaceProtocol_downcast_to_HandleIGESDataProtocol(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKXSBase::Handle_Interface_Protocol_downcast_to_Handle_IGESData_Protocol(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -13324,11 +11958,9 @@ impl HandleInterfaceProtocol {
     /// Returns `None` if the handle does not point to a `IGESDefs_Protocol` (or subclass).
     pub fn downcast_to_iges_defs_protocol(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleIGESDefsProtocol>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_IGESDefs_Protocol>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKXSBase::HandleInterfaceProtocol_downcast_to_HandleIGESDefsProtocol(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKXSBase::Handle_Interface_Protocol_downcast_to_Handle_IGESDefs_Protocol(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -13342,11 +11974,9 @@ impl HandleInterfaceProtocol {
     /// Returns `None` if the handle does not point to a `IGESDimen_Protocol` (or subclass).
     pub fn downcast_to_iges_dimen_protocol(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleIGESDimenProtocol>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_IGESDimen_Protocol>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKXSBase::HandleInterfaceProtocol_downcast_to_HandleIGESDimenProtocol(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKXSBase::Handle_Interface_Protocol_downcast_to_Handle_IGESDimen_Protocol(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -13360,11 +11990,9 @@ impl HandleInterfaceProtocol {
     /// Returns `None` if the handle does not point to a `IGESDraw_Protocol` (or subclass).
     pub fn downcast_to_iges_draw_protocol(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleIGESDrawProtocol>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_IGESDraw_Protocol>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKXSBase::HandleInterfaceProtocol_downcast_to_HandleIGESDrawProtocol(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKXSBase::Handle_Interface_Protocol_downcast_to_Handle_IGESDraw_Protocol(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -13378,11 +12006,9 @@ impl HandleInterfaceProtocol {
     /// Returns `None` if the handle does not point to a `IGESGeom_Protocol` (or subclass).
     pub fn downcast_to_iges_geom_protocol(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleIGESGeomProtocol>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_IGESGeom_Protocol>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKXSBase::HandleInterfaceProtocol_downcast_to_HandleIGESGeomProtocol(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKXSBase::Handle_Interface_Protocol_downcast_to_Handle_IGESGeom_Protocol(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -13396,11 +12022,9 @@ impl HandleInterfaceProtocol {
     /// Returns `None` if the handle does not point to a `IGESGraph_Protocol` (or subclass).
     pub fn downcast_to_iges_graph_protocol(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleIGESGraphProtocol>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_IGESGraph_Protocol>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKXSBase::HandleInterfaceProtocol_downcast_to_HandleIGESGraphProtocol(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKXSBase::Handle_Interface_Protocol_downcast_to_Handle_IGESGraph_Protocol(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -13414,11 +12038,9 @@ impl HandleInterfaceProtocol {
     /// Returns `None` if the handle does not point to a `IGESSolid_Protocol` (or subclass).
     pub fn downcast_to_iges_solid_protocol(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleIGESSolidProtocol>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_IGESSolid_Protocol>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKXSBase::HandleInterfaceProtocol_downcast_to_HandleIGESSolidProtocol(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKXSBase::Handle_Interface_Protocol_downcast_to_Handle_IGESSolid_Protocol(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -13432,11 +12054,9 @@ impl HandleInterfaceProtocol {
     /// Returns `None` if the handle does not point to a `StepAP214_Protocol` (or subclass).
     pub fn downcast_to_step_ap214_protocol(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleStepAP214Protocol>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_StepAP214_Protocol>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKXSBase::HandleInterfaceProtocol_downcast_to_HandleStepAP214Protocol(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKXSBase::Handle_Interface_Protocol_downcast_to_Handle_StepAP214_Protocol(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -13450,9 +12070,9 @@ impl HandleInterfaceProtocol {
     /// Returns `None` if the handle does not point to a `StepData_FileProtocol` (or subclass).
     pub fn downcast_to_step_data_file_protocol(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleStepDataFileProtocol>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_StepData_FileProtocol>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKXSBase::HandleInterfaceProtocol_downcast_to_HandleStepDataFileProtocol(self as *const Self)
+            crate::ffi_extern_TKXSBase::Handle_Interface_Protocol_downcast_to_Handle_StepData_FileProtocol(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -13466,11 +12086,9 @@ impl HandleInterfaceProtocol {
     /// Returns `None` if the handle does not point to a `StepData_Protocol` (or subclass).
     pub fn downcast_to_step_data_protocol(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleStepDataProtocol>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_StepData_Protocol>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKXSBase::HandleInterfaceProtocol_downcast_to_HandleStepDataProtocol(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKXSBase::Handle_Interface_Protocol_downcast_to_Handle_StepData_Protocol(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -13502,7 +12120,7 @@ impl ReaderLib {
     /// This creation gets the Modules from the global set, those
     /// which are bound to the given Protocol and its Resources
     pub fn new_handleinterfaceprotocol(
-        aprotocol: &crate::ffi_types::HandleInterfaceProtocol,
+        aprotocol: &crate::ffi_types::Handle_Interface_Protocol,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -13528,7 +12146,7 @@ impl ReaderLib {
     /// Adds a couple (Module-Protocol) to the Library, given the
     /// class of a Protocol. Takes Resources into account.
     /// (if <aprotocol> is not of type TheProtocol, it is not added)
-    pub fn add_protocol(&mut self, aprotocol: &crate::ffi_types::HandleStandardTransient) {
+    pub fn add_protocol(&mut self, aprotocol: &crate::ffi_types::Handle_Standard_Transient) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_ReaderLib_add_protocol(
                 self as *mut Self,
@@ -13565,8 +12183,8 @@ impl ReaderLib {
     /// (Select can work on any criterium, such as Object DynamicType)
     pub fn select(
         &self,
-        obj: &crate::ffi_types::HandleStandardTransient,
-        module: &mut crate::ffi_types::HandleInterfaceReaderModule,
+        obj: &crate::ffi_types::Handle_Standard_Transient,
+        module: &mut crate::ffi_types::Handle_Interface_ReaderModule,
         CN: &mut i32,
     ) -> bool {
         crate::check_result(unsafe {
@@ -13606,7 +12224,7 @@ impl ReaderLib {
 
     /// **Source:** `Interface_ReaderLib.hxx`:87 - `Interface_ReaderLib::Module()`
     /// Returns the current Module in the Iteration
-    pub fn module(&self) -> &crate::ffi_types::HandleInterfaceReaderModule {
+    pub fn module(&self) -> &crate::ffi_types::Handle_Interface_ReaderModule {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKXSBase::Interface_ReaderLib_module(
                 self as *const Self,
@@ -13616,7 +12234,7 @@ impl ReaderLib {
 
     /// **Source:** `Interface_ReaderLib.hxx`:90 - `Interface_ReaderLib::Protocol()`
     /// Returns the current Protocol in the Iteration
-    pub fn protocol(&self) -> &crate::ffi_types::HandleInterfaceProtocol {
+    pub fn protocol(&self) -> &crate::ffi_types::Handle_Interface_Protocol {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKXSBase::Interface_ReaderLib_protocol(
                 self as *const Self,
@@ -13628,8 +12246,8 @@ impl ReaderLib {
     /// Adds a couple (Module-Protocol) into the global definition set
     /// for this class of Library.
     pub fn set_global(
-        amodule: &crate::ffi_types::HandleInterfaceReaderModule,
-        aprotocol: &crate::ffi_types::HandleInterfaceProtocol,
+        amodule: &crate::ffi_types::Handle_Interface_ReaderModule,
+        aprotocol: &crate::ffi_types::Handle_Interface_Protocol,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_ReaderLib_set_global(amodule, aprotocol)
@@ -13641,7 +12259,7 @@ impl ReaderLib {
 // From Interface_ReaderModule.hxx
 // ========================
 
-/// **Source:** `Interface_ReaderModule.hxx`:40 - `Interface_ReaderModule`
+/// **Source:** `Interface_ReaderModule.hxx`:37 - `Interface_ReaderModule`
 /// Defines unitary operations required to read an Entity from a
 /// File (see FileReaderData, FileReaderTool), under control of
 /// a FileReaderTool. The initial creation is performed by a
@@ -13662,12 +12280,12 @@ unsafe impl crate::CppDeletable for ReaderModule {
 }
 
 impl ReaderModule {
-    /// **Source:** `Interface_ReaderModule.hxx`:46 - `Interface_ReaderModule::CaseNum()`
+    /// **Source:** `Interface_ReaderModule.hxx`:43 - `Interface_ReaderModule::CaseNum()`
     /// Translates the type of record <num> in <data> to a positive
     /// Case Number. If Recognition fails, must return 0
     pub fn case_num(
         &self,
-        data: &crate::ffi_types::HandleInterfaceFileReaderData,
+        data: &crate::ffi_types::Handle_Interface_FileReaderData,
         num: i32,
     ) -> i32 {
         crate::check_result(unsafe {
@@ -13679,7 +12297,7 @@ impl ReaderModule {
         })
     }
 
-    /// **Source:** `Interface_ReaderModule.hxx`:53 - `Interface_ReaderModule::Read()`
+    /// **Source:** `Interface_ReaderModule.hxx`:50 - `Interface_ReaderModule::Read()`
     /// Performs the effective loading from <data>, record <num>,
     /// to the Entity <ent> formerly created
     /// In case of Error or Warning, fills <ach> with messages
@@ -13687,10 +12305,10 @@ impl ReaderModule {
     pub fn read(
         &self,
         casenum: i32,
-        data: &crate::ffi_types::HandleInterfaceFileReaderData,
+        data: &crate::ffi_types::Handle_Interface_FileReaderData,
         num: i32,
-        ach: &mut crate::ffi_types::HandleInterfaceCheck,
-        ent: &crate::ffi_types::HandleStandardTransient,
+        ach: &mut crate::ffi_types::Handle_Interface_Check,
+        ent: &crate::ffi_types::Handle_Standard_Transient,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_ReaderModule_read(
@@ -13704,7 +12322,7 @@ impl ReaderModule {
         })
     }
 
-    /// **Source:** `Interface_ReaderModule.hxx`:69 - `Interface_ReaderModule::NewRead()`
+    /// **Source:** `Interface_ReaderModule.hxx`:66 - `Interface_ReaderModule::NewRead()`
     /// Specific operator (create+read) defaulted to do nothing.
     /// It can be redefined when it is not possible to work in two
     /// steps (NewVoid then Read). This occurs when no default
@@ -13718,10 +12336,10 @@ impl ReaderModule {
     pub fn new_read(
         &self,
         casenum: i32,
-        data: &crate::ffi_types::HandleInterfaceFileReaderData,
+        data: &crate::ffi_types::Handle_Interface_FileReaderData,
         num: i32,
-        ach: &mut crate::ffi_types::HandleInterfaceCheck,
-        ent: &mut crate::ffi_types::HandleStandardTransient,
+        ach: &mut crate::ffi_types::Handle_Interface_Check,
+        ent: &mut crate::ffi_types::Handle_Standard_Transient,
     ) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_ReaderModule_new_read(
@@ -13735,8 +12353,8 @@ impl ReaderModule {
         })
     }
 
-    /// **Source:** `Interface_ReaderModule.hxx`:75 - `Interface_ReaderModule::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `Interface_ReaderModule.hxx`:72 - `Interface_ReaderModule::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKXSBase::Interface_ReaderModule_dynamic_type(
@@ -13746,7 +12364,7 @@ impl ReaderModule {
         }
     }
 
-    /// **Source:** `Interface_ReaderModule.hxx`:75 - `Interface_ReaderModule::get_type_name()`
+    /// **Source:** `Interface_ReaderModule.hxx`:72 - `Interface_ReaderModule::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -13757,8 +12375,8 @@ impl ReaderModule {
         .into_owned()
     }
 
-    /// **Source:** `Interface_ReaderModule.hxx`:75 - `Interface_ReaderModule::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    /// **Source:** `Interface_ReaderModule.hxx`:72 - `Interface_ReaderModule::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKXSBase::Interface_ReaderModule_get_type_descriptor(),
@@ -13788,8 +12406,8 @@ impl ReaderModule {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_ReaderModule_inherited_IsInstance(
                 self as *const Self,
@@ -13798,8 +12416,8 @@ impl ReaderModule {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_ReaderModule_inherited_IsKind(
                 self as *const Self,
@@ -13808,7 +12426,7 @@ impl ReaderModule {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -13824,7 +12442,7 @@ impl ReaderModule {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_ReaderModule_inherited_GetRefCount(
@@ -13833,7 +12451,7 @@ impl ReaderModule {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_ReaderModule_inherited_IncrementRefCounter(
@@ -13842,7 +12460,7 @@ impl ReaderModule {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_ReaderModule_inherited_DecrementRefCounter(
@@ -13851,7 +12469,7 @@ impl ReaderModule {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_ReaderModule_inherited_Delete(self as *const Self)
@@ -13859,36 +12477,38 @@ impl ReaderModule {
     }
 }
 
-pub use crate::ffi_types::HandleInterfaceReaderModule;
+pub use crate::ffi_types::Handle_Interface_ReaderModule;
 
-unsafe impl crate::CppDeletable for HandleInterfaceReaderModule {
+unsafe impl crate::CppDeletable for Handle_Interface_ReaderModule {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKXSBase::HandleInterfaceReaderModule_destructor(ptr);
+            crate::ffi_extern_TKXSBase::Handle_Interface_ReaderModule_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleInterfaceReaderModule {
+unsafe impl crate::CppCopyable for Handle_Interface_ReaderModule {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
         unsafe {
-            crate::check_result(crate::ffi_extern_TKXSBase::HandleInterfaceReaderModule_clone(ptr))
+            crate::check_result(crate::ffi_extern_TKXSBase::Handle_Interface_ReaderModule_clone(
+                ptr,
+            ))
         }
     }
 }
 
-impl HandleInterfaceReaderModule {
+impl Handle_Interface_ReaderModule {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
         unsafe {
-            crate::ffi_extern_TKXSBase::HandleInterfaceReaderModule_is_null(self as *const Self)
+            crate::ffi_extern_TKXSBase::Handle_Interface_ReaderModule_is_null(self as *const Self)
         }
     }
 
     /// Dereference this Handle to access the underlying Interface_ReaderModule
     pub fn get(&self) -> &crate::ffi_types::Interface_ReaderModule {
         unsafe {
-            &*crate::check_result(crate::ffi_extern_TKXSBase::HandleInterfaceReaderModule_get(
+            &*crate::check_result(crate::ffi_extern_TKXSBase::Handle_Interface_ReaderModule_get(
                 self as *const Self,
             ))
         }
@@ -13898,7 +12518,9 @@ impl HandleInterfaceReaderModule {
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::Interface_ReaderModule {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi_extern_TKXSBase::HandleInterfaceReaderModule_get_mut(self as *mut Self),
+                crate::ffi_extern_TKXSBase::Handle_Interface_ReaderModule_get_mut(
+                    self as *mut Self,
+                ),
             )
         }
     }
@@ -13906,13 +12528,9 @@ impl HandleInterfaceReaderModule {
     /// Upcast Handle<Interface_ReaderModule> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKXSBase::HandleInterfaceReaderModule_to_HandleStandardTransient(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKXSBase::Handle_Interface_ReaderModule_to_Handle_Standard_Transient(self as *const Self)))
         }
     }
 
@@ -13921,9 +12539,9 @@ impl HandleInterfaceReaderModule {
     /// Returns `None` if the handle does not point to a `IGESAppli_ReadWriteModule` (or subclass).
     pub fn downcast_to_iges_appli_read_write_module(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleIGESAppliReadWriteModule>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_IGESAppli_ReadWriteModule>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKXSBase::HandleInterfaceReaderModule_downcast_to_HandleIGESAppliReadWriteModule(self as *const Self)
+            crate::ffi_extern_TKXSBase::Handle_Interface_ReaderModule_downcast_to_Handle_IGESAppli_ReadWriteModule(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -13937,9 +12555,9 @@ impl HandleInterfaceReaderModule {
     /// Returns `None` if the handle does not point to a `IGESBasic_ReadWriteModule` (or subclass).
     pub fn downcast_to_iges_basic_read_write_module(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleIGESBasicReadWriteModule>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_IGESBasic_ReadWriteModule>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKXSBase::HandleInterfaceReaderModule_downcast_to_HandleIGESBasicReadWriteModule(self as *const Self)
+            crate::ffi_extern_TKXSBase::Handle_Interface_ReaderModule_downcast_to_Handle_IGESBasic_ReadWriteModule(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -13953,9 +12571,9 @@ impl HandleInterfaceReaderModule {
     /// Returns `None` if the handle does not point to a `IGESDefs_ReadWriteModule` (or subclass).
     pub fn downcast_to_iges_defs_read_write_module(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleIGESDefsReadWriteModule>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_IGESDefs_ReadWriteModule>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKXSBase::HandleInterfaceReaderModule_downcast_to_HandleIGESDefsReadWriteModule(self as *const Self)
+            crate::ffi_extern_TKXSBase::Handle_Interface_ReaderModule_downcast_to_Handle_IGESDefs_ReadWriteModule(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -13969,9 +12587,9 @@ impl HandleInterfaceReaderModule {
     /// Returns `None` if the handle does not point to a `IGESDimen_ReadWriteModule` (or subclass).
     pub fn downcast_to_iges_dimen_read_write_module(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleIGESDimenReadWriteModule>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_IGESDimen_ReadWriteModule>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKXSBase::HandleInterfaceReaderModule_downcast_to_HandleIGESDimenReadWriteModule(self as *const Self)
+            crate::ffi_extern_TKXSBase::Handle_Interface_ReaderModule_downcast_to_Handle_IGESDimen_ReadWriteModule(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -13985,9 +12603,9 @@ impl HandleInterfaceReaderModule {
     /// Returns `None` if the handle does not point to a `IGESDraw_ReadWriteModule` (or subclass).
     pub fn downcast_to_iges_draw_read_write_module(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleIGESDrawReadWriteModule>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_IGESDraw_ReadWriteModule>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKXSBase::HandleInterfaceReaderModule_downcast_to_HandleIGESDrawReadWriteModule(self as *const Self)
+            crate::ffi_extern_TKXSBase::Handle_Interface_ReaderModule_downcast_to_Handle_IGESDraw_ReadWriteModule(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -14001,9 +12619,9 @@ impl HandleInterfaceReaderModule {
     /// Returns `None` if the handle does not point to a `IGESGeom_ReadWriteModule` (or subclass).
     pub fn downcast_to_iges_geom_read_write_module(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleIGESGeomReadWriteModule>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_IGESGeom_ReadWriteModule>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKXSBase::HandleInterfaceReaderModule_downcast_to_HandleIGESGeomReadWriteModule(self as *const Self)
+            crate::ffi_extern_TKXSBase::Handle_Interface_ReaderModule_downcast_to_Handle_IGESGeom_ReadWriteModule(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -14017,9 +12635,9 @@ impl HandleInterfaceReaderModule {
     /// Returns `None` if the handle does not point to a `IGESGraph_ReadWriteModule` (or subclass).
     pub fn downcast_to_iges_graph_read_write_module(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleIGESGraphReadWriteModule>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_IGESGraph_ReadWriteModule>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKXSBase::HandleInterfaceReaderModule_downcast_to_HandleIGESGraphReadWriteModule(self as *const Self)
+            crate::ffi_extern_TKXSBase::Handle_Interface_ReaderModule_downcast_to_Handle_IGESGraph_ReadWriteModule(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -14033,9 +12651,9 @@ impl HandleInterfaceReaderModule {
     /// Returns `None` if the handle does not point to a `IGESSolid_ReadWriteModule` (or subclass).
     pub fn downcast_to_iges_solid_read_write_module(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleIGESSolidReadWriteModule>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_IGESSolid_ReadWriteModule>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKXSBase::HandleInterfaceReaderModule_downcast_to_HandleIGESSolidReadWriteModule(self as *const Self)
+            crate::ffi_extern_TKXSBase::Handle_Interface_ReaderModule_downcast_to_Handle_IGESSolid_ReadWriteModule(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -14049,9 +12667,9 @@ impl HandleInterfaceReaderModule {
     /// Returns `None` if the handle does not point to a `RWHeaderSection_ReadWriteModule` (or subclass).
     pub fn downcast_to_rw_header_section_read_write_module(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleRWHeaderSectionReadWriteModule>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_RWHeaderSection_ReadWriteModule>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKXSBase::HandleInterfaceReaderModule_downcast_to_HandleRWHeaderSectionReadWriteModule(self as *const Self)
+            crate::ffi_extern_TKXSBase::Handle_Interface_ReaderModule_downcast_to_Handle_RWHeaderSection_ReadWriteModule(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -14065,8 +12683,8 @@ impl HandleInterfaceReaderModule {
 // From Interface_ReportEntity.hxx
 // ========================
 
-/// **Source:** `Interface_ReportEntity.hxx`:52 - `Interface_ReportEntity`
-/// A ReportEntity is produced to aknowledge and memorize the
+/// **Source:** `Interface_ReportEntity.hxx`:49 - `Interface_ReportEntity`
+/// A ReportEntity is produced to acknowledge and memorize the
 /// binding between a Check and an Entity. The Check can bring
 /// Fails (+ Warnings if any), or only Warnings. If it is empty,
 /// the Report Entity is for an Unknown Entity.
@@ -14100,11 +12718,11 @@ unsafe impl crate::CppDeletable for ReportEntity {
 }
 
 impl ReportEntity {
-    /// **Source:** `Interface_ReportEntity.hxx`:58 - `Interface_ReportEntity::Interface_ReportEntity()`
+    /// **Source:** `Interface_ReportEntity.hxx`:55 - `Interface_ReportEntity::Interface_ReportEntity()`
     /// Creates a ReportEntity for an Unknown Entity : Check is empty,
     /// and Concerned equates Content (i.e. the Unknown Entity)
     pub fn new_handlestandardtransient(
-        unknown: &crate::ffi_types::HandleStandardTransient,
+        unknown: &crate::ffi_types::Handle_Standard_Transient,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -14115,25 +12733,25 @@ impl ReportEntity {
         }
     }
 
-    /// **Source:** `Interface_ReportEntity.hxx`:64 - `Interface_ReportEntity::Interface_ReportEntity()`
+    /// **Source:** `Interface_ReportEntity.hxx`:61 - `Interface_ReportEntity::Interface_ReportEntity()`
     /// Creates a ReportEntity with its features :
     /// - <acheck> is the Check to be memorised
     /// - <concerned> is the Entity to which the Check is bound
     /// Later, a Content can be set : it is required for an Error
     pub fn new_handleinterfacecheck_handlestandardtransient(
-        acheck: &crate::ffi_types::HandleInterfaceCheck,
-        concerned: &crate::ffi_types::HandleStandardTransient,
+        acheck: &crate::ffi_types::Handle_Interface_Check,
+        concerned: &crate::ffi_types::Handle_Standard_Transient,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKXSBase::Interface_ReportEntity_ctor_handleinterfacecheck_handlestandardtransient(acheck, concerned)))
         }
     }
 
-    /// **Source:** `Interface_ReportEntity.hxx`:70 - `Interface_ReportEntity::SetContent()`
+    /// **Source:** `Interface_ReportEntity.hxx`:67 - `Interface_ReportEntity::SetContent()`
     /// Sets a Content : it brings non interpreted data which belong
     /// to the Concerned Entity. It can be empty then loaded later.
     /// Remark that for an Unknown Entity, Content is set by Create.
-    pub fn set_content(&mut self, content: &crate::ffi_types::HandleStandardTransient) {
+    pub fn set_content(&mut self, content: &crate::ffi_types::Handle_Standard_Transient) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_ReportEntity_set_content(
                 self as *mut Self,
@@ -14142,9 +12760,9 @@ impl ReportEntity {
         })
     }
 
-    /// **Source:** `Interface_ReportEntity.hxx`:73 - `Interface_ReportEntity::Check()`
+    /// **Source:** `Interface_ReportEntity.hxx`:70 - `Interface_ReportEntity::Check()`
     /// Returns the stored Check
-    pub fn check(&self) -> &crate::ffi_types::HandleInterfaceCheck {
+    pub fn check(&self) -> &crate::ffi_types::Handle_Interface_Check {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKXSBase::Interface_ReportEntity_check(
                 self as *const Self,
@@ -14152,9 +12770,9 @@ impl ReportEntity {
         }
     }
 
-    /// **Source:** `Interface_ReportEntity.hxx`:76 - `Interface_ReportEntity::CCheck()`
+    /// **Source:** `Interface_ReportEntity.hxx`:73 - `Interface_ReportEntity::CCheck()`
     /// Returns the stored Check in order to change it
-    pub fn c_check(&mut self) -> &mut crate::ffi_types::HandleInterfaceCheck {
+    pub fn c_check(&mut self) -> &mut crate::ffi_types::Handle_Interface_Check {
         unsafe {
             &mut *(crate::check_result(crate::ffi_extern_TKXSBase::Interface_ReportEntity_c_check(
                 self as *mut Self,
@@ -14162,10 +12780,10 @@ impl ReportEntity {
         }
     }
 
-    /// **Source:** `Interface_ReportEntity.hxx`:80 - `Interface_ReportEntity::Concerned()`
+    /// **Source:** `Interface_ReportEntity.hxx`:77 - `Interface_ReportEntity::Concerned()`
     /// Returns the stored Concerned Entity. It equates the Content
     /// in the case of an Unknown Entity
-    pub fn concerned(&self) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    pub fn concerned(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKXSBase::Interface_ReportEntity_concerned(self as *const Self),
@@ -14173,7 +12791,7 @@ impl ReportEntity {
         }
     }
 
-    /// **Source:** `Interface_ReportEntity.hxx`:83 - `Interface_ReportEntity::HasContent()`
+    /// **Source:** `Interface_ReportEntity.hxx`:80 - `Interface_ReportEntity::HasContent()`
     /// Returns True if a Content is stored (it can equate Concerned)
     pub fn has_content(&self) -> bool {
         crate::check_result(unsafe {
@@ -14181,7 +12799,7 @@ impl ReportEntity {
         })
     }
 
-    /// **Source:** `Interface_ReportEntity.hxx`:88 - `Interface_ReportEntity::HasNewContent()`
+    /// **Source:** `Interface_ReportEntity.hxx`:85 - `Interface_ReportEntity::HasNewContent()`
     /// Returns True if a Content is stored AND differs from Concerned
     /// (i.e. redefines content) : used when Concerned could not be
     /// loaded
@@ -14191,11 +12809,11 @@ impl ReportEntity {
         })
     }
 
-    /// **Source:** `Interface_ReportEntity.hxx`:93 - `Interface_ReportEntity::Content()`
+    /// **Source:** `Interface_ReportEntity.hxx`:90 - `Interface_ReportEntity::Content()`
     /// Returns the stored Content, or a Null Handle
     /// Remark that it must be an "Unknown Entity" suitable for
     /// the norm of the containing Model
-    pub fn content(&self) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    pub fn content(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKXSBase::Interface_ReportEntity_content(self as *const Self),
@@ -14203,7 +12821,7 @@ impl ReportEntity {
         }
     }
 
-    /// **Source:** `Interface_ReportEntity.hxx`:97 - `Interface_ReportEntity::IsError()`
+    /// **Source:** `Interface_ReportEntity.hxx`:94 - `Interface_ReportEntity::IsError()`
     /// Returns True for an Error Entity, i.e. if the Check
     /// brings at least one Fail message
     pub fn is_error(&self) -> bool {
@@ -14212,7 +12830,7 @@ impl ReportEntity {
         })
     }
 
-    /// **Source:** `Interface_ReportEntity.hxx`:101 - `Interface_ReportEntity::IsUnknown()`
+    /// **Source:** `Interface_ReportEntity.hxx`:98 - `Interface_ReportEntity::IsUnknown()`
     /// Returns True for an Unknown Entity, i,e. if the Check
     /// is empty and Concerned equates Content
     pub fn is_unknown(&self) -> bool {
@@ -14221,8 +12839,8 @@ impl ReportEntity {
         })
     }
 
-    /// **Source:** `Interface_ReportEntity.hxx`:103 - `Interface_ReportEntity::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `Interface_ReportEntity.hxx`:100 - `Interface_ReportEntity::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKXSBase::Interface_ReportEntity_dynamic_type(
@@ -14232,7 +12850,7 @@ impl ReportEntity {
         }
     }
 
-    /// **Source:** `Interface_ReportEntity.hxx`:103 - `Interface_ReportEntity::get_type_name()`
+    /// **Source:** `Interface_ReportEntity.hxx`:100 - `Interface_ReportEntity::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -14243,8 +12861,8 @@ impl ReportEntity {
         .into_owned()
     }
 
-    /// **Source:** `Interface_ReportEntity.hxx`:103 - `Interface_ReportEntity::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    /// **Source:** `Interface_ReportEntity.hxx`:100 - `Interface_ReportEntity::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKXSBase::Interface_ReportEntity_get_type_descriptor(),
@@ -14277,7 +12895,7 @@ impl ReportEntity {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleInterfaceReportEntity> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Interface_ReportEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKXSBase::Interface_ReportEntity_to_handle(obj.into_raw()),
@@ -14285,8 +12903,8 @@ impl ReportEntity {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_ReportEntity_inherited_IsInstance(
                 self as *const Self,
@@ -14295,8 +12913,8 @@ impl ReportEntity {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_ReportEntity_inherited_IsKind(
                 self as *const Self,
@@ -14305,7 +12923,7 @@ impl ReportEntity {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -14321,7 +12939,7 @@ impl ReportEntity {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_ReportEntity_inherited_GetRefCount(
@@ -14330,7 +12948,7 @@ impl ReportEntity {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_ReportEntity_inherited_IncrementRefCounter(
@@ -14339,7 +12957,7 @@ impl ReportEntity {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_ReportEntity_inherited_DecrementRefCounter(
@@ -14348,7 +12966,7 @@ impl ReportEntity {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_ReportEntity_inherited_Delete(self as *const Self)
@@ -14356,36 +12974,38 @@ impl ReportEntity {
     }
 }
 
-pub use crate::ffi_types::HandleInterfaceReportEntity;
+pub use crate::ffi_types::Handle_Interface_ReportEntity;
 
-unsafe impl crate::CppDeletable for HandleInterfaceReportEntity {
+unsafe impl crate::CppDeletable for Handle_Interface_ReportEntity {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKXSBase::HandleInterfaceReportEntity_destructor(ptr);
+            crate::ffi_extern_TKXSBase::Handle_Interface_ReportEntity_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleInterfaceReportEntity {
+unsafe impl crate::CppCopyable for Handle_Interface_ReportEntity {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
         unsafe {
-            crate::check_result(crate::ffi_extern_TKXSBase::HandleInterfaceReportEntity_clone(ptr))
+            crate::check_result(crate::ffi_extern_TKXSBase::Handle_Interface_ReportEntity_clone(
+                ptr,
+            ))
         }
     }
 }
 
-impl HandleInterfaceReportEntity {
+impl Handle_Interface_ReportEntity {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
         unsafe {
-            crate::ffi_extern_TKXSBase::HandleInterfaceReportEntity_is_null(self as *const Self)
+            crate::ffi_extern_TKXSBase::Handle_Interface_ReportEntity_is_null(self as *const Self)
         }
     }
 
     /// Dereference this Handle to access the underlying Interface_ReportEntity
     pub fn get(&self) -> &crate::ffi_types::Interface_ReportEntity {
         unsafe {
-            &*crate::check_result(crate::ffi_extern_TKXSBase::HandleInterfaceReportEntity_get(
+            &*crate::check_result(crate::ffi_extern_TKXSBase::Handle_Interface_ReportEntity_get(
                 self as *const Self,
             ))
         }
@@ -14395,7 +13015,9 @@ impl HandleInterfaceReportEntity {
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::Interface_ReportEntity {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi_extern_TKXSBase::HandleInterfaceReportEntity_get_mut(self as *mut Self),
+                crate::ffi_extern_TKXSBase::Handle_Interface_ReportEntity_get_mut(
+                    self as *mut Self,
+                ),
             )
         }
     }
@@ -14403,13 +13025,9 @@ impl HandleInterfaceReportEntity {
     /// Upcast Handle<Interface_ReportEntity> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKXSBase::HandleInterfaceReportEntity_to_HandleStandardTransient(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKXSBase::Handle_Interface_ReportEntity_to_Handle_Standard_Transient(self as *const Self)))
         }
     }
 }
@@ -14516,13 +13134,13 @@ impl STAT {
     /// when starting
     pub fn internals(
         &self,
-        tit: &mut crate::ffi_types::HandleTCollectionHAsciiString,
+        tit: &mut crate::ffi_types::Handle_TCollection_HAsciiString,
         total: &mut f64,
-        phn: &mut crate::ffi_types::HandleTColStdHSequenceOfAsciiString,
-        phw: &mut crate::ffi_types::HandleTColStdHSequenceOfReal,
-        phdeb: &mut crate::ffi_types::HandleTColStdHSequenceOfInteger,
-        phfin: &mut crate::ffi_types::HandleTColStdHSequenceOfInteger,
-        stw: &mut crate::ffi_types::HandleTColStdHSequenceOfReal,
+        phn: &mut crate::ffi_types::Handle_NCollection_HSequence_TCollection_AsciiString,
+        phw: &mut crate::ffi_types::Handle_NCollection_HSequence_double,
+        phdeb: &mut crate::ffi_types::Handle_NCollection_HSequence_int,
+        phfin: &mut crate::ffi_types::Handle_NCollection_HSequence_int,
+        stw: &mut crate::ffi_types::Handle_NCollection_HSequence_double,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_STAT_internals(
@@ -14581,7 +13199,7 @@ impl STAT {
         })
     }
 
-    /// **Source:** `Interface_STAT.hxx`:131 - `Interface_STAT::Phase()`
+    /// **Source:** `Interface_STAT.hxx`:129 - `Interface_STAT::Phase()`
     /// Returns description of a phase, given its rank
     /// (n0 for first step, count of steps, default gives one;
     /// weight, name)
@@ -14605,7 +13223,7 @@ impl STAT {
         })
     }
 
-    /// **Source:** `Interface_STAT.hxx`:141 - `Interface_STAT::Step()`
+    /// **Source:** `Interface_STAT.hxx`:139 - `Interface_STAT::Step()`
     /// Returns weight of a Step, related to the cumul given for the
     /// phase.
     /// <num> is given by <n0step> + i, i between 1 and <nbsteps>
@@ -14616,7 +13234,7 @@ impl STAT {
         })
     }
 
-    /// **Source:** `Interface_STAT.hxx`:149 - `Interface_STAT::Start()`
+    /// **Source:** `Interface_STAT.hxx`:147 - `Interface_STAT::Start()`
     /// Starts a STAT on its first phase (or its default one)
     /// <items> gives the total count of items, <cycles> the count of
     /// cycles
@@ -14629,7 +13247,7 @@ impl STAT {
         })
     }
 
-    /// **Source:** `Interface_STAT.hxx`:155 - `Interface_STAT::StartCount()`
+    /// **Source:** `Interface_STAT.hxx`:153 - `Interface_STAT::StartCount()`
     /// Starts a default STAT, with no phase, no step, ready to just
     /// count items.
     /// <items> gives the total count of items
@@ -14641,7 +13259,7 @@ impl STAT {
         })
     }
 
-    /// **Source:** `Interface_STAT.hxx`:164 - `Interface_STAT::NextPhase()`
+    /// **Source:** `Interface_STAT.hxx`:161 - `Interface_STAT::NextPhase()`
     /// Commands to resume the preceding phase and start a new one
     /// <items> and <cycles> as for Start, but for this new phase
     /// Ignored if count of phases is already passed
@@ -14654,7 +13272,7 @@ impl STAT {
         })
     }
 
-    /// **Source:** `Interface_STAT.hxx`:170 - `Interface_STAT::SetPhase()`
+    /// **Source:** `Interface_STAT.hxx`:166 - `Interface_STAT::SetPhase()`
     /// Changes the parameters of the phase to start
     /// To be used before first counting (i.e. just after NextPhase)
     /// Can be used by an operator which has to reajust counts on run
@@ -14664,7 +13282,7 @@ impl STAT {
         })
     }
 
-    /// **Source:** `Interface_STAT.hxx`:179 - `Interface_STAT::NextCycle()`
+    /// **Source:** `Interface_STAT.hxx`:174 - `Interface_STAT::NextCycle()`
     /// Commands to resume the preceding cycle and start a new one,
     /// with a count of items
     /// Ignored if count of cycles is already passed
@@ -14677,7 +13295,7 @@ impl STAT {
         })
     }
 
-    /// **Source:** `Interface_STAT.hxx`:184 - `Interface_STAT::NextStep()`
+    /// **Source:** `Interface_STAT.hxx`:179 - `Interface_STAT::NextStep()`
     /// Commands to resume the preceding step of the cycle
     /// Ignored if count of steps is already passed
     /// NextItem can be called for this step, NextStep passes to next
@@ -14685,7 +13303,7 @@ impl STAT {
         crate::check_void_result(unsafe { crate::ffi_extern_TKXSBase::Interface_STAT_next_step() })
     }
 
-    /// **Source:** `Interface_STAT.hxx`:190 - `Interface_STAT::NextItem()`
+    /// **Source:** `Interface_STAT.hxx`:185 - `Interface_STAT::NextItem()`
     /// Commands to add an item in the current step of the current
     /// cycle of the current phase
     /// By default, one item per call, can be overpassed
@@ -14696,14 +13314,14 @@ impl STAT {
         })
     }
 
-    /// **Source:** `Interface_STAT.hxx`:194 - `Interface_STAT::End()`
+    /// **Source:** `Interface_STAT.hxx`:189 - `Interface_STAT::End()`
     /// Commands to declare the process ended (hence, advancement is
     /// forced to 100 %)
     pub fn end() {
         crate::check_void_result(unsafe { crate::ffi_extern_TKXSBase::Interface_STAT_end() })
     }
 
-    /// **Source:** `Interface_STAT.hxx`:199 - `Interface_STAT::Where()`
+    /// **Source:** `Interface_STAT.hxx`:194 - `Interface_STAT::Where()`
     /// Returns an identification of the STAT :
     /// <phase> True (D) : the name of the current phase
     /// <phase> False : the title of the current STAT
@@ -14717,7 +13335,7 @@ impl STAT {
         .into_owned()
     }
 
-    /// **Source:** `Interface_STAT.hxx`:204 - `Interface_STAT::Percent()`
+    /// **Source:** `Interface_STAT.hxx`:199 - `Interface_STAT::Percent()`
     /// Returns the advancement as a percentage :
     /// <phase> True : inside the current phase
     /// <phase> False (D) : relative to the whole process
@@ -14730,7 +13348,7 @@ impl STAT {
 // From Interface_ShareFlags.hxx
 // ========================
 
-/// **Source:** `Interface_ShareFlags.hxx`:38 - `Interface_ShareFlags`
+/// **Source:** `Interface_ShareFlags.hxx`:40 - `Interface_ShareFlags`
 /// This class only says for each Entity of a Model, if it is
 /// Shared or not by one or more other(s) of this Model
 /// It uses the General Service "Shared".
@@ -14745,12 +13363,12 @@ unsafe impl crate::CppDeletable for ShareFlags {
 }
 
 impl ShareFlags {
-    /// **Source:** `Interface_ShareFlags.hxx`:46 - `Interface_ShareFlags::Interface_ShareFlags()`
+    /// **Source:** `Interface_ShareFlags.hxx`:48 - `Interface_ShareFlags::Interface_ShareFlags()`
     /// Creates a ShareFlags from a Model and builds required data
     /// (flags) by calling the General Service Library given as
     /// argument <lib>
     pub fn new_handleinterfaceinterfacemodel_generallib(
-        amodel: &crate::ffi_types::HandleInterfaceInterfaceModel,
+        amodel: &crate::ffi_types::Handle_Interface_InterfaceModel,
         lib: &GeneralLib,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -14758,32 +13376,32 @@ impl ShareFlags {
         }
     }
 
-    /// **Source:** `Interface_ShareFlags.hxx`:50 - `Interface_ShareFlags::Interface_ShareFlags()`
+    /// **Source:** `Interface_ShareFlags.hxx`:52 - `Interface_ShareFlags::Interface_ShareFlags()`
     /// Same as above, but GeneralLib is detained by a GTool
     pub fn new_handleinterfaceinterfacemodel_handleinterfacegtool(
-        amodel: &crate::ffi_types::HandleInterfaceInterfaceModel,
-        gtool: &crate::ffi_types::HandleInterfaceGTool,
+        amodel: &crate::ffi_types::Handle_Interface_InterfaceModel,
+        gtool: &crate::ffi_types::Handle_Interface_GTool,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKXSBase::Interface_ShareFlags_ctor_handleinterfaceinterfacemodel_handleinterfacegtool(amodel, gtool)))
         }
     }
 
-    /// **Source:** `Interface_ShareFlags.hxx`:54 - `Interface_ShareFlags::Interface_ShareFlags()`
+    /// **Source:** `Interface_ShareFlags.hxx`:56 - `Interface_ShareFlags::Interface_ShareFlags()`
     /// Same as above, but GeneralLib is defined through a Protocol
     pub fn new_handleinterfaceinterfacemodel_handleinterfaceprotocol(
-        amodel: &crate::ffi_types::HandleInterfaceInterfaceModel,
-        protocol: &crate::ffi_types::HandleInterfaceProtocol,
+        amodel: &crate::ffi_types::Handle_Interface_InterfaceModel,
+        protocol: &crate::ffi_types::Handle_Interface_Protocol,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKXSBase::Interface_ShareFlags_ctor_handleinterfaceinterfacemodel_handleinterfaceprotocol(amodel, protocol)))
         }
     }
 
-    /// **Source:** `Interface_ShareFlags.hxx`:58 - `Interface_ShareFlags::Interface_ShareFlags()`
+    /// **Source:** `Interface_ShareFlags.hxx`:60 - `Interface_ShareFlags::Interface_ShareFlags()`
     /// Same as above, but works with the GTool of the Model
     pub fn new_handleinterfaceinterfacemodel(
-        amodel: &crate::ffi_types::HandleInterfaceInterfaceModel,
+        amodel: &crate::ffi_types::Handle_Interface_InterfaceModel,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -14794,7 +13412,7 @@ impl ShareFlags {
         }
     }
 
-    /// **Source:** `Interface_ShareFlags.hxx`:62 - `Interface_ShareFlags::Interface_ShareFlags()`
+    /// **Source:** `Interface_ShareFlags.hxx`:64 - `Interface_ShareFlags::Interface_ShareFlags()`
     /// Creates a ShareFlags by querying information from a Graph
     /// (remark that Graph also has a method IsShared)
     pub fn new_graph(agraph: &Graph) -> crate::OwnedPtr<Self> {
@@ -14805,9 +13423,9 @@ impl ShareFlags {
         }
     }
 
-    /// **Source:** `Interface_ShareFlags.hxx`:65 - `Interface_ShareFlags::Model()`
+    /// **Source:** `Interface_ShareFlags.hxx`:67 - `Interface_ShareFlags::Model()`
     /// Returns the Model used for the evaluation
-    pub fn model(&self) -> crate::OwnedPtr<crate::ffi_types::HandleInterfaceInterfaceModel> {
+    pub fn model(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_Interface_InterfaceModel> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKXSBase::Interface_ShareFlags_model(self as *const Self),
@@ -14815,16 +13433,16 @@ impl ShareFlags {
         }
     }
 
-    /// **Source:** `Interface_ShareFlags.hxx`:69 - `Interface_ShareFlags::IsShared()`
+    /// **Source:** `Interface_ShareFlags.hxx`:71 - `Interface_ShareFlags::IsShared()`
     /// Returns True if <ent> is Shared by one or more other
     /// Entity(ies) of the Model
-    pub fn is_shared(&self, ent: &crate::ffi_types::HandleStandardTransient) -> bool {
+    pub fn is_shared(&self, ent: &crate::ffi_types::Handle_Standard_Transient) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_ShareFlags_is_shared(self as *const Self, ent)
         })
     }
 
-    /// **Source:** `Interface_ShareFlags.hxx`:72 - `Interface_ShareFlags::RootEntities()`
+    /// **Source:** `Interface_ShareFlags.hxx`:74 - `Interface_ShareFlags::RootEntities()`
     /// Returns the Entities which are not Shared (see their flags)
     pub fn root_entities(&self) -> crate::OwnedPtr<EntityIterator> {
         unsafe {
@@ -14834,7 +13452,7 @@ impl ShareFlags {
         }
     }
 
-    /// **Source:** `Interface_ShareFlags.hxx`:75 - `Interface_ShareFlags::NbRoots()`
+    /// **Source:** `Interface_ShareFlags.hxx`:77 - `Interface_ShareFlags::NbRoots()`
     /// Returns the count of root entities
     pub fn nb_roots(&self) -> i32 {
         crate::check_result(unsafe {
@@ -14842,10 +13460,10 @@ impl ShareFlags {
         })
     }
 
-    /// **Source:** `Interface_ShareFlags.hxx`:79 - `Interface_ShareFlags::Root()`
+    /// **Source:** `Interface_ShareFlags.hxx`:81 - `Interface_ShareFlags::Root()`
     /// Returns a root entity according its rank in the list of roots
     /// By default, it returns the first one
-    pub fn root(&self, num: i32) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    pub fn root(&self, num: i32) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKXSBase::Interface_ShareFlags_root(self as *const Self, num),
@@ -14881,7 +13499,7 @@ impl ShareTool {
     /// by calling the General Service Library and Modules
     /// (GeneralLib given as an argument)
     pub fn new_handleinterfaceinterfacemodel_generallib(
-        amodel: &crate::ffi_types::HandleInterfaceInterfaceModel,
+        amodel: &crate::ffi_types::Handle_Interface_InterfaceModel,
         lib: &GeneralLib,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -14892,8 +13510,8 @@ impl ShareTool {
     /// **Source:** `Interface_ShareTool.hxx`:48 - `Interface_ShareTool::Interface_ShareTool()`
     /// Same a above, but GeneralLib is detained by a GTool
     pub fn new_handleinterfaceinterfacemodel_handleinterfacegtool(
-        amodel: &crate::ffi_types::HandleInterfaceInterfaceModel,
-        gtool: &crate::ffi_types::HandleInterfaceGTool,
+        amodel: &crate::ffi_types::Handle_Interface_InterfaceModel,
+        gtool: &crate::ffi_types::Handle_Interface_GTool,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKXSBase::Interface_ShareTool_ctor_handleinterfaceinterfacemodel_handleinterfacegtool(amodel, gtool)))
@@ -14904,8 +13522,8 @@ impl ShareTool {
     /// Same a above, but GeneralLib is defined through a Protocol
     /// Protocol is used to build the working library
     pub fn new_handleinterfaceinterfacemodel_handleinterfaceprotocol(
-        amodel: &crate::ffi_types::HandleInterfaceInterfaceModel,
-        protocol: &crate::ffi_types::HandleInterfaceProtocol,
+        amodel: &crate::ffi_types::Handle_Interface_InterfaceModel,
+        protocol: &crate::ffi_types::Handle_Interface_Protocol,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKXSBase::Interface_ShareTool_ctor_handleinterfaceinterfacemodel_handleinterfaceprotocol(amodel, protocol)))
@@ -14915,7 +13533,7 @@ impl ShareTool {
     /// **Source:** `Interface_ShareTool.hxx`:57 - `Interface_ShareTool::Interface_ShareTool()`
     /// Same as above, but works with the GTool of the Model
     pub fn new_handleinterfaceinterfacemodel(
-        amodel: &crate::ffi_types::HandleInterfaceInterfaceModel,
+        amodel: &crate::ffi_types::Handle_Interface_InterfaceModel,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -14941,7 +13559,7 @@ impl ShareTool {
     /// Completes the Graph by Adding Implied References. Hence, they
     /// are considered as Sharing References in all the other queries
     pub fn new_handleinterfacehgraph(
-        ahgraph: &crate::ffi_types::HandleInterfaceHGraph,
+        ahgraph: &crate::ffi_types::Handle_Interface_HGraph,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -14952,7 +13570,7 @@ impl ShareTool {
 
     /// **Source:** `Interface_ShareTool.hxx`:68 - `Interface_ShareTool::Model()`
     /// Returns the Model used for Creation (directly or for Graph)
-    pub fn model(&self) -> crate::OwnedPtr<crate::ffi_types::HandleInterfaceInterfaceModel> {
+    pub fn model(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_Interface_InterfaceModel> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKXSBase::Interface_ShareTool_model(self as *const Self),
@@ -14984,17 +13602,17 @@ impl ShareTool {
 
     /// **Source:** `Interface_ShareTool.hxx`:79 - `Interface_ShareTool::IsShared()`
     /// Returns True if <ent> is Shared by other Entities in the Model
-    pub fn is_shared(&self, ent: &crate::ffi_types::HandleStandardTransient) -> bool {
+    pub fn is_shared(&self, ent: &crate::ffi_types::Handle_Standard_Transient) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_ShareTool_is_shared(self as *const Self, ent)
         })
     }
 
-    /// **Source:** `Interface_ShareTool.hxx`:82 - `Interface_ShareTool::Shareds()`
+    /// **Source:** `Interface_ShareTool.hxx`:83 - `Interface_ShareTool::Shareds()`
     /// Returns the List of Entities Shared by a given Entity <ent>
     pub fn shareds(
         &self,
-        ent: &crate::ffi_types::HandleStandardTransient,
+        ent: &crate::ffi_types::Handle_Standard_Transient,
     ) -> crate::OwnedPtr<EntityIterator> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -15003,11 +13621,11 @@ impl ShareTool {
         }
     }
 
-    /// **Source:** `Interface_ShareTool.hxx`:85 - `Interface_ShareTool::Sharings()`
+    /// **Source:** `Interface_ShareTool.hxx`:87 - `Interface_ShareTool::Sharings()`
     /// Returns the List of Entities Sharing a given Entity <ent>
     pub fn sharings(
         &self,
-        ent: &crate::ffi_types::HandleStandardTransient,
+        ent: &crate::ffi_types::Handle_Standard_Transient,
     ) -> crate::OwnedPtr<EntityIterator> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -15016,13 +13634,13 @@ impl ShareTool {
         }
     }
 
-    /// **Source:** `Interface_ShareTool.hxx`:89 - `Interface_ShareTool::NbTypedSharings()`
+    /// **Source:** `Interface_ShareTool.hxx`:91 - `Interface_ShareTool::NbTypedSharings()`
     /// Returns the count of Sharing Entities of an Entity, which
     /// are Kind of a given Type
     pub fn nb_typed_sharings(
         &self,
-        ent: &crate::ffi_types::HandleStandardTransient,
-        atype: &crate::ffi_types::HandleStandardType,
+        ent: &crate::ffi_types::Handle_Standard_Transient,
+        atype: &crate::ffi_types::Handle_Standard_Type,
     ) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_ShareTool_nb_typed_sharings(
@@ -15033,15 +13651,15 @@ impl ShareTool {
         })
     }
 
-    /// **Source:** `Interface_ShareTool.hxx`:95 - `Interface_ShareTool::TypedSharing()`
+    /// **Source:** `Interface_ShareTool.hxx`:97 - `Interface_ShareTool::TypedSharing()`
     /// Returns the Sharing Entity of an Entity, which is Kind of a
     /// given Type. Allows to access a Sharing Entity of a given type
     /// when there is one and only one (current case)
     pub fn typed_sharing(
         &self,
-        ent: &crate::ffi_types::HandleStandardTransient,
-        atype: &crate::ffi_types::HandleStandardType,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+        ent: &crate::ffi_types::Handle_Standard_Transient,
+        atype: &crate::ffi_types::Handle_Standard_Type,
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKXSBase::Interface_ShareTool_typed_sharing(
@@ -15053,7 +13671,7 @@ impl ShareTool {
         }
     }
 
-    /// **Source:** `Interface_ShareTool.hxx`:106 - `Interface_ShareTool::All()`
+    /// **Source:** `Interface_ShareTool.hxx`:108 - `Interface_ShareTool::All()`
     /// Returns the complete list of entities shared by <ent> at any
     /// level, including <ent> itself
     /// If <ent> is the Model, considers the concatenation of
@@ -15063,7 +13681,7 @@ impl ShareTool {
     /// the lower level entities are at end
     pub fn all(
         &self,
-        ent: &crate::ffi_types::HandleStandardTransient,
+        ent: &crate::ffi_types::Handle_Standard_Transient,
         rootlast: bool,
     ) -> crate::OwnedPtr<EntityIterator> {
         unsafe {
@@ -15077,7 +13695,7 @@ impl ShareTool {
         }
     }
 
-    /// **Source:** `Interface_ShareTool.hxx`:111 - `Interface_ShareTool::Print()`
+    /// **Source:** `Interface_ShareTool.hxx`:113 - `Interface_ShareTool::Print()`
     /// Utility method which Prints the content of an iterator
     /// (by their Numbers)
     pub fn print(&self, iter: &EntityIterator, S: &mut crate::ffi_types::Standard_OStream) {
@@ -15091,7 +13709,7 @@ impl ShareTool {
 // From Interface_SignLabel.hxx
 // ========================
 
-/// **Source:** `Interface_SignLabel.hxx`:31 - `Interface_SignLabel`
+/// **Source:** `Interface_SignLabel.hxx`:28 - `Interface_SignLabel`
 /// Signature to give the Label from the Model
 pub use crate::ffi_types::Interface_SignLabel as SignLabel;
 
@@ -15104,7 +13722,7 @@ unsafe impl crate::CppDeletable for SignLabel {
 }
 
 impl SignLabel {
-    /// **Source:** `Interface_SignLabel.hxx`:35 - `Interface_SignLabel::Interface_SignLabel()`
+    /// **Source:** `Interface_SignLabel.hxx`:32 - `Interface_SignLabel::Interface_SignLabel()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -15113,7 +13731,7 @@ impl SignLabel {
         }
     }
 
-    /// **Source:** `Interface_SignLabel.hxx`:38 - `Interface_SignLabel::Name()`
+    /// **Source:** `Interface_SignLabel.hxx`:35 - `Interface_SignLabel::Name()`
     /// Returns "Entity Label"
     pub fn name(&self) -> std::string::String {
         unsafe {
@@ -15125,13 +13743,13 @@ impl SignLabel {
         .into_owned()
     }
 
-    /// **Source:** `Interface_SignLabel.hxx`:43 - `Interface_SignLabel::Text()`
+    /// **Source:** `Interface_SignLabel.hxx`:40 - `Interface_SignLabel::Text()`
     /// Considers context as an InterfaceModel and returns the Label
     /// computed by it
     pub fn text(
         &self,
-        ent: &crate::ffi_types::HandleStandardTransient,
-        context: &crate::ffi_types::HandleStandardTransient,
+        ent: &crate::ffi_types::Handle_Standard_Transient,
+        context: &crate::ffi_types::Handle_Standard_Transient,
     ) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -15144,8 +13762,8 @@ impl SignLabel {
         }
     }
 
-    /// **Source:** `Interface_SignLabel.hxx`:46 - `Interface_SignLabel::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `Interface_SignLabel.hxx`:43 - `Interface_SignLabel::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKXSBase::Interface_SignLabel_dynamic_type(
                 self as *const Self,
@@ -15153,7 +13771,7 @@ impl SignLabel {
         }
     }
 
-    /// **Source:** `Interface_SignLabel.hxx`:46 - `Interface_SignLabel::get_type_name()`
+    /// **Source:** `Interface_SignLabel.hxx`:43 - `Interface_SignLabel::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -15164,8 +13782,8 @@ impl SignLabel {
         .into_owned()
     }
 
-    /// **Source:** `Interface_SignLabel.hxx`:46 - `Interface_SignLabel::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    /// **Source:** `Interface_SignLabel.hxx`:43 - `Interface_SignLabel::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKXSBase::Interface_SignLabel_get_type_descriptor(),
@@ -15220,7 +13838,7 @@ impl SignLabel {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleInterfaceSignLabel> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Interface_SignLabel> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKXSBase::Interface_SignLabel_to_handle(obj.into_raw()),
@@ -15228,10 +13846,10 @@ impl SignLabel {
         }
     }
 
-    /// Inherited: **Source:** `MoniTool_SignText.hxx`:46 - `MoniTool_SignText::TextAlone()`
+    /// Inherited: **Source:** `MoniTool_SignText.hxx`:43 - `MoniTool_SignText::TextAlone()`
     pub fn text_alone(
         &self,
-        ent: &crate::ffi_types::HandleStandardTransient,
+        ent: &crate::ffi_types::Handle_Standard_Transient,
     ) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -15243,8 +13861,8 @@ impl SignLabel {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_SignLabel_inherited_IsInstance(
                 self as *const Self,
@@ -15253,8 +13871,8 @@ impl SignLabel {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_SignLabel_inherited_IsKind(
                 self as *const Self,
@@ -15263,7 +13881,7 @@ impl SignLabel {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -15277,7 +13895,7 @@ impl SignLabel {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_SignLabel_inherited_GetRefCount(
@@ -15286,7 +13904,7 @@ impl SignLabel {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_SignLabel_inherited_IncrementRefCounter(
@@ -15295,7 +13913,7 @@ impl SignLabel {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_SignLabel_inherited_DecrementRefCounter(
@@ -15304,7 +13922,7 @@ impl SignLabel {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_SignLabel_inherited_Delete(self as *const Self)
@@ -15312,34 +13930,36 @@ impl SignLabel {
     }
 }
 
-pub use crate::ffi_types::HandleInterfaceSignLabel;
+pub use crate::ffi_types::Handle_Interface_SignLabel;
 
-unsafe impl crate::CppDeletable for HandleInterfaceSignLabel {
+unsafe impl crate::CppDeletable for Handle_Interface_SignLabel {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKXSBase::HandleInterfaceSignLabel_destructor(ptr);
+            crate::ffi_extern_TKXSBase::Handle_Interface_SignLabel_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleInterfaceSignLabel {
+unsafe impl crate::CppCopyable for Handle_Interface_SignLabel {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
         unsafe {
-            crate::check_result(crate::ffi_extern_TKXSBase::HandleInterfaceSignLabel_clone(ptr))
+            crate::check_result(crate::ffi_extern_TKXSBase::Handle_Interface_SignLabel_clone(ptr))
         }
     }
 }
 
-impl HandleInterfaceSignLabel {
+impl Handle_Interface_SignLabel {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
-        unsafe { crate::ffi_extern_TKXSBase::HandleInterfaceSignLabel_is_null(self as *const Self) }
+        unsafe {
+            crate::ffi_extern_TKXSBase::Handle_Interface_SignLabel_is_null(self as *const Self)
+        }
     }
 
     /// Dereference this Handle to access the underlying Interface_SignLabel
     pub fn get(&self) -> &crate::ffi_types::Interface_SignLabel {
         unsafe {
-            &*crate::check_result(crate::ffi_extern_TKXSBase::HandleInterfaceSignLabel_get(
+            &*crate::check_result(crate::ffi_extern_TKXSBase::Handle_Interface_SignLabel_get(
                 self as *const Self,
             ))
         }
@@ -15348,17 +13968,19 @@ impl HandleInterfaceSignLabel {
     /// Dereference this Handle to mutably access the underlying Interface_SignLabel
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::Interface_SignLabel {
         unsafe {
-            &mut *crate::check_result(crate::ffi_extern_TKXSBase::HandleInterfaceSignLabel_get_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKXSBase::Handle_Interface_SignLabel_get_mut(self as *mut Self),
+            )
         }
     }
 
     /// Upcast Handle<Interface_SignLabel> to Handle<MoniTool_SignText>
-    pub fn to_handle_sign_text(&self) -> crate::OwnedPtr<crate::ffi_types::HandleMoniToolSignText> {
+    pub fn to_handle_sign_text(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_MoniTool_SignText> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKXSBase::HandleInterfaceSignLabel_to_HandleMoniToolSignText(
+                crate::ffi_extern_TKXSBase::Handle_Interface_SignLabel_to_Handle_MoniTool_SignText(
                     self as *const Self,
                 ),
             ))
@@ -15368,10 +13990,10 @@ impl HandleInterfaceSignLabel {
     /// Upcast Handle<Interface_SignLabel> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKXSBase::HandleInterfaceSignLabel_to_HandleStandardTransient(
+                crate::ffi_extern_TKXSBase::Handle_Interface_SignLabel_to_Handle_Standard_Transient(
                     self as *const Self,
                 ),
             ))
@@ -15383,7 +14005,7 @@ impl HandleInterfaceSignLabel {
 // From Interface_SignType.hxx
 // ========================
 
-/// **Source:** `Interface_SignType.hxx`:34 - `Interface_SignType`
+/// **Source:** `Interface_SignType.hxx`:31 - `Interface_SignType`
 /// Provides the basic service to get a type name, according
 /// to a norm
 /// It can be used for other classes (general signatures ...)
@@ -15398,14 +14020,14 @@ unsafe impl crate::CppDeletable for SignType {
 }
 
 impl SignType {
-    /// **Source:** `Interface_SignType.hxx`:42 - `Interface_SignType::Text()`
+    /// **Source:** `Interface_SignType.hxx`:39 - `Interface_SignType::Text()`
     /// Returns an identification of the Signature (a word), given at
     /// initialization time
     /// Specialised to consider context as an InterfaceModel
     pub fn text(
         &self,
-        ent: &crate::ffi_types::HandleStandardTransient,
-        context: &crate::ffi_types::HandleStandardTransient,
+        ent: &crate::ffi_types::Handle_Standard_Transient,
+        context: &crate::ffi_types::Handle_Standard_Transient,
     ) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -15418,15 +14040,15 @@ impl SignType {
         }
     }
 
-    /// **Source:** `Interface_SignType.hxx`:49 - `Interface_SignType::Value()`
+    /// **Source:** `Interface_SignType.hxx`:46 - `Interface_SignType::Value()`
     /// Returns the Signature for a Transient object. It is specific
     /// of each sub-class of Signature. For a Null Handle, it should
     /// provide ""
     /// It can work with the model which contains the entity
     pub fn value(
         &self,
-        ent: &crate::ffi_types::HandleStandardTransient,
-        model: &crate::ffi_types::HandleInterfaceInterfaceModel,
+        ent: &crate::ffi_types::Handle_Standard_Transient,
+        model: &crate::ffi_types::Handle_Interface_InterfaceModel,
     ) -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -15441,8 +14063,8 @@ impl SignType {
         .into_owned()
     }
 
-    /// **Source:** `Interface_SignType.hxx`:57 - `Interface_SignType::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `Interface_SignType.hxx`:54 - `Interface_SignType::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKXSBase::Interface_SignType_dynamic_type(
                 self as *const Self,
@@ -15450,7 +14072,7 @@ impl SignType {
         }
     }
 
-    /// **Source:** `Interface_SignType.hxx`:55 - `Interface_SignType::ClassName()`
+    /// **Source:** `Interface_SignType.hxx`:52 - `Interface_SignType::ClassName()`
     /// From a CDL Type Name, returns the Class part (package dropped)
     /// WARNING : buffered, to be immediately copied or printed
     pub fn class_name(typnam: &str) -> std::string::String {
@@ -15464,7 +14086,7 @@ impl SignType {
         .into_owned()
     }
 
-    /// **Source:** `Interface_SignType.hxx`:57 - `Interface_SignType::get_type_name()`
+    /// **Source:** `Interface_SignType.hxx`:54 - `Interface_SignType::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -15475,8 +14097,8 @@ impl SignType {
         .into_owned()
     }
 
-    /// **Source:** `Interface_SignType.hxx`:57 - `Interface_SignType::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    /// **Source:** `Interface_SignType.hxx`:54 - `Interface_SignType::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKXSBase::Interface_SignType_get_type_descriptor(),
@@ -15528,10 +14150,10 @@ impl SignType {
         }
     }
 
-    /// Inherited: **Source:** `MoniTool_SignText.hxx`:46 - `MoniTool_SignText::TextAlone()`
+    /// Inherited: **Source:** `MoniTool_SignText.hxx`:43 - `MoniTool_SignText::TextAlone()`
     pub fn text_alone(
         &self,
-        ent: &crate::ffi_types::HandleStandardTransient,
+        ent: &crate::ffi_types::Handle_Standard_Transient,
     ) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -15543,8 +14165,8 @@ impl SignType {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_SignType_inherited_IsInstance(
                 self as *const Self,
@@ -15553,8 +14175,8 @@ impl SignType {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_SignType_inherited_IsKind(
                 self as *const Self,
@@ -15563,7 +14185,7 @@ impl SignType {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -15577,7 +14199,7 @@ impl SignType {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_SignType_inherited_GetRefCount(
@@ -15586,7 +14208,7 @@ impl SignType {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_SignType_inherited_IncrementRefCounter(
@@ -15595,7 +14217,7 @@ impl SignType {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_SignType_inherited_DecrementRefCounter(
@@ -15604,7 +14226,7 @@ impl SignType {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_SignType_inherited_Delete(self as *const Self)
@@ -15612,34 +14234,36 @@ impl SignType {
     }
 }
 
-pub use crate::ffi_types::HandleInterfaceSignType;
+pub use crate::ffi_types::Handle_Interface_SignType;
 
-unsafe impl crate::CppDeletable for HandleInterfaceSignType {
+unsafe impl crate::CppDeletable for Handle_Interface_SignType {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKXSBase::HandleInterfaceSignType_destructor(ptr);
+            crate::ffi_extern_TKXSBase::Handle_Interface_SignType_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleInterfaceSignType {
+unsafe impl crate::CppCopyable for Handle_Interface_SignType {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
         unsafe {
-            crate::check_result(crate::ffi_extern_TKXSBase::HandleInterfaceSignType_clone(ptr))
+            crate::check_result(crate::ffi_extern_TKXSBase::Handle_Interface_SignType_clone(ptr))
         }
     }
 }
 
-impl HandleInterfaceSignType {
+impl Handle_Interface_SignType {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
-        unsafe { crate::ffi_extern_TKXSBase::HandleInterfaceSignType_is_null(self as *const Self) }
+        unsafe {
+            crate::ffi_extern_TKXSBase::Handle_Interface_SignType_is_null(self as *const Self)
+        }
     }
 
     /// Dereference this Handle to access the underlying Interface_SignType
     pub fn get(&self) -> &crate::ffi_types::Interface_SignType {
         unsafe {
-            &*crate::check_result(crate::ffi_extern_TKXSBase::HandleInterfaceSignType_get(
+            &*crate::check_result(crate::ffi_extern_TKXSBase::Handle_Interface_SignType_get(
                 self as *const Self,
             ))
         }
@@ -15648,17 +14272,19 @@ impl HandleInterfaceSignType {
     /// Dereference this Handle to mutably access the underlying Interface_SignType
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::Interface_SignType {
         unsafe {
-            &mut *crate::check_result(crate::ffi_extern_TKXSBase::HandleInterfaceSignType_get_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKXSBase::Handle_Interface_SignType_get_mut(self as *mut Self),
+            )
         }
     }
 
     /// Upcast Handle<Interface_SignType> to Handle<MoniTool_SignText>
-    pub fn to_handle_sign_text(&self) -> crate::OwnedPtr<crate::ffi_types::HandleMoniToolSignText> {
+    pub fn to_handle_sign_text(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_MoniTool_SignText> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKXSBase::HandleInterfaceSignType_to_HandleMoniToolSignText(
+                crate::ffi_extern_TKXSBase::Handle_Interface_SignType_to_Handle_MoniTool_SignText(
                     self as *const Self,
                 ),
             ))
@@ -15668,10 +14294,10 @@ impl HandleInterfaceSignType {
     /// Upcast Handle<Interface_SignType> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKXSBase::HandleInterfaceSignType_to_HandleStandardTransient(
+                crate::ffi_extern_TKXSBase::Handle_Interface_SignType_to_Handle_Standard_Transient(
                     self as *const Self,
                 ),
             ))
@@ -15683,9 +14309,9 @@ impl HandleInterfaceSignType {
     /// Returns `None` if the handle does not point to a `IFSelect_SignAncestor` (or subclass).
     pub fn downcast_to_sign_ancestor(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleIFSelectSignAncestor>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_IFSelect_SignAncestor>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKXSBase::HandleInterfaceSignType_downcast_to_HandleIFSelectSignAncestor(self as *const Self)
+            crate::ffi_extern_TKXSBase::Handle_Interface_SignType_downcast_to_Handle_IFSelect_SignAncestor(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -15699,9 +14325,9 @@ impl HandleInterfaceSignType {
     /// Returns `None` if the handle does not point to a `IFSelect_SignCategory` (or subclass).
     pub fn downcast_to_sign_category(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleIFSelectSignCategory>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_IFSelect_SignCategory>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKXSBase::HandleInterfaceSignType_downcast_to_HandleIFSelectSignCategory(self as *const Self)
+            crate::ffi_extern_TKXSBase::Handle_Interface_SignType_downcast_to_Handle_IFSelect_SignCategory(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -15715,9 +14341,9 @@ impl HandleInterfaceSignType {
     /// Returns `None` if the handle does not point to a `IFSelect_SignMultiple` (or subclass).
     pub fn downcast_to_sign_multiple(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleIFSelectSignMultiple>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_IFSelect_SignMultiple>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKXSBase::HandleInterfaceSignType_downcast_to_HandleIFSelectSignMultiple(self as *const Self)
+            crate::ffi_extern_TKXSBase::Handle_Interface_SignType_downcast_to_Handle_IFSelect_SignMultiple(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -15731,11 +14357,9 @@ impl HandleInterfaceSignType {
     /// Returns `None` if the handle does not point to a `IFSelect_SignType` (or subclass).
     pub fn downcast_to_sign_type(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleIFSelectSignType>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_IFSelect_SignType>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKXSBase::HandleInterfaceSignType_downcast_to_HandleIFSelectSignType(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKXSBase::Handle_Interface_SignType_downcast_to_Handle_IFSelect_SignType(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -15749,9 +14373,9 @@ impl HandleInterfaceSignType {
     /// Returns `None` if the handle does not point to a `IFSelect_SignValidity` (or subclass).
     pub fn downcast_to_sign_validity(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleIFSelectSignValidity>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_IFSelect_SignValidity>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKXSBase::HandleInterfaceSignType_downcast_to_HandleIFSelectSignValidity(self as *const Self)
+            crate::ffi_extern_TKXSBase::Handle_Interface_SignType_downcast_to_Handle_IFSelect_SignValidity(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -15765,11 +14389,9 @@ impl HandleInterfaceSignType {
     /// Returns `None` if the handle does not point to a `IFSelect_Signature` (or subclass).
     pub fn downcast_to_signature(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleIFSelectSignature>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_IFSelect_Signature>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKXSBase::HandleInterfaceSignType_downcast_to_HandleIFSelectSignature(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKXSBase::Handle_Interface_SignType_downcast_to_Handle_IFSelect_Signature(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -15783,11 +14405,9 @@ impl HandleInterfaceSignType {
     /// Returns `None` if the handle does not point to a `IGESSelect_IGESName` (or subclass).
     pub fn downcast_to_iges_name(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleIGESSelectIGESName>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_IGESSelect_IGESName>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKXSBase::HandleInterfaceSignType_downcast_to_HandleIGESSelectIGESName(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKXSBase::Handle_Interface_SignType_downcast_to_Handle_IGESSelect_IGESName(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -15801,9 +14421,9 @@ impl HandleInterfaceSignType {
     /// Returns `None` if the handle does not point to a `IGESSelect_IGESTypeForm` (or subclass).
     pub fn downcast_to_iges_type_form(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleIGESSelectIGESTypeForm>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_IGESSelect_IGESTypeForm>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKXSBase::HandleInterfaceSignType_downcast_to_HandleIGESSelectIGESTypeForm(self as *const Self)
+            crate::ffi_extern_TKXSBase::Handle_Interface_SignType_downcast_to_Handle_IGESSelect_IGESTypeForm(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -15817,9 +14437,9 @@ impl HandleInterfaceSignType {
     /// Returns `None` if the handle does not point to a `IGESSelect_SignColor` (or subclass).
     pub fn downcast_to_sign_color(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleIGESSelectSignColor>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_IGESSelect_SignColor>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKXSBase::HandleInterfaceSignType_downcast_to_HandleIGESSelectSignColor(self as *const Self)
+            crate::ffi_extern_TKXSBase::Handle_Interface_SignType_downcast_to_Handle_IGESSelect_SignColor(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -15833,9 +14453,9 @@ impl HandleInterfaceSignType {
     /// Returns `None` if the handle does not point to a `IGESSelect_SignLevelNumber` (or subclass).
     pub fn downcast_to_sign_level_number(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleIGESSelectSignLevelNumber>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_IGESSelect_SignLevelNumber>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKXSBase::HandleInterfaceSignType_downcast_to_HandleIGESSelectSignLevelNumber(self as *const Self)
+            crate::ffi_extern_TKXSBase::Handle_Interface_SignType_downcast_to_Handle_IGESSelect_SignLevelNumber(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -15849,9 +14469,9 @@ impl HandleInterfaceSignType {
     /// Returns `None` if the handle does not point to a `IGESSelect_SignStatus` (or subclass).
     pub fn downcast_to_sign_status(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleIGESSelectSignStatus>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_IGESSelect_SignStatus>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKXSBase::HandleInterfaceSignType_downcast_to_HandleIGESSelectSignStatus(self as *const Self)
+            crate::ffi_extern_TKXSBase::Handle_Interface_SignType_downcast_to_Handle_IGESSelect_SignStatus(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -15865,9 +14485,9 @@ impl HandleInterfaceSignType {
     /// Returns `None` if the handle does not point to a `STEPSelections_SelectDerived` (or subclass).
     pub fn downcast_to_select_derived(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleSTEPSelectionsSelectDerived>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_STEPSelections_SelectDerived>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKXSBase::HandleInterfaceSignType_downcast_to_HandleSTEPSelectionsSelectDerived(self as *const Self)
+            crate::ffi_extern_TKXSBase::Handle_Interface_SignType_downcast_to_Handle_STEPSelections_SelectDerived(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -15881,11 +14501,9 @@ impl HandleInterfaceSignType {
     /// Returns `None` if the handle does not point to a `StepSelect_StepType` (or subclass).
     pub fn downcast_to_step_type(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleStepSelectStepType>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_StepSelect_StepType>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKXSBase::HandleInterfaceSignType_downcast_to_HandleStepSelectStepType(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKXSBase::Handle_Interface_SignType_downcast_to_Handle_StepSelect_StepType(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -15899,9 +14517,9 @@ impl HandleInterfaceSignType {
     /// Returns `None` if the handle does not point to a `XSControl_SignTransferStatus` (or subclass).
     pub fn downcast_to_sign_transfer_status(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleXSControlSignTransferStatus>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_XSControl_SignTransferStatus>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKXSBase::HandleInterfaceSignType_downcast_to_HandleXSControlSignTransferStatus(self as *const Self)
+            crate::ffi_extern_TKXSBase::Handle_Interface_SignType_downcast_to_Handle_XSControl_SignTransferStatus(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -15915,14 +14533,14 @@ impl HandleInterfaceSignType {
 // From Interface_Static.hxx
 // ========================
 
-/// **Source:** `Interface_Static.hxx`:55 - `Interface_Static`
+/// **Source:** `Interface_Static.hxx`:54 - `Interface_Static`
 /// This class gives a way to manage meaningful static variables,
 /// used as "global" parameters in various procedures.
 ///
 /// A Static brings a specification (its type, constraints if any)
 /// and a value. Its basic form is a string, it can be specified
 /// as integer or real or enumerative string, and queried as such.
-/// Its string content, which is a Handle(HAsciiString) can be
+/// Its string content, which is a occ::handle<HAsciiString> can be
 /// shared by other data structures, hence gives a direct on line
 /// access to its value.
 ///
@@ -15950,7 +14568,7 @@ unsafe impl crate::CppDeletable for Static {
 }
 
 impl Static {
-    /// **Source:** `Interface_Static.hxx`:70 - `Interface_Static::Interface_Static()`
+    /// **Source:** `Interface_Static.hxx`:69 - `Interface_Static::Interface_Static()`
     /// Creates and records a Static, with a family and a name
     /// family can report to a name of resource or to a system or
     /// internal definition. The name must be unique.
@@ -15983,13 +14601,13 @@ impl Static {
         }
     }
 
-    /// **Source:** `Interface_Static.hxx`:77 - `Interface_Static::Interface_Static()`
+    /// **Source:** `Interface_Static.hxx`:76 - `Interface_Static::Interface_Static()`
     /// Creates a new Static with same definition as another one
     /// (value is copied, except for Entity : it remains null)
     pub fn new_charptr2_handleinterfacestatic(
         family: &str,
         name: &str,
-        other: &crate::ffi_types::HandleInterfaceStatic,
+        other: &crate::ffi_types::Handle_Interface_Static,
     ) -> crate::OwnedPtr<Self> {
         let c_family = std::ffi::CString::new(family).unwrap();
         let c_name = std::ffi::CString::new(name).unwrap();
@@ -16004,13 +14622,13 @@ impl Static {
         }
     }
 
-    /// **Source:** `Interface_Static.hxx`:89 - `Interface_Static::PrintStatic()`
+    /// **Source:** `Interface_Static.hxx`:88 - `Interface_Static::PrintStatic()`
     /// Writes the properties of a
     /// parameter in the diagnostic file. These include:
     /// - Name
     /// - Family,
     /// - Wildcard (if it has one)
-    /// - Current status (empty  string if it was updated or
+    /// - Current status (empty string if it was updated or
     /// if it is the original one)
     /// - Value
     pub fn print_static(&self, S: &mut crate::ffi_types::Standard_OStream) {
@@ -16019,7 +14637,7 @@ impl Static {
         })
     }
 
-    /// **Source:** `Interface_Static.hxx`:94 - `Interface_Static::Family()`
+    /// **Source:** `Interface_Static.hxx`:93 - `Interface_Static::Family()`
     /// Returns the family. It can be : a resource name for applis,
     /// an internal name between : $e (environment variables),
     /// $l (other, purely local)
@@ -16033,18 +14651,18 @@ impl Static {
         .into_owned()
     }
 
-    /// **Source:** `Interface_Static.hxx`:98 - `Interface_Static::SetWild()`
+    /// **Source:** `Interface_Static.hxx`:97 - `Interface_Static::SetWild()`
     /// Sets a "wild-card" static : its value will be considered
     /// if <me> is not properly set. (reset by set a null one)
-    pub fn set_wild(&mut self, wildcard: &crate::ffi_types::HandleInterfaceStatic) {
+    pub fn set_wild(&mut self, wildcard: &crate::ffi_types::Handle_Interface_Static) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_Static_set_wild(self as *mut Self, wildcard)
         })
     }
 
-    /// **Source:** `Interface_Static.hxx`:101 - `Interface_Static::Wild()`
+    /// **Source:** `Interface_Static.hxx`:100 - `Interface_Static::Wild()`
     /// Returns the wildcard static, which can be (is most often) null
-    pub fn wild(&self) -> crate::OwnedPtr<crate::ffi_types::HandleInterfaceStatic> {
+    pub fn wild(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_Interface_Static> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKXSBase::Interface_Static_wild(self as *const Self),
@@ -16052,7 +14670,7 @@ impl Static {
         }
     }
 
-    /// **Source:** `Interface_Static.hxx`:106 - `Interface_Static::SetUptodate()`
+    /// **Source:** `Interface_Static.hxx`:105 - `Interface_Static::SetUptodate()`
     /// Records a Static has "uptodate", i.e. its value has been taken
     /// into account by a reinitialisation procedure
     /// This flag is reset at each successful SetValue
@@ -16062,7 +14680,7 @@ impl Static {
         })
     }
 
-    /// **Source:** `Interface_Static.hxx`:109 - `Interface_Static::UpdatedStatus()`
+    /// **Source:** `Interface_Static.hxx`:108 - `Interface_Static::UpdatedStatus()`
     /// Returns the status "uptodate"
     pub fn updated_status(&self) -> bool {
         crate::check_result(unsafe {
@@ -16070,8 +14688,8 @@ impl Static {
         })
     }
 
-    /// **Source:** `Interface_Static.hxx`:269 - `Interface_Static::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `Interface_Static.hxx`:261 - `Interface_Static::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKXSBase::Interface_Static_dynamic_type(
                 self as *const Self,
@@ -16079,7 +14697,7 @@ impl Static {
         }
     }
 
-    /// **Source:** `Interface_Static.hxx`:115 - `Interface_Static::Init()`
+    /// **Source:** `Interface_Static.hxx`:114 - `Interface_Static::Init()`
     /// Declares a new Static (by calling its constructor)
     /// If this name is already taken, does nothing and returns False
     /// Else, creates it and returns True
@@ -16103,7 +14721,7 @@ impl Static {
         })
     }
 
-    /// **Source:** `Interface_Static.hxx`:125 - `Interface_Static::Init()`
+    /// **Source:** `Interface_Static.hxx`:124 - `Interface_Static::Init()`
     /// As Init with ParamType, but type is given as a character
     /// This allows a simpler call
     /// Types : 'i' Integer, 'r' Real, 't' Text, 'e' Enum, 'o' Object
@@ -16128,9 +14746,9 @@ impl Static {
         })
     }
 
-    /// **Source:** `Interface_Static.hxx`:131 - `Interface_Static::Static()`
+    /// **Source:** `Interface_Static.hxx`:130 - `Interface_Static::Static()`
     /// Returns a Static from its name. Null Handle if not present
-    pub fn static_(name: &str) -> crate::OwnedPtr<crate::ffi_types::HandleInterfaceStatic> {
+    pub fn static_(name: &str) -> crate::OwnedPtr<crate::ffi_types::Handle_Interface_Static> {
         let c_name = std::ffi::CString::new(name).unwrap();
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -16139,7 +14757,7 @@ impl Static {
         }
     }
 
-    /// **Source:** `Interface_Static.hxx`:134 - `Interface_Static::IsPresent()`
+    /// **Source:** `Interface_Static.hxx`:133 - `Interface_Static::IsPresent()`
     /// Returns True if a Static named <name> is present, False else
     pub fn is_present(name: &str) -> bool {
         let c_name = std::ffi::CString::new(name).unwrap();
@@ -16148,7 +14766,7 @@ impl Static {
         })
     }
 
-    /// **Source:** `Interface_Static.hxx`:154 - `Interface_Static::CDef()`
+    /// **Source:** `Interface_Static.hxx`:153 - `Interface_Static::CDef()`
     /// Returns a part of the definition of a Static, as a CString
     /// The part is designated by its name, as a CString
     /// If the required value is not a string, it is converted to a
@@ -16182,7 +14800,7 @@ impl Static {
         .into_owned()
     }
 
-    /// **Source:** `Interface_Static.hxx`:170 - `Interface_Static::IDef()`
+    /// **Source:** `Interface_Static.hxx`:168 - `Interface_Static::IDef()`
     /// Returns a part of the definition of a Static, as an Integer
     /// The part is designated by its name, as a CString
     /// If the required value is not a string, returns zero
@@ -16204,7 +14822,7 @@ impl Static {
         })
     }
 
-    /// **Source:** `Interface_Static.hxx`:177 - `Interface_Static::IsSet()`
+    /// **Source:** `Interface_Static.hxx`:174 - `Interface_Static::IsSet()`
     /// Returns True if <name> is present AND set
     /// <proper> True (D) : considers this item only
     /// <proper> False    : if not set and attached to a wild-card,
@@ -16216,7 +14834,7 @@ impl Static {
         })
     }
 
-    /// **Source:** `Interface_Static.hxx`:188 - `Interface_Static::CVal()`
+    /// **Source:** `Interface_Static.hxx`:184 - `Interface_Static::CVal()`
     /// Returns the value of the
     /// parameter identified by the string name.
     /// If the specified parameter does not exist, an empty
@@ -16236,7 +14854,7 @@ impl Static {
         .into_owned()
     }
 
-    /// **Source:** `Interface_Static.hxx`:196 - `Interface_Static::IVal()`
+    /// **Source:** `Interface_Static.hxx`:192 - `Interface_Static::IVal()`
     /// Returns the integer value of
     /// the translation parameter identified by the string name.
     /// Returns the value 0 if the parameter does not exist.
@@ -16250,7 +14868,7 @@ impl Static {
         })
     }
 
-    /// **Source:** `Interface_Static.hxx`:201 - `Interface_Static::RVal()`
+    /// **Source:** `Interface_Static.hxx`:197 - `Interface_Static::RVal()`
     /// Returns the value of a static
     /// translation parameter identified by the string name.
     /// Returns the value 0.0 if the parameter does not exist.
@@ -16261,7 +14879,7 @@ impl Static {
         })
     }
 
-    /// **Source:** `Interface_Static.hxx`:210 - `Interface_Static::SetCVal()`
+    /// **Source:** `Interface_Static.hxx`:206 - `Interface_Static::SetCVal()`
     /// Modifies the value of the
     /// parameter identified by name. The modification is specified
     /// by the string val. false is returned if the parameter does not exist.
@@ -16277,7 +14895,7 @@ impl Static {
         })
     }
 
-    /// **Source:** `Interface_Static.hxx`:221 - `Interface_Static::SetIVal()`
+    /// **Source:** `Interface_Static.hxx`:216 - `Interface_Static::SetIVal()`
     /// Modifies the value of the
     /// parameter identified by name. The modification is specified
     /// by the integer value val. false is returned if the
@@ -16293,7 +14911,7 @@ impl Static {
         })
     }
 
-    /// **Source:** `Interface_Static.hxx`:228 - `Interface_Static::SetRVal()`
+    /// **Source:** `Interface_Static.hxx`:222 - `Interface_Static::SetRVal()`
     /// Modifies the value of a
     /// translation parameter. false is returned if the
     /// parameter does not exist. The modification is specified
@@ -16305,7 +14923,7 @@ impl Static {
         })
     }
 
-    /// **Source:** `Interface_Static.hxx`:235 - `Interface_Static::Update()`
+    /// **Source:** `Interface_Static.hxx`:228 - `Interface_Static::Update()`
     /// Sets a Static to be "uptodate"
     /// Returns False if <name> is not present
     /// This status can be used by a reinitialisation procedure to
@@ -16317,7 +14935,7 @@ impl Static {
         })
     }
 
-    /// **Source:** `Interface_Static.hxx`:239 - `Interface_Static::IsUpdated()`
+    /// **Source:** `Interface_Static.hxx`:232 - `Interface_Static::IsUpdated()`
     /// Returns the status "uptodate" from a Static
     /// Returns False if <name> is not present
     pub fn is_updated(name: &str) -> bool {
@@ -16327,7 +14945,7 @@ impl Static {
         })
     }
 
-    /// **Source:** `Interface_Static.hxx`:256 - `Interface_Static::Items()`
+    /// **Source:** `Interface_Static.hxx`:250 - `Interface_Static::Items()`
     /// Returns a list of names of statics :
     /// <mode> = 0 (D) : criter is for family
     /// <mode> = 1 : criter is regexp on names, takes final items
@@ -16346,7 +14964,9 @@ impl Static {
     pub fn items(
         mode: i32,
         criter: &str,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleTColStdHSequenceOfHAsciiString> {
+    ) -> crate::OwnedPtr<
+        crate::ffi_types::Handle_NCollection_HSequence_opencascade_handle_TCollection_HAsciiString,
+    > {
         let c_criter = std::ffi::CString::new(criter).unwrap();
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -16355,7 +14975,7 @@ impl Static {
         }
     }
 
-    /// **Source:** `Interface_Static.hxx`:263 - `Interface_Static::Standards()`
+    /// **Source:** `Interface_Static.hxx`:255 - `Interface_Static::Standards()`
     /// Initializes all standard static parameters, which can be used
     /// by every function. statics specific of a norm or a function
     /// must be defined around it
@@ -16365,15 +14985,17 @@ impl Static {
         })
     }
 
-    /// **Source:** `Interface_Static.hxx`:266 - `Interface_Static::FillMap()`
+    /// **Source:** `Interface_Static.hxx`:258 - `Interface_Static::FillMap()`
     /// Fills given string-to-string map with all static data
-    pub fn fill_map(theMap: &mut crate::ffi_types::DE_ResourceMap) {
+    pub fn fill_map(
+        theMap: &mut crate::ffi_types::NCollection_DataMap_TCollection_AsciiString_TCollection_AsciiString,
+    ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_Static_fill_map(theMap)
         })
     }
 
-    /// **Source:** `Interface_Static.hxx`:269 - `Interface_Static::get_type_name()`
+    /// **Source:** `Interface_Static.hxx`:261 - `Interface_Static::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -16384,8 +15006,8 @@ impl Static {
         .into_owned()
     }
 
-    /// **Source:** `Interface_Static.hxx`:269 - `Interface_Static::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    /// **Source:** `Interface_Static.hxx`:261 - `Interface_Static::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKXSBase::Interface_Static_get_type_descriptor(),
@@ -16462,7 +15084,7 @@ impl Static {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleInterfaceStatic> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Interface_Static> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKXSBase::Interface_Static_to_handle(obj.into_raw()),
@@ -16470,7 +15092,7 @@ impl Static {
         }
     }
 
-    /// Inherited: **Source:** `Interface_TypedValue.hxx`:66 - `Interface_TypedValue::Type()`
+    /// Inherited: **Source:** `Interface_TypedValue.hxx`:63 - `Interface_TypedValue::Type()`
     pub fn type_(&self) -> crate::interface::ParamType {
         crate::interface::ParamType::try_from(crate::check_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_Static_inherited_Type(self as *const Self)
@@ -16478,7 +15100,7 @@ impl Static {
         .unwrap()
     }
 
-    /// Inherited: **Source:** `MoniTool_TypedValue.hxx`:80 - `MoniTool_TypedValue::ValueType()`
+    /// Inherited: **Source:** `MoniTool_TypedValue.hxx`:79 - `MoniTool_TypedValue::ValueType()`
     pub fn value_type(&self) -> crate::moni_tool::ValueType {
         crate::moni_tool::ValueType::try_from(crate::check_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_Static_inherited_ValueType(self as *const Self)
@@ -16486,7 +15108,7 @@ impl Static {
         .unwrap()
     }
 
-    /// Inherited: **Source:** `MoniTool_TypedValue.hxx`:85 - `MoniTool_TypedValue::Definition()`
+    /// Inherited: **Source:** `MoniTool_TypedValue.hxx`:84 - `MoniTool_TypedValue::Definition()`
     pub fn definition(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -16497,14 +15119,14 @@ impl Static {
         }
     }
 
-    /// Inherited: **Source:** `MoniTool_TypedValue.hxx`:91 - `MoniTool_TypedValue::Print()`
+    /// Inherited: **Source:** `MoniTool_TypedValue.hxx`:90 - `MoniTool_TypedValue::Print()`
     pub fn print(&self, S: &mut crate::ffi_types::Standard_OStream) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_Static_inherited_Print(self as *const Self, S)
         })
     }
 
-    /// Inherited: **Source:** `MoniTool_TypedValue.hxx`:94 - `MoniTool_TypedValue::PrintValue()`
+    /// Inherited: **Source:** `MoniTool_TypedValue.hxx`:93 - `MoniTool_TypedValue::PrintValue()`
     pub fn print_value(&self, S: &mut crate::ffi_types::Standard_OStream) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_Static_inherited_PrintValue(
@@ -16514,7 +15136,7 @@ impl Static {
         })
     }
 
-    /// Inherited: **Source:** `MoniTool_TypedValue.hxx`:119 - `MoniTool_TypedValue::SetMaxLength()`
+    /// Inherited: **Source:** `MoniTool_TypedValue.hxx`:118 - `MoniTool_TypedValue::SetMaxLength()`
     pub fn set_max_length(&mut self, max: i32) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_Static_inherited_SetMaxLength(
@@ -16524,14 +15146,14 @@ impl Static {
         })
     }
 
-    /// Inherited: **Source:** `MoniTool_TypedValue.hxx`:122 - `MoniTool_TypedValue::MaxLength()`
+    /// Inherited: **Source:** `MoniTool_TypedValue.hxx`:121 - `MoniTool_TypedValue::MaxLength()`
     pub fn max_length(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_Static_inherited_MaxLength(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `MoniTool_TypedValue.hxx`:126 - `MoniTool_TypedValue::SetIntegerLimit()`
+    /// Inherited: **Source:** `MoniTool_TypedValue.hxx`:125 - `MoniTool_TypedValue::SetIntegerLimit()`
     pub fn set_integer_limit(&mut self, max: bool, val: i32) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_Static_inherited_SetIntegerLimit(
@@ -16542,7 +15164,7 @@ impl Static {
         })
     }
 
-    /// Inherited: **Source:** `MoniTool_TypedValue.hxx`:131 - `MoniTool_TypedValue::IntegerLimit()`
+    /// Inherited: **Source:** `MoniTool_TypedValue.hxx`:130 - `MoniTool_TypedValue::IntegerLimit()`
     pub fn integer_limit(&self, max: bool, val: &mut i32) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_Static_inherited_IntegerLimit(
@@ -16553,7 +15175,7 @@ impl Static {
         })
     }
 
-    /// Inherited: **Source:** `MoniTool_TypedValue.hxx`:136 - `MoniTool_TypedValue::SetRealLimit()`
+    /// Inherited: **Source:** `MoniTool_TypedValue.hxx`:134 - `MoniTool_TypedValue::SetRealLimit()`
     pub fn set_real_limit(&mut self, max: bool, val: f64) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_Static_inherited_SetRealLimit(
@@ -16564,7 +15186,7 @@ impl Static {
         })
     }
 
-    /// Inherited: **Source:** `MoniTool_TypedValue.hxx`:141 - `MoniTool_TypedValue::RealLimit()`
+    /// Inherited: **Source:** `MoniTool_TypedValue.hxx`:139 - `MoniTool_TypedValue::RealLimit()`
     pub fn real_limit(&self, max: bool, val: &mut f64) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_Static_inherited_RealLimit(
@@ -16575,7 +15197,7 @@ impl Static {
         })
     }
 
-    /// Inherited: **Source:** `MoniTool_TypedValue.hxx`:156 - `MoniTool_TypedValue::StartEnum()`
+    /// Inherited: **Source:** `MoniTool_TypedValue.hxx`:154 - `MoniTool_TypedValue::StartEnum()`
     pub fn start_enum(&mut self, start: i32, match_: bool) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_Static_inherited_StartEnum(
@@ -16586,7 +15208,7 @@ impl Static {
         })
     }
 
-    /// Inherited: **Source:** `MoniTool_TypedValue.hxx`:179 - `MoniTool_TypedValue::EnumDef()`
+    /// Inherited: **Source:** `MoniTool_TypedValue.hxx`:176 - `MoniTool_TypedValue::EnumDef()`
     pub fn enum_def(&self, startcase: &mut i32, endcase: &mut i32, match_: &mut bool) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_Static_inherited_EnumDef(
@@ -16598,8 +15220,8 @@ impl Static {
         })
     }
 
-    /// Inherited: **Source:** `MoniTool_TypedValue.hxx`:194 - `MoniTool_TypedValue::SetObjectType()`
-    pub fn set_object_type(&mut self, typ: &crate::ffi_types::HandleStandardType) {
+    /// Inherited: **Source:** `MoniTool_TypedValue.hxx`:189 - `MoniTool_TypedValue::SetObjectType()`
+    pub fn set_object_type(&mut self, typ: &crate::ffi_types::Handle_Standard_Type) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_Static_inherited_SetObjectType(
                 self as *mut Self,
@@ -16608,8 +15230,8 @@ impl Static {
         })
     }
 
-    /// Inherited: **Source:** `MoniTool_TypedValue.hxx`:199 - `MoniTool_TypedValue::ObjectType()`
-    pub fn object_type(&self) -> crate::OwnedPtr<crate::ffi_types::HandleStandardType> {
+    /// Inherited: **Source:** `MoniTool_TypedValue.hxx`:194 - `MoniTool_TypedValue::ObjectType()`
+    pub fn object_type(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Type> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKXSBase::Interface_Static_inherited_ObjectType(
@@ -16619,7 +15241,7 @@ impl Static {
         }
     }
 
-    /// Inherited: **Source:** `MoniTool_TypedValue.hxx`:202 - `MoniTool_TypedValue::SetInterpret()`
+    /// Inherited: **Source:** `MoniTool_TypedValue.hxx`:197 - `MoniTool_TypedValue::SetInterpret()`
     pub fn set_interpret(&mut self, func: &crate::ffi_types::MoniTool_ValueInterpret) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_Static_inherited_SetInterpret(
@@ -16629,24 +15251,24 @@ impl Static {
         })
     }
 
-    /// Inherited: **Source:** `MoniTool_TypedValue.hxx`:205 - `MoniTool_TypedValue::HasInterpret()`
+    /// Inherited: **Source:** `MoniTool_TypedValue.hxx`:200 - `MoniTool_TypedValue::HasInterpret()`
     pub fn has_interpret(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_Static_inherited_HasInterpret(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `MoniTool_TypedValue.hxx`:218 - `MoniTool_TypedValue::IsSetValue()`
+    /// Inherited: **Source:** `MoniTool_TypedValue.hxx`:212 - `MoniTool_TypedValue::IsSetValue()`
     pub fn is_set_value(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_Static_inherited_IsSetValue(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `MoniTool_TypedValue.hxx`:225 - `MoniTool_TypedValue::HStringValue()`
+    /// Inherited: **Source:** `MoniTool_TypedValue.hxx`:219 - `MoniTool_TypedValue::HStringValue()`
     pub fn h_string_value(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleTCollectionHAsciiString> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_TCollection_HAsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKXSBase::Interface_Static_inherited_HStringValue(
@@ -16656,12 +15278,12 @@ impl Static {
         }
     }
 
-    /// Inherited: **Source:** `MoniTool_TypedValue.hxx`:236 - `MoniTool_TypedValue::Interpret()`
+    /// Inherited: **Source:** `MoniTool_TypedValue.hxx`:230 - `MoniTool_TypedValue::Interpret()`
     pub fn interpret(
         &self,
-        hval: &crate::ffi_types::HandleTCollectionHAsciiString,
+        hval: &crate::ffi_types::Handle_TCollection_HAsciiString,
         native: bool,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleTCollectionHAsciiString> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_TCollection_HAsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKXSBase::Interface_Static_inherited_Interpret(
@@ -16673,8 +15295,8 @@ impl Static {
         }
     }
 
-    /// Inherited: **Source:** `MoniTool_TypedValue.hxx`:243 - `MoniTool_TypedValue::Satisfies()`
-    pub fn satisfies(&self, hval: &crate::ffi_types::HandleTCollectionHAsciiString) -> bool {
+    /// Inherited: **Source:** `MoniTool_TypedValue.hxx`:237 - `MoniTool_TypedValue::Satisfies()`
+    pub fn satisfies(&self, hval: &crate::ffi_types::Handle_TCollection_HAsciiString) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_Static_inherited_Satisfies(
                 self as *const Self,
@@ -16683,17 +15305,17 @@ impl Static {
         })
     }
 
-    /// Inherited: **Source:** `MoniTool_TypedValue.hxx`:247 - `MoniTool_TypedValue::ClearValue()`
+    /// Inherited: **Source:** `MoniTool_TypedValue.hxx`:240 - `MoniTool_TypedValue::ClearValue()`
     pub fn clear_value(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_Static_inherited_ClearValue(self as *mut Self)
         })
     }
 
-    /// Inherited: **Source:** `MoniTool_TypedValue.hxx`:264 - `MoniTool_TypedValue::SetHStringValue()`
+    /// Inherited: **Source:** `MoniTool_TypedValue.hxx`:257 - `MoniTool_TypedValue::SetHStringValue()`
     pub fn set_h_string_value(
         &mut self,
-        hval: &crate::ffi_types::HandleTCollectionHAsciiString,
+        hval: &crate::ffi_types::Handle_TCollection_HAsciiString,
     ) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_Static_inherited_SetHStringValue(
@@ -16703,14 +15325,14 @@ impl Static {
         })
     }
 
-    /// Inherited: **Source:** `MoniTool_TypedValue.hxx`:272 - `MoniTool_TypedValue::IntegerValue()`
+    /// Inherited: **Source:** `MoniTool_TypedValue.hxx`:264 - `MoniTool_TypedValue::IntegerValue()`
     pub fn integer_value(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_Static_inherited_IntegerValue(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `MoniTool_TypedValue.hxx`:275 - `MoniTool_TypedValue::SetIntegerValue()`
+    /// Inherited: **Source:** `MoniTool_TypedValue.hxx`:267 - `MoniTool_TypedValue::SetIntegerValue()`
     pub fn set_integer_value(&mut self, ival: i32) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_Static_inherited_SetIntegerValue(
@@ -16720,14 +15342,14 @@ impl Static {
         })
     }
 
-    /// Inherited: **Source:** `MoniTool_TypedValue.hxx`:279 - `MoniTool_TypedValue::RealValue()`
+    /// Inherited: **Source:** `MoniTool_TypedValue.hxx`:271 - `MoniTool_TypedValue::RealValue()`
     pub fn real_value(&self) -> f64 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_Static_inherited_RealValue(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `MoniTool_TypedValue.hxx`:282 - `MoniTool_TypedValue::SetRealValue()`
+    /// Inherited: **Source:** `MoniTool_TypedValue.hxx`:274 - `MoniTool_TypedValue::SetRealValue()`
     pub fn set_real_value(&mut self, rval: f64) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_Static_inherited_SetRealValue(
@@ -16737,8 +15359,8 @@ impl Static {
         })
     }
 
-    /// Inherited: **Source:** `MoniTool_TypedValue.hxx`:287 - `MoniTool_TypedValue::ObjectValue()`
-    pub fn object_value(&self) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    /// Inherited: **Source:** `MoniTool_TypedValue.hxx`:279 - `MoniTool_TypedValue::ObjectValue()`
+    pub fn object_value(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKXSBase::Interface_Static_inherited_ObjectValue(
@@ -16748,8 +15370,8 @@ impl Static {
         }
     }
 
-    /// Inherited: **Source:** `MoniTool_TypedValue.hxx`:292 - `MoniTool_TypedValue::GetObjectValue()`
-    pub fn get_object_value(&self, val: &mut crate::ffi_types::HandleStandardTransient) {
+    /// Inherited: **Source:** `MoniTool_TypedValue.hxx`:284 - `MoniTool_TypedValue::GetObjectValue()`
+    pub fn get_object_value(&self, val: &mut crate::ffi_types::Handle_Standard_Transient) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_Static_inherited_GetObjectValue(
                 self as *const Self,
@@ -16758,8 +15380,8 @@ impl Static {
         })
     }
 
-    /// Inherited: **Source:** `MoniTool_TypedValue.hxx`:297 - `MoniTool_TypedValue::SetObjectValue()`
-    pub fn set_object_value(&mut self, obj: &crate::ffi_types::HandleStandardTransient) -> bool {
+    /// Inherited: **Source:** `MoniTool_TypedValue.hxx`:289 - `MoniTool_TypedValue::SetObjectValue()`
+    pub fn set_object_value(&mut self, obj: &crate::ffi_types::Handle_Standard_Transient) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_Static_inherited_SetObjectValue(
                 self as *mut Self,
@@ -16768,8 +15390,8 @@ impl Static {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_Static_inherited_IsInstance(
                 self as *const Self,
@@ -16778,8 +15400,8 @@ impl Static {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_Static_inherited_IsKind(
                 self as *const Self,
@@ -16788,7 +15410,7 @@ impl Static {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -16802,14 +15424,14 @@ impl Static {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_Static_inherited_GetRefCount(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_Static_inherited_IncrementRefCounter(
@@ -16818,7 +15440,7 @@ impl Static {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_Static_inherited_DecrementRefCounter(
@@ -16827,7 +15449,7 @@ impl Static {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_Static_inherited_Delete(self as *const Self)
@@ -16835,32 +15457,34 @@ impl Static {
     }
 }
 
-pub use crate::ffi_types::HandleInterfaceStatic;
+pub use crate::ffi_types::Handle_Interface_Static;
 
-unsafe impl crate::CppDeletable for HandleInterfaceStatic {
+unsafe impl crate::CppDeletable for Handle_Interface_Static {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKXSBase::HandleInterfaceStatic_destructor(ptr);
+            crate::ffi_extern_TKXSBase::Handle_Interface_Static_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleInterfaceStatic {
+unsafe impl crate::CppCopyable for Handle_Interface_Static {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        unsafe { crate::check_result(crate::ffi_extern_TKXSBase::HandleInterfaceStatic_clone(ptr)) }
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKXSBase::Handle_Interface_Static_clone(ptr))
+        }
     }
 }
 
-impl HandleInterfaceStatic {
+impl Handle_Interface_Static {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
-        unsafe { crate::ffi_extern_TKXSBase::HandleInterfaceStatic_is_null(self as *const Self) }
+        unsafe { crate::ffi_extern_TKXSBase::Handle_Interface_Static_is_null(self as *const Self) }
     }
 
     /// Dereference this Handle to access the underlying Interface_Static
     pub fn get(&self) -> &crate::ffi_types::Interface_Static {
         unsafe {
-            &*crate::check_result(crate::ffi_extern_TKXSBase::HandleInterfaceStatic_get(
+            &*crate::check_result(crate::ffi_extern_TKXSBase::Handle_Interface_Static_get(
                 self as *const Self,
             ))
         }
@@ -16869,7 +15493,7 @@ impl HandleInterfaceStatic {
     /// Dereference this Handle to mutably access the underlying Interface_Static
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::Interface_Static {
         unsafe {
-            &mut *crate::check_result(crate::ffi_extern_TKXSBase::HandleInterfaceStatic_get_mut(
+            &mut *crate::check_result(crate::ffi_extern_TKXSBase::Handle_Interface_Static_get_mut(
                 self as *mut Self,
             ))
         }
@@ -16878,10 +15502,10 @@ impl HandleInterfaceStatic {
     /// Upcast Handle<Interface_Static> to Handle<Interface_TypedValue>
     pub fn to_handle_interface_typed_value(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleInterfaceTypedValue> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Interface_TypedValue> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKXSBase::HandleInterfaceStatic_to_HandleInterfaceTypedValue(
+                crate::ffi_extern_TKXSBase::Handle_Interface_Static_to_Handle_Interface_TypedValue(
                     self as *const Self,
                 ),
             ))
@@ -16891,10 +15515,10 @@ impl HandleInterfaceStatic {
     /// Upcast Handle<Interface_Static> to Handle<MoniTool_TypedValue>
     pub fn to_handle_moni_tool_typed_value(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleMoniToolTypedValue> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_MoniTool_TypedValue> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKXSBase::HandleInterfaceStatic_to_HandleMoniToolTypedValue(
+                crate::ffi_extern_TKXSBase::Handle_Interface_Static_to_Handle_MoniTool_TypedValue(
                     self as *const Self,
                 ),
             ))
@@ -16904,10 +15528,10 @@ impl HandleInterfaceStatic {
     /// Upcast Handle<Interface_Static> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKXSBase::HandleInterfaceStatic_to_HandleStandardTransient(
+                crate::ffi_extern_TKXSBase::Handle_Interface_Static_to_Handle_Standard_Transient(
                     self as *const Self,
                 ),
             ))
@@ -16919,7 +15543,7 @@ impl HandleInterfaceStatic {
 // From Interface_TypedValue.hxx
 // ========================
 
-/// **Source:** `Interface_TypedValue.hxx`:45 - `Interface_TypedValue`
+/// **Source:** `Interface_TypedValue.hxx`:42 - `Interface_TypedValue`
 /// Now strictly equivalent to TypedValue from MoniTool,
 /// except for ParamType which remains for compatibility reasons
 ///
@@ -16932,7 +15556,7 @@ impl HandleInterfaceStatic {
 /// if any) and a value. Its basic form is a string, it can be
 /// specified as integer or real or enumerative string, then
 /// queried as such.
-/// Its string content, which is a Handle(HAsciiString) can be
+/// Its string content, which is a occ::handle<HAsciiString> can be
 /// shared by other data structures, hence gives a direct on line
 /// access to its value.
 pub use crate::ffi_types::Interface_TypedValue as TypedValue;
@@ -16946,7 +15570,7 @@ unsafe impl crate::CppDeletable for TypedValue {
 }
 
 impl TypedValue {
-    /// **Source:** `Interface_TypedValue.hxx`:58 - `Interface_TypedValue::Interface_TypedValue()`
+    /// **Source:** `Interface_TypedValue.hxx`:55 - `Interface_TypedValue::Interface_TypedValue()`
     /// Creates a TypedValue, with a name
     ///
     /// type gives the type of the parameter, default is free text
@@ -16974,7 +15598,7 @@ impl TypedValue {
         }
     }
 
-    /// **Source:** `Interface_TypedValue.hxx`:66 - `Interface_TypedValue::Type()`
+    /// **Source:** `Interface_TypedValue.hxx`:63 - `Interface_TypedValue::Type()`
     /// Returns the type
     /// I.E. calls ValueType then makes correspondence between
     /// ParamType from Interface (which remains for compatibility
@@ -16986,8 +15610,8 @@ impl TypedValue {
         .unwrap()
     }
 
-    /// **Source:** `Interface_TypedValue.hxx`:74 - `Interface_TypedValue::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `Interface_TypedValue.hxx`:71 - `Interface_TypedValue::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKXSBase::Interface_TypedValue_dynamic_type(
                 self as *const Self,
@@ -16995,7 +15619,7 @@ impl TypedValue {
         }
     }
 
-    /// **Source:** `Interface_TypedValue.hxx`:69 - `Interface_TypedValue::ParamTypeToValueType()`
+    /// **Source:** `Interface_TypedValue.hxx`:66 - `Interface_TypedValue::ParamTypeToValueType()`
     /// Correspondence ParamType from Interface to ValueType from MoniTool
     pub fn param_type_to_value_type(
         typ: crate::interface::ParamType,
@@ -17006,7 +15630,7 @@ impl TypedValue {
         .unwrap()
     }
 
-    /// **Source:** `Interface_TypedValue.hxx`:72 - `Interface_TypedValue::ValueTypeToParamType()`
+    /// **Source:** `Interface_TypedValue.hxx`:69 - `Interface_TypedValue::ValueTypeToParamType()`
     /// Correspondence ParamType from Interface to ValueType from MoniTool
     pub fn value_type_to_param_type(
         typ: crate::moni_tool::ValueType,
@@ -17017,7 +15641,7 @@ impl TypedValue {
         .unwrap()
     }
 
-    /// **Source:** `Interface_TypedValue.hxx`:74 - `Interface_TypedValue::get_type_name()`
+    /// **Source:** `Interface_TypedValue.hxx`:71 - `Interface_TypedValue::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -17028,8 +15652,8 @@ impl TypedValue {
         .into_owned()
     }
 
-    /// **Source:** `Interface_TypedValue.hxx`:74 - `Interface_TypedValue::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    /// **Source:** `Interface_TypedValue.hxx`:71 - `Interface_TypedValue::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKXSBase::Interface_TypedValue_get_type_descriptor(),
@@ -17084,7 +15708,7 @@ impl TypedValue {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleInterfaceTypedValue> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Interface_TypedValue> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKXSBase::Interface_TypedValue_to_handle(obj.into_raw()),
@@ -17092,7 +15716,7 @@ impl TypedValue {
         }
     }
 
-    /// Inherited: **Source:** `MoniTool_TypedValue.hxx`:80 - `MoniTool_TypedValue::ValueType()`
+    /// Inherited: **Source:** `MoniTool_TypedValue.hxx`:79 - `MoniTool_TypedValue::ValueType()`
     pub fn value_type(&self) -> crate::moni_tool::ValueType {
         crate::moni_tool::ValueType::try_from(crate::check_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_TypedValue_inherited_ValueType(
@@ -17102,7 +15726,7 @@ impl TypedValue {
         .unwrap()
     }
 
-    /// Inherited: **Source:** `MoniTool_TypedValue.hxx`:85 - `MoniTool_TypedValue::Definition()`
+    /// Inherited: **Source:** `MoniTool_TypedValue.hxx`:84 - `MoniTool_TypedValue::Definition()`
     pub fn definition(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -17113,14 +15737,14 @@ impl TypedValue {
         }
     }
 
-    /// Inherited: **Source:** `MoniTool_TypedValue.hxx`:91 - `MoniTool_TypedValue::Print()`
+    /// Inherited: **Source:** `MoniTool_TypedValue.hxx`:90 - `MoniTool_TypedValue::Print()`
     pub fn print(&self, S: &mut crate::ffi_types::Standard_OStream) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_TypedValue_inherited_Print(self as *const Self, S)
         })
     }
 
-    /// Inherited: **Source:** `MoniTool_TypedValue.hxx`:94 - `MoniTool_TypedValue::PrintValue()`
+    /// Inherited: **Source:** `MoniTool_TypedValue.hxx`:93 - `MoniTool_TypedValue::PrintValue()`
     pub fn print_value(&self, S: &mut crate::ffi_types::Standard_OStream) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_TypedValue_inherited_PrintValue(
@@ -17130,7 +15754,7 @@ impl TypedValue {
         })
     }
 
-    /// Inherited: **Source:** `MoniTool_TypedValue.hxx`:119 - `MoniTool_TypedValue::SetMaxLength()`
+    /// Inherited: **Source:** `MoniTool_TypedValue.hxx`:118 - `MoniTool_TypedValue::SetMaxLength()`
     pub fn set_max_length(&mut self, max: i32) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_TypedValue_inherited_SetMaxLength(
@@ -17140,7 +15764,7 @@ impl TypedValue {
         })
     }
 
-    /// Inherited: **Source:** `MoniTool_TypedValue.hxx`:122 - `MoniTool_TypedValue::MaxLength()`
+    /// Inherited: **Source:** `MoniTool_TypedValue.hxx`:121 - `MoniTool_TypedValue::MaxLength()`
     pub fn max_length(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_TypedValue_inherited_MaxLength(
@@ -17149,7 +15773,7 @@ impl TypedValue {
         })
     }
 
-    /// Inherited: **Source:** `MoniTool_TypedValue.hxx`:126 - `MoniTool_TypedValue::SetIntegerLimit()`
+    /// Inherited: **Source:** `MoniTool_TypedValue.hxx`:125 - `MoniTool_TypedValue::SetIntegerLimit()`
     pub fn set_integer_limit(&mut self, max: bool, val: i32) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_TypedValue_inherited_SetIntegerLimit(
@@ -17160,7 +15784,7 @@ impl TypedValue {
         })
     }
 
-    /// Inherited: **Source:** `MoniTool_TypedValue.hxx`:131 - `MoniTool_TypedValue::IntegerLimit()`
+    /// Inherited: **Source:** `MoniTool_TypedValue.hxx`:130 - `MoniTool_TypedValue::IntegerLimit()`
     pub fn integer_limit(&self, max: bool, val: &mut i32) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_TypedValue_inherited_IntegerLimit(
@@ -17171,7 +15795,7 @@ impl TypedValue {
         })
     }
 
-    /// Inherited: **Source:** `MoniTool_TypedValue.hxx`:136 - `MoniTool_TypedValue::SetRealLimit()`
+    /// Inherited: **Source:** `MoniTool_TypedValue.hxx`:134 - `MoniTool_TypedValue::SetRealLimit()`
     pub fn set_real_limit(&mut self, max: bool, val: f64) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_TypedValue_inherited_SetRealLimit(
@@ -17182,7 +15806,7 @@ impl TypedValue {
         })
     }
 
-    /// Inherited: **Source:** `MoniTool_TypedValue.hxx`:141 - `MoniTool_TypedValue::RealLimit()`
+    /// Inherited: **Source:** `MoniTool_TypedValue.hxx`:139 - `MoniTool_TypedValue::RealLimit()`
     pub fn real_limit(&self, max: bool, val: &mut f64) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_TypedValue_inherited_RealLimit(
@@ -17193,7 +15817,7 @@ impl TypedValue {
         })
     }
 
-    /// Inherited: **Source:** `MoniTool_TypedValue.hxx`:156 - `MoniTool_TypedValue::StartEnum()`
+    /// Inherited: **Source:** `MoniTool_TypedValue.hxx`:154 - `MoniTool_TypedValue::StartEnum()`
     pub fn start_enum(&mut self, start: i32, match_: bool) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_TypedValue_inherited_StartEnum(
@@ -17204,7 +15828,7 @@ impl TypedValue {
         })
     }
 
-    /// Inherited: **Source:** `MoniTool_TypedValue.hxx`:179 - `MoniTool_TypedValue::EnumDef()`
+    /// Inherited: **Source:** `MoniTool_TypedValue.hxx`:176 - `MoniTool_TypedValue::EnumDef()`
     pub fn enum_def(&self, startcase: &mut i32, endcase: &mut i32, match_: &mut bool) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_TypedValue_inherited_EnumDef(
@@ -17216,8 +15840,8 @@ impl TypedValue {
         })
     }
 
-    /// Inherited: **Source:** `MoniTool_TypedValue.hxx`:194 - `MoniTool_TypedValue::SetObjectType()`
-    pub fn set_object_type(&mut self, typ: &crate::ffi_types::HandleStandardType) {
+    /// Inherited: **Source:** `MoniTool_TypedValue.hxx`:189 - `MoniTool_TypedValue::SetObjectType()`
+    pub fn set_object_type(&mut self, typ: &crate::ffi_types::Handle_Standard_Type) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_TypedValue_inherited_SetObjectType(
                 self as *mut Self,
@@ -17226,8 +15850,8 @@ impl TypedValue {
         })
     }
 
-    /// Inherited: **Source:** `MoniTool_TypedValue.hxx`:199 - `MoniTool_TypedValue::ObjectType()`
-    pub fn object_type(&self) -> crate::OwnedPtr<crate::ffi_types::HandleStandardType> {
+    /// Inherited: **Source:** `MoniTool_TypedValue.hxx`:194 - `MoniTool_TypedValue::ObjectType()`
+    pub fn object_type(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Type> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKXSBase::Interface_TypedValue_inherited_ObjectType(
@@ -17237,7 +15861,7 @@ impl TypedValue {
         }
     }
 
-    /// Inherited: **Source:** `MoniTool_TypedValue.hxx`:202 - `MoniTool_TypedValue::SetInterpret()`
+    /// Inherited: **Source:** `MoniTool_TypedValue.hxx`:197 - `MoniTool_TypedValue::SetInterpret()`
     pub fn set_interpret(&mut self, func: &crate::ffi_types::MoniTool_ValueInterpret) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_TypedValue_inherited_SetInterpret(
@@ -17247,7 +15871,7 @@ impl TypedValue {
         })
     }
 
-    /// Inherited: **Source:** `MoniTool_TypedValue.hxx`:205 - `MoniTool_TypedValue::HasInterpret()`
+    /// Inherited: **Source:** `MoniTool_TypedValue.hxx`:200 - `MoniTool_TypedValue::HasInterpret()`
     pub fn has_interpret(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_TypedValue_inherited_HasInterpret(
@@ -17256,7 +15880,7 @@ impl TypedValue {
         })
     }
 
-    /// Inherited: **Source:** `MoniTool_TypedValue.hxx`:218 - `MoniTool_TypedValue::IsSetValue()`
+    /// Inherited: **Source:** `MoniTool_TypedValue.hxx`:212 - `MoniTool_TypedValue::IsSetValue()`
     pub fn is_set_value(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_TypedValue_inherited_IsSetValue(
@@ -17265,10 +15889,10 @@ impl TypedValue {
         })
     }
 
-    /// Inherited: **Source:** `MoniTool_TypedValue.hxx`:225 - `MoniTool_TypedValue::HStringValue()`
+    /// Inherited: **Source:** `MoniTool_TypedValue.hxx`:219 - `MoniTool_TypedValue::HStringValue()`
     pub fn h_string_value(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleTCollectionHAsciiString> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_TCollection_HAsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKXSBase::Interface_TypedValue_inherited_HStringValue(
@@ -17278,12 +15902,12 @@ impl TypedValue {
         }
     }
 
-    /// Inherited: **Source:** `MoniTool_TypedValue.hxx`:236 - `MoniTool_TypedValue::Interpret()`
+    /// Inherited: **Source:** `MoniTool_TypedValue.hxx`:230 - `MoniTool_TypedValue::Interpret()`
     pub fn interpret(
         &self,
-        hval: &crate::ffi_types::HandleTCollectionHAsciiString,
+        hval: &crate::ffi_types::Handle_TCollection_HAsciiString,
         native: bool,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleTCollectionHAsciiString> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_TCollection_HAsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKXSBase::Interface_TypedValue_inherited_Interpret(
@@ -17295,8 +15919,8 @@ impl TypedValue {
         }
     }
 
-    /// Inherited: **Source:** `MoniTool_TypedValue.hxx`:243 - `MoniTool_TypedValue::Satisfies()`
-    pub fn satisfies(&self, hval: &crate::ffi_types::HandleTCollectionHAsciiString) -> bool {
+    /// Inherited: **Source:** `MoniTool_TypedValue.hxx`:237 - `MoniTool_TypedValue::Satisfies()`
+    pub fn satisfies(&self, hval: &crate::ffi_types::Handle_TCollection_HAsciiString) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_TypedValue_inherited_Satisfies(
                 self as *const Self,
@@ -17305,17 +15929,17 @@ impl TypedValue {
         })
     }
 
-    /// Inherited: **Source:** `MoniTool_TypedValue.hxx`:247 - `MoniTool_TypedValue::ClearValue()`
+    /// Inherited: **Source:** `MoniTool_TypedValue.hxx`:240 - `MoniTool_TypedValue::ClearValue()`
     pub fn clear_value(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_TypedValue_inherited_ClearValue(self as *mut Self)
         })
     }
 
-    /// Inherited: **Source:** `MoniTool_TypedValue.hxx`:264 - `MoniTool_TypedValue::SetHStringValue()`
+    /// Inherited: **Source:** `MoniTool_TypedValue.hxx`:257 - `MoniTool_TypedValue::SetHStringValue()`
     pub fn set_h_string_value(
         &mut self,
-        hval: &crate::ffi_types::HandleTCollectionHAsciiString,
+        hval: &crate::ffi_types::Handle_TCollection_HAsciiString,
     ) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_TypedValue_inherited_SetHStringValue(
@@ -17325,7 +15949,7 @@ impl TypedValue {
         })
     }
 
-    /// Inherited: **Source:** `MoniTool_TypedValue.hxx`:272 - `MoniTool_TypedValue::IntegerValue()`
+    /// Inherited: **Source:** `MoniTool_TypedValue.hxx`:264 - `MoniTool_TypedValue::IntegerValue()`
     pub fn integer_value(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_TypedValue_inherited_IntegerValue(
@@ -17334,7 +15958,7 @@ impl TypedValue {
         })
     }
 
-    /// Inherited: **Source:** `MoniTool_TypedValue.hxx`:275 - `MoniTool_TypedValue::SetIntegerValue()`
+    /// Inherited: **Source:** `MoniTool_TypedValue.hxx`:267 - `MoniTool_TypedValue::SetIntegerValue()`
     pub fn set_integer_value(&mut self, ival: i32) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_TypedValue_inherited_SetIntegerValue(
@@ -17344,7 +15968,7 @@ impl TypedValue {
         })
     }
 
-    /// Inherited: **Source:** `MoniTool_TypedValue.hxx`:279 - `MoniTool_TypedValue::RealValue()`
+    /// Inherited: **Source:** `MoniTool_TypedValue.hxx`:271 - `MoniTool_TypedValue::RealValue()`
     pub fn real_value(&self) -> f64 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_TypedValue_inherited_RealValue(
@@ -17353,7 +15977,7 @@ impl TypedValue {
         })
     }
 
-    /// Inherited: **Source:** `MoniTool_TypedValue.hxx`:282 - `MoniTool_TypedValue::SetRealValue()`
+    /// Inherited: **Source:** `MoniTool_TypedValue.hxx`:274 - `MoniTool_TypedValue::SetRealValue()`
     pub fn set_real_value(&mut self, rval: f64) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_TypedValue_inherited_SetRealValue(
@@ -17363,8 +15987,8 @@ impl TypedValue {
         })
     }
 
-    /// Inherited: **Source:** `MoniTool_TypedValue.hxx`:287 - `MoniTool_TypedValue::ObjectValue()`
-    pub fn object_value(&self) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    /// Inherited: **Source:** `MoniTool_TypedValue.hxx`:279 - `MoniTool_TypedValue::ObjectValue()`
+    pub fn object_value(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKXSBase::Interface_TypedValue_inherited_ObjectValue(
@@ -17374,8 +15998,8 @@ impl TypedValue {
         }
     }
 
-    /// Inherited: **Source:** `MoniTool_TypedValue.hxx`:292 - `MoniTool_TypedValue::GetObjectValue()`
-    pub fn get_object_value(&self, val: &mut crate::ffi_types::HandleStandardTransient) {
+    /// Inherited: **Source:** `MoniTool_TypedValue.hxx`:284 - `MoniTool_TypedValue::GetObjectValue()`
+    pub fn get_object_value(&self, val: &mut crate::ffi_types::Handle_Standard_Transient) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_TypedValue_inherited_GetObjectValue(
                 self as *const Self,
@@ -17384,8 +16008,8 @@ impl TypedValue {
         })
     }
 
-    /// Inherited: **Source:** `MoniTool_TypedValue.hxx`:297 - `MoniTool_TypedValue::SetObjectValue()`
-    pub fn set_object_value(&mut self, obj: &crate::ffi_types::HandleStandardTransient) -> bool {
+    /// Inherited: **Source:** `MoniTool_TypedValue.hxx`:289 - `MoniTool_TypedValue::SetObjectValue()`
+    pub fn set_object_value(&mut self, obj: &crate::ffi_types::Handle_Standard_Transient) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_TypedValue_inherited_SetObjectValue(
                 self as *mut Self,
@@ -17394,8 +16018,8 @@ impl TypedValue {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_TypedValue_inherited_IsInstance(
                 self as *const Self,
@@ -17404,8 +16028,8 @@ impl TypedValue {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_TypedValue_inherited_IsKind(
                 self as *const Self,
@@ -17414,7 +16038,7 @@ impl TypedValue {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -17428,7 +16052,7 @@ impl TypedValue {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_TypedValue_inherited_GetRefCount(
@@ -17437,7 +16061,7 @@ impl TypedValue {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_TypedValue_inherited_IncrementRefCounter(
@@ -17446,7 +16070,7 @@ impl TypedValue {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_TypedValue_inherited_DecrementRefCounter(
@@ -17455,7 +16079,7 @@ impl TypedValue {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_TypedValue_inherited_Delete(self as *const Self)
@@ -17463,36 +16087,36 @@ impl TypedValue {
     }
 }
 
-pub use crate::ffi_types::HandleInterfaceTypedValue;
+pub use crate::ffi_types::Handle_Interface_TypedValue;
 
-unsafe impl crate::CppDeletable for HandleInterfaceTypedValue {
+unsafe impl crate::CppDeletable for Handle_Interface_TypedValue {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKXSBase::HandleInterfaceTypedValue_destructor(ptr);
+            crate::ffi_extern_TKXSBase::Handle_Interface_TypedValue_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleInterfaceTypedValue {
+unsafe impl crate::CppCopyable for Handle_Interface_TypedValue {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
         unsafe {
-            crate::check_result(crate::ffi_extern_TKXSBase::HandleInterfaceTypedValue_clone(ptr))
+            crate::check_result(crate::ffi_extern_TKXSBase::Handle_Interface_TypedValue_clone(ptr))
         }
     }
 }
 
-impl HandleInterfaceTypedValue {
+impl Handle_Interface_TypedValue {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
         unsafe {
-            crate::ffi_extern_TKXSBase::HandleInterfaceTypedValue_is_null(self as *const Self)
+            crate::ffi_extern_TKXSBase::Handle_Interface_TypedValue_is_null(self as *const Self)
         }
     }
 
     /// Dereference this Handle to access the underlying Interface_TypedValue
     pub fn get(&self) -> &crate::ffi_types::Interface_TypedValue {
         unsafe {
-            &*crate::check_result(crate::ffi_extern_TKXSBase::HandleInterfaceTypedValue_get(
+            &*crate::check_result(crate::ffi_extern_TKXSBase::Handle_Interface_TypedValue_get(
                 self as *const Self,
             ))
         }
@@ -17502,7 +16126,7 @@ impl HandleInterfaceTypedValue {
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::Interface_TypedValue {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi_extern_TKXSBase::HandleInterfaceTypedValue_get_mut(self as *mut Self),
+                crate::ffi_extern_TKXSBase::Handle_Interface_TypedValue_get_mut(self as *mut Self),
             )
         }
     }
@@ -17510,26 +16134,18 @@ impl HandleInterfaceTypedValue {
     /// Upcast Handle<Interface_TypedValue> to Handle<MoniTool_TypedValue>
     pub fn to_handle_typed_value(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleMoniToolTypedValue> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_MoniTool_TypedValue> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKXSBase::HandleInterfaceTypedValue_to_HandleMoniToolTypedValue(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKXSBase::Handle_Interface_TypedValue_to_Handle_MoniTool_TypedValue(self as *const Self)))
         }
     }
 
     /// Upcast Handle<Interface_TypedValue> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKXSBase::HandleInterfaceTypedValue_to_HandleStandardTransient(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKXSBase::Handle_Interface_TypedValue_to_Handle_Standard_Transient(self as *const Self)))
         }
     }
 
@@ -17538,11 +16154,9 @@ impl HandleInterfaceTypedValue {
     /// Returns `None` if the handle does not point to a `Interface_Static` (or subclass).
     pub fn downcast_to_static(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleInterfaceStatic>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_Interface_Static>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKXSBase::HandleInterfaceTypedValue_downcast_to_HandleInterfaceStatic(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKXSBase::Handle_Interface_TypedValue_downcast_to_Handle_Interface_Static(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -17556,7 +16170,7 @@ impl HandleInterfaceTypedValue {
 // From Interface_UndefinedContent.hxx
 // ========================
 
-/// **Source:** `Interface_UndefinedContent.hxx`:57 - `Interface_UndefinedContent`
+/// **Source:** `Interface_UndefinedContent.hxx`:55 - `Interface_UndefinedContent`
 /// Defines resources for an "Undefined Entity" : such an Entity
 /// is used to describe an Entity which complies with the Norm,
 /// but of an Unknown Type : hence it is kept under a literal
@@ -17590,7 +16204,7 @@ unsafe impl crate::CppDeletable for UndefinedContent {
 }
 
 impl UndefinedContent {
-    /// **Source:** `Interface_UndefinedContent.hxx`:62 - `Interface_UndefinedContent::Interface_UndefinedContent()`
+    /// **Source:** `Interface_UndefinedContent.hxx`:60 - `Interface_UndefinedContent::Interface_UndefinedContent()`
     /// Defines an empty UndefinedContent
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
@@ -17600,7 +16214,7 @@ impl UndefinedContent {
         }
     }
 
-    /// **Source:** `Interface_UndefinedContent.hxx`:65 - `Interface_UndefinedContent::NbParams()`
+    /// **Source:** `Interface_UndefinedContent.hxx`:63 - `Interface_UndefinedContent::NbParams()`
     /// Gives count of recorded parameters
     pub fn nb_params(&self) -> i32 {
         crate::check_result(unsafe {
@@ -17608,7 +16222,7 @@ impl UndefinedContent {
         })
     }
 
-    /// **Source:** `Interface_UndefinedContent.hxx`:68 - `Interface_UndefinedContent::NbLiterals()`
+    /// **Source:** `Interface_UndefinedContent.hxx`:66 - `Interface_UndefinedContent::NbLiterals()`
     /// Gives count of Literal Parameters
     pub fn nb_literals(&self) -> i32 {
         crate::check_result(unsafe {
@@ -17616,7 +16230,7 @@ impl UndefinedContent {
         })
     }
 
-    /// **Source:** `Interface_UndefinedContent.hxx`:73 - `Interface_UndefinedContent::ParamData()`
+    /// **Source:** `Interface_UndefinedContent.hxx`:71 - `Interface_UndefinedContent::ParamData()`
     /// Returns data of a Parameter : its type, and the entity if it
     /// designates en entity ("ent") or its literal value else ("str")
     /// Returned value (Boolean) : True if it is an Entity, False else
@@ -17624,8 +16238,8 @@ impl UndefinedContent {
         &self,
         num: i32,
         ptype: &mut crate::interface::ParamType,
-        ent: &mut crate::ffi_types::HandleStandardTransient,
-        val: &mut crate::ffi_types::HandleTCollectionHAsciiString,
+        ent: &mut crate::ffi_types::Handle_Standard_Transient,
+        val: &mut crate::ffi_types::Handle_TCollection_HAsciiString,
     ) -> bool {
         let mut ptype_i32_: i32 = (*ptype).into();
         let result_ = crate::check_result(unsafe {
@@ -17641,7 +16255,7 @@ impl UndefinedContent {
         result_
     }
 
-    /// **Source:** `Interface_UndefinedContent.hxx`:80 - `Interface_UndefinedContent::ParamType()`
+    /// **Source:** `Interface_UndefinedContent.hxx`:78 - `Interface_UndefinedContent::ParamType()`
     /// Returns the ParamType of a Param, given its rank
     /// Error if num is not between 1 and NbParams
     pub fn param_type(&self, num: i32) -> crate::interface::ParamType {
@@ -17654,7 +16268,7 @@ impl UndefinedContent {
         .unwrap()
     }
 
-    /// **Source:** `Interface_UndefinedContent.hxx`:84 - `Interface_UndefinedContent::IsParamEntity()`
+    /// **Source:** `Interface_UndefinedContent.hxx`:82 - `Interface_UndefinedContent::IsParamEntity()`
     /// Returns True if a Parameter is recorded as an entity
     /// Error if num is not between 1 and NbParams
     pub fn is_param_entity(&self, num: i32) -> bool {
@@ -17666,12 +16280,12 @@ impl UndefinedContent {
         })
     }
 
-    /// **Source:** `Interface_UndefinedContent.hxx`:87 - `Interface_UndefinedContent::ParamEntity()`
+    /// **Source:** `Interface_UndefinedContent.hxx`:85 - `Interface_UndefinedContent::ParamEntity()`
     /// Returns Entity corresponding to a Param, given its rank
     pub fn param_entity(
         &self,
         num: i32,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKXSBase::Interface_UndefinedContent_param_entity(
@@ -17682,12 +16296,12 @@ impl UndefinedContent {
         }
     }
 
-    /// **Source:** `Interface_UndefinedContent.hxx`:90 - `Interface_UndefinedContent::ParamValue()`
+    /// **Source:** `Interface_UndefinedContent.hxx`:88 - `Interface_UndefinedContent::ParamValue()`
     /// Returns literal value of a Parameter, given its rank
     pub fn param_value(
         &self,
         num: i32,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleTCollectionHAsciiString> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_TCollection_HAsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKXSBase::Interface_UndefinedContent_param_value(
@@ -17698,7 +16312,7 @@ impl UndefinedContent {
         }
     }
 
-    /// **Source:** `Interface_UndefinedContent.hxx`:94 - `Interface_UndefinedContent::Reservate()`
+    /// **Source:** `Interface_UndefinedContent.hxx`:92 - `Interface_UndefinedContent::Reservate()`
     /// Manages reservation for parameters (internal use)
     /// (nb : total count of parameters, nblit : count of literals)
     pub fn reservate(&mut self, nb: i32, nblit: i32) {
@@ -17711,12 +16325,12 @@ impl UndefinedContent {
         })
     }
 
-    /// **Source:** `Interface_UndefinedContent.hxx`:97 - `Interface_UndefinedContent::AddLiteral()`
+    /// **Source:** `Interface_UndefinedContent.hxx`:95 - `Interface_UndefinedContent::AddLiteral()`
     /// Adds a literal Parameter to the list
     pub fn add_literal(
         &mut self,
         ptype: crate::interface::ParamType,
-        val: &crate::ffi_types::HandleTCollectionHAsciiString,
+        val: &crate::ffi_types::Handle_TCollection_HAsciiString,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_UndefinedContent_add_literal(
@@ -17727,12 +16341,12 @@ impl UndefinedContent {
         })
     }
 
-    /// **Source:** `Interface_UndefinedContent.hxx`:101 - `Interface_UndefinedContent::AddEntity()`
+    /// **Source:** `Interface_UndefinedContent.hxx`:99 - `Interface_UndefinedContent::AddEntity()`
     /// Adds a Parameter which references an Entity
     pub fn add_entity(
         &mut self,
         ptype: crate::interface::ParamType,
-        ent: &crate::ffi_types::HandleStandardTransient,
+        ent: &crate::ffi_types::Handle_Standard_Transient,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_UndefinedContent_add_entity(
@@ -17743,7 +16357,7 @@ impl UndefinedContent {
         })
     }
 
-    /// **Source:** `Interface_UndefinedContent.hxx`:105 - `Interface_UndefinedContent::RemoveParam()`
+    /// **Source:** `Interface_UndefinedContent.hxx`:103 - `Interface_UndefinedContent::RemoveParam()`
     /// Removes a Parameter given its rank
     pub fn remove_param(&mut self, num: i32) {
         crate::check_void_result(unsafe {
@@ -17754,14 +16368,14 @@ impl UndefinedContent {
         })
     }
 
-    /// **Source:** `Interface_UndefinedContent.hxx`:109 - `Interface_UndefinedContent::SetLiteral()`
+    /// **Source:** `Interface_UndefinedContent.hxx`:107 - `Interface_UndefinedContent::SetLiteral()`
     /// Sets a new value for the Parameter <num>, to a literal value
     /// (if it referenced formerly an Entity, this Entity is removed)
     pub fn set_literal(
         &mut self,
         num: i32,
         ptype: crate::interface::ParamType,
-        val: &crate::ffi_types::HandleTCollectionHAsciiString,
+        val: &crate::ffi_types::Handle_TCollection_HAsciiString,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_UndefinedContent_set_literal(
@@ -17773,34 +16387,34 @@ impl UndefinedContent {
         })
     }
 
-    /// **Source:** `Interface_UndefinedContent.hxx`:115 - `Interface_UndefinedContent::SetEntity()`
+    /// **Source:** `Interface_UndefinedContent.hxx`:113 - `Interface_UndefinedContent::SetEntity()`
     /// Sets a new value for the Parameter <num>, to reference an
     /// Entity. To simply change the Entity, see the variant below
     pub fn set_entity_int_paramtype_handlestandardtransient(
         &mut self,
         num: i32,
         ptype: crate::interface::ParamType,
-        ent: &crate::ffi_types::HandleStandardTransient,
+        ent: &crate::ffi_types::Handle_Standard_Transient,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_UndefinedContent_set_entity_int_paramtype_handlestandardtransient(self as *mut Self, num, ptype.into(), ent)
         })
     }
 
-    /// **Source:** `Interface_UndefinedContent.hxx`:121 - `Interface_UndefinedContent::SetEntity()`
+    /// **Source:** `Interface_UndefinedContent.hxx`:119 - `Interface_UndefinedContent::SetEntity()`
     /// Changes the Entity referenced by the Parameter <num>
     /// (with same ParamType)
     pub fn set_entity_int_handlestandardtransient(
         &mut self,
         num: i32,
-        ent: &crate::ffi_types::HandleStandardTransient,
+        ent: &crate::ffi_types::Handle_Standard_Transient,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_UndefinedContent_set_entity_int_handlestandardtransient(self as *mut Self, num, ent)
         })
     }
 
-    /// **Source:** `Interface_UndefinedContent.hxx`:125 - `Interface_UndefinedContent::EntityList()`
+    /// **Source:** `Interface_UndefinedContent.hxx`:123 - `Interface_UndefinedContent::EntityList()`
     /// Returns globally the list of param entities. Note that it can
     /// be used as shared entity list for the UndefinedEntity
     pub fn entity_list(&self) -> crate::OwnedPtr<EntityList> {
@@ -17813,13 +16427,13 @@ impl UndefinedContent {
         }
     }
 
-    /// **Source:** `Interface_UndefinedContent.hxx`:130 - `Interface_UndefinedContent::GetFromAnother()`
+    /// **Source:** `Interface_UndefinedContent.hxx`:128 - `Interface_UndefinedContent::GetFromAnother()`
     /// Copies contents of undefined entities; deigned to be called by
     /// GetFromAnother method from Undefined entity of each Interface
     /// (the basic operation is the same regardless the norm)
     pub fn get_from_another(
         &mut self,
-        other: &crate::ffi_types::HandleInterfaceUndefinedContent,
+        other: &crate::ffi_types::Handle_Interface_UndefinedContent,
         TC: &mut CopyTool,
     ) {
         crate::check_void_result(unsafe {
@@ -17831,8 +16445,8 @@ impl UndefinedContent {
         })
     }
 
-    /// **Source:** `Interface_UndefinedContent.hxx`:133 - `Interface_UndefinedContent::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `Interface_UndefinedContent.hxx`:131 - `Interface_UndefinedContent::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKXSBase::Interface_UndefinedContent_dynamic_type(
@@ -17842,7 +16456,7 @@ impl UndefinedContent {
         }
     }
 
-    /// **Source:** `Interface_UndefinedContent.hxx`:133 - `Interface_UndefinedContent::get_type_name()`
+    /// **Source:** `Interface_UndefinedContent.hxx`:131 - `Interface_UndefinedContent::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -17853,8 +16467,8 @@ impl UndefinedContent {
         .into_owned()
     }
 
-    /// **Source:** `Interface_UndefinedContent.hxx`:133 - `Interface_UndefinedContent::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    /// **Source:** `Interface_UndefinedContent.hxx`:131 - `Interface_UndefinedContent::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKXSBase::Interface_UndefinedContent_get_type_descriptor(),
@@ -17887,7 +16501,7 @@ impl UndefinedContent {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleInterfaceUndefinedContent> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Interface_UndefinedContent> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKXSBase::Interface_UndefinedContent_to_handle(obj.into_raw()),
@@ -17895,8 +16509,8 @@ impl UndefinedContent {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_UndefinedContent_inherited_IsInstance(
                 self as *const Self,
@@ -17905,8 +16519,8 @@ impl UndefinedContent {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_UndefinedContent_inherited_IsKind(
                 self as *const Self,
@@ -17915,7 +16529,7 @@ impl UndefinedContent {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -17931,7 +16545,7 @@ impl UndefinedContent {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_UndefinedContent_inherited_GetRefCount(
@@ -17940,7 +16554,7 @@ impl UndefinedContent {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_UndefinedContent_inherited_IncrementRefCounter(
@@ -17949,7 +16563,7 @@ impl UndefinedContent {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_UndefinedContent_inherited_DecrementRefCounter(
@@ -17958,7 +16572,7 @@ impl UndefinedContent {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKXSBase::Interface_UndefinedContent_inherited_Delete(
@@ -17968,40 +16582,44 @@ impl UndefinedContent {
     }
 }
 
-pub use crate::ffi_types::HandleInterfaceUndefinedContent;
+pub use crate::ffi_types::Handle_Interface_UndefinedContent;
 
-unsafe impl crate::CppDeletable for HandleInterfaceUndefinedContent {
+unsafe impl crate::CppDeletable for Handle_Interface_UndefinedContent {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKXSBase::HandleInterfaceUndefinedContent_destructor(ptr);
+            crate::ffi_extern_TKXSBase::Handle_Interface_UndefinedContent_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleInterfaceUndefinedContent {
+unsafe impl crate::CppCopyable for Handle_Interface_UndefinedContent {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
         unsafe {
-            crate::check_result(crate::ffi_extern_TKXSBase::HandleInterfaceUndefinedContent_clone(
-                ptr,
-            ))
+            crate::check_result(
+                crate::ffi_extern_TKXSBase::Handle_Interface_UndefinedContent_clone(ptr),
+            )
         }
     }
 }
 
-impl HandleInterfaceUndefinedContent {
+impl Handle_Interface_UndefinedContent {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
         unsafe {
-            crate::ffi_extern_TKXSBase::HandleInterfaceUndefinedContent_is_null(self as *const Self)
+            crate::ffi_extern_TKXSBase::Handle_Interface_UndefinedContent_is_null(
+                self as *const Self,
+            )
         }
     }
 
     /// Dereference this Handle to access the underlying Interface_UndefinedContent
     pub fn get(&self) -> &crate::ffi_types::Interface_UndefinedContent {
         unsafe {
-            &*crate::check_result(crate::ffi_extern_TKXSBase::HandleInterfaceUndefinedContent_get(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKXSBase::Handle_Interface_UndefinedContent_get(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -18009,7 +16627,7 @@ impl HandleInterfaceUndefinedContent {
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::Interface_UndefinedContent {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi_extern_TKXSBase::HandleInterfaceUndefinedContent_get_mut(
+                crate::ffi_extern_TKXSBase::Handle_Interface_UndefinedContent_get_mut(
                     self as *mut Self,
                 ),
             )
@@ -18019,19 +16637,9 @@ impl HandleInterfaceUndefinedContent {
     /// Upcast Handle<Interface_UndefinedContent> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKXSBase::HandleInterfaceUndefinedContent_to_HandleStandardTransient(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKXSBase::Handle_Interface_UndefinedContent_to_Handle_Standard_Transient(self as *const Self)))
         }
     }
 }
-
-// ========================
-// Additional type re-exports
-// ========================
-
-pub use crate::ffi_types::{
-    Interface_Array1OfHAsciiString as Array1OfHAsciiString,
-    Interface_IndexedMapOfAsciiString as IndexedMapOfAsciiString,
-    Interface_SequenceOfCheck as SequenceOfCheck,
-};

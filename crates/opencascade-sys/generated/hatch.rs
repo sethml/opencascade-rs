@@ -39,39 +39,39 @@ impl TryFrom<i32> for LineForm {
 // From Hatch_Hatcher.hxx
 // ========================
 
-/// **Source:** `Hatch_Hatcher.hxx`:63 - `Hatch_Hatcher`
-/// The Hatcher   is  an algorithm  to   compute cross
+/// **Source:** `Hatch_Hatcher.hxx`:64 - `Hatch_Hatcher`
+/// The Hatcher is an algorithm to compute cross
 /// hatchings in a 2d plane. It is mainly dedicated to
 /// display purpose.
 ///
 /// Computing cross hatchings is a 3 steps process :
 ///
-/// 1.  The users stores in the   Hatcher a set  of 2d
-/// lines to   be  trimmed. Methods   in  the  "Lines"
+/// 1. The users stores in the Hatcher a set of 2d
+/// lines to be trimmed. Methods in the "Lines"
 /// category.
 ///
-/// 2.  The user trims the lines with a boundary.  The
-/// inside of a boundary is on the left side.  Methods
+/// 2. The user trims the lines with a boundary. The
+/// inside of a boundary is on the left side. Methods
 /// in the "Trimming" category.
 ///
-/// 3. The user reads  back the trimmed lines. Methods
+/// 3. The user reads back the trimmed lines. Methods
 /// in the "Results" category.
 ///
-/// The result is a set of parameter intervals  on the
-/// line. The first  parameter of an  Interval may  be
+/// The result is a set of parameter intervals on the
+/// line. The first parameter of an Interval may be
 /// RealFirst() and the last may be RealLast().
 ///
-/// A line can be a line parallel to the axis (X  or Y
+/// A line can be a line parallel to the axis (X or Y
 /// line or a 2D line.
 ///
 /// The Hatcher has two modes :
 ///
-/// *  The "Oriented" mode,  where the  orientation of
-/// the trimming curves is  considered. The  hatch are
-/// kept on  the left of  the  trimming curve. In this
+/// * The "Oriented" mode, where the orientation of
+/// the trimming curves is considered. The hatch are
+/// kept on the left of the trimming curve. In this
 /// mode infinite hatch can be computed.
 ///
-/// *   The "UnOriented"  mode,  where  the  hatch are
+/// * The "UnOriented" mode, where the hatch are
 /// always finite.
 pub use crate::ffi_types::Hatch_Hatcher as Hatcher;
 
@@ -84,8 +84,8 @@ unsafe impl crate::CppDeletable for Hatcher {
 }
 
 impl Hatcher {
-    /// **Source:** `Hatch_Hatcher.hxx`:70 - `Hatch_Hatcher::Hatch_Hatcher()`
-    /// Returns a empty  hatcher.  <Tol> is the  tolerance
+    /// **Source:** `Hatch_Hatcher.hxx`:71 - `Hatch_Hatcher::Hatch_Hatcher()`
+    /// Returns an empty hatcher. <Tol> is the tolerance
     /// for intersections.
     pub fn new_real_bool(Tol: f64, Oriented: bool) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -95,8 +95,8 @@ impl Hatcher {
         }
     }
 
-    /// **Source:** `Hatch_Hatcher.hxx`:70 - `Hatch_Hatcher::Hatch_Hatcher()`
-    /// Returns a empty  hatcher.  <Tol> is the  tolerance
+    /// **Source:** `Hatch_Hatcher.hxx`:71 - `Hatch_Hatcher::Hatch_Hatcher()`
+    /// Returns an empty hatcher. <Tol> is the tolerance
     /// for intersections.
     pub fn new_real(Tol: f64) -> crate::OwnedPtr<Self> {
         Self::new_real_bool(Tol, true)
@@ -117,8 +117,8 @@ impl Hatcher {
     }
 
     /// **Source:** `Hatch_Hatcher.hxx`:80 - `Hatch_Hatcher::AddLine()`
-    /// Add a line <L>  to  be trimmed.   <T> the  type is
-    /// only kept from information. It is not used  in the
+    /// Add a line <L> to be trimmed. <T> the type is
+    /// only kept from information. It is not used in the
     /// computation.
     pub fn add_line_lin2d_lineform(&mut self, L: &crate::gp::Lin2d, T: crate::hatch::LineForm) {
         crate::check_void_result(unsafe {
@@ -131,11 +131,11 @@ impl Hatcher {
     }
 
     /// **Source:** `Hatch_Hatcher.hxx`:93 - `Hatch_Hatcher::AddLine()`
-    /// Add an infinite line on  direction <D> at distance
-    /// <Dist> from the origin  to be  trimmed. <Dist> may
+    /// Add an infinite line on direction <D> at distance
+    /// <Dist> from the origin to be trimmed. <Dist> may
     /// be negative.
     ///
-    /// If O  is the origin  of the  2D plane, and   V the
+    /// If O is the origin of the 2D plane, and V the
     /// vector perpendicular to D (in the direct direction).
     ///
     /// A point P is on the line if :
@@ -153,7 +153,7 @@ impl Hatcher {
     }
 
     /// **Source:** `Hatch_Hatcher.hxx`:97 - `Hatch_Hatcher::AddXLine()`
-    /// Add an infinite line   parallel to the Y-axis   at
+    /// Add an infinite line parallel to the Y-axis at
     /// abciss <X>.
     pub fn add_x_line(&mut self, X: f64) {
         crate::check_void_result(unsafe {
@@ -162,7 +162,7 @@ impl Hatcher {
     }
 
     /// **Source:** `Hatch_Hatcher.hxx`:101 - `Hatch_Hatcher::AddYLine()`
-    /// Add an infinite line   parallel to the X-axis   at
+    /// Add an infinite line parallel to the X-axis at
     /// ordinate <Y>.
     pub fn add_y_line(&mut self, Y: f64) {
         crate::check_void_result(unsafe {
@@ -171,7 +171,7 @@ impl Hatcher {
     }
 
     /// **Source:** `Hatch_Hatcher.hxx`:104 - `Hatch_Hatcher::Trim()`
-    /// Trims the lines at intersections with  <L>.
+    /// Trims the lines at intersections with <L>.
     pub fn trim_lin2d_int(&mut self, L: &crate::gp::Lin2d, Index: i32) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::Hatch_Hatcher_trim_lin2d_int(self as *mut Self, L, Index)
@@ -179,7 +179,7 @@ impl Hatcher {
     }
 
     /// **Source:** `Hatch_Hatcher.hxx`:108 - `Hatch_Hatcher::Trim()`
-    /// Trims the lines at intersections  with <L>  in the
+    /// Trims the lines at intersections with <L> in the
     /// parameter range <Start>, <End>
     pub fn trim_lin2d_real2_int(&mut self, L: &crate::gp::Lin2d, Start: f64, End: f64, Index: i32) {
         crate::check_void_result(unsafe {
@@ -194,7 +194,7 @@ impl Hatcher {
     }
 
     /// **Source:** `Hatch_Hatcher.hxx`:115 - `Hatch_Hatcher::Trim()`
-    /// Trims the line at  intersection with  the oriented
+    /// Trims the line at intersection with the oriented
     /// segment P1,P2.
     pub fn trim_pnt2d2_int(&mut self, P1: &crate::gp::Pnt2d, P2: &crate::gp::Pnt2d, Index: i32) {
         crate::check_void_result(unsafe {
@@ -207,8 +207,8 @@ impl Hatcher {
         })
     }
 
-    /// **Source:** `Hatch_Hatcher.hxx`:121 - `Hatch_Hatcher::NbIntervals()`
-    /// Returns the total number  of intervals on  all the
+    /// **Source:** `Hatch_Hatcher.hxx`:119 - `Hatch_Hatcher::NbIntervals()`
+    /// Returns the total number of intervals on all the
     /// lines.
     pub fn nb_intervals(&self) -> i32 {
         crate::check_result(unsafe {
@@ -216,7 +216,7 @@ impl Hatcher {
         })
     }
 
-    /// **Source:** `Hatch_Hatcher.hxx`:124 - `Hatch_Hatcher::NbLines()`
+    /// **Source:** `Hatch_Hatcher.hxx`:122 - `Hatch_Hatcher::NbLines()`
     /// Returns the number of lines.
     pub fn nb_lines(&self) -> i32 {
         crate::check_result(unsafe {
@@ -224,7 +224,7 @@ impl Hatcher {
         })
     }
 
-    /// **Source:** `Hatch_Hatcher.hxx`:127 - `Hatch_Hatcher::Line()`
+    /// **Source:** `Hatch_Hatcher.hxx`:125 - `Hatch_Hatcher::Line()`
     /// Returns the line of index <I>.
     pub fn line(&self, I: i32) -> &crate::gp::Lin2d {
         unsafe {
@@ -235,8 +235,8 @@ impl Hatcher {
         }
     }
 
-    /// **Source:** `Hatch_Hatcher.hxx`:130 - `Hatch_Hatcher::LineForm()`
-    /// Returns  the type of the  line   of  index <I>.
+    /// **Source:** `Hatch_Hatcher.hxx`:128 - `Hatch_Hatcher::LineForm()`
+    /// Returns the type of the line of index <I>.
     pub fn line_form(&self, I: i32) -> crate::hatch::LineForm {
         crate::hatch::LineForm::try_from(crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::Hatch_Hatcher_line_form(self as *const Self, I)
@@ -244,8 +244,8 @@ impl Hatcher {
         .unwrap()
     }
 
-    /// **Source:** `Hatch_Hatcher.hxx`:134 - `Hatch_Hatcher::IsXLine()`
-    /// Returns  True if the  line   of  index <I>  has  a
+    /// **Source:** `Hatch_Hatcher.hxx`:132 - `Hatch_Hatcher::IsXLine()`
+    /// Returns True if the line of index <I> has a
     /// constant X value.
     pub fn is_x_line(&self, I: i32) -> bool {
         crate::check_result(unsafe {
@@ -253,8 +253,8 @@ impl Hatcher {
         })
     }
 
-    /// **Source:** `Hatch_Hatcher.hxx`:138 - `Hatch_Hatcher::IsYLine()`
-    /// Returns  True if the  line   of  index <I>  has  a
+    /// **Source:** `Hatch_Hatcher.hxx`:136 - `Hatch_Hatcher::IsYLine()`
+    /// Returns True if the line of index <I> has a
     /// constant Y value.
     pub fn is_y_line(&self, I: i32) -> bool {
         crate::check_result(unsafe {
@@ -262,7 +262,7 @@ impl Hatcher {
         })
     }
 
-    /// **Source:** `Hatch_Hatcher.hxx`:142 - `Hatch_Hatcher::Coordinate()`
+    /// **Source:** `Hatch_Hatcher.hxx`:140 - `Hatch_Hatcher::Coordinate()`
     /// Returns the X or Y coordinate of the line of index
     /// <I> if it is a X or a Y line.
     pub fn coordinate(&self, I: i32) -> f64 {
@@ -271,7 +271,7 @@ impl Hatcher {
         })
     }
 
-    /// **Source:** `Hatch_Hatcher.hxx`:145 - `Hatch_Hatcher::NbIntervals()`
+    /// **Source:** `Hatch_Hatcher.hxx`:143 - `Hatch_Hatcher::NbIntervals()`
     /// Returns the number of intervals on line of index <I>.
     pub fn nb_intervals_int(&self, I: i32) -> i32 {
         crate::check_result(unsafe {
@@ -279,18 +279,18 @@ impl Hatcher {
         })
     }
 
-    /// **Source:** `Hatch_Hatcher.hxx`:149 - `Hatch_Hatcher::Start()`
-    /// Returns the first   parameter of  interval <J>  on
-    /// line  <I>.
+    /// **Source:** `Hatch_Hatcher.hxx`:147 - `Hatch_Hatcher::Start()`
+    /// Returns the first parameter of interval <J> on
+    /// line <I>.
     pub fn start(&self, I: i32, J: i32) -> f64 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::Hatch_Hatcher_start(self as *const Self, I, J)
         })
     }
 
-    /// **Source:** `Hatch_Hatcher.hxx`:153 - `Hatch_Hatcher::StartIndex()`
-    /// Returns the first Index and Par2 of  interval <J>  on
-    /// line  <I>.
+    /// **Source:** `Hatch_Hatcher.hxx`:151 - `Hatch_Hatcher::StartIndex()`
+    /// Returns the first Index and Par2 of interval <J> on
+    /// line <I>.
     pub fn start_index(&self, I: i32, J: i32, Index: &mut i32, Par2: &mut f64) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::Hatch_Hatcher_start_index(
@@ -303,18 +303,18 @@ impl Hatcher {
         })
     }
 
-    /// **Source:** `Hatch_Hatcher.hxx`:160 - `Hatch_Hatcher::End()`
-    /// Returns the last   parameter of  interval <J>  on
-    /// line  <I>.
+    /// **Source:** `Hatch_Hatcher.hxx`:155 - `Hatch_Hatcher::End()`
+    /// Returns the last parameter of interval <J> on
+    /// line <I>.
     pub fn end(&self, I: i32, J: i32) -> f64 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::Hatch_Hatcher_end(self as *const Self, I, J)
         })
     }
 
-    /// **Source:** `Hatch_Hatcher.hxx`:164 - `Hatch_Hatcher::EndIndex()`
-    /// Returns the last Index and Par2 of  interval <J>  on
-    /// line  <I>.
+    /// **Source:** `Hatch_Hatcher.hxx`:159 - `Hatch_Hatcher::EndIndex()`
+    /// Returns the last Index and Par2 of interval <J> on
+    /// line <I>.
     pub fn end_index(&self, I: i32, J: i32, Index: &mut i32, Par2: &mut f64) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::Hatch_Hatcher_end_index(
@@ -332,14 +332,14 @@ impl Hatcher {
 // From Hatch_Line.hxx
 // ========================
 
-/// **Source:** `Hatch_Line.hxx`:36 - `Hatch_Line`
-/// Stores a Line in the Hatcher. Represented by :
+/// **Source:** `Hatch_Line.hxx`:37 - `Hatch_Line`
+/// Stores a Line in the Hatcher. Represented by:
 ///
 /// * A Lin2d from gp, the geometry of the line.
 ///
 /// * Bounding parameters for the line.
 ///
-/// * A sorted List  of Parameters, the  intersections
+/// * A sorted List of Parameters, the intersections
 /// on the line.
 pub use crate::ffi_types::Hatch_Line as Line;
 
@@ -352,7 +352,7 @@ unsafe impl crate::CppDeletable for Line {
 }
 
 impl Line {
-    /// **Source:** `Hatch_Line.hxx`:41 - `Hatch_Line::Hatch_Line()`
+    /// **Source:** `Hatch_Line.hxx`:42 - `Hatch_Line::Hatch_Line()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -361,7 +361,7 @@ impl Line {
         }
     }
 
-    /// **Source:** `Hatch_Line.hxx`:43 - `Hatch_Line::Hatch_Line()`
+    /// **Source:** `Hatch_Line.hxx`:44 - `Hatch_Line::Hatch_Line()`
     pub fn new_lin2d_lineform(
         L: &crate::gp::Lin2d,
         T: crate::hatch::LineForm,
@@ -373,7 +373,7 @@ impl Line {
         }
     }
 
-    /// **Source:** `Hatch_Line.hxx`:46 - `Hatch_Line::AddIntersection()`
+    /// **Source:** `Hatch_Line.hxx`:47 - `Hatch_Line::AddIntersection()`
     /// Insert a new intersection in the sorted list.
     pub fn add_intersection(
         &mut self,

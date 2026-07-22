@@ -16,7 +16,7 @@
 /// -   the services provided by a 2D curve from the package Geom2d,
 /// -   and those required on the curve by a computation algorithm.
 /// The adapted curve is created in the following way:
-/// Handle(Geom2d_Curve) mycurve = ...
+/// occ::handle<Geom2d_Curve> mycurve = ...
 /// ;
 /// Geom2dAdaptor_Curve Obj ( mycurve )
 /// ;
@@ -39,7 +39,7 @@ pub fn unqualified_curve(Obj: &crate::geom2d_adaptor::Curve) -> crate::OwnedPtr<
 /// -   the services provided by a 2D curve from the package Geom2d,
 /// -   and those required on the curve by a computation algorithm.
 /// The adapted curve is created in the following way:
-/// Handle(Geom2d_Curve) mycurve = ...
+/// occ::handle<Geom2d_Curve> mycurve = ...
 /// ;
 /// Geom2dAdaptor_Curve Obj ( mycurve )
 /// ;
@@ -62,7 +62,7 @@ pub fn enclosing_curve(Obj: &crate::geom2d_adaptor::Curve) -> crate::OwnedPtr<Qu
 /// -   the services provided by a 2D curve from the package Geom2d,
 /// -   and those required on the curve by a computation algorithm.
 /// The adapted curve is created in the following way:
-/// Handle(Geom2d_Curve) mycurve = ...
+/// occ::handle<Geom2d_Curve> mycurve = ...
 /// ;
 /// Geom2dAdaptor_Curve Obj ( mycurve )
 /// ;
@@ -85,7 +85,7 @@ pub fn enclosed_curve(Obj: &crate::geom2d_adaptor::Curve) -> crate::OwnedPtr<Qua
 /// -   the services provided by a 2D curve from the package Geom2d,
 /// -   and those required on the curve by a computation algorithm.
 /// The adapted curve is created in the following way:
-/// Handle(Geom2d_Curve) mycurve = ...
+/// occ::handle<Geom2d_Curve> mycurve = ...
 /// ;
 /// Geom2dAdaptor_Curve Obj ( mycurve )
 /// ;
@@ -206,16 +206,11 @@ impl TryFrom<i32> for Type3 {
     }
 }
 
-// Handle type re-exports (targets of handle upcasts/downcasts)
-pub use crate::ffi_types::{
-    HandleStandardDomainError, HandleStandardFailure, HandleStandardTransient,
-};
-
 // ========================
 // From Geom2dGcc_Circ2d2TanOn.hxx
 // ========================
 
-/// **Source:** `Geom2dGcc_Circ2d2TanOn.hxx`:50 - `Geom2dGcc_Circ2d2TanOn`
+/// **Source:** `Geom2dGcc_Circ2d2TanOn.hxx`:48 - `Geom2dGcc_Circ2d2TanOn`
 /// This class implements the algorithms used to
 /// create 2d circles TANgent to 2 entities and
 /// having the center ON a curve.
@@ -238,7 +233,7 @@ unsafe impl crate::CppDeletable for Circ2d2TanOn {
 }
 
 impl Circ2d2TanOn {
-    /// **Source:** `Geom2dGcc_Circ2d2TanOn.hxx`:62 - `Geom2dGcc_Circ2d2TanOn::Geom2dGcc_Circ2d2TanOn()`
+    /// **Source:** `Geom2dGcc_Circ2d2TanOn.hxx`:60 - `Geom2dGcc_Circ2d2TanOn::Geom2dGcc_Circ2d2TanOn()`
     /// This method implements the algorithms used to
     /// create 2d circles TANgent to two curves and
     /// having the center ON a 2d curve.
@@ -260,7 +255,7 @@ impl Circ2d2TanOn {
         }
     }
 
-    /// **Source:** `Geom2dGcc_Circ2d2TanOn.hxx`:76 - `Geom2dGcc_Circ2d2TanOn::Geom2dGcc_Circ2d2TanOn()`
+    /// **Source:** `Geom2dGcc_Circ2d2TanOn.hxx`:74 - `Geom2dGcc_Circ2d2TanOn::Geom2dGcc_Circ2d2TanOn()`
     /// This method implements the algorithms used to
     /// create 2d circles TANgent to one curve and one point and
     /// having the center ON a 2d curve.
@@ -269,7 +264,7 @@ impl Circ2d2TanOn {
     /// Tolerance is used for the limit cases.
     pub fn new_qualifiedcurve_handlegeom2dpoint_curve_real3(
         Qualified1: &QualifiedCurve,
-        Point: &crate::ffi_types::HandleGeom2dPoint,
+        Point: &crate::ffi_types::Handle_Geom2d_Point,
         OnCurve: &crate::geom2d_adaptor::Curve,
         Tolerance: f64,
         Param1: f64,
@@ -280,14 +275,14 @@ impl Circ2d2TanOn {
         }
     }
 
-    /// **Source:** `Geom2dGcc_Circ2d2TanOn.hxx`:87 - `Geom2dGcc_Circ2d2TanOn::Geom2dGcc_Circ2d2TanOn()`
+    /// **Source:** `Geom2dGcc_Circ2d2TanOn.hxx`:85 - `Geom2dGcc_Circ2d2TanOn::Geom2dGcc_Circ2d2TanOn()`
     /// This method implements the algorithms used to
     /// create 2d circles TANgent to two points and
     /// having the center ON a 2d curve.
     /// Tolerance is used for the limit cases.
     pub fn new_handlegeom2dpoint2_curve_real(
-        Point1: &crate::ffi_types::HandleGeom2dPoint,
-        Point2: &crate::ffi_types::HandleGeom2dPoint,
+        Point1: &crate::ffi_types::Handle_Geom2d_Point,
+        Point2: &crate::ffi_types::Handle_Geom2d_Point,
         OnCurve: &crate::geom2d_adaptor::Curve,
         Tolerance: f64,
     ) -> crate::OwnedPtr<Self> {
@@ -296,7 +291,7 @@ impl Circ2d2TanOn {
         }
     }
 
-    /// **Source:** `Geom2dGcc_Circ2d2TanOn.hxx`:92 - `Geom2dGcc_Circ2d2TanOn::Results()`
+    /// **Source:** `Geom2dGcc_Circ2d2TanOn.hxx`:90 - `Geom2dGcc_Circ2d2TanOn::Results()`
     pub fn results_circ2d2tanon(&mut self, Circ: &crate::gcc_ana::Circ2d2TanOn) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::Geom2dGcc_Circ2d2TanOn_results_circ2d2tanon(
@@ -306,7 +301,7 @@ impl Circ2d2TanOn {
         })
     }
 
-    /// **Source:** `Geom2dGcc_Circ2d2TanOn.hxx`:94 - `Geom2dGcc_Circ2d2TanOn::Results()`
+    /// **Source:** `Geom2dGcc_Circ2d2TanOn.hxx`:92 - `Geom2dGcc_Circ2d2TanOn::Results()`
     pub fn results_circ2d2tanongeo(&mut self, Circ: &Circ2d2TanOnGeo) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::Geom2dGcc_Circ2d2TanOn_results_circ2d2tanongeo(
@@ -316,7 +311,7 @@ impl Circ2d2TanOn {
         })
     }
 
-    /// **Source:** `Geom2dGcc_Circ2d2TanOn.hxx`:101 - `Geom2dGcc_Circ2d2TanOn::IsDone()`
+    /// **Source:** `Geom2dGcc_Circ2d2TanOn.hxx`:99 - `Geom2dGcc_Circ2d2TanOn::IsDone()`
     /// Returns true if the construction algorithm does not fail
     /// (even if it finds no solution).
     /// Note: IsDone protects against a failure arising from a
@@ -328,7 +323,7 @@ impl Circ2d2TanOn {
         })
     }
 
-    /// **Source:** `Geom2dGcc_Circ2d2TanOn.hxx`:105 - `Geom2dGcc_Circ2d2TanOn::NbSolutions()`
+    /// **Source:** `Geom2dGcc_Circ2d2TanOn.hxx`:103 - `Geom2dGcc_Circ2d2TanOn::NbSolutions()`
     /// This method returns the number of solutions.
     /// NotDone is raised if the algorithm failed.
     pub fn nb_solutions(&self) -> i32 {
@@ -337,7 +332,7 @@ impl Circ2d2TanOn {
         })
     }
 
-    /// **Source:** `Geom2dGcc_Circ2d2TanOn.hxx`:117 - `Geom2dGcc_Circ2d2TanOn::ThisSolution()`
+    /// **Source:** `Geom2dGcc_Circ2d2TanOn.hxx`:115 - `Geom2dGcc_Circ2d2TanOn::ThisSolution()`
     /// Returns the solution number Index and raises OutOfRange
     /// exception if Index is greater than the number of solutions.
     /// Be careful: the Index is only a way to get all the
@@ -359,7 +354,7 @@ impl Circ2d2TanOn {
         }
     }
 
-    /// **Source:** `Geom2dGcc_Circ2d2TanOn.hxx`:129 - `Geom2dGcc_Circ2d2TanOn::WhichQualifier()`
+    /// **Source:** `Geom2dGcc_Circ2d2TanOn.hxx`:127 - `Geom2dGcc_Circ2d2TanOn::WhichQualifier()`
     /// It returns the information about the qualifiers of
     /// the tangency
     /// arguments concerning the solution number Index.
@@ -390,7 +385,7 @@ impl Circ2d2TanOn {
         *Qualif2 = crate::gcc_ent::Position::try_from(Qualif2_i32_).unwrap();
     }
 
-    /// **Source:** `Geom2dGcc_Circ2d2TanOn.hxx`:137 - `Geom2dGcc_Circ2d2TanOn::Tangency1()`
+    /// **Source:** `Geom2dGcc_Circ2d2TanOn.hxx`:135 - `Geom2dGcc_Circ2d2TanOn::Tangency1()`
     /// Returns information about the tangency point between the
     /// result and the first argument.
     /// ParSol is the intrinsic parameter of the point PntSol on the solution curv.
@@ -413,7 +408,7 @@ impl Circ2d2TanOn {
         })
     }
 
-    /// **Source:** `Geom2dGcc_Circ2d2TanOn.hxx`:146 - `Geom2dGcc_Circ2d2TanOn::Tangency2()`
+    /// **Source:** `Geom2dGcc_Circ2d2TanOn.hxx`:144 - `Geom2dGcc_Circ2d2TanOn::Tangency2()`
     /// Returns information about the tangency point between the
     /// result and the second argument.
     /// ParSol is the intrinsic parameter of the point PntSol on the solution curv.
@@ -436,7 +431,7 @@ impl Circ2d2TanOn {
         })
     }
 
-    /// **Source:** `Geom2dGcc_Circ2d2TanOn.hxx`:158 - `Geom2dGcc_Circ2d2TanOn::CenterOn3()`
+    /// **Source:** `Geom2dGcc_Circ2d2TanOn.hxx`:156 - `Geom2dGcc_Circ2d2TanOn::CenterOn3()`
     /// Returns the center PntSol of the solution of index Index
     /// computed by this algorithm.
     /// ParArg is the parameter of the point PntSol on the third argument.
@@ -455,7 +450,7 @@ impl Circ2d2TanOn {
         })
     }
 
-    /// **Source:** `Geom2dGcc_Circ2d2TanOn.hxx`:175 - `Geom2dGcc_Circ2d2TanOn::IsTheSame1()`
+    /// **Source:** `Geom2dGcc_Circ2d2TanOn.hxx`:171 - `Geom2dGcc_Circ2d2TanOn::IsTheSame1()`
     /// Returns true if the solution of index Index and,
     /// respectively, the first or second argument of this
     /// algorithm are the same (i.e. there are 2 identical circles).
@@ -478,7 +473,7 @@ impl Circ2d2TanOn {
         })
     }
 
-    /// **Source:** `Geom2dGcc_Circ2d2TanOn.hxx`:190 - `Geom2dGcc_Circ2d2TanOn::IsTheSame2()`
+    /// **Source:** `Geom2dGcc_Circ2d2TanOn.hxx`:186 - `Geom2dGcc_Circ2d2TanOn::IsTheSame2()`
     /// Returns true if the solution of index Index and,
     /// respectively, the first or second argument of this
     /// algorithm are the same (i.e. there are 2 identical circles).
@@ -506,7 +501,7 @@ impl Circ2d2TanOn {
 // From Geom2dGcc_Circ2d2TanOnGeo.hxx
 // ========================
 
-/// **Source:** `Geom2dGcc_Circ2d2TanOnGeo.hxx`:47 - `Geom2dGcc_Circ2d2TanOnGeo`
+/// **Source:** `Geom2dGcc_Circ2d2TanOnGeo.hxx`:45 - `Geom2dGcc_Circ2d2TanOnGeo`
 /// This class implements the algorithms used to
 /// create 2d circles TANgent to 2 entities and
 /// having the center ON a curve.
@@ -529,7 +524,7 @@ unsafe impl crate::CppDeletable for Circ2d2TanOnGeo {
 }
 
 impl Circ2d2TanOnGeo {
-    /// **Source:** `Geom2dGcc_Circ2d2TanOnGeo.hxx`:55 - `Geom2dGcc_Circ2d2TanOnGeo::Geom2dGcc_Circ2d2TanOnGeo()`
+    /// **Source:** `Geom2dGcc_Circ2d2TanOnGeo.hxx`:53 - `Geom2dGcc_Circ2d2TanOnGeo::Geom2dGcc_Circ2d2TanOnGeo()`
     /// This method implements the algorithms used to
     /// create 2d circles TANgent to two 2d circles and
     /// having the center ON a curve.
@@ -544,7 +539,7 @@ impl Circ2d2TanOnGeo {
         }
     }
 
-    /// **Source:** `Geom2dGcc_Circ2d2TanOnGeo.hxx`:63 - `Geom2dGcc_Circ2d2TanOnGeo::Geom2dGcc_Circ2d2TanOnGeo()`
+    /// **Source:** `Geom2dGcc_Circ2d2TanOnGeo.hxx`:61 - `Geom2dGcc_Circ2d2TanOnGeo::Geom2dGcc_Circ2d2TanOnGeo()`
     /// This method implements the algorithms used to
     /// create 2d circles TANgent to a 2d circle and a 2d line
     /// having the center ON a curve.
@@ -559,7 +554,7 @@ impl Circ2d2TanOnGeo {
         }
     }
 
-    /// **Source:** `Geom2dGcc_Circ2d2TanOnGeo.hxx`:71 - `Geom2dGcc_Circ2d2TanOnGeo::Geom2dGcc_Circ2d2TanOnGeo()`
+    /// **Source:** `Geom2dGcc_Circ2d2TanOnGeo.hxx`:69 - `Geom2dGcc_Circ2d2TanOnGeo::Geom2dGcc_Circ2d2TanOnGeo()`
     /// This method implements the algorithms used to
     /// create 2d circles TANgent to a 2d circle and a point
     /// having the center ON a curve.
@@ -574,7 +569,7 @@ impl Circ2d2TanOnGeo {
         }
     }
 
-    /// **Source:** `Geom2dGcc_Circ2d2TanOnGeo.hxx`:79 - `Geom2dGcc_Circ2d2TanOnGeo::Geom2dGcc_Circ2d2TanOnGeo()`
+    /// **Source:** `Geom2dGcc_Circ2d2TanOnGeo.hxx`:77 - `Geom2dGcc_Circ2d2TanOnGeo::Geom2dGcc_Circ2d2TanOnGeo()`
     /// This method implements the algorithms used to
     /// create 2d circles TANgent to two 2d lines
     /// having the center ON a curve.
@@ -589,7 +584,7 @@ impl Circ2d2TanOnGeo {
         }
     }
 
-    /// **Source:** `Geom2dGcc_Circ2d2TanOnGeo.hxx`:87 - `Geom2dGcc_Circ2d2TanOnGeo::Geom2dGcc_Circ2d2TanOnGeo()`
+    /// **Source:** `Geom2dGcc_Circ2d2TanOnGeo.hxx`:85 - `Geom2dGcc_Circ2d2TanOnGeo::Geom2dGcc_Circ2d2TanOnGeo()`
     /// This method implements the algorithms used to
     /// create 2d circles TANgent to a 2d line and a point
     /// having the center ON a 2d line.
@@ -604,7 +599,7 @@ impl Circ2d2TanOnGeo {
         }
     }
 
-    /// **Source:** `Geom2dGcc_Circ2d2TanOnGeo.hxx`:95 - `Geom2dGcc_Circ2d2TanOnGeo::Geom2dGcc_Circ2d2TanOnGeo()`
+    /// **Source:** `Geom2dGcc_Circ2d2TanOnGeo.hxx`:93 - `Geom2dGcc_Circ2d2TanOnGeo::Geom2dGcc_Circ2d2TanOnGeo()`
     /// This method implements the algorithms used to
     /// create 2d circles TANgent to two points
     /// having the center ON a 2d line.
@@ -623,7 +618,7 @@ impl Circ2d2TanOnGeo {
         }
     }
 
-    /// **Source:** `Geom2dGcc_Circ2d2TanOnGeo.hxx`:102 - `Geom2dGcc_Circ2d2TanOnGeo::IsDone()`
+    /// **Source:** `Geom2dGcc_Circ2d2TanOnGeo.hxx`:100 - `Geom2dGcc_Circ2d2TanOnGeo::IsDone()`
     /// This method returns True if the construction
     /// algorithm succeeded.
     pub fn is_done(&self) -> bool {
@@ -632,7 +627,7 @@ impl Circ2d2TanOnGeo {
         })
     }
 
-    /// **Source:** `Geom2dGcc_Circ2d2TanOnGeo.hxx`:107 - `Geom2dGcc_Circ2d2TanOnGeo::NbSolutions()`
+    /// **Source:** `Geom2dGcc_Circ2d2TanOnGeo.hxx`:105 - `Geom2dGcc_Circ2d2TanOnGeo::NbSolutions()`
     /// This method returns the number of solutions.
     /// It raises NotDone if the construction algorithm
     /// didn't succeed.
@@ -644,7 +639,7 @@ impl Circ2d2TanOnGeo {
         })
     }
 
-    /// **Source:** `Geom2dGcc_Circ2d2TanOnGeo.hxx`:118 - `Geom2dGcc_Circ2d2TanOnGeo::ThisSolution()`
+    /// **Source:** `Geom2dGcc_Circ2d2TanOnGeo.hxx`:116 - `Geom2dGcc_Circ2d2TanOnGeo::ThisSolution()`
     /// Returns the solution number Index and raises OutOfRange
     /// exception if Index is greater than the number of solutions.
     /// Be careful: the Index is only a way to get all the
@@ -665,7 +660,7 @@ impl Circ2d2TanOnGeo {
         }
     }
 
-    /// **Source:** `Geom2dGcc_Circ2d2TanOnGeo.hxx`:126 - `Geom2dGcc_Circ2d2TanOnGeo::WhichQualifier()`
+    /// **Source:** `Geom2dGcc_Circ2d2TanOnGeo.hxx`:124 - `Geom2dGcc_Circ2d2TanOnGeo::WhichQualifier()`
     /// It returns the information about the qualifiers of
     /// the tangency
     /// arguments concerning the solution number Index.
@@ -692,7 +687,7 @@ impl Circ2d2TanOnGeo {
         *Qualif2 = crate::gcc_ent::Position::try_from(Qualif2_i32_).unwrap();
     }
 
-    /// **Source:** `Geom2dGcc_Circ2d2TanOnGeo.hxx`:142 - `Geom2dGcc_Circ2d2TanOnGeo::Tangency1()`
+    /// **Source:** `Geom2dGcc_Circ2d2TanOnGeo.hxx`:140 - `Geom2dGcc_Circ2d2TanOnGeo::Tangency1()`
     /// Returns information about the tangency point between the
     /// result number Index and the first argument.
     /// ParSol is the intrinsic parameter of the point on the
@@ -723,7 +718,7 @@ impl Circ2d2TanOnGeo {
         })
     }
 
-    /// **Source:** `Geom2dGcc_Circ2d2TanOnGeo.hxx`:159 - `Geom2dGcc_Circ2d2TanOnGeo::Tangency2()`
+    /// **Source:** `Geom2dGcc_Circ2d2TanOnGeo.hxx`:157 - `Geom2dGcc_Circ2d2TanOnGeo::Tangency2()`
     /// Returns information about the tangency point between the
     /// result number Index and the second argument.
     /// ParSol is the intrinsic parameter of the point on the
@@ -754,7 +749,7 @@ impl Circ2d2TanOnGeo {
         })
     }
 
-    /// **Source:** `Geom2dGcc_Circ2d2TanOnGeo.hxx`:173 - `Geom2dGcc_Circ2d2TanOnGeo::CenterOn3()`
+    /// **Source:** `Geom2dGcc_Circ2d2TanOnGeo.hxx`:171 - `Geom2dGcc_Circ2d2TanOnGeo::CenterOn3()`
     /// Returns information about the center (on the curv)
     /// of the result.
     /// ParArg is the intrinsic parameter of the point on
@@ -775,7 +770,7 @@ impl Circ2d2TanOnGeo {
         })
     }
 
-    /// **Source:** `Geom2dGcc_Circ2d2TanOnGeo.hxx`:183 - `Geom2dGcc_Circ2d2TanOnGeo::IsTheSame1()`
+    /// **Source:** `Geom2dGcc_Circ2d2TanOnGeo.hxx`:179 - `Geom2dGcc_Circ2d2TanOnGeo::IsTheSame1()`
     /// Returns True if the solution number Index is equal to
     /// the first argument and False in the other cases.
     /// It raises NotDone if the construction algorithm
@@ -791,7 +786,7 @@ impl Circ2d2TanOnGeo {
         })
     }
 
-    /// **Source:** `Geom2dGcc_Circ2d2TanOnGeo.hxx`:191 - `Geom2dGcc_Circ2d2TanOnGeo::IsTheSame2()`
+    /// **Source:** `Geom2dGcc_Circ2d2TanOnGeo.hxx`:187 - `Geom2dGcc_Circ2d2TanOnGeo::IsTheSame2()`
     /// Returns True if the solution number Index is equal to
     /// the second argument and False in the other cases.
     /// It raises NotDone if the construction algorithm
@@ -1153,7 +1148,7 @@ impl Circ2d2TanOnIter {
         })
     }
 
-    /// **Source:** `Geom2dGcc_Circ2d2TanOnIter.hxx`:239 - `Geom2dGcc_Circ2d2TanOnIter::Tangency2()`
+    /// **Source:** `Geom2dGcc_Circ2d2TanOnIter.hxx`:237 - `Geom2dGcc_Circ2d2TanOnIter::Tangency2()`
     /// Returns information about the tangency point between
     /// the result and the second argument.
     /// ParSol is the intrinsic parameter of the point PntSol
@@ -1173,7 +1168,7 @@ impl Circ2d2TanOnIter {
         })
     }
 
-    /// **Source:** `Geom2dGcc_Circ2d2TanOnIter.hxx`:247 - `Geom2dGcc_Circ2d2TanOnIter::CenterOn3()`
+    /// **Source:** `Geom2dGcc_Circ2d2TanOnIter.hxx`:243 - `Geom2dGcc_Circ2d2TanOnIter::CenterOn3()`
     /// Returns information about the center (on the curv) of the
     /// result and the third argument.
     /// It raises NotDone if the construction algorithm
@@ -1188,7 +1183,7 @@ impl Circ2d2TanOnIter {
         })
     }
 
-    /// **Source:** `Geom2dGcc_Circ2d2TanOnIter.hxx`:251 - `Geom2dGcc_Circ2d2TanOnIter::IsTheSame1()`
+    /// **Source:** `Geom2dGcc_Circ2d2TanOnIter.hxx`:247 - `Geom2dGcc_Circ2d2TanOnIter::IsTheSame1()`
     /// It raises NotDone if the construction algorithm
     /// didn't succeed.
     pub fn is_the_same1(&self) -> bool {
@@ -1199,7 +1194,7 @@ impl Circ2d2TanOnIter {
         })
     }
 
-    /// **Source:** `Geom2dGcc_Circ2d2TanOnIter.hxx`:255 - `Geom2dGcc_Circ2d2TanOnIter::IsTheSame2()`
+    /// **Source:** `Geom2dGcc_Circ2d2TanOnIter.hxx`:251 - `Geom2dGcc_Circ2d2TanOnIter::IsTheSame2()`
     /// It raises NotDone if the construction algorithm
     /// didn't succeed.
     pub fn is_the_same2(&self) -> bool {
@@ -1215,7 +1210,7 @@ impl Circ2d2TanOnIter {
 // From Geom2dGcc_Circ2d2TanRad.hxx
 // ========================
 
-/// **Source:** `Geom2dGcc_Circ2d2TanRad.hxx`:59 - `Geom2dGcc_Circ2d2TanRad`
+/// **Source:** `Geom2dGcc_Circ2d2TanRad.hxx`:57 - `Geom2dGcc_Circ2d2TanRad`
 /// This class implements the algorithms used to
 /// create 2d circles tangent to one curve and a
 /// point/line/circle/curv and with a given radius.
@@ -1248,7 +1243,7 @@ unsafe impl crate::CppDeletable for Circ2d2TanRad {
 }
 
 impl Circ2d2TanRad {
-    /// **Source:** `Geom2dGcc_Circ2d2TanRad.hxx`:64 - `Geom2dGcc_Circ2d2TanRad::Geom2dGcc_Circ2d2TanRad()`
+    /// **Source:** `Geom2dGcc_Circ2d2TanRad.hxx`:62 - `Geom2dGcc_Circ2d2TanRad::Geom2dGcc_Circ2d2TanRad()`
     pub fn new_qualifiedcurve2_real2(
         Qualified1: &QualifiedCurve,
         Qualified2: &QualifiedCurve,
@@ -1264,10 +1259,10 @@ impl Circ2d2TanRad {
         }
     }
 
-    /// **Source:** `Geom2dGcc_Circ2d2TanRad.hxx`:69 - `Geom2dGcc_Circ2d2TanRad::Geom2dGcc_Circ2d2TanRad()`
+    /// **Source:** `Geom2dGcc_Circ2d2TanRad.hxx`:67 - `Geom2dGcc_Circ2d2TanRad::Geom2dGcc_Circ2d2TanRad()`
     pub fn new_qualifiedcurve_handlegeom2dpoint_real2(
         Qualified1: &QualifiedCurve,
-        Point: &crate::ffi_types::HandleGeom2dPoint,
+        Point: &crate::ffi_types::Handle_Geom2d_Point,
         Radius: f64,
         Tolerance: f64,
     ) -> crate::OwnedPtr<Self> {
@@ -1276,9 +1271,9 @@ impl Circ2d2TanRad {
         }
     }
 
-    /// **Source:** `Geom2dGcc_Circ2d2TanRad.hxx`:97 - `Geom2dGcc_Circ2d2TanRad::Geom2dGcc_Circ2d2TanRad()`
+    /// **Source:** `Geom2dGcc_Circ2d2TanRad.hxx`:95 - `Geom2dGcc_Circ2d2TanRad::Geom2dGcc_Circ2d2TanRad()`
     /// These constructors create one or more 2D circles of radius Radius either
-    /// -   tangential to the 2 curves Qualified1 and Qualified2,   or
+    /// -   tangential to the 2 curves Qualified1 and Qualified2, or
     /// -   tangential to the curve Qualified1 and passing through the point Point, or
     /// -   passing through two points Point1 and Point2.
     /// Tolerance is a tolerance criterion used by the algorithm
@@ -1301,8 +1296,8 @@ impl Circ2d2TanRad {
     /// the argument it qualifies (for example, enclosing for a line).
     /// Standard_NegativeValue if Radius is negative.
     pub fn new_handlegeom2dpoint2_real2(
-        Point1: &crate::ffi_types::HandleGeom2dPoint,
-        Point2: &crate::ffi_types::HandleGeom2dPoint,
+        Point1: &crate::ffi_types::Handle_Geom2d_Point,
+        Point2: &crate::ffi_types::Handle_Geom2d_Point,
         Radius: f64,
         Tolerance: f64,
     ) -> crate::OwnedPtr<Self> {
@@ -1315,7 +1310,7 @@ impl Circ2d2TanRad {
         }
     }
 
-    /// **Source:** `Geom2dGcc_Circ2d2TanRad.hxx`:102 - `Geom2dGcc_Circ2d2TanRad::Results()`
+    /// **Source:** `Geom2dGcc_Circ2d2TanRad.hxx`:100 - `Geom2dGcc_Circ2d2TanRad::Results()`
     pub fn results_circ2d2tanrad(&mut self, Circ: &crate::gcc_ana::Circ2d2TanRad) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::Geom2dGcc_Circ2d2TanRad_results_circ2d2tanrad(
@@ -1325,7 +1320,7 @@ impl Circ2d2TanRad {
         })
     }
 
-    /// **Source:** `Geom2dGcc_Circ2d2TanRad.hxx`:104 - `Geom2dGcc_Circ2d2TanRad::Results()`
+    /// **Source:** `Geom2dGcc_Circ2d2TanRad.hxx`:102 - `Geom2dGcc_Circ2d2TanRad::Results()`
     pub fn results_circ2d2tanradgeo(&mut self, Circ: &Circ2d2TanRadGeo) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::Geom2dGcc_Circ2d2TanRad_results_circ2d2tanradgeo(
@@ -1335,7 +1330,7 @@ impl Circ2d2TanRad {
         })
     }
 
-    /// **Source:** `Geom2dGcc_Circ2d2TanRad.hxx`:109 - `Geom2dGcc_Circ2d2TanRad::IsDone()`
+    /// **Source:** `Geom2dGcc_Circ2d2TanRad.hxx`:107 - `Geom2dGcc_Circ2d2TanRad::IsDone()`
     /// This method returns True if the algorithm succeeded.
     /// Note: IsDone protects against a failure arising from a
     /// more internal intersection algorithm, which has reached its numeric limits.
@@ -1345,7 +1340,7 @@ impl Circ2d2TanRad {
         })
     }
 
-    /// **Source:** `Geom2dGcc_Circ2d2TanRad.hxx`:115 - `Geom2dGcc_Circ2d2TanRad::NbSolutions()`
+    /// **Source:** `Geom2dGcc_Circ2d2TanRad.hxx`:113 - `Geom2dGcc_Circ2d2TanRad::NbSolutions()`
     /// This method returns the number of solutions.
     /// NotDone is raised if the algorithm failed.
     /// Exceptions
@@ -1356,7 +1351,7 @@ impl Circ2d2TanRad {
         })
     }
 
-    /// **Source:** `Geom2dGcc_Circ2d2TanRad.hxx`:129 - `Geom2dGcc_Circ2d2TanRad::ThisSolution()`
+    /// **Source:** `Geom2dGcc_Circ2d2TanRad.hxx`:127 - `Geom2dGcc_Circ2d2TanRad::ThisSolution()`
     /// Returns the solution number Index and raises OutOfRange
     /// exception if Index is greater than the number of solutions.
     /// Be careful: the Index is only a way to get all the
@@ -1380,7 +1375,7 @@ impl Circ2d2TanRad {
         }
     }
 
-    /// **Source:** `Geom2dGcc_Circ2d2TanRad.hxx`:148 - `Geom2dGcc_Circ2d2TanRad::WhichQualifier()`
+    /// **Source:** `Geom2dGcc_Circ2d2TanRad.hxx`:146 - `Geom2dGcc_Circ2d2TanRad::WhichQualifier()`
     /// Returns the qualifiers Qualif1 and Qualif2 of the
     /// tangency arguments for the solution of index Index
     /// computed by this algorithm.
@@ -1418,7 +1413,7 @@ impl Circ2d2TanRad {
         *Qualif2 = crate::gcc_ent::Position::try_from(Qualif2_i32_).unwrap();
     }
 
-    /// **Source:** `Geom2dGcc_Circ2d2TanRad.hxx`:158 - `Geom2dGcc_Circ2d2TanRad::Tangency1()`
+    /// **Source:** `Geom2dGcc_Circ2d2TanRad.hxx`:156 - `Geom2dGcc_Circ2d2TanRad::Tangency1()`
     /// Returns information about the tangency point between the
     /// result number Index and the first argument.
     /// ParSol is the intrinsic parameter of the point PntSol on the solution curv.
@@ -1443,7 +1438,7 @@ impl Circ2d2TanRad {
         })
     }
 
-    /// **Source:** `Geom2dGcc_Circ2d2TanRad.hxx`:169 - `Geom2dGcc_Circ2d2TanRad::Tangency2()`
+    /// **Source:** `Geom2dGcc_Circ2d2TanRad.hxx`:167 - `Geom2dGcc_Circ2d2TanRad::Tangency2()`
     /// Returns information about the tangency point between the
     /// result number Index and the second argument.
     /// ParSol is the intrinsic parameter of the point PntSol on the solution curv.
@@ -1468,7 +1463,7 @@ impl Circ2d2TanRad {
         })
     }
 
-    /// **Source:** `Geom2dGcc_Circ2d2TanRad.hxx`:185 - `Geom2dGcc_Circ2d2TanRad::IsTheSame1()`
+    /// **Source:** `Geom2dGcc_Circ2d2TanRad.hxx`:183 - `Geom2dGcc_Circ2d2TanRad::IsTheSame1()`
     /// Returns true if the solution of index Index and,
     /// respectively, the first or second argument of this
     /// algorithm are the same (i.e. there are 2 identical circles).
@@ -1489,7 +1484,7 @@ impl Circ2d2TanRad {
         })
     }
 
-    /// **Source:** `Geom2dGcc_Circ2d2TanRad.hxx`:198 - `Geom2dGcc_Circ2d2TanRad::IsTheSame2()`
+    /// **Source:** `Geom2dGcc_Circ2d2TanRad.hxx`:196 - `Geom2dGcc_Circ2d2TanRad::IsTheSame2()`
     /// Returns true if the solution of index Index and,
     /// respectively, the first or second argument of this
     /// algorithm are the same (i.e. there are 2 identical circles).
@@ -1515,7 +1510,7 @@ impl Circ2d2TanRad {
 // From Geom2dGcc_Circ2d2TanRadGeo.hxx
 // ========================
 
-/// **Source:** `Geom2dGcc_Circ2d2TanRadGeo.hxx`:57 - `Geom2dGcc_Circ2d2TanRadGeo`
+/// **Source:** `Geom2dGcc_Circ2d2TanRadGeo.hxx`:55 - `Geom2dGcc_Circ2d2TanRadGeo`
 /// This class implements the algorithms used to
 /// create 2d circles tangent to one curve and a
 /// point/line/circle/curv and with a given radius.
@@ -1548,7 +1543,7 @@ unsafe impl crate::CppDeletable for Circ2d2TanRadGeo {
 }
 
 impl Circ2d2TanRadGeo {
-    /// **Source:** `Geom2dGcc_Circ2d2TanRadGeo.hxx`:66 - `Geom2dGcc_Circ2d2TanRadGeo::Geom2dGcc_Circ2d2TanRadGeo()`
+    /// **Source:** `Geom2dGcc_Circ2d2TanRadGeo.hxx`:64 - `Geom2dGcc_Circ2d2TanRadGeo::Geom2dGcc_Circ2d2TanRadGeo()`
     /// This method implements the algorithms used to
     /// create 2d circles TANgent to a 2d circle and a curve
     /// with a radius of Radius.
@@ -1564,7 +1559,7 @@ impl Circ2d2TanRadGeo {
         }
     }
 
-    /// **Source:** `Geom2dGcc_Circ2d2TanRadGeo.hxx`:75 - `Geom2dGcc_Circ2d2TanRadGeo::Geom2dGcc_Circ2d2TanRadGeo()`
+    /// **Source:** `Geom2dGcc_Circ2d2TanRadGeo.hxx`:73 - `Geom2dGcc_Circ2d2TanRadGeo::Geom2dGcc_Circ2d2TanRadGeo()`
     /// This method implements the algorithms used to
     /// create 2d circles TANgent to a 2d line and a curve
     /// with a radius of Radius.
@@ -1580,7 +1575,7 @@ impl Circ2d2TanRadGeo {
         }
     }
 
-    /// **Source:** `Geom2dGcc_Circ2d2TanRadGeo.hxx`:84 - `Geom2dGcc_Circ2d2TanRadGeo::Geom2dGcc_Circ2d2TanRadGeo()`
+    /// **Source:** `Geom2dGcc_Circ2d2TanRadGeo.hxx`:82 - `Geom2dGcc_Circ2d2TanRadGeo::Geom2dGcc_Circ2d2TanRadGeo()`
     /// This method implements the algorithms used to
     /// create 2d circles TANgent to two curves with
     /// a radius of Radius.
@@ -1600,7 +1595,7 @@ impl Circ2d2TanRadGeo {
         }
     }
 
-    /// **Source:** `Geom2dGcc_Circ2d2TanRadGeo.hxx`:93 - `Geom2dGcc_Circ2d2TanRadGeo::Geom2dGcc_Circ2d2TanRadGeo()`
+    /// **Source:** `Geom2dGcc_Circ2d2TanRadGeo.hxx`:91 - `Geom2dGcc_Circ2d2TanRadGeo::Geom2dGcc_Circ2d2TanRadGeo()`
     /// This method implements the algorithms used to
     /// create 2d circles TANgent to a curve and a point
     /// with a radius of Radius.
@@ -1620,7 +1615,7 @@ impl Circ2d2TanRadGeo {
         }
     }
 
-    /// **Source:** `Geom2dGcc_Circ2d2TanRadGeo.hxx`:99 - `Geom2dGcc_Circ2d2TanRadGeo::IsDone()`
+    /// **Source:** `Geom2dGcc_Circ2d2TanRadGeo.hxx`:97 - `Geom2dGcc_Circ2d2TanRadGeo::IsDone()`
     /// This method returns True if the algorithm succeeded.
     pub fn is_done(&self) -> bool {
         crate::check_result(unsafe {
@@ -1628,7 +1623,7 @@ impl Circ2d2TanRadGeo {
         })
     }
 
-    /// **Source:** `Geom2dGcc_Circ2d2TanRadGeo.hxx`:103 - `Geom2dGcc_Circ2d2TanRadGeo::NbSolutions()`
+    /// **Source:** `Geom2dGcc_Circ2d2TanRadGeo.hxx`:101 - `Geom2dGcc_Circ2d2TanRadGeo::NbSolutions()`
     /// This method returns the number of solutions.
     /// It raises NotDone if the algorithm failed.
     pub fn nb_solutions(&self) -> i32 {
@@ -1639,7 +1634,7 @@ impl Circ2d2TanRadGeo {
         })
     }
 
-    /// **Source:** `Geom2dGcc_Circ2d2TanRadGeo.hxx`:113 - `Geom2dGcc_Circ2d2TanRadGeo::ThisSolution()`
+    /// **Source:** `Geom2dGcc_Circ2d2TanRadGeo.hxx`:111 - `Geom2dGcc_Circ2d2TanRadGeo::ThisSolution()`
     /// Returns the solution number Index.
     /// Be careful: the Index is only a way to get all the
     /// solutions, but is not associated to those outside the context
@@ -1659,7 +1654,7 @@ impl Circ2d2TanRadGeo {
         }
     }
 
-    /// **Source:** `Geom2dGcc_Circ2d2TanRadGeo.hxx`:120 - `Geom2dGcc_Circ2d2TanRadGeo::WhichQualifier()`
+    /// **Source:** `Geom2dGcc_Circ2d2TanRadGeo.hxx`:118 - `Geom2dGcc_Circ2d2TanRadGeo::WhichQualifier()`
     /// It returns the information about the qualifiers of
     /// the tangency arguments concerning the solution number Index.
     /// It returns the real qualifiers (the qualifiers given to the
@@ -1685,7 +1680,7 @@ impl Circ2d2TanRadGeo {
         *Qualif2 = crate::gcc_ent::Position::try_from(Qualif2_i32_).unwrap();
     }
 
-    /// **Source:** `Geom2dGcc_Circ2d2TanRadGeo.hxx`:133 - `Geom2dGcc_Circ2d2TanRadGeo::Tangency1()`
+    /// **Source:** `Geom2dGcc_Circ2d2TanRadGeo.hxx`:131 - `Geom2dGcc_Circ2d2TanRadGeo::Tangency1()`
     /// Returns information about the tangency point between the
     /// result number Index and the first argument.
     /// ParSol is the intrinsic parameter of the point PntSol on the solution.
@@ -1713,7 +1708,7 @@ impl Circ2d2TanRadGeo {
         })
     }
 
-    /// **Source:** `Geom2dGcc_Circ2d2TanRadGeo.hxx`:148 - `Geom2dGcc_Circ2d2TanRadGeo::Tangency2()`
+    /// **Source:** `Geom2dGcc_Circ2d2TanRadGeo.hxx`:146 - `Geom2dGcc_Circ2d2TanRadGeo::Tangency2()`
     /// Returns information about the tangency point between the
     /// result number Index and the second argument.
     /// ParSol is the intrinsic parameter of the point PntSol on
@@ -1742,7 +1737,7 @@ impl Circ2d2TanRadGeo {
         })
     }
 
-    /// **Source:** `Geom2dGcc_Circ2d2TanRadGeo.hxx`:159 - `Geom2dGcc_Circ2d2TanRadGeo::IsTheSame1()`
+    /// **Source:** `Geom2dGcc_Circ2d2TanRadGeo.hxx`:157 - `Geom2dGcc_Circ2d2TanRadGeo::IsTheSame1()`
     /// Returns True if the solution number Index is equal to
     /// the first argument.
     /// It raises OutOfRange if Index is greater than the number
@@ -1758,7 +1753,7 @@ impl Circ2d2TanRadGeo {
         })
     }
 
-    /// **Source:** `Geom2dGcc_Circ2d2TanRadGeo.hxx`:167 - `Geom2dGcc_Circ2d2TanRadGeo::IsTheSame2()`
+    /// **Source:** `Geom2dGcc_Circ2d2TanRadGeo.hxx`:165 - `Geom2dGcc_Circ2d2TanRadGeo::IsTheSame2()`
     /// Returns True if the solution number Index is equal to
     /// the second argument.
     /// It raises OutOfRange if Index is greater than the number
@@ -1779,7 +1774,7 @@ impl Circ2d2TanRadGeo {
 // From Geom2dGcc_Circ2d3Tan.hxx
 // ========================
 
-/// **Source:** `Geom2dGcc_Circ2d3Tan.hxx`:54 - `Geom2dGcc_Circ2d3Tan`
+/// **Source:** `Geom2dGcc_Circ2d3Tan.hxx`:52 - `Geom2dGcc_Circ2d3Tan`
 /// This class implements the algorithms used to
 /// create 2d circles tangent to 3 points/lines/circles/
 /// curves with one curve or more.
@@ -1808,7 +1803,7 @@ unsafe impl crate::CppDeletable for Circ2d3Tan {
 }
 
 impl Circ2d3Tan {
-    /// **Source:** `Geom2dGcc_Circ2d3Tan.hxx`:69 - `Geom2dGcc_Circ2d3Tan::Geom2dGcc_Circ2d3Tan()`
+    /// **Source:** `Geom2dGcc_Circ2d3Tan.hxx`:67 - `Geom2dGcc_Circ2d3Tan::Geom2dGcc_Circ2d3Tan()`
     /// Constructs one or more 2D circles
     /// tangential to three curves Qualified1, Qualified2 and
     /// Qualified3, where Param1, Param2 and Param3 are
@@ -1837,7 +1832,7 @@ impl Circ2d3Tan {
         }
     }
 
-    /// **Source:** `Geom2dGcc_Circ2d3Tan.hxx`:87 - `Geom2dGcc_Circ2d3Tan::Geom2dGcc_Circ2d3Tan()`
+    /// **Source:** `Geom2dGcc_Circ2d3Tan.hxx`:85 - `Geom2dGcc_Circ2d3Tan::Geom2dGcc_Circ2d3Tan()`
     /// Constructs one or more 2D circles
     /// tangential to two curves Qualified1 and Qualified2
     /// and passing through the point Point, where Param1
@@ -1851,7 +1846,7 @@ impl Circ2d3Tan {
     pub fn new_qualifiedcurve2_handlegeom2dpoint_real3(
         Qualified1: &QualifiedCurve,
         Qualified2: &QualifiedCurve,
-        Point: &crate::ffi_types::HandleGeom2dPoint,
+        Point: &crate::ffi_types::Handle_Geom2d_Point,
         Tolerance: f64,
         Param1: f64,
         Param2: f64,
@@ -1861,7 +1856,7 @@ impl Circ2d3Tan {
         }
     }
 
-    /// **Source:** `Geom2dGcc_Circ2d3Tan.hxx`:101 - `Geom2dGcc_Circ2d3Tan::Geom2dGcc_Circ2d3Tan()`
+    /// **Source:** `Geom2dGcc_Circ2d3Tan.hxx`:99 - `Geom2dGcc_Circ2d3Tan::Geom2dGcc_Circ2d3Tan()`
     /// Constructs one or more 2D circles tangential to the curve Qualified1 and passing
     /// through two points Point1 and Point2, where Param1
     /// is used as the initial value of the parameter on
@@ -1871,8 +1866,8 @@ impl Circ2d3Tan {
     /// Qualified1 is more complex than a line or a circle)
     pub fn new_qualifiedcurve_handlegeom2dpoint2_real2(
         Qualified1: &QualifiedCurve,
-        Point1: &crate::ffi_types::HandleGeom2dPoint,
-        Point2: &crate::ffi_types::HandleGeom2dPoint,
+        Point1: &crate::ffi_types::Handle_Geom2d_Point,
+        Point2: &crate::ffi_types::Handle_Geom2d_Point,
         Tolerance: f64,
         Param1: f64,
     ) -> crate::OwnedPtr<Self> {
@@ -1881,7 +1876,7 @@ impl Circ2d3Tan {
         }
     }
 
-    /// **Source:** `Geom2dGcc_Circ2d3Tan.hxx`:130 - `Geom2dGcc_Circ2d3Tan::Geom2dGcc_Circ2d3Tan()`
+    /// **Source:** `Geom2dGcc_Circ2d3Tan.hxx`:128 - `Geom2dGcc_Circ2d3Tan::Geom2dGcc_Circ2d3Tan()`
     /// Constructs one or more 2D circles passing through three points Point1, Point2 and Point3.
     /// Tolerance is a tolerance criterion used by the algorithm
     /// to find a solution when, mathematically, the problem
@@ -1906,9 +1901,9 @@ impl Circ2d3Tan {
     /// GccEnt_BadQualifier if a qualifier is inconsistent with
     /// the argument it qualifies (for example, enclosing for a line).
     pub fn new_handlegeom2dpoint3_real(
-        Point1: &crate::ffi_types::HandleGeom2dPoint,
-        Point2: &crate::ffi_types::HandleGeom2dPoint,
-        Point3: &crate::ffi_types::HandleGeom2dPoint,
+        Point1: &crate::ffi_types::Handle_Geom2d_Point,
+        Point2: &crate::ffi_types::Handle_Geom2d_Point,
+        Point3: &crate::ffi_types::Handle_Geom2d_Point,
         Tolerance: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -1920,7 +1915,7 @@ impl Circ2d3Tan {
         }
     }
 
-    /// **Source:** `Geom2dGcc_Circ2d3Tan.hxx`:135 - `Geom2dGcc_Circ2d3Tan::Results()`
+    /// **Source:** `Geom2dGcc_Circ2d3Tan.hxx`:133 - `Geom2dGcc_Circ2d3Tan::Results()`
     pub fn results(
         &mut self,
         Circ: &crate::gcc_ana::Circ2d3Tan,
@@ -1939,7 +1934,7 @@ impl Circ2d3Tan {
         })
     }
 
-    /// **Source:** `Geom2dGcc_Circ2d3Tan.hxx`:143 - `Geom2dGcc_Circ2d3Tan::IsDone()`
+    /// **Source:** `Geom2dGcc_Circ2d3Tan.hxx`:141 - `Geom2dGcc_Circ2d3Tan::IsDone()`
     /// Returns true if the construction algorithm does not fail (even if it finds no solution).
     /// Note: IsDone protects against a failure arising from a
     /// more internal intersection algorithm, which has reached its numeric limits.
@@ -1949,7 +1944,7 @@ impl Circ2d3Tan {
         })
     }
 
-    /// **Source:** `Geom2dGcc_Circ2d3Tan.hxx`:147 - `Geom2dGcc_Circ2d3Tan::NbSolutions()`
+    /// **Source:** `Geom2dGcc_Circ2d3Tan.hxx`:145 - `Geom2dGcc_Circ2d3Tan::NbSolutions()`
     /// This method returns the number of solutions.
     /// NotDone is raised if the algorithm failed.
     pub fn nb_solutions(&self) -> i32 {
@@ -1958,7 +1953,7 @@ impl Circ2d3Tan {
         })
     }
 
-    /// **Source:** `Geom2dGcc_Circ2d3Tan.hxx`:154 - `Geom2dGcc_Circ2d3Tan::ThisSolution()`
+    /// **Source:** `Geom2dGcc_Circ2d3Tan.hxx`:152 - `Geom2dGcc_Circ2d3Tan::ThisSolution()`
     /// Returns the solution number Index and raises OutOfRange
     /// exception if Index is greater than the number of solutions.
     /// Be careful: the Index is only a way to get all the
@@ -1975,7 +1970,7 @@ impl Circ2d3Tan {
         }
     }
 
-    /// **Source:** `Geom2dGcc_Circ2d3Tan.hxx`:161 - `Geom2dGcc_Circ2d3Tan::WhichQualifier()`
+    /// **Source:** `Geom2dGcc_Circ2d3Tan.hxx`:159 - `Geom2dGcc_Circ2d3Tan::WhichQualifier()`
     /// It returns the information about the qualifiers of the tangency
     /// arguments concerning the solution number Index.
     /// It returns the real qualifiers (the qualifiers given to the
@@ -2005,7 +2000,7 @@ impl Circ2d3Tan {
         *Qualif3 = crate::gcc_ent::Position::try_from(Qualif3_i32_).unwrap();
     }
 
-    /// **Source:** `Geom2dGcc_Circ2d3Tan.hxx`:170 - `Geom2dGcc_Circ2d3Tan::Tangency1()`
+    /// **Source:** `Geom2dGcc_Circ2d3Tan.hxx`:168 - `Geom2dGcc_Circ2d3Tan::Tangency1()`
     /// Returns information about the tangency point between the
     /// result and the first argument.
     /// ParSol is the intrinsic parameter of the point PntSol on the solution curv.
@@ -2028,7 +2023,7 @@ impl Circ2d3Tan {
         })
     }
 
-    /// **Source:** `Geom2dGcc_Circ2d3Tan.hxx`:179 - `Geom2dGcc_Circ2d3Tan::Tangency2()`
+    /// **Source:** `Geom2dGcc_Circ2d3Tan.hxx`:177 - `Geom2dGcc_Circ2d3Tan::Tangency2()`
     /// Returns information about the tangency point between the
     /// result and the second argument.
     /// ParSol is the intrinsic parameter of the point PntSol on the solution curv.
@@ -2051,7 +2046,7 @@ impl Circ2d3Tan {
         })
     }
 
-    /// **Source:** `Geom2dGcc_Circ2d3Tan.hxx`:188 - `Geom2dGcc_Circ2d3Tan::Tangency3()`
+    /// **Source:** `Geom2dGcc_Circ2d3Tan.hxx`:186 - `Geom2dGcc_Circ2d3Tan::Tangency3()`
     /// Returns information about the tangency point between the
     /// result and the third argument.
     /// ParSol is the intrinsic parameter of the point PntSol on the solution curv.
@@ -2074,7 +2069,7 @@ impl Circ2d3Tan {
         })
     }
 
-    /// **Source:** `Geom2dGcc_Circ2d3Tan.hxx`:194 - `Geom2dGcc_Circ2d3Tan::IsTheSame1()`
+    /// **Source:** `Geom2dGcc_Circ2d3Tan.hxx`:192 - `Geom2dGcc_Circ2d3Tan::IsTheSame1()`
     /// Returns True if the solution is equal to the first argument.
     pub fn is_the_same1(&self, Index: i32) -> bool {
         crate::check_result(unsafe {
@@ -2085,7 +2080,7 @@ impl Circ2d3Tan {
         })
     }
 
-    /// **Source:** `Geom2dGcc_Circ2d3Tan.hxx`:197 - `Geom2dGcc_Circ2d3Tan::IsTheSame2()`
+    /// **Source:** `Geom2dGcc_Circ2d3Tan.hxx`:195 - `Geom2dGcc_Circ2d3Tan::IsTheSame2()`
     /// Returns True if the solution is equal to the second argument.
     pub fn is_the_same2(&self, Index: i32) -> bool {
         crate::check_result(unsafe {
@@ -2096,7 +2091,7 @@ impl Circ2d3Tan {
         })
     }
 
-    /// **Source:** `Geom2dGcc_Circ2d3Tan.hxx`:210 - `Geom2dGcc_Circ2d3Tan::IsTheSame3()`
+    /// **Source:** `Geom2dGcc_Circ2d3Tan.hxx`:208 - `Geom2dGcc_Circ2d3Tan::IsTheSame3()`
     /// Returns True if the solution is equal to the third argument.
     /// If Rarg is the radius of the first, second or third
     /// argument, Rsol is the radius of the solution and dist
@@ -2388,7 +2383,7 @@ impl Circ2d3TanIter {
         })
     }
 
-    /// **Source:** `Geom2dGcc_Circ2d3TanIter.hxx`:174 - `Geom2dGcc_Circ2d3TanIter::Tangency2()`
+    /// **Source:** `Geom2dGcc_Circ2d3TanIter.hxx`:172 - `Geom2dGcc_Circ2d3TanIter::Tangency2()`
     /// Returns information about the tangency point between
     /// the result and the second argument.
     /// ParSol is the intrinsic parameter of the point PntSol
@@ -2408,7 +2403,7 @@ impl Circ2d3TanIter {
         })
     }
 
-    /// **Source:** `Geom2dGcc_Circ2d3TanIter.hxx`:186 - `Geom2dGcc_Circ2d3TanIter::Tangency3()`
+    /// **Source:** `Geom2dGcc_Circ2d3TanIter.hxx`:182 - `Geom2dGcc_Circ2d3TanIter::Tangency3()`
     /// Returns information about the tangency point between
     /// the result and the third argument.
     /// ParSol is the intrinsic parameter of the point PntSol
@@ -2428,7 +2423,7 @@ impl Circ2d3TanIter {
         })
     }
 
-    /// **Source:** `Geom2dGcc_Circ2d3TanIter.hxx`:192 - `Geom2dGcc_Circ2d3TanIter::IsTheSame1()`
+    /// **Source:** `Geom2dGcc_Circ2d3TanIter.hxx`:186 - `Geom2dGcc_Circ2d3TanIter::IsTheSame1()`
     /// It raises NotDone if the construction algorithm
     /// didn't succeed.
     pub fn is_the_same1(&self) -> bool {
@@ -2437,7 +2432,7 @@ impl Circ2d3TanIter {
         })
     }
 
-    /// **Source:** `Geom2dGcc_Circ2d3TanIter.hxx`:196 - `Geom2dGcc_Circ2d3TanIter::IsTheSame2()`
+    /// **Source:** `Geom2dGcc_Circ2d3TanIter.hxx`:190 - `Geom2dGcc_Circ2d3TanIter::IsTheSame2()`
     /// It raises NotDone if the construction algorithm
     /// didn't succeed.
     pub fn is_the_same2(&self) -> bool {
@@ -2446,7 +2441,7 @@ impl Circ2d3TanIter {
         })
     }
 
-    /// **Source:** `Geom2dGcc_Circ2d3TanIter.hxx`:200 - `Geom2dGcc_Circ2d3TanIter::IsTheSame3()`
+    /// **Source:** `Geom2dGcc_Circ2d3TanIter.hxx`:194 - `Geom2dGcc_Circ2d3TanIter::IsTheSame3()`
     /// It raises NotDone if the construction algorithm
     /// didn't succeed.
     pub fn is_the_same3(&self) -> bool {
@@ -2460,7 +2455,7 @@ impl Circ2d3TanIter {
 // From Geom2dGcc_Circ2dTanCen.hxx
 // ========================
 
-/// **Source:** `Geom2dGcc_Circ2dTanCen.hxx`:53 - `Geom2dGcc_Circ2dTanCen`
+/// **Source:** `Geom2dGcc_Circ2dTanCen.hxx`:51 - `Geom2dGcc_Circ2dTanCen`
 /// This class implements the algorithms used to
 /// create 2d circles tangent to a curve and
 /// centered on a point.
@@ -2489,7 +2484,7 @@ unsafe impl crate::CppDeletable for Circ2dTanCen {
 }
 
 impl Circ2dTanCen {
-    /// **Source:** `Geom2dGcc_Circ2dTanCen.hxx`:71 - `Geom2dGcc_Circ2dTanCen::Geom2dGcc_Circ2dTanCen()`
+    /// **Source:** `Geom2dGcc_Circ2dTanCen.hxx`:69 - `Geom2dGcc_Circ2dTanCen::Geom2dGcc_Circ2dTanCen()`
     /// Constructs one or more 2D circles tangential to the
     /// curve Qualified1 and centered on the point Pcenter.
     /// Tolerance is a tolerance criterion used by the algorithm
@@ -2505,7 +2500,7 @@ impl Circ2dTanCen {
     /// the argument it qualifies (for example, enclosing for a line).
     pub fn new_qualifiedcurve_handlegeom2dpoint_real(
         Qualified1: &QualifiedCurve,
-        Pcenter: &crate::ffi_types::HandleGeom2dPoint,
+        Pcenter: &crate::ffi_types::Handle_Geom2d_Point,
         Tolerance: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -2513,7 +2508,7 @@ impl Circ2dTanCen {
         }
     }
 
-    /// **Source:** `Geom2dGcc_Circ2dTanCen.hxx`:80 - `Geom2dGcc_Circ2dTanCen::IsDone()`
+    /// **Source:** `Geom2dGcc_Circ2dTanCen.hxx`:78 - `Geom2dGcc_Circ2dTanCen::IsDone()`
     /// Returns true if the construction algorithm does not fail
     /// (even if it finds no solution).
     /// Note: IsDone protects against a failure arising from a
@@ -2525,7 +2520,7 @@ impl Circ2dTanCen {
         })
     }
 
-    /// **Source:** `Geom2dGcc_Circ2dTanCen.hxx`:86 - `Geom2dGcc_Circ2dTanCen::NbSolutions()`
+    /// **Source:** `Geom2dGcc_Circ2dTanCen.hxx`:84 - `Geom2dGcc_Circ2dTanCen::NbSolutions()`
     /// Returns the number of circles, representing solutions
     /// computed by this algorithm.
     /// Exceptions
@@ -2536,7 +2531,7 @@ impl Circ2dTanCen {
         })
     }
 
-    /// **Source:** `Geom2dGcc_Circ2dTanCen.hxx`:98 - `Geom2dGcc_Circ2dTanCen::ThisSolution()`
+    /// **Source:** `Geom2dGcc_Circ2dTanCen.hxx`:96 - `Geom2dGcc_Circ2dTanCen::ThisSolution()`
     /// Returns a circle, representing the solution of index
     /// Index computed by this algorithm.
     /// Warning
@@ -2558,7 +2553,7 @@ impl Circ2dTanCen {
         }
     }
 
-    /// **Source:** `Geom2dGcc_Circ2dTanCen.hxx`:113 - `Geom2dGcc_Circ2dTanCen::WhichQualifier()`
+    /// **Source:** `Geom2dGcc_Circ2dTanCen.hxx`:111 - `Geom2dGcc_Circ2dTanCen::WhichQualifier()`
     /// Returns the qualifier Qualif1 of the tangency argument
     /// for the solution of index Index computed by this algorithm.
     /// The returned qualifier is:
@@ -2584,7 +2579,7 @@ impl Circ2dTanCen {
         *Qualif1 = crate::gcc_ent::Position::try_from(Qualif1_i32_).unwrap();
     }
 
-    /// **Source:** `Geom2dGcc_Circ2dTanCen.hxx`:123 - `Geom2dGcc_Circ2dTanCen::Tangency1()`
+    /// **Source:** `Geom2dGcc_Circ2dTanCen.hxx`:121 - `Geom2dGcc_Circ2dTanCen::Tangency1()`
     /// Returns information about the tangency point between the
     /// result number Index and the first argument.
     /// ParSol is the intrinsic parameter of the point PntSol on the solution curv.
@@ -2611,7 +2606,7 @@ impl Circ2dTanCen {
         })
     }
 
-    /// **Source:** `Geom2dGcc_Circ2dTanCen.hxx`:140 - `Geom2dGcc_Circ2dTanCen::IsTheSame1()`
+    /// **Source:** `Geom2dGcc_Circ2dTanCen.hxx`:138 - `Geom2dGcc_Circ2dTanCen::IsTheSame1()`
     /// Returns true if the solution of index Index and the first
     /// argument of this algorithm are the same (i.e. there are 2
     /// identical circles).
@@ -2638,7 +2633,7 @@ impl Circ2dTanCen {
 // From Geom2dGcc_Circ2dTanCenGeo.hxx
 // ========================
 
-/// **Source:** `Geom2dGcc_Circ2dTanCenGeo.hxx`:50 - `Geom2dGcc_Circ2dTanCenGeo`
+/// **Source:** `Geom2dGcc_Circ2dTanCenGeo.hxx`:49 - `Geom2dGcc_Circ2dTanCenGeo`
 /// This class implements the algorithms used to
 /// create 2d circles tangent to a curve and
 /// centered on a point.
@@ -2667,7 +2662,7 @@ unsafe impl crate::CppDeletable for Circ2dTanCenGeo {
 }
 
 impl Circ2dTanCenGeo {
-    /// **Source:** `Geom2dGcc_Circ2dTanCenGeo.hxx`:58 - `Geom2dGcc_Circ2dTanCenGeo::Geom2dGcc_Circ2dTanCenGeo()`
+    /// **Source:** `Geom2dGcc_Circ2dTanCenGeo.hxx`:57 - `Geom2dGcc_Circ2dTanCenGeo::Geom2dGcc_Circ2dTanCenGeo()`
     /// This method implements the algorithms used to
     /// create 2d circles tangent to a circle and
     /// centered on a point.
@@ -2685,7 +2680,7 @@ impl Circ2dTanCenGeo {
         }
     }
 
-    /// **Source:** `Geom2dGcc_Circ2dTanCenGeo.hxx`:64 - `Geom2dGcc_Circ2dTanCenGeo::IsDone()`
+    /// **Source:** `Geom2dGcc_Circ2dTanCenGeo.hxx`:63 - `Geom2dGcc_Circ2dTanCenGeo::IsDone()`
     /// This method returns True if the construction
     /// algorithm succeeded.
     pub fn is_done(&self) -> bool {
@@ -2694,7 +2689,7 @@ impl Circ2dTanCenGeo {
         })
     }
 
-    /// **Source:** `Geom2dGcc_Circ2dTanCenGeo.hxx`:70 - `Geom2dGcc_Circ2dTanCenGeo::NbSolutions()`
+    /// **Source:** `Geom2dGcc_Circ2dTanCenGeo.hxx`:69 - `Geom2dGcc_Circ2dTanCenGeo::NbSolutions()`
     /// Returns the number of solutions and raises NotDone
     /// exception if the algorithm didn't succeed.
     /// It raises NotDone if the construction algorithm
@@ -2707,7 +2702,7 @@ impl Circ2dTanCenGeo {
         })
     }
 
-    /// **Source:** `Geom2dGcc_Circ2dTanCenGeo.hxx`:81 - `Geom2dGcc_Circ2dTanCenGeo::ThisSolution()`
+    /// **Source:** `Geom2dGcc_Circ2dTanCenGeo.hxx`:80 - `Geom2dGcc_Circ2dTanCenGeo::ThisSolution()`
     /// Returns the solution number Index and raises OutOfRange
     /// exception if Index is greater than the number of solutions.
     /// Be careful: the Index is only a way to get all the
@@ -2728,7 +2723,7 @@ impl Circ2dTanCenGeo {
         }
     }
 
-    /// **Source:** `Geom2dGcc_Circ2dTanCenGeo.hxx`:83 - `Geom2dGcc_Circ2dTanCenGeo::WhichQualifier()`
+    /// **Source:** `Geom2dGcc_Circ2dTanCenGeo.hxx`:82 - `Geom2dGcc_Circ2dTanCenGeo::WhichQualifier()`
     pub fn which_qualifier(&self, Index: i32, Qualif1: &mut crate::gcc_ent::Position) {
         let mut Qualif1_i32_: i32 = (*Qualif1).into();
         crate::check_void_result(unsafe {
@@ -2741,7 +2736,7 @@ impl Circ2dTanCenGeo {
         *Qualif1 = crate::gcc_ent::Position::try_from(Qualif1_i32_).unwrap();
     }
 
-    /// **Source:** `Geom2dGcc_Circ2dTanCenGeo.hxx`:95 - `Geom2dGcc_Circ2dTanCenGeo::Tangency1()`
+    /// **Source:** `Geom2dGcc_Circ2dTanCenGeo.hxx`:94 - `Geom2dGcc_Circ2dTanCenGeo::Tangency1()`
     /// Returns information about the tangency point between the
     /// result number Index and the first argument.
     /// ParSol is the intrinsic parameter of the point PntSol
@@ -2775,7 +2770,7 @@ impl Circ2dTanCenGeo {
 // From Geom2dGcc_Circ2dTanOnRad.hxx
 // ========================
 
-/// **Source:** `Geom2dGcc_Circ2dTanOnRad.hxx`:61 - `Geom2dGcc_Circ2dTanOnRad`
+/// **Source:** `Geom2dGcc_Circ2dTanOnRad.hxx`:59 - `Geom2dGcc_Circ2dTanOnRad`
 /// This class implements the algorithms used to
 /// create a 2d circle tangent to a 2d entity,
 /// centered on a 2d entity and with a given radius.
@@ -2809,7 +2804,7 @@ unsafe impl crate::CppDeletable for Circ2dTanOnRad {
 }
 
 impl Circ2dTanOnRad {
-    /// **Source:** `Geom2dGcc_Circ2dTanOnRad.hxx`:69 - `Geom2dGcc_Circ2dTanOnRad::Geom2dGcc_Circ2dTanOnRad()`
+    /// **Source:** `Geom2dGcc_Circ2dTanOnRad.hxx`:67 - `Geom2dGcc_Circ2dTanOnRad::Geom2dGcc_Circ2dTanOnRad()`
     /// Constructs one or more 2D circles of radius Radius,
     /// centered on the 2D curve OnCurv and:
     /// -   tangential to the curve Qualified1
@@ -2824,7 +2819,7 @@ impl Circ2dTanOnRad {
         }
     }
 
-    /// **Source:** `Geom2dGcc_Circ2dTanOnRad.hxx`:104 - `Geom2dGcc_Circ2dTanOnRad::Geom2dGcc_Circ2dTanOnRad()`
+    /// **Source:** `Geom2dGcc_Circ2dTanOnRad.hxx`:102 - `Geom2dGcc_Circ2dTanOnRad::Geom2dGcc_Circ2dTanOnRad()`
     /// Constructs one or more 2D circles of radius Radius,
     /// centered on the 2D curve OnCurv and:
     /// passing through the point Point1.
@@ -2835,28 +2830,28 @@ impl Circ2dTanOnRad {
     /// Similarly, the qualified curve Qualified1 is created from
     /// an adapted curve.
     /// Adapted curves are created in the following way:
-    /// Handle(Geom2d_Curve) myCurveOn = ... ;
+    /// occ::handle<Geom2d_Curve> myCurveOn = ... ;
     /// Geom2dAdaptor_Curve OnCurv ( myCurveOn ) ;
     /// The algorithm is then constructed with this object:
-    /// Handle(Geom2d_Curve) myCurve1 = ...
+    /// occ::handle<Geom2d_Curve> myCurve1 = ...
     /// ;
     /// Geom2dAdaptor_Curve Adapted1 ( myCurve1 ) ;
     /// Geom2dGcc_QualifiedCurve
     /// Qualified1 = Geom2dGcc::Outside(Adapted1);
-    /// Standard_Real Radius = ... , Tolerance = ... ;
+    /// double Radius = ... , Tolerance = ... ;
     /// Geom2dGcc_Circ2dTanOnRad
     /// myAlgo ( Qualified1 , OnCurv , Radius , Tolerance ) ;
     /// if ( myAlgo.IsDone() )
-    /// { Standard_Integer Nbr = myAlgo.NbSolutions() ;
+    /// { int Nbr = myAlgo.NbSolutions() ;
     /// gp_Circ2d Circ ;
-    /// for ( Standard_Integer i = 1 ;
+    /// for ( int i = 1 ;
     /// i <= nbr ; i++ )
     /// { Circ = myAlgo.ThisSolution (i) ;
     /// ...
     /// }
     /// }
     pub fn new_handlegeom2dpoint_curve_real2(
-        Point1: &crate::ffi_types::HandleGeom2dPoint,
+        Point1: &crate::ffi_types::Handle_Geom2d_Point,
         OnCurv: &crate::geom2d_adaptor::Curve,
         Radius: f64,
         Tolerance: f64,
@@ -2866,7 +2861,7 @@ impl Circ2dTanOnRad {
         }
     }
 
-    /// **Source:** `Geom2dGcc_Circ2dTanOnRad.hxx`:109 - `Geom2dGcc_Circ2dTanOnRad::Results()`
+    /// **Source:** `Geom2dGcc_Circ2dTanOnRad.hxx`:107 - `Geom2dGcc_Circ2dTanOnRad::Results()`
     pub fn results_circ2dtanonrad(&mut self, Circ: &crate::gcc_ana::Circ2dTanOnRad) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::Geom2dGcc_Circ2dTanOnRad_results_circ2dtanonrad(
@@ -2876,7 +2871,7 @@ impl Circ2dTanOnRad {
         })
     }
 
-    /// **Source:** `Geom2dGcc_Circ2dTanOnRad.hxx`:111 - `Geom2dGcc_Circ2dTanOnRad::Results()`
+    /// **Source:** `Geom2dGcc_Circ2dTanOnRad.hxx`:109 - `Geom2dGcc_Circ2dTanOnRad::Results()`
     pub fn results_circ2dtanonradgeo(&mut self, Circ: &Circ2dTanOnRadGeo) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::Geom2dGcc_Circ2dTanOnRad_results_circ2dtanonradgeo(
@@ -2886,7 +2881,7 @@ impl Circ2dTanOnRad {
         })
     }
 
-    /// **Source:** `Geom2dGcc_Circ2dTanOnRad.hxx`:118 - `Geom2dGcc_Circ2dTanOnRad::IsDone()`
+    /// **Source:** `Geom2dGcc_Circ2dTanOnRad.hxx`:116 - `Geom2dGcc_Circ2dTanOnRad::IsDone()`
     /// Returns true if the construction algorithm does not fail
     /// (even if it finds no solution).
     /// Note: IsDone protects against a failure arising from a
@@ -2898,7 +2893,7 @@ impl Circ2dTanOnRad {
         })
     }
 
-    /// **Source:** `Geom2dGcc_Circ2dTanOnRad.hxx`:123 - `Geom2dGcc_Circ2dTanOnRad::NbSolutions()`
+    /// **Source:** `Geom2dGcc_Circ2dTanOnRad.hxx`:121 - `Geom2dGcc_Circ2dTanOnRad::NbSolutions()`
     /// Returns the number of circles, representing solutions
     /// computed by this algorithm.
     /// Exceptions: StdFail_NotDone if the construction fails.
@@ -2908,7 +2903,7 @@ impl Circ2dTanOnRad {
         })
     }
 
-    /// **Source:** `Geom2dGcc_Circ2dTanOnRad.hxx`:134 - `Geom2dGcc_Circ2dTanOnRad::ThisSolution()`
+    /// **Source:** `Geom2dGcc_Circ2dTanOnRad.hxx`:132 - `Geom2dGcc_Circ2dTanOnRad::ThisSolution()`
     /// Returns the solution number Index and raises OutOfRange
     /// exception if Index is greater than the number of solutions.
     /// Be careful: the Index is only a way to get all the
@@ -2929,7 +2924,7 @@ impl Circ2dTanOnRad {
         }
     }
 
-    /// **Source:** `Geom2dGcc_Circ2dTanOnRad.hxx`:150 - `Geom2dGcc_Circ2dTanOnRad::WhichQualifier()`
+    /// **Source:** `Geom2dGcc_Circ2dTanOnRad.hxx`:148 - `Geom2dGcc_Circ2dTanOnRad::WhichQualifier()`
     /// Returns the qualifier Qualif1 of the tangency argument
     /// for the solution of index Index computed by this algorithm.
     /// The returned qualifier is:
@@ -2956,7 +2951,7 @@ impl Circ2dTanOnRad {
         *Qualif1 = crate::gcc_ent::Position::try_from(Qualif1_i32_).unwrap();
     }
 
-    /// **Source:** `Geom2dGcc_Circ2dTanOnRad.hxx`:162 - `Geom2dGcc_Circ2dTanOnRad::Tangency1()`
+    /// **Source:** `Geom2dGcc_Circ2dTanOnRad.hxx`:160 - `Geom2dGcc_Circ2dTanOnRad::Tangency1()`
     /// Returns information about the tangency point between the
     /// result number Index and the first argument.
     /// ParSol is the intrinsic parameter of the point on the solution curv.
@@ -2985,7 +2980,7 @@ impl Circ2dTanOnRad {
         })
     }
 
-    /// **Source:** `Geom2dGcc_Circ2dTanOnRad.hxx`:177 - `Geom2dGcc_Circ2dTanOnRad::CenterOn3()`
+    /// **Source:** `Geom2dGcc_Circ2dTanOnRad.hxx`:175 - `Geom2dGcc_Circ2dTanOnRad::CenterOn3()`
     /// Returns the center PntSol on the second argument (i.e.
     /// line or circle) of the solution of index Index computed by
     /// this algorithm.
@@ -3007,7 +3002,7 @@ impl Circ2dTanOnRad {
         })
     }
 
-    /// **Source:** `Geom2dGcc_Circ2dTanOnRad.hxx`:192 - `Geom2dGcc_Circ2dTanOnRad::IsTheSame1()`
+    /// **Source:** `Geom2dGcc_Circ2dTanOnRad.hxx`:188 - `Geom2dGcc_Circ2dTanOnRad::IsTheSame1()`
     /// Returns true if the solution of index Index and the first
     /// argument of this algorithm are the same (i.e. there are 2
     /// identical circles).
@@ -3033,7 +3028,7 @@ impl Circ2dTanOnRad {
 // From Geom2dGcc_Circ2dTanOnRadGeo.hxx
 // ========================
 
-/// **Source:** `Geom2dGcc_Circ2dTanOnRadGeo.hxx`:60 - `Geom2dGcc_Circ2dTanOnRadGeo`
+/// **Source:** `Geom2dGcc_Circ2dTanOnRadGeo.hxx`:58 - `Geom2dGcc_Circ2dTanOnRadGeo`
 /// This class implements the algorithms used to
 /// create a 2d circle tangent to a 2d entity,
 /// centered on a 2d entity and with a given radius.
@@ -3067,7 +3062,7 @@ unsafe impl crate::CppDeletable for Circ2dTanOnRadGeo {
 }
 
 impl Circ2dTanOnRadGeo {
-    /// **Source:** `Geom2dGcc_Circ2dTanOnRadGeo.hxx`:70 - `Geom2dGcc_Circ2dTanOnRadGeo::Geom2dGcc_Circ2dTanOnRadGeo()`
+    /// **Source:** `Geom2dGcc_Circ2dTanOnRadGeo.hxx`:68 - `Geom2dGcc_Circ2dTanOnRadGeo::Geom2dGcc_Circ2dTanOnRadGeo()`
     /// This methods implements the algorithms used to create
     /// 2d Circles tangent to a curve and centered on a 2d Line
     /// with a given radius.
@@ -3088,7 +3083,7 @@ impl Circ2dTanOnRadGeo {
         }
     }
 
-    /// **Source:** `Geom2dGcc_Circ2dTanOnRadGeo.hxx`:80 - `Geom2dGcc_Circ2dTanOnRadGeo::Geom2dGcc_Circ2dTanOnRadGeo()`
+    /// **Source:** `Geom2dGcc_Circ2dTanOnRadGeo.hxx`:78 - `Geom2dGcc_Circ2dTanOnRadGeo::Geom2dGcc_Circ2dTanOnRadGeo()`
     /// This methods implements the algorithms used to create
     /// 2d Circles tangent to a curve and centered on a 2d Circle
     /// with a given radius.
@@ -3109,7 +3104,7 @@ impl Circ2dTanOnRadGeo {
         }
     }
 
-    /// **Source:** `Geom2dGcc_Circ2dTanOnRadGeo.hxx`:90 - `Geom2dGcc_Circ2dTanOnRadGeo::Geom2dGcc_Circ2dTanOnRadGeo()`
+    /// **Source:** `Geom2dGcc_Circ2dTanOnRadGeo.hxx`:88 - `Geom2dGcc_Circ2dTanOnRadGeo::Geom2dGcc_Circ2dTanOnRadGeo()`
     /// This methods implements the algorithms used to create
     /// 2d Circles tangent to a circle and centered on a 2d curve
     /// with a given radius.
@@ -3126,7 +3121,7 @@ impl Circ2dTanOnRadGeo {
         }
     }
 
-    /// **Source:** `Geom2dGcc_Circ2dTanOnRadGeo.hxx`:100 - `Geom2dGcc_Circ2dTanOnRadGeo::Geom2dGcc_Circ2dTanOnRadGeo()`
+    /// **Source:** `Geom2dGcc_Circ2dTanOnRadGeo.hxx`:98 - `Geom2dGcc_Circ2dTanOnRadGeo::Geom2dGcc_Circ2dTanOnRadGeo()`
     /// This methods implements the algorithms used to create
     /// 2d Circles tangent to a 2d Line and centered on a 2d curve
     /// with a given radius.
@@ -3143,7 +3138,7 @@ impl Circ2dTanOnRadGeo {
         }
     }
 
-    /// **Source:** `Geom2dGcc_Circ2dTanOnRadGeo.hxx`:110 - `Geom2dGcc_Circ2dTanOnRadGeo::Geom2dGcc_Circ2dTanOnRadGeo()`
+    /// **Source:** `Geom2dGcc_Circ2dTanOnRadGeo.hxx`:108 - `Geom2dGcc_Circ2dTanOnRadGeo::Geom2dGcc_Circ2dTanOnRadGeo()`
     /// This methods implements the algorithms used to create
     /// 2d Circles tangent to a 2d curve and centered on a 2d curve
     /// with a given radius.
@@ -3164,7 +3159,7 @@ impl Circ2dTanOnRadGeo {
         }
     }
 
-    /// **Source:** `Geom2dGcc_Circ2dTanOnRadGeo.hxx`:120 - `Geom2dGcc_Circ2dTanOnRadGeo::Geom2dGcc_Circ2dTanOnRadGeo()`
+    /// **Source:** `Geom2dGcc_Circ2dTanOnRadGeo.hxx`:118 - `Geom2dGcc_Circ2dTanOnRadGeo::Geom2dGcc_Circ2dTanOnRadGeo()`
     /// This methods implements the algorithms used to create
     /// 2d Circles passing through a 2d point and centered on a
     /// 2d curve with a given radius.
@@ -3185,7 +3180,7 @@ impl Circ2dTanOnRadGeo {
         }
     }
 
-    /// **Source:** `Geom2dGcc_Circ2dTanOnRadGeo.hxx`:127 - `Geom2dGcc_Circ2dTanOnRadGeo::IsDone()`
+    /// **Source:** `Geom2dGcc_Circ2dTanOnRadGeo.hxx`:125 - `Geom2dGcc_Circ2dTanOnRadGeo::IsDone()`
     /// This method returns True if the construction
     /// algorithm succeeded.
     pub fn is_done(&self) -> bool {
@@ -3194,7 +3189,7 @@ impl Circ2dTanOnRadGeo {
         })
     }
 
-    /// **Source:** `Geom2dGcc_Circ2dTanOnRadGeo.hxx`:132 - `Geom2dGcc_Circ2dTanOnRadGeo::NbSolutions()`
+    /// **Source:** `Geom2dGcc_Circ2dTanOnRadGeo.hxx`:130 - `Geom2dGcc_Circ2dTanOnRadGeo::NbSolutions()`
     /// This method returns the number of solutions.
     /// It raises NotDone if the construction algorithm
     /// didn't succeed.
@@ -3206,7 +3201,7 @@ impl Circ2dTanOnRadGeo {
         })
     }
 
-    /// **Source:** `Geom2dGcc_Circ2dTanOnRadGeo.hxx`:143 - `Geom2dGcc_Circ2dTanOnRadGeo::ThisSolution()`
+    /// **Source:** `Geom2dGcc_Circ2dTanOnRadGeo.hxx`:141 - `Geom2dGcc_Circ2dTanOnRadGeo::ThisSolution()`
     /// Returns the solution number Index and raises OutOfRange
     /// exception if Index is greater than the number of solutions.
     /// Be careful: the Index is only a way to get all the
@@ -3227,7 +3222,7 @@ impl Circ2dTanOnRadGeo {
         }
     }
 
-    /// **Source:** `Geom2dGcc_Circ2dTanOnRadGeo.hxx`:145 - `Geom2dGcc_Circ2dTanOnRadGeo::WhichQualifier()`
+    /// **Source:** `Geom2dGcc_Circ2dTanOnRadGeo.hxx`:143 - `Geom2dGcc_Circ2dTanOnRadGeo::WhichQualifier()`
     pub fn which_qualifier(&self, Index: i32, Qualif1: &mut crate::gcc_ent::Position) {
         let mut Qualif1_i32_: i32 = (*Qualif1).into();
         crate::check_void_result(unsafe {
@@ -3240,7 +3235,7 @@ impl Circ2dTanOnRadGeo {
         *Qualif1 = crate::gcc_ent::Position::try_from(Qualif1_i32_).unwrap();
     }
 
-    /// **Source:** `Geom2dGcc_Circ2dTanOnRadGeo.hxx`:159 - `Geom2dGcc_Circ2dTanOnRadGeo::Tangency1()`
+    /// **Source:** `Geom2dGcc_Circ2dTanOnRadGeo.hxx`:157 - `Geom2dGcc_Circ2dTanOnRadGeo::Tangency1()`
     /// Returns information about the tangency point between the
     /// result number Index and the first argument.
     /// ParSol is the intrinsic parameter of the point on the
@@ -3271,7 +3266,7 @@ impl Circ2dTanOnRadGeo {
         })
     }
 
-    /// **Source:** `Geom2dGcc_Circ2dTanOnRadGeo.hxx`:173 - `Geom2dGcc_Circ2dTanOnRadGeo::CenterOn3()`
+    /// **Source:** `Geom2dGcc_Circ2dTanOnRadGeo.hxx`:171 - `Geom2dGcc_Circ2dTanOnRadGeo::CenterOn3()`
     /// Returns information about the center (on the curv)
     /// of the result.
     /// ParArg is the intrinsic parameter of the point on
@@ -3292,7 +3287,7 @@ impl Circ2dTanOnRadGeo {
         })
     }
 
-    /// **Source:** `Geom2dGcc_Circ2dTanOnRadGeo.hxx`:183 - `Geom2dGcc_Circ2dTanOnRadGeo::IsTheSame1()`
+    /// **Source:** `Geom2dGcc_Circ2dTanOnRadGeo.hxx`:179 - `Geom2dGcc_Circ2dTanOnRadGeo::IsTheSame1()`
     /// Returns True if the solution number Index is equal to
     /// the first argument and False in the other cases.
     /// It raises NotDone if the construction algorithm
@@ -4597,7 +4592,7 @@ impl FunctionTanObl {
 // From Geom2dGcc_IsParallel.hxx
 // ========================
 
-/// **Source:** `Geom2dGcc_IsParallel.hxx`:35 - `Geom2dGcc_IsParallel`
+/// **Source:** `Geom2dGcc_IsParallel.hxx`:31 - `Geom2dGcc_IsParallel`
 pub use crate::ffi_types::Geom2dGcc_IsParallel as IsParallel;
 
 unsafe impl crate::CppDeletable for IsParallel {
@@ -4609,16 +4604,7 @@ unsafe impl crate::CppDeletable for IsParallel {
 }
 
 impl IsParallel {
-    /// **Source:** `Geom2dGcc_IsParallel.hxx`:35 - `Geom2dGcc_IsParallel::Geom2dGcc_IsParallel()`
-    pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKGeomAlgo::Geom2dGcc_IsParallel_ctor(),
-            ))
-        }
-    }
-
-    /// **Source:** `Geom2dGcc_IsParallel.hxx`:35 - `Geom2dGcc_IsParallel::Geom2dGcc_IsParallel()`
+    /// **Source:** `Geom2dGcc_IsParallel.hxx`:31 - `Geom2dGcc_IsParallel::Geom2dGcc_IsParallel()`
     pub fn new_charptr(theMessage: &str) -> crate::OwnedPtr<Self> {
         let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
         unsafe {
@@ -4630,7 +4616,7 @@ impl IsParallel {
         }
     }
 
-    /// **Source:** `Geom2dGcc_IsParallel.hxx`:35 - `Geom2dGcc_IsParallel::Geom2dGcc_IsParallel()`
+    /// **Source:** `Geom2dGcc_IsParallel.hxx`:31 - `Geom2dGcc_IsParallel::Geom2dGcc_IsParallel()`
     pub fn new_charptr2(theMessage: &str, theStackTrace: &str) -> crate::OwnedPtr<Self> {
         let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
         let c_theStackTrace = std::ffi::CString::new(theStackTrace).unwrap();
@@ -4644,81 +4630,17 @@ impl IsParallel {
         }
     }
 
-    /// **Source:** `Geom2dGcc_IsParallel.hxx`:35 - `Geom2dGcc_IsParallel::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `Geom2dGcc_IsParallel.hxx`:31 - `Geom2dGcc_IsParallel::ExceptionType()`
+    pub fn exception_type(&self) -> std::string::String {
         unsafe {
-            &*(crate::check_result(
-                crate::ffi_extern_TKGeomAlgo::Geom2dGcc_IsParallel_dynamic_type(
+            std::ffi::CStr::from_ptr(crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::Geom2dGcc_IsParallel_exception_type(
                     self as *const Self,
                 ),
             ))
         }
-    }
-
-    /// **Source:** `Geom2dGcc_IsParallel.hxx`:35 - `Geom2dGcc_IsParallel::Raise()`
-    pub fn raise_charptr(theMessage: &str) {
-        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKGeomAlgo::Geom2dGcc_IsParallel_raise_charptr(c_theMessage.as_ptr())
-        })
-    }
-
-    /// **Source:** `Geom2dGcc_IsParallel.hxx`:35 - `Geom2dGcc_IsParallel::Raise()`
-    pub fn raise_sstream(theMessage: &mut crate::ffi_types::Standard_SStream) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKGeomAlgo::Geom2dGcc_IsParallel_raise_sstream(theMessage)
-        })
-    }
-
-    /// **Source:** `Geom2dGcc_IsParallel.hxx`:35 - `Geom2dGcc_IsParallel::NewInstance()`
-    pub fn new_instance_charptr(
-        theMessage: &str,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleGeom2dGccIsParallel> {
-        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKGeomAlgo::Geom2dGcc_IsParallel_new_instance_charptr(
-                    c_theMessage.as_ptr(),
-                ),
-            ))
-        }
-    }
-
-    /// **Source:** `Geom2dGcc_IsParallel.hxx`:35 - `Geom2dGcc_IsParallel::NewInstance()`
-    pub fn new_instance_charptr2(
-        theMessage: &str,
-        theStackTrace: &str,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleGeom2dGccIsParallel> {
-        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
-        let c_theStackTrace = std::ffi::CString::new(theStackTrace).unwrap();
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKGeomAlgo::Geom2dGcc_IsParallel_new_instance_charptr2(
-                    c_theMessage.as_ptr(),
-                    c_theStackTrace.as_ptr(),
-                ),
-            ))
-        }
-    }
-
-    /// **Source:** `Geom2dGcc_IsParallel.hxx`:35 - `Geom2dGcc_IsParallel::get_type_name()`
-    pub fn get_type_name() -> std::string::String {
-        unsafe {
-            std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi_extern_TKGeomAlgo::Geom2dGcc_IsParallel_get_type_name(),
-            ))
-        }
         .to_string_lossy()
         .into_owned()
-    }
-
-    /// **Source:** `Geom2dGcc_IsParallel.hxx`:35 - `Geom2dGcc_IsParallel::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
-        unsafe {
-            &*(crate::check_result(
-                crate::ffi_extern_TKGeomAlgo::Geom2dGcc_IsParallel_get_type_descriptor(),
-            ))
-        }
     }
 
     /// Upcast to Standard_DomainError
@@ -4765,40 +4687,7 @@ impl IsParallel {
         }
     }
 
-    /// Upcast to Standard_Transient
-    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        unsafe {
-            &*crate::check_result(
-                crate::ffi_extern_TKGeomAlgo::Geom2dGcc_IsParallel_as_Standard_Transient(
-                    self as *const Self,
-                ),
-            )
-        }
-    }
-
-    /// Upcast to Standard_Transient (mutable)
-    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        unsafe {
-            &mut *crate::check_result(
-                crate::ffi_extern_TKGeomAlgo::Geom2dGcc_IsParallel_as_Standard_Transient_mut(
-                    self as *mut Self,
-                ),
-            )
-        }
-    }
-
-    /// Wrap in a Handle (reference-counted smart pointer)
-    pub fn to_handle(
-        obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleGeom2dGccIsParallel> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKGeomAlgo::Geom2dGcc_IsParallel_to_handle(obj.into_raw()),
-            ))
-        }
-    }
-
-    /// Inherited: **Source:** `Standard_Failure.hxx`:58 - `Standard_Failure::Print()`
+    /// Inherited: **Source:** `Standard_Failure.hxx`:73 - `Standard_Failure::Print()`
     pub fn print(&self, theStream: &mut crate::ffi_types::Standard_OStream) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::Geom2dGcc_IsParallel_inherited_Print(
@@ -4807,175 +4696,13 @@ impl IsParallel {
             )
         })
     }
-
-    /// Inherited: **Source:** `Standard_Failure.hxx`:72 - `Standard_Failure::Reraise()`
-    pub fn reraise(&mut self) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKGeomAlgo::Geom2dGcc_IsParallel_inherited_Reraise(self as *mut Self)
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Failure.hxx`:112 - `Standard_Failure::Jump()`
-    pub fn jump(&mut self) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKGeomAlgo::Geom2dGcc_IsParallel_inherited_Jump(self as *mut Self)
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKGeomAlgo::Geom2dGcc_IsParallel_inherited_IsInstance(
-                self as *const Self,
-                theType,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKGeomAlgo::Geom2dGcc_IsParallel_inherited_IsKind(
-                self as *const Self,
-                theType,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
-    pub fn this(&self) -> Option<&crate::standard::Transient> {
-        {
-            let __val = crate::check_result(unsafe {
-                crate::ffi_extern_TKGeomAlgo::Geom2dGcc_IsParallel_inherited_This(
-                    self as *const Self,
-                )
-            });
-            if __val.is_null() {
-                None
-            } else {
-                Some(unsafe { &*__val })
-            }
-        }
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
-    pub fn get_ref_count(&self) -> i32 {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKGeomAlgo::Geom2dGcc_IsParallel_inherited_GetRefCount(
-                self as *const Self,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
-    pub fn increment_ref_counter(&mut self) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKGeomAlgo::Geom2dGcc_IsParallel_inherited_IncrementRefCounter(
-                self as *mut Self,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
-    pub fn decrement_ref_counter(&mut self) -> i32 {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKGeomAlgo::Geom2dGcc_IsParallel_inherited_DecrementRefCounter(
-                self as *mut Self,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
-    pub fn delete(&self) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKGeomAlgo::Geom2dGcc_IsParallel_inherited_Delete(self as *const Self)
-        })
-    }
-}
-
-pub use crate::ffi_types::HandleGeom2dGccIsParallel;
-
-unsafe impl crate::CppDeletable for HandleGeom2dGccIsParallel {
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            crate::ffi_extern_TKGeomAlgo::HandleGeom2dGccIsParallel_destructor(ptr);
-        }
-    }
-}
-
-unsafe impl crate::CppCopyable for HandleGeom2dGccIsParallel {
-    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        unsafe {
-            crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleGeom2dGccIsParallel_clone(ptr))
-        }
-    }
-}
-
-impl HandleGeom2dGccIsParallel {
-    /// Returns `true` if this Handle is null (doesn't point to any object).
-    pub fn is_null(&self) -> bool {
-        unsafe {
-            crate::ffi_extern_TKGeomAlgo::HandleGeom2dGccIsParallel_is_null(self as *const Self)
-        }
-    }
-
-    /// Dereference this Handle to access the underlying Geom2dGcc_IsParallel
-    pub fn get(&self) -> &crate::ffi_types::Geom2dGcc_IsParallel {
-        unsafe {
-            &*crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleGeom2dGccIsParallel_get(
-                self as *const Self,
-            ))
-        }
-    }
-
-    /// Dereference this Handle to mutably access the underlying Geom2dGcc_IsParallel
-    pub fn get_mut(&mut self) -> &mut crate::ffi_types::Geom2dGcc_IsParallel {
-        unsafe {
-            &mut *crate::check_result(
-                crate::ffi_extern_TKGeomAlgo::HandleGeom2dGccIsParallel_get_mut(self as *mut Self),
-            )
-        }
-    }
-
-    /// Upcast Handle<Geom2dGcc_IsParallel> to Handle<Standard_DomainError>
-    pub fn to_handle_domain_error(
-        &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardDomainError> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleGeom2dGccIsParallel_to_HandleStandardDomainError(self as *const Self)))
-        }
-    }
-
-    /// Upcast Handle<Geom2dGcc_IsParallel> to Handle<Standard_Failure>
-    pub fn to_handle_failure(&self) -> crate::OwnedPtr<crate::ffi_types::HandleStandardFailure> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKGeomAlgo::HandleGeom2dGccIsParallel_to_HandleStandardFailure(
-                    self as *const Self,
-                ),
-            ))
-        }
-    }
-
-    /// Upcast Handle<Geom2dGcc_IsParallel> to Handle<Standard_Transient>
-    pub fn to_handle_transient(
-        &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKGeomAlgo::HandleGeom2dGccIsParallel_to_HandleStandardTransient(
-                    self as *const Self,
-                ),
-            ))
-        }
-    }
 }
 
 // ========================
 // From Geom2dGcc_Lin2d2Tan.hxx
 // ========================
 
-/// **Source:** `Geom2dGcc_Lin2d2Tan.hxx`:49 - `Geom2dGcc_Lin2d2Tan`
+/// **Source:** `Geom2dGcc_Lin2d2Tan.hxx`:48 - `Geom2dGcc_Lin2d2Tan`
 /// This class implements the algorithms used to
 /// create 2d lines tangent to 2 other elements which
 /// can be circles, curves or points.
@@ -5001,7 +4728,7 @@ unsafe impl crate::CppDeletable for Lin2d2Tan {
 }
 
 impl Lin2d2Tan {
-    /// **Source:** `Geom2dGcc_Lin2d2Tan.hxx`:57 - `Geom2dGcc_Lin2d2Tan::Geom2dGcc_Lin2d2Tan()`
+    /// **Source:** `Geom2dGcc_Lin2d2Tan.hxx`:56 - `Geom2dGcc_Lin2d2Tan::Geom2dGcc_Lin2d2Tan()`
     /// This class implements the algorithms used to create 2d
     /// line tangent to two curves.
     /// Tolang is used to determine the tolerance for the tangency points.
@@ -5019,7 +4746,7 @@ impl Lin2d2Tan {
         }
     }
 
-    /// **Source:** `Geom2dGcc_Lin2d2Tan.hxx`:64 - `Geom2dGcc_Lin2d2Tan::Geom2dGcc_Lin2d2Tan()`
+    /// **Source:** `Geom2dGcc_Lin2d2Tan.hxx`:63 - `Geom2dGcc_Lin2d2Tan::Geom2dGcc_Lin2d2Tan()`
     /// This class implements the algorithms used to create 2d
     /// lines passing through a point and tangent to a curve.
     /// Tolang is used to determine the tolerance for the tangency points.
@@ -5037,7 +4764,7 @@ impl Lin2d2Tan {
         }
     }
 
-    /// **Source:** `Geom2dGcc_Lin2d2Tan.hxx`:73 - `Geom2dGcc_Lin2d2Tan::Geom2dGcc_Lin2d2Tan()`
+    /// **Source:** `Geom2dGcc_Lin2d2Tan.hxx`:72 - `Geom2dGcc_Lin2d2Tan::Geom2dGcc_Lin2d2Tan()`
     /// This class implements the algorithms used to create 2d
     /// line tangent to two curves.
     /// Tolang is used to determine the tolerance for the tangency points.
@@ -5059,7 +4786,7 @@ impl Lin2d2Tan {
         }
     }
 
-    /// **Source:** `Geom2dGcc_Lin2d2Tan.hxx`:83 - `Geom2dGcc_Lin2d2Tan::Geom2dGcc_Lin2d2Tan()`
+    /// **Source:** `Geom2dGcc_Lin2d2Tan.hxx`:82 - `Geom2dGcc_Lin2d2Tan::Geom2dGcc_Lin2d2Tan()`
     /// This class implements the algorithms used to create 2d
     /// lines passing through a point and tangent to a curve.
     /// Tolang is used to determine the tolerance for the tangency points.
@@ -5079,7 +4806,7 @@ impl Lin2d2Tan {
         }
     }
 
-    /// **Source:** `Geom2dGcc_Lin2d2Tan.hxx`:93 - `Geom2dGcc_Lin2d2Tan::IsDone()`
+    /// **Source:** `Geom2dGcc_Lin2d2Tan.hxx`:92 - `Geom2dGcc_Lin2d2Tan::IsDone()`
     /// Returns true if the construction algorithm does not fail
     /// (even if it finds no solution).
     /// Note: IsDone protects against a failure arising from a
@@ -5091,7 +4818,7 @@ impl Lin2d2Tan {
         })
     }
 
-    /// **Source:** `Geom2dGcc_Lin2d2Tan.hxx`:97 - `Geom2dGcc_Lin2d2Tan::NbSolutions()`
+    /// **Source:** `Geom2dGcc_Lin2d2Tan.hxx`:96 - `Geom2dGcc_Lin2d2Tan::NbSolutions()`
     /// Returns the number of lines, representing solutions computed by this algorithm.
     /// Exceptions StdFail_NotDone if the construction fails.R
     pub fn nb_solutions(&self) -> i32 {
@@ -5100,7 +4827,7 @@ impl Lin2d2Tan {
         })
     }
 
-    /// **Source:** `Geom2dGcc_Lin2d2Tan.hxx`:108 - `Geom2dGcc_Lin2d2Tan::ThisSolution()`
+    /// **Source:** `Geom2dGcc_Lin2d2Tan.hxx`:107 - `Geom2dGcc_Lin2d2Tan::ThisSolution()`
     /// Returns a line, representing the solution of index Index computed by this algorithm.
     /// Warning
     /// This indexing simply provides a means of consulting the
@@ -5121,7 +4848,7 @@ impl Lin2d2Tan {
         }
     }
 
-    /// **Source:** `Geom2dGcc_Lin2d2Tan.hxx`:125 - `Geom2dGcc_Lin2d2Tan::WhichQualifier()`
+    /// **Source:** `Geom2dGcc_Lin2d2Tan.hxx`:124 - `Geom2dGcc_Lin2d2Tan::WhichQualifier()`
     /// Returns the qualifiers Qualif1 and Qualif2 of the
     /// tangency arguments for the solution of index Index
     /// computed by this algorithm.
@@ -5132,7 +4859,7 @@ impl Lin2d2Tan {
     /// -   those computed during construction (i.e. enclosing or
     /// outside) when the solutions are defined as unqualified
     /// with respect to the arguments, or
-    /// -   GccEnt_noqualifier if the tangency argument is a   point.
+    /// -   GccEnt_noqualifier if the tangency argument is a point.
     /// Exceptions
     /// Standard_OutOfRange if Index is less than zero or
     /// greater than the number of solutions computed by this algorithm.
@@ -5157,7 +4884,7 @@ impl Lin2d2Tan {
         *Qualif2 = crate::gcc_ent::Position::try_from(Qualif2_i32_).unwrap();
     }
 
-    /// **Source:** `Geom2dGcc_Lin2d2Tan.hxx`:138 - `Geom2dGcc_Lin2d2Tan::Tangency1()`
+    /// **Source:** `Geom2dGcc_Lin2d2Tan.hxx`:137 - `Geom2dGcc_Lin2d2Tan::Tangency1()`
     /// Returns information about the tangency point between the
     /// result and the first argument.
     /// ParSol is the intrinsic parameter of the point PntSol on
@@ -5185,7 +4912,7 @@ impl Lin2d2Tan {
         })
     }
 
-    /// **Source:** `Geom2dGcc_Lin2d2Tan.hxx`:151 - `Geom2dGcc_Lin2d2Tan::Tangency2()`
+    /// **Source:** `Geom2dGcc_Lin2d2Tan.hxx`:150 - `Geom2dGcc_Lin2d2Tan::Tangency2()`
     /// Returns information about the tangency point between the
     /// result and the first argument.
     /// ParSol is the intrinsic parameter of the point PntSol on the solution curv.
@@ -5359,7 +5086,7 @@ impl Lin2d2TanIter {
         })
     }
 
-    /// **Source:** `Geom2dGcc_Lin2d2TanIter.hxx`:96 - `Geom2dGcc_Lin2d2TanIter::Tangency2()`
+    /// **Source:** `Geom2dGcc_Lin2d2TanIter.hxx`:94 - `Geom2dGcc_Lin2d2TanIter::Tangency2()`
     pub fn tangency2(&self, ParSol: &mut f64, ParArg: &mut f64, PntSol: &mut crate::gp::Pnt2d) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::Geom2dGcc_Lin2d2TanIter_tangency2(
@@ -5376,7 +5103,7 @@ impl Lin2d2TanIter {
 // From Geom2dGcc_Lin2dTanObl.hxx
 // ========================
 
-/// **Source:** `Geom2dGcc_Lin2dTanObl.hxx`:45 - `Geom2dGcc_Lin2dTanObl`
+/// **Source:** `Geom2dGcc_Lin2dTanObl.hxx`:44 - `Geom2dGcc_Lin2dTanObl`
 /// This class implements the algorithms used to
 /// create 2d line tangent to a curve QualifiedCurv and
 /// doing an angle Angle with a line TheLin.
@@ -5398,7 +5125,7 @@ unsafe impl crate::CppDeletable for Lin2dTanObl {
 }
 
 impl Lin2dTanObl {
-    /// **Source:** `Geom2dGcc_Lin2dTanObl.hxx`:55 - `Geom2dGcc_Lin2dTanObl::Geom2dGcc_Lin2dTanObl()`
+    /// **Source:** `Geom2dGcc_Lin2dTanObl.hxx`:54 - `Geom2dGcc_Lin2dTanObl::Geom2dGcc_Lin2dTanObl()`
     /// This class implements the algorithm used to
     /// create 2d line tangent to a curve and doing an
     /// angle Angle with the line TheLin.
@@ -5419,7 +5146,7 @@ impl Lin2dTanObl {
         }
     }
 
-    /// **Source:** `Geom2dGcc_Lin2dTanObl.hxx`:73 - `Geom2dGcc_Lin2dTanObl::Geom2dGcc_Lin2dTanObl()`
+    /// **Source:** `Geom2dGcc_Lin2dTanObl.hxx`:72 - `Geom2dGcc_Lin2dTanObl::Geom2dGcc_Lin2dTanObl()`
     /// This class implements the algorithm used to
     /// create 2d line tangent to a curve and doing an
     /// angle Angle with the line TheLin.
@@ -5449,7 +5176,7 @@ impl Lin2dTanObl {
         }
     }
 
-    /// **Source:** `Geom2dGcc_Lin2dTanObl.hxx`:83 - `Geom2dGcc_Lin2dTanObl::IsDone()`
+    /// **Source:** `Geom2dGcc_Lin2dTanObl.hxx`:82 - `Geom2dGcc_Lin2dTanObl::IsDone()`
     /// Returns true if the construction algorithm does not fail
     /// (even if it finds no solution).
     /// Note: IsDone protects against a failure arising from a
@@ -5460,7 +5187,7 @@ impl Lin2dTanObl {
         })
     }
 
-    /// **Source:** `Geom2dGcc_Lin2dTanObl.hxx`:88 - `Geom2dGcc_Lin2dTanObl::NbSolutions()`
+    /// **Source:** `Geom2dGcc_Lin2dTanObl.hxx`:87 - `Geom2dGcc_Lin2dTanObl::NbSolutions()`
     /// Returns the number of lines, representing solutions computed by this algorithm.
     /// Exceptions
     /// StdFail_NotDone if the construction fails.
@@ -5470,7 +5197,7 @@ impl Lin2dTanObl {
         })
     }
 
-    /// **Source:** `Geom2dGcc_Lin2dTanObl.hxx`:96 - `Geom2dGcc_Lin2dTanObl::ThisSolution()`
+    /// **Source:** `Geom2dGcc_Lin2dTanObl.hxx`:95 - `Geom2dGcc_Lin2dTanObl::ThisSolution()`
     /// Returns a line, representing the solution of index Index
     /// computed by this algorithm.
     /// Exceptions
@@ -5488,7 +5215,7 @@ impl Lin2dTanObl {
         }
     }
 
-    /// **Source:** `Geom2dGcc_Lin2dTanObl.hxx`:112 - `Geom2dGcc_Lin2dTanObl::WhichQualifier()`
+    /// **Source:** `Geom2dGcc_Lin2dTanObl.hxx`:111 - `Geom2dGcc_Lin2dTanObl::WhichQualifier()`
     /// Returns the qualifier Qualif1 of the tangency argument
     /// for the solution of index Index computed by this algorithm.
     /// The returned qualifier is:
@@ -5515,7 +5242,7 @@ impl Lin2dTanObl {
         *Qualif1 = crate::gcc_ent::Position::try_from(Qualif1_i32_).unwrap();
     }
 
-    /// **Source:** `Geom2dGcc_Lin2dTanObl.hxx`:120 - `Geom2dGcc_Lin2dTanObl::Tangency1()`
+    /// **Source:** `Geom2dGcc_Lin2dTanObl.hxx`:119 - `Geom2dGcc_Lin2dTanObl::Tangency1()`
     /// Returns information about the tangency point between the
     /// result and the first argument.
     /// ParSol is the intrinsic parameter of the point PntSol on
@@ -5540,7 +5267,7 @@ impl Lin2dTanObl {
         })
     }
 
-    /// **Source:** `Geom2dGcc_Lin2dTanObl.hxx`:135 - `Geom2dGcc_Lin2dTanObl::Intersection2()`
+    /// **Source:** `Geom2dGcc_Lin2dTanObl.hxx`:134 - `Geom2dGcc_Lin2dTanObl::Intersection2()`
     /// Returns the point of intersection PntSol between the
     /// solution of index Index and the second argument (the line) of this algorithm.
     /// ParSol is the parameter of the point PntSol on the
@@ -5569,7 +5296,7 @@ impl Lin2dTanObl {
         })
     }
 
-    /// **Source:** `Geom2dGcc_Lin2dTanObl.hxx`:144 - `Geom2dGcc_Lin2dTanObl::IsParallel2()`
+    /// **Source:** `Geom2dGcc_Lin2dTanObl.hxx`:143 - `Geom2dGcc_Lin2dTanObl::IsParallel2()`
     /// Returns true if the line and the solution are parallel. This
     /// is the case when the angle given at the time of
     /// construction is equal to 0 or Pi.
@@ -5684,7 +5411,7 @@ impl Lin2dTanOblIter {
         })
     }
 
-    /// **Source:** `Geom2dGcc_Lin2dTanOblIter.hxx`:61 - `Geom2dGcc_Lin2dTanOblIter::Intersection2()`
+    /// **Source:** `Geom2dGcc_Lin2dTanOblIter.hxx`:59 - `Geom2dGcc_Lin2dTanOblIter::Intersection2()`
     pub fn intersection2(&self, ParSol: &mut f64, ParArg: &mut f64, PntSol: &mut crate::gp::Pnt2d) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::Geom2dGcc_Lin2dTanOblIter_intersection2(
@@ -5696,7 +5423,7 @@ impl Lin2dTanOblIter {
         })
     }
 
-    /// **Source:** `Geom2dGcc_Lin2dTanOblIter.hxx`:65 - `Geom2dGcc_Lin2dTanOblIter::IsParallel2()`
+    /// **Source:** `Geom2dGcc_Lin2dTanOblIter.hxx`:61 - `Geom2dGcc_Lin2dTanOblIter::IsParallel2()`
     pub fn is_parallel2(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::Geom2dGcc_Lin2dTanOblIter_is_parallel2(
@@ -5832,7 +5559,7 @@ impl QualifiedCurve {
     /// -   the services provided by a 2D curve from the package Geom2d,
     /// -   and those required on the curve by a computation algorithm.
     /// The adapted curve is created in the following way:
-    /// Handle(Geom2d_Curve) mycurve = ... ;
+    /// occ::handle<Geom2d_Curve> mycurve = ... ;
     /// Geom2dAdaptor_Curve Curve ( mycurve ) ;
     /// The qualified curve is then constructed with this object:
     /// GccEnt_Position myQualif = GccEnt_outside ;
@@ -5863,7 +5590,7 @@ impl QualifiedCurve {
     /// based can be obtained in the following way:
     /// myQualifiedCurve = ... ;
     /// Geom2dAdaptor_Curve myAdaptedCurve = myQualifiedCurve.Qualified();
-    /// Handle(Geom2d_Curve) = myAdaptedCurve.Curve();
+    /// occ::handle<Geom2d_Curve> = myAdaptedCurve.Curve();
     pub fn qualified(&self) -> crate::OwnedPtr<crate::geom2d_adaptor::Curve> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(

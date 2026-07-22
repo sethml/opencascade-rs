@@ -3,6 +3,7 @@
 
 #include "occt_preamble.hxx"
 
+#include <Adaptor3d_Surface.hxx>
 #include <BRepAdaptor_Curve.hxx>
 #include <BRepAdaptor_Surface.hxx>
 #include <BRepMesh_BaseMeshAlgo.hxx>
@@ -24,6 +25,7 @@
 #include <BRepMesh_DelabellaMeshAlgoFactory.hxx>
 #include <BRepMesh_Delaun.hxx>
 #include <BRepMesh_DelaunayBaseMeshAlgo.hxx>
+#include <BRepMesh_DiscretAlgoFactory.hxx>
 #include <BRepMesh_DiscretFactory.hxx>
 #include <BRepMesh_DiscretRoot.hxx>
 #include <BRepMesh_Edge.hxx>
@@ -32,9 +34,9 @@
 #include <BRepMesh_ExtrusionRangeSplitter.hxx>
 #include <BRepMesh_FaceChecker.hxx>
 #include <BRepMesh_FaceDiscret.hxx>
-#include <BRepMesh_FactoryError.hxx>
 #include <BRepMesh_GeomTool.hxx>
 #include <BRepMesh_IncrementalMesh.hxx>
+#include <BRepMesh_IncrementalMeshFactory.hxx>
 #include <BRepMesh_MeshAlgoFactory.hxx>
 #include <BRepMesh_MeshTool.hxx>
 #include <BRepMesh_ModelBuilder.hxx>
@@ -54,13 +56,9 @@
 #include <BRepMesh_UVParamRangeSplitter.hxx>
 #include <BRepMesh_UndefinedRangeSplitter.hxx>
 #include <BRepMesh_VertexTool.hxx>
-#include <Bnd_Box.hxx>
-#include <Geom2d_Curve.hxx>
 #include <GeomAbs_IsoType.hxx>
 #include <GeomAbs_SurfaceType.hxx>
-#include <Geom_Curve.hxx>
 #include <IMeshData_Curve.hxx>
-#include <IMeshData_Edge.hxx>
 #include <IMeshData_Face.hxx>
 #include <IMeshData_Model.hxx>
 #include <IMeshData_PCurve.hxx>
@@ -88,354 +86,365 @@
 #include <NCollection_IncAllocator.hxx>
 #include <Poly_Polygon3D.hxx>
 #include <Poly_PolygonOnTriangulation.hxx>
+#include <Poly_Triangulation.hxx>
 #include <Standard_Handle.hxx>
-#include <Standard_OStream.hxx>
 #include <Standard_Type.hxx>
-#include <TColStd_MapOfAsciiString.hxx>
-#include <TColgp_Array1OfPnt.hxx>
 #include <TopAbs_Orientation.hxx>
-#include <TopAbs_State.hxx>
-#include <TopLoc_Location.hxx>
 #include <TopoDS_Edge.hxx>
 #include <TopoDS_Face.hxx>
 #include <TopoDS_Wire.hxx>
+#include <XBRepMesh_Factory.hxx>
 #include <gp_Circ2d.hxx>
-#include <gp_Dir.hxx>
-#include <gp_XY.hxx>
 
 // Handle type aliases
-typedef opencascade::handle<Adaptor3d_Surface> HandleAdaptor3dSurface;
-typedef opencascade::handle<BRepAdaptor_Surface> HandleBRepAdaptorSurface;
-typedef opencascade::handle<BRepMesh_BaseMeshAlgo> HandleBRepMeshBaseMeshAlgo;
-typedef opencascade::handle<BRepMesh_Classifier> HandleBRepMeshClassifier;
-typedef opencascade::handle<BRepMesh_ConstrainedBaseMeshAlgo> HandleBRepMeshConstrainedBaseMeshAlgo;
-typedef opencascade::handle<BRepMesh_Context> HandleBRepMeshContext;
-typedef opencascade::handle<BRepMesh_CurveTessellator> HandleBRepMeshCurveTessellator;
-typedef opencascade::handle<BRepMesh_CustomBaseMeshAlgo> HandleBRepMeshCustomBaseMeshAlgo;
-typedef opencascade::handle<BRepMesh_DataStructureOfDelaun> HandleBRepMeshDataStructureOfDelaun;
-typedef opencascade::handle<BRepMesh_Deflection> HandleBRepMeshDeflection;
-typedef opencascade::handle<BRepMesh_DelabellaBaseMeshAlgo> HandleBRepMeshDelabellaBaseMeshAlgo;
-typedef opencascade::handle<BRepMesh_DelabellaMeshAlgoFactory> HandleBRepMeshDelabellaMeshAlgoFactory;
-typedef opencascade::handle<BRepMesh_DelaunayBaseMeshAlgo> HandleBRepMeshDelaunayBaseMeshAlgo;
-typedef opencascade::handle<BRepMesh_DiscretRoot> HandleBRepMeshDiscretRoot;
-typedef opencascade::handle<BRepMesh_EdgeDiscret> HandleBRepMeshEdgeDiscret;
-typedef opencascade::handle<BRepMesh_EdgeTessellationExtractor> HandleBRepMeshEdgeTessellationExtractor;
-typedef opencascade::handle<BRepMesh_FaceChecker> HandleBRepMeshFaceChecker;
-typedef opencascade::handle<BRepMesh_FaceDiscret> HandleBRepMeshFaceDiscret;
-typedef opencascade::handle<BRepMesh_IncrementalMesh> HandleBRepMeshIncrementalMesh;
-typedef opencascade::handle<BRepMesh_MeshAlgoFactory> HandleBRepMeshMeshAlgoFactory;
-typedef opencascade::handle<BRepMesh_MeshTool> HandleBRepMeshMeshTool;
-typedef opencascade::handle<BRepMesh_ModelBuilder> HandleBRepMeshModelBuilder;
-typedef opencascade::handle<BRepMesh_ModelHealer> HandleBRepMeshModelHealer;
-typedef opencascade::handle<BRepMesh_ModelPostProcessor> HandleBRepMeshModelPostProcessor;
-typedef opencascade::handle<BRepMesh_ModelPreProcessor> HandleBRepMeshModelPreProcessor;
-typedef opencascade::handle<BRepMesh_SelectorOfDataStructureOfDelaun> HandleBRepMeshSelectorOfDataStructureOfDelaun;
-typedef opencascade::handle<BRepMesh_ShapeTool> HandleBRepMeshShapeTool;
-typedef opencascade::handle<BRepMesh_ShapeVisitor> HandleBRepMeshShapeVisitor;
-typedef opencascade::handle<BRepMesh_VertexTool> HandleBRepMeshVertexTool;
-typedef opencascade::handle<Geom2d_Curve> HandleGeom2dCurve;
-typedef opencascade::handle<Geom_Curve> HandleGeomCurve;
-typedef opencascade::handle<IMeshData_Curve> HandleIMeshDataCurve;
-typedef opencascade::handle<IMeshData_Edge> HandleIMeshDataEdge;
-typedef opencascade::handle<IMeshData_Face> HandleIMeshDataFace;
-typedef opencascade::handle<IMeshData_Model> HandleIMeshDataModel;
-typedef opencascade::handle<IMeshData_PCurve> HandleIMeshDataPCurve;
-typedef opencascade::handle<IMeshData_ParametersList> HandleIMeshDataParametersList;
-typedef opencascade::handle<IMeshData_Shape> HandleIMeshDataShape;
-typedef opencascade::handle<IMeshData_TessellatedShape> HandleIMeshDataTessellatedShape;
-typedef opencascade::handle<IMeshData_Wire> HandleIMeshDataWire;
-typedef opencascade::handle<IMeshTools_Context> HandleIMeshToolsContext;
-typedef opencascade::handle<IMeshTools_CurveTessellator> HandleIMeshToolsCurveTessellator;
-typedef opencascade::handle<IMeshTools_MeshAlgo> HandleIMeshToolsMeshAlgo;
-typedef opencascade::handle<IMeshTools_MeshAlgoFactory> HandleIMeshToolsMeshAlgoFactory;
-typedef opencascade::handle<IMeshTools_MeshBuilder> HandleIMeshToolsMeshBuilder;
-typedef opencascade::handle<IMeshTools_ModelAlgo> HandleIMeshToolsModelAlgo;
-typedef opencascade::handle<IMeshTools_ModelBuilder> HandleIMeshToolsModelBuilder;
-typedef opencascade::handle<IMeshTools_ShapeExplorer> HandleIMeshToolsShapeExplorer;
-typedef opencascade::handle<IMeshTools_ShapeVisitor> HandleIMeshToolsShapeVisitor;
-typedef opencascade::handle<Message_Algorithm> HandleMessageAlgorithm;
-typedef opencascade::handle<Message_Messenger> HandleMessageMessenger;
-typedef opencascade::handle<NCollection_IncAllocator> HandleNCollectionIncAllocator;
-typedef opencascade::handle<NCollection_Shared_NCollection_DynamicArray_BRepMesh_Vertex> HandleNCollectionSharedNCollectionDynamicArrayBRepMeshVertex;
-typedef opencascade::handle<NCollection_Shared_NCollection_List_gp_Pnt2d> HandleNCollectionSharedNCollectionListgpPnt2d;
-typedef opencascade::handle<NCollection_Shared_TColStd_PackedMapOfInteger> HandleNCollectionSharedTColStdPackedMapOfInteger;
-typedef opencascade::handle<Poly_Polygon3D> HandlePolyPolygon3D;
-typedef opencascade::handle<Poly_PolygonOnTriangulation> HandlePolyPolygonOnTriangulation;
-typedef opencascade::handle<Poly_Triangulation> HandlePolyTriangulation;
-typedef opencascade::handle<Standard_Transient> HandleStandardTransient;
-typedef opencascade::handle<Standard_Type> HandleStandardType;
+typedef opencascade::handle<Adaptor3d_Surface> Handle_Adaptor3d_Surface;
+typedef opencascade::handle<BRepAdaptor_Surface> Handle_BRepAdaptor_Surface;
+typedef opencascade::handle<BRepMesh_BaseMeshAlgo> Handle_BRepMesh_BaseMeshAlgo;
+typedef opencascade::handle<BRepMesh_Classifier> Handle_BRepMesh_Classifier;
+typedef opencascade::handle<BRepMesh_ConstrainedBaseMeshAlgo> Handle_BRepMesh_ConstrainedBaseMeshAlgo;
+typedef opencascade::handle<BRepMesh_Context> Handle_BRepMesh_Context;
+typedef opencascade::handle<BRepMesh_CurveTessellator> Handle_BRepMesh_CurveTessellator;
+typedef opencascade::handle<BRepMesh_CustomBaseMeshAlgo> Handle_BRepMesh_CustomBaseMeshAlgo;
+typedef opencascade::handle<BRepMesh_DataStructureOfDelaun> Handle_BRepMesh_DataStructureOfDelaun;
+typedef opencascade::handle<BRepMesh_Deflection> Handle_BRepMesh_Deflection;
+typedef opencascade::handle<BRepMesh_DelabellaBaseMeshAlgo> Handle_BRepMesh_DelabellaBaseMeshAlgo;
+typedef opencascade::handle<BRepMesh_DelabellaMeshAlgoFactory> Handle_BRepMesh_DelabellaMeshAlgoFactory;
+typedef opencascade::handle<BRepMesh_DelaunayBaseMeshAlgo> Handle_BRepMesh_DelaunayBaseMeshAlgo;
+typedef opencascade::handle<BRepMesh_DiscretAlgoFactory> Handle_BRepMesh_DiscretAlgoFactory;
+typedef opencascade::handle<BRepMesh_DiscretRoot> Handle_BRepMesh_DiscretRoot;
+typedef opencascade::handle<BRepMesh_EdgeDiscret> Handle_BRepMesh_EdgeDiscret;
+typedef opencascade::handle<BRepMesh_EdgeTessellationExtractor> Handle_BRepMesh_EdgeTessellationExtractor;
+typedef opencascade::handle<BRepMesh_FaceChecker> Handle_BRepMesh_FaceChecker;
+typedef opencascade::handle<BRepMesh_FaceDiscret> Handle_BRepMesh_FaceDiscret;
+typedef opencascade::handle<BRepMesh_IncrementalMesh> Handle_BRepMesh_IncrementalMesh;
+typedef opencascade::handle<BRepMesh_IncrementalMeshFactory> Handle_BRepMesh_IncrementalMeshFactory;
+typedef opencascade::handle<BRepMesh_MeshAlgoFactory> Handle_BRepMesh_MeshAlgoFactory;
+typedef opencascade::handle<BRepMesh_MeshTool> Handle_BRepMesh_MeshTool;
+typedef opencascade::handle<BRepMesh_ModelBuilder> Handle_BRepMesh_ModelBuilder;
+typedef opencascade::handle<BRepMesh_ModelHealer> Handle_BRepMesh_ModelHealer;
+typedef opencascade::handle<BRepMesh_ModelPostProcessor> Handle_BRepMesh_ModelPostProcessor;
+typedef opencascade::handle<BRepMesh_ModelPreProcessor> Handle_BRepMesh_ModelPreProcessor;
+typedef opencascade::handle<BRepMesh_SelectorOfDataStructureOfDelaun> Handle_BRepMesh_SelectorOfDataStructureOfDelaun;
+typedef opencascade::handle<BRepMesh_ShapeTool> Handle_BRepMesh_ShapeTool;
+typedef opencascade::handle<BRepMesh_ShapeVisitor> Handle_BRepMesh_ShapeVisitor;
+typedef opencascade::handle<BRepMesh_VertexTool> Handle_BRepMesh_VertexTool;
+typedef opencascade::handle<Geom2d_Curve> Handle_Geom2d_Curve;
+typedef opencascade::handle<Geom_Curve> Handle_Geom_Curve;
+typedef opencascade::handle<IMeshData_Curve> Handle_IMeshData_Curve;
+typedef opencascade::handle<IMeshData_Edge> Handle_IMeshData_Edge;
+typedef opencascade::handle<IMeshData_Face> Handle_IMeshData_Face;
+typedef opencascade::handle<IMeshData_Model> Handle_IMeshData_Model;
+typedef opencascade::handle<IMeshData_PCurve> Handle_IMeshData_PCurve;
+typedef opencascade::handle<IMeshData_ParametersList> Handle_IMeshData_ParametersList;
+typedef opencascade::handle<IMeshData_Shape> Handle_IMeshData_Shape;
+typedef opencascade::handle<IMeshData_TessellatedShape> Handle_IMeshData_TessellatedShape;
+typedef opencascade::handle<IMeshData_Wire> Handle_IMeshData_Wire;
+typedef opencascade::handle<IMeshTools_Context> Handle_IMeshTools_Context;
+typedef opencascade::handle<IMeshTools_CurveTessellator> Handle_IMeshTools_CurveTessellator;
+typedef opencascade::handle<IMeshTools_MeshAlgo> Handle_IMeshTools_MeshAlgo;
+typedef opencascade::handle<IMeshTools_MeshAlgoFactory> Handle_IMeshTools_MeshAlgoFactory;
+typedef opencascade::handle<IMeshTools_MeshBuilder> Handle_IMeshTools_MeshBuilder;
+typedef opencascade::handle<IMeshTools_ModelAlgo> Handle_IMeshTools_ModelAlgo;
+typedef opencascade::handle<IMeshTools_ModelBuilder> Handle_IMeshTools_ModelBuilder;
+typedef opencascade::handle<IMeshTools_ShapeExplorer> Handle_IMeshTools_ShapeExplorer;
+typedef opencascade::handle<IMeshTools_ShapeVisitor> Handle_IMeshTools_ShapeVisitor;
+typedef opencascade::handle<Message_Algorithm> Handle_Message_Algorithm;
+typedef opencascade::handle<Message_Messenger> Handle_Message_Messenger;
+typedef opencascade::handle<NCollection_IncAllocator> Handle_NCollection_IncAllocator;
+typedef opencascade::handle<NCollection_Shared_NCollection_DynamicArray_BRepMesh_Vertex> Handle_NCollection_Shared_NCollection_DynamicArray_BRepMesh_Vertex;
+typedef opencascade::handle<NCollection_Shared_NCollection_List_gp_Pnt2d> Handle_NCollection_Shared_NCollection_List_gp_Pnt2d;
+typedef opencascade::handle<NCollection_Shared_NCollection_Map_IMeshData_Edge_ptr> Handle_NCollection_Shared_NCollection_Map_IMeshData_Edge_ptr;
+typedef opencascade::handle<NCollection_Shared_NCollection_PackedMap_int> Handle_NCollection_Shared_NCollection_PackedMap_int;
+typedef opencascade::handle<Poly_Polygon3D> Handle_Poly_Polygon3D;
+typedef opencascade::handle<Poly_PolygonOnTriangulation> Handle_Poly_PolygonOnTriangulation;
+typedef opencascade::handle<Poly_Triangulation> Handle_Poly_Triangulation;
+typedef opencascade::handle<Standard_Transient> Handle_Standard_Transient;
+typedef opencascade::handle<Standard_Type> Handle_Standard_Type;
+typedef opencascade::handle<XBRepMesh_Factory> Handle_XBRepMesh_Factory;
 
 // Handle type destructors, clone, and is_null functions
-extern "C" void HandleBRepMeshBaseMeshAlgo_destructor(HandleBRepMeshBaseMeshAlgo* self_) { delete self_; }
-extern "C" OcctResult<HandleBRepMeshBaseMeshAlgo*> HandleBRepMeshBaseMeshAlgo_clone(const HandleBRepMeshBaseMeshAlgo* self_) {
-    try { return {new HandleBRepMeshBaseMeshAlgo(*self_), nullptr}; }
+extern "C" void Handle_BRepMesh_BaseMeshAlgo_destructor(Handle_BRepMesh_BaseMeshAlgo* self_) { delete self_; }
+extern "C" OcctResult<Handle_BRepMesh_BaseMeshAlgo*> Handle_BRepMesh_BaseMeshAlgo_clone(const Handle_BRepMesh_BaseMeshAlgo* self_) {
+    try { return {new Handle_BRepMesh_BaseMeshAlgo(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleBRepMeshBaseMeshAlgo_is_null(const HandleBRepMeshBaseMeshAlgo* self_) { return self_->IsNull(); }
-extern "C" void HandleBRepMeshClassifier_destructor(HandleBRepMeshClassifier* self_) { delete self_; }
-extern "C" OcctResult<HandleBRepMeshClassifier*> HandleBRepMeshClassifier_clone(const HandleBRepMeshClassifier* self_) {
-    try { return {new HandleBRepMeshClassifier(*self_), nullptr}; }
+extern "C" bool Handle_BRepMesh_BaseMeshAlgo_is_null(const Handle_BRepMesh_BaseMeshAlgo* self_) { return self_->IsNull(); }
+extern "C" void Handle_BRepMesh_Classifier_destructor(Handle_BRepMesh_Classifier* self_) { delete self_; }
+extern "C" OcctResult<Handle_BRepMesh_Classifier*> Handle_BRepMesh_Classifier_clone(const Handle_BRepMesh_Classifier* self_) {
+    try { return {new Handle_BRepMesh_Classifier(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleBRepMeshClassifier_is_null(const HandleBRepMeshClassifier* self_) { return self_->IsNull(); }
-extern "C" void HandleBRepMeshConstrainedBaseMeshAlgo_destructor(HandleBRepMeshConstrainedBaseMeshAlgo* self_) { delete self_; }
-extern "C" OcctResult<HandleBRepMeshConstrainedBaseMeshAlgo*> HandleBRepMeshConstrainedBaseMeshAlgo_clone(const HandleBRepMeshConstrainedBaseMeshAlgo* self_) {
-    try { return {new HandleBRepMeshConstrainedBaseMeshAlgo(*self_), nullptr}; }
+extern "C" bool Handle_BRepMesh_Classifier_is_null(const Handle_BRepMesh_Classifier* self_) { return self_->IsNull(); }
+extern "C" void Handle_BRepMesh_ConstrainedBaseMeshAlgo_destructor(Handle_BRepMesh_ConstrainedBaseMeshAlgo* self_) { delete self_; }
+extern "C" OcctResult<Handle_BRepMesh_ConstrainedBaseMeshAlgo*> Handle_BRepMesh_ConstrainedBaseMeshAlgo_clone(const Handle_BRepMesh_ConstrainedBaseMeshAlgo* self_) {
+    try { return {new Handle_BRepMesh_ConstrainedBaseMeshAlgo(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleBRepMeshConstrainedBaseMeshAlgo_is_null(const HandleBRepMeshConstrainedBaseMeshAlgo* self_) { return self_->IsNull(); }
-extern "C" void HandleBRepMeshContext_destructor(HandleBRepMeshContext* self_) { delete self_; }
-extern "C" OcctResult<HandleBRepMeshContext*> HandleBRepMeshContext_clone(const HandleBRepMeshContext* self_) {
-    try { return {new HandleBRepMeshContext(*self_), nullptr}; }
+extern "C" bool Handle_BRepMesh_ConstrainedBaseMeshAlgo_is_null(const Handle_BRepMesh_ConstrainedBaseMeshAlgo* self_) { return self_->IsNull(); }
+extern "C" void Handle_BRepMesh_Context_destructor(Handle_BRepMesh_Context* self_) { delete self_; }
+extern "C" OcctResult<Handle_BRepMesh_Context*> Handle_BRepMesh_Context_clone(const Handle_BRepMesh_Context* self_) {
+    try { return {new Handle_BRepMesh_Context(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleBRepMeshContext_is_null(const HandleBRepMeshContext* self_) { return self_->IsNull(); }
-extern "C" void HandleBRepMeshCurveTessellator_destructor(HandleBRepMeshCurveTessellator* self_) { delete self_; }
-extern "C" OcctResult<HandleBRepMeshCurveTessellator*> HandleBRepMeshCurveTessellator_clone(const HandleBRepMeshCurveTessellator* self_) {
-    try { return {new HandleBRepMeshCurveTessellator(*self_), nullptr}; }
+extern "C" bool Handle_BRepMesh_Context_is_null(const Handle_BRepMesh_Context* self_) { return self_->IsNull(); }
+extern "C" void Handle_BRepMesh_CurveTessellator_destructor(Handle_BRepMesh_CurveTessellator* self_) { delete self_; }
+extern "C" OcctResult<Handle_BRepMesh_CurveTessellator*> Handle_BRepMesh_CurveTessellator_clone(const Handle_BRepMesh_CurveTessellator* self_) {
+    try { return {new Handle_BRepMesh_CurveTessellator(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleBRepMeshCurveTessellator_is_null(const HandleBRepMeshCurveTessellator* self_) { return self_->IsNull(); }
-extern "C" void HandleBRepMeshCustomBaseMeshAlgo_destructor(HandleBRepMeshCustomBaseMeshAlgo* self_) { delete self_; }
-extern "C" OcctResult<HandleBRepMeshCustomBaseMeshAlgo*> HandleBRepMeshCustomBaseMeshAlgo_clone(const HandleBRepMeshCustomBaseMeshAlgo* self_) {
-    try { return {new HandleBRepMeshCustomBaseMeshAlgo(*self_), nullptr}; }
+extern "C" bool Handle_BRepMesh_CurveTessellator_is_null(const Handle_BRepMesh_CurveTessellator* self_) { return self_->IsNull(); }
+extern "C" void Handle_BRepMesh_CustomBaseMeshAlgo_destructor(Handle_BRepMesh_CustomBaseMeshAlgo* self_) { delete self_; }
+extern "C" OcctResult<Handle_BRepMesh_CustomBaseMeshAlgo*> Handle_BRepMesh_CustomBaseMeshAlgo_clone(const Handle_BRepMesh_CustomBaseMeshAlgo* self_) {
+    try { return {new Handle_BRepMesh_CustomBaseMeshAlgo(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleBRepMeshCustomBaseMeshAlgo_is_null(const HandleBRepMeshCustomBaseMeshAlgo* self_) { return self_->IsNull(); }
-extern "C" void HandleBRepMeshDataStructureOfDelaun_destructor(HandleBRepMeshDataStructureOfDelaun* self_) { delete self_; }
-extern "C" OcctResult<HandleBRepMeshDataStructureOfDelaun*> HandleBRepMeshDataStructureOfDelaun_clone(const HandleBRepMeshDataStructureOfDelaun* self_) {
-    try { return {new HandleBRepMeshDataStructureOfDelaun(*self_), nullptr}; }
+extern "C" bool Handle_BRepMesh_CustomBaseMeshAlgo_is_null(const Handle_BRepMesh_CustomBaseMeshAlgo* self_) { return self_->IsNull(); }
+extern "C" void Handle_BRepMesh_DataStructureOfDelaun_destructor(Handle_BRepMesh_DataStructureOfDelaun* self_) { delete self_; }
+extern "C" OcctResult<Handle_BRepMesh_DataStructureOfDelaun*> Handle_BRepMesh_DataStructureOfDelaun_clone(const Handle_BRepMesh_DataStructureOfDelaun* self_) {
+    try { return {new Handle_BRepMesh_DataStructureOfDelaun(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleBRepMeshDataStructureOfDelaun_is_null(const HandleBRepMeshDataStructureOfDelaun* self_) { return self_->IsNull(); }
-extern "C" void HandleBRepMeshDeflection_destructor(HandleBRepMeshDeflection* self_) { delete self_; }
-extern "C" OcctResult<HandleBRepMeshDeflection*> HandleBRepMeshDeflection_clone(const HandleBRepMeshDeflection* self_) {
-    try { return {new HandleBRepMeshDeflection(*self_), nullptr}; }
+extern "C" bool Handle_BRepMesh_DataStructureOfDelaun_is_null(const Handle_BRepMesh_DataStructureOfDelaun* self_) { return self_->IsNull(); }
+extern "C" void Handle_BRepMesh_Deflection_destructor(Handle_BRepMesh_Deflection* self_) { delete self_; }
+extern "C" OcctResult<Handle_BRepMesh_Deflection*> Handle_BRepMesh_Deflection_clone(const Handle_BRepMesh_Deflection* self_) {
+    try { return {new Handle_BRepMesh_Deflection(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleBRepMeshDeflection_is_null(const HandleBRepMeshDeflection* self_) { return self_->IsNull(); }
-extern "C" void HandleBRepMeshDelabellaBaseMeshAlgo_destructor(HandleBRepMeshDelabellaBaseMeshAlgo* self_) { delete self_; }
-extern "C" OcctResult<HandleBRepMeshDelabellaBaseMeshAlgo*> HandleBRepMeshDelabellaBaseMeshAlgo_clone(const HandleBRepMeshDelabellaBaseMeshAlgo* self_) {
-    try { return {new HandleBRepMeshDelabellaBaseMeshAlgo(*self_), nullptr}; }
+extern "C" bool Handle_BRepMesh_Deflection_is_null(const Handle_BRepMesh_Deflection* self_) { return self_->IsNull(); }
+extern "C" void Handle_BRepMesh_DelabellaBaseMeshAlgo_destructor(Handle_BRepMesh_DelabellaBaseMeshAlgo* self_) { delete self_; }
+extern "C" OcctResult<Handle_BRepMesh_DelabellaBaseMeshAlgo*> Handle_BRepMesh_DelabellaBaseMeshAlgo_clone(const Handle_BRepMesh_DelabellaBaseMeshAlgo* self_) {
+    try { return {new Handle_BRepMesh_DelabellaBaseMeshAlgo(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleBRepMeshDelabellaBaseMeshAlgo_is_null(const HandleBRepMeshDelabellaBaseMeshAlgo* self_) { return self_->IsNull(); }
-extern "C" void HandleBRepMeshDelabellaMeshAlgoFactory_destructor(HandleBRepMeshDelabellaMeshAlgoFactory* self_) { delete self_; }
-extern "C" OcctResult<HandleBRepMeshDelabellaMeshAlgoFactory*> HandleBRepMeshDelabellaMeshAlgoFactory_clone(const HandleBRepMeshDelabellaMeshAlgoFactory* self_) {
-    try { return {new HandleBRepMeshDelabellaMeshAlgoFactory(*self_), nullptr}; }
+extern "C" bool Handle_BRepMesh_DelabellaBaseMeshAlgo_is_null(const Handle_BRepMesh_DelabellaBaseMeshAlgo* self_) { return self_->IsNull(); }
+extern "C" void Handle_BRepMesh_DelabellaMeshAlgoFactory_destructor(Handle_BRepMesh_DelabellaMeshAlgoFactory* self_) { delete self_; }
+extern "C" OcctResult<Handle_BRepMesh_DelabellaMeshAlgoFactory*> Handle_BRepMesh_DelabellaMeshAlgoFactory_clone(const Handle_BRepMesh_DelabellaMeshAlgoFactory* self_) {
+    try { return {new Handle_BRepMesh_DelabellaMeshAlgoFactory(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleBRepMeshDelabellaMeshAlgoFactory_is_null(const HandleBRepMeshDelabellaMeshAlgoFactory* self_) { return self_->IsNull(); }
-extern "C" void HandleBRepMeshDelaunayBaseMeshAlgo_destructor(HandleBRepMeshDelaunayBaseMeshAlgo* self_) { delete self_; }
-extern "C" OcctResult<HandleBRepMeshDelaunayBaseMeshAlgo*> HandleBRepMeshDelaunayBaseMeshAlgo_clone(const HandleBRepMeshDelaunayBaseMeshAlgo* self_) {
-    try { return {new HandleBRepMeshDelaunayBaseMeshAlgo(*self_), nullptr}; }
+extern "C" bool Handle_BRepMesh_DelabellaMeshAlgoFactory_is_null(const Handle_BRepMesh_DelabellaMeshAlgoFactory* self_) { return self_->IsNull(); }
+extern "C" void Handle_BRepMesh_DelaunayBaseMeshAlgo_destructor(Handle_BRepMesh_DelaunayBaseMeshAlgo* self_) { delete self_; }
+extern "C" OcctResult<Handle_BRepMesh_DelaunayBaseMeshAlgo*> Handle_BRepMesh_DelaunayBaseMeshAlgo_clone(const Handle_BRepMesh_DelaunayBaseMeshAlgo* self_) {
+    try { return {new Handle_BRepMesh_DelaunayBaseMeshAlgo(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleBRepMeshDelaunayBaseMeshAlgo_is_null(const HandleBRepMeshDelaunayBaseMeshAlgo* self_) { return self_->IsNull(); }
-extern "C" void HandleBRepMeshDiscretRoot_destructor(HandleBRepMeshDiscretRoot* self_) { delete self_; }
-extern "C" OcctResult<HandleBRepMeshDiscretRoot*> HandleBRepMeshDiscretRoot_clone(const HandleBRepMeshDiscretRoot* self_) {
-    try { return {new HandleBRepMeshDiscretRoot(*self_), nullptr}; }
+extern "C" bool Handle_BRepMesh_DelaunayBaseMeshAlgo_is_null(const Handle_BRepMesh_DelaunayBaseMeshAlgo* self_) { return self_->IsNull(); }
+extern "C" void Handle_BRepMesh_DiscretAlgoFactory_destructor(Handle_BRepMesh_DiscretAlgoFactory* self_) { delete self_; }
+extern "C" OcctResult<Handle_BRepMesh_DiscretAlgoFactory*> Handle_BRepMesh_DiscretAlgoFactory_clone(const Handle_BRepMesh_DiscretAlgoFactory* self_) {
+    try { return {new Handle_BRepMesh_DiscretAlgoFactory(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleBRepMeshDiscretRoot_is_null(const HandleBRepMeshDiscretRoot* self_) { return self_->IsNull(); }
-extern "C" void HandleBRepMeshEdgeDiscret_destructor(HandleBRepMeshEdgeDiscret* self_) { delete self_; }
-extern "C" OcctResult<HandleBRepMeshEdgeDiscret*> HandleBRepMeshEdgeDiscret_clone(const HandleBRepMeshEdgeDiscret* self_) {
-    try { return {new HandleBRepMeshEdgeDiscret(*self_), nullptr}; }
+extern "C" bool Handle_BRepMesh_DiscretAlgoFactory_is_null(const Handle_BRepMesh_DiscretAlgoFactory* self_) { return self_->IsNull(); }
+extern "C" void Handle_BRepMesh_DiscretRoot_destructor(Handle_BRepMesh_DiscretRoot* self_) { delete self_; }
+extern "C" OcctResult<Handle_BRepMesh_DiscretRoot*> Handle_BRepMesh_DiscretRoot_clone(const Handle_BRepMesh_DiscretRoot* self_) {
+    try { return {new Handle_BRepMesh_DiscretRoot(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleBRepMeshEdgeDiscret_is_null(const HandleBRepMeshEdgeDiscret* self_) { return self_->IsNull(); }
-extern "C" void HandleBRepMeshEdgeTessellationExtractor_destructor(HandleBRepMeshEdgeTessellationExtractor* self_) { delete self_; }
-extern "C" OcctResult<HandleBRepMeshEdgeTessellationExtractor*> HandleBRepMeshEdgeTessellationExtractor_clone(const HandleBRepMeshEdgeTessellationExtractor* self_) {
-    try { return {new HandleBRepMeshEdgeTessellationExtractor(*self_), nullptr}; }
+extern "C" bool Handle_BRepMesh_DiscretRoot_is_null(const Handle_BRepMesh_DiscretRoot* self_) { return self_->IsNull(); }
+extern "C" void Handle_BRepMesh_EdgeDiscret_destructor(Handle_BRepMesh_EdgeDiscret* self_) { delete self_; }
+extern "C" OcctResult<Handle_BRepMesh_EdgeDiscret*> Handle_BRepMesh_EdgeDiscret_clone(const Handle_BRepMesh_EdgeDiscret* self_) {
+    try { return {new Handle_BRepMesh_EdgeDiscret(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleBRepMeshEdgeTessellationExtractor_is_null(const HandleBRepMeshEdgeTessellationExtractor* self_) { return self_->IsNull(); }
-extern "C" void HandleBRepMeshFaceChecker_destructor(HandleBRepMeshFaceChecker* self_) { delete self_; }
-extern "C" OcctResult<HandleBRepMeshFaceChecker*> HandleBRepMeshFaceChecker_clone(const HandleBRepMeshFaceChecker* self_) {
-    try { return {new HandleBRepMeshFaceChecker(*self_), nullptr}; }
+extern "C" bool Handle_BRepMesh_EdgeDiscret_is_null(const Handle_BRepMesh_EdgeDiscret* self_) { return self_->IsNull(); }
+extern "C" void Handle_BRepMesh_EdgeTessellationExtractor_destructor(Handle_BRepMesh_EdgeTessellationExtractor* self_) { delete self_; }
+extern "C" OcctResult<Handle_BRepMesh_EdgeTessellationExtractor*> Handle_BRepMesh_EdgeTessellationExtractor_clone(const Handle_BRepMesh_EdgeTessellationExtractor* self_) {
+    try { return {new Handle_BRepMesh_EdgeTessellationExtractor(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleBRepMeshFaceChecker_is_null(const HandleBRepMeshFaceChecker* self_) { return self_->IsNull(); }
-extern "C" void HandleBRepMeshFaceDiscret_destructor(HandleBRepMeshFaceDiscret* self_) { delete self_; }
-extern "C" OcctResult<HandleBRepMeshFaceDiscret*> HandleBRepMeshFaceDiscret_clone(const HandleBRepMeshFaceDiscret* self_) {
-    try { return {new HandleBRepMeshFaceDiscret(*self_), nullptr}; }
+extern "C" bool Handle_BRepMesh_EdgeTessellationExtractor_is_null(const Handle_BRepMesh_EdgeTessellationExtractor* self_) { return self_->IsNull(); }
+extern "C" void Handle_BRepMesh_FaceChecker_destructor(Handle_BRepMesh_FaceChecker* self_) { delete self_; }
+extern "C" OcctResult<Handle_BRepMesh_FaceChecker*> Handle_BRepMesh_FaceChecker_clone(const Handle_BRepMesh_FaceChecker* self_) {
+    try { return {new Handle_BRepMesh_FaceChecker(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleBRepMeshFaceDiscret_is_null(const HandleBRepMeshFaceDiscret* self_) { return self_->IsNull(); }
-extern "C" void HandleBRepMeshIncrementalMesh_destructor(HandleBRepMeshIncrementalMesh* self_) { delete self_; }
-extern "C" OcctResult<HandleBRepMeshIncrementalMesh*> HandleBRepMeshIncrementalMesh_clone(const HandleBRepMeshIncrementalMesh* self_) {
-    try { return {new HandleBRepMeshIncrementalMesh(*self_), nullptr}; }
+extern "C" bool Handle_BRepMesh_FaceChecker_is_null(const Handle_BRepMesh_FaceChecker* self_) { return self_->IsNull(); }
+extern "C" void Handle_BRepMesh_FaceDiscret_destructor(Handle_BRepMesh_FaceDiscret* self_) { delete self_; }
+extern "C" OcctResult<Handle_BRepMesh_FaceDiscret*> Handle_BRepMesh_FaceDiscret_clone(const Handle_BRepMesh_FaceDiscret* self_) {
+    try { return {new Handle_BRepMesh_FaceDiscret(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleBRepMeshIncrementalMesh_is_null(const HandleBRepMeshIncrementalMesh* self_) { return self_->IsNull(); }
-extern "C" void HandleBRepMeshMeshAlgoFactory_destructor(HandleBRepMeshMeshAlgoFactory* self_) { delete self_; }
-extern "C" OcctResult<HandleBRepMeshMeshAlgoFactory*> HandleBRepMeshMeshAlgoFactory_clone(const HandleBRepMeshMeshAlgoFactory* self_) {
-    try { return {new HandleBRepMeshMeshAlgoFactory(*self_), nullptr}; }
+extern "C" bool Handle_BRepMesh_FaceDiscret_is_null(const Handle_BRepMesh_FaceDiscret* self_) { return self_->IsNull(); }
+extern "C" void Handle_BRepMesh_IncrementalMesh_destructor(Handle_BRepMesh_IncrementalMesh* self_) { delete self_; }
+extern "C" OcctResult<Handle_BRepMesh_IncrementalMesh*> Handle_BRepMesh_IncrementalMesh_clone(const Handle_BRepMesh_IncrementalMesh* self_) {
+    try { return {new Handle_BRepMesh_IncrementalMesh(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleBRepMeshMeshAlgoFactory_is_null(const HandleBRepMeshMeshAlgoFactory* self_) { return self_->IsNull(); }
-extern "C" void HandleBRepMeshMeshTool_destructor(HandleBRepMeshMeshTool* self_) { delete self_; }
-extern "C" OcctResult<HandleBRepMeshMeshTool*> HandleBRepMeshMeshTool_clone(const HandleBRepMeshMeshTool* self_) {
-    try { return {new HandleBRepMeshMeshTool(*self_), nullptr}; }
+extern "C" bool Handle_BRepMesh_IncrementalMesh_is_null(const Handle_BRepMesh_IncrementalMesh* self_) { return self_->IsNull(); }
+extern "C" void Handle_BRepMesh_IncrementalMeshFactory_destructor(Handle_BRepMesh_IncrementalMeshFactory* self_) { delete self_; }
+extern "C" OcctResult<Handle_BRepMesh_IncrementalMeshFactory*> Handle_BRepMesh_IncrementalMeshFactory_clone(const Handle_BRepMesh_IncrementalMeshFactory* self_) {
+    try { return {new Handle_BRepMesh_IncrementalMeshFactory(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleBRepMeshMeshTool_is_null(const HandleBRepMeshMeshTool* self_) { return self_->IsNull(); }
-extern "C" void HandleBRepMeshModelBuilder_destructor(HandleBRepMeshModelBuilder* self_) { delete self_; }
-extern "C" OcctResult<HandleBRepMeshModelBuilder*> HandleBRepMeshModelBuilder_clone(const HandleBRepMeshModelBuilder* self_) {
-    try { return {new HandleBRepMeshModelBuilder(*self_), nullptr}; }
+extern "C" bool Handle_BRepMesh_IncrementalMeshFactory_is_null(const Handle_BRepMesh_IncrementalMeshFactory* self_) { return self_->IsNull(); }
+extern "C" void Handle_BRepMesh_MeshAlgoFactory_destructor(Handle_BRepMesh_MeshAlgoFactory* self_) { delete self_; }
+extern "C" OcctResult<Handle_BRepMesh_MeshAlgoFactory*> Handle_BRepMesh_MeshAlgoFactory_clone(const Handle_BRepMesh_MeshAlgoFactory* self_) {
+    try { return {new Handle_BRepMesh_MeshAlgoFactory(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleBRepMeshModelBuilder_is_null(const HandleBRepMeshModelBuilder* self_) { return self_->IsNull(); }
-extern "C" void HandleBRepMeshModelHealer_destructor(HandleBRepMeshModelHealer* self_) { delete self_; }
-extern "C" OcctResult<HandleBRepMeshModelHealer*> HandleBRepMeshModelHealer_clone(const HandleBRepMeshModelHealer* self_) {
-    try { return {new HandleBRepMeshModelHealer(*self_), nullptr}; }
+extern "C" bool Handle_BRepMesh_MeshAlgoFactory_is_null(const Handle_BRepMesh_MeshAlgoFactory* self_) { return self_->IsNull(); }
+extern "C" void Handle_BRepMesh_MeshTool_destructor(Handle_BRepMesh_MeshTool* self_) { delete self_; }
+extern "C" OcctResult<Handle_BRepMesh_MeshTool*> Handle_BRepMesh_MeshTool_clone(const Handle_BRepMesh_MeshTool* self_) {
+    try { return {new Handle_BRepMesh_MeshTool(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleBRepMeshModelHealer_is_null(const HandleBRepMeshModelHealer* self_) { return self_->IsNull(); }
-extern "C" void HandleBRepMeshModelPostProcessor_destructor(HandleBRepMeshModelPostProcessor* self_) { delete self_; }
-extern "C" OcctResult<HandleBRepMeshModelPostProcessor*> HandleBRepMeshModelPostProcessor_clone(const HandleBRepMeshModelPostProcessor* self_) {
-    try { return {new HandleBRepMeshModelPostProcessor(*self_), nullptr}; }
+extern "C" bool Handle_BRepMesh_MeshTool_is_null(const Handle_BRepMesh_MeshTool* self_) { return self_->IsNull(); }
+extern "C" void Handle_BRepMesh_ModelBuilder_destructor(Handle_BRepMesh_ModelBuilder* self_) { delete self_; }
+extern "C" OcctResult<Handle_BRepMesh_ModelBuilder*> Handle_BRepMesh_ModelBuilder_clone(const Handle_BRepMesh_ModelBuilder* self_) {
+    try { return {new Handle_BRepMesh_ModelBuilder(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleBRepMeshModelPostProcessor_is_null(const HandleBRepMeshModelPostProcessor* self_) { return self_->IsNull(); }
-extern "C" void HandleBRepMeshModelPreProcessor_destructor(HandleBRepMeshModelPreProcessor* self_) { delete self_; }
-extern "C" OcctResult<HandleBRepMeshModelPreProcessor*> HandleBRepMeshModelPreProcessor_clone(const HandleBRepMeshModelPreProcessor* self_) {
-    try { return {new HandleBRepMeshModelPreProcessor(*self_), nullptr}; }
+extern "C" bool Handle_BRepMesh_ModelBuilder_is_null(const Handle_BRepMesh_ModelBuilder* self_) { return self_->IsNull(); }
+extern "C" void Handle_BRepMesh_ModelHealer_destructor(Handle_BRepMesh_ModelHealer* self_) { delete self_; }
+extern "C" OcctResult<Handle_BRepMesh_ModelHealer*> Handle_BRepMesh_ModelHealer_clone(const Handle_BRepMesh_ModelHealer* self_) {
+    try { return {new Handle_BRepMesh_ModelHealer(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleBRepMeshModelPreProcessor_is_null(const HandleBRepMeshModelPreProcessor* self_) { return self_->IsNull(); }
-extern "C" void HandleBRepMeshSelectorOfDataStructureOfDelaun_destructor(HandleBRepMeshSelectorOfDataStructureOfDelaun* self_) { delete self_; }
-extern "C" OcctResult<HandleBRepMeshSelectorOfDataStructureOfDelaun*> HandleBRepMeshSelectorOfDataStructureOfDelaun_clone(const HandleBRepMeshSelectorOfDataStructureOfDelaun* self_) {
-    try { return {new HandleBRepMeshSelectorOfDataStructureOfDelaun(*self_), nullptr}; }
+extern "C" bool Handle_BRepMesh_ModelHealer_is_null(const Handle_BRepMesh_ModelHealer* self_) { return self_->IsNull(); }
+extern "C" void Handle_BRepMesh_ModelPostProcessor_destructor(Handle_BRepMesh_ModelPostProcessor* self_) { delete self_; }
+extern "C" OcctResult<Handle_BRepMesh_ModelPostProcessor*> Handle_BRepMesh_ModelPostProcessor_clone(const Handle_BRepMesh_ModelPostProcessor* self_) {
+    try { return {new Handle_BRepMesh_ModelPostProcessor(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleBRepMeshSelectorOfDataStructureOfDelaun_is_null(const HandleBRepMeshSelectorOfDataStructureOfDelaun* self_) { return self_->IsNull(); }
-extern "C" void HandleBRepMeshShapeTool_destructor(HandleBRepMeshShapeTool* self_) { delete self_; }
-extern "C" OcctResult<HandleBRepMeshShapeTool*> HandleBRepMeshShapeTool_clone(const HandleBRepMeshShapeTool* self_) {
-    try { return {new HandleBRepMeshShapeTool(*self_), nullptr}; }
+extern "C" bool Handle_BRepMesh_ModelPostProcessor_is_null(const Handle_BRepMesh_ModelPostProcessor* self_) { return self_->IsNull(); }
+extern "C" void Handle_BRepMesh_ModelPreProcessor_destructor(Handle_BRepMesh_ModelPreProcessor* self_) { delete self_; }
+extern "C" OcctResult<Handle_BRepMesh_ModelPreProcessor*> Handle_BRepMesh_ModelPreProcessor_clone(const Handle_BRepMesh_ModelPreProcessor* self_) {
+    try { return {new Handle_BRepMesh_ModelPreProcessor(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleBRepMeshShapeTool_is_null(const HandleBRepMeshShapeTool* self_) { return self_->IsNull(); }
-extern "C" void HandleBRepMeshShapeVisitor_destructor(HandleBRepMeshShapeVisitor* self_) { delete self_; }
-extern "C" OcctResult<HandleBRepMeshShapeVisitor*> HandleBRepMeshShapeVisitor_clone(const HandleBRepMeshShapeVisitor* self_) {
-    try { return {new HandleBRepMeshShapeVisitor(*self_), nullptr}; }
+extern "C" bool Handle_BRepMesh_ModelPreProcessor_is_null(const Handle_BRepMesh_ModelPreProcessor* self_) { return self_->IsNull(); }
+extern "C" void Handle_BRepMesh_SelectorOfDataStructureOfDelaun_destructor(Handle_BRepMesh_SelectorOfDataStructureOfDelaun* self_) { delete self_; }
+extern "C" OcctResult<Handle_BRepMesh_SelectorOfDataStructureOfDelaun*> Handle_BRepMesh_SelectorOfDataStructureOfDelaun_clone(const Handle_BRepMesh_SelectorOfDataStructureOfDelaun* self_) {
+    try { return {new Handle_BRepMesh_SelectorOfDataStructureOfDelaun(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleBRepMeshShapeVisitor_is_null(const HandleBRepMeshShapeVisitor* self_) { return self_->IsNull(); }
-extern "C" void HandleBRepMeshVertexTool_destructor(HandleBRepMeshVertexTool* self_) { delete self_; }
-extern "C" OcctResult<HandleBRepMeshVertexTool*> HandleBRepMeshVertexTool_clone(const HandleBRepMeshVertexTool* self_) {
-    try { return {new HandleBRepMeshVertexTool(*self_), nullptr}; }
+extern "C" bool Handle_BRepMesh_SelectorOfDataStructureOfDelaun_is_null(const Handle_BRepMesh_SelectorOfDataStructureOfDelaun* self_) { return self_->IsNull(); }
+extern "C" void Handle_BRepMesh_ShapeTool_destructor(Handle_BRepMesh_ShapeTool* self_) { delete self_; }
+extern "C" OcctResult<Handle_BRepMesh_ShapeTool*> Handle_BRepMesh_ShapeTool_clone(const Handle_BRepMesh_ShapeTool* self_) {
+    try { return {new Handle_BRepMesh_ShapeTool(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleBRepMeshVertexTool_is_null(const HandleBRepMeshVertexTool* self_) { return self_->IsNull(); }
-extern "C" void HandleIMeshDataCurve_destructor(HandleIMeshDataCurve* self_) { delete self_; }
-extern "C" OcctResult<HandleIMeshDataCurve*> HandleIMeshDataCurve_clone(const HandleIMeshDataCurve* self_) {
-    try { return {new HandleIMeshDataCurve(*self_), nullptr}; }
+extern "C" bool Handle_BRepMesh_ShapeTool_is_null(const Handle_BRepMesh_ShapeTool* self_) { return self_->IsNull(); }
+extern "C" void Handle_BRepMesh_ShapeVisitor_destructor(Handle_BRepMesh_ShapeVisitor* self_) { delete self_; }
+extern "C" OcctResult<Handle_BRepMesh_ShapeVisitor*> Handle_BRepMesh_ShapeVisitor_clone(const Handle_BRepMesh_ShapeVisitor* self_) {
+    try { return {new Handle_BRepMesh_ShapeVisitor(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleIMeshDataCurve_is_null(const HandleIMeshDataCurve* self_) { return self_->IsNull(); }
-extern "C" void HandleIMeshDataEdge_destructor(HandleIMeshDataEdge* self_) { delete self_; }
-extern "C" OcctResult<HandleIMeshDataEdge*> HandleIMeshDataEdge_clone(const HandleIMeshDataEdge* self_) {
-    try { return {new HandleIMeshDataEdge(*self_), nullptr}; }
+extern "C" bool Handle_BRepMesh_ShapeVisitor_is_null(const Handle_BRepMesh_ShapeVisitor* self_) { return self_->IsNull(); }
+extern "C" void Handle_BRepMesh_VertexTool_destructor(Handle_BRepMesh_VertexTool* self_) { delete self_; }
+extern "C" OcctResult<Handle_BRepMesh_VertexTool*> Handle_BRepMesh_VertexTool_clone(const Handle_BRepMesh_VertexTool* self_) {
+    try { return {new Handle_BRepMesh_VertexTool(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleIMeshDataEdge_is_null(const HandleIMeshDataEdge* self_) { return self_->IsNull(); }
-extern "C" void HandleIMeshDataFace_destructor(HandleIMeshDataFace* self_) { delete self_; }
-extern "C" OcctResult<HandleIMeshDataFace*> HandleIMeshDataFace_clone(const HandleIMeshDataFace* self_) {
-    try { return {new HandleIMeshDataFace(*self_), nullptr}; }
+extern "C" bool Handle_BRepMesh_VertexTool_is_null(const Handle_BRepMesh_VertexTool* self_) { return self_->IsNull(); }
+extern "C" void Handle_IMeshData_Curve_destructor(Handle_IMeshData_Curve* self_) { delete self_; }
+extern "C" OcctResult<Handle_IMeshData_Curve*> Handle_IMeshData_Curve_clone(const Handle_IMeshData_Curve* self_) {
+    try { return {new Handle_IMeshData_Curve(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleIMeshDataFace_is_null(const HandleIMeshDataFace* self_) { return self_->IsNull(); }
-extern "C" void HandleIMeshDataModel_destructor(HandleIMeshDataModel* self_) { delete self_; }
-extern "C" OcctResult<HandleIMeshDataModel*> HandleIMeshDataModel_clone(const HandleIMeshDataModel* self_) {
-    try { return {new HandleIMeshDataModel(*self_), nullptr}; }
+extern "C" bool Handle_IMeshData_Curve_is_null(const Handle_IMeshData_Curve* self_) { return self_->IsNull(); }
+extern "C" void Handle_IMeshData_Edge_destructor(Handle_IMeshData_Edge* self_) { delete self_; }
+extern "C" OcctResult<Handle_IMeshData_Edge*> Handle_IMeshData_Edge_clone(const Handle_IMeshData_Edge* self_) {
+    try { return {new Handle_IMeshData_Edge(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleIMeshDataModel_is_null(const HandleIMeshDataModel* self_) { return self_->IsNull(); }
-extern "C" void HandleIMeshDataPCurve_destructor(HandleIMeshDataPCurve* self_) { delete self_; }
-extern "C" OcctResult<HandleIMeshDataPCurve*> HandleIMeshDataPCurve_clone(const HandleIMeshDataPCurve* self_) {
-    try { return {new HandleIMeshDataPCurve(*self_), nullptr}; }
+extern "C" bool Handle_IMeshData_Edge_is_null(const Handle_IMeshData_Edge* self_) { return self_->IsNull(); }
+extern "C" void Handle_IMeshData_Face_destructor(Handle_IMeshData_Face* self_) { delete self_; }
+extern "C" OcctResult<Handle_IMeshData_Face*> Handle_IMeshData_Face_clone(const Handle_IMeshData_Face* self_) {
+    try { return {new Handle_IMeshData_Face(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleIMeshDataPCurve_is_null(const HandleIMeshDataPCurve* self_) { return self_->IsNull(); }
-extern "C" void HandleIMeshDataParametersList_destructor(HandleIMeshDataParametersList* self_) { delete self_; }
-extern "C" OcctResult<HandleIMeshDataParametersList*> HandleIMeshDataParametersList_clone(const HandleIMeshDataParametersList* self_) {
-    try { return {new HandleIMeshDataParametersList(*self_), nullptr}; }
+extern "C" bool Handle_IMeshData_Face_is_null(const Handle_IMeshData_Face* self_) { return self_->IsNull(); }
+extern "C" void Handle_IMeshData_Model_destructor(Handle_IMeshData_Model* self_) { delete self_; }
+extern "C" OcctResult<Handle_IMeshData_Model*> Handle_IMeshData_Model_clone(const Handle_IMeshData_Model* self_) {
+    try { return {new Handle_IMeshData_Model(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleIMeshDataParametersList_is_null(const HandleIMeshDataParametersList* self_) { return self_->IsNull(); }
-extern "C" void HandleIMeshDataShape_destructor(HandleIMeshDataShape* self_) { delete self_; }
-extern "C" OcctResult<HandleIMeshDataShape*> HandleIMeshDataShape_clone(const HandleIMeshDataShape* self_) {
-    try { return {new HandleIMeshDataShape(*self_), nullptr}; }
+extern "C" bool Handle_IMeshData_Model_is_null(const Handle_IMeshData_Model* self_) { return self_->IsNull(); }
+extern "C" void Handle_IMeshData_PCurve_destructor(Handle_IMeshData_PCurve* self_) { delete self_; }
+extern "C" OcctResult<Handle_IMeshData_PCurve*> Handle_IMeshData_PCurve_clone(const Handle_IMeshData_PCurve* self_) {
+    try { return {new Handle_IMeshData_PCurve(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleIMeshDataShape_is_null(const HandleIMeshDataShape* self_) { return self_->IsNull(); }
-extern "C" void HandleIMeshDataTessellatedShape_destructor(HandleIMeshDataTessellatedShape* self_) { delete self_; }
-extern "C" OcctResult<HandleIMeshDataTessellatedShape*> HandleIMeshDataTessellatedShape_clone(const HandleIMeshDataTessellatedShape* self_) {
-    try { return {new HandleIMeshDataTessellatedShape(*self_), nullptr}; }
+extern "C" bool Handle_IMeshData_PCurve_is_null(const Handle_IMeshData_PCurve* self_) { return self_->IsNull(); }
+extern "C" void Handle_IMeshData_ParametersList_destructor(Handle_IMeshData_ParametersList* self_) { delete self_; }
+extern "C" OcctResult<Handle_IMeshData_ParametersList*> Handle_IMeshData_ParametersList_clone(const Handle_IMeshData_ParametersList* self_) {
+    try { return {new Handle_IMeshData_ParametersList(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleIMeshDataTessellatedShape_is_null(const HandleIMeshDataTessellatedShape* self_) { return self_->IsNull(); }
-extern "C" void HandleIMeshDataWire_destructor(HandleIMeshDataWire* self_) { delete self_; }
-extern "C" OcctResult<HandleIMeshDataWire*> HandleIMeshDataWire_clone(const HandleIMeshDataWire* self_) {
-    try { return {new HandleIMeshDataWire(*self_), nullptr}; }
+extern "C" bool Handle_IMeshData_ParametersList_is_null(const Handle_IMeshData_ParametersList* self_) { return self_->IsNull(); }
+extern "C" void Handle_IMeshData_Shape_destructor(Handle_IMeshData_Shape* self_) { delete self_; }
+extern "C" OcctResult<Handle_IMeshData_Shape*> Handle_IMeshData_Shape_clone(const Handle_IMeshData_Shape* self_) {
+    try { return {new Handle_IMeshData_Shape(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleIMeshDataWire_is_null(const HandleIMeshDataWire* self_) { return self_->IsNull(); }
-extern "C" void HandleIMeshToolsContext_destructor(HandleIMeshToolsContext* self_) { delete self_; }
-extern "C" OcctResult<HandleIMeshToolsContext*> HandleIMeshToolsContext_clone(const HandleIMeshToolsContext* self_) {
-    try { return {new HandleIMeshToolsContext(*self_), nullptr}; }
+extern "C" bool Handle_IMeshData_Shape_is_null(const Handle_IMeshData_Shape* self_) { return self_->IsNull(); }
+extern "C" void Handle_IMeshData_TessellatedShape_destructor(Handle_IMeshData_TessellatedShape* self_) { delete self_; }
+extern "C" OcctResult<Handle_IMeshData_TessellatedShape*> Handle_IMeshData_TessellatedShape_clone(const Handle_IMeshData_TessellatedShape* self_) {
+    try { return {new Handle_IMeshData_TessellatedShape(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleIMeshToolsContext_is_null(const HandleIMeshToolsContext* self_) { return self_->IsNull(); }
-extern "C" void HandleIMeshToolsCurveTessellator_destructor(HandleIMeshToolsCurveTessellator* self_) { delete self_; }
-extern "C" OcctResult<HandleIMeshToolsCurveTessellator*> HandleIMeshToolsCurveTessellator_clone(const HandleIMeshToolsCurveTessellator* self_) {
-    try { return {new HandleIMeshToolsCurveTessellator(*self_), nullptr}; }
+extern "C" bool Handle_IMeshData_TessellatedShape_is_null(const Handle_IMeshData_TessellatedShape* self_) { return self_->IsNull(); }
+extern "C" void Handle_IMeshData_Wire_destructor(Handle_IMeshData_Wire* self_) { delete self_; }
+extern "C" OcctResult<Handle_IMeshData_Wire*> Handle_IMeshData_Wire_clone(const Handle_IMeshData_Wire* self_) {
+    try { return {new Handle_IMeshData_Wire(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleIMeshToolsCurveTessellator_is_null(const HandleIMeshToolsCurveTessellator* self_) { return self_->IsNull(); }
-extern "C" void HandleIMeshToolsMeshAlgo_destructor(HandleIMeshToolsMeshAlgo* self_) { delete self_; }
-extern "C" OcctResult<HandleIMeshToolsMeshAlgo*> HandleIMeshToolsMeshAlgo_clone(const HandleIMeshToolsMeshAlgo* self_) {
-    try { return {new HandleIMeshToolsMeshAlgo(*self_), nullptr}; }
+extern "C" bool Handle_IMeshData_Wire_is_null(const Handle_IMeshData_Wire* self_) { return self_->IsNull(); }
+extern "C" void Handle_IMeshTools_Context_destructor(Handle_IMeshTools_Context* self_) { delete self_; }
+extern "C" OcctResult<Handle_IMeshTools_Context*> Handle_IMeshTools_Context_clone(const Handle_IMeshTools_Context* self_) {
+    try { return {new Handle_IMeshTools_Context(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleIMeshToolsMeshAlgo_is_null(const HandleIMeshToolsMeshAlgo* self_) { return self_->IsNull(); }
-extern "C" void HandleIMeshToolsMeshAlgoFactory_destructor(HandleIMeshToolsMeshAlgoFactory* self_) { delete self_; }
-extern "C" OcctResult<HandleIMeshToolsMeshAlgoFactory*> HandleIMeshToolsMeshAlgoFactory_clone(const HandleIMeshToolsMeshAlgoFactory* self_) {
-    try { return {new HandleIMeshToolsMeshAlgoFactory(*self_), nullptr}; }
+extern "C" bool Handle_IMeshTools_Context_is_null(const Handle_IMeshTools_Context* self_) { return self_->IsNull(); }
+extern "C" void Handle_IMeshTools_CurveTessellator_destructor(Handle_IMeshTools_CurveTessellator* self_) { delete self_; }
+extern "C" OcctResult<Handle_IMeshTools_CurveTessellator*> Handle_IMeshTools_CurveTessellator_clone(const Handle_IMeshTools_CurveTessellator* self_) {
+    try { return {new Handle_IMeshTools_CurveTessellator(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleIMeshToolsMeshAlgoFactory_is_null(const HandleIMeshToolsMeshAlgoFactory* self_) { return self_->IsNull(); }
-extern "C" void HandleIMeshToolsMeshBuilder_destructor(HandleIMeshToolsMeshBuilder* self_) { delete self_; }
-extern "C" OcctResult<HandleIMeshToolsMeshBuilder*> HandleIMeshToolsMeshBuilder_clone(const HandleIMeshToolsMeshBuilder* self_) {
-    try { return {new HandleIMeshToolsMeshBuilder(*self_), nullptr}; }
+extern "C" bool Handle_IMeshTools_CurveTessellator_is_null(const Handle_IMeshTools_CurveTessellator* self_) { return self_->IsNull(); }
+extern "C" void Handle_IMeshTools_MeshAlgo_destructor(Handle_IMeshTools_MeshAlgo* self_) { delete self_; }
+extern "C" OcctResult<Handle_IMeshTools_MeshAlgo*> Handle_IMeshTools_MeshAlgo_clone(const Handle_IMeshTools_MeshAlgo* self_) {
+    try { return {new Handle_IMeshTools_MeshAlgo(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleIMeshToolsMeshBuilder_is_null(const HandleIMeshToolsMeshBuilder* self_) { return self_->IsNull(); }
-extern "C" void HandleIMeshToolsModelAlgo_destructor(HandleIMeshToolsModelAlgo* self_) { delete self_; }
-extern "C" OcctResult<HandleIMeshToolsModelAlgo*> HandleIMeshToolsModelAlgo_clone(const HandleIMeshToolsModelAlgo* self_) {
-    try { return {new HandleIMeshToolsModelAlgo(*self_), nullptr}; }
+extern "C" bool Handle_IMeshTools_MeshAlgo_is_null(const Handle_IMeshTools_MeshAlgo* self_) { return self_->IsNull(); }
+extern "C" void Handle_IMeshTools_MeshAlgoFactory_destructor(Handle_IMeshTools_MeshAlgoFactory* self_) { delete self_; }
+extern "C" OcctResult<Handle_IMeshTools_MeshAlgoFactory*> Handle_IMeshTools_MeshAlgoFactory_clone(const Handle_IMeshTools_MeshAlgoFactory* self_) {
+    try { return {new Handle_IMeshTools_MeshAlgoFactory(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleIMeshToolsModelAlgo_is_null(const HandleIMeshToolsModelAlgo* self_) { return self_->IsNull(); }
-extern "C" void HandleIMeshToolsModelBuilder_destructor(HandleIMeshToolsModelBuilder* self_) { delete self_; }
-extern "C" OcctResult<HandleIMeshToolsModelBuilder*> HandleIMeshToolsModelBuilder_clone(const HandleIMeshToolsModelBuilder* self_) {
-    try { return {new HandleIMeshToolsModelBuilder(*self_), nullptr}; }
+extern "C" bool Handle_IMeshTools_MeshAlgoFactory_is_null(const Handle_IMeshTools_MeshAlgoFactory* self_) { return self_->IsNull(); }
+extern "C" void Handle_IMeshTools_MeshBuilder_destructor(Handle_IMeshTools_MeshBuilder* self_) { delete self_; }
+extern "C" OcctResult<Handle_IMeshTools_MeshBuilder*> Handle_IMeshTools_MeshBuilder_clone(const Handle_IMeshTools_MeshBuilder* self_) {
+    try { return {new Handle_IMeshTools_MeshBuilder(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleIMeshToolsModelBuilder_is_null(const HandleIMeshToolsModelBuilder* self_) { return self_->IsNull(); }
-extern "C" void HandleIMeshToolsShapeExplorer_destructor(HandleIMeshToolsShapeExplorer* self_) { delete self_; }
-extern "C" OcctResult<HandleIMeshToolsShapeExplorer*> HandleIMeshToolsShapeExplorer_clone(const HandleIMeshToolsShapeExplorer* self_) {
-    try { return {new HandleIMeshToolsShapeExplorer(*self_), nullptr}; }
+extern "C" bool Handle_IMeshTools_MeshBuilder_is_null(const Handle_IMeshTools_MeshBuilder* self_) { return self_->IsNull(); }
+extern "C" void Handle_IMeshTools_ModelAlgo_destructor(Handle_IMeshTools_ModelAlgo* self_) { delete self_; }
+extern "C" OcctResult<Handle_IMeshTools_ModelAlgo*> Handle_IMeshTools_ModelAlgo_clone(const Handle_IMeshTools_ModelAlgo* self_) {
+    try { return {new Handle_IMeshTools_ModelAlgo(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleIMeshToolsShapeExplorer_is_null(const HandleIMeshToolsShapeExplorer* self_) { return self_->IsNull(); }
-extern "C" void HandleIMeshToolsShapeVisitor_destructor(HandleIMeshToolsShapeVisitor* self_) { delete self_; }
-extern "C" OcctResult<HandleIMeshToolsShapeVisitor*> HandleIMeshToolsShapeVisitor_clone(const HandleIMeshToolsShapeVisitor* self_) {
-    try { return {new HandleIMeshToolsShapeVisitor(*self_), nullptr}; }
+extern "C" bool Handle_IMeshTools_ModelAlgo_is_null(const Handle_IMeshTools_ModelAlgo* self_) { return self_->IsNull(); }
+extern "C" void Handle_IMeshTools_ModelBuilder_destructor(Handle_IMeshTools_ModelBuilder* self_) { delete self_; }
+extern "C" OcctResult<Handle_IMeshTools_ModelBuilder*> Handle_IMeshTools_ModelBuilder_clone(const Handle_IMeshTools_ModelBuilder* self_) {
+    try { return {new Handle_IMeshTools_ModelBuilder(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleIMeshToolsShapeVisitor_is_null(const HandleIMeshToolsShapeVisitor* self_) { return self_->IsNull(); }
+extern "C" bool Handle_IMeshTools_ModelBuilder_is_null(const Handle_IMeshTools_ModelBuilder* self_) { return self_->IsNull(); }
+extern "C" void Handle_IMeshTools_ShapeExplorer_destructor(Handle_IMeshTools_ShapeExplorer* self_) { delete self_; }
+extern "C" OcctResult<Handle_IMeshTools_ShapeExplorer*> Handle_IMeshTools_ShapeExplorer_clone(const Handle_IMeshTools_ShapeExplorer* self_) {
+    try { return {new Handle_IMeshTools_ShapeExplorer(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" bool Handle_IMeshTools_ShapeExplorer_is_null(const Handle_IMeshTools_ShapeExplorer* self_) { return self_->IsNull(); }
+extern "C" void Handle_IMeshTools_ShapeVisitor_destructor(Handle_IMeshTools_ShapeVisitor* self_) { delete self_; }
+extern "C" OcctResult<Handle_IMeshTools_ShapeVisitor*> Handle_IMeshTools_ShapeVisitor_clone(const Handle_IMeshTools_ShapeVisitor* self_) {
+    try { return {new Handle_IMeshTools_ShapeVisitor(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" bool Handle_IMeshTools_ShapeVisitor_is_null(const Handle_IMeshTools_ShapeVisitor* self_) { return self_->IsNull(); }
 
 // ========================
 // BRepMesh_BaseMeshAlgo wrappers
@@ -461,43 +470,43 @@ extern "C" OcctResult<const IMeshTools_MeshAlgo*> BRepMesh_BaseMeshAlgo_as_IMesh
 extern "C" OcctResult<IMeshTools_MeshAlgo*> BRepMesh_BaseMeshAlgo_as_IMeshTools_MeshAlgo_mut(BRepMesh_BaseMeshAlgo* self_) { return {static_cast<IMeshTools_MeshAlgo*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> BRepMesh_BaseMeshAlgo_as_Standard_Transient(const BRepMesh_BaseMeshAlgo* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> BRepMesh_BaseMeshAlgo_as_Standard_Transient_mut(BRepMesh_BaseMeshAlgo* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<const BRepMesh_BaseMeshAlgo*> HandleBRepMeshBaseMeshAlgo_get(const HandleBRepMeshBaseMeshAlgo* handle) {
+extern "C" OcctResult<const BRepMesh_BaseMeshAlgo*> Handle_BRepMesh_BaseMeshAlgo_get(const Handle_BRepMesh_BaseMeshAlgo* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<BRepMesh_BaseMeshAlgo*> HandleBRepMeshBaseMeshAlgo_get_mut(HandleBRepMeshBaseMeshAlgo* handle) {
+extern "C" OcctResult<BRepMesh_BaseMeshAlgo*> Handle_BRepMesh_BaseMeshAlgo_get_mut(Handle_BRepMesh_BaseMeshAlgo* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIMeshToolsMeshAlgo*> HandleBRepMeshBaseMeshAlgo_to_HandleIMeshToolsMeshAlgo(const HandleBRepMeshBaseMeshAlgo* self_) {
-    try { return {new HandleIMeshToolsMeshAlgo(*self_), nullptr}; }
+extern "C" OcctResult<Handle_IMeshTools_MeshAlgo*> Handle_BRepMesh_BaseMeshAlgo_to_Handle_IMeshTools_MeshAlgo(const Handle_BRepMesh_BaseMeshAlgo* self_) {
+    try { return {new Handle_IMeshTools_MeshAlgo(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleBRepMeshBaseMeshAlgo_to_HandleStandardTransient(const HandleBRepMeshBaseMeshAlgo* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_BRepMesh_BaseMeshAlgo_to_Handle_Standard_Transient(const Handle_BRepMesh_BaseMeshAlgo* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleBRepMeshConstrainedBaseMeshAlgo*> HandleBRepMeshBaseMeshAlgo_downcast_to_HandleBRepMeshConstrainedBaseMeshAlgo(const HandleBRepMeshBaseMeshAlgo* self_) {
+extern "C" OcctResult<Handle_BRepMesh_ConstrainedBaseMeshAlgo*> Handle_BRepMesh_BaseMeshAlgo_downcast_to_Handle_BRepMesh_ConstrainedBaseMeshAlgo(const Handle_BRepMesh_BaseMeshAlgo* self_) {
     try {
     opencascade::handle<BRepMesh_ConstrainedBaseMeshAlgo> result = opencascade::handle<BRepMesh_ConstrainedBaseMeshAlgo>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleBRepMeshConstrainedBaseMeshAlgo(result), nullptr};
+    return {new Handle_BRepMesh_ConstrainedBaseMeshAlgo(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleBRepMeshDelabellaBaseMeshAlgo*> HandleBRepMeshBaseMeshAlgo_downcast_to_HandleBRepMeshDelabellaBaseMeshAlgo(const HandleBRepMeshBaseMeshAlgo* self_) {
+extern "C" OcctResult<Handle_BRepMesh_DelabellaBaseMeshAlgo*> Handle_BRepMesh_BaseMeshAlgo_downcast_to_Handle_BRepMesh_DelabellaBaseMeshAlgo(const Handle_BRepMesh_BaseMeshAlgo* self_) {
     try {
     opencascade::handle<BRepMesh_DelabellaBaseMeshAlgo> result = opencascade::handle<BRepMesh_DelabellaBaseMeshAlgo>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleBRepMeshDelabellaBaseMeshAlgo(result), nullptr};
+    return {new Handle_BRepMesh_DelabellaBaseMeshAlgo(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleBRepMeshDelaunayBaseMeshAlgo*> HandleBRepMeshBaseMeshAlgo_downcast_to_HandleBRepMeshDelaunayBaseMeshAlgo(const HandleBRepMeshBaseMeshAlgo* self_) {
+extern "C" OcctResult<Handle_BRepMesh_DelaunayBaseMeshAlgo*> Handle_BRepMesh_BaseMeshAlgo_downcast_to_Handle_BRepMesh_DelaunayBaseMeshAlgo(const Handle_BRepMesh_BaseMeshAlgo* self_) {
     try {
     opencascade::handle<BRepMesh_DelaunayBaseMeshAlgo> result = opencascade::handle<BRepMesh_DelaunayBaseMeshAlgo>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleBRepMeshDelaunayBaseMeshAlgo(result), nullptr};
+    return {new Handle_BRepMesh_DelaunayBaseMeshAlgo(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
@@ -589,19 +598,19 @@ extern "C" OcctResult<Handle(BRepAdaptor_Surface) const*> BRepMesh_BoundaryParam
     try { return {&(self->GetSurface()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<std_pair_Standard_Real_Standard_Real const*> BRepMesh_BoundaryParamsRangeSplitter_inherited_GetRangeU(const BRepMesh_BoundaryParamsRangeSplitter* self) {
+extern "C" OcctResult<std_pair_double_double const*> BRepMesh_BoundaryParamsRangeSplitter_inherited_GetRangeU(const BRepMesh_BoundaryParamsRangeSplitter* self) {
     try { return {&(self->GetRangeU()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<std_pair_Standard_Real_Standard_Real const*> BRepMesh_BoundaryParamsRangeSplitter_inherited_GetRangeV(const BRepMesh_BoundaryParamsRangeSplitter* self) {
+extern "C" OcctResult<std_pair_double_double const*> BRepMesh_BoundaryParamsRangeSplitter_inherited_GetRangeV(const BRepMesh_BoundaryParamsRangeSplitter* self) {
     try { return {&(self->GetRangeV()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<std_pair_Standard_Real_Standard_Real const*> BRepMesh_BoundaryParamsRangeSplitter_inherited_GetDelta(const BRepMesh_BoundaryParamsRangeSplitter* self) {
+extern "C" OcctResult<std_pair_double_double const*> BRepMesh_BoundaryParamsRangeSplitter_inherited_GetDelta(const BRepMesh_BoundaryParamsRangeSplitter* self) {
     try { return {&(self->GetDelta()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<std_pair_Standard_Real_Standard_Real const*> BRepMesh_BoundaryParamsRangeSplitter_inherited_GetToleranceUV(const BRepMesh_BoundaryParamsRangeSplitter* self) {
+extern "C" OcctResult<std_pair_double_double const*> BRepMesh_BoundaryParamsRangeSplitter_inherited_GetToleranceUV(const BRepMesh_BoundaryParamsRangeSplitter* self) {
     try { return {&(self->GetToleranceUV()), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -707,7 +716,7 @@ extern "C" OcctResult<int32_t> BRepMesh_Classifier_perform(const BRepMesh_Classi
     try { return {static_cast<int32_t>(self_->Perform(*thePoint)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* BRepMesh_Classifier_register_wire(BRepMesh_Classifier* self_, NCollection_Sequence_constgp_Pnt2d_ptr const* theWire, std_pair_Standard_Real_Standard_Real const* theTolUV, std_pair_Standard_Real_Standard_Real const* theRangeU, std_pair_Standard_Real_Standard_Real const* theRangeV) {
+extern "C" const char* BRepMesh_Classifier_register_wire(BRepMesh_Classifier* self_, NCollection_Sequence_constgp_Pnt2d_ptr const* theWire, std_pair_double_double const* theTolUV, std_pair_double_double const* theRangeU, std_pair_double_double const* theRangeV) {
     try { self_->RegisterWire(*theWire, *theTolUV, *theRangeU, *theRangeV); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -725,20 +734,20 @@ extern "C" OcctResult<Handle(Standard_Type) const*> BRepMesh_Classifier_get_type
 }
 extern "C" OcctResult<const Standard_Transient*> BRepMesh_Classifier_as_Standard_Transient(const BRepMesh_Classifier* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> BRepMesh_Classifier_as_Standard_Transient_mut(BRepMesh_Classifier* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleBRepMeshClassifier*> BRepMesh_Classifier_to_handle(BRepMesh_Classifier* obj) {
-    try { return {new HandleBRepMeshClassifier(obj), nullptr}; }
+extern "C" OcctResult<Handle_BRepMesh_Classifier*> BRepMesh_Classifier_to_handle(BRepMesh_Classifier* obj) {
+    try { return {new Handle_BRepMesh_Classifier(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const BRepMesh_Classifier*> HandleBRepMeshClassifier_get(const HandleBRepMeshClassifier* handle) {
+extern "C" OcctResult<const BRepMesh_Classifier*> Handle_BRepMesh_Classifier_get(const Handle_BRepMesh_Classifier* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<BRepMesh_Classifier*> HandleBRepMeshClassifier_get_mut(HandleBRepMeshClassifier* handle) {
+extern "C" OcctResult<BRepMesh_Classifier*> Handle_BRepMesh_Classifier_get_mut(Handle_BRepMesh_Classifier* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleBRepMeshClassifier_to_HandleStandardTransient(const HandleBRepMeshClassifier* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_BRepMesh_Classifier_to_Handle_Standard_Transient(const Handle_BRepMesh_Classifier* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> BRepMesh_Classifier_inherited_IsInstance(const BRepMesh_Classifier* self, Handle(Standard_Type) const& theType) {
@@ -779,8 +788,8 @@ extern "C" OcctResult<BRepMesh_ConeRangeSplitter*> BRepMesh_ConeRangeSplitter_ct
     try { return {new BRepMesh_ConeRangeSplitter(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<std_pair_Standard_Real_Standard_Real*> BRepMesh_ConeRangeSplitter_get_split_steps(const BRepMesh_ConeRangeSplitter* self_, IMeshTools_Parameters const* theParameters, std_pair_Standard_Integer_Standard_Integer* theStepsNb) {
-    try { return {new std_pair_Standard_Real_Standard_Real(self_->GetSplitSteps(*theParameters, *theStepsNb)), nullptr}; }
+extern "C" OcctResult<std_pair_double_double*> BRepMesh_ConeRangeSplitter_get_split_steps(const BRepMesh_ConeRangeSplitter* self_, IMeshTools_Parameters const* theParameters, std_pair_int_int* theStepsNb) {
+    try { return {new std_pair_double_double(self_->GetSplitSteps(*theParameters, *theStepsNb)), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(NCollection_Shared_NCollection_List_gp_Pnt2d)*> BRepMesh_ConeRangeSplitter_generate_surface_nodes(const BRepMesh_ConeRangeSplitter* self_, IMeshTools_Parameters const* theParameters) {
@@ -821,19 +830,19 @@ extern "C" OcctResult<Handle(BRepAdaptor_Surface) const*> BRepMesh_ConeRangeSpli
     try { return {&(self->GetSurface()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<std_pair_Standard_Real_Standard_Real const*> BRepMesh_ConeRangeSplitter_inherited_GetRangeU(const BRepMesh_ConeRangeSplitter* self) {
+extern "C" OcctResult<std_pair_double_double const*> BRepMesh_ConeRangeSplitter_inherited_GetRangeU(const BRepMesh_ConeRangeSplitter* self) {
     try { return {&(self->GetRangeU()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<std_pair_Standard_Real_Standard_Real const*> BRepMesh_ConeRangeSplitter_inherited_GetRangeV(const BRepMesh_ConeRangeSplitter* self) {
+extern "C" OcctResult<std_pair_double_double const*> BRepMesh_ConeRangeSplitter_inherited_GetRangeV(const BRepMesh_ConeRangeSplitter* self) {
     try { return {&(self->GetRangeV()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<std_pair_Standard_Real_Standard_Real const*> BRepMesh_ConeRangeSplitter_inherited_GetDelta(const BRepMesh_ConeRangeSplitter* self) {
+extern "C" OcctResult<std_pair_double_double const*> BRepMesh_ConeRangeSplitter_inherited_GetDelta(const BRepMesh_ConeRangeSplitter* self) {
     try { return {&(self->GetDelta()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<std_pair_Standard_Real_Standard_Real const*> BRepMesh_ConeRangeSplitter_inherited_GetToleranceUV(const BRepMesh_ConeRangeSplitter* self) {
+extern "C" OcctResult<std_pair_double_double const*> BRepMesh_ConeRangeSplitter_inherited_GetToleranceUV(const BRepMesh_ConeRangeSplitter* self) {
     try { return {&(self->GetToleranceUV()), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -861,39 +870,39 @@ extern "C" OcctResult<const IMeshTools_MeshAlgo*> BRepMesh_ConstrainedBaseMeshAl
 extern "C" OcctResult<IMeshTools_MeshAlgo*> BRepMesh_ConstrainedBaseMeshAlgo_as_IMeshTools_MeshAlgo_mut(BRepMesh_ConstrainedBaseMeshAlgo* self_) { return {static_cast<IMeshTools_MeshAlgo*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> BRepMesh_ConstrainedBaseMeshAlgo_as_Standard_Transient(const BRepMesh_ConstrainedBaseMeshAlgo* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> BRepMesh_ConstrainedBaseMeshAlgo_as_Standard_Transient_mut(BRepMesh_ConstrainedBaseMeshAlgo* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<const BRepMesh_ConstrainedBaseMeshAlgo*> HandleBRepMeshConstrainedBaseMeshAlgo_get(const HandleBRepMeshConstrainedBaseMeshAlgo* handle) {
+extern "C" OcctResult<const BRepMesh_ConstrainedBaseMeshAlgo*> Handle_BRepMesh_ConstrainedBaseMeshAlgo_get(const Handle_BRepMesh_ConstrainedBaseMeshAlgo* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<BRepMesh_ConstrainedBaseMeshAlgo*> HandleBRepMeshConstrainedBaseMeshAlgo_get_mut(HandleBRepMeshConstrainedBaseMeshAlgo* handle) {
+extern "C" OcctResult<BRepMesh_ConstrainedBaseMeshAlgo*> Handle_BRepMesh_ConstrainedBaseMeshAlgo_get_mut(Handle_BRepMesh_ConstrainedBaseMeshAlgo* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleBRepMeshBaseMeshAlgo*> HandleBRepMeshConstrainedBaseMeshAlgo_to_HandleBRepMeshBaseMeshAlgo(const HandleBRepMeshConstrainedBaseMeshAlgo* self_) {
-    try { return {new HandleBRepMeshBaseMeshAlgo(*self_), nullptr}; }
+extern "C" OcctResult<Handle_BRepMesh_BaseMeshAlgo*> Handle_BRepMesh_ConstrainedBaseMeshAlgo_to_Handle_BRepMesh_BaseMeshAlgo(const Handle_BRepMesh_ConstrainedBaseMeshAlgo* self_) {
+    try { return {new Handle_BRepMesh_BaseMeshAlgo(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIMeshToolsMeshAlgo*> HandleBRepMeshConstrainedBaseMeshAlgo_to_HandleIMeshToolsMeshAlgo(const HandleBRepMeshConstrainedBaseMeshAlgo* self_) {
-    try { return {new HandleIMeshToolsMeshAlgo(*self_), nullptr}; }
+extern "C" OcctResult<Handle_IMeshTools_MeshAlgo*> Handle_BRepMesh_ConstrainedBaseMeshAlgo_to_Handle_IMeshTools_MeshAlgo(const Handle_BRepMesh_ConstrainedBaseMeshAlgo* self_) {
+    try { return {new Handle_IMeshTools_MeshAlgo(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleBRepMeshConstrainedBaseMeshAlgo_to_HandleStandardTransient(const HandleBRepMeshConstrainedBaseMeshAlgo* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_BRepMesh_ConstrainedBaseMeshAlgo_to_Handle_Standard_Transient(const Handle_BRepMesh_ConstrainedBaseMeshAlgo* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleBRepMeshDelabellaBaseMeshAlgo*> HandleBRepMeshConstrainedBaseMeshAlgo_downcast_to_HandleBRepMeshDelabellaBaseMeshAlgo(const HandleBRepMeshConstrainedBaseMeshAlgo* self_) {
+extern "C" OcctResult<Handle_BRepMesh_DelabellaBaseMeshAlgo*> Handle_BRepMesh_ConstrainedBaseMeshAlgo_downcast_to_Handle_BRepMesh_DelabellaBaseMeshAlgo(const Handle_BRepMesh_ConstrainedBaseMeshAlgo* self_) {
     try {
     opencascade::handle<BRepMesh_DelabellaBaseMeshAlgo> result = opencascade::handle<BRepMesh_DelabellaBaseMeshAlgo>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleBRepMeshDelabellaBaseMeshAlgo(result), nullptr};
+    return {new Handle_BRepMesh_DelabellaBaseMeshAlgo(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleBRepMeshDelaunayBaseMeshAlgo*> HandleBRepMeshConstrainedBaseMeshAlgo_downcast_to_HandleBRepMeshDelaunayBaseMeshAlgo(const HandleBRepMeshConstrainedBaseMeshAlgo* self_) {
+extern "C" OcctResult<Handle_BRepMesh_DelaunayBaseMeshAlgo*> Handle_BRepMesh_ConstrainedBaseMeshAlgo_downcast_to_Handle_BRepMesh_DelaunayBaseMeshAlgo(const Handle_BRepMesh_ConstrainedBaseMeshAlgo* self_) {
     try {
     opencascade::handle<BRepMesh_DelaunayBaseMeshAlgo> result = opencascade::handle<BRepMesh_DelaunayBaseMeshAlgo>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleBRepMeshDelaunayBaseMeshAlgo(result), nullptr};
+    return {new Handle_BRepMesh_DelaunayBaseMeshAlgo(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
@@ -957,28 +966,28 @@ extern "C" OcctResult<const IMeshData_Shape*> BRepMesh_Context_as_IMeshData_Shap
 extern "C" OcctResult<IMeshData_Shape*> BRepMesh_Context_as_IMeshData_Shape_mut(BRepMesh_Context* self_) { return {static_cast<IMeshData_Shape*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> BRepMesh_Context_as_Standard_Transient(const BRepMesh_Context* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> BRepMesh_Context_as_Standard_Transient_mut(BRepMesh_Context* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleBRepMeshContext*> BRepMesh_Context_to_handle(BRepMesh_Context* obj) {
-    try { return {new HandleBRepMeshContext(obj), nullptr}; }
+extern "C" OcctResult<Handle_BRepMesh_Context*> BRepMesh_Context_to_handle(BRepMesh_Context* obj) {
+    try { return {new Handle_BRepMesh_Context(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const BRepMesh_Context*> HandleBRepMeshContext_get(const HandleBRepMeshContext* handle) {
+extern "C" OcctResult<const BRepMesh_Context*> Handle_BRepMesh_Context_get(const Handle_BRepMesh_Context* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<BRepMesh_Context*> HandleBRepMeshContext_get_mut(HandleBRepMeshContext* handle) {
+extern "C" OcctResult<BRepMesh_Context*> Handle_BRepMesh_Context_get_mut(Handle_BRepMesh_Context* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIMeshToolsContext*> HandleBRepMeshContext_to_HandleIMeshToolsContext(const HandleBRepMeshContext* self_) {
-    try { return {new HandleIMeshToolsContext(*self_), nullptr}; }
+extern "C" OcctResult<Handle_IMeshTools_Context*> Handle_BRepMesh_Context_to_Handle_IMeshTools_Context(const Handle_BRepMesh_Context* self_) {
+    try { return {new Handle_IMeshTools_Context(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIMeshDataShape*> HandleBRepMeshContext_to_HandleIMeshDataShape(const HandleBRepMeshContext* self_) {
-    try { return {new HandleIMeshDataShape(*self_), nullptr}; }
+extern "C" OcctResult<Handle_IMeshData_Shape*> Handle_BRepMesh_Context_to_Handle_IMeshData_Shape(const Handle_BRepMesh_Context* self_) {
+    try { return {new Handle_IMeshData_Shape(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleBRepMeshContext_to_HandleStandardTransient(const HandleBRepMeshContext* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_BRepMesh_Context_to_Handle_Standard_Transient(const Handle_BRepMesh_Context* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> BRepMesh_Context_inherited_BuildModel(BRepMesh_Context* self) {
@@ -1143,24 +1152,24 @@ extern "C" OcctResult<const IMeshTools_CurveTessellator*> BRepMesh_CurveTessella
 extern "C" OcctResult<IMeshTools_CurveTessellator*> BRepMesh_CurveTessellator_as_IMeshTools_CurveTessellator_mut(BRepMesh_CurveTessellator* self_) { return {static_cast<IMeshTools_CurveTessellator*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> BRepMesh_CurveTessellator_as_Standard_Transient(const BRepMesh_CurveTessellator* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> BRepMesh_CurveTessellator_as_Standard_Transient_mut(BRepMesh_CurveTessellator* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleBRepMeshCurveTessellator*> BRepMesh_CurveTessellator_to_handle(BRepMesh_CurveTessellator* obj) {
-    try { return {new HandleBRepMeshCurveTessellator(obj), nullptr}; }
+extern "C" OcctResult<Handle_BRepMesh_CurveTessellator*> BRepMesh_CurveTessellator_to_handle(BRepMesh_CurveTessellator* obj) {
+    try { return {new Handle_BRepMesh_CurveTessellator(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const BRepMesh_CurveTessellator*> HandleBRepMeshCurveTessellator_get(const HandleBRepMeshCurveTessellator* handle) {
+extern "C" OcctResult<const BRepMesh_CurveTessellator*> Handle_BRepMesh_CurveTessellator_get(const Handle_BRepMesh_CurveTessellator* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<BRepMesh_CurveTessellator*> HandleBRepMeshCurveTessellator_get_mut(HandleBRepMeshCurveTessellator* handle) {
+extern "C" OcctResult<BRepMesh_CurveTessellator*> Handle_BRepMesh_CurveTessellator_get_mut(Handle_BRepMesh_CurveTessellator* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIMeshToolsCurveTessellator*> HandleBRepMeshCurveTessellator_to_HandleIMeshToolsCurveTessellator(const HandleBRepMeshCurveTessellator* self_) {
-    try { return {new HandleIMeshToolsCurveTessellator(*self_), nullptr}; }
+extern "C" OcctResult<Handle_IMeshTools_CurveTessellator*> Handle_BRepMesh_CurveTessellator_to_Handle_IMeshTools_CurveTessellator(const Handle_BRepMesh_CurveTessellator* self_) {
+    try { return {new Handle_IMeshTools_CurveTessellator(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleBRepMeshCurveTessellator_to_HandleStandardTransient(const HandleBRepMeshCurveTessellator* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_BRepMesh_CurveTessellator_to_Handle_Standard_Transient(const Handle_BRepMesh_CurveTessellator* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> BRepMesh_CurveTessellator_inherited_IsInstance(const BRepMesh_CurveTessellator* self, Handle(Standard_Type) const& theType) {
@@ -1217,35 +1226,35 @@ extern "C" OcctResult<const IMeshTools_MeshAlgo*> BRepMesh_CustomBaseMeshAlgo_as
 extern "C" OcctResult<IMeshTools_MeshAlgo*> BRepMesh_CustomBaseMeshAlgo_as_IMeshTools_MeshAlgo_mut(BRepMesh_CustomBaseMeshAlgo* self_) { return {static_cast<IMeshTools_MeshAlgo*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> BRepMesh_CustomBaseMeshAlgo_as_Standard_Transient(const BRepMesh_CustomBaseMeshAlgo* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> BRepMesh_CustomBaseMeshAlgo_as_Standard_Transient_mut(BRepMesh_CustomBaseMeshAlgo* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<const BRepMesh_CustomBaseMeshAlgo*> HandleBRepMeshCustomBaseMeshAlgo_get(const HandleBRepMeshCustomBaseMeshAlgo* handle) {
+extern "C" OcctResult<const BRepMesh_CustomBaseMeshAlgo*> Handle_BRepMesh_CustomBaseMeshAlgo_get(const Handle_BRepMesh_CustomBaseMeshAlgo* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<BRepMesh_CustomBaseMeshAlgo*> HandleBRepMeshCustomBaseMeshAlgo_get_mut(HandleBRepMeshCustomBaseMeshAlgo* handle) {
+extern "C" OcctResult<BRepMesh_CustomBaseMeshAlgo*> Handle_BRepMesh_CustomBaseMeshAlgo_get_mut(Handle_BRepMesh_CustomBaseMeshAlgo* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleBRepMeshConstrainedBaseMeshAlgo*> HandleBRepMeshCustomBaseMeshAlgo_to_HandleBRepMeshConstrainedBaseMeshAlgo(const HandleBRepMeshCustomBaseMeshAlgo* self_) {
-    try { return {new HandleBRepMeshConstrainedBaseMeshAlgo(*self_), nullptr}; }
+extern "C" OcctResult<Handle_BRepMesh_ConstrainedBaseMeshAlgo*> Handle_BRepMesh_CustomBaseMeshAlgo_to_Handle_BRepMesh_ConstrainedBaseMeshAlgo(const Handle_BRepMesh_CustomBaseMeshAlgo* self_) {
+    try { return {new Handle_BRepMesh_ConstrainedBaseMeshAlgo(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleBRepMeshBaseMeshAlgo*> HandleBRepMeshCustomBaseMeshAlgo_to_HandleBRepMeshBaseMeshAlgo(const HandleBRepMeshCustomBaseMeshAlgo* self_) {
-    try { return {new HandleBRepMeshBaseMeshAlgo(*self_), nullptr}; }
+extern "C" OcctResult<Handle_BRepMesh_BaseMeshAlgo*> Handle_BRepMesh_CustomBaseMeshAlgo_to_Handle_BRepMesh_BaseMeshAlgo(const Handle_BRepMesh_CustomBaseMeshAlgo* self_) {
+    try { return {new Handle_BRepMesh_BaseMeshAlgo(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIMeshToolsMeshAlgo*> HandleBRepMeshCustomBaseMeshAlgo_to_HandleIMeshToolsMeshAlgo(const HandleBRepMeshCustomBaseMeshAlgo* self_) {
-    try { return {new HandleIMeshToolsMeshAlgo(*self_), nullptr}; }
+extern "C" OcctResult<Handle_IMeshTools_MeshAlgo*> Handle_BRepMesh_CustomBaseMeshAlgo_to_Handle_IMeshTools_MeshAlgo(const Handle_BRepMesh_CustomBaseMeshAlgo* self_) {
+    try { return {new Handle_IMeshTools_MeshAlgo(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleBRepMeshCustomBaseMeshAlgo_to_HandleStandardTransient(const HandleBRepMeshCustomBaseMeshAlgo* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_BRepMesh_CustomBaseMeshAlgo_to_Handle_Standard_Transient(const Handle_BRepMesh_CustomBaseMeshAlgo* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleBRepMeshDelabellaBaseMeshAlgo*> HandleBRepMeshCustomBaseMeshAlgo_downcast_to_HandleBRepMeshDelabellaBaseMeshAlgo(const HandleBRepMeshCustomBaseMeshAlgo* self_) {
+extern "C" OcctResult<Handle_BRepMesh_DelabellaBaseMeshAlgo*> Handle_BRepMesh_CustomBaseMeshAlgo_downcast_to_Handle_BRepMesh_DelabellaBaseMeshAlgo(const Handle_BRepMesh_CustomBaseMeshAlgo* self_) {
     try {
     opencascade::handle<BRepMesh_DelabellaBaseMeshAlgo> result = opencascade::handle<BRepMesh_DelabellaBaseMeshAlgo>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleBRepMeshDelabellaBaseMeshAlgo(result), nullptr};
+    return {new Handle_BRepMesh_DelabellaBaseMeshAlgo(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
@@ -1329,19 +1338,19 @@ extern "C" OcctResult<Handle(BRepAdaptor_Surface) const*> BRepMesh_CylinderRange
     try { return {&(self->GetSurface()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<std_pair_Standard_Real_Standard_Real const*> BRepMesh_CylinderRangeSplitter_inherited_GetRangeU(const BRepMesh_CylinderRangeSplitter* self) {
+extern "C" OcctResult<std_pair_double_double const*> BRepMesh_CylinderRangeSplitter_inherited_GetRangeU(const BRepMesh_CylinderRangeSplitter* self) {
     try { return {&(self->GetRangeU()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<std_pair_Standard_Real_Standard_Real const*> BRepMesh_CylinderRangeSplitter_inherited_GetRangeV(const BRepMesh_CylinderRangeSplitter* self) {
+extern "C" OcctResult<std_pair_double_double const*> BRepMesh_CylinderRangeSplitter_inherited_GetRangeV(const BRepMesh_CylinderRangeSplitter* self) {
     try { return {&(self->GetRangeV()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<std_pair_Standard_Real_Standard_Real const*> BRepMesh_CylinderRangeSplitter_inherited_GetDelta(const BRepMesh_CylinderRangeSplitter* self) {
+extern "C" OcctResult<std_pair_double_double const*> BRepMesh_CylinderRangeSplitter_inherited_GetDelta(const BRepMesh_CylinderRangeSplitter* self) {
     try { return {&(self->GetDelta()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<std_pair_Standard_Real_Standard_Real const*> BRepMesh_CylinderRangeSplitter_inherited_GetToleranceUV(const BRepMesh_CylinderRangeSplitter* self) {
+extern "C" OcctResult<std_pair_double_double const*> BRepMesh_CylinderRangeSplitter_inherited_GetToleranceUV(const BRepMesh_CylinderRangeSplitter* self) {
     try { return {&(self->GetToleranceUV()), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -1447,10 +1456,6 @@ extern "C" const char* BRepMesh_DataStructureOfDelaun_dump(BRepMesh_DataStructur
     try { self_->Dump(theFileNameStr); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* BRepMesh_DataStructureOfDelaun_statistics(const BRepMesh_DataStructureOfDelaun* self_, Standard_OStream* theStream) {
-    try { self_->Statistics(*theStream); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
 extern "C" OcctResult<Handle(NCollection_IncAllocator) const*> BRepMesh_DataStructureOfDelaun_allocator(const BRepMesh_DataStructureOfDelaun* self_) {
     try { return {&(self_->Allocator()), nullptr}; }
     OCCT_CATCH_RETURN
@@ -1481,20 +1486,20 @@ extern "C" OcctResult<Handle(Standard_Type) const*> BRepMesh_DataStructureOfDela
 }
 extern "C" OcctResult<const Standard_Transient*> BRepMesh_DataStructureOfDelaun_as_Standard_Transient(const BRepMesh_DataStructureOfDelaun* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> BRepMesh_DataStructureOfDelaun_as_Standard_Transient_mut(BRepMesh_DataStructureOfDelaun* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleBRepMeshDataStructureOfDelaun*> BRepMesh_DataStructureOfDelaun_to_handle(BRepMesh_DataStructureOfDelaun* obj) {
-    try { return {new HandleBRepMeshDataStructureOfDelaun(obj), nullptr}; }
+extern "C" OcctResult<Handle_BRepMesh_DataStructureOfDelaun*> BRepMesh_DataStructureOfDelaun_to_handle(BRepMesh_DataStructureOfDelaun* obj) {
+    try { return {new Handle_BRepMesh_DataStructureOfDelaun(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const BRepMesh_DataStructureOfDelaun*> HandleBRepMeshDataStructureOfDelaun_get(const HandleBRepMeshDataStructureOfDelaun* handle) {
+extern "C" OcctResult<const BRepMesh_DataStructureOfDelaun*> Handle_BRepMesh_DataStructureOfDelaun_get(const Handle_BRepMesh_DataStructureOfDelaun* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<BRepMesh_DataStructureOfDelaun*> HandleBRepMeshDataStructureOfDelaun_get_mut(HandleBRepMeshDataStructureOfDelaun* handle) {
+extern "C" OcctResult<BRepMesh_DataStructureOfDelaun*> Handle_BRepMesh_DataStructureOfDelaun_get_mut(Handle_BRepMesh_DataStructureOfDelaun* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleBRepMeshDataStructureOfDelaun_to_HandleStandardTransient(const HandleBRepMeshDataStructureOfDelaun* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_BRepMesh_DataStructureOfDelaun_to_Handle_Standard_Transient(const Handle_BRepMesh_DataStructureOfDelaun* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> BRepMesh_DataStructureOfDelaun_inherited_IsInstance(const BRepMesh_DataStructureOfDelaun* self, Handle(Standard_Type) const& theType) {
@@ -1571,19 +1576,19 @@ extern "C" OcctResult<Handle(BRepAdaptor_Surface) const*> BRepMesh_DefaultRangeS
     try { return {&(self_->GetSurface()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<std_pair_Standard_Real_Standard_Real const*> BRepMesh_DefaultRangeSplitter_get_range_u(const BRepMesh_DefaultRangeSplitter* self_) {
+extern "C" OcctResult<std_pair_double_double const*> BRepMesh_DefaultRangeSplitter_get_range_u(const BRepMesh_DefaultRangeSplitter* self_) {
     try { return {&(self_->GetRangeU()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<std_pair_Standard_Real_Standard_Real const*> BRepMesh_DefaultRangeSplitter_get_range_v(const BRepMesh_DefaultRangeSplitter* self_) {
+extern "C" OcctResult<std_pair_double_double const*> BRepMesh_DefaultRangeSplitter_get_range_v(const BRepMesh_DefaultRangeSplitter* self_) {
     try { return {&(self_->GetRangeV()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<std_pair_Standard_Real_Standard_Real const*> BRepMesh_DefaultRangeSplitter_get_delta(const BRepMesh_DefaultRangeSplitter* self_) {
+extern "C" OcctResult<std_pair_double_double const*> BRepMesh_DefaultRangeSplitter_get_delta(const BRepMesh_DefaultRangeSplitter* self_) {
     try { return {&(self_->GetDelta()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<std_pair_Standard_Real_Standard_Real const*> BRepMesh_DefaultRangeSplitter_get_tolerance_uv(const BRepMesh_DefaultRangeSplitter* self_) {
+extern "C" OcctResult<std_pair_double_double const*> BRepMesh_DefaultRangeSplitter_get_tolerance_uv(const BRepMesh_DefaultRangeSplitter* self_) {
     try { return {&(self_->GetToleranceUV()), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -1631,20 +1636,20 @@ extern "C" OcctResult<Handle(Standard_Type) const*> BRepMesh_Deflection_get_type
 }
 extern "C" OcctResult<const Standard_Transient*> BRepMesh_Deflection_as_Standard_Transient(const BRepMesh_Deflection* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> BRepMesh_Deflection_as_Standard_Transient_mut(BRepMesh_Deflection* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleBRepMeshDeflection*> BRepMesh_Deflection_to_handle(BRepMesh_Deflection* obj) {
-    try { return {new HandleBRepMeshDeflection(obj), nullptr}; }
+extern "C" OcctResult<Handle_BRepMesh_Deflection*> BRepMesh_Deflection_to_handle(BRepMesh_Deflection* obj) {
+    try { return {new Handle_BRepMesh_Deflection(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const BRepMesh_Deflection*> HandleBRepMeshDeflection_get(const HandleBRepMeshDeflection* handle) {
+extern "C" OcctResult<const BRepMesh_Deflection*> Handle_BRepMesh_Deflection_get(const Handle_BRepMesh_Deflection* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<BRepMesh_Deflection*> HandleBRepMeshDeflection_get_mut(HandleBRepMeshDeflection* handle) {
+extern "C" OcctResult<BRepMesh_Deflection*> Handle_BRepMesh_Deflection_get_mut(Handle_BRepMesh_Deflection* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleBRepMeshDeflection_to_HandleStandardTransient(const HandleBRepMeshDeflection* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_BRepMesh_Deflection_to_Handle_Standard_Transient(const Handle_BRepMesh_Deflection* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> BRepMesh_Deflection_inherited_IsInstance(const BRepMesh_Deflection* self, Handle(Standard_Type) const& theType) {
@@ -1707,36 +1712,36 @@ extern "C" OcctResult<const IMeshTools_MeshAlgo*> BRepMesh_DelabellaBaseMeshAlgo
 extern "C" OcctResult<IMeshTools_MeshAlgo*> BRepMesh_DelabellaBaseMeshAlgo_as_IMeshTools_MeshAlgo_mut(BRepMesh_DelabellaBaseMeshAlgo* self_) { return {static_cast<IMeshTools_MeshAlgo*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> BRepMesh_DelabellaBaseMeshAlgo_as_Standard_Transient(const BRepMesh_DelabellaBaseMeshAlgo* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> BRepMesh_DelabellaBaseMeshAlgo_as_Standard_Transient_mut(BRepMesh_DelabellaBaseMeshAlgo* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleBRepMeshDelabellaBaseMeshAlgo*> BRepMesh_DelabellaBaseMeshAlgo_to_handle(BRepMesh_DelabellaBaseMeshAlgo* obj) {
-    try { return {new HandleBRepMeshDelabellaBaseMeshAlgo(obj), nullptr}; }
+extern "C" OcctResult<Handle_BRepMesh_DelabellaBaseMeshAlgo*> BRepMesh_DelabellaBaseMeshAlgo_to_handle(BRepMesh_DelabellaBaseMeshAlgo* obj) {
+    try { return {new Handle_BRepMesh_DelabellaBaseMeshAlgo(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const BRepMesh_DelabellaBaseMeshAlgo*> HandleBRepMeshDelabellaBaseMeshAlgo_get(const HandleBRepMeshDelabellaBaseMeshAlgo* handle) {
+extern "C" OcctResult<const BRepMesh_DelabellaBaseMeshAlgo*> Handle_BRepMesh_DelabellaBaseMeshAlgo_get(const Handle_BRepMesh_DelabellaBaseMeshAlgo* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<BRepMesh_DelabellaBaseMeshAlgo*> HandleBRepMeshDelabellaBaseMeshAlgo_get_mut(HandleBRepMeshDelabellaBaseMeshAlgo* handle) {
+extern "C" OcctResult<BRepMesh_DelabellaBaseMeshAlgo*> Handle_BRepMesh_DelabellaBaseMeshAlgo_get_mut(Handle_BRepMesh_DelabellaBaseMeshAlgo* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleBRepMeshCustomBaseMeshAlgo*> HandleBRepMeshDelabellaBaseMeshAlgo_to_HandleBRepMeshCustomBaseMeshAlgo(const HandleBRepMeshDelabellaBaseMeshAlgo* self_) {
-    try { return {new HandleBRepMeshCustomBaseMeshAlgo(*self_), nullptr}; }
+extern "C" OcctResult<Handle_BRepMesh_CustomBaseMeshAlgo*> Handle_BRepMesh_DelabellaBaseMeshAlgo_to_Handle_BRepMesh_CustomBaseMeshAlgo(const Handle_BRepMesh_DelabellaBaseMeshAlgo* self_) {
+    try { return {new Handle_BRepMesh_CustomBaseMeshAlgo(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleBRepMeshConstrainedBaseMeshAlgo*> HandleBRepMeshDelabellaBaseMeshAlgo_to_HandleBRepMeshConstrainedBaseMeshAlgo(const HandleBRepMeshDelabellaBaseMeshAlgo* self_) {
-    try { return {new HandleBRepMeshConstrainedBaseMeshAlgo(*self_), nullptr}; }
+extern "C" OcctResult<Handle_BRepMesh_ConstrainedBaseMeshAlgo*> Handle_BRepMesh_DelabellaBaseMeshAlgo_to_Handle_BRepMesh_ConstrainedBaseMeshAlgo(const Handle_BRepMesh_DelabellaBaseMeshAlgo* self_) {
+    try { return {new Handle_BRepMesh_ConstrainedBaseMeshAlgo(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleBRepMeshBaseMeshAlgo*> HandleBRepMeshDelabellaBaseMeshAlgo_to_HandleBRepMeshBaseMeshAlgo(const HandleBRepMeshDelabellaBaseMeshAlgo* self_) {
-    try { return {new HandleBRepMeshBaseMeshAlgo(*self_), nullptr}; }
+extern "C" OcctResult<Handle_BRepMesh_BaseMeshAlgo*> Handle_BRepMesh_DelabellaBaseMeshAlgo_to_Handle_BRepMesh_BaseMeshAlgo(const Handle_BRepMesh_DelabellaBaseMeshAlgo* self_) {
+    try { return {new Handle_BRepMesh_BaseMeshAlgo(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIMeshToolsMeshAlgo*> HandleBRepMeshDelabellaBaseMeshAlgo_to_HandleIMeshToolsMeshAlgo(const HandleBRepMeshDelabellaBaseMeshAlgo* self_) {
-    try { return {new HandleIMeshToolsMeshAlgo(*self_), nullptr}; }
+extern "C" OcctResult<Handle_IMeshTools_MeshAlgo*> Handle_BRepMesh_DelabellaBaseMeshAlgo_to_Handle_IMeshTools_MeshAlgo(const Handle_BRepMesh_DelabellaBaseMeshAlgo* self_) {
+    try { return {new Handle_IMeshTools_MeshAlgo(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleBRepMeshDelabellaBaseMeshAlgo_to_HandleStandardTransient(const HandleBRepMeshDelabellaBaseMeshAlgo* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_BRepMesh_DelabellaBaseMeshAlgo_to_Handle_Standard_Transient(const Handle_BRepMesh_DelabellaBaseMeshAlgo* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" const char* BRepMesh_DelabellaBaseMeshAlgo_inherited_Perform(BRepMesh_DelabellaBaseMeshAlgo* self, Handle(IMeshData_Face) const& theDFace, IMeshTools_Parameters const& theParameters, Message_ProgressRange const& theRange) {
@@ -1801,24 +1806,24 @@ extern "C" OcctResult<const IMeshTools_MeshAlgoFactory*> BRepMesh_DelabellaMeshA
 extern "C" OcctResult<IMeshTools_MeshAlgoFactory*> BRepMesh_DelabellaMeshAlgoFactory_as_IMeshTools_MeshAlgoFactory_mut(BRepMesh_DelabellaMeshAlgoFactory* self_) { return {static_cast<IMeshTools_MeshAlgoFactory*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> BRepMesh_DelabellaMeshAlgoFactory_as_Standard_Transient(const BRepMesh_DelabellaMeshAlgoFactory* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> BRepMesh_DelabellaMeshAlgoFactory_as_Standard_Transient_mut(BRepMesh_DelabellaMeshAlgoFactory* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleBRepMeshDelabellaMeshAlgoFactory*> BRepMesh_DelabellaMeshAlgoFactory_to_handle(BRepMesh_DelabellaMeshAlgoFactory* obj) {
-    try { return {new HandleBRepMeshDelabellaMeshAlgoFactory(obj), nullptr}; }
+extern "C" OcctResult<Handle_BRepMesh_DelabellaMeshAlgoFactory*> BRepMesh_DelabellaMeshAlgoFactory_to_handle(BRepMesh_DelabellaMeshAlgoFactory* obj) {
+    try { return {new Handle_BRepMesh_DelabellaMeshAlgoFactory(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const BRepMesh_DelabellaMeshAlgoFactory*> HandleBRepMeshDelabellaMeshAlgoFactory_get(const HandleBRepMeshDelabellaMeshAlgoFactory* handle) {
+extern "C" OcctResult<const BRepMesh_DelabellaMeshAlgoFactory*> Handle_BRepMesh_DelabellaMeshAlgoFactory_get(const Handle_BRepMesh_DelabellaMeshAlgoFactory* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<BRepMesh_DelabellaMeshAlgoFactory*> HandleBRepMeshDelabellaMeshAlgoFactory_get_mut(HandleBRepMeshDelabellaMeshAlgoFactory* handle) {
+extern "C" OcctResult<BRepMesh_DelabellaMeshAlgoFactory*> Handle_BRepMesh_DelabellaMeshAlgoFactory_get_mut(Handle_BRepMesh_DelabellaMeshAlgoFactory* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIMeshToolsMeshAlgoFactory*> HandleBRepMeshDelabellaMeshAlgoFactory_to_HandleIMeshToolsMeshAlgoFactory(const HandleBRepMeshDelabellaMeshAlgoFactory* self_) {
-    try { return {new HandleIMeshToolsMeshAlgoFactory(*self_), nullptr}; }
+extern "C" OcctResult<Handle_IMeshTools_MeshAlgoFactory*> Handle_BRepMesh_DelabellaMeshAlgoFactory_to_Handle_IMeshTools_MeshAlgoFactory(const Handle_BRepMesh_DelabellaMeshAlgoFactory* self_) {
+    try { return {new Handle_IMeshTools_MeshAlgoFactory(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleBRepMeshDelabellaMeshAlgoFactory_to_HandleStandardTransient(const HandleBRepMeshDelabellaMeshAlgoFactory* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_BRepMesh_DelabellaMeshAlgoFactory_to_Handle_Standard_Transient(const Handle_BRepMesh_DelabellaMeshAlgoFactory* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> BRepMesh_DelabellaMeshAlgoFactory_inherited_IsInstance(const BRepMesh_DelabellaMeshAlgoFactory* self, Handle(Standard_Type) const& theType) {
@@ -1875,16 +1880,16 @@ extern "C" OcctResult<BRepMesh_Delaun*> BRepMesh_Delaun_ctor_handlebrepmeshdatas
     try { return {new BRepMesh_Delaun(*theOldMesh, *theVertexIndices, theCellsCountU, theCellsCountV), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(NCollection_Shared_TColStd_PackedMapOfInteger)*> BRepMesh_Delaun_frontier(const BRepMesh_Delaun* self_) {
-    try { return {new Handle(NCollection_Shared_TColStd_PackedMapOfInteger)(self_->Frontier()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_Shared_NCollection_PackedMap_int)*> BRepMesh_Delaun_frontier(const BRepMesh_Delaun* self_) {
+    try { return {new Handle(NCollection_Shared_NCollection_PackedMap_int)(self_->Frontier()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(NCollection_Shared_TColStd_PackedMapOfInteger)*> BRepMesh_Delaun_internal_edges(const BRepMesh_Delaun* self_) {
-    try { return {new Handle(NCollection_Shared_TColStd_PackedMapOfInteger)(self_->InternalEdges()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_Shared_NCollection_PackedMap_int)*> BRepMesh_Delaun_internal_edges(const BRepMesh_Delaun* self_) {
+    try { return {new Handle(NCollection_Shared_NCollection_PackedMap_int)(self_->InternalEdges()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(NCollection_Shared_TColStd_PackedMapOfInteger)*> BRepMesh_Delaun_free_edges(const BRepMesh_Delaun* self_) {
-    try { return {new Handle(NCollection_Shared_TColStd_PackedMapOfInteger)(self_->FreeEdges()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_Shared_NCollection_PackedMap_int)*> BRepMesh_Delaun_free_edges(const BRepMesh_Delaun* self_) {
+    try { return {new Handle(NCollection_Shared_NCollection_PackedMap_int)(self_->FreeEdges()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" const char* BRepMesh_Delaun_init(BRepMesh_Delaun* self_, IMeshData::Array1OfVertexOfDelaun* theVertices) {
@@ -1973,32 +1978,32 @@ extern "C" OcctResult<const IMeshTools_MeshAlgo*> BRepMesh_DelaunayBaseMeshAlgo_
 extern "C" OcctResult<IMeshTools_MeshAlgo*> BRepMesh_DelaunayBaseMeshAlgo_as_IMeshTools_MeshAlgo_mut(BRepMesh_DelaunayBaseMeshAlgo* self_) { return {static_cast<IMeshTools_MeshAlgo*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> BRepMesh_DelaunayBaseMeshAlgo_as_Standard_Transient(const BRepMesh_DelaunayBaseMeshAlgo* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> BRepMesh_DelaunayBaseMeshAlgo_as_Standard_Transient_mut(BRepMesh_DelaunayBaseMeshAlgo* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleBRepMeshDelaunayBaseMeshAlgo*> BRepMesh_DelaunayBaseMeshAlgo_to_handle(BRepMesh_DelaunayBaseMeshAlgo* obj) {
-    try { return {new HandleBRepMeshDelaunayBaseMeshAlgo(obj), nullptr}; }
+extern "C" OcctResult<Handle_BRepMesh_DelaunayBaseMeshAlgo*> BRepMesh_DelaunayBaseMeshAlgo_to_handle(BRepMesh_DelaunayBaseMeshAlgo* obj) {
+    try { return {new Handle_BRepMesh_DelaunayBaseMeshAlgo(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const BRepMesh_DelaunayBaseMeshAlgo*> HandleBRepMeshDelaunayBaseMeshAlgo_get(const HandleBRepMeshDelaunayBaseMeshAlgo* handle) {
+extern "C" OcctResult<const BRepMesh_DelaunayBaseMeshAlgo*> Handle_BRepMesh_DelaunayBaseMeshAlgo_get(const Handle_BRepMesh_DelaunayBaseMeshAlgo* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<BRepMesh_DelaunayBaseMeshAlgo*> HandleBRepMeshDelaunayBaseMeshAlgo_get_mut(HandleBRepMeshDelaunayBaseMeshAlgo* handle) {
+extern "C" OcctResult<BRepMesh_DelaunayBaseMeshAlgo*> Handle_BRepMesh_DelaunayBaseMeshAlgo_get_mut(Handle_BRepMesh_DelaunayBaseMeshAlgo* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleBRepMeshConstrainedBaseMeshAlgo*> HandleBRepMeshDelaunayBaseMeshAlgo_to_HandleBRepMeshConstrainedBaseMeshAlgo(const HandleBRepMeshDelaunayBaseMeshAlgo* self_) {
-    try { return {new HandleBRepMeshConstrainedBaseMeshAlgo(*self_), nullptr}; }
+extern "C" OcctResult<Handle_BRepMesh_ConstrainedBaseMeshAlgo*> Handle_BRepMesh_DelaunayBaseMeshAlgo_to_Handle_BRepMesh_ConstrainedBaseMeshAlgo(const Handle_BRepMesh_DelaunayBaseMeshAlgo* self_) {
+    try { return {new Handle_BRepMesh_ConstrainedBaseMeshAlgo(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleBRepMeshBaseMeshAlgo*> HandleBRepMeshDelaunayBaseMeshAlgo_to_HandleBRepMeshBaseMeshAlgo(const HandleBRepMeshDelaunayBaseMeshAlgo* self_) {
-    try { return {new HandleBRepMeshBaseMeshAlgo(*self_), nullptr}; }
+extern "C" OcctResult<Handle_BRepMesh_BaseMeshAlgo*> Handle_BRepMesh_DelaunayBaseMeshAlgo_to_Handle_BRepMesh_BaseMeshAlgo(const Handle_BRepMesh_DelaunayBaseMeshAlgo* self_) {
+    try { return {new Handle_BRepMesh_BaseMeshAlgo(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIMeshToolsMeshAlgo*> HandleBRepMeshDelaunayBaseMeshAlgo_to_HandleIMeshToolsMeshAlgo(const HandleBRepMeshDelaunayBaseMeshAlgo* self_) {
-    try { return {new HandleIMeshToolsMeshAlgo(*self_), nullptr}; }
+extern "C" OcctResult<Handle_IMeshTools_MeshAlgo*> Handle_BRepMesh_DelaunayBaseMeshAlgo_to_Handle_IMeshTools_MeshAlgo(const Handle_BRepMesh_DelaunayBaseMeshAlgo* self_) {
+    try { return {new Handle_IMeshTools_MeshAlgo(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleBRepMeshDelaunayBaseMeshAlgo_to_HandleStandardTransient(const HandleBRepMeshDelaunayBaseMeshAlgo* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_BRepMesh_DelaunayBaseMeshAlgo_to_Handle_Standard_Transient(const Handle_BRepMesh_DelaunayBaseMeshAlgo* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" const char* BRepMesh_DelaunayBaseMeshAlgo_inherited_Perform(BRepMesh_DelaunayBaseMeshAlgo* self, Handle(IMeshData_Face) const& theDFace, IMeshTools_Parameters const& theParameters, Message_ProgressRange const& theRange) {
@@ -2036,15 +2041,111 @@ extern "C" const char* BRepMesh_DelaunayBaseMeshAlgo_inherited_Delete(const BRep
 extern "C" void BRepMesh_DelaunayBaseMeshAlgo_destructor(BRepMesh_DelaunayBaseMeshAlgo* self_) { delete self_; }
 
 // ========================
+// BRepMesh_DiscretAlgoFactory wrappers
+// ========================
+
+extern "C" OcctResult<Handle(BRepMesh_DiscretRoot)*> BRepMesh_DiscretAlgoFactory_create_algorithm(BRepMesh_DiscretAlgoFactory* self_, TopoDS_Shape const* theShape, double theLinDeflection, double theAngDeflection) {
+    try { return {new Handle(BRepMesh_DiscretRoot)(self_->CreateAlgorithm(*theShape, theLinDeflection, theAngDeflection)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Handle(Standard_Type) const*> BRepMesh_DiscretAlgoFactory_dynamic_type(const BRepMesh_DiscretAlgoFactory* self_) {
+    try { return {&(self_->DynamicType()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<TCollection_AsciiString const*> BRepMesh_DiscretAlgoFactory_name(const BRepMesh_DiscretAlgoFactory* self_) {
+    try { return {&(self_->Name()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<char const*> BRepMesh_DiscretAlgoFactory_get_type_name() {
+    try { return {BRepMesh_DiscretAlgoFactory::get_type_name(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Handle(Standard_Type) const*> BRepMesh_DiscretAlgoFactory_get_type_descriptor() {
+    try { return {&(BRepMesh_DiscretAlgoFactory::get_type_descriptor()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" const char* BRepMesh_DiscretAlgoFactory_register_factory(Handle(BRepMesh_DiscretAlgoFactory) const* theFactory, bool theIsPreferred) {
+    try { BRepMesh_DiscretAlgoFactory::RegisterFactory(*theFactory, theIsPreferred); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* BRepMesh_DiscretAlgoFactory_unregister_factory(TCollection_AsciiString const* theName) {
+    try { BRepMesh_DiscretAlgoFactory::UnregisterFactory(*theName); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" OcctResult<Handle(BRepMesh_DiscretAlgoFactory)*> BRepMesh_DiscretAlgoFactory_default_factory() {
+    try { return {new Handle(BRepMesh_DiscretAlgoFactory)(BRepMesh_DiscretAlgoFactory::DefaultFactory()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Handle(BRepMesh_DiscretAlgoFactory)*> BRepMesh_DiscretAlgoFactory_find_factory(TCollection_AsciiString const* theName) {
+    try { return {new Handle(BRepMesh_DiscretAlgoFactory)(BRepMesh_DiscretAlgoFactory::FindFactory(*theName)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<const Standard_Transient*> BRepMesh_DiscretAlgoFactory_as_Standard_Transient(const BRepMesh_DiscretAlgoFactory* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
+extern "C" OcctResult<Standard_Transient*> BRepMesh_DiscretAlgoFactory_as_Standard_Transient_mut(BRepMesh_DiscretAlgoFactory* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
+extern "C" OcctResult<const BRepMesh_DiscretAlgoFactory*> Handle_BRepMesh_DiscretAlgoFactory_get(const Handle_BRepMesh_DiscretAlgoFactory* handle) {
+    try { return {(*handle).get(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<BRepMesh_DiscretAlgoFactory*> Handle_BRepMesh_DiscretAlgoFactory_get_mut(Handle_BRepMesh_DiscretAlgoFactory* handle) {
+    try { return {(*handle).get(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_BRepMesh_DiscretAlgoFactory_to_Handle_Standard_Transient(const Handle_BRepMesh_DiscretAlgoFactory* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Handle_BRepMesh_IncrementalMeshFactory*> Handle_BRepMesh_DiscretAlgoFactory_downcast_to_Handle_BRepMesh_IncrementalMeshFactory(const Handle_BRepMesh_DiscretAlgoFactory* self_) {
+    try {
+    opencascade::handle<BRepMesh_IncrementalMeshFactory> result = opencascade::handle<BRepMesh_IncrementalMeshFactory>::DownCast(*self_);
+    if (result.IsNull()) { return {nullptr, nullptr}; }
+    return {new Handle_BRepMesh_IncrementalMeshFactory(result), nullptr};
+    }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Handle_XBRepMesh_Factory*> Handle_BRepMesh_DiscretAlgoFactory_downcast_to_Handle_XBRepMesh_Factory(const Handle_BRepMesh_DiscretAlgoFactory* self_) {
+    try {
+    opencascade::handle<XBRepMesh_Factory> result = opencascade::handle<XBRepMesh_Factory>::DownCast(*self_);
+    if (result.IsNull()) { return {nullptr, nullptr}; }
+    return {new Handle_XBRepMesh_Factory(result), nullptr};
+    }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<bool> BRepMesh_DiscretAlgoFactory_inherited_IsInstance(const BRepMesh_DiscretAlgoFactory* self, Handle(Standard_Type) const& theType) {
+    try { return {self->IsInstance(theType), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<bool> BRepMesh_DiscretAlgoFactory_inherited_IsKind(const BRepMesh_DiscretAlgoFactory* self, Handle(Standard_Type) const& theType) {
+    try { return {self->IsKind(theType), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Standard_Transient*> BRepMesh_DiscretAlgoFactory_inherited_This(const BRepMesh_DiscretAlgoFactory* self) {
+    try { return {self->This(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<int32_t> BRepMesh_DiscretAlgoFactory_inherited_GetRefCount(const BRepMesh_DiscretAlgoFactory* self) {
+    try { return {self->GetRefCount(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" const char* BRepMesh_DiscretAlgoFactory_inherited_IncrementRefCounter(BRepMesh_DiscretAlgoFactory* self) {
+    try { self->IncrementRefCounter(); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" OcctResult<int32_t> BRepMesh_DiscretAlgoFactory_inherited_DecrementRefCounter(BRepMesh_DiscretAlgoFactory* self) {
+    try { return {self->DecrementRefCounter(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" const char* BRepMesh_DiscretAlgoFactory_inherited_Delete(const BRepMesh_DiscretAlgoFactory* self) {
+    try { self->Delete(); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" void BRepMesh_DiscretAlgoFactory_destructor(BRepMesh_DiscretAlgoFactory* self_) { delete self_; }
+
+// ========================
 // BRepMesh_DiscretFactory wrappers
 // ========================
 
 extern "C" OcctResult<Handle(BRepMesh_DiscretRoot)*> BRepMesh_DiscretFactory_discret(BRepMesh_DiscretFactory* self_, TopoDS_Shape const* theShape, double theLinDeflection, double theAngDeflection) {
     try { return {new Handle(BRepMesh_DiscretRoot)(self_->Discret(*theShape, theLinDeflection, theAngDeflection)), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<TColStd_MapOfAsciiString const*> BRepMesh_DiscretFactory_names(const BRepMesh_DiscretFactory* self_) {
-    try { return {&(self_->Names()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> BRepMesh_DiscretFactory_set_default_name(BRepMesh_DiscretFactory* self_, TCollection_AsciiString const* theName) {
@@ -2055,26 +2156,11 @@ extern "C" OcctResult<TCollection_AsciiString const*> BRepMesh_DiscretFactory_de
     try { return {&(self_->DefaultName()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<bool> BRepMesh_DiscretFactory_set_function_name(BRepMesh_DiscretFactory* self_, TCollection_AsciiString const* theFuncName) {
-    try { return {self_->SetFunctionName(*theFuncName), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<TCollection_AsciiString const*> BRepMesh_DiscretFactory_function_name(const BRepMesh_DiscretFactory* self_) {
-    try { return {&(self_->FunctionName()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<int32_t> BRepMesh_DiscretFactory_error_status(const BRepMesh_DiscretFactory* self_) {
-    try { return {static_cast<int32_t>(self_->ErrorStatus()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<bool> BRepMesh_DiscretFactory_set_default(BRepMesh_DiscretFactory* self_, TCollection_AsciiString const* theName, TCollection_AsciiString const* theFuncName) {
-    try { return {self_->SetDefault(*theName, *theFuncName), nullptr}; }
-    OCCT_CATCH_RETURN
-}
 extern "C" OcctResult<BRepMesh_DiscretFactory*> BRepMesh_DiscretFactory_get() {
     try { return {&(BRepMesh_DiscretFactory::Get()), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" void BRepMesh_DiscretFactory_destructor(BRepMesh_DiscretFactory* self_) { delete self_; }
 
 // ========================
 // BRepMesh_DiscretRoot wrappers
@@ -2110,23 +2196,23 @@ extern "C" OcctResult<Handle(Standard_Type) const*> BRepMesh_DiscretRoot_get_typ
 }
 extern "C" OcctResult<const Standard_Transient*> BRepMesh_DiscretRoot_as_Standard_Transient(const BRepMesh_DiscretRoot* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> BRepMesh_DiscretRoot_as_Standard_Transient_mut(BRepMesh_DiscretRoot* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<const BRepMesh_DiscretRoot*> HandleBRepMeshDiscretRoot_get(const HandleBRepMeshDiscretRoot* handle) {
+extern "C" OcctResult<const BRepMesh_DiscretRoot*> Handle_BRepMesh_DiscretRoot_get(const Handle_BRepMesh_DiscretRoot* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<BRepMesh_DiscretRoot*> HandleBRepMeshDiscretRoot_get_mut(HandleBRepMeshDiscretRoot* handle) {
+extern "C" OcctResult<BRepMesh_DiscretRoot*> Handle_BRepMesh_DiscretRoot_get_mut(Handle_BRepMesh_DiscretRoot* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleBRepMeshDiscretRoot_to_HandleStandardTransient(const HandleBRepMeshDiscretRoot* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_BRepMesh_DiscretRoot_to_Handle_Standard_Transient(const Handle_BRepMesh_DiscretRoot* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleBRepMeshIncrementalMesh*> HandleBRepMeshDiscretRoot_downcast_to_HandleBRepMeshIncrementalMesh(const HandleBRepMeshDiscretRoot* self_) {
+extern "C" OcctResult<Handle_BRepMesh_IncrementalMesh*> Handle_BRepMesh_DiscretRoot_downcast_to_Handle_BRepMesh_IncrementalMesh(const Handle_BRepMesh_DiscretRoot* self_) {
     try {
     opencascade::handle<BRepMesh_IncrementalMesh> result = opencascade::handle<BRepMesh_IncrementalMesh>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleBRepMeshIncrementalMesh(result), nullptr};
+    return {new Handle_BRepMesh_IncrementalMesh(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
@@ -2244,24 +2330,24 @@ extern "C" OcctResult<const IMeshTools_ModelAlgo*> BRepMesh_EdgeDiscret_as_IMesh
 extern "C" OcctResult<IMeshTools_ModelAlgo*> BRepMesh_EdgeDiscret_as_IMeshTools_ModelAlgo_mut(BRepMesh_EdgeDiscret* self_) { return {static_cast<IMeshTools_ModelAlgo*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> BRepMesh_EdgeDiscret_as_Standard_Transient(const BRepMesh_EdgeDiscret* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> BRepMesh_EdgeDiscret_as_Standard_Transient_mut(BRepMesh_EdgeDiscret* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleBRepMeshEdgeDiscret*> BRepMesh_EdgeDiscret_to_handle(BRepMesh_EdgeDiscret* obj) {
-    try { return {new HandleBRepMeshEdgeDiscret(obj), nullptr}; }
+extern "C" OcctResult<Handle_BRepMesh_EdgeDiscret*> BRepMesh_EdgeDiscret_to_handle(BRepMesh_EdgeDiscret* obj) {
+    try { return {new Handle_BRepMesh_EdgeDiscret(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const BRepMesh_EdgeDiscret*> HandleBRepMeshEdgeDiscret_get(const HandleBRepMeshEdgeDiscret* handle) {
+extern "C" OcctResult<const BRepMesh_EdgeDiscret*> Handle_BRepMesh_EdgeDiscret_get(const Handle_BRepMesh_EdgeDiscret* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<BRepMesh_EdgeDiscret*> HandleBRepMeshEdgeDiscret_get_mut(HandleBRepMeshEdgeDiscret* handle) {
+extern "C" OcctResult<BRepMesh_EdgeDiscret*> Handle_BRepMesh_EdgeDiscret_get_mut(Handle_BRepMesh_EdgeDiscret* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIMeshToolsModelAlgo*> HandleBRepMeshEdgeDiscret_to_HandleIMeshToolsModelAlgo(const HandleBRepMeshEdgeDiscret* self_) {
-    try { return {new HandleIMeshToolsModelAlgo(*self_), nullptr}; }
+extern "C" OcctResult<Handle_IMeshTools_ModelAlgo*> Handle_BRepMesh_EdgeDiscret_to_Handle_IMeshTools_ModelAlgo(const Handle_BRepMesh_EdgeDiscret* self_) {
+    try { return {new Handle_IMeshTools_ModelAlgo(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleBRepMeshEdgeDiscret_to_HandleStandardTransient(const HandleBRepMeshEdgeDiscret* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_BRepMesh_EdgeDiscret_to_Handle_Standard_Transient(const Handle_BRepMesh_EdgeDiscret* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> BRepMesh_EdgeDiscret_inherited_Perform(BRepMesh_EdgeDiscret* self, Handle(IMeshData_Model) const& theModel, IMeshTools_Parameters const& theParameters, Message_ProgressRange const& theRange) {
@@ -2330,24 +2416,24 @@ extern "C" OcctResult<const IMeshTools_CurveTessellator*> BRepMesh_EdgeTessellat
 extern "C" OcctResult<IMeshTools_CurveTessellator*> BRepMesh_EdgeTessellationExtractor_as_IMeshTools_CurveTessellator_mut(BRepMesh_EdgeTessellationExtractor* self_) { return {static_cast<IMeshTools_CurveTessellator*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> BRepMesh_EdgeTessellationExtractor_as_Standard_Transient(const BRepMesh_EdgeTessellationExtractor* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> BRepMesh_EdgeTessellationExtractor_as_Standard_Transient_mut(BRepMesh_EdgeTessellationExtractor* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleBRepMeshEdgeTessellationExtractor*> BRepMesh_EdgeTessellationExtractor_to_handle(BRepMesh_EdgeTessellationExtractor* obj) {
-    try { return {new HandleBRepMeshEdgeTessellationExtractor(obj), nullptr}; }
+extern "C" OcctResult<Handle_BRepMesh_EdgeTessellationExtractor*> BRepMesh_EdgeTessellationExtractor_to_handle(BRepMesh_EdgeTessellationExtractor* obj) {
+    try { return {new Handle_BRepMesh_EdgeTessellationExtractor(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const BRepMesh_EdgeTessellationExtractor*> HandleBRepMeshEdgeTessellationExtractor_get(const HandleBRepMeshEdgeTessellationExtractor* handle) {
+extern "C" OcctResult<const BRepMesh_EdgeTessellationExtractor*> Handle_BRepMesh_EdgeTessellationExtractor_get(const Handle_BRepMesh_EdgeTessellationExtractor* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<BRepMesh_EdgeTessellationExtractor*> HandleBRepMeshEdgeTessellationExtractor_get_mut(HandleBRepMeshEdgeTessellationExtractor* handle) {
+extern "C" OcctResult<BRepMesh_EdgeTessellationExtractor*> Handle_BRepMesh_EdgeTessellationExtractor_get_mut(Handle_BRepMesh_EdgeTessellationExtractor* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIMeshToolsCurveTessellator*> HandleBRepMeshEdgeTessellationExtractor_to_HandleIMeshToolsCurveTessellator(const HandleBRepMeshEdgeTessellationExtractor* self_) {
-    try { return {new HandleIMeshToolsCurveTessellator(*self_), nullptr}; }
+extern "C" OcctResult<Handle_IMeshTools_CurveTessellator*> Handle_BRepMesh_EdgeTessellationExtractor_to_Handle_IMeshTools_CurveTessellator(const Handle_BRepMesh_EdgeTessellationExtractor* self_) {
+    try { return {new Handle_IMeshTools_CurveTessellator(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleBRepMeshEdgeTessellationExtractor_to_HandleStandardTransient(const HandleBRepMeshEdgeTessellationExtractor* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_BRepMesh_EdgeTessellationExtractor_to_Handle_Standard_Transient(const Handle_BRepMesh_EdgeTessellationExtractor* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> BRepMesh_EdgeTessellationExtractor_inherited_IsInstance(const BRepMesh_EdgeTessellationExtractor* self, Handle(Standard_Type) const& theType) {
@@ -2438,19 +2524,19 @@ extern "C" OcctResult<Handle(BRepAdaptor_Surface) const*> BRepMesh_ExtrusionRang
     try { return {&(self->GetSurface()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<std_pair_Standard_Real_Standard_Real const*> BRepMesh_ExtrusionRangeSplitter_inherited_GetRangeU(const BRepMesh_ExtrusionRangeSplitter* self) {
+extern "C" OcctResult<std_pair_double_double const*> BRepMesh_ExtrusionRangeSplitter_inherited_GetRangeU(const BRepMesh_ExtrusionRangeSplitter* self) {
     try { return {&(self->GetRangeU()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<std_pair_Standard_Real_Standard_Real const*> BRepMesh_ExtrusionRangeSplitter_inherited_GetRangeV(const BRepMesh_ExtrusionRangeSplitter* self) {
+extern "C" OcctResult<std_pair_double_double const*> BRepMesh_ExtrusionRangeSplitter_inherited_GetRangeV(const BRepMesh_ExtrusionRangeSplitter* self) {
     try { return {&(self->GetRangeV()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<std_pair_Standard_Real_Standard_Real const*> BRepMesh_ExtrusionRangeSplitter_inherited_GetDelta(const BRepMesh_ExtrusionRangeSplitter* self) {
+extern "C" OcctResult<std_pair_double_double const*> BRepMesh_ExtrusionRangeSplitter_inherited_GetDelta(const BRepMesh_ExtrusionRangeSplitter* self) {
     try { return {&(self->GetDelta()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<std_pair_Standard_Real_Standard_Real const*> BRepMesh_ExtrusionRangeSplitter_inherited_GetToleranceUV(const BRepMesh_ExtrusionRangeSplitter* self) {
+extern "C" OcctResult<std_pair_double_double const*> BRepMesh_ExtrusionRangeSplitter_inherited_GetToleranceUV(const BRepMesh_ExtrusionRangeSplitter* self) {
     try { return {&(self->GetToleranceUV()), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -2468,6 +2554,10 @@ extern "C" OcctResult<bool> BRepMesh_FaceChecker_perform(BRepMesh_FaceChecker* s
     try { return {self_->Perform(), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" OcctResult<Handle(NCollection_Shared_NCollection_Map_IMeshData_Edge_ptr) const*> BRepMesh_FaceChecker_get_intersecting_edges(const BRepMesh_FaceChecker* self_) {
+    try { return {&(self_->GetIntersectingEdges()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" OcctResult<Handle(Standard_Type) const*> BRepMesh_FaceChecker_dynamic_type(const BRepMesh_FaceChecker* self_) {
     try { return {&(self_->DynamicType()), nullptr}; }
     OCCT_CATCH_RETURN
@@ -2482,20 +2572,20 @@ extern "C" OcctResult<Handle(Standard_Type) const*> BRepMesh_FaceChecker_get_typ
 }
 extern "C" OcctResult<const Standard_Transient*> BRepMesh_FaceChecker_as_Standard_Transient(const BRepMesh_FaceChecker* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> BRepMesh_FaceChecker_as_Standard_Transient_mut(BRepMesh_FaceChecker* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleBRepMeshFaceChecker*> BRepMesh_FaceChecker_to_handle(BRepMesh_FaceChecker* obj) {
-    try { return {new HandleBRepMeshFaceChecker(obj), nullptr}; }
+extern "C" OcctResult<Handle_BRepMesh_FaceChecker*> BRepMesh_FaceChecker_to_handle(BRepMesh_FaceChecker* obj) {
+    try { return {new Handle_BRepMesh_FaceChecker(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const BRepMesh_FaceChecker*> HandleBRepMeshFaceChecker_get(const HandleBRepMeshFaceChecker* handle) {
+extern "C" OcctResult<const BRepMesh_FaceChecker*> Handle_BRepMesh_FaceChecker_get(const Handle_BRepMesh_FaceChecker* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<BRepMesh_FaceChecker*> HandleBRepMeshFaceChecker_get_mut(HandleBRepMeshFaceChecker* handle) {
+extern "C" OcctResult<BRepMesh_FaceChecker*> Handle_BRepMesh_FaceChecker_get_mut(Handle_BRepMesh_FaceChecker* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleBRepMeshFaceChecker_to_HandleStandardTransient(const HandleBRepMeshFaceChecker* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_BRepMesh_FaceChecker_to_Handle_Standard_Transient(const Handle_BRepMesh_FaceChecker* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> BRepMesh_FaceChecker_inherited_IsInstance(const BRepMesh_FaceChecker* self, Handle(Standard_Type) const& theType) {
@@ -2562,24 +2652,24 @@ extern "C" OcctResult<const IMeshTools_ModelAlgo*> BRepMesh_FaceDiscret_as_IMesh
 extern "C" OcctResult<IMeshTools_ModelAlgo*> BRepMesh_FaceDiscret_as_IMeshTools_ModelAlgo_mut(BRepMesh_FaceDiscret* self_) { return {static_cast<IMeshTools_ModelAlgo*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> BRepMesh_FaceDiscret_as_Standard_Transient(const BRepMesh_FaceDiscret* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> BRepMesh_FaceDiscret_as_Standard_Transient_mut(BRepMesh_FaceDiscret* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleBRepMeshFaceDiscret*> BRepMesh_FaceDiscret_to_handle(BRepMesh_FaceDiscret* obj) {
-    try { return {new HandleBRepMeshFaceDiscret(obj), nullptr}; }
+extern "C" OcctResult<Handle_BRepMesh_FaceDiscret*> BRepMesh_FaceDiscret_to_handle(BRepMesh_FaceDiscret* obj) {
+    try { return {new Handle_BRepMesh_FaceDiscret(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const BRepMesh_FaceDiscret*> HandleBRepMeshFaceDiscret_get(const HandleBRepMeshFaceDiscret* handle) {
+extern "C" OcctResult<const BRepMesh_FaceDiscret*> Handle_BRepMesh_FaceDiscret_get(const Handle_BRepMesh_FaceDiscret* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<BRepMesh_FaceDiscret*> HandleBRepMeshFaceDiscret_get_mut(HandleBRepMeshFaceDiscret* handle) {
+extern "C" OcctResult<BRepMesh_FaceDiscret*> Handle_BRepMesh_FaceDiscret_get_mut(Handle_BRepMesh_FaceDiscret* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIMeshToolsModelAlgo*> HandleBRepMeshFaceDiscret_to_HandleIMeshToolsModelAlgo(const HandleBRepMeshFaceDiscret* self_) {
-    try { return {new HandleIMeshToolsModelAlgo(*self_), nullptr}; }
+extern "C" OcctResult<Handle_IMeshTools_ModelAlgo*> Handle_BRepMesh_FaceDiscret_to_Handle_IMeshTools_ModelAlgo(const Handle_BRepMesh_FaceDiscret* self_) {
+    try { return {new Handle_IMeshTools_ModelAlgo(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleBRepMeshFaceDiscret_to_HandleStandardTransient(const HandleBRepMeshFaceDiscret* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_BRepMesh_FaceDiscret_to_Handle_Standard_Transient(const Handle_BRepMesh_FaceDiscret* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> BRepMesh_FaceDiscret_inherited_Perform(BRepMesh_FaceDiscret* self, Handle(IMeshData_Model) const& theModel, IMeshTools_Parameters const& theParameters, Message_ProgressRange const& theRange) {
@@ -2660,8 +2750,8 @@ extern "C" OcctResult<double> BRepMesh_GeomTool_square_deflection_of_segment(gp_
     try { return {BRepMesh_GeomTool::SquareDeflectionOfSegment(*theFirstPoint, *theLastPoint, *theMidPoint), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<std_pair_Standard_Integer_Standard_Integer*> BRepMesh_GeomTool_cells_count(Handle(Adaptor3d_Surface) const* theSurface, int32_t theVerticesNb, double theDeflection, const BRepMesh_DefaultRangeSplitter* theRangeSplitter) {
-    try { return {new std_pair_Standard_Integer_Standard_Integer(BRepMesh_GeomTool::CellsCount(*theSurface, theVerticesNb, theDeflection, theRangeSplitter)), nullptr}; }
+extern "C" OcctResult<std_pair_int_int*> BRepMesh_GeomTool_cells_count(Handle(Adaptor3d_Surface) const* theSurface, int32_t theVerticesNb, double theDeflection, const BRepMesh_DefaultRangeSplitter* theRangeSplitter) {
+    try { return {new std_pair_int_int(BRepMesh_GeomTool::CellsCount(*theSurface, theVerticesNb, theDeflection, theRangeSplitter)), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" void BRepMesh_GeomTool_destructor(BRepMesh_GeomTool* self_) { delete self_; }
@@ -2734,24 +2824,24 @@ extern "C" OcctResult<const BRepMesh_DiscretRoot*> BRepMesh_IncrementalMesh_as_B
 extern "C" OcctResult<BRepMesh_DiscretRoot*> BRepMesh_IncrementalMesh_as_BRepMesh_DiscretRoot_mut(BRepMesh_IncrementalMesh* self_) { return {static_cast<BRepMesh_DiscretRoot*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> BRepMesh_IncrementalMesh_as_Standard_Transient(const BRepMesh_IncrementalMesh* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> BRepMesh_IncrementalMesh_as_Standard_Transient_mut(BRepMesh_IncrementalMesh* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleBRepMeshIncrementalMesh*> BRepMesh_IncrementalMesh_to_handle(BRepMesh_IncrementalMesh* obj) {
-    try { return {new HandleBRepMeshIncrementalMesh(obj), nullptr}; }
+extern "C" OcctResult<Handle_BRepMesh_IncrementalMesh*> BRepMesh_IncrementalMesh_to_handle(BRepMesh_IncrementalMesh* obj) {
+    try { return {new Handle_BRepMesh_IncrementalMesh(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const BRepMesh_IncrementalMesh*> HandleBRepMeshIncrementalMesh_get(const HandleBRepMeshIncrementalMesh* handle) {
+extern "C" OcctResult<const BRepMesh_IncrementalMesh*> Handle_BRepMesh_IncrementalMesh_get(const Handle_BRepMesh_IncrementalMesh* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<BRepMesh_IncrementalMesh*> HandleBRepMeshIncrementalMesh_get_mut(HandleBRepMeshIncrementalMesh* handle) {
+extern "C" OcctResult<BRepMesh_IncrementalMesh*> Handle_BRepMesh_IncrementalMesh_get_mut(Handle_BRepMesh_IncrementalMesh* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleBRepMeshDiscretRoot*> HandleBRepMeshIncrementalMesh_to_HandleBRepMeshDiscretRoot(const HandleBRepMeshIncrementalMesh* self_) {
-    try { return {new HandleBRepMeshDiscretRoot(*self_), nullptr}; }
+extern "C" OcctResult<Handle_BRepMesh_DiscretRoot*> Handle_BRepMesh_IncrementalMesh_to_Handle_BRepMesh_DiscretRoot(const Handle_BRepMesh_IncrementalMesh* self_) {
+    try { return {new Handle_BRepMesh_DiscretRoot(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleBRepMeshIncrementalMesh_to_HandleStandardTransient(const HandleBRepMeshIncrementalMesh* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_BRepMesh_IncrementalMesh_to_Handle_Standard_Transient(const Handle_BRepMesh_IncrementalMesh* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" const char* BRepMesh_IncrementalMesh_inherited_SetShape(BRepMesh_IncrementalMesh* self, TopoDS_Shape const& theShape) {
@@ -2797,6 +2887,88 @@ extern "C" const char* BRepMesh_IncrementalMesh_inherited_Delete(const BRepMesh_
 extern "C" void BRepMesh_IncrementalMesh_destructor(BRepMesh_IncrementalMesh* self_) { delete self_; }
 
 // ========================
+// BRepMesh_IncrementalMeshFactory wrappers
+// ========================
+
+extern "C" OcctResult<BRepMesh_IncrementalMeshFactory*> BRepMesh_IncrementalMeshFactory_ctor() {
+    try { return {new BRepMesh_IncrementalMeshFactory(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Handle(BRepMesh_DiscretRoot)*> BRepMesh_IncrementalMeshFactory_create_algorithm(BRepMesh_IncrementalMeshFactory* self_, TopoDS_Shape const* theShape, double theLinDeflection, double theAngDeflection) {
+    try { return {new Handle(BRepMesh_DiscretRoot)(self_->CreateAlgorithm(*theShape, theLinDeflection, theAngDeflection)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Handle(Standard_Type) const*> BRepMesh_IncrementalMeshFactory_dynamic_type(const BRepMesh_IncrementalMeshFactory* self_) {
+    try { return {&(self_->DynamicType()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<char const*> BRepMesh_IncrementalMeshFactory_get_type_name() {
+    try { return {BRepMesh_IncrementalMeshFactory::get_type_name(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Handle(Standard_Type) const*> BRepMesh_IncrementalMeshFactory_get_type_descriptor() {
+    try { return {&(BRepMesh_IncrementalMeshFactory::get_type_descriptor()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<const BRepMesh_DiscretAlgoFactory*> BRepMesh_IncrementalMeshFactory_as_BRepMesh_DiscretAlgoFactory(const BRepMesh_IncrementalMeshFactory* self_) { return {static_cast<const BRepMesh_DiscretAlgoFactory*>(self_), nullptr}; }
+extern "C" OcctResult<BRepMesh_DiscretAlgoFactory*> BRepMesh_IncrementalMeshFactory_as_BRepMesh_DiscretAlgoFactory_mut(BRepMesh_IncrementalMeshFactory* self_) { return {static_cast<BRepMesh_DiscretAlgoFactory*>(self_), nullptr}; }
+extern "C" OcctResult<const Standard_Transient*> BRepMesh_IncrementalMeshFactory_as_Standard_Transient(const BRepMesh_IncrementalMeshFactory* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
+extern "C" OcctResult<Standard_Transient*> BRepMesh_IncrementalMeshFactory_as_Standard_Transient_mut(BRepMesh_IncrementalMeshFactory* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
+extern "C" OcctResult<Handle_BRepMesh_IncrementalMeshFactory*> BRepMesh_IncrementalMeshFactory_to_handle(BRepMesh_IncrementalMeshFactory* obj) {
+    try { return {new Handle_BRepMesh_IncrementalMeshFactory(obj), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<const BRepMesh_IncrementalMeshFactory*> Handle_BRepMesh_IncrementalMeshFactory_get(const Handle_BRepMesh_IncrementalMeshFactory* handle) {
+    try { return {(*handle).get(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<BRepMesh_IncrementalMeshFactory*> Handle_BRepMesh_IncrementalMeshFactory_get_mut(Handle_BRepMesh_IncrementalMeshFactory* handle) {
+    try { return {(*handle).get(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Handle_BRepMesh_DiscretAlgoFactory*> Handle_BRepMesh_IncrementalMeshFactory_to_Handle_BRepMesh_DiscretAlgoFactory(const Handle_BRepMesh_IncrementalMeshFactory* self_) {
+    try { return {new Handle_BRepMesh_DiscretAlgoFactory(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_BRepMesh_IncrementalMeshFactory_to_Handle_Standard_Transient(const Handle_BRepMesh_IncrementalMeshFactory* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<TCollection_AsciiString const*> BRepMesh_IncrementalMeshFactory_inherited_Name(const BRepMesh_IncrementalMeshFactory* self) {
+    try { return {&(self->Name()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<bool> BRepMesh_IncrementalMeshFactory_inherited_IsInstance(const BRepMesh_IncrementalMeshFactory* self, Handle(Standard_Type) const& theType) {
+    try { return {self->IsInstance(theType), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<bool> BRepMesh_IncrementalMeshFactory_inherited_IsKind(const BRepMesh_IncrementalMeshFactory* self, Handle(Standard_Type) const& theType) {
+    try { return {self->IsKind(theType), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Standard_Transient*> BRepMesh_IncrementalMeshFactory_inherited_This(const BRepMesh_IncrementalMeshFactory* self) {
+    try { return {self->This(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<int32_t> BRepMesh_IncrementalMeshFactory_inherited_GetRefCount(const BRepMesh_IncrementalMeshFactory* self) {
+    try { return {self->GetRefCount(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" const char* BRepMesh_IncrementalMeshFactory_inherited_IncrementRefCounter(BRepMesh_IncrementalMeshFactory* self) {
+    try { self->IncrementRefCounter(); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" OcctResult<int32_t> BRepMesh_IncrementalMeshFactory_inherited_DecrementRefCounter(BRepMesh_IncrementalMeshFactory* self) {
+    try { return {self->DecrementRefCounter(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" const char* BRepMesh_IncrementalMeshFactory_inherited_Delete(const BRepMesh_IncrementalMeshFactory* self) {
+    try { self->Delete(); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" void BRepMesh_IncrementalMeshFactory_destructor(BRepMesh_IncrementalMeshFactory* self_) { delete self_; }
+
+// ========================
 // BRepMesh_MeshAlgoFactory wrappers
 // ========================
 
@@ -2824,24 +2996,24 @@ extern "C" OcctResult<const IMeshTools_MeshAlgoFactory*> BRepMesh_MeshAlgoFactor
 extern "C" OcctResult<IMeshTools_MeshAlgoFactory*> BRepMesh_MeshAlgoFactory_as_IMeshTools_MeshAlgoFactory_mut(BRepMesh_MeshAlgoFactory* self_) { return {static_cast<IMeshTools_MeshAlgoFactory*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> BRepMesh_MeshAlgoFactory_as_Standard_Transient(const BRepMesh_MeshAlgoFactory* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> BRepMesh_MeshAlgoFactory_as_Standard_Transient_mut(BRepMesh_MeshAlgoFactory* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleBRepMeshMeshAlgoFactory*> BRepMesh_MeshAlgoFactory_to_handle(BRepMesh_MeshAlgoFactory* obj) {
-    try { return {new HandleBRepMeshMeshAlgoFactory(obj), nullptr}; }
+extern "C" OcctResult<Handle_BRepMesh_MeshAlgoFactory*> BRepMesh_MeshAlgoFactory_to_handle(BRepMesh_MeshAlgoFactory* obj) {
+    try { return {new Handle_BRepMesh_MeshAlgoFactory(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const BRepMesh_MeshAlgoFactory*> HandleBRepMeshMeshAlgoFactory_get(const HandleBRepMeshMeshAlgoFactory* handle) {
+extern "C" OcctResult<const BRepMesh_MeshAlgoFactory*> Handle_BRepMesh_MeshAlgoFactory_get(const Handle_BRepMesh_MeshAlgoFactory* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<BRepMesh_MeshAlgoFactory*> HandleBRepMeshMeshAlgoFactory_get_mut(HandleBRepMeshMeshAlgoFactory* handle) {
+extern "C" OcctResult<BRepMesh_MeshAlgoFactory*> Handle_BRepMesh_MeshAlgoFactory_get_mut(Handle_BRepMesh_MeshAlgoFactory* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIMeshToolsMeshAlgoFactory*> HandleBRepMeshMeshAlgoFactory_to_HandleIMeshToolsMeshAlgoFactory(const HandleBRepMeshMeshAlgoFactory* self_) {
-    try { return {new HandleIMeshToolsMeshAlgoFactory(*self_), nullptr}; }
+extern "C" OcctResult<Handle_IMeshTools_MeshAlgoFactory*> Handle_BRepMesh_MeshAlgoFactory_to_Handle_IMeshTools_MeshAlgoFactory(const Handle_BRepMesh_MeshAlgoFactory* self_) {
+    try { return {new Handle_IMeshTools_MeshAlgoFactory(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleBRepMeshMeshAlgoFactory_to_HandleStandardTransient(const HandleBRepMeshMeshAlgoFactory* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_BRepMesh_MeshAlgoFactory_to_Handle_Standard_Transient(const Handle_BRepMesh_MeshAlgoFactory* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> BRepMesh_MeshAlgoFactory_inherited_IsInstance(const BRepMesh_MeshAlgoFactory* self, Handle(Standard_Type) const& theType) {
@@ -2882,8 +3054,8 @@ extern "C" OcctResult<BRepMesh_MeshTool*> BRepMesh_MeshTool_ctor_handlebrepmeshd
     try { return {new BRepMesh_MeshTool(*theStructure), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(NCollection_Shared_TColStd_PackedMapOfInteger)*> BRepMesh_MeshTool_get_edges_by_type(const BRepMesh_MeshTool* self_, int32_t theEdgeType) {
-    try { return {new Handle(NCollection_Shared_TColStd_PackedMapOfInteger)(self_->GetEdgesByType(static_cast<BRepMesh_DegreeOfFreedom>(theEdgeType))), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_Shared_NCollection_PackedMap_int)*> BRepMesh_MeshTool_get_edges_by_type(const BRepMesh_MeshTool* self_, int32_t theEdgeType) {
+    try { return {new Handle(NCollection_Shared_NCollection_PackedMap_int)(self_->GetEdgesByType(static_cast<BRepMesh_DegreeOfFreedom>(theEdgeType))), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(BRepMesh_DataStructureOfDelaun) const*> BRepMesh_MeshTool_get_structure(const BRepMesh_MeshTool* self_) {
@@ -2948,20 +3120,20 @@ extern "C" OcctResult<Handle(Standard_Type) const*> BRepMesh_MeshTool_get_type_d
 }
 extern "C" OcctResult<const Standard_Transient*> BRepMesh_MeshTool_as_Standard_Transient(const BRepMesh_MeshTool* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> BRepMesh_MeshTool_as_Standard_Transient_mut(BRepMesh_MeshTool* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleBRepMeshMeshTool*> BRepMesh_MeshTool_to_handle(BRepMesh_MeshTool* obj) {
-    try { return {new HandleBRepMeshMeshTool(obj), nullptr}; }
+extern "C" OcctResult<Handle_BRepMesh_MeshTool*> BRepMesh_MeshTool_to_handle(BRepMesh_MeshTool* obj) {
+    try { return {new Handle_BRepMesh_MeshTool(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const BRepMesh_MeshTool*> HandleBRepMeshMeshTool_get(const HandleBRepMeshMeshTool* handle) {
+extern "C" OcctResult<const BRepMesh_MeshTool*> Handle_BRepMesh_MeshTool_get(const Handle_BRepMesh_MeshTool* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<BRepMesh_MeshTool*> HandleBRepMeshMeshTool_get_mut(HandleBRepMeshMeshTool* handle) {
+extern "C" OcctResult<BRepMesh_MeshTool*> Handle_BRepMesh_MeshTool_get_mut(Handle_BRepMesh_MeshTool* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleBRepMeshMeshTool_to_HandleStandardTransient(const HandleBRepMeshMeshTool* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_BRepMesh_MeshTool_to_Handle_Standard_Transient(const Handle_BRepMesh_MeshTool* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> BRepMesh_MeshTool_inherited_IsInstance(const BRepMesh_MeshTool* self, Handle(Standard_Type) const& theType) {
@@ -3034,28 +3206,28 @@ extern "C" OcctResult<const Message_Algorithm*> BRepMesh_ModelBuilder_as_Message
 extern "C" OcctResult<Message_Algorithm*> BRepMesh_ModelBuilder_as_Message_Algorithm_mut(BRepMesh_ModelBuilder* self_) { return {static_cast<Message_Algorithm*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> BRepMesh_ModelBuilder_as_Standard_Transient(const BRepMesh_ModelBuilder* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> BRepMesh_ModelBuilder_as_Standard_Transient_mut(BRepMesh_ModelBuilder* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleBRepMeshModelBuilder*> BRepMesh_ModelBuilder_to_handle(BRepMesh_ModelBuilder* obj) {
-    try { return {new HandleBRepMeshModelBuilder(obj), nullptr}; }
+extern "C" OcctResult<Handle_BRepMesh_ModelBuilder*> BRepMesh_ModelBuilder_to_handle(BRepMesh_ModelBuilder* obj) {
+    try { return {new Handle_BRepMesh_ModelBuilder(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const BRepMesh_ModelBuilder*> HandleBRepMeshModelBuilder_get(const HandleBRepMeshModelBuilder* handle) {
+extern "C" OcctResult<const BRepMesh_ModelBuilder*> Handle_BRepMesh_ModelBuilder_get(const Handle_BRepMesh_ModelBuilder* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<BRepMesh_ModelBuilder*> HandleBRepMeshModelBuilder_get_mut(HandleBRepMeshModelBuilder* handle) {
+extern "C" OcctResult<BRepMesh_ModelBuilder*> Handle_BRepMesh_ModelBuilder_get_mut(Handle_BRepMesh_ModelBuilder* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIMeshToolsModelBuilder*> HandleBRepMeshModelBuilder_to_HandleIMeshToolsModelBuilder(const HandleBRepMeshModelBuilder* self_) {
-    try { return {new HandleIMeshToolsModelBuilder(*self_), nullptr}; }
+extern "C" OcctResult<Handle_IMeshTools_ModelBuilder*> Handle_BRepMesh_ModelBuilder_to_Handle_IMeshTools_ModelBuilder(const Handle_BRepMesh_ModelBuilder* self_) {
+    try { return {new Handle_IMeshTools_ModelBuilder(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleMessageAlgorithm*> HandleBRepMeshModelBuilder_to_HandleMessageAlgorithm(const HandleBRepMeshModelBuilder* self_) {
-    try { return {new HandleMessageAlgorithm(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Message_Algorithm*> Handle_BRepMesh_ModelBuilder_to_Handle_Message_Algorithm(const Handle_BRepMesh_ModelBuilder* self_) {
+    try { return {new Handle_Message_Algorithm(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleBRepMeshModelBuilder_to_HandleStandardTransient(const HandleBRepMeshModelBuilder* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_BRepMesh_ModelBuilder_to_Handle_Standard_Transient(const Handle_BRepMesh_ModelBuilder* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(IMeshData_Model)*> BRepMesh_ModelBuilder_inherited_Perform(BRepMesh_ModelBuilder* self, TopoDS_Shape const& theShape, IMeshTools_Parameters const& theParameters) {
@@ -3102,8 +3274,8 @@ extern "C" OcctResult<Handle(TColStd_HPackedMapOfInteger)*> BRepMesh_ModelBuilde
     try { return {new Handle(TColStd_HPackedMapOfInteger)(self->GetMessageNumbers(static_cast<Message_Status>(theStatus))), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(TColStd_HSequenceOfHExtendedString)*> BRepMesh_ModelBuilder_inherited_GetMessageStrings(const BRepMesh_ModelBuilder* self, int32_t theStatus) {
-    try { return {new Handle(TColStd_HSequenceOfHExtendedString)(self->GetMessageStrings(static_cast<Message_Status>(theStatus))), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HSequence_opencascade_handle_TCollection_HExtendedString)*> BRepMesh_ModelBuilder_inherited_GetMessageStrings(const BRepMesh_ModelBuilder* self, int32_t theStatus) {
+    try { return {new Handle(NCollection_HSequence_opencascade_handle_TCollection_HExtendedString)(self->GetMessageStrings(static_cast<Message_Status>(theStatus))), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> BRepMesh_ModelBuilder_inherited_IsInstance(const BRepMesh_ModelBuilder* self, Handle(Standard_Type) const& theType) {
@@ -3160,24 +3332,24 @@ extern "C" OcctResult<const IMeshTools_ModelAlgo*> BRepMesh_ModelHealer_as_IMesh
 extern "C" OcctResult<IMeshTools_ModelAlgo*> BRepMesh_ModelHealer_as_IMeshTools_ModelAlgo_mut(BRepMesh_ModelHealer* self_) { return {static_cast<IMeshTools_ModelAlgo*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> BRepMesh_ModelHealer_as_Standard_Transient(const BRepMesh_ModelHealer* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> BRepMesh_ModelHealer_as_Standard_Transient_mut(BRepMesh_ModelHealer* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleBRepMeshModelHealer*> BRepMesh_ModelHealer_to_handle(BRepMesh_ModelHealer* obj) {
-    try { return {new HandleBRepMeshModelHealer(obj), nullptr}; }
+extern "C" OcctResult<Handle_BRepMesh_ModelHealer*> BRepMesh_ModelHealer_to_handle(BRepMesh_ModelHealer* obj) {
+    try { return {new Handle_BRepMesh_ModelHealer(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const BRepMesh_ModelHealer*> HandleBRepMeshModelHealer_get(const HandleBRepMeshModelHealer* handle) {
+extern "C" OcctResult<const BRepMesh_ModelHealer*> Handle_BRepMesh_ModelHealer_get(const Handle_BRepMesh_ModelHealer* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<BRepMesh_ModelHealer*> HandleBRepMeshModelHealer_get_mut(HandleBRepMeshModelHealer* handle) {
+extern "C" OcctResult<BRepMesh_ModelHealer*> Handle_BRepMesh_ModelHealer_get_mut(Handle_BRepMesh_ModelHealer* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIMeshToolsModelAlgo*> HandleBRepMeshModelHealer_to_HandleIMeshToolsModelAlgo(const HandleBRepMeshModelHealer* self_) {
-    try { return {new HandleIMeshToolsModelAlgo(*self_), nullptr}; }
+extern "C" OcctResult<Handle_IMeshTools_ModelAlgo*> Handle_BRepMesh_ModelHealer_to_Handle_IMeshTools_ModelAlgo(const Handle_BRepMesh_ModelHealer* self_) {
+    try { return {new Handle_IMeshTools_ModelAlgo(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleBRepMeshModelHealer_to_HandleStandardTransient(const HandleBRepMeshModelHealer* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_BRepMesh_ModelHealer_to_Handle_Standard_Transient(const Handle_BRepMesh_ModelHealer* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> BRepMesh_ModelHealer_inherited_Perform(BRepMesh_ModelHealer* self, Handle(IMeshData_Model) const& theModel, IMeshTools_Parameters const& theParameters, Message_ProgressRange const& theRange) {
@@ -3238,24 +3410,24 @@ extern "C" OcctResult<const IMeshTools_ModelAlgo*> BRepMesh_ModelPostProcessor_a
 extern "C" OcctResult<IMeshTools_ModelAlgo*> BRepMesh_ModelPostProcessor_as_IMeshTools_ModelAlgo_mut(BRepMesh_ModelPostProcessor* self_) { return {static_cast<IMeshTools_ModelAlgo*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> BRepMesh_ModelPostProcessor_as_Standard_Transient(const BRepMesh_ModelPostProcessor* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> BRepMesh_ModelPostProcessor_as_Standard_Transient_mut(BRepMesh_ModelPostProcessor* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleBRepMeshModelPostProcessor*> BRepMesh_ModelPostProcessor_to_handle(BRepMesh_ModelPostProcessor* obj) {
-    try { return {new HandleBRepMeshModelPostProcessor(obj), nullptr}; }
+extern "C" OcctResult<Handle_BRepMesh_ModelPostProcessor*> BRepMesh_ModelPostProcessor_to_handle(BRepMesh_ModelPostProcessor* obj) {
+    try { return {new Handle_BRepMesh_ModelPostProcessor(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const BRepMesh_ModelPostProcessor*> HandleBRepMeshModelPostProcessor_get(const HandleBRepMeshModelPostProcessor* handle) {
+extern "C" OcctResult<const BRepMesh_ModelPostProcessor*> Handle_BRepMesh_ModelPostProcessor_get(const Handle_BRepMesh_ModelPostProcessor* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<BRepMesh_ModelPostProcessor*> HandleBRepMeshModelPostProcessor_get_mut(HandleBRepMeshModelPostProcessor* handle) {
+extern "C" OcctResult<BRepMesh_ModelPostProcessor*> Handle_BRepMesh_ModelPostProcessor_get_mut(Handle_BRepMesh_ModelPostProcessor* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIMeshToolsModelAlgo*> HandleBRepMeshModelPostProcessor_to_HandleIMeshToolsModelAlgo(const HandleBRepMeshModelPostProcessor* self_) {
-    try { return {new HandleIMeshToolsModelAlgo(*self_), nullptr}; }
+extern "C" OcctResult<Handle_IMeshTools_ModelAlgo*> Handle_BRepMesh_ModelPostProcessor_to_Handle_IMeshTools_ModelAlgo(const Handle_BRepMesh_ModelPostProcessor* self_) {
+    try { return {new Handle_IMeshTools_ModelAlgo(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleBRepMeshModelPostProcessor_to_HandleStandardTransient(const HandleBRepMeshModelPostProcessor* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_BRepMesh_ModelPostProcessor_to_Handle_Standard_Transient(const Handle_BRepMesh_ModelPostProcessor* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> BRepMesh_ModelPostProcessor_inherited_Perform(BRepMesh_ModelPostProcessor* self, Handle(IMeshData_Model) const& theModel, IMeshTools_Parameters const& theParameters, Message_ProgressRange const& theRange) {
@@ -3316,24 +3488,24 @@ extern "C" OcctResult<const IMeshTools_ModelAlgo*> BRepMesh_ModelPreProcessor_as
 extern "C" OcctResult<IMeshTools_ModelAlgo*> BRepMesh_ModelPreProcessor_as_IMeshTools_ModelAlgo_mut(BRepMesh_ModelPreProcessor* self_) { return {static_cast<IMeshTools_ModelAlgo*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> BRepMesh_ModelPreProcessor_as_Standard_Transient(const BRepMesh_ModelPreProcessor* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> BRepMesh_ModelPreProcessor_as_Standard_Transient_mut(BRepMesh_ModelPreProcessor* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleBRepMeshModelPreProcessor*> BRepMesh_ModelPreProcessor_to_handle(BRepMesh_ModelPreProcessor* obj) {
-    try { return {new HandleBRepMeshModelPreProcessor(obj), nullptr}; }
+extern "C" OcctResult<Handle_BRepMesh_ModelPreProcessor*> BRepMesh_ModelPreProcessor_to_handle(BRepMesh_ModelPreProcessor* obj) {
+    try { return {new Handle_BRepMesh_ModelPreProcessor(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const BRepMesh_ModelPreProcessor*> HandleBRepMeshModelPreProcessor_get(const HandleBRepMeshModelPreProcessor* handle) {
+extern "C" OcctResult<const BRepMesh_ModelPreProcessor*> Handle_BRepMesh_ModelPreProcessor_get(const Handle_BRepMesh_ModelPreProcessor* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<BRepMesh_ModelPreProcessor*> HandleBRepMeshModelPreProcessor_get_mut(HandleBRepMeshModelPreProcessor* handle) {
+extern "C" OcctResult<BRepMesh_ModelPreProcessor*> Handle_BRepMesh_ModelPreProcessor_get_mut(Handle_BRepMesh_ModelPreProcessor* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIMeshToolsModelAlgo*> HandleBRepMeshModelPreProcessor_to_HandleIMeshToolsModelAlgo(const HandleBRepMeshModelPreProcessor* self_) {
-    try { return {new HandleIMeshToolsModelAlgo(*self_), nullptr}; }
+extern "C" OcctResult<Handle_IMeshTools_ModelAlgo*> Handle_BRepMesh_ModelPreProcessor_to_Handle_IMeshTools_ModelAlgo(const Handle_BRepMesh_ModelPreProcessor* self_) {
+    try { return {new Handle_IMeshTools_ModelAlgo(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleBRepMeshModelPreProcessor_to_HandleStandardTransient(const HandleBRepMeshModelPreProcessor* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_BRepMesh_ModelPreProcessor_to_Handle_Standard_Transient(const Handle_BRepMesh_ModelPreProcessor* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> BRepMesh_ModelPreProcessor_inherited_Perform(BRepMesh_ModelPreProcessor* self, Handle(IMeshData_Model) const& theModel, IMeshTools_Parameters const& theParameters, Message_ProgressRange const& theRange) {
@@ -3426,19 +3598,19 @@ extern "C" OcctResult<Handle(BRepAdaptor_Surface) const*> BRepMesh_NURBSRangeSpl
     try { return {&(self->GetSurface()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<std_pair_Standard_Real_Standard_Real const*> BRepMesh_NURBSRangeSplitter_inherited_GetRangeU(const BRepMesh_NURBSRangeSplitter* self) {
+extern "C" OcctResult<std_pair_double_double const*> BRepMesh_NURBSRangeSplitter_inherited_GetRangeU(const BRepMesh_NURBSRangeSplitter* self) {
     try { return {&(self->GetRangeU()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<std_pair_Standard_Real_Standard_Real const*> BRepMesh_NURBSRangeSplitter_inherited_GetRangeV(const BRepMesh_NURBSRangeSplitter* self) {
+extern "C" OcctResult<std_pair_double_double const*> BRepMesh_NURBSRangeSplitter_inherited_GetRangeV(const BRepMesh_NURBSRangeSplitter* self) {
     try { return {&(self->GetRangeV()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<std_pair_Standard_Real_Standard_Real const*> BRepMesh_NURBSRangeSplitter_inherited_GetDelta(const BRepMesh_NURBSRangeSplitter* self) {
+extern "C" OcctResult<std_pair_double_double const*> BRepMesh_NURBSRangeSplitter_inherited_GetDelta(const BRepMesh_NURBSRangeSplitter* self) {
     try { return {&(self->GetDelta()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<std_pair_Standard_Real_Standard_Real const*> BRepMesh_NURBSRangeSplitter_inherited_GetToleranceUV(const BRepMesh_NURBSRangeSplitter* self) {
+extern "C" OcctResult<std_pair_double_double const*> BRepMesh_NURBSRangeSplitter_inherited_GetToleranceUV(const BRepMesh_NURBSRangeSplitter* self) {
     try { return {&(self->GetToleranceUV()), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -3602,20 +3774,20 @@ extern "C" OcctResult<Handle(Standard_Type) const*> BRepMesh_SelectorOfDataStruc
 }
 extern "C" OcctResult<const Standard_Transient*> BRepMesh_SelectorOfDataStructureOfDelaun_as_Standard_Transient(const BRepMesh_SelectorOfDataStructureOfDelaun* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> BRepMesh_SelectorOfDataStructureOfDelaun_as_Standard_Transient_mut(BRepMesh_SelectorOfDataStructureOfDelaun* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleBRepMeshSelectorOfDataStructureOfDelaun*> BRepMesh_SelectorOfDataStructureOfDelaun_to_handle(BRepMesh_SelectorOfDataStructureOfDelaun* obj) {
-    try { return {new HandleBRepMeshSelectorOfDataStructureOfDelaun(obj), nullptr}; }
+extern "C" OcctResult<Handle_BRepMesh_SelectorOfDataStructureOfDelaun*> BRepMesh_SelectorOfDataStructureOfDelaun_to_handle(BRepMesh_SelectorOfDataStructureOfDelaun* obj) {
+    try { return {new Handle_BRepMesh_SelectorOfDataStructureOfDelaun(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const BRepMesh_SelectorOfDataStructureOfDelaun*> HandleBRepMeshSelectorOfDataStructureOfDelaun_get(const HandleBRepMeshSelectorOfDataStructureOfDelaun* handle) {
+extern "C" OcctResult<const BRepMesh_SelectorOfDataStructureOfDelaun*> Handle_BRepMesh_SelectorOfDataStructureOfDelaun_get(const Handle_BRepMesh_SelectorOfDataStructureOfDelaun* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<BRepMesh_SelectorOfDataStructureOfDelaun*> HandleBRepMeshSelectorOfDataStructureOfDelaun_get_mut(HandleBRepMeshSelectorOfDataStructureOfDelaun* handle) {
+extern "C" OcctResult<BRepMesh_SelectorOfDataStructureOfDelaun*> Handle_BRepMesh_SelectorOfDataStructureOfDelaun_get_mut(Handle_BRepMesh_SelectorOfDataStructureOfDelaun* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleBRepMeshSelectorOfDataStructureOfDelaun_to_HandleStandardTransient(const HandleBRepMeshSelectorOfDataStructureOfDelaun* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_BRepMesh_SelectorOfDataStructureOfDelaun_to_Handle_Standard_Transient(const Handle_BRepMesh_SelectorOfDataStructureOfDelaun* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> BRepMesh_SelectorOfDataStructureOfDelaun_inherited_IsInstance(const BRepMesh_SelectorOfDataStructureOfDelaun* self, Handle(Standard_Type) const& theType) {
@@ -3726,20 +3898,20 @@ extern "C" OcctResult<Handle(Standard_Type) const*> BRepMesh_ShapeTool_get_type_
 }
 extern "C" OcctResult<const Standard_Transient*> BRepMesh_ShapeTool_as_Standard_Transient(const BRepMesh_ShapeTool* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> BRepMesh_ShapeTool_as_Standard_Transient_mut(BRepMesh_ShapeTool* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleBRepMeshShapeTool*> BRepMesh_ShapeTool_to_handle(BRepMesh_ShapeTool* obj) {
-    try { return {new HandleBRepMeshShapeTool(obj), nullptr}; }
+extern "C" OcctResult<Handle_BRepMesh_ShapeTool*> BRepMesh_ShapeTool_to_handle(BRepMesh_ShapeTool* obj) {
+    try { return {new Handle_BRepMesh_ShapeTool(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const BRepMesh_ShapeTool*> HandleBRepMeshShapeTool_get(const HandleBRepMeshShapeTool* handle) {
+extern "C" OcctResult<const BRepMesh_ShapeTool*> Handle_BRepMesh_ShapeTool_get(const Handle_BRepMesh_ShapeTool* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<BRepMesh_ShapeTool*> HandleBRepMeshShapeTool_get_mut(HandleBRepMeshShapeTool* handle) {
+extern "C" OcctResult<BRepMesh_ShapeTool*> Handle_BRepMesh_ShapeTool_get_mut(Handle_BRepMesh_ShapeTool* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleBRepMeshShapeTool_to_HandleStandardTransient(const HandleBRepMeshShapeTool* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_BRepMesh_ShapeTool_to_Handle_Standard_Transient(const Handle_BRepMesh_ShapeTool* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> BRepMesh_ShapeTool_inherited_IsInstance(const BRepMesh_ShapeTool* self, Handle(Standard_Type) const& theType) {
@@ -3804,24 +3976,24 @@ extern "C" OcctResult<const IMeshTools_ShapeVisitor*> BRepMesh_ShapeVisitor_as_I
 extern "C" OcctResult<IMeshTools_ShapeVisitor*> BRepMesh_ShapeVisitor_as_IMeshTools_ShapeVisitor_mut(BRepMesh_ShapeVisitor* self_) { return {static_cast<IMeshTools_ShapeVisitor*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> BRepMesh_ShapeVisitor_as_Standard_Transient(const BRepMesh_ShapeVisitor* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> BRepMesh_ShapeVisitor_as_Standard_Transient_mut(BRepMesh_ShapeVisitor* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleBRepMeshShapeVisitor*> BRepMesh_ShapeVisitor_to_handle(BRepMesh_ShapeVisitor* obj) {
-    try { return {new HandleBRepMeshShapeVisitor(obj), nullptr}; }
+extern "C" OcctResult<Handle_BRepMesh_ShapeVisitor*> BRepMesh_ShapeVisitor_to_handle(BRepMesh_ShapeVisitor* obj) {
+    try { return {new Handle_BRepMesh_ShapeVisitor(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const BRepMesh_ShapeVisitor*> HandleBRepMeshShapeVisitor_get(const HandleBRepMeshShapeVisitor* handle) {
+extern "C" OcctResult<const BRepMesh_ShapeVisitor*> Handle_BRepMesh_ShapeVisitor_get(const Handle_BRepMesh_ShapeVisitor* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<BRepMesh_ShapeVisitor*> HandleBRepMeshShapeVisitor_get_mut(HandleBRepMeshShapeVisitor* handle) {
+extern "C" OcctResult<BRepMesh_ShapeVisitor*> Handle_BRepMesh_ShapeVisitor_get_mut(Handle_BRepMesh_ShapeVisitor* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIMeshToolsShapeVisitor*> HandleBRepMeshShapeVisitor_to_HandleIMeshToolsShapeVisitor(const HandleBRepMeshShapeVisitor* self_) {
-    try { return {new HandleIMeshToolsShapeVisitor(*self_), nullptr}; }
+extern "C" OcctResult<Handle_IMeshTools_ShapeVisitor*> Handle_BRepMesh_ShapeVisitor_to_Handle_IMeshTools_ShapeVisitor(const Handle_BRepMesh_ShapeVisitor* self_) {
+    try { return {new Handle_IMeshTools_ShapeVisitor(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleBRepMeshShapeVisitor_to_HandleStandardTransient(const HandleBRepMeshShapeVisitor* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_BRepMesh_ShapeVisitor_to_Handle_Standard_Transient(const Handle_BRepMesh_ShapeVisitor* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> BRepMesh_ShapeVisitor_inherited_IsInstance(const BRepMesh_ShapeVisitor* self, Handle(Standard_Type) const& theType) {
@@ -3900,19 +4072,19 @@ extern "C" OcctResult<Handle(BRepAdaptor_Surface) const*> BRepMesh_SphereRangeSp
     try { return {&(self->GetSurface()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<std_pair_Standard_Real_Standard_Real const*> BRepMesh_SphereRangeSplitter_inherited_GetRangeU(const BRepMesh_SphereRangeSplitter* self) {
+extern "C" OcctResult<std_pair_double_double const*> BRepMesh_SphereRangeSplitter_inherited_GetRangeU(const BRepMesh_SphereRangeSplitter* self) {
     try { return {&(self->GetRangeU()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<std_pair_Standard_Real_Standard_Real const*> BRepMesh_SphereRangeSplitter_inherited_GetRangeV(const BRepMesh_SphereRangeSplitter* self) {
+extern "C" OcctResult<std_pair_double_double const*> BRepMesh_SphereRangeSplitter_inherited_GetRangeV(const BRepMesh_SphereRangeSplitter* self) {
     try { return {&(self->GetRangeV()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<std_pair_Standard_Real_Standard_Real const*> BRepMesh_SphereRangeSplitter_inherited_GetDelta(const BRepMesh_SphereRangeSplitter* self) {
+extern "C" OcctResult<std_pair_double_double const*> BRepMesh_SphereRangeSplitter_inherited_GetDelta(const BRepMesh_SphereRangeSplitter* self) {
     try { return {&(self->GetDelta()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<std_pair_Standard_Real_Standard_Real const*> BRepMesh_SphereRangeSplitter_inherited_GetToleranceUV(const BRepMesh_SphereRangeSplitter* self) {
+extern "C" OcctResult<std_pair_double_double const*> BRepMesh_SphereRangeSplitter_inherited_GetToleranceUV(const BRepMesh_SphereRangeSplitter* self) {
     try { return {&(self->GetToleranceUV()), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -3974,19 +4146,19 @@ extern "C" OcctResult<Handle(BRepAdaptor_Surface) const*> BRepMesh_TorusRangeSpl
     try { return {&(self->GetSurface()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<std_pair_Standard_Real_Standard_Real const*> BRepMesh_TorusRangeSplitter_inherited_GetRangeU(const BRepMesh_TorusRangeSplitter* self) {
+extern "C" OcctResult<std_pair_double_double const*> BRepMesh_TorusRangeSplitter_inherited_GetRangeU(const BRepMesh_TorusRangeSplitter* self) {
     try { return {&(self->GetRangeU()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<std_pair_Standard_Real_Standard_Real const*> BRepMesh_TorusRangeSplitter_inherited_GetRangeV(const BRepMesh_TorusRangeSplitter* self) {
+extern "C" OcctResult<std_pair_double_double const*> BRepMesh_TorusRangeSplitter_inherited_GetRangeV(const BRepMesh_TorusRangeSplitter* self) {
     try { return {&(self->GetRangeV()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<std_pair_Standard_Real_Standard_Real const*> BRepMesh_TorusRangeSplitter_inherited_GetDelta(const BRepMesh_TorusRangeSplitter* self) {
+extern "C" OcctResult<std_pair_double_double const*> BRepMesh_TorusRangeSplitter_inherited_GetDelta(const BRepMesh_TorusRangeSplitter* self) {
     try { return {&(self->GetDelta()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<std_pair_Standard_Real_Standard_Real const*> BRepMesh_TorusRangeSplitter_inherited_GetToleranceUV(const BRepMesh_TorusRangeSplitter* self) {
+extern "C" OcctResult<std_pair_double_double const*> BRepMesh_TorusRangeSplitter_inherited_GetToleranceUV(const BRepMesh_TorusRangeSplitter* self) {
     try { return {&(self->GetToleranceUV()), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -4030,7 +4202,7 @@ extern "C" void BRepMesh_Triangle_destructor(BRepMesh_Triangle* self_) { delete 
 // BRepMesh_Triangulator wrappers
 // ========================
 
-extern "C" OcctResult<BRepMesh_Triangulator*> BRepMesh_Triangulator_ctor_vector_gp_xyz_list_tcolstd_sequenceofinteger_dir(NCollection_Vector_gp_XYZ const* theXYZs, NCollection_List_TColStd_SequenceOfInteger const* theWires, gp_Dir const* theNorm) {
+extern "C" OcctResult<BRepMesh_Triangulator*> BRepMesh_Triangulator_ctor_dynamicarray_gp_xyz_list_ncollection_sequence_int_dir(NCollection_DynamicArray_gp_XYZ const* theXYZs, NCollection_List_NCollection_Sequence_int const* theWires, gp_Dir const* theNorm) {
     try { return {new BRepMesh_Triangulator(*theXYZs, *theWires, *theNorm), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -4042,7 +4214,7 @@ extern "C" const char* BRepMesh_Triangulator_set_messenger(BRepMesh_Triangulator
     try { self_->SetMessenger(*theMess); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<Handle(Poly_Triangulation)*> BRepMesh_Triangulator_to_poly_triangulation(TColgp_Array1OfPnt const* theNodes, NCollection_List_Poly_Triangle const* thePolyTriangles) {
+extern "C" OcctResult<Handle(Poly_Triangulation)*> BRepMesh_Triangulator_to_poly_triangulation(NCollection_Array1_gp_Pnt const* theNodes, NCollection_List_Poly_Triangle const* thePolyTriangles) {
     try { return {new Handle(Poly_Triangulation)(BRepMesh_Triangulator::ToPolyTriangulation(*theNodes, *thePolyTriangles)), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -4110,19 +4282,19 @@ extern "C" OcctResult<Handle(BRepAdaptor_Surface) const*> BRepMesh_UVParamRangeS
     try { return {&(self->GetSurface()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<std_pair_Standard_Real_Standard_Real const*> BRepMesh_UVParamRangeSplitter_inherited_GetRangeU(const BRepMesh_UVParamRangeSplitter* self) {
+extern "C" OcctResult<std_pair_double_double const*> BRepMesh_UVParamRangeSplitter_inherited_GetRangeU(const BRepMesh_UVParamRangeSplitter* self) {
     try { return {&(self->GetRangeU()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<std_pair_Standard_Real_Standard_Real const*> BRepMesh_UVParamRangeSplitter_inherited_GetRangeV(const BRepMesh_UVParamRangeSplitter* self) {
+extern "C" OcctResult<std_pair_double_double const*> BRepMesh_UVParamRangeSplitter_inherited_GetRangeV(const BRepMesh_UVParamRangeSplitter* self) {
     try { return {&(self->GetRangeV()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<std_pair_Standard_Real_Standard_Real const*> BRepMesh_UVParamRangeSplitter_inherited_GetDelta(const BRepMesh_UVParamRangeSplitter* self) {
+extern "C" OcctResult<std_pair_double_double const*> BRepMesh_UVParamRangeSplitter_inherited_GetDelta(const BRepMesh_UVParamRangeSplitter* self) {
     try { return {&(self->GetDelta()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<std_pair_Standard_Real_Standard_Real const*> BRepMesh_UVParamRangeSplitter_inherited_GetToleranceUV(const BRepMesh_UVParamRangeSplitter* self) {
+extern "C" OcctResult<std_pair_double_double const*> BRepMesh_UVParamRangeSplitter_inherited_GetToleranceUV(const BRepMesh_UVParamRangeSplitter* self) {
     try { return {&(self->GetToleranceUV()), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -4186,19 +4358,19 @@ extern "C" OcctResult<Handle(BRepAdaptor_Surface) const*> BRepMesh_UndefinedRang
     try { return {&(self->GetSurface()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<std_pair_Standard_Real_Standard_Real const*> BRepMesh_UndefinedRangeSplitter_inherited_GetRangeU(const BRepMesh_UndefinedRangeSplitter* self) {
+extern "C" OcctResult<std_pair_double_double const*> BRepMesh_UndefinedRangeSplitter_inherited_GetRangeU(const BRepMesh_UndefinedRangeSplitter* self) {
     try { return {&(self->GetRangeU()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<std_pair_Standard_Real_Standard_Real const*> BRepMesh_UndefinedRangeSplitter_inherited_GetRangeV(const BRepMesh_UndefinedRangeSplitter* self) {
+extern "C" OcctResult<std_pair_double_double const*> BRepMesh_UndefinedRangeSplitter_inherited_GetRangeV(const BRepMesh_UndefinedRangeSplitter* self) {
     try { return {&(self->GetRangeV()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<std_pair_Standard_Real_Standard_Real const*> BRepMesh_UndefinedRangeSplitter_inherited_GetDelta(const BRepMesh_UndefinedRangeSplitter* self) {
+extern "C" OcctResult<std_pair_double_double const*> BRepMesh_UndefinedRangeSplitter_inherited_GetDelta(const BRepMesh_UndefinedRangeSplitter* self) {
     try { return {&(self->GetDelta()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<std_pair_Standard_Real_Standard_Real const*> BRepMesh_UndefinedRangeSplitter_inherited_GetToleranceUV(const BRepMesh_UndefinedRangeSplitter* self) {
+extern "C" OcctResult<std_pair_double_double const*> BRepMesh_UndefinedRangeSplitter_inherited_GetToleranceUV(const BRepMesh_UndefinedRangeSplitter* self) {
     try { return {&(self->GetToleranceUV()), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -4322,10 +4494,6 @@ extern "C" OcctResult<IMeshData::ListOfInteger const*> BRepMesh_VertexTool_get_l
     try { return {&(self_->GetListOfDelNodes()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* BRepMesh_VertexTool_statistics(const BRepMesh_VertexTool* self_, Standard_OStream* theStream) {
-    try { self_->Statistics(*theStream); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
 extern "C" OcctResult<Handle(Standard_Type) const*> BRepMesh_VertexTool_dynamic_type(const BRepMesh_VertexTool* self_) {
     try { return {&(self_->DynamicType()), nullptr}; }
     OCCT_CATCH_RETURN
@@ -4340,20 +4508,20 @@ extern "C" OcctResult<Handle(Standard_Type) const*> BRepMesh_VertexTool_get_type
 }
 extern "C" OcctResult<const Standard_Transient*> BRepMesh_VertexTool_as_Standard_Transient(const BRepMesh_VertexTool* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> BRepMesh_VertexTool_as_Standard_Transient_mut(BRepMesh_VertexTool* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleBRepMeshVertexTool*> BRepMesh_VertexTool_to_handle(BRepMesh_VertexTool* obj) {
-    try { return {new HandleBRepMeshVertexTool(obj), nullptr}; }
+extern "C" OcctResult<Handle_BRepMesh_VertexTool*> BRepMesh_VertexTool_to_handle(BRepMesh_VertexTool* obj) {
+    try { return {new Handle_BRepMesh_VertexTool(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const BRepMesh_VertexTool*> HandleBRepMeshVertexTool_get(const HandleBRepMeshVertexTool* handle) {
+extern "C" OcctResult<const BRepMesh_VertexTool*> Handle_BRepMesh_VertexTool_get(const Handle_BRepMesh_VertexTool* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<BRepMesh_VertexTool*> HandleBRepMeshVertexTool_get_mut(HandleBRepMeshVertexTool* handle) {
+extern "C" OcctResult<BRepMesh_VertexTool*> Handle_BRepMesh_VertexTool_get_mut(Handle_BRepMesh_VertexTool* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleBRepMeshVertexTool_to_HandleStandardTransient(const HandleBRepMeshVertexTool* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_BRepMesh_VertexTool_to_Handle_Standard_Transient(const Handle_BRepMesh_VertexTool* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> BRepMesh_VertexTool_inherited_IsInstance(const BRepMesh_VertexTool* self, Handle(Standard_Type) const& theType) {
@@ -4422,20 +4590,20 @@ extern "C" OcctResult<const IMeshData_ParametersList*> IMeshData_Curve_as_IMeshD
 extern "C" OcctResult<IMeshData_ParametersList*> IMeshData_Curve_as_IMeshData_ParametersList_mut(IMeshData_Curve* self_) { return {static_cast<IMeshData_ParametersList*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> IMeshData_Curve_as_Standard_Transient(const IMeshData_Curve* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> IMeshData_Curve_as_Standard_Transient_mut(IMeshData_Curve* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<const IMeshData_Curve*> HandleIMeshDataCurve_get(const HandleIMeshDataCurve* handle) {
+extern "C" OcctResult<const IMeshData_Curve*> Handle_IMeshData_Curve_get(const Handle_IMeshData_Curve* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<IMeshData_Curve*> HandleIMeshDataCurve_get_mut(HandleIMeshDataCurve* handle) {
+extern "C" OcctResult<IMeshData_Curve*> Handle_IMeshData_Curve_get_mut(Handle_IMeshData_Curve* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIMeshDataParametersList*> HandleIMeshDataCurve_to_HandleIMeshDataParametersList(const HandleIMeshDataCurve* self_) {
-    try { return {new HandleIMeshDataParametersList(*self_), nullptr}; }
+extern "C" OcctResult<Handle_IMeshData_ParametersList*> Handle_IMeshData_Curve_to_Handle_IMeshData_ParametersList(const Handle_IMeshData_Curve* self_) {
+    try { return {new Handle_IMeshData_ParametersList(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleIMeshDataCurve_to_HandleStandardTransient(const HandleIMeshDataCurve* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_IMeshData_Curve_to_Handle_Standard_Transient(const Handle_IMeshData_Curve* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<double*> IMeshData_Curve_inherited_GetParameter(IMeshData_Curve* self, int32_t theIndex) {
@@ -4564,24 +4732,24 @@ extern "C" OcctResult<const IMeshData_Shape*> IMeshData_Edge_as_IMeshData_Shape(
 extern "C" OcctResult<IMeshData_Shape*> IMeshData_Edge_as_IMeshData_Shape_mut(IMeshData_Edge* self_) { return {static_cast<IMeshData_Shape*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> IMeshData_Edge_as_Standard_Transient(const IMeshData_Edge* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> IMeshData_Edge_as_Standard_Transient_mut(IMeshData_Edge* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<const IMeshData_Edge*> HandleIMeshDataEdge_get(const HandleIMeshDataEdge* handle) {
+extern "C" OcctResult<const IMeshData_Edge*> Handle_IMeshData_Edge_get(const Handle_IMeshData_Edge* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<IMeshData_Edge*> HandleIMeshDataEdge_get_mut(HandleIMeshDataEdge* handle) {
+extern "C" OcctResult<IMeshData_Edge*> Handle_IMeshData_Edge_get_mut(Handle_IMeshData_Edge* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIMeshDataTessellatedShape*> HandleIMeshDataEdge_to_HandleIMeshDataTessellatedShape(const HandleIMeshDataEdge* self_) {
-    try { return {new HandleIMeshDataTessellatedShape(*self_), nullptr}; }
+extern "C" OcctResult<Handle_IMeshData_TessellatedShape*> Handle_IMeshData_Edge_to_Handle_IMeshData_TessellatedShape(const Handle_IMeshData_Edge* self_) {
+    try { return {new Handle_IMeshData_TessellatedShape(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIMeshDataShape*> HandleIMeshDataEdge_to_HandleIMeshDataShape(const HandleIMeshDataEdge* self_) {
-    try { return {new HandleIMeshDataShape(*self_), nullptr}; }
+extern "C" OcctResult<Handle_IMeshData_Shape*> Handle_IMeshData_Edge_to_Handle_IMeshData_Shape(const Handle_IMeshData_Edge* self_) {
+    try { return {new Handle_IMeshData_Shape(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleIMeshDataEdge_to_HandleStandardTransient(const HandleIMeshDataEdge* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_IMeshData_Edge_to_Handle_Standard_Transient(const Handle_IMeshData_Edge* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<double> IMeshData_Edge_inherited_GetDeflection(const IMeshData_Edge* self) {
@@ -4698,24 +4866,24 @@ extern "C" OcctResult<const IMeshData_Shape*> IMeshData_Face_as_IMeshData_Shape(
 extern "C" OcctResult<IMeshData_Shape*> IMeshData_Face_as_IMeshData_Shape_mut(IMeshData_Face* self_) { return {static_cast<IMeshData_Shape*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> IMeshData_Face_as_Standard_Transient(const IMeshData_Face* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> IMeshData_Face_as_Standard_Transient_mut(IMeshData_Face* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<const IMeshData_Face*> HandleIMeshDataFace_get(const HandleIMeshDataFace* handle) {
+extern "C" OcctResult<const IMeshData_Face*> Handle_IMeshData_Face_get(const Handle_IMeshData_Face* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<IMeshData_Face*> HandleIMeshDataFace_get_mut(HandleIMeshDataFace* handle) {
+extern "C" OcctResult<IMeshData_Face*> Handle_IMeshData_Face_get_mut(Handle_IMeshData_Face* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIMeshDataTessellatedShape*> HandleIMeshDataFace_to_HandleIMeshDataTessellatedShape(const HandleIMeshDataFace* self_) {
-    try { return {new HandleIMeshDataTessellatedShape(*self_), nullptr}; }
+extern "C" OcctResult<Handle_IMeshData_TessellatedShape*> Handle_IMeshData_Face_to_Handle_IMeshData_TessellatedShape(const Handle_IMeshData_Face* self_) {
+    try { return {new Handle_IMeshData_TessellatedShape(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIMeshDataShape*> HandleIMeshDataFace_to_HandleIMeshDataShape(const HandleIMeshDataFace* self_) {
-    try { return {new HandleIMeshDataShape(*self_), nullptr}; }
+extern "C" OcctResult<Handle_IMeshData_Shape*> Handle_IMeshData_Face_to_Handle_IMeshData_Shape(const Handle_IMeshData_Face* self_) {
+    try { return {new Handle_IMeshData_Shape(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleIMeshDataFace_to_HandleStandardTransient(const HandleIMeshDataFace* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_IMeshData_Face_to_Handle_Standard_Transient(const Handle_IMeshData_Face* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<double> IMeshData_Face_inherited_GetDeflection(const IMeshData_Face* self) {
@@ -4832,20 +5000,20 @@ extern "C" OcctResult<const IMeshData_Shape*> IMeshData_Model_as_IMeshData_Shape
 extern "C" OcctResult<IMeshData_Shape*> IMeshData_Model_as_IMeshData_Shape_mut(IMeshData_Model* self_) { return {static_cast<IMeshData_Shape*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> IMeshData_Model_as_Standard_Transient(const IMeshData_Model* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> IMeshData_Model_as_Standard_Transient_mut(IMeshData_Model* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<const IMeshData_Model*> HandleIMeshDataModel_get(const HandleIMeshDataModel* handle) {
+extern "C" OcctResult<const IMeshData_Model*> Handle_IMeshData_Model_get(const Handle_IMeshData_Model* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<IMeshData_Model*> HandleIMeshDataModel_get_mut(HandleIMeshDataModel* handle) {
+extern "C" OcctResult<IMeshData_Model*> Handle_IMeshData_Model_get_mut(Handle_IMeshData_Model* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIMeshDataShape*> HandleIMeshDataModel_to_HandleIMeshDataShape(const HandleIMeshDataModel* self_) {
-    try { return {new HandleIMeshDataShape(*self_), nullptr}; }
+extern "C" OcctResult<Handle_IMeshData_Shape*> Handle_IMeshData_Model_to_Handle_IMeshData_Shape(const Handle_IMeshData_Model* self_) {
+    try { return {new Handle_IMeshData_Shape(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleIMeshDataModel_to_HandleStandardTransient(const HandleIMeshDataModel* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_IMeshData_Model_to_Handle_Standard_Transient(const Handle_IMeshData_Model* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" const char* IMeshData_Model_inherited_SetShape(IMeshData_Model* self, TopoDS_Shape const& theShape) {
@@ -4938,20 +5106,20 @@ extern "C" OcctResult<const IMeshData_ParametersList*> IMeshData_PCurve_as_IMesh
 extern "C" OcctResult<IMeshData_ParametersList*> IMeshData_PCurve_as_IMeshData_ParametersList_mut(IMeshData_PCurve* self_) { return {static_cast<IMeshData_ParametersList*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> IMeshData_PCurve_as_Standard_Transient(const IMeshData_PCurve* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> IMeshData_PCurve_as_Standard_Transient_mut(IMeshData_PCurve* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<const IMeshData_PCurve*> HandleIMeshDataPCurve_get(const HandleIMeshDataPCurve* handle) {
+extern "C" OcctResult<const IMeshData_PCurve*> Handle_IMeshData_PCurve_get(const Handle_IMeshData_PCurve* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<IMeshData_PCurve*> HandleIMeshDataPCurve_get_mut(HandleIMeshDataPCurve* handle) {
+extern "C" OcctResult<IMeshData_PCurve*> Handle_IMeshData_PCurve_get_mut(Handle_IMeshData_PCurve* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIMeshDataParametersList*> HandleIMeshDataPCurve_to_HandleIMeshDataParametersList(const HandleIMeshDataPCurve* self_) {
-    try { return {new HandleIMeshDataParametersList(*self_), nullptr}; }
+extern "C" OcctResult<Handle_IMeshData_ParametersList*> Handle_IMeshData_PCurve_to_Handle_IMeshData_ParametersList(const Handle_IMeshData_PCurve* self_) {
+    try { return {new Handle_IMeshData_ParametersList(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleIMeshDataPCurve_to_HandleStandardTransient(const HandleIMeshDataPCurve* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_IMeshData_PCurve_to_Handle_Standard_Transient(const Handle_IMeshData_PCurve* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<double*> IMeshData_PCurve_inherited_GetParameter(IMeshData_PCurve* self, int32_t theIndex) {
@@ -5026,16 +5194,16 @@ extern "C" OcctResult<Handle(Standard_Type) const*> IMeshData_ParametersList_get
 }
 extern "C" OcctResult<const Standard_Transient*> IMeshData_ParametersList_as_Standard_Transient(const IMeshData_ParametersList* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> IMeshData_ParametersList_as_Standard_Transient_mut(IMeshData_ParametersList* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<const IMeshData_ParametersList*> HandleIMeshDataParametersList_get(const HandleIMeshDataParametersList* handle) {
+extern "C" OcctResult<const IMeshData_ParametersList*> Handle_IMeshData_ParametersList_get(const Handle_IMeshData_ParametersList* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<IMeshData_ParametersList*> HandleIMeshDataParametersList_get_mut(HandleIMeshDataParametersList* handle) {
+extern "C" OcctResult<IMeshData_ParametersList*> Handle_IMeshData_ParametersList_get_mut(Handle_IMeshData_ParametersList* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleIMeshDataParametersList_to_HandleStandardTransient(const HandleIMeshDataParametersList* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_IMeshData_ParametersList_to_Handle_Standard_Transient(const Handle_IMeshData_ParametersList* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> IMeshData_ParametersList_inherited_IsInstance(const IMeshData_ParametersList* self, Handle(Standard_Type) const& theType) {
@@ -5094,51 +5262,51 @@ extern "C" OcctResult<Handle(Standard_Type) const*> IMeshData_Shape_get_type_des
 }
 extern "C" OcctResult<const Standard_Transient*> IMeshData_Shape_as_Standard_Transient(const IMeshData_Shape* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> IMeshData_Shape_as_Standard_Transient_mut(IMeshData_Shape* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleIMeshDataShape*> IMeshData_Shape_to_handle(IMeshData_Shape* obj) {
-    try { return {new HandleIMeshDataShape(obj), nullptr}; }
+extern "C" OcctResult<Handle_IMeshData_Shape*> IMeshData_Shape_to_handle(IMeshData_Shape* obj) {
+    try { return {new Handle_IMeshData_Shape(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const IMeshData_Shape*> HandleIMeshDataShape_get(const HandleIMeshDataShape* handle) {
+extern "C" OcctResult<const IMeshData_Shape*> Handle_IMeshData_Shape_get(const Handle_IMeshData_Shape* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<IMeshData_Shape*> HandleIMeshDataShape_get_mut(HandleIMeshDataShape* handle) {
+extern "C" OcctResult<IMeshData_Shape*> Handle_IMeshData_Shape_get_mut(Handle_IMeshData_Shape* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleIMeshDataShape_to_HandleStandardTransient(const HandleIMeshDataShape* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_IMeshData_Shape_to_Handle_Standard_Transient(const Handle_IMeshData_Shape* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleBRepMeshContext*> HandleIMeshDataShape_downcast_to_HandleBRepMeshContext(const HandleIMeshDataShape* self_) {
+extern "C" OcctResult<Handle_BRepMesh_Context*> Handle_IMeshData_Shape_downcast_to_Handle_BRepMesh_Context(const Handle_IMeshData_Shape* self_) {
     try {
     opencascade::handle<BRepMesh_Context> result = opencascade::handle<BRepMesh_Context>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleBRepMeshContext(result), nullptr};
+    return {new Handle_BRepMesh_Context(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIMeshDataTessellatedShape*> HandleIMeshDataShape_downcast_to_HandleIMeshDataTessellatedShape(const HandleIMeshDataShape* self_) {
+extern "C" OcctResult<Handle_IMeshData_TessellatedShape*> Handle_IMeshData_Shape_downcast_to_Handle_IMeshData_TessellatedShape(const Handle_IMeshData_Shape* self_) {
     try {
     opencascade::handle<IMeshData_TessellatedShape> result = opencascade::handle<IMeshData_TessellatedShape>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleIMeshDataTessellatedShape(result), nullptr};
+    return {new Handle_IMeshData_TessellatedShape(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIMeshToolsContext*> HandleIMeshDataShape_downcast_to_HandleIMeshToolsContext(const HandleIMeshDataShape* self_) {
+extern "C" OcctResult<Handle_IMeshTools_Context*> Handle_IMeshData_Shape_downcast_to_Handle_IMeshTools_Context(const Handle_IMeshData_Shape* self_) {
     try {
     opencascade::handle<IMeshTools_Context> result = opencascade::handle<IMeshTools_Context>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleIMeshToolsContext(result), nullptr};
+    return {new Handle_IMeshTools_Context(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIMeshToolsShapeExplorer*> HandleIMeshDataShape_downcast_to_HandleIMeshToolsShapeExplorer(const HandleIMeshDataShape* self_) {
+extern "C" OcctResult<Handle_IMeshTools_ShapeExplorer*> Handle_IMeshData_Shape_downcast_to_Handle_IMeshTools_ShapeExplorer(const Handle_IMeshData_Shape* self_) {
     try {
     opencascade::handle<IMeshTools_ShapeExplorer> result = opencascade::handle<IMeshTools_ShapeExplorer>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleIMeshToolsShapeExplorer(result), nullptr};
+    return {new Handle_IMeshTools_ShapeExplorer(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
@@ -5226,24 +5394,24 @@ extern "C" OcctResult<const IMeshData_Shape*> IMeshData_TessellatedShape_as_IMes
 extern "C" OcctResult<IMeshData_Shape*> IMeshData_TessellatedShape_as_IMeshData_Shape_mut(IMeshData_TessellatedShape* self_) { return {static_cast<IMeshData_Shape*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> IMeshData_TessellatedShape_as_Standard_Transient(const IMeshData_TessellatedShape* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> IMeshData_TessellatedShape_as_Standard_Transient_mut(IMeshData_TessellatedShape* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleIMeshDataTessellatedShape*> IMeshData_TessellatedShape_to_handle(IMeshData_TessellatedShape* obj) {
-    try { return {new HandleIMeshDataTessellatedShape(obj), nullptr}; }
+extern "C" OcctResult<Handle_IMeshData_TessellatedShape*> IMeshData_TessellatedShape_to_handle(IMeshData_TessellatedShape* obj) {
+    try { return {new Handle_IMeshData_TessellatedShape(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const IMeshData_TessellatedShape*> HandleIMeshDataTessellatedShape_get(const HandleIMeshDataTessellatedShape* handle) {
+extern "C" OcctResult<const IMeshData_TessellatedShape*> Handle_IMeshData_TessellatedShape_get(const Handle_IMeshData_TessellatedShape* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<IMeshData_TessellatedShape*> HandleIMeshDataTessellatedShape_get_mut(HandleIMeshDataTessellatedShape* handle) {
+extern "C" OcctResult<IMeshData_TessellatedShape*> Handle_IMeshData_TessellatedShape_get_mut(Handle_IMeshData_TessellatedShape* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIMeshDataShape*> HandleIMeshDataTessellatedShape_to_HandleIMeshDataShape(const HandleIMeshDataTessellatedShape* self_) {
-    try { return {new HandleIMeshDataShape(*self_), nullptr}; }
+extern "C" OcctResult<Handle_IMeshData_Shape*> Handle_IMeshData_TessellatedShape_to_Handle_IMeshData_Shape(const Handle_IMeshData_TessellatedShape* self_) {
+    try { return {new Handle_IMeshData_Shape(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleIMeshDataTessellatedShape_to_HandleStandardTransient(const HandleIMeshDataTessellatedShape* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_IMeshData_TessellatedShape_to_Handle_Standard_Transient(const Handle_IMeshData_TessellatedShape* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" const char* IMeshData_TessellatedShape_inherited_SetShape(IMeshData_TessellatedShape* self, TopoDS_Shape const& theShape) {
@@ -5320,24 +5488,24 @@ extern "C" OcctResult<const IMeshData_Shape*> IMeshData_Wire_as_IMeshData_Shape(
 extern "C" OcctResult<IMeshData_Shape*> IMeshData_Wire_as_IMeshData_Shape_mut(IMeshData_Wire* self_) { return {static_cast<IMeshData_Shape*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> IMeshData_Wire_as_Standard_Transient(const IMeshData_Wire* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> IMeshData_Wire_as_Standard_Transient_mut(IMeshData_Wire* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<const IMeshData_Wire*> HandleIMeshDataWire_get(const HandleIMeshDataWire* handle) {
+extern "C" OcctResult<const IMeshData_Wire*> Handle_IMeshData_Wire_get(const Handle_IMeshData_Wire* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<IMeshData_Wire*> HandleIMeshDataWire_get_mut(HandleIMeshDataWire* handle) {
+extern "C" OcctResult<IMeshData_Wire*> Handle_IMeshData_Wire_get_mut(Handle_IMeshData_Wire* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIMeshDataTessellatedShape*> HandleIMeshDataWire_to_HandleIMeshDataTessellatedShape(const HandleIMeshDataWire* self_) {
-    try { return {new HandleIMeshDataTessellatedShape(*self_), nullptr}; }
+extern "C" OcctResult<Handle_IMeshData_TessellatedShape*> Handle_IMeshData_Wire_to_Handle_IMeshData_TessellatedShape(const Handle_IMeshData_Wire* self_) {
+    try { return {new Handle_IMeshData_TessellatedShape(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIMeshDataShape*> HandleIMeshDataWire_to_HandleIMeshDataShape(const HandleIMeshDataWire* self_) {
-    try { return {new HandleIMeshDataShape(*self_), nullptr}; }
+extern "C" OcctResult<Handle_IMeshData_Shape*> Handle_IMeshData_Wire_to_Handle_IMeshData_Shape(const Handle_IMeshData_Wire* self_) {
+    try { return {new Handle_IMeshData_Shape(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleIMeshDataWire_to_HandleStandardTransient(const HandleIMeshDataWire* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_IMeshData_Wire_to_Handle_Standard_Transient(const Handle_IMeshData_Wire* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<double> IMeshData_Wire_inherited_GetDeflection(const IMeshData_Wire* self) {
@@ -5518,31 +5686,31 @@ extern "C" OcctResult<const IMeshData_Shape*> IMeshTools_Context_as_IMeshData_Sh
 extern "C" OcctResult<IMeshData_Shape*> IMeshTools_Context_as_IMeshData_Shape_mut(IMeshTools_Context* self_) { return {static_cast<IMeshData_Shape*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> IMeshTools_Context_as_Standard_Transient(const IMeshTools_Context* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> IMeshTools_Context_as_Standard_Transient_mut(IMeshTools_Context* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleIMeshToolsContext*> IMeshTools_Context_to_handle(IMeshTools_Context* obj) {
-    try { return {new HandleIMeshToolsContext(obj), nullptr}; }
+extern "C" OcctResult<Handle_IMeshTools_Context*> IMeshTools_Context_to_handle(IMeshTools_Context* obj) {
+    try { return {new Handle_IMeshTools_Context(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const IMeshTools_Context*> HandleIMeshToolsContext_get(const HandleIMeshToolsContext* handle) {
+extern "C" OcctResult<const IMeshTools_Context*> Handle_IMeshTools_Context_get(const Handle_IMeshTools_Context* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<IMeshTools_Context*> HandleIMeshToolsContext_get_mut(HandleIMeshToolsContext* handle) {
+extern "C" OcctResult<IMeshTools_Context*> Handle_IMeshTools_Context_get_mut(Handle_IMeshTools_Context* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIMeshDataShape*> HandleIMeshToolsContext_to_HandleIMeshDataShape(const HandleIMeshToolsContext* self_) {
-    try { return {new HandleIMeshDataShape(*self_), nullptr}; }
+extern "C" OcctResult<Handle_IMeshData_Shape*> Handle_IMeshTools_Context_to_Handle_IMeshData_Shape(const Handle_IMeshTools_Context* self_) {
+    try { return {new Handle_IMeshData_Shape(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleIMeshToolsContext_to_HandleStandardTransient(const HandleIMeshToolsContext* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_IMeshTools_Context_to_Handle_Standard_Transient(const Handle_IMeshTools_Context* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleBRepMeshContext*> HandleIMeshToolsContext_downcast_to_HandleBRepMeshContext(const HandleIMeshToolsContext* self_) {
+extern "C" OcctResult<Handle_BRepMesh_Context*> Handle_IMeshTools_Context_downcast_to_Handle_BRepMesh_Context(const Handle_IMeshTools_Context* self_) {
     try {
     opencascade::handle<BRepMesh_Context> result = opencascade::handle<BRepMesh_Context>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleBRepMeshContext(result), nullptr};
+    return {new Handle_BRepMesh_Context(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
@@ -5610,31 +5778,31 @@ extern "C" OcctResult<Handle(Standard_Type) const*> IMeshTools_CurveTessellator_
 }
 extern "C" OcctResult<const Standard_Transient*> IMeshTools_CurveTessellator_as_Standard_Transient(const IMeshTools_CurveTessellator* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> IMeshTools_CurveTessellator_as_Standard_Transient_mut(IMeshTools_CurveTessellator* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<const IMeshTools_CurveTessellator*> HandleIMeshToolsCurveTessellator_get(const HandleIMeshToolsCurveTessellator* handle) {
+extern "C" OcctResult<const IMeshTools_CurveTessellator*> Handle_IMeshTools_CurveTessellator_get(const Handle_IMeshTools_CurveTessellator* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<IMeshTools_CurveTessellator*> HandleIMeshToolsCurveTessellator_get_mut(HandleIMeshToolsCurveTessellator* handle) {
+extern "C" OcctResult<IMeshTools_CurveTessellator*> Handle_IMeshTools_CurveTessellator_get_mut(Handle_IMeshTools_CurveTessellator* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleIMeshToolsCurveTessellator_to_HandleStandardTransient(const HandleIMeshToolsCurveTessellator* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_IMeshTools_CurveTessellator_to_Handle_Standard_Transient(const Handle_IMeshTools_CurveTessellator* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleBRepMeshCurveTessellator*> HandleIMeshToolsCurveTessellator_downcast_to_HandleBRepMeshCurveTessellator(const HandleIMeshToolsCurveTessellator* self_) {
+extern "C" OcctResult<Handle_BRepMesh_CurveTessellator*> Handle_IMeshTools_CurveTessellator_downcast_to_Handle_BRepMesh_CurveTessellator(const Handle_IMeshTools_CurveTessellator* self_) {
     try {
     opencascade::handle<BRepMesh_CurveTessellator> result = opencascade::handle<BRepMesh_CurveTessellator>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleBRepMeshCurveTessellator(result), nullptr};
+    return {new Handle_BRepMesh_CurveTessellator(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleBRepMeshEdgeTessellationExtractor*> HandleIMeshToolsCurveTessellator_downcast_to_HandleBRepMeshEdgeTessellationExtractor(const HandleIMeshToolsCurveTessellator* self_) {
+extern "C" OcctResult<Handle_BRepMesh_EdgeTessellationExtractor*> Handle_IMeshTools_CurveTessellator_downcast_to_Handle_BRepMesh_EdgeTessellationExtractor(const Handle_IMeshTools_CurveTessellator* self_) {
     try {
     opencascade::handle<BRepMesh_EdgeTessellationExtractor> result = opencascade::handle<BRepMesh_EdgeTessellationExtractor>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleBRepMeshEdgeTessellationExtractor(result), nullptr};
+    return {new Handle_BRepMesh_EdgeTessellationExtractor(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
@@ -5690,39 +5858,39 @@ extern "C" OcctResult<Handle(Standard_Type) const*> IMeshTools_MeshAlgo_get_type
 }
 extern "C" OcctResult<const Standard_Transient*> IMeshTools_MeshAlgo_as_Standard_Transient(const IMeshTools_MeshAlgo* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> IMeshTools_MeshAlgo_as_Standard_Transient_mut(IMeshTools_MeshAlgo* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<const IMeshTools_MeshAlgo*> HandleIMeshToolsMeshAlgo_get(const HandleIMeshToolsMeshAlgo* handle) {
+extern "C" OcctResult<const IMeshTools_MeshAlgo*> Handle_IMeshTools_MeshAlgo_get(const Handle_IMeshTools_MeshAlgo* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<IMeshTools_MeshAlgo*> HandleIMeshToolsMeshAlgo_get_mut(HandleIMeshToolsMeshAlgo* handle) {
+extern "C" OcctResult<IMeshTools_MeshAlgo*> Handle_IMeshTools_MeshAlgo_get_mut(Handle_IMeshTools_MeshAlgo* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleIMeshToolsMeshAlgo_to_HandleStandardTransient(const HandleIMeshToolsMeshAlgo* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_IMeshTools_MeshAlgo_to_Handle_Standard_Transient(const Handle_IMeshTools_MeshAlgo* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleBRepMeshConstrainedBaseMeshAlgo*> HandleIMeshToolsMeshAlgo_downcast_to_HandleBRepMeshConstrainedBaseMeshAlgo(const HandleIMeshToolsMeshAlgo* self_) {
+extern "C" OcctResult<Handle_BRepMesh_ConstrainedBaseMeshAlgo*> Handle_IMeshTools_MeshAlgo_downcast_to_Handle_BRepMesh_ConstrainedBaseMeshAlgo(const Handle_IMeshTools_MeshAlgo* self_) {
     try {
     opencascade::handle<BRepMesh_ConstrainedBaseMeshAlgo> result = opencascade::handle<BRepMesh_ConstrainedBaseMeshAlgo>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleBRepMeshConstrainedBaseMeshAlgo(result), nullptr};
+    return {new Handle_BRepMesh_ConstrainedBaseMeshAlgo(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleBRepMeshDelabellaBaseMeshAlgo*> HandleIMeshToolsMeshAlgo_downcast_to_HandleBRepMeshDelabellaBaseMeshAlgo(const HandleIMeshToolsMeshAlgo* self_) {
+extern "C" OcctResult<Handle_BRepMesh_DelabellaBaseMeshAlgo*> Handle_IMeshTools_MeshAlgo_downcast_to_Handle_BRepMesh_DelabellaBaseMeshAlgo(const Handle_IMeshTools_MeshAlgo* self_) {
     try {
     opencascade::handle<BRepMesh_DelabellaBaseMeshAlgo> result = opencascade::handle<BRepMesh_DelabellaBaseMeshAlgo>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleBRepMeshDelabellaBaseMeshAlgo(result), nullptr};
+    return {new Handle_BRepMesh_DelabellaBaseMeshAlgo(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleBRepMeshDelaunayBaseMeshAlgo*> HandleIMeshToolsMeshAlgo_downcast_to_HandleBRepMeshDelaunayBaseMeshAlgo(const HandleIMeshToolsMeshAlgo* self_) {
+extern "C" OcctResult<Handle_BRepMesh_DelaunayBaseMeshAlgo*> Handle_IMeshTools_MeshAlgo_downcast_to_Handle_BRepMesh_DelaunayBaseMeshAlgo(const Handle_IMeshTools_MeshAlgo* self_) {
     try {
     opencascade::handle<BRepMesh_DelaunayBaseMeshAlgo> result = opencascade::handle<BRepMesh_DelaunayBaseMeshAlgo>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleBRepMeshDelaunayBaseMeshAlgo(result), nullptr};
+    return {new Handle_BRepMesh_DelaunayBaseMeshAlgo(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
@@ -5778,31 +5946,31 @@ extern "C" OcctResult<Handle(Standard_Type) const*> IMeshTools_MeshAlgoFactory_g
 }
 extern "C" OcctResult<const Standard_Transient*> IMeshTools_MeshAlgoFactory_as_Standard_Transient(const IMeshTools_MeshAlgoFactory* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> IMeshTools_MeshAlgoFactory_as_Standard_Transient_mut(IMeshTools_MeshAlgoFactory* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<const IMeshTools_MeshAlgoFactory*> HandleIMeshToolsMeshAlgoFactory_get(const HandleIMeshToolsMeshAlgoFactory* handle) {
+extern "C" OcctResult<const IMeshTools_MeshAlgoFactory*> Handle_IMeshTools_MeshAlgoFactory_get(const Handle_IMeshTools_MeshAlgoFactory* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<IMeshTools_MeshAlgoFactory*> HandleIMeshToolsMeshAlgoFactory_get_mut(HandleIMeshToolsMeshAlgoFactory* handle) {
+extern "C" OcctResult<IMeshTools_MeshAlgoFactory*> Handle_IMeshTools_MeshAlgoFactory_get_mut(Handle_IMeshTools_MeshAlgoFactory* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleIMeshToolsMeshAlgoFactory_to_HandleStandardTransient(const HandleIMeshToolsMeshAlgoFactory* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_IMeshTools_MeshAlgoFactory_to_Handle_Standard_Transient(const Handle_IMeshTools_MeshAlgoFactory* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleBRepMeshDelabellaMeshAlgoFactory*> HandleIMeshToolsMeshAlgoFactory_downcast_to_HandleBRepMeshDelabellaMeshAlgoFactory(const HandleIMeshToolsMeshAlgoFactory* self_) {
+extern "C" OcctResult<Handle_BRepMesh_DelabellaMeshAlgoFactory*> Handle_IMeshTools_MeshAlgoFactory_downcast_to_Handle_BRepMesh_DelabellaMeshAlgoFactory(const Handle_IMeshTools_MeshAlgoFactory* self_) {
     try {
     opencascade::handle<BRepMesh_DelabellaMeshAlgoFactory> result = opencascade::handle<BRepMesh_DelabellaMeshAlgoFactory>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleBRepMeshDelabellaMeshAlgoFactory(result), nullptr};
+    return {new Handle_BRepMesh_DelabellaMeshAlgoFactory(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleBRepMeshMeshAlgoFactory*> HandleIMeshToolsMeshAlgoFactory_downcast_to_HandleBRepMeshMeshAlgoFactory(const HandleIMeshToolsMeshAlgoFactory* self_) {
+extern "C" OcctResult<Handle_BRepMesh_MeshAlgoFactory*> Handle_IMeshTools_MeshAlgoFactory_downcast_to_Handle_BRepMesh_MeshAlgoFactory(const Handle_IMeshTools_MeshAlgoFactory* self_) {
     try {
     opencascade::handle<BRepMesh_MeshAlgoFactory> result = opencascade::handle<BRepMesh_MeshAlgoFactory>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleBRepMeshMeshAlgoFactory(result), nullptr};
+    return {new Handle_BRepMesh_MeshAlgoFactory(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
@@ -5876,24 +6044,24 @@ extern "C" OcctResult<const Message_Algorithm*> IMeshTools_MeshBuilder_as_Messag
 extern "C" OcctResult<Message_Algorithm*> IMeshTools_MeshBuilder_as_Message_Algorithm_mut(IMeshTools_MeshBuilder* self_) { return {static_cast<Message_Algorithm*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> IMeshTools_MeshBuilder_as_Standard_Transient(const IMeshTools_MeshBuilder* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> IMeshTools_MeshBuilder_as_Standard_Transient_mut(IMeshTools_MeshBuilder* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleIMeshToolsMeshBuilder*> IMeshTools_MeshBuilder_to_handle(IMeshTools_MeshBuilder* obj) {
-    try { return {new HandleIMeshToolsMeshBuilder(obj), nullptr}; }
+extern "C" OcctResult<Handle_IMeshTools_MeshBuilder*> IMeshTools_MeshBuilder_to_handle(IMeshTools_MeshBuilder* obj) {
+    try { return {new Handle_IMeshTools_MeshBuilder(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const IMeshTools_MeshBuilder*> HandleIMeshToolsMeshBuilder_get(const HandleIMeshToolsMeshBuilder* handle) {
+extern "C" OcctResult<const IMeshTools_MeshBuilder*> Handle_IMeshTools_MeshBuilder_get(const Handle_IMeshTools_MeshBuilder* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<IMeshTools_MeshBuilder*> HandleIMeshToolsMeshBuilder_get_mut(HandleIMeshToolsMeshBuilder* handle) {
+extern "C" OcctResult<IMeshTools_MeshBuilder*> Handle_IMeshTools_MeshBuilder_get_mut(Handle_IMeshTools_MeshBuilder* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleMessageAlgorithm*> HandleIMeshToolsMeshBuilder_to_HandleMessageAlgorithm(const HandleIMeshToolsMeshBuilder* self_) {
-    try { return {new HandleMessageAlgorithm(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Message_Algorithm*> Handle_IMeshTools_MeshBuilder_to_Handle_Message_Algorithm(const Handle_IMeshTools_MeshBuilder* self_) {
+    try { return {new Handle_Message_Algorithm(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleIMeshToolsMeshBuilder_to_HandleStandardTransient(const HandleIMeshToolsMeshBuilder* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_IMeshTools_MeshBuilder_to_Handle_Standard_Transient(const Handle_IMeshTools_MeshBuilder* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" const char* IMeshTools_MeshBuilder_inherited_SetStatus(IMeshTools_MeshBuilder* self, int32_t theStat) {
@@ -5936,8 +6104,8 @@ extern "C" OcctResult<Handle(TColStd_HPackedMapOfInteger)*> IMeshTools_MeshBuild
     try { return {new Handle(TColStd_HPackedMapOfInteger)(self->GetMessageNumbers(static_cast<Message_Status>(theStatus))), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(TColStd_HSequenceOfHExtendedString)*> IMeshTools_MeshBuilder_inherited_GetMessageStrings(const IMeshTools_MeshBuilder* self, int32_t theStatus) {
-    try { return {new Handle(TColStd_HSequenceOfHExtendedString)(self->GetMessageStrings(static_cast<Message_Status>(theStatus))), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HSequence_opencascade_handle_TCollection_HExtendedString)*> IMeshTools_MeshBuilder_inherited_GetMessageStrings(const IMeshTools_MeshBuilder* self, int32_t theStatus) {
+    try { return {new Handle(NCollection_HSequence_opencascade_handle_TCollection_HExtendedString)(self->GetMessageStrings(static_cast<Message_Status>(theStatus))), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> IMeshTools_MeshBuilder_inherited_IsInstance(const IMeshTools_MeshBuilder* self, Handle(Standard_Type) const& theType) {
@@ -5992,55 +6160,55 @@ extern "C" OcctResult<Handle(Standard_Type) const*> IMeshTools_ModelAlgo_get_typ
 }
 extern "C" OcctResult<const Standard_Transient*> IMeshTools_ModelAlgo_as_Standard_Transient(const IMeshTools_ModelAlgo* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> IMeshTools_ModelAlgo_as_Standard_Transient_mut(IMeshTools_ModelAlgo* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<const IMeshTools_ModelAlgo*> HandleIMeshToolsModelAlgo_get(const HandleIMeshToolsModelAlgo* handle) {
+extern "C" OcctResult<const IMeshTools_ModelAlgo*> Handle_IMeshTools_ModelAlgo_get(const Handle_IMeshTools_ModelAlgo* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<IMeshTools_ModelAlgo*> HandleIMeshToolsModelAlgo_get_mut(HandleIMeshToolsModelAlgo* handle) {
+extern "C" OcctResult<IMeshTools_ModelAlgo*> Handle_IMeshTools_ModelAlgo_get_mut(Handle_IMeshTools_ModelAlgo* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleIMeshToolsModelAlgo_to_HandleStandardTransient(const HandleIMeshToolsModelAlgo* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_IMeshTools_ModelAlgo_to_Handle_Standard_Transient(const Handle_IMeshTools_ModelAlgo* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleBRepMeshEdgeDiscret*> HandleIMeshToolsModelAlgo_downcast_to_HandleBRepMeshEdgeDiscret(const HandleIMeshToolsModelAlgo* self_) {
+extern "C" OcctResult<Handle_BRepMesh_EdgeDiscret*> Handle_IMeshTools_ModelAlgo_downcast_to_Handle_BRepMesh_EdgeDiscret(const Handle_IMeshTools_ModelAlgo* self_) {
     try {
     opencascade::handle<BRepMesh_EdgeDiscret> result = opencascade::handle<BRepMesh_EdgeDiscret>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleBRepMeshEdgeDiscret(result), nullptr};
+    return {new Handle_BRepMesh_EdgeDiscret(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleBRepMeshFaceDiscret*> HandleIMeshToolsModelAlgo_downcast_to_HandleBRepMeshFaceDiscret(const HandleIMeshToolsModelAlgo* self_) {
+extern "C" OcctResult<Handle_BRepMesh_FaceDiscret*> Handle_IMeshTools_ModelAlgo_downcast_to_Handle_BRepMesh_FaceDiscret(const Handle_IMeshTools_ModelAlgo* self_) {
     try {
     opencascade::handle<BRepMesh_FaceDiscret> result = opencascade::handle<BRepMesh_FaceDiscret>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleBRepMeshFaceDiscret(result), nullptr};
+    return {new Handle_BRepMesh_FaceDiscret(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleBRepMeshModelHealer*> HandleIMeshToolsModelAlgo_downcast_to_HandleBRepMeshModelHealer(const HandleIMeshToolsModelAlgo* self_) {
+extern "C" OcctResult<Handle_BRepMesh_ModelHealer*> Handle_IMeshTools_ModelAlgo_downcast_to_Handle_BRepMesh_ModelHealer(const Handle_IMeshTools_ModelAlgo* self_) {
     try {
     opencascade::handle<BRepMesh_ModelHealer> result = opencascade::handle<BRepMesh_ModelHealer>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleBRepMeshModelHealer(result), nullptr};
+    return {new Handle_BRepMesh_ModelHealer(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleBRepMeshModelPostProcessor*> HandleIMeshToolsModelAlgo_downcast_to_HandleBRepMeshModelPostProcessor(const HandleIMeshToolsModelAlgo* self_) {
+extern "C" OcctResult<Handle_BRepMesh_ModelPostProcessor*> Handle_IMeshTools_ModelAlgo_downcast_to_Handle_BRepMesh_ModelPostProcessor(const Handle_IMeshTools_ModelAlgo* self_) {
     try {
     opencascade::handle<BRepMesh_ModelPostProcessor> result = opencascade::handle<BRepMesh_ModelPostProcessor>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleBRepMeshModelPostProcessor(result), nullptr};
+    return {new Handle_BRepMesh_ModelPostProcessor(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleBRepMeshModelPreProcessor*> HandleIMeshToolsModelAlgo_downcast_to_HandleBRepMeshModelPreProcessor(const HandleIMeshToolsModelAlgo* self_) {
+extern "C" OcctResult<Handle_BRepMesh_ModelPreProcessor*> Handle_IMeshTools_ModelAlgo_downcast_to_Handle_BRepMesh_ModelPreProcessor(const Handle_IMeshTools_ModelAlgo* self_) {
     try {
     opencascade::handle<BRepMesh_ModelPreProcessor> result = opencascade::handle<BRepMesh_ModelPreProcessor>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleBRepMeshModelPreProcessor(result), nullptr};
+    return {new Handle_BRepMesh_ModelPreProcessor(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
@@ -6098,27 +6266,27 @@ extern "C" OcctResult<const Message_Algorithm*> IMeshTools_ModelBuilder_as_Messa
 extern "C" OcctResult<Message_Algorithm*> IMeshTools_ModelBuilder_as_Message_Algorithm_mut(IMeshTools_ModelBuilder* self_) { return {static_cast<Message_Algorithm*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> IMeshTools_ModelBuilder_as_Standard_Transient(const IMeshTools_ModelBuilder* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> IMeshTools_ModelBuilder_as_Standard_Transient_mut(IMeshTools_ModelBuilder* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<const IMeshTools_ModelBuilder*> HandleIMeshToolsModelBuilder_get(const HandleIMeshToolsModelBuilder* handle) {
+extern "C" OcctResult<const IMeshTools_ModelBuilder*> Handle_IMeshTools_ModelBuilder_get(const Handle_IMeshTools_ModelBuilder* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<IMeshTools_ModelBuilder*> HandleIMeshToolsModelBuilder_get_mut(HandleIMeshToolsModelBuilder* handle) {
+extern "C" OcctResult<IMeshTools_ModelBuilder*> Handle_IMeshTools_ModelBuilder_get_mut(Handle_IMeshTools_ModelBuilder* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleMessageAlgorithm*> HandleIMeshToolsModelBuilder_to_HandleMessageAlgorithm(const HandleIMeshToolsModelBuilder* self_) {
-    try { return {new HandleMessageAlgorithm(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Message_Algorithm*> Handle_IMeshTools_ModelBuilder_to_Handle_Message_Algorithm(const Handle_IMeshTools_ModelBuilder* self_) {
+    try { return {new Handle_Message_Algorithm(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleIMeshToolsModelBuilder_to_HandleStandardTransient(const HandleIMeshToolsModelBuilder* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_IMeshTools_ModelBuilder_to_Handle_Standard_Transient(const Handle_IMeshTools_ModelBuilder* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleBRepMeshModelBuilder*> HandleIMeshToolsModelBuilder_downcast_to_HandleBRepMeshModelBuilder(const HandleIMeshToolsModelBuilder* self_) {
+extern "C" OcctResult<Handle_BRepMesh_ModelBuilder*> Handle_IMeshTools_ModelBuilder_downcast_to_Handle_BRepMesh_ModelBuilder(const Handle_IMeshTools_ModelBuilder* self_) {
     try {
     opencascade::handle<BRepMesh_ModelBuilder> result = opencascade::handle<BRepMesh_ModelBuilder>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleBRepMeshModelBuilder(result), nullptr};
+    return {new Handle_BRepMesh_ModelBuilder(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
@@ -6162,8 +6330,8 @@ extern "C" OcctResult<Handle(TColStd_HPackedMapOfInteger)*> IMeshTools_ModelBuil
     try { return {new Handle(TColStd_HPackedMapOfInteger)(self->GetMessageNumbers(static_cast<Message_Status>(theStatus))), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(TColStd_HSequenceOfHExtendedString)*> IMeshTools_ModelBuilder_inherited_GetMessageStrings(const IMeshTools_ModelBuilder* self, int32_t theStatus) {
-    try { return {new Handle(TColStd_HSequenceOfHExtendedString)(self->GetMessageStrings(static_cast<Message_Status>(theStatus))), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HSequence_opencascade_handle_TCollection_HExtendedString)*> IMeshTools_ModelBuilder_inherited_GetMessageStrings(const IMeshTools_ModelBuilder* self, int32_t theStatus) {
+    try { return {new Handle(NCollection_HSequence_opencascade_handle_TCollection_HExtendedString)(self->GetMessageStrings(static_cast<Message_Status>(theStatus))), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> IMeshTools_ModelBuilder_inherited_IsInstance(const IMeshTools_ModelBuilder* self, Handle(Standard_Type) const& theType) {
@@ -6238,24 +6406,24 @@ extern "C" OcctResult<const IMeshData_Shape*> IMeshTools_ShapeExplorer_as_IMeshD
 extern "C" OcctResult<IMeshData_Shape*> IMeshTools_ShapeExplorer_as_IMeshData_Shape_mut(IMeshTools_ShapeExplorer* self_) { return {static_cast<IMeshData_Shape*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> IMeshTools_ShapeExplorer_as_Standard_Transient(const IMeshTools_ShapeExplorer* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> IMeshTools_ShapeExplorer_as_Standard_Transient_mut(IMeshTools_ShapeExplorer* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleIMeshToolsShapeExplorer*> IMeshTools_ShapeExplorer_to_handle(IMeshTools_ShapeExplorer* obj) {
-    try { return {new HandleIMeshToolsShapeExplorer(obj), nullptr}; }
+extern "C" OcctResult<Handle_IMeshTools_ShapeExplorer*> IMeshTools_ShapeExplorer_to_handle(IMeshTools_ShapeExplorer* obj) {
+    try { return {new Handle_IMeshTools_ShapeExplorer(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const IMeshTools_ShapeExplorer*> HandleIMeshToolsShapeExplorer_get(const HandleIMeshToolsShapeExplorer* handle) {
+extern "C" OcctResult<const IMeshTools_ShapeExplorer*> Handle_IMeshTools_ShapeExplorer_get(const Handle_IMeshTools_ShapeExplorer* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<IMeshTools_ShapeExplorer*> HandleIMeshToolsShapeExplorer_get_mut(HandleIMeshToolsShapeExplorer* handle) {
+extern "C" OcctResult<IMeshTools_ShapeExplorer*> Handle_IMeshTools_ShapeExplorer_get_mut(Handle_IMeshTools_ShapeExplorer* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIMeshDataShape*> HandleIMeshToolsShapeExplorer_to_HandleIMeshDataShape(const HandleIMeshToolsShapeExplorer* self_) {
-    try { return {new HandleIMeshDataShape(*self_), nullptr}; }
+extern "C" OcctResult<Handle_IMeshData_Shape*> Handle_IMeshTools_ShapeExplorer_to_Handle_IMeshData_Shape(const Handle_IMeshTools_ShapeExplorer* self_) {
+    try { return {new Handle_IMeshData_Shape(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleIMeshToolsShapeExplorer_to_HandleStandardTransient(const HandleIMeshToolsShapeExplorer* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_IMeshTools_ShapeExplorer_to_Handle_Standard_Transient(const Handle_IMeshTools_ShapeExplorer* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" const char* IMeshTools_ShapeExplorer_inherited_SetShape(IMeshTools_ShapeExplorer* self, TopoDS_Shape const& theShape) {
@@ -6322,23 +6490,23 @@ extern "C" OcctResult<Handle(Standard_Type) const*> IMeshTools_ShapeVisitor_get_
 }
 extern "C" OcctResult<const Standard_Transient*> IMeshTools_ShapeVisitor_as_Standard_Transient(const IMeshTools_ShapeVisitor* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> IMeshTools_ShapeVisitor_as_Standard_Transient_mut(IMeshTools_ShapeVisitor* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<const IMeshTools_ShapeVisitor*> HandleIMeshToolsShapeVisitor_get(const HandleIMeshToolsShapeVisitor* handle) {
+extern "C" OcctResult<const IMeshTools_ShapeVisitor*> Handle_IMeshTools_ShapeVisitor_get(const Handle_IMeshTools_ShapeVisitor* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<IMeshTools_ShapeVisitor*> HandleIMeshToolsShapeVisitor_get_mut(HandleIMeshToolsShapeVisitor* handle) {
+extern "C" OcctResult<IMeshTools_ShapeVisitor*> Handle_IMeshTools_ShapeVisitor_get_mut(Handle_IMeshTools_ShapeVisitor* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleIMeshToolsShapeVisitor_to_HandleStandardTransient(const HandleIMeshToolsShapeVisitor* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_IMeshTools_ShapeVisitor_to_Handle_Standard_Transient(const Handle_IMeshTools_ShapeVisitor* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleBRepMeshShapeVisitor*> HandleIMeshToolsShapeVisitor_downcast_to_HandleBRepMeshShapeVisitor(const HandleIMeshToolsShapeVisitor* self_) {
+extern "C" OcctResult<Handle_BRepMesh_ShapeVisitor*> Handle_IMeshTools_ShapeVisitor_downcast_to_Handle_BRepMesh_ShapeVisitor(const Handle_IMeshTools_ShapeVisitor* self_) {
     try {
     opencascade::handle<BRepMesh_ShapeVisitor> result = opencascade::handle<BRepMesh_ShapeVisitor>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleBRepMeshShapeVisitor(result), nullptr};
+    return {new Handle_BRepMesh_ShapeVisitor(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }

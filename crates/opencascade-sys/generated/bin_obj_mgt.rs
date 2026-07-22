@@ -7,7 +7,7 @@
 #![allow(non_snake_case)]
 
 // Handle type re-exports (targets of handle upcasts/downcasts)
-pub use crate::ffi_types::HandleStandardTransient;
+pub use crate::ffi_types::Handle_Standard_Transient;
 
 // ========================
 // From BinObjMgt_Persistent.hxx
@@ -53,7 +53,7 @@ impl Persistent {
         }
     }
 
-    /// **Source:** `BinObjMgt_Persistent.hxx`:62 - `BinObjMgt_Persistent::PutByte()`
+    /// **Source:** `BinObjMgt_Persistent.hxx`:59 - `BinObjMgt_Persistent::PutByte()`
     pub fn put_byte(&mut self, theValue: u8) -> &mut Persistent {
         unsafe {
             &mut *(crate::check_result(crate::ffi_extern_TKBinL::BinObjMgt_Persistent_put_byte(
@@ -63,7 +63,7 @@ impl Persistent {
         }
     }
 
-    /// **Source:** `BinObjMgt_Persistent.hxx`:66 - `BinObjMgt_Persistent::PutExtCharacter()`
+    /// **Source:** `BinObjMgt_Persistent.hxx`:63 - `BinObjMgt_Persistent::PutExtCharacter()`
     pub fn put_ext_character(&mut self, theValue: u16) -> &mut Persistent {
         unsafe {
             &mut *(crate::check_result(
@@ -75,7 +75,7 @@ impl Persistent {
         }
     }
 
-    /// **Source:** `BinObjMgt_Persistent.hxx`:73 - `BinObjMgt_Persistent::PutInteger()`
+    /// **Source:** `BinObjMgt_Persistent.hxx`:67 - `BinObjMgt_Persistent::PutInteger()`
     pub fn put_integer(&mut self, theValue: i32) -> &mut Persistent {
         unsafe {
             &mut *(crate::check_result(crate::ffi_extern_TKBinL::BinObjMgt_Persistent_put_integer(
@@ -85,7 +85,7 @@ impl Persistent {
         }
     }
 
-    /// **Source:** `BinObjMgt_Persistent.hxx`:77 - `BinObjMgt_Persistent::PutBoolean()`
+    /// **Source:** `BinObjMgt_Persistent.hxx`:71 - `BinObjMgt_Persistent::PutBoolean()`
     pub fn put_boolean(&mut self, theValue: bool) -> &mut Persistent {
         unsafe {
             &mut *(crate::check_result(crate::ffi_extern_TKBinL::BinObjMgt_Persistent_put_boolean(
@@ -95,7 +95,7 @@ impl Persistent {
         }
     }
 
-    /// **Source:** `BinObjMgt_Persistent.hxx`:81 - `BinObjMgt_Persistent::PutReal()`
+    /// **Source:** `BinObjMgt_Persistent.hxx`:75 - `BinObjMgt_Persistent::PutReal()`
     pub fn put_real(&mut self, theValue: f64) -> &mut Persistent {
         unsafe {
             &mut *(crate::check_result(crate::ffi_extern_TKBinL::BinObjMgt_Persistent_put_real(
@@ -105,7 +105,7 @@ impl Persistent {
         }
     }
 
-    /// **Source:** `BinObjMgt_Persistent.hxx`:85 - `BinObjMgt_Persistent::PutShortReal()`
+    /// **Source:** `BinObjMgt_Persistent.hxx`:79 - `BinObjMgt_Persistent::PutShortReal()`
     pub fn put_short_real(&mut self, theValue: f32) -> &mut Persistent {
         unsafe {
             &mut *(crate::check_result(
@@ -117,7 +117,7 @@ impl Persistent {
         }
     }
 
-    /// **Source:** `BinObjMgt_Persistent.hxx`:93 - `BinObjMgt_Persistent::PutCString()`
+    /// **Source:** `BinObjMgt_Persistent.hxx`:84 - `BinObjMgt_Persistent::PutCString()`
     /// Offset in output buffer is not aligned
     ///
     /// # Safety
@@ -137,7 +137,7 @@ impl Persistent {
         }
     }
 
-    /// **Source:** `BinObjMgt_Persistent.hxx`:98 - `BinObjMgt_Persistent::PutAsciiString()`
+    /// **Source:** `BinObjMgt_Persistent.hxx`:89 - `BinObjMgt_Persistent::PutAsciiString()`
     /// Offset in output buffer is word-aligned
     ///
     /// # Safety
@@ -159,7 +159,7 @@ impl Persistent {
         }
     }
 
-    /// **Source:** `BinObjMgt_Persistent.hxx`:106 - `BinObjMgt_Persistent::PutExtendedString()`
+    /// **Source:** `BinObjMgt_Persistent.hxx`:97 - `BinObjMgt_Persistent::PutExtendedString()`
     /// Offset in output buffer is word-aligned
     ///
     /// # Safety
@@ -181,7 +181,7 @@ impl Persistent {
         }
     }
 
-    /// **Source:** `BinObjMgt_Persistent.hxx`:114 - `BinObjMgt_Persistent::PutLabel()`
+    /// **Source:** `BinObjMgt_Persistent.hxx`:105 - `BinObjMgt_Persistent::PutLabel()`
     ///
     /// # Safety
     ///
@@ -197,7 +197,7 @@ impl Persistent {
         }
     }
 
-    /// **Source:** `BinObjMgt_Persistent.hxx`:118 - `BinObjMgt_Persistent::PutGUID()`
+    /// **Source:** `BinObjMgt_Persistent.hxx`:109 - `BinObjMgt_Persistent::PutGUID()`
     ///
     /// # Safety
     ///
@@ -213,7 +213,7 @@ impl Persistent {
         }
     }
 
-    /// **Source:** `BinObjMgt_Persistent.hxx`:123 - `BinObjMgt_Persistent::PutCharArray()`
+    /// **Source:** `BinObjMgt_Persistent.hxx`:114 - `BinObjMgt_Persistent::PutCharArray()`
     /// Put C array of char, theLength is the number of elements
     pub unsafe fn put_char_array(
         &mut self,
@@ -231,7 +231,7 @@ impl Persistent {
         }
     }
 
-    /// **Source:** `BinObjMgt_Persistent.hxx`:127 - `BinObjMgt_Persistent::PutByteArray()`
+    /// **Source:** `BinObjMgt_Persistent.hxx`:118 - `BinObjMgt_Persistent::PutByteArray()`
     /// Put C array of unsigned chars, theLength is the number of elements
     pub unsafe fn put_byte_array(&mut self, theArray: *mut u8, theLength: i32) -> &mut Persistent {
         unsafe {
@@ -245,7 +245,7 @@ impl Persistent {
         }
     }
 
-    /// **Source:** `BinObjMgt_Persistent.hxx`:131 - `BinObjMgt_Persistent::PutExtCharArray()`
+    /// **Source:** `BinObjMgt_Persistent.hxx`:122 - `BinObjMgt_Persistent::PutExtCharArray()`
     /// Put C array of ExtCharacter, theLength is the number of elements
     pub unsafe fn put_ext_char_array(
         &mut self,
@@ -263,7 +263,7 @@ impl Persistent {
         }
     }
 
-    /// **Source:** `BinObjMgt_Persistent.hxx`:135 - `BinObjMgt_Persistent::PutIntArray()`
+    /// **Source:** `BinObjMgt_Persistent.hxx`:126 - `BinObjMgt_Persistent::PutIntArray()`
     /// Put C array of int, theLength is the number of elements
     pub unsafe fn put_int_array(&mut self, theArray: *mut i32, theLength: i32) -> &mut Persistent {
         unsafe {
@@ -277,7 +277,7 @@ impl Persistent {
         }
     }
 
-    /// **Source:** `BinObjMgt_Persistent.hxx`:139 - `BinObjMgt_Persistent::PutRealArray()`
+    /// **Source:** `BinObjMgt_Persistent.hxx`:130 - `BinObjMgt_Persistent::PutRealArray()`
     /// Put C array of double, theLength is the number of elements
     pub unsafe fn put_real_array(&mut self, theArray: *mut f64, theLength: i32) -> &mut Persistent {
         unsafe {
@@ -291,7 +291,7 @@ impl Persistent {
         }
     }
 
-    /// **Source:** `BinObjMgt_Persistent.hxx`:143 - `BinObjMgt_Persistent::PutShortRealArray()`
+    /// **Source:** `BinObjMgt_Persistent.hxx`:134 - `BinObjMgt_Persistent::PutShortRealArray()`
     /// Put C array of float, theLength is the number of elements
     pub unsafe fn put_short_real_array(
         &mut self,
@@ -309,7 +309,7 @@ impl Persistent {
         }
     }
 
-    /// **Source:** `BinObjMgt_Persistent.hxx`:146 - `BinObjMgt_Persistent::GetCharacter()`
+    /// **Source:** `BinObjMgt_Persistent.hxx`:137 - `BinObjMgt_Persistent::GetCharacter()`
     ///
     /// # Safety
     ///
@@ -325,7 +325,7 @@ impl Persistent {
         }
     }
 
-    /// **Source:** `BinObjMgt_Persistent.hxx`:153 - `BinObjMgt_Persistent::GetByte()`
+    /// **Source:** `BinObjMgt_Persistent.hxx`:141 - `BinObjMgt_Persistent::GetByte()`
     ///
     /// # Safety
     ///
@@ -341,7 +341,7 @@ impl Persistent {
         }
     }
 
-    /// **Source:** `BinObjMgt_Persistent.hxx`:160 - `BinObjMgt_Persistent::GetExtCharacter()`
+    /// **Source:** `BinObjMgt_Persistent.hxx`:145 - `BinObjMgt_Persistent::GetExtCharacter()`
     ///
     /// # Safety
     ///
@@ -359,7 +359,7 @@ impl Persistent {
         }
     }
 
-    /// **Source:** `BinObjMgt_Persistent.hxx`:168 - `BinObjMgt_Persistent::GetInteger()`
+    /// **Source:** `BinObjMgt_Persistent.hxx`:152 - `BinObjMgt_Persistent::GetInteger()`
     ///
     /// # Safety
     ///
@@ -375,7 +375,7 @@ impl Persistent {
         }
     }
 
-    /// **Source:** `BinObjMgt_Persistent.hxx`:175 - `BinObjMgt_Persistent::GetBoolean()`
+    /// **Source:** `BinObjMgt_Persistent.hxx`:156 - `BinObjMgt_Persistent::GetBoolean()`
     ///
     /// # Safety
     ///
@@ -391,7 +391,7 @@ impl Persistent {
         }
     }
 
-    /// **Source:** `BinObjMgt_Persistent.hxx`:182 - `BinObjMgt_Persistent::GetReal()`
+    /// **Source:** `BinObjMgt_Persistent.hxx`:160 - `BinObjMgt_Persistent::GetReal()`
     ///
     /// # Safety
     ///
@@ -407,7 +407,7 @@ impl Persistent {
         }
     }
 
-    /// **Source:** `BinObjMgt_Persistent.hxx`:189 - `BinObjMgt_Persistent::GetShortReal()`
+    /// **Source:** `BinObjMgt_Persistent.hxx`:164 - `BinObjMgt_Persistent::GetShortReal()`
     ///
     /// # Safety
     ///
@@ -423,7 +423,7 @@ impl Persistent {
         }
     }
 
-    /// **Source:** `BinObjMgt_Persistent.hxx`:196 - `BinObjMgt_Persistent::GetAsciiString()`
+    /// **Source:** `BinObjMgt_Persistent.hxx`:168 - `BinObjMgt_Persistent::GetAsciiString()`
     ///
     /// # Safety
     ///
@@ -444,7 +444,7 @@ impl Persistent {
         }
     }
 
-    /// **Source:** `BinObjMgt_Persistent.hxx`:204 - `BinObjMgt_Persistent::GetExtendedString()`
+    /// **Source:** `BinObjMgt_Persistent.hxx`:176 - `BinObjMgt_Persistent::GetExtendedString()`
     ///
     /// # Safety
     ///
@@ -465,7 +465,7 @@ impl Persistent {
         }
     }
 
-    /// **Source:** `BinObjMgt_Persistent.hxx`:212 - `BinObjMgt_Persistent::GetLabel()`
+    /// **Source:** `BinObjMgt_Persistent.hxx`:184 - `BinObjMgt_Persistent::GetLabel()`
     ///
     /// # Safety
     ///
@@ -474,7 +474,7 @@ impl Persistent {
     /// not outlive whichever source it actually borrows from.
     pub unsafe fn get_label(
         &self,
-        theDS: &crate::ffi_types::HandleTDFData,
+        theDS: &crate::ffi_types::Handle_TDF_Data,
         theValue: &mut crate::tdf::Label,
     ) -> &Persistent {
         unsafe {
@@ -486,7 +486,7 @@ impl Persistent {
         }
     }
 
-    /// **Source:** `BinObjMgt_Persistent.hxx`:215 - `BinObjMgt_Persistent::GetGUID()`
+    /// **Source:** `BinObjMgt_Persistent.hxx`:187 - `BinObjMgt_Persistent::GetGUID()`
     ///
     /// # Safety
     ///
@@ -502,7 +502,7 @@ impl Persistent {
         }
     }
 
-    /// **Source:** `BinObjMgt_Persistent.hxx`:225 - `BinObjMgt_Persistent::GetCharArray()`
+    /// **Source:** `BinObjMgt_Persistent.hxx`:197 - `BinObjMgt_Persistent::GetCharArray()`
     /// Get C array of char, theLength is the number of elements;
     /// theArray must point to a
     /// space enough to place theLength elements
@@ -520,7 +520,7 @@ impl Persistent {
         }
     }
 
-    /// **Source:** `BinObjMgt_Persistent.hxx`:231 - `BinObjMgt_Persistent::GetByteArray()`
+    /// **Source:** `BinObjMgt_Persistent.hxx`:203 - `BinObjMgt_Persistent::GetByteArray()`
     /// Get C array of unsigned chars, theLength is the number of elements;
     /// theArray must point to a
     /// space enough to place theLength elements
@@ -534,7 +534,7 @@ impl Persistent {
         }
     }
 
-    /// **Source:** `BinObjMgt_Persistent.hxx`:237 - `BinObjMgt_Persistent::GetExtCharArray()`
+    /// **Source:** `BinObjMgt_Persistent.hxx`:209 - `BinObjMgt_Persistent::GetExtCharArray()`
     /// Get C array of ExtCharacter, theLength is the number of elements;
     /// theArray must point to a
     /// space enough to place theLength elements
@@ -550,7 +550,7 @@ impl Persistent {
         }
     }
 
-    /// **Source:** `BinObjMgt_Persistent.hxx`:244 - `BinObjMgt_Persistent::GetIntArray()`
+    /// **Source:** `BinObjMgt_Persistent.hxx`:215 - `BinObjMgt_Persistent::GetIntArray()`
     /// Get C array of int, theLength is the number of elements;
     /// theArray must point to a
     /// space enough to place theLength elements
@@ -564,7 +564,7 @@ impl Persistent {
         }
     }
 
-    /// **Source:** `BinObjMgt_Persistent.hxx`:250 - `BinObjMgt_Persistent::GetRealArray()`
+    /// **Source:** `BinObjMgt_Persistent.hxx`:221 - `BinObjMgt_Persistent::GetRealArray()`
     /// Get C array of double, theLength is the number of elements;
     /// theArray must point to a
     /// space enough to place theLength elements
@@ -578,7 +578,7 @@ impl Persistent {
         }
     }
 
-    /// **Source:** `BinObjMgt_Persistent.hxx`:256 - `BinObjMgt_Persistent::GetShortRealArray()`
+    /// **Source:** `BinObjMgt_Persistent.hxx`:227 - `BinObjMgt_Persistent::GetShortRealArray()`
     /// Get C array of float, theLength is the number of elements;
     /// theArray must point to a
     /// space enough to place theLength elements
@@ -594,7 +594,7 @@ impl Persistent {
         }
     }
 
-    /// **Source:** `BinObjMgt_Persistent.hxx`:261 - `BinObjMgt_Persistent::Position()`
+    /// **Source:** `BinObjMgt_Persistent.hxx`:231 - `BinObjMgt_Persistent::Position()`
     /// Tells the current position for get/put
     pub fn position(&self) -> i32 {
         crate::check_result(unsafe {
@@ -602,7 +602,7 @@ impl Persistent {
         })
     }
 
-    /// **Source:** `BinObjMgt_Persistent.hxx`:266 - `BinObjMgt_Persistent::SetPosition()`
+    /// **Source:** `BinObjMgt_Persistent.hxx`:236 - `BinObjMgt_Persistent::SetPosition()`
     /// Sets the current position for get/put.
     /// Resets an error state depending on the validity of thePos.
     /// Returns the new state (value of IsOK())
@@ -612,7 +612,7 @@ impl Persistent {
         })
     }
 
-    /// **Source:** `BinObjMgt_Persistent.hxx`:270 - `BinObjMgt_Persistent::Truncate()`
+    /// **Source:** `BinObjMgt_Persistent.hxx`:240 - `BinObjMgt_Persistent::Truncate()`
     /// Truncates the buffer by current position,
     /// i.e. updates mySize
     pub fn truncate(&mut self) {
@@ -621,7 +621,7 @@ impl Persistent {
         })
     }
 
-    /// **Source:** `BinObjMgt_Persistent.hxx`:273 - `BinObjMgt_Persistent::IsError()`
+    /// **Source:** `BinObjMgt_Persistent.hxx`:243 - `BinObjMgt_Persistent::IsError()`
     /// Indicates an error after Get methods or SetPosition
     pub fn is_error(&self) -> bool {
         crate::check_result(unsafe {
@@ -629,7 +629,7 @@ impl Persistent {
         })
     }
 
-    /// **Source:** `BinObjMgt_Persistent.hxx`:278 - `BinObjMgt_Persistent::IsOK()`
+    /// **Source:** `BinObjMgt_Persistent.hxx`:248 - `BinObjMgt_Persistent::IsOK()`
     /// Indicates a good state after Get methods or SetPosition
     pub fn is_ok(&self) -> bool {
         crate::check_result(unsafe {
@@ -637,7 +637,7 @@ impl Persistent {
         })
     }
 
-    /// **Source:** `BinObjMgt_Persistent.hxx`:283 - `BinObjMgt_Persistent::Init()`
+    /// **Source:** `BinObjMgt_Persistent.hxx`:253 - `BinObjMgt_Persistent::Init()`
     /// Initializes me to reuse again
     pub fn init(&mut self) {
         crate::check_void_result(unsafe {
@@ -645,7 +645,7 @@ impl Persistent {
         })
     }
 
-    /// **Source:** `BinObjMgt_Persistent.hxx`:286 - `BinObjMgt_Persistent::SetId()`
+    /// **Source:** `BinObjMgt_Persistent.hxx`:256 - `BinObjMgt_Persistent::SetId()`
     /// Sets the Id of the object
     pub fn set_id(&mut self, theId: i32) {
         crate::check_void_result(unsafe {
@@ -653,7 +653,7 @@ impl Persistent {
         })
     }
 
-    /// **Source:** `BinObjMgt_Persistent.hxx`:289 - `BinObjMgt_Persistent::SetTypeId()`
+    /// **Source:** `BinObjMgt_Persistent.hxx`:259 - `BinObjMgt_Persistent::SetTypeId()`
     /// Sets the Id of the type of the object
     pub fn set_type_id(&mut self, theId: i32) {
         crate::check_void_result(unsafe {
@@ -661,7 +661,7 @@ impl Persistent {
         })
     }
 
-    /// **Source:** `BinObjMgt_Persistent.hxx`:292 - `BinObjMgt_Persistent::Id()`
+    /// **Source:** `BinObjMgt_Persistent.hxx`:262 - `BinObjMgt_Persistent::Id()`
     /// Returns the Id of the object
     pub fn id(&self) -> i32 {
         crate::check_result(unsafe {
@@ -669,7 +669,7 @@ impl Persistent {
         })
     }
 
-    /// **Source:** `BinObjMgt_Persistent.hxx`:295 - `BinObjMgt_Persistent::TypeId()`
+    /// **Source:** `BinObjMgt_Persistent.hxx`:265 - `BinObjMgt_Persistent::TypeId()`
     /// Returns the Id of the type of the object
     pub fn type_id(&self) -> i32 {
         crate::check_result(unsafe {
@@ -677,7 +677,7 @@ impl Persistent {
         })
     }
 
-    /// **Source:** `BinObjMgt_Persistent.hxx`:298 - `BinObjMgt_Persistent::Length()`
+    /// **Source:** `BinObjMgt_Persistent.hxx`:268 - `BinObjMgt_Persistent::Length()`
     /// Returns the length of data
     pub fn length(&self) -> i32 {
         crate::check_result(unsafe {
@@ -685,7 +685,7 @@ impl Persistent {
         })
     }
 
-    /// **Source:** `BinObjMgt_Persistent.hxx`:304 - `BinObjMgt_Persistent::Write()`
+    /// **Source:** `BinObjMgt_Persistent.hxx`:274 - `BinObjMgt_Persistent::Write()`
     /// Stores <me> to the stream.
     /// inline Standard_OStream& operator<< (Standard_OStream&,
     /// BinObjMgt_Persistent&) is also available.
@@ -710,7 +710,7 @@ impl Persistent {
         }
     }
 
-    /// **Source:** `BinObjMgt_Persistent.hxx`:310 - `BinObjMgt_Persistent::Read()`
+    /// **Source:** `BinObjMgt_Persistent.hxx`:280 - `BinObjMgt_Persistent::Read()`
     /// Retrieves <me> from the stream.
     /// inline Standard_IStream& operator>> (Standard_IStream&,
     /// BinObjMgt_Persistent&) is also available
@@ -732,7 +732,7 @@ impl Persistent {
         }
     }
 
-    /// **Source:** `BinObjMgt_Persistent.hxx`:314 - `BinObjMgt_Persistent::Destroy()`
+    /// **Source:** `BinObjMgt_Persistent.hxx`:284 - `BinObjMgt_Persistent::Destroy()`
     /// Frees the allocated memory;
     /// This object can be reused after call to Init
     pub fn destroy(&mut self) {
@@ -741,7 +741,7 @@ impl Persistent {
         })
     }
 
-    /// **Source:** `BinObjMgt_Persistent.hxx`:319 - `BinObjMgt_Persistent::SetOStream()`
+    /// **Source:** `BinObjMgt_Persistent.hxx`:289 - `BinObjMgt_Persistent::SetOStream()`
     /// Sets the stream for direct writing
     pub fn set_o_stream(&mut self, theStream: &mut crate::ffi_types::Standard_OStream) {
         crate::check_void_result(unsafe {
@@ -752,7 +752,7 @@ impl Persistent {
         })
     }
 
-    /// **Source:** `BinObjMgt_Persistent.hxx`:322 - `BinObjMgt_Persistent::SetIStream()`
+    /// **Source:** `BinObjMgt_Persistent.hxx`:292 - `BinObjMgt_Persistent::SetIStream()`
     /// Sets the stream for direct reading
     pub fn set_i_stream(&mut self, theStream: &mut crate::ffi_types::Standard_IStream) {
         crate::check_void_result(unsafe {
@@ -763,7 +763,7 @@ impl Persistent {
         })
     }
 
-    /// **Source:** `BinObjMgt_Persistent.hxx`:325 - `BinObjMgt_Persistent::GetOStream()`
+    /// **Source:** `BinObjMgt_Persistent.hxx`:295 - `BinObjMgt_Persistent::GetOStream()`
     /// Gets the stream for and enables direct writing
     pub fn get_o_stream(&mut self) -> Option<&mut crate::ffi_types::Standard_OStream> {
         {
@@ -778,7 +778,7 @@ impl Persistent {
         }
     }
 
-    /// **Source:** `BinObjMgt_Persistent.hxx`:327 - `BinObjMgt_Persistent::GetIStream()`
+    /// **Source:** `BinObjMgt_Persistent.hxx`:297 - `BinObjMgt_Persistent::GetIStream()`
     /// Gets the stream for and enables direct reading
     pub fn get_i_stream(&mut self) -> Option<&mut crate::ffi_types::Standard_IStream> {
         {
@@ -793,7 +793,7 @@ impl Persistent {
         }
     }
 
-    /// **Source:** `BinObjMgt_Persistent.hxx`:330 - `BinObjMgt_Persistent::IsDirect()`
+    /// **Source:** `BinObjMgt_Persistent.hxx`:300 - `BinObjMgt_Persistent::IsDirect()`
     /// Returns true if after this record a direct writing to the stream is performed.
     pub fn is_direct(&mut self) -> bool {
         crate::check_result(unsafe {
@@ -801,9 +801,9 @@ impl Persistent {
         })
     }
 
-    /// **Source:** `BinObjMgt_Persistent.hxx`:333 - `BinObjMgt_Persistent::StreamStart()`
+    /// **Source:** `BinObjMgt_Persistent.hxx`:303 - `BinObjMgt_Persistent::StreamStart()`
     /// Returns the start position of the direct writing in the stream
-    pub fn stream_start(&mut self) -> crate::OwnedPtr<crate::ffi_types::HandleBinObjMgtPosition> {
+    pub fn stream_start(&mut self) -> crate::OwnedPtr<crate::ffi_types::Handle_BinObjMgt_Position> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKBinL::BinObjMgt_Persistent_stream_start(self as *mut Self),
@@ -816,7 +816,7 @@ impl Persistent {
 // From BinObjMgt_Position.hxx
 // ========================
 
-/// **Source:** `BinObjMgt_Position.hxx`:23 - `BinObjMgt_Position`
+/// **Source:** `BinObjMgt_Position.hxx`:20 - `BinObjMgt_Position`
 /// Stores and manipulates position in the stream.
 pub use crate::ffi_types::BinObjMgt_Position as Position;
 
@@ -829,7 +829,7 @@ unsafe impl crate::CppDeletable for Position {
 }
 
 impl Position {
-    /// **Source:** `BinObjMgt_Position.hxx`:29 - `BinObjMgt_Position::BinObjMgt_Position()`
+    /// **Source:** `BinObjMgt_Position.hxx`:26 - `BinObjMgt_Position::BinObjMgt_Position()`
     /// Creates position using the current stream position.
     pub fn new_ostream(
         theStream: &mut crate::ffi_types::Standard_OStream,
@@ -841,7 +841,7 @@ impl Position {
         }
     }
 
-    /// **Source:** `BinObjMgt_Position.hxx`:32 - `BinObjMgt_Position::StoreSize()`
+    /// **Source:** `BinObjMgt_Position.hxx`:29 - `BinObjMgt_Position::StoreSize()`
     /// Stores the difference between the current position and the stored one.
     pub fn store_size(&mut self, theStream: &mut crate::ffi_types::Standard_OStream) {
         crate::check_void_result(unsafe {
@@ -849,7 +849,7 @@ impl Position {
         })
     }
 
-    /// **Source:** `BinObjMgt_Position.hxx`:35 - `BinObjMgt_Position::WriteSize()`
+    /// **Source:** `BinObjMgt_Position.hxx`:32 - `BinObjMgt_Position::WriteSize()`
     /// Writes stored size at the stored position. Changes the current stream position.
     /// If theDummy is true, is writes to the current position zero size.
     pub fn write_size(
@@ -866,8 +866,8 @@ impl Position {
         })
     }
 
-    /// **Source:** `BinObjMgt_Position.hxx`:38 - `BinObjMgt_Position::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `BinObjMgt_Position.hxx`:34 - `BinObjMgt_Position::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKBinL::BinObjMgt_Position_dynamic_type(
                 self as *const Self,
@@ -875,7 +875,7 @@ impl Position {
         }
     }
 
-    /// **Source:** `BinObjMgt_Position.hxx`:38 - `BinObjMgt_Position::get_type_name()`
+    /// **Source:** `BinObjMgt_Position.hxx`:34 - `BinObjMgt_Position::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -886,8 +886,8 @@ impl Position {
         .into_owned()
     }
 
-    /// **Source:** `BinObjMgt_Position.hxx`:38 - `BinObjMgt_Position::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    /// **Source:** `BinObjMgt_Position.hxx`:34 - `BinObjMgt_Position::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKBinL::BinObjMgt_Position_get_type_descriptor(),
@@ -920,7 +920,7 @@ impl Position {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleBinObjMgtPosition> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_BinObjMgt_Position> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKBinL::BinObjMgt_Position_to_handle(obj.into_raw()),
@@ -928,8 +928,8 @@ impl Position {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBinL::BinObjMgt_Position_inherited_IsInstance(
                 self as *const Self,
@@ -938,8 +938,8 @@ impl Position {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBinL::BinObjMgt_Position_inherited_IsKind(
                 self as *const Self,
@@ -948,7 +948,7 @@ impl Position {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -962,14 +962,14 @@ impl Position {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBinL::BinObjMgt_Position_inherited_GetRefCount(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBinL::BinObjMgt_Position_inherited_IncrementRefCounter(
@@ -978,7 +978,7 @@ impl Position {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBinL::BinObjMgt_Position_inherited_DecrementRefCounter(
@@ -987,7 +987,7 @@ impl Position {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBinL::BinObjMgt_Position_inherited_Delete(self as *const Self)
@@ -995,32 +995,34 @@ impl Position {
     }
 }
 
-pub use crate::ffi_types::HandleBinObjMgtPosition;
+pub use crate::ffi_types::Handle_BinObjMgt_Position;
 
-unsafe impl crate::CppDeletable for HandleBinObjMgtPosition {
+unsafe impl crate::CppDeletable for Handle_BinObjMgt_Position {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKBinL::HandleBinObjMgtPosition_destructor(ptr);
+            crate::ffi_extern_TKBinL::Handle_BinObjMgt_Position_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleBinObjMgtPosition {
+unsafe impl crate::CppCopyable for Handle_BinObjMgt_Position {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        unsafe { crate::check_result(crate::ffi_extern_TKBinL::HandleBinObjMgtPosition_clone(ptr)) }
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKBinL::Handle_BinObjMgt_Position_clone(ptr))
+        }
     }
 }
 
-impl HandleBinObjMgtPosition {
+impl Handle_BinObjMgt_Position {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
-        unsafe { crate::ffi_extern_TKBinL::HandleBinObjMgtPosition_is_null(self as *const Self) }
+        unsafe { crate::ffi_extern_TKBinL::Handle_BinObjMgt_Position_is_null(self as *const Self) }
     }
 
     /// Dereference this Handle to access the underlying BinObjMgt_Position
     pub fn get(&self) -> &crate::ffi_types::BinObjMgt_Position {
         unsafe {
-            &*crate::check_result(crate::ffi_extern_TKBinL::HandleBinObjMgtPosition_get(
+            &*crate::check_result(crate::ffi_extern_TKBinL::Handle_BinObjMgt_Position_get(
                 self as *const Self,
             ))
         }
@@ -1029,7 +1031,7 @@ impl HandleBinObjMgtPosition {
     /// Dereference this Handle to mutably access the underlying BinObjMgt_Position
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::BinObjMgt_Position {
         unsafe {
-            &mut *crate::check_result(crate::ffi_extern_TKBinL::HandleBinObjMgtPosition_get_mut(
+            &mut *crate::check_result(crate::ffi_extern_TKBinL::Handle_BinObjMgt_Position_get_mut(
                 self as *mut Self,
             ))
         }
@@ -1038,10 +1040,10 @@ impl HandleBinObjMgtPosition {
     /// Upcast Handle<BinObjMgt_Position> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKBinL::HandleBinObjMgtPosition_to_HandleStandardTransient(
+                crate::ffi_extern_TKBinL::Handle_BinObjMgt_Position_to_Handle_Standard_Transient(
                     self as *const Self,
                 ),
             ))
@@ -1053,9 +1055,9 @@ impl HandleBinObjMgtPosition {
 // From BinObjMgt_RRelocationTable.hxx
 // ========================
 
-/// **Source:** `BinObjMgt_RRelocationTable.hxx`:26 - `BinObjMgt_RRelocationTable`
+/// **Source:** `BinObjMgt_RRelocationTable.hxx`:28 - `BinObjMgt_RRelocationTable`
 /// Retrieval relocation table is modeled as a child class of
-/// TColStd_DataMapOfIntegerTransient that stores a handle to the file
+/// NCollection_DataMap<int, occ::handle<Standard_Transient>> that stores a handle to the file
 /// header section. With that attribute drivers have access to the file header
 /// section.
 pub use crate::ffi_types::BinObjMgt_RRelocationTable as RRelocationTable;
@@ -1079,9 +1081,9 @@ impl RRelocationTable {
         }
     }
 
-    /// **Source:** `BinObjMgt_RRelocationTable.hxx`:30 - `BinObjMgt_RRelocationTable::GetHeaderData()`
+    /// **Source:** `BinObjMgt_RRelocationTable.hxx`:32 - `BinObjMgt_RRelocationTable::GetHeaderData()`
     /// Returns a handle to the header data of the file that is begin read
-    pub fn get_header_data(&self) -> &crate::ffi_types::HandleStorageHeaderData {
+    pub fn get_header_data(&self) -> &crate::ffi_types::Handle_Storage_HeaderData {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKBinL::BinObjMgt_RRelocationTable_get_header_data(
@@ -1091,11 +1093,11 @@ impl RRelocationTable {
         }
     }
 
-    /// **Source:** `BinObjMgt_RRelocationTable.hxx`:35 - `BinObjMgt_RRelocationTable::SetHeaderData()`
+    /// **Source:** `BinObjMgt_RRelocationTable.hxx`:37 - `BinObjMgt_RRelocationTable::SetHeaderData()`
     /// Sets the storage header data.
     ///
     /// @param theHeaderData header data of the file that is begin read
-    pub fn set_header_data(&mut self, theHeaderData: &crate::ffi_types::HandleStorageHeaderData) {
+    pub fn set_header_data(&mut self, theHeaderData: &crate::ffi_types::Handle_Storage_HeaderData) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBinL::BinObjMgt_RRelocationTable_set_header_data(
                 self as *mut Self,
@@ -1104,7 +1106,7 @@ impl RRelocationTable {
         })
     }
 
-    /// **Source:** `BinObjMgt_RRelocationTable.hxx`:37 - `BinObjMgt_RRelocationTable::Clear()`
+    /// **Source:** `BinObjMgt_RRelocationTable.hxx`:39 - `BinObjMgt_RRelocationTable::Clear()`
     pub fn clear(&mut self, doReleaseMemory: bool) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBinL::BinObjMgt_RRelocationTable_clear(

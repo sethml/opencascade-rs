@@ -345,21 +345,21 @@ impl Add2dCurve {
     /// B is then enlarged by the tolerance value Tol.
     /// Note: depending on the type of curve, one of the following
     /// representations of the curve C is used to include it in the bounding box B:
-    /// -   an exact representation if C is built from a line, a circle   or a conic curve,
-    /// -   the poles of the curve if C is built from a Bezier curve or   a BSpline curve,
+    /// -   an exact representation if C is built from a line, a circle or a conic curve,
+    /// -   the poles of the curve if C is built from a Bezier curve or a BSpline curve,
     /// -   if not, the points of an approximation of the curve C.
     /// Warning
     /// C is an adapted curve, that is, an object which is an interface between:
     /// -   the services provided by a 2D curve from the package Geom2d
     /// -   and those required of the curve by the computation algorithm.
     /// The adapted curve is created in the following way:
-    /// Handle(Geom2d_Curve) mycurve = ...
+    /// occ::handle<Geom2d_Curve> mycurve = ...
     /// ;
     /// Geom2dAdaptor_Curve C(mycurve);
     /// The bounding box B is then enlarged by adding it:
     /// Bnd_Box2d B;
     /// // ...
-    /// Standard_Real Tol = ... ;
+    /// double Tol = ... ;
     /// Add2dCurve::Add ( C, Tol, B );
     /// Exceptions
     /// Standard_Failure if the curve is built from:
@@ -378,27 +378,27 @@ impl Add2dCurve {
         })
     }
 
-    /// **Source:** `BndLib_Add2dCurve.hxx`:95 - `BndLib_Add2dCurve::Add()`
+    /// **Source:** `BndLib_Add2dCurve.hxx`:93 - `BndLib_Add2dCurve::Add()`
     /// Adds to the bounding box Bthe arc of the curve C limited by the two parameter
     /// values P1 and P2.
     /// B is then enlarged by the tolerance value Tol.
     /// Note: depending on the type of curve, one of the following
     /// representations of the curve C is used to include it in the bounding box B:
-    /// -   an exact representation if C is built from a line, a circle   or a conic curve,
-    /// -   the poles of the curve if C is built from a Bezier curve or   a BSpline curve,
+    /// -   an exact representation if C is built from a line, a circle or a conic curve,
+    /// -   the poles of the curve if C is built from a Bezier curve or a BSpline curve,
     /// -   if not, the points of an approximation of the curve C.
     /// Warning
     /// C is an adapted curve, that is, an object which is an interface between:
     /// -   the services provided by a 2D curve from the package Geom2d
     /// -   and those required of the curve by the computation algorithm.
     /// The adapted curve is created in the following way:
-    /// Handle(Geom2d_Curve) mycurve = ...
+    /// occ::handle<Geom2d_Curve> mycurve = ...
     /// ;
     /// Geom2dAdaptor_Curve C(mycurve);
     /// The bounding box B is then enlarged by adding it:
     /// Bnd_Box2d B;
     /// // ...
-    /// Standard_Real Tol = ... ;
+    /// double Tol = ... ;
     /// Add2dCurve::Add ( C, Tol, B );
     /// Exceptions
     /// Standard_Failure if the curve is built from:
@@ -421,7 +421,7 @@ impl Add2dCurve {
         })
     }
 
-    /// **Source:** `BndLib_Add2dCurve.hxx`:108 - `BndLib_Add2dCurve::Add()`
+    /// **Source:** `BndLib_Add2dCurve.hxx`:106 - `BndLib_Add2dCurve::Add()`
     /// Adds to the bounding box B the curve C
     /// B is then enlarged by the tolerance value Tol.
     /// Note: depending on the type of curve, one of the following
@@ -430,7 +430,7 @@ impl Add2dCurve {
     /// -   the poles of the curve if C is built from a Bezier curve or a BSpline curve,
     /// -   if not, the points of an approximation of the curve C.
     pub fn add_handlegeom2dcurve_real_box2d(
-        C: &crate::ffi_types::HandleGeom2dCurve,
+        C: &crate::ffi_types::Handle_Geom2d_Curve,
         Tol: f64,
         Box: &mut crate::bnd::Box2d,
     ) {
@@ -441,7 +441,7 @@ impl Add2dCurve {
         })
     }
 
-    /// **Source:** `BndLib_Add2dCurve.hxx`:120 - `BndLib_Add2dCurve::Add()`
+    /// **Source:** `BndLib_Add2dCurve.hxx`:118 - `BndLib_Add2dCurve::Add()`
     /// Adds to the bounding box B the part of curve C
     /// B is then enlarged by the tolerance value Tol.
     /// U1, U2 - the parametric range to compute the bounding box;
@@ -451,7 +451,7 @@ impl Add2dCurve {
     /// -   the poles of the curve if C is built from a Bezier curve or a BSpline curve,
     /// -   if not, the points of an approximation of the curve C.
     pub fn add_handlegeom2dcurve_real3_box2d(
-        C: &crate::ffi_types::HandleGeom2dCurve,
+        C: &crate::ffi_types::Handle_Geom2d_Curve,
         U1: f64,
         U2: f64,
         Tol: f64,
@@ -464,18 +464,18 @@ impl Add2dCurve {
         })
     }
 
-    /// **Source:** `BndLib_Add2dCurve.hxx`:135 - `BndLib_Add2dCurve::AddOptimal()`
+    /// **Source:** `BndLib_Add2dCurve.hxx`:133 - `BndLib_Add2dCurve::AddOptimal()`
     /// Adds to the bounding box B the part of curve C
     /// B is then enlarged by the tolerance value Tol.
     /// U1, U2 - the parametric range to compute the bounding box;
     /// Note: depending on the type of curve, one of the following
-    /// algorithms  is used to include it in the bounding box B:
+    /// algorithms is used to include it in the bounding box B:
     /// -   an exact analytical if C is built from a line, a circle or a conic curve,
-    /// -   numerical calculation of bounding box sizes, based on minimization algorithm,  for other
+    /// -   numerical calculation of bounding box sizes, based on minimization algorithm, for other
     /// types of curve If Tol = < Precision::PConfusion(), Precision::PConfusion is used as tolerance
     /// for calculation
     pub fn add_optimal(
-        C: &crate::ffi_types::HandleGeom2dCurve,
+        C: &crate::ffi_types::Handle_Geom2d_Curve,
         U1: f64,
         U2: f64,
         Tol: f64,
@@ -521,20 +521,20 @@ impl Add3dCurve {
     /// B is then enlarged by the tolerance value Tol.
     /// Note: depending on the type of curve, one of the following
     /// representations of the curve C is used to include it in the bounding box B:
-    /// -   an exact representation if C is built from a line, a circle   or a conic curve,
-    /// -   the poles of the curve if C is built from a Bezier curve or   a BSpline curve,
+    /// -   an exact representation if C is built from a line, a circle or a conic curve,
+    /// -   the poles of the curve if C is built from a Bezier curve or a BSpline curve,
     /// if not, the points of an approximation of the curve C.
     /// Warning
     /// C is an adapted curve, that is, an object which is an interface between:
-    /// -   the services provided by a 3D curve from the package   Geom
+    /// -   the services provided by a 3D curve from the package Geom
     /// -   and those required of the curve by the computation algorithm.
     /// The adapted curve is created in the following way:
-    /// Handle(Geom_Curve) mycurve = ... ;
+    /// occ::handle<Geom_Curve> mycurve = ... ;
     /// GeomAdaptor_Curve C(mycurve);
     /// The bounding box B is then enlarged by adding it:
     /// Bnd_Box B;
     /// // ...
-    /// Standard_Real Tol = ... ;
+    /// double Tol = ... ;
     /// Add3dCurve::Add ( C, Tol, B );
     /// Exceptions
     /// Standard_Failure if the curve is built from:
@@ -554,20 +554,20 @@ impl Add3dCurve {
     /// the arc of the curve C limited by the two parameter values P1 and P2.
     /// Note: depending on the type of curve, one of the following
     /// representations of the curve C is used to include it in the bounding box B:
-    /// -   an exact representation if C is built from a line, a circle   or a conic curve,
-    /// -   the poles of the curve if C is built from a Bezier curve or   a BSpline curve,
+    /// -   an exact representation if C is built from a line, a circle or a conic curve,
+    /// -   the poles of the curve if C is built from a Bezier curve or a BSpline curve,
     /// if not, the points of an approximation of the curve C.
     /// Warning
     /// C is an adapted curve, that is, an object which is an interface between:
-    /// -   the services provided by a 3D curve from the package   Geom
+    /// -   the services provided by a 3D curve from the package Geom
     /// -   and those required of the curve by the computation algorithm.
     /// The adapted curve is created in the following way:
-    /// Handle(Geom_Curve) mycurve = ... ;
+    /// occ::handle<Geom_Curve> mycurve = ... ;
     /// GeomAdaptor_Curve C(mycurve);
     /// The bounding box B is then enlarged by adding it:
     /// Bnd_Box B;
     /// // ...
-    /// Standard_Real Tol = ... ;
+    /// double Tol = ... ;
     /// Add3dCurve::Add ( C, Tol, B );
     /// Exceptions
     /// Standard_Failure if the curve is built from:
@@ -602,7 +602,7 @@ impl Add3dCurve {
         })
     }
 
-    /// **Source:** `BndLib_Add3dCurve.hxx`:101 - `BndLib_Add3dCurve::AddOptimal()`
+    /// **Source:** `BndLib_Add3dCurve.hxx`:99 - `BndLib_Add3dCurve::AddOptimal()`
     pub fn add_optimal_curve_real3_box(
         C: &crate::adaptor3d::Curve,
         U1: f64,
@@ -614,23 +614,6 @@ impl Add3dCurve {
             crate::ffi_extern_TKGeomBase::BndLib_Add3dCurve_add_optimal_curve_real3_box(
                 C, U1, U2, Tol, B,
             )
-        })
-    }
-
-    /// **Source:** `BndLib_Add3dCurve.hxx`:110 - `BndLib_Add3dCurve::AddGenCurv()`
-    /// Adds to the bounding box B the curve C
-    /// using numerical minimization algorithms
-    /// This method is used in AddOptimal for not analytical curves.
-    /// if Tol < Precision::Confusion(), Precision:;Confusion is used as computation tolerance
-    pub fn add_gen_curv(
-        C: &crate::adaptor3d::Curve,
-        UMin: f64,
-        UMax: f64,
-        Tol: f64,
-        B: &mut crate::bnd::Box,
-    ) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKGeomBase::BndLib_Add3dCurve_add_gen_curv(C, UMin, UMax, Tol, B)
         })
     }
 }
@@ -686,12 +669,12 @@ impl AddSurface {
     /// -   the services provided by a surface from the package Geom
     /// -   and those required of the surface by the computation algorithm.
     /// The adapted surface is created in the following way:
-    /// Handle(Geom_Surface) mysurface = ... ;
+    /// occ::handle<Geom_Surface> mysurface = ... ;
     /// GeomAdaptor_Surface S(mysurface);
     /// The bounding box B is then enlarged by adding this surface:
     /// Bnd_Box B;
     /// // ...
-    /// Standard_Real Tol = ... ;
+    /// double Tol = ... ;
     /// AddSurface::Add ( S, Tol, B );
     pub fn add_surface_real_box(S: &crate::adaptor3d::Surface, Tol: f64, B: &mut crate::bnd::Box) {
         crate::check_void_result(unsafe {
@@ -724,12 +707,12 @@ impl AddSurface {
     /// -   the services provided by a surface from the package Geom
     /// -   and those required of the surface by the computation algorithm.
     /// The adapted surface is created in the following way:
-    /// Handle(Geom_Surface) mysurface = ... ;
+    /// occ::handle<Geom_Surface> mysurface = ... ;
     /// GeomAdaptor_Surface S(mysurface);
     /// The bounding box B is then enlarged by adding this surface:
     /// Bnd_Box B;
     /// // ...
-    /// Standard_Real Tol = ... ;
+    /// double Tol = ... ;
     /// AddSurface::Add ( S, Tol, B );
     pub fn add_surface_real5_box(
         S: &crate::adaptor3d::Surface,
@@ -760,7 +743,7 @@ impl AddSurface {
         })
     }
 
-    /// **Source:** `BndLib_AddSurface.hxx`:110 - `BndLib_AddSurface::AddOptimal()`
+    /// **Source:** `BndLib_AddSurface.hxx`:108 - `BndLib_AddSurface::AddOptimal()`
     pub fn add_optimal_surface_real5_box(
         S: &crate::adaptor3d::Surface,
         UMin: f64,
@@ -772,27 +755,6 @@ impl AddSurface {
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomBase::BndLib_AddSurface_add_optimal_surface_real5_box(
-                S, UMin, UMax, VMin, VMax, Tol, B,
-            )
-        })
-    }
-
-    /// **Source:** `BndLib_AddSurface.hxx`:122 - `BndLib_AddSurface::AddGenSurf()`
-    /// Adds to the bounding box B the surface S
-    /// using numerical minimization algorithms
-    /// This method is used in AddOptimal for not analytical surfaces and torus.
-    /// if Tol < Precision::Confusion(), Precision::Confusion is used as computation tolerance
-    pub fn add_gen_surf(
-        S: &crate::adaptor3d::Surface,
-        UMin: f64,
-        UMax: f64,
-        VMin: f64,
-        VMax: f64,
-        Tol: f64,
-        B: &mut crate::bnd::Box,
-    ) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKGeomBase::BndLib_AddSurface_add_gen_surf(
                 S, UMin, UMax, VMin, VMax, Tol, B,
             )
         })

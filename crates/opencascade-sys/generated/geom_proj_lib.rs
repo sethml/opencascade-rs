@@ -7,81 +7,81 @@
 #![allow(non_snake_case)]
 
 /// **Source:** `GeomProjLib.hxx`:47 - `GeomProjLib::Curve2d`
-/// gives  the 2d-curve   of  a 3d-curve  lying on   a
-/// surface (  uses GeomProjLib_ProjectedCurve   )
+/// gives the 2d-curve of a 3d-curve lying on a
+/// surface (uses GeomProjLib_ProjectedCurve)
 /// The 3dCurve is taken between the parametrization
 /// range [First, Last]
 /// <Tolerance> is used as input if the projection needs
 /// an approximation. In this case, the reached
 /// tolerance is set in <Tolerance> as output.
-/// WARNING :  if   the projection has  failed,   this
+/// WARNING: if the projection has failed, this
 /// method returns a null Handle.
 pub fn curve2d_handlegeomcurve_real2_handlegeomsurface_real5(
-    C: &crate::ffi_types::HandleGeomCurve,
+    C: &crate::ffi_types::Handle_Geom_Curve,
     First: f64,
     Last: f64,
-    S: &crate::ffi_types::HandleGeomSurface,
+    S: &crate::ffi_types::Handle_Geom_Surface,
     UFirst: f64,
     ULast: f64,
     VFirst: f64,
     VLast: f64,
     Tolerance: &mut f64,
-) -> crate::OwnedPtr<crate::ffi_types::HandleGeom2dCurve> {
+) -> crate::OwnedPtr<crate::ffi_types::Handle_Geom2d_Curve> {
     unsafe {
         crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomBase::GeomProjLib_curve2d_handlegeomcurve_real2_handlegeomsurface_real5(C, First, Last, S, UFirst, ULast, VFirst, VLast, Tolerance)))
     }
 }
 /// **Source:** `GeomProjLib.hxx`:66 - `GeomProjLib::Curve2d`
-/// gives  the 2d-curve   of  a 3d-curve  lying on   a
-/// surface (  uses GeomProjLib_ProjectedCurve   )
+/// gives the 2d-curve of a 3d-curve lying on a
+/// surface (uses GeomProjLib_ProjectedCurve)
 /// The 3dCurve is taken between the parametrization
 /// range [First, Last]
 /// <Tolerance> is used as input if the projection needs
 /// an approximation. In this case, the reached
 /// tolerance is set in <Tolerance> as output.
-/// WARNING :  if   the projection has  failed,   this
+/// WARNING: if the projection has failed, this
 /// method returns a null Handle.
 pub fn curve2d_handlegeomcurve_real2_handlegeomsurface_real(
-    C: &crate::ffi_types::HandleGeomCurve,
+    C: &crate::ffi_types::Handle_Geom_Curve,
     First: f64,
     Last: f64,
-    S: &crate::ffi_types::HandleGeomSurface,
+    S: &crate::ffi_types::Handle_Geom_Surface,
     Tolerance: &mut f64,
-) -> crate::OwnedPtr<crate::ffi_types::HandleGeom2dCurve> {
+) -> crate::OwnedPtr<crate::ffi_types::Handle_Geom2d_Curve> {
     unsafe {
         crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomBase::GeomProjLib_curve2d_handlegeomcurve_real2_handlegeomsurface_real(C, First, Last, S, Tolerance)))
     }
 }
 /// **Source:** `GeomProjLib.hxx`:80 - `GeomProjLib::Curve2d`
-/// gives  the 2d-curve   of  a 3d-curve  lying on   a
-/// surface (  uses GeomProjLib_ProjectedCurve   )
+/// gives the 2d-curve of a 3d-curve lying on a
+/// surface (uses GeomProjLib_ProjectedCurve)
 /// The 3dCurve is taken between the parametrization
 /// range [First, Last]
 /// If the projection needs an approximation,
 /// Precision::PApproximation() is used.
-/// WARNING :  if   the projection has  failed,   this
+/// WARNING: if the projection has failed, this
 /// method returns a null Handle.
 pub fn curve2d_handlegeomcurve_real2_handlegeomsurface(
-    C: &crate::ffi_types::HandleGeomCurve,
+    C: &crate::ffi_types::Handle_Geom_Curve,
     First: f64,
     Last: f64,
-    S: &crate::ffi_types::HandleGeomSurface,
-) -> crate::OwnedPtr<crate::ffi_types::HandleGeom2dCurve> {
+    S: &crate::ffi_types::Handle_Geom_Surface,
+) -> crate::OwnedPtr<crate::ffi_types::Handle_Geom2d_Curve> {
     unsafe {
         crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomBase::GeomProjLib_curve2d_handlegeomcurve_real2_handlegeomsurface(C, First, Last, S)))
     }
 }
 /// **Source:** `GeomProjLib.hxx`:91 - `GeomProjLib::Curve2d`
-/// gives  the  2d-curve  of  a  3d-curve lying   on a
-/// surface   ( uses   GeomProjLib_ProjectedCurve ).
+/// gives the 2d-curve of a 3d-curve lying on a
+/// surface (uses GeomProjLib_ProjectedCurve)
 /// If the projection needs an approximation,
 /// Precision::PApproximation() is used.
-/// WARNING  :  if the   projection has  failed,  this
+/// WARNING: if the projection has failed, this
 /// method returns a null Handle.
 pub fn curve2d_handlegeomcurve_handlegeomsurface(
-    C: &crate::ffi_types::HandleGeomCurve,
-    S: &crate::ffi_types::HandleGeomSurface,
-) -> crate::OwnedPtr<crate::ffi_types::HandleGeom2dCurve> {
+    C: &crate::ffi_types::Handle_Geom_Curve,
+    S: &crate::ffi_types::Handle_Geom_Surface,
+) -> crate::OwnedPtr<crate::ffi_types::Handle_Geom2d_Curve> {
     unsafe {
         crate::OwnedPtr::from_raw(crate::check_result(
             crate::ffi_extern_TKGeomBase::GeomProjLib_curve2d_handlegeomcurve_handlegeomsurface(
@@ -91,55 +91,55 @@ pub fn curve2d_handlegeomcurve_handlegeomsurface(
     }
 }
 /// **Source:** `GeomProjLib.hxx`:101 - `GeomProjLib::Curve2d`
-/// gives  the  2d-curve  of  a  3d-curve lying   on a
-/// surface   ( uses   GeomProjLib_ProjectedCurve ).
+/// gives the 2d-curve of a 3d-curve lying on a
+/// surface (uses GeomProjLib_ProjectedCurve)
 /// If the projection needs an approximation,
 /// Precision::PApproximation() is used.
-/// WARNING  :  if the   projection has  failed,  this
+/// WARNING: if the projection has failed, this
 /// method returns a null Handle.
 /// can expand a little the bounds of surface
 pub fn curve2d_handlegeomcurve_handlegeomsurface_real4(
-    C: &crate::ffi_types::HandleGeomCurve,
-    S: &crate::ffi_types::HandleGeomSurface,
+    C: &crate::ffi_types::Handle_Geom_Curve,
+    S: &crate::ffi_types::Handle_Geom_Surface,
     UDeb: f64,
     UFin: f64,
     VDeb: f64,
     VFin: f64,
-) -> crate::OwnedPtr<crate::ffi_types::HandleGeom2dCurve> {
+) -> crate::OwnedPtr<crate::ffi_types::Handle_Geom2d_Curve> {
     unsafe {
         crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomBase::GeomProjLib_curve2d_handlegeomcurve_handlegeomsurface_real4(C, S, UDeb, UFin, VDeb, VFin)))
     }
 }
 /// **Source:** `GeomProjLib.hxx`:115 - `GeomProjLib::Curve2d`
-/// gives  the  2d-curve  of  a  3d-curve lying   on a
-/// surface   ( uses   GeomProjLib_ProjectedCurve ).
+/// gives the 2d-curve of a 3d-curve lying on a
+/// surface (uses GeomProjLib_ProjectedCurve)
 /// If the projection needs an approximation,
 /// Precision::PApproximation() is used.
-/// WARNING  :  if the   projection has  failed,  this
+/// WARNING: if the projection has failed, this
 /// method returns a null Handle.
 /// can expand a little the bounds of surface
 pub fn curve2d_handlegeomcurve_handlegeomsurface_real5(
-    C: &crate::ffi_types::HandleGeomCurve,
-    S: &crate::ffi_types::HandleGeomSurface,
+    C: &crate::ffi_types::Handle_Geom_Curve,
+    S: &crate::ffi_types::Handle_Geom_Surface,
     UDeb: f64,
     UFin: f64,
     VDeb: f64,
     VFin: f64,
     Tolerance: &mut f64,
-) -> crate::OwnedPtr<crate::ffi_types::HandleGeom2dCurve> {
+) -> crate::OwnedPtr<crate::ffi_types::Handle_Geom2d_Curve> {
     unsafe {
         crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomBase::GeomProjLib_curve2d_handlegeomcurve_handlegeomsurface_real5(C, S, UDeb, UFin, VDeb, VFin, Tolerance)))
     }
 }
 /// **Source:** `GeomProjLib.hxx`:127 - `GeomProjLib::Project`
-/// Constructs   the  3d-curve  from the normal
-/// projection  of the  Curve <C> on  the surface <S>.
-/// WARNING : if the  projection has failed, returns  a
+/// Constructs the 3d-curve from the normal
+/// projection of the Curve <C> on the surface <S>.
+/// WARNING: if the projection has failed, returns a
 /// null Handle.
 pub fn project_handlegeomcurve_handlegeomsurface(
-    C: &crate::ffi_types::HandleGeomCurve,
-    S: &crate::ffi_types::HandleGeomSurface,
-) -> crate::OwnedPtr<crate::ffi_types::HandleGeomCurve> {
+    C: &crate::ffi_types::Handle_Geom_Curve,
+    S: &crate::ffi_types::Handle_Geom_Surface,
+) -> crate::OwnedPtr<crate::ffi_types::Handle_Geom_Curve> {
     unsafe {
         crate::OwnedPtr::from_raw(crate::check_result(
             crate::ffi_extern_TKGeomBase::GeomProjLib_project_handlegeomcurve_handlegeomsurface(
@@ -149,20 +149,20 @@ pub fn project_handlegeomcurve_handlegeomsurface(
     }
 }
 /// **Source:** `GeomProjLib.hxx`:138 - `GeomProjLib::ProjectOnPlane`
-/// Constructs  the 3d-curves from the projection
-/// of the  curve  <Curve> on the  plane <Plane> along
+/// Constructs the 3d-curves from the projection
+/// of the curve <Curve> on the plane <Plane> along
 /// the direction <Dir>.
 /// If <KeepParametrization> is true, the parametrization
-/// of the Projected Curve <PC> will be  the same as  the
+/// of the Projected Curve <PC> will be the same as the
 /// parametrization of the initial curve <C>.
 /// It means: proj(C(u)) = PC(u) for each u.
 /// Otherwise, the parametrization may change.
 pub fn project_on_plane(
-    Curve: &crate::ffi_types::HandleGeomCurve,
-    Plane: &crate::ffi_types::HandleGeomPlane,
+    Curve: &crate::ffi_types::Handle_Geom_Curve,
+    Plane: &crate::ffi_types::Handle_Geom_Plane,
     Dir: &crate::gp::Dir,
     KeepParametrization: bool,
-) -> crate::OwnedPtr<crate::ffi_types::HandleGeomCurve> {
+) -> crate::OwnedPtr<crate::ffi_types::Handle_Geom_Curve> {
     unsafe {
         crate::OwnedPtr::from_raw(crate::check_result(
             crate::ffi_extern_TKGeomBase::GeomProjLib_project_on_plane(

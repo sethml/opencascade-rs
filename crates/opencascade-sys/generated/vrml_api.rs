@@ -63,7 +63,7 @@ impl TryFrom<i32> for RepresentationOfShape {
 }
 
 // Handle type re-exports (targets of handle upcasts/downcasts)
-pub use crate::ffi_types::{HandleRWMeshCafReader, HandleStandardTransient};
+pub use crate::ffi_types::{Handle_RWMesh_CafReader, Handle_Standard_Transient};
 
 // ========================
 // From VrmlAPI_CafReader.hxx
@@ -93,7 +93,7 @@ impl CafReader {
     }
 
     /// **Source:** `VrmlAPI_CafReader.hxx`:22 - `VrmlAPI_CafReader::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKDEVRML::VrmlAPI_CafReader_dynamic_type(
                 self as *const Self,
@@ -113,7 +113,7 @@ impl CafReader {
     }
 
     /// **Source:** `VrmlAPI_CafReader.hxx`:22 - `VrmlAPI_CafReader::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKDEVRML::VrmlAPI_CafReader_get_type_descriptor(),
@@ -168,7 +168,7 @@ impl CafReader {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleVrmlAPICafReader> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_VrmlAPI_CafReader> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDEVRML::VrmlAPI_CafReader_to_handle(obj.into_raw()),
@@ -176,8 +176,8 @@ impl CafReader {
         }
     }
 
-    /// Inherited: **Source:** `RWMesh_CafReader.hxx`:72 - `RWMesh_CafReader::Document()`
-    pub fn document(&self) -> &crate::ffi_types::HandleTDocStdDocument {
+    /// Inherited: **Source:** `RWMesh_CafReader.hxx`:74 - `RWMesh_CafReader::Document()`
+    pub fn document(&self) -> &crate::ffi_types::Handle_TDocStd_Document {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKDEVRML::VrmlAPI_CafReader_inherited_Document(
@@ -187,8 +187,8 @@ impl CafReader {
         }
     }
 
-    /// Inherited: **Source:** `RWMesh_CafReader.hxx`:76 - `RWMesh_CafReader::SetDocument()`
-    pub fn set_document(&mut self, theDoc: &crate::ffi_types::HandleTDocStdDocument) {
+    /// Inherited: **Source:** `RWMesh_CafReader.hxx`:78 - `RWMesh_CafReader::SetDocument()`
+    pub fn set_document(&mut self, theDoc: &crate::ffi_types::Handle_TDocStd_Document) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlAPI_CafReader_inherited_SetDocument(
                 self as *mut Self,
@@ -197,7 +197,7 @@ impl CafReader {
         })
     }
 
-    /// Inherited: **Source:** `RWMesh_CafReader.hxx`:79 - `RWMesh_CafReader::RootPrefix()`
+    /// Inherited: **Source:** `RWMesh_CafReader.hxx`:81 - `RWMesh_CafReader::RootPrefix()`
     pub fn root_prefix(&self) -> &crate::t_collection::AsciiString {
         unsafe {
             &*(crate::check_result(
@@ -208,7 +208,7 @@ impl CafReader {
         }
     }
 
-    /// Inherited: **Source:** `RWMesh_CafReader.hxx`:82 - `RWMesh_CafReader::SetRootPrefix()`
+    /// Inherited: **Source:** `RWMesh_CafReader.hxx`:84 - `RWMesh_CafReader::SetRootPrefix()`
     pub fn set_root_prefix(&mut self, theRootPrefix: &crate::t_collection::AsciiString) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlAPI_CafReader_inherited_SetRootPrefix(
@@ -218,7 +218,7 @@ impl CafReader {
         })
     }
 
-    /// Inherited: **Source:** `RWMesh_CafReader.hxx`:95 - `RWMesh_CafReader::ToFillIncompleteDocument()`
+    /// Inherited: **Source:** `RWMesh_CafReader.hxx`:97 - `RWMesh_CafReader::ToFillIncompleteDocument()`
     pub fn to_fill_incomplete_document(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlAPI_CafReader_inherited_ToFillIncompleteDocument(
@@ -227,7 +227,7 @@ impl CafReader {
         })
     }
 
-    /// Inherited: **Source:** `RWMesh_CafReader.hxx`:98 - `RWMesh_CafReader::SetFillIncompleteDocument()`
+    /// Inherited: **Source:** `RWMesh_CafReader.hxx`:100 - `RWMesh_CafReader::SetFillIncompleteDocument()`
     pub fn set_fill_incomplete_document(&mut self, theToFillIncomplete: bool) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlAPI_CafReader_inherited_SetFillIncompleteDocument(
@@ -237,7 +237,7 @@ impl CafReader {
         })
     }
 
-    /// Inherited: **Source:** `RWMesh_CafReader.hxx`:104 - `RWMesh_CafReader::MemoryLimitMiB()`
+    /// Inherited: **Source:** `RWMesh_CafReader.hxx`:106 - `RWMesh_CafReader::MemoryLimitMiB()`
     pub fn memory_limit_mi_b(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlAPI_CafReader_inherited_MemoryLimitMiB(
@@ -246,7 +246,7 @@ impl CafReader {
         })
     }
 
-    /// Inherited: **Source:** `RWMesh_CafReader.hxx`:107 - `RWMesh_CafReader::SetMemoryLimitMiB()`
+    /// Inherited: **Source:** `RWMesh_CafReader.hxx`:109 - `RWMesh_CafReader::SetMemoryLimitMiB()`
     pub fn set_memory_limit_mi_b(&mut self, theLimitMiB: i32) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlAPI_CafReader_inherited_SetMemoryLimitMiB(
@@ -256,7 +256,7 @@ impl CafReader {
         })
     }
 
-    /// Inherited: **Source:** `RWMesh_CafReader.hxx`:111 - `RWMesh_CafReader::CoordinateSystemConverter()`
+    /// Inherited: **Source:** `RWMesh_CafReader.hxx`:113 - `RWMesh_CafReader::CoordinateSystemConverter()`
     pub fn coordinate_system_converter(&self) -> &crate::rw_mesh::CoordinateSystemConverter {
         unsafe {
             &*(crate::check_result(
@@ -267,7 +267,7 @@ impl CafReader {
         }
     }
 
-    /// Inherited: **Source:** `RWMesh_CafReader.hxx`:117 - `RWMesh_CafReader::SetCoordinateSystemConverter()`
+    /// Inherited: **Source:** `RWMesh_CafReader.hxx`:119 - `RWMesh_CafReader::SetCoordinateSystemConverter()`
     pub fn set_coordinate_system_converter(
         &mut self,
         theConverter: &crate::rw_mesh::CoordinateSystemConverter,
@@ -280,7 +280,7 @@ impl CafReader {
         })
     }
 
-    /// Inherited: **Source:** `RWMesh_CafReader.hxx`:124 - `RWMesh_CafReader::SystemLengthUnit()`
+    /// Inherited: **Source:** `RWMesh_CafReader.hxx`:126 - `RWMesh_CafReader::SystemLengthUnit()`
     pub fn system_length_unit(&self) -> f64 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlAPI_CafReader_inherited_SystemLengthUnit(
@@ -289,7 +289,7 @@ impl CafReader {
         })
     }
 
-    /// Inherited: **Source:** `RWMesh_CafReader.hxx`:128 - `RWMesh_CafReader::SetSystemLengthUnit()`
+    /// Inherited: **Source:** `RWMesh_CafReader.hxx`:130 - `RWMesh_CafReader::SetSystemLengthUnit()`
     pub fn set_system_length_unit(&mut self, theUnits: f64) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlAPI_CafReader_inherited_SetSystemLengthUnit(
@@ -299,7 +299,7 @@ impl CafReader {
         })
     }
 
-    /// Inherited: **Source:** `RWMesh_CafReader.hxx`:134 - `RWMesh_CafReader::HasSystemCoordinateSystem()`
+    /// Inherited: **Source:** `RWMesh_CafReader.hxx`:133 - `RWMesh_CafReader::HasSystemCoordinateSystem()`
     pub fn has_system_coordinate_system(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlAPI_CafReader_inherited_HasSystemCoordinateSystem(
@@ -308,7 +308,7 @@ impl CafReader {
         })
     }
 
-    /// Inherited: **Source:** `RWMesh_CafReader.hxx`:141 - `RWMesh_CafReader::SystemCoordinateSystem()`
+    /// Inherited: **Source:** `RWMesh_CafReader.hxx`:137 - `RWMesh_CafReader::SystemCoordinateSystem()`
     pub fn system_coordinate_system(&self) -> &crate::gp::Ax3 {
         unsafe {
             &*(crate::check_result(
@@ -319,7 +319,7 @@ impl CafReader {
         }
     }
 
-    /// Inherited: **Source:** `RWMesh_CafReader.hxx`:147 - `RWMesh_CafReader::SetSystemCoordinateSystem()`
+    /// Inherited: **Source:** `RWMesh_CafReader.hxx`:143 - `RWMesh_CafReader::SetSystemCoordinateSystem()`
     pub fn set_system_coordinate_system(&mut self, theCS: &crate::gp::Ax3) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlAPI_CafReader_inherited_SetSystemCoordinateSystem(
@@ -329,7 +329,7 @@ impl CafReader {
         })
     }
 
-    /// Inherited: **Source:** `RWMesh_CafReader.hxx`:160 - `RWMesh_CafReader::FileLengthUnit()`
+    /// Inherited: **Source:** `RWMesh_CafReader.hxx`:156 - `RWMesh_CafReader::FileLengthUnit()`
     pub fn file_length_unit(&self) -> f64 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlAPI_CafReader_inherited_FileLengthUnit(
@@ -338,7 +338,7 @@ impl CafReader {
         })
     }
 
-    /// Inherited: **Source:** `RWMesh_CafReader.hxx`:164 - `RWMesh_CafReader::SetFileLengthUnit()`
+    /// Inherited: **Source:** `RWMesh_CafReader.hxx`:160 - `RWMesh_CafReader::SetFileLengthUnit()`
     pub fn set_file_length_unit(&mut self, theUnits: f64) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlAPI_CafReader_inherited_SetFileLengthUnit(
@@ -348,7 +348,7 @@ impl CafReader {
         })
     }
 
-    /// Inherited: **Source:** `RWMesh_CafReader.hxx`:170 - `RWMesh_CafReader::HasFileCoordinateSystem()`
+    /// Inherited: **Source:** `RWMesh_CafReader.hxx`:163 - `RWMesh_CafReader::HasFileCoordinateSystem()`
     pub fn has_file_coordinate_system(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlAPI_CafReader_inherited_HasFileCoordinateSystem(
@@ -357,7 +357,7 @@ impl CafReader {
         })
     }
 
-    /// Inherited: **Source:** `RWMesh_CafReader.hxx`:177 - `RWMesh_CafReader::FileCoordinateSystem()`
+    /// Inherited: **Source:** `RWMesh_CafReader.hxx`:167 - `RWMesh_CafReader::FileCoordinateSystem()`
     pub fn file_coordinate_system(&self) -> &crate::gp::Ax3 {
         unsafe {
             &*(crate::check_result(
@@ -368,7 +368,7 @@ impl CafReader {
         }
     }
 
-    /// Inherited: **Source:** `RWMesh_CafReader.hxx`:180 - `RWMesh_CafReader::SetFileCoordinateSystem()`
+    /// Inherited: **Source:** `RWMesh_CafReader.hxx`:170 - `RWMesh_CafReader::SetFileCoordinateSystem()`
     pub fn set_file_coordinate_system(&mut self, theCS: &crate::gp::Ax3) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlAPI_CafReader_inherited_SetFileCoordinateSystem(
@@ -378,7 +378,7 @@ impl CafReader {
         })
     }
 
-    /// Inherited: **Source:** `RWMesh_CafReader.hxx`:194 - `RWMesh_CafReader::Perform()`
+    /// Inherited: **Source:** `RWMesh_CafReader.hxx`:184 - `RWMesh_CafReader::Perform()`
     pub fn perform(
         &mut self,
         theFile: &crate::t_collection::AsciiString,
@@ -393,14 +393,14 @@ impl CafReader {
         })
     }
 
-    /// Inherited: **Source:** `RWMesh_CafReader.hxx`:211 - `RWMesh_CafReader::ExtraStatus()`
+    /// Inherited: **Source:** `RWMesh_CafReader.hxx`:201 - `RWMesh_CafReader::ExtraStatus()`
     pub fn extra_status(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlAPI_CafReader_inherited_ExtraStatus(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `RWMesh_CafReader.hxx`:215 - `RWMesh_CafReader::SingleShape()`
+    /// Inherited: **Source:** `RWMesh_CafReader.hxx`:205 - `RWMesh_CafReader::SingleShape()`
     pub fn single_shape(&self) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -411,8 +411,10 @@ impl CafReader {
         }
     }
 
-    /// Inherited: **Source:** `RWMesh_CafReader.hxx`:218 - `RWMesh_CafReader::ExternalFiles()`
-    pub fn external_files(&self) -> &crate::ffi_types::Interface_IndexedMapOfAsciiString {
+    /// Inherited: **Source:** `RWMesh_CafReader.hxx`:208 - `RWMesh_CafReader::ExternalFiles()`
+    pub fn external_files(
+        &self,
+    ) -> &crate::ffi_types::NCollection_IndexedMap_TCollection_AsciiString {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKDEVRML::VrmlAPI_CafReader_inherited_ExternalFiles(
@@ -422,8 +424,11 @@ impl CafReader {
         }
     }
 
-    /// Inherited: **Source:** `RWMesh_CafReader.hxx`:224 - `RWMesh_CafReader::Metadata()`
-    pub fn metadata(&self) -> &crate::ffi_types::TColStd_IndexedDataMapOfStringString {
+    /// Inherited: **Source:** `RWMesh_CafReader.hxx`:214 - `RWMesh_CafReader::Metadata()`
+    pub fn metadata(
+        &self,
+    ) -> &crate::ffi_types::NCollection_IndexedDataMap_TCollection_AsciiString_TCollection_AsciiString
+    {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKDEVRML::VrmlAPI_CafReader_inherited_Metadata(
@@ -433,7 +438,7 @@ impl CafReader {
         }
     }
 
-    /// Inherited: **Source:** `RWMesh_CafReader.hxx`:227 - `RWMesh_CafReader::ProbeHeader()`
+    /// Inherited: **Source:** `RWMesh_CafReader.hxx`:221 - `RWMesh_CafReader::ProbeHeader()`
     pub fn probe_header(
         &mut self,
         theFile: &crate::t_collection::AsciiString,
@@ -448,8 +453,8 @@ impl CafReader {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlAPI_CafReader_inherited_IsInstance(
                 self as *const Self,
@@ -458,8 +463,8 @@ impl CafReader {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlAPI_CafReader_inherited_IsKind(
                 self as *const Self,
@@ -468,7 +473,7 @@ impl CafReader {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -482,14 +487,14 @@ impl CafReader {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlAPI_CafReader_inherited_GetRefCount(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlAPI_CafReader_inherited_IncrementRefCounter(
@@ -498,7 +503,7 @@ impl CafReader {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlAPI_CafReader_inherited_DecrementRefCounter(
@@ -507,7 +512,7 @@ impl CafReader {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlAPI_CafReader_inherited_Delete(self as *const Self)
@@ -515,34 +520,34 @@ impl CafReader {
     }
 }
 
-pub use crate::ffi_types::HandleVrmlAPICafReader;
+pub use crate::ffi_types::Handle_VrmlAPI_CafReader;
 
-unsafe impl crate::CppDeletable for HandleVrmlAPICafReader {
+unsafe impl crate::CppDeletable for Handle_VrmlAPI_CafReader {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKDEVRML::HandleVrmlAPICafReader_destructor(ptr);
+            crate::ffi_extern_TKDEVRML::Handle_VrmlAPI_CafReader_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleVrmlAPICafReader {
+unsafe impl crate::CppCopyable for Handle_VrmlAPI_CafReader {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
         unsafe {
-            crate::check_result(crate::ffi_extern_TKDEVRML::HandleVrmlAPICafReader_clone(ptr))
+            crate::check_result(crate::ffi_extern_TKDEVRML::Handle_VrmlAPI_CafReader_clone(ptr))
         }
     }
 }
 
-impl HandleVrmlAPICafReader {
+impl Handle_VrmlAPI_CafReader {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
-        unsafe { crate::ffi_extern_TKDEVRML::HandleVrmlAPICafReader_is_null(self as *const Self) }
+        unsafe { crate::ffi_extern_TKDEVRML::Handle_VrmlAPI_CafReader_is_null(self as *const Self) }
     }
 
     /// Dereference this Handle to access the underlying VrmlAPI_CafReader
     pub fn get(&self) -> &crate::ffi_types::VrmlAPI_CafReader {
         unsafe {
-            &*crate::check_result(crate::ffi_extern_TKDEVRML::HandleVrmlAPICafReader_get(
+            &*crate::check_result(crate::ffi_extern_TKDEVRML::Handle_VrmlAPI_CafReader_get(
                 self as *const Self,
             ))
         }
@@ -551,17 +556,19 @@ impl HandleVrmlAPICafReader {
     /// Dereference this Handle to mutably access the underlying VrmlAPI_CafReader
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::VrmlAPI_CafReader {
         unsafe {
-            &mut *crate::check_result(crate::ffi_extern_TKDEVRML::HandleVrmlAPICafReader_get_mut(
+            &mut *crate::check_result(crate::ffi_extern_TKDEVRML::Handle_VrmlAPI_CafReader_get_mut(
                 self as *mut Self,
             ))
         }
     }
 
     /// Upcast Handle<VrmlAPI_CafReader> to Handle<RWMesh_CafReader>
-    pub fn to_handle_caf_reader(&self) -> crate::OwnedPtr<crate::ffi_types::HandleRWMeshCafReader> {
+    pub fn to_handle_caf_reader(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_RWMesh_CafReader> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKDEVRML::HandleVrmlAPICafReader_to_HandleRWMeshCafReader(
+                crate::ffi_extern_TKDEVRML::Handle_VrmlAPI_CafReader_to_Handle_RWMesh_CafReader(
                     self as *const Self,
                 ),
             ))
@@ -571,10 +578,10 @@ impl HandleVrmlAPICafReader {
     /// Upcast Handle<VrmlAPI_CafReader> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKDEVRML::HandleVrmlAPICafReader_to_HandleStandardTransient(
+                crate::ffi_extern_TKDEVRML::Handle_VrmlAPI_CafReader_to_Handle_Standard_Transient(
                     self as *const Self,
                 ),
             ))
@@ -586,7 +593,7 @@ impl HandleVrmlAPICafReader {
 // From VrmlAPI_Writer.hxx
 // ========================
 
-/// **Source:** `VrmlAPI_Writer.hxx`:36 - `VrmlAPI_Writer`
+/// **Source:** `VrmlAPI_Writer.hxx`:38 - `VrmlAPI_Writer`
 /// Creates and writes VRML files from Open
 /// CASCADE shapes. A VRML file can be written to
 /// an existing VRML file or to a new one.
@@ -601,7 +608,7 @@ unsafe impl crate::CppDeletable for Writer {
 }
 
 impl Writer {
-    /// **Source:** `VrmlAPI_Writer.hxx`:42 - `VrmlAPI_Writer::VrmlAPI_Writer()`
+    /// **Source:** `VrmlAPI_Writer.hxx`:44 - `VrmlAPI_Writer::VrmlAPI_Writer()`
     /// Creates a writer object with default parameters.
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
@@ -611,7 +618,7 @@ impl Writer {
         }
     }
 
-    /// **Source:** `VrmlAPI_Writer.hxx`:46 - `VrmlAPI_Writer::ResetToDefaults()`
+    /// **Source:** `VrmlAPI_Writer.hxx`:48 - `VrmlAPI_Writer::ResetToDefaults()`
     /// Resets all parameters (representation, deflection)
     /// to their default values..
     pub fn reset_to_defaults(&mut self) {
@@ -620,9 +627,9 @@ impl Writer {
         })
     }
 
-    /// **Source:** `VrmlAPI_Writer.hxx`:49 - `VrmlAPI_Writer::Drawer()`
+    /// **Source:** `VrmlAPI_Writer.hxx`:51 - `VrmlAPI_Writer::Drawer()`
     /// Returns drawer object
-    pub fn drawer(&self) -> crate::OwnedPtr<crate::ffi_types::HandleVrmlConverterDrawer> {
+    pub fn drawer(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_VrmlConverter_Drawer> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDEVRML::VrmlAPI_Writer_drawer(self as *const Self),
@@ -630,7 +637,7 @@ impl Writer {
         }
     }
 
-    /// **Source:** `VrmlAPI_Writer.hxx`:57 - `VrmlAPI_Writer::SetDeflection()`
+    /// **Source:** `VrmlAPI_Writer.hxx`:59 - `VrmlAPI_Writer::SetDeflection()`
     /// Sets the deflection aDef of
     /// the mesh algorithm which is used to compute the shaded
     /// representation of the translated shape. The default
@@ -643,7 +650,7 @@ impl Writer {
         })
     }
 
-    /// **Source:** `VrmlAPI_Writer.hxx`:65 - `VrmlAPI_Writer::SetRepresentation()`
+    /// **Source:** `VrmlAPI_Writer.hxx`:67 - `VrmlAPI_Writer::SetRepresentation()`
     /// Sets the representation of the
     /// shape aRep which is written to the VRML file. The three options are :
     /// -      shaded
@@ -659,98 +666,7 @@ impl Writer {
         })
     }
 
-    /// **Source:** `VrmlAPI_Writer.hxx`:68 - `VrmlAPI_Writer::SetTransparencyToMaterial()`
-    /// Set transparency to given material
-    pub fn set_transparency_to_material(
-        &mut self,
-        aMaterial: &mut crate::ffi_types::HandleVrmlMaterial,
-        aTransparency: f64,
-    ) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKDEVRML::VrmlAPI_Writer_set_transparency_to_material(
-                self as *mut Self,
-                aMaterial,
-                aTransparency,
-            )
-        })
-    }
-
-    /// **Source:** `VrmlAPI_Writer.hxx`:71 - `VrmlAPI_Writer::SetShininessToMaterial()`
-    pub fn set_shininess_to_material(
-        &mut self,
-        aMaterial: &mut crate::ffi_types::HandleVrmlMaterial,
-        aShininess: f64,
-    ) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKDEVRML::VrmlAPI_Writer_set_shininess_to_material(
-                self as *mut Self,
-                aMaterial,
-                aShininess,
-            )
-        })
-    }
-
-    /// **Source:** `VrmlAPI_Writer.hxx`:74 - `VrmlAPI_Writer::SetAmbientColorToMaterial()`
-    pub fn set_ambient_color_to_material(
-        &mut self,
-        aMaterial: &mut crate::ffi_types::HandleVrmlMaterial,
-        Color: &crate::ffi_types::HandleQuantityHArray1OfColor,
-    ) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKDEVRML::VrmlAPI_Writer_set_ambient_color_to_material(
-                self as *mut Self,
-                aMaterial,
-                Color,
-            )
-        })
-    }
-
-    /// **Source:** `VrmlAPI_Writer.hxx`:77 - `VrmlAPI_Writer::SetDiffuseColorToMaterial()`
-    pub fn set_diffuse_color_to_material(
-        &mut self,
-        aMaterial: &mut crate::ffi_types::HandleVrmlMaterial,
-        Color: &crate::ffi_types::HandleQuantityHArray1OfColor,
-    ) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKDEVRML::VrmlAPI_Writer_set_diffuse_color_to_material(
-                self as *mut Self,
-                aMaterial,
-                Color,
-            )
-        })
-    }
-
-    /// **Source:** `VrmlAPI_Writer.hxx`:80 - `VrmlAPI_Writer::SetSpecularColorToMaterial()`
-    pub fn set_specular_color_to_material(
-        &mut self,
-        aMaterial: &mut crate::ffi_types::HandleVrmlMaterial,
-        Color: &crate::ffi_types::HandleQuantityHArray1OfColor,
-    ) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKDEVRML::VrmlAPI_Writer_set_specular_color_to_material(
-                self as *mut Self,
-                aMaterial,
-                Color,
-            )
-        })
-    }
-
-    /// **Source:** `VrmlAPI_Writer.hxx`:83 - `VrmlAPI_Writer::SetEmissiveColorToMaterial()`
-    pub fn set_emissive_color_to_material(
-        &mut self,
-        aMaterial: &mut crate::ffi_types::HandleVrmlMaterial,
-        Color: &crate::ffi_types::HandleQuantityHArray1OfColor,
-    ) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKDEVRML::VrmlAPI_Writer_set_emissive_color_to_material(
-                self as *mut Self,
-                aMaterial,
-                Color,
-            )
-        })
-    }
-
-    /// **Source:** `VrmlAPI_Writer.hxx`:89 - `VrmlAPI_Writer::GetRepresentation()`
+    /// **Source:** `VrmlAPI_Writer.hxx`:72 - `VrmlAPI_Writer::GetRepresentation()`
     /// Returns the representation of the shape which is
     /// written to the VRML file. Types of representation are set through the
     /// VrmlAPI_RepresentationOfShape enumeration.
@@ -761,8 +677,8 @@ impl Writer {
         .unwrap()
     }
 
-    /// **Source:** `VrmlAPI_Writer.hxx`:91 - `VrmlAPI_Writer::GetFrontMaterial()`
-    pub fn get_front_material(&self) -> crate::OwnedPtr<crate::ffi_types::HandleVrmlMaterial> {
+    /// **Source:** `VrmlAPI_Writer.hxx`:108 - `VrmlAPI_Writer::GetFrontMaterial()`
+    pub fn get_front_material(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_Vrml_Material> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDEVRML::VrmlAPI_Writer_get_front_material(self as *const Self),
@@ -770,8 +686,8 @@ impl Writer {
         }
     }
 
-    /// **Source:** `VrmlAPI_Writer.hxx`:93 - `VrmlAPI_Writer::GetPointsMaterial()`
-    pub fn get_points_material(&self) -> crate::OwnedPtr<crate::ffi_types::HandleVrmlMaterial> {
+    /// **Source:** `VrmlAPI_Writer.hxx`:110 - `VrmlAPI_Writer::GetPointsMaterial()`
+    pub fn get_points_material(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_Vrml_Material> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDEVRML::VrmlAPI_Writer_get_points_material(self as *const Self),
@@ -779,8 +695,8 @@ impl Writer {
         }
     }
 
-    /// **Source:** `VrmlAPI_Writer.hxx`:95 - `VrmlAPI_Writer::GetUisoMaterial()`
-    pub fn get_uiso_material(&self) -> crate::OwnedPtr<crate::ffi_types::HandleVrmlMaterial> {
+    /// **Source:** `VrmlAPI_Writer.hxx`:112 - `VrmlAPI_Writer::GetUisoMaterial()`
+    pub fn get_uiso_material(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_Vrml_Material> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDEVRML::VrmlAPI_Writer_get_uiso_material(self as *const Self),
@@ -788,8 +704,8 @@ impl Writer {
         }
     }
 
-    /// **Source:** `VrmlAPI_Writer.hxx`:97 - `VrmlAPI_Writer::GetVisoMaterial()`
-    pub fn get_viso_material(&self) -> crate::OwnedPtr<crate::ffi_types::HandleVrmlMaterial> {
+    /// **Source:** `VrmlAPI_Writer.hxx`:114 - `VrmlAPI_Writer::GetVisoMaterial()`
+    pub fn get_viso_material(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_Vrml_Material> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDEVRML::VrmlAPI_Writer_get_viso_material(self as *const Self),
@@ -797,8 +713,8 @@ impl Writer {
         }
     }
 
-    /// **Source:** `VrmlAPI_Writer.hxx`:99 - `VrmlAPI_Writer::GetLineMaterial()`
-    pub fn get_line_material(&self) -> crate::OwnedPtr<crate::ffi_types::HandleVrmlMaterial> {
+    /// **Source:** `VrmlAPI_Writer.hxx`:116 - `VrmlAPI_Writer::GetLineMaterial()`
+    pub fn get_line_material(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_Vrml_Material> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDEVRML::VrmlAPI_Writer_get_line_material(self as *const Self),
@@ -806,8 +722,8 @@ impl Writer {
         }
     }
 
-    /// **Source:** `VrmlAPI_Writer.hxx`:101 - `VrmlAPI_Writer::GetWireMaterial()`
-    pub fn get_wire_material(&self) -> crate::OwnedPtr<crate::ffi_types::HandleVrmlMaterial> {
+    /// **Source:** `VrmlAPI_Writer.hxx`:118 - `VrmlAPI_Writer::GetWireMaterial()`
+    pub fn get_wire_material(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_Vrml_Material> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDEVRML::VrmlAPI_Writer_get_wire_material(self as *const Self),
@@ -815,10 +731,10 @@ impl Writer {
         }
     }
 
-    /// **Source:** `VrmlAPI_Writer.hxx`:103 - `VrmlAPI_Writer::GetFreeBoundsMaterial()`
+    /// **Source:** `VrmlAPI_Writer.hxx`:120 - `VrmlAPI_Writer::GetFreeBoundsMaterial()`
     pub fn get_free_bounds_material(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleVrmlMaterial> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Vrml_Material> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDEVRML::VrmlAPI_Writer_get_free_bounds_material(
@@ -828,10 +744,10 @@ impl Writer {
         }
     }
 
-    /// **Source:** `VrmlAPI_Writer.hxx`:105 - `VrmlAPI_Writer::GetUnfreeBoundsMaterial()`
+    /// **Source:** `VrmlAPI_Writer.hxx`:122 - `VrmlAPI_Writer::GetUnfreeBoundsMaterial()`
     pub fn get_unfree_bounds_material(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleVrmlMaterial> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Vrml_Material> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDEVRML::VrmlAPI_Writer_get_unfree_bounds_material(
@@ -841,13 +757,18 @@ impl Writer {
         }
     }
 
-    /// **Source:** `VrmlAPI_Writer.hxx`:109 - `VrmlAPI_Writer::Write()`
+    /// **Source:** `VrmlAPI_Writer.hxx`:126 - `VrmlAPI_Writer::Write()`
     /// Converts the shape aShape to
     /// VRML format of the passed version and writes it to the file identified by aFile.
-    pub fn write(&self, aShape: &crate::topo_ds::Shape, aFile: &str, aVersion: i32) -> bool {
+    pub fn write_shape_charptr_int(
+        &self,
+        aShape: &crate::topo_ds::Shape,
+        aFile: &str,
+        aVersion: i32,
+    ) -> bool {
         let c_aFile = std::ffi::CString::new(aFile).unwrap();
         crate::check_result(unsafe {
-            crate::ffi_extern_TKDEVRML::VrmlAPI_Writer_write(
+            crate::ffi_extern_TKDEVRML::VrmlAPI_Writer_write_shape_charptr_int(
                 self as *const Self,
                 aShape,
                 c_aFile.as_ptr(),
@@ -856,21 +777,59 @@ impl Writer {
         })
     }
 
-    /// **Source:** `VrmlAPI_Writer.hxx`:115 - `VrmlAPI_Writer::WriteDoc()`
+    /// **Source:** `VrmlAPI_Writer.hxx`:132 - `VrmlAPI_Writer::WriteDoc()`
     /// Converts the document to VRML format of the passed version
     /// and writes it to the file identified by aFile.
-    pub fn write_doc(
+    pub fn write_doc_handletdocstddocument_charptr_real(
         &self,
-        theDoc: &crate::ffi_types::HandleTDocStdDocument,
+        theDoc: &crate::ffi_types::Handle_TDocStd_Document,
         theFile: &str,
         theScale: f64,
     ) -> bool {
         let c_theFile = std::ffi::CString::new(theFile).unwrap();
         crate::check_result(unsafe {
-            crate::ffi_extern_TKDEVRML::VrmlAPI_Writer_write_doc(
+            crate::ffi_extern_TKDEVRML::VrmlAPI_Writer_write_doc_handletdocstddocument_charptr_real(
                 self as *const Self,
                 theDoc,
                 c_theFile.as_ptr(),
+                theScale,
+            )
+        })
+    }
+
+    /// **Source:** `VrmlAPI_Writer.hxx`:138 - `VrmlAPI_Writer::Write()`
+    /// Converts the shape aShape to
+    /// VRML format of the passed version and writes it to the given stream.
+    pub fn write_shape_ostream_int(
+        &self,
+        aShape: &crate::topo_ds::Shape,
+        theOStream: &mut crate::ffi_types::Standard_OStream,
+        aVersion: i32,
+    ) -> bool {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKDEVRML::VrmlAPI_Writer_write_shape_ostream_int(
+                self as *const Self,
+                aShape,
+                theOStream,
+                aVersion,
+            )
+        })
+    }
+
+    /// **Source:** `VrmlAPI_Writer.hxx`:144 - `VrmlAPI_Writer::WriteDoc()`
+    /// Converts the document to VRML format of the passed version
+    /// and writes it to the given stream.
+    pub fn write_doc_handletdocstddocument_ostream_real(
+        &self,
+        theDoc: &crate::ffi_types::Handle_TDocStd_Document,
+        theOStream: &mut crate::ffi_types::Standard_OStream,
+        theScale: f64,
+    ) -> bool {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKDEVRML::VrmlAPI_Writer_write_doc_handletdocstddocument_ostream_real(
+                self as *const Self,
+                theDoc,
+                theOStream,
                 theScale,
             )
         })

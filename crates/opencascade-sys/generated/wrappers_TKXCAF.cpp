@@ -3,61 +3,29 @@
 
 #include "occt_preamble.hxx"
 
-#include <AIS_ColoredShape.hxx>
-#include <AIS_DataMapOfShapeDrawer.hxx>
-#include <AIS_InteractiveContext.hxx>
-#include <AIS_Shape.hxx>
-#include <Bnd_Box.hxx>
+#include <AIS_InteractiveObject.hxx>
 #include <CDF_Application.hxx>
 #include <CDM_Application.hxx>
 #include <CDM_Document.hxx>
-#include <CDM_MetaDataLookUpTable.hxx>
 #include <Graphic3d_AlphaMode.hxx>
 #include <Graphic3d_Aspects.hxx>
 #include <Graphic3d_MaterialAspect.hxx>
-#include <Graphic3d_ShaderVariable.hxx>
-#include <Graphic3d_Texture2D.hxx>
-#include <Graphic3d_TextureMap.hxx>
-#include <Graphic3d_TextureRoot.hxx>
 #include <Graphic3d_TextureUnit.hxx>
 #include <Graphic3d_TypeOfBackfacingModel.hxx>
 #include <Image_CompressedPixMap.hxx>
+#include <Image_PixMap.hxx>
 #include <Image_SupportedFormats.hxx>
 #include <Image_Texture.hxx>
 #include <Message_ProgressRange.hxx>
 #include <OSD_File.hxx>
-#include <OSD_Path.hxx>
-#include <PrsMgr_ListOfPresentableObjects.hxx>
-#include <PrsMgr_PresentableObject.hxx>
-#include <PrsMgr_Presentations.hxx>
-#include <Quantity_Color.hxx>
 #include <Quantity_ColorRGBA.hxx>
 #include <Quantity_NameOfColor.hxx>
-#include <SelectMgr_SelectableObject.hxx>
-#include <SelectMgr_SequenceOfOwner.hxx>
-#include <SelectMgr_SequenceOfSelection.hxx>
-#include <Standard_GUID.hxx>
 #include <Standard_Handle.hxx>
 #include <Standard_IStream.hxx>
 #include <Standard_OStream.hxx>
 #include <Standard_Type.hxx>
-#include <TColStd_HArray1OfByte.hxx>
-#include <TColStd_HArray1OfReal.hxx>
-#include <TColStd_HSequenceOfExtendedString.hxx>
-#include <TColStd_ListOfAsciiString.hxx>
-#include <TColStd_SequenceOfAsciiString.hxx>
-#include <TColStd_SequenceOfHAsciiString.hxx>
-#include <TCollection_ExtendedString.hxx>
-#include <TCollection_HAsciiString.hxx>
 #include <TDF_Attribute.hxx>
-#include <TDF_AttributeIndexedMap.hxx>
-#include <TDF_AttributeSequence.hxx>
 #include <TDF_DataSet.hxx>
-#include <TDF_IDFilter.hxx>
-#include <TDF_LabelDataMap.hxx>
-#include <TDF_LabelIndexedMap.hxx>
-#include <TDF_LabelMap.hxx>
-#include <TDF_LabelSequence.hxx>
 #include <TDF_RelocationTable.hxx>
 #include <TDataStd_GenericEmpty.hxx>
 #include <TDataStd_NamedData.hxx>
@@ -65,33 +33,20 @@
 #include <TDocStd_Application.hxx>
 #include <TDocStd_Document.hxx>
 #include <TPrsStd_Driver.hxx>
-#include <TopLoc_Location.hxx>
-#include <TopTools_IndexedMapOfShape.hxx>
-#include <TopTools_SequenceOfShape.hxx>
 #include <TopoDS_Edge.hxx>
 #include <UnitsMethods_LengthUnit.hxx>
 #include <XCAFApp_Application.hxx>
 #include <XCAFDimTolObjects_AngularQualifier.hxx>
-#include <XCAFDimTolObjects_DataMapOfToleranceDatum.hxx>
 #include <XCAFDimTolObjects_DatumModifWithValue.hxx>
-#include <XCAFDimTolObjects_DatumModifiersSequence.hxx>
 #include <XCAFDimTolObjects_DatumObject.hxx>
-#include <XCAFDimTolObjects_DatumObjectSequence.hxx>
-#include <XCAFDimTolObjects_DatumSingleModif.hxx>
 #include <XCAFDimTolObjects_DatumTargetType.hxx>
 #include <XCAFDimTolObjects_DimensionFormVariance.hxx>
 #include <XCAFDimTolObjects_DimensionGrade.hxx>
-#include <XCAFDimTolObjects_DimensionModif.hxx>
-#include <XCAFDimTolObjects_DimensionModifiersSequence.hxx>
 #include <XCAFDimTolObjects_DimensionObject.hxx>
-#include <XCAFDimTolObjects_DimensionObjectSequence.hxx>
 #include <XCAFDimTolObjects_DimensionQualifier.hxx>
 #include <XCAFDimTolObjects_DimensionType.hxx>
 #include <XCAFDimTolObjects_GeomToleranceMatReqModif.hxx>
-#include <XCAFDimTolObjects_GeomToleranceModif.hxx>
-#include <XCAFDimTolObjects_GeomToleranceModifiersSequence.hxx>
 #include <XCAFDimTolObjects_GeomToleranceObject.hxx>
-#include <XCAFDimTolObjects_GeomToleranceObjectSequence.hxx>
 #include <XCAFDimTolObjects_GeomToleranceType.hxx>
 #include <XCAFDimTolObjects_GeomToleranceTypeValue.hxx>
 #include <XCAFDimTolObjects_GeomToleranceZoneModif.hxx>
@@ -108,7 +63,6 @@
 #include <XCAFDoc_Color.hxx>
 #include <XCAFDoc_ColorTool.hxx>
 #include <XCAFDoc_ColorType.hxx>
-#include <XCAFDoc_DataMapOfShapeLabel.hxx>
 #include <XCAFDoc_Datum.hxx>
 #include <XCAFDoc_DimTol.hxx>
 #include <XCAFDoc_DimTolTool.hxx>
@@ -131,6 +85,7 @@
 #include <XCAFDoc_ShapeTool.hxx>
 #include <XCAFDoc_View.hxx>
 #include <XCAFDoc_ViewTool.hxx>
+#include <XCAFDoc_VisMaterial.hxx>
 #include <XCAFDoc_VisMaterialCommon.hxx>
 #include <XCAFDoc_VisMaterialPBR.hxx>
 #include <XCAFDoc_VisMaterialTool.hxx>
@@ -142,331 +97,318 @@
 #include <XCAFPrs_DocumentIdIterator.hxx>
 #include <XCAFPrs_DocumentNode.hxx>
 #include <XCAFPrs_Driver.hxx>
-#include <XCAFPrs_IndexedDataMapOfShapeStyle.hxx>
-#include <XCAFPrs_Style.hxx>
 #include <XCAFPrs_Texture.hxx>
 #include <XCAFView_Object.hxx>
 #include <XCAFView_ProjectionType.hxx>
 #include <gp_Ax2.hxx>
-#include <gp_Dir.hxx>
-#include <gp_GTrsf.hxx>
 #include <gp_Pln.hxx>
-#include <gp_Trsf.hxx>
 
 // Handle type aliases
-typedef opencascade::handle<AIS_ColoredShape> HandleAISColoredShape;
-typedef opencascade::handle<AIS_InteractiveObject> HandleAISInteractiveObject;
-typedef opencascade::handle<AIS_Shape> HandleAISShape;
-typedef opencascade::handle<CDF_Application> HandleCDFApplication;
-typedef opencascade::handle<CDM_Application> HandleCDMApplication;
-typedef opencascade::handle<CDM_Document> HandleCDMDocument;
-typedef opencascade::handle<Graphic3d_Aspects> HandleGraphic3dAspects;
-typedef opencascade::handle<Graphic3d_Texture2D> HandleGraphic3dTexture2D;
-typedef opencascade::handle<Graphic3d_TextureMap> HandleGraphic3dTextureMap;
-typedef opencascade::handle<Graphic3d_TextureRoot> HandleGraphic3dTextureRoot;
-typedef opencascade::handle<Image_CompressedPixMap> HandleImageCompressedPixMap;
-typedef opencascade::handle<Image_PixMap> HandleImagePixMap;
-typedef opencascade::handle<Image_SupportedFormats> HandleImageSupportedFormats;
-typedef opencascade::handle<Image_Texture> HandleImageTexture;
-typedef opencascade::handle<PrsMgr_PresentableObject> HandlePrsMgrPresentableObject;
-typedef opencascade::handle<SelectMgr_SelectableObject> HandleSelectMgrSelectableObject;
-typedef opencascade::handle<Standard_Transient> HandleStandardTransient;
-typedef opencascade::handle<Standard_Type> HandleStandardType;
-typedef opencascade::handle<TColStd_HArray1OfByte> HandleTColStdHArray1OfByte;
-typedef opencascade::handle<TColStd_HArray1OfReal> HandleTColStdHArray1OfReal;
-typedef opencascade::handle<TColStd_HSequenceOfExtendedString> HandleTColStdHSequenceOfExtendedString;
-typedef opencascade::handle<TCollection_HAsciiString> HandleTCollectionHAsciiString;
-typedef opencascade::handle<TDF_Attribute> HandleTDFAttribute;
-typedef opencascade::handle<TDF_DataSet> HandleTDFDataSet;
-typedef opencascade::handle<TDF_RelocationTable> HandleTDFRelocationTable;
-typedef opencascade::handle<TDataStd_GenericEmpty> HandleTDataStdGenericEmpty;
-typedef opencascade::handle<TDataStd_NamedData> HandleTDataStdNamedData;
-typedef opencascade::handle<TDataStd_Real> HandleTDataStdReal;
-typedef opencascade::handle<TDocStd_Application> HandleTDocStdApplication;
-typedef opencascade::handle<TDocStd_Document> HandleTDocStdDocument;
-typedef opencascade::handle<TPrsStd_Driver> HandleTPrsStdDriver;
-typedef opencascade::handle<XCAFApp_Application> HandleXCAFAppApplication;
-typedef opencascade::handle<XCAFDimTolObjects_DatumObject> HandleXCAFDimTolObjectsDatumObject;
-typedef opencascade::handle<XCAFDimTolObjects_DimensionObject> HandleXCAFDimTolObjectsDimensionObject;
-typedef opencascade::handle<XCAFDimTolObjects_GeomToleranceObject> HandleXCAFDimTolObjectsGeomToleranceObject;
-typedef opencascade::handle<XCAFDoc_Area> HandleXCAFDocArea;
-typedef opencascade::handle<XCAFDoc_AssemblyGraph> HandleXCAFDocAssemblyGraph;
-typedef opencascade::handle<XCAFDoc_AssemblyItemRef> HandleXCAFDocAssemblyItemRef;
-typedef opencascade::handle<XCAFDoc_Centroid> HandleXCAFDocCentroid;
-typedef opencascade::handle<XCAFDoc_ClippingPlaneTool> HandleXCAFDocClippingPlaneTool;
-typedef opencascade::handle<XCAFDoc_Color> HandleXCAFDocColor;
-typedef opencascade::handle<XCAFDoc_ColorTool> HandleXCAFDocColorTool;
-typedef opencascade::handle<XCAFDoc_Datum> HandleXCAFDocDatum;
-typedef opencascade::handle<XCAFDoc_DimTol> HandleXCAFDocDimTol;
-typedef opencascade::handle<XCAFDoc_DimTolTool> HandleXCAFDocDimTolTool;
-typedef opencascade::handle<XCAFDoc_Dimension> HandleXCAFDocDimension;
-typedef opencascade::handle<XCAFDoc_DocumentTool> HandleXCAFDocDocumentTool;
-typedef opencascade::handle<XCAFDoc_GeomTolerance> HandleXCAFDocGeomTolerance;
-typedef opencascade::handle<XCAFDoc_GraphNode> HandleXCAFDocGraphNode;
-typedef opencascade::handle<XCAFDoc_LayerTool> HandleXCAFDocLayerTool;
-typedef opencascade::handle<XCAFDoc_LengthUnit> HandleXCAFDocLengthUnit;
-typedef opencascade::handle<XCAFDoc_Location> HandleXCAFDocLocation;
-typedef opencascade::handle<XCAFDoc_Material> HandleXCAFDocMaterial;
-typedef opencascade::handle<XCAFDoc_MaterialTool> HandleXCAFDocMaterialTool;
-typedef opencascade::handle<XCAFDoc_Note> HandleXCAFDocNote;
-typedef opencascade::handle<XCAFDoc_NoteBalloon> HandleXCAFDocNoteBalloon;
-typedef opencascade::handle<XCAFDoc_NoteBinData> HandleXCAFDocNoteBinData;
-typedef opencascade::handle<XCAFDoc_NoteComment> HandleXCAFDocNoteComment;
-typedef opencascade::handle<XCAFDoc_NotesTool> HandleXCAFDocNotesTool;
-typedef opencascade::handle<XCAFDoc_ShapeMapTool> HandleXCAFDocShapeMapTool;
-typedef opencascade::handle<XCAFDoc_ShapeTool> HandleXCAFDocShapeTool;
-typedef opencascade::handle<XCAFDoc_View> HandleXCAFDocView;
-typedef opencascade::handle<XCAFDoc_ViewTool> HandleXCAFDocViewTool;
-typedef opencascade::handle<XCAFDoc_VisMaterial> HandleXCAFDocVisMaterial;
-typedef opencascade::handle<XCAFDoc_VisMaterialTool> HandleXCAFDocVisMaterialTool;
-typedef opencascade::handle<XCAFDoc_Volume> HandleXCAFDocVolume;
-typedef opencascade::handle<XCAFNoteObjects_NoteObject> HandleXCAFNoteObjectsNoteObject;
-typedef opencascade::handle<XCAFPrs_AISObject> HandleXCAFPrsAISObject;
-typedef opencascade::handle<XCAFPrs_Driver> HandleXCAFPrsDriver;
-typedef opencascade::handle<XCAFPrs_Texture> HandleXCAFPrsTexture;
-typedef opencascade::handle<XCAFView_Object> HandleXCAFViewObject;
+typedef opencascade::handle<AIS_InteractiveObject> Handle_AIS_InteractiveObject;
+typedef opencascade::handle<CDF_Application> Handle_CDF_Application;
+typedef opencascade::handle<CDM_Application> Handle_CDM_Application;
+typedef opencascade::handle<CDM_Document> Handle_CDM_Document;
+typedef opencascade::handle<Graphic3d_Aspects> Handle_Graphic3d_Aspects;
+typedef opencascade::handle<Image_CompressedPixMap> Handle_Image_CompressedPixMap;
+typedef opencascade::handle<Image_PixMap> Handle_Image_PixMap;
+typedef opencascade::handle<Image_SupportedFormats> Handle_Image_SupportedFormats;
+typedef opencascade::handle<Image_Texture> Handle_Image_Texture;
+typedef opencascade::handle<NCollection_HArray1_double> Handle_NCollection_HArray1_double;
+typedef opencascade::handle<NCollection_HSequence_TCollection_ExtendedString> Handle_NCollection_HSequence_TCollection_ExtendedString;
+typedef opencascade::handle<Standard_Transient> Handle_Standard_Transient;
+typedef opencascade::handle<Standard_Type> Handle_Standard_Type;
+typedef opencascade::handle<TCollection_HAsciiString> Handle_TCollection_HAsciiString;
+typedef opencascade::handle<TDF_Attribute> Handle_TDF_Attribute;
+typedef opencascade::handle<TDF_DataSet> Handle_TDF_DataSet;
+typedef opencascade::handle<TDF_RelocationTable> Handle_TDF_RelocationTable;
+typedef opencascade::handle<TDataStd_GenericEmpty> Handle_TDataStd_GenericEmpty;
+typedef opencascade::handle<TDataStd_NamedData> Handle_TDataStd_NamedData;
+typedef opencascade::handle<TDataStd_Real> Handle_TDataStd_Real;
+typedef opencascade::handle<TDocStd_Application> Handle_TDocStd_Application;
+typedef opencascade::handle<TDocStd_Document> Handle_TDocStd_Document;
+typedef opencascade::handle<TPrsStd_Driver> Handle_TPrsStd_Driver;
+typedef opencascade::handle<XCAFApp_Application> Handle_XCAFApp_Application;
+typedef opencascade::handle<XCAFDimTolObjects_DatumObject> Handle_XCAFDimTolObjects_DatumObject;
+typedef opencascade::handle<XCAFDimTolObjects_DimensionObject> Handle_XCAFDimTolObjects_DimensionObject;
+typedef opencascade::handle<XCAFDimTolObjects_GeomToleranceObject> Handle_XCAFDimTolObjects_GeomToleranceObject;
+typedef opencascade::handle<XCAFDoc_Area> Handle_XCAFDoc_Area;
+typedef opencascade::handle<XCAFDoc_AssemblyGraph> Handle_XCAFDoc_AssemblyGraph;
+typedef opencascade::handle<XCAFDoc_AssemblyItemRef> Handle_XCAFDoc_AssemblyItemRef;
+typedef opencascade::handle<XCAFDoc_Centroid> Handle_XCAFDoc_Centroid;
+typedef opencascade::handle<XCAFDoc_ClippingPlaneTool> Handle_XCAFDoc_ClippingPlaneTool;
+typedef opencascade::handle<XCAFDoc_Color> Handle_XCAFDoc_Color;
+typedef opencascade::handle<XCAFDoc_ColorTool> Handle_XCAFDoc_ColorTool;
+typedef opencascade::handle<XCAFDoc_Datum> Handle_XCAFDoc_Datum;
+typedef opencascade::handle<XCAFDoc_DimTol> Handle_XCAFDoc_DimTol;
+typedef opencascade::handle<XCAFDoc_DimTolTool> Handle_XCAFDoc_DimTolTool;
+typedef opencascade::handle<XCAFDoc_Dimension> Handle_XCAFDoc_Dimension;
+typedef opencascade::handle<XCAFDoc_DocumentTool> Handle_XCAFDoc_DocumentTool;
+typedef opencascade::handle<XCAFDoc_GeomTolerance> Handle_XCAFDoc_GeomTolerance;
+typedef opencascade::handle<XCAFDoc_GraphNode> Handle_XCAFDoc_GraphNode;
+typedef opencascade::handle<XCAFDoc_LayerTool> Handle_XCAFDoc_LayerTool;
+typedef opencascade::handle<XCAFDoc_LengthUnit> Handle_XCAFDoc_LengthUnit;
+typedef opencascade::handle<XCAFDoc_Location> Handle_XCAFDoc_Location;
+typedef opencascade::handle<XCAFDoc_Material> Handle_XCAFDoc_Material;
+typedef opencascade::handle<XCAFDoc_MaterialTool> Handle_XCAFDoc_MaterialTool;
+typedef opencascade::handle<XCAFDoc_Note> Handle_XCAFDoc_Note;
+typedef opencascade::handle<XCAFDoc_NoteBalloon> Handle_XCAFDoc_NoteBalloon;
+typedef opencascade::handle<XCAFDoc_NoteBinData> Handle_XCAFDoc_NoteBinData;
+typedef opencascade::handle<XCAFDoc_NoteComment> Handle_XCAFDoc_NoteComment;
+typedef opencascade::handle<XCAFDoc_NotesTool> Handle_XCAFDoc_NotesTool;
+typedef opencascade::handle<XCAFDoc_ShapeMapTool> Handle_XCAFDoc_ShapeMapTool;
+typedef opencascade::handle<XCAFDoc_ShapeTool> Handle_XCAFDoc_ShapeTool;
+typedef opencascade::handle<XCAFDoc_View> Handle_XCAFDoc_View;
+typedef opencascade::handle<XCAFDoc_ViewTool> Handle_XCAFDoc_ViewTool;
+typedef opencascade::handle<XCAFDoc_VisMaterial> Handle_XCAFDoc_VisMaterial;
+typedef opencascade::handle<XCAFDoc_VisMaterialTool> Handle_XCAFDoc_VisMaterialTool;
+typedef opencascade::handle<XCAFDoc_Volume> Handle_XCAFDoc_Volume;
+typedef opencascade::handle<XCAFNoteObjects_NoteObject> Handle_XCAFNoteObjects_NoteObject;
+typedef opencascade::handle<XCAFPrs_AISObject> Handle_XCAFPrs_AISObject;
+typedef opencascade::handle<XCAFPrs_Driver> Handle_XCAFPrs_Driver;
+typedef opencascade::handle<XCAFPrs_Texture> Handle_XCAFPrs_Texture;
+typedef opencascade::handle<XCAFView_Object> Handle_XCAFView_Object;
 
 // Handle type destructors, clone, and is_null functions
-extern "C" void HandleXCAFAppApplication_destructor(HandleXCAFAppApplication* self_) { delete self_; }
-extern "C" OcctResult<HandleXCAFAppApplication*> HandleXCAFAppApplication_clone(const HandleXCAFAppApplication* self_) {
-    try { return {new HandleXCAFAppApplication(*self_), nullptr}; }
+extern "C" void Handle_XCAFApp_Application_destructor(Handle_XCAFApp_Application* self_) { delete self_; }
+extern "C" OcctResult<Handle_XCAFApp_Application*> Handle_XCAFApp_Application_clone(const Handle_XCAFApp_Application* self_) {
+    try { return {new Handle_XCAFApp_Application(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleXCAFAppApplication_is_null(const HandleXCAFAppApplication* self_) { return self_->IsNull(); }
-extern "C" void HandleXCAFDimTolObjectsDatumObject_destructor(HandleXCAFDimTolObjectsDatumObject* self_) { delete self_; }
-extern "C" OcctResult<HandleXCAFDimTolObjectsDatumObject*> HandleXCAFDimTolObjectsDatumObject_clone(const HandleXCAFDimTolObjectsDatumObject* self_) {
-    try { return {new HandleXCAFDimTolObjectsDatumObject(*self_), nullptr}; }
+extern "C" bool Handle_XCAFApp_Application_is_null(const Handle_XCAFApp_Application* self_) { return self_->IsNull(); }
+extern "C" void Handle_XCAFDimTolObjects_DatumObject_destructor(Handle_XCAFDimTolObjects_DatumObject* self_) { delete self_; }
+extern "C" OcctResult<Handle_XCAFDimTolObjects_DatumObject*> Handle_XCAFDimTolObjects_DatumObject_clone(const Handle_XCAFDimTolObjects_DatumObject* self_) {
+    try { return {new Handle_XCAFDimTolObjects_DatumObject(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleXCAFDimTolObjectsDatumObject_is_null(const HandleXCAFDimTolObjectsDatumObject* self_) { return self_->IsNull(); }
-extern "C" void HandleXCAFDimTolObjectsDimensionObject_destructor(HandleXCAFDimTolObjectsDimensionObject* self_) { delete self_; }
-extern "C" OcctResult<HandleXCAFDimTolObjectsDimensionObject*> HandleXCAFDimTolObjectsDimensionObject_clone(const HandleXCAFDimTolObjectsDimensionObject* self_) {
-    try { return {new HandleXCAFDimTolObjectsDimensionObject(*self_), nullptr}; }
+extern "C" bool Handle_XCAFDimTolObjects_DatumObject_is_null(const Handle_XCAFDimTolObjects_DatumObject* self_) { return self_->IsNull(); }
+extern "C" void Handle_XCAFDimTolObjects_DimensionObject_destructor(Handle_XCAFDimTolObjects_DimensionObject* self_) { delete self_; }
+extern "C" OcctResult<Handle_XCAFDimTolObjects_DimensionObject*> Handle_XCAFDimTolObjects_DimensionObject_clone(const Handle_XCAFDimTolObjects_DimensionObject* self_) {
+    try { return {new Handle_XCAFDimTolObjects_DimensionObject(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleXCAFDimTolObjectsDimensionObject_is_null(const HandleXCAFDimTolObjectsDimensionObject* self_) { return self_->IsNull(); }
-extern "C" void HandleXCAFDimTolObjectsGeomToleranceObject_destructor(HandleXCAFDimTolObjectsGeomToleranceObject* self_) { delete self_; }
-extern "C" OcctResult<HandleXCAFDimTolObjectsGeomToleranceObject*> HandleXCAFDimTolObjectsGeomToleranceObject_clone(const HandleXCAFDimTolObjectsGeomToleranceObject* self_) {
-    try { return {new HandleXCAFDimTolObjectsGeomToleranceObject(*self_), nullptr}; }
+extern "C" bool Handle_XCAFDimTolObjects_DimensionObject_is_null(const Handle_XCAFDimTolObjects_DimensionObject* self_) { return self_->IsNull(); }
+extern "C" void Handle_XCAFDimTolObjects_GeomToleranceObject_destructor(Handle_XCAFDimTolObjects_GeomToleranceObject* self_) { delete self_; }
+extern "C" OcctResult<Handle_XCAFDimTolObjects_GeomToleranceObject*> Handle_XCAFDimTolObjects_GeomToleranceObject_clone(const Handle_XCAFDimTolObjects_GeomToleranceObject* self_) {
+    try { return {new Handle_XCAFDimTolObjects_GeomToleranceObject(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleXCAFDimTolObjectsGeomToleranceObject_is_null(const HandleXCAFDimTolObjectsGeomToleranceObject* self_) { return self_->IsNull(); }
-extern "C" void HandleXCAFDocArea_destructor(HandleXCAFDocArea* self_) { delete self_; }
-extern "C" OcctResult<HandleXCAFDocArea*> HandleXCAFDocArea_clone(const HandleXCAFDocArea* self_) {
-    try { return {new HandleXCAFDocArea(*self_), nullptr}; }
+extern "C" bool Handle_XCAFDimTolObjects_GeomToleranceObject_is_null(const Handle_XCAFDimTolObjects_GeomToleranceObject* self_) { return self_->IsNull(); }
+extern "C" void Handle_XCAFDoc_Area_destructor(Handle_XCAFDoc_Area* self_) { delete self_; }
+extern "C" OcctResult<Handle_XCAFDoc_Area*> Handle_XCAFDoc_Area_clone(const Handle_XCAFDoc_Area* self_) {
+    try { return {new Handle_XCAFDoc_Area(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleXCAFDocArea_is_null(const HandleXCAFDocArea* self_) { return self_->IsNull(); }
-extern "C" void HandleXCAFDocAssemblyGraph_destructor(HandleXCAFDocAssemblyGraph* self_) { delete self_; }
-extern "C" OcctResult<HandleXCAFDocAssemblyGraph*> HandleXCAFDocAssemblyGraph_clone(const HandleXCAFDocAssemblyGraph* self_) {
-    try { return {new HandleXCAFDocAssemblyGraph(*self_), nullptr}; }
+extern "C" bool Handle_XCAFDoc_Area_is_null(const Handle_XCAFDoc_Area* self_) { return self_->IsNull(); }
+extern "C" void Handle_XCAFDoc_AssemblyGraph_destructor(Handle_XCAFDoc_AssemblyGraph* self_) { delete self_; }
+extern "C" OcctResult<Handle_XCAFDoc_AssemblyGraph*> Handle_XCAFDoc_AssemblyGraph_clone(const Handle_XCAFDoc_AssemblyGraph* self_) {
+    try { return {new Handle_XCAFDoc_AssemblyGraph(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleXCAFDocAssemblyGraph_is_null(const HandleXCAFDocAssemblyGraph* self_) { return self_->IsNull(); }
-extern "C" void HandleXCAFDocAssemblyItemRef_destructor(HandleXCAFDocAssemblyItemRef* self_) { delete self_; }
-extern "C" OcctResult<HandleXCAFDocAssemblyItemRef*> HandleXCAFDocAssemblyItemRef_clone(const HandleXCAFDocAssemblyItemRef* self_) {
-    try { return {new HandleXCAFDocAssemblyItemRef(*self_), nullptr}; }
+extern "C" bool Handle_XCAFDoc_AssemblyGraph_is_null(const Handle_XCAFDoc_AssemblyGraph* self_) { return self_->IsNull(); }
+extern "C" void Handle_XCAFDoc_AssemblyItemRef_destructor(Handle_XCAFDoc_AssemblyItemRef* self_) { delete self_; }
+extern "C" OcctResult<Handle_XCAFDoc_AssemblyItemRef*> Handle_XCAFDoc_AssemblyItemRef_clone(const Handle_XCAFDoc_AssemblyItemRef* self_) {
+    try { return {new Handle_XCAFDoc_AssemblyItemRef(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleXCAFDocAssemblyItemRef_is_null(const HandleXCAFDocAssemblyItemRef* self_) { return self_->IsNull(); }
-extern "C" void HandleXCAFDocCentroid_destructor(HandleXCAFDocCentroid* self_) { delete self_; }
-extern "C" OcctResult<HandleXCAFDocCentroid*> HandleXCAFDocCentroid_clone(const HandleXCAFDocCentroid* self_) {
-    try { return {new HandleXCAFDocCentroid(*self_), nullptr}; }
+extern "C" bool Handle_XCAFDoc_AssemblyItemRef_is_null(const Handle_XCAFDoc_AssemblyItemRef* self_) { return self_->IsNull(); }
+extern "C" void Handle_XCAFDoc_Centroid_destructor(Handle_XCAFDoc_Centroid* self_) { delete self_; }
+extern "C" OcctResult<Handle_XCAFDoc_Centroid*> Handle_XCAFDoc_Centroid_clone(const Handle_XCAFDoc_Centroid* self_) {
+    try { return {new Handle_XCAFDoc_Centroid(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleXCAFDocCentroid_is_null(const HandleXCAFDocCentroid* self_) { return self_->IsNull(); }
-extern "C" void HandleXCAFDocClippingPlaneTool_destructor(HandleXCAFDocClippingPlaneTool* self_) { delete self_; }
-extern "C" OcctResult<HandleXCAFDocClippingPlaneTool*> HandleXCAFDocClippingPlaneTool_clone(const HandleXCAFDocClippingPlaneTool* self_) {
-    try { return {new HandleXCAFDocClippingPlaneTool(*self_), nullptr}; }
+extern "C" bool Handle_XCAFDoc_Centroid_is_null(const Handle_XCAFDoc_Centroid* self_) { return self_->IsNull(); }
+extern "C" void Handle_XCAFDoc_ClippingPlaneTool_destructor(Handle_XCAFDoc_ClippingPlaneTool* self_) { delete self_; }
+extern "C" OcctResult<Handle_XCAFDoc_ClippingPlaneTool*> Handle_XCAFDoc_ClippingPlaneTool_clone(const Handle_XCAFDoc_ClippingPlaneTool* self_) {
+    try { return {new Handle_XCAFDoc_ClippingPlaneTool(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleXCAFDocClippingPlaneTool_is_null(const HandleXCAFDocClippingPlaneTool* self_) { return self_->IsNull(); }
-extern "C" void HandleXCAFDocColor_destructor(HandleXCAFDocColor* self_) { delete self_; }
-extern "C" OcctResult<HandleXCAFDocColor*> HandleXCAFDocColor_clone(const HandleXCAFDocColor* self_) {
-    try { return {new HandleXCAFDocColor(*self_), nullptr}; }
+extern "C" bool Handle_XCAFDoc_ClippingPlaneTool_is_null(const Handle_XCAFDoc_ClippingPlaneTool* self_) { return self_->IsNull(); }
+extern "C" void Handle_XCAFDoc_Color_destructor(Handle_XCAFDoc_Color* self_) { delete self_; }
+extern "C" OcctResult<Handle_XCAFDoc_Color*> Handle_XCAFDoc_Color_clone(const Handle_XCAFDoc_Color* self_) {
+    try { return {new Handle_XCAFDoc_Color(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleXCAFDocColor_is_null(const HandleXCAFDocColor* self_) { return self_->IsNull(); }
-extern "C" void HandleXCAFDocColorTool_destructor(HandleXCAFDocColorTool* self_) { delete self_; }
-extern "C" OcctResult<HandleXCAFDocColorTool*> HandleXCAFDocColorTool_clone(const HandleXCAFDocColorTool* self_) {
-    try { return {new HandleXCAFDocColorTool(*self_), nullptr}; }
+extern "C" bool Handle_XCAFDoc_Color_is_null(const Handle_XCAFDoc_Color* self_) { return self_->IsNull(); }
+extern "C" void Handle_XCAFDoc_ColorTool_destructor(Handle_XCAFDoc_ColorTool* self_) { delete self_; }
+extern "C" OcctResult<Handle_XCAFDoc_ColorTool*> Handle_XCAFDoc_ColorTool_clone(const Handle_XCAFDoc_ColorTool* self_) {
+    try { return {new Handle_XCAFDoc_ColorTool(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleXCAFDocColorTool_is_null(const HandleXCAFDocColorTool* self_) { return self_->IsNull(); }
-extern "C" void HandleXCAFDocDatum_destructor(HandleXCAFDocDatum* self_) { delete self_; }
-extern "C" OcctResult<HandleXCAFDocDatum*> HandleXCAFDocDatum_clone(const HandleXCAFDocDatum* self_) {
-    try { return {new HandleXCAFDocDatum(*self_), nullptr}; }
+extern "C" bool Handle_XCAFDoc_ColorTool_is_null(const Handle_XCAFDoc_ColorTool* self_) { return self_->IsNull(); }
+extern "C" void Handle_XCAFDoc_Datum_destructor(Handle_XCAFDoc_Datum* self_) { delete self_; }
+extern "C" OcctResult<Handle_XCAFDoc_Datum*> Handle_XCAFDoc_Datum_clone(const Handle_XCAFDoc_Datum* self_) {
+    try { return {new Handle_XCAFDoc_Datum(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleXCAFDocDatum_is_null(const HandleXCAFDocDatum* self_) { return self_->IsNull(); }
-extern "C" void HandleXCAFDocDimTol_destructor(HandleXCAFDocDimTol* self_) { delete self_; }
-extern "C" OcctResult<HandleXCAFDocDimTol*> HandleXCAFDocDimTol_clone(const HandleXCAFDocDimTol* self_) {
-    try { return {new HandleXCAFDocDimTol(*self_), nullptr}; }
+extern "C" bool Handle_XCAFDoc_Datum_is_null(const Handle_XCAFDoc_Datum* self_) { return self_->IsNull(); }
+extern "C" void Handle_XCAFDoc_DimTol_destructor(Handle_XCAFDoc_DimTol* self_) { delete self_; }
+extern "C" OcctResult<Handle_XCAFDoc_DimTol*> Handle_XCAFDoc_DimTol_clone(const Handle_XCAFDoc_DimTol* self_) {
+    try { return {new Handle_XCAFDoc_DimTol(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleXCAFDocDimTol_is_null(const HandleXCAFDocDimTol* self_) { return self_->IsNull(); }
-extern "C" void HandleXCAFDocDimTolTool_destructor(HandleXCAFDocDimTolTool* self_) { delete self_; }
-extern "C" OcctResult<HandleXCAFDocDimTolTool*> HandleXCAFDocDimTolTool_clone(const HandleXCAFDocDimTolTool* self_) {
-    try { return {new HandleXCAFDocDimTolTool(*self_), nullptr}; }
+extern "C" bool Handle_XCAFDoc_DimTol_is_null(const Handle_XCAFDoc_DimTol* self_) { return self_->IsNull(); }
+extern "C" void Handle_XCAFDoc_DimTolTool_destructor(Handle_XCAFDoc_DimTolTool* self_) { delete self_; }
+extern "C" OcctResult<Handle_XCAFDoc_DimTolTool*> Handle_XCAFDoc_DimTolTool_clone(const Handle_XCAFDoc_DimTolTool* self_) {
+    try { return {new Handle_XCAFDoc_DimTolTool(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleXCAFDocDimTolTool_is_null(const HandleXCAFDocDimTolTool* self_) { return self_->IsNull(); }
-extern "C" void HandleXCAFDocDimension_destructor(HandleXCAFDocDimension* self_) { delete self_; }
-extern "C" OcctResult<HandleXCAFDocDimension*> HandleXCAFDocDimension_clone(const HandleXCAFDocDimension* self_) {
-    try { return {new HandleXCAFDocDimension(*self_), nullptr}; }
+extern "C" bool Handle_XCAFDoc_DimTolTool_is_null(const Handle_XCAFDoc_DimTolTool* self_) { return self_->IsNull(); }
+extern "C" void Handle_XCAFDoc_Dimension_destructor(Handle_XCAFDoc_Dimension* self_) { delete self_; }
+extern "C" OcctResult<Handle_XCAFDoc_Dimension*> Handle_XCAFDoc_Dimension_clone(const Handle_XCAFDoc_Dimension* self_) {
+    try { return {new Handle_XCAFDoc_Dimension(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleXCAFDocDimension_is_null(const HandleXCAFDocDimension* self_) { return self_->IsNull(); }
-extern "C" void HandleXCAFDocDocumentTool_destructor(HandleXCAFDocDocumentTool* self_) { delete self_; }
-extern "C" OcctResult<HandleXCAFDocDocumentTool*> HandleXCAFDocDocumentTool_clone(const HandleXCAFDocDocumentTool* self_) {
-    try { return {new HandleXCAFDocDocumentTool(*self_), nullptr}; }
+extern "C" bool Handle_XCAFDoc_Dimension_is_null(const Handle_XCAFDoc_Dimension* self_) { return self_->IsNull(); }
+extern "C" void Handle_XCAFDoc_DocumentTool_destructor(Handle_XCAFDoc_DocumentTool* self_) { delete self_; }
+extern "C" OcctResult<Handle_XCAFDoc_DocumentTool*> Handle_XCAFDoc_DocumentTool_clone(const Handle_XCAFDoc_DocumentTool* self_) {
+    try { return {new Handle_XCAFDoc_DocumentTool(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleXCAFDocDocumentTool_is_null(const HandleXCAFDocDocumentTool* self_) { return self_->IsNull(); }
-extern "C" void HandleXCAFDocGeomTolerance_destructor(HandleXCAFDocGeomTolerance* self_) { delete self_; }
-extern "C" OcctResult<HandleXCAFDocGeomTolerance*> HandleXCAFDocGeomTolerance_clone(const HandleXCAFDocGeomTolerance* self_) {
-    try { return {new HandleXCAFDocGeomTolerance(*self_), nullptr}; }
+extern "C" bool Handle_XCAFDoc_DocumentTool_is_null(const Handle_XCAFDoc_DocumentTool* self_) { return self_->IsNull(); }
+extern "C" void Handle_XCAFDoc_GeomTolerance_destructor(Handle_XCAFDoc_GeomTolerance* self_) { delete self_; }
+extern "C" OcctResult<Handle_XCAFDoc_GeomTolerance*> Handle_XCAFDoc_GeomTolerance_clone(const Handle_XCAFDoc_GeomTolerance* self_) {
+    try { return {new Handle_XCAFDoc_GeomTolerance(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleXCAFDocGeomTolerance_is_null(const HandleXCAFDocGeomTolerance* self_) { return self_->IsNull(); }
-extern "C" void HandleXCAFDocGraphNode_destructor(HandleXCAFDocGraphNode* self_) { delete self_; }
-extern "C" OcctResult<HandleXCAFDocGraphNode*> HandleXCAFDocGraphNode_clone(const HandleXCAFDocGraphNode* self_) {
-    try { return {new HandleXCAFDocGraphNode(*self_), nullptr}; }
+extern "C" bool Handle_XCAFDoc_GeomTolerance_is_null(const Handle_XCAFDoc_GeomTolerance* self_) { return self_->IsNull(); }
+extern "C" void Handle_XCAFDoc_GraphNode_destructor(Handle_XCAFDoc_GraphNode* self_) { delete self_; }
+extern "C" OcctResult<Handle_XCAFDoc_GraphNode*> Handle_XCAFDoc_GraphNode_clone(const Handle_XCAFDoc_GraphNode* self_) {
+    try { return {new Handle_XCAFDoc_GraphNode(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleXCAFDocGraphNode_is_null(const HandleXCAFDocGraphNode* self_) { return self_->IsNull(); }
-extern "C" void HandleXCAFDocLayerTool_destructor(HandleXCAFDocLayerTool* self_) { delete self_; }
-extern "C" OcctResult<HandleXCAFDocLayerTool*> HandleXCAFDocLayerTool_clone(const HandleXCAFDocLayerTool* self_) {
-    try { return {new HandleXCAFDocLayerTool(*self_), nullptr}; }
+extern "C" bool Handle_XCAFDoc_GraphNode_is_null(const Handle_XCAFDoc_GraphNode* self_) { return self_->IsNull(); }
+extern "C" void Handle_XCAFDoc_LayerTool_destructor(Handle_XCAFDoc_LayerTool* self_) { delete self_; }
+extern "C" OcctResult<Handle_XCAFDoc_LayerTool*> Handle_XCAFDoc_LayerTool_clone(const Handle_XCAFDoc_LayerTool* self_) {
+    try { return {new Handle_XCAFDoc_LayerTool(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleXCAFDocLayerTool_is_null(const HandleXCAFDocLayerTool* self_) { return self_->IsNull(); }
-extern "C" void HandleXCAFDocLengthUnit_destructor(HandleXCAFDocLengthUnit* self_) { delete self_; }
-extern "C" OcctResult<HandleXCAFDocLengthUnit*> HandleXCAFDocLengthUnit_clone(const HandleXCAFDocLengthUnit* self_) {
-    try { return {new HandleXCAFDocLengthUnit(*self_), nullptr}; }
+extern "C" bool Handle_XCAFDoc_LayerTool_is_null(const Handle_XCAFDoc_LayerTool* self_) { return self_->IsNull(); }
+extern "C" void Handle_XCAFDoc_LengthUnit_destructor(Handle_XCAFDoc_LengthUnit* self_) { delete self_; }
+extern "C" OcctResult<Handle_XCAFDoc_LengthUnit*> Handle_XCAFDoc_LengthUnit_clone(const Handle_XCAFDoc_LengthUnit* self_) {
+    try { return {new Handle_XCAFDoc_LengthUnit(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleXCAFDocLengthUnit_is_null(const HandleXCAFDocLengthUnit* self_) { return self_->IsNull(); }
-extern "C" void HandleXCAFDocLocation_destructor(HandleXCAFDocLocation* self_) { delete self_; }
-extern "C" OcctResult<HandleXCAFDocLocation*> HandleXCAFDocLocation_clone(const HandleXCAFDocLocation* self_) {
-    try { return {new HandleXCAFDocLocation(*self_), nullptr}; }
+extern "C" bool Handle_XCAFDoc_LengthUnit_is_null(const Handle_XCAFDoc_LengthUnit* self_) { return self_->IsNull(); }
+extern "C" void Handle_XCAFDoc_Location_destructor(Handle_XCAFDoc_Location* self_) { delete self_; }
+extern "C" OcctResult<Handle_XCAFDoc_Location*> Handle_XCAFDoc_Location_clone(const Handle_XCAFDoc_Location* self_) {
+    try { return {new Handle_XCAFDoc_Location(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleXCAFDocLocation_is_null(const HandleXCAFDocLocation* self_) { return self_->IsNull(); }
-extern "C" void HandleXCAFDocMaterial_destructor(HandleXCAFDocMaterial* self_) { delete self_; }
-extern "C" OcctResult<HandleXCAFDocMaterial*> HandleXCAFDocMaterial_clone(const HandleXCAFDocMaterial* self_) {
-    try { return {new HandleXCAFDocMaterial(*self_), nullptr}; }
+extern "C" bool Handle_XCAFDoc_Location_is_null(const Handle_XCAFDoc_Location* self_) { return self_->IsNull(); }
+extern "C" void Handle_XCAFDoc_Material_destructor(Handle_XCAFDoc_Material* self_) { delete self_; }
+extern "C" OcctResult<Handle_XCAFDoc_Material*> Handle_XCAFDoc_Material_clone(const Handle_XCAFDoc_Material* self_) {
+    try { return {new Handle_XCAFDoc_Material(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleXCAFDocMaterial_is_null(const HandleXCAFDocMaterial* self_) { return self_->IsNull(); }
-extern "C" void HandleXCAFDocMaterialTool_destructor(HandleXCAFDocMaterialTool* self_) { delete self_; }
-extern "C" OcctResult<HandleXCAFDocMaterialTool*> HandleXCAFDocMaterialTool_clone(const HandleXCAFDocMaterialTool* self_) {
-    try { return {new HandleXCAFDocMaterialTool(*self_), nullptr}; }
+extern "C" bool Handle_XCAFDoc_Material_is_null(const Handle_XCAFDoc_Material* self_) { return self_->IsNull(); }
+extern "C" void Handle_XCAFDoc_MaterialTool_destructor(Handle_XCAFDoc_MaterialTool* self_) { delete self_; }
+extern "C" OcctResult<Handle_XCAFDoc_MaterialTool*> Handle_XCAFDoc_MaterialTool_clone(const Handle_XCAFDoc_MaterialTool* self_) {
+    try { return {new Handle_XCAFDoc_MaterialTool(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleXCAFDocMaterialTool_is_null(const HandleXCAFDocMaterialTool* self_) { return self_->IsNull(); }
-extern "C" void HandleXCAFDocNote_destructor(HandleXCAFDocNote* self_) { delete self_; }
-extern "C" OcctResult<HandleXCAFDocNote*> HandleXCAFDocNote_clone(const HandleXCAFDocNote* self_) {
-    try { return {new HandleXCAFDocNote(*self_), nullptr}; }
+extern "C" bool Handle_XCAFDoc_MaterialTool_is_null(const Handle_XCAFDoc_MaterialTool* self_) { return self_->IsNull(); }
+extern "C" void Handle_XCAFDoc_Note_destructor(Handle_XCAFDoc_Note* self_) { delete self_; }
+extern "C" OcctResult<Handle_XCAFDoc_Note*> Handle_XCAFDoc_Note_clone(const Handle_XCAFDoc_Note* self_) {
+    try { return {new Handle_XCAFDoc_Note(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleXCAFDocNote_is_null(const HandleXCAFDocNote* self_) { return self_->IsNull(); }
-extern "C" void HandleXCAFDocNoteBalloon_destructor(HandleXCAFDocNoteBalloon* self_) { delete self_; }
-extern "C" OcctResult<HandleXCAFDocNoteBalloon*> HandleXCAFDocNoteBalloon_clone(const HandleXCAFDocNoteBalloon* self_) {
-    try { return {new HandleXCAFDocNoteBalloon(*self_), nullptr}; }
+extern "C" bool Handle_XCAFDoc_Note_is_null(const Handle_XCAFDoc_Note* self_) { return self_->IsNull(); }
+extern "C" void Handle_XCAFDoc_NoteBalloon_destructor(Handle_XCAFDoc_NoteBalloon* self_) { delete self_; }
+extern "C" OcctResult<Handle_XCAFDoc_NoteBalloon*> Handle_XCAFDoc_NoteBalloon_clone(const Handle_XCAFDoc_NoteBalloon* self_) {
+    try { return {new Handle_XCAFDoc_NoteBalloon(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleXCAFDocNoteBalloon_is_null(const HandleXCAFDocNoteBalloon* self_) { return self_->IsNull(); }
-extern "C" void HandleXCAFDocNoteBinData_destructor(HandleXCAFDocNoteBinData* self_) { delete self_; }
-extern "C" OcctResult<HandleXCAFDocNoteBinData*> HandleXCAFDocNoteBinData_clone(const HandleXCAFDocNoteBinData* self_) {
-    try { return {new HandleXCAFDocNoteBinData(*self_), nullptr}; }
+extern "C" bool Handle_XCAFDoc_NoteBalloon_is_null(const Handle_XCAFDoc_NoteBalloon* self_) { return self_->IsNull(); }
+extern "C" void Handle_XCAFDoc_NoteBinData_destructor(Handle_XCAFDoc_NoteBinData* self_) { delete self_; }
+extern "C" OcctResult<Handle_XCAFDoc_NoteBinData*> Handle_XCAFDoc_NoteBinData_clone(const Handle_XCAFDoc_NoteBinData* self_) {
+    try { return {new Handle_XCAFDoc_NoteBinData(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleXCAFDocNoteBinData_is_null(const HandleXCAFDocNoteBinData* self_) { return self_->IsNull(); }
-extern "C" void HandleXCAFDocNoteComment_destructor(HandleXCAFDocNoteComment* self_) { delete self_; }
-extern "C" OcctResult<HandleXCAFDocNoteComment*> HandleXCAFDocNoteComment_clone(const HandleXCAFDocNoteComment* self_) {
-    try { return {new HandleXCAFDocNoteComment(*self_), nullptr}; }
+extern "C" bool Handle_XCAFDoc_NoteBinData_is_null(const Handle_XCAFDoc_NoteBinData* self_) { return self_->IsNull(); }
+extern "C" void Handle_XCAFDoc_NoteComment_destructor(Handle_XCAFDoc_NoteComment* self_) { delete self_; }
+extern "C" OcctResult<Handle_XCAFDoc_NoteComment*> Handle_XCAFDoc_NoteComment_clone(const Handle_XCAFDoc_NoteComment* self_) {
+    try { return {new Handle_XCAFDoc_NoteComment(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleXCAFDocNoteComment_is_null(const HandleXCAFDocNoteComment* self_) { return self_->IsNull(); }
-extern "C" void HandleXCAFDocNotesTool_destructor(HandleXCAFDocNotesTool* self_) { delete self_; }
-extern "C" OcctResult<HandleXCAFDocNotesTool*> HandleXCAFDocNotesTool_clone(const HandleXCAFDocNotesTool* self_) {
-    try { return {new HandleXCAFDocNotesTool(*self_), nullptr}; }
+extern "C" bool Handle_XCAFDoc_NoteComment_is_null(const Handle_XCAFDoc_NoteComment* self_) { return self_->IsNull(); }
+extern "C" void Handle_XCAFDoc_NotesTool_destructor(Handle_XCAFDoc_NotesTool* self_) { delete self_; }
+extern "C" OcctResult<Handle_XCAFDoc_NotesTool*> Handle_XCAFDoc_NotesTool_clone(const Handle_XCAFDoc_NotesTool* self_) {
+    try { return {new Handle_XCAFDoc_NotesTool(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleXCAFDocNotesTool_is_null(const HandleXCAFDocNotesTool* self_) { return self_->IsNull(); }
-extern "C" void HandleXCAFDocShapeMapTool_destructor(HandleXCAFDocShapeMapTool* self_) { delete self_; }
-extern "C" OcctResult<HandleXCAFDocShapeMapTool*> HandleXCAFDocShapeMapTool_clone(const HandleXCAFDocShapeMapTool* self_) {
-    try { return {new HandleXCAFDocShapeMapTool(*self_), nullptr}; }
+extern "C" bool Handle_XCAFDoc_NotesTool_is_null(const Handle_XCAFDoc_NotesTool* self_) { return self_->IsNull(); }
+extern "C" void Handle_XCAFDoc_ShapeMapTool_destructor(Handle_XCAFDoc_ShapeMapTool* self_) { delete self_; }
+extern "C" OcctResult<Handle_XCAFDoc_ShapeMapTool*> Handle_XCAFDoc_ShapeMapTool_clone(const Handle_XCAFDoc_ShapeMapTool* self_) {
+    try { return {new Handle_XCAFDoc_ShapeMapTool(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleXCAFDocShapeMapTool_is_null(const HandleXCAFDocShapeMapTool* self_) { return self_->IsNull(); }
-extern "C" void HandleXCAFDocShapeTool_destructor(HandleXCAFDocShapeTool* self_) { delete self_; }
-extern "C" OcctResult<HandleXCAFDocShapeTool*> HandleXCAFDocShapeTool_clone(const HandleXCAFDocShapeTool* self_) {
-    try { return {new HandleXCAFDocShapeTool(*self_), nullptr}; }
+extern "C" bool Handle_XCAFDoc_ShapeMapTool_is_null(const Handle_XCAFDoc_ShapeMapTool* self_) { return self_->IsNull(); }
+extern "C" void Handle_XCAFDoc_ShapeTool_destructor(Handle_XCAFDoc_ShapeTool* self_) { delete self_; }
+extern "C" OcctResult<Handle_XCAFDoc_ShapeTool*> Handle_XCAFDoc_ShapeTool_clone(const Handle_XCAFDoc_ShapeTool* self_) {
+    try { return {new Handle_XCAFDoc_ShapeTool(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleXCAFDocShapeTool_is_null(const HandleXCAFDocShapeTool* self_) { return self_->IsNull(); }
-extern "C" void HandleXCAFDocView_destructor(HandleXCAFDocView* self_) { delete self_; }
-extern "C" OcctResult<HandleXCAFDocView*> HandleXCAFDocView_clone(const HandleXCAFDocView* self_) {
-    try { return {new HandleXCAFDocView(*self_), nullptr}; }
+extern "C" bool Handle_XCAFDoc_ShapeTool_is_null(const Handle_XCAFDoc_ShapeTool* self_) { return self_->IsNull(); }
+extern "C" void Handle_XCAFDoc_View_destructor(Handle_XCAFDoc_View* self_) { delete self_; }
+extern "C" OcctResult<Handle_XCAFDoc_View*> Handle_XCAFDoc_View_clone(const Handle_XCAFDoc_View* self_) {
+    try { return {new Handle_XCAFDoc_View(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleXCAFDocView_is_null(const HandleXCAFDocView* self_) { return self_->IsNull(); }
-extern "C" void HandleXCAFDocViewTool_destructor(HandleXCAFDocViewTool* self_) { delete self_; }
-extern "C" OcctResult<HandleXCAFDocViewTool*> HandleXCAFDocViewTool_clone(const HandleXCAFDocViewTool* self_) {
-    try { return {new HandleXCAFDocViewTool(*self_), nullptr}; }
+extern "C" bool Handle_XCAFDoc_View_is_null(const Handle_XCAFDoc_View* self_) { return self_->IsNull(); }
+extern "C" void Handle_XCAFDoc_ViewTool_destructor(Handle_XCAFDoc_ViewTool* self_) { delete self_; }
+extern "C" OcctResult<Handle_XCAFDoc_ViewTool*> Handle_XCAFDoc_ViewTool_clone(const Handle_XCAFDoc_ViewTool* self_) {
+    try { return {new Handle_XCAFDoc_ViewTool(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleXCAFDocViewTool_is_null(const HandleXCAFDocViewTool* self_) { return self_->IsNull(); }
-extern "C" void HandleXCAFDocVisMaterial_destructor(HandleXCAFDocVisMaterial* self_) { delete self_; }
-extern "C" OcctResult<HandleXCAFDocVisMaterial*> HandleXCAFDocVisMaterial_clone(const HandleXCAFDocVisMaterial* self_) {
-    try { return {new HandleXCAFDocVisMaterial(*self_), nullptr}; }
+extern "C" bool Handle_XCAFDoc_ViewTool_is_null(const Handle_XCAFDoc_ViewTool* self_) { return self_->IsNull(); }
+extern "C" void Handle_XCAFDoc_VisMaterial_destructor(Handle_XCAFDoc_VisMaterial* self_) { delete self_; }
+extern "C" OcctResult<Handle_XCAFDoc_VisMaterial*> Handle_XCAFDoc_VisMaterial_clone(const Handle_XCAFDoc_VisMaterial* self_) {
+    try { return {new Handle_XCAFDoc_VisMaterial(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleXCAFDocVisMaterial_is_null(const HandleXCAFDocVisMaterial* self_) { return self_->IsNull(); }
-extern "C" void HandleXCAFDocVisMaterialTool_destructor(HandleXCAFDocVisMaterialTool* self_) { delete self_; }
-extern "C" OcctResult<HandleXCAFDocVisMaterialTool*> HandleXCAFDocVisMaterialTool_clone(const HandleXCAFDocVisMaterialTool* self_) {
-    try { return {new HandleXCAFDocVisMaterialTool(*self_), nullptr}; }
+extern "C" bool Handle_XCAFDoc_VisMaterial_is_null(const Handle_XCAFDoc_VisMaterial* self_) { return self_->IsNull(); }
+extern "C" void Handle_XCAFDoc_VisMaterialTool_destructor(Handle_XCAFDoc_VisMaterialTool* self_) { delete self_; }
+extern "C" OcctResult<Handle_XCAFDoc_VisMaterialTool*> Handle_XCAFDoc_VisMaterialTool_clone(const Handle_XCAFDoc_VisMaterialTool* self_) {
+    try { return {new Handle_XCAFDoc_VisMaterialTool(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleXCAFDocVisMaterialTool_is_null(const HandleXCAFDocVisMaterialTool* self_) { return self_->IsNull(); }
-extern "C" void HandleXCAFDocVolume_destructor(HandleXCAFDocVolume* self_) { delete self_; }
-extern "C" OcctResult<HandleXCAFDocVolume*> HandleXCAFDocVolume_clone(const HandleXCAFDocVolume* self_) {
-    try { return {new HandleXCAFDocVolume(*self_), nullptr}; }
+extern "C" bool Handle_XCAFDoc_VisMaterialTool_is_null(const Handle_XCAFDoc_VisMaterialTool* self_) { return self_->IsNull(); }
+extern "C" void Handle_XCAFDoc_Volume_destructor(Handle_XCAFDoc_Volume* self_) { delete self_; }
+extern "C" OcctResult<Handle_XCAFDoc_Volume*> Handle_XCAFDoc_Volume_clone(const Handle_XCAFDoc_Volume* self_) {
+    try { return {new Handle_XCAFDoc_Volume(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleXCAFDocVolume_is_null(const HandleXCAFDocVolume* self_) { return self_->IsNull(); }
-extern "C" void HandleXCAFNoteObjectsNoteObject_destructor(HandleXCAFNoteObjectsNoteObject* self_) { delete self_; }
-extern "C" OcctResult<HandleXCAFNoteObjectsNoteObject*> HandleXCAFNoteObjectsNoteObject_clone(const HandleXCAFNoteObjectsNoteObject* self_) {
-    try { return {new HandleXCAFNoteObjectsNoteObject(*self_), nullptr}; }
+extern "C" bool Handle_XCAFDoc_Volume_is_null(const Handle_XCAFDoc_Volume* self_) { return self_->IsNull(); }
+extern "C" void Handle_XCAFNoteObjects_NoteObject_destructor(Handle_XCAFNoteObjects_NoteObject* self_) { delete self_; }
+extern "C" OcctResult<Handle_XCAFNoteObjects_NoteObject*> Handle_XCAFNoteObjects_NoteObject_clone(const Handle_XCAFNoteObjects_NoteObject* self_) {
+    try { return {new Handle_XCAFNoteObjects_NoteObject(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleXCAFNoteObjectsNoteObject_is_null(const HandleXCAFNoteObjectsNoteObject* self_) { return self_->IsNull(); }
-extern "C" void HandleXCAFPrsAISObject_destructor(HandleXCAFPrsAISObject* self_) { delete self_; }
-extern "C" OcctResult<HandleXCAFPrsAISObject*> HandleXCAFPrsAISObject_clone(const HandleXCAFPrsAISObject* self_) {
-    try { return {new HandleXCAFPrsAISObject(*self_), nullptr}; }
+extern "C" bool Handle_XCAFNoteObjects_NoteObject_is_null(const Handle_XCAFNoteObjects_NoteObject* self_) { return self_->IsNull(); }
+extern "C" void Handle_XCAFPrs_AISObject_destructor(Handle_XCAFPrs_AISObject* self_) { delete self_; }
+extern "C" OcctResult<Handle_XCAFPrs_AISObject*> Handle_XCAFPrs_AISObject_clone(const Handle_XCAFPrs_AISObject* self_) {
+    try { return {new Handle_XCAFPrs_AISObject(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleXCAFPrsAISObject_is_null(const HandleXCAFPrsAISObject* self_) { return self_->IsNull(); }
-extern "C" void HandleXCAFPrsDriver_destructor(HandleXCAFPrsDriver* self_) { delete self_; }
-extern "C" OcctResult<HandleXCAFPrsDriver*> HandleXCAFPrsDriver_clone(const HandleXCAFPrsDriver* self_) {
-    try { return {new HandleXCAFPrsDriver(*self_), nullptr}; }
+extern "C" bool Handle_XCAFPrs_AISObject_is_null(const Handle_XCAFPrs_AISObject* self_) { return self_->IsNull(); }
+extern "C" void Handle_XCAFPrs_Driver_destructor(Handle_XCAFPrs_Driver* self_) { delete self_; }
+extern "C" OcctResult<Handle_XCAFPrs_Driver*> Handle_XCAFPrs_Driver_clone(const Handle_XCAFPrs_Driver* self_) {
+    try { return {new Handle_XCAFPrs_Driver(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleXCAFPrsDriver_is_null(const HandleXCAFPrsDriver* self_) { return self_->IsNull(); }
-extern "C" void HandleXCAFPrsTexture_destructor(HandleXCAFPrsTexture* self_) { delete self_; }
-extern "C" OcctResult<HandleXCAFPrsTexture*> HandleXCAFPrsTexture_clone(const HandleXCAFPrsTexture* self_) {
-    try { return {new HandleXCAFPrsTexture(*self_), nullptr}; }
+extern "C" bool Handle_XCAFPrs_Driver_is_null(const Handle_XCAFPrs_Driver* self_) { return self_->IsNull(); }
+extern "C" void Handle_XCAFPrs_Texture_destructor(Handle_XCAFPrs_Texture* self_) { delete self_; }
+extern "C" OcctResult<Handle_XCAFPrs_Texture*> Handle_XCAFPrs_Texture_clone(const Handle_XCAFPrs_Texture* self_) {
+    try { return {new Handle_XCAFPrs_Texture(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleXCAFPrsTexture_is_null(const HandleXCAFPrsTexture* self_) { return self_->IsNull(); }
-extern "C" void HandleXCAFViewObject_destructor(HandleXCAFViewObject* self_) { delete self_; }
-extern "C" OcctResult<HandleXCAFViewObject*> HandleXCAFViewObject_clone(const HandleXCAFViewObject* self_) {
-    try { return {new HandleXCAFViewObject(*self_), nullptr}; }
+extern "C" bool Handle_XCAFPrs_Texture_is_null(const Handle_XCAFPrs_Texture* self_) { return self_->IsNull(); }
+extern "C" void Handle_XCAFView_Object_destructor(Handle_XCAFView_Object* self_) { delete self_; }
+extern "C" OcctResult<Handle_XCAFView_Object*> Handle_XCAFView_Object_clone(const Handle_XCAFView_Object* self_) {
+    try { return {new Handle_XCAFView_Object(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleXCAFViewObject_is_null(const HandleXCAFViewObject* self_) { return self_->IsNull(); }
+extern "C" bool Handle_XCAFView_Object_is_null(const Handle_XCAFView_Object* self_) { return self_->IsNull(); }
 
 // ========================
 // XCAFApp_Application wrappers
@@ -504,32 +446,32 @@ extern "C" OcctResult<const CDM_Application*> XCAFApp_Application_as_CDM_Applica
 extern "C" OcctResult<CDM_Application*> XCAFApp_Application_as_CDM_Application_mut(XCAFApp_Application* self_) { return {static_cast<CDM_Application*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> XCAFApp_Application_as_Standard_Transient(const XCAFApp_Application* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> XCAFApp_Application_as_Standard_Transient_mut(XCAFApp_Application* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleXCAFAppApplication*> XCAFApp_Application_to_handle(XCAFApp_Application* obj) {
-    try { return {new HandleXCAFAppApplication(obj), nullptr}; }
+extern "C" OcctResult<Handle_XCAFApp_Application*> XCAFApp_Application_to_handle(XCAFApp_Application* obj) {
+    try { return {new Handle_XCAFApp_Application(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const XCAFApp_Application*> HandleXCAFAppApplication_get(const HandleXCAFAppApplication* handle) {
+extern "C" OcctResult<const XCAFApp_Application*> Handle_XCAFApp_Application_get(const Handle_XCAFApp_Application* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<XCAFApp_Application*> HandleXCAFAppApplication_get_mut(HandleXCAFAppApplication* handle) {
+extern "C" OcctResult<XCAFApp_Application*> Handle_XCAFApp_Application_get_mut(Handle_XCAFApp_Application* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTDocStdApplication*> HandleXCAFAppApplication_to_HandleTDocStdApplication(const HandleXCAFAppApplication* self_) {
-    try { return {new HandleTDocStdApplication(*self_), nullptr}; }
+extern "C" OcctResult<Handle_TDocStd_Application*> Handle_XCAFApp_Application_to_Handle_TDocStd_Application(const Handle_XCAFApp_Application* self_) {
+    try { return {new Handle_TDocStd_Application(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleCDFApplication*> HandleXCAFAppApplication_to_HandleCDFApplication(const HandleXCAFAppApplication* self_) {
-    try { return {new HandleCDFApplication(*self_), nullptr}; }
+extern "C" OcctResult<Handle_CDF_Application*> Handle_XCAFApp_Application_to_Handle_CDF_Application(const Handle_XCAFApp_Application* self_) {
+    try { return {new Handle_CDF_Application(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleCDMApplication*> HandleXCAFAppApplication_to_HandleCDMApplication(const HandleXCAFAppApplication* self_) {
-    try { return {new HandleCDMApplication(*self_), nullptr}; }
+extern "C" OcctResult<Handle_CDM_Application*> Handle_XCAFApp_Application_to_Handle_CDM_Application(const Handle_XCAFApp_Application* self_) {
+    try { return {new Handle_CDM_Application(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleXCAFAppApplication_to_HandleStandardTransient(const HandleXCAFAppApplication* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_XCAFApp_Application_to_Handle_Standard_Transient(const Handle_XCAFApp_Application* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> XCAFApp_Application_inherited_IsDriverLoaded(const XCAFApp_Application* self) {
@@ -544,11 +486,11 @@ extern "C" const char* XCAFApp_Application_inherited_DefineFormat(XCAFApp_Applic
     try { self->DefineFormat(theFormat, theDescription, theExtension, theReader, theWriter); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* XCAFApp_Application_inherited_ReadingFormats(XCAFApp_Application* self, TColStd_SequenceOfAsciiString& theFormats) {
+extern "C" const char* XCAFApp_Application_inherited_ReadingFormats(XCAFApp_Application* self, NCollection_Sequence_TCollection_AsciiString& theFormats) {
     try { self->ReadingFormats(theFormats); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* XCAFApp_Application_inherited_WritingFormats(XCAFApp_Application* self, TColStd_SequenceOfAsciiString& theFormats) {
+extern "C" const char* XCAFApp_Application_inherited_WritingFormats(XCAFApp_Application* self, NCollection_Sequence_TCollection_AsciiString& theFormats) {
     try { self->WritingFormats(theFormats); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -556,9 +498,9 @@ extern "C" OcctResult<int32_t> XCAFApp_Application_inherited_NbDocuments(const X
     try { return {self->NbDocuments(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* XCAFApp_Application_inherited_GetDocument(const XCAFApp_Application* self, int32_t index, Handle(TDocStd_Document)& aDoc) {
-    try { self->GetDocument(index, aDoc); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
+extern "C" OcctResult<Handle(TDocStd_Document)*> XCAFApp_Application_inherited_GetDocument(const XCAFApp_Application* self, int32_t index) {
+    try { return {new Handle(TDocStd_Document)(self->GetDocument(index)), nullptr}; }
+    OCCT_CATCH_RETURN
 }
 extern "C" const char* XCAFApp_Application_inherited_NewDocument(XCAFApp_Application* self, TCollection_ExtendedString const& format, Handle(CDM_Document)& aDoc) {
     try { self->NewDocument(format, aDoc); return nullptr; }
@@ -652,10 +594,6 @@ extern "C" OcctResult<TCollection_AsciiString*> XCAFApp_Application_inherited_Ve
     try { return {new TCollection_AsciiString(self->Version()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<CDM_MetaDataLookUpTable*> XCAFApp_Application_inherited_MetaDataLookUpTable(XCAFApp_Application* self) {
-    try { return {&(self->MetaDataLookUpTable()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
 extern "C" OcctResult<bool> XCAFApp_Application_inherited_IsInstance(const XCAFApp_Application* self, Handle(Standard_Type) const& theType) {
     try { return {self->IsInstance(theType), nullptr}; }
     OCCT_CATCH_RETURN
@@ -706,8 +644,8 @@ extern "C" OcctResult<Handle(TCollection_HAsciiString)*> XCAFDimTolObjects_Datum
     try { return {new Handle(TCollection_HAsciiString)(self_->GetName()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<XCAFDimTolObjects_DatumModifiersSequence*> XCAFDimTolObjects_DatumObject_get_modifiers(const XCAFDimTolObjects_DatumObject* self_) {
-    try { return {new XCAFDimTolObjects_DatumModifiersSequence(self_->GetModifiers()), nullptr}; }
+extern "C" OcctResult<NCollection_Sequence_XCAFDimTolObjects_DatumSingleModif*> XCAFDimTolObjects_DatumObject_get_modifiers(const XCAFDimTolObjects_DatumObject* self_) {
+    try { return {new NCollection_Sequence_XCAFDimTolObjects_DatumSingleModif(self_->GetModifiers()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<TopoDS_Shape*> XCAFDimTolObjects_DatumObject_get_datum_target(const XCAFDimTolObjects_DatumObject* self_) {
@@ -734,7 +672,7 @@ extern "C" const char* XCAFDimTolObjects_DatumObject_set_name(XCAFDimTolObjects_
     try { self_->SetName(*theTag); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* XCAFDimTolObjects_DatumObject_set_modifiers(XCAFDimTolObjects_DatumObject* self_, XCAFDimTolObjects_DatumModifiersSequence const* theModifiers) {
+extern "C" const char* XCAFDimTolObjects_DatumObject_set_modifiers(XCAFDimTolObjects_DatumObject* self_, NCollection_Sequence_XCAFDimTolObjects_DatumSingleModif const* theModifiers) {
     try { self_->SetModifiers(*theModifiers); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -869,20 +807,20 @@ extern "C" OcctResult<Handle(Standard_Type) const*> XCAFDimTolObjects_DatumObjec
 }
 extern "C" OcctResult<const Standard_Transient*> XCAFDimTolObjects_DatumObject_as_Standard_Transient(const XCAFDimTolObjects_DatumObject* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> XCAFDimTolObjects_DatumObject_as_Standard_Transient_mut(XCAFDimTolObjects_DatumObject* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleXCAFDimTolObjectsDatumObject*> XCAFDimTolObjects_DatumObject_to_handle(XCAFDimTolObjects_DatumObject* obj) {
-    try { return {new HandleXCAFDimTolObjectsDatumObject(obj), nullptr}; }
+extern "C" OcctResult<Handle_XCAFDimTolObjects_DatumObject*> XCAFDimTolObjects_DatumObject_to_handle(XCAFDimTolObjects_DatumObject* obj) {
+    try { return {new Handle_XCAFDimTolObjects_DatumObject(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const XCAFDimTolObjects_DatumObject*> HandleXCAFDimTolObjectsDatumObject_get(const HandleXCAFDimTolObjectsDatumObject* handle) {
+extern "C" OcctResult<const XCAFDimTolObjects_DatumObject*> Handle_XCAFDimTolObjects_DatumObject_get(const Handle_XCAFDimTolObjects_DatumObject* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<XCAFDimTolObjects_DatumObject*> HandleXCAFDimTolObjectsDatumObject_get_mut(HandleXCAFDimTolObjectsDatumObject* handle) {
+extern "C" OcctResult<XCAFDimTolObjects_DatumObject*> Handle_XCAFDimTolObjects_DatumObject_get_mut(Handle_XCAFDimTolObjects_DatumObject* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleXCAFDimTolObjectsDatumObject_to_HandleStandardTransient(const HandleXCAFDimTolObjectsDatumObject* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_XCAFDimTolObjects_DatumObject_to_Handle_Standard_Transient(const Handle_XCAFDimTolObjects_DatumObject* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> XCAFDimTolObjects_DatumObject_inherited_IsInstance(const XCAFDimTolObjects_DatumObject* self, Handle(Standard_Type) const& theType) {
@@ -931,12 +869,12 @@ extern "C" OcctResult<Handle(TCollection_HAsciiString)*> XCAFDimTolObjects_Dimen
     try { return {new Handle(TCollection_HAsciiString)(self_->GetSemanticName()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(TColStd_HArray1OfReal)*> XCAFDimTolObjects_DimensionObject_get_values(const XCAFDimTolObjects_DimensionObject* self_) {
-    try { return {new Handle(TColStd_HArray1OfReal)(self_->GetValues()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HArray1_double)*> XCAFDimTolObjects_DimensionObject_get_values(const XCAFDimTolObjects_DimensionObject* self_) {
+    try { return {new Handle(NCollection_HArray1_double)(self_->GetValues()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<XCAFDimTolObjects_DimensionModifiersSequence*> XCAFDimTolObjects_DimensionObject_get_modifiers(const XCAFDimTolObjects_DimensionObject* self_) {
-    try { return {new XCAFDimTolObjects_DimensionModifiersSequence(self_->GetModifiers()), nullptr}; }
+extern "C" OcctResult<NCollection_Sequence_XCAFDimTolObjects_DimensionModif*> XCAFDimTolObjects_DimensionObject_get_modifiers(const XCAFDimTolObjects_DimensionObject* self_) {
+    try { return {new NCollection_Sequence_XCAFDimTolObjects_DimensionModif(self_->GetModifiers()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<TopoDS_Edge*> XCAFDimTolObjects_DimensionObject_get_path(const XCAFDimTolObjects_DimensionObject* self_) {
@@ -949,6 +887,22 @@ extern "C" OcctResult<gp_Pnt*> XCAFDimTolObjects_DimensionObject_get_point(const
 }
 extern "C" OcctResult<gp_Pnt*> XCAFDimTolObjects_DimensionObject_get_point2(const XCAFDimTolObjects_DimensionObject* self_) {
     try { return {new gp_Pnt(self_->GetPoint2()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<gp_Ax2*> XCAFDimTolObjects_DimensionObject_get_connection_axis(const XCAFDimTolObjects_DimensionObject* self_) {
+    try { return {new gp_Ax2(self_->GetConnectionAxis()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<gp_Ax2*> XCAFDimTolObjects_DimensionObject_get_connection_axis2(const XCAFDimTolObjects_DimensionObject* self_) {
+    try { return {new gp_Ax2(self_->GetConnectionAxis2()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Handle(TCollection_HAsciiString)*> XCAFDimTolObjects_DimensionObject_get_connection_name(const XCAFDimTolObjects_DimensionObject* self_) {
+    try { return {new Handle(TCollection_HAsciiString)(self_->GetConnectionName()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Handle(TCollection_HAsciiString)*> XCAFDimTolObjects_DimensionObject_get_connection_name2(const XCAFDimTolObjects_DimensionObject* self_) {
+    try { return {new Handle(TCollection_HAsciiString)(self_->GetConnectionName2()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<TopoDS_Shape*> XCAFDimTolObjects_DimensionObject_get_presentation(const XCAFDimTolObjects_DimensionObject* self_) {
@@ -1011,7 +965,7 @@ extern "C" const char* XCAFDimTolObjects_DimensionObject_set_value(XCAFDimTolObj
     try { self_->SetValue(theValue); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* XCAFDimTolObjects_DimensionObject_set_values(XCAFDimTolObjects_DimensionObject* self_, Handle(TColStd_HArray1OfReal) const* theValue) {
+extern "C" const char* XCAFDimTolObjects_DimensionObject_set_values(XCAFDimTolObjects_DimensionObject* self_, Handle(NCollection_HArray1_double) const* theValue) {
     try { self_->SetValues(*theValue); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -1082,7 +1036,7 @@ extern "C" const char* XCAFDimTolObjects_DimensionObject_get_nb_of_decimal_place
     try { self_->GetNbOfDecimalPlaces(*theL, *theR); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* XCAFDimTolObjects_DimensionObject_set_modifiers(XCAFDimTolObjects_DimensionObject* self_, XCAFDimTolObjects_DimensionModifiersSequence const* theModifiers) {
+extern "C" const char* XCAFDimTolObjects_DimensionObject_set_modifiers(XCAFDimTolObjects_DimensionObject* self_, NCollection_Sequence_XCAFDimTolObjects_DimensionModif const* theModifiers) {
     try { self_->SetModifiers(*theModifiers); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -1134,12 +1088,36 @@ extern "C" OcctResult<bool> XCAFDimTolObjects_DimensionObject_has_point2(const X
     try { return {self_->HasPoint2(), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" OcctResult<bool> XCAFDimTolObjects_DimensionObject_is_point_connection(const XCAFDimTolObjects_DimensionObject* self_) {
+    try { return {self_->IsPointConnection(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<bool> XCAFDimTolObjects_DimensionObject_is_point_connection2(const XCAFDimTolObjects_DimensionObject* self_) {
+    try { return {self_->IsPointConnection2(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" const char* XCAFDimTolObjects_DimensionObject_set_point(XCAFDimTolObjects_DimensionObject* self_, gp_Pnt const* thePnt) {
     try { self_->SetPoint(*thePnt); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
 extern "C" const char* XCAFDimTolObjects_DimensionObject_set_point2(XCAFDimTolObjects_DimensionObject* self_, gp_Pnt const* thePnt) {
     try { self_->SetPoint2(*thePnt); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* XCAFDimTolObjects_DimensionObject_set_connection_axis(XCAFDimTolObjects_DimensionObject* self_, gp_Ax2 const* theAxis) {
+    try { self_->SetConnectionAxis(*theAxis); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* XCAFDimTolObjects_DimensionObject_set_connection_axis2(XCAFDimTolObjects_DimensionObject* self_, gp_Ax2 const* theAxis) {
+    try { self_->SetConnectionAxis2(*theAxis); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* XCAFDimTolObjects_DimensionObject_set_connection_name(XCAFDimTolObjects_DimensionObject* self_, Handle(TCollection_HAsciiString) const* theName) {
+    try { self_->SetConnectionName(*theName); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* XCAFDimTolObjects_DimensionObject_set_connection_name2(XCAFDimTolObjects_DimensionObject* self_, Handle(TCollection_HAsciiString) const* theName) {
+    try { self_->SetConnectionName2(*theName); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
 extern "C" const char* XCAFDimTolObjects_DimensionObject_set_presentation(XCAFDimTolObjects_DimensionObject* self_, TopoDS_Shape const* thePresentation, Handle(TCollection_HAsciiString) const* thePresentationName) {
@@ -1166,6 +1144,14 @@ extern "C" OcctResult<Handle(Standard_Type) const*> XCAFDimTolObjects_DimensionO
     try { return {&(self_->DynamicType()), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" OcctResult<bool> XCAFDimTolObjects_DimensionObject_is_dimensional_location(int32_t theType) {
+    try { return {XCAFDimTolObjects_DimensionObject::IsDimensionalLocation(static_cast<XCAFDimTolObjects_DimensionType>(theType)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<bool> XCAFDimTolObjects_DimensionObject_is_dimensional_size(int32_t theType) {
+    try { return {XCAFDimTolObjects_DimensionObject::IsDimensionalSize(static_cast<XCAFDimTolObjects_DimensionType>(theType)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" OcctResult<char const*> XCAFDimTolObjects_DimensionObject_get_type_name() {
     try { return {XCAFDimTolObjects_DimensionObject::get_type_name(), nullptr}; }
     OCCT_CATCH_RETURN
@@ -1176,20 +1162,20 @@ extern "C" OcctResult<Handle(Standard_Type) const*> XCAFDimTolObjects_DimensionO
 }
 extern "C" OcctResult<const Standard_Transient*> XCAFDimTolObjects_DimensionObject_as_Standard_Transient(const XCAFDimTolObjects_DimensionObject* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> XCAFDimTolObjects_DimensionObject_as_Standard_Transient_mut(XCAFDimTolObjects_DimensionObject* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleXCAFDimTolObjectsDimensionObject*> XCAFDimTolObjects_DimensionObject_to_handle(XCAFDimTolObjects_DimensionObject* obj) {
-    try { return {new HandleXCAFDimTolObjectsDimensionObject(obj), nullptr}; }
+extern "C" OcctResult<Handle_XCAFDimTolObjects_DimensionObject*> XCAFDimTolObjects_DimensionObject_to_handle(XCAFDimTolObjects_DimensionObject* obj) {
+    try { return {new Handle_XCAFDimTolObjects_DimensionObject(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const XCAFDimTolObjects_DimensionObject*> HandleXCAFDimTolObjectsDimensionObject_get(const HandleXCAFDimTolObjectsDimensionObject* handle) {
+extern "C" OcctResult<const XCAFDimTolObjects_DimensionObject*> Handle_XCAFDimTolObjects_DimensionObject_get(const Handle_XCAFDimTolObjects_DimensionObject* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<XCAFDimTolObjects_DimensionObject*> HandleXCAFDimTolObjectsDimensionObject_get_mut(HandleXCAFDimTolObjectsDimensionObject* handle) {
+extern "C" OcctResult<XCAFDimTolObjects_DimensionObject*> Handle_XCAFDimTolObjects_DimensionObject_get_mut(Handle_XCAFDimTolObjects_DimensionObject* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleXCAFDimTolObjectsDimensionObject_to_HandleStandardTransient(const HandleXCAFDimTolObjectsDimensionObject* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_XCAFDimTolObjects_DimensionObject_to_Handle_Standard_Transient(const Handle_XCAFDimTolObjects_DimensionObject* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> XCAFDimTolObjects_DimensionObject_inherited_IsInstance(const XCAFDimTolObjects_DimensionObject* self, Handle(Standard_Type) const& theType) {
@@ -1238,8 +1224,8 @@ extern "C" OcctResult<Handle(TCollection_HAsciiString)*> XCAFDimTolObjects_GeomT
     try { return {new Handle(TCollection_HAsciiString)(self_->GetSemanticName()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<XCAFDimTolObjects_GeomToleranceModifiersSequence*> XCAFDimTolObjects_GeomToleranceObject_get_modifiers(const XCAFDimTolObjects_GeomToleranceObject* self_) {
-    try { return {new XCAFDimTolObjects_GeomToleranceModifiersSequence(self_->GetModifiers()), nullptr}; }
+extern "C" OcctResult<NCollection_Sequence_XCAFDimTolObjects_GeomToleranceModif*> XCAFDimTolObjects_GeomToleranceObject_get_modifiers(const XCAFDimTolObjects_GeomToleranceObject* self_) {
+    try { return {new NCollection_Sequence_XCAFDimTolObjects_GeomToleranceModif(self_->GetModifiers()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<gp_Ax2*> XCAFDimTolObjects_GeomToleranceObject_get_axis(const XCAFDimTolObjects_GeomToleranceObject* self_) {
@@ -1306,7 +1292,7 @@ extern "C" OcctResult<double> XCAFDimTolObjects_GeomToleranceObject_get_value_of
     try { return {self_->GetValueOfZoneModifier(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* XCAFDimTolObjects_GeomToleranceObject_set_modifiers(XCAFDimTolObjects_GeomToleranceObject* self_, XCAFDimTolObjects_GeomToleranceModifiersSequence const* theModifiers) {
+extern "C" const char* XCAFDimTolObjects_GeomToleranceObject_set_modifiers(XCAFDimTolObjects_GeomToleranceObject* self_, NCollection_Sequence_XCAFDimTolObjects_GeomToleranceModif const* theModifiers) {
     try { self_->SetModifiers(*theModifiers); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -1408,20 +1394,20 @@ extern "C" OcctResult<Handle(Standard_Type) const*> XCAFDimTolObjects_GeomTolera
 }
 extern "C" OcctResult<const Standard_Transient*> XCAFDimTolObjects_GeomToleranceObject_as_Standard_Transient(const XCAFDimTolObjects_GeomToleranceObject* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> XCAFDimTolObjects_GeomToleranceObject_as_Standard_Transient_mut(XCAFDimTolObjects_GeomToleranceObject* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleXCAFDimTolObjectsGeomToleranceObject*> XCAFDimTolObjects_GeomToleranceObject_to_handle(XCAFDimTolObjects_GeomToleranceObject* obj) {
-    try { return {new HandleXCAFDimTolObjectsGeomToleranceObject(obj), nullptr}; }
+extern "C" OcctResult<Handle_XCAFDimTolObjects_GeomToleranceObject*> XCAFDimTolObjects_GeomToleranceObject_to_handle(XCAFDimTolObjects_GeomToleranceObject* obj) {
+    try { return {new Handle_XCAFDimTolObjects_GeomToleranceObject(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const XCAFDimTolObjects_GeomToleranceObject*> HandleXCAFDimTolObjectsGeomToleranceObject_get(const HandleXCAFDimTolObjectsGeomToleranceObject* handle) {
+extern "C" OcctResult<const XCAFDimTolObjects_GeomToleranceObject*> Handle_XCAFDimTolObjects_GeomToleranceObject_get(const Handle_XCAFDimTolObjects_GeomToleranceObject* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<XCAFDimTolObjects_GeomToleranceObject*> HandleXCAFDimTolObjectsGeomToleranceObject_get_mut(HandleXCAFDimTolObjectsGeomToleranceObject* handle) {
+extern "C" OcctResult<XCAFDimTolObjects_GeomToleranceObject*> Handle_XCAFDimTolObjects_GeomToleranceObject_get_mut(Handle_XCAFDimTolObjects_GeomToleranceObject* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleXCAFDimTolObjectsGeomToleranceObject_to_HandleStandardTransient(const HandleXCAFDimTolObjectsGeomToleranceObject* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_XCAFDimTolObjects_GeomToleranceObject_to_Handle_Standard_Transient(const Handle_XCAFDimTolObjects_GeomToleranceObject* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> XCAFDimTolObjects_GeomToleranceObject_inherited_IsInstance(const XCAFDimTolObjects_GeomToleranceObject* self, Handle(Standard_Type) const& theType) {
@@ -1460,22 +1446,6 @@ extern "C" void XCAFDimTolObjects_GeomToleranceObject_destructor(XCAFDimTolObjec
 
 extern "C" OcctResult<XCAFDimTolObjects_Tool*> XCAFDimTolObjects_Tool_ctor_handletdocstddocument(Handle(TDocStd_Document) const* theDoc) {
     try { return {new XCAFDimTolObjects_Tool(*theDoc), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* XCAFDimTolObjects_Tool_get_dimensions(const XCAFDimTolObjects_Tool* self_, XCAFDimTolObjects_DimensionObjectSequence* theDimensionObjectSequence) {
-    try { self_->GetDimensions(*theDimensionObjectSequence); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<bool> XCAFDimTolObjects_Tool_get_ref_dimensions(const XCAFDimTolObjects_Tool* self_, TopoDS_Shape const* theShape, XCAFDimTolObjects_DimensionObjectSequence* theDimensions) {
-    try { return {self_->GetRefDimensions(*theShape, *theDimensions), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* XCAFDimTolObjects_Tool_get_geom_tolerances(const XCAFDimTolObjects_Tool* self_, XCAFDimTolObjects_GeomToleranceObjectSequence* theGeomToleranceObjectSequence, XCAFDimTolObjects_DatumObjectSequence* theDatumObjectSequence, XCAFDimTolObjects_DataMapOfToleranceDatum* theMap) {
-    try { self_->GetGeomTolerances(*theGeomToleranceObjectSequence, *theDatumObjectSequence, *theMap); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<bool> XCAFDimTolObjects_Tool_get_ref_geom_tolerances(const XCAFDimTolObjects_Tool* self_, TopoDS_Shape const* theShape, XCAFDimTolObjects_GeomToleranceObjectSequence* theGeomToleranceObjectSequence, XCAFDimTolObjects_DatumObjectSequence* theDatumObjectSequence, XCAFDimTolObjects_DataMapOfToleranceDatum* theMap) {
-    try { return {self_->GetRefGeomTolerances(*theShape, *theGeomToleranceObjectSequence, *theDatumObjectSequence, *theMap), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> XCAFDimTolObjects_Tool_get_ref_datum(const XCAFDimTolObjects_Tool* self_, TopoDS_Shape const* theShape, Handle(XCAFDimTolObjects_DatumObject)* theDatum) {
@@ -1542,28 +1512,28 @@ extern "C" OcctResult<const TDF_Attribute*> XCAFDoc_Area_as_TDF_Attribute(const 
 extern "C" OcctResult<TDF_Attribute*> XCAFDoc_Area_as_TDF_Attribute_mut(XCAFDoc_Area* self_) { return {static_cast<TDF_Attribute*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> XCAFDoc_Area_as_Standard_Transient(const XCAFDoc_Area* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> XCAFDoc_Area_as_Standard_Transient_mut(XCAFDoc_Area* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleXCAFDocArea*> XCAFDoc_Area_to_handle(XCAFDoc_Area* obj) {
-    try { return {new HandleXCAFDocArea(obj), nullptr}; }
+extern "C" OcctResult<Handle_XCAFDoc_Area*> XCAFDoc_Area_to_handle(XCAFDoc_Area* obj) {
+    try { return {new Handle_XCAFDoc_Area(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const XCAFDoc_Area*> HandleXCAFDocArea_get(const HandleXCAFDocArea* handle) {
+extern "C" OcctResult<const XCAFDoc_Area*> Handle_XCAFDoc_Area_get(const Handle_XCAFDoc_Area* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<XCAFDoc_Area*> HandleXCAFDocArea_get_mut(HandleXCAFDocArea* handle) {
+extern "C" OcctResult<XCAFDoc_Area*> Handle_XCAFDoc_Area_get_mut(Handle_XCAFDoc_Area* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTDataStdReal*> HandleXCAFDocArea_to_HandleTDataStdReal(const HandleXCAFDocArea* self_) {
-    try { return {new HandleTDataStdReal(*self_), nullptr}; }
+extern "C" OcctResult<Handle_TDataStd_Real*> Handle_XCAFDoc_Area_to_Handle_TDataStd_Real(const Handle_XCAFDoc_Area* self_) {
+    try { return {new Handle_TDataStd_Real(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTDFAttribute*> HandleXCAFDocArea_to_HandleTDFAttribute(const HandleXCAFDocArea* self_) {
-    try { return {new HandleTDFAttribute(*self_), nullptr}; }
+extern "C" OcctResult<Handle_TDF_Attribute*> Handle_XCAFDoc_Area_to_Handle_TDF_Attribute(const Handle_XCAFDoc_Area* self_) {
+    try { return {new Handle_TDF_Attribute(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleXCAFDocArea_to_HandleStandardTransient(const HandleXCAFDocArea* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_XCAFDoc_Area_to_Handle_Standard_Transient(const Handle_XCAFDoc_Area* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" const char* XCAFDoc_Area_inherited_SetID(XCAFDoc_Area* self, Standard_GUID const& guid) {
@@ -1694,10 +1664,6 @@ extern "C" const char* XCAFDoc_Area_inherited_References(const XCAFDoc_Area* sel
     try { self->References(aDataSet); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* XCAFDoc_Area_inherited_ExtendedDump(const XCAFDoc_Area* self, Standard_OStream& anOS, TDF_IDFilter const& aFilter, TDF_AttributeIndexedMap& aMap) {
-    try { self->ExtendedDump(anOS, aFilter, aMap); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
 extern "C" const char* XCAFDoc_Area_inherited_Forget(XCAFDoc_Area* self, int32_t aTransaction) {
     try { self->Forget(aTransaction); return nullptr; }
     OCCT_CATCH_RETURN_VOID
@@ -1772,7 +1738,7 @@ extern "C" OcctResult<TDF_Label const*> XCAFDoc_AssemblyGraph_get_node(const XCA
     try { return {&(self_->GetNode(theNode)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TDF_LabelIndexedMap const*> XCAFDoc_AssemblyGraph_get_nodes(const XCAFDoc_AssemblyGraph* self_) {
+extern "C" OcctResult<NCollection_IndexedMap_TDF_Label const*> XCAFDoc_AssemblyGraph_get_nodes(const XCAFDoc_AssemblyGraph* self_) {
     try { return {&(self_->GetNodes()), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -1794,20 +1760,20 @@ extern "C" OcctResult<int32_t> XCAFDoc_AssemblyGraph_nb_occurrences(const XCAFDo
 }
 extern "C" OcctResult<const Standard_Transient*> XCAFDoc_AssemblyGraph_as_Standard_Transient(const XCAFDoc_AssemblyGraph* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> XCAFDoc_AssemblyGraph_as_Standard_Transient_mut(XCAFDoc_AssemblyGraph* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleXCAFDocAssemblyGraph*> XCAFDoc_AssemblyGraph_to_handle(XCAFDoc_AssemblyGraph* obj) {
-    try { return {new HandleXCAFDocAssemblyGraph(obj), nullptr}; }
+extern "C" OcctResult<Handle_XCAFDoc_AssemblyGraph*> XCAFDoc_AssemblyGraph_to_handle(XCAFDoc_AssemblyGraph* obj) {
+    try { return {new Handle_XCAFDoc_AssemblyGraph(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const XCAFDoc_AssemblyGraph*> HandleXCAFDocAssemblyGraph_get(const HandleXCAFDocAssemblyGraph* handle) {
+extern "C" OcctResult<const XCAFDoc_AssemblyGraph*> Handle_XCAFDoc_AssemblyGraph_get(const Handle_XCAFDoc_AssemblyGraph* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<XCAFDoc_AssemblyGraph*> HandleXCAFDocAssemblyGraph_get_mut(HandleXCAFDocAssemblyGraph* handle) {
+extern "C" OcctResult<XCAFDoc_AssemblyGraph*> Handle_XCAFDoc_AssemblyGraph_get_mut(Handle_XCAFDoc_AssemblyGraph* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleXCAFDocAssemblyGraph_to_HandleStandardTransient(const HandleXCAFDocAssemblyGraph* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_XCAFDoc_AssemblyGraph_to_Handle_Standard_Transient(const Handle_XCAFDoc_AssemblyGraph* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(Standard_Type) const*> XCAFDoc_AssemblyGraph_inherited_DynamicType(const XCAFDoc_AssemblyGraph* self) {
@@ -1874,7 +1840,7 @@ extern "C" OcctResult<XCAFDoc_AssemblyItemId*> XCAFDoc_AssemblyItemId_ctor() {
     try { return {new XCAFDoc_AssemblyItemId(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<XCAFDoc_AssemblyItemId*> XCAFDoc_AssemblyItemId_ctor_listofasciistring(TColStd_ListOfAsciiString const* thePath) {
+extern "C" OcctResult<XCAFDoc_AssemblyItemId*> XCAFDoc_AssemblyItemId_ctor_list_asciistring(NCollection_List_TCollection_AsciiString const* thePath) {
     try { return {new XCAFDoc_AssemblyItemId(*thePath), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -1886,7 +1852,7 @@ extern "C" OcctResult<TCollection_AsciiString*> XCAFDoc_AssemblyItemId_to_string
     try { return {new TCollection_AsciiString(self_->ToString()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* XCAFDoc_AssemblyItemId_init_listofasciistring(XCAFDoc_AssemblyItemId* self_, TColStd_ListOfAsciiString const* thePath) {
+extern "C" const char* XCAFDoc_AssemblyItemId_init_list_asciistring(XCAFDoc_AssemblyItemId* self_, NCollection_List_TCollection_AsciiString const* thePath) {
     try { self_->Init(*thePath); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -1914,7 +1880,7 @@ extern "C" OcctResult<bool> XCAFDoc_AssemblyItemId_is_equal(const XCAFDoc_Assemb
     try { return {self_->IsEqual(*theOther), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TColStd_ListOfAsciiString const*> XCAFDoc_AssemblyItemId_get_path(const XCAFDoc_AssemblyItemId* self_) {
+extern "C" OcctResult<NCollection_List_TCollection_AsciiString const*> XCAFDoc_AssemblyItemId_get_path(const XCAFDoc_AssemblyItemId* self_) {
     try { return {&(self_->GetPath()), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -1968,7 +1934,7 @@ extern "C" const char* XCAFDoc_AssemblyItemRef_set_item_assemblyitemid(XCAFDoc_A
     try { self_->SetItem(*theItemId); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* XCAFDoc_AssemblyItemRef_set_item_listofasciistring(XCAFDoc_AssemblyItemRef* self_, TColStd_ListOfAsciiString const* thePath) {
+extern "C" const char* XCAFDoc_AssemblyItemRef_set_item_list_asciistring(XCAFDoc_AssemblyItemRef* self_, NCollection_List_TCollection_AsciiString const* thePath) {
     try { self_->SetItem(*thePath); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -2036,24 +2002,24 @@ extern "C" OcctResult<const TDF_Attribute*> XCAFDoc_AssemblyItemRef_as_TDF_Attri
 extern "C" OcctResult<TDF_Attribute*> XCAFDoc_AssemblyItemRef_as_TDF_Attribute_mut(XCAFDoc_AssemblyItemRef* self_) { return {static_cast<TDF_Attribute*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> XCAFDoc_AssemblyItemRef_as_Standard_Transient(const XCAFDoc_AssemblyItemRef* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> XCAFDoc_AssemblyItemRef_as_Standard_Transient_mut(XCAFDoc_AssemblyItemRef* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleXCAFDocAssemblyItemRef*> XCAFDoc_AssemblyItemRef_to_handle(XCAFDoc_AssemblyItemRef* obj) {
-    try { return {new HandleXCAFDocAssemblyItemRef(obj), nullptr}; }
+extern "C" OcctResult<Handle_XCAFDoc_AssemblyItemRef*> XCAFDoc_AssemblyItemRef_to_handle(XCAFDoc_AssemblyItemRef* obj) {
+    try { return {new Handle_XCAFDoc_AssemblyItemRef(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const XCAFDoc_AssemblyItemRef*> HandleXCAFDocAssemblyItemRef_get(const HandleXCAFDocAssemblyItemRef* handle) {
+extern "C" OcctResult<const XCAFDoc_AssemblyItemRef*> Handle_XCAFDoc_AssemblyItemRef_get(const Handle_XCAFDoc_AssemblyItemRef* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<XCAFDoc_AssemblyItemRef*> HandleXCAFDocAssemblyItemRef_get_mut(HandleXCAFDocAssemblyItemRef* handle) {
+extern "C" OcctResult<XCAFDoc_AssemblyItemRef*> Handle_XCAFDoc_AssemblyItemRef_get_mut(Handle_XCAFDoc_AssemblyItemRef* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTDFAttribute*> HandleXCAFDocAssemblyItemRef_to_HandleTDFAttribute(const HandleXCAFDocAssemblyItemRef* self_) {
-    try { return {new HandleTDFAttribute(*self_), nullptr}; }
+extern "C" OcctResult<Handle_TDF_Attribute*> Handle_XCAFDoc_AssemblyItemRef_to_Handle_TDF_Attribute(const Handle_XCAFDoc_AssemblyItemRef* self_) {
+    try { return {new Handle_TDF_Attribute(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleXCAFDocAssemblyItemRef_to_HandleStandardTransient(const HandleXCAFDocAssemblyItemRef* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_XCAFDoc_AssemblyItemRef_to_Handle_Standard_Transient(const Handle_XCAFDoc_AssemblyItemRef* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" const char* XCAFDoc_AssemblyItemRef_inherited_SetID(XCAFDoc_AssemblyItemRef* self, Standard_GUID const& arg0) {
@@ -2170,10 +2136,6 @@ extern "C" OcctResult<Handle(TDF_DeltaOnRemoval)*> XCAFDoc_AssemblyItemRef_inher
 }
 extern "C" const char* XCAFDoc_AssemblyItemRef_inherited_References(const XCAFDoc_AssemblyItemRef* self, Handle(TDF_DataSet) const& aDataSet) {
     try { self->References(aDataSet); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* XCAFDoc_AssemblyItemRef_inherited_ExtendedDump(const XCAFDoc_AssemblyItemRef* self, Standard_OStream& anOS, TDF_IDFilter const& aFilter, TDF_AttributeIndexedMap& aMap) {
-    try { self->ExtendedDump(anOS, aFilter, aMap); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
 extern "C" const char* XCAFDoc_AssemblyItemRef_inherited_Forget(XCAFDoc_AssemblyItemRef* self, int32_t aTransaction) {
@@ -2300,24 +2262,24 @@ extern "C" OcctResult<const TDF_Attribute*> XCAFDoc_Centroid_as_TDF_Attribute(co
 extern "C" OcctResult<TDF_Attribute*> XCAFDoc_Centroid_as_TDF_Attribute_mut(XCAFDoc_Centroid* self_) { return {static_cast<TDF_Attribute*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> XCAFDoc_Centroid_as_Standard_Transient(const XCAFDoc_Centroid* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> XCAFDoc_Centroid_as_Standard_Transient_mut(XCAFDoc_Centroid* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleXCAFDocCentroid*> XCAFDoc_Centroid_to_handle(XCAFDoc_Centroid* obj) {
-    try { return {new HandleXCAFDocCentroid(obj), nullptr}; }
+extern "C" OcctResult<Handle_XCAFDoc_Centroid*> XCAFDoc_Centroid_to_handle(XCAFDoc_Centroid* obj) {
+    try { return {new Handle_XCAFDoc_Centroid(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const XCAFDoc_Centroid*> HandleXCAFDocCentroid_get(const HandleXCAFDocCentroid* handle) {
+extern "C" OcctResult<const XCAFDoc_Centroid*> Handle_XCAFDoc_Centroid_get(const Handle_XCAFDoc_Centroid* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<XCAFDoc_Centroid*> HandleXCAFDocCentroid_get_mut(HandleXCAFDocCentroid* handle) {
+extern "C" OcctResult<XCAFDoc_Centroid*> Handle_XCAFDoc_Centroid_get_mut(Handle_XCAFDoc_Centroid* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTDFAttribute*> HandleXCAFDocCentroid_to_HandleTDFAttribute(const HandleXCAFDocCentroid* self_) {
-    try { return {new HandleTDFAttribute(*self_), nullptr}; }
+extern "C" OcctResult<Handle_TDF_Attribute*> Handle_XCAFDoc_Centroid_to_Handle_TDF_Attribute(const Handle_XCAFDoc_Centroid* self_) {
+    try { return {new Handle_TDF_Attribute(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleXCAFDocCentroid_to_HandleStandardTransient(const HandleXCAFDocCentroid* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_XCAFDoc_Centroid_to_Handle_Standard_Transient(const Handle_XCAFDoc_Centroid* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" const char* XCAFDoc_Centroid_inherited_SetID(XCAFDoc_Centroid* self, Standard_GUID const& arg0) {
@@ -2436,10 +2398,6 @@ extern "C" const char* XCAFDoc_Centroid_inherited_References(const XCAFDoc_Centr
     try { self->References(aDataSet); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* XCAFDoc_Centroid_inherited_ExtendedDump(const XCAFDoc_Centroid* self, Standard_OStream& anOS, TDF_IDFilter const& aFilter, TDF_AttributeIndexedMap& aMap) {
-    try { self->ExtendedDump(anOS, aFilter, aMap); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
 extern "C" const char* XCAFDoc_Centroid_inherited_Forget(XCAFDoc_Centroid* self, int32_t aTransaction) {
     try { self->Forget(aTransaction); return nullptr; }
     OCCT_CATCH_RETURN_VOID
@@ -2522,7 +2480,7 @@ extern "C" OcctResult<bool> XCAFDoc_ClippingPlaneTool_remove_clipping_plane(cons
     try { return {self_->RemoveClippingPlane(*theLabel), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* XCAFDoc_ClippingPlaneTool_get_clipping_planes(const XCAFDoc_ClippingPlaneTool* self_, TDF_LabelSequence* Labels) {
+extern "C" const char* XCAFDoc_ClippingPlaneTool_get_clipping_planes(const XCAFDoc_ClippingPlaneTool* self_, NCollection_Sequence_TDF_Label* Labels) {
     try { self_->GetClippingPlanes(*Labels); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -2572,28 +2530,28 @@ extern "C" OcctResult<const TDF_Attribute*> XCAFDoc_ClippingPlaneTool_as_TDF_Att
 extern "C" OcctResult<TDF_Attribute*> XCAFDoc_ClippingPlaneTool_as_TDF_Attribute_mut(XCAFDoc_ClippingPlaneTool* self_) { return {static_cast<TDF_Attribute*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> XCAFDoc_ClippingPlaneTool_as_Standard_Transient(const XCAFDoc_ClippingPlaneTool* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> XCAFDoc_ClippingPlaneTool_as_Standard_Transient_mut(XCAFDoc_ClippingPlaneTool* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleXCAFDocClippingPlaneTool*> XCAFDoc_ClippingPlaneTool_to_handle(XCAFDoc_ClippingPlaneTool* obj) {
-    try { return {new HandleXCAFDocClippingPlaneTool(obj), nullptr}; }
+extern "C" OcctResult<Handle_XCAFDoc_ClippingPlaneTool*> XCAFDoc_ClippingPlaneTool_to_handle(XCAFDoc_ClippingPlaneTool* obj) {
+    try { return {new Handle_XCAFDoc_ClippingPlaneTool(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const XCAFDoc_ClippingPlaneTool*> HandleXCAFDocClippingPlaneTool_get(const HandleXCAFDocClippingPlaneTool* handle) {
+extern "C" OcctResult<const XCAFDoc_ClippingPlaneTool*> Handle_XCAFDoc_ClippingPlaneTool_get(const Handle_XCAFDoc_ClippingPlaneTool* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<XCAFDoc_ClippingPlaneTool*> HandleXCAFDocClippingPlaneTool_get_mut(HandleXCAFDocClippingPlaneTool* handle) {
+extern "C" OcctResult<XCAFDoc_ClippingPlaneTool*> Handle_XCAFDoc_ClippingPlaneTool_get_mut(Handle_XCAFDoc_ClippingPlaneTool* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTDataStdGenericEmpty*> HandleXCAFDocClippingPlaneTool_to_HandleTDataStdGenericEmpty(const HandleXCAFDocClippingPlaneTool* self_) {
-    try { return {new HandleTDataStdGenericEmpty(*self_), nullptr}; }
+extern "C" OcctResult<Handle_TDataStd_GenericEmpty*> Handle_XCAFDoc_ClippingPlaneTool_to_Handle_TDataStd_GenericEmpty(const Handle_XCAFDoc_ClippingPlaneTool* self_) {
+    try { return {new Handle_TDataStd_GenericEmpty(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTDFAttribute*> HandleXCAFDocClippingPlaneTool_to_HandleTDFAttribute(const HandleXCAFDocClippingPlaneTool* self_) {
-    try { return {new HandleTDFAttribute(*self_), nullptr}; }
+extern "C" OcctResult<Handle_TDF_Attribute*> Handle_XCAFDoc_ClippingPlaneTool_to_Handle_TDF_Attribute(const Handle_XCAFDoc_ClippingPlaneTool* self_) {
+    try { return {new Handle_TDF_Attribute(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleXCAFDocClippingPlaneTool_to_HandleStandardTransient(const HandleXCAFDocClippingPlaneTool* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_XCAFDoc_ClippingPlaneTool_to_Handle_Standard_Transient(const Handle_XCAFDoc_ClippingPlaneTool* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" const char* XCAFDoc_ClippingPlaneTool_inherited_Restore(XCAFDoc_ClippingPlaneTool* self, Handle(TDF_Attribute) const& arg0) {
@@ -2718,10 +2676,6 @@ extern "C" OcctResult<Handle(TDF_DeltaOnRemoval)*> XCAFDoc_ClippingPlaneTool_inh
 }
 extern "C" const char* XCAFDoc_ClippingPlaneTool_inherited_References(const XCAFDoc_ClippingPlaneTool* self, Handle(TDF_DataSet) const& aDataSet) {
     try { self->References(aDataSet); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* XCAFDoc_ClippingPlaneTool_inherited_ExtendedDump(const XCAFDoc_ClippingPlaneTool* self, Standard_OStream& anOS, TDF_IDFilter const& aFilter, TDF_AttributeIndexedMap& aMap) {
-    try { self->ExtendedDump(anOS, aFilter, aMap); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
 extern "C" const char* XCAFDoc_ClippingPlaneTool_inherited_Forget(XCAFDoc_ClippingPlaneTool* self, int32_t aTransaction) {
@@ -2854,24 +2808,24 @@ extern "C" OcctResult<const TDF_Attribute*> XCAFDoc_Color_as_TDF_Attribute(const
 extern "C" OcctResult<TDF_Attribute*> XCAFDoc_Color_as_TDF_Attribute_mut(XCAFDoc_Color* self_) { return {static_cast<TDF_Attribute*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> XCAFDoc_Color_as_Standard_Transient(const XCAFDoc_Color* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> XCAFDoc_Color_as_Standard_Transient_mut(XCAFDoc_Color* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleXCAFDocColor*> XCAFDoc_Color_to_handle(XCAFDoc_Color* obj) {
-    try { return {new HandleXCAFDocColor(obj), nullptr}; }
+extern "C" OcctResult<Handle_XCAFDoc_Color*> XCAFDoc_Color_to_handle(XCAFDoc_Color* obj) {
+    try { return {new Handle_XCAFDoc_Color(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const XCAFDoc_Color*> HandleXCAFDocColor_get(const HandleXCAFDocColor* handle) {
+extern "C" OcctResult<const XCAFDoc_Color*> Handle_XCAFDoc_Color_get(const Handle_XCAFDoc_Color* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<XCAFDoc_Color*> HandleXCAFDocColor_get_mut(HandleXCAFDocColor* handle) {
+extern "C" OcctResult<XCAFDoc_Color*> Handle_XCAFDoc_Color_get_mut(Handle_XCAFDoc_Color* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTDFAttribute*> HandleXCAFDocColor_to_HandleTDFAttribute(const HandleXCAFDocColor* self_) {
-    try { return {new HandleTDFAttribute(*self_), nullptr}; }
+extern "C" OcctResult<Handle_TDF_Attribute*> Handle_XCAFDoc_Color_to_Handle_TDF_Attribute(const Handle_XCAFDoc_Color* self_) {
+    try { return {new Handle_TDF_Attribute(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleXCAFDocColor_to_HandleStandardTransient(const HandleXCAFDocColor* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_XCAFDoc_Color_to_Handle_Standard_Transient(const Handle_XCAFDoc_Color* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" const char* XCAFDoc_Color_inherited_SetID(XCAFDoc_Color* self, Standard_GUID const& arg0) {
@@ -2990,10 +2944,6 @@ extern "C" const char* XCAFDoc_Color_inherited_References(const XCAFDoc_Color* s
     try { self->References(aDataSet); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* XCAFDoc_Color_inherited_ExtendedDump(const XCAFDoc_Color* self, Standard_OStream& anOS, TDF_IDFilter const& aFilter, TDF_AttributeIndexedMap& aMap) {
-    try { self->ExtendedDump(anOS, aFilter, aMap); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
 extern "C" const char* XCAFDoc_Color_inherited_Forget(XCAFDoc_Color* self, int32_t aTransaction) {
     try { self->Forget(aTransaction); return nullptr; }
     OCCT_CATCH_RETURN_VOID
@@ -3080,7 +3030,7 @@ extern "C" const char* XCAFDoc_ColorTool_remove_color(const XCAFDoc_ColorTool* s
     try { self_->RemoveColor(*lab); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* XCAFDoc_ColorTool_get_colors(const XCAFDoc_ColorTool* self_, TDF_LabelSequence* Labels) {
+extern "C" const char* XCAFDoc_ColorTool_get_colors(const XCAFDoc_ColorTool* self_, NCollection_Sequence_TDF_Label* Labels) {
     try { self_->GetColors(*Labels); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -3234,28 +3184,28 @@ extern "C" OcctResult<const TDF_Attribute*> XCAFDoc_ColorTool_as_TDF_Attribute(c
 extern "C" OcctResult<TDF_Attribute*> XCAFDoc_ColorTool_as_TDF_Attribute_mut(XCAFDoc_ColorTool* self_) { return {static_cast<TDF_Attribute*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> XCAFDoc_ColorTool_as_Standard_Transient(const XCAFDoc_ColorTool* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> XCAFDoc_ColorTool_as_Standard_Transient_mut(XCAFDoc_ColorTool* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleXCAFDocColorTool*> XCAFDoc_ColorTool_to_handle(XCAFDoc_ColorTool* obj) {
-    try { return {new HandleXCAFDocColorTool(obj), nullptr}; }
+extern "C" OcctResult<Handle_XCAFDoc_ColorTool*> XCAFDoc_ColorTool_to_handle(XCAFDoc_ColorTool* obj) {
+    try { return {new Handle_XCAFDoc_ColorTool(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const XCAFDoc_ColorTool*> HandleXCAFDocColorTool_get(const HandleXCAFDocColorTool* handle) {
+extern "C" OcctResult<const XCAFDoc_ColorTool*> Handle_XCAFDoc_ColorTool_get(const Handle_XCAFDoc_ColorTool* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<XCAFDoc_ColorTool*> HandleXCAFDocColorTool_get_mut(HandleXCAFDocColorTool* handle) {
+extern "C" OcctResult<XCAFDoc_ColorTool*> Handle_XCAFDoc_ColorTool_get_mut(Handle_XCAFDoc_ColorTool* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTDataStdGenericEmpty*> HandleXCAFDocColorTool_to_HandleTDataStdGenericEmpty(const HandleXCAFDocColorTool* self_) {
-    try { return {new HandleTDataStdGenericEmpty(*self_), nullptr}; }
+extern "C" OcctResult<Handle_TDataStd_GenericEmpty*> Handle_XCAFDoc_ColorTool_to_Handle_TDataStd_GenericEmpty(const Handle_XCAFDoc_ColorTool* self_) {
+    try { return {new Handle_TDataStd_GenericEmpty(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTDFAttribute*> HandleXCAFDocColorTool_to_HandleTDFAttribute(const HandleXCAFDocColorTool* self_) {
-    try { return {new HandleTDFAttribute(*self_), nullptr}; }
+extern "C" OcctResult<Handle_TDF_Attribute*> Handle_XCAFDoc_ColorTool_to_Handle_TDF_Attribute(const Handle_XCAFDoc_ColorTool* self_) {
+    try { return {new Handle_TDF_Attribute(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleXCAFDocColorTool_to_HandleStandardTransient(const HandleXCAFDocColorTool* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_XCAFDoc_ColorTool_to_Handle_Standard_Transient(const Handle_XCAFDoc_ColorTool* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" const char* XCAFDoc_ColorTool_inherited_Restore(XCAFDoc_ColorTool* self, Handle(TDF_Attribute) const& arg0) {
@@ -3382,10 +3332,6 @@ extern "C" const char* XCAFDoc_ColorTool_inherited_References(const XCAFDoc_Colo
     try { self->References(aDataSet); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* XCAFDoc_ColorTool_inherited_ExtendedDump(const XCAFDoc_ColorTool* self, Standard_OStream& anOS, TDF_IDFilter const& aFilter, TDF_AttributeIndexedMap& aMap) {
-    try { self->ExtendedDump(anOS, aFilter, aMap); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
 extern "C" const char* XCAFDoc_ColorTool_inherited_Forget(XCAFDoc_ColorTool* self, int32_t aTransaction) {
     try { self->Forget(aTransaction); return nullptr; }
     OCCT_CATCH_RETURN_VOID
@@ -3496,24 +3442,24 @@ extern "C" OcctResult<const TDF_Attribute*> XCAFDoc_Datum_as_TDF_Attribute(const
 extern "C" OcctResult<TDF_Attribute*> XCAFDoc_Datum_as_TDF_Attribute_mut(XCAFDoc_Datum* self_) { return {static_cast<TDF_Attribute*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> XCAFDoc_Datum_as_Standard_Transient(const XCAFDoc_Datum* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> XCAFDoc_Datum_as_Standard_Transient_mut(XCAFDoc_Datum* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleXCAFDocDatum*> XCAFDoc_Datum_to_handle(XCAFDoc_Datum* obj) {
-    try { return {new HandleXCAFDocDatum(obj), nullptr}; }
+extern "C" OcctResult<Handle_XCAFDoc_Datum*> XCAFDoc_Datum_to_handle(XCAFDoc_Datum* obj) {
+    try { return {new Handle_XCAFDoc_Datum(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const XCAFDoc_Datum*> HandleXCAFDocDatum_get(const HandleXCAFDocDatum* handle) {
+extern "C" OcctResult<const XCAFDoc_Datum*> Handle_XCAFDoc_Datum_get(const Handle_XCAFDoc_Datum* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<XCAFDoc_Datum*> HandleXCAFDocDatum_get_mut(HandleXCAFDocDatum* handle) {
+extern "C" OcctResult<XCAFDoc_Datum*> Handle_XCAFDoc_Datum_get_mut(Handle_XCAFDoc_Datum* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTDFAttribute*> HandleXCAFDocDatum_to_HandleTDFAttribute(const HandleXCAFDocDatum* self_) {
-    try { return {new HandleTDFAttribute(*self_), nullptr}; }
+extern "C" OcctResult<Handle_TDF_Attribute*> Handle_XCAFDoc_Datum_to_Handle_TDF_Attribute(const Handle_XCAFDoc_Datum* self_) {
+    try { return {new Handle_TDF_Attribute(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleXCAFDocDatum_to_HandleStandardTransient(const HandleXCAFDocDatum* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_XCAFDoc_Datum_to_Handle_Standard_Transient(const Handle_XCAFDoc_Datum* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" const char* XCAFDoc_Datum_inherited_SetID(XCAFDoc_Datum* self, Standard_GUID const& arg0) {
@@ -3632,10 +3578,6 @@ extern "C" const char* XCAFDoc_Datum_inherited_References(const XCAFDoc_Datum* s
     try { self->References(aDataSet); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* XCAFDoc_Datum_inherited_ExtendedDump(const XCAFDoc_Datum* self, Standard_OStream& anOS, TDF_IDFilter const& aFilter, TDF_AttributeIndexedMap& aMap) {
-    try { self->ExtendedDump(anOS, aFilter, aMap); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
 extern "C" const char* XCAFDoc_Datum_inherited_Forget(XCAFDoc_Datum* self, int32_t aTransaction) {
     try { self->Forget(aTransaction); return nullptr; }
     OCCT_CATCH_RETURN_VOID
@@ -3678,8 +3620,8 @@ extern "C" OcctResult<XCAFDoc_DimTol*> XCAFDoc_DimTol_ctor() {
     try { return {new XCAFDoc_DimTol(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(TColStd_HArray1OfReal)*> XCAFDoc_DimTol_get_val(const XCAFDoc_DimTol* self_) {
-    try { return {new Handle(TColStd_HArray1OfReal)(self_->GetVal()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HArray1_double)*> XCAFDoc_DimTol_get_val(const XCAFDoc_DimTol* self_) {
+    try { return {new Handle(NCollection_HArray1_double)(self_->GetVal()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(TCollection_HAsciiString)*> XCAFDoc_DimTol_get_name(const XCAFDoc_DimTol* self_) {
@@ -3694,7 +3636,7 @@ extern "C" OcctResult<Handle(TDF_Attribute)*> XCAFDoc_DimTol_new_empty(const XCA
     try { return {new Handle(TDF_Attribute)(self_->NewEmpty()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* XCAFDoc_DimTol_set(XCAFDoc_DimTol* self_, int32_t kind, Handle(TColStd_HArray1OfReal) const* aVal, Handle(TCollection_HAsciiString) const* aName, Handle(TCollection_HAsciiString) const* aDescription) {
+extern "C" const char* XCAFDoc_DimTol_set(XCAFDoc_DimTol* self_, int32_t kind, Handle(NCollection_HArray1_double) const* aVal, Handle(TCollection_HAsciiString) const* aName, Handle(TCollection_HAsciiString) const* aDescription) {
     try { self_->Set(kind, *aVal, *aName, *aDescription); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -3722,7 +3664,7 @@ extern "C" OcctResult<Standard_GUID const*> XCAFDoc_DimTol_get_id() {
     try { return {&(XCAFDoc_DimTol::GetID()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(XCAFDoc_DimTol)*> XCAFDoc_DimTol_set_label_int_handletcolstdharray1ofreal_handletcollectionhasciistring2(TDF_Label const* label, int32_t kind, Handle(TColStd_HArray1OfReal) const* aVal, Handle(TCollection_HAsciiString) const* aName, Handle(TCollection_HAsciiString) const* aDescription) {
+extern "C" OcctResult<Handle(XCAFDoc_DimTol)*> XCAFDoc_DimTol_set_label_int_harr1_double_handletcollectionhasciistring2(TDF_Label const* label, int32_t kind, Handle(NCollection_HArray1_double) const* aVal, Handle(TCollection_HAsciiString) const* aName, Handle(TCollection_HAsciiString) const* aDescription) {
     try { return {new Handle(XCAFDoc_DimTol)(XCAFDoc_DimTol::Set(*label, kind, *aVal, *aName, *aDescription)), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -3738,24 +3680,24 @@ extern "C" OcctResult<const TDF_Attribute*> XCAFDoc_DimTol_as_TDF_Attribute(cons
 extern "C" OcctResult<TDF_Attribute*> XCAFDoc_DimTol_as_TDF_Attribute_mut(XCAFDoc_DimTol* self_) { return {static_cast<TDF_Attribute*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> XCAFDoc_DimTol_as_Standard_Transient(const XCAFDoc_DimTol* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> XCAFDoc_DimTol_as_Standard_Transient_mut(XCAFDoc_DimTol* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleXCAFDocDimTol*> XCAFDoc_DimTol_to_handle(XCAFDoc_DimTol* obj) {
-    try { return {new HandleXCAFDocDimTol(obj), nullptr}; }
+extern "C" OcctResult<Handle_XCAFDoc_DimTol*> XCAFDoc_DimTol_to_handle(XCAFDoc_DimTol* obj) {
+    try { return {new Handle_XCAFDoc_DimTol(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const XCAFDoc_DimTol*> HandleXCAFDocDimTol_get(const HandleXCAFDocDimTol* handle) {
+extern "C" OcctResult<const XCAFDoc_DimTol*> Handle_XCAFDoc_DimTol_get(const Handle_XCAFDoc_DimTol* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<XCAFDoc_DimTol*> HandleXCAFDocDimTol_get_mut(HandleXCAFDocDimTol* handle) {
+extern "C" OcctResult<XCAFDoc_DimTol*> Handle_XCAFDoc_DimTol_get_mut(Handle_XCAFDoc_DimTol* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTDFAttribute*> HandleXCAFDocDimTol_to_HandleTDFAttribute(const HandleXCAFDocDimTol* self_) {
-    try { return {new HandleTDFAttribute(*self_), nullptr}; }
+extern "C" OcctResult<Handle_TDF_Attribute*> Handle_XCAFDoc_DimTol_to_Handle_TDF_Attribute(const Handle_XCAFDoc_DimTol* self_) {
+    try { return {new Handle_TDF_Attribute(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleXCAFDocDimTol_to_HandleStandardTransient(const HandleXCAFDocDimTol* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_XCAFDoc_DimTol_to_Handle_Standard_Transient(const Handle_XCAFDoc_DimTol* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" const char* XCAFDoc_DimTol_inherited_SetID(XCAFDoc_DimTol* self, Standard_GUID const& arg0) {
@@ -3874,10 +3816,6 @@ extern "C" const char* XCAFDoc_DimTol_inherited_References(const XCAFDoc_DimTol*
     try { self->References(aDataSet); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* XCAFDoc_DimTol_inherited_ExtendedDump(const XCAFDoc_DimTol* self, Standard_OStream& anOS, TDF_IDFilter const& aFilter, TDF_AttributeIndexedMap& aMap) {
-    try { self->ExtendedDump(anOS, aFilter, aMap); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
 extern "C" const char* XCAFDoc_DimTol_inherited_Forget(XCAFDoc_DimTol* self, int32_t aTransaction) {
     try { self->Forget(aTransaction); return nullptr; }
     OCCT_CATCH_RETURN_VOID
@@ -3932,15 +3870,15 @@ extern "C" OcctResult<TDF_Label*> XCAFDoc_DimTolTool_add_geom_tolerance(XCAFDoc_
     try { return {new TDF_Label(self_->AddGeomTolerance()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TDF_Label*> XCAFDoc_DimTolTool_find_dim_tol_int_handletcolstdharray1ofreal_handletcollectionhasciistring2(const XCAFDoc_DimTolTool* self_, int32_t theKind, Handle(TColStd_HArray1OfReal) const* theVal, Handle(TCollection_HAsciiString) const* theName, Handle(TCollection_HAsciiString) const* theDescription) {
+extern "C" OcctResult<TDF_Label*> XCAFDoc_DimTolTool_find_dim_tol_int_harr1_double_handletcollectionhasciistring2(const XCAFDoc_DimTolTool* self_, int32_t theKind, Handle(NCollection_HArray1_double) const* theVal, Handle(TCollection_HAsciiString) const* theName, Handle(TCollection_HAsciiString) const* theDescription) {
     try { return {new TDF_Label(self_->FindDimTol(theKind, *theVal, *theName, *theDescription)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TDF_Label*> XCAFDoc_DimTolTool_add_dim_tol(const XCAFDoc_DimTolTool* self_, int32_t theKind, Handle(TColStd_HArray1OfReal) const* theVal, Handle(TCollection_HAsciiString) const* theName, Handle(TCollection_HAsciiString) const* theDescription) {
+extern "C" OcctResult<TDF_Label*> XCAFDoc_DimTolTool_add_dim_tol(const XCAFDoc_DimTolTool* self_, int32_t theKind, Handle(NCollection_HArray1_double) const* theVal, Handle(TCollection_HAsciiString) const* theName, Handle(TCollection_HAsciiString) const* theDescription) {
     try { return {new TDF_Label(self_->AddDimTol(theKind, *theVal, *theName, *theDescription)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TDF_Label*> XCAFDoc_DimTolTool_set_dim_tol_label_int_handletcolstdharray1ofreal_handletcollectionhasciistring2(const XCAFDoc_DimTolTool* self_, TDF_Label const* theL, int32_t theKind, Handle(TColStd_HArray1OfReal) const* theVal, Handle(TCollection_HAsciiString) const* theName, Handle(TCollection_HAsciiString) const* theDescription) {
+extern "C" OcctResult<TDF_Label*> XCAFDoc_DimTolTool_set_dim_tol_label_int_harr1_double_handletcollectionhasciistring2(const XCAFDoc_DimTolTool* self_, TDF_Label const* theL, int32_t theKind, Handle(NCollection_HArray1_double) const* theVal, Handle(TCollection_HAsciiString) const* theName, Handle(TCollection_HAsciiString) const* theDescription) {
     try { return {new TDF_Label(self_->SetDimTol(*theL, theKind, *theVal, *theName, *theDescription)), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -3964,11 +3902,11 @@ extern "C" OcctResult<bool> XCAFDoc_DimTolTool_is_dimension(const XCAFDoc_DimTol
     try { return {self_->IsDimension(*theLab), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* XCAFDoc_DimTolTool_get_dimension_labels(const XCAFDoc_DimTolTool* self_, TDF_LabelSequence* theLabels) {
+extern "C" const char* XCAFDoc_DimTolTool_get_dimension_labels(const XCAFDoc_DimTolTool* self_, NCollection_Sequence_TDF_Label* theLabels) {
     try { self_->GetDimensionLabels(*theLabels); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* XCAFDoc_DimTolTool_set_dimension_labelsequence2_label(const XCAFDoc_DimTolTool* self_, TDF_LabelSequence const* theFirstLS, TDF_LabelSequence const* theSecondLS, TDF_Label const* theDimL) {
+extern "C" const char* XCAFDoc_DimTolTool_set_dimension_seq_label2_label(const XCAFDoc_DimTolTool* self_, NCollection_Sequence_TDF_Label const* theFirstLS, NCollection_Sequence_TDF_Label const* theSecondLS, TDF_Label const* theDimL) {
     try { self_->SetDimension(*theFirstLS, *theSecondLS, *theDimL); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -3980,7 +3918,7 @@ extern "C" const char* XCAFDoc_DimTolTool_set_dimension_label2(const XCAFDoc_Dim
     try { self_->SetDimension(*theL, *theDimL); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<bool> XCAFDoc_DimTolTool_get_ref_dimension_labels(const XCAFDoc_DimTolTool* self_, TDF_Label const* theShapeL, TDF_LabelSequence* theDimensions) {
+extern "C" OcctResult<bool> XCAFDoc_DimTolTool_get_ref_dimension_labels(const XCAFDoc_DimTolTool* self_, TDF_Label const* theShapeL, NCollection_Sequence_TDF_Label* theDimensions) {
     try { return {self_->GetRefDimensionLabels(*theShapeL, *theDimensions), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -3988,7 +3926,7 @@ extern "C" OcctResult<bool> XCAFDoc_DimTolTool_is_geom_tolerance(const XCAFDoc_D
     try { return {self_->IsGeomTolerance(*theLab), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* XCAFDoc_DimTolTool_get_geom_tolerance_labels(const XCAFDoc_DimTolTool* self_, TDF_LabelSequence* theLabels) {
+extern "C" const char* XCAFDoc_DimTolTool_get_geom_tolerance_labels(const XCAFDoc_DimTolTool* self_, NCollection_Sequence_TDF_Label* theLabels) {
     try { self_->GetGeomToleranceLabels(*theLabels); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -3996,11 +3934,11 @@ extern "C" const char* XCAFDoc_DimTolTool_set_geom_tolerance_label2(const XCAFDo
     try { self_->SetGeomTolerance(*theL, *theGeomTolL); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* XCAFDoc_DimTolTool_set_geom_tolerance_labelsequence_label(const XCAFDoc_DimTolTool* self_, TDF_LabelSequence const* theL, TDF_Label const* theGeomTolL) {
+extern "C" const char* XCAFDoc_DimTolTool_set_geom_tolerance_seq_label_label(const XCAFDoc_DimTolTool* self_, NCollection_Sequence_TDF_Label const* theL, TDF_Label const* theGeomTolL) {
     try { self_->SetGeomTolerance(*theL, *theGeomTolL); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<bool> XCAFDoc_DimTolTool_get_ref_geom_tolerance_labels(const XCAFDoc_DimTolTool* self_, TDF_Label const* theShapeL, TDF_LabelSequence* theDimTols) {
+extern "C" OcctResult<bool> XCAFDoc_DimTolTool_get_ref_geom_tolerance_labels(const XCAFDoc_DimTolTool* self_, TDF_Label const* theShapeL, NCollection_Sequence_TDF_Label* theDimTols) {
     try { return {self_->GetRefGeomToleranceLabels(*theShapeL, *theDimTols), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -4008,11 +3946,11 @@ extern "C" OcctResult<bool> XCAFDoc_DimTolTool_is_dim_tol(const XCAFDoc_DimTolTo
     try { return {self_->IsDimTol(*theLab), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* XCAFDoc_DimTolTool_get_dim_tol_labels(const XCAFDoc_DimTolTool* self_, TDF_LabelSequence* Labels) {
+extern "C" const char* XCAFDoc_DimTolTool_get_dim_tol_labels(const XCAFDoc_DimTolTool* self_, NCollection_Sequence_TDF_Label* Labels) {
     try { self_->GetDimTolLabels(*Labels); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<bool> XCAFDoc_DimTolTool_find_dim_tol_int_handletcolstdharray1ofreal_handletcollectionhasciistring2_label(const XCAFDoc_DimTolTool* self_, int32_t theKind, Handle(TColStd_HArray1OfReal) const* theVal, Handle(TCollection_HAsciiString) const* theName, Handle(TCollection_HAsciiString) const* theDescription, TDF_Label* lab) {
+extern "C" OcctResult<bool> XCAFDoc_DimTolTool_find_dim_tol_int_harr1_double_handletcollectionhasciistring2_label(const XCAFDoc_DimTolTool* self_, int32_t theKind, Handle(NCollection_HArray1_double) const* theVal, Handle(TCollection_HAsciiString) const* theName, Handle(TCollection_HAsciiString) const* theDescription, TDF_Label* lab) {
     try { return {self_->FindDimTol(theKind, *theVal, *theName, *theDescription, *lab), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -4020,7 +3958,7 @@ extern "C" const char* XCAFDoc_DimTolTool_set_dim_tol_label2(const XCAFDoc_DimTo
     try { self_->SetDimTol(*theL, *theDimTolL); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<bool> XCAFDoc_DimTolTool_get_dim_tol(const XCAFDoc_DimTolTool* self_, TDF_Label const* theDimTolL, int32_t* theKind, Handle(TColStd_HArray1OfReal)* theVal, Handle(TCollection_HAsciiString)* theName, Handle(TCollection_HAsciiString)* theDescription) {
+extern "C" OcctResult<bool> XCAFDoc_DimTolTool_get_dim_tol(const XCAFDoc_DimTolTool* self_, TDF_Label const* theDimTolL, int32_t* theKind, Handle(NCollection_HArray1_double)* theVal, Handle(TCollection_HAsciiString)* theName, Handle(TCollection_HAsciiString)* theDescription) {
     try { return {self_->GetDimTol(*theDimTolL, *theKind, *theVal, *theName, *theDescription), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -4028,7 +3966,7 @@ extern "C" OcctResult<bool> XCAFDoc_DimTolTool_is_datum(const XCAFDoc_DimTolTool
     try { return {self_->IsDatum(*lab), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* XCAFDoc_DimTolTool_get_datum_labels(const XCAFDoc_DimTolTool* self_, TDF_LabelSequence* Labels) {
+extern "C" const char* XCAFDoc_DimTolTool_get_datum_labels(const XCAFDoc_DimTolTool* self_, NCollection_Sequence_TDF_Label* Labels) {
     try { self_->GetDatumLabels(*Labels); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -4036,7 +3974,7 @@ extern "C" OcctResult<bool> XCAFDoc_DimTolTool_find_datum(const XCAFDoc_DimTolTo
     try { return {self_->FindDatum(*theName, *theDescription, *theIdentification, *lab), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* XCAFDoc_DimTolTool_set_datum_labelsequence_label(const XCAFDoc_DimTolTool* self_, TDF_LabelSequence const* theShapeLabels, TDF_Label const* theDatumL) {
+extern "C" const char* XCAFDoc_DimTolTool_set_datum_seq_label_label(const XCAFDoc_DimTolTool* self_, NCollection_Sequence_TDF_Label const* theShapeLabels, TDF_Label const* theDatumL) {
     try { self_->SetDatum(*theShapeLabels, *theDatumL); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -4052,11 +3990,11 @@ extern "C" OcctResult<bool> XCAFDoc_DimTolTool_get_datum(const XCAFDoc_DimTolToo
     try { return {self_->GetDatum(*theDatumL, *theName, *theDescription, *theIdentification), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<bool> XCAFDoc_DimTolTool_get_toler_of_datum_labels(const XCAFDoc_DimTolTool* self_, TDF_Label const* theDatumL, TDF_LabelSequence* theTols) {
+extern "C" OcctResult<bool> XCAFDoc_DimTolTool_get_toler_of_datum_labels(const XCAFDoc_DimTolTool* self_, TDF_Label const* theDatumL, NCollection_Sequence_TDF_Label* theTols) {
     try { return {self_->GetTolerOfDatumLabels(*theDatumL, *theTols), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<bool> XCAFDoc_DimTolTool_get_ref_datum_label(const XCAFDoc_DimTolTool* self_, TDF_Label const* theShapeL, TDF_LabelSequence* theDatum) {
+extern "C" OcctResult<bool> XCAFDoc_DimTolTool_get_ref_datum_label(const XCAFDoc_DimTolTool* self_, TDF_Label const* theShapeL, NCollection_Sequence_TDF_Label* theDatum) {
     try { return {self_->GetRefDatumLabel(*theShapeL, *theDatum), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -4096,15 +4034,15 @@ extern "C" OcctResult<Standard_GUID const*> XCAFDoc_DimTolTool_get_id() {
     try { return {&(XCAFDoc_DimTolTool::GetID()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<bool> XCAFDoc_DimTolTool_get_ref_shape_label(TDF_Label const* theL, TDF_LabelSequence* theShapeLFirst, TDF_LabelSequence* theShapeLSecond) {
+extern "C" OcctResult<bool> XCAFDoc_DimTolTool_get_ref_shape_label(TDF_Label const* theL, NCollection_Sequence_TDF_Label* theShapeLFirst, NCollection_Sequence_TDF_Label* theShapeLSecond) {
     try { return {XCAFDoc_DimTolTool::GetRefShapeLabel(*theL, *theShapeLFirst, *theShapeLSecond), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<bool> XCAFDoc_DimTolTool_get_datum_of_toler_labels(TDF_Label const* theDimTolL, TDF_LabelSequence* theDatums) {
+extern "C" OcctResult<bool> XCAFDoc_DimTolTool_get_datum_of_toler_labels(TDF_Label const* theDimTolL, NCollection_Sequence_TDF_Label* theDatums) {
     try { return {XCAFDoc_DimTolTool::GetDatumOfTolerLabels(*theDimTolL, *theDatums), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<bool> XCAFDoc_DimTolTool_get_datum_with_object_of_toler_labels(TDF_Label const* theDimTolL, TDF_LabelSequence* theDatums) {
+extern "C" OcctResult<bool> XCAFDoc_DimTolTool_get_datum_with_object_of_toler_labels(TDF_Label const* theDimTolL, NCollection_Sequence_TDF_Label* theDatums) {
     try { return {XCAFDoc_DimTolTool::GetDatumWithObjectOfTolerLabels(*theDimTolL, *theDatums), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -4122,28 +4060,28 @@ extern "C" OcctResult<const TDF_Attribute*> XCAFDoc_DimTolTool_as_TDF_Attribute(
 extern "C" OcctResult<TDF_Attribute*> XCAFDoc_DimTolTool_as_TDF_Attribute_mut(XCAFDoc_DimTolTool* self_) { return {static_cast<TDF_Attribute*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> XCAFDoc_DimTolTool_as_Standard_Transient(const XCAFDoc_DimTolTool* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> XCAFDoc_DimTolTool_as_Standard_Transient_mut(XCAFDoc_DimTolTool* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleXCAFDocDimTolTool*> XCAFDoc_DimTolTool_to_handle(XCAFDoc_DimTolTool* obj) {
-    try { return {new HandleXCAFDocDimTolTool(obj), nullptr}; }
+extern "C" OcctResult<Handle_XCAFDoc_DimTolTool*> XCAFDoc_DimTolTool_to_handle(XCAFDoc_DimTolTool* obj) {
+    try { return {new Handle_XCAFDoc_DimTolTool(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const XCAFDoc_DimTolTool*> HandleXCAFDocDimTolTool_get(const HandleXCAFDocDimTolTool* handle) {
+extern "C" OcctResult<const XCAFDoc_DimTolTool*> Handle_XCAFDoc_DimTolTool_get(const Handle_XCAFDoc_DimTolTool* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<XCAFDoc_DimTolTool*> HandleXCAFDocDimTolTool_get_mut(HandleXCAFDocDimTolTool* handle) {
+extern "C" OcctResult<XCAFDoc_DimTolTool*> Handle_XCAFDoc_DimTolTool_get_mut(Handle_XCAFDoc_DimTolTool* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTDataStdGenericEmpty*> HandleXCAFDocDimTolTool_to_HandleTDataStdGenericEmpty(const HandleXCAFDocDimTolTool* self_) {
-    try { return {new HandleTDataStdGenericEmpty(*self_), nullptr}; }
+extern "C" OcctResult<Handle_TDataStd_GenericEmpty*> Handle_XCAFDoc_DimTolTool_to_Handle_TDataStd_GenericEmpty(const Handle_XCAFDoc_DimTolTool* self_) {
+    try { return {new Handle_TDataStd_GenericEmpty(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTDFAttribute*> HandleXCAFDocDimTolTool_to_HandleTDFAttribute(const HandleXCAFDocDimTolTool* self_) {
-    try { return {new HandleTDFAttribute(*self_), nullptr}; }
+extern "C" OcctResult<Handle_TDF_Attribute*> Handle_XCAFDoc_DimTolTool_to_Handle_TDF_Attribute(const Handle_XCAFDoc_DimTolTool* self_) {
+    try { return {new Handle_TDF_Attribute(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleXCAFDocDimTolTool_to_HandleStandardTransient(const HandleXCAFDocDimTolTool* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_XCAFDoc_DimTolTool_to_Handle_Standard_Transient(const Handle_XCAFDoc_DimTolTool* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" const char* XCAFDoc_DimTolTool_inherited_Restore(XCAFDoc_DimTolTool* self, Handle(TDF_Attribute) const& arg0) {
@@ -4270,10 +4208,6 @@ extern "C" const char* XCAFDoc_DimTolTool_inherited_References(const XCAFDoc_Dim
     try { self->References(aDataSet); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* XCAFDoc_DimTolTool_inherited_ExtendedDump(const XCAFDoc_DimTolTool* self, Standard_OStream& anOS, TDF_IDFilter const& aFilter, TDF_AttributeIndexedMap& aMap) {
-    try { self->ExtendedDump(anOS, aFilter, aMap); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
 extern "C" const char* XCAFDoc_DimTolTool_inherited_Forget(XCAFDoc_DimTolTool* self, int32_t aTransaction) {
     try { self->Forget(aTransaction); return nullptr; }
     OCCT_CATCH_RETURN_VOID
@@ -4358,28 +4292,28 @@ extern "C" OcctResult<const TDF_Attribute*> XCAFDoc_Dimension_as_TDF_Attribute(c
 extern "C" OcctResult<TDF_Attribute*> XCAFDoc_Dimension_as_TDF_Attribute_mut(XCAFDoc_Dimension* self_) { return {static_cast<TDF_Attribute*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> XCAFDoc_Dimension_as_Standard_Transient(const XCAFDoc_Dimension* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> XCAFDoc_Dimension_as_Standard_Transient_mut(XCAFDoc_Dimension* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleXCAFDocDimension*> XCAFDoc_Dimension_to_handle(XCAFDoc_Dimension* obj) {
-    try { return {new HandleXCAFDocDimension(obj), nullptr}; }
+extern "C" OcctResult<Handle_XCAFDoc_Dimension*> XCAFDoc_Dimension_to_handle(XCAFDoc_Dimension* obj) {
+    try { return {new Handle_XCAFDoc_Dimension(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const XCAFDoc_Dimension*> HandleXCAFDocDimension_get(const HandleXCAFDocDimension* handle) {
+extern "C" OcctResult<const XCAFDoc_Dimension*> Handle_XCAFDoc_Dimension_get(const Handle_XCAFDoc_Dimension* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<XCAFDoc_Dimension*> HandleXCAFDocDimension_get_mut(HandleXCAFDocDimension* handle) {
+extern "C" OcctResult<XCAFDoc_Dimension*> Handle_XCAFDoc_Dimension_get_mut(Handle_XCAFDoc_Dimension* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTDataStdGenericEmpty*> HandleXCAFDocDimension_to_HandleTDataStdGenericEmpty(const HandleXCAFDocDimension* self_) {
-    try { return {new HandleTDataStdGenericEmpty(*self_), nullptr}; }
+extern "C" OcctResult<Handle_TDataStd_GenericEmpty*> Handle_XCAFDoc_Dimension_to_Handle_TDataStd_GenericEmpty(const Handle_XCAFDoc_Dimension* self_) {
+    try { return {new Handle_TDataStd_GenericEmpty(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTDFAttribute*> HandleXCAFDocDimension_to_HandleTDFAttribute(const HandleXCAFDocDimension* self_) {
-    try { return {new HandleTDFAttribute(*self_), nullptr}; }
+extern "C" OcctResult<Handle_TDF_Attribute*> Handle_XCAFDoc_Dimension_to_Handle_TDF_Attribute(const Handle_XCAFDoc_Dimension* self_) {
+    try { return {new Handle_TDF_Attribute(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleXCAFDocDimension_to_HandleStandardTransient(const HandleXCAFDocDimension* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_XCAFDoc_Dimension_to_Handle_Standard_Transient(const Handle_XCAFDoc_Dimension* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" const char* XCAFDoc_Dimension_inherited_Restore(XCAFDoc_Dimension* self, Handle(TDF_Attribute) const& arg0) {
@@ -4504,10 +4438,6 @@ extern "C" OcctResult<Handle(TDF_DeltaOnRemoval)*> XCAFDoc_Dimension_inherited_D
 }
 extern "C" const char* XCAFDoc_Dimension_inherited_References(const XCAFDoc_Dimension* self, Handle(TDF_DataSet) const& aDataSet) {
     try { self->References(aDataSet); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* XCAFDoc_Dimension_inherited_ExtendedDump(const XCAFDoc_Dimension* self, Standard_OStream& anOS, TDF_IDFilter const& aFilter, TDF_AttributeIndexedMap& aMap) {
-    try { self->ExtendedDump(anOS, aFilter, aMap); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
 extern "C" const char* XCAFDoc_Dimension_inherited_Forget(XCAFDoc_Dimension* self, int32_t aTransaction) {
@@ -4726,28 +4656,28 @@ extern "C" OcctResult<const TDF_Attribute*> XCAFDoc_DocumentTool_as_TDF_Attribut
 extern "C" OcctResult<TDF_Attribute*> XCAFDoc_DocumentTool_as_TDF_Attribute_mut(XCAFDoc_DocumentTool* self_) { return {static_cast<TDF_Attribute*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> XCAFDoc_DocumentTool_as_Standard_Transient(const XCAFDoc_DocumentTool* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> XCAFDoc_DocumentTool_as_Standard_Transient_mut(XCAFDoc_DocumentTool* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleXCAFDocDocumentTool*> XCAFDoc_DocumentTool_to_handle(XCAFDoc_DocumentTool* obj) {
-    try { return {new HandleXCAFDocDocumentTool(obj), nullptr}; }
+extern "C" OcctResult<Handle_XCAFDoc_DocumentTool*> XCAFDoc_DocumentTool_to_handle(XCAFDoc_DocumentTool* obj) {
+    try { return {new Handle_XCAFDoc_DocumentTool(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const XCAFDoc_DocumentTool*> HandleXCAFDocDocumentTool_get(const HandleXCAFDocDocumentTool* handle) {
+extern "C" OcctResult<const XCAFDoc_DocumentTool*> Handle_XCAFDoc_DocumentTool_get(const Handle_XCAFDoc_DocumentTool* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<XCAFDoc_DocumentTool*> HandleXCAFDocDocumentTool_get_mut(HandleXCAFDocDocumentTool* handle) {
+extern "C" OcctResult<XCAFDoc_DocumentTool*> Handle_XCAFDoc_DocumentTool_get_mut(Handle_XCAFDoc_DocumentTool* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTDataStdGenericEmpty*> HandleXCAFDocDocumentTool_to_HandleTDataStdGenericEmpty(const HandleXCAFDocDocumentTool* self_) {
-    try { return {new HandleTDataStdGenericEmpty(*self_), nullptr}; }
+extern "C" OcctResult<Handle_TDataStd_GenericEmpty*> Handle_XCAFDoc_DocumentTool_to_Handle_TDataStd_GenericEmpty(const Handle_XCAFDoc_DocumentTool* self_) {
+    try { return {new Handle_TDataStd_GenericEmpty(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTDFAttribute*> HandleXCAFDocDocumentTool_to_HandleTDFAttribute(const HandleXCAFDocDocumentTool* self_) {
-    try { return {new HandleTDFAttribute(*self_), nullptr}; }
+extern "C" OcctResult<Handle_TDF_Attribute*> Handle_XCAFDoc_DocumentTool_to_Handle_TDF_Attribute(const Handle_XCAFDoc_DocumentTool* self_) {
+    try { return {new Handle_TDF_Attribute(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleXCAFDocDocumentTool_to_HandleStandardTransient(const HandleXCAFDocDocumentTool* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_XCAFDoc_DocumentTool_to_Handle_Standard_Transient(const Handle_XCAFDoc_DocumentTool* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" const char* XCAFDoc_DocumentTool_inherited_Restore(XCAFDoc_DocumentTool* self, Handle(TDF_Attribute) const& arg0) {
@@ -4870,10 +4800,6 @@ extern "C" const char* XCAFDoc_DocumentTool_inherited_References(const XCAFDoc_D
     try { self->References(aDataSet); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* XCAFDoc_DocumentTool_inherited_ExtendedDump(const XCAFDoc_DocumentTool* self, Standard_OStream& anOS, TDF_IDFilter const& aFilter, TDF_AttributeIndexedMap& aMap) {
-    try { self->ExtendedDump(anOS, aFilter, aMap); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
 extern "C" const char* XCAFDoc_DocumentTool_inherited_Forget(XCAFDoc_DocumentTool* self, int32_t aTransaction) {
     try { self->Forget(aTransaction); return nullptr; }
     OCCT_CATCH_RETURN_VOID
@@ -4924,7 +4850,7 @@ extern "C" OcctResult<bool> XCAFDoc_Editor_expand_label_bool(TDF_Label const* th
     try { return {XCAFDoc_Editor::Expand(*theDoc, theRecursively), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<bool> XCAFDoc_Editor_extract_labelsequence_label_bool(TDF_LabelSequence const* theSrcLabels, TDF_Label const* theDstLabel, bool theIsNoVisMat) {
+extern "C" OcctResult<bool> XCAFDoc_Editor_extract_seq_label_label_bool(NCollection_Sequence_TDF_Label const* theSrcLabels, TDF_Label const* theDstLabel, bool theIsNoVisMat) {
     try { return {XCAFDoc_Editor::Extract(*theSrcLabels, *theDstLabel, theIsNoVisMat), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -4932,23 +4858,19 @@ extern "C" OcctResult<bool> XCAFDoc_Editor_extract_label2_bool(TDF_Label const* 
     try { return {XCAFDoc_Editor::Extract(*theSrcLabel, *theDstLabel, theIsNoVisMat), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TDF_Label*> XCAFDoc_Editor_clone_shape_label(TDF_Label const* theSrcLabel, Handle(XCAFDoc_ShapeTool) const* theSrcShapeTool, Handle(XCAFDoc_ShapeTool) const* theDstShapeTool, TDF_LabelDataMap* theMap) {
+extern "C" OcctResult<TDF_Label*> XCAFDoc_Editor_clone_shape_label(TDF_Label const* theSrcLabel, Handle(XCAFDoc_ShapeTool) const* theSrcShapeTool, Handle(XCAFDoc_ShapeTool) const* theDstShapeTool, NCollection_DataMap_TDF_Label_TDF_Label* theMap) {
     try { return {new TDF_Label(XCAFDoc_Editor::CloneShapeLabel(*theSrcLabel, *theSrcShapeTool, *theDstShapeTool, *theMap)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* XCAFDoc_Editor_clone_meta_data(TDF_Label const* theSrcLabel, TDF_Label const* theDstLabel, NCollection_DataMap_opencascade_handle_XCAFDoc_VisMaterial_opencascade_handle_XCAFDoc_VisMaterial* theVisMatMap, bool theToCopyColor, bool theToCopyLayer, bool theToCopyMaterial, bool theToCopyVisMaterial, bool theToCopyAttributes) {
-    try { XCAFDoc_Editor::CloneMetaData(*theSrcLabel, *theDstLabel, theVisMatMap, theToCopyColor, theToCopyLayer, theToCopyMaterial, theToCopyVisMaterial, theToCopyAttributes); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* XCAFDoc_Editor_get_parent_shape_labels(TDF_Label const* theLabel, TDF_LabelMap* theRelatedLabels) {
+extern "C" const char* XCAFDoc_Editor_get_parent_shape_labels(TDF_Label const* theLabel, NCollection_Map_TDF_Label* theRelatedLabels) {
     try { XCAFDoc_Editor::GetParentShapeLabels(*theLabel, *theRelatedLabels); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* XCAFDoc_Editor_get_child_shape_labels(TDF_Label const* theLabel, TDF_LabelMap* theRelatedLabels) {
+extern "C" const char* XCAFDoc_Editor_get_child_shape_labels(TDF_Label const* theLabel, NCollection_Map_TDF_Label* theRelatedLabels) {
     try { XCAFDoc_Editor::GetChildShapeLabels(*theLabel, *theRelatedLabels); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<bool> XCAFDoc_Editor_filter_shape_tree(Handle(XCAFDoc_ShapeTool) const* theShapeTool, TDF_LabelMap const* theLabelsToKeep) {
+extern "C" OcctResult<bool> XCAFDoc_Editor_filter_shape_tree(Handle(XCAFDoc_ShapeTool) const* theShapeTool, NCollection_Map_TDF_Label const* theLabelsToKeep) {
     try { return {XCAFDoc_Editor::FilterShapeTree(*theShapeTool, *theLabelsToKeep), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -5012,28 +4934,28 @@ extern "C" OcctResult<const TDF_Attribute*> XCAFDoc_GeomTolerance_as_TDF_Attribu
 extern "C" OcctResult<TDF_Attribute*> XCAFDoc_GeomTolerance_as_TDF_Attribute_mut(XCAFDoc_GeomTolerance* self_) { return {static_cast<TDF_Attribute*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> XCAFDoc_GeomTolerance_as_Standard_Transient(const XCAFDoc_GeomTolerance* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> XCAFDoc_GeomTolerance_as_Standard_Transient_mut(XCAFDoc_GeomTolerance* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleXCAFDocGeomTolerance*> XCAFDoc_GeomTolerance_to_handle(XCAFDoc_GeomTolerance* obj) {
-    try { return {new HandleXCAFDocGeomTolerance(obj), nullptr}; }
+extern "C" OcctResult<Handle_XCAFDoc_GeomTolerance*> XCAFDoc_GeomTolerance_to_handle(XCAFDoc_GeomTolerance* obj) {
+    try { return {new Handle_XCAFDoc_GeomTolerance(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const XCAFDoc_GeomTolerance*> HandleXCAFDocGeomTolerance_get(const HandleXCAFDocGeomTolerance* handle) {
+extern "C" OcctResult<const XCAFDoc_GeomTolerance*> Handle_XCAFDoc_GeomTolerance_get(const Handle_XCAFDoc_GeomTolerance* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<XCAFDoc_GeomTolerance*> HandleXCAFDocGeomTolerance_get_mut(HandleXCAFDocGeomTolerance* handle) {
+extern "C" OcctResult<XCAFDoc_GeomTolerance*> Handle_XCAFDoc_GeomTolerance_get_mut(Handle_XCAFDoc_GeomTolerance* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTDataStdGenericEmpty*> HandleXCAFDocGeomTolerance_to_HandleTDataStdGenericEmpty(const HandleXCAFDocGeomTolerance* self_) {
-    try { return {new HandleTDataStdGenericEmpty(*self_), nullptr}; }
+extern "C" OcctResult<Handle_TDataStd_GenericEmpty*> Handle_XCAFDoc_GeomTolerance_to_Handle_TDataStd_GenericEmpty(const Handle_XCAFDoc_GeomTolerance* self_) {
+    try { return {new Handle_TDataStd_GenericEmpty(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTDFAttribute*> HandleXCAFDocGeomTolerance_to_HandleTDFAttribute(const HandleXCAFDocGeomTolerance* self_) {
-    try { return {new HandleTDFAttribute(*self_), nullptr}; }
+extern "C" OcctResult<Handle_TDF_Attribute*> Handle_XCAFDoc_GeomTolerance_to_Handle_TDF_Attribute(const Handle_XCAFDoc_GeomTolerance* self_) {
+    try { return {new Handle_TDF_Attribute(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleXCAFDocGeomTolerance_to_HandleStandardTransient(const HandleXCAFDocGeomTolerance* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_XCAFDoc_GeomTolerance_to_Handle_Standard_Transient(const Handle_XCAFDoc_GeomTolerance* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" const char* XCAFDoc_GeomTolerance_inherited_Restore(XCAFDoc_GeomTolerance* self, Handle(TDF_Attribute) const& arg0) {
@@ -5158,10 +5080,6 @@ extern "C" OcctResult<Handle(TDF_DeltaOnRemoval)*> XCAFDoc_GeomTolerance_inherit
 }
 extern "C" const char* XCAFDoc_GeomTolerance_inherited_References(const XCAFDoc_GeomTolerance* self, Handle(TDF_DataSet) const& aDataSet) {
     try { self->References(aDataSet); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* XCAFDoc_GeomTolerance_inherited_ExtendedDump(const XCAFDoc_GeomTolerance* self, Standard_OStream& anOS, TDF_IDFilter const& aFilter, TDF_AttributeIndexedMap& aMap) {
-    try { self->ExtendedDump(anOS, aFilter, aMap); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
 extern "C" const char* XCAFDoc_GeomTolerance_inherited_Forget(XCAFDoc_GeomTolerance* self, int32_t aTransaction) {
@@ -5326,24 +5244,24 @@ extern "C" OcctResult<const TDF_Attribute*> XCAFDoc_GraphNode_as_TDF_Attribute(c
 extern "C" OcctResult<TDF_Attribute*> XCAFDoc_GraphNode_as_TDF_Attribute_mut(XCAFDoc_GraphNode* self_) { return {static_cast<TDF_Attribute*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> XCAFDoc_GraphNode_as_Standard_Transient(const XCAFDoc_GraphNode* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> XCAFDoc_GraphNode_as_Standard_Transient_mut(XCAFDoc_GraphNode* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleXCAFDocGraphNode*> XCAFDoc_GraphNode_to_handle(XCAFDoc_GraphNode* obj) {
-    try { return {new HandleXCAFDocGraphNode(obj), nullptr}; }
+extern "C" OcctResult<Handle_XCAFDoc_GraphNode*> XCAFDoc_GraphNode_to_handle(XCAFDoc_GraphNode* obj) {
+    try { return {new Handle_XCAFDoc_GraphNode(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const XCAFDoc_GraphNode*> HandleXCAFDocGraphNode_get(const HandleXCAFDocGraphNode* handle) {
+extern "C" OcctResult<const XCAFDoc_GraphNode*> Handle_XCAFDoc_GraphNode_get(const Handle_XCAFDoc_GraphNode* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<XCAFDoc_GraphNode*> HandleXCAFDocGraphNode_get_mut(HandleXCAFDocGraphNode* handle) {
+extern "C" OcctResult<XCAFDoc_GraphNode*> Handle_XCAFDoc_GraphNode_get_mut(Handle_XCAFDoc_GraphNode* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTDFAttribute*> HandleXCAFDocGraphNode_to_HandleTDFAttribute(const HandleXCAFDocGraphNode* self_) {
-    try { return {new HandleTDFAttribute(*self_), nullptr}; }
+extern "C" OcctResult<Handle_TDF_Attribute*> Handle_XCAFDoc_GraphNode_to_Handle_TDF_Attribute(const Handle_XCAFDoc_GraphNode* self_) {
+    try { return {new Handle_TDF_Attribute(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleXCAFDocGraphNode_to_HandleStandardTransient(const HandleXCAFDocGraphNode* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_XCAFDoc_GraphNode_to_Handle_Standard_Transient(const Handle_XCAFDoc_GraphNode* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" const char* XCAFDoc_GraphNode_inherited_SetID(XCAFDoc_GraphNode* self, Standard_GUID const& arg0) {
@@ -5454,10 +5372,6 @@ extern "C" OcctResult<Handle(TDF_DeltaOnRemoval)*> XCAFDoc_GraphNode_inherited_D
     try { return {new Handle(TDF_DeltaOnRemoval)(self->DeltaOnRemoval()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* XCAFDoc_GraphNode_inherited_ExtendedDump(const XCAFDoc_GraphNode* self, Standard_OStream& anOS, TDF_IDFilter const& aFilter, TDF_AttributeIndexedMap& aMap) {
-    try { self->ExtendedDump(anOS, aFilter, aMap); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
 extern "C" const char* XCAFDoc_GraphNode_inherited_Forget(XCAFDoc_GraphNode* self, int32_t aTransaction) {
     try { self->Forget(aTransaction); return nullptr; }
     OCCT_CATCH_RETURN_VOID
@@ -5516,12 +5430,12 @@ extern "C" OcctResult<TDF_Label*> XCAFDoc_LayerTool_add_layer_extendedstring_boo
     try { return {new TDF_Label(self_->AddLayer(*theLayer, theToFindVisible)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(TColStd_HSequenceOfExtendedString)*> XCAFDoc_LayerTool_get_layers_label(XCAFDoc_LayerTool* self_, TDF_Label const* L) {
-    try { return {new Handle(TColStd_HSequenceOfExtendedString)(self_->GetLayers(*L)), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HSequence_TCollection_ExtendedString)*> XCAFDoc_LayerTool_get_layers_label(XCAFDoc_LayerTool* self_, TDF_Label const* L) {
+    try { return {new Handle(NCollection_HSequence_TCollection_ExtendedString)(self_->GetLayers(*L)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(TColStd_HSequenceOfExtendedString)*> XCAFDoc_LayerTool_get_layers_shape(XCAFDoc_LayerTool* self_, TopoDS_Shape const* Sh) {
-    try { return {new Handle(TColStd_HSequenceOfExtendedString)(self_->GetLayers(*Sh)), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HSequence_TCollection_ExtendedString)*> XCAFDoc_LayerTool_get_layers_shape(XCAFDoc_LayerTool* self_, TopoDS_Shape const* Sh) {
+    try { return {new Handle(NCollection_HSequence_TCollection_ExtendedString)(self_->GetLayers(*Sh)), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(TDF_Attribute)*> XCAFDoc_LayerTool_new_empty(const XCAFDoc_LayerTool* self_) {
@@ -5548,7 +5462,7 @@ extern "C" const char* XCAFDoc_LayerTool_remove_layer(const XCAFDoc_LayerTool* s
     try { self_->RemoveLayer(*lab); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* XCAFDoc_LayerTool_get_layer_labels(const XCAFDoc_LayerTool* self_, TDF_LabelSequence* Labels) {
+extern "C" const char* XCAFDoc_LayerTool_get_layer_labels(const XCAFDoc_LayerTool* self_, NCollection_Sequence_TDF_Label* Labels) {
     try { self_->GetLayerLabels(*Labels); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -5580,11 +5494,11 @@ extern "C" OcctResult<bool> XCAFDoc_LayerTool_is_set_label2(const XCAFDoc_LayerT
     try { return {self_->IsSet(*L, *aLayerL), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<bool> XCAFDoc_LayerTool_get_layers_label_handletcolstdhsequenceofextendedstring(XCAFDoc_LayerTool* self_, TDF_Label const* L, Handle(TColStd_HSequenceOfExtendedString)* aLayerS) {
+extern "C" OcctResult<bool> XCAFDoc_LayerTool_get_layers_label_hseq_extendedstring(XCAFDoc_LayerTool* self_, TDF_Label const* L, Handle(NCollection_HSequence_TCollection_ExtendedString)* aLayerS) {
     try { return {self_->GetLayers(*L, *aLayerS), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<bool> XCAFDoc_LayerTool_get_layers_label_labelsequence(XCAFDoc_LayerTool* self_, TDF_Label const* L, TDF_LabelSequence* aLayerLS) {
+extern "C" OcctResult<bool> XCAFDoc_LayerTool_get_layers_label_seq_label(XCAFDoc_LayerTool* self_, TDF_Label const* L, NCollection_Sequence_TDF_Label* aLayerLS) {
     try { return {self_->GetLayers(*L, *aLayerLS), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -5624,11 +5538,11 @@ extern "C" OcctResult<bool> XCAFDoc_LayerTool_is_set_shape_label(XCAFDoc_LayerTo
     try { return {self_->IsSet(*Sh, *aLayerL), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<bool> XCAFDoc_LayerTool_get_layers_shape_handletcolstdhsequenceofextendedstring(XCAFDoc_LayerTool* self_, TopoDS_Shape const* Sh, Handle(TColStd_HSequenceOfExtendedString)* aLayerS) {
+extern "C" OcctResult<bool> XCAFDoc_LayerTool_get_layers_shape_hseq_extendedstring(XCAFDoc_LayerTool* self_, TopoDS_Shape const* Sh, Handle(NCollection_HSequence_TCollection_ExtendedString)* aLayerS) {
     try { return {self_->GetLayers(*Sh, *aLayerS), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<bool> XCAFDoc_LayerTool_get_layers_shape_labelsequence(XCAFDoc_LayerTool* self_, TopoDS_Shape const* Sh, TDF_LabelSequence* aLayerLS) {
+extern "C" OcctResult<bool> XCAFDoc_LayerTool_get_layers_shape_seq_label(XCAFDoc_LayerTool* self_, TopoDS_Shape const* Sh, NCollection_Sequence_TDF_Label* aLayerLS) {
     try { return {self_->GetLayers(*Sh, *aLayerLS), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -5648,7 +5562,7 @@ extern "C" OcctResult<Standard_GUID const*> XCAFDoc_LayerTool_get_id() {
     try { return {&(XCAFDoc_LayerTool::GetID()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* XCAFDoc_LayerTool_get_shapes_of_layer(TDF_Label const* theLayerL, TDF_LabelSequence* theShLabels) {
+extern "C" const char* XCAFDoc_LayerTool_get_shapes_of_layer(TDF_Label const* theLayerL, NCollection_Sequence_TDF_Label* theShLabels) {
     try { XCAFDoc_LayerTool::GetShapesOfLayer(*theLayerL, *theShLabels); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -5666,28 +5580,28 @@ extern "C" OcctResult<const TDF_Attribute*> XCAFDoc_LayerTool_as_TDF_Attribute(c
 extern "C" OcctResult<TDF_Attribute*> XCAFDoc_LayerTool_as_TDF_Attribute_mut(XCAFDoc_LayerTool* self_) { return {static_cast<TDF_Attribute*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> XCAFDoc_LayerTool_as_Standard_Transient(const XCAFDoc_LayerTool* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> XCAFDoc_LayerTool_as_Standard_Transient_mut(XCAFDoc_LayerTool* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleXCAFDocLayerTool*> XCAFDoc_LayerTool_to_handle(XCAFDoc_LayerTool* obj) {
-    try { return {new HandleXCAFDocLayerTool(obj), nullptr}; }
+extern "C" OcctResult<Handle_XCAFDoc_LayerTool*> XCAFDoc_LayerTool_to_handle(XCAFDoc_LayerTool* obj) {
+    try { return {new Handle_XCAFDoc_LayerTool(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const XCAFDoc_LayerTool*> HandleXCAFDocLayerTool_get(const HandleXCAFDocLayerTool* handle) {
+extern "C" OcctResult<const XCAFDoc_LayerTool*> Handle_XCAFDoc_LayerTool_get(const Handle_XCAFDoc_LayerTool* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<XCAFDoc_LayerTool*> HandleXCAFDocLayerTool_get_mut(HandleXCAFDocLayerTool* handle) {
+extern "C" OcctResult<XCAFDoc_LayerTool*> Handle_XCAFDoc_LayerTool_get_mut(Handle_XCAFDoc_LayerTool* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTDataStdGenericEmpty*> HandleXCAFDocLayerTool_to_HandleTDataStdGenericEmpty(const HandleXCAFDocLayerTool* self_) {
-    try { return {new HandleTDataStdGenericEmpty(*self_), nullptr}; }
+extern "C" OcctResult<Handle_TDataStd_GenericEmpty*> Handle_XCAFDoc_LayerTool_to_Handle_TDataStd_GenericEmpty(const Handle_XCAFDoc_LayerTool* self_) {
+    try { return {new Handle_TDataStd_GenericEmpty(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTDFAttribute*> HandleXCAFDocLayerTool_to_HandleTDFAttribute(const HandleXCAFDocLayerTool* self_) {
-    try { return {new HandleTDFAttribute(*self_), nullptr}; }
+extern "C" OcctResult<Handle_TDF_Attribute*> Handle_XCAFDoc_LayerTool_to_Handle_TDF_Attribute(const Handle_XCAFDoc_LayerTool* self_) {
+    try { return {new Handle_TDF_Attribute(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleXCAFDocLayerTool_to_HandleStandardTransient(const HandleXCAFDocLayerTool* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_XCAFDoc_LayerTool_to_Handle_Standard_Transient(const Handle_XCAFDoc_LayerTool* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" const char* XCAFDoc_LayerTool_inherited_Restore(XCAFDoc_LayerTool* self, Handle(TDF_Attribute) const& arg0) {
@@ -5814,10 +5728,6 @@ extern "C" const char* XCAFDoc_LayerTool_inherited_References(const XCAFDoc_Laye
     try { self->References(aDataSet); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* XCAFDoc_LayerTool_inherited_ExtendedDump(const XCAFDoc_LayerTool* self, Standard_OStream& anOS, TDF_IDFilter const& aFilter, TDF_AttributeIndexedMap& aMap) {
-    try { self->ExtendedDump(anOS, aFilter, aMap); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
 extern "C" const char* XCAFDoc_LayerTool_inherited_Forget(XCAFDoc_LayerTool* self, int32_t aTransaction) {
     try { self->Forget(aTransaction); return nullptr; }
     OCCT_CATCH_RETURN_VOID
@@ -5928,24 +5838,24 @@ extern "C" OcctResult<const TDF_Attribute*> XCAFDoc_LengthUnit_as_TDF_Attribute(
 extern "C" OcctResult<TDF_Attribute*> XCAFDoc_LengthUnit_as_TDF_Attribute_mut(XCAFDoc_LengthUnit* self_) { return {static_cast<TDF_Attribute*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> XCAFDoc_LengthUnit_as_Standard_Transient(const XCAFDoc_LengthUnit* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> XCAFDoc_LengthUnit_as_Standard_Transient_mut(XCAFDoc_LengthUnit* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleXCAFDocLengthUnit*> XCAFDoc_LengthUnit_to_handle(XCAFDoc_LengthUnit* obj) {
-    try { return {new HandleXCAFDocLengthUnit(obj), nullptr}; }
+extern "C" OcctResult<Handle_XCAFDoc_LengthUnit*> XCAFDoc_LengthUnit_to_handle(XCAFDoc_LengthUnit* obj) {
+    try { return {new Handle_XCAFDoc_LengthUnit(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const XCAFDoc_LengthUnit*> HandleXCAFDocLengthUnit_get(const HandleXCAFDocLengthUnit* handle) {
+extern "C" OcctResult<const XCAFDoc_LengthUnit*> Handle_XCAFDoc_LengthUnit_get(const Handle_XCAFDoc_LengthUnit* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<XCAFDoc_LengthUnit*> HandleXCAFDocLengthUnit_get_mut(HandleXCAFDocLengthUnit* handle) {
+extern "C" OcctResult<XCAFDoc_LengthUnit*> Handle_XCAFDoc_LengthUnit_get_mut(Handle_XCAFDoc_LengthUnit* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTDFAttribute*> HandleXCAFDocLengthUnit_to_HandleTDFAttribute(const HandleXCAFDocLengthUnit* self_) {
-    try { return {new HandleTDFAttribute(*self_), nullptr}; }
+extern "C" OcctResult<Handle_TDF_Attribute*> Handle_XCAFDoc_LengthUnit_to_Handle_TDF_Attribute(const Handle_XCAFDoc_LengthUnit* self_) {
+    try { return {new Handle_TDF_Attribute(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleXCAFDocLengthUnit_to_HandleStandardTransient(const HandleXCAFDocLengthUnit* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_XCAFDoc_LengthUnit_to_Handle_Standard_Transient(const Handle_XCAFDoc_LengthUnit* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" const char* XCAFDoc_LengthUnit_inherited_SetID(XCAFDoc_LengthUnit* self, Standard_GUID const& arg0) {
@@ -6064,10 +5974,6 @@ extern "C" const char* XCAFDoc_LengthUnit_inherited_References(const XCAFDoc_Len
     try { self->References(aDataSet); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* XCAFDoc_LengthUnit_inherited_ExtendedDump(const XCAFDoc_LengthUnit* self, Standard_OStream& anOS, TDF_IDFilter const& aFilter, TDF_AttributeIndexedMap& aMap) {
-    try { self->ExtendedDump(anOS, aFilter, aMap); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
 extern "C" const char* XCAFDoc_LengthUnit_inherited_Forget(XCAFDoc_LengthUnit* self, int32_t aTransaction) {
     try { self->Forget(aTransaction); return nullptr; }
     OCCT_CATCH_RETURN_VOID
@@ -6158,24 +6064,24 @@ extern "C" OcctResult<const TDF_Attribute*> XCAFDoc_Location_as_TDF_Attribute(co
 extern "C" OcctResult<TDF_Attribute*> XCAFDoc_Location_as_TDF_Attribute_mut(XCAFDoc_Location* self_) { return {static_cast<TDF_Attribute*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> XCAFDoc_Location_as_Standard_Transient(const XCAFDoc_Location* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> XCAFDoc_Location_as_Standard_Transient_mut(XCAFDoc_Location* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleXCAFDocLocation*> XCAFDoc_Location_to_handle(XCAFDoc_Location* obj) {
-    try { return {new HandleXCAFDocLocation(obj), nullptr}; }
+extern "C" OcctResult<Handle_XCAFDoc_Location*> XCAFDoc_Location_to_handle(XCAFDoc_Location* obj) {
+    try { return {new Handle_XCAFDoc_Location(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const XCAFDoc_Location*> HandleXCAFDocLocation_get(const HandleXCAFDocLocation* handle) {
+extern "C" OcctResult<const XCAFDoc_Location*> Handle_XCAFDoc_Location_get(const Handle_XCAFDoc_Location* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<XCAFDoc_Location*> HandleXCAFDocLocation_get_mut(HandleXCAFDocLocation* handle) {
+extern "C" OcctResult<XCAFDoc_Location*> Handle_XCAFDoc_Location_get_mut(Handle_XCAFDoc_Location* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTDFAttribute*> HandleXCAFDocLocation_to_HandleTDFAttribute(const HandleXCAFDocLocation* self_) {
-    try { return {new HandleTDFAttribute(*self_), nullptr}; }
+extern "C" OcctResult<Handle_TDF_Attribute*> Handle_XCAFDoc_Location_to_Handle_TDF_Attribute(const Handle_XCAFDoc_Location* self_) {
+    try { return {new Handle_TDF_Attribute(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleXCAFDocLocation_to_HandleStandardTransient(const HandleXCAFDocLocation* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_XCAFDoc_Location_to_Handle_Standard_Transient(const Handle_XCAFDoc_Location* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" const char* XCAFDoc_Location_inherited_SetID(XCAFDoc_Location* self, Standard_GUID const& arg0) {
@@ -6294,10 +6200,6 @@ extern "C" const char* XCAFDoc_Location_inherited_References(const XCAFDoc_Locat
     try { self->References(aDataSet); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* XCAFDoc_Location_inherited_ExtendedDump(const XCAFDoc_Location* self, Standard_OStream& anOS, TDF_IDFilter const& aFilter, TDF_AttributeIndexedMap& aMap) {
-    try { self->ExtendedDump(anOS, aFilter, aMap); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
 extern "C" const char* XCAFDoc_Location_inherited_Forget(XCAFDoc_Location* self, int32_t aTransaction) {
     try { self->Forget(aTransaction); return nullptr; }
     OCCT_CATCH_RETURN_VOID
@@ -6404,24 +6306,24 @@ extern "C" OcctResult<const TDF_Attribute*> XCAFDoc_Material_as_TDF_Attribute(co
 extern "C" OcctResult<TDF_Attribute*> XCAFDoc_Material_as_TDF_Attribute_mut(XCAFDoc_Material* self_) { return {static_cast<TDF_Attribute*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> XCAFDoc_Material_as_Standard_Transient(const XCAFDoc_Material* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> XCAFDoc_Material_as_Standard_Transient_mut(XCAFDoc_Material* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleXCAFDocMaterial*> XCAFDoc_Material_to_handle(XCAFDoc_Material* obj) {
-    try { return {new HandleXCAFDocMaterial(obj), nullptr}; }
+extern "C" OcctResult<Handle_XCAFDoc_Material*> XCAFDoc_Material_to_handle(XCAFDoc_Material* obj) {
+    try { return {new Handle_XCAFDoc_Material(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const XCAFDoc_Material*> HandleXCAFDocMaterial_get(const HandleXCAFDocMaterial* handle) {
+extern "C" OcctResult<const XCAFDoc_Material*> Handle_XCAFDoc_Material_get(const Handle_XCAFDoc_Material* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<XCAFDoc_Material*> HandleXCAFDocMaterial_get_mut(HandleXCAFDocMaterial* handle) {
+extern "C" OcctResult<XCAFDoc_Material*> Handle_XCAFDoc_Material_get_mut(Handle_XCAFDoc_Material* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTDFAttribute*> HandleXCAFDocMaterial_to_HandleTDFAttribute(const HandleXCAFDocMaterial* self_) {
-    try { return {new HandleTDFAttribute(*self_), nullptr}; }
+extern "C" OcctResult<Handle_TDF_Attribute*> Handle_XCAFDoc_Material_to_Handle_TDF_Attribute(const Handle_XCAFDoc_Material* self_) {
+    try { return {new Handle_TDF_Attribute(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleXCAFDocMaterial_to_HandleStandardTransient(const HandleXCAFDocMaterial* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_XCAFDoc_Material_to_Handle_Standard_Transient(const Handle_XCAFDoc_Material* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" const char* XCAFDoc_Material_inherited_SetID(XCAFDoc_Material* self, Standard_GUID const& arg0) {
@@ -6540,10 +6442,6 @@ extern "C" const char* XCAFDoc_Material_inherited_References(const XCAFDoc_Mater
     try { self->References(aDataSet); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* XCAFDoc_Material_inherited_ExtendedDump(const XCAFDoc_Material* self, Standard_OStream& anOS, TDF_IDFilter const& aFilter, TDF_AttributeIndexedMap& aMap) {
-    try { self->ExtendedDump(anOS, aFilter, aMap); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
 extern "C" const char* XCAFDoc_Material_inherited_Forget(XCAFDoc_Material* self, int32_t aTransaction) {
     try { self->Forget(aTransaction); return nullptr; }
     OCCT_CATCH_RETURN_VOID
@@ -6606,7 +6504,7 @@ extern "C" OcctResult<bool> XCAFDoc_MaterialTool_is_material(const XCAFDoc_Mater
     try { return {self_->IsMaterial(*lab), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* XCAFDoc_MaterialTool_get_material_labels(const XCAFDoc_MaterialTool* self_, TDF_LabelSequence* Labels) {
+extern "C" const char* XCAFDoc_MaterialTool_get_material_labels(const XCAFDoc_MaterialTool* self_, NCollection_Sequence_TDF_Label* Labels) {
     try { self_->GetMaterialLabels(*Labels); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -6656,28 +6554,28 @@ extern "C" OcctResult<const TDF_Attribute*> XCAFDoc_MaterialTool_as_TDF_Attribut
 extern "C" OcctResult<TDF_Attribute*> XCAFDoc_MaterialTool_as_TDF_Attribute_mut(XCAFDoc_MaterialTool* self_) { return {static_cast<TDF_Attribute*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> XCAFDoc_MaterialTool_as_Standard_Transient(const XCAFDoc_MaterialTool* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> XCAFDoc_MaterialTool_as_Standard_Transient_mut(XCAFDoc_MaterialTool* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleXCAFDocMaterialTool*> XCAFDoc_MaterialTool_to_handle(XCAFDoc_MaterialTool* obj) {
-    try { return {new HandleXCAFDocMaterialTool(obj), nullptr}; }
+extern "C" OcctResult<Handle_XCAFDoc_MaterialTool*> XCAFDoc_MaterialTool_to_handle(XCAFDoc_MaterialTool* obj) {
+    try { return {new Handle_XCAFDoc_MaterialTool(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const XCAFDoc_MaterialTool*> HandleXCAFDocMaterialTool_get(const HandleXCAFDocMaterialTool* handle) {
+extern "C" OcctResult<const XCAFDoc_MaterialTool*> Handle_XCAFDoc_MaterialTool_get(const Handle_XCAFDoc_MaterialTool* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<XCAFDoc_MaterialTool*> HandleXCAFDocMaterialTool_get_mut(HandleXCAFDocMaterialTool* handle) {
+extern "C" OcctResult<XCAFDoc_MaterialTool*> Handle_XCAFDoc_MaterialTool_get_mut(Handle_XCAFDoc_MaterialTool* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTDataStdGenericEmpty*> HandleXCAFDocMaterialTool_to_HandleTDataStdGenericEmpty(const HandleXCAFDocMaterialTool* self_) {
-    try { return {new HandleTDataStdGenericEmpty(*self_), nullptr}; }
+extern "C" OcctResult<Handle_TDataStd_GenericEmpty*> Handle_XCAFDoc_MaterialTool_to_Handle_TDataStd_GenericEmpty(const Handle_XCAFDoc_MaterialTool* self_) {
+    try { return {new Handle_TDataStd_GenericEmpty(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTDFAttribute*> HandleXCAFDocMaterialTool_to_HandleTDFAttribute(const HandleXCAFDocMaterialTool* self_) {
-    try { return {new HandleTDFAttribute(*self_), nullptr}; }
+extern "C" OcctResult<Handle_TDF_Attribute*> Handle_XCAFDoc_MaterialTool_to_Handle_TDF_Attribute(const Handle_XCAFDoc_MaterialTool* self_) {
+    try { return {new Handle_TDF_Attribute(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleXCAFDocMaterialTool_to_HandleStandardTransient(const HandleXCAFDocMaterialTool* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_XCAFDoc_MaterialTool_to_Handle_Standard_Transient(const Handle_XCAFDoc_MaterialTool* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" const char* XCAFDoc_MaterialTool_inherited_Restore(XCAFDoc_MaterialTool* self, Handle(TDF_Attribute) const& arg0) {
@@ -6804,10 +6702,6 @@ extern "C" const char* XCAFDoc_MaterialTool_inherited_References(const XCAFDoc_M
     try { self->References(aDataSet); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* XCAFDoc_MaterialTool_inherited_ExtendedDump(const XCAFDoc_MaterialTool* self, Standard_OStream& anOS, TDF_IDFilter const& aFilter, TDF_AttributeIndexedMap& aMap) {
-    try { self->ExtendedDump(anOS, aFilter, aMap); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
 extern "C" const char* XCAFDoc_MaterialTool_inherited_Forget(XCAFDoc_MaterialTool* self, int32_t aTransaction) {
     try { self->Forget(aTransaction); return nullptr; }
     OCCT_CATCH_RETURN_VOID
@@ -6906,43 +6800,43 @@ extern "C" OcctResult<const TDF_Attribute*> XCAFDoc_Note_as_TDF_Attribute(const 
 extern "C" OcctResult<TDF_Attribute*> XCAFDoc_Note_as_TDF_Attribute_mut(XCAFDoc_Note* self_) { return {static_cast<TDF_Attribute*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> XCAFDoc_Note_as_Standard_Transient(const XCAFDoc_Note* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> XCAFDoc_Note_as_Standard_Transient_mut(XCAFDoc_Note* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<const XCAFDoc_Note*> HandleXCAFDocNote_get(const HandleXCAFDocNote* handle) {
+extern "C" OcctResult<const XCAFDoc_Note*> Handle_XCAFDoc_Note_get(const Handle_XCAFDoc_Note* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<XCAFDoc_Note*> HandleXCAFDocNote_get_mut(HandleXCAFDocNote* handle) {
+extern "C" OcctResult<XCAFDoc_Note*> Handle_XCAFDoc_Note_get_mut(Handle_XCAFDoc_Note* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTDFAttribute*> HandleXCAFDocNote_to_HandleTDFAttribute(const HandleXCAFDocNote* self_) {
-    try { return {new HandleTDFAttribute(*self_), nullptr}; }
+extern "C" OcctResult<Handle_TDF_Attribute*> Handle_XCAFDoc_Note_to_Handle_TDF_Attribute(const Handle_XCAFDoc_Note* self_) {
+    try { return {new Handle_TDF_Attribute(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleXCAFDocNote_to_HandleStandardTransient(const HandleXCAFDocNote* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_XCAFDoc_Note_to_Handle_Standard_Transient(const Handle_XCAFDoc_Note* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleXCAFDocNoteBalloon*> HandleXCAFDocNote_downcast_to_HandleXCAFDocNoteBalloon(const HandleXCAFDocNote* self_) {
+extern "C" OcctResult<Handle_XCAFDoc_NoteBalloon*> Handle_XCAFDoc_Note_downcast_to_Handle_XCAFDoc_NoteBalloon(const Handle_XCAFDoc_Note* self_) {
     try {
     opencascade::handle<XCAFDoc_NoteBalloon> result = opencascade::handle<XCAFDoc_NoteBalloon>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleXCAFDocNoteBalloon(result), nullptr};
+    return {new Handle_XCAFDoc_NoteBalloon(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleXCAFDocNoteBinData*> HandleXCAFDocNote_downcast_to_HandleXCAFDocNoteBinData(const HandleXCAFDocNote* self_) {
+extern "C" OcctResult<Handle_XCAFDoc_NoteBinData*> Handle_XCAFDoc_Note_downcast_to_Handle_XCAFDoc_NoteBinData(const Handle_XCAFDoc_Note* self_) {
     try {
     opencascade::handle<XCAFDoc_NoteBinData> result = opencascade::handle<XCAFDoc_NoteBinData>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleXCAFDocNoteBinData(result), nullptr};
+    return {new Handle_XCAFDoc_NoteBinData(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleXCAFDocNoteComment*> HandleXCAFDocNote_downcast_to_HandleXCAFDocNoteComment(const HandleXCAFDocNote* self_) {
+extern "C" OcctResult<Handle_XCAFDoc_NoteComment*> Handle_XCAFDoc_Note_downcast_to_Handle_XCAFDoc_NoteComment(const Handle_XCAFDoc_Note* self_) {
     try {
     opencascade::handle<XCAFDoc_NoteComment> result = opencascade::handle<XCAFDoc_NoteComment>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleXCAFDocNoteComment(result), nullptr};
+    return {new Handle_XCAFDoc_NoteComment(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
@@ -7070,10 +6964,6 @@ extern "C" const char* XCAFDoc_Note_inherited_References(const XCAFDoc_Note* sel
     try { self->References(aDataSet); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* XCAFDoc_Note_inherited_ExtendedDump(const XCAFDoc_Note* self, Standard_OStream& anOS, TDF_IDFilter const& aFilter, TDF_AttributeIndexedMap& aMap) {
-    try { self->ExtendedDump(anOS, aFilter, aMap); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
 extern "C" const char* XCAFDoc_Note_inherited_Forget(XCAFDoc_Note* self, int32_t aTransaction) {
     try { self->Forget(aTransaction); return nullptr; }
     OCCT_CATCH_RETURN_VOID
@@ -7156,32 +7046,32 @@ extern "C" OcctResult<const TDF_Attribute*> XCAFDoc_NoteBalloon_as_TDF_Attribute
 extern "C" OcctResult<TDF_Attribute*> XCAFDoc_NoteBalloon_as_TDF_Attribute_mut(XCAFDoc_NoteBalloon* self_) { return {static_cast<TDF_Attribute*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> XCAFDoc_NoteBalloon_as_Standard_Transient(const XCAFDoc_NoteBalloon* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> XCAFDoc_NoteBalloon_as_Standard_Transient_mut(XCAFDoc_NoteBalloon* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleXCAFDocNoteBalloon*> XCAFDoc_NoteBalloon_to_handle(XCAFDoc_NoteBalloon* obj) {
-    try { return {new HandleXCAFDocNoteBalloon(obj), nullptr}; }
+extern "C" OcctResult<Handle_XCAFDoc_NoteBalloon*> XCAFDoc_NoteBalloon_to_handle(XCAFDoc_NoteBalloon* obj) {
+    try { return {new Handle_XCAFDoc_NoteBalloon(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const XCAFDoc_NoteBalloon*> HandleXCAFDocNoteBalloon_get(const HandleXCAFDocNoteBalloon* handle) {
+extern "C" OcctResult<const XCAFDoc_NoteBalloon*> Handle_XCAFDoc_NoteBalloon_get(const Handle_XCAFDoc_NoteBalloon* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<XCAFDoc_NoteBalloon*> HandleXCAFDocNoteBalloon_get_mut(HandleXCAFDocNoteBalloon* handle) {
+extern "C" OcctResult<XCAFDoc_NoteBalloon*> Handle_XCAFDoc_NoteBalloon_get_mut(Handle_XCAFDoc_NoteBalloon* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleXCAFDocNoteComment*> HandleXCAFDocNoteBalloon_to_HandleXCAFDocNoteComment(const HandleXCAFDocNoteBalloon* self_) {
-    try { return {new HandleXCAFDocNoteComment(*self_), nullptr}; }
+extern "C" OcctResult<Handle_XCAFDoc_NoteComment*> Handle_XCAFDoc_NoteBalloon_to_Handle_XCAFDoc_NoteComment(const Handle_XCAFDoc_NoteBalloon* self_) {
+    try { return {new Handle_XCAFDoc_NoteComment(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleXCAFDocNote*> HandleXCAFDocNoteBalloon_to_HandleXCAFDocNote(const HandleXCAFDocNoteBalloon* self_) {
-    try { return {new HandleXCAFDocNote(*self_), nullptr}; }
+extern "C" OcctResult<Handle_XCAFDoc_Note*> Handle_XCAFDoc_NoteBalloon_to_Handle_XCAFDoc_Note(const Handle_XCAFDoc_NoteBalloon* self_) {
+    try { return {new Handle_XCAFDoc_Note(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTDFAttribute*> HandleXCAFDocNoteBalloon_to_HandleTDFAttribute(const HandleXCAFDocNoteBalloon* self_) {
-    try { return {new HandleTDFAttribute(*self_), nullptr}; }
+extern "C" OcctResult<Handle_TDF_Attribute*> Handle_XCAFDoc_NoteBalloon_to_Handle_TDF_Attribute(const Handle_XCAFDoc_NoteBalloon* self_) {
+    try { return {new Handle_TDF_Attribute(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleXCAFDocNoteBalloon_to_HandleStandardTransient(const HandleXCAFDocNoteBalloon* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_XCAFDoc_NoteBalloon_to_Handle_Standard_Transient(const Handle_XCAFDoc_NoteBalloon* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<TCollection_ExtendedString const*> XCAFDoc_NoteBalloon_inherited_Comment(const XCAFDoc_NoteBalloon* self) {
@@ -7332,10 +7222,6 @@ extern "C" const char* XCAFDoc_NoteBalloon_inherited_References(const XCAFDoc_No
     try { self->References(aDataSet); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* XCAFDoc_NoteBalloon_inherited_ExtendedDump(const XCAFDoc_NoteBalloon* self, Standard_OStream& anOS, TDF_IDFilter const& aFilter, TDF_AttributeIndexedMap& aMap) {
-    try { self->ExtendedDump(anOS, aFilter, aMap); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
 extern "C" const char* XCAFDoc_NoteBalloon_inherited_Forget(XCAFDoc_NoteBalloon* self, int32_t aTransaction) {
     try { self->Forget(aTransaction); return nullptr; }
     OCCT_CATCH_RETURN_VOID
@@ -7386,13 +7272,9 @@ extern "C" OcctResult<Handle(Standard_Type) const*> XCAFDoc_NoteBinData_dynamic_
     try { return {&(self_->DynamicType()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<bool> XCAFDoc_NoteBinData_set_extendedstring_asciistring_file(XCAFDoc_NoteBinData* self_, TCollection_ExtendedString const* theTitle, TCollection_AsciiString const* theMIMEtype, OSD_File* theFile) {
+extern "C" OcctResult<bool> XCAFDoc_NoteBinData_set(XCAFDoc_NoteBinData* self_, TCollection_ExtendedString const* theTitle, TCollection_AsciiString const* theMIMEtype, OSD_File* theFile) {
     try { return {self_->Set(*theTitle, *theMIMEtype, *theFile), nullptr}; }
     OCCT_CATCH_RETURN
-}
-extern "C" const char* XCAFDoc_NoteBinData_set_extendedstring_asciistring_handletcolstdharray1ofbyte(XCAFDoc_NoteBinData* self_, TCollection_ExtendedString const* theTitle, TCollection_AsciiString const* theMIMEtype, Handle(TColStd_HArray1OfByte) const* theData) {
-    try { self_->Set(*theTitle, *theMIMEtype, *theData); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
 }
 extern "C" OcctResult<TCollection_ExtendedString const*> XCAFDoc_NoteBinData_title(const XCAFDoc_NoteBinData* self_) {
     try { return {&(self_->Title()), nullptr}; }
@@ -7404,10 +7286,6 @@ extern "C" OcctResult<TCollection_AsciiString const*> XCAFDoc_NoteBinData_mim_et
 }
 extern "C" OcctResult<int32_t> XCAFDoc_NoteBinData_size(const XCAFDoc_NoteBinData* self_) {
     try { return {self_->Size(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Handle(TColStd_HArray1OfByte) const*> XCAFDoc_NoteBinData_data(const XCAFDoc_NoteBinData* self_) {
-    try { return {&(self_->Data()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Standard_GUID const*> XCAFDoc_NoteBinData_id(const XCAFDoc_NoteBinData* self_) {
@@ -7446,38 +7324,34 @@ extern "C" OcctResult<Handle(XCAFDoc_NoteBinData)*> XCAFDoc_NoteBinData_set_labe
     try { return {new Handle(XCAFDoc_NoteBinData)(XCAFDoc_NoteBinData::Set(*theLabel, *theUserName, *theTimeStamp, *theTitle, *theMIMEtype, *theFile)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(XCAFDoc_NoteBinData)*> XCAFDoc_NoteBinData_set_label_extendedstring3_asciistring_handletcolstdharray1ofbyte(TDF_Label const* theLabel, TCollection_ExtendedString const* theUserName, TCollection_ExtendedString const* theTimeStamp, TCollection_ExtendedString const* theTitle, TCollection_AsciiString const* theMIMEtype, Handle(TColStd_HArray1OfByte) const* theData) {
-    try { return {new Handle(XCAFDoc_NoteBinData)(XCAFDoc_NoteBinData::Set(*theLabel, *theUserName, *theTimeStamp, *theTitle, *theMIMEtype, *theData)), nullptr}; }
-    OCCT_CATCH_RETURN
-}
 extern "C" OcctResult<const XCAFDoc_Note*> XCAFDoc_NoteBinData_as_XCAFDoc_Note(const XCAFDoc_NoteBinData* self_) { return {static_cast<const XCAFDoc_Note*>(self_), nullptr}; }
 extern "C" OcctResult<XCAFDoc_Note*> XCAFDoc_NoteBinData_as_XCAFDoc_Note_mut(XCAFDoc_NoteBinData* self_) { return {static_cast<XCAFDoc_Note*>(self_), nullptr}; }
 extern "C" OcctResult<const TDF_Attribute*> XCAFDoc_NoteBinData_as_TDF_Attribute(const XCAFDoc_NoteBinData* self_) { return {static_cast<const TDF_Attribute*>(self_), nullptr}; }
 extern "C" OcctResult<TDF_Attribute*> XCAFDoc_NoteBinData_as_TDF_Attribute_mut(XCAFDoc_NoteBinData* self_) { return {static_cast<TDF_Attribute*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> XCAFDoc_NoteBinData_as_Standard_Transient(const XCAFDoc_NoteBinData* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> XCAFDoc_NoteBinData_as_Standard_Transient_mut(XCAFDoc_NoteBinData* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleXCAFDocNoteBinData*> XCAFDoc_NoteBinData_to_handle(XCAFDoc_NoteBinData* obj) {
-    try { return {new HandleXCAFDocNoteBinData(obj), nullptr}; }
+extern "C" OcctResult<Handle_XCAFDoc_NoteBinData*> XCAFDoc_NoteBinData_to_handle(XCAFDoc_NoteBinData* obj) {
+    try { return {new Handle_XCAFDoc_NoteBinData(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const XCAFDoc_NoteBinData*> HandleXCAFDocNoteBinData_get(const HandleXCAFDocNoteBinData* handle) {
+extern "C" OcctResult<const XCAFDoc_NoteBinData*> Handle_XCAFDoc_NoteBinData_get(const Handle_XCAFDoc_NoteBinData* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<XCAFDoc_NoteBinData*> HandleXCAFDocNoteBinData_get_mut(HandleXCAFDocNoteBinData* handle) {
+extern "C" OcctResult<XCAFDoc_NoteBinData*> Handle_XCAFDoc_NoteBinData_get_mut(Handle_XCAFDoc_NoteBinData* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleXCAFDocNote*> HandleXCAFDocNoteBinData_to_HandleXCAFDocNote(const HandleXCAFDocNoteBinData* self_) {
-    try { return {new HandleXCAFDocNote(*self_), nullptr}; }
+extern "C" OcctResult<Handle_XCAFDoc_Note*> Handle_XCAFDoc_NoteBinData_to_Handle_XCAFDoc_Note(const Handle_XCAFDoc_NoteBinData* self_) {
+    try { return {new Handle_XCAFDoc_Note(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTDFAttribute*> HandleXCAFDocNoteBinData_to_HandleTDFAttribute(const HandleXCAFDocNoteBinData* self_) {
-    try { return {new HandleTDFAttribute(*self_), nullptr}; }
+extern "C" OcctResult<Handle_TDF_Attribute*> Handle_XCAFDoc_NoteBinData_to_Handle_TDF_Attribute(const Handle_XCAFDoc_NoteBinData* self_) {
+    try { return {new Handle_TDF_Attribute(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleXCAFDocNoteBinData_to_HandleStandardTransient(const HandleXCAFDocNoteBinData* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_XCAFDoc_NoteBinData_to_Handle_Standard_Transient(const Handle_XCAFDoc_NoteBinData* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<TCollection_ExtendedString const*> XCAFDoc_NoteBinData_inherited_UserName(const XCAFDoc_NoteBinData* self) {
@@ -7616,10 +7490,6 @@ extern "C" const char* XCAFDoc_NoteBinData_inherited_References(const XCAFDoc_No
     try { self->References(aDataSet); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* XCAFDoc_NoteBinData_inherited_ExtendedDump(const XCAFDoc_NoteBinData* self, Standard_OStream& anOS, TDF_IDFilter const& aFilter, TDF_AttributeIndexedMap& aMap) {
-    try { self->ExtendedDump(anOS, aFilter, aMap); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
 extern "C" const char* XCAFDoc_NoteBinData_inherited_Forget(XCAFDoc_NoteBinData* self, int32_t aTransaction) {
     try { self->Forget(aTransaction); return nullptr; }
     OCCT_CATCH_RETURN_VOID
@@ -7720,35 +7590,35 @@ extern "C" OcctResult<const TDF_Attribute*> XCAFDoc_NoteComment_as_TDF_Attribute
 extern "C" OcctResult<TDF_Attribute*> XCAFDoc_NoteComment_as_TDF_Attribute_mut(XCAFDoc_NoteComment* self_) { return {static_cast<TDF_Attribute*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> XCAFDoc_NoteComment_as_Standard_Transient(const XCAFDoc_NoteComment* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> XCAFDoc_NoteComment_as_Standard_Transient_mut(XCAFDoc_NoteComment* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleXCAFDocNoteComment*> XCAFDoc_NoteComment_to_handle(XCAFDoc_NoteComment* obj) {
-    try { return {new HandleXCAFDocNoteComment(obj), nullptr}; }
+extern "C" OcctResult<Handle_XCAFDoc_NoteComment*> XCAFDoc_NoteComment_to_handle(XCAFDoc_NoteComment* obj) {
+    try { return {new Handle_XCAFDoc_NoteComment(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const XCAFDoc_NoteComment*> HandleXCAFDocNoteComment_get(const HandleXCAFDocNoteComment* handle) {
+extern "C" OcctResult<const XCAFDoc_NoteComment*> Handle_XCAFDoc_NoteComment_get(const Handle_XCAFDoc_NoteComment* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<XCAFDoc_NoteComment*> HandleXCAFDocNoteComment_get_mut(HandleXCAFDocNoteComment* handle) {
+extern "C" OcctResult<XCAFDoc_NoteComment*> Handle_XCAFDoc_NoteComment_get_mut(Handle_XCAFDoc_NoteComment* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleXCAFDocNote*> HandleXCAFDocNoteComment_to_HandleXCAFDocNote(const HandleXCAFDocNoteComment* self_) {
-    try { return {new HandleXCAFDocNote(*self_), nullptr}; }
+extern "C" OcctResult<Handle_XCAFDoc_Note*> Handle_XCAFDoc_NoteComment_to_Handle_XCAFDoc_Note(const Handle_XCAFDoc_NoteComment* self_) {
+    try { return {new Handle_XCAFDoc_Note(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTDFAttribute*> HandleXCAFDocNoteComment_to_HandleTDFAttribute(const HandleXCAFDocNoteComment* self_) {
-    try { return {new HandleTDFAttribute(*self_), nullptr}; }
+extern "C" OcctResult<Handle_TDF_Attribute*> Handle_XCAFDoc_NoteComment_to_Handle_TDF_Attribute(const Handle_XCAFDoc_NoteComment* self_) {
+    try { return {new Handle_TDF_Attribute(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleXCAFDocNoteComment_to_HandleStandardTransient(const HandleXCAFDocNoteComment* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_XCAFDoc_NoteComment_to_Handle_Standard_Transient(const Handle_XCAFDoc_NoteComment* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleXCAFDocNoteBalloon*> HandleXCAFDocNoteComment_downcast_to_HandleXCAFDocNoteBalloon(const HandleXCAFDocNoteComment* self_) {
+extern "C" OcctResult<Handle_XCAFDoc_NoteBalloon*> Handle_XCAFDoc_NoteComment_downcast_to_Handle_XCAFDoc_NoteBalloon(const Handle_XCAFDoc_NoteComment* self_) {
     try {
     opencascade::handle<XCAFDoc_NoteBalloon> result = opencascade::handle<XCAFDoc_NoteBalloon>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleXCAFDocNoteBalloon(result), nullptr};
+    return {new Handle_XCAFDoc_NoteBalloon(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
@@ -7888,10 +7758,6 @@ extern "C" const char* XCAFDoc_NoteComment_inherited_References(const XCAFDoc_No
     try { self->References(aDataSet); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* XCAFDoc_NoteComment_inherited_ExtendedDump(const XCAFDoc_NoteComment* self, Standard_OStream& anOS, TDF_IDFilter const& aFilter, TDF_AttributeIndexedMap& aMap) {
-    try { self->ExtendedDump(anOS, aFilter, aMap); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
 extern "C" const char* XCAFDoc_NoteComment_inherited_Forget(XCAFDoc_NoteComment* self, int32_t aTransaction) {
     try { self->Forget(aTransaction); return nullptr; }
     OCCT_CATCH_RETURN_VOID
@@ -7978,12 +7844,8 @@ extern "C" OcctResult<Handle(XCAFDoc_Note)*> XCAFDoc_NotesTool_create_balloon(XC
     try { return {new Handle(XCAFDoc_Note)(self_->CreateBalloon(*theUserName, *theTimeStamp, *theComment)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(XCAFDoc_Note)*> XCAFDoc_NotesTool_create_bin_data_extendedstring3_asciistring_file(XCAFDoc_NotesTool* self_, TCollection_ExtendedString const* theUserName, TCollection_ExtendedString const* theTimeStamp, TCollection_ExtendedString const* theTitle, TCollection_AsciiString const* theMIMEtype, OSD_File* theFile) {
+extern "C" OcctResult<Handle(XCAFDoc_Note)*> XCAFDoc_NotesTool_create_bin_data(XCAFDoc_NotesTool* self_, TCollection_ExtendedString const* theUserName, TCollection_ExtendedString const* theTimeStamp, TCollection_ExtendedString const* theTitle, TCollection_AsciiString const* theMIMEtype, OSD_File* theFile) {
     try { return {new Handle(XCAFDoc_Note)(self_->CreateBinData(*theUserName, *theTimeStamp, *theTitle, *theMIMEtype, *theFile)), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Handle(XCAFDoc_Note)*> XCAFDoc_NotesTool_create_bin_data_extendedstring3_asciistring_handletcolstdharray1ofbyte(XCAFDoc_NotesTool* self_, TCollection_ExtendedString const* theUserName, TCollection_ExtendedString const* theTimeStamp, TCollection_ExtendedString const* theTitle, TCollection_AsciiString const* theMIMEtype, Handle(TColStd_HArray1OfByte) const* theData) {
-    try { return {new Handle(XCAFDoc_Note)(self_->CreateBinData(*theUserName, *theTimeStamp, *theTitle, *theMIMEtype, *theData)), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(XCAFDoc_AssemblyItemRef)*> XCAFDoc_NotesTool_add_note_label_assemblyitemid(XCAFDoc_NotesTool* self_, TDF_Label const* theNoteLabel, XCAFDoc_AssemblyItemId const* theItemId) {
@@ -8022,11 +7884,11 @@ extern "C" OcctResult<int32_t> XCAFDoc_NotesTool_nb_annotated_items(const XCAFDo
     try { return {self_->NbAnnotatedItems(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* XCAFDoc_NotesTool_get_notes_labelsequence(const XCAFDoc_NotesTool* self_, TDF_LabelSequence* theNoteLabels) {
+extern "C" const char* XCAFDoc_NotesTool_get_notes_seq_label(const XCAFDoc_NotesTool* self_, NCollection_Sequence_TDF_Label* theNoteLabels) {
     try { self_->GetNotes(*theNoteLabels); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* XCAFDoc_NotesTool_get_annotated_items(const XCAFDoc_NotesTool* self_, TDF_LabelSequence* theLabels) {
+extern "C" const char* XCAFDoc_NotesTool_get_annotated_items(const XCAFDoc_NotesTool* self_, NCollection_Sequence_TDF_Label* theLabels) {
     try { self_->GetAnnotatedItems(*theLabels); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -8038,23 +7900,23 @@ extern "C" OcctResult<bool> XCAFDoc_NotesTool_is_annotated_item_label(const XCAF
     try { return {self_->IsAnnotatedItem(*theItemLabel), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<int32_t> XCAFDoc_NotesTool_get_notes_assemblyitemid_labelsequence(const XCAFDoc_NotesTool* self_, XCAFDoc_AssemblyItemId const* theItemId, TDF_LabelSequence* theNoteLabels) {
+extern "C" OcctResult<int32_t> XCAFDoc_NotesTool_get_notes_assemblyitemid_seq_label(const XCAFDoc_NotesTool* self_, XCAFDoc_AssemblyItemId const* theItemId, NCollection_Sequence_TDF_Label* theNoteLabels) {
     try { return {self_->GetNotes(*theItemId, *theNoteLabels), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<int32_t> XCAFDoc_NotesTool_get_notes_label_labelsequence(const XCAFDoc_NotesTool* self_, TDF_Label const* theItemLabel, TDF_LabelSequence* theNoteLabels) {
+extern "C" OcctResult<int32_t> XCAFDoc_NotesTool_get_notes_label_seq_label(const XCAFDoc_NotesTool* self_, TDF_Label const* theItemLabel, NCollection_Sequence_TDF_Label* theNoteLabels) {
     try { return {self_->GetNotes(*theItemLabel, *theNoteLabels), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<int32_t> XCAFDoc_NotesTool_get_attr_notes_assemblyitemid_guid_labelsequence(const XCAFDoc_NotesTool* self_, XCAFDoc_AssemblyItemId const* theItemId, Standard_GUID const* theGUID, TDF_LabelSequence* theNoteLabels) {
+extern "C" OcctResult<int32_t> XCAFDoc_NotesTool_get_attr_notes_assemblyitemid_guid_seq_label(const XCAFDoc_NotesTool* self_, XCAFDoc_AssemblyItemId const* theItemId, Standard_GUID const* theGUID, NCollection_Sequence_TDF_Label* theNoteLabels) {
     try { return {self_->GetAttrNotes(*theItemId, *theGUID, *theNoteLabels), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<int32_t> XCAFDoc_NotesTool_get_attr_notes_label_guid_labelsequence(const XCAFDoc_NotesTool* self_, TDF_Label const* theItemLabel, Standard_GUID const* theGUID, TDF_LabelSequence* theNoteLabels) {
+extern "C" OcctResult<int32_t> XCAFDoc_NotesTool_get_attr_notes_label_guid_seq_label(const XCAFDoc_NotesTool* self_, TDF_Label const* theItemLabel, Standard_GUID const* theGUID, NCollection_Sequence_TDF_Label* theNoteLabels) {
     try { return {self_->GetAttrNotes(*theItemLabel, *theGUID, *theNoteLabels), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<int32_t> XCAFDoc_NotesTool_get_subshape_notes(const XCAFDoc_NotesTool* self_, XCAFDoc_AssemblyItemId const* theItemId, int32_t theSubshapeIndex, TDF_LabelSequence* theNoteLabels) {
+extern "C" OcctResult<int32_t> XCAFDoc_NotesTool_get_subshape_notes(const XCAFDoc_NotesTool* self_, XCAFDoc_AssemblyItemId const* theItemId, int32_t theSubshapeIndex, NCollection_Sequence_TDF_Label* theNoteLabels) {
     try { return {self_->GetSubshapeNotes(*theItemId, theSubshapeIndex, *theNoteLabels), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -8106,7 +7968,7 @@ extern "C" OcctResult<bool> XCAFDoc_NotesTool_delete_note(XCAFDoc_NotesTool* sel
     try { return {self_->DeleteNote(*theNoteLabel), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<int32_t> XCAFDoc_NotesTool_delete_notes(XCAFDoc_NotesTool* self_, TDF_LabelSequence* theNoteLabels) {
+extern "C" OcctResult<int32_t> XCAFDoc_NotesTool_delete_notes(XCAFDoc_NotesTool* self_, NCollection_Sequence_TDF_Label* theNoteLabels) {
     try { return {self_->DeleteNotes(*theNoteLabels), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -8118,7 +7980,7 @@ extern "C" OcctResult<int32_t> XCAFDoc_NotesTool_nb_orphan_notes(const XCAFDoc_N
     try { return {self_->NbOrphanNotes(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* XCAFDoc_NotesTool_get_orphan_notes(const XCAFDoc_NotesTool* self_, TDF_LabelSequence* theNoteLabels) {
+extern "C" const char* XCAFDoc_NotesTool_get_orphan_notes(const XCAFDoc_NotesTool* self_, NCollection_Sequence_TDF_Label* theNoteLabels) {
     try { self_->GetOrphanNotes(*theNoteLabels); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -8156,28 +8018,28 @@ extern "C" OcctResult<const TDF_Attribute*> XCAFDoc_NotesTool_as_TDF_Attribute(c
 extern "C" OcctResult<TDF_Attribute*> XCAFDoc_NotesTool_as_TDF_Attribute_mut(XCAFDoc_NotesTool* self_) { return {static_cast<TDF_Attribute*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> XCAFDoc_NotesTool_as_Standard_Transient(const XCAFDoc_NotesTool* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> XCAFDoc_NotesTool_as_Standard_Transient_mut(XCAFDoc_NotesTool* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleXCAFDocNotesTool*> XCAFDoc_NotesTool_to_handle(XCAFDoc_NotesTool* obj) {
-    try { return {new HandleXCAFDocNotesTool(obj), nullptr}; }
+extern "C" OcctResult<Handle_XCAFDoc_NotesTool*> XCAFDoc_NotesTool_to_handle(XCAFDoc_NotesTool* obj) {
+    try { return {new Handle_XCAFDoc_NotesTool(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const XCAFDoc_NotesTool*> HandleXCAFDocNotesTool_get(const HandleXCAFDocNotesTool* handle) {
+extern "C" OcctResult<const XCAFDoc_NotesTool*> Handle_XCAFDoc_NotesTool_get(const Handle_XCAFDoc_NotesTool* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<XCAFDoc_NotesTool*> HandleXCAFDocNotesTool_get_mut(HandleXCAFDocNotesTool* handle) {
+extern "C" OcctResult<XCAFDoc_NotesTool*> Handle_XCAFDoc_NotesTool_get_mut(Handle_XCAFDoc_NotesTool* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTDataStdGenericEmpty*> HandleXCAFDocNotesTool_to_HandleTDataStdGenericEmpty(const HandleXCAFDocNotesTool* self_) {
-    try { return {new HandleTDataStdGenericEmpty(*self_), nullptr}; }
+extern "C" OcctResult<Handle_TDataStd_GenericEmpty*> Handle_XCAFDoc_NotesTool_to_Handle_TDataStd_GenericEmpty(const Handle_XCAFDoc_NotesTool* self_) {
+    try { return {new Handle_TDataStd_GenericEmpty(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTDFAttribute*> HandleXCAFDocNotesTool_to_HandleTDFAttribute(const HandleXCAFDocNotesTool* self_) {
-    try { return {new HandleTDFAttribute(*self_), nullptr}; }
+extern "C" OcctResult<Handle_TDF_Attribute*> Handle_XCAFDoc_NotesTool_to_Handle_TDF_Attribute(const Handle_XCAFDoc_NotesTool* self_) {
+    try { return {new Handle_TDF_Attribute(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleXCAFDocNotesTool_to_HandleStandardTransient(const HandleXCAFDocNotesTool* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_XCAFDoc_NotesTool_to_Handle_Standard_Transient(const Handle_XCAFDoc_NotesTool* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" const char* XCAFDoc_NotesTool_inherited_Restore(XCAFDoc_NotesTool* self, Handle(TDF_Attribute) const& arg0) {
@@ -8304,10 +8166,6 @@ extern "C" const char* XCAFDoc_NotesTool_inherited_References(const XCAFDoc_Note
     try { self->References(aDataSet); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* XCAFDoc_NotesTool_inherited_ExtendedDump(const XCAFDoc_NotesTool* self, Standard_OStream& anOS, TDF_IDFilter const& aFilter, TDF_AttributeIndexedMap& aMap) {
-    try { self->ExtendedDump(anOS, aFilter, aMap); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
 extern "C" const char* XCAFDoc_NotesTool_inherited_Forget(XCAFDoc_NotesTool* self, int32_t aTransaction) {
     try { self->Forget(aTransaction); return nullptr; }
     OCCT_CATCH_RETURN_VOID
@@ -8374,7 +8232,7 @@ extern "C" const char* XCAFDoc_ShapeMapTool_paste(const XCAFDoc_ShapeMapTool* se
     try { self_->Paste(*into, *RT); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<TopTools_IndexedMapOfShape const*> XCAFDoc_ShapeMapTool_get_map(const XCAFDoc_ShapeMapTool* self_) {
+extern "C" OcctResult<NCollection_IndexedMap_TopoDS_Shape_TopTools_ShapeMapHasher const*> XCAFDoc_ShapeMapTool_get_map(const XCAFDoc_ShapeMapTool* self_) {
     try { return {&(self_->GetMap()), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -8402,24 +8260,24 @@ extern "C" OcctResult<const TDF_Attribute*> XCAFDoc_ShapeMapTool_as_TDF_Attribut
 extern "C" OcctResult<TDF_Attribute*> XCAFDoc_ShapeMapTool_as_TDF_Attribute_mut(XCAFDoc_ShapeMapTool* self_) { return {static_cast<TDF_Attribute*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> XCAFDoc_ShapeMapTool_as_Standard_Transient(const XCAFDoc_ShapeMapTool* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> XCAFDoc_ShapeMapTool_as_Standard_Transient_mut(XCAFDoc_ShapeMapTool* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleXCAFDocShapeMapTool*> XCAFDoc_ShapeMapTool_to_handle(XCAFDoc_ShapeMapTool* obj) {
-    try { return {new HandleXCAFDocShapeMapTool(obj), nullptr}; }
+extern "C" OcctResult<Handle_XCAFDoc_ShapeMapTool*> XCAFDoc_ShapeMapTool_to_handle(XCAFDoc_ShapeMapTool* obj) {
+    try { return {new Handle_XCAFDoc_ShapeMapTool(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const XCAFDoc_ShapeMapTool*> HandleXCAFDocShapeMapTool_get(const HandleXCAFDocShapeMapTool* handle) {
+extern "C" OcctResult<const XCAFDoc_ShapeMapTool*> Handle_XCAFDoc_ShapeMapTool_get(const Handle_XCAFDoc_ShapeMapTool* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<XCAFDoc_ShapeMapTool*> HandleXCAFDocShapeMapTool_get_mut(HandleXCAFDocShapeMapTool* handle) {
+extern "C" OcctResult<XCAFDoc_ShapeMapTool*> Handle_XCAFDoc_ShapeMapTool_get_mut(Handle_XCAFDoc_ShapeMapTool* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTDFAttribute*> HandleXCAFDocShapeMapTool_to_HandleTDFAttribute(const HandleXCAFDocShapeMapTool* self_) {
-    try { return {new HandleTDFAttribute(*self_), nullptr}; }
+extern "C" OcctResult<Handle_TDF_Attribute*> Handle_XCAFDoc_ShapeMapTool_to_Handle_TDF_Attribute(const Handle_XCAFDoc_ShapeMapTool* self_) {
+    try { return {new Handle_TDF_Attribute(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleXCAFDocShapeMapTool_to_HandleStandardTransient(const HandleXCAFDocShapeMapTool* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_XCAFDoc_ShapeMapTool_to_Handle_Standard_Transient(const Handle_XCAFDoc_ShapeMapTool* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" const char* XCAFDoc_ShapeMapTool_inherited_SetID(XCAFDoc_ShapeMapTool* self, Standard_GUID const& arg0) {
@@ -8538,10 +8396,6 @@ extern "C" const char* XCAFDoc_ShapeMapTool_inherited_References(const XCAFDoc_S
     try { self->References(aDataSet); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* XCAFDoc_ShapeMapTool_inherited_ExtendedDump(const XCAFDoc_ShapeMapTool* self, Standard_OStream& anOS, TDF_IDFilter const& aFilter, TDF_AttributeIndexedMap& aMap) {
-    try { self->ExtendedDump(anOS, aFilter, aMap); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
 extern "C" const char* XCAFDoc_ShapeMapTool_inherited_Forget(XCAFDoc_ShapeMapTool* self, int32_t aTransaction) {
     try { self->Forget(aTransaction); return nullptr; }
     OCCT_CATCH_RETURN_VOID
@@ -8624,10 +8478,6 @@ extern "C" OcctResult<TDF_Label*> XCAFDoc_ShapeTool_base_label(const XCAFDoc_Sha
     try { return {new TDF_Label(self_->BaseLabel()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TDF_Label*> XCAFDoc_ShapeTool_set_extern_refs_sequenceofhasciistring(const XCAFDoc_ShapeTool* self_, TColStd_SequenceOfHAsciiString const* SHAS) {
-    try { return {new TDF_Label(self_->SetExternRefs(*SHAS)), nullptr}; }
-    OCCT_CATCH_RETURN
-}
 extern "C" OcctResult<TopoDS_Shape*> XCAFDoc_ShapeTool_get_shuo_instance(const XCAFDoc_ShapeTool* self_, Handle(XCAFDoc_GraphNode) const* theSHUO) {
     try { return {new TopoDS_Shape(self_->GetSHUOInstance(*theSHUO)), nullptr}; }
     OCCT_CATCH_RETURN
@@ -8688,11 +8538,11 @@ extern "C" const char* XCAFDoc_ShapeTool_compute_simple_shapes(XCAFDoc_ShapeTool
     try { self_->ComputeSimpleShapes(); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* XCAFDoc_ShapeTool_get_shapes(const XCAFDoc_ShapeTool* self_, TDF_LabelSequence* Labels) {
+extern "C" const char* XCAFDoc_ShapeTool_get_shapes(const XCAFDoc_ShapeTool* self_, NCollection_Sequence_TDF_Label* Labels) {
     try { self_->GetShapes(*Labels); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* XCAFDoc_ShapeTool_get_free_shapes(const XCAFDoc_ShapeTool* self_, TDF_LabelSequence* FreeLabels) {
+extern "C" const char* XCAFDoc_ShapeTool_get_free_shapes(const XCAFDoc_ShapeTool* self_, NCollection_Sequence_TDF_Label* FreeLabels) {
     try { self_->GetFreeShapes(*FreeLabels); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -8724,11 +8574,7 @@ extern "C" OcctResult<Standard_GUID const*> XCAFDoc_ShapeTool_id(const XCAFDoc_S
     try { return {&(self_->ID()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* XCAFDoc_ShapeTool_set_extern_refs_label_sequenceofhasciistring(const XCAFDoc_ShapeTool* self_, TDF_Label const* L, TColStd_SequenceOfHAsciiString const* SHAS) {
-    try { self_->SetExternRefs(*L, *SHAS); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<bool> XCAFDoc_ShapeTool_set_shuo(const XCAFDoc_ShapeTool* self_, TDF_LabelSequence const* Labels, Handle(XCAFDoc_GraphNode)* MainSHUOAttr) {
+extern "C" OcctResult<bool> XCAFDoc_ShapeTool_set_shuo(const XCAFDoc_ShapeTool* self_, NCollection_Sequence_TDF_Label const* Labels, Handle(XCAFDoc_GraphNode)* MainSHUOAttr) {
     try { return {self_->SetSHUO(*Labels, *MainSHUOAttr), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -8736,11 +8582,11 @@ extern "C" OcctResult<bool> XCAFDoc_ShapeTool_remove_shuo(const XCAFDoc_ShapeToo
     try { return {self_->RemoveSHUO(*SHUOLabel), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<bool> XCAFDoc_ShapeTool_find_component(const XCAFDoc_ShapeTool* self_, TopoDS_Shape const* theShape, TDF_LabelSequence* Labels) {
+extern "C" OcctResult<bool> XCAFDoc_ShapeTool_find_component(const XCAFDoc_ShapeTool* self_, TopoDS_Shape const* theShape, NCollection_Sequence_TDF_Label* Labels) {
     try { return {self_->FindComponent(*theShape, *Labels), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<bool> XCAFDoc_ShapeTool_get_all_shuo_instances(const XCAFDoc_ShapeTool* self_, Handle(XCAFDoc_GraphNode) const* theSHUO, TopTools_SequenceOfShape* theSHUOShapeSeq) {
+extern "C" OcctResult<bool> XCAFDoc_ShapeTool_get_all_shuo_instances(const XCAFDoc_ShapeTool* self_, Handle(XCAFDoc_GraphNode) const* theSHUO, NCollection_Sequence_TopoDS_Shape* theSHUOShapeSeq) {
     try { return {self_->GetAllSHUOInstances(*theSHUO, *theSHUOShapeSeq), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -8804,7 +8650,7 @@ extern "C" OcctResult<TopoDS_Shape*> XCAFDoc_ShapeTool_get_shape_label(TDF_Label
     try { return {new TopoDS_Shape(XCAFDoc_ShapeTool::GetShape(*L)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TopoDS_Shape*> XCAFDoc_ShapeTool_get_one_shape_labelsequence(TDF_LabelSequence const* theLabels) {
+extern "C" OcctResult<TopoDS_Shape*> XCAFDoc_ShapeTool_get_one_shape_seq_label(NCollection_Sequence_TDF_Label const* theLabels) {
     try { return {new TopoDS_Shape(XCAFDoc_ShapeTool::GetOneShape(*theLabels)), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -8816,7 +8662,7 @@ extern "C" OcctResult<bool> XCAFDoc_ShapeTool_auto_naming() {
     try { return {XCAFDoc_ShapeTool::AutoNaming(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<int32_t> XCAFDoc_ShapeTool_get_users(TDF_Label const* L, TDF_LabelSequence* Labels, bool getsubchilds) {
+extern "C" OcctResult<int32_t> XCAFDoc_ShapeTool_get_users(TDF_Label const* L, NCollection_Sequence_TDF_Label* Labels, bool getsubchilds) {
     try { return {XCAFDoc_ShapeTool::GetUsers(*L, *Labels, getsubchilds), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -8832,11 +8678,11 @@ extern "C" OcctResult<int32_t> XCAFDoc_ShapeTool_nb_components(TDF_Label const* 
     try { return {XCAFDoc_ShapeTool::NbComponents(*L, getsubchilds), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<bool> XCAFDoc_ShapeTool_get_components(TDF_Label const* L, TDF_LabelSequence* Labels, bool getsubchilds) {
+extern "C" OcctResult<bool> XCAFDoc_ShapeTool_get_components(TDF_Label const* L, NCollection_Sequence_TDF_Label* Labels, bool getsubchilds) {
     try { return {XCAFDoc_ShapeTool::GetComponents(*L, *Labels, getsubchilds), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<bool> XCAFDoc_ShapeTool_get_sub_shapes(TDF_Label const* L, TDF_LabelSequence* Labels) {
+extern "C" OcctResult<bool> XCAFDoc_ShapeTool_get_sub_shapes(TDF_Label const* L, NCollection_Sequence_TDF_Label* Labels) {
     try { return {XCAFDoc_ShapeTool::GetSubShapes(*L, *Labels), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -8848,27 +8694,19 @@ extern "C" OcctResult<bool> XCAFDoc_ShapeTool_is_extern_ref(TDF_Label const* L) 
     try { return {XCAFDoc_ShapeTool::IsExternRef(*L), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* XCAFDoc_ShapeTool_get_extern_refs(TDF_Label const* L, TColStd_SequenceOfHAsciiString* SHAS) {
-    try { XCAFDoc_ShapeTool::GetExternRefs(*L, *SHAS); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
 extern "C" OcctResult<bool> XCAFDoc_ShapeTool_get_shuo(TDF_Label const* SHUOLabel, Handle(XCAFDoc_GraphNode)* aSHUOAttr) {
     try { return {XCAFDoc_ShapeTool::GetSHUO(*SHUOLabel, *aSHUOAttr), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<bool> XCAFDoc_ShapeTool_get_all_component_shuo(TDF_Label const* CompLabel, TDF_AttributeSequence* SHUOAttrs) {
-    try { return {XCAFDoc_ShapeTool::GetAllComponentSHUO(*CompLabel, *SHUOAttrs), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<bool> XCAFDoc_ShapeTool_get_shuo_upper_usage(TDF_Label const* NextUsageL, TDF_LabelSequence* Labels) {
+extern "C" OcctResult<bool> XCAFDoc_ShapeTool_get_shuo_upper_usage(TDF_Label const* NextUsageL, NCollection_Sequence_TDF_Label* Labels) {
     try { return {XCAFDoc_ShapeTool::GetSHUOUpperUsage(*NextUsageL, *Labels), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<bool> XCAFDoc_ShapeTool_get_shuo_next_usage(TDF_Label const* UpperUsageL, TDF_LabelSequence* Labels) {
+extern "C" OcctResult<bool> XCAFDoc_ShapeTool_get_shuo_next_usage(TDF_Label const* UpperUsageL, NCollection_Sequence_TDF_Label* Labels) {
     try { return {XCAFDoc_ShapeTool::GetSHUONextUsage(*UpperUsageL, *Labels), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<bool> XCAFDoc_ShapeTool_find_shuo(TDF_LabelSequence const* Labels, Handle(XCAFDoc_GraphNode)* theSHUOAttr) {
+extern "C" OcctResult<bool> XCAFDoc_ShapeTool_find_shuo(NCollection_Sequence_TDF_Label const* Labels, Handle(XCAFDoc_GraphNode)* theSHUOAttr) {
     try { return {XCAFDoc_ShapeTool::FindSHUO(*Labels, *theSHUOAttr), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -8886,28 +8724,28 @@ extern "C" OcctResult<const TDF_Attribute*> XCAFDoc_ShapeTool_as_TDF_Attribute(c
 extern "C" OcctResult<TDF_Attribute*> XCAFDoc_ShapeTool_as_TDF_Attribute_mut(XCAFDoc_ShapeTool* self_) { return {static_cast<TDF_Attribute*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> XCAFDoc_ShapeTool_as_Standard_Transient(const XCAFDoc_ShapeTool* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> XCAFDoc_ShapeTool_as_Standard_Transient_mut(XCAFDoc_ShapeTool* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleXCAFDocShapeTool*> XCAFDoc_ShapeTool_to_handle(XCAFDoc_ShapeTool* obj) {
-    try { return {new HandleXCAFDocShapeTool(obj), nullptr}; }
+extern "C" OcctResult<Handle_XCAFDoc_ShapeTool*> XCAFDoc_ShapeTool_to_handle(XCAFDoc_ShapeTool* obj) {
+    try { return {new Handle_XCAFDoc_ShapeTool(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const XCAFDoc_ShapeTool*> HandleXCAFDocShapeTool_get(const HandleXCAFDocShapeTool* handle) {
+extern "C" OcctResult<const XCAFDoc_ShapeTool*> Handle_XCAFDoc_ShapeTool_get(const Handle_XCAFDoc_ShapeTool* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<XCAFDoc_ShapeTool*> HandleXCAFDocShapeTool_get_mut(HandleXCAFDocShapeTool* handle) {
+extern "C" OcctResult<XCAFDoc_ShapeTool*> Handle_XCAFDoc_ShapeTool_get_mut(Handle_XCAFDoc_ShapeTool* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTDataStdGenericEmpty*> HandleXCAFDocShapeTool_to_HandleTDataStdGenericEmpty(const HandleXCAFDocShapeTool* self_) {
-    try { return {new HandleTDataStdGenericEmpty(*self_), nullptr}; }
+extern "C" OcctResult<Handle_TDataStd_GenericEmpty*> Handle_XCAFDoc_ShapeTool_to_Handle_TDataStd_GenericEmpty(const Handle_XCAFDoc_ShapeTool* self_) {
+    try { return {new Handle_TDataStd_GenericEmpty(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTDFAttribute*> HandleXCAFDocShapeTool_to_HandleTDFAttribute(const HandleXCAFDocShapeTool* self_) {
-    try { return {new HandleTDFAttribute(*self_), nullptr}; }
+extern "C" OcctResult<Handle_TDF_Attribute*> Handle_XCAFDoc_ShapeTool_to_Handle_TDF_Attribute(const Handle_XCAFDoc_ShapeTool* self_) {
+    try { return {new Handle_TDF_Attribute(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleXCAFDocShapeTool_to_HandleStandardTransient(const HandleXCAFDocShapeTool* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_XCAFDoc_ShapeTool_to_Handle_Standard_Transient(const Handle_XCAFDoc_ShapeTool* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" const char* XCAFDoc_ShapeTool_inherited_Restore(XCAFDoc_ShapeTool* self, Handle(TDF_Attribute) const& arg0) {
@@ -9034,10 +8872,6 @@ extern "C" const char* XCAFDoc_ShapeTool_inherited_References(const XCAFDoc_Shap
     try { self->References(aDataSet); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* XCAFDoc_ShapeTool_inherited_ExtendedDump(const XCAFDoc_ShapeTool* self, Standard_OStream& anOS, TDF_IDFilter const& aFilter, TDF_AttributeIndexedMap& aMap) {
-    try { self->ExtendedDump(anOS, aFilter, aMap); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
 extern "C" const char* XCAFDoc_ShapeTool_inherited_Forget(XCAFDoc_ShapeTool* self, int32_t aTransaction) {
     try { self->Forget(aTransaction); return nullptr; }
     OCCT_CATCH_RETURN_VOID
@@ -9122,28 +8956,28 @@ extern "C" OcctResult<const TDF_Attribute*> XCAFDoc_View_as_TDF_Attribute(const 
 extern "C" OcctResult<TDF_Attribute*> XCAFDoc_View_as_TDF_Attribute_mut(XCAFDoc_View* self_) { return {static_cast<TDF_Attribute*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> XCAFDoc_View_as_Standard_Transient(const XCAFDoc_View* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> XCAFDoc_View_as_Standard_Transient_mut(XCAFDoc_View* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleXCAFDocView*> XCAFDoc_View_to_handle(XCAFDoc_View* obj) {
-    try { return {new HandleXCAFDocView(obj), nullptr}; }
+extern "C" OcctResult<Handle_XCAFDoc_View*> XCAFDoc_View_to_handle(XCAFDoc_View* obj) {
+    try { return {new Handle_XCAFDoc_View(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const XCAFDoc_View*> HandleXCAFDocView_get(const HandleXCAFDocView* handle) {
+extern "C" OcctResult<const XCAFDoc_View*> Handle_XCAFDoc_View_get(const Handle_XCAFDoc_View* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<XCAFDoc_View*> HandleXCAFDocView_get_mut(HandleXCAFDocView* handle) {
+extern "C" OcctResult<XCAFDoc_View*> Handle_XCAFDoc_View_get_mut(Handle_XCAFDoc_View* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTDataStdGenericEmpty*> HandleXCAFDocView_to_HandleTDataStdGenericEmpty(const HandleXCAFDocView* self_) {
-    try { return {new HandleTDataStdGenericEmpty(*self_), nullptr}; }
+extern "C" OcctResult<Handle_TDataStd_GenericEmpty*> Handle_XCAFDoc_View_to_Handle_TDataStd_GenericEmpty(const Handle_XCAFDoc_View* self_) {
+    try { return {new Handle_TDataStd_GenericEmpty(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTDFAttribute*> HandleXCAFDocView_to_HandleTDFAttribute(const HandleXCAFDocView* self_) {
-    try { return {new HandleTDFAttribute(*self_), nullptr}; }
+extern "C" OcctResult<Handle_TDF_Attribute*> Handle_XCAFDoc_View_to_Handle_TDF_Attribute(const Handle_XCAFDoc_View* self_) {
+    try { return {new Handle_TDF_Attribute(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleXCAFDocView_to_HandleStandardTransient(const HandleXCAFDocView* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_XCAFDoc_View_to_Handle_Standard_Transient(const Handle_XCAFDoc_View* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" const char* XCAFDoc_View_inherited_Restore(XCAFDoc_View* self, Handle(TDF_Attribute) const& arg0) {
@@ -9270,10 +9104,6 @@ extern "C" const char* XCAFDoc_View_inherited_References(const XCAFDoc_View* sel
     try { self->References(aDataSet); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* XCAFDoc_View_inherited_ExtendedDump(const XCAFDoc_View* self, Standard_OStream& anOS, TDF_IDFilter const& aFilter, TDF_AttributeIndexedMap& aMap) {
-    try { self->ExtendedDump(anOS, aFilter, aMap); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
 extern "C" const char* XCAFDoc_View_inherited_Forget(XCAFDoc_View* self, int32_t aTransaction) {
     try { self->Forget(aTransaction); return nullptr; }
     OCCT_CATCH_RETURN_VOID
@@ -9332,23 +9162,23 @@ extern "C" OcctResult<bool> XCAFDoc_ViewTool_is_view(const XCAFDoc_ViewTool* sel
     try { return {self_->IsView(*theLabel), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* XCAFDoc_ViewTool_get_view_labels(const XCAFDoc_ViewTool* self_, TDF_LabelSequence* theLabels) {
+extern "C" const char* XCAFDoc_ViewTool_get_view_labels(const XCAFDoc_ViewTool* self_, NCollection_Sequence_TDF_Label* theLabels) {
     try { self_->GetViewLabels(*theLabels); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* XCAFDoc_ViewTool_set_view_labelsequence5_label(const XCAFDoc_ViewTool* self_, TDF_LabelSequence const* theShapes, TDF_LabelSequence const* theGDTs, TDF_LabelSequence const* theClippingPlanes, TDF_LabelSequence const* theNotes, TDF_LabelSequence const* theAnnotations, TDF_Label const* theViewL) {
+extern "C" const char* XCAFDoc_ViewTool_set_view_seq_label5_label(const XCAFDoc_ViewTool* self_, NCollection_Sequence_TDF_Label const* theShapes, NCollection_Sequence_TDF_Label const* theGDTs, NCollection_Sequence_TDF_Label const* theClippingPlanes, NCollection_Sequence_TDF_Label const* theNotes, NCollection_Sequence_TDF_Label const* theAnnotations, TDF_Label const* theViewL) {
     try { self_->SetView(*theShapes, *theGDTs, *theClippingPlanes, *theNotes, *theAnnotations, *theViewL); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* XCAFDoc_ViewTool_set_view_labelsequence3_label(const XCAFDoc_ViewTool* self_, TDF_LabelSequence const* theShapes, TDF_LabelSequence const* theGDTs, TDF_LabelSequence const* theClippingPlanes, TDF_Label const* theViewL) {
+extern "C" const char* XCAFDoc_ViewTool_set_view_seq_label3_label(const XCAFDoc_ViewTool* self_, NCollection_Sequence_TDF_Label const* theShapes, NCollection_Sequence_TDF_Label const* theGDTs, NCollection_Sequence_TDF_Label const* theClippingPlanes, TDF_Label const* theViewL) {
     try { self_->SetView(*theShapes, *theGDTs, *theClippingPlanes, *theViewL); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* XCAFDoc_ViewTool_set_view_labelsequence2_label(const XCAFDoc_ViewTool* self_, TDF_LabelSequence const* theShapes, TDF_LabelSequence const* theGDTs, TDF_Label const* theViewL) {
+extern "C" const char* XCAFDoc_ViewTool_set_view_seq_label2_label(const XCAFDoc_ViewTool* self_, NCollection_Sequence_TDF_Label const* theShapes, NCollection_Sequence_TDF_Label const* theGDTs, TDF_Label const* theViewL) {
     try { self_->SetView(*theShapes, *theGDTs, *theViewL); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* XCAFDoc_ViewTool_set_clipping_planes(const XCAFDoc_ViewTool* self_, TDF_LabelSequence const* theClippingPlaneLabels, TDF_Label const* theViewL) {
+extern "C" const char* XCAFDoc_ViewTool_set_clipping_planes(const XCAFDoc_ViewTool* self_, NCollection_Sequence_TDF_Label const* theClippingPlaneLabels, TDF_Label const* theViewL) {
     try { self_->SetClippingPlanes(*theClippingPlaneLabels, *theViewL); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -9356,43 +9186,43 @@ extern "C" const char* XCAFDoc_ViewTool_remove_view(XCAFDoc_ViewTool* self_, TDF
     try { self_->RemoveView(*theViewL); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<bool> XCAFDoc_ViewTool_get_view_labels_for_shape(const XCAFDoc_ViewTool* self_, TDF_Label const* theShapeL, TDF_LabelSequence* theViews) {
+extern "C" OcctResult<bool> XCAFDoc_ViewTool_get_view_labels_for_shape(const XCAFDoc_ViewTool* self_, TDF_Label const* theShapeL, NCollection_Sequence_TDF_Label* theViews) {
     try { return {self_->GetViewLabelsForShape(*theShapeL, *theViews), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<bool> XCAFDoc_ViewTool_get_view_labels_for_gdt(const XCAFDoc_ViewTool* self_, TDF_Label const* theGDTL, TDF_LabelSequence* theViews) {
+extern "C" OcctResult<bool> XCAFDoc_ViewTool_get_view_labels_for_gdt(const XCAFDoc_ViewTool* self_, TDF_Label const* theGDTL, NCollection_Sequence_TDF_Label* theViews) {
     try { return {self_->GetViewLabelsForGDT(*theGDTL, *theViews), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<bool> XCAFDoc_ViewTool_get_view_labels_for_clipping_plane(const XCAFDoc_ViewTool* self_, TDF_Label const* theClippingPlaneL, TDF_LabelSequence* theViews) {
+extern "C" OcctResult<bool> XCAFDoc_ViewTool_get_view_labels_for_clipping_plane(const XCAFDoc_ViewTool* self_, TDF_Label const* theClippingPlaneL, NCollection_Sequence_TDF_Label* theViews) {
     try { return {self_->GetViewLabelsForClippingPlane(*theClippingPlaneL, *theViews), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<bool> XCAFDoc_ViewTool_get_view_labels_for_note(const XCAFDoc_ViewTool* self_, TDF_Label const* theNoteL, TDF_LabelSequence* theViews) {
+extern "C" OcctResult<bool> XCAFDoc_ViewTool_get_view_labels_for_note(const XCAFDoc_ViewTool* self_, TDF_Label const* theNoteL, NCollection_Sequence_TDF_Label* theViews) {
     try { return {self_->GetViewLabelsForNote(*theNoteL, *theViews), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<bool> XCAFDoc_ViewTool_get_view_labels_for_annotation(const XCAFDoc_ViewTool* self_, TDF_Label const* theAnnotationL, TDF_LabelSequence* theViews) {
+extern "C" OcctResult<bool> XCAFDoc_ViewTool_get_view_labels_for_annotation(const XCAFDoc_ViewTool* self_, TDF_Label const* theAnnotationL, NCollection_Sequence_TDF_Label* theViews) {
     try { return {self_->GetViewLabelsForAnnotation(*theAnnotationL, *theViews), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<bool> XCAFDoc_ViewTool_get_ref_shape_label(const XCAFDoc_ViewTool* self_, TDF_Label const* theViewL, TDF_LabelSequence* theShapeLabels) {
+extern "C" OcctResult<bool> XCAFDoc_ViewTool_get_ref_shape_label(const XCAFDoc_ViewTool* self_, TDF_Label const* theViewL, NCollection_Sequence_TDF_Label* theShapeLabels) {
     try { return {self_->GetRefShapeLabel(*theViewL, *theShapeLabels), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<bool> XCAFDoc_ViewTool_get_ref_gdt_label(const XCAFDoc_ViewTool* self_, TDF_Label const* theViewL, TDF_LabelSequence* theGDTLabels) {
+extern "C" OcctResult<bool> XCAFDoc_ViewTool_get_ref_gdt_label(const XCAFDoc_ViewTool* self_, TDF_Label const* theViewL, NCollection_Sequence_TDF_Label* theGDTLabels) {
     try { return {self_->GetRefGDTLabel(*theViewL, *theGDTLabels), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<bool> XCAFDoc_ViewTool_get_ref_clipping_plane_label(const XCAFDoc_ViewTool* self_, TDF_Label const* theViewL, TDF_LabelSequence* theClippingPlaneLabels) {
+extern "C" OcctResult<bool> XCAFDoc_ViewTool_get_ref_clipping_plane_label(const XCAFDoc_ViewTool* self_, TDF_Label const* theViewL, NCollection_Sequence_TDF_Label* theClippingPlaneLabels) {
     try { return {self_->GetRefClippingPlaneLabel(*theViewL, *theClippingPlaneLabels), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<bool> XCAFDoc_ViewTool_get_ref_note_label(const XCAFDoc_ViewTool* self_, TDF_Label const* theViewL, TDF_LabelSequence* theNoteLabels) {
+extern "C" OcctResult<bool> XCAFDoc_ViewTool_get_ref_note_label(const XCAFDoc_ViewTool* self_, TDF_Label const* theViewL, NCollection_Sequence_TDF_Label* theNoteLabels) {
     try { return {self_->GetRefNoteLabel(*theViewL, *theNoteLabels), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<bool> XCAFDoc_ViewTool_get_ref_annotation_label(const XCAFDoc_ViewTool* self_, TDF_Label const* theViewL, TDF_LabelSequence* theAnnotationLabels) {
+extern "C" OcctResult<bool> XCAFDoc_ViewTool_get_ref_annotation_label(const XCAFDoc_ViewTool* self_, TDF_Label const* theViewL, NCollection_Sequence_TDF_Label* theAnnotationLabels) {
     try { return {self_->GetRefAnnotationLabel(*theViewL, *theAnnotationLabels), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -9438,28 +9268,28 @@ extern "C" OcctResult<const TDF_Attribute*> XCAFDoc_ViewTool_as_TDF_Attribute(co
 extern "C" OcctResult<TDF_Attribute*> XCAFDoc_ViewTool_as_TDF_Attribute_mut(XCAFDoc_ViewTool* self_) { return {static_cast<TDF_Attribute*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> XCAFDoc_ViewTool_as_Standard_Transient(const XCAFDoc_ViewTool* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> XCAFDoc_ViewTool_as_Standard_Transient_mut(XCAFDoc_ViewTool* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleXCAFDocViewTool*> XCAFDoc_ViewTool_to_handle(XCAFDoc_ViewTool* obj) {
-    try { return {new HandleXCAFDocViewTool(obj), nullptr}; }
+extern "C" OcctResult<Handle_XCAFDoc_ViewTool*> XCAFDoc_ViewTool_to_handle(XCAFDoc_ViewTool* obj) {
+    try { return {new Handle_XCAFDoc_ViewTool(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const XCAFDoc_ViewTool*> HandleXCAFDocViewTool_get(const HandleXCAFDocViewTool* handle) {
+extern "C" OcctResult<const XCAFDoc_ViewTool*> Handle_XCAFDoc_ViewTool_get(const Handle_XCAFDoc_ViewTool* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<XCAFDoc_ViewTool*> HandleXCAFDocViewTool_get_mut(HandleXCAFDocViewTool* handle) {
+extern "C" OcctResult<XCAFDoc_ViewTool*> Handle_XCAFDoc_ViewTool_get_mut(Handle_XCAFDoc_ViewTool* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTDataStdGenericEmpty*> HandleXCAFDocViewTool_to_HandleTDataStdGenericEmpty(const HandleXCAFDocViewTool* self_) {
-    try { return {new HandleTDataStdGenericEmpty(*self_), nullptr}; }
+extern "C" OcctResult<Handle_TDataStd_GenericEmpty*> Handle_XCAFDoc_ViewTool_to_Handle_TDataStd_GenericEmpty(const Handle_XCAFDoc_ViewTool* self_) {
+    try { return {new Handle_TDataStd_GenericEmpty(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTDFAttribute*> HandleXCAFDocViewTool_to_HandleTDFAttribute(const HandleXCAFDocViewTool* self_) {
-    try { return {new HandleTDFAttribute(*self_), nullptr}; }
+extern "C" OcctResult<Handle_TDF_Attribute*> Handle_XCAFDoc_ViewTool_to_Handle_TDF_Attribute(const Handle_XCAFDoc_ViewTool* self_) {
+    try { return {new Handle_TDF_Attribute(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleXCAFDocViewTool_to_HandleStandardTransient(const HandleXCAFDocViewTool* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_XCAFDoc_ViewTool_to_Handle_Standard_Transient(const Handle_XCAFDoc_ViewTool* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" const char* XCAFDoc_ViewTool_inherited_Restore(XCAFDoc_ViewTool* self, Handle(TDF_Attribute) const& arg0) {
@@ -9586,10 +9416,6 @@ extern "C" const char* XCAFDoc_ViewTool_inherited_References(const XCAFDoc_ViewT
     try { self->References(aDataSet); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* XCAFDoc_ViewTool_inherited_ExtendedDump(const XCAFDoc_ViewTool* self, Standard_OStream& anOS, TDF_IDFilter const& aFilter, TDF_AttributeIndexedMap& aMap) {
-    try { self->ExtendedDump(anOS, aFilter, aMap); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
 extern "C" const char* XCAFDoc_ViewTool_inherited_Forget(XCAFDoc_ViewTool* self, int32_t aTransaction) {
     try { self->Forget(aTransaction); return nullptr; }
     OCCT_CATCH_RETURN_VOID
@@ -9656,10 +9482,6 @@ extern "C" OcctResult<bool> XCAFDoc_VisMaterial_is_empty(const XCAFDoc_VisMateri
     try { return {self_->IsEmpty(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* XCAFDoc_VisMaterial_fill_material_aspect(const XCAFDoc_VisMaterial* self_, Graphic3d_MaterialAspect* theAspect) {
-    try { self_->FillMaterialAspect(*theAspect); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
 extern "C" const char* XCAFDoc_VisMaterial_fill_aspect(const XCAFDoc_VisMaterial* self_, Handle(Graphic3d_Aspects) const* theAspect) {
     try { self_->FillAspect(*theAspect); return nullptr; }
     OCCT_CATCH_RETURN_VOID
@@ -9696,25 +9518,9 @@ extern "C" const char* XCAFDoc_VisMaterial_unset_common_material(XCAFDoc_VisMate
     try { self_->UnsetCommonMaterial(); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<int32_t> XCAFDoc_VisMaterial_alpha_mode(const XCAFDoc_VisMaterial* self_) {
-    try { return {static_cast<int32_t>(self_->AlphaMode()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
 extern "C" OcctResult<float> XCAFDoc_VisMaterial_alpha_cut_off(const XCAFDoc_VisMaterial* self_) {
     try { return {self_->AlphaCutOff(), nullptr}; }
     OCCT_CATCH_RETURN
-}
-extern "C" const char* XCAFDoc_VisMaterial_set_alpha_mode(XCAFDoc_VisMaterial* self_, int32_t theMode, float theCutOff) {
-    try { self_->SetAlphaMode(static_cast<Graphic3d_AlphaMode>(theMode), theCutOff); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<int32_t> XCAFDoc_VisMaterial_face_culling(const XCAFDoc_VisMaterial* self_) {
-    try { return {static_cast<int32_t>(self_->FaceCulling()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* XCAFDoc_VisMaterial_set_face_culling(XCAFDoc_VisMaterial* self_, int32_t theFaceCulling) {
-    try { self_->SetFaceCulling(static_cast<Graphic3d_TypeOfBackfacingModel>(theFaceCulling)); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
 }
 extern "C" OcctResult<Handle(TCollection_HAsciiString) const*> XCAFDoc_VisMaterial_raw_name(const XCAFDoc_VisMaterial* self_) {
     try { return {&(self_->RawName()), nullptr}; }
@@ -9756,24 +9562,24 @@ extern "C" OcctResult<const TDF_Attribute*> XCAFDoc_VisMaterial_as_TDF_Attribute
 extern "C" OcctResult<TDF_Attribute*> XCAFDoc_VisMaterial_as_TDF_Attribute_mut(XCAFDoc_VisMaterial* self_) { return {static_cast<TDF_Attribute*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> XCAFDoc_VisMaterial_as_Standard_Transient(const XCAFDoc_VisMaterial* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> XCAFDoc_VisMaterial_as_Standard_Transient_mut(XCAFDoc_VisMaterial* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleXCAFDocVisMaterial*> XCAFDoc_VisMaterial_to_handle(XCAFDoc_VisMaterial* obj) {
-    try { return {new HandleXCAFDocVisMaterial(obj), nullptr}; }
+extern "C" OcctResult<Handle_XCAFDoc_VisMaterial*> XCAFDoc_VisMaterial_to_handle(XCAFDoc_VisMaterial* obj) {
+    try { return {new Handle_XCAFDoc_VisMaterial(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const XCAFDoc_VisMaterial*> HandleXCAFDocVisMaterial_get(const HandleXCAFDocVisMaterial* handle) {
+extern "C" OcctResult<const XCAFDoc_VisMaterial*> Handle_XCAFDoc_VisMaterial_get(const Handle_XCAFDoc_VisMaterial* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<XCAFDoc_VisMaterial*> HandleXCAFDocVisMaterial_get_mut(HandleXCAFDocVisMaterial* handle) {
+extern "C" OcctResult<XCAFDoc_VisMaterial*> Handle_XCAFDoc_VisMaterial_get_mut(Handle_XCAFDoc_VisMaterial* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTDFAttribute*> HandleXCAFDocVisMaterial_to_HandleTDFAttribute(const HandleXCAFDocVisMaterial* self_) {
-    try { return {new HandleTDFAttribute(*self_), nullptr}; }
+extern "C" OcctResult<Handle_TDF_Attribute*> Handle_XCAFDoc_VisMaterial_to_Handle_TDF_Attribute(const Handle_XCAFDoc_VisMaterial* self_) {
+    try { return {new Handle_TDF_Attribute(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleXCAFDocVisMaterial_to_HandleStandardTransient(const HandleXCAFDocVisMaterial* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_XCAFDoc_VisMaterial_to_Handle_Standard_Transient(const Handle_XCAFDoc_VisMaterial* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" const char* XCAFDoc_VisMaterial_inherited_SetID(XCAFDoc_VisMaterial* self, Standard_GUID const& arg0) {
@@ -9892,10 +9698,6 @@ extern "C" const char* XCAFDoc_VisMaterial_inherited_References(const XCAFDoc_Vi
     try { self->References(aDataSet); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* XCAFDoc_VisMaterial_inherited_ExtendedDump(const XCAFDoc_VisMaterial* self, Standard_OStream& anOS, TDF_IDFilter const& aFilter, TDF_AttributeIndexedMap& aMap) {
-    try { self->ExtendedDump(anOS, aFilter, aMap); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
 extern "C" const char* XCAFDoc_VisMaterial_inherited_Forget(XCAFDoc_VisMaterial* self, int32_t aTransaction) {
     try { self->Forget(aTransaction); return nullptr; }
     OCCT_CATCH_RETURN_VOID
@@ -10002,7 +9804,7 @@ extern "C" const char* XCAFDoc_VisMaterialTool_remove_material(const XCAFDoc_Vis
     try { self_->RemoveMaterial(*theLabel); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* XCAFDoc_VisMaterialTool_get_materials(const XCAFDoc_VisMaterialTool* self_, TDF_LabelSequence* Labels) {
+extern "C" const char* XCAFDoc_VisMaterialTool_get_materials(const XCAFDoc_VisMaterialTool* self_, NCollection_Sequence_TDF_Label* Labels) {
     try { self_->GetMaterials(*Labels); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -10078,24 +9880,24 @@ extern "C" OcctResult<const TDF_Attribute*> XCAFDoc_VisMaterialTool_as_TDF_Attri
 extern "C" OcctResult<TDF_Attribute*> XCAFDoc_VisMaterialTool_as_TDF_Attribute_mut(XCAFDoc_VisMaterialTool* self_) { return {static_cast<TDF_Attribute*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> XCAFDoc_VisMaterialTool_as_Standard_Transient(const XCAFDoc_VisMaterialTool* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> XCAFDoc_VisMaterialTool_as_Standard_Transient_mut(XCAFDoc_VisMaterialTool* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleXCAFDocVisMaterialTool*> XCAFDoc_VisMaterialTool_to_handle(XCAFDoc_VisMaterialTool* obj) {
-    try { return {new HandleXCAFDocVisMaterialTool(obj), nullptr}; }
+extern "C" OcctResult<Handle_XCAFDoc_VisMaterialTool*> XCAFDoc_VisMaterialTool_to_handle(XCAFDoc_VisMaterialTool* obj) {
+    try { return {new Handle_XCAFDoc_VisMaterialTool(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const XCAFDoc_VisMaterialTool*> HandleXCAFDocVisMaterialTool_get(const HandleXCAFDocVisMaterialTool* handle) {
+extern "C" OcctResult<const XCAFDoc_VisMaterialTool*> Handle_XCAFDoc_VisMaterialTool_get(const Handle_XCAFDoc_VisMaterialTool* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<XCAFDoc_VisMaterialTool*> HandleXCAFDocVisMaterialTool_get_mut(HandleXCAFDocVisMaterialTool* handle) {
+extern "C" OcctResult<XCAFDoc_VisMaterialTool*> Handle_XCAFDoc_VisMaterialTool_get_mut(Handle_XCAFDoc_VisMaterialTool* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTDFAttribute*> HandleXCAFDocVisMaterialTool_to_HandleTDFAttribute(const HandleXCAFDocVisMaterialTool* self_) {
-    try { return {new HandleTDFAttribute(*self_), nullptr}; }
+extern "C" OcctResult<Handle_TDF_Attribute*> Handle_XCAFDoc_VisMaterialTool_to_Handle_TDF_Attribute(const Handle_XCAFDoc_VisMaterialTool* self_) {
+    try { return {new Handle_TDF_Attribute(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleXCAFDocVisMaterialTool_to_HandleStandardTransient(const HandleXCAFDocVisMaterialTool* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_XCAFDoc_VisMaterialTool_to_Handle_Standard_Transient(const Handle_XCAFDoc_VisMaterialTool* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" const char* XCAFDoc_VisMaterialTool_inherited_SetID(XCAFDoc_VisMaterialTool* self, Standard_GUID const& arg0) {
@@ -10214,10 +10016,6 @@ extern "C" const char* XCAFDoc_VisMaterialTool_inherited_References(const XCAFDo
     try { self->References(aDataSet); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* XCAFDoc_VisMaterialTool_inherited_ExtendedDump(const XCAFDoc_VisMaterialTool* self, Standard_OStream& anOS, TDF_IDFilter const& aFilter, TDF_AttributeIndexedMap& aMap) {
-    try { self->ExtendedDump(anOS, aFilter, aMap); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
 extern "C" const char* XCAFDoc_VisMaterialTool_inherited_Forget(XCAFDoc_VisMaterialTool* self, int32_t aTransaction) {
     try { self->Forget(aTransaction); return nullptr; }
     OCCT_CATCH_RETURN_VOID
@@ -10310,28 +10108,28 @@ extern "C" OcctResult<const TDF_Attribute*> XCAFDoc_Volume_as_TDF_Attribute(cons
 extern "C" OcctResult<TDF_Attribute*> XCAFDoc_Volume_as_TDF_Attribute_mut(XCAFDoc_Volume* self_) { return {static_cast<TDF_Attribute*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> XCAFDoc_Volume_as_Standard_Transient(const XCAFDoc_Volume* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> XCAFDoc_Volume_as_Standard_Transient_mut(XCAFDoc_Volume* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleXCAFDocVolume*> XCAFDoc_Volume_to_handle(XCAFDoc_Volume* obj) {
-    try { return {new HandleXCAFDocVolume(obj), nullptr}; }
+extern "C" OcctResult<Handle_XCAFDoc_Volume*> XCAFDoc_Volume_to_handle(XCAFDoc_Volume* obj) {
+    try { return {new Handle_XCAFDoc_Volume(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const XCAFDoc_Volume*> HandleXCAFDocVolume_get(const HandleXCAFDocVolume* handle) {
+extern "C" OcctResult<const XCAFDoc_Volume*> Handle_XCAFDoc_Volume_get(const Handle_XCAFDoc_Volume* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<XCAFDoc_Volume*> HandleXCAFDocVolume_get_mut(HandleXCAFDocVolume* handle) {
+extern "C" OcctResult<XCAFDoc_Volume*> Handle_XCAFDoc_Volume_get_mut(Handle_XCAFDoc_Volume* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTDataStdReal*> HandleXCAFDocVolume_to_HandleTDataStdReal(const HandleXCAFDocVolume* self_) {
-    try { return {new HandleTDataStdReal(*self_), nullptr}; }
+extern "C" OcctResult<Handle_TDataStd_Real*> Handle_XCAFDoc_Volume_to_Handle_TDataStd_Real(const Handle_XCAFDoc_Volume* self_) {
+    try { return {new Handle_TDataStd_Real(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTDFAttribute*> HandleXCAFDocVolume_to_HandleTDFAttribute(const HandleXCAFDocVolume* self_) {
-    try { return {new HandleTDFAttribute(*self_), nullptr}; }
+extern "C" OcctResult<Handle_TDF_Attribute*> Handle_XCAFDoc_Volume_to_Handle_TDF_Attribute(const Handle_XCAFDoc_Volume* self_) {
+    try { return {new Handle_TDF_Attribute(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleXCAFDocVolume_to_HandleStandardTransient(const HandleXCAFDocVolume* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_XCAFDoc_Volume_to_Handle_Standard_Transient(const Handle_XCAFDoc_Volume* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" const char* XCAFDoc_Volume_inherited_SetID(XCAFDoc_Volume* self, Standard_GUID const& guid) {
@@ -10462,10 +10260,6 @@ extern "C" const char* XCAFDoc_Volume_inherited_References(const XCAFDoc_Volume*
     try { self->References(aDataSet); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* XCAFDoc_Volume_inherited_ExtendedDump(const XCAFDoc_Volume* self, Standard_OStream& anOS, TDF_IDFilter const& aFilter, TDF_AttributeIndexedMap& aMap) {
-    try { self->ExtendedDump(anOS, aFilter, aMap); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
 extern "C" const char* XCAFDoc_Volume_inherited_Forget(XCAFDoc_Volume* self, int32_t aTransaction) {
     try { self->Forget(aTransaction); return nullptr; }
     OCCT_CATCH_RETURN_VOID
@@ -10574,20 +10368,20 @@ extern "C" OcctResult<Handle(Standard_Type) const*> XCAFNoteObjects_NoteObject_g
 }
 extern "C" OcctResult<const Standard_Transient*> XCAFNoteObjects_NoteObject_as_Standard_Transient(const XCAFNoteObjects_NoteObject* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> XCAFNoteObjects_NoteObject_as_Standard_Transient_mut(XCAFNoteObjects_NoteObject* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleXCAFNoteObjectsNoteObject*> XCAFNoteObjects_NoteObject_to_handle(XCAFNoteObjects_NoteObject* obj) {
-    try { return {new HandleXCAFNoteObjectsNoteObject(obj), nullptr}; }
+extern "C" OcctResult<Handle_XCAFNoteObjects_NoteObject*> XCAFNoteObjects_NoteObject_to_handle(XCAFNoteObjects_NoteObject* obj) {
+    try { return {new Handle_XCAFNoteObjects_NoteObject(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const XCAFNoteObjects_NoteObject*> HandleXCAFNoteObjectsNoteObject_get(const HandleXCAFNoteObjectsNoteObject* handle) {
+extern "C" OcctResult<const XCAFNoteObjects_NoteObject*> Handle_XCAFNoteObjects_NoteObject_get(const Handle_XCAFNoteObjects_NoteObject* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<XCAFNoteObjects_NoteObject*> HandleXCAFNoteObjectsNoteObject_get_mut(HandleXCAFNoteObjectsNoteObject* handle) {
+extern "C" OcctResult<XCAFNoteObjects_NoteObject*> Handle_XCAFNoteObjects_NoteObject_get_mut(Handle_XCAFNoteObjects_NoteObject* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleXCAFNoteObjectsNoteObject_to_HandleStandardTransient(const HandleXCAFNoteObjectsNoteObject* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_XCAFNoteObjects_NoteObject_to_Handle_Standard_Transient(const Handle_XCAFNoteObjects_NoteObject* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> XCAFNoteObjects_NoteObject_inherited_IsInstance(const XCAFNoteObjects_NoteObject* self, Handle(Standard_Type) const& theType) {
@@ -10640,10 +10434,6 @@ extern "C" const char* XCAFPrs_AISObject_dispatch_styles(XCAFPrs_AISObject* self
     try { self_->DispatchStyles(theToSyncStyles); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* XCAFPrs_AISObject_set_material(XCAFPrs_AISObject* self_, Graphic3d_MaterialAspect const* theMaterial) {
-    try { self_->SetMaterial(*theMaterial); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
 extern "C" OcctResult<Handle(Standard_Type) const*> XCAFPrs_AISObject_dynamic_type(const XCAFPrs_AISObject* self_) {
     try { return {&(self_->DynamicType()), nullptr}; }
     OCCT_CATCH_RETURN
@@ -10656,649 +10446,17 @@ extern "C" OcctResult<Handle(Standard_Type) const*> XCAFPrs_AISObject_get_type_d
     try { return {&(XCAFPrs_AISObject::get_type_descriptor()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const AIS_ColoredShape*> XCAFPrs_AISObject_as_AIS_ColoredShape(const XCAFPrs_AISObject* self_) { return {static_cast<const AIS_ColoredShape*>(self_), nullptr}; }
-extern "C" OcctResult<AIS_ColoredShape*> XCAFPrs_AISObject_as_AIS_ColoredShape_mut(XCAFPrs_AISObject* self_) { return {static_cast<AIS_ColoredShape*>(self_), nullptr}; }
-extern "C" OcctResult<const AIS_Shape*> XCAFPrs_AISObject_as_AIS_Shape(const XCAFPrs_AISObject* self_) { return {static_cast<const AIS_Shape*>(self_), nullptr}; }
-extern "C" OcctResult<AIS_Shape*> XCAFPrs_AISObject_as_AIS_Shape_mut(XCAFPrs_AISObject* self_) { return {static_cast<AIS_Shape*>(self_), nullptr}; }
-extern "C" OcctResult<const AIS_InteractiveObject*> XCAFPrs_AISObject_as_AIS_InteractiveObject(const XCAFPrs_AISObject* self_) { return {static_cast<const AIS_InteractiveObject*>(self_), nullptr}; }
-extern "C" OcctResult<AIS_InteractiveObject*> XCAFPrs_AISObject_as_AIS_InteractiveObject_mut(XCAFPrs_AISObject* self_) { return {static_cast<AIS_InteractiveObject*>(self_), nullptr}; }
-extern "C" OcctResult<const SelectMgr_SelectableObject*> XCAFPrs_AISObject_as_SelectMgr_SelectableObject(const XCAFPrs_AISObject* self_) { return {static_cast<const SelectMgr_SelectableObject*>(self_), nullptr}; }
-extern "C" OcctResult<SelectMgr_SelectableObject*> XCAFPrs_AISObject_as_SelectMgr_SelectableObject_mut(XCAFPrs_AISObject* self_) { return {static_cast<SelectMgr_SelectableObject*>(self_), nullptr}; }
-extern "C" OcctResult<const PrsMgr_PresentableObject*> XCAFPrs_AISObject_as_PrsMgr_PresentableObject(const XCAFPrs_AISObject* self_) { return {static_cast<const PrsMgr_PresentableObject*>(self_), nullptr}; }
-extern "C" OcctResult<PrsMgr_PresentableObject*> XCAFPrs_AISObject_as_PrsMgr_PresentableObject_mut(XCAFPrs_AISObject* self_) { return {static_cast<PrsMgr_PresentableObject*>(self_), nullptr}; }
-extern "C" OcctResult<const Standard_Transient*> XCAFPrs_AISObject_as_Standard_Transient(const XCAFPrs_AISObject* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<Standard_Transient*> XCAFPrs_AISObject_as_Standard_Transient_mut(XCAFPrs_AISObject* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleXCAFPrsAISObject*> XCAFPrs_AISObject_to_handle(XCAFPrs_AISObject* obj) {
-    try { return {new HandleXCAFPrsAISObject(obj), nullptr}; }
+extern "C" OcctResult<Handle_XCAFPrs_AISObject*> XCAFPrs_AISObject_to_handle(XCAFPrs_AISObject* obj) {
+    try { return {new Handle_XCAFPrs_AISObject(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const XCAFPrs_AISObject*> HandleXCAFPrsAISObject_get(const HandleXCAFPrsAISObject* handle) {
+extern "C" OcctResult<const XCAFPrs_AISObject*> Handle_XCAFPrs_AISObject_get(const Handle_XCAFPrs_AISObject* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<XCAFPrs_AISObject*> HandleXCAFPrsAISObject_get_mut(HandleXCAFPrsAISObject* handle) {
+extern "C" OcctResult<XCAFPrs_AISObject*> Handle_XCAFPrs_AISObject_get_mut(Handle_XCAFPrs_AISObject* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<HandleAISColoredShape*> HandleXCAFPrsAISObject_to_HandleAISColoredShape(const HandleXCAFPrsAISObject* self_) {
-    try { return {new HandleAISColoredShape(*self_), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<HandleAISShape*> HandleXCAFPrsAISObject_to_HandleAISShape(const HandleXCAFPrsAISObject* self_) {
-    try { return {new HandleAISShape(*self_), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<HandleAISInteractiveObject*> HandleXCAFPrsAISObject_to_HandleAISInteractiveObject(const HandleXCAFPrsAISObject* self_) {
-    try { return {new HandleAISInteractiveObject(*self_), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<HandleSelectMgrSelectableObject*> HandleXCAFPrsAISObject_to_HandleSelectMgrSelectableObject(const HandleXCAFPrsAISObject* self_) {
-    try { return {new HandleSelectMgrSelectableObject(*self_), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<HandlePrsMgrPresentableObject*> HandleXCAFPrsAISObject_to_HandlePrsMgrPresentableObject(const HandleXCAFPrsAISObject* self_) {
-    try { return {new HandlePrsMgrPresentableObject(*self_), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<HandleStandardTransient*> HandleXCAFPrsAISObject_to_HandleStandardTransient(const HandleXCAFPrsAISObject* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Handle(AIS_ColoredDrawer)*> XCAFPrs_AISObject_inherited_CustomAspects(XCAFPrs_AISObject* self, TopoDS_Shape const& theShape) {
-    try { return {new Handle(AIS_ColoredDrawer)(self->CustomAspects(theShape)), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* XCAFPrs_AISObject_inherited_ClearCustomAspects(XCAFPrs_AISObject* self) {
-    try { self->ClearCustomAspects(); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* XCAFPrs_AISObject_inherited_UnsetCustomAspects(XCAFPrs_AISObject* self, TopoDS_Shape const& theShape, bool theToUnregister) {
-    try { self->UnsetCustomAspects(theShape, theToUnregister); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* XCAFPrs_AISObject_inherited_SetCustomColor(XCAFPrs_AISObject* self, TopoDS_Shape const& theShape, Quantity_Color const& theColor) {
-    try { self->SetCustomColor(theShape, theColor); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* XCAFPrs_AISObject_inherited_SetCustomTransparency(XCAFPrs_AISObject* self, TopoDS_Shape const& theShape, double theTransparency) {
-    try { self->SetCustomTransparency(theShape, theTransparency); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* XCAFPrs_AISObject_inherited_SetCustomWidth(XCAFPrs_AISObject* self, TopoDS_Shape const& theShape, double theLineWidth) {
-    try { self->SetCustomWidth(theShape, theLineWidth); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<AIS_DataMapOfShapeDrawer const*> XCAFPrs_AISObject_inherited_CustomAspectsMap(const XCAFPrs_AISObject* self) {
-    try { return {&(self->CustomAspectsMap()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<AIS_DataMapOfShapeDrawer*> XCAFPrs_AISObject_inherited_ChangeCustomAspectsMap(XCAFPrs_AISObject* self) {
-    try { return {&(self->ChangeCustomAspectsMap()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* XCAFPrs_AISObject_inherited_SetColor(XCAFPrs_AISObject* self, Quantity_Color const& theColor) {
-    try { self->SetColor(theColor); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* XCAFPrs_AISObject_inherited_SetWidth(XCAFPrs_AISObject* self, double theLineWidth) {
-    try { self->SetWidth(theLineWidth); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* XCAFPrs_AISObject_inherited_SetTransparency(XCAFPrs_AISObject* self, double theValue) {
-    try { self->SetTransparency(theValue); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* XCAFPrs_AISObject_inherited_UnsetTransparency(XCAFPrs_AISObject* self) {
-    try { self->UnsetTransparency(); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* XCAFPrs_AISObject_inherited_UnsetWidth(XCAFPrs_AISObject* self) {
-    try { self->UnsetWidth(); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<int32_t> XCAFPrs_AISObject_inherited_Signature(const XCAFPrs_AISObject* self) {
-    try { return {self->Signature(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<int32_t> XCAFPrs_AISObject_inherited_Type(const XCAFPrs_AISObject* self) {
-    try { return {static_cast<int32_t>(self->Type()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<bool> XCAFPrs_AISObject_inherited_AcceptShapeDecomposition(const XCAFPrs_AISObject* self) {
-    try { return {self->AcceptShapeDecomposition(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<bool> XCAFPrs_AISObject_inherited_AcceptDisplayMode(const XCAFPrs_AISObject* self, int32_t theMode) {
-    try { return {self->AcceptDisplayMode(theMode), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<TopoDS_Shape const*> XCAFPrs_AISObject_inherited_Shape(const XCAFPrs_AISObject* self) {
-    try { return {&(self->Shape()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* XCAFPrs_AISObject_inherited_SetShape(XCAFPrs_AISObject* self, TopoDS_Shape const& theShape) {
-    try { self->SetShape(theShape); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* XCAFPrs_AISObject_inherited_Set(XCAFPrs_AISObject* self, TopoDS_Shape const& theShape) {
-    try { self->Set(theShape); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<bool> XCAFPrs_AISObject_inherited_SetOwnDeviationCoefficient(XCAFPrs_AISObject* self) {
-    try { return {self->SetOwnDeviationCoefficient(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<bool> XCAFPrs_AISObject_inherited_SetOwnDeviationAngle(XCAFPrs_AISObject* self) {
-    try { return {self->SetOwnDeviationAngle(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* XCAFPrs_AISObject_inherited_SetAngleAndDeviation(XCAFPrs_AISObject* self, double anAngle) {
-    try { self->SetAngleAndDeviation(anAngle); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<double> XCAFPrs_AISObject_inherited_UserAngle(const XCAFPrs_AISObject* self) {
-    try { return {self->UserAngle(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<bool> XCAFPrs_AISObject_inherited_OwnDeviationCoefficient(const XCAFPrs_AISObject* self, double& aCoefficient, double& aPreviousCoefficient) {
-    try { return {self->OwnDeviationCoefficient(aCoefficient, aPreviousCoefficient), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<bool> XCAFPrs_AISObject_inherited_OwnDeviationAngle(const XCAFPrs_AISObject* self, double& anAngle, double& aPreviousAngle) {
-    try { return {self->OwnDeviationAngle(anAngle, aPreviousAngle), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* XCAFPrs_AISObject_inherited_SetTypeOfHLR(XCAFPrs_AISObject* self, int32_t theTypeOfHLR) {
-    try { self->SetTypeOfHLR(static_cast<Prs3d_TypeOfHLR>(theTypeOfHLR)); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<int32_t> XCAFPrs_AISObject_inherited_TypeOfHLR(const XCAFPrs_AISObject* self) {
-    try { return {static_cast<int32_t>(self->TypeOfHLR()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* XCAFPrs_AISObject_inherited_UnsetColor(XCAFPrs_AISObject* self) {
-    try { self->UnsetColor(); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* XCAFPrs_AISObject_inherited_UnsetMaterial(XCAFPrs_AISObject* self) {
-    try { self->UnsetMaterial(); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<Bnd_Box const*> XCAFPrs_AISObject_inherited_BoundingBox(XCAFPrs_AISObject* self) {
-    try { return {&(self->BoundingBox()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* XCAFPrs_AISObject_inherited_Color(const XCAFPrs_AISObject* self, Quantity_Color& aColor) {
-    try { self->Color(aColor); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<int32_t> XCAFPrs_AISObject_inherited_Material(const XCAFPrs_AISObject* self) {
-    try { return {static_cast<int32_t>(self->Material()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<double> XCAFPrs_AISObject_inherited_Transparency(const XCAFPrs_AISObject* self) {
-    try { return {self->Transparency(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<gp_Pnt2d const*> XCAFPrs_AISObject_inherited_TextureRepeatUV(const XCAFPrs_AISObject* self) {
-    try { return {&(self->TextureRepeatUV()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* XCAFPrs_AISObject_inherited_SetTextureRepeatUV(XCAFPrs_AISObject* self, gp_Pnt2d const& theRepeatUV) {
-    try { self->SetTextureRepeatUV(theRepeatUV); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<gp_Pnt2d const*> XCAFPrs_AISObject_inherited_TextureOriginUV(const XCAFPrs_AISObject* self) {
-    try { return {&(self->TextureOriginUV()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* XCAFPrs_AISObject_inherited_SetTextureOriginUV(XCAFPrs_AISObject* self, gp_Pnt2d const& theOriginUV) {
-    try { self->SetTextureOriginUV(theOriginUV); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<gp_Pnt2d const*> XCAFPrs_AISObject_inherited_TextureScaleUV(const XCAFPrs_AISObject* self) {
-    try { return {&(self->TextureScaleUV()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* XCAFPrs_AISObject_inherited_SetTextureScaleUV(XCAFPrs_AISObject* self, gp_Pnt2d const& theScaleUV) {
-    try { self->SetTextureScaleUV(theScaleUV); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* XCAFPrs_AISObject_inherited_Redisplay(XCAFPrs_AISObject* self, bool AllModes) {
-    try { self->Redisplay(AllModes); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<bool> XCAFPrs_AISObject_inherited_HasInteractiveContext(const XCAFPrs_AISObject* self) {
-    try { return {self->HasInteractiveContext(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<AIS_InteractiveContext*> XCAFPrs_AISObject_inherited_InteractiveContext(const XCAFPrs_AISObject* self) {
-    try { return {self->InteractiveContext(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* XCAFPrs_AISObject_inherited_SetContext(XCAFPrs_AISObject* self, Handle(AIS_InteractiveContext) const& aCtx) {
-    try { self->SetContext(aCtx); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<bool> XCAFPrs_AISObject_inherited_HasOwner(const XCAFPrs_AISObject* self) {
-    try { return {self->HasOwner(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Handle(Standard_Transient) const*> XCAFPrs_AISObject_inherited_GetOwner(const XCAFPrs_AISObject* self) {
-    try { return {&(self->GetOwner()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* XCAFPrs_AISObject_inherited_SetOwner(XCAFPrs_AISObject* self, Handle(Standard_Transient) const& theApplicativeEntity) {
-    try { self->SetOwner(theApplicativeEntity); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* XCAFPrs_AISObject_inherited_ClearOwner(XCAFPrs_AISObject* self) {
-    try { self->ClearOwner(); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<bool> XCAFPrs_AISObject_inherited_ProcessDragging(XCAFPrs_AISObject* self, Handle(AIS_InteractiveContext) const& theCtx, Handle(V3d_View) const& theView, Handle(SelectMgr_EntityOwner) const& theOwner, Graphic3d_Vec2i const& theDragFrom, Graphic3d_Vec2i const& theDragTo, int32_t theAction) {
-    try { return {self->ProcessDragging(theCtx, theView, theOwner, theDragFrom, theDragTo, static_cast<AIS_DragAction>(theAction)), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Handle(AIS_InteractiveContext)*> XCAFPrs_AISObject_inherited_GetContext(const XCAFPrs_AISObject* self) {
-    try { return {new Handle(AIS_InteractiveContext)(self->GetContext()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<bool> XCAFPrs_AISObject_inherited_HasPresentation(const XCAFPrs_AISObject* self) {
-    try { return {self->HasPresentation(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Handle(Graphic3d_Structure)*> XCAFPrs_AISObject_inherited_Presentation(const XCAFPrs_AISObject* self) {
-    try { return {new Handle(Graphic3d_Structure)(self->Presentation()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* XCAFPrs_AISObject_inherited_RecomputePrimitives(XCAFPrs_AISObject* self) {
-    try { self->RecomputePrimitives(); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* XCAFPrs_AISObject_inherited_AddSelection(XCAFPrs_AISObject* self, Handle(SelectMgr_Selection) const& aSelection, int32_t aMode) {
-    try { self->AddSelection(aSelection, aMode); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* XCAFPrs_AISObject_inherited_ClearSelections(XCAFPrs_AISObject* self, bool update) {
-    try { self->ClearSelections(update); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<Handle(SelectMgr_Selection) const*> XCAFPrs_AISObject_inherited_Selection(const XCAFPrs_AISObject* self, int32_t theMode) {
-    try { return {&(self->Selection(theMode)), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<bool> XCAFPrs_AISObject_inherited_HasSelection(const XCAFPrs_AISObject* self, int32_t theMode) {
-    try { return {self->HasSelection(theMode), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<SelectMgr_SequenceOfSelection const*> XCAFPrs_AISObject_inherited_Selections(const XCAFPrs_AISObject* self) {
-    try { return {&(self->Selections()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* XCAFPrs_AISObject_inherited_ResetTransformation(XCAFPrs_AISObject* self) {
-    try { self->ResetTransformation(); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* XCAFPrs_AISObject_inherited_UpdateTransformation(XCAFPrs_AISObject* self) {
-    try { self->UpdateTransformation(); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* XCAFPrs_AISObject_inherited_UpdateTransformations(XCAFPrs_AISObject* self, Handle(SelectMgr_Selection) const& aSelection) {
-    try { self->UpdateTransformations(aSelection); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* XCAFPrs_AISObject_inherited_HilightSelected(XCAFPrs_AISObject* self, Handle(PrsMgr_PresentationManager) const& thePrsMgr, SelectMgr_SequenceOfOwner const& theSeq) {
-    try { self->HilightSelected(thePrsMgr, theSeq); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* XCAFPrs_AISObject_inherited_ClearSelected(XCAFPrs_AISObject* self) {
-    try { self->ClearSelected(); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* XCAFPrs_AISObject_inherited_ClearDynamicHighlight(XCAFPrs_AISObject* self, Handle(PrsMgr_PresentationManager) const& theMgr) {
-    try { self->ClearDynamicHighlight(theMgr); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* XCAFPrs_AISObject_inherited_HilightOwnerWithColor(XCAFPrs_AISObject* self, Handle(PrsMgr_PresentationManager) const& thePM, Handle(Prs3d_Drawer) const& theStyle, Handle(SelectMgr_EntityOwner) const& theOwner) {
-    try { self->HilightOwnerWithColor(thePM, theStyle, theOwner); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<bool> XCAFPrs_AISObject_inherited_IsAutoHilight(const XCAFPrs_AISObject* self) {
-    try { return {self->IsAutoHilight(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* XCAFPrs_AISObject_inherited_SetAutoHilight(XCAFPrs_AISObject* self, bool theAutoHilight) {
-    try { self->SetAutoHilight(theAutoHilight); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<Handle(Graphic3d_Structure)*> XCAFPrs_AISObject_inherited_GetHilightPresentation(XCAFPrs_AISObject* self, Handle(PrsMgr_PresentationManager) const& thePrsMgr) {
-    try { return {new Handle(Graphic3d_Structure)(self->GetHilightPresentation(thePrsMgr)), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Handle(Graphic3d_Structure)*> XCAFPrs_AISObject_inherited_GetSelectPresentation(XCAFPrs_AISObject* self, Handle(PrsMgr_PresentationManager) const& thePrsMgr) {
-    try { return {new Handle(Graphic3d_Structure)(self->GetSelectPresentation(thePrsMgr)), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* XCAFPrs_AISObject_inherited_ErasePresentations(XCAFPrs_AISObject* self, bool theToRemove) {
-    try { self->ErasePresentations(theToRemove); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* XCAFPrs_AISObject_inherited_SetZLayer(XCAFPrs_AISObject* self, int32_t theLayerId) {
-    try { self->SetZLayer(theLayerId); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* XCAFPrs_AISObject_inherited_UpdateSelection(XCAFPrs_AISObject* self, int32_t theMode) {
-    try { self->UpdateSelection(theMode); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* XCAFPrs_AISObject_inherited_SetAssemblyOwner(XCAFPrs_AISObject* self, Handle(SelectMgr_EntityOwner) const& theOwner, int32_t theMode) {
-    try { self->SetAssemblyOwner(theOwner, theMode); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<Bnd_Box*> XCAFPrs_AISObject_inherited_BndBoxOfSelected(XCAFPrs_AISObject* self, Handle(NCollection_Shared_NCollection_IndexedMap_opencascade_handle_SelectMgr_EntityOwner) const& theOwners) {
-    try { return {new Bnd_Box(self->BndBoxOfSelected(theOwners)), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<int32_t> XCAFPrs_AISObject_inherited_GlobalSelectionMode(const XCAFPrs_AISObject* self) {
-    try { return {self->GlobalSelectionMode(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Handle(SelectMgr_EntityOwner)*> XCAFPrs_AISObject_inherited_GlobalSelOwner(const XCAFPrs_AISObject* self) {
-    try { return {new Handle(SelectMgr_EntityOwner)(self->GlobalSelOwner()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Handle(SelectMgr_EntityOwner) const*> XCAFPrs_AISObject_inherited_GetAssemblyOwner(const XCAFPrs_AISObject* self) {
-    try { return {&(self->GetAssemblyOwner()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<PrsMgr_Presentations*> XCAFPrs_AISObject_inherited_Presentations(XCAFPrs_AISObject* self) {
-    try { return {&(self->Presentations()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<int32_t> XCAFPrs_AISObject_inherited_ZLayer(const XCAFPrs_AISObject* self) {
-    try { return {self->ZLayer(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<bool> XCAFPrs_AISObject_inherited_IsMutable(const XCAFPrs_AISObject* self) {
-    try { return {self->IsMutable(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* XCAFPrs_AISObject_inherited_SetMutable(XCAFPrs_AISObject* self, bool theIsMutable) {
-    try { self->SetMutable(theIsMutable); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<Handle(Graphic3d_ViewAffinity) const*> XCAFPrs_AISObject_inherited_ViewAffinity(const XCAFPrs_AISObject* self) {
-    try { return {&(self->ViewAffinity()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<bool> XCAFPrs_AISObject_inherited_HasDisplayMode(const XCAFPrs_AISObject* self) {
-    try { return {self->HasDisplayMode(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<int32_t> XCAFPrs_AISObject_inherited_DisplayMode(const XCAFPrs_AISObject* self) {
-    try { return {self->DisplayMode(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* XCAFPrs_AISObject_inherited_SetDisplayMode(XCAFPrs_AISObject* self, int32_t theMode) {
-    try { self->SetDisplayMode(theMode); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* XCAFPrs_AISObject_inherited_UnsetDisplayMode(XCAFPrs_AISObject* self) {
-    try { self->UnsetDisplayMode(); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<bool> XCAFPrs_AISObject_inherited_HasHilightMode(const XCAFPrs_AISObject* self) {
-    try { return {self->HasHilightMode(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<int32_t> XCAFPrs_AISObject_inherited_HilightMode(const XCAFPrs_AISObject* self) {
-    try { return {self->HilightMode(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* XCAFPrs_AISObject_inherited_SetHilightMode(XCAFPrs_AISObject* self, int32_t theMode) {
-    try { self->SetHilightMode(theMode); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* XCAFPrs_AISObject_inherited_UnsetHilightMode(XCAFPrs_AISObject* self) {
-    try { self->UnsetHilightMode(); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<int32_t> XCAFPrs_AISObject_inherited_DefaultDisplayMode(const XCAFPrs_AISObject* self) {
-    try { return {self->DefaultDisplayMode(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<bool> XCAFPrs_AISObject_inherited_ToBeUpdated(const XCAFPrs_AISObject* self, bool theToIncludeHidden) {
-    try { return {self->ToBeUpdated(theToIncludeHidden), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* XCAFPrs_AISObject_inherited_SetToUpdate(XCAFPrs_AISObject* self, int32_t theMode) {
-    try { self->SetToUpdate(theMode); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<bool> XCAFPrs_AISObject_inherited_IsInfinite(const XCAFPrs_AISObject* self) {
-    try { return {self->IsInfinite(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* XCAFPrs_AISObject_inherited_SetInfiniteState(XCAFPrs_AISObject* self, bool theFlag) {
-    try { self->SetInfiniteState(theFlag); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<int32_t> XCAFPrs_AISObject_inherited_TypeOfPresentation3d(const XCAFPrs_AISObject* self) {
-    try { return {static_cast<int32_t>(self->TypeOfPresentation3d()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* XCAFPrs_AISObject_inherited_SetTypeOfPresentation(XCAFPrs_AISObject* self, int32_t theType) {
-    try { self->SetTypeOfPresentation(static_cast<PrsMgr_TypeOfPresentation3d>(theType)); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<int32_t> XCAFPrs_AISObject_inherited_DisplayStatus(const XCAFPrs_AISObject* self) {
-    try { return {static_cast<int32_t>(self->DisplayStatus()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Handle(Prs3d_Drawer) const*> XCAFPrs_AISObject_inherited_Attributes(const XCAFPrs_AISObject* self) {
-    try { return {&(self->Attributes()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* XCAFPrs_AISObject_inherited_SetAttributes(XCAFPrs_AISObject* self, Handle(Prs3d_Drawer) const& theDrawer) {
-    try { self->SetAttributes(theDrawer); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<Handle(Prs3d_Drawer) const*> XCAFPrs_AISObject_inherited_HilightAttributes(const XCAFPrs_AISObject* self) {
-    try { return {&(self->HilightAttributes()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* XCAFPrs_AISObject_inherited_SetHilightAttributes(XCAFPrs_AISObject* self, Handle(Prs3d_Drawer) const& theDrawer) {
-    try { self->SetHilightAttributes(theDrawer); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<Handle(Prs3d_Drawer) const*> XCAFPrs_AISObject_inherited_DynamicHilightAttributes(const XCAFPrs_AISObject* self) {
-    try { return {&(self->DynamicHilightAttributes()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* XCAFPrs_AISObject_inherited_SetDynamicHilightAttributes(XCAFPrs_AISObject* self, Handle(Prs3d_Drawer) const& theDrawer) {
-    try { self->SetDynamicHilightAttributes(theDrawer); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* XCAFPrs_AISObject_inherited_UnsetHilightAttributes(XCAFPrs_AISObject* self) {
-    try { self->UnsetHilightAttributes(); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* XCAFPrs_AISObject_inherited_SynchronizeAspects(XCAFPrs_AISObject* self) {
-    try { self->SynchronizeAspects(); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<Handle(Graphic3d_TransformPers) const*> XCAFPrs_AISObject_inherited_TransformPersistence(const XCAFPrs_AISObject* self) {
-    try { return {&(self->TransformPersistence()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* XCAFPrs_AISObject_inherited_SetTransformPersistence(XCAFPrs_AISObject* self, Handle(Graphic3d_TransformPers) const& theTrsfPers) {
-    try { self->SetTransformPersistence(theTrsfPers); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<Handle(TopLoc_Datum3D) const*> XCAFPrs_AISObject_inherited_LocalTransformationGeom(const XCAFPrs_AISObject* self) {
-    try { return {&(self->LocalTransformationGeom()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* XCAFPrs_AISObject_inherited_SetLocalTransformation(XCAFPrs_AISObject* self, gp_Trsf const& theTrsf) {
-    try { self->SetLocalTransformation(theTrsf); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<bool> XCAFPrs_AISObject_inherited_HasTransformation(const XCAFPrs_AISObject* self) {
-    try { return {self->HasTransformation(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Handle(TopLoc_Datum3D) const*> XCAFPrs_AISObject_inherited_TransformationGeom(const XCAFPrs_AISObject* self) {
-    try { return {&(self->TransformationGeom()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<gp_Trsf const*> XCAFPrs_AISObject_inherited_LocalTransformation(const XCAFPrs_AISObject* self) {
-    try { return {&(self->LocalTransformation()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<gp_Trsf const*> XCAFPrs_AISObject_inherited_Transformation(const XCAFPrs_AISObject* self) {
-    try { return {&(self->Transformation()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<gp_GTrsf const*> XCAFPrs_AISObject_inherited_InversedTransformation(const XCAFPrs_AISObject* self) {
-    try { return {&(self->InversedTransformation()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Handle(TopLoc_Datum3D) const*> XCAFPrs_AISObject_inherited_CombinedParentTransformation(const XCAFPrs_AISObject* self) {
-    try { return {&(self->CombinedParentTransformation()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* XCAFPrs_AISObject_inherited_RecomputeTransformation(XCAFPrs_AISObject* self, Handle(Graphic3d_Camera) const& theProjector) {
-    try { self->RecomputeTransformation(theProjector); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<Handle(Graphic3d_SequenceOfHClipPlane) const*> XCAFPrs_AISObject_inherited_ClipPlanes(const XCAFPrs_AISObject* self) {
-    try { return {&(self->ClipPlanes()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* XCAFPrs_AISObject_inherited_SetClipPlanes(XCAFPrs_AISObject* self, Handle(Graphic3d_SequenceOfHClipPlane) const& thePlanes) {
-    try { self->SetClipPlanes(thePlanes); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* XCAFPrs_AISObject_inherited_AddClipPlane(XCAFPrs_AISObject* self, Handle(Graphic3d_ClipPlane) const& thePlane) {
-    try { self->AddClipPlane(thePlane); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* XCAFPrs_AISObject_inherited_RemoveClipPlane(XCAFPrs_AISObject* self, Handle(Graphic3d_ClipPlane) const& thePlane) {
-    try { self->RemoveClipPlane(thePlane); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<PrsMgr_PresentableObject*> XCAFPrs_AISObject_inherited_Parent(const XCAFPrs_AISObject* self) {
-    try { return {self->Parent(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<PrsMgr_ListOfPresentableObjects const*> XCAFPrs_AISObject_inherited_Children(const XCAFPrs_AISObject* self) {
-    try { return {&(self->Children()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* XCAFPrs_AISObject_inherited_AddChild(XCAFPrs_AISObject* self, Handle(PrsMgr_PresentableObject) const& theObject) {
-    try { self->AddChild(theObject); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* XCAFPrs_AISObject_inherited_AddChildWithCurrentTransformation(XCAFPrs_AISObject* self, Handle(PrsMgr_PresentableObject) const& theObject) {
-    try { self->AddChildWithCurrentTransformation(theObject); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* XCAFPrs_AISObject_inherited_RemoveChild(XCAFPrs_AISObject* self, Handle(PrsMgr_PresentableObject) const& theObject) {
-    try { self->RemoveChild(theObject); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* XCAFPrs_AISObject_inherited_RemoveChildWithRestoreTransformation(XCAFPrs_AISObject* self, Handle(PrsMgr_PresentableObject) const& theObject) {
-    try { self->RemoveChildWithRestoreTransformation(theObject); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<bool> XCAFPrs_AISObject_inherited_HasOwnPresentations(const XCAFPrs_AISObject* self) {
-    try { return {self->HasOwnPresentations(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* XCAFPrs_AISObject_inherited_SetIsoOnTriangulation(XCAFPrs_AISObject* self, bool theIsEnabled) {
-    try { self->SetIsoOnTriangulation(theIsEnabled); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<int32_t> XCAFPrs_AISObject_inherited_CurrentFacingModel(const XCAFPrs_AISObject* self) {
-    try { return {static_cast<int32_t>(self->CurrentFacingModel()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* XCAFPrs_AISObject_inherited_SetCurrentFacingModel(XCAFPrs_AISObject* self, int32_t theModel) {
-    try { self->SetCurrentFacingModel(static_cast<Aspect_TypeOfFacingModel>(theModel)); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<bool> XCAFPrs_AISObject_inherited_HasColor(const XCAFPrs_AISObject* self) {
-    try { return {self->HasColor(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<bool> XCAFPrs_AISObject_inherited_HasWidth(const XCAFPrs_AISObject* self) {
-    try { return {self->HasWidth(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<double> XCAFPrs_AISObject_inherited_Width(const XCAFPrs_AISObject* self) {
-    try { return {self->Width(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<bool> XCAFPrs_AISObject_inherited_HasMaterial(const XCAFPrs_AISObject* self) {
-    try { return {self->HasMaterial(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<bool> XCAFPrs_AISObject_inherited_IsTransparent(const XCAFPrs_AISObject* self) {
-    try { return {self->IsTransparent(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<bool> XCAFPrs_AISObject_inherited_HasPolygonOffsets(const XCAFPrs_AISObject* self) {
-    try { return {self->HasPolygonOffsets(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* XCAFPrs_AISObject_inherited_PolygonOffsets(const XCAFPrs_AISObject* self, int32_t& aMode, float& aFactor, float& aUnits) {
-    try { self->PolygonOffsets(aMode, aFactor, aUnits); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* XCAFPrs_AISObject_inherited_SetPolygonOffsets(XCAFPrs_AISObject* self, int32_t aMode, float aFactor, float aUnits) {
-    try { self->SetPolygonOffsets(aMode, aFactor, aUnits); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* XCAFPrs_AISObject_inherited_UnsetAttributes(XCAFPrs_AISObject* self) {
-    try { self->UnsetAttributes(); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<bool> XCAFPrs_AISObject_inherited_ToPropagateVisualState(const XCAFPrs_AISObject* self) {
-    try { return {self->ToPropagateVisualState(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* XCAFPrs_AISObject_inherited_SetPropagateVisualState(XCAFPrs_AISObject* self, bool theFlag) {
-    try { self->SetPropagateVisualState(theFlag); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<bool> XCAFPrs_AISObject_inherited_IsInstance(const XCAFPrs_AISObject* self, Handle(Standard_Type) const& theType) {
-    try { return {self->IsInstance(theType), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<bool> XCAFPrs_AISObject_inherited_IsKind(const XCAFPrs_AISObject* self, Handle(Standard_Type) const& theType) {
-    try { return {self->IsKind(theType), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Standard_Transient*> XCAFPrs_AISObject_inherited_This(const XCAFPrs_AISObject* self) {
-    try { return {self->This(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<int32_t> XCAFPrs_AISObject_inherited_GetRefCount(const XCAFPrs_AISObject* self) {
-    try { return {self->GetRefCount(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* XCAFPrs_AISObject_inherited_IncrementRefCounter(XCAFPrs_AISObject* self) {
-    try { self->IncrementRefCounter(); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<int32_t> XCAFPrs_AISObject_inherited_DecrementRefCounter(XCAFPrs_AISObject* self) {
-    try { return {self->DecrementRefCounter(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* XCAFPrs_AISObject_inherited_Delete(const XCAFPrs_AISObject* self) {
-    try { self->Delete(); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
 }
 extern "C" void XCAFPrs_AISObject_destructor(XCAFPrs_AISObject* self_) { delete self_; }
 
@@ -11314,7 +10472,7 @@ extern "C" OcctResult<XCAFPrs_DocumentExplorer*> XCAFPrs_DocumentExplorer_ctor_h
     try { return {new XCAFPrs_DocumentExplorer(*theDocument, theFlags, *theDefStyle), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<XCAFPrs_DocumentExplorer*> XCAFPrs_DocumentExplorer_ctor_handletdocstddocument_labelsequence_int_style(Handle(TDocStd_Document) const* theDocument, TDF_LabelSequence const* theRoots, int32_t theFlags, XCAFPrs_Style const* theDefStyle) {
+extern "C" OcctResult<XCAFPrs_DocumentExplorer*> XCAFPrs_DocumentExplorer_ctor_handletdocstddocument_seq_label_int_style(Handle(TDocStd_Document) const* theDocument, NCollection_Sequence_TDF_Label const* theRoots, int32_t theFlags, XCAFPrs_Style const* theDefStyle) {
     try { return {new XCAFPrs_DocumentExplorer(*theDocument, *theRoots, theFlags, *theDefStyle), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -11322,7 +10480,7 @@ extern "C" const char* XCAFPrs_DocumentExplorer_init_handletdocstddocument_label
     try { self_->Init(*theDocument, *theRoot, theFlags, *theDefStyle); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* XCAFPrs_DocumentExplorer_init_handletdocstddocument_labelsequence_int_style(XCAFPrs_DocumentExplorer* self_, Handle(TDocStd_Document) const* theDocument, TDF_LabelSequence const* theRoots, int32_t theFlags, XCAFPrs_Style const* theDefStyle) {
+extern "C" const char* XCAFPrs_DocumentExplorer_init_handletdocstddocument_seq_label_int_style(XCAFPrs_DocumentExplorer* self_, Handle(TDocStd_Document) const* theDocument, NCollection_Sequence_TDF_Label const* theRoots, int32_t theFlags, XCAFPrs_Style const* theDefStyle) {
     try { self_->Init(*theDocument, *theRoots, theFlags, *theDefStyle); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -11440,24 +10598,24 @@ extern "C" OcctResult<const TPrsStd_Driver*> XCAFPrs_Driver_as_TPrsStd_Driver(co
 extern "C" OcctResult<TPrsStd_Driver*> XCAFPrs_Driver_as_TPrsStd_Driver_mut(XCAFPrs_Driver* self_) { return {static_cast<TPrsStd_Driver*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> XCAFPrs_Driver_as_Standard_Transient(const XCAFPrs_Driver* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> XCAFPrs_Driver_as_Standard_Transient_mut(XCAFPrs_Driver* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleXCAFPrsDriver*> XCAFPrs_Driver_to_handle(XCAFPrs_Driver* obj) {
-    try { return {new HandleXCAFPrsDriver(obj), nullptr}; }
+extern "C" OcctResult<Handle_XCAFPrs_Driver*> XCAFPrs_Driver_to_handle(XCAFPrs_Driver* obj) {
+    try { return {new Handle_XCAFPrs_Driver(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const XCAFPrs_Driver*> HandleXCAFPrsDriver_get(const HandleXCAFPrsDriver* handle) {
+extern "C" OcctResult<const XCAFPrs_Driver*> Handle_XCAFPrs_Driver_get(const Handle_XCAFPrs_Driver* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<XCAFPrs_Driver*> HandleXCAFPrsDriver_get_mut(HandleXCAFPrsDriver* handle) {
+extern "C" OcctResult<XCAFPrs_Driver*> Handle_XCAFPrs_Driver_get_mut(Handle_XCAFPrs_Driver* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTPrsStdDriver*> HandleXCAFPrsDriver_to_HandleTPrsStdDriver(const HandleXCAFPrsDriver* self_) {
-    try { return {new HandleTPrsStdDriver(*self_), nullptr}; }
+extern "C" OcctResult<Handle_TPrsStd_Driver*> Handle_XCAFPrs_Driver_to_Handle_TPrsStd_Driver(const Handle_XCAFPrs_Driver* self_) {
+    try { return {new Handle_TPrsStd_Driver(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleXCAFPrsDriver_to_HandleStandardTransient(const HandleXCAFPrsDriver* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_XCAFPrs_Driver_to_Handle_Standard_Transient(const Handle_XCAFPrs_Driver* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> XCAFPrs_Driver_inherited_IsInstance(const XCAFPrs_Driver* self, Handle(Standard_Type) const& theType) {
@@ -11572,10 +10730,6 @@ extern "C" void XCAFPrs_Style_destructor(XCAFPrs_Style* self_) { delete self_; }
 // XCAFPrs_Texture wrappers
 // ========================
 
-extern "C" OcctResult<XCAFPrs_Texture*> XCAFPrs_Texture_ctor_handleimagetexture_textureunit(Handle(Image_Texture) const* theImageSource, int32_t theUnit) {
-    try { return {new XCAFPrs_Texture(*theImageSource, static_cast<Graphic3d_TextureUnit>(theUnit)), nullptr}; }
-    OCCT_CATCH_RETURN
-}
 extern "C" OcctResult<Handle(Image_CompressedPixMap)*> XCAFPrs_Texture_get_compressed_image(XCAFPrs_Texture* self_, Handle(Image_SupportedFormats) const* theSupported) {
     try { return {new Handle(Image_CompressedPixMap)(self_->GetCompressedImage(*theSupported)), nullptr}; }
     OCCT_CATCH_RETURN
@@ -11600,169 +10754,17 @@ extern "C" OcctResult<Handle(Standard_Type) const*> XCAFPrs_Texture_get_type_des
     try { return {&(XCAFPrs_Texture::get_type_descriptor()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const Graphic3d_Texture2D*> XCAFPrs_Texture_as_Graphic3d_Texture2D(const XCAFPrs_Texture* self_) { return {static_cast<const Graphic3d_Texture2D*>(self_), nullptr}; }
-extern "C" OcctResult<Graphic3d_Texture2D*> XCAFPrs_Texture_as_Graphic3d_Texture2D_mut(XCAFPrs_Texture* self_) { return {static_cast<Graphic3d_Texture2D*>(self_), nullptr}; }
-extern "C" OcctResult<const Graphic3d_TextureMap*> XCAFPrs_Texture_as_Graphic3d_TextureMap(const XCAFPrs_Texture* self_) { return {static_cast<const Graphic3d_TextureMap*>(self_), nullptr}; }
-extern "C" OcctResult<Graphic3d_TextureMap*> XCAFPrs_Texture_as_Graphic3d_TextureMap_mut(XCAFPrs_Texture* self_) { return {static_cast<Graphic3d_TextureMap*>(self_), nullptr}; }
-extern "C" OcctResult<const Graphic3d_TextureRoot*> XCAFPrs_Texture_as_Graphic3d_TextureRoot(const XCAFPrs_Texture* self_) { return {static_cast<const Graphic3d_TextureRoot*>(self_), nullptr}; }
-extern "C" OcctResult<Graphic3d_TextureRoot*> XCAFPrs_Texture_as_Graphic3d_TextureRoot_mut(XCAFPrs_Texture* self_) { return {static_cast<Graphic3d_TextureRoot*>(self_), nullptr}; }
-extern "C" OcctResult<const Standard_Transient*> XCAFPrs_Texture_as_Standard_Transient(const XCAFPrs_Texture* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<Standard_Transient*> XCAFPrs_Texture_as_Standard_Transient_mut(XCAFPrs_Texture* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleXCAFPrsTexture*> XCAFPrs_Texture_to_handle(XCAFPrs_Texture* obj) {
-    try { return {new HandleXCAFPrsTexture(obj), nullptr}; }
+extern "C" OcctResult<Handle_XCAFPrs_Texture*> XCAFPrs_Texture_to_handle(XCAFPrs_Texture* obj) {
+    try { return {new Handle_XCAFPrs_Texture(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const XCAFPrs_Texture*> HandleXCAFPrsTexture_get(const HandleXCAFPrsTexture* handle) {
+extern "C" OcctResult<const XCAFPrs_Texture*> Handle_XCAFPrs_Texture_get(const Handle_XCAFPrs_Texture* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<XCAFPrs_Texture*> HandleXCAFPrsTexture_get_mut(HandleXCAFPrsTexture* handle) {
+extern "C" OcctResult<XCAFPrs_Texture*> Handle_XCAFPrs_Texture_get_mut(Handle_XCAFPrs_Texture* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<HandleGraphic3dTexture2D*> HandleXCAFPrsTexture_to_HandleGraphic3dTexture2D(const HandleXCAFPrsTexture* self_) {
-    try { return {new HandleGraphic3dTexture2D(*self_), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<HandleGraphic3dTextureMap*> HandleXCAFPrsTexture_to_HandleGraphic3dTextureMap(const HandleXCAFPrsTexture* self_) {
-    try { return {new HandleGraphic3dTextureMap(*self_), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<HandleGraphic3dTextureRoot*> HandleXCAFPrsTexture_to_HandleGraphic3dTextureRoot(const HandleXCAFPrsTexture* self_) {
-    try { return {new HandleGraphic3dTextureRoot(*self_), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<HandleStandardTransient*> HandleXCAFPrsTexture_to_HandleStandardTransient(const HandleXCAFPrsTexture* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<int32_t> XCAFPrs_Texture_inherited_Name(const XCAFPrs_Texture* self) {
-    try { return {static_cast<int32_t>(self->Name()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* XCAFPrs_Texture_inherited_SetImage(XCAFPrs_Texture* self, Handle(Image_PixMap) const& thePixMap) {
-    try { self->SetImage(thePixMap); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* XCAFPrs_Texture_inherited_EnableSmooth(XCAFPrs_Texture* self) {
-    try { self->EnableSmooth(); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<bool> XCAFPrs_Texture_inherited_IsSmoothed(const XCAFPrs_Texture* self) {
-    try { return {self->IsSmoothed(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* XCAFPrs_Texture_inherited_DisableSmooth(XCAFPrs_Texture* self) {
-    try { self->DisableSmooth(); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* XCAFPrs_Texture_inherited_EnableModulate(XCAFPrs_Texture* self) {
-    try { self->EnableModulate(); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* XCAFPrs_Texture_inherited_DisableModulate(XCAFPrs_Texture* self) {
-    try { self->DisableModulate(); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<bool> XCAFPrs_Texture_inherited_IsModulate(const XCAFPrs_Texture* self) {
-    try { return {self->IsModulate(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* XCAFPrs_Texture_inherited_EnableRepeat(XCAFPrs_Texture* self) {
-    try { self->EnableRepeat(); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* XCAFPrs_Texture_inherited_DisableRepeat(XCAFPrs_Texture* self) {
-    try { self->DisableRepeat(); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<bool> XCAFPrs_Texture_inherited_IsRepeat(const XCAFPrs_Texture* self) {
-    try { return {self->IsRepeat(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<int32_t> XCAFPrs_Texture_inherited_AnisoFilter(const XCAFPrs_Texture* self) {
-    try { return {static_cast<int32_t>(self->AnisoFilter()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* XCAFPrs_Texture_inherited_SetAnisoFilter(XCAFPrs_Texture* self, int32_t theLevel) {
-    try { self->SetAnisoFilter(static_cast<Graphic3d_LevelOfTextureAnisotropy>(theLevel)); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<bool> XCAFPrs_Texture_inherited_IsDone(const XCAFPrs_Texture* self) {
-    try { return {self->IsDone(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<OSD_Path const*> XCAFPrs_Texture_inherited_Path(const XCAFPrs_Texture* self) {
-    try { return {&(self->Path()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<int32_t> XCAFPrs_Texture_inherited_Type(const XCAFPrs_Texture* self) {
-    try { return {static_cast<int32_t>(self->Type()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<TCollection_AsciiString const*> XCAFPrs_Texture_inherited_GetId(const XCAFPrs_Texture* self) {
-    try { return {&(self->GetId()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<size_t> XCAFPrs_Texture_inherited_Revision(const XCAFPrs_Texture* self) {
-    try { return {self->Revision(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* XCAFPrs_Texture_inherited_UpdateRevision(XCAFPrs_Texture* self) {
-    try { self->UpdateRevision(); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<Handle(Graphic3d_TextureParams) const*> XCAFPrs_Texture_inherited_GetParams(const XCAFPrs_Texture* self) {
-    try { return {&(self->GetParams()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<bool> XCAFPrs_Texture_inherited_IsColorMap(const XCAFPrs_Texture* self) {
-    try { return {self->IsColorMap(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* XCAFPrs_Texture_inherited_SetColorMap(XCAFPrs_Texture* self, bool theIsColor) {
-    try { self->SetColorMap(theIsColor); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<bool> XCAFPrs_Texture_inherited_HasMipmaps(const XCAFPrs_Texture* self) {
-    try { return {self->HasMipmaps(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* XCAFPrs_Texture_inherited_SetMipmapsGeneration(XCAFPrs_Texture* self, bool theToGenerateMipmaps) {
-    try { self->SetMipmapsGeneration(theToGenerateMipmaps); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<bool> XCAFPrs_Texture_inherited_IsTopDown(const XCAFPrs_Texture* self) {
-    try { return {self->IsTopDown(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<bool> XCAFPrs_Texture_inherited_IsInstance(const XCAFPrs_Texture* self, Handle(Standard_Type) const& theType) {
-    try { return {self->IsInstance(theType), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<bool> XCAFPrs_Texture_inherited_IsKind(const XCAFPrs_Texture* self, Handle(Standard_Type) const& theType) {
-    try { return {self->IsKind(theType), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Standard_Transient*> XCAFPrs_Texture_inherited_This(const XCAFPrs_Texture* self) {
-    try { return {self->This(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<int32_t> XCAFPrs_Texture_inherited_GetRefCount(const XCAFPrs_Texture* self) {
-    try { return {self->GetRefCount(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* XCAFPrs_Texture_inherited_IncrementRefCounter(XCAFPrs_Texture* self) {
-    try { self->IncrementRefCounter(); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<int32_t> XCAFPrs_Texture_inherited_DecrementRefCounter(XCAFPrs_Texture* self) {
-    try { return {self->DecrementRefCounter(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* XCAFPrs_Texture_inherited_Delete(const XCAFPrs_Texture* self) {
-    try { self->Delete(); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
 }
 extern "C" void XCAFPrs_Texture_destructor(XCAFPrs_Texture* self_) { delete self_; }
 
@@ -11924,20 +10926,20 @@ extern "C" OcctResult<Handle(Standard_Type) const*> XCAFView_Object_get_type_des
 }
 extern "C" OcctResult<const Standard_Transient*> XCAFView_Object_as_Standard_Transient(const XCAFView_Object* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> XCAFView_Object_as_Standard_Transient_mut(XCAFView_Object* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleXCAFViewObject*> XCAFView_Object_to_handle(XCAFView_Object* obj) {
-    try { return {new HandleXCAFViewObject(obj), nullptr}; }
+extern "C" OcctResult<Handle_XCAFView_Object*> XCAFView_Object_to_handle(XCAFView_Object* obj) {
+    try { return {new Handle_XCAFView_Object(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const XCAFView_Object*> HandleXCAFViewObject_get(const HandleXCAFViewObject* handle) {
+extern "C" OcctResult<const XCAFView_Object*> Handle_XCAFView_Object_get(const Handle_XCAFView_Object* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<XCAFView_Object*> HandleXCAFViewObject_get_mut(HandleXCAFViewObject* handle) {
+extern "C" OcctResult<XCAFView_Object*> Handle_XCAFView_Object_get_mut(Handle_XCAFView_Object* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleXCAFViewObject_to_HandleStandardTransient(const HandleXCAFViewObject* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_XCAFView_Object_to_Handle_Standard_Transient(const Handle_XCAFView_Object* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> XCAFView_Object_inherited_IsInstance(const XCAFView_Object* self, Handle(Standard_Type) const& theType) {
@@ -12077,6 +11079,10 @@ extern "C" OcctResult<TCollection_AsciiString*> XCAFDoc_attribute_info(Handle(TD
 // ========================
 // XCAFPrs namespace functions
 // ========================
+extern "C" const char* XCAFPrs_collect_style_settings(TDF_Label const* L, TopLoc_Location const* loc, NCollection_IndexedDataMap_TopoDS_Shape_XCAFPrs_Style_TopTools_ShapeMapHasher* settings, Quantity_ColorRGBA const* theLayerColor) {
+    try { XCAFPrs::CollectStyleSettings(*L, *loc, *settings, *theLayerColor); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
 extern "C" const char* XCAFPrs_set_view_name_mode(bool viewNameMode) {
     try { XCAFPrs::SetViewNameMode(viewNameMode); return nullptr; }
     OCCT_CATCH_RETURN_VOID
@@ -12088,14 +11094,5 @@ extern "C" OcctResult<bool> XCAFPrs_get_view_name_mode() {
 
 
 // Nested type and typedef type destructors
-extern "C" void XCAFDimTolObjects_DataMapOfToleranceDatum_destructor(XCAFDimTolObjects_DataMapOfToleranceDatum* self_) { delete self_; }
-extern "C" void XCAFDimTolObjects_DatumModifiersSequence_destructor(XCAFDimTolObjects_DatumModifiersSequence* self_) { delete self_; }
-extern "C" void XCAFDimTolObjects_DatumObjectSequence_destructor(XCAFDimTolObjects_DatumObjectSequence* self_) { delete self_; }
-extern "C" void XCAFDimTolObjects_DimensionModifiersSequence_destructor(XCAFDimTolObjects_DimensionModifiersSequence* self_) { delete self_; }
-extern "C" void XCAFDimTolObjects_DimensionObjectSequence_destructor(XCAFDimTolObjects_DimensionObjectSequence* self_) { delete self_; }
-extern "C" void XCAFDimTolObjects_GeomToleranceModifiersSequence_destructor(XCAFDimTolObjects_GeomToleranceModifiersSequence* self_) { delete self_; }
-extern "C" void XCAFDimTolObjects_GeomToleranceObjectSequence_destructor(XCAFDimTolObjects_GeomToleranceObjectSequence* self_) { delete self_; }
 extern "C" void XCAFDoc_AssemblyGraph_AdjacencyMap_destructor(XCAFDoc_AssemblyGraph::AdjacencyMap* self_) { delete self_; }
 extern "C" void XCAFDoc_AssemblyGraph_NodeType_destructor(XCAFDoc_AssemblyGraph::NodeType* self_) { delete self_; }
-extern "C" void XCAFDoc_DataMapOfShapeLabel_destructor(XCAFDoc_DataMapOfShapeLabel* self_) { delete self_; }
-extern "C" void XCAFPrs_IndexedDataMapOfShapeStyle_destructor(XCAFPrs_IndexedDataMapOfShapeStyle* self_) { delete self_; }

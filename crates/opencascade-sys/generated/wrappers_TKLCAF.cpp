@@ -5,11 +5,10 @@
 
 #include <AppStdL_Application.hxx>
 #include <AppStd_Application.hxx>
-#include <BRepClass3d_MapOfInter.hxx>
+#include <BinObjMgt_PByte.hxx>
 #include <CDF_Application.hxx>
 #include <CDM_Application.hxx>
 #include <CDM_Document.hxx>
-#include <CDM_MetaDataLookUpTable.hxx>
 #include <Message_ProgressRange.hxx>
 #include <NCollection_BaseAllocator.hxx>
 #include <PCDM_ReaderFilter.hxx>
@@ -18,36 +17,15 @@
 #include <PCDM_StorageDriver.hxx>
 #include <PCDM_StoreStatus.hxx>
 #include <Resource_Manager.hxx>
-#include <ShapeProcess.hxx>
-#include <Standard_GUID.hxx>
 #include <Standard_Handle.hxx>
 #include <Standard_IStream.hxx>
 #include <Standard_OStream.hxx>
 #include <Standard_Type.hxx>
-#include <TColStd_DataMapOfStringInteger.hxx>
-#include <TColStd_HArray1OfByte.hxx>
-#include <TColStd_HArray1OfExtendedString.hxx>
-#include <TColStd_HArray1OfInteger.hxx>
-#include <TColStd_HArray1OfReal.hxx>
 #include <TColStd_HPackedMapOfInteger.hxx>
-#include <TColStd_IndexedDataMapOfTransientTransient.hxx>
-#include <TColStd_ListOfInteger.hxx>
-#include <TColStd_ListOfReal.hxx>
-#include <TColStd_MapOfInteger.hxx>
-#include <TColStd_SequenceOfAsciiString.hxx>
-#include <TColStd_SequenceOfExtendedString.hxx>
-#include <TCollection_ExtendedString.hxx>
 #include <TDF.hxx>
 #include <TDF_Attribute.hxx>
-#include <TDF_AttributeArray1.hxx>
-#include <TDF_AttributeDataMap.hxx>
 #include <TDF_AttributeDelta.hxx>
-#include <TDF_AttributeDeltaList.hxx>
-#include <TDF_AttributeIndexedMap.hxx>
 #include <TDF_AttributeIterator.hxx>
-#include <TDF_AttributeList.hxx>
-#include <TDF_AttributeMap.hxx>
-#include <TDF_AttributeSequence.hxx>
 #include <TDF_ChildIDIterator.hxx>
 #include <TDF_ChildIterator.hxx>
 #include <TDF_ClosureMode.hxx>
@@ -60,22 +38,14 @@
 #include <TDF_DefaultDeltaOnModification.hxx>
 #include <TDF_DefaultDeltaOnRemoval.hxx>
 #include <TDF_Delta.hxx>
-#include <TDF_DeltaList.hxx>
 #include <TDF_DeltaOnAddition.hxx>
 #include <TDF_DeltaOnForget.hxx>
 #include <TDF_DeltaOnModification.hxx>
 #include <TDF_DeltaOnRemoval.hxx>
 #include <TDF_DeltaOnResume.hxx>
 #include <TDF_DerivedAttribute.hxx>
-#include <TDF_HAttributeArray1.hxx>
+#include <TDF_HAllocator.hxx>
 #include <TDF_IDFilter.hxx>
-#include <TDF_IDList.hxx>
-#include <TDF_LabelDataMap.hxx>
-#include <TDF_LabelIndexedMap.hxx>
-#include <TDF_LabelIntegerMap.hxx>
-#include <TDF_LabelList.hxx>
-#include <TDF_LabelMap.hxx>
-#include <TDF_LabelSequence.hxx>
 #include <TDF_Reference.hxx>
 #include <TDF_RelocationTable.hxx>
 #include <TDF_TagSource.hxx>
@@ -89,11 +59,6 @@
 #include <TDataStd_ChildNodeIterator.hxx>
 #include <TDataStd_Comment.hxx>
 #include <TDataStd_Current.hxx>
-#include <TDataStd_DataMapOfStringByte.hxx>
-#include <TDataStd_DataMapOfStringHArray1OfInteger.hxx>
-#include <TDataStd_DataMapOfStringHArray1OfReal.hxx>
-#include <TDataStd_DataMapOfStringReal.hxx>
-#include <TDataStd_DataMapOfStringString.hxx>
 #include <TDataStd_DeltaOnModificationOfByteArray.hxx>
 #include <TDataStd_DeltaOnModificationOfExtStringArray.hxx>
 #include <TDataStd_DeltaOnModificationOfIntArray.hxx>
@@ -111,15 +76,10 @@
 #include <TDataStd_HDataMapOfStringInteger.hxx>
 #include <TDataStd_HDataMapOfStringReal.hxx>
 #include <TDataStd_HDataMapOfStringString.hxx>
-#include <TDataStd_HLabelArray1.hxx>
 #include <TDataStd_IntPackedMap.hxx>
 #include <TDataStd_Integer.hxx>
 #include <TDataStd_IntegerArray.hxx>
 #include <TDataStd_IntegerList.hxx>
-#include <TDataStd_LabelArray1.hxx>
-#include <TDataStd_ListIteratorOfListOfExtendedString.hxx>
-#include <TDataStd_ListOfByte.hxx>
-#include <TDataStd_ListOfExtendedString.hxx>
 #include <TDataStd_Name.hxx>
 #include <TDataStd_NamedData.hxx>
 #include <TDataStd_NoteBook.hxx>
@@ -145,6 +105,7 @@
 #include <TDataXtd_Presentation.hxx>
 #include <TDataXtd_Shape.hxx>
 #include <TDataXtd_Triangulation.hxx>
+#include <TDocStd.hxx>
 #include <TDocStd_Application.hxx>
 #include <TDocStd_ApplicationDelta.hxx>
 #include <TDocStd_CompoundDelta.hxx>
@@ -155,20 +116,15 @@
 #include <TDocStd_MultiTransactionManager.hxx>
 #include <TDocStd_Owner.hxx>
 #include <TDocStd_PathParser.hxx>
-#include <TDocStd_SequenceOfApplicationDelta.hxx>
-#include <TDocStd_SequenceOfDocument.hxx>
 #include <TDocStd_XLink.hxx>
 #include <TDocStd_XLinkIterator.hxx>
 #include <TDocStd_XLinkRoot.hxx>
 #include <TDocStd_XLinkTool.hxx>
-#include <TFunction_Array1OfDataMapOfGUIDDriver.hxx>
-#include <TFunction_DoubleMapOfIntegerLabel.hxx>
 #include <TFunction_Driver.hxx>
 #include <TFunction_DriverTable.hxx>
 #include <TFunction_ExecutionStatus.hxx>
 #include <TFunction_Function.hxx>
 #include <TFunction_GraphNode.hxx>
-#include <TFunction_HArray1OfDataMapOfGUIDDriver.hxx>
 #include <TFunction_IFunction.hxx>
 #include <TFunction_Iterator.hxx>
 #include <TFunction_Logbook.hxx>
@@ -215,602 +171,582 @@
 #include <XCAFDoc_ShapeTool.hxx>
 #include <XCAFDoc_View.hxx>
 #include <XCAFDoc_ViewTool.hxx>
+#include <XCAFDoc_VisMaterial.hxx>
 #include <XCAFDoc_VisMaterialTool.hxx>
 #include <XCAFDoc_Volume.hxx>
 
 // Handle type aliases
-typedef opencascade::handle<AppStdL_Application> HandleAppStdLApplication;
-typedef opencascade::handle<AppStd_Application> HandleAppStdApplication;
-typedef opencascade::handle<CDF_Application> HandleCDFApplication;
-typedef opencascade::handle<CDM_Application> HandleCDMApplication;
-typedef opencascade::handle<CDM_Document> HandleCDMDocument;
-typedef opencascade::handle<NCollection_BaseAllocator> HandleNCollectionBaseAllocator;
-typedef opencascade::handle<PCDM_ReaderFilter> HandlePCDMReaderFilter;
-typedef opencascade::handle<PCDM_RetrievalDriver> HandlePCDMRetrievalDriver;
-typedef opencascade::handle<PCDM_StorageDriver> HandlePCDMStorageDriver;
-typedef opencascade::handle<Resource_Manager> HandleResourceManager;
-typedef opencascade::handle<Standard_Transient> HandleStandardTransient;
-typedef opencascade::handle<Standard_Type> HandleStandardType;
-typedef opencascade::handle<TColStd_HArray1OfByte> HandleTColStdHArray1OfByte;
-typedef opencascade::handle<TColStd_HArray1OfExtendedString> HandleTColStdHArray1OfExtendedString;
-typedef opencascade::handle<TColStd_HArray1OfInteger> HandleTColStdHArray1OfInteger;
-typedef opencascade::handle<TColStd_HArray1OfReal> HandleTColStdHArray1OfReal;
-typedef opencascade::handle<TColStd_HPackedMapOfInteger> HandleTColStdHPackedMapOfInteger;
-typedef opencascade::handle<TDF_Attribute> HandleTDFAttribute;
-typedef opencascade::handle<TDF_AttributeDelta> HandleTDFAttributeDelta;
-typedef opencascade::handle<TDF_Data> HandleTDFData;
-typedef opencascade::handle<TDF_DataSet> HandleTDFDataSet;
-typedef opencascade::handle<TDF_DefaultDeltaOnModification> HandleTDFDefaultDeltaOnModification;
-typedef opencascade::handle<TDF_DefaultDeltaOnRemoval> HandleTDFDefaultDeltaOnRemoval;
-typedef opencascade::handle<TDF_Delta> HandleTDFDelta;
-typedef opencascade::handle<TDF_DeltaOnAddition> HandleTDFDeltaOnAddition;
-typedef opencascade::handle<TDF_DeltaOnForget> HandleTDFDeltaOnForget;
-typedef opencascade::handle<TDF_DeltaOnModification> HandleTDFDeltaOnModification;
-typedef opencascade::handle<TDF_DeltaOnRemoval> HandleTDFDeltaOnRemoval;
-typedef opencascade::handle<TDF_DeltaOnResume> HandleTDFDeltaOnResume;
-typedef opencascade::handle<TDF_HAttributeArray1> HandleTDFHAttributeArray1;
-typedef opencascade::handle<TDF_Reference> HandleTDFReference;
-typedef opencascade::handle<TDF_RelocationTable> HandleTDFRelocationTable;
-typedef opencascade::handle<TDF_TagSource> HandleTDFTagSource;
-typedef opencascade::handle<TDataStd_AsciiString> HandleTDataStdAsciiString;
-typedef opencascade::handle<TDataStd_BooleanArray> HandleTDataStdBooleanArray;
-typedef opencascade::handle<TDataStd_BooleanList> HandleTDataStdBooleanList;
-typedef opencascade::handle<TDataStd_ByteArray> HandleTDataStdByteArray;
-typedef opencascade::handle<TDataStd_Comment> HandleTDataStdComment;
-typedef opencascade::handle<TDataStd_Current> HandleTDataStdCurrent;
-typedef opencascade::handle<TDataStd_DeltaOnModificationOfByteArray> HandleTDataStdDeltaOnModificationOfByteArray;
-typedef opencascade::handle<TDataStd_DeltaOnModificationOfExtStringArray> HandleTDataStdDeltaOnModificationOfExtStringArray;
-typedef opencascade::handle<TDataStd_DeltaOnModificationOfIntArray> HandleTDataStdDeltaOnModificationOfIntArray;
-typedef opencascade::handle<TDataStd_DeltaOnModificationOfIntPackedMap> HandleTDataStdDeltaOnModificationOfIntPackedMap;
-typedef opencascade::handle<TDataStd_DeltaOnModificationOfRealArray> HandleTDataStdDeltaOnModificationOfRealArray;
-typedef opencascade::handle<TDataStd_Directory> HandleTDataStdDirectory;
-typedef opencascade::handle<TDataStd_Expression> HandleTDataStdExpression;
-typedef opencascade::handle<TDataStd_ExtStringArray> HandleTDataStdExtStringArray;
-typedef opencascade::handle<TDataStd_ExtStringList> HandleTDataStdExtStringList;
-typedef opencascade::handle<TDataStd_GenericEmpty> HandleTDataStdGenericEmpty;
-typedef opencascade::handle<TDataStd_GenericExtString> HandleTDataStdGenericExtString;
-typedef opencascade::handle<TDataStd_HDataMapOfStringByte> HandleTDataStdHDataMapOfStringByte;
-typedef opencascade::handle<TDataStd_HDataMapOfStringHArray1OfInteger> HandleTDataStdHDataMapOfStringHArray1OfInteger;
-typedef opencascade::handle<TDataStd_HDataMapOfStringHArray1OfReal> HandleTDataStdHDataMapOfStringHArray1OfReal;
-typedef opencascade::handle<TDataStd_HDataMapOfStringInteger> HandleTDataStdHDataMapOfStringInteger;
-typedef opencascade::handle<TDataStd_HDataMapOfStringReal> HandleTDataStdHDataMapOfStringReal;
-typedef opencascade::handle<TDataStd_HDataMapOfStringString> HandleTDataStdHDataMapOfStringString;
-typedef opencascade::handle<TDataStd_HLabelArray1> HandleTDataStdHLabelArray1;
-typedef opencascade::handle<TDataStd_IntPackedMap> HandleTDataStdIntPackedMap;
-typedef opencascade::handle<TDataStd_Integer> HandleTDataStdInteger;
-typedef opencascade::handle<TDataStd_IntegerArray> HandleTDataStdIntegerArray;
-typedef opencascade::handle<TDataStd_IntegerList> HandleTDataStdIntegerList;
-typedef opencascade::handle<TDataStd_Name> HandleTDataStdName;
-typedef opencascade::handle<TDataStd_NamedData> HandleTDataStdNamedData;
-typedef opencascade::handle<TDataStd_NoteBook> HandleTDataStdNoteBook;
-typedef opencascade::handle<TDataStd_Real> HandleTDataStdReal;
-typedef opencascade::handle<TDataStd_RealArray> HandleTDataStdRealArray;
-typedef opencascade::handle<TDataStd_RealList> HandleTDataStdRealList;
-typedef opencascade::handle<TDataStd_ReferenceArray> HandleTDataStdReferenceArray;
-typedef opencascade::handle<TDataStd_ReferenceList> HandleTDataStdReferenceList;
-typedef opencascade::handle<TDataStd_Relation> HandleTDataStdRelation;
-typedef opencascade::handle<TDataStd_Tick> HandleTDataStdTick;
-typedef opencascade::handle<TDataStd_TreeNode> HandleTDataStdTreeNode;
-typedef opencascade::handle<TDataStd_UAttribute> HandleTDataStdUAttribute;
-typedef opencascade::handle<TDataStd_Variable> HandleTDataStdVariable;
-typedef opencascade::handle<TDataXtd_Axis> HandleTDataXtdAxis;
-typedef opencascade::handle<TDataXtd_Constraint> HandleTDataXtdConstraint;
-typedef opencascade::handle<TDataXtd_Geometry> HandleTDataXtdGeometry;
-typedef opencascade::handle<TDataXtd_PatternStd> HandleTDataXtdPatternStd;
-typedef opencascade::handle<TDataXtd_Placement> HandleTDataXtdPlacement;
-typedef opencascade::handle<TDataXtd_Plane> HandleTDataXtdPlane;
-typedef opencascade::handle<TDataXtd_Point> HandleTDataXtdPoint;
-typedef opencascade::handle<TDataXtd_Position> HandleTDataXtdPosition;
-typedef opencascade::handle<TDataXtd_Presentation> HandleTDataXtdPresentation;
-typedef opencascade::handle<TDataXtd_Shape> HandleTDataXtdShape;
-typedef opencascade::handle<TDataXtd_Triangulation> HandleTDataXtdTriangulation;
-typedef opencascade::handle<TDocStd_Application> HandleTDocStdApplication;
-typedef opencascade::handle<TDocStd_ApplicationDelta> HandleTDocStdApplicationDelta;
-typedef opencascade::handle<TDocStd_CompoundDelta> HandleTDocStdCompoundDelta;
-typedef opencascade::handle<TDocStd_Document> HandleTDocStdDocument;
-typedef opencascade::handle<TDocStd_Modified> HandleTDocStdModified;
-typedef opencascade::handle<TDocStd_MultiTransactionManager> HandleTDocStdMultiTransactionManager;
-typedef opencascade::handle<TDocStd_Owner> HandleTDocStdOwner;
-typedef opencascade::handle<TDocStd_XLink> HandleTDocStdXLink;
-typedef opencascade::handle<TDocStd_XLinkRoot> HandleTDocStdXLinkRoot;
-typedef opencascade::handle<TFunction_Driver> HandleTFunctionDriver;
-typedef opencascade::handle<TFunction_DriverTable> HandleTFunctionDriverTable;
-typedef opencascade::handle<TFunction_Function> HandleTFunctionFunction;
-typedef opencascade::handle<TFunction_GraphNode> HandleTFunctionGraphNode;
-typedef opencascade::handle<TFunction_HArray1OfDataMapOfGUIDDriver> HandleTFunctionHArray1OfDataMapOfGUIDDriver;
-typedef opencascade::handle<TFunction_Logbook> HandleTFunctionLogbook;
-typedef opencascade::handle<TFunction_Scope> HandleTFunctionScope;
-typedef opencascade::handle<TNaming_DeltaOnModification> HandleTNamingDeltaOnModification;
-typedef opencascade::handle<TNaming_DeltaOnRemoval> HandleTNamingDeltaOnRemoval;
-typedef opencascade::handle<TNaming_NamedShape> HandleTNamingNamedShape;
-typedef opencascade::handle<TNaming_Naming> HandleTNamingNaming;
-typedef opencascade::handle<TNaming_UsedShapes> HandleTNamingUsedShapes;
-typedef opencascade::handle<TObj_Application> HandleTObjApplication;
-typedef opencascade::handle<TObj_TIntSparseArray> HandleTObjTIntSparseArray;
-typedef opencascade::handle<TObj_TModel> HandleTObjTModel;
-typedef opencascade::handle<TObj_TNameContainer> HandleTObjTNameContainer;
-typedef opencascade::handle<TObj_TObject> HandleTObjTObject;
-typedef opencascade::handle<TObj_TReference> HandleTObjTReference;
-typedef opencascade::handle<TObj_TXYZ> HandleTObjTXYZ;
-typedef opencascade::handle<TPrsStd_AISPresentation> HandleTPrsStdAISPresentation;
-typedef opencascade::handle<TPrsStd_AISViewer> HandleTPrsStdAISViewer;
-typedef opencascade::handle<XCAFApp_Application> HandleXCAFAppApplication;
-typedef opencascade::handle<XCAFDoc_Area> HandleXCAFDocArea;
-typedef opencascade::handle<XCAFDoc_AssemblyItemRef> HandleXCAFDocAssemblyItemRef;
-typedef opencascade::handle<XCAFDoc_Centroid> HandleXCAFDocCentroid;
-typedef opencascade::handle<XCAFDoc_ClippingPlaneTool> HandleXCAFDocClippingPlaneTool;
-typedef opencascade::handle<XCAFDoc_Color> HandleXCAFDocColor;
-typedef opencascade::handle<XCAFDoc_ColorTool> HandleXCAFDocColorTool;
-typedef opencascade::handle<XCAFDoc_Datum> HandleXCAFDocDatum;
-typedef opencascade::handle<XCAFDoc_DimTol> HandleXCAFDocDimTol;
-typedef opencascade::handle<XCAFDoc_DimTolTool> HandleXCAFDocDimTolTool;
-typedef opencascade::handle<XCAFDoc_Dimension> HandleXCAFDocDimension;
-typedef opencascade::handle<XCAFDoc_DocumentTool> HandleXCAFDocDocumentTool;
-typedef opencascade::handle<XCAFDoc_GeomTolerance> HandleXCAFDocGeomTolerance;
-typedef opencascade::handle<XCAFDoc_GraphNode> HandleXCAFDocGraphNode;
-typedef opencascade::handle<XCAFDoc_LayerTool> HandleXCAFDocLayerTool;
-typedef opencascade::handle<XCAFDoc_LengthUnit> HandleXCAFDocLengthUnit;
-typedef opencascade::handle<XCAFDoc_Location> HandleXCAFDocLocation;
-typedef opencascade::handle<XCAFDoc_Material> HandleXCAFDocMaterial;
-typedef opencascade::handle<XCAFDoc_MaterialTool> HandleXCAFDocMaterialTool;
-typedef opencascade::handle<XCAFDoc_Note> HandleXCAFDocNote;
-typedef opencascade::handle<XCAFDoc_NoteBalloon> HandleXCAFDocNoteBalloon;
-typedef opencascade::handle<XCAFDoc_NoteBinData> HandleXCAFDocNoteBinData;
-typedef opencascade::handle<XCAFDoc_NoteComment> HandleXCAFDocNoteComment;
-typedef opencascade::handle<XCAFDoc_NotesTool> HandleXCAFDocNotesTool;
-typedef opencascade::handle<XCAFDoc_ShapeMapTool> HandleXCAFDocShapeMapTool;
-typedef opencascade::handle<XCAFDoc_ShapeTool> HandleXCAFDocShapeTool;
-typedef opencascade::handle<XCAFDoc_View> HandleXCAFDocView;
-typedef opencascade::handle<XCAFDoc_ViewTool> HandleXCAFDocViewTool;
-typedef opencascade::handle<XCAFDoc_VisMaterial> HandleXCAFDocVisMaterial;
-typedef opencascade::handle<XCAFDoc_VisMaterialTool> HandleXCAFDocVisMaterialTool;
-typedef opencascade::handle<XCAFDoc_Volume> HandleXCAFDocVolume;
+typedef opencascade::handle<AppStdL_Application> Handle_AppStdL_Application;
+typedef opencascade::handle<AppStd_Application> Handle_AppStd_Application;
+typedef opencascade::handle<CDF_Application> Handle_CDF_Application;
+typedef opencascade::handle<CDM_Application> Handle_CDM_Application;
+typedef opencascade::handle<CDM_Document> Handle_CDM_Document;
+typedef opencascade::handle<NCollection_BaseAllocator> Handle_NCollection_BaseAllocator;
+typedef opencascade::handle<NCollection_HArray1_TCollection_ExtendedString> Handle_NCollection_HArray1_TCollection_ExtendedString;
+typedef opencascade::handle<NCollection_HArray1_TDF_Label> Handle_NCollection_HArray1_TDF_Label;
+typedef opencascade::handle<NCollection_HArray1_double> Handle_NCollection_HArray1_double;
+typedef opencascade::handle<NCollection_HArray1_int> Handle_NCollection_HArray1_int;
+typedef opencascade::handle<PCDM_ReaderFilter> Handle_PCDM_ReaderFilter;
+typedef opencascade::handle<PCDM_RetrievalDriver> Handle_PCDM_RetrievalDriver;
+typedef opencascade::handle<PCDM_StorageDriver> Handle_PCDM_StorageDriver;
+typedef opencascade::handle<Resource_Manager> Handle_Resource_Manager;
+typedef opencascade::handle<Standard_Transient> Handle_Standard_Transient;
+typedef opencascade::handle<Standard_Type> Handle_Standard_Type;
+typedef opencascade::handle<TColStd_HPackedMapOfInteger> Handle_TColStd_HPackedMapOfInteger;
+typedef opencascade::handle<TDF_Attribute> Handle_TDF_Attribute;
+typedef opencascade::handle<TDF_AttributeDelta> Handle_TDF_AttributeDelta;
+typedef opencascade::handle<TDF_Data> Handle_TDF_Data;
+typedef opencascade::handle<TDF_DataSet> Handle_TDF_DataSet;
+typedef opencascade::handle<TDF_DefaultDeltaOnModification> Handle_TDF_DefaultDeltaOnModification;
+typedef opencascade::handle<TDF_DefaultDeltaOnRemoval> Handle_TDF_DefaultDeltaOnRemoval;
+typedef opencascade::handle<TDF_Delta> Handle_TDF_Delta;
+typedef opencascade::handle<TDF_DeltaOnAddition> Handle_TDF_DeltaOnAddition;
+typedef opencascade::handle<TDF_DeltaOnForget> Handle_TDF_DeltaOnForget;
+typedef opencascade::handle<TDF_DeltaOnModification> Handle_TDF_DeltaOnModification;
+typedef opencascade::handle<TDF_DeltaOnRemoval> Handle_TDF_DeltaOnRemoval;
+typedef opencascade::handle<TDF_DeltaOnResume> Handle_TDF_DeltaOnResume;
+typedef opencascade::handle<TDF_Reference> Handle_TDF_Reference;
+typedef opencascade::handle<TDF_RelocationTable> Handle_TDF_RelocationTable;
+typedef opencascade::handle<TDF_TagSource> Handle_TDF_TagSource;
+typedef opencascade::handle<TDataStd_AsciiString> Handle_TDataStd_AsciiString;
+typedef opencascade::handle<TDataStd_BooleanArray> Handle_TDataStd_BooleanArray;
+typedef opencascade::handle<TDataStd_BooleanList> Handle_TDataStd_BooleanList;
+typedef opencascade::handle<TDataStd_ByteArray> Handle_TDataStd_ByteArray;
+typedef opencascade::handle<TDataStd_Comment> Handle_TDataStd_Comment;
+typedef opencascade::handle<TDataStd_Current> Handle_TDataStd_Current;
+typedef opencascade::handle<TDataStd_DeltaOnModificationOfByteArray> Handle_TDataStd_DeltaOnModificationOfByteArray;
+typedef opencascade::handle<TDataStd_DeltaOnModificationOfExtStringArray> Handle_TDataStd_DeltaOnModificationOfExtStringArray;
+typedef opencascade::handle<TDataStd_DeltaOnModificationOfIntArray> Handle_TDataStd_DeltaOnModificationOfIntArray;
+typedef opencascade::handle<TDataStd_DeltaOnModificationOfIntPackedMap> Handle_TDataStd_DeltaOnModificationOfIntPackedMap;
+typedef opencascade::handle<TDataStd_DeltaOnModificationOfRealArray> Handle_TDataStd_DeltaOnModificationOfRealArray;
+typedef opencascade::handle<TDataStd_Directory> Handle_TDataStd_Directory;
+typedef opencascade::handle<TDataStd_Expression> Handle_TDataStd_Expression;
+typedef opencascade::handle<TDataStd_ExtStringArray> Handle_TDataStd_ExtStringArray;
+typedef opencascade::handle<TDataStd_ExtStringList> Handle_TDataStd_ExtStringList;
+typedef opencascade::handle<TDataStd_GenericEmpty> Handle_TDataStd_GenericEmpty;
+typedef opencascade::handle<TDataStd_GenericExtString> Handle_TDataStd_GenericExtString;
+typedef opencascade::handle<TDataStd_HDataMapOfStringByte> Handle_TDataStd_HDataMapOfStringByte;
+typedef opencascade::handle<TDataStd_HDataMapOfStringHArray1OfInteger> Handle_TDataStd_HDataMapOfStringHArray1OfInteger;
+typedef opencascade::handle<TDataStd_HDataMapOfStringHArray1OfReal> Handle_TDataStd_HDataMapOfStringHArray1OfReal;
+typedef opencascade::handle<TDataStd_HDataMapOfStringInteger> Handle_TDataStd_HDataMapOfStringInteger;
+typedef opencascade::handle<TDataStd_HDataMapOfStringReal> Handle_TDataStd_HDataMapOfStringReal;
+typedef opencascade::handle<TDataStd_HDataMapOfStringString> Handle_TDataStd_HDataMapOfStringString;
+typedef opencascade::handle<TDataStd_IntPackedMap> Handle_TDataStd_IntPackedMap;
+typedef opencascade::handle<TDataStd_Integer> Handle_TDataStd_Integer;
+typedef opencascade::handle<TDataStd_IntegerArray> Handle_TDataStd_IntegerArray;
+typedef opencascade::handle<TDataStd_IntegerList> Handle_TDataStd_IntegerList;
+typedef opencascade::handle<TDataStd_Name> Handle_TDataStd_Name;
+typedef opencascade::handle<TDataStd_NamedData> Handle_TDataStd_NamedData;
+typedef opencascade::handle<TDataStd_NoteBook> Handle_TDataStd_NoteBook;
+typedef opencascade::handle<TDataStd_Real> Handle_TDataStd_Real;
+typedef opencascade::handle<TDataStd_RealArray> Handle_TDataStd_RealArray;
+typedef opencascade::handle<TDataStd_RealList> Handle_TDataStd_RealList;
+typedef opencascade::handle<TDataStd_ReferenceArray> Handle_TDataStd_ReferenceArray;
+typedef opencascade::handle<TDataStd_ReferenceList> Handle_TDataStd_ReferenceList;
+typedef opencascade::handle<TDataStd_Relation> Handle_TDataStd_Relation;
+typedef opencascade::handle<TDataStd_Tick> Handle_TDataStd_Tick;
+typedef opencascade::handle<TDataStd_TreeNode> Handle_TDataStd_TreeNode;
+typedef opencascade::handle<TDataStd_UAttribute> Handle_TDataStd_UAttribute;
+typedef opencascade::handle<TDataStd_Variable> Handle_TDataStd_Variable;
+typedef opencascade::handle<TDataXtd_Axis> Handle_TDataXtd_Axis;
+typedef opencascade::handle<TDataXtd_Constraint> Handle_TDataXtd_Constraint;
+typedef opencascade::handle<TDataXtd_Geometry> Handle_TDataXtd_Geometry;
+typedef opencascade::handle<TDataXtd_PatternStd> Handle_TDataXtd_PatternStd;
+typedef opencascade::handle<TDataXtd_Placement> Handle_TDataXtd_Placement;
+typedef opencascade::handle<TDataXtd_Plane> Handle_TDataXtd_Plane;
+typedef opencascade::handle<TDataXtd_Point> Handle_TDataXtd_Point;
+typedef opencascade::handle<TDataXtd_Position> Handle_TDataXtd_Position;
+typedef opencascade::handle<TDataXtd_Presentation> Handle_TDataXtd_Presentation;
+typedef opencascade::handle<TDataXtd_Shape> Handle_TDataXtd_Shape;
+typedef opencascade::handle<TDataXtd_Triangulation> Handle_TDataXtd_Triangulation;
+typedef opencascade::handle<TDocStd_Application> Handle_TDocStd_Application;
+typedef opencascade::handle<TDocStd_ApplicationDelta> Handle_TDocStd_ApplicationDelta;
+typedef opencascade::handle<TDocStd_CompoundDelta> Handle_TDocStd_CompoundDelta;
+typedef opencascade::handle<TDocStd_Document> Handle_TDocStd_Document;
+typedef opencascade::handle<TDocStd_Modified> Handle_TDocStd_Modified;
+typedef opencascade::handle<TDocStd_MultiTransactionManager> Handle_TDocStd_MultiTransactionManager;
+typedef opencascade::handle<TDocStd_Owner> Handle_TDocStd_Owner;
+typedef opencascade::handle<TDocStd_XLink> Handle_TDocStd_XLink;
+typedef opencascade::handle<TDocStd_XLinkRoot> Handle_TDocStd_XLinkRoot;
+typedef opencascade::handle<TFunction_Driver> Handle_TFunction_Driver;
+typedef opencascade::handle<TFunction_DriverTable> Handle_TFunction_DriverTable;
+typedef opencascade::handle<TFunction_Function> Handle_TFunction_Function;
+typedef opencascade::handle<TFunction_GraphNode> Handle_TFunction_GraphNode;
+typedef opencascade::handle<TFunction_Logbook> Handle_TFunction_Logbook;
+typedef opencascade::handle<TFunction_Scope> Handle_TFunction_Scope;
+typedef opencascade::handle<TNaming_DeltaOnModification> Handle_TNaming_DeltaOnModification;
+typedef opencascade::handle<TNaming_DeltaOnRemoval> Handle_TNaming_DeltaOnRemoval;
+typedef opencascade::handle<TNaming_NamedShape> Handle_TNaming_NamedShape;
+typedef opencascade::handle<TNaming_Naming> Handle_TNaming_Naming;
+typedef opencascade::handle<TNaming_UsedShapes> Handle_TNaming_UsedShapes;
+typedef opencascade::handle<TObj_Application> Handle_TObj_Application;
+typedef opencascade::handle<TObj_TIntSparseArray> Handle_TObj_TIntSparseArray;
+typedef opencascade::handle<TObj_TModel> Handle_TObj_TModel;
+typedef opencascade::handle<TObj_TNameContainer> Handle_TObj_TNameContainer;
+typedef opencascade::handle<TObj_TObject> Handle_TObj_TObject;
+typedef opencascade::handle<TObj_TReference> Handle_TObj_TReference;
+typedef opencascade::handle<TObj_TXYZ> Handle_TObj_TXYZ;
+typedef opencascade::handle<TPrsStd_AISPresentation> Handle_TPrsStd_AISPresentation;
+typedef opencascade::handle<TPrsStd_AISViewer> Handle_TPrsStd_AISViewer;
+typedef opencascade::handle<XCAFApp_Application> Handle_XCAFApp_Application;
+typedef opencascade::handle<XCAFDoc_Area> Handle_XCAFDoc_Area;
+typedef opencascade::handle<XCAFDoc_AssemblyItemRef> Handle_XCAFDoc_AssemblyItemRef;
+typedef opencascade::handle<XCAFDoc_Centroid> Handle_XCAFDoc_Centroid;
+typedef opencascade::handle<XCAFDoc_ClippingPlaneTool> Handle_XCAFDoc_ClippingPlaneTool;
+typedef opencascade::handle<XCAFDoc_Color> Handle_XCAFDoc_Color;
+typedef opencascade::handle<XCAFDoc_ColorTool> Handle_XCAFDoc_ColorTool;
+typedef opencascade::handle<XCAFDoc_Datum> Handle_XCAFDoc_Datum;
+typedef opencascade::handle<XCAFDoc_DimTol> Handle_XCAFDoc_DimTol;
+typedef opencascade::handle<XCAFDoc_DimTolTool> Handle_XCAFDoc_DimTolTool;
+typedef opencascade::handle<XCAFDoc_Dimension> Handle_XCAFDoc_Dimension;
+typedef opencascade::handle<XCAFDoc_DocumentTool> Handle_XCAFDoc_DocumentTool;
+typedef opencascade::handle<XCAFDoc_GeomTolerance> Handle_XCAFDoc_GeomTolerance;
+typedef opencascade::handle<XCAFDoc_GraphNode> Handle_XCAFDoc_GraphNode;
+typedef opencascade::handle<XCAFDoc_LayerTool> Handle_XCAFDoc_LayerTool;
+typedef opencascade::handle<XCAFDoc_LengthUnit> Handle_XCAFDoc_LengthUnit;
+typedef opencascade::handle<XCAFDoc_Location> Handle_XCAFDoc_Location;
+typedef opencascade::handle<XCAFDoc_Material> Handle_XCAFDoc_Material;
+typedef opencascade::handle<XCAFDoc_MaterialTool> Handle_XCAFDoc_MaterialTool;
+typedef opencascade::handle<XCAFDoc_Note> Handle_XCAFDoc_Note;
+typedef opencascade::handle<XCAFDoc_NoteBalloon> Handle_XCAFDoc_NoteBalloon;
+typedef opencascade::handle<XCAFDoc_NoteBinData> Handle_XCAFDoc_NoteBinData;
+typedef opencascade::handle<XCAFDoc_NoteComment> Handle_XCAFDoc_NoteComment;
+typedef opencascade::handle<XCAFDoc_NotesTool> Handle_XCAFDoc_NotesTool;
+typedef opencascade::handle<XCAFDoc_ShapeMapTool> Handle_XCAFDoc_ShapeMapTool;
+typedef opencascade::handle<XCAFDoc_ShapeTool> Handle_XCAFDoc_ShapeTool;
+typedef opencascade::handle<XCAFDoc_View> Handle_XCAFDoc_View;
+typedef opencascade::handle<XCAFDoc_ViewTool> Handle_XCAFDoc_ViewTool;
+typedef opencascade::handle<XCAFDoc_VisMaterial> Handle_XCAFDoc_VisMaterial;
+typedef opencascade::handle<XCAFDoc_VisMaterialTool> Handle_XCAFDoc_VisMaterialTool;
+typedef opencascade::handle<XCAFDoc_Volume> Handle_XCAFDoc_Volume;
 
 // Handle type destructors, clone, and is_null functions
-extern "C" void HandleAppStdLApplication_destructor(HandleAppStdLApplication* self_) { delete self_; }
-extern "C" OcctResult<HandleAppStdLApplication*> HandleAppStdLApplication_clone(const HandleAppStdLApplication* self_) {
-    try { return {new HandleAppStdLApplication(*self_), nullptr}; }
+extern "C" void Handle_AppStdL_Application_destructor(Handle_AppStdL_Application* self_) { delete self_; }
+extern "C" OcctResult<Handle_AppStdL_Application*> Handle_AppStdL_Application_clone(const Handle_AppStdL_Application* self_) {
+    try { return {new Handle_AppStdL_Application(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleAppStdLApplication_is_null(const HandleAppStdLApplication* self_) { return self_->IsNull(); }
-extern "C" void HandleTDFAttribute_destructor(HandleTDFAttribute* self_) { delete self_; }
-extern "C" OcctResult<HandleTDFAttribute*> HandleTDFAttribute_clone(const HandleTDFAttribute* self_) {
-    try { return {new HandleTDFAttribute(*self_), nullptr}; }
+extern "C" bool Handle_AppStdL_Application_is_null(const Handle_AppStdL_Application* self_) { return self_->IsNull(); }
+extern "C" void Handle_TDF_Attribute_destructor(Handle_TDF_Attribute* self_) { delete self_; }
+extern "C" OcctResult<Handle_TDF_Attribute*> Handle_TDF_Attribute_clone(const Handle_TDF_Attribute* self_) {
+    try { return {new Handle_TDF_Attribute(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleTDFAttribute_is_null(const HandleTDFAttribute* self_) { return self_->IsNull(); }
-extern "C" void HandleTDFAttributeDelta_destructor(HandleTDFAttributeDelta* self_) { delete self_; }
-extern "C" OcctResult<HandleTDFAttributeDelta*> HandleTDFAttributeDelta_clone(const HandleTDFAttributeDelta* self_) {
-    try { return {new HandleTDFAttributeDelta(*self_), nullptr}; }
+extern "C" bool Handle_TDF_Attribute_is_null(const Handle_TDF_Attribute* self_) { return self_->IsNull(); }
+extern "C" void Handle_TDF_AttributeDelta_destructor(Handle_TDF_AttributeDelta* self_) { delete self_; }
+extern "C" OcctResult<Handle_TDF_AttributeDelta*> Handle_TDF_AttributeDelta_clone(const Handle_TDF_AttributeDelta* self_) {
+    try { return {new Handle_TDF_AttributeDelta(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleTDFAttributeDelta_is_null(const HandleTDFAttributeDelta* self_) { return self_->IsNull(); }
-extern "C" void HandleTDFData_destructor(HandleTDFData* self_) { delete self_; }
-extern "C" OcctResult<HandleTDFData*> HandleTDFData_clone(const HandleTDFData* self_) {
-    try { return {new HandleTDFData(*self_), nullptr}; }
+extern "C" bool Handle_TDF_AttributeDelta_is_null(const Handle_TDF_AttributeDelta* self_) { return self_->IsNull(); }
+extern "C" void Handle_TDF_Data_destructor(Handle_TDF_Data* self_) { delete self_; }
+extern "C" OcctResult<Handle_TDF_Data*> Handle_TDF_Data_clone(const Handle_TDF_Data* self_) {
+    try { return {new Handle_TDF_Data(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleTDFData_is_null(const HandleTDFData* self_) { return self_->IsNull(); }
-extern "C" void HandleTDFDataSet_destructor(HandleTDFDataSet* self_) { delete self_; }
-extern "C" OcctResult<HandleTDFDataSet*> HandleTDFDataSet_clone(const HandleTDFDataSet* self_) {
-    try { return {new HandleTDFDataSet(*self_), nullptr}; }
+extern "C" bool Handle_TDF_Data_is_null(const Handle_TDF_Data* self_) { return self_->IsNull(); }
+extern "C" void Handle_TDF_DataSet_destructor(Handle_TDF_DataSet* self_) { delete self_; }
+extern "C" OcctResult<Handle_TDF_DataSet*> Handle_TDF_DataSet_clone(const Handle_TDF_DataSet* self_) {
+    try { return {new Handle_TDF_DataSet(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleTDFDataSet_is_null(const HandleTDFDataSet* self_) { return self_->IsNull(); }
-extern "C" void HandleTDFDefaultDeltaOnModification_destructor(HandleTDFDefaultDeltaOnModification* self_) { delete self_; }
-extern "C" OcctResult<HandleTDFDefaultDeltaOnModification*> HandleTDFDefaultDeltaOnModification_clone(const HandleTDFDefaultDeltaOnModification* self_) {
-    try { return {new HandleTDFDefaultDeltaOnModification(*self_), nullptr}; }
+extern "C" bool Handle_TDF_DataSet_is_null(const Handle_TDF_DataSet* self_) { return self_->IsNull(); }
+extern "C" void Handle_TDF_DefaultDeltaOnModification_destructor(Handle_TDF_DefaultDeltaOnModification* self_) { delete self_; }
+extern "C" OcctResult<Handle_TDF_DefaultDeltaOnModification*> Handle_TDF_DefaultDeltaOnModification_clone(const Handle_TDF_DefaultDeltaOnModification* self_) {
+    try { return {new Handle_TDF_DefaultDeltaOnModification(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleTDFDefaultDeltaOnModification_is_null(const HandleTDFDefaultDeltaOnModification* self_) { return self_->IsNull(); }
-extern "C" void HandleTDFDefaultDeltaOnRemoval_destructor(HandleTDFDefaultDeltaOnRemoval* self_) { delete self_; }
-extern "C" OcctResult<HandleTDFDefaultDeltaOnRemoval*> HandleTDFDefaultDeltaOnRemoval_clone(const HandleTDFDefaultDeltaOnRemoval* self_) {
-    try { return {new HandleTDFDefaultDeltaOnRemoval(*self_), nullptr}; }
+extern "C" bool Handle_TDF_DefaultDeltaOnModification_is_null(const Handle_TDF_DefaultDeltaOnModification* self_) { return self_->IsNull(); }
+extern "C" void Handle_TDF_DefaultDeltaOnRemoval_destructor(Handle_TDF_DefaultDeltaOnRemoval* self_) { delete self_; }
+extern "C" OcctResult<Handle_TDF_DefaultDeltaOnRemoval*> Handle_TDF_DefaultDeltaOnRemoval_clone(const Handle_TDF_DefaultDeltaOnRemoval* self_) {
+    try { return {new Handle_TDF_DefaultDeltaOnRemoval(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleTDFDefaultDeltaOnRemoval_is_null(const HandleTDFDefaultDeltaOnRemoval* self_) { return self_->IsNull(); }
-extern "C" void HandleTDFDelta_destructor(HandleTDFDelta* self_) { delete self_; }
-extern "C" OcctResult<HandleTDFDelta*> HandleTDFDelta_clone(const HandleTDFDelta* self_) {
-    try { return {new HandleTDFDelta(*self_), nullptr}; }
+extern "C" bool Handle_TDF_DefaultDeltaOnRemoval_is_null(const Handle_TDF_DefaultDeltaOnRemoval* self_) { return self_->IsNull(); }
+extern "C" void Handle_TDF_Delta_destructor(Handle_TDF_Delta* self_) { delete self_; }
+extern "C" OcctResult<Handle_TDF_Delta*> Handle_TDF_Delta_clone(const Handle_TDF_Delta* self_) {
+    try { return {new Handle_TDF_Delta(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleTDFDelta_is_null(const HandleTDFDelta* self_) { return self_->IsNull(); }
-extern "C" void HandleTDFDeltaOnAddition_destructor(HandleTDFDeltaOnAddition* self_) { delete self_; }
-extern "C" OcctResult<HandleTDFDeltaOnAddition*> HandleTDFDeltaOnAddition_clone(const HandleTDFDeltaOnAddition* self_) {
-    try { return {new HandleTDFDeltaOnAddition(*self_), nullptr}; }
+extern "C" bool Handle_TDF_Delta_is_null(const Handle_TDF_Delta* self_) { return self_->IsNull(); }
+extern "C" void Handle_TDF_DeltaOnAddition_destructor(Handle_TDF_DeltaOnAddition* self_) { delete self_; }
+extern "C" OcctResult<Handle_TDF_DeltaOnAddition*> Handle_TDF_DeltaOnAddition_clone(const Handle_TDF_DeltaOnAddition* self_) {
+    try { return {new Handle_TDF_DeltaOnAddition(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleTDFDeltaOnAddition_is_null(const HandleTDFDeltaOnAddition* self_) { return self_->IsNull(); }
-extern "C" void HandleTDFDeltaOnForget_destructor(HandleTDFDeltaOnForget* self_) { delete self_; }
-extern "C" OcctResult<HandleTDFDeltaOnForget*> HandleTDFDeltaOnForget_clone(const HandleTDFDeltaOnForget* self_) {
-    try { return {new HandleTDFDeltaOnForget(*self_), nullptr}; }
+extern "C" bool Handle_TDF_DeltaOnAddition_is_null(const Handle_TDF_DeltaOnAddition* self_) { return self_->IsNull(); }
+extern "C" void Handle_TDF_DeltaOnForget_destructor(Handle_TDF_DeltaOnForget* self_) { delete self_; }
+extern "C" OcctResult<Handle_TDF_DeltaOnForget*> Handle_TDF_DeltaOnForget_clone(const Handle_TDF_DeltaOnForget* self_) {
+    try { return {new Handle_TDF_DeltaOnForget(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleTDFDeltaOnForget_is_null(const HandleTDFDeltaOnForget* self_) { return self_->IsNull(); }
-extern "C" void HandleTDFDeltaOnModification_destructor(HandleTDFDeltaOnModification* self_) { delete self_; }
-extern "C" OcctResult<HandleTDFDeltaOnModification*> HandleTDFDeltaOnModification_clone(const HandleTDFDeltaOnModification* self_) {
-    try { return {new HandleTDFDeltaOnModification(*self_), nullptr}; }
+extern "C" bool Handle_TDF_DeltaOnForget_is_null(const Handle_TDF_DeltaOnForget* self_) { return self_->IsNull(); }
+extern "C" void Handle_TDF_DeltaOnModification_destructor(Handle_TDF_DeltaOnModification* self_) { delete self_; }
+extern "C" OcctResult<Handle_TDF_DeltaOnModification*> Handle_TDF_DeltaOnModification_clone(const Handle_TDF_DeltaOnModification* self_) {
+    try { return {new Handle_TDF_DeltaOnModification(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleTDFDeltaOnModification_is_null(const HandleTDFDeltaOnModification* self_) { return self_->IsNull(); }
-extern "C" void HandleTDFDeltaOnRemoval_destructor(HandleTDFDeltaOnRemoval* self_) { delete self_; }
-extern "C" OcctResult<HandleTDFDeltaOnRemoval*> HandleTDFDeltaOnRemoval_clone(const HandleTDFDeltaOnRemoval* self_) {
-    try { return {new HandleTDFDeltaOnRemoval(*self_), nullptr}; }
+extern "C" bool Handle_TDF_DeltaOnModification_is_null(const Handle_TDF_DeltaOnModification* self_) { return self_->IsNull(); }
+extern "C" void Handle_TDF_DeltaOnRemoval_destructor(Handle_TDF_DeltaOnRemoval* self_) { delete self_; }
+extern "C" OcctResult<Handle_TDF_DeltaOnRemoval*> Handle_TDF_DeltaOnRemoval_clone(const Handle_TDF_DeltaOnRemoval* self_) {
+    try { return {new Handle_TDF_DeltaOnRemoval(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleTDFDeltaOnRemoval_is_null(const HandleTDFDeltaOnRemoval* self_) { return self_->IsNull(); }
-extern "C" void HandleTDFDeltaOnResume_destructor(HandleTDFDeltaOnResume* self_) { delete self_; }
-extern "C" OcctResult<HandleTDFDeltaOnResume*> HandleTDFDeltaOnResume_clone(const HandleTDFDeltaOnResume* self_) {
-    try { return {new HandleTDFDeltaOnResume(*self_), nullptr}; }
+extern "C" bool Handle_TDF_DeltaOnRemoval_is_null(const Handle_TDF_DeltaOnRemoval* self_) { return self_->IsNull(); }
+extern "C" void Handle_TDF_DeltaOnResume_destructor(Handle_TDF_DeltaOnResume* self_) { delete self_; }
+extern "C" OcctResult<Handle_TDF_DeltaOnResume*> Handle_TDF_DeltaOnResume_clone(const Handle_TDF_DeltaOnResume* self_) {
+    try { return {new Handle_TDF_DeltaOnResume(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleTDFDeltaOnResume_is_null(const HandleTDFDeltaOnResume* self_) { return self_->IsNull(); }
-extern "C" void HandleTDFHAttributeArray1_destructor(HandleTDFHAttributeArray1* self_) { delete self_; }
-extern "C" OcctResult<HandleTDFHAttributeArray1*> HandleTDFHAttributeArray1_clone(const HandleTDFHAttributeArray1* self_) {
-    try { return {new HandleTDFHAttributeArray1(*self_), nullptr}; }
+extern "C" bool Handle_TDF_DeltaOnResume_is_null(const Handle_TDF_DeltaOnResume* self_) { return self_->IsNull(); }
+extern "C" void Handle_TDF_Reference_destructor(Handle_TDF_Reference* self_) { delete self_; }
+extern "C" OcctResult<Handle_TDF_Reference*> Handle_TDF_Reference_clone(const Handle_TDF_Reference* self_) {
+    try { return {new Handle_TDF_Reference(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleTDFHAttributeArray1_is_null(const HandleTDFHAttributeArray1* self_) { return self_->IsNull(); }
-extern "C" void HandleTDFReference_destructor(HandleTDFReference* self_) { delete self_; }
-extern "C" OcctResult<HandleTDFReference*> HandleTDFReference_clone(const HandleTDFReference* self_) {
-    try { return {new HandleTDFReference(*self_), nullptr}; }
+extern "C" bool Handle_TDF_Reference_is_null(const Handle_TDF_Reference* self_) { return self_->IsNull(); }
+extern "C" void Handle_TDF_RelocationTable_destructor(Handle_TDF_RelocationTable* self_) { delete self_; }
+extern "C" OcctResult<Handle_TDF_RelocationTable*> Handle_TDF_RelocationTable_clone(const Handle_TDF_RelocationTable* self_) {
+    try { return {new Handle_TDF_RelocationTable(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleTDFReference_is_null(const HandleTDFReference* self_) { return self_->IsNull(); }
-extern "C" void HandleTDFRelocationTable_destructor(HandleTDFRelocationTable* self_) { delete self_; }
-extern "C" OcctResult<HandleTDFRelocationTable*> HandleTDFRelocationTable_clone(const HandleTDFRelocationTable* self_) {
-    try { return {new HandleTDFRelocationTable(*self_), nullptr}; }
+extern "C" bool Handle_TDF_RelocationTable_is_null(const Handle_TDF_RelocationTable* self_) { return self_->IsNull(); }
+extern "C" void Handle_TDF_TagSource_destructor(Handle_TDF_TagSource* self_) { delete self_; }
+extern "C" OcctResult<Handle_TDF_TagSource*> Handle_TDF_TagSource_clone(const Handle_TDF_TagSource* self_) {
+    try { return {new Handle_TDF_TagSource(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleTDFRelocationTable_is_null(const HandleTDFRelocationTable* self_) { return self_->IsNull(); }
-extern "C" void HandleTDFTagSource_destructor(HandleTDFTagSource* self_) { delete self_; }
-extern "C" OcctResult<HandleTDFTagSource*> HandleTDFTagSource_clone(const HandleTDFTagSource* self_) {
-    try { return {new HandleTDFTagSource(*self_), nullptr}; }
+extern "C" bool Handle_TDF_TagSource_is_null(const Handle_TDF_TagSource* self_) { return self_->IsNull(); }
+extern "C" void Handle_TDataStd_AsciiString_destructor(Handle_TDataStd_AsciiString* self_) { delete self_; }
+extern "C" OcctResult<Handle_TDataStd_AsciiString*> Handle_TDataStd_AsciiString_clone(const Handle_TDataStd_AsciiString* self_) {
+    try { return {new Handle_TDataStd_AsciiString(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleTDFTagSource_is_null(const HandleTDFTagSource* self_) { return self_->IsNull(); }
-extern "C" void HandleTDataStdAsciiString_destructor(HandleTDataStdAsciiString* self_) { delete self_; }
-extern "C" OcctResult<HandleTDataStdAsciiString*> HandleTDataStdAsciiString_clone(const HandleTDataStdAsciiString* self_) {
-    try { return {new HandleTDataStdAsciiString(*self_), nullptr}; }
+extern "C" bool Handle_TDataStd_AsciiString_is_null(const Handle_TDataStd_AsciiString* self_) { return self_->IsNull(); }
+extern "C" void Handle_TDataStd_BooleanArray_destructor(Handle_TDataStd_BooleanArray* self_) { delete self_; }
+extern "C" OcctResult<Handle_TDataStd_BooleanArray*> Handle_TDataStd_BooleanArray_clone(const Handle_TDataStd_BooleanArray* self_) {
+    try { return {new Handle_TDataStd_BooleanArray(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleTDataStdAsciiString_is_null(const HandleTDataStdAsciiString* self_) { return self_->IsNull(); }
-extern "C" void HandleTDataStdBooleanArray_destructor(HandleTDataStdBooleanArray* self_) { delete self_; }
-extern "C" OcctResult<HandleTDataStdBooleanArray*> HandleTDataStdBooleanArray_clone(const HandleTDataStdBooleanArray* self_) {
-    try { return {new HandleTDataStdBooleanArray(*self_), nullptr}; }
+extern "C" bool Handle_TDataStd_BooleanArray_is_null(const Handle_TDataStd_BooleanArray* self_) { return self_->IsNull(); }
+extern "C" void Handle_TDataStd_BooleanList_destructor(Handle_TDataStd_BooleanList* self_) { delete self_; }
+extern "C" OcctResult<Handle_TDataStd_BooleanList*> Handle_TDataStd_BooleanList_clone(const Handle_TDataStd_BooleanList* self_) {
+    try { return {new Handle_TDataStd_BooleanList(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleTDataStdBooleanArray_is_null(const HandleTDataStdBooleanArray* self_) { return self_->IsNull(); }
-extern "C" void HandleTDataStdBooleanList_destructor(HandleTDataStdBooleanList* self_) { delete self_; }
-extern "C" OcctResult<HandleTDataStdBooleanList*> HandleTDataStdBooleanList_clone(const HandleTDataStdBooleanList* self_) {
-    try { return {new HandleTDataStdBooleanList(*self_), nullptr}; }
+extern "C" bool Handle_TDataStd_BooleanList_is_null(const Handle_TDataStd_BooleanList* self_) { return self_->IsNull(); }
+extern "C" void Handle_TDataStd_ByteArray_destructor(Handle_TDataStd_ByteArray* self_) { delete self_; }
+extern "C" OcctResult<Handle_TDataStd_ByteArray*> Handle_TDataStd_ByteArray_clone(const Handle_TDataStd_ByteArray* self_) {
+    try { return {new Handle_TDataStd_ByteArray(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleTDataStdBooleanList_is_null(const HandleTDataStdBooleanList* self_) { return self_->IsNull(); }
-extern "C" void HandleTDataStdByteArray_destructor(HandleTDataStdByteArray* self_) { delete self_; }
-extern "C" OcctResult<HandleTDataStdByteArray*> HandleTDataStdByteArray_clone(const HandleTDataStdByteArray* self_) {
-    try { return {new HandleTDataStdByteArray(*self_), nullptr}; }
+extern "C" bool Handle_TDataStd_ByteArray_is_null(const Handle_TDataStd_ByteArray* self_) { return self_->IsNull(); }
+extern "C" void Handle_TDataStd_Comment_destructor(Handle_TDataStd_Comment* self_) { delete self_; }
+extern "C" OcctResult<Handle_TDataStd_Comment*> Handle_TDataStd_Comment_clone(const Handle_TDataStd_Comment* self_) {
+    try { return {new Handle_TDataStd_Comment(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleTDataStdByteArray_is_null(const HandleTDataStdByteArray* self_) { return self_->IsNull(); }
-extern "C" void HandleTDataStdComment_destructor(HandleTDataStdComment* self_) { delete self_; }
-extern "C" OcctResult<HandleTDataStdComment*> HandleTDataStdComment_clone(const HandleTDataStdComment* self_) {
-    try { return {new HandleTDataStdComment(*self_), nullptr}; }
+extern "C" bool Handle_TDataStd_Comment_is_null(const Handle_TDataStd_Comment* self_) { return self_->IsNull(); }
+extern "C" void Handle_TDataStd_Current_destructor(Handle_TDataStd_Current* self_) { delete self_; }
+extern "C" OcctResult<Handle_TDataStd_Current*> Handle_TDataStd_Current_clone(const Handle_TDataStd_Current* self_) {
+    try { return {new Handle_TDataStd_Current(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleTDataStdComment_is_null(const HandleTDataStdComment* self_) { return self_->IsNull(); }
-extern "C" void HandleTDataStdCurrent_destructor(HandleTDataStdCurrent* self_) { delete self_; }
-extern "C" OcctResult<HandleTDataStdCurrent*> HandleTDataStdCurrent_clone(const HandleTDataStdCurrent* self_) {
-    try { return {new HandleTDataStdCurrent(*self_), nullptr}; }
+extern "C" bool Handle_TDataStd_Current_is_null(const Handle_TDataStd_Current* self_) { return self_->IsNull(); }
+extern "C" void Handle_TDataStd_DeltaOnModificationOfByteArray_destructor(Handle_TDataStd_DeltaOnModificationOfByteArray* self_) { delete self_; }
+extern "C" OcctResult<Handle_TDataStd_DeltaOnModificationOfByteArray*> Handle_TDataStd_DeltaOnModificationOfByteArray_clone(const Handle_TDataStd_DeltaOnModificationOfByteArray* self_) {
+    try { return {new Handle_TDataStd_DeltaOnModificationOfByteArray(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleTDataStdCurrent_is_null(const HandleTDataStdCurrent* self_) { return self_->IsNull(); }
-extern "C" void HandleTDataStdDeltaOnModificationOfByteArray_destructor(HandleTDataStdDeltaOnModificationOfByteArray* self_) { delete self_; }
-extern "C" OcctResult<HandleTDataStdDeltaOnModificationOfByteArray*> HandleTDataStdDeltaOnModificationOfByteArray_clone(const HandleTDataStdDeltaOnModificationOfByteArray* self_) {
-    try { return {new HandleTDataStdDeltaOnModificationOfByteArray(*self_), nullptr}; }
+extern "C" bool Handle_TDataStd_DeltaOnModificationOfByteArray_is_null(const Handle_TDataStd_DeltaOnModificationOfByteArray* self_) { return self_->IsNull(); }
+extern "C" void Handle_TDataStd_DeltaOnModificationOfExtStringArray_destructor(Handle_TDataStd_DeltaOnModificationOfExtStringArray* self_) { delete self_; }
+extern "C" OcctResult<Handle_TDataStd_DeltaOnModificationOfExtStringArray*> Handle_TDataStd_DeltaOnModificationOfExtStringArray_clone(const Handle_TDataStd_DeltaOnModificationOfExtStringArray* self_) {
+    try { return {new Handle_TDataStd_DeltaOnModificationOfExtStringArray(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleTDataStdDeltaOnModificationOfByteArray_is_null(const HandleTDataStdDeltaOnModificationOfByteArray* self_) { return self_->IsNull(); }
-extern "C" void HandleTDataStdDeltaOnModificationOfExtStringArray_destructor(HandleTDataStdDeltaOnModificationOfExtStringArray* self_) { delete self_; }
-extern "C" OcctResult<HandleTDataStdDeltaOnModificationOfExtStringArray*> HandleTDataStdDeltaOnModificationOfExtStringArray_clone(const HandleTDataStdDeltaOnModificationOfExtStringArray* self_) {
-    try { return {new HandleTDataStdDeltaOnModificationOfExtStringArray(*self_), nullptr}; }
+extern "C" bool Handle_TDataStd_DeltaOnModificationOfExtStringArray_is_null(const Handle_TDataStd_DeltaOnModificationOfExtStringArray* self_) { return self_->IsNull(); }
+extern "C" void Handle_TDataStd_DeltaOnModificationOfIntArray_destructor(Handle_TDataStd_DeltaOnModificationOfIntArray* self_) { delete self_; }
+extern "C" OcctResult<Handle_TDataStd_DeltaOnModificationOfIntArray*> Handle_TDataStd_DeltaOnModificationOfIntArray_clone(const Handle_TDataStd_DeltaOnModificationOfIntArray* self_) {
+    try { return {new Handle_TDataStd_DeltaOnModificationOfIntArray(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleTDataStdDeltaOnModificationOfExtStringArray_is_null(const HandleTDataStdDeltaOnModificationOfExtStringArray* self_) { return self_->IsNull(); }
-extern "C" void HandleTDataStdDeltaOnModificationOfIntArray_destructor(HandleTDataStdDeltaOnModificationOfIntArray* self_) { delete self_; }
-extern "C" OcctResult<HandleTDataStdDeltaOnModificationOfIntArray*> HandleTDataStdDeltaOnModificationOfIntArray_clone(const HandleTDataStdDeltaOnModificationOfIntArray* self_) {
-    try { return {new HandleTDataStdDeltaOnModificationOfIntArray(*self_), nullptr}; }
+extern "C" bool Handle_TDataStd_DeltaOnModificationOfIntArray_is_null(const Handle_TDataStd_DeltaOnModificationOfIntArray* self_) { return self_->IsNull(); }
+extern "C" void Handle_TDataStd_DeltaOnModificationOfIntPackedMap_destructor(Handle_TDataStd_DeltaOnModificationOfIntPackedMap* self_) { delete self_; }
+extern "C" OcctResult<Handle_TDataStd_DeltaOnModificationOfIntPackedMap*> Handle_TDataStd_DeltaOnModificationOfIntPackedMap_clone(const Handle_TDataStd_DeltaOnModificationOfIntPackedMap* self_) {
+    try { return {new Handle_TDataStd_DeltaOnModificationOfIntPackedMap(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleTDataStdDeltaOnModificationOfIntArray_is_null(const HandleTDataStdDeltaOnModificationOfIntArray* self_) { return self_->IsNull(); }
-extern "C" void HandleTDataStdDeltaOnModificationOfIntPackedMap_destructor(HandleTDataStdDeltaOnModificationOfIntPackedMap* self_) { delete self_; }
-extern "C" OcctResult<HandleTDataStdDeltaOnModificationOfIntPackedMap*> HandleTDataStdDeltaOnModificationOfIntPackedMap_clone(const HandleTDataStdDeltaOnModificationOfIntPackedMap* self_) {
-    try { return {new HandleTDataStdDeltaOnModificationOfIntPackedMap(*self_), nullptr}; }
+extern "C" bool Handle_TDataStd_DeltaOnModificationOfIntPackedMap_is_null(const Handle_TDataStd_DeltaOnModificationOfIntPackedMap* self_) { return self_->IsNull(); }
+extern "C" void Handle_TDataStd_DeltaOnModificationOfRealArray_destructor(Handle_TDataStd_DeltaOnModificationOfRealArray* self_) { delete self_; }
+extern "C" OcctResult<Handle_TDataStd_DeltaOnModificationOfRealArray*> Handle_TDataStd_DeltaOnModificationOfRealArray_clone(const Handle_TDataStd_DeltaOnModificationOfRealArray* self_) {
+    try { return {new Handle_TDataStd_DeltaOnModificationOfRealArray(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleTDataStdDeltaOnModificationOfIntPackedMap_is_null(const HandleTDataStdDeltaOnModificationOfIntPackedMap* self_) { return self_->IsNull(); }
-extern "C" void HandleTDataStdDeltaOnModificationOfRealArray_destructor(HandleTDataStdDeltaOnModificationOfRealArray* self_) { delete self_; }
-extern "C" OcctResult<HandleTDataStdDeltaOnModificationOfRealArray*> HandleTDataStdDeltaOnModificationOfRealArray_clone(const HandleTDataStdDeltaOnModificationOfRealArray* self_) {
-    try { return {new HandleTDataStdDeltaOnModificationOfRealArray(*self_), nullptr}; }
+extern "C" bool Handle_TDataStd_DeltaOnModificationOfRealArray_is_null(const Handle_TDataStd_DeltaOnModificationOfRealArray* self_) { return self_->IsNull(); }
+extern "C" void Handle_TDataStd_Directory_destructor(Handle_TDataStd_Directory* self_) { delete self_; }
+extern "C" OcctResult<Handle_TDataStd_Directory*> Handle_TDataStd_Directory_clone(const Handle_TDataStd_Directory* self_) {
+    try { return {new Handle_TDataStd_Directory(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleTDataStdDeltaOnModificationOfRealArray_is_null(const HandleTDataStdDeltaOnModificationOfRealArray* self_) { return self_->IsNull(); }
-extern "C" void HandleTDataStdDirectory_destructor(HandleTDataStdDirectory* self_) { delete self_; }
-extern "C" OcctResult<HandleTDataStdDirectory*> HandleTDataStdDirectory_clone(const HandleTDataStdDirectory* self_) {
-    try { return {new HandleTDataStdDirectory(*self_), nullptr}; }
+extern "C" bool Handle_TDataStd_Directory_is_null(const Handle_TDataStd_Directory* self_) { return self_->IsNull(); }
+extern "C" void Handle_TDataStd_Expression_destructor(Handle_TDataStd_Expression* self_) { delete self_; }
+extern "C" OcctResult<Handle_TDataStd_Expression*> Handle_TDataStd_Expression_clone(const Handle_TDataStd_Expression* self_) {
+    try { return {new Handle_TDataStd_Expression(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleTDataStdDirectory_is_null(const HandleTDataStdDirectory* self_) { return self_->IsNull(); }
-extern "C" void HandleTDataStdExpression_destructor(HandleTDataStdExpression* self_) { delete self_; }
-extern "C" OcctResult<HandleTDataStdExpression*> HandleTDataStdExpression_clone(const HandleTDataStdExpression* self_) {
-    try { return {new HandleTDataStdExpression(*self_), nullptr}; }
+extern "C" bool Handle_TDataStd_Expression_is_null(const Handle_TDataStd_Expression* self_) { return self_->IsNull(); }
+extern "C" void Handle_TDataStd_ExtStringArray_destructor(Handle_TDataStd_ExtStringArray* self_) { delete self_; }
+extern "C" OcctResult<Handle_TDataStd_ExtStringArray*> Handle_TDataStd_ExtStringArray_clone(const Handle_TDataStd_ExtStringArray* self_) {
+    try { return {new Handle_TDataStd_ExtStringArray(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleTDataStdExpression_is_null(const HandleTDataStdExpression* self_) { return self_->IsNull(); }
-extern "C" void HandleTDataStdExtStringArray_destructor(HandleTDataStdExtStringArray* self_) { delete self_; }
-extern "C" OcctResult<HandleTDataStdExtStringArray*> HandleTDataStdExtStringArray_clone(const HandleTDataStdExtStringArray* self_) {
-    try { return {new HandleTDataStdExtStringArray(*self_), nullptr}; }
+extern "C" bool Handle_TDataStd_ExtStringArray_is_null(const Handle_TDataStd_ExtStringArray* self_) { return self_->IsNull(); }
+extern "C" void Handle_TDataStd_ExtStringList_destructor(Handle_TDataStd_ExtStringList* self_) { delete self_; }
+extern "C" OcctResult<Handle_TDataStd_ExtStringList*> Handle_TDataStd_ExtStringList_clone(const Handle_TDataStd_ExtStringList* self_) {
+    try { return {new Handle_TDataStd_ExtStringList(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleTDataStdExtStringArray_is_null(const HandleTDataStdExtStringArray* self_) { return self_->IsNull(); }
-extern "C" void HandleTDataStdExtStringList_destructor(HandleTDataStdExtStringList* self_) { delete self_; }
-extern "C" OcctResult<HandleTDataStdExtStringList*> HandleTDataStdExtStringList_clone(const HandleTDataStdExtStringList* self_) {
-    try { return {new HandleTDataStdExtStringList(*self_), nullptr}; }
+extern "C" bool Handle_TDataStd_ExtStringList_is_null(const Handle_TDataStd_ExtStringList* self_) { return self_->IsNull(); }
+extern "C" void Handle_TDataStd_GenericEmpty_destructor(Handle_TDataStd_GenericEmpty* self_) { delete self_; }
+extern "C" OcctResult<Handle_TDataStd_GenericEmpty*> Handle_TDataStd_GenericEmpty_clone(const Handle_TDataStd_GenericEmpty* self_) {
+    try { return {new Handle_TDataStd_GenericEmpty(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleTDataStdExtStringList_is_null(const HandleTDataStdExtStringList* self_) { return self_->IsNull(); }
-extern "C" void HandleTDataStdGenericEmpty_destructor(HandleTDataStdGenericEmpty* self_) { delete self_; }
-extern "C" OcctResult<HandleTDataStdGenericEmpty*> HandleTDataStdGenericEmpty_clone(const HandleTDataStdGenericEmpty* self_) {
-    try { return {new HandleTDataStdGenericEmpty(*self_), nullptr}; }
+extern "C" bool Handle_TDataStd_GenericEmpty_is_null(const Handle_TDataStd_GenericEmpty* self_) { return self_->IsNull(); }
+extern "C" void Handle_TDataStd_GenericExtString_destructor(Handle_TDataStd_GenericExtString* self_) { delete self_; }
+extern "C" OcctResult<Handle_TDataStd_GenericExtString*> Handle_TDataStd_GenericExtString_clone(const Handle_TDataStd_GenericExtString* self_) {
+    try { return {new Handle_TDataStd_GenericExtString(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleTDataStdGenericEmpty_is_null(const HandleTDataStdGenericEmpty* self_) { return self_->IsNull(); }
-extern "C" void HandleTDataStdGenericExtString_destructor(HandleTDataStdGenericExtString* self_) { delete self_; }
-extern "C" OcctResult<HandleTDataStdGenericExtString*> HandleTDataStdGenericExtString_clone(const HandleTDataStdGenericExtString* self_) {
-    try { return {new HandleTDataStdGenericExtString(*self_), nullptr}; }
+extern "C" bool Handle_TDataStd_GenericExtString_is_null(const Handle_TDataStd_GenericExtString* self_) { return self_->IsNull(); }
+extern "C" void Handle_TDataStd_HDataMapOfStringByte_destructor(Handle_TDataStd_HDataMapOfStringByte* self_) { delete self_; }
+extern "C" OcctResult<Handle_TDataStd_HDataMapOfStringByte*> Handle_TDataStd_HDataMapOfStringByte_clone(const Handle_TDataStd_HDataMapOfStringByte* self_) {
+    try { return {new Handle_TDataStd_HDataMapOfStringByte(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleTDataStdGenericExtString_is_null(const HandleTDataStdGenericExtString* self_) { return self_->IsNull(); }
-extern "C" void HandleTDataStdHDataMapOfStringByte_destructor(HandleTDataStdHDataMapOfStringByte* self_) { delete self_; }
-extern "C" OcctResult<HandleTDataStdHDataMapOfStringByte*> HandleTDataStdHDataMapOfStringByte_clone(const HandleTDataStdHDataMapOfStringByte* self_) {
-    try { return {new HandleTDataStdHDataMapOfStringByte(*self_), nullptr}; }
+extern "C" bool Handle_TDataStd_HDataMapOfStringByte_is_null(const Handle_TDataStd_HDataMapOfStringByte* self_) { return self_->IsNull(); }
+extern "C" void Handle_TDataStd_HDataMapOfStringHArray1OfInteger_destructor(Handle_TDataStd_HDataMapOfStringHArray1OfInteger* self_) { delete self_; }
+extern "C" OcctResult<Handle_TDataStd_HDataMapOfStringHArray1OfInteger*> Handle_TDataStd_HDataMapOfStringHArray1OfInteger_clone(const Handle_TDataStd_HDataMapOfStringHArray1OfInteger* self_) {
+    try { return {new Handle_TDataStd_HDataMapOfStringHArray1OfInteger(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleTDataStdHDataMapOfStringByte_is_null(const HandleTDataStdHDataMapOfStringByte* self_) { return self_->IsNull(); }
-extern "C" void HandleTDataStdHDataMapOfStringHArray1OfInteger_destructor(HandleTDataStdHDataMapOfStringHArray1OfInteger* self_) { delete self_; }
-extern "C" OcctResult<HandleTDataStdHDataMapOfStringHArray1OfInteger*> HandleTDataStdHDataMapOfStringHArray1OfInteger_clone(const HandleTDataStdHDataMapOfStringHArray1OfInteger* self_) {
-    try { return {new HandleTDataStdHDataMapOfStringHArray1OfInteger(*self_), nullptr}; }
+extern "C" bool Handle_TDataStd_HDataMapOfStringHArray1OfInteger_is_null(const Handle_TDataStd_HDataMapOfStringHArray1OfInteger* self_) { return self_->IsNull(); }
+extern "C" void Handle_TDataStd_HDataMapOfStringHArray1OfReal_destructor(Handle_TDataStd_HDataMapOfStringHArray1OfReal* self_) { delete self_; }
+extern "C" OcctResult<Handle_TDataStd_HDataMapOfStringHArray1OfReal*> Handle_TDataStd_HDataMapOfStringHArray1OfReal_clone(const Handle_TDataStd_HDataMapOfStringHArray1OfReal* self_) {
+    try { return {new Handle_TDataStd_HDataMapOfStringHArray1OfReal(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleTDataStdHDataMapOfStringHArray1OfInteger_is_null(const HandleTDataStdHDataMapOfStringHArray1OfInteger* self_) { return self_->IsNull(); }
-extern "C" void HandleTDataStdHDataMapOfStringHArray1OfReal_destructor(HandleTDataStdHDataMapOfStringHArray1OfReal* self_) { delete self_; }
-extern "C" OcctResult<HandleTDataStdHDataMapOfStringHArray1OfReal*> HandleTDataStdHDataMapOfStringHArray1OfReal_clone(const HandleTDataStdHDataMapOfStringHArray1OfReal* self_) {
-    try { return {new HandleTDataStdHDataMapOfStringHArray1OfReal(*self_), nullptr}; }
+extern "C" bool Handle_TDataStd_HDataMapOfStringHArray1OfReal_is_null(const Handle_TDataStd_HDataMapOfStringHArray1OfReal* self_) { return self_->IsNull(); }
+extern "C" void Handle_TDataStd_HDataMapOfStringInteger_destructor(Handle_TDataStd_HDataMapOfStringInteger* self_) { delete self_; }
+extern "C" OcctResult<Handle_TDataStd_HDataMapOfStringInteger*> Handle_TDataStd_HDataMapOfStringInteger_clone(const Handle_TDataStd_HDataMapOfStringInteger* self_) {
+    try { return {new Handle_TDataStd_HDataMapOfStringInteger(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleTDataStdHDataMapOfStringHArray1OfReal_is_null(const HandleTDataStdHDataMapOfStringHArray1OfReal* self_) { return self_->IsNull(); }
-extern "C" void HandleTDataStdHDataMapOfStringInteger_destructor(HandleTDataStdHDataMapOfStringInteger* self_) { delete self_; }
-extern "C" OcctResult<HandleTDataStdHDataMapOfStringInteger*> HandleTDataStdHDataMapOfStringInteger_clone(const HandleTDataStdHDataMapOfStringInteger* self_) {
-    try { return {new HandleTDataStdHDataMapOfStringInteger(*self_), nullptr}; }
+extern "C" bool Handle_TDataStd_HDataMapOfStringInteger_is_null(const Handle_TDataStd_HDataMapOfStringInteger* self_) { return self_->IsNull(); }
+extern "C" void Handle_TDataStd_HDataMapOfStringReal_destructor(Handle_TDataStd_HDataMapOfStringReal* self_) { delete self_; }
+extern "C" OcctResult<Handle_TDataStd_HDataMapOfStringReal*> Handle_TDataStd_HDataMapOfStringReal_clone(const Handle_TDataStd_HDataMapOfStringReal* self_) {
+    try { return {new Handle_TDataStd_HDataMapOfStringReal(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleTDataStdHDataMapOfStringInteger_is_null(const HandleTDataStdHDataMapOfStringInteger* self_) { return self_->IsNull(); }
-extern "C" void HandleTDataStdHDataMapOfStringReal_destructor(HandleTDataStdHDataMapOfStringReal* self_) { delete self_; }
-extern "C" OcctResult<HandleTDataStdHDataMapOfStringReal*> HandleTDataStdHDataMapOfStringReal_clone(const HandleTDataStdHDataMapOfStringReal* self_) {
-    try { return {new HandleTDataStdHDataMapOfStringReal(*self_), nullptr}; }
+extern "C" bool Handle_TDataStd_HDataMapOfStringReal_is_null(const Handle_TDataStd_HDataMapOfStringReal* self_) { return self_->IsNull(); }
+extern "C" void Handle_TDataStd_HDataMapOfStringString_destructor(Handle_TDataStd_HDataMapOfStringString* self_) { delete self_; }
+extern "C" OcctResult<Handle_TDataStd_HDataMapOfStringString*> Handle_TDataStd_HDataMapOfStringString_clone(const Handle_TDataStd_HDataMapOfStringString* self_) {
+    try { return {new Handle_TDataStd_HDataMapOfStringString(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleTDataStdHDataMapOfStringReal_is_null(const HandleTDataStdHDataMapOfStringReal* self_) { return self_->IsNull(); }
-extern "C" void HandleTDataStdHDataMapOfStringString_destructor(HandleTDataStdHDataMapOfStringString* self_) { delete self_; }
-extern "C" OcctResult<HandleTDataStdHDataMapOfStringString*> HandleTDataStdHDataMapOfStringString_clone(const HandleTDataStdHDataMapOfStringString* self_) {
-    try { return {new HandleTDataStdHDataMapOfStringString(*self_), nullptr}; }
+extern "C" bool Handle_TDataStd_HDataMapOfStringString_is_null(const Handle_TDataStd_HDataMapOfStringString* self_) { return self_->IsNull(); }
+extern "C" void Handle_TDataStd_IntPackedMap_destructor(Handle_TDataStd_IntPackedMap* self_) { delete self_; }
+extern "C" OcctResult<Handle_TDataStd_IntPackedMap*> Handle_TDataStd_IntPackedMap_clone(const Handle_TDataStd_IntPackedMap* self_) {
+    try { return {new Handle_TDataStd_IntPackedMap(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleTDataStdHDataMapOfStringString_is_null(const HandleTDataStdHDataMapOfStringString* self_) { return self_->IsNull(); }
-extern "C" void HandleTDataStdHLabelArray1_destructor(HandleTDataStdHLabelArray1* self_) { delete self_; }
-extern "C" OcctResult<HandleTDataStdHLabelArray1*> HandleTDataStdHLabelArray1_clone(const HandleTDataStdHLabelArray1* self_) {
-    try { return {new HandleTDataStdHLabelArray1(*self_), nullptr}; }
+extern "C" bool Handle_TDataStd_IntPackedMap_is_null(const Handle_TDataStd_IntPackedMap* self_) { return self_->IsNull(); }
+extern "C" void Handle_TDataStd_Integer_destructor(Handle_TDataStd_Integer* self_) { delete self_; }
+extern "C" OcctResult<Handle_TDataStd_Integer*> Handle_TDataStd_Integer_clone(const Handle_TDataStd_Integer* self_) {
+    try { return {new Handle_TDataStd_Integer(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleTDataStdHLabelArray1_is_null(const HandleTDataStdHLabelArray1* self_) { return self_->IsNull(); }
-extern "C" void HandleTDataStdIntPackedMap_destructor(HandleTDataStdIntPackedMap* self_) { delete self_; }
-extern "C" OcctResult<HandleTDataStdIntPackedMap*> HandleTDataStdIntPackedMap_clone(const HandleTDataStdIntPackedMap* self_) {
-    try { return {new HandleTDataStdIntPackedMap(*self_), nullptr}; }
+extern "C" bool Handle_TDataStd_Integer_is_null(const Handle_TDataStd_Integer* self_) { return self_->IsNull(); }
+extern "C" void Handle_TDataStd_IntegerArray_destructor(Handle_TDataStd_IntegerArray* self_) { delete self_; }
+extern "C" OcctResult<Handle_TDataStd_IntegerArray*> Handle_TDataStd_IntegerArray_clone(const Handle_TDataStd_IntegerArray* self_) {
+    try { return {new Handle_TDataStd_IntegerArray(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleTDataStdIntPackedMap_is_null(const HandleTDataStdIntPackedMap* self_) { return self_->IsNull(); }
-extern "C" void HandleTDataStdInteger_destructor(HandleTDataStdInteger* self_) { delete self_; }
-extern "C" OcctResult<HandleTDataStdInteger*> HandleTDataStdInteger_clone(const HandleTDataStdInteger* self_) {
-    try { return {new HandleTDataStdInteger(*self_), nullptr}; }
+extern "C" bool Handle_TDataStd_IntegerArray_is_null(const Handle_TDataStd_IntegerArray* self_) { return self_->IsNull(); }
+extern "C" void Handle_TDataStd_IntegerList_destructor(Handle_TDataStd_IntegerList* self_) { delete self_; }
+extern "C" OcctResult<Handle_TDataStd_IntegerList*> Handle_TDataStd_IntegerList_clone(const Handle_TDataStd_IntegerList* self_) {
+    try { return {new Handle_TDataStd_IntegerList(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleTDataStdInteger_is_null(const HandleTDataStdInteger* self_) { return self_->IsNull(); }
-extern "C" void HandleTDataStdIntegerArray_destructor(HandleTDataStdIntegerArray* self_) { delete self_; }
-extern "C" OcctResult<HandleTDataStdIntegerArray*> HandleTDataStdIntegerArray_clone(const HandleTDataStdIntegerArray* self_) {
-    try { return {new HandleTDataStdIntegerArray(*self_), nullptr}; }
+extern "C" bool Handle_TDataStd_IntegerList_is_null(const Handle_TDataStd_IntegerList* self_) { return self_->IsNull(); }
+extern "C" void Handle_TDataStd_Name_destructor(Handle_TDataStd_Name* self_) { delete self_; }
+extern "C" OcctResult<Handle_TDataStd_Name*> Handle_TDataStd_Name_clone(const Handle_TDataStd_Name* self_) {
+    try { return {new Handle_TDataStd_Name(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleTDataStdIntegerArray_is_null(const HandleTDataStdIntegerArray* self_) { return self_->IsNull(); }
-extern "C" void HandleTDataStdIntegerList_destructor(HandleTDataStdIntegerList* self_) { delete self_; }
-extern "C" OcctResult<HandleTDataStdIntegerList*> HandleTDataStdIntegerList_clone(const HandleTDataStdIntegerList* self_) {
-    try { return {new HandleTDataStdIntegerList(*self_), nullptr}; }
+extern "C" bool Handle_TDataStd_Name_is_null(const Handle_TDataStd_Name* self_) { return self_->IsNull(); }
+extern "C" void Handle_TDataStd_NamedData_destructor(Handle_TDataStd_NamedData* self_) { delete self_; }
+extern "C" OcctResult<Handle_TDataStd_NamedData*> Handle_TDataStd_NamedData_clone(const Handle_TDataStd_NamedData* self_) {
+    try { return {new Handle_TDataStd_NamedData(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleTDataStdIntegerList_is_null(const HandleTDataStdIntegerList* self_) { return self_->IsNull(); }
-extern "C" void HandleTDataStdName_destructor(HandleTDataStdName* self_) { delete self_; }
-extern "C" OcctResult<HandleTDataStdName*> HandleTDataStdName_clone(const HandleTDataStdName* self_) {
-    try { return {new HandleTDataStdName(*self_), nullptr}; }
+extern "C" bool Handle_TDataStd_NamedData_is_null(const Handle_TDataStd_NamedData* self_) { return self_->IsNull(); }
+extern "C" void Handle_TDataStd_NoteBook_destructor(Handle_TDataStd_NoteBook* self_) { delete self_; }
+extern "C" OcctResult<Handle_TDataStd_NoteBook*> Handle_TDataStd_NoteBook_clone(const Handle_TDataStd_NoteBook* self_) {
+    try { return {new Handle_TDataStd_NoteBook(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleTDataStdName_is_null(const HandleTDataStdName* self_) { return self_->IsNull(); }
-extern "C" void HandleTDataStdNamedData_destructor(HandleTDataStdNamedData* self_) { delete self_; }
-extern "C" OcctResult<HandleTDataStdNamedData*> HandleTDataStdNamedData_clone(const HandleTDataStdNamedData* self_) {
-    try { return {new HandleTDataStdNamedData(*self_), nullptr}; }
+extern "C" bool Handle_TDataStd_NoteBook_is_null(const Handle_TDataStd_NoteBook* self_) { return self_->IsNull(); }
+extern "C" void Handle_TDataStd_Real_destructor(Handle_TDataStd_Real* self_) { delete self_; }
+extern "C" OcctResult<Handle_TDataStd_Real*> Handle_TDataStd_Real_clone(const Handle_TDataStd_Real* self_) {
+    try { return {new Handle_TDataStd_Real(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleTDataStdNamedData_is_null(const HandleTDataStdNamedData* self_) { return self_->IsNull(); }
-extern "C" void HandleTDataStdNoteBook_destructor(HandleTDataStdNoteBook* self_) { delete self_; }
-extern "C" OcctResult<HandleTDataStdNoteBook*> HandleTDataStdNoteBook_clone(const HandleTDataStdNoteBook* self_) {
-    try { return {new HandleTDataStdNoteBook(*self_), nullptr}; }
+extern "C" bool Handle_TDataStd_Real_is_null(const Handle_TDataStd_Real* self_) { return self_->IsNull(); }
+extern "C" void Handle_TDataStd_RealArray_destructor(Handle_TDataStd_RealArray* self_) { delete self_; }
+extern "C" OcctResult<Handle_TDataStd_RealArray*> Handle_TDataStd_RealArray_clone(const Handle_TDataStd_RealArray* self_) {
+    try { return {new Handle_TDataStd_RealArray(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleTDataStdNoteBook_is_null(const HandleTDataStdNoteBook* self_) { return self_->IsNull(); }
-extern "C" void HandleTDataStdReal_destructor(HandleTDataStdReal* self_) { delete self_; }
-extern "C" OcctResult<HandleTDataStdReal*> HandleTDataStdReal_clone(const HandleTDataStdReal* self_) {
-    try { return {new HandleTDataStdReal(*self_), nullptr}; }
+extern "C" bool Handle_TDataStd_RealArray_is_null(const Handle_TDataStd_RealArray* self_) { return self_->IsNull(); }
+extern "C" void Handle_TDataStd_RealList_destructor(Handle_TDataStd_RealList* self_) { delete self_; }
+extern "C" OcctResult<Handle_TDataStd_RealList*> Handle_TDataStd_RealList_clone(const Handle_TDataStd_RealList* self_) {
+    try { return {new Handle_TDataStd_RealList(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleTDataStdReal_is_null(const HandleTDataStdReal* self_) { return self_->IsNull(); }
-extern "C" void HandleTDataStdRealArray_destructor(HandleTDataStdRealArray* self_) { delete self_; }
-extern "C" OcctResult<HandleTDataStdRealArray*> HandleTDataStdRealArray_clone(const HandleTDataStdRealArray* self_) {
-    try { return {new HandleTDataStdRealArray(*self_), nullptr}; }
+extern "C" bool Handle_TDataStd_RealList_is_null(const Handle_TDataStd_RealList* self_) { return self_->IsNull(); }
+extern "C" void Handle_TDataStd_ReferenceArray_destructor(Handle_TDataStd_ReferenceArray* self_) { delete self_; }
+extern "C" OcctResult<Handle_TDataStd_ReferenceArray*> Handle_TDataStd_ReferenceArray_clone(const Handle_TDataStd_ReferenceArray* self_) {
+    try { return {new Handle_TDataStd_ReferenceArray(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleTDataStdRealArray_is_null(const HandleTDataStdRealArray* self_) { return self_->IsNull(); }
-extern "C" void HandleTDataStdRealList_destructor(HandleTDataStdRealList* self_) { delete self_; }
-extern "C" OcctResult<HandleTDataStdRealList*> HandleTDataStdRealList_clone(const HandleTDataStdRealList* self_) {
-    try { return {new HandleTDataStdRealList(*self_), nullptr}; }
+extern "C" bool Handle_TDataStd_ReferenceArray_is_null(const Handle_TDataStd_ReferenceArray* self_) { return self_->IsNull(); }
+extern "C" void Handle_TDataStd_ReferenceList_destructor(Handle_TDataStd_ReferenceList* self_) { delete self_; }
+extern "C" OcctResult<Handle_TDataStd_ReferenceList*> Handle_TDataStd_ReferenceList_clone(const Handle_TDataStd_ReferenceList* self_) {
+    try { return {new Handle_TDataStd_ReferenceList(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleTDataStdRealList_is_null(const HandleTDataStdRealList* self_) { return self_->IsNull(); }
-extern "C" void HandleTDataStdReferenceArray_destructor(HandleTDataStdReferenceArray* self_) { delete self_; }
-extern "C" OcctResult<HandleTDataStdReferenceArray*> HandleTDataStdReferenceArray_clone(const HandleTDataStdReferenceArray* self_) {
-    try { return {new HandleTDataStdReferenceArray(*self_), nullptr}; }
+extern "C" bool Handle_TDataStd_ReferenceList_is_null(const Handle_TDataStd_ReferenceList* self_) { return self_->IsNull(); }
+extern "C" void Handle_TDataStd_Relation_destructor(Handle_TDataStd_Relation* self_) { delete self_; }
+extern "C" OcctResult<Handle_TDataStd_Relation*> Handle_TDataStd_Relation_clone(const Handle_TDataStd_Relation* self_) {
+    try { return {new Handle_TDataStd_Relation(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleTDataStdReferenceArray_is_null(const HandleTDataStdReferenceArray* self_) { return self_->IsNull(); }
-extern "C" void HandleTDataStdReferenceList_destructor(HandleTDataStdReferenceList* self_) { delete self_; }
-extern "C" OcctResult<HandleTDataStdReferenceList*> HandleTDataStdReferenceList_clone(const HandleTDataStdReferenceList* self_) {
-    try { return {new HandleTDataStdReferenceList(*self_), nullptr}; }
+extern "C" bool Handle_TDataStd_Relation_is_null(const Handle_TDataStd_Relation* self_) { return self_->IsNull(); }
+extern "C" void Handle_TDataStd_Tick_destructor(Handle_TDataStd_Tick* self_) { delete self_; }
+extern "C" OcctResult<Handle_TDataStd_Tick*> Handle_TDataStd_Tick_clone(const Handle_TDataStd_Tick* self_) {
+    try { return {new Handle_TDataStd_Tick(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleTDataStdReferenceList_is_null(const HandleTDataStdReferenceList* self_) { return self_->IsNull(); }
-extern "C" void HandleTDataStdRelation_destructor(HandleTDataStdRelation* self_) { delete self_; }
-extern "C" OcctResult<HandleTDataStdRelation*> HandleTDataStdRelation_clone(const HandleTDataStdRelation* self_) {
-    try { return {new HandleTDataStdRelation(*self_), nullptr}; }
+extern "C" bool Handle_TDataStd_Tick_is_null(const Handle_TDataStd_Tick* self_) { return self_->IsNull(); }
+extern "C" void Handle_TDataStd_TreeNode_destructor(Handle_TDataStd_TreeNode* self_) { delete self_; }
+extern "C" OcctResult<Handle_TDataStd_TreeNode*> Handle_TDataStd_TreeNode_clone(const Handle_TDataStd_TreeNode* self_) {
+    try { return {new Handle_TDataStd_TreeNode(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleTDataStdRelation_is_null(const HandleTDataStdRelation* self_) { return self_->IsNull(); }
-extern "C" void HandleTDataStdTick_destructor(HandleTDataStdTick* self_) { delete self_; }
-extern "C" OcctResult<HandleTDataStdTick*> HandleTDataStdTick_clone(const HandleTDataStdTick* self_) {
-    try { return {new HandleTDataStdTick(*self_), nullptr}; }
+extern "C" bool Handle_TDataStd_TreeNode_is_null(const Handle_TDataStd_TreeNode* self_) { return self_->IsNull(); }
+extern "C" void Handle_TDataStd_UAttribute_destructor(Handle_TDataStd_UAttribute* self_) { delete self_; }
+extern "C" OcctResult<Handle_TDataStd_UAttribute*> Handle_TDataStd_UAttribute_clone(const Handle_TDataStd_UAttribute* self_) {
+    try { return {new Handle_TDataStd_UAttribute(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleTDataStdTick_is_null(const HandleTDataStdTick* self_) { return self_->IsNull(); }
-extern "C" void HandleTDataStdTreeNode_destructor(HandleTDataStdTreeNode* self_) { delete self_; }
-extern "C" OcctResult<HandleTDataStdTreeNode*> HandleTDataStdTreeNode_clone(const HandleTDataStdTreeNode* self_) {
-    try { return {new HandleTDataStdTreeNode(*self_), nullptr}; }
+extern "C" bool Handle_TDataStd_UAttribute_is_null(const Handle_TDataStd_UAttribute* self_) { return self_->IsNull(); }
+extern "C" void Handle_TDataStd_Variable_destructor(Handle_TDataStd_Variable* self_) { delete self_; }
+extern "C" OcctResult<Handle_TDataStd_Variable*> Handle_TDataStd_Variable_clone(const Handle_TDataStd_Variable* self_) {
+    try { return {new Handle_TDataStd_Variable(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleTDataStdTreeNode_is_null(const HandleTDataStdTreeNode* self_) { return self_->IsNull(); }
-extern "C" void HandleTDataStdUAttribute_destructor(HandleTDataStdUAttribute* self_) { delete self_; }
-extern "C" OcctResult<HandleTDataStdUAttribute*> HandleTDataStdUAttribute_clone(const HandleTDataStdUAttribute* self_) {
-    try { return {new HandleTDataStdUAttribute(*self_), nullptr}; }
+extern "C" bool Handle_TDataStd_Variable_is_null(const Handle_TDataStd_Variable* self_) { return self_->IsNull(); }
+extern "C" void Handle_TDocStd_Application_destructor(Handle_TDocStd_Application* self_) { delete self_; }
+extern "C" OcctResult<Handle_TDocStd_Application*> Handle_TDocStd_Application_clone(const Handle_TDocStd_Application* self_) {
+    try { return {new Handle_TDocStd_Application(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleTDataStdUAttribute_is_null(const HandleTDataStdUAttribute* self_) { return self_->IsNull(); }
-extern "C" void HandleTDataStdVariable_destructor(HandleTDataStdVariable* self_) { delete self_; }
-extern "C" OcctResult<HandleTDataStdVariable*> HandleTDataStdVariable_clone(const HandleTDataStdVariable* self_) {
-    try { return {new HandleTDataStdVariable(*self_), nullptr}; }
+extern "C" bool Handle_TDocStd_Application_is_null(const Handle_TDocStd_Application* self_) { return self_->IsNull(); }
+extern "C" void Handle_TDocStd_ApplicationDelta_destructor(Handle_TDocStd_ApplicationDelta* self_) { delete self_; }
+extern "C" OcctResult<Handle_TDocStd_ApplicationDelta*> Handle_TDocStd_ApplicationDelta_clone(const Handle_TDocStd_ApplicationDelta* self_) {
+    try { return {new Handle_TDocStd_ApplicationDelta(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleTDataStdVariable_is_null(const HandleTDataStdVariable* self_) { return self_->IsNull(); }
-extern "C" void HandleTDocStdApplication_destructor(HandleTDocStdApplication* self_) { delete self_; }
-extern "C" OcctResult<HandleTDocStdApplication*> HandleTDocStdApplication_clone(const HandleTDocStdApplication* self_) {
-    try { return {new HandleTDocStdApplication(*self_), nullptr}; }
+extern "C" bool Handle_TDocStd_ApplicationDelta_is_null(const Handle_TDocStd_ApplicationDelta* self_) { return self_->IsNull(); }
+extern "C" void Handle_TDocStd_CompoundDelta_destructor(Handle_TDocStd_CompoundDelta* self_) { delete self_; }
+extern "C" OcctResult<Handle_TDocStd_CompoundDelta*> Handle_TDocStd_CompoundDelta_clone(const Handle_TDocStd_CompoundDelta* self_) {
+    try { return {new Handle_TDocStd_CompoundDelta(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleTDocStdApplication_is_null(const HandleTDocStdApplication* self_) { return self_->IsNull(); }
-extern "C" void HandleTDocStdApplicationDelta_destructor(HandleTDocStdApplicationDelta* self_) { delete self_; }
-extern "C" OcctResult<HandleTDocStdApplicationDelta*> HandleTDocStdApplicationDelta_clone(const HandleTDocStdApplicationDelta* self_) {
-    try { return {new HandleTDocStdApplicationDelta(*self_), nullptr}; }
+extern "C" bool Handle_TDocStd_CompoundDelta_is_null(const Handle_TDocStd_CompoundDelta* self_) { return self_->IsNull(); }
+extern "C" void Handle_TDocStd_Document_destructor(Handle_TDocStd_Document* self_) { delete self_; }
+extern "C" OcctResult<Handle_TDocStd_Document*> Handle_TDocStd_Document_clone(const Handle_TDocStd_Document* self_) {
+    try { return {new Handle_TDocStd_Document(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleTDocStdApplicationDelta_is_null(const HandleTDocStdApplicationDelta* self_) { return self_->IsNull(); }
-extern "C" void HandleTDocStdCompoundDelta_destructor(HandleTDocStdCompoundDelta* self_) { delete self_; }
-extern "C" OcctResult<HandleTDocStdCompoundDelta*> HandleTDocStdCompoundDelta_clone(const HandleTDocStdCompoundDelta* self_) {
-    try { return {new HandleTDocStdCompoundDelta(*self_), nullptr}; }
+extern "C" bool Handle_TDocStd_Document_is_null(const Handle_TDocStd_Document* self_) { return self_->IsNull(); }
+extern "C" void Handle_TDocStd_Modified_destructor(Handle_TDocStd_Modified* self_) { delete self_; }
+extern "C" OcctResult<Handle_TDocStd_Modified*> Handle_TDocStd_Modified_clone(const Handle_TDocStd_Modified* self_) {
+    try { return {new Handle_TDocStd_Modified(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleTDocStdCompoundDelta_is_null(const HandleTDocStdCompoundDelta* self_) { return self_->IsNull(); }
-extern "C" void HandleTDocStdDocument_destructor(HandleTDocStdDocument* self_) { delete self_; }
-extern "C" OcctResult<HandleTDocStdDocument*> HandleTDocStdDocument_clone(const HandleTDocStdDocument* self_) {
-    try { return {new HandleTDocStdDocument(*self_), nullptr}; }
+extern "C" bool Handle_TDocStd_Modified_is_null(const Handle_TDocStd_Modified* self_) { return self_->IsNull(); }
+extern "C" void Handle_TDocStd_MultiTransactionManager_destructor(Handle_TDocStd_MultiTransactionManager* self_) { delete self_; }
+extern "C" OcctResult<Handle_TDocStd_MultiTransactionManager*> Handle_TDocStd_MultiTransactionManager_clone(const Handle_TDocStd_MultiTransactionManager* self_) {
+    try { return {new Handle_TDocStd_MultiTransactionManager(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleTDocStdDocument_is_null(const HandleTDocStdDocument* self_) { return self_->IsNull(); }
-extern "C" void HandleTDocStdModified_destructor(HandleTDocStdModified* self_) { delete self_; }
-extern "C" OcctResult<HandleTDocStdModified*> HandleTDocStdModified_clone(const HandleTDocStdModified* self_) {
-    try { return {new HandleTDocStdModified(*self_), nullptr}; }
+extern "C" bool Handle_TDocStd_MultiTransactionManager_is_null(const Handle_TDocStd_MultiTransactionManager* self_) { return self_->IsNull(); }
+extern "C" void Handle_TDocStd_Owner_destructor(Handle_TDocStd_Owner* self_) { delete self_; }
+extern "C" OcctResult<Handle_TDocStd_Owner*> Handle_TDocStd_Owner_clone(const Handle_TDocStd_Owner* self_) {
+    try { return {new Handle_TDocStd_Owner(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleTDocStdModified_is_null(const HandleTDocStdModified* self_) { return self_->IsNull(); }
-extern "C" void HandleTDocStdMultiTransactionManager_destructor(HandleTDocStdMultiTransactionManager* self_) { delete self_; }
-extern "C" OcctResult<HandleTDocStdMultiTransactionManager*> HandleTDocStdMultiTransactionManager_clone(const HandleTDocStdMultiTransactionManager* self_) {
-    try { return {new HandleTDocStdMultiTransactionManager(*self_), nullptr}; }
+extern "C" bool Handle_TDocStd_Owner_is_null(const Handle_TDocStd_Owner* self_) { return self_->IsNull(); }
+extern "C" void Handle_TDocStd_XLink_destructor(Handle_TDocStd_XLink* self_) { delete self_; }
+extern "C" OcctResult<Handle_TDocStd_XLink*> Handle_TDocStd_XLink_clone(const Handle_TDocStd_XLink* self_) {
+    try { return {new Handle_TDocStd_XLink(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleTDocStdMultiTransactionManager_is_null(const HandleTDocStdMultiTransactionManager* self_) { return self_->IsNull(); }
-extern "C" void HandleTDocStdOwner_destructor(HandleTDocStdOwner* self_) { delete self_; }
-extern "C" OcctResult<HandleTDocStdOwner*> HandleTDocStdOwner_clone(const HandleTDocStdOwner* self_) {
-    try { return {new HandleTDocStdOwner(*self_), nullptr}; }
+extern "C" bool Handle_TDocStd_XLink_is_null(const Handle_TDocStd_XLink* self_) { return self_->IsNull(); }
+extern "C" void Handle_TDocStd_XLinkRoot_destructor(Handle_TDocStd_XLinkRoot* self_) { delete self_; }
+extern "C" OcctResult<Handle_TDocStd_XLinkRoot*> Handle_TDocStd_XLinkRoot_clone(const Handle_TDocStd_XLinkRoot* self_) {
+    try { return {new Handle_TDocStd_XLinkRoot(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleTDocStdOwner_is_null(const HandleTDocStdOwner* self_) { return self_->IsNull(); }
-extern "C" void HandleTDocStdXLink_destructor(HandleTDocStdXLink* self_) { delete self_; }
-extern "C" OcctResult<HandleTDocStdXLink*> HandleTDocStdXLink_clone(const HandleTDocStdXLink* self_) {
-    try { return {new HandleTDocStdXLink(*self_), nullptr}; }
+extern "C" bool Handle_TDocStd_XLinkRoot_is_null(const Handle_TDocStd_XLinkRoot* self_) { return self_->IsNull(); }
+extern "C" void Handle_TFunction_Driver_destructor(Handle_TFunction_Driver* self_) { delete self_; }
+extern "C" OcctResult<Handle_TFunction_Driver*> Handle_TFunction_Driver_clone(const Handle_TFunction_Driver* self_) {
+    try { return {new Handle_TFunction_Driver(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleTDocStdXLink_is_null(const HandleTDocStdXLink* self_) { return self_->IsNull(); }
-extern "C" void HandleTDocStdXLinkRoot_destructor(HandleTDocStdXLinkRoot* self_) { delete self_; }
-extern "C" OcctResult<HandleTDocStdXLinkRoot*> HandleTDocStdXLinkRoot_clone(const HandleTDocStdXLinkRoot* self_) {
-    try { return {new HandleTDocStdXLinkRoot(*self_), nullptr}; }
+extern "C" bool Handle_TFunction_Driver_is_null(const Handle_TFunction_Driver* self_) { return self_->IsNull(); }
+extern "C" void Handle_TFunction_DriverTable_destructor(Handle_TFunction_DriverTable* self_) { delete self_; }
+extern "C" OcctResult<Handle_TFunction_DriverTable*> Handle_TFunction_DriverTable_clone(const Handle_TFunction_DriverTable* self_) {
+    try { return {new Handle_TFunction_DriverTable(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleTDocStdXLinkRoot_is_null(const HandleTDocStdXLinkRoot* self_) { return self_->IsNull(); }
-extern "C" void HandleTFunctionDriver_destructor(HandleTFunctionDriver* self_) { delete self_; }
-extern "C" OcctResult<HandleTFunctionDriver*> HandleTFunctionDriver_clone(const HandleTFunctionDriver* self_) {
-    try { return {new HandleTFunctionDriver(*self_), nullptr}; }
+extern "C" bool Handle_TFunction_DriverTable_is_null(const Handle_TFunction_DriverTable* self_) { return self_->IsNull(); }
+extern "C" void Handle_TFunction_Function_destructor(Handle_TFunction_Function* self_) { delete self_; }
+extern "C" OcctResult<Handle_TFunction_Function*> Handle_TFunction_Function_clone(const Handle_TFunction_Function* self_) {
+    try { return {new Handle_TFunction_Function(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleTFunctionDriver_is_null(const HandleTFunctionDriver* self_) { return self_->IsNull(); }
-extern "C" void HandleTFunctionDriverTable_destructor(HandleTFunctionDriverTable* self_) { delete self_; }
-extern "C" OcctResult<HandleTFunctionDriverTable*> HandleTFunctionDriverTable_clone(const HandleTFunctionDriverTable* self_) {
-    try { return {new HandleTFunctionDriverTable(*self_), nullptr}; }
+extern "C" bool Handle_TFunction_Function_is_null(const Handle_TFunction_Function* self_) { return self_->IsNull(); }
+extern "C" void Handle_TFunction_GraphNode_destructor(Handle_TFunction_GraphNode* self_) { delete self_; }
+extern "C" OcctResult<Handle_TFunction_GraphNode*> Handle_TFunction_GraphNode_clone(const Handle_TFunction_GraphNode* self_) {
+    try { return {new Handle_TFunction_GraphNode(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleTFunctionDriverTable_is_null(const HandleTFunctionDriverTable* self_) { return self_->IsNull(); }
-extern "C" void HandleTFunctionFunction_destructor(HandleTFunctionFunction* self_) { delete self_; }
-extern "C" OcctResult<HandleTFunctionFunction*> HandleTFunctionFunction_clone(const HandleTFunctionFunction* self_) {
-    try { return {new HandleTFunctionFunction(*self_), nullptr}; }
+extern "C" bool Handle_TFunction_GraphNode_is_null(const Handle_TFunction_GraphNode* self_) { return self_->IsNull(); }
+extern "C" void Handle_TFunction_Logbook_destructor(Handle_TFunction_Logbook* self_) { delete self_; }
+extern "C" OcctResult<Handle_TFunction_Logbook*> Handle_TFunction_Logbook_clone(const Handle_TFunction_Logbook* self_) {
+    try { return {new Handle_TFunction_Logbook(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleTFunctionFunction_is_null(const HandleTFunctionFunction* self_) { return self_->IsNull(); }
-extern "C" void HandleTFunctionGraphNode_destructor(HandleTFunctionGraphNode* self_) { delete self_; }
-extern "C" OcctResult<HandleTFunctionGraphNode*> HandleTFunctionGraphNode_clone(const HandleTFunctionGraphNode* self_) {
-    try { return {new HandleTFunctionGraphNode(*self_), nullptr}; }
+extern "C" bool Handle_TFunction_Logbook_is_null(const Handle_TFunction_Logbook* self_) { return self_->IsNull(); }
+extern "C" void Handle_TFunction_Scope_destructor(Handle_TFunction_Scope* self_) { delete self_; }
+extern "C" OcctResult<Handle_TFunction_Scope*> Handle_TFunction_Scope_clone(const Handle_TFunction_Scope* self_) {
+    try { return {new Handle_TFunction_Scope(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleTFunctionGraphNode_is_null(const HandleTFunctionGraphNode* self_) { return self_->IsNull(); }
-extern "C" void HandleTFunctionHArray1OfDataMapOfGUIDDriver_destructor(HandleTFunctionHArray1OfDataMapOfGUIDDriver* self_) { delete self_; }
-extern "C" OcctResult<HandleTFunctionHArray1OfDataMapOfGUIDDriver*> HandleTFunctionHArray1OfDataMapOfGUIDDriver_clone(const HandleTFunctionHArray1OfDataMapOfGUIDDriver* self_) {
-    try { return {new HandleTFunctionHArray1OfDataMapOfGUIDDriver(*self_), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" bool HandleTFunctionHArray1OfDataMapOfGUIDDriver_is_null(const HandleTFunctionHArray1OfDataMapOfGUIDDriver* self_) { return self_->IsNull(); }
-extern "C" void HandleTFunctionLogbook_destructor(HandleTFunctionLogbook* self_) { delete self_; }
-extern "C" OcctResult<HandleTFunctionLogbook*> HandleTFunctionLogbook_clone(const HandleTFunctionLogbook* self_) {
-    try { return {new HandleTFunctionLogbook(*self_), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" bool HandleTFunctionLogbook_is_null(const HandleTFunctionLogbook* self_) { return self_->IsNull(); }
-extern "C" void HandleTFunctionScope_destructor(HandleTFunctionScope* self_) { delete self_; }
-extern "C" OcctResult<HandleTFunctionScope*> HandleTFunctionScope_clone(const HandleTFunctionScope* self_) {
-    try { return {new HandleTFunctionScope(*self_), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" bool HandleTFunctionScope_is_null(const HandleTFunctionScope* self_) { return self_->IsNull(); }
+extern "C" bool Handle_TFunction_Scope_is_null(const Handle_TFunction_Scope* self_) { return self_->IsNull(); }
 
 // ========================
 // AppStdL_Application wrappers
@@ -844,32 +780,32 @@ extern "C" OcctResult<const CDM_Application*> AppStdL_Application_as_CDM_Applica
 extern "C" OcctResult<CDM_Application*> AppStdL_Application_as_CDM_Application_mut(AppStdL_Application* self_) { return {static_cast<CDM_Application*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> AppStdL_Application_as_Standard_Transient(const AppStdL_Application* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> AppStdL_Application_as_Standard_Transient_mut(AppStdL_Application* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleAppStdLApplication*> AppStdL_Application_to_handle(AppStdL_Application* obj) {
-    try { return {new HandleAppStdLApplication(obj), nullptr}; }
+extern "C" OcctResult<Handle_AppStdL_Application*> AppStdL_Application_to_handle(AppStdL_Application* obj) {
+    try { return {new Handle_AppStdL_Application(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const AppStdL_Application*> HandleAppStdLApplication_get(const HandleAppStdLApplication* handle) {
+extern "C" OcctResult<const AppStdL_Application*> Handle_AppStdL_Application_get(const Handle_AppStdL_Application* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<AppStdL_Application*> HandleAppStdLApplication_get_mut(HandleAppStdLApplication* handle) {
+extern "C" OcctResult<AppStdL_Application*> Handle_AppStdL_Application_get_mut(Handle_AppStdL_Application* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTDocStdApplication*> HandleAppStdLApplication_to_HandleTDocStdApplication(const HandleAppStdLApplication* self_) {
-    try { return {new HandleTDocStdApplication(*self_), nullptr}; }
+extern "C" OcctResult<Handle_TDocStd_Application*> Handle_AppStdL_Application_to_Handle_TDocStd_Application(const Handle_AppStdL_Application* self_) {
+    try { return {new Handle_TDocStd_Application(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleCDFApplication*> HandleAppStdLApplication_to_HandleCDFApplication(const HandleAppStdLApplication* self_) {
-    try { return {new HandleCDFApplication(*self_), nullptr}; }
+extern "C" OcctResult<Handle_CDF_Application*> Handle_AppStdL_Application_to_Handle_CDF_Application(const Handle_AppStdL_Application* self_) {
+    try { return {new Handle_CDF_Application(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleCDMApplication*> HandleAppStdLApplication_to_HandleCDMApplication(const HandleAppStdLApplication* self_) {
-    try { return {new HandleCDMApplication(*self_), nullptr}; }
+extern "C" OcctResult<Handle_CDM_Application*> Handle_AppStdL_Application_to_Handle_CDM_Application(const Handle_AppStdL_Application* self_) {
+    try { return {new Handle_CDM_Application(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleAppStdLApplication_to_HandleStandardTransient(const HandleAppStdLApplication* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_AppStdL_Application_to_Handle_Standard_Transient(const Handle_AppStdL_Application* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> AppStdL_Application_inherited_IsDriverLoaded(const AppStdL_Application* self) {
@@ -884,11 +820,11 @@ extern "C" const char* AppStdL_Application_inherited_DefineFormat(AppStdL_Applic
     try { self->DefineFormat(theFormat, theDescription, theExtension, theReader, theWriter); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* AppStdL_Application_inherited_ReadingFormats(AppStdL_Application* self, TColStd_SequenceOfAsciiString& theFormats) {
+extern "C" const char* AppStdL_Application_inherited_ReadingFormats(AppStdL_Application* self, NCollection_Sequence_TCollection_AsciiString& theFormats) {
     try { self->ReadingFormats(theFormats); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* AppStdL_Application_inherited_WritingFormats(AppStdL_Application* self, TColStd_SequenceOfAsciiString& theFormats) {
+extern "C" const char* AppStdL_Application_inherited_WritingFormats(AppStdL_Application* self, NCollection_Sequence_TCollection_AsciiString& theFormats) {
     try { self->WritingFormats(theFormats); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -896,9 +832,9 @@ extern "C" OcctResult<int32_t> AppStdL_Application_inherited_NbDocuments(const A
     try { return {self->NbDocuments(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* AppStdL_Application_inherited_GetDocument(const AppStdL_Application* self, int32_t index, Handle(TDocStd_Document)& aDoc) {
-    try { self->GetDocument(index, aDoc); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
+extern "C" OcctResult<Handle(TDocStd_Document)*> AppStdL_Application_inherited_GetDocument(const AppStdL_Application* self, int32_t index) {
+    try { return {new Handle(TDocStd_Document)(self->GetDocument(index)), nullptr}; }
+    OCCT_CATCH_RETURN
 }
 extern "C" const char* AppStdL_Application_inherited_NewDocument(AppStdL_Application* self, TCollection_ExtendedString const& format, Handle(CDM_Document)& aDoc) {
     try { self->NewDocument(format, aDoc); return nullptr; }
@@ -994,10 +930,6 @@ extern "C" OcctResult<TCollection_ExtendedString*> AppStdL_Application_inherited
 }
 extern "C" OcctResult<TCollection_AsciiString*> AppStdL_Application_inherited_Version(const AppStdL_Application* self) {
     try { return {new TCollection_AsciiString(self->Version()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<CDM_MetaDataLookUpTable*> AppStdL_Application_inherited_MetaDataLookUpTable(AppStdL_Application* self) {
-    try { return {&(self->MetaDataLookUpTable()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> AppStdL_Application_inherited_IsInstance(const AppStdL_Application* self, Handle(Standard_Type) const& theType) {
@@ -1178,10 +1110,6 @@ extern "C" OcctResult<Standard_OStream*> TDF_Attribute_dump(TDF_Attribute* self_
     try { return {&(self_->Dump(*anOS)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* TDF_Attribute_extended_dump(const TDF_Attribute* self_, Standard_OStream* anOS, TDF_IDFilter const* aFilter, TDF_AttributeIndexedMap* aMap) {
-    try { self_->ExtendedDump(*anOS, *aFilter, *aMap); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
 extern "C" const char* TDF_Attribute_forget(TDF_Attribute* self_, int32_t aTransaction) {
     try { self_->Forget(aTransaction); return nullptr; }
     OCCT_CATCH_RETURN_VOID
@@ -1200,743 +1128,743 @@ extern "C" OcctResult<Handle(Standard_Type) const*> TDF_Attribute_get_type_descr
 }
 extern "C" OcctResult<const Standard_Transient*> TDF_Attribute_as_Standard_Transient(const TDF_Attribute* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> TDF_Attribute_as_Standard_Transient_mut(TDF_Attribute* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<const TDF_Attribute*> HandleTDFAttribute_get(const HandleTDFAttribute* handle) {
+extern "C" OcctResult<const TDF_Attribute*> Handle_TDF_Attribute_get(const Handle_TDF_Attribute* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TDF_Attribute*> HandleTDFAttribute_get_mut(HandleTDFAttribute* handle) {
+extern "C" OcctResult<TDF_Attribute*> Handle_TDF_Attribute_get_mut(Handle_TDF_Attribute* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleTDFAttribute_to_HandleStandardTransient(const HandleTDFAttribute* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_TDF_Attribute_to_Handle_Standard_Transient(const Handle_TDF_Attribute* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTDFReference*> HandleTDFAttribute_downcast_to_HandleTDFReference(const HandleTDFAttribute* self_) {
+extern "C" OcctResult<Handle_TDF_Reference*> Handle_TDF_Attribute_downcast_to_Handle_TDF_Reference(const Handle_TDF_Attribute* self_) {
     try {
     opencascade::handle<TDF_Reference> result = opencascade::handle<TDF_Reference>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleTDFReference(result), nullptr};
+    return {new Handle_TDF_Reference(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTDFTagSource*> HandleTDFAttribute_downcast_to_HandleTDFTagSource(const HandleTDFAttribute* self_) {
+extern "C" OcctResult<Handle_TDF_TagSource*> Handle_TDF_Attribute_downcast_to_Handle_TDF_TagSource(const Handle_TDF_Attribute* self_) {
     try {
     opencascade::handle<TDF_TagSource> result = opencascade::handle<TDF_TagSource>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleTDFTagSource(result), nullptr};
+    return {new Handle_TDF_TagSource(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTDataStdAsciiString*> HandleTDFAttribute_downcast_to_HandleTDataStdAsciiString(const HandleTDFAttribute* self_) {
+extern "C" OcctResult<Handle_TDataStd_AsciiString*> Handle_TDF_Attribute_downcast_to_Handle_TDataStd_AsciiString(const Handle_TDF_Attribute* self_) {
     try {
     opencascade::handle<TDataStd_AsciiString> result = opencascade::handle<TDataStd_AsciiString>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleTDataStdAsciiString(result), nullptr};
+    return {new Handle_TDataStd_AsciiString(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTDataStdBooleanArray*> HandleTDFAttribute_downcast_to_HandleTDataStdBooleanArray(const HandleTDFAttribute* self_) {
+extern "C" OcctResult<Handle_TDataStd_BooleanArray*> Handle_TDF_Attribute_downcast_to_Handle_TDataStd_BooleanArray(const Handle_TDF_Attribute* self_) {
     try {
     opencascade::handle<TDataStd_BooleanArray> result = opencascade::handle<TDataStd_BooleanArray>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleTDataStdBooleanArray(result), nullptr};
+    return {new Handle_TDataStd_BooleanArray(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTDataStdBooleanList*> HandleTDFAttribute_downcast_to_HandleTDataStdBooleanList(const HandleTDFAttribute* self_) {
+extern "C" OcctResult<Handle_TDataStd_BooleanList*> Handle_TDF_Attribute_downcast_to_Handle_TDataStd_BooleanList(const Handle_TDF_Attribute* self_) {
     try {
     opencascade::handle<TDataStd_BooleanList> result = opencascade::handle<TDataStd_BooleanList>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleTDataStdBooleanList(result), nullptr};
+    return {new Handle_TDataStd_BooleanList(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTDataStdByteArray*> HandleTDFAttribute_downcast_to_HandleTDataStdByteArray(const HandleTDFAttribute* self_) {
+extern "C" OcctResult<Handle_TDataStd_ByteArray*> Handle_TDF_Attribute_downcast_to_Handle_TDataStd_ByteArray(const Handle_TDF_Attribute* self_) {
     try {
     opencascade::handle<TDataStd_ByteArray> result = opencascade::handle<TDataStd_ByteArray>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleTDataStdByteArray(result), nullptr};
+    return {new Handle_TDataStd_ByteArray(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTDataStdComment*> HandleTDFAttribute_downcast_to_HandleTDataStdComment(const HandleTDFAttribute* self_) {
+extern "C" OcctResult<Handle_TDataStd_Comment*> Handle_TDF_Attribute_downcast_to_Handle_TDataStd_Comment(const Handle_TDF_Attribute* self_) {
     try {
     opencascade::handle<TDataStd_Comment> result = opencascade::handle<TDataStd_Comment>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleTDataStdComment(result), nullptr};
+    return {new Handle_TDataStd_Comment(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTDataStdCurrent*> HandleTDFAttribute_downcast_to_HandleTDataStdCurrent(const HandleTDFAttribute* self_) {
+extern "C" OcctResult<Handle_TDataStd_Current*> Handle_TDF_Attribute_downcast_to_Handle_TDataStd_Current(const Handle_TDF_Attribute* self_) {
     try {
     opencascade::handle<TDataStd_Current> result = opencascade::handle<TDataStd_Current>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleTDataStdCurrent(result), nullptr};
+    return {new Handle_TDataStd_Current(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTDataStdDirectory*> HandleTDFAttribute_downcast_to_HandleTDataStdDirectory(const HandleTDFAttribute* self_) {
+extern "C" OcctResult<Handle_TDataStd_Directory*> Handle_TDF_Attribute_downcast_to_Handle_TDataStd_Directory(const Handle_TDF_Attribute* self_) {
     try {
     opencascade::handle<TDataStd_Directory> result = opencascade::handle<TDataStd_Directory>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleTDataStdDirectory(result), nullptr};
+    return {new Handle_TDataStd_Directory(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTDataStdExpression*> HandleTDFAttribute_downcast_to_HandleTDataStdExpression(const HandleTDFAttribute* self_) {
+extern "C" OcctResult<Handle_TDataStd_Expression*> Handle_TDF_Attribute_downcast_to_Handle_TDataStd_Expression(const Handle_TDF_Attribute* self_) {
     try {
     opencascade::handle<TDataStd_Expression> result = opencascade::handle<TDataStd_Expression>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleTDataStdExpression(result), nullptr};
+    return {new Handle_TDataStd_Expression(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTDataStdExtStringArray*> HandleTDFAttribute_downcast_to_HandleTDataStdExtStringArray(const HandleTDFAttribute* self_) {
+extern "C" OcctResult<Handle_TDataStd_ExtStringArray*> Handle_TDF_Attribute_downcast_to_Handle_TDataStd_ExtStringArray(const Handle_TDF_Attribute* self_) {
     try {
     opencascade::handle<TDataStd_ExtStringArray> result = opencascade::handle<TDataStd_ExtStringArray>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleTDataStdExtStringArray(result), nullptr};
+    return {new Handle_TDataStd_ExtStringArray(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTDataStdExtStringList*> HandleTDFAttribute_downcast_to_HandleTDataStdExtStringList(const HandleTDFAttribute* self_) {
+extern "C" OcctResult<Handle_TDataStd_ExtStringList*> Handle_TDF_Attribute_downcast_to_Handle_TDataStd_ExtStringList(const Handle_TDF_Attribute* self_) {
     try {
     opencascade::handle<TDataStd_ExtStringList> result = opencascade::handle<TDataStd_ExtStringList>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleTDataStdExtStringList(result), nullptr};
+    return {new Handle_TDataStd_ExtStringList(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTDataStdGenericEmpty*> HandleTDFAttribute_downcast_to_HandleTDataStdGenericEmpty(const HandleTDFAttribute* self_) {
+extern "C" OcctResult<Handle_TDataStd_GenericEmpty*> Handle_TDF_Attribute_downcast_to_Handle_TDataStd_GenericEmpty(const Handle_TDF_Attribute* self_) {
     try {
     opencascade::handle<TDataStd_GenericEmpty> result = opencascade::handle<TDataStd_GenericEmpty>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleTDataStdGenericEmpty(result), nullptr};
+    return {new Handle_TDataStd_GenericEmpty(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTDataStdGenericExtString*> HandleTDFAttribute_downcast_to_HandleTDataStdGenericExtString(const HandleTDFAttribute* self_) {
+extern "C" OcctResult<Handle_TDataStd_GenericExtString*> Handle_TDF_Attribute_downcast_to_Handle_TDataStd_GenericExtString(const Handle_TDF_Attribute* self_) {
     try {
     opencascade::handle<TDataStd_GenericExtString> result = opencascade::handle<TDataStd_GenericExtString>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleTDataStdGenericExtString(result), nullptr};
+    return {new Handle_TDataStd_GenericExtString(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTDataStdIntPackedMap*> HandleTDFAttribute_downcast_to_HandleTDataStdIntPackedMap(const HandleTDFAttribute* self_) {
+extern "C" OcctResult<Handle_TDataStd_IntPackedMap*> Handle_TDF_Attribute_downcast_to_Handle_TDataStd_IntPackedMap(const Handle_TDF_Attribute* self_) {
     try {
     opencascade::handle<TDataStd_IntPackedMap> result = opencascade::handle<TDataStd_IntPackedMap>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleTDataStdIntPackedMap(result), nullptr};
+    return {new Handle_TDataStd_IntPackedMap(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTDataStdInteger*> HandleTDFAttribute_downcast_to_HandleTDataStdInteger(const HandleTDFAttribute* self_) {
+extern "C" OcctResult<Handle_TDataStd_Integer*> Handle_TDF_Attribute_downcast_to_Handle_TDataStd_Integer(const Handle_TDF_Attribute* self_) {
     try {
     opencascade::handle<TDataStd_Integer> result = opencascade::handle<TDataStd_Integer>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleTDataStdInteger(result), nullptr};
+    return {new Handle_TDataStd_Integer(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTDataStdIntegerArray*> HandleTDFAttribute_downcast_to_HandleTDataStdIntegerArray(const HandleTDFAttribute* self_) {
+extern "C" OcctResult<Handle_TDataStd_IntegerArray*> Handle_TDF_Attribute_downcast_to_Handle_TDataStd_IntegerArray(const Handle_TDF_Attribute* self_) {
     try {
     opencascade::handle<TDataStd_IntegerArray> result = opencascade::handle<TDataStd_IntegerArray>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleTDataStdIntegerArray(result), nullptr};
+    return {new Handle_TDataStd_IntegerArray(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTDataStdIntegerList*> HandleTDFAttribute_downcast_to_HandleTDataStdIntegerList(const HandleTDFAttribute* self_) {
+extern "C" OcctResult<Handle_TDataStd_IntegerList*> Handle_TDF_Attribute_downcast_to_Handle_TDataStd_IntegerList(const Handle_TDF_Attribute* self_) {
     try {
     opencascade::handle<TDataStd_IntegerList> result = opencascade::handle<TDataStd_IntegerList>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleTDataStdIntegerList(result), nullptr};
+    return {new Handle_TDataStd_IntegerList(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTDataStdName*> HandleTDFAttribute_downcast_to_HandleTDataStdName(const HandleTDFAttribute* self_) {
+extern "C" OcctResult<Handle_TDataStd_Name*> Handle_TDF_Attribute_downcast_to_Handle_TDataStd_Name(const Handle_TDF_Attribute* self_) {
     try {
     opencascade::handle<TDataStd_Name> result = opencascade::handle<TDataStd_Name>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleTDataStdName(result), nullptr};
+    return {new Handle_TDataStd_Name(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTDataStdNamedData*> HandleTDFAttribute_downcast_to_HandleTDataStdNamedData(const HandleTDFAttribute* self_) {
+extern "C" OcctResult<Handle_TDataStd_NamedData*> Handle_TDF_Attribute_downcast_to_Handle_TDataStd_NamedData(const Handle_TDF_Attribute* self_) {
     try {
     opencascade::handle<TDataStd_NamedData> result = opencascade::handle<TDataStd_NamedData>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleTDataStdNamedData(result), nullptr};
+    return {new Handle_TDataStd_NamedData(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTDataStdNoteBook*> HandleTDFAttribute_downcast_to_HandleTDataStdNoteBook(const HandleTDFAttribute* self_) {
+extern "C" OcctResult<Handle_TDataStd_NoteBook*> Handle_TDF_Attribute_downcast_to_Handle_TDataStd_NoteBook(const Handle_TDF_Attribute* self_) {
     try {
     opencascade::handle<TDataStd_NoteBook> result = opencascade::handle<TDataStd_NoteBook>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleTDataStdNoteBook(result), nullptr};
+    return {new Handle_TDataStd_NoteBook(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTDataStdReal*> HandleTDFAttribute_downcast_to_HandleTDataStdReal(const HandleTDFAttribute* self_) {
+extern "C" OcctResult<Handle_TDataStd_Real*> Handle_TDF_Attribute_downcast_to_Handle_TDataStd_Real(const Handle_TDF_Attribute* self_) {
     try {
     opencascade::handle<TDataStd_Real> result = opencascade::handle<TDataStd_Real>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleTDataStdReal(result), nullptr};
+    return {new Handle_TDataStd_Real(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTDataStdRealArray*> HandleTDFAttribute_downcast_to_HandleTDataStdRealArray(const HandleTDFAttribute* self_) {
+extern "C" OcctResult<Handle_TDataStd_RealArray*> Handle_TDF_Attribute_downcast_to_Handle_TDataStd_RealArray(const Handle_TDF_Attribute* self_) {
     try {
     opencascade::handle<TDataStd_RealArray> result = opencascade::handle<TDataStd_RealArray>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleTDataStdRealArray(result), nullptr};
+    return {new Handle_TDataStd_RealArray(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTDataStdRealList*> HandleTDFAttribute_downcast_to_HandleTDataStdRealList(const HandleTDFAttribute* self_) {
+extern "C" OcctResult<Handle_TDataStd_RealList*> Handle_TDF_Attribute_downcast_to_Handle_TDataStd_RealList(const Handle_TDF_Attribute* self_) {
     try {
     opencascade::handle<TDataStd_RealList> result = opencascade::handle<TDataStd_RealList>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleTDataStdRealList(result), nullptr};
+    return {new Handle_TDataStd_RealList(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTDataStdReferenceArray*> HandleTDFAttribute_downcast_to_HandleTDataStdReferenceArray(const HandleTDFAttribute* self_) {
+extern "C" OcctResult<Handle_TDataStd_ReferenceArray*> Handle_TDF_Attribute_downcast_to_Handle_TDataStd_ReferenceArray(const Handle_TDF_Attribute* self_) {
     try {
     opencascade::handle<TDataStd_ReferenceArray> result = opencascade::handle<TDataStd_ReferenceArray>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleTDataStdReferenceArray(result), nullptr};
+    return {new Handle_TDataStd_ReferenceArray(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTDataStdReferenceList*> HandleTDFAttribute_downcast_to_HandleTDataStdReferenceList(const HandleTDFAttribute* self_) {
+extern "C" OcctResult<Handle_TDataStd_ReferenceList*> Handle_TDF_Attribute_downcast_to_Handle_TDataStd_ReferenceList(const Handle_TDF_Attribute* self_) {
     try {
     opencascade::handle<TDataStd_ReferenceList> result = opencascade::handle<TDataStd_ReferenceList>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleTDataStdReferenceList(result), nullptr};
+    return {new Handle_TDataStd_ReferenceList(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTDataStdRelation*> HandleTDFAttribute_downcast_to_HandleTDataStdRelation(const HandleTDFAttribute* self_) {
+extern "C" OcctResult<Handle_TDataStd_Relation*> Handle_TDF_Attribute_downcast_to_Handle_TDataStd_Relation(const Handle_TDF_Attribute* self_) {
     try {
     opencascade::handle<TDataStd_Relation> result = opencascade::handle<TDataStd_Relation>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleTDataStdRelation(result), nullptr};
+    return {new Handle_TDataStd_Relation(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTDataStdTick*> HandleTDFAttribute_downcast_to_HandleTDataStdTick(const HandleTDFAttribute* self_) {
+extern "C" OcctResult<Handle_TDataStd_Tick*> Handle_TDF_Attribute_downcast_to_Handle_TDataStd_Tick(const Handle_TDF_Attribute* self_) {
     try {
     opencascade::handle<TDataStd_Tick> result = opencascade::handle<TDataStd_Tick>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleTDataStdTick(result), nullptr};
+    return {new Handle_TDataStd_Tick(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTDataStdTreeNode*> HandleTDFAttribute_downcast_to_HandleTDataStdTreeNode(const HandleTDFAttribute* self_) {
+extern "C" OcctResult<Handle_TDataStd_TreeNode*> Handle_TDF_Attribute_downcast_to_Handle_TDataStd_TreeNode(const Handle_TDF_Attribute* self_) {
     try {
     opencascade::handle<TDataStd_TreeNode> result = opencascade::handle<TDataStd_TreeNode>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleTDataStdTreeNode(result), nullptr};
+    return {new Handle_TDataStd_TreeNode(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTDataStdUAttribute*> HandleTDFAttribute_downcast_to_HandleTDataStdUAttribute(const HandleTDFAttribute* self_) {
+extern "C" OcctResult<Handle_TDataStd_UAttribute*> Handle_TDF_Attribute_downcast_to_Handle_TDataStd_UAttribute(const Handle_TDF_Attribute* self_) {
     try {
     opencascade::handle<TDataStd_UAttribute> result = opencascade::handle<TDataStd_UAttribute>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleTDataStdUAttribute(result), nullptr};
+    return {new Handle_TDataStd_UAttribute(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTDataStdVariable*> HandleTDFAttribute_downcast_to_HandleTDataStdVariable(const HandleTDFAttribute* self_) {
+extern "C" OcctResult<Handle_TDataStd_Variable*> Handle_TDF_Attribute_downcast_to_Handle_TDataStd_Variable(const Handle_TDF_Attribute* self_) {
     try {
     opencascade::handle<TDataStd_Variable> result = opencascade::handle<TDataStd_Variable>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleTDataStdVariable(result), nullptr};
+    return {new Handle_TDataStd_Variable(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTDataXtdAxis*> HandleTDFAttribute_downcast_to_HandleTDataXtdAxis(const HandleTDFAttribute* self_) {
+extern "C" OcctResult<Handle_TDataXtd_Axis*> Handle_TDF_Attribute_downcast_to_Handle_TDataXtd_Axis(const Handle_TDF_Attribute* self_) {
     try {
     opencascade::handle<TDataXtd_Axis> result = opencascade::handle<TDataXtd_Axis>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleTDataXtdAxis(result), nullptr};
+    return {new Handle_TDataXtd_Axis(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTDataXtdConstraint*> HandleTDFAttribute_downcast_to_HandleTDataXtdConstraint(const HandleTDFAttribute* self_) {
+extern "C" OcctResult<Handle_TDataXtd_Constraint*> Handle_TDF_Attribute_downcast_to_Handle_TDataXtd_Constraint(const Handle_TDF_Attribute* self_) {
     try {
     opencascade::handle<TDataXtd_Constraint> result = opencascade::handle<TDataXtd_Constraint>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleTDataXtdConstraint(result), nullptr};
+    return {new Handle_TDataXtd_Constraint(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTDataXtdGeometry*> HandleTDFAttribute_downcast_to_HandleTDataXtdGeometry(const HandleTDFAttribute* self_) {
+extern "C" OcctResult<Handle_TDataXtd_Geometry*> Handle_TDF_Attribute_downcast_to_Handle_TDataXtd_Geometry(const Handle_TDF_Attribute* self_) {
     try {
     opencascade::handle<TDataXtd_Geometry> result = opencascade::handle<TDataXtd_Geometry>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleTDataXtdGeometry(result), nullptr};
+    return {new Handle_TDataXtd_Geometry(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTDataXtdPatternStd*> HandleTDFAttribute_downcast_to_HandleTDataXtdPatternStd(const HandleTDFAttribute* self_) {
+extern "C" OcctResult<Handle_TDataXtd_PatternStd*> Handle_TDF_Attribute_downcast_to_Handle_TDataXtd_PatternStd(const Handle_TDF_Attribute* self_) {
     try {
     opencascade::handle<TDataXtd_PatternStd> result = opencascade::handle<TDataXtd_PatternStd>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleTDataXtdPatternStd(result), nullptr};
+    return {new Handle_TDataXtd_PatternStd(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTDataXtdPlacement*> HandleTDFAttribute_downcast_to_HandleTDataXtdPlacement(const HandleTDFAttribute* self_) {
+extern "C" OcctResult<Handle_TDataXtd_Placement*> Handle_TDF_Attribute_downcast_to_Handle_TDataXtd_Placement(const Handle_TDF_Attribute* self_) {
     try {
     opencascade::handle<TDataXtd_Placement> result = opencascade::handle<TDataXtd_Placement>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleTDataXtdPlacement(result), nullptr};
+    return {new Handle_TDataXtd_Placement(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTDataXtdPlane*> HandleTDFAttribute_downcast_to_HandleTDataXtdPlane(const HandleTDFAttribute* self_) {
+extern "C" OcctResult<Handle_TDataXtd_Plane*> Handle_TDF_Attribute_downcast_to_Handle_TDataXtd_Plane(const Handle_TDF_Attribute* self_) {
     try {
     opencascade::handle<TDataXtd_Plane> result = opencascade::handle<TDataXtd_Plane>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleTDataXtdPlane(result), nullptr};
+    return {new Handle_TDataXtd_Plane(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTDataXtdPoint*> HandleTDFAttribute_downcast_to_HandleTDataXtdPoint(const HandleTDFAttribute* self_) {
+extern "C" OcctResult<Handle_TDataXtd_Point*> Handle_TDF_Attribute_downcast_to_Handle_TDataXtd_Point(const Handle_TDF_Attribute* self_) {
     try {
     opencascade::handle<TDataXtd_Point> result = opencascade::handle<TDataXtd_Point>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleTDataXtdPoint(result), nullptr};
+    return {new Handle_TDataXtd_Point(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTDataXtdPosition*> HandleTDFAttribute_downcast_to_HandleTDataXtdPosition(const HandleTDFAttribute* self_) {
+extern "C" OcctResult<Handle_TDataXtd_Position*> Handle_TDF_Attribute_downcast_to_Handle_TDataXtd_Position(const Handle_TDF_Attribute* self_) {
     try {
     opencascade::handle<TDataXtd_Position> result = opencascade::handle<TDataXtd_Position>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleTDataXtdPosition(result), nullptr};
+    return {new Handle_TDataXtd_Position(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTDataXtdPresentation*> HandleTDFAttribute_downcast_to_HandleTDataXtdPresentation(const HandleTDFAttribute* self_) {
+extern "C" OcctResult<Handle_TDataXtd_Presentation*> Handle_TDF_Attribute_downcast_to_Handle_TDataXtd_Presentation(const Handle_TDF_Attribute* self_) {
     try {
     opencascade::handle<TDataXtd_Presentation> result = opencascade::handle<TDataXtd_Presentation>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleTDataXtdPresentation(result), nullptr};
+    return {new Handle_TDataXtd_Presentation(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTDataXtdShape*> HandleTDFAttribute_downcast_to_HandleTDataXtdShape(const HandleTDFAttribute* self_) {
+extern "C" OcctResult<Handle_TDataXtd_Shape*> Handle_TDF_Attribute_downcast_to_Handle_TDataXtd_Shape(const Handle_TDF_Attribute* self_) {
     try {
     opencascade::handle<TDataXtd_Shape> result = opencascade::handle<TDataXtd_Shape>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleTDataXtdShape(result), nullptr};
+    return {new Handle_TDataXtd_Shape(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTDataXtdTriangulation*> HandleTDFAttribute_downcast_to_HandleTDataXtdTriangulation(const HandleTDFAttribute* self_) {
+extern "C" OcctResult<Handle_TDataXtd_Triangulation*> Handle_TDF_Attribute_downcast_to_Handle_TDataXtd_Triangulation(const Handle_TDF_Attribute* self_) {
     try {
     opencascade::handle<TDataXtd_Triangulation> result = opencascade::handle<TDataXtd_Triangulation>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleTDataXtdTriangulation(result), nullptr};
+    return {new Handle_TDataXtd_Triangulation(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTDocStdModified*> HandleTDFAttribute_downcast_to_HandleTDocStdModified(const HandleTDFAttribute* self_) {
+extern "C" OcctResult<Handle_TDocStd_Modified*> Handle_TDF_Attribute_downcast_to_Handle_TDocStd_Modified(const Handle_TDF_Attribute* self_) {
     try {
     opencascade::handle<TDocStd_Modified> result = opencascade::handle<TDocStd_Modified>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleTDocStdModified(result), nullptr};
+    return {new Handle_TDocStd_Modified(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTDocStdOwner*> HandleTDFAttribute_downcast_to_HandleTDocStdOwner(const HandleTDFAttribute* self_) {
+extern "C" OcctResult<Handle_TDocStd_Owner*> Handle_TDF_Attribute_downcast_to_Handle_TDocStd_Owner(const Handle_TDF_Attribute* self_) {
     try {
     opencascade::handle<TDocStd_Owner> result = opencascade::handle<TDocStd_Owner>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleTDocStdOwner(result), nullptr};
+    return {new Handle_TDocStd_Owner(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTDocStdXLink*> HandleTDFAttribute_downcast_to_HandleTDocStdXLink(const HandleTDFAttribute* self_) {
+extern "C" OcctResult<Handle_TDocStd_XLink*> Handle_TDF_Attribute_downcast_to_Handle_TDocStd_XLink(const Handle_TDF_Attribute* self_) {
     try {
     opencascade::handle<TDocStd_XLink> result = opencascade::handle<TDocStd_XLink>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleTDocStdXLink(result), nullptr};
+    return {new Handle_TDocStd_XLink(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTDocStdXLinkRoot*> HandleTDFAttribute_downcast_to_HandleTDocStdXLinkRoot(const HandleTDFAttribute* self_) {
+extern "C" OcctResult<Handle_TDocStd_XLinkRoot*> Handle_TDF_Attribute_downcast_to_Handle_TDocStd_XLinkRoot(const Handle_TDF_Attribute* self_) {
     try {
     opencascade::handle<TDocStd_XLinkRoot> result = opencascade::handle<TDocStd_XLinkRoot>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleTDocStdXLinkRoot(result), nullptr};
+    return {new Handle_TDocStd_XLinkRoot(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTFunctionFunction*> HandleTDFAttribute_downcast_to_HandleTFunctionFunction(const HandleTDFAttribute* self_) {
+extern "C" OcctResult<Handle_TFunction_Function*> Handle_TDF_Attribute_downcast_to_Handle_TFunction_Function(const Handle_TDF_Attribute* self_) {
     try {
     opencascade::handle<TFunction_Function> result = opencascade::handle<TFunction_Function>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleTFunctionFunction(result), nullptr};
+    return {new Handle_TFunction_Function(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTFunctionGraphNode*> HandleTDFAttribute_downcast_to_HandleTFunctionGraphNode(const HandleTDFAttribute* self_) {
+extern "C" OcctResult<Handle_TFunction_GraphNode*> Handle_TDF_Attribute_downcast_to_Handle_TFunction_GraphNode(const Handle_TDF_Attribute* self_) {
     try {
     opencascade::handle<TFunction_GraphNode> result = opencascade::handle<TFunction_GraphNode>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleTFunctionGraphNode(result), nullptr};
+    return {new Handle_TFunction_GraphNode(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTFunctionLogbook*> HandleTDFAttribute_downcast_to_HandleTFunctionLogbook(const HandleTDFAttribute* self_) {
+extern "C" OcctResult<Handle_TFunction_Logbook*> Handle_TDF_Attribute_downcast_to_Handle_TFunction_Logbook(const Handle_TDF_Attribute* self_) {
     try {
     opencascade::handle<TFunction_Logbook> result = opencascade::handle<TFunction_Logbook>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleTFunctionLogbook(result), nullptr};
+    return {new Handle_TFunction_Logbook(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTFunctionScope*> HandleTDFAttribute_downcast_to_HandleTFunctionScope(const HandleTDFAttribute* self_) {
+extern "C" OcctResult<Handle_TFunction_Scope*> Handle_TDF_Attribute_downcast_to_Handle_TFunction_Scope(const Handle_TDF_Attribute* self_) {
     try {
     opencascade::handle<TFunction_Scope> result = opencascade::handle<TFunction_Scope>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleTFunctionScope(result), nullptr};
+    return {new Handle_TFunction_Scope(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTNamingNamedShape*> HandleTDFAttribute_downcast_to_HandleTNamingNamedShape(const HandleTDFAttribute* self_) {
+extern "C" OcctResult<Handle_TNaming_NamedShape*> Handle_TDF_Attribute_downcast_to_Handle_TNaming_NamedShape(const Handle_TDF_Attribute* self_) {
     try {
     opencascade::handle<TNaming_NamedShape> result = opencascade::handle<TNaming_NamedShape>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleTNamingNamedShape(result), nullptr};
+    return {new Handle_TNaming_NamedShape(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTNamingNaming*> HandleTDFAttribute_downcast_to_HandleTNamingNaming(const HandleTDFAttribute* self_) {
+extern "C" OcctResult<Handle_TNaming_Naming*> Handle_TDF_Attribute_downcast_to_Handle_TNaming_Naming(const Handle_TDF_Attribute* self_) {
     try {
     opencascade::handle<TNaming_Naming> result = opencascade::handle<TNaming_Naming>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleTNamingNaming(result), nullptr};
+    return {new Handle_TNaming_Naming(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTNamingUsedShapes*> HandleTDFAttribute_downcast_to_HandleTNamingUsedShapes(const HandleTDFAttribute* self_) {
+extern "C" OcctResult<Handle_TNaming_UsedShapes*> Handle_TDF_Attribute_downcast_to_Handle_TNaming_UsedShapes(const Handle_TDF_Attribute* self_) {
     try {
     opencascade::handle<TNaming_UsedShapes> result = opencascade::handle<TNaming_UsedShapes>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleTNamingUsedShapes(result), nullptr};
+    return {new Handle_TNaming_UsedShapes(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTObjTIntSparseArray*> HandleTDFAttribute_downcast_to_HandleTObjTIntSparseArray(const HandleTDFAttribute* self_) {
+extern "C" OcctResult<Handle_TObj_TIntSparseArray*> Handle_TDF_Attribute_downcast_to_Handle_TObj_TIntSparseArray(const Handle_TDF_Attribute* self_) {
     try {
     opencascade::handle<TObj_TIntSparseArray> result = opencascade::handle<TObj_TIntSparseArray>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleTObjTIntSparseArray(result), nullptr};
+    return {new Handle_TObj_TIntSparseArray(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTObjTModel*> HandleTDFAttribute_downcast_to_HandleTObjTModel(const HandleTDFAttribute* self_) {
+extern "C" OcctResult<Handle_TObj_TModel*> Handle_TDF_Attribute_downcast_to_Handle_TObj_TModel(const Handle_TDF_Attribute* self_) {
     try {
     opencascade::handle<TObj_TModel> result = opencascade::handle<TObj_TModel>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleTObjTModel(result), nullptr};
+    return {new Handle_TObj_TModel(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTObjTNameContainer*> HandleTDFAttribute_downcast_to_HandleTObjTNameContainer(const HandleTDFAttribute* self_) {
+extern "C" OcctResult<Handle_TObj_TNameContainer*> Handle_TDF_Attribute_downcast_to_Handle_TObj_TNameContainer(const Handle_TDF_Attribute* self_) {
     try {
     opencascade::handle<TObj_TNameContainer> result = opencascade::handle<TObj_TNameContainer>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleTObjTNameContainer(result), nullptr};
+    return {new Handle_TObj_TNameContainer(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTObjTObject*> HandleTDFAttribute_downcast_to_HandleTObjTObject(const HandleTDFAttribute* self_) {
+extern "C" OcctResult<Handle_TObj_TObject*> Handle_TDF_Attribute_downcast_to_Handle_TObj_TObject(const Handle_TDF_Attribute* self_) {
     try {
     opencascade::handle<TObj_TObject> result = opencascade::handle<TObj_TObject>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleTObjTObject(result), nullptr};
+    return {new Handle_TObj_TObject(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTObjTReference*> HandleTDFAttribute_downcast_to_HandleTObjTReference(const HandleTDFAttribute* self_) {
+extern "C" OcctResult<Handle_TObj_TReference*> Handle_TDF_Attribute_downcast_to_Handle_TObj_TReference(const Handle_TDF_Attribute* self_) {
     try {
     opencascade::handle<TObj_TReference> result = opencascade::handle<TObj_TReference>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleTObjTReference(result), nullptr};
+    return {new Handle_TObj_TReference(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTObjTXYZ*> HandleTDFAttribute_downcast_to_HandleTObjTXYZ(const HandleTDFAttribute* self_) {
+extern "C" OcctResult<Handle_TObj_TXYZ*> Handle_TDF_Attribute_downcast_to_Handle_TObj_TXYZ(const Handle_TDF_Attribute* self_) {
     try {
     opencascade::handle<TObj_TXYZ> result = opencascade::handle<TObj_TXYZ>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleTObjTXYZ(result), nullptr};
+    return {new Handle_TObj_TXYZ(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTPrsStdAISPresentation*> HandleTDFAttribute_downcast_to_HandleTPrsStdAISPresentation(const HandleTDFAttribute* self_) {
+extern "C" OcctResult<Handle_TPrsStd_AISPresentation*> Handle_TDF_Attribute_downcast_to_Handle_TPrsStd_AISPresentation(const Handle_TDF_Attribute* self_) {
     try {
     opencascade::handle<TPrsStd_AISPresentation> result = opencascade::handle<TPrsStd_AISPresentation>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleTPrsStdAISPresentation(result), nullptr};
+    return {new Handle_TPrsStd_AISPresentation(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTPrsStdAISViewer*> HandleTDFAttribute_downcast_to_HandleTPrsStdAISViewer(const HandleTDFAttribute* self_) {
+extern "C" OcctResult<Handle_TPrsStd_AISViewer*> Handle_TDF_Attribute_downcast_to_Handle_TPrsStd_AISViewer(const Handle_TDF_Attribute* self_) {
     try {
     opencascade::handle<TPrsStd_AISViewer> result = opencascade::handle<TPrsStd_AISViewer>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleTPrsStdAISViewer(result), nullptr};
+    return {new Handle_TPrsStd_AISViewer(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleXCAFDocArea*> HandleTDFAttribute_downcast_to_HandleXCAFDocArea(const HandleTDFAttribute* self_) {
+extern "C" OcctResult<Handle_XCAFDoc_Area*> Handle_TDF_Attribute_downcast_to_Handle_XCAFDoc_Area(const Handle_TDF_Attribute* self_) {
     try {
     opencascade::handle<XCAFDoc_Area> result = opencascade::handle<XCAFDoc_Area>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleXCAFDocArea(result), nullptr};
+    return {new Handle_XCAFDoc_Area(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleXCAFDocAssemblyItemRef*> HandleTDFAttribute_downcast_to_HandleXCAFDocAssemblyItemRef(const HandleTDFAttribute* self_) {
+extern "C" OcctResult<Handle_XCAFDoc_AssemblyItemRef*> Handle_TDF_Attribute_downcast_to_Handle_XCAFDoc_AssemblyItemRef(const Handle_TDF_Attribute* self_) {
     try {
     opencascade::handle<XCAFDoc_AssemblyItemRef> result = opencascade::handle<XCAFDoc_AssemblyItemRef>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleXCAFDocAssemblyItemRef(result), nullptr};
+    return {new Handle_XCAFDoc_AssemblyItemRef(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleXCAFDocCentroid*> HandleTDFAttribute_downcast_to_HandleXCAFDocCentroid(const HandleTDFAttribute* self_) {
+extern "C" OcctResult<Handle_XCAFDoc_Centroid*> Handle_TDF_Attribute_downcast_to_Handle_XCAFDoc_Centroid(const Handle_TDF_Attribute* self_) {
     try {
     opencascade::handle<XCAFDoc_Centroid> result = opencascade::handle<XCAFDoc_Centroid>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleXCAFDocCentroid(result), nullptr};
+    return {new Handle_XCAFDoc_Centroid(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleXCAFDocClippingPlaneTool*> HandleTDFAttribute_downcast_to_HandleXCAFDocClippingPlaneTool(const HandleTDFAttribute* self_) {
+extern "C" OcctResult<Handle_XCAFDoc_ClippingPlaneTool*> Handle_TDF_Attribute_downcast_to_Handle_XCAFDoc_ClippingPlaneTool(const Handle_TDF_Attribute* self_) {
     try {
     opencascade::handle<XCAFDoc_ClippingPlaneTool> result = opencascade::handle<XCAFDoc_ClippingPlaneTool>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleXCAFDocClippingPlaneTool(result), nullptr};
+    return {new Handle_XCAFDoc_ClippingPlaneTool(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleXCAFDocColor*> HandleTDFAttribute_downcast_to_HandleXCAFDocColor(const HandleTDFAttribute* self_) {
+extern "C" OcctResult<Handle_XCAFDoc_Color*> Handle_TDF_Attribute_downcast_to_Handle_XCAFDoc_Color(const Handle_TDF_Attribute* self_) {
     try {
     opencascade::handle<XCAFDoc_Color> result = opencascade::handle<XCAFDoc_Color>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleXCAFDocColor(result), nullptr};
+    return {new Handle_XCAFDoc_Color(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleXCAFDocColorTool*> HandleTDFAttribute_downcast_to_HandleXCAFDocColorTool(const HandleTDFAttribute* self_) {
+extern "C" OcctResult<Handle_XCAFDoc_ColorTool*> Handle_TDF_Attribute_downcast_to_Handle_XCAFDoc_ColorTool(const Handle_TDF_Attribute* self_) {
     try {
     opencascade::handle<XCAFDoc_ColorTool> result = opencascade::handle<XCAFDoc_ColorTool>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleXCAFDocColorTool(result), nullptr};
+    return {new Handle_XCAFDoc_ColorTool(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleXCAFDocDatum*> HandleTDFAttribute_downcast_to_HandleXCAFDocDatum(const HandleTDFAttribute* self_) {
+extern "C" OcctResult<Handle_XCAFDoc_Datum*> Handle_TDF_Attribute_downcast_to_Handle_XCAFDoc_Datum(const Handle_TDF_Attribute* self_) {
     try {
     opencascade::handle<XCAFDoc_Datum> result = opencascade::handle<XCAFDoc_Datum>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleXCAFDocDatum(result), nullptr};
+    return {new Handle_XCAFDoc_Datum(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleXCAFDocDimTol*> HandleTDFAttribute_downcast_to_HandleXCAFDocDimTol(const HandleTDFAttribute* self_) {
+extern "C" OcctResult<Handle_XCAFDoc_DimTol*> Handle_TDF_Attribute_downcast_to_Handle_XCAFDoc_DimTol(const Handle_TDF_Attribute* self_) {
     try {
     opencascade::handle<XCAFDoc_DimTol> result = opencascade::handle<XCAFDoc_DimTol>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleXCAFDocDimTol(result), nullptr};
+    return {new Handle_XCAFDoc_DimTol(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleXCAFDocDimTolTool*> HandleTDFAttribute_downcast_to_HandleXCAFDocDimTolTool(const HandleTDFAttribute* self_) {
+extern "C" OcctResult<Handle_XCAFDoc_DimTolTool*> Handle_TDF_Attribute_downcast_to_Handle_XCAFDoc_DimTolTool(const Handle_TDF_Attribute* self_) {
     try {
     opencascade::handle<XCAFDoc_DimTolTool> result = opencascade::handle<XCAFDoc_DimTolTool>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleXCAFDocDimTolTool(result), nullptr};
+    return {new Handle_XCAFDoc_DimTolTool(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleXCAFDocDimension*> HandleTDFAttribute_downcast_to_HandleXCAFDocDimension(const HandleTDFAttribute* self_) {
+extern "C" OcctResult<Handle_XCAFDoc_Dimension*> Handle_TDF_Attribute_downcast_to_Handle_XCAFDoc_Dimension(const Handle_TDF_Attribute* self_) {
     try {
     opencascade::handle<XCAFDoc_Dimension> result = opencascade::handle<XCAFDoc_Dimension>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleXCAFDocDimension(result), nullptr};
+    return {new Handle_XCAFDoc_Dimension(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleXCAFDocDocumentTool*> HandleTDFAttribute_downcast_to_HandleXCAFDocDocumentTool(const HandleTDFAttribute* self_) {
+extern "C" OcctResult<Handle_XCAFDoc_DocumentTool*> Handle_TDF_Attribute_downcast_to_Handle_XCAFDoc_DocumentTool(const Handle_TDF_Attribute* self_) {
     try {
     opencascade::handle<XCAFDoc_DocumentTool> result = opencascade::handle<XCAFDoc_DocumentTool>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleXCAFDocDocumentTool(result), nullptr};
+    return {new Handle_XCAFDoc_DocumentTool(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleXCAFDocGeomTolerance*> HandleTDFAttribute_downcast_to_HandleXCAFDocGeomTolerance(const HandleTDFAttribute* self_) {
+extern "C" OcctResult<Handle_XCAFDoc_GeomTolerance*> Handle_TDF_Attribute_downcast_to_Handle_XCAFDoc_GeomTolerance(const Handle_TDF_Attribute* self_) {
     try {
     opencascade::handle<XCAFDoc_GeomTolerance> result = opencascade::handle<XCAFDoc_GeomTolerance>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleXCAFDocGeomTolerance(result), nullptr};
+    return {new Handle_XCAFDoc_GeomTolerance(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleXCAFDocGraphNode*> HandleTDFAttribute_downcast_to_HandleXCAFDocGraphNode(const HandleTDFAttribute* self_) {
+extern "C" OcctResult<Handle_XCAFDoc_GraphNode*> Handle_TDF_Attribute_downcast_to_Handle_XCAFDoc_GraphNode(const Handle_TDF_Attribute* self_) {
     try {
     opencascade::handle<XCAFDoc_GraphNode> result = opencascade::handle<XCAFDoc_GraphNode>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleXCAFDocGraphNode(result), nullptr};
+    return {new Handle_XCAFDoc_GraphNode(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleXCAFDocLayerTool*> HandleTDFAttribute_downcast_to_HandleXCAFDocLayerTool(const HandleTDFAttribute* self_) {
+extern "C" OcctResult<Handle_XCAFDoc_LayerTool*> Handle_TDF_Attribute_downcast_to_Handle_XCAFDoc_LayerTool(const Handle_TDF_Attribute* self_) {
     try {
     opencascade::handle<XCAFDoc_LayerTool> result = opencascade::handle<XCAFDoc_LayerTool>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleXCAFDocLayerTool(result), nullptr};
+    return {new Handle_XCAFDoc_LayerTool(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleXCAFDocLengthUnit*> HandleTDFAttribute_downcast_to_HandleXCAFDocLengthUnit(const HandleTDFAttribute* self_) {
+extern "C" OcctResult<Handle_XCAFDoc_LengthUnit*> Handle_TDF_Attribute_downcast_to_Handle_XCAFDoc_LengthUnit(const Handle_TDF_Attribute* self_) {
     try {
     opencascade::handle<XCAFDoc_LengthUnit> result = opencascade::handle<XCAFDoc_LengthUnit>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleXCAFDocLengthUnit(result), nullptr};
+    return {new Handle_XCAFDoc_LengthUnit(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleXCAFDocLocation*> HandleTDFAttribute_downcast_to_HandleXCAFDocLocation(const HandleTDFAttribute* self_) {
+extern "C" OcctResult<Handle_XCAFDoc_Location*> Handle_TDF_Attribute_downcast_to_Handle_XCAFDoc_Location(const Handle_TDF_Attribute* self_) {
     try {
     opencascade::handle<XCAFDoc_Location> result = opencascade::handle<XCAFDoc_Location>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleXCAFDocLocation(result), nullptr};
+    return {new Handle_XCAFDoc_Location(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleXCAFDocMaterial*> HandleTDFAttribute_downcast_to_HandleXCAFDocMaterial(const HandleTDFAttribute* self_) {
+extern "C" OcctResult<Handle_XCAFDoc_Material*> Handle_TDF_Attribute_downcast_to_Handle_XCAFDoc_Material(const Handle_TDF_Attribute* self_) {
     try {
     opencascade::handle<XCAFDoc_Material> result = opencascade::handle<XCAFDoc_Material>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleXCAFDocMaterial(result), nullptr};
+    return {new Handle_XCAFDoc_Material(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleXCAFDocMaterialTool*> HandleTDFAttribute_downcast_to_HandleXCAFDocMaterialTool(const HandleTDFAttribute* self_) {
+extern "C" OcctResult<Handle_XCAFDoc_MaterialTool*> Handle_TDF_Attribute_downcast_to_Handle_XCAFDoc_MaterialTool(const Handle_TDF_Attribute* self_) {
     try {
     opencascade::handle<XCAFDoc_MaterialTool> result = opencascade::handle<XCAFDoc_MaterialTool>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleXCAFDocMaterialTool(result), nullptr};
+    return {new Handle_XCAFDoc_MaterialTool(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleXCAFDocNote*> HandleTDFAttribute_downcast_to_HandleXCAFDocNote(const HandleTDFAttribute* self_) {
+extern "C" OcctResult<Handle_XCAFDoc_Note*> Handle_TDF_Attribute_downcast_to_Handle_XCAFDoc_Note(const Handle_TDF_Attribute* self_) {
     try {
     opencascade::handle<XCAFDoc_Note> result = opencascade::handle<XCAFDoc_Note>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleXCAFDocNote(result), nullptr};
+    return {new Handle_XCAFDoc_Note(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleXCAFDocNoteBalloon*> HandleTDFAttribute_downcast_to_HandleXCAFDocNoteBalloon(const HandleTDFAttribute* self_) {
+extern "C" OcctResult<Handle_XCAFDoc_NoteBalloon*> Handle_TDF_Attribute_downcast_to_Handle_XCAFDoc_NoteBalloon(const Handle_TDF_Attribute* self_) {
     try {
     opencascade::handle<XCAFDoc_NoteBalloon> result = opencascade::handle<XCAFDoc_NoteBalloon>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleXCAFDocNoteBalloon(result), nullptr};
+    return {new Handle_XCAFDoc_NoteBalloon(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleXCAFDocNoteBinData*> HandleTDFAttribute_downcast_to_HandleXCAFDocNoteBinData(const HandleTDFAttribute* self_) {
+extern "C" OcctResult<Handle_XCAFDoc_NoteBinData*> Handle_TDF_Attribute_downcast_to_Handle_XCAFDoc_NoteBinData(const Handle_TDF_Attribute* self_) {
     try {
     opencascade::handle<XCAFDoc_NoteBinData> result = opencascade::handle<XCAFDoc_NoteBinData>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleXCAFDocNoteBinData(result), nullptr};
+    return {new Handle_XCAFDoc_NoteBinData(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleXCAFDocNoteComment*> HandleTDFAttribute_downcast_to_HandleXCAFDocNoteComment(const HandleTDFAttribute* self_) {
+extern "C" OcctResult<Handle_XCAFDoc_NoteComment*> Handle_TDF_Attribute_downcast_to_Handle_XCAFDoc_NoteComment(const Handle_TDF_Attribute* self_) {
     try {
     opencascade::handle<XCAFDoc_NoteComment> result = opencascade::handle<XCAFDoc_NoteComment>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleXCAFDocNoteComment(result), nullptr};
+    return {new Handle_XCAFDoc_NoteComment(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleXCAFDocNotesTool*> HandleTDFAttribute_downcast_to_HandleXCAFDocNotesTool(const HandleTDFAttribute* self_) {
+extern "C" OcctResult<Handle_XCAFDoc_NotesTool*> Handle_TDF_Attribute_downcast_to_Handle_XCAFDoc_NotesTool(const Handle_TDF_Attribute* self_) {
     try {
     opencascade::handle<XCAFDoc_NotesTool> result = opencascade::handle<XCAFDoc_NotesTool>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleXCAFDocNotesTool(result), nullptr};
+    return {new Handle_XCAFDoc_NotesTool(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleXCAFDocShapeMapTool*> HandleTDFAttribute_downcast_to_HandleXCAFDocShapeMapTool(const HandleTDFAttribute* self_) {
+extern "C" OcctResult<Handle_XCAFDoc_ShapeMapTool*> Handle_TDF_Attribute_downcast_to_Handle_XCAFDoc_ShapeMapTool(const Handle_TDF_Attribute* self_) {
     try {
     opencascade::handle<XCAFDoc_ShapeMapTool> result = opencascade::handle<XCAFDoc_ShapeMapTool>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleXCAFDocShapeMapTool(result), nullptr};
+    return {new Handle_XCAFDoc_ShapeMapTool(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleXCAFDocShapeTool*> HandleTDFAttribute_downcast_to_HandleXCAFDocShapeTool(const HandleTDFAttribute* self_) {
+extern "C" OcctResult<Handle_XCAFDoc_ShapeTool*> Handle_TDF_Attribute_downcast_to_Handle_XCAFDoc_ShapeTool(const Handle_TDF_Attribute* self_) {
     try {
     opencascade::handle<XCAFDoc_ShapeTool> result = opencascade::handle<XCAFDoc_ShapeTool>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleXCAFDocShapeTool(result), nullptr};
+    return {new Handle_XCAFDoc_ShapeTool(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleXCAFDocView*> HandleTDFAttribute_downcast_to_HandleXCAFDocView(const HandleTDFAttribute* self_) {
+extern "C" OcctResult<Handle_XCAFDoc_View*> Handle_TDF_Attribute_downcast_to_Handle_XCAFDoc_View(const Handle_TDF_Attribute* self_) {
     try {
     opencascade::handle<XCAFDoc_View> result = opencascade::handle<XCAFDoc_View>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleXCAFDocView(result), nullptr};
+    return {new Handle_XCAFDoc_View(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleXCAFDocViewTool*> HandleTDFAttribute_downcast_to_HandleXCAFDocViewTool(const HandleTDFAttribute* self_) {
+extern "C" OcctResult<Handle_XCAFDoc_ViewTool*> Handle_TDF_Attribute_downcast_to_Handle_XCAFDoc_ViewTool(const Handle_TDF_Attribute* self_) {
     try {
     opencascade::handle<XCAFDoc_ViewTool> result = opencascade::handle<XCAFDoc_ViewTool>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleXCAFDocViewTool(result), nullptr};
+    return {new Handle_XCAFDoc_ViewTool(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleXCAFDocVisMaterial*> HandleTDFAttribute_downcast_to_HandleXCAFDocVisMaterial(const HandleTDFAttribute* self_) {
+extern "C" OcctResult<Handle_XCAFDoc_VisMaterial*> Handle_TDF_Attribute_downcast_to_Handle_XCAFDoc_VisMaterial(const Handle_TDF_Attribute* self_) {
     try {
     opencascade::handle<XCAFDoc_VisMaterial> result = opencascade::handle<XCAFDoc_VisMaterial>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleXCAFDocVisMaterial(result), nullptr};
+    return {new Handle_XCAFDoc_VisMaterial(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleXCAFDocVisMaterialTool*> HandleTDFAttribute_downcast_to_HandleXCAFDocVisMaterialTool(const HandleTDFAttribute* self_) {
+extern "C" OcctResult<Handle_XCAFDoc_VisMaterialTool*> Handle_TDF_Attribute_downcast_to_Handle_XCAFDoc_VisMaterialTool(const Handle_TDF_Attribute* self_) {
     try {
     opencascade::handle<XCAFDoc_VisMaterialTool> result = opencascade::handle<XCAFDoc_VisMaterialTool>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleXCAFDocVisMaterialTool(result), nullptr};
+    return {new Handle_XCAFDoc_VisMaterialTool(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleXCAFDocVolume*> HandleTDFAttribute_downcast_to_HandleXCAFDocVolume(const HandleTDFAttribute* self_) {
+extern "C" OcctResult<Handle_XCAFDoc_Volume*> Handle_TDF_Attribute_downcast_to_Handle_XCAFDoc_Volume(const Handle_TDF_Attribute* self_) {
     try {
     opencascade::handle<XCAFDoc_Volume> result = opencascade::handle<XCAFDoc_Volume>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleXCAFDocVolume(result), nullptr};
+    return {new Handle_XCAFDoc_Volume(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
@@ -2008,127 +1936,127 @@ extern "C" OcctResult<Handle(Standard_Type) const*> TDF_AttributeDelta_get_type_
 }
 extern "C" OcctResult<const Standard_Transient*> TDF_AttributeDelta_as_Standard_Transient(const TDF_AttributeDelta* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> TDF_AttributeDelta_as_Standard_Transient_mut(TDF_AttributeDelta* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<const TDF_AttributeDelta*> HandleTDFAttributeDelta_get(const HandleTDFAttributeDelta* handle) {
+extern "C" OcctResult<const TDF_AttributeDelta*> Handle_TDF_AttributeDelta_get(const Handle_TDF_AttributeDelta* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TDF_AttributeDelta*> HandleTDFAttributeDelta_get_mut(HandleTDFAttributeDelta* handle) {
+extern "C" OcctResult<TDF_AttributeDelta*> Handle_TDF_AttributeDelta_get_mut(Handle_TDF_AttributeDelta* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleTDFAttributeDelta_to_HandleStandardTransient(const HandleTDFAttributeDelta* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_TDF_AttributeDelta_to_Handle_Standard_Transient(const Handle_TDF_AttributeDelta* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTDFDefaultDeltaOnModification*> HandleTDFAttributeDelta_downcast_to_HandleTDFDefaultDeltaOnModification(const HandleTDFAttributeDelta* self_) {
+extern "C" OcctResult<Handle_TDF_DefaultDeltaOnModification*> Handle_TDF_AttributeDelta_downcast_to_Handle_TDF_DefaultDeltaOnModification(const Handle_TDF_AttributeDelta* self_) {
     try {
     opencascade::handle<TDF_DefaultDeltaOnModification> result = opencascade::handle<TDF_DefaultDeltaOnModification>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleTDFDefaultDeltaOnModification(result), nullptr};
+    return {new Handle_TDF_DefaultDeltaOnModification(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTDFDefaultDeltaOnRemoval*> HandleTDFAttributeDelta_downcast_to_HandleTDFDefaultDeltaOnRemoval(const HandleTDFAttributeDelta* self_) {
+extern "C" OcctResult<Handle_TDF_DefaultDeltaOnRemoval*> Handle_TDF_AttributeDelta_downcast_to_Handle_TDF_DefaultDeltaOnRemoval(const Handle_TDF_AttributeDelta* self_) {
     try {
     opencascade::handle<TDF_DefaultDeltaOnRemoval> result = opencascade::handle<TDF_DefaultDeltaOnRemoval>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleTDFDefaultDeltaOnRemoval(result), nullptr};
+    return {new Handle_TDF_DefaultDeltaOnRemoval(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTDFDeltaOnAddition*> HandleTDFAttributeDelta_downcast_to_HandleTDFDeltaOnAddition(const HandleTDFAttributeDelta* self_) {
+extern "C" OcctResult<Handle_TDF_DeltaOnAddition*> Handle_TDF_AttributeDelta_downcast_to_Handle_TDF_DeltaOnAddition(const Handle_TDF_AttributeDelta* self_) {
     try {
     opencascade::handle<TDF_DeltaOnAddition> result = opencascade::handle<TDF_DeltaOnAddition>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleTDFDeltaOnAddition(result), nullptr};
+    return {new Handle_TDF_DeltaOnAddition(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTDFDeltaOnForget*> HandleTDFAttributeDelta_downcast_to_HandleTDFDeltaOnForget(const HandleTDFAttributeDelta* self_) {
+extern "C" OcctResult<Handle_TDF_DeltaOnForget*> Handle_TDF_AttributeDelta_downcast_to_Handle_TDF_DeltaOnForget(const Handle_TDF_AttributeDelta* self_) {
     try {
     opencascade::handle<TDF_DeltaOnForget> result = opencascade::handle<TDF_DeltaOnForget>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleTDFDeltaOnForget(result), nullptr};
+    return {new Handle_TDF_DeltaOnForget(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTDFDeltaOnModification*> HandleTDFAttributeDelta_downcast_to_HandleTDFDeltaOnModification(const HandleTDFAttributeDelta* self_) {
+extern "C" OcctResult<Handle_TDF_DeltaOnModification*> Handle_TDF_AttributeDelta_downcast_to_Handle_TDF_DeltaOnModification(const Handle_TDF_AttributeDelta* self_) {
     try {
     opencascade::handle<TDF_DeltaOnModification> result = opencascade::handle<TDF_DeltaOnModification>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleTDFDeltaOnModification(result), nullptr};
+    return {new Handle_TDF_DeltaOnModification(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTDFDeltaOnRemoval*> HandleTDFAttributeDelta_downcast_to_HandleTDFDeltaOnRemoval(const HandleTDFAttributeDelta* self_) {
+extern "C" OcctResult<Handle_TDF_DeltaOnRemoval*> Handle_TDF_AttributeDelta_downcast_to_Handle_TDF_DeltaOnRemoval(const Handle_TDF_AttributeDelta* self_) {
     try {
     opencascade::handle<TDF_DeltaOnRemoval> result = opencascade::handle<TDF_DeltaOnRemoval>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleTDFDeltaOnRemoval(result), nullptr};
+    return {new Handle_TDF_DeltaOnRemoval(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTDFDeltaOnResume*> HandleTDFAttributeDelta_downcast_to_HandleTDFDeltaOnResume(const HandleTDFAttributeDelta* self_) {
+extern "C" OcctResult<Handle_TDF_DeltaOnResume*> Handle_TDF_AttributeDelta_downcast_to_Handle_TDF_DeltaOnResume(const Handle_TDF_AttributeDelta* self_) {
     try {
     opencascade::handle<TDF_DeltaOnResume> result = opencascade::handle<TDF_DeltaOnResume>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleTDFDeltaOnResume(result), nullptr};
+    return {new Handle_TDF_DeltaOnResume(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTDataStdDeltaOnModificationOfByteArray*> HandleTDFAttributeDelta_downcast_to_HandleTDataStdDeltaOnModificationOfByteArray(const HandleTDFAttributeDelta* self_) {
+extern "C" OcctResult<Handle_TDataStd_DeltaOnModificationOfByteArray*> Handle_TDF_AttributeDelta_downcast_to_Handle_TDataStd_DeltaOnModificationOfByteArray(const Handle_TDF_AttributeDelta* self_) {
     try {
     opencascade::handle<TDataStd_DeltaOnModificationOfByteArray> result = opencascade::handle<TDataStd_DeltaOnModificationOfByteArray>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleTDataStdDeltaOnModificationOfByteArray(result), nullptr};
+    return {new Handle_TDataStd_DeltaOnModificationOfByteArray(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTDataStdDeltaOnModificationOfExtStringArray*> HandleTDFAttributeDelta_downcast_to_HandleTDataStdDeltaOnModificationOfExtStringArray(const HandleTDFAttributeDelta* self_) {
+extern "C" OcctResult<Handle_TDataStd_DeltaOnModificationOfExtStringArray*> Handle_TDF_AttributeDelta_downcast_to_Handle_TDataStd_DeltaOnModificationOfExtStringArray(const Handle_TDF_AttributeDelta* self_) {
     try {
     opencascade::handle<TDataStd_DeltaOnModificationOfExtStringArray> result = opencascade::handle<TDataStd_DeltaOnModificationOfExtStringArray>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleTDataStdDeltaOnModificationOfExtStringArray(result), nullptr};
+    return {new Handle_TDataStd_DeltaOnModificationOfExtStringArray(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTDataStdDeltaOnModificationOfIntArray*> HandleTDFAttributeDelta_downcast_to_HandleTDataStdDeltaOnModificationOfIntArray(const HandleTDFAttributeDelta* self_) {
+extern "C" OcctResult<Handle_TDataStd_DeltaOnModificationOfIntArray*> Handle_TDF_AttributeDelta_downcast_to_Handle_TDataStd_DeltaOnModificationOfIntArray(const Handle_TDF_AttributeDelta* self_) {
     try {
     opencascade::handle<TDataStd_DeltaOnModificationOfIntArray> result = opencascade::handle<TDataStd_DeltaOnModificationOfIntArray>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleTDataStdDeltaOnModificationOfIntArray(result), nullptr};
+    return {new Handle_TDataStd_DeltaOnModificationOfIntArray(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTDataStdDeltaOnModificationOfIntPackedMap*> HandleTDFAttributeDelta_downcast_to_HandleTDataStdDeltaOnModificationOfIntPackedMap(const HandleTDFAttributeDelta* self_) {
+extern "C" OcctResult<Handle_TDataStd_DeltaOnModificationOfIntPackedMap*> Handle_TDF_AttributeDelta_downcast_to_Handle_TDataStd_DeltaOnModificationOfIntPackedMap(const Handle_TDF_AttributeDelta* self_) {
     try {
     opencascade::handle<TDataStd_DeltaOnModificationOfIntPackedMap> result = opencascade::handle<TDataStd_DeltaOnModificationOfIntPackedMap>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleTDataStdDeltaOnModificationOfIntPackedMap(result), nullptr};
+    return {new Handle_TDataStd_DeltaOnModificationOfIntPackedMap(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTDataStdDeltaOnModificationOfRealArray*> HandleTDFAttributeDelta_downcast_to_HandleTDataStdDeltaOnModificationOfRealArray(const HandleTDFAttributeDelta* self_) {
+extern "C" OcctResult<Handle_TDataStd_DeltaOnModificationOfRealArray*> Handle_TDF_AttributeDelta_downcast_to_Handle_TDataStd_DeltaOnModificationOfRealArray(const Handle_TDF_AttributeDelta* self_) {
     try {
     opencascade::handle<TDataStd_DeltaOnModificationOfRealArray> result = opencascade::handle<TDataStd_DeltaOnModificationOfRealArray>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleTDataStdDeltaOnModificationOfRealArray(result), nullptr};
+    return {new Handle_TDataStd_DeltaOnModificationOfRealArray(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTNamingDeltaOnModification*> HandleTDFAttributeDelta_downcast_to_HandleTNamingDeltaOnModification(const HandleTDFAttributeDelta* self_) {
+extern "C" OcctResult<Handle_TNaming_DeltaOnModification*> Handle_TDF_AttributeDelta_downcast_to_Handle_TNaming_DeltaOnModification(const Handle_TDF_AttributeDelta* self_) {
     try {
     opencascade::handle<TNaming_DeltaOnModification> result = opencascade::handle<TNaming_DeltaOnModification>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleTNamingDeltaOnModification(result), nullptr};
+    return {new Handle_TNaming_DeltaOnModification(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTNamingDeltaOnRemoval*> HandleTDFAttributeDelta_downcast_to_HandleTNamingDeltaOnRemoval(const HandleTDFAttributeDelta* self_) {
+extern "C" OcctResult<Handle_TNaming_DeltaOnRemoval*> Handle_TDF_AttributeDelta_downcast_to_Handle_TNaming_DeltaOnRemoval(const Handle_TDF_AttributeDelta* self_) {
     try {
     opencascade::handle<TNaming_DeltaOnRemoval> result = opencascade::handle<TNaming_DeltaOnRemoval>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleTNamingDeltaOnRemoval(result), nullptr};
+    return {new Handle_TNaming_DeltaOnRemoval(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
@@ -2306,10 +2234,6 @@ extern "C" const char* TDF_ClosureTool_closure_handletdfdataset_idfilter_closure
     try { TDF_ClosureTool::Closure(*aDataSet, *aFilter, *aMode); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* TDF_ClosureTool_closure_label_labelmap_attributemap_idfilter_closuremode(TDF_Label const* aLabel, TDF_LabelMap* aLabMap, TDF_AttributeMap* anAttMap, TDF_IDFilter const* aFilter, TDF_ClosureMode const* aMode) {
-    try { TDF_ClosureTool::Closure(*aLabel, *aLabMap, *anAttMap, *aFilter, *aMode); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
 extern "C" void TDF_ClosureTool_destructor(TDF_ClosureTool* self_) { delete self_; }
 
 // ========================
@@ -2373,14 +2297,6 @@ extern "C" OcctResult<bool> TDF_CopyLabel_is_done(const TDF_CopyLabel* self_) {
 extern "C" OcctResult<Handle(TDF_RelocationTable) const*> TDF_CopyLabel_relocation_table(const TDF_CopyLabel* self_) {
     try { return {&(self_->RelocationTable()), nullptr}; }
     OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<bool> TDF_CopyLabel_external_references_label_attributemap_idfilter(TDF_Label const* Lab, TDF_AttributeMap* aExternals, TDF_IDFilter const* aFilter) {
-    try { return {TDF_CopyLabel::ExternalReferences(*Lab, *aExternals, *aFilter), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* TDF_CopyLabel_external_references_label2_attributemap_idfilter_handletdfdataset(TDF_Label const* aRefLab, TDF_Label const* Lab, TDF_AttributeMap* aExternals, TDF_IDFilter const* aFilter, Handle(TDF_DataSet)* aDataSet) {
-    try { TDF_CopyLabel::ExternalReferences(*aRefLab, *Lab, *aExternals, *aFilter, *aDataSet); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
 }
 extern "C" void TDF_CopyLabel_destructor(TDF_CopyLabel* self_) { delete self_; }
 
@@ -2488,20 +2404,20 @@ extern "C" OcctResult<Handle(Standard_Type) const*> TDF_Data_get_type_descriptor
 }
 extern "C" OcctResult<const Standard_Transient*> TDF_Data_as_Standard_Transient(const TDF_Data* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> TDF_Data_as_Standard_Transient_mut(TDF_Data* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleTDFData*> TDF_Data_to_handle(TDF_Data* obj) {
-    try { return {new HandleTDFData(obj), nullptr}; }
+extern "C" OcctResult<Handle_TDF_Data*> TDF_Data_to_handle(TDF_Data* obj) {
+    try { return {new Handle_TDF_Data(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const TDF_Data*> HandleTDFData_get(const HandleTDFData* handle) {
+extern "C" OcctResult<const TDF_Data*> Handle_TDF_Data_get(const Handle_TDF_Data* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TDF_Data*> HandleTDFData_get_mut(HandleTDFData* handle) {
+extern "C" OcctResult<TDF_Data*> Handle_TDF_Data_get_mut(Handle_TDF_Data* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleTDFData_to_HandleStandardTransient(const HandleTDFData* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_TDF_Data_to_Handle_Standard_Transient(const Handle_TDF_Data* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> TDF_Data_inherited_IsInstance(const TDF_Data* self, Handle(Standard_Type) const& theType) {
@@ -2558,7 +2474,7 @@ extern "C" OcctResult<bool> TDF_DataSet_contains_label(const TDF_DataSet* self_,
     try { return {self_->ContainsLabel(*aLabel), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TDF_LabelMap*> TDF_DataSet_labels(TDF_DataSet* self_) {
+extern "C" OcctResult<NCollection_Map_TDF_Label*> TDF_DataSet_labels(TDF_DataSet* self_) {
     try { return {&(self_->Labels()), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -2570,15 +2486,11 @@ extern "C" OcctResult<bool> TDF_DataSet_contains_attribute(const TDF_DataSet* se
     try { return {self_->ContainsAttribute(*anAttribute), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TDF_AttributeMap*> TDF_DataSet_attributes(TDF_DataSet* self_) {
-    try { return {&(self_->Attributes()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
 extern "C" const char* TDF_DataSet_add_root(TDF_DataSet* self_, TDF_Label const* aLabel) {
     try { self_->AddRoot(*aLabel); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<TDF_LabelList*> TDF_DataSet_roots(TDF_DataSet* self_) {
+extern "C" OcctResult<NCollection_List_TDF_Label*> TDF_DataSet_roots(TDF_DataSet* self_) {
     try { return {&(self_->Roots()), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -2600,20 +2512,20 @@ extern "C" OcctResult<Handle(Standard_Type) const*> TDF_DataSet_get_type_descrip
 }
 extern "C" OcctResult<const Standard_Transient*> TDF_DataSet_as_Standard_Transient(const TDF_DataSet* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> TDF_DataSet_as_Standard_Transient_mut(TDF_DataSet* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleTDFDataSet*> TDF_DataSet_to_handle(TDF_DataSet* obj) {
-    try { return {new HandleTDFDataSet(obj), nullptr}; }
+extern "C" OcctResult<Handle_TDF_DataSet*> TDF_DataSet_to_handle(TDF_DataSet* obj) {
+    try { return {new Handle_TDF_DataSet(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const TDF_DataSet*> HandleTDFDataSet_get(const HandleTDFDataSet* handle) {
+extern "C" OcctResult<const TDF_DataSet*> Handle_TDF_DataSet_get(const Handle_TDF_DataSet* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TDF_DataSet*> HandleTDFDataSet_get_mut(HandleTDFDataSet* handle) {
+extern "C" OcctResult<TDF_DataSet*> Handle_TDF_DataSet_get_mut(Handle_TDF_DataSet* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleTDFDataSet_to_HandleStandardTransient(const HandleTDFDataSet* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_TDF_DataSet_to_Handle_Standard_Transient(const Handle_TDF_DataSet* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> TDF_DataSet_inherited_IsInstance(const TDF_DataSet* self, Handle(Standard_Type) const& theType) {
@@ -2676,28 +2588,28 @@ extern "C" OcctResult<const TDF_AttributeDelta*> TDF_DefaultDeltaOnModification_
 extern "C" OcctResult<TDF_AttributeDelta*> TDF_DefaultDeltaOnModification_as_TDF_AttributeDelta_mut(TDF_DefaultDeltaOnModification* self_) { return {static_cast<TDF_AttributeDelta*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> TDF_DefaultDeltaOnModification_as_Standard_Transient(const TDF_DefaultDeltaOnModification* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> TDF_DefaultDeltaOnModification_as_Standard_Transient_mut(TDF_DefaultDeltaOnModification* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleTDFDefaultDeltaOnModification*> TDF_DefaultDeltaOnModification_to_handle(TDF_DefaultDeltaOnModification* obj) {
-    try { return {new HandleTDFDefaultDeltaOnModification(obj), nullptr}; }
+extern "C" OcctResult<Handle_TDF_DefaultDeltaOnModification*> TDF_DefaultDeltaOnModification_to_handle(TDF_DefaultDeltaOnModification* obj) {
+    try { return {new Handle_TDF_DefaultDeltaOnModification(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const TDF_DefaultDeltaOnModification*> HandleTDFDefaultDeltaOnModification_get(const HandleTDFDefaultDeltaOnModification* handle) {
+extern "C" OcctResult<const TDF_DefaultDeltaOnModification*> Handle_TDF_DefaultDeltaOnModification_get(const Handle_TDF_DefaultDeltaOnModification* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TDF_DefaultDeltaOnModification*> HandleTDFDefaultDeltaOnModification_get_mut(HandleTDFDefaultDeltaOnModification* handle) {
+extern "C" OcctResult<TDF_DefaultDeltaOnModification*> Handle_TDF_DefaultDeltaOnModification_get_mut(Handle_TDF_DefaultDeltaOnModification* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTDFDeltaOnModification*> HandleTDFDefaultDeltaOnModification_to_HandleTDFDeltaOnModification(const HandleTDFDefaultDeltaOnModification* self_) {
-    try { return {new HandleTDFDeltaOnModification(*self_), nullptr}; }
+extern "C" OcctResult<Handle_TDF_DeltaOnModification*> Handle_TDF_DefaultDeltaOnModification_to_Handle_TDF_DeltaOnModification(const Handle_TDF_DefaultDeltaOnModification* self_) {
+    try { return {new Handle_TDF_DeltaOnModification(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTDFAttributeDelta*> HandleTDFDefaultDeltaOnModification_to_HandleTDFAttributeDelta(const HandleTDFDefaultDeltaOnModification* self_) {
-    try { return {new HandleTDFAttributeDelta(*self_), nullptr}; }
+extern "C" OcctResult<Handle_TDF_AttributeDelta*> Handle_TDF_DefaultDeltaOnModification_to_Handle_TDF_AttributeDelta(const Handle_TDF_DefaultDeltaOnModification* self_) {
+    try { return {new Handle_TDF_AttributeDelta(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleTDFDefaultDeltaOnModification_to_HandleStandardTransient(const HandleTDFDefaultDeltaOnModification* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_TDF_DefaultDeltaOnModification_to_Handle_Standard_Transient(const Handle_TDF_DefaultDeltaOnModification* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<TDF_Label*> TDF_DefaultDeltaOnModification_inherited_Label(const TDF_DefaultDeltaOnModification* self) {
@@ -2772,28 +2684,28 @@ extern "C" OcctResult<const TDF_AttributeDelta*> TDF_DefaultDeltaOnRemoval_as_TD
 extern "C" OcctResult<TDF_AttributeDelta*> TDF_DefaultDeltaOnRemoval_as_TDF_AttributeDelta_mut(TDF_DefaultDeltaOnRemoval* self_) { return {static_cast<TDF_AttributeDelta*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> TDF_DefaultDeltaOnRemoval_as_Standard_Transient(const TDF_DefaultDeltaOnRemoval* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> TDF_DefaultDeltaOnRemoval_as_Standard_Transient_mut(TDF_DefaultDeltaOnRemoval* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleTDFDefaultDeltaOnRemoval*> TDF_DefaultDeltaOnRemoval_to_handle(TDF_DefaultDeltaOnRemoval* obj) {
-    try { return {new HandleTDFDefaultDeltaOnRemoval(obj), nullptr}; }
+extern "C" OcctResult<Handle_TDF_DefaultDeltaOnRemoval*> TDF_DefaultDeltaOnRemoval_to_handle(TDF_DefaultDeltaOnRemoval* obj) {
+    try { return {new Handle_TDF_DefaultDeltaOnRemoval(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const TDF_DefaultDeltaOnRemoval*> HandleTDFDefaultDeltaOnRemoval_get(const HandleTDFDefaultDeltaOnRemoval* handle) {
+extern "C" OcctResult<const TDF_DefaultDeltaOnRemoval*> Handle_TDF_DefaultDeltaOnRemoval_get(const Handle_TDF_DefaultDeltaOnRemoval* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TDF_DefaultDeltaOnRemoval*> HandleTDFDefaultDeltaOnRemoval_get_mut(HandleTDFDefaultDeltaOnRemoval* handle) {
+extern "C" OcctResult<TDF_DefaultDeltaOnRemoval*> Handle_TDF_DefaultDeltaOnRemoval_get_mut(Handle_TDF_DefaultDeltaOnRemoval* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTDFDeltaOnRemoval*> HandleTDFDefaultDeltaOnRemoval_to_HandleTDFDeltaOnRemoval(const HandleTDFDefaultDeltaOnRemoval* self_) {
-    try { return {new HandleTDFDeltaOnRemoval(*self_), nullptr}; }
+extern "C" OcctResult<Handle_TDF_DeltaOnRemoval*> Handle_TDF_DefaultDeltaOnRemoval_to_Handle_TDF_DeltaOnRemoval(const Handle_TDF_DefaultDeltaOnRemoval* self_) {
+    try { return {new Handle_TDF_DeltaOnRemoval(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTDFAttributeDelta*> HandleTDFDefaultDeltaOnRemoval_to_HandleTDFAttributeDelta(const HandleTDFDefaultDeltaOnRemoval* self_) {
-    try { return {new HandleTDFAttributeDelta(*self_), nullptr}; }
+extern "C" OcctResult<Handle_TDF_AttributeDelta*> Handle_TDF_DefaultDeltaOnRemoval_to_Handle_TDF_AttributeDelta(const Handle_TDF_DefaultDeltaOnRemoval* self_) {
+    try { return {new Handle_TDF_AttributeDelta(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleTDFDefaultDeltaOnRemoval_to_HandleStandardTransient(const HandleTDFDefaultDeltaOnRemoval* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_TDF_DefaultDeltaOnRemoval_to_Handle_Standard_Transient(const Handle_TDF_DefaultDeltaOnRemoval* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<TDF_Label*> TDF_DefaultDeltaOnRemoval_inherited_Label(const TDF_DefaultDeltaOnRemoval* self) {
@@ -2866,13 +2778,9 @@ extern "C" OcctResult<int32_t> TDF_Delta_end_time(const TDF_Delta* self_) {
     try { return {self_->EndTime(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* TDF_Delta_labels(const TDF_Delta* self_, TDF_LabelList* aLabelList) {
+extern "C" const char* TDF_Delta_labels(const TDF_Delta* self_, NCollection_List_TDF_Label* aLabelList) {
     try { self_->Labels(*aLabelList); return nullptr; }
     OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<TDF_AttributeDeltaList const*> TDF_Delta_attribute_deltas(const TDF_Delta* self_) {
-    try { return {&(self_->AttributeDeltas()), nullptr}; }
-    OCCT_CATCH_RETURN
 }
 extern "C" const char* TDF_Delta_set_name(TDF_Delta* self_, TCollection_ExtendedString const* theName) {
     try { self_->SetName(*theName); return nullptr; }
@@ -2896,27 +2804,27 @@ extern "C" OcctResult<Handle(Standard_Type) const*> TDF_Delta_get_type_descripto
 }
 extern "C" OcctResult<const Standard_Transient*> TDF_Delta_as_Standard_Transient(const TDF_Delta* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> TDF_Delta_as_Standard_Transient_mut(TDF_Delta* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleTDFDelta*> TDF_Delta_to_handle(TDF_Delta* obj) {
-    try { return {new HandleTDFDelta(obj), nullptr}; }
+extern "C" OcctResult<Handle_TDF_Delta*> TDF_Delta_to_handle(TDF_Delta* obj) {
+    try { return {new Handle_TDF_Delta(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const TDF_Delta*> HandleTDFDelta_get(const HandleTDFDelta* handle) {
+extern "C" OcctResult<const TDF_Delta*> Handle_TDF_Delta_get(const Handle_TDF_Delta* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TDF_Delta*> HandleTDFDelta_get_mut(HandleTDFDelta* handle) {
+extern "C" OcctResult<TDF_Delta*> Handle_TDF_Delta_get_mut(Handle_TDF_Delta* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleTDFDelta_to_HandleStandardTransient(const HandleTDFDelta* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_TDF_Delta_to_Handle_Standard_Transient(const Handle_TDF_Delta* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTDocStdCompoundDelta*> HandleTDFDelta_downcast_to_HandleTDocStdCompoundDelta(const HandleTDFDelta* self_) {
+extern "C" OcctResult<Handle_TDocStd_CompoundDelta*> Handle_TDF_Delta_downcast_to_Handle_TDocStd_CompoundDelta(const Handle_TDF_Delta* self_) {
     try {
     opencascade::handle<TDocStd_CompoundDelta> result = opencascade::handle<TDocStd_CompoundDelta>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleTDocStdCompoundDelta(result), nullptr};
+    return {new Handle_TDocStd_CompoundDelta(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
@@ -2978,24 +2886,24 @@ extern "C" OcctResult<const TDF_AttributeDelta*> TDF_DeltaOnAddition_as_TDF_Attr
 extern "C" OcctResult<TDF_AttributeDelta*> TDF_DeltaOnAddition_as_TDF_AttributeDelta_mut(TDF_DeltaOnAddition* self_) { return {static_cast<TDF_AttributeDelta*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> TDF_DeltaOnAddition_as_Standard_Transient(const TDF_DeltaOnAddition* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> TDF_DeltaOnAddition_as_Standard_Transient_mut(TDF_DeltaOnAddition* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleTDFDeltaOnAddition*> TDF_DeltaOnAddition_to_handle(TDF_DeltaOnAddition* obj) {
-    try { return {new HandleTDFDeltaOnAddition(obj), nullptr}; }
+extern "C" OcctResult<Handle_TDF_DeltaOnAddition*> TDF_DeltaOnAddition_to_handle(TDF_DeltaOnAddition* obj) {
+    try { return {new Handle_TDF_DeltaOnAddition(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const TDF_DeltaOnAddition*> HandleTDFDeltaOnAddition_get(const HandleTDFDeltaOnAddition* handle) {
+extern "C" OcctResult<const TDF_DeltaOnAddition*> Handle_TDF_DeltaOnAddition_get(const Handle_TDF_DeltaOnAddition* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TDF_DeltaOnAddition*> HandleTDFDeltaOnAddition_get_mut(HandleTDFDeltaOnAddition* handle) {
+extern "C" OcctResult<TDF_DeltaOnAddition*> Handle_TDF_DeltaOnAddition_get_mut(Handle_TDF_DeltaOnAddition* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTDFAttributeDelta*> HandleTDFDeltaOnAddition_to_HandleTDFAttributeDelta(const HandleTDFDeltaOnAddition* self_) {
-    try { return {new HandleTDFAttributeDelta(*self_), nullptr}; }
+extern "C" OcctResult<Handle_TDF_AttributeDelta*> Handle_TDF_DeltaOnAddition_to_Handle_TDF_AttributeDelta(const Handle_TDF_DeltaOnAddition* self_) {
+    try { return {new Handle_TDF_AttributeDelta(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleTDFDeltaOnAddition_to_HandleStandardTransient(const HandleTDFDeltaOnAddition* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_TDF_DeltaOnAddition_to_Handle_Standard_Transient(const Handle_TDF_DeltaOnAddition* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<TDF_Label*> TDF_DeltaOnAddition_inherited_Label(const TDF_DeltaOnAddition* self) {
@@ -3068,24 +2976,24 @@ extern "C" OcctResult<const TDF_AttributeDelta*> TDF_DeltaOnForget_as_TDF_Attrib
 extern "C" OcctResult<TDF_AttributeDelta*> TDF_DeltaOnForget_as_TDF_AttributeDelta_mut(TDF_DeltaOnForget* self_) { return {static_cast<TDF_AttributeDelta*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> TDF_DeltaOnForget_as_Standard_Transient(const TDF_DeltaOnForget* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> TDF_DeltaOnForget_as_Standard_Transient_mut(TDF_DeltaOnForget* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleTDFDeltaOnForget*> TDF_DeltaOnForget_to_handle(TDF_DeltaOnForget* obj) {
-    try { return {new HandleTDFDeltaOnForget(obj), nullptr}; }
+extern "C" OcctResult<Handle_TDF_DeltaOnForget*> TDF_DeltaOnForget_to_handle(TDF_DeltaOnForget* obj) {
+    try { return {new Handle_TDF_DeltaOnForget(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const TDF_DeltaOnForget*> HandleTDFDeltaOnForget_get(const HandleTDFDeltaOnForget* handle) {
+extern "C" OcctResult<const TDF_DeltaOnForget*> Handle_TDF_DeltaOnForget_get(const Handle_TDF_DeltaOnForget* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TDF_DeltaOnForget*> HandleTDFDeltaOnForget_get_mut(HandleTDFDeltaOnForget* handle) {
+extern "C" OcctResult<TDF_DeltaOnForget*> Handle_TDF_DeltaOnForget_get_mut(Handle_TDF_DeltaOnForget* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTDFAttributeDelta*> HandleTDFDeltaOnForget_to_HandleTDFAttributeDelta(const HandleTDFDeltaOnForget* self_) {
-    try { return {new HandleTDFAttributeDelta(*self_), nullptr}; }
+extern "C" OcctResult<Handle_TDF_AttributeDelta*> Handle_TDF_DeltaOnForget_to_Handle_TDF_AttributeDelta(const Handle_TDF_DeltaOnForget* self_) {
+    try { return {new Handle_TDF_AttributeDelta(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleTDFDeltaOnForget_to_HandleStandardTransient(const HandleTDFDeltaOnForget* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_TDF_DeltaOnForget_to_Handle_Standard_Transient(const Handle_TDF_DeltaOnForget* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<TDF_Label*> TDF_DeltaOnForget_inherited_Label(const TDF_DeltaOnForget* self) {
@@ -3154,79 +3062,79 @@ extern "C" OcctResult<const TDF_AttributeDelta*> TDF_DeltaOnModification_as_TDF_
 extern "C" OcctResult<TDF_AttributeDelta*> TDF_DeltaOnModification_as_TDF_AttributeDelta_mut(TDF_DeltaOnModification* self_) { return {static_cast<TDF_AttributeDelta*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> TDF_DeltaOnModification_as_Standard_Transient(const TDF_DeltaOnModification* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> TDF_DeltaOnModification_as_Standard_Transient_mut(TDF_DeltaOnModification* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleTDFDeltaOnModification*> TDF_DeltaOnModification_to_handle(TDF_DeltaOnModification* obj) {
-    try { return {new HandleTDFDeltaOnModification(obj), nullptr}; }
+extern "C" OcctResult<Handle_TDF_DeltaOnModification*> TDF_DeltaOnModification_to_handle(TDF_DeltaOnModification* obj) {
+    try { return {new Handle_TDF_DeltaOnModification(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const TDF_DeltaOnModification*> HandleTDFDeltaOnModification_get(const HandleTDFDeltaOnModification* handle) {
+extern "C" OcctResult<const TDF_DeltaOnModification*> Handle_TDF_DeltaOnModification_get(const Handle_TDF_DeltaOnModification* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TDF_DeltaOnModification*> HandleTDFDeltaOnModification_get_mut(HandleTDFDeltaOnModification* handle) {
+extern "C" OcctResult<TDF_DeltaOnModification*> Handle_TDF_DeltaOnModification_get_mut(Handle_TDF_DeltaOnModification* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTDFAttributeDelta*> HandleTDFDeltaOnModification_to_HandleTDFAttributeDelta(const HandleTDFDeltaOnModification* self_) {
-    try { return {new HandleTDFAttributeDelta(*self_), nullptr}; }
+extern "C" OcctResult<Handle_TDF_AttributeDelta*> Handle_TDF_DeltaOnModification_to_Handle_TDF_AttributeDelta(const Handle_TDF_DeltaOnModification* self_) {
+    try { return {new Handle_TDF_AttributeDelta(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleTDFDeltaOnModification_to_HandleStandardTransient(const HandleTDFDeltaOnModification* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_TDF_DeltaOnModification_to_Handle_Standard_Transient(const Handle_TDF_DeltaOnModification* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTDFDefaultDeltaOnModification*> HandleTDFDeltaOnModification_downcast_to_HandleTDFDefaultDeltaOnModification(const HandleTDFDeltaOnModification* self_) {
+extern "C" OcctResult<Handle_TDF_DefaultDeltaOnModification*> Handle_TDF_DeltaOnModification_downcast_to_Handle_TDF_DefaultDeltaOnModification(const Handle_TDF_DeltaOnModification* self_) {
     try {
     opencascade::handle<TDF_DefaultDeltaOnModification> result = opencascade::handle<TDF_DefaultDeltaOnModification>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleTDFDefaultDeltaOnModification(result), nullptr};
+    return {new Handle_TDF_DefaultDeltaOnModification(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTDataStdDeltaOnModificationOfByteArray*> HandleTDFDeltaOnModification_downcast_to_HandleTDataStdDeltaOnModificationOfByteArray(const HandleTDFDeltaOnModification* self_) {
+extern "C" OcctResult<Handle_TDataStd_DeltaOnModificationOfByteArray*> Handle_TDF_DeltaOnModification_downcast_to_Handle_TDataStd_DeltaOnModificationOfByteArray(const Handle_TDF_DeltaOnModification* self_) {
     try {
     opencascade::handle<TDataStd_DeltaOnModificationOfByteArray> result = opencascade::handle<TDataStd_DeltaOnModificationOfByteArray>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleTDataStdDeltaOnModificationOfByteArray(result), nullptr};
+    return {new Handle_TDataStd_DeltaOnModificationOfByteArray(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTDataStdDeltaOnModificationOfExtStringArray*> HandleTDFDeltaOnModification_downcast_to_HandleTDataStdDeltaOnModificationOfExtStringArray(const HandleTDFDeltaOnModification* self_) {
+extern "C" OcctResult<Handle_TDataStd_DeltaOnModificationOfExtStringArray*> Handle_TDF_DeltaOnModification_downcast_to_Handle_TDataStd_DeltaOnModificationOfExtStringArray(const Handle_TDF_DeltaOnModification* self_) {
     try {
     opencascade::handle<TDataStd_DeltaOnModificationOfExtStringArray> result = opencascade::handle<TDataStd_DeltaOnModificationOfExtStringArray>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleTDataStdDeltaOnModificationOfExtStringArray(result), nullptr};
+    return {new Handle_TDataStd_DeltaOnModificationOfExtStringArray(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTDataStdDeltaOnModificationOfIntArray*> HandleTDFDeltaOnModification_downcast_to_HandleTDataStdDeltaOnModificationOfIntArray(const HandleTDFDeltaOnModification* self_) {
+extern "C" OcctResult<Handle_TDataStd_DeltaOnModificationOfIntArray*> Handle_TDF_DeltaOnModification_downcast_to_Handle_TDataStd_DeltaOnModificationOfIntArray(const Handle_TDF_DeltaOnModification* self_) {
     try {
     opencascade::handle<TDataStd_DeltaOnModificationOfIntArray> result = opencascade::handle<TDataStd_DeltaOnModificationOfIntArray>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleTDataStdDeltaOnModificationOfIntArray(result), nullptr};
+    return {new Handle_TDataStd_DeltaOnModificationOfIntArray(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTDataStdDeltaOnModificationOfIntPackedMap*> HandleTDFDeltaOnModification_downcast_to_HandleTDataStdDeltaOnModificationOfIntPackedMap(const HandleTDFDeltaOnModification* self_) {
+extern "C" OcctResult<Handle_TDataStd_DeltaOnModificationOfIntPackedMap*> Handle_TDF_DeltaOnModification_downcast_to_Handle_TDataStd_DeltaOnModificationOfIntPackedMap(const Handle_TDF_DeltaOnModification* self_) {
     try {
     opencascade::handle<TDataStd_DeltaOnModificationOfIntPackedMap> result = opencascade::handle<TDataStd_DeltaOnModificationOfIntPackedMap>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleTDataStdDeltaOnModificationOfIntPackedMap(result), nullptr};
+    return {new Handle_TDataStd_DeltaOnModificationOfIntPackedMap(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTDataStdDeltaOnModificationOfRealArray*> HandleTDFDeltaOnModification_downcast_to_HandleTDataStdDeltaOnModificationOfRealArray(const HandleTDFDeltaOnModification* self_) {
+extern "C" OcctResult<Handle_TDataStd_DeltaOnModificationOfRealArray*> Handle_TDF_DeltaOnModification_downcast_to_Handle_TDataStd_DeltaOnModificationOfRealArray(const Handle_TDF_DeltaOnModification* self_) {
     try {
     opencascade::handle<TDataStd_DeltaOnModificationOfRealArray> result = opencascade::handle<TDataStd_DeltaOnModificationOfRealArray>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleTDataStdDeltaOnModificationOfRealArray(result), nullptr};
+    return {new Handle_TDataStd_DeltaOnModificationOfRealArray(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTNamingDeltaOnModification*> HandleTDFDeltaOnModification_downcast_to_HandleTNamingDeltaOnModification(const HandleTDFDeltaOnModification* self_) {
+extern "C" OcctResult<Handle_TNaming_DeltaOnModification*> Handle_TDF_DeltaOnModification_downcast_to_Handle_TNaming_DeltaOnModification(const Handle_TDF_DeltaOnModification* self_) {
     try {
     opencascade::handle<TNaming_DeltaOnModification> result = opencascade::handle<TNaming_DeltaOnModification>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleTNamingDeltaOnModification(result), nullptr};
+    return {new Handle_TNaming_DeltaOnModification(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
@@ -3292,35 +3200,35 @@ extern "C" OcctResult<const TDF_AttributeDelta*> TDF_DeltaOnRemoval_as_TDF_Attri
 extern "C" OcctResult<TDF_AttributeDelta*> TDF_DeltaOnRemoval_as_TDF_AttributeDelta_mut(TDF_DeltaOnRemoval* self_) { return {static_cast<TDF_AttributeDelta*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> TDF_DeltaOnRemoval_as_Standard_Transient(const TDF_DeltaOnRemoval* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> TDF_DeltaOnRemoval_as_Standard_Transient_mut(TDF_DeltaOnRemoval* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<const TDF_DeltaOnRemoval*> HandleTDFDeltaOnRemoval_get(const HandleTDFDeltaOnRemoval* handle) {
+extern "C" OcctResult<const TDF_DeltaOnRemoval*> Handle_TDF_DeltaOnRemoval_get(const Handle_TDF_DeltaOnRemoval* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TDF_DeltaOnRemoval*> HandleTDFDeltaOnRemoval_get_mut(HandleTDFDeltaOnRemoval* handle) {
+extern "C" OcctResult<TDF_DeltaOnRemoval*> Handle_TDF_DeltaOnRemoval_get_mut(Handle_TDF_DeltaOnRemoval* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTDFAttributeDelta*> HandleTDFDeltaOnRemoval_to_HandleTDFAttributeDelta(const HandleTDFDeltaOnRemoval* self_) {
-    try { return {new HandleTDFAttributeDelta(*self_), nullptr}; }
+extern "C" OcctResult<Handle_TDF_AttributeDelta*> Handle_TDF_DeltaOnRemoval_to_Handle_TDF_AttributeDelta(const Handle_TDF_DeltaOnRemoval* self_) {
+    try { return {new Handle_TDF_AttributeDelta(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleTDFDeltaOnRemoval_to_HandleStandardTransient(const HandleTDFDeltaOnRemoval* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_TDF_DeltaOnRemoval_to_Handle_Standard_Transient(const Handle_TDF_DeltaOnRemoval* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTDFDefaultDeltaOnRemoval*> HandleTDFDeltaOnRemoval_downcast_to_HandleTDFDefaultDeltaOnRemoval(const HandleTDFDeltaOnRemoval* self_) {
+extern "C" OcctResult<Handle_TDF_DefaultDeltaOnRemoval*> Handle_TDF_DeltaOnRemoval_downcast_to_Handle_TDF_DefaultDeltaOnRemoval(const Handle_TDF_DeltaOnRemoval* self_) {
     try {
     opencascade::handle<TDF_DefaultDeltaOnRemoval> result = opencascade::handle<TDF_DefaultDeltaOnRemoval>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleTDFDefaultDeltaOnRemoval(result), nullptr};
+    return {new Handle_TDF_DefaultDeltaOnRemoval(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTNamingDeltaOnRemoval*> HandleTDFDeltaOnRemoval_downcast_to_HandleTNamingDeltaOnRemoval(const HandleTDFDeltaOnRemoval* self_) {
+extern "C" OcctResult<Handle_TNaming_DeltaOnRemoval*> Handle_TDF_DeltaOnRemoval_downcast_to_Handle_TNaming_DeltaOnRemoval(const Handle_TDF_DeltaOnRemoval* self_) {
     try {
     opencascade::handle<TNaming_DeltaOnRemoval> result = opencascade::handle<TNaming_DeltaOnRemoval>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleTNamingDeltaOnRemoval(result), nullptr};
+    return {new Handle_TNaming_DeltaOnRemoval(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
@@ -3398,24 +3306,24 @@ extern "C" OcctResult<const TDF_AttributeDelta*> TDF_DeltaOnResume_as_TDF_Attrib
 extern "C" OcctResult<TDF_AttributeDelta*> TDF_DeltaOnResume_as_TDF_AttributeDelta_mut(TDF_DeltaOnResume* self_) { return {static_cast<TDF_AttributeDelta*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> TDF_DeltaOnResume_as_Standard_Transient(const TDF_DeltaOnResume* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> TDF_DeltaOnResume_as_Standard_Transient_mut(TDF_DeltaOnResume* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleTDFDeltaOnResume*> TDF_DeltaOnResume_to_handle(TDF_DeltaOnResume* obj) {
-    try { return {new HandleTDFDeltaOnResume(obj), nullptr}; }
+extern "C" OcctResult<Handle_TDF_DeltaOnResume*> TDF_DeltaOnResume_to_handle(TDF_DeltaOnResume* obj) {
+    try { return {new Handle_TDF_DeltaOnResume(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const TDF_DeltaOnResume*> HandleTDFDeltaOnResume_get(const HandleTDFDeltaOnResume* handle) {
+extern "C" OcctResult<const TDF_DeltaOnResume*> Handle_TDF_DeltaOnResume_get(const Handle_TDF_DeltaOnResume* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TDF_DeltaOnResume*> HandleTDFDeltaOnResume_get_mut(HandleTDFDeltaOnResume* handle) {
+extern "C" OcctResult<TDF_DeltaOnResume*> Handle_TDF_DeltaOnResume_get_mut(Handle_TDF_DeltaOnResume* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTDFAttributeDelta*> HandleTDFDeltaOnResume_to_HandleTDFAttributeDelta(const HandleTDFDeltaOnResume* self_) {
-    try { return {new HandleTDFAttributeDelta(*self_), nullptr}; }
+extern "C" OcctResult<Handle_TDF_AttributeDelta*> Handle_TDF_DeltaOnResume_to_Handle_TDF_AttributeDelta(const Handle_TDF_DeltaOnResume* self_) {
+    try { return {new Handle_TDF_AttributeDelta(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleTDFDeltaOnResume_to_HandleStandardTransient(const HandleTDFDeltaOnResume* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_TDF_DeltaOnResume_to_Handle_Standard_Transient(const Handle_TDF_DeltaOnResume* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<TDF_Label*> TDF_DeltaOnResume_inherited_Label(const TDF_DeltaOnResume* self) {
@@ -3480,103 +3388,7 @@ extern "C" OcctResult<TCollection_AsciiString const*> TDF_DerivedAttribute_type_
     try { return {&(TDF_DerivedAttribute::TypeName(theType)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* TDF_DerivedAttribute_attributes(TDF_AttributeList* theList) {
-    try { TDF_DerivedAttribute::Attributes(*theList); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
 extern "C" void TDF_DerivedAttribute_destructor(TDF_DerivedAttribute* self_) { delete self_; }
-
-// ========================
-// TDF_HAttributeArray1 wrappers
-// ========================
-
-extern "C" OcctResult<TDF_HAttributeArray1*> TDF_HAttributeArray1_ctor() {
-    try { return {new TDF_HAttributeArray1(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<TDF_HAttributeArray1*> TDF_HAttributeArray1_ctor_int2(int32_t theLower, int32_t theUpper) {
-    try { return {new TDF_HAttributeArray1(theLower, theUpper), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<TDF_HAttributeArray1*> TDF_HAttributeArray1_ctor_int2_handletdfattribute(int32_t theLower, int32_t theUpper, Handle(TDF_Attribute) const* theValue) {
-    try { return {new TDF_HAttributeArray1(theLower, theUpper, *theValue), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<TDF_HAttributeArray1*> TDF_HAttributeArray1_ctor_handletdfattribute_int2_bool(Handle(TDF_Attribute) const* theBegin, int32_t theLower, int32_t theUpper, bool arg3) {
-    try { return {new TDF_HAttributeArray1(*theBegin, theLower, theUpper, arg3), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<TDF_HAttributeArray1*> TDF_HAttributeArray1_ctor_attributearray1(TDF_AttributeArray1 const* theOther) {
-    try { return {new TDF_HAttributeArray1(*theOther), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<TDF_AttributeArray1 const*> TDF_HAttributeArray1_array1(const TDF_HAttributeArray1* self_) {
-    try { return {&(self_->Array1()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<TDF_AttributeArray1*> TDF_HAttributeArray1_change_array1(TDF_HAttributeArray1* self_) {
-    try { return {&(self_->ChangeArray1()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Handle(Standard_Type) const*> TDF_HAttributeArray1_dynamic_type(const TDF_HAttributeArray1* self_) {
-    try { return {&(self_->DynamicType()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<char const*> TDF_HAttributeArray1_get_type_name() {
-    try { return {TDF_HAttributeArray1::get_type_name(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Handle(Standard_Type) const*> TDF_HAttributeArray1_get_type_descriptor() {
-    try { return {&(TDF_HAttributeArray1::get_type_descriptor()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<const Standard_Transient*> TDF_HAttributeArray1_as_Standard_Transient(const TDF_HAttributeArray1* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<Standard_Transient*> TDF_HAttributeArray1_as_Standard_Transient_mut(TDF_HAttributeArray1* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleTDFHAttributeArray1*> TDF_HAttributeArray1_to_handle(TDF_HAttributeArray1* obj) {
-    try { return {new HandleTDFHAttributeArray1(obj), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<const TDF_HAttributeArray1*> HandleTDFHAttributeArray1_get(const HandleTDFHAttributeArray1* handle) {
-    try { return {(*handle).get(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<TDF_HAttributeArray1*> HandleTDFHAttributeArray1_get_mut(HandleTDFHAttributeArray1* handle) {
-    try { return {(*handle).get(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<HandleStandardTransient*> HandleTDFHAttributeArray1_to_HandleStandardTransient(const HandleTDFHAttributeArray1* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<bool> TDF_HAttributeArray1_inherited_IsInstance(const TDF_HAttributeArray1* self, Handle(Standard_Type) const& theType) {
-    try { return {self->IsInstance(theType), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<bool> TDF_HAttributeArray1_inherited_IsKind(const TDF_HAttributeArray1* self, Handle(Standard_Type) const& theType) {
-    try { return {self->IsKind(theType), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Standard_Transient*> TDF_HAttributeArray1_inherited_This(const TDF_HAttributeArray1* self) {
-    try { return {self->This(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<int32_t> TDF_HAttributeArray1_inherited_GetRefCount(const TDF_HAttributeArray1* self) {
-    try { return {self->GetRefCount(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* TDF_HAttributeArray1_inherited_IncrementRefCounter(TDF_HAttributeArray1* self) {
-    try { self->IncrementRefCounter(); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<int32_t> TDF_HAttributeArray1_inherited_DecrementRefCounter(TDF_HAttributeArray1* self) {
-    try { return {self->DecrementRefCounter(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* TDF_HAttributeArray1_inherited_Delete(const TDF_HAttributeArray1* self) {
-    try { self->Delete(); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" void TDF_HAttributeArray1_destructor(TDF_HAttributeArray1* self_) { delete self_; }
 
 // ========================
 // TDF_IDFilter wrappers
@@ -3598,7 +3410,7 @@ extern "C" const char* TDF_IDFilter_keep_guid(TDF_IDFilter* self_, Standard_GUID
     try { self_->Keep(*anID); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* TDF_IDFilter_keep_idlist(TDF_IDFilter* self_, TDF_IDList const* anIDList) {
+extern "C" const char* TDF_IDFilter_keep_list_guid(TDF_IDFilter* self_, NCollection_List_Standard_GUID const* anIDList) {
     try { self_->Keep(*anIDList); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -3606,7 +3418,7 @@ extern "C" const char* TDF_IDFilter_ignore_guid(TDF_IDFilter* self_, Standard_GU
     try { self_->Ignore(*anID); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* TDF_IDFilter_ignore_idlist(TDF_IDFilter* self_, TDF_IDList const* anIDList) {
+extern "C" const char* TDF_IDFilter_ignore_list_guid(TDF_IDFilter* self_, NCollection_List_Standard_GUID const* anIDList) {
     try { self_->Ignore(*anIDList); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -3626,7 +3438,7 @@ extern "C" OcctResult<bool> TDF_IDFilter_is_ignored_handletdfattribute(const TDF
     try { return {self_->IsIgnored(*anAtt), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* TDF_IDFilter_id_list(const TDF_IDFilter* self_, TDF_IDList* anIDList) {
+extern "C" const char* TDF_IDFilter_id_list(const TDF_IDFilter* self_, NCollection_List_Standard_GUID* anIDList) {
     try { self_->IDList(*anIDList); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -3784,10 +3596,6 @@ extern "C" OcctResult<Standard_OStream*> TDF_Label_dump(TDF_Label* self_, Standa
     try { return {&(self_->Dump(*anOS)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* TDF_Label_extended_dump(const TDF_Label* self_, Standard_OStream* anOS, TDF_IDFilter const* aFilter, TDF_AttributeIndexedMap* aMap) {
-    try { self_->ExtendedDump(*anOS, *aFilter, *aMap); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
 extern "C" const char* TDF_Label_entry_dump(const TDF_Label* self_, Standard_OStream* anOS) {
     try { self_->EntryDump(*anOS); return nullptr; }
     OCCT_CATCH_RETURN_VOID
@@ -3858,24 +3666,24 @@ extern "C" OcctResult<const TDF_Attribute*> TDF_Reference_as_TDF_Attribute(const
 extern "C" OcctResult<TDF_Attribute*> TDF_Reference_as_TDF_Attribute_mut(TDF_Reference* self_) { return {static_cast<TDF_Attribute*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> TDF_Reference_as_Standard_Transient(const TDF_Reference* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> TDF_Reference_as_Standard_Transient_mut(TDF_Reference* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleTDFReference*> TDF_Reference_to_handle(TDF_Reference* obj) {
-    try { return {new HandleTDFReference(obj), nullptr}; }
+extern "C" OcctResult<Handle_TDF_Reference*> TDF_Reference_to_handle(TDF_Reference* obj) {
+    try { return {new Handle_TDF_Reference(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const TDF_Reference*> HandleTDFReference_get(const HandleTDFReference* handle) {
+extern "C" OcctResult<const TDF_Reference*> Handle_TDF_Reference_get(const Handle_TDF_Reference* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TDF_Reference*> HandleTDFReference_get_mut(HandleTDFReference* handle) {
+extern "C" OcctResult<TDF_Reference*> Handle_TDF_Reference_get_mut(Handle_TDF_Reference* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTDFAttribute*> HandleTDFReference_to_HandleTDFAttribute(const HandleTDFReference* self_) {
-    try { return {new HandleTDFAttribute(*self_), nullptr}; }
+extern "C" OcctResult<Handle_TDF_Attribute*> Handle_TDF_Reference_to_Handle_TDF_Attribute(const Handle_TDF_Reference* self_) {
+    try { return {new Handle_TDF_Attribute(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleTDFReference_to_HandleStandardTransient(const HandleTDFReference* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_TDF_Reference_to_Handle_Standard_Transient(const Handle_TDF_Reference* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" const char* TDF_Reference_inherited_SetID(TDF_Reference* self, Standard_GUID const& arg0) {
@@ -3990,10 +3798,6 @@ extern "C" OcctResult<Handle(TDF_DeltaOnRemoval)*> TDF_Reference_inherited_Delta
     try { return {new Handle(TDF_DeltaOnRemoval)(self->DeltaOnRemoval()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* TDF_Reference_inherited_ExtendedDump(const TDF_Reference* self, Standard_OStream& anOS, TDF_IDFilter const& aFilter, TDF_AttributeIndexedMap& aMap) {
-    try { self->ExtendedDump(anOS, aFilter, aMap); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
 extern "C" const char* TDF_Reference_inherited_Forget(TDF_Reference* self, int32_t aTransaction) {
     try { self->Forget(aTransaction); return nullptr; }
     OCCT_CATCH_RETURN_VOID
@@ -4080,24 +3884,12 @@ extern "C" const char* TDF_RelocationTable_clear(TDF_RelocationTable* self_) {
     try { self_->Clear(); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* TDF_RelocationTable_target_label_map(const TDF_RelocationTable* self_, TDF_LabelMap* aLabelMap) {
+extern "C" const char* TDF_RelocationTable_target_label_map(const TDF_RelocationTable* self_, NCollection_Map_TDF_Label* aLabelMap) {
     try { self_->TargetLabelMap(*aLabelMap); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* TDF_RelocationTable_target_attribute_map(const TDF_RelocationTable* self_, TDF_AttributeMap* anAttributeMap) {
-    try { self_->TargetAttributeMap(*anAttributeMap); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<TDF_LabelDataMap*> TDF_RelocationTable_label_table(TDF_RelocationTable* self_) {
+extern "C" OcctResult<NCollection_DataMap_TDF_Label_TDF_Label*> TDF_RelocationTable_label_table(TDF_RelocationTable* self_) {
     try { return {&(self_->LabelTable()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<TDF_AttributeDataMap*> TDF_RelocationTable_attribute_table(TDF_RelocationTable* self_) {
-    try { return {&(self_->AttributeTable()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<TColStd_IndexedDataMapOfTransientTransient*> TDF_RelocationTable_transient_table(TDF_RelocationTable* self_) {
-    try { return {&(self_->TransientTable()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Standard_OStream*> TDF_RelocationTable_dump(TDF_RelocationTable* self_, bool dumpLabels, bool dumpAttributes, bool dumpTransients, Standard_OStream* anOS) {
@@ -4118,20 +3910,20 @@ extern "C" OcctResult<Handle(Standard_Type) const*> TDF_RelocationTable_get_type
 }
 extern "C" OcctResult<const Standard_Transient*> TDF_RelocationTable_as_Standard_Transient(const TDF_RelocationTable* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> TDF_RelocationTable_as_Standard_Transient_mut(TDF_RelocationTable* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleTDFRelocationTable*> TDF_RelocationTable_to_handle(TDF_RelocationTable* obj) {
-    try { return {new HandleTDFRelocationTable(obj), nullptr}; }
+extern "C" OcctResult<Handle_TDF_RelocationTable*> TDF_RelocationTable_to_handle(TDF_RelocationTable* obj) {
+    try { return {new Handle_TDF_RelocationTable(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const TDF_RelocationTable*> HandleTDFRelocationTable_get(const HandleTDFRelocationTable* handle) {
+extern "C" OcctResult<const TDF_RelocationTable*> Handle_TDF_RelocationTable_get(const Handle_TDF_RelocationTable* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TDF_RelocationTable*> HandleTDFRelocationTable_get_mut(HandleTDFRelocationTable* handle) {
+extern "C" OcctResult<TDF_RelocationTable*> Handle_TDF_RelocationTable_get_mut(Handle_TDF_RelocationTable* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleTDFRelocationTable_to_HandleStandardTransient(const HandleTDFRelocationTable* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_TDF_RelocationTable_to_Handle_Standard_Transient(const Handle_TDF_RelocationTable* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> TDF_RelocationTable_inherited_IsInstance(const TDF_RelocationTable* self, Handle(Standard_Type) const& theType) {
@@ -4232,24 +4024,24 @@ extern "C" OcctResult<const TDF_Attribute*> TDF_TagSource_as_TDF_Attribute(const
 extern "C" OcctResult<TDF_Attribute*> TDF_TagSource_as_TDF_Attribute_mut(TDF_TagSource* self_) { return {static_cast<TDF_Attribute*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> TDF_TagSource_as_Standard_Transient(const TDF_TagSource* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> TDF_TagSource_as_Standard_Transient_mut(TDF_TagSource* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleTDFTagSource*> TDF_TagSource_to_handle(TDF_TagSource* obj) {
-    try { return {new HandleTDFTagSource(obj), nullptr}; }
+extern "C" OcctResult<Handle_TDF_TagSource*> TDF_TagSource_to_handle(TDF_TagSource* obj) {
+    try { return {new Handle_TDF_TagSource(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const TDF_TagSource*> HandleTDFTagSource_get(const HandleTDFTagSource* handle) {
+extern "C" OcctResult<const TDF_TagSource*> Handle_TDF_TagSource_get(const Handle_TDF_TagSource* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TDF_TagSource*> HandleTDFTagSource_get_mut(HandleTDFTagSource* handle) {
+extern "C" OcctResult<TDF_TagSource*> Handle_TDF_TagSource_get_mut(Handle_TDF_TagSource* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTDFAttribute*> HandleTDFTagSource_to_HandleTDFAttribute(const HandleTDFTagSource* self_) {
-    try { return {new HandleTDFAttribute(*self_), nullptr}; }
+extern "C" OcctResult<Handle_TDF_Attribute*> Handle_TDF_TagSource_to_Handle_TDF_Attribute(const Handle_TDF_TagSource* self_) {
+    try { return {new Handle_TDF_Attribute(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleTDFTagSource_to_HandleStandardTransient(const HandleTDFTagSource* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_TDF_TagSource_to_Handle_Standard_Transient(const Handle_TDF_TagSource* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" const char* TDF_TagSource_inherited_SetID(TDF_TagSource* self, Standard_GUID const& arg0) {
@@ -4368,10 +4160,6 @@ extern "C" const char* TDF_TagSource_inherited_References(const TDF_TagSource* s
     try { self->References(aDataSet); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* TDF_TagSource_inherited_ExtendedDump(const TDF_TagSource* self, Standard_OStream& anOS, TDF_IDFilter const& aFilter, TDF_AttributeIndexedMap& aMap) {
-    try { self->ExtendedDump(anOS, aFilter, aMap); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
 extern "C" const char* TDF_TagSource_inherited_Forget(TDF_TagSource* self, int32_t aTransaction) {
     try { self->Forget(aTransaction); return nullptr; }
     OCCT_CATCH_RETURN_VOID
@@ -4434,22 +4222,6 @@ extern "C" OcctResult<bool> TDF_Tool_is_self_contained_label_idfilter(TDF_Label 
     try { return {TDF_Tool::IsSelfContained(*aLabel, *aFilter), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* TDF_Tool_out_referers_label_attributemap(TDF_Label const* theLabel, TDF_AttributeMap* theAtts) {
-    try { TDF_Tool::OutReferers(*theLabel, *theAtts); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* TDF_Tool_out_referers_label_idfilter2_attributemap(TDF_Label const* aLabel, TDF_IDFilter const* aFilterForReferers, TDF_IDFilter const* aFilterForReferences, TDF_AttributeMap* atts) {
-    try { TDF_Tool::OutReferers(*aLabel, *aFilterForReferers, *aFilterForReferences, *atts); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* TDF_Tool_out_references_label_attributemap(TDF_Label const* aLabel, TDF_AttributeMap* atts) {
-    try { TDF_Tool::OutReferences(*aLabel, *atts); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* TDF_Tool_out_references_label_idfilter2_attributemap(TDF_Label const* aLabel, TDF_IDFilter const* aFilterForReferers, TDF_IDFilter const* aFilterForReferences, TDF_AttributeMap* atts) {
-    try { TDF_Tool::OutReferences(*aLabel, *aFilterForReferers, *aFilterForReferences, *atts); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
 extern "C" const char* TDF_Tool_relocate_label(TDF_Label const* aSourceLabel, TDF_Label const* fromRoot, TDF_Label const* toRoot, TDF_Label* aTargetLabel, bool create) {
     try { TDF_Tool::RelocateLabel(*aSourceLabel, *fromRoot, *toRoot, *aTargetLabel, create); return nullptr; }
     OCCT_CATCH_RETURN_VOID
@@ -4458,11 +4230,11 @@ extern "C" const char* TDF_Tool_entry(TDF_Label const* aLabel, TCollection_Ascii
     try { TDF_Tool::Entry(*aLabel, *anEntry); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* TDF_Tool_tag_list_label_listofinteger(TDF_Label const* aLabel, TColStd_ListOfInteger* aTagList) {
+extern "C" const char* TDF_Tool_tag_list_label_list_int(TDF_Label const* aLabel, NCollection_List_int* aTagList) {
     try { TDF_Tool::TagList(*aLabel, *aTagList); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* TDF_Tool_tag_list_asciistring_listofinteger(TCollection_AsciiString const* anEntry, TColStd_ListOfInteger* aTagList) {
+extern "C" const char* TDF_Tool_tag_list_asciistring_list_int(TCollection_AsciiString const* anEntry, NCollection_List_int* aTagList) {
     try { TDF_Tool::TagList(*anEntry, *aTagList); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -4474,15 +4246,15 @@ extern "C" const char* TDF_Tool_label_handletdfdata_charptr_label_bool(Handle(TD
     try { TDF_Tool::Label(*aDF, anEntry, *aLabel, create); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* TDF_Tool_label_handletdfdata_listofinteger_label_bool(Handle(TDF_Data) const* aDF, TColStd_ListOfInteger const* aTagList, TDF_Label* aLabel, bool create) {
+extern "C" const char* TDF_Tool_label_handletdfdata_list_int_label_bool(Handle(TDF_Data) const* aDF, NCollection_List_int const* aTagList, TDF_Label* aLabel, bool create) {
     try { TDF_Tool::Label(*aDF, *aTagList, *aLabel, create); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* TDF_Tool_count_labels(TDF_LabelList* aLabelList, TDF_LabelIntegerMap* aLabelMap) {
+extern "C" const char* TDF_Tool_count_labels(NCollection_List_TDF_Label* aLabelList, NCollection_DataMap_TDF_Label_int* aLabelMap) {
     try { TDF_Tool::CountLabels(*aLabelList, *aLabelMap); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* TDF_Tool_deduct_labels(TDF_LabelList* aLabelList, TDF_LabelIntegerMap* aLabelMap) {
+extern "C" const char* TDF_Tool_deduct_labels(NCollection_List_TDF_Label* aLabelList, NCollection_DataMap_TDF_Label_int* aLabelMap) {
     try { TDF_Tool::DeductLabels(*aLabelList, *aLabelMap); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -4626,24 +4398,24 @@ extern "C" OcctResult<const TDF_Attribute*> TDataStd_AsciiString_as_TDF_Attribut
 extern "C" OcctResult<TDF_Attribute*> TDataStd_AsciiString_as_TDF_Attribute_mut(TDataStd_AsciiString* self_) { return {static_cast<TDF_Attribute*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> TDataStd_AsciiString_as_Standard_Transient(const TDataStd_AsciiString* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> TDataStd_AsciiString_as_Standard_Transient_mut(TDataStd_AsciiString* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleTDataStdAsciiString*> TDataStd_AsciiString_to_handle(TDataStd_AsciiString* obj) {
-    try { return {new HandleTDataStdAsciiString(obj), nullptr}; }
+extern "C" OcctResult<Handle_TDataStd_AsciiString*> TDataStd_AsciiString_to_handle(TDataStd_AsciiString* obj) {
+    try { return {new Handle_TDataStd_AsciiString(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const TDataStd_AsciiString*> HandleTDataStdAsciiString_get(const HandleTDataStdAsciiString* handle) {
+extern "C" OcctResult<const TDataStd_AsciiString*> Handle_TDataStd_AsciiString_get(const Handle_TDataStd_AsciiString* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TDataStd_AsciiString*> HandleTDataStdAsciiString_get_mut(HandleTDataStdAsciiString* handle) {
+extern "C" OcctResult<TDataStd_AsciiString*> Handle_TDataStd_AsciiString_get_mut(Handle_TDataStd_AsciiString* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTDFAttribute*> HandleTDataStdAsciiString_to_HandleTDFAttribute(const HandleTDataStdAsciiString* self_) {
-    try { return {new HandleTDFAttribute(*self_), nullptr}; }
+extern "C" OcctResult<Handle_TDF_Attribute*> Handle_TDataStd_AsciiString_to_Handle_TDF_Attribute(const Handle_TDataStd_AsciiString* self_) {
+    try { return {new Handle_TDF_Attribute(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleTDataStdAsciiString_to_HandleStandardTransient(const HandleTDataStdAsciiString* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_TDataStd_AsciiString_to_Handle_Standard_Transient(const Handle_TDataStd_AsciiString* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<TDF_Label*> TDataStd_AsciiString_inherited_Label(const TDataStd_AsciiString* self) {
@@ -4758,10 +4530,6 @@ extern "C" const char* TDataStd_AsciiString_inherited_References(const TDataStd_
     try { self->References(aDataSet); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* TDataStd_AsciiString_inherited_ExtendedDump(const TDataStd_AsciiString* self, Standard_OStream& anOS, TDF_IDFilter const& aFilter, TDF_AttributeIndexedMap& aMap) {
-    try { self->ExtendedDump(anOS, aFilter, aMap); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
 extern "C" const char* TDataStd_AsciiString_inherited_Forget(TDataStd_AsciiString* self, int32_t aTransaction) {
     try { self->Forget(aTransaction); return nullptr; }
     OCCT_CATCH_RETURN_VOID
@@ -4840,14 +4608,6 @@ extern "C" OcctResult<int32_t> TDataStd_BooleanArray_length(const TDataStd_Boole
     try { return {self_->Length(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(TColStd_HArray1OfByte) const*> TDataStd_BooleanArray_internal_array(const TDataStd_BooleanArray* self_) {
-    try { return {&(self_->InternalArray()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* TDataStd_BooleanArray_set_internal_array(TDataStd_BooleanArray* self_, Handle(TColStd_HArray1OfByte) const* values) {
-    try { self_->SetInternalArray(*values); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
 extern "C" OcctResult<Standard_GUID const*> TDataStd_BooleanArray_id(const TDataStd_BooleanArray* self_) {
     try { return {&(self_->ID()), nullptr}; }
     OCCT_CATCH_RETURN
@@ -4892,24 +4652,24 @@ extern "C" OcctResult<const TDF_Attribute*> TDataStd_BooleanArray_as_TDF_Attribu
 extern "C" OcctResult<TDF_Attribute*> TDataStd_BooleanArray_as_TDF_Attribute_mut(TDataStd_BooleanArray* self_) { return {static_cast<TDF_Attribute*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> TDataStd_BooleanArray_as_Standard_Transient(const TDataStd_BooleanArray* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> TDataStd_BooleanArray_as_Standard_Transient_mut(TDataStd_BooleanArray* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleTDataStdBooleanArray*> TDataStd_BooleanArray_to_handle(TDataStd_BooleanArray* obj) {
-    try { return {new HandleTDataStdBooleanArray(obj), nullptr}; }
+extern "C" OcctResult<Handle_TDataStd_BooleanArray*> TDataStd_BooleanArray_to_handle(TDataStd_BooleanArray* obj) {
+    try { return {new Handle_TDataStd_BooleanArray(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const TDataStd_BooleanArray*> HandleTDataStdBooleanArray_get(const HandleTDataStdBooleanArray* handle) {
+extern "C" OcctResult<const TDataStd_BooleanArray*> Handle_TDataStd_BooleanArray_get(const Handle_TDataStd_BooleanArray* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TDataStd_BooleanArray*> HandleTDataStdBooleanArray_get_mut(HandleTDataStdBooleanArray* handle) {
+extern "C" OcctResult<TDataStd_BooleanArray*> Handle_TDataStd_BooleanArray_get_mut(Handle_TDataStd_BooleanArray* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTDFAttribute*> HandleTDataStdBooleanArray_to_HandleTDFAttribute(const HandleTDataStdBooleanArray* self_) {
-    try { return {new HandleTDFAttribute(*self_), nullptr}; }
+extern "C" OcctResult<Handle_TDF_Attribute*> Handle_TDataStd_BooleanArray_to_Handle_TDF_Attribute(const Handle_TDataStd_BooleanArray* self_) {
+    try { return {new Handle_TDF_Attribute(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleTDataStdBooleanArray_to_HandleStandardTransient(const HandleTDataStdBooleanArray* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_TDataStd_BooleanArray_to_Handle_Standard_Transient(const Handle_TDataStd_BooleanArray* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<TDF_Label*> TDataStd_BooleanArray_inherited_Label(const TDataStd_BooleanArray* self) {
@@ -5024,10 +4784,6 @@ extern "C" const char* TDataStd_BooleanArray_inherited_References(const TDataStd
     try { self->References(aDataSet); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* TDataStd_BooleanArray_inherited_ExtendedDump(const TDataStd_BooleanArray* self, Standard_OStream& anOS, TDF_IDFilter const& aFilter, TDF_AttributeIndexedMap& aMap) {
-    try { self->ExtendedDump(anOS, aFilter, aMap); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
 extern "C" const char* TDataStd_BooleanArray_inherited_Forget(TDataStd_BooleanArray* self, int32_t aTransaction) {
     try { self->Forget(aTransaction); return nullptr; }
     OCCT_CATCH_RETURN_VOID
@@ -5102,7 +4858,7 @@ extern "C" OcctResult<bool> TDataStd_BooleanList_last(const TDataStd_BooleanList
     try { return {self_->Last(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TDataStd_ListOfByte const*> TDataStd_BooleanList_list(const TDataStd_BooleanList* self_) {
+extern "C" OcctResult<NCollection_List_uint8_t const*> TDataStd_BooleanList_list(const TDataStd_BooleanList* self_) {
     try { return {&(self_->List()), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -5170,24 +4926,24 @@ extern "C" OcctResult<const TDF_Attribute*> TDataStd_BooleanList_as_TDF_Attribut
 extern "C" OcctResult<TDF_Attribute*> TDataStd_BooleanList_as_TDF_Attribute_mut(TDataStd_BooleanList* self_) { return {static_cast<TDF_Attribute*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> TDataStd_BooleanList_as_Standard_Transient(const TDataStd_BooleanList* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> TDataStd_BooleanList_as_Standard_Transient_mut(TDataStd_BooleanList* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleTDataStdBooleanList*> TDataStd_BooleanList_to_handle(TDataStd_BooleanList* obj) {
-    try { return {new HandleTDataStdBooleanList(obj), nullptr}; }
+extern "C" OcctResult<Handle_TDataStd_BooleanList*> TDataStd_BooleanList_to_handle(TDataStd_BooleanList* obj) {
+    try { return {new Handle_TDataStd_BooleanList(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const TDataStd_BooleanList*> HandleTDataStdBooleanList_get(const HandleTDataStdBooleanList* handle) {
+extern "C" OcctResult<const TDataStd_BooleanList*> Handle_TDataStd_BooleanList_get(const Handle_TDataStd_BooleanList* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TDataStd_BooleanList*> HandleTDataStdBooleanList_get_mut(HandleTDataStdBooleanList* handle) {
+extern "C" OcctResult<TDataStd_BooleanList*> Handle_TDataStd_BooleanList_get_mut(Handle_TDataStd_BooleanList* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTDFAttribute*> HandleTDataStdBooleanList_to_HandleTDFAttribute(const HandleTDataStdBooleanList* self_) {
-    try { return {new HandleTDFAttribute(*self_), nullptr}; }
+extern "C" OcctResult<Handle_TDF_Attribute*> Handle_TDataStd_BooleanList_to_Handle_TDF_Attribute(const Handle_TDataStd_BooleanList* self_) {
+    try { return {new Handle_TDF_Attribute(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleTDataStdBooleanList_to_HandleStandardTransient(const HandleTDataStdBooleanList* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_TDataStd_BooleanList_to_Handle_Standard_Transient(const Handle_TDataStd_BooleanList* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<TDF_Label*> TDataStd_BooleanList_inherited_Label(const TDataStd_BooleanList* self) {
@@ -5302,10 +5058,6 @@ extern "C" const char* TDataStd_BooleanList_inherited_References(const TDataStd_
     try { self->References(aDataSet); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* TDataStd_BooleanList_inherited_ExtendedDump(const TDataStd_BooleanList* self, Standard_OStream& anOS, TDF_IDFilter const& aFilter, TDF_AttributeIndexedMap& aMap) {
-    try { self->ExtendedDump(anOS, aFilter, aMap); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
 extern "C" const char* TDataStd_BooleanList_inherited_Forget(TDataStd_BooleanList* self, int32_t aTransaction) {
     try { self->Forget(aTransaction); return nullptr; }
     OCCT_CATCH_RETURN_VOID
@@ -5392,14 +5144,6 @@ extern "C" OcctResult<int32_t> TDataStd_ByteArray_length(const TDataStd_ByteArra
     try { return {self_->Length(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(TColStd_HArray1OfByte) const*> TDataStd_ByteArray_internal_array(const TDataStd_ByteArray* self_) {
-    try { return {&(self_->InternalArray()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* TDataStd_ByteArray_change_array(TDataStd_ByteArray* self_, Handle(TColStd_HArray1OfByte) const* newArray, bool isCheckItems) {
-    try { self_->ChangeArray(*newArray, isCheckItems); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
 extern "C" OcctResult<bool> TDataStd_ByteArray_get_delta(const TDataStd_ByteArray* self_) {
     try { return {self_->GetDelta(), nullptr}; }
     OCCT_CATCH_RETURN
@@ -5448,24 +5192,24 @@ extern "C" OcctResult<const TDF_Attribute*> TDataStd_ByteArray_as_TDF_Attribute(
 extern "C" OcctResult<TDF_Attribute*> TDataStd_ByteArray_as_TDF_Attribute_mut(TDataStd_ByteArray* self_) { return {static_cast<TDF_Attribute*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> TDataStd_ByteArray_as_Standard_Transient(const TDataStd_ByteArray* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> TDataStd_ByteArray_as_Standard_Transient_mut(TDataStd_ByteArray* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleTDataStdByteArray*> TDataStd_ByteArray_to_handle(TDataStd_ByteArray* obj) {
-    try { return {new HandleTDataStdByteArray(obj), nullptr}; }
+extern "C" OcctResult<Handle_TDataStd_ByteArray*> TDataStd_ByteArray_to_handle(TDataStd_ByteArray* obj) {
+    try { return {new Handle_TDataStd_ByteArray(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const TDataStd_ByteArray*> HandleTDataStdByteArray_get(const HandleTDataStdByteArray* handle) {
+extern "C" OcctResult<const TDataStd_ByteArray*> Handle_TDataStd_ByteArray_get(const Handle_TDataStd_ByteArray* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TDataStd_ByteArray*> HandleTDataStdByteArray_get_mut(HandleTDataStdByteArray* handle) {
+extern "C" OcctResult<TDataStd_ByteArray*> Handle_TDataStd_ByteArray_get_mut(Handle_TDataStd_ByteArray* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTDFAttribute*> HandleTDataStdByteArray_to_HandleTDFAttribute(const HandleTDataStdByteArray* self_) {
-    try { return {new HandleTDFAttribute(*self_), nullptr}; }
+extern "C" OcctResult<Handle_TDF_Attribute*> Handle_TDataStd_ByteArray_to_Handle_TDF_Attribute(const Handle_TDataStd_ByteArray* self_) {
+    try { return {new Handle_TDF_Attribute(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleTDataStdByteArray_to_HandleStandardTransient(const HandleTDataStdByteArray* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_TDataStd_ByteArray_to_Handle_Standard_Transient(const Handle_TDataStd_ByteArray* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<TDF_Label*> TDataStd_ByteArray_inherited_Label(const TDataStd_ByteArray* self) {
@@ -5574,10 +5318,6 @@ extern "C" OcctResult<Handle(TDF_DeltaOnRemoval)*> TDataStd_ByteArray_inherited_
 }
 extern "C" const char* TDataStd_ByteArray_inherited_References(const TDataStd_ByteArray* self, Handle(TDF_DataSet) const& aDataSet) {
     try { self->References(aDataSet); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* TDataStd_ByteArray_inherited_ExtendedDump(const TDataStd_ByteArray* self, Standard_OStream& anOS, TDF_IDFilter const& aFilter, TDF_AttributeIndexedMap& aMap) {
-    try { self->ExtendedDump(anOS, aFilter, aMap); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
 extern "C" const char* TDataStd_ByteArray_inherited_Forget(TDataStd_ByteArray* self, int32_t aTransaction) {
@@ -5706,28 +5446,28 @@ extern "C" OcctResult<const TDF_Attribute*> TDataStd_Comment_as_TDF_Attribute(co
 extern "C" OcctResult<TDF_Attribute*> TDataStd_Comment_as_TDF_Attribute_mut(TDataStd_Comment* self_) { return {static_cast<TDF_Attribute*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> TDataStd_Comment_as_Standard_Transient(const TDataStd_Comment* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> TDataStd_Comment_as_Standard_Transient_mut(TDataStd_Comment* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleTDataStdComment*> TDataStd_Comment_to_handle(TDataStd_Comment* obj) {
-    try { return {new HandleTDataStdComment(obj), nullptr}; }
+extern "C" OcctResult<Handle_TDataStd_Comment*> TDataStd_Comment_to_handle(TDataStd_Comment* obj) {
+    try { return {new Handle_TDataStd_Comment(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const TDataStd_Comment*> HandleTDataStdComment_get(const HandleTDataStdComment* handle) {
+extern "C" OcctResult<const TDataStd_Comment*> Handle_TDataStd_Comment_get(const Handle_TDataStd_Comment* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TDataStd_Comment*> HandleTDataStdComment_get_mut(HandleTDataStdComment* handle) {
+extern "C" OcctResult<TDataStd_Comment*> Handle_TDataStd_Comment_get_mut(Handle_TDataStd_Comment* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTDataStdGenericExtString*> HandleTDataStdComment_to_HandleTDataStdGenericExtString(const HandleTDataStdComment* self_) {
-    try { return {new HandleTDataStdGenericExtString(*self_), nullptr}; }
+extern "C" OcctResult<Handle_TDataStd_GenericExtString*> Handle_TDataStd_Comment_to_Handle_TDataStd_GenericExtString(const Handle_TDataStd_Comment* self_) {
+    try { return {new Handle_TDataStd_GenericExtString(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTDFAttribute*> HandleTDataStdComment_to_HandleTDFAttribute(const HandleTDataStdComment* self_) {
-    try { return {new HandleTDFAttribute(*self_), nullptr}; }
+extern "C" OcctResult<Handle_TDF_Attribute*> Handle_TDataStd_Comment_to_Handle_TDF_Attribute(const Handle_TDataStd_Comment* self_) {
+    try { return {new Handle_TDF_Attribute(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleTDataStdComment_to_HandleStandardTransient(const HandleTDataStdComment* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_TDataStd_Comment_to_Handle_Standard_Transient(const Handle_TDataStd_Comment* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<TCollection_ExtendedString const*> TDataStd_Comment_inherited_Get(const TDataStd_Comment* self) {
@@ -5858,10 +5598,6 @@ extern "C" const char* TDataStd_Comment_inherited_References(const TDataStd_Comm
     try { self->References(aDataSet); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* TDataStd_Comment_inherited_ExtendedDump(const TDataStd_Comment* self, Standard_OStream& anOS, TDF_IDFilter const& aFilter, TDF_AttributeIndexedMap& aMap) {
-    try { self->ExtendedDump(anOS, aFilter, aMap); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
 extern "C" const char* TDataStd_Comment_inherited_Forget(TDataStd_Comment* self, int32_t aTransaction) {
     try { self->Forget(aTransaction); return nullptr; }
     OCCT_CATCH_RETURN_VOID
@@ -5964,24 +5700,24 @@ extern "C" OcctResult<const TDF_Attribute*> TDataStd_Current_as_TDF_Attribute(co
 extern "C" OcctResult<TDF_Attribute*> TDataStd_Current_as_TDF_Attribute_mut(TDataStd_Current* self_) { return {static_cast<TDF_Attribute*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> TDataStd_Current_as_Standard_Transient(const TDataStd_Current* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> TDataStd_Current_as_Standard_Transient_mut(TDataStd_Current* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleTDataStdCurrent*> TDataStd_Current_to_handle(TDataStd_Current* obj) {
-    try { return {new HandleTDataStdCurrent(obj), nullptr}; }
+extern "C" OcctResult<Handle_TDataStd_Current*> TDataStd_Current_to_handle(TDataStd_Current* obj) {
+    try { return {new Handle_TDataStd_Current(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const TDataStd_Current*> HandleTDataStdCurrent_get(const HandleTDataStdCurrent* handle) {
+extern "C" OcctResult<const TDataStd_Current*> Handle_TDataStd_Current_get(const Handle_TDataStd_Current* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TDataStd_Current*> HandleTDataStdCurrent_get_mut(HandleTDataStdCurrent* handle) {
+extern "C" OcctResult<TDataStd_Current*> Handle_TDataStd_Current_get_mut(Handle_TDataStd_Current* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTDFAttribute*> HandleTDataStdCurrent_to_HandleTDFAttribute(const HandleTDataStdCurrent* self_) {
-    try { return {new HandleTDFAttribute(*self_), nullptr}; }
+extern "C" OcctResult<Handle_TDF_Attribute*> Handle_TDataStd_Current_to_Handle_TDF_Attribute(const Handle_TDataStd_Current* self_) {
+    try { return {new Handle_TDF_Attribute(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleTDataStdCurrent_to_HandleStandardTransient(const HandleTDataStdCurrent* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_TDataStd_Current_to_Handle_Standard_Transient(const Handle_TDataStd_Current* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" const char* TDataStd_Current_inherited_SetID(TDataStd_Current* self, Standard_GUID const& arg0) {
@@ -6100,10 +5836,6 @@ extern "C" const char* TDataStd_Current_inherited_References(const TDataStd_Curr
     try { self->References(aDataSet); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* TDataStd_Current_inherited_ExtendedDump(const TDataStd_Current* self, Standard_OStream& anOS, TDF_IDFilter const& aFilter, TDF_AttributeIndexedMap& aMap) {
-    try { self->ExtendedDump(anOS, aFilter, aMap); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
 extern "C" const char* TDataStd_Current_inherited_Forget(TDataStd_Current* self, int32_t aTransaction) {
     try { self->Forget(aTransaction); return nullptr; }
     OCCT_CATCH_RETURN_VOID
@@ -6168,28 +5900,28 @@ extern "C" OcctResult<const TDF_AttributeDelta*> TDataStd_DeltaOnModificationOfB
 extern "C" OcctResult<TDF_AttributeDelta*> TDataStd_DeltaOnModificationOfByteArray_as_TDF_AttributeDelta_mut(TDataStd_DeltaOnModificationOfByteArray* self_) { return {static_cast<TDF_AttributeDelta*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> TDataStd_DeltaOnModificationOfByteArray_as_Standard_Transient(const TDataStd_DeltaOnModificationOfByteArray* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> TDataStd_DeltaOnModificationOfByteArray_as_Standard_Transient_mut(TDataStd_DeltaOnModificationOfByteArray* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleTDataStdDeltaOnModificationOfByteArray*> TDataStd_DeltaOnModificationOfByteArray_to_handle(TDataStd_DeltaOnModificationOfByteArray* obj) {
-    try { return {new HandleTDataStdDeltaOnModificationOfByteArray(obj), nullptr}; }
+extern "C" OcctResult<Handle_TDataStd_DeltaOnModificationOfByteArray*> TDataStd_DeltaOnModificationOfByteArray_to_handle(TDataStd_DeltaOnModificationOfByteArray* obj) {
+    try { return {new Handle_TDataStd_DeltaOnModificationOfByteArray(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const TDataStd_DeltaOnModificationOfByteArray*> HandleTDataStdDeltaOnModificationOfByteArray_get(const HandleTDataStdDeltaOnModificationOfByteArray* handle) {
+extern "C" OcctResult<const TDataStd_DeltaOnModificationOfByteArray*> Handle_TDataStd_DeltaOnModificationOfByteArray_get(const Handle_TDataStd_DeltaOnModificationOfByteArray* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TDataStd_DeltaOnModificationOfByteArray*> HandleTDataStdDeltaOnModificationOfByteArray_get_mut(HandleTDataStdDeltaOnModificationOfByteArray* handle) {
+extern "C" OcctResult<TDataStd_DeltaOnModificationOfByteArray*> Handle_TDataStd_DeltaOnModificationOfByteArray_get_mut(Handle_TDataStd_DeltaOnModificationOfByteArray* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTDFDeltaOnModification*> HandleTDataStdDeltaOnModificationOfByteArray_to_HandleTDFDeltaOnModification(const HandleTDataStdDeltaOnModificationOfByteArray* self_) {
-    try { return {new HandleTDFDeltaOnModification(*self_), nullptr}; }
+extern "C" OcctResult<Handle_TDF_DeltaOnModification*> Handle_TDataStd_DeltaOnModificationOfByteArray_to_Handle_TDF_DeltaOnModification(const Handle_TDataStd_DeltaOnModificationOfByteArray* self_) {
+    try { return {new Handle_TDF_DeltaOnModification(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTDFAttributeDelta*> HandleTDataStdDeltaOnModificationOfByteArray_to_HandleTDFAttributeDelta(const HandleTDataStdDeltaOnModificationOfByteArray* self_) {
-    try { return {new HandleTDFAttributeDelta(*self_), nullptr}; }
+extern "C" OcctResult<Handle_TDF_AttributeDelta*> Handle_TDataStd_DeltaOnModificationOfByteArray_to_Handle_TDF_AttributeDelta(const Handle_TDataStd_DeltaOnModificationOfByteArray* self_) {
+    try { return {new Handle_TDF_AttributeDelta(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleTDataStdDeltaOnModificationOfByteArray_to_HandleStandardTransient(const HandleTDataStdDeltaOnModificationOfByteArray* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_TDataStd_DeltaOnModificationOfByteArray_to_Handle_Standard_Transient(const Handle_TDataStd_DeltaOnModificationOfByteArray* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<TDF_Label*> TDataStd_DeltaOnModificationOfByteArray_inherited_Label(const TDataStd_DeltaOnModificationOfByteArray* self) {
@@ -6264,28 +5996,28 @@ extern "C" OcctResult<const TDF_AttributeDelta*> TDataStd_DeltaOnModificationOfE
 extern "C" OcctResult<TDF_AttributeDelta*> TDataStd_DeltaOnModificationOfExtStringArray_as_TDF_AttributeDelta_mut(TDataStd_DeltaOnModificationOfExtStringArray* self_) { return {static_cast<TDF_AttributeDelta*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> TDataStd_DeltaOnModificationOfExtStringArray_as_Standard_Transient(const TDataStd_DeltaOnModificationOfExtStringArray* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> TDataStd_DeltaOnModificationOfExtStringArray_as_Standard_Transient_mut(TDataStd_DeltaOnModificationOfExtStringArray* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleTDataStdDeltaOnModificationOfExtStringArray*> TDataStd_DeltaOnModificationOfExtStringArray_to_handle(TDataStd_DeltaOnModificationOfExtStringArray* obj) {
-    try { return {new HandleTDataStdDeltaOnModificationOfExtStringArray(obj), nullptr}; }
+extern "C" OcctResult<Handle_TDataStd_DeltaOnModificationOfExtStringArray*> TDataStd_DeltaOnModificationOfExtStringArray_to_handle(TDataStd_DeltaOnModificationOfExtStringArray* obj) {
+    try { return {new Handle_TDataStd_DeltaOnModificationOfExtStringArray(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const TDataStd_DeltaOnModificationOfExtStringArray*> HandleTDataStdDeltaOnModificationOfExtStringArray_get(const HandleTDataStdDeltaOnModificationOfExtStringArray* handle) {
+extern "C" OcctResult<const TDataStd_DeltaOnModificationOfExtStringArray*> Handle_TDataStd_DeltaOnModificationOfExtStringArray_get(const Handle_TDataStd_DeltaOnModificationOfExtStringArray* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TDataStd_DeltaOnModificationOfExtStringArray*> HandleTDataStdDeltaOnModificationOfExtStringArray_get_mut(HandleTDataStdDeltaOnModificationOfExtStringArray* handle) {
+extern "C" OcctResult<TDataStd_DeltaOnModificationOfExtStringArray*> Handle_TDataStd_DeltaOnModificationOfExtStringArray_get_mut(Handle_TDataStd_DeltaOnModificationOfExtStringArray* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTDFDeltaOnModification*> HandleTDataStdDeltaOnModificationOfExtStringArray_to_HandleTDFDeltaOnModification(const HandleTDataStdDeltaOnModificationOfExtStringArray* self_) {
-    try { return {new HandleTDFDeltaOnModification(*self_), nullptr}; }
+extern "C" OcctResult<Handle_TDF_DeltaOnModification*> Handle_TDataStd_DeltaOnModificationOfExtStringArray_to_Handle_TDF_DeltaOnModification(const Handle_TDataStd_DeltaOnModificationOfExtStringArray* self_) {
+    try { return {new Handle_TDF_DeltaOnModification(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTDFAttributeDelta*> HandleTDataStdDeltaOnModificationOfExtStringArray_to_HandleTDFAttributeDelta(const HandleTDataStdDeltaOnModificationOfExtStringArray* self_) {
-    try { return {new HandleTDFAttributeDelta(*self_), nullptr}; }
+extern "C" OcctResult<Handle_TDF_AttributeDelta*> Handle_TDataStd_DeltaOnModificationOfExtStringArray_to_Handle_TDF_AttributeDelta(const Handle_TDataStd_DeltaOnModificationOfExtStringArray* self_) {
+    try { return {new Handle_TDF_AttributeDelta(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleTDataStdDeltaOnModificationOfExtStringArray_to_HandleStandardTransient(const HandleTDataStdDeltaOnModificationOfExtStringArray* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_TDataStd_DeltaOnModificationOfExtStringArray_to_Handle_Standard_Transient(const Handle_TDataStd_DeltaOnModificationOfExtStringArray* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<TDF_Label*> TDataStd_DeltaOnModificationOfExtStringArray_inherited_Label(const TDataStd_DeltaOnModificationOfExtStringArray* self) {
@@ -6360,28 +6092,28 @@ extern "C" OcctResult<const TDF_AttributeDelta*> TDataStd_DeltaOnModificationOfI
 extern "C" OcctResult<TDF_AttributeDelta*> TDataStd_DeltaOnModificationOfIntArray_as_TDF_AttributeDelta_mut(TDataStd_DeltaOnModificationOfIntArray* self_) { return {static_cast<TDF_AttributeDelta*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> TDataStd_DeltaOnModificationOfIntArray_as_Standard_Transient(const TDataStd_DeltaOnModificationOfIntArray* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> TDataStd_DeltaOnModificationOfIntArray_as_Standard_Transient_mut(TDataStd_DeltaOnModificationOfIntArray* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleTDataStdDeltaOnModificationOfIntArray*> TDataStd_DeltaOnModificationOfIntArray_to_handle(TDataStd_DeltaOnModificationOfIntArray* obj) {
-    try { return {new HandleTDataStdDeltaOnModificationOfIntArray(obj), nullptr}; }
+extern "C" OcctResult<Handle_TDataStd_DeltaOnModificationOfIntArray*> TDataStd_DeltaOnModificationOfIntArray_to_handle(TDataStd_DeltaOnModificationOfIntArray* obj) {
+    try { return {new Handle_TDataStd_DeltaOnModificationOfIntArray(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const TDataStd_DeltaOnModificationOfIntArray*> HandleTDataStdDeltaOnModificationOfIntArray_get(const HandleTDataStdDeltaOnModificationOfIntArray* handle) {
+extern "C" OcctResult<const TDataStd_DeltaOnModificationOfIntArray*> Handle_TDataStd_DeltaOnModificationOfIntArray_get(const Handle_TDataStd_DeltaOnModificationOfIntArray* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TDataStd_DeltaOnModificationOfIntArray*> HandleTDataStdDeltaOnModificationOfIntArray_get_mut(HandleTDataStdDeltaOnModificationOfIntArray* handle) {
+extern "C" OcctResult<TDataStd_DeltaOnModificationOfIntArray*> Handle_TDataStd_DeltaOnModificationOfIntArray_get_mut(Handle_TDataStd_DeltaOnModificationOfIntArray* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTDFDeltaOnModification*> HandleTDataStdDeltaOnModificationOfIntArray_to_HandleTDFDeltaOnModification(const HandleTDataStdDeltaOnModificationOfIntArray* self_) {
-    try { return {new HandleTDFDeltaOnModification(*self_), nullptr}; }
+extern "C" OcctResult<Handle_TDF_DeltaOnModification*> Handle_TDataStd_DeltaOnModificationOfIntArray_to_Handle_TDF_DeltaOnModification(const Handle_TDataStd_DeltaOnModificationOfIntArray* self_) {
+    try { return {new Handle_TDF_DeltaOnModification(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTDFAttributeDelta*> HandleTDataStdDeltaOnModificationOfIntArray_to_HandleTDFAttributeDelta(const HandleTDataStdDeltaOnModificationOfIntArray* self_) {
-    try { return {new HandleTDFAttributeDelta(*self_), nullptr}; }
+extern "C" OcctResult<Handle_TDF_AttributeDelta*> Handle_TDataStd_DeltaOnModificationOfIntArray_to_Handle_TDF_AttributeDelta(const Handle_TDataStd_DeltaOnModificationOfIntArray* self_) {
+    try { return {new Handle_TDF_AttributeDelta(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleTDataStdDeltaOnModificationOfIntArray_to_HandleStandardTransient(const HandleTDataStdDeltaOnModificationOfIntArray* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_TDataStd_DeltaOnModificationOfIntArray_to_Handle_Standard_Transient(const Handle_TDataStd_DeltaOnModificationOfIntArray* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<TDF_Label*> TDataStd_DeltaOnModificationOfIntArray_inherited_Label(const TDataStd_DeltaOnModificationOfIntArray* self) {
@@ -6456,28 +6188,28 @@ extern "C" OcctResult<const TDF_AttributeDelta*> TDataStd_DeltaOnModificationOfI
 extern "C" OcctResult<TDF_AttributeDelta*> TDataStd_DeltaOnModificationOfIntPackedMap_as_TDF_AttributeDelta_mut(TDataStd_DeltaOnModificationOfIntPackedMap* self_) { return {static_cast<TDF_AttributeDelta*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> TDataStd_DeltaOnModificationOfIntPackedMap_as_Standard_Transient(const TDataStd_DeltaOnModificationOfIntPackedMap* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> TDataStd_DeltaOnModificationOfIntPackedMap_as_Standard_Transient_mut(TDataStd_DeltaOnModificationOfIntPackedMap* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleTDataStdDeltaOnModificationOfIntPackedMap*> TDataStd_DeltaOnModificationOfIntPackedMap_to_handle(TDataStd_DeltaOnModificationOfIntPackedMap* obj) {
-    try { return {new HandleTDataStdDeltaOnModificationOfIntPackedMap(obj), nullptr}; }
+extern "C" OcctResult<Handle_TDataStd_DeltaOnModificationOfIntPackedMap*> TDataStd_DeltaOnModificationOfIntPackedMap_to_handle(TDataStd_DeltaOnModificationOfIntPackedMap* obj) {
+    try { return {new Handle_TDataStd_DeltaOnModificationOfIntPackedMap(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const TDataStd_DeltaOnModificationOfIntPackedMap*> HandleTDataStdDeltaOnModificationOfIntPackedMap_get(const HandleTDataStdDeltaOnModificationOfIntPackedMap* handle) {
+extern "C" OcctResult<const TDataStd_DeltaOnModificationOfIntPackedMap*> Handle_TDataStd_DeltaOnModificationOfIntPackedMap_get(const Handle_TDataStd_DeltaOnModificationOfIntPackedMap* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TDataStd_DeltaOnModificationOfIntPackedMap*> HandleTDataStdDeltaOnModificationOfIntPackedMap_get_mut(HandleTDataStdDeltaOnModificationOfIntPackedMap* handle) {
+extern "C" OcctResult<TDataStd_DeltaOnModificationOfIntPackedMap*> Handle_TDataStd_DeltaOnModificationOfIntPackedMap_get_mut(Handle_TDataStd_DeltaOnModificationOfIntPackedMap* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTDFDeltaOnModification*> HandleTDataStdDeltaOnModificationOfIntPackedMap_to_HandleTDFDeltaOnModification(const HandleTDataStdDeltaOnModificationOfIntPackedMap* self_) {
-    try { return {new HandleTDFDeltaOnModification(*self_), nullptr}; }
+extern "C" OcctResult<Handle_TDF_DeltaOnModification*> Handle_TDataStd_DeltaOnModificationOfIntPackedMap_to_Handle_TDF_DeltaOnModification(const Handle_TDataStd_DeltaOnModificationOfIntPackedMap* self_) {
+    try { return {new Handle_TDF_DeltaOnModification(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTDFAttributeDelta*> HandleTDataStdDeltaOnModificationOfIntPackedMap_to_HandleTDFAttributeDelta(const HandleTDataStdDeltaOnModificationOfIntPackedMap* self_) {
-    try { return {new HandleTDFAttributeDelta(*self_), nullptr}; }
+extern "C" OcctResult<Handle_TDF_AttributeDelta*> Handle_TDataStd_DeltaOnModificationOfIntPackedMap_to_Handle_TDF_AttributeDelta(const Handle_TDataStd_DeltaOnModificationOfIntPackedMap* self_) {
+    try { return {new Handle_TDF_AttributeDelta(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleTDataStdDeltaOnModificationOfIntPackedMap_to_HandleStandardTransient(const HandleTDataStdDeltaOnModificationOfIntPackedMap* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_TDataStd_DeltaOnModificationOfIntPackedMap_to_Handle_Standard_Transient(const Handle_TDataStd_DeltaOnModificationOfIntPackedMap* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<TDF_Label*> TDataStd_DeltaOnModificationOfIntPackedMap_inherited_Label(const TDataStd_DeltaOnModificationOfIntPackedMap* self) {
@@ -6552,28 +6284,28 @@ extern "C" OcctResult<const TDF_AttributeDelta*> TDataStd_DeltaOnModificationOfR
 extern "C" OcctResult<TDF_AttributeDelta*> TDataStd_DeltaOnModificationOfRealArray_as_TDF_AttributeDelta_mut(TDataStd_DeltaOnModificationOfRealArray* self_) { return {static_cast<TDF_AttributeDelta*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> TDataStd_DeltaOnModificationOfRealArray_as_Standard_Transient(const TDataStd_DeltaOnModificationOfRealArray* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> TDataStd_DeltaOnModificationOfRealArray_as_Standard_Transient_mut(TDataStd_DeltaOnModificationOfRealArray* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleTDataStdDeltaOnModificationOfRealArray*> TDataStd_DeltaOnModificationOfRealArray_to_handle(TDataStd_DeltaOnModificationOfRealArray* obj) {
-    try { return {new HandleTDataStdDeltaOnModificationOfRealArray(obj), nullptr}; }
+extern "C" OcctResult<Handle_TDataStd_DeltaOnModificationOfRealArray*> TDataStd_DeltaOnModificationOfRealArray_to_handle(TDataStd_DeltaOnModificationOfRealArray* obj) {
+    try { return {new Handle_TDataStd_DeltaOnModificationOfRealArray(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const TDataStd_DeltaOnModificationOfRealArray*> HandleTDataStdDeltaOnModificationOfRealArray_get(const HandleTDataStdDeltaOnModificationOfRealArray* handle) {
+extern "C" OcctResult<const TDataStd_DeltaOnModificationOfRealArray*> Handle_TDataStd_DeltaOnModificationOfRealArray_get(const Handle_TDataStd_DeltaOnModificationOfRealArray* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TDataStd_DeltaOnModificationOfRealArray*> HandleTDataStdDeltaOnModificationOfRealArray_get_mut(HandleTDataStdDeltaOnModificationOfRealArray* handle) {
+extern "C" OcctResult<TDataStd_DeltaOnModificationOfRealArray*> Handle_TDataStd_DeltaOnModificationOfRealArray_get_mut(Handle_TDataStd_DeltaOnModificationOfRealArray* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTDFDeltaOnModification*> HandleTDataStdDeltaOnModificationOfRealArray_to_HandleTDFDeltaOnModification(const HandleTDataStdDeltaOnModificationOfRealArray* self_) {
-    try { return {new HandleTDFDeltaOnModification(*self_), nullptr}; }
+extern "C" OcctResult<Handle_TDF_DeltaOnModification*> Handle_TDataStd_DeltaOnModificationOfRealArray_to_Handle_TDF_DeltaOnModification(const Handle_TDataStd_DeltaOnModificationOfRealArray* self_) {
+    try { return {new Handle_TDF_DeltaOnModification(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTDFAttributeDelta*> HandleTDataStdDeltaOnModificationOfRealArray_to_HandleTDFAttributeDelta(const HandleTDataStdDeltaOnModificationOfRealArray* self_) {
-    try { return {new HandleTDFAttributeDelta(*self_), nullptr}; }
+extern "C" OcctResult<Handle_TDF_AttributeDelta*> Handle_TDataStd_DeltaOnModificationOfRealArray_to_Handle_TDF_AttributeDelta(const Handle_TDataStd_DeltaOnModificationOfRealArray* self_) {
+    try { return {new Handle_TDF_AttributeDelta(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleTDataStdDeltaOnModificationOfRealArray_to_HandleStandardTransient(const HandleTDataStdDeltaOnModificationOfRealArray* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_TDataStd_DeltaOnModificationOfRealArray_to_Handle_Standard_Transient(const Handle_TDataStd_DeltaOnModificationOfRealArray* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<TDF_Label*> TDataStd_DeltaOnModificationOfRealArray_inherited_Label(const TDataStd_DeltaOnModificationOfRealArray* self) {
@@ -6676,28 +6408,28 @@ extern "C" OcctResult<const TDF_Attribute*> TDataStd_Directory_as_TDF_Attribute(
 extern "C" OcctResult<TDF_Attribute*> TDataStd_Directory_as_TDF_Attribute_mut(TDataStd_Directory* self_) { return {static_cast<TDF_Attribute*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> TDataStd_Directory_as_Standard_Transient(const TDataStd_Directory* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> TDataStd_Directory_as_Standard_Transient_mut(TDataStd_Directory* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleTDataStdDirectory*> TDataStd_Directory_to_handle(TDataStd_Directory* obj) {
-    try { return {new HandleTDataStdDirectory(obj), nullptr}; }
+extern "C" OcctResult<Handle_TDataStd_Directory*> TDataStd_Directory_to_handle(TDataStd_Directory* obj) {
+    try { return {new Handle_TDataStd_Directory(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const TDataStd_Directory*> HandleTDataStdDirectory_get(const HandleTDataStdDirectory* handle) {
+extern "C" OcctResult<const TDataStd_Directory*> Handle_TDataStd_Directory_get(const Handle_TDataStd_Directory* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TDataStd_Directory*> HandleTDataStdDirectory_get_mut(HandleTDataStdDirectory* handle) {
+extern "C" OcctResult<TDataStd_Directory*> Handle_TDataStd_Directory_get_mut(Handle_TDataStd_Directory* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTDataStdGenericEmpty*> HandleTDataStdDirectory_to_HandleTDataStdGenericEmpty(const HandleTDataStdDirectory* self_) {
-    try { return {new HandleTDataStdGenericEmpty(*self_), nullptr}; }
+extern "C" OcctResult<Handle_TDataStd_GenericEmpty*> Handle_TDataStd_Directory_to_Handle_TDataStd_GenericEmpty(const Handle_TDataStd_Directory* self_) {
+    try { return {new Handle_TDataStd_GenericEmpty(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTDFAttribute*> HandleTDataStdDirectory_to_HandleTDFAttribute(const HandleTDataStdDirectory* self_) {
-    try { return {new HandleTDFAttribute(*self_), nullptr}; }
+extern "C" OcctResult<Handle_TDF_Attribute*> Handle_TDataStd_Directory_to_Handle_TDF_Attribute(const Handle_TDataStd_Directory* self_) {
+    try { return {new Handle_TDF_Attribute(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleTDataStdDirectory_to_HandleStandardTransient(const HandleTDataStdDirectory* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_TDataStd_Directory_to_Handle_Standard_Transient(const Handle_TDataStd_Directory* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" const char* TDataStd_Directory_inherited_Restore(TDataStd_Directory* self, Handle(TDF_Attribute) const& arg0) {
@@ -6824,10 +6556,6 @@ extern "C" const char* TDataStd_Directory_inherited_References(const TDataStd_Di
     try { self->References(aDataSet); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* TDataStd_Directory_inherited_ExtendedDump(const TDataStd_Directory* self, Standard_OStream& anOS, TDF_IDFilter const& aFilter, TDF_AttributeIndexedMap& aMap) {
-    try { self->ExtendedDump(anOS, aFilter, aMap); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
 extern "C" const char* TDataStd_Directory_inherited_Forget(TDataStd_Directory* self, int32_t aTransaction) {
     try { self->Forget(aTransaction); return nullptr; }
     OCCT_CATCH_RETURN_VOID
@@ -6886,10 +6614,6 @@ extern "C" OcctResult<TCollection_ExtendedString const*> TDataStd_Expression_get
     try { return {&(self_->GetExpression()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TDF_AttributeList*> TDataStd_Expression_get_variables(TDataStd_Expression* self_) {
-    try { return {&(self_->GetVariables()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
 extern "C" OcctResult<Standard_GUID const*> TDataStd_Expression_id(const TDataStd_Expression* self_) {
     try { return {&(self_->ID()), nullptr}; }
     OCCT_CATCH_RETURN
@@ -6930,31 +6654,31 @@ extern "C" OcctResult<const TDF_Attribute*> TDataStd_Expression_as_TDF_Attribute
 extern "C" OcctResult<TDF_Attribute*> TDataStd_Expression_as_TDF_Attribute_mut(TDataStd_Expression* self_) { return {static_cast<TDF_Attribute*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> TDataStd_Expression_as_Standard_Transient(const TDataStd_Expression* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> TDataStd_Expression_as_Standard_Transient_mut(TDataStd_Expression* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleTDataStdExpression*> TDataStd_Expression_to_handle(TDataStd_Expression* obj) {
-    try { return {new HandleTDataStdExpression(obj), nullptr}; }
+extern "C" OcctResult<Handle_TDataStd_Expression*> TDataStd_Expression_to_handle(TDataStd_Expression* obj) {
+    try { return {new Handle_TDataStd_Expression(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const TDataStd_Expression*> HandleTDataStdExpression_get(const HandleTDataStdExpression* handle) {
+extern "C" OcctResult<const TDataStd_Expression*> Handle_TDataStd_Expression_get(const Handle_TDataStd_Expression* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TDataStd_Expression*> HandleTDataStdExpression_get_mut(HandleTDataStdExpression* handle) {
+extern "C" OcctResult<TDataStd_Expression*> Handle_TDataStd_Expression_get_mut(Handle_TDataStd_Expression* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTDFAttribute*> HandleTDataStdExpression_to_HandleTDFAttribute(const HandleTDataStdExpression* self_) {
-    try { return {new HandleTDFAttribute(*self_), nullptr}; }
+extern "C" OcctResult<Handle_TDF_Attribute*> Handle_TDataStd_Expression_to_Handle_TDF_Attribute(const Handle_TDataStd_Expression* self_) {
+    try { return {new Handle_TDF_Attribute(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleTDataStdExpression_to_HandleStandardTransient(const HandleTDataStdExpression* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_TDataStd_Expression_to_Handle_Standard_Transient(const Handle_TDataStd_Expression* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTDataStdRelation*> HandleTDataStdExpression_downcast_to_HandleTDataStdRelation(const HandleTDataStdExpression* self_) {
+extern "C" OcctResult<Handle_TDataStd_Relation*> Handle_TDataStd_Expression_downcast_to_Handle_TDataStd_Relation(const Handle_TDataStd_Expression* self_) {
     try {
     opencascade::handle<TDataStd_Relation> result = opencascade::handle<TDataStd_Relation>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleTDataStdRelation(result), nullptr};
+    return {new Handle_TDataStd_Relation(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
@@ -7074,10 +6798,6 @@ extern "C" const char* TDataStd_Expression_inherited_References(const TDataStd_E
     try { self->References(aDataSet); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* TDataStd_Expression_inherited_ExtendedDump(const TDataStd_Expression* self, Standard_OStream& anOS, TDF_IDFilter const& aFilter, TDF_AttributeIndexedMap& aMap) {
-    try { self->ExtendedDump(anOS, aFilter, aMap); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
 extern "C" const char* TDataStd_Expression_inherited_Forget(TDataStd_Expression* self, int32_t aTransaction) {
     try { self->Forget(aTransaction); return nullptr; }
     OCCT_CATCH_RETURN_VOID
@@ -7164,11 +6884,11 @@ extern "C" OcctResult<int32_t> TDataStd_ExtStringArray_length(const TDataStd_Ext
     try { return {self_->Length(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* TDataStd_ExtStringArray_change_array(TDataStd_ExtStringArray* self_, Handle(TColStd_HArray1OfExtendedString) const* newArray, bool isCheckItems) {
+extern "C" const char* TDataStd_ExtStringArray_change_array(TDataStd_ExtStringArray* self_, Handle(NCollection_HArray1_TCollection_ExtendedString) const* newArray, bool isCheckItems) {
     try { self_->ChangeArray(*newArray, isCheckItems); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<Handle(TColStd_HArray1OfExtendedString) const*> TDataStd_ExtStringArray_array(const TDataStd_ExtStringArray* self_) {
+extern "C" OcctResult<Handle(NCollection_HArray1_TCollection_ExtendedString) const*> TDataStd_ExtStringArray_array(const TDataStd_ExtStringArray* self_) {
     try { return {&(self_->Array()), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -7220,24 +6940,24 @@ extern "C" OcctResult<const TDF_Attribute*> TDataStd_ExtStringArray_as_TDF_Attri
 extern "C" OcctResult<TDF_Attribute*> TDataStd_ExtStringArray_as_TDF_Attribute_mut(TDataStd_ExtStringArray* self_) { return {static_cast<TDF_Attribute*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> TDataStd_ExtStringArray_as_Standard_Transient(const TDataStd_ExtStringArray* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> TDataStd_ExtStringArray_as_Standard_Transient_mut(TDataStd_ExtStringArray* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleTDataStdExtStringArray*> TDataStd_ExtStringArray_to_handle(TDataStd_ExtStringArray* obj) {
-    try { return {new HandleTDataStdExtStringArray(obj), nullptr}; }
+extern "C" OcctResult<Handle_TDataStd_ExtStringArray*> TDataStd_ExtStringArray_to_handle(TDataStd_ExtStringArray* obj) {
+    try { return {new Handle_TDataStd_ExtStringArray(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const TDataStd_ExtStringArray*> HandleTDataStdExtStringArray_get(const HandleTDataStdExtStringArray* handle) {
+extern "C" OcctResult<const TDataStd_ExtStringArray*> Handle_TDataStd_ExtStringArray_get(const Handle_TDataStd_ExtStringArray* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TDataStd_ExtStringArray*> HandleTDataStdExtStringArray_get_mut(HandleTDataStdExtStringArray* handle) {
+extern "C" OcctResult<TDataStd_ExtStringArray*> Handle_TDataStd_ExtStringArray_get_mut(Handle_TDataStd_ExtStringArray* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTDFAttribute*> HandleTDataStdExtStringArray_to_HandleTDFAttribute(const HandleTDataStdExtStringArray* self_) {
-    try { return {new HandleTDFAttribute(*self_), nullptr}; }
+extern "C" OcctResult<Handle_TDF_Attribute*> Handle_TDataStd_ExtStringArray_to_Handle_TDF_Attribute(const Handle_TDataStd_ExtStringArray* self_) {
+    try { return {new Handle_TDF_Attribute(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleTDataStdExtStringArray_to_HandleStandardTransient(const HandleTDataStdExtStringArray* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_TDataStd_ExtStringArray_to_Handle_Standard_Transient(const Handle_TDataStd_ExtStringArray* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<TDF_Label*> TDataStd_ExtStringArray_inherited_Label(const TDataStd_ExtStringArray* self) {
@@ -7348,10 +7068,6 @@ extern "C" const char* TDataStd_ExtStringArray_inherited_References(const TDataS
     try { self->References(aDataSet); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* TDataStd_ExtStringArray_inherited_ExtendedDump(const TDataStd_ExtStringArray* self, Standard_OStream& anOS, TDF_IDFilter const& aFilter, TDF_AttributeIndexedMap& aMap) {
-    try { self->ExtendedDump(anOS, aFilter, aMap); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
 extern "C" const char* TDataStd_ExtStringArray_inherited_Forget(TDataStd_ExtStringArray* self, int32_t aTransaction) {
     try { self->Forget(aTransaction); return nullptr; }
     OCCT_CATCH_RETURN_VOID
@@ -7458,7 +7174,7 @@ extern "C" OcctResult<TCollection_ExtendedString const*> TDataStd_ExtStringList_
     try { return {&(self_->Last()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TDataStd_ListOfExtendedString const*> TDataStd_ExtStringList_list(const TDataStd_ExtStringList* self_) {
+extern "C" OcctResult<NCollection_List_TCollection_ExtendedString const*> TDataStd_ExtStringList_list(const TDataStd_ExtStringList* self_) {
     try { return {&(self_->List()), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -7506,24 +7222,24 @@ extern "C" OcctResult<const TDF_Attribute*> TDataStd_ExtStringList_as_TDF_Attrib
 extern "C" OcctResult<TDF_Attribute*> TDataStd_ExtStringList_as_TDF_Attribute_mut(TDataStd_ExtStringList* self_) { return {static_cast<TDF_Attribute*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> TDataStd_ExtStringList_as_Standard_Transient(const TDataStd_ExtStringList* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> TDataStd_ExtStringList_as_Standard_Transient_mut(TDataStd_ExtStringList* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleTDataStdExtStringList*> TDataStd_ExtStringList_to_handle(TDataStd_ExtStringList* obj) {
-    try { return {new HandleTDataStdExtStringList(obj), nullptr}; }
+extern "C" OcctResult<Handle_TDataStd_ExtStringList*> TDataStd_ExtStringList_to_handle(TDataStd_ExtStringList* obj) {
+    try { return {new Handle_TDataStd_ExtStringList(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const TDataStd_ExtStringList*> HandleTDataStdExtStringList_get(const HandleTDataStdExtStringList* handle) {
+extern "C" OcctResult<const TDataStd_ExtStringList*> Handle_TDataStd_ExtStringList_get(const Handle_TDataStd_ExtStringList* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TDataStd_ExtStringList*> HandleTDataStdExtStringList_get_mut(HandleTDataStdExtStringList* handle) {
+extern "C" OcctResult<TDataStd_ExtStringList*> Handle_TDataStd_ExtStringList_get_mut(Handle_TDataStd_ExtStringList* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTDFAttribute*> HandleTDataStdExtStringList_to_HandleTDFAttribute(const HandleTDataStdExtStringList* self_) {
-    try { return {new HandleTDFAttribute(*self_), nullptr}; }
+extern "C" OcctResult<Handle_TDF_Attribute*> Handle_TDataStd_ExtStringList_to_Handle_TDF_Attribute(const Handle_TDataStd_ExtStringList* self_) {
+    try { return {new Handle_TDF_Attribute(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleTDataStdExtStringList_to_HandleStandardTransient(const HandleTDataStdExtStringList* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_TDataStd_ExtStringList_to_Handle_Standard_Transient(const Handle_TDataStd_ExtStringList* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<TDF_Label*> TDataStd_ExtStringList_inherited_Label(const TDataStd_ExtStringList* self) {
@@ -7638,10 +7354,6 @@ extern "C" const char* TDataStd_ExtStringList_inherited_References(const TDataSt
     try { self->References(aDataSet); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* TDataStd_ExtStringList_inherited_ExtendedDump(const TDataStd_ExtStringList* self, Standard_OStream& anOS, TDF_IDFilter const& aFilter, TDF_AttributeIndexedMap& aMap) {
-    try { self->ExtendedDump(anOS, aFilter, aMap); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
 extern "C" const char* TDataStd_ExtStringList_inherited_Forget(TDataStd_ExtStringList* self, int32_t aTransaction) {
     try { self->Forget(aTransaction); return nullptr; }
     OCCT_CATCH_RETURN_VOID
@@ -7704,179 +7416,179 @@ extern "C" OcctResult<const TDF_Attribute*> TDataStd_GenericEmpty_as_TDF_Attribu
 extern "C" OcctResult<TDF_Attribute*> TDataStd_GenericEmpty_as_TDF_Attribute_mut(TDataStd_GenericEmpty* self_) { return {static_cast<TDF_Attribute*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> TDataStd_GenericEmpty_as_Standard_Transient(const TDataStd_GenericEmpty* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> TDataStd_GenericEmpty_as_Standard_Transient_mut(TDataStd_GenericEmpty* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<const TDataStd_GenericEmpty*> HandleTDataStdGenericEmpty_get(const HandleTDataStdGenericEmpty* handle) {
+extern "C" OcctResult<const TDataStd_GenericEmpty*> Handle_TDataStd_GenericEmpty_get(const Handle_TDataStd_GenericEmpty* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TDataStd_GenericEmpty*> HandleTDataStdGenericEmpty_get_mut(HandleTDataStdGenericEmpty* handle) {
+extern "C" OcctResult<TDataStd_GenericEmpty*> Handle_TDataStd_GenericEmpty_get_mut(Handle_TDataStd_GenericEmpty* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTDFAttribute*> HandleTDataStdGenericEmpty_to_HandleTDFAttribute(const HandleTDataStdGenericEmpty* self_) {
-    try { return {new HandleTDFAttribute(*self_), nullptr}; }
+extern "C" OcctResult<Handle_TDF_Attribute*> Handle_TDataStd_GenericEmpty_to_Handle_TDF_Attribute(const Handle_TDataStd_GenericEmpty* self_) {
+    try { return {new Handle_TDF_Attribute(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleTDataStdGenericEmpty_to_HandleStandardTransient(const HandleTDataStdGenericEmpty* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_TDataStd_GenericEmpty_to_Handle_Standard_Transient(const Handle_TDataStd_GenericEmpty* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTDataStdDirectory*> HandleTDataStdGenericEmpty_downcast_to_HandleTDataStdDirectory(const HandleTDataStdGenericEmpty* self_) {
+extern "C" OcctResult<Handle_TDataStd_Directory*> Handle_TDataStd_GenericEmpty_downcast_to_Handle_TDataStd_Directory(const Handle_TDataStd_GenericEmpty* self_) {
     try {
     opencascade::handle<TDataStd_Directory> result = opencascade::handle<TDataStd_Directory>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleTDataStdDirectory(result), nullptr};
+    return {new Handle_TDataStd_Directory(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTDataStdNoteBook*> HandleTDataStdGenericEmpty_downcast_to_HandleTDataStdNoteBook(const HandleTDataStdGenericEmpty* self_) {
+extern "C" OcctResult<Handle_TDataStd_NoteBook*> Handle_TDataStd_GenericEmpty_downcast_to_Handle_TDataStd_NoteBook(const Handle_TDataStd_GenericEmpty* self_) {
     try {
     opencascade::handle<TDataStd_NoteBook> result = opencascade::handle<TDataStd_NoteBook>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleTDataStdNoteBook(result), nullptr};
+    return {new Handle_TDataStd_NoteBook(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTDataStdTick*> HandleTDataStdGenericEmpty_downcast_to_HandleTDataStdTick(const HandleTDataStdGenericEmpty* self_) {
+extern "C" OcctResult<Handle_TDataStd_Tick*> Handle_TDataStd_GenericEmpty_downcast_to_Handle_TDataStd_Tick(const Handle_TDataStd_GenericEmpty* self_) {
     try {
     opencascade::handle<TDataStd_Tick> result = opencascade::handle<TDataStd_Tick>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleTDataStdTick(result), nullptr};
+    return {new Handle_TDataStd_Tick(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTDataXtdAxis*> HandleTDataStdGenericEmpty_downcast_to_HandleTDataXtdAxis(const HandleTDataStdGenericEmpty* self_) {
+extern "C" OcctResult<Handle_TDataXtd_Axis*> Handle_TDataStd_GenericEmpty_downcast_to_Handle_TDataXtd_Axis(const Handle_TDataStd_GenericEmpty* self_) {
     try {
     opencascade::handle<TDataXtd_Axis> result = opencascade::handle<TDataXtd_Axis>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleTDataXtdAxis(result), nullptr};
+    return {new Handle_TDataXtd_Axis(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTDataXtdPlacement*> HandleTDataStdGenericEmpty_downcast_to_HandleTDataXtdPlacement(const HandleTDataStdGenericEmpty* self_) {
+extern "C" OcctResult<Handle_TDataXtd_Placement*> Handle_TDataStd_GenericEmpty_downcast_to_Handle_TDataXtd_Placement(const Handle_TDataStd_GenericEmpty* self_) {
     try {
     opencascade::handle<TDataXtd_Placement> result = opencascade::handle<TDataXtd_Placement>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleTDataXtdPlacement(result), nullptr};
+    return {new Handle_TDataXtd_Placement(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTDataXtdPlane*> HandleTDataStdGenericEmpty_downcast_to_HandleTDataXtdPlane(const HandleTDataStdGenericEmpty* self_) {
+extern "C" OcctResult<Handle_TDataXtd_Plane*> Handle_TDataStd_GenericEmpty_downcast_to_Handle_TDataXtd_Plane(const Handle_TDataStd_GenericEmpty* self_) {
     try {
     opencascade::handle<TDataXtd_Plane> result = opencascade::handle<TDataXtd_Plane>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleTDataXtdPlane(result), nullptr};
+    return {new Handle_TDataXtd_Plane(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTDataXtdPoint*> HandleTDataStdGenericEmpty_downcast_to_HandleTDataXtdPoint(const HandleTDataStdGenericEmpty* self_) {
+extern "C" OcctResult<Handle_TDataXtd_Point*> Handle_TDataStd_GenericEmpty_downcast_to_Handle_TDataXtd_Point(const Handle_TDataStd_GenericEmpty* self_) {
     try {
     opencascade::handle<TDataXtd_Point> result = opencascade::handle<TDataXtd_Point>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleTDataXtdPoint(result), nullptr};
+    return {new Handle_TDataXtd_Point(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTDataXtdShape*> HandleTDataStdGenericEmpty_downcast_to_HandleTDataXtdShape(const HandleTDataStdGenericEmpty* self_) {
+extern "C" OcctResult<Handle_TDataXtd_Shape*> Handle_TDataStd_GenericEmpty_downcast_to_Handle_TDataXtd_Shape(const Handle_TDataStd_GenericEmpty* self_) {
     try {
     opencascade::handle<TDataXtd_Shape> result = opencascade::handle<TDataXtd_Shape>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleTDataXtdShape(result), nullptr};
+    return {new Handle_TDataXtd_Shape(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleXCAFDocClippingPlaneTool*> HandleTDataStdGenericEmpty_downcast_to_HandleXCAFDocClippingPlaneTool(const HandleTDataStdGenericEmpty* self_) {
+extern "C" OcctResult<Handle_XCAFDoc_ClippingPlaneTool*> Handle_TDataStd_GenericEmpty_downcast_to_Handle_XCAFDoc_ClippingPlaneTool(const Handle_TDataStd_GenericEmpty* self_) {
     try {
     opencascade::handle<XCAFDoc_ClippingPlaneTool> result = opencascade::handle<XCAFDoc_ClippingPlaneTool>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleXCAFDocClippingPlaneTool(result), nullptr};
+    return {new Handle_XCAFDoc_ClippingPlaneTool(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleXCAFDocColorTool*> HandleTDataStdGenericEmpty_downcast_to_HandleXCAFDocColorTool(const HandleTDataStdGenericEmpty* self_) {
+extern "C" OcctResult<Handle_XCAFDoc_ColorTool*> Handle_TDataStd_GenericEmpty_downcast_to_Handle_XCAFDoc_ColorTool(const Handle_TDataStd_GenericEmpty* self_) {
     try {
     opencascade::handle<XCAFDoc_ColorTool> result = opencascade::handle<XCAFDoc_ColorTool>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleXCAFDocColorTool(result), nullptr};
+    return {new Handle_XCAFDoc_ColorTool(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleXCAFDocDimTolTool*> HandleTDataStdGenericEmpty_downcast_to_HandleXCAFDocDimTolTool(const HandleTDataStdGenericEmpty* self_) {
+extern "C" OcctResult<Handle_XCAFDoc_DimTolTool*> Handle_TDataStd_GenericEmpty_downcast_to_Handle_XCAFDoc_DimTolTool(const Handle_TDataStd_GenericEmpty* self_) {
     try {
     opencascade::handle<XCAFDoc_DimTolTool> result = opencascade::handle<XCAFDoc_DimTolTool>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleXCAFDocDimTolTool(result), nullptr};
+    return {new Handle_XCAFDoc_DimTolTool(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleXCAFDocDimension*> HandleTDataStdGenericEmpty_downcast_to_HandleXCAFDocDimension(const HandleTDataStdGenericEmpty* self_) {
+extern "C" OcctResult<Handle_XCAFDoc_Dimension*> Handle_TDataStd_GenericEmpty_downcast_to_Handle_XCAFDoc_Dimension(const Handle_TDataStd_GenericEmpty* self_) {
     try {
     opencascade::handle<XCAFDoc_Dimension> result = opencascade::handle<XCAFDoc_Dimension>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleXCAFDocDimension(result), nullptr};
+    return {new Handle_XCAFDoc_Dimension(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleXCAFDocDocumentTool*> HandleTDataStdGenericEmpty_downcast_to_HandleXCAFDocDocumentTool(const HandleTDataStdGenericEmpty* self_) {
+extern "C" OcctResult<Handle_XCAFDoc_DocumentTool*> Handle_TDataStd_GenericEmpty_downcast_to_Handle_XCAFDoc_DocumentTool(const Handle_TDataStd_GenericEmpty* self_) {
     try {
     opencascade::handle<XCAFDoc_DocumentTool> result = opencascade::handle<XCAFDoc_DocumentTool>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleXCAFDocDocumentTool(result), nullptr};
+    return {new Handle_XCAFDoc_DocumentTool(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleXCAFDocGeomTolerance*> HandleTDataStdGenericEmpty_downcast_to_HandleXCAFDocGeomTolerance(const HandleTDataStdGenericEmpty* self_) {
+extern "C" OcctResult<Handle_XCAFDoc_GeomTolerance*> Handle_TDataStd_GenericEmpty_downcast_to_Handle_XCAFDoc_GeomTolerance(const Handle_TDataStd_GenericEmpty* self_) {
     try {
     opencascade::handle<XCAFDoc_GeomTolerance> result = opencascade::handle<XCAFDoc_GeomTolerance>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleXCAFDocGeomTolerance(result), nullptr};
+    return {new Handle_XCAFDoc_GeomTolerance(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleXCAFDocLayerTool*> HandleTDataStdGenericEmpty_downcast_to_HandleXCAFDocLayerTool(const HandleTDataStdGenericEmpty* self_) {
+extern "C" OcctResult<Handle_XCAFDoc_LayerTool*> Handle_TDataStd_GenericEmpty_downcast_to_Handle_XCAFDoc_LayerTool(const Handle_TDataStd_GenericEmpty* self_) {
     try {
     opencascade::handle<XCAFDoc_LayerTool> result = opencascade::handle<XCAFDoc_LayerTool>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleXCAFDocLayerTool(result), nullptr};
+    return {new Handle_XCAFDoc_LayerTool(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleXCAFDocMaterialTool*> HandleTDataStdGenericEmpty_downcast_to_HandleXCAFDocMaterialTool(const HandleTDataStdGenericEmpty* self_) {
+extern "C" OcctResult<Handle_XCAFDoc_MaterialTool*> Handle_TDataStd_GenericEmpty_downcast_to_Handle_XCAFDoc_MaterialTool(const Handle_TDataStd_GenericEmpty* self_) {
     try {
     opencascade::handle<XCAFDoc_MaterialTool> result = opencascade::handle<XCAFDoc_MaterialTool>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleXCAFDocMaterialTool(result), nullptr};
+    return {new Handle_XCAFDoc_MaterialTool(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleXCAFDocNotesTool*> HandleTDataStdGenericEmpty_downcast_to_HandleXCAFDocNotesTool(const HandleTDataStdGenericEmpty* self_) {
+extern "C" OcctResult<Handle_XCAFDoc_NotesTool*> Handle_TDataStd_GenericEmpty_downcast_to_Handle_XCAFDoc_NotesTool(const Handle_TDataStd_GenericEmpty* self_) {
     try {
     opencascade::handle<XCAFDoc_NotesTool> result = opencascade::handle<XCAFDoc_NotesTool>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleXCAFDocNotesTool(result), nullptr};
+    return {new Handle_XCAFDoc_NotesTool(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleXCAFDocShapeTool*> HandleTDataStdGenericEmpty_downcast_to_HandleXCAFDocShapeTool(const HandleTDataStdGenericEmpty* self_) {
+extern "C" OcctResult<Handle_XCAFDoc_ShapeTool*> Handle_TDataStd_GenericEmpty_downcast_to_Handle_XCAFDoc_ShapeTool(const Handle_TDataStd_GenericEmpty* self_) {
     try {
     opencascade::handle<XCAFDoc_ShapeTool> result = opencascade::handle<XCAFDoc_ShapeTool>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleXCAFDocShapeTool(result), nullptr};
+    return {new Handle_XCAFDoc_ShapeTool(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleXCAFDocView*> HandleTDataStdGenericEmpty_downcast_to_HandleXCAFDocView(const HandleTDataStdGenericEmpty* self_) {
+extern "C" OcctResult<Handle_XCAFDoc_View*> Handle_TDataStd_GenericEmpty_downcast_to_Handle_XCAFDoc_View(const Handle_TDataStd_GenericEmpty* self_) {
     try {
     opencascade::handle<XCAFDoc_View> result = opencascade::handle<XCAFDoc_View>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleXCAFDocView(result), nullptr};
+    return {new Handle_XCAFDoc_View(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleXCAFDocViewTool*> HandleTDataStdGenericEmpty_downcast_to_HandleXCAFDocViewTool(const HandleTDataStdGenericEmpty* self_) {
+extern "C" OcctResult<Handle_XCAFDoc_ViewTool*> Handle_TDataStd_GenericEmpty_downcast_to_Handle_XCAFDoc_ViewTool(const Handle_TDataStd_GenericEmpty* self_) {
     try {
     opencascade::handle<XCAFDoc_ViewTool> result = opencascade::handle<XCAFDoc_ViewTool>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleXCAFDocViewTool(result), nullptr};
+    return {new Handle_XCAFDoc_ViewTool(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
@@ -8004,10 +7716,6 @@ extern "C" const char* TDataStd_GenericEmpty_inherited_References(const TDataStd
     try { self->References(aDataSet); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* TDataStd_GenericEmpty_inherited_ExtendedDump(const TDataStd_GenericEmpty* self, Standard_OStream& anOS, TDF_IDFilter const& aFilter, TDF_AttributeIndexedMap& aMap) {
-    try { self->ExtendedDump(anOS, aFilter, aMap); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
 extern "C" const char* TDataStd_GenericEmpty_inherited_Forget(TDataStd_GenericEmpty* self, int32_t aTransaction) {
     try { self->Forget(aTransaction); return nullptr; }
     OCCT_CATCH_RETURN_VOID
@@ -8086,35 +7794,35 @@ extern "C" OcctResult<const TDF_Attribute*> TDataStd_GenericExtString_as_TDF_Att
 extern "C" OcctResult<TDF_Attribute*> TDataStd_GenericExtString_as_TDF_Attribute_mut(TDataStd_GenericExtString* self_) { return {static_cast<TDF_Attribute*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> TDataStd_GenericExtString_as_Standard_Transient(const TDataStd_GenericExtString* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> TDataStd_GenericExtString_as_Standard_Transient_mut(TDataStd_GenericExtString* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<const TDataStd_GenericExtString*> HandleTDataStdGenericExtString_get(const HandleTDataStdGenericExtString* handle) {
+extern "C" OcctResult<const TDataStd_GenericExtString*> Handle_TDataStd_GenericExtString_get(const Handle_TDataStd_GenericExtString* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TDataStd_GenericExtString*> HandleTDataStdGenericExtString_get_mut(HandleTDataStdGenericExtString* handle) {
+extern "C" OcctResult<TDataStd_GenericExtString*> Handle_TDataStd_GenericExtString_get_mut(Handle_TDataStd_GenericExtString* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTDFAttribute*> HandleTDataStdGenericExtString_to_HandleTDFAttribute(const HandleTDataStdGenericExtString* self_) {
-    try { return {new HandleTDFAttribute(*self_), nullptr}; }
+extern "C" OcctResult<Handle_TDF_Attribute*> Handle_TDataStd_GenericExtString_to_Handle_TDF_Attribute(const Handle_TDataStd_GenericExtString* self_) {
+    try { return {new Handle_TDF_Attribute(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleTDataStdGenericExtString_to_HandleStandardTransient(const HandleTDataStdGenericExtString* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_TDataStd_GenericExtString_to_Handle_Standard_Transient(const Handle_TDataStd_GenericExtString* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTDataStdComment*> HandleTDataStdGenericExtString_downcast_to_HandleTDataStdComment(const HandleTDataStdGenericExtString* self_) {
+extern "C" OcctResult<Handle_TDataStd_Comment*> Handle_TDataStd_GenericExtString_downcast_to_Handle_TDataStd_Comment(const Handle_TDataStd_GenericExtString* self_) {
     try {
     opencascade::handle<TDataStd_Comment> result = opencascade::handle<TDataStd_Comment>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleTDataStdComment(result), nullptr};
+    return {new Handle_TDataStd_Comment(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTDataStdName*> HandleTDataStdGenericExtString_downcast_to_HandleTDataStdName(const HandleTDataStdGenericExtString* self_) {
+extern "C" OcctResult<Handle_TDataStd_Name*> Handle_TDataStd_GenericExtString_downcast_to_Handle_TDataStd_Name(const Handle_TDataStd_GenericExtString* self_) {
     try {
     opencascade::handle<TDataStd_Name> result = opencascade::handle<TDataStd_Name>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleTDataStdName(result), nullptr};
+    return {new Handle_TDataStd_Name(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
@@ -8234,10 +7942,6 @@ extern "C" const char* TDataStd_GenericExtString_inherited_References(const TDat
     try { self->References(aDataSet); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* TDataStd_GenericExtString_inherited_ExtendedDump(const TDataStd_GenericExtString* self, Standard_OStream& anOS, TDF_IDFilter const& aFilter, TDF_AttributeIndexedMap& aMap) {
-    try { self->ExtendedDump(anOS, aFilter, aMap); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
 extern "C" const char* TDataStd_GenericExtString_inherited_Forget(TDataStd_GenericExtString* self, int32_t aTransaction) {
     try { self->Forget(aTransaction); return nullptr; }
     OCCT_CATCH_RETURN_VOID
@@ -8280,7 +7984,7 @@ extern "C" OcctResult<TDataStd_HDataMapOfStringByte*> TDataStd_HDataMapOfStringB
     try { return {new TDataStd_HDataMapOfStringByte(NbBuckets), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TDataStd_HDataMapOfStringByte*> TDataStd_HDataMapOfStringByte_ctor_datamapofstringbyte(TDataStd_DataMapOfStringByte const* theOther) {
+extern "C" OcctResult<TDataStd_HDataMapOfStringByte*> TDataStd_HDataMapOfStringByte_ctor_datamap_tcollection_extendedstring_uint8_t(NCollection_DataMap_TCollection_ExtendedString_uint8_t const* theOther) {
     try { return {new TDataStd_HDataMapOfStringByte(*theOther), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -8288,11 +7992,11 @@ extern "C" OcctResult<Handle(Standard_Type) const*> TDataStd_HDataMapOfStringByt
     try { return {&(self_->DynamicType()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TDataStd_DataMapOfStringByte const*> TDataStd_HDataMapOfStringByte_map(const TDataStd_HDataMapOfStringByte* self_) {
+extern "C" OcctResult<NCollection_DataMap_TCollection_ExtendedString_uint8_t const*> TDataStd_HDataMapOfStringByte_map(const TDataStd_HDataMapOfStringByte* self_) {
     try { return {&(self_->Map()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TDataStd_DataMapOfStringByte*> TDataStd_HDataMapOfStringByte_change_map(TDataStd_HDataMapOfStringByte* self_) {
+extern "C" OcctResult<NCollection_DataMap_TCollection_ExtendedString_uint8_t*> TDataStd_HDataMapOfStringByte_change_map(TDataStd_HDataMapOfStringByte* self_) {
     try { return {&(self_->ChangeMap()), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -8306,20 +8010,20 @@ extern "C" OcctResult<Handle(Standard_Type) const*> TDataStd_HDataMapOfStringByt
 }
 extern "C" OcctResult<const Standard_Transient*> TDataStd_HDataMapOfStringByte_as_Standard_Transient(const TDataStd_HDataMapOfStringByte* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> TDataStd_HDataMapOfStringByte_as_Standard_Transient_mut(TDataStd_HDataMapOfStringByte* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleTDataStdHDataMapOfStringByte*> TDataStd_HDataMapOfStringByte_to_handle(TDataStd_HDataMapOfStringByte* obj) {
-    try { return {new HandleTDataStdHDataMapOfStringByte(obj), nullptr}; }
+extern "C" OcctResult<Handle_TDataStd_HDataMapOfStringByte*> TDataStd_HDataMapOfStringByte_to_handle(TDataStd_HDataMapOfStringByte* obj) {
+    try { return {new Handle_TDataStd_HDataMapOfStringByte(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const TDataStd_HDataMapOfStringByte*> HandleTDataStdHDataMapOfStringByte_get(const HandleTDataStdHDataMapOfStringByte* handle) {
+extern "C" OcctResult<const TDataStd_HDataMapOfStringByte*> Handle_TDataStd_HDataMapOfStringByte_get(const Handle_TDataStd_HDataMapOfStringByte* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TDataStd_HDataMapOfStringByte*> HandleTDataStdHDataMapOfStringByte_get_mut(HandleTDataStdHDataMapOfStringByte* handle) {
+extern "C" OcctResult<TDataStd_HDataMapOfStringByte*> Handle_TDataStd_HDataMapOfStringByte_get_mut(Handle_TDataStd_HDataMapOfStringByte* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleTDataStdHDataMapOfStringByte_to_HandleStandardTransient(const HandleTDataStdHDataMapOfStringByte* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_TDataStd_HDataMapOfStringByte_to_Handle_Standard_Transient(const Handle_TDataStd_HDataMapOfStringByte* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> TDataStd_HDataMapOfStringByte_inherited_IsInstance(const TDataStd_HDataMapOfStringByte* self, Handle(Standard_Type) const& theType) {
@@ -8360,20 +8064,8 @@ extern "C" OcctResult<TDataStd_HDataMapOfStringHArray1OfInteger*> TDataStd_HData
     try { return {new TDataStd_HDataMapOfStringHArray1OfInteger(NbBuckets), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TDataStd_HDataMapOfStringHArray1OfInteger*> TDataStd_HDataMapOfStringHArray1OfInteger_ctor_datamapofstringharray1ofinteger(TDataStd_DataMapOfStringHArray1OfInteger const* theOther) {
-    try { return {new TDataStd_HDataMapOfStringHArray1OfInteger(*theOther), nullptr}; }
-    OCCT_CATCH_RETURN
-}
 extern "C" OcctResult<Handle(Standard_Type) const*> TDataStd_HDataMapOfStringHArray1OfInteger_dynamic_type(const TDataStd_HDataMapOfStringHArray1OfInteger* self_) {
     try { return {&(self_->DynamicType()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<TDataStd_DataMapOfStringHArray1OfInteger const*> TDataStd_HDataMapOfStringHArray1OfInteger_map(const TDataStd_HDataMapOfStringHArray1OfInteger* self_) {
-    try { return {&(self_->Map()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<TDataStd_DataMapOfStringHArray1OfInteger*> TDataStd_HDataMapOfStringHArray1OfInteger_change_map(TDataStd_HDataMapOfStringHArray1OfInteger* self_) {
-    try { return {&(self_->ChangeMap()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<char const*> TDataStd_HDataMapOfStringHArray1OfInteger_get_type_name() {
@@ -8386,20 +8078,20 @@ extern "C" OcctResult<Handle(Standard_Type) const*> TDataStd_HDataMapOfStringHAr
 }
 extern "C" OcctResult<const Standard_Transient*> TDataStd_HDataMapOfStringHArray1OfInteger_as_Standard_Transient(const TDataStd_HDataMapOfStringHArray1OfInteger* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> TDataStd_HDataMapOfStringHArray1OfInteger_as_Standard_Transient_mut(TDataStd_HDataMapOfStringHArray1OfInteger* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleTDataStdHDataMapOfStringHArray1OfInteger*> TDataStd_HDataMapOfStringHArray1OfInteger_to_handle(TDataStd_HDataMapOfStringHArray1OfInteger* obj) {
-    try { return {new HandleTDataStdHDataMapOfStringHArray1OfInteger(obj), nullptr}; }
+extern "C" OcctResult<Handle_TDataStd_HDataMapOfStringHArray1OfInteger*> TDataStd_HDataMapOfStringHArray1OfInteger_to_handle(TDataStd_HDataMapOfStringHArray1OfInteger* obj) {
+    try { return {new Handle_TDataStd_HDataMapOfStringHArray1OfInteger(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const TDataStd_HDataMapOfStringHArray1OfInteger*> HandleTDataStdHDataMapOfStringHArray1OfInteger_get(const HandleTDataStdHDataMapOfStringHArray1OfInteger* handle) {
+extern "C" OcctResult<const TDataStd_HDataMapOfStringHArray1OfInteger*> Handle_TDataStd_HDataMapOfStringHArray1OfInteger_get(const Handle_TDataStd_HDataMapOfStringHArray1OfInteger* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TDataStd_HDataMapOfStringHArray1OfInteger*> HandleTDataStdHDataMapOfStringHArray1OfInteger_get_mut(HandleTDataStdHDataMapOfStringHArray1OfInteger* handle) {
+extern "C" OcctResult<TDataStd_HDataMapOfStringHArray1OfInteger*> Handle_TDataStd_HDataMapOfStringHArray1OfInteger_get_mut(Handle_TDataStd_HDataMapOfStringHArray1OfInteger* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleTDataStdHDataMapOfStringHArray1OfInteger_to_HandleStandardTransient(const HandleTDataStdHDataMapOfStringHArray1OfInteger* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_TDataStd_HDataMapOfStringHArray1OfInteger_to_Handle_Standard_Transient(const Handle_TDataStd_HDataMapOfStringHArray1OfInteger* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> TDataStd_HDataMapOfStringHArray1OfInteger_inherited_IsInstance(const TDataStd_HDataMapOfStringHArray1OfInteger* self, Handle(Standard_Type) const& theType) {
@@ -8440,20 +8132,8 @@ extern "C" OcctResult<TDataStd_HDataMapOfStringHArray1OfReal*> TDataStd_HDataMap
     try { return {new TDataStd_HDataMapOfStringHArray1OfReal(NbBuckets), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TDataStd_HDataMapOfStringHArray1OfReal*> TDataStd_HDataMapOfStringHArray1OfReal_ctor_datamapofstringharray1ofreal(TDataStd_DataMapOfStringHArray1OfReal const* theOther) {
-    try { return {new TDataStd_HDataMapOfStringHArray1OfReal(*theOther), nullptr}; }
-    OCCT_CATCH_RETURN
-}
 extern "C" OcctResult<Handle(Standard_Type) const*> TDataStd_HDataMapOfStringHArray1OfReal_dynamic_type(const TDataStd_HDataMapOfStringHArray1OfReal* self_) {
     try { return {&(self_->DynamicType()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<TDataStd_DataMapOfStringHArray1OfReal const*> TDataStd_HDataMapOfStringHArray1OfReal_map(const TDataStd_HDataMapOfStringHArray1OfReal* self_) {
-    try { return {&(self_->Map()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<TDataStd_DataMapOfStringHArray1OfReal*> TDataStd_HDataMapOfStringHArray1OfReal_change_map(TDataStd_HDataMapOfStringHArray1OfReal* self_) {
-    try { return {&(self_->ChangeMap()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<char const*> TDataStd_HDataMapOfStringHArray1OfReal_get_type_name() {
@@ -8466,20 +8146,20 @@ extern "C" OcctResult<Handle(Standard_Type) const*> TDataStd_HDataMapOfStringHAr
 }
 extern "C" OcctResult<const Standard_Transient*> TDataStd_HDataMapOfStringHArray1OfReal_as_Standard_Transient(const TDataStd_HDataMapOfStringHArray1OfReal* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> TDataStd_HDataMapOfStringHArray1OfReal_as_Standard_Transient_mut(TDataStd_HDataMapOfStringHArray1OfReal* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleTDataStdHDataMapOfStringHArray1OfReal*> TDataStd_HDataMapOfStringHArray1OfReal_to_handle(TDataStd_HDataMapOfStringHArray1OfReal* obj) {
-    try { return {new HandleTDataStdHDataMapOfStringHArray1OfReal(obj), nullptr}; }
+extern "C" OcctResult<Handle_TDataStd_HDataMapOfStringHArray1OfReal*> TDataStd_HDataMapOfStringHArray1OfReal_to_handle(TDataStd_HDataMapOfStringHArray1OfReal* obj) {
+    try { return {new Handle_TDataStd_HDataMapOfStringHArray1OfReal(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const TDataStd_HDataMapOfStringHArray1OfReal*> HandleTDataStdHDataMapOfStringHArray1OfReal_get(const HandleTDataStdHDataMapOfStringHArray1OfReal* handle) {
+extern "C" OcctResult<const TDataStd_HDataMapOfStringHArray1OfReal*> Handle_TDataStd_HDataMapOfStringHArray1OfReal_get(const Handle_TDataStd_HDataMapOfStringHArray1OfReal* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TDataStd_HDataMapOfStringHArray1OfReal*> HandleTDataStdHDataMapOfStringHArray1OfReal_get_mut(HandleTDataStdHDataMapOfStringHArray1OfReal* handle) {
+extern "C" OcctResult<TDataStd_HDataMapOfStringHArray1OfReal*> Handle_TDataStd_HDataMapOfStringHArray1OfReal_get_mut(Handle_TDataStd_HDataMapOfStringHArray1OfReal* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleTDataStdHDataMapOfStringHArray1OfReal_to_HandleStandardTransient(const HandleTDataStdHDataMapOfStringHArray1OfReal* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_TDataStd_HDataMapOfStringHArray1OfReal_to_Handle_Standard_Transient(const Handle_TDataStd_HDataMapOfStringHArray1OfReal* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> TDataStd_HDataMapOfStringHArray1OfReal_inherited_IsInstance(const TDataStd_HDataMapOfStringHArray1OfReal* self, Handle(Standard_Type) const& theType) {
@@ -8520,7 +8200,7 @@ extern "C" OcctResult<TDataStd_HDataMapOfStringInteger*> TDataStd_HDataMapOfStri
     try { return {new TDataStd_HDataMapOfStringInteger(NbBuckets), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TDataStd_HDataMapOfStringInteger*> TDataStd_HDataMapOfStringInteger_ctor_datamapofstringinteger(TColStd_DataMapOfStringInteger const* theOther) {
+extern "C" OcctResult<TDataStd_HDataMapOfStringInteger*> TDataStd_HDataMapOfStringInteger_ctor_dmap_extendedstring_int(NCollection_DataMap_TCollection_ExtendedString_int const* theOther) {
     try { return {new TDataStd_HDataMapOfStringInteger(*theOther), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -8528,11 +8208,11 @@ extern "C" OcctResult<Handle(Standard_Type) const*> TDataStd_HDataMapOfStringInt
     try { return {&(self_->DynamicType()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TColStd_DataMapOfStringInteger const*> TDataStd_HDataMapOfStringInteger_map(const TDataStd_HDataMapOfStringInteger* self_) {
+extern "C" OcctResult<NCollection_DataMap_TCollection_ExtendedString_int const*> TDataStd_HDataMapOfStringInteger_map(const TDataStd_HDataMapOfStringInteger* self_) {
     try { return {&(self_->Map()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TColStd_DataMapOfStringInteger*> TDataStd_HDataMapOfStringInteger_change_map(TDataStd_HDataMapOfStringInteger* self_) {
+extern "C" OcctResult<NCollection_DataMap_TCollection_ExtendedString_int*> TDataStd_HDataMapOfStringInteger_change_map(TDataStd_HDataMapOfStringInteger* self_) {
     try { return {&(self_->ChangeMap()), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -8546,20 +8226,20 @@ extern "C" OcctResult<Handle(Standard_Type) const*> TDataStd_HDataMapOfStringInt
 }
 extern "C" OcctResult<const Standard_Transient*> TDataStd_HDataMapOfStringInteger_as_Standard_Transient(const TDataStd_HDataMapOfStringInteger* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> TDataStd_HDataMapOfStringInteger_as_Standard_Transient_mut(TDataStd_HDataMapOfStringInteger* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleTDataStdHDataMapOfStringInteger*> TDataStd_HDataMapOfStringInteger_to_handle(TDataStd_HDataMapOfStringInteger* obj) {
-    try { return {new HandleTDataStdHDataMapOfStringInteger(obj), nullptr}; }
+extern "C" OcctResult<Handle_TDataStd_HDataMapOfStringInteger*> TDataStd_HDataMapOfStringInteger_to_handle(TDataStd_HDataMapOfStringInteger* obj) {
+    try { return {new Handle_TDataStd_HDataMapOfStringInteger(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const TDataStd_HDataMapOfStringInteger*> HandleTDataStdHDataMapOfStringInteger_get(const HandleTDataStdHDataMapOfStringInteger* handle) {
+extern "C" OcctResult<const TDataStd_HDataMapOfStringInteger*> Handle_TDataStd_HDataMapOfStringInteger_get(const Handle_TDataStd_HDataMapOfStringInteger* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TDataStd_HDataMapOfStringInteger*> HandleTDataStdHDataMapOfStringInteger_get_mut(HandleTDataStdHDataMapOfStringInteger* handle) {
+extern "C" OcctResult<TDataStd_HDataMapOfStringInteger*> Handle_TDataStd_HDataMapOfStringInteger_get_mut(Handle_TDataStd_HDataMapOfStringInteger* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleTDataStdHDataMapOfStringInteger_to_HandleStandardTransient(const HandleTDataStdHDataMapOfStringInteger* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_TDataStd_HDataMapOfStringInteger_to_Handle_Standard_Transient(const Handle_TDataStd_HDataMapOfStringInteger* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> TDataStd_HDataMapOfStringInteger_inherited_IsInstance(const TDataStd_HDataMapOfStringInteger* self, Handle(Standard_Type) const& theType) {
@@ -8600,7 +8280,7 @@ extern "C" OcctResult<TDataStd_HDataMapOfStringReal*> TDataStd_HDataMapOfStringR
     try { return {new TDataStd_HDataMapOfStringReal(NbBuckets), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TDataStd_HDataMapOfStringReal*> TDataStd_HDataMapOfStringReal_ctor_datamapofstringreal(TDataStd_DataMapOfStringReal const* theOther) {
+extern "C" OcctResult<TDataStd_HDataMapOfStringReal*> TDataStd_HDataMapOfStringReal_ctor_dmap_extendedstring_double(NCollection_DataMap_TCollection_ExtendedString_double const* theOther) {
     try { return {new TDataStd_HDataMapOfStringReal(*theOther), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -8608,11 +8288,11 @@ extern "C" OcctResult<Handle(Standard_Type) const*> TDataStd_HDataMapOfStringRea
     try { return {&(self_->DynamicType()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TDataStd_DataMapOfStringReal const*> TDataStd_HDataMapOfStringReal_map(const TDataStd_HDataMapOfStringReal* self_) {
+extern "C" OcctResult<NCollection_DataMap_TCollection_ExtendedString_double const*> TDataStd_HDataMapOfStringReal_map(const TDataStd_HDataMapOfStringReal* self_) {
     try { return {&(self_->Map()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TDataStd_DataMapOfStringReal*> TDataStd_HDataMapOfStringReal_change_map(TDataStd_HDataMapOfStringReal* self_) {
+extern "C" OcctResult<NCollection_DataMap_TCollection_ExtendedString_double*> TDataStd_HDataMapOfStringReal_change_map(TDataStd_HDataMapOfStringReal* self_) {
     try { return {&(self_->ChangeMap()), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -8626,20 +8306,20 @@ extern "C" OcctResult<Handle(Standard_Type) const*> TDataStd_HDataMapOfStringRea
 }
 extern "C" OcctResult<const Standard_Transient*> TDataStd_HDataMapOfStringReal_as_Standard_Transient(const TDataStd_HDataMapOfStringReal* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> TDataStd_HDataMapOfStringReal_as_Standard_Transient_mut(TDataStd_HDataMapOfStringReal* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleTDataStdHDataMapOfStringReal*> TDataStd_HDataMapOfStringReal_to_handle(TDataStd_HDataMapOfStringReal* obj) {
-    try { return {new HandleTDataStdHDataMapOfStringReal(obj), nullptr}; }
+extern "C" OcctResult<Handle_TDataStd_HDataMapOfStringReal*> TDataStd_HDataMapOfStringReal_to_handle(TDataStd_HDataMapOfStringReal* obj) {
+    try { return {new Handle_TDataStd_HDataMapOfStringReal(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const TDataStd_HDataMapOfStringReal*> HandleTDataStdHDataMapOfStringReal_get(const HandleTDataStdHDataMapOfStringReal* handle) {
+extern "C" OcctResult<const TDataStd_HDataMapOfStringReal*> Handle_TDataStd_HDataMapOfStringReal_get(const Handle_TDataStd_HDataMapOfStringReal* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TDataStd_HDataMapOfStringReal*> HandleTDataStdHDataMapOfStringReal_get_mut(HandleTDataStdHDataMapOfStringReal* handle) {
+extern "C" OcctResult<TDataStd_HDataMapOfStringReal*> Handle_TDataStd_HDataMapOfStringReal_get_mut(Handle_TDataStd_HDataMapOfStringReal* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleTDataStdHDataMapOfStringReal_to_HandleStandardTransient(const HandleTDataStdHDataMapOfStringReal* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_TDataStd_HDataMapOfStringReal_to_Handle_Standard_Transient(const Handle_TDataStd_HDataMapOfStringReal* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> TDataStd_HDataMapOfStringReal_inherited_IsInstance(const TDataStd_HDataMapOfStringReal* self, Handle(Standard_Type) const& theType) {
@@ -8680,7 +8360,7 @@ extern "C" OcctResult<TDataStd_HDataMapOfStringString*> TDataStd_HDataMapOfStrin
     try { return {new TDataStd_HDataMapOfStringString(NbBuckets), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TDataStd_HDataMapOfStringString*> TDataStd_HDataMapOfStringString_ctor_datamapofstringstring(TDataStd_DataMapOfStringString const* theOther) {
+extern "C" OcctResult<TDataStd_HDataMapOfStringString*> TDataStd_HDataMapOfStringString_ctor_dmap_extendedstring_extendedstring(NCollection_DataMap_TCollection_ExtendedString_TCollection_ExtendedString const* theOther) {
     try { return {new TDataStd_HDataMapOfStringString(*theOther), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -8688,11 +8368,11 @@ extern "C" OcctResult<Handle(Standard_Type) const*> TDataStd_HDataMapOfStringStr
     try { return {&(self_->DynamicType()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TDataStd_DataMapOfStringString const*> TDataStd_HDataMapOfStringString_map(const TDataStd_HDataMapOfStringString* self_) {
+extern "C" OcctResult<NCollection_DataMap_TCollection_ExtendedString_TCollection_ExtendedString const*> TDataStd_HDataMapOfStringString_map(const TDataStd_HDataMapOfStringString* self_) {
     try { return {&(self_->Map()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TDataStd_DataMapOfStringString*> TDataStd_HDataMapOfStringString_change_map(TDataStd_HDataMapOfStringString* self_) {
+extern "C" OcctResult<NCollection_DataMap_TCollection_ExtendedString_TCollection_ExtendedString*> TDataStd_HDataMapOfStringString_change_map(TDataStd_HDataMapOfStringString* self_) {
     try { return {&(self_->ChangeMap()), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -8706,20 +8386,20 @@ extern "C" OcctResult<Handle(Standard_Type) const*> TDataStd_HDataMapOfStringStr
 }
 extern "C" OcctResult<const Standard_Transient*> TDataStd_HDataMapOfStringString_as_Standard_Transient(const TDataStd_HDataMapOfStringString* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> TDataStd_HDataMapOfStringString_as_Standard_Transient_mut(TDataStd_HDataMapOfStringString* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleTDataStdHDataMapOfStringString*> TDataStd_HDataMapOfStringString_to_handle(TDataStd_HDataMapOfStringString* obj) {
-    try { return {new HandleTDataStdHDataMapOfStringString(obj), nullptr}; }
+extern "C" OcctResult<Handle_TDataStd_HDataMapOfStringString*> TDataStd_HDataMapOfStringString_to_handle(TDataStd_HDataMapOfStringString* obj) {
+    try { return {new Handle_TDataStd_HDataMapOfStringString(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const TDataStd_HDataMapOfStringString*> HandleTDataStdHDataMapOfStringString_get(const HandleTDataStdHDataMapOfStringString* handle) {
+extern "C" OcctResult<const TDataStd_HDataMapOfStringString*> Handle_TDataStd_HDataMapOfStringString_get(const Handle_TDataStd_HDataMapOfStringString* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TDataStd_HDataMapOfStringString*> HandleTDataStdHDataMapOfStringString_get_mut(HandleTDataStdHDataMapOfStringString* handle) {
+extern "C" OcctResult<TDataStd_HDataMapOfStringString*> Handle_TDataStd_HDataMapOfStringString_get_mut(Handle_TDataStd_HDataMapOfStringString* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleTDataStdHDataMapOfStringString_to_HandleStandardTransient(const HandleTDataStdHDataMapOfStringString* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_TDataStd_HDataMapOfStringString_to_Handle_Standard_Transient(const Handle_TDataStd_HDataMapOfStringString* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> TDataStd_HDataMapOfStringString_inherited_IsInstance(const TDataStd_HDataMapOfStringString* self, Handle(Standard_Type) const& theType) {
@@ -8751,98 +8431,6 @@ extern "C" const char* TDataStd_HDataMapOfStringString_inherited_Delete(const TD
     OCCT_CATCH_RETURN_VOID
 }
 extern "C" void TDataStd_HDataMapOfStringString_destructor(TDataStd_HDataMapOfStringString* self_) { delete self_; }
-
-// ========================
-// TDataStd_HLabelArray1 wrappers
-// ========================
-
-extern "C" OcctResult<TDataStd_HLabelArray1*> TDataStd_HLabelArray1_ctor() {
-    try { return {new TDataStd_HLabelArray1(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<TDataStd_HLabelArray1*> TDataStd_HLabelArray1_ctor_int2(int32_t theLower, int32_t theUpper) {
-    try { return {new TDataStd_HLabelArray1(theLower, theUpper), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<TDataStd_HLabelArray1*> TDataStd_HLabelArray1_ctor_int2_label(int32_t theLower, int32_t theUpper, TDF_Label const* theValue) {
-    try { return {new TDataStd_HLabelArray1(theLower, theUpper, *theValue), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<TDataStd_HLabelArray1*> TDataStd_HLabelArray1_ctor_label_int2_bool(TDF_Label const* theBegin, int32_t theLower, int32_t theUpper, bool arg3) {
-    try { return {new TDataStd_HLabelArray1(*theBegin, theLower, theUpper, arg3), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<TDataStd_HLabelArray1*> TDataStd_HLabelArray1_ctor_labelarray1(TDataStd_LabelArray1 const* theOther) {
-    try { return {new TDataStd_HLabelArray1(*theOther), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<TDataStd_LabelArray1 const*> TDataStd_HLabelArray1_array1(const TDataStd_HLabelArray1* self_) {
-    try { return {&(self_->Array1()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<TDataStd_LabelArray1*> TDataStd_HLabelArray1_change_array1(TDataStd_HLabelArray1* self_) {
-    try { return {&(self_->ChangeArray1()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Handle(Standard_Type) const*> TDataStd_HLabelArray1_dynamic_type(const TDataStd_HLabelArray1* self_) {
-    try { return {&(self_->DynamicType()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<char const*> TDataStd_HLabelArray1_get_type_name() {
-    try { return {TDataStd_HLabelArray1::get_type_name(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Handle(Standard_Type) const*> TDataStd_HLabelArray1_get_type_descriptor() {
-    try { return {&(TDataStd_HLabelArray1::get_type_descriptor()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<const Standard_Transient*> TDataStd_HLabelArray1_as_Standard_Transient(const TDataStd_HLabelArray1* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<Standard_Transient*> TDataStd_HLabelArray1_as_Standard_Transient_mut(TDataStd_HLabelArray1* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleTDataStdHLabelArray1*> TDataStd_HLabelArray1_to_handle(TDataStd_HLabelArray1* obj) {
-    try { return {new HandleTDataStdHLabelArray1(obj), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<const TDataStd_HLabelArray1*> HandleTDataStdHLabelArray1_get(const HandleTDataStdHLabelArray1* handle) {
-    try { return {(*handle).get(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<TDataStd_HLabelArray1*> HandleTDataStdHLabelArray1_get_mut(HandleTDataStdHLabelArray1* handle) {
-    try { return {(*handle).get(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<HandleStandardTransient*> HandleTDataStdHLabelArray1_to_HandleStandardTransient(const HandleTDataStdHLabelArray1* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<bool> TDataStd_HLabelArray1_inherited_IsInstance(const TDataStd_HLabelArray1* self, Handle(Standard_Type) const& theType) {
-    try { return {self->IsInstance(theType), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<bool> TDataStd_HLabelArray1_inherited_IsKind(const TDataStd_HLabelArray1* self, Handle(Standard_Type) const& theType) {
-    try { return {self->IsKind(theType), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Standard_Transient*> TDataStd_HLabelArray1_inherited_This(const TDataStd_HLabelArray1* self) {
-    try { return {self->This(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<int32_t> TDataStd_HLabelArray1_inherited_GetRefCount(const TDataStd_HLabelArray1* self) {
-    try { return {self->GetRefCount(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* TDataStd_HLabelArray1_inherited_IncrementRefCounter(TDataStd_HLabelArray1* self) {
-    try { self->IncrementRefCounter(); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<int32_t> TDataStd_HLabelArray1_inherited_DecrementRefCounter(TDataStd_HLabelArray1* self) {
-    try { return {self->DecrementRefCounter(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* TDataStd_HLabelArray1_inherited_Delete(const TDataStd_HLabelArray1* self) {
-    try { self->Delete(); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" void TDataStd_HLabelArray1_destructor(TDataStd_HLabelArray1* self_) { delete self_; }
 
 // ========================
 // TDataStd_IntPackedMap wrappers
@@ -8948,24 +8536,24 @@ extern "C" OcctResult<const TDF_Attribute*> TDataStd_IntPackedMap_as_TDF_Attribu
 extern "C" OcctResult<TDF_Attribute*> TDataStd_IntPackedMap_as_TDF_Attribute_mut(TDataStd_IntPackedMap* self_) { return {static_cast<TDF_Attribute*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> TDataStd_IntPackedMap_as_Standard_Transient(const TDataStd_IntPackedMap* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> TDataStd_IntPackedMap_as_Standard_Transient_mut(TDataStd_IntPackedMap* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleTDataStdIntPackedMap*> TDataStd_IntPackedMap_to_handle(TDataStd_IntPackedMap* obj) {
-    try { return {new HandleTDataStdIntPackedMap(obj), nullptr}; }
+extern "C" OcctResult<Handle_TDataStd_IntPackedMap*> TDataStd_IntPackedMap_to_handle(TDataStd_IntPackedMap* obj) {
+    try { return {new Handle_TDataStd_IntPackedMap(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const TDataStd_IntPackedMap*> HandleTDataStdIntPackedMap_get(const HandleTDataStdIntPackedMap* handle) {
+extern "C" OcctResult<const TDataStd_IntPackedMap*> Handle_TDataStd_IntPackedMap_get(const Handle_TDataStd_IntPackedMap* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TDataStd_IntPackedMap*> HandleTDataStdIntPackedMap_get_mut(HandleTDataStdIntPackedMap* handle) {
+extern "C" OcctResult<TDataStd_IntPackedMap*> Handle_TDataStd_IntPackedMap_get_mut(Handle_TDataStd_IntPackedMap* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTDFAttribute*> HandleTDataStdIntPackedMap_to_HandleTDFAttribute(const HandleTDataStdIntPackedMap* self_) {
-    try { return {new HandleTDFAttribute(*self_), nullptr}; }
+extern "C" OcctResult<Handle_TDF_Attribute*> Handle_TDataStd_IntPackedMap_to_Handle_TDF_Attribute(const Handle_TDataStd_IntPackedMap* self_) {
+    try { return {new Handle_TDF_Attribute(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleTDataStdIntPackedMap_to_HandleStandardTransient(const HandleTDataStdIntPackedMap* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_TDataStd_IntPackedMap_to_Handle_Standard_Transient(const Handle_TDataStd_IntPackedMap* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" const char* TDataStd_IntPackedMap_inherited_SetID(TDataStd_IntPackedMap* self, Standard_GUID const& arg0) {
@@ -9080,10 +8668,6 @@ extern "C" const char* TDataStd_IntPackedMap_inherited_References(const TDataStd
     try { self->References(aDataSet); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* TDataStd_IntPackedMap_inherited_ExtendedDump(const TDataStd_IntPackedMap* self, Standard_OStream& anOS, TDF_IDFilter const& aFilter, TDF_AttributeIndexedMap& aMap) {
-    try { self->ExtendedDump(anOS, aFilter, aMap); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
 extern "C" const char* TDataStd_IntPackedMap_inherited_Forget(TDataStd_IntPackedMap* self, int32_t aTransaction) {
     try { self->Forget(aTransaction); return nullptr; }
     OCCT_CATCH_RETURN_VOID
@@ -9194,24 +8778,24 @@ extern "C" OcctResult<const TDF_Attribute*> TDataStd_Integer_as_TDF_Attribute(co
 extern "C" OcctResult<TDF_Attribute*> TDataStd_Integer_as_TDF_Attribute_mut(TDataStd_Integer* self_) { return {static_cast<TDF_Attribute*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> TDataStd_Integer_as_Standard_Transient(const TDataStd_Integer* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> TDataStd_Integer_as_Standard_Transient_mut(TDataStd_Integer* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleTDataStdInteger*> TDataStd_Integer_to_handle(TDataStd_Integer* obj) {
-    try { return {new HandleTDataStdInteger(obj), nullptr}; }
+extern "C" OcctResult<Handle_TDataStd_Integer*> TDataStd_Integer_to_handle(TDataStd_Integer* obj) {
+    try { return {new Handle_TDataStd_Integer(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const TDataStd_Integer*> HandleTDataStdInteger_get(const HandleTDataStdInteger* handle) {
+extern "C" OcctResult<const TDataStd_Integer*> Handle_TDataStd_Integer_get(const Handle_TDataStd_Integer* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TDataStd_Integer*> HandleTDataStdInteger_get_mut(HandleTDataStdInteger* handle) {
+extern "C" OcctResult<TDataStd_Integer*> Handle_TDataStd_Integer_get_mut(Handle_TDataStd_Integer* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTDFAttribute*> HandleTDataStdInteger_to_HandleTDFAttribute(const HandleTDataStdInteger* self_) {
-    try { return {new HandleTDFAttribute(*self_), nullptr}; }
+extern "C" OcctResult<Handle_TDF_Attribute*> Handle_TDataStd_Integer_to_Handle_TDF_Attribute(const Handle_TDataStd_Integer* self_) {
+    try { return {new Handle_TDF_Attribute(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleTDataStdInteger_to_HandleStandardTransient(const HandleTDataStdInteger* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_TDataStd_Integer_to_Handle_Standard_Transient(const Handle_TDataStd_Integer* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<TDF_Label*> TDataStd_Integer_inherited_Label(const TDataStd_Integer* self) {
@@ -9326,10 +8910,6 @@ extern "C" const char* TDataStd_Integer_inherited_References(const TDataStd_Inte
     try { self->References(aDataSet); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* TDataStd_Integer_inherited_ExtendedDump(const TDataStd_Integer* self, Standard_OStream& anOS, TDF_IDFilter const& aFilter, TDF_AttributeIndexedMap& aMap) {
-    try { self->ExtendedDump(anOS, aFilter, aMap); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
 extern "C" const char* TDataStd_Integer_inherited_Forget(TDataStd_Integer* self, int32_t aTransaction) {
     try { self->Forget(aTransaction); return nullptr; }
     OCCT_CATCH_RETURN_VOID
@@ -9416,11 +8996,11 @@ extern "C" OcctResult<int32_t> TDataStd_IntegerArray_length(const TDataStd_Integ
     try { return {self_->Length(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* TDataStd_IntegerArray_change_array(TDataStd_IntegerArray* self_, Handle(TColStd_HArray1OfInteger) const* newArray, bool isCheckItems) {
+extern "C" const char* TDataStd_IntegerArray_change_array(TDataStd_IntegerArray* self_, Handle(NCollection_HArray1_int) const* newArray, bool isCheckItems) {
     try { self_->ChangeArray(*newArray, isCheckItems); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<Handle(TColStd_HArray1OfInteger) const*> TDataStd_IntegerArray_array(const TDataStd_IntegerArray* self_) {
+extern "C" OcctResult<Handle(NCollection_HArray1_int) const*> TDataStd_IntegerArray_array(const TDataStd_IntegerArray* self_) {
     try { return {&(self_->Array()), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -9472,24 +9052,24 @@ extern "C" OcctResult<const TDF_Attribute*> TDataStd_IntegerArray_as_TDF_Attribu
 extern "C" OcctResult<TDF_Attribute*> TDataStd_IntegerArray_as_TDF_Attribute_mut(TDataStd_IntegerArray* self_) { return {static_cast<TDF_Attribute*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> TDataStd_IntegerArray_as_Standard_Transient(const TDataStd_IntegerArray* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> TDataStd_IntegerArray_as_Standard_Transient_mut(TDataStd_IntegerArray* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleTDataStdIntegerArray*> TDataStd_IntegerArray_to_handle(TDataStd_IntegerArray* obj) {
-    try { return {new HandleTDataStdIntegerArray(obj), nullptr}; }
+extern "C" OcctResult<Handle_TDataStd_IntegerArray*> TDataStd_IntegerArray_to_handle(TDataStd_IntegerArray* obj) {
+    try { return {new Handle_TDataStd_IntegerArray(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const TDataStd_IntegerArray*> HandleTDataStdIntegerArray_get(const HandleTDataStdIntegerArray* handle) {
+extern "C" OcctResult<const TDataStd_IntegerArray*> Handle_TDataStd_IntegerArray_get(const Handle_TDataStd_IntegerArray* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TDataStd_IntegerArray*> HandleTDataStdIntegerArray_get_mut(HandleTDataStdIntegerArray* handle) {
+extern "C" OcctResult<TDataStd_IntegerArray*> Handle_TDataStd_IntegerArray_get_mut(Handle_TDataStd_IntegerArray* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTDFAttribute*> HandleTDataStdIntegerArray_to_HandleTDFAttribute(const HandleTDataStdIntegerArray* self_) {
-    try { return {new HandleTDFAttribute(*self_), nullptr}; }
+extern "C" OcctResult<Handle_TDF_Attribute*> Handle_TDataStd_IntegerArray_to_Handle_TDF_Attribute(const Handle_TDataStd_IntegerArray* self_) {
+    try { return {new Handle_TDF_Attribute(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleTDataStdIntegerArray_to_HandleStandardTransient(const HandleTDataStdIntegerArray* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_TDataStd_IntegerArray_to_Handle_Standard_Transient(const Handle_TDataStd_IntegerArray* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<TDF_Label*> TDataStd_IntegerArray_inherited_Label(const TDataStd_IntegerArray* self) {
@@ -9600,10 +9180,6 @@ extern "C" const char* TDataStd_IntegerArray_inherited_References(const TDataStd
     try { self->References(aDataSet); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* TDataStd_IntegerArray_inherited_ExtendedDump(const TDataStd_IntegerArray* self, Standard_OStream& anOS, TDF_IDFilter const& aFilter, TDF_AttributeIndexedMap& aMap) {
-    try { self->ExtendedDump(anOS, aFilter, aMap); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
 extern "C" const char* TDataStd_IntegerArray_inherited_Forget(TDataStd_IntegerArray* self, int32_t aTransaction) {
     try { self->Forget(aTransaction); return nullptr; }
     OCCT_CATCH_RETURN_VOID
@@ -9710,7 +9286,7 @@ extern "C" OcctResult<int32_t> TDataStd_IntegerList_last(const TDataStd_IntegerL
     try { return {self_->Last(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TColStd_ListOfInteger const*> TDataStd_IntegerList_list(const TDataStd_IntegerList* self_) {
+extern "C" OcctResult<NCollection_List_int const*> TDataStd_IntegerList_list(const TDataStd_IntegerList* self_) {
     try { return {&(self_->List()), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -9758,24 +9334,24 @@ extern "C" OcctResult<const TDF_Attribute*> TDataStd_IntegerList_as_TDF_Attribut
 extern "C" OcctResult<TDF_Attribute*> TDataStd_IntegerList_as_TDF_Attribute_mut(TDataStd_IntegerList* self_) { return {static_cast<TDF_Attribute*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> TDataStd_IntegerList_as_Standard_Transient(const TDataStd_IntegerList* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> TDataStd_IntegerList_as_Standard_Transient_mut(TDataStd_IntegerList* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleTDataStdIntegerList*> TDataStd_IntegerList_to_handle(TDataStd_IntegerList* obj) {
-    try { return {new HandleTDataStdIntegerList(obj), nullptr}; }
+extern "C" OcctResult<Handle_TDataStd_IntegerList*> TDataStd_IntegerList_to_handle(TDataStd_IntegerList* obj) {
+    try { return {new Handle_TDataStd_IntegerList(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const TDataStd_IntegerList*> HandleTDataStdIntegerList_get(const HandleTDataStdIntegerList* handle) {
+extern "C" OcctResult<const TDataStd_IntegerList*> Handle_TDataStd_IntegerList_get(const Handle_TDataStd_IntegerList* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TDataStd_IntegerList*> HandleTDataStdIntegerList_get_mut(HandleTDataStdIntegerList* handle) {
+extern "C" OcctResult<TDataStd_IntegerList*> Handle_TDataStd_IntegerList_get_mut(Handle_TDataStd_IntegerList* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTDFAttribute*> HandleTDataStdIntegerList_to_HandleTDFAttribute(const HandleTDataStdIntegerList* self_) {
-    try { return {new HandleTDFAttribute(*self_), nullptr}; }
+extern "C" OcctResult<Handle_TDF_Attribute*> Handle_TDataStd_IntegerList_to_Handle_TDF_Attribute(const Handle_TDataStd_IntegerList* self_) {
+    try { return {new Handle_TDF_Attribute(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleTDataStdIntegerList_to_HandleStandardTransient(const HandleTDataStdIntegerList* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_TDataStd_IntegerList_to_Handle_Standard_Transient(const Handle_TDataStd_IntegerList* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<TDF_Label*> TDataStd_IntegerList_inherited_Label(const TDataStd_IntegerList* self) {
@@ -9890,10 +9466,6 @@ extern "C" const char* TDataStd_IntegerList_inherited_References(const TDataStd_
     try { self->References(aDataSet); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* TDataStd_IntegerList_inherited_ExtendedDump(const TDataStd_IntegerList* self, Standard_OStream& anOS, TDF_IDFilter const& aFilter, TDF_AttributeIndexedMap& aMap) {
-    try { self->ExtendedDump(anOS, aFilter, aMap); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
 extern "C" const char* TDataStd_IntegerList_inherited_Forget(TDataStd_IntegerList* self, int32_t aTransaction) {
     try { self->Forget(aTransaction); return nullptr; }
     OCCT_CATCH_RETURN_VOID
@@ -9986,28 +9558,28 @@ extern "C" OcctResult<const TDF_Attribute*> TDataStd_Name_as_TDF_Attribute(const
 extern "C" OcctResult<TDF_Attribute*> TDataStd_Name_as_TDF_Attribute_mut(TDataStd_Name* self_) { return {static_cast<TDF_Attribute*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> TDataStd_Name_as_Standard_Transient(const TDataStd_Name* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> TDataStd_Name_as_Standard_Transient_mut(TDataStd_Name* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleTDataStdName*> TDataStd_Name_to_handle(TDataStd_Name* obj) {
-    try { return {new HandleTDataStdName(obj), nullptr}; }
+extern "C" OcctResult<Handle_TDataStd_Name*> TDataStd_Name_to_handle(TDataStd_Name* obj) {
+    try { return {new Handle_TDataStd_Name(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const TDataStd_Name*> HandleTDataStdName_get(const HandleTDataStdName* handle) {
+extern "C" OcctResult<const TDataStd_Name*> Handle_TDataStd_Name_get(const Handle_TDataStd_Name* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TDataStd_Name*> HandleTDataStdName_get_mut(HandleTDataStdName* handle) {
+extern "C" OcctResult<TDataStd_Name*> Handle_TDataStd_Name_get_mut(Handle_TDataStd_Name* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTDataStdGenericExtString*> HandleTDataStdName_to_HandleTDataStdGenericExtString(const HandleTDataStdName* self_) {
-    try { return {new HandleTDataStdGenericExtString(*self_), nullptr}; }
+extern "C" OcctResult<Handle_TDataStd_GenericExtString*> Handle_TDataStd_Name_to_Handle_TDataStd_GenericExtString(const Handle_TDataStd_Name* self_) {
+    try { return {new Handle_TDataStd_GenericExtString(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTDFAttribute*> HandleTDataStdName_to_HandleTDFAttribute(const HandleTDataStdName* self_) {
-    try { return {new HandleTDFAttribute(*self_), nullptr}; }
+extern "C" OcctResult<Handle_TDF_Attribute*> Handle_TDataStd_Name_to_Handle_TDF_Attribute(const Handle_TDataStd_Name* self_) {
+    try { return {new Handle_TDF_Attribute(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleTDataStdName_to_HandleStandardTransient(const HandleTDataStdName* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_TDataStd_Name_to_Handle_Standard_Transient(const Handle_TDataStd_Name* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<TCollection_ExtendedString const*> TDataStd_Name_inherited_Get(const TDataStd_Name* self) {
@@ -10138,10 +9710,6 @@ extern "C" const char* TDataStd_Name_inherited_References(const TDataStd_Name* s
     try { self->References(aDataSet); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* TDataStd_Name_inherited_ExtendedDump(const TDataStd_Name* self, Standard_OStream& anOS, TDF_IDFilter const& aFilter, TDF_AttributeIndexedMap& aMap) {
-    try { self->ExtendedDump(anOS, aFilter, aMap); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
 extern "C" const char* TDataStd_Name_inherited_Forget(TDataStd_Name* self, int32_t aTransaction) {
     try { self->Forget(aTransaction); return nullptr; }
     OCCT_CATCH_RETURN_VOID
@@ -10204,11 +9772,11 @@ extern "C" const char* TDataStd_NamedData_set_integer(TDataStd_NamedData* self_,
     try { self_->SetInteger(*theName, theInteger); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<TColStd_DataMapOfStringInteger const*> TDataStd_NamedData_get_integers_container(TDataStd_NamedData* self_) {
+extern "C" OcctResult<NCollection_DataMap_TCollection_ExtendedString_int const*> TDataStd_NamedData_get_integers_container(TDataStd_NamedData* self_) {
     try { return {&(self_->GetIntegersContainer()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* TDataStd_NamedData_change_integers(TDataStd_NamedData* self_, TColStd_DataMapOfStringInteger const* theIntegers) {
+extern "C" const char* TDataStd_NamedData_change_integers(TDataStd_NamedData* self_, NCollection_DataMap_TCollection_ExtendedString_int const* theIntegers) {
     try { self_->ChangeIntegers(*theIntegers); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -10228,11 +9796,11 @@ extern "C" const char* TDataStd_NamedData_set_real(TDataStd_NamedData* self_, TC
     try { self_->SetReal(*theName, theReal); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<TDataStd_DataMapOfStringReal const*> TDataStd_NamedData_get_reals_container(TDataStd_NamedData* self_) {
+extern "C" OcctResult<NCollection_DataMap_TCollection_ExtendedString_double const*> TDataStd_NamedData_get_reals_container(TDataStd_NamedData* self_) {
     try { return {&(self_->GetRealsContainer()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* TDataStd_NamedData_change_reals(TDataStd_NamedData* self_, TDataStd_DataMapOfStringReal const* theReals) {
+extern "C" const char* TDataStd_NamedData_change_reals(TDataStd_NamedData* self_, NCollection_DataMap_TCollection_ExtendedString_double const* theReals) {
     try { self_->ChangeReals(*theReals); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -10252,11 +9820,11 @@ extern "C" const char* TDataStd_NamedData_set_string(TDataStd_NamedData* self_, 
     try { self_->SetString(*theName, *theString); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<TDataStd_DataMapOfStringString const*> TDataStd_NamedData_get_strings_container(TDataStd_NamedData* self_) {
+extern "C" OcctResult<NCollection_DataMap_TCollection_ExtendedString_TCollection_ExtendedString const*> TDataStd_NamedData_get_strings_container(TDataStd_NamedData* self_) {
     try { return {&(self_->GetStringsContainer()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* TDataStd_NamedData_change_strings(TDataStd_NamedData* self_, TDataStd_DataMapOfStringString const* theStrings) {
+extern "C" const char* TDataStd_NamedData_change_strings(TDataStd_NamedData* self_, NCollection_DataMap_TCollection_ExtendedString_TCollection_ExtendedString const* theStrings) {
     try { self_->ChangeStrings(*theStrings); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -10276,11 +9844,11 @@ extern "C" const char* TDataStd_NamedData_set_byte(TDataStd_NamedData* self_, TC
     try { self_->SetByte(*theName, theByte); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<TDataStd_DataMapOfStringByte const*> TDataStd_NamedData_get_bytes_container(TDataStd_NamedData* self_) {
+extern "C" OcctResult<NCollection_DataMap_TCollection_ExtendedString_uint8_t const*> TDataStd_NamedData_get_bytes_container(TDataStd_NamedData* self_) {
     try { return {&(self_->GetBytesContainer()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* TDataStd_NamedData_change_bytes(TDataStd_NamedData* self_, TDataStd_DataMapOfStringByte const* theBytes) {
+extern "C" const char* TDataStd_NamedData_change_bytes(TDataStd_NamedData* self_, NCollection_DataMap_TCollection_ExtendedString_uint8_t const* theBytes) {
     try { self_->ChangeBytes(*theBytes); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -10292,20 +9860,12 @@ extern "C" OcctResult<bool> TDataStd_NamedData_has_array_of_integers(const TData
     try { return {self_->HasArrayOfIntegers(*theName), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(TColStd_HArray1OfInteger) const*> TDataStd_NamedData_get_array_of_integers(TDataStd_NamedData* self_, TCollection_ExtendedString const* theName) {
+extern "C" OcctResult<Handle(NCollection_HArray1_int) const*> TDataStd_NamedData_get_array_of_integers(TDataStd_NamedData* self_, TCollection_ExtendedString const* theName) {
     try { return {&(self_->GetArrayOfIntegers(*theName)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* TDataStd_NamedData_set_array_of_integers(TDataStd_NamedData* self_, TCollection_ExtendedString const* theName, Handle(TColStd_HArray1OfInteger) const* theArrayOfIntegers) {
+extern "C" const char* TDataStd_NamedData_set_array_of_integers(TDataStd_NamedData* self_, TCollection_ExtendedString const* theName, Handle(NCollection_HArray1_int) const* theArrayOfIntegers) {
     try { self_->SetArrayOfIntegers(*theName, *theArrayOfIntegers); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<TDataStd_DataMapOfStringHArray1OfInteger const*> TDataStd_NamedData_get_arrays_of_integers_container(TDataStd_NamedData* self_) {
-    try { return {&(self_->GetArraysOfIntegersContainer()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* TDataStd_NamedData_change_arrays_of_integers(TDataStd_NamedData* self_, TDataStd_DataMapOfStringHArray1OfInteger const* theArraysOfIntegers) {
-    try { self_->ChangeArraysOfIntegers(*theArraysOfIntegers); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
 extern "C" OcctResult<bool> TDataStd_NamedData_has_arrays_of_reals(const TDataStd_NamedData* self_) {
@@ -10316,20 +9876,12 @@ extern "C" OcctResult<bool> TDataStd_NamedData_has_array_of_reals(const TDataStd
     try { return {self_->HasArrayOfReals(*theName), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(TColStd_HArray1OfReal) const*> TDataStd_NamedData_get_array_of_reals(TDataStd_NamedData* self_, TCollection_ExtendedString const* theName) {
+extern "C" OcctResult<Handle(NCollection_HArray1_double) const*> TDataStd_NamedData_get_array_of_reals(TDataStd_NamedData* self_, TCollection_ExtendedString const* theName) {
     try { return {&(self_->GetArrayOfReals(*theName)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* TDataStd_NamedData_set_array_of_reals(TDataStd_NamedData* self_, TCollection_ExtendedString const* theName, Handle(TColStd_HArray1OfReal) const* theArrayOfReals) {
+extern "C" const char* TDataStd_NamedData_set_array_of_reals(TDataStd_NamedData* self_, TCollection_ExtendedString const* theName, Handle(NCollection_HArray1_double) const* theArrayOfReals) {
     try { self_->SetArrayOfReals(*theName, *theArrayOfReals); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<TDataStd_DataMapOfStringHArray1OfReal const*> TDataStd_NamedData_get_arrays_of_reals_container(TDataStd_NamedData* self_) {
-    try { return {&(self_->GetArraysOfRealsContainer()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* TDataStd_NamedData_change_arrays_of_reals(TDataStd_NamedData* self_, TDataStd_DataMapOfStringHArray1OfReal const* theArraysOfReals) {
-    try { self_->ChangeArraysOfReals(*theArraysOfReals); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
 extern "C" const char* TDataStd_NamedData_clear(TDataStd_NamedData* self_) {
@@ -10368,11 +9920,11 @@ extern "C" const char* TDataStd_NamedData_set_byte_2(TDataStd_NamedData* self_, 
     try { self_->setByte(*theName, theByte); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* TDataStd_NamedData_set_array_of_integers_2(TDataStd_NamedData* self_, TCollection_ExtendedString const* theName, Handle(TColStd_HArray1OfInteger) const* theArrayOfIntegers) {
+extern "C" const char* TDataStd_NamedData_set_array_of_integers_2(TDataStd_NamedData* self_, TCollection_ExtendedString const* theName, Handle(NCollection_HArray1_int) const* theArrayOfIntegers) {
     try { self_->setArrayOfIntegers(*theName, *theArrayOfIntegers); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* TDataStd_NamedData_set_array_of_reals_2(TDataStd_NamedData* self_, TCollection_ExtendedString const* theName, Handle(TColStd_HArray1OfReal) const* theArrayOfReals) {
+extern "C" const char* TDataStd_NamedData_set_array_of_reals_2(TDataStd_NamedData* self_, TCollection_ExtendedString const* theName, Handle(NCollection_HArray1_double) const* theArrayOfReals) {
     try { self_->setArrayOfReals(*theName, *theArrayOfReals); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -10416,24 +9968,24 @@ extern "C" OcctResult<const TDF_Attribute*> TDataStd_NamedData_as_TDF_Attribute(
 extern "C" OcctResult<TDF_Attribute*> TDataStd_NamedData_as_TDF_Attribute_mut(TDataStd_NamedData* self_) { return {static_cast<TDF_Attribute*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> TDataStd_NamedData_as_Standard_Transient(const TDataStd_NamedData* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> TDataStd_NamedData_as_Standard_Transient_mut(TDataStd_NamedData* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleTDataStdNamedData*> TDataStd_NamedData_to_handle(TDataStd_NamedData* obj) {
-    try { return {new HandleTDataStdNamedData(obj), nullptr}; }
+extern "C" OcctResult<Handle_TDataStd_NamedData*> TDataStd_NamedData_to_handle(TDataStd_NamedData* obj) {
+    try { return {new Handle_TDataStd_NamedData(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const TDataStd_NamedData*> HandleTDataStdNamedData_get(const HandleTDataStdNamedData* handle) {
+extern "C" OcctResult<const TDataStd_NamedData*> Handle_TDataStd_NamedData_get(const Handle_TDataStd_NamedData* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TDataStd_NamedData*> HandleTDataStdNamedData_get_mut(HandleTDataStdNamedData* handle) {
+extern "C" OcctResult<TDataStd_NamedData*> Handle_TDataStd_NamedData_get_mut(Handle_TDataStd_NamedData* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTDFAttribute*> HandleTDataStdNamedData_to_HandleTDFAttribute(const HandleTDataStdNamedData* self_) {
-    try { return {new HandleTDFAttribute(*self_), nullptr}; }
+extern "C" OcctResult<Handle_TDF_Attribute*> Handle_TDataStd_NamedData_to_Handle_TDF_Attribute(const Handle_TDataStd_NamedData* self_) {
+    try { return {new Handle_TDF_Attribute(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleTDataStdNamedData_to_HandleStandardTransient(const HandleTDataStdNamedData* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_TDataStd_NamedData_to_Handle_Standard_Transient(const Handle_TDataStd_NamedData* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" const char* TDataStd_NamedData_inherited_SetID(TDataStd_NamedData* self, Standard_GUID const& arg0) {
@@ -10552,10 +10104,6 @@ extern "C" const char* TDataStd_NamedData_inherited_References(const TDataStd_Na
     try { self->References(aDataSet); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* TDataStd_NamedData_inherited_ExtendedDump(const TDataStd_NamedData* self, Standard_OStream& anOS, TDF_IDFilter const& aFilter, TDF_AttributeIndexedMap& aMap) {
-    try { self->ExtendedDump(anOS, aFilter, aMap); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
 extern "C" const char* TDataStd_NamedData_inherited_Forget(TDataStd_NamedData* self, int32_t aTransaction) {
     try { self->Forget(aTransaction); return nullptr; }
     OCCT_CATCH_RETURN_VOID
@@ -10648,28 +10196,28 @@ extern "C" OcctResult<const TDF_Attribute*> TDataStd_NoteBook_as_TDF_Attribute(c
 extern "C" OcctResult<TDF_Attribute*> TDataStd_NoteBook_as_TDF_Attribute_mut(TDataStd_NoteBook* self_) { return {static_cast<TDF_Attribute*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> TDataStd_NoteBook_as_Standard_Transient(const TDataStd_NoteBook* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> TDataStd_NoteBook_as_Standard_Transient_mut(TDataStd_NoteBook* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleTDataStdNoteBook*> TDataStd_NoteBook_to_handle(TDataStd_NoteBook* obj) {
-    try { return {new HandleTDataStdNoteBook(obj), nullptr}; }
+extern "C" OcctResult<Handle_TDataStd_NoteBook*> TDataStd_NoteBook_to_handle(TDataStd_NoteBook* obj) {
+    try { return {new Handle_TDataStd_NoteBook(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const TDataStd_NoteBook*> HandleTDataStdNoteBook_get(const HandleTDataStdNoteBook* handle) {
+extern "C" OcctResult<const TDataStd_NoteBook*> Handle_TDataStd_NoteBook_get(const Handle_TDataStd_NoteBook* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TDataStd_NoteBook*> HandleTDataStdNoteBook_get_mut(HandleTDataStdNoteBook* handle) {
+extern "C" OcctResult<TDataStd_NoteBook*> Handle_TDataStd_NoteBook_get_mut(Handle_TDataStd_NoteBook* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTDataStdGenericEmpty*> HandleTDataStdNoteBook_to_HandleTDataStdGenericEmpty(const HandleTDataStdNoteBook* self_) {
-    try { return {new HandleTDataStdGenericEmpty(*self_), nullptr}; }
+extern "C" OcctResult<Handle_TDataStd_GenericEmpty*> Handle_TDataStd_NoteBook_to_Handle_TDataStd_GenericEmpty(const Handle_TDataStd_NoteBook* self_) {
+    try { return {new Handle_TDataStd_GenericEmpty(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTDFAttribute*> HandleTDataStdNoteBook_to_HandleTDFAttribute(const HandleTDataStdNoteBook* self_) {
-    try { return {new HandleTDFAttribute(*self_), nullptr}; }
+extern "C" OcctResult<Handle_TDF_Attribute*> Handle_TDataStd_NoteBook_to_Handle_TDF_Attribute(const Handle_TDataStd_NoteBook* self_) {
+    try { return {new Handle_TDF_Attribute(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleTDataStdNoteBook_to_HandleStandardTransient(const HandleTDataStdNoteBook* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_TDataStd_NoteBook_to_Handle_Standard_Transient(const Handle_TDataStd_NoteBook* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" const char* TDataStd_NoteBook_inherited_Restore(TDataStd_NoteBook* self, Handle(TDF_Attribute) const& arg0) {
@@ -10796,10 +10344,6 @@ extern "C" const char* TDataStd_NoteBook_inherited_References(const TDataStd_Not
     try { self->References(aDataSet); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* TDataStd_NoteBook_inherited_ExtendedDump(const TDataStd_NoteBook* self, Standard_OStream& anOS, TDF_IDFilter const& aFilter, TDF_AttributeIndexedMap& aMap) {
-    try { self->ExtendedDump(anOS, aFilter, aMap); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
 extern "C" const char* TDataStd_NoteBook_inherited_Forget(TDataStd_NoteBook* self, int32_t aTransaction) {
     try { self->Forget(aTransaction); return nullptr; }
     OCCT_CATCH_RETURN_VOID
@@ -10910,39 +10454,39 @@ extern "C" OcctResult<const TDF_Attribute*> TDataStd_Real_as_TDF_Attribute(const
 extern "C" OcctResult<TDF_Attribute*> TDataStd_Real_as_TDF_Attribute_mut(TDataStd_Real* self_) { return {static_cast<TDF_Attribute*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> TDataStd_Real_as_Standard_Transient(const TDataStd_Real* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> TDataStd_Real_as_Standard_Transient_mut(TDataStd_Real* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleTDataStdReal*> TDataStd_Real_to_handle(TDataStd_Real* obj) {
-    try { return {new HandleTDataStdReal(obj), nullptr}; }
+extern "C" OcctResult<Handle_TDataStd_Real*> TDataStd_Real_to_handle(TDataStd_Real* obj) {
+    try { return {new Handle_TDataStd_Real(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const TDataStd_Real*> HandleTDataStdReal_get(const HandleTDataStdReal* handle) {
+extern "C" OcctResult<const TDataStd_Real*> Handle_TDataStd_Real_get(const Handle_TDataStd_Real* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TDataStd_Real*> HandleTDataStdReal_get_mut(HandleTDataStdReal* handle) {
+extern "C" OcctResult<TDataStd_Real*> Handle_TDataStd_Real_get_mut(Handle_TDataStd_Real* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTDFAttribute*> HandleTDataStdReal_to_HandleTDFAttribute(const HandleTDataStdReal* self_) {
-    try { return {new HandleTDFAttribute(*self_), nullptr}; }
+extern "C" OcctResult<Handle_TDF_Attribute*> Handle_TDataStd_Real_to_Handle_TDF_Attribute(const Handle_TDataStd_Real* self_) {
+    try { return {new Handle_TDF_Attribute(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleTDataStdReal_to_HandleStandardTransient(const HandleTDataStdReal* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_TDataStd_Real_to_Handle_Standard_Transient(const Handle_TDataStd_Real* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleXCAFDocArea*> HandleTDataStdReal_downcast_to_HandleXCAFDocArea(const HandleTDataStdReal* self_) {
+extern "C" OcctResult<Handle_XCAFDoc_Area*> Handle_TDataStd_Real_downcast_to_Handle_XCAFDoc_Area(const Handle_TDataStd_Real* self_) {
     try {
     opencascade::handle<XCAFDoc_Area> result = opencascade::handle<XCAFDoc_Area>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleXCAFDocArea(result), nullptr};
+    return {new Handle_XCAFDoc_Area(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleXCAFDocVolume*> HandleTDataStdReal_downcast_to_HandleXCAFDocVolume(const HandleTDataStdReal* self_) {
+extern "C" OcctResult<Handle_XCAFDoc_Volume*> Handle_TDataStd_Real_downcast_to_Handle_XCAFDoc_Volume(const Handle_TDataStd_Real* self_) {
     try {
     opencascade::handle<XCAFDoc_Volume> result = opencascade::handle<XCAFDoc_Volume>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleXCAFDocVolume(result), nullptr};
+    return {new Handle_XCAFDoc_Volume(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
@@ -11058,10 +10602,6 @@ extern "C" const char* TDataStd_Real_inherited_References(const TDataStd_Real* s
     try { self->References(aDataSet); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* TDataStd_Real_inherited_ExtendedDump(const TDataStd_Real* self, Standard_OStream& anOS, TDF_IDFilter const& aFilter, TDF_AttributeIndexedMap& aMap) {
-    try { self->ExtendedDump(anOS, aFilter, aMap); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
 extern "C" const char* TDataStd_Real_inherited_Forget(TDataStd_Real* self, int32_t aTransaction) {
     try { self->Forget(aTransaction); return nullptr; }
     OCCT_CATCH_RETURN_VOID
@@ -11148,11 +10688,11 @@ extern "C" OcctResult<int32_t> TDataStd_RealArray_length(const TDataStd_RealArra
     try { return {self_->Length(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* TDataStd_RealArray_change_array(TDataStd_RealArray* self_, Handle(TColStd_HArray1OfReal) const* newArray, bool isCheckItems) {
+extern "C" const char* TDataStd_RealArray_change_array(TDataStd_RealArray* self_, Handle(NCollection_HArray1_double) const* newArray, bool isCheckItems) {
     try { self_->ChangeArray(*newArray, isCheckItems); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<Handle(TColStd_HArray1OfReal) const*> TDataStd_RealArray_array(const TDataStd_RealArray* self_) {
+extern "C" OcctResult<Handle(NCollection_HArray1_double) const*> TDataStd_RealArray_array(const TDataStd_RealArray* self_) {
     try { return {&(self_->Array()), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -11204,24 +10744,24 @@ extern "C" OcctResult<const TDF_Attribute*> TDataStd_RealArray_as_TDF_Attribute(
 extern "C" OcctResult<TDF_Attribute*> TDataStd_RealArray_as_TDF_Attribute_mut(TDataStd_RealArray* self_) { return {static_cast<TDF_Attribute*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> TDataStd_RealArray_as_Standard_Transient(const TDataStd_RealArray* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> TDataStd_RealArray_as_Standard_Transient_mut(TDataStd_RealArray* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleTDataStdRealArray*> TDataStd_RealArray_to_handle(TDataStd_RealArray* obj) {
-    try { return {new HandleTDataStdRealArray(obj), nullptr}; }
+extern "C" OcctResult<Handle_TDataStd_RealArray*> TDataStd_RealArray_to_handle(TDataStd_RealArray* obj) {
+    try { return {new Handle_TDataStd_RealArray(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const TDataStd_RealArray*> HandleTDataStdRealArray_get(const HandleTDataStdRealArray* handle) {
+extern "C" OcctResult<const TDataStd_RealArray*> Handle_TDataStd_RealArray_get(const Handle_TDataStd_RealArray* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TDataStd_RealArray*> HandleTDataStdRealArray_get_mut(HandleTDataStdRealArray* handle) {
+extern "C" OcctResult<TDataStd_RealArray*> Handle_TDataStd_RealArray_get_mut(Handle_TDataStd_RealArray* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTDFAttribute*> HandleTDataStdRealArray_to_HandleTDFAttribute(const HandleTDataStdRealArray* self_) {
-    try { return {new HandleTDFAttribute(*self_), nullptr}; }
+extern "C" OcctResult<Handle_TDF_Attribute*> Handle_TDataStd_RealArray_to_Handle_TDF_Attribute(const Handle_TDataStd_RealArray* self_) {
+    try { return {new Handle_TDF_Attribute(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleTDataStdRealArray_to_HandleStandardTransient(const HandleTDataStdRealArray* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_TDataStd_RealArray_to_Handle_Standard_Transient(const Handle_TDataStd_RealArray* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<TDF_Label*> TDataStd_RealArray_inherited_Label(const TDataStd_RealArray* self) {
@@ -11332,10 +10872,6 @@ extern "C" const char* TDataStd_RealArray_inherited_References(const TDataStd_Re
     try { self->References(aDataSet); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* TDataStd_RealArray_inherited_ExtendedDump(const TDataStd_RealArray* self, Standard_OStream& anOS, TDF_IDFilter const& aFilter, TDF_AttributeIndexedMap& aMap) {
-    try { self->ExtendedDump(anOS, aFilter, aMap); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
 extern "C" const char* TDataStd_RealArray_inherited_Forget(TDataStd_RealArray* self, int32_t aTransaction) {
     try { self->Forget(aTransaction); return nullptr; }
     OCCT_CATCH_RETURN_VOID
@@ -11442,7 +10978,7 @@ extern "C" OcctResult<double> TDataStd_RealList_last(const TDataStd_RealList* se
     try { return {self_->Last(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TColStd_ListOfReal const*> TDataStd_RealList_list(const TDataStd_RealList* self_) {
+extern "C" OcctResult<NCollection_List_double const*> TDataStd_RealList_list(const TDataStd_RealList* self_) {
     try { return {&(self_->List()), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -11490,24 +11026,24 @@ extern "C" OcctResult<const TDF_Attribute*> TDataStd_RealList_as_TDF_Attribute(c
 extern "C" OcctResult<TDF_Attribute*> TDataStd_RealList_as_TDF_Attribute_mut(TDataStd_RealList* self_) { return {static_cast<TDF_Attribute*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> TDataStd_RealList_as_Standard_Transient(const TDataStd_RealList* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> TDataStd_RealList_as_Standard_Transient_mut(TDataStd_RealList* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleTDataStdRealList*> TDataStd_RealList_to_handle(TDataStd_RealList* obj) {
-    try { return {new HandleTDataStdRealList(obj), nullptr}; }
+extern "C" OcctResult<Handle_TDataStd_RealList*> TDataStd_RealList_to_handle(TDataStd_RealList* obj) {
+    try { return {new Handle_TDataStd_RealList(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const TDataStd_RealList*> HandleTDataStdRealList_get(const HandleTDataStdRealList* handle) {
+extern "C" OcctResult<const TDataStd_RealList*> Handle_TDataStd_RealList_get(const Handle_TDataStd_RealList* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TDataStd_RealList*> HandleTDataStdRealList_get_mut(HandleTDataStdRealList* handle) {
+extern "C" OcctResult<TDataStd_RealList*> Handle_TDataStd_RealList_get_mut(Handle_TDataStd_RealList* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTDFAttribute*> HandleTDataStdRealList_to_HandleTDFAttribute(const HandleTDataStdRealList* self_) {
-    try { return {new HandleTDFAttribute(*self_), nullptr}; }
+extern "C" OcctResult<Handle_TDF_Attribute*> Handle_TDataStd_RealList_to_Handle_TDF_Attribute(const Handle_TDataStd_RealList* self_) {
+    try { return {new Handle_TDF_Attribute(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleTDataStdRealList_to_HandleStandardTransient(const HandleTDataStdRealList* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_TDataStd_RealList_to_Handle_Standard_Transient(const Handle_TDataStd_RealList* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<TDF_Label*> TDataStd_RealList_inherited_Label(const TDataStd_RealList* self) {
@@ -11622,10 +11158,6 @@ extern "C" const char* TDataStd_RealList_inherited_References(const TDataStd_Rea
     try { self->References(aDataSet); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* TDataStd_RealList_inherited_ExtendedDump(const TDataStd_RealList* self, Standard_OStream& anOS, TDF_IDFilter const& aFilter, TDF_AttributeIndexedMap& aMap) {
-    try { self->ExtendedDump(anOS, aFilter, aMap); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
 extern "C" const char* TDataStd_RealList_inherited_Forget(TDataStd_RealList* self, int32_t aTransaction) {
     try { self->Forget(aTransaction); return nullptr; }
     OCCT_CATCH_RETURN_VOID
@@ -11704,11 +11236,11 @@ extern "C" OcctResult<int32_t> TDataStd_ReferenceArray_length(const TDataStd_Ref
     try { return {self_->Length(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(TDataStd_HLabelArray1) const*> TDataStd_ReferenceArray_internal_array(const TDataStd_ReferenceArray* self_) {
+extern "C" OcctResult<Handle(NCollection_HArray1_TDF_Label) const*> TDataStd_ReferenceArray_internal_array(const TDataStd_ReferenceArray* self_) {
     try { return {&(self_->InternalArray()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* TDataStd_ReferenceArray_set_internal_array(TDataStd_ReferenceArray* self_, Handle(TDataStd_HLabelArray1) const* values, bool isCheckItems) {
+extern "C" const char* TDataStd_ReferenceArray_set_internal_array(TDataStd_ReferenceArray* self_, Handle(NCollection_HArray1_TDF_Label) const* values, bool isCheckItems) {
     try { self_->SetInternalArray(*values, isCheckItems); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -11760,24 +11292,24 @@ extern "C" OcctResult<const TDF_Attribute*> TDataStd_ReferenceArray_as_TDF_Attri
 extern "C" OcctResult<TDF_Attribute*> TDataStd_ReferenceArray_as_TDF_Attribute_mut(TDataStd_ReferenceArray* self_) { return {static_cast<TDF_Attribute*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> TDataStd_ReferenceArray_as_Standard_Transient(const TDataStd_ReferenceArray* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> TDataStd_ReferenceArray_as_Standard_Transient_mut(TDataStd_ReferenceArray* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleTDataStdReferenceArray*> TDataStd_ReferenceArray_to_handle(TDataStd_ReferenceArray* obj) {
-    try { return {new HandleTDataStdReferenceArray(obj), nullptr}; }
+extern "C" OcctResult<Handle_TDataStd_ReferenceArray*> TDataStd_ReferenceArray_to_handle(TDataStd_ReferenceArray* obj) {
+    try { return {new Handle_TDataStd_ReferenceArray(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const TDataStd_ReferenceArray*> HandleTDataStdReferenceArray_get(const HandleTDataStdReferenceArray* handle) {
+extern "C" OcctResult<const TDataStd_ReferenceArray*> Handle_TDataStd_ReferenceArray_get(const Handle_TDataStd_ReferenceArray* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TDataStd_ReferenceArray*> HandleTDataStdReferenceArray_get_mut(HandleTDataStdReferenceArray* handle) {
+extern "C" OcctResult<TDataStd_ReferenceArray*> Handle_TDataStd_ReferenceArray_get_mut(Handle_TDataStd_ReferenceArray* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTDFAttribute*> HandleTDataStdReferenceArray_to_HandleTDFAttribute(const HandleTDataStdReferenceArray* self_) {
-    try { return {new HandleTDFAttribute(*self_), nullptr}; }
+extern "C" OcctResult<Handle_TDF_Attribute*> Handle_TDataStd_ReferenceArray_to_Handle_TDF_Attribute(const Handle_TDataStd_ReferenceArray* self_) {
+    try { return {new Handle_TDF_Attribute(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleTDataStdReferenceArray_to_HandleStandardTransient(const HandleTDataStdReferenceArray* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_TDataStd_ReferenceArray_to_Handle_Standard_Transient(const Handle_TDataStd_ReferenceArray* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<TDF_Label*> TDataStd_ReferenceArray_inherited_Label(const TDataStd_ReferenceArray* self) {
@@ -11888,10 +11420,6 @@ extern "C" OcctResult<Handle(TDF_DeltaOnRemoval)*> TDataStd_ReferenceArray_inher
     try { return {new Handle(TDF_DeltaOnRemoval)(self->DeltaOnRemoval()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* TDataStd_ReferenceArray_inherited_ExtendedDump(const TDataStd_ReferenceArray* self, Standard_OStream& anOS, TDF_IDFilter const& aFilter, TDF_AttributeIndexedMap& aMap) {
-    try { self->ExtendedDump(anOS, aFilter, aMap); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
 extern "C" const char* TDataStd_ReferenceArray_inherited_Forget(TDataStd_ReferenceArray* self, int32_t aTransaction) {
     try { self->Forget(aTransaction); return nullptr; }
     OCCT_CATCH_RETURN_VOID
@@ -11998,7 +11526,7 @@ extern "C" OcctResult<TDF_Label const*> TDataStd_ReferenceList_last(const TDataS
     try { return {&(self_->Last()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TDF_LabelList const*> TDataStd_ReferenceList_list(const TDataStd_ReferenceList* self_) {
+extern "C" OcctResult<NCollection_List_TDF_Label const*> TDataStd_ReferenceList_list(const TDataStd_ReferenceList* self_) {
     try { return {&(self_->List()), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -12050,24 +11578,24 @@ extern "C" OcctResult<const TDF_Attribute*> TDataStd_ReferenceList_as_TDF_Attrib
 extern "C" OcctResult<TDF_Attribute*> TDataStd_ReferenceList_as_TDF_Attribute_mut(TDataStd_ReferenceList* self_) { return {static_cast<TDF_Attribute*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> TDataStd_ReferenceList_as_Standard_Transient(const TDataStd_ReferenceList* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> TDataStd_ReferenceList_as_Standard_Transient_mut(TDataStd_ReferenceList* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleTDataStdReferenceList*> TDataStd_ReferenceList_to_handle(TDataStd_ReferenceList* obj) {
-    try { return {new HandleTDataStdReferenceList(obj), nullptr}; }
+extern "C" OcctResult<Handle_TDataStd_ReferenceList*> TDataStd_ReferenceList_to_handle(TDataStd_ReferenceList* obj) {
+    try { return {new Handle_TDataStd_ReferenceList(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const TDataStd_ReferenceList*> HandleTDataStdReferenceList_get(const HandleTDataStdReferenceList* handle) {
+extern "C" OcctResult<const TDataStd_ReferenceList*> Handle_TDataStd_ReferenceList_get(const Handle_TDataStd_ReferenceList* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TDataStd_ReferenceList*> HandleTDataStdReferenceList_get_mut(HandleTDataStdReferenceList* handle) {
+extern "C" OcctResult<TDataStd_ReferenceList*> Handle_TDataStd_ReferenceList_get_mut(Handle_TDataStd_ReferenceList* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTDFAttribute*> HandleTDataStdReferenceList_to_HandleTDFAttribute(const HandleTDataStdReferenceList* self_) {
-    try { return {new HandleTDFAttribute(*self_), nullptr}; }
+extern "C" OcctResult<Handle_TDF_Attribute*> Handle_TDataStd_ReferenceList_to_Handle_TDF_Attribute(const Handle_TDataStd_ReferenceList* self_) {
+    try { return {new Handle_TDF_Attribute(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleTDataStdReferenceList_to_HandleStandardTransient(const HandleTDataStdReferenceList* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_TDataStd_ReferenceList_to_Handle_Standard_Transient(const Handle_TDataStd_ReferenceList* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<TDF_Label*> TDataStd_ReferenceList_inherited_Label(const TDataStd_ReferenceList* self) {
@@ -12178,10 +11706,6 @@ extern "C" OcctResult<Handle(TDF_DeltaOnRemoval)*> TDataStd_ReferenceList_inheri
     try { return {new Handle(TDF_DeltaOnRemoval)(self->DeltaOnRemoval()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* TDataStd_ReferenceList_inherited_ExtendedDump(const TDataStd_ReferenceList* self, Standard_OStream& anOS, TDF_IDFilter const& aFilter, TDF_AttributeIndexedMap& aMap) {
-    try { self->ExtendedDump(anOS, aFilter, aMap); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
 extern "C" const char* TDataStd_ReferenceList_inherited_Forget(TDataStd_ReferenceList* self, int32_t aTransaction) {
     try { self->Forget(aTransaction); return nullptr; }
     OCCT_CATCH_RETURN_VOID
@@ -12270,28 +11794,28 @@ extern "C" OcctResult<const TDF_Attribute*> TDataStd_Relation_as_TDF_Attribute(c
 extern "C" OcctResult<TDF_Attribute*> TDataStd_Relation_as_TDF_Attribute_mut(TDataStd_Relation* self_) { return {static_cast<TDF_Attribute*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> TDataStd_Relation_as_Standard_Transient(const TDataStd_Relation* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> TDataStd_Relation_as_Standard_Transient_mut(TDataStd_Relation* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleTDataStdRelation*> TDataStd_Relation_to_handle(TDataStd_Relation* obj) {
-    try { return {new HandleTDataStdRelation(obj), nullptr}; }
+extern "C" OcctResult<Handle_TDataStd_Relation*> TDataStd_Relation_to_handle(TDataStd_Relation* obj) {
+    try { return {new Handle_TDataStd_Relation(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const TDataStd_Relation*> HandleTDataStdRelation_get(const HandleTDataStdRelation* handle) {
+extern "C" OcctResult<const TDataStd_Relation*> Handle_TDataStd_Relation_get(const Handle_TDataStd_Relation* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TDataStd_Relation*> HandleTDataStdRelation_get_mut(HandleTDataStdRelation* handle) {
+extern "C" OcctResult<TDataStd_Relation*> Handle_TDataStd_Relation_get_mut(Handle_TDataStd_Relation* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTDataStdExpression*> HandleTDataStdRelation_to_HandleTDataStdExpression(const HandleTDataStdRelation* self_) {
-    try { return {new HandleTDataStdExpression(*self_), nullptr}; }
+extern "C" OcctResult<Handle_TDataStd_Expression*> Handle_TDataStd_Relation_to_Handle_TDataStd_Expression(const Handle_TDataStd_Relation* self_) {
+    try { return {new Handle_TDataStd_Expression(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTDFAttribute*> HandleTDataStdRelation_to_HandleTDFAttribute(const HandleTDataStdRelation* self_) {
-    try { return {new HandleTDFAttribute(*self_), nullptr}; }
+extern "C" OcctResult<Handle_TDF_Attribute*> Handle_TDataStd_Relation_to_Handle_TDF_Attribute(const Handle_TDataStd_Relation* self_) {
+    try { return {new Handle_TDF_Attribute(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleTDataStdRelation_to_HandleStandardTransient(const HandleTDataStdRelation* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_TDataStd_Relation_to_Handle_Standard_Transient(const Handle_TDataStd_Relation* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<TCollection_ExtendedString*> TDataStd_Relation_inherited_Name(const TDataStd_Relation* self) {
@@ -12304,10 +11828,6 @@ extern "C" const char* TDataStd_Relation_inherited_SetExpression(TDataStd_Relati
 }
 extern "C" OcctResult<TCollection_ExtendedString const*> TDataStd_Relation_inherited_GetExpression(const TDataStd_Relation* self) {
     try { return {&(self->GetExpression()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<TDF_AttributeList*> TDataStd_Relation_inherited_GetVariables(TDataStd_Relation* self) {
-    try { return {&(self->GetVariables()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" const char* TDataStd_Relation_inherited_Restore(TDataStd_Relation* self, Handle(TDF_Attribute) const& With) {
@@ -12434,10 +11954,6 @@ extern "C" const char* TDataStd_Relation_inherited_References(const TDataStd_Rel
     try { self->References(aDataSet); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* TDataStd_Relation_inherited_ExtendedDump(const TDataStd_Relation* self, Standard_OStream& anOS, TDF_IDFilter const& aFilter, TDF_AttributeIndexedMap& aMap) {
-    try { self->ExtendedDump(anOS, aFilter, aMap); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
 extern "C" const char* TDataStd_Relation_inherited_Forget(TDataStd_Relation* self, int32_t aTransaction) {
     try { self->Forget(aTransaction); return nullptr; }
     OCCT_CATCH_RETURN_VOID
@@ -12518,28 +12034,28 @@ extern "C" OcctResult<const TDF_Attribute*> TDataStd_Tick_as_TDF_Attribute(const
 extern "C" OcctResult<TDF_Attribute*> TDataStd_Tick_as_TDF_Attribute_mut(TDataStd_Tick* self_) { return {static_cast<TDF_Attribute*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> TDataStd_Tick_as_Standard_Transient(const TDataStd_Tick* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> TDataStd_Tick_as_Standard_Transient_mut(TDataStd_Tick* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleTDataStdTick*> TDataStd_Tick_to_handle(TDataStd_Tick* obj) {
-    try { return {new HandleTDataStdTick(obj), nullptr}; }
+extern "C" OcctResult<Handle_TDataStd_Tick*> TDataStd_Tick_to_handle(TDataStd_Tick* obj) {
+    try { return {new Handle_TDataStd_Tick(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const TDataStd_Tick*> HandleTDataStdTick_get(const HandleTDataStdTick* handle) {
+extern "C" OcctResult<const TDataStd_Tick*> Handle_TDataStd_Tick_get(const Handle_TDataStd_Tick* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TDataStd_Tick*> HandleTDataStdTick_get_mut(HandleTDataStdTick* handle) {
+extern "C" OcctResult<TDataStd_Tick*> Handle_TDataStd_Tick_get_mut(Handle_TDataStd_Tick* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTDataStdGenericEmpty*> HandleTDataStdTick_to_HandleTDataStdGenericEmpty(const HandleTDataStdTick* self_) {
-    try { return {new HandleTDataStdGenericEmpty(*self_), nullptr}; }
+extern "C" OcctResult<Handle_TDataStd_GenericEmpty*> Handle_TDataStd_Tick_to_Handle_TDataStd_GenericEmpty(const Handle_TDataStd_Tick* self_) {
+    try { return {new Handle_TDataStd_GenericEmpty(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTDFAttribute*> HandleTDataStdTick_to_HandleTDFAttribute(const HandleTDataStdTick* self_) {
-    try { return {new HandleTDFAttribute(*self_), nullptr}; }
+extern "C" OcctResult<Handle_TDF_Attribute*> Handle_TDataStd_Tick_to_Handle_TDF_Attribute(const Handle_TDataStd_Tick* self_) {
+    try { return {new Handle_TDF_Attribute(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleTDataStdTick_to_HandleStandardTransient(const HandleTDataStdTick* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_TDataStd_Tick_to_Handle_Standard_Transient(const Handle_TDataStd_Tick* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" const char* TDataStd_Tick_inherited_Restore(TDataStd_Tick* self, Handle(TDF_Attribute) const& arg0) {
@@ -12664,10 +12180,6 @@ extern "C" OcctResult<Handle(TDF_DeltaOnRemoval)*> TDataStd_Tick_inherited_Delta
 }
 extern "C" const char* TDataStd_Tick_inherited_References(const TDataStd_Tick* self, Handle(TDF_DataSet) const& aDataSet) {
     try { self->References(aDataSet); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* TDataStd_Tick_inherited_ExtendedDump(const TDataStd_Tick* self, Standard_OStream& anOS, TDF_IDFilter const& aFilter, TDF_AttributeIndexedMap& aMap) {
-    try { self->ExtendedDump(anOS, aFilter, aMap); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
 extern "C" const char* TDataStd_Tick_inherited_Forget(TDataStd_Tick* self, int32_t aTransaction) {
@@ -12908,24 +12420,24 @@ extern "C" OcctResult<const TDF_Attribute*> TDataStd_TreeNode_as_TDF_Attribute(c
 extern "C" OcctResult<TDF_Attribute*> TDataStd_TreeNode_as_TDF_Attribute_mut(TDataStd_TreeNode* self_) { return {static_cast<TDF_Attribute*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> TDataStd_TreeNode_as_Standard_Transient(const TDataStd_TreeNode* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> TDataStd_TreeNode_as_Standard_Transient_mut(TDataStd_TreeNode* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleTDataStdTreeNode*> TDataStd_TreeNode_to_handle(TDataStd_TreeNode* obj) {
-    try { return {new HandleTDataStdTreeNode(obj), nullptr}; }
+extern "C" OcctResult<Handle_TDataStd_TreeNode*> TDataStd_TreeNode_to_handle(TDataStd_TreeNode* obj) {
+    try { return {new Handle_TDataStd_TreeNode(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const TDataStd_TreeNode*> HandleTDataStdTreeNode_get(const HandleTDataStdTreeNode* handle) {
+extern "C" OcctResult<const TDataStd_TreeNode*> Handle_TDataStd_TreeNode_get(const Handle_TDataStd_TreeNode* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TDataStd_TreeNode*> HandleTDataStdTreeNode_get_mut(HandleTDataStdTreeNode* handle) {
+extern "C" OcctResult<TDataStd_TreeNode*> Handle_TDataStd_TreeNode_get_mut(Handle_TDataStd_TreeNode* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTDFAttribute*> HandleTDataStdTreeNode_to_HandleTDFAttribute(const HandleTDataStdTreeNode* self_) {
-    try { return {new HandleTDFAttribute(*self_), nullptr}; }
+extern "C" OcctResult<Handle_TDF_Attribute*> Handle_TDataStd_TreeNode_to_Handle_TDF_Attribute(const Handle_TDataStd_TreeNode* self_) {
+    try { return {new Handle_TDF_Attribute(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleTDataStdTreeNode_to_HandleStandardTransient(const HandleTDataStdTreeNode* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_TDataStd_TreeNode_to_Handle_Standard_Transient(const Handle_TDataStd_TreeNode* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" const char* TDataStd_TreeNode_inherited_SetID(TDataStd_TreeNode* self, Standard_GUID const& arg0) {
@@ -13020,10 +12532,6 @@ extern "C" OcctResult<Handle(TDF_DeltaOnRemoval)*> TDataStd_TreeNode_inherited_D
     try { return {new Handle(TDF_DeltaOnRemoval)(self->DeltaOnRemoval()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* TDataStd_TreeNode_inherited_ExtendedDump(const TDataStd_TreeNode* self, Standard_OStream& anOS, TDF_IDFilter const& aFilter, TDF_AttributeIndexedMap& aMap) {
-    try { self->ExtendedDump(anOS, aFilter, aMap); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
 extern "C" const char* TDataStd_TreeNode_inherited_Forget(TDataStd_TreeNode* self, int32_t aTransaction) {
     try { self->Forget(aTransaction); return nullptr; }
     OCCT_CATCH_RETURN_VOID
@@ -13114,24 +12622,24 @@ extern "C" OcctResult<const TDF_Attribute*> TDataStd_UAttribute_as_TDF_Attribute
 extern "C" OcctResult<TDF_Attribute*> TDataStd_UAttribute_as_TDF_Attribute_mut(TDataStd_UAttribute* self_) { return {static_cast<TDF_Attribute*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> TDataStd_UAttribute_as_Standard_Transient(const TDataStd_UAttribute* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> TDataStd_UAttribute_as_Standard_Transient_mut(TDataStd_UAttribute* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleTDataStdUAttribute*> TDataStd_UAttribute_to_handle(TDataStd_UAttribute* obj) {
-    try { return {new HandleTDataStdUAttribute(obj), nullptr}; }
+extern "C" OcctResult<Handle_TDataStd_UAttribute*> TDataStd_UAttribute_to_handle(TDataStd_UAttribute* obj) {
+    try { return {new Handle_TDataStd_UAttribute(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const TDataStd_UAttribute*> HandleTDataStdUAttribute_get(const HandleTDataStdUAttribute* handle) {
+extern "C" OcctResult<const TDataStd_UAttribute*> Handle_TDataStd_UAttribute_get(const Handle_TDataStd_UAttribute* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TDataStd_UAttribute*> HandleTDataStdUAttribute_get_mut(HandleTDataStdUAttribute* handle) {
+extern "C" OcctResult<TDataStd_UAttribute*> Handle_TDataStd_UAttribute_get_mut(Handle_TDataStd_UAttribute* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTDFAttribute*> HandleTDataStdUAttribute_to_HandleTDFAttribute(const HandleTDataStdUAttribute* self_) {
-    try { return {new HandleTDFAttribute(*self_), nullptr}; }
+extern "C" OcctResult<Handle_TDF_Attribute*> Handle_TDataStd_UAttribute_to_Handle_TDF_Attribute(const Handle_TDataStd_UAttribute* self_) {
+    try { return {new Handle_TDF_Attribute(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleTDataStdUAttribute_to_HandleStandardTransient(const HandleTDataStdUAttribute* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_TDataStd_UAttribute_to_Handle_Standard_Transient(const Handle_TDataStd_UAttribute* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<TDF_Label*> TDataStd_UAttribute_inherited_Label(const TDataStd_UAttribute* self) {
@@ -13241,10 +12749,6 @@ extern "C" OcctResult<Handle(TDF_DeltaOnModification)*> TDataStd_UAttribute_inhe
 extern "C" OcctResult<Handle(TDF_DeltaOnRemoval)*> TDataStd_UAttribute_inherited_DeltaOnRemoval(const TDataStd_UAttribute* self) {
     try { return {new Handle(TDF_DeltaOnRemoval)(self->DeltaOnRemoval()), nullptr}; }
     OCCT_CATCH_RETURN
-}
-extern "C" const char* TDataStd_UAttribute_inherited_ExtendedDump(const TDataStd_UAttribute* self, Standard_OStream& anOS, TDF_IDFilter const& aFilter, TDF_AttributeIndexedMap& aMap) {
-    try { self->ExtendedDump(anOS, aFilter, aMap); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
 }
 extern "C" const char* TDataStd_UAttribute_inherited_Forget(TDataStd_UAttribute* self, int32_t aTransaction) {
     try { self->Forget(aTransaction); return nullptr; }
@@ -13396,24 +12900,24 @@ extern "C" OcctResult<const TDF_Attribute*> TDataStd_Variable_as_TDF_Attribute(c
 extern "C" OcctResult<TDF_Attribute*> TDataStd_Variable_as_TDF_Attribute_mut(TDataStd_Variable* self_) { return {static_cast<TDF_Attribute*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> TDataStd_Variable_as_Standard_Transient(const TDataStd_Variable* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> TDataStd_Variable_as_Standard_Transient_mut(TDataStd_Variable* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleTDataStdVariable*> TDataStd_Variable_to_handle(TDataStd_Variable* obj) {
-    try { return {new HandleTDataStdVariable(obj), nullptr}; }
+extern "C" OcctResult<Handle_TDataStd_Variable*> TDataStd_Variable_to_handle(TDataStd_Variable* obj) {
+    try { return {new Handle_TDataStd_Variable(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const TDataStd_Variable*> HandleTDataStdVariable_get(const HandleTDataStdVariable* handle) {
+extern "C" OcctResult<const TDataStd_Variable*> Handle_TDataStd_Variable_get(const Handle_TDataStd_Variable* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TDataStd_Variable*> HandleTDataStdVariable_get_mut(HandleTDataStdVariable* handle) {
+extern "C" OcctResult<TDataStd_Variable*> Handle_TDataStd_Variable_get_mut(Handle_TDataStd_Variable* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTDFAttribute*> HandleTDataStdVariable_to_HandleTDFAttribute(const HandleTDataStdVariable* self_) {
-    try { return {new HandleTDFAttribute(*self_), nullptr}; }
+extern "C" OcctResult<Handle_TDF_Attribute*> Handle_TDataStd_Variable_to_Handle_TDF_Attribute(const Handle_TDataStd_Variable* self_) {
+    try { return {new Handle_TDF_Attribute(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleTDataStdVariable_to_HandleStandardTransient(const HandleTDataStdVariable* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_TDataStd_Variable_to_Handle_Standard_Transient(const Handle_TDataStd_Variable* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" const char* TDataStd_Variable_inherited_SetID(TDataStd_Variable* self, Standard_GUID const& arg0) {
@@ -13528,10 +13032,6 @@ extern "C" OcctResult<Handle(TDF_DeltaOnRemoval)*> TDataStd_Variable_inherited_D
     try { return {new Handle(TDF_DeltaOnRemoval)(self->DeltaOnRemoval()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* TDataStd_Variable_inherited_ExtendedDump(const TDataStd_Variable* self, Standard_OStream& anOS, TDF_IDFilter const& aFilter, TDF_AttributeIndexedMap& aMap) {
-    try { self->ExtendedDump(anOS, aFilter, aMap); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
 extern "C" const char* TDataStd_Variable_inherited_Forget(TDataStd_Variable* self, int32_t aTransaction) {
     try { self->Forget(aTransaction); return nullptr; }
     OCCT_CATCH_RETURN_VOID
@@ -13578,6 +13078,10 @@ extern "C" OcctResult<Handle(Resource_Manager)*> TDocStd_Application_resources(T
     try { return {new Handle(Resource_Manager)(self_->Resources()), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" OcctResult<Handle(TDocStd_Document)*> TDocStd_Application_get_document(const TDocStd_Application* self_, int32_t index) {
+    try { return {new Handle(TDocStd_Document)(self_->GetDocument(index)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" OcctResult<bool> TDocStd_Application_is_driver_loaded(const TDocStd_Application* self_) {
     try { return {self_->IsDriverLoaded(), nullptr}; }
     OCCT_CATCH_RETURN
@@ -13590,21 +13094,17 @@ extern "C" const char* TDocStd_Application_define_format(TDocStd_Application* se
     try { self_->DefineFormat(*theFormat, *theDescription, *theExtension, *theReader, *theWriter); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* TDocStd_Application_reading_formats(TDocStd_Application* self_, TColStd_SequenceOfAsciiString* theFormats) {
+extern "C" const char* TDocStd_Application_reading_formats(TDocStd_Application* self_, NCollection_Sequence_TCollection_AsciiString* theFormats) {
     try { self_->ReadingFormats(*theFormats); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* TDocStd_Application_writing_formats(TDocStd_Application* self_, TColStd_SequenceOfAsciiString* theFormats) {
+extern "C" const char* TDocStd_Application_writing_formats(TDocStd_Application* self_, NCollection_Sequence_TCollection_AsciiString* theFormats) {
     try { self_->WritingFormats(*theFormats); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
 extern "C" OcctResult<int32_t> TDocStd_Application_nb_documents(const TDocStd_Application* self_) {
     try { return {self_->NbDocuments(), nullptr}; }
     OCCT_CATCH_RETURN
-}
-extern "C" const char* TDocStd_Application_get_document(const TDocStd_Application* self_, int32_t index, Handle(TDocStd_Document)* aDoc) {
-    try { self_->GetDocument(index, *aDoc); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
 }
 extern "C" const char* TDocStd_Application_new_document_extendedstring_handlecdmdocument(TDocStd_Application* self_, TCollection_ExtendedString const* format, Handle(CDM_Document)* aDoc) {
     try { self_->NewDocument(*format, *aDoc); return nullptr; }
@@ -13696,59 +13196,59 @@ extern "C" OcctResult<const CDM_Application*> TDocStd_Application_as_CDM_Applica
 extern "C" OcctResult<CDM_Application*> TDocStd_Application_as_CDM_Application_mut(TDocStd_Application* self_) { return {static_cast<CDM_Application*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> TDocStd_Application_as_Standard_Transient(const TDocStd_Application* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> TDocStd_Application_as_Standard_Transient_mut(TDocStd_Application* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleTDocStdApplication*> TDocStd_Application_to_handle(TDocStd_Application* obj) {
-    try { return {new HandleTDocStdApplication(obj), nullptr}; }
+extern "C" OcctResult<Handle_TDocStd_Application*> TDocStd_Application_to_handle(TDocStd_Application* obj) {
+    try { return {new Handle_TDocStd_Application(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const TDocStd_Application*> HandleTDocStdApplication_get(const HandleTDocStdApplication* handle) {
+extern "C" OcctResult<const TDocStd_Application*> Handle_TDocStd_Application_get(const Handle_TDocStd_Application* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TDocStd_Application*> HandleTDocStdApplication_get_mut(HandleTDocStdApplication* handle) {
+extern "C" OcctResult<TDocStd_Application*> Handle_TDocStd_Application_get_mut(Handle_TDocStd_Application* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleCDFApplication*> HandleTDocStdApplication_to_HandleCDFApplication(const HandleTDocStdApplication* self_) {
-    try { return {new HandleCDFApplication(*self_), nullptr}; }
+extern "C" OcctResult<Handle_CDF_Application*> Handle_TDocStd_Application_to_Handle_CDF_Application(const Handle_TDocStd_Application* self_) {
+    try { return {new Handle_CDF_Application(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleCDMApplication*> HandleTDocStdApplication_to_HandleCDMApplication(const HandleTDocStdApplication* self_) {
-    try { return {new HandleCDMApplication(*self_), nullptr}; }
+extern "C" OcctResult<Handle_CDM_Application*> Handle_TDocStd_Application_to_Handle_CDM_Application(const Handle_TDocStd_Application* self_) {
+    try { return {new Handle_CDM_Application(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleTDocStdApplication_to_HandleStandardTransient(const HandleTDocStdApplication* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_TDocStd_Application_to_Handle_Standard_Transient(const Handle_TDocStd_Application* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleAppStdLApplication*> HandleTDocStdApplication_downcast_to_HandleAppStdLApplication(const HandleTDocStdApplication* self_) {
+extern "C" OcctResult<Handle_AppStdL_Application*> Handle_TDocStd_Application_downcast_to_Handle_AppStdL_Application(const Handle_TDocStd_Application* self_) {
     try {
     opencascade::handle<AppStdL_Application> result = opencascade::handle<AppStdL_Application>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleAppStdLApplication(result), nullptr};
+    return {new Handle_AppStdL_Application(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleAppStdApplication*> HandleTDocStdApplication_downcast_to_HandleAppStdApplication(const HandleTDocStdApplication* self_) {
+extern "C" OcctResult<Handle_AppStd_Application*> Handle_TDocStd_Application_downcast_to_Handle_AppStd_Application(const Handle_TDocStd_Application* self_) {
     try {
     opencascade::handle<AppStd_Application> result = opencascade::handle<AppStd_Application>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleAppStdApplication(result), nullptr};
+    return {new Handle_AppStd_Application(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTObjApplication*> HandleTDocStdApplication_downcast_to_HandleTObjApplication(const HandleTDocStdApplication* self_) {
+extern "C" OcctResult<Handle_TObj_Application*> Handle_TDocStd_Application_downcast_to_Handle_TObj_Application(const Handle_TDocStd_Application* self_) {
     try {
     opencascade::handle<TObj_Application> result = opencascade::handle<TObj_Application>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleTObjApplication(result), nullptr};
+    return {new Handle_TObj_Application(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleXCAFAppApplication*> HandleTDocStdApplication_downcast_to_HandleXCAFAppApplication(const HandleTDocStdApplication* self_) {
+extern "C" OcctResult<Handle_XCAFApp_Application*> Handle_TDocStd_Application_downcast_to_Handle_XCAFApp_Application(const Handle_TDocStd_Application* self_) {
     try {
     opencascade::handle<XCAFApp_Application> result = opencascade::handle<XCAFApp_Application>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleXCAFAppApplication(result), nullptr};
+    return {new Handle_XCAFApp_Application(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
@@ -13808,10 +13308,6 @@ extern "C" OcctResult<TCollection_AsciiString*> TDocStd_Application_inherited_Ve
     try { return {new TCollection_AsciiString(self->Version()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<CDM_MetaDataLookUpTable*> TDocStd_Application_inherited_MetaDataLookUpTable(TDocStd_Application* self) {
-    try { return {&(self->MetaDataLookUpTable()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
 extern "C" OcctResult<bool> TDocStd_Application_inherited_IsInstance(const TDocStd_Application* self, Handle(Standard_Type) const& theType) {
     try { return {self->IsInstance(theType), nullptr}; }
     OCCT_CATCH_RETURN
@@ -13850,10 +13346,6 @@ extern "C" OcctResult<TDocStd_ApplicationDelta*> TDocStd_ApplicationDelta_ctor()
     try { return {new TDocStd_ApplicationDelta(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TDocStd_SequenceOfDocument*> TDocStd_ApplicationDelta_get_documents(TDocStd_ApplicationDelta* self_) {
-    try { return {&(self_->GetDocuments()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
 extern "C" OcctResult<TCollection_ExtendedString const*> TDocStd_ApplicationDelta_get_name(const TDocStd_ApplicationDelta* self_) {
     try { return {&(self_->GetName()), nullptr}; }
     OCCT_CATCH_RETURN
@@ -13880,20 +13372,20 @@ extern "C" OcctResult<Handle(Standard_Type) const*> TDocStd_ApplicationDelta_get
 }
 extern "C" OcctResult<const Standard_Transient*> TDocStd_ApplicationDelta_as_Standard_Transient(const TDocStd_ApplicationDelta* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> TDocStd_ApplicationDelta_as_Standard_Transient_mut(TDocStd_ApplicationDelta* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleTDocStdApplicationDelta*> TDocStd_ApplicationDelta_to_handle(TDocStd_ApplicationDelta* obj) {
-    try { return {new HandleTDocStdApplicationDelta(obj), nullptr}; }
+extern "C" OcctResult<Handle_TDocStd_ApplicationDelta*> TDocStd_ApplicationDelta_to_handle(TDocStd_ApplicationDelta* obj) {
+    try { return {new Handle_TDocStd_ApplicationDelta(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const TDocStd_ApplicationDelta*> HandleTDocStdApplicationDelta_get(const HandleTDocStdApplicationDelta* handle) {
+extern "C" OcctResult<const TDocStd_ApplicationDelta*> Handle_TDocStd_ApplicationDelta_get(const Handle_TDocStd_ApplicationDelta* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TDocStd_ApplicationDelta*> HandleTDocStdApplicationDelta_get_mut(HandleTDocStdApplicationDelta* handle) {
+extern "C" OcctResult<TDocStd_ApplicationDelta*> Handle_TDocStd_ApplicationDelta_get_mut(Handle_TDocStd_ApplicationDelta* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleTDocStdApplicationDelta_to_HandleStandardTransient(const HandleTDocStdApplicationDelta* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_TDocStd_ApplicationDelta_to_Handle_Standard_Transient(const Handle_TDocStd_ApplicationDelta* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> TDocStd_ApplicationDelta_inherited_IsInstance(const TDocStd_ApplicationDelta* self, Handle(Standard_Type) const& theType) {
@@ -13950,24 +13442,24 @@ extern "C" OcctResult<const TDF_Delta*> TDocStd_CompoundDelta_as_TDF_Delta(const
 extern "C" OcctResult<TDF_Delta*> TDocStd_CompoundDelta_as_TDF_Delta_mut(TDocStd_CompoundDelta* self_) { return {static_cast<TDF_Delta*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> TDocStd_CompoundDelta_as_Standard_Transient(const TDocStd_CompoundDelta* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> TDocStd_CompoundDelta_as_Standard_Transient_mut(TDocStd_CompoundDelta* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleTDocStdCompoundDelta*> TDocStd_CompoundDelta_to_handle(TDocStd_CompoundDelta* obj) {
-    try { return {new HandleTDocStdCompoundDelta(obj), nullptr}; }
+extern "C" OcctResult<Handle_TDocStd_CompoundDelta*> TDocStd_CompoundDelta_to_handle(TDocStd_CompoundDelta* obj) {
+    try { return {new Handle_TDocStd_CompoundDelta(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const TDocStd_CompoundDelta*> HandleTDocStdCompoundDelta_get(const HandleTDocStdCompoundDelta* handle) {
+extern "C" OcctResult<const TDocStd_CompoundDelta*> Handle_TDocStd_CompoundDelta_get(const Handle_TDocStd_CompoundDelta* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TDocStd_CompoundDelta*> HandleTDocStdCompoundDelta_get_mut(HandleTDocStdCompoundDelta* handle) {
+extern "C" OcctResult<TDocStd_CompoundDelta*> Handle_TDocStd_CompoundDelta_get_mut(Handle_TDocStd_CompoundDelta* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTDFDelta*> HandleTDocStdCompoundDelta_to_HandleTDFDelta(const HandleTDocStdCompoundDelta* self_) {
-    try { return {new HandleTDFDelta(*self_), nullptr}; }
+extern "C" OcctResult<Handle_TDF_Delta*> Handle_TDocStd_CompoundDelta_to_Handle_TDF_Delta(const Handle_TDocStd_CompoundDelta* self_) {
+    try { return {new Handle_TDF_Delta(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleTDocStdCompoundDelta_to_HandleStandardTransient(const HandleTDocStdCompoundDelta* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_TDocStd_CompoundDelta_to_Handle_Standard_Transient(const Handle_TDocStd_CompoundDelta* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> TDocStd_CompoundDelta_inherited_IsEmpty(const TDocStd_CompoundDelta* self) {
@@ -13986,13 +13478,9 @@ extern "C" OcctResult<int32_t> TDocStd_CompoundDelta_inherited_EndTime(const TDo
     try { return {self->EndTime(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* TDocStd_CompoundDelta_inherited_Labels(const TDocStd_CompoundDelta* self, TDF_LabelList& aLabelList) {
+extern "C" const char* TDocStd_CompoundDelta_inherited_Labels(const TDocStd_CompoundDelta* self, NCollection_List_TDF_Label& aLabelList) {
     try { self->Labels(aLabelList); return nullptr; }
     OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<TDF_AttributeDeltaList const*> TDocStd_CompoundDelta_inherited_AttributeDeltas(const TDocStd_CompoundDelta* self) {
-    try { return {&(self->AttributeDeltas()), nullptr}; }
-    OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<TCollection_ExtendedString*> TDocStd_CompoundDelta_inherited_Name(const TDocStd_CompoundDelta* self) {
     try { return {new TCollection_ExtendedString(self->Name()), nullptr}; }
@@ -14122,7 +13610,7 @@ extern "C" const char* TDocStd_Document_purge_modified(TDocStd_Document* self_) 
     try { self_->PurgeModified(); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<TDF_LabelMap const*> TDocStd_Document_get_modified(const TDocStd_Document* self_) {
+extern "C" OcctResult<NCollection_Map_TDF_Label const*> TDocStd_Document_get_modified(const TDocStd_Document* self_) {
     try { return {&(self_->GetModified()), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -14178,14 +13666,6 @@ extern "C" OcctResult<bool> TDocStd_Document_redo(TDocStd_Document* self_) {
     try { return {self_->Redo(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TDF_DeltaList const*> TDocStd_Document_get_undos(const TDocStd_Document* self_) {
-    try { return {&(self_->GetUndos()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<TDF_DeltaList const*> TDocStd_Document_get_redos(const TDocStd_Document* self_) {
-    try { return {&(self_->GetRedos()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
 extern "C" const char* TDocStd_Document_remove_first_undo(TDocStd_Document* self_) {
     try { self_->RemoveFirstUndo(); return nullptr; }
     OCCT_CATCH_RETURN_VOID
@@ -14206,7 +13686,7 @@ extern "C" const char* TDocStd_Document_recompute(TDocStd_Document* self_) {
     try { self_->Recompute(); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* TDocStd_Document_update(TDocStd_Document* self_, Handle(CDM_Document) const* aToDocument, int32_t aReferenceIdentifier, Standard_Address aModifContext) {
+extern "C" const char* TDocStd_Document_update(TDocStd_Document* self_, Handle(CDM_Document) const* aToDocument, int32_t aReferenceIdentifier, void* aModifContext) {
     try { self_->Update(*aToDocument, aReferenceIdentifier, aModifContext); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -14274,27 +13754,27 @@ extern "C" OcctResult<const CDM_Document*> TDocStd_Document_as_CDM_Document(cons
 extern "C" OcctResult<CDM_Document*> TDocStd_Document_as_CDM_Document_mut(TDocStd_Document* self_) { return {static_cast<CDM_Document*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> TDocStd_Document_as_Standard_Transient(const TDocStd_Document* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> TDocStd_Document_as_Standard_Transient_mut(TDocStd_Document* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleTDocStdDocument*> TDocStd_Document_to_handle(TDocStd_Document* obj) {
-    try { return {new HandleTDocStdDocument(obj), nullptr}; }
+extern "C" OcctResult<Handle_TDocStd_Document*> TDocStd_Document_to_handle(TDocStd_Document* obj) {
+    try { return {new Handle_TDocStd_Document(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const TDocStd_Document*> HandleTDocStdDocument_get(const HandleTDocStdDocument* handle) {
+extern "C" OcctResult<const TDocStd_Document*> Handle_TDocStd_Document_get(const Handle_TDocStd_Document* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TDocStd_Document*> HandleTDocStdDocument_get_mut(HandleTDocStdDocument* handle) {
+extern "C" OcctResult<TDocStd_Document*> Handle_TDocStd_Document_get_mut(Handle_TDocStd_Document* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleCDMDocument*> HandleTDocStdDocument_to_HandleCDMDocument(const HandleTDocStdDocument* self_) {
-    try { return {new HandleCDMDocument(*self_), nullptr}; }
+extern "C" OcctResult<Handle_CDM_Document*> Handle_TDocStd_Document_to_Handle_CDM_Document(const Handle_TDocStd_Document* self_) {
+    try { return {new Handle_CDM_Document(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleTDocStdDocument_to_HandleStandardTransient(const HandleTDocStdDocument* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_TDocStd_Document_to_Handle_Standard_Transient(const Handle_TDocStd_Document* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* TDocStd_Document_inherited_Extensions(const TDocStd_Document* self, TColStd_SequenceOfExtendedString& Extensions) {
+extern "C" const char* TDocStd_Document_inherited_Extensions(const TDocStd_Document* self, NCollection_Sequence_TCollection_ExtendedString& Extensions) {
     try { self->Extensions(Extensions); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -14329,10 +13809,6 @@ extern "C" OcctResult<bool> TDocStd_Document_inherited_IsStored(const TDocStd_Do
 extern "C" OcctResult<TCollection_ExtendedString*> TDocStd_Document_inherited_Name(const TDocStd_Document* self, int32_t aReferenceIdentifier) {
     try { return {new TCollection_ExtendedString(self->Name(aReferenceIdentifier)), nullptr}; }
     OCCT_CATCH_RETURN
-}
-extern "C" const char* TDocStd_Document_inherited_UpdateFromDocuments(const TDocStd_Document* self, Standard_Address aModifContext) {
-    try { self->UpdateFromDocuments(aModifContext); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
 }
 extern "C" OcctResult<int32_t> TDocStd_Document_inherited_ToReferencesNumber(const TDocStd_Document* self) {
     try { return {self->ToReferencesNumber(), nullptr}; }
@@ -14394,11 +13870,11 @@ extern "C" const char* TDocStd_Document_inherited_AddComment(TDocStd_Document* s
     try { self->AddComment(aComment); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* TDocStd_Document_inherited_SetComments(TDocStd_Document* self, TColStd_SequenceOfExtendedString const& aComments) {
+extern "C" const char* TDocStd_Document_inherited_SetComments(TDocStd_Document* self, NCollection_Sequence_TCollection_ExtendedString const& aComments) {
     try { self->SetComments(aComments); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* TDocStd_Document_inherited_Comments(const TDocStd_Document* self, TColStd_SequenceOfExtendedString& aComments) {
+extern "C" const char* TDocStd_Document_inherited_Comments(const TDocStd_Document* self, NCollection_Sequence_TCollection_ExtendedString& aComments) {
     try { self->Comments(aComments); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -14592,7 +14068,7 @@ extern "C" OcctResult<bool> TDocStd_Modified_remove_label(TDocStd_Modified* self
     try { return {self_->RemoveLabel(*L), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TDF_LabelMap const*> TDocStd_Modified_get(const TDocStd_Modified* self_) {
+extern "C" OcctResult<NCollection_Map_TDF_Label const*> TDocStd_Modified_get(const TDocStd_Modified* self_) {
     try { return {&(self_->Get()), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -14632,7 +14108,7 @@ extern "C" OcctResult<bool> TDocStd_Modified_contains(TDF_Label const* alabel) {
     try { return {TDocStd_Modified::Contains(*alabel), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TDF_LabelMap const*> TDocStd_Modified_get_label(TDF_Label const* access) {
+extern "C" OcctResult<NCollection_Map_TDF_Label const*> TDocStd_Modified_get_label(TDF_Label const* access) {
     try { return {&(TDocStd_Modified::Get(*access)), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -14656,24 +14132,24 @@ extern "C" OcctResult<const TDF_Attribute*> TDocStd_Modified_as_TDF_Attribute(co
 extern "C" OcctResult<TDF_Attribute*> TDocStd_Modified_as_TDF_Attribute_mut(TDocStd_Modified* self_) { return {static_cast<TDF_Attribute*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> TDocStd_Modified_as_Standard_Transient(const TDocStd_Modified* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> TDocStd_Modified_as_Standard_Transient_mut(TDocStd_Modified* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleTDocStdModified*> TDocStd_Modified_to_handle(TDocStd_Modified* obj) {
-    try { return {new HandleTDocStdModified(obj), nullptr}; }
+extern "C" OcctResult<Handle_TDocStd_Modified*> TDocStd_Modified_to_handle(TDocStd_Modified* obj) {
+    try { return {new Handle_TDocStd_Modified(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const TDocStd_Modified*> HandleTDocStdModified_get(const HandleTDocStdModified* handle) {
+extern "C" OcctResult<const TDocStd_Modified*> Handle_TDocStd_Modified_get(const Handle_TDocStd_Modified* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TDocStd_Modified*> HandleTDocStdModified_get_mut(HandleTDocStdModified* handle) {
+extern "C" OcctResult<TDocStd_Modified*> Handle_TDocStd_Modified_get_mut(Handle_TDocStd_Modified* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTDFAttribute*> HandleTDocStdModified_to_HandleTDFAttribute(const HandleTDocStdModified* self_) {
-    try { return {new HandleTDFAttribute(*self_), nullptr}; }
+extern "C" OcctResult<Handle_TDF_Attribute*> Handle_TDocStd_Modified_to_Handle_TDF_Attribute(const Handle_TDocStd_Modified* self_) {
+    try { return {new Handle_TDF_Attribute(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleTDocStdModified_to_HandleStandardTransient(const HandleTDocStdModified* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_TDocStd_Modified_to_Handle_Standard_Transient(const Handle_TDocStd_Modified* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" const char* TDocStd_Modified_inherited_SetID(TDocStd_Modified* self, Standard_GUID const& arg0) {
@@ -14792,10 +14268,6 @@ extern "C" const char* TDocStd_Modified_inherited_References(const TDocStd_Modif
     try { self->References(aDataSet); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* TDocStd_Modified_inherited_ExtendedDump(const TDocStd_Modified* self, Standard_OStream& anOS, TDF_IDFilter const& aFilter, TDF_AttributeIndexedMap& aMap) {
-    try { self->ExtendedDump(anOS, aFilter, aMap); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
 extern "C" const char* TDocStd_Modified_inherited_Forget(TDocStd_Modified* self, int32_t aTransaction) {
     try { self->Forget(aTransaction); return nullptr; }
     OCCT_CATCH_RETURN_VOID
@@ -14854,14 +14326,6 @@ extern "C" const char* TDocStd_MultiTransactionManager_redo(TDocStd_MultiTransac
     try { self_->Redo(); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<TDocStd_SequenceOfApplicationDelta const*> TDocStd_MultiTransactionManager_get_available_undos(const TDocStd_MultiTransactionManager* self_) {
-    try { return {&(self_->GetAvailableUndos()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<TDocStd_SequenceOfApplicationDelta const*> TDocStd_MultiTransactionManager_get_available_redos(const TDocStd_MultiTransactionManager* self_) {
-    try { return {&(self_->GetAvailableRedos()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
 extern "C" const char* TDocStd_MultiTransactionManager_open_command(TDocStd_MultiTransactionManager* self_) {
     try { self_->OpenCommand(); return nullptr; }
     OCCT_CATCH_RETURN_VOID
@@ -14897,10 +14361,6 @@ extern "C" const char* TDocStd_MultiTransactionManager_add_document(TDocStd_Mult
 extern "C" const char* TDocStd_MultiTransactionManager_remove_document(TDocStd_MultiTransactionManager* self_, Handle(TDocStd_Document) const* theDoc) {
     try { self_->RemoveDocument(*theDoc); return nullptr; }
     OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<TDocStd_SequenceOfDocument const*> TDocStd_MultiTransactionManager_documents(const TDocStd_MultiTransactionManager* self_) {
-    try { return {&(self_->Documents()), nullptr}; }
-    OCCT_CATCH_RETURN
 }
 extern "C" const char* TDocStd_MultiTransactionManager_set_nested_transaction_mode(TDocStd_MultiTransactionManager* self_, bool isAllowed) {
     try { self_->SetNestedTransactionMode(isAllowed); return nullptr; }
@@ -14940,20 +14400,20 @@ extern "C" OcctResult<Handle(Standard_Type) const*> TDocStd_MultiTransactionMana
 }
 extern "C" OcctResult<const Standard_Transient*> TDocStd_MultiTransactionManager_as_Standard_Transient(const TDocStd_MultiTransactionManager* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> TDocStd_MultiTransactionManager_as_Standard_Transient_mut(TDocStd_MultiTransactionManager* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleTDocStdMultiTransactionManager*> TDocStd_MultiTransactionManager_to_handle(TDocStd_MultiTransactionManager* obj) {
-    try { return {new HandleTDocStdMultiTransactionManager(obj), nullptr}; }
+extern "C" OcctResult<Handle_TDocStd_MultiTransactionManager*> TDocStd_MultiTransactionManager_to_handle(TDocStd_MultiTransactionManager* obj) {
+    try { return {new Handle_TDocStd_MultiTransactionManager(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const TDocStd_MultiTransactionManager*> HandleTDocStdMultiTransactionManager_get(const HandleTDocStdMultiTransactionManager* handle) {
+extern "C" OcctResult<const TDocStd_MultiTransactionManager*> Handle_TDocStd_MultiTransactionManager_get(const Handle_TDocStd_MultiTransactionManager* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TDocStd_MultiTransactionManager*> HandleTDocStdMultiTransactionManager_get_mut(HandleTDocStdMultiTransactionManager* handle) {
+extern "C" OcctResult<TDocStd_MultiTransactionManager*> Handle_TDocStd_MultiTransactionManager_get_mut(Handle_TDocStd_MultiTransactionManager* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleTDocStdMultiTransactionManager_to_HandleStandardTransient(const HandleTDocStdMultiTransactionManager* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_TDocStd_MultiTransactionManager_to_Handle_Standard_Transient(const Handle_TDocStd_MultiTransactionManager* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> TDocStd_MultiTransactionManager_inherited_IsInstance(const TDocStd_MultiTransactionManager* self, Handle(Standard_Type) const& theType) {
@@ -15058,24 +14518,24 @@ extern "C" OcctResult<const TDF_Attribute*> TDocStd_Owner_as_TDF_Attribute(const
 extern "C" OcctResult<TDF_Attribute*> TDocStd_Owner_as_TDF_Attribute_mut(TDocStd_Owner* self_) { return {static_cast<TDF_Attribute*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> TDocStd_Owner_as_Standard_Transient(const TDocStd_Owner* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> TDocStd_Owner_as_Standard_Transient_mut(TDocStd_Owner* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleTDocStdOwner*> TDocStd_Owner_to_handle(TDocStd_Owner* obj) {
-    try { return {new HandleTDocStdOwner(obj), nullptr}; }
+extern "C" OcctResult<Handle_TDocStd_Owner*> TDocStd_Owner_to_handle(TDocStd_Owner* obj) {
+    try { return {new Handle_TDocStd_Owner(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const TDocStd_Owner*> HandleTDocStdOwner_get(const HandleTDocStdOwner* handle) {
+extern "C" OcctResult<const TDocStd_Owner*> Handle_TDocStd_Owner_get(const Handle_TDocStd_Owner* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TDocStd_Owner*> HandleTDocStdOwner_get_mut(HandleTDocStdOwner* handle) {
+extern "C" OcctResult<TDocStd_Owner*> Handle_TDocStd_Owner_get_mut(Handle_TDocStd_Owner* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTDFAttribute*> HandleTDocStdOwner_to_HandleTDFAttribute(const HandleTDocStdOwner* self_) {
-    try { return {new HandleTDFAttribute(*self_), nullptr}; }
+extern "C" OcctResult<Handle_TDF_Attribute*> Handle_TDocStd_Owner_to_Handle_TDF_Attribute(const Handle_TDocStd_Owner* self_) {
+    try { return {new Handle_TDF_Attribute(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleTDocStdOwner_to_HandleStandardTransient(const HandleTDocStdOwner* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_TDocStd_Owner_to_Handle_Standard_Transient(const Handle_TDocStd_Owner* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" const char* TDocStd_Owner_inherited_SetID(TDocStd_Owner* self, Standard_GUID const& arg0) {
@@ -15192,10 +14652,6 @@ extern "C" OcctResult<Handle(TDF_DeltaOnRemoval)*> TDocStd_Owner_inherited_Delta
 }
 extern "C" const char* TDocStd_Owner_inherited_References(const TDocStd_Owner* self, Handle(TDF_DataSet) const& aDataSet) {
     try { self->References(aDataSet); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* TDocStd_Owner_inherited_ExtendedDump(const TDocStd_Owner* self, Standard_OStream& anOS, TDF_IDFilter const& aFilter, TDF_AttributeIndexedMap& aMap) {
-    try { self->ExtendedDump(anOS, aFilter, aMap); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
 extern "C" const char* TDocStd_Owner_inherited_Forget(TDocStd_Owner* self, int32_t aTransaction) {
@@ -15362,24 +14818,24 @@ extern "C" OcctResult<const TDF_Attribute*> TDocStd_XLink_as_TDF_Attribute(const
 extern "C" OcctResult<TDF_Attribute*> TDocStd_XLink_as_TDF_Attribute_mut(TDocStd_XLink* self_) { return {static_cast<TDF_Attribute*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> TDocStd_XLink_as_Standard_Transient(const TDocStd_XLink* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> TDocStd_XLink_as_Standard_Transient_mut(TDocStd_XLink* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleTDocStdXLink*> TDocStd_XLink_to_handle(TDocStd_XLink* obj) {
-    try { return {new HandleTDocStdXLink(obj), nullptr}; }
+extern "C" OcctResult<Handle_TDocStd_XLink*> TDocStd_XLink_to_handle(TDocStd_XLink* obj) {
+    try { return {new Handle_TDocStd_XLink(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const TDocStd_XLink*> HandleTDocStdXLink_get(const HandleTDocStdXLink* handle) {
+extern "C" OcctResult<const TDocStd_XLink*> Handle_TDocStd_XLink_get(const Handle_TDocStd_XLink* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TDocStd_XLink*> HandleTDocStdXLink_get_mut(HandleTDocStdXLink* handle) {
+extern "C" OcctResult<TDocStd_XLink*> Handle_TDocStd_XLink_get_mut(Handle_TDocStd_XLink* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTDFAttribute*> HandleTDocStdXLink_to_HandleTDFAttribute(const HandleTDocStdXLink* self_) {
-    try { return {new HandleTDFAttribute(*self_), nullptr}; }
+extern "C" OcctResult<Handle_TDF_Attribute*> Handle_TDocStd_XLink_to_Handle_TDF_Attribute(const Handle_TDocStd_XLink* self_) {
+    try { return {new Handle_TDF_Attribute(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleTDocStdXLink_to_HandleStandardTransient(const HandleTDocStdXLink* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_TDocStd_XLink_to_Handle_Standard_Transient(const Handle_TDocStd_XLink* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" const char* TDocStd_XLink_inherited_SetID(TDocStd_XLink* self, Standard_GUID const& arg0) {
@@ -15476,10 +14932,6 @@ extern "C" OcctResult<Handle(TDF_DeltaOnRemoval)*> TDocStd_XLink_inherited_Delta
 }
 extern "C" const char* TDocStd_XLink_inherited_References(const TDocStd_XLink* self, Handle(TDF_DataSet) const& aDataSet) {
     try { self->References(aDataSet); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* TDocStd_XLink_inherited_ExtendedDump(const TDocStd_XLink* self, Standard_OStream& anOS, TDF_IDFilter const& aFilter, TDF_AttributeIndexedMap& aMap) {
-    try { self->ExtendedDump(anOS, aFilter, aMap); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
 extern "C" const char* TDocStd_XLink_inherited_Forget(TDocStd_XLink* self, int32_t aTransaction) {
@@ -15606,24 +15058,24 @@ extern "C" OcctResult<const TDF_Attribute*> TDocStd_XLinkRoot_as_TDF_Attribute(c
 extern "C" OcctResult<TDF_Attribute*> TDocStd_XLinkRoot_as_TDF_Attribute_mut(TDocStd_XLinkRoot* self_) { return {static_cast<TDF_Attribute*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> TDocStd_XLinkRoot_as_Standard_Transient(const TDocStd_XLinkRoot* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> TDocStd_XLinkRoot_as_Standard_Transient_mut(TDocStd_XLinkRoot* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleTDocStdXLinkRoot*> TDocStd_XLinkRoot_to_handle(TDocStd_XLinkRoot* obj) {
-    try { return {new HandleTDocStdXLinkRoot(obj), nullptr}; }
+extern "C" OcctResult<Handle_TDocStd_XLinkRoot*> TDocStd_XLinkRoot_to_handle(TDocStd_XLinkRoot* obj) {
+    try { return {new Handle_TDocStd_XLinkRoot(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const TDocStd_XLinkRoot*> HandleTDocStdXLinkRoot_get(const HandleTDocStdXLinkRoot* handle) {
+extern "C" OcctResult<const TDocStd_XLinkRoot*> Handle_TDocStd_XLinkRoot_get(const Handle_TDocStd_XLinkRoot* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TDocStd_XLinkRoot*> HandleTDocStdXLinkRoot_get_mut(HandleTDocStdXLinkRoot* handle) {
+extern "C" OcctResult<TDocStd_XLinkRoot*> Handle_TDocStd_XLinkRoot_get_mut(Handle_TDocStd_XLinkRoot* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTDFAttribute*> HandleTDocStdXLinkRoot_to_HandleTDFAttribute(const HandleTDocStdXLinkRoot* self_) {
-    try { return {new HandleTDFAttribute(*self_), nullptr}; }
+extern "C" OcctResult<Handle_TDF_Attribute*> Handle_TDocStd_XLinkRoot_to_Handle_TDF_Attribute(const Handle_TDocStd_XLinkRoot* self_) {
+    try { return {new Handle_TDF_Attribute(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleTDocStdXLinkRoot_to_HandleStandardTransient(const HandleTDocStdXLinkRoot* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_TDocStd_XLinkRoot_to_Handle_Standard_Transient(const Handle_TDocStd_XLinkRoot* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" const char* TDocStd_XLinkRoot_inherited_SetID(TDocStd_XLinkRoot* self, Standard_GUID const& arg0) {
@@ -15738,10 +15190,6 @@ extern "C" const char* TDocStd_XLinkRoot_inherited_References(const TDocStd_XLin
     try { self->References(aDataSet); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* TDocStd_XLinkRoot_inherited_ExtendedDump(const TDocStd_XLinkRoot* self, Standard_OStream& anOS, TDF_IDFilter const& aFilter, TDF_AttributeIndexedMap& aMap) {
-    try { self->ExtendedDump(anOS, aFilter, aMap); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
 extern "C" const char* TDocStd_XLinkRoot_inherited_Forget(TDocStd_XLinkRoot* self, int32_t aTransaction) {
     try { self->Forget(aTransaction); return nullptr; }
     OCCT_CATCH_RETURN_VOID
@@ -15822,7 +15270,7 @@ extern "C" const char* TFunction_Driver_init(TFunction_Driver* self_, TDF_Label 
     try { self_->Init(*L); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* TFunction_Driver_validate(const TFunction_Driver* self_, Handle(TFunction_Logbook)* log) {
+extern "C" const char* TFunction_Driver_validate(const TFunction_Driver* self_, Handle(TFunction_Logbook) const* log) {
     try { self_->Validate(*log); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -15834,11 +15282,11 @@ extern "C" OcctResult<int32_t> TFunction_Driver_execute(const TFunction_Driver* 
     try { return {self_->Execute(*log), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* TFunction_Driver_arguments(const TFunction_Driver* self_, TDF_LabelList* args) {
+extern "C" const char* TFunction_Driver_arguments(const TFunction_Driver* self_, NCollection_List_TDF_Label* args) {
     try { self_->Arguments(*args); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* TFunction_Driver_results(const TFunction_Driver* self_, TDF_LabelList* res) {
+extern "C" const char* TFunction_Driver_results(const TFunction_Driver* self_, NCollection_List_TDF_Label* res) {
     try { self_->Results(*res); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -15856,16 +15304,16 @@ extern "C" OcctResult<Handle(Standard_Type) const*> TFunction_Driver_get_type_de
 }
 extern "C" OcctResult<const Standard_Transient*> TFunction_Driver_as_Standard_Transient(const TFunction_Driver* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> TFunction_Driver_as_Standard_Transient_mut(TFunction_Driver* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<const TFunction_Driver*> HandleTFunctionDriver_get(const HandleTFunctionDriver* handle) {
+extern "C" OcctResult<const TFunction_Driver*> Handle_TFunction_Driver_get(const Handle_TFunction_Driver* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TFunction_Driver*> HandleTFunctionDriver_get_mut(HandleTFunctionDriver* handle) {
+extern "C" OcctResult<TFunction_Driver*> Handle_TFunction_Driver_get_mut(Handle_TFunction_Driver* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleTFunctionDriver_to_HandleStandardTransient(const HandleTFunctionDriver* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_TFunction_Driver_to_Handle_Standard_Transient(const Handle_TFunction_Driver* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> TFunction_Driver_inherited_IsInstance(const TFunction_Driver* self, Handle(Standard_Type) const& theType) {
@@ -15948,20 +15396,20 @@ extern "C" OcctResult<Handle(Standard_Type) const*> TFunction_DriverTable_get_ty
 }
 extern "C" OcctResult<const Standard_Transient*> TFunction_DriverTable_as_Standard_Transient(const TFunction_DriverTable* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> TFunction_DriverTable_as_Standard_Transient_mut(TFunction_DriverTable* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleTFunctionDriverTable*> TFunction_DriverTable_to_handle(TFunction_DriverTable* obj) {
-    try { return {new HandleTFunctionDriverTable(obj), nullptr}; }
+extern "C" OcctResult<Handle_TFunction_DriverTable*> TFunction_DriverTable_to_handle(TFunction_DriverTable* obj) {
+    try { return {new Handle_TFunction_DriverTable(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const TFunction_DriverTable*> HandleTFunctionDriverTable_get(const HandleTFunctionDriverTable* handle) {
+extern "C" OcctResult<const TFunction_DriverTable*> Handle_TFunction_DriverTable_get(const Handle_TFunction_DriverTable* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TFunction_DriverTable*> HandleTFunctionDriverTable_get_mut(HandleTFunctionDriverTable* handle) {
+extern "C" OcctResult<TFunction_DriverTable*> Handle_TFunction_DriverTable_get_mut(Handle_TFunction_DriverTable* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleTFunctionDriverTable_to_HandleStandardTransient(const HandleTFunctionDriverTable* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_TFunction_DriverTable_to_Handle_Standard_Transient(const Handle_TFunction_DriverTable* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> TFunction_DriverTable_inherited_IsInstance(const TFunction_DriverTable* self, Handle(Standard_Type) const& theType) {
@@ -16074,24 +15522,24 @@ extern "C" OcctResult<const TDF_Attribute*> TFunction_Function_as_TDF_Attribute(
 extern "C" OcctResult<TDF_Attribute*> TFunction_Function_as_TDF_Attribute_mut(TFunction_Function* self_) { return {static_cast<TDF_Attribute*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> TFunction_Function_as_Standard_Transient(const TFunction_Function* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> TFunction_Function_as_Standard_Transient_mut(TFunction_Function* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleTFunctionFunction*> TFunction_Function_to_handle(TFunction_Function* obj) {
-    try { return {new HandleTFunctionFunction(obj), nullptr}; }
+extern "C" OcctResult<Handle_TFunction_Function*> TFunction_Function_to_handle(TFunction_Function* obj) {
+    try { return {new Handle_TFunction_Function(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const TFunction_Function*> HandleTFunctionFunction_get(const HandleTFunctionFunction* handle) {
+extern "C" OcctResult<const TFunction_Function*> Handle_TFunction_Function_get(const Handle_TFunction_Function* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TFunction_Function*> HandleTFunctionFunction_get_mut(HandleTFunctionFunction* handle) {
+extern "C" OcctResult<TFunction_Function*> Handle_TFunction_Function_get_mut(Handle_TFunction_Function* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTDFAttribute*> HandleTFunctionFunction_to_HandleTDFAttribute(const HandleTFunctionFunction* self_) {
-    try { return {new HandleTDFAttribute(*self_), nullptr}; }
+extern "C" OcctResult<Handle_TDF_Attribute*> Handle_TFunction_Function_to_Handle_TDF_Attribute(const Handle_TFunction_Function* self_) {
+    try { return {new Handle_TDF_Attribute(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleTFunctionFunction_to_HandleStandardTransient(const HandleTFunctionFunction* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_TFunction_Function_to_Handle_Standard_Transient(const Handle_TFunction_Function* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" const char* TFunction_Function_inherited_SetID(TFunction_Function* self, Standard_GUID const& arg0) {
@@ -16206,10 +15654,6 @@ extern "C" OcctResult<Handle(TDF_DeltaOnRemoval)*> TFunction_Function_inherited_
     try { return {new Handle(TDF_DeltaOnRemoval)(self->DeltaOnRemoval()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* TFunction_Function_inherited_ExtendedDump(const TFunction_Function* self, Standard_OStream& anOS, TDF_IDFilter const& aFilter, TDF_AttributeIndexedMap& aMap) {
-    try { self->ExtendedDump(anOS, aFilter, aMap); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
 extern "C" const char* TFunction_Function_inherited_Forget(TFunction_Function* self, int32_t aTransaction) {
     try { self->Forget(aTransaction); return nullptr; }
     OCCT_CATCH_RETURN_VOID
@@ -16272,7 +15716,7 @@ extern "C" OcctResult<bool> TFunction_GraphNode_remove_previous_label(TFunction_
     try { return {self_->RemovePrevious(*func), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TColStd_MapOfInteger const*> TFunction_GraphNode_get_previous(const TFunction_GraphNode* self_) {
+extern "C" OcctResult<NCollection_Map_int const*> TFunction_GraphNode_get_previous(const TFunction_GraphNode* self_) {
     try { return {&(self_->GetPrevious()), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -16296,7 +15740,7 @@ extern "C" OcctResult<bool> TFunction_GraphNode_remove_next_label(TFunction_Grap
     try { return {self_->RemoveNext(*func), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TColStd_MapOfInteger const*> TFunction_GraphNode_get_next(const TFunction_GraphNode* self_) {
+extern "C" OcctResult<NCollection_Map_int const*> TFunction_GraphNode_get_next(const TFunction_GraphNode* self_) {
     try { return {&(self_->GetNext()), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -16356,24 +15800,24 @@ extern "C" OcctResult<const TDF_Attribute*> TFunction_GraphNode_as_TDF_Attribute
 extern "C" OcctResult<TDF_Attribute*> TFunction_GraphNode_as_TDF_Attribute_mut(TFunction_GraphNode* self_) { return {static_cast<TDF_Attribute*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> TFunction_GraphNode_as_Standard_Transient(const TFunction_GraphNode* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> TFunction_GraphNode_as_Standard_Transient_mut(TFunction_GraphNode* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleTFunctionGraphNode*> TFunction_GraphNode_to_handle(TFunction_GraphNode* obj) {
-    try { return {new HandleTFunctionGraphNode(obj), nullptr}; }
+extern "C" OcctResult<Handle_TFunction_GraphNode*> TFunction_GraphNode_to_handle(TFunction_GraphNode* obj) {
+    try { return {new Handle_TFunction_GraphNode(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const TFunction_GraphNode*> HandleTFunctionGraphNode_get(const HandleTFunctionGraphNode* handle) {
+extern "C" OcctResult<const TFunction_GraphNode*> Handle_TFunction_GraphNode_get(const Handle_TFunction_GraphNode* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TFunction_GraphNode*> HandleTFunctionGraphNode_get_mut(HandleTFunctionGraphNode* handle) {
+extern "C" OcctResult<TFunction_GraphNode*> Handle_TFunction_GraphNode_get_mut(Handle_TFunction_GraphNode* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTDFAttribute*> HandleTFunctionGraphNode_to_HandleTDFAttribute(const HandleTFunctionGraphNode* self_) {
-    try { return {new HandleTDFAttribute(*self_), nullptr}; }
+extern "C" OcctResult<Handle_TDF_Attribute*> Handle_TFunction_GraphNode_to_Handle_TDF_Attribute(const Handle_TFunction_GraphNode* self_) {
+    try { return {new Handle_TDF_Attribute(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleTFunctionGraphNode_to_HandleStandardTransient(const HandleTFunctionGraphNode* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_TFunction_GraphNode_to_Handle_Standard_Transient(const Handle_TFunction_GraphNode* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" const char* TFunction_GraphNode_inherited_SetID(TFunction_GraphNode* self, Standard_GUID const& arg0) {
@@ -16488,10 +15932,6 @@ extern "C" OcctResult<Handle(TDF_DeltaOnRemoval)*> TFunction_GraphNode_inherited
     try { return {new Handle(TDF_DeltaOnRemoval)(self->DeltaOnRemoval()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* TFunction_GraphNode_inherited_ExtendedDump(const TFunction_GraphNode* self, Standard_OStream& anOS, TDF_IDFilter const& aFilter, TDF_AttributeIndexedMap& aMap) {
-    try { self->ExtendedDump(anOS, aFilter, aMap); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
 extern "C" const char* TFunction_GraphNode_inherited_Forget(TFunction_GraphNode* self, int32_t aTransaction) {
     try { self->Forget(aTransaction); return nullptr; }
     OCCT_CATCH_RETURN_VOID
@@ -16525,98 +15965,6 @@ extern "C" const char* TFunction_GraphNode_inherited_Delete(const TFunction_Grap
     OCCT_CATCH_RETURN_VOID
 }
 extern "C" void TFunction_GraphNode_destructor(TFunction_GraphNode* self_) { delete self_; }
-
-// ========================
-// TFunction_HArray1OfDataMapOfGUIDDriver wrappers
-// ========================
-
-extern "C" OcctResult<TFunction_HArray1OfDataMapOfGUIDDriver*> TFunction_HArray1OfDataMapOfGUIDDriver_ctor() {
-    try { return {new TFunction_HArray1OfDataMapOfGUIDDriver(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<TFunction_HArray1OfDataMapOfGUIDDriver*> TFunction_HArray1OfDataMapOfGUIDDriver_ctor_int2(int32_t theLower, int32_t theUpper) {
-    try { return {new TFunction_HArray1OfDataMapOfGUIDDriver(theLower, theUpper), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<TFunction_HArray1OfDataMapOfGUIDDriver*> TFunction_HArray1OfDataMapOfGUIDDriver_ctor_int2_type(int32_t theLower, int32_t theUpper, TFunction_Array1OfDataMapOfGUIDDriver::value_type const* theValue) {
-    try { return {new TFunction_HArray1OfDataMapOfGUIDDriver(theLower, theUpper, *theValue), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<TFunction_HArray1OfDataMapOfGUIDDriver*> TFunction_HArray1OfDataMapOfGUIDDriver_ctor_type_int2_bool(TFunction_Array1OfDataMapOfGUIDDriver::value_type const* theBegin, int32_t theLower, int32_t theUpper, bool arg3) {
-    try { return {new TFunction_HArray1OfDataMapOfGUIDDriver(*theBegin, theLower, theUpper, arg3), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<TFunction_HArray1OfDataMapOfGUIDDriver*> TFunction_HArray1OfDataMapOfGUIDDriver_ctor_array1ofdatamapofguiddriver(TFunction_Array1OfDataMapOfGUIDDriver const* theOther) {
-    try { return {new TFunction_HArray1OfDataMapOfGUIDDriver(*theOther), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<TFunction_Array1OfDataMapOfGUIDDriver const*> TFunction_HArray1OfDataMapOfGUIDDriver_array1(const TFunction_HArray1OfDataMapOfGUIDDriver* self_) {
-    try { return {&(self_->Array1()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<TFunction_Array1OfDataMapOfGUIDDriver*> TFunction_HArray1OfDataMapOfGUIDDriver_change_array1(TFunction_HArray1OfDataMapOfGUIDDriver* self_) {
-    try { return {&(self_->ChangeArray1()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Handle(Standard_Type) const*> TFunction_HArray1OfDataMapOfGUIDDriver_dynamic_type(const TFunction_HArray1OfDataMapOfGUIDDriver* self_) {
-    try { return {&(self_->DynamicType()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<char const*> TFunction_HArray1OfDataMapOfGUIDDriver_get_type_name() {
-    try { return {TFunction_HArray1OfDataMapOfGUIDDriver::get_type_name(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Handle(Standard_Type) const*> TFunction_HArray1OfDataMapOfGUIDDriver_get_type_descriptor() {
-    try { return {&(TFunction_HArray1OfDataMapOfGUIDDriver::get_type_descriptor()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<const Standard_Transient*> TFunction_HArray1OfDataMapOfGUIDDriver_as_Standard_Transient(const TFunction_HArray1OfDataMapOfGUIDDriver* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<Standard_Transient*> TFunction_HArray1OfDataMapOfGUIDDriver_as_Standard_Transient_mut(TFunction_HArray1OfDataMapOfGUIDDriver* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleTFunctionHArray1OfDataMapOfGUIDDriver*> TFunction_HArray1OfDataMapOfGUIDDriver_to_handle(TFunction_HArray1OfDataMapOfGUIDDriver* obj) {
-    try { return {new HandleTFunctionHArray1OfDataMapOfGUIDDriver(obj), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<const TFunction_HArray1OfDataMapOfGUIDDriver*> HandleTFunctionHArray1OfDataMapOfGUIDDriver_get(const HandleTFunctionHArray1OfDataMapOfGUIDDriver* handle) {
-    try { return {(*handle).get(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<TFunction_HArray1OfDataMapOfGUIDDriver*> HandleTFunctionHArray1OfDataMapOfGUIDDriver_get_mut(HandleTFunctionHArray1OfDataMapOfGUIDDriver* handle) {
-    try { return {(*handle).get(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<HandleStandardTransient*> HandleTFunctionHArray1OfDataMapOfGUIDDriver_to_HandleStandardTransient(const HandleTFunctionHArray1OfDataMapOfGUIDDriver* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<bool> TFunction_HArray1OfDataMapOfGUIDDriver_inherited_IsInstance(const TFunction_HArray1OfDataMapOfGUIDDriver* self, Handle(Standard_Type) const& theType) {
-    try { return {self->IsInstance(theType), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<bool> TFunction_HArray1OfDataMapOfGUIDDriver_inherited_IsKind(const TFunction_HArray1OfDataMapOfGUIDDriver* self, Handle(Standard_Type) const& theType) {
-    try { return {self->IsKind(theType), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Standard_Transient*> TFunction_HArray1OfDataMapOfGUIDDriver_inherited_This(const TFunction_HArray1OfDataMapOfGUIDDriver* self) {
-    try { return {self->This(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<int32_t> TFunction_HArray1OfDataMapOfGUIDDriver_inherited_GetRefCount(const TFunction_HArray1OfDataMapOfGUIDDriver* self) {
-    try { return {self->GetRefCount(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* TFunction_HArray1OfDataMapOfGUIDDriver_inherited_IncrementRefCounter(TFunction_HArray1OfDataMapOfGUIDDriver* self) {
-    try { self->IncrementRefCounter(); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<int32_t> TFunction_HArray1OfDataMapOfGUIDDriver_inherited_DecrementRefCounter(TFunction_HArray1OfDataMapOfGUIDDriver* self) {
-    try { return {self->DecrementRefCounter(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* TFunction_HArray1OfDataMapOfGUIDDriver_inherited_Delete(const TFunction_HArray1OfDataMapOfGUIDDriver* self) {
-    try { self->Delete(); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" void TFunction_HArray1OfDataMapOfGUIDDriver_destructor(TFunction_HArray1OfDataMapOfGUIDDriver* self_) { delete self_; }
 
 // ========================
 // TFunction_IFunction wrappers
@@ -16654,19 +16002,19 @@ extern "C" OcctResult<bool> TFunction_IFunction_update_dependencies(const TFunct
     try { return {self_->UpdateDependencies(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* TFunction_IFunction_arguments(const TFunction_IFunction* self_, TDF_LabelList* args) {
+extern "C" const char* TFunction_IFunction_arguments(const TFunction_IFunction* self_, NCollection_List_TDF_Label* args) {
     try { self_->Arguments(*args); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* TFunction_IFunction_results(const TFunction_IFunction* self_, TDF_LabelList* res) {
+extern "C" const char* TFunction_IFunction_results(const TFunction_IFunction* self_, NCollection_List_TDF_Label* res) {
     try { self_->Results(*res); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* TFunction_IFunction_get_previous(const TFunction_IFunction* self_, TDF_LabelList* prev) {
+extern "C" const char* TFunction_IFunction_get_previous(const TFunction_IFunction* self_, NCollection_List_TDF_Label* prev) {
     try { self_->GetPrevious(*prev); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* TFunction_IFunction_get_next(const TFunction_IFunction* self_, TDF_LabelList* prev) {
+extern "C" const char* TFunction_IFunction_get_next(const TFunction_IFunction* self_, NCollection_List_TDF_Label* prev) {
     try { self_->GetNext(*prev); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -16678,7 +16026,7 @@ extern "C" const char* TFunction_IFunction_set_status(const TFunction_IFunction*
     try { self_->SetStatus(static_cast<TFunction_ExecutionStatus>(status)); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<TFunction_DoubleMapOfIntegerLabel const*> TFunction_IFunction_get_all_functions(const TFunction_IFunction* self_) {
+extern "C" OcctResult<NCollection_DoubleMap_int_TDF_Label const*> TFunction_IFunction_get_all_functions(const TFunction_IFunction* self_) {
     try { return {&(self_->GetAllFunctions()), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -16724,7 +16072,7 @@ extern "C" OcctResult<int32_t> TFunction_Iterator_get_max_nb_threads(const TFunc
     try { return {self_->GetMaxNbThreads(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TDF_LabelList const*> TFunction_Iterator_current(const TFunction_Iterator* self_) {
+extern "C" OcctResult<NCollection_List_TDF_Label const*> TFunction_Iterator_current(const TFunction_Iterator* self_) {
     try { return {&(self_->Current()), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -16782,7 +16130,7 @@ extern "C" const char* TFunction_Logbook_set_valid_label_bool(TFunction_Logbook*
     try { self_->SetValid(*L, WithChildren); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* TFunction_Logbook_set_valid_labelmap(TFunction_Logbook* self_, TDF_LabelMap const* Ls) {
+extern "C" const char* TFunction_Logbook_set_valid_map_label(TFunction_Logbook* self_, NCollection_Map_TDF_Label const* Ls) {
     try { self_->SetValid(*Ls); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -16790,19 +16138,19 @@ extern "C" OcctResult<bool> TFunction_Logbook_is_modified(const TFunction_Logboo
     try { return {self_->IsModified(*L, WithChildren), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TDF_LabelMap const*> TFunction_Logbook_get_touched(const TFunction_Logbook* self_) {
+extern "C" OcctResult<NCollection_Map_TDF_Label const*> TFunction_Logbook_get_touched(const TFunction_Logbook* self_) {
     try { return {&(self_->GetTouched()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TDF_LabelMap const*> TFunction_Logbook_get_impacted(const TFunction_Logbook* self_) {
+extern "C" OcctResult<NCollection_Map_TDF_Label const*> TFunction_Logbook_get_impacted(const TFunction_Logbook* self_) {
     try { return {&(self_->GetImpacted()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TDF_LabelMap const*> TFunction_Logbook_get_valid(const TFunction_Logbook* self_) {
+extern "C" OcctResult<NCollection_Map_TDF_Label const*> TFunction_Logbook_get_valid(const TFunction_Logbook* self_) {
     try { return {&(self_->GetValid()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* TFunction_Logbook_get_valid_labelmap(const TFunction_Logbook* self_, TDF_LabelMap* Ls) {
+extern "C" const char* TFunction_Logbook_get_valid_map_label(const TFunction_Logbook* self_, NCollection_Map_TDF_Label* Ls) {
     try { self_->GetValid(*Ls); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -16830,6 +16178,10 @@ extern "C" OcctResult<Standard_OStream*> TFunction_Logbook_dump(TFunction_Logboo
     try { return {&(self_->Dump(*anOS)), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" OcctResult<Handle(Standard_Type) const*> TFunction_Logbook_dynamic_type(const TFunction_Logbook* self_) {
+    try { return {&(self_->DynamicType()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" OcctResult<Handle(TFunction_Logbook)*> TFunction_Logbook_set(TDF_Label const* Access) {
     try { return {new Handle(TFunction_Logbook)(TFunction_Logbook::Set(*Access)), nullptr}; }
     OCCT_CATCH_RETURN
@@ -16838,28 +16190,36 @@ extern "C" OcctResult<Standard_GUID const*> TFunction_Logbook_get_id() {
     try { return {&(TFunction_Logbook::GetID()), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" OcctResult<char const*> TFunction_Logbook_get_type_name() {
+    try { return {TFunction_Logbook::get_type_name(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Handle(Standard_Type) const*> TFunction_Logbook_get_type_descriptor() {
+    try { return {&(TFunction_Logbook::get_type_descriptor()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" OcctResult<const TDF_Attribute*> TFunction_Logbook_as_TDF_Attribute(const TFunction_Logbook* self_) { return {static_cast<const TDF_Attribute*>(self_), nullptr}; }
 extern "C" OcctResult<TDF_Attribute*> TFunction_Logbook_as_TDF_Attribute_mut(TFunction_Logbook* self_) { return {static_cast<TDF_Attribute*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> TFunction_Logbook_as_Standard_Transient(const TFunction_Logbook* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> TFunction_Logbook_as_Standard_Transient_mut(TFunction_Logbook* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleTFunctionLogbook*> TFunction_Logbook_to_handle(TFunction_Logbook* obj) {
-    try { return {new HandleTFunctionLogbook(obj), nullptr}; }
+extern "C" OcctResult<Handle_TFunction_Logbook*> TFunction_Logbook_to_handle(TFunction_Logbook* obj) {
+    try { return {new Handle_TFunction_Logbook(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const TFunction_Logbook*> HandleTFunctionLogbook_get(const HandleTFunctionLogbook* handle) {
+extern "C" OcctResult<const TFunction_Logbook*> Handle_TFunction_Logbook_get(const Handle_TFunction_Logbook* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TFunction_Logbook*> HandleTFunctionLogbook_get_mut(HandleTFunctionLogbook* handle) {
+extern "C" OcctResult<TFunction_Logbook*> Handle_TFunction_Logbook_get_mut(Handle_TFunction_Logbook* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTDFAttribute*> HandleTFunctionLogbook_to_HandleTDFAttribute(const HandleTFunctionLogbook* self_) {
-    try { return {new HandleTDFAttribute(*self_), nullptr}; }
+extern "C" OcctResult<Handle_TDF_Attribute*> Handle_TFunction_Logbook_to_Handle_TDF_Attribute(const Handle_TFunction_Logbook* self_) {
+    try { return {new Handle_TDF_Attribute(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleTFunctionLogbook_to_HandleStandardTransient(const HandleTFunctionLogbook* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_TFunction_Logbook_to_Handle_Standard_Transient(const Handle_TFunction_Logbook* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" const char* TFunction_Logbook_inherited_SetID(TFunction_Logbook* self, Standard_GUID const& arg0) {
@@ -16978,17 +16338,9 @@ extern "C" const char* TFunction_Logbook_inherited_References(const TFunction_Lo
     try { self->References(aDataSet); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* TFunction_Logbook_inherited_ExtendedDump(const TFunction_Logbook* self, Standard_OStream& anOS, TDF_IDFilter const& aFilter, TDF_AttributeIndexedMap& aMap) {
-    try { self->ExtendedDump(anOS, aFilter, aMap); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
 extern "C" const char* TFunction_Logbook_inherited_Forget(TFunction_Logbook* self, int32_t aTransaction) {
     try { self->Forget(aTransaction); return nullptr; }
     OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<Handle(Standard_Type) const*> TFunction_Logbook_inherited_DynamicType(const TFunction_Logbook* self) {
-    try { return {&(self->DynamicType()), nullptr}; }
-    OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> TFunction_Logbook_inherited_IsInstance(const TFunction_Logbook* self, Handle(Standard_Type) const& theType) {
     try { return {self->IsInstance(theType), nullptr}; }
@@ -17084,11 +16436,11 @@ extern "C" OcctResult<Standard_OStream*> TFunction_Scope_dump(TFunction_Scope* s
     try { return {&(self_->Dump(*anOS)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TFunction_DoubleMapOfIntegerLabel const*> TFunction_Scope_get_functions(const TFunction_Scope* self_) {
+extern "C" OcctResult<NCollection_DoubleMap_int_TDF_Label const*> TFunction_Scope_get_functions(const TFunction_Scope* self_) {
     try { return {&(self_->GetFunctions()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TFunction_DoubleMapOfIntegerLabel*> TFunction_Scope_change_functions(TFunction_Scope* self_) {
+extern "C" OcctResult<NCollection_DoubleMap_int_TDF_Label*> TFunction_Scope_change_functions(TFunction_Scope* self_) {
     try { return {&(self_->ChangeFunctions()), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -17124,24 +16476,24 @@ extern "C" OcctResult<const TDF_Attribute*> TFunction_Scope_as_TDF_Attribute(con
 extern "C" OcctResult<TDF_Attribute*> TFunction_Scope_as_TDF_Attribute_mut(TFunction_Scope* self_) { return {static_cast<TDF_Attribute*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> TFunction_Scope_as_Standard_Transient(const TFunction_Scope* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> TFunction_Scope_as_Standard_Transient_mut(TFunction_Scope* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleTFunctionScope*> TFunction_Scope_to_handle(TFunction_Scope* obj) {
-    try { return {new HandleTFunctionScope(obj), nullptr}; }
+extern "C" OcctResult<Handle_TFunction_Scope*> TFunction_Scope_to_handle(TFunction_Scope* obj) {
+    try { return {new Handle_TFunction_Scope(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const TFunction_Scope*> HandleTFunctionScope_get(const HandleTFunctionScope* handle) {
+extern "C" OcctResult<const TFunction_Scope*> Handle_TFunction_Scope_get(const Handle_TFunction_Scope* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TFunction_Scope*> HandleTFunctionScope_get_mut(HandleTFunctionScope* handle) {
+extern "C" OcctResult<TFunction_Scope*> Handle_TFunction_Scope_get_mut(Handle_TFunction_Scope* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTDFAttribute*> HandleTFunctionScope_to_HandleTDFAttribute(const HandleTFunctionScope* self_) {
-    try { return {new HandleTDFAttribute(*self_), nullptr}; }
+extern "C" OcctResult<Handle_TDF_Attribute*> Handle_TFunction_Scope_to_Handle_TDF_Attribute(const Handle_TFunction_Scope* self_) {
+    try { return {new Handle_TDF_Attribute(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleTFunctionScope_to_HandleStandardTransient(const HandleTFunctionScope* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_TFunction_Scope_to_Handle_Standard_Transient(const Handle_TFunction_Scope* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" const char* TFunction_Scope_inherited_SetID(TFunction_Scope* self, Standard_GUID const& arg0) {
@@ -17260,10 +16612,6 @@ extern "C" const char* TFunction_Scope_inherited_References(const TFunction_Scop
     try { self->References(aDataSet); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* TFunction_Scope_inherited_ExtendedDump(const TFunction_Scope* self, Standard_OStream& anOS, TDF_IDFilter const& aFilter, TDF_AttributeIndexedMap& aMap) {
-    try { self->ExtendedDump(anOS, aFilter, aMap); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
 extern "C" const char* TFunction_Scope_inherited_Forget(TFunction_Scope* self, int32_t aTransaction) {
     try { self->Forget(aTransaction); return nullptr; }
     OCCT_CATCH_RETURN_VOID
@@ -17325,40 +16673,24 @@ extern "C" OcctResult<bool> TDF_prog_id_from_guid(Standard_GUID const* ID, TColl
 // ========================
 // TDataStd namespace functions
 // ========================
+extern "C" const char* TDataStd_id_list_mut(NCollection_List_Standard_GUID* anIDList) {
+    try { TDataStd::IDList(*anIDList); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
 extern "C" OcctResult<Standard_OStream*> TDataStd_print_realenum_ostream(int32_t DIM, Standard_OStream* S) {
     try { return {&(TDataStd::Print(static_cast<TDataStd_RealEnum>(DIM), *S)), nullptr}; }
     OCCT_CATCH_RETURN
 }
 
+// ========================
+// TDocStd namespace functions
+// ========================
+extern "C" const char* TDocStd_id_list_mut(NCollection_List_Standard_GUID* anIDList) {
+    try { TDocStd::IDList(*anIDList); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+
 
 // Nested type and typedef type destructors
-extern "C" void TDF_AttributeArray1_destructor(TDF_AttributeArray1* self_) { delete self_; }
-extern "C" void TDF_AttributeDataMap_destructor(TDF_AttributeDataMap* self_) { delete self_; }
-extern "C" void TDF_AttributeDeltaList_destructor(TDF_AttributeDeltaList* self_) { delete self_; }
-extern "C" void TDF_AttributeIndexedMap_destructor(TDF_AttributeIndexedMap* self_) { delete self_; }
-extern "C" void TDF_AttributeList_destructor(TDF_AttributeList* self_) { delete self_; }
-extern "C" void TDF_AttributeMap_destructor(TDF_AttributeMap* self_) { delete self_; }
-extern "C" void TDF_AttributeSequence_destructor(TDF_AttributeSequence* self_) { delete self_; }
-extern "C" void TDF_DeltaList_destructor(TDF_DeltaList* self_) { delete self_; }
 extern "C" void TDF_DerivedAttribute_NewDerived_destructor(TDF_DerivedAttribute::NewDerived* self_) { delete self_; }
-extern "C" void TDF_IDList_destructor(TDF_IDList* self_) { delete self_; }
-extern "C" void TDF_LabelDataMap_destructor(TDF_LabelDataMap* self_) { delete self_; }
-extern "C" void TDF_LabelIndexedMap_destructor(TDF_LabelIndexedMap* self_) { delete self_; }
-extern "C" void TDF_LabelIntegerMap_destructor(TDF_LabelIntegerMap* self_) { delete self_; }
-extern "C" void TDF_LabelList_destructor(TDF_LabelList* self_) { delete self_; }
-extern "C" void TDF_LabelMap_destructor(TDF_LabelMap* self_) { delete self_; }
-extern "C" void TDF_LabelSequence_destructor(TDF_LabelSequence* self_) { delete self_; }
-extern "C" void TDataStd_DataMapOfStringByte_destructor(TDataStd_DataMapOfStringByte* self_) { delete self_; }
-extern "C" void TDataStd_DataMapOfStringHArray1OfInteger_destructor(TDataStd_DataMapOfStringHArray1OfInteger* self_) { delete self_; }
-extern "C" void TDataStd_DataMapOfStringHArray1OfReal_destructor(TDataStd_DataMapOfStringHArray1OfReal* self_) { delete self_; }
-extern "C" void TDataStd_DataMapOfStringReal_destructor(TDataStd_DataMapOfStringReal* self_) { delete self_; }
-extern "C" void TDataStd_DataMapOfStringString_destructor(TDataStd_DataMapOfStringString* self_) { delete self_; }
-extern "C" void TDataStd_LabelArray1_destructor(TDataStd_LabelArray1* self_) { delete self_; }
-extern "C" void TDataStd_ListIteratorOfListOfExtendedString_destructor(TDataStd_ListIteratorOfListOfExtendedString* self_) { delete self_; }
-extern "C" void TDataStd_ListOfByte_destructor(TDataStd_ListOfByte* self_) { delete self_; }
-extern "C" void TDataStd_ListOfExtendedString_destructor(TDataStd_ListOfExtendedString* self_) { delete self_; }
-extern "C" void TDocStd_SequenceOfApplicationDelta_destructor(TDocStd_SequenceOfApplicationDelta* self_) { delete self_; }
-extern "C" void TDocStd_SequenceOfDocument_destructor(TDocStd_SequenceOfDocument* self_) { delete self_; }
-extern "C" void TFunction_Array1OfDataMapOfGUIDDriver_destructor(TFunction_Array1OfDataMapOfGUIDDriver* self_) { delete self_; }
-extern "C" void TFunction_Array1OfDataMapOfGUIDDriver_value_type_destructor(TFunction_Array1OfDataMapOfGUIDDriver::value_type* self_) { delete self_; }
-extern "C" void TFunction_DoubleMapOfIntegerLabel_destructor(TFunction_DoubleMapOfIntegerLabel* self_) { delete self_; }
+extern "C" void TDF_HAllocator_destructor(TDF_HAllocator* self_) { delete self_; }

@@ -3,10 +3,8 @@
 
 #include "occt_preamble.hxx"
 
-#include <Adaptor3d_Curve.hxx>
 #include <Adaptor3d_CurveOnSurface.hxx>
 #include <AppParCurves_Constraint.hxx>
-#include <AppParCurves_MultiCurve.hxx>
 #include <BRepAdaptor_Curve.hxx>
 #include <BRepAdaptor_Surface.hxx>
 #include <BRepAlgo.hxx>
@@ -15,7 +13,6 @@
 #include <BRepAlgo_Image.hxx>
 #include <BRepAlgo_Loop.hxx>
 #include <BRepAlgo_NormalProjection.hxx>
-#include <BRepClass3d_MapOfInter.hxx>
 #include <BRepFill.hxx>
 #include <BRepFill_ACRLaw.hxx>
 #include <BRepFill_AdvancedEvolved.hxx>
@@ -23,7 +20,6 @@
 #include <BRepFill_CompatibleWires.hxx>
 #include <BRepFill_ComputeCLine.hxx>
 #include <BRepFill_CurveConstraint.hxx>
-#include <BRepFill_DataMapOfShapeHArray2OfShape.hxx>
 #include <BRepFill_Draft.hxx>
 #include <BRepFill_DraftLaw.hxx>
 #include <BRepFill_Edge3DLaw.hxx>
@@ -51,15 +47,13 @@
 #include <BRepFill_TrimShellCorner.hxx>
 #include <BRepFill_TrimSurfaceTool.hxx>
 #include <BRepFill_TypeOfContact.hxx>
+#include <BRepGraph_LayerParametric.hxx>
 #include <BRepMAT2d_BisectingLocus.hxx>
 #include <BRepMAT2d_LinkTopoBilo.hxx>
 #include <BRepProj_Projection.hxx>
 #include <Bisector_Bisec.hxx>
-#include <Bnd_Box.hxx>
 #include <Bnd_Box2d.hxx>
-#include <Bnd_HArray1OfBox.hxx>
 #include <Geom2dAdaptor_Curve.hxx>
-#include <Geom2d_Curve.hxx>
 #include <Geom2d_Geometry.hxx>
 #include <GeomAbs_JoinType.hxx>
 #include <GeomAbs_Shape.hxx>
@@ -70,20 +64,14 @@
 #include <GeomFill_LocationLaw.hxx>
 #include <GeomFill_PipeError.hxx>
 #include <GeomFill_SectionLaw.hxx>
-#include <GeomFill_SequenceOfTrsf.hxx>
 #include <GeomFill_Trihedron.hxx>
 #include <GeomLProp_SLProps.hxx>
 #include <GeomPlate_CurveConstraint.hxx>
-#include <Geom_Curve.hxx>
-#include <Geom_Surface.hxx>
 #include <IntPatch_GLine.hxx>
 #include <IntPatch_Line.hxx>
-#include <IntPatch_Point.hxx>
 #include <IntPatch_RLine.hxx>
 #include <IntPatch_WLine.hxx>
 #include <IntRes2d_Domain.hxx>
-#include <IntRes2d_IntersectionPoint.hxx>
-#include <IntSurf_PntOn2S.hxx>
 #include <IntSurf_Situation.hxx>
 #include <IntSurf_Transition.hxx>
 #include <IntSurf_TypeTrans.hxx>
@@ -91,21 +79,8 @@
 #include <Standard_Handle.hxx>
 #include <Standard_OStream.hxx>
 #include <Standard_Type.hxx>
-#include <Standard_TypeDef.hxx>
-#include <TColStd_Array1OfInteger.hxx>
-#include <TColStd_Array1OfReal.hxx>
-#include <TColStd_ListIteratorOfListOfInteger.hxx>
-#include <TColStd_ListOfInteger.hxx>
-#include <TColStd_MapOfInteger.hxx>
-#include <TColStd_SequenceOfReal.hxx>
-#include <TColgp_Array1OfPnt.hxx>
-#include <TColgp_Array1OfPnt2d.hxx>
-#include <TColgp_Array1OfVec.hxx>
-#include <TColgp_Array1OfVec2d.hxx>
-#include <TColgp_SequenceOfPnt.hxx>
 #include <TopAbs_Orientation.hxx>
 #include <TopAbs_ShapeEnum.hxx>
-#include <TopAbs_State.hxx>
 #include <TopOpeBRep.hxx>
 #include <TopOpeBRepBuild_Area1dBuilder.hxx>
 #include <TopOpeBRepBuild_Area2dBuilder.hxx>
@@ -126,10 +101,6 @@
 #include <TopOpeBRepBuild_GTool.hxx>
 #include <TopOpeBRepBuild_GTopo.hxx>
 #include <TopOpeBRepBuild_HBuilder.hxx>
-#include <TopOpeBRepBuild_IndexedDataMapOfShapeVertexInfo.hxx>
-#include <TopOpeBRepBuild_ListIteratorOfListOfLoop.hxx>
-#include <TopOpeBRepBuild_ListOfLoop.hxx>
-#include <TopOpeBRepBuild_ListOfPave.hxx>
 #include <TopOpeBRepBuild_Loop.hxx>
 #include <TopOpeBRepBuild_LoopClassifier.hxx>
 #include <TopOpeBRepBuild_LoopSet.hxx>
@@ -145,12 +116,10 @@
 #include <TopOpeBRepBuild_SolidBuilder.hxx>
 #include <TopOpeBRepBuild_Tools.hxx>
 #include <TopOpeBRepBuild_Tools2d.hxx>
-#include <TopOpeBRepBuild_VertexInfo.hxx>
 #include <TopOpeBRepBuild_WireEdgeClassifier.hxx>
 #include <TopOpeBRepBuild_WireEdgeSet.hxx>
 #include <TopOpeBRepBuild_WireToFace.hxx>
 #include <TopOpeBRepDS.hxx>
-#include <TopOpeBRepDS_Array1OfDataMapOfIntegerListOfInterference.hxx>
 #include <TopOpeBRepDS_Association.hxx>
 #include <TopOpeBRepDS_BuildTool.hxx>
 #include <TopOpeBRepDS_Check.hxx>
@@ -161,8 +130,6 @@
 #include <TopOpeBRepDS_CurveExplorer.hxx>
 #include <TopOpeBRepDS_CurveIterator.hxx>
 #include <TopOpeBRepDS_CurvePointInterference.hxx>
-#include <TopOpeBRepDS_DataMapOfShapeListOfShapeOn1State.hxx>
-#include <TopOpeBRepDS_DataMapOfShapeState.hxx>
 #include <TopOpeBRepDS_DataStructure.hxx>
 #include <TopOpeBRepDS_Dumper.hxx>
 #include <TopOpeBRepDS_EIR.hxx>
@@ -177,26 +144,18 @@
 #include <TopOpeBRepDS_GapFiller.hxx>
 #include <TopOpeBRepDS_GapTool.hxx>
 #include <TopOpeBRepDS_GeometryData.hxx>
-#include <TopOpeBRepDS_HArray1OfDataMapOfIntegerListOfInterference.hxx>
 #include <TopOpeBRepDS_HDataStructure.hxx>
-#include <TopOpeBRepDS_IndexedDataMapOfShapeWithState.hxx>
 #include <TopOpeBRepDS_Interference.hxx>
 #include <TopOpeBRepDS_InterferenceIterator.hxx>
 #include <TopOpeBRepDS_InterferenceTool.hxx>
 #include <TopOpeBRepDS_Kind.hxx>
-#include <TopOpeBRepDS_ListIteratorOfListOfInterference.hxx>
-#include <TopOpeBRepDS_ListOfInterference.hxx>
-#include <TopOpeBRepDS_ListOfShapeOn1State.hxx>
-#include <TopOpeBRepDS_MapOfShapeData.hxx>
 #include <TopOpeBRepDS_Marker.hxx>
 #include <TopOpeBRepDS_Point.hxx>
 #include <TopOpeBRepDS_PointData.hxx>
 #include <TopOpeBRepDS_PointExplorer.hxx>
 #include <TopOpeBRepDS_PointIterator.hxx>
 #include <TopOpeBRepDS_Reducer.hxx>
-#include <TopOpeBRepDS_ShapeData.hxx>
 #include <TopOpeBRepDS_ShapeShapeInterference.hxx>
-#include <TopOpeBRepDS_ShapeWithState.hxx>
 #include <TopOpeBRepDS_SolidSurfaceInterference.hxx>
 #include <TopOpeBRepDS_Surface.hxx>
 #include <TopOpeBRepDS_SurfaceCurveInterference.hxx>
@@ -216,7 +175,6 @@
 #include <TopOpeBRepTool_FuseEdges.hxx>
 #include <TopOpeBRepTool_GeomTool.hxx>
 #include <TopOpeBRepTool_HBoxTool.hxx>
-#include <TopOpeBRepTool_IndexedDataMapOfShapeBox.hxx>
 #include <TopOpeBRepTool_OutCurveType.hxx>
 #include <TopOpeBRepTool_PurgeInternalEdges.hxx>
 #include <TopOpeBRepTool_REGUS.hxx>
@@ -230,8 +188,6 @@
 #include <TopOpeBRepTool_face.hxx>
 #include <TopOpeBRepTool_makeTransition.hxx>
 #include <TopOpeBRepTool_mkTondgE.hxx>
-#include <TopOpeBRep_Array1OfLineInter.hxx>
-#include <TopOpeBRep_Array1OfVPointInter.hxx>
 #include <TopOpeBRep_Bipoint.hxx>
 #include <TopOpeBRep_DSFiller.hxx>
 #include <TopOpeBRep_EdgesFiller.hxx>
@@ -243,16 +199,11 @@
 #include <TopOpeBRep_FacesFiller.hxx>
 #include <TopOpeBRep_FacesIntersector.hxx>
 #include <TopOpeBRep_GeomTool.hxx>
-#include <TopOpeBRep_HArray1OfLineInter.hxx>
-#include <TopOpeBRep_HArray1OfVPointInter.hxx>
 #include <TopOpeBRep_Hctxee2d.hxx>
 #include <TopOpeBRep_Hctxff2d.hxx>
-#include <TopOpeBRep_LineInter.hxx>
 #include <TopOpeBRep_P2Dstatus.hxx>
-#include <TopOpeBRep_Point2d.hxx>
 #include <TopOpeBRep_PointClassifier.hxx>
 #include <TopOpeBRep_PointGeomTool.hxx>
-#include <TopOpeBRep_SequenceOfPoint2d.hxx>
 #include <TopOpeBRep_ShapeIntersector.hxx>
 #include <TopOpeBRep_ShapeIntersector2d.hxx>
 #include <TopOpeBRep_ShapeScanner.hxx>
@@ -262,293 +213,252 @@
 #include <TopOpeBRep_VPointInterIterator.hxx>
 #include <TopOpeBRep_WPointInter.hxx>
 #include <TopOpeBRep_WPointInterIterator.hxx>
-#include <TopTools_Array1OfShape.hxx>
-#include <TopTools_DataMapOfIntegerListOfShape.hxx>
-#include <TopTools_DataMapOfIntegerShape.hxx>
-#include <TopTools_DataMapOfOrientedShapeInteger.hxx>
-#include <TopTools_DataMapOfShapeInteger.hxx>
-#include <TopTools_DataMapOfShapeListOfShape.hxx>
-#include <TopTools_DataMapOfShapeShape.hxx>
-#include <TopTools_HArray2OfShape.hxx>
-#include <TopTools_IndexedDataMapOfShapeListOfShape.hxx>
-#include <TopTools_IndexedDataMapOfShapeShape.hxx>
-#include <TopTools_IndexedMapOfOrientedShape.hxx>
-#include <TopTools_IndexedMapOfShape.hxx>
-#include <TopTools_ListIteratorOfListOfShape.hxx>
-#include <TopTools_ListOfShape.hxx>
-#include <TopTools_MapOfShape.hxx>
-#include <TopTools_SequenceOfShape.hxx>
 #include <TopoDS_Compound.hxx>
 #include <TopoDS_Edge.hxx>
 #include <TopoDS_Face.hxx>
-#include <TopoDS_ListOfShape.hxx>
 #include <TopoDS_Shell.hxx>
 #include <TopoDS_Solid.hxx>
 #include <TopoDS_Vertex.hxx>
 #include <TopoDS_Wire.hxx>
 #include <gp_Ax2.hxx>
 #include <gp_Ax3.hxx>
-#include <gp_Dir.hxx>
 #include <gp_Dir2d.hxx>
-#include <gp_Trsf.hxx>
-#include <gp_Vec.hxx>
-#include <gp_Vec2d.hxx>
 
 // Handle type aliases
-typedef opencascade::handle<Adaptor3d_Curve> HandleAdaptor3dCurve;
-typedef opencascade::handle<Adaptor3d_CurveOnSurface> HandleAdaptor3dCurveOnSurface;
-typedef opencascade::handle<BRepAdaptor_Surface> HandleBRepAdaptorSurface;
-typedef opencascade::handle<BRepAlgo_AsDes> HandleBRepAlgoAsDes;
-typedef opencascade::handle<BRepFill_ACRLaw> HandleBRepFillACRLaw;
-typedef opencascade::handle<BRepFill_CurveConstraint> HandleBRepFillCurveConstraint;
-typedef opencascade::handle<BRepFill_DraftLaw> HandleBRepFillDraftLaw;
-typedef opencascade::handle<BRepFill_Edge3DLaw> HandleBRepFillEdge3DLaw;
-typedef opencascade::handle<BRepFill_EdgeOnSurfLaw> HandleBRepFillEdgeOnSurfLaw;
-typedef opencascade::handle<BRepFill_LocationLaw> HandleBRepFillLocationLaw;
-typedef opencascade::handle<BRepFill_NSections> HandleBRepFillNSections;
-typedef opencascade::handle<BRepFill_PipeShell> HandleBRepFillPipeShell;
-typedef opencascade::handle<BRepFill_SectionLaw> HandleBRepFillSectionLaw;
-typedef opencascade::handle<BRepFill_ShapeLaw> HandleBRepFillShapeLaw;
-typedef opencascade::handle<Bnd_HArray1OfBox> HandleBndHArray1OfBox;
-typedef opencascade::handle<Geom2d_Curve> HandleGeom2dCurve;
-typedef opencascade::handle<Geom2d_Geometry> HandleGeom2dGeometry;
-typedef opencascade::handle<GeomFill_LocationDraft> HandleGeomFillLocationDraft;
-typedef opencascade::handle<GeomFill_LocationGuide> HandleGeomFillLocationGuide;
-typedef opencascade::handle<GeomFill_LocationLaw> HandleGeomFillLocationLaw;
-typedef opencascade::handle<GeomFill_SectionLaw> HandleGeomFillSectionLaw;
-typedef opencascade::handle<GeomPlate_CurveConstraint> HandleGeomPlateCurveConstraint;
-typedef opencascade::handle<Geom_Curve> HandleGeomCurve;
-typedef opencascade::handle<Geom_Surface> HandleGeomSurface;
-typedef opencascade::handle<IntPatch_GLine> HandleIntPatchGLine;
-typedef opencascade::handle<IntPatch_Line> HandleIntPatchLine;
-typedef opencascade::handle<IntPatch_RLine> HandleIntPatchRLine;
-typedef opencascade::handle<IntPatch_WLine> HandleIntPatchWLine;
-typedef opencascade::handle<Law_Function> HandleLawFunction;
-typedef opencascade::handle<Standard_Transient> HandleStandardTransient;
-typedef opencascade::handle<Standard_Type> HandleStandardType;
-typedef opencascade::handle<TopOpeBRepBuild_HBuilder> HandleTopOpeBRepBuildHBuilder;
-typedef opencascade::handle<TopOpeBRepBuild_Loop> HandleTopOpeBRepBuildLoop;
-typedef opencascade::handle<TopOpeBRepBuild_Pave> HandleTopOpeBRepBuildPave;
-typedef opencascade::handle<TopOpeBRepDS_Association> HandleTopOpeBRepDSAssociation;
-typedef opencascade::handle<TopOpeBRepDS_Check> HandleTopOpeBRepDSCheck;
-typedef opencascade::handle<TopOpeBRepDS_CurvePointInterference> HandleTopOpeBRepDSCurvePointInterference;
-typedef opencascade::handle<TopOpeBRepDS_EdgeVertexInterference> HandleTopOpeBRepDSEdgeVertexInterference;
-typedef opencascade::handle<TopOpeBRepDS_FaceEdgeInterference> HandleTopOpeBRepDSFaceEdgeInterference;
-typedef opencascade::handle<TopOpeBRepDS_GapTool> HandleTopOpeBRepDSGapTool;
-typedef opencascade::handle<TopOpeBRepDS_HArray1OfDataMapOfIntegerListOfInterference> HandleTopOpeBRepDSHArray1OfDataMapOfIntegerListOfInterference;
-typedef opencascade::handle<TopOpeBRepDS_HDataStructure> HandleTopOpeBRepDSHDataStructure;
-typedef opencascade::handle<TopOpeBRepDS_Interference> HandleTopOpeBRepDSInterference;
-typedef opencascade::handle<TopOpeBRepDS_Marker> HandleTopOpeBRepDSMarker;
-typedef opencascade::handle<TopOpeBRepDS_ShapeShapeInterference> HandleTopOpeBRepDSShapeShapeInterference;
-typedef opencascade::handle<TopOpeBRepDS_SolidSurfaceInterference> HandleTopOpeBRepDSSolidSurfaceInterference;
-typedef opencascade::handle<TopOpeBRepDS_SurfaceCurveInterference> HandleTopOpeBRepDSSurfaceCurveInterference;
-typedef opencascade::handle<TopOpeBRepTool_HBoxTool> HandleTopOpeBRepToolHBoxTool;
-typedef opencascade::handle<TopOpeBRep_FFDumper> HandleTopOpeBRepFFDumper;
-typedef opencascade::handle<TopOpeBRep_HArray1OfLineInter> HandleTopOpeBRepHArray1OfLineInter;
-typedef opencascade::handle<TopOpeBRep_HArray1OfVPointInter> HandleTopOpeBRepHArray1OfVPointInter;
-typedef opencascade::handle<TopOpeBRep_Hctxee2d> HandleTopOpeBRepHctxee2d;
-typedef opencascade::handle<TopOpeBRep_Hctxff2d> HandleTopOpeBRepHctxff2d;
-typedef opencascade::handle<TopTools_HArray2OfShape> HandleTopToolsHArray2OfShape;
+typedef opencascade::handle<Adaptor3d_Curve> Handle_Adaptor3d_Curve;
+typedef opencascade::handle<Adaptor3d_CurveOnSurface> Handle_Adaptor3d_CurveOnSurface;
+typedef opencascade::handle<BRepAdaptor_Surface> Handle_BRepAdaptor_Surface;
+typedef opencascade::handle<BRepAlgo_AsDes> Handle_BRepAlgo_AsDes;
+typedef opencascade::handle<BRepFill_ACRLaw> Handle_BRepFill_ACRLaw;
+typedef opencascade::handle<BRepFill_CurveConstraint> Handle_BRepFill_CurveConstraint;
+typedef opencascade::handle<BRepFill_DraftLaw> Handle_BRepFill_DraftLaw;
+typedef opencascade::handle<BRepFill_Edge3DLaw> Handle_BRepFill_Edge3DLaw;
+typedef opencascade::handle<BRepFill_EdgeOnSurfLaw> Handle_BRepFill_EdgeOnSurfLaw;
+typedef opencascade::handle<BRepFill_LocationLaw> Handle_BRepFill_LocationLaw;
+typedef opencascade::handle<BRepFill_NSections> Handle_BRepFill_NSections;
+typedef opencascade::handle<BRepFill_PipeShell> Handle_BRepFill_PipeShell;
+typedef opencascade::handle<BRepFill_SectionLaw> Handle_BRepFill_SectionLaw;
+typedef opencascade::handle<BRepFill_ShapeLaw> Handle_BRepFill_ShapeLaw;
+typedef opencascade::handle<Geom2d_Curve> Handle_Geom2d_Curve;
+typedef opencascade::handle<Geom2d_Geometry> Handle_Geom2d_Geometry;
+typedef opencascade::handle<GeomFill_LocationDraft> Handle_GeomFill_LocationDraft;
+typedef opencascade::handle<GeomFill_LocationGuide> Handle_GeomFill_LocationGuide;
+typedef opencascade::handle<GeomFill_LocationLaw> Handle_GeomFill_LocationLaw;
+typedef opencascade::handle<GeomFill_SectionLaw> Handle_GeomFill_SectionLaw;
+typedef opencascade::handle<GeomPlate_CurveConstraint> Handle_GeomPlate_CurveConstraint;
+typedef opencascade::handle<Geom_Curve> Handle_Geom_Curve;
+typedef opencascade::handle<Geom_Surface> Handle_Geom_Surface;
+typedef opencascade::handle<IntPatch_GLine> Handle_IntPatch_GLine;
+typedef opencascade::handle<IntPatch_Line> Handle_IntPatch_Line;
+typedef opencascade::handle<IntPatch_RLine> Handle_IntPatch_RLine;
+typedef opencascade::handle<IntPatch_WLine> Handle_IntPatch_WLine;
+typedef opencascade::handle<Law_Function> Handle_Law_Function;
+typedef opencascade::handle<NCollection_HArray1_Bnd_Box> Handle_NCollection_HArray1_Bnd_Box;
+typedef opencascade::handle<NCollection_HArray1_TopOpeBRep_LineInter> Handle_NCollection_HArray1_TopOpeBRep_LineInter;
+typedef opencascade::handle<NCollection_HArray2_TopoDS_Shape> Handle_NCollection_HArray2_TopoDS_Shape;
+typedef opencascade::handle<Standard_Transient> Handle_Standard_Transient;
+typedef opencascade::handle<Standard_Type> Handle_Standard_Type;
+typedef opencascade::handle<TopOpeBRepBuild_HBuilder> Handle_TopOpeBRepBuild_HBuilder;
+typedef opencascade::handle<TopOpeBRepBuild_Loop> Handle_TopOpeBRepBuild_Loop;
+typedef opencascade::handle<TopOpeBRepBuild_Pave> Handle_TopOpeBRepBuild_Pave;
+typedef opencascade::handle<TopOpeBRepDS_Association> Handle_TopOpeBRepDS_Association;
+typedef opencascade::handle<TopOpeBRepDS_Check> Handle_TopOpeBRepDS_Check;
+typedef opencascade::handle<TopOpeBRepDS_CurvePointInterference> Handle_TopOpeBRepDS_CurvePointInterference;
+typedef opencascade::handle<TopOpeBRepDS_EdgeVertexInterference> Handle_TopOpeBRepDS_EdgeVertexInterference;
+typedef opencascade::handle<TopOpeBRepDS_FaceEdgeInterference> Handle_TopOpeBRepDS_FaceEdgeInterference;
+typedef opencascade::handle<TopOpeBRepDS_GapTool> Handle_TopOpeBRepDS_GapTool;
+typedef opencascade::handle<TopOpeBRepDS_HDataStructure> Handle_TopOpeBRepDS_HDataStructure;
+typedef opencascade::handle<TopOpeBRepDS_Interference> Handle_TopOpeBRepDS_Interference;
+typedef opencascade::handle<TopOpeBRepDS_Marker> Handle_TopOpeBRepDS_Marker;
+typedef opencascade::handle<TopOpeBRepDS_ShapeShapeInterference> Handle_TopOpeBRepDS_ShapeShapeInterference;
+typedef opencascade::handle<TopOpeBRepDS_SolidSurfaceInterference> Handle_TopOpeBRepDS_SolidSurfaceInterference;
+typedef opencascade::handle<TopOpeBRepDS_SurfaceCurveInterference> Handle_TopOpeBRepDS_SurfaceCurveInterference;
+typedef opencascade::handle<TopOpeBRepTool_HBoxTool> Handle_TopOpeBRepTool_HBoxTool;
+typedef opencascade::handle<TopOpeBRep_FFDumper> Handle_TopOpeBRep_FFDumper;
+typedef opencascade::handle<TopOpeBRep_Hctxee2d> Handle_TopOpeBRep_Hctxee2d;
+typedef opencascade::handle<TopOpeBRep_Hctxff2d> Handle_TopOpeBRep_Hctxff2d;
 
 // Handle type destructors, clone, and is_null functions
-extern "C" void HandleBRepAlgoAsDes_destructor(HandleBRepAlgoAsDes* self_) { delete self_; }
-extern "C" OcctResult<HandleBRepAlgoAsDes*> HandleBRepAlgoAsDes_clone(const HandleBRepAlgoAsDes* self_) {
-    try { return {new HandleBRepAlgoAsDes(*self_), nullptr}; }
+extern "C" void Handle_BRepAlgo_AsDes_destructor(Handle_BRepAlgo_AsDes* self_) { delete self_; }
+extern "C" OcctResult<Handle_BRepAlgo_AsDes*> Handle_BRepAlgo_AsDes_clone(const Handle_BRepAlgo_AsDes* self_) {
+    try { return {new Handle_BRepAlgo_AsDes(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleBRepAlgoAsDes_is_null(const HandleBRepAlgoAsDes* self_) { return self_->IsNull(); }
-extern "C" void HandleBRepFillACRLaw_destructor(HandleBRepFillACRLaw* self_) { delete self_; }
-extern "C" OcctResult<HandleBRepFillACRLaw*> HandleBRepFillACRLaw_clone(const HandleBRepFillACRLaw* self_) {
-    try { return {new HandleBRepFillACRLaw(*self_), nullptr}; }
+extern "C" bool Handle_BRepAlgo_AsDes_is_null(const Handle_BRepAlgo_AsDes* self_) { return self_->IsNull(); }
+extern "C" void Handle_BRepFill_ACRLaw_destructor(Handle_BRepFill_ACRLaw* self_) { delete self_; }
+extern "C" OcctResult<Handle_BRepFill_ACRLaw*> Handle_BRepFill_ACRLaw_clone(const Handle_BRepFill_ACRLaw* self_) {
+    try { return {new Handle_BRepFill_ACRLaw(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleBRepFillACRLaw_is_null(const HandleBRepFillACRLaw* self_) { return self_->IsNull(); }
-extern "C" void HandleBRepFillCurveConstraint_destructor(HandleBRepFillCurveConstraint* self_) { delete self_; }
-extern "C" OcctResult<HandleBRepFillCurveConstraint*> HandleBRepFillCurveConstraint_clone(const HandleBRepFillCurveConstraint* self_) {
-    try { return {new HandleBRepFillCurveConstraint(*self_), nullptr}; }
+extern "C" bool Handle_BRepFill_ACRLaw_is_null(const Handle_BRepFill_ACRLaw* self_) { return self_->IsNull(); }
+extern "C" void Handle_BRepFill_CurveConstraint_destructor(Handle_BRepFill_CurveConstraint* self_) { delete self_; }
+extern "C" OcctResult<Handle_BRepFill_CurveConstraint*> Handle_BRepFill_CurveConstraint_clone(const Handle_BRepFill_CurveConstraint* self_) {
+    try { return {new Handle_BRepFill_CurveConstraint(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleBRepFillCurveConstraint_is_null(const HandleBRepFillCurveConstraint* self_) { return self_->IsNull(); }
-extern "C" void HandleBRepFillDraftLaw_destructor(HandleBRepFillDraftLaw* self_) { delete self_; }
-extern "C" OcctResult<HandleBRepFillDraftLaw*> HandleBRepFillDraftLaw_clone(const HandleBRepFillDraftLaw* self_) {
-    try { return {new HandleBRepFillDraftLaw(*self_), nullptr}; }
+extern "C" bool Handle_BRepFill_CurveConstraint_is_null(const Handle_BRepFill_CurveConstraint* self_) { return self_->IsNull(); }
+extern "C" void Handle_BRepFill_DraftLaw_destructor(Handle_BRepFill_DraftLaw* self_) { delete self_; }
+extern "C" OcctResult<Handle_BRepFill_DraftLaw*> Handle_BRepFill_DraftLaw_clone(const Handle_BRepFill_DraftLaw* self_) {
+    try { return {new Handle_BRepFill_DraftLaw(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleBRepFillDraftLaw_is_null(const HandleBRepFillDraftLaw* self_) { return self_->IsNull(); }
-extern "C" void HandleBRepFillEdge3DLaw_destructor(HandleBRepFillEdge3DLaw* self_) { delete self_; }
-extern "C" OcctResult<HandleBRepFillEdge3DLaw*> HandleBRepFillEdge3DLaw_clone(const HandleBRepFillEdge3DLaw* self_) {
-    try { return {new HandleBRepFillEdge3DLaw(*self_), nullptr}; }
+extern "C" bool Handle_BRepFill_DraftLaw_is_null(const Handle_BRepFill_DraftLaw* self_) { return self_->IsNull(); }
+extern "C" void Handle_BRepFill_Edge3DLaw_destructor(Handle_BRepFill_Edge3DLaw* self_) { delete self_; }
+extern "C" OcctResult<Handle_BRepFill_Edge3DLaw*> Handle_BRepFill_Edge3DLaw_clone(const Handle_BRepFill_Edge3DLaw* self_) {
+    try { return {new Handle_BRepFill_Edge3DLaw(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleBRepFillEdge3DLaw_is_null(const HandleBRepFillEdge3DLaw* self_) { return self_->IsNull(); }
-extern "C" void HandleBRepFillEdgeOnSurfLaw_destructor(HandleBRepFillEdgeOnSurfLaw* self_) { delete self_; }
-extern "C" OcctResult<HandleBRepFillEdgeOnSurfLaw*> HandleBRepFillEdgeOnSurfLaw_clone(const HandleBRepFillEdgeOnSurfLaw* self_) {
-    try { return {new HandleBRepFillEdgeOnSurfLaw(*self_), nullptr}; }
+extern "C" bool Handle_BRepFill_Edge3DLaw_is_null(const Handle_BRepFill_Edge3DLaw* self_) { return self_->IsNull(); }
+extern "C" void Handle_BRepFill_EdgeOnSurfLaw_destructor(Handle_BRepFill_EdgeOnSurfLaw* self_) { delete self_; }
+extern "C" OcctResult<Handle_BRepFill_EdgeOnSurfLaw*> Handle_BRepFill_EdgeOnSurfLaw_clone(const Handle_BRepFill_EdgeOnSurfLaw* self_) {
+    try { return {new Handle_BRepFill_EdgeOnSurfLaw(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleBRepFillEdgeOnSurfLaw_is_null(const HandleBRepFillEdgeOnSurfLaw* self_) { return self_->IsNull(); }
-extern "C" void HandleBRepFillLocationLaw_destructor(HandleBRepFillLocationLaw* self_) { delete self_; }
-extern "C" OcctResult<HandleBRepFillLocationLaw*> HandleBRepFillLocationLaw_clone(const HandleBRepFillLocationLaw* self_) {
-    try { return {new HandleBRepFillLocationLaw(*self_), nullptr}; }
+extern "C" bool Handle_BRepFill_EdgeOnSurfLaw_is_null(const Handle_BRepFill_EdgeOnSurfLaw* self_) { return self_->IsNull(); }
+extern "C" void Handle_BRepFill_LocationLaw_destructor(Handle_BRepFill_LocationLaw* self_) { delete self_; }
+extern "C" OcctResult<Handle_BRepFill_LocationLaw*> Handle_BRepFill_LocationLaw_clone(const Handle_BRepFill_LocationLaw* self_) {
+    try { return {new Handle_BRepFill_LocationLaw(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleBRepFillLocationLaw_is_null(const HandleBRepFillLocationLaw* self_) { return self_->IsNull(); }
-extern "C" void HandleBRepFillNSections_destructor(HandleBRepFillNSections* self_) { delete self_; }
-extern "C" OcctResult<HandleBRepFillNSections*> HandleBRepFillNSections_clone(const HandleBRepFillNSections* self_) {
-    try { return {new HandleBRepFillNSections(*self_), nullptr}; }
+extern "C" bool Handle_BRepFill_LocationLaw_is_null(const Handle_BRepFill_LocationLaw* self_) { return self_->IsNull(); }
+extern "C" void Handle_BRepFill_NSections_destructor(Handle_BRepFill_NSections* self_) { delete self_; }
+extern "C" OcctResult<Handle_BRepFill_NSections*> Handle_BRepFill_NSections_clone(const Handle_BRepFill_NSections* self_) {
+    try { return {new Handle_BRepFill_NSections(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleBRepFillNSections_is_null(const HandleBRepFillNSections* self_) { return self_->IsNull(); }
-extern "C" void HandleBRepFillPipeShell_destructor(HandleBRepFillPipeShell* self_) { delete self_; }
-extern "C" OcctResult<HandleBRepFillPipeShell*> HandleBRepFillPipeShell_clone(const HandleBRepFillPipeShell* self_) {
-    try { return {new HandleBRepFillPipeShell(*self_), nullptr}; }
+extern "C" bool Handle_BRepFill_NSections_is_null(const Handle_BRepFill_NSections* self_) { return self_->IsNull(); }
+extern "C" void Handle_BRepFill_PipeShell_destructor(Handle_BRepFill_PipeShell* self_) { delete self_; }
+extern "C" OcctResult<Handle_BRepFill_PipeShell*> Handle_BRepFill_PipeShell_clone(const Handle_BRepFill_PipeShell* self_) {
+    try { return {new Handle_BRepFill_PipeShell(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleBRepFillPipeShell_is_null(const HandleBRepFillPipeShell* self_) { return self_->IsNull(); }
-extern "C" void HandleBRepFillSectionLaw_destructor(HandleBRepFillSectionLaw* self_) { delete self_; }
-extern "C" OcctResult<HandleBRepFillSectionLaw*> HandleBRepFillSectionLaw_clone(const HandleBRepFillSectionLaw* self_) {
-    try { return {new HandleBRepFillSectionLaw(*self_), nullptr}; }
+extern "C" bool Handle_BRepFill_PipeShell_is_null(const Handle_BRepFill_PipeShell* self_) { return self_->IsNull(); }
+extern "C" void Handle_BRepFill_SectionLaw_destructor(Handle_BRepFill_SectionLaw* self_) { delete self_; }
+extern "C" OcctResult<Handle_BRepFill_SectionLaw*> Handle_BRepFill_SectionLaw_clone(const Handle_BRepFill_SectionLaw* self_) {
+    try { return {new Handle_BRepFill_SectionLaw(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleBRepFillSectionLaw_is_null(const HandleBRepFillSectionLaw* self_) { return self_->IsNull(); }
-extern "C" void HandleBRepFillShapeLaw_destructor(HandleBRepFillShapeLaw* self_) { delete self_; }
-extern "C" OcctResult<HandleBRepFillShapeLaw*> HandleBRepFillShapeLaw_clone(const HandleBRepFillShapeLaw* self_) {
-    try { return {new HandleBRepFillShapeLaw(*self_), nullptr}; }
+extern "C" bool Handle_BRepFill_SectionLaw_is_null(const Handle_BRepFill_SectionLaw* self_) { return self_->IsNull(); }
+extern "C" void Handle_BRepFill_ShapeLaw_destructor(Handle_BRepFill_ShapeLaw* self_) { delete self_; }
+extern "C" OcctResult<Handle_BRepFill_ShapeLaw*> Handle_BRepFill_ShapeLaw_clone(const Handle_BRepFill_ShapeLaw* self_) {
+    try { return {new Handle_BRepFill_ShapeLaw(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleBRepFillShapeLaw_is_null(const HandleBRepFillShapeLaw* self_) { return self_->IsNull(); }
-extern "C" void HandleTopOpeBRepBuildHBuilder_destructor(HandleTopOpeBRepBuildHBuilder* self_) { delete self_; }
-extern "C" OcctResult<HandleTopOpeBRepBuildHBuilder*> HandleTopOpeBRepBuildHBuilder_clone(const HandleTopOpeBRepBuildHBuilder* self_) {
-    try { return {new HandleTopOpeBRepBuildHBuilder(*self_), nullptr}; }
+extern "C" bool Handle_BRepFill_ShapeLaw_is_null(const Handle_BRepFill_ShapeLaw* self_) { return self_->IsNull(); }
+extern "C" void Handle_TopOpeBRepBuild_HBuilder_destructor(Handle_TopOpeBRepBuild_HBuilder* self_) { delete self_; }
+extern "C" OcctResult<Handle_TopOpeBRepBuild_HBuilder*> Handle_TopOpeBRepBuild_HBuilder_clone(const Handle_TopOpeBRepBuild_HBuilder* self_) {
+    try { return {new Handle_TopOpeBRepBuild_HBuilder(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleTopOpeBRepBuildHBuilder_is_null(const HandleTopOpeBRepBuildHBuilder* self_) { return self_->IsNull(); }
-extern "C" void HandleTopOpeBRepBuildLoop_destructor(HandleTopOpeBRepBuildLoop* self_) { delete self_; }
-extern "C" OcctResult<HandleTopOpeBRepBuildLoop*> HandleTopOpeBRepBuildLoop_clone(const HandleTopOpeBRepBuildLoop* self_) {
-    try { return {new HandleTopOpeBRepBuildLoop(*self_), nullptr}; }
+extern "C" bool Handle_TopOpeBRepBuild_HBuilder_is_null(const Handle_TopOpeBRepBuild_HBuilder* self_) { return self_->IsNull(); }
+extern "C" void Handle_TopOpeBRepBuild_Loop_destructor(Handle_TopOpeBRepBuild_Loop* self_) { delete self_; }
+extern "C" OcctResult<Handle_TopOpeBRepBuild_Loop*> Handle_TopOpeBRepBuild_Loop_clone(const Handle_TopOpeBRepBuild_Loop* self_) {
+    try { return {new Handle_TopOpeBRepBuild_Loop(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleTopOpeBRepBuildLoop_is_null(const HandleTopOpeBRepBuildLoop* self_) { return self_->IsNull(); }
-extern "C" void HandleTopOpeBRepBuildPave_destructor(HandleTopOpeBRepBuildPave* self_) { delete self_; }
-extern "C" OcctResult<HandleTopOpeBRepBuildPave*> HandleTopOpeBRepBuildPave_clone(const HandleTopOpeBRepBuildPave* self_) {
-    try { return {new HandleTopOpeBRepBuildPave(*self_), nullptr}; }
+extern "C" bool Handle_TopOpeBRepBuild_Loop_is_null(const Handle_TopOpeBRepBuild_Loop* self_) { return self_->IsNull(); }
+extern "C" void Handle_TopOpeBRepBuild_Pave_destructor(Handle_TopOpeBRepBuild_Pave* self_) { delete self_; }
+extern "C" OcctResult<Handle_TopOpeBRepBuild_Pave*> Handle_TopOpeBRepBuild_Pave_clone(const Handle_TopOpeBRepBuild_Pave* self_) {
+    try { return {new Handle_TopOpeBRepBuild_Pave(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleTopOpeBRepBuildPave_is_null(const HandleTopOpeBRepBuildPave* self_) { return self_->IsNull(); }
-extern "C" void HandleTopOpeBRepDSAssociation_destructor(HandleTopOpeBRepDSAssociation* self_) { delete self_; }
-extern "C" OcctResult<HandleTopOpeBRepDSAssociation*> HandleTopOpeBRepDSAssociation_clone(const HandleTopOpeBRepDSAssociation* self_) {
-    try { return {new HandleTopOpeBRepDSAssociation(*self_), nullptr}; }
+extern "C" bool Handle_TopOpeBRepBuild_Pave_is_null(const Handle_TopOpeBRepBuild_Pave* self_) { return self_->IsNull(); }
+extern "C" void Handle_TopOpeBRepDS_Association_destructor(Handle_TopOpeBRepDS_Association* self_) { delete self_; }
+extern "C" OcctResult<Handle_TopOpeBRepDS_Association*> Handle_TopOpeBRepDS_Association_clone(const Handle_TopOpeBRepDS_Association* self_) {
+    try { return {new Handle_TopOpeBRepDS_Association(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleTopOpeBRepDSAssociation_is_null(const HandleTopOpeBRepDSAssociation* self_) { return self_->IsNull(); }
-extern "C" void HandleTopOpeBRepDSCheck_destructor(HandleTopOpeBRepDSCheck* self_) { delete self_; }
-extern "C" OcctResult<HandleTopOpeBRepDSCheck*> HandleTopOpeBRepDSCheck_clone(const HandleTopOpeBRepDSCheck* self_) {
-    try { return {new HandleTopOpeBRepDSCheck(*self_), nullptr}; }
+extern "C" bool Handle_TopOpeBRepDS_Association_is_null(const Handle_TopOpeBRepDS_Association* self_) { return self_->IsNull(); }
+extern "C" void Handle_TopOpeBRepDS_Check_destructor(Handle_TopOpeBRepDS_Check* self_) { delete self_; }
+extern "C" OcctResult<Handle_TopOpeBRepDS_Check*> Handle_TopOpeBRepDS_Check_clone(const Handle_TopOpeBRepDS_Check* self_) {
+    try { return {new Handle_TopOpeBRepDS_Check(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleTopOpeBRepDSCheck_is_null(const HandleTopOpeBRepDSCheck* self_) { return self_->IsNull(); }
-extern "C" void HandleTopOpeBRepDSCurvePointInterference_destructor(HandleTopOpeBRepDSCurvePointInterference* self_) { delete self_; }
-extern "C" OcctResult<HandleTopOpeBRepDSCurvePointInterference*> HandleTopOpeBRepDSCurvePointInterference_clone(const HandleTopOpeBRepDSCurvePointInterference* self_) {
-    try { return {new HandleTopOpeBRepDSCurvePointInterference(*self_), nullptr}; }
+extern "C" bool Handle_TopOpeBRepDS_Check_is_null(const Handle_TopOpeBRepDS_Check* self_) { return self_->IsNull(); }
+extern "C" void Handle_TopOpeBRepDS_CurvePointInterference_destructor(Handle_TopOpeBRepDS_CurvePointInterference* self_) { delete self_; }
+extern "C" OcctResult<Handle_TopOpeBRepDS_CurvePointInterference*> Handle_TopOpeBRepDS_CurvePointInterference_clone(const Handle_TopOpeBRepDS_CurvePointInterference* self_) {
+    try { return {new Handle_TopOpeBRepDS_CurvePointInterference(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleTopOpeBRepDSCurvePointInterference_is_null(const HandleTopOpeBRepDSCurvePointInterference* self_) { return self_->IsNull(); }
-extern "C" void HandleTopOpeBRepDSEdgeVertexInterference_destructor(HandleTopOpeBRepDSEdgeVertexInterference* self_) { delete self_; }
-extern "C" OcctResult<HandleTopOpeBRepDSEdgeVertexInterference*> HandleTopOpeBRepDSEdgeVertexInterference_clone(const HandleTopOpeBRepDSEdgeVertexInterference* self_) {
-    try { return {new HandleTopOpeBRepDSEdgeVertexInterference(*self_), nullptr}; }
+extern "C" bool Handle_TopOpeBRepDS_CurvePointInterference_is_null(const Handle_TopOpeBRepDS_CurvePointInterference* self_) { return self_->IsNull(); }
+extern "C" void Handle_TopOpeBRepDS_EdgeVertexInterference_destructor(Handle_TopOpeBRepDS_EdgeVertexInterference* self_) { delete self_; }
+extern "C" OcctResult<Handle_TopOpeBRepDS_EdgeVertexInterference*> Handle_TopOpeBRepDS_EdgeVertexInterference_clone(const Handle_TopOpeBRepDS_EdgeVertexInterference* self_) {
+    try { return {new Handle_TopOpeBRepDS_EdgeVertexInterference(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleTopOpeBRepDSEdgeVertexInterference_is_null(const HandleTopOpeBRepDSEdgeVertexInterference* self_) { return self_->IsNull(); }
-extern "C" void HandleTopOpeBRepDSFaceEdgeInterference_destructor(HandleTopOpeBRepDSFaceEdgeInterference* self_) { delete self_; }
-extern "C" OcctResult<HandleTopOpeBRepDSFaceEdgeInterference*> HandleTopOpeBRepDSFaceEdgeInterference_clone(const HandleTopOpeBRepDSFaceEdgeInterference* self_) {
-    try { return {new HandleTopOpeBRepDSFaceEdgeInterference(*self_), nullptr}; }
+extern "C" bool Handle_TopOpeBRepDS_EdgeVertexInterference_is_null(const Handle_TopOpeBRepDS_EdgeVertexInterference* self_) { return self_->IsNull(); }
+extern "C" void Handle_TopOpeBRepDS_FaceEdgeInterference_destructor(Handle_TopOpeBRepDS_FaceEdgeInterference* self_) { delete self_; }
+extern "C" OcctResult<Handle_TopOpeBRepDS_FaceEdgeInterference*> Handle_TopOpeBRepDS_FaceEdgeInterference_clone(const Handle_TopOpeBRepDS_FaceEdgeInterference* self_) {
+    try { return {new Handle_TopOpeBRepDS_FaceEdgeInterference(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleTopOpeBRepDSFaceEdgeInterference_is_null(const HandleTopOpeBRepDSFaceEdgeInterference* self_) { return self_->IsNull(); }
-extern "C" void HandleTopOpeBRepDSGapTool_destructor(HandleTopOpeBRepDSGapTool* self_) { delete self_; }
-extern "C" OcctResult<HandleTopOpeBRepDSGapTool*> HandleTopOpeBRepDSGapTool_clone(const HandleTopOpeBRepDSGapTool* self_) {
-    try { return {new HandleTopOpeBRepDSGapTool(*self_), nullptr}; }
+extern "C" bool Handle_TopOpeBRepDS_FaceEdgeInterference_is_null(const Handle_TopOpeBRepDS_FaceEdgeInterference* self_) { return self_->IsNull(); }
+extern "C" void Handle_TopOpeBRepDS_GapTool_destructor(Handle_TopOpeBRepDS_GapTool* self_) { delete self_; }
+extern "C" OcctResult<Handle_TopOpeBRepDS_GapTool*> Handle_TopOpeBRepDS_GapTool_clone(const Handle_TopOpeBRepDS_GapTool* self_) {
+    try { return {new Handle_TopOpeBRepDS_GapTool(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleTopOpeBRepDSGapTool_is_null(const HandleTopOpeBRepDSGapTool* self_) { return self_->IsNull(); }
-extern "C" void HandleTopOpeBRepDSHArray1OfDataMapOfIntegerListOfInterference_destructor(HandleTopOpeBRepDSHArray1OfDataMapOfIntegerListOfInterference* self_) { delete self_; }
-extern "C" OcctResult<HandleTopOpeBRepDSHArray1OfDataMapOfIntegerListOfInterference*> HandleTopOpeBRepDSHArray1OfDataMapOfIntegerListOfInterference_clone(const HandleTopOpeBRepDSHArray1OfDataMapOfIntegerListOfInterference* self_) {
-    try { return {new HandleTopOpeBRepDSHArray1OfDataMapOfIntegerListOfInterference(*self_), nullptr}; }
+extern "C" bool Handle_TopOpeBRepDS_GapTool_is_null(const Handle_TopOpeBRepDS_GapTool* self_) { return self_->IsNull(); }
+extern "C" void Handle_TopOpeBRepDS_HDataStructure_destructor(Handle_TopOpeBRepDS_HDataStructure* self_) { delete self_; }
+extern "C" OcctResult<Handle_TopOpeBRepDS_HDataStructure*> Handle_TopOpeBRepDS_HDataStructure_clone(const Handle_TopOpeBRepDS_HDataStructure* self_) {
+    try { return {new Handle_TopOpeBRepDS_HDataStructure(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleTopOpeBRepDSHArray1OfDataMapOfIntegerListOfInterference_is_null(const HandleTopOpeBRepDSHArray1OfDataMapOfIntegerListOfInterference* self_) { return self_->IsNull(); }
-extern "C" void HandleTopOpeBRepDSHDataStructure_destructor(HandleTopOpeBRepDSHDataStructure* self_) { delete self_; }
-extern "C" OcctResult<HandleTopOpeBRepDSHDataStructure*> HandleTopOpeBRepDSHDataStructure_clone(const HandleTopOpeBRepDSHDataStructure* self_) {
-    try { return {new HandleTopOpeBRepDSHDataStructure(*self_), nullptr}; }
+extern "C" bool Handle_TopOpeBRepDS_HDataStructure_is_null(const Handle_TopOpeBRepDS_HDataStructure* self_) { return self_->IsNull(); }
+extern "C" void Handle_TopOpeBRepDS_Interference_destructor(Handle_TopOpeBRepDS_Interference* self_) { delete self_; }
+extern "C" OcctResult<Handle_TopOpeBRepDS_Interference*> Handle_TopOpeBRepDS_Interference_clone(const Handle_TopOpeBRepDS_Interference* self_) {
+    try { return {new Handle_TopOpeBRepDS_Interference(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleTopOpeBRepDSHDataStructure_is_null(const HandleTopOpeBRepDSHDataStructure* self_) { return self_->IsNull(); }
-extern "C" void HandleTopOpeBRepDSInterference_destructor(HandleTopOpeBRepDSInterference* self_) { delete self_; }
-extern "C" OcctResult<HandleTopOpeBRepDSInterference*> HandleTopOpeBRepDSInterference_clone(const HandleTopOpeBRepDSInterference* self_) {
-    try { return {new HandleTopOpeBRepDSInterference(*self_), nullptr}; }
+extern "C" bool Handle_TopOpeBRepDS_Interference_is_null(const Handle_TopOpeBRepDS_Interference* self_) { return self_->IsNull(); }
+extern "C" void Handle_TopOpeBRepDS_Marker_destructor(Handle_TopOpeBRepDS_Marker* self_) { delete self_; }
+extern "C" OcctResult<Handle_TopOpeBRepDS_Marker*> Handle_TopOpeBRepDS_Marker_clone(const Handle_TopOpeBRepDS_Marker* self_) {
+    try { return {new Handle_TopOpeBRepDS_Marker(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleTopOpeBRepDSInterference_is_null(const HandleTopOpeBRepDSInterference* self_) { return self_->IsNull(); }
-extern "C" void HandleTopOpeBRepDSMarker_destructor(HandleTopOpeBRepDSMarker* self_) { delete self_; }
-extern "C" OcctResult<HandleTopOpeBRepDSMarker*> HandleTopOpeBRepDSMarker_clone(const HandleTopOpeBRepDSMarker* self_) {
-    try { return {new HandleTopOpeBRepDSMarker(*self_), nullptr}; }
+extern "C" bool Handle_TopOpeBRepDS_Marker_is_null(const Handle_TopOpeBRepDS_Marker* self_) { return self_->IsNull(); }
+extern "C" void Handle_TopOpeBRepDS_ShapeShapeInterference_destructor(Handle_TopOpeBRepDS_ShapeShapeInterference* self_) { delete self_; }
+extern "C" OcctResult<Handle_TopOpeBRepDS_ShapeShapeInterference*> Handle_TopOpeBRepDS_ShapeShapeInterference_clone(const Handle_TopOpeBRepDS_ShapeShapeInterference* self_) {
+    try { return {new Handle_TopOpeBRepDS_ShapeShapeInterference(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleTopOpeBRepDSMarker_is_null(const HandleTopOpeBRepDSMarker* self_) { return self_->IsNull(); }
-extern "C" void HandleTopOpeBRepDSShapeShapeInterference_destructor(HandleTopOpeBRepDSShapeShapeInterference* self_) { delete self_; }
-extern "C" OcctResult<HandleTopOpeBRepDSShapeShapeInterference*> HandleTopOpeBRepDSShapeShapeInterference_clone(const HandleTopOpeBRepDSShapeShapeInterference* self_) {
-    try { return {new HandleTopOpeBRepDSShapeShapeInterference(*self_), nullptr}; }
+extern "C" bool Handle_TopOpeBRepDS_ShapeShapeInterference_is_null(const Handle_TopOpeBRepDS_ShapeShapeInterference* self_) { return self_->IsNull(); }
+extern "C" void Handle_TopOpeBRepDS_SolidSurfaceInterference_destructor(Handle_TopOpeBRepDS_SolidSurfaceInterference* self_) { delete self_; }
+extern "C" OcctResult<Handle_TopOpeBRepDS_SolidSurfaceInterference*> Handle_TopOpeBRepDS_SolidSurfaceInterference_clone(const Handle_TopOpeBRepDS_SolidSurfaceInterference* self_) {
+    try { return {new Handle_TopOpeBRepDS_SolidSurfaceInterference(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleTopOpeBRepDSShapeShapeInterference_is_null(const HandleTopOpeBRepDSShapeShapeInterference* self_) { return self_->IsNull(); }
-extern "C" void HandleTopOpeBRepDSSolidSurfaceInterference_destructor(HandleTopOpeBRepDSSolidSurfaceInterference* self_) { delete self_; }
-extern "C" OcctResult<HandleTopOpeBRepDSSolidSurfaceInterference*> HandleTopOpeBRepDSSolidSurfaceInterference_clone(const HandleTopOpeBRepDSSolidSurfaceInterference* self_) {
-    try { return {new HandleTopOpeBRepDSSolidSurfaceInterference(*self_), nullptr}; }
+extern "C" bool Handle_TopOpeBRepDS_SolidSurfaceInterference_is_null(const Handle_TopOpeBRepDS_SolidSurfaceInterference* self_) { return self_->IsNull(); }
+extern "C" void Handle_TopOpeBRepDS_SurfaceCurveInterference_destructor(Handle_TopOpeBRepDS_SurfaceCurveInterference* self_) { delete self_; }
+extern "C" OcctResult<Handle_TopOpeBRepDS_SurfaceCurveInterference*> Handle_TopOpeBRepDS_SurfaceCurveInterference_clone(const Handle_TopOpeBRepDS_SurfaceCurveInterference* self_) {
+    try { return {new Handle_TopOpeBRepDS_SurfaceCurveInterference(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleTopOpeBRepDSSolidSurfaceInterference_is_null(const HandleTopOpeBRepDSSolidSurfaceInterference* self_) { return self_->IsNull(); }
-extern "C" void HandleTopOpeBRepDSSurfaceCurveInterference_destructor(HandleTopOpeBRepDSSurfaceCurveInterference* self_) { delete self_; }
-extern "C" OcctResult<HandleTopOpeBRepDSSurfaceCurveInterference*> HandleTopOpeBRepDSSurfaceCurveInterference_clone(const HandleTopOpeBRepDSSurfaceCurveInterference* self_) {
-    try { return {new HandleTopOpeBRepDSSurfaceCurveInterference(*self_), nullptr}; }
+extern "C" bool Handle_TopOpeBRepDS_SurfaceCurveInterference_is_null(const Handle_TopOpeBRepDS_SurfaceCurveInterference* self_) { return self_->IsNull(); }
+extern "C" void Handle_TopOpeBRepTool_HBoxTool_destructor(Handle_TopOpeBRepTool_HBoxTool* self_) { delete self_; }
+extern "C" OcctResult<Handle_TopOpeBRepTool_HBoxTool*> Handle_TopOpeBRepTool_HBoxTool_clone(const Handle_TopOpeBRepTool_HBoxTool* self_) {
+    try { return {new Handle_TopOpeBRepTool_HBoxTool(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleTopOpeBRepDSSurfaceCurveInterference_is_null(const HandleTopOpeBRepDSSurfaceCurveInterference* self_) { return self_->IsNull(); }
-extern "C" void HandleTopOpeBRepToolHBoxTool_destructor(HandleTopOpeBRepToolHBoxTool* self_) { delete self_; }
-extern "C" OcctResult<HandleTopOpeBRepToolHBoxTool*> HandleTopOpeBRepToolHBoxTool_clone(const HandleTopOpeBRepToolHBoxTool* self_) {
-    try { return {new HandleTopOpeBRepToolHBoxTool(*self_), nullptr}; }
+extern "C" bool Handle_TopOpeBRepTool_HBoxTool_is_null(const Handle_TopOpeBRepTool_HBoxTool* self_) { return self_->IsNull(); }
+extern "C" void Handle_TopOpeBRep_FFDumper_destructor(Handle_TopOpeBRep_FFDumper* self_) { delete self_; }
+extern "C" OcctResult<Handle_TopOpeBRep_FFDumper*> Handle_TopOpeBRep_FFDumper_clone(const Handle_TopOpeBRep_FFDumper* self_) {
+    try { return {new Handle_TopOpeBRep_FFDumper(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleTopOpeBRepToolHBoxTool_is_null(const HandleTopOpeBRepToolHBoxTool* self_) { return self_->IsNull(); }
-extern "C" void HandleTopOpeBRepFFDumper_destructor(HandleTopOpeBRepFFDumper* self_) { delete self_; }
-extern "C" OcctResult<HandleTopOpeBRepFFDumper*> HandleTopOpeBRepFFDumper_clone(const HandleTopOpeBRepFFDumper* self_) {
-    try { return {new HandleTopOpeBRepFFDumper(*self_), nullptr}; }
+extern "C" bool Handle_TopOpeBRep_FFDumper_is_null(const Handle_TopOpeBRep_FFDumper* self_) { return self_->IsNull(); }
+extern "C" void Handle_TopOpeBRep_Hctxee2d_destructor(Handle_TopOpeBRep_Hctxee2d* self_) { delete self_; }
+extern "C" OcctResult<Handle_TopOpeBRep_Hctxee2d*> Handle_TopOpeBRep_Hctxee2d_clone(const Handle_TopOpeBRep_Hctxee2d* self_) {
+    try { return {new Handle_TopOpeBRep_Hctxee2d(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleTopOpeBRepFFDumper_is_null(const HandleTopOpeBRepFFDumper* self_) { return self_->IsNull(); }
-extern "C" void HandleTopOpeBRepHArray1OfLineInter_destructor(HandleTopOpeBRepHArray1OfLineInter* self_) { delete self_; }
-extern "C" OcctResult<HandleTopOpeBRepHArray1OfLineInter*> HandleTopOpeBRepHArray1OfLineInter_clone(const HandleTopOpeBRepHArray1OfLineInter* self_) {
-    try { return {new HandleTopOpeBRepHArray1OfLineInter(*self_), nullptr}; }
+extern "C" bool Handle_TopOpeBRep_Hctxee2d_is_null(const Handle_TopOpeBRep_Hctxee2d* self_) { return self_->IsNull(); }
+extern "C" void Handle_TopOpeBRep_Hctxff2d_destructor(Handle_TopOpeBRep_Hctxff2d* self_) { delete self_; }
+extern "C" OcctResult<Handle_TopOpeBRep_Hctxff2d*> Handle_TopOpeBRep_Hctxff2d_clone(const Handle_TopOpeBRep_Hctxff2d* self_) {
+    try { return {new Handle_TopOpeBRep_Hctxff2d(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleTopOpeBRepHArray1OfLineInter_is_null(const HandleTopOpeBRepHArray1OfLineInter* self_) { return self_->IsNull(); }
-extern "C" void HandleTopOpeBRepHArray1OfVPointInter_destructor(HandleTopOpeBRepHArray1OfVPointInter* self_) { delete self_; }
-extern "C" OcctResult<HandleTopOpeBRepHArray1OfVPointInter*> HandleTopOpeBRepHArray1OfVPointInter_clone(const HandleTopOpeBRepHArray1OfVPointInter* self_) {
-    try { return {new HandleTopOpeBRepHArray1OfVPointInter(*self_), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" bool HandleTopOpeBRepHArray1OfVPointInter_is_null(const HandleTopOpeBRepHArray1OfVPointInter* self_) { return self_->IsNull(); }
-extern "C" void HandleTopOpeBRepHctxee2d_destructor(HandleTopOpeBRepHctxee2d* self_) { delete self_; }
-extern "C" OcctResult<HandleTopOpeBRepHctxee2d*> HandleTopOpeBRepHctxee2d_clone(const HandleTopOpeBRepHctxee2d* self_) {
-    try { return {new HandleTopOpeBRepHctxee2d(*self_), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" bool HandleTopOpeBRepHctxee2d_is_null(const HandleTopOpeBRepHctxee2d* self_) { return self_->IsNull(); }
-extern "C" void HandleTopOpeBRepHctxff2d_destructor(HandleTopOpeBRepHctxff2d* self_) { delete self_; }
-extern "C" OcctResult<HandleTopOpeBRepHctxff2d*> HandleTopOpeBRepHctxff2d_clone(const HandleTopOpeBRepHctxff2d* self_) {
-    try { return {new HandleTopOpeBRepHctxff2d(*self_), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" bool HandleTopOpeBRepHctxff2d_is_null(const HandleTopOpeBRepHctxff2d* self_) { return self_->IsNull(); }
+extern "C" bool Handle_TopOpeBRep_Hctxff2d_is_null(const Handle_TopOpeBRep_Hctxff2d* self_) { return self_->IsNull(); }
 
 // ========================
 // BRepAlgo_AsDes wrappers
@@ -566,7 +476,7 @@ extern "C" const char* BRepAlgo_AsDes_add_shape2(BRepAlgo_AsDes* self_, TopoDS_S
     try { self_->Add(*S, *SS); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* BRepAlgo_AsDes_add_shape_listofshape(BRepAlgo_AsDes* self_, TopoDS_Shape const* S, TopTools_ListOfShape const* SS) {
+extern "C" const char* BRepAlgo_AsDes_add_shape_list_shape(BRepAlgo_AsDes* self_, TopoDS_Shape const* S, NCollection_List_TopoDS_Shape const* SS) {
     try { self_->Add(*S, *SS); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -578,15 +488,15 @@ extern "C" OcctResult<bool> BRepAlgo_AsDes_has_descendant(const BRepAlgo_AsDes* 
     try { return {self_->HasDescendant(*S), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TopTools_ListOfShape const*> BRepAlgo_AsDes_ascendant(const BRepAlgo_AsDes* self_, TopoDS_Shape const* S) {
+extern "C" OcctResult<NCollection_List_TopoDS_Shape const*> BRepAlgo_AsDes_ascendant(const BRepAlgo_AsDes* self_, TopoDS_Shape const* S) {
     try { return {&(self_->Ascendant(*S)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TopTools_ListOfShape const*> BRepAlgo_AsDes_descendant(const BRepAlgo_AsDes* self_, TopoDS_Shape const* S) {
+extern "C" OcctResult<NCollection_List_TopoDS_Shape const*> BRepAlgo_AsDes_descendant(const BRepAlgo_AsDes* self_, TopoDS_Shape const* S) {
     try { return {&(self_->Descendant(*S)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TopTools_ListOfShape*> BRepAlgo_AsDes_change_descendant(BRepAlgo_AsDes* self_, TopoDS_Shape const* S) {
+extern "C" OcctResult<NCollection_List_TopoDS_Shape*> BRepAlgo_AsDes_change_descendant(BRepAlgo_AsDes* self_, TopoDS_Shape const* S) {
     try { return {&(self_->ChangeDescendant(*S)), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -598,7 +508,7 @@ extern "C" const char* BRepAlgo_AsDes_remove(BRepAlgo_AsDes* self_, TopoDS_Shape
     try { self_->Remove(*theS); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<bool> BRepAlgo_AsDes_has_common_descendant(const BRepAlgo_AsDes* self_, TopoDS_Shape const* S1, TopoDS_Shape const* S2, TopTools_ListOfShape* LC) {
+extern "C" OcctResult<bool> BRepAlgo_AsDes_has_common_descendant(const BRepAlgo_AsDes* self_, TopoDS_Shape const* S1, TopoDS_Shape const* S2, NCollection_List_TopoDS_Shape* LC) {
     try { return {self_->HasCommonDescendant(*S1, *S2, *LC), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -616,20 +526,20 @@ extern "C" OcctResult<Handle(Standard_Type) const*> BRepAlgo_AsDes_get_type_desc
 }
 extern "C" OcctResult<const Standard_Transient*> BRepAlgo_AsDes_as_Standard_Transient(const BRepAlgo_AsDes* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> BRepAlgo_AsDes_as_Standard_Transient_mut(BRepAlgo_AsDes* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleBRepAlgoAsDes*> BRepAlgo_AsDes_to_handle(BRepAlgo_AsDes* obj) {
-    try { return {new HandleBRepAlgoAsDes(obj), nullptr}; }
+extern "C" OcctResult<Handle_BRepAlgo_AsDes*> BRepAlgo_AsDes_to_handle(BRepAlgo_AsDes* obj) {
+    try { return {new Handle_BRepAlgo_AsDes(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const BRepAlgo_AsDes*> HandleBRepAlgoAsDes_get(const HandleBRepAlgoAsDes* handle) {
+extern "C" OcctResult<const BRepAlgo_AsDes*> Handle_BRepAlgo_AsDes_get(const Handle_BRepAlgo_AsDes* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<BRepAlgo_AsDes*> HandleBRepAlgoAsDes_get_mut(HandleBRepAlgoAsDes* handle) {
+extern "C" OcctResult<BRepAlgo_AsDes*> Handle_BRepAlgo_AsDes_get_mut(Handle_BRepAlgo_AsDes* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleBRepAlgoAsDes_to_HandleStandardTransient(const HandleBRepAlgoAsDes* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_BRepAlgo_AsDes_to_Handle_Standard_Transient(const Handle_BRepAlgo_AsDes* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> BRepAlgo_AsDes_inherited_IsInstance(const BRepAlgo_AsDes* self, Handle(Standard_Type) const& theType) {
@@ -720,7 +630,7 @@ extern "C" const char* BRepAlgo_Image_bind_shape2(BRepAlgo_Image* self_, TopoDS_
     try { self_->Bind(*OldS, *NewS); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* BRepAlgo_Image_bind_shape_listofshape(BRepAlgo_Image* self_, TopoDS_Shape const* OldS, TopTools_ListOfShape const* NewS) {
+extern "C" const char* BRepAlgo_Image_bind_shape_list_shape(BRepAlgo_Image* self_, TopoDS_Shape const* OldS, NCollection_List_TopoDS_Shape const* NewS) {
     try { self_->Bind(*OldS, *NewS); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -728,7 +638,7 @@ extern "C" const char* BRepAlgo_Image_add_shape2(BRepAlgo_Image* self_, TopoDS_S
     try { self_->Add(*OldS, *NewS); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* BRepAlgo_Image_add_shape_listofshape(BRepAlgo_Image* self_, TopoDS_Shape const* OldS, TopTools_ListOfShape const* NewS) {
+extern "C" const char* BRepAlgo_Image_add_shape_list_shape(BRepAlgo_Image* self_, TopoDS_Shape const* OldS, NCollection_List_TopoDS_Shape const* NewS) {
     try { self_->Add(*OldS, *NewS); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -748,7 +658,7 @@ extern "C" const char* BRepAlgo_Image_replace_root(BRepAlgo_Image* self_, TopoDS
     try { self_->ReplaceRoot(*OldRoot, *NewRoot); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<TopTools_ListOfShape const*> BRepAlgo_Image_roots(const BRepAlgo_Image* self_) {
+extern "C" OcctResult<NCollection_List_TopoDS_Shape const*> BRepAlgo_Image_roots(const BRepAlgo_Image* self_) {
     try { return {&(self_->Roots()), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -768,11 +678,11 @@ extern "C" OcctResult<bool> BRepAlgo_Image_has_image(const BRepAlgo_Image* self_
     try { return {self_->HasImage(*S), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TopTools_ListOfShape const*> BRepAlgo_Image_image(const BRepAlgo_Image* self_, TopoDS_Shape const* S) {
+extern "C" OcctResult<NCollection_List_TopoDS_Shape const*> BRepAlgo_Image_image(const BRepAlgo_Image* self_, TopoDS_Shape const* S) {
     try { return {&(self_->Image(*S)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* BRepAlgo_Image_last_image(const BRepAlgo_Image* self_, TopoDS_Shape const* S, TopTools_ListOfShape* L) {
+extern "C" const char* BRepAlgo_Image_last_image(const BRepAlgo_Image* self_, TopoDS_Shape const* S, NCollection_List_TopoDS_Shape* L) {
     try { self_->LastImage(*S, *L); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -798,7 +708,7 @@ extern "C" const char* BRepAlgo_Loop_init(BRepAlgo_Loop* self_, TopoDS_Face cons
     try { self_->Init(*F); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* BRepAlgo_Loop_add_edge(BRepAlgo_Loop* self_, TopoDS_Edge* E, TopTools_ListOfShape const* LV) {
+extern "C" const char* BRepAlgo_Loop_add_edge(BRepAlgo_Loop* self_, TopoDS_Edge* E, NCollection_List_TopoDS_Shape const* LV) {
     try { self_->AddEdge(*E, *LV); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -806,7 +716,7 @@ extern "C" const char* BRepAlgo_Loop_add_const_edge(BRepAlgo_Loop* self_, TopoDS
     try { self_->AddConstEdge(*E); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* BRepAlgo_Loop_add_const_edges(BRepAlgo_Loop* self_, TopTools_ListOfShape const* LE) {
+extern "C" const char* BRepAlgo_Loop_add_const_edges(BRepAlgo_Loop* self_, NCollection_List_TopoDS_Shape const* LE) {
     try { self_->AddConstEdges(*LE); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -818,15 +728,15 @@ extern "C" const char* BRepAlgo_Loop_perform(BRepAlgo_Loop* self_) {
     try { self_->Perform(); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* BRepAlgo_Loop_update_v_emap(BRepAlgo_Loop* self_, TopTools_IndexedDataMapOfShapeListOfShape* theVEmap) {
+extern "C" const char* BRepAlgo_Loop_update_v_emap(BRepAlgo_Loop* self_, NCollection_IndexedDataMap_TopoDS_Shape_NCollection_List_TopoDS_Shape_TopTools_ShapeMapHasher* theVEmap) {
     try { self_->UpdateVEmap(*theVEmap); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* BRepAlgo_Loop_cut_edge(const BRepAlgo_Loop* self_, TopoDS_Edge const* E, TopTools_ListOfShape const* VonE, TopTools_ListOfShape* NE) {
+extern "C" const char* BRepAlgo_Loop_cut_edge(const BRepAlgo_Loop* self_, TopoDS_Edge const* E, NCollection_List_TopoDS_Shape const* VonE, NCollection_List_TopoDS_Shape* NE) {
     try { self_->CutEdge(*E, *VonE, *NE); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<TopTools_ListOfShape const*> BRepAlgo_Loop_new_wires(const BRepAlgo_Loop* self_) {
+extern "C" OcctResult<NCollection_List_TopoDS_Shape const*> BRepAlgo_Loop_new_wires(const BRepAlgo_Loop* self_) {
     try { return {&(self_->NewWires()), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -834,19 +744,19 @@ extern "C" const char* BRepAlgo_Loop_wires_to_faces(BRepAlgo_Loop* self_) {
     try { self_->WiresToFaces(); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<TopTools_ListOfShape const*> BRepAlgo_Loop_new_faces(const BRepAlgo_Loop* self_) {
+extern "C" OcctResult<NCollection_List_TopoDS_Shape const*> BRepAlgo_Loop_new_faces(const BRepAlgo_Loop* self_) {
     try { return {&(self_->NewFaces()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TopTools_ListOfShape const*> BRepAlgo_Loop_new_edges(const BRepAlgo_Loop* self_, TopoDS_Edge const* E) {
+extern "C" OcctResult<NCollection_List_TopoDS_Shape const*> BRepAlgo_Loop_new_edges(const BRepAlgo_Loop* self_, TopoDS_Edge const* E) {
     try { return {&(self_->NewEdges(*E)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* BRepAlgo_Loop_get_vertices_for_substitute(const BRepAlgo_Loop* self_, TopTools_DataMapOfShapeShape* VerVerMap) {
+extern "C" const char* BRepAlgo_Loop_get_vertices_for_substitute(const BRepAlgo_Loop* self_, NCollection_DataMap_TopoDS_Shape_TopoDS_Shape_TopTools_ShapeMapHasher* VerVerMap) {
     try { self_->GetVerticesForSubstitute(*VerVerMap); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* BRepAlgo_Loop_vertices_for_substitute(BRepAlgo_Loop* self_, TopTools_DataMapOfShapeShape* VerVerMap) {
+extern "C" const char* BRepAlgo_Loop_vertices_for_substitute(BRepAlgo_Loop* self_, NCollection_DataMap_TopoDS_Shape_TopoDS_Shape_TopTools_ShapeMapHasher* VerVerMap) {
     try { self_->VerticesForSubstitute(*VerVerMap); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -920,7 +830,7 @@ extern "C" OcctResult<TopoDS_Shape const*> BRepAlgo_NormalProjection_couple(cons
     try { return {&(self_->Couple(*E)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TopTools_ListOfShape const*> BRepAlgo_NormalProjection_generated(BRepAlgo_NormalProjection* self_, TopoDS_Shape const* S) {
+extern "C" OcctResult<NCollection_List_TopoDS_Shape const*> BRepAlgo_NormalProjection_generated(BRepAlgo_NormalProjection* self_, TopoDS_Shape const* S) {
     try { return {&(self_->Generated(*S)), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -928,7 +838,7 @@ extern "C" OcctResult<bool> BRepAlgo_NormalProjection_is_elementary(const BRepAl
     try { return {self_->IsElementary(*C), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<bool> BRepAlgo_NormalProjection_build_wire(const BRepAlgo_NormalProjection* self_, TopTools_ListOfShape* Liste) {
+extern "C" OcctResult<bool> BRepAlgo_NormalProjection_build_wire(const BRepAlgo_NormalProjection* self_, NCollection_List_TopoDS_Shape* Liste) {
     try { return {self_->BuildWire(*Liste), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -958,24 +868,24 @@ extern "C" OcctResult<const BRepFill_LocationLaw*> BRepFill_ACRLaw_as_BRepFill_L
 extern "C" OcctResult<BRepFill_LocationLaw*> BRepFill_ACRLaw_as_BRepFill_LocationLaw_mut(BRepFill_ACRLaw* self_) { return {static_cast<BRepFill_LocationLaw*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> BRepFill_ACRLaw_as_Standard_Transient(const BRepFill_ACRLaw* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> BRepFill_ACRLaw_as_Standard_Transient_mut(BRepFill_ACRLaw* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleBRepFillACRLaw*> BRepFill_ACRLaw_to_handle(BRepFill_ACRLaw* obj) {
-    try { return {new HandleBRepFillACRLaw(obj), nullptr}; }
+extern "C" OcctResult<Handle_BRepFill_ACRLaw*> BRepFill_ACRLaw_to_handle(BRepFill_ACRLaw* obj) {
+    try { return {new Handle_BRepFill_ACRLaw(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const BRepFill_ACRLaw*> HandleBRepFillACRLaw_get(const HandleBRepFillACRLaw* handle) {
+extern "C" OcctResult<const BRepFill_ACRLaw*> Handle_BRepFill_ACRLaw_get(const Handle_BRepFill_ACRLaw* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<BRepFill_ACRLaw*> HandleBRepFillACRLaw_get_mut(HandleBRepFillACRLaw* handle) {
+extern "C" OcctResult<BRepFill_ACRLaw*> Handle_BRepFill_ACRLaw_get_mut(Handle_BRepFill_ACRLaw* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleBRepFillLocationLaw*> HandleBRepFillACRLaw_to_HandleBRepFillLocationLaw(const HandleBRepFillACRLaw* self_) {
-    try { return {new HandleBRepFillLocationLaw(*self_), nullptr}; }
+extern "C" OcctResult<Handle_BRepFill_LocationLaw*> Handle_BRepFill_ACRLaw_to_Handle_BRepFill_LocationLaw(const Handle_BRepFill_ACRLaw* self_) {
+    try { return {new Handle_BRepFill_LocationLaw(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleBRepFillACRLaw_to_HandleStandardTransient(const HandleBRepFillACRLaw* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_BRepFill_ACRLaw_to_Handle_Standard_Transient(const Handle_BRepFill_ACRLaw* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<int32_t> BRepFill_ACRLaw_inherited_GetStatus(const BRepFill_ACRLaw* self) {
@@ -998,7 +908,7 @@ extern "C" OcctResult<int32_t> BRepFill_ACRLaw_inherited_NbHoles(BRepFill_ACRLaw
     try { return {self->NbHoles(Tol), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* BRepFill_ACRLaw_inherited_Holes(const BRepFill_ACRLaw* self, TColStd_Array1OfInteger& Interval) {
+extern "C" const char* BRepFill_ACRLaw_inherited_Holes(const BRepFill_ACRLaw* self, NCollection_Array1_int& Interval) {
     try { self->Holes(Interval); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -1152,11 +1062,11 @@ extern "C" OcctResult<BRepFill_CompatibleWires*> BRepFill_CompatibleWires_ctor()
     try { return {new BRepFill_CompatibleWires(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<BRepFill_CompatibleWires*> BRepFill_CompatibleWires_ctor_sequenceofshape(TopTools_SequenceOfShape const* Sections) {
+extern "C" OcctResult<BRepFill_CompatibleWires*> BRepFill_CompatibleWires_ctor_seq_shape(NCollection_Sequence_TopoDS_Shape const* Sections) {
     try { return {new BRepFill_CompatibleWires(*Sections), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* BRepFill_CompatibleWires_init(BRepFill_CompatibleWires* self_, TopTools_SequenceOfShape const* Sections) {
+extern "C" const char* BRepFill_CompatibleWires_init(BRepFill_CompatibleWires* self_, NCollection_Sequence_TopoDS_Shape const* Sections) {
     try { self_->Init(*Sections); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -1176,15 +1086,15 @@ extern "C" OcctResult<int32_t> BRepFill_CompatibleWires_get_status(const BRepFil
     try { return {static_cast<int32_t>(self_->GetStatus()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TopTools_SequenceOfShape const*> BRepFill_CompatibleWires_shape(const BRepFill_CompatibleWires* self_) {
+extern "C" OcctResult<NCollection_Sequence_TopoDS_Shape const*> BRepFill_CompatibleWires_shape(const BRepFill_CompatibleWires* self_) {
     try { return {&(self_->Shape()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TopTools_ListOfShape const*> BRepFill_CompatibleWires_generated_shapes(const BRepFill_CompatibleWires* self_, TopoDS_Edge const* SubSection) {
+extern "C" OcctResult<NCollection_List_TopoDS_Shape const*> BRepFill_CompatibleWires_generated_shapes(const BRepFill_CompatibleWires* self_, TopoDS_Edge const* SubSection) {
     try { return {&(self_->GeneratedShapes(*SubSection)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TopTools_DataMapOfShapeListOfShape const*> BRepFill_CompatibleWires_generated(const BRepFill_CompatibleWires* self_) {
+extern "C" OcctResult<NCollection_DataMap_TopoDS_Shape_NCollection_List_TopoDS_Shape_TopTools_ShapeMapHasher const*> BRepFill_CompatibleWires_generated(const BRepFill_CompatibleWires* self_) {
     try { return {&(self_->Generated()), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -1292,24 +1202,24 @@ extern "C" OcctResult<const GeomPlate_CurveConstraint*> BRepFill_CurveConstraint
 extern "C" OcctResult<GeomPlate_CurveConstraint*> BRepFill_CurveConstraint_as_GeomPlate_CurveConstraint_mut(BRepFill_CurveConstraint* self_) { return {static_cast<GeomPlate_CurveConstraint*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> BRepFill_CurveConstraint_as_Standard_Transient(const BRepFill_CurveConstraint* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> BRepFill_CurveConstraint_as_Standard_Transient_mut(BRepFill_CurveConstraint* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleBRepFillCurveConstraint*> BRepFill_CurveConstraint_to_handle(BRepFill_CurveConstraint* obj) {
-    try { return {new HandleBRepFillCurveConstraint(obj), nullptr}; }
+extern "C" OcctResult<Handle_BRepFill_CurveConstraint*> BRepFill_CurveConstraint_to_handle(BRepFill_CurveConstraint* obj) {
+    try { return {new Handle_BRepFill_CurveConstraint(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const BRepFill_CurveConstraint*> HandleBRepFillCurveConstraint_get(const HandleBRepFillCurveConstraint* handle) {
+extern "C" OcctResult<const BRepFill_CurveConstraint*> Handle_BRepFill_CurveConstraint_get(const Handle_BRepFill_CurveConstraint* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<BRepFill_CurveConstraint*> HandleBRepFillCurveConstraint_get_mut(HandleBRepFillCurveConstraint* handle) {
+extern "C" OcctResult<BRepFill_CurveConstraint*> Handle_BRepFill_CurveConstraint_get_mut(Handle_BRepFill_CurveConstraint* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleGeomPlateCurveConstraint*> HandleBRepFillCurveConstraint_to_HandleGeomPlateCurveConstraint(const HandleBRepFillCurveConstraint* self_) {
-    try { return {new HandleGeomPlateCurveConstraint(*self_), nullptr}; }
+extern "C" OcctResult<Handle_GeomPlate_CurveConstraint*> Handle_BRepFill_CurveConstraint_to_Handle_GeomPlate_CurveConstraint(const Handle_BRepFill_CurveConstraint* self_) {
+    try { return {new Handle_GeomPlate_CurveConstraint(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleBRepFillCurveConstraint_to_HandleStandardTransient(const HandleBRepFillCurveConstraint* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_BRepFill_CurveConstraint_to_Handle_Standard_Transient(const Handle_BRepFill_CurveConstraint* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" const char* BRepFill_CurveConstraint_inherited_SetOrder(BRepFill_CurveConstraint* self, int32_t Order) {
@@ -1470,7 +1380,7 @@ extern "C" OcctResult<bool> BRepFill_Draft_is_done(const BRepFill_Draft* self_) 
     try { return {self_->IsDone(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TopTools_ListOfShape const*> BRepFill_Draft_generated(BRepFill_Draft* self_, TopoDS_Shape const* S) {
+extern "C" OcctResult<NCollection_List_TopoDS_Shape const*> BRepFill_Draft_generated(BRepFill_Draft* self_, TopoDS_Shape const* S) {
     try { return {&(self_->Generated(*S)), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -1506,28 +1416,28 @@ extern "C" OcctResult<const BRepFill_LocationLaw*> BRepFill_DraftLaw_as_BRepFill
 extern "C" OcctResult<BRepFill_LocationLaw*> BRepFill_DraftLaw_as_BRepFill_LocationLaw_mut(BRepFill_DraftLaw* self_) { return {static_cast<BRepFill_LocationLaw*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> BRepFill_DraftLaw_as_Standard_Transient(const BRepFill_DraftLaw* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> BRepFill_DraftLaw_as_Standard_Transient_mut(BRepFill_DraftLaw* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleBRepFillDraftLaw*> BRepFill_DraftLaw_to_handle(BRepFill_DraftLaw* obj) {
-    try { return {new HandleBRepFillDraftLaw(obj), nullptr}; }
+extern "C" OcctResult<Handle_BRepFill_DraftLaw*> BRepFill_DraftLaw_to_handle(BRepFill_DraftLaw* obj) {
+    try { return {new Handle_BRepFill_DraftLaw(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const BRepFill_DraftLaw*> HandleBRepFillDraftLaw_get(const HandleBRepFillDraftLaw* handle) {
+extern "C" OcctResult<const BRepFill_DraftLaw*> Handle_BRepFill_DraftLaw_get(const Handle_BRepFill_DraftLaw* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<BRepFill_DraftLaw*> HandleBRepFillDraftLaw_get_mut(HandleBRepFillDraftLaw* handle) {
+extern "C" OcctResult<BRepFill_DraftLaw*> Handle_BRepFill_DraftLaw_get_mut(Handle_BRepFill_DraftLaw* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleBRepFillEdge3DLaw*> HandleBRepFillDraftLaw_to_HandleBRepFillEdge3DLaw(const HandleBRepFillDraftLaw* self_) {
-    try { return {new HandleBRepFillEdge3DLaw(*self_), nullptr}; }
+extern "C" OcctResult<Handle_BRepFill_Edge3DLaw*> Handle_BRepFill_DraftLaw_to_Handle_BRepFill_Edge3DLaw(const Handle_BRepFill_DraftLaw* self_) {
+    try { return {new Handle_BRepFill_Edge3DLaw(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleBRepFillLocationLaw*> HandleBRepFillDraftLaw_to_HandleBRepFillLocationLaw(const HandleBRepFillDraftLaw* self_) {
-    try { return {new HandleBRepFillLocationLaw(*self_), nullptr}; }
+extern "C" OcctResult<Handle_BRepFill_LocationLaw*> Handle_BRepFill_DraftLaw_to_Handle_BRepFill_LocationLaw(const Handle_BRepFill_DraftLaw* self_) {
+    try { return {new Handle_BRepFill_LocationLaw(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleBRepFillDraftLaw_to_HandleStandardTransient(const HandleBRepFillDraftLaw* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_BRepFill_DraftLaw_to_Handle_Standard_Transient(const Handle_BRepFill_DraftLaw* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<int32_t> BRepFill_DraftLaw_inherited_GetStatus(const BRepFill_DraftLaw* self) {
@@ -1550,7 +1460,7 @@ extern "C" OcctResult<int32_t> BRepFill_DraftLaw_inherited_NbHoles(BRepFill_Draf
     try { return {self->NbHoles(Tol), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* BRepFill_DraftLaw_inherited_Holes(const BRepFill_DraftLaw* self, TColStd_Array1OfInteger& Interval) {
+extern "C" const char* BRepFill_DraftLaw_inherited_Holes(const BRepFill_DraftLaw* self, NCollection_Array1_int& Interval) {
     try { self->Holes(Interval); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -1656,31 +1566,31 @@ extern "C" OcctResult<const BRepFill_LocationLaw*> BRepFill_Edge3DLaw_as_BRepFil
 extern "C" OcctResult<BRepFill_LocationLaw*> BRepFill_Edge3DLaw_as_BRepFill_LocationLaw_mut(BRepFill_Edge3DLaw* self_) { return {static_cast<BRepFill_LocationLaw*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> BRepFill_Edge3DLaw_as_Standard_Transient(const BRepFill_Edge3DLaw* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> BRepFill_Edge3DLaw_as_Standard_Transient_mut(BRepFill_Edge3DLaw* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleBRepFillEdge3DLaw*> BRepFill_Edge3DLaw_to_handle(BRepFill_Edge3DLaw* obj) {
-    try { return {new HandleBRepFillEdge3DLaw(obj), nullptr}; }
+extern "C" OcctResult<Handle_BRepFill_Edge3DLaw*> BRepFill_Edge3DLaw_to_handle(BRepFill_Edge3DLaw* obj) {
+    try { return {new Handle_BRepFill_Edge3DLaw(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const BRepFill_Edge3DLaw*> HandleBRepFillEdge3DLaw_get(const HandleBRepFillEdge3DLaw* handle) {
+extern "C" OcctResult<const BRepFill_Edge3DLaw*> Handle_BRepFill_Edge3DLaw_get(const Handle_BRepFill_Edge3DLaw* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<BRepFill_Edge3DLaw*> HandleBRepFillEdge3DLaw_get_mut(HandleBRepFillEdge3DLaw* handle) {
+extern "C" OcctResult<BRepFill_Edge3DLaw*> Handle_BRepFill_Edge3DLaw_get_mut(Handle_BRepFill_Edge3DLaw* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleBRepFillLocationLaw*> HandleBRepFillEdge3DLaw_to_HandleBRepFillLocationLaw(const HandleBRepFillEdge3DLaw* self_) {
-    try { return {new HandleBRepFillLocationLaw(*self_), nullptr}; }
+extern "C" OcctResult<Handle_BRepFill_LocationLaw*> Handle_BRepFill_Edge3DLaw_to_Handle_BRepFill_LocationLaw(const Handle_BRepFill_Edge3DLaw* self_) {
+    try { return {new Handle_BRepFill_LocationLaw(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleBRepFillEdge3DLaw_to_HandleStandardTransient(const HandleBRepFillEdge3DLaw* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_BRepFill_Edge3DLaw_to_Handle_Standard_Transient(const Handle_BRepFill_Edge3DLaw* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleBRepFillDraftLaw*> HandleBRepFillEdge3DLaw_downcast_to_HandleBRepFillDraftLaw(const HandleBRepFillEdge3DLaw* self_) {
+extern "C" OcctResult<Handle_BRepFill_DraftLaw*> Handle_BRepFill_Edge3DLaw_downcast_to_Handle_BRepFill_DraftLaw(const Handle_BRepFill_Edge3DLaw* self_) {
     try {
     opencascade::handle<BRepFill_DraftLaw> result = opencascade::handle<BRepFill_DraftLaw>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleBRepFillDraftLaw(result), nullptr};
+    return {new Handle_BRepFill_DraftLaw(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
@@ -1704,7 +1614,7 @@ extern "C" OcctResult<int32_t> BRepFill_Edge3DLaw_inherited_NbHoles(BRepFill_Edg
     try { return {self->NbHoles(Tol), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* BRepFill_Edge3DLaw_inherited_Holes(const BRepFill_Edge3DLaw* self, TColStd_Array1OfInteger& Interval) {
+extern "C" const char* BRepFill_Edge3DLaw_inherited_Holes(const BRepFill_Edge3DLaw* self, NCollection_Array1_int& Interval) {
     try { self->Holes(Interval); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -1828,24 +1738,24 @@ extern "C" OcctResult<const BRepFill_LocationLaw*> BRepFill_EdgeOnSurfLaw_as_BRe
 extern "C" OcctResult<BRepFill_LocationLaw*> BRepFill_EdgeOnSurfLaw_as_BRepFill_LocationLaw_mut(BRepFill_EdgeOnSurfLaw* self_) { return {static_cast<BRepFill_LocationLaw*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> BRepFill_EdgeOnSurfLaw_as_Standard_Transient(const BRepFill_EdgeOnSurfLaw* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> BRepFill_EdgeOnSurfLaw_as_Standard_Transient_mut(BRepFill_EdgeOnSurfLaw* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleBRepFillEdgeOnSurfLaw*> BRepFill_EdgeOnSurfLaw_to_handle(BRepFill_EdgeOnSurfLaw* obj) {
-    try { return {new HandleBRepFillEdgeOnSurfLaw(obj), nullptr}; }
+extern "C" OcctResult<Handle_BRepFill_EdgeOnSurfLaw*> BRepFill_EdgeOnSurfLaw_to_handle(BRepFill_EdgeOnSurfLaw* obj) {
+    try { return {new Handle_BRepFill_EdgeOnSurfLaw(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const BRepFill_EdgeOnSurfLaw*> HandleBRepFillEdgeOnSurfLaw_get(const HandleBRepFillEdgeOnSurfLaw* handle) {
+extern "C" OcctResult<const BRepFill_EdgeOnSurfLaw*> Handle_BRepFill_EdgeOnSurfLaw_get(const Handle_BRepFill_EdgeOnSurfLaw* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<BRepFill_EdgeOnSurfLaw*> HandleBRepFillEdgeOnSurfLaw_get_mut(HandleBRepFillEdgeOnSurfLaw* handle) {
+extern "C" OcctResult<BRepFill_EdgeOnSurfLaw*> Handle_BRepFill_EdgeOnSurfLaw_get_mut(Handle_BRepFill_EdgeOnSurfLaw* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleBRepFillLocationLaw*> HandleBRepFillEdgeOnSurfLaw_to_HandleBRepFillLocationLaw(const HandleBRepFillEdgeOnSurfLaw* self_) {
-    try { return {new HandleBRepFillLocationLaw(*self_), nullptr}; }
+extern "C" OcctResult<Handle_BRepFill_LocationLaw*> Handle_BRepFill_EdgeOnSurfLaw_to_Handle_BRepFill_LocationLaw(const Handle_BRepFill_EdgeOnSurfLaw* self_) {
+    try { return {new Handle_BRepFill_LocationLaw(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleBRepFillEdgeOnSurfLaw_to_HandleStandardTransient(const HandleBRepFillEdgeOnSurfLaw* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_BRepFill_EdgeOnSurfLaw_to_Handle_Standard_Transient(const Handle_BRepFill_EdgeOnSurfLaw* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<int32_t> BRepFill_EdgeOnSurfLaw_inherited_GetStatus(const BRepFill_EdgeOnSurfLaw* self) {
@@ -1868,7 +1778,7 @@ extern "C" OcctResult<int32_t> BRepFill_EdgeOnSurfLaw_inherited_NbHoles(BRepFill
     try { return {self->NbHoles(Tol), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* BRepFill_EdgeOnSurfLaw_inherited_Holes(const BRepFill_EdgeOnSurfLaw* self, TColStd_Array1OfInteger& Interval) {
+extern "C" const char* BRepFill_EdgeOnSurfLaw_inherited_Holes(const BRepFill_EdgeOnSurfLaw* self, NCollection_Array1_int& Interval) {
     try { self->Holes(Interval); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -1982,7 +1892,7 @@ extern "C" OcctResult<TopoDS_Shape const*> BRepFill_Evolved_shape(const BRepFill
     try { return {&(self_->Shape()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TopTools_ListOfShape const*> BRepFill_Evolved_generated_shapes(const BRepFill_Evolved* self_, TopoDS_Shape const* SpineShape, TopoDS_Shape const* ProfShape) {
+extern "C" OcctResult<NCollection_List_TopoDS_Shape const*> BRepFill_Evolved_generated_shapes(const BRepFill_Evolved* self_, TopoDS_Shape const* SpineShape, TopoDS_Shape const* ProfShape) {
     try { return {&(self_->GeneratedShapes(*SpineShape, *ProfShape)), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -2070,7 +1980,7 @@ extern "C" OcctResult<bool> BRepFill_Filling_is_done(const BRepFill_Filling* sel
     try { return {self_->IsDone(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TopTools_ListOfShape const*> BRepFill_Filling_generated(BRepFill_Filling* self_, TopoDS_Shape const* S) {
+extern "C" OcctResult<NCollection_List_TopoDS_Shape const*> BRepFill_Filling_generated(BRepFill_Filling* self_, TopoDS_Shape const* S) {
     try { return {&(self_->Generated(*S)), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -2124,11 +2034,11 @@ extern "C" OcctResult<TopoDS_Shell const*> BRepFill_Generator_shell(const BRepFi
     try { return {&(self_->Shell()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TopTools_DataMapOfShapeListOfShape const*> BRepFill_Generator_generated(const BRepFill_Generator* self_) {
+extern "C" OcctResult<NCollection_DataMap_TopoDS_Shape_NCollection_List_TopoDS_Shape_TopTools_ShapeMapHasher const*> BRepFill_Generator_generated(const BRepFill_Generator* self_) {
     try { return {&(self_->Generated()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TopTools_ListOfShape const*> BRepFill_Generator_generated_shapes(const BRepFill_Generator* self_, TopoDS_Shape const* SSection) {
+extern "C" OcctResult<NCollection_List_TopoDS_Shape const*> BRepFill_Generator_generated_shapes(const BRepFill_Generator* self_, TopoDS_Shape const* SSection) {
     try { return {&(self_->GeneratedShapes(*SSection)), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -2178,7 +2088,7 @@ extern "C" OcctResult<int32_t> BRepFill_LocationLaw_nb_holes(BRepFill_LocationLa
     try { return {self_->NbHoles(Tol), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* BRepFill_LocationLaw_holes(const BRepFill_LocationLaw* self_, TColStd_Array1OfInteger* Interval) {
+extern "C" const char* BRepFill_LocationLaw_holes(const BRepFill_LocationLaw* self_, NCollection_Array1_int* Interval) {
     try { self_->Holes(*Interval); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -2240,51 +2150,51 @@ extern "C" OcctResult<Handle(Standard_Type) const*> BRepFill_LocationLaw_get_typ
 }
 extern "C" OcctResult<const Standard_Transient*> BRepFill_LocationLaw_as_Standard_Transient(const BRepFill_LocationLaw* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> BRepFill_LocationLaw_as_Standard_Transient_mut(BRepFill_LocationLaw* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleBRepFillLocationLaw*> BRepFill_LocationLaw_to_handle(BRepFill_LocationLaw* obj) {
-    try { return {new HandleBRepFillLocationLaw(obj), nullptr}; }
+extern "C" OcctResult<Handle_BRepFill_LocationLaw*> BRepFill_LocationLaw_to_handle(BRepFill_LocationLaw* obj) {
+    try { return {new Handle_BRepFill_LocationLaw(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const BRepFill_LocationLaw*> HandleBRepFillLocationLaw_get(const HandleBRepFillLocationLaw* handle) {
+extern "C" OcctResult<const BRepFill_LocationLaw*> Handle_BRepFill_LocationLaw_get(const Handle_BRepFill_LocationLaw* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<BRepFill_LocationLaw*> HandleBRepFillLocationLaw_get_mut(HandleBRepFillLocationLaw* handle) {
+extern "C" OcctResult<BRepFill_LocationLaw*> Handle_BRepFill_LocationLaw_get_mut(Handle_BRepFill_LocationLaw* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleBRepFillLocationLaw_to_HandleStandardTransient(const HandleBRepFillLocationLaw* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_BRepFill_LocationLaw_to_Handle_Standard_Transient(const Handle_BRepFill_LocationLaw* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleBRepFillACRLaw*> HandleBRepFillLocationLaw_downcast_to_HandleBRepFillACRLaw(const HandleBRepFillLocationLaw* self_) {
+extern "C" OcctResult<Handle_BRepFill_ACRLaw*> Handle_BRepFill_LocationLaw_downcast_to_Handle_BRepFill_ACRLaw(const Handle_BRepFill_LocationLaw* self_) {
     try {
     opencascade::handle<BRepFill_ACRLaw> result = opencascade::handle<BRepFill_ACRLaw>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleBRepFillACRLaw(result), nullptr};
+    return {new Handle_BRepFill_ACRLaw(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleBRepFillDraftLaw*> HandleBRepFillLocationLaw_downcast_to_HandleBRepFillDraftLaw(const HandleBRepFillLocationLaw* self_) {
+extern "C" OcctResult<Handle_BRepFill_DraftLaw*> Handle_BRepFill_LocationLaw_downcast_to_Handle_BRepFill_DraftLaw(const Handle_BRepFill_LocationLaw* self_) {
     try {
     opencascade::handle<BRepFill_DraftLaw> result = opencascade::handle<BRepFill_DraftLaw>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleBRepFillDraftLaw(result), nullptr};
+    return {new Handle_BRepFill_DraftLaw(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleBRepFillEdge3DLaw*> HandleBRepFillLocationLaw_downcast_to_HandleBRepFillEdge3DLaw(const HandleBRepFillLocationLaw* self_) {
+extern "C" OcctResult<Handle_BRepFill_Edge3DLaw*> Handle_BRepFill_LocationLaw_downcast_to_Handle_BRepFill_Edge3DLaw(const Handle_BRepFill_LocationLaw* self_) {
     try {
     opencascade::handle<BRepFill_Edge3DLaw> result = opencascade::handle<BRepFill_Edge3DLaw>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleBRepFillEdge3DLaw(result), nullptr};
+    return {new Handle_BRepFill_Edge3DLaw(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleBRepFillEdgeOnSurfLaw*> HandleBRepFillLocationLaw_downcast_to_HandleBRepFillEdgeOnSurfLaw(const HandleBRepFillLocationLaw* self_) {
+extern "C" OcctResult<Handle_BRepFill_EdgeOnSurfLaw*> Handle_BRepFill_LocationLaw_downcast_to_Handle_BRepFill_EdgeOnSurfLaw(const Handle_BRepFill_LocationLaw* self_) {
     try {
     opencascade::handle<BRepFill_EdgeOnSurfLaw> result = opencascade::handle<BRepFill_EdgeOnSurfLaw>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleBRepFillEdgeOnSurfLaw(result), nullptr};
+    return {new Handle_BRepFill_EdgeOnSurfLaw(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
@@ -2366,11 +2276,11 @@ extern "C" const char* BRepFill_MultiLine_value3d_on_f1_on_f2(const BRepFill_Mul
     try { self_->Value3dOnF1OnF2(U, *P3d, *PF1, *PF2); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<bool> BRepFill_MultiLine_value_real_array1ofpnt2d_array1ofpnt(const BRepFill_MultiLine* self_, double theU, TColgp_Array1OfPnt2d* thePnt2d, TColgp_Array1OfPnt* thePnt) {
+extern "C" OcctResult<bool> BRepFill_MultiLine_value_real_arr1_pnt2d_arr1_pnt(const BRepFill_MultiLine* self_, double theU, NCollection_Array1_gp_Pnt2d* thePnt2d, NCollection_Array1_gp_Pnt* thePnt) {
     try { return {self_->Value(theU, *thePnt2d, *thePnt), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<bool> BRepFill_MultiLine_d1(const BRepFill_MultiLine* self_, double theU, TColgp_Array1OfVec2d* theVec2d, TColgp_Array1OfVec* theVec) {
+extern "C" OcctResult<bool> BRepFill_MultiLine_d1(const BRepFill_MultiLine* self_, double theU, NCollection_Array1_gp_Vec2d* theVec2d, NCollection_Array1_gp_Vec* theVec) {
     try { return {self_->D1(theU, *theVec2d, *theVec), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -2398,11 +2308,11 @@ extern "C" void BRepFill_MultiLine_destructor(BRepFill_MultiLine* self_) { delet
 // BRepFill_NSections wrappers
 // ========================
 
-extern "C" OcctResult<BRepFill_NSections*> BRepFill_NSections_ctor_sequenceofshape_bool(TopTools_SequenceOfShape const* S, bool Build) {
+extern "C" OcctResult<BRepFill_NSections*> BRepFill_NSections_ctor_seq_shape_bool(NCollection_Sequence_TopoDS_Shape const* S, bool Build) {
     try { return {new BRepFill_NSections(*S, Build), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<BRepFill_NSections*> BRepFill_NSections_ctor_sequenceofshape_sequenceoftrsf_sequenceofreal_real2_bool(TopTools_SequenceOfShape const* S, GeomFill_SequenceOfTrsf const* Trsfs, TColStd_SequenceOfReal const* P, double VF, double VL, bool Build) {
+extern "C" OcctResult<BRepFill_NSections*> BRepFill_NSections_ctor_seq_shape_seq_trsf_seq_double_real2_bool(NCollection_Sequence_TopoDS_Shape const* S, NCollection_Sequence_gp_Trsf const* Trsfs, NCollection_Sequence_double const* P, double VF, double VL, bool Build) {
     try { return {new BRepFill_NSections(*S, *Trsfs, *P, VF, VL, Build), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -2450,24 +2360,24 @@ extern "C" OcctResult<const BRepFill_SectionLaw*> BRepFill_NSections_as_BRepFill
 extern "C" OcctResult<BRepFill_SectionLaw*> BRepFill_NSections_as_BRepFill_SectionLaw_mut(BRepFill_NSections* self_) { return {static_cast<BRepFill_SectionLaw*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> BRepFill_NSections_as_Standard_Transient(const BRepFill_NSections* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> BRepFill_NSections_as_Standard_Transient_mut(BRepFill_NSections* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleBRepFillNSections*> BRepFill_NSections_to_handle(BRepFill_NSections* obj) {
-    try { return {new HandleBRepFillNSections(obj), nullptr}; }
+extern "C" OcctResult<Handle_BRepFill_NSections*> BRepFill_NSections_to_handle(BRepFill_NSections* obj) {
+    try { return {new Handle_BRepFill_NSections(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const BRepFill_NSections*> HandleBRepFillNSections_get(const HandleBRepFillNSections* handle) {
+extern "C" OcctResult<const BRepFill_NSections*> Handle_BRepFill_NSections_get(const Handle_BRepFill_NSections* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<BRepFill_NSections*> HandleBRepFillNSections_get_mut(HandleBRepFillNSections* handle) {
+extern "C" OcctResult<BRepFill_NSections*> Handle_BRepFill_NSections_get_mut(Handle_BRepFill_NSections* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleBRepFillSectionLaw*> HandleBRepFillNSections_to_HandleBRepFillSectionLaw(const HandleBRepFillNSections* self_) {
-    try { return {new HandleBRepFillSectionLaw(*self_), nullptr}; }
+extern "C" OcctResult<Handle_BRepFill_SectionLaw*> Handle_BRepFill_NSections_to_Handle_BRepFill_SectionLaw(const Handle_BRepFill_NSections* self_) {
+    try { return {new Handle_BRepFill_SectionLaw(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleBRepFillNSections_to_HandleStandardTransient(const HandleBRepFillNSections* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_BRepFill_NSections_to_Handle_Standard_Transient(const Handle_BRepFill_NSections* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<int32_t> BRepFill_NSections_inherited_NbLaw(const BRepFill_NSections* self) {
@@ -2594,7 +2504,7 @@ extern "C" OcctResult<TopoDS_Shape const*> BRepFill_OffsetWire_shape(const BRepF
     try { return {&(self_->Shape()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TopTools_ListOfShape const*> BRepFill_OffsetWire_generated_shapes(BRepFill_OffsetWire* self_, TopoDS_Shape const* SpineShape) {
+extern "C" OcctResult<NCollection_List_TopoDS_Shape const*> BRepFill_OffsetWire_generated_shapes(BRepFill_OffsetWire* self_, TopoDS_Shape const* SpineShape) {
     try { return {&(self_->GeneratedShapes(*SpineShape)), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -2660,7 +2570,7 @@ extern "C" OcctResult<TopoDS_Shape const*> BRepFill_Pipe_last_shape(const BRepFi
     try { return {&(self_->LastShape()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* BRepFill_Pipe_generated(BRepFill_Pipe* self_, TopoDS_Shape const* S, TopTools_ListOfShape* L) {
+extern "C" const char* BRepFill_Pipe_generated(BRepFill_Pipe* self_, TopoDS_Shape const* S, NCollection_List_TopoDS_Shape* L) {
     try { self_->Generated(*S, *L); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -2710,6 +2620,14 @@ extern "C" const char* BRepFill_PipeShell_set_force_approx_c1(BRepFill_PipeShell
     try { self_->SetForceApproxC1(ForceApproxC1); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
+extern "C" const char* BRepFill_PipeShell_set_is_build_history(BRepFill_PipeShell* self_, bool theIsBuildHistory) {
+    try { self_->SetIsBuildHistory(theIsBuildHistory); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" OcctResult<bool> BRepFill_PipeShell_is_build_history(const BRepFill_PipeShell* self_) {
+    try { return {self_->IsBuildHistory(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" const char* BRepFill_PipeShell_add_shape_bool2(BRepFill_PipeShell* self_, TopoDS_Shape const* Profile, bool WithContact, bool WithCorrection) {
     try { self_->Add(*Profile, WithContact, WithCorrection); return nullptr; }
     OCCT_CATCH_RETURN_VOID
@@ -2746,7 +2664,7 @@ extern "C" const char* BRepFill_PipeShell_set_transition(BRepFill_PipeShell* sel
     try { self_->SetTransition(static_cast<BRepFill_TransitionStyle>(Mode), Angmin, Angmax); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* BRepFill_PipeShell_simulate(BRepFill_PipeShell* self_, int32_t NumberOfSection, TopTools_ListOfShape* Sections) {
+extern "C" const char* BRepFill_PipeShell_simulate(BRepFill_PipeShell* self_, int32_t NumberOfSection, NCollection_List_TopoDS_Shape* Sections) {
     try { self_->Simulate(NumberOfSection, *Sections); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -2774,7 +2692,7 @@ extern "C" OcctResult<TopoDS_Shape const*> BRepFill_PipeShell_last_shape(const B
     try { return {&(self_->LastShape()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* BRepFill_PipeShell_profiles(BRepFill_PipeShell* self_, TopTools_ListOfShape* theProfiles) {
+extern "C" const char* BRepFill_PipeShell_profiles(BRepFill_PipeShell* self_, NCollection_List_TopoDS_Shape* theProfiles) {
     try { self_->Profiles(*theProfiles); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -2782,7 +2700,7 @@ extern "C" OcctResult<TopoDS_Wire const*> BRepFill_PipeShell_spine(BRepFill_Pipe
     try { return {&(self_->Spine()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* BRepFill_PipeShell_generated(BRepFill_PipeShell* self_, TopoDS_Shape const* S, TopTools_ListOfShape* L) {
+extern "C" const char* BRepFill_PipeShell_generated(BRepFill_PipeShell* self_, TopoDS_Shape const* S, NCollection_List_TopoDS_Shape* L) {
     try { self_->Generated(*S, *L); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -2800,20 +2718,20 @@ extern "C" OcctResult<Handle(Standard_Type) const*> BRepFill_PipeShell_get_type_
 }
 extern "C" OcctResult<const Standard_Transient*> BRepFill_PipeShell_as_Standard_Transient(const BRepFill_PipeShell* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> BRepFill_PipeShell_as_Standard_Transient_mut(BRepFill_PipeShell* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleBRepFillPipeShell*> BRepFill_PipeShell_to_handle(BRepFill_PipeShell* obj) {
-    try { return {new HandleBRepFillPipeShell(obj), nullptr}; }
+extern "C" OcctResult<Handle_BRepFill_PipeShell*> BRepFill_PipeShell_to_handle(BRepFill_PipeShell* obj) {
+    try { return {new Handle_BRepFill_PipeShell(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const BRepFill_PipeShell*> HandleBRepFillPipeShell_get(const HandleBRepFillPipeShell* handle) {
+extern "C" OcctResult<const BRepFill_PipeShell*> Handle_BRepFill_PipeShell_get(const Handle_BRepFill_PipeShell* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<BRepFill_PipeShell*> HandleBRepFillPipeShell_get_mut(HandleBRepFillPipeShell* handle) {
+extern "C" OcctResult<BRepFill_PipeShell*> Handle_BRepFill_PipeShell_get_mut(Handle_BRepFill_PipeShell* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleBRepFillPipeShell_to_HandleStandardTransient(const HandleBRepFillPipeShell* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_BRepFill_PipeShell_to_Handle_Standard_Transient(const Handle_BRepFill_PipeShell* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> BRepFill_PipeShell_inherited_IsInstance(const BRepFill_PipeShell* self, Handle(Standard_Type) const& theType) {
@@ -2974,31 +2892,31 @@ extern "C" OcctResult<Handle(Standard_Type) const*> BRepFill_SectionLaw_get_type
 }
 extern "C" OcctResult<const Standard_Transient*> BRepFill_SectionLaw_as_Standard_Transient(const BRepFill_SectionLaw* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> BRepFill_SectionLaw_as_Standard_Transient_mut(BRepFill_SectionLaw* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<const BRepFill_SectionLaw*> HandleBRepFillSectionLaw_get(const HandleBRepFillSectionLaw* handle) {
+extern "C" OcctResult<const BRepFill_SectionLaw*> Handle_BRepFill_SectionLaw_get(const Handle_BRepFill_SectionLaw* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<BRepFill_SectionLaw*> HandleBRepFillSectionLaw_get_mut(HandleBRepFillSectionLaw* handle) {
+extern "C" OcctResult<BRepFill_SectionLaw*> Handle_BRepFill_SectionLaw_get_mut(Handle_BRepFill_SectionLaw* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleBRepFillSectionLaw_to_HandleStandardTransient(const HandleBRepFillSectionLaw* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_BRepFill_SectionLaw_to_Handle_Standard_Transient(const Handle_BRepFill_SectionLaw* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleBRepFillNSections*> HandleBRepFillSectionLaw_downcast_to_HandleBRepFillNSections(const HandleBRepFillSectionLaw* self_) {
+extern "C" OcctResult<Handle_BRepFill_NSections*> Handle_BRepFill_SectionLaw_downcast_to_Handle_BRepFill_NSections(const Handle_BRepFill_SectionLaw* self_) {
     try {
     opencascade::handle<BRepFill_NSections> result = opencascade::handle<BRepFill_NSections>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleBRepFillNSections(result), nullptr};
+    return {new Handle_BRepFill_NSections(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleBRepFillShapeLaw*> HandleBRepFillSectionLaw_downcast_to_HandleBRepFillShapeLaw(const HandleBRepFillSectionLaw* self_) {
+extern "C" OcctResult<Handle_BRepFill_ShapeLaw*> Handle_BRepFill_SectionLaw_downcast_to_Handle_BRepFill_ShapeLaw(const Handle_BRepFill_SectionLaw* self_) {
     try {
     opencascade::handle<BRepFill_ShapeLaw> result = opencascade::handle<BRepFill_ShapeLaw>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleBRepFillShapeLaw(result), nullptr};
+    return {new Handle_BRepFill_ShapeLaw(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
@@ -3118,24 +3036,24 @@ extern "C" OcctResult<const BRepFill_SectionLaw*> BRepFill_ShapeLaw_as_BRepFill_
 extern "C" OcctResult<BRepFill_SectionLaw*> BRepFill_ShapeLaw_as_BRepFill_SectionLaw_mut(BRepFill_ShapeLaw* self_) { return {static_cast<BRepFill_SectionLaw*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> BRepFill_ShapeLaw_as_Standard_Transient(const BRepFill_ShapeLaw* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> BRepFill_ShapeLaw_as_Standard_Transient_mut(BRepFill_ShapeLaw* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleBRepFillShapeLaw*> BRepFill_ShapeLaw_to_handle(BRepFill_ShapeLaw* obj) {
-    try { return {new HandleBRepFillShapeLaw(obj), nullptr}; }
+extern "C" OcctResult<Handle_BRepFill_ShapeLaw*> BRepFill_ShapeLaw_to_handle(BRepFill_ShapeLaw* obj) {
+    try { return {new Handle_BRepFill_ShapeLaw(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const BRepFill_ShapeLaw*> HandleBRepFillShapeLaw_get(const HandleBRepFillShapeLaw* handle) {
+extern "C" OcctResult<const BRepFill_ShapeLaw*> Handle_BRepFill_ShapeLaw_get(const Handle_BRepFill_ShapeLaw* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<BRepFill_ShapeLaw*> HandleBRepFillShapeLaw_get_mut(HandleBRepFillShapeLaw* handle) {
+extern "C" OcctResult<BRepFill_ShapeLaw*> Handle_BRepFill_ShapeLaw_get_mut(Handle_BRepFill_ShapeLaw* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleBRepFillSectionLaw*> HandleBRepFillShapeLaw_to_HandleBRepFillSectionLaw(const HandleBRepFillShapeLaw* self_) {
-    try { return {new HandleBRepFillSectionLaw(*self_), nullptr}; }
+extern "C" OcctResult<Handle_BRepFill_SectionLaw*> Handle_BRepFill_ShapeLaw_to_Handle_BRepFill_SectionLaw(const Handle_BRepFill_ShapeLaw* self_) {
+    try { return {new Handle_BRepFill_SectionLaw(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleBRepFillShapeLaw_to_HandleStandardTransient(const HandleBRepFillShapeLaw* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_BRepFill_ShapeLaw_to_Handle_Standard_Transient(const Handle_BRepFill_ShapeLaw* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<int32_t> BRepFill_ShapeLaw_inherited_NbLaw(const BRepFill_ShapeLaw* self) {
@@ -3208,16 +3126,16 @@ extern "C" OcctResult<TopoDS_Shape*> BRepFill_Sweep_shape(const BRepFill_Sweep* 
     try { return {new TopoDS_Shape(self_->Shape()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(TopTools_HArray2OfShape)*> BRepFill_Sweep_sub_shape(const BRepFill_Sweep* self_) {
-    try { return {new Handle(TopTools_HArray2OfShape)(self_->SubShape()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HArray2_TopoDS_Shape)*> BRepFill_Sweep_sub_shape(const BRepFill_Sweep* self_) {
+    try { return {new Handle(NCollection_HArray2_TopoDS_Shape)(self_->SubShape()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(TopTools_HArray2OfShape)*> BRepFill_Sweep_inter_faces(const BRepFill_Sweep* self_) {
-    try { return {new Handle(TopTools_HArray2OfShape)(self_->InterFaces()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HArray2_TopoDS_Shape)*> BRepFill_Sweep_inter_faces(const BRepFill_Sweep* self_) {
+    try { return {new Handle(NCollection_HArray2_TopoDS_Shape)(self_->InterFaces()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(TopTools_HArray2OfShape)*> BRepFill_Sweep_sections(const BRepFill_Sweep* self_) {
-    try { return {new Handle(TopTools_HArray2OfShape)(self_->Sections()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HArray2_TopoDS_Shape)*> BRepFill_Sweep_sections(const BRepFill_Sweep* self_) {
+    try { return {new Handle(NCollection_HArray2_TopoDS_Shape)(self_->Sections()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<TopoDS_Shape*> BRepFill_Sweep_tape(const BRepFill_Sweep* self_, int32_t Index) {
@@ -3238,10 +3156,6 @@ extern "C" const char* BRepFill_Sweep_set_angular_control(BRepFill_Sweep* self_,
 }
 extern "C" const char* BRepFill_Sweep_set_force_approx_c1(BRepFill_Sweep* self_, bool ForceApproxC1) {
     try { self_->SetForceApproxC1(ForceApproxC1); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* BRepFill_Sweep_build(BRepFill_Sweep* self_, TopTools_MapOfShape* ReversedEdges, BRepFill_DataMapOfShapeHArray2OfShape* Tapes, BRepFill_DataMapOfShapeHArray2OfShape* Rails, int32_t Transition, int32_t Continuity, int32_t Approx, int32_t Degmax, int32_t Segmax) {
-    try { self_->Build(*ReversedEdges, *Tapes, *Rails, static_cast<BRepFill_TransitionStyle>(Transition), static_cast<GeomAbs_Shape>(Continuity), static_cast<GeomFill_ApproxStyle>(Approx), Degmax, Segmax); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
 extern "C" OcctResult<bool> BRepFill_Sweep_is_done(const BRepFill_Sweep* self_) {
@@ -3266,11 +3180,11 @@ extern "C" OcctResult<BRepFill_TrimEdgeTool*> BRepFill_TrimEdgeTool_ctor_bisec_h
     try { return {new BRepFill_TrimEdgeTool(*Bisec, *S1, *S2, Offset), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* BRepFill_TrimEdgeTool_intersect_with(BRepFill_TrimEdgeTool* self_, TopoDS_Edge const* Edge1, TopoDS_Edge const* Edge2, TopoDS_Shape const* InitShape1, TopoDS_Shape const* InitShape2, TopoDS_Vertex const* End1, TopoDS_Vertex const* End2, int32_t theJoinType, bool IsOpenResult, TColgp_SequenceOfPnt* Params) {
+extern "C" const char* BRepFill_TrimEdgeTool_intersect_with(BRepFill_TrimEdgeTool* self_, TopoDS_Edge const* Edge1, TopoDS_Edge const* Edge2, TopoDS_Shape const* InitShape1, TopoDS_Shape const* InitShape2, TopoDS_Vertex const* End1, TopoDS_Vertex const* End2, int32_t theJoinType, bool IsOpenResult, NCollection_Sequence_gp_Pnt* Params) {
     try { self_->IntersectWith(*Edge1, *Edge2, *InitShape1, *InitShape2, *End1, *End2, static_cast<GeomAbs_JoinType>(theJoinType), IsOpenResult, *Params); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* BRepFill_TrimEdgeTool_add_or_confuse(const BRepFill_TrimEdgeTool* self_, bool Start, TopoDS_Edge const* Edge1, TopoDS_Edge const* Edge2, TColgp_SequenceOfPnt* Params) {
+extern "C" const char* BRepFill_TrimEdgeTool_add_or_confuse(const BRepFill_TrimEdgeTool* self_, bool Start, TopoDS_Edge const* Edge1, TopoDS_Edge const* Edge2, NCollection_Sequence_gp_Pnt* Params) {
     try { self_->AddOrConfuse(Start, *Edge1, *Edge2, *Params); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -3284,19 +3198,19 @@ extern "C" void BRepFill_TrimEdgeTool_destructor(BRepFill_TrimEdgeTool* self_) {
 // BRepFill_TrimShellCorner wrappers
 // ========================
 
-extern "C" OcctResult<BRepFill_TrimShellCorner*> BRepFill_TrimShellCorner_ctor_handletoptoolsharray2ofshape_transitionstyle_ax2_vec(Handle(TopTools_HArray2OfShape) const* theFaces, int32_t theTransition, gp_Ax2 const* theAxeOfBisPlane, gp_Vec const* theIntPointCrossDir) {
+extern "C" OcctResult<BRepFill_TrimShellCorner*> BRepFill_TrimShellCorner_ctor_handlencollectionharray2topodsshape_transitionstyle_ax2_vec(Handle(NCollection_HArray2_TopoDS_Shape) const* theFaces, int32_t theTransition, gp_Ax2 const* theAxeOfBisPlane, gp_Vec const* theIntPointCrossDir) {
     try { return {new BRepFill_TrimShellCorner(*theFaces, static_cast<BRepFill_TransitionStyle>(theTransition), *theAxeOfBisPlane, *theIntPointCrossDir), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* BRepFill_TrimShellCorner_add_bounds(BRepFill_TrimShellCorner* self_, Handle(TopTools_HArray2OfShape) const* Bounds) {
+extern "C" const char* BRepFill_TrimShellCorner_add_bounds(BRepFill_TrimShellCorner* self_, Handle(NCollection_HArray2_TopoDS_Shape) const* Bounds) {
     try { self_->AddBounds(*Bounds); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* BRepFill_TrimShellCorner_add_u_edges(BRepFill_TrimShellCorner* self_, Handle(TopTools_HArray2OfShape) const* theUEdges) {
+extern "C" const char* BRepFill_TrimShellCorner_add_u_edges(BRepFill_TrimShellCorner* self_, Handle(NCollection_HArray2_TopoDS_Shape) const* theUEdges) {
     try { self_->AddUEdges(*theUEdges); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* BRepFill_TrimShellCorner_add_v_edges(BRepFill_TrimShellCorner* self_, Handle(TopTools_HArray2OfShape) const* theVEdges, int32_t theIndex) {
+extern "C" const char* BRepFill_TrimShellCorner_add_v_edges(BRepFill_TrimShellCorner* self_, Handle(NCollection_HArray2_TopoDS_Shape) const* theVEdges, int32_t theIndex) {
     try { self_->AddVEdges(*theVEdges, theIndex); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -3312,7 +3226,7 @@ extern "C" OcctResult<bool> BRepFill_TrimShellCorner_has_section(const BRepFill_
     try { return {self_->HasSection(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* BRepFill_TrimShellCorner_modified(BRepFill_TrimShellCorner* self_, TopoDS_Shape const* S, TopTools_ListOfShape* theModified) {
+extern "C" const char* BRepFill_TrimShellCorner_modified(BRepFill_TrimShellCorner* self_, TopoDS_Shape const* S, NCollection_List_TopoDS_Shape* theModified) {
     try { self_->Modified(*S, *theModified); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -3326,7 +3240,7 @@ extern "C" OcctResult<BRepFill_TrimSurfaceTool*> BRepFill_TrimSurfaceTool_ctor_h
     try { return {new BRepFill_TrimSurfaceTool(*Bis, *Face1, *Face2, *Edge1, *Edge2, Inv1, Inv2), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* BRepFill_TrimSurfaceTool_intersect_with(const BRepFill_TrimSurfaceTool* self_, TopoDS_Edge const* EdgeOnF1, TopoDS_Edge const* EdgeOnF2, TColgp_SequenceOfPnt* Points) {
+extern "C" const char* BRepFill_TrimSurfaceTool_intersect_with(const BRepFill_TrimSurfaceTool* self_, TopoDS_Edge const* EdgeOnF1, TopoDS_Edge const* EdgeOnF2, NCollection_Sequence_gp_Pnt* Points) {
     try { self_->IntersectWith(*EdgeOnF1, *EdgeOnF2, *Points); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -3625,7 +3539,7 @@ extern "C" const char* TopOpeBRep_EdgesIntersector_next_point(TopOpeBRep_EdgesIn
     try { self_->NextPoint(); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<TopOpeBRep_SequenceOfPoint2d const*> TopOpeBRep_EdgesIntersector_points(const TopOpeBRep_EdgesIntersector* self_) {
+extern "C" OcctResult<NCollection_Sequence_TopOpeBRep_Point2d const*> TopOpeBRep_EdgesIntersector_points(const TopOpeBRep_EdgesIntersector* self_) {
     try { return {&(self_->Points()), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -3701,20 +3615,20 @@ extern "C" OcctResult<Handle(Standard_Type) const*> TopOpeBRep_FFDumper_get_type
 }
 extern "C" OcctResult<const Standard_Transient*> TopOpeBRep_FFDumper_as_Standard_Transient(const TopOpeBRep_FFDumper* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> TopOpeBRep_FFDumper_as_Standard_Transient_mut(TopOpeBRep_FFDumper* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleTopOpeBRepFFDumper*> TopOpeBRep_FFDumper_to_handle(TopOpeBRep_FFDumper* obj) {
-    try { return {new HandleTopOpeBRepFFDumper(obj), nullptr}; }
+extern "C" OcctResult<Handle_TopOpeBRep_FFDumper*> TopOpeBRep_FFDumper_to_handle(TopOpeBRep_FFDumper* obj) {
+    try { return {new Handle_TopOpeBRep_FFDumper(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const TopOpeBRep_FFDumper*> HandleTopOpeBRepFFDumper_get(const HandleTopOpeBRepFFDumper* handle) {
+extern "C" OcctResult<const TopOpeBRep_FFDumper*> Handle_TopOpeBRep_FFDumper_get(const Handle_TopOpeBRep_FFDumper* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TopOpeBRep_FFDumper*> HandleTopOpeBRepFFDumper_get_mut(HandleTopOpeBRepFFDumper* handle) {
+extern "C" OcctResult<TopOpeBRep_FFDumper*> Handle_TopOpeBRep_FFDumper_get_mut(Handle_TopOpeBRep_FFDumper* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleTopOpeBRepFFDumper_to_HandleStandardTransient(const HandleTopOpeBRepFFDumper* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_TopOpeBRep_FFDumper_to_Handle_Standard_Transient(const Handle_TopOpeBRep_FFDumper* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> TopOpeBRep_FFDumper_inherited_IsInstance(const TopOpeBRep_FFDumper* self, Handle(Standard_Type) const& theType) {
@@ -3953,7 +3867,7 @@ extern "C" const char* TopOpeBRep_FacesFiller_add_shapes_line(TopOpeBRep_FacesFi
     try { self_->AddShapesLine(); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* TopOpeBRep_FacesFiller_get_esl(TopOpeBRep_FacesFiller* self_, TopTools_ListOfShape* LES) {
+extern "C" const char* TopOpeBRep_FacesFiller_get_esl(TopOpeBRep_FacesFiller* self_, NCollection_List_TopoDS_Shape* LES) {
     try { self_->GetESL(*LES); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -3989,15 +3903,6 @@ extern "C" const char* TopOpeBRep_FacesFiller_process_vp_inoton_r(TopOpeBRep_Fac
 extern "C" const char* TopOpeBRep_FacesFiller_process_v_pnoton_r(TopOpeBRep_FacesFiller* self_, TopOpeBRep_VPointInter const* VP) {
     try { self_->ProcessVPnotonR(*VP); return nullptr; }
     OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<bool> TopOpeBRep_FacesFiller_get_geometry(TopOpeBRep_FacesFiller* self_, TopOpeBRepDS_ListIteratorOfListOfInterference* IT, TopOpeBRep_VPointInter const* VP, int32_t* G, int32_t& K) {
-    try {
-    auto K_enum_ = static_cast<TopOpeBRepDS_Kind>(K);
-    auto result_ = self_->GetGeometry(*IT, *VP, *G, K_enum_);
-    K = static_cast<int32_t>(K_enum_);
-    return {result_, nullptr};
-    }
-    OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<int32_t> TopOpeBRep_FacesFiller_make_geometry(TopOpeBRep_FacesFiller* self_, TopOpeBRep_VPointInter const* VP, int32_t ShapeIndex, int32_t& K) {
     try {
@@ -4074,7 +3979,7 @@ extern "C" const char* TopOpeBRep_FacesFiller_lminmax(TopOpeBRep_LineInter const
     try { TopOpeBRep_FacesFiller::Lminmax(*L, *pmin, *pmax); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<bool> TopOpeBRep_FacesFiller_l_same_domain_erl(TopOpeBRep_LineInter const* L, TopTools_ListOfShape const* ERL) {
+extern "C" OcctResult<bool> TopOpeBRep_FacesFiller_l_same_domain_erl(TopOpeBRep_LineInter const* L, NCollection_List_TopoDS_Shape const* ERL) {
     try { return {TopOpeBRep_FacesFiller::LSameDomainERL(*L, *ERL), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -4104,8 +4009,8 @@ extern "C" OcctResult<TopOpeBRep_FacesIntersector*> TopOpeBRep_FacesIntersector_
     try { return {new TopOpeBRep_FacesIntersector(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(TopOpeBRep_HArray1OfLineInter)*> TopOpeBRep_FacesIntersector_lines(TopOpeBRep_FacesIntersector* self_) {
-    try { return {new Handle(TopOpeBRep_HArray1OfLineInter)(self_->Lines()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HArray1_TopOpeBRep_LineInter)*> TopOpeBRep_FacesIntersector_lines(TopOpeBRep_FacesIntersector* self_) {
+    try { return {new Handle(NCollection_HArray1_TopOpeBRep_LineInter)(self_->Lines()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" const char* TopOpeBRep_FacesIntersector_perform_shape2(TopOpeBRep_FacesIntersector* self_, TopoDS_Shape const* S1, TopoDS_Shape const* S2) {
@@ -4140,7 +4045,7 @@ extern "C" OcctResult<bool> TopOpeBRep_FacesIntersector_is_restriction(const Top
     try { return {self_->IsRestriction(*E), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TopTools_IndexedMapOfShape const*> TopOpeBRep_FacesIntersector_restrictions(const TopOpeBRep_FacesIntersector* self_) {
+extern "C" OcctResult<NCollection_IndexedMap_TopoDS_Shape_TopTools_ShapeMapHasher const*> TopOpeBRep_FacesIntersector_restrictions(const TopOpeBRep_FacesIntersector* self_) {
     try { return {&(self_->Restrictions()), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -4213,190 +4118,6 @@ extern "C" OcctResult<Handle(Geom2d_Curve)*> TopOpeBRep_GeomTool_make_b_spline1f
 extern "C" void TopOpeBRep_GeomTool_destructor(TopOpeBRep_GeomTool* self_) { delete self_; }
 
 // ========================
-// TopOpeBRep_HArray1OfLineInter wrappers
-// ========================
-
-extern "C" OcctResult<TopOpeBRep_HArray1OfLineInter*> TopOpeBRep_HArray1OfLineInter_ctor() {
-    try { return {new TopOpeBRep_HArray1OfLineInter(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<TopOpeBRep_HArray1OfLineInter*> TopOpeBRep_HArray1OfLineInter_ctor_int2(int32_t theLower, int32_t theUpper) {
-    try { return {new TopOpeBRep_HArray1OfLineInter(theLower, theUpper), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<TopOpeBRep_HArray1OfLineInter*> TopOpeBRep_HArray1OfLineInter_ctor_int2_lineinter(int32_t theLower, int32_t theUpper, TopOpeBRep_LineInter const* theValue) {
-    try { return {new TopOpeBRep_HArray1OfLineInter(theLower, theUpper, *theValue), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<TopOpeBRep_HArray1OfLineInter*> TopOpeBRep_HArray1OfLineInter_ctor_lineinter_int2_bool(TopOpeBRep_LineInter const* theBegin, int32_t theLower, int32_t theUpper, bool arg3) {
-    try { return {new TopOpeBRep_HArray1OfLineInter(*theBegin, theLower, theUpper, arg3), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<TopOpeBRep_HArray1OfLineInter*> TopOpeBRep_HArray1OfLineInter_ctor_array1oflineinter(TopOpeBRep_Array1OfLineInter const* theOther) {
-    try { return {new TopOpeBRep_HArray1OfLineInter(*theOther), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<TopOpeBRep_Array1OfLineInter const*> TopOpeBRep_HArray1OfLineInter_array1(const TopOpeBRep_HArray1OfLineInter* self_) {
-    try { return {&(self_->Array1()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<TopOpeBRep_Array1OfLineInter*> TopOpeBRep_HArray1OfLineInter_change_array1(TopOpeBRep_HArray1OfLineInter* self_) {
-    try { return {&(self_->ChangeArray1()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Handle(Standard_Type) const*> TopOpeBRep_HArray1OfLineInter_dynamic_type(const TopOpeBRep_HArray1OfLineInter* self_) {
-    try { return {&(self_->DynamicType()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<char const*> TopOpeBRep_HArray1OfLineInter_get_type_name() {
-    try { return {TopOpeBRep_HArray1OfLineInter::get_type_name(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Handle(Standard_Type) const*> TopOpeBRep_HArray1OfLineInter_get_type_descriptor() {
-    try { return {&(TopOpeBRep_HArray1OfLineInter::get_type_descriptor()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<const Standard_Transient*> TopOpeBRep_HArray1OfLineInter_as_Standard_Transient(const TopOpeBRep_HArray1OfLineInter* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<Standard_Transient*> TopOpeBRep_HArray1OfLineInter_as_Standard_Transient_mut(TopOpeBRep_HArray1OfLineInter* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleTopOpeBRepHArray1OfLineInter*> TopOpeBRep_HArray1OfLineInter_to_handle(TopOpeBRep_HArray1OfLineInter* obj) {
-    try { return {new HandleTopOpeBRepHArray1OfLineInter(obj), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<const TopOpeBRep_HArray1OfLineInter*> HandleTopOpeBRepHArray1OfLineInter_get(const HandleTopOpeBRepHArray1OfLineInter* handle) {
-    try { return {(*handle).get(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<TopOpeBRep_HArray1OfLineInter*> HandleTopOpeBRepHArray1OfLineInter_get_mut(HandleTopOpeBRepHArray1OfLineInter* handle) {
-    try { return {(*handle).get(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<HandleStandardTransient*> HandleTopOpeBRepHArray1OfLineInter_to_HandleStandardTransient(const HandleTopOpeBRepHArray1OfLineInter* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<bool> TopOpeBRep_HArray1OfLineInter_inherited_IsInstance(const TopOpeBRep_HArray1OfLineInter* self, Handle(Standard_Type) const& theType) {
-    try { return {self->IsInstance(theType), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<bool> TopOpeBRep_HArray1OfLineInter_inherited_IsKind(const TopOpeBRep_HArray1OfLineInter* self, Handle(Standard_Type) const& theType) {
-    try { return {self->IsKind(theType), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Standard_Transient*> TopOpeBRep_HArray1OfLineInter_inherited_This(const TopOpeBRep_HArray1OfLineInter* self) {
-    try { return {self->This(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<int32_t> TopOpeBRep_HArray1OfLineInter_inherited_GetRefCount(const TopOpeBRep_HArray1OfLineInter* self) {
-    try { return {self->GetRefCount(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* TopOpeBRep_HArray1OfLineInter_inherited_IncrementRefCounter(TopOpeBRep_HArray1OfLineInter* self) {
-    try { self->IncrementRefCounter(); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<int32_t> TopOpeBRep_HArray1OfLineInter_inherited_DecrementRefCounter(TopOpeBRep_HArray1OfLineInter* self) {
-    try { return {self->DecrementRefCounter(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* TopOpeBRep_HArray1OfLineInter_inherited_Delete(const TopOpeBRep_HArray1OfLineInter* self) {
-    try { self->Delete(); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" void TopOpeBRep_HArray1OfLineInter_destructor(TopOpeBRep_HArray1OfLineInter* self_) { delete self_; }
-
-// ========================
-// TopOpeBRep_HArray1OfVPointInter wrappers
-// ========================
-
-extern "C" OcctResult<TopOpeBRep_HArray1OfVPointInter*> TopOpeBRep_HArray1OfVPointInter_ctor() {
-    try { return {new TopOpeBRep_HArray1OfVPointInter(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<TopOpeBRep_HArray1OfVPointInter*> TopOpeBRep_HArray1OfVPointInter_ctor_int2(int32_t theLower, int32_t theUpper) {
-    try { return {new TopOpeBRep_HArray1OfVPointInter(theLower, theUpper), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<TopOpeBRep_HArray1OfVPointInter*> TopOpeBRep_HArray1OfVPointInter_ctor_int2_vpointinter(int32_t theLower, int32_t theUpper, TopOpeBRep_VPointInter const* theValue) {
-    try { return {new TopOpeBRep_HArray1OfVPointInter(theLower, theUpper, *theValue), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<TopOpeBRep_HArray1OfVPointInter*> TopOpeBRep_HArray1OfVPointInter_ctor_vpointinter_int2_bool(TopOpeBRep_VPointInter const* theBegin, int32_t theLower, int32_t theUpper, bool arg3) {
-    try { return {new TopOpeBRep_HArray1OfVPointInter(*theBegin, theLower, theUpper, arg3), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<TopOpeBRep_HArray1OfVPointInter*> TopOpeBRep_HArray1OfVPointInter_ctor_array1ofvpointinter(TopOpeBRep_Array1OfVPointInter const* theOther) {
-    try { return {new TopOpeBRep_HArray1OfVPointInter(*theOther), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<TopOpeBRep_Array1OfVPointInter const*> TopOpeBRep_HArray1OfVPointInter_array1(const TopOpeBRep_HArray1OfVPointInter* self_) {
-    try { return {&(self_->Array1()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<TopOpeBRep_Array1OfVPointInter*> TopOpeBRep_HArray1OfVPointInter_change_array1(TopOpeBRep_HArray1OfVPointInter* self_) {
-    try { return {&(self_->ChangeArray1()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Handle(Standard_Type) const*> TopOpeBRep_HArray1OfVPointInter_dynamic_type(const TopOpeBRep_HArray1OfVPointInter* self_) {
-    try { return {&(self_->DynamicType()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<char const*> TopOpeBRep_HArray1OfVPointInter_get_type_name() {
-    try { return {TopOpeBRep_HArray1OfVPointInter::get_type_name(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Handle(Standard_Type) const*> TopOpeBRep_HArray1OfVPointInter_get_type_descriptor() {
-    try { return {&(TopOpeBRep_HArray1OfVPointInter::get_type_descriptor()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<const Standard_Transient*> TopOpeBRep_HArray1OfVPointInter_as_Standard_Transient(const TopOpeBRep_HArray1OfVPointInter* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<Standard_Transient*> TopOpeBRep_HArray1OfVPointInter_as_Standard_Transient_mut(TopOpeBRep_HArray1OfVPointInter* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleTopOpeBRepHArray1OfVPointInter*> TopOpeBRep_HArray1OfVPointInter_to_handle(TopOpeBRep_HArray1OfVPointInter* obj) {
-    try { return {new HandleTopOpeBRepHArray1OfVPointInter(obj), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<const TopOpeBRep_HArray1OfVPointInter*> HandleTopOpeBRepHArray1OfVPointInter_get(const HandleTopOpeBRepHArray1OfVPointInter* handle) {
-    try { return {(*handle).get(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<TopOpeBRep_HArray1OfVPointInter*> HandleTopOpeBRepHArray1OfVPointInter_get_mut(HandleTopOpeBRepHArray1OfVPointInter* handle) {
-    try { return {(*handle).get(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<HandleStandardTransient*> HandleTopOpeBRepHArray1OfVPointInter_to_HandleStandardTransient(const HandleTopOpeBRepHArray1OfVPointInter* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<bool> TopOpeBRep_HArray1OfVPointInter_inherited_IsInstance(const TopOpeBRep_HArray1OfVPointInter* self, Handle(Standard_Type) const& theType) {
-    try { return {self->IsInstance(theType), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<bool> TopOpeBRep_HArray1OfVPointInter_inherited_IsKind(const TopOpeBRep_HArray1OfVPointInter* self, Handle(Standard_Type) const& theType) {
-    try { return {self->IsKind(theType), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Standard_Transient*> TopOpeBRep_HArray1OfVPointInter_inherited_This(const TopOpeBRep_HArray1OfVPointInter* self) {
-    try { return {self->This(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<int32_t> TopOpeBRep_HArray1OfVPointInter_inherited_GetRefCount(const TopOpeBRep_HArray1OfVPointInter* self) {
-    try { return {self->GetRefCount(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* TopOpeBRep_HArray1OfVPointInter_inherited_IncrementRefCounter(TopOpeBRep_HArray1OfVPointInter* self) {
-    try { self->IncrementRefCounter(); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<int32_t> TopOpeBRep_HArray1OfVPointInter_inherited_DecrementRefCounter(TopOpeBRep_HArray1OfVPointInter* self) {
-    try { return {self->DecrementRefCounter(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* TopOpeBRep_HArray1OfVPointInter_inherited_Delete(const TopOpeBRep_HArray1OfVPointInter* self) {
-    try { self->Delete(); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" void TopOpeBRep_HArray1OfVPointInter_destructor(TopOpeBRep_HArray1OfVPointInter* self_) { delete self_; }
-
-// ========================
 // TopOpeBRep_Hctxee2d wrappers
 // ========================
 
@@ -4434,20 +4155,20 @@ extern "C" OcctResult<Handle(Standard_Type) const*> TopOpeBRep_Hctxee2d_get_type
 }
 extern "C" OcctResult<const Standard_Transient*> TopOpeBRep_Hctxee2d_as_Standard_Transient(const TopOpeBRep_Hctxee2d* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> TopOpeBRep_Hctxee2d_as_Standard_Transient_mut(TopOpeBRep_Hctxee2d* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleTopOpeBRepHctxee2d*> TopOpeBRep_Hctxee2d_to_handle(TopOpeBRep_Hctxee2d* obj) {
-    try { return {new HandleTopOpeBRepHctxee2d(obj), nullptr}; }
+extern "C" OcctResult<Handle_TopOpeBRep_Hctxee2d*> TopOpeBRep_Hctxee2d_to_handle(TopOpeBRep_Hctxee2d* obj) {
+    try { return {new Handle_TopOpeBRep_Hctxee2d(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const TopOpeBRep_Hctxee2d*> HandleTopOpeBRepHctxee2d_get(const HandleTopOpeBRepHctxee2d* handle) {
+extern "C" OcctResult<const TopOpeBRep_Hctxee2d*> Handle_TopOpeBRep_Hctxee2d_get(const Handle_TopOpeBRep_Hctxee2d* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TopOpeBRep_Hctxee2d*> HandleTopOpeBRepHctxee2d_get_mut(HandleTopOpeBRepHctxee2d* handle) {
+extern "C" OcctResult<TopOpeBRep_Hctxee2d*> Handle_TopOpeBRep_Hctxee2d_get_mut(Handle_TopOpeBRep_Hctxee2d* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleTopOpeBRepHctxee2d_to_HandleStandardTransient(const HandleTopOpeBRepHctxee2d* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_TopOpeBRep_Hctxee2d_to_Handle_Standard_Transient(const Handle_TopOpeBRep_Hctxee2d* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> TopOpeBRep_Hctxee2d_inherited_IsInstance(const TopOpeBRep_Hctxee2d* self, Handle(Standard_Type) const& theType) {
@@ -4542,20 +4263,20 @@ extern "C" OcctResult<Handle(Standard_Type) const*> TopOpeBRep_Hctxff2d_get_type
 }
 extern "C" OcctResult<const Standard_Transient*> TopOpeBRep_Hctxff2d_as_Standard_Transient(const TopOpeBRep_Hctxff2d* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> TopOpeBRep_Hctxff2d_as_Standard_Transient_mut(TopOpeBRep_Hctxff2d* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleTopOpeBRepHctxff2d*> TopOpeBRep_Hctxff2d_to_handle(TopOpeBRep_Hctxff2d* obj) {
-    try { return {new HandleTopOpeBRepHctxff2d(obj), nullptr}; }
+extern "C" OcctResult<Handle_TopOpeBRep_Hctxff2d*> TopOpeBRep_Hctxff2d_to_handle(TopOpeBRep_Hctxff2d* obj) {
+    try { return {new Handle_TopOpeBRep_Hctxff2d(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const TopOpeBRep_Hctxff2d*> HandleTopOpeBRepHctxff2d_get(const HandleTopOpeBRepHctxff2d* handle) {
+extern "C" OcctResult<const TopOpeBRep_Hctxff2d*> Handle_TopOpeBRep_Hctxff2d_get(const Handle_TopOpeBRep_Hctxff2d* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TopOpeBRep_Hctxff2d*> HandleTopOpeBRepHctxff2d_get_mut(HandleTopOpeBRepHctxff2d* handle) {
+extern "C" OcctResult<TopOpeBRep_Hctxff2d*> Handle_TopOpeBRep_Hctxff2d_get_mut(Handle_TopOpeBRep_Hctxff2d* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleTopOpeBRepHctxff2d_to_HandleStandardTransient(const HandleTopOpeBRepHctxff2d* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_TopOpeBRep_Hctxff2d_to_Handle_Standard_Transient(const Handle_TopOpeBRep_Hctxff2d* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> TopOpeBRep_Hctxff2d_inherited_IsInstance(const TopOpeBRep_Hctxff2d* self, Handle(Standard_Type) const& theType) {
@@ -5040,7 +4761,7 @@ extern "C" OcctResult<int32_t> TopOpeBRep_ShapeIntersector_index(const TopOpeBRe
     try { return {self_->Index(K), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* TopOpeBRep_ShapeIntersector_rejected_faces(TopOpeBRep_ShapeIntersector* self_, TopoDS_Shape const* anObj, TopoDS_Shape const* aReference, TopTools_ListOfShape* aListOfShape) {
+extern "C" const char* TopOpeBRep_ShapeIntersector_rejected_faces(TopOpeBRep_ShapeIntersector* self_, TopoDS_Shape const* anObj, TopoDS_Shape const* aReference, NCollection_List_TopoDS_Shape* aListOfShape) {
     try { self_->RejectedFaces(*anObj, *aReference, *aListOfShape); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -5500,22 +5221,6 @@ extern "C" const char* TopOpeBRepBuild_Area1dBuilder_init_area_builder(TopOpeBRe
     try { self_->InitAreaBuilder(*LS, *LC, ForceClass); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* TopOpeBRepBuild_Area1dBuilder_add_loop_to_listof_loop(const TopOpeBRepBuild_Area1dBuilder* self_, Handle(TopOpeBRepBuild_Loop) const* L, TopOpeBRepBuild_ListOfLoop* LOL, Standard_Address s) {
-    try { self_->ADD_Loop_TO_LISTOFLoop(*L, *LOL, s); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* TopOpeBRepBuild_Area1dBuilder_rem_loop_from_listof_loop(const TopOpeBRepBuild_Area1dBuilder* self_, TopOpeBRepBuild_ListIteratorOfListOfLoop* ITLOL, TopOpeBRepBuild_ListOfLoop* LOL, Standard_Address s) {
-    try { self_->REM_Loop_FROM_LISTOFLoop(*ITLOL, *LOL, s); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* TopOpeBRepBuild_Area1dBuilder_add_listof_loop_to_listof_loop(const TopOpeBRepBuild_Area1dBuilder* self_, TopOpeBRepBuild_ListOfLoop* LOL1, TopOpeBRepBuild_ListOfLoop* LOL2, Standard_Address s, Standard_Address s1, Standard_Address s2) {
-    try { self_->ADD_LISTOFLoop_TO_LISTOFLoop(*LOL1, *LOL2, s, s1, s2); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* TopOpeBRepBuild_Area1dBuilder_dump_list(TopOpeBRepBuild_ListOfLoop const* L) {
-    try { TopOpeBRepBuild_Area1dBuilder::DumpList(*L); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
 extern "C" OcctResult<const TopOpeBRepBuild_AreaBuilder*> TopOpeBRepBuild_Area1dBuilder_as_TopOpeBRepBuild_AreaBuilder(const TopOpeBRepBuild_Area1dBuilder* self_) { return {static_cast<const TopOpeBRepBuild_AreaBuilder*>(self_), nullptr}; }
 extern "C" OcctResult<TopOpeBRepBuild_AreaBuilder*> TopOpeBRepBuild_Area1dBuilder_as_TopOpeBRepBuild_AreaBuilder_mut(TopOpeBRepBuild_Area1dBuilder* self_) { return {static_cast<TopOpeBRepBuild_AreaBuilder*>(self_), nullptr}; }
 extern "C" OcctResult<int32_t> TopOpeBRepBuild_Area1dBuilder_inherited_InitArea(TopOpeBRepBuild_Area1dBuilder* self) {
@@ -5594,18 +5299,6 @@ extern "C" OcctResult<Handle(TopOpeBRepBuild_Loop) const*> TopOpeBRepBuild_Area2
     try { return {&(self->Loop()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* TopOpeBRepBuild_Area2dBuilder_inherited_ADD_Loop_TO_LISTOFLoop(const TopOpeBRepBuild_Area2dBuilder* self, Handle(TopOpeBRepBuild_Loop) const& L, TopOpeBRepBuild_ListOfLoop& LOL, Standard_Address s) {
-    try { self->ADD_Loop_TO_LISTOFLoop(L, LOL, s); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* TopOpeBRepBuild_Area2dBuilder_inherited_REM_Loop_FROM_LISTOFLoop(const TopOpeBRepBuild_Area2dBuilder* self, TopOpeBRepBuild_ListIteratorOfListOfLoop& ITLOL, TopOpeBRepBuild_ListOfLoop& LOL, Standard_Address s) {
-    try { self->REM_Loop_FROM_LISTOFLoop(ITLOL, LOL, s); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* TopOpeBRepBuild_Area2dBuilder_inherited_ADD_LISTOFLoop_TO_LISTOFLoop(const TopOpeBRepBuild_Area2dBuilder* self, TopOpeBRepBuild_ListOfLoop& LOL1, TopOpeBRepBuild_ListOfLoop& LOL2, Standard_Address s, Standard_Address s1, Standard_Address s2) {
-    try { self->ADD_LISTOFLoop_TO_LISTOFLoop(LOL1, LOL2, s, s1, s2); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
 extern "C" void TopOpeBRepBuild_Area2dBuilder_destructor(TopOpeBRepBuild_Area2dBuilder* self_) { delete self_; }
 
 // ========================
@@ -5654,18 +5347,6 @@ extern "C" OcctResult<Handle(TopOpeBRepBuild_Loop) const*> TopOpeBRepBuild_Area3
     try { return {&(self->Loop()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* TopOpeBRepBuild_Area3dBuilder_inherited_ADD_Loop_TO_LISTOFLoop(const TopOpeBRepBuild_Area3dBuilder* self, Handle(TopOpeBRepBuild_Loop) const& L, TopOpeBRepBuild_ListOfLoop& LOL, Standard_Address s) {
-    try { self->ADD_Loop_TO_LISTOFLoop(L, LOL, s); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* TopOpeBRepBuild_Area3dBuilder_inherited_REM_Loop_FROM_LISTOFLoop(const TopOpeBRepBuild_Area3dBuilder* self, TopOpeBRepBuild_ListIteratorOfListOfLoop& ITLOL, TopOpeBRepBuild_ListOfLoop& LOL, Standard_Address s) {
-    try { self->REM_Loop_FROM_LISTOFLoop(ITLOL, LOL, s); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* TopOpeBRepBuild_Area3dBuilder_inherited_ADD_LISTOFLoop_TO_LISTOFLoop(const TopOpeBRepBuild_Area3dBuilder* self, TopOpeBRepBuild_ListOfLoop& LOL1, TopOpeBRepBuild_ListOfLoop& LOL2, Standard_Address s, Standard_Address s1, Standard_Address s2) {
-    try { self->ADD_LISTOFLoop_TO_LISTOFLoop(LOL1, LOL2, s, s1, s2); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
 extern "C" void TopOpeBRepBuild_Area3dBuilder_destructor(TopOpeBRepBuild_Area3dBuilder* self_) { delete self_; }
 
 // ========================
@@ -5711,18 +5392,6 @@ extern "C" const char* TopOpeBRepBuild_AreaBuilder_next_loop(TopOpeBRepBuild_Are
 extern "C" OcctResult<Handle(TopOpeBRepBuild_Loop) const*> TopOpeBRepBuild_AreaBuilder_loop_(const TopOpeBRepBuild_AreaBuilder* self_) {
     try { return {&(self_->Loop()), nullptr}; }
     OCCT_CATCH_RETURN
-}
-extern "C" const char* TopOpeBRepBuild_AreaBuilder_add_loop_to_listof_loop(const TopOpeBRepBuild_AreaBuilder* self_, Handle(TopOpeBRepBuild_Loop) const* L, TopOpeBRepBuild_ListOfLoop* LOL, Standard_Address s) {
-    try { self_->ADD_Loop_TO_LISTOFLoop(*L, *LOL, s); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* TopOpeBRepBuild_AreaBuilder_rem_loop_from_listof_loop(const TopOpeBRepBuild_AreaBuilder* self_, TopOpeBRepBuild_ListIteratorOfListOfLoop* ITLOL, TopOpeBRepBuild_ListOfLoop* LOL, Standard_Address s) {
-    try { self_->REM_Loop_FROM_LISTOFLoop(*ITLOL, *LOL, s); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* TopOpeBRepBuild_AreaBuilder_add_listof_loop_to_listof_loop(const TopOpeBRepBuild_AreaBuilder* self_, TopOpeBRepBuild_ListOfLoop* LOL1, TopOpeBRepBuild_ListOfLoop* LOL2, Standard_Address s, Standard_Address s1, Standard_Address s2) {
-    try { self_->ADD_LISTOFLoop_TO_LISTOFLoop(*LOL1, *LOL2, s, s1, s2); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
 }
 extern "C" void TopOpeBRepBuild_AreaBuilder_destructor(TopOpeBRepBuild_AreaBuilder* self_) { delete self_; }
 
@@ -5842,7 +5511,7 @@ extern "C" OcctResult<Handle(TopOpeBRepDS_HDataStructure)*> TopOpeBRepBuild_Buil
     try { return {new Handle(TopOpeBRepDS_HDataStructure)(self_->DataStructure()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TopoDS_Shape*> TopOpeBRepBuild_Builder_k_pmakeface(TopOpeBRepBuild_Builder* self_, TopoDS_Shape const* F1, TopTools_ListOfShape const* LF2, int32_t T1, int32_t T2, bool R1, bool R2) {
+extern "C" OcctResult<TopoDS_Shape*> TopOpeBRepBuild_Builder_k_pmakeface(TopOpeBRepBuild_Builder* self_, TopoDS_Shape const* F1, NCollection_List_TopoDS_Shape const* LF2, int32_t T1, int32_t T2, bool R1, bool R2) {
     try { return {new TopoDS_Shape(self_->KPmakeface(*F1, *LF2, static_cast<TopAbs_State>(T1), static_cast<TopAbs_State>(T2), R1, R2)), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -5866,11 +5535,11 @@ extern "C" const char* TopOpeBRepBuild_Builder_clear(TopOpeBRepBuild_Builder* se
     try { self_->Clear(); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* TopOpeBRepBuild_Builder_merge_edges(TopOpeBRepBuild_Builder* self_, TopTools_ListOfShape const* L1, int32_t TB1, TopTools_ListOfShape const* L2, int32_t TB2, bool onA, bool onB, bool onAB) {
+extern "C" const char* TopOpeBRepBuild_Builder_merge_edges(TopOpeBRepBuild_Builder* self_, NCollection_List_TopoDS_Shape const* L1, int32_t TB1, NCollection_List_TopoDS_Shape const* L2, int32_t TB2, bool onA, bool onB, bool onAB) {
     try { self_->MergeEdges(*L1, static_cast<TopAbs_State>(TB1), *L2, static_cast<TopAbs_State>(TB2), onA, onB, onAB); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* TopOpeBRepBuild_Builder_merge_faces(TopOpeBRepBuild_Builder* self_, TopTools_ListOfShape const* S1, int32_t TB1, TopTools_ListOfShape const* S2, int32_t TB2, bool onA, bool onB, bool onAB) {
+extern "C" const char* TopOpeBRepBuild_Builder_merge_faces(TopOpeBRepBuild_Builder* self_, NCollection_List_TopoDS_Shape const* S1, int32_t TB1, NCollection_List_TopoDS_Shape const* S2, int32_t TB2, bool onA, bool onB, bool onAB) {
     try { self_->MergeFaces(*S1, static_cast<TopAbs_State>(TB1), *S2, static_cast<TopAbs_State>(TB2), onA, onB, onAB); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -5902,11 +5571,11 @@ extern "C" OcctResult<TopoDS_Shape const*> TopOpeBRepBuild_Builder_new_vertex(co
     try { return {&(self_->NewVertex(I)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TopTools_ListOfShape const*> TopOpeBRepBuild_Builder_new_edges(const TopOpeBRepBuild_Builder* self_, int32_t I) {
+extern "C" OcctResult<NCollection_List_TopoDS_Shape const*> TopOpeBRepBuild_Builder_new_edges(const TopOpeBRepBuild_Builder* self_, int32_t I) {
     try { return {&(self_->NewEdges(I)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TopTools_ListOfShape const*> TopOpeBRepBuild_Builder_new_faces(const TopOpeBRepBuild_Builder* self_, int32_t I) {
+extern "C" OcctResult<NCollection_List_TopoDS_Shape const*> TopOpeBRepBuild_Builder_new_faces(const TopOpeBRepBuild_Builder* self_, int32_t I) {
     try { return {&(self_->NewFaces(I)), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -5914,7 +5583,7 @@ extern "C" OcctResult<bool> TopOpeBRepBuild_Builder_is_split(const TopOpeBRepBui
     try { return {self_->IsSplit(*S, static_cast<TopAbs_State>(TB)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TopTools_ListOfShape const*> TopOpeBRepBuild_Builder_splits(const TopOpeBRepBuild_Builder* self_, TopoDS_Shape const* S, int32_t TB) {
+extern "C" OcctResult<NCollection_List_TopoDS_Shape const*> TopOpeBRepBuild_Builder_splits(const TopOpeBRepBuild_Builder* self_, TopoDS_Shape const* S, int32_t TB) {
     try { return {&(self_->Splits(*S, static_cast<TopAbs_State>(TB))), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -5922,7 +5591,7 @@ extern "C" OcctResult<bool> TopOpeBRepBuild_Builder_is_merged(const TopOpeBRepBu
     try { return {self_->IsMerged(*S, static_cast<TopAbs_State>(TB)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TopTools_ListOfShape const*> TopOpeBRepBuild_Builder_merged(const TopOpeBRepBuild_Builder* self_, TopoDS_Shape const* S, int32_t TB) {
+extern "C" OcctResult<NCollection_List_TopoDS_Shape const*> TopOpeBRepBuild_Builder_merged(const TopOpeBRepBuild_Builder* self_, TopoDS_Shape const* S, int32_t TB) {
     try { return {&(self_->Merged(*S, static_cast<TopAbs_State>(TB))), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -5938,23 +5607,23 @@ extern "C" const char* TopOpeBRepBuild_Builder_split_section_edge(TopOpeBRepBuil
     try { self_->SplitSectionEdge(*E); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* TopOpeBRepBuild_Builder_section_curves(TopOpeBRepBuild_Builder* self_, TopTools_ListOfShape* L) {
+extern "C" const char* TopOpeBRepBuild_Builder_section_curves(TopOpeBRepBuild_Builder* self_, NCollection_List_TopoDS_Shape* L) {
     try { self_->SectionCurves(*L); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* TopOpeBRepBuild_Builder_section_edges(TopOpeBRepBuild_Builder* self_, TopTools_ListOfShape* L) {
+extern "C" const char* TopOpeBRepBuild_Builder_section_edges(TopOpeBRepBuild_Builder* self_, NCollection_List_TopoDS_Shape* L) {
     try { self_->SectionEdges(*L); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* TopOpeBRepBuild_Builder_fill_sec_edge_ancestor_map(const TopOpeBRepBuild_Builder* self_, int32_t aShapeRank, TopTools_MapOfShape const* aMapON, TopTools_DataMapOfShapeShape* anAncMap) {
+extern "C" const char* TopOpeBRepBuild_Builder_fill_sec_edge_ancestor_map(const TopOpeBRepBuild_Builder* self_, int32_t aShapeRank, NCollection_Map_TopoDS_Shape_TopTools_ShapeMapHasher const* aMapON, NCollection_DataMap_TopoDS_Shape_TopoDS_Shape_TopTools_ShapeMapHasher* anAncMap) {
     try { self_->FillSecEdgeAncestorMap(aShapeRank, *aMapON, *anAncMap); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* TopOpeBRepBuild_Builder_section_listofshape(TopOpeBRepBuild_Builder* self_, TopTools_ListOfShape* L) {
+extern "C" const char* TopOpeBRepBuild_Builder_section_list_shape(TopOpeBRepBuild_Builder* self_, NCollection_List_TopoDS_Shape* L) {
     try { self_->Section(*L); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<TopTools_ListOfShape const*> TopOpeBRepBuild_Builder_section(TopOpeBRepBuild_Builder* self_) {
+extern "C" OcctResult<NCollection_List_TopoDS_Shape const*> TopOpeBRepBuild_Builder_section(TopOpeBRepBuild_Builder* self_) {
     try { return {&(self_->Section()), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -5966,31 +5635,31 @@ extern "C" const char* TopOpeBRepBuild_Builder_build_edges(TopOpeBRepBuild_Build
     try { self_->BuildEdges(*DS); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<TopOpeBRepDS_DataMapOfShapeListOfShapeOn1State const*> TopOpeBRepBuild_Builder_m_split(const TopOpeBRepBuild_Builder* self_, int32_t s) {
+extern "C" OcctResult<NCollection_DataMap_TopoDS_Shape_TopOpeBRepDS_ListOfShapeOn1State_TopTools_ShapeMapHasher const*> TopOpeBRepBuild_Builder_m_split(const TopOpeBRepBuild_Builder* self_, int32_t s) {
     try { return {&(self_->MSplit(static_cast<TopAbs_State>(s))), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TopOpeBRepDS_DataMapOfShapeListOfShapeOn1State*> TopOpeBRepBuild_Builder_change_m_split(TopOpeBRepBuild_Builder* self_, int32_t s) {
+extern "C" OcctResult<NCollection_DataMap_TopoDS_Shape_TopOpeBRepDS_ListOfShapeOn1State_TopTools_ShapeMapHasher*> TopOpeBRepBuild_Builder_change_m_split(TopOpeBRepBuild_Builder* self_, int32_t s) {
     try { return {&(self_->ChangeMSplit(static_cast<TopAbs_State>(s))), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* TopOpeBRepBuild_Builder_make_edges(TopOpeBRepBuild_Builder* self_, TopoDS_Shape const* E, TopOpeBRepBuild_EdgeBuilder* B, TopTools_ListOfShape* L) {
+extern "C" const char* TopOpeBRepBuild_Builder_make_edges(TopOpeBRepBuild_Builder* self_, TopoDS_Shape const* E, TopOpeBRepBuild_EdgeBuilder* B, NCollection_List_TopoDS_Shape* L) {
     try { self_->MakeEdges(*E, *B, *L); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* TopOpeBRepBuild_Builder_make_faces(TopOpeBRepBuild_Builder* self_, TopoDS_Shape const* F, TopOpeBRepBuild_FaceBuilder* B, TopTools_ListOfShape* L) {
+extern "C" const char* TopOpeBRepBuild_Builder_make_faces(TopOpeBRepBuild_Builder* self_, TopoDS_Shape const* F, TopOpeBRepBuild_FaceBuilder* B, NCollection_List_TopoDS_Shape* L) {
     try { self_->MakeFaces(*F, *B, *L); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* TopOpeBRepBuild_Builder_make_solids(TopOpeBRepBuild_Builder* self_, TopOpeBRepBuild_SolidBuilder* B, TopTools_ListOfShape* L) {
+extern "C" const char* TopOpeBRepBuild_Builder_make_solids(TopOpeBRepBuild_Builder* self_, TopOpeBRepBuild_SolidBuilder* B, NCollection_List_TopoDS_Shape* L) {
     try { self_->MakeSolids(*B, *L); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* TopOpeBRepBuild_Builder_make_shells(TopOpeBRepBuild_Builder* self_, TopOpeBRepBuild_SolidBuilder* B, TopTools_ListOfShape* L) {
+extern "C" const char* TopOpeBRepBuild_Builder_make_shells(TopOpeBRepBuild_Builder* self_, TopOpeBRepBuild_SolidBuilder* B, NCollection_List_TopoDS_Shape* L) {
     try { self_->MakeShells(*B, *L); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<TopTools_ListOfShape*> TopOpeBRepBuild_Builder_change_split(TopOpeBRepBuild_Builder* self_, TopoDS_Shape const* S, int32_t TB) {
+extern "C" OcctResult<NCollection_List_TopoDS_Shape*> TopOpeBRepBuild_Builder_change_split(TopOpeBRepBuild_Builder* self_, TopoDS_Shape const* S, int32_t TB) {
     try { return {&(self_->ChangeSplit(*S, static_cast<TopAbs_State>(TB))), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -6010,19 +5679,19 @@ extern "C" OcctResult<bool> TopOpeBRepBuild_Builder_opefus(const TopOpeBRepBuild
     try { return {self_->Opefus(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<int32_t> TopOpeBRepBuild_Builder_shape_position(TopOpeBRepBuild_Builder* self_, TopoDS_Shape const* S, TopTools_ListOfShape const* LS) {
+extern "C" OcctResult<int32_t> TopOpeBRepBuild_Builder_shape_position(TopOpeBRepBuild_Builder* self_, TopoDS_Shape const* S, NCollection_List_TopoDS_Shape const* LS) {
     try { return {static_cast<int32_t>(self_->ShapePosition(*S, *LS)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<bool> TopOpeBRepBuild_Builder_keep_shape(TopOpeBRepBuild_Builder* self_, TopoDS_Shape const* S, TopTools_ListOfShape const* LS, int32_t T) {
+extern "C" OcctResult<bool> TopOpeBRepBuild_Builder_keep_shape(TopOpeBRepBuild_Builder* self_, TopoDS_Shape const* S, NCollection_List_TopoDS_Shape const* LS, int32_t T) {
     try { return {self_->KeepShape(*S, *LS, static_cast<TopAbs_State>(T)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* TopOpeBRepBuild_Builder_find_same_domain(const TopOpeBRepBuild_Builder* self_, TopTools_ListOfShape* L1, TopTools_ListOfShape* L2) {
+extern "C" const char* TopOpeBRepBuild_Builder_find_same_domain(const TopOpeBRepBuild_Builder* self_, NCollection_List_TopoDS_Shape* L1, NCollection_List_TopoDS_Shape* L2) {
     try { self_->FindSameDomain(*L1, *L2); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* TopOpeBRepBuild_Builder_find_same_domain_same_orientation(const TopOpeBRepBuild_Builder* self_, TopTools_ListOfShape* LSO, TopTools_ListOfShape* LDO) {
+extern "C" const char* TopOpeBRepBuild_Builder_find_same_domain_same_orientation(const TopOpeBRepBuild_Builder* self_, NCollection_List_TopoDS_Shape* LSO, NCollection_List_TopoDS_Shape* LDO) {
     try { self_->FindSameDomainSameOrientation(*LSO, *LDO); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -6034,7 +5703,7 @@ extern "C" const char* TopOpeBRepBuild_Builder_clear_maps(TopOpeBRepBuild_Builde
     try { self_->ClearMaps(); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* TopOpeBRepBuild_Builder_find_same_rank(const TopOpeBRepBuild_Builder* self_, TopTools_ListOfShape const* L1, int32_t R, TopTools_ListOfShape* L2) {
+extern "C" const char* TopOpeBRepBuild_Builder_find_same_rank(const TopOpeBRepBuild_Builder* self_, NCollection_List_TopoDS_Shape const* L1, int32_t R, NCollection_List_TopoDS_Shape* L2) {
     try { self_->FindSameRank(*L1, R, *L2); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -6106,7 +5775,7 @@ extern "C" const char* TopOpeBRepBuild_Builder_kp_clear_maps(TopOpeBRepBuild_Bui
     try { self_->KPClearMaps(); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<int32_t> TopOpeBRepBuild_Builder_k_plhg_shape_shapeenum_listofshape(const TopOpeBRepBuild_Builder* self_, TopoDS_Shape const* S, int32_t T, TopTools_ListOfShape* L) {
+extern "C" OcctResult<int32_t> TopOpeBRepBuild_Builder_k_plhg_shape_shapeenum_list_shape(const TopOpeBRepBuild_Builder* self_, TopoDS_Shape const* S, int32_t T, NCollection_List_TopoDS_Shape* L) {
     try { return {self_->KPlhg(*S, static_cast<TopAbs_ShapeEnum>(T), *L), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -6114,7 +5783,7 @@ extern "C" OcctResult<int32_t> TopOpeBRepBuild_Builder_k_plhg_shape_shapeenum(co
     try { return {self_->KPlhg(*S, static_cast<TopAbs_ShapeEnum>(T)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<int32_t> TopOpeBRepBuild_Builder_k_plhsd_shape_shapeenum_listofshape(const TopOpeBRepBuild_Builder* self_, TopoDS_Shape const* S, int32_t T, TopTools_ListOfShape* L) {
+extern "C" OcctResult<int32_t> TopOpeBRepBuild_Builder_k_plhsd_shape_shapeenum_list_shape(const TopOpeBRepBuild_Builder* self_, TopoDS_Shape const* S, int32_t T, NCollection_List_TopoDS_Shape* L) {
     try { return {self_->KPlhsd(*S, static_cast<TopAbs_ShapeEnum>(T), *L), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -6122,7 +5791,7 @@ extern "C" OcctResult<int32_t> TopOpeBRepBuild_Builder_k_plhsd_shape_shapeenum(c
     try { return {self_->KPlhsd(*S, static_cast<TopAbs_ShapeEnum>(T)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<int32_t> TopOpeBRepBuild_Builder_k_pclas_ss_shape_listofshape_shape(TopOpeBRepBuild_Builder* self_, TopoDS_Shape const* S1, TopTools_ListOfShape const* exceptLS1, TopoDS_Shape const* S2) {
+extern "C" OcctResult<int32_t> TopOpeBRepBuild_Builder_k_pclas_ss_shape_list_shape_shape(TopOpeBRepBuild_Builder* self_, TopoDS_Shape const* S1, NCollection_List_TopoDS_Shape const* exceptLS1, TopoDS_Shape const* S2) {
     try { return {static_cast<int32_t>(self_->KPclasSS(*S1, *exceptLS1, *S2)), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -6134,15 +5803,15 @@ extern "C" OcctResult<int32_t> TopOpeBRepBuild_Builder_k_pclas_ss_shape2(TopOpeB
     try { return {static_cast<int32_t>(self_->KPclasSS(*S1, *S2)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<bool> TopOpeBRepBuild_Builder_k_piskolesh(const TopOpeBRepBuild_Builder* self_, TopoDS_Shape const* S, TopTools_ListOfShape* LS, TopTools_ListOfShape* LF) {
+extern "C" OcctResult<bool> TopOpeBRepBuild_Builder_k_piskolesh(const TopOpeBRepBuild_Builder* self_, TopoDS_Shape const* S, NCollection_List_TopoDS_Shape* LS, NCollection_List_TopoDS_Shape* LF) {
     try { return {self_->KPiskolesh(*S, *LS, *LF), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<bool> TopOpeBRepBuild_Builder_k_piskoletgesh(const TopOpeBRepBuild_Builder* self_, TopoDS_Shape const* S, TopTools_ListOfShape* LS, TopTools_ListOfShape* LF) {
+extern "C" OcctResult<bool> TopOpeBRepBuild_Builder_k_piskoletgesh(const TopOpeBRepBuild_Builder* self_, TopoDS_Shape const* S, NCollection_List_TopoDS_Shape* LS, NCollection_List_TopoDS_Shape* LF) {
     try { return {self_->KPiskoletgesh(*S, *LS, *LF), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* TopOpeBRepBuild_Builder_kp_same_domain(const TopOpeBRepBuild_Builder* self_, TopTools_ListOfShape* L1, TopTools_ListOfShape* L2) {
+extern "C" const char* TopOpeBRepBuild_Builder_kp_same_domain(const TopOpeBRepBuild_Builder* self_, NCollection_List_TopoDS_Shape* L1, NCollection_List_TopoDS_Shape* L2) {
     try { self_->KPSameDomain(*L1, *L2); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -6200,15 +5869,15 @@ extern "C" const char* TopOpeBRepBuild_Builder_split_eviso_o_nperiodic_f(TopOpeB
     try { self_->SplitEvisoONperiodicF(); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* TopOpeBRepBuild_Builder_g_merge_solids(TopOpeBRepBuild_Builder* self_, TopTools_ListOfShape const* LSO1, TopTools_ListOfShape const* LSO2, TopOpeBRepBuild_GTopo const* G) {
+extern "C" const char* TopOpeBRepBuild_Builder_g_merge_solids(TopOpeBRepBuild_Builder* self_, NCollection_List_TopoDS_Shape const* LSO1, NCollection_List_TopoDS_Shape const* LSO2, TopOpeBRepBuild_GTopo const* G) {
     try { self_->GMergeSolids(*LSO1, *LSO2, *G); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* TopOpeBRepBuild_Builder_g_fill_solids_sfs(TopOpeBRepBuild_Builder* self_, TopTools_ListOfShape const* LSO1, TopTools_ListOfShape const* LSO2, TopOpeBRepBuild_GTopo const* G, TopOpeBRepBuild_ShellFaceSet* SFS) {
+extern "C" const char* TopOpeBRepBuild_Builder_g_fill_solids_sfs(TopOpeBRepBuild_Builder* self_, NCollection_List_TopoDS_Shape const* LSO1, NCollection_List_TopoDS_Shape const* LSO2, TopOpeBRepBuild_GTopo const* G, TopOpeBRepBuild_ShellFaceSet* SFS) {
     try { self_->GFillSolidsSFS(*LSO1, *LSO2, *G, *SFS); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* TopOpeBRepBuild_Builder_g_fill_solid_sfs(TopOpeBRepBuild_Builder* self_, TopoDS_Shape const* SO1, TopTools_ListOfShape const* LSO2, TopOpeBRepBuild_GTopo const* G, TopOpeBRepBuild_ShellFaceSet* SFS) {
+extern "C" const char* TopOpeBRepBuild_Builder_g_fill_solid_sfs(TopOpeBRepBuild_Builder* self_, TopoDS_Shape const* SO1, NCollection_List_TopoDS_Shape const* LSO2, TopOpeBRepBuild_GTopo const* G, TopOpeBRepBuild_ShellFaceSet* SFS) {
     try { self_->GFillSolidSFS(*SO1, *LSO2, *G, *SFS); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -6220,15 +5889,15 @@ extern "C" const char* TopOpeBRepBuild_Builder_g_fill_surface_topology_sfs_surfa
     try { self_->GFillSurfaceTopologySFS(*IT, *G, *SFS); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* TopOpeBRepBuild_Builder_g_fill_shell_sfs(TopOpeBRepBuild_Builder* self_, TopoDS_Shape const* SH1, TopTools_ListOfShape const* LSO2, TopOpeBRepBuild_GTopo const* G, TopOpeBRepBuild_ShellFaceSet* SFS) {
+extern "C" const char* TopOpeBRepBuild_Builder_g_fill_shell_sfs(TopOpeBRepBuild_Builder* self_, TopoDS_Shape const* SH1, NCollection_List_TopoDS_Shape const* LSO2, TopOpeBRepBuild_GTopo const* G, TopOpeBRepBuild_ShellFaceSet* SFS) {
     try { self_->GFillShellSFS(*SH1, *LSO2, *G, *SFS); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* TopOpeBRepBuild_Builder_g_fill_face_sfs(TopOpeBRepBuild_Builder* self_, TopoDS_Shape const* F1, TopTools_ListOfShape const* LSO2, TopOpeBRepBuild_GTopo const* G, TopOpeBRepBuild_ShellFaceSet* SFS) {
+extern "C" const char* TopOpeBRepBuild_Builder_g_fill_face_sfs(TopOpeBRepBuild_Builder* self_, TopoDS_Shape const* F1, NCollection_List_TopoDS_Shape const* LSO2, TopOpeBRepBuild_GTopo const* G, TopOpeBRepBuild_ShellFaceSet* SFS) {
     try { self_->GFillFaceSFS(*F1, *LSO2, *G, *SFS); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* TopOpeBRepBuild_Builder_g_split_face_sfs(TopOpeBRepBuild_Builder* self_, TopoDS_Shape const* F1, TopTools_ListOfShape const* LSclass, TopOpeBRepBuild_GTopo const* G, TopOpeBRepBuild_ShellFaceSet* SFS) {
+extern "C" const char* TopOpeBRepBuild_Builder_g_split_face_sfs(TopOpeBRepBuild_Builder* self_, TopoDS_Shape const* F1, NCollection_List_TopoDS_Shape const* LSclass, TopOpeBRepBuild_GTopo const* G, TopOpeBRepBuild_ShellFaceSet* SFS) {
     try { self_->GSplitFaceSFS(*F1, *LSclass, *G, *SFS); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -6236,7 +5905,7 @@ extern "C" const char* TopOpeBRepBuild_Builder_g_merge_face_sfs(TopOpeBRepBuild_
     try { self_->GMergeFaceSFS(*F, *G, *SFS); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* TopOpeBRepBuild_Builder_g_split_face(TopOpeBRepBuild_Builder* self_, TopoDS_Shape const* F, TopOpeBRepBuild_GTopo const* G, TopTools_ListOfShape const* LSclass) {
+extern "C" const char* TopOpeBRepBuild_Builder_g_split_face(TopOpeBRepBuild_Builder* self_, TopoDS_Shape const* F, TopOpeBRepBuild_GTopo const* G, NCollection_List_TopoDS_Shape const* LSclass) {
     try { self_->GSplitFace(*F, *G, *LSclass); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -6244,31 +5913,31 @@ extern "C" const char* TopOpeBRepBuild_Builder_add_on_patches_sfs(TopOpeBRepBuil
     try { self_->AddONPatchesSFS(*G, *SFS); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* TopOpeBRepBuild_Builder_fill_on_patches(TopOpeBRepBuild_Builder* self_, TopTools_ListOfShape const* anEdgesON, TopoDS_Shape const* aBaseFace, TopTools_IndexedMapOfOrientedShape const* avoidMap) {
+extern "C" const char* TopOpeBRepBuild_Builder_fill_on_patches(TopOpeBRepBuild_Builder* self_, NCollection_List_TopoDS_Shape const* anEdgesON, TopoDS_Shape const* aBaseFace, NCollection_IndexedMap_TopoDS_Shape const* avoidMap) {
     try { self_->FillOnPatches(*anEdgesON, *aBaseFace, *avoidMap); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* TopOpeBRepBuild_Builder_find_faces_touching_edge(const TopOpeBRepBuild_Builder* self_, TopoDS_Shape const* aFace, TopoDS_Shape const* anEdge, int32_t aShRank, TopTools_ListOfShape* aFaces) {
+extern "C" const char* TopOpeBRepBuild_Builder_find_faces_touching_edge(const TopOpeBRepBuild_Builder* self_, TopoDS_Shape const* aFace, TopoDS_Shape const* anEdge, int32_t aShRank, NCollection_List_TopoDS_Shape* aFaces) {
     try { self_->FindFacesTouchingEdge(*aFace, *anEdge, aShRank, *aFaces); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* TopOpeBRepBuild_Builder_g_merge_faces(TopOpeBRepBuild_Builder* self_, TopTools_ListOfShape const* LF1, TopTools_ListOfShape const* LF2, TopOpeBRepBuild_GTopo const* G) {
+extern "C" const char* TopOpeBRepBuild_Builder_g_merge_faces(TopOpeBRepBuild_Builder* self_, NCollection_List_TopoDS_Shape const* LF1, NCollection_List_TopoDS_Shape const* LF2, TopOpeBRepBuild_GTopo const* G) {
     try { self_->GMergeFaces(*LF1, *LF2, *G); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* TopOpeBRepBuild_Builder_g_fill_faces_wes(TopOpeBRepBuild_Builder* self_, TopTools_ListOfShape const* LF1, TopTools_ListOfShape const* LF2, TopOpeBRepBuild_GTopo const* G, TopOpeBRepBuild_WireEdgeSet* WES) {
+extern "C" const char* TopOpeBRepBuild_Builder_g_fill_faces_wes(TopOpeBRepBuild_Builder* self_, NCollection_List_TopoDS_Shape const* LF1, NCollection_List_TopoDS_Shape const* LF2, TopOpeBRepBuild_GTopo const* G, TopOpeBRepBuild_WireEdgeSet* WES) {
     try { self_->GFillFacesWES(*LF1, *LF2, *G, *WES); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* TopOpeBRepBuild_Builder_g_fill_faces_wesk(TopOpeBRepBuild_Builder* self_, TopTools_ListOfShape const* LF1, TopTools_ListOfShape const* LF2, TopOpeBRepBuild_GTopo const* G, TopOpeBRepBuild_WireEdgeSet* WES, int32_t K) {
+extern "C" const char* TopOpeBRepBuild_Builder_g_fill_faces_wesk(TopOpeBRepBuild_Builder* self_, NCollection_List_TopoDS_Shape const* LF1, NCollection_List_TopoDS_Shape const* LF2, TopOpeBRepBuild_GTopo const* G, TopOpeBRepBuild_WireEdgeSet* WES, int32_t K) {
     try { self_->GFillFacesWESK(*LF1, *LF2, *G, *WES, K); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* TopOpeBRepBuild_Builder_g_fill_faces_wes_make_faces(TopOpeBRepBuild_Builder* self_, TopTools_ListOfShape const* LF1, TopTools_ListOfShape const* LF2, TopTools_ListOfShape const* LSO, TopOpeBRepBuild_GTopo const* G) {
+extern "C" const char* TopOpeBRepBuild_Builder_g_fill_faces_wes_make_faces(TopOpeBRepBuild_Builder* self_, NCollection_List_TopoDS_Shape const* LF1, NCollection_List_TopoDS_Shape const* LF2, NCollection_List_TopoDS_Shape const* LSO, TopOpeBRepBuild_GTopo const* G) {
     try { self_->GFillFacesWESMakeFaces(*LF1, *LF2, *LSO, *G); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* TopOpeBRepBuild_Builder_g_fill_face_wes(TopOpeBRepBuild_Builder* self_, TopoDS_Shape const* F, TopTools_ListOfShape const* LF2, TopOpeBRepBuild_GTopo const* G, TopOpeBRepBuild_WireEdgeSet* WES) {
+extern "C" const char* TopOpeBRepBuild_Builder_g_fill_face_wes(TopOpeBRepBuild_Builder* self_, TopoDS_Shape const* F, NCollection_List_TopoDS_Shape const* LF2, TopOpeBRepBuild_GTopo const* G, TopOpeBRepBuild_WireEdgeSet* WES) {
     try { self_->GFillFaceWES(*F, *LF2, *G, *WES); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -6280,19 +5949,19 @@ extern "C" const char* TopOpeBRepBuild_Builder_g_fill_curve_topology_wes_curveit
     try { self_->GFillCurveTopologyWES(*IT, *G, *WES); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* TopOpeBRepBuild_Builder_g_fill_on_parts_wes(TopOpeBRepBuild_Builder* self_, TopoDS_Shape const* F, TopOpeBRepBuild_GTopo const* G, TopTools_ListOfShape const* LSclass, TopOpeBRepBuild_WireEdgeSet* WES) {
+extern "C" const char* TopOpeBRepBuild_Builder_g_fill_on_parts_wes(TopOpeBRepBuild_Builder* self_, TopoDS_Shape const* F, TopOpeBRepBuild_GTopo const* G, NCollection_List_TopoDS_Shape const* LSclass, TopOpeBRepBuild_WireEdgeSet* WES) {
     try { self_->GFillONPartsWES(*F, *G, *LSclass, *WES); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* TopOpeBRepBuild_Builder_g_fill_wire_wes(TopOpeBRepBuild_Builder* self_, TopoDS_Shape const* W, TopTools_ListOfShape const* LF2, TopOpeBRepBuild_GTopo const* G, TopOpeBRepBuild_WireEdgeSet* WES) {
+extern "C" const char* TopOpeBRepBuild_Builder_g_fill_wire_wes(TopOpeBRepBuild_Builder* self_, TopoDS_Shape const* W, NCollection_List_TopoDS_Shape const* LF2, TopOpeBRepBuild_GTopo const* G, TopOpeBRepBuild_WireEdgeSet* WES) {
     try { self_->GFillWireWES(*W, *LF2, *G, *WES); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* TopOpeBRepBuild_Builder_g_fill_edge_wes(TopOpeBRepBuild_Builder* self_, TopoDS_Shape const* E, TopTools_ListOfShape const* LF2, TopOpeBRepBuild_GTopo const* G, TopOpeBRepBuild_WireEdgeSet* WES) {
+extern "C" const char* TopOpeBRepBuild_Builder_g_fill_edge_wes(TopOpeBRepBuild_Builder* self_, TopoDS_Shape const* E, NCollection_List_TopoDS_Shape const* LF2, TopOpeBRepBuild_GTopo const* G, TopOpeBRepBuild_WireEdgeSet* WES) {
     try { self_->GFillEdgeWES(*E, *LF2, *G, *WES); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* TopOpeBRepBuild_Builder_g_split_edge_wes(TopOpeBRepBuild_Builder* self_, TopoDS_Shape const* E, TopTools_ListOfShape const* LF2, TopOpeBRepBuild_GTopo const* G, TopOpeBRepBuild_WireEdgeSet* WES) {
+extern "C" const char* TopOpeBRepBuild_Builder_g_split_edge_wes(TopOpeBRepBuild_Builder* self_, TopoDS_Shape const* E, NCollection_List_TopoDS_Shape const* LF2, TopOpeBRepBuild_GTopo const* G, TopOpeBRepBuild_WireEdgeSet* WES) {
     try { self_->GSplitEdgeWES(*E, *LF2, *G, *WES); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -6300,19 +5969,19 @@ extern "C" const char* TopOpeBRepBuild_Builder_g_merge_edge_wes(TopOpeBRepBuild_
     try { self_->GMergeEdgeWES(*E, *G, *WES); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* TopOpeBRepBuild_Builder_g_split_edge(TopOpeBRepBuild_Builder* self_, TopoDS_Shape const* E, TopOpeBRepBuild_GTopo const* G, TopTools_ListOfShape const* LSclass) {
+extern "C" const char* TopOpeBRepBuild_Builder_g_split_edge(TopOpeBRepBuild_Builder* self_, TopoDS_Shape const* E, TopOpeBRepBuild_GTopo const* G, NCollection_List_TopoDS_Shape const* LSclass) {
     try { self_->GSplitEdge(*E, *G, *LSclass); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* TopOpeBRepBuild_Builder_g_merge_edges(TopOpeBRepBuild_Builder* self_, TopTools_ListOfShape const* LE1, TopTools_ListOfShape const* LE2, TopOpeBRepBuild_GTopo const* G) {
+extern "C" const char* TopOpeBRepBuild_Builder_g_merge_edges(TopOpeBRepBuild_Builder* self_, NCollection_List_TopoDS_Shape const* LE1, NCollection_List_TopoDS_Shape const* LE2, TopOpeBRepBuild_GTopo const* G) {
     try { self_->GMergeEdges(*LE1, *LE2, *G); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* TopOpeBRepBuild_Builder_g_fill_edges_pvs(TopOpeBRepBuild_Builder* self_, TopTools_ListOfShape const* LE1, TopTools_ListOfShape const* LE2, TopOpeBRepBuild_GTopo const* G, TopOpeBRepBuild_PaveSet* PVS) {
+extern "C" const char* TopOpeBRepBuild_Builder_g_fill_edges_pvs(TopOpeBRepBuild_Builder* self_, NCollection_List_TopoDS_Shape const* LE1, NCollection_List_TopoDS_Shape const* LE2, TopOpeBRepBuild_GTopo const* G, TopOpeBRepBuild_PaveSet* PVS) {
     try { self_->GFillEdgesPVS(*LE1, *LE2, *G, *PVS); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* TopOpeBRepBuild_Builder_g_fill_edge_pvs(TopOpeBRepBuild_Builder* self_, TopoDS_Shape const* E, TopTools_ListOfShape const* LE2, TopOpeBRepBuild_GTopo const* G, TopOpeBRepBuild_PaveSet* PVS) {
+extern "C" const char* TopOpeBRepBuild_Builder_g_fill_edge_pvs(TopOpeBRepBuild_Builder* self_, TopoDS_Shape const* E, NCollection_List_TopoDS_Shape const* LE2, TopOpeBRepBuild_GTopo const* G, TopOpeBRepBuild_PaveSet* PVS) {
     try { self_->GFillEdgePVS(*E, *LE2, *G, *PVS); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -6328,11 +5997,11 @@ extern "C" OcctResult<bool> TopOpeBRepBuild_Builder_g_param_on_reference(const T
     try { return {self_->GParamOnReference(*V, *E, *P), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<bool> TopOpeBRepBuild_Builder_g_keep_shape(TopOpeBRepBuild_Builder* self_, TopoDS_Shape const* S, TopTools_ListOfShape const* Lref, int32_t T) {
+extern "C" OcctResult<bool> TopOpeBRepBuild_Builder_g_keep_shape(TopOpeBRepBuild_Builder* self_, TopoDS_Shape const* S, NCollection_List_TopoDS_Shape const* Lref, int32_t T) {
     try { return {self_->GKeepShape(*S, *Lref, static_cast<TopAbs_State>(T)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<bool> TopOpeBRepBuild_Builder_g_keep_shape1(TopOpeBRepBuild_Builder* self_, TopoDS_Shape const* S, TopTools_ListOfShape const* Lref, int32_t T, int32_t& pos) {
+extern "C" OcctResult<bool> TopOpeBRepBuild_Builder_g_keep_shape1(TopOpeBRepBuild_Builder* self_, TopoDS_Shape const* S, NCollection_List_TopoDS_Shape const* Lref, int32_t T, int32_t& pos) {
     try {
     auto pos_enum_ = static_cast<TopAbs_State>(pos);
     auto result_ = self_->GKeepShape1(*S, *Lref, static_cast<TopAbs_State>(T), pos_enum_);
@@ -6341,47 +6010,47 @@ extern "C" OcctResult<bool> TopOpeBRepBuild_Builder_g_keep_shape1(TopOpeBRepBuil
     }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* TopOpeBRepBuild_Builder_g_keep_shapes(TopOpeBRepBuild_Builder* self_, TopoDS_Shape const* S, TopTools_ListOfShape const* Lref, int32_t T, TopTools_ListOfShape const* Lin, TopTools_ListOfShape* Lou) {
+extern "C" const char* TopOpeBRepBuild_Builder_g_keep_shapes(TopOpeBRepBuild_Builder* self_, TopoDS_Shape const* S, NCollection_List_TopoDS_Shape const* Lref, int32_t T, NCollection_List_TopoDS_Shape const* Lin, NCollection_List_TopoDS_Shape* Lou) {
     try { self_->GKeepShapes(*S, *Lref, static_cast<TopAbs_State>(T), *Lin, *Lou); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* TopOpeBRepBuild_Builder_gsfs_make_solids(TopOpeBRepBuild_Builder* self_, TopoDS_Shape const* SOF, TopOpeBRepBuild_ShellFaceSet* SFS, TopTools_ListOfShape* LOSO) {
+extern "C" const char* TopOpeBRepBuild_Builder_gsfs_make_solids(TopOpeBRepBuild_Builder* self_, TopoDS_Shape const* SOF, TopOpeBRepBuild_ShellFaceSet* SFS, NCollection_List_TopoDS_Shape* LOSO) {
     try { self_->GSFSMakeSolids(*SOF, *SFS, *LOSO); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* TopOpeBRepBuild_Builder_gsobu_make_solids(TopOpeBRepBuild_Builder* self_, TopoDS_Shape const* SOF, TopOpeBRepBuild_SolidBuilder* SOBU, TopTools_ListOfShape* LOSO) {
+extern "C" const char* TopOpeBRepBuild_Builder_gsobu_make_solids(TopOpeBRepBuild_Builder* self_, TopoDS_Shape const* SOF, TopOpeBRepBuild_SolidBuilder* SOBU, NCollection_List_TopoDS_Shape* LOSO) {
     try { self_->GSOBUMakeSolids(*SOF, *SOBU, *LOSO); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* TopOpeBRepBuild_Builder_gwes_make_faces(TopOpeBRepBuild_Builder* self_, TopoDS_Shape const* FF, TopOpeBRepBuild_WireEdgeSet* WES, TopTools_ListOfShape* LOF) {
+extern "C" const char* TopOpeBRepBuild_Builder_gwes_make_faces(TopOpeBRepBuild_Builder* self_, TopoDS_Shape const* FF, TopOpeBRepBuild_WireEdgeSet* WES, NCollection_List_TopoDS_Shape* LOF) {
     try { self_->GWESMakeFaces(*FF, *WES, *LOF); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* TopOpeBRepBuild_Builder_gfabu_make_faces(TopOpeBRepBuild_Builder* self_, TopoDS_Shape const* FF, TopOpeBRepBuild_FaceBuilder* FABU, TopTools_ListOfShape* LOF, TopTools_DataMapOfShapeInteger* MWisOld) {
+extern "C" const char* TopOpeBRepBuild_Builder_gfabu_make_faces(TopOpeBRepBuild_Builder* self_, TopoDS_Shape const* FF, TopOpeBRepBuild_FaceBuilder* FABU, NCollection_List_TopoDS_Shape* LOF, NCollection_DataMap_TopoDS_Shape_int_TopTools_ShapeMapHasher* MWisOld) {
     try { self_->GFABUMakeFaces(*FF, *FABU, *LOF, *MWisOld); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* TopOpeBRepBuild_Builder_regularize_faces(TopOpeBRepBuild_Builder* self_, TopoDS_Shape const* FF, TopTools_ListOfShape const* lnewFace, TopTools_ListOfShape* LOF) {
+extern "C" const char* TopOpeBRepBuild_Builder_regularize_faces(TopOpeBRepBuild_Builder* self_, TopoDS_Shape const* FF, NCollection_List_TopoDS_Shape const* lnewFace, NCollection_List_TopoDS_Shape* LOF) {
     try { self_->RegularizeFaces(*FF, *lnewFace, *LOF); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* TopOpeBRepBuild_Builder_regularize_face(TopOpeBRepBuild_Builder* self_, TopoDS_Shape const* FF, TopoDS_Shape const* newFace, TopTools_ListOfShape* LOF) {
+extern "C" const char* TopOpeBRepBuild_Builder_regularize_face(TopOpeBRepBuild_Builder* self_, TopoDS_Shape const* FF, TopoDS_Shape const* newFace, NCollection_List_TopoDS_Shape* LOF) {
     try { self_->RegularizeFace(*FF, *newFace, *LOF); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* TopOpeBRepBuild_Builder_regularize_solids(TopOpeBRepBuild_Builder* self_, TopoDS_Shape const* SS, TopTools_ListOfShape const* lnewSolid, TopTools_ListOfShape* LOS) {
+extern "C" const char* TopOpeBRepBuild_Builder_regularize_solids(TopOpeBRepBuild_Builder* self_, TopoDS_Shape const* SS, NCollection_List_TopoDS_Shape const* lnewSolid, NCollection_List_TopoDS_Shape* LOS) {
     try { self_->RegularizeSolids(*SS, *lnewSolid, *LOS); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* TopOpeBRepBuild_Builder_regularize_solid(TopOpeBRepBuild_Builder* self_, TopoDS_Shape const* SS, TopoDS_Shape const* newSolid, TopTools_ListOfShape* LOS) {
+extern "C" const char* TopOpeBRepBuild_Builder_regularize_solid(TopOpeBRepBuild_Builder* self_, TopoDS_Shape const* SS, TopoDS_Shape const* newSolid, NCollection_List_TopoDS_Shape* LOS) {
     try { self_->RegularizeSolid(*SS, *newSolid, *LOS); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* TopOpeBRepBuild_Builder_gpvs_make_edges(const TopOpeBRepBuild_Builder* self_, TopoDS_Shape const* EF, TopOpeBRepBuild_PaveSet* PVS, TopTools_ListOfShape* LOE) {
+extern "C" const char* TopOpeBRepBuild_Builder_gpvs_make_edges(const TopOpeBRepBuild_Builder* self_, TopoDS_Shape const* EF, TopOpeBRepBuild_PaveSet* PVS, NCollection_List_TopoDS_Shape* LOE) {
     try { self_->GPVSMakeEdges(*EF, *PVS, *LOE); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* TopOpeBRepBuild_Builder_gedbu_make_edges(const TopOpeBRepBuild_Builder* self_, TopoDS_Shape const* EF, TopOpeBRepBuild_EdgeBuilder* EDBU, TopTools_ListOfShape* LOE) {
+extern "C" const char* TopOpeBRepBuild_Builder_gedbu_make_edges(const TopOpeBRepBuild_Builder* self_, TopoDS_Shape const* EF, TopOpeBRepBuild_EdgeBuilder* EDBU, NCollection_List_TopoDS_Shape* LOE) {
     try { self_->GEDBUMakeEdges(*EF, *EDBU, *LOE); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -6393,19 +6062,19 @@ extern "C" OcctResult<bool> TopOpeBRepBuild_Builder_g_to_merge(const TopOpeBRepB
     try { return {self_->GToMerge(*S), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* TopOpeBRepBuild_Builder_g_find_sam_dom_shape_listofshape2(const TopOpeBRepBuild_Builder* self_, TopoDS_Shape const* S, TopTools_ListOfShape* L1, TopTools_ListOfShape* L2) {
+extern "C" const char* TopOpeBRepBuild_Builder_g_find_sam_dom_shape_list_shape2(const TopOpeBRepBuild_Builder* self_, TopoDS_Shape const* S, NCollection_List_TopoDS_Shape* L1, NCollection_List_TopoDS_Shape* L2) {
     try { self_->GFindSamDom(*S, *L1, *L2); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* TopOpeBRepBuild_Builder_g_find_sam_dom_listofshape2(const TopOpeBRepBuild_Builder* self_, TopTools_ListOfShape* L1, TopTools_ListOfShape* L2) {
+extern "C" const char* TopOpeBRepBuild_Builder_g_find_sam_dom_list_shape2(const TopOpeBRepBuild_Builder* self_, NCollection_List_TopoDS_Shape* L1, NCollection_List_TopoDS_Shape* L2) {
     try { self_->GFindSamDom(*L1, *L2); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* TopOpeBRepBuild_Builder_g_find_sam_dom_sodo_shape_listofshape2(const TopOpeBRepBuild_Builder* self_, TopoDS_Shape const* S, TopTools_ListOfShape* LSO, TopTools_ListOfShape* LDO) {
+extern "C" const char* TopOpeBRepBuild_Builder_g_find_sam_dom_sodo_shape_list_shape2(const TopOpeBRepBuild_Builder* self_, TopoDS_Shape const* S, NCollection_List_TopoDS_Shape* LSO, NCollection_List_TopoDS_Shape* LDO) {
     try { self_->GFindSamDomSODO(*S, *LSO, *LDO); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* TopOpeBRepBuild_Builder_g_find_sam_dom_sodo_listofshape2(const TopOpeBRepBuild_Builder* self_, TopTools_ListOfShape* LSO, TopTools_ListOfShape* LDO) {
+extern "C" const char* TopOpeBRepBuild_Builder_g_find_sam_dom_sodo_list_shape2(const TopOpeBRepBuild_Builder* self_, NCollection_List_TopoDS_Shape* LSO, NCollection_List_TopoDS_Shape* LDO) {
     try { self_->GFindSamDomSODO(*LSO, *LDO); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -6417,7 +6086,7 @@ extern "C" const char* TopOpeBRepBuild_Builder_g_clear_maps(TopOpeBRepBuild_Buil
     try { self_->GClearMaps(); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* TopOpeBRepBuild_Builder_g_find_same_rank(const TopOpeBRepBuild_Builder* self_, TopTools_ListOfShape const* L1, int32_t R, TopTools_ListOfShape* L2) {
+extern "C" const char* TopOpeBRepBuild_Builder_g_find_same_rank(const TopOpeBRepBuild_Builder* self_, NCollection_List_TopoDS_Shape const* L1, int32_t R, NCollection_List_TopoDS_Shape* L2) {
     try { self_->GFindSameRank(*L1, R, *L2); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -6429,19 +6098,19 @@ extern "C" OcctResult<bool> TopOpeBRepBuild_Builder_g_is_shape_of(const TopOpeBR
     try { return {self_->GIsShapeOf(*S, I12), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* TopOpeBRepBuild_Builder_gdump_ls(const TopOpeBRepBuild_Builder* self_, TopTools_ListOfShape const* L) {
+extern "C" const char* TopOpeBRepBuild_Builder_gdump_ls(const TopOpeBRepBuild_Builder* self_, NCollection_List_TopoDS_Shape const* L) {
     try { self_->GdumpLS(*L); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* TopOpeBRepBuild_Builder_gdump_sha(const TopOpeBRepBuild_Builder* self_, TopoDS_Shape const* S, Standard_Address str) {
+extern "C" const char* TopOpeBRepBuild_Builder_gdump_sha(const TopOpeBRepBuild_Builder* self_, TopoDS_Shape const* S, void* str) {
     try { self_->GdumpSHA(*S, str); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* TopOpeBRepBuild_Builder_gdump_shaori(const TopOpeBRepBuild_Builder* self_, TopoDS_Shape const* S, Standard_Address str) {
+extern "C" const char* TopOpeBRepBuild_Builder_gdump_shaori(const TopOpeBRepBuild_Builder* self_, TopoDS_Shape const* S, void* str) {
     try { self_->GdumpSHAORI(*S, str); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* TopOpeBRepBuild_Builder_gdump_shaorigeo(const TopOpeBRepBuild_Builder* self_, TopoDS_Shape const* S, Standard_Address str) {
+extern "C" const char* TopOpeBRepBuild_Builder_gdump_shaorigeo(const TopOpeBRepBuild_Builder* self_, TopoDS_Shape const* S, void* str) {
     try { self_->GdumpSHAORIGEO(*S, str); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -6457,15 +6126,15 @@ extern "C" const char* TopOpeBRepBuild_Builder_gdump_shasta_int_state_shapeset_a
     try { self_->GdumpSHASTA(iS, static_cast<TopAbs_State>(T), *SS, *a, *b, *c); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* TopOpeBRepBuild_Builder_gdump_edg(const TopOpeBRepBuild_Builder* self_, TopoDS_Shape const* S, Standard_Address str) {
+extern "C" const char* TopOpeBRepBuild_Builder_gdump_edg(const TopOpeBRepBuild_Builder* self_, TopoDS_Shape const* S, void* str) {
     try { self_->GdumpEDG(*S, str); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* TopOpeBRepBuild_Builder_gdump_edgver(const TopOpeBRepBuild_Builder* self_, TopoDS_Shape const* E, TopoDS_Shape const* V, Standard_Address str) {
+extern "C" const char* TopOpeBRepBuild_Builder_gdump_edgver(const TopOpeBRepBuild_Builder* self_, TopoDS_Shape const* E, TopoDS_Shape const* V, void* str) {
     try { self_->GdumpEDGVER(*E, *V, str); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* TopOpeBRepBuild_Builder_gdump_samdom(const TopOpeBRepBuild_Builder* self_, TopTools_ListOfShape const* L, Standard_Address str) {
+extern "C" const char* TopOpeBRepBuild_Builder_gdump_samdom(const TopOpeBRepBuild_Builder* self_, NCollection_List_TopoDS_Shape const* L, void* str) {
     try { self_->GdumpSAMDOM(*L, str); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -6521,11 +6190,11 @@ extern "C" OcctResult<int32_t> TopOpeBRepBuild_Builder_orient(int32_t O, bool R)
     try { return {static_cast<int32_t>(TopOpeBRepBuild_Builder::Orient(static_cast<TopAbs_Orientation>(O), R)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<bool> TopOpeBRepBuild_Builder_contains(TopoDS_Shape const* S, TopTools_ListOfShape const* L) {
+extern "C" OcctResult<bool> TopOpeBRepBuild_Builder_contains(TopoDS_Shape const* S, NCollection_List_TopoDS_Shape const* L) {
     try { return {TopOpeBRepBuild_Builder::Contains(*S, *L), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<int32_t> TopOpeBRepBuild_Builder_k_pls_shape_shapeenum_listofshape(TopoDS_Shape const* S, int32_t T, TopTools_ListOfShape* L) {
+extern "C" OcctResult<int32_t> TopOpeBRepBuild_Builder_k_pls_shape_shapeenum_list_shape(TopoDS_Shape const* S, int32_t T, NCollection_List_TopoDS_Shape* L) {
     try { return {TopOpeBRepBuild_Builder::KPls(*S, static_cast<TopAbs_ShapeEnum>(T), *L), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -6533,7 +6202,7 @@ extern "C" OcctResult<int32_t> TopOpeBRepBuild_Builder_k_pls_shape_shapeenum(Top
     try { return {TopOpeBRepBuild_Builder::KPls(*S, static_cast<TopAbs_ShapeEnum>(T)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<bool> TopOpeBRepBuild_Builder_kp_contains(TopoDS_Shape const* S, TopTools_ListOfShape const* L) {
+extern "C" OcctResult<bool> TopOpeBRepBuild_Builder_kp_contains(TopoDS_Shape const* S, NCollection_List_TopoDS_Shape const* L) {
     try { return {TopOpeBRepBuild_Builder::KPContains(*S, *L), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -6549,15 +6218,15 @@ extern "C" OcctResult<bool> TopOpeBRepBuild_Builder_g_take_common_of_diff(TopOpe
     try { return {TopOpeBRepBuild_Builder::GTakeCommonOfDiff(*G), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<bool> TopOpeBRepBuild_Builder_g_contains(TopoDS_Shape const* S, TopTools_ListOfShape const* L) {
+extern "C" OcctResult<bool> TopOpeBRepBuild_Builder_g_contains(TopoDS_Shape const* S, NCollection_List_TopoDS_Shape const* L) {
     try { return {TopOpeBRepBuild_Builder::GContains(*S, *L), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* TopOpeBRepBuild_Builder_g_copy_list_listofshape_int2_listofshape(TopTools_ListOfShape const* Lin, int32_t i1, int32_t i2, TopTools_ListOfShape* Lou) {
+extern "C" const char* TopOpeBRepBuild_Builder_g_copy_list_list_shape_int2_list_shape(NCollection_List_TopoDS_Shape const* Lin, int32_t i1, int32_t i2, NCollection_List_TopoDS_Shape* Lou) {
     try { TopOpeBRepBuild_Builder::GCopyList(*Lin, i1, i2, *Lou); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* TopOpeBRepBuild_Builder_g_copy_list_listofshape2(TopTools_ListOfShape const* Lin, TopTools_ListOfShape* Lou) {
+extern "C" const char* TopOpeBRepBuild_Builder_g_copy_list_list_shape2(NCollection_List_TopoDS_Shape const* Lin, NCollection_List_TopoDS_Shape* Lou) {
     try { TopOpeBRepBuild_Builder::GCopyList(*Lin, *Lou); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -6627,15 +6296,15 @@ extern "C" const char* TopOpeBRepBuild_Builder1_merge_k_part_state2(TopOpeBRepBu
     try { self_->MergeKPart(static_cast<TopAbs_State>(TB1), static_cast<TopAbs_State>(TB2)); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* TopOpeBRepBuild_Builder1_g_fill_solid_sfs(TopOpeBRepBuild_Builder1* self_, TopoDS_Shape const* SO1, TopTools_ListOfShape const* LSO2, TopOpeBRepBuild_GTopo const* G, TopOpeBRepBuild_ShellFaceSet* SFS) {
+extern "C" const char* TopOpeBRepBuild_Builder1_g_fill_solid_sfs(TopOpeBRepBuild_Builder1* self_, TopoDS_Shape const* SO1, NCollection_List_TopoDS_Shape const* LSO2, TopOpeBRepBuild_GTopo const* G, TopOpeBRepBuild_ShellFaceSet* SFS) {
     try { self_->GFillSolidSFS(*SO1, *LSO2, *G, *SFS); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* TopOpeBRepBuild_Builder1_g_fill_shell_sfs(TopOpeBRepBuild_Builder1* self_, TopoDS_Shape const* SH1, TopTools_ListOfShape const* LSO2, TopOpeBRepBuild_GTopo const* G, TopOpeBRepBuild_ShellFaceSet* SFS) {
+extern "C" const char* TopOpeBRepBuild_Builder1_g_fill_shell_sfs(TopOpeBRepBuild_Builder1* self_, TopoDS_Shape const* SH1, NCollection_List_TopoDS_Shape const* LSO2, TopOpeBRepBuild_GTopo const* G, TopOpeBRepBuild_ShellFaceSet* SFS) {
     try { self_->GFillShellSFS(*SH1, *LSO2, *G, *SFS); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* TopOpeBRepBuild_Builder1_gwes_make_faces(TopOpeBRepBuild_Builder1* self_, TopoDS_Shape const* FF, TopOpeBRepBuild_WireEdgeSet* WES, TopTools_ListOfShape* LOF) {
+extern "C" const char* TopOpeBRepBuild_Builder1_gwes_make_faces(TopOpeBRepBuild_Builder1* self_, TopoDS_Shape const* FF, TopOpeBRepBuild_WireEdgeSet* WES, NCollection_List_TopoDS_Shape* LOF) {
     try { self_->GWESMakeFaces(*FF, *WES, *LOF); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -6643,39 +6312,39 @@ extern "C" const char* TopOpeBRepBuild_Builder1_g_fill_splits_pvs(TopOpeBRepBuil
     try { self_->GFillSplitsPVS(*anEdge, *G1, *PVS); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* TopOpeBRepBuild_Builder1_g_fill_face_not_same_dom_sfs(TopOpeBRepBuild_Builder1* self_, TopoDS_Shape const* F1, TopTools_ListOfShape const* LSO2, TopOpeBRepBuild_GTopo const* G, TopOpeBRepBuild_ShellFaceSet* SFS) {
+extern "C" const char* TopOpeBRepBuild_Builder1_g_fill_face_not_same_dom_sfs(TopOpeBRepBuild_Builder1* self_, TopoDS_Shape const* F1, NCollection_List_TopoDS_Shape const* LSO2, TopOpeBRepBuild_GTopo const* G, TopOpeBRepBuild_ShellFaceSet* SFS) {
     try { self_->GFillFaceNotSameDomSFS(*F1, *LSO2, *G, *SFS); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* TopOpeBRepBuild_Builder1_g_fill_face_not_same_dom_wes(TopOpeBRepBuild_Builder1* self_, TopoDS_Shape const* F1, TopTools_ListOfShape const* LSO2, TopOpeBRepBuild_GTopo const* G, TopOpeBRepBuild_WireEdgeSet* WES) {
+extern "C" const char* TopOpeBRepBuild_Builder1_g_fill_face_not_same_dom_wes(TopOpeBRepBuild_Builder1* self_, TopoDS_Shape const* F1, NCollection_List_TopoDS_Shape const* LSO2, TopOpeBRepBuild_GTopo const* G, TopOpeBRepBuild_WireEdgeSet* WES) {
     try { self_->GFillFaceNotSameDomWES(*F1, *LSO2, *G, *WES); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* TopOpeBRepBuild_Builder1_g_fill_wire_not_same_dom_wes(TopOpeBRepBuild_Builder1* self_, TopoDS_Shape const* W1, TopTools_ListOfShape const* LSO2, TopOpeBRepBuild_GTopo const* G, TopOpeBRepBuild_WireEdgeSet* WES) {
+extern "C" const char* TopOpeBRepBuild_Builder1_g_fill_wire_not_same_dom_wes(TopOpeBRepBuild_Builder1* self_, TopoDS_Shape const* W1, NCollection_List_TopoDS_Shape const* LSO2, TopOpeBRepBuild_GTopo const* G, TopOpeBRepBuild_WireEdgeSet* WES) {
     try { self_->GFillWireNotSameDomWES(*W1, *LSO2, *G, *WES); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* TopOpeBRepBuild_Builder1_g_fill_edge_not_same_dom_wes(TopOpeBRepBuild_Builder1* self_, TopoDS_Shape const* E1, TopTools_ListOfShape const* LSO2, TopOpeBRepBuild_GTopo const* G, TopOpeBRepBuild_WireEdgeSet* WES) {
+extern "C" const char* TopOpeBRepBuild_Builder1_g_fill_edge_not_same_dom_wes(TopOpeBRepBuild_Builder1* self_, TopoDS_Shape const* E1, NCollection_List_TopoDS_Shape const* LSO2, TopOpeBRepBuild_GTopo const* G, TopOpeBRepBuild_WireEdgeSet* WES) {
     try { self_->GFillEdgeNotSameDomWES(*E1, *LSO2, *G, *WES); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* TopOpeBRepBuild_Builder1_g_fill_face_same_dom_sfs(TopOpeBRepBuild_Builder1* self_, TopoDS_Shape const* F1, TopTools_ListOfShape const* LSO2, TopOpeBRepBuild_GTopo const* G, TopOpeBRepBuild_ShellFaceSet* SFS) {
+extern "C" const char* TopOpeBRepBuild_Builder1_g_fill_face_same_dom_sfs(TopOpeBRepBuild_Builder1* self_, TopoDS_Shape const* F1, NCollection_List_TopoDS_Shape const* LSO2, TopOpeBRepBuild_GTopo const* G, TopOpeBRepBuild_ShellFaceSet* SFS) {
     try { self_->GFillFaceSameDomSFS(*F1, *LSO2, *G, *SFS); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* TopOpeBRepBuild_Builder1_g_fill_face_same_dom_wes(TopOpeBRepBuild_Builder1* self_, TopoDS_Shape const* F1, TopTools_ListOfShape const* LSO2, TopOpeBRepBuild_GTopo const* G, TopOpeBRepBuild_WireEdgeSet* WES) {
+extern "C" const char* TopOpeBRepBuild_Builder1_g_fill_face_same_dom_wes(TopOpeBRepBuild_Builder1* self_, TopoDS_Shape const* F1, NCollection_List_TopoDS_Shape const* LSO2, TopOpeBRepBuild_GTopo const* G, TopOpeBRepBuild_WireEdgeSet* WES) {
     try { self_->GFillFaceSameDomWES(*F1, *LSO2, *G, *WES); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* TopOpeBRepBuild_Builder1_g_fill_wire_same_dom_wes(TopOpeBRepBuild_Builder1* self_, TopoDS_Shape const* W1, TopTools_ListOfShape const* LSO2, TopOpeBRepBuild_GTopo const* G, TopOpeBRepBuild_WireEdgeSet* WES) {
+extern "C" const char* TopOpeBRepBuild_Builder1_g_fill_wire_same_dom_wes(TopOpeBRepBuild_Builder1* self_, TopoDS_Shape const* W1, NCollection_List_TopoDS_Shape const* LSO2, TopOpeBRepBuild_GTopo const* G, TopOpeBRepBuild_WireEdgeSet* WES) {
     try { self_->GFillWireSameDomWES(*W1, *LSO2, *G, *WES); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* TopOpeBRepBuild_Builder1_g_fill_edge_same_dom_wes(TopOpeBRepBuild_Builder1* self_, TopoDS_Shape const* E1, TopTools_ListOfShape const* LSO2, TopOpeBRepBuild_GTopo const* G, TopOpeBRepBuild_WireEdgeSet* WES) {
+extern "C" const char* TopOpeBRepBuild_Builder1_g_fill_edge_same_dom_wes(TopOpeBRepBuild_Builder1* self_, TopoDS_Shape const* E1, NCollection_List_TopoDS_Shape const* LSO2, TopOpeBRepBuild_GTopo const* G, TopOpeBRepBuild_WireEdgeSet* WES) {
     try { self_->GFillEdgeSameDomWES(*E1, *LSO2, *G, *WES); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* TopOpeBRepBuild_Builder1_perform_on_parts(TopOpeBRepBuild_Builder1* self_, TopoDS_Shape const* F, TopTools_IndexedMapOfShape const* SDfaces, TopOpeBRepBuild_GTopo const* G, TopOpeBRepBuild_WireEdgeSet* WES) {
+extern "C" const char* TopOpeBRepBuild_Builder1_perform_on_parts(TopOpeBRepBuild_Builder1* self_, TopoDS_Shape const* F, NCollection_IndexedMap_TopoDS_Shape_TopTools_ShapeMapHasher const* SDfaces, TopOpeBRepBuild_GTopo const* G, TopOpeBRepBuild_WireEdgeSet* WES) {
     try { self_->PerformONParts(*F, *SDfaces, *G, *WES); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -6683,11 +6352,11 @@ extern "C" const char* TopOpeBRepBuild_Builder1_perform_piece_in2_d(TopOpeBRepBu
     try { self_->PerformPieceIn2D(*aPieceToPerform, *aOriginalEdge, *edgeFace, *toFace, *G, *keep); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<int32_t> TopOpeBRepBuild_Builder1_perform_piece_on2_d(TopOpeBRepBuild_Builder1* self_, TopoDS_Shape const* aPieceObj, TopoDS_Shape const* aFaceObj, TopoDS_Shape const* aEdgeObj, TopTools_ListOfShape* aListOfPieces, TopTools_ListOfShape* aListOfFaces, TopTools_ListOfShape* aListOfPiecesOut2d) {
+extern "C" OcctResult<int32_t> TopOpeBRepBuild_Builder1_perform_piece_on2_d(TopOpeBRepBuild_Builder1* self_, TopoDS_Shape const* aPieceObj, TopoDS_Shape const* aFaceObj, TopoDS_Shape const* aEdgeObj, NCollection_List_TopoDS_Shape* aListOfPieces, NCollection_List_TopoDS_Shape* aListOfFaces, NCollection_List_TopoDS_Shape* aListOfPiecesOut2d) {
     try { return {self_->PerformPieceOn2D(*aPieceObj, *aFaceObj, *aEdgeObj, *aListOfPieces, *aListOfFaces, *aListOfPiecesOut2d), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<int32_t> TopOpeBRepBuild_Builder1_two_pieces_on(TopOpeBRepBuild_Builder1* self_, TopTools_SequenceOfShape const* aSeq, TopTools_ListOfShape* aListOfPieces, TopTools_ListOfShape* aListOfFaces, TopTools_ListOfShape* aListOfPiecesOut2d) {
+extern "C" OcctResult<int32_t> TopOpeBRepBuild_Builder1_two_pieces_on(TopOpeBRepBuild_Builder1* self_, NCollection_Sequence_TopoDS_Shape const* aSeq, NCollection_List_TopoDS_Shape* aListOfPieces, NCollection_List_TopoDS_Shape* aListOfFaces, NCollection_List_TopoDS_Shape* aListOfPiecesOut2d) {
     try { return {self_->TwoPiecesON(*aSeq, *aListOfPieces, *aListOfFaces, *aListOfPiecesOut2d), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -6709,11 +6378,11 @@ extern "C" OcctResult<Handle(TopOpeBRepDS_HDataStructure)*> TopOpeBRepBuild_Buil
     try { return {new Handle(TopOpeBRepDS_HDataStructure)(self->DataStructure()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* TopOpeBRepBuild_Builder1_inherited_MergeEdges(TopOpeBRepBuild_Builder1* self, TopTools_ListOfShape const& L1, int32_t TB1, TopTools_ListOfShape const& L2, int32_t TB2, bool onA, bool onB, bool onAB) {
+extern "C" const char* TopOpeBRepBuild_Builder1_inherited_MergeEdges(TopOpeBRepBuild_Builder1* self, NCollection_List_TopoDS_Shape const& L1, int32_t TB1, NCollection_List_TopoDS_Shape const& L2, int32_t TB2, bool onA, bool onB, bool onAB) {
     try { self->MergeEdges(L1, static_cast<TopAbs_State>(TB1), L2, static_cast<TopAbs_State>(TB2), onA, onB, onAB); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* TopOpeBRepBuild_Builder1_inherited_MergeFaces(TopOpeBRepBuild_Builder1* self, TopTools_ListOfShape const& S1, int32_t TB1, TopTools_ListOfShape const& S2, int32_t TB2, bool onA, bool onB, bool onAB) {
+extern "C" const char* TopOpeBRepBuild_Builder1_inherited_MergeFaces(TopOpeBRepBuild_Builder1* self, NCollection_List_TopoDS_Shape const& S1, int32_t TB1, NCollection_List_TopoDS_Shape const& S2, int32_t TB2, bool onA, bool onB, bool onAB) {
     try { self->MergeFaces(S1, static_cast<TopAbs_State>(TB1), S2, static_cast<TopAbs_State>(TB2), onA, onB, onAB); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -6745,11 +6414,11 @@ extern "C" OcctResult<TopoDS_Shape const*> TopOpeBRepBuild_Builder1_inherited_Ne
     try { return {&(self->NewVertex(I)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TopTools_ListOfShape const*> TopOpeBRepBuild_Builder1_inherited_NewEdges(const TopOpeBRepBuild_Builder1* self, int32_t I) {
+extern "C" OcctResult<NCollection_List_TopoDS_Shape const*> TopOpeBRepBuild_Builder1_inherited_NewEdges(const TopOpeBRepBuild_Builder1* self, int32_t I) {
     try { return {&(self->NewEdges(I)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TopTools_ListOfShape const*> TopOpeBRepBuild_Builder1_inherited_NewFaces(const TopOpeBRepBuild_Builder1* self, int32_t I) {
+extern "C" OcctResult<NCollection_List_TopoDS_Shape const*> TopOpeBRepBuild_Builder1_inherited_NewFaces(const TopOpeBRepBuild_Builder1* self, int32_t I) {
     try { return {&(self->NewFaces(I)), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -6773,19 +6442,19 @@ extern "C" const char* TopOpeBRepBuild_Builder1_inherited_SplitSectionEdge(TopOp
     try { self->SplitSectionEdge(E); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* TopOpeBRepBuild_Builder1_inherited_SectionCurves(TopOpeBRepBuild_Builder1* self, TopTools_ListOfShape& L) {
+extern "C" const char* TopOpeBRepBuild_Builder1_inherited_SectionCurves(TopOpeBRepBuild_Builder1* self, NCollection_List_TopoDS_Shape& L) {
     try { self->SectionCurves(L); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* TopOpeBRepBuild_Builder1_inherited_SectionEdges(TopOpeBRepBuild_Builder1* self, TopTools_ListOfShape& L) {
+extern "C" const char* TopOpeBRepBuild_Builder1_inherited_SectionEdges(TopOpeBRepBuild_Builder1* self, NCollection_List_TopoDS_Shape& L) {
     try { self->SectionEdges(L); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* TopOpeBRepBuild_Builder1_inherited_FillSecEdgeAncestorMap(const TopOpeBRepBuild_Builder1* self, int32_t aShapeRank, TopTools_MapOfShape const& aMapON, TopTools_DataMapOfShapeShape& anAncMap) {
+extern "C" const char* TopOpeBRepBuild_Builder1_inherited_FillSecEdgeAncestorMap(const TopOpeBRepBuild_Builder1* self, int32_t aShapeRank, NCollection_Map_TopoDS_Shape_TopTools_ShapeMapHasher const& aMapON, NCollection_DataMap_TopoDS_Shape_TopoDS_Shape_TopTools_ShapeMapHasher& anAncMap) {
     try { self->FillSecEdgeAncestorMap(aShapeRank, aMapON, anAncMap); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* TopOpeBRepBuild_Builder1_inherited_Section(TopOpeBRepBuild_Builder1* self, TopTools_ListOfShape& L) {
+extern "C" const char* TopOpeBRepBuild_Builder1_inherited_Section(TopOpeBRepBuild_Builder1* self, NCollection_List_TopoDS_Shape& L) {
     try { self->Section(L); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -6797,27 +6466,27 @@ extern "C" const char* TopOpeBRepBuild_Builder1_inherited_BuildEdges(TopOpeBRepB
     try { self->BuildEdges(DS); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<TopOpeBRepDS_DataMapOfShapeListOfShapeOn1State const*> TopOpeBRepBuild_Builder1_inherited_MSplit(const TopOpeBRepBuild_Builder1* self, int32_t s) {
+extern "C" OcctResult<NCollection_DataMap_TopoDS_Shape_TopOpeBRepDS_ListOfShapeOn1State_TopTools_ShapeMapHasher const*> TopOpeBRepBuild_Builder1_inherited_MSplit(const TopOpeBRepBuild_Builder1* self, int32_t s) {
     try { return {&(self->MSplit(static_cast<TopAbs_State>(s))), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TopOpeBRepDS_DataMapOfShapeListOfShapeOn1State*> TopOpeBRepBuild_Builder1_inherited_ChangeMSplit(TopOpeBRepBuild_Builder1* self, int32_t s) {
+extern "C" OcctResult<NCollection_DataMap_TopoDS_Shape_TopOpeBRepDS_ListOfShapeOn1State_TopTools_ShapeMapHasher*> TopOpeBRepBuild_Builder1_inherited_ChangeMSplit(TopOpeBRepBuild_Builder1* self, int32_t s) {
     try { return {&(self->ChangeMSplit(static_cast<TopAbs_State>(s))), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* TopOpeBRepBuild_Builder1_inherited_MakeEdges(TopOpeBRepBuild_Builder1* self, TopoDS_Shape const& E, TopOpeBRepBuild_EdgeBuilder& B, TopTools_ListOfShape& L) {
+extern "C" const char* TopOpeBRepBuild_Builder1_inherited_MakeEdges(TopOpeBRepBuild_Builder1* self, TopoDS_Shape const& E, TopOpeBRepBuild_EdgeBuilder& B, NCollection_List_TopoDS_Shape& L) {
     try { self->MakeEdges(E, B, L); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* TopOpeBRepBuild_Builder1_inherited_MakeFaces(TopOpeBRepBuild_Builder1* self, TopoDS_Shape const& F, TopOpeBRepBuild_FaceBuilder& B, TopTools_ListOfShape& L) {
+extern "C" const char* TopOpeBRepBuild_Builder1_inherited_MakeFaces(TopOpeBRepBuild_Builder1* self, TopoDS_Shape const& F, TopOpeBRepBuild_FaceBuilder& B, NCollection_List_TopoDS_Shape& L) {
     try { self->MakeFaces(F, B, L); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* TopOpeBRepBuild_Builder1_inherited_MakeSolids(TopOpeBRepBuild_Builder1* self, TopOpeBRepBuild_SolidBuilder& B, TopTools_ListOfShape& L) {
+extern "C" const char* TopOpeBRepBuild_Builder1_inherited_MakeSolids(TopOpeBRepBuild_Builder1* self, TopOpeBRepBuild_SolidBuilder& B, NCollection_List_TopoDS_Shape& L) {
     try { self->MakeSolids(B, L); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* TopOpeBRepBuild_Builder1_inherited_MakeShells(TopOpeBRepBuild_Builder1* self, TopOpeBRepBuild_SolidBuilder& B, TopTools_ListOfShape& L) {
+extern "C" const char* TopOpeBRepBuild_Builder1_inherited_MakeShells(TopOpeBRepBuild_Builder1* self, TopOpeBRepBuild_SolidBuilder& B, NCollection_List_TopoDS_Shape& L) {
     try { self->MakeShells(B, L); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -6837,19 +6506,19 @@ extern "C" OcctResult<bool> TopOpeBRepBuild_Builder1_inherited_Opefus(const TopO
     try { return {self->Opefus(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<int32_t> TopOpeBRepBuild_Builder1_inherited_ShapePosition(TopOpeBRepBuild_Builder1* self, TopoDS_Shape const& S, TopTools_ListOfShape const& LS) {
+extern "C" OcctResult<int32_t> TopOpeBRepBuild_Builder1_inherited_ShapePosition(TopOpeBRepBuild_Builder1* self, TopoDS_Shape const& S, NCollection_List_TopoDS_Shape const& LS) {
     try { return {static_cast<int32_t>(self->ShapePosition(S, LS)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<bool> TopOpeBRepBuild_Builder1_inherited_KeepShape(TopOpeBRepBuild_Builder1* self, TopoDS_Shape const& S, TopTools_ListOfShape const& LS, int32_t T) {
+extern "C" OcctResult<bool> TopOpeBRepBuild_Builder1_inherited_KeepShape(TopOpeBRepBuild_Builder1* self, TopoDS_Shape const& S, NCollection_List_TopoDS_Shape const& LS, int32_t T) {
     try { return {self->KeepShape(S, LS, static_cast<TopAbs_State>(T)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* TopOpeBRepBuild_Builder1_inherited_FindSameDomain(const TopOpeBRepBuild_Builder1* self, TopTools_ListOfShape& L1, TopTools_ListOfShape& L2) {
+extern "C" const char* TopOpeBRepBuild_Builder1_inherited_FindSameDomain(const TopOpeBRepBuild_Builder1* self, NCollection_List_TopoDS_Shape& L1, NCollection_List_TopoDS_Shape& L2) {
     try { self->FindSameDomain(L1, L2); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* TopOpeBRepBuild_Builder1_inherited_FindSameDomainSameOrientation(const TopOpeBRepBuild_Builder1* self, TopTools_ListOfShape& LSO, TopTools_ListOfShape& LDO) {
+extern "C" const char* TopOpeBRepBuild_Builder1_inherited_FindSameDomainSameOrientation(const TopOpeBRepBuild_Builder1* self, NCollection_List_TopoDS_Shape& LSO, NCollection_List_TopoDS_Shape& LDO) {
     try { self->FindSameDomainSameOrientation(LSO, LDO); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -6861,7 +6530,7 @@ extern "C" const char* TopOpeBRepBuild_Builder1_inherited_ClearMaps(TopOpeBRepBu
     try { self->ClearMaps(); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* TopOpeBRepBuild_Builder1_inherited_FindSameRank(const TopOpeBRepBuild_Builder1* self, TopTools_ListOfShape const& L1, int32_t R, TopTools_ListOfShape& L2) {
+extern "C" const char* TopOpeBRepBuild_Builder1_inherited_FindSameRank(const TopOpeBRepBuild_Builder1* self, NCollection_List_TopoDS_Shape const& L1, int32_t R, NCollection_List_TopoDS_Shape& L2) {
     try { self->FindSameRank(L1, R, L2); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -6925,27 +6594,27 @@ extern "C" const char* TopOpeBRepBuild_Builder1_inherited_KPClearMaps(TopOpeBRep
     try { self->KPClearMaps(); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<int32_t> TopOpeBRepBuild_Builder1_inherited_KPlhg(const TopOpeBRepBuild_Builder1* self, TopoDS_Shape const& S, int32_t T, TopTools_ListOfShape& L) {
+extern "C" OcctResult<int32_t> TopOpeBRepBuild_Builder1_inherited_KPlhg(const TopOpeBRepBuild_Builder1* self, TopoDS_Shape const& S, int32_t T, NCollection_List_TopoDS_Shape& L) {
     try { return {self->KPlhg(S, static_cast<TopAbs_ShapeEnum>(T), L), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<int32_t> TopOpeBRepBuild_Builder1_inherited_KPlhsd(const TopOpeBRepBuild_Builder1* self, TopoDS_Shape const& S, int32_t T, TopTools_ListOfShape& L) {
+extern "C" OcctResult<int32_t> TopOpeBRepBuild_Builder1_inherited_KPlhsd(const TopOpeBRepBuild_Builder1* self, TopoDS_Shape const& S, int32_t T, NCollection_List_TopoDS_Shape& L) {
     try { return {self->KPlhsd(S, static_cast<TopAbs_ShapeEnum>(T), L), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<int32_t> TopOpeBRepBuild_Builder1_inherited_KPclasSS(TopOpeBRepBuild_Builder1* self, TopoDS_Shape const& S1, TopTools_ListOfShape const& exceptLS1, TopoDS_Shape const& S2) {
+extern "C" OcctResult<int32_t> TopOpeBRepBuild_Builder1_inherited_KPclasSS(TopOpeBRepBuild_Builder1* self, TopoDS_Shape const& S1, NCollection_List_TopoDS_Shape const& exceptLS1, TopoDS_Shape const& S2) {
     try { return {static_cast<int32_t>(self->KPclasSS(S1, exceptLS1, S2)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<bool> TopOpeBRepBuild_Builder1_inherited_KPiskolesh(const TopOpeBRepBuild_Builder1* self, TopoDS_Shape const& S, TopTools_ListOfShape& LS, TopTools_ListOfShape& LF) {
+extern "C" OcctResult<bool> TopOpeBRepBuild_Builder1_inherited_KPiskolesh(const TopOpeBRepBuild_Builder1* self, TopoDS_Shape const& S, NCollection_List_TopoDS_Shape& LS, NCollection_List_TopoDS_Shape& LF) {
     try { return {self->KPiskolesh(S, LS, LF), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<bool> TopOpeBRepBuild_Builder1_inherited_KPiskoletgesh(const TopOpeBRepBuild_Builder1* self, TopoDS_Shape const& S, TopTools_ListOfShape& LS, TopTools_ListOfShape& LF) {
+extern "C" OcctResult<bool> TopOpeBRepBuild_Builder1_inherited_KPiskoletgesh(const TopOpeBRepBuild_Builder1* self, TopoDS_Shape const& S, NCollection_List_TopoDS_Shape& LS, NCollection_List_TopoDS_Shape& LF) {
     try { return {self->KPiskoletgesh(S, LS, LF), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* TopOpeBRepBuild_Builder1_inherited_KPSameDomain(const TopOpeBRepBuild_Builder1* self, TopTools_ListOfShape& L1, TopTools_ListOfShape& L2) {
+extern "C" const char* TopOpeBRepBuild_Builder1_inherited_KPSameDomain(const TopOpeBRepBuild_Builder1* self, NCollection_List_TopoDS_Shape& L1, NCollection_List_TopoDS_Shape& L2) {
     try { self->KPSameDomain(L1, L2); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -6977,7 +6646,7 @@ extern "C" OcctResult<int32_t> TopOpeBRepBuild_Builder1_inherited_KPclassF(TopOp
     try { return {static_cast<int32_t>(self->KPclassF(F1, F2)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TopoDS_Shape*> TopOpeBRepBuild_Builder1_inherited_KPmakeface(TopOpeBRepBuild_Builder1* self, TopoDS_Shape const& F1, TopTools_ListOfShape const& LF2, int32_t T1, int32_t T2, bool R1, bool R2) {
+extern "C" OcctResult<TopoDS_Shape*> TopOpeBRepBuild_Builder1_inherited_KPmakeface(TopOpeBRepBuild_Builder1* self, TopoDS_Shape const& F1, NCollection_List_TopoDS_Shape const& LF2, int32_t T1, int32_t T2, bool R1, bool R2) {
     try { return {new TopoDS_Shape(self->KPmakeface(F1, LF2, static_cast<TopAbs_State>(T1), static_cast<TopAbs_State>(T2), R1, R2)), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -6985,11 +6654,11 @@ extern "C" const char* TopOpeBRepBuild_Builder1_inherited_SplitEvisoONperiodicF(
     try { self->SplitEvisoONperiodicF(); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* TopOpeBRepBuild_Builder1_inherited_GMergeSolids(TopOpeBRepBuild_Builder1* self, TopTools_ListOfShape const& LSO1, TopTools_ListOfShape const& LSO2, TopOpeBRepBuild_GTopo const& G) {
+extern "C" const char* TopOpeBRepBuild_Builder1_inherited_GMergeSolids(TopOpeBRepBuild_Builder1* self, NCollection_List_TopoDS_Shape const& LSO1, NCollection_List_TopoDS_Shape const& LSO2, TopOpeBRepBuild_GTopo const& G) {
     try { self->GMergeSolids(LSO1, LSO2, G); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* TopOpeBRepBuild_Builder1_inherited_GFillSolidsSFS(TopOpeBRepBuild_Builder1* self, TopTools_ListOfShape const& LSO1, TopTools_ListOfShape const& LSO2, TopOpeBRepBuild_GTopo const& G, TopOpeBRepBuild_ShellFaceSet& SFS) {
+extern "C" const char* TopOpeBRepBuild_Builder1_inherited_GFillSolidsSFS(TopOpeBRepBuild_Builder1* self, NCollection_List_TopoDS_Shape const& LSO1, NCollection_List_TopoDS_Shape const& LSO2, TopOpeBRepBuild_GTopo const& G, TopOpeBRepBuild_ShellFaceSet& SFS) {
     try { self->GFillSolidsSFS(LSO1, LSO2, G, SFS); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -6997,11 +6666,11 @@ extern "C" const char* TopOpeBRepBuild_Builder1_inherited_GFillSurfaceTopologySF
     try { self->GFillSurfaceTopologySFS(SO1, G, SFS); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* TopOpeBRepBuild_Builder1_inherited_GFillFaceSFS(TopOpeBRepBuild_Builder1* self, TopoDS_Shape const& F1, TopTools_ListOfShape const& LSO2, TopOpeBRepBuild_GTopo const& G, TopOpeBRepBuild_ShellFaceSet& SFS) {
+extern "C" const char* TopOpeBRepBuild_Builder1_inherited_GFillFaceSFS(TopOpeBRepBuild_Builder1* self, TopoDS_Shape const& F1, NCollection_List_TopoDS_Shape const& LSO2, TopOpeBRepBuild_GTopo const& G, TopOpeBRepBuild_ShellFaceSet& SFS) {
     try { self->GFillFaceSFS(F1, LSO2, G, SFS); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* TopOpeBRepBuild_Builder1_inherited_GSplitFaceSFS(TopOpeBRepBuild_Builder1* self, TopoDS_Shape const& F1, TopTools_ListOfShape const& LSclass, TopOpeBRepBuild_GTopo const& G, TopOpeBRepBuild_ShellFaceSet& SFS) {
+extern "C" const char* TopOpeBRepBuild_Builder1_inherited_GSplitFaceSFS(TopOpeBRepBuild_Builder1* self, TopoDS_Shape const& F1, NCollection_List_TopoDS_Shape const& LSclass, TopOpeBRepBuild_GTopo const& G, TopOpeBRepBuild_ShellFaceSet& SFS) {
     try { self->GSplitFaceSFS(F1, LSclass, G, SFS); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -7009,7 +6678,7 @@ extern "C" const char* TopOpeBRepBuild_Builder1_inherited_GMergeFaceSFS(TopOpeBR
     try { self->GMergeFaceSFS(F, G, SFS); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* TopOpeBRepBuild_Builder1_inherited_GSplitFace(TopOpeBRepBuild_Builder1* self, TopoDS_Shape const& F, TopOpeBRepBuild_GTopo const& G, TopTools_ListOfShape const& LSclass) {
+extern "C" const char* TopOpeBRepBuild_Builder1_inherited_GSplitFace(TopOpeBRepBuild_Builder1* self, TopoDS_Shape const& F, TopOpeBRepBuild_GTopo const& G, NCollection_List_TopoDS_Shape const& LSclass) {
     try { self->GSplitFace(F, G, LSclass); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -7017,31 +6686,31 @@ extern "C" const char* TopOpeBRepBuild_Builder1_inherited_AddONPatchesSFS(TopOpe
     try { self->AddONPatchesSFS(G, SFS); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* TopOpeBRepBuild_Builder1_inherited_FillOnPatches(TopOpeBRepBuild_Builder1* self, TopTools_ListOfShape const& anEdgesON, TopoDS_Shape const& aBaseFace, TopTools_IndexedMapOfOrientedShape const& avoidMap) {
+extern "C" const char* TopOpeBRepBuild_Builder1_inherited_FillOnPatches(TopOpeBRepBuild_Builder1* self, NCollection_List_TopoDS_Shape const& anEdgesON, TopoDS_Shape const& aBaseFace, NCollection_IndexedMap_TopoDS_Shape const& avoidMap) {
     try { self->FillOnPatches(anEdgesON, aBaseFace, avoidMap); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* TopOpeBRepBuild_Builder1_inherited_FindFacesTouchingEdge(const TopOpeBRepBuild_Builder1* self, TopoDS_Shape const& aFace, TopoDS_Shape const& anEdge, int32_t aShRank, TopTools_ListOfShape& aFaces) {
+extern "C" const char* TopOpeBRepBuild_Builder1_inherited_FindFacesTouchingEdge(const TopOpeBRepBuild_Builder1* self, TopoDS_Shape const& aFace, TopoDS_Shape const& anEdge, int32_t aShRank, NCollection_List_TopoDS_Shape& aFaces) {
     try { self->FindFacesTouchingEdge(aFace, anEdge, aShRank, aFaces); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* TopOpeBRepBuild_Builder1_inherited_GMergeFaces(TopOpeBRepBuild_Builder1* self, TopTools_ListOfShape const& LF1, TopTools_ListOfShape const& LF2, TopOpeBRepBuild_GTopo const& G) {
+extern "C" const char* TopOpeBRepBuild_Builder1_inherited_GMergeFaces(TopOpeBRepBuild_Builder1* self, NCollection_List_TopoDS_Shape const& LF1, NCollection_List_TopoDS_Shape const& LF2, TopOpeBRepBuild_GTopo const& G) {
     try { self->GMergeFaces(LF1, LF2, G); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* TopOpeBRepBuild_Builder1_inherited_GFillFacesWES(TopOpeBRepBuild_Builder1* self, TopTools_ListOfShape const& LF1, TopTools_ListOfShape const& LF2, TopOpeBRepBuild_GTopo const& G, TopOpeBRepBuild_WireEdgeSet& WES) {
+extern "C" const char* TopOpeBRepBuild_Builder1_inherited_GFillFacesWES(TopOpeBRepBuild_Builder1* self, NCollection_List_TopoDS_Shape const& LF1, NCollection_List_TopoDS_Shape const& LF2, TopOpeBRepBuild_GTopo const& G, TopOpeBRepBuild_WireEdgeSet& WES) {
     try { self->GFillFacesWES(LF1, LF2, G, WES); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* TopOpeBRepBuild_Builder1_inherited_GFillFacesWESK(TopOpeBRepBuild_Builder1* self, TopTools_ListOfShape const& LF1, TopTools_ListOfShape const& LF2, TopOpeBRepBuild_GTopo const& G, TopOpeBRepBuild_WireEdgeSet& WES, int32_t K) {
+extern "C" const char* TopOpeBRepBuild_Builder1_inherited_GFillFacesWESK(TopOpeBRepBuild_Builder1* self, NCollection_List_TopoDS_Shape const& LF1, NCollection_List_TopoDS_Shape const& LF2, TopOpeBRepBuild_GTopo const& G, TopOpeBRepBuild_WireEdgeSet& WES, int32_t K) {
     try { self->GFillFacesWESK(LF1, LF2, G, WES, K); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* TopOpeBRepBuild_Builder1_inherited_GFillFacesWESMakeFaces(TopOpeBRepBuild_Builder1* self, TopTools_ListOfShape const& LF1, TopTools_ListOfShape const& LF2, TopTools_ListOfShape const& LSO, TopOpeBRepBuild_GTopo const& G) {
+extern "C" const char* TopOpeBRepBuild_Builder1_inherited_GFillFacesWESMakeFaces(TopOpeBRepBuild_Builder1* self, NCollection_List_TopoDS_Shape const& LF1, NCollection_List_TopoDS_Shape const& LF2, NCollection_List_TopoDS_Shape const& LSO, TopOpeBRepBuild_GTopo const& G) {
     try { self->GFillFacesWESMakeFaces(LF1, LF2, LSO, G); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* TopOpeBRepBuild_Builder1_inherited_GFillFaceWES(TopOpeBRepBuild_Builder1* self, TopoDS_Shape const& F, TopTools_ListOfShape const& LF2, TopOpeBRepBuild_GTopo const& G, TopOpeBRepBuild_WireEdgeSet& WES) {
+extern "C" const char* TopOpeBRepBuild_Builder1_inherited_GFillFaceWES(TopOpeBRepBuild_Builder1* self, TopoDS_Shape const& F, NCollection_List_TopoDS_Shape const& LF2, TopOpeBRepBuild_GTopo const& G, TopOpeBRepBuild_WireEdgeSet& WES) {
     try { self->GFillFaceWES(F, LF2, G, WES); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -7049,19 +6718,19 @@ extern "C" const char* TopOpeBRepBuild_Builder1_inherited_GFillCurveTopologyWES(
     try { self->GFillCurveTopologyWES(F, G, WES); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* TopOpeBRepBuild_Builder1_inherited_GFillONPartsWES(TopOpeBRepBuild_Builder1* self, TopoDS_Shape const& F, TopOpeBRepBuild_GTopo const& G, TopTools_ListOfShape const& LSclass, TopOpeBRepBuild_WireEdgeSet& WES) {
+extern "C" const char* TopOpeBRepBuild_Builder1_inherited_GFillONPartsWES(TopOpeBRepBuild_Builder1* self, TopoDS_Shape const& F, TopOpeBRepBuild_GTopo const& G, NCollection_List_TopoDS_Shape const& LSclass, TopOpeBRepBuild_WireEdgeSet& WES) {
     try { self->GFillONPartsWES(F, G, LSclass, WES); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* TopOpeBRepBuild_Builder1_inherited_GFillWireWES(TopOpeBRepBuild_Builder1* self, TopoDS_Shape const& W, TopTools_ListOfShape const& LF2, TopOpeBRepBuild_GTopo const& G, TopOpeBRepBuild_WireEdgeSet& WES) {
+extern "C" const char* TopOpeBRepBuild_Builder1_inherited_GFillWireWES(TopOpeBRepBuild_Builder1* self, TopoDS_Shape const& W, NCollection_List_TopoDS_Shape const& LF2, TopOpeBRepBuild_GTopo const& G, TopOpeBRepBuild_WireEdgeSet& WES) {
     try { self->GFillWireWES(W, LF2, G, WES); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* TopOpeBRepBuild_Builder1_inherited_GFillEdgeWES(TopOpeBRepBuild_Builder1* self, TopoDS_Shape const& E, TopTools_ListOfShape const& LF2, TopOpeBRepBuild_GTopo const& G, TopOpeBRepBuild_WireEdgeSet& WES) {
+extern "C" const char* TopOpeBRepBuild_Builder1_inherited_GFillEdgeWES(TopOpeBRepBuild_Builder1* self, TopoDS_Shape const& E, NCollection_List_TopoDS_Shape const& LF2, TopOpeBRepBuild_GTopo const& G, TopOpeBRepBuild_WireEdgeSet& WES) {
     try { self->GFillEdgeWES(E, LF2, G, WES); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* TopOpeBRepBuild_Builder1_inherited_GSplitEdgeWES(TopOpeBRepBuild_Builder1* self, TopoDS_Shape const& E, TopTools_ListOfShape const& LF2, TopOpeBRepBuild_GTopo const& G, TopOpeBRepBuild_WireEdgeSet& WES) {
+extern "C" const char* TopOpeBRepBuild_Builder1_inherited_GSplitEdgeWES(TopOpeBRepBuild_Builder1* self, TopoDS_Shape const& E, NCollection_List_TopoDS_Shape const& LF2, TopOpeBRepBuild_GTopo const& G, TopOpeBRepBuild_WireEdgeSet& WES) {
     try { self->GSplitEdgeWES(E, LF2, G, WES); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -7069,19 +6738,19 @@ extern "C" const char* TopOpeBRepBuild_Builder1_inherited_GMergeEdgeWES(TopOpeBR
     try { self->GMergeEdgeWES(E, G, WES); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* TopOpeBRepBuild_Builder1_inherited_GSplitEdge(TopOpeBRepBuild_Builder1* self, TopoDS_Shape const& E, TopOpeBRepBuild_GTopo const& G, TopTools_ListOfShape const& LSclass) {
+extern "C" const char* TopOpeBRepBuild_Builder1_inherited_GSplitEdge(TopOpeBRepBuild_Builder1* self, TopoDS_Shape const& E, TopOpeBRepBuild_GTopo const& G, NCollection_List_TopoDS_Shape const& LSclass) {
     try { self->GSplitEdge(E, G, LSclass); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* TopOpeBRepBuild_Builder1_inherited_GMergeEdges(TopOpeBRepBuild_Builder1* self, TopTools_ListOfShape const& LE1, TopTools_ListOfShape const& LE2, TopOpeBRepBuild_GTopo const& G) {
+extern "C" const char* TopOpeBRepBuild_Builder1_inherited_GMergeEdges(TopOpeBRepBuild_Builder1* self, NCollection_List_TopoDS_Shape const& LE1, NCollection_List_TopoDS_Shape const& LE2, TopOpeBRepBuild_GTopo const& G) {
     try { self->GMergeEdges(LE1, LE2, G); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* TopOpeBRepBuild_Builder1_inherited_GFillEdgesPVS(TopOpeBRepBuild_Builder1* self, TopTools_ListOfShape const& LE1, TopTools_ListOfShape const& LE2, TopOpeBRepBuild_GTopo const& G, TopOpeBRepBuild_PaveSet& PVS) {
+extern "C" const char* TopOpeBRepBuild_Builder1_inherited_GFillEdgesPVS(TopOpeBRepBuild_Builder1* self, NCollection_List_TopoDS_Shape const& LE1, NCollection_List_TopoDS_Shape const& LE2, TopOpeBRepBuild_GTopo const& G, TopOpeBRepBuild_PaveSet& PVS) {
     try { self->GFillEdgesPVS(LE1, LE2, G, PVS); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* TopOpeBRepBuild_Builder1_inherited_GFillEdgePVS(TopOpeBRepBuild_Builder1* self, TopoDS_Shape const& E, TopTools_ListOfShape const& LE2, TopOpeBRepBuild_GTopo const& G, TopOpeBRepBuild_PaveSet& PVS) {
+extern "C" const char* TopOpeBRepBuild_Builder1_inherited_GFillEdgePVS(TopOpeBRepBuild_Builder1* self, TopoDS_Shape const& E, NCollection_List_TopoDS_Shape const& LE2, TopOpeBRepBuild_GTopo const& G, TopOpeBRepBuild_PaveSet& PVS) {
     try { self->GFillEdgePVS(E, LE2, G, PVS); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -7093,47 +6762,47 @@ extern "C" OcctResult<bool> TopOpeBRepBuild_Builder1_inherited_GParamOnReference
     try { return {self->GParamOnReference(V, E, P), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<bool> TopOpeBRepBuild_Builder1_inherited_GKeepShape(TopOpeBRepBuild_Builder1* self, TopoDS_Shape const& S, TopTools_ListOfShape const& Lref, int32_t T) {
+extern "C" OcctResult<bool> TopOpeBRepBuild_Builder1_inherited_GKeepShape(TopOpeBRepBuild_Builder1* self, TopoDS_Shape const& S, NCollection_List_TopoDS_Shape const& Lref, int32_t T) {
     try { return {self->GKeepShape(S, Lref, static_cast<TopAbs_State>(T)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* TopOpeBRepBuild_Builder1_inherited_GKeepShapes(TopOpeBRepBuild_Builder1* self, TopoDS_Shape const& S, TopTools_ListOfShape const& Lref, int32_t T, TopTools_ListOfShape const& Lin, TopTools_ListOfShape& Lou) {
+extern "C" const char* TopOpeBRepBuild_Builder1_inherited_GKeepShapes(TopOpeBRepBuild_Builder1* self, TopoDS_Shape const& S, NCollection_List_TopoDS_Shape const& Lref, int32_t T, NCollection_List_TopoDS_Shape const& Lin, NCollection_List_TopoDS_Shape& Lou) {
     try { self->GKeepShapes(S, Lref, static_cast<TopAbs_State>(T), Lin, Lou); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* TopOpeBRepBuild_Builder1_inherited_GSFSMakeSolids(TopOpeBRepBuild_Builder1* self, TopoDS_Shape const& SOF, TopOpeBRepBuild_ShellFaceSet& SFS, TopTools_ListOfShape& LOSO) {
+extern "C" const char* TopOpeBRepBuild_Builder1_inherited_GSFSMakeSolids(TopOpeBRepBuild_Builder1* self, TopoDS_Shape const& SOF, TopOpeBRepBuild_ShellFaceSet& SFS, NCollection_List_TopoDS_Shape& LOSO) {
     try { self->GSFSMakeSolids(SOF, SFS, LOSO); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* TopOpeBRepBuild_Builder1_inherited_GSOBUMakeSolids(TopOpeBRepBuild_Builder1* self, TopoDS_Shape const& SOF, TopOpeBRepBuild_SolidBuilder& SOBU, TopTools_ListOfShape& LOSO) {
+extern "C" const char* TopOpeBRepBuild_Builder1_inherited_GSOBUMakeSolids(TopOpeBRepBuild_Builder1* self, TopoDS_Shape const& SOF, TopOpeBRepBuild_SolidBuilder& SOBU, NCollection_List_TopoDS_Shape& LOSO) {
     try { self->GSOBUMakeSolids(SOF, SOBU, LOSO); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* TopOpeBRepBuild_Builder1_inherited_GFABUMakeFaces(TopOpeBRepBuild_Builder1* self, TopoDS_Shape const& FF, TopOpeBRepBuild_FaceBuilder& FABU, TopTools_ListOfShape& LOF, TopTools_DataMapOfShapeInteger& MWisOld) {
+extern "C" const char* TopOpeBRepBuild_Builder1_inherited_GFABUMakeFaces(TopOpeBRepBuild_Builder1* self, TopoDS_Shape const& FF, TopOpeBRepBuild_FaceBuilder& FABU, NCollection_List_TopoDS_Shape& LOF, NCollection_DataMap_TopoDS_Shape_int_TopTools_ShapeMapHasher& MWisOld) {
     try { self->GFABUMakeFaces(FF, FABU, LOF, MWisOld); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* TopOpeBRepBuild_Builder1_inherited_RegularizeFaces(TopOpeBRepBuild_Builder1* self, TopoDS_Shape const& FF, TopTools_ListOfShape const& lnewFace, TopTools_ListOfShape& LOF) {
+extern "C" const char* TopOpeBRepBuild_Builder1_inherited_RegularizeFaces(TopOpeBRepBuild_Builder1* self, TopoDS_Shape const& FF, NCollection_List_TopoDS_Shape const& lnewFace, NCollection_List_TopoDS_Shape& LOF) {
     try { self->RegularizeFaces(FF, lnewFace, LOF); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* TopOpeBRepBuild_Builder1_inherited_RegularizeFace(TopOpeBRepBuild_Builder1* self, TopoDS_Shape const& FF, TopoDS_Shape const& newFace, TopTools_ListOfShape& LOF) {
+extern "C" const char* TopOpeBRepBuild_Builder1_inherited_RegularizeFace(TopOpeBRepBuild_Builder1* self, TopoDS_Shape const& FF, TopoDS_Shape const& newFace, NCollection_List_TopoDS_Shape& LOF) {
     try { self->RegularizeFace(FF, newFace, LOF); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* TopOpeBRepBuild_Builder1_inherited_RegularizeSolids(TopOpeBRepBuild_Builder1* self, TopoDS_Shape const& SS, TopTools_ListOfShape const& lnewSolid, TopTools_ListOfShape& LOS) {
+extern "C" const char* TopOpeBRepBuild_Builder1_inherited_RegularizeSolids(TopOpeBRepBuild_Builder1* self, TopoDS_Shape const& SS, NCollection_List_TopoDS_Shape const& lnewSolid, NCollection_List_TopoDS_Shape& LOS) {
     try { self->RegularizeSolids(SS, lnewSolid, LOS); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* TopOpeBRepBuild_Builder1_inherited_RegularizeSolid(TopOpeBRepBuild_Builder1* self, TopoDS_Shape const& SS, TopoDS_Shape const& newSolid, TopTools_ListOfShape& LOS) {
+extern "C" const char* TopOpeBRepBuild_Builder1_inherited_RegularizeSolid(TopOpeBRepBuild_Builder1* self, TopoDS_Shape const& SS, TopoDS_Shape const& newSolid, NCollection_List_TopoDS_Shape& LOS) {
     try { self->RegularizeSolid(SS, newSolid, LOS); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* TopOpeBRepBuild_Builder1_inherited_GPVSMakeEdges(const TopOpeBRepBuild_Builder1* self, TopoDS_Shape const& EF, TopOpeBRepBuild_PaveSet& PVS, TopTools_ListOfShape& LOE) {
+extern "C" const char* TopOpeBRepBuild_Builder1_inherited_GPVSMakeEdges(const TopOpeBRepBuild_Builder1* self, TopoDS_Shape const& EF, TopOpeBRepBuild_PaveSet& PVS, NCollection_List_TopoDS_Shape& LOE) {
     try { self->GPVSMakeEdges(EF, PVS, LOE); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* TopOpeBRepBuild_Builder1_inherited_GEDBUMakeEdges(const TopOpeBRepBuild_Builder1* self, TopoDS_Shape const& EF, TopOpeBRepBuild_EdgeBuilder& EDBU, TopTools_ListOfShape& LOE) {
+extern "C" const char* TopOpeBRepBuild_Builder1_inherited_GEDBUMakeEdges(const TopOpeBRepBuild_Builder1* self, TopoDS_Shape const& EF, TopOpeBRepBuild_EdgeBuilder& EDBU, NCollection_List_TopoDS_Shape& LOE) {
     try { self->GEDBUMakeEdges(EF, EDBU, LOE); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -7145,11 +6814,11 @@ extern "C" OcctResult<bool> TopOpeBRepBuild_Builder1_inherited_GToMerge(const To
     try { return {self->GToMerge(S), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* TopOpeBRepBuild_Builder1_inherited_GFindSamDom(const TopOpeBRepBuild_Builder1* self, TopoDS_Shape const& S, TopTools_ListOfShape& L1, TopTools_ListOfShape& L2) {
+extern "C" const char* TopOpeBRepBuild_Builder1_inherited_GFindSamDom(const TopOpeBRepBuild_Builder1* self, TopoDS_Shape const& S, NCollection_List_TopoDS_Shape& L1, NCollection_List_TopoDS_Shape& L2) {
     try { self->GFindSamDom(S, L1, L2); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* TopOpeBRepBuild_Builder1_inherited_GFindSamDomSODO(const TopOpeBRepBuild_Builder1* self, TopoDS_Shape const& S, TopTools_ListOfShape& LSO, TopTools_ListOfShape& LDO) {
+extern "C" const char* TopOpeBRepBuild_Builder1_inherited_GFindSamDomSODO(const TopOpeBRepBuild_Builder1* self, TopoDS_Shape const& S, NCollection_List_TopoDS_Shape& LSO, NCollection_List_TopoDS_Shape& LDO) {
     try { self->GFindSamDomSODO(S, LSO, LDO); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -7161,7 +6830,7 @@ extern "C" const char* TopOpeBRepBuild_Builder1_inherited_GClearMaps(TopOpeBRepB
     try { self->GClearMaps(); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* TopOpeBRepBuild_Builder1_inherited_GFindSameRank(const TopOpeBRepBuild_Builder1* self, TopTools_ListOfShape const& L1, int32_t R, TopTools_ListOfShape& L2) {
+extern "C" const char* TopOpeBRepBuild_Builder1_inherited_GFindSameRank(const TopOpeBRepBuild_Builder1* self, NCollection_List_TopoDS_Shape const& L1, int32_t R, NCollection_List_TopoDS_Shape& L2) {
     try { self->GFindSameRank(L1, R, L2); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -7173,19 +6842,19 @@ extern "C" OcctResult<bool> TopOpeBRepBuild_Builder1_inherited_GIsShapeOf(const 
     try { return {self->GIsShapeOf(S, I12), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* TopOpeBRepBuild_Builder1_inherited_GdumpLS(const TopOpeBRepBuild_Builder1* self, TopTools_ListOfShape const& L) {
+extern "C" const char* TopOpeBRepBuild_Builder1_inherited_GdumpLS(const TopOpeBRepBuild_Builder1* self, NCollection_List_TopoDS_Shape const& L) {
     try { self->GdumpLS(L); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* TopOpeBRepBuild_Builder1_inherited_GdumpSHA(const TopOpeBRepBuild_Builder1* self, TopoDS_Shape const& S, Standard_Address str) {
+extern "C" const char* TopOpeBRepBuild_Builder1_inherited_GdumpSHA(const TopOpeBRepBuild_Builder1* self, TopoDS_Shape const& S, void* str) {
     try { self->GdumpSHA(S, str); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* TopOpeBRepBuild_Builder1_inherited_GdumpSHAORI(const TopOpeBRepBuild_Builder1* self, TopoDS_Shape const& S, Standard_Address str) {
+extern "C" const char* TopOpeBRepBuild_Builder1_inherited_GdumpSHAORI(const TopOpeBRepBuild_Builder1* self, TopoDS_Shape const& S, void* str) {
     try { self->GdumpSHAORI(S, str); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* TopOpeBRepBuild_Builder1_inherited_GdumpSHAORIGEO(const TopOpeBRepBuild_Builder1* self, TopoDS_Shape const& S, Standard_Address str) {
+extern "C" const char* TopOpeBRepBuild_Builder1_inherited_GdumpSHAORIGEO(const TopOpeBRepBuild_Builder1* self, TopoDS_Shape const& S, void* str) {
     try { self->GdumpSHAORIGEO(S, str); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -7193,15 +6862,15 @@ extern "C" const char* TopOpeBRepBuild_Builder1_inherited_GdumpSHASTA(const TopO
     try { self->GdumpSHASTA(iS, static_cast<TopAbs_State>(T), a, b); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* TopOpeBRepBuild_Builder1_inherited_GdumpEDG(const TopOpeBRepBuild_Builder1* self, TopoDS_Shape const& S, Standard_Address str) {
+extern "C" const char* TopOpeBRepBuild_Builder1_inherited_GdumpEDG(const TopOpeBRepBuild_Builder1* self, TopoDS_Shape const& S, void* str) {
     try { self->GdumpEDG(S, str); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* TopOpeBRepBuild_Builder1_inherited_GdumpEDGVER(const TopOpeBRepBuild_Builder1* self, TopoDS_Shape const& E, TopoDS_Shape const& V, Standard_Address str) {
+extern "C" const char* TopOpeBRepBuild_Builder1_inherited_GdumpEDGVER(const TopOpeBRepBuild_Builder1* self, TopoDS_Shape const& E, TopoDS_Shape const& V, void* str) {
     try { self->GdumpEDGVER(E, V, str); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* TopOpeBRepBuild_Builder1_inherited_GdumpSAMDOM(const TopOpeBRepBuild_Builder1* self, TopTools_ListOfShape const& L, Standard_Address str) {
+extern "C" const char* TopOpeBRepBuild_Builder1_inherited_GdumpSAMDOM(const TopOpeBRepBuild_Builder1* self, NCollection_List_TopoDS_Shape const& L, void* str) {
     try { self->GdumpSAMDOM(L, str); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -7243,11 +6912,11 @@ extern "C" OcctResult<TopOpeBRepBuild_BuilderON*> TopOpeBRepBuild_BuilderON_ctor
     try { return {new TopOpeBRepBuild_BuilderON(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TopOpeBRepBuild_BuilderON*> TopOpeBRepBuild_BuilderON_ctor_builderptr_shape_gtopoptr_listofshapeptr_wireedgesetptr(TopOpeBRepBuild_Builder* const* PB, TopoDS_Shape const* F, TopOpeBRepBuild_GTopo* const* PG, TopoDS_ListOfShape* const* PLSclass, TopOpeBRepBuild_WireEdgeSet* const* PWES) {
+extern "C" OcctResult<TopOpeBRepBuild_BuilderON*> TopOpeBRepBuild_BuilderON_ctor_builderptr_shape_gtopoptr_list_shapeptr_wireedgesetptr(TopOpeBRepBuild_Builder* const* PB, TopoDS_Shape const* F, TopOpeBRepBuild_GTopo* const* PG, NCollection_List_TopoDS_Shape* const* PLSclass, TopOpeBRepBuild_WireEdgeSet* const* PWES) {
     try { return {new TopOpeBRepBuild_BuilderON(*PB, *F, *PG, *PLSclass, *PWES), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* TopOpeBRepBuild_BuilderON_perform(TopOpeBRepBuild_BuilderON* self_, TopOpeBRepBuild_Builder* const* PB, TopoDS_Shape const* F, TopOpeBRepBuild_GTopo* const* PG, TopoDS_ListOfShape* const* PLSclass, TopOpeBRepBuild_WireEdgeSet* const* PWES) {
+extern "C" const char* TopOpeBRepBuild_BuilderON_perform(TopOpeBRepBuild_BuilderON* self_, TopOpeBRepBuild_Builder* const* PB, TopoDS_Shape const* F, TopOpeBRepBuild_GTopo* const* PG, NCollection_List_TopoDS_Shape* const* PLSclass, TopOpeBRepBuild_WireEdgeSet* const* PWES) {
     try { self_->Perform(*PB, *F, *PG, *PLSclass, *PWES); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -7263,7 +6932,7 @@ extern "C" const char* TopOpeBRepBuild_BuilderON_g_fill_on_parts_wes2(TopOpeBRep
     try { self_->GFillONPartsWES2(*I, *EspON); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* TopOpeBRepBuild_BuilderON_perform2d(TopOpeBRepBuild_BuilderON* self_, TopOpeBRepBuild_Builder* const* PB, TopoDS_Shape const* F, TopOpeBRepBuild_GTopo* const* PG, TopoDS_ListOfShape* const* PLSclass, TopOpeBRepBuild_WireEdgeSet* const* PWES) {
+extern "C" const char* TopOpeBRepBuild_BuilderON_perform2d(TopOpeBRepBuild_BuilderON* self_, TopOpeBRepBuild_Builder* const* PB, TopoDS_Shape const* F, TopOpeBRepBuild_GTopo* const* PG, NCollection_List_TopoDS_Shape* const* PLSclass, TopOpeBRepBuild_WireEdgeSet* const* PWES) {
     try { self_->Perform2d(*PB, *F, *PG, *PLSclass, *PWES); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -7317,7 +6986,7 @@ extern "C" OcctResult<TopOpeBRepBuild_CorrectFace2d*> TopOpeBRepBuild_CorrectFac
     try { return {new TopOpeBRepBuild_CorrectFace2d(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TopOpeBRepBuild_CorrectFace2d*> TopOpeBRepBuild_CorrectFace2d_ctor_face_indexedmapoforientedshape_indexeddatamapofshapeshape(TopoDS_Face const* aFace, TopTools_IndexedMapOfOrientedShape const* anAvoidMap, TopTools_IndexedDataMapOfShapeShape* aMap) {
+extern "C" OcctResult<TopOpeBRepBuild_CorrectFace2d*> TopOpeBRepBuild_CorrectFace2d_ctor_face_imap_shape_idmap_shape_shape(TopoDS_Face const* aFace, NCollection_IndexedMap_TopoDS_Shape const* anAvoidMap, NCollection_IndexedDataMap_TopoDS_Shape_TopoDS_Shape_TopTools_ShapeMapHasher* aMap) {
     try { return {new TopOpeBRepBuild_CorrectFace2d(*aFace, *anAvoidMap, *aMap), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -7341,11 +7010,11 @@ extern "C" OcctResult<TopoDS_Face const*> TopOpeBRepBuild_CorrectFace2d_correcte
     try { return {&(self_->CorrectedFace()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* TopOpeBRepBuild_CorrectFace2d_set_map_of_trans2d_info(TopOpeBRepBuild_CorrectFace2d* self_, TopTools_IndexedDataMapOfShapeShape* aMap) {
+extern "C" const char* TopOpeBRepBuild_CorrectFace2d_set_map_of_trans2d_info(TopOpeBRepBuild_CorrectFace2d* self_, NCollection_IndexedDataMap_TopoDS_Shape_TopoDS_Shape_TopTools_ShapeMapHasher* aMap) {
     try { self_->SetMapOfTrans2dInfo(*aMap); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<TopTools_IndexedDataMapOfShapeShape*> TopOpeBRepBuild_CorrectFace2d_map_of_trans2d_info(TopOpeBRepBuild_CorrectFace2d* self_) {
+extern "C" OcctResult<NCollection_IndexedDataMap_TopoDS_Shape_TopoDS_Shape_TopTools_ShapeMapHasher*> TopOpeBRepBuild_CorrectFace2d_map_of_trans2d_info(TopOpeBRepBuild_CorrectFace2d* self_) {
     try { return {&(self_->MapOfTrans2dInfo()), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -7353,7 +7022,7 @@ extern "C" const char* TopOpeBRepBuild_CorrectFace2d_get_p2d_fl(TopoDS_Face cons
     try { TopOpeBRepBuild_CorrectFace2d::GetP2dFL(*aFace, *anEdge, *P2dF, *P2dL); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* TopOpeBRepBuild_CorrectFace2d_check_list(TopoDS_Face const* aFace, TopTools_ListOfShape* aHeadList) {
+extern "C" const char* TopOpeBRepBuild_CorrectFace2d_check_list(TopoDS_Face const* aFace, NCollection_List_TopoDS_Shape* aHeadList) {
     try { TopOpeBRepBuild_CorrectFace2d::CheckList(*aFace, *aHeadList); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -7413,18 +7082,6 @@ extern "C" OcctResult<const TopOpeBRepBuild_AreaBuilder*> TopOpeBRepBuild_EdgeBu
 extern "C" OcctResult<TopOpeBRepBuild_AreaBuilder*> TopOpeBRepBuild_EdgeBuilder_as_TopOpeBRepBuild_AreaBuilder_mut(TopOpeBRepBuild_EdgeBuilder* self_) { return {static_cast<TopOpeBRepBuild_AreaBuilder*>(self_), nullptr}; }
 extern "C" const char* TopOpeBRepBuild_EdgeBuilder_inherited_InitAreaBuilder(TopOpeBRepBuild_EdgeBuilder* self, TopOpeBRepBuild_LoopSet& LS, TopOpeBRepBuild_LoopClassifier& LC, bool ForceClass) {
     try { self->InitAreaBuilder(LS, LC, ForceClass); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* TopOpeBRepBuild_EdgeBuilder_inherited_ADD_Loop_TO_LISTOFLoop(const TopOpeBRepBuild_EdgeBuilder* self, Handle(TopOpeBRepBuild_Loop) const& L, TopOpeBRepBuild_ListOfLoop& LOL, Standard_Address s) {
-    try { self->ADD_Loop_TO_LISTOFLoop(L, LOL, s); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* TopOpeBRepBuild_EdgeBuilder_inherited_REM_Loop_FROM_LISTOFLoop(const TopOpeBRepBuild_EdgeBuilder* self, TopOpeBRepBuild_ListIteratorOfListOfLoop& ITLOL, TopOpeBRepBuild_ListOfLoop& LOL, Standard_Address s) {
-    try { self->REM_Loop_FROM_LISTOFLoop(ITLOL, LOL, s); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* TopOpeBRepBuild_EdgeBuilder_inherited_ADD_LISTOFLoop_TO_LISTOFLoop(const TopOpeBRepBuild_EdgeBuilder* self, TopOpeBRepBuild_ListOfLoop& LOL1, TopOpeBRepBuild_ListOfLoop& LOL2, Standard_Address s, Standard_Address s1, Standard_Address s2) {
-    try { self->ADD_LISTOFLoop_TO_LISTOFLoop(LOL1, LOL2, s, s1, s2); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
 extern "C" OcctResult<int32_t> TopOpeBRepBuild_EdgeBuilder_inherited_InitArea(TopOpeBRepBuild_EdgeBuilder* self) {
@@ -7509,18 +7166,6 @@ extern "C" OcctResult<Handle(TopOpeBRepBuild_Loop) const*> TopOpeBRepBuild_FaceA
     try { return {&(self->Loop()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* TopOpeBRepBuild_FaceAreaBuilder_inherited_ADD_Loop_TO_LISTOFLoop(const TopOpeBRepBuild_FaceAreaBuilder* self, Handle(TopOpeBRepBuild_Loop) const& L, TopOpeBRepBuild_ListOfLoop& LOL, Standard_Address s) {
-    try { self->ADD_Loop_TO_LISTOFLoop(L, LOL, s); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* TopOpeBRepBuild_FaceAreaBuilder_inherited_REM_Loop_FROM_LISTOFLoop(const TopOpeBRepBuild_FaceAreaBuilder* self, TopOpeBRepBuild_ListIteratorOfListOfLoop& ITLOL, TopOpeBRepBuild_ListOfLoop& LOL, Standard_Address s) {
-    try { self->REM_Loop_FROM_LISTOFLoop(ITLOL, LOL, s); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* TopOpeBRepBuild_FaceAreaBuilder_inherited_ADD_LISTOFLoop_TO_LISTOFLoop(const TopOpeBRepBuild_FaceAreaBuilder* self, TopOpeBRepBuild_ListOfLoop& LOL1, TopOpeBRepBuild_ListOfLoop& LOL2, Standard_Address s, Standard_Address s1, Standard_Address s2) {
-    try { self->ADD_LISTOFLoop_TO_LISTOFLoop(LOL1, LOL2, s, s1, s2); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
 extern "C" void TopOpeBRepBuild_FaceAreaBuilder_destructor(TopOpeBRepBuild_FaceAreaBuilder* self_) { delete self_; }
 
 // ========================
@@ -7539,15 +7184,15 @@ extern "C" const char* TopOpeBRepBuild_FaceBuilder_init_face_builder(TopOpeBRepB
     try { self_->InitFaceBuilder(*ES, *F, ForceClass); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* TopOpeBRepBuild_FaceBuilder_detect_unclosed_wire(TopOpeBRepBuild_FaceBuilder* self_, TopTools_IndexedDataMapOfShapeShape* mapVVsameG, TopTools_IndexedDataMapOfShapeShape* mapVon1Edge) {
+extern "C" const char* TopOpeBRepBuild_FaceBuilder_detect_unclosed_wire(TopOpeBRepBuild_FaceBuilder* self_, NCollection_IndexedDataMap_TopoDS_Shape_TopoDS_Shape_TopTools_ShapeMapHasher* mapVVsameG, NCollection_IndexedDataMap_TopoDS_Shape_TopoDS_Shape_TopTools_ShapeMapHasher* mapVon1Edge) {
     try { self_->DetectUnclosedWire(*mapVVsameG, *mapVon1Edge); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* TopOpeBRepBuild_FaceBuilder_correct_gclosed_wire(TopOpeBRepBuild_FaceBuilder* self_, TopTools_IndexedDataMapOfShapeShape const* mapVVref, TopTools_IndexedDataMapOfShapeShape const* mapVon1Edge) {
+extern "C" const char* TopOpeBRepBuild_FaceBuilder_correct_gclosed_wire(TopOpeBRepBuild_FaceBuilder* self_, NCollection_IndexedDataMap_TopoDS_Shape_TopoDS_Shape_TopTools_ShapeMapHasher const* mapVVref, NCollection_IndexedDataMap_TopoDS_Shape_TopoDS_Shape_TopTools_ShapeMapHasher const* mapVon1Edge) {
     try { self_->CorrectGclosedWire(*mapVVref, *mapVon1Edge); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* TopOpeBRepBuild_FaceBuilder_detect_pseudo_internal_edge(TopOpeBRepBuild_FaceBuilder* self_, TopTools_IndexedMapOfShape* mapE) {
+extern "C" const char* TopOpeBRepBuild_FaceBuilder_detect_pseudo_internal_edge(TopOpeBRepBuild_FaceBuilder* self_, NCollection_IndexedMap_TopoDS_Shape_TopTools_ShapeMapHasher* mapE) {
     try { self_->DetectPseudoInternalEdge(*mapE); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -7625,11 +7270,11 @@ extern "C" OcctResult<TopOpeBRepBuild_FuseFace*> TopOpeBRepBuild_FuseFace_ctor()
     try { return {new TopOpeBRepBuild_FuseFace(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TopOpeBRepBuild_FuseFace*> TopOpeBRepBuild_FuseFace_ctor_listofshape2_int(TopTools_ListOfShape const* LIF, TopTools_ListOfShape const* LRF, int32_t CXM) {
+extern "C" OcctResult<TopOpeBRepBuild_FuseFace*> TopOpeBRepBuild_FuseFace_ctor_list_shape2_int(NCollection_List_TopoDS_Shape const* LIF, NCollection_List_TopoDS_Shape const* LRF, int32_t CXM) {
     try { return {new TopOpeBRepBuild_FuseFace(*LIF, *LRF, CXM), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* TopOpeBRepBuild_FuseFace_init(TopOpeBRepBuild_FuseFace* self_, TopTools_ListOfShape const* LIF, TopTools_ListOfShape const* LRF, int32_t CXM) {
+extern "C" const char* TopOpeBRepBuild_FuseFace_init(TopOpeBRepBuild_FuseFace* self_, NCollection_List_TopoDS_Shape const* LIF, NCollection_List_TopoDS_Shape const* LRF, int32_t CXM) {
     try { self_->Init(*LIF, *LRF, CXM); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -7657,31 +7302,31 @@ extern "C" OcctResult<bool> TopOpeBRepBuild_FuseFace_is_modified(const TopOpeBRe
     try { return {self_->IsModified(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TopTools_ListOfShape const*> TopOpeBRepBuild_FuseFace_l_fuse_face(const TopOpeBRepBuild_FuseFace* self_) {
+extern "C" OcctResult<NCollection_List_TopoDS_Shape const*> TopOpeBRepBuild_FuseFace_l_fuse_face(const TopOpeBRepBuild_FuseFace* self_) {
     try { return {&(self_->LFuseFace()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TopTools_ListOfShape const*> TopOpeBRepBuild_FuseFace_l_intern_edge(const TopOpeBRepBuild_FuseFace* self_) {
+extern "C" OcctResult<NCollection_List_TopoDS_Shape const*> TopOpeBRepBuild_FuseFace_l_intern_edge(const TopOpeBRepBuild_FuseFace* self_) {
     try { return {&(self_->LInternEdge()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TopTools_ListOfShape const*> TopOpeBRepBuild_FuseFace_l_extern_edge(const TopOpeBRepBuild_FuseFace* self_) {
+extern "C" OcctResult<NCollection_List_TopoDS_Shape const*> TopOpeBRepBuild_FuseFace_l_extern_edge(const TopOpeBRepBuild_FuseFace* self_) {
     try { return {&(self_->LExternEdge()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TopTools_ListOfShape const*> TopOpeBRepBuild_FuseFace_l_modif_edge(const TopOpeBRepBuild_FuseFace* self_) {
+extern "C" OcctResult<NCollection_List_TopoDS_Shape const*> TopOpeBRepBuild_FuseFace_l_modif_edge(const TopOpeBRepBuild_FuseFace* self_) {
     try { return {&(self_->LModifEdge()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TopTools_ListOfShape const*> TopOpeBRepBuild_FuseFace_l_intern_vertex(const TopOpeBRepBuild_FuseFace* self_) {
+extern "C" OcctResult<NCollection_List_TopoDS_Shape const*> TopOpeBRepBuild_FuseFace_l_intern_vertex(const TopOpeBRepBuild_FuseFace* self_) {
     try { return {&(self_->LInternVertex()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TopTools_ListOfShape const*> TopOpeBRepBuild_FuseFace_l_extern_vertex(const TopOpeBRepBuild_FuseFace* self_) {
+extern "C" OcctResult<NCollection_List_TopoDS_Shape const*> TopOpeBRepBuild_FuseFace_l_extern_vertex(const TopOpeBRepBuild_FuseFace* self_) {
     try { return {&(self_->LExternVertex()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TopTools_ListOfShape const*> TopOpeBRepBuild_FuseFace_l_modif_vertex(const TopOpeBRepBuild_FuseFace* self_) {
+extern "C" OcctResult<NCollection_List_TopoDS_Shape const*> TopOpeBRepBuild_FuseFace_l_modif_vertex(const TopOpeBRepBuild_FuseFace* self_) {
     try { return {&(self_->LModifVertex()), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -7873,7 +7518,7 @@ extern "C" const char* TopOpeBRepBuild_GTopo_dump_type(const TopOpeBRepBuild_GTo
     try { self_->DumpType(*OS); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* TopOpeBRepBuild_GTopo_dump(const TopOpeBRepBuild_GTopo* self_, Standard_OStream* OS, Standard_Address s) {
+extern "C" const char* TopOpeBRepBuild_GTopo_dump(const TopOpeBRepBuild_GTopo* self_, Standard_OStream* OS, void* s) {
     try { self_->Dump(*OS, s); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -7958,7 +7603,7 @@ extern "C" OcctResult<bool> TopOpeBRepBuild_HBuilder_is_split(const TopOpeBRepBu
     try { return {self_->IsSplit(*S, static_cast<TopAbs_State>(ToBuild)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TopTools_ListOfShape const*> TopOpeBRepBuild_HBuilder_splits(const TopOpeBRepBuild_HBuilder* self_, TopoDS_Shape const* S, int32_t ToBuild) {
+extern "C" OcctResult<NCollection_List_TopoDS_Shape const*> TopOpeBRepBuild_HBuilder_splits(const TopOpeBRepBuild_HBuilder* self_, TopoDS_Shape const* S, int32_t ToBuild) {
     try { return {&(self_->Splits(*S, static_cast<TopAbs_State>(ToBuild))), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -7966,7 +7611,7 @@ extern "C" OcctResult<bool> TopOpeBRepBuild_HBuilder_is_merged(const TopOpeBRepB
     try { return {self_->IsMerged(*S, static_cast<TopAbs_State>(ToBuild)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TopTools_ListOfShape const*> TopOpeBRepBuild_HBuilder_merged(const TopOpeBRepBuild_HBuilder* self_, TopoDS_Shape const* S, int32_t ToBuild) {
+extern "C" OcctResult<NCollection_List_TopoDS_Shape const*> TopOpeBRepBuild_HBuilder_merged(const TopOpeBRepBuild_HBuilder* self_, TopoDS_Shape const* S, int32_t ToBuild) {
     try { return {&(self_->Merged(*S, static_cast<TopAbs_State>(ToBuild))), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -7974,19 +7619,19 @@ extern "C" OcctResult<TopoDS_Shape const*> TopOpeBRepBuild_HBuilder_new_vertex(c
     try { return {&(self_->NewVertex(I)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TopTools_ListOfShape const*> TopOpeBRepBuild_HBuilder_new_edges(const TopOpeBRepBuild_HBuilder* self_, int32_t I) {
+extern "C" OcctResult<NCollection_List_TopoDS_Shape const*> TopOpeBRepBuild_HBuilder_new_edges(const TopOpeBRepBuild_HBuilder* self_, int32_t I) {
     try { return {&(self_->NewEdges(I)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TopTools_ListOfShape*> TopOpeBRepBuild_HBuilder_change_new_edges(TopOpeBRepBuild_HBuilder* self_, int32_t I) {
+extern "C" OcctResult<NCollection_List_TopoDS_Shape*> TopOpeBRepBuild_HBuilder_change_new_edges(TopOpeBRepBuild_HBuilder* self_, int32_t I) {
     try { return {&(self_->ChangeNewEdges(I)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TopTools_ListOfShape const*> TopOpeBRepBuild_HBuilder_new_faces(const TopOpeBRepBuild_HBuilder* self_, int32_t I) {
+extern "C" OcctResult<NCollection_List_TopoDS_Shape const*> TopOpeBRepBuild_HBuilder_new_faces(const TopOpeBRepBuild_HBuilder* self_, int32_t I) {
     try { return {&(self_->NewFaces(I)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TopTools_ListOfShape const*> TopOpeBRepBuild_HBuilder_section(TopOpeBRepBuild_HBuilder* self_) {
+extern "C" OcctResult<NCollection_List_TopoDS_Shape const*> TopOpeBRepBuild_HBuilder_section(TopOpeBRepBuild_HBuilder* self_) {
     try { return {&(self_->Section()), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -8014,7 +7659,7 @@ extern "C" OcctResult<int32_t> TopOpeBRepBuild_HBuilder_get_ds_edge_from_sect_ed
     try { return {self_->GetDSEdgeFromSectEdge(*E, rank), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TColStd_ListOfInteger*> TopOpeBRepBuild_HBuilder_get_ds_face_from_ds_edge(TopOpeBRepBuild_HBuilder* self_, int32_t indexEdg, int32_t rank) {
+extern "C" OcctResult<NCollection_List_int*> TopOpeBRepBuild_HBuilder_get_ds_face_from_ds_edge(TopOpeBRepBuild_HBuilder* self_, int32_t indexEdg, int32_t rank) {
     try { return {&(self_->GetDSFaceFromDSEdge(indexEdg, rank)), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -8034,7 +7679,7 @@ extern "C" OcctResult<bool> TopOpeBRepBuild_HBuilder_edge_curve_ancestors(TopOpe
     try { return {self_->EdgeCurveAncestors(*E, *F1, *F2, *IC), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<bool> TopOpeBRepBuild_HBuilder_edge_section_ancestors(TopOpeBRepBuild_HBuilder* self_, TopoDS_Shape const* E, TopTools_ListOfShape* LF1, TopTools_ListOfShape* LF2, TopTools_ListOfShape* LE1, TopTools_ListOfShape* LE2) {
+extern "C" OcctResult<bool> TopOpeBRepBuild_HBuilder_edge_section_ancestors(TopOpeBRepBuild_HBuilder* self_, TopoDS_Shape const* E, NCollection_List_TopoDS_Shape* LF1, NCollection_List_TopoDS_Shape* LF2, NCollection_List_TopoDS_Shape* LE1, NCollection_List_TopoDS_Shape* LE2) {
     try { return {self_->EdgeSectionAncestors(*E, *LF1, *LF2, *LE1, *LE2), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -8064,20 +7709,20 @@ extern "C" OcctResult<Handle(Standard_Type) const*> TopOpeBRepBuild_HBuilder_get
 }
 extern "C" OcctResult<const Standard_Transient*> TopOpeBRepBuild_HBuilder_as_Standard_Transient(const TopOpeBRepBuild_HBuilder* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> TopOpeBRepBuild_HBuilder_as_Standard_Transient_mut(TopOpeBRepBuild_HBuilder* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleTopOpeBRepBuildHBuilder*> TopOpeBRepBuild_HBuilder_to_handle(TopOpeBRepBuild_HBuilder* obj) {
-    try { return {new HandleTopOpeBRepBuildHBuilder(obj), nullptr}; }
+extern "C" OcctResult<Handle_TopOpeBRepBuild_HBuilder*> TopOpeBRepBuild_HBuilder_to_handle(TopOpeBRepBuild_HBuilder* obj) {
+    try { return {new Handle_TopOpeBRepBuild_HBuilder(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const TopOpeBRepBuild_HBuilder*> HandleTopOpeBRepBuildHBuilder_get(const HandleTopOpeBRepBuildHBuilder* handle) {
+extern "C" OcctResult<const TopOpeBRepBuild_HBuilder*> Handle_TopOpeBRepBuild_HBuilder_get(const Handle_TopOpeBRepBuild_HBuilder* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TopOpeBRepBuild_HBuilder*> HandleTopOpeBRepBuildHBuilder_get_mut(HandleTopOpeBRepBuildHBuilder* handle) {
+extern "C" OcctResult<TopOpeBRepBuild_HBuilder*> Handle_TopOpeBRepBuild_HBuilder_get_mut(Handle_TopOpeBRepBuild_HBuilder* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleTopOpeBRepBuildHBuilder_to_HandleStandardTransient(const HandleTopOpeBRepBuildHBuilder* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_TopOpeBRepBuild_HBuilder_to_Handle_Standard_Transient(const Handle_TopOpeBRepBuild_HBuilder* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> TopOpeBRepBuild_HBuilder_inherited_IsInstance(const TopOpeBRepBuild_HBuilder* self, Handle(Standard_Type) const& theType) {
@@ -8152,27 +7797,27 @@ extern "C" OcctResult<Handle(Standard_Type) const*> TopOpeBRepBuild_Loop_get_typ
 }
 extern "C" OcctResult<const Standard_Transient*> TopOpeBRepBuild_Loop_as_Standard_Transient(const TopOpeBRepBuild_Loop* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> TopOpeBRepBuild_Loop_as_Standard_Transient_mut(TopOpeBRepBuild_Loop* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleTopOpeBRepBuildLoop*> TopOpeBRepBuild_Loop_to_handle(TopOpeBRepBuild_Loop* obj) {
-    try { return {new HandleTopOpeBRepBuildLoop(obj), nullptr}; }
+extern "C" OcctResult<Handle_TopOpeBRepBuild_Loop*> TopOpeBRepBuild_Loop_to_handle(TopOpeBRepBuild_Loop* obj) {
+    try { return {new Handle_TopOpeBRepBuild_Loop(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const TopOpeBRepBuild_Loop*> HandleTopOpeBRepBuildLoop_get(const HandleTopOpeBRepBuildLoop* handle) {
+extern "C" OcctResult<const TopOpeBRepBuild_Loop*> Handle_TopOpeBRepBuild_Loop_get(const Handle_TopOpeBRepBuild_Loop* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TopOpeBRepBuild_Loop*> HandleTopOpeBRepBuildLoop_get_mut(HandleTopOpeBRepBuildLoop* handle) {
+extern "C" OcctResult<TopOpeBRepBuild_Loop*> Handle_TopOpeBRepBuild_Loop_get_mut(Handle_TopOpeBRepBuild_Loop* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleTopOpeBRepBuildLoop_to_HandleStandardTransient(const HandleTopOpeBRepBuildLoop* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_TopOpeBRepBuild_Loop_to_Handle_Standard_Transient(const Handle_TopOpeBRepBuild_Loop* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTopOpeBRepBuildPave*> HandleTopOpeBRepBuildLoop_downcast_to_HandleTopOpeBRepBuildPave(const HandleTopOpeBRepBuildLoop* self_) {
+extern "C" OcctResult<Handle_TopOpeBRepBuild_Pave*> Handle_TopOpeBRepBuild_Loop_downcast_to_Handle_TopOpeBRepBuild_Pave(const Handle_TopOpeBRepBuild_Loop* self_) {
     try {
     opencascade::handle<TopOpeBRepBuild_Pave> result = opencascade::handle<TopOpeBRepBuild_Pave>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleTopOpeBRepBuildPave(result), nullptr};
+    return {new Handle_TopOpeBRepBuild_Pave(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
@@ -8226,10 +7871,6 @@ extern "C" OcctResult<TopOpeBRepBuild_LoopSet*> TopOpeBRepBuild_LoopSet_ctor() {
 }
 extern "C" OcctResult<Handle(TopOpeBRepBuild_Loop)*> TopOpeBRepBuild_LoopSet_loop_(const TopOpeBRepBuild_LoopSet* self_) {
     try { return {new Handle(TopOpeBRepBuild_Loop)(self_->Loop()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<TopOpeBRepBuild_ListOfLoop*> TopOpeBRepBuild_LoopSet_change_list_of_loop(TopOpeBRepBuild_LoopSet* self_) {
-    try { return {&(self_->ChangeListOfLoop()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" const char* TopOpeBRepBuild_LoopSet_init_loop(TopOpeBRepBuild_LoopSet* self_) {
@@ -8318,24 +7959,24 @@ extern "C" OcctResult<const TopOpeBRepBuild_Loop*> TopOpeBRepBuild_Pave_as_TopOp
 extern "C" OcctResult<TopOpeBRepBuild_Loop*> TopOpeBRepBuild_Pave_as_TopOpeBRepBuild_Loop_mut(TopOpeBRepBuild_Pave* self_) { return {static_cast<TopOpeBRepBuild_Loop*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> TopOpeBRepBuild_Pave_as_Standard_Transient(const TopOpeBRepBuild_Pave* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> TopOpeBRepBuild_Pave_as_Standard_Transient_mut(TopOpeBRepBuild_Pave* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleTopOpeBRepBuildPave*> TopOpeBRepBuild_Pave_to_handle(TopOpeBRepBuild_Pave* obj) {
-    try { return {new HandleTopOpeBRepBuildPave(obj), nullptr}; }
+extern "C" OcctResult<Handle_TopOpeBRepBuild_Pave*> TopOpeBRepBuild_Pave_to_handle(TopOpeBRepBuild_Pave* obj) {
+    try { return {new Handle_TopOpeBRepBuild_Pave(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const TopOpeBRepBuild_Pave*> HandleTopOpeBRepBuildPave_get(const HandleTopOpeBRepBuildPave* handle) {
+extern "C" OcctResult<const TopOpeBRepBuild_Pave*> Handle_TopOpeBRepBuild_Pave_get(const Handle_TopOpeBRepBuild_Pave* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TopOpeBRepBuild_Pave*> HandleTopOpeBRepBuildPave_get_mut(HandleTopOpeBRepBuildPave* handle) {
+extern "C" OcctResult<TopOpeBRepBuild_Pave*> Handle_TopOpeBRepBuild_Pave_get_mut(Handle_TopOpeBRepBuild_Pave* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTopOpeBRepBuildLoop*> HandleTopOpeBRepBuildPave_to_HandleTopOpeBRepBuildLoop(const HandleTopOpeBRepBuildPave* self_) {
-    try { return {new HandleTopOpeBRepBuildLoop(*self_), nullptr}; }
+extern "C" OcctResult<Handle_TopOpeBRepBuild_Loop*> Handle_TopOpeBRepBuild_Pave_to_Handle_TopOpeBRepBuild_Loop(const Handle_TopOpeBRepBuild_Pave* self_) {
+    try { return {new Handle_TopOpeBRepBuild_Loop(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleTopOpeBRepBuildPave_to_HandleStandardTransient(const HandleTopOpeBRepBuildPave* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_TopOpeBRepBuild_Pave_to_Handle_Standard_Transient(const Handle_TopOpeBRepBuild_Pave* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<TopOpeBRepBuild_BlockIterator const*> TopOpeBRepBuild_Pave_inherited_BlockIterator(const TopOpeBRepBuild_Pave* self) {
@@ -8448,16 +8089,8 @@ extern "C" OcctResult<bool> TopOpeBRepBuild_PaveSet_closed_vertices(TopOpeBRepBu
     try { return {self_->ClosedVertices(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* TopOpeBRepBuild_PaveSet_sort_pave(TopOpeBRepBuild_ListOfPave const* Lin, TopOpeBRepBuild_ListOfPave* Lout) {
-    try { TopOpeBRepBuild_PaveSet::SortPave(*Lin, *Lout); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
 extern "C" OcctResult<const TopOpeBRepBuild_LoopSet*> TopOpeBRepBuild_PaveSet_as_TopOpeBRepBuild_LoopSet(const TopOpeBRepBuild_PaveSet* self_) { return {static_cast<const TopOpeBRepBuild_LoopSet*>(self_), nullptr}; }
 extern "C" OcctResult<TopOpeBRepBuild_LoopSet*> TopOpeBRepBuild_PaveSet_as_TopOpeBRepBuild_LoopSet_mut(TopOpeBRepBuild_PaveSet* self_) { return {static_cast<TopOpeBRepBuild_LoopSet*>(self_), nullptr}; }
-extern "C" OcctResult<TopOpeBRepBuild_ListOfLoop*> TopOpeBRepBuild_PaveSet_inherited_ChangeListOfLoop(TopOpeBRepBuild_PaveSet* self) {
-    try { return {&(self->ChangeListOfLoop()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
 extern "C" void TopOpeBRepBuild_PaveSet_destructor(TopOpeBRepBuild_PaveSet* self_) { delete self_; }
 
 // ========================
@@ -8472,15 +8105,15 @@ extern "C" OcctResult<TopOpeBRepBuild_ShapeListOfShape*> TopOpeBRepBuild_ShapeLi
     try { return {new TopOpeBRepBuild_ShapeListOfShape(*S), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TopOpeBRepBuild_ShapeListOfShape*> TopOpeBRepBuild_ShapeListOfShape_ctor_shape_listofshape(TopoDS_Shape const* S, TopTools_ListOfShape const* L) {
+extern "C" OcctResult<TopOpeBRepBuild_ShapeListOfShape*> TopOpeBRepBuild_ShapeListOfShape_ctor_shape_list_shape(TopoDS_Shape const* S, NCollection_List_TopoDS_Shape const* L) {
     try { return {new TopOpeBRepBuild_ShapeListOfShape(*S, *L), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TopTools_ListOfShape const*> TopOpeBRepBuild_ShapeListOfShape_list(const TopOpeBRepBuild_ShapeListOfShape* self_) {
+extern "C" OcctResult<NCollection_List_TopoDS_Shape const*> TopOpeBRepBuild_ShapeListOfShape_list(const TopOpeBRepBuild_ShapeListOfShape* self_) {
     try { return {&(self_->List()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TopTools_ListOfShape*> TopOpeBRepBuild_ShapeListOfShape_change_list(TopOpeBRepBuild_ShapeListOfShape* self_) {
+extern "C" OcctResult<NCollection_List_TopoDS_Shape*> TopOpeBRepBuild_ShapeListOfShape_change_list(TopOpeBRepBuild_ShapeListOfShape* self_) {
     try { return {&(self_->ChangeList()), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -8510,11 +8143,11 @@ extern "C" OcctResult<TCollection_AsciiString*> TopOpeBRepBuild_ShapeSet_s_nameo
     try { return {new TCollection_AsciiString(self_->SNameori(*S, *sb, *sa)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TCollection_AsciiString*> TopOpeBRepBuild_ShapeSet_s_name_listofshape_asciistring2(const TopOpeBRepBuild_ShapeSet* self_, TopTools_ListOfShape const* S, TCollection_AsciiString const* sb, TCollection_AsciiString const* sa) {
+extern "C" OcctResult<TCollection_AsciiString*> TopOpeBRepBuild_ShapeSet_s_name_list_shape_asciistring2(const TopOpeBRepBuild_ShapeSet* self_, NCollection_List_TopoDS_Shape const* S, TCollection_AsciiString const* sb, TCollection_AsciiString const* sa) {
     try { return {new TCollection_AsciiString(self_->SName(*S, *sb, *sa)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TCollection_AsciiString*> TopOpeBRepBuild_ShapeSet_s_nameori_listofshape_asciistring2(const TopOpeBRepBuild_ShapeSet* self_, TopTools_ListOfShape const* S, TCollection_AsciiString const* sb, TCollection_AsciiString const* sa) {
+extern "C" OcctResult<TCollection_AsciiString*> TopOpeBRepBuild_ShapeSet_s_nameori_list_shape_asciistring2(const TopOpeBRepBuild_ShapeSet* self_, NCollection_List_TopoDS_Shape const* S, TCollection_AsciiString const* sb, TCollection_AsciiString const* sa) {
     try { return {new TCollection_AsciiString(self_->SNameori(*S, *sb, *sa)), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -8530,7 +8163,7 @@ extern "C" const char* TopOpeBRepBuild_ShapeSet_add_element(TopOpeBRepBuild_Shap
     try { self_->AddElement(*S); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<TopTools_ListOfShape const*> TopOpeBRepBuild_ShapeSet_start_elements(const TopOpeBRepBuild_ShapeSet* self_) {
+extern "C" OcctResult<NCollection_List_TopoDS_Shape const*> TopOpeBRepBuild_ShapeSet_start_elements(const TopOpeBRepBuild_ShapeSet* self_) {
     try { return {&(self_->StartElements()), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -8582,7 +8215,7 @@ extern "C" OcctResult<TopoDS_Shape const*> TopOpeBRepBuild_ShapeSet_neighbour(co
     try { return {&(self_->Neighbour()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TopTools_ListOfShape*> TopOpeBRepBuild_ShapeSet_change_start_shapes(TopOpeBRepBuild_ShapeSet* self_) {
+extern "C" OcctResult<NCollection_List_TopoDS_Shape*> TopOpeBRepBuild_ShapeSet_change_start_shapes(TopOpeBRepBuild_ShapeSet* self_) {
     try { return {&(self_->ChangeStartShapes()), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -8590,7 +8223,7 @@ extern "C" const char* TopOpeBRepBuild_ShapeSet_find_neighbours(TopOpeBRepBuild_
     try { self_->FindNeighbours(); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<TopTools_ListOfShape const*> TopOpeBRepBuild_ShapeSet_make_neighbours_list(TopOpeBRepBuild_ShapeSet* self_, TopoDS_Shape const* E, TopoDS_Shape const* V) {
+extern "C" OcctResult<NCollection_List_TopoDS_Shape const*> TopOpeBRepBuild_ShapeSet_make_neighbours_list(TopOpeBRepBuild_ShapeSet* self_, TopoDS_Shape const* E, TopoDS_Shape const* V) {
     try { return {&(self_->MakeNeighboursList(*E, *V)), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -8698,7 +8331,7 @@ extern "C" OcctResult<TopOpeBRepBuild_ShellFaceSet*> TopOpeBRepBuild_ShellFaceSe
     try { return {new TopOpeBRepBuild_ShellFaceSet(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TopOpeBRepBuild_ShellFaceSet*> TopOpeBRepBuild_ShellFaceSet_ctor_shape_address(TopoDS_Shape const* S, Standard_Address Addr) {
+extern "C" OcctResult<TopOpeBRepBuild_ShellFaceSet*> TopOpeBRepBuild_ShellFaceSet_ctor_shape_voidptr(TopoDS_Shape const* S, void* Addr) {
     try { return {new TopOpeBRepBuild_ShellFaceSet(*S, Addr), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -8706,7 +8339,7 @@ extern "C" OcctResult<TCollection_AsciiString*> TopOpeBRepBuild_ShellFaceSet_s_n
     try { return {new TCollection_AsciiString(self_->SName(*S, *sb, *sa)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TCollection_AsciiString*> TopOpeBRepBuild_ShellFaceSet_s_name_listofshape_asciistring2(const TopOpeBRepBuild_ShellFaceSet* self_, TopTools_ListOfShape const* S, TCollection_AsciiString const* sb, TCollection_AsciiString const* sa) {
+extern "C" OcctResult<TCollection_AsciiString*> TopOpeBRepBuild_ShellFaceSet_s_name_list_shape_asciistring2(const TopOpeBRepBuild_ShellFaceSet* self_, NCollection_List_TopoDS_Shape const* S, TCollection_AsciiString const* sb, TCollection_AsciiString const* sa) {
     try { return {new TCollection_AsciiString(self_->SName(*S, *sb, *sa)), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -8714,7 +8347,7 @@ extern "C" OcctResult<TCollection_AsciiString*> TopOpeBRepBuild_ShellFaceSet_s_n
     try { return {new TCollection_AsciiString(self_->SNameori(*S, *sb, *sa)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TCollection_AsciiString*> TopOpeBRepBuild_ShellFaceSet_s_nameori_listofshape_asciistring2(const TopOpeBRepBuild_ShellFaceSet* self_, TopTools_ListOfShape const* S, TCollection_AsciiString const* sb, TCollection_AsciiString const* sa) {
+extern "C" OcctResult<TCollection_AsciiString*> TopOpeBRepBuild_ShellFaceSet_s_nameori_list_shape_asciistring2(const TopOpeBRepBuild_ShellFaceSet* self_, NCollection_List_TopoDS_Shape const* S, TCollection_AsciiString const* sb, TCollection_AsciiString const* sa) {
     try { return {new TCollection_AsciiString(self_->SNameori(*S, *sb, *sa)), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -8740,7 +8373,7 @@ extern "C" const char* TopOpeBRepBuild_ShellFaceSet_dump_ss(TopOpeBRepBuild_Shel
 }
 extern "C" OcctResult<const TopOpeBRepBuild_ShapeSet*> TopOpeBRepBuild_ShellFaceSet_as_TopOpeBRepBuild_ShapeSet(const TopOpeBRepBuild_ShellFaceSet* self_) { return {static_cast<const TopOpeBRepBuild_ShapeSet*>(self_), nullptr}; }
 extern "C" OcctResult<TopOpeBRepBuild_ShapeSet*> TopOpeBRepBuild_ShellFaceSet_as_TopOpeBRepBuild_ShapeSet_mut(TopOpeBRepBuild_ShellFaceSet* self_) { return {static_cast<TopOpeBRepBuild_ShapeSet*>(self_), nullptr}; }
-extern "C" OcctResult<TopTools_ListOfShape const*> TopOpeBRepBuild_ShellFaceSet_inherited_StartElements(const TopOpeBRepBuild_ShellFaceSet* self) {
+extern "C" OcctResult<NCollection_List_TopoDS_Shape const*> TopOpeBRepBuild_ShellFaceSet_inherited_StartElements(const TopOpeBRepBuild_ShellFaceSet* self) {
     try { return {&(self->StartElements()), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -8792,7 +8425,7 @@ extern "C" OcctResult<TopoDS_Shape const*> TopOpeBRepBuild_ShellFaceSet_inherite
     try { return {&(self->Neighbour()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TopTools_ListOfShape*> TopOpeBRepBuild_ShellFaceSet_inherited_ChangeStartShapes(TopOpeBRepBuild_ShellFaceSet* self) {
+extern "C" OcctResult<NCollection_List_TopoDS_Shape*> TopOpeBRepBuild_ShellFaceSet_inherited_ChangeStartShapes(TopOpeBRepBuild_ShellFaceSet* self) {
     try { return {&(self->ChangeStartShapes()), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -8846,7 +8479,7 @@ extern "C" const char* TopOpeBRepBuild_ShellToSolid_add_shell(TopOpeBRepBuild_Sh
     try { self_->AddShell(*Sh); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* TopOpeBRepBuild_ShellToSolid_make_solids(TopOpeBRepBuild_ShellToSolid* self_, TopoDS_Solid const* So, TopTools_ListOfShape* LSo) {
+extern "C" const char* TopOpeBRepBuild_ShellToSolid_make_solids(TopOpeBRepBuild_ShellToSolid* self_, TopoDS_Solid const* So, NCollection_List_TopoDS_Shape* LSo) {
     try { self_->MakeSolids(*So, *LSo); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -8903,18 +8536,6 @@ extern "C" const char* TopOpeBRepBuild_SolidAreaBuilder_inherited_NextLoop(TopOp
 extern "C" OcctResult<Handle(TopOpeBRepBuild_Loop) const*> TopOpeBRepBuild_SolidAreaBuilder_inherited_Loop(const TopOpeBRepBuild_SolidAreaBuilder* self) {
     try { return {&(self->Loop()), nullptr}; }
     OCCT_CATCH_RETURN
-}
-extern "C" const char* TopOpeBRepBuild_SolidAreaBuilder_inherited_ADD_Loop_TO_LISTOFLoop(const TopOpeBRepBuild_SolidAreaBuilder* self, Handle(TopOpeBRepBuild_Loop) const& L, TopOpeBRepBuild_ListOfLoop& LOL, Standard_Address s) {
-    try { self->ADD_Loop_TO_LISTOFLoop(L, LOL, s); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* TopOpeBRepBuild_SolidAreaBuilder_inherited_REM_Loop_FROM_LISTOFLoop(const TopOpeBRepBuild_SolidAreaBuilder* self, TopOpeBRepBuild_ListIteratorOfListOfLoop& ITLOL, TopOpeBRepBuild_ListOfLoop& LOL, Standard_Address s) {
-    try { self->REM_Loop_FROM_LISTOFLoop(ITLOL, LOL, s); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* TopOpeBRepBuild_SolidAreaBuilder_inherited_ADD_LISTOFLoop_TO_LISTOFLoop(const TopOpeBRepBuild_SolidAreaBuilder* self, TopOpeBRepBuild_ListOfLoop& LOL1, TopOpeBRepBuild_ListOfLoop& LOL2, Standard_Address s, Standard_Address s1, Standard_Address s2) {
-    try { self->ADD_LISTOFLoop_TO_LISTOFLoop(LOL1, LOL2, s, s1, s2); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
 }
 extern "C" void TopOpeBRepBuild_SolidAreaBuilder_destructor(TopOpeBRepBuild_SolidAreaBuilder* self_) { delete self_; }
 
@@ -8992,35 +8613,35 @@ extern "C" OcctResult<TopOpeBRepBuild_Tools*> TopOpeBRepBuild_Tools_ctor() {
     try { return {new TopOpeBRepBuild_Tools(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* TopOpeBRepBuild_Tools_find_state(TopoDS_Shape const* aVertex, int32_t aState, int32_t aShapeEnum, TopTools_IndexedDataMapOfShapeListOfShape const* aMapVertexEdges, TopTools_MapOfShape* aMapProcessedVertices, TopOpeBRepDS_DataMapOfShapeState* aMapVs) {
+extern "C" const char* TopOpeBRepBuild_Tools_find_state(TopoDS_Shape const* aVertex, int32_t aState, int32_t aShapeEnum, NCollection_IndexedDataMap_TopoDS_Shape_NCollection_List_TopoDS_Shape_TopTools_ShapeMapHasher const* aMapVertexEdges, NCollection_Map_TopoDS_Shape_TopTools_ShapeMapHasher* aMapProcessedVertices, NCollection_DataMap_TopoDS_Shape_TopAbs_State_TopTools_ShapeMapHasher* aMapVs) {
     try { TopOpeBRepBuild_Tools::FindState(*aVertex, static_cast<TopAbs_State>(aState), static_cast<TopAbs_ShapeEnum>(aShapeEnum), *aMapVertexEdges, *aMapProcessedVertices, *aMapVs); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* TopOpeBRepBuild_Tools_propagate_state(TopOpeBRepDS_DataMapOfShapeState const* aSplEdgesState, TopTools_IndexedMapOfShape const* anEdgesToRestMap, int32_t aShapeEnum1, int32_t aShapeEnum2, TopOpeBRepTool_ShapeClassifier* aShapeClassifier, TopOpeBRepDS_IndexedDataMapOfShapeWithState* aMapOfShapeWithState, TopTools_MapOfShape const* anUnkStateShapes) {
+extern "C" const char* TopOpeBRepBuild_Tools_propagate_state(NCollection_DataMap_TopoDS_Shape_TopAbs_State_TopTools_ShapeMapHasher const* aSplEdgesState, NCollection_IndexedMap_TopoDS_Shape_TopTools_ShapeMapHasher const* anEdgesToRestMap, int32_t aShapeEnum1, int32_t aShapeEnum2, TopOpeBRepTool_ShapeClassifier* aShapeClassifier, NCollection_IndexedDataMap_TopoDS_Shape_TopOpeBRepDS_ShapeWithState_TopTools_ShapeMapHasher* aMapOfShapeWithState, NCollection_Map_TopoDS_Shape_TopTools_ShapeMapHasher const* anUnkStateShapes) {
     try { TopOpeBRepBuild_Tools::PropagateState(*aSplEdgesState, *anEdgesToRestMap, static_cast<TopAbs_ShapeEnum>(aShapeEnum1), static_cast<TopAbs_ShapeEnum>(aShapeEnum2), *aShapeClassifier, *aMapOfShapeWithState, *anUnkStateShapes); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<int32_t> TopOpeBRepBuild_Tools_find_state_through_vertex(TopoDS_Shape const* aShape, TopOpeBRepTool_ShapeClassifier* aShapeClassifier, TopOpeBRepDS_IndexedDataMapOfShapeWithState* aMapOfShapeWithState, TopTools_MapOfShape const* anAvoidSubshMap) {
+extern "C" OcctResult<int32_t> TopOpeBRepBuild_Tools_find_state_through_vertex(TopoDS_Shape const* aShape, TopOpeBRepTool_ShapeClassifier* aShapeClassifier, NCollection_IndexedDataMap_TopoDS_Shape_TopOpeBRepDS_ShapeWithState_TopTools_ShapeMapHasher* aMapOfShapeWithState, NCollection_Map_TopoDS_Shape_TopTools_ShapeMapHasher const* anAvoidSubshMap) {
     try { return {static_cast<int32_t>(TopOpeBRepBuild_Tools::FindStateThroughVertex(*aShape, *aShapeClassifier, *aMapOfShapeWithState, *anAvoidSubshMap)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* TopOpeBRepBuild_Tools_propagate_state_for_wires(TopTools_IndexedMapOfShape const* aFacesToRestMap, TopOpeBRepDS_IndexedDataMapOfShapeWithState* aMapOfShapeWithState) {
+extern "C" const char* TopOpeBRepBuild_Tools_propagate_state_for_wires(NCollection_IndexedMap_TopoDS_Shape_TopTools_ShapeMapHasher const* aFacesToRestMap, NCollection_IndexedDataMap_TopoDS_Shape_TopOpeBRepDS_ShapeWithState_TopTools_ShapeMapHasher* aMapOfShapeWithState) {
     try { TopOpeBRepBuild_Tools::PropagateStateForWires(*aFacesToRestMap, *aMapOfShapeWithState); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* TopOpeBRepBuild_Tools_spread_state_to_child(TopoDS_Shape const* aShape, int32_t aState, TopOpeBRepDS_IndexedDataMapOfShapeWithState* aMapOfShapeWithState) {
+extern "C" const char* TopOpeBRepBuild_Tools_spread_state_to_child(TopoDS_Shape const* aShape, int32_t aState, NCollection_IndexedDataMap_TopoDS_Shape_TopOpeBRepDS_ShapeWithState_TopTools_ShapeMapHasher* aMapOfShapeWithState) {
     try { TopOpeBRepBuild_Tools::SpreadStateToChild(*aShape, static_cast<TopAbs_State>(aState), *aMapOfShapeWithState); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* TopOpeBRepBuild_Tools_find_state1(TopoDS_Shape const* anEdge, int32_t aState, TopTools_IndexedDataMapOfShapeListOfShape const* aMapEdgesFaces, TopTools_MapOfShape* aMapProcessedVertices, TopOpeBRepDS_DataMapOfShapeState* aMapVs) {
+extern "C" const char* TopOpeBRepBuild_Tools_find_state1(TopoDS_Shape const* anEdge, int32_t aState, NCollection_IndexedDataMap_TopoDS_Shape_NCollection_List_TopoDS_Shape_TopTools_ShapeMapHasher const* aMapEdgesFaces, NCollection_Map_TopoDS_Shape_TopTools_ShapeMapHasher* aMapProcessedVertices, NCollection_DataMap_TopoDS_Shape_TopAbs_State_TopTools_ShapeMapHasher* aMapVs) {
     try { TopOpeBRepBuild_Tools::FindState1(*anEdge, static_cast<TopAbs_State>(aState), *aMapEdgesFaces, *aMapProcessedVertices, *aMapVs); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* TopOpeBRepBuild_Tools_find_state2(TopoDS_Shape const* anEdge, int32_t aState, TopTools_IndexedDataMapOfShapeListOfShape const* aMapEdgesFaces, TopTools_MapOfShape* aMapProcessedEdges, TopOpeBRepDS_DataMapOfShapeState* aMapVs) {
+extern "C" const char* TopOpeBRepBuild_Tools_find_state2(TopoDS_Shape const* anEdge, int32_t aState, NCollection_IndexedDataMap_TopoDS_Shape_NCollection_List_TopoDS_Shape_TopTools_ShapeMapHasher const* aMapEdgesFaces, NCollection_Map_TopoDS_Shape_TopTools_ShapeMapHasher* aMapProcessedEdges, NCollection_DataMap_TopoDS_Shape_TopAbs_State_TopTools_ShapeMapHasher* aMapVs) {
     try { TopOpeBRepBuild_Tools::FindState2(*anEdge, static_cast<TopAbs_State>(aState), *aMapEdgesFaces, *aMapProcessedEdges, *aMapVs); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<bool> TopOpeBRepBuild_Tools_get_adjacent_face(TopoDS_Shape const* aFaceObj, TopoDS_Shape const* anEObj, TopTools_IndexedDataMapOfShapeListOfShape const* anEdgeFaceMap, TopoDS_Shape* anAdjFaceObj) {
+extern "C" OcctResult<bool> TopOpeBRepBuild_Tools_get_adjacent_face(TopoDS_Shape const* aFaceObj, TopoDS_Shape const* anEObj, NCollection_IndexedDataMap_TopoDS_Shape_NCollection_List_TopoDS_Shape_TopTools_ShapeMapHasher const* anEdgeFaceMap, TopoDS_Shape* anAdjFaceObj) {
     try { return {TopOpeBRepBuild_Tools::GetAdjacentFace(*aFaceObj, *anEObj, *anEdgeFaceMap, *anAdjFaceObj), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -9060,7 +8681,7 @@ extern "C" const char* TopOpeBRepBuild_Tools_normalize_face(TopoDS_Shape const* 
     try { TopOpeBRepBuild_Tools::NormalizeFace(*oldFace, *corrFace); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* TopOpeBRepBuild_Tools_correct_face2d(TopoDS_Shape const* oldFace, TopoDS_Shape* corrFace, TopTools_IndexedMapOfOrientedShape const* aSourceShapes, TopTools_IndexedDataMapOfShapeShape* aMapOfCorrect2dEdges) {
+extern "C" const char* TopOpeBRepBuild_Tools_correct_face2d(TopoDS_Shape const* oldFace, TopoDS_Shape* corrFace, NCollection_IndexedMap_TopoDS_Shape const* aSourceShapes, NCollection_IndexedDataMap_TopoDS_Shape_TopoDS_Shape_TopTools_ShapeMapHasher* aMapOfCorrect2dEdges) {
     try { TopOpeBRepBuild_Tools::CorrectFace2d(*oldFace, *corrFace, *aSourceShapes, *aMapOfCorrect2dEdges); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -9090,15 +8711,15 @@ extern "C" OcctResult<TopOpeBRepBuild_Tools2d*> TopOpeBRepBuild_Tools2d_ctor() {
     try { return {new TopOpeBRepBuild_Tools2d(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* TopOpeBRepBuild_Tools2d_make_map_of_shape_vertex_info(TopoDS_Wire const* aWire, TopOpeBRepBuild_IndexedDataMapOfShapeVertexInfo* aMap) {
+extern "C" const char* TopOpeBRepBuild_Tools2d_make_map_of_shape_vertex_info(TopoDS_Wire const* aWire, NCollection_IndexedDataMap_TopoDS_Shape_TopOpeBRepBuild_VertexInfo_TopTools_ShapeMapHasher* aMap) {
     try { TopOpeBRepBuild_Tools2d::MakeMapOfShapeVertexInfo(*aWire, *aMap); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* TopOpeBRepBuild_Tools2d_dump_map_of_shape_vertex_info(TopOpeBRepBuild_IndexedDataMapOfShapeVertexInfo const* aMap) {
+extern "C" const char* TopOpeBRepBuild_Tools2d_dump_map_of_shape_vertex_info(NCollection_IndexedDataMap_TopoDS_Shape_TopOpeBRepBuild_VertexInfo_TopTools_ShapeMapHasher const* aMap) {
     try { TopOpeBRepBuild_Tools2d::DumpMapOfShapeVertexInfo(*aMap); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* TopOpeBRepBuild_Tools2d_path(TopoDS_Wire const* aWire, TopTools_ListOfShape* aResList) {
+extern "C" const char* TopOpeBRepBuild_Tools2d_path(TopoDS_Wire const* aWire, NCollection_List_TopoDS_Shape* aResList) {
     try { TopOpeBRepBuild_Tools2d::Path(*aWire, *aResList); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -9148,15 +8769,15 @@ extern "C" const char* TopOpeBRepBuild_VertexInfo_set_current_in(TopOpeBRepBuild
     try { self_->SetCurrentIn(*anE); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<TopTools_IndexedMapOfOrientedShape const*> TopOpeBRepBuild_VertexInfo_edges_in(const TopOpeBRepBuild_VertexInfo* self_) {
+extern "C" OcctResult<NCollection_IndexedMap_TopoDS_Shape const*> TopOpeBRepBuild_VertexInfo_edges_in(const TopOpeBRepBuild_VertexInfo* self_) {
     try { return {&(self_->EdgesIn()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TopTools_IndexedMapOfOrientedShape const*> TopOpeBRepBuild_VertexInfo_edges_out(const TopOpeBRepBuild_VertexInfo* self_) {
+extern "C" OcctResult<NCollection_IndexedMap_TopoDS_Shape const*> TopOpeBRepBuild_VertexInfo_edges_out(const TopOpeBRepBuild_VertexInfo* self_) {
     try { return {&(self_->EdgesOut()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TopTools_IndexedMapOfOrientedShape*> TopOpeBRepBuild_VertexInfo_change_edges_out(TopOpeBRepBuild_VertexInfo* self_) {
+extern "C" OcctResult<NCollection_IndexedMap_TopoDS_Shape*> TopOpeBRepBuild_VertexInfo_change_edges_out(TopOpeBRepBuild_VertexInfo* self_) {
     try { return {&(self_->ChangeEdgesOut()), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -9176,11 +8797,11 @@ extern "C" const char* TopOpeBRepBuild_VertexInfo_remove_passed(TopOpeBRepBuild_
     try { self_->RemovePassed(); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<TopTools_ListOfShape const*> TopOpeBRepBuild_VertexInfo_list_passed(const TopOpeBRepBuild_VertexInfo* self_) {
+extern "C" OcctResult<NCollection_List_TopoDS_Shape const*> TopOpeBRepBuild_VertexInfo_list_passed(const TopOpeBRepBuild_VertexInfo* self_) {
     try { return {&(self_->ListPassed()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* TopOpeBRepBuild_VertexInfo_prepare(TopOpeBRepBuild_VertexInfo* self_, TopTools_ListOfShape const* aL) {
+extern "C" const char* TopOpeBRepBuild_VertexInfo_prepare(TopOpeBRepBuild_VertexInfo* self_, NCollection_List_TopoDS_Shape const* aL) {
     try { self_->Prepare(*aL); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -9236,7 +8857,7 @@ extern "C" void TopOpeBRepBuild_WireEdgeClassifier_destructor(TopOpeBRepBuild_Wi
 // TopOpeBRepBuild_WireEdgeSet wrappers
 // ========================
 
-extern "C" OcctResult<TopOpeBRepBuild_WireEdgeSet*> TopOpeBRepBuild_WireEdgeSet_ctor_shape_address(TopoDS_Shape const* F, Standard_Address Addr) {
+extern "C" OcctResult<TopOpeBRepBuild_WireEdgeSet*> TopOpeBRepBuild_WireEdgeSet_ctor_shape_voidptr(TopoDS_Shape const* F, void* Addr) {
     try { return {new TopOpeBRepBuild_WireEdgeSet(*F, Addr), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -9244,7 +8865,7 @@ extern "C" OcctResult<TCollection_AsciiString*> TopOpeBRepBuild_WireEdgeSet_s_na
     try { return {new TCollection_AsciiString(self_->SName(*S, *sb, *sa)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TCollection_AsciiString*> TopOpeBRepBuild_WireEdgeSet_s_name_listofshape_asciistring2(const TopOpeBRepBuild_WireEdgeSet* self_, TopTools_ListOfShape const* S, TCollection_AsciiString const* sb, TCollection_AsciiString const* sa) {
+extern "C" OcctResult<TCollection_AsciiString*> TopOpeBRepBuild_WireEdgeSet_s_name_list_shape_asciistring2(const TopOpeBRepBuild_WireEdgeSet* self_, NCollection_List_TopoDS_Shape const* S, TCollection_AsciiString const* sb, TCollection_AsciiString const* sa) {
     try { return {new TCollection_AsciiString(self_->SName(*S, *sb, *sa)), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -9252,7 +8873,7 @@ extern "C" OcctResult<TCollection_AsciiString*> TopOpeBRepBuild_WireEdgeSet_s_na
     try { return {new TCollection_AsciiString(self_->SNameori(*S, *sb, *sa)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TCollection_AsciiString*> TopOpeBRepBuild_WireEdgeSet_s_nameori_listofshape_asciistring2(const TopOpeBRepBuild_WireEdgeSet* self_, TopTools_ListOfShape const* S, TCollection_AsciiString const* sb, TCollection_AsciiString const* sa) {
+extern "C" OcctResult<TCollection_AsciiString*> TopOpeBRepBuild_WireEdgeSet_s_nameori_list_shape_asciistring2(const TopOpeBRepBuild_WireEdgeSet* self_, NCollection_List_TopoDS_Shape const* S, TCollection_AsciiString const* sb, TCollection_AsciiString const* sa) {
     try { return {new TCollection_AsciiString(self_->SNameori(*S, *sb, *sa)), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -9280,7 +8901,7 @@ extern "C" const char* TopOpeBRepBuild_WireEdgeSet_find_neighbours(TopOpeBRepBui
     try { self_->FindNeighbours(); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<TopTools_ListOfShape const*> TopOpeBRepBuild_WireEdgeSet_make_neighbours_list(TopOpeBRepBuild_WireEdgeSet* self_, TopoDS_Shape const* E, TopoDS_Shape const* V) {
+extern "C" OcctResult<NCollection_List_TopoDS_Shape const*> TopOpeBRepBuild_WireEdgeSet_make_neighbours_list(TopOpeBRepBuild_WireEdgeSet* self_, TopoDS_Shape const* E, TopoDS_Shape const* V) {
     try { return {&(self_->MakeNeighboursList(*E, *V)), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -9294,7 +8915,7 @@ extern "C" const char* TopOpeBRepBuild_WireEdgeSet_is_uviso(TopoDS_Edge const* E
 }
 extern "C" OcctResult<const TopOpeBRepBuild_ShapeSet*> TopOpeBRepBuild_WireEdgeSet_as_TopOpeBRepBuild_ShapeSet(const TopOpeBRepBuild_WireEdgeSet* self_) { return {static_cast<const TopOpeBRepBuild_ShapeSet*>(self_), nullptr}; }
 extern "C" OcctResult<TopOpeBRepBuild_ShapeSet*> TopOpeBRepBuild_WireEdgeSet_as_TopOpeBRepBuild_ShapeSet_mut(TopOpeBRepBuild_WireEdgeSet* self_) { return {static_cast<TopOpeBRepBuild_ShapeSet*>(self_), nullptr}; }
-extern "C" OcctResult<TopTools_ListOfShape const*> TopOpeBRepBuild_WireEdgeSet_inherited_StartElements(const TopOpeBRepBuild_WireEdgeSet* self) {
+extern "C" OcctResult<NCollection_List_TopoDS_Shape const*> TopOpeBRepBuild_WireEdgeSet_inherited_StartElements(const TopOpeBRepBuild_WireEdgeSet* self) {
     try { return {&(self->StartElements()), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -9342,7 +8963,7 @@ extern "C" OcctResult<TopoDS_Shape const*> TopOpeBRepBuild_WireEdgeSet_inherited
     try { return {&(self->Neighbour()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TopTools_ListOfShape*> TopOpeBRepBuild_WireEdgeSet_inherited_ChangeStartShapes(TopOpeBRepBuild_WireEdgeSet* self) {
+extern "C" OcctResult<NCollection_List_TopoDS_Shape*> TopOpeBRepBuild_WireEdgeSet_inherited_ChangeStartShapes(TopOpeBRepBuild_WireEdgeSet* self) {
     try { return {&(self->ChangeStartShapes()), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -9392,7 +9013,7 @@ extern "C" const char* TopOpeBRepBuild_WireToFace_add_wire(TopOpeBRepBuild_WireT
     try { self_->AddWire(*W); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* TopOpeBRepBuild_WireToFace_make_faces(TopOpeBRepBuild_WireToFace* self_, TopoDS_Face const* F, TopTools_ListOfShape* LF) {
+extern "C" const char* TopOpeBRepBuild_WireToFace_make_faces(TopOpeBRepBuild_WireToFace* self_, TopoDS_Face const* F, NCollection_List_TopoDS_Shape* LF) {
     try { self_->MakeFaces(*F, *LF); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -9406,20 +9027,12 @@ extern "C" OcctResult<TopOpeBRepDS_Association*> TopOpeBRepDS_Association_ctor()
     try { return {new TopOpeBRepDS_Association(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* TopOpeBRepDS_Association_associate_handletopopebrepdsinterference2(TopOpeBRepDS_Association* self_, Handle(TopOpeBRepDS_Interference) const* I, Handle(TopOpeBRepDS_Interference) const* K) {
+extern "C" const char* TopOpeBRepDS_Association_associate(TopOpeBRepDS_Association* self_, Handle(TopOpeBRepDS_Interference) const* I, Handle(TopOpeBRepDS_Interference) const* K) {
     try { self_->Associate(*I, *K); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* TopOpeBRepDS_Association_associate_handletopopebrepdsinterference_listofinterference(TopOpeBRepDS_Association* self_, Handle(TopOpeBRepDS_Interference) const* I, TopOpeBRepDS_ListOfInterference const* LI) {
-    try { self_->Associate(*I, *LI); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
 extern "C" OcctResult<bool> TopOpeBRepDS_Association_has_association(const TopOpeBRepDS_Association* self_, Handle(TopOpeBRepDS_Interference) const* I) {
     try { return {self_->HasAssociation(*I), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<TopOpeBRepDS_ListOfInterference*> TopOpeBRepDS_Association_associated(TopOpeBRepDS_Association* self_, Handle(TopOpeBRepDS_Interference) const* I) {
-    try { return {&(self_->Associated(*I)), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> TopOpeBRepDS_Association_are_associated(const TopOpeBRepDS_Association* self_, Handle(TopOpeBRepDS_Interference) const* I, Handle(TopOpeBRepDS_Interference) const* K) {
@@ -9440,20 +9053,20 @@ extern "C" OcctResult<Handle(Standard_Type) const*> TopOpeBRepDS_Association_get
 }
 extern "C" OcctResult<const Standard_Transient*> TopOpeBRepDS_Association_as_Standard_Transient(const TopOpeBRepDS_Association* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> TopOpeBRepDS_Association_as_Standard_Transient_mut(TopOpeBRepDS_Association* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleTopOpeBRepDSAssociation*> TopOpeBRepDS_Association_to_handle(TopOpeBRepDS_Association* obj) {
-    try { return {new HandleTopOpeBRepDSAssociation(obj), nullptr}; }
+extern "C" OcctResult<Handle_TopOpeBRepDS_Association*> TopOpeBRepDS_Association_to_handle(TopOpeBRepDS_Association* obj) {
+    try { return {new Handle_TopOpeBRepDS_Association(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const TopOpeBRepDS_Association*> HandleTopOpeBRepDSAssociation_get(const HandleTopOpeBRepDSAssociation* handle) {
+extern "C" OcctResult<const TopOpeBRepDS_Association*> Handle_TopOpeBRepDS_Association_get(const Handle_TopOpeBRepDS_Association* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TopOpeBRepDS_Association*> HandleTopOpeBRepDSAssociation_get_mut(HandleTopOpeBRepDSAssociation* handle) {
+extern "C" OcctResult<TopOpeBRepDS_Association*> Handle_TopOpeBRepDS_Association_get_mut(Handle_TopOpeBRepDS_Association* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleTopOpeBRepDSAssociation_to_HandleStandardTransient(const HandleTopOpeBRepDSAssociation* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_TopOpeBRepDS_Association_to_Handle_Standard_Transient(const Handle_TopOpeBRepDS_Association* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> TopOpeBRepDS_Association_inherited_IsInstance(const TopOpeBRepDS_Association* self, Handle(Standard_Type) const& theType) {
@@ -9688,10 +9301,6 @@ extern "C" OcctResult<bool> TopOpeBRepDS_Check_chk_intg(TopOpeBRepDS_Check* self
     try { return {self_->ChkIntg(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<bool> TopOpeBRepDS_Check_chk_intg_interf(TopOpeBRepDS_Check* self_, TopOpeBRepDS_ListOfInterference const* LI) {
-    try { return {self_->ChkIntgInterf(*LI), nullptr}; }
-    OCCT_CATCH_RETURN
-}
 extern "C" OcctResult<bool> TopOpeBRepDS_Check_check_ds(TopOpeBRepDS_Check* self_, int32_t i, int32_t K) {
     try { return {self_->CheckDS(i, static_cast<TopOpeBRepDS_Kind>(K)), nullptr}; }
     OCCT_CATCH_RETURN
@@ -9700,7 +9309,7 @@ extern "C" OcctResult<bool> TopOpeBRepDS_Check_chk_intg_sam_dom(TopOpeBRepDS_Che
     try { return {self_->ChkIntgSamDom(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<bool> TopOpeBRepDS_Check_check_shapes(const TopOpeBRepDS_Check* self_, TopTools_ListOfShape const* LS) {
+extern "C" OcctResult<bool> TopOpeBRepDS_Check_check_shapes(const TopOpeBRepDS_Check* self_, NCollection_List_TopoDS_Shape const* LS) {
     try { return {self_->CheckShapes(*LS), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -9746,20 +9355,20 @@ extern "C" OcctResult<Handle(Standard_Type) const*> TopOpeBRepDS_Check_get_type_
 }
 extern "C" OcctResult<const Standard_Transient*> TopOpeBRepDS_Check_as_Standard_Transient(const TopOpeBRepDS_Check* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> TopOpeBRepDS_Check_as_Standard_Transient_mut(TopOpeBRepDS_Check* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleTopOpeBRepDSCheck*> TopOpeBRepDS_Check_to_handle(TopOpeBRepDS_Check* obj) {
-    try { return {new HandleTopOpeBRepDSCheck(obj), nullptr}; }
+extern "C" OcctResult<Handle_TopOpeBRepDS_Check*> TopOpeBRepDS_Check_to_handle(TopOpeBRepDS_Check* obj) {
+    try { return {new Handle_TopOpeBRepDS_Check(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const TopOpeBRepDS_Check*> HandleTopOpeBRepDSCheck_get(const HandleTopOpeBRepDSCheck* handle) {
+extern "C" OcctResult<const TopOpeBRepDS_Check*> Handle_TopOpeBRepDS_Check_get(const Handle_TopOpeBRepDS_Check* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TopOpeBRepDS_Check*> HandleTopOpeBRepDSCheck_get_mut(HandleTopOpeBRepDSCheck* handle) {
+extern "C" OcctResult<TopOpeBRepDS_Check*> Handle_TopOpeBRepDS_Check_get_mut(Handle_TopOpeBRepDS_Check* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleTopOpeBRepDSCheck_to_HandleStandardTransient(const HandleTopOpeBRepDSCheck* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_TopOpeBRepDS_Check_to_Handle_Standard_Transient(const Handle_TopOpeBRepDS_Check* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> TopOpeBRepDS_Check_inherited_IsInstance(const TopOpeBRepDS_Check* self, Handle(Standard_Type) const& theType) {
@@ -9823,10 +9432,6 @@ extern "C" OcctResult<Handle(TopOpeBRepDS_Interference) const*> TopOpeBRepDS_Cur
 extern "C" OcctResult<Handle(TopOpeBRepDS_Interference) const*> TopOpeBRepDS_Curve_get_sci2(const TopOpeBRepDS_Curve* self_) {
     try { return {&(self_->GetSCI2()), nullptr}; }
     OCCT_CATCH_RETURN
-}
-extern "C" const char* TopOpeBRepDS_Curve_get_sci(const TopOpeBRepDS_Curve* self_, Handle(TopOpeBRepDS_Interference)* I1, Handle(TopOpeBRepDS_Interference)* I2) {
-    try { self_->GetSCI(*I1, *I2); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
 }
 extern "C" const char* TopOpeBRepDS_Curve_set_shapes(TopOpeBRepDS_Curve* self_, TopoDS_Shape const* S1, TopoDS_Shape const* S2) {
     try { self_->SetShapes(*S1, *S2); return nullptr; }
@@ -9944,14 +9549,6 @@ extern "C" const char* TopOpeBRepDS_CurveData_inherited_Assign(TopOpeBRepDS_Curv
     try { self->Assign(Other); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<TopOpeBRepDS_ListOfInterference const*> TopOpeBRepDS_CurveData_inherited_Interferences(const TopOpeBRepDS_CurveData* self) {
-    try { return {&(self->Interferences()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<TopOpeBRepDS_ListOfInterference*> TopOpeBRepDS_CurveData_inherited_ChangeInterferences(TopOpeBRepDS_CurveData* self) {
-    try { return {&(self->ChangeInterferences()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
 extern "C" const char* TopOpeBRepDS_CurveData_inherited_AddInterference(TopOpeBRepDS_CurveData* self, Handle(TopOpeBRepDS_Interference) const& I) {
     try { self->AddInterference(I); return nullptr; }
     OCCT_CATCH_RETURN_VOID
@@ -10012,10 +9609,6 @@ extern "C" void TopOpeBRepDS_CurveExplorer_destructor(TopOpeBRepDS_CurveExplorer
 // TopOpeBRepDS_CurveIterator wrappers
 // ========================
 
-extern "C" OcctResult<TopOpeBRepDS_CurveIterator*> TopOpeBRepDS_CurveIterator_ctor_listofinterference(TopOpeBRepDS_ListOfInterference const* L) {
-    try { return {new TopOpeBRepDS_CurveIterator(*L), nullptr}; }
-    OCCT_CATCH_RETURN
-}
 extern "C" OcctResult<bool> TopOpeBRepDS_CurveIterator_match_interference(const TopOpeBRepDS_CurveIterator* self_, Handle(TopOpeBRepDS_Interference) const* I) {
     try { return {self_->MatchInterference(*I), nullptr}; }
     OCCT_CATCH_RETURN
@@ -10034,10 +9627,6 @@ extern "C" OcctResult<Handle(Geom2d_Curve) const*> TopOpeBRepDS_CurveIterator_p_
 }
 extern "C" OcctResult<const TopOpeBRepDS_InterferenceIterator*> TopOpeBRepDS_CurveIterator_as_TopOpeBRepDS_InterferenceIterator(const TopOpeBRepDS_CurveIterator* self_) { return {static_cast<const TopOpeBRepDS_InterferenceIterator*>(self_), nullptr}; }
 extern "C" OcctResult<TopOpeBRepDS_InterferenceIterator*> TopOpeBRepDS_CurveIterator_as_TopOpeBRepDS_InterferenceIterator_mut(TopOpeBRepDS_CurveIterator* self_) { return {static_cast<TopOpeBRepDS_InterferenceIterator*>(self_), nullptr}; }
-extern "C" const char* TopOpeBRepDS_CurveIterator_inherited_Init(TopOpeBRepDS_CurveIterator* self, TopOpeBRepDS_ListOfInterference const& L) {
-    try { self->Init(L); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
 extern "C" const char* TopOpeBRepDS_CurveIterator_inherited_GeometryKind(TopOpeBRepDS_CurveIterator* self, int32_t GK) {
     try { self->GeometryKind(static_cast<TopOpeBRepDS_Kind>(GK)); return nullptr; }
     OCCT_CATCH_RETURN_VOID
@@ -10068,10 +9657,6 @@ extern "C" const char* TopOpeBRepDS_CurveIterator_inherited_Next(TopOpeBRepDS_Cu
 }
 extern "C" OcctResult<Handle(TopOpeBRepDS_Interference) const*> TopOpeBRepDS_CurveIterator_inherited_Value(const TopOpeBRepDS_CurveIterator* self) {
     try { return {&(self->Value()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<TopOpeBRepDS_ListIteratorOfListOfInterference*> TopOpeBRepDS_CurveIterator_inherited_ChangeIterator(TopOpeBRepDS_CurveIterator* self) {
-    try { return {&(self->ChangeIterator()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" void TopOpeBRepDS_CurveIterator_destructor(TopOpeBRepDS_CurveIterator* self_) { delete self_; }
@@ -10108,24 +9693,24 @@ extern "C" OcctResult<const TopOpeBRepDS_Interference*> TopOpeBRepDS_CurvePointI
 extern "C" OcctResult<TopOpeBRepDS_Interference*> TopOpeBRepDS_CurvePointInterference_as_TopOpeBRepDS_Interference_mut(TopOpeBRepDS_CurvePointInterference* self_) { return {static_cast<TopOpeBRepDS_Interference*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> TopOpeBRepDS_CurvePointInterference_as_Standard_Transient(const TopOpeBRepDS_CurvePointInterference* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> TopOpeBRepDS_CurvePointInterference_as_Standard_Transient_mut(TopOpeBRepDS_CurvePointInterference* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleTopOpeBRepDSCurvePointInterference*> TopOpeBRepDS_CurvePointInterference_to_handle(TopOpeBRepDS_CurvePointInterference* obj) {
-    try { return {new HandleTopOpeBRepDSCurvePointInterference(obj), nullptr}; }
+extern "C" OcctResult<Handle_TopOpeBRepDS_CurvePointInterference*> TopOpeBRepDS_CurvePointInterference_to_handle(TopOpeBRepDS_CurvePointInterference* obj) {
+    try { return {new Handle_TopOpeBRepDS_CurvePointInterference(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const TopOpeBRepDS_CurvePointInterference*> HandleTopOpeBRepDSCurvePointInterference_get(const HandleTopOpeBRepDSCurvePointInterference* handle) {
+extern "C" OcctResult<const TopOpeBRepDS_CurvePointInterference*> Handle_TopOpeBRepDS_CurvePointInterference_get(const Handle_TopOpeBRepDS_CurvePointInterference* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TopOpeBRepDS_CurvePointInterference*> HandleTopOpeBRepDSCurvePointInterference_get_mut(HandleTopOpeBRepDSCurvePointInterference* handle) {
+extern "C" OcctResult<TopOpeBRepDS_CurvePointInterference*> Handle_TopOpeBRepDS_CurvePointInterference_get_mut(Handle_TopOpeBRepDS_CurvePointInterference* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTopOpeBRepDSInterference*> HandleTopOpeBRepDSCurvePointInterference_to_HandleTopOpeBRepDSInterference(const HandleTopOpeBRepDSCurvePointInterference* self_) {
-    try { return {new HandleTopOpeBRepDSInterference(*self_), nullptr}; }
+extern "C" OcctResult<Handle_TopOpeBRepDS_Interference*> Handle_TopOpeBRepDS_CurvePointInterference_to_Handle_TopOpeBRepDS_Interference(const Handle_TopOpeBRepDS_CurvePointInterference* self_) {
+    try { return {new Handle_TopOpeBRepDS_Interference(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleTopOpeBRepDSCurvePointInterference_to_HandleStandardTransient(const HandleTopOpeBRepDSCurvePointInterference* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_TopOpeBRepDS_CurvePointInterference_to_Handle_Standard_Transient(const Handle_TopOpeBRepDS_CurvePointInterference* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<TopOpeBRepDS_Transition const*> TopOpeBRepDS_CurvePointInterference_inherited_Transition(const TopOpeBRepDS_CurvePointInterference* self) {
@@ -10314,63 +9899,23 @@ extern "C" OcctResult<int32_t> TopOpeBRepDS_DataStructure_add_section_edge(TopOp
     try { return {self_->AddSectionEdge(*E), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TopOpeBRepDS_ListOfInterference const*> TopOpeBRepDS_DataStructure_surface_interferences(const TopOpeBRepDS_DataStructure* self_, int32_t I) {
-    try { return {&(self_->SurfaceInterferences(I)), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<TopOpeBRepDS_ListOfInterference*> TopOpeBRepDS_DataStructure_change_surface_interferences(TopOpeBRepDS_DataStructure* self_, int32_t I) {
-    try { return {&(self_->ChangeSurfaceInterferences(I)), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<TopOpeBRepDS_ListOfInterference const*> TopOpeBRepDS_DataStructure_curve_interferences(const TopOpeBRepDS_DataStructure* self_, int32_t I) {
-    try { return {&(self_->CurveInterferences(I)), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<TopOpeBRepDS_ListOfInterference*> TopOpeBRepDS_DataStructure_change_curve_interferences(TopOpeBRepDS_DataStructure* self_, int32_t I) {
-    try { return {&(self_->ChangeCurveInterferences(I)), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<TopOpeBRepDS_ListOfInterference const*> TopOpeBRepDS_DataStructure_point_interferences(const TopOpeBRepDS_DataStructure* self_, int32_t I) {
-    try { return {&(self_->PointInterferences(I)), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<TopOpeBRepDS_ListOfInterference*> TopOpeBRepDS_DataStructure_change_point_interferences(TopOpeBRepDS_DataStructure* self_, int32_t I) {
-    try { return {&(self_->ChangePointInterferences(I)), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<TopOpeBRepDS_ListOfInterference const*> TopOpeBRepDS_DataStructure_shape_interferences_shape_bool(const TopOpeBRepDS_DataStructure* self_, TopoDS_Shape const* S, bool FindKeep) {
-    try { return {&(self_->ShapeInterferences(*S, FindKeep)), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<TopOpeBRepDS_ListOfInterference*> TopOpeBRepDS_DataStructure_change_shape_interferences_shape(TopOpeBRepDS_DataStructure* self_, TopoDS_Shape const* S) {
-    try { return {&(self_->ChangeShapeInterferences(*S)), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<TopOpeBRepDS_ListOfInterference const*> TopOpeBRepDS_DataStructure_shape_interferences_int_bool(const TopOpeBRepDS_DataStructure* self_, int32_t I, bool FindKeep) {
-    try { return {&(self_->ShapeInterferences(I, FindKeep)), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<TopOpeBRepDS_ListOfInterference*> TopOpeBRepDS_DataStructure_change_shape_interferences_int(TopOpeBRepDS_DataStructure* self_, int32_t I) {
-    try { return {&(self_->ChangeShapeInterferences(I)), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<TopTools_ListOfShape const*> TopOpeBRepDS_DataStructure_shape_same_domain_shape(const TopOpeBRepDS_DataStructure* self_, TopoDS_Shape const* S) {
+extern "C" OcctResult<NCollection_List_TopoDS_Shape const*> TopOpeBRepDS_DataStructure_shape_same_domain_shape(const TopOpeBRepDS_DataStructure* self_, TopoDS_Shape const* S) {
     try { return {&(self_->ShapeSameDomain(*S)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TopTools_ListOfShape*> TopOpeBRepDS_DataStructure_change_shape_same_domain_shape(TopOpeBRepDS_DataStructure* self_, TopoDS_Shape const* S) {
+extern "C" OcctResult<NCollection_List_TopoDS_Shape*> TopOpeBRepDS_DataStructure_change_shape_same_domain_shape(TopOpeBRepDS_DataStructure* self_, TopoDS_Shape const* S) {
     try { return {&(self_->ChangeShapeSameDomain(*S)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TopTools_ListOfShape const*> TopOpeBRepDS_DataStructure_shape_same_domain_int(const TopOpeBRepDS_DataStructure* self_, int32_t I) {
+extern "C" OcctResult<NCollection_List_TopoDS_Shape const*> TopOpeBRepDS_DataStructure_shape_same_domain_int(const TopOpeBRepDS_DataStructure* self_, int32_t I) {
     try { return {&(self_->ShapeSameDomain(I)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TopTools_ListOfShape*> TopOpeBRepDS_DataStructure_change_shape_same_domain_int(TopOpeBRepDS_DataStructure* self_, int32_t I) {
+extern "C" OcctResult<NCollection_List_TopoDS_Shape*> TopOpeBRepDS_DataStructure_change_shape_same_domain_int(TopOpeBRepDS_DataStructure* self_, int32_t I) {
     try { return {&(self_->ChangeShapeSameDomain(I)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TopOpeBRepDS_MapOfShapeData*> TopOpeBRepDS_DataStructure_change_shapes(TopOpeBRepDS_DataStructure* self_) {
+extern "C" OcctResult<NCollection_IndexedDataMap_TopoDS_Shape_TopOpeBRepDS_ShapeData_TopTools_ShapeMapHasher*> TopOpeBRepDS_DataStructure_change_shapes(TopOpeBRepDS_DataStructure* self_) {
     try { return {&(self_->ChangeShapes()), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -10562,15 +10107,15 @@ extern "C" OcctResult<bool> TopOpeBRepDS_DataStructure_isfafa(const TopOpeBRepDS
     try { return {self_->Isfafa(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TopOpeBRepDS_IndexedDataMapOfShapeWithState*> TopOpeBRepDS_DataStructure_change_map_of_shape_with_state_obj(TopOpeBRepDS_DataStructure* self_) {
+extern "C" OcctResult<NCollection_IndexedDataMap_TopoDS_Shape_TopOpeBRepDS_ShapeWithState_TopTools_ShapeMapHasher*> TopOpeBRepDS_DataStructure_change_map_of_shape_with_state_obj(TopOpeBRepDS_DataStructure* self_) {
     try { return {&(self_->ChangeMapOfShapeWithStateObj()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TopOpeBRepDS_IndexedDataMapOfShapeWithState*> TopOpeBRepDS_DataStructure_change_map_of_shape_with_state_tool(TopOpeBRepDS_DataStructure* self_) {
+extern "C" OcctResult<NCollection_IndexedDataMap_TopoDS_Shape_TopOpeBRepDS_ShapeWithState_TopTools_ShapeMapHasher*> TopOpeBRepDS_DataStructure_change_map_of_shape_with_state_tool(TopOpeBRepDS_DataStructure* self_) {
     try { return {&(self_->ChangeMapOfShapeWithStateTool()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TopOpeBRepDS_IndexedDataMapOfShapeWithState*> TopOpeBRepDS_DataStructure_change_map_of_shape_with_state(TopOpeBRepDS_DataStructure* self_, TopoDS_Shape const* aShape, bool* aFlag) {
+extern "C" OcctResult<NCollection_IndexedDataMap_TopoDS_Shape_TopOpeBRepDS_ShapeWithState_TopTools_ShapeMapHasher*> TopOpeBRepDS_DataStructure_change_map_of_shape_with_state(TopOpeBRepDS_DataStructure* self_, TopoDS_Shape const* aShape, bool* aFlag) {
     try { return {&(self_->ChangeMapOfShapeWithState(*aShape, *aFlag)), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -10578,11 +10123,11 @@ extern "C" OcctResult<TopOpeBRepDS_ShapeWithState const*> TopOpeBRepDS_DataStruc
     try { return {&(self_->GetShapeWithState(*aShape)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TopTools_IndexedMapOfShape*> TopOpeBRepDS_DataStructure_change_map_of_rejected_shapes_obj(TopOpeBRepDS_DataStructure* self_) {
+extern "C" OcctResult<NCollection_IndexedMap_TopoDS_Shape_TopTools_ShapeMapHasher*> TopOpeBRepDS_DataStructure_change_map_of_rejected_shapes_obj(TopOpeBRepDS_DataStructure* self_) {
     try { return {&(self_->ChangeMapOfRejectedShapesObj()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TopTools_IndexedMapOfShape*> TopOpeBRepDS_DataStructure_change_map_of_rejected_shapes_tool(TopOpeBRepDS_DataStructure* self_) {
+extern "C" OcctResult<NCollection_IndexedMap_TopoDS_Shape_TopTools_ShapeMapHasher*> TopOpeBRepDS_DataStructure_change_map_of_rejected_shapes_tool(TopOpeBRepDS_DataStructure* self_) {
     try { return {&(self_->ChangeMapOfRejectedShapesTool()), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -10616,7 +10161,7 @@ extern "C" OcctResult<TCollection_AsciiString*> TopOpeBRepDS_Dumper_s_print_shap
     try { return {new TCollection_AsciiString(self_->SPrintShapeRefOri(*S, *B)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TCollection_AsciiString*> TopOpeBRepDS_Dumper_s_print_shape_ref_ori_listofshape_asciistring(const TopOpeBRepDS_Dumper* self_, TopTools_ListOfShape const* L, TCollection_AsciiString const* B) {
+extern "C" OcctResult<TCollection_AsciiString*> TopOpeBRepDS_Dumper_s_print_shape_ref_ori_list_shape_asciistring(const TopOpeBRepDS_Dumper* self_, NCollection_List_TopoDS_Shape const* L, TCollection_AsciiString const* B) {
     try { return {new TCollection_AsciiString(self_->SPrintShapeRefOri(*L, *B)), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -10730,28 +10275,28 @@ extern "C" OcctResult<const TopOpeBRepDS_Interference*> TopOpeBRepDS_EdgeVertexI
 extern "C" OcctResult<TopOpeBRepDS_Interference*> TopOpeBRepDS_EdgeVertexInterference_as_TopOpeBRepDS_Interference_mut(TopOpeBRepDS_EdgeVertexInterference* self_) { return {static_cast<TopOpeBRepDS_Interference*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> TopOpeBRepDS_EdgeVertexInterference_as_Standard_Transient(const TopOpeBRepDS_EdgeVertexInterference* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> TopOpeBRepDS_EdgeVertexInterference_as_Standard_Transient_mut(TopOpeBRepDS_EdgeVertexInterference* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleTopOpeBRepDSEdgeVertexInterference*> TopOpeBRepDS_EdgeVertexInterference_to_handle(TopOpeBRepDS_EdgeVertexInterference* obj) {
-    try { return {new HandleTopOpeBRepDSEdgeVertexInterference(obj), nullptr}; }
+extern "C" OcctResult<Handle_TopOpeBRepDS_EdgeVertexInterference*> TopOpeBRepDS_EdgeVertexInterference_to_handle(TopOpeBRepDS_EdgeVertexInterference* obj) {
+    try { return {new Handle_TopOpeBRepDS_EdgeVertexInterference(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const TopOpeBRepDS_EdgeVertexInterference*> HandleTopOpeBRepDSEdgeVertexInterference_get(const HandleTopOpeBRepDSEdgeVertexInterference* handle) {
+extern "C" OcctResult<const TopOpeBRepDS_EdgeVertexInterference*> Handle_TopOpeBRepDS_EdgeVertexInterference_get(const Handle_TopOpeBRepDS_EdgeVertexInterference* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TopOpeBRepDS_EdgeVertexInterference*> HandleTopOpeBRepDSEdgeVertexInterference_get_mut(HandleTopOpeBRepDSEdgeVertexInterference* handle) {
+extern "C" OcctResult<TopOpeBRepDS_EdgeVertexInterference*> Handle_TopOpeBRepDS_EdgeVertexInterference_get_mut(Handle_TopOpeBRepDS_EdgeVertexInterference* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTopOpeBRepDSShapeShapeInterference*> HandleTopOpeBRepDSEdgeVertexInterference_to_HandleTopOpeBRepDSShapeShapeInterference(const HandleTopOpeBRepDSEdgeVertexInterference* self_) {
-    try { return {new HandleTopOpeBRepDSShapeShapeInterference(*self_), nullptr}; }
+extern "C" OcctResult<Handle_TopOpeBRepDS_ShapeShapeInterference*> Handle_TopOpeBRepDS_EdgeVertexInterference_to_Handle_TopOpeBRepDS_ShapeShapeInterference(const Handle_TopOpeBRepDS_EdgeVertexInterference* self_) {
+    try { return {new Handle_TopOpeBRepDS_ShapeShapeInterference(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTopOpeBRepDSInterference*> HandleTopOpeBRepDSEdgeVertexInterference_to_HandleTopOpeBRepDSInterference(const HandleTopOpeBRepDSEdgeVertexInterference* self_) {
-    try { return {new HandleTopOpeBRepDSInterference(*self_), nullptr}; }
+extern "C" OcctResult<Handle_TopOpeBRepDS_Interference*> Handle_TopOpeBRepDS_EdgeVertexInterference_to_Handle_TopOpeBRepDS_Interference(const Handle_TopOpeBRepDS_EdgeVertexInterference* self_) {
+    try { return {new Handle_TopOpeBRepDS_Interference(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleTopOpeBRepDSEdgeVertexInterference_to_HandleStandardTransient(const HandleTopOpeBRepDSEdgeVertexInterference* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_TopOpeBRepDS_EdgeVertexInterference_to_Handle_Standard_Transient(const Handle_TopOpeBRepDS_EdgeVertexInterference* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<int32_t> TopOpeBRepDS_EdgeVertexInterference_inherited_Config(const TopOpeBRepDS_EdgeVertexInterference* self) {
@@ -10890,11 +10435,11 @@ extern "C" OcctResult<TopOpeBRepDS_FIR*> TopOpeBRepDS_FIR_ctor_handletopopebrepd
     try { return {new TopOpeBRepDS_FIR(*HDS), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* TopOpeBRepDS_FIR_process_face_interferences_datamapofshapelistofshapeon1state(TopOpeBRepDS_FIR* self_, TopOpeBRepDS_DataMapOfShapeListOfShapeOn1State const* M) {
+extern "C" const char* TopOpeBRepDS_FIR_process_face_interferences_dmap_shape_listofshapeon1state(TopOpeBRepDS_FIR* self_, NCollection_DataMap_TopoDS_Shape_TopOpeBRepDS_ListOfShapeOn1State_TopTools_ShapeMapHasher const* M) {
     try { self_->ProcessFaceInterferences(*M); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* TopOpeBRepDS_FIR_process_face_interferences_int_datamapofshapelistofshapeon1state(TopOpeBRepDS_FIR* self_, int32_t I, TopOpeBRepDS_DataMapOfShapeListOfShapeOn1State const* M) {
+extern "C" const char* TopOpeBRepDS_FIR_process_face_interferences_int_dmap_shape_listofshapeon1state(TopOpeBRepDS_FIR* self_, int32_t I, NCollection_DataMap_TopoDS_Shape_TopOpeBRepDS_ListOfShapeOn1State_TopTools_ShapeMapHasher const* M) {
     try { self_->ProcessFaceInterferences(I, *M); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -10926,28 +10471,28 @@ extern "C" OcctResult<const TopOpeBRepDS_Interference*> TopOpeBRepDS_FaceEdgeInt
 extern "C" OcctResult<TopOpeBRepDS_Interference*> TopOpeBRepDS_FaceEdgeInterference_as_TopOpeBRepDS_Interference_mut(TopOpeBRepDS_FaceEdgeInterference* self_) { return {static_cast<TopOpeBRepDS_Interference*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> TopOpeBRepDS_FaceEdgeInterference_as_Standard_Transient(const TopOpeBRepDS_FaceEdgeInterference* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> TopOpeBRepDS_FaceEdgeInterference_as_Standard_Transient_mut(TopOpeBRepDS_FaceEdgeInterference* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleTopOpeBRepDSFaceEdgeInterference*> TopOpeBRepDS_FaceEdgeInterference_to_handle(TopOpeBRepDS_FaceEdgeInterference* obj) {
-    try { return {new HandleTopOpeBRepDSFaceEdgeInterference(obj), nullptr}; }
+extern "C" OcctResult<Handle_TopOpeBRepDS_FaceEdgeInterference*> TopOpeBRepDS_FaceEdgeInterference_to_handle(TopOpeBRepDS_FaceEdgeInterference* obj) {
+    try { return {new Handle_TopOpeBRepDS_FaceEdgeInterference(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const TopOpeBRepDS_FaceEdgeInterference*> HandleTopOpeBRepDSFaceEdgeInterference_get(const HandleTopOpeBRepDSFaceEdgeInterference* handle) {
+extern "C" OcctResult<const TopOpeBRepDS_FaceEdgeInterference*> Handle_TopOpeBRepDS_FaceEdgeInterference_get(const Handle_TopOpeBRepDS_FaceEdgeInterference* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TopOpeBRepDS_FaceEdgeInterference*> HandleTopOpeBRepDSFaceEdgeInterference_get_mut(HandleTopOpeBRepDSFaceEdgeInterference* handle) {
+extern "C" OcctResult<TopOpeBRepDS_FaceEdgeInterference*> Handle_TopOpeBRepDS_FaceEdgeInterference_get_mut(Handle_TopOpeBRepDS_FaceEdgeInterference* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTopOpeBRepDSShapeShapeInterference*> HandleTopOpeBRepDSFaceEdgeInterference_to_HandleTopOpeBRepDSShapeShapeInterference(const HandleTopOpeBRepDSFaceEdgeInterference* self_) {
-    try { return {new HandleTopOpeBRepDSShapeShapeInterference(*self_), nullptr}; }
+extern "C" OcctResult<Handle_TopOpeBRepDS_ShapeShapeInterference*> Handle_TopOpeBRepDS_FaceEdgeInterference_to_Handle_TopOpeBRepDS_ShapeShapeInterference(const Handle_TopOpeBRepDS_FaceEdgeInterference* self_) {
+    try { return {new Handle_TopOpeBRepDS_ShapeShapeInterference(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTopOpeBRepDSInterference*> HandleTopOpeBRepDSFaceEdgeInterference_to_HandleTopOpeBRepDSInterference(const HandleTopOpeBRepDSFaceEdgeInterference* self_) {
-    try { return {new HandleTopOpeBRepDSInterference(*self_), nullptr}; }
+extern "C" OcctResult<Handle_TopOpeBRepDS_Interference*> Handle_TopOpeBRepDS_FaceEdgeInterference_to_Handle_TopOpeBRepDS_Interference(const Handle_TopOpeBRepDS_FaceEdgeInterference* self_) {
+    try { return {new Handle_TopOpeBRepDS_Interference(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleTopOpeBRepDSFaceEdgeInterference_to_HandleStandardTransient(const HandleTopOpeBRepDSFaceEdgeInterference* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_TopOpeBRepDS_FaceEdgeInterference_to_Handle_Standard_Transient(const Handle_TopOpeBRepDS_FaceEdgeInterference* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<int32_t> TopOpeBRepDS_FaceEdgeInterference_inherited_Config(const TopOpeBRepDS_FaceEdgeInterference* self) {
@@ -11078,11 +10623,11 @@ extern "C" const char* TopOpeBRepDS_Filter_process_interferences(TopOpeBRepDS_Fi
     try { self_->ProcessInterferences(); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* TopOpeBRepDS_Filter_process_face_interferences_datamapofshapelistofshapeon1state(TopOpeBRepDS_Filter* self_, TopOpeBRepDS_DataMapOfShapeListOfShapeOn1State const* MEsp) {
+extern "C" const char* TopOpeBRepDS_Filter_process_face_interferences_dmap_shape_listofshapeon1state(TopOpeBRepDS_Filter* self_, NCollection_DataMap_TopoDS_Shape_TopOpeBRepDS_ListOfShapeOn1State_TopTools_ShapeMapHasher const* MEsp) {
     try { self_->ProcessFaceInterferences(*MEsp); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* TopOpeBRepDS_Filter_process_face_interferences_int_datamapofshapelistofshapeon1state(TopOpeBRepDS_Filter* self_, int32_t I, TopOpeBRepDS_DataMapOfShapeListOfShapeOn1State const* MEsp) {
+extern "C" const char* TopOpeBRepDS_Filter_process_face_interferences_int_dmap_shape_listofshapeon1state(TopOpeBRepDS_Filter* self_, int32_t I, NCollection_DataMap_TopoDS_Shape_TopOpeBRepDS_ListOfShapeOn1State_TopTools_ShapeMapHasher const* MEsp) {
     try { self_->ProcessFaceInterferences(I, *MEsp); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -11116,34 +10661,6 @@ extern "C" const char* TopOpeBRepDS_GapFiller_perform(TopOpeBRepDS_GapFiller* se
     try { self_->Perform(); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* TopOpeBRepDS_GapFiller_find_associated_points(TopOpeBRepDS_GapFiller* self_, Handle(TopOpeBRepDS_Interference) const* I, TopOpeBRepDS_ListOfInterference* LI) {
-    try { self_->FindAssociatedPoints(*I, *LI); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<bool> TopOpeBRepDS_GapFiller_check_connexity(TopOpeBRepDS_GapFiller* self_, TopOpeBRepDS_ListOfInterference* LI) {
-    try { return {self_->CheckConnexity(*LI), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* TopOpeBRepDS_GapFiller_add_points_on_shape(TopOpeBRepDS_GapFiller* self_, TopoDS_Shape const* S, TopOpeBRepDS_ListOfInterference* LI) {
-    try { self_->AddPointsOnShape(*S, *LI); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* TopOpeBRepDS_GapFiller_add_points_on_connex_shape(TopOpeBRepDS_GapFiller* self_, TopoDS_Shape const* F, TopOpeBRepDS_ListOfInterference const* LI) {
-    try { self_->AddPointsOnConnexShape(*F, *LI); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* TopOpeBRepDS_GapFiller_filter_by_face(TopOpeBRepDS_GapFiller* self_, TopoDS_Face const* F, TopOpeBRepDS_ListOfInterference* LI) {
-    try { self_->FilterByFace(*F, *LI); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* TopOpeBRepDS_GapFiller_filter_by_edge(TopOpeBRepDS_GapFiller* self_, TopoDS_Edge const* E, TopOpeBRepDS_ListOfInterference* LI) {
-    try { self_->FilterByEdge(*E, *LI); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* TopOpeBRepDS_GapFiller_filter_by_incident_distance(TopOpeBRepDS_GapFiller* self_, TopoDS_Face const* F, Handle(TopOpeBRepDS_Interference) const* I, TopOpeBRepDS_ListOfInterference* LI) {
-    try { self_->FilterByIncidentDistance(*F, *I, *LI); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
 extern "C" OcctResult<bool> TopOpeBRepDS_GapFiller_is_on_face(const TopOpeBRepDS_GapFiller* self_, Handle(TopOpeBRepDS_Interference) const* I, TopoDS_Face const* F) {
     try { return {self_->IsOnFace(*I, *F), nullptr}; }
     OCCT_CATCH_RETURN
@@ -11156,7 +10673,7 @@ extern "C" const char* TopOpeBRepDS_GapFiller_build_new_geometries(TopOpeBRepDS_
     try { self_->BuildNewGeometries(); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* TopOpeBRepDS_GapFiller_re_build_geom(TopOpeBRepDS_GapFiller* self_, Handle(TopOpeBRepDS_Interference) const* I1, TColStd_MapOfInteger* Done) {
+extern "C" const char* TopOpeBRepDS_GapFiller_re_build_geom(TopOpeBRepDS_GapFiller* self_, Handle(TopOpeBRepDS_Interference) const* I1, NCollection_Map_int* Done) {
     try { self_->ReBuildGeom(*I1, *Done); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -11177,18 +10694,6 @@ extern "C" OcctResult<TopOpeBRepDS_GapTool*> TopOpeBRepDS_GapTool_ctor_handletop
 extern "C" const char* TopOpeBRepDS_GapTool_init(TopOpeBRepDS_GapTool* self_, Handle(TopOpeBRepDS_HDataStructure) const* HDS) {
     try { self_->Init(*HDS); return nullptr; }
     OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<TopOpeBRepDS_ListOfInterference const*> TopOpeBRepDS_GapTool_interferences(const TopOpeBRepDS_GapTool* self_, int32_t IndexPoint) {
-    try { return {&(self_->Interferences(IndexPoint)), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<TopOpeBRepDS_ListOfInterference const*> TopOpeBRepDS_GapTool_same_interferences(const TopOpeBRepDS_GapTool* self_, Handle(TopOpeBRepDS_Interference) const* I) {
-    try { return {&(self_->SameInterferences(*I)), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<TopOpeBRepDS_ListOfInterference*> TopOpeBRepDS_GapTool_change_same_interferences(TopOpeBRepDS_GapTool* self_, Handle(TopOpeBRepDS_Interference) const* I) {
-    try { return {&(self_->ChangeSameInterferences(*I)), nullptr}; }
-    OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> TopOpeBRepDS_GapTool_curve(const TopOpeBRepDS_GapTool* self_, Handle(TopOpeBRepDS_Interference) const* I, TopOpeBRepDS_Curve* C) {
     try { return {self_->Curve(*I, *C), nullptr}; }
@@ -11228,20 +10733,20 @@ extern "C" OcctResult<Handle(Standard_Type) const*> TopOpeBRepDS_GapTool_get_typ
 }
 extern "C" OcctResult<const Standard_Transient*> TopOpeBRepDS_GapTool_as_Standard_Transient(const TopOpeBRepDS_GapTool* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> TopOpeBRepDS_GapTool_as_Standard_Transient_mut(TopOpeBRepDS_GapTool* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleTopOpeBRepDSGapTool*> TopOpeBRepDS_GapTool_to_handle(TopOpeBRepDS_GapTool* obj) {
-    try { return {new HandleTopOpeBRepDSGapTool(obj), nullptr}; }
+extern "C" OcctResult<Handle_TopOpeBRepDS_GapTool*> TopOpeBRepDS_GapTool_to_handle(TopOpeBRepDS_GapTool* obj) {
+    try { return {new Handle_TopOpeBRepDS_GapTool(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const TopOpeBRepDS_GapTool*> HandleTopOpeBRepDSGapTool_get(const HandleTopOpeBRepDSGapTool* handle) {
+extern "C" OcctResult<const TopOpeBRepDS_GapTool*> Handle_TopOpeBRepDS_GapTool_get(const Handle_TopOpeBRepDS_GapTool* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TopOpeBRepDS_GapTool*> HandleTopOpeBRepDSGapTool_get_mut(HandleTopOpeBRepDSGapTool* handle) {
+extern "C" OcctResult<TopOpeBRepDS_GapTool*> Handle_TopOpeBRepDS_GapTool_get_mut(Handle_TopOpeBRepDS_GapTool* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleTopOpeBRepDSGapTool_to_HandleStandardTransient(const HandleTopOpeBRepDSGapTool* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_TopOpeBRepDS_GapTool_to_Handle_Standard_Transient(const Handle_TopOpeBRepDS_GapTool* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> TopOpeBRepDS_GapTool_inherited_IsInstance(const TopOpeBRepDS_GapTool* self, Handle(Standard_Type) const& theType) {
@@ -11286,14 +10791,6 @@ extern "C" const char* TopOpeBRepDS_GeometryData_assign(TopOpeBRepDS_GeometryDat
     try { self_->Assign(*Other); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<TopOpeBRepDS_ListOfInterference const*> TopOpeBRepDS_GeometryData_interferences(const TopOpeBRepDS_GeometryData* self_) {
-    try { return {&(self_->Interferences()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<TopOpeBRepDS_ListOfInterference*> TopOpeBRepDS_GeometryData_change_interferences(TopOpeBRepDS_GeometryData* self_) {
-    try { return {&(self_->ChangeInterferences()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
 extern "C" const char* TopOpeBRepDS_GeometryData_add_interference(TopOpeBRepDS_GeometryData* self_, Handle(TopOpeBRepDS_Interference) const* I) {
     try { self_->AddInterference(*I); return nullptr; }
     OCCT_CATCH_RETURN_VOID
@@ -11303,98 +10800,6 @@ extern "C" OcctResult<TopOpeBRepDS_GeometryData*> TopOpeBRepDS_GeometryData_clon
     OCCT_CATCH_RETURN
 }
 extern "C" void TopOpeBRepDS_GeometryData_destructor(TopOpeBRepDS_GeometryData* self_) { delete self_; }
-
-// ========================
-// TopOpeBRepDS_HArray1OfDataMapOfIntegerListOfInterference wrappers
-// ========================
-
-extern "C" OcctResult<TopOpeBRepDS_HArray1OfDataMapOfIntegerListOfInterference*> TopOpeBRepDS_HArray1OfDataMapOfIntegerListOfInterference_ctor() {
-    try { return {new TopOpeBRepDS_HArray1OfDataMapOfIntegerListOfInterference(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<TopOpeBRepDS_HArray1OfDataMapOfIntegerListOfInterference*> TopOpeBRepDS_HArray1OfDataMapOfIntegerListOfInterference_ctor_int2(int32_t theLower, int32_t theUpper) {
-    try { return {new TopOpeBRepDS_HArray1OfDataMapOfIntegerListOfInterference(theLower, theUpper), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<TopOpeBRepDS_HArray1OfDataMapOfIntegerListOfInterference*> TopOpeBRepDS_HArray1OfDataMapOfIntegerListOfInterference_ctor_int2_type(int32_t theLower, int32_t theUpper, TopOpeBRepDS_Array1OfDataMapOfIntegerListOfInterference::value_type const* theValue) {
-    try { return {new TopOpeBRepDS_HArray1OfDataMapOfIntegerListOfInterference(theLower, theUpper, *theValue), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<TopOpeBRepDS_HArray1OfDataMapOfIntegerListOfInterference*> TopOpeBRepDS_HArray1OfDataMapOfIntegerListOfInterference_ctor_type_int2_bool(TopOpeBRepDS_Array1OfDataMapOfIntegerListOfInterference::value_type const* theBegin, int32_t theLower, int32_t theUpper, bool arg3) {
-    try { return {new TopOpeBRepDS_HArray1OfDataMapOfIntegerListOfInterference(*theBegin, theLower, theUpper, arg3), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<TopOpeBRepDS_HArray1OfDataMapOfIntegerListOfInterference*> TopOpeBRepDS_HArray1OfDataMapOfIntegerListOfInterference_ctor_array1ofdatamapofintegerlistofinterference(TopOpeBRepDS_Array1OfDataMapOfIntegerListOfInterference const* theOther) {
-    try { return {new TopOpeBRepDS_HArray1OfDataMapOfIntegerListOfInterference(*theOther), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<TopOpeBRepDS_Array1OfDataMapOfIntegerListOfInterference const*> TopOpeBRepDS_HArray1OfDataMapOfIntegerListOfInterference_array1(const TopOpeBRepDS_HArray1OfDataMapOfIntegerListOfInterference* self_) {
-    try { return {&(self_->Array1()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<TopOpeBRepDS_Array1OfDataMapOfIntegerListOfInterference*> TopOpeBRepDS_HArray1OfDataMapOfIntegerListOfInterference_change_array1(TopOpeBRepDS_HArray1OfDataMapOfIntegerListOfInterference* self_) {
-    try { return {&(self_->ChangeArray1()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Handle(Standard_Type) const*> TopOpeBRepDS_HArray1OfDataMapOfIntegerListOfInterference_dynamic_type(const TopOpeBRepDS_HArray1OfDataMapOfIntegerListOfInterference* self_) {
-    try { return {&(self_->DynamicType()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<char const*> TopOpeBRepDS_HArray1OfDataMapOfIntegerListOfInterference_get_type_name() {
-    try { return {TopOpeBRepDS_HArray1OfDataMapOfIntegerListOfInterference::get_type_name(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Handle(Standard_Type) const*> TopOpeBRepDS_HArray1OfDataMapOfIntegerListOfInterference_get_type_descriptor() {
-    try { return {&(TopOpeBRepDS_HArray1OfDataMapOfIntegerListOfInterference::get_type_descriptor()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<const Standard_Transient*> TopOpeBRepDS_HArray1OfDataMapOfIntegerListOfInterference_as_Standard_Transient(const TopOpeBRepDS_HArray1OfDataMapOfIntegerListOfInterference* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<Standard_Transient*> TopOpeBRepDS_HArray1OfDataMapOfIntegerListOfInterference_as_Standard_Transient_mut(TopOpeBRepDS_HArray1OfDataMapOfIntegerListOfInterference* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleTopOpeBRepDSHArray1OfDataMapOfIntegerListOfInterference*> TopOpeBRepDS_HArray1OfDataMapOfIntegerListOfInterference_to_handle(TopOpeBRepDS_HArray1OfDataMapOfIntegerListOfInterference* obj) {
-    try { return {new HandleTopOpeBRepDSHArray1OfDataMapOfIntegerListOfInterference(obj), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<const TopOpeBRepDS_HArray1OfDataMapOfIntegerListOfInterference*> HandleTopOpeBRepDSHArray1OfDataMapOfIntegerListOfInterference_get(const HandleTopOpeBRepDSHArray1OfDataMapOfIntegerListOfInterference* handle) {
-    try { return {(*handle).get(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<TopOpeBRepDS_HArray1OfDataMapOfIntegerListOfInterference*> HandleTopOpeBRepDSHArray1OfDataMapOfIntegerListOfInterference_get_mut(HandleTopOpeBRepDSHArray1OfDataMapOfIntegerListOfInterference* handle) {
-    try { return {(*handle).get(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<HandleStandardTransient*> HandleTopOpeBRepDSHArray1OfDataMapOfIntegerListOfInterference_to_HandleStandardTransient(const HandleTopOpeBRepDSHArray1OfDataMapOfIntegerListOfInterference* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<bool> TopOpeBRepDS_HArray1OfDataMapOfIntegerListOfInterference_inherited_IsInstance(const TopOpeBRepDS_HArray1OfDataMapOfIntegerListOfInterference* self, Handle(Standard_Type) const& theType) {
-    try { return {self->IsInstance(theType), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<bool> TopOpeBRepDS_HArray1OfDataMapOfIntegerListOfInterference_inherited_IsKind(const TopOpeBRepDS_HArray1OfDataMapOfIntegerListOfInterference* self, Handle(Standard_Type) const& theType) {
-    try { return {self->IsKind(theType), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Standard_Transient*> TopOpeBRepDS_HArray1OfDataMapOfIntegerListOfInterference_inherited_This(const TopOpeBRepDS_HArray1OfDataMapOfIntegerListOfInterference* self) {
-    try { return {self->This(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<int32_t> TopOpeBRepDS_HArray1OfDataMapOfIntegerListOfInterference_inherited_GetRefCount(const TopOpeBRepDS_HArray1OfDataMapOfIntegerListOfInterference* self) {
-    try { return {self->GetRefCount(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* TopOpeBRepDS_HArray1OfDataMapOfIntegerListOfInterference_inherited_IncrementRefCounter(TopOpeBRepDS_HArray1OfDataMapOfIntegerListOfInterference* self) {
-    try { self->IncrementRefCounter(); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<int32_t> TopOpeBRepDS_HArray1OfDataMapOfIntegerListOfInterference_inherited_DecrementRefCounter(TopOpeBRepDS_HArray1OfDataMapOfIntegerListOfInterference* self) {
-    try { return {self->DecrementRefCounter(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* TopOpeBRepDS_HArray1OfDataMapOfIntegerListOfInterference_inherited_Delete(const TopOpeBRepDS_HArray1OfDataMapOfIntegerListOfInterference* self) {
-    try { self->Delete(); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" void TopOpeBRepDS_HArray1OfDataMapOfIntegerListOfInterference_destructor(TopOpeBRepDS_HArray1OfDataMapOfIntegerListOfInterference* self_) { delete self_; }
 
 // ========================
 // TopOpeBRepDS_HDataStructure wrappers
@@ -11410,10 +10815,6 @@ extern "C" OcctResult<TopOpeBRepDS_CurveIterator*> TopOpeBRepDS_HDataStructure_s
 }
 extern "C" OcctResult<TopOpeBRepDS_PointIterator*> TopOpeBRepDS_HDataStructure_curve_points(const TopOpeBRepDS_HDataStructure* self_, int32_t I) {
     try { return {new TopOpeBRepDS_PointIterator(self_->CurvePoints(I)), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<TopTools_ListIteratorOfListOfShape*> TopOpeBRepDS_HDataStructure_same_domain(const TopOpeBRepDS_HDataStructure* self_, TopoDS_Shape const* S) {
-    try { return {new TopTools_ListIteratorOfListOfShape(self_->SameDomain(*S)), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<TopOpeBRepDS_SurfaceIterator*> TopOpeBRepDS_HDataStructure_solid_surfaces_shape(const TopOpeBRepDS_HDataStructure* self_, TopoDS_Shape const* S) {
@@ -11540,57 +10941,12 @@ extern "C" OcctResult<bool> TopOpeBRepDS_HDataStructure_edges_same_parameter(con
     try { return {self_->EdgesSameParameter(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* TopOpeBRepDS_HDataStructure_sort_on_parameter_listofinterference2(const TopOpeBRepDS_HDataStructure* self_, TopOpeBRepDS_ListOfInterference const* L1, TopOpeBRepDS_ListOfInterference* L2) {
-    try { self_->SortOnParameter(*L1, *L2); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* TopOpeBRepDS_HDataStructure_sort_on_parameter_listofinterference(const TopOpeBRepDS_HDataStructure* self_, TopOpeBRepDS_ListOfInterference* L) {
-    try { self_->SortOnParameter(*L); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* TopOpeBRepDS_HDataStructure_min_max_on_parameter(const TopOpeBRepDS_HDataStructure* self_, TopOpeBRepDS_ListOfInterference const* L, double* Min, double* Max) {
-    try { self_->MinMaxOnParameter(*L, *Min, *Max); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<bool> TopOpeBRepDS_HDataStructure_scan_interf_list(const TopOpeBRepDS_HDataStructure* self_, TopOpeBRepDS_ListIteratorOfListOfInterference* IT, TopOpeBRepDS_Point const* PDS) {
-    try { return {self_->ScanInterfList(*IT, *PDS), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<bool> TopOpeBRepDS_HDataStructure_get_geometry(const TopOpeBRepDS_HDataStructure* self_, TopOpeBRepDS_ListIteratorOfListOfInterference* IT, TopOpeBRepDS_Point const* PDS, int32_t* G, int32_t& K) {
-    try {
-    auto K_enum_ = static_cast<TopOpeBRepDS_Kind>(K);
-    auto result_ = self_->GetGeometry(*IT, *PDS, *G, K_enum_);
-    K = static_cast<int32_t>(K_enum_);
-    return {result_, nullptr};
-    }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* TopOpeBRepDS_HDataStructure_store_interference_handletopopebrepdsinterference_listofinterference_asciistring(TopOpeBRepDS_HDataStructure* self_, Handle(TopOpeBRepDS_Interference) const* I, TopOpeBRepDS_ListOfInterference* LI, TCollection_AsciiString const* str) {
-    try { self_->StoreInterference(*I, *LI, *str); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
 extern "C" const char* TopOpeBRepDS_HDataStructure_store_interference_handletopopebrepdsinterference_shape_asciistring(TopOpeBRepDS_HDataStructure* self_, Handle(TopOpeBRepDS_Interference) const* I, TopoDS_Shape const* S, TCollection_AsciiString const* str) {
     try { self_->StoreInterference(*I, *S, *str); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
 extern "C" const char* TopOpeBRepDS_HDataStructure_store_interference_handletopopebrepdsinterference_int_asciistring(TopOpeBRepDS_HDataStructure* self_, Handle(TopOpeBRepDS_Interference) const* I, int32_t IS, TCollection_AsciiString const* str) {
     try { self_->StoreInterference(*I, IS, *str); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* TopOpeBRepDS_HDataStructure_store_interferences_listofinterference_shape_asciistring(TopOpeBRepDS_HDataStructure* self_, TopOpeBRepDS_ListOfInterference const* LI, TopoDS_Shape const* S, TCollection_AsciiString const* str) {
-    try { self_->StoreInterferences(*LI, *S, *str); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* TopOpeBRepDS_HDataStructure_store_interferences_listofinterference_int_asciistring(TopOpeBRepDS_HDataStructure* self_, TopOpeBRepDS_ListOfInterference const* LI, int32_t IS, TCollection_AsciiString const* str) {
-    try { self_->StoreInterferences(*LI, IS, *str); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* TopOpeBRepDS_HDataStructure_clear_store_interferences_listofinterference_shape_asciistring(TopOpeBRepDS_HDataStructure* self_, TopOpeBRepDS_ListOfInterference const* LI, TopoDS_Shape const* S, TCollection_AsciiString const* str) {
-    try { self_->ClearStoreInterferences(*LI, *S, *str); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* TopOpeBRepDS_HDataStructure_clear_store_interferences_listofinterference_int_asciistring(TopOpeBRepDS_HDataStructure* self_, TopOpeBRepDS_ListOfInterference const* LI, int32_t IS, TCollection_AsciiString const* str) {
-    try { self_->ClearStoreInterferences(*LI, IS, *str); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
 extern "C" OcctResult<Handle(Standard_Type) const*> TopOpeBRepDS_HDataStructure_dynamic_type(const TopOpeBRepDS_HDataStructure* self_) {
@@ -11607,20 +10963,20 @@ extern "C" OcctResult<Handle(Standard_Type) const*> TopOpeBRepDS_HDataStructure_
 }
 extern "C" OcctResult<const Standard_Transient*> TopOpeBRepDS_HDataStructure_as_Standard_Transient(const TopOpeBRepDS_HDataStructure* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> TopOpeBRepDS_HDataStructure_as_Standard_Transient_mut(TopOpeBRepDS_HDataStructure* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleTopOpeBRepDSHDataStructure*> TopOpeBRepDS_HDataStructure_to_handle(TopOpeBRepDS_HDataStructure* obj) {
-    try { return {new HandleTopOpeBRepDSHDataStructure(obj), nullptr}; }
+extern "C" OcctResult<Handle_TopOpeBRepDS_HDataStructure*> TopOpeBRepDS_HDataStructure_to_handle(TopOpeBRepDS_HDataStructure* obj) {
+    try { return {new Handle_TopOpeBRepDS_HDataStructure(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const TopOpeBRepDS_HDataStructure*> HandleTopOpeBRepDSHDataStructure_get(const HandleTopOpeBRepDSHDataStructure* handle) {
+extern "C" OcctResult<const TopOpeBRepDS_HDataStructure*> Handle_TopOpeBRepDS_HDataStructure_get(const Handle_TopOpeBRepDS_HDataStructure* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TopOpeBRepDS_HDataStructure*> HandleTopOpeBRepDSHDataStructure_get_mut(HandleTopOpeBRepDSHDataStructure* handle) {
+extern "C" OcctResult<TopOpeBRepDS_HDataStructure*> Handle_TopOpeBRepDS_HDataStructure_get_mut(Handle_TopOpeBRepDS_HDataStructure* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleTopOpeBRepDSHDataStructure_to_HandleStandardTransient(const HandleTopOpeBRepDSHDataStructure* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_TopOpeBRepDS_HDataStructure_to_Handle_Standard_Transient(const Handle_TopOpeBRepDS_HDataStructure* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> TopOpeBRepDS_HDataStructure_inherited_IsInstance(const TopOpeBRepDS_HDataStructure* self, Handle(Standard_Type) const& theType) {
@@ -11750,67 +11106,67 @@ extern "C" OcctResult<Handle(Standard_Type) const*> TopOpeBRepDS_Interference_ge
 }
 extern "C" OcctResult<const Standard_Transient*> TopOpeBRepDS_Interference_as_Standard_Transient(const TopOpeBRepDS_Interference* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> TopOpeBRepDS_Interference_as_Standard_Transient_mut(TopOpeBRepDS_Interference* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleTopOpeBRepDSInterference*> TopOpeBRepDS_Interference_to_handle(TopOpeBRepDS_Interference* obj) {
-    try { return {new HandleTopOpeBRepDSInterference(obj), nullptr}; }
+extern "C" OcctResult<Handle_TopOpeBRepDS_Interference*> TopOpeBRepDS_Interference_to_handle(TopOpeBRepDS_Interference* obj) {
+    try { return {new Handle_TopOpeBRepDS_Interference(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const TopOpeBRepDS_Interference*> HandleTopOpeBRepDSInterference_get(const HandleTopOpeBRepDSInterference* handle) {
+extern "C" OcctResult<const TopOpeBRepDS_Interference*> Handle_TopOpeBRepDS_Interference_get(const Handle_TopOpeBRepDS_Interference* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TopOpeBRepDS_Interference*> HandleTopOpeBRepDSInterference_get_mut(HandleTopOpeBRepDSInterference* handle) {
+extern "C" OcctResult<TopOpeBRepDS_Interference*> Handle_TopOpeBRepDS_Interference_get_mut(Handle_TopOpeBRepDS_Interference* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleTopOpeBRepDSInterference_to_HandleStandardTransient(const HandleTopOpeBRepDSInterference* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_TopOpeBRepDS_Interference_to_Handle_Standard_Transient(const Handle_TopOpeBRepDS_Interference* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTopOpeBRepDSCurvePointInterference*> HandleTopOpeBRepDSInterference_downcast_to_HandleTopOpeBRepDSCurvePointInterference(const HandleTopOpeBRepDSInterference* self_) {
+extern "C" OcctResult<Handle_TopOpeBRepDS_CurvePointInterference*> Handle_TopOpeBRepDS_Interference_downcast_to_Handle_TopOpeBRepDS_CurvePointInterference(const Handle_TopOpeBRepDS_Interference* self_) {
     try {
     opencascade::handle<TopOpeBRepDS_CurvePointInterference> result = opencascade::handle<TopOpeBRepDS_CurvePointInterference>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleTopOpeBRepDSCurvePointInterference(result), nullptr};
+    return {new Handle_TopOpeBRepDS_CurvePointInterference(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTopOpeBRepDSEdgeVertexInterference*> HandleTopOpeBRepDSInterference_downcast_to_HandleTopOpeBRepDSEdgeVertexInterference(const HandleTopOpeBRepDSInterference* self_) {
+extern "C" OcctResult<Handle_TopOpeBRepDS_EdgeVertexInterference*> Handle_TopOpeBRepDS_Interference_downcast_to_Handle_TopOpeBRepDS_EdgeVertexInterference(const Handle_TopOpeBRepDS_Interference* self_) {
     try {
     opencascade::handle<TopOpeBRepDS_EdgeVertexInterference> result = opencascade::handle<TopOpeBRepDS_EdgeVertexInterference>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleTopOpeBRepDSEdgeVertexInterference(result), nullptr};
+    return {new Handle_TopOpeBRepDS_EdgeVertexInterference(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTopOpeBRepDSFaceEdgeInterference*> HandleTopOpeBRepDSInterference_downcast_to_HandleTopOpeBRepDSFaceEdgeInterference(const HandleTopOpeBRepDSInterference* self_) {
+extern "C" OcctResult<Handle_TopOpeBRepDS_FaceEdgeInterference*> Handle_TopOpeBRepDS_Interference_downcast_to_Handle_TopOpeBRepDS_FaceEdgeInterference(const Handle_TopOpeBRepDS_Interference* self_) {
     try {
     opencascade::handle<TopOpeBRepDS_FaceEdgeInterference> result = opencascade::handle<TopOpeBRepDS_FaceEdgeInterference>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleTopOpeBRepDSFaceEdgeInterference(result), nullptr};
+    return {new Handle_TopOpeBRepDS_FaceEdgeInterference(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTopOpeBRepDSShapeShapeInterference*> HandleTopOpeBRepDSInterference_downcast_to_HandleTopOpeBRepDSShapeShapeInterference(const HandleTopOpeBRepDSInterference* self_) {
+extern "C" OcctResult<Handle_TopOpeBRepDS_ShapeShapeInterference*> Handle_TopOpeBRepDS_Interference_downcast_to_Handle_TopOpeBRepDS_ShapeShapeInterference(const Handle_TopOpeBRepDS_Interference* self_) {
     try {
     opencascade::handle<TopOpeBRepDS_ShapeShapeInterference> result = opencascade::handle<TopOpeBRepDS_ShapeShapeInterference>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleTopOpeBRepDSShapeShapeInterference(result), nullptr};
+    return {new Handle_TopOpeBRepDS_ShapeShapeInterference(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTopOpeBRepDSSolidSurfaceInterference*> HandleTopOpeBRepDSInterference_downcast_to_HandleTopOpeBRepDSSolidSurfaceInterference(const HandleTopOpeBRepDSInterference* self_) {
+extern "C" OcctResult<Handle_TopOpeBRepDS_SolidSurfaceInterference*> Handle_TopOpeBRepDS_Interference_downcast_to_Handle_TopOpeBRepDS_SolidSurfaceInterference(const Handle_TopOpeBRepDS_Interference* self_) {
     try {
     opencascade::handle<TopOpeBRepDS_SolidSurfaceInterference> result = opencascade::handle<TopOpeBRepDS_SolidSurfaceInterference>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleTopOpeBRepDSSolidSurfaceInterference(result), nullptr};
+    return {new Handle_TopOpeBRepDS_SolidSurfaceInterference(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTopOpeBRepDSSurfaceCurveInterference*> HandleTopOpeBRepDSInterference_downcast_to_HandleTopOpeBRepDSSurfaceCurveInterference(const HandleTopOpeBRepDSInterference* self_) {
+extern "C" OcctResult<Handle_TopOpeBRepDS_SurfaceCurveInterference*> Handle_TopOpeBRepDS_Interference_downcast_to_Handle_TopOpeBRepDS_SurfaceCurveInterference(const Handle_TopOpeBRepDS_Interference* self_) {
     try {
     opencascade::handle<TopOpeBRepDS_SurfaceCurveInterference> result = opencascade::handle<TopOpeBRepDS_SurfaceCurveInterference>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleTopOpeBRepDSSurfaceCurveInterference(result), nullptr};
+    return {new Handle_TopOpeBRepDS_SurfaceCurveInterference(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
@@ -11852,14 +11208,6 @@ extern "C" OcctResult<TopOpeBRepDS_InterferenceIterator*> TopOpeBRepDS_Interfere
     try { return {new TopOpeBRepDS_InterferenceIterator(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TopOpeBRepDS_InterferenceIterator*> TopOpeBRepDS_InterferenceIterator_ctor_listofinterference(TopOpeBRepDS_ListOfInterference const* L) {
-    try { return {new TopOpeBRepDS_InterferenceIterator(*L), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* TopOpeBRepDS_InterferenceIterator_init(TopOpeBRepDS_InterferenceIterator* self_, TopOpeBRepDS_ListOfInterference const* L) {
-    try { self_->Init(*L); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
 extern "C" const char* TopOpeBRepDS_InterferenceIterator_geometry_kind(TopOpeBRepDS_InterferenceIterator* self_, int32_t GK) {
     try { self_->GeometryKind(static_cast<TopOpeBRepDS_Kind>(GK)); return nullptr; }
     OCCT_CATCH_RETURN_VOID
@@ -11894,10 +11242,6 @@ extern "C" const char* TopOpeBRepDS_InterferenceIterator_next(TopOpeBRepDS_Inter
 }
 extern "C" OcctResult<Handle(TopOpeBRepDS_Interference) const*> TopOpeBRepDS_InterferenceIterator_value(const TopOpeBRepDS_InterferenceIterator* self_) {
     try { return {&(self_->Value()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<TopOpeBRepDS_ListIteratorOfListOfInterference*> TopOpeBRepDS_InterferenceIterator_change_iterator(TopOpeBRepDS_InterferenceIterator* self_) {
-    try { return {&(self_->ChangeIterator()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" void TopOpeBRepDS_InterferenceIterator_destructor(TopOpeBRepDS_InterferenceIterator* self_) { delete self_; }
@@ -11956,11 +11300,11 @@ extern "C" OcctResult<TopOpeBRepDS_ListOfShapeOn1State*> TopOpeBRepDS_ListOfShap
     try { return {new TopOpeBRepDS_ListOfShapeOn1State(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TopTools_ListOfShape const*> TopOpeBRepDS_ListOfShapeOn1State_list_on_state(const TopOpeBRepDS_ListOfShapeOn1State* self_) {
+extern "C" OcctResult<NCollection_List_TopoDS_Shape const*> TopOpeBRepDS_ListOfShapeOn1State_list_on_state(const TopOpeBRepDS_ListOfShapeOn1State* self_) {
     try { return {&(self_->ListOnState()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TopTools_ListOfShape*> TopOpeBRepDS_ListOfShapeOn1State_change_list_on_state(TopOpeBRepDS_ListOfShapeOn1State* self_) {
+extern "C" OcctResult<NCollection_List_TopoDS_Shape*> TopOpeBRepDS_ListOfShapeOn1State_change_list_on_state(TopOpeBRepDS_ListOfShapeOn1State* self_) {
     try { return {&(self_->ChangeListOnState()), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -11994,7 +11338,7 @@ extern "C" const char* TopOpeBRepDS_Marker_set_int_bool(TopOpeBRepDS_Marker* sel
     try { self_->Set(i, b); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* TopOpeBRepDS_Marker_set_bool_int_address(TopOpeBRepDS_Marker* self_, bool b, int32_t n, Standard_Address a) {
+extern "C" const char* TopOpeBRepDS_Marker_set_bool_int_voidptr(TopOpeBRepDS_Marker* self_, bool b, int32_t n, void* a) {
     try { self_->Set(b, n, a); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -12020,20 +11364,20 @@ extern "C" OcctResult<Handle(Standard_Type) const*> TopOpeBRepDS_Marker_get_type
 }
 extern "C" OcctResult<const Standard_Transient*> TopOpeBRepDS_Marker_as_Standard_Transient(const TopOpeBRepDS_Marker* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> TopOpeBRepDS_Marker_as_Standard_Transient_mut(TopOpeBRepDS_Marker* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleTopOpeBRepDSMarker*> TopOpeBRepDS_Marker_to_handle(TopOpeBRepDS_Marker* obj) {
-    try { return {new HandleTopOpeBRepDSMarker(obj), nullptr}; }
+extern "C" OcctResult<Handle_TopOpeBRepDS_Marker*> TopOpeBRepDS_Marker_to_handle(TopOpeBRepDS_Marker* obj) {
+    try { return {new Handle_TopOpeBRepDS_Marker(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const TopOpeBRepDS_Marker*> HandleTopOpeBRepDSMarker_get(const HandleTopOpeBRepDSMarker* handle) {
+extern "C" OcctResult<const TopOpeBRepDS_Marker*> Handle_TopOpeBRepDS_Marker_get(const Handle_TopOpeBRepDS_Marker* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TopOpeBRepDS_Marker*> HandleTopOpeBRepDSMarker_get_mut(HandleTopOpeBRepDSMarker* handle) {
+extern "C" OcctResult<TopOpeBRepDS_Marker*> Handle_TopOpeBRepDS_Marker_get_mut(Handle_TopOpeBRepDS_Marker* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleTopOpeBRepDSMarker_to_HandleStandardTransient(const HandleTopOpeBRepDSMarker* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_TopOpeBRepDS_Marker_to_Handle_Standard_Transient(const Handle_TopOpeBRepDS_Marker* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> TopOpeBRepDS_Marker_inherited_IsInstance(const TopOpeBRepDS_Marker* self, Handle(Standard_Type) const& theType) {
@@ -12142,14 +11486,6 @@ extern "C" const char* TopOpeBRepDS_PointData_inherited_Assign(TopOpeBRepDS_Poin
     try { self->Assign(Other); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<TopOpeBRepDS_ListOfInterference const*> TopOpeBRepDS_PointData_inherited_Interferences(const TopOpeBRepDS_PointData* self) {
-    try { return {&(self->Interferences()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<TopOpeBRepDS_ListOfInterference*> TopOpeBRepDS_PointData_inherited_ChangeInterferences(TopOpeBRepDS_PointData* self) {
-    try { return {&(self->ChangeInterferences()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
 extern "C" const char* TopOpeBRepDS_PointData_inherited_AddInterference(TopOpeBRepDS_PointData* self, Handle(TopOpeBRepDS_Interference) const& I) {
     try { self->AddInterference(I); return nullptr; }
     OCCT_CATCH_RETURN_VOID
@@ -12210,10 +11546,6 @@ extern "C" void TopOpeBRepDS_PointExplorer_destructor(TopOpeBRepDS_PointExplorer
 // TopOpeBRepDS_PointIterator wrappers
 // ========================
 
-extern "C" OcctResult<TopOpeBRepDS_PointIterator*> TopOpeBRepDS_PointIterator_ctor_listofinterference(TopOpeBRepDS_ListOfInterference const* L) {
-    try { return {new TopOpeBRepDS_PointIterator(*L), nullptr}; }
-    OCCT_CATCH_RETURN
-}
 extern "C" OcctResult<bool> TopOpeBRepDS_PointIterator_match_interference(const TopOpeBRepDS_PointIterator* self_, Handle(TopOpeBRepDS_Interference) const* I) {
     try { return {self_->MatchInterference(*I), nullptr}; }
     OCCT_CATCH_RETURN
@@ -12252,10 +11584,6 @@ extern "C" OcctResult<int32_t> TopOpeBRepDS_PointIterator_support(const TopOpeBR
 }
 extern "C" OcctResult<const TopOpeBRepDS_InterferenceIterator*> TopOpeBRepDS_PointIterator_as_TopOpeBRepDS_InterferenceIterator(const TopOpeBRepDS_PointIterator* self_) { return {static_cast<const TopOpeBRepDS_InterferenceIterator*>(self_), nullptr}; }
 extern "C" OcctResult<TopOpeBRepDS_InterferenceIterator*> TopOpeBRepDS_PointIterator_as_TopOpeBRepDS_InterferenceIterator_mut(TopOpeBRepDS_PointIterator* self_) { return {static_cast<TopOpeBRepDS_InterferenceIterator*>(self_), nullptr}; }
-extern "C" const char* TopOpeBRepDS_PointIterator_inherited_Init(TopOpeBRepDS_PointIterator* self, TopOpeBRepDS_ListOfInterference const& L) {
-    try { self->Init(L); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
 extern "C" const char* TopOpeBRepDS_PointIterator_inherited_GeometryKind(TopOpeBRepDS_PointIterator* self, int32_t GK) {
     try { self->GeometryKind(static_cast<TopOpeBRepDS_Kind>(GK)); return nullptr; }
     OCCT_CATCH_RETURN_VOID
@@ -12284,10 +11612,6 @@ extern "C" OcctResult<Handle(TopOpeBRepDS_Interference) const*> TopOpeBRepDS_Poi
     try { return {&(self->Value()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TopOpeBRepDS_ListIteratorOfListOfInterference*> TopOpeBRepDS_PointIterator_inherited_ChangeIterator(TopOpeBRepDS_PointIterator* self) {
-    try { return {&(self->ChangeIterator()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
 extern "C" void TopOpeBRepDS_PointIterator_destructor(TopOpeBRepDS_PointIterator* self_) { delete self_; }
 
 // ========================
@@ -12298,7 +11622,7 @@ extern "C" OcctResult<TopOpeBRepDS_Reducer*> TopOpeBRepDS_Reducer_ctor_handletop
     try { return {new TopOpeBRepDS_Reducer(*HDS), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* TopOpeBRepDS_Reducer_process_face_interferences(TopOpeBRepDS_Reducer* self_, TopOpeBRepDS_DataMapOfShapeListOfShapeOn1State const* M) {
+extern "C" const char* TopOpeBRepDS_Reducer_process_face_interferences(TopOpeBRepDS_Reducer* self_, NCollection_DataMap_TopoDS_Shape_TopOpeBRepDS_ListOfShapeOn1State_TopTools_ShapeMapHasher const* M) {
     try { self_->ProcessFaceInterferences(*M); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -12314,14 +11638,6 @@ extern "C" void TopOpeBRepDS_Reducer_destructor(TopOpeBRepDS_Reducer* self_) { d
 
 extern "C" OcctResult<TopOpeBRepDS_ShapeData*> TopOpeBRepDS_ShapeData_ctor() {
     try { return {new TopOpeBRepDS_ShapeData(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<TopOpeBRepDS_ListOfInterference const*> TopOpeBRepDS_ShapeData_interferences(const TopOpeBRepDS_ShapeData* self_) {
-    try { return {&(self_->Interferences()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<TopOpeBRepDS_ListOfInterference*> TopOpeBRepDS_ShapeData_change_interferences(TopOpeBRepDS_ShapeData* self_) {
-    try { return {&(self_->ChangeInterferences()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> TopOpeBRepDS_ShapeData_keep(const TopOpeBRepDS_ShapeData* self_) {
@@ -12370,39 +11686,39 @@ extern "C" OcctResult<const TopOpeBRepDS_Interference*> TopOpeBRepDS_ShapeShapeI
 extern "C" OcctResult<TopOpeBRepDS_Interference*> TopOpeBRepDS_ShapeShapeInterference_as_TopOpeBRepDS_Interference_mut(TopOpeBRepDS_ShapeShapeInterference* self_) { return {static_cast<TopOpeBRepDS_Interference*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> TopOpeBRepDS_ShapeShapeInterference_as_Standard_Transient(const TopOpeBRepDS_ShapeShapeInterference* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> TopOpeBRepDS_ShapeShapeInterference_as_Standard_Transient_mut(TopOpeBRepDS_ShapeShapeInterference* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleTopOpeBRepDSShapeShapeInterference*> TopOpeBRepDS_ShapeShapeInterference_to_handle(TopOpeBRepDS_ShapeShapeInterference* obj) {
-    try { return {new HandleTopOpeBRepDSShapeShapeInterference(obj), nullptr}; }
+extern "C" OcctResult<Handle_TopOpeBRepDS_ShapeShapeInterference*> TopOpeBRepDS_ShapeShapeInterference_to_handle(TopOpeBRepDS_ShapeShapeInterference* obj) {
+    try { return {new Handle_TopOpeBRepDS_ShapeShapeInterference(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const TopOpeBRepDS_ShapeShapeInterference*> HandleTopOpeBRepDSShapeShapeInterference_get(const HandleTopOpeBRepDSShapeShapeInterference* handle) {
+extern "C" OcctResult<const TopOpeBRepDS_ShapeShapeInterference*> Handle_TopOpeBRepDS_ShapeShapeInterference_get(const Handle_TopOpeBRepDS_ShapeShapeInterference* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TopOpeBRepDS_ShapeShapeInterference*> HandleTopOpeBRepDSShapeShapeInterference_get_mut(HandleTopOpeBRepDSShapeShapeInterference* handle) {
+extern "C" OcctResult<TopOpeBRepDS_ShapeShapeInterference*> Handle_TopOpeBRepDS_ShapeShapeInterference_get_mut(Handle_TopOpeBRepDS_ShapeShapeInterference* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTopOpeBRepDSInterference*> HandleTopOpeBRepDSShapeShapeInterference_to_HandleTopOpeBRepDSInterference(const HandleTopOpeBRepDSShapeShapeInterference* self_) {
-    try { return {new HandleTopOpeBRepDSInterference(*self_), nullptr}; }
+extern "C" OcctResult<Handle_TopOpeBRepDS_Interference*> Handle_TopOpeBRepDS_ShapeShapeInterference_to_Handle_TopOpeBRepDS_Interference(const Handle_TopOpeBRepDS_ShapeShapeInterference* self_) {
+    try { return {new Handle_TopOpeBRepDS_Interference(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleTopOpeBRepDSShapeShapeInterference_to_HandleStandardTransient(const HandleTopOpeBRepDSShapeShapeInterference* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_TopOpeBRepDS_ShapeShapeInterference_to_Handle_Standard_Transient(const Handle_TopOpeBRepDS_ShapeShapeInterference* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTopOpeBRepDSEdgeVertexInterference*> HandleTopOpeBRepDSShapeShapeInterference_downcast_to_HandleTopOpeBRepDSEdgeVertexInterference(const HandleTopOpeBRepDSShapeShapeInterference* self_) {
+extern "C" OcctResult<Handle_TopOpeBRepDS_EdgeVertexInterference*> Handle_TopOpeBRepDS_ShapeShapeInterference_downcast_to_Handle_TopOpeBRepDS_EdgeVertexInterference(const Handle_TopOpeBRepDS_ShapeShapeInterference* self_) {
     try {
     opencascade::handle<TopOpeBRepDS_EdgeVertexInterference> result = opencascade::handle<TopOpeBRepDS_EdgeVertexInterference>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleTopOpeBRepDSEdgeVertexInterference(result), nullptr};
+    return {new Handle_TopOpeBRepDS_EdgeVertexInterference(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTopOpeBRepDSFaceEdgeInterference*> HandleTopOpeBRepDSShapeShapeInterference_downcast_to_HandleTopOpeBRepDSFaceEdgeInterference(const HandleTopOpeBRepDSShapeShapeInterference* self_) {
+extern "C" OcctResult<Handle_TopOpeBRepDS_FaceEdgeInterference*> Handle_TopOpeBRepDS_ShapeShapeInterference_downcast_to_Handle_TopOpeBRepDS_FaceEdgeInterference(const Handle_TopOpeBRepDS_ShapeShapeInterference* self_) {
     try {
     opencascade::handle<TopOpeBRepDS_FaceEdgeInterference> result = opencascade::handle<TopOpeBRepDS_FaceEdgeInterference>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleTopOpeBRepDSFaceEdgeInterference(result), nullptr};
+    return {new Handle_TopOpeBRepDS_FaceEdgeInterference(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
@@ -12480,7 +11796,7 @@ extern "C" OcctResult<TopOpeBRepDS_ShapeWithState*> TopOpeBRepDS_ShapeWithState_
     try { return {new TopOpeBRepDS_ShapeWithState(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TopTools_ListOfShape const*> TopOpeBRepDS_ShapeWithState_part(const TopOpeBRepDS_ShapeWithState* self_, int32_t aState) {
+extern "C" OcctResult<NCollection_List_TopoDS_Shape const*> TopOpeBRepDS_ShapeWithState_part(const TopOpeBRepDS_ShapeWithState* self_, int32_t aState) {
     try { return {&(self_->Part(static_cast<TopAbs_State>(aState))), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -12488,7 +11804,7 @@ extern "C" const char* TopOpeBRepDS_ShapeWithState_add_part(TopOpeBRepDS_ShapeWi
     try { self_->AddPart(*aShape, static_cast<TopAbs_State>(aState)); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* TopOpeBRepDS_ShapeWithState_add_parts(TopOpeBRepDS_ShapeWithState* self_, TopTools_ListOfShape const* aListOfShape, int32_t aState) {
+extern "C" const char* TopOpeBRepDS_ShapeWithState_add_parts(TopOpeBRepDS_ShapeWithState* self_, NCollection_List_TopoDS_Shape const* aListOfShape, int32_t aState) {
     try { self_->AddParts(*aListOfShape, static_cast<TopAbs_State>(aState)); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -12534,24 +11850,24 @@ extern "C" OcctResult<const TopOpeBRepDS_Interference*> TopOpeBRepDS_SolidSurfac
 extern "C" OcctResult<TopOpeBRepDS_Interference*> TopOpeBRepDS_SolidSurfaceInterference_as_TopOpeBRepDS_Interference_mut(TopOpeBRepDS_SolidSurfaceInterference* self_) { return {static_cast<TopOpeBRepDS_Interference*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> TopOpeBRepDS_SolidSurfaceInterference_as_Standard_Transient(const TopOpeBRepDS_SolidSurfaceInterference* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> TopOpeBRepDS_SolidSurfaceInterference_as_Standard_Transient_mut(TopOpeBRepDS_SolidSurfaceInterference* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleTopOpeBRepDSSolidSurfaceInterference*> TopOpeBRepDS_SolidSurfaceInterference_to_handle(TopOpeBRepDS_SolidSurfaceInterference* obj) {
-    try { return {new HandleTopOpeBRepDSSolidSurfaceInterference(obj), nullptr}; }
+extern "C" OcctResult<Handle_TopOpeBRepDS_SolidSurfaceInterference*> TopOpeBRepDS_SolidSurfaceInterference_to_handle(TopOpeBRepDS_SolidSurfaceInterference* obj) {
+    try { return {new Handle_TopOpeBRepDS_SolidSurfaceInterference(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const TopOpeBRepDS_SolidSurfaceInterference*> HandleTopOpeBRepDSSolidSurfaceInterference_get(const HandleTopOpeBRepDSSolidSurfaceInterference* handle) {
+extern "C" OcctResult<const TopOpeBRepDS_SolidSurfaceInterference*> Handle_TopOpeBRepDS_SolidSurfaceInterference_get(const Handle_TopOpeBRepDS_SolidSurfaceInterference* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TopOpeBRepDS_SolidSurfaceInterference*> HandleTopOpeBRepDSSolidSurfaceInterference_get_mut(HandleTopOpeBRepDSSolidSurfaceInterference* handle) {
+extern "C" OcctResult<TopOpeBRepDS_SolidSurfaceInterference*> Handle_TopOpeBRepDS_SolidSurfaceInterference_get_mut(Handle_TopOpeBRepDS_SolidSurfaceInterference* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTopOpeBRepDSInterference*> HandleTopOpeBRepDSSolidSurfaceInterference_to_HandleTopOpeBRepDSInterference(const HandleTopOpeBRepDSSolidSurfaceInterference* self_) {
-    try { return {new HandleTopOpeBRepDSInterference(*self_), nullptr}; }
+extern "C" OcctResult<Handle_TopOpeBRepDS_Interference*> Handle_TopOpeBRepDS_SolidSurfaceInterference_to_Handle_TopOpeBRepDS_Interference(const Handle_TopOpeBRepDS_SolidSurfaceInterference* self_) {
+    try { return {new Handle_TopOpeBRepDS_Interference(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleTopOpeBRepDSSolidSurfaceInterference_to_HandleStandardTransient(const HandleTopOpeBRepDSSolidSurfaceInterference* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_TopOpeBRepDS_SolidSurfaceInterference_to_Handle_Standard_Transient(const Handle_TopOpeBRepDS_SolidSurfaceInterference* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<TopOpeBRepDS_Transition const*> TopOpeBRepDS_SolidSurfaceInterference_inherited_Transition(const TopOpeBRepDS_SolidSurfaceInterference* self) {
@@ -12702,24 +12018,24 @@ extern "C" OcctResult<const TopOpeBRepDS_Interference*> TopOpeBRepDS_SurfaceCurv
 extern "C" OcctResult<TopOpeBRepDS_Interference*> TopOpeBRepDS_SurfaceCurveInterference_as_TopOpeBRepDS_Interference_mut(TopOpeBRepDS_SurfaceCurveInterference* self_) { return {static_cast<TopOpeBRepDS_Interference*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> TopOpeBRepDS_SurfaceCurveInterference_as_Standard_Transient(const TopOpeBRepDS_SurfaceCurveInterference* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> TopOpeBRepDS_SurfaceCurveInterference_as_Standard_Transient_mut(TopOpeBRepDS_SurfaceCurveInterference* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleTopOpeBRepDSSurfaceCurveInterference*> TopOpeBRepDS_SurfaceCurveInterference_to_handle(TopOpeBRepDS_SurfaceCurveInterference* obj) {
-    try { return {new HandleTopOpeBRepDSSurfaceCurveInterference(obj), nullptr}; }
+extern "C" OcctResult<Handle_TopOpeBRepDS_SurfaceCurveInterference*> TopOpeBRepDS_SurfaceCurveInterference_to_handle(TopOpeBRepDS_SurfaceCurveInterference* obj) {
+    try { return {new Handle_TopOpeBRepDS_SurfaceCurveInterference(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const TopOpeBRepDS_SurfaceCurveInterference*> HandleTopOpeBRepDSSurfaceCurveInterference_get(const HandleTopOpeBRepDSSurfaceCurveInterference* handle) {
+extern "C" OcctResult<const TopOpeBRepDS_SurfaceCurveInterference*> Handle_TopOpeBRepDS_SurfaceCurveInterference_get(const Handle_TopOpeBRepDS_SurfaceCurveInterference* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TopOpeBRepDS_SurfaceCurveInterference*> HandleTopOpeBRepDSSurfaceCurveInterference_get_mut(HandleTopOpeBRepDSSurfaceCurveInterference* handle) {
+extern "C" OcctResult<TopOpeBRepDS_SurfaceCurveInterference*> Handle_TopOpeBRepDS_SurfaceCurveInterference_get_mut(Handle_TopOpeBRepDS_SurfaceCurveInterference* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTopOpeBRepDSInterference*> HandleTopOpeBRepDSSurfaceCurveInterference_to_HandleTopOpeBRepDSInterference(const HandleTopOpeBRepDSSurfaceCurveInterference* self_) {
-    try { return {new HandleTopOpeBRepDSInterference(*self_), nullptr}; }
+extern "C" OcctResult<Handle_TopOpeBRepDS_Interference*> Handle_TopOpeBRepDS_SurfaceCurveInterference_to_Handle_TopOpeBRepDS_Interference(const Handle_TopOpeBRepDS_SurfaceCurveInterference* self_) {
+    try { return {new Handle_TopOpeBRepDS_Interference(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleTopOpeBRepDSSurfaceCurveInterference_to_HandleStandardTransient(const HandleTopOpeBRepDSSurfaceCurveInterference* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_TopOpeBRepDS_SurfaceCurveInterference_to_Handle_Standard_Transient(const Handle_TopOpeBRepDS_SurfaceCurveInterference* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<TopOpeBRepDS_Transition const*> TopOpeBRepDS_SurfaceCurveInterference_inherited_Transition(const TopOpeBRepDS_SurfaceCurveInterference* self) {
@@ -12806,14 +12122,6 @@ extern "C" const char* TopOpeBRepDS_SurfaceData_inherited_Assign(TopOpeBRepDS_Su
     try { self->Assign(Other); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<TopOpeBRepDS_ListOfInterference const*> TopOpeBRepDS_SurfaceData_inherited_Interferences(const TopOpeBRepDS_SurfaceData* self) {
-    try { return {&(self->Interferences()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<TopOpeBRepDS_ListOfInterference*> TopOpeBRepDS_SurfaceData_inherited_ChangeInterferences(TopOpeBRepDS_SurfaceData* self) {
-    try { return {&(self->ChangeInterferences()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
 extern "C" const char* TopOpeBRepDS_SurfaceData_inherited_AddInterference(TopOpeBRepDS_SurfaceData* self, Handle(TopOpeBRepDS_Interference) const& I) {
     try { self->AddInterference(I); return nullptr; }
     OCCT_CATCH_RETURN_VOID
@@ -12874,10 +12182,6 @@ extern "C" void TopOpeBRepDS_SurfaceExplorer_destructor(TopOpeBRepDS_SurfaceExpl
 // TopOpeBRepDS_SurfaceIterator wrappers
 // ========================
 
-extern "C" OcctResult<TopOpeBRepDS_SurfaceIterator*> TopOpeBRepDS_SurfaceIterator_ctor_listofinterference(TopOpeBRepDS_ListOfInterference const* L) {
-    try { return {new TopOpeBRepDS_SurfaceIterator(*L), nullptr}; }
-    OCCT_CATCH_RETURN
-}
 extern "C" OcctResult<int32_t> TopOpeBRepDS_SurfaceIterator_current(const TopOpeBRepDS_SurfaceIterator* self_) {
     try { return {self_->Current(), nullptr}; }
     OCCT_CATCH_RETURN
@@ -12888,10 +12192,6 @@ extern "C" OcctResult<int32_t> TopOpeBRepDS_SurfaceIterator_orientation(const To
 }
 extern "C" OcctResult<const TopOpeBRepDS_InterferenceIterator*> TopOpeBRepDS_SurfaceIterator_as_TopOpeBRepDS_InterferenceIterator(const TopOpeBRepDS_SurfaceIterator* self_) { return {static_cast<const TopOpeBRepDS_InterferenceIterator*>(self_), nullptr}; }
 extern "C" OcctResult<TopOpeBRepDS_InterferenceIterator*> TopOpeBRepDS_SurfaceIterator_as_TopOpeBRepDS_InterferenceIterator_mut(TopOpeBRepDS_SurfaceIterator* self_) { return {static_cast<TopOpeBRepDS_InterferenceIterator*>(self_), nullptr}; }
-extern "C" const char* TopOpeBRepDS_SurfaceIterator_inherited_Init(TopOpeBRepDS_SurfaceIterator* self, TopOpeBRepDS_ListOfInterference const& L) {
-    try { self->Init(L); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
 extern "C" const char* TopOpeBRepDS_SurfaceIterator_inherited_GeometryKind(TopOpeBRepDS_SurfaceIterator* self, int32_t GK) {
     try { self->GeometryKind(static_cast<TopOpeBRepDS_Kind>(GK)); return nullptr; }
     OCCT_CATCH_RETURN_VOID
@@ -12928,10 +12228,6 @@ extern "C" OcctResult<Handle(TopOpeBRepDS_Interference) const*> TopOpeBRepDS_Sur
     try { return {&(self->Value()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TopOpeBRepDS_ListIteratorOfListOfInterference*> TopOpeBRepDS_SurfaceIterator_inherited_ChangeIterator(TopOpeBRepDS_SurfaceIterator* self) {
-    try { return {&(self->ChangeIterator()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
 extern "C" void TopOpeBRepDS_SurfaceIterator_destructor(TopOpeBRepDS_SurfaceIterator* self_) { delete self_; }
 
 // ========================
@@ -12946,24 +12242,8 @@ extern "C" const char* TopOpeBRepDS_TKI_clear(TopOpeBRepDS_TKI* self_) {
     try { self_->Clear(); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* TopOpeBRepDS_TKI_fill_on_geometry(TopOpeBRepDS_TKI* self_, TopOpeBRepDS_ListOfInterference const* L) {
-    try { self_->FillOnGeometry(*L); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* TopOpeBRepDS_TKI_fill_on_support(TopOpeBRepDS_TKI* self_, TopOpeBRepDS_ListOfInterference const* L) {
-    try { self_->FillOnSupport(*L); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
 extern "C" OcctResult<bool> TopOpeBRepDS_TKI_is_bound(const TopOpeBRepDS_TKI* self_, int32_t K, int32_t G) {
     try { return {self_->IsBound(static_cast<TopOpeBRepDS_Kind>(K), G), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<TopOpeBRepDS_ListOfInterference const*> TopOpeBRepDS_TKI_interferences(const TopOpeBRepDS_TKI* self_, int32_t K, int32_t G) {
-    try { return {&(self_->Interferences(static_cast<TopOpeBRepDS_Kind>(K), G)), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<TopOpeBRepDS_ListOfInterference*> TopOpeBRepDS_TKI_change_interferences(TopOpeBRepDS_TKI* self_, int32_t K, int32_t G) {
-    try { return {&(self_->ChangeInterferences(static_cast<TopOpeBRepDS_Kind>(K), G)), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> TopOpeBRepDS_TKI_has_interferences(const TopOpeBRepDS_TKI* self_, int32_t K, int32_t G) {
@@ -12994,24 +12274,6 @@ extern "C" const char* TopOpeBRepDS_TKI_next(TopOpeBRepDS_TKI* self_) {
     try { self_->Next(); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<TopOpeBRepDS_ListOfInterference const*> TopOpeBRepDS_TKI_value(const TopOpeBRepDS_TKI* self_, int32_t& K, int32_t* G) {
-    try {
-    auto K_enum_ = static_cast<TopOpeBRepDS_Kind>(K);
-    auto result_ = &(self_->Value(K_enum_, *G));
-    K = static_cast<int32_t>(K_enum_);
-    return {result_, nullptr};
-    }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<TopOpeBRepDS_ListOfInterference*> TopOpeBRepDS_TKI_change_value(TopOpeBRepDS_TKI* self_, int32_t& K, int32_t* G) {
-    try {
-    auto K_enum_ = static_cast<TopOpeBRepDS_Kind>(K);
-    auto result_ = &(self_->ChangeValue(K_enum_, *G));
-    K = static_cast<int32_t>(K_enum_);
-    return {result_, nullptr};
-    }
-    OCCT_CATCH_RETURN
-}
 extern "C" void TopOpeBRepDS_TKI_destructor(TopOpeBRepDS_TKI* self_) { delete self_; }
 
 // ========================
@@ -13022,7 +12284,7 @@ extern "C" OcctResult<TopOpeBRepDS_TOOL*> TopOpeBRepDS_TOOL_ctor() {
     try { return {new TopOpeBRepDS_TOOL(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<int32_t> TopOpeBRepDS_TOOL_e_share_g(Handle(TopOpeBRepDS_HDataStructure) const* HDS, TopoDS_Edge const* E, TopTools_ListOfShape* lEsd) {
+extern "C" OcctResult<int32_t> TopOpeBRepDS_TOOL_e_share_g(Handle(TopOpeBRepDS_HDataStructure) const* HDS, TopoDS_Edge const* E, NCollection_List_TopoDS_Shape* lEsd) {
     try { return {TopOpeBRepDS_TOOL::EShareG(*HDS, *E, *lEsd), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -13034,11 +12296,11 @@ extern "C" OcctResult<bool> TopOpeBRepDS_TOOL_get_esd(Handle(TopOpeBRepDS_HDataS
     try { return {TopOpeBRepDS_TOOL::GetEsd(*HDS, *S, ie, *iesd), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<bool> TopOpeBRepDS_TOOL_share_split_on(Handle(TopOpeBRepDS_HDataStructure) const* HDS, TopOpeBRepDS_DataMapOfShapeListOfShapeOn1State const* MspON, int32_t i1, int32_t i2, TopoDS_Shape* spON) {
+extern "C" OcctResult<bool> TopOpeBRepDS_TOOL_share_split_on(Handle(TopOpeBRepDS_HDataStructure) const* HDS, NCollection_DataMap_TopoDS_Shape_TopOpeBRepDS_ListOfShapeOn1State_TopTools_ShapeMapHasher const* MspON, int32_t i1, int32_t i2, TopoDS_Shape* spON) {
     try { return {TopOpeBRepDS_TOOL::ShareSplitON(*HDS, *MspON, i1, i2, *spON), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<bool> TopOpeBRepDS_TOOL_get_config(Handle(TopOpeBRepDS_HDataStructure) const* HDS, TopOpeBRepDS_DataMapOfShapeListOfShapeOn1State const* MEspON, int32_t ie, int32_t iesd, int32_t* conf) {
+extern "C" OcctResult<bool> TopOpeBRepDS_TOOL_get_config(Handle(TopOpeBRepDS_HDataStructure) const* HDS, NCollection_DataMap_TopoDS_Shape_TopOpeBRepDS_ListOfShapeOn1State_TopTools_ShapeMapHasher const* MEspON, int32_t ie, int32_t iesd, int32_t* conf) {
     try { return {TopOpeBRepDS_TOOL::GetConfig(*HDS, *MEspON, ie, iesd, *conf), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -13162,7 +12424,7 @@ extern "C" OcctResult<TopOpeBRepTool_AncestorsTool*> TopOpeBRepTool_AncestorsToo
     try { return {new TopOpeBRepTool_AncestorsTool(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* TopOpeBRepTool_AncestorsTool_make_ancestors(TopoDS_Shape const* S, int32_t TS, int32_t TA, TopTools_IndexedDataMapOfShapeListOfShape* M) {
+extern "C" const char* TopOpeBRepTool_AncestorsTool_make_ancestors(TopoDS_Shape const* S, int32_t TS, int32_t TA, NCollection_IndexedDataMap_TopoDS_Shape_NCollection_List_TopoDS_Shape_TopTools_ShapeMapHasher* M) {
     try { TopOpeBRepTool_AncestorsTool::MakeAncestors(*S, static_cast<TopAbs_ShapeEnum>(TS), static_cast<TopAbs_ShapeEnum>(TA), *M); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -13200,7 +12462,7 @@ extern "C" const char* TopOpeBRepTool_BoxSort_make_hab(TopOpeBRepTool_BoxSort* s
     try { self_->MakeHAB(*S, static_cast<TopAbs_ShapeEnum>(TS), static_cast<TopAbs_ShapeEnum>(TA)); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<Handle(Bnd_HArray1OfBox) const*> TopOpeBRepTool_BoxSort_hab(const TopOpeBRepTool_BoxSort* self_) {
+extern "C" OcctResult<Handle(NCollection_HArray1_Bnd_Box) const*> TopOpeBRepTool_BoxSort_hab(const TopOpeBRepTool_BoxSort* self_) {
     try { return {&(self_->HAB()), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -13216,19 +12478,11 @@ extern "C" const char* TopOpeBRepTool_BoxSort_add_boxes_make_cob(TopOpeBRepTool_
     try { self_->AddBoxesMakeCOB(*S, static_cast<TopAbs_ShapeEnum>(TS), static_cast<TopAbs_ShapeEnum>(TA)); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<TColStd_ListIteratorOfListOfInteger const*> TopOpeBRepTool_BoxSort_compare(TopOpeBRepTool_BoxSort* self_, TopoDS_Shape const* S) {
-    try { return {&(self_->Compare(*S)), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<TopoDS_Shape const*> TopOpeBRepTool_BoxSort_touched_shape(const TopOpeBRepTool_BoxSort* self_, TColStd_ListIteratorOfListOfInteger const* I) {
-    try { return {&(self_->TouchedShape(*I)), nullptr}; }
-    OCCT_CATCH_RETURN
-}
 extern "C" OcctResult<Bnd_Box const*> TopOpeBRepTool_BoxSort_box_(const TopOpeBRepTool_BoxSort* self_, TopoDS_Shape const* S) {
     try { return {&(self_->Box(*S)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* TopOpeBRepTool_BoxSort_make_habcob(Handle(Bnd_HArray1OfBox) const* HAB, Bnd_Box* COB) {
+extern "C" const char* TopOpeBRepTool_BoxSort_make_habcob(Handle(NCollection_HArray1_Bnd_Box) const* HAB, Bnd_Box* COB) {
     try { TopOpeBRepTool_BoxSort::MakeHABCOB(*HAB, *COB); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -13308,7 +12562,7 @@ extern "C" OcctResult<bool> TopOpeBRepTool_CLASSI_getface(const TopOpeBRepTool_C
     try { return {self_->Getface(*S, *fa), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<bool> TopOpeBRepTool_CLASSI_classilist(TopOpeBRepTool_CLASSI* self_, TopTools_ListOfShape const* lS, TopTools_DataMapOfShapeListOfShape* mapgreasma) {
+extern "C" OcctResult<bool> TopOpeBRepTool_CLASSI_classilist(TopOpeBRepTool_CLASSI* self_, NCollection_List_TopoDS_Shape const* lS, NCollection_DataMap_TopoDS_Shape_NCollection_List_TopoDS_Shape_TopTools_ShapeMapHasher* mapgreasma) {
     try { return {self_->Classilist(*lS, *mapgreasma), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -13346,7 +12600,7 @@ extern "C" OcctResult<TopoDS_Shape const*> TopOpeBRepTool_CORRISO_s(const TopOpe
     try { return {&(self_->S()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TopTools_ListOfShape const*> TopOpeBRepTool_CORRISO_eds(const TopOpeBRepTool_CORRISO* self_) {
+extern "C" OcctResult<NCollection_List_TopoDS_Shape const*> TopOpeBRepTool_CORRISO_eds(const TopOpeBRepTool_CORRISO* self_) {
     try { return {&(self_->Eds()), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -13358,7 +12612,7 @@ extern "C" OcctResult<double> TopOpeBRepTool_CORRISO_tol(const TopOpeBRepTool_CO
     try { return {self_->Tol(I, tol3d), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<bool> TopOpeBRepTool_CORRISO_purge_fy_closing_e(const TopOpeBRepTool_CORRISO* self_, TopTools_ListOfShape const* ClEds, TopTools_ListOfShape* fyClEds) {
+extern "C" OcctResult<bool> TopOpeBRepTool_CORRISO_purge_fy_closing_e(const TopOpeBRepTool_CORRISO* self_, NCollection_List_TopoDS_Shape const* ClEds, NCollection_List_TopoDS_Shape* fyClEds) {
     try { return {self_->PurgeFyClosingE(*ClEds, *fyClEds), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -13366,7 +12620,7 @@ extern "C" OcctResult<int32_t> TopOpeBRepTool_CORRISO_edge_ou_tof_bounds_uv(cons
     try { return {self_->EdgeOUTofBoundsUV(*E, onU, tolx, *parspE), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<bool> TopOpeBRepTool_CORRISO_edges_ou_tof_bounds_uv(const TopOpeBRepTool_CORRISO* self_, TopTools_ListOfShape const* EdsToCheck, bool onU, double tolx, TopTools_DataMapOfOrientedShapeInteger* FyEds) {
+extern "C" OcctResult<bool> TopOpeBRepTool_CORRISO_edges_ou_tof_bounds_uv(const TopOpeBRepTool_CORRISO* self_, NCollection_List_TopoDS_Shape const* EdsToCheck, bool onU, double tolx, NCollection_DataMap_TopoDS_Shape_int* FyEds) {
     try { return {self_->EdgesOUTofBoundsUV(*EdsToCheck, onU, tolx, *FyEds), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -13374,15 +12628,15 @@ extern "C" OcctResult<bool> TopOpeBRepTool_CORRISO_edge_with_faulty_uv_edge_int(
     try { return {self_->EdgeWithFaultyUV(*E, *Ivfaulty), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<bool> TopOpeBRepTool_CORRISO_edges_with_faulty_uv(const TopOpeBRepTool_CORRISO* self_, TopTools_ListOfShape const* EdsToCheck, int32_t nfybounds, TopTools_DataMapOfOrientedShapeInteger* FyEds, bool stopatfirst) {
+extern "C" OcctResult<bool> TopOpeBRepTool_CORRISO_edges_with_faulty_uv(const TopOpeBRepTool_CORRISO* self_, NCollection_List_TopoDS_Shape const* EdsToCheck, int32_t nfybounds, NCollection_DataMap_TopoDS_Shape_int* FyEds, bool stopatfirst) {
     try { return {self_->EdgesWithFaultyUV(*EdsToCheck, nfybounds, *FyEds, stopatfirst), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<bool> TopOpeBRepTool_CORRISO_edge_with_faulty_uv_listofshape_int_shape_int(const TopOpeBRepTool_CORRISO* self_, TopTools_ListOfShape const* EdsToCheck, int32_t nfybounds, TopoDS_Shape* fyE, int32_t* Ifaulty) {
+extern "C" OcctResult<bool> TopOpeBRepTool_CORRISO_edge_with_faulty_uv_list_shape_int_shape_int(const TopOpeBRepTool_CORRISO* self_, NCollection_List_TopoDS_Shape const* EdsToCheck, int32_t nfybounds, TopoDS_Shape* fyE, int32_t* Ifaulty) {
     try { return {self_->EdgeWithFaultyUV(*EdsToCheck, nfybounds, *fyE, *Ifaulty), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<bool> TopOpeBRepTool_CORRISO_trsl_uv(TopOpeBRepTool_CORRISO* self_, bool onU, TopTools_DataMapOfOrientedShapeInteger const* FyEds) {
+extern "C" OcctResult<bool> TopOpeBRepTool_CORRISO_trsl_uv(TopOpeBRepTool_CORRISO* self_, bool onU, NCollection_DataMap_TopoDS_Shape_int const* FyEds) {
     try { return {self_->TrslUV(onU, *FyEds), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -13398,11 +12652,11 @@ extern "C" OcctResult<bool> TopOpeBRepTool_CORRISO_set_uv_rep(TopOpeBRepTool_COR
     try { return {self_->SetUVRep(*E, *C2DF), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<bool> TopOpeBRepTool_CORRISO_connexity(const TopOpeBRepTool_CORRISO* self_, TopoDS_Vertex const* V, TopTools_ListOfShape* Eds) {
+extern "C" OcctResult<bool> TopOpeBRepTool_CORRISO_connexity(const TopOpeBRepTool_CORRISO* self_, TopoDS_Vertex const* V, NCollection_List_TopoDS_Shape* Eds) {
     try { return {self_->Connexity(*V, *Eds), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<bool> TopOpeBRepTool_CORRISO_set_connexity(TopOpeBRepTool_CORRISO* self_, TopoDS_Vertex const* V, TopTools_ListOfShape const* Eds) {
+extern "C" OcctResult<bool> TopOpeBRepTool_CORRISO_set_connexity(TopOpeBRepTool_CORRISO* self_, TopoDS_Vertex const* V, NCollection_List_TopoDS_Shape const* Eds) {
     try { return {self_->SetConnexity(*V, *Eds), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -13448,11 +12702,11 @@ extern "C" OcctResult<bool> TopOpeBRepTool_CurveTool_make_curves(const TopOpeBRe
     try { return {self_->MakeCurves(min, max, *C3D, *PC1, *PC2, *S1, *S2, *C3DN, *PC1N, *PC2N, *Tol3d, *Tol2d), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(Geom_Curve)*> TopOpeBRepTool_CurveTool_make_b_spline1from_pnt(TColgp_Array1OfPnt const* P) {
+extern "C" OcctResult<Handle(Geom_Curve)*> TopOpeBRepTool_CurveTool_make_b_spline1from_pnt(NCollection_Array1_gp_Pnt const* P) {
     try { return {new Handle(Geom_Curve)(TopOpeBRepTool_CurveTool::MakeBSpline1fromPnt(*P)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(Geom2d_Curve)*> TopOpeBRepTool_CurveTool_make_b_spline1from_pnt2d(TColgp_Array1OfPnt2d const* P) {
+extern "C" OcctResult<Handle(Geom2d_Curve)*> TopOpeBRepTool_CurveTool_make_b_spline1from_pnt2d(NCollection_Array1_gp_Pnt2d const* P) {
     try { return {new Handle(Geom2d_Curve)(TopOpeBRepTool_CurveTool::MakeBSpline1fromPnt2d(*P)), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -13474,19 +12728,19 @@ extern "C" OcctResult<TopOpeBRepTool_FuseEdges*> TopOpeBRepTool_FuseEdges_ctor_s
     try { return {new TopOpeBRepTool_FuseEdges(*theShape, PerformNow), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* TopOpeBRepTool_FuseEdges_avoid_edges(TopOpeBRepTool_FuseEdges* self_, TopTools_IndexedMapOfShape const* theMapEdg) {
+extern "C" const char* TopOpeBRepTool_FuseEdges_avoid_edges(TopOpeBRepTool_FuseEdges* self_, NCollection_IndexedMap_TopoDS_Shape_TopTools_ShapeMapHasher const* theMapEdg) {
     try { self_->AvoidEdges(*theMapEdg); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* TopOpeBRepTool_FuseEdges_edges(TopOpeBRepTool_FuseEdges* self_, TopTools_DataMapOfIntegerListOfShape* theMapLstEdg) {
+extern "C" const char* TopOpeBRepTool_FuseEdges_edges(TopOpeBRepTool_FuseEdges* self_, NCollection_DataMap_int_NCollection_List_TopoDS_Shape* theMapLstEdg) {
     try { self_->Edges(*theMapLstEdg); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* TopOpeBRepTool_FuseEdges_result_edges(TopOpeBRepTool_FuseEdges* self_, TopTools_DataMapOfIntegerShape* theMapEdg) {
+extern "C" const char* TopOpeBRepTool_FuseEdges_result_edges(TopOpeBRepTool_FuseEdges* self_, NCollection_DataMap_int_TopoDS_Shape* theMapEdg) {
     try { self_->ResultEdges(*theMapEdg); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* TopOpeBRepTool_FuseEdges_faces(TopOpeBRepTool_FuseEdges* self_, TopTools_DataMapOfShapeShape* theMapFac) {
+extern "C" const char* TopOpeBRepTool_FuseEdges_faces(TopOpeBRepTool_FuseEdges* self_, NCollection_DataMap_TopoDS_Shape_TopoDS_Shape_TopTools_ShapeMapHasher* theMapFac) {
     try { self_->Faces(*theMapFac); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -13614,11 +12868,11 @@ extern "C" OcctResult<int32_t> TopOpeBRepTool_HBoxTool_extent(const TopOpeBRepTo
     try { return {self_->Extent(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TopOpeBRepTool_IndexedDataMapOfShapeBox*> TopOpeBRepTool_HBoxTool_change_ims(TopOpeBRepTool_HBoxTool* self_) {
+extern "C" OcctResult<NCollection_IndexedDataMap_TopoDS_Shape_Bnd_Box*> TopOpeBRepTool_HBoxTool_change_ims(TopOpeBRepTool_HBoxTool* self_) {
     try { return {&(self_->ChangeIMS()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TopOpeBRepTool_IndexedDataMapOfShapeBox const*> TopOpeBRepTool_HBoxTool_ims(const TopOpeBRepTool_HBoxTool* self_) {
+extern "C" OcctResult<NCollection_IndexedDataMap_TopoDS_Shape_Bnd_Box const*> TopOpeBRepTool_HBoxTool_ims(const TopOpeBRepTool_HBoxTool* self_) {
     try { return {&(self_->IMS()), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -13648,20 +12902,20 @@ extern "C" OcctResult<Handle(Standard_Type) const*> TopOpeBRepTool_HBoxTool_get_
 }
 extern "C" OcctResult<const Standard_Transient*> TopOpeBRepTool_HBoxTool_as_Standard_Transient(const TopOpeBRepTool_HBoxTool* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> TopOpeBRepTool_HBoxTool_as_Standard_Transient_mut(TopOpeBRepTool_HBoxTool* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleTopOpeBRepToolHBoxTool*> TopOpeBRepTool_HBoxTool_to_handle(TopOpeBRepTool_HBoxTool* obj) {
-    try { return {new HandleTopOpeBRepToolHBoxTool(obj), nullptr}; }
+extern "C" OcctResult<Handle_TopOpeBRepTool_HBoxTool*> TopOpeBRepTool_HBoxTool_to_handle(TopOpeBRepTool_HBoxTool* obj) {
+    try { return {new Handle_TopOpeBRepTool_HBoxTool(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const TopOpeBRepTool_HBoxTool*> HandleTopOpeBRepToolHBoxTool_get(const HandleTopOpeBRepToolHBoxTool* handle) {
+extern "C" OcctResult<const TopOpeBRepTool_HBoxTool*> Handle_TopOpeBRepTool_HBoxTool_get(const Handle_TopOpeBRepTool_HBoxTool* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TopOpeBRepTool_HBoxTool*> HandleTopOpeBRepToolHBoxTool_get_mut(HandleTopOpeBRepToolHBoxTool* handle) {
+extern "C" OcctResult<TopOpeBRepTool_HBoxTool*> Handle_TopOpeBRepTool_HBoxTool_get_mut(Handle_TopOpeBRepTool_HBoxTool* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleTopOpeBRepToolHBoxTool_to_HandleStandardTransient(const HandleTopOpeBRepToolHBoxTool* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_TopOpeBRepTool_HBoxTool_to_Handle_Standard_Transient(const Handle_TopOpeBRepTool_HBoxTool* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> TopOpeBRepTool_HBoxTool_inherited_IsInstance(const TopOpeBRepTool_HBoxTool* self, Handle(Standard_Type) const& theType) {
@@ -13702,7 +12956,7 @@ extern "C" OcctResult<TopOpeBRepTool_PurgeInternalEdges*> TopOpeBRepTool_PurgeIn
     try { return {new TopOpeBRepTool_PurgeInternalEdges(*theShape, PerformNow), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* TopOpeBRepTool_PurgeInternalEdges_faces(TopOpeBRepTool_PurgeInternalEdges* self_, TopTools_DataMapOfShapeListOfShape* theMapFacLstEdg) {
+extern "C" const char* TopOpeBRepTool_PurgeInternalEdges_faces(TopOpeBRepTool_PurgeInternalEdges* self_, NCollection_DataMap_TopoDS_Shape_NCollection_List_TopoDS_Shape_TopTools_ShapeMapHasher* theMapFacLstEdg) {
     try { self_->Faces(*theMapFacLstEdg); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -13752,19 +13006,19 @@ extern "C" OcctResult<bool> TopOpeBRepTool_REGUS_regu(TopOpeBRepTool_REGUS* self
     try { return {self_->REGU(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* TopOpeBRepTool_REGUS_set_fsplits(TopOpeBRepTool_REGUS* self_, TopTools_DataMapOfShapeListOfShape* Fsplits) {
+extern "C" const char* TopOpeBRepTool_REGUS_set_fsplits(TopOpeBRepTool_REGUS* self_, NCollection_DataMap_TopoDS_Shape_NCollection_List_TopoDS_Shape_TopTools_ShapeMapHasher* Fsplits) {
     try { self_->SetFsplits(*Fsplits); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* TopOpeBRepTool_REGUS_get_fsplits(const TopOpeBRepTool_REGUS* self_, TopTools_DataMapOfShapeListOfShape* Fsplits) {
+extern "C" const char* TopOpeBRepTool_REGUS_get_fsplits(const TopOpeBRepTool_REGUS* self_, NCollection_DataMap_TopoDS_Shape_NCollection_List_TopoDS_Shape_TopTools_ShapeMapHasher* Fsplits) {
     try { self_->GetFsplits(*Fsplits); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* TopOpeBRepTool_REGUS_set_osh_nsh(TopOpeBRepTool_REGUS* self_, TopTools_DataMapOfShapeListOfShape* OshNsh) {
+extern "C" const char* TopOpeBRepTool_REGUS_set_osh_nsh(TopOpeBRepTool_REGUS* self_, NCollection_DataMap_TopoDS_Shape_NCollection_List_TopoDS_Shape_TopTools_ShapeMapHasher* OshNsh) {
     try { self_->SetOshNsh(*OshNsh); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* TopOpeBRepTool_REGUS_get_osh_nsh(const TopOpeBRepTool_REGUS* self_, TopTools_DataMapOfShapeListOfShape* OshNsh) {
+extern "C" const char* TopOpeBRepTool_REGUS_get_osh_nsh(const TopOpeBRepTool_REGUS* self_, NCollection_DataMap_TopoDS_Shape_NCollection_List_TopoDS_Shape_TopTools_ShapeMapHasher* OshNsh) {
     try { self_->GetOshNsh(*OshNsh); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -13776,15 +13030,15 @@ extern "C" OcctResult<bool> TopOpeBRepTool_REGUS_nextin_block(TopOpeBRepTool_REG
     try { return {self_->NextinBlock(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<bool> TopOpeBRepTool_REGUS_nearest_f(const TopOpeBRepTool_REGUS* self_, TopoDS_Edge const* e, TopTools_ListOfShape const* lof, TopoDS_Face* ffound) {
+extern "C" OcctResult<bool> TopOpeBRepTool_REGUS_nearest_f(const TopOpeBRepTool_REGUS* self_, TopoDS_Edge const* e, NCollection_List_TopoDS_Shape const* lof, TopoDS_Face* ffound) {
     try { return {self_->NearestF(*e, *lof, *ffound), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<bool> TopOpeBRepTool_REGUS_wire_to_face(TopoDS_Face const* Fanc, TopTools_ListOfShape const* nWs, TopTools_ListOfShape* nFs) {
+extern "C" OcctResult<bool> TopOpeBRepTool_REGUS_wire_to_face(TopoDS_Face const* Fanc, NCollection_List_TopoDS_Shape const* nWs, NCollection_List_TopoDS_Shape* nFs) {
     try { return {TopOpeBRepTool_REGUS::WireToFace(*Fanc, *nWs, *nFs), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<bool> TopOpeBRepTool_REGUS_split_f(TopoDS_Face const* Fanc, TopTools_ListOfShape* FSplits) {
+extern "C" OcctResult<bool> TopOpeBRepTool_REGUS_split_f(TopoDS_Face const* Fanc, NCollection_List_TopoDS_Shape* FSplits) {
     try { return {TopOpeBRepTool_REGUS::SplitF(*Fanc, *FSplits), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -13802,19 +13056,19 @@ extern "C" OcctResult<TopoDS_Face const*> TopOpeBRepTool_REGUW_fref(const TopOpe
     try { return {&(self_->Fref()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* TopOpeBRepTool_REGUW_set_esplits(TopOpeBRepTool_REGUW* self_, TopTools_DataMapOfShapeListOfShape* Esplits) {
+extern "C" const char* TopOpeBRepTool_REGUW_set_esplits(TopOpeBRepTool_REGUW* self_, NCollection_DataMap_TopoDS_Shape_NCollection_List_TopoDS_Shape_TopTools_ShapeMapHasher* Esplits) {
     try { self_->SetEsplits(*Esplits); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* TopOpeBRepTool_REGUW_get_esplits(const TopOpeBRepTool_REGUW* self_, TopTools_DataMapOfShapeListOfShape* Esplits) {
+extern "C" const char* TopOpeBRepTool_REGUW_get_esplits(const TopOpeBRepTool_REGUW* self_, NCollection_DataMap_TopoDS_Shape_NCollection_List_TopoDS_Shape_TopTools_ShapeMapHasher* Esplits) {
     try { self_->GetEsplits(*Esplits); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* TopOpeBRepTool_REGUW_set_ow_nw(TopOpeBRepTool_REGUW* self_, TopTools_DataMapOfShapeListOfShape* OwNw) {
+extern "C" const char* TopOpeBRepTool_REGUW_set_ow_nw(TopOpeBRepTool_REGUW* self_, NCollection_DataMap_TopoDS_Shape_NCollection_List_TopoDS_Shape_TopTools_ShapeMapHasher* OwNw) {
     try { self_->SetOwNw(*OwNw); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* TopOpeBRepTool_REGUW_get_ow_nw(const TopOpeBRepTool_REGUW* self_, TopTools_DataMapOfShapeListOfShape* OwNw) {
+extern "C" const char* TopOpeBRepTool_REGUW_get_ow_nw(const TopOpeBRepTool_REGUW* self_, NCollection_DataMap_TopoDS_Shape_NCollection_List_TopoDS_Shape_TopTools_ShapeMapHasher* OwNw) {
     try { self_->GetOwNw(*OwNw); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -13838,7 +13092,7 @@ extern "C" OcctResult<bool> TopOpeBRepTool_REGUW_map_s(TopOpeBRepTool_REGUW* sel
     try { return {self_->MapS(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<bool> TopOpeBRepTool_REGUW_regu_int_shape_listofshape(TopOpeBRepTool_REGUW* self_, int32_t istep, TopoDS_Shape const* Scur, TopTools_ListOfShape* Splits) {
+extern "C" OcctResult<bool> TopOpeBRepTool_REGUW_regu_int_shape_list_shape(TopOpeBRepTool_REGUW* self_, int32_t istep, TopoDS_Shape const* Scur, NCollection_List_TopoDS_Shape* Splits) {
     try { return {self_->REGU(istep, *Scur, *Splits), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -13846,7 +13100,7 @@ extern "C" OcctResult<bool> TopOpeBRepTool_REGUW_regu(TopOpeBRepTool_REGUW* self
     try { return {self_->REGU(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<bool> TopOpeBRepTool_REGUW_get_splits(const TopOpeBRepTool_REGUW* self_, TopTools_ListOfShape* Splits) {
+extern "C" OcctResult<bool> TopOpeBRepTool_REGUW_get_splits(const TopOpeBRepTool_REGUW* self_, NCollection_List_TopoDS_Shape* Splits) {
     try { return {self_->GetSplits(*Splits), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -13858,7 +13112,7 @@ extern "C" OcctResult<bool> TopOpeBRepTool_REGUW_nextin_block(TopOpeBRepTool_REG
     try { return {self_->NextinBlock(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<bool> TopOpeBRepTool_REGUW_nearest_e(const TopOpeBRepTool_REGUW* self_, TopTools_ListOfShape const* loe, TopoDS_Edge* efound) {
+extern "C" OcctResult<bool> TopOpeBRepTool_REGUW_nearest_e(const TopOpeBRepTool_REGUW* self_, NCollection_List_TopoDS_Shape const* loe, TopoDS_Edge* efound) {
     try { return {self_->NearestE(*loe, *efound), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -13920,7 +13174,7 @@ extern "C" OcctResult<int32_t> TopOpeBRepTool_ShapeClassifier_state_shape_shape_
     try { return {static_cast<int32_t>(self_->StateShapeShape(*S, *AvoidS, *SRef)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<int32_t> TopOpeBRepTool_ShapeClassifier_state_shape_shape_shape_listofshape_shape(TopOpeBRepTool_ShapeClassifier* self_, TopoDS_Shape const* S, TopTools_ListOfShape const* LAvoidS, TopoDS_Shape const* SRef) {
+extern "C" OcctResult<int32_t> TopOpeBRepTool_ShapeClassifier_state_shape_shape_shape_list_shape_shape(TopOpeBRepTool_ShapeClassifier* self_, TopoDS_Shape const* S, NCollection_List_TopoDS_Shape const* LAvoidS, TopoDS_Shape const* SRef) {
     try { return {static_cast<int32_t>(self_->StateShapeShape(*S, *LAvoidS, *SRef)), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -13928,7 +13182,7 @@ extern "C" OcctResult<int32_t> TopOpeBRepTool_ShapeClassifier_state_shape_refere
     try { return {static_cast<int32_t>(self_->StateShapeReference(*S, *AvoidS)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<int32_t> TopOpeBRepTool_ShapeClassifier_state_shape_reference_shape_listofshape(TopOpeBRepTool_ShapeClassifier* self_, TopoDS_Shape const* S, TopTools_ListOfShape const* LAvoidS) {
+extern "C" OcctResult<int32_t> TopOpeBRepTool_ShapeClassifier_state_shape_reference_shape_list_shape(TopOpeBRepTool_ShapeClassifier* self_, TopoDS_Shape const* S, NCollection_List_TopoDS_Shape const* LAvoidS) {
     try { return {static_cast<int32_t>(self_->StateShapeReference(*S, *LAvoidS)), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -14182,7 +13436,7 @@ extern "C" OcctResult<bool> TopOpeBRepTool_TOOL_is_closing_e_edge_shape_face(Top
     try { return {TopOpeBRepTool_TOOL::IsClosingE(*E, *W, *F), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* TopOpeBRepTool_TOOL_vertices(TopoDS_Edge const* E, TopTools_Array1OfShape* Vces) {
+extern "C" const char* TopOpeBRepTool_TOOL_vertices(TopoDS_Edge const* E, NCollection_Array1_TopoDS_Shape* Vces) {
     try { TopOpeBRepTool_TOOL::Vertices(*E, *Vces); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -14359,19 +13613,19 @@ extern "C" OcctResult<bool> TopOpeBRepTool_TOOL_getstp3d_f(gp_Pnt const* p, Topo
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<bool> TopOpeBRepTool_TOOL_split_e(TopoDS_Edge const* Eanc, TopTools_ListOfShape* Splits) {
+extern "C" OcctResult<bool> TopOpeBRepTool_TOOL_split_e(TopoDS_Edge const* Eanc, NCollection_List_TopoDS_Shape* Splits) {
     try { return {TopOpeBRepTool_TOOL::SplitE(*Eanc, *Splits), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* TopOpeBRepTool_TOOL_mk_shell(TopTools_ListOfShape const* lF, TopoDS_Shape* She) {
+extern "C" const char* TopOpeBRepTool_TOOL_mk_shell(NCollection_List_TopoDS_Shape const* lF, TopoDS_Shape* She) {
     try { TopOpeBRepTool_TOOL::MkShell(*lF, *She); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<bool> TopOpeBRepTool_TOOL_remove(TopTools_ListOfShape* loS, TopoDS_Shape const* toremove) {
+extern "C" OcctResult<bool> TopOpeBRepTool_TOOL_remove(NCollection_List_TopoDS_Shape* loS, TopoDS_Shape const* toremove) {
     try { return {TopOpeBRepTool_TOOL::Remove(*loS, *toremove), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<bool> TopOpeBRepTool_TOOL_wire_to_face(TopoDS_Face const* Fref, TopTools_DataMapOfShapeListOfShape const* mapWlow, TopTools_ListOfShape* lFs) {
+extern "C" OcctResult<bool> TopOpeBRepTool_TOOL_wire_to_face(TopoDS_Face const* Fref, NCollection_DataMap_TopoDS_Shape_NCollection_List_TopoDS_Shape_TopTools_ShapeMapHasher const* mapWlow, NCollection_List_TopoDS_Shape* lFs) {
     try { return {TopOpeBRepTool_TOOL::WireToFace(*Fref, *mapWlow, *lFs), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -14401,15 +13655,15 @@ extern "C" OcctResult<TopoDS_Shape const*> TopOpeBRepTool_connexity_key(const To
     try { return {&(self_->Key()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<int32_t> TopOpeBRepTool_connexity_item(const TopOpeBRepTool_connexity* self_, int32_t OriKey, TopTools_ListOfShape* Item) {
+extern "C" OcctResult<int32_t> TopOpeBRepTool_connexity_item(const TopOpeBRepTool_connexity* self_, int32_t OriKey, NCollection_List_TopoDS_Shape* Item) {
     try { return {self_->Item(OriKey, *Item), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<int32_t> TopOpeBRepTool_connexity_all_items(const TopOpeBRepTool_connexity* self_, TopTools_ListOfShape* Item) {
+extern "C" OcctResult<int32_t> TopOpeBRepTool_connexity_all_items(const TopOpeBRepTool_connexity* self_, NCollection_List_TopoDS_Shape* Item) {
     try { return {self_->AllItems(*Item), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* TopOpeBRepTool_connexity_add_item_int_listofshape(TopOpeBRepTool_connexity* self_, int32_t OriKey, TopTools_ListOfShape const* Item) {
+extern "C" const char* TopOpeBRepTool_connexity_add_item_int_list_shape(TopOpeBRepTool_connexity* self_, int32_t OriKey, NCollection_List_TopoDS_Shape const* Item) {
     try { self_->AddItem(OriKey, *Item); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -14425,7 +13679,7 @@ extern "C" OcctResult<bool> TopOpeBRepTool_connexity_remove_item_shape(TopOpeBRe
     try { return {self_->RemoveItem(*Item), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TopTools_ListOfShape*> TopOpeBRepTool_connexity_change_item(TopOpeBRepTool_connexity* self_, int32_t OriKey) {
+extern "C" OcctResult<NCollection_List_TopoDS_Shape*> TopOpeBRepTool_connexity_change_item(TopOpeBRepTool_connexity* self_, int32_t OriKey) {
     try { return {&(self_->ChangeItem(OriKey)), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -14437,7 +13691,7 @@ extern "C" OcctResult<bool> TopOpeBRepTool_connexity_is_faulty(const TopOpeBRepT
     try { return {self_->IsFaulty(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<int32_t> TopOpeBRepTool_connexity_is_internal(const TopOpeBRepTool_connexity* self_, TopTools_ListOfShape* Item) {
+extern "C" OcctResult<int32_t> TopOpeBRepTool_connexity_is_internal(const TopOpeBRepTool_connexity* self_, NCollection_List_TopoDS_Shape* Item) {
     try { return {self_->IsInternal(*Item), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -14579,7 +13833,7 @@ extern "C" OcctResult<bool> TopOpeBRepTool_mkTondgE_set_rest(TopOpeBRepTool_mkTo
     try { return {self_->SetRest(pari, *Ei), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<int32_t> TopOpeBRepTool_mkTondgE_get_all_rest(TopOpeBRepTool_mkTondgE* self_, TopTools_ListOfShape* lEi) {
+extern "C" OcctResult<int32_t> TopOpeBRepTool_mkTondgE_get_all_rest(TopOpeBRepTool_mkTondgE* self_, NCollection_List_TopoDS_Shape* lEi) {
     try { return {self_->GetAllRest(*lEi), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -14616,7 +13870,7 @@ extern "C" OcctResult<bool> BRepAlgo_is_valid_shape(TopoDS_Shape const* S) {
     try { return {BRepAlgo::IsValid(*S), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<bool> BRepAlgo_is_valid_listofshape_shape_bool2(TopTools_ListOfShape const* theArgs, TopoDS_Shape const* theResult, bool closedSolid, bool GeomCtrl) {
+extern "C" OcctResult<bool> BRepAlgo_is_valid_list_shape_shape_bool2(NCollection_List_TopoDS_Shape const* theArgs, TopoDS_Shape const* theResult, bool closedSolid, bool GeomCtrl) {
     try { return {BRepAlgo::IsValid(*theArgs, *theResult, closedSolid, GeomCtrl), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -14640,11 +13894,11 @@ extern "C" const char* BRepFill_axe(TopoDS_Shape const* Spine, TopoDS_Wire const
     try { BRepFill::Axe(*Spine, *Profile, *AxeProf, *ProfOnSpine, Tol); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* BRepFill_compute_acr(TopoDS_Wire const* wire, TColStd_Array1OfReal* ACR) {
+extern "C" const char* BRepFill_compute_acr(TopoDS_Wire const* wire, NCollection_Array1_double* ACR) {
     try { BRepFill::ComputeACR(*wire, *ACR); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<TopoDS_Wire*> BRepFill_insert_acr(TopoDS_Wire const* wire, TColStd_Array1OfReal const* ACRcuts, double prec) {
+extern "C" OcctResult<TopoDS_Wire*> BRepFill_insert_acr(TopoDS_Wire const* wire, NCollection_Array1_double const* ACRcuts, double prec) {
     try { return {new TopoDS_Wire(BRepFill::InsertACR(*wire, *ACRcuts, prec)), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -14728,8 +13982,36 @@ extern "C" OcctResult<int32_t> TopOpeBRepDS_shape_to_kind(int32_t S) {
 // ========================
 // TopOpeBRepTool namespace functions
 // ========================
+extern "C" OcctResult<bool> TopOpeBRepTool_purge_closing_edges_face2_dmap_shape_int_imap_shape(TopoDS_Face const* F, TopoDS_Face const* FF, NCollection_DataMap_TopoDS_Shape_int_TopTools_ShapeMapHasher const* MWisOld, NCollection_IndexedMap_TopoDS_Shape* MshNOK) {
+    try { return {TopOpeBRepTool::PurgeClosingEdges(*F, *FF, *MWisOld, *MshNOK), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<bool> TopOpeBRepTool_purge_closing_edges_face_list_shape_dmap_shape_int_imap_shape(TopoDS_Face const* F, NCollection_List_TopoDS_Shape const* LOF, NCollection_DataMap_TopoDS_Shape_int_TopTools_ShapeMapHasher const* MWisOld, NCollection_IndexedMap_TopoDS_Shape* MshNOK) {
+    try { return {TopOpeBRepTool::PurgeClosingEdges(*F, *LOF, *MWisOld, *MshNOK), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" OcctResult<bool> TopOpeBRepTool_correct_onuviso(TopoDS_Face const* F, TopoDS_Face* Fsp) {
     try { return {TopOpeBRepTool::CorrectONUVISO(*F, *Fsp), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<bool> TopOpeBRepTool_make_faces(TopoDS_Face const* F, NCollection_List_TopoDS_Shape const* LOF, NCollection_IndexedMap_TopoDS_Shape const* MshNOK, NCollection_List_TopoDS_Shape* LOFF) {
+    try { return {TopOpeBRepTool::MakeFaces(*F, *LOF, *MshNOK, *LOFF), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<bool> TopOpeBRepTool_regularize(TopoDS_Face const* aFace, NCollection_List_TopoDS_Shape* aListOfFaces, NCollection_DataMap_TopoDS_Shape_NCollection_List_TopoDS_Shape_TopTools_ShapeMapHasher* ESplits) {
+    try { return {TopOpeBRepTool::Regularize(*aFace, *aListOfFaces, *ESplits), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<bool> TopOpeBRepTool_regularize_wires(TopoDS_Face const* aFace, NCollection_DataMap_TopoDS_Shape_NCollection_List_TopoDS_Shape_TopTools_ShapeMapHasher* OldWiresNewWires, NCollection_DataMap_TopoDS_Shape_NCollection_List_TopoDS_Shape_TopTools_ShapeMapHasher* ESplits) {
+    try { return {TopOpeBRepTool::RegularizeWires(*aFace, *OldWiresNewWires, *ESplits), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<bool> TopOpeBRepTool_regularize_face(TopoDS_Face const* aFace, NCollection_DataMap_TopoDS_Shape_NCollection_List_TopoDS_Shape_TopTools_ShapeMapHasher const* OldWiresnewWires, NCollection_List_TopoDS_Shape* aListOfFaces) {
+    try { return {TopOpeBRepTool::RegularizeFace(*aFace, *OldWiresnewWires, *aListOfFaces), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<bool> TopOpeBRepTool_regularize_shells(TopoDS_Solid const* aSolid, NCollection_DataMap_TopoDS_Shape_NCollection_List_TopoDS_Shape_TopTools_ShapeMapHasher* OldSheNewShe, NCollection_DataMap_TopoDS_Shape_NCollection_List_TopoDS_Shape_TopTools_ShapeMapHasher* FSplits) {
+    try { return {TopOpeBRepTool::RegularizeShells(*aSolid, *OldSheNewShe, *FSplits), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Standard_OStream*> TopOpeBRepTool_print_outcurvetype_ostream(int32_t OCT, Standard_OStream* S) {
@@ -14737,22 +14019,3 @@ extern "C" OcctResult<Standard_OStream*> TopOpeBRepTool_print_outcurvetype_ostre
     OCCT_CATCH_RETURN
 }
 
-
-// Nested type and typedef type destructors
-extern "C" void BRepFill_DataMapOfShapeHArray2OfShape_destructor(BRepFill_DataMapOfShapeHArray2OfShape* self_) { delete self_; }
-extern "C" void TopOpeBRepBuild_IndexedDataMapOfShapeVertexInfo_destructor(TopOpeBRepBuild_IndexedDataMapOfShapeVertexInfo* self_) { delete self_; }
-extern "C" void TopOpeBRepBuild_ListIteratorOfListOfLoop_destructor(TopOpeBRepBuild_ListIteratorOfListOfLoop* self_) { delete self_; }
-extern "C" void TopOpeBRepBuild_ListOfLoop_destructor(TopOpeBRepBuild_ListOfLoop* self_) { delete self_; }
-extern "C" void TopOpeBRepBuild_ListOfPave_destructor(TopOpeBRepBuild_ListOfPave* self_) { delete self_; }
-extern "C" void TopOpeBRepDS_Array1OfDataMapOfIntegerListOfInterference_destructor(TopOpeBRepDS_Array1OfDataMapOfIntegerListOfInterference* self_) { delete self_; }
-extern "C" void TopOpeBRepDS_Array1OfDataMapOfIntegerListOfInterference_value_type_destructor(TopOpeBRepDS_Array1OfDataMapOfIntegerListOfInterference::value_type* self_) { delete self_; }
-extern "C" void TopOpeBRepDS_DataMapOfShapeListOfShapeOn1State_destructor(TopOpeBRepDS_DataMapOfShapeListOfShapeOn1State* self_) { delete self_; }
-extern "C" void TopOpeBRepDS_DataMapOfShapeState_destructor(TopOpeBRepDS_DataMapOfShapeState* self_) { delete self_; }
-extern "C" void TopOpeBRepDS_IndexedDataMapOfShapeWithState_destructor(TopOpeBRepDS_IndexedDataMapOfShapeWithState* self_) { delete self_; }
-extern "C" void TopOpeBRepDS_ListIteratorOfListOfInterference_destructor(TopOpeBRepDS_ListIteratorOfListOfInterference* self_) { delete self_; }
-extern "C" void TopOpeBRepDS_ListOfInterference_destructor(TopOpeBRepDS_ListOfInterference* self_) { delete self_; }
-extern "C" void TopOpeBRepDS_MapOfShapeData_destructor(TopOpeBRepDS_MapOfShapeData* self_) { delete self_; }
-extern "C" void TopOpeBRepTool_IndexedDataMapOfShapeBox_destructor(TopOpeBRepTool_IndexedDataMapOfShapeBox* self_) { delete self_; }
-extern "C" void TopOpeBRep_Array1OfLineInter_destructor(TopOpeBRep_Array1OfLineInter* self_) { delete self_; }
-extern "C" void TopOpeBRep_Array1OfVPointInter_destructor(TopOpeBRep_Array1OfVPointInter* self_) { delete self_; }
-extern "C" void TopOpeBRep_SequenceOfPoint2d_destructor(TopOpeBRep_SequenceOfPoint2d* self_) { delete self_; }

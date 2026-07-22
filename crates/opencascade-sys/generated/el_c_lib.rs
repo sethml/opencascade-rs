@@ -7,16 +7,16 @@
 #![allow(non_snake_case)]
 
 /// **Source:** `ElCLib.hxx`:78 - `ElCLib::InPeriod`
-/// Return a value in   the  range <UFirst, ULast>  by
-/// adding or removing the period <ULast -  UFirst> to
+/// Return a value in the range <UFirst, ULast> by
+/// adding or removing the period <ULast - UFirst> to
 /// <U>.
 /// ATTENTION!!!
 /// It is expected but not checked that (ULast > UFirst)
 pub fn in_period(U: f64, UFirst: f64, ULast: f64) -> f64 {
     crate::check_result(unsafe { crate::ffi_extern_TKMath::ElCLib_in_period(U, UFirst, ULast) })
 }
-/// **Source:** `ElCLib.hxx`:90 - `ElCLib::AdjustPeriodic`
-/// Adjust U1 and  U2 in the  parametric range  UFirst
+/// **Source:** `ElCLib.hxx`:88 - `ElCLib::AdjustPeriodic`
+/// Adjust U1 and U2 in the parametric range UFirst
 /// Ulast of a periodic curve, where ULast -
 /// UFirst is its period. To do this, this function:
 /// -   sets U1 in the range [ UFirst, ULast ] by
@@ -29,7 +29,7 @@ pub fn adjust_periodic_real5(UFirst: f64, ULast: f64, Precision: f64, U1: &mut f
         crate::ffi_extern_TKMath::ElCLib_adjust_periodic_real5(UFirst, ULast, Precision, U1, U2)
     })
 }
-/// **Source:** `ElCLib.hxx`:101 - `ElCLib::Value`
+/// **Source:** `ElCLib.hxx`:99 - `ElCLib::Value`
 /// For elementary curves (lines, circles and conics) from
 /// the gp package, computes the point of parameter U.
 /// The result is either:
@@ -42,7 +42,7 @@ pub fn value_real_lin(U: f64, L: &crate::gp::Lin) -> crate::OwnedPtr<crate::gp::
         ))
     }
 }
-/// **Source:** `ElCLib.hxx`:103 - `ElCLib::Value`
+/// **Source:** `ElCLib.hxx`:101 - `ElCLib::Value`
 pub fn value_real_circ(U: f64, C: &crate::gp::Circ) -> crate::OwnedPtr<crate::gp::Pnt> {
     unsafe {
         crate::OwnedPtr::from_raw(crate::check_result(
@@ -50,7 +50,7 @@ pub fn value_real_circ(U: f64, C: &crate::gp::Circ) -> crate::OwnedPtr<crate::gp
         ))
     }
 }
-/// **Source:** `ElCLib.hxx`:105 - `ElCLib::Value`
+/// **Source:** `ElCLib.hxx`:103 - `ElCLib::Value`
 pub fn value_real_elips(U: f64, E: &crate::gp::Elips) -> crate::OwnedPtr<crate::gp::Pnt> {
     unsafe {
         crate::OwnedPtr::from_raw(crate::check_result(
@@ -58,7 +58,7 @@ pub fn value_real_elips(U: f64, E: &crate::gp::Elips) -> crate::OwnedPtr<crate::
         ))
     }
 }
-/// **Source:** `ElCLib.hxx`:107 - `ElCLib::Value`
+/// **Source:** `ElCLib.hxx`:105 - `ElCLib::Value`
 pub fn value_real_hypr(U: f64, H: &crate::gp::Hypr) -> crate::OwnedPtr<crate::gp::Pnt> {
     unsafe {
         crate::OwnedPtr::from_raw(crate::check_result(
@@ -66,7 +66,7 @@ pub fn value_real_hypr(U: f64, H: &crate::gp::Hypr) -> crate::OwnedPtr<crate::gp
         ))
     }
 }
-/// **Source:** `ElCLib.hxx`:109 - `ElCLib::Value`
+/// **Source:** `ElCLib.hxx`:107 - `ElCLib::Value`
 pub fn value_real_parab(U: f64, Prb: &crate::gp::Parab) -> crate::OwnedPtr<crate::gp::Pnt> {
     unsafe {
         crate::OwnedPtr::from_raw(crate::check_result(
@@ -74,13 +74,13 @@ pub fn value_real_parab(U: f64, Prb: &crate::gp::Parab) -> crate::OwnedPtr<crate
         ))
     }
 }
-/// **Source:** `ElCLib.hxx`:118 - `ElCLib::D1`
+/// **Source:** `ElCLib.hxx`:116 - `ElCLib::D1`
 /// For elementary curves (lines, circles and conics) from the
 /// gp package, computes:
 /// -   the point P of parameter U, and
 /// -   the first derivative vector V1 at this point.
 /// The results P and V1 are either:
-/// -   a gp_Pnt point and a gp_Vec vector, for a curve in 3D  space, or
+/// -   a gp_Pnt point and a gp_Vec vector, for a curve in 3D space, or
 /// -   a gp_Pnt2d point and a gp_Vec2d vector, for a curve in 2D space.
 pub fn d1_real_lin_pnt_vec(
     U: f64,
@@ -92,7 +92,7 @@ pub fn d1_real_lin_pnt_vec(
         crate::ffi_extern_TKMath::ElCLib_d1_real_lin_pnt_vec(U, L, P, V1)
     })
 }
-/// **Source:** `ElCLib.hxx`:120 - `ElCLib::D1`
+/// **Source:** `ElCLib.hxx`:118 - `ElCLib::D1`
 pub fn d1_real_circ_pnt_vec(
     U: f64,
     C: &crate::gp::Circ,
@@ -103,7 +103,7 @@ pub fn d1_real_circ_pnt_vec(
         crate::ffi_extern_TKMath::ElCLib_d1_real_circ_pnt_vec(U, C, P, V1)
     })
 }
-/// **Source:** `ElCLib.hxx`:122 - `ElCLib::D1`
+/// **Source:** `ElCLib.hxx`:120 - `ElCLib::D1`
 pub fn d1_real_elips_pnt_vec(
     U: f64,
     E: &crate::gp::Elips,
@@ -114,7 +114,7 @@ pub fn d1_real_elips_pnt_vec(
         crate::ffi_extern_TKMath::ElCLib_d1_real_elips_pnt_vec(U, E, P, V1)
     })
 }
-/// **Source:** `ElCLib.hxx`:124 - `ElCLib::D1`
+/// **Source:** `ElCLib.hxx`:122 - `ElCLib::D1`
 pub fn d1_real_hypr_pnt_vec(
     U: f64,
     H: &crate::gp::Hypr,
@@ -125,7 +125,7 @@ pub fn d1_real_hypr_pnt_vec(
         crate::ffi_extern_TKMath::ElCLib_d1_real_hypr_pnt_vec(U, H, P, V1)
     })
 }
-/// **Source:** `ElCLib.hxx`:126 - `ElCLib::D1`
+/// **Source:** `ElCLib.hxx`:124 - `ElCLib::D1`
 pub fn d1_real_parab_pnt_vec(
     U: f64,
     Prb: &crate::gp::Parab,
@@ -136,7 +136,7 @@ pub fn d1_real_parab_pnt_vec(
         crate::ffi_extern_TKMath::ElCLib_d1_real_parab_pnt_vec(U, Prb, P, V1)
     })
 }
-/// **Source:** `ElCLib.hxx`:135 - `ElCLib::D2`
+/// **Source:** `ElCLib.hxx`:133 - `ElCLib::D2`
 /// For elementary curves (circles and conics) from the gp
 /// package, computes:
 /// - the point P of parameter U, and
@@ -155,7 +155,7 @@ pub fn d2_real_circ_pnt_vec2(
         crate::ffi_extern_TKMath::ElCLib_d2_real_circ_pnt_vec2(U, C, P, V1, V2)
     })
 }
-/// **Source:** `ElCLib.hxx`:137 - `ElCLib::D2`
+/// **Source:** `ElCLib.hxx`:135 - `ElCLib::D2`
 pub fn d2_real_elips_pnt_vec2(
     U: f64,
     E: &crate::gp::Elips,
@@ -167,7 +167,7 @@ pub fn d2_real_elips_pnt_vec2(
         crate::ffi_extern_TKMath::ElCLib_d2_real_elips_pnt_vec2(U, E, P, V1, V2)
     })
 }
-/// **Source:** `ElCLib.hxx`:139 - `ElCLib::D2`
+/// **Source:** `ElCLib.hxx`:137 - `ElCLib::D2`
 pub fn d2_real_hypr_pnt_vec2(
     U: f64,
     H: &crate::gp::Hypr,
@@ -179,7 +179,7 @@ pub fn d2_real_hypr_pnt_vec2(
         crate::ffi_extern_TKMath::ElCLib_d2_real_hypr_pnt_vec2(U, H, P, V1, V2)
     })
 }
-/// **Source:** `ElCLib.hxx`:141 - `ElCLib::D2`
+/// **Source:** `ElCLib.hxx`:139 - `ElCLib::D2`
 pub fn d2_real_parab_pnt_vec2(
     U: f64,
     Prb: &crate::gp::Parab,
@@ -191,7 +191,7 @@ pub fn d2_real_parab_pnt_vec2(
         crate::ffi_extern_TKMath::ElCLib_d2_real_parab_pnt_vec2(U, Prb, P, V1, V2)
     })
 }
-/// **Source:** `ElCLib.hxx`:151 - `ElCLib::D3`
+/// **Source:** `ElCLib.hxx`:149 - `ElCLib::D3`
 /// For elementary curves (circles, ellipses and hyperbolae)
 /// from the gp package, computes:
 /// -   the point P of parameter U, and
@@ -212,7 +212,7 @@ pub fn d3_real_circ_pnt_vec3(
         crate::ffi_extern_TKMath::ElCLib_d3_real_circ_pnt_vec3(U, C, P, V1, V2, V3)
     })
 }
-/// **Source:** `ElCLib.hxx`:158 - `ElCLib::D3`
+/// **Source:** `ElCLib.hxx`:151 - `ElCLib::D3`
 pub fn d3_real_elips_pnt_vec3(
     U: f64,
     E: &crate::gp::Elips,
@@ -225,7 +225,7 @@ pub fn d3_real_elips_pnt_vec3(
         crate::ffi_extern_TKMath::ElCLib_d3_real_elips_pnt_vec3(U, E, P, V1, V2, V3)
     })
 }
-/// **Source:** `ElCLib.hxx`:165 - `ElCLib::D3`
+/// **Source:** `ElCLib.hxx`:153 - `ElCLib::D3`
 pub fn d3_real_hypr_pnt_vec3(
     U: f64,
     H: &crate::gp::Hypr,
@@ -238,7 +238,7 @@ pub fn d3_real_hypr_pnt_vec3(
         crate::ffi_extern_TKMath::ElCLib_d3_real_hypr_pnt_vec3(U, H, P, V1, V2, V3)
     })
 }
-/// **Source:** `ElCLib.hxx`:179 - `ElCLib::DN`
+/// **Source:** `ElCLib.hxx`:162 - `ElCLib::DN`
 /// For elementary curves (lines, circles and conics) from
 /// the gp package, computes the vector corresponding to
 /// the Nth derivative at the point of parameter U. The result is either:
@@ -253,7 +253,7 @@ pub fn dn_real_lin_int(U: f64, L: &crate::gp::Lin, N: i32) -> crate::OwnedPtr<cr
         ))
     }
 }
-/// **Source:** `ElCLib.hxx`:181 - `ElCLib::DN`
+/// **Source:** `ElCLib.hxx`:164 - `ElCLib::DN`
 pub fn dn_real_circ_int(U: f64, C: &crate::gp::Circ, N: i32) -> crate::OwnedPtr<crate::gp::Vec> {
     unsafe {
         crate::OwnedPtr::from_raw(crate::check_result(
@@ -261,7 +261,7 @@ pub fn dn_real_circ_int(U: f64, C: &crate::gp::Circ, N: i32) -> crate::OwnedPtr<
         ))
     }
 }
-/// **Source:** `ElCLib.hxx`:183 - `ElCLib::DN`
+/// **Source:** `ElCLib.hxx`:166 - `ElCLib::DN`
 pub fn dn_real_elips_int(U: f64, E: &crate::gp::Elips, N: i32) -> crate::OwnedPtr<crate::gp::Vec> {
     unsafe {
         crate::OwnedPtr::from_raw(crate::check_result(
@@ -269,7 +269,7 @@ pub fn dn_real_elips_int(U: f64, E: &crate::gp::Elips, N: i32) -> crate::OwnedPt
         ))
     }
 }
-/// **Source:** `ElCLib.hxx`:185 - `ElCLib::DN`
+/// **Source:** `ElCLib.hxx`:168 - `ElCLib::DN`
 pub fn dn_real_hypr_int(U: f64, H: &crate::gp::Hypr, N: i32) -> crate::OwnedPtr<crate::gp::Vec> {
     unsafe {
         crate::OwnedPtr::from_raw(crate::check_result(
@@ -277,7 +277,7 @@ pub fn dn_real_hypr_int(U: f64, H: &crate::gp::Hypr, N: i32) -> crate::OwnedPtr<
         ))
     }
 }
-/// **Source:** `ElCLib.hxx`:187 - `ElCLib::DN`
+/// **Source:** `ElCLib.hxx`:170 - `ElCLib::DN`
 pub fn dn_real_parab_int(
     U: f64,
     Prb: &crate::gp::Parab,
@@ -289,7 +289,7 @@ pub fn dn_real_parab_int(
         ))
     }
 }
-/// **Source:** `ElCLib.hxx`:189 - `ElCLib::Value`
+/// **Source:** `ElCLib.hxx`:172 - `ElCLib::Value`
 pub fn value_real_lin2d(U: f64, L: &crate::gp::Lin2d) -> crate::OwnedPtr<crate::gp::Pnt2d> {
     unsafe {
         crate::OwnedPtr::from_raw(crate::check_result(
@@ -297,7 +297,7 @@ pub fn value_real_lin2d(U: f64, L: &crate::gp::Lin2d) -> crate::OwnedPtr<crate::
         ))
     }
 }
-/// **Source:** `ElCLib.hxx`:191 - `ElCLib::Value`
+/// **Source:** `ElCLib.hxx`:174 - `ElCLib::Value`
 pub fn value_real_circ2d(U: f64, C: &crate::gp::Circ2d) -> crate::OwnedPtr<crate::gp::Pnt2d> {
     unsafe {
         crate::OwnedPtr::from_raw(crate::check_result(
@@ -305,7 +305,7 @@ pub fn value_real_circ2d(U: f64, C: &crate::gp::Circ2d) -> crate::OwnedPtr<crate
         ))
     }
 }
-/// **Source:** `ElCLib.hxx`:193 - `ElCLib::Value`
+/// **Source:** `ElCLib.hxx`:176 - `ElCLib::Value`
 pub fn value_real_elips2d(U: f64, E: &crate::gp::Elips2d) -> crate::OwnedPtr<crate::gp::Pnt2d> {
     unsafe {
         crate::OwnedPtr::from_raw(crate::check_result(
@@ -313,7 +313,7 @@ pub fn value_real_elips2d(U: f64, E: &crate::gp::Elips2d) -> crate::OwnedPtr<cra
         ))
     }
 }
-/// **Source:** `ElCLib.hxx`:195 - `ElCLib::Value`
+/// **Source:** `ElCLib.hxx`:178 - `ElCLib::Value`
 pub fn value_real_hypr2d(U: f64, H: &crate::gp::Hypr2d) -> crate::OwnedPtr<crate::gp::Pnt2d> {
     unsafe {
         crate::OwnedPtr::from_raw(crate::check_result(
@@ -321,7 +321,7 @@ pub fn value_real_hypr2d(U: f64, H: &crate::gp::Hypr2d) -> crate::OwnedPtr<crate
         ))
     }
 }
-/// **Source:** `ElCLib.hxx`:197 - `ElCLib::Value`
+/// **Source:** `ElCLib.hxx`:180 - `ElCLib::Value`
 pub fn value_real_parab2d(U: f64, Prb: &crate::gp::Parab2d) -> crate::OwnedPtr<crate::gp::Pnt2d> {
     unsafe {
         crate::OwnedPtr::from_raw(crate::check_result(
@@ -329,7 +329,7 @@ pub fn value_real_parab2d(U: f64, Prb: &crate::gp::Parab2d) -> crate::OwnedPtr<c
         ))
     }
 }
-/// **Source:** `ElCLib.hxx`:199 - `ElCLib::D1`
+/// **Source:** `ElCLib.hxx`:182 - `ElCLib::D1`
 pub fn d1_real_lin2d_pnt2d_vec2d(
     U: f64,
     L: &crate::gp::Lin2d,
@@ -340,7 +340,7 @@ pub fn d1_real_lin2d_pnt2d_vec2d(
         crate::ffi_extern_TKMath::ElCLib_d1_real_lin2d_pnt2d_vec2d(U, L, P, V1)
     })
 }
-/// **Source:** `ElCLib.hxx`:201 - `ElCLib::D1`
+/// **Source:** `ElCLib.hxx`:184 - `ElCLib::D1`
 pub fn d1_real_circ2d_pnt2d_vec2d(
     U: f64,
     C: &crate::gp::Circ2d,
@@ -351,7 +351,7 @@ pub fn d1_real_circ2d_pnt2d_vec2d(
         crate::ffi_extern_TKMath::ElCLib_d1_real_circ2d_pnt2d_vec2d(U, C, P, V1)
     })
 }
-/// **Source:** `ElCLib.hxx`:203 - `ElCLib::D1`
+/// **Source:** `ElCLib.hxx`:186 - `ElCLib::D1`
 pub fn d1_real_elips2d_pnt2d_vec2d(
     U: f64,
     E: &crate::gp::Elips2d,
@@ -362,7 +362,7 @@ pub fn d1_real_elips2d_pnt2d_vec2d(
         crate::ffi_extern_TKMath::ElCLib_d1_real_elips2d_pnt2d_vec2d(U, E, P, V1)
     })
 }
-/// **Source:** `ElCLib.hxx`:205 - `ElCLib::D1`
+/// **Source:** `ElCLib.hxx`:188 - `ElCLib::D1`
 pub fn d1_real_hypr2d_pnt2d_vec2d(
     U: f64,
     H: &crate::gp::Hypr2d,
@@ -373,7 +373,7 @@ pub fn d1_real_hypr2d_pnt2d_vec2d(
         crate::ffi_extern_TKMath::ElCLib_d1_real_hypr2d_pnt2d_vec2d(U, H, P, V1)
     })
 }
-/// **Source:** `ElCLib.hxx`:207 - `ElCLib::D1`
+/// **Source:** `ElCLib.hxx`:190 - `ElCLib::D1`
 pub fn d1_real_parab2d_pnt2d_vec2d(
     U: f64,
     Prb: &crate::gp::Parab2d,
@@ -384,7 +384,7 @@ pub fn d1_real_parab2d_pnt2d_vec2d(
         crate::ffi_extern_TKMath::ElCLib_d1_real_parab2d_pnt2d_vec2d(U, Prb, P, V1)
     })
 }
-/// **Source:** `ElCLib.hxx`:209 - `ElCLib::D2`
+/// **Source:** `ElCLib.hxx`:192 - `ElCLib::D2`
 pub fn d2_real_circ2d_pnt2d_vec2d2(
     U: f64,
     C: &crate::gp::Circ2d,
@@ -396,7 +396,7 @@ pub fn d2_real_circ2d_pnt2d_vec2d2(
         crate::ffi_extern_TKMath::ElCLib_d2_real_circ2d_pnt2d_vec2d2(U, C, P, V1, V2)
     })
 }
-/// **Source:** `ElCLib.hxx`:215 - `ElCLib::D2`
+/// **Source:** `ElCLib.hxx`:194 - `ElCLib::D2`
 pub fn d2_real_elips2d_pnt2d_vec2d2(
     U: f64,
     E: &crate::gp::Elips2d,
@@ -408,7 +408,7 @@ pub fn d2_real_elips2d_pnt2d_vec2d2(
         crate::ffi_extern_TKMath::ElCLib_d2_real_elips2d_pnt2d_vec2d2(U, E, P, V1, V2)
     })
 }
-/// **Source:** `ElCLib.hxx`:221 - `ElCLib::D2`
+/// **Source:** `ElCLib.hxx`:196 - `ElCLib::D2`
 pub fn d2_real_hypr2d_pnt2d_vec2d2(
     U: f64,
     H: &crate::gp::Hypr2d,
@@ -420,7 +420,7 @@ pub fn d2_real_hypr2d_pnt2d_vec2d2(
         crate::ffi_extern_TKMath::ElCLib_d2_real_hypr2d_pnt2d_vec2d2(U, H, P, V1, V2)
     })
 }
-/// **Source:** `ElCLib.hxx`:227 - `ElCLib::D2`
+/// **Source:** `ElCLib.hxx`:198 - `ElCLib::D2`
 pub fn d2_real_parab2d_pnt2d_vec2d2(
     U: f64,
     Prb: &crate::gp::Parab2d,
@@ -432,7 +432,7 @@ pub fn d2_real_parab2d_pnt2d_vec2d2(
         crate::ffi_extern_TKMath::ElCLib_d2_real_parab2d_pnt2d_vec2d2(U, Prb, P, V1, V2)
     })
 }
-/// **Source:** `ElCLib.hxx`:233 - `ElCLib::D3`
+/// **Source:** `ElCLib.hxx`:200 - `ElCLib::D3`
 pub fn d3_real_circ2d_pnt2d_vec2d3(
     U: f64,
     C: &crate::gp::Circ2d,
@@ -445,7 +445,7 @@ pub fn d3_real_circ2d_pnt2d_vec2d3(
         crate::ffi_extern_TKMath::ElCLib_d3_real_circ2d_pnt2d_vec2d3(U, C, P, V1, V2, V3)
     })
 }
-/// **Source:** `ElCLib.hxx`:240 - `ElCLib::D3`
+/// **Source:** `ElCLib.hxx`:207 - `ElCLib::D3`
 pub fn d3_real_elips2d_pnt2d_vec2d3(
     U: f64,
     E: &crate::gp::Elips2d,
@@ -458,7 +458,7 @@ pub fn d3_real_elips2d_pnt2d_vec2d3(
         crate::ffi_extern_TKMath::ElCLib_d3_real_elips2d_pnt2d_vec2d3(U, E, P, V1, V2, V3)
     })
 }
-/// **Source:** `ElCLib.hxx`:249 - `ElCLib::D3`
+/// **Source:** `ElCLib.hxx`:216 - `ElCLib::D3`
 /// In the following functions N is the order of derivation
 /// and should be greater than 0
 pub fn d3_real_hypr2d_pnt2d_vec2d3(
@@ -473,7 +473,7 @@ pub fn d3_real_hypr2d_pnt2d_vec2d3(
         crate::ffi_extern_TKMath::ElCLib_d3_real_hypr2d_pnt2d_vec2d3(U, H, P, V1, V2, V3)
     })
 }
-/// **Source:** `ElCLib.hxx`:256 - `ElCLib::DN`
+/// **Source:** `ElCLib.hxx`:223 - `ElCLib::DN`
 pub fn dn_real_lin2d_int(
     U: f64,
     L: &crate::gp::Lin2d,
@@ -485,7 +485,7 @@ pub fn dn_real_lin2d_int(
         ))
     }
 }
-/// **Source:** `ElCLib.hxx`:258 - `ElCLib::DN`
+/// **Source:** `ElCLib.hxx`:225 - `ElCLib::DN`
 pub fn dn_real_circ2d_int(
     U: f64,
     C: &crate::gp::Circ2d,
@@ -497,7 +497,7 @@ pub fn dn_real_circ2d_int(
         ))
     }
 }
-/// **Source:** `ElCLib.hxx`:260 - `ElCLib::DN`
+/// **Source:** `ElCLib.hxx`:227 - `ElCLib::DN`
 pub fn dn_real_elips2d_int(
     U: f64,
     E: &crate::gp::Elips2d,
@@ -509,7 +509,7 @@ pub fn dn_real_elips2d_int(
         ))
     }
 }
-/// **Source:** `ElCLib.hxx`:262 - `ElCLib::DN`
+/// **Source:** `ElCLib.hxx`:229 - `ElCLib::DN`
 pub fn dn_real_hypr2d_int(
     U: f64,
     H: &crate::gp::Hypr2d,
@@ -521,7 +521,7 @@ pub fn dn_real_hypr2d_int(
         ))
     }
 }
-/// **Source:** `ElCLib.hxx`:264 - `ElCLib::DN`
+/// **Source:** `ElCLib.hxx`:231 - `ElCLib::DN`
 pub fn dn_real_parab2d_int(
     U: f64,
     Prb: &crate::gp::Parab2d,
@@ -533,7 +533,7 @@ pub fn dn_real_parab2d_int(
         ))
     }
 }
-/// **Source:** `ElCLib.hxx`:273 - `ElCLib::LineValue`
+/// **Source:** `ElCLib.hxx`:240 - `ElCLib::LineValue`
 /// Curve evaluation
 /// The following basis functions compute the derivatives on
 /// elementary curves defined by their geometric characteristics.
@@ -548,7 +548,7 @@ pub fn line_value_real_ax1(U: f64, Pos: &crate::gp::Ax1) -> crate::OwnedPtr<crat
         ))
     }
 }
-/// **Source:** `ElCLib.hxx`:275 - `ElCLib::CircleValue`
+/// **Source:** `ElCLib.hxx`:242 - `ElCLib::CircleValue`
 pub fn circle_value_real_ax2_real(
     U: f64,
     Pos: &crate::gp::Ax2,
@@ -560,7 +560,7 @@ pub fn circle_value_real_ax2_real(
         ))
     }
 }
-/// **Source:** `ElCLib.hxx`:279 - `ElCLib::EllipseValue`
+/// **Source:** `ElCLib.hxx`:244 - `ElCLib::EllipseValue`
 pub fn ellipse_value_real_ax2_real2(
     U: f64,
     Pos: &crate::gp::Ax2,
@@ -578,7 +578,7 @@ pub fn ellipse_value_real_ax2_real2(
         ))
     }
 }
-/// **Source:** `ElCLib.hxx`:284 - `ElCLib::HyperbolaValue`
+/// **Source:** `ElCLib.hxx`:249 - `ElCLib::HyperbolaValue`
 pub fn hyperbola_value_real_ax2_real2(
     U: f64,
     Pos: &crate::gp::Ax2,
@@ -596,7 +596,7 @@ pub fn hyperbola_value_real_ax2_real2(
         ))
     }
 }
-/// **Source:** `ElCLib.hxx`:289 - `ElCLib::ParabolaValue`
+/// **Source:** `ElCLib.hxx`:254 - `ElCLib::ParabolaValue`
 pub fn parabola_value_real_ax2_real(
     U: f64,
     Pos: &crate::gp::Ax2,
@@ -608,7 +608,7 @@ pub fn parabola_value_real_ax2_real(
         ))
     }
 }
-/// **Source:** `ElCLib.hxx`:293 - `ElCLib::LineD1`
+/// **Source:** `ElCLib.hxx`:258 - `ElCLib::LineD1`
 pub fn line_d1_real_ax1_pnt_vec(
     U: f64,
     Pos: &crate::gp::Ax1,
@@ -619,7 +619,7 @@ pub fn line_d1_real_ax1_pnt_vec(
         crate::ffi_extern_TKMath::ElCLib_line_d1_real_ax1_pnt_vec(U, Pos, P, V1)
     })
 }
-/// **Source:** `ElCLib.hxx`:298 - `ElCLib::CircleD1`
+/// **Source:** `ElCLib.hxx`:260 - `ElCLib::CircleD1`
 pub fn circle_d1_real_ax2_real_pnt_vec(
     U: f64,
     Pos: &crate::gp::Ax2,
@@ -631,7 +631,7 @@ pub fn circle_d1_real_ax2_real_pnt_vec(
         crate::ffi_extern_TKMath::ElCLib_circle_d1_real_ax2_real_pnt_vec(U, Pos, Radius, P, V1)
     })
 }
-/// **Source:** `ElCLib.hxx`:304 - `ElCLib::EllipseD1`
+/// **Source:** `ElCLib.hxx`:266 - `ElCLib::EllipseD1`
 pub fn ellipse_d1_real_ax2_real2_pnt_vec(
     U: f64,
     Pos: &crate::gp::Ax2,
@@ -651,7 +651,7 @@ pub fn ellipse_d1_real_ax2_real2_pnt_vec(
         )
     })
 }
-/// **Source:** `ElCLib.hxx`:311 - `ElCLib::HyperbolaD1`
+/// **Source:** `ElCLib.hxx`:273 - `ElCLib::HyperbolaD1`
 pub fn hyperbola_d1_real_ax2_real2_pnt_vec(
     U: f64,
     Pos: &crate::gp::Ax2,
@@ -671,7 +671,7 @@ pub fn hyperbola_d1_real_ax2_real2_pnt_vec(
         )
     })
 }
-/// **Source:** `ElCLib.hxx`:318 - `ElCLib::ParabolaD1`
+/// **Source:** `ElCLib.hxx`:280 - `ElCLib::ParabolaD1`
 pub fn parabola_d1_real_ax2_real_pnt_vec(
     U: f64,
     Pos: &crate::gp::Ax2,
@@ -683,7 +683,7 @@ pub fn parabola_d1_real_ax2_real_pnt_vec(
         crate::ffi_extern_TKMath::ElCLib_parabola_d1_real_ax2_real_pnt_vec(U, Pos, Focal, P, V1)
     })
 }
-/// **Source:** `ElCLib.hxx`:324 - `ElCLib::CircleD2`
+/// **Source:** `ElCLib.hxx`:286 - `ElCLib::CircleD2`
 pub fn circle_d2_real_ax2_real_pnt_vec2(
     U: f64,
     Pos: &crate::gp::Ax2,
@@ -696,7 +696,7 @@ pub fn circle_d2_real_ax2_real_pnt_vec2(
         crate::ffi_extern_TKMath::ElCLib_circle_d2_real_ax2_real_pnt_vec2(U, Pos, Radius, P, V1, V2)
     })
 }
-/// **Source:** `ElCLib.hxx`:331 - `ElCLib::EllipseD2`
+/// **Source:** `ElCLib.hxx`:293 - `ElCLib::EllipseD2`
 pub fn ellipse_d2_real_ax2_real2_pnt_vec2(
     U: f64,
     Pos: &crate::gp::Ax2,
@@ -718,7 +718,7 @@ pub fn ellipse_d2_real_ax2_real2_pnt_vec2(
         )
     })
 }
-/// **Source:** `ElCLib.hxx`:339 - `ElCLib::HyperbolaD2`
+/// **Source:** `ElCLib.hxx`:301 - `ElCLib::HyperbolaD2`
 pub fn hyperbola_d2_real_ax2_real2_pnt_vec2(
     U: f64,
     Pos: &crate::gp::Ax2,
@@ -740,7 +740,7 @@ pub fn hyperbola_d2_real_ax2_real2_pnt_vec2(
         )
     })
 }
-/// **Source:** `ElCLib.hxx`:347 - `ElCLib::ParabolaD2`
+/// **Source:** `ElCLib.hxx`:309 - `ElCLib::ParabolaD2`
 pub fn parabola_d2_real_ax2_real_pnt_vec2(
     U: f64,
     Pos: &crate::gp::Ax2,
@@ -755,7 +755,7 @@ pub fn parabola_d2_real_ax2_real_pnt_vec2(
         )
     })
 }
-/// **Source:** `ElCLib.hxx`:354 - `ElCLib::CircleD3`
+/// **Source:** `ElCLib.hxx`:316 - `ElCLib::CircleD3`
 pub fn circle_d3_real_ax2_real_pnt_vec3(
     U: f64,
     Pos: &crate::gp::Ax2,
@@ -771,7 +771,7 @@ pub fn circle_d3_real_ax2_real_pnt_vec3(
         )
     })
 }
-/// **Source:** `ElCLib.hxx`:362 - `ElCLib::EllipseD3`
+/// **Source:** `ElCLib.hxx`:324 - `ElCLib::EllipseD3`
 pub fn ellipse_d3_real_ax2_real2_pnt_vec3(
     U: f64,
     Pos: &crate::gp::Ax2,
@@ -795,7 +795,7 @@ pub fn ellipse_d3_real_ax2_real2_pnt_vec3(
         )
     })
 }
-/// **Source:** `ElCLib.hxx`:371 - `ElCLib::HyperbolaD3`
+/// **Source:** `ElCLib.hxx`:333 - `ElCLib::HyperbolaD3`
 pub fn hyperbola_d3_real_ax2_real2_pnt_vec3(
     U: f64,
     Pos: &crate::gp::Ax2,
@@ -819,7 +819,7 @@ pub fn hyperbola_d3_real_ax2_real2_pnt_vec3(
         )
     })
 }
-/// **Source:** `ElCLib.hxx`:382 - `ElCLib::LineDN`
+/// **Source:** `ElCLib.hxx`:344 - `ElCLib::LineDN`
 /// In the following functions N is the order of derivation
 /// and should be greater than 0
 pub fn line_dn_real_ax1_int(
@@ -833,7 +833,7 @@ pub fn line_dn_real_ax1_int(
         ))
     }
 }
-/// **Source:** `ElCLib.hxx`:386 - `ElCLib::CircleDN`
+/// **Source:** `ElCLib.hxx`:346 - `ElCLib::CircleDN`
 pub fn circle_dn_real_ax2_real_int(
     U: f64,
     Pos: &crate::gp::Ax2,
@@ -846,7 +846,7 @@ pub fn circle_dn_real_ax2_real_int(
         ))
     }
 }
-/// **Source:** `ElCLib.hxx`:391 - `ElCLib::EllipseDN`
+/// **Source:** `ElCLib.hxx`:351 - `ElCLib::EllipseDN`
 pub fn ellipse_dn_real_ax2_real2_int(
     U: f64,
     Pos: &crate::gp::Ax2,
@@ -866,7 +866,7 @@ pub fn ellipse_dn_real_ax2_real2_int(
         ))
     }
 }
-/// **Source:** `ElCLib.hxx`:397 - `ElCLib::HyperbolaDN`
+/// **Source:** `ElCLib.hxx`:357 - `ElCLib::HyperbolaDN`
 pub fn hyperbola_dn_real_ax2_real2_int(
     U: f64,
     Pos: &crate::gp::Ax2,
@@ -886,7 +886,7 @@ pub fn hyperbola_dn_real_ax2_real2_int(
         ))
     }
 }
-/// **Source:** `ElCLib.hxx`:403 - `ElCLib::ParabolaDN`
+/// **Source:** `ElCLib.hxx`:363 - `ElCLib::ParabolaDN`
 pub fn parabola_dn_real_ax2_real_int(
     U: f64,
     Pos: &crate::gp::Ax2,
@@ -899,7 +899,7 @@ pub fn parabola_dn_real_ax2_real_int(
         ))
     }
 }
-/// **Source:** `ElCLib.hxx`:408 - `ElCLib::LineValue`
+/// **Source:** `ElCLib.hxx`:368 - `ElCLib::LineValue`
 pub fn line_value_real_ax2d(U: f64, Pos: &crate::gp::Ax2d) -> crate::OwnedPtr<crate::gp::Pnt2d> {
     unsafe {
         crate::OwnedPtr::from_raw(crate::check_result(
@@ -907,7 +907,7 @@ pub fn line_value_real_ax2d(U: f64, Pos: &crate::gp::Ax2d) -> crate::OwnedPtr<cr
         ))
     }
 }
-/// **Source:** `ElCLib.hxx`:410 - `ElCLib::CircleValue`
+/// **Source:** `ElCLib.hxx`:370 - `ElCLib::CircleValue`
 pub fn circle_value_real_ax22d_real(
     U: f64,
     Pos: &crate::gp::Ax22d,
@@ -919,7 +919,7 @@ pub fn circle_value_real_ax22d_real(
         ))
     }
 }
-/// **Source:** `ElCLib.hxx`:414 - `ElCLib::EllipseValue`
+/// **Source:** `ElCLib.hxx`:374 - `ElCLib::EllipseValue`
 pub fn ellipse_value_real_ax22d_real2(
     U: f64,
     Pos: &crate::gp::Ax22d,
@@ -937,7 +937,7 @@ pub fn ellipse_value_real_ax22d_real2(
         ))
     }
 }
-/// **Source:** `ElCLib.hxx`:419 - `ElCLib::HyperbolaValue`
+/// **Source:** `ElCLib.hxx`:379 - `ElCLib::HyperbolaValue`
 pub fn hyperbola_value_real_ax22d_real2(
     U: f64,
     Pos: &crate::gp::Ax22d,
@@ -955,7 +955,7 @@ pub fn hyperbola_value_real_ax22d_real2(
         ))
     }
 }
-/// **Source:** `ElCLib.hxx`:424 - `ElCLib::ParabolaValue`
+/// **Source:** `ElCLib.hxx`:384 - `ElCLib::ParabolaValue`
 pub fn parabola_value_real_ax22d_real(
     U: f64,
     Pos: &crate::gp::Ax22d,
@@ -967,7 +967,7 @@ pub fn parabola_value_real_ax22d_real(
         ))
     }
 }
-/// **Source:** `ElCLib.hxx`:428 - `ElCLib::LineD1`
+/// **Source:** `ElCLib.hxx`:388 - `ElCLib::LineD1`
 pub fn line_d1_real_ax2d_pnt2d_vec2d(
     U: f64,
     Pos: &crate::gp::Ax2d,
@@ -978,7 +978,7 @@ pub fn line_d1_real_ax2d_pnt2d_vec2d(
         crate::ffi_extern_TKMath::ElCLib_line_d1_real_ax2d_pnt2d_vec2d(U, Pos, P, V1)
     })
 }
-/// **Source:** `ElCLib.hxx`:433 - `ElCLib::CircleD1`
+/// **Source:** `ElCLib.hxx`:390 - `ElCLib::CircleD1`
 pub fn circle_d1_real_ax22d_real_pnt2d_vec2d(
     U: f64,
     Pos: &crate::gp::Ax22d,
@@ -992,7 +992,7 @@ pub fn circle_d1_real_ax22d_real_pnt2d_vec2d(
         )
     })
 }
-/// **Source:** `ElCLib.hxx`:439 - `ElCLib::EllipseD1`
+/// **Source:** `ElCLib.hxx`:396 - `ElCLib::EllipseD1`
 pub fn ellipse_d1_real_ax22d_real2_pnt2d_vec2d(
     U: f64,
     Pos: &crate::gp::Ax22d,
@@ -1012,7 +1012,7 @@ pub fn ellipse_d1_real_ax22d_real2_pnt2d_vec2d(
         )
     })
 }
-/// **Source:** `ElCLib.hxx`:446 - `ElCLib::HyperbolaD1`
+/// **Source:** `ElCLib.hxx`:403 - `ElCLib::HyperbolaD1`
 pub fn hyperbola_d1_real_ax22d_real2_pnt2d_vec2d(
     U: f64,
     Pos: &crate::gp::Ax22d,
@@ -1032,7 +1032,7 @@ pub fn hyperbola_d1_real_ax22d_real2_pnt2d_vec2d(
         )
     })
 }
-/// **Source:** `ElCLib.hxx`:453 - `ElCLib::ParabolaD1`
+/// **Source:** `ElCLib.hxx`:410 - `ElCLib::ParabolaD1`
 pub fn parabola_d1_real_ax22d_real_pnt2d_vec2d(
     U: f64,
     Pos: &crate::gp::Ax22d,
@@ -1046,7 +1046,7 @@ pub fn parabola_d1_real_ax22d_real_pnt2d_vec2d(
         )
     })
 }
-/// **Source:** `ElCLib.hxx`:459 - `ElCLib::CircleD2`
+/// **Source:** `ElCLib.hxx`:416 - `ElCLib::CircleD2`
 pub fn circle_d2_real_ax22d_real_pnt2d_vec2d2(
     U: f64,
     Pos: &crate::gp::Ax22d,
@@ -1061,7 +1061,7 @@ pub fn circle_d2_real_ax22d_real_pnt2d_vec2d2(
         )
     })
 }
-/// **Source:** `ElCLib.hxx`:466 - `ElCLib::EllipseD2`
+/// **Source:** `ElCLib.hxx`:423 - `ElCLib::EllipseD2`
 pub fn ellipse_d2_real_ax22d_real2_pnt2d_vec2d2(
     U: f64,
     Pos: &crate::gp::Ax22d,
@@ -1083,7 +1083,7 @@ pub fn ellipse_d2_real_ax22d_real2_pnt2d_vec2d2(
         )
     })
 }
-/// **Source:** `ElCLib.hxx`:474 - `ElCLib::HyperbolaD2`
+/// **Source:** `ElCLib.hxx`:431 - `ElCLib::HyperbolaD2`
 pub fn hyperbola_d2_real_ax22d_real2_pnt2d_vec2d2(
     U: f64,
     Pos: &crate::gp::Ax22d,
@@ -1105,7 +1105,7 @@ pub fn hyperbola_d2_real_ax22d_real2_pnt2d_vec2d2(
         )
     })
 }
-/// **Source:** `ElCLib.hxx`:482 - `ElCLib::ParabolaD2`
+/// **Source:** `ElCLib.hxx`:439 - `ElCLib::ParabolaD2`
 pub fn parabola_d2_real_ax22d_real_pnt2d_vec2d2(
     U: f64,
     Pos: &crate::gp::Ax22d,
@@ -1120,7 +1120,7 @@ pub fn parabola_d2_real_ax22d_real_pnt2d_vec2d2(
         )
     })
 }
-/// **Source:** `ElCLib.hxx`:489 - `ElCLib::CircleD3`
+/// **Source:** `ElCLib.hxx`:446 - `ElCLib::CircleD3`
 pub fn circle_d3_real_ax22d_real_pnt2d_vec2d3(
     U: f64,
     Pos: &crate::gp::Ax22d,
@@ -1136,7 +1136,7 @@ pub fn circle_d3_real_ax22d_real_pnt2d_vec2d3(
         )
     })
 }
-/// **Source:** `ElCLib.hxx`:497 - `ElCLib::EllipseD3`
+/// **Source:** `ElCLib.hxx`:454 - `ElCLib::EllipseD3`
 pub fn ellipse_d3_real_ax22d_real2_pnt2d_vec2d3(
     U: f64,
     Pos: &crate::gp::Ax22d,
@@ -1160,7 +1160,7 @@ pub fn ellipse_d3_real_ax22d_real2_pnt2d_vec2d3(
         )
     })
 }
-/// **Source:** `ElCLib.hxx`:508 - `ElCLib::HyperbolaD3`
+/// **Source:** `ElCLib.hxx`:465 - `ElCLib::HyperbolaD3`
 /// In the following functions N is the order of derivation
 /// and should be greater than 0
 pub fn hyperbola_d3_real_ax22d_real2_pnt2d_vec2d3(
@@ -1186,7 +1186,7 @@ pub fn hyperbola_d3_real_ax22d_real2_pnt2d_vec2d3(
         )
     })
 }
-/// **Source:** `ElCLib.hxx`:517 - `ElCLib::LineDN`
+/// **Source:** `ElCLib.hxx`:474 - `ElCLib::LineDN`
 pub fn line_dn_real_ax2d_int(
     U: f64,
     Pos: &crate::gp::Ax2d,
@@ -1198,7 +1198,7 @@ pub fn line_dn_real_ax2d_int(
         ))
     }
 }
-/// **Source:** `ElCLib.hxx`:521 - `ElCLib::CircleDN`
+/// **Source:** `ElCLib.hxx`:476 - `ElCLib::CircleDN`
 pub fn circle_dn_real_ax22d_real_int(
     U: f64,
     Pos: &crate::gp::Ax22d,
@@ -1211,7 +1211,7 @@ pub fn circle_dn_real_ax22d_real_int(
         ))
     }
 }
-/// **Source:** `ElCLib.hxx`:526 - `ElCLib::EllipseDN`
+/// **Source:** `ElCLib.hxx`:481 - `ElCLib::EllipseDN`
 pub fn ellipse_dn_real_ax22d_real2_int(
     U: f64,
     Pos: &crate::gp::Ax22d,
@@ -1231,7 +1231,7 @@ pub fn ellipse_dn_real_ax22d_real2_int(
         ))
     }
 }
-/// **Source:** `ElCLib.hxx`:532 - `ElCLib::HyperbolaDN`
+/// **Source:** `ElCLib.hxx`:487 - `ElCLib::HyperbolaDN`
 pub fn hyperbola_dn_real_ax22d_real2_int(
     U: f64,
     Pos: &crate::gp::Ax22d,
@@ -1251,7 +1251,7 @@ pub fn hyperbola_dn_real_ax22d_real2_int(
         ))
     }
 }
-/// **Source:** `ElCLib.hxx`:541 - `ElCLib::ParabolaDN`
+/// **Source:** `ElCLib.hxx`:496 - `ElCLib::ParabolaDN`
 /// The following functions compute the parametric value corresponding
 /// to a given point on a elementary curve. The point should be on the
 /// curve.
@@ -1267,14 +1267,14 @@ pub fn parabola_dn_real_ax22d_real_int(
         ))
     }
 }
-/// **Source:** `ElCLib.hxx`:562 - `ElCLib::Parameter`
+/// **Source:** `ElCLib.hxx`:517 - `ElCLib::Parameter`
 /// Computes the parameter value of the point P on the given curve.
 /// Note: In its local coordinate system, the parametric
 /// equation of the curve is given by the following:
 /// -   for the line L: P(U) = Po + U*Vo
 /// where Po is the origin and Vo the unit vector of its positioning axis.
-/// -   for the circle C: X(U) = Radius*Cos(U), Y(U) = Radius*Sin(U)
-/// -   for the ellipse E: X(U) = MajorRadius*Cos(U). Y(U) = MinorRadius*Sin(U)
+/// -   for the circle C: X(U) = Radius*std::cos(U), Y(U) = Radius*Sin(U)
+/// -   for the ellipse E: X(U) = MajorRadius*std::cos(U). Y(U) = MinorRadius*Sin(U)
 /// -   for the hyperbola H: X(U) = MajorRadius*Ch(U), Y(U) = MinorRadius*Sh(U)
 /// -   for the parabola Prb:
 /// X(U) = U**2 / (2*p)
@@ -1287,17 +1287,17 @@ pub fn parabola_dn_real_ax22d_real_int(
 pub fn parameter_lin_pnt(L: &crate::gp::Lin, P: &crate::gp::Pnt) -> f64 {
     crate::check_result(unsafe { crate::ffi_extern_TKMath::ElCLib_parameter_lin_pnt(L, P) })
 }
-/// **Source:** `ElCLib.hxx`:566 - `ElCLib::Parameter`
+/// **Source:** `ElCLib.hxx`:521 - `ElCLib::Parameter`
 /// parametrization
 /// P (U) = L.Location() + U * L.Direction()
 pub fn parameter_lin2d_pnt2d(L: &crate::gp::Lin2d, P: &crate::gp::Pnt2d) -> f64 {
     crate::check_result(unsafe { crate::ffi_extern_TKMath::ElCLib_parameter_lin2d_pnt2d(L, P) })
 }
-/// **Source:** `ElCLib.hxx`:568 - `ElCLib::Parameter`
+/// **Source:** `ElCLib.hxx`:523 - `ElCLib::Parameter`
 pub fn parameter_circ_pnt(C: &crate::gp::Circ, P: &crate::gp::Pnt) -> f64 {
     crate::check_result(unsafe { crate::ffi_extern_TKMath::ElCLib_parameter_circ_pnt(C, P) })
 }
-/// **Source:** `ElCLib.hxx`:574 - `ElCLib::Parameter`
+/// **Source:** `ElCLib.hxx`:529 - `ElCLib::Parameter`
 /// parametrization
 /// In the local coordinate system of the circle
 /// X (U) = Radius * Cos (U)
@@ -1305,11 +1305,11 @@ pub fn parameter_circ_pnt(C: &crate::gp::Circ, P: &crate::gp::Pnt) -> f64 {
 pub fn parameter_circ2d_pnt2d(C: &crate::gp::Circ2d, P: &crate::gp::Pnt2d) -> f64 {
     crate::check_result(unsafe { crate::ffi_extern_TKMath::ElCLib_parameter_circ2d_pnt2d(C, P) })
 }
-/// **Source:** `ElCLib.hxx`:576 - `ElCLib::Parameter`
+/// **Source:** `ElCLib.hxx`:531 - `ElCLib::Parameter`
 pub fn parameter_elips_pnt(E: &crate::gp::Elips, P: &crate::gp::Pnt) -> f64 {
     crate::check_result(unsafe { crate::ffi_extern_TKMath::ElCLib_parameter_elips_pnt(E, P) })
 }
-/// **Source:** `ElCLib.hxx`:582 - `ElCLib::Parameter`
+/// **Source:** `ElCLib.hxx`:537 - `ElCLib::Parameter`
 /// parametrization
 /// In the local coordinate system of the Ellipse
 /// X (U) = MajorRadius * Cos (U)
@@ -1317,11 +1317,11 @@ pub fn parameter_elips_pnt(E: &crate::gp::Elips, P: &crate::gp::Pnt) -> f64 {
 pub fn parameter_elips2d_pnt2d(E: &crate::gp::Elips2d, P: &crate::gp::Pnt2d) -> f64 {
     crate::check_result(unsafe { crate::ffi_extern_TKMath::ElCLib_parameter_elips2d_pnt2d(E, P) })
 }
-/// **Source:** `ElCLib.hxx`:584 - `ElCLib::Parameter`
+/// **Source:** `ElCLib.hxx`:539 - `ElCLib::Parameter`
 pub fn parameter_hypr_pnt(H: &crate::gp::Hypr, P: &crate::gp::Pnt) -> f64 {
     crate::check_result(unsafe { crate::ffi_extern_TKMath::ElCLib_parameter_hypr_pnt(H, P) })
 }
-/// **Source:** `ElCLib.hxx`:590 - `ElCLib::Parameter`
+/// **Source:** `ElCLib.hxx`:545 - `ElCLib::Parameter`
 /// parametrization
 /// In the local coordinate system of the Hyperbola
 /// X (U) = MajorRadius * Ch (U)
@@ -1329,11 +1329,11 @@ pub fn parameter_hypr_pnt(H: &crate::gp::Hypr, P: &crate::gp::Pnt) -> f64 {
 pub fn parameter_hypr2d_pnt2d(H: &crate::gp::Hypr2d, P: &crate::gp::Pnt2d) -> f64 {
     crate::check_result(unsafe { crate::ffi_extern_TKMath::ElCLib_parameter_hypr2d_pnt2d(H, P) })
 }
-/// **Source:** `ElCLib.hxx`:592 - `ElCLib::Parameter`
+/// **Source:** `ElCLib.hxx`:547 - `ElCLib::Parameter`
 pub fn parameter_parab_pnt(Prb: &crate::gp::Parab, P: &crate::gp::Pnt) -> f64 {
     crate::check_result(unsafe { crate::ffi_extern_TKMath::ElCLib_parameter_parab_pnt(Prb, P) })
 }
-/// **Source:** `ElCLib.hxx`:598 - `ElCLib::Parameter`
+/// **Source:** `ElCLib.hxx`:553 - `ElCLib::Parameter`
 /// parametrization
 /// In the local coordinate system of the parabola
 /// Y**2 = (2*P) * X where P is the distance between the focus
@@ -1341,11 +1341,11 @@ pub fn parameter_parab_pnt(Prb: &crate::gp::Parab, P: &crate::gp::Pnt) -> f64 {
 pub fn parameter_parab2d_pnt2d(Prb: &crate::gp::Parab2d, P: &crate::gp::Pnt2d) -> f64 {
     crate::check_result(unsafe { crate::ffi_extern_TKMath::ElCLib_parameter_parab2d_pnt2d(Prb, P) })
 }
-/// **Source:** `ElCLib.hxx`:600 - `ElCLib::LineParameter`
+/// **Source:** `ElCLib.hxx`:555 - `ElCLib::LineParameter`
 pub fn line_parameter_ax1_pnt(Pos: &crate::gp::Ax1, P: &crate::gp::Pnt) -> f64 {
     crate::check_result(unsafe { crate::ffi_extern_TKMath::ElCLib_line_parameter_ax1_pnt(Pos, P) })
 }
-/// **Source:** `ElCLib.hxx`:604 - `ElCLib::LineParameter`
+/// **Source:** `ElCLib.hxx`:559 - `ElCLib::LineParameter`
 /// parametrization
 /// P (U) = L.Location() + U * L.Direction()
 pub fn line_parameter_ax2d_pnt2d(Pos: &crate::gp::Ax2d, P: &crate::gp::Pnt2d) -> f64 {
@@ -1353,13 +1353,13 @@ pub fn line_parameter_ax2d_pnt2d(Pos: &crate::gp::Ax2d, P: &crate::gp::Pnt2d) ->
         crate::ffi_extern_TKMath::ElCLib_line_parameter_ax2d_pnt2d(Pos, P)
     })
 }
-/// **Source:** `ElCLib.hxx`:606 - `ElCLib::CircleParameter`
+/// **Source:** `ElCLib.hxx`:561 - `ElCLib::CircleParameter`
 pub fn circle_parameter_ax2_pnt(Pos: &crate::gp::Ax2, P: &crate::gp::Pnt) -> f64 {
     crate::check_result(unsafe {
         crate::ffi_extern_TKMath::ElCLib_circle_parameter_ax2_pnt(Pos, P)
     })
 }
-/// **Source:** `ElCLib.hxx`:613 - `ElCLib::CircleParameter`
+/// **Source:** `ElCLib.hxx`:568 - `ElCLib::CircleParameter`
 /// Pos is the Axis of the Circle
 /// parametrization
 /// In the local coordinate system of the circle
@@ -1370,7 +1370,7 @@ pub fn circle_parameter_ax22d_pnt2d(Pos: &crate::gp::Ax22d, P: &crate::gp::Pnt2d
         crate::ffi_extern_TKMath::ElCLib_circle_parameter_ax22d_pnt2d(Pos, P)
     })
 }
-/// **Source:** `ElCLib.hxx`:615 - `ElCLib::EllipseParameter`
+/// **Source:** `ElCLib.hxx`:570 - `ElCLib::EllipseParameter`
 pub fn ellipse_parameter_ax2_real2_pnt(
     Pos: &crate::gp::Ax2,
     MajorRadius: f64,
@@ -1386,7 +1386,7 @@ pub fn ellipse_parameter_ax2_real2_pnt(
         )
     })
 }
-/// **Source:** `ElCLib.hxx`:625 - `ElCLib::EllipseParameter`
+/// **Source:** `ElCLib.hxx`:580 - `ElCLib::EllipseParameter`
 /// Pos is the Axis of the Ellipse
 /// parametrization
 /// In the local coordinate system of the Ellipse
@@ -1407,7 +1407,7 @@ pub fn ellipse_parameter_ax22d_real2_pnt2d(
         )
     })
 }
-/// **Source:** `ElCLib.hxx`:630 - `ElCLib::HyperbolaParameter`
+/// **Source:** `ElCLib.hxx`:585 - `ElCLib::HyperbolaParameter`
 pub fn hyperbola_parameter_ax2_real2_pnt(
     Pos: &crate::gp::Ax2,
     MajorRadius: f64,
@@ -1423,7 +1423,7 @@ pub fn hyperbola_parameter_ax2_real2_pnt(
         )
     })
 }
-/// **Source:** `ElCLib.hxx`:640 - `ElCLib::HyperbolaParameter`
+/// **Source:** `ElCLib.hxx`:595 - `ElCLib::HyperbolaParameter`
 /// Pos is the Axis of the Hyperbola
 /// parametrization
 /// In the local coordinate system of the Hyperbola
@@ -1444,26 +1444,26 @@ pub fn hyperbola_parameter_ax22d_real2_pnt2d(
         )
     })
 }
-/// **Source:** `ElCLib.hxx`:645 - `ElCLib::ParabolaParameter`
+/// **Source:** `ElCLib.hxx`:600 - `ElCLib::ParabolaParameter`
 pub fn parabola_parameter_ax2_pnt(Pos: &crate::gp::Ax2, P: &crate::gp::Pnt) -> f64 {
     crate::check_result(unsafe {
         crate::ffi_extern_TKMath::ElCLib_parabola_parameter_ax2_pnt(Pos, P)
     })
 }
-/// **Source:** `ElCLib.hxx`:654 - `ElCLib::ParabolaParameter`
+/// **Source:** `ElCLib.hxx`:609 - `ElCLib::ParabolaParameter`
 /// Pos is the mirror axis of the parabola
 /// parametrization
 /// In the local coordinate system of the parabola
 /// Y**2 = (2*P) * X where P is the distance between the focus
 /// and the directrix.
-/// The following functions build  a 3d curve from a
+/// The following functions build a 3d curve from a
 /// 2d curve at a given position defined with an Ax2.
 pub fn parabola_parameter_ax22d_pnt2d(Pos: &crate::gp::Ax22d, P: &crate::gp::Pnt2d) -> f64 {
     crate::check_result(unsafe {
         crate::ffi_extern_TKMath::ElCLib_parabola_parameter_ax22d_pnt2d(Pos, P)
     })
 }
-/// **Source:** `ElCLib.hxx`:656 - `ElCLib::To3d`
+/// **Source:** `ElCLib.hxx`:611 - `ElCLib::To3d`
 pub fn to3d_ax2_pnt2d(
     Pos: &crate::gp::Ax2,
     P: &crate::gp::Pnt2d,
@@ -1474,7 +1474,7 @@ pub fn to3d_ax2_pnt2d(
         ))
     }
 }
-/// **Source:** `ElCLib.hxx`:658 - `ElCLib::To3d`
+/// **Source:** `ElCLib.hxx`:613 - `ElCLib::To3d`
 pub fn to3d_ax2_vec2d(
     Pos: &crate::gp::Ax2,
     V: &crate::gp::Vec2d,
@@ -1485,7 +1485,7 @@ pub fn to3d_ax2_vec2d(
         ))
     }
 }
-/// **Source:** `ElCLib.hxx`:660 - `ElCLib::To3d`
+/// **Source:** `ElCLib.hxx`:615 - `ElCLib::To3d`
 pub fn to3d_ax2_dir2d(
     Pos: &crate::gp::Ax2,
     V: &crate::gp::Dir2d,
@@ -1496,7 +1496,7 @@ pub fn to3d_ax2_dir2d(
         ))
     }
 }
-/// **Source:** `ElCLib.hxx`:662 - `ElCLib::To3d`
+/// **Source:** `ElCLib.hxx`:617 - `ElCLib::To3d`
 pub fn to3d_ax2_ax2d(Pos: &crate::gp::Ax2, A: &crate::gp::Ax2d) -> crate::OwnedPtr<crate::gp::Ax1> {
     unsafe {
         crate::OwnedPtr::from_raw(crate::check_result(
@@ -1504,7 +1504,7 @@ pub fn to3d_ax2_ax2d(Pos: &crate::gp::Ax2, A: &crate::gp::Ax2d) -> crate::OwnedP
         ))
     }
 }
-/// **Source:** `ElCLib.hxx`:664 - `ElCLib::To3d`
+/// **Source:** `ElCLib.hxx`:619 - `ElCLib::To3d`
 pub fn to3d_ax2_ax22d(
     Pos: &crate::gp::Ax2,
     A: &crate::gp::Ax22d,
@@ -1515,7 +1515,7 @@ pub fn to3d_ax2_ax22d(
         ))
     }
 }
-/// **Source:** `ElCLib.hxx`:666 - `ElCLib::To3d`
+/// **Source:** `ElCLib.hxx`:621 - `ElCLib::To3d`
 pub fn to3d_ax2_lin2d(
     Pos: &crate::gp::Ax2,
     L: &crate::gp::Lin2d,
@@ -1526,7 +1526,7 @@ pub fn to3d_ax2_lin2d(
         ))
     }
 }
-/// **Source:** `ElCLib.hxx`:668 - `ElCLib::To3d`
+/// **Source:** `ElCLib.hxx`:623 - `ElCLib::To3d`
 pub fn to3d_ax2_circ2d(
     Pos: &crate::gp::Ax2,
     C: &crate::gp::Circ2d,
@@ -1537,7 +1537,7 @@ pub fn to3d_ax2_circ2d(
         ))
     }
 }
-/// **Source:** `ElCLib.hxx`:670 - `ElCLib::To3d`
+/// **Source:** `ElCLib.hxx`:625 - `ElCLib::To3d`
 pub fn to3d_ax2_elips2d(
     Pos: &crate::gp::Ax2,
     E: &crate::gp::Elips2d,
@@ -1548,7 +1548,7 @@ pub fn to3d_ax2_elips2d(
         ))
     }
 }
-/// **Source:** `ElCLib.hxx`:672 - `ElCLib::To3d`
+/// **Source:** `ElCLib.hxx`:627 - `ElCLib::To3d`
 pub fn to3d_ax2_hypr2d(
     Pos: &crate::gp::Ax2,
     H: &crate::gp::Hypr2d,
@@ -1559,7 +1559,7 @@ pub fn to3d_ax2_hypr2d(
         ))
     }
 }
-/// **Source:** `ElCLib.hxx`:678 - `ElCLib::To3d`
+/// **Source:** `ElCLib.hxx`:633 - `ElCLib::To3d`
 /// These functions build a 3D geometric entity from a 2D geometric entity.
 /// The "X Axis" and the "Y Axis" of the global coordinate
 /// system (i.e. 2D space) are lined up respectively with the

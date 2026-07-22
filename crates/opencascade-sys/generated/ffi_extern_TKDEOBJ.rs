@@ -14,54 +14,54 @@ unsafe extern "C" {
     pub fn DEOBJ_ConfigurationNode_ctor() -> crate::OcctResult<*mut DEOBJ_ConfigurationNode>;
     /// **Source:** `DEOBJ_ConfigurationNode.hxx`:39 - `DEOBJ_ConfigurationNode::DEOBJ_ConfigurationNode()`
     pub fn DEOBJ_ConfigurationNode_ctor_handledeobjconfigurationnode(
-        theNode: *const HandleDEOBJConfigurationNode,
+        theNode: *const Handle_DEOBJ_ConfigurationNode,
     ) -> crate::OcctResult<*mut DEOBJ_ConfigurationNode>;
     /// **Source:** `DEOBJ_ConfigurationNode.hxx`:32 - `DEOBJ_ConfigurationNode::DynamicType()`
     pub fn DEOBJ_ConfigurationNode_dynamic_type(
         self_: *const DEOBJ_ConfigurationNode,
-    ) -> crate::OcctResult<*const HandleStandardType>;
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// **Source:** `DEOBJ_ConfigurationNode.hxx`:44 - `DEOBJ_ConfigurationNode::Load()`
     pub fn DEOBJ_ConfigurationNode_load(
         self_: *mut DEOBJ_ConfigurationNode,
-        theResource: *const HandleDEConfigurationContext,
+        theResource: *const Handle_DE_ConfigurationContext,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `DEOBJ_ConfigurationNode.hxx`:49 - `DEOBJ_ConfigurationNode::Save()`
+    /// **Source:** `DEOBJ_ConfigurationNode.hxx`:48 - `DEOBJ_ConfigurationNode::Save()`
     pub fn DEOBJ_ConfigurationNode_save(
         self_: *const DEOBJ_ConfigurationNode,
     ) -> crate::OcctResult<*mut TCollection_AsciiString>;
-    /// **Source:** `DEOBJ_ConfigurationNode.hxx`:53 - `DEOBJ_ConfigurationNode::Copy()`
+    /// **Source:** `DEOBJ_ConfigurationNode.hxx`:52 - `DEOBJ_ConfigurationNode::Copy()`
     pub fn DEOBJ_ConfigurationNode_copy(
         self_: *const DEOBJ_ConfigurationNode,
-    ) -> crate::OcctResult<*mut HandleDEConfigurationNode>;
-    /// **Source:** `DEOBJ_ConfigurationNode.hxx`:57 - `DEOBJ_ConfigurationNode::BuildProvider()`
+    ) -> crate::OcctResult<*mut Handle_DE_ConfigurationNode>;
+    /// **Source:** `DEOBJ_ConfigurationNode.hxx`:56 - `DEOBJ_ConfigurationNode::BuildProvider()`
     pub fn DEOBJ_ConfigurationNode_build_provider(
         self_: *mut DEOBJ_ConfigurationNode,
-    ) -> crate::OcctResult<*mut HandleDEProvider>;
-    /// **Source:** `DEOBJ_ConfigurationNode.hxx`:62 - `DEOBJ_ConfigurationNode::IsImportSupported()`
+    ) -> crate::OcctResult<*mut Handle_DE_Provider>;
+    /// **Source:** `DEOBJ_ConfigurationNode.hxx`:61 - `DEOBJ_ConfigurationNode::IsImportSupported()`
     pub fn DEOBJ_ConfigurationNode_is_import_supported(
         self_: *const DEOBJ_ConfigurationNode,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `DEOBJ_ConfigurationNode.hxx`:66 - `DEOBJ_ConfigurationNode::IsExportSupported()`
+    /// **Source:** `DEOBJ_ConfigurationNode.hxx`:65 - `DEOBJ_ConfigurationNode::IsExportSupported()`
     pub fn DEOBJ_ConfigurationNode_is_export_supported(
         self_: *const DEOBJ_ConfigurationNode,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `DEOBJ_ConfigurationNode.hxx`:70 - `DEOBJ_ConfigurationNode::GetFormat()`
+    /// **Source:** `DEOBJ_ConfigurationNode.hxx`:69 - `DEOBJ_ConfigurationNode::GetFormat()`
     pub fn DEOBJ_ConfigurationNode_get_format(
         self_: *const DEOBJ_ConfigurationNode,
     ) -> crate::OcctResult<*mut TCollection_AsciiString>;
-    /// **Source:** `DEOBJ_ConfigurationNode.hxx`:74 - `DEOBJ_ConfigurationNode::GetVendor()`
+    /// **Source:** `DEOBJ_ConfigurationNode.hxx`:73 - `DEOBJ_ConfigurationNode::GetVendor()`
     pub fn DEOBJ_ConfigurationNode_get_vendor(
         self_: *const DEOBJ_ConfigurationNode,
     ) -> crate::OcctResult<*mut TCollection_AsciiString>;
-    /// **Source:** `DEOBJ_ConfigurationNode.hxx`:78 - `DEOBJ_ConfigurationNode::GetExtensions()`
+    /// **Source:** `DEOBJ_ConfigurationNode.hxx`:77 - `DEOBJ_ConfigurationNode::GetExtensions()`
     pub fn DEOBJ_ConfigurationNode_get_extensions(
         self_: *const DEOBJ_ConfigurationNode,
-    ) -> crate::OcctResult<*mut TColStd_ListOfAsciiString>;
+    ) -> crate::OcctResult<*mut NCollection_List_TCollection_AsciiString>;
     /// **Source:** `DEOBJ_ConfigurationNode.hxx`:32 - `DEOBJ_ConfigurationNode::get_type_name()`
     pub fn DEOBJ_ConfigurationNode_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
     /// **Source:** `DEOBJ_ConfigurationNode.hxx`:32 - `DEOBJ_ConfigurationNode::get_type_descriptor()`
     pub fn DEOBJ_ConfigurationNode_get_type_descriptor(
-    ) -> crate::OcctResult<*const HandleStandardType>;
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast DEOBJ_ConfigurationNode to DE_ConfigurationNode
     pub fn DEOBJ_ConfigurationNode_as_DE_ConfigurationNode(
         self_: *const DEOBJ_ConfigurationNode,
@@ -81,89 +81,104 @@ unsafe extern "C" {
     /// Wrap DEOBJ_ConfigurationNode in a Handle
     pub fn DEOBJ_ConfigurationNode_to_handle(
         obj: *mut DEOBJ_ConfigurationNode,
-    ) -> crate::OcctResult<*mut HandleDEOBJConfigurationNode>;
+    ) -> crate::OcctResult<*mut Handle_DEOBJ_ConfigurationNode>;
     /// Destroy Handle<DEOBJ_ConfigurationNode>
-    pub fn HandleDEOBJConfigurationNode_destructor(self_: *mut HandleDEOBJConfigurationNode);
+    pub fn Handle_DEOBJ_ConfigurationNode_destructor(self_: *mut Handle_DEOBJ_ConfigurationNode);
     /// Clone Handle<DEOBJ_ConfigurationNode> (increments reference count)
-    pub fn HandleDEOBJConfigurationNode_clone(
-        self_: *const HandleDEOBJConfigurationNode,
-    ) -> crate::OcctResult<*mut HandleDEOBJConfigurationNode>;
+    pub fn Handle_DEOBJ_ConfigurationNode_clone(
+        self_: *const Handle_DEOBJ_ConfigurationNode,
+    ) -> crate::OcctResult<*mut Handle_DEOBJ_ConfigurationNode>;
     /// Check if Handle<DEOBJ_ConfigurationNode> is null
-    pub fn HandleDEOBJConfigurationNode_is_null(self_: *const HandleDEOBJConfigurationNode)
-        -> bool;
+    pub fn Handle_DEOBJ_ConfigurationNode_is_null(
+        self_: *const Handle_DEOBJ_ConfigurationNode,
+    ) -> bool;
     /// Dereference Handle to get *const DEOBJ_ConfigurationNode
-    pub fn HandleDEOBJConfigurationNode_get(
-        handle: *const HandleDEOBJConfigurationNode,
+    pub fn Handle_DEOBJ_ConfigurationNode_get(
+        handle: *const Handle_DEOBJ_ConfigurationNode,
     ) -> crate::OcctResult<*const DEOBJ_ConfigurationNode>;
     /// Dereference Handle to get *mut DEOBJ_ConfigurationNode
-    pub fn HandleDEOBJConfigurationNode_get_mut(
-        handle: *mut HandleDEOBJConfigurationNode,
+    pub fn Handle_DEOBJ_ConfigurationNode_get_mut(
+        handle: *mut Handle_DEOBJ_ConfigurationNode,
     ) -> crate::OcctResult<*mut DEOBJ_ConfigurationNode>;
     /// Upcast Handle<DEOBJ_ConfigurationNode> to Handle<DE_ConfigurationNode>
-    pub fn HandleDEOBJConfigurationNode_to_HandleDEConfigurationNode(
-        self_: *const HandleDEOBJConfigurationNode,
-    ) -> crate::OcctResult<*mut HandleDEConfigurationNode>;
+    pub fn Handle_DEOBJ_ConfigurationNode_to_Handle_DE_ConfigurationNode(
+        self_: *const Handle_DEOBJ_ConfigurationNode,
+    ) -> crate::OcctResult<*mut Handle_DE_ConfigurationNode>;
     /// Upcast Handle<DEOBJ_ConfigurationNode> to Handle<Standard_Transient>
-    pub fn HandleDEOBJConfigurationNode_to_HandleStandardTransient(
-        self_: *const HandleDEOBJConfigurationNode,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
-    /// Inherited: **Source:** `DE_ConfigurationNode.hxx`:91 - `DE_ConfigurationNode::UpdateLoad()`
+    pub fn Handle_DEOBJ_ConfigurationNode_to_Handle_Standard_Transient(
+        self_: *const Handle_DEOBJ_ConfigurationNode,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
+    /// Inherited: **Source:** `DE_ConfigurationNode.hxx`:94 - `DE_ConfigurationNode::UpdateLoad()`
     pub fn DEOBJ_ConfigurationNode_inherited_UpdateLoad(
         self_: *mut DEOBJ_ConfigurationNode,
         theToImport: bool,
         theToKeep: bool,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `DE_ConfigurationNode.hxx`:118 - `DE_ConfigurationNode::CheckExtension()`
+    /// Inherited: **Source:** `DE_ConfigurationNode.hxx`:107 - `DE_ConfigurationNode::IsStreamSupported()`
+    pub fn DEOBJ_ConfigurationNode_inherited_IsStreamSupported(
+        self_: *const DEOBJ_ConfigurationNode,
+    ) -> crate::OcctResult<bool>;
+    /// Inherited: **Source:** `DE_ConfigurationNode.hxx`:124 - `DE_ConfigurationNode::CheckExtension()`
     pub fn DEOBJ_ConfigurationNode_inherited_CheckExtension(
         self_: *const DEOBJ_ConfigurationNode,
         theExtension: *const TCollection_AsciiString,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `DE_ConfigurationNode.hxx`:123 - `DE_ConfigurationNode::CheckContent()`
+    /// Inherited: **Source:** `DE_ConfigurationNode.hxx`:129 - `DE_ConfigurationNode::CheckContent()`
     pub fn DEOBJ_ConfigurationNode_inherited_CheckContent(
         self_: *const DEOBJ_ConfigurationNode,
-        theBuffer: *const HandleNCollectionBuffer,
+        theBuffer: *const Handle_NCollection_Buffer,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `DE_ConfigurationNode.hxx`:128 - `DE_ConfigurationNode::IsEnabled()`
+    /// Inherited: **Source:** `DE_ConfigurationNode.hxx`:134 - `DE_ConfigurationNode::IsEnabled()`
     pub fn DEOBJ_ConfigurationNode_inherited_IsEnabled(
         self_: *const DEOBJ_ConfigurationNode,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `DE_ConfigurationNode.hxx`:132 - `DE_ConfigurationNode::SetEnabled()`
+    /// Inherited: **Source:** `DE_ConfigurationNode.hxx`:138 - `DE_ConfigurationNode::SetEnabled()`
     pub fn DEOBJ_ConfigurationNode_inherited_SetEnabled(
         self_: *mut DEOBJ_ConfigurationNode,
         theIsLoaded: bool,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `DE_ConfigurationNode.hxx`:141 - `DE_ConfigurationNode::CustomActivation()`
+    /// Inherited: **Source:** `DE_ConfigurationNode.hxx`:147 - `DE_ConfigurationNode::CustomActivation()`
     pub fn DEOBJ_ConfigurationNode_inherited_CustomActivation(
         self_: *mut DEOBJ_ConfigurationNode,
-        arg0: *const TColStd_ListOfAsciiString,
+        arg0: *const NCollection_List_TCollection_AsciiString,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    /// Inherited: **Source:** `DE_ConfigurationNode.hxx`:164 - `DE_ConfigurationNode::Register()`
+    pub fn DEOBJ_ConfigurationNode_inherited_Register(
+        self_: *const DEOBJ_ConfigurationNode,
+        theWrapper: *const Handle_DE_Wrapper,
+    ) -> *const std::ffi::c_char;
+    /// Inherited: **Source:** `DE_ConfigurationNode.hxx`:168 - `DE_ConfigurationNode::UnRegister()`
+    pub fn DEOBJ_ConfigurationNode_inherited_UnRegister(
+        self_: *const DEOBJ_ConfigurationNode,
+        theWrapper: *const Handle_DE_Wrapper,
+    ) -> *const std::ffi::c_char;
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn DEOBJ_ConfigurationNode_inherited_IsInstance(
         self_: *const DEOBJ_ConfigurationNode,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn DEOBJ_ConfigurationNode_inherited_IsKind(
         self_: *const DEOBJ_ConfigurationNode,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn DEOBJ_ConfigurationNode_inherited_This(
         self_: *const DEOBJ_ConfigurationNode,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn DEOBJ_ConfigurationNode_inherited_GetRefCount(
         self_: *const DEOBJ_ConfigurationNode,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn DEOBJ_ConfigurationNode_inherited_IncrementRefCounter(
         self_: *mut DEOBJ_ConfigurationNode,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn DEOBJ_ConfigurationNode_inherited_DecrementRefCounter(
         self_: *mut DEOBJ_ConfigurationNode,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn DEOBJ_ConfigurationNode_inherited_Delete(
         self_: *const DEOBJ_ConfigurationNode,
     ) -> *const std::ffi::c_char;
@@ -180,40 +195,40 @@ unsafe extern "C" {
     pub fn DEOBJ_Provider_ctor() -> crate::OcctResult<*mut DEOBJ_Provider>;
     /// **Source:** `DEOBJ_Provider.hxx`:40 - `DEOBJ_Provider::DEOBJ_Provider()`
     pub fn DEOBJ_Provider_ctor_handledeconfigurationnode(
-        theNode: *const HandleDEConfigurationNode,
+        theNode: *const Handle_DE_ConfigurationNode,
     ) -> crate::OcctResult<*mut DEOBJ_Provider>;
     /// **Source:** `DEOBJ_Provider.hxx`:31 - `DEOBJ_Provider::DynamicType()`
     pub fn DEOBJ_Provider_dynamic_type(
         self_: *const DEOBJ_Provider,
-    ) -> crate::OcctResult<*const HandleStandardType>;
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// **Source:** `DEOBJ_Provider.hxx`:49 - `DEOBJ_Provider::Read()`
     pub fn DEOBJ_Provider_read_asciistring_handletdocstddocument_handlexscontrolworksession_progressrange(
         self_: *mut DEOBJ_Provider,
         thePath: *const TCollection_AsciiString,
-        theDocument: *const HandleTDocStdDocument,
-        theWS: *mut HandleXSControlWorkSession,
+        theDocument: *const Handle_TDocStd_Document,
+        theWS: *mut Handle_XSControl_WorkSession,
         theProgress: *const Message_ProgressRange,
     ) -> crate::OcctResult<bool>;
     /// **Source:** `DEOBJ_Provider.hxx`:61 - `DEOBJ_Provider::Write()`
     pub fn DEOBJ_Provider_write_asciistring_handletdocstddocument_handlexscontrolworksession_progressrange(
         self_: *mut DEOBJ_Provider,
         thePath: *const TCollection_AsciiString,
-        theDocument: *const HandleTDocStdDocument,
-        theWS: *mut HandleXSControlWorkSession,
+        theDocument: *const Handle_TDocStd_Document,
+        theWS: *mut Handle_XSControl_WorkSession,
         theProgress: *const Message_ProgressRange,
     ) -> crate::OcctResult<bool>;
     /// **Source:** `DEOBJ_Provider.hxx`:72 - `DEOBJ_Provider::Read()`
     pub fn DEOBJ_Provider_read_asciistring_handletdocstddocument_progressrange(
         self_: *mut DEOBJ_Provider,
         thePath: *const TCollection_AsciiString,
-        theDocument: *const HandleTDocStdDocument,
+        theDocument: *const Handle_TDocStd_Document,
         theProgress: *const Message_ProgressRange,
     ) -> crate::OcctResult<bool>;
     /// **Source:** `DEOBJ_Provider.hxx`:82 - `DEOBJ_Provider::Write()`
     pub fn DEOBJ_Provider_write_asciistring_handletdocstddocument_progressrange(
         self_: *mut DEOBJ_Provider,
         thePath: *const TCollection_AsciiString,
-        theDocument: *const HandleTDocStdDocument,
+        theDocument: *const Handle_TDocStd_Document,
         theProgress: *const Message_ProgressRange,
     ) -> crate::OcctResult<bool>;
     /// **Source:** `DEOBJ_Provider.hxx`:93 - `DEOBJ_Provider::Read()`
@@ -221,7 +236,7 @@ unsafe extern "C" {
         self_: *mut DEOBJ_Provider,
         thePath: *const TCollection_AsciiString,
         theShape: *mut TopoDS_Shape,
-        theWS: *mut HandleXSControlWorkSession,
+        theWS: *mut Handle_XSControl_WorkSession,
         theProgress: *const Message_ProgressRange,
     ) -> crate::OcctResult<bool>;
     /// **Source:** `DEOBJ_Provider.hxx`:105 - `DEOBJ_Provider::Write()`
@@ -229,7 +244,7 @@ unsafe extern "C" {
         self_: *mut DEOBJ_Provider,
         thePath: *const TCollection_AsciiString,
         theShape: *const TopoDS_Shape,
-        theWS: *mut HandleXSControlWorkSession,
+        theWS: *mut Handle_XSControl_WorkSession,
         theProgress: *const Message_ProgressRange,
     ) -> crate::OcctResult<bool>;
     /// **Source:** `DEOBJ_Provider.hxx`:116 - `DEOBJ_Provider::Read()`
@@ -257,7 +272,7 @@ unsafe extern "C" {
     /// **Source:** `DEOBJ_Provider.hxx`:31 - `DEOBJ_Provider::get_type_name()`
     pub fn DEOBJ_Provider_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
     /// **Source:** `DEOBJ_Provider.hxx`:31 - `DEOBJ_Provider::get_type_descriptor()`
-    pub fn DEOBJ_Provider_get_type_descriptor() -> crate::OcctResult<*const HandleStandardType>;
+    pub fn DEOBJ_Provider_get_type_descriptor() -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast DEOBJ_Provider to DE_Provider
     pub fn DEOBJ_Provider_as_DE_Provider(
         self_: *const DEOBJ_Provider,
@@ -277,67 +292,67 @@ unsafe extern "C" {
     /// Wrap DEOBJ_Provider in a Handle
     pub fn DEOBJ_Provider_to_handle(
         obj: *mut DEOBJ_Provider,
-    ) -> crate::OcctResult<*mut HandleDEOBJProvider>;
+    ) -> crate::OcctResult<*mut Handle_DEOBJ_Provider>;
     /// Destroy Handle<DEOBJ_Provider>
-    pub fn HandleDEOBJProvider_destructor(self_: *mut HandleDEOBJProvider);
+    pub fn Handle_DEOBJ_Provider_destructor(self_: *mut Handle_DEOBJ_Provider);
     /// Clone Handle<DEOBJ_Provider> (increments reference count)
-    pub fn HandleDEOBJProvider_clone(
-        self_: *const HandleDEOBJProvider,
-    ) -> crate::OcctResult<*mut HandleDEOBJProvider>;
+    pub fn Handle_DEOBJ_Provider_clone(
+        self_: *const Handle_DEOBJ_Provider,
+    ) -> crate::OcctResult<*mut Handle_DEOBJ_Provider>;
     /// Check if Handle<DEOBJ_Provider> is null
-    pub fn HandleDEOBJProvider_is_null(self_: *const HandleDEOBJProvider) -> bool;
+    pub fn Handle_DEOBJ_Provider_is_null(self_: *const Handle_DEOBJ_Provider) -> bool;
     /// Dereference Handle to get *const DEOBJ_Provider
-    pub fn HandleDEOBJProvider_get(
-        handle: *const HandleDEOBJProvider,
+    pub fn Handle_DEOBJ_Provider_get(
+        handle: *const Handle_DEOBJ_Provider,
     ) -> crate::OcctResult<*const DEOBJ_Provider>;
     /// Dereference Handle to get *mut DEOBJ_Provider
-    pub fn HandleDEOBJProvider_get_mut(
-        handle: *mut HandleDEOBJProvider,
+    pub fn Handle_DEOBJ_Provider_get_mut(
+        handle: *mut Handle_DEOBJ_Provider,
     ) -> crate::OcctResult<*mut DEOBJ_Provider>;
     /// Upcast Handle<DEOBJ_Provider> to Handle<DE_Provider>
-    pub fn HandleDEOBJProvider_to_HandleDEProvider(
-        self_: *const HandleDEOBJProvider,
-    ) -> crate::OcctResult<*mut HandleDEProvider>;
+    pub fn Handle_DEOBJ_Provider_to_Handle_DE_Provider(
+        self_: *const Handle_DEOBJ_Provider,
+    ) -> crate::OcctResult<*mut Handle_DE_Provider>;
     /// Upcast Handle<DEOBJ_Provider> to Handle<Standard_Transient>
-    pub fn HandleDEOBJProvider_to_HandleStandardTransient(
-        self_: *const HandleDEOBJProvider,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
-    /// Inherited: **Source:** `DE_Provider.hxx`:155 - `DE_Provider::GetNode()`
+    pub fn Handle_DEOBJ_Provider_to_Handle_Standard_Transient(
+        self_: *const Handle_DEOBJ_Provider,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
+    /// Inherited: **Source:** `DE_Provider.hxx`:285 - `DE_Provider::GetNode()`
     pub fn DEOBJ_Provider_inherited_GetNode(
         self_: *const DEOBJ_Provider,
-    ) -> crate::OcctResult<*mut HandleDEConfigurationNode>;
-    /// Inherited: **Source:** `DE_Provider.hxx`:159 - `DE_Provider::SetNode()`
+    ) -> crate::OcctResult<*mut Handle_DE_ConfigurationNode>;
+    /// Inherited: **Source:** `DE_Provider.hxx`:289 - `DE_Provider::SetNode()`
     pub fn DEOBJ_Provider_inherited_SetNode(
         self_: *mut DEOBJ_Provider,
-        theNode: *const HandleDEConfigurationNode,
+        theNode: *const Handle_DE_ConfigurationNode,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn DEOBJ_Provider_inherited_IsInstance(
         self_: *const DEOBJ_Provider,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn DEOBJ_Provider_inherited_IsKind(
         self_: *const DEOBJ_Provider,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn DEOBJ_Provider_inherited_This(
         self_: *const DEOBJ_Provider,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn DEOBJ_Provider_inherited_GetRefCount(
         self_: *const DEOBJ_Provider,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn DEOBJ_Provider_inherited_IncrementRefCounter(
         self_: *mut DEOBJ_Provider,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn DEOBJ_Provider_inherited_DecrementRefCounter(
         self_: *mut DEOBJ_Provider,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn DEOBJ_Provider_inherited_Delete(self_: *const DEOBJ_Provider)
         -> *const std::ffi::c_char;
     // ======================== RWObj_CafReader ========================
@@ -347,7 +362,7 @@ unsafe extern "C" {
     /// **Source:** `RWObj_CafReader.hxx`:23 - `RWObj_CafReader::DynamicType()`
     pub fn RWObj_CafReader_dynamic_type(
         self_: *const RWObj_CafReader,
-    ) -> crate::OcctResult<*const HandleStandardType>;
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// **Source:** `RWObj_CafReader.hxx`:29 - `RWObj_CafReader::IsSinglePrecision()`
     pub fn RWObj_CafReader_is_single_precision(
         self_: *const RWObj_CafReader,
@@ -360,7 +375,7 @@ unsafe extern "C" {
     /// **Source:** `RWObj_CafReader.hxx`:23 - `RWObj_CafReader::get_type_name()`
     pub fn RWObj_CafReader_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
     /// **Source:** `RWObj_CafReader.hxx`:23 - `RWObj_CafReader::get_type_descriptor()`
-    pub fn RWObj_CafReader_get_type_descriptor() -> crate::OcctResult<*const HandleStandardType>;
+    pub fn RWObj_CafReader_get_type_descriptor() -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast RWObj_CafReader to RWMesh_CafReader
     pub fn RWObj_CafReader_as_RWMesh_CafReader(
         self_: *const RWObj_CafReader,
@@ -380,230 +395,232 @@ unsafe extern "C" {
     /// Wrap RWObj_CafReader in a Handle
     pub fn RWObj_CafReader_to_handle(
         obj: *mut RWObj_CafReader,
-    ) -> crate::OcctResult<*mut HandleRWObjCafReader>;
+    ) -> crate::OcctResult<*mut Handle_RWObj_CafReader>;
     /// Destroy Handle<RWObj_CafReader>
-    pub fn HandleRWObjCafReader_destructor(self_: *mut HandleRWObjCafReader);
+    pub fn Handle_RWObj_CafReader_destructor(self_: *mut Handle_RWObj_CafReader);
     /// Clone Handle<RWObj_CafReader> (increments reference count)
-    pub fn HandleRWObjCafReader_clone(
-        self_: *const HandleRWObjCafReader,
-    ) -> crate::OcctResult<*mut HandleRWObjCafReader>;
+    pub fn Handle_RWObj_CafReader_clone(
+        self_: *const Handle_RWObj_CafReader,
+    ) -> crate::OcctResult<*mut Handle_RWObj_CafReader>;
     /// Check if Handle<RWObj_CafReader> is null
-    pub fn HandleRWObjCafReader_is_null(self_: *const HandleRWObjCafReader) -> bool;
+    pub fn Handle_RWObj_CafReader_is_null(self_: *const Handle_RWObj_CafReader) -> bool;
     /// Dereference Handle to get *const RWObj_CafReader
-    pub fn HandleRWObjCafReader_get(
-        handle: *const HandleRWObjCafReader,
+    pub fn Handle_RWObj_CafReader_get(
+        handle: *const Handle_RWObj_CafReader,
     ) -> crate::OcctResult<*const RWObj_CafReader>;
     /// Dereference Handle to get *mut RWObj_CafReader
-    pub fn HandleRWObjCafReader_get_mut(
-        handle: *mut HandleRWObjCafReader,
+    pub fn Handle_RWObj_CafReader_get_mut(
+        handle: *mut Handle_RWObj_CafReader,
     ) -> crate::OcctResult<*mut RWObj_CafReader>;
     /// Upcast Handle<RWObj_CafReader> to Handle<RWMesh_CafReader>
-    pub fn HandleRWObjCafReader_to_HandleRWMeshCafReader(
-        self_: *const HandleRWObjCafReader,
-    ) -> crate::OcctResult<*mut HandleRWMeshCafReader>;
+    pub fn Handle_RWObj_CafReader_to_Handle_RWMesh_CafReader(
+        self_: *const Handle_RWObj_CafReader,
+    ) -> crate::OcctResult<*mut Handle_RWMesh_CafReader>;
     /// Upcast Handle<RWObj_CafReader> to Handle<Standard_Transient>
-    pub fn HandleRWObjCafReader_to_HandleStandardTransient(
-        self_: *const HandleRWObjCafReader,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
-    /// Inherited: **Source:** `RWMesh_CafReader.hxx`:72 - `RWMesh_CafReader::Document()`
+    pub fn Handle_RWObj_CafReader_to_Handle_Standard_Transient(
+        self_: *const Handle_RWObj_CafReader,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
+    /// Inherited: **Source:** `RWMesh_CafReader.hxx`:74 - `RWMesh_CafReader::Document()`
     pub fn RWObj_CafReader_inherited_Document(
         self_: *const RWObj_CafReader,
-    ) -> crate::OcctResult<*const HandleTDocStdDocument>;
-    /// Inherited: **Source:** `RWMesh_CafReader.hxx`:76 - `RWMesh_CafReader::SetDocument()`
+    ) -> crate::OcctResult<*const Handle_TDocStd_Document>;
+    /// Inherited: **Source:** `RWMesh_CafReader.hxx`:78 - `RWMesh_CafReader::SetDocument()`
     pub fn RWObj_CafReader_inherited_SetDocument(
         self_: *mut RWObj_CafReader,
-        theDoc: *const HandleTDocStdDocument,
+        theDoc: *const Handle_TDocStd_Document,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `RWMesh_CafReader.hxx`:79 - `RWMesh_CafReader::RootPrefix()`
+    /// Inherited: **Source:** `RWMesh_CafReader.hxx`:81 - `RWMesh_CafReader::RootPrefix()`
     pub fn RWObj_CafReader_inherited_RootPrefix(
         self_: *const RWObj_CafReader,
     ) -> crate::OcctResult<*const TCollection_AsciiString>;
-    /// Inherited: **Source:** `RWMesh_CafReader.hxx`:82 - `RWMesh_CafReader::SetRootPrefix()`
+    /// Inherited: **Source:** `RWMesh_CafReader.hxx`:84 - `RWMesh_CafReader::SetRootPrefix()`
     pub fn RWObj_CafReader_inherited_SetRootPrefix(
         self_: *mut RWObj_CafReader,
         theRootPrefix: *const TCollection_AsciiString,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `RWMesh_CafReader.hxx`:95 - `RWMesh_CafReader::ToFillIncompleteDocument()`
+    /// Inherited: **Source:** `RWMesh_CafReader.hxx`:97 - `RWMesh_CafReader::ToFillIncompleteDocument()`
     pub fn RWObj_CafReader_inherited_ToFillIncompleteDocument(
         self_: *const RWObj_CafReader,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `RWMesh_CafReader.hxx`:98 - `RWMesh_CafReader::SetFillIncompleteDocument()`
+    /// Inherited: **Source:** `RWMesh_CafReader.hxx`:100 - `RWMesh_CafReader::SetFillIncompleteDocument()`
     pub fn RWObj_CafReader_inherited_SetFillIncompleteDocument(
         self_: *mut RWObj_CafReader,
         theToFillIncomplete: bool,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `RWMesh_CafReader.hxx`:104 - `RWMesh_CafReader::MemoryLimitMiB()`
+    /// Inherited: **Source:** `RWMesh_CafReader.hxx`:106 - `RWMesh_CafReader::MemoryLimitMiB()`
     pub fn RWObj_CafReader_inherited_MemoryLimitMiB(
         self_: *const RWObj_CafReader,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `RWMesh_CafReader.hxx`:107 - `RWMesh_CafReader::SetMemoryLimitMiB()`
+    /// Inherited: **Source:** `RWMesh_CafReader.hxx`:109 - `RWMesh_CafReader::SetMemoryLimitMiB()`
     pub fn RWObj_CafReader_inherited_SetMemoryLimitMiB(
         self_: *mut RWObj_CafReader,
         theLimitMiB: i32,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `RWMesh_CafReader.hxx`:111 - `RWMesh_CafReader::CoordinateSystemConverter()`
+    /// Inherited: **Source:** `RWMesh_CafReader.hxx`:113 - `RWMesh_CafReader::CoordinateSystemConverter()`
     pub fn RWObj_CafReader_inherited_CoordinateSystemConverter(
         self_: *const RWObj_CafReader,
     ) -> crate::OcctResult<*const RWMesh_CoordinateSystemConverter>;
-    /// Inherited: **Source:** `RWMesh_CafReader.hxx`:117 - `RWMesh_CafReader::SetCoordinateSystemConverter()`
+    /// Inherited: **Source:** `RWMesh_CafReader.hxx`:119 - `RWMesh_CafReader::SetCoordinateSystemConverter()`
     pub fn RWObj_CafReader_inherited_SetCoordinateSystemConverter(
         self_: *mut RWObj_CafReader,
         theConverter: *const RWMesh_CoordinateSystemConverter,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `RWMesh_CafReader.hxx`:124 - `RWMesh_CafReader::SystemLengthUnit()`
+    /// Inherited: **Source:** `RWMesh_CafReader.hxx`:126 - `RWMesh_CafReader::SystemLengthUnit()`
     pub fn RWObj_CafReader_inherited_SystemLengthUnit(
         self_: *const RWObj_CafReader,
     ) -> crate::OcctResult<f64>;
-    /// Inherited: **Source:** `RWMesh_CafReader.hxx`:128 - `RWMesh_CafReader::SetSystemLengthUnit()`
+    /// Inherited: **Source:** `RWMesh_CafReader.hxx`:130 - `RWMesh_CafReader::SetSystemLengthUnit()`
     pub fn RWObj_CafReader_inherited_SetSystemLengthUnit(
         self_: *mut RWObj_CafReader,
         theUnits: f64,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `RWMesh_CafReader.hxx`:134 - `RWMesh_CafReader::HasSystemCoordinateSystem()`
+    /// Inherited: **Source:** `RWMesh_CafReader.hxx`:133 - `RWMesh_CafReader::HasSystemCoordinateSystem()`
     pub fn RWObj_CafReader_inherited_HasSystemCoordinateSystem(
         self_: *const RWObj_CafReader,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `RWMesh_CafReader.hxx`:141 - `RWMesh_CafReader::SystemCoordinateSystem()`
+    /// Inherited: **Source:** `RWMesh_CafReader.hxx`:137 - `RWMesh_CafReader::SystemCoordinateSystem()`
     pub fn RWObj_CafReader_inherited_SystemCoordinateSystem(
         self_: *const RWObj_CafReader,
     ) -> crate::OcctResult<*const gp_Ax3>;
-    /// Inherited: **Source:** `RWMesh_CafReader.hxx`:147 - `RWMesh_CafReader::SetSystemCoordinateSystem()`
+    /// Inherited: **Source:** `RWMesh_CafReader.hxx`:143 - `RWMesh_CafReader::SetSystemCoordinateSystem()`
     pub fn RWObj_CafReader_inherited_SetSystemCoordinateSystem(
         self_: *mut RWObj_CafReader,
         theCS: *const gp_Ax3,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `RWMesh_CafReader.hxx`:160 - `RWMesh_CafReader::FileLengthUnit()`
+    /// Inherited: **Source:** `RWMesh_CafReader.hxx`:156 - `RWMesh_CafReader::FileLengthUnit()`
     pub fn RWObj_CafReader_inherited_FileLengthUnit(
         self_: *const RWObj_CafReader,
     ) -> crate::OcctResult<f64>;
-    /// Inherited: **Source:** `RWMesh_CafReader.hxx`:164 - `RWMesh_CafReader::SetFileLengthUnit()`
+    /// Inherited: **Source:** `RWMesh_CafReader.hxx`:160 - `RWMesh_CafReader::SetFileLengthUnit()`
     pub fn RWObj_CafReader_inherited_SetFileLengthUnit(
         self_: *mut RWObj_CafReader,
         theUnits: f64,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `RWMesh_CafReader.hxx`:170 - `RWMesh_CafReader::HasFileCoordinateSystem()`
+    /// Inherited: **Source:** `RWMesh_CafReader.hxx`:163 - `RWMesh_CafReader::HasFileCoordinateSystem()`
     pub fn RWObj_CafReader_inherited_HasFileCoordinateSystem(
         self_: *const RWObj_CafReader,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `RWMesh_CafReader.hxx`:177 - `RWMesh_CafReader::FileCoordinateSystem()`
+    /// Inherited: **Source:** `RWMesh_CafReader.hxx`:167 - `RWMesh_CafReader::FileCoordinateSystem()`
     pub fn RWObj_CafReader_inherited_FileCoordinateSystem(
         self_: *const RWObj_CafReader,
     ) -> crate::OcctResult<*const gp_Ax3>;
-    /// Inherited: **Source:** `RWMesh_CafReader.hxx`:180 - `RWMesh_CafReader::SetFileCoordinateSystem()`
+    /// Inherited: **Source:** `RWMesh_CafReader.hxx`:170 - `RWMesh_CafReader::SetFileCoordinateSystem()`
     pub fn RWObj_CafReader_inherited_SetFileCoordinateSystem(
         self_: *mut RWObj_CafReader,
         theCS: *const gp_Ax3,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `RWMesh_CafReader.hxx`:194 - `RWMesh_CafReader::Perform()`
+    /// Inherited: **Source:** `RWMesh_CafReader.hxx`:184 - `RWMesh_CafReader::Perform()`
     pub fn RWObj_CafReader_inherited_Perform(
         self_: *mut RWObj_CafReader,
         theFile: *const TCollection_AsciiString,
         theProgress: *const Message_ProgressRange,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `RWMesh_CafReader.hxx`:211 - `RWMesh_CafReader::ExtraStatus()`
+    /// Inherited: **Source:** `RWMesh_CafReader.hxx`:201 - `RWMesh_CafReader::ExtraStatus()`
     pub fn RWObj_CafReader_inherited_ExtraStatus(
         self_: *const RWObj_CafReader,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `RWMesh_CafReader.hxx`:215 - `RWMesh_CafReader::SingleShape()`
+    /// Inherited: **Source:** `RWMesh_CafReader.hxx`:205 - `RWMesh_CafReader::SingleShape()`
     pub fn RWObj_CafReader_inherited_SingleShape(
         self_: *const RWObj_CafReader,
     ) -> crate::OcctResult<*mut TopoDS_Shape>;
-    /// Inherited: **Source:** `RWMesh_CafReader.hxx`:218 - `RWMesh_CafReader::ExternalFiles()`
+    /// Inherited: **Source:** `RWMesh_CafReader.hxx`:208 - `RWMesh_CafReader::ExternalFiles()`
     pub fn RWObj_CafReader_inherited_ExternalFiles(
         self_: *const RWObj_CafReader,
-    ) -> crate::OcctResult<*const Interface_IndexedMapOfAsciiString>;
-    /// Inherited: **Source:** `RWMesh_CafReader.hxx`:224 - `RWMesh_CafReader::Metadata()`
+    ) -> crate::OcctResult<*const NCollection_IndexedMap_TCollection_AsciiString>;
+    /// Inherited: **Source:** `RWMesh_CafReader.hxx`:214 - `RWMesh_CafReader::Metadata()`
     pub fn RWObj_CafReader_inherited_Metadata(
         self_: *const RWObj_CafReader,
-    ) -> crate::OcctResult<*const TColStd_IndexedDataMapOfStringString>;
-    /// Inherited: **Source:** `RWMesh_CafReader.hxx`:227 - `RWMesh_CafReader::ProbeHeader()`
+    ) -> crate::OcctResult<
+        *const NCollection_IndexedDataMap_TCollection_AsciiString_TCollection_AsciiString,
+    >;
+    /// Inherited: **Source:** `RWMesh_CafReader.hxx`:221 - `RWMesh_CafReader::ProbeHeader()`
     pub fn RWObj_CafReader_inherited_ProbeHeader(
         self_: *mut RWObj_CafReader,
         theFile: *const TCollection_AsciiString,
         theProgress: *const Message_ProgressRange,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn RWObj_CafReader_inherited_IsInstance(
         self_: *const RWObj_CafReader,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn RWObj_CafReader_inherited_IsKind(
         self_: *const RWObj_CafReader,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn RWObj_CafReader_inherited_This(
         self_: *const RWObj_CafReader,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn RWObj_CafReader_inherited_GetRefCount(
         self_: *const RWObj_CafReader,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn RWObj_CafReader_inherited_IncrementRefCounter(
         self_: *mut RWObj_CafReader,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn RWObj_CafReader_inherited_DecrementRefCounter(
         self_: *mut RWObj_CafReader,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn RWObj_CafReader_inherited_Delete(
         self_: *const RWObj_CafReader,
     ) -> *const std::ffi::c_char;
     // ======================== RWObj_CafWriter ========================
     pub fn RWObj_CafWriter_destructor(self_: *mut RWObj_CafWriter);
-    /// **Source:** `RWObj_CafWriter.hxx`:41 - `RWObj_CafWriter::RWObj_CafWriter()`
+    /// **Source:** `RWObj_CafWriter.hxx`:43 - `RWObj_CafWriter::RWObj_CafWriter()`
     pub fn RWObj_CafWriter_ctor_asciistring(
         theFile: *const TCollection_AsciiString,
     ) -> crate::OcctResult<*mut RWObj_CafWriter>;
-    /// **Source:** `RWObj_CafWriter.hxx`:37 - `RWObj_CafWriter::DynamicType()`
+    /// **Source:** `RWObj_CafWriter.hxx`:39 - `RWObj_CafWriter::DynamicType()`
     pub fn RWObj_CafWriter_dynamic_type(
         self_: *const RWObj_CafWriter,
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// **Source:** `RWObj_CafWriter.hxx`:47 - `RWObj_CafWriter::CoordinateSystemConverter()`
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
+    /// **Source:** `RWObj_CafWriter.hxx`:49 - `RWObj_CafWriter::CoordinateSystemConverter()`
     pub fn RWObj_CafWriter_coordinate_system_converter(
         self_: *const RWObj_CafWriter,
     ) -> crate::OcctResult<*const RWMesh_CoordinateSystemConverter>;
-    /// **Source:** `RWObj_CafWriter.hxx`:50 - `RWObj_CafWriter::ChangeCoordinateSystemConverter()`
+    /// **Source:** `RWObj_CafWriter.hxx`:52 - `RWObj_CafWriter::ChangeCoordinateSystemConverter()`
     pub fn RWObj_CafWriter_change_coordinate_system_converter(
         self_: *mut RWObj_CafWriter,
     ) -> crate::OcctResult<*mut RWMesh_CoordinateSystemConverter>;
-    /// **Source:** `RWObj_CafWriter.hxx`:53 - `RWObj_CafWriter::SetCoordinateSystemConverter()`
+    /// **Source:** `RWObj_CafWriter.hxx`:55 - `RWObj_CafWriter::SetCoordinateSystemConverter()`
     pub fn RWObj_CafWriter_set_coordinate_system_converter(
         self_: *mut RWObj_CafWriter,
         theConverter: *const RWMesh_CoordinateSystemConverter,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `RWObj_CafWriter.hxx`:59 - `RWObj_CafWriter::DefaultStyle()`
+    /// **Source:** `RWObj_CafWriter.hxx`:61 - `RWObj_CafWriter::DefaultStyle()`
     pub fn RWObj_CafWriter_default_style(
         self_: *const RWObj_CafWriter,
     ) -> crate::OcctResult<*const XCAFPrs_Style>;
-    /// **Source:** `RWObj_CafWriter.hxx`:62 - `RWObj_CafWriter::SetDefaultStyle()`
+    /// **Source:** `RWObj_CafWriter.hxx`:64 - `RWObj_CafWriter::SetDefaultStyle()`
     pub fn RWObj_CafWriter_set_default_style(
         self_: *mut RWObj_CafWriter,
         theStyle: *const XCAFPrs_Style,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `RWObj_CafWriter.hxx`:76 - `RWObj_CafWriter::Perform()`
-    pub fn RWObj_CafWriter_perform_handletdocstddocument_labelsequence_mapofasciistringptr_indexeddatamapofstringstring_progressrange(
+    /// **Source:** `RWObj_CafWriter.hxx`:78 - `RWObj_CafWriter::Perform()`
+    pub fn RWObj_CafWriter_perform_handletdocstddocument_seq_label_map_asciistringptr_idmap_asciistring_asciistring_progressrange(
         self_: *mut RWObj_CafWriter,
-        theDocument: *const HandleTDocStdDocument,
-        theRootLabels: *const TDF_LabelSequence,
-        theLabelFilter: *const TColStd_MapOfAsciiString,
-        theFileInfo: *const TColStd_IndexedDataMapOfStringString,
+        theDocument: *const Handle_TDocStd_Document,
+        theRootLabels: *const NCollection_Sequence_TDF_Label,
+        theLabelFilter: *const NCollection_Map_TCollection_AsciiString,
+        theFileInfo: *const NCollection_IndexedDataMap_TCollection_AsciiString_TCollection_AsciiString,
         theProgress: *const Message_ProgressRange,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `RWObj_CafWriter.hxx`:88 - `RWObj_CafWriter::Perform()`
-    pub fn RWObj_CafWriter_perform_handletdocstddocument_indexeddatamapofstringstring_progressrange(
+    /// **Source:** `RWObj_CafWriter.hxx`:91 - `RWObj_CafWriter::Perform()`
+    pub fn RWObj_CafWriter_perform_handletdocstddocument_idmap_asciistring_asciistring_progressrange(
         self_: *mut RWObj_CafWriter,
-        theDocument: *const HandleTDocStdDocument,
-        theFileInfo: *const TColStd_IndexedDataMapOfStringString,
+        theDocument: *const Handle_TDocStd_Document,
+        theFileInfo: *const NCollection_IndexedDataMap_TCollection_AsciiString_TCollection_AsciiString,
         theProgress: *const Message_ProgressRange,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `RWObj_CafWriter.hxx`:37 - `RWObj_CafWriter::get_type_name()`
+    /// **Source:** `RWObj_CafWriter.hxx`:39 - `RWObj_CafWriter::get_type_name()`
     pub fn RWObj_CafWriter_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
-    /// **Source:** `RWObj_CafWriter.hxx`:37 - `RWObj_CafWriter::get_type_descriptor()`
-    pub fn RWObj_CafWriter_get_type_descriptor() -> crate::OcctResult<*const HandleStandardType>;
+    /// **Source:** `RWObj_CafWriter.hxx`:39 - `RWObj_CafWriter::get_type_descriptor()`
+    pub fn RWObj_CafWriter_get_type_descriptor() -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast RWObj_CafWriter to Standard_Transient
     pub fn RWObj_CafWriter_as_Standard_Transient(
         self_: *const RWObj_CafWriter,
@@ -615,54 +632,54 @@ unsafe extern "C" {
     /// Wrap RWObj_CafWriter in a Handle
     pub fn RWObj_CafWriter_to_handle(
         obj: *mut RWObj_CafWriter,
-    ) -> crate::OcctResult<*mut HandleRWObjCafWriter>;
+    ) -> crate::OcctResult<*mut Handle_RWObj_CafWriter>;
     /// Destroy Handle<RWObj_CafWriter>
-    pub fn HandleRWObjCafWriter_destructor(self_: *mut HandleRWObjCafWriter);
+    pub fn Handle_RWObj_CafWriter_destructor(self_: *mut Handle_RWObj_CafWriter);
     /// Clone Handle<RWObj_CafWriter> (increments reference count)
-    pub fn HandleRWObjCafWriter_clone(
-        self_: *const HandleRWObjCafWriter,
-    ) -> crate::OcctResult<*mut HandleRWObjCafWriter>;
+    pub fn Handle_RWObj_CafWriter_clone(
+        self_: *const Handle_RWObj_CafWriter,
+    ) -> crate::OcctResult<*mut Handle_RWObj_CafWriter>;
     /// Check if Handle<RWObj_CafWriter> is null
-    pub fn HandleRWObjCafWriter_is_null(self_: *const HandleRWObjCafWriter) -> bool;
+    pub fn Handle_RWObj_CafWriter_is_null(self_: *const Handle_RWObj_CafWriter) -> bool;
     /// Dereference Handle to get *const RWObj_CafWriter
-    pub fn HandleRWObjCafWriter_get(
-        handle: *const HandleRWObjCafWriter,
+    pub fn Handle_RWObj_CafWriter_get(
+        handle: *const Handle_RWObj_CafWriter,
     ) -> crate::OcctResult<*const RWObj_CafWriter>;
     /// Dereference Handle to get *mut RWObj_CafWriter
-    pub fn HandleRWObjCafWriter_get_mut(
-        handle: *mut HandleRWObjCafWriter,
+    pub fn Handle_RWObj_CafWriter_get_mut(
+        handle: *mut Handle_RWObj_CafWriter,
     ) -> crate::OcctResult<*mut RWObj_CafWriter>;
     /// Upcast Handle<RWObj_CafWriter> to Handle<Standard_Transient>
-    pub fn HandleRWObjCafWriter_to_HandleStandardTransient(
-        self_: *const HandleRWObjCafWriter,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn Handle_RWObj_CafWriter_to_Handle_Standard_Transient(
+        self_: *const Handle_RWObj_CafWriter,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn RWObj_CafWriter_inherited_IsInstance(
         self_: *const RWObj_CafWriter,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn RWObj_CafWriter_inherited_IsKind(
         self_: *const RWObj_CafWriter,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn RWObj_CafWriter_inherited_This(
         self_: *const RWObj_CafWriter,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn RWObj_CafWriter_inherited_GetRefCount(
         self_: *const RWObj_CafWriter,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn RWObj_CafWriter_inherited_IncrementRefCounter(
         self_: *mut RWObj_CafWriter,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn RWObj_CafWriter_inherited_DecrementRefCounter(
         self_: *mut RWObj_CafWriter,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn RWObj_CafWriter_inherited_Delete(
         self_: *const RWObj_CafWriter,
     ) -> *const std::ffi::c_char;
@@ -672,11 +689,11 @@ unsafe extern "C" {
     pub fn RWObj_Material_ctor() -> crate::OcctResult<*mut RWObj_Material>;
     // ======================== RWObj_MtlReader ========================
     pub fn RWObj_MtlReader_destructor(self_: *mut RWObj_MtlReader);
-    /// **Source:** `RWObj_MtlReader.hxx`:27 - `RWObj_MtlReader::RWObj_MtlReader()`
-    pub fn RWObj_MtlReader_ctor_datamap_tcollection_asciistring_rwobj_material(
+    /// **Source:** `RWObj_MtlReader.hxx`:28 - `RWObj_MtlReader::RWObj_MtlReader()`
+    pub fn RWObj_MtlReader_ctor_dmap_asciistring_material(
         theMaterials: *mut NCollection_DataMap_TCollection_AsciiString_RWObj_Material,
     ) -> crate::OcctResult<*mut RWObj_MtlReader>;
-    /// **Source:** `RWObj_MtlReader.hxx`:33 - `RWObj_MtlReader::Read()`
+    /// **Source:** `RWObj_MtlReader.hxx`:34 - `RWObj_MtlReader::Read()`
     pub fn RWObj_MtlReader_read(
         self_: *mut RWObj_MtlReader,
         theFolder: *const TCollection_AsciiString,
@@ -691,13 +708,13 @@ unsafe extern "C" {
     /// **Source:** `RWObj_ObjMaterialMap.hxx`:23 - `RWObj_ObjMaterialMap::DynamicType()`
     pub fn RWObj_ObjMaterialMap_dynamic_type(
         self_: *const RWObj_ObjMaterialMap,
-    ) -> crate::OcctResult<*const HandleStandardType>;
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// **Source:** `RWObj_ObjMaterialMap.hxx`:32 - `RWObj_ObjMaterialMap::AddMaterial()`
     pub fn RWObj_ObjMaterialMap_add_material(
         self_: *mut RWObj_ObjMaterialMap,
         theStyle: *const XCAFPrs_Style,
     ) -> crate::OcctResult<*mut TCollection_AsciiString>;
-    /// **Source:** `RWObj_ObjMaterialMap.hxx`:36 - `RWObj_ObjMaterialMap::DefineMaterial()`
+    /// **Source:** `RWObj_ObjMaterialMap.hxx`:35 - `RWObj_ObjMaterialMap::DefineMaterial()`
     pub fn RWObj_ObjMaterialMap_define_material(
         self_: *mut RWObj_ObjMaterialMap,
         theStyle: *const XCAFPrs_Style,
@@ -707,7 +724,8 @@ unsafe extern "C" {
     /// **Source:** `RWObj_ObjMaterialMap.hxx`:23 - `RWObj_ObjMaterialMap::get_type_name()`
     pub fn RWObj_ObjMaterialMap_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
     /// **Source:** `RWObj_ObjMaterialMap.hxx`:23 - `RWObj_ObjMaterialMap::get_type_descriptor()`
-    pub fn RWObj_ObjMaterialMap_get_type_descriptor() -> crate::OcctResult<*const HandleStandardType>;
+    pub fn RWObj_ObjMaterialMap_get_type_descriptor(
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast RWObj_ObjMaterialMap to RWMesh_MaterialMap
     pub fn RWObj_ObjMaterialMap_as_RWMesh_MaterialMap(
         self_: *const RWObj_ObjMaterialMap,
@@ -727,31 +745,31 @@ unsafe extern "C" {
     /// Wrap RWObj_ObjMaterialMap in a Handle
     pub fn RWObj_ObjMaterialMap_to_handle(
         obj: *mut RWObj_ObjMaterialMap,
-    ) -> crate::OcctResult<*mut HandleRWObjObjMaterialMap>;
+    ) -> crate::OcctResult<*mut Handle_RWObj_ObjMaterialMap>;
     /// Destroy Handle<RWObj_ObjMaterialMap>
-    pub fn HandleRWObjObjMaterialMap_destructor(self_: *mut HandleRWObjObjMaterialMap);
+    pub fn Handle_RWObj_ObjMaterialMap_destructor(self_: *mut Handle_RWObj_ObjMaterialMap);
     /// Clone Handle<RWObj_ObjMaterialMap> (increments reference count)
-    pub fn HandleRWObjObjMaterialMap_clone(
-        self_: *const HandleRWObjObjMaterialMap,
-    ) -> crate::OcctResult<*mut HandleRWObjObjMaterialMap>;
+    pub fn Handle_RWObj_ObjMaterialMap_clone(
+        self_: *const Handle_RWObj_ObjMaterialMap,
+    ) -> crate::OcctResult<*mut Handle_RWObj_ObjMaterialMap>;
     /// Check if Handle<RWObj_ObjMaterialMap> is null
-    pub fn HandleRWObjObjMaterialMap_is_null(self_: *const HandleRWObjObjMaterialMap) -> bool;
+    pub fn Handle_RWObj_ObjMaterialMap_is_null(self_: *const Handle_RWObj_ObjMaterialMap) -> bool;
     /// Dereference Handle to get *const RWObj_ObjMaterialMap
-    pub fn HandleRWObjObjMaterialMap_get(
-        handle: *const HandleRWObjObjMaterialMap,
+    pub fn Handle_RWObj_ObjMaterialMap_get(
+        handle: *const Handle_RWObj_ObjMaterialMap,
     ) -> crate::OcctResult<*const RWObj_ObjMaterialMap>;
     /// Dereference Handle to get *mut RWObj_ObjMaterialMap
-    pub fn HandleRWObjObjMaterialMap_get_mut(
-        handle: *mut HandleRWObjObjMaterialMap,
+    pub fn Handle_RWObj_ObjMaterialMap_get_mut(
+        handle: *mut Handle_RWObj_ObjMaterialMap,
     ) -> crate::OcctResult<*mut RWObj_ObjMaterialMap>;
     /// Upcast Handle<RWObj_ObjMaterialMap> to Handle<RWMesh_MaterialMap>
-    pub fn HandleRWObjObjMaterialMap_to_HandleRWMeshMaterialMap(
-        self_: *const HandleRWObjObjMaterialMap,
-    ) -> crate::OcctResult<*mut HandleRWMeshMaterialMap>;
+    pub fn Handle_RWObj_ObjMaterialMap_to_Handle_RWMesh_MaterialMap(
+        self_: *const Handle_RWObj_ObjMaterialMap,
+    ) -> crate::OcctResult<*mut Handle_RWMesh_MaterialMap>;
     /// Upcast Handle<RWObj_ObjMaterialMap> to Handle<Standard_Transient>
-    pub fn HandleRWObjObjMaterialMap_to_HandleStandardTransient(
-        self_: *const HandleRWObjObjMaterialMap,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
+    pub fn Handle_RWObj_ObjMaterialMap_to_Handle_Standard_Transient(
+        self_: *const Handle_RWObj_ObjMaterialMap,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
     /// Inherited: **Source:** `RWMesh_MaterialMap.hxx`:35 - `RWMesh_MaterialMap::DefaultStyle()`
     pub fn RWObj_ObjMaterialMap_inherited_DefaultStyle(
         self_: *const RWObj_ObjMaterialMap,
@@ -774,198 +792,198 @@ unsafe extern "C" {
     pub fn RWObj_ObjMaterialMap_inherited_CopyTexture(
         self_: *mut RWObj_ObjMaterialMap,
         theResTexture: *mut TCollection_AsciiString,
-        theTexture: *const HandleImageTexture,
+        theTexture: *const Handle_Image_Texture,
         theKey: *const TCollection_AsciiString,
     ) -> crate::OcctResult<bool>;
     /// Inherited: **Source:** `RWMesh_MaterialMap.hxx`:73 - `RWMesh_MaterialMap::IsFailed()`
     pub fn RWObj_ObjMaterialMap_inherited_IsFailed(
         self_: *const RWObj_ObjMaterialMap,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn RWObj_ObjMaterialMap_inherited_IsInstance(
         self_: *const RWObj_ObjMaterialMap,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn RWObj_ObjMaterialMap_inherited_IsKind(
         self_: *const RWObj_ObjMaterialMap,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn RWObj_ObjMaterialMap_inherited_This(
         self_: *const RWObj_ObjMaterialMap,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn RWObj_ObjMaterialMap_inherited_GetRefCount(
         self_: *const RWObj_ObjMaterialMap,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn RWObj_ObjMaterialMap_inherited_IncrementRefCounter(
         self_: *mut RWObj_ObjMaterialMap,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn RWObj_ObjMaterialMap_inherited_DecrementRefCounter(
         self_: *mut RWObj_ObjMaterialMap,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn RWObj_ObjMaterialMap_inherited_Delete(
         self_: *const RWObj_ObjMaterialMap,
     ) -> *const std::ffi::c_char;
     // ======================== RWObj_ObjWriterContext ========================
     pub fn RWObj_ObjWriterContext_destructor(self_: *mut RWObj_ObjWriterContext);
-    /// **Source:** `RWObj_ObjWriterContext.hxx`:26 - `RWObj_ObjWriterContext::RWObj_ObjWriterContext()`
+    /// **Source:** `RWObj_ObjWriterContext.hxx`:34 - `RWObj_ObjWriterContext::RWObj_ObjWriterContext()`
     pub fn RWObj_ObjWriterContext_ctor_asciistring(
         theName: *const TCollection_AsciiString,
     ) -> crate::OcctResult<*mut RWObj_ObjWriterContext>;
-    /// **Source:** `RWObj_ObjWriterContext.hxx`:32 - `RWObj_ObjWriterContext::IsOpened()`
+    /// **Source:** `RWObj_ObjWriterContext.hxx`:40 - `RWObj_ObjWriterContext::IsOpened()`
     pub fn RWObj_ObjWriterContext_is_opened(
         self_: *const RWObj_ObjWriterContext,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `RWObj_ObjWriterContext.hxx`:35 - `RWObj_ObjWriterContext::Close()`
+    /// **Source:** `RWObj_ObjWriterContext.hxx`:43 - `RWObj_ObjWriterContext::Close()`
     pub fn RWObj_ObjWriterContext_close(
         self_: *mut RWObj_ObjWriterContext,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `RWObj_ObjWriterContext.hxx`:38 - `RWObj_ObjWriterContext::HasNormals()`
+    /// **Source:** `RWObj_ObjWriterContext.hxx`:46 - `RWObj_ObjWriterContext::HasNormals()`
     pub fn RWObj_ObjWriterContext_has_normals(
         self_: *const RWObj_ObjWriterContext,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `RWObj_ObjWriterContext.hxx`:41 - `RWObj_ObjWriterContext::SetNormals()`
+    /// **Source:** `RWObj_ObjWriterContext.hxx`:49 - `RWObj_ObjWriterContext::SetNormals()`
     pub fn RWObj_ObjWriterContext_set_normals(
         self_: *mut RWObj_ObjWriterContext,
         theHasNormals: bool,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `RWObj_ObjWriterContext.hxx`:44 - `RWObj_ObjWriterContext::HasTexCoords()`
+    /// **Source:** `RWObj_ObjWriterContext.hxx`:52 - `RWObj_ObjWriterContext::HasTexCoords()`
     pub fn RWObj_ObjWriterContext_has_tex_coords(
         self_: *const RWObj_ObjWriterContext,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `RWObj_ObjWriterContext.hxx`:47 - `RWObj_ObjWriterContext::SetTexCoords()`
+    /// **Source:** `RWObj_ObjWriterContext.hxx`:55 - `RWObj_ObjWriterContext::SetTexCoords()`
     pub fn RWObj_ObjWriterContext_set_tex_coords(
         self_: *mut RWObj_ObjWriterContext,
         theHasTexCoords: bool,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `RWObj_ObjWriterContext.hxx`:50 - `RWObj_ObjWriterContext::WriteHeader()`
+    /// **Source:** `RWObj_ObjWriterContext.hxx`:58 - `RWObj_ObjWriterContext::WriteHeader()`
     pub fn RWObj_ObjWriterContext_write_header(
         self_: *mut RWObj_ObjWriterContext,
         theNbNodes: i32,
         theNbElems: i32,
         theMatLib: *const TCollection_AsciiString,
-        theFileInfo: *const TColStd_IndexedDataMapOfStringString,
+        theFileInfo: *const NCollection_IndexedDataMap_TCollection_AsciiString_TCollection_AsciiString,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `RWObj_ObjWriterContext.hxx`:56 - `RWObj_ObjWriterContext::ActiveMaterial()`
+    /// **Source:** `RWObj_ObjWriterContext.hxx`:66 - `RWObj_ObjWriterContext::ActiveMaterial()`
     pub fn RWObj_ObjWriterContext_active_material(
         self_: *const RWObj_ObjWriterContext,
     ) -> crate::OcctResult<*const TCollection_AsciiString>;
-    /// **Source:** `RWObj_ObjWriterContext.hxx`:59 - `RWObj_ObjWriterContext::WriteActiveMaterial()`
+    /// **Source:** `RWObj_ObjWriterContext.hxx`:69 - `RWObj_ObjWriterContext::WriteActiveMaterial()`
     pub fn RWObj_ObjWriterContext_write_active_material(
         self_: *mut RWObj_ObjWriterContext,
         theMaterial: *const TCollection_AsciiString,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `RWObj_ObjWriterContext.hxx`:62 - `RWObj_ObjWriterContext::WriteTriangle()`
+    /// **Source:** `RWObj_ObjWriterContext.hxx`:72 - `RWObj_ObjWriterContext::WriteTriangle()`
     pub fn RWObj_ObjWriterContext_write_triangle(
         self_: *mut RWObj_ObjWriterContext,
-        theTri: *const Graphic3d_Vec3i,
+        theTri: *const BVH_Vec3i,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `RWObj_ObjWriterContext.hxx`:65 - `RWObj_ObjWriterContext::WriteQuad()`
+    /// **Source:** `RWObj_ObjWriterContext.hxx`:75 - `RWObj_ObjWriterContext::WriteQuad()`
     pub fn RWObj_ObjWriterContext_write_quad(
         self_: *mut RWObj_ObjWriterContext,
-        theQuad: *const Graphic3d_Vec4i,
+        theQuad: *const BVH_Vec4i,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `RWObj_ObjWriterContext.hxx`:68 - `RWObj_ObjWriterContext::WriteVertex()`
+    /// **Source:** `RWObj_ObjWriterContext.hxx`:78 - `RWObj_ObjWriterContext::WriteVertex()`
     pub fn RWObj_ObjWriterContext_write_vertex(
         self_: *mut RWObj_ObjWriterContext,
-        theValue: *const Graphic3d_Vec3,
+        theValue: *const BVH_Vec3f,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `RWObj_ObjWriterContext.hxx`:71 - `RWObj_ObjWriterContext::WriteNormal()`
+    /// **Source:** `RWObj_ObjWriterContext.hxx`:81 - `RWObj_ObjWriterContext::WriteNormal()`
     pub fn RWObj_ObjWriterContext_write_normal(
         self_: *mut RWObj_ObjWriterContext,
-        theValue: *const Graphic3d_Vec3,
+        theValue: *const BVH_Vec3f,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `RWObj_ObjWriterContext.hxx`:74 - `RWObj_ObjWriterContext::WriteTexCoord()`
+    /// **Source:** `RWObj_ObjWriterContext.hxx`:84 - `RWObj_ObjWriterContext::WriteTexCoord()`
     pub fn RWObj_ObjWriterContext_write_tex_coord(
         self_: *mut RWObj_ObjWriterContext,
-        theValue: *const Graphic3d_Vec2,
+        theValue: *const BVH_Vec2f,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `RWObj_ObjWriterContext.hxx`:77 - `RWObj_ObjWriterContext::WriteGroup()`
+    /// **Source:** `RWObj_ObjWriterContext.hxx`:87 - `RWObj_ObjWriterContext::WriteGroup()`
     pub fn RWObj_ObjWriterContext_write_group(
         self_: *mut RWObj_ObjWriterContext,
         theValue: *const TCollection_AsciiString,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `RWObj_ObjWriterContext.hxx`:80 - `RWObj_ObjWriterContext::FlushFace()`
+    /// **Source:** `RWObj_ObjWriterContext.hxx`:90 - `RWObj_ObjWriterContext::FlushFace()`
     pub fn RWObj_ObjWriterContext_flush_face(
         self_: *mut RWObj_ObjWriterContext,
         theNbNodes: i32,
     ) -> *const std::ffi::c_char;
     // ======================== RWObj_Reader ========================
     pub fn RWObj_Reader_destructor(self_: *mut RWObj_Reader);
-    /// **Source:** `RWObj_Reader.hxx`:45 - `RWObj_Reader::DynamicType()`
+    /// **Source:** `RWObj_Reader.hxx`:44 - `RWObj_Reader::DynamicType()`
     pub fn RWObj_Reader_dynamic_type(
         self_: *const RWObj_Reader,
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// **Source:** `RWObj_Reader.hxx`:52 - `RWObj_Reader::Read()`
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
+    /// **Source:** `RWObj_Reader.hxx`:51 - `RWObj_Reader::Read()`
     pub fn RWObj_Reader_read_asciistring_progressrange(
         self_: *mut RWObj_Reader,
         theFile: *const TCollection_AsciiString,
         theProgress: *const Message_ProgressRange,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `RWObj_Reader.hxx`:63 - `RWObj_Reader::Read()`
+    /// **Source:** `RWObj_Reader.hxx`:61 - `RWObj_Reader::Read()`
     pub fn RWObj_Reader_read_istream_asciistring_progressrange(
         self_: *mut RWObj_Reader,
         theStream: *mut Standard_IStream,
         theFile: *const TCollection_AsciiString,
         theProgress: *const Message_ProgressRange,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `RWObj_Reader.hxx`:75 - `RWObj_Reader::Probe()`
+    /// **Source:** `RWObj_Reader.hxx`:73 - `RWObj_Reader::Probe()`
     pub fn RWObj_Reader_probe_asciistring_progressrange(
         self_: *mut RWObj_Reader,
         theFile: *const TCollection_AsciiString,
         theProgress: *const Message_ProgressRange,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `RWObj_Reader.hxx`:91 - `RWObj_Reader::Probe()`
+    /// **Source:** `RWObj_Reader.hxx`:88 - `RWObj_Reader::Probe()`
     pub fn RWObj_Reader_probe_istream_asciistring_progressrange(
         self_: *mut RWObj_Reader,
         theStream: *mut Standard_IStream,
         theFile: *const TCollection_AsciiString,
         theProgress: *const Message_ProgressRange,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `RWObj_Reader.hxx`:99 - `RWObj_Reader::FileComments()`
+    /// **Source:** `RWObj_Reader.hxx`:96 - `RWObj_Reader::FileComments()`
     pub fn RWObj_Reader_file_comments(
         self_: *const RWObj_Reader,
     ) -> crate::OcctResult<*const TCollection_AsciiString>;
-    /// **Source:** `RWObj_Reader.hxx`:102 - `RWObj_Reader::ExternalFiles()`
+    /// **Source:** `RWObj_Reader.hxx`:99 - `RWObj_Reader::ExternalFiles()`
     pub fn RWObj_Reader_external_files(
         self_: *const RWObj_Reader,
-    ) -> crate::OcctResult<*const Interface_IndexedMapOfAsciiString>;
-    /// **Source:** `RWObj_Reader.hxx`:108 - `RWObj_Reader::NbProbeNodes()`
+    ) -> crate::OcctResult<*const NCollection_IndexedMap_TCollection_AsciiString>;
+    /// **Source:** `RWObj_Reader.hxx`:105 - `RWObj_Reader::NbProbeNodes()`
     pub fn RWObj_Reader_nb_probe_nodes(self_: *const RWObj_Reader) -> crate::OcctResult<i32>;
-    /// **Source:** `RWObj_Reader.hxx`:111 - `RWObj_Reader::NbProbeElems()`
+    /// **Source:** `RWObj_Reader.hxx`:108 - `RWObj_Reader::NbProbeElems()`
     pub fn RWObj_Reader_nb_probe_elems(self_: *const RWObj_Reader) -> crate::OcctResult<i32>;
-    /// **Source:** `RWObj_Reader.hxx`:114 - `RWObj_Reader::MemoryLimit()`
+    /// **Source:** `RWObj_Reader.hxx`:111 - `RWObj_Reader::MemoryLimit()`
     pub fn RWObj_Reader_memory_limit(self_: *const RWObj_Reader) -> crate::OcctResult<usize>;
-    /// **Source:** `RWObj_Reader.hxx`:118 - `RWObj_Reader::SetMemoryLimit()`
+    /// **Source:** `RWObj_Reader.hxx`:115 - `RWObj_Reader::SetMemoryLimit()`
     pub fn RWObj_Reader_set_memory_limit(
         self_: *mut RWObj_Reader,
         theMemLimit: usize,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `RWObj_Reader.hxx`:121 - `RWObj_Reader::Transformation()`
+    /// **Source:** `RWObj_Reader.hxx`:118 - `RWObj_Reader::Transformation()`
     pub fn RWObj_Reader_transformation(
         self_: *const RWObj_Reader,
     ) -> crate::OcctResult<*const RWMesh_CoordinateSystemConverter>;
-    /// **Source:** `RWObj_Reader.hxx`:126 - `RWObj_Reader::SetTransformation()`
+    /// **Source:** `RWObj_Reader.hxx`:123 - `RWObj_Reader::SetTransformation()`
     pub fn RWObj_Reader_set_transformation(
         self_: *mut RWObj_Reader,
         theCSConverter: *const RWMesh_CoordinateSystemConverter,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `RWObj_Reader.hxx`:132 - `RWObj_Reader::IsSinglePrecision()`
+    /// **Source:** `RWObj_Reader.hxx`:129 - `RWObj_Reader::IsSinglePrecision()`
     pub fn RWObj_Reader_is_single_precision(self_: *const RWObj_Reader) -> crate::OcctResult<bool>;
-    /// **Source:** `RWObj_Reader.hxx`:135 - `RWObj_Reader::SetSinglePrecision()`
+    /// **Source:** `RWObj_Reader.hxx`:132 - `RWObj_Reader::SetSinglePrecision()`
     pub fn RWObj_Reader_set_single_precision(
         self_: *mut RWObj_Reader,
         theIsSinglePrecision: bool,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `RWObj_Reader.hxx`:45 - `RWObj_Reader::get_type_name()`
+    /// **Source:** `RWObj_Reader.hxx`:44 - `RWObj_Reader::get_type_name()`
     pub fn RWObj_Reader_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
-    /// **Source:** `RWObj_Reader.hxx`:45 - `RWObj_Reader::get_type_descriptor()`
-    pub fn RWObj_Reader_get_type_descriptor() -> crate::OcctResult<*const HandleStandardType>;
+    /// **Source:** `RWObj_Reader.hxx`:44 - `RWObj_Reader::get_type_descriptor()`
+    pub fn RWObj_Reader_get_type_descriptor() -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast RWObj_Reader to Standard_Transient
     pub fn RWObj_Reader_as_Standard_Transient(
         self_: *const RWObj_Reader,
@@ -975,55 +993,55 @@ unsafe extern "C" {
         self_: *mut RWObj_Reader,
     ) -> crate::OcctResult<*mut Standard_Transient>;
     /// Destroy Handle<RWObj_Reader>
-    pub fn HandleRWObjReader_destructor(self_: *mut HandleRWObjReader);
+    pub fn Handle_RWObj_Reader_destructor(self_: *mut Handle_RWObj_Reader);
     /// Clone Handle<RWObj_Reader> (increments reference count)
-    pub fn HandleRWObjReader_clone(
-        self_: *const HandleRWObjReader,
-    ) -> crate::OcctResult<*mut HandleRWObjReader>;
+    pub fn Handle_RWObj_Reader_clone(
+        self_: *const Handle_RWObj_Reader,
+    ) -> crate::OcctResult<*mut Handle_RWObj_Reader>;
     /// Check if Handle<RWObj_Reader> is null
-    pub fn HandleRWObjReader_is_null(self_: *const HandleRWObjReader) -> bool;
+    pub fn Handle_RWObj_Reader_is_null(self_: *const Handle_RWObj_Reader) -> bool;
     /// Dereference Handle to get *const RWObj_Reader
-    pub fn HandleRWObjReader_get(
-        handle: *const HandleRWObjReader,
+    pub fn Handle_RWObj_Reader_get(
+        handle: *const Handle_RWObj_Reader,
     ) -> crate::OcctResult<*const RWObj_Reader>;
     /// Dereference Handle to get *mut RWObj_Reader
-    pub fn HandleRWObjReader_get_mut(
-        handle: *mut HandleRWObjReader,
+    pub fn Handle_RWObj_Reader_get_mut(
+        handle: *mut Handle_RWObj_Reader,
     ) -> crate::OcctResult<*mut RWObj_Reader>;
     /// Upcast Handle<RWObj_Reader> to Handle<Standard_Transient>
-    pub fn HandleRWObjReader_to_HandleStandardTransient(
-        self_: *const HandleRWObjReader,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
+    pub fn Handle_RWObj_Reader_to_Handle_Standard_Transient(
+        self_: *const Handle_RWObj_Reader,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
     /// Downcast Handle<RWObj_Reader> to Handle<RWObj_TriangulationReader> (returns null on failure)
-    pub fn HandleRWObjReader_downcast_to_HandleRWObjTriangulationReader(
-        self_: *const HandleRWObjReader,
-    ) -> crate::OcctResult<*mut HandleRWObjTriangulationReader>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn Handle_RWObj_Reader_downcast_to_Handle_RWObj_TriangulationReader(
+        self_: *const Handle_RWObj_Reader,
+    ) -> crate::OcctResult<*mut Handle_RWObj_TriangulationReader>;
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn RWObj_Reader_inherited_IsInstance(
         self_: *const RWObj_Reader,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn RWObj_Reader_inherited_IsKind(
         self_: *const RWObj_Reader,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn RWObj_Reader_inherited_This(
         self_: *const RWObj_Reader,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn RWObj_Reader_inherited_GetRefCount(self_: *const RWObj_Reader)
         -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn RWObj_Reader_inherited_IncrementRefCounter(
         self_: *mut RWObj_Reader,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn RWObj_Reader_inherited_DecrementRefCounter(
         self_: *mut RWObj_Reader,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn RWObj_Reader_inherited_Delete(self_: *const RWObj_Reader) -> *const std::ffi::c_char;
     // ======================== RWObj_SubMesh ========================
     pub fn RWObj_SubMesh_destructor(self_: *mut RWObj_SubMesh);
@@ -1046,7 +1064,7 @@ unsafe extern "C" {
     /// **Source:** `RWObj_TriangulationReader.hxx`:40 - `RWObj_TriangulationReader::DynamicType()`
     pub fn RWObj_TriangulationReader_dynamic_type(
         self_: *const RWObj_TriangulationReader,
-    ) -> crate::OcctResult<*const HandleStandardType>;
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// **Source:** `RWObj_TriangulationReader.hxx`:50 - `RWObj_TriangulationReader::SetCreateShapes()`
     pub fn RWObj_TriangulationReader_set_create_shapes(
         self_: *mut RWObj_TriangulationReader,
@@ -1060,7 +1078,7 @@ unsafe extern "C" {
     /// **Source:** `RWObj_TriangulationReader.hxx`:56 - `RWObj_TriangulationReader::GetTriangulation()`
     pub fn RWObj_TriangulationReader_get_triangulation(
         self_: *mut RWObj_TriangulationReader,
-    ) -> crate::OcctResult<*mut HandlePolyTriangulation>;
+    ) -> crate::OcctResult<*mut Handle_Poly_Triangulation>;
     /// **Source:** `RWObj_TriangulationReader.hxx`:59 - `RWObj_TriangulationReader::ResultShape()`
     pub fn RWObj_TriangulationReader_result_shape(
         self_: *mut RWObj_TriangulationReader,
@@ -1069,7 +1087,7 @@ unsafe extern "C" {
     pub fn RWObj_TriangulationReader_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
     /// **Source:** `RWObj_TriangulationReader.hxx`:40 - `RWObj_TriangulationReader::get_type_descriptor()`
     pub fn RWObj_TriangulationReader_get_type_descriptor(
-    ) -> crate::OcctResult<*const HandleStandardType>;
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast RWObj_TriangulationReader to RWObj_Reader
     pub fn RWObj_TriangulationReader_as_RWObj_Reader(
         self_: *const RWObj_TriangulationReader,
@@ -1089,115 +1107,117 @@ unsafe extern "C" {
     /// Wrap RWObj_TriangulationReader in a Handle
     pub fn RWObj_TriangulationReader_to_handle(
         obj: *mut RWObj_TriangulationReader,
-    ) -> crate::OcctResult<*mut HandleRWObjTriangulationReader>;
+    ) -> crate::OcctResult<*mut Handle_RWObj_TriangulationReader>;
     /// Destroy Handle<RWObj_TriangulationReader>
-    pub fn HandleRWObjTriangulationReader_destructor(self_: *mut HandleRWObjTriangulationReader);
+    pub fn Handle_RWObj_TriangulationReader_destructor(
+        self_: *mut Handle_RWObj_TriangulationReader,
+    );
     /// Clone Handle<RWObj_TriangulationReader> (increments reference count)
-    pub fn HandleRWObjTriangulationReader_clone(
-        self_: *const HandleRWObjTriangulationReader,
-    ) -> crate::OcctResult<*mut HandleRWObjTriangulationReader>;
+    pub fn Handle_RWObj_TriangulationReader_clone(
+        self_: *const Handle_RWObj_TriangulationReader,
+    ) -> crate::OcctResult<*mut Handle_RWObj_TriangulationReader>;
     /// Check if Handle<RWObj_TriangulationReader> is null
-    pub fn HandleRWObjTriangulationReader_is_null(
-        self_: *const HandleRWObjTriangulationReader,
+    pub fn Handle_RWObj_TriangulationReader_is_null(
+        self_: *const Handle_RWObj_TriangulationReader,
     ) -> bool;
     /// Dereference Handle to get *const RWObj_TriangulationReader
-    pub fn HandleRWObjTriangulationReader_get(
-        handle: *const HandleRWObjTriangulationReader,
+    pub fn Handle_RWObj_TriangulationReader_get(
+        handle: *const Handle_RWObj_TriangulationReader,
     ) -> crate::OcctResult<*const RWObj_TriangulationReader>;
     /// Dereference Handle to get *mut RWObj_TriangulationReader
-    pub fn HandleRWObjTriangulationReader_get_mut(
-        handle: *mut HandleRWObjTriangulationReader,
+    pub fn Handle_RWObj_TriangulationReader_get_mut(
+        handle: *mut Handle_RWObj_TriangulationReader,
     ) -> crate::OcctResult<*mut RWObj_TriangulationReader>;
     /// Upcast Handle<RWObj_TriangulationReader> to Handle<RWObj_Reader>
-    pub fn HandleRWObjTriangulationReader_to_HandleRWObjReader(
-        self_: *const HandleRWObjTriangulationReader,
-    ) -> crate::OcctResult<*mut HandleRWObjReader>;
+    pub fn Handle_RWObj_TriangulationReader_to_Handle_RWObj_Reader(
+        self_: *const Handle_RWObj_TriangulationReader,
+    ) -> crate::OcctResult<*mut Handle_RWObj_Reader>;
     /// Upcast Handle<RWObj_TriangulationReader> to Handle<Standard_Transient>
-    pub fn HandleRWObjTriangulationReader_to_HandleStandardTransient(
-        self_: *const HandleRWObjTriangulationReader,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
-    /// Inherited: **Source:** `RWObj_Reader.hxx`:52 - `RWObj_Reader::Read()`
+    pub fn Handle_RWObj_TriangulationReader_to_Handle_Standard_Transient(
+        self_: *const Handle_RWObj_TriangulationReader,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
+    /// Inherited: **Source:** `RWObj_Reader.hxx`:51 - `RWObj_Reader::Read()`
     pub fn RWObj_TriangulationReader_inherited_Read(
         self_: *mut RWObj_TriangulationReader,
         theFile: *const TCollection_AsciiString,
         theProgress: *const Message_ProgressRange,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `RWObj_Reader.hxx`:75 - `RWObj_Reader::Probe()`
+    /// Inherited: **Source:** `RWObj_Reader.hxx`:73 - `RWObj_Reader::Probe()`
     pub fn RWObj_TriangulationReader_inherited_Probe(
         self_: *mut RWObj_TriangulationReader,
         theFile: *const TCollection_AsciiString,
         theProgress: *const Message_ProgressRange,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `RWObj_Reader.hxx`:99 - `RWObj_Reader::FileComments()`
+    /// Inherited: **Source:** `RWObj_Reader.hxx`:96 - `RWObj_Reader::FileComments()`
     pub fn RWObj_TriangulationReader_inherited_FileComments(
         self_: *const RWObj_TriangulationReader,
     ) -> crate::OcctResult<*const TCollection_AsciiString>;
-    /// Inherited: **Source:** `RWObj_Reader.hxx`:102 - `RWObj_Reader::ExternalFiles()`
+    /// Inherited: **Source:** `RWObj_Reader.hxx`:99 - `RWObj_Reader::ExternalFiles()`
     pub fn RWObj_TriangulationReader_inherited_ExternalFiles(
         self_: *const RWObj_TriangulationReader,
-    ) -> crate::OcctResult<*const Interface_IndexedMapOfAsciiString>;
-    /// Inherited: **Source:** `RWObj_Reader.hxx`:108 - `RWObj_Reader::NbProbeNodes()`
+    ) -> crate::OcctResult<*const NCollection_IndexedMap_TCollection_AsciiString>;
+    /// Inherited: **Source:** `RWObj_Reader.hxx`:105 - `RWObj_Reader::NbProbeNodes()`
     pub fn RWObj_TriangulationReader_inherited_NbProbeNodes(
         self_: *const RWObj_TriangulationReader,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `RWObj_Reader.hxx`:111 - `RWObj_Reader::NbProbeElems()`
+    /// Inherited: **Source:** `RWObj_Reader.hxx`:108 - `RWObj_Reader::NbProbeElems()`
     pub fn RWObj_TriangulationReader_inherited_NbProbeElems(
         self_: *const RWObj_TriangulationReader,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `RWObj_Reader.hxx`:114 - `RWObj_Reader::MemoryLimit()`
+    /// Inherited: **Source:** `RWObj_Reader.hxx`:111 - `RWObj_Reader::MemoryLimit()`
     pub fn RWObj_TriangulationReader_inherited_MemoryLimit(
         self_: *const RWObj_TriangulationReader,
     ) -> crate::OcctResult<usize>;
-    /// Inherited: **Source:** `RWObj_Reader.hxx`:118 - `RWObj_Reader::SetMemoryLimit()`
+    /// Inherited: **Source:** `RWObj_Reader.hxx`:115 - `RWObj_Reader::SetMemoryLimit()`
     pub fn RWObj_TriangulationReader_inherited_SetMemoryLimit(
         self_: *mut RWObj_TriangulationReader,
         theMemLimit: usize,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `RWObj_Reader.hxx`:121 - `RWObj_Reader::Transformation()`
+    /// Inherited: **Source:** `RWObj_Reader.hxx`:118 - `RWObj_Reader::Transformation()`
     pub fn RWObj_TriangulationReader_inherited_Transformation(
         self_: *const RWObj_TriangulationReader,
     ) -> crate::OcctResult<*const RWMesh_CoordinateSystemConverter>;
-    /// Inherited: **Source:** `RWObj_Reader.hxx`:126 - `RWObj_Reader::SetTransformation()`
+    /// Inherited: **Source:** `RWObj_Reader.hxx`:123 - `RWObj_Reader::SetTransformation()`
     pub fn RWObj_TriangulationReader_inherited_SetTransformation(
         self_: *mut RWObj_TriangulationReader,
         theCSConverter: *const RWMesh_CoordinateSystemConverter,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `RWObj_Reader.hxx`:132 - `RWObj_Reader::IsSinglePrecision()`
+    /// Inherited: **Source:** `RWObj_Reader.hxx`:129 - `RWObj_Reader::IsSinglePrecision()`
     pub fn RWObj_TriangulationReader_inherited_IsSinglePrecision(
         self_: *const RWObj_TriangulationReader,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `RWObj_Reader.hxx`:135 - `RWObj_Reader::SetSinglePrecision()`
+    /// Inherited: **Source:** `RWObj_Reader.hxx`:132 - `RWObj_Reader::SetSinglePrecision()`
     pub fn RWObj_TriangulationReader_inherited_SetSinglePrecision(
         self_: *mut RWObj_TriangulationReader,
         theIsSinglePrecision: bool,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn RWObj_TriangulationReader_inherited_IsInstance(
         self_: *const RWObj_TriangulationReader,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn RWObj_TriangulationReader_inherited_IsKind(
         self_: *const RWObj_TriangulationReader,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn RWObj_TriangulationReader_inherited_This(
         self_: *const RWObj_TriangulationReader,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn RWObj_TriangulationReader_inherited_GetRefCount(
         self_: *const RWObj_TriangulationReader,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn RWObj_TriangulationReader_inherited_IncrementRefCounter(
         self_: *mut RWObj_TriangulationReader,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn RWObj_TriangulationReader_inherited_DecrementRefCounter(
         self_: *mut RWObj_TriangulationReader,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn RWObj_TriangulationReader_inherited_Delete(
         self_: *const RWObj_TriangulationReader,
     ) -> *const std::ffi::c_char;
@@ -1207,5 +1227,5 @@ unsafe extern "C" {
     pub fn RWObj_read_file_charptr_progressrange(
         theFile: *const std::ffi::c_char,
         aProgress: *const Message_ProgressRange,
-    ) -> crate::OcctResult<*mut HandlePolyTriangulation>;
+    ) -> crate::OcctResult<*mut Handle_Poly_Triangulation>;
 }

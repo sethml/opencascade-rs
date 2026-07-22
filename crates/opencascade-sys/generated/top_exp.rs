@@ -6,81 +6,75 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 
-/// **Source:** `TopExp.hxx`:54 - `TopExp::MapShapes`
+/// **Source:** `TopExp.hxx`:57 - `TopExp::MapShapes`
 /// Tool to explore a topological data structure.
-/// Stores in the map <M> all  the sub-shapes of <S>
+/// Stores in the map <M> all the sub-shapes of <S>
 /// of type <T>.
 ///
 /// Warning: The map is not cleared at first.
-pub fn map_shapes_shape_shapeenum_indexedmapofshape(
+pub fn map_shapes_shape_shapeenum_imap_shape(
     S: &crate::topo_ds::Shape,
     T: crate::top_abs::ShapeEnum,
-    M: &mut crate::ffi_types::TopTools_IndexedMapOfShape,
+    M: &mut crate::ffi_types::NCollection_IndexedMap_TopoDS_Shape_TopTools_ShapeMapHasher,
 ) {
     crate::check_void_result(unsafe {
-        crate::ffi_extern_TKBRep::TopExp_map_shapes_shape_shapeenum_indexedmapofshape(
-            S,
-            T.into(),
-            M,
-        )
+        crate::ffi_extern_TKBRep::TopExp_map_shapes_shape_shapeenum_imap_shape(S, T.into(), M)
     })
 }
-/// **Source:** `TopExp.hxx`:64 - `TopExp::MapShapes`
-/// Stores in the map <M> all  the sub-shapes of <S>.
+/// **Source:** `TopExp.hxx`:68 - `TopExp::MapShapes`
+/// Stores in the map <M> all the sub-shapes of <S>.
 /// - If cumOri is true, the function composes all
 /// sub-shapes with the orientation of S.
 /// - If cumLoc is true, the function multiplies all
 /// sub-shapes by the location of S, i.e. it applies to
 /// each sub-shape the transformation that is associated with S.
-pub fn map_shapes_shape_indexedmapofshape_bool2(
+pub fn map_shapes_shape_imap_shape_bool2(
     S: &crate::topo_ds::Shape,
-    M: &mut crate::ffi_types::TopTools_IndexedMapOfShape,
+    M: &mut crate::ffi_types::NCollection_IndexedMap_TopoDS_Shape_TopTools_ShapeMapHasher,
     cumOri: bool,
     cumLoc: bool,
 ) {
     crate::check_void_result(unsafe {
-        crate::ffi_extern_TKBRep::TopExp_map_shapes_shape_indexedmapofshape_bool2(
-            S, M, cumOri, cumLoc,
-        )
+        crate::ffi_extern_TKBRep::TopExp_map_shapes_shape_imap_shape_bool2(S, M, cumOri, cumLoc)
     })
 }
-/// **Source:** `TopExp.hxx`:75 - `TopExp::MapShapes`
-/// Stores in the map <M> all  the sub-shapes of <S>.
+/// **Source:** `TopExp.hxx`:80 - `TopExp::MapShapes`
+/// Stores in the map <M> all the sub-shapes of <S>.
 /// - If cumOri is true, the function composes all
 /// sub-shapes with the orientation of S.
 /// - If cumLoc is true, the function multiplies all
 /// sub-shapes by the location of S, i.e. it applies to
 /// each sub-shape the transformation that is associated with S.
-pub fn map_shapes_shape_mapofshape_bool2(
+pub fn map_shapes_shape_map_shape_bool2(
     S: &crate::topo_ds::Shape,
-    M: &mut crate::ffi_types::TopTools_MapOfShape,
+    M: &mut crate::ffi_types::NCollection_Map_TopoDS_Shape_TopTools_ShapeMapHasher,
     cumOri: bool,
     cumLoc: bool,
 ) {
     crate::check_void_result(unsafe {
-        crate::ffi_extern_TKBRep::TopExp_map_shapes_shape_mapofshape_bool2(S, M, cumOri, cumLoc)
+        crate::ffi_extern_TKBRep::TopExp_map_shapes_shape_map_shape_bool2(S, M, cumOri, cumLoc)
     })
 }
-/// **Source:** `TopExp.hxx`:85 - `TopExp::MapShapesAndAncestors`
+/// **Source:** `TopExp.hxx`:90 - `TopExp::MapShapesAndAncestors`
 /// Stores in the map <M> all the subshape of <S> of
-/// type <TS>  for each one append  to  the list all
-/// the ancestors of type <TA>.  For example map all
+/// type <TS> for each one append to the list all
+/// the ancestors of type <TA>. For example map all
 /// the edges and bind the list of faces.
 /// Warning: The map is not cleared at first.
 pub fn map_shapes_and_ancestors(
     S: &crate::topo_ds::Shape,
     TS: crate::top_abs::ShapeEnum,
     TA: crate::top_abs::ShapeEnum,
-    M: &mut crate::ffi_types::TopTools_IndexedDataMapOfShapeListOfShape,
+    M: &mut crate::ffi_types::NCollection_IndexedDataMap_TopoDS_Shape_NCollection_List_TopoDS_Shape_TopTools_ShapeMapHasher,
 ) {
     crate::check_void_result(unsafe {
         crate::ffi_extern_TKBRep::TopExp_map_shapes_and_ancestors(S, TS.into(), TA.into(), M)
     })
 }
-/// **Source:** `TopExp.hxx`:96 - `TopExp::MapShapesAndUniqueAncestors`
+/// **Source:** `TopExp.hxx`:104 - `TopExp::MapShapesAndUniqueAncestors`
 /// Stores in the map <M> all the subshape of <S> of
 /// type <TS> for each one append to the list all
-/// unique ancestors of type <TA>.  For example map all
+/// unique ancestors of type <TA>. For example map all
 /// the edges and bind the list of faces.
 /// useOrientation = True : taking account the ancestor orientation
 /// Warning: The map is not cleared at first.
@@ -88,7 +82,7 @@ pub fn map_shapes_and_unique_ancestors(
     S: &crate::topo_ds::Shape,
     TS: crate::top_abs::ShapeEnum,
     TA: crate::top_abs::ShapeEnum,
-    M: &mut crate::ffi_types::TopTools_IndexedDataMapOfShapeListOfShape,
+    M: &mut crate::ffi_types::NCollection_IndexedDataMap_TopoDS_Shape_NCollection_List_TopoDS_Shape_TopTools_ShapeMapHasher,
     useOrientation: bool,
 ) {
     crate::check_void_result(unsafe {
@@ -101,7 +95,7 @@ pub fn map_shapes_and_unique_ancestors(
         )
     })
 }
-/// **Source:** `TopExp.hxx`:106 - `TopExp::FirstVertex`
+/// **Source:** `TopExp.hxx`:116 - `TopExp::FirstVertex`
 /// Returns the Vertex of orientation FORWARD in E. If
 /// there is none returns a Null Shape.
 /// CumOri = True : taking account the edge orientation
@@ -115,7 +109,7 @@ pub fn first_vertex(
         ))
     }
 }
-/// **Source:** `TopExp.hxx`:112 - `TopExp::LastVertex`
+/// **Source:** `TopExp.hxx`:121 - `TopExp::LastVertex`
 /// Returns the Vertex of orientation REVERSED in E. If
 /// there is none returns a Null Shape.
 /// CumOri = True : taking account the edge orientation
@@ -129,8 +123,8 @@ pub fn last_vertex(
         ))
     }
 }
-/// **Source:** `TopExp.hxx`:118 - `TopExp::Vertices`
-/// Returns in Vfirst, Vlast the  FORWARD and REVERSED
+/// **Source:** `TopExp.hxx`:126 - `TopExp::Vertices`
+/// Returns in Vfirst, Vlast the FORWARD and REVERSED
 /// vertices of the edge <E>. May be null shapes.
 /// CumOri = True : taking account the edge orientation
 pub fn vertices_edge_vertex2_bool(
@@ -143,10 +137,10 @@ pub fn vertices_edge_vertex2_bool(
         crate::ffi_extern_TKBRep::TopExp_vertices_edge_vertex2_bool(E, Vfirst, Vlast, CumOri)
     })
 }
-/// **Source:** `TopExp.hxx`:129 - `TopExp::Vertices`
-/// Returns  in  Vfirst,  Vlast   the first   and last
+/// **Source:** `TopExp.hxx`:137 - `TopExp::Vertices`
+/// Returns in Vfirst, Vlast the first and last
 /// vertices of the open wire <W>. May be null shapes.
-/// if   <W>  is closed Vfirst and Vlast  are a same
+/// if <W> is closed Vfirst and Vlast are a same
 /// vertex on <W>.
 /// if <W> is no manifold. VFirst and VLast are null
 /// shapes.
@@ -159,8 +153,8 @@ pub fn vertices_wire_vertex2(
         crate::ffi_extern_TKBRep::TopExp_vertices_wire_vertex2(W, Vfirst, Vlast)
     })
 }
-/// **Source:** `TopExp.hxx`:137 - `TopExp::CommonVertex`
-/// Finds   the  vertex <V> common   to  the two edges
+/// **Source:** `TopExp.hxx`:145 - `TopExp::CommonVertex`
+/// Finds the vertex <V> common to the two edges
 /// <E1,E2>, returns True if this vertex exists.
 ///
 /// Warning: <V> has sense only if the value <True> is returned
@@ -176,23 +170,23 @@ pub fn common_vertex_mut(
 // From TopExp_Explorer.hxx
 // ========================
 
-/// **Source:** `TopExp_Explorer.hxx`:81 - `TopExp_Explorer`
-/// An Explorer is a Tool to visit  a Topological Data
-/// Structure form the TopoDS package.
+/// **Source:** `TopExp_Explorer.hxx`:83 - `TopExp_Explorer`
+/// An Explorer is a Tool to visit a Topological Data
+/// Structure from the TopoDS package.
 ///
-/// An Explorer is built with :
+/// An Explorer is built with:
 ///
 /// * The Shape to explore.
 ///
-/// * The type of Shapes to find : e.g VERTEX, EDGE.
+/// * The type of Shapes to find: e.g VERTEX, EDGE.
 /// This type cannot be SHAPE.
 ///
-/// * The type of Shapes to avoid. e.g  SHELL, EDGE.
-/// By default   this type is  SHAPE which  means no
+/// * The type of Shapes to avoid. e.g SHELL, EDGE.
+/// By default this type is SHAPE which means no
 /// restriction on the exploration.
 ///
-/// The Explorer  visits  all the  structure   to find
-/// shapes of the   requested  type  which   are   not
+/// The Explorer visits all the structure to find
+/// shapes of the requested type which are not
 /// contained in the type to avoid.
 ///
 /// Example to find all the Faces in the Shape S :
@@ -213,7 +207,7 @@ pub fn common_vertex_mut(
 ///
 /// for (Ex.Init(S,TopAbs_VERTEX,TopAbs_EDGE); ...)
 ///
-/// To  find all the faces  in   a SHELL, then all the
+/// To find all the faces in a SHELL, then all the
 /// faces not in a SHELL :
 ///
 /// TopExp_Explorer Ex1, Ex2;
@@ -229,10 +223,10 @@ pub fn common_vertex_mut(
 /// // visit all faces not in a shell
 /// }
 ///
-/// If   the type  to avoid  is   the same  or is less
+/// If the type to avoid is the same or is less
 /// complex than the type to find it has no effect.
 ///
-/// For example searching edges  not in a vertex  does
+/// For example searching edges not in a vertex does
 /// not make a difference.
 pub use crate::ffi_types::TopExp_Explorer as Explorer;
 
@@ -245,7 +239,7 @@ unsafe impl crate::CppDeletable for Explorer {
 }
 
 impl Explorer {
-    /// **Source:** `TopExp_Explorer.hxx`:87 - `TopExp_Explorer::TopExp_Explorer()`
+    /// **Source:** `TopExp_Explorer.hxx`:89 - `TopExp_Explorer::TopExp_Explorer()`
     /// Creates an empty explorer, becomes useful after Init.
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
@@ -255,15 +249,15 @@ impl Explorer {
         }
     }
 
-    /// **Source:** `TopExp_Explorer.hxx`:98 - `TopExp_Explorer::TopExp_Explorer()`
+    /// **Source:** `TopExp_Explorer.hxx`:100 - `TopExp_Explorer::TopExp_Explorer()`
     /// Creates an Explorer on the Shape <S>.
     ///
     /// <ToFind> is the type of shapes to search.
     /// TopAbs_VERTEX, TopAbs_EDGE, ...
     ///
-    /// <ToAvoid>   is the type   of shape to  skip in the
-    /// exploration.   If   <ToAvoid>  is  equal  or  less
-    /// complex than <ToFind> or if  <ToAVoid> is SHAPE it
+    /// <ToAvoid> is the type of shape to skip in the
+    /// exploration. If <ToAvoid> is equal or less
+    /// complex than <ToFind> or if <ToAVoid> is SHAPE it
     /// has no effect on the exploration.
     pub fn new_shape_shapeenum2(
         S: &crate::topo_ds::Shape,
@@ -281,7 +275,7 @@ impl Explorer {
         }
     }
 
-    /// **Source:** `TopExp_Explorer.hxx`:108 - `TopExp_Explorer::Init()`
+    /// **Source:** `TopExp_Explorer.hxx`:110 - `TopExp_Explorer::Init()`
     /// Resets this explorer on the shape S. It is initialized to
     /// search the shape S, for shapes of type ToFind, that
     /// are not part of a shape ToAvoid.
@@ -304,7 +298,7 @@ impl Explorer {
         })
     }
 
-    /// **Source:** `TopExp_Explorer.hxx`:113 - `TopExp_Explorer::More()`
+    /// **Source:** `TopExp_Explorer.hxx`:115 - `TopExp_Explorer::More()`
     /// Returns True if there are more shapes in the exploration.
     pub fn more(&self) -> bool {
         crate::check_result(unsafe {
@@ -314,18 +308,14 @@ impl Explorer {
 
     /// **Source:** `TopExp_Explorer.hxx`:118 - `TopExp_Explorer::Next()`
     /// Moves to the next Shape in the exploration.
-    /// Exceptions
-    /// Standard_NoMoreObject if there are no more shapes to explore.
     pub fn next(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBRep::TopExp_Explorer_next(self as *mut Self)
         })
     }
 
-    /// **Source:** `TopExp_Explorer.hxx`:123 - `TopExp_Explorer::Value()`
+    /// **Source:** `TopExp_Explorer.hxx`:121 - `TopExp_Explorer::Value()`
     /// Returns the current shape in the exploration.
-    /// Exceptions
-    /// Standard_NoSuchObject if this explorer has no more shapes to explore.
     pub fn value(&self) -> &crate::topo_ds::Shape {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKBRep::TopExp_Explorer_value(
@@ -334,10 +324,8 @@ impl Explorer {
         }
     }
 
-    /// **Source:** `TopExp_Explorer.hxx`:128 - `TopExp_Explorer::Current()`
+    /// **Source:** `TopExp_Explorer.hxx`:124 - `TopExp_Explorer::Current()`
     /// Returns the current shape in the exploration.
-    /// Exceptions
-    /// Standard_NoSuchObject if this explorer has no more shapes to explore.
     pub fn current(&self) -> &crate::topo_ds::Shape {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKBRep::TopExp_Explorer_current(
@@ -346,7 +334,7 @@ impl Explorer {
         }
     }
 
-    /// **Source:** `TopExp_Explorer.hxx`:131 - `TopExp_Explorer::ReInit()`
+    /// **Source:** `TopExp_Explorer.hxx`:127 - `TopExp_Explorer::ReInit()`
     /// Reinitialize the exploration with the original arguments.
     pub fn re_init(&mut self) {
         crate::check_void_result(unsafe {
@@ -354,7 +342,7 @@ impl Explorer {
         })
     }
 
-    /// **Source:** `TopExp_Explorer.hxx`:134 - `TopExp_Explorer::ExploredShape()`
+    /// **Source:** `TopExp_Explorer.hxx`:130 - `TopExp_Explorer::ExploredShape()`
     /// Return explored shape.
     pub fn explored_shape(&self) -> &crate::topo_ds::Shape {
         unsafe {
@@ -364,7 +352,7 @@ impl Explorer {
         }
     }
 
-    /// **Source:** `TopExp_Explorer.hxx`:138 - `TopExp_Explorer::Depth()`
+    /// **Source:** `TopExp_Explorer.hxx`:134 - `TopExp_Explorer::Depth()`
     /// Returns the current depth of the exploration. 0 is
     /// the shape to explore itself.
     pub fn depth(&self) -> i32 {
@@ -373,12 +361,24 @@ impl Explorer {
         })
     }
 
-    /// **Source:** `TopExp_Explorer.hxx`:142 - `TopExp_Explorer::Clear()`
-    /// Clears the content of the explorer. It will return
-    /// False on More().
+    /// **Source:** `TopExp_Explorer.hxx`:137 - `TopExp_Explorer::Clear()`
+    /// Clears the content of the explorer.
     pub fn clear(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBRep::TopExp_Explorer_clear(self as *mut Self)
         })
     }
 }
+
+// ── Skipped symbols for Explorer (2 total) ──
+// SKIPPED: **Source:** `TopExp_Explorer.hxx`:144 - `TopExp_Explorer::begin`
+//   method: Returns an STL-compatible iterator for range-based for loops.
+//   method: @warning Do not call Next() or Init() externally during range-for iteration.
+//   Reason: has unbindable types: return: unresolved template type (NCollection_ForwardRangeIterator<TopExp_Explorer>)
+//   // pub fn begin(&mut self) -> OwnedPtr<NCollection_ForwardRangeIterator<TopExp_Explorer>>;
+//
+// SKIPPED: **Source:** `TopExp_Explorer.hxx`:150 - `TopExp_Explorer::end`
+//   method: Returns a sentinel marking the end of iteration.
+//   Reason: return type 'NCollection_ForwardRangeSentinel' is unknown
+//   // pub fn end(&self) -> OwnedPtr<NCollection_ForwardRangeSentinel>;
+//

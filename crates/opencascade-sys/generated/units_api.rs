@@ -16,7 +16,7 @@ pub fn current_to_ls(aData: f64, aQuantity: &str) -> f64 {
         crate::ffi_extern_TKernel::UnitsAPI_current_to_ls(aData, c_aQuantity.as_ptr())
     })
 }
-/// **Source:** `UnitsAPI.hxx`:67 - `UnitsAPI::CurrentToSI`
+/// **Source:** `UnitsAPI.hxx`:66 - `UnitsAPI::CurrentToSI`
 /// Converts the current unit value to the SI system units value.
 /// Example: CurrentToSI(1.,"LENGTH") returns 0.001 if current length unit
 /// is millimeter.
@@ -26,7 +26,7 @@ pub fn current_to_si(aData: f64, aQuantity: &str) -> f64 {
         crate::ffi_extern_TKernel::UnitsAPI_current_to_si(aData, c_aQuantity.as_ptr())
     })
 }
-/// **Source:** `UnitsAPI.hxx`:73 - `UnitsAPI::CurrentFromLS`
+/// **Source:** `UnitsAPI.hxx`:71 - `UnitsAPI::CurrentFromLS`
 /// Converts the local system units value to the current unit value.
 /// Example: CurrentFromLS(1000.,"LENGTH") returns 1. if current length unit
 /// is meter and LocalSystem is MDTV.
@@ -36,7 +36,7 @@ pub fn current_from_ls(aData: f64, aQuantity: &str) -> f64 {
         crate::ffi_extern_TKernel::UnitsAPI_current_from_ls(aData, c_aQuantity.as_ptr())
     })
 }
-/// **Source:** `UnitsAPI.hxx`:79 - `UnitsAPI::CurrentFromSI`
+/// **Source:** `UnitsAPI.hxx`:76 - `UnitsAPI::CurrentFromSI`
 /// Converts the SI system units value to the current unit value.
 /// Example: CurrentFromSI(0.001,"LENGTH") returns 1 if current length unit
 /// is millimeter.
@@ -46,7 +46,7 @@ pub fn current_from_si(aData: f64, aQuantity: &str) -> f64 {
         crate::ffi_extern_TKernel::UnitsAPI_current_from_si(aData, c_aQuantity.as_ptr())
     })
 }
-/// **Source:** `UnitsAPI.hxx`:84 - `UnitsAPI::AnyToLS`
+/// **Source:** `UnitsAPI.hxx`:80 - `UnitsAPI::AnyToLS`
 /// Converts the local unit value to the local system units value.
 /// Example: AnyToLS(1.,"in.") returns 25.4 if the LocalSystem is MDTV.
 pub fn any_to_ls_real_charptr(aData: f64, aUnit: &str) -> f64 {
@@ -55,13 +55,13 @@ pub fn any_to_ls_real_charptr(aData: f64, aUnit: &str) -> f64 {
         crate::ffi_extern_TKernel::UnitsAPI_any_to_ls_real_charptr(aData, c_aUnit.as_ptr())
     })
 }
-/// **Source:** `UnitsAPI.hxx`:89 - `UnitsAPI::AnyToLS`
+/// **Source:** `UnitsAPI.hxx`:84 - `UnitsAPI::AnyToLS`
 /// Converts the local unit value to the local system units value.
 /// and gives the associated dimension of the unit
 pub fn any_to_ls_real_charptr_handleunitsdimensions(
     aData: f64,
     aUnit: &str,
-    aDim: &mut crate::ffi_types::HandleUnitsDimensions,
+    aDim: &mut crate::ffi_types::Handle_Units_Dimensions,
 ) -> f64 {
     let c_aUnit = std::ffi::CString::new(aUnit).unwrap();
     crate::check_result(unsafe {
@@ -72,7 +72,7 @@ pub fn any_to_ls_real_charptr_handleunitsdimensions(
         )
     })
 }
-/// **Source:** `UnitsAPI.hxx`:95 - `UnitsAPI::AnyToSI`
+/// **Source:** `UnitsAPI.hxx`:90 - `UnitsAPI::AnyToSI`
 /// Converts the local unit value to the SI system units value.
 /// Example: AnyToSI(1.,"in.") returns 0.0254
 pub fn any_to_si_real_charptr(aData: f64, aUnit: &str) -> f64 {
@@ -81,13 +81,13 @@ pub fn any_to_si_real_charptr(aData: f64, aUnit: &str) -> f64 {
         crate::ffi_extern_TKernel::UnitsAPI_any_to_si_real_charptr(aData, c_aUnit.as_ptr())
     })
 }
-/// **Source:** `UnitsAPI.hxx`:100 - `UnitsAPI::AnyToSI`
+/// **Source:** `UnitsAPI.hxx`:94 - `UnitsAPI::AnyToSI`
 /// Converts the local unit value to the SI system units value.
 /// and gives the associated dimension of the unit
 pub fn any_to_si_real_charptr_handleunitsdimensions(
     aData: f64,
     aUnit: &str,
-    aDim: &mut crate::ffi_types::HandleUnitsDimensions,
+    aDim: &mut crate::ffi_types::Handle_Units_Dimensions,
 ) -> f64 {
     let c_aUnit = std::ffi::CString::new(aUnit).unwrap();
     crate::check_result(unsafe {
@@ -98,7 +98,7 @@ pub fn any_to_si_real_charptr_handleunitsdimensions(
         )
     })
 }
-/// **Source:** `UnitsAPI.hxx`:107 - `UnitsAPI::AnyFromLS`
+/// **Source:** `UnitsAPI.hxx`:101 - `UnitsAPI::AnyFromLS`
 /// Converts the local system units value to the local unit value.
 /// Example: AnyFromLS(25.4,"in.") returns 1. if the LocalSystem is MDTV.
 /// Note: aUnit is also used to identify the type of physical quantity to convert.
@@ -108,7 +108,7 @@ pub fn any_from_ls(aData: f64, aUnit: &str) -> f64 {
         crate::ffi_extern_TKernel::UnitsAPI_any_from_ls(aData, c_aUnit.as_ptr())
     })
 }
-/// **Source:** `UnitsAPI.hxx`:113 - `UnitsAPI::AnyFromSI`
+/// **Source:** `UnitsAPI.hxx`:106 - `UnitsAPI::AnyFromSI`
 /// Converts the SI system units value to the local unit value.
 /// Example: AnyFromSI(0.0254,"in.") returns 0.001
 /// Note: aUnit is also used to identify the type of physical quantity to convert.
@@ -118,7 +118,7 @@ pub fn any_from_si(aData: f64, aUnit: &str) -> f64 {
         crate::ffi_extern_TKernel::UnitsAPI_any_from_si(aData, c_aUnit.as_ptr())
     })
 }
-/// **Source:** `UnitsAPI.hxx`:120 - `UnitsAPI::CurrentToAny`
+/// **Source:** `UnitsAPI.hxx`:112 - `UnitsAPI::CurrentToAny`
 /// Converts the aData value expressed in the
 /// current unit for the working environment, as
 /// defined for the physical quantity aQuantity by the
@@ -134,7 +134,7 @@ pub fn current_to_any(aData: f64, aQuantity: &str, aUnit: &str) -> f64 {
         )
     })
 }
-/// **Source:** `UnitsAPI.hxx`:128 - `UnitsAPI::CurrentFromAny`
+/// **Source:** `UnitsAPI.hxx`:120 - `UnitsAPI::CurrentFromAny`
 /// Converts the aData value expressed in the unit
 /// aUnit, into the current unit for the working
 /// environment, as defined for the physical quantity
@@ -150,9 +150,9 @@ pub fn current_from_any(aData: f64, aQuantity: &str, aUnit: &str) -> f64 {
         )
     })
 }
-/// **Source:** `UnitsAPI.hxx`:134 - `UnitsAPI::AnyToAny`
+/// **Source:** `UnitsAPI.hxx`:126 - `UnitsAPI::AnyToAny`
 /// Converts the local unit value to another local unit value.
-/// Example: AnyToAny(0.0254,"in.","millimeter") returns 1. ;
+/// Example: AnyToAny(0.0254,"in.","mm") returns 1. ;
 pub fn any_to_any(aData: f64, aUnit1: &str, aUnit2: &str) -> f64 {
     let c_aUnit1 = std::ffi::CString::new(aUnit1).unwrap();
     let c_aUnit2 = std::ffi::CString::new(aUnit2).unwrap();
@@ -160,7 +160,7 @@ pub fn any_to_any(aData: f64, aUnit1: &str, aUnit2: &str) -> f64 {
         crate::ffi_extern_TKernel::UnitsAPI_any_to_any(aData, c_aUnit1.as_ptr(), c_aUnit2.as_ptr())
     })
 }
-/// **Source:** `UnitsAPI.hxx`:141 - `UnitsAPI::LSToSI`
+/// **Source:** `UnitsAPI.hxx`:133 - `UnitsAPI::LSToSI`
 /// Converts the local system units value to the SI system unit value.
 /// Example: LSToSI(1.,"LENGTH") returns 0.001 if the local system
 /// length unit is millimeter.
@@ -170,7 +170,7 @@ pub fn ls_to_si(aData: f64, aQuantity: &str) -> f64 {
         crate::ffi_extern_TKernel::UnitsAPI_ls_to_si(aData, c_aQuantity.as_ptr())
     })
 }
-/// **Source:** `UnitsAPI.hxx`:147 - `UnitsAPI::SIToLS`
+/// **Source:** `UnitsAPI.hxx`:138 - `UnitsAPI::SIToLS`
 /// Converts the SI system unit value to the local system units value.
 /// Example: SIToLS(1.,"LENGTH") returns 1000. if the local system
 /// length unit is millimeter.
@@ -180,7 +180,7 @@ pub fn si_to_ls(aData: f64, aQuantity: &str) -> f64 {
         crate::ffi_extern_TKernel::UnitsAPI_si_to_ls(aData, c_aQuantity.as_ptr())
     })
 }
-/// **Source:** `UnitsAPI.hxx`:152 - `UnitsAPI::SetLocalSystem`
+/// **Source:** `UnitsAPI.hxx`:142 - `UnitsAPI::SetLocalSystem`
 /// Sets the local system units.
 /// Example: SetLocalSystem(UnitsAPI_MDTV)
 pub fn set_local_system(aSystemUnit: crate::units_api::SystemUnits) {
@@ -188,7 +188,7 @@ pub fn set_local_system(aSystemUnit: crate::units_api::SystemUnits) {
         crate::ffi_extern_TKernel::UnitsAPI_set_local_system(aSystemUnit.into())
     })
 }
-/// **Source:** `UnitsAPI.hxx`:155 - `UnitsAPI::LocalSystem`
+/// **Source:** `UnitsAPI.hxx`:145 - `UnitsAPI::LocalSystem`
 /// Returns the current local system units.
 pub fn local_system() -> crate::units_api::SystemUnits {
     crate::units_api::SystemUnits::try_from(crate::check_result(unsafe {
@@ -196,9 +196,9 @@ pub fn local_system() -> crate::units_api::SystemUnits {
     }))
     .unwrap()
 }
-/// **Source:** `UnitsAPI.hxx`:159 - `UnitsAPI::SetCurrentUnit`
+/// **Source:** `UnitsAPI.hxx`:149 - `UnitsAPI::SetCurrentUnit`
 /// Sets the current unit dimension <aUnit> to the unit quantity <aQuantity>.
-/// Example: SetCurrentUnit("LENGTH","millimeter")
+/// Example: SetCurrentUnit("LENGTH","mm")
 pub fn set_current_unit(aQuantity: &str, aUnit: &str) {
     let c_aQuantity = std::ffi::CString::new(aQuantity).unwrap();
     let c_aUnit = std::ffi::CString::new(aUnit).unwrap();
@@ -206,7 +206,7 @@ pub fn set_current_unit(aQuantity: &str, aUnit: &str) {
         crate::ffi_extern_TKernel::UnitsAPI_set_current_unit(c_aQuantity.as_ptr(), c_aUnit.as_ptr())
     })
 }
-/// **Source:** `UnitsAPI.hxx`:163 - `UnitsAPI::CurrentUnit`
+/// **Source:** `UnitsAPI.hxx`:152 - `UnitsAPI::CurrentUnit`
 /// Returns the current unit dimension <aUnit> from the unit quantity <aQuantity>.
 pub fn current_unit(aQuantity: &str) -> std::string::String {
     let c_aQuantity = std::ffi::CString::new(aQuantity).unwrap();
@@ -218,19 +218,19 @@ pub fn current_unit(aQuantity: &str) -> std::string::String {
     .to_string_lossy()
     .into_owned()
 }
-/// **Source:** `UnitsAPI.hxx`:167 - `UnitsAPI::Save`
+/// **Source:** `UnitsAPI.hxx`:156 - `UnitsAPI::Save`
 /// saves the units in the file .CurrentUnits of the directory pointed by the
 /// CSF_CurrentUnitsUserDefaults environment variable.
 pub fn save() {
     crate::check_void_result(unsafe { crate::ffi_extern_TKernel::UnitsAPI_save() })
 }
-/// **Source:** `UnitsAPI.hxx`:169 - `UnitsAPI::Reload`
+/// **Source:** `UnitsAPI.hxx`:158 - `UnitsAPI::Reload`
 pub fn reload() {
     crate::check_void_result(unsafe { crate::ffi_extern_TKernel::UnitsAPI_reload() })
 }
-/// **Source:** `UnitsAPI.hxx`:172 - `UnitsAPI::Dimensions`
+/// **Source:** `UnitsAPI.hxx`:161 - `UnitsAPI::Dimensions`
 /// return the dimension associated to the quantity
-pub fn dimensions(aQuantity: &str) -> crate::OwnedPtr<crate::ffi_types::HandleUnitsDimensions> {
+pub fn dimensions(aQuantity: &str) -> crate::OwnedPtr<crate::ffi_types::Handle_Units_Dimensions> {
     let c_aQuantity = std::ffi::CString::new(aQuantity).unwrap();
     unsafe {
         crate::OwnedPtr::from_raw(crate::check_result(
@@ -238,89 +238,91 @@ pub fn dimensions(aQuantity: &str) -> crate::OwnedPtr<crate::ffi_types::HandleUn
         ))
     }
 }
-/// **Source:** `UnitsAPI.hxx`:174 - `UnitsAPI::DimensionLess`
-pub fn dimension_less() -> crate::OwnedPtr<crate::ffi_types::HandleUnitsDimensions> {
+/// **Source:** `UnitsAPI.hxx`:163 - `UnitsAPI::DimensionLess`
+pub fn dimension_less() -> crate::OwnedPtr<crate::ffi_types::Handle_Units_Dimensions> {
     unsafe {
         crate::OwnedPtr::from_raw(crate::check_result(
             crate::ffi_extern_TKernel::UnitsAPI_dimension_less(),
         ))
     }
 }
-/// **Source:** `UnitsAPI.hxx`:176 - `UnitsAPI::DimensionMass`
-pub fn dimension_mass() -> crate::OwnedPtr<crate::ffi_types::HandleUnitsDimensions> {
+/// **Source:** `UnitsAPI.hxx`:165 - `UnitsAPI::DimensionMass`
+pub fn dimension_mass() -> crate::OwnedPtr<crate::ffi_types::Handle_Units_Dimensions> {
     unsafe {
         crate::OwnedPtr::from_raw(crate::check_result(
             crate::ffi_extern_TKernel::UnitsAPI_dimension_mass(),
         ))
     }
 }
-/// **Source:** `UnitsAPI.hxx`:178 - `UnitsAPI::DimensionLength`
-pub fn dimension_length() -> crate::OwnedPtr<crate::ffi_types::HandleUnitsDimensions> {
+/// **Source:** `UnitsAPI.hxx`:167 - `UnitsAPI::DimensionLength`
+pub fn dimension_length() -> crate::OwnedPtr<crate::ffi_types::Handle_Units_Dimensions> {
     unsafe {
         crate::OwnedPtr::from_raw(crate::check_result(
             crate::ffi_extern_TKernel::UnitsAPI_dimension_length(),
         ))
     }
 }
-/// **Source:** `UnitsAPI.hxx`:180 - `UnitsAPI::DimensionTime`
-pub fn dimension_time() -> crate::OwnedPtr<crate::ffi_types::HandleUnitsDimensions> {
+/// **Source:** `UnitsAPI.hxx`:169 - `UnitsAPI::DimensionTime`
+pub fn dimension_time() -> crate::OwnedPtr<crate::ffi_types::Handle_Units_Dimensions> {
     unsafe {
         crate::OwnedPtr::from_raw(crate::check_result(
             crate::ffi_extern_TKernel::UnitsAPI_dimension_time(),
         ))
     }
 }
-/// **Source:** `UnitsAPI.hxx`:182 - `UnitsAPI::DimensionElectricCurrent`
-pub fn dimension_electric_current() -> crate::OwnedPtr<crate::ffi_types::HandleUnitsDimensions> {
+/// **Source:** `UnitsAPI.hxx`:171 - `UnitsAPI::DimensionElectricCurrent`
+pub fn dimension_electric_current() -> crate::OwnedPtr<crate::ffi_types::Handle_Units_Dimensions> {
     unsafe {
         crate::OwnedPtr::from_raw(crate::check_result(
             crate::ffi_extern_TKernel::UnitsAPI_dimension_electric_current(),
         ))
     }
 }
-/// **Source:** `UnitsAPI.hxx`:184 - `UnitsAPI::DimensionThermodynamicTemperature`
+/// **Source:** `UnitsAPI.hxx`:173 - `UnitsAPI::DimensionThermodynamicTemperature`
 pub fn dimension_thermodynamic_temperature(
-) -> crate::OwnedPtr<crate::ffi_types::HandleUnitsDimensions> {
+) -> crate::OwnedPtr<crate::ffi_types::Handle_Units_Dimensions> {
     unsafe {
         crate::OwnedPtr::from_raw(crate::check_result(
             crate::ffi_extern_TKernel::UnitsAPI_dimension_thermodynamic_temperature(),
         ))
     }
 }
-/// **Source:** `UnitsAPI.hxx`:186 - `UnitsAPI::DimensionAmountOfSubstance`
-pub fn dimension_amount_of_substance() -> crate::OwnedPtr<crate::ffi_types::HandleUnitsDimensions> {
+/// **Source:** `UnitsAPI.hxx`:175 - `UnitsAPI::DimensionAmountOfSubstance`
+pub fn dimension_amount_of_substance() -> crate::OwnedPtr<crate::ffi_types::Handle_Units_Dimensions>
+{
     unsafe {
         crate::OwnedPtr::from_raw(crate::check_result(
             crate::ffi_extern_TKernel::UnitsAPI_dimension_amount_of_substance(),
         ))
     }
 }
-/// **Source:** `UnitsAPI.hxx`:188 - `UnitsAPI::DimensionLuminousIntensity`
-pub fn dimension_luminous_intensity() -> crate::OwnedPtr<crate::ffi_types::HandleUnitsDimensions> {
+/// **Source:** `UnitsAPI.hxx`:177 - `UnitsAPI::DimensionLuminousIntensity`
+pub fn dimension_luminous_intensity() -> crate::OwnedPtr<crate::ffi_types::Handle_Units_Dimensions>
+{
     unsafe {
         crate::OwnedPtr::from_raw(crate::check_result(
             crate::ffi_extern_TKernel::UnitsAPI_dimension_luminous_intensity(),
         ))
     }
 }
-/// **Source:** `UnitsAPI.hxx`:190 - `UnitsAPI::DimensionPlaneAngle`
-pub fn dimension_plane_angle() -> crate::OwnedPtr<crate::ffi_types::HandleUnitsDimensions> {
+/// **Source:** `UnitsAPI.hxx`:179 - `UnitsAPI::DimensionPlaneAngle`
+pub fn dimension_plane_angle() -> crate::OwnedPtr<crate::ffi_types::Handle_Units_Dimensions> {
     unsafe {
         crate::OwnedPtr::from_raw(crate::check_result(
             crate::ffi_extern_TKernel::UnitsAPI_dimension_plane_angle(),
         ))
     }
 }
-/// **Source:** `UnitsAPI.hxx`:193 - `UnitsAPI::DimensionSolidAngle`
+/// **Source:** `UnitsAPI.hxx`:182 - `UnitsAPI::DimensionSolidAngle`
 /// Returns the basic dimensions.
-pub fn dimension_solid_angle() -> crate::OwnedPtr<crate::ffi_types::HandleUnitsDimensions> {
+pub fn dimension_solid_angle() -> crate::OwnedPtr<crate::ffi_types::Handle_Units_Dimensions> {
     unsafe {
         crate::OwnedPtr::from_raw(crate::check_result(
             crate::ffi_extern_TKernel::UnitsAPI_dimension_solid_angle(),
         ))
     }
 }
-/// **Source:** `UnitsAPI.hxx`:198 - `UnitsAPI::Check`
+/// **Source:** `UnitsAPI.hxx`:187 - `UnitsAPI::Check`
 /// Checks the coherence between the quantity <aQuantity>
 /// and the unit <aUnits> in the current system and
 /// returns FALSE when it's WRONG.

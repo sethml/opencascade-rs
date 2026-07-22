@@ -10,7 +10,7 @@
 // From BRepToIGESBRep_Entity.hxx
 // ========================
 
-/// **Source:** `BRepToIGESBRep_Entity.hxx`:49 - `BRepToIGESBRep_Entity`
+/// **Source:** `BRepToIGESBRep_Entity.hxx`:50 - `BRepToIGESBRep_Entity`
 /// provides methods to transfer BRep entity from CASCADE to IGESBRep.
 pub use crate::ffi_types::BRepToIGESBRep_Entity as Entity;
 
@@ -23,7 +23,7 @@ unsafe impl crate::CppDeletable for Entity {
 }
 
 impl Entity {
-    /// **Source:** `BRepToIGESBRep_Entity.hxx`:55 - `BRepToIGESBRep_Entity::BRepToIGESBRep_Entity()`
+    /// **Source:** `BRepToIGESBRep_Entity.hxx`:56 - `BRepToIGESBRep_Entity::BRepToIGESBRep_Entity()`
     /// Creates a tool Entity
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
@@ -33,7 +33,7 @@ impl Entity {
         }
     }
 
-    /// **Source:** `BRepToIGESBRep_Entity.hxx`:58 - `BRepToIGESBRep_Entity::Clear()`
+    /// **Source:** `BRepToIGESBRep_Entity.hxx`:59 - `BRepToIGESBRep_Entity::Clear()`
     /// Clears the contents of the fields
     pub fn clear(&mut self) {
         crate::check_void_result(unsafe {
@@ -41,7 +41,7 @@ impl Entity {
         })
     }
 
-    /// **Source:** `BRepToIGESBRep_Entity.hxx`:61 - `BRepToIGESBRep_Entity::TransferVertexList()`
+    /// **Source:** `BRepToIGESBRep_Entity.hxx`:62 - `BRepToIGESBRep_Entity::TransferVertexList()`
     /// Create the VertexList entity
     pub fn transfer_vertex_list(&mut self) {
         crate::check_void_result(unsafe {
@@ -51,7 +51,7 @@ impl Entity {
         })
     }
 
-    /// **Source:** `BRepToIGESBRep_Entity.hxx`:64 - `BRepToIGESBRep_Entity::IndexVertex()`
+    /// **Source:** `BRepToIGESBRep_Entity.hxx`:65 - `BRepToIGESBRep_Entity::IndexVertex()`
     /// Returns the index of <myvertex> in "myVertices"
     pub fn index_vertex(&self, myvertex: &crate::topo_ds::Vertex) -> i32 {
         crate::check_result(unsafe {
@@ -62,7 +62,7 @@ impl Entity {
         })
     }
 
-    /// **Source:** `BRepToIGESBRep_Entity.hxx`:68 - `BRepToIGESBRep_Entity::AddVertex()`
+    /// **Source:** `BRepToIGESBRep_Entity.hxx`:69 - `BRepToIGESBRep_Entity::AddVertex()`
     /// Stores <myvertex> in "myVertices"
     /// Returns the index of <myvertex>.
     pub fn add_vertex(&mut self, myvertex: &crate::topo_ds::Vertex) -> i32 {
@@ -74,15 +74,15 @@ impl Entity {
         })
     }
 
-    /// **Source:** `BRepToIGESBRep_Entity.hxx`:71 - `BRepToIGESBRep_Entity::TransferEdgeList()`
-    /// Transfert an Edge entity from TopoDS to IGES
+    /// **Source:** `BRepToIGESBRep_Entity.hxx`:72 - `BRepToIGESBRep_Entity::TransferEdgeList()`
+    /// Transfer an Edge entity from TopoDS to IGES
     pub fn transfer_edge_list(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEIGES::BRepToIGESBRep_Entity_transfer_edge_list(self as *mut Self)
         })
     }
 
-    /// **Source:** `BRepToIGESBRep_Entity.hxx`:74 - `BRepToIGESBRep_Entity::IndexEdge()`
+    /// **Source:** `BRepToIGESBRep_Entity.hxx`:75 - `BRepToIGESBRep_Entity::IndexEdge()`
     /// Returns the index of <myedge> in "myEdges"
     pub fn index_edge(&self, myedge: &crate::topo_ds::Edge) -> i32 {
         crate::check_result(unsafe {
@@ -93,13 +93,13 @@ impl Entity {
         })
     }
 
-    /// **Source:** `BRepToIGESBRep_Entity.hxx`:78 - `BRepToIGESBRep_Entity::AddEdge()`
+    /// **Source:** `BRepToIGESBRep_Entity.hxx`:79 - `BRepToIGESBRep_Entity::AddEdge()`
     /// Stores <myedge> in "myEdges" and <mycurve3d> in "myCurves".
     /// Returns the index of <myedge>.
     pub fn add_edge(
         &mut self,
         myedge: &crate::topo_ds::Edge,
-        mycurve3d: &crate::ffi_types::HandleIGESDataIGESEntity,
+        mycurve3d: &crate::ffi_types::Handle_IGESData_IGESEntity,
     ) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::BRepToIGESBRep_Entity_add_edge(
@@ -110,14 +110,14 @@ impl Entity {
         })
     }
 
-    /// **Source:** `BRepToIGESBRep_Entity.hxx`:83 - `BRepToIGESBRep_Entity::TransferShape()`
+    /// **Source:** `BRepToIGESBRep_Entity.hxx`:84 - `BRepToIGESBRep_Entity::TransferShape()`
     /// Returns the result of the transfert of any Shape
-    /// If  the transfer has  failed, this member return a NullEntity.
+    /// If the transfer has failed, this member returns a NullEntity.
     pub fn transfer_shape(
         &mut self,
         start: &crate::topo_ds::Shape,
         theProgress: &crate::message::ProgressRange,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataIGESEntity> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_IGESData_IGESEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDEIGES::BRepToIGESBRep_Entity_transfer_shape(
@@ -129,13 +129,13 @@ impl Entity {
         }
     }
 
-    /// **Source:** `BRepToIGESBRep_Entity.hxx`:89 - `BRepToIGESBRep_Entity::TransferEdge()`
-    /// Transfert an Edge entity from TopoDS to IGES
+    /// **Source:** `BRepToIGESBRep_Entity.hxx`:90 - `BRepToIGESBRep_Entity::TransferEdge()`
+    /// Transfer an Edge entity from TopoDS to IGES
     /// If this Entity could not be converted, this member returns a NullEntity.
     pub fn transfer_edge_edge(
         &mut self,
         myedge: &crate::topo_ds::Edge,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataIGESEntity> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_IGESData_IGESEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDEIGES::BRepToIGESBRep_Entity_transfer_edge_edge(
@@ -146,15 +146,15 @@ impl Entity {
         }
     }
 
-    /// **Source:** `BRepToIGESBRep_Entity.hxx`:93 - `BRepToIGESBRep_Entity::TransferEdge()`
-    /// Transfert an Edge entity from TopoDS to IGES
+    /// **Source:** `BRepToIGESBRep_Entity.hxx`:94 - `BRepToIGESBRep_Entity::TransferEdge()`
+    /// Transfer an Edge entity from TopoDS to IGES
     /// If this Entity could not be converted, this member returns a NullEntity.
     pub fn transfer_edge_edge_face_real(
         &mut self,
         myedge: &crate::topo_ds::Edge,
         myface: &crate::topo_ds::Face,
         length: f64,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataIGESEntity> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_IGESData_IGESEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDEIGES::BRepToIGESBRep_Entity_transfer_edge_edge_face_real(
@@ -167,8 +167,8 @@ impl Entity {
         }
     }
 
-    /// **Source:** `BRepToIGESBRep_Entity.hxx`:100 - `BRepToIGESBRep_Entity::TransferWire()`
-    /// Transfert a Wire entity from TopoDS to IGES.
+    /// **Source:** `BRepToIGESBRep_Entity.hxx`:101 - `BRepToIGESBRep_Entity::TransferWire()`
+    /// Transfer a Wire entity from TopoDS to IGES.
     /// Returns the curve associated to mywire in the parametric space of myface.
     /// If this Entity could not be converted, this member returns a NullEntity.
     pub fn transfer_wire(
@@ -176,7 +176,7 @@ impl Entity {
         mywire: &crate::topo_ds::Wire,
         myface: &crate::topo_ds::Face,
         length: f64,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESSolidLoop> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_IGESSolid_Loop> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDEIGES::BRepToIGESBRep_Entity_transfer_wire(
@@ -189,13 +189,13 @@ impl Entity {
         }
     }
 
-    /// **Source:** `BRepToIGESBRep_Entity.hxx`:106 - `BRepToIGESBRep_Entity::TransferFace()`
-    /// Transfert a Face entity from TopoDS to IGES
+    /// **Source:** `BRepToIGESBRep_Entity.hxx`:107 - `BRepToIGESBRep_Entity::TransferFace()`
+    /// Transfer a Face entity from TopoDS to IGES
     /// If this Entity could not be converted, this member returns a NullEntity.
     pub fn transfer_face(
         &mut self,
         start: &crate::topo_ds::Face,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESSolidFace> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_IGESSolid_Face> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDEIGES::BRepToIGESBRep_Entity_transfer_face(
@@ -206,14 +206,14 @@ impl Entity {
         }
     }
 
-    /// **Source:** `BRepToIGESBRep_Entity.hxx`:110 - `BRepToIGESBRep_Entity::TransferShell()`
-    /// Transfert an Shell entity from TopoDS to IGES
+    /// **Source:** `BRepToIGESBRep_Entity.hxx`:111 - `BRepToIGESBRep_Entity::TransferShell()`
+    /// Transfer an Shell entity from TopoDS to IGES
     /// If this Entity could not be converted, this member returns a NullEntity.
     pub fn transfer_shell(
         &mut self,
         start: &crate::topo_ds::Shell,
         theProgress: &crate::message::ProgressRange,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESSolidShell> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_IGESSolid_Shell> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDEIGES::BRepToIGESBRep_Entity_transfer_shell(
@@ -225,14 +225,14 @@ impl Entity {
         }
     }
 
-    /// **Source:** `BRepToIGESBRep_Entity.hxx`:116 - `BRepToIGESBRep_Entity::TransferSolid()`
-    /// Transfert a Solid entity from TopoDS to IGES
+    /// **Source:** `BRepToIGESBRep_Entity.hxx`:117 - `BRepToIGESBRep_Entity::TransferSolid()`
+    /// Transfer a Solid entity from TopoDS to IGES
     /// If this Entity could not be converted, this member returns a NullEntity.
     pub fn transfer_solid(
         &mut self,
         start: &crate::topo_ds::Solid,
         theProgress: &crate::message::ProgressRange,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESSolidManifoldSolid> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_IGESSolid_ManifoldSolid> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDEIGES::BRepToIGESBRep_Entity_transfer_solid(
@@ -244,14 +244,14 @@ impl Entity {
         }
     }
 
-    /// **Source:** `BRepToIGESBRep_Entity.hxx`:122 - `BRepToIGESBRep_Entity::TransferCompSolid()`
-    /// Transfert an CompSolid entity from TopoDS to IGES
+    /// **Source:** `BRepToIGESBRep_Entity.hxx`:123 - `BRepToIGESBRep_Entity::TransferCompSolid()`
+    /// Transfer an CompSolid entity from TopoDS to IGES
     /// If this Entity could not be converted, this member returns a NullEntity.
     pub fn transfer_comp_solid(
         &mut self,
         start: &crate::topo_ds::CompSolid,
         theProgress: &crate::message::ProgressRange,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataIGESEntity> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_IGESData_IGESEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDEIGES::BRepToIGESBRep_Entity_transfer_comp_solid(
@@ -263,14 +263,14 @@ impl Entity {
         }
     }
 
-    /// **Source:** `BRepToIGESBRep_Entity.hxx`:128 - `BRepToIGESBRep_Entity::TransferCompound()`
-    /// Transfert a Compound entity from TopoDS to IGES
+    /// **Source:** `BRepToIGESBRep_Entity.hxx`:129 - `BRepToIGESBRep_Entity::TransferCompound()`
+    /// Transfer a Compound entity from TopoDS to IGES
     /// If this Entity could not be converted, this member returns a NullEntity.
     pub fn transfer_compound(
         &mut self,
         start: &crate::topo_ds::Compound,
         theProgress: &crate::message::ProgressRange,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataIGESEntity> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_IGESData_IGESEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDEIGES::BRepToIGESBRep_Entity_transfer_compound(
@@ -312,7 +312,7 @@ impl Entity {
     }
 
     /// Inherited: **Source:** `BRepToIGES_BREntity.hxx`:47 - `BRepToIGES_BREntity::SetModel()`
-    pub fn set_model(&mut self, model: &crate::ffi_types::HandleIGESDataIGESModel) {
+    pub fn set_model(&mut self, model: &crate::ffi_types::Handle_IGESData_IGESModel) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEIGES::BRepToIGESBRep_Entity_inherited_SetModel(
                 self as *mut Self,
@@ -322,7 +322,7 @@ impl Entity {
     }
 
     /// Inherited: **Source:** `BRepToIGES_BREntity.hxx`:50 - `BRepToIGES_BREntity::GetModel()`
-    pub fn get_model(&self) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataIGESModel> {
+    pub fn get_model(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_IGESData_IGESModel> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDEIGES::BRepToIGESBRep_Entity_inherited_GetModel(
@@ -340,7 +340,7 @@ impl Entity {
     }
 
     /// Inherited: **Source:** `BRepToIGES_BREntity.hxx`:57 - `BRepToIGES_BREntity::SetTransferProcess()`
-    pub fn set_transfer_process(&mut self, TP: &crate::ffi_types::HandleTransferFinderProcess) {
+    pub fn set_transfer_process(&mut self, TP: &crate::ffi_types::Handle_Transfer_FinderProcess) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEIGES::BRepToIGESBRep_Entity_inherited_SetTransferProcess(
                 self as *mut Self,
@@ -352,7 +352,7 @@ impl Entity {
     /// Inherited: **Source:** `BRepToIGES_BREntity.hxx`:60 - `BRepToIGES_BREntity::GetTransferProcess()`
     pub fn get_transfer_process(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleTransferFinderProcess> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Transfer_FinderProcess> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDEIGES::BRepToIGESBRep_Entity_inherited_GetTransferProcess(
@@ -376,7 +376,7 @@ impl Entity {
     pub fn get_shape_result(
         &self,
         start: &crate::topo_ds::Shape,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDEIGES::BRepToIGESBRep_Entity_inherited_GetShapeResult(
@@ -391,7 +391,7 @@ impl Entity {
     pub fn set_shape_result(
         &mut self,
         start: &crate::topo_ds::Shape,
-        result: &crate::ffi_types::HandleStandardTransient,
+        result: &crate::ffi_types::Handle_Standard_Transient,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEIGES::BRepToIGESBRep_Entity_inherited_SetShapeResult(

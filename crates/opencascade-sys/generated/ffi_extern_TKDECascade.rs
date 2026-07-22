@@ -14,59 +14,59 @@ unsafe extern "C" {
     pub fn DEBREP_ConfigurationNode_ctor() -> crate::OcctResult<*mut DEBREP_ConfigurationNode>;
     /// **Source:** `DEBREP_ConfigurationNode.hxx`:41 - `DEBREP_ConfigurationNode::DEBREP_ConfigurationNode()`
     pub fn DEBREP_ConfigurationNode_ctor_handledebrepconfigurationnode(
-        theNode: *const HandleDEBREPConfigurationNode,
+        theNode: *const Handle_DEBREP_ConfigurationNode,
     ) -> crate::OcctResult<*mut DEBREP_ConfigurationNode>;
     /// **Source:** `DEBREP_ConfigurationNode.hxx`:34 - `DEBREP_ConfigurationNode::DynamicType()`
     pub fn DEBREP_ConfigurationNode_dynamic_type(
         self_: *const DEBREP_ConfigurationNode,
-    ) -> crate::OcctResult<*const HandleStandardType>;
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// **Source:** `DEBREP_ConfigurationNode.hxx`:46 - `DEBREP_ConfigurationNode::Load()`
     pub fn DEBREP_ConfigurationNode_load(
         self_: *mut DEBREP_ConfigurationNode,
-        theResource: *const HandleDEConfigurationContext,
+        theResource: *const Handle_DE_ConfigurationContext,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `DEBREP_ConfigurationNode.hxx`:51 - `DEBREP_ConfigurationNode::Save()`
+    /// **Source:** `DEBREP_ConfigurationNode.hxx`:50 - `DEBREP_ConfigurationNode::Save()`
     pub fn DEBREP_ConfigurationNode_save(
         self_: *const DEBREP_ConfigurationNode,
     ) -> crate::OcctResult<*mut TCollection_AsciiString>;
-    /// **Source:** `DEBREP_ConfigurationNode.hxx`:55 - `DEBREP_ConfigurationNode::Copy()`
+    /// **Source:** `DEBREP_ConfigurationNode.hxx`:54 - `DEBREP_ConfigurationNode::Copy()`
     pub fn DEBREP_ConfigurationNode_copy(
         self_: *const DEBREP_ConfigurationNode,
-    ) -> crate::OcctResult<*mut HandleDEConfigurationNode>;
-    /// **Source:** `DEBREP_ConfigurationNode.hxx`:59 - `DEBREP_ConfigurationNode::BuildProvider()`
+    ) -> crate::OcctResult<*mut Handle_DE_ConfigurationNode>;
+    /// **Source:** `DEBREP_ConfigurationNode.hxx`:58 - `DEBREP_ConfigurationNode::BuildProvider()`
     pub fn DEBREP_ConfigurationNode_build_provider(
         self_: *mut DEBREP_ConfigurationNode,
-    ) -> crate::OcctResult<*mut HandleDEProvider>;
-    /// **Source:** `DEBREP_ConfigurationNode.hxx`:64 - `DEBREP_ConfigurationNode::IsImportSupported()`
+    ) -> crate::OcctResult<*mut Handle_DE_Provider>;
+    /// **Source:** `DEBREP_ConfigurationNode.hxx`:63 - `DEBREP_ConfigurationNode::IsImportSupported()`
     pub fn DEBREP_ConfigurationNode_is_import_supported(
         self_: *const DEBREP_ConfigurationNode,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `DEBREP_ConfigurationNode.hxx`:68 - `DEBREP_ConfigurationNode::IsExportSupported()`
+    /// **Source:** `DEBREP_ConfigurationNode.hxx`:67 - `DEBREP_ConfigurationNode::IsExportSupported()`
     pub fn DEBREP_ConfigurationNode_is_export_supported(
         self_: *const DEBREP_ConfigurationNode,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `DEBREP_ConfigurationNode.hxx`:72 - `DEBREP_ConfigurationNode::GetFormat()`
+    /// **Source:** `DEBREP_ConfigurationNode.hxx`:71 - `DEBREP_ConfigurationNode::GetFormat()`
     pub fn DEBREP_ConfigurationNode_get_format(
         self_: *const DEBREP_ConfigurationNode,
     ) -> crate::OcctResult<*mut TCollection_AsciiString>;
-    /// **Source:** `DEBREP_ConfigurationNode.hxx`:76 - `DEBREP_ConfigurationNode::GetVendor()`
+    /// **Source:** `DEBREP_ConfigurationNode.hxx`:75 - `DEBREP_ConfigurationNode::GetVendor()`
     pub fn DEBREP_ConfigurationNode_get_vendor(
         self_: *const DEBREP_ConfigurationNode,
     ) -> crate::OcctResult<*mut TCollection_AsciiString>;
-    /// **Source:** `DEBREP_ConfigurationNode.hxx`:80 - `DEBREP_ConfigurationNode::GetExtensions()`
+    /// **Source:** `DEBREP_ConfigurationNode.hxx`:79 - `DEBREP_ConfigurationNode::GetExtensions()`
     pub fn DEBREP_ConfigurationNode_get_extensions(
         self_: *const DEBREP_ConfigurationNode,
-    ) -> crate::OcctResult<*mut TColStd_ListOfAsciiString>;
-    /// **Source:** `DEBREP_ConfigurationNode.hxx`:85 - `DEBREP_ConfigurationNode::CheckContent()`
+    ) -> crate::OcctResult<*mut NCollection_List_TCollection_AsciiString>;
+    /// **Source:** `DEBREP_ConfigurationNode.hxx`:84 - `DEBREP_ConfigurationNode::CheckContent()`
     pub fn DEBREP_ConfigurationNode_check_content(
         self_: *const DEBREP_ConfigurationNode,
-        theBuffer: *const HandleNCollectionBuffer,
+        theBuffer: *const Handle_NCollection_Buffer,
     ) -> crate::OcctResult<bool>;
     /// **Source:** `DEBREP_ConfigurationNode.hxx`:34 - `DEBREP_ConfigurationNode::get_type_name()`
     pub fn DEBREP_ConfigurationNode_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
     /// **Source:** `DEBREP_ConfigurationNode.hxx`:34 - `DEBREP_ConfigurationNode::get_type_descriptor()`
     pub fn DEBREP_ConfigurationNode_get_type_descriptor(
-    ) -> crate::OcctResult<*const HandleStandardType>;
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast DEBREP_ConfigurationNode to DE_ConfigurationNode
     pub fn DEBREP_ConfigurationNode_as_DE_ConfigurationNode(
         self_: *const DEBREP_ConfigurationNode,
@@ -86,85 +86,99 @@ unsafe extern "C" {
     /// Wrap DEBREP_ConfigurationNode in a Handle
     pub fn DEBREP_ConfigurationNode_to_handle(
         obj: *mut DEBREP_ConfigurationNode,
-    ) -> crate::OcctResult<*mut HandleDEBREPConfigurationNode>;
+    ) -> crate::OcctResult<*mut Handle_DEBREP_ConfigurationNode>;
     /// Destroy Handle<DEBREP_ConfigurationNode>
-    pub fn HandleDEBREPConfigurationNode_destructor(self_: *mut HandleDEBREPConfigurationNode);
+    pub fn Handle_DEBREP_ConfigurationNode_destructor(self_: *mut Handle_DEBREP_ConfigurationNode);
     /// Clone Handle<DEBREP_ConfigurationNode> (increments reference count)
-    pub fn HandleDEBREPConfigurationNode_clone(
-        self_: *const HandleDEBREPConfigurationNode,
-    ) -> crate::OcctResult<*mut HandleDEBREPConfigurationNode>;
+    pub fn Handle_DEBREP_ConfigurationNode_clone(
+        self_: *const Handle_DEBREP_ConfigurationNode,
+    ) -> crate::OcctResult<*mut Handle_DEBREP_ConfigurationNode>;
     /// Check if Handle<DEBREP_ConfigurationNode> is null
-    pub fn HandleDEBREPConfigurationNode_is_null(
-        self_: *const HandleDEBREPConfigurationNode,
+    pub fn Handle_DEBREP_ConfigurationNode_is_null(
+        self_: *const Handle_DEBREP_ConfigurationNode,
     ) -> bool;
     /// Dereference Handle to get *const DEBREP_ConfigurationNode
-    pub fn HandleDEBREPConfigurationNode_get(
-        handle: *const HandleDEBREPConfigurationNode,
+    pub fn Handle_DEBREP_ConfigurationNode_get(
+        handle: *const Handle_DEBREP_ConfigurationNode,
     ) -> crate::OcctResult<*const DEBREP_ConfigurationNode>;
     /// Dereference Handle to get *mut DEBREP_ConfigurationNode
-    pub fn HandleDEBREPConfigurationNode_get_mut(
-        handle: *mut HandleDEBREPConfigurationNode,
+    pub fn Handle_DEBREP_ConfigurationNode_get_mut(
+        handle: *mut Handle_DEBREP_ConfigurationNode,
     ) -> crate::OcctResult<*mut DEBREP_ConfigurationNode>;
     /// Upcast Handle<DEBREP_ConfigurationNode> to Handle<DE_ConfigurationNode>
-    pub fn HandleDEBREPConfigurationNode_to_HandleDEConfigurationNode(
-        self_: *const HandleDEBREPConfigurationNode,
-    ) -> crate::OcctResult<*mut HandleDEConfigurationNode>;
+    pub fn Handle_DEBREP_ConfigurationNode_to_Handle_DE_ConfigurationNode(
+        self_: *const Handle_DEBREP_ConfigurationNode,
+    ) -> crate::OcctResult<*mut Handle_DE_ConfigurationNode>;
     /// Upcast Handle<DEBREP_ConfigurationNode> to Handle<Standard_Transient>
-    pub fn HandleDEBREPConfigurationNode_to_HandleStandardTransient(
-        self_: *const HandleDEBREPConfigurationNode,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
-    /// Inherited: **Source:** `DE_ConfigurationNode.hxx`:91 - `DE_ConfigurationNode::UpdateLoad()`
+    pub fn Handle_DEBREP_ConfigurationNode_to_Handle_Standard_Transient(
+        self_: *const Handle_DEBREP_ConfigurationNode,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
+    /// Inherited: **Source:** `DE_ConfigurationNode.hxx`:94 - `DE_ConfigurationNode::UpdateLoad()`
     pub fn DEBREP_ConfigurationNode_inherited_UpdateLoad(
         self_: *mut DEBREP_ConfigurationNode,
         theToImport: bool,
         theToKeep: bool,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `DE_ConfigurationNode.hxx`:118 - `DE_ConfigurationNode::CheckExtension()`
+    /// Inherited: **Source:** `DE_ConfigurationNode.hxx`:107 - `DE_ConfigurationNode::IsStreamSupported()`
+    pub fn DEBREP_ConfigurationNode_inherited_IsStreamSupported(
+        self_: *const DEBREP_ConfigurationNode,
+    ) -> crate::OcctResult<bool>;
+    /// Inherited: **Source:** `DE_ConfigurationNode.hxx`:124 - `DE_ConfigurationNode::CheckExtension()`
     pub fn DEBREP_ConfigurationNode_inherited_CheckExtension(
         self_: *const DEBREP_ConfigurationNode,
         theExtension: *const TCollection_AsciiString,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `DE_ConfigurationNode.hxx`:128 - `DE_ConfigurationNode::IsEnabled()`
+    /// Inherited: **Source:** `DE_ConfigurationNode.hxx`:134 - `DE_ConfigurationNode::IsEnabled()`
     pub fn DEBREP_ConfigurationNode_inherited_IsEnabled(
         self_: *const DEBREP_ConfigurationNode,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `DE_ConfigurationNode.hxx`:132 - `DE_ConfigurationNode::SetEnabled()`
+    /// Inherited: **Source:** `DE_ConfigurationNode.hxx`:138 - `DE_ConfigurationNode::SetEnabled()`
     pub fn DEBREP_ConfigurationNode_inherited_SetEnabled(
         self_: *mut DEBREP_ConfigurationNode,
         theIsLoaded: bool,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `DE_ConfigurationNode.hxx`:141 - `DE_ConfigurationNode::CustomActivation()`
+    /// Inherited: **Source:** `DE_ConfigurationNode.hxx`:147 - `DE_ConfigurationNode::CustomActivation()`
     pub fn DEBREP_ConfigurationNode_inherited_CustomActivation(
         self_: *mut DEBREP_ConfigurationNode,
-        arg0: *const TColStd_ListOfAsciiString,
+        arg0: *const NCollection_List_TCollection_AsciiString,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    /// Inherited: **Source:** `DE_ConfigurationNode.hxx`:164 - `DE_ConfigurationNode::Register()`
+    pub fn DEBREP_ConfigurationNode_inherited_Register(
+        self_: *const DEBREP_ConfigurationNode,
+        theWrapper: *const Handle_DE_Wrapper,
+    ) -> *const std::ffi::c_char;
+    /// Inherited: **Source:** `DE_ConfigurationNode.hxx`:168 - `DE_ConfigurationNode::UnRegister()`
+    pub fn DEBREP_ConfigurationNode_inherited_UnRegister(
+        self_: *const DEBREP_ConfigurationNode,
+        theWrapper: *const Handle_DE_Wrapper,
+    ) -> *const std::ffi::c_char;
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn DEBREP_ConfigurationNode_inherited_IsInstance(
         self_: *const DEBREP_ConfigurationNode,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn DEBREP_ConfigurationNode_inherited_IsKind(
         self_: *const DEBREP_ConfigurationNode,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn DEBREP_ConfigurationNode_inherited_This(
         self_: *const DEBREP_ConfigurationNode,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn DEBREP_ConfigurationNode_inherited_GetRefCount(
         self_: *const DEBREP_ConfigurationNode,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn DEBREP_ConfigurationNode_inherited_IncrementRefCounter(
         self_: *mut DEBREP_ConfigurationNode,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn DEBREP_ConfigurationNode_inherited_DecrementRefCounter(
         self_: *mut DEBREP_ConfigurationNode,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn DEBREP_ConfigurationNode_inherited_Delete(
         self_: *const DEBREP_ConfigurationNode,
     ) -> *const std::ffi::c_char;
@@ -181,40 +195,40 @@ unsafe extern "C" {
     pub fn DEBREP_Provider_ctor() -> crate::OcctResult<*mut DEBREP_Provider>;
     /// **Source:** `DEBREP_Provider.hxx`:40 - `DEBREP_Provider::DEBREP_Provider()`
     pub fn DEBREP_Provider_ctor_handledeconfigurationnode(
-        theNode: *const HandleDEConfigurationNode,
+        theNode: *const Handle_DE_ConfigurationNode,
     ) -> crate::OcctResult<*mut DEBREP_Provider>;
     /// **Source:** `DEBREP_Provider.hxx`:31 - `DEBREP_Provider::DynamicType()`
     pub fn DEBREP_Provider_dynamic_type(
         self_: *const DEBREP_Provider,
-    ) -> crate::OcctResult<*const HandleStandardType>;
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// **Source:** `DEBREP_Provider.hxx`:49 - `DEBREP_Provider::Read()`
     pub fn DEBREP_Provider_read_asciistring_handletdocstddocument_handlexscontrolworksession_progressrange(
         self_: *mut DEBREP_Provider,
         thePath: *const TCollection_AsciiString,
-        theDocument: *const HandleTDocStdDocument,
-        theWS: *mut HandleXSControlWorkSession,
+        theDocument: *const Handle_TDocStd_Document,
+        theWS: *mut Handle_XSControl_WorkSession,
         theProgress: *const Message_ProgressRange,
     ) -> crate::OcctResult<bool>;
     /// **Source:** `DEBREP_Provider.hxx`:61 - `DEBREP_Provider::Write()`
     pub fn DEBREP_Provider_write_asciistring_handletdocstddocument_handlexscontrolworksession_progressrange(
         self_: *mut DEBREP_Provider,
         thePath: *const TCollection_AsciiString,
-        theDocument: *const HandleTDocStdDocument,
-        theWS: *mut HandleXSControlWorkSession,
+        theDocument: *const Handle_TDocStd_Document,
+        theWS: *mut Handle_XSControl_WorkSession,
         theProgress: *const Message_ProgressRange,
     ) -> crate::OcctResult<bool>;
     /// **Source:** `DEBREP_Provider.hxx`:72 - `DEBREP_Provider::Read()`
     pub fn DEBREP_Provider_read_asciistring_handletdocstddocument_progressrange(
         self_: *mut DEBREP_Provider,
         thePath: *const TCollection_AsciiString,
-        theDocument: *const HandleTDocStdDocument,
+        theDocument: *const Handle_TDocStd_Document,
         theProgress: *const Message_ProgressRange,
     ) -> crate::OcctResult<bool>;
     /// **Source:** `DEBREP_Provider.hxx`:82 - `DEBREP_Provider::Write()`
     pub fn DEBREP_Provider_write_asciistring_handletdocstddocument_progressrange(
         self_: *mut DEBREP_Provider,
         thePath: *const TCollection_AsciiString,
-        theDocument: *const HandleTDocStdDocument,
+        theDocument: *const Handle_TDocStd_Document,
         theProgress: *const Message_ProgressRange,
     ) -> crate::OcctResult<bool>;
     /// **Source:** `DEBREP_Provider.hxx`:93 - `DEBREP_Provider::Read()`
@@ -222,7 +236,7 @@ unsafe extern "C" {
         self_: *mut DEBREP_Provider,
         thePath: *const TCollection_AsciiString,
         theShape: *mut TopoDS_Shape,
-        theWS: *mut HandleXSControlWorkSession,
+        theWS: *mut Handle_XSControl_WorkSession,
         theProgress: *const Message_ProgressRange,
     ) -> crate::OcctResult<bool>;
     /// **Source:** `DEBREP_Provider.hxx`:105 - `DEBREP_Provider::Write()`
@@ -230,7 +244,7 @@ unsafe extern "C" {
         self_: *mut DEBREP_Provider,
         thePath: *const TCollection_AsciiString,
         theShape: *const TopoDS_Shape,
-        theWS: *mut HandleXSControlWorkSession,
+        theWS: *mut Handle_XSControl_WorkSession,
         theProgress: *const Message_ProgressRange,
     ) -> crate::OcctResult<bool>;
     /// **Source:** `DEBREP_Provider.hxx`:116 - `DEBREP_Provider::Read()`
@@ -258,7 +272,7 @@ unsafe extern "C" {
     /// **Source:** `DEBREP_Provider.hxx`:31 - `DEBREP_Provider::get_type_name()`
     pub fn DEBREP_Provider_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
     /// **Source:** `DEBREP_Provider.hxx`:31 - `DEBREP_Provider::get_type_descriptor()`
-    pub fn DEBREP_Provider_get_type_descriptor() -> crate::OcctResult<*const HandleStandardType>;
+    pub fn DEBREP_Provider_get_type_descriptor() -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast DEBREP_Provider to DE_Provider
     pub fn DEBREP_Provider_as_DE_Provider(
         self_: *const DEBREP_Provider,
@@ -278,86 +292,86 @@ unsafe extern "C" {
     /// Wrap DEBREP_Provider in a Handle
     pub fn DEBREP_Provider_to_handle(
         obj: *mut DEBREP_Provider,
-    ) -> crate::OcctResult<*mut HandleDEBREPProvider>;
+    ) -> crate::OcctResult<*mut Handle_DEBREP_Provider>;
     /// Destroy Handle<DEBREP_Provider>
-    pub fn HandleDEBREPProvider_destructor(self_: *mut HandleDEBREPProvider);
+    pub fn Handle_DEBREP_Provider_destructor(self_: *mut Handle_DEBREP_Provider);
     /// Clone Handle<DEBREP_Provider> (increments reference count)
-    pub fn HandleDEBREPProvider_clone(
-        self_: *const HandleDEBREPProvider,
-    ) -> crate::OcctResult<*mut HandleDEBREPProvider>;
+    pub fn Handle_DEBREP_Provider_clone(
+        self_: *const Handle_DEBREP_Provider,
+    ) -> crate::OcctResult<*mut Handle_DEBREP_Provider>;
     /// Check if Handle<DEBREP_Provider> is null
-    pub fn HandleDEBREPProvider_is_null(self_: *const HandleDEBREPProvider) -> bool;
+    pub fn Handle_DEBREP_Provider_is_null(self_: *const Handle_DEBREP_Provider) -> bool;
     /// Dereference Handle to get *const DEBREP_Provider
-    pub fn HandleDEBREPProvider_get(
-        handle: *const HandleDEBREPProvider,
+    pub fn Handle_DEBREP_Provider_get(
+        handle: *const Handle_DEBREP_Provider,
     ) -> crate::OcctResult<*const DEBREP_Provider>;
     /// Dereference Handle to get *mut DEBREP_Provider
-    pub fn HandleDEBREPProvider_get_mut(
-        handle: *mut HandleDEBREPProvider,
+    pub fn Handle_DEBREP_Provider_get_mut(
+        handle: *mut Handle_DEBREP_Provider,
     ) -> crate::OcctResult<*mut DEBREP_Provider>;
     /// Upcast Handle<DEBREP_Provider> to Handle<DE_Provider>
-    pub fn HandleDEBREPProvider_to_HandleDEProvider(
-        self_: *const HandleDEBREPProvider,
-    ) -> crate::OcctResult<*mut HandleDEProvider>;
+    pub fn Handle_DEBREP_Provider_to_Handle_DE_Provider(
+        self_: *const Handle_DEBREP_Provider,
+    ) -> crate::OcctResult<*mut Handle_DE_Provider>;
     /// Upcast Handle<DEBREP_Provider> to Handle<Standard_Transient>
-    pub fn HandleDEBREPProvider_to_HandleStandardTransient(
-        self_: *const HandleDEBREPProvider,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
-    /// Inherited: **Source:** `DE_Provider.hxx`:155 - `DE_Provider::GetNode()`
+    pub fn Handle_DEBREP_Provider_to_Handle_Standard_Transient(
+        self_: *const Handle_DEBREP_Provider,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
+    /// Inherited: **Source:** `DE_Provider.hxx`:285 - `DE_Provider::GetNode()`
     pub fn DEBREP_Provider_inherited_GetNode(
         self_: *const DEBREP_Provider,
-    ) -> crate::OcctResult<*mut HandleDEConfigurationNode>;
-    /// Inherited: **Source:** `DE_Provider.hxx`:159 - `DE_Provider::SetNode()`
+    ) -> crate::OcctResult<*mut Handle_DE_ConfigurationNode>;
+    /// Inherited: **Source:** `DE_Provider.hxx`:289 - `DE_Provider::SetNode()`
     pub fn DEBREP_Provider_inherited_SetNode(
         self_: *mut DEBREP_Provider,
-        theNode: *const HandleDEConfigurationNode,
+        theNode: *const Handle_DE_ConfigurationNode,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn DEBREP_Provider_inherited_IsInstance(
         self_: *const DEBREP_Provider,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn DEBREP_Provider_inherited_IsKind(
         self_: *const DEBREP_Provider,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn DEBREP_Provider_inherited_This(
         self_: *const DEBREP_Provider,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn DEBREP_Provider_inherited_GetRefCount(
         self_: *const DEBREP_Provider,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn DEBREP_Provider_inherited_IncrementRefCounter(
         self_: *mut DEBREP_Provider,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn DEBREP_Provider_inherited_DecrementRefCounter(
         self_: *mut DEBREP_Provider,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn DEBREP_Provider_inherited_Delete(
         self_: *const DEBREP_Provider,
     ) -> *const std::ffi::c_char;
     // ======================== DEXCAF_ConfigurationNode ========================
     pub fn DEXCAF_ConfigurationNode_destructor(self_: *mut DEXCAF_ConfigurationNode);
-    /// **Source:** `DEXCAF_ConfigurationNode.hxx`:36 - `DEXCAF_ConfigurationNode::DEXCAF_ConfigurationNode()`
+    /// **Source:** `DEXCAF_ConfigurationNode.hxx`:37 - `DEXCAF_ConfigurationNode::DEXCAF_ConfigurationNode()`
     pub fn DEXCAF_ConfigurationNode_ctor() -> crate::OcctResult<*mut DEXCAF_ConfigurationNode>;
-    /// **Source:** `DEXCAF_ConfigurationNode.hxx`:40 - `DEXCAF_ConfigurationNode::DEXCAF_ConfigurationNode()`
+    /// **Source:** `DEXCAF_ConfigurationNode.hxx`:41 - `DEXCAF_ConfigurationNode::DEXCAF_ConfigurationNode()`
     pub fn DEXCAF_ConfigurationNode_ctor_handledexcafconfigurationnode(
-        theNode: *const HandleDEXCAFConfigurationNode,
+        theNode: *const Handle_DEXCAF_ConfigurationNode,
     ) -> crate::OcctResult<*mut DEXCAF_ConfigurationNode>;
-    /// **Source:** `DEXCAF_ConfigurationNode.hxx`:33 - `DEXCAF_ConfigurationNode::DynamicType()`
+    /// **Source:** `DEXCAF_ConfigurationNode.hxx`:34 - `DEXCAF_ConfigurationNode::DynamicType()`
     pub fn DEXCAF_ConfigurationNode_dynamic_type(
         self_: *const DEXCAF_ConfigurationNode,
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// **Source:** `DEXCAF_ConfigurationNode.hxx`:45 - `DEXCAF_ConfigurationNode::Load()`
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
+    /// **Source:** `DEXCAF_ConfigurationNode.hxx`:46 - `DEXCAF_ConfigurationNode::Load()`
     pub fn DEXCAF_ConfigurationNode_load(
         self_: *mut DEXCAF_ConfigurationNode,
-        theResource: *const HandleDEConfigurationContext,
+        theResource: *const Handle_DE_ConfigurationContext,
     ) -> crate::OcctResult<bool>;
     /// **Source:** `DEXCAF_ConfigurationNode.hxx`:50 - `DEXCAF_ConfigurationNode::Save()`
     pub fn DEXCAF_ConfigurationNode_save(
@@ -366,11 +380,11 @@ unsafe extern "C" {
     /// **Source:** `DEXCAF_ConfigurationNode.hxx`:54 - `DEXCAF_ConfigurationNode::Copy()`
     pub fn DEXCAF_ConfigurationNode_copy(
         self_: *const DEXCAF_ConfigurationNode,
-    ) -> crate::OcctResult<*mut HandleDEConfigurationNode>;
+    ) -> crate::OcctResult<*mut Handle_DE_ConfigurationNode>;
     /// **Source:** `DEXCAF_ConfigurationNode.hxx`:58 - `DEXCAF_ConfigurationNode::BuildProvider()`
     pub fn DEXCAF_ConfigurationNode_build_provider(
         self_: *mut DEXCAF_ConfigurationNode,
-    ) -> crate::OcctResult<*mut HandleDEProvider>;
+    ) -> crate::OcctResult<*mut Handle_DE_Provider>;
     /// **Source:** `DEXCAF_ConfigurationNode.hxx`:63 - `DEXCAF_ConfigurationNode::IsImportSupported()`
     pub fn DEXCAF_ConfigurationNode_is_import_supported(
         self_: *const DEXCAF_ConfigurationNode,
@@ -390,17 +404,17 @@ unsafe extern "C" {
     /// **Source:** `DEXCAF_ConfigurationNode.hxx`:79 - `DEXCAF_ConfigurationNode::GetExtensions()`
     pub fn DEXCAF_ConfigurationNode_get_extensions(
         self_: *const DEXCAF_ConfigurationNode,
-    ) -> crate::OcctResult<*mut TColStd_ListOfAsciiString>;
+    ) -> crate::OcctResult<*mut NCollection_List_TCollection_AsciiString>;
     /// **Source:** `DEXCAF_ConfigurationNode.hxx`:84 - `DEXCAF_ConfigurationNode::CheckContent()`
     pub fn DEXCAF_ConfigurationNode_check_content(
         self_: *const DEXCAF_ConfigurationNode,
-        theBuffer: *const HandleNCollectionBuffer,
+        theBuffer: *const Handle_NCollection_Buffer,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `DEXCAF_ConfigurationNode.hxx`:33 - `DEXCAF_ConfigurationNode::get_type_name()`
+    /// **Source:** `DEXCAF_ConfigurationNode.hxx`:34 - `DEXCAF_ConfigurationNode::get_type_name()`
     pub fn DEXCAF_ConfigurationNode_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
-    /// **Source:** `DEXCAF_ConfigurationNode.hxx`:33 - `DEXCAF_ConfigurationNode::get_type_descriptor()`
+    /// **Source:** `DEXCAF_ConfigurationNode.hxx`:34 - `DEXCAF_ConfigurationNode::get_type_descriptor()`
     pub fn DEXCAF_ConfigurationNode_get_type_descriptor(
-    ) -> crate::OcctResult<*const HandleStandardType>;
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast DEXCAF_ConfigurationNode to DE_ConfigurationNode
     pub fn DEXCAF_ConfigurationNode_as_DE_ConfigurationNode(
         self_: *const DEXCAF_ConfigurationNode,
@@ -420,85 +434,99 @@ unsafe extern "C" {
     /// Wrap DEXCAF_ConfigurationNode in a Handle
     pub fn DEXCAF_ConfigurationNode_to_handle(
         obj: *mut DEXCAF_ConfigurationNode,
-    ) -> crate::OcctResult<*mut HandleDEXCAFConfigurationNode>;
+    ) -> crate::OcctResult<*mut Handle_DEXCAF_ConfigurationNode>;
     /// Destroy Handle<DEXCAF_ConfigurationNode>
-    pub fn HandleDEXCAFConfigurationNode_destructor(self_: *mut HandleDEXCAFConfigurationNode);
+    pub fn Handle_DEXCAF_ConfigurationNode_destructor(self_: *mut Handle_DEXCAF_ConfigurationNode);
     /// Clone Handle<DEXCAF_ConfigurationNode> (increments reference count)
-    pub fn HandleDEXCAFConfigurationNode_clone(
-        self_: *const HandleDEXCAFConfigurationNode,
-    ) -> crate::OcctResult<*mut HandleDEXCAFConfigurationNode>;
+    pub fn Handle_DEXCAF_ConfigurationNode_clone(
+        self_: *const Handle_DEXCAF_ConfigurationNode,
+    ) -> crate::OcctResult<*mut Handle_DEXCAF_ConfigurationNode>;
     /// Check if Handle<DEXCAF_ConfigurationNode> is null
-    pub fn HandleDEXCAFConfigurationNode_is_null(
-        self_: *const HandleDEXCAFConfigurationNode,
+    pub fn Handle_DEXCAF_ConfigurationNode_is_null(
+        self_: *const Handle_DEXCAF_ConfigurationNode,
     ) -> bool;
     /// Dereference Handle to get *const DEXCAF_ConfigurationNode
-    pub fn HandleDEXCAFConfigurationNode_get(
-        handle: *const HandleDEXCAFConfigurationNode,
+    pub fn Handle_DEXCAF_ConfigurationNode_get(
+        handle: *const Handle_DEXCAF_ConfigurationNode,
     ) -> crate::OcctResult<*const DEXCAF_ConfigurationNode>;
     /// Dereference Handle to get *mut DEXCAF_ConfigurationNode
-    pub fn HandleDEXCAFConfigurationNode_get_mut(
-        handle: *mut HandleDEXCAFConfigurationNode,
+    pub fn Handle_DEXCAF_ConfigurationNode_get_mut(
+        handle: *mut Handle_DEXCAF_ConfigurationNode,
     ) -> crate::OcctResult<*mut DEXCAF_ConfigurationNode>;
     /// Upcast Handle<DEXCAF_ConfigurationNode> to Handle<DE_ConfigurationNode>
-    pub fn HandleDEXCAFConfigurationNode_to_HandleDEConfigurationNode(
-        self_: *const HandleDEXCAFConfigurationNode,
-    ) -> crate::OcctResult<*mut HandleDEConfigurationNode>;
+    pub fn Handle_DEXCAF_ConfigurationNode_to_Handle_DE_ConfigurationNode(
+        self_: *const Handle_DEXCAF_ConfigurationNode,
+    ) -> crate::OcctResult<*mut Handle_DE_ConfigurationNode>;
     /// Upcast Handle<DEXCAF_ConfigurationNode> to Handle<Standard_Transient>
-    pub fn HandleDEXCAFConfigurationNode_to_HandleStandardTransient(
-        self_: *const HandleDEXCAFConfigurationNode,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
-    /// Inherited: **Source:** `DE_ConfigurationNode.hxx`:91 - `DE_ConfigurationNode::UpdateLoad()`
+    pub fn Handle_DEXCAF_ConfigurationNode_to_Handle_Standard_Transient(
+        self_: *const Handle_DEXCAF_ConfigurationNode,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
+    /// Inherited: **Source:** `DE_ConfigurationNode.hxx`:94 - `DE_ConfigurationNode::UpdateLoad()`
     pub fn DEXCAF_ConfigurationNode_inherited_UpdateLoad(
         self_: *mut DEXCAF_ConfigurationNode,
         theToImport: bool,
         theToKeep: bool,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `DE_ConfigurationNode.hxx`:118 - `DE_ConfigurationNode::CheckExtension()`
+    /// Inherited: **Source:** `DE_ConfigurationNode.hxx`:107 - `DE_ConfigurationNode::IsStreamSupported()`
+    pub fn DEXCAF_ConfigurationNode_inherited_IsStreamSupported(
+        self_: *const DEXCAF_ConfigurationNode,
+    ) -> crate::OcctResult<bool>;
+    /// Inherited: **Source:** `DE_ConfigurationNode.hxx`:124 - `DE_ConfigurationNode::CheckExtension()`
     pub fn DEXCAF_ConfigurationNode_inherited_CheckExtension(
         self_: *const DEXCAF_ConfigurationNode,
         theExtension: *const TCollection_AsciiString,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `DE_ConfigurationNode.hxx`:128 - `DE_ConfigurationNode::IsEnabled()`
+    /// Inherited: **Source:** `DE_ConfigurationNode.hxx`:134 - `DE_ConfigurationNode::IsEnabled()`
     pub fn DEXCAF_ConfigurationNode_inherited_IsEnabled(
         self_: *const DEXCAF_ConfigurationNode,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `DE_ConfigurationNode.hxx`:132 - `DE_ConfigurationNode::SetEnabled()`
+    /// Inherited: **Source:** `DE_ConfigurationNode.hxx`:138 - `DE_ConfigurationNode::SetEnabled()`
     pub fn DEXCAF_ConfigurationNode_inherited_SetEnabled(
         self_: *mut DEXCAF_ConfigurationNode,
         theIsLoaded: bool,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `DE_ConfigurationNode.hxx`:141 - `DE_ConfigurationNode::CustomActivation()`
+    /// Inherited: **Source:** `DE_ConfigurationNode.hxx`:147 - `DE_ConfigurationNode::CustomActivation()`
     pub fn DEXCAF_ConfigurationNode_inherited_CustomActivation(
         self_: *mut DEXCAF_ConfigurationNode,
-        arg0: *const TColStd_ListOfAsciiString,
+        arg0: *const NCollection_List_TCollection_AsciiString,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    /// Inherited: **Source:** `DE_ConfigurationNode.hxx`:164 - `DE_ConfigurationNode::Register()`
+    pub fn DEXCAF_ConfigurationNode_inherited_Register(
+        self_: *const DEXCAF_ConfigurationNode,
+        theWrapper: *const Handle_DE_Wrapper,
+    ) -> *const std::ffi::c_char;
+    /// Inherited: **Source:** `DE_ConfigurationNode.hxx`:168 - `DE_ConfigurationNode::UnRegister()`
+    pub fn DEXCAF_ConfigurationNode_inherited_UnRegister(
+        self_: *const DEXCAF_ConfigurationNode,
+        theWrapper: *const Handle_DE_Wrapper,
+    ) -> *const std::ffi::c_char;
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn DEXCAF_ConfigurationNode_inherited_IsInstance(
         self_: *const DEXCAF_ConfigurationNode,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn DEXCAF_ConfigurationNode_inherited_IsKind(
         self_: *const DEXCAF_ConfigurationNode,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn DEXCAF_ConfigurationNode_inherited_This(
         self_: *const DEXCAF_ConfigurationNode,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn DEXCAF_ConfigurationNode_inherited_GetRefCount(
         self_: *const DEXCAF_ConfigurationNode,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn DEXCAF_ConfigurationNode_inherited_IncrementRefCounter(
         self_: *mut DEXCAF_ConfigurationNode,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn DEXCAF_ConfigurationNode_inherited_DecrementRefCounter(
         self_: *mut DEXCAF_ConfigurationNode,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn DEXCAF_ConfigurationNode_inherited_Delete(
         self_: *const DEXCAF_ConfigurationNode,
     ) -> *const std::ffi::c_char;
@@ -515,40 +543,40 @@ unsafe extern "C" {
     pub fn DEXCAF_Provider_ctor() -> crate::OcctResult<*mut DEXCAF_Provider>;
     /// **Source:** `DEXCAF_Provider.hxx`:40 - `DEXCAF_Provider::DEXCAF_Provider()`
     pub fn DEXCAF_Provider_ctor_handledeconfigurationnode(
-        theNode: *const HandleDEConfigurationNode,
+        theNode: *const Handle_DE_ConfigurationNode,
     ) -> crate::OcctResult<*mut DEXCAF_Provider>;
     /// **Source:** `DEXCAF_Provider.hxx`:31 - `DEXCAF_Provider::DynamicType()`
     pub fn DEXCAF_Provider_dynamic_type(
         self_: *const DEXCAF_Provider,
-    ) -> crate::OcctResult<*const HandleStandardType>;
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// **Source:** `DEXCAF_Provider.hxx`:49 - `DEXCAF_Provider::Read()`
     pub fn DEXCAF_Provider_read_asciistring_handletdocstddocument_handlexscontrolworksession_progressrange(
         self_: *mut DEXCAF_Provider,
         thePath: *const TCollection_AsciiString,
-        theDocument: *const HandleTDocStdDocument,
-        theWS: *mut HandleXSControlWorkSession,
+        theDocument: *const Handle_TDocStd_Document,
+        theWS: *mut Handle_XSControl_WorkSession,
         theProgress: *const Message_ProgressRange,
     ) -> crate::OcctResult<bool>;
     /// **Source:** `DEXCAF_Provider.hxx`:61 - `DEXCAF_Provider::Write()`
     pub fn DEXCAF_Provider_write_asciistring_handletdocstddocument_handlexscontrolworksession_progressrange(
         self_: *mut DEXCAF_Provider,
         thePath: *const TCollection_AsciiString,
-        theDocument: *const HandleTDocStdDocument,
-        theWS: *mut HandleXSControlWorkSession,
+        theDocument: *const Handle_TDocStd_Document,
+        theWS: *mut Handle_XSControl_WorkSession,
         theProgress: *const Message_ProgressRange,
     ) -> crate::OcctResult<bool>;
     /// **Source:** `DEXCAF_Provider.hxx`:72 - `DEXCAF_Provider::Read()`
     pub fn DEXCAF_Provider_read_asciistring_handletdocstddocument_progressrange(
         self_: *mut DEXCAF_Provider,
         thePath: *const TCollection_AsciiString,
-        theDocument: *const HandleTDocStdDocument,
+        theDocument: *const Handle_TDocStd_Document,
         theProgress: *const Message_ProgressRange,
     ) -> crate::OcctResult<bool>;
     /// **Source:** `DEXCAF_Provider.hxx`:82 - `DEXCAF_Provider::Write()`
     pub fn DEXCAF_Provider_write_asciistring_handletdocstddocument_progressrange(
         self_: *mut DEXCAF_Provider,
         thePath: *const TCollection_AsciiString,
-        theDocument: *const HandleTDocStdDocument,
+        theDocument: *const Handle_TDocStd_Document,
         theProgress: *const Message_ProgressRange,
     ) -> crate::OcctResult<bool>;
     /// **Source:** `DEXCAF_Provider.hxx`:93 - `DEXCAF_Provider::Read()`
@@ -556,7 +584,7 @@ unsafe extern "C" {
         self_: *mut DEXCAF_Provider,
         thePath: *const TCollection_AsciiString,
         theShape: *mut TopoDS_Shape,
-        theWS: *mut HandleXSControlWorkSession,
+        theWS: *mut Handle_XSControl_WorkSession,
         theProgress: *const Message_ProgressRange,
     ) -> crate::OcctResult<bool>;
     /// **Source:** `DEXCAF_Provider.hxx`:105 - `DEXCAF_Provider::Write()`
@@ -564,7 +592,7 @@ unsafe extern "C" {
         self_: *mut DEXCAF_Provider,
         thePath: *const TCollection_AsciiString,
         theShape: *const TopoDS_Shape,
-        theWS: *mut HandleXSControlWorkSession,
+        theWS: *mut Handle_XSControl_WorkSession,
         theProgress: *const Message_ProgressRange,
     ) -> crate::OcctResult<bool>;
     /// **Source:** `DEXCAF_Provider.hxx`:116 - `DEXCAF_Provider::Read()`
@@ -592,7 +620,7 @@ unsafe extern "C" {
     /// **Source:** `DEXCAF_Provider.hxx`:31 - `DEXCAF_Provider::get_type_name()`
     pub fn DEXCAF_Provider_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
     /// **Source:** `DEXCAF_Provider.hxx`:31 - `DEXCAF_Provider::get_type_descriptor()`
-    pub fn DEXCAF_Provider_get_type_descriptor() -> crate::OcctResult<*const HandleStandardType>;
+    pub fn DEXCAF_Provider_get_type_descriptor() -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast DEXCAF_Provider to DE_Provider
     pub fn DEXCAF_Provider_as_DE_Provider(
         self_: *const DEXCAF_Provider,
@@ -612,67 +640,67 @@ unsafe extern "C" {
     /// Wrap DEXCAF_Provider in a Handle
     pub fn DEXCAF_Provider_to_handle(
         obj: *mut DEXCAF_Provider,
-    ) -> crate::OcctResult<*mut HandleDEXCAFProvider>;
+    ) -> crate::OcctResult<*mut Handle_DEXCAF_Provider>;
     /// Destroy Handle<DEXCAF_Provider>
-    pub fn HandleDEXCAFProvider_destructor(self_: *mut HandleDEXCAFProvider);
+    pub fn Handle_DEXCAF_Provider_destructor(self_: *mut Handle_DEXCAF_Provider);
     /// Clone Handle<DEXCAF_Provider> (increments reference count)
-    pub fn HandleDEXCAFProvider_clone(
-        self_: *const HandleDEXCAFProvider,
-    ) -> crate::OcctResult<*mut HandleDEXCAFProvider>;
+    pub fn Handle_DEXCAF_Provider_clone(
+        self_: *const Handle_DEXCAF_Provider,
+    ) -> crate::OcctResult<*mut Handle_DEXCAF_Provider>;
     /// Check if Handle<DEXCAF_Provider> is null
-    pub fn HandleDEXCAFProvider_is_null(self_: *const HandleDEXCAFProvider) -> bool;
+    pub fn Handle_DEXCAF_Provider_is_null(self_: *const Handle_DEXCAF_Provider) -> bool;
     /// Dereference Handle to get *const DEXCAF_Provider
-    pub fn HandleDEXCAFProvider_get(
-        handle: *const HandleDEXCAFProvider,
+    pub fn Handle_DEXCAF_Provider_get(
+        handle: *const Handle_DEXCAF_Provider,
     ) -> crate::OcctResult<*const DEXCAF_Provider>;
     /// Dereference Handle to get *mut DEXCAF_Provider
-    pub fn HandleDEXCAFProvider_get_mut(
-        handle: *mut HandleDEXCAFProvider,
+    pub fn Handle_DEXCAF_Provider_get_mut(
+        handle: *mut Handle_DEXCAF_Provider,
     ) -> crate::OcctResult<*mut DEXCAF_Provider>;
     /// Upcast Handle<DEXCAF_Provider> to Handle<DE_Provider>
-    pub fn HandleDEXCAFProvider_to_HandleDEProvider(
-        self_: *const HandleDEXCAFProvider,
-    ) -> crate::OcctResult<*mut HandleDEProvider>;
+    pub fn Handle_DEXCAF_Provider_to_Handle_DE_Provider(
+        self_: *const Handle_DEXCAF_Provider,
+    ) -> crate::OcctResult<*mut Handle_DE_Provider>;
     /// Upcast Handle<DEXCAF_Provider> to Handle<Standard_Transient>
-    pub fn HandleDEXCAFProvider_to_HandleStandardTransient(
-        self_: *const HandleDEXCAFProvider,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
-    /// Inherited: **Source:** `DE_Provider.hxx`:155 - `DE_Provider::GetNode()`
+    pub fn Handle_DEXCAF_Provider_to_Handle_Standard_Transient(
+        self_: *const Handle_DEXCAF_Provider,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
+    /// Inherited: **Source:** `DE_Provider.hxx`:285 - `DE_Provider::GetNode()`
     pub fn DEXCAF_Provider_inherited_GetNode(
         self_: *const DEXCAF_Provider,
-    ) -> crate::OcctResult<*mut HandleDEConfigurationNode>;
-    /// Inherited: **Source:** `DE_Provider.hxx`:159 - `DE_Provider::SetNode()`
+    ) -> crate::OcctResult<*mut Handle_DE_ConfigurationNode>;
+    /// Inherited: **Source:** `DE_Provider.hxx`:289 - `DE_Provider::SetNode()`
     pub fn DEXCAF_Provider_inherited_SetNode(
         self_: *mut DEXCAF_Provider,
-        theNode: *const HandleDEConfigurationNode,
+        theNode: *const Handle_DE_ConfigurationNode,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn DEXCAF_Provider_inherited_IsInstance(
         self_: *const DEXCAF_Provider,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn DEXCAF_Provider_inherited_IsKind(
         self_: *const DEXCAF_Provider,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn DEXCAF_Provider_inherited_This(
         self_: *const DEXCAF_Provider,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn DEXCAF_Provider_inherited_GetRefCount(
         self_: *const DEXCAF_Provider,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn DEXCAF_Provider_inherited_IncrementRefCounter(
         self_: *mut DEXCAF_Provider,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn DEXCAF_Provider_inherited_DecrementRefCounter(
         self_: *mut DEXCAF_Provider,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn DEXCAF_Provider_inherited_Delete(
         self_: *const DEXCAF_Provider,
     ) -> *const std::ffi::c_char;

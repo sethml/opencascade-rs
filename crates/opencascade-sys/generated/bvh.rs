@@ -6,6 +6,18 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 
+/// **Source:** `BVH_RadixSorter.hxx`:70 - `BVH::EncodeMortonCode`
+/// Encodes 10-bit voxel coordinates into 30-bit Morton code using LUT.
+/// @param theVoxelX X coordinate (0-1023)
+/// @param theVoxelY Y coordinate (0-1023)
+/// @param theVoxelZ Z coordinate (0-1023)
+/// @return 30-bit Morton code with interleaved bits
+pub fn encode_morton_code(theVoxelX: u32, theVoxelY: u32, theVoxelZ: u32) -> u32 {
+    crate::check_result(unsafe {
+        crate::ffi_extern_TKMath::BVH_encode_morton_code(theVoxelX, theVoxelY, theVoxelZ)
+    })
+}
+
 /// C++ enum: `BVH_Constants`
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 #[repr(i32)]
@@ -52,13 +64,13 @@ impl TryFrom<i32> for Constants {
 }
 
 // Handle type re-exports (targets of handle upcasts/downcasts)
-pub use crate::ffi_types::HandleStandardTransient;
+pub use crate::ffi_types::Handle_Standard_Transient;
 
 // ========================
 // From BVH_BuildQueue.hxx
 // ========================
 
-/// **Source:** `BVH_BuildQueue.hxx`:25 - `BVH_BuildQueue`
+/// **Source:** `BVH_BuildQueue.hxx`:27 - `BVH_BuildQueue`
 /// Command-queue for parallel building of BVH nodes.
 pub use crate::ffi_types::BVH_BuildQueue as BuildQueue;
 
@@ -71,7 +83,7 @@ unsafe impl crate::CppDeletable for BuildQueue {
 }
 
 impl BuildQueue {
-    /// **Source:** `BVH_BuildQueue.hxx`:32 - `BVH_BuildQueue::BVH_BuildQueue()`
+    /// **Source:** `BVH_BuildQueue.hxx`:34 - `BVH_BuildQueue::BVH_BuildQueue()`
     /// Creates new BVH build queue.
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
@@ -83,21 +95,22 @@ impl BuildQueue {
 
     /// **Source:** `BVH_BuildQueue.hxx`:46 - `BVH_BuildQueue::Size()`
     /// Returns current size of BVH build queue.
-    pub fn size(&mut self) -> i32 {
+    /// Uses acquire semantics to synchronize with enqueue/dequeue operations.
+    pub fn size(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi_extern_TKMath::BVH_BuildQueue_size(self as *mut Self)
+            crate::ffi_extern_TKMath::BVH_BuildQueue_size(self as *const Self)
         })
     }
 
     /// **Source:** `BVH_BuildQueue.hxx`:49 - `BVH_BuildQueue::Enqueue()`
     /// Enqueues new work-item onto BVH build queue.
-    pub fn enqueue(&mut self, theNode: &i32) {
+    pub fn enqueue(&mut self, theWorkItem: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi_extern_TKMath::BVH_BuildQueue_enqueue(self as *mut Self, theNode)
+            crate::ffi_extern_TKMath::BVH_BuildQueue_enqueue(self as *mut Self, theWorkItem)
         })
     }
 
-    /// **Source:** `BVH_BuildQueue.hxx`:52 - `BVH_BuildQueue::Fetch()`
+    /// **Source:** `BVH_BuildQueue.hxx`:57 - `BVH_BuildQueue::Fetch()`
     /// Fetches first work-item from BVH build queue.
     pub fn fetch(&mut self, wasBusy: &mut bool) -> i32 {
         crate::check_result(unsafe {
@@ -105,11 +118,14 @@ impl BuildQueue {
         })
     }
 
-    /// **Source:** `BVH_BuildQueue.hxx`:55 - `BVH_BuildQueue::HasBusyThreads()`
+    /// **Source:** `BVH_BuildQueue.hxx`:94 - `BVH_BuildQueue::HasBusyThreads()`
     /// Checks if there are active build threads.
-    pub fn has_busy_threads(&mut self) -> bool {
+    /// Uses acquire semantics to ensure visibility of thread counter updates.
+    /// This is critical for termination detection: threads check this after
+    /// finding an empty queue to determine if they should exit or wait.
+    pub fn has_busy_threads(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi_extern_TKMath::BVH_BuildQueue_has_busy_threads(self as *mut Self)
+            crate::ffi_extern_TKMath::BVH_BuildQueue_has_busy_threads(self as *const Self)
         })
     }
 }
@@ -186,7 +202,7 @@ impl BuildThread {
     }
 
     /// **Source:** `BVH_BuildThread.hxx`:66 - `BVH_BuildThread::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKMath::BVH_BuildThread_dynamic_type(
                 self as *const Self,
@@ -206,7 +222,7 @@ impl BuildThread {
     }
 
     /// **Source:** `BVH_BuildThread.hxx`:66 - `BVH_BuildThread::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKMath::BVH_BuildThread_get_type_descriptor()))
         }
@@ -235,7 +251,7 @@ impl BuildThread {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleBVHBuildThread> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_BVH_BuildThread> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKMath::BVH_BuildThread_to_handle(obj.into_raw()),
@@ -243,8 +259,8 @@ impl BuildThread {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKMath::BVH_BuildThread_inherited_IsInstance(
                 self as *const Self,
@@ -253,14 +269,14 @@ impl BuildThread {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKMath::BVH_BuildThread_inherited_IsKind(self as *const Self, theType)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -274,14 +290,14 @@ impl BuildThread {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKMath::BVH_BuildThread_inherited_GetRefCount(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKMath::BVH_BuildThread_inherited_IncrementRefCounter(
@@ -290,7 +306,7 @@ impl BuildThread {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKMath::BVH_BuildThread_inherited_DecrementRefCounter(
@@ -299,7 +315,7 @@ impl BuildThread {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKMath::BVH_BuildThread_inherited_Delete(self as *const Self)
@@ -307,32 +323,32 @@ impl BuildThread {
     }
 }
 
-pub use crate::ffi_types::HandleBVHBuildThread;
+pub use crate::ffi_types::Handle_BVH_BuildThread;
 
-unsafe impl crate::CppDeletable for HandleBVHBuildThread {
+unsafe impl crate::CppDeletable for Handle_BVH_BuildThread {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKMath::HandleBVHBuildThread_destructor(ptr);
+            crate::ffi_extern_TKMath::Handle_BVH_BuildThread_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleBVHBuildThread {
+unsafe impl crate::CppCopyable for Handle_BVH_BuildThread {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        unsafe { crate::check_result(crate::ffi_extern_TKMath::HandleBVHBuildThread_clone(ptr)) }
+        unsafe { crate::check_result(crate::ffi_extern_TKMath::Handle_BVH_BuildThread_clone(ptr)) }
     }
 }
 
-impl HandleBVHBuildThread {
+impl Handle_BVH_BuildThread {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
-        unsafe { crate::ffi_extern_TKMath::HandleBVHBuildThread_is_null(self as *const Self) }
+        unsafe { crate::ffi_extern_TKMath::Handle_BVH_BuildThread_is_null(self as *const Self) }
     }
 
     /// Dereference this Handle to access the underlying BVH_BuildThread
     pub fn get(&self) -> &crate::ffi_types::BVH_BuildThread {
         unsafe {
-            &*crate::check_result(crate::ffi_extern_TKMath::HandleBVHBuildThread_get(
+            &*crate::check_result(crate::ffi_extern_TKMath::Handle_BVH_BuildThread_get(
                 self as *const Self,
             ))
         }
@@ -341,7 +357,7 @@ impl HandleBVHBuildThread {
     /// Dereference this Handle to mutably access the underlying BVH_BuildThread
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::BVH_BuildThread {
         unsafe {
-            &mut *crate::check_result(crate::ffi_extern_TKMath::HandleBVHBuildThread_get_mut(
+            &mut *crate::check_result(crate::ffi_extern_TKMath::Handle_BVH_BuildThread_get_mut(
                 self as *mut Self,
             ))
         }
@@ -350,10 +366,10 @@ impl HandleBVHBuildThread {
     /// Upcast Handle<BVH_BuildThread> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKMath::HandleBVHBuildThread_to_HandleStandardTransient(
+                crate::ffi_extern_TKMath::Handle_BVH_BuildThread_to_Handle_Standard_Transient(
                     self as *const Self,
                 ),
             ))
@@ -380,7 +396,7 @@ unsafe impl crate::CppDeletable for BuilderTransient {
 
 impl BuilderTransient {
     /// **Source:** `BVH_Builder.hxx`:26 - `BVH_BuilderTransient::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKMath::BVH_BuilderTransient_dynamic_type(
                 self as *const Self,
@@ -435,7 +451,7 @@ impl BuilderTransient {
     }
 
     /// **Source:** `BVH_Builder.hxx`:26 - `BVH_BuilderTransient::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKMath::BVH_BuilderTransient_get_type_descriptor(),
@@ -468,7 +484,7 @@ impl BuilderTransient {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleBVHBuilderTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_BVH_BuilderTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKMath::BVH_BuilderTransient_to_handle(obj.into_raw()),
@@ -476,8 +492,8 @@ impl BuilderTransient {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKMath::BVH_BuilderTransient_inherited_IsInstance(
                 self as *const Self,
@@ -486,8 +502,8 @@ impl BuilderTransient {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKMath::BVH_BuilderTransient_inherited_IsKind(
                 self as *const Self,
@@ -496,7 +512,7 @@ impl BuilderTransient {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -510,7 +526,7 @@ impl BuilderTransient {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKMath::BVH_BuilderTransient_inherited_GetRefCount(
@@ -519,7 +535,7 @@ impl BuilderTransient {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKMath::BVH_BuilderTransient_inherited_IncrementRefCounter(
@@ -528,7 +544,7 @@ impl BuilderTransient {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKMath::BVH_BuilderTransient_inherited_DecrementRefCounter(
@@ -537,7 +553,7 @@ impl BuilderTransient {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKMath::BVH_BuilderTransient_inherited_Delete(self as *const Self)
@@ -545,34 +561,36 @@ impl BuilderTransient {
     }
 }
 
-pub use crate::ffi_types::HandleBVHBuilderTransient;
+pub use crate::ffi_types::Handle_BVH_BuilderTransient;
 
-unsafe impl crate::CppDeletable for HandleBVHBuilderTransient {
+unsafe impl crate::CppDeletable for Handle_BVH_BuilderTransient {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKMath::HandleBVHBuilderTransient_destructor(ptr);
+            crate::ffi_extern_TKMath::Handle_BVH_BuilderTransient_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleBVHBuilderTransient {
+unsafe impl crate::CppCopyable for Handle_BVH_BuilderTransient {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
         unsafe {
-            crate::check_result(crate::ffi_extern_TKMath::HandleBVHBuilderTransient_clone(ptr))
+            crate::check_result(crate::ffi_extern_TKMath::Handle_BVH_BuilderTransient_clone(ptr))
         }
     }
 }
 
-impl HandleBVHBuilderTransient {
+impl Handle_BVH_BuilderTransient {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
-        unsafe { crate::ffi_extern_TKMath::HandleBVHBuilderTransient_is_null(self as *const Self) }
+        unsafe {
+            crate::ffi_extern_TKMath::Handle_BVH_BuilderTransient_is_null(self as *const Self)
+        }
     }
 
     /// Dereference this Handle to access the underlying BVH_BuilderTransient
     pub fn get(&self) -> &crate::ffi_types::BVH_BuilderTransient {
         unsafe {
-            &*crate::check_result(crate::ffi_extern_TKMath::HandleBVHBuilderTransient_get(
+            &*crate::check_result(crate::ffi_extern_TKMath::Handle_BVH_BuilderTransient_get(
                 self as *const Self,
             ))
         }
@@ -581,19 +599,19 @@ impl HandleBVHBuilderTransient {
     /// Dereference this Handle to mutably access the underlying BVH_BuilderTransient
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::BVH_BuilderTransient {
         unsafe {
-            &mut *crate::check_result(crate::ffi_extern_TKMath::HandleBVHBuilderTransient_get_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKMath::Handle_BVH_BuilderTransient_get_mut(self as *mut Self),
+            )
         }
     }
 
     /// Upcast Handle<BVH_BuilderTransient> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKMath::HandleBVHBuilderTransient_to_HandleStandardTransient(
+                crate::ffi_extern_TKMath::Handle_BVH_BuilderTransient_to_Handle_Standard_Transient(
                     self as *const Self,
                 ),
             ))
@@ -620,7 +638,7 @@ unsafe impl crate::CppDeletable for ObjectTransient {
 
 impl ObjectTransient {
     /// **Source:** `BVH_Object.hxx`:26 - `BVH_ObjectTransient::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKMath::BVH_ObjectTransient_dynamic_type(
                 self as *const Self,
@@ -630,7 +648,7 @@ impl ObjectTransient {
 
     /// **Source:** `BVH_Object.hxx`:29 - `BVH_ObjectTransient::Properties()`
     /// Returns properties of the geometric object.
-    pub fn properties(&self) -> &crate::ffi_types::HandleBVHProperties {
+    pub fn properties(&self) -> &crate::ffi_types::Handle_BVH_Properties {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKMath::BVH_ObjectTransient_properties(
                 self as *const Self,
@@ -640,7 +658,7 @@ impl ObjectTransient {
 
     /// **Source:** `BVH_Object.hxx`:32 - `BVH_ObjectTransient::SetProperties()`
     /// Sets properties of the geometric object.
-    pub fn set_properties(&mut self, theProperties: &crate::ffi_types::HandleBVHProperties) {
+    pub fn set_properties(&mut self, theProperties: &crate::ffi_types::Handle_BVH_Properties) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKMath::BVH_ObjectTransient_set_properties(
                 self as *mut Self,
@@ -677,7 +695,7 @@ impl ObjectTransient {
     }
 
     /// **Source:** `BVH_Object.hxx`:26 - `BVH_ObjectTransient::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKMath::BVH_ObjectTransient_get_type_descriptor(),
@@ -710,7 +728,7 @@ impl ObjectTransient {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleBVHObjectTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_BVH_ObjectTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKMath::BVH_ObjectTransient_to_handle(obj.into_raw()),
@@ -718,8 +736,8 @@ impl ObjectTransient {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKMath::BVH_ObjectTransient_inherited_IsInstance(
                 self as *const Self,
@@ -728,8 +746,8 @@ impl ObjectTransient {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKMath::BVH_ObjectTransient_inherited_IsKind(
                 self as *const Self,
@@ -738,7 +756,7 @@ impl ObjectTransient {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -752,14 +770,14 @@ impl ObjectTransient {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKMath::BVH_ObjectTransient_inherited_GetRefCount(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKMath::BVH_ObjectTransient_inherited_IncrementRefCounter(
@@ -768,7 +786,7 @@ impl ObjectTransient {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKMath::BVH_ObjectTransient_inherited_DecrementRefCounter(
@@ -777,7 +795,7 @@ impl ObjectTransient {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKMath::BVH_ObjectTransient_inherited_Delete(self as *const Self)
@@ -785,34 +803,34 @@ impl ObjectTransient {
     }
 }
 
-pub use crate::ffi_types::HandleBVHObjectTransient;
+pub use crate::ffi_types::Handle_BVH_ObjectTransient;
 
-unsafe impl crate::CppDeletable for HandleBVHObjectTransient {
+unsafe impl crate::CppDeletable for Handle_BVH_ObjectTransient {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKMath::HandleBVHObjectTransient_destructor(ptr);
+            crate::ffi_extern_TKMath::Handle_BVH_ObjectTransient_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleBVHObjectTransient {
+unsafe impl crate::CppCopyable for Handle_BVH_ObjectTransient {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
         unsafe {
-            crate::check_result(crate::ffi_extern_TKMath::HandleBVHObjectTransient_clone(ptr))
+            crate::check_result(crate::ffi_extern_TKMath::Handle_BVH_ObjectTransient_clone(ptr))
         }
     }
 }
 
-impl HandleBVHObjectTransient {
+impl Handle_BVH_ObjectTransient {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
-        unsafe { crate::ffi_extern_TKMath::HandleBVHObjectTransient_is_null(self as *const Self) }
+        unsafe { crate::ffi_extern_TKMath::Handle_BVH_ObjectTransient_is_null(self as *const Self) }
     }
 
     /// Dereference this Handle to access the underlying BVH_ObjectTransient
     pub fn get(&self) -> &crate::ffi_types::BVH_ObjectTransient {
         unsafe {
-            &*crate::check_result(crate::ffi_extern_TKMath::HandleBVHObjectTransient_get(
+            &*crate::check_result(crate::ffi_extern_TKMath::Handle_BVH_ObjectTransient_get(
                 self as *const Self,
             ))
         }
@@ -821,7 +839,7 @@ impl HandleBVHObjectTransient {
     /// Dereference this Handle to mutably access the underlying BVH_ObjectTransient
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::BVH_ObjectTransient {
         unsafe {
-            &mut *crate::check_result(crate::ffi_extern_TKMath::HandleBVHObjectTransient_get_mut(
+            &mut *crate::check_result(crate::ffi_extern_TKMath::Handle_BVH_ObjectTransient_get_mut(
                 self as *mut Self,
             ))
         }
@@ -830,10 +848,10 @@ impl HandleBVHObjectTransient {
     /// Upcast Handle<BVH_ObjectTransient> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKMath::HandleBVHObjectTransient_to_HandleStandardTransient(
+                crate::ffi_extern_TKMath::Handle_BVH_ObjectTransient_to_Handle_Standard_Transient(
                     self as *const Self,
                 ),
             ))
@@ -859,7 +877,7 @@ unsafe impl crate::CppDeletable for Properties {
 
 impl Properties {
     /// **Source:** `BVH_Properties.hxx`:26 - `BVH_Properties::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKMath::BVH_Properties_dynamic_type(
                 self as *const Self,
@@ -879,7 +897,7 @@ impl Properties {
     }
 
     /// **Source:** `BVH_Properties.hxx`:26 - `BVH_Properties::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKMath::BVH_Properties_get_type_descriptor()))
         }
@@ -905,8 +923,8 @@ impl Properties {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKMath::BVH_Properties_inherited_IsInstance(
                 self as *const Self,
@@ -915,14 +933,14 @@ impl Properties {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKMath::BVH_Properties_inherited_IsKind(self as *const Self, theType)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -936,14 +954,14 @@ impl Properties {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKMath::BVH_Properties_inherited_GetRefCount(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKMath::BVH_Properties_inherited_IncrementRefCounter(
@@ -952,7 +970,7 @@ impl Properties {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKMath::BVH_Properties_inherited_DecrementRefCounter(
@@ -961,7 +979,7 @@ impl Properties {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKMath::BVH_Properties_inherited_Delete(self as *const Self)
@@ -969,32 +987,32 @@ impl Properties {
     }
 }
 
-pub use crate::ffi_types::HandleBVHProperties;
+pub use crate::ffi_types::Handle_BVH_Properties;
 
-unsafe impl crate::CppDeletable for HandleBVHProperties {
+unsafe impl crate::CppDeletable for Handle_BVH_Properties {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKMath::HandleBVHProperties_destructor(ptr);
+            crate::ffi_extern_TKMath::Handle_BVH_Properties_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleBVHProperties {
+unsafe impl crate::CppCopyable for Handle_BVH_Properties {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        unsafe { crate::check_result(crate::ffi_extern_TKMath::HandleBVHProperties_clone(ptr)) }
+        unsafe { crate::check_result(crate::ffi_extern_TKMath::Handle_BVH_Properties_clone(ptr)) }
     }
 }
 
-impl HandleBVHProperties {
+impl Handle_BVH_Properties {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
-        unsafe { crate::ffi_extern_TKMath::HandleBVHProperties_is_null(self as *const Self) }
+        unsafe { crate::ffi_extern_TKMath::Handle_BVH_Properties_is_null(self as *const Self) }
     }
 
     /// Dereference this Handle to access the underlying BVH_Properties
     pub fn get(&self) -> &crate::ffi_types::BVH_Properties {
         unsafe {
-            &*crate::check_result(crate::ffi_extern_TKMath::HandleBVHProperties_get(
+            &*crate::check_result(crate::ffi_extern_TKMath::Handle_BVH_Properties_get(
                 self as *const Self,
             ))
         }
@@ -1003,7 +1021,7 @@ impl HandleBVHProperties {
     /// Dereference this Handle to mutably access the underlying BVH_Properties
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::BVH_Properties {
         unsafe {
-            &mut *crate::check_result(crate::ffi_extern_TKMath::HandleBVHProperties_get_mut(
+            &mut *crate::check_result(crate::ffi_extern_TKMath::Handle_BVH_Properties_get_mut(
                 self as *mut Self,
             ))
         }
@@ -1012,10 +1030,10 @@ impl HandleBVHProperties {
     /// Upcast Handle<BVH_Properties> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKMath::HandleBVHProperties_to_HandleStandardTransient(
+                crate::ffi_extern_TKMath::Handle_BVH_Properties_to_Handle_Standard_Transient(
                     self as *const Self,
                 ),
             ))
@@ -1042,7 +1060,7 @@ unsafe impl crate::CppDeletable for TreeBaseTransient {
 
 impl TreeBaseTransient {
     /// **Source:** `BVH_Tree.hxx`:28 - `BVH_TreeBaseTransient::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKMath::BVH_TreeBaseTransient_dynamic_type(
                 self as *const Self,
@@ -1062,7 +1080,7 @@ impl TreeBaseTransient {
     }
 
     /// **Source:** `BVH_Tree.hxx`:28 - `BVH_TreeBaseTransient::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKMath::BVH_TreeBaseTransient_get_type_descriptor(),
@@ -1095,7 +1113,7 @@ impl TreeBaseTransient {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleBVHTreeBaseTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_BVH_TreeBaseTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKMath::BVH_TreeBaseTransient_to_handle(obj.into_raw()),
@@ -1103,8 +1121,8 @@ impl TreeBaseTransient {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKMath::BVH_TreeBaseTransient_inherited_IsInstance(
                 self as *const Self,
@@ -1113,8 +1131,8 @@ impl TreeBaseTransient {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKMath::BVH_TreeBaseTransient_inherited_IsKind(
                 self as *const Self,
@@ -1123,7 +1141,7 @@ impl TreeBaseTransient {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -1137,7 +1155,7 @@ impl TreeBaseTransient {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKMath::BVH_TreeBaseTransient_inherited_GetRefCount(
@@ -1146,7 +1164,7 @@ impl TreeBaseTransient {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKMath::BVH_TreeBaseTransient_inherited_IncrementRefCounter(
@@ -1155,7 +1173,7 @@ impl TreeBaseTransient {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKMath::BVH_TreeBaseTransient_inherited_DecrementRefCounter(
@@ -1164,7 +1182,7 @@ impl TreeBaseTransient {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKMath::BVH_TreeBaseTransient_inherited_Delete(self as *const Self)
@@ -1172,34 +1190,36 @@ impl TreeBaseTransient {
     }
 }
 
-pub use crate::ffi_types::HandleBVHTreeBaseTransient;
+pub use crate::ffi_types::Handle_BVH_TreeBaseTransient;
 
-unsafe impl crate::CppDeletable for HandleBVHTreeBaseTransient {
+unsafe impl crate::CppDeletable for Handle_BVH_TreeBaseTransient {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKMath::HandleBVHTreeBaseTransient_destructor(ptr);
+            crate::ffi_extern_TKMath::Handle_BVH_TreeBaseTransient_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleBVHTreeBaseTransient {
+unsafe impl crate::CppCopyable for Handle_BVH_TreeBaseTransient {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
         unsafe {
-            crate::check_result(crate::ffi_extern_TKMath::HandleBVHTreeBaseTransient_clone(ptr))
+            crate::check_result(crate::ffi_extern_TKMath::Handle_BVH_TreeBaseTransient_clone(ptr))
         }
     }
 }
 
-impl HandleBVHTreeBaseTransient {
+impl Handle_BVH_TreeBaseTransient {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
-        unsafe { crate::ffi_extern_TKMath::HandleBVHTreeBaseTransient_is_null(self as *const Self) }
+        unsafe {
+            crate::ffi_extern_TKMath::Handle_BVH_TreeBaseTransient_is_null(self as *const Self)
+        }
     }
 
     /// Dereference this Handle to access the underlying BVH_TreeBaseTransient
     pub fn get(&self) -> &crate::ffi_types::BVH_TreeBaseTransient {
         unsafe {
-            &*crate::check_result(crate::ffi_extern_TKMath::HandleBVHTreeBaseTransient_get(
+            &*crate::check_result(crate::ffi_extern_TKMath::Handle_BVH_TreeBaseTransient_get(
                 self as *const Self,
             ))
         }
@@ -1208,19 +1228,19 @@ impl HandleBVHTreeBaseTransient {
     /// Dereference this Handle to mutably access the underlying BVH_TreeBaseTransient
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::BVH_TreeBaseTransient {
         unsafe {
-            &mut *crate::check_result(crate::ffi_extern_TKMath::HandleBVHTreeBaseTransient_get_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKMath::Handle_BVH_TreeBaseTransient_get_mut(self as *mut Self),
+            )
         }
     }
 
     /// Upcast Handle<BVH_TreeBaseTransient> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKMath::HandleBVHTreeBaseTransient_to_HandleStandardTransient(
+                crate::ffi_extern_TKMath::Handle_BVH_TreeBaseTransient_to_Handle_Standard_Transient(
                     self as *const Self,
                 ),
             ))
@@ -1233,7 +1253,7 @@ impl HandleBVHTreeBaseTransient {
 // ========================
 
 pub use crate::ffi_types::{
-    BVH_Array3d as Array3d, BVH_Box_Standard_Real_2 as Box_Standard_Real_2,
-    BVH_Builder_double_3 as Builder_double_3, BVH_Mat4d as Mat4d,
-    BVH_Tree_double_3 as Tree_double_3, BVH_Vec2i as Vec2i, BVH_Vec3d as Vec3d, BVH_Vec4f as Vec4f,
+    BVH_Array3d as Array3d, BVH_Box_double_2 as Box_double_2, BVH_Vec2f as Vec2f,
+    BVH_Vec3d as Vec3d, BVH_Vec3f as Vec3f, BVH_Vec3i as Vec3i, BVH_Vec4f as Vec4f,
+    BVH_Vec4i as Vec4i,
 };

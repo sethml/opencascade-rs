@@ -11,7 +11,7 @@
 /// Returns a Geom_Surface which is the Plane XOY (Z positive)
 /// This allows to consider an UV space homologous to a 3D space,
 /// with this support surface
-pub fn plane_xoy() -> crate::OwnedPtr<crate::ffi_types::HandleGeomPlane> {
+pub fn plane_xoy() -> crate::OwnedPtr<crate::ffi_types::Handle_Geom_Plane> {
     unsafe {
         crate::OwnedPtr::from_raw(crate::check_result(
             crate::ffi_extern_TKShHealing::ShapeBuild_plane_xoy(),
@@ -20,7 +20,7 @@ pub fn plane_xoy() -> crate::OwnedPtr<crate::ffi_types::HandleGeomPlane> {
 }
 
 // Handle type re-exports (targets of handle upcasts/downcasts)
-pub use crate::ffi_types::{HandleBRepToolsReShape, HandleStandardTransient};
+pub use crate::ffi_types::{Handle_BRepTools_ReShape, Handle_Standard_Transient};
 
 // ========================
 // From ShapeBuild_Edge.hxx
@@ -143,7 +143,7 @@ impl Edge {
         }
     }
 
-    /// **Source:** `ShapeBuild_Edge.hxx`:75 - `ShapeBuild_Edge::RemovePCurve()`
+    /// **Source:** `ShapeBuild_Edge.hxx`:74 - `ShapeBuild_Edge::RemovePCurve()`
     /// Removes the PCurve(s) which could be recorded in an Edge for
     /// the given Face
     pub fn remove_p_curve_edge_face(
@@ -160,13 +160,13 @@ impl Edge {
         })
     }
 
-    /// **Source:** `ShapeBuild_Edge.hxx`:79 - `ShapeBuild_Edge::RemovePCurve()`
+    /// **Source:** `ShapeBuild_Edge.hxx`:78 - `ShapeBuild_Edge::RemovePCurve()`
     /// Removes the PCurve(s) which could be recorded in an Edge for
     /// the given Surface
     pub fn remove_p_curve_edge_handlegeomsurface(
         &self,
         edge: &crate::topo_ds::Edge,
-        surf: &crate::ffi_types::HandleGeomSurface,
+        surf: &crate::ffi_types::Handle_Geom_Surface,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKShHealing::ShapeBuild_Edge_remove_p_curve_edge_handlegeomsurface(
@@ -177,13 +177,13 @@ impl Edge {
         })
     }
 
-    /// **Source:** `ShapeBuild_Edge.hxx`:84 - `ShapeBuild_Edge::RemovePCurve()`
+    /// **Source:** `ShapeBuild_Edge.hxx`:83 - `ShapeBuild_Edge::RemovePCurve()`
     /// Removes the PCurve(s) which could be recorded in an Edge for
     /// the given Surface, with given Location
     pub fn remove_p_curve_edge_handlegeomsurface_location(
         &self,
         edge: &crate::topo_ds::Edge,
-        surf: &crate::ffi_types::HandleGeomSurface,
+        surf: &crate::ffi_types::Handle_Geom_Surface,
         loc: &crate::top_loc::Location,
     ) {
         crate::check_void_result(unsafe {
@@ -191,7 +191,7 @@ impl Edge {
         })
     }
 
-    /// **Source:** `ShapeBuild_Edge.hxx`:92 - `ShapeBuild_Edge::ReplacePCurve()`
+    /// **Source:** `ShapeBuild_Edge.hxx`:91 - `ShapeBuild_Edge::ReplacePCurve()`
     /// Replace the PCurve in an Edge for the given Face
     /// In case if edge is seam, i.e. has 2 pcurves on that face,
     /// only pcurve corresponding to the orientation of the edge is
@@ -199,7 +199,7 @@ impl Edge {
     pub fn replace_p_curve(
         &self,
         edge: &crate::topo_ds::Edge,
-        pcurve: &crate::ffi_types::HandleGeom2dCurve,
+        pcurve: &crate::ffi_types::Handle_Geom2d_Curve,
         face: &crate::topo_ds::Face,
     ) {
         crate::check_void_result(unsafe {
@@ -212,7 +212,7 @@ impl Edge {
         })
     }
 
-    /// **Source:** `ShapeBuild_Edge.hxx`:101 - `ShapeBuild_Edge::ReassignPCurve()`
+    /// **Source:** `ShapeBuild_Edge.hxx`:100 - `ShapeBuild_Edge::ReassignPCurve()`
     /// Reassign edge pcurve lying on face <old> to another face <sub>.
     /// If edge has two pcurves on <old> face, only one of them will be
     /// reassigned, and other will left alone. Similarly, if edge already
@@ -234,16 +234,16 @@ impl Edge {
         })
     }
 
-    /// **Source:** `ShapeBuild_Edge.hxx`:106 - `ShapeBuild_Edge::TransformPCurve()`
+    /// **Source:** `ShapeBuild_Edge.hxx`:105 - `ShapeBuild_Edge::TransformPCurve()`
     /// Transforms the PCurve with given matrix and affinity U factor.
     pub fn transform_p_curve(
         &self,
-        pcurve: &crate::ffi_types::HandleGeom2dCurve,
+        pcurve: &crate::ffi_types::Handle_Geom2d_Curve,
         trans: &crate::gp::Trsf2d,
         uFact: f64,
         aFirst: &mut f64,
         aLast: &mut f64,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleGeom2dCurve> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Geom2d_Curve> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKShHealing::ShapeBuild_Edge_transform_p_curve(
@@ -258,7 +258,7 @@ impl Edge {
         }
     }
 
-    /// **Source:** `ShapeBuild_Edge.hxx`:113 - `ShapeBuild_Edge::RemoveCurve3d()`
+    /// **Source:** `ShapeBuild_Edge.hxx`:112 - `ShapeBuild_Edge::RemoveCurve3d()`
     /// Removes the Curve3D recorded in an Edge
     pub fn remove_curve3d(&self, edge: &crate::topo_ds::Edge) {
         crate::check_void_result(unsafe {
@@ -266,7 +266,7 @@ impl Edge {
         })
     }
 
-    /// **Source:** `ShapeBuild_Edge.hxx`:116 - `ShapeBuild_Edge::BuildCurve3d()`
+    /// **Source:** `ShapeBuild_Edge.hxx`:115 - `ShapeBuild_Edge::BuildCurve3d()`
     /// Calls BRepTools::BuildCurve3D
     pub fn build_curve3d(&self, edge: &crate::topo_ds::Edge) -> bool {
         crate::check_result(unsafe {
@@ -274,12 +274,12 @@ impl Edge {
         })
     }
 
-    /// **Source:** `ShapeBuild_Edge.hxx`:119 - `ShapeBuild_Edge::MakeEdge()`
+    /// **Source:** `ShapeBuild_Edge.hxx`:118 - `ShapeBuild_Edge::MakeEdge()`
     /// Makes edge with curve and location
     pub fn make_edge_edge_handlegeomcurve_location(
         &self,
         edge: &mut crate::topo_ds::Edge,
-        curve: &crate::ffi_types::HandleGeomCurve,
+        curve: &crate::ffi_types::Handle_Geom_Curve,
         L: &crate::top_loc::Location,
     ) {
         crate::check_void_result(unsafe {
@@ -292,12 +292,12 @@ impl Edge {
         })
     }
 
-    /// **Source:** `ShapeBuild_Edge.hxx`:124 - `ShapeBuild_Edge::MakeEdge()`
+    /// **Source:** `ShapeBuild_Edge.hxx`:123 - `ShapeBuild_Edge::MakeEdge()`
     /// Makes edge with curve, location and range [p1, p2]
     pub fn make_edge_edge_handlegeomcurve_location_real2(
         &self,
         edge: &mut crate::topo_ds::Edge,
-        curve: &crate::ffi_types::HandleGeomCurve,
+        curve: &crate::ffi_types::Handle_Geom_Curve,
         L: &crate::top_loc::Location,
         p1: f64,
         p2: f64,
@@ -307,12 +307,12 @@ impl Edge {
         })
     }
 
-    /// **Source:** `ShapeBuild_Edge.hxx`:131 - `ShapeBuild_Edge::MakeEdge()`
+    /// **Source:** `ShapeBuild_Edge.hxx`:130 - `ShapeBuild_Edge::MakeEdge()`
     /// Makes edge with pcurve and face
     pub fn make_edge_edge_handlegeom2dcurve_face(
         &self,
         edge: &mut crate::topo_ds::Edge,
-        pcurve: &crate::ffi_types::HandleGeom2dCurve,
+        pcurve: &crate::ffi_types::Handle_Geom2d_Curve,
         face: &crate::topo_ds::Face,
     ) {
         crate::check_void_result(unsafe {
@@ -325,12 +325,12 @@ impl Edge {
         })
     }
 
-    /// **Source:** `ShapeBuild_Edge.hxx`:136 - `ShapeBuild_Edge::MakeEdge()`
+    /// **Source:** `ShapeBuild_Edge.hxx`:135 - `ShapeBuild_Edge::MakeEdge()`
     /// Makes edge with pcurve, face and range [p1, p2]
     pub fn make_edge_edge_handlegeom2dcurve_face_real2(
         &self,
         edge: &mut crate::topo_ds::Edge,
-        pcurve: &crate::ffi_types::HandleGeom2dCurve,
+        pcurve: &crate::ffi_types::Handle_Geom2d_Curve,
         face: &crate::topo_ds::Face,
         p1: f64,
         p2: f64,
@@ -340,13 +340,13 @@ impl Edge {
         })
     }
 
-    /// **Source:** `ShapeBuild_Edge.hxx`:143 - `ShapeBuild_Edge::MakeEdge()`
+    /// **Source:** `ShapeBuild_Edge.hxx`:142 - `ShapeBuild_Edge::MakeEdge()`
     /// Makes edge with pcurve, surface and location
     pub fn make_edge_edge_handlegeom2dcurve_handlegeomsurface_location(
         &self,
         edge: &mut crate::topo_ds::Edge,
-        pcurve: &crate::ffi_types::HandleGeom2dCurve,
-        S: &crate::ffi_types::HandleGeomSurface,
+        pcurve: &crate::ffi_types::Handle_Geom2d_Curve,
+        S: &crate::ffi_types::Handle_Geom_Surface,
         L: &crate::top_loc::Location,
     ) {
         crate::check_void_result(unsafe {
@@ -354,13 +354,13 @@ impl Edge {
         })
     }
 
-    /// **Source:** `ShapeBuild_Edge.hxx`:149 - `ShapeBuild_Edge::MakeEdge()`
+    /// **Source:** `ShapeBuild_Edge.hxx`:148 - `ShapeBuild_Edge::MakeEdge()`
     /// Makes edge with pcurve, surface, location and range [p1, p2]
     pub fn make_edge_edge_handlegeom2dcurve_handlegeomsurface_location_real2(
         &self,
         edge: &mut crate::topo_ds::Edge,
-        pcurve: &crate::ffi_types::HandleGeom2dCurve,
-        S: &crate::ffi_types::HandleGeomSurface,
+        pcurve: &crate::ffi_types::Handle_Geom2d_Curve,
+        S: &crate::ffi_types::Handle_Geom_Surface,
         L: &crate::top_loc::Location,
         p1: f64,
         p2: f64,
@@ -375,7 +375,7 @@ impl Edge {
 // From ShapeBuild_ReShape.hxx
 // ========================
 
-/// **Source:** `ShapeBuild_ReShape.hxx`:49 - `ShapeBuild_ReShape`
+/// **Source:** `ShapeBuild_ReShape.hxx`:48 - `ShapeBuild_ReShape`
 /// Rebuilds a Shape by making pre-defined substitutions on some
 /// of its components
 ///
@@ -399,7 +399,7 @@ unsafe impl crate::CppDeletable for ReShape {
 }
 
 impl ReShape {
-    /// **Source:** `ShapeBuild_ReShape.hxx`:54 - `ShapeBuild_ReShape::ShapeBuild_ReShape()`
+    /// **Source:** `ShapeBuild_ReShape.hxx`:53 - `ShapeBuild_ReShape::ShapeBuild_ReShape()`
     /// Returns an empty Reshape
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
@@ -409,13 +409,13 @@ impl ReShape {
         }
     }
 
-    /// **Source:** `ShapeBuild_ReShape.hxx`:70 - `ShapeBuild_ReShape::Apply()`
+    /// **Source:** `ShapeBuild_ReShape.hxx`:69 - `ShapeBuild_ReShape::Apply()`
     /// Applies the substitutions requests to a shape
     ///
     /// <until> gives the level of type until which requests are taken
     /// into account. For subshapes of the type <until> no rebuild
     /// and further exploring are done.
-    /// ACTUALLY, NOT IMPLEMENTED BELOW  TopAbs_FACE
+    /// ACTUALLY, NOT IMPLEMENTED BELOW TopAbs_FACE
     ///
     /// <buildmode> says how to do on a SOLID,SHELL ... if one of its
     /// sub-shapes has been changed:
@@ -442,7 +442,7 @@ impl ReShape {
         }
     }
 
-    /// **Source:** `ShapeBuild_ReShape.hxx`:86 - `ShapeBuild_ReShape::Apply()`
+    /// **Source:** `ShapeBuild_ReShape.hxx`:85 - `ShapeBuild_ReShape::Apply()`
     /// Applies the substitutions requests to a shape.
     ///
     /// <until> gives the level of type until which requests are taken
@@ -471,7 +471,7 @@ impl ReShape {
         }
     }
 
-    /// **Source:** `ShapeBuild_ReShape.hxx`:97 - `ShapeBuild_ReShape::Status()`
+    /// **Source:** `ShapeBuild_ReShape.hxx`:95 - `ShapeBuild_ReShape::Status()`
     /// Returns a complete substitution status for a shape
     /// 0  : not recorded,   <newsh> = original <shape>
     /// < 0: to be removed,  <newsh> is NULL
@@ -495,7 +495,7 @@ impl ReShape {
         })
     }
 
-    /// **Source:** `ShapeBuild_ReShape.hxx`:109 - `ShapeBuild_ReShape::Status()`
+    /// **Source:** `ShapeBuild_ReShape.hxx`:106 - `ShapeBuild_ReShape::Status()`
     /// Queries the status of last call to Apply(shape,enum)
     /// OK   : no (sub)shapes replaced or removed
     /// DONE1: source (starting) shape replaced
@@ -512,8 +512,8 @@ impl ReShape {
         })
     }
 
-    /// **Source:** `ShapeBuild_ReShape.hxx`:111 - `ShapeBuild_ReShape::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `ShapeBuild_ReShape.hxx`:108 - `ShapeBuild_ReShape::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKShHealing::ShapeBuild_ReShape_dynamic_type(
                 self as *const Self,
@@ -521,7 +521,7 @@ impl ReShape {
         }
     }
 
-    /// **Source:** `ShapeBuild_ReShape.hxx`:111 - `ShapeBuild_ReShape::get_type_name()`
+    /// **Source:** `ShapeBuild_ReShape.hxx`:108 - `ShapeBuild_ReShape::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -532,8 +532,8 @@ impl ReShape {
         .into_owned()
     }
 
-    /// **Source:** `ShapeBuild_ReShape.hxx`:111 - `ShapeBuild_ReShape::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    /// **Source:** `ShapeBuild_ReShape.hxx`:108 - `ShapeBuild_ReShape::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKShHealing::ShapeBuild_ReShape_get_type_descriptor(),
@@ -588,7 +588,7 @@ impl ReShape {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleShapeBuildReShape> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_ShapeBuild_ReShape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKShHealing::ShapeBuild_ReShape_to_handle(obj.into_raw()),
@@ -646,7 +646,22 @@ impl ReShape {
         }
     }
 
-    /// Inherited: **Source:** `BRepTools_ReShape.hxx`:128 - `BRepTools_ReShape::ModeConsiderLocation()`
+    /// Inherited: **Source:** `BRepTools_ReShape.hxx`:108 - `BRepTools_ReShape::ValueLeaf()`
+    pub fn value_leaf(
+        &self,
+        theShape: &crate::topo_ds::Shape,
+    ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeBuild_ReShape_inherited_ValueLeaf(
+                    self as *const Self,
+                    theShape,
+                ),
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `BRepTools_ReShape.hxx`:136 - `BRepTools_ReShape::ModeConsiderLocation()`
     pub fn mode_consider_location(&mut self) -> &mut bool {
         unsafe {
             &mut *(crate::check_result(
@@ -657,7 +672,7 @@ impl ReShape {
         }
     }
 
-    /// Inherited: **Source:** `BRepTools_ReShape.hxx`:134 - `BRepTools_ReShape::CopyVertex()`
+    /// Inherited: **Source:** `BRepTools_ReShape.hxx`:142 - `BRepTools_ReShape::CopyVertex()`
     pub fn copy_vertex(
         &mut self,
         theV: &crate::topo_ds::Vertex,
@@ -674,7 +689,7 @@ impl ReShape {
         }
     }
 
-    /// Inherited: **Source:** `BRepTools_ReShape.hxx`:148 - `BRepTools_ReShape::IsNewShape()`
+    /// Inherited: **Source:** `BRepTools_ReShape.hxx`:155 - `BRepTools_ReShape::IsNewShape()`
     pub fn is_new_shape(&self, theShape: &crate::topo_ds::Shape) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKShHealing::ShapeBuild_ReShape_inherited_IsNewShape(
@@ -684,8 +699,8 @@ impl ReShape {
         })
     }
 
-    /// Inherited: **Source:** `BRepTools_ReShape.hxx`:151 - `BRepTools_ReShape::History()`
-    pub fn history(&self) -> crate::OwnedPtr<crate::ffi_types::HandleBRepToolsHistory> {
+    /// Inherited: **Source:** `BRepTools_ReShape.hxx`:158 - `BRepTools_ReShape::History()`
+    pub fn history(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_BRepTools_History> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKShHealing::ShapeBuild_ReShape_inherited_History(
@@ -695,8 +710,8 @@ impl ReShape {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKShHealing::ShapeBuild_ReShape_inherited_IsInstance(
                 self as *const Self,
@@ -705,8 +720,8 @@ impl ReShape {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKShHealing::ShapeBuild_ReShape_inherited_IsKind(
                 self as *const Self,
@@ -715,7 +730,7 @@ impl ReShape {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -731,7 +746,7 @@ impl ReShape {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKShHealing::ShapeBuild_ReShape_inherited_GetRefCount(
@@ -740,7 +755,7 @@ impl ReShape {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKShHealing::ShapeBuild_ReShape_inherited_IncrementRefCounter(
@@ -749,7 +764,7 @@ impl ReShape {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKShHealing::ShapeBuild_ReShape_inherited_DecrementRefCounter(
@@ -758,7 +773,7 @@ impl ReShape {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKShHealing::ShapeBuild_ReShape_inherited_Delete(self as *const Self)
@@ -766,36 +781,36 @@ impl ReShape {
     }
 }
 
-pub use crate::ffi_types::HandleShapeBuildReShape;
+pub use crate::ffi_types::Handle_ShapeBuild_ReShape;
 
-unsafe impl crate::CppDeletable for HandleShapeBuildReShape {
+unsafe impl crate::CppDeletable for Handle_ShapeBuild_ReShape {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKShHealing::HandleShapeBuildReShape_destructor(ptr);
+            crate::ffi_extern_TKShHealing::Handle_ShapeBuild_ReShape_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleShapeBuildReShape {
+unsafe impl crate::CppCopyable for Handle_ShapeBuild_ReShape {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
         unsafe {
-            crate::check_result(crate::ffi_extern_TKShHealing::HandleShapeBuildReShape_clone(ptr))
+            crate::check_result(crate::ffi_extern_TKShHealing::Handle_ShapeBuild_ReShape_clone(ptr))
         }
     }
 }
 
-impl HandleShapeBuildReShape {
+impl Handle_ShapeBuild_ReShape {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
         unsafe {
-            crate::ffi_extern_TKShHealing::HandleShapeBuildReShape_is_null(self as *const Self)
+            crate::ffi_extern_TKShHealing::Handle_ShapeBuild_ReShape_is_null(self as *const Self)
         }
     }
 
     /// Dereference this Handle to access the underlying ShapeBuild_ReShape
     pub fn get(&self) -> &crate::ffi_types::ShapeBuild_ReShape {
         unsafe {
-            &*crate::check_result(crate::ffi_extern_TKShHealing::HandleShapeBuildReShape_get(
+            &*crate::check_result(crate::ffi_extern_TKShHealing::Handle_ShapeBuild_ReShape_get(
                 self as *const Self,
             ))
         }
@@ -805,32 +820,26 @@ impl HandleShapeBuildReShape {
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::ShapeBuild_ReShape {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi_extern_TKShHealing::HandleShapeBuildReShape_get_mut(self as *mut Self),
+                crate::ffi_extern_TKShHealing::Handle_ShapeBuild_ReShape_get_mut(self as *mut Self),
             )
         }
     }
 
     /// Upcast Handle<ShapeBuild_ReShape> to Handle<BRepTools_ReShape>
-    pub fn to_handle_re_shape(&self) -> crate::OwnedPtr<crate::ffi_types::HandleBRepToolsReShape> {
+    pub fn to_handle_re_shape(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_BRepTools_ReShape> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKShHealing::HandleShapeBuildReShape_to_HandleBRepToolsReShape(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKShHealing::Handle_ShapeBuild_ReShape_to_Handle_BRepTools_ReShape(self as *const Self)))
         }
     }
 
     /// Upcast Handle<ShapeBuild_ReShape> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKShHealing::HandleShapeBuildReShape_to_HandleStandardTransient(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKShHealing::Handle_ShapeBuild_ReShape_to_Handle_Standard_Transient(self as *const Self)))
         }
     }
 }

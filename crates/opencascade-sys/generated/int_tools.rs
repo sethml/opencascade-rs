@@ -6,33 +6,59 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 
-/// **Source:** `IntTools.hxx`:34 - `IntTools::Length`
+/// **Source:** `IntTools.hxx`:35 - `IntTools::Length`
 /// returns the length of the edge;
 pub fn length(E: &crate::topo_ds::Edge) -> f64 {
     crate::check_result(unsafe { crate::ffi_extern_TKBO::IntTools_length(E) })
 }
-/// **Source:** `IntTools.hxx`:48 - `IntTools::Parameter`
+/// **Source:** `IntTools.hxx`:39 - `IntTools::RemoveIdenticalRoots`
+/// Remove from the sequence aSeq the Roots that have
+/// values ti and tj such as |ti-tj] < anEpsT.
+pub fn remove_identical_roots(
+    aSeq: &mut crate::ffi_types::NCollection_Sequence_IntTools_Root,
+    anEpsT: f64,
+) {
+    crate::check_void_result(unsafe {
+        crate::ffi_extern_TKBO::IntTools_remove_identical_roots(aSeq, anEpsT)
+    })
+}
+/// **Source:** `IntTools.hxx`:43 - `IntTools::SortRoots`
+/// Sort the sequence aSeq of the Roots to arrange the Roots in increasing order.
+pub fn sort_roots(aSeq: &mut crate::ffi_types::NCollection_Sequence_IntTools_Root, anEpsT: f64) {
+    crate::check_void_result(unsafe { crate::ffi_extern_TKBO::IntTools_sort_roots(aSeq, anEpsT) })
+}
+/// **Source:** `IntTools.hxx`:47 - `IntTools::FindRootStates`
+/// Find the states (before and after) for each Root from the sequence aSeq
+pub fn find_root_states(
+    aSeq: &mut crate::ffi_types::NCollection_Sequence_IntTools_Root,
+    anEpsNull: f64,
+) {
+    crate::check_void_result(unsafe {
+        crate::ffi_extern_TKBO::IntTools_find_root_states(aSeq, anEpsNull)
+    })
+}
+/// **Source:** `IntTools.hxx`:50 - `IntTools::Parameter`
 pub fn parameter_pnt_handlegeomcurve_real(
     P: &crate::gp::Pnt,
-    Curve: &crate::ffi_types::HandleGeomCurve,
+    Curve: &crate::ffi_types::Handle_Geom_Curve,
     aParm: &mut f64,
 ) -> i32 {
     crate::check_result(unsafe {
         crate::ffi_extern_TKBO::IntTools_parameter_pnt_handlegeomcurve_real(P, Curve, aParm)
     })
 }
-/// **Source:** `IntTools.hxx`:52 - `IntTools::GetRadius`
+/// **Source:** `IntTools.hxx`:54 - `IntTools::GetRadius`
 pub fn get_radius(C: &crate::b_rep_adaptor::Curve, t1: f64, t3: f64, R: &mut f64) -> i32 {
     crate::check_result(unsafe { crate::ffi_extern_TKBO::IntTools_get_radius(C, t1, t3, R) })
 }
-/// **Source:** `IntTools.hxx`:57 - `IntTools::PrepareArgs`
+/// **Source:** `IntTools.hxx`:59 - `IntTools::PrepareArgs`
 pub fn prepare_args(
     C: &mut crate::b_rep_adaptor::Curve,
     tMax: f64,
     tMin: f64,
     Discret: i32,
     Deflect: f64,
-    anArgs: &mut crate::ffi_types::TColStd_Array1OfReal,
+    anArgs: &mut crate::ffi_types::NCollection_Array1_double,
 ) -> i32 {
     crate::check_result(unsafe {
         crate::ffi_extern_TKBO::IntTools_prepare_args(C, tMax, tMin, Discret, Deflect, anArgs)
@@ -40,7 +66,7 @@ pub fn prepare_args(
 }
 
 // Handle type re-exports (targets of handle upcasts/downcasts)
-pub use crate::ffi_types::{HandleAdaptor3dTopolTool, HandleStandardTransient};
+pub use crate::ffi_types::{Handle_Adaptor3d_TopolTool, Handle_Standard_Transient};
 
 // ========================
 // From IntTools_BaseRangeSample.hxx
@@ -96,7 +122,7 @@ impl BaseRangeSample {
 // From IntTools_BeanFaceIntersector.hxx
 // ========================
 
-/// **Source:** `IntTools_BeanFaceIntersector.hxx`:50 - `IntTools_BeanFaceIntersector`
+/// **Source:** `IntTools_BeanFaceIntersector.hxx`:52 - `IntTools_BeanFaceIntersector`
 /// The class BeanFaceIntersector computes ranges of parameters on
 /// the curve of a bean(part of edge) that bound the parts of bean which
 /// are on the surface of a face according to edge and face tolerances.
@@ -115,7 +141,7 @@ unsafe impl crate::CppDeletable for BeanFaceIntersector {
 }
 
 impl BeanFaceIntersector {
-    /// **Source:** `IntTools_BeanFaceIntersector.hxx`:55 - `IntTools_BeanFaceIntersector::IntTools_BeanFaceIntersector()`
+    /// **Source:** `IntTools_BeanFaceIntersector.hxx`:57 - `IntTools_BeanFaceIntersector::IntTools_BeanFaceIntersector()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -124,7 +150,7 @@ impl BeanFaceIntersector {
         }
     }
 
-    /// **Source:** `IntTools_BeanFaceIntersector.hxx`:64 - `IntTools_BeanFaceIntersector::IntTools_BeanFaceIntersector()`
+    /// **Source:** `IntTools_BeanFaceIntersector.hxx`:66 - `IntTools_BeanFaceIntersector::IntTools_BeanFaceIntersector()`
     /// Initializes the algorithm
     ///
     /// Warning:
@@ -145,7 +171,7 @@ impl BeanFaceIntersector {
         }
     }
 
-    /// **Source:** `IntTools_BeanFaceIntersector.hxx`:68 - `IntTools_BeanFaceIntersector::IntTools_BeanFaceIntersector()`
+    /// **Source:** `IntTools_BeanFaceIntersector.hxx`:70 - `IntTools_BeanFaceIntersector::IntTools_BeanFaceIntersector()`
     /// Initializes the algorithm
     pub fn new_curve_surface_real2(
         theCurve: &crate::b_rep_adaptor::Curve,
@@ -165,7 +191,7 @@ impl BeanFaceIntersector {
         }
     }
 
-    /// **Source:** `IntTools_BeanFaceIntersector.hxx`:76 - `IntTools_BeanFaceIntersector::IntTools_BeanFaceIntersector()`
+    /// **Source:** `IntTools_BeanFaceIntersector.hxx`:78 - `IntTools_BeanFaceIntersector::IntTools_BeanFaceIntersector()`
     /// Initializes the algorithm
     /// theUMinParameter, ... are used for
     /// optimization purposes
@@ -199,7 +225,7 @@ impl BeanFaceIntersector {
         }
     }
 
-    /// **Source:** `IntTools_BeanFaceIntersector.hxx`:94 - `IntTools_BeanFaceIntersector::Init()`
+    /// **Source:** `IntTools_BeanFaceIntersector.hxx`:96 - `IntTools_BeanFaceIntersector::Init()`
     /// Initializes the algorithm
     ///
     /// Warning:
@@ -221,7 +247,7 @@ impl BeanFaceIntersector {
         })
     }
 
-    /// **Source:** `IntTools_BeanFaceIntersector.hxx`:97 - `IntTools_BeanFaceIntersector::Init()`
+    /// **Source:** `IntTools_BeanFaceIntersector.hxx`:99 - `IntTools_BeanFaceIntersector::Init()`
     /// Initializes the algorithm
     pub fn init_curve_surface_real2(
         &mut self,
@@ -241,7 +267,7 @@ impl BeanFaceIntersector {
         })
     }
 
-    /// **Source:** `IntTools_BeanFaceIntersector.hxx`:105 - `IntTools_BeanFaceIntersector::Init()`
+    /// **Source:** `IntTools_BeanFaceIntersector.hxx`:107 - `IntTools_BeanFaceIntersector::Init()`
     /// Initializes the algorithm
     /// theUMinParameter, ... are used for
     /// optimization purposes
@@ -275,9 +301,9 @@ impl BeanFaceIntersector {
         })
     }
 
-    /// **Source:** `IntTools_BeanFaceIntersector.hxx`:117 - `IntTools_BeanFaceIntersector::SetContext()`
+    /// **Source:** `IntTools_BeanFaceIntersector.hxx`:119 - `IntTools_BeanFaceIntersector::SetContext()`
     /// Sets the intersection context
-    pub fn set_context(&mut self, theContext: &crate::ffi_types::HandleIntToolsContext) {
+    pub fn set_context(&mut self, theContext: &crate::ffi_types::Handle_IntTools_Context) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBO::IntTools_BeanFaceIntersector_set_context(
                 self as *mut Self,
@@ -286,9 +312,9 @@ impl BeanFaceIntersector {
         })
     }
 
-    /// **Source:** `IntTools_BeanFaceIntersector.hxx`:120 - `IntTools_BeanFaceIntersector::Context()`
+    /// **Source:** `IntTools_BeanFaceIntersector.hxx`:122 - `IntTools_BeanFaceIntersector::Context()`
     /// Gets the intersection context
-    pub fn context(&self) -> &crate::ffi_types::HandleIntToolsContext {
+    pub fn context(&self) -> &crate::ffi_types::Handle_IntTools_Context {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKBO::IntTools_BeanFaceIntersector_context(
                 self as *const Self,
@@ -296,7 +322,7 @@ impl BeanFaceIntersector {
         }
     }
 
-    /// **Source:** `IntTools_BeanFaceIntersector.hxx`:123 - `IntTools_BeanFaceIntersector::SetBeanParameters()`
+    /// **Source:** `IntTools_BeanFaceIntersector.hxx`:125 - `IntTools_BeanFaceIntersector::SetBeanParameters()`
     /// Set restrictions for curve
     pub fn set_bean_parameters(&mut self, theFirstParOnCurve: f64, theLastParOnCurve: f64) {
         crate::check_void_result(unsafe {
@@ -308,7 +334,7 @@ impl BeanFaceIntersector {
         })
     }
 
-    /// **Source:** `IntTools_BeanFaceIntersector.hxx`:127 - `IntTools_BeanFaceIntersector::SetSurfaceParameters()`
+    /// **Source:** `IntTools_BeanFaceIntersector.hxx`:129 - `IntTools_BeanFaceIntersector::SetSurfaceParameters()`
     /// Set restrictions for surface
     pub fn set_surface_parameters(
         &mut self,
@@ -328,7 +354,7 @@ impl BeanFaceIntersector {
         })
     }
 
-    /// **Source:** `IntTools_BeanFaceIntersector.hxx`:133 - `IntTools_BeanFaceIntersector::Perform()`
+    /// **Source:** `IntTools_BeanFaceIntersector.hxx`:135 - `IntTools_BeanFaceIntersector::Perform()`
     /// Launches the algorithm
     pub fn perform(&mut self) {
         crate::check_void_result(unsafe {
@@ -336,7 +362,7 @@ impl BeanFaceIntersector {
         })
     }
 
-    /// **Source:** `IntTools_BeanFaceIntersector.hxx`:136 - `IntTools_BeanFaceIntersector::IsDone()`
+    /// **Source:** `IntTools_BeanFaceIntersector.hxx`:138 - `IntTools_BeanFaceIntersector::IsDone()`
     /// Returns Done/NotDone state of the algorithm.
     pub fn is_done(&self) -> bool {
         crate::check_result(unsafe {
@@ -344,8 +370,8 @@ impl BeanFaceIntersector {
         })
     }
 
-    /// **Source:** `IntTools_BeanFaceIntersector.hxx`:138 - `IntTools_BeanFaceIntersector::Result()`
-    pub fn result(&self) -> &crate::ffi_types::IntTools_SequenceOfRanges {
+    /// **Source:** `IntTools_BeanFaceIntersector.hxx`:140 - `IntTools_BeanFaceIntersector::Result()`
+    pub fn result(&self) -> &crate::ffi_types::NCollection_Sequence_IntTools_Range {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKBO::IntTools_BeanFaceIntersector_result(
                 self as *const Self,
@@ -353,20 +379,20 @@ impl BeanFaceIntersector {
         }
     }
 
-    /// **Source:** `IntTools_BeanFaceIntersector.hxx`:140 - `IntTools_BeanFaceIntersector::Result()`
-    pub fn result_sequenceofranges(
+    /// **Source:** `IntTools_BeanFaceIntersector.hxx`:142 - `IntTools_BeanFaceIntersector::Result()`
+    pub fn result_seq_range(
         &self,
-        theResults: &mut crate::ffi_types::IntTools_SequenceOfRanges,
+        theResults: &mut crate::ffi_types::NCollection_Sequence_IntTools_Range,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi_extern_TKBO::IntTools_BeanFaceIntersector_result_sequenceofranges(
+            crate::ffi_extern_TKBO::IntTools_BeanFaceIntersector_result_seq_range(
                 self as *const Self,
                 theResults,
             )
         })
     }
 
-    /// **Source:** `IntTools_BeanFaceIntersector.hxx`:143 - `IntTools_BeanFaceIntersector::MinimalSquareDistance()`
+    /// **Source:** `IntTools_BeanFaceIntersector.hxx`:145 - `IntTools_BeanFaceIntersector::MinimalSquareDistance()`
     /// Returns the minimal distance found between edge and face
     pub fn minimal_square_distance(&self) -> f64 {
         crate::check_result(unsafe {
@@ -381,9 +407,9 @@ impl BeanFaceIntersector {
 // From IntTools_CommonPrt.hxx
 // ========================
 
-/// **Source:** `IntTools_CommonPrt.hxx`:31 - `IntTools_CommonPrt`
-/// The class  is  to  describe a  common  part
-/// between two edges in  3-d space.
+/// **Source:** `IntTools_CommonPrt.hxx`:32 - `IntTools_CommonPrt`
+/// The class is to describe a common part
+/// between two edges in 3D space.
 pub use crate::ffi_types::IntTools_CommonPrt as CommonPrt;
 
 unsafe impl crate::CppDeletable for CommonPrt {
@@ -411,7 +437,7 @@ impl std::borrow::ToOwned for CommonPrt {
 }
 
 impl CommonPrt {
-    /// **Source:** `IntTools_CommonPrt.hxx`:37 - `IntTools_CommonPrt::IntTools_CommonPrt()`
+    /// **Source:** `IntTools_CommonPrt.hxx`:38 - `IntTools_CommonPrt::IntTools_CommonPrt()`
     /// Empty constructor
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
@@ -421,7 +447,7 @@ impl CommonPrt {
         }
     }
 
-    /// **Source:** `IntTools_CommonPrt.hxx`:42 - `IntTools_CommonPrt::Assign()`
+    /// **Source:** `IntTools_CommonPrt.hxx`:43 - `IntTools_CommonPrt::Assign()`
     ///
     /// # Safety
     ///
@@ -437,7 +463,7 @@ impl CommonPrt {
         }
     }
 
-    /// **Source:** `IntTools_CommonPrt.hxx`:47 - `IntTools_CommonPrt::SetEdge1()`
+    /// **Source:** `IntTools_CommonPrt.hxx`:48 - `IntTools_CommonPrt::SetEdge1()`
     /// Sets the first edge.
     pub fn set_edge1(&mut self, anE: &crate::topo_ds::Edge) {
         crate::check_void_result(unsafe {
@@ -445,7 +471,7 @@ impl CommonPrt {
         })
     }
 
-    /// **Source:** `IntTools_CommonPrt.hxx`:50 - `IntTools_CommonPrt::SetEdge2()`
+    /// **Source:** `IntTools_CommonPrt.hxx`:51 - `IntTools_CommonPrt::SetEdge2()`
     /// Sets the second edge.
     pub fn set_edge2(&mut self, anE: &crate::topo_ds::Edge) {
         crate::check_void_result(unsafe {
@@ -453,16 +479,16 @@ impl CommonPrt {
         })
     }
 
-    /// **Source:** `IntTools_CommonPrt.hxx`:54 - `IntTools_CommonPrt::SetType()`
-    /// Sets the type of  the common  part
-    /// Vertex  or  Edge
+    /// **Source:** `IntTools_CommonPrt.hxx`:55 - `IntTools_CommonPrt::SetType()`
+    /// Sets the type of the common part
+    /// Vertex or Edge
     pub fn set_type(&mut self, aType: crate::top_abs::ShapeEnum) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBO::IntTools_CommonPrt_set_type(self as *mut Self, aType.into())
         })
     }
 
-    /// **Source:** `IntTools_CommonPrt.hxx`:57 - `IntTools_CommonPrt::SetRange1()`
+    /// **Source:** `IntTools_CommonPrt.hxx`:58 - `IntTools_CommonPrt::SetRange1()`
     /// Sets the range of first edge.
     pub fn set_range1_range(&mut self, aR: &Range) {
         crate::check_void_result(unsafe {
@@ -470,7 +496,7 @@ impl CommonPrt {
         })
     }
 
-    /// **Source:** `IntTools_CommonPrt.hxx`:60 - `IntTools_CommonPrt::SetRange1()`
+    /// **Source:** `IntTools_CommonPrt.hxx`:61 - `IntTools_CommonPrt::SetRange1()`
     /// Sets the range of first edge.
     pub fn set_range1_real2(&mut self, tf: f64, tl: f64) {
         crate::check_void_result(unsafe {
@@ -478,7 +504,7 @@ impl CommonPrt {
         })
     }
 
-    /// **Source:** `IntTools_CommonPrt.hxx`:63 - `IntTools_CommonPrt::AppendRange2()`
+    /// **Source:** `IntTools_CommonPrt.hxx`:64 - `IntTools_CommonPrt::AppendRange2()`
     /// Appends the range of second edge.
     pub fn append_range2_range(&mut self, aR: &Range) {
         crate::check_void_result(unsafe {
@@ -486,7 +512,7 @@ impl CommonPrt {
         })
     }
 
-    /// **Source:** `IntTools_CommonPrt.hxx`:66 - `IntTools_CommonPrt::AppendRange2()`
+    /// **Source:** `IntTools_CommonPrt.hxx`:67 - `IntTools_CommonPrt::AppendRange2()`
     /// Appends the range of second edge.
     pub fn append_range2_real2(&mut self, tf: f64, tl: f64) {
         crate::check_void_result(unsafe {
@@ -498,7 +524,7 @@ impl CommonPrt {
         })
     }
 
-    /// **Source:** `IntTools_CommonPrt.hxx`:69 - `IntTools_CommonPrt::SetVertexParameter1()`
+    /// **Source:** `IntTools_CommonPrt.hxx`:70 - `IntTools_CommonPrt::SetVertexParameter1()`
     /// Sets a parameter of first vertex
     pub fn set_vertex_parameter1(&mut self, tV: f64) {
         crate::check_void_result(unsafe {
@@ -506,7 +532,7 @@ impl CommonPrt {
         })
     }
 
-    /// **Source:** `IntTools_CommonPrt.hxx`:72 - `IntTools_CommonPrt::SetVertexParameter2()`
+    /// **Source:** `IntTools_CommonPrt.hxx`:73 - `IntTools_CommonPrt::SetVertexParameter2()`
     /// Sets a parameter of second vertex
     pub fn set_vertex_parameter2(&mut self, tV: f64) {
         crate::check_void_result(unsafe {
@@ -514,7 +540,7 @@ impl CommonPrt {
         })
     }
 
-    /// **Source:** `IntTools_CommonPrt.hxx`:75 - `IntTools_CommonPrt::Edge1()`
+    /// **Source:** `IntTools_CommonPrt.hxx`:76 - `IntTools_CommonPrt::Edge1()`
     /// Returns the first edge.
     pub fn edge1(&self) -> &crate::topo_ds::Edge {
         unsafe {
@@ -524,7 +550,7 @@ impl CommonPrt {
         }
     }
 
-    /// **Source:** `IntTools_CommonPrt.hxx`:78 - `IntTools_CommonPrt::Edge2()`
+    /// **Source:** `IntTools_CommonPrt.hxx`:79 - `IntTools_CommonPrt::Edge2()`
     /// Returns the second edge
     pub fn edge2(&self) -> &crate::topo_ds::Edge {
         unsafe {
@@ -534,8 +560,8 @@ impl CommonPrt {
         }
     }
 
-    /// **Source:** `IntTools_CommonPrt.hxx`:81 - `IntTools_CommonPrt::Type()`
-    /// Returns the type of  the common  part
+    /// **Source:** `IntTools_CommonPrt.hxx`:82 - `IntTools_CommonPrt::Type()`
+    /// Returns the type of the common part
     pub fn type_(&self) -> crate::top_abs::ShapeEnum {
         crate::top_abs::ShapeEnum::try_from(crate::check_result(unsafe {
             crate::ffi_extern_TKBO::IntTools_CommonPrt_type_(self as *const Self)
@@ -543,7 +569,7 @@ impl CommonPrt {
         .unwrap()
     }
 
-    /// **Source:** `IntTools_CommonPrt.hxx`:84 - `IntTools_CommonPrt::Range1()`
+    /// **Source:** `IntTools_CommonPrt.hxx`:85 - `IntTools_CommonPrt::Range1()`
     /// Returns the range of first edge
     pub fn range1(&self) -> &Range {
         unsafe {
@@ -553,7 +579,7 @@ impl CommonPrt {
         }
     }
 
-    /// **Source:** `IntTools_CommonPrt.hxx`:87 - `IntTools_CommonPrt::Range1()`
+    /// **Source:** `IntTools_CommonPrt.hxx`:88 - `IntTools_CommonPrt::Range1()`
     /// Returns the range of first edge.
     pub fn range1_real2(&self, tf: &mut f64, tl: &mut f64) {
         crate::check_void_result(unsafe {
@@ -561,9 +587,9 @@ impl CommonPrt {
         })
     }
 
-    /// **Source:** `IntTools_CommonPrt.hxx`:90 - `IntTools_CommonPrt::Ranges2()`
-    /// Returns the  ranges of second edge.
-    pub fn ranges2(&self) -> &crate::ffi_types::IntTools_SequenceOfRanges {
+    /// **Source:** `IntTools_CommonPrt.hxx`:91 - `IntTools_CommonPrt::Ranges2()`
+    /// Returns the ranges of second edge.
+    pub fn ranges2(&self) -> &crate::ffi_types::NCollection_Sequence_IntTools_Range {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKBO::IntTools_CommonPrt_ranges2(
                 self as *const Self,
@@ -571,9 +597,9 @@ impl CommonPrt {
         }
     }
 
-    /// **Source:** `IntTools_CommonPrt.hxx`:93 - `IntTools_CommonPrt::ChangeRanges2()`
-    /// Returns the  ranges of second edge.
-    pub fn change_ranges2(&mut self) -> &mut crate::ffi_types::IntTools_SequenceOfRanges {
+    /// **Source:** `IntTools_CommonPrt.hxx`:94 - `IntTools_CommonPrt::ChangeRanges2()`
+    /// Returns the ranges of second edge.
+    pub fn change_ranges2(&mut self) -> &mut crate::ffi_types::NCollection_Sequence_IntTools_Range {
         unsafe {
             &mut *(crate::check_result(crate::ffi_extern_TKBO::IntTools_CommonPrt_change_ranges2(
                 self as *mut Self,
@@ -581,7 +607,7 @@ impl CommonPrt {
         }
     }
 
-    /// **Source:** `IntTools_CommonPrt.hxx`:96 - `IntTools_CommonPrt::VertexParameter1()`
+    /// **Source:** `IntTools_CommonPrt.hxx`:97 - `IntTools_CommonPrt::VertexParameter1()`
     /// Returns parameter of first vertex
     pub fn vertex_parameter1(&self) -> f64 {
         crate::check_result(unsafe {
@@ -589,7 +615,7 @@ impl CommonPrt {
         })
     }
 
-    /// **Source:** `IntTools_CommonPrt.hxx`:99 - `IntTools_CommonPrt::VertexParameter2()`
+    /// **Source:** `IntTools_CommonPrt.hxx`:100 - `IntTools_CommonPrt::VertexParameter2()`
     /// Returns parameter of second vertex
     pub fn vertex_parameter2(&self) -> f64 {
         crate::check_result(unsafe {
@@ -597,7 +623,7 @@ impl CommonPrt {
         })
     }
 
-    /// **Source:** `IntTools_CommonPrt.hxx`:102 - `IntTools_CommonPrt::Copy()`
+    /// **Source:** `IntTools_CommonPrt.hxx`:103 - `IntTools_CommonPrt::Copy()`
     /// Copies me to anOther
     pub fn copy(&self, anOther: &mut CommonPrt) {
         crate::check_void_result(unsafe {
@@ -605,7 +631,7 @@ impl CommonPrt {
         })
     }
 
-    /// **Source:** `IntTools_CommonPrt.hxx`:105 - `IntTools_CommonPrt::AllNullFlag()`
+    /// **Source:** `IntTools_CommonPrt.hxx`:106 - `IntTools_CommonPrt::AllNullFlag()`
     /// Modifier
     pub fn all_null_flag(&self) -> bool {
         crate::check_result(unsafe {
@@ -613,7 +639,7 @@ impl CommonPrt {
         })
     }
 
-    /// **Source:** `IntTools_CommonPrt.hxx`:108 - `IntTools_CommonPrt::SetAllNullFlag()`
+    /// **Source:** `IntTools_CommonPrt.hxx`:109 - `IntTools_CommonPrt::SetAllNullFlag()`
     /// Selector
     pub fn set_all_null_flag(&mut self, aFlag: bool) {
         crate::check_void_result(unsafe {
@@ -621,7 +647,7 @@ impl CommonPrt {
         })
     }
 
-    /// **Source:** `IntTools_CommonPrt.hxx`:111 - `IntTools_CommonPrt::SetBoundingPoints()`
+    /// **Source:** `IntTools_CommonPrt.hxx`:112 - `IntTools_CommonPrt::SetBoundingPoints()`
     /// Modifier
     pub fn set_bounding_points(&mut self, aP1: &crate::gp::Pnt, aP2: &crate::gp::Pnt) {
         crate::check_void_result(unsafe {
@@ -633,7 +659,7 @@ impl CommonPrt {
         })
     }
 
-    /// **Source:** `IntTools_CommonPrt.hxx`:114 - `IntTools_CommonPrt::BoundingPoints()`
+    /// **Source:** `IntTools_CommonPrt.hxx`:115 - `IntTools_CommonPrt::BoundingPoints()`
     /// Selector
     pub fn bounding_points(&self, aP1: &mut crate::gp::Pnt, aP2: &mut crate::gp::Pnt) {
         crate::check_void_result(unsafe {
@@ -676,14 +702,12 @@ impl Context {
     }
 
     /// **Source:** `IntTools_Context.hxx`:56 - `IntTools_Context::IntTools_Context()`
-    pub fn new_handlencollectionbaseallocator(
-        theAllocator: &crate::ffi_types::HandleNCollectionBaseAllocator,
+    pub fn new_hallocator(
+        theAllocator: &crate::ffi_types::TDF_HAllocator,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKBO::IntTools_Context_ctor_handlencollectionbaseallocator(
-                    theAllocator,
-                ),
+                crate::ffi_extern_TKBO::IntTools_Context_ctor_hallocator(theAllocator),
             ))
         }
     }
@@ -759,7 +783,7 @@ impl Context {
     /// not outlive whichever source it actually borrows from.
     pub unsafe fn proj_pt(
         &mut self,
-        aC: &crate::ffi_types::HandleGeomCurve,
+        aC: &crate::ffi_types::Handle_Geom_Curve,
     ) -> &mut crate::geom_api::ProjectPointOnCurve {
         unsafe {
             &mut *(crate::check_result(crate::ffi_extern_TKBO::IntTools_Context_proj_pt(
@@ -934,9 +958,9 @@ impl Context {
     /// Returns zero if the distance between vertex
     /// and edge is less than sum of tolerances and the fuzzy value,
     /// otherwise and for following conditions returns
-    /// negative value: <br>
-    /// 1. the edge is degenerated (-1) <br>
-    /// 2. the edge does not contain 3d curve and pcurves (-2) <br>
+    /// negative value:
+    /// 1. the edge is degenerated (-1)
+    /// 2. the edge does not contain 3d curve and pcurves (-2)
     /// 3. projection algorithm failed (-3)
     pub fn compute_ve(
         &mut self,
@@ -964,9 +988,9 @@ impl Context {
     /// Returns zero if the distance between vertex and face is
     /// less than or equal the sum of tolerances and the fuzzy value
     /// and the projection point lays inside boundaries of the face.
-    /// For following conditions returns negative value <br>
-    /// 1. projection algorithm failed (-1) <br>
-    /// 2. distance is more than sum of tolerances (-2) <br>
+    /// For following conditions returns negative value
+    /// 1. projection algorithm failed (-1)
+    /// 2. distance is more than sum of tolerances (-2)
     /// 3. projection point out or on the boundaries of face (-3)
     pub fn compute_vf(
         &mut self,
@@ -1042,7 +1066,7 @@ impl Context {
         })
     }
 
-    /// **Source:** `IntTools_Context.hxx`:166 - `IntTools_Context::IsPointInOnFace()`
+    /// **Source:** `IntTools_Context.hxx`:164 - `IntTools_Context::IsPointInOnFace()`
     /// Returns true if the point aP2D is
     /// inside or on the boundaries of aF
     pub fn is_point_in_on_face(
@@ -1059,7 +1083,7 @@ impl Context {
         })
     }
 
-    /// **Source:** `IntTools_Context.hxx`:172 - `IntTools_Context::IsValidPointForFace()`
+    /// **Source:** `IntTools_Context.hxx`:170 - `IntTools_Context::IsValidPointForFace()`
     /// Returns true if the distance between point aP3D
     /// and face aF is less or equal to tolerance aTol
     /// and projection point is inside or on the boundaries
@@ -1080,7 +1104,7 @@ impl Context {
         })
     }
 
-    /// **Source:** `IntTools_Context.hxx`:178 - `IntTools_Context::IsValidPointForFaces()`
+    /// **Source:** `IntTools_Context.hxx`:176 - `IntTools_Context::IsValidPointForFaces()`
     /// Returns true if IsValidPointForFace returns true
     /// for both face aF1 and aF2
     pub fn is_valid_point_for_faces(
@@ -1101,7 +1125,7 @@ impl Context {
         })
     }
 
-    /// **Source:** `IntTools_Context.hxx`:186 - `IntTools_Context::IsValidBlockForFace()`
+    /// **Source:** `IntTools_Context.hxx`:184 - `IntTools_Context::IsValidBlockForFace()`
     /// Returns true if IsValidPointForFace returns true
     /// for some 3d point that lay on the curve aIC bounded by
     /// parameters aT1 and aT2
@@ -1125,7 +1149,7 @@ impl Context {
         })
     }
 
-    /// **Source:** `IntTools_Context.hxx`:194 - `IntTools_Context::IsValidBlockForFaces()`
+    /// **Source:** `IntTools_Context.hxx`:192 - `IntTools_Context::IsValidBlockForFaces()`
     /// Returns true if IsValidBlockForFace returns true
     /// for both faces aF1 and aF2
     pub fn is_valid_block_for_faces(
@@ -1150,7 +1174,7 @@ impl Context {
         })
     }
 
-    /// **Source:** `IntTools_Context.hxx`:207 - `IntTools_Context::IsVertexOnLine()`
+    /// **Source:** `IntTools_Context.hxx`:205 - `IntTools_Context::IsVertexOnLine()`
     /// Computes parameter of the vertex aV on
     /// the curve aIC.
     /// Returns true if the distance between vertex and
@@ -1175,7 +1199,7 @@ impl Context {
         })
     }
 
-    /// **Source:** `IntTools_Context.hxx`:218 - `IntTools_Context::IsVertexOnLine()`
+    /// **Source:** `IntTools_Context.hxx`:216 - `IntTools_Context::IsVertexOnLine()`
     /// Computes parameter of the vertex aV on
     /// the curve aIC.
     /// Returns true if the distance between vertex and
@@ -1202,7 +1226,7 @@ impl Context {
         })
     }
 
-    /// **Source:** `IntTools_Context.hxx`:228 - `IntTools_Context::ProjectPointOnEdge()`
+    /// **Source:** `IntTools_Context.hxx`:226 - `IntTools_Context::ProjectPointOnEdge()`
     /// Computes parameter of the point aP on
     /// the edge aE.
     /// Returns false if projection algorithm failed
@@ -1223,7 +1247,7 @@ impl Context {
         })
     }
 
-    /// **Source:** `IntTools_Context.hxx`:232 - `IntTools_Context::BndBox()`
+    /// **Source:** `IntTools_Context.hxx`:228 - `IntTools_Context::BndBox()`
     ///
     /// # Safety
     ///
@@ -1239,7 +1263,7 @@ impl Context {
         }
     }
 
-    /// **Source:** `IntTools_Context.hxx`:236 - `IntTools_Context::IsInfiniteFace()`
+    /// **Source:** `IntTools_Context.hxx`:232 - `IntTools_Context::IsInfiniteFace()`
     /// Returns true if the solid <theFace> has
     /// infinite bounds
     pub fn is_infinite_face(&mut self, theFace: &crate::topo_ds::Face) -> bool {
@@ -1248,7 +1272,7 @@ impl Context {
         })
     }
 
-    /// **Source:** `IntTools_Context.hxx`:241 - `IntTools_Context::SetPOnSProjectionTolerance()`
+    /// **Source:** `IntTools_Context.hxx`:237 - `IntTools_Context::SetPOnSProjectionTolerance()`
     /// Sets tolerance to be used for projection of point on surface.
     /// Clears map of already cached projectors in order to maintain
     /// correct value for all projectors
@@ -1261,8 +1285,8 @@ impl Context {
         })
     }
 
-    /// **Source:** `IntTools_Context.hxx`:243 - `IntTools_Context::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `IntTools_Context.hxx`:239 - `IntTools_Context::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKBO::IntTools_Context_dynamic_type(
                 self as *const Self,
@@ -1270,7 +1294,7 @@ impl Context {
         }
     }
 
-    /// **Source:** `IntTools_Context.hxx`:243 - `IntTools_Context::get_type_name()`
+    /// **Source:** `IntTools_Context.hxx`:239 - `IntTools_Context::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -1281,8 +1305,8 @@ impl Context {
         .into_owned()
     }
 
-    /// **Source:** `IntTools_Context.hxx`:243 - `IntTools_Context::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    /// **Source:** `IntTools_Context.hxx`:239 - `IntTools_Context::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKBO::IntTools_Context_get_type_descriptor()))
         }
@@ -1311,7 +1335,7 @@ impl Context {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleIntToolsContext> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_IntTools_Context> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKBO::IntTools_Context_to_handle(obj.into_raw()),
@@ -1319,8 +1343,8 @@ impl Context {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::IntTools_Context_inherited_IsInstance(
                 self as *const Self,
@@ -1329,14 +1353,14 @@ impl Context {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::IntTools_Context_inherited_IsKind(self as *const Self, theType)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -1350,14 +1374,14 @@ impl Context {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::IntTools_Context_inherited_GetRefCount(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBO::IntTools_Context_inherited_IncrementRefCounter(
@@ -1366,7 +1390,7 @@ impl Context {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::IntTools_Context_inherited_DecrementRefCounter(
@@ -1375,7 +1399,7 @@ impl Context {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBO::IntTools_Context_inherited_Delete(self as *const Self)
@@ -1383,32 +1407,32 @@ impl Context {
     }
 }
 
-pub use crate::ffi_types::HandleIntToolsContext;
+pub use crate::ffi_types::Handle_IntTools_Context;
 
-unsafe impl crate::CppDeletable for HandleIntToolsContext {
+unsafe impl crate::CppDeletable for Handle_IntTools_Context {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKBO::HandleIntToolsContext_destructor(ptr);
+            crate::ffi_extern_TKBO::Handle_IntTools_Context_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleIntToolsContext {
+unsafe impl crate::CppCopyable for Handle_IntTools_Context {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        unsafe { crate::check_result(crate::ffi_extern_TKBO::HandleIntToolsContext_clone(ptr)) }
+        unsafe { crate::check_result(crate::ffi_extern_TKBO::Handle_IntTools_Context_clone(ptr)) }
     }
 }
 
-impl HandleIntToolsContext {
+impl Handle_IntTools_Context {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
-        unsafe { crate::ffi_extern_TKBO::HandleIntToolsContext_is_null(self as *const Self) }
+        unsafe { crate::ffi_extern_TKBO::Handle_IntTools_Context_is_null(self as *const Self) }
     }
 
     /// Dereference this Handle to access the underlying IntTools_Context
     pub fn get(&self) -> &crate::ffi_types::IntTools_Context {
         unsafe {
-            &*crate::check_result(crate::ffi_extern_TKBO::HandleIntToolsContext_get(
+            &*crate::check_result(crate::ffi_extern_TKBO::Handle_IntTools_Context_get(
                 self as *const Self,
             ))
         }
@@ -1417,7 +1441,7 @@ impl HandleIntToolsContext {
     /// Dereference this Handle to mutably access the underlying IntTools_Context
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::IntTools_Context {
         unsafe {
-            &mut *crate::check_result(crate::ffi_extern_TKBO::HandleIntToolsContext_get_mut(
+            &mut *crate::check_result(crate::ffi_extern_TKBO::Handle_IntTools_Context_get_mut(
                 self as *mut Self,
             ))
         }
@@ -1426,10 +1450,10 @@ impl HandleIntToolsContext {
     /// Upcast Handle<IntTools_Context> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKBO::HandleIntToolsContext_to_HandleStandardTransient(
+                crate::ffi_extern_TKBO::Handle_IntTools_Context_to_Handle_Standard_Transient(
                     self as *const Self,
                 ),
             ))
@@ -1442,14 +1466,14 @@ impl HandleIntToolsContext {
 // ========================
 
 /// **Source:** `IntTools_Curve.hxx`:40 - `IntTools_Curve`
-/// The class is a container of one 3D curve, two 2D curves and two Tolerance values.<br>
+/// The class is a container of one 3D curve, two 2D curves and two Tolerance values.
 /// It is used in the Face/Face intersection algorithm to store the results
-/// of intersection. In this context:<br>
-/// **the 3D curve** is the intersection curve;<br>
-/// **the 2D curves** are the PCurves of the 3D curve on the intersecting faces;<br>
+/// of intersection. In this context:
+/// **the 3D curve** is the intersection curve;
+/// **the 2D curves** are the PCurves of the 3D curve on the intersecting faces;
 /// **the tolerance** is the valid tolerance for 3D curve computed as
 /// maximal deviation between 3D curve and 2D curves (or surfaces in case there are no 2D
-/// curves);<br>
+/// curves);
 /// **the tangential tolerance** is the maximal distance from 3D curve to the
 /// end of the tangential zone between faces in terms of their tolerance values.
 pub use crate::ffi_types::IntTools_Curve as Curve;
@@ -1476,9 +1500,9 @@ impl Curve {
     /// **Source:** `IntTools_Curve.hxx`:49 - `IntTools_Curve::IntTools_Curve()`
     /// Constructor taking 3d curve, two 2d curves and two tolerance values
     pub fn new_handlegeomcurve_handlegeom2dcurve2_real2(
-        the3dCurve3d: &crate::ffi_types::HandleGeomCurve,
-        the2dCurve1: &crate::ffi_types::HandleGeom2dCurve,
-        the2dCurve2: &crate::ffi_types::HandleGeom2dCurve,
+        the3dCurve3d: &crate::ffi_types::Handle_Geom_Curve,
+        the2dCurve1: &crate::ffi_types::Handle_Geom2d_Curve,
+        the2dCurve2: &crate::ffi_types::Handle_Geom2d_Curve,
         theTolerance: f64,
         theTangentialTolerance: f64,
     ) -> crate::OwnedPtr<Self> {
@@ -1490,9 +1514,9 @@ impl Curve {
     /// **Source:** `IntTools_Curve.hxx`:49 - `IntTools_Curve::IntTools_Curve()`
     /// Constructor taking 3d curve, two 2d curves and two tolerance values
     pub fn new_handlegeomcurve_handlegeom2dcurve2_real(
-        the3dCurve3d: &crate::ffi_types::HandleGeomCurve,
-        the2dCurve1: &crate::ffi_types::HandleGeom2dCurve,
-        the2dCurve2: &crate::ffi_types::HandleGeom2dCurve,
+        the3dCurve3d: &crate::ffi_types::Handle_Geom_Curve,
+        the2dCurve1: &crate::ffi_types::Handle_Geom2d_Curve,
+        the2dCurve2: &crate::ffi_types::Handle_Geom2d_Curve,
         theTolerance: f64,
     ) -> crate::OwnedPtr<Self> {
         Self::new_handlegeomcurve_handlegeom2dcurve2_real2(
@@ -1507,9 +1531,9 @@ impl Curve {
     /// **Source:** `IntTools_Curve.hxx`:49 - `IntTools_Curve::IntTools_Curve()`
     /// Constructor taking 3d curve, two 2d curves and two tolerance values
     pub fn new_handlegeomcurve_handlegeom2dcurve2(
-        the3dCurve3d: &crate::ffi_types::HandleGeomCurve,
-        the2dCurve1: &crate::ffi_types::HandleGeom2dCurve,
-        the2dCurve2: &crate::ffi_types::HandleGeom2dCurve,
+        the3dCurve3d: &crate::ffi_types::Handle_Geom_Curve,
+        the2dCurve1: &crate::ffi_types::Handle_Geom2d_Curve,
+        the2dCurve2: &crate::ffi_types::Handle_Geom2d_Curve,
     ) -> crate::OwnedPtr<Self> {
         Self::new_handlegeomcurve_handlegeom2dcurve2_real2(
             the3dCurve3d,
@@ -1524,9 +1548,9 @@ impl Curve {
     /// Sets the curves
     pub fn set_curves(
         &mut self,
-        the3dCurve: &crate::ffi_types::HandleGeomCurve,
-        the2dCurve1: &crate::ffi_types::HandleGeom2dCurve,
-        the2dCurve2: &crate::ffi_types::HandleGeom2dCurve,
+        the3dCurve: &crate::ffi_types::Handle_Geom_Curve,
+        the2dCurve1: &crate::ffi_types::Handle_Geom2d_Curve,
+        the2dCurve2: &crate::ffi_types::Handle_Geom2d_Curve,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBO::IntTools_Curve_set_curves(
@@ -1540,7 +1564,7 @@ impl Curve {
 
     /// **Source:** `IntTools_Curve.hxx`:66 - `IntTools_Curve::SetCurve()`
     /// Sets the 3d curve
-    pub fn set_curve(&mut self, the3dCurve: &crate::ffi_types::HandleGeomCurve) {
+    pub fn set_curve(&mut self, the3dCurve: &crate::ffi_types::Handle_Geom_Curve) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBO::IntTools_Curve_set_curve(self as *mut Self, the3dCurve)
         })
@@ -1548,7 +1572,7 @@ impl Curve {
 
     /// **Source:** `IntTools_Curve.hxx`:69 - `IntTools_Curve::SetFirstCurve2d()`
     /// Sets the first 2d curve
-    pub fn set_first_curve2d(&mut self, the2dCurve1: &crate::ffi_types::HandleGeom2dCurve) {
+    pub fn set_first_curve2d(&mut self, the2dCurve1: &crate::ffi_types::Handle_Geom2d_Curve) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBO::IntTools_Curve_set_first_curve2d(self as *mut Self, the2dCurve1)
         })
@@ -1556,7 +1580,7 @@ impl Curve {
 
     /// **Source:** `IntTools_Curve.hxx`:72 - `IntTools_Curve::SetSecondCurve2d()`
     /// Sets the second 2d curve
-    pub fn set_second_curve2d(&mut self, the2dCurve2: &crate::ffi_types::HandleGeom2dCurve) {
+    pub fn set_second_curve2d(&mut self, the2dCurve2: &crate::ffi_types::Handle_Geom2d_Curve) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBO::IntTools_Curve_set_second_curve2d(
                 self as *mut Self,
@@ -1586,7 +1610,7 @@ impl Curve {
 
     /// **Source:** `IntTools_Curve.hxx`:84 - `IntTools_Curve::Curve()`
     /// Returns 3d curve
-    pub fn curve(&self) -> &crate::ffi_types::HandleGeomCurve {
+    pub fn curve(&self) -> &crate::ffi_types::Handle_Geom_Curve {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKBO::IntTools_Curve_curve(
                 self as *const Self,
@@ -1596,7 +1620,7 @@ impl Curve {
 
     /// **Source:** `IntTools_Curve.hxx`:87 - `IntTools_Curve::FirstCurve2d()`
     /// Returns first 2d curve
-    pub fn first_curve2d(&self) -> &crate::ffi_types::HandleGeom2dCurve {
+    pub fn first_curve2d(&self) -> &crate::ffi_types::Handle_Geom2d_Curve {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKBO::IntTools_Curve_first_curve2d(
                 self as *const Self,
@@ -1606,7 +1630,7 @@ impl Curve {
 
     /// **Source:** `IntTools_Curve.hxx`:90 - `IntTools_Curve::SecondCurve2d()`
     /// Returns second 2d curve
-    pub fn second_curve2d(&self) -> &crate::ffi_types::HandleGeom2dCurve {
+    pub fn second_curve2d(&self) -> &crate::ffi_types::Handle_Geom2d_Curve {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKBO::IntTools_Curve_second_curve2d(
                 self as *const Self,
@@ -1641,7 +1665,7 @@ impl Curve {
     /// **Source:** `IntTools_Curve.hxx`:106 - `IntTools_Curve::Bounds()`
     /// If the 3d curve is bounded curve the method will return TRUE
     /// and modify the output parameters with boundary parameters of
-    /// the curve and corresponded 3d points.<br>
+    /// the curve and corresponded 3d points.
     /// If the curve does not have bounds, the method will return false
     /// and the output parameters will stay untouched.
     pub fn bounds(
@@ -1665,7 +1689,7 @@ impl Curve {
     /// **Source:** `IntTools_Curve.hxx`:115 - `IntTools_Curve::D0()`
     /// Computes 3d point corresponded to the given parameter if this
     /// parameter is inside the boundaries of the curve.
-    /// Returns TRUE in this case. <br>
+    /// Returns TRUE in this case.
     /// Otherwise, the point will not be computed and the method will return FALSE.
     pub fn d0(&self, thePar: &f64, thePnt: &mut crate::gp::Pnt) -> bool {
         crate::check_result(unsafe {
@@ -1687,7 +1711,7 @@ impl Curve {
 // From IntTools_CurveRangeLocalizeData.hxx
 // ========================
 
-/// **Source:** `IntTools_CurveRangeLocalizeData.hxx`:29 - `IntTools_CurveRangeLocalizeData`
+/// **Source:** `IntTools_CurveRangeLocalizeData.hxx`:31 - `IntTools_CurveRangeLocalizeData`
 pub use crate::ffi_types::IntTools_CurveRangeLocalizeData as CurveRangeLocalizeData;
 
 unsafe impl crate::CppDeletable for CurveRangeLocalizeData {
@@ -1699,7 +1723,7 @@ unsafe impl crate::CppDeletable for CurveRangeLocalizeData {
 }
 
 impl CurveRangeLocalizeData {
-    /// **Source:** `IntTools_CurveRangeLocalizeData.hxx`:34 - `IntTools_CurveRangeLocalizeData::IntTools_CurveRangeLocalizeData()`
+    /// **Source:** `IntTools_CurveRangeLocalizeData.hxx`:36 - `IntTools_CurveRangeLocalizeData::IntTools_CurveRangeLocalizeData()`
     pub fn new_int_real(theNbSample: i32, theMinRange: f64) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -1711,7 +1735,7 @@ impl CurveRangeLocalizeData {
         }
     }
 
-    /// **Source:** `IntTools_CurveRangeLocalizeData.hxx`:37 - `IntTools_CurveRangeLocalizeData::GetNbSample()`
+    /// **Source:** `IntTools_CurveRangeLocalizeData.hxx`:38 - `IntTools_CurveRangeLocalizeData::GetNbSample()`
     pub fn get_nb_sample(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::IntTools_CurveRangeLocalizeData_get_nb_sample(
@@ -1720,7 +1744,7 @@ impl CurveRangeLocalizeData {
         })
     }
 
-    /// **Source:** `IntTools_CurveRangeLocalizeData.hxx`:39 - `IntTools_CurveRangeLocalizeData::GetMinRange()`
+    /// **Source:** `IntTools_CurveRangeLocalizeData.hxx`:40 - `IntTools_CurveRangeLocalizeData::GetMinRange()`
     pub fn get_min_range(&self) -> f64 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::IntTools_CurveRangeLocalizeData_get_min_range(
@@ -1729,7 +1753,7 @@ impl CurveRangeLocalizeData {
         })
     }
 
-    /// **Source:** `IntTools_CurveRangeLocalizeData.hxx`:41 - `IntTools_CurveRangeLocalizeData::AddOutRange()`
+    /// **Source:** `IntTools_CurveRangeLocalizeData.hxx`:42 - `IntTools_CurveRangeLocalizeData::AddOutRange()`
     pub fn add_out_range(&mut self, theRange: &CurveRangeSample) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBO::IntTools_CurveRangeLocalizeData_add_out_range(
@@ -1739,7 +1763,7 @@ impl CurveRangeLocalizeData {
         })
     }
 
-    /// **Source:** `IntTools_CurveRangeLocalizeData.hxx`:43 - `IntTools_CurveRangeLocalizeData::AddBox()`
+    /// **Source:** `IntTools_CurveRangeLocalizeData.hxx`:44 - `IntTools_CurveRangeLocalizeData::AddBox()`
     pub fn add_box(&mut self, theRange: &CurveRangeSample, theBox: &crate::bnd::Box) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBO::IntTools_CurveRangeLocalizeData_add_box(
@@ -1750,7 +1774,7 @@ impl CurveRangeLocalizeData {
         })
     }
 
-    /// **Source:** `IntTools_CurveRangeLocalizeData.hxx`:45 - `IntTools_CurveRangeLocalizeData::FindBox()`
+    /// **Source:** `IntTools_CurveRangeLocalizeData.hxx`:46 - `IntTools_CurveRangeLocalizeData::FindBox()`
     pub fn find_box(&self, theRange: &CurveRangeSample, theBox: &mut crate::bnd::Box) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::IntTools_CurveRangeLocalizeData_find_box(
@@ -1772,7 +1796,10 @@ impl CurveRangeLocalizeData {
     }
 
     /// **Source:** `IntTools_CurveRangeLocalizeData.hxx`:50 - `IntTools_CurveRangeLocalizeData::ListRangeOut()`
-    pub fn list_range_out(&self, theList: &mut crate::ffi_types::IntTools_ListOfCurveRangeSample) {
+    pub fn list_range_out(
+        &self,
+        theList: &mut crate::ffi_types::NCollection_List_IntTools_CurveRangeSample,
+    ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBO::IntTools_CurveRangeLocalizeData_list_range_out(
                 self as *const Self,
@@ -1916,7 +1943,7 @@ impl CurveRangeSample {
 // From IntTools_EdgeEdge.hxx
 // ========================
 
-/// **Source:** `IntTools_EdgeEdge.hxx`:32 - `IntTools_EdgeEdge`
+/// **Source:** `IntTools_EdgeEdge.hxx`:33 - `IntTools_EdgeEdge`
 /// The class provides Edge/Edge intersection algorithm
 /// based on the intersection between edges bounding boxes.
 pub use crate::ffi_types::IntTools_EdgeEdge as EdgeEdge;
@@ -1930,7 +1957,7 @@ unsafe impl crate::CppDeletable for EdgeEdge {
 }
 
 impl EdgeEdge {
-    /// **Source:** `IntTools_EdgeEdge.hxx`:38 - `IntTools_EdgeEdge::IntTools_EdgeEdge()`
+    /// **Source:** `IntTools_EdgeEdge.hxx`:39 - `IntTools_EdgeEdge::IntTools_EdgeEdge()`
     /// Empty constructor
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
@@ -1940,7 +1967,7 @@ impl EdgeEdge {
         }
     }
 
-    /// **Source:** `IntTools_EdgeEdge.hxx`:44 - `IntTools_EdgeEdge::IntTools_EdgeEdge()`
+    /// **Source:** `IntTools_EdgeEdge.hxx`:45 - `IntTools_EdgeEdge::IntTools_EdgeEdge()`
     /// Constructor
     pub fn new_edge2(
         theEdge1: &crate::topo_ds::Edge,
@@ -1953,7 +1980,7 @@ impl EdgeEdge {
         }
     }
 
-    /// **Source:** `IntTools_EdgeEdge.hxx`:47 - `IntTools_EdgeEdge::IntTools_EdgeEdge()`
+    /// **Source:** `IntTools_EdgeEdge.hxx`:48 - `IntTools_EdgeEdge::IntTools_EdgeEdge()`
     /// Constructor
     pub fn new_edge_real2_edge_real2(
         theEdge1: &crate::topo_ds::Edge,
@@ -1972,7 +1999,7 @@ impl EdgeEdge {
         }
     }
 
-    /// **Source:** `IntTools_EdgeEdge.hxx`:55 - `IntTools_EdgeEdge::SetEdge1()`
+    /// **Source:** `IntTools_EdgeEdge.hxx`:56 - `IntTools_EdgeEdge::SetEdge1()`
     /// Sets the first edge
     pub fn set_edge1_edge(&mut self, theEdge: &crate::topo_ds::Edge) {
         crate::check_void_result(unsafe {
@@ -1980,7 +2007,7 @@ impl EdgeEdge {
         })
     }
 
-    /// **Source:** `IntTools_EdgeEdge.hxx`:58 - `IntTools_EdgeEdge::SetEdge1()`
+    /// **Source:** `IntTools_EdgeEdge.hxx`:59 - `IntTools_EdgeEdge::SetEdge1()`
     /// Sets the first edge and its range
     pub fn set_edge1_edge_real2(&mut self, theEdge: &crate::topo_ds::Edge, aT1: f64, aT2: f64) {
         crate::check_void_result(unsafe {
@@ -1993,7 +2020,7 @@ impl EdgeEdge {
         })
     }
 
-    /// **Source:** `IntTools_EdgeEdge.hxx`:61 - `IntTools_EdgeEdge::SetRange1()`
+    /// **Source:** `IntTools_EdgeEdge.hxx`:62 - `IntTools_EdgeEdge::SetRange1()`
     /// Sets the range for the first edge
     pub fn set_range1_range(&mut self, theRange1: &Range) {
         crate::check_void_result(unsafe {
@@ -2001,7 +2028,7 @@ impl EdgeEdge {
         })
     }
 
-    /// **Source:** `IntTools_EdgeEdge.hxx`:64 - `IntTools_EdgeEdge::SetRange1()`
+    /// **Source:** `IntTools_EdgeEdge.hxx`:65 - `IntTools_EdgeEdge::SetRange1()`
     /// Sets the range for the first edge
     pub fn set_range1_real2(&mut self, aT1: f64, aT2: f64) {
         crate::check_void_result(unsafe {
@@ -2009,7 +2036,7 @@ impl EdgeEdge {
         })
     }
 
-    /// **Source:** `IntTools_EdgeEdge.hxx`:67 - `IntTools_EdgeEdge::SetEdge2()`
+    /// **Source:** `IntTools_EdgeEdge.hxx`:68 - `IntTools_EdgeEdge::SetEdge2()`
     /// Sets the second edge
     pub fn set_edge2_edge(&mut self, theEdge: &crate::topo_ds::Edge) {
         crate::check_void_result(unsafe {
@@ -2017,7 +2044,7 @@ impl EdgeEdge {
         })
     }
 
-    /// **Source:** `IntTools_EdgeEdge.hxx`:70 - `IntTools_EdgeEdge::SetEdge2()`
+    /// **Source:** `IntTools_EdgeEdge.hxx`:71 - `IntTools_EdgeEdge::SetEdge2()`
     /// Sets the first edge and its range
     pub fn set_edge2_edge_real2(&mut self, theEdge: &crate::topo_ds::Edge, aT1: f64, aT2: f64) {
         crate::check_void_result(unsafe {
@@ -2030,7 +2057,7 @@ impl EdgeEdge {
         })
     }
 
-    /// **Source:** `IntTools_EdgeEdge.hxx`:73 - `IntTools_EdgeEdge::SetRange2()`
+    /// **Source:** `IntTools_EdgeEdge.hxx`:74 - `IntTools_EdgeEdge::SetRange2()`
     /// Sets the range for the second edge
     pub fn set_range2_range(&mut self, theRange: &Range) {
         crate::check_void_result(unsafe {
@@ -2038,7 +2065,7 @@ impl EdgeEdge {
         })
     }
 
-    /// **Source:** `IntTools_EdgeEdge.hxx`:76 - `IntTools_EdgeEdge::SetRange2()`
+    /// **Source:** `IntTools_EdgeEdge.hxx`:77 - `IntTools_EdgeEdge::SetRange2()`
     /// Sets the range for the second edge
     pub fn set_range2_real2(&mut self, aT1: f64, aT2: f64) {
         crate::check_void_result(unsafe {
@@ -2046,7 +2073,7 @@ impl EdgeEdge {
         })
     }
 
-    /// **Source:** `IntTools_EdgeEdge.hxx`:79 - `IntTools_EdgeEdge::SetFuzzyValue()`
+    /// **Source:** `IntTools_EdgeEdge.hxx`:80 - `IntTools_EdgeEdge::SetFuzzyValue()`
     /// Sets the Fuzzy value
     pub fn set_fuzzy_value(&mut self, theFuzz: f64) {
         crate::check_void_result(unsafe {
@@ -2054,7 +2081,7 @@ impl EdgeEdge {
         })
     }
 
-    /// **Source:** `IntTools_EdgeEdge.hxx`:82 - `IntTools_EdgeEdge::Perform()`
+    /// **Source:** `IntTools_EdgeEdge.hxx`:83 - `IntTools_EdgeEdge::Perform()`
     /// Performs the intersection between edges
     pub fn perform(&mut self) {
         crate::check_void_result(unsafe {
@@ -2062,7 +2089,7 @@ impl EdgeEdge {
         })
     }
 
-    /// **Source:** `IntTools_EdgeEdge.hxx`:85 - `IntTools_EdgeEdge::IsDone()`
+    /// **Source:** `IntTools_EdgeEdge.hxx`:86 - `IntTools_EdgeEdge::IsDone()`
     /// Returns TRUE if common part(s) is(are) found
     pub fn is_done(&self) -> bool {
         crate::check_result(unsafe {
@@ -2070,7 +2097,7 @@ impl EdgeEdge {
         })
     }
 
-    /// **Source:** `IntTools_EdgeEdge.hxx`:88 - `IntTools_EdgeEdge::FuzzyValue()`
+    /// **Source:** `IntTools_EdgeEdge.hxx`:89 - `IntTools_EdgeEdge::FuzzyValue()`
     /// Returns Fuzzy value
     pub fn fuzzy_value(&self) -> f64 {
         crate::check_result(unsafe {
@@ -2078,9 +2105,9 @@ impl EdgeEdge {
         })
     }
 
-    /// **Source:** `IntTools_EdgeEdge.hxx`:91 - `IntTools_EdgeEdge::CommonParts()`
+    /// **Source:** `IntTools_EdgeEdge.hxx`:92 - `IntTools_EdgeEdge::CommonParts()`
     /// Returns common parts
-    pub fn common_parts(&self) -> &crate::ffi_types::IntTools_SequenceOfCommonPrts {
+    pub fn common_parts(&self) -> &crate::ffi_types::NCollection_Sequence_IntTools_CommonPrt {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKBO::IntTools_EdgeEdge_common_parts(
                 self as *const Self,
@@ -2088,7 +2115,7 @@ impl EdgeEdge {
         }
     }
 
-    /// **Source:** `IntTools_EdgeEdge.hxx`:94 - `IntTools_EdgeEdge::UseQuickCoincidenceCheck()`
+    /// **Source:** `IntTools_EdgeEdge.hxx`:95 - `IntTools_EdgeEdge::UseQuickCoincidenceCheck()`
     /// Sets the flag myQuickCoincidenceCheck
     pub fn use_quick_coincidence_check(&mut self, bFlag: bool) {
         crate::check_void_result(unsafe {
@@ -2099,7 +2126,7 @@ impl EdgeEdge {
         })
     }
 
-    /// **Source:** `IntTools_EdgeEdge.hxx`:97 - `IntTools_EdgeEdge::IsCoincidenceCheckedQuickly()`
+    /// **Source:** `IntTools_EdgeEdge.hxx`:98 - `IntTools_EdgeEdge::IsCoincidenceCheckedQuickly()`
     /// Returns the flag myQuickCoincidenceCheck
     pub fn is_coincidence_checked_quickly(&mut self) -> bool {
         crate::check_result(unsafe {
@@ -2114,7 +2141,7 @@ impl EdgeEdge {
 // From IntTools_EdgeFace.hxx
 // ========================
 
-/// **Source:** `IntTools_EdgeFace.hxx`:40 - `IntTools_EdgeFace`
+/// **Source:** `IntTools_EdgeFace.hxx`:41 - `IntTools_EdgeFace`
 /// The class provides Edge/Face intersection algorithm to determine
 /// common parts between edge and face in 3-d space.
 /// Common parts between Edge and Face can be:
@@ -2131,7 +2158,7 @@ unsafe impl crate::CppDeletable for EdgeFace {
 }
 
 impl EdgeFace {
-    /// **Source:** `IntTools_EdgeFace.hxx`:47 - `IntTools_EdgeFace::IntTools_EdgeFace()`
+    /// **Source:** `IntTools_EdgeFace.hxx`:48 - `IntTools_EdgeFace::IntTools_EdgeFace()`
     /// @name Constructors
     /// Empty Constructor
     pub fn new() -> crate::OwnedPtr<Self> {
@@ -2142,7 +2169,7 @@ impl EdgeFace {
         }
     }
 
-    /// **Source:** `IntTools_EdgeFace.hxx`:51 - `IntTools_EdgeFace::SetEdge()`
+    /// **Source:** `IntTools_EdgeFace.hxx`:52 - `IntTools_EdgeFace::SetEdge()`
     /// @name Setters/Getters
     /// Sets the edge for intersection
     pub fn set_edge(&mut self, theEdge: &crate::topo_ds::Edge) {
@@ -2151,7 +2178,7 @@ impl EdgeFace {
         })
     }
 
-    /// **Source:** `IntTools_EdgeFace.hxx`:54 - `IntTools_EdgeFace::Edge()`
+    /// **Source:** `IntTools_EdgeFace.hxx`:55 - `IntTools_EdgeFace::Edge()`
     /// Returns the edge
     pub fn edge(&self) -> &crate::topo_ds::Edge {
         unsafe {
@@ -2161,7 +2188,7 @@ impl EdgeFace {
         }
     }
 
-    /// **Source:** `IntTools_EdgeFace.hxx`:57 - `IntTools_EdgeFace::SetFace()`
+    /// **Source:** `IntTools_EdgeFace.hxx`:58 - `IntTools_EdgeFace::SetFace()`
     /// Sets the face for intersection
     pub fn set_face(&mut self, theFace: &crate::topo_ds::Face) {
         crate::check_void_result(unsafe {
@@ -2169,7 +2196,7 @@ impl EdgeFace {
         })
     }
 
-    /// **Source:** `IntTools_EdgeFace.hxx`:60 - `IntTools_EdgeFace::Face()`
+    /// **Source:** `IntTools_EdgeFace.hxx`:61 - `IntTools_EdgeFace::Face()`
     /// Returns the face
     pub fn face(&self) -> &crate::topo_ds::Face {
         unsafe {
@@ -2179,7 +2206,7 @@ impl EdgeFace {
         }
     }
 
-    /// **Source:** `IntTools_EdgeFace.hxx`:64 - `IntTools_EdgeFace::SetRange()`
+    /// **Source:** `IntTools_EdgeFace.hxx`:65 - `IntTools_EdgeFace::SetRange()`
     /// Sets the boundaries for the edge.
     /// The algorithm processes edge inside these boundaries.
     pub fn set_range_range(&mut self, theRange: &Range) {
@@ -2188,7 +2215,7 @@ impl EdgeFace {
         })
     }
 
-    /// **Source:** `IntTools_EdgeFace.hxx`:68 - `IntTools_EdgeFace::SetRange()`
+    /// **Source:** `IntTools_EdgeFace.hxx`:69 - `IntTools_EdgeFace::SetRange()`
     /// Sets the boundaries for the edge.
     /// The algorithm processes edge inside these boundaries.
     pub fn set_range_real2(&mut self, theFirst: f64, theLast: f64) {
@@ -2201,7 +2228,7 @@ impl EdgeFace {
         })
     }
 
-    /// **Source:** `IntTools_EdgeFace.hxx`:75 - `IntTools_EdgeFace::Range()`
+    /// **Source:** `IntTools_EdgeFace.hxx`:76 - `IntTools_EdgeFace::Range()`
     /// Returns intersection range of the edge
     pub fn range(&self) -> &Range {
         unsafe {
@@ -2211,17 +2238,17 @@ impl EdgeFace {
         }
     }
 
-    /// **Source:** `IntTools_EdgeFace.hxx`:78 - `IntTools_EdgeFace::SetContext()`
+    /// **Source:** `IntTools_EdgeFace.hxx`:79 - `IntTools_EdgeFace::SetContext()`
     /// Sets the intersection context
-    pub fn set_context(&mut self, theContext: &crate::ffi_types::HandleIntToolsContext) {
+    pub fn set_context(&mut self, theContext: &crate::ffi_types::Handle_IntTools_Context) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBO::IntTools_EdgeFace_set_context(self as *mut Self, theContext)
         })
     }
 
-    /// **Source:** `IntTools_EdgeFace.hxx`:81 - `IntTools_EdgeFace::Context()`
+    /// **Source:** `IntTools_EdgeFace.hxx`:82 - `IntTools_EdgeFace::Context()`
     /// Returns the intersection context
-    pub fn context(&self) -> &crate::ffi_types::HandleIntToolsContext {
+    pub fn context(&self) -> &crate::ffi_types::Handle_IntTools_Context {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKBO::IntTools_EdgeFace_context(
                 self as *const Self,
@@ -2229,7 +2256,7 @@ impl EdgeFace {
         }
     }
 
-    /// **Source:** `IntTools_EdgeFace.hxx`:84 - `IntTools_EdgeFace::SetFuzzyValue()`
+    /// **Source:** `IntTools_EdgeFace.hxx`:85 - `IntTools_EdgeFace::SetFuzzyValue()`
     /// Sets the Fuzzy value
     pub fn set_fuzzy_value(&mut self, theFuzz: f64) {
         crate::check_void_result(unsafe {
@@ -2237,7 +2264,7 @@ impl EdgeFace {
         })
     }
 
-    /// **Source:** `IntTools_EdgeFace.hxx`:90 - `IntTools_EdgeFace::FuzzyValue()`
+    /// **Source:** `IntTools_EdgeFace.hxx`:91 - `IntTools_EdgeFace::FuzzyValue()`
     /// Returns the Fuzzy value
     pub fn fuzzy_value(&self) -> f64 {
         crate::check_result(unsafe {
@@ -2245,7 +2272,7 @@ impl EdgeFace {
         })
     }
 
-    /// **Source:** `IntTools_EdgeFace.hxx`:97 - `IntTools_EdgeFace::UseQuickCoincidenceCheck()`
+    /// **Source:** `IntTools_EdgeFace.hxx`:98 - `IntTools_EdgeFace::UseQuickCoincidenceCheck()`
     /// Sets the flag for quick coincidence check.
     /// It is safe to use the quick check for coincidence only if both
     /// of the following conditions are met:
@@ -2260,7 +2287,7 @@ impl EdgeFace {
         })
     }
 
-    /// **Source:** `IntTools_EdgeFace.hxx`:103 - `IntTools_EdgeFace::IsCoincidenceCheckedQuickly()`
+    /// **Source:** `IntTools_EdgeFace.hxx`:101 - `IntTools_EdgeFace::IsCoincidenceCheckedQuickly()`
     /// Returns the flag myQuickCoincidenceCheck
     pub fn is_coincidence_checked_quickly(&mut self) -> bool {
         crate::check_result(unsafe {
@@ -2270,7 +2297,7 @@ impl EdgeFace {
         })
     }
 
-    /// **Source:** `IntTools_EdgeFace.hxx`:107 - `IntTools_EdgeFace::Perform()`
+    /// **Source:** `IntTools_EdgeFace.hxx`:105 - `IntTools_EdgeFace::Perform()`
     /// @name Performing the operation
     /// Launches the process
     pub fn perform(&mut self) {
@@ -2279,7 +2306,7 @@ impl EdgeFace {
         })
     }
 
-    /// **Source:** `IntTools_EdgeFace.hxx`:112 - `IntTools_EdgeFace::IsDone()`
+    /// **Source:** `IntTools_EdgeFace.hxx`:110 - `IntTools_EdgeFace::IsDone()`
     /// @name Checking validity of the intersection
     /// Returns TRUE if computation was successful.
     /// Otherwise returns FALSE.
@@ -2289,7 +2316,7 @@ impl EdgeFace {
         })
     }
 
-    /// **Source:** `IntTools_EdgeFace.hxx`:119 - `IntTools_EdgeFace::ErrorStatus()`
+    /// **Source:** `IntTools_EdgeFace.hxx`:117 - `IntTools_EdgeFace::ErrorStatus()`
     /// Returns the code of completion:
     /// 0 - means successful completion;
     /// 1 - the process was not started;
@@ -2301,10 +2328,10 @@ impl EdgeFace {
         })
     }
 
-    /// **Source:** `IntTools_EdgeFace.hxx`:123 - `IntTools_EdgeFace::CommonParts()`
+    /// **Source:** `IntTools_EdgeFace.hxx`:121 - `IntTools_EdgeFace::CommonParts()`
     /// @name Obtaining results
     /// Returns resulting common parts
-    pub fn common_parts(&self) -> &crate::ffi_types::IntTools_SequenceOfCommonPrts {
+    pub fn common_parts(&self) -> &crate::ffi_types::NCollection_Sequence_IntTools_CommonPrt {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKBO::IntTools_EdgeFace_common_parts(
                 self as *const Self,
@@ -2312,7 +2339,7 @@ impl EdgeFace {
         }
     }
 
-    /// **Source:** `IntTools_EdgeFace.hxx`:126 - `IntTools_EdgeFace::MinimalDistance()`
+    /// **Source:** `IntTools_EdgeFace.hxx`:124 - `IntTools_EdgeFace::MinimalDistance()`
     /// Returns the minimal distance found between edge and face
     pub fn minimal_distance(&self) -> f64 {
         crate::check_result(unsafe {
@@ -2325,7 +2352,7 @@ impl EdgeFace {
 // From IntTools_FClass2d.hxx
 // ========================
 
-/// **Source:** `IntTools_FClass2d.hxx`:35 - `IntTools_FClass2d`
+/// **Source:** `IntTools_FClass2d.hxx`:37 - `IntTools_FClass2d`
 /// Class provides an algorithm to classify a 2d Point
 /// in 2d space of face using boundaries of the face.
 pub use crate::ffi_types::IntTools_FClass2d as FClass2d;
@@ -2339,7 +2366,7 @@ unsafe impl crate::CppDeletable for FClass2d {
 }
 
 impl FClass2d {
-    /// **Source:** `IntTools_FClass2d.hxx`:41 - `IntTools_FClass2d::IntTools_FClass2d()`
+    /// **Source:** `IntTools_FClass2d.hxx`:43 - `IntTools_FClass2d::IntTools_FClass2d()`
     /// Empty constructor
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
@@ -2349,7 +2376,7 @@ impl FClass2d {
         }
     }
 
-    /// **Source:** `IntTools_FClass2d.hxx`:45 - `IntTools_FClass2d::IntTools_FClass2d()`
+    /// **Source:** `IntTools_FClass2d.hxx`:47 - `IntTools_FClass2d::IntTools_FClass2d()`
     /// Initializes algorithm by the face F
     /// and tolerance Tol
     pub fn new_face_real(F: &crate::topo_ds::Face, Tol: f64) -> crate::OwnedPtr<Self> {
@@ -2360,7 +2387,7 @@ impl FClass2d {
         }
     }
 
-    /// **Source:** `IntTools_FClass2d.hxx`:49 - `IntTools_FClass2d::Init()`
+    /// **Source:** `IntTools_FClass2d.hxx`:51 - `IntTools_FClass2d::Init()`
     /// Initializes algorithm by the face F
     /// and tolerance Tol
     pub fn init(&mut self, F: &crate::topo_ds::Face, Tol: f64) {
@@ -2369,7 +2396,7 @@ impl FClass2d {
         })
     }
 
-    /// **Source:** `IntTools_FClass2d.hxx`:52 - `IntTools_FClass2d::PerformInfinitePoint()`
+    /// **Source:** `IntTools_FClass2d.hxx`:54 - `IntTools_FClass2d::PerformInfinitePoint()`
     /// Returns state of infinite 2d point relatively to (0, 0)
     pub fn perform_infinite_point(&self) -> crate::top_abs::State {
         crate::top_abs::State::try_from(crate::check_result(unsafe {
@@ -2378,7 +2405,7 @@ impl FClass2d {
         .unwrap()
     }
 
-    /// **Source:** `IntTools_FClass2d.hxx`:59 - `IntTools_FClass2d::Perform()`
+    /// **Source:** `IntTools_FClass2d.hxx`:60 - `IntTools_FClass2d::Perform()`
     /// Returns state of the 2d point Puv.
     /// If RecadreOnPeriodic is true (default value),
     /// for the periodic surface 2d point, adjusted to period, is
@@ -2398,10 +2425,10 @@ impl FClass2d {
         .unwrap()
     }
 
-    /// **Source:** `IntTools_FClass2d.hxx`:68 - `IntTools_FClass2d::TestOnRestriction()`
+    /// **Source:** `IntTools_FClass2d.hxx`:69 - `IntTools_FClass2d::TestOnRestriction()`
     /// Test a point with +- an offset (Tol) and returns
     /// On if some points are OUT an some are IN
-    /// (Caution: Internal use . see the code for more details)
+    /// (Caution: Internal use. see the code for more details)
     pub fn test_on_restriction(
         &self,
         Puv: &crate::gp::Pnt2d,
@@ -2419,7 +2446,7 @@ impl FClass2d {
         .unwrap()
     }
 
-    /// **Source:** `IntTools_FClass2d.hxx`:72 - `IntTools_FClass2d::IsHole()`
+    /// **Source:** `IntTools_FClass2d.hxx`:73 - `IntTools_FClass2d::IsHole()`
     pub fn is_hole(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::IntTools_FClass2d_is_hole(self as *const Self)
@@ -2431,7 +2458,7 @@ impl FClass2d {
 // From IntTools_FaceFace.hxx
 // ========================
 
-/// **Source:** `IntTools_FaceFace.hxx`:32 - `IntTools_FaceFace`
+/// **Source:** `IntTools_FaceFace.hxx`:34 - `IntTools_FaceFace`
 /// This class provides the intersection of
 /// face's underlying surfaces.
 pub use crate::ffi_types::IntTools_FaceFace as FaceFace;
@@ -2445,7 +2472,7 @@ unsafe impl crate::CppDeletable for FaceFace {
 }
 
 impl FaceFace {
-    /// **Source:** `IntTools_FaceFace.hxx`:38 - `IntTools_FaceFace::IntTools_FaceFace()`
+    /// **Source:** `IntTools_FaceFace.hxx`:40 - `IntTools_FaceFace::IntTools_FaceFace()`
     /// Empty constructor.
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
@@ -2455,7 +2482,7 @@ impl FaceFace {
         }
     }
 
-    /// **Source:** `IntTools_FaceFace.hxx`:41 - `IntTools_FaceFace::SetParameters()`
+    /// **Source:** `IntTools_FaceFace.hxx`:43 - `IntTools_FaceFace::SetParameters()`
     /// Modifier
     pub fn set_parameters(
         &mut self,
@@ -2475,7 +2502,7 @@ impl FaceFace {
         })
     }
 
-    /// **Source:** `IntTools_FaceFace.hxx`:49 - `IntTools_FaceFace::Perform()`
+    /// **Source:** `IntTools_FaceFace.hxx`:51 - `IntTools_FaceFace::Perform()`
     /// Intersects underliing surfaces of F1 and F2
     /// Use sum of tolerance of F1 and F2 as intersection
     /// criteria
@@ -2495,7 +2522,7 @@ impl FaceFace {
         })
     }
 
-    /// **Source:** `IntTools_FaceFace.hxx`:54 - `IntTools_FaceFace::IsDone()`
+    /// **Source:** `IntTools_FaceFace.hxx`:56 - `IntTools_FaceFace::IsDone()`
     /// Returns True if the intersection was successful
     pub fn is_done(&self) -> bool {
         crate::check_result(unsafe {
@@ -2503,9 +2530,9 @@ impl FaceFace {
         })
     }
 
-    /// **Source:** `IntTools_FaceFace.hxx`:57 - `IntTools_FaceFace::Lines()`
+    /// **Source:** `IntTools_FaceFace.hxx`:59 - `IntTools_FaceFace::Lines()`
     /// Returns sequence of 3d curves as result of intersection
-    pub fn lines(&self) -> &crate::ffi_types::IntTools_SequenceOfCurves {
+    pub fn lines(&self) -> &crate::ffi_types::NCollection_Sequence_IntTools_Curve {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKBO::IntTools_FaceFace_lines(
                 self as *const Self,
@@ -2513,9 +2540,9 @@ impl FaceFace {
         }
     }
 
-    /// **Source:** `IntTools_FaceFace.hxx`:60 - `IntTools_FaceFace::Points()`
+    /// **Source:** `IntTools_FaceFace.hxx`:62 - `IntTools_FaceFace::Points()`
     /// Returns sequence of 3d curves as result of intersection
-    pub fn points(&self) -> &crate::ffi_types::IntTools_SequenceOfPntOn2Faces {
+    pub fn points(&self) -> &crate::ffi_types::NCollection_Sequence_IntTools_PntOn2Faces {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKBO::IntTools_FaceFace_points(
                 self as *const Self,
@@ -2523,7 +2550,7 @@ impl FaceFace {
         }
     }
 
-    /// **Source:** `IntTools_FaceFace.hxx`:63 - `IntTools_FaceFace::Face1()`
+    /// **Source:** `IntTools_FaceFace.hxx`:65 - `IntTools_FaceFace::Face1()`
     /// Returns first of processed faces
     pub fn face1(&self) -> &crate::topo_ds::Face {
         unsafe {
@@ -2533,7 +2560,7 @@ impl FaceFace {
         }
     }
 
-    /// **Source:** `IntTools_FaceFace.hxx`:66 - `IntTools_FaceFace::Face2()`
+    /// **Source:** `IntTools_FaceFace.hxx`:68 - `IntTools_FaceFace::Face2()`
     /// Returns second of processed faces
     pub fn face2(&self) -> &crate::topo_ds::Face {
         unsafe {
@@ -2543,7 +2570,7 @@ impl FaceFace {
         }
     }
 
-    /// **Source:** `IntTools_FaceFace.hxx`:69 - `IntTools_FaceFace::TangentFaces()`
+    /// **Source:** `IntTools_FaceFace.hxx`:71 - `IntTools_FaceFace::TangentFaces()`
     /// Returns True if faces are tangent
     pub fn tangent_faces(&self) -> bool {
         crate::check_result(unsafe {
@@ -2551,7 +2578,7 @@ impl FaceFace {
         })
     }
 
-    /// **Source:** `IntTools_FaceFace.hxx`:74 - `IntTools_FaceFace::PrepareLines3D()`
+    /// **Source:** `IntTools_FaceFace.hxx`:76 - `IntTools_FaceFace::PrepareLines3D()`
     /// Provides post-processing the result lines.
     /// @param[in] bToSplit  split the closed 3D-curves on parts when TRUE,
     /// remain untouched otherwise
@@ -2561,22 +2588,25 @@ impl FaceFace {
         })
     }
 
-    /// **Source:** `IntTools_FaceFace.hxx`:76 - `IntTools_FaceFace::SetList()`
-    pub fn set_list(&mut self, ListOfPnts: &mut crate::ffi_types::IntSurf_ListOfPntOn2S) {
+    /// **Source:** `IntTools_FaceFace.hxx`:78 - `IntTools_FaceFace::SetList()`
+    pub fn set_list(
+        &mut self,
+        ListOfPnts: &mut crate::ffi_types::NCollection_List_IntSurf_PntOn2S,
+    ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBO::IntTools_FaceFace_set_list(self as *mut Self, ListOfPnts)
         })
     }
 
-    /// **Source:** `IntTools_FaceFace.hxx`:79 - `IntTools_FaceFace::SetContext()`
+    /// **Source:** `IntTools_FaceFace.hxx`:81 - `IntTools_FaceFace::SetContext()`
     /// Sets the intersection context
-    pub fn set_context(&mut self, aContext: &crate::ffi_types::HandleIntToolsContext) {
+    pub fn set_context(&mut self, aContext: &crate::ffi_types::Handle_IntTools_Context) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBO::IntTools_FaceFace_set_context(self as *mut Self, aContext)
         })
     }
 
-    /// **Source:** `IntTools_FaceFace.hxx`:82 - `IntTools_FaceFace::SetFuzzyValue()`
+    /// **Source:** `IntTools_FaceFace.hxx`:84 - `IntTools_FaceFace::SetFuzzyValue()`
     /// Sets the Fuzzy value
     pub fn set_fuzzy_value(&mut self, theFuzz: f64) {
         crate::check_void_result(unsafe {
@@ -2584,7 +2614,7 @@ impl FaceFace {
         })
     }
 
-    /// **Source:** `IntTools_FaceFace.hxx`:85 - `IntTools_FaceFace::FuzzyValue()`
+    /// **Source:** `IntTools_FaceFace.hxx`:87 - `IntTools_FaceFace::FuzzyValue()`
     /// Returns Fuzzy value
     pub fn fuzzy_value(&self) -> f64 {
         crate::check_result(unsafe {
@@ -2592,9 +2622,9 @@ impl FaceFace {
         })
     }
 
-    /// **Source:** `IntTools_FaceFace.hxx`:88 - `IntTools_FaceFace::Context()`
+    /// **Source:** `IntTools_FaceFace.hxx`:90 - `IntTools_FaceFace::Context()`
     /// Gets the intersection context
-    pub fn context(&self) -> &crate::ffi_types::HandleIntToolsContext {
+    pub fn context(&self) -> &crate::ffi_types::Handle_IntTools_Context {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKBO::IntTools_FaceFace_context(
                 self as *const Self,
@@ -2655,13 +2685,13 @@ impl MarkedRangeSet {
     /// Warning:
     /// The constructor do not check if the values of array are not sorted
     /// It should be checked before function invocation
-    pub fn new_array1ofreal_int(
-        theSortedArray: &crate::ffi_types::TColStd_Array1OfReal,
+    pub fn new_arr1_double_int(
+        theSortedArray: &crate::ffi_types::NCollection_Array1_double,
         theInitFlag: i32,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKBO::IntTools_MarkedRangeSet_ctor_array1ofreal_int(
+                crate::ffi_extern_TKBO::IntTools_MarkedRangeSet_ctor_arr1_double_int(
                     theSortedArray,
                     theInitFlag,
                 ),
@@ -2696,7 +2726,7 @@ impl MarkedRangeSet {
     /// It should be checked before function invocation
     pub fn set_ranges(
         &mut self,
-        theSortedArray: &crate::ffi_types::TColStd_Array1OfReal,
+        theSortedArray: &crate::ffi_types::NCollection_Array1_double,
         theInitFlag: i32,
     ) {
         crate::check_void_result(unsafe {
@@ -2746,7 +2776,7 @@ impl MarkedRangeSet {
         })
     }
 
-    /// **Source:** `IntTools_MarkedRangeSet.hxx`:85 - `IntTools_MarkedRangeSet::InsertRange()`
+    /// **Source:** `IntTools_MarkedRangeSet.hxx`:84 - `IntTools_MarkedRangeSet::InsertRange()`
     /// Inserts a new range marked with flag theFlag
     /// It replace the existing ranges or parts of ranges
     /// and their flags.
@@ -2771,7 +2801,7 @@ impl MarkedRangeSet {
         })
     }
 
-    /// **Source:** `IntTools_MarkedRangeSet.hxx`:96 - `IntTools_MarkedRangeSet::InsertRange()`
+    /// **Source:** `IntTools_MarkedRangeSet.hxx`:95 - `IntTools_MarkedRangeSet::InsertRange()`
     /// Inserts a new range marked with flag theFlag
     /// It replace the existing ranges or parts of ranges
     /// and their flags.
@@ -2794,7 +2824,7 @@ impl MarkedRangeSet {
         })
     }
 
-    /// **Source:** `IntTools_MarkedRangeSet.hxx`:101 - `IntTools_MarkedRangeSet::SetFlag()`
+    /// **Source:** `IntTools_MarkedRangeSet.hxx`:100 - `IntTools_MarkedRangeSet::SetFlag()`
     /// Set flag theFlag for range with index theIndex
     pub fn set_flag(&mut self, theIndex: i32, theFlag: i32) {
         crate::check_void_result(unsafe {
@@ -2806,7 +2836,7 @@ impl MarkedRangeSet {
         })
     }
 
-    /// **Source:** `IntTools_MarkedRangeSet.hxx`:104 - `IntTools_MarkedRangeSet::Flag()`
+    /// **Source:** `IntTools_MarkedRangeSet.hxx`:103 - `IntTools_MarkedRangeSet::Flag()`
     /// Returns flag of the range with index theIndex
     pub fn flag(&self, theIndex: i32) -> i32 {
         crate::check_result(unsafe {
@@ -2814,7 +2844,7 @@ impl MarkedRangeSet {
         })
     }
 
-    /// **Source:** `IntTools_MarkedRangeSet.hxx`:108 - `IntTools_MarkedRangeSet::GetIndex()`
+    /// **Source:** `IntTools_MarkedRangeSet.hxx`:107 - `IntTools_MarkedRangeSet::GetIndex()`
     /// Returns index of range which contains theValue.
     /// If theValue do not belong any range returns 0.
     pub fn get_index_real(&self, theValue: f64) -> i32 {
@@ -2826,8 +2856,8 @@ impl MarkedRangeSet {
         })
     }
 
-    /// **Source:** `IntTools_MarkedRangeSet.hxx`:110 - `IntTools_MarkedRangeSet::GetIndices()`
-    pub fn get_indices(&mut self, theValue: f64) -> &crate::ffi_types::TColStd_SequenceOfInteger {
+    /// **Source:** `IntTools_MarkedRangeSet.hxx`:109 - `IntTools_MarkedRangeSet::GetIndices()`
+    pub fn get_indices(&mut self, theValue: f64) -> &crate::ffi_types::NCollection_Sequence_int {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKBO::IntTools_MarkedRangeSet_get_indices(
                 self as *mut Self,
@@ -2836,10 +2866,10 @@ impl MarkedRangeSet {
         }
     }
 
-    /// **Source:** `IntTools_MarkedRangeSet.hxx`:117 - `IntTools_MarkedRangeSet::GetIndex()`
+    /// **Source:** `IntTools_MarkedRangeSet.hxx`:116 - `IntTools_MarkedRangeSet::GetIndex()`
     /// Returns index of range which contains theValue
     /// If theValue do not belong any range returns 0.
-    /// If UseLower is Standard_True then lower boundary of the range
+    /// If UseLower is true then lower boundary of the range
     /// can be equal to theValue, otherwise upper boundary of the range
     /// can be equal to theValue.
     pub fn get_index_real_bool(&self, theValue: f64, UseLower: bool) -> i32 {
@@ -2852,7 +2882,7 @@ impl MarkedRangeSet {
         })
     }
 
-    /// **Source:** `IntTools_MarkedRangeSet.hxx`:121 - `IntTools_MarkedRangeSet::Length()`
+    /// **Source:** `IntTools_MarkedRangeSet.hxx`:119 - `IntTools_MarkedRangeSet::Length()`
     /// Returns number of ranges
     pub fn length(&self) -> i32 {
         crate::check_result(unsafe {
@@ -2860,7 +2890,7 @@ impl MarkedRangeSet {
         })
     }
 
-    /// **Source:** `IntTools_MarkedRangeSet.hxx`:125 - `IntTools_MarkedRangeSet::Range()`
+    /// **Source:** `IntTools_MarkedRangeSet.hxx`:123 - `IntTools_MarkedRangeSet::Range()`
     /// Returns the range with index theIndex.
     /// the Index can be from 1 to Length()
     pub fn range(&self, theIndex: i32) -> crate::OwnedPtr<Range> {
@@ -3083,7 +3113,7 @@ impl PntOnFace {
 // ========================
 
 /// **Source:** `IntTools_Range.hxx`:27 - `IntTools_Range`
-/// The class describes the  1-d range
+/// The class describes the 1-d range
 /// [myFirst, myLast].
 pub use crate::ffi_types::IntTools_Range as Range;
 
@@ -3163,8 +3193,8 @@ impl Range {
 
 /// **Source:** `IntTools_Root.hxx`:30 - `IntTools_Root`
 /// The class is to describe the root of
-/// function of one variable  for  Edge/Edge
-/// and  Edge/Surface  algorithms.
+/// function of one variable for Edge/Edge
+/// and Edge/Surface algorithms.
 pub use crate::ffi_types::IntTools_Root as Root;
 
 unsafe impl crate::CppDeletable for Root {
@@ -3214,8 +3244,8 @@ impl Root {
     }
 
     /// **Source:** `IntTools_Root.hxx`:50 - `IntTools_Root::SetStateBefore()`
-    /// Set  the  value of the state before the root
-    /// (at  t=Root-dt)
+    /// Set the value of the state before the root
+    /// (at t=Root-dt)
     pub fn set_state_before(&mut self, aState: crate::top_abs::State) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBO::IntTools_Root_set_state_before(self as *mut Self, aState.into())
@@ -3223,8 +3253,8 @@ impl Root {
     }
 
     /// **Source:** `IntTools_Root.hxx`:54 - `IntTools_Root::SetStateAfter()`
-    /// Set  the  value of the state after the root
-    /// (at  t=Root-dt)
+    /// Set the value of the state after the root
+    /// (at t=Root-dt)
     pub fn set_state_after(&mut self, aState: crate::top_abs::State) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBO::IntTools_Root_set_state_after(self as *mut Self, aState.into())
@@ -3232,7 +3262,7 @@ impl Root {
     }
 
     /// **Source:** `IntTools_Root.hxx`:57 - `IntTools_Root::SetLayerHeight()`
-    /// Not  used  in  Edge/Edge  algorithm
+    /// Not used in Edge/Edge algorithm
     pub fn set_layer_height(&mut self, aHeight: f64) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBO::IntTools_Root_set_layer_height(self as *mut Self, aHeight)
@@ -3240,9 +3270,9 @@ impl Root {
     }
 
     /// **Source:** `IntTools_Root.hxx`:62 - `IntTools_Root::SetInterval()`
-    /// Sets the  interval  from which the Root was
-    /// found [t1,t2] and the  corresponding  values
-    /// of  the  function  on  the  bounds f(t1), f(t2).
+    /// Sets the interval from which the Root was
+    /// found [t1,t2] and the corresponding values
+    /// of the function on the bounds f(t1), f(t2).
     pub fn set_interval(&mut self, t1: f64, t2: f64, f1: f64, f2: f64) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBO::IntTools_Root_set_interval(self as *mut Self, t1, t2, f1, f2)
@@ -3250,7 +3280,7 @@ impl Root {
     }
 
     /// **Source:** `IntTools_Root.hxx`:68 - `IntTools_Root::Root()`
-    /// Returns the Root  value
+    /// Returns the Root value
     pub fn root(&self) -> f64 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::IntTools_Root_root(self as *const Self)
@@ -3258,11 +3288,11 @@ impl Root {
     }
 
     /// **Source:** `IntTools_Root.hxx`:75 - `IntTools_Root::Type()`
-    /// Returns the  type  of  the  root
-    /// =0  -  Simple (was  found  by  bisection  method);
-    /// =2  -  Smart when f1=0, f2!=0 or  vice  versa
-    /// (was  found  by  Fibbonacci method);
-    /// =1  -  Pure   (pure  zero  for all t [t1,t2] );
+    /// Returns the type of the root
+    /// =0 - Simple (was found by bisection method);
+    /// =2 - Smart when f1=0, f2!=0 or vice versa
+    /// (was found by Fibbonacci method);
+    /// =1 - Pure (pure zero for all t [t1,t2]);
     pub fn type_(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::IntTools_Root_type_(self as *const Self)
@@ -3288,7 +3318,7 @@ impl Root {
     }
 
     /// **Source:** `IntTools_Root.hxx`:84 - `IntTools_Root::LayerHeight()`
-    /// Not  used  in  Edge/Edge  algorithm
+    /// Not used in Edge/Edge algorithm
     pub fn layer_height(&self) -> f64 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::IntTools_Root_layer_height(self as *const Self)
@@ -3301,8 +3331,8 @@ impl Root {
     /// myStateBefore==TopAbs_OUT && myStateAfter==TopAbs_IN or
     /// myStateBefore==TopAbs_OUT && myStateAfter==TopAbs_ON or
     /// myStateBefore==TopAbs_ON  && myStateAfter==TopAbs_OUT or
-    /// myStateBefore==TopAbs_IN  && myStateAfter==TopAbs_OUT  .
-    /// For  other  cases it  returns  False.
+    /// myStateBefore==TopAbs_IN  && myStateAfter==TopAbs_OUT
+    /// For other cases it returns False.
     pub fn is_valid(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::IntTools_Root_is_valid(self as *const Self)
@@ -3310,9 +3340,9 @@ impl Root {
     }
 
     /// **Source:** `IntTools_Root.hxx`:98 - `IntTools_Root::Interval()`
-    /// Returns the values of interval  from which the Root was
-    /// found [t1,t2] and the  corresponding  values
-    /// of  the  function  on  the  bounds f(t1), f(t2).
+    /// Returns the values of interval from which the Root was
+    /// found [t1,t2] and the corresponding values
+    /// of the function on the bounds f(t1), f(t2).
     pub fn interval(&self, t1: &mut f64, t2: &mut f64, f1: &mut f64, f2: &mut f64) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBO::IntTools_Root_interval(self as *const Self, t1, t2, f1, f2)
@@ -3370,14 +3400,14 @@ impl ShrunkRange {
     }
 
     /// **Source:** `IntTools_ShrunkRange.hxx`:45 - `IntTools_ShrunkRange::SetContext()`
-    pub fn set_context(&mut self, aCtx: &crate::ffi_types::HandleIntToolsContext) {
+    pub fn set_context(&mut self, aCtx: &crate::ffi_types::Handle_IntTools_Context) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBO::IntTools_ShrunkRange_set_context(self as *mut Self, aCtx)
         })
     }
 
     /// **Source:** `IntTools_ShrunkRange.hxx`:47 - `IntTools_ShrunkRange::Context()`
-    pub fn context(&self) -> &crate::ffi_types::HandleIntToolsContext {
+    pub fn context(&self) -> &crate::ffi_types::Handle_IntTools_Context {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKBO::IntTools_ShrunkRange_context(
                 self as *const Self,
@@ -3459,7 +3489,7 @@ impl ShrunkRange {
 // From IntTools_SurfaceRangeLocalizeData.hxx
 // ========================
 
-/// **Source:** `IntTools_SurfaceRangeLocalizeData.hxx`:33 - `IntTools_SurfaceRangeLocalizeData`
+/// **Source:** `IntTools_SurfaceRangeLocalizeData.hxx`:38 - `IntTools_SurfaceRangeLocalizeData`
 pub use crate::ffi_types::IntTools_SurfaceRangeLocalizeData as SurfaceRangeLocalizeData;
 
 unsafe impl crate::CppDeletable for SurfaceRangeLocalizeData {
@@ -3491,7 +3521,7 @@ impl std::borrow::ToOwned for SurfaceRangeLocalizeData {
 }
 
 impl SurfaceRangeLocalizeData {
-    /// **Source:** `IntTools_SurfaceRangeLocalizeData.hxx`:38 - `IntTools_SurfaceRangeLocalizeData::IntTools_SurfaceRangeLocalizeData()`
+    /// **Source:** `IntTools_SurfaceRangeLocalizeData.hxx`:43 - `IntTools_SurfaceRangeLocalizeData::IntTools_SurfaceRangeLocalizeData()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -3500,7 +3530,7 @@ impl SurfaceRangeLocalizeData {
         }
     }
 
-    /// **Source:** `IntTools_SurfaceRangeLocalizeData.hxx`:40 - `IntTools_SurfaceRangeLocalizeData::IntTools_SurfaceRangeLocalizeData()`
+    /// **Source:** `IntTools_SurfaceRangeLocalizeData.hxx`:45 - `IntTools_SurfaceRangeLocalizeData::IntTools_SurfaceRangeLocalizeData()`
     pub fn new_int2_real2(
         theNbSampleU: i32,
         theNbSampleV: i32,
@@ -3519,7 +3549,7 @@ impl SurfaceRangeLocalizeData {
         }
     }
 
-    /// **Source:** `IntTools_SurfaceRangeLocalizeData.hxx`:47 - `IntTools_SurfaceRangeLocalizeData::Assign()`
+    /// **Source:** `IntTools_SurfaceRangeLocalizeData.hxx`:52 - `IntTools_SurfaceRangeLocalizeData::Assign()`
     ///
     /// # Safety
     ///
@@ -3540,7 +3570,7 @@ impl SurfaceRangeLocalizeData {
         }
     }
 
-    /// **Source:** `IntTools_SurfaceRangeLocalizeData.hxx`:55 - `IntTools_SurfaceRangeLocalizeData::GetNbSampleU()`
+    /// **Source:** `IntTools_SurfaceRangeLocalizeData.hxx`:60 - `IntTools_SurfaceRangeLocalizeData::GetNbSampleU()`
     pub fn get_nb_sample_u(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::IntTools_SurfaceRangeLocalizeData_get_nb_sample_u(
@@ -3549,7 +3579,7 @@ impl SurfaceRangeLocalizeData {
         })
     }
 
-    /// **Source:** `IntTools_SurfaceRangeLocalizeData.hxx`:57 - `IntTools_SurfaceRangeLocalizeData::GetNbSampleV()`
+    /// **Source:** `IntTools_SurfaceRangeLocalizeData.hxx`:62 - `IntTools_SurfaceRangeLocalizeData::GetNbSampleV()`
     pub fn get_nb_sample_v(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::IntTools_SurfaceRangeLocalizeData_get_nb_sample_v(
@@ -3558,7 +3588,7 @@ impl SurfaceRangeLocalizeData {
         })
     }
 
-    /// **Source:** `IntTools_SurfaceRangeLocalizeData.hxx`:59 - `IntTools_SurfaceRangeLocalizeData::GetMinRangeU()`
+    /// **Source:** `IntTools_SurfaceRangeLocalizeData.hxx`:64 - `IntTools_SurfaceRangeLocalizeData::GetMinRangeU()`
     pub fn get_min_range_u(&self) -> f64 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::IntTools_SurfaceRangeLocalizeData_get_min_range_u(
@@ -3567,7 +3597,7 @@ impl SurfaceRangeLocalizeData {
         })
     }
 
-    /// **Source:** `IntTools_SurfaceRangeLocalizeData.hxx`:61 - `IntTools_SurfaceRangeLocalizeData::GetMinRangeV()`
+    /// **Source:** `IntTools_SurfaceRangeLocalizeData.hxx`:66 - `IntTools_SurfaceRangeLocalizeData::GetMinRangeV()`
     pub fn get_min_range_v(&self) -> f64 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::IntTools_SurfaceRangeLocalizeData_get_min_range_v(
@@ -3576,7 +3606,7 @@ impl SurfaceRangeLocalizeData {
         })
     }
 
-    /// **Source:** `IntTools_SurfaceRangeLocalizeData.hxx`:63 - `IntTools_SurfaceRangeLocalizeData::AddOutRange()`
+    /// **Source:** `IntTools_SurfaceRangeLocalizeData.hxx`:68 - `IntTools_SurfaceRangeLocalizeData::AddOutRange()`
     pub fn add_out_range(&mut self, theRange: &SurfaceRangeSample) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBO::IntTools_SurfaceRangeLocalizeData_add_out_range(
@@ -3586,7 +3616,7 @@ impl SurfaceRangeLocalizeData {
         })
     }
 
-    /// **Source:** `IntTools_SurfaceRangeLocalizeData.hxx`:65 - `IntTools_SurfaceRangeLocalizeData::AddBox()`
+    /// **Source:** `IntTools_SurfaceRangeLocalizeData.hxx`:70 - `IntTools_SurfaceRangeLocalizeData::AddBox()`
     pub fn add_box(&mut self, theRange: &SurfaceRangeSample, theBox: &crate::bnd::Box) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBO::IntTools_SurfaceRangeLocalizeData_add_box(
@@ -3597,7 +3627,7 @@ impl SurfaceRangeLocalizeData {
         })
     }
 
-    /// **Source:** `IntTools_SurfaceRangeLocalizeData.hxx`:67 - `IntTools_SurfaceRangeLocalizeData::FindBox()`
+    /// **Source:** `IntTools_SurfaceRangeLocalizeData.hxx`:72 - `IntTools_SurfaceRangeLocalizeData::FindBox()`
     pub fn find_box(&self, theRange: &SurfaceRangeSample, theBox: &mut crate::bnd::Box) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::IntTools_SurfaceRangeLocalizeData_find_box(
@@ -3608,7 +3638,7 @@ impl SurfaceRangeLocalizeData {
         })
     }
 
-    /// **Source:** `IntTools_SurfaceRangeLocalizeData.hxx`:70 - `IntTools_SurfaceRangeLocalizeData::IsRangeOut()`
+    /// **Source:** `IntTools_SurfaceRangeLocalizeData.hxx`:74 - `IntTools_SurfaceRangeLocalizeData::IsRangeOut()`
     pub fn is_range_out(&self, theRange: &SurfaceRangeSample) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::IntTools_SurfaceRangeLocalizeData_is_range_out(
@@ -3618,10 +3648,10 @@ impl SurfaceRangeLocalizeData {
         })
     }
 
-    /// **Source:** `IntTools_SurfaceRangeLocalizeData.hxx`:72 - `IntTools_SurfaceRangeLocalizeData::ListRangeOut()`
+    /// **Source:** `IntTools_SurfaceRangeLocalizeData.hxx`:76 - `IntTools_SurfaceRangeLocalizeData::ListRangeOut()`
     pub fn list_range_out(
         &self,
-        theList: &mut crate::ffi_types::IntTools_ListOfSurfaceRangeSample,
+        theList: &mut crate::ffi_types::NCollection_List_IntTools_SurfaceRangeSample,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBO::IntTools_SurfaceRangeLocalizeData_list_range_out(
@@ -3631,7 +3661,7 @@ impl SurfaceRangeLocalizeData {
         })
     }
 
-    /// **Source:** `IntTools_SurfaceRangeLocalizeData.hxx`:74 - `IntTools_SurfaceRangeLocalizeData::RemoveRangeOutAll()`
+    /// **Source:** `IntTools_SurfaceRangeLocalizeData.hxx`:78 - `IntTools_SurfaceRangeLocalizeData::RemoveRangeOutAll()`
     pub fn remove_range_out_all(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBO::IntTools_SurfaceRangeLocalizeData_remove_range_out_all(
@@ -3640,7 +3670,7 @@ impl SurfaceRangeLocalizeData {
         })
     }
 
-    /// **Source:** `IntTools_SurfaceRangeLocalizeData.hxx`:77 - `IntTools_SurfaceRangeLocalizeData::SetGridDeflection()`
+    /// **Source:** `IntTools_SurfaceRangeLocalizeData.hxx`:81 - `IntTools_SurfaceRangeLocalizeData::SetGridDeflection()`
     /// Set the grid deflection.
     pub fn set_grid_deflection(&mut self, theDeflection: f64) {
         crate::check_void_result(unsafe {
@@ -3651,7 +3681,7 @@ impl SurfaceRangeLocalizeData {
         })
     }
 
-    /// **Source:** `IntTools_SurfaceRangeLocalizeData.hxx`:80 - `IntTools_SurfaceRangeLocalizeData::GetGridDeflection()`
+    /// **Source:** `IntTools_SurfaceRangeLocalizeData.hxx`:84 - `IntTools_SurfaceRangeLocalizeData::GetGridDeflection()`
     /// Query the grid deflection.
     pub fn get_grid_deflection(&self) -> f64 {
         crate::check_result(unsafe {
@@ -3661,7 +3691,7 @@ impl SurfaceRangeLocalizeData {
         })
     }
 
-    /// **Source:** `IntTools_SurfaceRangeLocalizeData.hxx`:83 - `IntTools_SurfaceRangeLocalizeData::SetRangeUGrid()`
+    /// **Source:** `IntTools_SurfaceRangeLocalizeData.hxx`:87 - `IntTools_SurfaceRangeLocalizeData::SetRangeUGrid()`
     /// Set the range U of the grid of points.
     pub fn set_range_u_grid(&mut self, theNbUGrid: i32) {
         crate::check_void_result(unsafe {
@@ -3672,7 +3702,7 @@ impl SurfaceRangeLocalizeData {
         })
     }
 
-    /// **Source:** `IntTools_SurfaceRangeLocalizeData.hxx`:86 - `IntTools_SurfaceRangeLocalizeData::GetRangeUGrid()`
+    /// **Source:** `IntTools_SurfaceRangeLocalizeData.hxx`:90 - `IntTools_SurfaceRangeLocalizeData::GetRangeUGrid()`
     /// Query the range U of the grid of points.
     pub fn get_range_u_grid(&self) -> i32 {
         crate::check_result(unsafe {
@@ -3682,7 +3712,7 @@ impl SurfaceRangeLocalizeData {
         })
     }
 
-    /// **Source:** `IntTools_SurfaceRangeLocalizeData.hxx`:89 - `IntTools_SurfaceRangeLocalizeData::SetUParam()`
+    /// **Source:** `IntTools_SurfaceRangeLocalizeData.hxx`:93 - `IntTools_SurfaceRangeLocalizeData::SetUParam()`
     /// Set the U parameter of the grid points at that index.
     pub fn set_u_param(&mut self, theIndex: i32, theUParam: f64) {
         crate::check_void_result(unsafe {
@@ -3694,7 +3724,7 @@ impl SurfaceRangeLocalizeData {
         })
     }
 
-    /// **Source:** `IntTools_SurfaceRangeLocalizeData.hxx`:92 - `IntTools_SurfaceRangeLocalizeData::GetUParam()`
+    /// **Source:** `IntTools_SurfaceRangeLocalizeData.hxx`:96 - `IntTools_SurfaceRangeLocalizeData::GetUParam()`
     /// Query the U parameter of the grid points at that index.
     pub fn get_u_param(&self, theIndex: i32) -> f64 {
         crate::check_result(unsafe {
@@ -3705,7 +3735,7 @@ impl SurfaceRangeLocalizeData {
         })
     }
 
-    /// **Source:** `IntTools_SurfaceRangeLocalizeData.hxx`:95 - `IntTools_SurfaceRangeLocalizeData::SetRangeVGrid()`
+    /// **Source:** `IntTools_SurfaceRangeLocalizeData.hxx`:99 - `IntTools_SurfaceRangeLocalizeData::SetRangeVGrid()`
     /// Set the range V of the grid of points.
     pub fn set_range_v_grid(&mut self, theNbVGrid: i32) {
         crate::check_void_result(unsafe {
@@ -3716,7 +3746,7 @@ impl SurfaceRangeLocalizeData {
         })
     }
 
-    /// **Source:** `IntTools_SurfaceRangeLocalizeData.hxx`:98 - `IntTools_SurfaceRangeLocalizeData::GetRangeVGrid()`
+    /// **Source:** `IntTools_SurfaceRangeLocalizeData.hxx`:102 - `IntTools_SurfaceRangeLocalizeData::GetRangeVGrid()`
     /// Query the range V of the grid of points.
     pub fn get_range_v_grid(&self) -> i32 {
         crate::check_result(unsafe {
@@ -3726,7 +3756,7 @@ impl SurfaceRangeLocalizeData {
         })
     }
 
-    /// **Source:** `IntTools_SurfaceRangeLocalizeData.hxx`:101 - `IntTools_SurfaceRangeLocalizeData::SetVParam()`
+    /// **Source:** `IntTools_SurfaceRangeLocalizeData.hxx`:105 - `IntTools_SurfaceRangeLocalizeData::SetVParam()`
     /// Set the V parameter of the grid points at that index.
     pub fn set_v_param(&mut self, theIndex: i32, theVParam: f64) {
         crate::check_void_result(unsafe {
@@ -3738,7 +3768,7 @@ impl SurfaceRangeLocalizeData {
         })
     }
 
-    /// **Source:** `IntTools_SurfaceRangeLocalizeData.hxx`:104 - `IntTools_SurfaceRangeLocalizeData::GetVParam()`
+    /// **Source:** `IntTools_SurfaceRangeLocalizeData.hxx`:108 - `IntTools_SurfaceRangeLocalizeData::GetVParam()`
     /// Query the V parameter of the grid points at that index.
     pub fn get_v_param(&self, theIndex: i32) -> f64 {
         crate::check_result(unsafe {
@@ -3749,7 +3779,7 @@ impl SurfaceRangeLocalizeData {
         })
     }
 
-    /// **Source:** `IntTools_SurfaceRangeLocalizeData.hxx`:107 - `IntTools_SurfaceRangeLocalizeData::SetGridPoint()`
+    /// **Source:** `IntTools_SurfaceRangeLocalizeData.hxx`:111 - `IntTools_SurfaceRangeLocalizeData::SetGridPoint()`
     /// Set the grid point.
     pub fn set_grid_point(&mut self, theUIndex: i32, theVIndex: i32, thePoint: &crate::gp::Pnt) {
         crate::check_void_result(unsafe {
@@ -3762,7 +3792,7 @@ impl SurfaceRangeLocalizeData {
         })
     }
 
-    /// **Source:** `IntTools_SurfaceRangeLocalizeData.hxx`:112 - `IntTools_SurfaceRangeLocalizeData::GetGridPoint()`
+    /// **Source:** `IntTools_SurfaceRangeLocalizeData.hxx`:114 - `IntTools_SurfaceRangeLocalizeData::GetGridPoint()`
     /// Set the grid point.
     pub fn get_grid_point(&self, theUIndex: i32, theVIndex: i32) -> &crate::gp::Pnt {
         unsafe {
@@ -3776,7 +3806,7 @@ impl SurfaceRangeLocalizeData {
         }
     }
 
-    /// **Source:** `IntTools_SurfaceRangeLocalizeData.hxx`:116 - `IntTools_SurfaceRangeLocalizeData::SetFrame()`
+    /// **Source:** `IntTools_SurfaceRangeLocalizeData.hxx`:117 - `IntTools_SurfaceRangeLocalizeData::SetFrame()`
     /// Sets the frame area. Used to work with grid points.
     pub fn set_frame(&mut self, theUMin: f64, theUMax: f64, theVMin: f64, theVMax: f64) {
         crate::check_void_result(unsafe {
@@ -3790,7 +3820,7 @@ impl SurfaceRangeLocalizeData {
         })
     }
 
-    /// **Source:** `IntTools_SurfaceRangeLocalizeData.hxx`:122 - `IntTools_SurfaceRangeLocalizeData::GetNBUPointsInFrame()`
+    /// **Source:** `IntTools_SurfaceRangeLocalizeData.hxx`:123 - `IntTools_SurfaceRangeLocalizeData::GetNBUPointsInFrame()`
     /// Returns the number of grid points on U direction in frame.
     pub fn get_nbu_points_in_frame(&self) -> i32 {
         crate::check_result(unsafe {
@@ -3800,7 +3830,7 @@ impl SurfaceRangeLocalizeData {
         })
     }
 
-    /// **Source:** `IntTools_SurfaceRangeLocalizeData.hxx`:125 - `IntTools_SurfaceRangeLocalizeData::GetNBVPointsInFrame()`
+    /// **Source:** `IntTools_SurfaceRangeLocalizeData.hxx`:126 - `IntTools_SurfaceRangeLocalizeData::GetNBVPointsInFrame()`
     /// Returns the number of grid points on V direction in frame.
     pub fn get_nbv_points_in_frame(&self) -> i32 {
         crate::check_result(unsafe {
@@ -3810,7 +3840,7 @@ impl SurfaceRangeLocalizeData {
         })
     }
 
-    /// **Source:** `IntTools_SurfaceRangeLocalizeData.hxx`:128 - `IntTools_SurfaceRangeLocalizeData::GetPointInFrame()`
+    /// **Source:** `IntTools_SurfaceRangeLocalizeData.hxx`:129 - `IntTools_SurfaceRangeLocalizeData::GetPointInFrame()`
     /// Returns the grid point in frame.
     pub fn get_point_in_frame(&self, theUIndex: i32, theVIndex: i32) -> &crate::gp::Pnt {
         unsafe {
@@ -4182,7 +4212,7 @@ impl SurfaceRangeSample {
 // From IntTools_Tools.hxx
 // ========================
 
-/// **Source:** `IntTools_Tools.hxx`:46 - `IntTools_Tools`
+/// **Source:** `IntTools_Tools.hxx`:47 - `IntTools_Tools`
 /// The class contains handy static functions
 /// dealing with the geometry and topology.
 pub use crate::ffi_types::IntTools_Tools as Tools;
@@ -4206,7 +4236,7 @@ impl Tools {
         }
     }
 
-    /// **Source:** `IntTools_Tools.hxx`:55 - `IntTools_Tools::ComputeVV()`
+    /// **Source:** `IntTools_Tools.hxx`:56 - `IntTools_Tools::ComputeVV()`
     /// Computes distance between vertex V1 and vertex V2,
     /// if the distance is less than sum of vertex tolerances
     /// returns zero,
@@ -4294,7 +4324,7 @@ impl Tools {
         })
     }
 
-    /// **Source:** `IntTools_Tools.hxx`:100 - `IntTools_Tools::IsVertex()`
+    /// **Source:** `IntTools_Tools.hxx`:99 - `IntTools_Tools::IsVertex()`
     /// Returns True if the distance between point aP and
     /// vertex aV is less or equal to sum of aTolPV and
     /// vertex tolerance, otherwise returns False
@@ -4308,7 +4338,7 @@ impl Tools {
         })
     }
 
-    /// **Source:** `IntTools_Tools.hxx`:105 - `IntTools_Tools::IntermediatePoint()`
+    /// **Source:** `IntTools_Tools.hxx`:104 - `IntTools_Tools::IntermediatePoint()`
     /// Returns some value between aFirst and aLast
     pub fn intermediate_point(aFirst: f64, aLast: f64) -> f64 {
         crate::check_result(unsafe {
@@ -4316,27 +4346,30 @@ impl Tools {
         })
     }
 
-    /// **Source:** `IntTools_Tools.hxx`:111 - `IntTools_Tools::SplitCurve()`
+    /// **Source:** `IntTools_Tools.hxx`:109 - `IntTools_Tools::SplitCurve()`
     /// Split aC by average parameter if aC is closed in 3D.
     /// Returns positive value if splitting has been done,
     /// otherwise returns zero.
-    pub fn split_curve(aC: &Curve, aS: &mut crate::ffi_types::IntTools_SequenceOfCurves) -> i32 {
+    pub fn split_curve(
+        aC: &Curve,
+        aS: &mut crate::ffi_types::NCollection_Sequence_IntTools_Curve,
+    ) -> i32 {
         crate::check_result(unsafe { crate::ffi_extern_TKBO::IntTools_Tools_split_curve(aC, aS) })
     }
 
-    /// **Source:** `IntTools_Tools.hxx`:116 - `IntTools_Tools::RejectLines()`
+    /// **Source:** `IntTools_Tools.hxx`:114 - `IntTools_Tools::RejectLines()`
     /// Puts curves from aSIn to aSOut except those curves that
     /// are coincide with first curve from aSIn.
     pub fn reject_lines(
-        aSIn: &crate::ffi_types::IntTools_SequenceOfCurves,
-        aSOut: &mut crate::ffi_types::IntTools_SequenceOfCurves,
+        aSIn: &crate::ffi_types::NCollection_Sequence_IntTools_Curve,
+        aSOut: &mut crate::ffi_types::NCollection_Sequence_IntTools_Curve,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBO::IntTools_Tools_reject_lines(aSIn, aSOut)
         })
     }
 
-    /// **Source:** `IntTools_Tools.hxx`:120 - `IntTools_Tools::IsDirsCoinside()`
+    /// **Source:** `IntTools_Tools.hxx`:118 - `IntTools_Tools::IsDirsCoinside()`
     /// Returns True if D1 and D2 coincide
     pub fn is_dirs_coinside_dir2(D1: &crate::gp::Dir, D2: &crate::gp::Dir) -> bool {
         crate::check_result(unsafe {
@@ -4344,7 +4377,7 @@ impl Tools {
         })
     }
 
-    /// **Source:** `IntTools_Tools.hxx`:123 - `IntTools_Tools::IsDirsCoinside()`
+    /// **Source:** `IntTools_Tools.hxx`:121 - `IntTools_Tools::IsDirsCoinside()`
     /// Returns True if D1 and D2 coincide with given tolerance
     pub fn is_dirs_coinside_dir2_real(D1: &crate::gp::Dir, D2: &crate::gp::Dir, aTol: f64) -> bool {
         crate::check_result(unsafe {
@@ -4352,27 +4385,27 @@ impl Tools {
         })
     }
 
-    /// **Source:** `IntTools_Tools.hxx`:131 - `IntTools_Tools::IsClosed()`
+    /// **Source:** `IntTools_Tools.hxx`:127 - `IntTools_Tools::IsClosed()`
     /// Returns True if aC is BoundedCurve from Geom and
     /// the distance between first point
     /// of the curve aC and last point
     /// is less than 1.e-12
-    pub fn is_closed(aC: &crate::ffi_types::HandleGeomCurve) -> bool {
+    pub fn is_closed(aC: &crate::ffi_types::Handle_Geom_Curve) -> bool {
         crate::check_result(unsafe { crate::ffi_extern_TKBO::IntTools_Tools_is_closed(aC) })
     }
 
-    /// **Source:** `IntTools_Tools.hxx`:136 - `IntTools_Tools::CurveTolerance()`
+    /// **Source:** `IntTools_Tools.hxx`:132 - `IntTools_Tools::CurveTolerance()`
     /// Returns adaptive tolerance for given aTolBase
     /// if aC is trimmed curve and basis curve is parabola,
     /// otherwise returns value of aTolBase
-    pub fn curve_tolerance(aC: &crate::ffi_types::HandleGeomCurve, aTolBase: f64) -> f64 {
+    pub fn curve_tolerance(aC: &crate::ffi_types::Handle_Geom_Curve, aTolBase: f64) -> f64 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::IntTools_Tools_curve_tolerance(aC, aTolBase)
         })
     }
 
-    /// **Source:** `IntTools_Tools.hxx`:141 - `IntTools_Tools::CheckCurve()`
-    /// Checks if the curve is not covered by the default tolerance (confusion).<br>
+    /// **Source:** `IntTools_Tools.hxx`:137 - `IntTools_Tools::CheckCurve()`
+    /// Checks if the curve is not covered by the default tolerance (confusion).
     /// Builds bounding box for the curve and stores it into <theBox>.
     pub fn check_curve(theCurve: &Curve, theBox: &mut crate::bnd::Box) -> bool {
         crate::check_result(unsafe {
@@ -4380,35 +4413,35 @@ impl Tools {
         })
     }
 
-    /// **Source:** `IntTools_Tools.hxx`:144 - `IntTools_Tools::IsOnPave()`
+    /// **Source:** `IntTools_Tools.hxx`:139 - `IntTools_Tools::IsOnPave()`
     pub fn is_on_pave(theT: f64, theRange: &Range, theTol: f64) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::IntTools_Tools_is_on_pave(theT, theRange, theTol)
         })
     }
 
-    /// **Source:** `IntTools_Tools.hxx`:148 - `IntTools_Tools::VertexParameters()`
+    /// **Source:** `IntTools_Tools.hxx`:143 - `IntTools_Tools::VertexParameters()`
     pub fn vertex_parameters(theCP: &CommonPrt, theT1: &mut f64, theT2: &mut f64) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBO::IntTools_Tools_vertex_parameters(theCP, theT1, theT2)
         })
     }
 
-    /// **Source:** `IntTools_Tools.hxx`:152 - `IntTools_Tools::VertexParameter()`
+    /// **Source:** `IntTools_Tools.hxx`:147 - `IntTools_Tools::VertexParameter()`
     pub fn vertex_parameter(theCP: &CommonPrt, theT: &mut f64) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBO::IntTools_Tools_vertex_parameter(theCP, theT)
         })
     }
 
-    /// **Source:** `IntTools_Tools.hxx`:154 - `IntTools_Tools::IsOnPave1()`
+    /// **Source:** `IntTools_Tools.hxx`:149 - `IntTools_Tools::IsOnPave1()`
     pub fn is_on_pave1(theT: f64, theRange: &Range, theTol: f64) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::IntTools_Tools_is_on_pave1(theT, theRange, theTol)
         })
     }
 
-    /// **Source:** `IntTools_Tools.hxx`:159 - `IntTools_Tools::IsInRange()`
+    /// **Source:** `IntTools_Tools.hxx`:154 - `IntTools_Tools::IsInRange()`
     /// Checks if the range <theR> interfere with the range <theRRef>
     pub fn is_in_range(theRRef: &Range, theR: &Range, theTol: f64) -> bool {
         crate::check_result(unsafe {
@@ -4416,7 +4449,7 @@ impl Tools {
         })
     }
 
-    /// **Source:** `IntTools_Tools.hxx`:163 - `IntTools_Tools::SegPln()`
+    /// **Source:** `IntTools_Tools.hxx`:158 - `IntTools_Tools::SegPln()`
     pub fn seg_pln(
         theLin: &crate::gp::Lin,
         theTLin1: f64,
@@ -4438,13 +4471,13 @@ impl Tools {
         })
     }
 
-    /// **Source:** `IntTools_Tools.hxx`:177 - `IntTools_Tools::ComputeTolerance()`
+    /// **Source:** `IntTools_Tools.hxx`:172 - `IntTools_Tools::ComputeTolerance()`
     /// Computes the max distance between points
     /// taken from 3D and 2D curves by the same parameter
     pub fn compute_tolerance(
-        theCurve3D: &crate::ffi_types::HandleGeomCurve,
-        theCurve2D: &crate::ffi_types::HandleGeom2dCurve,
-        theSurf: &crate::ffi_types::HandleGeomSurface,
+        theCurve3D: &crate::ffi_types::Handle_Geom_Curve,
+        theCurve2D: &crate::ffi_types::Handle_Geom2d_Curve,
+        theSurf: &crate::ffi_types::Handle_Geom_Surface,
         theFirst: f64,
         theLast: f64,
         theMaxDist: &mut f64,
@@ -4467,7 +4500,7 @@ impl Tools {
         })
     }
 
-    /// **Source:** `IntTools_Tools.hxx`:190 - `IntTools_Tools::ComputeIntRange()`
+    /// **Source:** `IntTools_Tools.hxx`:184 - `IntTools_Tools::ComputeIntRange()`
     /// Computes the correct Intersection range for
     /// Line/Line, Line/Plane and Plane/Plane intersections
     pub fn compute_int_range(theTol1: f64, theTol2: f64, theAngle: f64) -> f64 {
@@ -4481,7 +4514,7 @@ impl Tools {
 // From IntTools_TopolTool.hxx
 // ========================
 
-/// **Source:** `IntTools_TopolTool.hxx`:30 - `IntTools_TopolTool`
+/// **Source:** `IntTools_TopolTool.hxx`:27 - `IntTools_TopolTool`
 /// Class redefine methods of TopolTool from Adaptor3d
 /// concerning sample points
 pub use crate::ffi_types::IntTools_TopolTool as TopolTool;
@@ -4495,7 +4528,7 @@ unsafe impl crate::CppDeletable for TopolTool {
 }
 
 impl TopolTool {
-    /// **Source:** `IntTools_TopolTool.hxx`:35 - `IntTools_TopolTool::IntTools_TopolTool()`
+    /// **Source:** `IntTools_TopolTool.hxx`:32 - `IntTools_TopolTool::IntTools_TopolTool()`
     /// Empty constructor
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
@@ -4505,10 +4538,10 @@ impl TopolTool {
         }
     }
 
-    /// **Source:** `IntTools_TopolTool.hxx`:38 - `IntTools_TopolTool::IntTools_TopolTool()`
+    /// **Source:** `IntTools_TopolTool.hxx`:35 - `IntTools_TopolTool::IntTools_TopolTool()`
     /// Initializes me by surface
     pub fn new_handleadaptor3dsurface(
-        theSurface: &crate::ffi_types::HandleAdaptor3dSurface,
+        theSurface: &crate::ffi_types::Handle_Adaptor3d_Surface,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -4517,7 +4550,7 @@ impl TopolTool {
         }
     }
 
-    /// **Source:** `IntTools_TopolTool.hxx`:44 - `IntTools_TopolTool::Initialize()`
+    /// **Source:** `IntTools_TopolTool.hxx`:41 - `IntTools_TopolTool::Initialize()`
     /// Redefined empty initializer
     ///
     /// Warning:
@@ -4528,11 +4561,11 @@ impl TopolTool {
         })
     }
 
-    /// **Source:** `IntTools_TopolTool.hxx`:47 - `IntTools_TopolTool::Initialize()`
+    /// **Source:** `IntTools_TopolTool.hxx`:44 - `IntTools_TopolTool::Initialize()`
     /// Initializes me by surface
     pub fn initialize_handleadaptor3dsurface(
         &mut self,
-        theSurface: &crate::ffi_types::HandleAdaptor3dSurface,
+        theSurface: &crate::ffi_types::Handle_Adaptor3d_Surface,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBO::IntTools_TopolTool_initialize_handleadaptor3dsurface(
@@ -4542,14 +4575,14 @@ impl TopolTool {
         })
     }
 
-    /// **Source:** `IntTools_TopolTool.hxx`:50 - `IntTools_TopolTool::ComputeSamplePoints()`
+    /// **Source:** `IntTools_TopolTool.hxx`:46 - `IntTools_TopolTool::ComputeSamplePoints()`
     pub fn compute_sample_points(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBO::IntTools_TopolTool_compute_sample_points(self as *mut Self)
         })
     }
 
-    /// **Source:** `IntTools_TopolTool.hxx`:53 - `IntTools_TopolTool::NbSamplesU()`
+    /// **Source:** `IntTools_TopolTool.hxx`:49 - `IntTools_TopolTool::NbSamplesU()`
     /// Computes the sample-points for the intersections algorithms
     pub fn nb_samples_u(&mut self) -> i32 {
         crate::check_result(unsafe {
@@ -4557,7 +4590,7 @@ impl TopolTool {
         })
     }
 
-    /// **Source:** `IntTools_TopolTool.hxx`:56 - `IntTools_TopolTool::NbSamplesV()`
+    /// **Source:** `IntTools_TopolTool.hxx`:52 - `IntTools_TopolTool::NbSamplesV()`
     /// Computes the sample-points for the intersections algorithms
     pub fn nb_samples_v(&mut self) -> i32 {
         crate::check_result(unsafe {
@@ -4565,7 +4598,7 @@ impl TopolTool {
         })
     }
 
-    /// **Source:** `IntTools_TopolTool.hxx`:59 - `IntTools_TopolTool::NbSamples()`
+    /// **Source:** `IntTools_TopolTool.hxx`:55 - `IntTools_TopolTool::NbSamples()`
     /// Computes the sample-points for the intersections algorithms
     pub fn nb_samples(&mut self) -> i32 {
         crate::check_result(unsafe {
@@ -4573,7 +4606,7 @@ impl TopolTool {
         })
     }
 
-    /// **Source:** `IntTools_TopolTool.hxx`:65 - `IntTools_TopolTool::SamplePoint()`
+    /// **Source:** `IntTools_TopolTool.hxx`:61 - `IntTools_TopolTool::SamplePoint()`
     /// Returns a 2d point from surface myS
     /// and a corresponded 3d point
     /// for given index.
@@ -4594,7 +4627,7 @@ impl TopolTool {
         })
     }
 
-    /// **Source:** `IntTools_TopolTool.hxx`:75 - `IntTools_TopolTool::SamplePnts()`
+    /// **Source:** `IntTools_TopolTool.hxx`:69 - `IntTools_TopolTool::SamplePnts()`
     /// compute the sample-points for the intersections algorithms
     /// by adaptive algorithm for BSpline surfaces. For other surfaces algorithm
     /// is the same as in method ComputeSamplePoints(), but only fill arrays of U
@@ -4612,8 +4645,8 @@ impl TopolTool {
         })
     }
 
-    /// **Source:** `IntTools_TopolTool.hxx`:79 - `IntTools_TopolTool::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `IntTools_TopolTool.hxx`:73 - `IntTools_TopolTool::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKBO::IntTools_TopolTool_dynamic_type(
                 self as *const Self,
@@ -4621,7 +4654,7 @@ impl TopolTool {
         }
     }
 
-    /// **Source:** `IntTools_TopolTool.hxx`:79 - `IntTools_TopolTool::get_type_name()`
+    /// **Source:** `IntTools_TopolTool.hxx`:73 - `IntTools_TopolTool::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -4632,8 +4665,8 @@ impl TopolTool {
         .into_owned()
     }
 
-    /// **Source:** `IntTools_TopolTool.hxx`:79 - `IntTools_TopolTool::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    /// **Source:** `IntTools_TopolTool.hxx`:73 - `IntTools_TopolTool::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKBO::IntTools_TopolTool_get_type_descriptor()))
         }
@@ -4684,7 +4717,7 @@ impl TopolTool {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleIntToolsTopolTool> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_IntTools_TopolTool> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKBO::IntTools_TopolTool_to_handle(obj.into_raw()),
@@ -4692,22 +4725,22 @@ impl TopolTool {
         }
     }
 
-    /// Inherited: **Source:** `Adaptor3d_TopolTool.hxx`:50 - `Adaptor3d_TopolTool::Init()`
+    /// Inherited: **Source:** `Adaptor3d_TopolTool.hxx`:48 - `Adaptor3d_TopolTool::Init()`
     pub fn init(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBO::IntTools_TopolTool_inherited_Init(self as *mut Self)
         })
     }
 
-    /// Inherited: **Source:** `Adaptor3d_TopolTool.hxx`:52 - `Adaptor3d_TopolTool::More()`
+    /// Inherited: **Source:** `Adaptor3d_TopolTool.hxx`:50 - `Adaptor3d_TopolTool::More()`
     pub fn more(&mut self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::IntTools_TopolTool_inherited_More(self as *mut Self)
         })
     }
 
-    /// Inherited: **Source:** `Adaptor3d_TopolTool.hxx`:54 - `Adaptor3d_TopolTool::Value()`
-    pub fn value(&mut self) -> crate::OwnedPtr<crate::ffi_types::HandleAdaptor2dCurve2d> {
+    /// Inherited: **Source:** `Adaptor3d_TopolTool.hxx`:52 - `Adaptor3d_TopolTool::Value()`
+    pub fn value(&mut self) -> crate::OwnedPtr<crate::ffi_types::Handle_Adaptor2d_Curve2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKBO::IntTools_TopolTool_inherited_Value(self as *mut Self),
@@ -4715,14 +4748,14 @@ impl TopolTool {
         }
     }
 
-    /// Inherited: **Source:** `Adaptor3d_TopolTool.hxx`:56 - `Adaptor3d_TopolTool::Next()`
+    /// Inherited: **Source:** `Adaptor3d_TopolTool.hxx`:54 - `Adaptor3d_TopolTool::Next()`
     pub fn next(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBO::IntTools_TopolTool_inherited_Next(self as *mut Self)
         })
     }
 
-    /// Inherited: **Source:** `Adaptor3d_TopolTool.hxx`:58 - `Adaptor3d_TopolTool::InitVertexIterator()`
+    /// Inherited: **Source:** `Adaptor3d_TopolTool.hxx`:56 - `Adaptor3d_TopolTool::InitVertexIterator()`
     pub fn init_vertex_iterator(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBO::IntTools_TopolTool_inherited_InitVertexIterator(
@@ -4731,15 +4764,15 @@ impl TopolTool {
         })
     }
 
-    /// Inherited: **Source:** `Adaptor3d_TopolTool.hxx`:60 - `Adaptor3d_TopolTool::MoreVertex()`
+    /// Inherited: **Source:** `Adaptor3d_TopolTool.hxx`:58 - `Adaptor3d_TopolTool::MoreVertex()`
     pub fn more_vertex(&mut self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::IntTools_TopolTool_inherited_MoreVertex(self as *mut Self)
         })
     }
 
-    /// Inherited: **Source:** `Adaptor3d_TopolTool.hxx`:62 - `Adaptor3d_TopolTool::Vertex()`
-    pub fn vertex(&mut self) -> crate::OwnedPtr<crate::ffi_types::HandleAdaptor3dHVertex> {
+    /// Inherited: **Source:** `Adaptor3d_TopolTool.hxx`:60 - `Adaptor3d_TopolTool::Vertex()`
+    pub fn vertex(&mut self) -> crate::OwnedPtr<crate::ffi_types::Handle_Adaptor3d_HVertex> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKBO::IntTools_TopolTool_inherited_Vertex(self as *mut Self),
@@ -4747,14 +4780,14 @@ impl TopolTool {
         }
     }
 
-    /// Inherited: **Source:** `Adaptor3d_TopolTool.hxx`:64 - `Adaptor3d_TopolTool::NextVertex()`
+    /// Inherited: **Source:** `Adaptor3d_TopolTool.hxx`:62 - `Adaptor3d_TopolTool::NextVertex()`
     pub fn next_vertex(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBO::IntTools_TopolTool_inherited_NextVertex(self as *mut Self)
         })
     }
 
-    /// Inherited: **Source:** `Adaptor3d_TopolTool.hxx`:66 - `Adaptor3d_TopolTool::Classify()`
+    /// Inherited: **Source:** `Adaptor3d_TopolTool.hxx`:64 - `Adaptor3d_TopolTool::Classify()`
     pub fn classify(
         &mut self,
         P: &crate::gp::Pnt2d,
@@ -4772,7 +4805,7 @@ impl TopolTool {
         .unwrap()
     }
 
-    /// Inherited: **Source:** `Adaptor3d_TopolTool.hxx`:71 - `Adaptor3d_TopolTool::IsThePointOn()`
+    /// Inherited: **Source:** `Adaptor3d_TopolTool.hxx`:68 - `Adaptor3d_TopolTool::IsThePointOn()`
     pub fn is_the_point_on(
         &mut self,
         P: &crate::gp::Pnt2d,
@@ -4789,10 +4822,10 @@ impl TopolTool {
         })
     }
 
-    /// Inherited: **Source:** `Adaptor3d_TopolTool.hxx`:81 - `Adaptor3d_TopolTool::Orientation()`
+    /// Inherited: **Source:** `Adaptor3d_TopolTool.hxx`:77 - `Adaptor3d_TopolTool::Orientation()`
     pub fn orientation(
         &mut self,
-        C: &crate::ffi_types::HandleAdaptor2dCurve2d,
+        C: &crate::ffi_types::Handle_Adaptor2d_Curve2d,
     ) -> crate::top_abs::Orientation {
         crate::top_abs::Orientation::try_from(crate::check_result(unsafe {
             crate::ffi_extern_TKBO::IntTools_TopolTool_inherited_Orientation(self as *mut Self, C)
@@ -4800,11 +4833,11 @@ impl TopolTool {
         .unwrap()
     }
 
-    /// Inherited: **Source:** `Adaptor3d_TopolTool.hxx`:92 - `Adaptor3d_TopolTool::Identical()`
+    /// Inherited: **Source:** `Adaptor3d_TopolTool.hxx`:88 - `Adaptor3d_TopolTool::Identical()`
     pub fn identical(
         &mut self,
-        V1: &crate::ffi_types::HandleAdaptor3dHVertex,
-        V2: &crate::ffi_types::HandleAdaptor3dHVertex,
+        V1: &crate::ffi_types::Handle_Adaptor3d_HVertex,
+        V2: &crate::ffi_types::Handle_Adaptor3d_HVertex,
     ) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::IntTools_TopolTool_inherited_Identical(
@@ -4815,24 +4848,24 @@ impl TopolTool {
         })
     }
 
-    /// Inherited: **Source:** `Adaptor3d_TopolTool.hxx`:97 - `Adaptor3d_TopolTool::Has3d()`
+    /// Inherited: **Source:** `Adaptor3d_TopolTool.hxx`:93 - `Adaptor3d_TopolTool::Has3d()`
     pub fn has3d(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::IntTools_TopolTool_inherited_Has3d(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `Adaptor3d_TopolTool.hxx`:100 - `Adaptor3d_TopolTool::Tol3d()`
-    pub fn tol3d(&self, C: &crate::ffi_types::HandleAdaptor2dCurve2d) -> f64 {
+    /// Inherited: **Source:** `Adaptor3d_TopolTool.hxx`:96 - `Adaptor3d_TopolTool::Tol3d()`
+    pub fn tol3d(&self, C: &crate::ffi_types::Handle_Adaptor2d_Curve2d) -> f64 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::IntTools_TopolTool_inherited_Tol3d(self as *const Self, C)
         })
     }
 
-    /// Inherited: **Source:** `Adaptor3d_TopolTool.hxx`:106 - `Adaptor3d_TopolTool::Pnt()`
+    /// Inherited: **Source:** `Adaptor3d_TopolTool.hxx`:102 - `Adaptor3d_TopolTool::Pnt()`
     pub fn pnt(
         &self,
-        V: &crate::ffi_types::HandleAdaptor3dHVertex,
+        V: &crate::ffi_types::Handle_Adaptor3d_HVertex,
     ) -> crate::OwnedPtr<crate::gp::Pnt> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -4841,8 +4874,8 @@ impl TopolTool {
         }
     }
 
-    /// Inherited: **Source:** `Adaptor3d_TopolTool.hxx`:121 - `Adaptor3d_TopolTool::UParameters()`
-    pub fn u_parameters(&self, theArray: &mut crate::ffi_types::TColStd_Array1OfReal) {
+    /// Inherited: **Source:** `Adaptor3d_TopolTool.hxx`:117 - `Adaptor3d_TopolTool::UParameters()`
+    pub fn u_parameters(&self, theArray: &mut crate::ffi_types::NCollection_Array1_double) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBO::IntTools_TopolTool_inherited_UParameters(
                 self as *const Self,
@@ -4851,8 +4884,8 @@ impl TopolTool {
         })
     }
 
-    /// Inherited: **Source:** `Adaptor3d_TopolTool.hxx`:125 - `Adaptor3d_TopolTool::VParameters()`
-    pub fn v_parameters(&self, theArray: &mut crate::ffi_types::TColStd_Array1OfReal) {
+    /// Inherited: **Source:** `Adaptor3d_TopolTool.hxx`:121 - `Adaptor3d_TopolTool::VParameters()`
+    pub fn v_parameters(&self, theArray: &mut crate::ffi_types::NCollection_Array1_double) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBO::IntTools_TopolTool_inherited_VParameters(
                 self as *const Self,
@@ -4861,14 +4894,14 @@ impl TopolTool {
         })
     }
 
-    /// Inherited: **Source:** `Adaptor3d_TopolTool.hxx`:131 - `Adaptor3d_TopolTool::DomainIsInfinite()`
+    /// Inherited: **Source:** `Adaptor3d_TopolTool.hxx`:125 - `Adaptor3d_TopolTool::DomainIsInfinite()`
     pub fn domain_is_infinite(&mut self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::IntTools_TopolTool_inherited_DomainIsInfinite(self as *mut Self)
         })
     }
 
-    /// Inherited: **Source:** `Adaptor3d_TopolTool.hxx`:150 - `Adaptor3d_TopolTool::BSplSamplePnts()`
+    /// Inherited: **Source:** `Adaptor3d_TopolTool.hxx`:144 - `Adaptor3d_TopolTool::BSplSamplePnts()`
     pub fn b_spl_sample_pnts(&mut self, theDefl: f64, theNUmin: i32, theNVmin: i32) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBO::IntTools_TopolTool_inherited_BSplSamplePnts(
@@ -4880,7 +4913,7 @@ impl TopolTool {
         })
     }
 
-    /// Inherited: **Source:** `Adaptor3d_TopolTool.hxx`:155 - `Adaptor3d_TopolTool::IsUniformSampling()`
+    /// Inherited: **Source:** `Adaptor3d_TopolTool.hxx`:149 - `Adaptor3d_TopolTool::IsUniformSampling()`
     pub fn is_uniform_sampling(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::IntTools_TopolTool_inherited_IsUniformSampling(
@@ -4889,8 +4922,8 @@ impl TopolTool {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::IntTools_TopolTool_inherited_IsInstance(
                 self as *const Self,
@@ -4899,8 +4932,8 @@ impl TopolTool {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::IntTools_TopolTool_inherited_IsKind(
                 self as *const Self,
@@ -4909,7 +4942,7 @@ impl TopolTool {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -4923,14 +4956,14 @@ impl TopolTool {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::IntTools_TopolTool_inherited_GetRefCount(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBO::IntTools_TopolTool_inherited_IncrementRefCounter(
@@ -4939,7 +4972,7 @@ impl TopolTool {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::IntTools_TopolTool_inherited_DecrementRefCounter(
@@ -4948,7 +4981,7 @@ impl TopolTool {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBO::IntTools_TopolTool_inherited_Delete(self as *const Self)
@@ -4956,32 +4989,32 @@ impl TopolTool {
     }
 }
 
-pub use crate::ffi_types::HandleIntToolsTopolTool;
+pub use crate::ffi_types::Handle_IntTools_TopolTool;
 
-unsafe impl crate::CppDeletable for HandleIntToolsTopolTool {
+unsafe impl crate::CppDeletable for Handle_IntTools_TopolTool {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKBO::HandleIntToolsTopolTool_destructor(ptr);
+            crate::ffi_extern_TKBO::Handle_IntTools_TopolTool_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleIntToolsTopolTool {
+unsafe impl crate::CppCopyable for Handle_IntTools_TopolTool {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        unsafe { crate::check_result(crate::ffi_extern_TKBO::HandleIntToolsTopolTool_clone(ptr)) }
+        unsafe { crate::check_result(crate::ffi_extern_TKBO::Handle_IntTools_TopolTool_clone(ptr)) }
     }
 }
 
-impl HandleIntToolsTopolTool {
+impl Handle_IntTools_TopolTool {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
-        unsafe { crate::ffi_extern_TKBO::HandleIntToolsTopolTool_is_null(self as *const Self) }
+        unsafe { crate::ffi_extern_TKBO::Handle_IntTools_TopolTool_is_null(self as *const Self) }
     }
 
     /// Dereference this Handle to access the underlying IntTools_TopolTool
     pub fn get(&self) -> &crate::ffi_types::IntTools_TopolTool {
         unsafe {
-            &*crate::check_result(crate::ffi_extern_TKBO::HandleIntToolsTopolTool_get(
+            &*crate::check_result(crate::ffi_extern_TKBO::Handle_IntTools_TopolTool_get(
                 self as *const Self,
             ))
         }
@@ -4990,7 +5023,7 @@ impl HandleIntToolsTopolTool {
     /// Dereference this Handle to mutably access the underlying IntTools_TopolTool
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::IntTools_TopolTool {
         unsafe {
-            &mut *crate::check_result(crate::ffi_extern_TKBO::HandleIntToolsTopolTool_get_mut(
+            &mut *crate::check_result(crate::ffi_extern_TKBO::Handle_IntTools_TopolTool_get_mut(
                 self as *mut Self,
             ))
         }
@@ -4999,10 +5032,10 @@ impl HandleIntToolsTopolTool {
     /// Upcast Handle<IntTools_TopolTool> to Handle<Adaptor3d_TopolTool>
     pub fn to_handle_topol_tool(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleAdaptor3dTopolTool> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Adaptor3d_TopolTool> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKBO::HandleIntToolsTopolTool_to_HandleAdaptor3dTopolTool(
+                crate::ffi_extern_TKBO::Handle_IntTools_TopolTool_to_Handle_Adaptor3d_TopolTool(
                     self as *const Self,
                 ),
             ))
@@ -5012,10 +5045,10 @@ impl HandleIntToolsTopolTool {
     /// Upcast Handle<IntTools_TopolTool> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKBO::HandleIntToolsTopolTool_to_HandleStandardTransient(
+                crate::ffi_extern_TKBO::Handle_IntTools_TopolTool_to_Handle_Standard_Transient(
                     self as *const Self,
                 ),
             ))
@@ -5027,7 +5060,7 @@ impl HandleIntToolsTopolTool {
 // From IntTools_WLineTool.hxx
 // ========================
 
-/// **Source:** `IntTools_WLineTool.hxx`:26 - `IntTools_WLineTool`
+/// **Source:** `IntTools_WLineTool.hxx`:27 - `IntTools_WLineTool`
 /// IntTools_WLineTool provides set of static methods related to walking lines.
 pub use crate::ffi_types::IntTools_WLineTool as WLineTool;
 
@@ -5050,11 +5083,11 @@ impl WLineTool {
         }
     }
 
-    /// **Source:** `IntTools_WLineTool.hxx`:31 - `IntTools_WLineTool::NotUseSurfacesForApprox()`
+    /// **Source:** `IntTools_WLineTool.hxx`:32 - `IntTools_WLineTool::NotUseSurfacesForApprox()`
     pub fn not_use_surfaces_for_approx(
         aF1: &crate::topo_ds::Face,
         aF2: &crate::topo_ds::Face,
-        WL: &crate::ffi_types::HandleIntPatchWLine,
+        WL: &crate::ffi_types::Handle_IntPatch_WLine,
         ifprm: i32,
         ilprm: i32,
     ) -> bool {
@@ -5064,46 +5097,10 @@ impl WLineTool {
             )
         })
     }
-
-    /// **Source:** `IntTools_WLineTool.hxx`:37 - `IntTools_WLineTool::DecompositionOfWLine()`
-    pub fn decomposition_of_w_line(
-        theWLine: &crate::ffi_types::HandleIntPatchWLine,
-        theSurface1: &crate::ffi_types::HandleGeomAdaptorSurface,
-        theSurface2: &crate::ffi_types::HandleGeomAdaptorSurface,
-        theFace1: &crate::topo_ds::Face,
-        theFace2: &crate::topo_ds::Face,
-        theLConstructor: &crate::geom_int::LineConstructor,
-        theAvoidLConstructor: bool,
-        theTol: f64,
-        theNewLines: &mut crate::ffi_types::IntPatch_SequenceOfLine,
-        arg9: &crate::ffi_types::HandleIntToolsContext,
-    ) -> bool {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKBO::IntTools_WLineTool_decomposition_of_w_line(
-                theWLine,
-                theSurface1,
-                theSurface2,
-                theFace1,
-                theFace2,
-                theLConstructor,
-                theAvoidLConstructor,
-                theTol,
-                theNewLines,
-                arg9,
-            )
-        })
-    }
 }
 
-// ========================
-// Additional type re-exports
-// ========================
-
-pub use crate::ffi_types::{
-    IntTools_ListOfCurveRangeSample as ListOfCurveRangeSample,
-    IntTools_ListOfSurfaceRangeSample as ListOfSurfaceRangeSample,
-    IntTools_SequenceOfCommonPrts as SequenceOfCommonPrts,
-    IntTools_SequenceOfCurves as SequenceOfCurves,
-    IntTools_SequenceOfPntOn2Faces as SequenceOfPntOn2Faces,
-    IntTools_SequenceOfRanges as SequenceOfRanges, IntTools_SequenceOfRoots as SequenceOfRoots,
-};
+// ── Skipped symbols for WLineTool (1 total) ──
+// SKIPPED: **Source:** `IntTools_WLineTool.hxx`:38 - `IntTools_WLineTool::DecompositionOfWLine`
+//   Reason: has unbindable types: param 'theNewLines': unresolved template type (NCollection_Sequence<occ::handle<IntPatch_Line>>&)
+//   // pub fn decomposition_of_w_line(theWLine: &HandleWLine, theSurface1: &HandleSurface, theSurface2: &HandleSurface, theFace1: &Face, theFace2: &Face, theLConstructor: &LineConstructor, theAvoidLConstructor: bool, theTol: f64, theNewLines: /* NCollection_Sequence<occ::handle<IntPatch_Line>>& */, arg9: &HandleContext) -> bool;
+//

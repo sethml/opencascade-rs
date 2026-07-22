@@ -7,7 +7,7 @@ use crate::{
 };
 use glam::{dvec3, DVec3};
 use opencascade_sys::{
-    b_rep_builder_api, b_rep_offset_api, gp, shape_analysis, top_loc, top_tools,
+    b_rep_builder_api, b_rep_offset_api, gp, n_collection, shape_analysis, top_loc,
     topo_ds,
 };
 
@@ -82,33 +82,32 @@ impl Wire {
         unordered_edges: impl IntoIterator<Item = T>,
         edge_connection: EdgeConnection,
     ) -> Self {
-        let mut edges_seq = top_tools::HSequenceOfShape::new();
+        let mut edges_seq = n_collection::HSequence_TopoDS_Shape::new();
 
         for edge in unordered_edges {
-            edges_seq.change_sequence().append(edge.as_ref().inner.as_shape());
+            edges_seq.append(edge.as_ref().inner.as_shape());
         }
 
-        let mut edges_handle = top_tools::HSequenceOfShape::to_handle(edges_seq);
-        let wires_seq = top_tools::HSequenceOfShape::new();
-        let mut wires_handle = top_tools::HSequenceOfShape::to_handle(wires_seq);
+        let edges_handle = n_collection::HSequence_TopoDS_Shape::to_handle(edges_seq);
 
         let (tolerance, shared) = match edge_connection {
             EdgeConnection::Exact => (0.0, true),
             EdgeConnection::Fuzzy { tolerance } => (tolerance, false),
         };
 
-        shape_analysis::FreeBounds::connect_edges_to_wires(
-            &mut edges_handle, tolerance, shared, &mut wires_handle,
+        // OCCT 8.0: connect_edges_to_wires returns the resulting wire sequence
+        // (previously an out-parameter).
+        let wires_handle = shape_analysis::FreeBounds::connect_edges_to_wires(
+            &edges_handle, tolerance, shared,
         );
 
         let mut make_wire = b_rep_builder_api::MakeWire::new();
 
         let wires_obj = wires_handle.get();
-        let wire_seq = wires_obj.sequence();
-        let wire_len = wire_seq.size();
+        let wire_len = wires_obj.size();
 
         for index in 1..=wire_len {
-            let wire_shape = wire_seq.value(index);
+            let wire_shape = wires_obj.value(index);
             let wire = topo_ds::wire(wire_shape);
 
             make_wire.add_wire(wire);

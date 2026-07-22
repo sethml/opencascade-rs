@@ -4,9 +4,9 @@
 #include "occt_preamble.hxx"
 
 #include <Adaptor2d_Curve2d.hxx>
-#include <Adaptor3d_Curve.hxx>
 #include <Adaptor3d_CurveOnSurface.hxx>
 #include <Adaptor3d_HVertex.hxx>
+#include <Adaptor3d_Surface.hxx>
 #include <Adaptor3d_TopolTool.hxx>
 #include <AdvApp2Var_Context.hxx>
 #include <AdvApp2Var_Criterion.hxx>
@@ -15,20 +15,16 @@
 #include <AdvApp2Var_Patch.hxx>
 #include <AppBlend_Approx.hxx>
 #include <AppParCurves_Constraint.hxx>
-#include <AppParCurves_HArray1OfConstraintCouple.hxx>
 #include <AppParCurves_MultiBSpCurve.hxx>
-#include <AppParCurves_MultiCurve.hxx>
 #include <ApproxInt_KnotTools.hxx>
 #include <ApproxInt_SvSurfaces.hxx>
 #include <Approx_ParametrizationType.hxx>
 #include <Approx_Status.hxx>
 #include <Approx_SweepFunction.hxx>
-#include <BRepClass3d_MapOfInter.hxx>
 #include <BRepFill_CurveConstraint.hxx>
+#include <BVH_Types.hxx>
 #include <Bnd_BoundSortBox.hxx>
-#include <Bnd_Box.hxx>
 #include <Bnd_Box2d.hxx>
-#include <Bnd_HArray1OfBox.hxx>
 #include <Convert_ParameterisationType.hxx>
 #include <Extrema_ExtAlgo.hxx>
 #include <Extrema_ExtCC.hxx>
@@ -39,7 +35,6 @@
 #include <Extrema_ExtPC2d.hxx>
 #include <Extrema_ExtPS.hxx>
 #include <Extrema_ExtSS.hxx>
-#include <Extrema_POnCurv2d.hxx>
 #include <FairCurve_AnalysisCode.hxx>
 #include <FairCurve_Batten.hxx>
 #include <FairCurve_BattenLaw.hxx>
@@ -125,18 +120,13 @@
 #include <Geom2dInt_Geom2dCurveTool.hxx>
 #include <Geom2dInt_IntConicCurveOfGInter.hxx>
 #include <Geom2dInt_MyImpParToolOfTheIntersectorOfTheIntConicCurveOfGInter.hxx>
-#include <Geom2dInt_PCLocFOfTheLocateExtPCOfTheProjPCurOfGInter.hxx>
-#include <Geom2dInt_TheCurveLocatorOfTheProjPCurOfGInter.hxx>
 #include <Geom2dInt_TheDistBetweenPCurvesOfTheIntPCurvePCurveOfGInter.hxx>
 #include <Geom2dInt_TheIntConicCurveOfGInter.hxx>
 #include <Geom2dInt_TheIntPCurvePCurveOfGInter.hxx>
 #include <Geom2dInt_TheIntersectorOfTheIntConicCurveOfGInter.hxx>
-#include <Geom2dInt_TheLocateExtPCOfTheProjPCurOfGInter.hxx>
 #include <Geom2dInt_ThePolygon2dOfTheIntPCurvePCurveOfGInter.hxx>
 #include <Geom2dInt_TheProjPCurOfGInter.hxx>
-#include <Geom2d_BSplineCurve.hxx>
 #include <Geom2d_BezierCurve.hxx>
-#include <Geom2d_Curve.hxx>
 #include <Geom2d_Point.hxx>
 #include <GeomAPI.hxx>
 #include <GeomAPI_ExtremaCurveCurve.hxx>
@@ -158,8 +148,6 @@
 #include <GeomFill_AppSurf.hxx>
 #include <GeomFill_AppSweep.hxx>
 #include <GeomFill_ApproxStyle.hxx>
-#include <GeomFill_Array1OfLocationLaw.hxx>
-#include <GeomFill_Array1OfSectionLaw.hxx>
 #include <GeomFill_BSplineCurves.hxx>
 #include <GeomFill_BezierCurves.hxx>
 #include <GeomFill_BoundWithSurf.hxx>
@@ -185,17 +173,16 @@
 #include <GeomFill_FunctionDraft.hxx>
 #include <GeomFill_FunctionGuide.hxx>
 #include <GeomFill_Generator.hxx>
+#include <GeomFill_Gordon.hxx>
 #include <GeomFill_GuideTrihedronAC.hxx>
 #include <GeomFill_GuideTrihedronPlan.hxx>
-#include <GeomFill_HArray1OfLocationLaw.hxx>
-#include <GeomFill_HArray1OfSectionLaw.hxx>
-#include <GeomFill_HSequenceOfAx2.hxx>
 #include <GeomFill_Line.hxx>
 #include <GeomFill_LocFunction.hxx>
 #include <GeomFill_LocationDraft.hxx>
 #include <GeomFill_LocationGuide.hxx>
 #include <GeomFill_LocationLaw.hxx>
 #include <GeomFill_NSections.hxx>
+#include <GeomFill_NetworkSurface.hxx>
 #include <GeomFill_Pipe.hxx>
 #include <GeomFill_PipeError.hxx>
 #include <GeomFill_PlanFunc.hxx>
@@ -205,8 +192,6 @@
 #include <GeomFill_SectionGenerator.hxx>
 #include <GeomFill_SectionLaw.hxx>
 #include <GeomFill_SectionPlacement.hxx>
-#include <GeomFill_SequenceOfAx2.hxx>
-#include <GeomFill_SequenceOfTrsf.hxx>
 #include <GeomFill_SimpleBound.hxx>
 #include <GeomFill_SnglrFunc.hxx>
 #include <GeomFill_Stretch.hxx>
@@ -248,36 +233,22 @@
 #include <GeomInt_TheMultiLineToolOfWLApprox.hxx>
 #include <GeomInt_ThePrmPrmSvSurfacesOfWLApprox.hxx>
 #include <GeomInt_TheZerImpFuncOfTheImpPrmSvSurfacesOfWLApprox.hxx>
-#include <GeomInt_VectorOfReal.hxx>
 #include <GeomInt_WLApprox.hxx>
 #include <GeomLProp_SLProps.hxx>
-#include <GeomPlate_Aij.hxx>
-#include <GeomPlate_Array1OfHCurve.hxx>
-#include <GeomPlate_Array1OfSequenceOfReal.hxx>
 #include <GeomPlate_BuildAveragePlane.hxx>
 #include <GeomPlate_BuildPlateSurface.hxx>
 #include <GeomPlate_CurveConstraint.hxx>
-#include <GeomPlate_HArray1OfHCurve.hxx>
-#include <GeomPlate_HArray1OfSequenceOfReal.hxx>
-#include <GeomPlate_HSequenceOfCurveConstraint.hxx>
-#include <GeomPlate_HSequenceOfPointConstraint.hxx>
 #include <GeomPlate_MakeApprox.hxx>
 #include <GeomPlate_PlateG0Criterion.hxx>
 #include <GeomPlate_PlateG1Criterion.hxx>
 #include <GeomPlate_PointConstraint.hxx>
-#include <GeomPlate_SequenceOfAij.hxx>
-#include <GeomPlate_SequenceOfCurveConstraint.hxx>
-#include <GeomPlate_SequenceOfPointConstraint.hxx>
 #include <GeomPlate_Surface.hxx>
-#include <Geom_BSplineCurve.hxx>
 #include <Geom_BSplineSurface.hxx>
 #include <Geom_BezierCurve.hxx>
 #include <Geom_BezierSurface.hxx>
-#include <Geom_Curve.hxx>
 #include <Geom_Geometry.hxx>
 #include <Geom_Line.hxx>
 #include <Geom_Plane.hxx>
-#include <Geom_Surface.hxx>
 #include <HatchGen_Domain.hxx>
 #include <HatchGen_ErrorStatus.hxx>
 #include <HatchGen_IntersectionPoint.hxx>
@@ -318,6 +289,7 @@
 #include <IntPatch_ALine.hxx>
 #include <IntPatch_ALineToWLine.hxx>
 #include <IntPatch_ArcFunction.hxx>
+#include <IntPatch_BVHTraversal.hxx>
 #include <IntPatch_CSFunction.hxx>
 #include <IntPatch_CurvIntSurf.hxx>
 #include <IntPatch_GLine.hxx>
@@ -330,19 +302,17 @@
 #include <IntPatch_Intersection.hxx>
 #include <IntPatch_Line.hxx>
 #include <IntPatch_LineConstructor.hxx>
-#include <IntPatch_Point.hxx>
 #include <IntPatch_PointLine.hxx>
 #include <IntPatch_PolyArc.hxx>
 #include <IntPatch_PolyLine.hxx>
 #include <IntPatch_Polygo.hxx>
 #include <IntPatch_Polyhedron.hxx>
+#include <IntPatch_PolyhedronBVH.hxx>
 #include <IntPatch_PolyhedronTool.hxx>
 #include <IntPatch_PrmPrmIntersection.hxx>
 #include <IntPatch_PrmPrmIntersection_T3Bits.hxx>
 #include <IntPatch_RLine.hxx>
 #include <IntPatch_RstInt.hxx>
-#include <IntPatch_SequenceOfLine.hxx>
-#include <IntPatch_SequenceOfPoint.hxx>
 #include <IntPatch_SpecPntType.hxx>
 #include <IntPatch_SpecialPoints.hxx>
 #include <IntPatch_TheIWLineOfTheIWalking.hxx>
@@ -360,10 +330,8 @@
 #include <IntPolyh_ArrayOfSectionLines.hxx>
 #include <IntPolyh_ArrayOfTangentZones.hxx>
 #include <IntPolyh_ArrayOfTriangles.hxx>
-#include <IntPolyh_Couple.hxx>
 #include <IntPolyh_Edge.hxx>
 #include <IntPolyh_Intersection.hxx>
-#include <IntPolyh_ListOfCouples.hxx>
 #include <IntPolyh_MaillageAffinage.hxx>
 #include <IntPolyh_Point.hxx>
 #include <IntPolyh_SectionLine.hxx>
@@ -372,27 +340,19 @@
 #include <IntPolyh_Triangle.hxx>
 #include <IntRes2d_Domain.hxx>
 #include <IntRes2d_Intersection.hxx>
-#include <IntRes2d_IntersectionPoint.hxx>
 #include <IntRes2d_IntersectionSegment.hxx>
 #include <IntRes2d_Position.hxx>
-#include <IntRes2d_SequenceOfIntersectionPoint.hxx>
 #include <IntRes2d_Situation.hxx>
 #include <IntRes2d_Transition.hxx>
 #include <IntRes2d_TypeTrans.hxx>
 #include <IntStart_SITopolTool.hxx>
 #include <IntSurf.hxx>
 #include <IntSurf_Couple.hxx>
-#include <IntSurf_InteriorPoint.hxx>
 #include <IntSurf_InteriorPointTool.hxx>
 #include <IntSurf_LineOn2S.hxx>
-#include <IntSurf_ListOfPntOn2S.hxx>
-#include <IntSurf_PathPoint.hxx>
 #include <IntSurf_PathPointTool.hxx>
-#include <IntSurf_PntOn2S.hxx>
 #include <IntSurf_Quadric.hxx>
 #include <IntSurf_QuadricTool.hxx>
-#include <IntSurf_SequenceOfInteriorPoint.hxx>
-#include <IntSurf_SequenceOfPathPoint.hxx>
 #include <IntSurf_Situation.hxx>
 #include <IntSurf_Transition.hxx>
 #include <IntSurf_TypeTrans.hxx>
@@ -402,7 +362,6 @@
 #include <IntWalk_TheInt2S.hxx>
 #include <IntWalk_VectorOfWalkingData.hxx>
 #include <Intf.hxx>
-#include <Intf_Array1OfLin.hxx>
 #include <Intf_Interference.hxx>
 #include <Intf_InterferencePolygon2d.hxx>
 #include <Intf_PIType.hxx>
@@ -420,7 +379,6 @@
 #include <Law_Function.hxx>
 #include <Law_Interpol.hxx>
 #include <Law_Interpolate.hxx>
-#include <Law_Laws.hxx>
 #include <Law_Linear.hxx>
 #include <Law_S.hxx>
 #include <LocalAnalysis.hxx>
@@ -438,69 +396,36 @@
 #include <NLPlate_HPG2Constraint.hxx>
 #include <NLPlate_HPG3Constraint.hxx>
 #include <NLPlate_NLPlate.hxx>
-#include <Plate_Array1OfPinpointConstraint.hxx>
 #include <Plate_D1.hxx>
 #include <Plate_D2.hxx>
 #include <Plate_D3.hxx>
 #include <Plate_FreeGtoCConstraint.hxx>
 #include <Plate_GlobalTranslationConstraint.hxx>
 #include <Plate_GtoCConstraint.hxx>
-#include <Plate_HArray1OfPinpointConstraint.hxx>
 #include <Plate_LineConstraint.hxx>
 #include <Plate_LinearScalarConstraint.hxx>
 #include <Plate_LinearXYZConstraint.hxx>
-#include <Plate_PinpointConstraint.hxx>
 #include <Plate_PlaneConstraint.hxx>
 #include <Plate_Plate.hxx>
 #include <Plate_SampledCurveConstraint.hxx>
-#include <Plate_SequenceOfPinpointConstraint.hxx>
-#include <Standard_DomainError.hxx>
-#include <Standard_Failure.hxx>
+#include <Select3D_BndBox3d.hxx>
 #include <Standard_Handle.hxx>
 #include <Standard_OStream.hxx>
-#include <Standard_SStream.hxx>
 #include <Standard_Type.hxx>
-#include <TColGeom2d_HArray1OfCurve.hxx>
-#include <TColGeom_SequenceOfCurve.hxx>
-#include <TColStd_Array1OfInteger.hxx>
-#include <TColStd_Array1OfReal.hxx>
-#include <TColStd_Array2OfReal.hxx>
-#include <TColStd_HArray1OfBoolean.hxx>
-#include <TColStd_HArray1OfInteger.hxx>
-#include <TColStd_HArray1OfReal.hxx>
-#include <TColStd_ListOfReal.hxx>
-#include <TColStd_SequenceOfReal.hxx>
-#include <TColgp_Array1OfPnt.hxx>
-#include <TColgp_Array1OfPnt2d.hxx>
-#include <TColgp_Array1OfVec.hxx>
-#include <TColgp_Array1OfVec2d.hxx>
-#include <TColgp_Array1OfXYZ.hxx>
-#include <TColgp_Array2OfPnt.hxx>
-#include <TColgp_Array2OfXYZ.hxx>
-#include <TColgp_HArray1OfPnt.hxx>
-#include <TColgp_HArray1OfPnt2d.hxx>
-#include <TColgp_HArray2OfXYZ.hxx>
-#include <TColgp_SequenceOfVec.hxx>
-#include <TColgp_SequenceOfXY.hxx>
-#include <TColgp_SequenceOfXYZ.hxx>
 #include <TopAbs_Orientation.hxx>
-#include <TopAbs_State.hxx>
 #include <TopTrans_CurveTransition.hxx>
 #include <TopTrans_SurfaceTransition.hxx>
 #include <gp_Ax1.hxx>
 #include <gp_Ax22d.hxx>
-#include <gp_Circ.hxx>
 #include <gp_Circ2d.hxx>
 #include <gp_Cone.hxx>
 #include <gp_Cylinder.hxx>
-#include <gp_Dir.hxx>
 #include <gp_Dir2d.hxx>
 #include <gp_Elips.hxx>
 #include <gp_Elips2d.hxx>
 #include <gp_GTrsf2d.hxx>
 #include <gp_Hypr.hxx>
 #include <gp_Hypr2d.hxx>
-#include <gp_Lin.hxx>
 #include <gp_Lin2d.hxx>
 #include <gp_Mat.hxx>
 #include <gp_Parab.hxx>
@@ -508,10 +433,6 @@
 #include <gp_Pln.hxx>
 #include <gp_Sphere.hxx>
 #include <gp_Torus.hxx>
-#include <gp_Trsf.hxx>
-#include <gp_Vec.hxx>
-#include <gp_Vec2d.hxx>
-#include <gp_XY.hxx>
 #include <math_FunctionSetRoot.hxx>
 #include <math_IntegerVector.hxx>
 #include <math_Matrix.hxx>
@@ -520,575 +441,504 @@
 #include <math_Vector.hxx>
 
 // Handle type aliases
-typedef opencascade::handle<Adaptor2d_Curve2d> HandleAdaptor2dCurve2d;
-typedef opencascade::handle<Adaptor3d_Curve> HandleAdaptor3dCurve;
-typedef opencascade::handle<Adaptor3d_HVertex> HandleAdaptor3dHVertex;
-typedef opencascade::handle<Adaptor3d_Surface> HandleAdaptor3dSurface;
-typedef opencascade::handle<Adaptor3d_TopolTool> HandleAdaptor3dTopolTool;
-typedef opencascade::handle<AppParCurves_HArray1OfConstraintCouple> HandleAppParCurvesHArray1OfConstraintCouple;
-typedef opencascade::handle<Approx_SweepFunction> HandleApproxSweepFunction;
-typedef opencascade::handle<BRepFill_CurveConstraint> HandleBRepFillCurveConstraint;
-typedef opencascade::handle<Bnd_HArray1OfBox> HandleBndHArray1OfBox;
-typedef opencascade::handle<GccAna_NoSolution> HandleGccAnaNoSolution;
-typedef opencascade::handle<GccEnt_BadQualifier> HandleGccEntBadQualifier;
-typedef opencascade::handle<GccInt_BCirc> HandleGccIntBCirc;
-typedef opencascade::handle<GccInt_BElips> HandleGccIntBElips;
-typedef opencascade::handle<GccInt_BHyper> HandleGccIntBHyper;
-typedef opencascade::handle<GccInt_BLine> HandleGccIntBLine;
-typedef opencascade::handle<GccInt_BParab> HandleGccIntBParab;
-typedef opencascade::handle<GccInt_BPoint> HandleGccIntBPoint;
-typedef opencascade::handle<GccInt_Bisec> HandleGccIntBisec;
-typedef opencascade::handle<Geom2dGcc_IsParallel> HandleGeom2dGccIsParallel;
-typedef opencascade::handle<Geom2d_BSplineCurve> HandleGeom2dBSplineCurve;
-typedef opencascade::handle<Geom2d_BezierCurve> HandleGeom2dBezierCurve;
-typedef opencascade::handle<Geom2d_Curve> HandleGeom2dCurve;
-typedef opencascade::handle<Geom2d_Point> HandleGeom2dPoint;
-typedef opencascade::handle<GeomAdaptor_Surface> HandleGeomAdaptorSurface;
-typedef opencascade::handle<GeomFill_BoundWithSurf> HandleGeomFillBoundWithSurf;
-typedef opencascade::handle<GeomFill_Boundary> HandleGeomFillBoundary;
-typedef opencascade::handle<GeomFill_CircularBlendFunc> HandleGeomFillCircularBlendFunc;
-typedef opencascade::handle<GeomFill_ConstantBiNormal> HandleGeomFillConstantBiNormal;
-typedef opencascade::handle<GeomFill_CoonsAlgPatch> HandleGeomFillCoonsAlgPatch;
-typedef opencascade::handle<GeomFill_CorrectedFrenet> HandleGeomFillCorrectedFrenet;
-typedef opencascade::handle<GeomFill_CurveAndTrihedron> HandleGeomFillCurveAndTrihedron;
-typedef opencascade::handle<GeomFill_Darboux> HandleGeomFillDarboux;
-typedef opencascade::handle<GeomFill_DegeneratedBound> HandleGeomFillDegeneratedBound;
-typedef opencascade::handle<GeomFill_DiscreteTrihedron> HandleGeomFillDiscreteTrihedron;
-typedef opencascade::handle<GeomFill_DraftTrihedron> HandleGeomFillDraftTrihedron;
-typedef opencascade::handle<GeomFill_EvolvedSection> HandleGeomFillEvolvedSection;
-typedef opencascade::handle<GeomFill_Fixed> HandleGeomFillFixed;
-typedef opencascade::handle<GeomFill_Frenet> HandleGeomFillFrenet;
-typedef opencascade::handle<GeomFill_GuideTrihedronAC> HandleGeomFillGuideTrihedronAC;
-typedef opencascade::handle<GeomFill_GuideTrihedronPlan> HandleGeomFillGuideTrihedronPlan;
-typedef opencascade::handle<GeomFill_HArray1OfLocationLaw> HandleGeomFillHArray1OfLocationLaw;
-typedef opencascade::handle<GeomFill_HArray1OfSectionLaw> HandleGeomFillHArray1OfSectionLaw;
-typedef opencascade::handle<GeomFill_HSequenceOfAx2> HandleGeomFillHSequenceOfAx2;
-typedef opencascade::handle<GeomFill_Line> HandleGeomFillLine;
-typedef opencascade::handle<GeomFill_LocationDraft> HandleGeomFillLocationDraft;
-typedef opencascade::handle<GeomFill_LocationGuide> HandleGeomFillLocationGuide;
-typedef opencascade::handle<GeomFill_LocationLaw> HandleGeomFillLocationLaw;
-typedef opencascade::handle<GeomFill_NSections> HandleGeomFillNSections;
-typedef opencascade::handle<GeomFill_SectionLaw> HandleGeomFillSectionLaw;
-typedef opencascade::handle<GeomFill_SimpleBound> HandleGeomFillSimpleBound;
-typedef opencascade::handle<GeomFill_SnglrFunc> HandleGeomFillSnglrFunc;
-typedef opencascade::handle<GeomFill_SweepFunction> HandleGeomFillSweepFunction;
-typedef opencascade::handle<GeomFill_TgtField> HandleGeomFillTgtField;
-typedef opencascade::handle<GeomFill_TgtOnCoons> HandleGeomFillTgtOnCoons;
-typedef opencascade::handle<GeomFill_TrihedronLaw> HandleGeomFillTrihedronLaw;
-typedef opencascade::handle<GeomFill_TrihedronWithGuide> HandleGeomFillTrihedronWithGuide;
-typedef opencascade::handle<GeomFill_UniformSection> HandleGeomFillUniformSection;
-typedef opencascade::handle<GeomPlate_CurveConstraint> HandleGeomPlateCurveConstraint;
-typedef opencascade::handle<GeomPlate_HArray1OfHCurve> HandleGeomPlateHArray1OfHCurve;
-typedef opencascade::handle<GeomPlate_HArray1OfSequenceOfReal> HandleGeomPlateHArray1OfSequenceOfReal;
-typedef opencascade::handle<GeomPlate_HSequenceOfCurveConstraint> HandleGeomPlateHSequenceOfCurveConstraint;
-typedef opencascade::handle<GeomPlate_HSequenceOfPointConstraint> HandleGeomPlateHSequenceOfPointConstraint;
-typedef opencascade::handle<GeomPlate_PointConstraint> HandleGeomPlatePointConstraint;
-typedef opencascade::handle<GeomPlate_Surface> HandleGeomPlateSurface;
-typedef opencascade::handle<Geom_BSplineCurve> HandleGeomBSplineCurve;
-typedef opencascade::handle<Geom_BSplineSurface> HandleGeomBSplineSurface;
-typedef opencascade::handle<Geom_BezierCurve> HandleGeomBezierCurve;
-typedef opencascade::handle<Geom_BezierSurface> HandleGeomBezierSurface;
-typedef opencascade::handle<Geom_Curve> HandleGeomCurve;
-typedef opencascade::handle<Geom_Geometry> HandleGeomGeometry;
-typedef opencascade::handle<Geom_Line> HandleGeomLine;
-typedef opencascade::handle<Geom_Plane> HandleGeomPlane;
-typedef opencascade::handle<Geom_Surface> HandleGeomSurface;
-typedef opencascade::handle<IntPatch_ALine> HandleIntPatchALine;
-typedef opencascade::handle<IntPatch_GLine> HandleIntPatchGLine;
-typedef opencascade::handle<IntPatch_Line> HandleIntPatchLine;
-typedef opencascade::handle<IntPatch_PointLine> HandleIntPatchPointLine;
-typedef opencascade::handle<IntPatch_RLine> HandleIntPatchRLine;
-typedef opencascade::handle<IntPatch_TheIWLineOfTheIWalking> HandleIntPatchTheIWLineOfTheIWalking;
-typedef opencascade::handle<IntPatch_WLine> HandleIntPatchWLine;
-typedef opencascade::handle<IntStart_SITopolTool> HandleIntStartSITopolTool;
-typedef opencascade::handle<IntSurf_LineOn2S> HandleIntSurfLineOn2S;
-typedef opencascade::handle<Law_BSpFunc> HandleLawBSpFunc;
-typedef opencascade::handle<Law_BSpline> HandleLawBSpline;
-typedef opencascade::handle<Law_Composite> HandleLawComposite;
-typedef opencascade::handle<Law_Constant> HandleLawConstant;
-typedef opencascade::handle<Law_Function> HandleLawFunction;
-typedef opencascade::handle<Law_Interpol> HandleLawInterpol;
-typedef opencascade::handle<Law_Linear> HandleLawLinear;
-typedef opencascade::handle<Law_S> HandleLawS;
-typedef opencascade::handle<NCollection_BaseAllocator> HandleNCollectionBaseAllocator;
-typedef opencascade::handle<NLPlate_HGPPConstraint> HandleNLPlateHGPPConstraint;
-typedef opencascade::handle<NLPlate_HPG0Constraint> HandleNLPlateHPG0Constraint;
-typedef opencascade::handle<NLPlate_HPG0G1Constraint> HandleNLPlateHPG0G1Constraint;
-typedef opencascade::handle<NLPlate_HPG0G2Constraint> HandleNLPlateHPG0G2Constraint;
-typedef opencascade::handle<NLPlate_HPG0G3Constraint> HandleNLPlateHPG0G3Constraint;
-typedef opencascade::handle<NLPlate_HPG1Constraint> HandleNLPlateHPG1Constraint;
-typedef opencascade::handle<NLPlate_HPG2Constraint> HandleNLPlateHPG2Constraint;
-typedef opencascade::handle<NLPlate_HPG3Constraint> HandleNLPlateHPG3Constraint;
-typedef opencascade::handle<Plate_HArray1OfPinpointConstraint> HandlePlateHArray1OfPinpointConstraint;
-typedef opencascade::handle<Standard_DomainError> HandleStandardDomainError;
-typedef opencascade::handle<Standard_Failure> HandleStandardFailure;
-typedef opencascade::handle<Standard_Transient> HandleStandardTransient;
-typedef opencascade::handle<Standard_Type> HandleStandardType;
-typedef opencascade::handle<TColGeom2d_HArray1OfCurve> HandleTColGeom2dHArray1OfCurve;
-typedef opencascade::handle<TColStd_HArray1OfBoolean> HandleTColStdHArray1OfBoolean;
-typedef opencascade::handle<TColStd_HArray1OfInteger> HandleTColStdHArray1OfInteger;
-typedef opencascade::handle<TColStd_HArray1OfReal> HandleTColStdHArray1OfReal;
-typedef opencascade::handle<TColgp_HArray1OfPnt> HandleTColgpHArray1OfPnt;
-typedef opencascade::handle<TColgp_HArray1OfPnt2d> HandleTColgpHArray1OfPnt2d;
-typedef opencascade::handle<TColgp_HArray2OfXYZ> HandleTColgpHArray2OfXYZ;
+typedef opencascade::handle<Adaptor2d_Curve2d> Handle_Adaptor2d_Curve2d;
+typedef opencascade::handle<Adaptor3d_Curve> Handle_Adaptor3d_Curve;
+typedef opencascade::handle<Adaptor3d_HVertex> Handle_Adaptor3d_HVertex;
+typedef opencascade::handle<Adaptor3d_Surface> Handle_Adaptor3d_Surface;
+typedef opencascade::handle<Adaptor3d_TopolTool> Handle_Adaptor3d_TopolTool;
+typedef opencascade::handle<Approx_SweepFunction> Handle_Approx_SweepFunction;
+typedef opencascade::handle<BRepFill_CurveConstraint> Handle_BRepFill_CurveConstraint;
+typedef opencascade::handle<GccInt_BCirc> Handle_GccInt_BCirc;
+typedef opencascade::handle<GccInt_BElips> Handle_GccInt_BElips;
+typedef opencascade::handle<GccInt_BHyper> Handle_GccInt_BHyper;
+typedef opencascade::handle<GccInt_BLine> Handle_GccInt_BLine;
+typedef opencascade::handle<GccInt_BParab> Handle_GccInt_BParab;
+typedef opencascade::handle<GccInt_BPoint> Handle_GccInt_BPoint;
+typedef opencascade::handle<GccInt_Bisec> Handle_GccInt_Bisec;
+typedef opencascade::handle<Geom2d_BSplineCurve> Handle_Geom2d_BSplineCurve;
+typedef opencascade::handle<Geom2d_BezierCurve> Handle_Geom2d_BezierCurve;
+typedef opencascade::handle<Geom2d_Curve> Handle_Geom2d_Curve;
+typedef opencascade::handle<Geom2d_Point> Handle_Geom2d_Point;
+typedef opencascade::handle<GeomAdaptor_Surface> Handle_GeomAdaptor_Surface;
+typedef opencascade::handle<GeomFill_BoundWithSurf> Handle_GeomFill_BoundWithSurf;
+typedef opencascade::handle<GeomFill_Boundary> Handle_GeomFill_Boundary;
+typedef opencascade::handle<GeomFill_CircularBlendFunc> Handle_GeomFill_CircularBlendFunc;
+typedef opencascade::handle<GeomFill_ConstantBiNormal> Handle_GeomFill_ConstantBiNormal;
+typedef opencascade::handle<GeomFill_CoonsAlgPatch> Handle_GeomFill_CoonsAlgPatch;
+typedef opencascade::handle<GeomFill_CorrectedFrenet> Handle_GeomFill_CorrectedFrenet;
+typedef opencascade::handle<GeomFill_CurveAndTrihedron> Handle_GeomFill_CurveAndTrihedron;
+typedef opencascade::handle<GeomFill_Darboux> Handle_GeomFill_Darboux;
+typedef opencascade::handle<GeomFill_DegeneratedBound> Handle_GeomFill_DegeneratedBound;
+typedef opencascade::handle<GeomFill_DiscreteTrihedron> Handle_GeomFill_DiscreteTrihedron;
+typedef opencascade::handle<GeomFill_DraftTrihedron> Handle_GeomFill_DraftTrihedron;
+typedef opencascade::handle<GeomFill_EvolvedSection> Handle_GeomFill_EvolvedSection;
+typedef opencascade::handle<GeomFill_Fixed> Handle_GeomFill_Fixed;
+typedef opencascade::handle<GeomFill_Frenet> Handle_GeomFill_Frenet;
+typedef opencascade::handle<GeomFill_GuideTrihedronAC> Handle_GeomFill_GuideTrihedronAC;
+typedef opencascade::handle<GeomFill_GuideTrihedronPlan> Handle_GeomFill_GuideTrihedronPlan;
+typedef opencascade::handle<GeomFill_Line> Handle_GeomFill_Line;
+typedef opencascade::handle<GeomFill_LocationDraft> Handle_GeomFill_LocationDraft;
+typedef opencascade::handle<GeomFill_LocationGuide> Handle_GeomFill_LocationGuide;
+typedef opencascade::handle<GeomFill_LocationLaw> Handle_GeomFill_LocationLaw;
+typedef opencascade::handle<GeomFill_NSections> Handle_GeomFill_NSections;
+typedef opencascade::handle<GeomFill_SectionLaw> Handle_GeomFill_SectionLaw;
+typedef opencascade::handle<GeomFill_SimpleBound> Handle_GeomFill_SimpleBound;
+typedef opencascade::handle<GeomFill_SnglrFunc> Handle_GeomFill_SnglrFunc;
+typedef opencascade::handle<GeomFill_SweepFunction> Handle_GeomFill_SweepFunction;
+typedef opencascade::handle<GeomFill_TgtField> Handle_GeomFill_TgtField;
+typedef opencascade::handle<GeomFill_TgtOnCoons> Handle_GeomFill_TgtOnCoons;
+typedef opencascade::handle<GeomFill_TrihedronLaw> Handle_GeomFill_TrihedronLaw;
+typedef opencascade::handle<GeomFill_TrihedronWithGuide> Handle_GeomFill_TrihedronWithGuide;
+typedef opencascade::handle<GeomFill_UniformSection> Handle_GeomFill_UniformSection;
+typedef opencascade::handle<GeomPlate_CurveConstraint> Handle_GeomPlate_CurveConstraint;
+typedef opencascade::handle<GeomPlate_PointConstraint> Handle_GeomPlate_PointConstraint;
+typedef opencascade::handle<GeomPlate_Surface> Handle_GeomPlate_Surface;
+typedef opencascade::handle<Geom_BSplineCurve> Handle_Geom_BSplineCurve;
+typedef opencascade::handle<Geom_BSplineSurface> Handle_Geom_BSplineSurface;
+typedef opencascade::handle<Geom_BezierCurve> Handle_Geom_BezierCurve;
+typedef opencascade::handle<Geom_BezierSurface> Handle_Geom_BezierSurface;
+typedef opencascade::handle<Geom_Curve> Handle_Geom_Curve;
+typedef opencascade::handle<Geom_Geometry> Handle_Geom_Geometry;
+typedef opencascade::handle<Geom_Line> Handle_Geom_Line;
+typedef opencascade::handle<Geom_Plane> Handle_Geom_Plane;
+typedef opencascade::handle<Geom_Surface> Handle_Geom_Surface;
+typedef opencascade::handle<IntPatch_ALine> Handle_IntPatch_ALine;
+typedef opencascade::handle<IntPatch_GLine> Handle_IntPatch_GLine;
+typedef opencascade::handle<IntPatch_Line> Handle_IntPatch_Line;
+typedef opencascade::handle<IntPatch_PointLine> Handle_IntPatch_PointLine;
+typedef opencascade::handle<IntPatch_PolyhedronBVH> Handle_IntPatch_PolyhedronBVH;
+typedef opencascade::handle<IntPatch_RLine> Handle_IntPatch_RLine;
+typedef opencascade::handle<IntPatch_TheIWLineOfTheIWalking> Handle_IntPatch_TheIWLineOfTheIWalking;
+typedef opencascade::handle<IntPatch_WLine> Handle_IntPatch_WLine;
+typedef opencascade::handle<IntStart_SITopolTool> Handle_IntStart_SITopolTool;
+typedef opencascade::handle<IntSurf_LineOn2S> Handle_IntSurf_LineOn2S;
+typedef opencascade::handle<Law_BSpFunc> Handle_Law_BSpFunc;
+typedef opencascade::handle<Law_BSpline> Handle_Law_BSpline;
+typedef opencascade::handle<Law_Composite> Handle_Law_Composite;
+typedef opencascade::handle<Law_Constant> Handle_Law_Constant;
+typedef opencascade::handle<Law_Function> Handle_Law_Function;
+typedef opencascade::handle<Law_Interpol> Handle_Law_Interpol;
+typedef opencascade::handle<Law_Linear> Handle_Law_Linear;
+typedef opencascade::handle<Law_S> Handle_Law_S;
+typedef opencascade::handle<NCollection_BaseAllocator> Handle_NCollection_BaseAllocator;
+typedef opencascade::handle<NCollection_HArray1_AppParCurves_ConstraintCouple> Handle_NCollection_HArray1_AppParCurves_ConstraintCouple;
+typedef opencascade::handle<NCollection_HArray1_Bnd_Box> Handle_NCollection_HArray1_Bnd_Box;
+typedef opencascade::handle<NCollection_HArray1_bool> Handle_NCollection_HArray1_bool;
+typedef opencascade::handle<NCollection_HArray1_double> Handle_NCollection_HArray1_double;
+typedef opencascade::handle<NCollection_HArray1_gp_Pnt> Handle_NCollection_HArray1_gp_Pnt;
+typedef opencascade::handle<NCollection_HArray1_gp_Pnt2d> Handle_NCollection_HArray1_gp_Pnt2d;
+typedef opencascade::handle<NCollection_HArray1_int> Handle_NCollection_HArray1_int;
+typedef opencascade::handle<NCollection_HArray1_opencascade_handle_Adaptor3d_Curve> Handle_NCollection_HArray1_opencascade_handle_Adaptor3d_Curve;
+typedef opencascade::handle<NCollection_HArray1_opencascade_handle_Geom2d_Curve> Handle_NCollection_HArray1_opencascade_handle_Geom2d_Curve;
+typedef opencascade::handle<NCollection_HArray2_gp_XYZ> Handle_NCollection_HArray2_gp_XYZ;
+typedef opencascade::handle<NLPlate_HGPPConstraint> Handle_NLPlate_HGPPConstraint;
+typedef opencascade::handle<NLPlate_HPG0Constraint> Handle_NLPlate_HPG0Constraint;
+typedef opencascade::handle<NLPlate_HPG0G1Constraint> Handle_NLPlate_HPG0G1Constraint;
+typedef opencascade::handle<NLPlate_HPG0G2Constraint> Handle_NLPlate_HPG0G2Constraint;
+typedef opencascade::handle<NLPlate_HPG0G3Constraint> Handle_NLPlate_HPG0G3Constraint;
+typedef opencascade::handle<NLPlate_HPG1Constraint> Handle_NLPlate_HPG1Constraint;
+typedef opencascade::handle<NLPlate_HPG2Constraint> Handle_NLPlate_HPG2Constraint;
+typedef opencascade::handle<NLPlate_HPG3Constraint> Handle_NLPlate_HPG3Constraint;
+typedef opencascade::handle<Standard_Transient> Handle_Standard_Transient;
+typedef opencascade::handle<Standard_Type> Handle_Standard_Type;
 
 // Handle type destructors, clone, and is_null functions
-extern "C" void HandleGccAnaNoSolution_destructor(HandleGccAnaNoSolution* self_) { delete self_; }
-extern "C" OcctResult<HandleGccAnaNoSolution*> HandleGccAnaNoSolution_clone(const HandleGccAnaNoSolution* self_) {
-    try { return {new HandleGccAnaNoSolution(*self_), nullptr}; }
+extern "C" void Handle_GccInt_BCirc_destructor(Handle_GccInt_BCirc* self_) { delete self_; }
+extern "C" OcctResult<Handle_GccInt_BCirc*> Handle_GccInt_BCirc_clone(const Handle_GccInt_BCirc* self_) {
+    try { return {new Handle_GccInt_BCirc(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleGccAnaNoSolution_is_null(const HandleGccAnaNoSolution* self_) { return self_->IsNull(); }
-extern "C" void HandleGccEntBadQualifier_destructor(HandleGccEntBadQualifier* self_) { delete self_; }
-extern "C" OcctResult<HandleGccEntBadQualifier*> HandleGccEntBadQualifier_clone(const HandleGccEntBadQualifier* self_) {
-    try { return {new HandleGccEntBadQualifier(*self_), nullptr}; }
+extern "C" bool Handle_GccInt_BCirc_is_null(const Handle_GccInt_BCirc* self_) { return self_->IsNull(); }
+extern "C" void Handle_GccInt_BElips_destructor(Handle_GccInt_BElips* self_) { delete self_; }
+extern "C" OcctResult<Handle_GccInt_BElips*> Handle_GccInt_BElips_clone(const Handle_GccInt_BElips* self_) {
+    try { return {new Handle_GccInt_BElips(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleGccEntBadQualifier_is_null(const HandleGccEntBadQualifier* self_) { return self_->IsNull(); }
-extern "C" void HandleGccIntBCirc_destructor(HandleGccIntBCirc* self_) { delete self_; }
-extern "C" OcctResult<HandleGccIntBCirc*> HandleGccIntBCirc_clone(const HandleGccIntBCirc* self_) {
-    try { return {new HandleGccIntBCirc(*self_), nullptr}; }
+extern "C" bool Handle_GccInt_BElips_is_null(const Handle_GccInt_BElips* self_) { return self_->IsNull(); }
+extern "C" void Handle_GccInt_BHyper_destructor(Handle_GccInt_BHyper* self_) { delete self_; }
+extern "C" OcctResult<Handle_GccInt_BHyper*> Handle_GccInt_BHyper_clone(const Handle_GccInt_BHyper* self_) {
+    try { return {new Handle_GccInt_BHyper(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleGccIntBCirc_is_null(const HandleGccIntBCirc* self_) { return self_->IsNull(); }
-extern "C" void HandleGccIntBElips_destructor(HandleGccIntBElips* self_) { delete self_; }
-extern "C" OcctResult<HandleGccIntBElips*> HandleGccIntBElips_clone(const HandleGccIntBElips* self_) {
-    try { return {new HandleGccIntBElips(*self_), nullptr}; }
+extern "C" bool Handle_GccInt_BHyper_is_null(const Handle_GccInt_BHyper* self_) { return self_->IsNull(); }
+extern "C" void Handle_GccInt_BLine_destructor(Handle_GccInt_BLine* self_) { delete self_; }
+extern "C" OcctResult<Handle_GccInt_BLine*> Handle_GccInt_BLine_clone(const Handle_GccInt_BLine* self_) {
+    try { return {new Handle_GccInt_BLine(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleGccIntBElips_is_null(const HandleGccIntBElips* self_) { return self_->IsNull(); }
-extern "C" void HandleGccIntBHyper_destructor(HandleGccIntBHyper* self_) { delete self_; }
-extern "C" OcctResult<HandleGccIntBHyper*> HandleGccIntBHyper_clone(const HandleGccIntBHyper* self_) {
-    try { return {new HandleGccIntBHyper(*self_), nullptr}; }
+extern "C" bool Handle_GccInt_BLine_is_null(const Handle_GccInt_BLine* self_) { return self_->IsNull(); }
+extern "C" void Handle_GccInt_BParab_destructor(Handle_GccInt_BParab* self_) { delete self_; }
+extern "C" OcctResult<Handle_GccInt_BParab*> Handle_GccInt_BParab_clone(const Handle_GccInt_BParab* self_) {
+    try { return {new Handle_GccInt_BParab(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleGccIntBHyper_is_null(const HandleGccIntBHyper* self_) { return self_->IsNull(); }
-extern "C" void HandleGccIntBLine_destructor(HandleGccIntBLine* self_) { delete self_; }
-extern "C" OcctResult<HandleGccIntBLine*> HandleGccIntBLine_clone(const HandleGccIntBLine* self_) {
-    try { return {new HandleGccIntBLine(*self_), nullptr}; }
+extern "C" bool Handle_GccInt_BParab_is_null(const Handle_GccInt_BParab* self_) { return self_->IsNull(); }
+extern "C" void Handle_GccInt_BPoint_destructor(Handle_GccInt_BPoint* self_) { delete self_; }
+extern "C" OcctResult<Handle_GccInt_BPoint*> Handle_GccInt_BPoint_clone(const Handle_GccInt_BPoint* self_) {
+    try { return {new Handle_GccInt_BPoint(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleGccIntBLine_is_null(const HandleGccIntBLine* self_) { return self_->IsNull(); }
-extern "C" void HandleGccIntBParab_destructor(HandleGccIntBParab* self_) { delete self_; }
-extern "C" OcctResult<HandleGccIntBParab*> HandleGccIntBParab_clone(const HandleGccIntBParab* self_) {
-    try { return {new HandleGccIntBParab(*self_), nullptr}; }
+extern "C" bool Handle_GccInt_BPoint_is_null(const Handle_GccInt_BPoint* self_) { return self_->IsNull(); }
+extern "C" void Handle_GccInt_Bisec_destructor(Handle_GccInt_Bisec* self_) { delete self_; }
+extern "C" OcctResult<Handle_GccInt_Bisec*> Handle_GccInt_Bisec_clone(const Handle_GccInt_Bisec* self_) {
+    try { return {new Handle_GccInt_Bisec(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleGccIntBParab_is_null(const HandleGccIntBParab* self_) { return self_->IsNull(); }
-extern "C" void HandleGccIntBPoint_destructor(HandleGccIntBPoint* self_) { delete self_; }
-extern "C" OcctResult<HandleGccIntBPoint*> HandleGccIntBPoint_clone(const HandleGccIntBPoint* self_) {
-    try { return {new HandleGccIntBPoint(*self_), nullptr}; }
+extern "C" bool Handle_GccInt_Bisec_is_null(const Handle_GccInt_Bisec* self_) { return self_->IsNull(); }
+extern "C" void Handle_GeomFill_BoundWithSurf_destructor(Handle_GeomFill_BoundWithSurf* self_) { delete self_; }
+extern "C" OcctResult<Handle_GeomFill_BoundWithSurf*> Handle_GeomFill_BoundWithSurf_clone(const Handle_GeomFill_BoundWithSurf* self_) {
+    try { return {new Handle_GeomFill_BoundWithSurf(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleGccIntBPoint_is_null(const HandleGccIntBPoint* self_) { return self_->IsNull(); }
-extern "C" void HandleGccIntBisec_destructor(HandleGccIntBisec* self_) { delete self_; }
-extern "C" OcctResult<HandleGccIntBisec*> HandleGccIntBisec_clone(const HandleGccIntBisec* self_) {
-    try { return {new HandleGccIntBisec(*self_), nullptr}; }
+extern "C" bool Handle_GeomFill_BoundWithSurf_is_null(const Handle_GeomFill_BoundWithSurf* self_) { return self_->IsNull(); }
+extern "C" void Handle_GeomFill_Boundary_destructor(Handle_GeomFill_Boundary* self_) { delete self_; }
+extern "C" OcctResult<Handle_GeomFill_Boundary*> Handle_GeomFill_Boundary_clone(const Handle_GeomFill_Boundary* self_) {
+    try { return {new Handle_GeomFill_Boundary(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleGccIntBisec_is_null(const HandleGccIntBisec* self_) { return self_->IsNull(); }
-extern "C" void HandleGeom2dGccIsParallel_destructor(HandleGeom2dGccIsParallel* self_) { delete self_; }
-extern "C" OcctResult<HandleGeom2dGccIsParallel*> HandleGeom2dGccIsParallel_clone(const HandleGeom2dGccIsParallel* self_) {
-    try { return {new HandleGeom2dGccIsParallel(*self_), nullptr}; }
+extern "C" bool Handle_GeomFill_Boundary_is_null(const Handle_GeomFill_Boundary* self_) { return self_->IsNull(); }
+extern "C" void Handle_GeomFill_CircularBlendFunc_destructor(Handle_GeomFill_CircularBlendFunc* self_) { delete self_; }
+extern "C" OcctResult<Handle_GeomFill_CircularBlendFunc*> Handle_GeomFill_CircularBlendFunc_clone(const Handle_GeomFill_CircularBlendFunc* self_) {
+    try { return {new Handle_GeomFill_CircularBlendFunc(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleGeom2dGccIsParallel_is_null(const HandleGeom2dGccIsParallel* self_) { return self_->IsNull(); }
-extern "C" void HandleGeomFillBoundWithSurf_destructor(HandleGeomFillBoundWithSurf* self_) { delete self_; }
-extern "C" OcctResult<HandleGeomFillBoundWithSurf*> HandleGeomFillBoundWithSurf_clone(const HandleGeomFillBoundWithSurf* self_) {
-    try { return {new HandleGeomFillBoundWithSurf(*self_), nullptr}; }
+extern "C" bool Handle_GeomFill_CircularBlendFunc_is_null(const Handle_GeomFill_CircularBlendFunc* self_) { return self_->IsNull(); }
+extern "C" void Handle_GeomFill_ConstantBiNormal_destructor(Handle_GeomFill_ConstantBiNormal* self_) { delete self_; }
+extern "C" OcctResult<Handle_GeomFill_ConstantBiNormal*> Handle_GeomFill_ConstantBiNormal_clone(const Handle_GeomFill_ConstantBiNormal* self_) {
+    try { return {new Handle_GeomFill_ConstantBiNormal(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleGeomFillBoundWithSurf_is_null(const HandleGeomFillBoundWithSurf* self_) { return self_->IsNull(); }
-extern "C" void HandleGeomFillBoundary_destructor(HandleGeomFillBoundary* self_) { delete self_; }
-extern "C" OcctResult<HandleGeomFillBoundary*> HandleGeomFillBoundary_clone(const HandleGeomFillBoundary* self_) {
-    try { return {new HandleGeomFillBoundary(*self_), nullptr}; }
+extern "C" bool Handle_GeomFill_ConstantBiNormal_is_null(const Handle_GeomFill_ConstantBiNormal* self_) { return self_->IsNull(); }
+extern "C" void Handle_GeomFill_CoonsAlgPatch_destructor(Handle_GeomFill_CoonsAlgPatch* self_) { delete self_; }
+extern "C" OcctResult<Handle_GeomFill_CoonsAlgPatch*> Handle_GeomFill_CoonsAlgPatch_clone(const Handle_GeomFill_CoonsAlgPatch* self_) {
+    try { return {new Handle_GeomFill_CoonsAlgPatch(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleGeomFillBoundary_is_null(const HandleGeomFillBoundary* self_) { return self_->IsNull(); }
-extern "C" void HandleGeomFillCircularBlendFunc_destructor(HandleGeomFillCircularBlendFunc* self_) { delete self_; }
-extern "C" OcctResult<HandleGeomFillCircularBlendFunc*> HandleGeomFillCircularBlendFunc_clone(const HandleGeomFillCircularBlendFunc* self_) {
-    try { return {new HandleGeomFillCircularBlendFunc(*self_), nullptr}; }
+extern "C" bool Handle_GeomFill_CoonsAlgPatch_is_null(const Handle_GeomFill_CoonsAlgPatch* self_) { return self_->IsNull(); }
+extern "C" void Handle_GeomFill_CorrectedFrenet_destructor(Handle_GeomFill_CorrectedFrenet* self_) { delete self_; }
+extern "C" OcctResult<Handle_GeomFill_CorrectedFrenet*> Handle_GeomFill_CorrectedFrenet_clone(const Handle_GeomFill_CorrectedFrenet* self_) {
+    try { return {new Handle_GeomFill_CorrectedFrenet(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleGeomFillCircularBlendFunc_is_null(const HandleGeomFillCircularBlendFunc* self_) { return self_->IsNull(); }
-extern "C" void HandleGeomFillConstantBiNormal_destructor(HandleGeomFillConstantBiNormal* self_) { delete self_; }
-extern "C" OcctResult<HandleGeomFillConstantBiNormal*> HandleGeomFillConstantBiNormal_clone(const HandleGeomFillConstantBiNormal* self_) {
-    try { return {new HandleGeomFillConstantBiNormal(*self_), nullptr}; }
+extern "C" bool Handle_GeomFill_CorrectedFrenet_is_null(const Handle_GeomFill_CorrectedFrenet* self_) { return self_->IsNull(); }
+extern "C" void Handle_GeomFill_CurveAndTrihedron_destructor(Handle_GeomFill_CurveAndTrihedron* self_) { delete self_; }
+extern "C" OcctResult<Handle_GeomFill_CurveAndTrihedron*> Handle_GeomFill_CurveAndTrihedron_clone(const Handle_GeomFill_CurveAndTrihedron* self_) {
+    try { return {new Handle_GeomFill_CurveAndTrihedron(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleGeomFillConstantBiNormal_is_null(const HandleGeomFillConstantBiNormal* self_) { return self_->IsNull(); }
-extern "C" void HandleGeomFillCoonsAlgPatch_destructor(HandleGeomFillCoonsAlgPatch* self_) { delete self_; }
-extern "C" OcctResult<HandleGeomFillCoonsAlgPatch*> HandleGeomFillCoonsAlgPatch_clone(const HandleGeomFillCoonsAlgPatch* self_) {
-    try { return {new HandleGeomFillCoonsAlgPatch(*self_), nullptr}; }
+extern "C" bool Handle_GeomFill_CurveAndTrihedron_is_null(const Handle_GeomFill_CurveAndTrihedron* self_) { return self_->IsNull(); }
+extern "C" void Handle_GeomFill_Darboux_destructor(Handle_GeomFill_Darboux* self_) { delete self_; }
+extern "C" OcctResult<Handle_GeomFill_Darboux*> Handle_GeomFill_Darboux_clone(const Handle_GeomFill_Darboux* self_) {
+    try { return {new Handle_GeomFill_Darboux(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleGeomFillCoonsAlgPatch_is_null(const HandleGeomFillCoonsAlgPatch* self_) { return self_->IsNull(); }
-extern "C" void HandleGeomFillCorrectedFrenet_destructor(HandleGeomFillCorrectedFrenet* self_) { delete self_; }
-extern "C" OcctResult<HandleGeomFillCorrectedFrenet*> HandleGeomFillCorrectedFrenet_clone(const HandleGeomFillCorrectedFrenet* self_) {
-    try { return {new HandleGeomFillCorrectedFrenet(*self_), nullptr}; }
+extern "C" bool Handle_GeomFill_Darboux_is_null(const Handle_GeomFill_Darboux* self_) { return self_->IsNull(); }
+extern "C" void Handle_GeomFill_DegeneratedBound_destructor(Handle_GeomFill_DegeneratedBound* self_) { delete self_; }
+extern "C" OcctResult<Handle_GeomFill_DegeneratedBound*> Handle_GeomFill_DegeneratedBound_clone(const Handle_GeomFill_DegeneratedBound* self_) {
+    try { return {new Handle_GeomFill_DegeneratedBound(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleGeomFillCorrectedFrenet_is_null(const HandleGeomFillCorrectedFrenet* self_) { return self_->IsNull(); }
-extern "C" void HandleGeomFillCurveAndTrihedron_destructor(HandleGeomFillCurveAndTrihedron* self_) { delete self_; }
-extern "C" OcctResult<HandleGeomFillCurveAndTrihedron*> HandleGeomFillCurveAndTrihedron_clone(const HandleGeomFillCurveAndTrihedron* self_) {
-    try { return {new HandleGeomFillCurveAndTrihedron(*self_), nullptr}; }
+extern "C" bool Handle_GeomFill_DegeneratedBound_is_null(const Handle_GeomFill_DegeneratedBound* self_) { return self_->IsNull(); }
+extern "C" void Handle_GeomFill_DiscreteTrihedron_destructor(Handle_GeomFill_DiscreteTrihedron* self_) { delete self_; }
+extern "C" OcctResult<Handle_GeomFill_DiscreteTrihedron*> Handle_GeomFill_DiscreteTrihedron_clone(const Handle_GeomFill_DiscreteTrihedron* self_) {
+    try { return {new Handle_GeomFill_DiscreteTrihedron(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleGeomFillCurveAndTrihedron_is_null(const HandleGeomFillCurveAndTrihedron* self_) { return self_->IsNull(); }
-extern "C" void HandleGeomFillDarboux_destructor(HandleGeomFillDarboux* self_) { delete self_; }
-extern "C" OcctResult<HandleGeomFillDarboux*> HandleGeomFillDarboux_clone(const HandleGeomFillDarboux* self_) {
-    try { return {new HandleGeomFillDarboux(*self_), nullptr}; }
+extern "C" bool Handle_GeomFill_DiscreteTrihedron_is_null(const Handle_GeomFill_DiscreteTrihedron* self_) { return self_->IsNull(); }
+extern "C" void Handle_GeomFill_DraftTrihedron_destructor(Handle_GeomFill_DraftTrihedron* self_) { delete self_; }
+extern "C" OcctResult<Handle_GeomFill_DraftTrihedron*> Handle_GeomFill_DraftTrihedron_clone(const Handle_GeomFill_DraftTrihedron* self_) {
+    try { return {new Handle_GeomFill_DraftTrihedron(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleGeomFillDarboux_is_null(const HandleGeomFillDarboux* self_) { return self_->IsNull(); }
-extern "C" void HandleGeomFillDegeneratedBound_destructor(HandleGeomFillDegeneratedBound* self_) { delete self_; }
-extern "C" OcctResult<HandleGeomFillDegeneratedBound*> HandleGeomFillDegeneratedBound_clone(const HandleGeomFillDegeneratedBound* self_) {
-    try { return {new HandleGeomFillDegeneratedBound(*self_), nullptr}; }
+extern "C" bool Handle_GeomFill_DraftTrihedron_is_null(const Handle_GeomFill_DraftTrihedron* self_) { return self_->IsNull(); }
+extern "C" void Handle_GeomFill_EvolvedSection_destructor(Handle_GeomFill_EvolvedSection* self_) { delete self_; }
+extern "C" OcctResult<Handle_GeomFill_EvolvedSection*> Handle_GeomFill_EvolvedSection_clone(const Handle_GeomFill_EvolvedSection* self_) {
+    try { return {new Handle_GeomFill_EvolvedSection(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleGeomFillDegeneratedBound_is_null(const HandleGeomFillDegeneratedBound* self_) { return self_->IsNull(); }
-extern "C" void HandleGeomFillDiscreteTrihedron_destructor(HandleGeomFillDiscreteTrihedron* self_) { delete self_; }
-extern "C" OcctResult<HandleGeomFillDiscreteTrihedron*> HandleGeomFillDiscreteTrihedron_clone(const HandleGeomFillDiscreteTrihedron* self_) {
-    try { return {new HandleGeomFillDiscreteTrihedron(*self_), nullptr}; }
+extern "C" bool Handle_GeomFill_EvolvedSection_is_null(const Handle_GeomFill_EvolvedSection* self_) { return self_->IsNull(); }
+extern "C" void Handle_GeomFill_Fixed_destructor(Handle_GeomFill_Fixed* self_) { delete self_; }
+extern "C" OcctResult<Handle_GeomFill_Fixed*> Handle_GeomFill_Fixed_clone(const Handle_GeomFill_Fixed* self_) {
+    try { return {new Handle_GeomFill_Fixed(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleGeomFillDiscreteTrihedron_is_null(const HandleGeomFillDiscreteTrihedron* self_) { return self_->IsNull(); }
-extern "C" void HandleGeomFillDraftTrihedron_destructor(HandleGeomFillDraftTrihedron* self_) { delete self_; }
-extern "C" OcctResult<HandleGeomFillDraftTrihedron*> HandleGeomFillDraftTrihedron_clone(const HandleGeomFillDraftTrihedron* self_) {
-    try { return {new HandleGeomFillDraftTrihedron(*self_), nullptr}; }
+extern "C" bool Handle_GeomFill_Fixed_is_null(const Handle_GeomFill_Fixed* self_) { return self_->IsNull(); }
+extern "C" void Handle_GeomFill_Frenet_destructor(Handle_GeomFill_Frenet* self_) { delete self_; }
+extern "C" OcctResult<Handle_GeomFill_Frenet*> Handle_GeomFill_Frenet_clone(const Handle_GeomFill_Frenet* self_) {
+    try { return {new Handle_GeomFill_Frenet(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleGeomFillDraftTrihedron_is_null(const HandleGeomFillDraftTrihedron* self_) { return self_->IsNull(); }
-extern "C" void HandleGeomFillEvolvedSection_destructor(HandleGeomFillEvolvedSection* self_) { delete self_; }
-extern "C" OcctResult<HandleGeomFillEvolvedSection*> HandleGeomFillEvolvedSection_clone(const HandleGeomFillEvolvedSection* self_) {
-    try { return {new HandleGeomFillEvolvedSection(*self_), nullptr}; }
+extern "C" bool Handle_GeomFill_Frenet_is_null(const Handle_GeomFill_Frenet* self_) { return self_->IsNull(); }
+extern "C" void Handle_GeomFill_GuideTrihedronAC_destructor(Handle_GeomFill_GuideTrihedronAC* self_) { delete self_; }
+extern "C" OcctResult<Handle_GeomFill_GuideTrihedronAC*> Handle_GeomFill_GuideTrihedronAC_clone(const Handle_GeomFill_GuideTrihedronAC* self_) {
+    try { return {new Handle_GeomFill_GuideTrihedronAC(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleGeomFillEvolvedSection_is_null(const HandleGeomFillEvolvedSection* self_) { return self_->IsNull(); }
-extern "C" void HandleGeomFillFixed_destructor(HandleGeomFillFixed* self_) { delete self_; }
-extern "C" OcctResult<HandleGeomFillFixed*> HandleGeomFillFixed_clone(const HandleGeomFillFixed* self_) {
-    try { return {new HandleGeomFillFixed(*self_), nullptr}; }
+extern "C" bool Handle_GeomFill_GuideTrihedronAC_is_null(const Handle_GeomFill_GuideTrihedronAC* self_) { return self_->IsNull(); }
+extern "C" void Handle_GeomFill_GuideTrihedronPlan_destructor(Handle_GeomFill_GuideTrihedronPlan* self_) { delete self_; }
+extern "C" OcctResult<Handle_GeomFill_GuideTrihedronPlan*> Handle_GeomFill_GuideTrihedronPlan_clone(const Handle_GeomFill_GuideTrihedronPlan* self_) {
+    try { return {new Handle_GeomFill_GuideTrihedronPlan(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleGeomFillFixed_is_null(const HandleGeomFillFixed* self_) { return self_->IsNull(); }
-extern "C" void HandleGeomFillFrenet_destructor(HandleGeomFillFrenet* self_) { delete self_; }
-extern "C" OcctResult<HandleGeomFillFrenet*> HandleGeomFillFrenet_clone(const HandleGeomFillFrenet* self_) {
-    try { return {new HandleGeomFillFrenet(*self_), nullptr}; }
+extern "C" bool Handle_GeomFill_GuideTrihedronPlan_is_null(const Handle_GeomFill_GuideTrihedronPlan* self_) { return self_->IsNull(); }
+extern "C" void Handle_GeomFill_Line_destructor(Handle_GeomFill_Line* self_) { delete self_; }
+extern "C" OcctResult<Handle_GeomFill_Line*> Handle_GeomFill_Line_clone(const Handle_GeomFill_Line* self_) {
+    try { return {new Handle_GeomFill_Line(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleGeomFillFrenet_is_null(const HandleGeomFillFrenet* self_) { return self_->IsNull(); }
-extern "C" void HandleGeomFillGuideTrihedronAC_destructor(HandleGeomFillGuideTrihedronAC* self_) { delete self_; }
-extern "C" OcctResult<HandleGeomFillGuideTrihedronAC*> HandleGeomFillGuideTrihedronAC_clone(const HandleGeomFillGuideTrihedronAC* self_) {
-    try { return {new HandleGeomFillGuideTrihedronAC(*self_), nullptr}; }
+extern "C" bool Handle_GeomFill_Line_is_null(const Handle_GeomFill_Line* self_) { return self_->IsNull(); }
+extern "C" void Handle_GeomFill_LocationDraft_destructor(Handle_GeomFill_LocationDraft* self_) { delete self_; }
+extern "C" OcctResult<Handle_GeomFill_LocationDraft*> Handle_GeomFill_LocationDraft_clone(const Handle_GeomFill_LocationDraft* self_) {
+    try { return {new Handle_GeomFill_LocationDraft(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleGeomFillGuideTrihedronAC_is_null(const HandleGeomFillGuideTrihedronAC* self_) { return self_->IsNull(); }
-extern "C" void HandleGeomFillGuideTrihedronPlan_destructor(HandleGeomFillGuideTrihedronPlan* self_) { delete self_; }
-extern "C" OcctResult<HandleGeomFillGuideTrihedronPlan*> HandleGeomFillGuideTrihedronPlan_clone(const HandleGeomFillGuideTrihedronPlan* self_) {
-    try { return {new HandleGeomFillGuideTrihedronPlan(*self_), nullptr}; }
+extern "C" bool Handle_GeomFill_LocationDraft_is_null(const Handle_GeomFill_LocationDraft* self_) { return self_->IsNull(); }
+extern "C" void Handle_GeomFill_LocationGuide_destructor(Handle_GeomFill_LocationGuide* self_) { delete self_; }
+extern "C" OcctResult<Handle_GeomFill_LocationGuide*> Handle_GeomFill_LocationGuide_clone(const Handle_GeomFill_LocationGuide* self_) {
+    try { return {new Handle_GeomFill_LocationGuide(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleGeomFillGuideTrihedronPlan_is_null(const HandleGeomFillGuideTrihedronPlan* self_) { return self_->IsNull(); }
-extern "C" void HandleGeomFillHArray1OfLocationLaw_destructor(HandleGeomFillHArray1OfLocationLaw* self_) { delete self_; }
-extern "C" OcctResult<HandleGeomFillHArray1OfLocationLaw*> HandleGeomFillHArray1OfLocationLaw_clone(const HandleGeomFillHArray1OfLocationLaw* self_) {
-    try { return {new HandleGeomFillHArray1OfLocationLaw(*self_), nullptr}; }
+extern "C" bool Handle_GeomFill_LocationGuide_is_null(const Handle_GeomFill_LocationGuide* self_) { return self_->IsNull(); }
+extern "C" void Handle_GeomFill_LocationLaw_destructor(Handle_GeomFill_LocationLaw* self_) { delete self_; }
+extern "C" OcctResult<Handle_GeomFill_LocationLaw*> Handle_GeomFill_LocationLaw_clone(const Handle_GeomFill_LocationLaw* self_) {
+    try { return {new Handle_GeomFill_LocationLaw(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleGeomFillHArray1OfLocationLaw_is_null(const HandleGeomFillHArray1OfLocationLaw* self_) { return self_->IsNull(); }
-extern "C" void HandleGeomFillHArray1OfSectionLaw_destructor(HandleGeomFillHArray1OfSectionLaw* self_) { delete self_; }
-extern "C" OcctResult<HandleGeomFillHArray1OfSectionLaw*> HandleGeomFillHArray1OfSectionLaw_clone(const HandleGeomFillHArray1OfSectionLaw* self_) {
-    try { return {new HandleGeomFillHArray1OfSectionLaw(*self_), nullptr}; }
+extern "C" bool Handle_GeomFill_LocationLaw_is_null(const Handle_GeomFill_LocationLaw* self_) { return self_->IsNull(); }
+extern "C" void Handle_GeomFill_NSections_destructor(Handle_GeomFill_NSections* self_) { delete self_; }
+extern "C" OcctResult<Handle_GeomFill_NSections*> Handle_GeomFill_NSections_clone(const Handle_GeomFill_NSections* self_) {
+    try { return {new Handle_GeomFill_NSections(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleGeomFillHArray1OfSectionLaw_is_null(const HandleGeomFillHArray1OfSectionLaw* self_) { return self_->IsNull(); }
-extern "C" void HandleGeomFillHSequenceOfAx2_destructor(HandleGeomFillHSequenceOfAx2* self_) { delete self_; }
-extern "C" OcctResult<HandleGeomFillHSequenceOfAx2*> HandleGeomFillHSequenceOfAx2_clone(const HandleGeomFillHSequenceOfAx2* self_) {
-    try { return {new HandleGeomFillHSequenceOfAx2(*self_), nullptr}; }
+extern "C" bool Handle_GeomFill_NSections_is_null(const Handle_GeomFill_NSections* self_) { return self_->IsNull(); }
+extern "C" void Handle_GeomFill_SectionLaw_destructor(Handle_GeomFill_SectionLaw* self_) { delete self_; }
+extern "C" OcctResult<Handle_GeomFill_SectionLaw*> Handle_GeomFill_SectionLaw_clone(const Handle_GeomFill_SectionLaw* self_) {
+    try { return {new Handle_GeomFill_SectionLaw(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleGeomFillHSequenceOfAx2_is_null(const HandleGeomFillHSequenceOfAx2* self_) { return self_->IsNull(); }
-extern "C" void HandleGeomFillLine_destructor(HandleGeomFillLine* self_) { delete self_; }
-extern "C" OcctResult<HandleGeomFillLine*> HandleGeomFillLine_clone(const HandleGeomFillLine* self_) {
-    try { return {new HandleGeomFillLine(*self_), nullptr}; }
+extern "C" bool Handle_GeomFill_SectionLaw_is_null(const Handle_GeomFill_SectionLaw* self_) { return self_->IsNull(); }
+extern "C" void Handle_GeomFill_SimpleBound_destructor(Handle_GeomFill_SimpleBound* self_) { delete self_; }
+extern "C" OcctResult<Handle_GeomFill_SimpleBound*> Handle_GeomFill_SimpleBound_clone(const Handle_GeomFill_SimpleBound* self_) {
+    try { return {new Handle_GeomFill_SimpleBound(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleGeomFillLine_is_null(const HandleGeomFillLine* self_) { return self_->IsNull(); }
-extern "C" void HandleGeomFillLocationDraft_destructor(HandleGeomFillLocationDraft* self_) { delete self_; }
-extern "C" OcctResult<HandleGeomFillLocationDraft*> HandleGeomFillLocationDraft_clone(const HandleGeomFillLocationDraft* self_) {
-    try { return {new HandleGeomFillLocationDraft(*self_), nullptr}; }
+extern "C" bool Handle_GeomFill_SimpleBound_is_null(const Handle_GeomFill_SimpleBound* self_) { return self_->IsNull(); }
+extern "C" void Handle_GeomFill_SnglrFunc_destructor(Handle_GeomFill_SnglrFunc* self_) { delete self_; }
+extern "C" OcctResult<Handle_GeomFill_SnglrFunc*> Handle_GeomFill_SnglrFunc_clone(const Handle_GeomFill_SnglrFunc* self_) {
+    try { return {new Handle_GeomFill_SnglrFunc(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleGeomFillLocationDraft_is_null(const HandleGeomFillLocationDraft* self_) { return self_->IsNull(); }
-extern "C" void HandleGeomFillLocationGuide_destructor(HandleGeomFillLocationGuide* self_) { delete self_; }
-extern "C" OcctResult<HandleGeomFillLocationGuide*> HandleGeomFillLocationGuide_clone(const HandleGeomFillLocationGuide* self_) {
-    try { return {new HandleGeomFillLocationGuide(*self_), nullptr}; }
+extern "C" bool Handle_GeomFill_SnglrFunc_is_null(const Handle_GeomFill_SnglrFunc* self_) { return self_->IsNull(); }
+extern "C" void Handle_GeomFill_SweepFunction_destructor(Handle_GeomFill_SweepFunction* self_) { delete self_; }
+extern "C" OcctResult<Handle_GeomFill_SweepFunction*> Handle_GeomFill_SweepFunction_clone(const Handle_GeomFill_SweepFunction* self_) {
+    try { return {new Handle_GeomFill_SweepFunction(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleGeomFillLocationGuide_is_null(const HandleGeomFillLocationGuide* self_) { return self_->IsNull(); }
-extern "C" void HandleGeomFillLocationLaw_destructor(HandleGeomFillLocationLaw* self_) { delete self_; }
-extern "C" OcctResult<HandleGeomFillLocationLaw*> HandleGeomFillLocationLaw_clone(const HandleGeomFillLocationLaw* self_) {
-    try { return {new HandleGeomFillLocationLaw(*self_), nullptr}; }
+extern "C" bool Handle_GeomFill_SweepFunction_is_null(const Handle_GeomFill_SweepFunction* self_) { return self_->IsNull(); }
+extern "C" void Handle_GeomFill_TgtField_destructor(Handle_GeomFill_TgtField* self_) { delete self_; }
+extern "C" OcctResult<Handle_GeomFill_TgtField*> Handle_GeomFill_TgtField_clone(const Handle_GeomFill_TgtField* self_) {
+    try { return {new Handle_GeomFill_TgtField(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleGeomFillLocationLaw_is_null(const HandleGeomFillLocationLaw* self_) { return self_->IsNull(); }
-extern "C" void HandleGeomFillNSections_destructor(HandleGeomFillNSections* self_) { delete self_; }
-extern "C" OcctResult<HandleGeomFillNSections*> HandleGeomFillNSections_clone(const HandleGeomFillNSections* self_) {
-    try { return {new HandleGeomFillNSections(*self_), nullptr}; }
+extern "C" bool Handle_GeomFill_TgtField_is_null(const Handle_GeomFill_TgtField* self_) { return self_->IsNull(); }
+extern "C" void Handle_GeomFill_TgtOnCoons_destructor(Handle_GeomFill_TgtOnCoons* self_) { delete self_; }
+extern "C" OcctResult<Handle_GeomFill_TgtOnCoons*> Handle_GeomFill_TgtOnCoons_clone(const Handle_GeomFill_TgtOnCoons* self_) {
+    try { return {new Handle_GeomFill_TgtOnCoons(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleGeomFillNSections_is_null(const HandleGeomFillNSections* self_) { return self_->IsNull(); }
-extern "C" void HandleGeomFillSectionLaw_destructor(HandleGeomFillSectionLaw* self_) { delete self_; }
-extern "C" OcctResult<HandleGeomFillSectionLaw*> HandleGeomFillSectionLaw_clone(const HandleGeomFillSectionLaw* self_) {
-    try { return {new HandleGeomFillSectionLaw(*self_), nullptr}; }
+extern "C" bool Handle_GeomFill_TgtOnCoons_is_null(const Handle_GeomFill_TgtOnCoons* self_) { return self_->IsNull(); }
+extern "C" void Handle_GeomFill_TrihedronLaw_destructor(Handle_GeomFill_TrihedronLaw* self_) { delete self_; }
+extern "C" OcctResult<Handle_GeomFill_TrihedronLaw*> Handle_GeomFill_TrihedronLaw_clone(const Handle_GeomFill_TrihedronLaw* self_) {
+    try { return {new Handle_GeomFill_TrihedronLaw(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleGeomFillSectionLaw_is_null(const HandleGeomFillSectionLaw* self_) { return self_->IsNull(); }
-extern "C" void HandleGeomFillSimpleBound_destructor(HandleGeomFillSimpleBound* self_) { delete self_; }
-extern "C" OcctResult<HandleGeomFillSimpleBound*> HandleGeomFillSimpleBound_clone(const HandleGeomFillSimpleBound* self_) {
-    try { return {new HandleGeomFillSimpleBound(*self_), nullptr}; }
+extern "C" bool Handle_GeomFill_TrihedronLaw_is_null(const Handle_GeomFill_TrihedronLaw* self_) { return self_->IsNull(); }
+extern "C" void Handle_GeomFill_TrihedronWithGuide_destructor(Handle_GeomFill_TrihedronWithGuide* self_) { delete self_; }
+extern "C" OcctResult<Handle_GeomFill_TrihedronWithGuide*> Handle_GeomFill_TrihedronWithGuide_clone(const Handle_GeomFill_TrihedronWithGuide* self_) {
+    try { return {new Handle_GeomFill_TrihedronWithGuide(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleGeomFillSimpleBound_is_null(const HandleGeomFillSimpleBound* self_) { return self_->IsNull(); }
-extern "C" void HandleGeomFillSnglrFunc_destructor(HandleGeomFillSnglrFunc* self_) { delete self_; }
-extern "C" OcctResult<HandleGeomFillSnglrFunc*> HandleGeomFillSnglrFunc_clone(const HandleGeomFillSnglrFunc* self_) {
-    try { return {new HandleGeomFillSnglrFunc(*self_), nullptr}; }
+extern "C" bool Handle_GeomFill_TrihedronWithGuide_is_null(const Handle_GeomFill_TrihedronWithGuide* self_) { return self_->IsNull(); }
+extern "C" void Handle_GeomFill_UniformSection_destructor(Handle_GeomFill_UniformSection* self_) { delete self_; }
+extern "C" OcctResult<Handle_GeomFill_UniformSection*> Handle_GeomFill_UniformSection_clone(const Handle_GeomFill_UniformSection* self_) {
+    try { return {new Handle_GeomFill_UniformSection(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleGeomFillSnglrFunc_is_null(const HandleGeomFillSnglrFunc* self_) { return self_->IsNull(); }
-extern "C" void HandleGeomFillSweepFunction_destructor(HandleGeomFillSweepFunction* self_) { delete self_; }
-extern "C" OcctResult<HandleGeomFillSweepFunction*> HandleGeomFillSweepFunction_clone(const HandleGeomFillSweepFunction* self_) {
-    try { return {new HandleGeomFillSweepFunction(*self_), nullptr}; }
+extern "C" bool Handle_GeomFill_UniformSection_is_null(const Handle_GeomFill_UniformSection* self_) { return self_->IsNull(); }
+extern "C" void Handle_GeomPlate_CurveConstraint_destructor(Handle_GeomPlate_CurveConstraint* self_) { delete self_; }
+extern "C" OcctResult<Handle_GeomPlate_CurveConstraint*> Handle_GeomPlate_CurveConstraint_clone(const Handle_GeomPlate_CurveConstraint* self_) {
+    try { return {new Handle_GeomPlate_CurveConstraint(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleGeomFillSweepFunction_is_null(const HandleGeomFillSweepFunction* self_) { return self_->IsNull(); }
-extern "C" void HandleGeomFillTgtField_destructor(HandleGeomFillTgtField* self_) { delete self_; }
-extern "C" OcctResult<HandleGeomFillTgtField*> HandleGeomFillTgtField_clone(const HandleGeomFillTgtField* self_) {
-    try { return {new HandleGeomFillTgtField(*self_), nullptr}; }
+extern "C" bool Handle_GeomPlate_CurveConstraint_is_null(const Handle_GeomPlate_CurveConstraint* self_) { return self_->IsNull(); }
+extern "C" void Handle_GeomPlate_PointConstraint_destructor(Handle_GeomPlate_PointConstraint* self_) { delete self_; }
+extern "C" OcctResult<Handle_GeomPlate_PointConstraint*> Handle_GeomPlate_PointConstraint_clone(const Handle_GeomPlate_PointConstraint* self_) {
+    try { return {new Handle_GeomPlate_PointConstraint(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleGeomFillTgtField_is_null(const HandleGeomFillTgtField* self_) { return self_->IsNull(); }
-extern "C" void HandleGeomFillTgtOnCoons_destructor(HandleGeomFillTgtOnCoons* self_) { delete self_; }
-extern "C" OcctResult<HandleGeomFillTgtOnCoons*> HandleGeomFillTgtOnCoons_clone(const HandleGeomFillTgtOnCoons* self_) {
-    try { return {new HandleGeomFillTgtOnCoons(*self_), nullptr}; }
+extern "C" bool Handle_GeomPlate_PointConstraint_is_null(const Handle_GeomPlate_PointConstraint* self_) { return self_->IsNull(); }
+extern "C" void Handle_GeomPlate_Surface_destructor(Handle_GeomPlate_Surface* self_) { delete self_; }
+extern "C" OcctResult<Handle_GeomPlate_Surface*> Handle_GeomPlate_Surface_clone(const Handle_GeomPlate_Surface* self_) {
+    try { return {new Handle_GeomPlate_Surface(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleGeomFillTgtOnCoons_is_null(const HandleGeomFillTgtOnCoons* self_) { return self_->IsNull(); }
-extern "C" void HandleGeomFillTrihedronLaw_destructor(HandleGeomFillTrihedronLaw* self_) { delete self_; }
-extern "C" OcctResult<HandleGeomFillTrihedronLaw*> HandleGeomFillTrihedronLaw_clone(const HandleGeomFillTrihedronLaw* self_) {
-    try { return {new HandleGeomFillTrihedronLaw(*self_), nullptr}; }
+extern "C" bool Handle_GeomPlate_Surface_is_null(const Handle_GeomPlate_Surface* self_) { return self_->IsNull(); }
+extern "C" void Handle_IntPatch_ALine_destructor(Handle_IntPatch_ALine* self_) { delete self_; }
+extern "C" OcctResult<Handle_IntPatch_ALine*> Handle_IntPatch_ALine_clone(const Handle_IntPatch_ALine* self_) {
+    try { return {new Handle_IntPatch_ALine(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleGeomFillTrihedronLaw_is_null(const HandleGeomFillTrihedronLaw* self_) { return self_->IsNull(); }
-extern "C" void HandleGeomFillTrihedronWithGuide_destructor(HandleGeomFillTrihedronWithGuide* self_) { delete self_; }
-extern "C" OcctResult<HandleGeomFillTrihedronWithGuide*> HandleGeomFillTrihedronWithGuide_clone(const HandleGeomFillTrihedronWithGuide* self_) {
-    try { return {new HandleGeomFillTrihedronWithGuide(*self_), nullptr}; }
+extern "C" bool Handle_IntPatch_ALine_is_null(const Handle_IntPatch_ALine* self_) { return self_->IsNull(); }
+extern "C" void Handle_IntPatch_GLine_destructor(Handle_IntPatch_GLine* self_) { delete self_; }
+extern "C" OcctResult<Handle_IntPatch_GLine*> Handle_IntPatch_GLine_clone(const Handle_IntPatch_GLine* self_) {
+    try { return {new Handle_IntPatch_GLine(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleGeomFillTrihedronWithGuide_is_null(const HandleGeomFillTrihedronWithGuide* self_) { return self_->IsNull(); }
-extern "C" void HandleGeomFillUniformSection_destructor(HandleGeomFillUniformSection* self_) { delete self_; }
-extern "C" OcctResult<HandleGeomFillUniformSection*> HandleGeomFillUniformSection_clone(const HandleGeomFillUniformSection* self_) {
-    try { return {new HandleGeomFillUniformSection(*self_), nullptr}; }
+extern "C" bool Handle_IntPatch_GLine_is_null(const Handle_IntPatch_GLine* self_) { return self_->IsNull(); }
+extern "C" void Handle_IntPatch_Line_destructor(Handle_IntPatch_Line* self_) { delete self_; }
+extern "C" OcctResult<Handle_IntPatch_Line*> Handle_IntPatch_Line_clone(const Handle_IntPatch_Line* self_) {
+    try { return {new Handle_IntPatch_Line(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleGeomFillUniformSection_is_null(const HandleGeomFillUniformSection* self_) { return self_->IsNull(); }
-extern "C" void HandleGeomPlateCurveConstraint_destructor(HandleGeomPlateCurveConstraint* self_) { delete self_; }
-extern "C" OcctResult<HandleGeomPlateCurveConstraint*> HandleGeomPlateCurveConstraint_clone(const HandleGeomPlateCurveConstraint* self_) {
-    try { return {new HandleGeomPlateCurveConstraint(*self_), nullptr}; }
+extern "C" bool Handle_IntPatch_Line_is_null(const Handle_IntPatch_Line* self_) { return self_->IsNull(); }
+extern "C" void Handle_IntPatch_PointLine_destructor(Handle_IntPatch_PointLine* self_) { delete self_; }
+extern "C" OcctResult<Handle_IntPatch_PointLine*> Handle_IntPatch_PointLine_clone(const Handle_IntPatch_PointLine* self_) {
+    try { return {new Handle_IntPatch_PointLine(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleGeomPlateCurveConstraint_is_null(const HandleGeomPlateCurveConstraint* self_) { return self_->IsNull(); }
-extern "C" void HandleGeomPlateHArray1OfHCurve_destructor(HandleGeomPlateHArray1OfHCurve* self_) { delete self_; }
-extern "C" OcctResult<HandleGeomPlateHArray1OfHCurve*> HandleGeomPlateHArray1OfHCurve_clone(const HandleGeomPlateHArray1OfHCurve* self_) {
-    try { return {new HandleGeomPlateHArray1OfHCurve(*self_), nullptr}; }
+extern "C" bool Handle_IntPatch_PointLine_is_null(const Handle_IntPatch_PointLine* self_) { return self_->IsNull(); }
+extern "C" void Handle_IntPatch_PolyhedronBVH_destructor(Handle_IntPatch_PolyhedronBVH* self_) { delete self_; }
+extern "C" OcctResult<Handle_IntPatch_PolyhedronBVH*> Handle_IntPatch_PolyhedronBVH_clone(const Handle_IntPatch_PolyhedronBVH* self_) {
+    try { return {new Handle_IntPatch_PolyhedronBVH(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleGeomPlateHArray1OfHCurve_is_null(const HandleGeomPlateHArray1OfHCurve* self_) { return self_->IsNull(); }
-extern "C" void HandleGeomPlateHArray1OfSequenceOfReal_destructor(HandleGeomPlateHArray1OfSequenceOfReal* self_) { delete self_; }
-extern "C" OcctResult<HandleGeomPlateHArray1OfSequenceOfReal*> HandleGeomPlateHArray1OfSequenceOfReal_clone(const HandleGeomPlateHArray1OfSequenceOfReal* self_) {
-    try { return {new HandleGeomPlateHArray1OfSequenceOfReal(*self_), nullptr}; }
+extern "C" bool Handle_IntPatch_PolyhedronBVH_is_null(const Handle_IntPatch_PolyhedronBVH* self_) { return self_->IsNull(); }
+extern "C" void Handle_IntPatch_RLine_destructor(Handle_IntPatch_RLine* self_) { delete self_; }
+extern "C" OcctResult<Handle_IntPatch_RLine*> Handle_IntPatch_RLine_clone(const Handle_IntPatch_RLine* self_) {
+    try { return {new Handle_IntPatch_RLine(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleGeomPlateHArray1OfSequenceOfReal_is_null(const HandleGeomPlateHArray1OfSequenceOfReal* self_) { return self_->IsNull(); }
-extern "C" void HandleGeomPlateHSequenceOfCurveConstraint_destructor(HandleGeomPlateHSequenceOfCurveConstraint* self_) { delete self_; }
-extern "C" OcctResult<HandleGeomPlateHSequenceOfCurveConstraint*> HandleGeomPlateHSequenceOfCurveConstraint_clone(const HandleGeomPlateHSequenceOfCurveConstraint* self_) {
-    try { return {new HandleGeomPlateHSequenceOfCurveConstraint(*self_), nullptr}; }
+extern "C" bool Handle_IntPatch_RLine_is_null(const Handle_IntPatch_RLine* self_) { return self_->IsNull(); }
+extern "C" void Handle_IntPatch_TheIWLineOfTheIWalking_destructor(Handle_IntPatch_TheIWLineOfTheIWalking* self_) { delete self_; }
+extern "C" OcctResult<Handle_IntPatch_TheIWLineOfTheIWalking*> Handle_IntPatch_TheIWLineOfTheIWalking_clone(const Handle_IntPatch_TheIWLineOfTheIWalking* self_) {
+    try { return {new Handle_IntPatch_TheIWLineOfTheIWalking(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleGeomPlateHSequenceOfCurveConstraint_is_null(const HandleGeomPlateHSequenceOfCurveConstraint* self_) { return self_->IsNull(); }
-extern "C" void HandleGeomPlateHSequenceOfPointConstraint_destructor(HandleGeomPlateHSequenceOfPointConstraint* self_) { delete self_; }
-extern "C" OcctResult<HandleGeomPlateHSequenceOfPointConstraint*> HandleGeomPlateHSequenceOfPointConstraint_clone(const HandleGeomPlateHSequenceOfPointConstraint* self_) {
-    try { return {new HandleGeomPlateHSequenceOfPointConstraint(*self_), nullptr}; }
+extern "C" bool Handle_IntPatch_TheIWLineOfTheIWalking_is_null(const Handle_IntPatch_TheIWLineOfTheIWalking* self_) { return self_->IsNull(); }
+extern "C" void Handle_IntPatch_WLine_destructor(Handle_IntPatch_WLine* self_) { delete self_; }
+extern "C" OcctResult<Handle_IntPatch_WLine*> Handle_IntPatch_WLine_clone(const Handle_IntPatch_WLine* self_) {
+    try { return {new Handle_IntPatch_WLine(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleGeomPlateHSequenceOfPointConstraint_is_null(const HandleGeomPlateHSequenceOfPointConstraint* self_) { return self_->IsNull(); }
-extern "C" void HandleGeomPlatePointConstraint_destructor(HandleGeomPlatePointConstraint* self_) { delete self_; }
-extern "C" OcctResult<HandleGeomPlatePointConstraint*> HandleGeomPlatePointConstraint_clone(const HandleGeomPlatePointConstraint* self_) {
-    try { return {new HandleGeomPlatePointConstraint(*self_), nullptr}; }
+extern "C" bool Handle_IntPatch_WLine_is_null(const Handle_IntPatch_WLine* self_) { return self_->IsNull(); }
+extern "C" void Handle_IntStart_SITopolTool_destructor(Handle_IntStart_SITopolTool* self_) { delete self_; }
+extern "C" OcctResult<Handle_IntStart_SITopolTool*> Handle_IntStart_SITopolTool_clone(const Handle_IntStart_SITopolTool* self_) {
+    try { return {new Handle_IntStart_SITopolTool(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleGeomPlatePointConstraint_is_null(const HandleGeomPlatePointConstraint* self_) { return self_->IsNull(); }
-extern "C" void HandleGeomPlateSurface_destructor(HandleGeomPlateSurface* self_) { delete self_; }
-extern "C" OcctResult<HandleGeomPlateSurface*> HandleGeomPlateSurface_clone(const HandleGeomPlateSurface* self_) {
-    try { return {new HandleGeomPlateSurface(*self_), nullptr}; }
+extern "C" bool Handle_IntStart_SITopolTool_is_null(const Handle_IntStart_SITopolTool* self_) { return self_->IsNull(); }
+extern "C" void Handle_IntSurf_LineOn2S_destructor(Handle_IntSurf_LineOn2S* self_) { delete self_; }
+extern "C" OcctResult<Handle_IntSurf_LineOn2S*> Handle_IntSurf_LineOn2S_clone(const Handle_IntSurf_LineOn2S* self_) {
+    try { return {new Handle_IntSurf_LineOn2S(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleGeomPlateSurface_is_null(const HandleGeomPlateSurface* self_) { return self_->IsNull(); }
-extern "C" void HandleIntPatchALine_destructor(HandleIntPatchALine* self_) { delete self_; }
-extern "C" OcctResult<HandleIntPatchALine*> HandleIntPatchALine_clone(const HandleIntPatchALine* self_) {
-    try { return {new HandleIntPatchALine(*self_), nullptr}; }
+extern "C" bool Handle_IntSurf_LineOn2S_is_null(const Handle_IntSurf_LineOn2S* self_) { return self_->IsNull(); }
+extern "C" void Handle_Law_BSpFunc_destructor(Handle_Law_BSpFunc* self_) { delete self_; }
+extern "C" OcctResult<Handle_Law_BSpFunc*> Handle_Law_BSpFunc_clone(const Handle_Law_BSpFunc* self_) {
+    try { return {new Handle_Law_BSpFunc(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleIntPatchALine_is_null(const HandleIntPatchALine* self_) { return self_->IsNull(); }
-extern "C" void HandleIntPatchGLine_destructor(HandleIntPatchGLine* self_) { delete self_; }
-extern "C" OcctResult<HandleIntPatchGLine*> HandleIntPatchGLine_clone(const HandleIntPatchGLine* self_) {
-    try { return {new HandleIntPatchGLine(*self_), nullptr}; }
+extern "C" bool Handle_Law_BSpFunc_is_null(const Handle_Law_BSpFunc* self_) { return self_->IsNull(); }
+extern "C" void Handle_Law_BSpline_destructor(Handle_Law_BSpline* self_) { delete self_; }
+extern "C" OcctResult<Handle_Law_BSpline*> Handle_Law_BSpline_clone(const Handle_Law_BSpline* self_) {
+    try { return {new Handle_Law_BSpline(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleIntPatchGLine_is_null(const HandleIntPatchGLine* self_) { return self_->IsNull(); }
-extern "C" void HandleIntPatchLine_destructor(HandleIntPatchLine* self_) { delete self_; }
-extern "C" OcctResult<HandleIntPatchLine*> HandleIntPatchLine_clone(const HandleIntPatchLine* self_) {
-    try { return {new HandleIntPatchLine(*self_), nullptr}; }
+extern "C" bool Handle_Law_BSpline_is_null(const Handle_Law_BSpline* self_) { return self_->IsNull(); }
+extern "C" void Handle_Law_Composite_destructor(Handle_Law_Composite* self_) { delete self_; }
+extern "C" OcctResult<Handle_Law_Composite*> Handle_Law_Composite_clone(const Handle_Law_Composite* self_) {
+    try { return {new Handle_Law_Composite(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleIntPatchLine_is_null(const HandleIntPatchLine* self_) { return self_->IsNull(); }
-extern "C" void HandleIntPatchPointLine_destructor(HandleIntPatchPointLine* self_) { delete self_; }
-extern "C" OcctResult<HandleIntPatchPointLine*> HandleIntPatchPointLine_clone(const HandleIntPatchPointLine* self_) {
-    try { return {new HandleIntPatchPointLine(*self_), nullptr}; }
+extern "C" bool Handle_Law_Composite_is_null(const Handle_Law_Composite* self_) { return self_->IsNull(); }
+extern "C" void Handle_Law_Constant_destructor(Handle_Law_Constant* self_) { delete self_; }
+extern "C" OcctResult<Handle_Law_Constant*> Handle_Law_Constant_clone(const Handle_Law_Constant* self_) {
+    try { return {new Handle_Law_Constant(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleIntPatchPointLine_is_null(const HandleIntPatchPointLine* self_) { return self_->IsNull(); }
-extern "C" void HandleIntPatchRLine_destructor(HandleIntPatchRLine* self_) { delete self_; }
-extern "C" OcctResult<HandleIntPatchRLine*> HandleIntPatchRLine_clone(const HandleIntPatchRLine* self_) {
-    try { return {new HandleIntPatchRLine(*self_), nullptr}; }
+extern "C" bool Handle_Law_Constant_is_null(const Handle_Law_Constant* self_) { return self_->IsNull(); }
+extern "C" void Handle_Law_Function_destructor(Handle_Law_Function* self_) { delete self_; }
+extern "C" OcctResult<Handle_Law_Function*> Handle_Law_Function_clone(const Handle_Law_Function* self_) {
+    try { return {new Handle_Law_Function(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleIntPatchRLine_is_null(const HandleIntPatchRLine* self_) { return self_->IsNull(); }
-extern "C" void HandleIntPatchTheIWLineOfTheIWalking_destructor(HandleIntPatchTheIWLineOfTheIWalking* self_) { delete self_; }
-extern "C" OcctResult<HandleIntPatchTheIWLineOfTheIWalking*> HandleIntPatchTheIWLineOfTheIWalking_clone(const HandleIntPatchTheIWLineOfTheIWalking* self_) {
-    try { return {new HandleIntPatchTheIWLineOfTheIWalking(*self_), nullptr}; }
+extern "C" bool Handle_Law_Function_is_null(const Handle_Law_Function* self_) { return self_->IsNull(); }
+extern "C" void Handle_Law_Interpol_destructor(Handle_Law_Interpol* self_) { delete self_; }
+extern "C" OcctResult<Handle_Law_Interpol*> Handle_Law_Interpol_clone(const Handle_Law_Interpol* self_) {
+    try { return {new Handle_Law_Interpol(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleIntPatchTheIWLineOfTheIWalking_is_null(const HandleIntPatchTheIWLineOfTheIWalking* self_) { return self_->IsNull(); }
-extern "C" void HandleIntPatchWLine_destructor(HandleIntPatchWLine* self_) { delete self_; }
-extern "C" OcctResult<HandleIntPatchWLine*> HandleIntPatchWLine_clone(const HandleIntPatchWLine* self_) {
-    try { return {new HandleIntPatchWLine(*self_), nullptr}; }
+extern "C" bool Handle_Law_Interpol_is_null(const Handle_Law_Interpol* self_) { return self_->IsNull(); }
+extern "C" void Handle_Law_Linear_destructor(Handle_Law_Linear* self_) { delete self_; }
+extern "C" OcctResult<Handle_Law_Linear*> Handle_Law_Linear_clone(const Handle_Law_Linear* self_) {
+    try { return {new Handle_Law_Linear(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleIntPatchWLine_is_null(const HandleIntPatchWLine* self_) { return self_->IsNull(); }
-extern "C" void HandleIntStartSITopolTool_destructor(HandleIntStartSITopolTool* self_) { delete self_; }
-extern "C" OcctResult<HandleIntStartSITopolTool*> HandleIntStartSITopolTool_clone(const HandleIntStartSITopolTool* self_) {
-    try { return {new HandleIntStartSITopolTool(*self_), nullptr}; }
+extern "C" bool Handle_Law_Linear_is_null(const Handle_Law_Linear* self_) { return self_->IsNull(); }
+extern "C" void Handle_Law_S_destructor(Handle_Law_S* self_) { delete self_; }
+extern "C" OcctResult<Handle_Law_S*> Handle_Law_S_clone(const Handle_Law_S* self_) {
+    try { return {new Handle_Law_S(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleIntStartSITopolTool_is_null(const HandleIntStartSITopolTool* self_) { return self_->IsNull(); }
-extern "C" void HandleIntSurfLineOn2S_destructor(HandleIntSurfLineOn2S* self_) { delete self_; }
-extern "C" OcctResult<HandleIntSurfLineOn2S*> HandleIntSurfLineOn2S_clone(const HandleIntSurfLineOn2S* self_) {
-    try { return {new HandleIntSurfLineOn2S(*self_), nullptr}; }
+extern "C" bool Handle_Law_S_is_null(const Handle_Law_S* self_) { return self_->IsNull(); }
+extern "C" void Handle_NLPlate_HGPPConstraint_destructor(Handle_NLPlate_HGPPConstraint* self_) { delete self_; }
+extern "C" OcctResult<Handle_NLPlate_HGPPConstraint*> Handle_NLPlate_HGPPConstraint_clone(const Handle_NLPlate_HGPPConstraint* self_) {
+    try { return {new Handle_NLPlate_HGPPConstraint(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleIntSurfLineOn2S_is_null(const HandleIntSurfLineOn2S* self_) { return self_->IsNull(); }
-extern "C" void HandleLawBSpFunc_destructor(HandleLawBSpFunc* self_) { delete self_; }
-extern "C" OcctResult<HandleLawBSpFunc*> HandleLawBSpFunc_clone(const HandleLawBSpFunc* self_) {
-    try { return {new HandleLawBSpFunc(*self_), nullptr}; }
+extern "C" bool Handle_NLPlate_HGPPConstraint_is_null(const Handle_NLPlate_HGPPConstraint* self_) { return self_->IsNull(); }
+extern "C" void Handle_NLPlate_HPG0Constraint_destructor(Handle_NLPlate_HPG0Constraint* self_) { delete self_; }
+extern "C" OcctResult<Handle_NLPlate_HPG0Constraint*> Handle_NLPlate_HPG0Constraint_clone(const Handle_NLPlate_HPG0Constraint* self_) {
+    try { return {new Handle_NLPlate_HPG0Constraint(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleLawBSpFunc_is_null(const HandleLawBSpFunc* self_) { return self_->IsNull(); }
-extern "C" void HandleLawBSpline_destructor(HandleLawBSpline* self_) { delete self_; }
-extern "C" OcctResult<HandleLawBSpline*> HandleLawBSpline_clone(const HandleLawBSpline* self_) {
-    try { return {new HandleLawBSpline(*self_), nullptr}; }
+extern "C" bool Handle_NLPlate_HPG0Constraint_is_null(const Handle_NLPlate_HPG0Constraint* self_) { return self_->IsNull(); }
+extern "C" void Handle_NLPlate_HPG0G1Constraint_destructor(Handle_NLPlate_HPG0G1Constraint* self_) { delete self_; }
+extern "C" OcctResult<Handle_NLPlate_HPG0G1Constraint*> Handle_NLPlate_HPG0G1Constraint_clone(const Handle_NLPlate_HPG0G1Constraint* self_) {
+    try { return {new Handle_NLPlate_HPG0G1Constraint(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleLawBSpline_is_null(const HandleLawBSpline* self_) { return self_->IsNull(); }
-extern "C" void HandleLawComposite_destructor(HandleLawComposite* self_) { delete self_; }
-extern "C" OcctResult<HandleLawComposite*> HandleLawComposite_clone(const HandleLawComposite* self_) {
-    try { return {new HandleLawComposite(*self_), nullptr}; }
+extern "C" bool Handle_NLPlate_HPG0G1Constraint_is_null(const Handle_NLPlate_HPG0G1Constraint* self_) { return self_->IsNull(); }
+extern "C" void Handle_NLPlate_HPG0G2Constraint_destructor(Handle_NLPlate_HPG0G2Constraint* self_) { delete self_; }
+extern "C" OcctResult<Handle_NLPlate_HPG0G2Constraint*> Handle_NLPlate_HPG0G2Constraint_clone(const Handle_NLPlate_HPG0G2Constraint* self_) {
+    try { return {new Handle_NLPlate_HPG0G2Constraint(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleLawComposite_is_null(const HandleLawComposite* self_) { return self_->IsNull(); }
-extern "C" void HandleLawConstant_destructor(HandleLawConstant* self_) { delete self_; }
-extern "C" OcctResult<HandleLawConstant*> HandleLawConstant_clone(const HandleLawConstant* self_) {
-    try { return {new HandleLawConstant(*self_), nullptr}; }
+extern "C" bool Handle_NLPlate_HPG0G2Constraint_is_null(const Handle_NLPlate_HPG0G2Constraint* self_) { return self_->IsNull(); }
+extern "C" void Handle_NLPlate_HPG0G3Constraint_destructor(Handle_NLPlate_HPG0G3Constraint* self_) { delete self_; }
+extern "C" OcctResult<Handle_NLPlate_HPG0G3Constraint*> Handle_NLPlate_HPG0G3Constraint_clone(const Handle_NLPlate_HPG0G3Constraint* self_) {
+    try { return {new Handle_NLPlate_HPG0G3Constraint(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleLawConstant_is_null(const HandleLawConstant* self_) { return self_->IsNull(); }
-extern "C" void HandleLawFunction_destructor(HandleLawFunction* self_) { delete self_; }
-extern "C" OcctResult<HandleLawFunction*> HandleLawFunction_clone(const HandleLawFunction* self_) {
-    try { return {new HandleLawFunction(*self_), nullptr}; }
+extern "C" bool Handle_NLPlate_HPG0G3Constraint_is_null(const Handle_NLPlate_HPG0G3Constraint* self_) { return self_->IsNull(); }
+extern "C" void Handle_NLPlate_HPG1Constraint_destructor(Handle_NLPlate_HPG1Constraint* self_) { delete self_; }
+extern "C" OcctResult<Handle_NLPlate_HPG1Constraint*> Handle_NLPlate_HPG1Constraint_clone(const Handle_NLPlate_HPG1Constraint* self_) {
+    try { return {new Handle_NLPlate_HPG1Constraint(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleLawFunction_is_null(const HandleLawFunction* self_) { return self_->IsNull(); }
-extern "C" void HandleLawInterpol_destructor(HandleLawInterpol* self_) { delete self_; }
-extern "C" OcctResult<HandleLawInterpol*> HandleLawInterpol_clone(const HandleLawInterpol* self_) {
-    try { return {new HandleLawInterpol(*self_), nullptr}; }
+extern "C" bool Handle_NLPlate_HPG1Constraint_is_null(const Handle_NLPlate_HPG1Constraint* self_) { return self_->IsNull(); }
+extern "C" void Handle_NLPlate_HPG2Constraint_destructor(Handle_NLPlate_HPG2Constraint* self_) { delete self_; }
+extern "C" OcctResult<Handle_NLPlate_HPG2Constraint*> Handle_NLPlate_HPG2Constraint_clone(const Handle_NLPlate_HPG2Constraint* self_) {
+    try { return {new Handle_NLPlate_HPG2Constraint(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleLawInterpol_is_null(const HandleLawInterpol* self_) { return self_->IsNull(); }
-extern "C" void HandleLawLinear_destructor(HandleLawLinear* self_) { delete self_; }
-extern "C" OcctResult<HandleLawLinear*> HandleLawLinear_clone(const HandleLawLinear* self_) {
-    try { return {new HandleLawLinear(*self_), nullptr}; }
+extern "C" bool Handle_NLPlate_HPG2Constraint_is_null(const Handle_NLPlate_HPG2Constraint* self_) { return self_->IsNull(); }
+extern "C" void Handle_NLPlate_HPG3Constraint_destructor(Handle_NLPlate_HPG3Constraint* self_) { delete self_; }
+extern "C" OcctResult<Handle_NLPlate_HPG3Constraint*> Handle_NLPlate_HPG3Constraint_clone(const Handle_NLPlate_HPG3Constraint* self_) {
+    try { return {new Handle_NLPlate_HPG3Constraint(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleLawLinear_is_null(const HandleLawLinear* self_) { return self_->IsNull(); }
-extern "C" void HandleLawS_destructor(HandleLawS* self_) { delete self_; }
-extern "C" OcctResult<HandleLawS*> HandleLawS_clone(const HandleLawS* self_) {
-    try { return {new HandleLawS(*self_), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" bool HandleLawS_is_null(const HandleLawS* self_) { return self_->IsNull(); }
-extern "C" void HandleNLPlateHGPPConstraint_destructor(HandleNLPlateHGPPConstraint* self_) { delete self_; }
-extern "C" OcctResult<HandleNLPlateHGPPConstraint*> HandleNLPlateHGPPConstraint_clone(const HandleNLPlateHGPPConstraint* self_) {
-    try { return {new HandleNLPlateHGPPConstraint(*self_), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" bool HandleNLPlateHGPPConstraint_is_null(const HandleNLPlateHGPPConstraint* self_) { return self_->IsNull(); }
-extern "C" void HandleNLPlateHPG0Constraint_destructor(HandleNLPlateHPG0Constraint* self_) { delete self_; }
-extern "C" OcctResult<HandleNLPlateHPG0Constraint*> HandleNLPlateHPG0Constraint_clone(const HandleNLPlateHPG0Constraint* self_) {
-    try { return {new HandleNLPlateHPG0Constraint(*self_), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" bool HandleNLPlateHPG0Constraint_is_null(const HandleNLPlateHPG0Constraint* self_) { return self_->IsNull(); }
-extern "C" void HandleNLPlateHPG0G1Constraint_destructor(HandleNLPlateHPG0G1Constraint* self_) { delete self_; }
-extern "C" OcctResult<HandleNLPlateHPG0G1Constraint*> HandleNLPlateHPG0G1Constraint_clone(const HandleNLPlateHPG0G1Constraint* self_) {
-    try { return {new HandleNLPlateHPG0G1Constraint(*self_), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" bool HandleNLPlateHPG0G1Constraint_is_null(const HandleNLPlateHPG0G1Constraint* self_) { return self_->IsNull(); }
-extern "C" void HandleNLPlateHPG0G2Constraint_destructor(HandleNLPlateHPG0G2Constraint* self_) { delete self_; }
-extern "C" OcctResult<HandleNLPlateHPG0G2Constraint*> HandleNLPlateHPG0G2Constraint_clone(const HandleNLPlateHPG0G2Constraint* self_) {
-    try { return {new HandleNLPlateHPG0G2Constraint(*self_), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" bool HandleNLPlateHPG0G2Constraint_is_null(const HandleNLPlateHPG0G2Constraint* self_) { return self_->IsNull(); }
-extern "C" void HandleNLPlateHPG0G3Constraint_destructor(HandleNLPlateHPG0G3Constraint* self_) { delete self_; }
-extern "C" OcctResult<HandleNLPlateHPG0G3Constraint*> HandleNLPlateHPG0G3Constraint_clone(const HandleNLPlateHPG0G3Constraint* self_) {
-    try { return {new HandleNLPlateHPG0G3Constraint(*self_), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" bool HandleNLPlateHPG0G3Constraint_is_null(const HandleNLPlateHPG0G3Constraint* self_) { return self_->IsNull(); }
-extern "C" void HandleNLPlateHPG1Constraint_destructor(HandleNLPlateHPG1Constraint* self_) { delete self_; }
-extern "C" OcctResult<HandleNLPlateHPG1Constraint*> HandleNLPlateHPG1Constraint_clone(const HandleNLPlateHPG1Constraint* self_) {
-    try { return {new HandleNLPlateHPG1Constraint(*self_), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" bool HandleNLPlateHPG1Constraint_is_null(const HandleNLPlateHPG1Constraint* self_) { return self_->IsNull(); }
-extern "C" void HandleNLPlateHPG2Constraint_destructor(HandleNLPlateHPG2Constraint* self_) { delete self_; }
-extern "C" OcctResult<HandleNLPlateHPG2Constraint*> HandleNLPlateHPG2Constraint_clone(const HandleNLPlateHPG2Constraint* self_) {
-    try { return {new HandleNLPlateHPG2Constraint(*self_), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" bool HandleNLPlateHPG2Constraint_is_null(const HandleNLPlateHPG2Constraint* self_) { return self_->IsNull(); }
-extern "C" void HandleNLPlateHPG3Constraint_destructor(HandleNLPlateHPG3Constraint* self_) { delete self_; }
-extern "C" OcctResult<HandleNLPlateHPG3Constraint*> HandleNLPlateHPG3Constraint_clone(const HandleNLPlateHPG3Constraint* self_) {
-    try { return {new HandleNLPlateHPG3Constraint(*self_), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" bool HandleNLPlateHPG3Constraint_is_null(const HandleNLPlateHPG3Constraint* self_) { return self_->IsNull(); }
-extern "C" void HandlePlateHArray1OfPinpointConstraint_destructor(HandlePlateHArray1OfPinpointConstraint* self_) { delete self_; }
-extern "C" OcctResult<HandlePlateHArray1OfPinpointConstraint*> HandlePlateHArray1OfPinpointConstraint_clone(const HandlePlateHArray1OfPinpointConstraint* self_) {
-    try { return {new HandlePlateHArray1OfPinpointConstraint(*self_), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" bool HandlePlateHArray1OfPinpointConstraint_is_null(const HandlePlateHArray1OfPinpointConstraint* self_) { return self_->IsNull(); }
+extern "C" bool Handle_NLPlate_HPG3Constraint_is_null(const Handle_NLPlate_HPG3Constraint* self_) { return self_->IsNull(); }
 
 // ========================
 // AppBlend_Approx wrappers
@@ -1102,7 +952,7 @@ extern "C" const char* AppBlend_Approx_surf_shape(const AppBlend_Approx* self_, 
     try { self_->SurfShape(*UDegree, *VDegree, *NbUPoles, *NbVPoles, *NbUKnots, *NbVKnots); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* AppBlend_Approx_surface(const AppBlend_Approx* self_, TColgp_Array2OfPnt* TPoles, TColStd_Array2OfReal* TWeights, TColStd_Array1OfReal* TUKnots, TColStd_Array1OfReal* TVKnots, TColStd_Array1OfInteger* TUMults, TColStd_Array1OfInteger* TVMults) {
+extern "C" const char* AppBlend_Approx_surface(const AppBlend_Approx* self_, NCollection_Array2_gp_Pnt* TPoles, NCollection_Array2_double* TWeights, NCollection_Array1_double* TUKnots, NCollection_Array1_double* TVKnots, NCollection_Array1_int* TUMults, NCollection_Array1_int* TVMults) {
     try { self_->Surface(*TPoles, *TWeights, *TUKnots, *TVKnots, *TUMults, *TVMults); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -1114,27 +964,27 @@ extern "C" OcctResult<int32_t> AppBlend_Approx_v_degree(const AppBlend_Approx* s
     try { return {self_->VDegree(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TColgp_Array2OfPnt const*> AppBlend_Approx_surf_poles(const AppBlend_Approx* self_) {
+extern "C" OcctResult<NCollection_Array2_gp_Pnt const*> AppBlend_Approx_surf_poles(const AppBlend_Approx* self_) {
     try { return {&(self_->SurfPoles()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TColStd_Array2OfReal const*> AppBlend_Approx_surf_weights(const AppBlend_Approx* self_) {
+extern "C" OcctResult<NCollection_Array2_double const*> AppBlend_Approx_surf_weights(const AppBlend_Approx* self_) {
     try { return {&(self_->SurfWeights()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TColStd_Array1OfReal const*> AppBlend_Approx_surf_u_knots(const AppBlend_Approx* self_) {
+extern "C" OcctResult<NCollection_Array1_double const*> AppBlend_Approx_surf_u_knots(const AppBlend_Approx* self_) {
     try { return {&(self_->SurfUKnots()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TColStd_Array1OfReal const*> AppBlend_Approx_surf_v_knots(const AppBlend_Approx* self_) {
+extern "C" OcctResult<NCollection_Array1_double const*> AppBlend_Approx_surf_v_knots(const AppBlend_Approx* self_) {
     try { return {&(self_->SurfVKnots()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TColStd_Array1OfInteger const*> AppBlend_Approx_surf_u_mults(const AppBlend_Approx* self_) {
+extern "C" OcctResult<NCollection_Array1_int const*> AppBlend_Approx_surf_u_mults(const AppBlend_Approx* self_) {
     try { return {&(self_->SurfUMults()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TColStd_Array1OfInteger const*> AppBlend_Approx_surf_v_mults(const AppBlend_Approx* self_) {
+extern "C" OcctResult<NCollection_Array1_int const*> AppBlend_Approx_surf_v_mults(const AppBlend_Approx* self_) {
     try { return {&(self_->SurfVMults()), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -1146,7 +996,7 @@ extern "C" const char* AppBlend_Approx_curves2d_shape(const AppBlend_Approx* sel
     try { self_->Curves2dShape(*Degree, *NbPoles, *NbKnots); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* AppBlend_Approx_curve2d(const AppBlend_Approx* self_, int32_t Index, TColgp_Array1OfPnt2d* TPoles, TColStd_Array1OfReal* TKnots, TColStd_Array1OfInteger* TMults) {
+extern "C" const char* AppBlend_Approx_curve2d(const AppBlend_Approx* self_, int32_t Index, NCollection_Array1_gp_Pnt2d* TPoles, NCollection_Array1_double* TKnots, NCollection_Array1_int* TMults) {
     try { self_->Curve2d(Index, *TPoles, *TKnots, *TMults); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -1154,15 +1004,15 @@ extern "C" OcctResult<int32_t> AppBlend_Approx_curves2d_degree(const AppBlend_Ap
     try { return {self_->Curves2dDegree(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TColgp_Array1OfPnt2d const*> AppBlend_Approx_curve2d_poles(const AppBlend_Approx* self_, int32_t Index) {
+extern "C" OcctResult<NCollection_Array1_gp_Pnt2d const*> AppBlend_Approx_curve2d_poles(const AppBlend_Approx* self_, int32_t Index) {
     try { return {&(self_->Curve2dPoles(Index)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TColStd_Array1OfReal const*> AppBlend_Approx_curves2d_knots(const AppBlend_Approx* self_) {
+extern "C" OcctResult<NCollection_Array1_double const*> AppBlend_Approx_curves2d_knots(const AppBlend_Approx* self_) {
     try { return {&(self_->Curves2dKnots()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TColStd_Array1OfInteger const*> AppBlend_Approx_curves2d_mults(const AppBlend_Approx* self_) {
+extern "C" OcctResult<NCollection_Array1_int const*> AppBlend_Approx_curves2d_mults(const AppBlend_Approx* self_) {
     try { return {&(self_->Curves2dMults()), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -1184,11 +1034,11 @@ extern "C" OcctResult<ApproxInt_KnotTools*> ApproxInt_KnotTools_ctor() {
     try { return {new ApproxInt_KnotTools(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* ApproxInt_KnotTools_build_knots(TColgp_Array1OfPnt const* thePntsXYZ, TColgp_Array1OfPnt2d const* thePntsU1V1, TColgp_Array1OfPnt2d const* thePntsU2V2, math_Vector const* thePars, bool theApproxXYZ, bool theApproxU1V1, bool theApproxU2V2, int32_t theMinNbPnts, NCollection_Vector_Standard_Integer* theKnots) {
+extern "C" const char* ApproxInt_KnotTools_build_knots(NCollection_Array1_gp_Pnt const* thePntsXYZ, NCollection_Array1_gp_Pnt2d const* thePntsU1V1, NCollection_Array1_gp_Pnt2d const* thePntsU2V2, math_Vector const* thePars, bool theApproxXYZ, bool theApproxU1V1, bool theApproxU2V2, int32_t theMinNbPnts, NCollection_DynamicArray_int* theKnots) {
     try { ApproxInt_KnotTools::BuildKnots(*thePntsXYZ, *thePntsU1V1, *thePntsU2V2, *thePars, theApproxXYZ, theApproxU1V1, theApproxU2V2, theMinNbPnts, *theKnots); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* ApproxInt_KnotTools_build_curvature(NCollection_LocalArray_Standard_Real const* theCoords, int32_t theDim, math_Vector const* thePars, TColStd_Array1OfReal* theCurv, double* theMaxCurv) {
+extern "C" const char* ApproxInt_KnotTools_build_curvature(NCollection_LocalArray_double const* theCoords, int32_t theDim, math_Vector const* thePars, NCollection_Array1_double* theCurv, double* theMaxCurv) {
     try { ApproxInt_KnotTools::BuildCurvature(*theCoords, theDim, *thePars, *theCurv, *theMaxCurv); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -1411,7 +1261,7 @@ extern "C" void FairCurve_DistributionOfEnergy_destructor(FairCurve_Distribution
 // FairCurve_DistributionOfJerk wrappers
 // ========================
 
-extern "C" OcctResult<FairCurve_DistributionOfJerk*> FairCurve_DistributionOfJerk_ctor_int_handletcolstdharray1ofreal_handletcolgpharray1ofpnt2d_int_battenlaw_int(int32_t BSplOrder, Handle(TColStd_HArray1OfReal) const* FlatKnots, Handle(TColgp_HArray1OfPnt2d) const* Poles, int32_t DerivativeOrder, FairCurve_BattenLaw const* Law, int32_t NbValAux) {
+extern "C" OcctResult<FairCurve_DistributionOfJerk*> FairCurve_DistributionOfJerk_ctor_int_harr1_double_harr1_pnt2d_int_battenlaw_int(int32_t BSplOrder, Handle(NCollection_HArray1_double) const* FlatKnots, Handle(NCollection_HArray1_gp_Pnt2d) const* Poles, int32_t DerivativeOrder, FairCurve_BattenLaw const* Law, int32_t NbValAux) {
     try { return {new FairCurve_DistributionOfJerk(BSplOrder, *FlatKnots, *Poles, DerivativeOrder, *Law, NbValAux), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -1445,7 +1295,7 @@ extern "C" void FairCurve_DistributionOfJerk_destructor(FairCurve_DistributionOf
 // FairCurve_DistributionOfSagging wrappers
 // ========================
 
-extern "C" OcctResult<FairCurve_DistributionOfSagging*> FairCurve_DistributionOfSagging_ctor_int_handletcolstdharray1ofreal_handletcolgpharray1ofpnt2d_int_battenlaw_int(int32_t BSplOrder, Handle(TColStd_HArray1OfReal) const* FlatKnots, Handle(TColgp_HArray1OfPnt2d) const* Poles, int32_t DerivativeOrder, FairCurve_BattenLaw const* Law, int32_t NbValAux) {
+extern "C" OcctResult<FairCurve_DistributionOfSagging*> FairCurve_DistributionOfSagging_ctor_int_harr1_double_harr1_pnt2d_int_battenlaw_int(int32_t BSplOrder, Handle(NCollection_HArray1_double) const* FlatKnots, Handle(NCollection_HArray1_gp_Pnt2d) const* Poles, int32_t DerivativeOrder, FairCurve_BattenLaw const* Law, int32_t NbValAux) {
     try { return {new FairCurve_DistributionOfSagging(BSplOrder, *FlatKnots, *Poles, DerivativeOrder, *Law, NbValAux), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -1479,7 +1329,7 @@ extern "C" void FairCurve_DistributionOfSagging_destructor(FairCurve_Distributio
 // FairCurve_DistributionOfTension wrappers
 // ========================
 
-extern "C" OcctResult<FairCurve_DistributionOfTension*> FairCurve_DistributionOfTension_ctor_int_handletcolstdharray1ofreal_handletcolgpharray1ofpnt2d_int_real_battenlaw_int_bool(int32_t BSplOrder, Handle(TColStd_HArray1OfReal) const* FlatKnots, Handle(TColgp_HArray1OfPnt2d) const* Poles, int32_t DerivativeOrder, double LengthSliding, FairCurve_BattenLaw const* Law, int32_t NbValAux, bool Uniform) {
+extern "C" OcctResult<FairCurve_DistributionOfTension*> FairCurve_DistributionOfTension_ctor_int_harr1_double_harr1_pnt2d_int_real_battenlaw_int_bool(int32_t BSplOrder, Handle(NCollection_HArray1_double) const* FlatKnots, Handle(NCollection_HArray1_gp_Pnt2d) const* Poles, int32_t DerivativeOrder, double LengthSliding, FairCurve_BattenLaw const* Law, int32_t NbValAux, bool Uniform) {
     try { return {new FairCurve_DistributionOfTension(BSplOrder, *FlatKnots, *Poles, DerivativeOrder, LengthSliding, *Law, NbValAux, Uniform), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -1541,7 +1391,7 @@ extern "C" OcctResult<bool> FairCurve_Energy_variable(const FairCurve_Energy* se
     try { return {self_->Variable(*X), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(TColgp_HArray1OfPnt2d) const*> FairCurve_Energy_poles(const FairCurve_Energy* self_) {
+extern "C" OcctResult<Handle(NCollection_HArray1_gp_Pnt2d) const*> FairCurve_Energy_poles(const FairCurve_Energy* self_) {
     try { return {&(self_->Poles()), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -1561,7 +1411,7 @@ extern "C" void FairCurve_Energy_destructor(FairCurve_Energy* self_) { delete se
 // FairCurve_EnergyOfBatten wrappers
 // ========================
 
-extern "C" OcctResult<FairCurve_EnergyOfBatten*> FairCurve_EnergyOfBatten_ctor_int_handletcolstdharray1ofreal_handletcolgpharray1ofpnt2d_int2_battenlaw_real_bool_real2(int32_t BSplOrder, Handle(TColStd_HArray1OfReal) const* FlatKnots, Handle(TColgp_HArray1OfPnt2d) const* Poles, int32_t ContrOrder1, int32_t ContrOrder2, FairCurve_BattenLaw const* Law, double LengthSliding, bool FreeSliding, double Angle1, double Angle2) {
+extern "C" OcctResult<FairCurve_EnergyOfBatten*> FairCurve_EnergyOfBatten_ctor_int_harr1_double_harr1_pnt2d_int2_battenlaw_real_bool_real2(int32_t BSplOrder, Handle(NCollection_HArray1_double) const* FlatKnots, Handle(NCollection_HArray1_gp_Pnt2d) const* Poles, int32_t ContrOrder1, int32_t ContrOrder2, FairCurve_BattenLaw const* Law, double LengthSliding, bool FreeSliding, double Angle1, double Angle2) {
     try { return {new FairCurve_EnergyOfBatten(BSplOrder, *FlatKnots, *Poles, ContrOrder1, ContrOrder2, *Law, LengthSliding, FreeSliding, Angle1, Angle2), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -1601,7 +1451,7 @@ extern "C" OcctResult<bool> FairCurve_EnergyOfBatten_inherited_Values(FairCurve_
     try { return {self->Values(X, E, G), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(TColgp_HArray1OfPnt2d) const*> FairCurve_EnergyOfBatten_inherited_Poles(const FairCurve_EnergyOfBatten* self) {
+extern "C" OcctResult<Handle(NCollection_HArray1_gp_Pnt2d) const*> FairCurve_EnergyOfBatten_inherited_Poles(const FairCurve_EnergyOfBatten* self) {
     try { return {&(self->Poles()), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -1615,7 +1465,7 @@ extern "C" void FairCurve_EnergyOfBatten_destructor(FairCurve_EnergyOfBatten* se
 // FairCurve_EnergyOfMVC wrappers
 // ========================
 
-extern "C" OcctResult<FairCurve_EnergyOfMVC*> FairCurve_EnergyOfMVC_ctor_int_handletcolstdharray1ofreal_handletcolgpharray1ofpnt2d_int2_battenlaw_real2_bool_real4(int32_t BSplOrder, Handle(TColStd_HArray1OfReal) const* FlatKnots, Handle(TColgp_HArray1OfPnt2d) const* Poles, int32_t ContrOrder1, int32_t ContrOrder2, FairCurve_BattenLaw const* Law, double PhysicalRatio, double LengthSliding, bool FreeSliding, double Angle1, double Angle2, double Curvature1, double Curvature2) {
+extern "C" OcctResult<FairCurve_EnergyOfMVC*> FairCurve_EnergyOfMVC_ctor_int_harr1_double_harr1_pnt2d_int2_battenlaw_real2_bool_real4(int32_t BSplOrder, Handle(NCollection_HArray1_double) const* FlatKnots, Handle(NCollection_HArray1_gp_Pnt2d) const* Poles, int32_t ContrOrder1, int32_t ContrOrder2, FairCurve_BattenLaw const* Law, double PhysicalRatio, double LengthSliding, bool FreeSliding, double Angle1, double Angle2, double Curvature1, double Curvature2) {
     try { return {new FairCurve_EnergyOfMVC(BSplOrder, *FlatKnots, *Poles, ContrOrder1, ContrOrder2, *Law, PhysicalRatio, LengthSliding, FreeSliding, Angle1, Angle2, Curvature1, Curvature2), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -1655,7 +1505,7 @@ extern "C" OcctResult<bool> FairCurve_EnergyOfMVC_inherited_Values(FairCurve_Ene
     try { return {self->Values(X, E, G), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(TColgp_HArray1OfPnt2d) const*> FairCurve_EnergyOfMVC_inherited_Poles(const FairCurve_EnergyOfMVC* self) {
+extern "C" OcctResult<Handle(NCollection_HArray1_gp_Pnt2d) const*> FairCurve_EnergyOfMVC_inherited_Poles(const FairCurve_EnergyOfMVC* self) {
     try { return {&(self->Poles()), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -2533,10 +2383,6 @@ extern "C" void GccAna_LinPnt2dBisec_destructor(GccAna_LinPnt2dBisec* self_) { d
 // GccAna_NoSolution wrappers
 // ========================
 
-extern "C" OcctResult<GccAna_NoSolution*> GccAna_NoSolution_ctor() {
-    try { return {new GccAna_NoSolution(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
 extern "C" OcctResult<GccAna_NoSolution*> GccAna_NoSolution_ctor_charptr(const char* theMessage) {
     try { return {new GccAna_NoSolution(theMessage), nullptr}; }
     OCCT_CATCH_RETURN
@@ -2545,96 +2391,14 @@ extern "C" OcctResult<GccAna_NoSolution*> GccAna_NoSolution_ctor_charptr2(const 
     try { return {new GccAna_NoSolution(theMessage, theStackTrace), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(Standard_Type) const*> GccAna_NoSolution_dynamic_type(const GccAna_NoSolution* self_) {
-    try { return {&(self_->DynamicType()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* GccAna_NoSolution_raise_charptr(const char* theMessage) {
-    try { GccAna_NoSolution::Raise(theMessage); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* GccAna_NoSolution_raise_sstream(Standard_SStream* theMessage) {
-    try { GccAna_NoSolution::Raise(*theMessage); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<Handle(GccAna_NoSolution)*> GccAna_NoSolution_new_instance_charptr(const char* theMessage) {
-    try { return {new Handle(GccAna_NoSolution)(GccAna_NoSolution::NewInstance(theMessage)), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Handle(GccAna_NoSolution)*> GccAna_NoSolution_new_instance_charptr2(const char* theMessage, const char* theStackTrace) {
-    try { return {new Handle(GccAna_NoSolution)(GccAna_NoSolution::NewInstance(theMessage, theStackTrace)), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<char const*> GccAna_NoSolution_get_type_name() {
-    try { return {GccAna_NoSolution::get_type_name(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Handle(Standard_Type) const*> GccAna_NoSolution_get_type_descriptor() {
-    try { return {&(GccAna_NoSolution::get_type_descriptor()), nullptr}; }
+extern "C" OcctResult<char const*> GccAna_NoSolution_exception_type(const GccAna_NoSolution* self_) {
+    try { return {self_->ExceptionType(), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<const Standard_Failure*> GccAna_NoSolution_as_Standard_Failure(const GccAna_NoSolution* self_) { return {static_cast<const Standard_Failure*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Failure*> GccAna_NoSolution_as_Standard_Failure_mut(GccAna_NoSolution* self_) { return {static_cast<Standard_Failure*>(self_), nullptr}; }
-extern "C" OcctResult<const Standard_Transient*> GccAna_NoSolution_as_Standard_Transient(const GccAna_NoSolution* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<Standard_Transient*> GccAna_NoSolution_as_Standard_Transient_mut(GccAna_NoSolution* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleGccAnaNoSolution*> GccAna_NoSolution_to_handle(GccAna_NoSolution* obj) {
-    try { return {new HandleGccAnaNoSolution(obj), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<const GccAna_NoSolution*> HandleGccAnaNoSolution_get(const HandleGccAnaNoSolution* handle) {
-    try { return {(*handle).get(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<GccAna_NoSolution*> HandleGccAnaNoSolution_get_mut(HandleGccAnaNoSolution* handle) {
-    try { return {(*handle).get(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<HandleStandardFailure*> HandleGccAnaNoSolution_to_HandleStandardFailure(const HandleGccAnaNoSolution* self_) {
-    try { return {new HandleStandardFailure(*self_), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<HandleStandardTransient*> HandleGccAnaNoSolution_to_HandleStandardTransient(const HandleGccAnaNoSolution* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
-    OCCT_CATCH_RETURN
-}
 extern "C" const char* GccAna_NoSolution_inherited_Print(const GccAna_NoSolution* self, Standard_OStream& theStream) {
     try { self->Print(theStream); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* GccAna_NoSolution_inherited_Reraise(GccAna_NoSolution* self) {
-    try { self->Reraise(); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* GccAna_NoSolution_inherited_Jump(GccAna_NoSolution* self) {
-    try { self->Jump(); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<bool> GccAna_NoSolution_inherited_IsInstance(const GccAna_NoSolution* self, Handle(Standard_Type) const& theType) {
-    try { return {self->IsInstance(theType), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<bool> GccAna_NoSolution_inherited_IsKind(const GccAna_NoSolution* self, Handle(Standard_Type) const& theType) {
-    try { return {self->IsKind(theType), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Standard_Transient*> GccAna_NoSolution_inherited_This(const GccAna_NoSolution* self) {
-    try { return {self->This(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<int32_t> GccAna_NoSolution_inherited_GetRefCount(const GccAna_NoSolution* self) {
-    try { return {self->GetRefCount(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* GccAna_NoSolution_inherited_IncrementRefCounter(GccAna_NoSolution* self) {
-    try { self->IncrementRefCounter(); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<int32_t> GccAna_NoSolution_inherited_DecrementRefCounter(GccAna_NoSolution* self) {
-    try { return {self->DecrementRefCounter(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* GccAna_NoSolution_inherited_Delete(const GccAna_NoSolution* self) {
-    try { self->Delete(); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
 extern "C" void GccAna_NoSolution_destructor(GccAna_NoSolution* self_) { delete self_; }
@@ -2665,10 +2429,6 @@ extern "C" void GccAna_Pnt2dBisec_destructor(GccAna_Pnt2dBisec* self_) { delete 
 // GccEnt_BadQualifier wrappers
 // ========================
 
-extern "C" OcctResult<GccEnt_BadQualifier*> GccEnt_BadQualifier_ctor() {
-    try { return {new GccEnt_BadQualifier(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
 extern "C" OcctResult<GccEnt_BadQualifier*> GccEnt_BadQualifier_ctor_charptr(const char* theMessage) {
     try { return {new GccEnt_BadQualifier(theMessage), nullptr}; }
     OCCT_CATCH_RETURN
@@ -2677,102 +2437,16 @@ extern "C" OcctResult<GccEnt_BadQualifier*> GccEnt_BadQualifier_ctor_charptr2(co
     try { return {new GccEnt_BadQualifier(theMessage, theStackTrace), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(Standard_Type) const*> GccEnt_BadQualifier_dynamic_type(const GccEnt_BadQualifier* self_) {
-    try { return {&(self_->DynamicType()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* GccEnt_BadQualifier_raise_charptr(const char* theMessage) {
-    try { GccEnt_BadQualifier::Raise(theMessage); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* GccEnt_BadQualifier_raise_sstream(Standard_SStream* theMessage) {
-    try { GccEnt_BadQualifier::Raise(*theMessage); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<Handle(GccEnt_BadQualifier)*> GccEnt_BadQualifier_new_instance_charptr(const char* theMessage) {
-    try { return {new Handle(GccEnt_BadQualifier)(GccEnt_BadQualifier::NewInstance(theMessage)), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Handle(GccEnt_BadQualifier)*> GccEnt_BadQualifier_new_instance_charptr2(const char* theMessage, const char* theStackTrace) {
-    try { return {new Handle(GccEnt_BadQualifier)(GccEnt_BadQualifier::NewInstance(theMessage, theStackTrace)), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<char const*> GccEnt_BadQualifier_get_type_name() {
-    try { return {GccEnt_BadQualifier::get_type_name(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Handle(Standard_Type) const*> GccEnt_BadQualifier_get_type_descriptor() {
-    try { return {&(GccEnt_BadQualifier::get_type_descriptor()), nullptr}; }
+extern "C" OcctResult<char const*> GccEnt_BadQualifier_exception_type(const GccEnt_BadQualifier* self_) {
+    try { return {self_->ExceptionType(), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<const Standard_DomainError*> GccEnt_BadQualifier_as_Standard_DomainError(const GccEnt_BadQualifier* self_) { return {static_cast<const Standard_DomainError*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_DomainError*> GccEnt_BadQualifier_as_Standard_DomainError_mut(GccEnt_BadQualifier* self_) { return {static_cast<Standard_DomainError*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Failure*> GccEnt_BadQualifier_as_Standard_Failure(const GccEnt_BadQualifier* self_) { return {static_cast<const Standard_Failure*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Failure*> GccEnt_BadQualifier_as_Standard_Failure_mut(GccEnt_BadQualifier* self_) { return {static_cast<Standard_Failure*>(self_), nullptr}; }
-extern "C" OcctResult<const Standard_Transient*> GccEnt_BadQualifier_as_Standard_Transient(const GccEnt_BadQualifier* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<Standard_Transient*> GccEnt_BadQualifier_as_Standard_Transient_mut(GccEnt_BadQualifier* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleGccEntBadQualifier*> GccEnt_BadQualifier_to_handle(GccEnt_BadQualifier* obj) {
-    try { return {new HandleGccEntBadQualifier(obj), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<const GccEnt_BadQualifier*> HandleGccEntBadQualifier_get(const HandleGccEntBadQualifier* handle) {
-    try { return {(*handle).get(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<GccEnt_BadQualifier*> HandleGccEntBadQualifier_get_mut(HandleGccEntBadQualifier* handle) {
-    try { return {(*handle).get(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<HandleStandardDomainError*> HandleGccEntBadQualifier_to_HandleStandardDomainError(const HandleGccEntBadQualifier* self_) {
-    try { return {new HandleStandardDomainError(*self_), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<HandleStandardFailure*> HandleGccEntBadQualifier_to_HandleStandardFailure(const HandleGccEntBadQualifier* self_) {
-    try { return {new HandleStandardFailure(*self_), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<HandleStandardTransient*> HandleGccEntBadQualifier_to_HandleStandardTransient(const HandleGccEntBadQualifier* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
-    OCCT_CATCH_RETURN
-}
 extern "C" const char* GccEnt_BadQualifier_inherited_Print(const GccEnt_BadQualifier* self, Standard_OStream& theStream) {
     try { self->Print(theStream); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* GccEnt_BadQualifier_inherited_Reraise(GccEnt_BadQualifier* self) {
-    try { self->Reraise(); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* GccEnt_BadQualifier_inherited_Jump(GccEnt_BadQualifier* self) {
-    try { self->Jump(); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<bool> GccEnt_BadQualifier_inherited_IsInstance(const GccEnt_BadQualifier* self, Handle(Standard_Type) const& theType) {
-    try { return {self->IsInstance(theType), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<bool> GccEnt_BadQualifier_inherited_IsKind(const GccEnt_BadQualifier* self, Handle(Standard_Type) const& theType) {
-    try { return {self->IsKind(theType), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Standard_Transient*> GccEnt_BadQualifier_inherited_This(const GccEnt_BadQualifier* self) {
-    try { return {self->This(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<int32_t> GccEnt_BadQualifier_inherited_GetRefCount(const GccEnt_BadQualifier* self) {
-    try { return {self->GetRefCount(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* GccEnt_BadQualifier_inherited_IncrementRefCounter(GccEnt_BadQualifier* self) {
-    try { self->IncrementRefCounter(); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<int32_t> GccEnt_BadQualifier_inherited_DecrementRefCounter(GccEnt_BadQualifier* self) {
-    try { return {self->DecrementRefCounter(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* GccEnt_BadQualifier_inherited_Delete(const GccEnt_BadQualifier* self) {
-    try { self->Delete(); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
 extern "C" void GccEnt_BadQualifier_destructor(GccEnt_BadQualifier* self_) { delete self_; }
@@ -2873,24 +2547,24 @@ extern "C" OcctResult<const GccInt_Bisec*> GccInt_BCirc_as_GccInt_Bisec(const Gc
 extern "C" OcctResult<GccInt_Bisec*> GccInt_BCirc_as_GccInt_Bisec_mut(GccInt_BCirc* self_) { return {static_cast<GccInt_Bisec*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> GccInt_BCirc_as_Standard_Transient(const GccInt_BCirc* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> GccInt_BCirc_as_Standard_Transient_mut(GccInt_BCirc* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleGccIntBCirc*> GccInt_BCirc_to_handle(GccInt_BCirc* obj) {
-    try { return {new HandleGccIntBCirc(obj), nullptr}; }
+extern "C" OcctResult<Handle_GccInt_BCirc*> GccInt_BCirc_to_handle(GccInt_BCirc* obj) {
+    try { return {new Handle_GccInt_BCirc(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const GccInt_BCirc*> HandleGccIntBCirc_get(const HandleGccIntBCirc* handle) {
+extern "C" OcctResult<const GccInt_BCirc*> Handle_GccInt_BCirc_get(const Handle_GccInt_BCirc* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<GccInt_BCirc*> HandleGccIntBCirc_get_mut(HandleGccIntBCirc* handle) {
+extern "C" OcctResult<GccInt_BCirc*> Handle_GccInt_BCirc_get_mut(Handle_GccInt_BCirc* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleGccIntBisec*> HandleGccIntBCirc_to_HandleGccIntBisec(const HandleGccIntBCirc* self_) {
-    try { return {new HandleGccIntBisec(*self_), nullptr}; }
+extern "C" OcctResult<Handle_GccInt_Bisec*> Handle_GccInt_BCirc_to_Handle_GccInt_Bisec(const Handle_GccInt_BCirc* self_) {
+    try { return {new Handle_GccInt_Bisec(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleGccIntBCirc_to_HandleStandardTransient(const HandleGccIntBCirc* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_GccInt_BCirc_to_Handle_Standard_Transient(const Handle_GccInt_BCirc* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<gp_Pnt2d*> GccInt_BCirc_inherited_Point(const GccInt_BCirc* self) {
@@ -2975,24 +2649,24 @@ extern "C" OcctResult<const GccInt_Bisec*> GccInt_BElips_as_GccInt_Bisec(const G
 extern "C" OcctResult<GccInt_Bisec*> GccInt_BElips_as_GccInt_Bisec_mut(GccInt_BElips* self_) { return {static_cast<GccInt_Bisec*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> GccInt_BElips_as_Standard_Transient(const GccInt_BElips* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> GccInt_BElips_as_Standard_Transient_mut(GccInt_BElips* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleGccIntBElips*> GccInt_BElips_to_handle(GccInt_BElips* obj) {
-    try { return {new HandleGccIntBElips(obj), nullptr}; }
+extern "C" OcctResult<Handle_GccInt_BElips*> GccInt_BElips_to_handle(GccInt_BElips* obj) {
+    try { return {new Handle_GccInt_BElips(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const GccInt_BElips*> HandleGccIntBElips_get(const HandleGccIntBElips* handle) {
+extern "C" OcctResult<const GccInt_BElips*> Handle_GccInt_BElips_get(const Handle_GccInt_BElips* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<GccInt_BElips*> HandleGccIntBElips_get_mut(HandleGccIntBElips* handle) {
+extern "C" OcctResult<GccInt_BElips*> Handle_GccInt_BElips_get_mut(Handle_GccInt_BElips* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleGccIntBisec*> HandleGccIntBElips_to_HandleGccIntBisec(const HandleGccIntBElips* self_) {
-    try { return {new HandleGccIntBisec(*self_), nullptr}; }
+extern "C" OcctResult<Handle_GccInt_Bisec*> Handle_GccInt_BElips_to_Handle_GccInt_Bisec(const Handle_GccInt_BElips* self_) {
+    try { return {new Handle_GccInt_Bisec(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleGccIntBElips_to_HandleStandardTransient(const HandleGccIntBElips* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_GccInt_BElips_to_Handle_Standard_Transient(const Handle_GccInt_BElips* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<gp_Pnt2d*> GccInt_BElips_inherited_Point(const GccInt_BElips* self) {
@@ -3077,24 +2751,24 @@ extern "C" OcctResult<const GccInt_Bisec*> GccInt_BHyper_as_GccInt_Bisec(const G
 extern "C" OcctResult<GccInt_Bisec*> GccInt_BHyper_as_GccInt_Bisec_mut(GccInt_BHyper* self_) { return {static_cast<GccInt_Bisec*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> GccInt_BHyper_as_Standard_Transient(const GccInt_BHyper* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> GccInt_BHyper_as_Standard_Transient_mut(GccInt_BHyper* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleGccIntBHyper*> GccInt_BHyper_to_handle(GccInt_BHyper* obj) {
-    try { return {new HandleGccIntBHyper(obj), nullptr}; }
+extern "C" OcctResult<Handle_GccInt_BHyper*> GccInt_BHyper_to_handle(GccInt_BHyper* obj) {
+    try { return {new Handle_GccInt_BHyper(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const GccInt_BHyper*> HandleGccIntBHyper_get(const HandleGccIntBHyper* handle) {
+extern "C" OcctResult<const GccInt_BHyper*> Handle_GccInt_BHyper_get(const Handle_GccInt_BHyper* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<GccInt_BHyper*> HandleGccIntBHyper_get_mut(HandleGccIntBHyper* handle) {
+extern "C" OcctResult<GccInt_BHyper*> Handle_GccInt_BHyper_get_mut(Handle_GccInt_BHyper* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleGccIntBisec*> HandleGccIntBHyper_to_HandleGccIntBisec(const HandleGccIntBHyper* self_) {
-    try { return {new HandleGccIntBisec(*self_), nullptr}; }
+extern "C" OcctResult<Handle_GccInt_Bisec*> Handle_GccInt_BHyper_to_Handle_GccInt_Bisec(const Handle_GccInt_BHyper* self_) {
+    try { return {new Handle_GccInt_Bisec(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleGccIntBHyper_to_HandleStandardTransient(const HandleGccIntBHyper* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_GccInt_BHyper_to_Handle_Standard_Transient(const Handle_GccInt_BHyper* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<gp_Pnt2d*> GccInt_BHyper_inherited_Point(const GccInt_BHyper* self) {
@@ -3179,24 +2853,24 @@ extern "C" OcctResult<const GccInt_Bisec*> GccInt_BLine_as_GccInt_Bisec(const Gc
 extern "C" OcctResult<GccInt_Bisec*> GccInt_BLine_as_GccInt_Bisec_mut(GccInt_BLine* self_) { return {static_cast<GccInt_Bisec*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> GccInt_BLine_as_Standard_Transient(const GccInt_BLine* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> GccInt_BLine_as_Standard_Transient_mut(GccInt_BLine* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleGccIntBLine*> GccInt_BLine_to_handle(GccInt_BLine* obj) {
-    try { return {new HandleGccIntBLine(obj), nullptr}; }
+extern "C" OcctResult<Handle_GccInt_BLine*> GccInt_BLine_to_handle(GccInt_BLine* obj) {
+    try { return {new Handle_GccInt_BLine(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const GccInt_BLine*> HandleGccIntBLine_get(const HandleGccIntBLine* handle) {
+extern "C" OcctResult<const GccInt_BLine*> Handle_GccInt_BLine_get(const Handle_GccInt_BLine* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<GccInt_BLine*> HandleGccIntBLine_get_mut(HandleGccIntBLine* handle) {
+extern "C" OcctResult<GccInt_BLine*> Handle_GccInt_BLine_get_mut(Handle_GccInt_BLine* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleGccIntBisec*> HandleGccIntBLine_to_HandleGccIntBisec(const HandleGccIntBLine* self_) {
-    try { return {new HandleGccIntBisec(*self_), nullptr}; }
+extern "C" OcctResult<Handle_GccInt_Bisec*> Handle_GccInt_BLine_to_Handle_GccInt_Bisec(const Handle_GccInt_BLine* self_) {
+    try { return {new Handle_GccInt_Bisec(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleGccIntBLine_to_HandleStandardTransient(const HandleGccIntBLine* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_GccInt_BLine_to_Handle_Standard_Transient(const Handle_GccInt_BLine* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<gp_Pnt2d*> GccInt_BLine_inherited_Point(const GccInt_BLine* self) {
@@ -3281,24 +2955,24 @@ extern "C" OcctResult<const GccInt_Bisec*> GccInt_BParab_as_GccInt_Bisec(const G
 extern "C" OcctResult<GccInt_Bisec*> GccInt_BParab_as_GccInt_Bisec_mut(GccInt_BParab* self_) { return {static_cast<GccInt_Bisec*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> GccInt_BParab_as_Standard_Transient(const GccInt_BParab* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> GccInt_BParab_as_Standard_Transient_mut(GccInt_BParab* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleGccIntBParab*> GccInt_BParab_to_handle(GccInt_BParab* obj) {
-    try { return {new HandleGccIntBParab(obj), nullptr}; }
+extern "C" OcctResult<Handle_GccInt_BParab*> GccInt_BParab_to_handle(GccInt_BParab* obj) {
+    try { return {new Handle_GccInt_BParab(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const GccInt_BParab*> HandleGccIntBParab_get(const HandleGccIntBParab* handle) {
+extern "C" OcctResult<const GccInt_BParab*> Handle_GccInt_BParab_get(const Handle_GccInt_BParab* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<GccInt_BParab*> HandleGccIntBParab_get_mut(HandleGccIntBParab* handle) {
+extern "C" OcctResult<GccInt_BParab*> Handle_GccInt_BParab_get_mut(Handle_GccInt_BParab* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleGccIntBisec*> HandleGccIntBParab_to_HandleGccIntBisec(const HandleGccIntBParab* self_) {
-    try { return {new HandleGccIntBisec(*self_), nullptr}; }
+extern "C" OcctResult<Handle_GccInt_Bisec*> Handle_GccInt_BParab_to_Handle_GccInt_Bisec(const Handle_GccInt_BParab* self_) {
+    try { return {new Handle_GccInt_Bisec(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleGccIntBParab_to_HandleStandardTransient(const HandleGccIntBParab* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_GccInt_BParab_to_Handle_Standard_Transient(const Handle_GccInt_BParab* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<gp_Pnt2d*> GccInt_BParab_inherited_Point(const GccInt_BParab* self) {
@@ -3383,24 +3057,24 @@ extern "C" OcctResult<const GccInt_Bisec*> GccInt_BPoint_as_GccInt_Bisec(const G
 extern "C" OcctResult<GccInt_Bisec*> GccInt_BPoint_as_GccInt_Bisec_mut(GccInt_BPoint* self_) { return {static_cast<GccInt_Bisec*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> GccInt_BPoint_as_Standard_Transient(const GccInt_BPoint* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> GccInt_BPoint_as_Standard_Transient_mut(GccInt_BPoint* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleGccIntBPoint*> GccInt_BPoint_to_handle(GccInt_BPoint* obj) {
-    try { return {new HandleGccIntBPoint(obj), nullptr}; }
+extern "C" OcctResult<Handle_GccInt_BPoint*> GccInt_BPoint_to_handle(GccInt_BPoint* obj) {
+    try { return {new Handle_GccInt_BPoint(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const GccInt_BPoint*> HandleGccIntBPoint_get(const HandleGccIntBPoint* handle) {
+extern "C" OcctResult<const GccInt_BPoint*> Handle_GccInt_BPoint_get(const Handle_GccInt_BPoint* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<GccInt_BPoint*> HandleGccIntBPoint_get_mut(HandleGccIntBPoint* handle) {
+extern "C" OcctResult<GccInt_BPoint*> Handle_GccInt_BPoint_get_mut(Handle_GccInt_BPoint* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleGccIntBisec*> HandleGccIntBPoint_to_HandleGccIntBisec(const HandleGccIntBPoint* self_) {
-    try { return {new HandleGccIntBisec(*self_), nullptr}; }
+extern "C" OcctResult<Handle_GccInt_Bisec*> Handle_GccInt_BPoint_to_Handle_GccInt_Bisec(const Handle_GccInt_BPoint* self_) {
+    try { return {new Handle_GccInt_Bisec(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleGccIntBPoint_to_HandleStandardTransient(const HandleGccIntBPoint* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_GccInt_BPoint_to_Handle_Standard_Transient(const Handle_GccInt_BPoint* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<gp_Lin2d*> GccInt_BPoint_inherited_Line(const GccInt_BPoint* self) {
@@ -3499,63 +3173,63 @@ extern "C" OcctResult<Handle(Standard_Type) const*> GccInt_Bisec_get_type_descri
 }
 extern "C" OcctResult<const Standard_Transient*> GccInt_Bisec_as_Standard_Transient(const GccInt_Bisec* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> GccInt_Bisec_as_Standard_Transient_mut(GccInt_Bisec* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<const GccInt_Bisec*> HandleGccIntBisec_get(const HandleGccIntBisec* handle) {
+extern "C" OcctResult<const GccInt_Bisec*> Handle_GccInt_Bisec_get(const Handle_GccInt_Bisec* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<GccInt_Bisec*> HandleGccIntBisec_get_mut(HandleGccIntBisec* handle) {
+extern "C" OcctResult<GccInt_Bisec*> Handle_GccInt_Bisec_get_mut(Handle_GccInt_Bisec* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleGccIntBisec_to_HandleStandardTransient(const HandleGccIntBisec* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_GccInt_Bisec_to_Handle_Standard_Transient(const Handle_GccInt_Bisec* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleGccIntBCirc*> HandleGccIntBisec_downcast_to_HandleGccIntBCirc(const HandleGccIntBisec* self_) {
+extern "C" OcctResult<Handle_GccInt_BCirc*> Handle_GccInt_Bisec_downcast_to_Handle_GccInt_BCirc(const Handle_GccInt_Bisec* self_) {
     try {
     opencascade::handle<GccInt_BCirc> result = opencascade::handle<GccInt_BCirc>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleGccIntBCirc(result), nullptr};
+    return {new Handle_GccInt_BCirc(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleGccIntBElips*> HandleGccIntBisec_downcast_to_HandleGccIntBElips(const HandleGccIntBisec* self_) {
+extern "C" OcctResult<Handle_GccInt_BElips*> Handle_GccInt_Bisec_downcast_to_Handle_GccInt_BElips(const Handle_GccInt_Bisec* self_) {
     try {
     opencascade::handle<GccInt_BElips> result = opencascade::handle<GccInt_BElips>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleGccIntBElips(result), nullptr};
+    return {new Handle_GccInt_BElips(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleGccIntBHyper*> HandleGccIntBisec_downcast_to_HandleGccIntBHyper(const HandleGccIntBisec* self_) {
+extern "C" OcctResult<Handle_GccInt_BHyper*> Handle_GccInt_Bisec_downcast_to_Handle_GccInt_BHyper(const Handle_GccInt_Bisec* self_) {
     try {
     opencascade::handle<GccInt_BHyper> result = opencascade::handle<GccInt_BHyper>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleGccIntBHyper(result), nullptr};
+    return {new Handle_GccInt_BHyper(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleGccIntBLine*> HandleGccIntBisec_downcast_to_HandleGccIntBLine(const HandleGccIntBisec* self_) {
+extern "C" OcctResult<Handle_GccInt_BLine*> Handle_GccInt_Bisec_downcast_to_Handle_GccInt_BLine(const Handle_GccInt_Bisec* self_) {
     try {
     opencascade::handle<GccInt_BLine> result = opencascade::handle<GccInt_BLine>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleGccIntBLine(result), nullptr};
+    return {new Handle_GccInt_BLine(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleGccIntBParab*> HandleGccIntBisec_downcast_to_HandleGccIntBParab(const HandleGccIntBisec* self_) {
+extern "C" OcctResult<Handle_GccInt_BParab*> Handle_GccInt_Bisec_downcast_to_Handle_GccInt_BParab(const Handle_GccInt_Bisec* self_) {
     try {
     opencascade::handle<GccInt_BParab> result = opencascade::handle<GccInt_BParab>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleGccIntBParab(result), nullptr};
+    return {new Handle_GccInt_BParab(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleGccIntBPoint*> HandleGccIntBisec_downcast_to_HandleGccIntBPoint(const HandleGccIntBisec* self_) {
+extern "C" OcctResult<Handle_GccInt_BPoint*> Handle_GccInt_Bisec_downcast_to_Handle_GccInt_BPoint(const Handle_GccInt_Bisec* self_) {
     try {
     opencascade::handle<GccInt_BPoint> result = opencascade::handle<GccInt_BPoint>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleGccIntBPoint(result), nullptr};
+    return {new Handle_GccInt_BPoint(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
@@ -3681,11 +3355,11 @@ extern "C" void Geom2dAPI_InterCurveCurve_destructor(Geom2dAPI_InterCurveCurve* 
 // Geom2dAPI_Interpolate wrappers
 // ========================
 
-extern "C" OcctResult<Geom2dAPI_Interpolate*> Geom2dAPI_Interpolate_ctor_handletcolgpharray1ofpnt2d_bool_real(Handle(TColgp_HArray1OfPnt2d) const* Points, bool PeriodicFlag, double Tolerance) {
+extern "C" OcctResult<Geom2dAPI_Interpolate*> Geom2dAPI_Interpolate_ctor_harr1_pnt2d_bool_real(Handle(NCollection_HArray1_gp_Pnt2d) const* Points, bool PeriodicFlag, double Tolerance) {
     try { return {new Geom2dAPI_Interpolate(*Points, PeriodicFlag, Tolerance), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Geom2dAPI_Interpolate*> Geom2dAPI_Interpolate_ctor_handletcolgpharray1ofpnt2d_handletcolstdharray1ofreal_bool_real(Handle(TColgp_HArray1OfPnt2d) const* Points, Handle(TColStd_HArray1OfReal) const* Parameters, bool PeriodicFlag, double Tolerance) {
+extern "C" OcctResult<Geom2dAPI_Interpolate*> Geom2dAPI_Interpolate_ctor_harr1_pnt2d_harr1_double_bool_real(Handle(NCollection_HArray1_gp_Pnt2d) const* Points, Handle(NCollection_HArray1_double) const* Parameters, bool PeriodicFlag, double Tolerance) {
     try { return {new Geom2dAPI_Interpolate(*Points, *Parameters, PeriodicFlag, Tolerance), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -3693,7 +3367,7 @@ extern "C" const char* Geom2dAPI_Interpolate_load_vec2d2_bool(Geom2dAPI_Interpol
     try { self_->Load(*InitialTangent, *FinalTangent, Scale); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* Geom2dAPI_Interpolate_load_array1ofvec2d_handletcolstdharray1ofboolean_bool(Geom2dAPI_Interpolate* self_, TColgp_Array1OfVec2d const* Tangents, Handle(TColStd_HArray1OfBoolean) const* TangentFlags, bool Scale) {
+extern "C" const char* Geom2dAPI_Interpolate_load_arr1_vec2d_harr1_bool_bool(Geom2dAPI_Interpolate* self_, NCollection_Array1_gp_Vec2d const* Tangents, Handle(NCollection_HArray1_bool) const* TangentFlags, bool Scale) {
     try { self_->Load(*Tangents, *TangentFlags, Scale); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -3723,43 +3397,43 @@ extern "C" OcctResult<Geom2dAPI_PointsToBSpline*> Geom2dAPI_PointsToBSpline_ctor
     try { return {new Geom2dAPI_PointsToBSpline(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Geom2dAPI_PointsToBSpline*> Geom2dAPI_PointsToBSpline_ctor_array1ofpnt2d_int2_shape_real(TColgp_Array1OfPnt2d const* Points, int32_t DegMin, int32_t DegMax, int32_t Continuity, double Tol2D) {
+extern "C" OcctResult<Geom2dAPI_PointsToBSpline*> Geom2dAPI_PointsToBSpline_ctor_arr1_pnt2d_int2_shape_real(NCollection_Array1_gp_Pnt2d const* Points, int32_t DegMin, int32_t DegMax, int32_t Continuity, double Tol2D) {
     try { return {new Geom2dAPI_PointsToBSpline(*Points, DegMin, DegMax, static_cast<GeomAbs_Shape>(Continuity), Tol2D), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Geom2dAPI_PointsToBSpline*> Geom2dAPI_PointsToBSpline_ctor_array1ofreal_real2_int2_shape_real(TColStd_Array1OfReal const* YValues, double X0, double DX, int32_t DegMin, int32_t DegMax, int32_t Continuity, double Tol2D) {
+extern "C" OcctResult<Geom2dAPI_PointsToBSpline*> Geom2dAPI_PointsToBSpline_ctor_arr1_double_real2_int2_shape_real(NCollection_Array1_double const* YValues, double X0, double DX, int32_t DegMin, int32_t DegMax, int32_t Continuity, double Tol2D) {
     try { return {new Geom2dAPI_PointsToBSpline(*YValues, X0, DX, DegMin, DegMax, static_cast<GeomAbs_Shape>(Continuity), Tol2D), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Geom2dAPI_PointsToBSpline*> Geom2dAPI_PointsToBSpline_ctor_array1ofpnt2d_parametrizationtype_int2_shape_real(TColgp_Array1OfPnt2d const* Points, int32_t ParType, int32_t DegMin, int32_t DegMax, int32_t Continuity, double Tol2D) {
+extern "C" OcctResult<Geom2dAPI_PointsToBSpline*> Geom2dAPI_PointsToBSpline_ctor_arr1_pnt2d_parametrizationtype_int2_shape_real(NCollection_Array1_gp_Pnt2d const* Points, int32_t ParType, int32_t DegMin, int32_t DegMax, int32_t Continuity, double Tol2D) {
     try { return {new Geom2dAPI_PointsToBSpline(*Points, static_cast<Approx_ParametrizationType>(ParType), DegMin, DegMax, static_cast<GeomAbs_Shape>(Continuity), Tol2D), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Geom2dAPI_PointsToBSpline*> Geom2dAPI_PointsToBSpline_ctor_array1ofpnt2d_array1ofreal_int2_shape_real(TColgp_Array1OfPnt2d const* Points, TColStd_Array1OfReal const* Parameters, int32_t DegMin, int32_t DegMax, int32_t Continuity, double Tol2D) {
+extern "C" OcctResult<Geom2dAPI_PointsToBSpline*> Geom2dAPI_PointsToBSpline_ctor_arr1_pnt2d_arr1_double_int2_shape_real(NCollection_Array1_gp_Pnt2d const* Points, NCollection_Array1_double const* Parameters, int32_t DegMin, int32_t DegMax, int32_t Continuity, double Tol2D) {
     try { return {new Geom2dAPI_PointsToBSpline(*Points, *Parameters, DegMin, DegMax, static_cast<GeomAbs_Shape>(Continuity), Tol2D), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Geom2dAPI_PointsToBSpline*> Geom2dAPI_PointsToBSpline_ctor_array1ofpnt2d_real3_int_shape_real(TColgp_Array1OfPnt2d const* Points, double Weight1, double Weight2, double Weight3, int32_t DegMax, int32_t Continuity, double Tol3D) {
+extern "C" OcctResult<Geom2dAPI_PointsToBSpline*> Geom2dAPI_PointsToBSpline_ctor_arr1_pnt2d_real3_int_shape_real(NCollection_Array1_gp_Pnt2d const* Points, double Weight1, double Weight2, double Weight3, int32_t DegMax, int32_t Continuity, double Tol3D) {
     try { return {new Geom2dAPI_PointsToBSpline(*Points, Weight1, Weight2, Weight3, DegMax, static_cast<GeomAbs_Shape>(Continuity), Tol3D), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* Geom2dAPI_PointsToBSpline_init_array1ofpnt2d_int2_shape_real(Geom2dAPI_PointsToBSpline* self_, TColgp_Array1OfPnt2d const* Points, int32_t DegMin, int32_t DegMax, int32_t Continuity, double Tol2D) {
+extern "C" const char* Geom2dAPI_PointsToBSpline_init_arr1_pnt2d_int2_shape_real(Geom2dAPI_PointsToBSpline* self_, NCollection_Array1_gp_Pnt2d const* Points, int32_t DegMin, int32_t DegMax, int32_t Continuity, double Tol2D) {
     try { self_->Init(*Points, DegMin, DegMax, static_cast<GeomAbs_Shape>(Continuity), Tol2D); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* Geom2dAPI_PointsToBSpline_init_array1ofreal_real2_int2_shape_real(Geom2dAPI_PointsToBSpline* self_, TColStd_Array1OfReal const* YValues, double X0, double DX, int32_t DegMin, int32_t DegMax, int32_t Continuity, double Tol2D) {
+extern "C" const char* Geom2dAPI_PointsToBSpline_init_arr1_double_real2_int2_shape_real(Geom2dAPI_PointsToBSpline* self_, NCollection_Array1_double const* YValues, double X0, double DX, int32_t DegMin, int32_t DegMax, int32_t Continuity, double Tol2D) {
     try { self_->Init(*YValues, X0, DX, DegMin, DegMax, static_cast<GeomAbs_Shape>(Continuity), Tol2D); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* Geom2dAPI_PointsToBSpline_init_array1ofpnt2d_parametrizationtype_int2_shape_real(Geom2dAPI_PointsToBSpline* self_, TColgp_Array1OfPnt2d const* Points, int32_t ParType, int32_t DegMin, int32_t DegMax, int32_t Continuity, double Tol2D) {
+extern "C" const char* Geom2dAPI_PointsToBSpline_init_arr1_pnt2d_parametrizationtype_int2_shape_real(Geom2dAPI_PointsToBSpline* self_, NCollection_Array1_gp_Pnt2d const* Points, int32_t ParType, int32_t DegMin, int32_t DegMax, int32_t Continuity, double Tol2D) {
     try { self_->Init(*Points, static_cast<Approx_ParametrizationType>(ParType), DegMin, DegMax, static_cast<GeomAbs_Shape>(Continuity), Tol2D); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* Geom2dAPI_PointsToBSpline_init_array1ofpnt2d_array1ofreal_int2_shape_real(Geom2dAPI_PointsToBSpline* self_, TColgp_Array1OfPnt2d const* Points, TColStd_Array1OfReal const* Parameters, int32_t DegMin, int32_t DegMax, int32_t Continuity, double Tol2D) {
+extern "C" const char* Geom2dAPI_PointsToBSpline_init_arr1_pnt2d_arr1_double_int2_shape_real(Geom2dAPI_PointsToBSpline* self_, NCollection_Array1_gp_Pnt2d const* Points, NCollection_Array1_double const* Parameters, int32_t DegMin, int32_t DegMax, int32_t Continuity, double Tol2D) {
     try { self_->Init(*Points, *Parameters, DegMin, DegMax, static_cast<GeomAbs_Shape>(Continuity), Tol2D); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* Geom2dAPI_PointsToBSpline_init_array1ofpnt2d_real3_int_shape_real(Geom2dAPI_PointsToBSpline* self_, TColgp_Array1OfPnt2d const* Points, double Weight1, double Weight2, double Weight3, int32_t DegMax, int32_t Continuity, double Tol2D) {
+extern "C" const char* Geom2dAPI_PointsToBSpline_init_arr1_pnt2d_real3_int_shape_real(Geom2dAPI_PointsToBSpline* self_, NCollection_Array1_gp_Pnt2d const* Points, double Weight1, double Weight2, double Weight3, int32_t DegMax, int32_t Continuity, double Tol2D) {
     try { self_->Init(*Points, Weight1, Weight2, Weight3, DegMax, static_cast<GeomAbs_Shape>(Continuity), Tol2D); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -4896,10 +4570,6 @@ extern "C" void Geom2dGcc_FunctionTanObl_destructor(Geom2dGcc_FunctionTanObl* se
 // Geom2dGcc_IsParallel wrappers
 // ========================
 
-extern "C" OcctResult<Geom2dGcc_IsParallel*> Geom2dGcc_IsParallel_ctor() {
-    try { return {new Geom2dGcc_IsParallel(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
 extern "C" OcctResult<Geom2dGcc_IsParallel*> Geom2dGcc_IsParallel_ctor_charptr(const char* theMessage) {
     try { return {new Geom2dGcc_IsParallel(theMessage), nullptr}; }
     OCCT_CATCH_RETURN
@@ -4908,102 +4578,16 @@ extern "C" OcctResult<Geom2dGcc_IsParallel*> Geom2dGcc_IsParallel_ctor_charptr2(
     try { return {new Geom2dGcc_IsParallel(theMessage, theStackTrace), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(Standard_Type) const*> Geom2dGcc_IsParallel_dynamic_type(const Geom2dGcc_IsParallel* self_) {
-    try { return {&(self_->DynamicType()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* Geom2dGcc_IsParallel_raise_charptr(const char* theMessage) {
-    try { Geom2dGcc_IsParallel::Raise(theMessage); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* Geom2dGcc_IsParallel_raise_sstream(Standard_SStream* theMessage) {
-    try { Geom2dGcc_IsParallel::Raise(*theMessage); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<Handle(Geom2dGcc_IsParallel)*> Geom2dGcc_IsParallel_new_instance_charptr(const char* theMessage) {
-    try { return {new Handle(Geom2dGcc_IsParallel)(Geom2dGcc_IsParallel::NewInstance(theMessage)), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Handle(Geom2dGcc_IsParallel)*> Geom2dGcc_IsParallel_new_instance_charptr2(const char* theMessage, const char* theStackTrace) {
-    try { return {new Handle(Geom2dGcc_IsParallel)(Geom2dGcc_IsParallel::NewInstance(theMessage, theStackTrace)), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<char const*> Geom2dGcc_IsParallel_get_type_name() {
-    try { return {Geom2dGcc_IsParallel::get_type_name(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Handle(Standard_Type) const*> Geom2dGcc_IsParallel_get_type_descriptor() {
-    try { return {&(Geom2dGcc_IsParallel::get_type_descriptor()), nullptr}; }
+extern "C" OcctResult<char const*> Geom2dGcc_IsParallel_exception_type(const Geom2dGcc_IsParallel* self_) {
+    try { return {self_->ExceptionType(), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<const Standard_DomainError*> Geom2dGcc_IsParallel_as_Standard_DomainError(const Geom2dGcc_IsParallel* self_) { return {static_cast<const Standard_DomainError*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_DomainError*> Geom2dGcc_IsParallel_as_Standard_DomainError_mut(Geom2dGcc_IsParallel* self_) { return {static_cast<Standard_DomainError*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Failure*> Geom2dGcc_IsParallel_as_Standard_Failure(const Geom2dGcc_IsParallel* self_) { return {static_cast<const Standard_Failure*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Failure*> Geom2dGcc_IsParallel_as_Standard_Failure_mut(Geom2dGcc_IsParallel* self_) { return {static_cast<Standard_Failure*>(self_), nullptr}; }
-extern "C" OcctResult<const Standard_Transient*> Geom2dGcc_IsParallel_as_Standard_Transient(const Geom2dGcc_IsParallel* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<Standard_Transient*> Geom2dGcc_IsParallel_as_Standard_Transient_mut(Geom2dGcc_IsParallel* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleGeom2dGccIsParallel*> Geom2dGcc_IsParallel_to_handle(Geom2dGcc_IsParallel* obj) {
-    try { return {new HandleGeom2dGccIsParallel(obj), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<const Geom2dGcc_IsParallel*> HandleGeom2dGccIsParallel_get(const HandleGeom2dGccIsParallel* handle) {
-    try { return {(*handle).get(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Geom2dGcc_IsParallel*> HandleGeom2dGccIsParallel_get_mut(HandleGeom2dGccIsParallel* handle) {
-    try { return {(*handle).get(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<HandleStandardDomainError*> HandleGeom2dGccIsParallel_to_HandleStandardDomainError(const HandleGeom2dGccIsParallel* self_) {
-    try { return {new HandleStandardDomainError(*self_), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<HandleStandardFailure*> HandleGeom2dGccIsParallel_to_HandleStandardFailure(const HandleGeom2dGccIsParallel* self_) {
-    try { return {new HandleStandardFailure(*self_), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<HandleStandardTransient*> HandleGeom2dGccIsParallel_to_HandleStandardTransient(const HandleGeom2dGccIsParallel* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
-    OCCT_CATCH_RETURN
-}
 extern "C" const char* Geom2dGcc_IsParallel_inherited_Print(const Geom2dGcc_IsParallel* self, Standard_OStream& theStream) {
     try { self->Print(theStream); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* Geom2dGcc_IsParallel_inherited_Reraise(Geom2dGcc_IsParallel* self) {
-    try { self->Reraise(); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* Geom2dGcc_IsParallel_inherited_Jump(Geom2dGcc_IsParallel* self) {
-    try { self->Jump(); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<bool> Geom2dGcc_IsParallel_inherited_IsInstance(const Geom2dGcc_IsParallel* self, Handle(Standard_Type) const& theType) {
-    try { return {self->IsInstance(theType), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<bool> Geom2dGcc_IsParallel_inherited_IsKind(const Geom2dGcc_IsParallel* self, Handle(Standard_Type) const& theType) {
-    try { return {self->IsKind(theType), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Standard_Transient*> Geom2dGcc_IsParallel_inherited_This(const Geom2dGcc_IsParallel* self) {
-    try { return {self->This(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<int32_t> Geom2dGcc_IsParallel_inherited_GetRefCount(const Geom2dGcc_IsParallel* self) {
-    try { return {self->GetRefCount(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* Geom2dGcc_IsParallel_inherited_IncrementRefCounter(Geom2dGcc_IsParallel* self) {
-    try { self->IncrementRefCounter(); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<int32_t> Geom2dGcc_IsParallel_inherited_DecrementRefCounter(Geom2dGcc_IsParallel* self) {
-    try { return {self->DecrementRefCounter(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* Geom2dGcc_IsParallel_inherited_Delete(const Geom2dGcc_IsParallel* self) {
-    try { self->Delete(); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
 extern "C" void Geom2dGcc_IsParallel_destructor(Geom2dGcc_IsParallel* self_) { delete self_; }
@@ -6025,11 +5609,11 @@ extern "C" OcctResult<int32_t> Geom2dInt_Geom2dCurveTool_nb_intervals(Adaptor2d_
     try { return {Geom2dInt_Geom2dCurveTool::NbIntervals(*C), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* Geom2dInt_Geom2dCurveTool_intervals(Adaptor2d_Curve2d const* C, TColStd_Array1OfReal* Tab) {
+extern "C" const char* Geom2dInt_Geom2dCurveTool_intervals(Adaptor2d_Curve2d const* C, NCollection_Array1_double* Tab) {
     try { Geom2dInt_Geom2dCurveTool::Intervals(*C, *Tab); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* Geom2dInt_Geom2dCurveTool_get_interval(Adaptor2d_Curve2d const* C, int32_t Index, TColStd_Array1OfReal const* Tab, double* U1, double* U2) {
+extern "C" const char* Geom2dInt_Geom2dCurveTool_get_interval(Adaptor2d_Curve2d const* C, int32_t Index, NCollection_Array1_double const* Tab, double* U1, double* U2) {
     try { Geom2dInt_Geom2dCurveTool::GetInterval(*C, Index, *Tab, *U1, *U2); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -6148,94 +5732,6 @@ extern "C" OcctResult<int32_t> Geom2dInt_MyImpParToolOfTheIntersectorOfTheIntCon
     OCCT_CATCH_RETURN
 }
 extern "C" void Geom2dInt_MyImpParToolOfTheIntersectorOfTheIntConicCurveOfGInter_destructor(Geom2dInt_MyImpParToolOfTheIntersectorOfTheIntConicCurveOfGInter* self_) { delete self_; }
-
-// ========================
-// Geom2dInt_PCLocFOfTheLocateExtPCOfTheProjPCurOfGInter wrappers
-// ========================
-
-extern "C" OcctResult<Geom2dInt_PCLocFOfTheLocateExtPCOfTheProjPCurOfGInter*> Geom2dInt_PCLocFOfTheLocateExtPCOfTheProjPCurOfGInter_ctor() {
-    try { return {new Geom2dInt_PCLocFOfTheLocateExtPCOfTheProjPCurOfGInter(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Geom2dInt_PCLocFOfTheLocateExtPCOfTheProjPCurOfGInter*> Geom2dInt_PCLocFOfTheLocateExtPCOfTheProjPCurOfGInter_ctor_pnt2d_curve2d(gp_Pnt2d const* P, Adaptor2d_Curve2d const* C) {
-    try { return {new Geom2dInt_PCLocFOfTheLocateExtPCOfTheProjPCurOfGInter(*P, *C), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* Geom2dInt_PCLocFOfTheLocateExtPCOfTheProjPCurOfGInter_initialize(Geom2dInt_PCLocFOfTheLocateExtPCOfTheProjPCurOfGInter* self_, Adaptor2d_Curve2d const* C) {
-    try { self_->Initialize(*C); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* Geom2dInt_PCLocFOfTheLocateExtPCOfTheProjPCurOfGInter_set_point(Geom2dInt_PCLocFOfTheLocateExtPCOfTheProjPCurOfGInter* self_, gp_Pnt2d const* P) {
-    try { self_->SetPoint(*P); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<bool> Geom2dInt_PCLocFOfTheLocateExtPCOfTheProjPCurOfGInter_value(Geom2dInt_PCLocFOfTheLocateExtPCOfTheProjPCurOfGInter* self_, double U, double* F) {
-    try { return {self_->Value(U, *F), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<bool> Geom2dInt_PCLocFOfTheLocateExtPCOfTheProjPCurOfGInter_derivative(Geom2dInt_PCLocFOfTheLocateExtPCOfTheProjPCurOfGInter* self_, double U, double* DF) {
-    try { return {self_->Derivative(U, *DF), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<bool> Geom2dInt_PCLocFOfTheLocateExtPCOfTheProjPCurOfGInter_values(Geom2dInt_PCLocFOfTheLocateExtPCOfTheProjPCurOfGInter* self_, double U, double* F, double* DF) {
-    try { return {self_->Values(U, *F, *DF), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<int32_t> Geom2dInt_PCLocFOfTheLocateExtPCOfTheProjPCurOfGInter_get_state_number(Geom2dInt_PCLocFOfTheLocateExtPCOfTheProjPCurOfGInter* self_) {
-    try { return {self_->GetStateNumber(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<int32_t> Geom2dInt_PCLocFOfTheLocateExtPCOfTheProjPCurOfGInter_nb_ext(const Geom2dInt_PCLocFOfTheLocateExtPCOfTheProjPCurOfGInter* self_) {
-    try { return {self_->NbExt(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<double> Geom2dInt_PCLocFOfTheLocateExtPCOfTheProjPCurOfGInter_square_distance(const Geom2dInt_PCLocFOfTheLocateExtPCOfTheProjPCurOfGInter* self_, int32_t N) {
-    try { return {self_->SquareDistance(N), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<bool> Geom2dInt_PCLocFOfTheLocateExtPCOfTheProjPCurOfGInter_is_min(const Geom2dInt_PCLocFOfTheLocateExtPCOfTheProjPCurOfGInter* self_, int32_t N) {
-    try { return {self_->IsMin(N), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Extrema_POnCurv2d const*> Geom2dInt_PCLocFOfTheLocateExtPCOfTheProjPCurOfGInter_point(const Geom2dInt_PCLocFOfTheLocateExtPCOfTheProjPCurOfGInter* self_, int32_t N) {
-    try { return {&(self_->Point(N)), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* Geom2dInt_PCLocFOfTheLocateExtPCOfTheProjPCurOfGInter_sub_interval_initialize(Geom2dInt_PCLocFOfTheLocateExtPCOfTheProjPCurOfGInter* self_, double theUfirst, double theUlast) {
-    try { self_->SubIntervalInitialize(theUfirst, theUlast); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<double> Geom2dInt_PCLocFOfTheLocateExtPCOfTheProjPCurOfGInter_search_of_tolerance(Geom2dInt_PCLocFOfTheLocateExtPCOfTheProjPCurOfGInter* self_) {
-    try { return {self_->SearchOfTolerance(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<const math_FunctionWithDerivative*> Geom2dInt_PCLocFOfTheLocateExtPCOfTheProjPCurOfGInter_as_math_FunctionWithDerivative(const Geom2dInt_PCLocFOfTheLocateExtPCOfTheProjPCurOfGInter* self_) { return {static_cast<const math_FunctionWithDerivative*>(self_), nullptr}; }
-extern "C" OcctResult<math_FunctionWithDerivative*> Geom2dInt_PCLocFOfTheLocateExtPCOfTheProjPCurOfGInter_as_math_FunctionWithDerivative_mut(Geom2dInt_PCLocFOfTheLocateExtPCOfTheProjPCurOfGInter* self_) { return {static_cast<math_FunctionWithDerivative*>(self_), nullptr}; }
-extern "C" OcctResult<const math_Function*> Geom2dInt_PCLocFOfTheLocateExtPCOfTheProjPCurOfGInter_as_math_Function(const Geom2dInt_PCLocFOfTheLocateExtPCOfTheProjPCurOfGInter* self_) { return {static_cast<const math_Function*>(self_), nullptr}; }
-extern "C" OcctResult<math_Function*> Geom2dInt_PCLocFOfTheLocateExtPCOfTheProjPCurOfGInter_as_math_Function_mut(Geom2dInt_PCLocFOfTheLocateExtPCOfTheProjPCurOfGInter* self_) { return {static_cast<math_Function*>(self_), nullptr}; }
-extern "C" void Geom2dInt_PCLocFOfTheLocateExtPCOfTheProjPCurOfGInter_destructor(Geom2dInt_PCLocFOfTheLocateExtPCOfTheProjPCurOfGInter* self_) { delete self_; }
-
-// ========================
-// Geom2dInt_TheCurveLocatorOfTheProjPCurOfGInter wrappers
-// ========================
-
-extern "C" OcctResult<Geom2dInt_TheCurveLocatorOfTheProjPCurOfGInter*> Geom2dInt_TheCurveLocatorOfTheProjPCurOfGInter_ctor() {
-    try { return {new Geom2dInt_TheCurveLocatorOfTheProjPCurOfGInter(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* Geom2dInt_TheCurveLocatorOfTheProjPCurOfGInter_locate_pnt2d_curve2d_int_poncurv2d(gp_Pnt2d const* P, Adaptor2d_Curve2d const* C, int32_t NbU, Extrema_POnCurv2d* Papp) {
-    try { Geom2dInt_TheCurveLocatorOfTheProjPCurOfGInter::Locate(*P, *C, NbU, *Papp); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* Geom2dInt_TheCurveLocatorOfTheProjPCurOfGInter_locate_pnt2d_curve2d_int_real2_poncurv2d(gp_Pnt2d const* P, Adaptor2d_Curve2d const* C, int32_t NbU, double Umin, double Usup, Extrema_POnCurv2d* Papp) {
-    try { Geom2dInt_TheCurveLocatorOfTheProjPCurOfGInter::Locate(*P, *C, NbU, Umin, Usup, *Papp); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* Geom2dInt_TheCurveLocatorOfTheProjPCurOfGInter_locate_curve2d2_int2_poncurv2d2(Adaptor2d_Curve2d const* C1, Adaptor2d_Curve2d const* C2, int32_t NbU, int32_t NbV, Extrema_POnCurv2d* Papp1, Extrema_POnCurv2d* Papp2) {
-    try { Geom2dInt_TheCurveLocatorOfTheProjPCurOfGInter::Locate(*C1, *C2, NbU, NbV, *Papp1, *Papp2); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" void Geom2dInt_TheCurveLocatorOfTheProjPCurOfGInter_destructor(Geom2dInt_TheCurveLocatorOfTheProjPCurOfGInter* self_) { delete self_; }
 
 // ========================
 // Geom2dInt_TheDistBetweenPCurvesOfTheIntPCurvePCurveOfGInter wrappers
@@ -6435,7 +5931,7 @@ extern "C" OcctResult<double> Geom2dInt_TheIntersectorOfTheIntConicCurveOfGInter
     try { return {self_->FindV(parameter, *point, *IntCurve_IConicTool, *ParCurve, *TheParCurveDomain, V0, V1, Tolerance), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* Geom2dInt_TheIntersectorOfTheIntConicCurveOfGInter_and_domaine_objet1_intersections(const Geom2dInt_TheIntersectorOfTheIntConicCurveOfGInter* self_, IntCurve_IConicTool const* IntCurve_IConicTool, Adaptor2d_Curve2d const* TheParCurve, IntRes2d_Domain const* TheImpCurveDomain, IntRes2d_Domain const* TheParCurveDomain, int32_t* NbResultats, TColStd_Array1OfReal* Inter2_And_Domain2, TColStd_Array1OfReal* Inter1, TColStd_Array1OfReal* Resultat1, TColStd_Array1OfReal* Resultat2, double EpsNul) {
+extern "C" const char* Geom2dInt_TheIntersectorOfTheIntConicCurveOfGInter_and_domaine_objet1_intersections(const Geom2dInt_TheIntersectorOfTheIntConicCurveOfGInter* self_, IntCurve_IConicTool const* IntCurve_IConicTool, Adaptor2d_Curve2d const* TheParCurve, IntRes2d_Domain const* TheImpCurveDomain, IntRes2d_Domain const* TheParCurveDomain, int32_t* NbResultats, NCollection_Array1_double* Inter2_And_Domain2, NCollection_Array1_double* Inter1, NCollection_Array1_double* Resultat1, NCollection_Array1_double* Resultat2, double EpsNul) {
     try { self_->And_Domaine_Objet1_Intersections(*IntCurve_IConicTool, *TheParCurve, *TheImpCurveDomain, *TheParCurveDomain, *NbResultats, *Inter2_And_Domain2, *Inter1, *Resultat1, *Resultat2, EpsNul); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -6470,48 +5966,6 @@ extern "C" const char* Geom2dInt_TheIntersectorOfTheIntConicCurveOfGInter_inheri
     OCCT_CATCH_RETURN_VOID
 }
 extern "C" void Geom2dInt_TheIntersectorOfTheIntConicCurveOfGInter_destructor(Geom2dInt_TheIntersectorOfTheIntConicCurveOfGInter* self_) { delete self_; }
-
-// ========================
-// Geom2dInt_TheLocateExtPCOfTheProjPCurOfGInter wrappers
-// ========================
-
-extern "C" OcctResult<Geom2dInt_TheLocateExtPCOfTheProjPCurOfGInter*> Geom2dInt_TheLocateExtPCOfTheProjPCurOfGInter_ctor() {
-    try { return {new Geom2dInt_TheLocateExtPCOfTheProjPCurOfGInter(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Geom2dInt_TheLocateExtPCOfTheProjPCurOfGInter*> Geom2dInt_TheLocateExtPCOfTheProjPCurOfGInter_ctor_pnt2d_curve2d_real2(gp_Pnt2d const* P, Adaptor2d_Curve2d const* C, double U0, double TolU) {
-    try { return {new Geom2dInt_TheLocateExtPCOfTheProjPCurOfGInter(*P, *C, U0, TolU), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Geom2dInt_TheLocateExtPCOfTheProjPCurOfGInter*> Geom2dInt_TheLocateExtPCOfTheProjPCurOfGInter_ctor_pnt2d_curve2d_real4(gp_Pnt2d const* P, Adaptor2d_Curve2d const* C, double U0, double Umin, double Usup, double TolU) {
-    try { return {new Geom2dInt_TheLocateExtPCOfTheProjPCurOfGInter(*P, *C, U0, Umin, Usup, TolU), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* Geom2dInt_TheLocateExtPCOfTheProjPCurOfGInter_initialize(Geom2dInt_TheLocateExtPCOfTheProjPCurOfGInter* self_, Adaptor2d_Curve2d const* C, double Umin, double Usup, double TolU) {
-    try { self_->Initialize(*C, Umin, Usup, TolU); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* Geom2dInt_TheLocateExtPCOfTheProjPCurOfGInter_perform(Geom2dInt_TheLocateExtPCOfTheProjPCurOfGInter* self_, gp_Pnt2d const* P, double U0) {
-    try { self_->Perform(*P, U0); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<bool> Geom2dInt_TheLocateExtPCOfTheProjPCurOfGInter_is_done(const Geom2dInt_TheLocateExtPCOfTheProjPCurOfGInter* self_) {
-    try { return {self_->IsDone(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<double> Geom2dInt_TheLocateExtPCOfTheProjPCurOfGInter_square_distance(const Geom2dInt_TheLocateExtPCOfTheProjPCurOfGInter* self_) {
-    try { return {self_->SquareDistance(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<bool> Geom2dInt_TheLocateExtPCOfTheProjPCurOfGInter_is_min(const Geom2dInt_TheLocateExtPCOfTheProjPCurOfGInter* self_) {
-    try { return {self_->IsMin(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Extrema_POnCurv2d const*> Geom2dInt_TheLocateExtPCOfTheProjPCurOfGInter_point(const Geom2dInt_TheLocateExtPCOfTheProjPCurOfGInter* self_) {
-    try { return {&(self_->Point()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" void Geom2dInt_TheLocateExtPCOfTheProjPCurOfGInter_destructor(Geom2dInt_TheLocateExtPCOfTheProjPCurOfGInter* self_) { delete self_; }
 
 // ========================
 // Geom2dInt_ThePolygon2dOfTheIntPCurvePCurveOfGInter wrappers
@@ -6877,11 +6331,11 @@ extern "C" void GeomAPI_IntSS_destructor(GeomAPI_IntSS* self_) { delete self_; }
 // GeomAPI_Interpolate wrappers
 // ========================
 
-extern "C" OcctResult<GeomAPI_Interpolate*> GeomAPI_Interpolate_ctor_handletcolgpharray1ofpnt_bool_real(Handle(TColgp_HArray1OfPnt) const* Points, bool PeriodicFlag, double Tolerance) {
+extern "C" OcctResult<GeomAPI_Interpolate*> GeomAPI_Interpolate_ctor_harr1_pnt_bool_real(Handle(NCollection_HArray1_gp_Pnt) const* Points, bool PeriodicFlag, double Tolerance) {
     try { return {new GeomAPI_Interpolate(*Points, PeriodicFlag, Tolerance), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<GeomAPI_Interpolate*> GeomAPI_Interpolate_ctor_handletcolgpharray1ofpnt_handletcolstdharray1ofreal_bool_real(Handle(TColgp_HArray1OfPnt) const* Points, Handle(TColStd_HArray1OfReal) const* Parameters, bool PeriodicFlag, double Tolerance) {
+extern "C" OcctResult<GeomAPI_Interpolate*> GeomAPI_Interpolate_ctor_harr1_pnt_harr1_double_bool_real(Handle(NCollection_HArray1_gp_Pnt) const* Points, Handle(NCollection_HArray1_double) const* Parameters, bool PeriodicFlag, double Tolerance) {
     try { return {new GeomAPI_Interpolate(*Points, *Parameters, PeriodicFlag, Tolerance), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -6889,7 +6343,7 @@ extern "C" const char* GeomAPI_Interpolate_load_vec2_bool(GeomAPI_Interpolate* s
     try { self_->Load(*InitialTangent, *FinalTangent, Scale); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* GeomAPI_Interpolate_load_array1ofvec_handletcolstdharray1ofboolean_bool(GeomAPI_Interpolate* self_, TColgp_Array1OfVec const* Tangents, Handle(TColStd_HArray1OfBoolean) const* TangentFlags, bool Scale) {
+extern "C" const char* GeomAPI_Interpolate_load_arr1_vec_harr1_bool_bool(GeomAPI_Interpolate* self_, NCollection_Array1_gp_Vec const* Tangents, Handle(NCollection_HArray1_bool) const* TangentFlags, bool Scale) {
     try { self_->Load(*Tangents, *TangentFlags, Scale); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -6919,35 +6373,35 @@ extern "C" OcctResult<GeomAPI_PointsToBSpline*> GeomAPI_PointsToBSpline_ctor() {
     try { return {new GeomAPI_PointsToBSpline(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<GeomAPI_PointsToBSpline*> GeomAPI_PointsToBSpline_ctor_array1ofpnt_int2_shape_real(TColgp_Array1OfPnt const* Points, int32_t DegMin, int32_t DegMax, int32_t Continuity, double Tol3D) {
+extern "C" OcctResult<GeomAPI_PointsToBSpline*> GeomAPI_PointsToBSpline_ctor_arr1_pnt_int2_shape_real(NCollection_Array1_gp_Pnt const* Points, int32_t DegMin, int32_t DegMax, int32_t Continuity, double Tol3D) {
     try { return {new GeomAPI_PointsToBSpline(*Points, DegMin, DegMax, static_cast<GeomAbs_Shape>(Continuity), Tol3D), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<GeomAPI_PointsToBSpline*> GeomAPI_PointsToBSpline_ctor_array1ofpnt_parametrizationtype_int2_shape_real(TColgp_Array1OfPnt const* Points, int32_t ParType, int32_t DegMin, int32_t DegMax, int32_t Continuity, double Tol3D) {
+extern "C" OcctResult<GeomAPI_PointsToBSpline*> GeomAPI_PointsToBSpline_ctor_arr1_pnt_parametrizationtype_int2_shape_real(NCollection_Array1_gp_Pnt const* Points, int32_t ParType, int32_t DegMin, int32_t DegMax, int32_t Continuity, double Tol3D) {
     try { return {new GeomAPI_PointsToBSpline(*Points, static_cast<Approx_ParametrizationType>(ParType), DegMin, DegMax, static_cast<GeomAbs_Shape>(Continuity), Tol3D), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<GeomAPI_PointsToBSpline*> GeomAPI_PointsToBSpline_ctor_array1ofpnt_array1ofreal_int2_shape_real(TColgp_Array1OfPnt const* Points, TColStd_Array1OfReal const* Parameters, int32_t DegMin, int32_t DegMax, int32_t Continuity, double Tol3D) {
+extern "C" OcctResult<GeomAPI_PointsToBSpline*> GeomAPI_PointsToBSpline_ctor_arr1_pnt_arr1_double_int2_shape_real(NCollection_Array1_gp_Pnt const* Points, NCollection_Array1_double const* Parameters, int32_t DegMin, int32_t DegMax, int32_t Continuity, double Tol3D) {
     try { return {new GeomAPI_PointsToBSpline(*Points, *Parameters, DegMin, DegMax, static_cast<GeomAbs_Shape>(Continuity), Tol3D), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<GeomAPI_PointsToBSpline*> GeomAPI_PointsToBSpline_ctor_array1ofpnt_real3_int_shape_real(TColgp_Array1OfPnt const* Points, double Weight1, double Weight2, double Weight3, int32_t DegMax, int32_t Continuity, double Tol3D) {
+extern "C" OcctResult<GeomAPI_PointsToBSpline*> GeomAPI_PointsToBSpline_ctor_arr1_pnt_real3_int_shape_real(NCollection_Array1_gp_Pnt const* Points, double Weight1, double Weight2, double Weight3, int32_t DegMax, int32_t Continuity, double Tol3D) {
     try { return {new GeomAPI_PointsToBSpline(*Points, Weight1, Weight2, Weight3, DegMax, static_cast<GeomAbs_Shape>(Continuity), Tol3D), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* GeomAPI_PointsToBSpline_init_array1ofpnt_int2_shape_real(GeomAPI_PointsToBSpline* self_, TColgp_Array1OfPnt const* Points, int32_t DegMin, int32_t DegMax, int32_t Continuity, double Tol3D) {
+extern "C" const char* GeomAPI_PointsToBSpline_init_arr1_pnt_int2_shape_real(GeomAPI_PointsToBSpline* self_, NCollection_Array1_gp_Pnt const* Points, int32_t DegMin, int32_t DegMax, int32_t Continuity, double Tol3D) {
     try { self_->Init(*Points, DegMin, DegMax, static_cast<GeomAbs_Shape>(Continuity), Tol3D); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* GeomAPI_PointsToBSpline_init_array1ofpnt_parametrizationtype_int2_shape_real(GeomAPI_PointsToBSpline* self_, TColgp_Array1OfPnt const* Points, int32_t ParType, int32_t DegMin, int32_t DegMax, int32_t Continuity, double Tol3D) {
+extern "C" const char* GeomAPI_PointsToBSpline_init_arr1_pnt_parametrizationtype_int2_shape_real(GeomAPI_PointsToBSpline* self_, NCollection_Array1_gp_Pnt const* Points, int32_t ParType, int32_t DegMin, int32_t DegMax, int32_t Continuity, double Tol3D) {
     try { self_->Init(*Points, static_cast<Approx_ParametrizationType>(ParType), DegMin, DegMax, static_cast<GeomAbs_Shape>(Continuity), Tol3D); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* GeomAPI_PointsToBSpline_init_array1ofpnt_array1ofreal_int2_shape_real(GeomAPI_PointsToBSpline* self_, TColgp_Array1OfPnt const* Points, TColStd_Array1OfReal const* Parameters, int32_t DegMin, int32_t DegMax, int32_t Continuity, double Tol3D) {
+extern "C" const char* GeomAPI_PointsToBSpline_init_arr1_pnt_arr1_double_int2_shape_real(GeomAPI_PointsToBSpline* self_, NCollection_Array1_gp_Pnt const* Points, NCollection_Array1_double const* Parameters, int32_t DegMin, int32_t DegMax, int32_t Continuity, double Tol3D) {
     try { self_->Init(*Points, *Parameters, DegMin, DegMax, static_cast<GeomAbs_Shape>(Continuity), Tol3D); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* GeomAPI_PointsToBSpline_init_array1ofpnt_real3_int_shape_real(GeomAPI_PointsToBSpline* self_, TColgp_Array1OfPnt const* Points, double Weight1, double Weight2, double Weight3, int32_t DegMax, int32_t Continuity, double Tol3D) {
+extern "C" const char* GeomAPI_PointsToBSpline_init_arr1_pnt_real3_int_shape_real(GeomAPI_PointsToBSpline* self_, NCollection_Array1_gp_Pnt const* Points, double Weight1, double Weight2, double Weight3, int32_t DegMax, int32_t Continuity, double Tol3D) {
     try { self_->Init(*Points, Weight1, Weight2, Weight3, DegMax, static_cast<GeomAbs_Shape>(Continuity), Tol3D); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -6969,47 +6423,47 @@ extern "C" OcctResult<GeomAPI_PointsToBSplineSurface*> GeomAPI_PointsToBSplineSu
     try { return {new GeomAPI_PointsToBSplineSurface(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<GeomAPI_PointsToBSplineSurface*> GeomAPI_PointsToBSplineSurface_ctor_array2ofpnt_int2_shape_real(TColgp_Array2OfPnt const* Points, int32_t DegMin, int32_t DegMax, int32_t Continuity, double Tol3D) {
+extern "C" OcctResult<GeomAPI_PointsToBSplineSurface*> GeomAPI_PointsToBSplineSurface_ctor_arr2_pnt_int2_shape_real(NCollection_Array2_gp_Pnt const* Points, int32_t DegMin, int32_t DegMax, int32_t Continuity, double Tol3D) {
     try { return {new GeomAPI_PointsToBSplineSurface(*Points, DegMin, DegMax, static_cast<GeomAbs_Shape>(Continuity), Tol3D), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<GeomAPI_PointsToBSplineSurface*> GeomAPI_PointsToBSplineSurface_ctor_array2ofpnt_parametrizationtype_int2_shape_real(TColgp_Array2OfPnt const* Points, int32_t ParType, int32_t DegMin, int32_t DegMax, int32_t Continuity, double Tol3D) {
+extern "C" OcctResult<GeomAPI_PointsToBSplineSurface*> GeomAPI_PointsToBSplineSurface_ctor_arr2_pnt_parametrizationtype_int2_shape_real(NCollection_Array2_gp_Pnt const* Points, int32_t ParType, int32_t DegMin, int32_t DegMax, int32_t Continuity, double Tol3D) {
     try { return {new GeomAPI_PointsToBSplineSurface(*Points, static_cast<Approx_ParametrizationType>(ParType), DegMin, DegMax, static_cast<GeomAbs_Shape>(Continuity), Tol3D), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<GeomAPI_PointsToBSplineSurface*> GeomAPI_PointsToBSplineSurface_ctor_array2ofpnt_real3_int_shape_real(TColgp_Array2OfPnt const* Points, double Weight1, double Weight2, double Weight3, int32_t DegMax, int32_t Continuity, double Tol3D) {
+extern "C" OcctResult<GeomAPI_PointsToBSplineSurface*> GeomAPI_PointsToBSplineSurface_ctor_arr2_pnt_real3_int_shape_real(NCollection_Array2_gp_Pnt const* Points, double Weight1, double Weight2, double Weight3, int32_t DegMax, int32_t Continuity, double Tol3D) {
     try { return {new GeomAPI_PointsToBSplineSurface(*Points, Weight1, Weight2, Weight3, DegMax, static_cast<GeomAbs_Shape>(Continuity), Tol3D), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<GeomAPI_PointsToBSplineSurface*> GeomAPI_PointsToBSplineSurface_ctor_array2ofreal_real4_int2_shape_real(TColStd_Array2OfReal const* ZPoints, double X0, double dX, double Y0, double dY, int32_t DegMin, int32_t DegMax, int32_t Continuity, double Tol3D) {
+extern "C" OcctResult<GeomAPI_PointsToBSplineSurface*> GeomAPI_PointsToBSplineSurface_ctor_arr2_double_real4_int2_shape_real(NCollection_Array2_double const* ZPoints, double X0, double dX, double Y0, double dY, int32_t DegMin, int32_t DegMax, int32_t Continuity, double Tol3D) {
     try { return {new GeomAPI_PointsToBSplineSurface(*ZPoints, X0, dX, Y0, dY, DegMin, DegMax, static_cast<GeomAbs_Shape>(Continuity), Tol3D), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* GeomAPI_PointsToBSplineSurface_init_array2ofpnt_int2_shape_real(GeomAPI_PointsToBSplineSurface* self_, TColgp_Array2OfPnt const* Points, int32_t DegMin, int32_t DegMax, int32_t Continuity, double Tol3D) {
+extern "C" const char* GeomAPI_PointsToBSplineSurface_init_arr2_pnt_int2_shape_real(GeomAPI_PointsToBSplineSurface* self_, NCollection_Array2_gp_Pnt const* Points, int32_t DegMin, int32_t DegMax, int32_t Continuity, double Tol3D) {
     try { self_->Init(*Points, DegMin, DegMax, static_cast<GeomAbs_Shape>(Continuity), Tol3D); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* GeomAPI_PointsToBSplineSurface_interpolate_array2ofpnt_bool(GeomAPI_PointsToBSplineSurface* self_, TColgp_Array2OfPnt const* Points, bool thePeriodic) {
+extern "C" const char* GeomAPI_PointsToBSplineSurface_interpolate_arr2_pnt_bool(GeomAPI_PointsToBSplineSurface* self_, NCollection_Array2_gp_Pnt const* Points, bool thePeriodic) {
     try { self_->Interpolate(*Points, thePeriodic); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* GeomAPI_PointsToBSplineSurface_interpolate_array2ofpnt_parametrizationtype_bool(GeomAPI_PointsToBSplineSurface* self_, TColgp_Array2OfPnt const* Points, int32_t ParType, bool thePeriodic) {
+extern "C" const char* GeomAPI_PointsToBSplineSurface_interpolate_arr2_pnt_parametrizationtype_bool(GeomAPI_PointsToBSplineSurface* self_, NCollection_Array2_gp_Pnt const* Points, int32_t ParType, bool thePeriodic) {
     try { self_->Interpolate(*Points, static_cast<Approx_ParametrizationType>(ParType), thePeriodic); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* GeomAPI_PointsToBSplineSurface_init_array2ofreal_real4_int2_shape_real(GeomAPI_PointsToBSplineSurface* self_, TColStd_Array2OfReal const* ZPoints, double X0, double dX, double Y0, double dY, int32_t DegMin, int32_t DegMax, int32_t Continuity, double Tol3D) {
+extern "C" const char* GeomAPI_PointsToBSplineSurface_init_arr2_double_real4_int2_shape_real(GeomAPI_PointsToBSplineSurface* self_, NCollection_Array2_double const* ZPoints, double X0, double dX, double Y0, double dY, int32_t DegMin, int32_t DegMax, int32_t Continuity, double Tol3D) {
     try { self_->Init(*ZPoints, X0, dX, Y0, dY, DegMin, DegMax, static_cast<GeomAbs_Shape>(Continuity), Tol3D); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* GeomAPI_PointsToBSplineSurface_interpolate_array2ofreal_real4(GeomAPI_PointsToBSplineSurface* self_, TColStd_Array2OfReal const* ZPoints, double X0, double dX, double Y0, double dY) {
+extern "C" const char* GeomAPI_PointsToBSplineSurface_interpolate_arr2_double_real4(GeomAPI_PointsToBSplineSurface* self_, NCollection_Array2_double const* ZPoints, double X0, double dX, double Y0, double dY) {
     try { self_->Interpolate(*ZPoints, X0, dX, Y0, dY); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* GeomAPI_PointsToBSplineSurface_init_array2ofpnt_parametrizationtype_int2_shape_real_bool(GeomAPI_PointsToBSplineSurface* self_, TColgp_Array2OfPnt const* Points, int32_t ParType, int32_t DegMin, int32_t DegMax, int32_t Continuity, double Tol3D, bool thePeriodic) {
+extern "C" const char* GeomAPI_PointsToBSplineSurface_init_arr2_pnt_parametrizationtype_int2_shape_real_bool(GeomAPI_PointsToBSplineSurface* self_, NCollection_Array2_gp_Pnt const* Points, int32_t ParType, int32_t DegMin, int32_t DegMax, int32_t Continuity, double Tol3D, bool thePeriodic) {
     try { self_->Init(*Points, static_cast<Approx_ParametrizationType>(ParType), DegMin, DegMax, static_cast<GeomAbs_Shape>(Continuity), Tol3D, thePeriodic); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* GeomAPI_PointsToBSplineSurface_init_array2ofpnt_real3_int_shape_real(GeomAPI_PointsToBSplineSurface* self_, TColgp_Array2OfPnt const* Points, double Weight1, double Weight2, double Weight3, int32_t DegMax, int32_t Continuity, double Tol3D) {
+extern "C" const char* GeomAPI_PointsToBSplineSurface_init_arr2_pnt_real3_int_shape_real(GeomAPI_PointsToBSplineSurface* self_, NCollection_Array2_gp_Pnt const* Points, double Weight1, double Weight2, double Weight3, int32_t DegMax, int32_t Continuity, double Tol3D) {
     try { self_->Init(*Points, Weight1, Weight2, Weight3, DegMax, static_cast<GeomAbs_Shape>(Continuity), Tol3D); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -7251,7 +6705,7 @@ extern "C" const char* GeomFill_AppSurf_surf_shape(const GeomFill_AppSurf* self_
     try { self_->SurfShape(*UDegree, *VDegree, *NbUPoles, *NbVPoles, *NbUKnots, *NbVKnots); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* GeomFill_AppSurf_surface(const GeomFill_AppSurf* self_, TColgp_Array2OfPnt* TPoles, TColStd_Array2OfReal* TWeights, TColStd_Array1OfReal* TUKnots, TColStd_Array1OfReal* TVKnots, TColStd_Array1OfInteger* TUMults, TColStd_Array1OfInteger* TVMults) {
+extern "C" const char* GeomFill_AppSurf_surface(const GeomFill_AppSurf* self_, NCollection_Array2_gp_Pnt* TPoles, NCollection_Array2_double* TWeights, NCollection_Array1_double* TUKnots, NCollection_Array1_double* TVKnots, NCollection_Array1_int* TUMults, NCollection_Array1_int* TVMults) {
     try { self_->Surface(*TPoles, *TWeights, *TUKnots, *TVKnots, *TUMults, *TVMults); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -7263,27 +6717,27 @@ extern "C" OcctResult<int32_t> GeomFill_AppSurf_v_degree(const GeomFill_AppSurf*
     try { return {self_->VDegree(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TColgp_Array2OfPnt const*> GeomFill_AppSurf_surf_poles(const GeomFill_AppSurf* self_) {
+extern "C" OcctResult<NCollection_Array2_gp_Pnt const*> GeomFill_AppSurf_surf_poles(const GeomFill_AppSurf* self_) {
     try { return {&(self_->SurfPoles()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TColStd_Array2OfReal const*> GeomFill_AppSurf_surf_weights(const GeomFill_AppSurf* self_) {
+extern "C" OcctResult<NCollection_Array2_double const*> GeomFill_AppSurf_surf_weights(const GeomFill_AppSurf* self_) {
     try { return {&(self_->SurfWeights()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TColStd_Array1OfReal const*> GeomFill_AppSurf_surf_u_knots(const GeomFill_AppSurf* self_) {
+extern "C" OcctResult<NCollection_Array1_double const*> GeomFill_AppSurf_surf_u_knots(const GeomFill_AppSurf* self_) {
     try { return {&(self_->SurfUKnots()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TColStd_Array1OfReal const*> GeomFill_AppSurf_surf_v_knots(const GeomFill_AppSurf* self_) {
+extern "C" OcctResult<NCollection_Array1_double const*> GeomFill_AppSurf_surf_v_knots(const GeomFill_AppSurf* self_) {
     try { return {&(self_->SurfVKnots()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TColStd_Array1OfInteger const*> GeomFill_AppSurf_surf_u_mults(const GeomFill_AppSurf* self_) {
+extern "C" OcctResult<NCollection_Array1_int const*> GeomFill_AppSurf_surf_u_mults(const GeomFill_AppSurf* self_) {
     try { return {&(self_->SurfUMults()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TColStd_Array1OfInteger const*> GeomFill_AppSurf_surf_v_mults(const GeomFill_AppSurf* self_) {
+extern "C" OcctResult<NCollection_Array1_int const*> GeomFill_AppSurf_surf_v_mults(const GeomFill_AppSurf* self_) {
     try { return {&(self_->SurfVMults()), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -7295,7 +6749,7 @@ extern "C" const char* GeomFill_AppSurf_curves2d_shape(const GeomFill_AppSurf* s
     try { self_->Curves2dShape(*Degree, *NbPoles, *NbKnots); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* GeomFill_AppSurf_curve2d(const GeomFill_AppSurf* self_, int32_t Index, TColgp_Array1OfPnt2d* TPoles, TColStd_Array1OfReal* TKnots, TColStd_Array1OfInteger* TMults) {
+extern "C" const char* GeomFill_AppSurf_curve2d(const GeomFill_AppSurf* self_, int32_t Index, NCollection_Array1_gp_Pnt2d* TPoles, NCollection_Array1_double* TKnots, NCollection_Array1_int* TMults) {
     try { self_->Curve2d(Index, *TPoles, *TKnots, *TMults); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -7303,15 +6757,15 @@ extern "C" OcctResult<int32_t> GeomFill_AppSurf_curves2d_degree(const GeomFill_A
     try { return {self_->Curves2dDegree(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TColgp_Array1OfPnt2d const*> GeomFill_AppSurf_curve2d_poles(const GeomFill_AppSurf* self_, int32_t Index) {
+extern "C" OcctResult<NCollection_Array1_gp_Pnt2d const*> GeomFill_AppSurf_curve2d_poles(const GeomFill_AppSurf* self_, int32_t Index) {
     try { return {&(self_->Curve2dPoles(Index)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TColStd_Array1OfReal const*> GeomFill_AppSurf_curves2d_knots(const GeomFill_AppSurf* self_) {
+extern "C" OcctResult<NCollection_Array1_double const*> GeomFill_AppSurf_curves2d_knots(const GeomFill_AppSurf* self_) {
     try { return {&(self_->Curves2dKnots()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TColStd_Array1OfInteger const*> GeomFill_AppSurf_curves2d_mults(const GeomFill_AppSurf* self_) {
+extern "C" OcctResult<NCollection_Array1_int const*> GeomFill_AppSurf_curves2d_mults(const GeomFill_AppSurf* self_) {
     try { return {&(self_->Curves2dMults()), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -7387,7 +6841,7 @@ extern "C" const char* GeomFill_AppSweep_surf_shape(const GeomFill_AppSweep* sel
     try { self_->SurfShape(*UDegree, *VDegree, *NbUPoles, *NbVPoles, *NbUKnots, *NbVKnots); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* GeomFill_AppSweep_surface(const GeomFill_AppSweep* self_, TColgp_Array2OfPnt* TPoles, TColStd_Array2OfReal* TWeights, TColStd_Array1OfReal* TUKnots, TColStd_Array1OfReal* TVKnots, TColStd_Array1OfInteger* TUMults, TColStd_Array1OfInteger* TVMults) {
+extern "C" const char* GeomFill_AppSweep_surface(const GeomFill_AppSweep* self_, NCollection_Array2_gp_Pnt* TPoles, NCollection_Array2_double* TWeights, NCollection_Array1_double* TUKnots, NCollection_Array1_double* TVKnots, NCollection_Array1_int* TUMults, NCollection_Array1_int* TVMults) {
     try { self_->Surface(*TPoles, *TWeights, *TUKnots, *TVKnots, *TUMults, *TVMults); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -7399,27 +6853,27 @@ extern "C" OcctResult<int32_t> GeomFill_AppSweep_v_degree(const GeomFill_AppSwee
     try { return {self_->VDegree(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TColgp_Array2OfPnt const*> GeomFill_AppSweep_surf_poles(const GeomFill_AppSweep* self_) {
+extern "C" OcctResult<NCollection_Array2_gp_Pnt const*> GeomFill_AppSweep_surf_poles(const GeomFill_AppSweep* self_) {
     try { return {&(self_->SurfPoles()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TColStd_Array2OfReal const*> GeomFill_AppSweep_surf_weights(const GeomFill_AppSweep* self_) {
+extern "C" OcctResult<NCollection_Array2_double const*> GeomFill_AppSweep_surf_weights(const GeomFill_AppSweep* self_) {
     try { return {&(self_->SurfWeights()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TColStd_Array1OfReal const*> GeomFill_AppSweep_surf_u_knots(const GeomFill_AppSweep* self_) {
+extern "C" OcctResult<NCollection_Array1_double const*> GeomFill_AppSweep_surf_u_knots(const GeomFill_AppSweep* self_) {
     try { return {&(self_->SurfUKnots()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TColStd_Array1OfReal const*> GeomFill_AppSweep_surf_v_knots(const GeomFill_AppSweep* self_) {
+extern "C" OcctResult<NCollection_Array1_double const*> GeomFill_AppSweep_surf_v_knots(const GeomFill_AppSweep* self_) {
     try { return {&(self_->SurfVKnots()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TColStd_Array1OfInteger const*> GeomFill_AppSweep_surf_u_mults(const GeomFill_AppSweep* self_) {
+extern "C" OcctResult<NCollection_Array1_int const*> GeomFill_AppSweep_surf_u_mults(const GeomFill_AppSweep* self_) {
     try { return {&(self_->SurfUMults()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TColStd_Array1OfInteger const*> GeomFill_AppSweep_surf_v_mults(const GeomFill_AppSweep* self_) {
+extern "C" OcctResult<NCollection_Array1_int const*> GeomFill_AppSweep_surf_v_mults(const GeomFill_AppSweep* self_) {
     try { return {&(self_->SurfVMults()), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -7431,7 +6885,7 @@ extern "C" const char* GeomFill_AppSweep_curves2d_shape(const GeomFill_AppSweep*
     try { self_->Curves2dShape(*Degree, *NbPoles, *NbKnots); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* GeomFill_AppSweep_curve2d(const GeomFill_AppSweep* self_, int32_t Index, TColgp_Array1OfPnt2d* TPoles, TColStd_Array1OfReal* TKnots, TColStd_Array1OfInteger* TMults) {
+extern "C" const char* GeomFill_AppSweep_curve2d(const GeomFill_AppSweep* self_, int32_t Index, NCollection_Array1_gp_Pnt2d* TPoles, NCollection_Array1_double* TKnots, NCollection_Array1_int* TMults) {
     try { self_->Curve2d(Index, *TPoles, *TKnots, *TMults); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -7439,15 +6893,15 @@ extern "C" OcctResult<int32_t> GeomFill_AppSweep_curves2d_degree(const GeomFill_
     try { return {self_->Curves2dDegree(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TColgp_Array1OfPnt2d const*> GeomFill_AppSweep_curve2d_poles(const GeomFill_AppSweep* self_, int32_t Index) {
+extern "C" OcctResult<NCollection_Array1_gp_Pnt2d const*> GeomFill_AppSweep_curve2d_poles(const GeomFill_AppSweep* self_, int32_t Index) {
     try { return {&(self_->Curve2dPoles(Index)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TColStd_Array1OfReal const*> GeomFill_AppSweep_curves2d_knots(const GeomFill_AppSweep* self_) {
+extern "C" OcctResult<NCollection_Array1_double const*> GeomFill_AppSweep_curves2d_knots(const GeomFill_AppSweep* self_) {
     try { return {&(self_->Curves2dKnots()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TColStd_Array1OfInteger const*> GeomFill_AppSweep_curves2d_mults(const GeomFill_AppSweep* self_) {
+extern "C" OcctResult<NCollection_Array1_int const*> GeomFill_AppSweep_curves2d_mults(const GeomFill_AppSweep* self_) {
     try { return {&(self_->Curves2dMults()), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -7595,24 +7049,24 @@ extern "C" OcctResult<const GeomFill_Boundary*> GeomFill_BoundWithSurf_as_GeomFi
 extern "C" OcctResult<GeomFill_Boundary*> GeomFill_BoundWithSurf_as_GeomFill_Boundary_mut(GeomFill_BoundWithSurf* self_) { return {static_cast<GeomFill_Boundary*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> GeomFill_BoundWithSurf_as_Standard_Transient(const GeomFill_BoundWithSurf* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> GeomFill_BoundWithSurf_as_Standard_Transient_mut(GeomFill_BoundWithSurf* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleGeomFillBoundWithSurf*> GeomFill_BoundWithSurf_to_handle(GeomFill_BoundWithSurf* obj) {
-    try { return {new HandleGeomFillBoundWithSurf(obj), nullptr}; }
+extern "C" OcctResult<Handle_GeomFill_BoundWithSurf*> GeomFill_BoundWithSurf_to_handle(GeomFill_BoundWithSurf* obj) {
+    try { return {new Handle_GeomFill_BoundWithSurf(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const GeomFill_BoundWithSurf*> HandleGeomFillBoundWithSurf_get(const HandleGeomFillBoundWithSurf* handle) {
+extern "C" OcctResult<const GeomFill_BoundWithSurf*> Handle_GeomFill_BoundWithSurf_get(const Handle_GeomFill_BoundWithSurf* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<GeomFill_BoundWithSurf*> HandleGeomFillBoundWithSurf_get_mut(HandleGeomFillBoundWithSurf* handle) {
+extern "C" OcctResult<GeomFill_BoundWithSurf*> Handle_GeomFill_BoundWithSurf_get_mut(Handle_GeomFill_BoundWithSurf* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleGeomFillBoundary*> HandleGeomFillBoundWithSurf_to_HandleGeomFillBoundary(const HandleGeomFillBoundWithSurf* self_) {
-    try { return {new HandleGeomFillBoundary(*self_), nullptr}; }
+extern "C" OcctResult<Handle_GeomFill_Boundary*> Handle_GeomFill_BoundWithSurf_to_Handle_GeomFill_Boundary(const Handle_GeomFill_BoundWithSurf* self_) {
+    try { return {new Handle_GeomFill_Boundary(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleGeomFillBoundWithSurf_to_HandleStandardTransient(const HandleGeomFillBoundWithSurf* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_GeomFill_BoundWithSurf_to_Handle_Standard_Transient(const Handle_GeomFill_BoundWithSurf* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" const char* GeomFill_BoundWithSurf_inherited_Points(const GeomFill_BoundWithSurf* self, gp_Pnt& PFirst, gp_Pnt& PLast) {
@@ -7727,39 +7181,39 @@ extern "C" OcctResult<Handle(Standard_Type) const*> GeomFill_Boundary_get_type_d
 }
 extern "C" OcctResult<const Standard_Transient*> GeomFill_Boundary_as_Standard_Transient(const GeomFill_Boundary* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> GeomFill_Boundary_as_Standard_Transient_mut(GeomFill_Boundary* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<const GeomFill_Boundary*> HandleGeomFillBoundary_get(const HandleGeomFillBoundary* handle) {
+extern "C" OcctResult<const GeomFill_Boundary*> Handle_GeomFill_Boundary_get(const Handle_GeomFill_Boundary* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<GeomFill_Boundary*> HandleGeomFillBoundary_get_mut(HandleGeomFillBoundary* handle) {
+extern "C" OcctResult<GeomFill_Boundary*> Handle_GeomFill_Boundary_get_mut(Handle_GeomFill_Boundary* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleGeomFillBoundary_to_HandleStandardTransient(const HandleGeomFillBoundary* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_GeomFill_Boundary_to_Handle_Standard_Transient(const Handle_GeomFill_Boundary* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleGeomFillBoundWithSurf*> HandleGeomFillBoundary_downcast_to_HandleGeomFillBoundWithSurf(const HandleGeomFillBoundary* self_) {
+extern "C" OcctResult<Handle_GeomFill_BoundWithSurf*> Handle_GeomFill_Boundary_downcast_to_Handle_GeomFill_BoundWithSurf(const Handle_GeomFill_Boundary* self_) {
     try {
     opencascade::handle<GeomFill_BoundWithSurf> result = opencascade::handle<GeomFill_BoundWithSurf>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleGeomFillBoundWithSurf(result), nullptr};
+    return {new Handle_GeomFill_BoundWithSurf(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleGeomFillDegeneratedBound*> HandleGeomFillBoundary_downcast_to_HandleGeomFillDegeneratedBound(const HandleGeomFillBoundary* self_) {
+extern "C" OcctResult<Handle_GeomFill_DegeneratedBound*> Handle_GeomFill_Boundary_downcast_to_Handle_GeomFill_DegeneratedBound(const Handle_GeomFill_Boundary* self_) {
     try {
     opencascade::handle<GeomFill_DegeneratedBound> result = opencascade::handle<GeomFill_DegeneratedBound>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleGeomFillDegeneratedBound(result), nullptr};
+    return {new Handle_GeomFill_DegeneratedBound(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleGeomFillSimpleBound*> HandleGeomFillBoundary_downcast_to_HandleGeomFillSimpleBound(const HandleGeomFillBoundary* self_) {
+extern "C" OcctResult<Handle_GeomFill_SimpleBound*> Handle_GeomFill_Boundary_downcast_to_Handle_GeomFill_SimpleBound(const Handle_GeomFill_Boundary* self_) {
     try {
     opencascade::handle<GeomFill_SimpleBound> result = opencascade::handle<GeomFill_SimpleBound>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleGeomFillSimpleBound(result), nullptr};
+    return {new Handle_GeomFill_SimpleBound(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
@@ -7805,15 +7259,15 @@ extern "C" OcctResult<gp_Pnt*> GeomFill_CircularBlendFunc_barycentre_of_surf(con
     try { return {new gp_Pnt(self_->BarycentreOfSurf()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<bool> GeomFill_CircularBlendFunc_d0(GeomFill_CircularBlendFunc* self_, double Param, double First, double Last, TColgp_Array1OfPnt* Poles, TColgp_Array1OfPnt2d* Poles2d, TColStd_Array1OfReal* Weigths) {
+extern "C" OcctResult<bool> GeomFill_CircularBlendFunc_d0(GeomFill_CircularBlendFunc* self_, double Param, double First, double Last, NCollection_Array1_gp_Pnt* Poles, NCollection_Array1_gp_Pnt2d* Poles2d, NCollection_Array1_double* Weigths) {
     try { return {self_->D0(Param, First, Last, *Poles, *Poles2d, *Weigths), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<bool> GeomFill_CircularBlendFunc_d1(GeomFill_CircularBlendFunc* self_, double Param, double First, double Last, TColgp_Array1OfPnt* Poles, TColgp_Array1OfVec* DPoles, TColgp_Array1OfPnt2d* Poles2d, TColgp_Array1OfVec2d* DPoles2d, TColStd_Array1OfReal* Weigths, TColStd_Array1OfReal* DWeigths) {
+extern "C" OcctResult<bool> GeomFill_CircularBlendFunc_d1(GeomFill_CircularBlendFunc* self_, double Param, double First, double Last, NCollection_Array1_gp_Pnt* Poles, NCollection_Array1_gp_Vec* DPoles, NCollection_Array1_gp_Pnt2d* Poles2d, NCollection_Array1_gp_Vec2d* DPoles2d, NCollection_Array1_double* Weigths, NCollection_Array1_double* DWeigths) {
     try { return {self_->D1(Param, First, Last, *Poles, *DPoles, *Poles2d, *DPoles2d, *Weigths, *DWeigths), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<bool> GeomFill_CircularBlendFunc_d2(GeomFill_CircularBlendFunc* self_, double Param, double First, double Last, TColgp_Array1OfPnt* Poles, TColgp_Array1OfVec* DPoles, TColgp_Array1OfVec* D2Poles, TColgp_Array1OfPnt2d* Poles2d, TColgp_Array1OfVec2d* DPoles2d, TColgp_Array1OfVec2d* D2Poles2d, TColStd_Array1OfReal* Weigths, TColStd_Array1OfReal* DWeigths, TColStd_Array1OfReal* D2Weigths) {
+extern "C" OcctResult<bool> GeomFill_CircularBlendFunc_d2(GeomFill_CircularBlendFunc* self_, double Param, double First, double Last, NCollection_Array1_gp_Pnt* Poles, NCollection_Array1_gp_Vec* DPoles, NCollection_Array1_gp_Vec* D2Poles, NCollection_Array1_gp_Pnt2d* Poles2d, NCollection_Array1_gp_Vec2d* DPoles2d, NCollection_Array1_gp_Vec2d* D2Poles2d, NCollection_Array1_double* Weigths, NCollection_Array1_double* DWeigths, NCollection_Array1_double* D2Weigths) {
     try { return {self_->D2(Param, First, Last, *Poles, *DPoles, *D2Poles, *Poles2d, *DPoles2d, *D2Poles2d, *Weigths, *DWeigths, *D2Weigths), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -7825,11 +7279,11 @@ extern "C" const char* GeomFill_CircularBlendFunc_section_shape(const GeomFill_C
     try { self_->SectionShape(*NbPoles, *NbKnots, *Degree); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* GeomFill_CircularBlendFunc_knots(const GeomFill_CircularBlendFunc* self_, TColStd_Array1OfReal* TKnots) {
+extern "C" const char* GeomFill_CircularBlendFunc_knots(const GeomFill_CircularBlendFunc* self_, NCollection_Array1_double* TKnots) {
     try { self_->Knots(*TKnots); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* GeomFill_CircularBlendFunc_mults(const GeomFill_CircularBlendFunc* self_, TColStd_Array1OfInteger* TMults) {
+extern "C" const char* GeomFill_CircularBlendFunc_mults(const GeomFill_CircularBlendFunc* self_, NCollection_Array1_int* TMults) {
     try { self_->Mults(*TMults); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -7841,7 +7295,7 @@ extern "C" OcctResult<int32_t> GeomFill_CircularBlendFunc_nb_intervals(const Geo
     try { return {self_->NbIntervals(static_cast<GeomAbs_Shape>(S)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* GeomFill_CircularBlendFunc_intervals(const GeomFill_CircularBlendFunc* self_, TColStd_Array1OfReal* T, int32_t S) {
+extern "C" const char* GeomFill_CircularBlendFunc_intervals(const GeomFill_CircularBlendFunc* self_, NCollection_Array1_double* T, int32_t S) {
     try { self_->Intervals(*T, static_cast<GeomAbs_Shape>(S)); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -7849,7 +7303,7 @@ extern "C" const char* GeomFill_CircularBlendFunc_set_interval(GeomFill_Circular
     try { self_->SetInterval(First, Last); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* GeomFill_CircularBlendFunc_get_tolerance(const GeomFill_CircularBlendFunc* self_, double BoundTol, double SurfTol, double AngleTol, TColStd_Array1OfReal* Tol3d) {
+extern "C" const char* GeomFill_CircularBlendFunc_get_tolerance(const GeomFill_CircularBlendFunc* self_, double BoundTol, double SurfTol, double AngleTol, NCollection_Array1_double* Tol3d) {
     try { self_->GetTolerance(BoundTol, SurfTol, AngleTol, *Tol3d); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -7861,7 +7315,7 @@ extern "C" OcctResult<double> GeomFill_CircularBlendFunc_maximal_section(const G
     try { return {self_->MaximalSection(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* GeomFill_CircularBlendFunc_get_minimal_weight(const GeomFill_CircularBlendFunc* self_, TColStd_Array1OfReal* Weigths) {
+extern "C" const char* GeomFill_CircularBlendFunc_get_minimal_weight(const GeomFill_CircularBlendFunc* self_, NCollection_Array1_double* Weigths) {
     try { self_->GetMinimalWeight(*Weigths); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -7881,24 +7335,24 @@ extern "C" OcctResult<const Approx_SweepFunction*> GeomFill_CircularBlendFunc_as
 extern "C" OcctResult<Approx_SweepFunction*> GeomFill_CircularBlendFunc_as_Approx_SweepFunction_mut(GeomFill_CircularBlendFunc* self_) { return {static_cast<Approx_SweepFunction*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> GeomFill_CircularBlendFunc_as_Standard_Transient(const GeomFill_CircularBlendFunc* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> GeomFill_CircularBlendFunc_as_Standard_Transient_mut(GeomFill_CircularBlendFunc* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleGeomFillCircularBlendFunc*> GeomFill_CircularBlendFunc_to_handle(GeomFill_CircularBlendFunc* obj) {
-    try { return {new HandleGeomFillCircularBlendFunc(obj), nullptr}; }
+extern "C" OcctResult<Handle_GeomFill_CircularBlendFunc*> GeomFill_CircularBlendFunc_to_handle(GeomFill_CircularBlendFunc* obj) {
+    try { return {new Handle_GeomFill_CircularBlendFunc(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const GeomFill_CircularBlendFunc*> HandleGeomFillCircularBlendFunc_get(const HandleGeomFillCircularBlendFunc* handle) {
+extern "C" OcctResult<const GeomFill_CircularBlendFunc*> Handle_GeomFill_CircularBlendFunc_get(const Handle_GeomFill_CircularBlendFunc* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<GeomFill_CircularBlendFunc*> HandleGeomFillCircularBlendFunc_get_mut(HandleGeomFillCircularBlendFunc* handle) {
+extern "C" OcctResult<GeomFill_CircularBlendFunc*> Handle_GeomFill_CircularBlendFunc_get_mut(Handle_GeomFill_CircularBlendFunc* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleApproxSweepFunction*> HandleGeomFillCircularBlendFunc_to_HandleApproxSweepFunction(const HandleGeomFillCircularBlendFunc* self_) {
-    try { return {new HandleApproxSweepFunction(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Approx_SweepFunction*> Handle_GeomFill_CircularBlendFunc_to_Handle_Approx_SweepFunction(const Handle_GeomFill_CircularBlendFunc* self_) {
+    try { return {new Handle_Approx_SweepFunction(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleGeomFillCircularBlendFunc_to_HandleStandardTransient(const HandleGeomFillCircularBlendFunc* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_GeomFill_CircularBlendFunc_to_Handle_Standard_Transient(const Handle_GeomFill_CircularBlendFunc* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" const char* GeomFill_CircularBlendFunc_inherited_Resolution(const GeomFill_CircularBlendFunc* self, int32_t Index, double Tol, double& TolU, double& TolV) {
@@ -7967,7 +7421,7 @@ extern "C" OcctResult<int32_t> GeomFill_ConstantBiNormal_nb_intervals(const Geom
     try { return {self_->NbIntervals(static_cast<GeomAbs_Shape>(S)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* GeomFill_ConstantBiNormal_intervals(const GeomFill_ConstantBiNormal* self_, TColStd_Array1OfReal* T, int32_t S) {
+extern "C" const char* GeomFill_ConstantBiNormal_intervals(const GeomFill_ConstantBiNormal* self_, NCollection_Array1_double* T, int32_t S) {
     try { self_->Intervals(*T, static_cast<GeomAbs_Shape>(S)); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -7999,24 +7453,24 @@ extern "C" OcctResult<const GeomFill_TrihedronLaw*> GeomFill_ConstantBiNormal_as
 extern "C" OcctResult<GeomFill_TrihedronLaw*> GeomFill_ConstantBiNormal_as_GeomFill_TrihedronLaw_mut(GeomFill_ConstantBiNormal* self_) { return {static_cast<GeomFill_TrihedronLaw*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> GeomFill_ConstantBiNormal_as_Standard_Transient(const GeomFill_ConstantBiNormal* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> GeomFill_ConstantBiNormal_as_Standard_Transient_mut(GeomFill_ConstantBiNormal* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleGeomFillConstantBiNormal*> GeomFill_ConstantBiNormal_to_handle(GeomFill_ConstantBiNormal* obj) {
-    try { return {new HandleGeomFillConstantBiNormal(obj), nullptr}; }
+extern "C" OcctResult<Handle_GeomFill_ConstantBiNormal*> GeomFill_ConstantBiNormal_to_handle(GeomFill_ConstantBiNormal* obj) {
+    try { return {new Handle_GeomFill_ConstantBiNormal(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const GeomFill_ConstantBiNormal*> HandleGeomFillConstantBiNormal_get(const HandleGeomFillConstantBiNormal* handle) {
+extern "C" OcctResult<const GeomFill_ConstantBiNormal*> Handle_GeomFill_ConstantBiNormal_get(const Handle_GeomFill_ConstantBiNormal* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<GeomFill_ConstantBiNormal*> HandleGeomFillConstantBiNormal_get_mut(HandleGeomFillConstantBiNormal* handle) {
+extern "C" OcctResult<GeomFill_ConstantBiNormal*> Handle_GeomFill_ConstantBiNormal_get_mut(Handle_GeomFill_ConstantBiNormal* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleGeomFillTrihedronLaw*> HandleGeomFillConstantBiNormal_to_HandleGeomFillTrihedronLaw(const HandleGeomFillConstantBiNormal* self_) {
-    try { return {new HandleGeomFillTrihedronLaw(*self_), nullptr}; }
+extern "C" OcctResult<Handle_GeomFill_TrihedronLaw*> Handle_GeomFill_ConstantBiNormal_to_Handle_GeomFill_TrihedronLaw(const Handle_GeomFill_ConstantBiNormal* self_) {
+    try { return {new Handle_GeomFill_TrihedronLaw(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleGeomFillConstantBiNormal_to_HandleStandardTransient(const HandleGeomFillConstantBiNormal* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_GeomFill_ConstantBiNormal_to_Handle_Standard_Transient(const Handle_GeomFill_ConstantBiNormal* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<int32_t> GeomFill_ConstantBiNormal_inherited_ErrorStatus(const GeomFill_ConstantBiNormal* self) {
@@ -8123,19 +7577,19 @@ extern "C" OcctResult<GeomFill_Coons*> GeomFill_Coons_ctor() {
     try { return {new GeomFill_Coons(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<GeomFill_Coons*> GeomFill_Coons_ctor_array1ofpnt4(TColgp_Array1OfPnt const* P1, TColgp_Array1OfPnt const* P2, TColgp_Array1OfPnt const* P3, TColgp_Array1OfPnt const* P4) {
+extern "C" OcctResult<GeomFill_Coons*> GeomFill_Coons_ctor_arr1_pnt4(NCollection_Array1_gp_Pnt const* P1, NCollection_Array1_gp_Pnt const* P2, NCollection_Array1_gp_Pnt const* P3, NCollection_Array1_gp_Pnt const* P4) {
     try { return {new GeomFill_Coons(*P1, *P2, *P3, *P4), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<GeomFill_Coons*> GeomFill_Coons_ctor_array1ofpnt4_array1ofreal4(TColgp_Array1OfPnt const* P1, TColgp_Array1OfPnt const* P2, TColgp_Array1OfPnt const* P3, TColgp_Array1OfPnt const* P4, TColStd_Array1OfReal const* W1, TColStd_Array1OfReal const* W2, TColStd_Array1OfReal const* W3, TColStd_Array1OfReal const* W4) {
+extern "C" OcctResult<GeomFill_Coons*> GeomFill_Coons_ctor_arr1_pnt4_arr1_double4(NCollection_Array1_gp_Pnt const* P1, NCollection_Array1_gp_Pnt const* P2, NCollection_Array1_gp_Pnt const* P3, NCollection_Array1_gp_Pnt const* P4, NCollection_Array1_double const* W1, NCollection_Array1_double const* W2, NCollection_Array1_double const* W3, NCollection_Array1_double const* W4) {
     try { return {new GeomFill_Coons(*P1, *P2, *P3, *P4, *W1, *W2, *W3, *W4), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* GeomFill_Coons_init_array1ofpnt4(GeomFill_Coons* self_, TColgp_Array1OfPnt const* P1, TColgp_Array1OfPnt const* P2, TColgp_Array1OfPnt const* P3, TColgp_Array1OfPnt const* P4) {
+extern "C" const char* GeomFill_Coons_init_arr1_pnt4(GeomFill_Coons* self_, NCollection_Array1_gp_Pnt const* P1, NCollection_Array1_gp_Pnt const* P2, NCollection_Array1_gp_Pnt const* P3, NCollection_Array1_gp_Pnt const* P4) {
     try { self_->Init(*P1, *P2, *P3, *P4); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* GeomFill_Coons_init_array1ofpnt4_array1ofreal4(GeomFill_Coons* self_, TColgp_Array1OfPnt const* P1, TColgp_Array1OfPnt const* P2, TColgp_Array1OfPnt const* P3, TColgp_Array1OfPnt const* P4, TColStd_Array1OfReal const* W1, TColStd_Array1OfReal const* W2, TColStd_Array1OfReal const* W3, TColStd_Array1OfReal const* W4) {
+extern "C" const char* GeomFill_Coons_init_arr1_pnt4_arr1_double4(GeomFill_Coons* self_, NCollection_Array1_gp_Pnt const* P1, NCollection_Array1_gp_Pnt const* P2, NCollection_Array1_gp_Pnt const* P3, NCollection_Array1_gp_Pnt const* P4, NCollection_Array1_double const* W1, NCollection_Array1_double const* W2, NCollection_Array1_double const* W3, NCollection_Array1_double const* W4) {
     try { self_->Init(*P1, *P2, *P3, *P4, *W1, *W2, *W3, *W4); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -8149,7 +7603,7 @@ extern "C" OcctResult<int32_t> GeomFill_Coons_inherited_NbVPoles(const GeomFill_
     try { return {self->NbVPoles(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* GeomFill_Coons_inherited_Poles(const GeomFill_Coons* self, TColgp_Array2OfPnt& Poles) {
+extern "C" const char* GeomFill_Coons_inherited_Poles(const GeomFill_Coons* self, NCollection_Array2_gp_Pnt& Poles) {
     try { self->Poles(Poles); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -8157,7 +7611,7 @@ extern "C" OcctResult<bool> GeomFill_Coons_inherited_isRational(const GeomFill_C
     try { return {self->isRational(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* GeomFill_Coons_inherited_Weights(const GeomFill_Coons* self, TColStd_Array2OfReal& Weights) {
+extern "C" const char* GeomFill_Coons_inherited_Weights(const GeomFill_Coons* self, NCollection_Array2_double& Weights) {
     try { self->Weights(Weights); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -8221,20 +7675,20 @@ extern "C" OcctResult<Handle(Standard_Type) const*> GeomFill_CoonsAlgPatch_get_t
 }
 extern "C" OcctResult<const Standard_Transient*> GeomFill_CoonsAlgPatch_as_Standard_Transient(const GeomFill_CoonsAlgPatch* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> GeomFill_CoonsAlgPatch_as_Standard_Transient_mut(GeomFill_CoonsAlgPatch* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleGeomFillCoonsAlgPatch*> GeomFill_CoonsAlgPatch_to_handle(GeomFill_CoonsAlgPatch* obj) {
-    try { return {new HandleGeomFillCoonsAlgPatch(obj), nullptr}; }
+extern "C" OcctResult<Handle_GeomFill_CoonsAlgPatch*> GeomFill_CoonsAlgPatch_to_handle(GeomFill_CoonsAlgPatch* obj) {
+    try { return {new Handle_GeomFill_CoonsAlgPatch(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const GeomFill_CoonsAlgPatch*> HandleGeomFillCoonsAlgPatch_get(const HandleGeomFillCoonsAlgPatch* handle) {
+extern "C" OcctResult<const GeomFill_CoonsAlgPatch*> Handle_GeomFill_CoonsAlgPatch_get(const Handle_GeomFill_CoonsAlgPatch* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<GeomFill_CoonsAlgPatch*> HandleGeomFillCoonsAlgPatch_get_mut(HandleGeomFillCoonsAlgPatch* handle) {
+extern "C" OcctResult<GeomFill_CoonsAlgPatch*> Handle_GeomFill_CoonsAlgPatch_get_mut(Handle_GeomFill_CoonsAlgPatch* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleGeomFillCoonsAlgPatch_to_HandleStandardTransient(const HandleGeomFillCoonsAlgPatch* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_GeomFill_CoonsAlgPatch_to_Handle_Standard_Transient(const Handle_GeomFill_CoonsAlgPatch* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> GeomFill_CoonsAlgPatch_inherited_IsInstance(const GeomFill_CoonsAlgPatch* self, Handle(Standard_Type) const& theType) {
@@ -8357,7 +7811,7 @@ extern "C" OcctResult<int32_t> GeomFill_CorrectedFrenet_nb_intervals(const GeomF
     try { return {self_->NbIntervals(static_cast<GeomAbs_Shape>(S)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* GeomFill_CorrectedFrenet_intervals(const GeomFill_CorrectedFrenet* self_, TColStd_Array1OfReal* T, int32_t S) {
+extern "C" const char* GeomFill_CorrectedFrenet_intervals(const GeomFill_CorrectedFrenet* self_, NCollection_Array1_double* T, int32_t S) {
     try { self_->Intervals(*T, static_cast<GeomAbs_Shape>(S)); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -8393,24 +7847,24 @@ extern "C" OcctResult<const GeomFill_TrihedronLaw*> GeomFill_CorrectedFrenet_as_
 extern "C" OcctResult<GeomFill_TrihedronLaw*> GeomFill_CorrectedFrenet_as_GeomFill_TrihedronLaw_mut(GeomFill_CorrectedFrenet* self_) { return {static_cast<GeomFill_TrihedronLaw*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> GeomFill_CorrectedFrenet_as_Standard_Transient(const GeomFill_CorrectedFrenet* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> GeomFill_CorrectedFrenet_as_Standard_Transient_mut(GeomFill_CorrectedFrenet* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleGeomFillCorrectedFrenet*> GeomFill_CorrectedFrenet_to_handle(GeomFill_CorrectedFrenet* obj) {
-    try { return {new HandleGeomFillCorrectedFrenet(obj), nullptr}; }
+extern "C" OcctResult<Handle_GeomFill_CorrectedFrenet*> GeomFill_CorrectedFrenet_to_handle(GeomFill_CorrectedFrenet* obj) {
+    try { return {new Handle_GeomFill_CorrectedFrenet(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const GeomFill_CorrectedFrenet*> HandleGeomFillCorrectedFrenet_get(const HandleGeomFillCorrectedFrenet* handle) {
+extern "C" OcctResult<const GeomFill_CorrectedFrenet*> Handle_GeomFill_CorrectedFrenet_get(const Handle_GeomFill_CorrectedFrenet* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<GeomFill_CorrectedFrenet*> HandleGeomFillCorrectedFrenet_get_mut(HandleGeomFillCorrectedFrenet* handle) {
+extern "C" OcctResult<GeomFill_CorrectedFrenet*> Handle_GeomFill_CorrectedFrenet_get_mut(Handle_GeomFill_CorrectedFrenet* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleGeomFillTrihedronLaw*> HandleGeomFillCorrectedFrenet_to_HandleGeomFillTrihedronLaw(const HandleGeomFillCorrectedFrenet* self_) {
-    try { return {new HandleGeomFillTrihedronLaw(*self_), nullptr}; }
+extern "C" OcctResult<Handle_GeomFill_TrihedronLaw*> Handle_GeomFill_CorrectedFrenet_to_Handle_GeomFill_TrihedronLaw(const Handle_GeomFill_CorrectedFrenet* self_) {
+    try { return {new Handle_GeomFill_TrihedronLaw(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleGeomFillCorrectedFrenet_to_HandleStandardTransient(const HandleGeomFillCorrectedFrenet* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_GeomFill_CorrectedFrenet_to_Handle_Standard_Transient(const Handle_GeomFill_CorrectedFrenet* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<int32_t> GeomFill_CorrectedFrenet_inherited_ErrorStatus(const GeomFill_CorrectedFrenet* self) {
@@ -8479,15 +7933,15 @@ extern "C" OcctResult<bool> GeomFill_CurveAndTrihedron_d0_real_mat_vec(GeomFill_
     try { return {self_->D0(Param, *M, *V), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<bool> GeomFill_CurveAndTrihedron_d0_real_mat_vec_array1ofpnt2d(GeomFill_CurveAndTrihedron* self_, double Param, gp_Mat* M, gp_Vec* V, TColgp_Array1OfPnt2d* Poles2d) {
+extern "C" OcctResult<bool> GeomFill_CurveAndTrihedron_d0_real_mat_vec_arr1_pnt2d(GeomFill_CurveAndTrihedron* self_, double Param, gp_Mat* M, gp_Vec* V, NCollection_Array1_gp_Pnt2d* Poles2d) {
     try { return {self_->D0(Param, *M, *V, *Poles2d), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<bool> GeomFill_CurveAndTrihedron_d1(GeomFill_CurveAndTrihedron* self_, double Param, gp_Mat* M, gp_Vec* V, gp_Mat* DM, gp_Vec* DV, TColgp_Array1OfPnt2d* Poles2d, TColgp_Array1OfVec2d* DPoles2d) {
+extern "C" OcctResult<bool> GeomFill_CurveAndTrihedron_d1(GeomFill_CurveAndTrihedron* self_, double Param, gp_Mat* M, gp_Vec* V, gp_Mat* DM, gp_Vec* DV, NCollection_Array1_gp_Pnt2d* Poles2d, NCollection_Array1_gp_Vec2d* DPoles2d) {
     try { return {self_->D1(Param, *M, *V, *DM, *DV, *Poles2d, *DPoles2d), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<bool> GeomFill_CurveAndTrihedron_d2(GeomFill_CurveAndTrihedron* self_, double Param, gp_Mat* M, gp_Vec* V, gp_Mat* DM, gp_Vec* DV, gp_Mat* D2M, gp_Vec* D2V, TColgp_Array1OfPnt2d* Poles2d, TColgp_Array1OfVec2d* DPoles2d, TColgp_Array1OfVec2d* D2Poles2d) {
+extern "C" OcctResult<bool> GeomFill_CurveAndTrihedron_d2(GeomFill_CurveAndTrihedron* self_, double Param, gp_Mat* M, gp_Vec* V, gp_Mat* DM, gp_Vec* DV, gp_Mat* D2M, gp_Vec* D2V, NCollection_Array1_gp_Pnt2d* Poles2d, NCollection_Array1_gp_Vec2d* DPoles2d, NCollection_Array1_gp_Vec2d* D2Poles2d) {
     try { return {self_->D2(Param, *M, *V, *DM, *DV, *D2M, *D2V, *Poles2d, *DPoles2d, *D2Poles2d), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -8495,7 +7949,7 @@ extern "C" OcctResult<int32_t> GeomFill_CurveAndTrihedron_nb_intervals(const Geo
     try { return {self_->NbIntervals(static_cast<GeomAbs_Shape>(S)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* GeomFill_CurveAndTrihedron_intervals(const GeomFill_CurveAndTrihedron* self_, TColStd_Array1OfReal* T, int32_t S) {
+extern "C" const char* GeomFill_CurveAndTrihedron_intervals(const GeomFill_CurveAndTrihedron* self_, NCollection_Array1_double* T, int32_t S) {
     try { self_->Intervals(*T, static_cast<GeomAbs_Shape>(S)); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -8547,24 +8001,24 @@ extern "C" OcctResult<const GeomFill_LocationLaw*> GeomFill_CurveAndTrihedron_as
 extern "C" OcctResult<GeomFill_LocationLaw*> GeomFill_CurveAndTrihedron_as_GeomFill_LocationLaw_mut(GeomFill_CurveAndTrihedron* self_) { return {static_cast<GeomFill_LocationLaw*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> GeomFill_CurveAndTrihedron_as_Standard_Transient(const GeomFill_CurveAndTrihedron* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> GeomFill_CurveAndTrihedron_as_Standard_Transient_mut(GeomFill_CurveAndTrihedron* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleGeomFillCurveAndTrihedron*> GeomFill_CurveAndTrihedron_to_handle(GeomFill_CurveAndTrihedron* obj) {
-    try { return {new HandleGeomFillCurveAndTrihedron(obj), nullptr}; }
+extern "C" OcctResult<Handle_GeomFill_CurveAndTrihedron*> GeomFill_CurveAndTrihedron_to_handle(GeomFill_CurveAndTrihedron* obj) {
+    try { return {new Handle_GeomFill_CurveAndTrihedron(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const GeomFill_CurveAndTrihedron*> HandleGeomFillCurveAndTrihedron_get(const HandleGeomFillCurveAndTrihedron* handle) {
+extern "C" OcctResult<const GeomFill_CurveAndTrihedron*> Handle_GeomFill_CurveAndTrihedron_get(const Handle_GeomFill_CurveAndTrihedron* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<GeomFill_CurveAndTrihedron*> HandleGeomFillCurveAndTrihedron_get_mut(HandleGeomFillCurveAndTrihedron* handle) {
+extern "C" OcctResult<GeomFill_CurveAndTrihedron*> Handle_GeomFill_CurveAndTrihedron_get_mut(Handle_GeomFill_CurveAndTrihedron* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleGeomFillLocationLaw*> HandleGeomFillCurveAndTrihedron_to_HandleGeomFillLocationLaw(const HandleGeomFillCurveAndTrihedron* self_) {
-    try { return {new HandleGeomFillLocationLaw(*self_), nullptr}; }
+extern "C" OcctResult<Handle_GeomFill_LocationLaw*> Handle_GeomFill_CurveAndTrihedron_to_Handle_GeomFill_LocationLaw(const Handle_GeomFill_CurveAndTrihedron* self_) {
+    try { return {new Handle_GeomFill_LocationLaw(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleGeomFillCurveAndTrihedron_to_HandleStandardTransient(const HandleGeomFillCurveAndTrihedron* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_GeomFill_CurveAndTrihedron_to_Handle_Standard_Transient(const Handle_GeomFill_CurveAndTrihedron* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<int32_t> GeomFill_CurveAndTrihedron_inherited_Nb2dCurves(const GeomFill_CurveAndTrihedron* self) {
@@ -8633,35 +8087,35 @@ extern "C" OcctResult<GeomFill_Curved*> GeomFill_Curved_ctor() {
     try { return {new GeomFill_Curved(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<GeomFill_Curved*> GeomFill_Curved_ctor_array1ofpnt4(TColgp_Array1OfPnt const* P1, TColgp_Array1OfPnt const* P2, TColgp_Array1OfPnt const* P3, TColgp_Array1OfPnt const* P4) {
+extern "C" OcctResult<GeomFill_Curved*> GeomFill_Curved_ctor_arr1_pnt4(NCollection_Array1_gp_Pnt const* P1, NCollection_Array1_gp_Pnt const* P2, NCollection_Array1_gp_Pnt const* P3, NCollection_Array1_gp_Pnt const* P4) {
     try { return {new GeomFill_Curved(*P1, *P2, *P3, *P4), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<GeomFill_Curved*> GeomFill_Curved_ctor_array1ofpnt4_array1ofreal4(TColgp_Array1OfPnt const* P1, TColgp_Array1OfPnt const* P2, TColgp_Array1OfPnt const* P3, TColgp_Array1OfPnt const* P4, TColStd_Array1OfReal const* W1, TColStd_Array1OfReal const* W2, TColStd_Array1OfReal const* W3, TColStd_Array1OfReal const* W4) {
+extern "C" OcctResult<GeomFill_Curved*> GeomFill_Curved_ctor_arr1_pnt4_arr1_double4(NCollection_Array1_gp_Pnt const* P1, NCollection_Array1_gp_Pnt const* P2, NCollection_Array1_gp_Pnt const* P3, NCollection_Array1_gp_Pnt const* P4, NCollection_Array1_double const* W1, NCollection_Array1_double const* W2, NCollection_Array1_double const* W3, NCollection_Array1_double const* W4) {
     try { return {new GeomFill_Curved(*P1, *P2, *P3, *P4, *W1, *W2, *W3, *W4), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<GeomFill_Curved*> GeomFill_Curved_ctor_array1ofpnt2(TColgp_Array1OfPnt const* P1, TColgp_Array1OfPnt const* P2) {
+extern "C" OcctResult<GeomFill_Curved*> GeomFill_Curved_ctor_arr1_pnt2(NCollection_Array1_gp_Pnt const* P1, NCollection_Array1_gp_Pnt const* P2) {
     try { return {new GeomFill_Curved(*P1, *P2), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<GeomFill_Curved*> GeomFill_Curved_ctor_array1ofpnt2_array1ofreal2(TColgp_Array1OfPnt const* P1, TColgp_Array1OfPnt const* P2, TColStd_Array1OfReal const* W1, TColStd_Array1OfReal const* W2) {
+extern "C" OcctResult<GeomFill_Curved*> GeomFill_Curved_ctor_arr1_pnt2_arr1_double2(NCollection_Array1_gp_Pnt const* P1, NCollection_Array1_gp_Pnt const* P2, NCollection_Array1_double const* W1, NCollection_Array1_double const* W2) {
     try { return {new GeomFill_Curved(*P1, *P2, *W1, *W2), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* GeomFill_Curved_init_array1ofpnt4(GeomFill_Curved* self_, TColgp_Array1OfPnt const* P1, TColgp_Array1OfPnt const* P2, TColgp_Array1OfPnt const* P3, TColgp_Array1OfPnt const* P4) {
+extern "C" const char* GeomFill_Curved_init_arr1_pnt4(GeomFill_Curved* self_, NCollection_Array1_gp_Pnt const* P1, NCollection_Array1_gp_Pnt const* P2, NCollection_Array1_gp_Pnt const* P3, NCollection_Array1_gp_Pnt const* P4) {
     try { self_->Init(*P1, *P2, *P3, *P4); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* GeomFill_Curved_init_array1ofpnt4_array1ofreal4(GeomFill_Curved* self_, TColgp_Array1OfPnt const* P1, TColgp_Array1OfPnt const* P2, TColgp_Array1OfPnt const* P3, TColgp_Array1OfPnt const* P4, TColStd_Array1OfReal const* W1, TColStd_Array1OfReal const* W2, TColStd_Array1OfReal const* W3, TColStd_Array1OfReal const* W4) {
+extern "C" const char* GeomFill_Curved_init_arr1_pnt4_arr1_double4(GeomFill_Curved* self_, NCollection_Array1_gp_Pnt const* P1, NCollection_Array1_gp_Pnt const* P2, NCollection_Array1_gp_Pnt const* P3, NCollection_Array1_gp_Pnt const* P4, NCollection_Array1_double const* W1, NCollection_Array1_double const* W2, NCollection_Array1_double const* W3, NCollection_Array1_double const* W4) {
     try { self_->Init(*P1, *P2, *P3, *P4, *W1, *W2, *W3, *W4); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* GeomFill_Curved_init_array1ofpnt2(GeomFill_Curved* self_, TColgp_Array1OfPnt const* P1, TColgp_Array1OfPnt const* P2) {
+extern "C" const char* GeomFill_Curved_init_arr1_pnt2(GeomFill_Curved* self_, NCollection_Array1_gp_Pnt const* P1, NCollection_Array1_gp_Pnt const* P2) {
     try { self_->Init(*P1, *P2); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* GeomFill_Curved_init_array1ofpnt2_array1ofreal2(GeomFill_Curved* self_, TColgp_Array1OfPnt const* P1, TColgp_Array1OfPnt const* P2, TColStd_Array1OfReal const* W1, TColStd_Array1OfReal const* W2) {
+extern "C" const char* GeomFill_Curved_init_arr1_pnt2_arr1_double2(GeomFill_Curved* self_, NCollection_Array1_gp_Pnt const* P1, NCollection_Array1_gp_Pnt const* P2, NCollection_Array1_double const* W1, NCollection_Array1_double const* W2) {
     try { self_->Init(*P1, *P2, *W1, *W2); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -8675,7 +8129,7 @@ extern "C" OcctResult<int32_t> GeomFill_Curved_inherited_NbVPoles(const GeomFill
     try { return {self->NbVPoles(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* GeomFill_Curved_inherited_Poles(const GeomFill_Curved* self, TColgp_Array2OfPnt& Poles) {
+extern "C" const char* GeomFill_Curved_inherited_Poles(const GeomFill_Curved* self, NCollection_Array2_gp_Pnt& Poles) {
     try { self->Poles(Poles); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -8683,7 +8137,7 @@ extern "C" OcctResult<bool> GeomFill_Curved_inherited_isRational(const GeomFill_
     try { return {self->isRational(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* GeomFill_Curved_inherited_Weights(const GeomFill_Curved* self, TColStd_Array2OfReal& Weights) {
+extern "C" const char* GeomFill_Curved_inherited_Weights(const GeomFill_Curved* self, NCollection_Array2_double& Weights) {
     try { self->Weights(Weights); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -8717,7 +8171,7 @@ extern "C" OcctResult<int32_t> GeomFill_Darboux_nb_intervals(const GeomFill_Darb
     try { return {self_->NbIntervals(static_cast<GeomAbs_Shape>(S)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* GeomFill_Darboux_intervals(const GeomFill_Darboux* self_, TColStd_Array1OfReal* T, int32_t S) {
+extern "C" const char* GeomFill_Darboux_intervals(const GeomFill_Darboux* self_, NCollection_Array1_double* T, int32_t S) {
     try { self_->Intervals(*T, static_cast<GeomAbs_Shape>(S)); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -8749,24 +8203,24 @@ extern "C" OcctResult<const GeomFill_TrihedronLaw*> GeomFill_Darboux_as_GeomFill
 extern "C" OcctResult<GeomFill_TrihedronLaw*> GeomFill_Darboux_as_GeomFill_TrihedronLaw_mut(GeomFill_Darboux* self_) { return {static_cast<GeomFill_TrihedronLaw*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> GeomFill_Darboux_as_Standard_Transient(const GeomFill_Darboux* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> GeomFill_Darboux_as_Standard_Transient_mut(GeomFill_Darboux* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleGeomFillDarboux*> GeomFill_Darboux_to_handle(GeomFill_Darboux* obj) {
-    try { return {new HandleGeomFillDarboux(obj), nullptr}; }
+extern "C" OcctResult<Handle_GeomFill_Darboux*> GeomFill_Darboux_to_handle(GeomFill_Darboux* obj) {
+    try { return {new Handle_GeomFill_Darboux(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const GeomFill_Darboux*> HandleGeomFillDarboux_get(const HandleGeomFillDarboux* handle) {
+extern "C" OcctResult<const GeomFill_Darboux*> Handle_GeomFill_Darboux_get(const Handle_GeomFill_Darboux* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<GeomFill_Darboux*> HandleGeomFillDarboux_get_mut(HandleGeomFillDarboux* handle) {
+extern "C" OcctResult<GeomFill_Darboux*> Handle_GeomFill_Darboux_get_mut(Handle_GeomFill_Darboux* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleGeomFillTrihedronLaw*> HandleGeomFillDarboux_to_HandleGeomFillTrihedronLaw(const HandleGeomFillDarboux* self_) {
-    try { return {new HandleGeomFillTrihedronLaw(*self_), nullptr}; }
+extern "C" OcctResult<Handle_GeomFill_TrihedronLaw*> Handle_GeomFill_Darboux_to_Handle_GeomFill_TrihedronLaw(const Handle_GeomFill_Darboux* self_) {
+    try { return {new Handle_GeomFill_TrihedronLaw(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleGeomFillDarboux_to_HandleStandardTransient(const HandleGeomFillDarboux* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_GeomFill_Darboux_to_Handle_Standard_Transient(const Handle_GeomFill_Darboux* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> GeomFill_Darboux_inherited_SetCurve(GeomFill_Darboux* self, Handle(Adaptor3d_Curve) const& C) {
@@ -8859,24 +8313,24 @@ extern "C" OcctResult<const GeomFill_Boundary*> GeomFill_DegeneratedBound_as_Geo
 extern "C" OcctResult<GeomFill_Boundary*> GeomFill_DegeneratedBound_as_GeomFill_Boundary_mut(GeomFill_DegeneratedBound* self_) { return {static_cast<GeomFill_Boundary*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> GeomFill_DegeneratedBound_as_Standard_Transient(const GeomFill_DegeneratedBound* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> GeomFill_DegeneratedBound_as_Standard_Transient_mut(GeomFill_DegeneratedBound* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleGeomFillDegeneratedBound*> GeomFill_DegeneratedBound_to_handle(GeomFill_DegeneratedBound* obj) {
-    try { return {new HandleGeomFillDegeneratedBound(obj), nullptr}; }
+extern "C" OcctResult<Handle_GeomFill_DegeneratedBound*> GeomFill_DegeneratedBound_to_handle(GeomFill_DegeneratedBound* obj) {
+    try { return {new Handle_GeomFill_DegeneratedBound(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const GeomFill_DegeneratedBound*> HandleGeomFillDegeneratedBound_get(const HandleGeomFillDegeneratedBound* handle) {
+extern "C" OcctResult<const GeomFill_DegeneratedBound*> Handle_GeomFill_DegeneratedBound_get(const Handle_GeomFill_DegeneratedBound* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<GeomFill_DegeneratedBound*> HandleGeomFillDegeneratedBound_get_mut(HandleGeomFillDegeneratedBound* handle) {
+extern "C" OcctResult<GeomFill_DegeneratedBound*> Handle_GeomFill_DegeneratedBound_get_mut(Handle_GeomFill_DegeneratedBound* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleGeomFillBoundary*> HandleGeomFillDegeneratedBound_to_HandleGeomFillBoundary(const HandleGeomFillDegeneratedBound* self_) {
-    try { return {new HandleGeomFillBoundary(*self_), nullptr}; }
+extern "C" OcctResult<Handle_GeomFill_Boundary*> Handle_GeomFill_DegeneratedBound_to_Handle_GeomFill_Boundary(const Handle_GeomFill_DegeneratedBound* self_) {
+    try { return {new Handle_GeomFill_Boundary(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleGeomFillDegeneratedBound_to_HandleStandardTransient(const HandleGeomFillDegeneratedBound* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_GeomFill_DegeneratedBound_to_Handle_Standard_Transient(const Handle_GeomFill_DegeneratedBound* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> GeomFill_DegeneratedBound_inherited_HasNormals(const GeomFill_DegeneratedBound* self) {
@@ -8969,7 +8423,7 @@ extern "C" OcctResult<int32_t> GeomFill_DiscreteTrihedron_nb_intervals(const Geo
     try { return {self_->NbIntervals(static_cast<GeomAbs_Shape>(S)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* GeomFill_DiscreteTrihedron_intervals(const GeomFill_DiscreteTrihedron* self_, TColStd_Array1OfReal* T, int32_t S) {
+extern "C" const char* GeomFill_DiscreteTrihedron_intervals(const GeomFill_DiscreteTrihedron* self_, NCollection_Array1_double* T, int32_t S) {
     try { self_->Intervals(*T, static_cast<GeomAbs_Shape>(S)); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -9001,24 +8455,24 @@ extern "C" OcctResult<const GeomFill_TrihedronLaw*> GeomFill_DiscreteTrihedron_a
 extern "C" OcctResult<GeomFill_TrihedronLaw*> GeomFill_DiscreteTrihedron_as_GeomFill_TrihedronLaw_mut(GeomFill_DiscreteTrihedron* self_) { return {static_cast<GeomFill_TrihedronLaw*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> GeomFill_DiscreteTrihedron_as_Standard_Transient(const GeomFill_DiscreteTrihedron* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> GeomFill_DiscreteTrihedron_as_Standard_Transient_mut(GeomFill_DiscreteTrihedron* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleGeomFillDiscreteTrihedron*> GeomFill_DiscreteTrihedron_to_handle(GeomFill_DiscreteTrihedron* obj) {
-    try { return {new HandleGeomFillDiscreteTrihedron(obj), nullptr}; }
+extern "C" OcctResult<Handle_GeomFill_DiscreteTrihedron*> GeomFill_DiscreteTrihedron_to_handle(GeomFill_DiscreteTrihedron* obj) {
+    try { return {new Handle_GeomFill_DiscreteTrihedron(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const GeomFill_DiscreteTrihedron*> HandleGeomFillDiscreteTrihedron_get(const HandleGeomFillDiscreteTrihedron* handle) {
+extern "C" OcctResult<const GeomFill_DiscreteTrihedron*> Handle_GeomFill_DiscreteTrihedron_get(const Handle_GeomFill_DiscreteTrihedron* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<GeomFill_DiscreteTrihedron*> HandleGeomFillDiscreteTrihedron_get_mut(HandleGeomFillDiscreteTrihedron* handle) {
+extern "C" OcctResult<GeomFill_DiscreteTrihedron*> Handle_GeomFill_DiscreteTrihedron_get_mut(Handle_GeomFill_DiscreteTrihedron* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleGeomFillTrihedronLaw*> HandleGeomFillDiscreteTrihedron_to_HandleGeomFillTrihedronLaw(const HandleGeomFillDiscreteTrihedron* self_) {
-    try { return {new HandleGeomFillTrihedronLaw(*self_), nullptr}; }
+extern "C" OcctResult<Handle_GeomFill_TrihedronLaw*> Handle_GeomFill_DiscreteTrihedron_to_Handle_GeomFill_TrihedronLaw(const Handle_GeomFill_DiscreteTrihedron* self_) {
+    try { return {new Handle_GeomFill_TrihedronLaw(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleGeomFillDiscreteTrihedron_to_HandleStandardTransient(const HandleGeomFillDiscreteTrihedron* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_GeomFill_DiscreteTrihedron_to_Handle_Standard_Transient(const Handle_GeomFill_DiscreteTrihedron* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<int32_t> GeomFill_DiscreteTrihedron_inherited_ErrorStatus(const GeomFill_DiscreteTrihedron* self) {
@@ -9095,7 +8549,7 @@ extern "C" OcctResult<int32_t> GeomFill_DraftTrihedron_nb_intervals(const GeomFi
     try { return {self_->NbIntervals(static_cast<GeomAbs_Shape>(S)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* GeomFill_DraftTrihedron_intervals(const GeomFill_DraftTrihedron* self_, TColStd_Array1OfReal* T, int32_t S) {
+extern "C" const char* GeomFill_DraftTrihedron_intervals(const GeomFill_DraftTrihedron* self_, NCollection_Array1_double* T, int32_t S) {
     try { self_->Intervals(*T, static_cast<GeomAbs_Shape>(S)); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -9127,24 +8581,24 @@ extern "C" OcctResult<const GeomFill_TrihedronLaw*> GeomFill_DraftTrihedron_as_G
 extern "C" OcctResult<GeomFill_TrihedronLaw*> GeomFill_DraftTrihedron_as_GeomFill_TrihedronLaw_mut(GeomFill_DraftTrihedron* self_) { return {static_cast<GeomFill_TrihedronLaw*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> GeomFill_DraftTrihedron_as_Standard_Transient(const GeomFill_DraftTrihedron* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> GeomFill_DraftTrihedron_as_Standard_Transient_mut(GeomFill_DraftTrihedron* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleGeomFillDraftTrihedron*> GeomFill_DraftTrihedron_to_handle(GeomFill_DraftTrihedron* obj) {
-    try { return {new HandleGeomFillDraftTrihedron(obj), nullptr}; }
+extern "C" OcctResult<Handle_GeomFill_DraftTrihedron*> GeomFill_DraftTrihedron_to_handle(GeomFill_DraftTrihedron* obj) {
+    try { return {new Handle_GeomFill_DraftTrihedron(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const GeomFill_DraftTrihedron*> HandleGeomFillDraftTrihedron_get(const HandleGeomFillDraftTrihedron* handle) {
+extern "C" OcctResult<const GeomFill_DraftTrihedron*> Handle_GeomFill_DraftTrihedron_get(const Handle_GeomFill_DraftTrihedron* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<GeomFill_DraftTrihedron*> HandleGeomFillDraftTrihedron_get_mut(HandleGeomFillDraftTrihedron* handle) {
+extern "C" OcctResult<GeomFill_DraftTrihedron*> Handle_GeomFill_DraftTrihedron_get_mut(Handle_GeomFill_DraftTrihedron* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleGeomFillTrihedronLaw*> HandleGeomFillDraftTrihedron_to_HandleGeomFillTrihedronLaw(const HandleGeomFillDraftTrihedron* self_) {
-    try { return {new HandleGeomFillTrihedronLaw(*self_), nullptr}; }
+extern "C" OcctResult<Handle_GeomFill_TrihedronLaw*> Handle_GeomFill_DraftTrihedron_to_Handle_GeomFill_TrihedronLaw(const Handle_GeomFill_DraftTrihedron* self_) {
+    try { return {new Handle_GeomFill_TrihedronLaw(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleGeomFillDraftTrihedron_to_HandleStandardTransient(const HandleGeomFillDraftTrihedron* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_GeomFill_DraftTrihedron_to_Handle_Standard_Transient(const Handle_GeomFill_DraftTrihedron* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> GeomFill_DraftTrihedron_inherited_SetCurve(GeomFill_DraftTrihedron* self, Handle(Adaptor3d_Curve) const& C) {
@@ -9213,15 +8667,15 @@ extern "C" OcctResult<Handle(Geom_Curve)*> GeomFill_EvolvedSection_constant_sect
     try { return {new Handle(Geom_Curve)(self_->ConstantSection()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<bool> GeomFill_EvolvedSection_d0(GeomFill_EvolvedSection* self_, double Param, TColgp_Array1OfPnt* Poles, TColStd_Array1OfReal* Weigths) {
+extern "C" OcctResult<bool> GeomFill_EvolvedSection_d0(GeomFill_EvolvedSection* self_, double Param, NCollection_Array1_gp_Pnt* Poles, NCollection_Array1_double* Weigths) {
     try { return {self_->D0(Param, *Poles, *Weigths), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<bool> GeomFill_EvolvedSection_d1(GeomFill_EvolvedSection* self_, double Param, TColgp_Array1OfPnt* Poles, TColgp_Array1OfVec* DPoles, TColStd_Array1OfReal* Weigths, TColStd_Array1OfReal* DWeigths) {
+extern "C" OcctResult<bool> GeomFill_EvolvedSection_d1(GeomFill_EvolvedSection* self_, double Param, NCollection_Array1_gp_Pnt* Poles, NCollection_Array1_gp_Vec* DPoles, NCollection_Array1_double* Weigths, NCollection_Array1_double* DWeigths) {
     try { return {self_->D1(Param, *Poles, *DPoles, *Weigths, *DWeigths), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<bool> GeomFill_EvolvedSection_d2(GeomFill_EvolvedSection* self_, double Param, TColgp_Array1OfPnt* Poles, TColgp_Array1OfVec* DPoles, TColgp_Array1OfVec* D2Poles, TColStd_Array1OfReal* Weigths, TColStd_Array1OfReal* DWeigths, TColStd_Array1OfReal* D2Weigths) {
+extern "C" OcctResult<bool> GeomFill_EvolvedSection_d2(GeomFill_EvolvedSection* self_, double Param, NCollection_Array1_gp_Pnt* Poles, NCollection_Array1_gp_Vec* DPoles, NCollection_Array1_gp_Vec* D2Poles, NCollection_Array1_double* Weigths, NCollection_Array1_double* DWeigths, NCollection_Array1_double* D2Weigths) {
     try { return {self_->D2(Param, *Poles, *DPoles, *D2Poles, *Weigths, *DWeigths, *D2Weigths), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -9229,11 +8683,11 @@ extern "C" const char* GeomFill_EvolvedSection_section_shape(const GeomFill_Evol
     try { self_->SectionShape(*NbPoles, *NbKnots, *Degree); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* GeomFill_EvolvedSection_knots(const GeomFill_EvolvedSection* self_, TColStd_Array1OfReal* TKnots) {
+extern "C" const char* GeomFill_EvolvedSection_knots(const GeomFill_EvolvedSection* self_, NCollection_Array1_double* TKnots) {
     try { self_->Knots(*TKnots); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* GeomFill_EvolvedSection_mults(const GeomFill_EvolvedSection* self_, TColStd_Array1OfInteger* TMults) {
+extern "C" const char* GeomFill_EvolvedSection_mults(const GeomFill_EvolvedSection* self_, NCollection_Array1_int* TMults) {
     try { self_->Mults(*TMults); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -9253,7 +8707,7 @@ extern "C" OcctResult<int32_t> GeomFill_EvolvedSection_nb_intervals(const GeomFi
     try { return {self_->NbIntervals(static_cast<GeomAbs_Shape>(S)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* GeomFill_EvolvedSection_intervals(const GeomFill_EvolvedSection* self_, TColStd_Array1OfReal* T, int32_t S) {
+extern "C" const char* GeomFill_EvolvedSection_intervals(const GeomFill_EvolvedSection* self_, NCollection_Array1_double* T, int32_t S) {
     try { self_->Intervals(*T, static_cast<GeomAbs_Shape>(S)); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -9269,7 +8723,7 @@ extern "C" const char* GeomFill_EvolvedSection_get_domain(const GeomFill_Evolved
     try { self_->GetDomain(*First, *Last); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* GeomFill_EvolvedSection_get_tolerance(const GeomFill_EvolvedSection* self_, double BoundTol, double SurfTol, double AngleTol, TColStd_Array1OfReal* Tol3d) {
+extern "C" const char* GeomFill_EvolvedSection_get_tolerance(const GeomFill_EvolvedSection* self_, double BoundTol, double SurfTol, double AngleTol, NCollection_Array1_double* Tol3d) {
     try { self_->GetTolerance(BoundTol, SurfTol, AngleTol, *Tol3d); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -9277,7 +8731,7 @@ extern "C" OcctResult<double> GeomFill_EvolvedSection_maximal_section(const Geom
     try { return {self_->MaximalSection(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* GeomFill_EvolvedSection_get_minimal_weight(const GeomFill_EvolvedSection* self_, TColStd_Array1OfReal* Weigths) {
+extern "C" const char* GeomFill_EvolvedSection_get_minimal_weight(const GeomFill_EvolvedSection* self_, NCollection_Array1_double* Weigths) {
     try { self_->GetMinimalWeight(*Weigths); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -9301,24 +8755,24 @@ extern "C" OcctResult<const GeomFill_SectionLaw*> GeomFill_EvolvedSection_as_Geo
 extern "C" OcctResult<GeomFill_SectionLaw*> GeomFill_EvolvedSection_as_GeomFill_SectionLaw_mut(GeomFill_EvolvedSection* self_) { return {static_cast<GeomFill_SectionLaw*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> GeomFill_EvolvedSection_as_Standard_Transient(const GeomFill_EvolvedSection* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> GeomFill_EvolvedSection_as_Standard_Transient_mut(GeomFill_EvolvedSection* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleGeomFillEvolvedSection*> GeomFill_EvolvedSection_to_handle(GeomFill_EvolvedSection* obj) {
-    try { return {new HandleGeomFillEvolvedSection(obj), nullptr}; }
+extern "C" OcctResult<Handle_GeomFill_EvolvedSection*> GeomFill_EvolvedSection_to_handle(GeomFill_EvolvedSection* obj) {
+    try { return {new Handle_GeomFill_EvolvedSection(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const GeomFill_EvolvedSection*> HandleGeomFillEvolvedSection_get(const HandleGeomFillEvolvedSection* handle) {
+extern "C" OcctResult<const GeomFill_EvolvedSection*> Handle_GeomFill_EvolvedSection_get(const Handle_GeomFill_EvolvedSection* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<GeomFill_EvolvedSection*> HandleGeomFillEvolvedSection_get_mut(HandleGeomFillEvolvedSection* handle) {
+extern "C" OcctResult<GeomFill_EvolvedSection*> Handle_GeomFill_EvolvedSection_get_mut(Handle_GeomFill_EvolvedSection* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleGeomFillSectionLaw*> HandleGeomFillEvolvedSection_to_HandleGeomFillSectionLaw(const HandleGeomFillEvolvedSection* self_) {
-    try { return {new HandleGeomFillSectionLaw(*self_), nullptr}; }
+extern "C" OcctResult<Handle_GeomFill_SectionLaw*> Handle_GeomFill_EvolvedSection_to_Handle_GeomFill_SectionLaw(const Handle_GeomFill_EvolvedSection* self_) {
+    try { return {new Handle_GeomFill_SectionLaw(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleGeomFillEvolvedSection_to_HandleStandardTransient(const HandleGeomFillEvolvedSection* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_GeomFill_EvolvedSection_to_Handle_Standard_Transient(const Handle_GeomFill_EvolvedSection* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" const char* GeomFill_EvolvedSection_inherited_SetTolerance(GeomFill_EvolvedSection* self, double Tol3d, double Tol2d) {
@@ -9379,7 +8833,7 @@ extern "C" OcctResult<int32_t> GeomFill_Filling_nb_v_poles(const GeomFill_Fillin
     try { return {self_->NbVPoles(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* GeomFill_Filling_poles(const GeomFill_Filling* self_, TColgp_Array2OfPnt* Poles) {
+extern "C" const char* GeomFill_Filling_poles(const GeomFill_Filling* self_, NCollection_Array2_gp_Pnt* Poles) {
     try { self_->Poles(*Poles); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -9387,7 +8841,7 @@ extern "C" OcctResult<bool> GeomFill_Filling_is_rational(const GeomFill_Filling*
     try { return {self_->isRational(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* GeomFill_Filling_weights(const GeomFill_Filling* self_, TColStd_Array2OfReal* Weights) {
+extern "C" const char* GeomFill_Filling_weights(const GeomFill_Filling* self_, NCollection_Array2_double* Weights) {
     try { self_->Weights(*Weights); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -9421,7 +8875,7 @@ extern "C" OcctResult<int32_t> GeomFill_Fixed_nb_intervals(const GeomFill_Fixed*
     try { return {self_->NbIntervals(static_cast<GeomAbs_Shape>(S)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* GeomFill_Fixed_intervals(const GeomFill_Fixed* self_, TColStd_Array1OfReal* T, int32_t S) {
+extern "C" const char* GeomFill_Fixed_intervals(const GeomFill_Fixed* self_, NCollection_Array1_double* T, int32_t S) {
     try { self_->Intervals(*T, static_cast<GeomAbs_Shape>(S)); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -9449,24 +8903,24 @@ extern "C" OcctResult<const GeomFill_TrihedronLaw*> GeomFill_Fixed_as_GeomFill_T
 extern "C" OcctResult<GeomFill_TrihedronLaw*> GeomFill_Fixed_as_GeomFill_TrihedronLaw_mut(GeomFill_Fixed* self_) { return {static_cast<GeomFill_TrihedronLaw*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> GeomFill_Fixed_as_Standard_Transient(const GeomFill_Fixed* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> GeomFill_Fixed_as_Standard_Transient_mut(GeomFill_Fixed* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleGeomFillFixed*> GeomFill_Fixed_to_handle(GeomFill_Fixed* obj) {
-    try { return {new HandleGeomFillFixed(obj), nullptr}; }
+extern "C" OcctResult<Handle_GeomFill_Fixed*> GeomFill_Fixed_to_handle(GeomFill_Fixed* obj) {
+    try { return {new Handle_GeomFill_Fixed(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const GeomFill_Fixed*> HandleGeomFillFixed_get(const HandleGeomFillFixed* handle) {
+extern "C" OcctResult<const GeomFill_Fixed*> Handle_GeomFill_Fixed_get(const Handle_GeomFill_Fixed* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<GeomFill_Fixed*> HandleGeomFillFixed_get_mut(HandleGeomFillFixed* handle) {
+extern "C" OcctResult<GeomFill_Fixed*> Handle_GeomFill_Fixed_get_mut(Handle_GeomFill_Fixed* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleGeomFillTrihedronLaw*> HandleGeomFillFixed_to_HandleGeomFillTrihedronLaw(const HandleGeomFillFixed* self_) {
-    try { return {new HandleGeomFillTrihedronLaw(*self_), nullptr}; }
+extern "C" OcctResult<Handle_GeomFill_TrihedronLaw*> Handle_GeomFill_Fixed_to_Handle_GeomFill_TrihedronLaw(const Handle_GeomFill_Fixed* self_) {
+    try { return {new Handle_GeomFill_TrihedronLaw(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleGeomFillFixed_to_HandleStandardTransient(const HandleGeomFillFixed* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_GeomFill_Fixed_to_Handle_Standard_Transient(const Handle_GeomFill_Fixed* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> GeomFill_Fixed_inherited_SetCurve(GeomFill_Fixed* self, Handle(Adaptor3d_Curve) const& C) {
@@ -9555,7 +9009,7 @@ extern "C" OcctResult<int32_t> GeomFill_Frenet_nb_intervals(const GeomFill_Frene
     try { return {self_->NbIntervals(static_cast<GeomAbs_Shape>(S)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* GeomFill_Frenet_intervals(const GeomFill_Frenet* self_, TColStd_Array1OfReal* T, int32_t S) {
+extern "C" const char* GeomFill_Frenet_intervals(const GeomFill_Frenet* self_, NCollection_Array1_double* T, int32_t S) {
     try { self_->Intervals(*T, static_cast<GeomAbs_Shape>(S)); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -9587,24 +9041,24 @@ extern "C" OcctResult<const GeomFill_TrihedronLaw*> GeomFill_Frenet_as_GeomFill_
 extern "C" OcctResult<GeomFill_TrihedronLaw*> GeomFill_Frenet_as_GeomFill_TrihedronLaw_mut(GeomFill_Frenet* self_) { return {static_cast<GeomFill_TrihedronLaw*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> GeomFill_Frenet_as_Standard_Transient(const GeomFill_Frenet* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> GeomFill_Frenet_as_Standard_Transient_mut(GeomFill_Frenet* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleGeomFillFrenet*> GeomFill_Frenet_to_handle(GeomFill_Frenet* obj) {
-    try { return {new HandleGeomFillFrenet(obj), nullptr}; }
+extern "C" OcctResult<Handle_GeomFill_Frenet*> GeomFill_Frenet_to_handle(GeomFill_Frenet* obj) {
+    try { return {new Handle_GeomFill_Frenet(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const GeomFill_Frenet*> HandleGeomFillFrenet_get(const HandleGeomFillFrenet* handle) {
+extern "C" OcctResult<const GeomFill_Frenet*> Handle_GeomFill_Frenet_get(const Handle_GeomFill_Frenet* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<GeomFill_Frenet*> HandleGeomFillFrenet_get_mut(HandleGeomFillFrenet* handle) {
+extern "C" OcctResult<GeomFill_Frenet*> Handle_GeomFill_Frenet_get_mut(Handle_GeomFill_Frenet* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleGeomFillTrihedronLaw*> HandleGeomFillFrenet_to_HandleGeomFillTrihedronLaw(const HandleGeomFillFrenet* self_) {
-    try { return {new HandleGeomFillTrihedronLaw(*self_), nullptr}; }
+extern "C" OcctResult<Handle_GeomFill_TrihedronLaw*> Handle_GeomFill_Frenet_to_Handle_GeomFill_TrihedronLaw(const Handle_GeomFill_Frenet* self_) {
+    try { return {new Handle_GeomFill_TrihedronLaw(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleGeomFillFrenet_to_HandleStandardTransient(const HandleGeomFillFrenet* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_GeomFill_Frenet_to_Handle_Standard_Transient(const Handle_GeomFill_Frenet* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<int32_t> GeomFill_Frenet_inherited_ErrorStatus(const GeomFill_Frenet* self) {
@@ -9787,11 +9241,11 @@ extern "C" OcctResult<int32_t> GeomFill_Generator_inherited_NbPoles(const GeomFi
     try { return {self->NbPoles(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* GeomFill_Generator_inherited_Poles(const GeomFill_Generator* self, int32_t Index, TColgp_Array1OfPnt& Poles) {
+extern "C" const char* GeomFill_Generator_inherited_Poles(const GeomFill_Generator* self, int32_t Index, NCollection_Array1_gp_Pnt& Poles) {
     try { self->Poles(Index, Poles); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* GeomFill_Generator_inherited_Weights(const GeomFill_Generator* self, int32_t Index, TColStd_Array1OfReal& Weights) {
+extern "C" const char* GeomFill_Generator_inherited_Weights(const GeomFill_Generator* self, int32_t Index, NCollection_Array1_double& Weights) {
     try { self->Weights(Index, Weights); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -9799,7 +9253,7 @@ extern "C" OcctResult<int32_t> GeomFill_Generator_inherited_NbKnots(const GeomFi
     try { return {self->NbKnots(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* GeomFill_Generator_inherited_KnotsAndMults(const GeomFill_Generator* self, TColStd_Array1OfReal& Knots, TColStd_Array1OfInteger& Mults) {
+extern "C" const char* GeomFill_Generator_inherited_KnotsAndMults(const GeomFill_Generator* self, NCollection_Array1_double& Knots, NCollection_Array1_int& Mults) {
     try { self->KnotsAndMults(Knots, Mults); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -9808,6 +9262,66 @@ extern "C" OcctResult<Handle(Geom_Curve) const*> GeomFill_Generator_inherited_Cu
     OCCT_CATCH_RETURN
 }
 extern "C" void GeomFill_Generator_destructor(GeomFill_Generator* self_) { delete self_; }
+
+// ========================
+// GeomFill_Gordon wrappers
+// ========================
+
+extern "C" OcctResult<GeomFill_Gordon*> GeomFill_Gordon_ctor() {
+    try { return {new GeomFill_Gordon(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<GeomFill_Gordon::ApproximationMode*> GeomFill_Gordon_get_approximation_mode(const GeomFill_Gordon* self_) {
+    try { return {new GeomFill_Gordon::ApproximationMode(self_->GetApproximationMode()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<GeomFill_Gordon::ResultStatus*> GeomFill_Gordon_status(const GeomFill_Gordon* self_) {
+    try { return {new GeomFill_Gordon::ResultStatus(self_->Status()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" const char* GeomFill_Gordon_perform(GeomFill_Gordon* self_) {
+    try { self_->Perform(); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* GeomFill_Gordon_set_parallel_mode(GeomFill_Gordon* self_, bool theToUseParallel) {
+    try { self_->SetParallelMode(theToUseParallel); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* GeomFill_Gordon_set_approximation_mode(GeomFill_Gordon* self_, GeomFill_Gordon::ApproximationMode const* theMode) {
+    try { self_->SetApproximationMode(*theMode); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" OcctResult<bool> GeomFill_Gordon_is_parallel_mode(const GeomFill_Gordon* self_) {
+    try { return {self_->IsParallelMode(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<bool> GeomFill_Gordon_is_done(const GeomFill_Gordon* self_) {
+    try { return {self_->IsDone(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<bool> GeomFill_Gordon_is_approximate(const GeomFill_Gordon* self_) {
+    try { return {self_->IsApproximate(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<GeomFill_Gordon::BuildReport const*> GeomFill_Gordon_report(const GeomFill_Gordon* self_) {
+    try { return {&(self_->Report()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Handle(Geom_BSplineSurface) const*> GeomFill_Gordon_surface(const GeomFill_Gordon* self_) {
+    try { return {&(self_->Surface()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" void GeomFill_Gordon_destructor(GeomFill_Gordon* self_) { delete self_; }
+
+// ========================
+// GeomFill_Gordon::BuildReport wrappers
+// ========================
+
+extern "C" OcctResult<GeomFill_Gordon::BuildReport*> GeomFill_Gordon_BuildReport_ctor() {
+    try { return {new GeomFill_Gordon::BuildReport(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" void GeomFill_Gordon_BuildReport_destructor(GeomFill_Gordon::BuildReport* self_) { delete self_; }
 
 // ========================
 // GeomFill_GuideTrihedronAC wrappers
@@ -9845,7 +9359,7 @@ extern "C" OcctResult<int32_t> GeomFill_GuideTrihedronAC_nb_intervals(const Geom
     try { return {self_->NbIntervals(static_cast<GeomAbs_Shape>(S)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* GeomFill_GuideTrihedronAC_intervals(const GeomFill_GuideTrihedronAC* self_, TColStd_Array1OfReal* T, int32_t S) {
+extern "C" const char* GeomFill_GuideTrihedronAC_intervals(const GeomFill_GuideTrihedronAC* self_, NCollection_Array1_double* T, int32_t S) {
     try { self_->Intervals(*T, static_cast<GeomAbs_Shape>(S)); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -9887,28 +9401,28 @@ extern "C" OcctResult<const GeomFill_TrihedronLaw*> GeomFill_GuideTrihedronAC_as
 extern "C" OcctResult<GeomFill_TrihedronLaw*> GeomFill_GuideTrihedronAC_as_GeomFill_TrihedronLaw_mut(GeomFill_GuideTrihedronAC* self_) { return {static_cast<GeomFill_TrihedronLaw*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> GeomFill_GuideTrihedronAC_as_Standard_Transient(const GeomFill_GuideTrihedronAC* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> GeomFill_GuideTrihedronAC_as_Standard_Transient_mut(GeomFill_GuideTrihedronAC* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleGeomFillGuideTrihedronAC*> GeomFill_GuideTrihedronAC_to_handle(GeomFill_GuideTrihedronAC* obj) {
-    try { return {new HandleGeomFillGuideTrihedronAC(obj), nullptr}; }
+extern "C" OcctResult<Handle_GeomFill_GuideTrihedronAC*> GeomFill_GuideTrihedronAC_to_handle(GeomFill_GuideTrihedronAC* obj) {
+    try { return {new Handle_GeomFill_GuideTrihedronAC(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const GeomFill_GuideTrihedronAC*> HandleGeomFillGuideTrihedronAC_get(const HandleGeomFillGuideTrihedronAC* handle) {
+extern "C" OcctResult<const GeomFill_GuideTrihedronAC*> Handle_GeomFill_GuideTrihedronAC_get(const Handle_GeomFill_GuideTrihedronAC* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<GeomFill_GuideTrihedronAC*> HandleGeomFillGuideTrihedronAC_get_mut(HandleGeomFillGuideTrihedronAC* handle) {
+extern "C" OcctResult<GeomFill_GuideTrihedronAC*> Handle_GeomFill_GuideTrihedronAC_get_mut(Handle_GeomFill_GuideTrihedronAC* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleGeomFillTrihedronWithGuide*> HandleGeomFillGuideTrihedronAC_to_HandleGeomFillTrihedronWithGuide(const HandleGeomFillGuideTrihedronAC* self_) {
-    try { return {new HandleGeomFillTrihedronWithGuide(*self_), nullptr}; }
+extern "C" OcctResult<Handle_GeomFill_TrihedronWithGuide*> Handle_GeomFill_GuideTrihedronAC_to_Handle_GeomFill_TrihedronWithGuide(const Handle_GeomFill_GuideTrihedronAC* self_) {
+    try { return {new Handle_GeomFill_TrihedronWithGuide(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleGeomFillTrihedronLaw*> HandleGeomFillGuideTrihedronAC_to_HandleGeomFillTrihedronLaw(const HandleGeomFillGuideTrihedronAC* self_) {
-    try { return {new HandleGeomFillTrihedronLaw(*self_), nullptr}; }
+extern "C" OcctResult<Handle_GeomFill_TrihedronLaw*> Handle_GeomFill_GuideTrihedronAC_to_Handle_GeomFill_TrihedronLaw(const Handle_GeomFill_GuideTrihedronAC* self_) {
+    try { return {new Handle_GeomFill_TrihedronLaw(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleGeomFillGuideTrihedronAC_to_HandleStandardTransient(const HandleGeomFillGuideTrihedronAC* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_GeomFill_GuideTrihedronAC_to_Handle_Standard_Transient(const Handle_GeomFill_GuideTrihedronAC* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<gp_Pnt*> GeomFill_GuideTrihedronAC_inherited_CurrentPointOnGuide(const GeomFill_GuideTrihedronAC* self) {
@@ -9997,7 +9511,7 @@ extern "C" OcctResult<int32_t> GeomFill_GuideTrihedronPlan_nb_intervals(const Ge
     try { return {self_->NbIntervals(static_cast<GeomAbs_Shape>(S)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* GeomFill_GuideTrihedronPlan_intervals(const GeomFill_GuideTrihedronPlan* self_, TColStd_Array1OfReal* T, int32_t S) {
+extern "C" const char* GeomFill_GuideTrihedronPlan_intervals(const GeomFill_GuideTrihedronPlan* self_, NCollection_Array1_double* T, int32_t S) {
     try { self_->Intervals(*T, static_cast<GeomAbs_Shape>(S)); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -10035,28 +9549,28 @@ extern "C" OcctResult<const GeomFill_TrihedronLaw*> GeomFill_GuideTrihedronPlan_
 extern "C" OcctResult<GeomFill_TrihedronLaw*> GeomFill_GuideTrihedronPlan_as_GeomFill_TrihedronLaw_mut(GeomFill_GuideTrihedronPlan* self_) { return {static_cast<GeomFill_TrihedronLaw*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> GeomFill_GuideTrihedronPlan_as_Standard_Transient(const GeomFill_GuideTrihedronPlan* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> GeomFill_GuideTrihedronPlan_as_Standard_Transient_mut(GeomFill_GuideTrihedronPlan* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleGeomFillGuideTrihedronPlan*> GeomFill_GuideTrihedronPlan_to_handle(GeomFill_GuideTrihedronPlan* obj) {
-    try { return {new HandleGeomFillGuideTrihedronPlan(obj), nullptr}; }
+extern "C" OcctResult<Handle_GeomFill_GuideTrihedronPlan*> GeomFill_GuideTrihedronPlan_to_handle(GeomFill_GuideTrihedronPlan* obj) {
+    try { return {new Handle_GeomFill_GuideTrihedronPlan(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const GeomFill_GuideTrihedronPlan*> HandleGeomFillGuideTrihedronPlan_get(const HandleGeomFillGuideTrihedronPlan* handle) {
+extern "C" OcctResult<const GeomFill_GuideTrihedronPlan*> Handle_GeomFill_GuideTrihedronPlan_get(const Handle_GeomFill_GuideTrihedronPlan* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<GeomFill_GuideTrihedronPlan*> HandleGeomFillGuideTrihedronPlan_get_mut(HandleGeomFillGuideTrihedronPlan* handle) {
+extern "C" OcctResult<GeomFill_GuideTrihedronPlan*> Handle_GeomFill_GuideTrihedronPlan_get_mut(Handle_GeomFill_GuideTrihedronPlan* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleGeomFillTrihedronWithGuide*> HandleGeomFillGuideTrihedronPlan_to_HandleGeomFillTrihedronWithGuide(const HandleGeomFillGuideTrihedronPlan* self_) {
-    try { return {new HandleGeomFillTrihedronWithGuide(*self_), nullptr}; }
+extern "C" OcctResult<Handle_GeomFill_TrihedronWithGuide*> Handle_GeomFill_GuideTrihedronPlan_to_Handle_GeomFill_TrihedronWithGuide(const Handle_GeomFill_GuideTrihedronPlan* self_) {
+    try { return {new Handle_GeomFill_TrihedronWithGuide(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleGeomFillTrihedronLaw*> HandleGeomFillGuideTrihedronPlan_to_HandleGeomFillTrihedronLaw(const HandleGeomFillGuideTrihedronPlan* self_) {
-    try { return {new HandleGeomFillTrihedronLaw(*self_), nullptr}; }
+extern "C" OcctResult<Handle_GeomFill_TrihedronLaw*> Handle_GeomFill_GuideTrihedronPlan_to_Handle_GeomFill_TrihedronLaw(const Handle_GeomFill_GuideTrihedronPlan* self_) {
+    try { return {new Handle_GeomFill_TrihedronLaw(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleGeomFillGuideTrihedronPlan_to_HandleStandardTransient(const HandleGeomFillGuideTrihedronPlan* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_GeomFill_GuideTrihedronPlan_to_Handle_Standard_Transient(const Handle_GeomFill_GuideTrihedronPlan* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<gp_Pnt*> GeomFill_GuideTrihedronPlan_inherited_CurrentPointOnGuide(const GeomFill_GuideTrihedronPlan* self) {
@@ -10098,278 +9612,6 @@ extern "C" const char* GeomFill_GuideTrihedronPlan_inherited_Delete(const GeomFi
 extern "C" void GeomFill_GuideTrihedronPlan_destructor(GeomFill_GuideTrihedronPlan* self_) { delete self_; }
 
 // ========================
-// GeomFill_HArray1OfLocationLaw wrappers
-// ========================
-
-extern "C" OcctResult<GeomFill_HArray1OfLocationLaw*> GeomFill_HArray1OfLocationLaw_ctor() {
-    try { return {new GeomFill_HArray1OfLocationLaw(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<GeomFill_HArray1OfLocationLaw*> GeomFill_HArray1OfLocationLaw_ctor_int2(int32_t theLower, int32_t theUpper) {
-    try { return {new GeomFill_HArray1OfLocationLaw(theLower, theUpper), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<GeomFill_HArray1OfLocationLaw*> GeomFill_HArray1OfLocationLaw_ctor_int2_handlegeomfilllocationlaw(int32_t theLower, int32_t theUpper, Handle(GeomFill_LocationLaw) const* theValue) {
-    try { return {new GeomFill_HArray1OfLocationLaw(theLower, theUpper, *theValue), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<GeomFill_HArray1OfLocationLaw*> GeomFill_HArray1OfLocationLaw_ctor_handlegeomfilllocationlaw_int2_bool(Handle(GeomFill_LocationLaw) const* theBegin, int32_t theLower, int32_t theUpper, bool arg3) {
-    try { return {new GeomFill_HArray1OfLocationLaw(*theBegin, theLower, theUpper, arg3), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<GeomFill_HArray1OfLocationLaw*> GeomFill_HArray1OfLocationLaw_ctor_array1oflocationlaw(GeomFill_Array1OfLocationLaw const* theOther) {
-    try { return {new GeomFill_HArray1OfLocationLaw(*theOther), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<GeomFill_Array1OfLocationLaw const*> GeomFill_HArray1OfLocationLaw_array1(const GeomFill_HArray1OfLocationLaw* self_) {
-    try { return {&(self_->Array1()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<GeomFill_Array1OfLocationLaw*> GeomFill_HArray1OfLocationLaw_change_array1(GeomFill_HArray1OfLocationLaw* self_) {
-    try { return {&(self_->ChangeArray1()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Handle(Standard_Type) const*> GeomFill_HArray1OfLocationLaw_dynamic_type(const GeomFill_HArray1OfLocationLaw* self_) {
-    try { return {&(self_->DynamicType()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<char const*> GeomFill_HArray1OfLocationLaw_get_type_name() {
-    try { return {GeomFill_HArray1OfLocationLaw::get_type_name(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Handle(Standard_Type) const*> GeomFill_HArray1OfLocationLaw_get_type_descriptor() {
-    try { return {&(GeomFill_HArray1OfLocationLaw::get_type_descriptor()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<const Standard_Transient*> GeomFill_HArray1OfLocationLaw_as_Standard_Transient(const GeomFill_HArray1OfLocationLaw* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<Standard_Transient*> GeomFill_HArray1OfLocationLaw_as_Standard_Transient_mut(GeomFill_HArray1OfLocationLaw* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleGeomFillHArray1OfLocationLaw*> GeomFill_HArray1OfLocationLaw_to_handle(GeomFill_HArray1OfLocationLaw* obj) {
-    try { return {new HandleGeomFillHArray1OfLocationLaw(obj), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<const GeomFill_HArray1OfLocationLaw*> HandleGeomFillHArray1OfLocationLaw_get(const HandleGeomFillHArray1OfLocationLaw* handle) {
-    try { return {(*handle).get(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<GeomFill_HArray1OfLocationLaw*> HandleGeomFillHArray1OfLocationLaw_get_mut(HandleGeomFillHArray1OfLocationLaw* handle) {
-    try { return {(*handle).get(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<HandleStandardTransient*> HandleGeomFillHArray1OfLocationLaw_to_HandleStandardTransient(const HandleGeomFillHArray1OfLocationLaw* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<bool> GeomFill_HArray1OfLocationLaw_inherited_IsInstance(const GeomFill_HArray1OfLocationLaw* self, Handle(Standard_Type) const& theType) {
-    try { return {self->IsInstance(theType), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<bool> GeomFill_HArray1OfLocationLaw_inherited_IsKind(const GeomFill_HArray1OfLocationLaw* self, Handle(Standard_Type) const& theType) {
-    try { return {self->IsKind(theType), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Standard_Transient*> GeomFill_HArray1OfLocationLaw_inherited_This(const GeomFill_HArray1OfLocationLaw* self) {
-    try { return {self->This(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<int32_t> GeomFill_HArray1OfLocationLaw_inherited_GetRefCount(const GeomFill_HArray1OfLocationLaw* self) {
-    try { return {self->GetRefCount(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* GeomFill_HArray1OfLocationLaw_inherited_IncrementRefCounter(GeomFill_HArray1OfLocationLaw* self) {
-    try { self->IncrementRefCounter(); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<int32_t> GeomFill_HArray1OfLocationLaw_inherited_DecrementRefCounter(GeomFill_HArray1OfLocationLaw* self) {
-    try { return {self->DecrementRefCounter(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* GeomFill_HArray1OfLocationLaw_inherited_Delete(const GeomFill_HArray1OfLocationLaw* self) {
-    try { self->Delete(); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" void GeomFill_HArray1OfLocationLaw_destructor(GeomFill_HArray1OfLocationLaw* self_) { delete self_; }
-
-// ========================
-// GeomFill_HArray1OfSectionLaw wrappers
-// ========================
-
-extern "C" OcctResult<GeomFill_HArray1OfSectionLaw*> GeomFill_HArray1OfSectionLaw_ctor() {
-    try { return {new GeomFill_HArray1OfSectionLaw(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<GeomFill_HArray1OfSectionLaw*> GeomFill_HArray1OfSectionLaw_ctor_int2(int32_t theLower, int32_t theUpper) {
-    try { return {new GeomFill_HArray1OfSectionLaw(theLower, theUpper), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<GeomFill_HArray1OfSectionLaw*> GeomFill_HArray1OfSectionLaw_ctor_int2_handlegeomfillsectionlaw(int32_t theLower, int32_t theUpper, Handle(GeomFill_SectionLaw) const* theValue) {
-    try { return {new GeomFill_HArray1OfSectionLaw(theLower, theUpper, *theValue), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<GeomFill_HArray1OfSectionLaw*> GeomFill_HArray1OfSectionLaw_ctor_handlegeomfillsectionlaw_int2_bool(Handle(GeomFill_SectionLaw) const* theBegin, int32_t theLower, int32_t theUpper, bool arg3) {
-    try { return {new GeomFill_HArray1OfSectionLaw(*theBegin, theLower, theUpper, arg3), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<GeomFill_HArray1OfSectionLaw*> GeomFill_HArray1OfSectionLaw_ctor_array1ofsectionlaw(GeomFill_Array1OfSectionLaw const* theOther) {
-    try { return {new GeomFill_HArray1OfSectionLaw(*theOther), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<GeomFill_Array1OfSectionLaw const*> GeomFill_HArray1OfSectionLaw_array1(const GeomFill_HArray1OfSectionLaw* self_) {
-    try { return {&(self_->Array1()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<GeomFill_Array1OfSectionLaw*> GeomFill_HArray1OfSectionLaw_change_array1(GeomFill_HArray1OfSectionLaw* self_) {
-    try { return {&(self_->ChangeArray1()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Handle(Standard_Type) const*> GeomFill_HArray1OfSectionLaw_dynamic_type(const GeomFill_HArray1OfSectionLaw* self_) {
-    try { return {&(self_->DynamicType()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<char const*> GeomFill_HArray1OfSectionLaw_get_type_name() {
-    try { return {GeomFill_HArray1OfSectionLaw::get_type_name(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Handle(Standard_Type) const*> GeomFill_HArray1OfSectionLaw_get_type_descriptor() {
-    try { return {&(GeomFill_HArray1OfSectionLaw::get_type_descriptor()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<const Standard_Transient*> GeomFill_HArray1OfSectionLaw_as_Standard_Transient(const GeomFill_HArray1OfSectionLaw* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<Standard_Transient*> GeomFill_HArray1OfSectionLaw_as_Standard_Transient_mut(GeomFill_HArray1OfSectionLaw* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleGeomFillHArray1OfSectionLaw*> GeomFill_HArray1OfSectionLaw_to_handle(GeomFill_HArray1OfSectionLaw* obj) {
-    try { return {new HandleGeomFillHArray1OfSectionLaw(obj), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<const GeomFill_HArray1OfSectionLaw*> HandleGeomFillHArray1OfSectionLaw_get(const HandleGeomFillHArray1OfSectionLaw* handle) {
-    try { return {(*handle).get(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<GeomFill_HArray1OfSectionLaw*> HandleGeomFillHArray1OfSectionLaw_get_mut(HandleGeomFillHArray1OfSectionLaw* handle) {
-    try { return {(*handle).get(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<HandleStandardTransient*> HandleGeomFillHArray1OfSectionLaw_to_HandleStandardTransient(const HandleGeomFillHArray1OfSectionLaw* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<bool> GeomFill_HArray1OfSectionLaw_inherited_IsInstance(const GeomFill_HArray1OfSectionLaw* self, Handle(Standard_Type) const& theType) {
-    try { return {self->IsInstance(theType), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<bool> GeomFill_HArray1OfSectionLaw_inherited_IsKind(const GeomFill_HArray1OfSectionLaw* self, Handle(Standard_Type) const& theType) {
-    try { return {self->IsKind(theType), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Standard_Transient*> GeomFill_HArray1OfSectionLaw_inherited_This(const GeomFill_HArray1OfSectionLaw* self) {
-    try { return {self->This(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<int32_t> GeomFill_HArray1OfSectionLaw_inherited_GetRefCount(const GeomFill_HArray1OfSectionLaw* self) {
-    try { return {self->GetRefCount(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* GeomFill_HArray1OfSectionLaw_inherited_IncrementRefCounter(GeomFill_HArray1OfSectionLaw* self) {
-    try { self->IncrementRefCounter(); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<int32_t> GeomFill_HArray1OfSectionLaw_inherited_DecrementRefCounter(GeomFill_HArray1OfSectionLaw* self) {
-    try { return {self->DecrementRefCounter(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* GeomFill_HArray1OfSectionLaw_inherited_Delete(const GeomFill_HArray1OfSectionLaw* self) {
-    try { self->Delete(); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" void GeomFill_HArray1OfSectionLaw_destructor(GeomFill_HArray1OfSectionLaw* self_) { delete self_; }
-
-// ========================
-// GeomFill_HSequenceOfAx2 wrappers
-// ========================
-
-extern "C" OcctResult<GeomFill_HSequenceOfAx2*> GeomFill_HSequenceOfAx2_ctor() {
-    try { return {new GeomFill_HSequenceOfAx2(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<GeomFill_HSequenceOfAx2*> GeomFill_HSequenceOfAx2_ctor_sequenceofax2(GeomFill_SequenceOfAx2 const* theOther) {
-    try { return {new GeomFill_HSequenceOfAx2(*theOther), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<GeomFill_SequenceOfAx2 const*> GeomFill_HSequenceOfAx2_sequence(const GeomFill_HSequenceOfAx2* self_) {
-    try { return {&(self_->Sequence()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* GeomFill_HSequenceOfAx2_append_type(GeomFill_HSequenceOfAx2* self_, GeomFill_SequenceOfAx2::value_type const* theItem) {
-    try { self_->Append(*theItem); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* GeomFill_HSequenceOfAx2_append_sequenceofax2(GeomFill_HSequenceOfAx2* self_, GeomFill_SequenceOfAx2* theSequence) {
-    try { self_->Append(*theSequence); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<GeomFill_SequenceOfAx2*> GeomFill_HSequenceOfAx2_change_sequence(GeomFill_HSequenceOfAx2* self_) {
-    try { return {&(self_->ChangeSequence()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Handle(Standard_Type) const*> GeomFill_HSequenceOfAx2_dynamic_type(const GeomFill_HSequenceOfAx2* self_) {
-    try { return {&(self_->DynamicType()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<char const*> GeomFill_HSequenceOfAx2_get_type_name() {
-    try { return {GeomFill_HSequenceOfAx2::get_type_name(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Handle(Standard_Type) const*> GeomFill_HSequenceOfAx2_get_type_descriptor() {
-    try { return {&(GeomFill_HSequenceOfAx2::get_type_descriptor()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<const Standard_Transient*> GeomFill_HSequenceOfAx2_as_Standard_Transient(const GeomFill_HSequenceOfAx2* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<Standard_Transient*> GeomFill_HSequenceOfAx2_as_Standard_Transient_mut(GeomFill_HSequenceOfAx2* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleGeomFillHSequenceOfAx2*> GeomFill_HSequenceOfAx2_to_handle(GeomFill_HSequenceOfAx2* obj) {
-    try { return {new HandleGeomFillHSequenceOfAx2(obj), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<const GeomFill_HSequenceOfAx2*> HandleGeomFillHSequenceOfAx2_get(const HandleGeomFillHSequenceOfAx2* handle) {
-    try { return {(*handle).get(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<GeomFill_HSequenceOfAx2*> HandleGeomFillHSequenceOfAx2_get_mut(HandleGeomFillHSequenceOfAx2* handle) {
-    try { return {(*handle).get(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<HandleStandardTransient*> HandleGeomFillHSequenceOfAx2_to_HandleStandardTransient(const HandleGeomFillHSequenceOfAx2* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<bool> GeomFill_HSequenceOfAx2_inherited_IsInstance(const GeomFill_HSequenceOfAx2* self, Handle(Standard_Type) const& theType) {
-    try { return {self->IsInstance(theType), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<bool> GeomFill_HSequenceOfAx2_inherited_IsKind(const GeomFill_HSequenceOfAx2* self, Handle(Standard_Type) const& theType) {
-    try { return {self->IsKind(theType), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Standard_Transient*> GeomFill_HSequenceOfAx2_inherited_This(const GeomFill_HSequenceOfAx2* self) {
-    try { return {self->This(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<int32_t> GeomFill_HSequenceOfAx2_inherited_GetRefCount(const GeomFill_HSequenceOfAx2* self) {
-    try { return {self->GetRefCount(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* GeomFill_HSequenceOfAx2_inherited_IncrementRefCounter(GeomFill_HSequenceOfAx2* self) {
-    try { self->IncrementRefCounter(); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<int32_t> GeomFill_HSequenceOfAx2_inherited_DecrementRefCounter(GeomFill_HSequenceOfAx2* self) {
-    try { return {self->DecrementRefCounter(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* GeomFill_HSequenceOfAx2_inherited_Delete(const GeomFill_HSequenceOfAx2* self) {
-    try { self->Delete(); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" void GeomFill_HSequenceOfAx2_destructor(GeomFill_HSequenceOfAx2* self_) { delete self_; }
-
-// ========================
 // GeomFill_Line wrappers
 // ========================
 
@@ -10403,20 +9645,20 @@ extern "C" OcctResult<Handle(Standard_Type) const*> GeomFill_Line_get_type_descr
 }
 extern "C" OcctResult<const Standard_Transient*> GeomFill_Line_as_Standard_Transient(const GeomFill_Line* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> GeomFill_Line_as_Standard_Transient_mut(GeomFill_Line* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleGeomFillLine*> GeomFill_Line_to_handle(GeomFill_Line* obj) {
-    try { return {new HandleGeomFillLine(obj), nullptr}; }
+extern "C" OcctResult<Handle_GeomFill_Line*> GeomFill_Line_to_handle(GeomFill_Line* obj) {
+    try { return {new Handle_GeomFill_Line(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const GeomFill_Line*> HandleGeomFillLine_get(const HandleGeomFillLine* handle) {
+extern "C" OcctResult<const GeomFill_Line*> Handle_GeomFill_Line_get(const Handle_GeomFill_Line* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<GeomFill_Line*> HandleGeomFillLine_get_mut(HandleGeomFillLine* handle) {
+extern "C" OcctResult<GeomFill_Line*> Handle_GeomFill_Line_get_mut(Handle_GeomFill_Line* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleGeomFillLine_to_HandleStandardTransient(const HandleGeomFillLine* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_GeomFill_Line_to_Handle_Standard_Transient(const Handle_GeomFill_Line* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> GeomFill_Line_inherited_IsInstance(const GeomFill_Line* self, Handle(Standard_Type) const& theType) {
@@ -10515,15 +9757,15 @@ extern "C" OcctResult<bool> GeomFill_LocationDraft_d0_real_mat_vec(GeomFill_Loca
     try { return {self_->D0(Param, *M, *V), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<bool> GeomFill_LocationDraft_d0_real_mat_vec_array1ofpnt2d(GeomFill_LocationDraft* self_, double Param, gp_Mat* M, gp_Vec* V, TColgp_Array1OfPnt2d* Poles2d) {
+extern "C" OcctResult<bool> GeomFill_LocationDraft_d0_real_mat_vec_arr1_pnt2d(GeomFill_LocationDraft* self_, double Param, gp_Mat* M, gp_Vec* V, NCollection_Array1_gp_Pnt2d* Poles2d) {
     try { return {self_->D0(Param, *M, *V, *Poles2d), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<bool> GeomFill_LocationDraft_d1(GeomFill_LocationDraft* self_, double Param, gp_Mat* M, gp_Vec* V, gp_Mat* DM, gp_Vec* DV, TColgp_Array1OfPnt2d* Poles2d, TColgp_Array1OfVec2d* DPoles2d) {
+extern "C" OcctResult<bool> GeomFill_LocationDraft_d1(GeomFill_LocationDraft* self_, double Param, gp_Mat* M, gp_Vec* V, gp_Mat* DM, gp_Vec* DV, NCollection_Array1_gp_Pnt2d* Poles2d, NCollection_Array1_gp_Vec2d* DPoles2d) {
     try { return {self_->D1(Param, *M, *V, *DM, *DV, *Poles2d, *DPoles2d), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<bool> GeomFill_LocationDraft_d2(GeomFill_LocationDraft* self_, double Param, gp_Mat* M, gp_Vec* V, gp_Mat* DM, gp_Vec* DV, gp_Mat* D2M, gp_Vec* D2V, TColgp_Array1OfPnt2d* Poles2d, TColgp_Array1OfVec2d* DPoles2d, TColgp_Array1OfVec2d* D2Poles2d) {
+extern "C" OcctResult<bool> GeomFill_LocationDraft_d2(GeomFill_LocationDraft* self_, double Param, gp_Mat* M, gp_Vec* V, gp_Mat* DM, gp_Vec* DV, gp_Mat* D2M, gp_Vec* D2V, NCollection_Array1_gp_Pnt2d* Poles2d, NCollection_Array1_gp_Vec2d* DPoles2d, NCollection_Array1_gp_Vec2d* D2Poles2d) {
     try { return {self_->D2(Param, *M, *V, *DM, *DV, *D2M, *D2V, *Poles2d, *DPoles2d, *D2Poles2d), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -10543,7 +9785,7 @@ extern "C" OcctResult<int32_t> GeomFill_LocationDraft_nb_intervals(const GeomFil
     try { return {self_->NbIntervals(static_cast<GeomAbs_Shape>(S)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* GeomFill_LocationDraft_intervals(const GeomFill_LocationDraft* self_, TColStd_Array1OfReal* T, int32_t S) {
+extern "C" const char* GeomFill_LocationDraft_intervals(const GeomFill_LocationDraft* self_, NCollection_Array1_double* T, int32_t S) {
     try { self_->Intervals(*T, static_cast<GeomAbs_Shape>(S)); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -10603,24 +9845,24 @@ extern "C" OcctResult<const GeomFill_LocationLaw*> GeomFill_LocationDraft_as_Geo
 extern "C" OcctResult<GeomFill_LocationLaw*> GeomFill_LocationDraft_as_GeomFill_LocationLaw_mut(GeomFill_LocationDraft* self_) { return {static_cast<GeomFill_LocationLaw*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> GeomFill_LocationDraft_as_Standard_Transient(const GeomFill_LocationDraft* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> GeomFill_LocationDraft_as_Standard_Transient_mut(GeomFill_LocationDraft* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleGeomFillLocationDraft*> GeomFill_LocationDraft_to_handle(GeomFill_LocationDraft* obj) {
-    try { return {new HandleGeomFillLocationDraft(obj), nullptr}; }
+extern "C" OcctResult<Handle_GeomFill_LocationDraft*> GeomFill_LocationDraft_to_handle(GeomFill_LocationDraft* obj) {
+    try { return {new Handle_GeomFill_LocationDraft(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const GeomFill_LocationDraft*> HandleGeomFillLocationDraft_get(const HandleGeomFillLocationDraft* handle) {
+extern "C" OcctResult<const GeomFill_LocationDraft*> Handle_GeomFill_LocationDraft_get(const Handle_GeomFill_LocationDraft* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<GeomFill_LocationDraft*> HandleGeomFillLocationDraft_get_mut(HandleGeomFillLocationDraft* handle) {
+extern "C" OcctResult<GeomFill_LocationDraft*> Handle_GeomFill_LocationDraft_get_mut(Handle_GeomFill_LocationDraft* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleGeomFillLocationLaw*> HandleGeomFillLocationDraft_to_HandleGeomFillLocationLaw(const HandleGeomFillLocationDraft* self_) {
-    try { return {new HandleGeomFillLocationLaw(*self_), nullptr}; }
+extern "C" OcctResult<Handle_GeomFill_LocationLaw*> Handle_GeomFill_LocationDraft_to_Handle_GeomFill_LocationLaw(const Handle_GeomFill_LocationDraft* self_) {
+    try { return {new Handle_GeomFill_LocationLaw(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleGeomFillLocationDraft_to_HandleStandardTransient(const HandleGeomFillLocationDraft* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_GeomFill_LocationDraft_to_Handle_Standard_Transient(const Handle_GeomFill_LocationDraft* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<int32_t> GeomFill_LocationDraft_inherited_Nb2dCurves(const GeomFill_LocationDraft* self) {
@@ -10709,15 +9951,15 @@ extern "C" OcctResult<bool> GeomFill_LocationGuide_d0_real_mat_vec(GeomFill_Loca
     try { return {self_->D0(Param, *M, *V), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<bool> GeomFill_LocationGuide_d0_real_mat_vec_array1ofpnt2d(GeomFill_LocationGuide* self_, double Param, gp_Mat* M, gp_Vec* V, TColgp_Array1OfPnt2d* Poles2d) {
+extern "C" OcctResult<bool> GeomFill_LocationGuide_d0_real_mat_vec_arr1_pnt2d(GeomFill_LocationGuide* self_, double Param, gp_Mat* M, gp_Vec* V, NCollection_Array1_gp_Pnt2d* Poles2d) {
     try { return {self_->D0(Param, *M, *V, *Poles2d), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<bool> GeomFill_LocationGuide_d1(GeomFill_LocationGuide* self_, double Param, gp_Mat* M, gp_Vec* V, gp_Mat* DM, gp_Vec* DV, TColgp_Array1OfPnt2d* Poles2d, TColgp_Array1OfVec2d* DPoles2d) {
+extern "C" OcctResult<bool> GeomFill_LocationGuide_d1(GeomFill_LocationGuide* self_, double Param, gp_Mat* M, gp_Vec* V, gp_Mat* DM, gp_Vec* DV, NCollection_Array1_gp_Pnt2d* Poles2d, NCollection_Array1_gp_Vec2d* DPoles2d) {
     try { return {self_->D1(Param, *M, *V, *DM, *DV, *Poles2d, *DPoles2d), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<bool> GeomFill_LocationGuide_d2(GeomFill_LocationGuide* self_, double Param, gp_Mat* M, gp_Vec* V, gp_Mat* DM, gp_Vec* DV, gp_Mat* D2M, gp_Vec* D2V, TColgp_Array1OfPnt2d* Poles2d, TColgp_Array1OfVec2d* DPoles2d, TColgp_Array1OfVec2d* D2Poles2d) {
+extern "C" OcctResult<bool> GeomFill_LocationGuide_d2(GeomFill_LocationGuide* self_, double Param, gp_Mat* M, gp_Vec* V, gp_Mat* DM, gp_Vec* DV, gp_Mat* D2M, gp_Vec* D2V, NCollection_Array1_gp_Pnt2d* Poles2d, NCollection_Array1_gp_Vec2d* DPoles2d, NCollection_Array1_gp_Vec2d* D2Poles2d) {
     try { return {self_->D2(Param, *M, *V, *DM, *DV, *D2M, *D2V, *Poles2d, *DPoles2d, *D2Poles2d), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -10741,7 +9983,7 @@ extern "C" OcctResult<int32_t> GeomFill_LocationGuide_nb_intervals(const GeomFil
     try { return {self_->NbIntervals(static_cast<GeomAbs_Shape>(S)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* GeomFill_LocationGuide_intervals(const GeomFill_LocationGuide* self_, TColStd_Array1OfReal* T, int32_t S) {
+extern "C" const char* GeomFill_LocationGuide_intervals(const GeomFill_LocationGuide* self_, NCollection_Array1_double* T, int32_t S) {
     try { self_->Intervals(*T, static_cast<GeomAbs_Shape>(S)); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -10789,7 +10031,7 @@ extern "C" const char* GeomFill_LocationGuide_set_origine(GeomFill_LocationGuide
     try { self_->SetOrigine(Param1, Param2); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<int32_t> GeomFill_LocationGuide_compute_automatic_law(const GeomFill_LocationGuide* self_, Handle(TColgp_HArray1OfPnt2d)* ParAndRad) {
+extern "C" OcctResult<int32_t> GeomFill_LocationGuide_compute_automatic_law(const GeomFill_LocationGuide* self_, Handle(NCollection_HArray1_gp_Pnt2d)* ParAndRad) {
     try { return {static_cast<int32_t>(self_->ComputeAutomaticLaw(*ParAndRad)), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -10809,24 +10051,24 @@ extern "C" OcctResult<const GeomFill_LocationLaw*> GeomFill_LocationGuide_as_Geo
 extern "C" OcctResult<GeomFill_LocationLaw*> GeomFill_LocationGuide_as_GeomFill_LocationLaw_mut(GeomFill_LocationGuide* self_) { return {static_cast<GeomFill_LocationLaw*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> GeomFill_LocationGuide_as_Standard_Transient(const GeomFill_LocationGuide* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> GeomFill_LocationGuide_as_Standard_Transient_mut(GeomFill_LocationGuide* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleGeomFillLocationGuide*> GeomFill_LocationGuide_to_handle(GeomFill_LocationGuide* obj) {
-    try { return {new HandleGeomFillLocationGuide(obj), nullptr}; }
+extern "C" OcctResult<Handle_GeomFill_LocationGuide*> GeomFill_LocationGuide_to_handle(GeomFill_LocationGuide* obj) {
+    try { return {new Handle_GeomFill_LocationGuide(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const GeomFill_LocationGuide*> HandleGeomFillLocationGuide_get(const HandleGeomFillLocationGuide* handle) {
+extern "C" OcctResult<const GeomFill_LocationGuide*> Handle_GeomFill_LocationGuide_get(const Handle_GeomFill_LocationGuide* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<GeomFill_LocationGuide*> HandleGeomFillLocationGuide_get_mut(HandleGeomFillLocationGuide* handle) {
+extern "C" OcctResult<GeomFill_LocationGuide*> Handle_GeomFill_LocationGuide_get_mut(Handle_GeomFill_LocationGuide* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleGeomFillLocationLaw*> HandleGeomFillLocationGuide_to_HandleGeomFillLocationLaw(const HandleGeomFillLocationGuide* self_) {
-    try { return {new HandleGeomFillLocationLaw(*self_), nullptr}; }
+extern "C" OcctResult<Handle_GeomFill_LocationLaw*> Handle_GeomFill_LocationGuide_to_Handle_GeomFill_LocationLaw(const Handle_GeomFill_LocationGuide* self_) {
+    try { return {new Handle_GeomFill_LocationLaw(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleGeomFillLocationGuide_to_HandleStandardTransient(const HandleGeomFillLocationGuide* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_GeomFill_LocationGuide_to_Handle_Standard_Transient(const Handle_GeomFill_LocationGuide* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<int32_t> GeomFill_LocationGuide_inherited_Nb2dCurves(const GeomFill_LocationGuide* self) {
@@ -10887,15 +10129,15 @@ extern "C" OcctResult<bool> GeomFill_LocationLaw_d0_real_mat_vec(GeomFill_Locati
     try { return {self_->D0(Param, *M, *V), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<bool> GeomFill_LocationLaw_d0_real_mat_vec_array1ofpnt2d(GeomFill_LocationLaw* self_, double Param, gp_Mat* M, gp_Vec* V, TColgp_Array1OfPnt2d* Poles2d) {
+extern "C" OcctResult<bool> GeomFill_LocationLaw_d0_real_mat_vec_arr1_pnt2d(GeomFill_LocationLaw* self_, double Param, gp_Mat* M, gp_Vec* V, NCollection_Array1_gp_Pnt2d* Poles2d) {
     try { return {self_->D0(Param, *M, *V, *Poles2d), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<bool> GeomFill_LocationLaw_d1(GeomFill_LocationLaw* self_, double Param, gp_Mat* M, gp_Vec* V, gp_Mat* DM, gp_Vec* DV, TColgp_Array1OfPnt2d* Poles2d, TColgp_Array1OfVec2d* DPoles2d) {
+extern "C" OcctResult<bool> GeomFill_LocationLaw_d1(GeomFill_LocationLaw* self_, double Param, gp_Mat* M, gp_Vec* V, gp_Mat* DM, gp_Vec* DV, NCollection_Array1_gp_Pnt2d* Poles2d, NCollection_Array1_gp_Vec2d* DPoles2d) {
     try { return {self_->D1(Param, *M, *V, *DM, *DV, *Poles2d, *DPoles2d), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<bool> GeomFill_LocationLaw_d2(GeomFill_LocationLaw* self_, double Param, gp_Mat* M, gp_Vec* V, gp_Mat* DM, gp_Vec* DV, gp_Mat* D2M, gp_Vec* D2V, TColgp_Array1OfPnt2d* Poles2d, TColgp_Array1OfVec2d* DPoles2d, TColgp_Array1OfVec2d* D2Poles2d) {
+extern "C" OcctResult<bool> GeomFill_LocationLaw_d2(GeomFill_LocationLaw* self_, double Param, gp_Mat* M, gp_Vec* V, gp_Mat* DM, gp_Vec* DV, gp_Mat* D2M, gp_Vec* D2V, NCollection_Array1_gp_Pnt2d* Poles2d, NCollection_Array1_gp_Vec2d* DPoles2d, NCollection_Array1_gp_Vec2d* D2Poles2d) {
     try { return {self_->D2(Param, *M, *V, *DM, *DV, *D2M, *D2V, *Poles2d, *DPoles2d, *D2Poles2d), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -10923,7 +10165,7 @@ extern "C" OcctResult<int32_t> GeomFill_LocationLaw_nb_intervals(const GeomFill_
     try { return {self_->NbIntervals(static_cast<GeomAbs_Shape>(S)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* GeomFill_LocationLaw_intervals(const GeomFill_LocationLaw* self_, TColStd_Array1OfReal* T, int32_t S) {
+extern "C" const char* GeomFill_LocationLaw_intervals(const GeomFill_LocationLaw* self_, NCollection_Array1_double* T, int32_t S) {
     try { self_->Intervals(*T, static_cast<GeomAbs_Shape>(S)); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -10981,39 +10223,39 @@ extern "C" OcctResult<Handle(Standard_Type) const*> GeomFill_LocationLaw_get_typ
 }
 extern "C" OcctResult<const Standard_Transient*> GeomFill_LocationLaw_as_Standard_Transient(const GeomFill_LocationLaw* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> GeomFill_LocationLaw_as_Standard_Transient_mut(GeomFill_LocationLaw* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<const GeomFill_LocationLaw*> HandleGeomFillLocationLaw_get(const HandleGeomFillLocationLaw* handle) {
+extern "C" OcctResult<const GeomFill_LocationLaw*> Handle_GeomFill_LocationLaw_get(const Handle_GeomFill_LocationLaw* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<GeomFill_LocationLaw*> HandleGeomFillLocationLaw_get_mut(HandleGeomFillLocationLaw* handle) {
+extern "C" OcctResult<GeomFill_LocationLaw*> Handle_GeomFill_LocationLaw_get_mut(Handle_GeomFill_LocationLaw* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleGeomFillLocationLaw_to_HandleStandardTransient(const HandleGeomFillLocationLaw* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_GeomFill_LocationLaw_to_Handle_Standard_Transient(const Handle_GeomFill_LocationLaw* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleGeomFillCurveAndTrihedron*> HandleGeomFillLocationLaw_downcast_to_HandleGeomFillCurveAndTrihedron(const HandleGeomFillLocationLaw* self_) {
+extern "C" OcctResult<Handle_GeomFill_CurveAndTrihedron*> Handle_GeomFill_LocationLaw_downcast_to_Handle_GeomFill_CurveAndTrihedron(const Handle_GeomFill_LocationLaw* self_) {
     try {
     opencascade::handle<GeomFill_CurveAndTrihedron> result = opencascade::handle<GeomFill_CurveAndTrihedron>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleGeomFillCurveAndTrihedron(result), nullptr};
+    return {new Handle_GeomFill_CurveAndTrihedron(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleGeomFillLocationDraft*> HandleGeomFillLocationLaw_downcast_to_HandleGeomFillLocationDraft(const HandleGeomFillLocationLaw* self_) {
+extern "C" OcctResult<Handle_GeomFill_LocationDraft*> Handle_GeomFill_LocationLaw_downcast_to_Handle_GeomFill_LocationDraft(const Handle_GeomFill_LocationLaw* self_) {
     try {
     opencascade::handle<GeomFill_LocationDraft> result = opencascade::handle<GeomFill_LocationDraft>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleGeomFillLocationDraft(result), nullptr};
+    return {new Handle_GeomFill_LocationDraft(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleGeomFillLocationGuide*> HandleGeomFillLocationLaw_downcast_to_HandleGeomFillLocationGuide(const HandleGeomFillLocationLaw* self_) {
+extern "C" OcctResult<Handle_GeomFill_LocationGuide*> Handle_GeomFill_LocationLaw_downcast_to_Handle_GeomFill_LocationGuide(const Handle_GeomFill_LocationLaw* self_) {
     try {
     opencascade::handle<GeomFill_LocationGuide> result = opencascade::handle<GeomFill_LocationGuide>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleGeomFillLocationGuide(result), nullptr};
+    return {new Handle_GeomFill_LocationGuide(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
@@ -11051,26 +10293,6 @@ extern "C" void GeomFill_LocationLaw_destructor(GeomFill_LocationLaw* self_) { d
 // GeomFill_NSections wrappers
 // ========================
 
-extern "C" OcctResult<GeomFill_NSections*> GeomFill_NSections_ctor_sequenceofcurve(TColGeom_SequenceOfCurve const* NC) {
-    try { return {new GeomFill_NSections(*NC), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<GeomFill_NSections*> GeomFill_NSections_ctor_sequenceofcurve_sequenceofreal(TColGeom_SequenceOfCurve const* NC, TColStd_SequenceOfReal const* NP) {
-    try { return {new GeomFill_NSections(*NC, *NP), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<GeomFill_NSections*> GeomFill_NSections_ctor_sequenceofcurve_sequenceofreal_real2(TColGeom_SequenceOfCurve const* NC, TColStd_SequenceOfReal const* NP, double UF, double UL) {
-    try { return {new GeomFill_NSections(*NC, *NP, UF, UL), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<GeomFill_NSections*> GeomFill_NSections_ctor_sequenceofcurve_sequenceofreal_real4(TColGeom_SequenceOfCurve const* NC, TColStd_SequenceOfReal const* NP, double UF, double UL, double VF, double VL) {
-    try { return {new GeomFill_NSections(*NC, *NP, UF, UL, VF, VL), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<GeomFill_NSections*> GeomFill_NSections_ctor_sequenceofcurve_sequenceoftrsf_sequenceofreal_real4_handlegeombsplinesurface(TColGeom_SequenceOfCurve const* NC, GeomFill_SequenceOfTrsf const* Trsfs, TColStd_SequenceOfReal const* NP, double UF, double UL, double VF, double VL, Handle(Geom_BSplineSurface) const* Surf) {
-    try { return {new GeomFill_NSections(*NC, *Trsfs, *NP, UF, UL, VF, VL, *Surf), nullptr}; }
-    OCCT_CATCH_RETURN
-}
 extern "C" OcctResult<Handle(Geom_BSplineSurface)*> GeomFill_NSections_b_spline_surface(const GeomFill_NSections* self_) {
     try { return {new Handle(Geom_BSplineSurface)(self_->BSplineSurface()), nullptr}; }
     OCCT_CATCH_RETURN
@@ -11087,15 +10309,15 @@ extern "C" OcctResult<Handle(Geom_Curve)*> GeomFill_NSections_circl_section(cons
     try { return {new Handle(Geom_Curve)(self_->CirclSection(Param)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<bool> GeomFill_NSections_d0(GeomFill_NSections* self_, double Param, TColgp_Array1OfPnt* Poles, TColStd_Array1OfReal* Weigths) {
+extern "C" OcctResult<bool> GeomFill_NSections_d0(GeomFill_NSections* self_, double Param, NCollection_Array1_gp_Pnt* Poles, NCollection_Array1_double* Weigths) {
     try { return {self_->D0(Param, *Poles, *Weigths), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<bool> GeomFill_NSections_d1(GeomFill_NSections* self_, double Param, TColgp_Array1OfPnt* Poles, TColgp_Array1OfVec* DPoles, TColStd_Array1OfReal* Weigths, TColStd_Array1OfReal* DWeigths) {
+extern "C" OcctResult<bool> GeomFill_NSections_d1(GeomFill_NSections* self_, double Param, NCollection_Array1_gp_Pnt* Poles, NCollection_Array1_gp_Vec* DPoles, NCollection_Array1_double* Weigths, NCollection_Array1_double* DWeigths) {
     try { return {self_->D1(Param, *Poles, *DPoles, *Weigths, *DWeigths), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<bool> GeomFill_NSections_d2(GeomFill_NSections* self_, double Param, TColgp_Array1OfPnt* Poles, TColgp_Array1OfVec* DPoles, TColgp_Array1OfVec* D2Poles, TColStd_Array1OfReal* Weigths, TColStd_Array1OfReal* DWeigths, TColStd_Array1OfReal* D2Weigths) {
+extern "C" OcctResult<bool> GeomFill_NSections_d2(GeomFill_NSections* self_, double Param, NCollection_Array1_gp_Pnt* Poles, NCollection_Array1_gp_Vec* DPoles, NCollection_Array1_gp_Vec* D2Poles, NCollection_Array1_double* Weigths, NCollection_Array1_double* DWeigths, NCollection_Array1_double* D2Weigths) {
     try { return {self_->D2(Param, *Poles, *DPoles, *D2Poles, *Weigths, *DWeigths, *D2Weigths), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -11111,11 +10333,11 @@ extern "C" const char* GeomFill_NSections_section_shape(const GeomFill_NSections
     try { self_->SectionShape(*NbPoles, *NbKnots, *Degree); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* GeomFill_NSections_knots(const GeomFill_NSections* self_, TColStd_Array1OfReal* TKnots) {
+extern "C" const char* GeomFill_NSections_knots(const GeomFill_NSections* self_, NCollection_Array1_double* TKnots) {
     try { self_->Knots(*TKnots); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* GeomFill_NSections_mults(const GeomFill_NSections* self_, TColStd_Array1OfInteger* TMults) {
+extern "C" const char* GeomFill_NSections_mults(const GeomFill_NSections* self_, NCollection_Array1_int* TMults) {
     try { self_->Mults(*TMults); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -11135,7 +10357,7 @@ extern "C" OcctResult<int32_t> GeomFill_NSections_nb_intervals(const GeomFill_NS
     try { return {self_->NbIntervals(static_cast<GeomAbs_Shape>(S)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* GeomFill_NSections_intervals(const GeomFill_NSections* self_, TColStd_Array1OfReal* T, int32_t S) {
+extern "C" const char* GeomFill_NSections_intervals(const GeomFill_NSections* self_, NCollection_Array1_double* T, int32_t S) {
     try { self_->Intervals(*T, static_cast<GeomAbs_Shape>(S)); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -11151,7 +10373,7 @@ extern "C" const char* GeomFill_NSections_get_domain(const GeomFill_NSections* s
     try { self_->GetDomain(*First, *Last); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* GeomFill_NSections_get_tolerance(const GeomFill_NSections* self_, double BoundTol, double SurfTol, double AngleTol, TColStd_Array1OfReal* Tol3d) {
+extern "C" const char* GeomFill_NSections_get_tolerance(const GeomFill_NSections* self_, double BoundTol, double SurfTol, double AngleTol, NCollection_Array1_double* Tol3d) {
     try { self_->GetTolerance(BoundTol, SurfTol, AngleTol, *Tol3d); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -11159,7 +10381,7 @@ extern "C" OcctResult<double> GeomFill_NSections_maximal_section(const GeomFill_
     try { return {self_->MaximalSection(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* GeomFill_NSections_get_minimal_weight(const GeomFill_NSections* self_, TColStd_Array1OfReal* Weigths) {
+extern "C" const char* GeomFill_NSections_get_minimal_weight(const GeomFill_NSections* self_, NCollection_Array1_double* Weigths) {
     try { self_->GetMinimalWeight(*Weigths); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -11187,24 +10409,24 @@ extern "C" OcctResult<const GeomFill_SectionLaw*> GeomFill_NSections_as_GeomFill
 extern "C" OcctResult<GeomFill_SectionLaw*> GeomFill_NSections_as_GeomFill_SectionLaw_mut(GeomFill_NSections* self_) { return {static_cast<GeomFill_SectionLaw*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> GeomFill_NSections_as_Standard_Transient(const GeomFill_NSections* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> GeomFill_NSections_as_Standard_Transient_mut(GeomFill_NSections* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleGeomFillNSections*> GeomFill_NSections_to_handle(GeomFill_NSections* obj) {
-    try { return {new HandleGeomFillNSections(obj), nullptr}; }
+extern "C" OcctResult<Handle_GeomFill_NSections*> GeomFill_NSections_to_handle(GeomFill_NSections* obj) {
+    try { return {new Handle_GeomFill_NSections(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const GeomFill_NSections*> HandleGeomFillNSections_get(const HandleGeomFillNSections* handle) {
+extern "C" OcctResult<const GeomFill_NSections*> Handle_GeomFill_NSections_get(const Handle_GeomFill_NSections* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<GeomFill_NSections*> HandleGeomFillNSections_get_mut(HandleGeomFillNSections* handle) {
+extern "C" OcctResult<GeomFill_NSections*> Handle_GeomFill_NSections_get_mut(Handle_GeomFill_NSections* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleGeomFillSectionLaw*> HandleGeomFillNSections_to_HandleGeomFillSectionLaw(const HandleGeomFillNSections* self_) {
-    try { return {new HandleGeomFillSectionLaw(*self_), nullptr}; }
+extern "C" OcctResult<Handle_GeomFill_SectionLaw*> Handle_GeomFill_NSections_to_Handle_GeomFill_SectionLaw(const Handle_GeomFill_NSections* self_) {
+    try { return {new Handle_GeomFill_SectionLaw(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleGeomFillNSections_to_HandleStandardTransient(const HandleGeomFillNSections* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_GeomFill_NSections_to_Handle_Standard_Transient(const Handle_GeomFill_NSections* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" const char* GeomFill_NSections_inherited_SetTolerance(GeomFill_NSections* self, double Tol3d, double Tol2d) {
@@ -11242,6 +10464,32 @@ extern "C" const char* GeomFill_NSections_inherited_Delete(const GeomFill_NSecti
 extern "C" void GeomFill_NSections_destructor(GeomFill_NSections* self_) { delete self_; }
 
 // ========================
+// GeomFill_NetworkSurface wrappers
+// ========================
+
+extern "C" OcctResult<GeomFill_NetworkSurface*> GeomFill_NetworkSurface_ctor() {
+    try { return {new GeomFill_NetworkSurface(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<GeomFill_NetworkSurface::ResultStatus*> GeomFill_NetworkSurface_status(const GeomFill_NetworkSurface* self_) {
+    try { return {new GeomFill_NetworkSurface::ResultStatus(self_->Status()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" const char* GeomFill_NetworkSurface_perform(GeomFill_NetworkSurface* self_) {
+    try { self_->Perform(); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" OcctResult<bool> GeomFill_NetworkSurface_is_done(const GeomFill_NetworkSurface* self_) {
+    try { return {self_->IsDone(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Handle(Geom_BSplineSurface) const*> GeomFill_NetworkSurface_surface(const GeomFill_NetworkSurface* self_) {
+    try { return {&(self_->Surface()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" void GeomFill_NetworkSurface_destructor(GeomFill_NetworkSurface* self_) { delete self_; }
+
+// ========================
 // GeomFill_Pipe wrappers
 // ========================
 
@@ -11267,10 +10515,6 @@ extern "C" OcctResult<GeomFill_Pipe*> GeomFill_Pipe_ctor_handlegeomcurve2_dir(Ha
 }
 extern "C" OcctResult<GeomFill_Pipe*> GeomFill_Pipe_ctor_handlegeomcurve3(Handle(Geom_Curve) const* Path, Handle(Geom_Curve) const* FirstSect, Handle(Geom_Curve) const* LastSect) {
     try { return {new GeomFill_Pipe(*Path, *FirstSect, *LastSect), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<GeomFill_Pipe*> GeomFill_Pipe_ctor_handlegeomcurve_sequenceofcurve(Handle(Geom_Curve) const* Path, TColGeom_SequenceOfCurve const* NSections) {
-    try { return {new GeomFill_Pipe(*Path, *NSections), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<GeomFill_Pipe*> GeomFill_Pipe_ctor_handlegeomcurve3_real(Handle(Geom_Curve) const* Path, Handle(Geom_Curve) const* Curve1, Handle(Geom_Curve) const* Curve2, double Radius) {
@@ -11303,10 +10547,6 @@ extern "C" const char* GeomFill_Pipe_init_handlegeomcurve2_dir(GeomFill_Pipe* se
 }
 extern "C" const char* GeomFill_Pipe_init_handlegeomcurve3(GeomFill_Pipe* self_, Handle(Geom_Curve) const* Path, Handle(Geom_Curve) const* FirstSect, Handle(Geom_Curve) const* LastSect) {
     try { self_->Init(*Path, *FirstSect, *LastSect); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* GeomFill_Pipe_init_handlegeomcurve_sequenceofcurve(GeomFill_Pipe* self_, Handle(Geom_Curve) const* Path, TColGeom_SequenceOfCurve const* NSections) {
-    try { self_->Init(*Path, *NSections); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
 extern "C" const char* GeomFill_Pipe_init_handleadaptor3dcurve3_real(GeomFill_Pipe* self_, Handle(Adaptor3d_Curve) const* Path, Handle(Adaptor3d_Curve) const* Curve1, Handle(Adaptor3d_Curve) const* Curve2, double Radius) {
@@ -11413,15 +10653,15 @@ extern "C" const char* GeomFill_PolynomialConvertor_init(GeomFill_PolynomialConv
     try { self_->Init(); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* GeomFill_PolynomialConvertor_section_pnt2_vec_real_array1ofpnt(const GeomFill_PolynomialConvertor* self_, gp_Pnt const* FirstPnt, gp_Pnt const* Center, gp_Vec const* Dir, double Angle, TColgp_Array1OfPnt* Poles) {
+extern "C" const char* GeomFill_PolynomialConvertor_section_pnt2_vec_real_arr1_pnt(const GeomFill_PolynomialConvertor* self_, gp_Pnt const* FirstPnt, gp_Pnt const* Center, gp_Vec const* Dir, double Angle, NCollection_Array1_gp_Pnt* Poles) {
     try { self_->Section(*FirstPnt, *Center, *Dir, Angle, *Poles); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* GeomFill_PolynomialConvertor_section_pnt_vec_pnt_vec3_real2_array1ofpnt_array1ofvec(const GeomFill_PolynomialConvertor* self_, gp_Pnt const* FirstPnt, gp_Vec const* DFirstPnt, gp_Pnt const* Center, gp_Vec const* DCenter, gp_Vec const* Dir, gp_Vec const* DDir, double Angle, double DAngle, TColgp_Array1OfPnt* Poles, TColgp_Array1OfVec* DPoles) {
+extern "C" const char* GeomFill_PolynomialConvertor_section_pnt_vec_pnt_vec3_real2_arr1_pnt_arr1_vec(const GeomFill_PolynomialConvertor* self_, gp_Pnt const* FirstPnt, gp_Vec const* DFirstPnt, gp_Pnt const* Center, gp_Vec const* DCenter, gp_Vec const* Dir, gp_Vec const* DDir, double Angle, double DAngle, NCollection_Array1_gp_Pnt* Poles, NCollection_Array1_gp_Vec* DPoles) {
     try { self_->Section(*FirstPnt, *DFirstPnt, *Center, *DCenter, *Dir, *DDir, Angle, DAngle, *Poles, *DPoles); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* GeomFill_PolynomialConvertor_section_pnt_vec2_pnt_vec5_real3_array1ofpnt_array1ofvec2(const GeomFill_PolynomialConvertor* self_, gp_Pnt const* FirstPnt, gp_Vec const* DFirstPnt, gp_Vec const* D2FirstPnt, gp_Pnt const* Center, gp_Vec const* DCenter, gp_Vec const* D2Center, gp_Vec const* Dir, gp_Vec const* DDir, gp_Vec const* D2Dir, double Angle, double DAngle, double D2Angle, TColgp_Array1OfPnt* Poles, TColgp_Array1OfVec* DPoles, TColgp_Array1OfVec* D2Poles) {
+extern "C" const char* GeomFill_PolynomialConvertor_section_pnt_vec2_pnt_vec5_real3_arr1_pnt_arr1_vec2(const GeomFill_PolynomialConvertor* self_, gp_Pnt const* FirstPnt, gp_Vec const* DFirstPnt, gp_Vec const* D2FirstPnt, gp_Pnt const* Center, gp_Vec const* DCenter, gp_Vec const* D2Center, gp_Vec const* Dir, gp_Vec const* DDir, gp_Vec const* D2Dir, double Angle, double DAngle, double D2Angle, NCollection_Array1_gp_Pnt* Poles, NCollection_Array1_gp_Vec* DPoles, NCollection_Array1_gp_Vec* D2Poles) {
     try { self_->Section(*FirstPnt, *DFirstPnt, *D2FirstPnt, *Center, *DCenter, *D2Center, *Dir, *DDir, *D2Dir, Angle, DAngle, D2Angle, *Poles, *DPoles, *D2Poles); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -11455,11 +10695,11 @@ extern "C" OcctResult<int32_t> GeomFill_Profiler_nb_poles(const GeomFill_Profile
     try { return {self_->NbPoles(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* GeomFill_Profiler_poles(const GeomFill_Profiler* self_, int32_t Index, TColgp_Array1OfPnt* Poles) {
+extern "C" const char* GeomFill_Profiler_poles(const GeomFill_Profiler* self_, int32_t Index, NCollection_Array1_gp_Pnt* Poles) {
     try { self_->Poles(Index, *Poles); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* GeomFill_Profiler_weights(const GeomFill_Profiler* self_, int32_t Index, TColStd_Array1OfReal* Weights) {
+extern "C" const char* GeomFill_Profiler_weights(const GeomFill_Profiler* self_, int32_t Index, NCollection_Array1_double* Weights) {
     try { self_->Weights(Index, *Weights); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -11467,7 +10707,7 @@ extern "C" OcctResult<int32_t> GeomFill_Profiler_nb_knots(const GeomFill_Profile
     try { return {self_->NbKnots(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* GeomFill_Profiler_knots_and_mults(const GeomFill_Profiler* self_, TColStd_Array1OfReal* Knots, TColStd_Array1OfInteger* Mults) {
+extern "C" const char* GeomFill_Profiler_knots_and_mults(const GeomFill_Profiler* self_, NCollection_Array1_double* Knots, NCollection_Array1_int* Mults) {
     try { self_->KnotsAndMults(*Knots, *Mults); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -11493,15 +10733,15 @@ extern "C" const char* GeomFill_QuasiAngularConvertor_init(GeomFill_QuasiAngular
     try { self_->Init(); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* GeomFill_QuasiAngularConvertor_section_pnt2_vec_real_array1ofpnt_array1ofreal(GeomFill_QuasiAngularConvertor* self_, gp_Pnt const* FirstPnt, gp_Pnt const* Center, gp_Vec const* Dir, double Angle, TColgp_Array1OfPnt* Poles, TColStd_Array1OfReal* Weights) {
+extern "C" const char* GeomFill_QuasiAngularConvertor_section_pnt2_vec_real_arr1_pnt_arr1_double(GeomFill_QuasiAngularConvertor* self_, gp_Pnt const* FirstPnt, gp_Pnt const* Center, gp_Vec const* Dir, double Angle, NCollection_Array1_gp_Pnt* Poles, NCollection_Array1_double* Weights) {
     try { self_->Section(*FirstPnt, *Center, *Dir, Angle, *Poles, *Weights); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* GeomFill_QuasiAngularConvertor_section_pnt_vec_pnt_vec3_real2_array1ofpnt_array1ofvec_array1ofreal2(GeomFill_QuasiAngularConvertor* self_, gp_Pnt const* FirstPnt, gp_Vec const* DFirstPnt, gp_Pnt const* Center, gp_Vec const* DCenter, gp_Vec const* Dir, gp_Vec const* DDir, double Angle, double DAngle, TColgp_Array1OfPnt* Poles, TColgp_Array1OfVec* DPoles, TColStd_Array1OfReal* Weights, TColStd_Array1OfReal* DWeights) {
+extern "C" const char* GeomFill_QuasiAngularConvertor_section_pnt_vec_pnt_vec3_real2_arr1_pnt_arr1_vec_arr1_double2(GeomFill_QuasiAngularConvertor* self_, gp_Pnt const* FirstPnt, gp_Vec const* DFirstPnt, gp_Pnt const* Center, gp_Vec const* DCenter, gp_Vec const* Dir, gp_Vec const* DDir, double Angle, double DAngle, NCollection_Array1_gp_Pnt* Poles, NCollection_Array1_gp_Vec* DPoles, NCollection_Array1_double* Weights, NCollection_Array1_double* DWeights) {
     try { self_->Section(*FirstPnt, *DFirstPnt, *Center, *DCenter, *Dir, *DDir, Angle, DAngle, *Poles, *DPoles, *Weights, *DWeights); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* GeomFill_QuasiAngularConvertor_section_pnt_vec2_pnt_vec5_real3_array1ofpnt_array1ofvec2_array1ofreal3(GeomFill_QuasiAngularConvertor* self_, gp_Pnt const* FirstPnt, gp_Vec const* DFirstPnt, gp_Vec const* D2FirstPnt, gp_Pnt const* Center, gp_Vec const* DCenter, gp_Vec const* D2Center, gp_Vec const* Dir, gp_Vec const* DDir, gp_Vec const* D2Dir, double Angle, double DAngle, double D2Angle, TColgp_Array1OfPnt* Poles, TColgp_Array1OfVec* DPoles, TColgp_Array1OfVec* D2Poles, TColStd_Array1OfReal* Weights, TColStd_Array1OfReal* DWeights, TColStd_Array1OfReal* D2Weights) {
+extern "C" const char* GeomFill_QuasiAngularConvertor_section_pnt_vec2_pnt_vec5_real3_arr1_pnt_arr1_vec2_arr1_double3(GeomFill_QuasiAngularConvertor* self_, gp_Pnt const* FirstPnt, gp_Vec const* DFirstPnt, gp_Vec const* D2FirstPnt, gp_Pnt const* Center, gp_Vec const* DCenter, gp_Vec const* D2Center, gp_Vec const* Dir, gp_Vec const* DDir, gp_Vec const* D2Dir, double Angle, double DAngle, double D2Angle, NCollection_Array1_gp_Pnt* Poles, NCollection_Array1_gp_Vec* DPoles, NCollection_Array1_gp_Vec* D2Poles, NCollection_Array1_double* Weights, NCollection_Array1_double* DWeights, NCollection_Array1_double* D2Weights) {
     try { self_->Section(*FirstPnt, *DFirstPnt, *D2FirstPnt, *Center, *DCenter, *D2Center, *Dir, *DDir, *D2Dir, Angle, DAngle, D2Angle, *Poles, *DPoles, *D2Poles, *Weights, *DWeights, *D2Weights); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -11515,7 +10755,7 @@ extern "C" OcctResult<GeomFill_SectionGenerator*> GeomFill_SectionGenerator_ctor
     try { return {new GeomFill_SectionGenerator(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* GeomFill_SectionGenerator_set_param(GeomFill_SectionGenerator* self_, Handle(TColStd_HArray1OfReal) const* Params) {
+extern "C" const char* GeomFill_SectionGenerator_set_param(GeomFill_SectionGenerator* self_, Handle(NCollection_HArray1_double) const* Params) {
     try { self_->SetParam(*Params); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -11523,19 +10763,19 @@ extern "C" const char* GeomFill_SectionGenerator_get_shape(const GeomFill_Sectio
     try { self_->GetShape(*NbPoles, *NbKnots, *Degree, *NbPoles2d); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* GeomFill_SectionGenerator_knots(const GeomFill_SectionGenerator* self_, TColStd_Array1OfReal* TKnots) {
+extern "C" const char* GeomFill_SectionGenerator_knots(const GeomFill_SectionGenerator* self_, NCollection_Array1_double* TKnots) {
     try { self_->Knots(*TKnots); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* GeomFill_SectionGenerator_mults(const GeomFill_SectionGenerator* self_, TColStd_Array1OfInteger* TMults) {
+extern "C" const char* GeomFill_SectionGenerator_mults(const GeomFill_SectionGenerator* self_, NCollection_Array1_int* TMults) {
     try { self_->Mults(*TMults); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<bool> GeomFill_SectionGenerator_section_int_array1ofpnt_array1ofvec_array1ofpnt2d_array1ofvec2d_array1ofreal2(const GeomFill_SectionGenerator* self_, int32_t P, TColgp_Array1OfPnt* Poles, TColgp_Array1OfVec* DPoles, TColgp_Array1OfPnt2d* Poles2d, TColgp_Array1OfVec2d* DPoles2d, TColStd_Array1OfReal* Weigths, TColStd_Array1OfReal* DWeigths) {
+extern "C" OcctResult<bool> GeomFill_SectionGenerator_section_int_arr1_pnt_arr1_vec_arr1_pnt2d_arr1_vec2d_arr1_double2(const GeomFill_SectionGenerator* self_, int32_t P, NCollection_Array1_gp_Pnt* Poles, NCollection_Array1_gp_Vec* DPoles, NCollection_Array1_gp_Pnt2d* Poles2d, NCollection_Array1_gp_Vec2d* DPoles2d, NCollection_Array1_double* Weigths, NCollection_Array1_double* DWeigths) {
     try { return {self_->Section(P, *Poles, *DPoles, *Poles2d, *DPoles2d, *Weigths, *DWeigths), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* GeomFill_SectionGenerator_section_int_array1ofpnt_array1ofpnt2d_array1ofreal(const GeomFill_SectionGenerator* self_, int32_t P, TColgp_Array1OfPnt* Poles, TColgp_Array1OfPnt2d* Poles2d, TColStd_Array1OfReal* Weigths) {
+extern "C" const char* GeomFill_SectionGenerator_section_int_arr1_pnt_arr1_pnt2d_arr1_double(const GeomFill_SectionGenerator* self_, int32_t P, NCollection_Array1_gp_Pnt* Poles, NCollection_Array1_gp_Pnt2d* Poles2d, NCollection_Array1_double* Weigths) {
     try { self_->Section(P, *Poles, *Poles2d, *Weigths); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -11565,11 +10805,11 @@ extern "C" OcctResult<int32_t> GeomFill_SectionGenerator_inherited_NbPoles(const
     try { return {self->NbPoles(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* GeomFill_SectionGenerator_inherited_Poles(const GeomFill_SectionGenerator* self, int32_t Index, TColgp_Array1OfPnt& Poles) {
+extern "C" const char* GeomFill_SectionGenerator_inherited_Poles(const GeomFill_SectionGenerator* self, int32_t Index, NCollection_Array1_gp_Pnt& Poles) {
     try { self->Poles(Index, Poles); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* GeomFill_SectionGenerator_inherited_Weights(const GeomFill_SectionGenerator* self, int32_t Index, TColStd_Array1OfReal& Weights) {
+extern "C" const char* GeomFill_SectionGenerator_inherited_Weights(const GeomFill_SectionGenerator* self, int32_t Index, NCollection_Array1_double& Weights) {
     try { self->Weights(Index, Weights); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -11577,7 +10817,7 @@ extern "C" OcctResult<int32_t> GeomFill_SectionGenerator_inherited_NbKnots(const
     try { return {self->NbKnots(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* GeomFill_SectionGenerator_inherited_KnotsAndMults(const GeomFill_SectionGenerator* self, TColStd_Array1OfReal& Knots, TColStd_Array1OfInteger& Mults) {
+extern "C" const char* GeomFill_SectionGenerator_inherited_KnotsAndMults(const GeomFill_SectionGenerator* self, NCollection_Array1_double& Knots, NCollection_Array1_int& Mults) {
     try { self->KnotsAndMults(Knots, Mults); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -11607,15 +10847,15 @@ extern "C" OcctResult<Handle(Geom_Curve)*> GeomFill_SectionLaw_circl_section(con
     try { return {new Handle(Geom_Curve)(self_->CirclSection(Param)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<bool> GeomFill_SectionLaw_d0(GeomFill_SectionLaw* self_, double Param, TColgp_Array1OfPnt* Poles, TColStd_Array1OfReal* Weigths) {
+extern "C" OcctResult<bool> GeomFill_SectionLaw_d0(GeomFill_SectionLaw* self_, double Param, NCollection_Array1_gp_Pnt* Poles, NCollection_Array1_double* Weigths) {
     try { return {self_->D0(Param, *Poles, *Weigths), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<bool> GeomFill_SectionLaw_d1(GeomFill_SectionLaw* self_, double Param, TColgp_Array1OfPnt* Poles, TColgp_Array1OfVec* DPoles, TColStd_Array1OfReal* Weigths, TColStd_Array1OfReal* DWeigths) {
+extern "C" OcctResult<bool> GeomFill_SectionLaw_d1(GeomFill_SectionLaw* self_, double Param, NCollection_Array1_gp_Pnt* Poles, NCollection_Array1_gp_Vec* DPoles, NCollection_Array1_double* Weigths, NCollection_Array1_double* DWeigths) {
     try { return {self_->D1(Param, *Poles, *DPoles, *Weigths, *DWeigths), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<bool> GeomFill_SectionLaw_d2(GeomFill_SectionLaw* self_, double Param, TColgp_Array1OfPnt* Poles, TColgp_Array1OfVec* DPoles, TColgp_Array1OfVec* D2Poles, TColStd_Array1OfReal* Weigths, TColStd_Array1OfReal* DWeigths, TColStd_Array1OfReal* D2Weigths) {
+extern "C" OcctResult<bool> GeomFill_SectionLaw_d2(GeomFill_SectionLaw* self_, double Param, NCollection_Array1_gp_Pnt* Poles, NCollection_Array1_gp_Vec* DPoles, NCollection_Array1_gp_Vec* D2Poles, NCollection_Array1_double* Weigths, NCollection_Array1_double* DWeigths, NCollection_Array1_double* D2Weigths) {
     try { return {self_->D2(Param, *Poles, *DPoles, *D2Poles, *Weigths, *DWeigths, *D2Weigths), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -11623,11 +10863,11 @@ extern "C" const char* GeomFill_SectionLaw_section_shape(const GeomFill_SectionL
     try { self_->SectionShape(*NbPoles, *NbKnots, *Degree); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* GeomFill_SectionLaw_knots(const GeomFill_SectionLaw* self_, TColStd_Array1OfReal* TKnots) {
+extern "C" const char* GeomFill_SectionLaw_knots(const GeomFill_SectionLaw* self_, NCollection_Array1_double* TKnots) {
     try { self_->Knots(*TKnots); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* GeomFill_SectionLaw_mults(const GeomFill_SectionLaw* self_, TColStd_Array1OfInteger* TMults) {
+extern "C" const char* GeomFill_SectionLaw_mults(const GeomFill_SectionLaw* self_, NCollection_Array1_int* TMults) {
     try { self_->Mults(*TMults); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -11647,7 +10887,7 @@ extern "C" OcctResult<int32_t> GeomFill_SectionLaw_nb_intervals(const GeomFill_S
     try { return {self_->NbIntervals(static_cast<GeomAbs_Shape>(S)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* GeomFill_SectionLaw_intervals(const GeomFill_SectionLaw* self_, TColStd_Array1OfReal* T, int32_t S) {
+extern "C" const char* GeomFill_SectionLaw_intervals(const GeomFill_SectionLaw* self_, NCollection_Array1_double* T, int32_t S) {
     try { self_->Intervals(*T, static_cast<GeomAbs_Shape>(S)); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -11663,7 +10903,7 @@ extern "C" const char* GeomFill_SectionLaw_get_domain(const GeomFill_SectionLaw*
     try { self_->GetDomain(*First, *Last); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* GeomFill_SectionLaw_get_tolerance(const GeomFill_SectionLaw* self_, double BoundTol, double SurfTol, double AngleTol, TColStd_Array1OfReal* Tol3d) {
+extern "C" const char* GeomFill_SectionLaw_get_tolerance(const GeomFill_SectionLaw* self_, double BoundTol, double SurfTol, double AngleTol, NCollection_Array1_double* Tol3d) {
     try { self_->GetTolerance(BoundTol, SurfTol, AngleTol, *Tol3d); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -11675,7 +10915,7 @@ extern "C" OcctResult<double> GeomFill_SectionLaw_maximal_section(const GeomFill
     try { return {self_->MaximalSection(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* GeomFill_SectionLaw_get_minimal_weight(const GeomFill_SectionLaw* self_, TColStd_Array1OfReal* Weigths) {
+extern "C" const char* GeomFill_SectionLaw_get_minimal_weight(const GeomFill_SectionLaw* self_, NCollection_Array1_double* Weigths) {
     try { self_->GetMinimalWeight(*Weigths); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -11701,39 +10941,39 @@ extern "C" OcctResult<Handle(Standard_Type) const*> GeomFill_SectionLaw_get_type
 }
 extern "C" OcctResult<const Standard_Transient*> GeomFill_SectionLaw_as_Standard_Transient(const GeomFill_SectionLaw* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> GeomFill_SectionLaw_as_Standard_Transient_mut(GeomFill_SectionLaw* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<const GeomFill_SectionLaw*> HandleGeomFillSectionLaw_get(const HandleGeomFillSectionLaw* handle) {
+extern "C" OcctResult<const GeomFill_SectionLaw*> Handle_GeomFill_SectionLaw_get(const Handle_GeomFill_SectionLaw* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<GeomFill_SectionLaw*> HandleGeomFillSectionLaw_get_mut(HandleGeomFillSectionLaw* handle) {
+extern "C" OcctResult<GeomFill_SectionLaw*> Handle_GeomFill_SectionLaw_get_mut(Handle_GeomFill_SectionLaw* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleGeomFillSectionLaw_to_HandleStandardTransient(const HandleGeomFillSectionLaw* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_GeomFill_SectionLaw_to_Handle_Standard_Transient(const Handle_GeomFill_SectionLaw* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleGeomFillEvolvedSection*> HandleGeomFillSectionLaw_downcast_to_HandleGeomFillEvolvedSection(const HandleGeomFillSectionLaw* self_) {
+extern "C" OcctResult<Handle_GeomFill_EvolvedSection*> Handle_GeomFill_SectionLaw_downcast_to_Handle_GeomFill_EvolvedSection(const Handle_GeomFill_SectionLaw* self_) {
     try {
     opencascade::handle<GeomFill_EvolvedSection> result = opencascade::handle<GeomFill_EvolvedSection>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleGeomFillEvolvedSection(result), nullptr};
+    return {new Handle_GeomFill_EvolvedSection(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleGeomFillNSections*> HandleGeomFillSectionLaw_downcast_to_HandleGeomFillNSections(const HandleGeomFillSectionLaw* self_) {
+extern "C" OcctResult<Handle_GeomFill_NSections*> Handle_GeomFill_SectionLaw_downcast_to_Handle_GeomFill_NSections(const Handle_GeomFill_SectionLaw* self_) {
     try {
     opencascade::handle<GeomFill_NSections> result = opencascade::handle<GeomFill_NSections>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleGeomFillNSections(result), nullptr};
+    return {new Handle_GeomFill_NSections(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleGeomFillUniformSection*> HandleGeomFillSectionLaw_downcast_to_HandleGeomFillUniformSection(const HandleGeomFillSectionLaw* self_) {
+extern "C" OcctResult<Handle_GeomFill_UniformSection*> Handle_GeomFill_SectionLaw_downcast_to_Handle_GeomFill_UniformSection(const Handle_GeomFill_SectionLaw* self_) {
     try {
     opencascade::handle<GeomFill_UniformSection> result = opencascade::handle<GeomFill_UniformSection>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleGeomFillUniformSection(result), nullptr};
+    return {new Handle_GeomFill_UniformSection(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
@@ -11869,24 +11109,24 @@ extern "C" OcctResult<const GeomFill_Boundary*> GeomFill_SimpleBound_as_GeomFill
 extern "C" OcctResult<GeomFill_Boundary*> GeomFill_SimpleBound_as_GeomFill_Boundary_mut(GeomFill_SimpleBound* self_) { return {static_cast<GeomFill_Boundary*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> GeomFill_SimpleBound_as_Standard_Transient(const GeomFill_SimpleBound* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> GeomFill_SimpleBound_as_Standard_Transient_mut(GeomFill_SimpleBound* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleGeomFillSimpleBound*> GeomFill_SimpleBound_to_handle(GeomFill_SimpleBound* obj) {
-    try { return {new HandleGeomFillSimpleBound(obj), nullptr}; }
+extern "C" OcctResult<Handle_GeomFill_SimpleBound*> GeomFill_SimpleBound_to_handle(GeomFill_SimpleBound* obj) {
+    try { return {new Handle_GeomFill_SimpleBound(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const GeomFill_SimpleBound*> HandleGeomFillSimpleBound_get(const HandleGeomFillSimpleBound* handle) {
+extern "C" OcctResult<const GeomFill_SimpleBound*> Handle_GeomFill_SimpleBound_get(const Handle_GeomFill_SimpleBound* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<GeomFill_SimpleBound*> HandleGeomFillSimpleBound_get_mut(HandleGeomFillSimpleBound* handle) {
+extern "C" OcctResult<GeomFill_SimpleBound*> Handle_GeomFill_SimpleBound_get_mut(Handle_GeomFill_SimpleBound* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleGeomFillBoundary*> HandleGeomFillSimpleBound_to_HandleGeomFillBoundary(const HandleGeomFillSimpleBound* self_) {
-    try { return {new HandleGeomFillBoundary(*self_), nullptr}; }
+extern "C" OcctResult<Handle_GeomFill_Boundary*> Handle_GeomFill_SimpleBound_to_Handle_GeomFill_Boundary(const Handle_GeomFill_SimpleBound* self_) {
+    try { return {new Handle_GeomFill_Boundary(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleGeomFillSimpleBound_to_HandleStandardTransient(const HandleGeomFillSimpleBound* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_GeomFill_SimpleBound_to_Handle_Standard_Transient(const Handle_GeomFill_SimpleBound* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> GeomFill_SimpleBound_inherited_HasNormals(const GeomFill_SimpleBound* self) {
@@ -11955,12 +11195,24 @@ extern "C" OcctResult<Handle(Adaptor3d_Curve)*> GeomFill_SnglrFunc_shallow_copy(
     try { return {new Handle(Adaptor3d_Curve)(self_->ShallowCopy()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<gp_Pnt*> GeomFill_SnglrFunc_value(const GeomFill_SnglrFunc* self_, double U) {
-    try { return {new gp_Pnt(self_->Value(U)), nullptr}; }
+extern "C" OcctResult<gp_Pnt*> GeomFill_SnglrFunc_eval_d0(const GeomFill_SnglrFunc* self_, double theU) {
+    try { return {new gp_Pnt(self_->EvalD0(theU)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<gp_Vec*> GeomFill_SnglrFunc_dn(const GeomFill_SnglrFunc* self_, double U, int32_t N) {
-    try { return {new gp_Vec(self_->DN(U, N)), nullptr}; }
+extern "C" OcctResult<Geom_Curve::ResD1*> GeomFill_SnglrFunc_eval_d1(const GeomFill_SnglrFunc* self_, double theU) {
+    try { return {new Geom_Curve::ResD1(self_->EvalD1(theU)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Geom_Curve::ResD2*> GeomFill_SnglrFunc_eval_d2(const GeomFill_SnglrFunc* self_, double theU) {
+    try { return {new Geom_Curve::ResD2(self_->EvalD2(theU)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Geom_Curve::ResD3*> GeomFill_SnglrFunc_eval_d3(const GeomFill_SnglrFunc* self_, double theU) {
+    try { return {new Geom_Curve::ResD3(self_->EvalD3(theU)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<gp_Vec*> GeomFill_SnglrFunc_eval_dn(const GeomFill_SnglrFunc* self_, double theU, int32_t theN) {
+    try { return {new gp_Vec(self_->EvalDN(theU, theN)), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" const char* GeomFill_SnglrFunc_set_ratio(GeomFill_SnglrFunc* self_, double Ratio) {
@@ -11979,7 +11231,7 @@ extern "C" OcctResult<int32_t> GeomFill_SnglrFunc_nb_intervals(const GeomFill_Sn
     try { return {self_->NbIntervals(static_cast<GeomAbs_Shape>(S)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* GeomFill_SnglrFunc_intervals(const GeomFill_SnglrFunc* self_, TColStd_Array1OfReal* T, int32_t S) {
+extern "C" const char* GeomFill_SnglrFunc_intervals(const GeomFill_SnglrFunc* self_, NCollection_Array1_double* T, int32_t S) {
     try { self_->Intervals(*T, static_cast<GeomAbs_Shape>(S)); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -11990,22 +11242,6 @@ extern "C" OcctResult<bool> GeomFill_SnglrFunc_is_periodic(const GeomFill_SnglrF
 extern "C" OcctResult<double> GeomFill_SnglrFunc_period(const GeomFill_SnglrFunc* self_) {
     try { return {self_->Period(), nullptr}; }
     OCCT_CATCH_RETURN
-}
-extern "C" const char* GeomFill_SnglrFunc_d0(const GeomFill_SnglrFunc* self_, double U, gp_Pnt* P) {
-    try { self_->D0(U, *P); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* GeomFill_SnglrFunc_d1(const GeomFill_SnglrFunc* self_, double U, gp_Pnt* P, gp_Vec* V) {
-    try { self_->D1(U, *P, *V); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* GeomFill_SnglrFunc_d2(const GeomFill_SnglrFunc* self_, double U, gp_Pnt* P, gp_Vec* V1, gp_Vec* V2) {
-    try { self_->D2(U, *P, *V1, *V2); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* GeomFill_SnglrFunc_d3(const GeomFill_SnglrFunc* self_, double U, gp_Pnt* P, gp_Vec* V1, gp_Vec* V2, gp_Vec* V3) {
-    try { self_->D3(U, *P, *V1, *V2, *V3); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
 }
 extern "C" OcctResult<double> GeomFill_SnglrFunc_resolution(const GeomFill_SnglrFunc* self_, double R3d) {
     try { return {self_->Resolution(R3d), nullptr}; }
@@ -12019,24 +11255,24 @@ extern "C" OcctResult<const Adaptor3d_Curve*> GeomFill_SnglrFunc_as_Adaptor3d_Cu
 extern "C" OcctResult<Adaptor3d_Curve*> GeomFill_SnglrFunc_as_Adaptor3d_Curve_mut(GeomFill_SnglrFunc* self_) { return {static_cast<Adaptor3d_Curve*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> GeomFill_SnglrFunc_as_Standard_Transient(const GeomFill_SnglrFunc* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> GeomFill_SnglrFunc_as_Standard_Transient_mut(GeomFill_SnglrFunc* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleGeomFillSnglrFunc*> GeomFill_SnglrFunc_to_handle(GeomFill_SnglrFunc* obj) {
-    try { return {new HandleGeomFillSnglrFunc(obj), nullptr}; }
+extern "C" OcctResult<Handle_GeomFill_SnglrFunc*> GeomFill_SnglrFunc_to_handle(GeomFill_SnglrFunc* obj) {
+    try { return {new Handle_GeomFill_SnglrFunc(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const GeomFill_SnglrFunc*> HandleGeomFillSnglrFunc_get(const HandleGeomFillSnglrFunc* handle) {
+extern "C" OcctResult<const GeomFill_SnglrFunc*> Handle_GeomFill_SnglrFunc_get(const Handle_GeomFill_SnglrFunc* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<GeomFill_SnglrFunc*> HandleGeomFillSnglrFunc_get_mut(HandleGeomFillSnglrFunc* handle) {
+extern "C" OcctResult<GeomFill_SnglrFunc*> Handle_GeomFill_SnglrFunc_get_mut(Handle_GeomFill_SnglrFunc* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleAdaptor3dCurve*> HandleGeomFillSnglrFunc_to_HandleAdaptor3dCurve(const HandleGeomFillSnglrFunc* self_) {
-    try { return {new HandleAdaptor3dCurve(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Adaptor3d_Curve*> Handle_GeomFill_SnglrFunc_to_Handle_Adaptor3d_Curve(const Handle_GeomFill_SnglrFunc* self_) {
+    try { return {new Handle_Adaptor3d_Curve(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleGeomFillSnglrFunc_to_HandleStandardTransient(const HandleGeomFillSnglrFunc* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_GeomFill_SnglrFunc_to_Handle_Standard_Transient(const Handle_GeomFill_SnglrFunc* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(Standard_Type) const*> GeomFill_SnglrFunc_inherited_DynamicType(const GeomFill_SnglrFunc* self) {
@@ -12053,6 +11289,30 @@ extern "C" OcctResult<Handle(Adaptor3d_Curve)*> GeomFill_SnglrFunc_inherited_Tri
 }
 extern "C" OcctResult<bool> GeomFill_SnglrFunc_inherited_IsClosed(const GeomFill_SnglrFunc* self) {
     try { return {self->IsClosed(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<gp_Pnt*> GeomFill_SnglrFunc_inherited_Value(const GeomFill_SnglrFunc* self, double theU) {
+    try { return {new gp_Pnt(self->Value(theU)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" const char* GeomFill_SnglrFunc_inherited_D0(const GeomFill_SnglrFunc* self, double theU, gp_Pnt& theP) {
+    try { self->D0(theU, theP); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* GeomFill_SnglrFunc_inherited_D1(const GeomFill_SnglrFunc* self, double theU, gp_Pnt& theP, gp_Vec& theV) {
+    try { self->D1(theU, theP, theV); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* GeomFill_SnglrFunc_inherited_D2(const GeomFill_SnglrFunc* self, double theU, gp_Pnt& theP, gp_Vec& theV1, gp_Vec& theV2) {
+    try { self->D2(theU, theP, theV1, theV2); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* GeomFill_SnglrFunc_inherited_D3(const GeomFill_SnglrFunc* self, double theU, gp_Pnt& theP, gp_Vec& theV1, gp_Vec& theV2, gp_Vec& theV3) {
+    try { self->D3(theU, theP, theV1, theV2, theV3); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" OcctResult<gp_Vec*> GeomFill_SnglrFunc_inherited_DN(const GeomFill_SnglrFunc* self, double theU, int32_t theN) {
+    try { return {new gp_Vec(self->DN(theU, theN)), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<gp_Lin*> GeomFill_SnglrFunc_inherited_Line(const GeomFill_SnglrFunc* self) {
@@ -12141,19 +11401,19 @@ extern "C" OcctResult<GeomFill_Stretch*> GeomFill_Stretch_ctor() {
     try { return {new GeomFill_Stretch(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<GeomFill_Stretch*> GeomFill_Stretch_ctor_array1ofpnt4(TColgp_Array1OfPnt const* P1, TColgp_Array1OfPnt const* P2, TColgp_Array1OfPnt const* P3, TColgp_Array1OfPnt const* P4) {
+extern "C" OcctResult<GeomFill_Stretch*> GeomFill_Stretch_ctor_arr1_pnt4(NCollection_Array1_gp_Pnt const* P1, NCollection_Array1_gp_Pnt const* P2, NCollection_Array1_gp_Pnt const* P3, NCollection_Array1_gp_Pnt const* P4) {
     try { return {new GeomFill_Stretch(*P1, *P2, *P3, *P4), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<GeomFill_Stretch*> GeomFill_Stretch_ctor_array1ofpnt4_array1ofreal4(TColgp_Array1OfPnt const* P1, TColgp_Array1OfPnt const* P2, TColgp_Array1OfPnt const* P3, TColgp_Array1OfPnt const* P4, TColStd_Array1OfReal const* W1, TColStd_Array1OfReal const* W2, TColStd_Array1OfReal const* W3, TColStd_Array1OfReal const* W4) {
+extern "C" OcctResult<GeomFill_Stretch*> GeomFill_Stretch_ctor_arr1_pnt4_arr1_double4(NCollection_Array1_gp_Pnt const* P1, NCollection_Array1_gp_Pnt const* P2, NCollection_Array1_gp_Pnt const* P3, NCollection_Array1_gp_Pnt const* P4, NCollection_Array1_double const* W1, NCollection_Array1_double const* W2, NCollection_Array1_double const* W3, NCollection_Array1_double const* W4) {
     try { return {new GeomFill_Stretch(*P1, *P2, *P3, *P4, *W1, *W2, *W3, *W4), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* GeomFill_Stretch_init_array1ofpnt4(GeomFill_Stretch* self_, TColgp_Array1OfPnt const* P1, TColgp_Array1OfPnt const* P2, TColgp_Array1OfPnt const* P3, TColgp_Array1OfPnt const* P4) {
+extern "C" const char* GeomFill_Stretch_init_arr1_pnt4(GeomFill_Stretch* self_, NCollection_Array1_gp_Pnt const* P1, NCollection_Array1_gp_Pnt const* P2, NCollection_Array1_gp_Pnt const* P3, NCollection_Array1_gp_Pnt const* P4) {
     try { self_->Init(*P1, *P2, *P3, *P4); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* GeomFill_Stretch_init_array1ofpnt4_array1ofreal4(GeomFill_Stretch* self_, TColgp_Array1OfPnt const* P1, TColgp_Array1OfPnt const* P2, TColgp_Array1OfPnt const* P3, TColgp_Array1OfPnt const* P4, TColStd_Array1OfReal const* W1, TColStd_Array1OfReal const* W2, TColStd_Array1OfReal const* W3, TColStd_Array1OfReal const* W4) {
+extern "C" const char* GeomFill_Stretch_init_arr1_pnt4_arr1_double4(GeomFill_Stretch* self_, NCollection_Array1_gp_Pnt const* P1, NCollection_Array1_gp_Pnt const* P2, NCollection_Array1_gp_Pnt const* P3, NCollection_Array1_gp_Pnt const* P4, NCollection_Array1_double const* W1, NCollection_Array1_double const* W2, NCollection_Array1_double const* W3, NCollection_Array1_double const* W4) {
     try { self_->Init(*P1, *P2, *P3, *P4, *W1, *W2, *W3, *W4); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -12167,7 +11427,7 @@ extern "C" OcctResult<int32_t> GeomFill_Stretch_inherited_NbVPoles(const GeomFil
     try { return {self->NbVPoles(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* GeomFill_Stretch_inherited_Poles(const GeomFill_Stretch* self, TColgp_Array2OfPnt& Poles) {
+extern "C" const char* GeomFill_Stretch_inherited_Poles(const GeomFill_Stretch* self, NCollection_Array2_gp_Pnt& Poles) {
     try { self->Poles(Poles); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -12175,7 +11435,7 @@ extern "C" OcctResult<bool> GeomFill_Stretch_inherited_isRational(const GeomFill
     try { return {self->isRational(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* GeomFill_Stretch_inherited_Weights(const GeomFill_Stretch* self, TColStd_Array2OfReal& Weights) {
+extern "C" const char* GeomFill_Stretch_inherited_Weights(const GeomFill_Stretch* self, NCollection_Array2_double& Weights) {
     try { self->Weights(Weights); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -12263,15 +11523,15 @@ extern "C" OcctResult<gp_Pnt*> GeomFill_SweepFunction_barycentre_of_surf(const G
     try { return {new gp_Pnt(self_->BarycentreOfSurf()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<bool> GeomFill_SweepFunction_d0(GeomFill_SweepFunction* self_, double Param, double First, double Last, TColgp_Array1OfPnt* Poles, TColgp_Array1OfPnt2d* Poles2d, TColStd_Array1OfReal* Weigths) {
+extern "C" OcctResult<bool> GeomFill_SweepFunction_d0(GeomFill_SweepFunction* self_, double Param, double First, double Last, NCollection_Array1_gp_Pnt* Poles, NCollection_Array1_gp_Pnt2d* Poles2d, NCollection_Array1_double* Weigths) {
     try { return {self_->D0(Param, First, Last, *Poles, *Poles2d, *Weigths), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<bool> GeomFill_SweepFunction_d1(GeomFill_SweepFunction* self_, double Param, double First, double Last, TColgp_Array1OfPnt* Poles, TColgp_Array1OfVec* DPoles, TColgp_Array1OfPnt2d* Poles2d, TColgp_Array1OfVec2d* DPoles2d, TColStd_Array1OfReal* Weigths, TColStd_Array1OfReal* DWeigths) {
+extern "C" OcctResult<bool> GeomFill_SweepFunction_d1(GeomFill_SweepFunction* self_, double Param, double First, double Last, NCollection_Array1_gp_Pnt* Poles, NCollection_Array1_gp_Vec* DPoles, NCollection_Array1_gp_Pnt2d* Poles2d, NCollection_Array1_gp_Vec2d* DPoles2d, NCollection_Array1_double* Weigths, NCollection_Array1_double* DWeigths) {
     try { return {self_->D1(Param, First, Last, *Poles, *DPoles, *Poles2d, *DPoles2d, *Weigths, *DWeigths), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<bool> GeomFill_SweepFunction_d2(GeomFill_SweepFunction* self_, double Param, double First, double Last, TColgp_Array1OfPnt* Poles, TColgp_Array1OfVec* DPoles, TColgp_Array1OfVec* D2Poles, TColgp_Array1OfPnt2d* Poles2d, TColgp_Array1OfVec2d* DPoles2d, TColgp_Array1OfVec2d* D2Poles2d, TColStd_Array1OfReal* Weigths, TColStd_Array1OfReal* DWeigths, TColStd_Array1OfReal* D2Weigths) {
+extern "C" OcctResult<bool> GeomFill_SweepFunction_d2(GeomFill_SweepFunction* self_, double Param, double First, double Last, NCollection_Array1_gp_Pnt* Poles, NCollection_Array1_gp_Vec* DPoles, NCollection_Array1_gp_Vec* D2Poles, NCollection_Array1_gp_Pnt2d* Poles2d, NCollection_Array1_gp_Vec2d* DPoles2d, NCollection_Array1_gp_Vec2d* D2Poles2d, NCollection_Array1_double* Weigths, NCollection_Array1_double* DWeigths, NCollection_Array1_double* D2Weigths) {
     try { return {self_->D2(Param, First, Last, *Poles, *DPoles, *D2Poles, *Poles2d, *DPoles2d, *D2Poles2d, *Weigths, *DWeigths, *D2Weigths), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -12283,11 +11543,11 @@ extern "C" const char* GeomFill_SweepFunction_section_shape(const GeomFill_Sweep
     try { self_->SectionShape(*NbPoles, *NbKnots, *Degree); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* GeomFill_SweepFunction_knots(const GeomFill_SweepFunction* self_, TColStd_Array1OfReal* TKnots) {
+extern "C" const char* GeomFill_SweepFunction_knots(const GeomFill_SweepFunction* self_, NCollection_Array1_double* TKnots) {
     try { self_->Knots(*TKnots); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* GeomFill_SweepFunction_mults(const GeomFill_SweepFunction* self_, TColStd_Array1OfInteger* TMults) {
+extern "C" const char* GeomFill_SweepFunction_mults(const GeomFill_SweepFunction* self_, NCollection_Array1_int* TMults) {
     try { self_->Mults(*TMults); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -12299,7 +11559,7 @@ extern "C" OcctResult<int32_t> GeomFill_SweepFunction_nb_intervals(const GeomFil
     try { return {self_->NbIntervals(static_cast<GeomAbs_Shape>(S)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* GeomFill_SweepFunction_intervals(const GeomFill_SweepFunction* self_, TColStd_Array1OfReal* T, int32_t S) {
+extern "C" const char* GeomFill_SweepFunction_intervals(const GeomFill_SweepFunction* self_, NCollection_Array1_double* T, int32_t S) {
     try { self_->Intervals(*T, static_cast<GeomAbs_Shape>(S)); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -12311,7 +11571,7 @@ extern "C" const char* GeomFill_SweepFunction_resolution(const GeomFill_SweepFun
     try { self_->Resolution(Index, Tol, *TolU, *TolV); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* GeomFill_SweepFunction_get_tolerance(const GeomFill_SweepFunction* self_, double BoundTol, double SurfTol, double AngleTol, TColStd_Array1OfReal* Tol3d) {
+extern "C" const char* GeomFill_SweepFunction_get_tolerance(const GeomFill_SweepFunction* self_, double BoundTol, double SurfTol, double AngleTol, NCollection_Array1_double* Tol3d) {
     try { self_->GetTolerance(BoundTol, SurfTol, AngleTol, *Tol3d); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -12323,7 +11583,7 @@ extern "C" OcctResult<double> GeomFill_SweepFunction_maximal_section(const GeomF
     try { return {self_->MaximalSection(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* GeomFill_SweepFunction_get_minimal_weight(const GeomFill_SweepFunction* self_, TColStd_Array1OfReal* Weigths) {
+extern "C" const char* GeomFill_SweepFunction_get_minimal_weight(const GeomFill_SweepFunction* self_, NCollection_Array1_double* Weigths) {
     try { self_->GetMinimalWeight(*Weigths); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -12343,24 +11603,24 @@ extern "C" OcctResult<const Approx_SweepFunction*> GeomFill_SweepFunction_as_App
 extern "C" OcctResult<Approx_SweepFunction*> GeomFill_SweepFunction_as_Approx_SweepFunction_mut(GeomFill_SweepFunction* self_) { return {static_cast<Approx_SweepFunction*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> GeomFill_SweepFunction_as_Standard_Transient(const GeomFill_SweepFunction* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> GeomFill_SweepFunction_as_Standard_Transient_mut(GeomFill_SweepFunction* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleGeomFillSweepFunction*> GeomFill_SweepFunction_to_handle(GeomFill_SweepFunction* obj) {
-    try { return {new HandleGeomFillSweepFunction(obj), nullptr}; }
+extern "C" OcctResult<Handle_GeomFill_SweepFunction*> GeomFill_SweepFunction_to_handle(GeomFill_SweepFunction* obj) {
+    try { return {new Handle_GeomFill_SweepFunction(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const GeomFill_SweepFunction*> HandleGeomFillSweepFunction_get(const HandleGeomFillSweepFunction* handle) {
+extern "C" OcctResult<const GeomFill_SweepFunction*> Handle_GeomFill_SweepFunction_get(const Handle_GeomFill_SweepFunction* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<GeomFill_SweepFunction*> HandleGeomFillSweepFunction_get_mut(HandleGeomFillSweepFunction* handle) {
+extern "C" OcctResult<GeomFill_SweepFunction*> Handle_GeomFill_SweepFunction_get_mut(Handle_GeomFill_SweepFunction* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleApproxSweepFunction*> HandleGeomFillSweepFunction_to_HandleApproxSweepFunction(const HandleGeomFillSweepFunction* self_) {
-    try { return {new HandleApproxSweepFunction(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Approx_SweepFunction*> Handle_GeomFill_SweepFunction_to_Handle_Approx_SweepFunction(const Handle_GeomFill_SweepFunction* self_) {
+    try { return {new Handle_Approx_SweepFunction(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleGeomFillSweepFunction_to_HandleStandardTransient(const HandleGeomFillSweepFunction* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_GeomFill_SweepFunction_to_Handle_Standard_Transient(const Handle_GeomFill_SweepFunction* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> GeomFill_SweepFunction_inherited_IsInstance(const GeomFill_SweepFunction* self, Handle(Standard_Type) const& theType) {
@@ -12449,11 +11709,11 @@ extern "C" const char* GeomFill_SweepSectionGenerator_get_shape(const GeomFill_S
     try { self_->GetShape(*NbPoles, *NbKnots, *Degree, *NbPoles2d); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* GeomFill_SweepSectionGenerator_knots(const GeomFill_SweepSectionGenerator* self_, TColStd_Array1OfReal* TKnots) {
+extern "C" const char* GeomFill_SweepSectionGenerator_knots(const GeomFill_SweepSectionGenerator* self_, NCollection_Array1_double* TKnots) {
     try { self_->Knots(*TKnots); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* GeomFill_SweepSectionGenerator_mults(const GeomFill_SweepSectionGenerator* self_, TColStd_Array1OfInteger* TMults) {
+extern "C" const char* GeomFill_SweepSectionGenerator_mults(const GeomFill_SweepSectionGenerator* self_, NCollection_Array1_int* TMults) {
     try { self_->Mults(*TMults); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -12461,11 +11721,11 @@ extern "C" OcctResult<int32_t> GeomFill_SweepSectionGenerator_nb_sections(const 
     try { return {self_->NbSections(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<bool> GeomFill_SweepSectionGenerator_section_int_array1ofpnt_array1ofvec_array1ofpnt2d_array1ofvec2d_array1ofreal2(const GeomFill_SweepSectionGenerator* self_, int32_t P, TColgp_Array1OfPnt* Poles, TColgp_Array1OfVec* DPoles, TColgp_Array1OfPnt2d* Poles2d, TColgp_Array1OfVec2d* DPoles2d, TColStd_Array1OfReal* Weigths, TColStd_Array1OfReal* DWeigths) {
+extern "C" OcctResult<bool> GeomFill_SweepSectionGenerator_section_int_arr1_pnt_arr1_vec_arr1_pnt2d_arr1_vec2d_arr1_double2(const GeomFill_SweepSectionGenerator* self_, int32_t P, NCollection_Array1_gp_Pnt* Poles, NCollection_Array1_gp_Vec* DPoles, NCollection_Array1_gp_Pnt2d* Poles2d, NCollection_Array1_gp_Vec2d* DPoles2d, NCollection_Array1_double* Weigths, NCollection_Array1_double* DWeigths) {
     try { return {self_->Section(P, *Poles, *DPoles, *Poles2d, *DPoles2d, *Weigths, *DWeigths), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* GeomFill_SweepSectionGenerator_section_int_array1ofpnt_array1ofpnt2d_array1ofreal(const GeomFill_SweepSectionGenerator* self_, int32_t P, TColgp_Array1OfPnt* Poles, TColgp_Array1OfPnt2d* Poles2d, TColStd_Array1OfReal* Weigths) {
+extern "C" const char* GeomFill_SweepSectionGenerator_section_int_arr1_pnt_arr1_pnt2d_arr1_double(const GeomFill_SweepSectionGenerator* self_, int32_t P, NCollection_Array1_gp_Pnt* Poles, NCollection_Array1_gp_Pnt2d* Poles2d, NCollection_Array1_double* Weigths) {
     try { self_->Section(P, *Poles, *Poles2d, *Weigths); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -12543,23 +11803,23 @@ extern "C" OcctResult<Handle(Standard_Type) const*> GeomFill_TgtField_get_type_d
 }
 extern "C" OcctResult<const Standard_Transient*> GeomFill_TgtField_as_Standard_Transient(const GeomFill_TgtField* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> GeomFill_TgtField_as_Standard_Transient_mut(GeomFill_TgtField* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<const GeomFill_TgtField*> HandleGeomFillTgtField_get(const HandleGeomFillTgtField* handle) {
+extern "C" OcctResult<const GeomFill_TgtField*> Handle_GeomFill_TgtField_get(const Handle_GeomFill_TgtField* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<GeomFill_TgtField*> HandleGeomFillTgtField_get_mut(HandleGeomFillTgtField* handle) {
+extern "C" OcctResult<GeomFill_TgtField*> Handle_GeomFill_TgtField_get_mut(Handle_GeomFill_TgtField* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleGeomFillTgtField_to_HandleStandardTransient(const HandleGeomFillTgtField* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_GeomFill_TgtField_to_Handle_Standard_Transient(const Handle_GeomFill_TgtField* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleGeomFillTgtOnCoons*> HandleGeomFillTgtField_downcast_to_HandleGeomFillTgtOnCoons(const HandleGeomFillTgtField* self_) {
+extern "C" OcctResult<Handle_GeomFill_TgtOnCoons*> Handle_GeomFill_TgtField_downcast_to_Handle_GeomFill_TgtOnCoons(const Handle_GeomFill_TgtField* self_) {
     try {
     opencascade::handle<GeomFill_TgtOnCoons> result = opencascade::handle<GeomFill_TgtOnCoons>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleGeomFillTgtOnCoons(result), nullptr};
+    return {new Handle_GeomFill_TgtOnCoons(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
@@ -12629,24 +11889,24 @@ extern "C" OcctResult<const GeomFill_TgtField*> GeomFill_TgtOnCoons_as_GeomFill_
 extern "C" OcctResult<GeomFill_TgtField*> GeomFill_TgtOnCoons_as_GeomFill_TgtField_mut(GeomFill_TgtOnCoons* self_) { return {static_cast<GeomFill_TgtField*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> GeomFill_TgtOnCoons_as_Standard_Transient(const GeomFill_TgtOnCoons* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> GeomFill_TgtOnCoons_as_Standard_Transient_mut(GeomFill_TgtOnCoons* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleGeomFillTgtOnCoons*> GeomFill_TgtOnCoons_to_handle(GeomFill_TgtOnCoons* obj) {
-    try { return {new HandleGeomFillTgtOnCoons(obj), nullptr}; }
+extern "C" OcctResult<Handle_GeomFill_TgtOnCoons*> GeomFill_TgtOnCoons_to_handle(GeomFill_TgtOnCoons* obj) {
+    try { return {new Handle_GeomFill_TgtOnCoons(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const GeomFill_TgtOnCoons*> HandleGeomFillTgtOnCoons_get(const HandleGeomFillTgtOnCoons* handle) {
+extern "C" OcctResult<const GeomFill_TgtOnCoons*> Handle_GeomFill_TgtOnCoons_get(const Handle_GeomFill_TgtOnCoons* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<GeomFill_TgtOnCoons*> HandleGeomFillTgtOnCoons_get_mut(HandleGeomFillTgtOnCoons* handle) {
+extern "C" OcctResult<GeomFill_TgtOnCoons*> Handle_GeomFill_TgtOnCoons_get_mut(Handle_GeomFill_TgtOnCoons* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleGeomFillTgtField*> HandleGeomFillTgtOnCoons_to_HandleGeomFillTgtField(const HandleGeomFillTgtOnCoons* self_) {
-    try { return {new HandleGeomFillTgtField(*self_), nullptr}; }
+extern "C" OcctResult<Handle_GeomFill_TgtField*> Handle_GeomFill_TgtOnCoons_to_Handle_GeomFill_TgtField(const Handle_GeomFill_TgtOnCoons* self_) {
+    try { return {new Handle_GeomFill_TgtField(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleGeomFillTgtOnCoons_to_HandleStandardTransient(const HandleGeomFillTgtOnCoons* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_GeomFill_TgtOnCoons_to_Handle_Standard_Transient(const Handle_GeomFill_TgtOnCoons* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> GeomFill_TgtOnCoons_inherited_IsScalable(const GeomFill_TgtOnCoons* self) {
@@ -12719,7 +11979,7 @@ extern "C" OcctResult<int32_t> GeomFill_TrihedronLaw_nb_intervals(const GeomFill
     try { return {self_->NbIntervals(static_cast<GeomAbs_Shape>(S)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* GeomFill_TrihedronLaw_intervals(const GeomFill_TrihedronLaw* self_, TColStd_Array1OfReal* T, int32_t S) {
+extern "C" const char* GeomFill_TrihedronLaw_intervals(const GeomFill_TrihedronLaw* self_, NCollection_Array1_double* T, int32_t S) {
     try { self_->Intervals(*T, static_cast<GeomAbs_Shape>(S)); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -12757,87 +12017,87 @@ extern "C" OcctResult<Handle(Standard_Type) const*> GeomFill_TrihedronLaw_get_ty
 }
 extern "C" OcctResult<const Standard_Transient*> GeomFill_TrihedronLaw_as_Standard_Transient(const GeomFill_TrihedronLaw* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> GeomFill_TrihedronLaw_as_Standard_Transient_mut(GeomFill_TrihedronLaw* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<const GeomFill_TrihedronLaw*> HandleGeomFillTrihedronLaw_get(const HandleGeomFillTrihedronLaw* handle) {
+extern "C" OcctResult<const GeomFill_TrihedronLaw*> Handle_GeomFill_TrihedronLaw_get(const Handle_GeomFill_TrihedronLaw* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<GeomFill_TrihedronLaw*> HandleGeomFillTrihedronLaw_get_mut(HandleGeomFillTrihedronLaw* handle) {
+extern "C" OcctResult<GeomFill_TrihedronLaw*> Handle_GeomFill_TrihedronLaw_get_mut(Handle_GeomFill_TrihedronLaw* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleGeomFillTrihedronLaw_to_HandleStandardTransient(const HandleGeomFillTrihedronLaw* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_GeomFill_TrihedronLaw_to_Handle_Standard_Transient(const Handle_GeomFill_TrihedronLaw* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleGeomFillConstantBiNormal*> HandleGeomFillTrihedronLaw_downcast_to_HandleGeomFillConstantBiNormal(const HandleGeomFillTrihedronLaw* self_) {
+extern "C" OcctResult<Handle_GeomFill_ConstantBiNormal*> Handle_GeomFill_TrihedronLaw_downcast_to_Handle_GeomFill_ConstantBiNormal(const Handle_GeomFill_TrihedronLaw* self_) {
     try {
     opencascade::handle<GeomFill_ConstantBiNormal> result = opencascade::handle<GeomFill_ConstantBiNormal>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleGeomFillConstantBiNormal(result), nullptr};
+    return {new Handle_GeomFill_ConstantBiNormal(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleGeomFillCorrectedFrenet*> HandleGeomFillTrihedronLaw_downcast_to_HandleGeomFillCorrectedFrenet(const HandleGeomFillTrihedronLaw* self_) {
+extern "C" OcctResult<Handle_GeomFill_CorrectedFrenet*> Handle_GeomFill_TrihedronLaw_downcast_to_Handle_GeomFill_CorrectedFrenet(const Handle_GeomFill_TrihedronLaw* self_) {
     try {
     opencascade::handle<GeomFill_CorrectedFrenet> result = opencascade::handle<GeomFill_CorrectedFrenet>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleGeomFillCorrectedFrenet(result), nullptr};
+    return {new Handle_GeomFill_CorrectedFrenet(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleGeomFillDarboux*> HandleGeomFillTrihedronLaw_downcast_to_HandleGeomFillDarboux(const HandleGeomFillTrihedronLaw* self_) {
+extern "C" OcctResult<Handle_GeomFill_Darboux*> Handle_GeomFill_TrihedronLaw_downcast_to_Handle_GeomFill_Darboux(const Handle_GeomFill_TrihedronLaw* self_) {
     try {
     opencascade::handle<GeomFill_Darboux> result = opencascade::handle<GeomFill_Darboux>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleGeomFillDarboux(result), nullptr};
+    return {new Handle_GeomFill_Darboux(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleGeomFillDiscreteTrihedron*> HandleGeomFillTrihedronLaw_downcast_to_HandleGeomFillDiscreteTrihedron(const HandleGeomFillTrihedronLaw* self_) {
+extern "C" OcctResult<Handle_GeomFill_DiscreteTrihedron*> Handle_GeomFill_TrihedronLaw_downcast_to_Handle_GeomFill_DiscreteTrihedron(const Handle_GeomFill_TrihedronLaw* self_) {
     try {
     opencascade::handle<GeomFill_DiscreteTrihedron> result = opencascade::handle<GeomFill_DiscreteTrihedron>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleGeomFillDiscreteTrihedron(result), nullptr};
+    return {new Handle_GeomFill_DiscreteTrihedron(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleGeomFillDraftTrihedron*> HandleGeomFillTrihedronLaw_downcast_to_HandleGeomFillDraftTrihedron(const HandleGeomFillTrihedronLaw* self_) {
+extern "C" OcctResult<Handle_GeomFill_DraftTrihedron*> Handle_GeomFill_TrihedronLaw_downcast_to_Handle_GeomFill_DraftTrihedron(const Handle_GeomFill_TrihedronLaw* self_) {
     try {
     opencascade::handle<GeomFill_DraftTrihedron> result = opencascade::handle<GeomFill_DraftTrihedron>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleGeomFillDraftTrihedron(result), nullptr};
+    return {new Handle_GeomFill_DraftTrihedron(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleGeomFillFixed*> HandleGeomFillTrihedronLaw_downcast_to_HandleGeomFillFixed(const HandleGeomFillTrihedronLaw* self_) {
+extern "C" OcctResult<Handle_GeomFill_Fixed*> Handle_GeomFill_TrihedronLaw_downcast_to_Handle_GeomFill_Fixed(const Handle_GeomFill_TrihedronLaw* self_) {
     try {
     opencascade::handle<GeomFill_Fixed> result = opencascade::handle<GeomFill_Fixed>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleGeomFillFixed(result), nullptr};
+    return {new Handle_GeomFill_Fixed(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleGeomFillFrenet*> HandleGeomFillTrihedronLaw_downcast_to_HandleGeomFillFrenet(const HandleGeomFillTrihedronLaw* self_) {
+extern "C" OcctResult<Handle_GeomFill_Frenet*> Handle_GeomFill_TrihedronLaw_downcast_to_Handle_GeomFill_Frenet(const Handle_GeomFill_TrihedronLaw* self_) {
     try {
     opencascade::handle<GeomFill_Frenet> result = opencascade::handle<GeomFill_Frenet>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleGeomFillFrenet(result), nullptr};
+    return {new Handle_GeomFill_Frenet(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleGeomFillGuideTrihedronAC*> HandleGeomFillTrihedronLaw_downcast_to_HandleGeomFillGuideTrihedronAC(const HandleGeomFillTrihedronLaw* self_) {
+extern "C" OcctResult<Handle_GeomFill_GuideTrihedronAC*> Handle_GeomFill_TrihedronLaw_downcast_to_Handle_GeomFill_GuideTrihedronAC(const Handle_GeomFill_TrihedronLaw* self_) {
     try {
     opencascade::handle<GeomFill_GuideTrihedronAC> result = opencascade::handle<GeomFill_GuideTrihedronAC>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleGeomFillGuideTrihedronAC(result), nullptr};
+    return {new Handle_GeomFill_GuideTrihedronAC(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleGeomFillGuideTrihedronPlan*> HandleGeomFillTrihedronLaw_downcast_to_HandleGeomFillGuideTrihedronPlan(const HandleGeomFillTrihedronLaw* self_) {
+extern "C" OcctResult<Handle_GeomFill_GuideTrihedronPlan*> Handle_GeomFill_TrihedronLaw_downcast_to_Handle_GeomFill_GuideTrihedronPlan(const Handle_GeomFill_TrihedronLaw* self_) {
     try {
     opencascade::handle<GeomFill_GuideTrihedronPlan> result = opencascade::handle<GeomFill_GuideTrihedronPlan>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleGeomFillGuideTrihedronPlan(result), nullptr};
+    return {new Handle_GeomFill_GuideTrihedronPlan(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
@@ -12903,35 +12163,35 @@ extern "C" OcctResult<const GeomFill_TrihedronLaw*> GeomFill_TrihedronWithGuide_
 extern "C" OcctResult<GeomFill_TrihedronLaw*> GeomFill_TrihedronWithGuide_as_GeomFill_TrihedronLaw_mut(GeomFill_TrihedronWithGuide* self_) { return {static_cast<GeomFill_TrihedronLaw*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> GeomFill_TrihedronWithGuide_as_Standard_Transient(const GeomFill_TrihedronWithGuide* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> GeomFill_TrihedronWithGuide_as_Standard_Transient_mut(GeomFill_TrihedronWithGuide* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<const GeomFill_TrihedronWithGuide*> HandleGeomFillTrihedronWithGuide_get(const HandleGeomFillTrihedronWithGuide* handle) {
+extern "C" OcctResult<const GeomFill_TrihedronWithGuide*> Handle_GeomFill_TrihedronWithGuide_get(const Handle_GeomFill_TrihedronWithGuide* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<GeomFill_TrihedronWithGuide*> HandleGeomFillTrihedronWithGuide_get_mut(HandleGeomFillTrihedronWithGuide* handle) {
+extern "C" OcctResult<GeomFill_TrihedronWithGuide*> Handle_GeomFill_TrihedronWithGuide_get_mut(Handle_GeomFill_TrihedronWithGuide* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleGeomFillTrihedronLaw*> HandleGeomFillTrihedronWithGuide_to_HandleGeomFillTrihedronLaw(const HandleGeomFillTrihedronWithGuide* self_) {
-    try { return {new HandleGeomFillTrihedronLaw(*self_), nullptr}; }
+extern "C" OcctResult<Handle_GeomFill_TrihedronLaw*> Handle_GeomFill_TrihedronWithGuide_to_Handle_GeomFill_TrihedronLaw(const Handle_GeomFill_TrihedronWithGuide* self_) {
+    try { return {new Handle_GeomFill_TrihedronLaw(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleGeomFillTrihedronWithGuide_to_HandleStandardTransient(const HandleGeomFillTrihedronWithGuide* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_GeomFill_TrihedronWithGuide_to_Handle_Standard_Transient(const Handle_GeomFill_TrihedronWithGuide* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleGeomFillGuideTrihedronAC*> HandleGeomFillTrihedronWithGuide_downcast_to_HandleGeomFillGuideTrihedronAC(const HandleGeomFillTrihedronWithGuide* self_) {
+extern "C" OcctResult<Handle_GeomFill_GuideTrihedronAC*> Handle_GeomFill_TrihedronWithGuide_downcast_to_Handle_GeomFill_GuideTrihedronAC(const Handle_GeomFill_TrihedronWithGuide* self_) {
     try {
     opencascade::handle<GeomFill_GuideTrihedronAC> result = opencascade::handle<GeomFill_GuideTrihedronAC>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleGeomFillGuideTrihedronAC(result), nullptr};
+    return {new Handle_GeomFill_GuideTrihedronAC(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleGeomFillGuideTrihedronPlan*> HandleGeomFillTrihedronWithGuide_downcast_to_HandleGeomFillGuideTrihedronPlan(const HandleGeomFillTrihedronWithGuide* self_) {
+extern "C" OcctResult<Handle_GeomFill_GuideTrihedronPlan*> Handle_GeomFill_TrihedronWithGuide_downcast_to_Handle_GeomFill_GuideTrihedronPlan(const Handle_GeomFill_TrihedronWithGuide* self_) {
     try {
     opencascade::handle<GeomFill_GuideTrihedronPlan> result = opencascade::handle<GeomFill_GuideTrihedronPlan>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleGeomFillGuideTrihedronPlan(result), nullptr};
+    return {new Handle_GeomFill_GuideTrihedronPlan(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
@@ -12963,7 +12223,7 @@ extern "C" OcctResult<int32_t> GeomFill_TrihedronWithGuide_inherited_NbIntervals
     try { return {self->NbIntervals(static_cast<GeomAbs_Shape>(S)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* GeomFill_TrihedronWithGuide_inherited_Intervals(const GeomFill_TrihedronWithGuide* self, TColStd_Array1OfReal& T, int32_t S) {
+extern "C" const char* GeomFill_TrihedronWithGuide_inherited_Intervals(const GeomFill_TrihedronWithGuide* self, NCollection_Array1_double& T, int32_t S) {
     try { self->Intervals(T, static_cast<GeomAbs_Shape>(S)); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -13037,15 +12297,15 @@ extern "C" OcctResult<Handle(Geom_Curve)*> GeomFill_UniformSection_constant_sect
     try { return {new Handle(Geom_Curve)(self_->ConstantSection()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<bool> GeomFill_UniformSection_d0(GeomFill_UniformSection* self_, double Param, TColgp_Array1OfPnt* Poles, TColStd_Array1OfReal* Weigths) {
+extern "C" OcctResult<bool> GeomFill_UniformSection_d0(GeomFill_UniformSection* self_, double Param, NCollection_Array1_gp_Pnt* Poles, NCollection_Array1_double* Weigths) {
     try { return {self_->D0(Param, *Poles, *Weigths), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<bool> GeomFill_UniformSection_d1(GeomFill_UniformSection* self_, double Param, TColgp_Array1OfPnt* Poles, TColgp_Array1OfVec* DPoles, TColStd_Array1OfReal* Weigths, TColStd_Array1OfReal* DWeigths) {
+extern "C" OcctResult<bool> GeomFill_UniformSection_d1(GeomFill_UniformSection* self_, double Param, NCollection_Array1_gp_Pnt* Poles, NCollection_Array1_gp_Vec* DPoles, NCollection_Array1_double* Weigths, NCollection_Array1_double* DWeigths) {
     try { return {self_->D1(Param, *Poles, *DPoles, *Weigths, *DWeigths), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<bool> GeomFill_UniformSection_d2(GeomFill_UniformSection* self_, double Param, TColgp_Array1OfPnt* Poles, TColgp_Array1OfVec* DPoles, TColgp_Array1OfVec* D2Poles, TColStd_Array1OfReal* Weigths, TColStd_Array1OfReal* DWeigths, TColStd_Array1OfReal* D2Weigths) {
+extern "C" OcctResult<bool> GeomFill_UniformSection_d2(GeomFill_UniformSection* self_, double Param, NCollection_Array1_gp_Pnt* Poles, NCollection_Array1_gp_Vec* DPoles, NCollection_Array1_gp_Vec* D2Poles, NCollection_Array1_double* Weigths, NCollection_Array1_double* DWeigths, NCollection_Array1_double* D2Weigths) {
     try { return {self_->D2(Param, *Poles, *DPoles, *D2Poles, *Weigths, *DWeigths, *D2Weigths), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -13053,11 +12313,11 @@ extern "C" const char* GeomFill_UniformSection_section_shape(const GeomFill_Unif
     try { self_->SectionShape(*NbPoles, *NbKnots, *Degree); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* GeomFill_UniformSection_knots(const GeomFill_UniformSection* self_, TColStd_Array1OfReal* TKnots) {
+extern "C" const char* GeomFill_UniformSection_knots(const GeomFill_UniformSection* self_, NCollection_Array1_double* TKnots) {
     try { self_->Knots(*TKnots); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* GeomFill_UniformSection_mults(const GeomFill_UniformSection* self_, TColStd_Array1OfInteger* TMults) {
+extern "C" const char* GeomFill_UniformSection_mults(const GeomFill_UniformSection* self_, NCollection_Array1_int* TMults) {
     try { self_->Mults(*TMults); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -13077,7 +12337,7 @@ extern "C" OcctResult<int32_t> GeomFill_UniformSection_nb_intervals(const GeomFi
     try { return {self_->NbIntervals(static_cast<GeomAbs_Shape>(S)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* GeomFill_UniformSection_intervals(const GeomFill_UniformSection* self_, TColStd_Array1OfReal* T, int32_t S) {
+extern "C" const char* GeomFill_UniformSection_intervals(const GeomFill_UniformSection* self_, NCollection_Array1_double* T, int32_t S) {
     try { self_->Intervals(*T, static_cast<GeomAbs_Shape>(S)); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -13093,7 +12353,7 @@ extern "C" const char* GeomFill_UniformSection_get_domain(const GeomFill_Uniform
     try { self_->GetDomain(*First, *Last); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* GeomFill_UniformSection_get_tolerance(const GeomFill_UniformSection* self_, double BoundTol, double SurfTol, double AngleTol, TColStd_Array1OfReal* Tol3d) {
+extern "C" const char* GeomFill_UniformSection_get_tolerance(const GeomFill_UniformSection* self_, double BoundTol, double SurfTol, double AngleTol, NCollection_Array1_double* Tol3d) {
     try { self_->GetTolerance(BoundTol, SurfTol, AngleTol, *Tol3d); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -13101,7 +12361,7 @@ extern "C" OcctResult<double> GeomFill_UniformSection_maximal_section(const Geom
     try { return {self_->MaximalSection(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* GeomFill_UniformSection_get_minimal_weight(const GeomFill_UniformSection* self_, TColStd_Array1OfReal* Weigths) {
+extern "C" const char* GeomFill_UniformSection_get_minimal_weight(const GeomFill_UniformSection* self_, NCollection_Array1_double* Weigths) {
     try { self_->GetMinimalWeight(*Weigths); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -13125,24 +12385,24 @@ extern "C" OcctResult<const GeomFill_SectionLaw*> GeomFill_UniformSection_as_Geo
 extern "C" OcctResult<GeomFill_SectionLaw*> GeomFill_UniformSection_as_GeomFill_SectionLaw_mut(GeomFill_UniformSection* self_) { return {static_cast<GeomFill_SectionLaw*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> GeomFill_UniformSection_as_Standard_Transient(const GeomFill_UniformSection* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> GeomFill_UniformSection_as_Standard_Transient_mut(GeomFill_UniformSection* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleGeomFillUniformSection*> GeomFill_UniformSection_to_handle(GeomFill_UniformSection* obj) {
-    try { return {new HandleGeomFillUniformSection(obj), nullptr}; }
+extern "C" OcctResult<Handle_GeomFill_UniformSection*> GeomFill_UniformSection_to_handle(GeomFill_UniformSection* obj) {
+    try { return {new Handle_GeomFill_UniformSection(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const GeomFill_UniformSection*> HandleGeomFillUniformSection_get(const HandleGeomFillUniformSection* handle) {
+extern "C" OcctResult<const GeomFill_UniformSection*> Handle_GeomFill_UniformSection_get(const Handle_GeomFill_UniformSection* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<GeomFill_UniformSection*> HandleGeomFillUniformSection_get_mut(HandleGeomFillUniformSection* handle) {
+extern "C" OcctResult<GeomFill_UniformSection*> Handle_GeomFill_UniformSection_get_mut(Handle_GeomFill_UniformSection* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleGeomFillSectionLaw*> HandleGeomFillUniformSection_to_HandleGeomFillSectionLaw(const HandleGeomFillUniformSection* self_) {
-    try { return {new HandleGeomFillSectionLaw(*self_), nullptr}; }
+extern "C" OcctResult<Handle_GeomFill_SectionLaw*> Handle_GeomFill_UniformSection_to_Handle_GeomFill_SectionLaw(const Handle_GeomFill_UniformSection* self_) {
+    try { return {new Handle_GeomFill_SectionLaw(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleGeomFillUniformSection_to_HandleStandardTransient(const HandleGeomFillUniformSection* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_GeomFill_UniformSection_to_Handle_Standard_Transient(const Handle_GeomFill_UniformSection* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" const char* GeomFill_UniformSection_inherited_SetTolerance(GeomFill_UniformSection* self, double Tol3d, double Tol2d) {
@@ -13239,7 +12499,7 @@ extern "C" void GeomInt_BSpGradient_BFGSOfMyBSplGradientOfTheComputeLineOfWLAppr
 // GeomInt_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfWLApprox wrappers
 // ========================
 
-extern "C" OcctResult<GeomInt_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfWLApprox*> GeomInt_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfWLApprox_ctor_themultilineofwlapprox_int2_handleappparcurvesharray1ofconstraintcouple_vector_array1ofreal_array1ofinteger_int(GeomInt_TheMultiLineOfWLApprox const* SSP, int32_t FirstPoint, int32_t LastPoint, Handle(AppParCurves_HArray1OfConstraintCouple) const* TheConstraints, math_Vector const* Parameters, TColStd_Array1OfReal const* Knots, TColStd_Array1OfInteger const* Mults, int32_t NbPol) {
+extern "C" OcctResult<GeomInt_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfWLApprox*> GeomInt_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfWLApprox_ctor_themultilineofwlapprox_int2_harr1_constraintcouple_vector_arr1_double_arr1_int_int(GeomInt_TheMultiLineOfWLApprox const* SSP, int32_t FirstPoint, int32_t LastPoint, Handle(NCollection_HArray1_AppParCurves_ConstraintCouple) const* TheConstraints, math_Vector const* Parameters, NCollection_Array1_double const* Knots, NCollection_Array1_int const* Mults, int32_t NbPol) {
     try { return {new GeomInt_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfWLApprox(*SSP, FirstPoint, LastPoint, *TheConstraints, *Parameters, *Knots, *Mults, NbPol), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -13291,11 +12551,11 @@ extern "C" OcctResult<math_IntegerVector const*> GeomInt_BSpParFunctionOfMyBSplG
     try { return {&(self_->Index()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<int32_t> GeomInt_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfWLApprox_first_constraint(const GeomInt_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfWLApprox* self_, Handle(AppParCurves_HArray1OfConstraintCouple) const* TheConstraints, int32_t FirstPoint) {
+extern "C" OcctResult<int32_t> GeomInt_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfWLApprox_first_constraint(const GeomInt_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfWLApprox* self_, Handle(NCollection_HArray1_AppParCurves_ConstraintCouple) const* TheConstraints, int32_t FirstPoint) {
     try { return {static_cast<int32_t>(self_->FirstConstraint(*TheConstraints, FirstPoint)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<int32_t> GeomInt_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfWLApprox_last_constraint(const GeomInt_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfWLApprox* self_, Handle(AppParCurves_HArray1OfConstraintCouple) const* TheConstraints, int32_t LastPoint) {
+extern "C" OcctResult<int32_t> GeomInt_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfWLApprox_last_constraint(const GeomInt_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfWLApprox* self_, Handle(NCollection_HArray1_AppParCurves_ConstraintCouple) const* TheConstraints, int32_t LastPoint) {
     try { return {static_cast<int32_t>(self_->LastConstraint(*TheConstraints, LastPoint)), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -13329,11 +12589,11 @@ extern "C" OcctResult<GeomInt_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineO
     try { return {new GeomInt_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfWLApprox(*SSP, FirstPoint, LastPoint, static_cast<AppParCurves_Constraint>(FirstCons), static_cast<AppParCurves_Constraint>(LastCons), NbPol), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<GeomInt_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfWLApprox*> GeomInt_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfWLApprox_ctor_themultilineofwlapprox_array1ofreal_array1ofinteger_int2_constraint2_vector_int(GeomInt_TheMultiLineOfWLApprox const* SSP, TColStd_Array1OfReal const* Knots, TColStd_Array1OfInteger const* Mults, int32_t FirstPoint, int32_t LastPoint, int32_t FirstCons, int32_t LastCons, math_Vector const* Parameters, int32_t NbPol) {
+extern "C" OcctResult<GeomInt_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfWLApprox*> GeomInt_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfWLApprox_ctor_themultilineofwlapprox_arr1_double_arr1_int_int2_constraint2_vector_int(GeomInt_TheMultiLineOfWLApprox const* SSP, NCollection_Array1_double const* Knots, NCollection_Array1_int const* Mults, int32_t FirstPoint, int32_t LastPoint, int32_t FirstCons, int32_t LastCons, math_Vector const* Parameters, int32_t NbPol) {
     try { return {new GeomInt_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfWLApprox(*SSP, *Knots, *Mults, FirstPoint, LastPoint, static_cast<AppParCurves_Constraint>(FirstCons), static_cast<AppParCurves_Constraint>(LastCons), *Parameters, NbPol), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<GeomInt_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfWLApprox*> GeomInt_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfWLApprox_ctor_themultilineofwlapprox_array1ofreal_array1ofinteger_int2_constraint2_int(GeomInt_TheMultiLineOfWLApprox const* SSP, TColStd_Array1OfReal const* Knots, TColStd_Array1OfInteger const* Mults, int32_t FirstPoint, int32_t LastPoint, int32_t FirstCons, int32_t LastCons, int32_t NbPol) {
+extern "C" OcctResult<GeomInt_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfWLApprox*> GeomInt_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfWLApprox_ctor_themultilineofwlapprox_arr1_double_arr1_int_int2_constraint2_int(GeomInt_TheMultiLineOfWLApprox const* SSP, NCollection_Array1_double const* Knots, NCollection_Array1_int const* Mults, int32_t FirstPoint, int32_t LastPoint, int32_t FirstCons, int32_t LastCons, int32_t NbPol) {
     try { return {new GeomInt_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfWLApprox(*SSP, *Knots, *Mults, FirstPoint, LastPoint, static_cast<AppParCurves_Constraint>(FirstCons), static_cast<AppParCurves_Constraint>(LastCons), NbPol), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -13607,7 +12867,7 @@ extern "C" const char* GeomInt_IntSS_build_p_curves_real3_handlegeomsurface_hand
     try { GeomInt_IntSS::BuildPCurves(f, l, *Tol, *S, *C, *C2d); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* GeomInt_IntSS_trim_i_line_on_surf_boundaries(Handle(Geom2d_Curve) const* theC2d1, Handle(Geom2d_Curve) const* theC2d2, Bnd_Box2d const* theBound1, Bnd_Box2d const* theBound2, GeomInt_VectorOfReal* theArrayOfParameters) {
+extern "C" const char* GeomInt_IntSS_trim_i_line_on_surf_boundaries(Handle(Geom2d_Curve) const* theC2d1, Handle(Geom2d_Curve) const* theC2d2, Bnd_Box2d const* theBound1, Bnd_Box2d const* theBound2, NCollection_DynamicArray_double* theArrayOfParameters) {
     try { GeomInt_IntSS::TrimILineOnSurfBoundaries(*theC2d1, *theC2d2, *theBound1, *theBound2, *theArrayOfParameters); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -13675,21 +12935,17 @@ extern "C" OcctResult<double> GeomInt_LineTool_last_parameter(Handle(IntPatch_Li
     try { return {GeomInt_LineTool::LastParameter(*L), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<bool> GeomInt_LineTool_decomposition_of_w_line(Handle(IntPatch_WLine) const* theWLine, Handle(GeomAdaptor_Surface) const* theSurface1, Handle(GeomAdaptor_Surface) const* theSurface2, double aTolSum, GeomInt_LineConstructor const* theLConstructor, IntPatch_SequenceOfLine* theNewLines) {
-    try { return {GeomInt_LineTool::DecompositionOfWLine(*theWLine, *theSurface1, *theSurface2, aTolSum, *theLConstructor, *theNewLines), nullptr}; }
-    OCCT_CATCH_RETURN
-}
 extern "C" void GeomInt_LineTool_destructor(GeomInt_LineTool* self_) { delete self_; }
 
 // ========================
 // GeomInt_MyBSplGradientOfTheComputeLineOfWLApprox wrappers
 // ========================
 
-extern "C" OcctResult<GeomInt_MyBSplGradientOfTheComputeLineOfWLApprox*> GeomInt_MyBSplGradientOfTheComputeLineOfWLApprox_ctor_themultilineofwlapprox_int2_handleappparcurvesharray1ofconstraintcouple_vector_array1ofreal_array1ofinteger_int_real2_int(GeomInt_TheMultiLineOfWLApprox const* SSP, int32_t FirstPoint, int32_t LastPoint, Handle(AppParCurves_HArray1OfConstraintCouple) const* TheConstraints, math_Vector* Parameters, TColStd_Array1OfReal const* Knots, TColStd_Array1OfInteger const* Mults, int32_t Deg, double Tol3d, double Tol2d, int32_t NbIterations) {
+extern "C" OcctResult<GeomInt_MyBSplGradientOfTheComputeLineOfWLApprox*> GeomInt_MyBSplGradientOfTheComputeLineOfWLApprox_ctor_themultilineofwlapprox_int2_harr1_constraintcouple_vector_arr1_double_arr1_int_int_real2_int(GeomInt_TheMultiLineOfWLApprox const* SSP, int32_t FirstPoint, int32_t LastPoint, Handle(NCollection_HArray1_AppParCurves_ConstraintCouple) const* TheConstraints, math_Vector* Parameters, NCollection_Array1_double const* Knots, NCollection_Array1_int const* Mults, int32_t Deg, double Tol3d, double Tol2d, int32_t NbIterations) {
     try { return {new GeomInt_MyBSplGradientOfTheComputeLineOfWLApprox(*SSP, FirstPoint, LastPoint, *TheConstraints, *Parameters, *Knots, *Mults, Deg, Tol3d, Tol2d, NbIterations), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<GeomInt_MyBSplGradientOfTheComputeLineOfWLApprox*> GeomInt_MyBSplGradientOfTheComputeLineOfWLApprox_ctor_themultilineofwlapprox_int2_handleappparcurvesharray1ofconstraintcouple_vector_array1ofreal_array1ofinteger_int_real2_int_real2(GeomInt_TheMultiLineOfWLApprox const* SSP, int32_t FirstPoint, int32_t LastPoint, Handle(AppParCurves_HArray1OfConstraintCouple) const* TheConstraints, math_Vector* Parameters, TColStd_Array1OfReal const* Knots, TColStd_Array1OfInteger const* Mults, int32_t Deg, double Tol3d, double Tol2d, int32_t NbIterations, double lambda1, double lambda2) {
+extern "C" OcctResult<GeomInt_MyBSplGradientOfTheComputeLineOfWLApprox*> GeomInt_MyBSplGradientOfTheComputeLineOfWLApprox_ctor_themultilineofwlapprox_int2_harr1_constraintcouple_vector_arr1_double_arr1_int_int_real2_int_real2(GeomInt_TheMultiLineOfWLApprox const* SSP, int32_t FirstPoint, int32_t LastPoint, Handle(NCollection_HArray1_AppParCurves_ConstraintCouple) const* TheConstraints, math_Vector* Parameters, NCollection_Array1_double const* Knots, NCollection_Array1_int const* Mults, int32_t Deg, double Tol3d, double Tol2d, int32_t NbIterations, double lambda1, double lambda2) {
     try { return {new GeomInt_MyBSplGradientOfTheComputeLineOfWLApprox(*SSP, FirstPoint, LastPoint, *TheConstraints, *Parameters, *Knots, *Mults, Deg, Tol3d, Tol2d, NbIterations, lambda1, lambda2), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -13723,7 +12979,7 @@ extern "C" void GeomInt_MyBSplGradientOfTheComputeLineOfWLApprox_destructor(Geom
 // GeomInt_MyGradientOfTheComputeLineBezierOfWLApprox wrappers
 // ========================
 
-extern "C" OcctResult<GeomInt_MyGradientOfTheComputeLineBezierOfWLApprox*> GeomInt_MyGradientOfTheComputeLineBezierOfWLApprox_ctor_themultilineofwlapprox_int2_handleappparcurvesharray1ofconstraintcouple_vector_int_real2_int(GeomInt_TheMultiLineOfWLApprox const* SSP, int32_t FirstPoint, int32_t LastPoint, Handle(AppParCurves_HArray1OfConstraintCouple) const* TheConstraints, math_Vector* Parameters, int32_t Deg, double Tol3d, double Tol2d, int32_t NbIterations) {
+extern "C" OcctResult<GeomInt_MyGradientOfTheComputeLineBezierOfWLApprox*> GeomInt_MyGradientOfTheComputeLineBezierOfWLApprox_ctor_themultilineofwlapprox_int2_harr1_constraintcouple_vector_int_real2_int(GeomInt_TheMultiLineOfWLApprox const* SSP, int32_t FirstPoint, int32_t LastPoint, Handle(NCollection_HArray1_AppParCurves_ConstraintCouple) const* TheConstraints, math_Vector* Parameters, int32_t Deg, double Tol3d, double Tol2d, int32_t NbIterations) {
     try { return {new GeomInt_MyGradientOfTheComputeLineBezierOfWLApprox(*SSP, FirstPoint, LastPoint, *TheConstraints, *Parameters, Deg, Tol3d, Tol2d, NbIterations), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -13757,7 +13013,7 @@ extern "C" void GeomInt_MyGradientOfTheComputeLineBezierOfWLApprox_destructor(Ge
 // GeomInt_MyGradientbisOfTheComputeLineOfWLApprox wrappers
 // ========================
 
-extern "C" OcctResult<GeomInt_MyGradientbisOfTheComputeLineOfWLApprox*> GeomInt_MyGradientbisOfTheComputeLineOfWLApprox_ctor_themultilineofwlapprox_int2_handleappparcurvesharray1ofconstraintcouple_vector_int_real2_int(GeomInt_TheMultiLineOfWLApprox const* SSP, int32_t FirstPoint, int32_t LastPoint, Handle(AppParCurves_HArray1OfConstraintCouple) const* TheConstraints, math_Vector* Parameters, int32_t Deg, double Tol3d, double Tol2d, int32_t NbIterations) {
+extern "C" OcctResult<GeomInt_MyGradientbisOfTheComputeLineOfWLApprox*> GeomInt_MyGradientbisOfTheComputeLineOfWLApprox_ctor_themultilineofwlapprox_int2_harr1_constraintcouple_vector_int_real2_int(GeomInt_TheMultiLineOfWLApprox const* SSP, int32_t FirstPoint, int32_t LastPoint, Handle(NCollection_HArray1_AppParCurves_ConstraintCouple) const* TheConstraints, math_Vector* Parameters, int32_t Deg, double Tol3d, double Tol2d, int32_t NbIterations) {
     try { return {new GeomInt_MyGradientbisOfTheComputeLineOfWLApprox(*SSP, FirstPoint, LastPoint, *TheConstraints, *Parameters, Deg, Tol3d, Tol2d, NbIterations), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -13791,7 +13047,7 @@ extern "C" void GeomInt_MyGradientbisOfTheComputeLineOfWLApprox_destructor(GeomI
 // GeomInt_ParFunctionOfMyGradientOfTheComputeLineBezierOfWLApprox wrappers
 // ========================
 
-extern "C" OcctResult<GeomInt_ParFunctionOfMyGradientOfTheComputeLineBezierOfWLApprox*> GeomInt_ParFunctionOfMyGradientOfTheComputeLineBezierOfWLApprox_ctor_themultilineofwlapprox_int2_handleappparcurvesharray1ofconstraintcouple_vector_int(GeomInt_TheMultiLineOfWLApprox const* SSP, int32_t FirstPoint, int32_t LastPoint, Handle(AppParCurves_HArray1OfConstraintCouple) const* TheConstraints, math_Vector const* Parameters, int32_t Deg) {
+extern "C" OcctResult<GeomInt_ParFunctionOfMyGradientOfTheComputeLineBezierOfWLApprox*> GeomInt_ParFunctionOfMyGradientOfTheComputeLineBezierOfWLApprox_ctor_themultilineofwlapprox_int2_harr1_constraintcouple_vector_int(GeomInt_TheMultiLineOfWLApprox const* SSP, int32_t FirstPoint, int32_t LastPoint, Handle(NCollection_HArray1_AppParCurves_ConstraintCouple) const* TheConstraints, math_Vector const* Parameters, int32_t Deg) {
     try { return {new GeomInt_ParFunctionOfMyGradientOfTheComputeLineBezierOfWLApprox(*SSP, FirstPoint, LastPoint, *TheConstraints, *Parameters, Deg), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -13831,11 +13087,11 @@ extern "C" OcctResult<double> GeomInt_ParFunctionOfMyGradientOfTheComputeLineBez
     try { return {self_->MaxError2d(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<int32_t> GeomInt_ParFunctionOfMyGradientOfTheComputeLineBezierOfWLApprox_first_constraint(const GeomInt_ParFunctionOfMyGradientOfTheComputeLineBezierOfWLApprox* self_, Handle(AppParCurves_HArray1OfConstraintCouple) const* TheConstraints, int32_t FirstPoint) {
+extern "C" OcctResult<int32_t> GeomInt_ParFunctionOfMyGradientOfTheComputeLineBezierOfWLApprox_first_constraint(const GeomInt_ParFunctionOfMyGradientOfTheComputeLineBezierOfWLApprox* self_, Handle(NCollection_HArray1_AppParCurves_ConstraintCouple) const* TheConstraints, int32_t FirstPoint) {
     try { return {static_cast<int32_t>(self_->FirstConstraint(*TheConstraints, FirstPoint)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<int32_t> GeomInt_ParFunctionOfMyGradientOfTheComputeLineBezierOfWLApprox_last_constraint(const GeomInt_ParFunctionOfMyGradientOfTheComputeLineBezierOfWLApprox* self_, Handle(AppParCurves_HArray1OfConstraintCouple) const* TheConstraints, int32_t LastPoint) {
+extern "C" OcctResult<int32_t> GeomInt_ParFunctionOfMyGradientOfTheComputeLineBezierOfWLApprox_last_constraint(const GeomInt_ParFunctionOfMyGradientOfTheComputeLineBezierOfWLApprox* self_, Handle(NCollection_HArray1_AppParCurves_ConstraintCouple) const* TheConstraints, int32_t LastPoint) {
     try { return {static_cast<int32_t>(self_->LastConstraint(*TheConstraints, LastPoint)), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -13853,7 +13109,7 @@ extern "C" void GeomInt_ParFunctionOfMyGradientOfTheComputeLineBezierOfWLApprox_
 // GeomInt_ParFunctionOfMyGradientbisOfTheComputeLineOfWLApprox wrappers
 // ========================
 
-extern "C" OcctResult<GeomInt_ParFunctionOfMyGradientbisOfTheComputeLineOfWLApprox*> GeomInt_ParFunctionOfMyGradientbisOfTheComputeLineOfWLApprox_ctor_themultilineofwlapprox_int2_handleappparcurvesharray1ofconstraintcouple_vector_int(GeomInt_TheMultiLineOfWLApprox const* SSP, int32_t FirstPoint, int32_t LastPoint, Handle(AppParCurves_HArray1OfConstraintCouple) const* TheConstraints, math_Vector const* Parameters, int32_t Deg) {
+extern "C" OcctResult<GeomInt_ParFunctionOfMyGradientbisOfTheComputeLineOfWLApprox*> GeomInt_ParFunctionOfMyGradientbisOfTheComputeLineOfWLApprox_ctor_themultilineofwlapprox_int2_harr1_constraintcouple_vector_int(GeomInt_TheMultiLineOfWLApprox const* SSP, int32_t FirstPoint, int32_t LastPoint, Handle(NCollection_HArray1_AppParCurves_ConstraintCouple) const* TheConstraints, math_Vector const* Parameters, int32_t Deg) {
     try { return {new GeomInt_ParFunctionOfMyGradientbisOfTheComputeLineOfWLApprox(*SSP, FirstPoint, LastPoint, *TheConstraints, *Parameters, Deg), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -13893,11 +13149,11 @@ extern "C" OcctResult<double> GeomInt_ParFunctionOfMyGradientbisOfTheComputeLine
     try { return {self_->MaxError2d(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<int32_t> GeomInt_ParFunctionOfMyGradientbisOfTheComputeLineOfWLApprox_first_constraint(const GeomInt_ParFunctionOfMyGradientbisOfTheComputeLineOfWLApprox* self_, Handle(AppParCurves_HArray1OfConstraintCouple) const* TheConstraints, int32_t FirstPoint) {
+extern "C" OcctResult<int32_t> GeomInt_ParFunctionOfMyGradientbisOfTheComputeLineOfWLApprox_first_constraint(const GeomInt_ParFunctionOfMyGradientbisOfTheComputeLineOfWLApprox* self_, Handle(NCollection_HArray1_AppParCurves_ConstraintCouple) const* TheConstraints, int32_t FirstPoint) {
     try { return {static_cast<int32_t>(self_->FirstConstraint(*TheConstraints, FirstPoint)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<int32_t> GeomInt_ParFunctionOfMyGradientbisOfTheComputeLineOfWLApprox_last_constraint(const GeomInt_ParFunctionOfMyGradientbisOfTheComputeLineOfWLApprox* self_, Handle(AppParCurves_HArray1OfConstraintCouple) const* TheConstraints, int32_t LastPoint) {
+extern "C" OcctResult<int32_t> GeomInt_ParFunctionOfMyGradientbisOfTheComputeLineOfWLApprox_last_constraint(const GeomInt_ParFunctionOfMyGradientbisOfTheComputeLineOfWLApprox* self_, Handle(NCollection_HArray1_AppParCurves_ConstraintCouple) const* TheConstraints, int32_t LastPoint) {
     try { return {static_cast<int32_t>(self_->LastConstraint(*TheConstraints, LastPoint)), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -13923,11 +13179,11 @@ extern "C" OcctResult<GeomInt_ParLeastSquareOfMyGradientOfTheComputeLineBezierOf
     try { return {new GeomInt_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfWLApprox(*SSP, FirstPoint, LastPoint, static_cast<AppParCurves_Constraint>(FirstCons), static_cast<AppParCurves_Constraint>(LastCons), NbPol), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<GeomInt_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfWLApprox*> GeomInt_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfWLApprox_ctor_themultilineofwlapprox_array1ofreal_array1ofinteger_int2_constraint2_vector_int(GeomInt_TheMultiLineOfWLApprox const* SSP, TColStd_Array1OfReal const* Knots, TColStd_Array1OfInteger const* Mults, int32_t FirstPoint, int32_t LastPoint, int32_t FirstCons, int32_t LastCons, math_Vector const* Parameters, int32_t NbPol) {
+extern "C" OcctResult<GeomInt_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfWLApprox*> GeomInt_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfWLApprox_ctor_themultilineofwlapprox_arr1_double_arr1_int_int2_constraint2_vector_int(GeomInt_TheMultiLineOfWLApprox const* SSP, NCollection_Array1_double const* Knots, NCollection_Array1_int const* Mults, int32_t FirstPoint, int32_t LastPoint, int32_t FirstCons, int32_t LastCons, math_Vector const* Parameters, int32_t NbPol) {
     try { return {new GeomInt_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfWLApprox(*SSP, *Knots, *Mults, FirstPoint, LastPoint, static_cast<AppParCurves_Constraint>(FirstCons), static_cast<AppParCurves_Constraint>(LastCons), *Parameters, NbPol), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<GeomInt_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfWLApprox*> GeomInt_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfWLApprox_ctor_themultilineofwlapprox_array1ofreal_array1ofinteger_int2_constraint2_int(GeomInt_TheMultiLineOfWLApprox const* SSP, TColStd_Array1OfReal const* Knots, TColStd_Array1OfInteger const* Mults, int32_t FirstPoint, int32_t LastPoint, int32_t FirstCons, int32_t LastCons, int32_t NbPol) {
+extern "C" OcctResult<GeomInt_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfWLApprox*> GeomInt_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfWLApprox_ctor_themultilineofwlapprox_arr1_double_arr1_int_int2_constraint2_int(GeomInt_TheMultiLineOfWLApprox const* SSP, NCollection_Array1_double const* Knots, NCollection_Array1_int const* Mults, int32_t FirstPoint, int32_t LastPoint, int32_t FirstCons, int32_t LastCons, int32_t NbPol) {
     try { return {new GeomInt_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfWLApprox(*SSP, *Knots, *Mults, FirstPoint, LastPoint, static_cast<AppParCurves_Constraint>(FirstCons), static_cast<AppParCurves_Constraint>(LastCons), NbPol), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -14013,11 +13269,11 @@ extern "C" OcctResult<GeomInt_ParLeastSquareOfMyGradientbisOfTheComputeLineOfWLA
     try { return {new GeomInt_ParLeastSquareOfMyGradientbisOfTheComputeLineOfWLApprox(*SSP, FirstPoint, LastPoint, static_cast<AppParCurves_Constraint>(FirstCons), static_cast<AppParCurves_Constraint>(LastCons), NbPol), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<GeomInt_ParLeastSquareOfMyGradientbisOfTheComputeLineOfWLApprox*> GeomInt_ParLeastSquareOfMyGradientbisOfTheComputeLineOfWLApprox_ctor_themultilineofwlapprox_array1ofreal_array1ofinteger_int2_constraint2_vector_int(GeomInt_TheMultiLineOfWLApprox const* SSP, TColStd_Array1OfReal const* Knots, TColStd_Array1OfInteger const* Mults, int32_t FirstPoint, int32_t LastPoint, int32_t FirstCons, int32_t LastCons, math_Vector const* Parameters, int32_t NbPol) {
+extern "C" OcctResult<GeomInt_ParLeastSquareOfMyGradientbisOfTheComputeLineOfWLApprox*> GeomInt_ParLeastSquareOfMyGradientbisOfTheComputeLineOfWLApprox_ctor_themultilineofwlapprox_arr1_double_arr1_int_int2_constraint2_vector_int(GeomInt_TheMultiLineOfWLApprox const* SSP, NCollection_Array1_double const* Knots, NCollection_Array1_int const* Mults, int32_t FirstPoint, int32_t LastPoint, int32_t FirstCons, int32_t LastCons, math_Vector const* Parameters, int32_t NbPol) {
     try { return {new GeomInt_ParLeastSquareOfMyGradientbisOfTheComputeLineOfWLApprox(*SSP, *Knots, *Mults, FirstPoint, LastPoint, static_cast<AppParCurves_Constraint>(FirstCons), static_cast<AppParCurves_Constraint>(LastCons), *Parameters, NbPol), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<GeomInt_ParLeastSquareOfMyGradientbisOfTheComputeLineOfWLApprox*> GeomInt_ParLeastSquareOfMyGradientbisOfTheComputeLineOfWLApprox_ctor_themultilineofwlapprox_array1ofreal_array1ofinteger_int2_constraint2_int(GeomInt_TheMultiLineOfWLApprox const* SSP, TColStd_Array1OfReal const* Knots, TColStd_Array1OfInteger const* Mults, int32_t FirstPoint, int32_t LastPoint, int32_t FirstCons, int32_t LastCons, int32_t NbPol) {
+extern "C" OcctResult<GeomInt_ParLeastSquareOfMyGradientbisOfTheComputeLineOfWLApprox*> GeomInt_ParLeastSquareOfMyGradientbisOfTheComputeLineOfWLApprox_ctor_themultilineofwlapprox_arr1_double_arr1_int_int2_constraint2_int(GeomInt_TheMultiLineOfWLApprox const* SSP, NCollection_Array1_double const* Knots, NCollection_Array1_int const* Mults, int32_t FirstPoint, int32_t LastPoint, int32_t FirstCons, int32_t LastCons, int32_t NbPol) {
     try { return {new GeomInt_ParLeastSquareOfMyGradientbisOfTheComputeLineOfWLApprox(*SSP, *Knots, *Mults, FirstPoint, LastPoint, static_cast<AppParCurves_Constraint>(FirstCons), static_cast<AppParCurves_Constraint>(LastCons), NbPol), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -14129,7 +13385,7 @@ extern "C" void GeomInt_ParameterAndOrientation_destructor(GeomInt_ParameterAndO
 // GeomInt_ResConstraintOfMyGradientOfTheComputeLineBezierOfWLApprox wrappers
 // ========================
 
-extern "C" OcctResult<GeomInt_ResConstraintOfMyGradientOfTheComputeLineBezierOfWLApprox*> GeomInt_ResConstraintOfMyGradientOfTheComputeLineBezierOfWLApprox_ctor_themultilineofwlapprox_multicurve_int2_handleappparcurvesharray1ofconstraintcouple_matrix2_real(GeomInt_TheMultiLineOfWLApprox const* SSP, AppParCurves_MultiCurve* SCurv, int32_t FirstPoint, int32_t LastPoint, Handle(AppParCurves_HArray1OfConstraintCouple) const* Constraints, math_Matrix const* Bern, math_Matrix const* DerivativeBern, double Tolerance) {
+extern "C" OcctResult<GeomInt_ResConstraintOfMyGradientOfTheComputeLineBezierOfWLApprox*> GeomInt_ResConstraintOfMyGradientOfTheComputeLineBezierOfWLApprox_ctor_themultilineofwlapprox_multicurve_int2_harr1_constraintcouple_matrix2_real(GeomInt_TheMultiLineOfWLApprox const* SSP, AppParCurves_MultiCurve* SCurv, int32_t FirstPoint, int32_t LastPoint, Handle(NCollection_HArray1_AppParCurves_ConstraintCouple) const* Constraints, math_Matrix const* Bern, math_Matrix const* DerivativeBern, double Tolerance) {
     try { return {new GeomInt_ResConstraintOfMyGradientOfTheComputeLineBezierOfWLApprox(*SSP, *SCurv, FirstPoint, LastPoint, *Constraints, *Bern, *DerivativeBern, Tolerance), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -14163,7 +13419,7 @@ extern "C" void GeomInt_ResConstraintOfMyGradientOfTheComputeLineBezierOfWLAppro
 // GeomInt_ResConstraintOfMyGradientbisOfTheComputeLineOfWLApprox wrappers
 // ========================
 
-extern "C" OcctResult<GeomInt_ResConstraintOfMyGradientbisOfTheComputeLineOfWLApprox*> GeomInt_ResConstraintOfMyGradientbisOfTheComputeLineOfWLApprox_ctor_themultilineofwlapprox_multicurve_int2_handleappparcurvesharray1ofconstraintcouple_matrix2_real(GeomInt_TheMultiLineOfWLApprox const* SSP, AppParCurves_MultiCurve* SCurv, int32_t FirstPoint, int32_t LastPoint, Handle(AppParCurves_HArray1OfConstraintCouple) const* Constraints, math_Matrix const* Bern, math_Matrix const* DerivativeBern, double Tolerance) {
+extern "C" OcctResult<GeomInt_ResConstraintOfMyGradientbisOfTheComputeLineOfWLApprox*> GeomInt_ResConstraintOfMyGradientbisOfTheComputeLineOfWLApprox_ctor_themultilineofwlapprox_multicurve_int2_harr1_constraintcouple_matrix2_real(GeomInt_TheMultiLineOfWLApprox const* SSP, AppParCurves_MultiCurve* SCurv, int32_t FirstPoint, int32_t LastPoint, Handle(NCollection_HArray1_AppParCurves_ConstraintCouple) const* Constraints, math_Matrix const* Bern, math_Matrix const* DerivativeBern, double Tolerance) {
     try { return {new GeomInt_ResConstraintOfMyGradientbisOfTheComputeLineOfWLApprox(*SSP, *SCurv, FirstPoint, LastPoint, *Constraints, *Bern, *DerivativeBern, Tolerance), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -14265,7 +13521,7 @@ extern "C" OcctResult<int32_t> GeomInt_TheComputeLineBezierOfWLApprox_parametriz
     try { return {static_cast<int32_t>(self_->Parametrization()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TColStd_Array1OfReal const*> GeomInt_TheComputeLineBezierOfWLApprox_parameters(const GeomInt_TheComputeLineBezierOfWLApprox* self_, int32_t Index) {
+extern "C" OcctResult<NCollection_Array1_double const*> GeomInt_TheComputeLineBezierOfWLApprox_parameters(const GeomInt_TheComputeLineBezierOfWLApprox* self_, int32_t Index) {
     try { return {&(self_->Parameters(Index)), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -14307,11 +13563,11 @@ extern "C" const char* GeomInt_TheComputeLineOfWLApprox_set_parameters(GeomInt_T
     try { self_->SetParameters(*ThePar); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* GeomInt_TheComputeLineOfWLApprox_set_knots(GeomInt_TheComputeLineOfWLApprox* self_, TColStd_Array1OfReal const* Knots) {
+extern "C" const char* GeomInt_TheComputeLineOfWLApprox_set_knots(GeomInt_TheComputeLineOfWLApprox* self_, NCollection_Array1_double const* Knots) {
     try { self_->SetKnots(*Knots); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* GeomInt_TheComputeLineOfWLApprox_set_knots_and_multiplicities(GeomInt_TheComputeLineOfWLApprox* self_, TColStd_Array1OfReal const* Knots, TColStd_Array1OfInteger const* Mults) {
+extern "C" const char* GeomInt_TheComputeLineOfWLApprox_set_knots_and_multiplicities(GeomInt_TheComputeLineOfWLApprox* self_, NCollection_Array1_double const* Knots, NCollection_Array1_int const* Mults) {
     try { self_->SetKnotsAndMultiplicities(*Knots, *Mults); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -14355,7 +13611,7 @@ extern "C" OcctResult<AppParCurves_MultiBSpCurve*> GeomInt_TheComputeLineOfWLApp
     try { return {&(self_->ChangeValue()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TColStd_Array1OfReal const*> GeomInt_TheComputeLineOfWLApprox_parameters(const GeomInt_TheComputeLineOfWLApprox* self_) {
+extern "C" OcctResult<NCollection_Array1_double const*> GeomInt_TheComputeLineOfWLApprox_parameters(const GeomInt_TheComputeLineOfWLApprox* self_) {
     try { return {&(self_->Parameters()), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -14405,7 +13661,7 @@ extern "C" OcctResult<bool> GeomInt_TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOf
     try { return {self_->Values(*X, *F, *D), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* GeomInt_TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfWLApprox_compute_parameters(GeomInt_TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfWLApprox* self_, int32_t ChoixIso, TColStd_Array1OfReal const* Param, math_Vector* UVap, math_Vector* BornInf, math_Vector* BornSup, math_Vector* Tolerance) {
+extern "C" const char* GeomInt_TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfWLApprox_compute_parameters(GeomInt_TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfWLApprox* self_, int32_t ChoixIso, NCollection_Array1_double const* Param, math_Vector* UVap, math_Vector* BornInf, math_Vector* BornSup, math_Vector* Tolerance) {
     try { self_->ComputeParameters(static_cast<IntImp_ConstIsoparametric>(ChoixIso), *Param, *UVap, *BornInf, *BornSup, *Tolerance); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -14413,7 +13669,7 @@ extern "C" OcctResult<double> GeomInt_TheFunctionOfTheInt2SOfThePrmPrmSvSurfaces
     try { return {self_->Root(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<bool> GeomInt_TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfWLApprox_is_tangent(GeomInt_TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfWLApprox* self_, math_Vector const* UVap, TColStd_Array1OfReal* Param, int32_t& BestChoix) {
+extern "C" OcctResult<bool> GeomInt_TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfWLApprox_is_tangent(GeomInt_TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfWLApprox* self_, math_Vector const* UVap, NCollection_Array1_double* Param, int32_t& BestChoix) {
     try {
     auto BestChoix_enum_ = static_cast<IntImp_ConstIsoparametric>(BestChoix);
     auto result_ = self_->IsTangent(*UVap, *Param, BestChoix_enum_);
@@ -14496,7 +13752,7 @@ extern "C" void GeomInt_TheImpPrmSvSurfacesOfWLApprox_destructor(GeomInt_TheImpP
 // GeomInt_TheInt2SOfThePrmPrmSvSurfacesOfWLApprox wrappers
 // ========================
 
-extern "C" OcctResult<GeomInt_TheInt2SOfThePrmPrmSvSurfacesOfWLApprox*> GeomInt_TheInt2SOfThePrmPrmSvSurfacesOfWLApprox_ctor_array1ofreal_handleadaptor3dsurface2_real(TColStd_Array1OfReal const* Param, Handle(Adaptor3d_Surface) const* S1, Handle(Adaptor3d_Surface) const* S2, double TolTangency) {
+extern "C" OcctResult<GeomInt_TheInt2SOfThePrmPrmSvSurfacesOfWLApprox*> GeomInt_TheInt2SOfThePrmPrmSvSurfacesOfWLApprox_ctor_arr1_double_handleadaptor3dsurface2_real(NCollection_Array1_double const* Param, Handle(Adaptor3d_Surface) const* S1, Handle(Adaptor3d_Surface) const* S2, double TolTangency) {
     try { return {new GeomInt_TheInt2SOfThePrmPrmSvSurfacesOfWLApprox(*Param, *S1, *S2, TolTangency), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -14504,11 +13760,11 @@ extern "C" OcctResult<GeomInt_TheInt2SOfThePrmPrmSvSurfacesOfWLApprox*> GeomInt_
     try { return {new GeomInt_TheInt2SOfThePrmPrmSvSurfacesOfWLApprox(*S1, *S2, TolTangency), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<int32_t> GeomInt_TheInt2SOfThePrmPrmSvSurfacesOfWLApprox_perform_array1ofreal_functionsetroot(GeomInt_TheInt2SOfThePrmPrmSvSurfacesOfWLApprox* self_, TColStd_Array1OfReal const* Param, math_FunctionSetRoot* Rsnld) {
+extern "C" OcctResult<int32_t> GeomInt_TheInt2SOfThePrmPrmSvSurfacesOfWLApprox_perform_arr1_double_functionsetroot(GeomInt_TheInt2SOfThePrmPrmSvSurfacesOfWLApprox* self_, NCollection_Array1_double const* Param, math_FunctionSetRoot* Rsnld) {
     try { return {static_cast<int32_t>(self_->Perform(*Param, *Rsnld)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<int32_t> GeomInt_TheInt2SOfThePrmPrmSvSurfacesOfWLApprox_perform_array1ofreal_functionsetroot_constisoparametric(GeomInt_TheInt2SOfThePrmPrmSvSurfacesOfWLApprox* self_, TColStd_Array1OfReal const* Param, math_FunctionSetRoot* Rsnld, int32_t ChoixIso) {
+extern "C" OcctResult<int32_t> GeomInt_TheInt2SOfThePrmPrmSvSurfacesOfWLApprox_perform_arr1_double_functionsetroot_constisoparametric(GeomInt_TheInt2SOfThePrmPrmSvSurfacesOfWLApprox* self_, NCollection_Array1_double const* Param, math_FunctionSetRoot* Rsnld, int32_t ChoixIso) {
     try { return {static_cast<int32_t>(self_->Perform(*Param, *Rsnld, static_cast<IntImp_ConstIsoparametric>(ChoixIso))), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -14558,7 +13814,7 @@ extern "C" OcctResult<GeomInt_TheMultiLineOfWLApprox*> GeomInt_TheMultiLineOfWLA
     try { return {new GeomInt_TheMultiLineOfWLApprox(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<GeomInt_TheMultiLineOfWLApprox*> GeomInt_TheMultiLineOfWLApprox_ctor_handleintpatchwline_address_int2_bool2_real7_bool_int2(Handle(IntPatch_WLine) const* line, Standard_Address PtrSvSurfaces, int32_t NbP3d, int32_t NbP2d, bool ApproxU1V1, bool ApproxU2V2, double xo, double yo, double zo, double u1o, double v1o, double u2o, double v2o, bool P2DOnFirst, int32_t IndMin, int32_t IndMax) {
+extern "C" OcctResult<GeomInt_TheMultiLineOfWLApprox*> GeomInt_TheMultiLineOfWLApprox_ctor_handleintpatchwline_voidptr_int2_bool2_real7_bool_int2(Handle(IntPatch_WLine) const* line, void* PtrSvSurfaces, int32_t NbP3d, int32_t NbP2d, bool ApproxU1V1, bool ApproxU2V2, double xo, double yo, double zo, double u1o, double v1o, double u2o, double v2o, bool P2DOnFirst, int32_t IndMin, int32_t IndMax) {
     try { return {new GeomInt_TheMultiLineOfWLApprox(*line, PtrSvSurfaces, NbP3d, NbP2d, ApproxU1V1, ApproxU2V2, xo, yo, zo, u1o, v1o, u2o, v2o, P2DOnFirst, IndMin, IndMax), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -14590,27 +13846,27 @@ extern "C" OcctResult<int32_t> GeomInt_TheMultiLineOfWLApprox_what_status(const 
     try { return {static_cast<int32_t>(self_->WhatStatus()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* GeomInt_TheMultiLineOfWLApprox_value_int_array1ofpnt(const GeomInt_TheMultiLineOfWLApprox* self_, int32_t MPointIndex, TColgp_Array1OfPnt* tabPt) {
+extern "C" const char* GeomInt_TheMultiLineOfWLApprox_value_int_arr1_pnt(const GeomInt_TheMultiLineOfWLApprox* self_, int32_t MPointIndex, NCollection_Array1_gp_Pnt* tabPt) {
     try { self_->Value(MPointIndex, *tabPt); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* GeomInt_TheMultiLineOfWLApprox_value_int_array1ofpnt2d(const GeomInt_TheMultiLineOfWLApprox* self_, int32_t MPointIndex, TColgp_Array1OfPnt2d* tabPt2d) {
+extern "C" const char* GeomInt_TheMultiLineOfWLApprox_value_int_arr1_pnt2d(const GeomInt_TheMultiLineOfWLApprox* self_, int32_t MPointIndex, NCollection_Array1_gp_Pnt2d* tabPt2d) {
     try { self_->Value(MPointIndex, *tabPt2d); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* GeomInt_TheMultiLineOfWLApprox_value_int_array1ofpnt_array1ofpnt2d(const GeomInt_TheMultiLineOfWLApprox* self_, int32_t MPointIndex, TColgp_Array1OfPnt* tabPt, TColgp_Array1OfPnt2d* tabPt2d) {
+extern "C" const char* GeomInt_TheMultiLineOfWLApprox_value_int_arr1_pnt_arr1_pnt2d(const GeomInt_TheMultiLineOfWLApprox* self_, int32_t MPointIndex, NCollection_Array1_gp_Pnt* tabPt, NCollection_Array1_gp_Pnt2d* tabPt2d) {
     try { self_->Value(MPointIndex, *tabPt, *tabPt2d); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<bool> GeomInt_TheMultiLineOfWLApprox_tangency_int_array1ofvec(const GeomInt_TheMultiLineOfWLApprox* self_, int32_t MPointIndex, TColgp_Array1OfVec* tabV) {
+extern "C" OcctResult<bool> GeomInt_TheMultiLineOfWLApprox_tangency_int_arr1_vec(const GeomInt_TheMultiLineOfWLApprox* self_, int32_t MPointIndex, NCollection_Array1_gp_Vec* tabV) {
     try { return {self_->Tangency(MPointIndex, *tabV), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<bool> GeomInt_TheMultiLineOfWLApprox_tangency_int_array1ofvec2d(const GeomInt_TheMultiLineOfWLApprox* self_, int32_t MPointIndex, TColgp_Array1OfVec2d* tabV2d) {
+extern "C" OcctResult<bool> GeomInt_TheMultiLineOfWLApprox_tangency_int_arr1_vec2d(const GeomInt_TheMultiLineOfWLApprox* self_, int32_t MPointIndex, NCollection_Array1_gp_Vec2d* tabV2d) {
     try { return {self_->Tangency(MPointIndex, *tabV2d), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<bool> GeomInt_TheMultiLineOfWLApprox_tangency_int_array1ofvec_array1ofvec2d(const GeomInt_TheMultiLineOfWLApprox* self_, int32_t MPointIndex, TColgp_Array1OfVec* tabV, TColgp_Array1OfVec2d* tabV2d) {
+extern "C" OcctResult<bool> GeomInt_TheMultiLineOfWLApprox_tangency_int_arr1_vec_arr1_vec2d(const GeomInt_TheMultiLineOfWLApprox* self_, int32_t MPointIndex, NCollection_Array1_gp_Vec* tabV, NCollection_Array1_gp_Vec2d* tabV2d) {
     try { return {self_->Tangency(MPointIndex, *tabV, *tabV2d), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -14648,39 +13904,39 @@ extern "C" OcctResult<int32_t> GeomInt_TheMultiLineToolOfWLApprox_nb_p3d(GeomInt
     try { return {GeomInt_TheMultiLineToolOfWLApprox::NbP3d(*ML), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* GeomInt_TheMultiLineToolOfWLApprox_value_themultilineofwlapprox_int_array1ofpnt(GeomInt_TheMultiLineOfWLApprox const* ML, int32_t MPointIndex, TColgp_Array1OfPnt* tabPt) {
+extern "C" const char* GeomInt_TheMultiLineToolOfWLApprox_value_themultilineofwlapprox_int_arr1_pnt(GeomInt_TheMultiLineOfWLApprox const* ML, int32_t MPointIndex, NCollection_Array1_gp_Pnt* tabPt) {
     try { GeomInt_TheMultiLineToolOfWLApprox::Value(*ML, MPointIndex, *tabPt); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* GeomInt_TheMultiLineToolOfWLApprox_value_themultilineofwlapprox_int_array1ofpnt2d(GeomInt_TheMultiLineOfWLApprox const* ML, int32_t MPointIndex, TColgp_Array1OfPnt2d* tabPt2d) {
+extern "C" const char* GeomInt_TheMultiLineToolOfWLApprox_value_themultilineofwlapprox_int_arr1_pnt2d(GeomInt_TheMultiLineOfWLApprox const* ML, int32_t MPointIndex, NCollection_Array1_gp_Pnt2d* tabPt2d) {
     try { GeomInt_TheMultiLineToolOfWLApprox::Value(*ML, MPointIndex, *tabPt2d); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* GeomInt_TheMultiLineToolOfWLApprox_value_themultilineofwlapprox_int_array1ofpnt_array1ofpnt2d(GeomInt_TheMultiLineOfWLApprox const* ML, int32_t MPointIndex, TColgp_Array1OfPnt* tabPt, TColgp_Array1OfPnt2d* tabPt2d) {
+extern "C" const char* GeomInt_TheMultiLineToolOfWLApprox_value_themultilineofwlapprox_int_arr1_pnt_arr1_pnt2d(GeomInt_TheMultiLineOfWLApprox const* ML, int32_t MPointIndex, NCollection_Array1_gp_Pnt* tabPt, NCollection_Array1_gp_Pnt2d* tabPt2d) {
     try { GeomInt_TheMultiLineToolOfWLApprox::Value(*ML, MPointIndex, *tabPt, *tabPt2d); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<bool> GeomInt_TheMultiLineToolOfWLApprox_tangency_themultilineofwlapprox_int_array1ofvec(GeomInt_TheMultiLineOfWLApprox const* ML, int32_t MPointIndex, TColgp_Array1OfVec* tabV) {
+extern "C" OcctResult<bool> GeomInt_TheMultiLineToolOfWLApprox_tangency_themultilineofwlapprox_int_arr1_vec(GeomInt_TheMultiLineOfWLApprox const* ML, int32_t MPointIndex, NCollection_Array1_gp_Vec* tabV) {
     try { return {GeomInt_TheMultiLineToolOfWLApprox::Tangency(*ML, MPointIndex, *tabV), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<bool> GeomInt_TheMultiLineToolOfWLApprox_tangency_themultilineofwlapprox_int_array1ofvec2d(GeomInt_TheMultiLineOfWLApprox const* ML, int32_t MPointIndex, TColgp_Array1OfVec2d* tabV2d) {
+extern "C" OcctResult<bool> GeomInt_TheMultiLineToolOfWLApprox_tangency_themultilineofwlapprox_int_arr1_vec2d(GeomInt_TheMultiLineOfWLApprox const* ML, int32_t MPointIndex, NCollection_Array1_gp_Vec2d* tabV2d) {
     try { return {GeomInt_TheMultiLineToolOfWLApprox::Tangency(*ML, MPointIndex, *tabV2d), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<bool> GeomInt_TheMultiLineToolOfWLApprox_tangency_themultilineofwlapprox_int_array1ofvec_array1ofvec2d(GeomInt_TheMultiLineOfWLApprox const* ML, int32_t MPointIndex, TColgp_Array1OfVec* tabV, TColgp_Array1OfVec2d* tabV2d) {
+extern "C" OcctResult<bool> GeomInt_TheMultiLineToolOfWLApprox_tangency_themultilineofwlapprox_int_arr1_vec_arr1_vec2d(GeomInt_TheMultiLineOfWLApprox const* ML, int32_t MPointIndex, NCollection_Array1_gp_Vec* tabV, NCollection_Array1_gp_Vec2d* tabV2d) {
     try { return {GeomInt_TheMultiLineToolOfWLApprox::Tangency(*ML, MPointIndex, *tabV, *tabV2d), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<bool> GeomInt_TheMultiLineToolOfWLApprox_curvature_themultilineofwlapprox_int_array1ofvec(GeomInt_TheMultiLineOfWLApprox const* ML, int32_t MPointIndex, TColgp_Array1OfVec* tabV) {
+extern "C" OcctResult<bool> GeomInt_TheMultiLineToolOfWLApprox_curvature_themultilineofwlapprox_int_arr1_vec(GeomInt_TheMultiLineOfWLApprox const* ML, int32_t MPointIndex, NCollection_Array1_gp_Vec* tabV) {
     try { return {GeomInt_TheMultiLineToolOfWLApprox::Curvature(*ML, MPointIndex, *tabV), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<bool> GeomInt_TheMultiLineToolOfWLApprox_curvature_themultilineofwlapprox_int_array1ofvec2d(GeomInt_TheMultiLineOfWLApprox const* ML, int32_t MPointIndex, TColgp_Array1OfVec2d* tabV2d) {
+extern "C" OcctResult<bool> GeomInt_TheMultiLineToolOfWLApprox_curvature_themultilineofwlapprox_int_arr1_vec2d(GeomInt_TheMultiLineOfWLApprox const* ML, int32_t MPointIndex, NCollection_Array1_gp_Vec2d* tabV2d) {
     try { return {GeomInt_TheMultiLineToolOfWLApprox::Curvature(*ML, MPointIndex, *tabV2d), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<bool> GeomInt_TheMultiLineToolOfWLApprox_curvature_themultilineofwlapprox_int_array1ofvec_array1ofvec2d(GeomInt_TheMultiLineOfWLApprox const* ML, int32_t MPointIndex, TColgp_Array1OfVec* tabV, TColgp_Array1OfVec2d* tabV2d) {
+extern "C" OcctResult<bool> GeomInt_TheMultiLineToolOfWLApprox_curvature_themultilineofwlapprox_int_arr1_vec_arr1_vec2d(GeomInt_TheMultiLineOfWLApprox const* ML, int32_t MPointIndex, NCollection_Array1_gp_Vec* tabV, NCollection_Array1_gp_Vec2d* tabV2d) {
     try { return {GeomInt_TheMultiLineToolOfWLApprox::Curvature(*ML, MPointIndex, *tabV, *tabV2d), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -14904,11 +14160,11 @@ extern "C" void GeomPlate_Aij_destructor(GeomPlate_Aij* self_) { delete self_; }
 // GeomPlate_BuildAveragePlane wrappers
 // ========================
 
-extern "C" OcctResult<GeomPlate_BuildAveragePlane*> GeomPlate_BuildAveragePlane_ctor_handletcolgpharray1ofpnt_int_real_int2(Handle(TColgp_HArray1OfPnt) const* Pts, int32_t NbBoundPoints, double Tol, int32_t POption, int32_t NOption) {
+extern "C" OcctResult<GeomPlate_BuildAveragePlane*> GeomPlate_BuildAveragePlane_ctor_harr1_pnt_int_real_int2(Handle(NCollection_HArray1_gp_Pnt) const* Pts, int32_t NbBoundPoints, double Tol, int32_t POption, int32_t NOption) {
     try { return {new GeomPlate_BuildAveragePlane(*Pts, NbBoundPoints, Tol, POption, NOption), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<GeomPlate_BuildAveragePlane*> GeomPlate_BuildAveragePlane_ctor_sequenceofvec_handletcolgpharray1ofpnt(TColgp_SequenceOfVec const* Normals, Handle(TColgp_HArray1OfPnt) const* Pts) {
+extern "C" OcctResult<GeomPlate_BuildAveragePlane*> GeomPlate_BuildAveragePlane_ctor_seq_vec_harr1_pnt(NCollection_Sequence_gp_Vec const* Normals, Handle(NCollection_HArray1_gp_Pnt) const* Pts) {
     try { return {new GeomPlate_BuildAveragePlane(*Normals, *Pts), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -14932,7 +14188,7 @@ extern "C" const char* GeomPlate_BuildAveragePlane_min_max_box(const GeomPlate_B
     try { self_->MinMaxBox(*Umin, *Umax, *Vmin, *Vmax); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<bool> GeomPlate_BuildAveragePlane_half_space(TColgp_SequenceOfVec const* NewNormals, TColgp_SequenceOfVec* Normals, GeomPlate_SequenceOfAij* Bset, double LinTol, double AngTol) {
+extern "C" OcctResult<bool> GeomPlate_BuildAveragePlane_half_space(NCollection_Sequence_gp_Vec const* NewNormals, NCollection_Sequence_gp_Vec* Normals, NCollection_Sequence_GeomPlate_Aij* Bset, double LinTol, double AngTol) {
     try { return {GeomPlate_BuildAveragePlane::HalfSpace(*NewNormals, *Normals, *Bset, LinTol, AngTol), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -14942,7 +14198,7 @@ extern "C" void GeomPlate_BuildAveragePlane_destructor(GeomPlate_BuildAveragePla
 // GeomPlate_BuildPlateSurface wrappers
 // ========================
 
-extern "C" OcctResult<GeomPlate_BuildPlateSurface*> GeomPlate_BuildPlateSurface_ctor_handletcolstdharray1ofinteger_handlegeomplateharray1ofhcurve_handletcolstdharray1ofinteger_int2_real4_bool(Handle(TColStd_HArray1OfInteger) const* NPoints, Handle(GeomPlate_HArray1OfHCurve) const* TabCurve, Handle(TColStd_HArray1OfInteger) const* Tang, int32_t Degree, int32_t NbIter, double Tol2d, double Tol3d, double TolAng, double TolCurv, bool Anisotropie) {
+extern "C" OcctResult<GeomPlate_BuildPlateSurface*> GeomPlate_BuildPlateSurface_ctor_harr1_int_handlencollectionharray1opencascadehandleadaptor3dcurve_harr1_int_int2_real4_bool(Handle(NCollection_HArray1_int) const* NPoints, Handle(NCollection_HArray1_opencascade_handle_Adaptor3d_Curve) const* TabCurve, Handle(NCollection_HArray1_int) const* Tang, int32_t Degree, int32_t NbIter, double Tol2d, double Tol3d, double TolAng, double TolCurv, bool Anisotropie) {
     try { return {new GeomPlate_BuildPlateSurface(*NPoints, *TabCurve, *Tang, Degree, NbIter, Tol2d, Tol3d, TolAng, TolCurv, Anisotropie), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -14970,16 +14226,16 @@ extern "C" OcctResult<Handle(Geom_Surface)*> GeomPlate_BuildPlateSurface_surf_in
     try { return {new Handle(Geom_Surface)(self_->SurfInit()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(TColStd_HArray1OfInteger)*> GeomPlate_BuildPlateSurface_sense(const GeomPlate_BuildPlateSurface* self_) {
-    try { return {new Handle(TColStd_HArray1OfInteger)(self_->Sense()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HArray1_int)*> GeomPlate_BuildPlateSurface_sense(const GeomPlate_BuildPlateSurface* self_) {
+    try { return {new Handle(NCollection_HArray1_int)(self_->Sense()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(TColGeom2d_HArray1OfCurve)*> GeomPlate_BuildPlateSurface_curves2d(const GeomPlate_BuildPlateSurface* self_) {
-    try { return {new Handle(TColGeom2d_HArray1OfCurve)(self_->Curves2d()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HArray1_opencascade_handle_Geom2d_Curve)*> GeomPlate_BuildPlateSurface_curves2d(const GeomPlate_BuildPlateSurface* self_) {
+    try { return {new Handle(NCollection_HArray1_opencascade_handle_Geom2d_Curve)(self_->Curves2d()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(TColStd_HArray1OfInteger)*> GeomPlate_BuildPlateSurface_order(const GeomPlate_BuildPlateSurface* self_) {
-    try { return {new Handle(TColStd_HArray1OfInteger)(self_->Order()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HArray1_int)*> GeomPlate_BuildPlateSurface_order(const GeomPlate_BuildPlateSurface* self_) {
+    try { return {new Handle(NCollection_HArray1_int)(self_->Order()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" const char* GeomPlate_BuildPlateSurface_init(GeomPlate_BuildPlateSurface* self_) {
@@ -15006,11 +14262,11 @@ extern "C" const char* GeomPlate_BuildPlateSurface_perform(GeomPlate_BuildPlateS
     try { self_->Perform(*theProgress); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* GeomPlate_BuildPlateSurface_disc2d_contour(GeomPlate_BuildPlateSurface* self_, int32_t nbp, TColgp_SequenceOfXY* Seq2d) {
+extern "C" const char* GeomPlate_BuildPlateSurface_disc2d_contour(GeomPlate_BuildPlateSurface* self_, int32_t nbp, NCollection_Sequence_gp_XY* Seq2d) {
     try { self_->Disc2dContour(nbp, *Seq2d); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* GeomPlate_BuildPlateSurface_disc3d_contour(GeomPlate_BuildPlateSurface* self_, int32_t nbp, int32_t iordre, TColgp_SequenceOfXYZ* Seq3d) {
+extern "C" const char* GeomPlate_BuildPlateSurface_disc3d_contour(GeomPlate_BuildPlateSurface* self_, int32_t nbp, int32_t iordre, NCollection_Sequence_gp_XYZ* Seq3d) {
     try { self_->Disc3dContour(nbp, iordre, *Seq3d); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -15158,27 +14414,27 @@ extern "C" OcctResult<Handle(Standard_Type) const*> GeomPlate_CurveConstraint_ge
 }
 extern "C" OcctResult<const Standard_Transient*> GeomPlate_CurveConstraint_as_Standard_Transient(const GeomPlate_CurveConstraint* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> GeomPlate_CurveConstraint_as_Standard_Transient_mut(GeomPlate_CurveConstraint* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleGeomPlateCurveConstraint*> GeomPlate_CurveConstraint_to_handle(GeomPlate_CurveConstraint* obj) {
-    try { return {new HandleGeomPlateCurveConstraint(obj), nullptr}; }
+extern "C" OcctResult<Handle_GeomPlate_CurveConstraint*> GeomPlate_CurveConstraint_to_handle(GeomPlate_CurveConstraint* obj) {
+    try { return {new Handle_GeomPlate_CurveConstraint(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const GeomPlate_CurveConstraint*> HandleGeomPlateCurveConstraint_get(const HandleGeomPlateCurveConstraint* handle) {
+extern "C" OcctResult<const GeomPlate_CurveConstraint*> Handle_GeomPlate_CurveConstraint_get(const Handle_GeomPlate_CurveConstraint* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<GeomPlate_CurveConstraint*> HandleGeomPlateCurveConstraint_get_mut(HandleGeomPlateCurveConstraint* handle) {
+extern "C" OcctResult<GeomPlate_CurveConstraint*> Handle_GeomPlate_CurveConstraint_get_mut(Handle_GeomPlate_CurveConstraint* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleGeomPlateCurveConstraint_to_HandleStandardTransient(const HandleGeomPlateCurveConstraint* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_GeomPlate_CurveConstraint_to_Handle_Standard_Transient(const Handle_GeomPlate_CurveConstraint* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleBRepFillCurveConstraint*> HandleGeomPlateCurveConstraint_downcast_to_HandleBRepFillCurveConstraint(const HandleGeomPlateCurveConstraint* self_) {
+extern "C" OcctResult<Handle_BRepFill_CurveConstraint*> Handle_GeomPlate_CurveConstraint_downcast_to_Handle_BRepFill_CurveConstraint(const Handle_GeomPlate_CurveConstraint* self_) {
     try {
     opencascade::handle<BRepFill_CurveConstraint> result = opencascade::handle<BRepFill_CurveConstraint>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleBRepFillCurveConstraint(result), nullptr};
+    return {new Handle_BRepFill_CurveConstraint(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
@@ -15213,366 +14469,6 @@ extern "C" const char* GeomPlate_CurveConstraint_inherited_Delete(const GeomPlat
 extern "C" void GeomPlate_CurveConstraint_destructor(GeomPlate_CurveConstraint* self_) { delete self_; }
 
 // ========================
-// GeomPlate_HArray1OfHCurve wrappers
-// ========================
-
-extern "C" OcctResult<GeomPlate_HArray1OfHCurve*> GeomPlate_HArray1OfHCurve_ctor() {
-    try { return {new GeomPlate_HArray1OfHCurve(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<GeomPlate_HArray1OfHCurve*> GeomPlate_HArray1OfHCurve_ctor_int2(int32_t theLower, int32_t theUpper) {
-    try { return {new GeomPlate_HArray1OfHCurve(theLower, theUpper), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<GeomPlate_HArray1OfHCurve*> GeomPlate_HArray1OfHCurve_ctor_int2_handleadaptor3dcurve(int32_t theLower, int32_t theUpper, Handle(Adaptor3d_Curve) const* theValue) {
-    try { return {new GeomPlate_HArray1OfHCurve(theLower, theUpper, *theValue), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<GeomPlate_HArray1OfHCurve*> GeomPlate_HArray1OfHCurve_ctor_handleadaptor3dcurve_int2_bool(Handle(Adaptor3d_Curve) const* theBegin, int32_t theLower, int32_t theUpper, bool arg3) {
-    try { return {new GeomPlate_HArray1OfHCurve(*theBegin, theLower, theUpper, arg3), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<GeomPlate_HArray1OfHCurve*> GeomPlate_HArray1OfHCurve_ctor_array1ofhcurve(GeomPlate_Array1OfHCurve const* theOther) {
-    try { return {new GeomPlate_HArray1OfHCurve(*theOther), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<GeomPlate_Array1OfHCurve const*> GeomPlate_HArray1OfHCurve_array1(const GeomPlate_HArray1OfHCurve* self_) {
-    try { return {&(self_->Array1()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<GeomPlate_Array1OfHCurve*> GeomPlate_HArray1OfHCurve_change_array1(GeomPlate_HArray1OfHCurve* self_) {
-    try { return {&(self_->ChangeArray1()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Handle(Standard_Type) const*> GeomPlate_HArray1OfHCurve_dynamic_type(const GeomPlate_HArray1OfHCurve* self_) {
-    try { return {&(self_->DynamicType()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<char const*> GeomPlate_HArray1OfHCurve_get_type_name() {
-    try { return {GeomPlate_HArray1OfHCurve::get_type_name(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Handle(Standard_Type) const*> GeomPlate_HArray1OfHCurve_get_type_descriptor() {
-    try { return {&(GeomPlate_HArray1OfHCurve::get_type_descriptor()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<const Standard_Transient*> GeomPlate_HArray1OfHCurve_as_Standard_Transient(const GeomPlate_HArray1OfHCurve* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<Standard_Transient*> GeomPlate_HArray1OfHCurve_as_Standard_Transient_mut(GeomPlate_HArray1OfHCurve* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleGeomPlateHArray1OfHCurve*> GeomPlate_HArray1OfHCurve_to_handle(GeomPlate_HArray1OfHCurve* obj) {
-    try { return {new HandleGeomPlateHArray1OfHCurve(obj), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<const GeomPlate_HArray1OfHCurve*> HandleGeomPlateHArray1OfHCurve_get(const HandleGeomPlateHArray1OfHCurve* handle) {
-    try { return {(*handle).get(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<GeomPlate_HArray1OfHCurve*> HandleGeomPlateHArray1OfHCurve_get_mut(HandleGeomPlateHArray1OfHCurve* handle) {
-    try { return {(*handle).get(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<HandleStandardTransient*> HandleGeomPlateHArray1OfHCurve_to_HandleStandardTransient(const HandleGeomPlateHArray1OfHCurve* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<bool> GeomPlate_HArray1OfHCurve_inherited_IsInstance(const GeomPlate_HArray1OfHCurve* self, Handle(Standard_Type) const& theType) {
-    try { return {self->IsInstance(theType), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<bool> GeomPlate_HArray1OfHCurve_inherited_IsKind(const GeomPlate_HArray1OfHCurve* self, Handle(Standard_Type) const& theType) {
-    try { return {self->IsKind(theType), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Standard_Transient*> GeomPlate_HArray1OfHCurve_inherited_This(const GeomPlate_HArray1OfHCurve* self) {
-    try { return {self->This(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<int32_t> GeomPlate_HArray1OfHCurve_inherited_GetRefCount(const GeomPlate_HArray1OfHCurve* self) {
-    try { return {self->GetRefCount(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* GeomPlate_HArray1OfHCurve_inherited_IncrementRefCounter(GeomPlate_HArray1OfHCurve* self) {
-    try { self->IncrementRefCounter(); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<int32_t> GeomPlate_HArray1OfHCurve_inherited_DecrementRefCounter(GeomPlate_HArray1OfHCurve* self) {
-    try { return {self->DecrementRefCounter(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* GeomPlate_HArray1OfHCurve_inherited_Delete(const GeomPlate_HArray1OfHCurve* self) {
-    try { self->Delete(); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" void GeomPlate_HArray1OfHCurve_destructor(GeomPlate_HArray1OfHCurve* self_) { delete self_; }
-
-// ========================
-// GeomPlate_HArray1OfSequenceOfReal wrappers
-// ========================
-
-extern "C" OcctResult<GeomPlate_HArray1OfSequenceOfReal*> GeomPlate_HArray1OfSequenceOfReal_ctor() {
-    try { return {new GeomPlate_HArray1OfSequenceOfReal(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<GeomPlate_HArray1OfSequenceOfReal*> GeomPlate_HArray1OfSequenceOfReal_ctor_int2(int32_t theLower, int32_t theUpper) {
-    try { return {new GeomPlate_HArray1OfSequenceOfReal(theLower, theUpper), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<GeomPlate_HArray1OfSequenceOfReal*> GeomPlate_HArray1OfSequenceOfReal_ctor_int2_type(int32_t theLower, int32_t theUpper, GeomPlate_Array1OfSequenceOfReal::value_type const* theValue) {
-    try { return {new GeomPlate_HArray1OfSequenceOfReal(theLower, theUpper, *theValue), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<GeomPlate_HArray1OfSequenceOfReal*> GeomPlate_HArray1OfSequenceOfReal_ctor_type_int2_bool(GeomPlate_Array1OfSequenceOfReal::value_type const* theBegin, int32_t theLower, int32_t theUpper, bool arg3) {
-    try { return {new GeomPlate_HArray1OfSequenceOfReal(*theBegin, theLower, theUpper, arg3), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<GeomPlate_HArray1OfSequenceOfReal*> GeomPlate_HArray1OfSequenceOfReal_ctor_array1ofsequenceofreal(GeomPlate_Array1OfSequenceOfReal const* theOther) {
-    try { return {new GeomPlate_HArray1OfSequenceOfReal(*theOther), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<GeomPlate_Array1OfSequenceOfReal const*> GeomPlate_HArray1OfSequenceOfReal_array1(const GeomPlate_HArray1OfSequenceOfReal* self_) {
-    try { return {&(self_->Array1()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<GeomPlate_Array1OfSequenceOfReal*> GeomPlate_HArray1OfSequenceOfReal_change_array1(GeomPlate_HArray1OfSequenceOfReal* self_) {
-    try { return {&(self_->ChangeArray1()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Handle(Standard_Type) const*> GeomPlate_HArray1OfSequenceOfReal_dynamic_type(const GeomPlate_HArray1OfSequenceOfReal* self_) {
-    try { return {&(self_->DynamicType()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<char const*> GeomPlate_HArray1OfSequenceOfReal_get_type_name() {
-    try { return {GeomPlate_HArray1OfSequenceOfReal::get_type_name(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Handle(Standard_Type) const*> GeomPlate_HArray1OfSequenceOfReal_get_type_descriptor() {
-    try { return {&(GeomPlate_HArray1OfSequenceOfReal::get_type_descriptor()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<const Standard_Transient*> GeomPlate_HArray1OfSequenceOfReal_as_Standard_Transient(const GeomPlate_HArray1OfSequenceOfReal* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<Standard_Transient*> GeomPlate_HArray1OfSequenceOfReal_as_Standard_Transient_mut(GeomPlate_HArray1OfSequenceOfReal* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleGeomPlateHArray1OfSequenceOfReal*> GeomPlate_HArray1OfSequenceOfReal_to_handle(GeomPlate_HArray1OfSequenceOfReal* obj) {
-    try { return {new HandleGeomPlateHArray1OfSequenceOfReal(obj), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<const GeomPlate_HArray1OfSequenceOfReal*> HandleGeomPlateHArray1OfSequenceOfReal_get(const HandleGeomPlateHArray1OfSequenceOfReal* handle) {
-    try { return {(*handle).get(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<GeomPlate_HArray1OfSequenceOfReal*> HandleGeomPlateHArray1OfSequenceOfReal_get_mut(HandleGeomPlateHArray1OfSequenceOfReal* handle) {
-    try { return {(*handle).get(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<HandleStandardTransient*> HandleGeomPlateHArray1OfSequenceOfReal_to_HandleStandardTransient(const HandleGeomPlateHArray1OfSequenceOfReal* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<bool> GeomPlate_HArray1OfSequenceOfReal_inherited_IsInstance(const GeomPlate_HArray1OfSequenceOfReal* self, Handle(Standard_Type) const& theType) {
-    try { return {self->IsInstance(theType), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<bool> GeomPlate_HArray1OfSequenceOfReal_inherited_IsKind(const GeomPlate_HArray1OfSequenceOfReal* self, Handle(Standard_Type) const& theType) {
-    try { return {self->IsKind(theType), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Standard_Transient*> GeomPlate_HArray1OfSequenceOfReal_inherited_This(const GeomPlate_HArray1OfSequenceOfReal* self) {
-    try { return {self->This(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<int32_t> GeomPlate_HArray1OfSequenceOfReal_inherited_GetRefCount(const GeomPlate_HArray1OfSequenceOfReal* self) {
-    try { return {self->GetRefCount(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* GeomPlate_HArray1OfSequenceOfReal_inherited_IncrementRefCounter(GeomPlate_HArray1OfSequenceOfReal* self) {
-    try { self->IncrementRefCounter(); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<int32_t> GeomPlate_HArray1OfSequenceOfReal_inherited_DecrementRefCounter(GeomPlate_HArray1OfSequenceOfReal* self) {
-    try { return {self->DecrementRefCounter(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* GeomPlate_HArray1OfSequenceOfReal_inherited_Delete(const GeomPlate_HArray1OfSequenceOfReal* self) {
-    try { self->Delete(); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" void GeomPlate_HArray1OfSequenceOfReal_destructor(GeomPlate_HArray1OfSequenceOfReal* self_) { delete self_; }
-
-// ========================
-// GeomPlate_HSequenceOfCurveConstraint wrappers
-// ========================
-
-extern "C" OcctResult<GeomPlate_HSequenceOfCurveConstraint*> GeomPlate_HSequenceOfCurveConstraint_ctor() {
-    try { return {new GeomPlate_HSequenceOfCurveConstraint(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<GeomPlate_HSequenceOfCurveConstraint*> GeomPlate_HSequenceOfCurveConstraint_ctor_sequenceofcurveconstraint(GeomPlate_SequenceOfCurveConstraint const* theOther) {
-    try { return {new GeomPlate_HSequenceOfCurveConstraint(*theOther), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<GeomPlate_SequenceOfCurveConstraint const*> GeomPlate_HSequenceOfCurveConstraint_sequence(const GeomPlate_HSequenceOfCurveConstraint* self_) {
-    try { return {&(self_->Sequence()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* GeomPlate_HSequenceOfCurveConstraint_append_handlegeomplatecurveconstraint(GeomPlate_HSequenceOfCurveConstraint* self_, Handle(GeomPlate_CurveConstraint) const* theItem) {
-    try { self_->Append(*theItem); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* GeomPlate_HSequenceOfCurveConstraint_append_sequenceofcurveconstraint(GeomPlate_HSequenceOfCurveConstraint* self_, GeomPlate_SequenceOfCurveConstraint* theSequence) {
-    try { self_->Append(*theSequence); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<GeomPlate_SequenceOfCurveConstraint*> GeomPlate_HSequenceOfCurveConstraint_change_sequence(GeomPlate_HSequenceOfCurveConstraint* self_) {
-    try { return {&(self_->ChangeSequence()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Handle(Standard_Type) const*> GeomPlate_HSequenceOfCurveConstraint_dynamic_type(const GeomPlate_HSequenceOfCurveConstraint* self_) {
-    try { return {&(self_->DynamicType()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<char const*> GeomPlate_HSequenceOfCurveConstraint_get_type_name() {
-    try { return {GeomPlate_HSequenceOfCurveConstraint::get_type_name(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Handle(Standard_Type) const*> GeomPlate_HSequenceOfCurveConstraint_get_type_descriptor() {
-    try { return {&(GeomPlate_HSequenceOfCurveConstraint::get_type_descriptor()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<const Standard_Transient*> GeomPlate_HSequenceOfCurveConstraint_as_Standard_Transient(const GeomPlate_HSequenceOfCurveConstraint* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<Standard_Transient*> GeomPlate_HSequenceOfCurveConstraint_as_Standard_Transient_mut(GeomPlate_HSequenceOfCurveConstraint* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleGeomPlateHSequenceOfCurveConstraint*> GeomPlate_HSequenceOfCurveConstraint_to_handle(GeomPlate_HSequenceOfCurveConstraint* obj) {
-    try { return {new HandleGeomPlateHSequenceOfCurveConstraint(obj), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<const GeomPlate_HSequenceOfCurveConstraint*> HandleGeomPlateHSequenceOfCurveConstraint_get(const HandleGeomPlateHSequenceOfCurveConstraint* handle) {
-    try { return {(*handle).get(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<GeomPlate_HSequenceOfCurveConstraint*> HandleGeomPlateHSequenceOfCurveConstraint_get_mut(HandleGeomPlateHSequenceOfCurveConstraint* handle) {
-    try { return {(*handle).get(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<HandleStandardTransient*> HandleGeomPlateHSequenceOfCurveConstraint_to_HandleStandardTransient(const HandleGeomPlateHSequenceOfCurveConstraint* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<bool> GeomPlate_HSequenceOfCurveConstraint_inherited_IsInstance(const GeomPlate_HSequenceOfCurveConstraint* self, Handle(Standard_Type) const& theType) {
-    try { return {self->IsInstance(theType), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<bool> GeomPlate_HSequenceOfCurveConstraint_inherited_IsKind(const GeomPlate_HSequenceOfCurveConstraint* self, Handle(Standard_Type) const& theType) {
-    try { return {self->IsKind(theType), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Standard_Transient*> GeomPlate_HSequenceOfCurveConstraint_inherited_This(const GeomPlate_HSequenceOfCurveConstraint* self) {
-    try { return {self->This(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<int32_t> GeomPlate_HSequenceOfCurveConstraint_inherited_GetRefCount(const GeomPlate_HSequenceOfCurveConstraint* self) {
-    try { return {self->GetRefCount(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* GeomPlate_HSequenceOfCurveConstraint_inherited_IncrementRefCounter(GeomPlate_HSequenceOfCurveConstraint* self) {
-    try { self->IncrementRefCounter(); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<int32_t> GeomPlate_HSequenceOfCurveConstraint_inherited_DecrementRefCounter(GeomPlate_HSequenceOfCurveConstraint* self) {
-    try { return {self->DecrementRefCounter(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* GeomPlate_HSequenceOfCurveConstraint_inherited_Delete(const GeomPlate_HSequenceOfCurveConstraint* self) {
-    try { self->Delete(); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" void GeomPlate_HSequenceOfCurveConstraint_destructor(GeomPlate_HSequenceOfCurveConstraint* self_) { delete self_; }
-
-// ========================
-// GeomPlate_HSequenceOfPointConstraint wrappers
-// ========================
-
-extern "C" OcctResult<GeomPlate_HSequenceOfPointConstraint*> GeomPlate_HSequenceOfPointConstraint_ctor() {
-    try { return {new GeomPlate_HSequenceOfPointConstraint(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<GeomPlate_HSequenceOfPointConstraint*> GeomPlate_HSequenceOfPointConstraint_ctor_sequenceofpointconstraint(GeomPlate_SequenceOfPointConstraint const* theOther) {
-    try { return {new GeomPlate_HSequenceOfPointConstraint(*theOther), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<GeomPlate_SequenceOfPointConstraint const*> GeomPlate_HSequenceOfPointConstraint_sequence(const GeomPlate_HSequenceOfPointConstraint* self_) {
-    try { return {&(self_->Sequence()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* GeomPlate_HSequenceOfPointConstraint_append_handlegeomplatepointconstraint(GeomPlate_HSequenceOfPointConstraint* self_, Handle(GeomPlate_PointConstraint) const* theItem) {
-    try { self_->Append(*theItem); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* GeomPlate_HSequenceOfPointConstraint_append_sequenceofpointconstraint(GeomPlate_HSequenceOfPointConstraint* self_, GeomPlate_SequenceOfPointConstraint* theSequence) {
-    try { self_->Append(*theSequence); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<GeomPlate_SequenceOfPointConstraint*> GeomPlate_HSequenceOfPointConstraint_change_sequence(GeomPlate_HSequenceOfPointConstraint* self_) {
-    try { return {&(self_->ChangeSequence()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Handle(Standard_Type) const*> GeomPlate_HSequenceOfPointConstraint_dynamic_type(const GeomPlate_HSequenceOfPointConstraint* self_) {
-    try { return {&(self_->DynamicType()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<char const*> GeomPlate_HSequenceOfPointConstraint_get_type_name() {
-    try { return {GeomPlate_HSequenceOfPointConstraint::get_type_name(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Handle(Standard_Type) const*> GeomPlate_HSequenceOfPointConstraint_get_type_descriptor() {
-    try { return {&(GeomPlate_HSequenceOfPointConstraint::get_type_descriptor()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<const Standard_Transient*> GeomPlate_HSequenceOfPointConstraint_as_Standard_Transient(const GeomPlate_HSequenceOfPointConstraint* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<Standard_Transient*> GeomPlate_HSequenceOfPointConstraint_as_Standard_Transient_mut(GeomPlate_HSequenceOfPointConstraint* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleGeomPlateHSequenceOfPointConstraint*> GeomPlate_HSequenceOfPointConstraint_to_handle(GeomPlate_HSequenceOfPointConstraint* obj) {
-    try { return {new HandleGeomPlateHSequenceOfPointConstraint(obj), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<const GeomPlate_HSequenceOfPointConstraint*> HandleGeomPlateHSequenceOfPointConstraint_get(const HandleGeomPlateHSequenceOfPointConstraint* handle) {
-    try { return {(*handle).get(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<GeomPlate_HSequenceOfPointConstraint*> HandleGeomPlateHSequenceOfPointConstraint_get_mut(HandleGeomPlateHSequenceOfPointConstraint* handle) {
-    try { return {(*handle).get(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<HandleStandardTransient*> HandleGeomPlateHSequenceOfPointConstraint_to_HandleStandardTransient(const HandleGeomPlateHSequenceOfPointConstraint* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<bool> GeomPlate_HSequenceOfPointConstraint_inherited_IsInstance(const GeomPlate_HSequenceOfPointConstraint* self, Handle(Standard_Type) const& theType) {
-    try { return {self->IsInstance(theType), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<bool> GeomPlate_HSequenceOfPointConstraint_inherited_IsKind(const GeomPlate_HSequenceOfPointConstraint* self, Handle(Standard_Type) const& theType) {
-    try { return {self->IsKind(theType), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Standard_Transient*> GeomPlate_HSequenceOfPointConstraint_inherited_This(const GeomPlate_HSequenceOfPointConstraint* self) {
-    try { return {self->This(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<int32_t> GeomPlate_HSequenceOfPointConstraint_inherited_GetRefCount(const GeomPlate_HSequenceOfPointConstraint* self) {
-    try { return {self->GetRefCount(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* GeomPlate_HSequenceOfPointConstraint_inherited_IncrementRefCounter(GeomPlate_HSequenceOfPointConstraint* self) {
-    try { self->IncrementRefCounter(); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<int32_t> GeomPlate_HSequenceOfPointConstraint_inherited_DecrementRefCounter(GeomPlate_HSequenceOfPointConstraint* self) {
-    try { return {self->DecrementRefCounter(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* GeomPlate_HSequenceOfPointConstraint_inherited_Delete(const GeomPlate_HSequenceOfPointConstraint* self) {
-    try { self->Delete(); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" void GeomPlate_HSequenceOfPointConstraint_destructor(GeomPlate_HSequenceOfPointConstraint* self_) { delete self_; }
-
-// ========================
 // GeomPlate_MakeApprox wrappers
 // ========================
 
@@ -15602,7 +14498,7 @@ extern "C" void GeomPlate_MakeApprox_destructor(GeomPlate_MakeApprox* self_) { d
 // GeomPlate_PlateG0Criterion wrappers
 // ========================
 
-extern "C" OcctResult<GeomPlate_PlateG0Criterion*> GeomPlate_PlateG0Criterion_ctor_sequenceofxy_sequenceofxyz_real_criteriontype_criterionrepartition(TColgp_SequenceOfXY const* Data, TColgp_SequenceOfXYZ const* G0Data, double Maximum, int32_t Type, int32_t Repart) {
+extern "C" OcctResult<GeomPlate_PlateG0Criterion*> GeomPlate_PlateG0Criterion_ctor_seq_xy_seq_xyz_real_criteriontype_criterionrepartition(NCollection_Sequence_gp_XY const* Data, NCollection_Sequence_gp_XYZ const* G0Data, double Maximum, int32_t Type, int32_t Repart) {
     try { return {new GeomPlate_PlateG0Criterion(*Data, *G0Data, Maximum, static_cast<AdvApp2Var_CriterionType>(Type), static_cast<AdvApp2Var_CriterionRepartition>(Repart)), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -15634,7 +14530,7 @@ extern "C" void GeomPlate_PlateG0Criterion_destructor(GeomPlate_PlateG0Criterion
 // GeomPlate_PlateG1Criterion wrappers
 // ========================
 
-extern "C" OcctResult<GeomPlate_PlateG1Criterion*> GeomPlate_PlateG1Criterion_ctor_sequenceofxy_sequenceofxyz_real_criteriontype_criterionrepartition(TColgp_SequenceOfXY const* Data, TColgp_SequenceOfXYZ const* G1Data, double Maximum, int32_t Type, int32_t Repart) {
+extern "C" OcctResult<GeomPlate_PlateG1Criterion*> GeomPlate_PlateG1Criterion_ctor_seq_xy_seq_xyz_real_criteriontype_criterionrepartition(NCollection_Sequence_gp_XY const* Data, NCollection_Sequence_gp_XYZ const* G1Data, double Maximum, int32_t Type, int32_t Repart) {
     try { return {new GeomPlate_PlateG1Criterion(*Data, *G1Data, Maximum, static_cast<AdvApp2Var_CriterionType>(Type), static_cast<AdvApp2Var_CriterionRepartition>(Repart)), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -15748,20 +14644,20 @@ extern "C" OcctResult<Handle(Standard_Type) const*> GeomPlate_PointConstraint_ge
 }
 extern "C" OcctResult<const Standard_Transient*> GeomPlate_PointConstraint_as_Standard_Transient(const GeomPlate_PointConstraint* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> GeomPlate_PointConstraint_as_Standard_Transient_mut(GeomPlate_PointConstraint* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleGeomPlatePointConstraint*> GeomPlate_PointConstraint_to_handle(GeomPlate_PointConstraint* obj) {
-    try { return {new HandleGeomPlatePointConstraint(obj), nullptr}; }
+extern "C" OcctResult<Handle_GeomPlate_PointConstraint*> GeomPlate_PointConstraint_to_handle(GeomPlate_PointConstraint* obj) {
+    try { return {new Handle_GeomPlate_PointConstraint(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const GeomPlate_PointConstraint*> HandleGeomPlatePointConstraint_get(const HandleGeomPlatePointConstraint* handle) {
+extern "C" OcctResult<const GeomPlate_PointConstraint*> Handle_GeomPlate_PointConstraint_get(const Handle_GeomPlate_PointConstraint* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<GeomPlate_PointConstraint*> HandleGeomPlatePointConstraint_get_mut(HandleGeomPlatePointConstraint* handle) {
+extern "C" OcctResult<GeomPlate_PointConstraint*> Handle_GeomPlate_PointConstraint_get_mut(Handle_GeomPlate_PointConstraint* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleGeomPlatePointConstraint_to_HandleStandardTransient(const HandleGeomPlatePointConstraint* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_GeomPlate_PointConstraint_to_Handle_Standard_Transient(const Handle_GeomPlate_PointConstraint* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> GeomPlate_PointConstraint_inherited_IsInstance(const GeomPlate_PointConstraint* self, Handle(Standard_Type) const& theType) {
@@ -15814,8 +14710,24 @@ extern "C" OcctResult<Handle(Geom_Curve)*> GeomPlate_Surface_v_iso(const GeomPla
     try { return {new Handle(Geom_Curve)(self_->VIso(V)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<gp_Vec*> GeomPlate_Surface_dn(const GeomPlate_Surface* self_, double U, double V, int32_t Nu, int32_t Nv) {
-    try { return {new gp_Vec(self_->DN(U, V, Nu, Nv)), nullptr}; }
+extern "C" OcctResult<gp_Pnt*> GeomPlate_Surface_eval_d0(const GeomPlate_Surface* self_, double U, double V) {
+    try { return {new gp_Pnt(self_->EvalD0(U, V)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Geom_Surface::ResD1*> GeomPlate_Surface_eval_d1(const GeomPlate_Surface* self_, double U, double V) {
+    try { return {new Geom_Surface::ResD1(self_->EvalD1(U, V)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Geom_Surface::ResD2*> GeomPlate_Surface_eval_d2(const GeomPlate_Surface* self_, double U, double V) {
+    try { return {new Geom_Surface::ResD2(self_->EvalD2(U, V)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Geom_Surface::ResD3*> GeomPlate_Surface_eval_d3(const GeomPlate_Surface* self_, double U, double V) {
+    try { return {new Geom_Surface::ResD3(self_->EvalD3(U, V)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<gp_Vec*> GeomPlate_Surface_eval_dn(const GeomPlate_Surface* self_, double U, double V, int32_t Nu, int32_t Nv) {
+    try { return {new gp_Vec(self_->EvalDN(U, V, Nu, Nv)), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(Geom_Geometry)*> GeomPlate_Surface_copy(const GeomPlate_Surface* self_) {
@@ -15886,22 +14798,6 @@ extern "C" OcctResult<bool> GeomPlate_Surface_is_c_nv(const GeomPlate_Surface* s
     try { return {self_->IsCNv(N), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* GeomPlate_Surface_d0(const GeomPlate_Surface* self_, double U, double V, gp_Pnt* P) {
-    try { self_->D0(U, V, *P); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* GeomPlate_Surface_d1(const GeomPlate_Surface* self_, double U, double V, gp_Pnt* P, gp_Vec* D1U, gp_Vec* D1V) {
-    try { self_->D1(U, V, *P, *D1U, *D1V); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* GeomPlate_Surface_d2(const GeomPlate_Surface* self_, double U, double V, gp_Pnt* P, gp_Vec* D1U, gp_Vec* D1V, gp_Vec* D2U, gp_Vec* D2V, gp_Vec* D2UV) {
-    try { self_->D2(U, V, *P, *D1U, *D1V, *D2U, *D2V, *D2UV); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* GeomPlate_Surface_d3(const GeomPlate_Surface* self_, double U, double V, gp_Pnt* P, gp_Vec* D1U, gp_Vec* D1V, gp_Vec* D2U, gp_Vec* D2V, gp_Vec* D2UV, gp_Vec* D3U, gp_Vec* D3V, gp_Vec* D3UUV, gp_Vec* D3UVV) {
-    try { self_->D3(U, V, *P, *D1U, *D1V, *D2U, *D2V, *D2UV, *D3U, *D3V, *D3UUV, *D3UVV); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
 extern "C" const char* GeomPlate_Surface_transform(GeomPlate_Surface* self_, gp_Trsf const* T) {
     try { self_->Transform(*T); return nullptr; }
     OCCT_CATCH_RETURN_VOID
@@ -15914,7 +14810,7 @@ extern "C" const char* GeomPlate_Surface_real_bounds(const GeomPlate_Surface* se
     try { self_->RealBounds(*U1, *U2, *V1, *V2); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* GeomPlate_Surface_constraints(const GeomPlate_Surface* self_, TColgp_SequenceOfXY* Seq) {
+extern "C" const char* GeomPlate_Surface_constraints(const GeomPlate_Surface* self_, NCollection_Sequence_gp_XY* Seq) {
     try { self_->Constraints(*Seq); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -15936,28 +14832,28 @@ extern "C" OcctResult<const Geom_Geometry*> GeomPlate_Surface_as_Geom_Geometry(c
 extern "C" OcctResult<Geom_Geometry*> GeomPlate_Surface_as_Geom_Geometry_mut(GeomPlate_Surface* self_) { return {static_cast<Geom_Geometry*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> GeomPlate_Surface_as_Standard_Transient(const GeomPlate_Surface* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> GeomPlate_Surface_as_Standard_Transient_mut(GeomPlate_Surface* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleGeomPlateSurface*> GeomPlate_Surface_to_handle(GeomPlate_Surface* obj) {
-    try { return {new HandleGeomPlateSurface(obj), nullptr}; }
+extern "C" OcctResult<Handle_GeomPlate_Surface*> GeomPlate_Surface_to_handle(GeomPlate_Surface* obj) {
+    try { return {new Handle_GeomPlate_Surface(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const GeomPlate_Surface*> HandleGeomPlateSurface_get(const HandleGeomPlateSurface* handle) {
+extern "C" OcctResult<const GeomPlate_Surface*> Handle_GeomPlate_Surface_get(const Handle_GeomPlate_Surface* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<GeomPlate_Surface*> HandleGeomPlateSurface_get_mut(HandleGeomPlateSurface* handle) {
+extern "C" OcctResult<GeomPlate_Surface*> Handle_GeomPlate_Surface_get_mut(Handle_GeomPlate_Surface* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleGeomSurface*> HandleGeomPlateSurface_to_HandleGeomSurface(const HandleGeomPlateSurface* self_) {
-    try { return {new HandleGeomSurface(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Geom_Surface*> Handle_GeomPlate_Surface_to_Handle_Geom_Surface(const Handle_GeomPlate_Surface* self_) {
+    try { return {new Handle_Geom_Surface(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleGeomGeometry*> HandleGeomPlateSurface_to_HandleGeomGeometry(const HandleGeomPlateSurface* self_) {
-    try { return {new HandleGeomGeometry(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Geom_Geometry*> Handle_GeomPlate_Surface_to_Handle_Geom_Geometry(const Handle_GeomPlate_Surface* self_) {
+    try { return {new Handle_Geom_Geometry(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleGeomPlateSurface_to_HandleStandardTransient(const HandleGeomPlateSurface* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_GeomPlate_Surface_to_Handle_Standard_Transient(const Handle_GeomPlate_Surface* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(Geom_Surface)*> GeomPlate_Surface_inherited_UReversed(const GeomPlate_Surface* self) {
@@ -15966,6 +14862,26 @@ extern "C" OcctResult<Handle(Geom_Surface)*> GeomPlate_Surface_inherited_URevers
 }
 extern "C" OcctResult<Handle(Geom_Surface)*> GeomPlate_Surface_inherited_VReversed(const GeomPlate_Surface* self) {
     try { return {new Handle(Geom_Surface)(self->VReversed()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" const char* GeomPlate_Surface_inherited_D0(const GeomPlate_Surface* self, double U, double V, gp_Pnt& P) {
+    try { self->D0(U, V, P); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* GeomPlate_Surface_inherited_D1(const GeomPlate_Surface* self, double U, double V, gp_Pnt& P, gp_Vec& D1U, gp_Vec& D1V) {
+    try { self->D1(U, V, P, D1U, D1V); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* GeomPlate_Surface_inherited_D2(const GeomPlate_Surface* self, double U, double V, gp_Pnt& P, gp_Vec& D1U, gp_Vec& D1V, gp_Vec& D2U, gp_Vec& D2V, gp_Vec& D2UV) {
+    try { self->D2(U, V, P, D1U, D1V, D2U, D2V, D2UV); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* GeomPlate_Surface_inherited_D3(const GeomPlate_Surface* self, double U, double V, gp_Pnt& P, gp_Vec& D1U, gp_Vec& D1V, gp_Vec& D2U, gp_Vec& D2V, gp_Vec& D2UV, gp_Vec& D3U, gp_Vec& D3V, gp_Vec& D3UUV, gp_Vec& D3UVV) {
+    try { self->D3(U, V, P, D1U, D1V, D2U, D2V, D2UV, D3U, D3V, D3UUV, D3UVV); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" OcctResult<gp_Vec*> GeomPlate_Surface_inherited_DN(const GeomPlate_Surface* self, double U, double V, int32_t Nu, int32_t Nv) {
+    try { return {new gp_Vec(self->DN(U, V, Nu, Nv)), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<gp_Pnt*> GeomPlate_Surface_inherited_Value(const GeomPlate_Surface* self, double U, double V) {
@@ -16741,7 +15657,7 @@ extern "C" OcctResult<double> IntCurve_IntImpConicParConic_find_v(const IntCurve
     try { return {self_->FindV(parameter, *point, *TheImpTool, *ParCurve, *TheParCurveDomain, V0, V1, Tolerance), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* IntCurve_IntImpConicParConic_and_domaine_objet1_intersections(const IntCurve_IntImpConicParConic* self_, IntCurve_IConicTool const* TheImpTool, IntCurve_PConic const* TheParCurve, IntRes2d_Domain const* TheImpCurveDomain, IntRes2d_Domain const* TheParCurveDomain, int32_t* NbResultats, TColStd_Array1OfReal* Inter2_And_Domain2, TColStd_Array1OfReal* Inter1, TColStd_Array1OfReal* Resultat1, TColStd_Array1OfReal* Resultat2, double EpsNul) {
+extern "C" const char* IntCurve_IntImpConicParConic_and_domaine_objet1_intersections(const IntCurve_IntImpConicParConic* self_, IntCurve_IConicTool const* TheImpTool, IntCurve_PConic const* TheParCurve, IntRes2d_Domain const* TheImpCurveDomain, IntRes2d_Domain const* TheParCurveDomain, int32_t* NbResultats, NCollection_Array1_double* Inter2_And_Domain2, NCollection_Array1_double* Inter1, NCollection_Array1_double* Resultat1, NCollection_Array1_double* Resultat2, double EpsNul) {
     try { self_->And_Domaine_Objet1_Intersections(*TheImpTool, *TheParCurve, *TheImpCurveDomain, *TheParCurveDomain, *NbResultats, *Inter2_And_Domain2, *Inter1, *Resultat1, *Resultat2, EpsNul); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -17227,7 +16143,7 @@ extern "C" OcctResult<int32_t> IntCurveSurface_TheHCurveTool_nb_intervals(Handle
     try { return {IntCurveSurface_TheHCurveTool::NbIntervals(*C, static_cast<GeomAbs_Shape>(S)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* IntCurveSurface_TheHCurveTool_intervals(Handle(Adaptor3d_Curve) const* C, TColStd_Array1OfReal* T, int32_t S) {
+extern "C" const char* IntCurveSurface_TheHCurveTool_intervals(Handle(Adaptor3d_Curve) const* C, NCollection_Array1_double* T, int32_t S) {
     try { IntCurveSurface_TheHCurveTool::Intervals(*C, *T, static_cast<GeomAbs_Shape>(S)); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -17307,9 +16223,9 @@ extern "C" OcctResult<int32_t> IntCurveSurface_TheHCurveTool_nb_samples(Handle(A
     try { return {IntCurveSurface_TheHCurveTool::NbSamples(*C, U0, U1), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* IntCurveSurface_TheHCurveTool_sample_pars(Handle(Adaptor3d_Curve) const* C, double U0, double U1, double Defl, int32_t NbMin, Handle(TColStd_HArray1OfReal)* Pars) {
-    try { IntCurveSurface_TheHCurveTool::SamplePars(*C, U0, U1, Defl, NbMin, *Pars); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
+extern "C" OcctResult<Handle(NCollection_HArray1_double)*> IntCurveSurface_TheHCurveTool_sample_pars(Handle(Adaptor3d_Curve) const* C, double U0, double U1, double Defl, int32_t NbMin) {
+    try { return {new Handle(NCollection_HArray1_double)(IntCurveSurface_TheHCurveTool::SamplePars(*C, U0, U1, Defl, NbMin)), nullptr}; }
+    OCCT_CATCH_RETURN
 }
 extern "C" void IntCurveSurface_TheHCurveTool_destructor(IntCurveSurface_TheHCurveTool* self_) { delete self_; }
 
@@ -17329,7 +16245,7 @@ extern "C" OcctResult<IntCurveSurface_TheInterferenceOfHInter*> IntCurveSurface_
     try { return {new IntCurveSurface_TheInterferenceOfHInter(*theLin, *thePolyh), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<IntCurveSurface_TheInterferenceOfHInter*> IntCurveSurface_TheInterferenceOfHInter_ctor_array1oflin_thepolyhedronofhinter(Intf_Array1OfLin const* theLins, IntCurveSurface_ThePolyhedronOfHInter const* thePolyh) {
+extern "C" OcctResult<IntCurveSurface_TheInterferenceOfHInter*> IntCurveSurface_TheInterferenceOfHInter_ctor_arr1_lin_thepolyhedronofhinter(NCollection_Array1_gp_Lin const* theLins, IntCurveSurface_ThePolyhedronOfHInter const* thePolyh) {
     try { return {new IntCurveSurface_TheInterferenceOfHInter(*theLins, *thePolyh), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -17341,7 +16257,7 @@ extern "C" OcctResult<IntCurveSurface_TheInterferenceOfHInter*> IntCurveSurface_
     try { return {new IntCurveSurface_TheInterferenceOfHInter(*theLin, *thePolyh, *theBoundSB), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<IntCurveSurface_TheInterferenceOfHInter*> IntCurveSurface_TheInterferenceOfHInter_ctor_array1oflin_thepolyhedronofhinter_boundsortbox(Intf_Array1OfLin const* theLins, IntCurveSurface_ThePolyhedronOfHInter const* thePolyh, Bnd_BoundSortBox* theBoundSB) {
+extern "C" OcctResult<IntCurveSurface_TheInterferenceOfHInter*> IntCurveSurface_TheInterferenceOfHInter_ctor_arr1_lin_thepolyhedronofhinter_boundsortbox(NCollection_Array1_gp_Lin const* theLins, IntCurveSurface_ThePolyhedronOfHInter const* thePolyh, Bnd_BoundSortBox* theBoundSB) {
     try { return {new IntCurveSurface_TheInterferenceOfHInter(*theLins, *thePolyh, *theBoundSB), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -17353,7 +16269,7 @@ extern "C" const char* IntCurveSurface_TheInterferenceOfHInter_perform_lin_thepo
     try { self_->Perform(*theLin, *thePolyh); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* IntCurveSurface_TheInterferenceOfHInter_perform_array1oflin_thepolyhedronofhinter(IntCurveSurface_TheInterferenceOfHInter* self_, Intf_Array1OfLin const* theLins, IntCurveSurface_ThePolyhedronOfHInter const* thePolyh) {
+extern "C" const char* IntCurveSurface_TheInterferenceOfHInter_perform_arr1_lin_thepolyhedronofhinter(IntCurveSurface_TheInterferenceOfHInter* self_, NCollection_Array1_gp_Lin const* theLins, IntCurveSurface_ThePolyhedronOfHInter const* thePolyh) {
     try { self_->Perform(*theLins, *thePolyh); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -17365,7 +16281,7 @@ extern "C" const char* IntCurveSurface_TheInterferenceOfHInter_perform_lin_thepo
     try { self_->Perform(*theLin, *thePolyh, *theBoundSB); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* IntCurveSurface_TheInterferenceOfHInter_perform_array1oflin_thepolyhedronofhinter_boundsortbox(IntCurveSurface_TheInterferenceOfHInter* self_, Intf_Array1OfLin const* theLins, IntCurveSurface_ThePolyhedronOfHInter const* thePolyh, Bnd_BoundSortBox* theBoundSB) {
+extern "C" const char* IntCurveSurface_TheInterferenceOfHInter_perform_arr1_lin_thepolyhedronofhinter_boundsortbox(IntCurveSurface_TheInterferenceOfHInter* self_, NCollection_Array1_gp_Lin const* theLins, IntCurveSurface_ThePolyhedronOfHInter const* thePolyh, Bnd_BoundSortBox* theBoundSB) {
     try { self_->Perform(*theLins, *thePolyh, *theBoundSB); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -17433,7 +16349,7 @@ extern "C" OcctResult<IntCurveSurface_ThePolygonOfHInter*> IntCurveSurface_ThePo
     try { return {new IntCurveSurface_ThePolygonOfHInter(*Curve, U1, U2, NbPnt), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<IntCurveSurface_ThePolygonOfHInter*> IntCurveSurface_ThePolygonOfHInter_ctor_handleadaptor3dcurve_array1ofreal(Handle(Adaptor3d_Curve) const* Curve, TColStd_Array1OfReal const* Upars) {
+extern "C" OcctResult<IntCurveSurface_ThePolygonOfHInter*> IntCurveSurface_ThePolygonOfHInter_ctor_handleadaptor3dcurve_arr1_double(Handle(Adaptor3d_Curve) const* Curve, NCollection_Array1_double const* Upars) {
     try { return {new IntCurveSurface_ThePolygonOfHInter(*Curve, *Upars), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -17533,7 +16449,7 @@ extern "C" OcctResult<IntCurveSurface_ThePolyhedronOfHInter*> IntCurveSurface_Th
     try { return {new IntCurveSurface_ThePolyhedronOfHInter(*Surface, nbdU, nbdV, U1, V1, U2, V2), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<IntCurveSurface_ThePolyhedronOfHInter*> IntCurveSurface_ThePolyhedronOfHInter_ctor_handleadaptor3dsurface_array1ofreal2(Handle(Adaptor3d_Surface) const* Surface, TColStd_Array1OfReal const* Upars, TColStd_Array1OfReal const* Vpars) {
+extern "C" OcctResult<IntCurveSurface_ThePolyhedronOfHInter*> IntCurveSurface_ThePolyhedronOfHInter_ctor_handleadaptor3dsurface_arr1_double2(Handle(Adaptor3d_Surface) const* Surface, NCollection_Array1_double const* Upars, NCollection_Array1_double const* Vpars) {
     try { return {new IntCurveSurface_ThePolyhedronOfHInter(*Surface, *Upars, *Vpars), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -17544,10 +16460,6 @@ extern "C" const char* IntCurveSurface_ThePolyhedronOfHInter_destroy(IntCurveSur
 extern "C" const char* IntCurveSurface_ThePolyhedronOfHInter_deflection_over_estimation_real(IntCurveSurface_ThePolyhedronOfHInter* self_, double flec) {
     try { self_->DeflectionOverEstimation(flec); return nullptr; }
     OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<double> IntCurveSurface_ThePolyhedronOfHInter_deflection_on_triangle(const IntCurveSurface_ThePolyhedronOfHInter* self_, Handle(Adaptor3d_Surface) const* Surface, int32_t Index) {
-    try { return {self_->DeflectionOnTriangle(*Surface, Index), nullptr}; }
-    OCCT_CATCH_RETURN
 }
 extern "C" const char* IntCurveSurface_ThePolyhedronOfHInter_u_min_singularity(IntCurveSurface_ThePolyhedronOfHInter* self_, bool Sing) {
     try { self_->UMinSingularity(Sing); return nullptr; }
@@ -17609,7 +16521,7 @@ extern "C" const char* IntCurveSurface_ThePolyhedronOfHInter_fill_bounding(IntCu
     try { self_->FillBounding(); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<Handle(Bnd_HArray1OfBox) const*> IntCurveSurface_ThePolyhedronOfHInter_components_bounding(const IntCurveSurface_ThePolyhedronOfHInter* self_) {
+extern "C" OcctResult<Handle(NCollection_HArray1_Bnd_Box) const*> IntCurveSurface_ThePolyhedronOfHInter_components_bounding(const IntCurveSurface_ThePolyhedronOfHInter* self_) {
     try { return {&(self_->ComponentsBounding()), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -17671,7 +16583,7 @@ extern "C" OcctResult<Bnd_Box const*> IntCurveSurface_ThePolyhedronToolOfHInter_
     try { return {&(IntCurveSurface_ThePolyhedronToolOfHInter::Bounding(*thePolyh)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(Bnd_HArray1OfBox) const*> IntCurveSurface_ThePolyhedronToolOfHInter_components_bounding(IntCurveSurface_ThePolyhedronOfHInter const* thePolyh) {
+extern "C" OcctResult<Handle(NCollection_HArray1_Bnd_Box) const*> IntCurveSurface_ThePolyhedronToolOfHInter_components_bounding(IntCurveSurface_ThePolyhedronOfHInter const* thePolyh) {
     try { return {&(IntCurveSurface_ThePolyhedronToolOfHInter::ComponentsBounding(*thePolyh)), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -17851,7 +16763,7 @@ extern "C" OcctResult<bool> IntPatch_ALine_d1(IntPatch_ALine* self_, double U, g
     try { return {self_->D1(U, *P, *Du), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* IntPatch_ALine_find_parameter(const IntPatch_ALine* self_, gp_Pnt const* P, TColStd_ListOfReal* theParams) {
+extern "C" const char* IntPatch_ALine_find_parameter(const IntPatch_ALine* self_, gp_Pnt const* P, NCollection_List_double* theParams) {
     try { self_->FindParameter(*P, *theParams); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -17907,24 +16819,24 @@ extern "C" OcctResult<const IntPatch_Line*> IntPatch_ALine_as_IntPatch_Line(cons
 extern "C" OcctResult<IntPatch_Line*> IntPatch_ALine_as_IntPatch_Line_mut(IntPatch_ALine* self_) { return {static_cast<IntPatch_Line*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> IntPatch_ALine_as_Standard_Transient(const IntPatch_ALine* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> IntPatch_ALine_as_Standard_Transient_mut(IntPatch_ALine* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleIntPatchALine*> IntPatch_ALine_to_handle(IntPatch_ALine* obj) {
-    try { return {new HandleIntPatchALine(obj), nullptr}; }
+extern "C" OcctResult<Handle_IntPatch_ALine*> IntPatch_ALine_to_handle(IntPatch_ALine* obj) {
+    try { return {new Handle_IntPatch_ALine(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const IntPatch_ALine*> HandleIntPatchALine_get(const HandleIntPatchALine* handle) {
+extern "C" OcctResult<const IntPatch_ALine*> Handle_IntPatch_ALine_get(const Handle_IntPatch_ALine* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<IntPatch_ALine*> HandleIntPatchALine_get_mut(HandleIntPatchALine* handle) {
+extern "C" OcctResult<IntPatch_ALine*> Handle_IntPatch_ALine_get_mut(Handle_IntPatch_ALine* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIntPatchLine*> HandleIntPatchALine_to_HandleIntPatchLine(const HandleIntPatchALine* self_) {
-    try { return {new HandleIntPatchLine(*self_), nullptr}; }
+extern "C" OcctResult<Handle_IntPatch_Line*> Handle_IntPatch_ALine_to_Handle_IntPatch_Line(const Handle_IntPatch_ALine* self_) {
+    try { return {new Handle_IntPatch_Line(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleIntPatchALine_to_HandleStandardTransient(const HandleIntPatchALine* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_IntPatch_ALine_to_Handle_Standard_Transient(const Handle_IntPatch_ALine* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" const char* IntPatch_ALine_inherited_SetValue(IntPatch_ALine* self, bool Uiso1, bool Viso1, bool Uiso2, bool Viso2) {
@@ -18033,14 +16945,6 @@ extern "C" OcctResult<double> IntPatch_ALineToWLine_tol3_d(const IntPatch_ALineT
     try { return {self_->Tol3D(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* IntPatch_ALineToWLine_make_w_line_handleintpatchaline_sequenceofline(const IntPatch_ALineToWLine* self_, Handle(IntPatch_ALine) const* aline, IntPatch_SequenceOfLine* theLines) {
-    try { self_->MakeWLine(*aline, *theLines); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* IntPatch_ALineToWLine_make_w_line_handleintpatchaline_real2_sequenceofline(const IntPatch_ALineToWLine* self_, Handle(IntPatch_ALine) const* aline, double paraminf, double paramsup, IntPatch_SequenceOfLine* theLines) {
-    try { self_->MakeWLine(*aline, paraminf, paramsup, *theLines); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
 extern "C" void IntPatch_ALineToWLine_destructor(IntPatch_ALineToWLine* self_) { delete self_; }
 
 // ========================
@@ -18108,6 +17012,36 @@ extern "C" OcctResult<math_FunctionWithDerivative*> IntPatch_ArcFunction_as_math
 extern "C" OcctResult<const math_Function*> IntPatch_ArcFunction_as_math_Function(const IntPatch_ArcFunction* self_) { return {static_cast<const math_Function*>(self_), nullptr}; }
 extern "C" OcctResult<math_Function*> IntPatch_ArcFunction_as_math_Function_mut(IntPatch_ArcFunction* self_) { return {static_cast<math_Function*>(self_), nullptr}; }
 extern "C" void IntPatch_ArcFunction_destructor(IntPatch_ArcFunction* self_) { delete self_; }
+
+// ========================
+// IntPatch_BVHTraversal wrappers
+// ========================
+
+extern "C" OcctResult<IntPatch_BVHTraversal*> IntPatch_BVHTraversal_ctor() {
+    try { return {new IntPatch_BVHTraversal(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<int32_t> IntPatch_BVHTraversal_perform(IntPatch_BVHTraversal* self_, IntPatch_PolyhedronBVH* theSet1, IntPatch_PolyhedronBVH* theSet2, bool theSelfInterference) {
+    try { return {self_->Perform(*theSet1, *theSet2, theSelfInterference), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" const char* IntPatch_BVHTraversal_clear(IntPatch_BVHTraversal* self_) {
+    try { self_->Clear(); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" OcctResult<bool> IntPatch_BVHTraversal_reject_node(const IntPatch_BVHTraversal* self_, BVH_Vec3d const* theCMin1, BVH_Vec3d const* theCMax1, BVH_Vec3d const* theCMin2, BVH_Vec3d const* theCMax2, double* theMetric) {
+    try { return {self_->RejectNode(*theCMin1, *theCMax1, *theCMin2, *theCMax2, *theMetric), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<bool> IntPatch_BVHTraversal_accept(IntPatch_BVHTraversal* self_, int32_t theIndex1, int32_t theIndex2) {
+    try { return {self_->Accept(theIndex1, theIndex2), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" void IntPatch_BVHTraversal_destructor(IntPatch_BVHTraversal* self_) { delete self_; }
+
+// sizeof helper for POD struct IntPatch_BVHTraversal::TrianglePair
+extern "C" size_t IntPatch_BVHTraversal_TrianglePair_sizeof() { return sizeof(IntPatch_BVHTraversal::TrianglePair); }
+extern "C" void IntPatch_BVHTraversal_TrianglePair_destructor(IntPatch_BVHTraversal::TrianglePair* self_) { delete self_; }
 
 // ========================
 // IntPatch_CSFunction wrappers
@@ -18349,24 +17283,24 @@ extern "C" OcctResult<const IntPatch_Line*> IntPatch_GLine_as_IntPatch_Line(cons
 extern "C" OcctResult<IntPatch_Line*> IntPatch_GLine_as_IntPatch_Line_mut(IntPatch_GLine* self_) { return {static_cast<IntPatch_Line*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> IntPatch_GLine_as_Standard_Transient(const IntPatch_GLine* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> IntPatch_GLine_as_Standard_Transient_mut(IntPatch_GLine* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleIntPatchGLine*> IntPatch_GLine_to_handle(IntPatch_GLine* obj) {
-    try { return {new HandleIntPatchGLine(obj), nullptr}; }
+extern "C" OcctResult<Handle_IntPatch_GLine*> IntPatch_GLine_to_handle(IntPatch_GLine* obj) {
+    try { return {new Handle_IntPatch_GLine(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const IntPatch_GLine*> HandleIntPatchGLine_get(const HandleIntPatchGLine* handle) {
+extern "C" OcctResult<const IntPatch_GLine*> Handle_IntPatch_GLine_get(const Handle_IntPatch_GLine* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<IntPatch_GLine*> HandleIntPatchGLine_get_mut(HandleIntPatchGLine* handle) {
+extern "C" OcctResult<IntPatch_GLine*> Handle_IntPatch_GLine_get_mut(Handle_IntPatch_GLine* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIntPatchLine*> HandleIntPatchGLine_to_HandleIntPatchLine(const HandleIntPatchGLine* self_) {
-    try { return {new HandleIntPatchLine(*self_), nullptr}; }
+extern "C" OcctResult<Handle_IntPatch_Line*> Handle_IntPatch_GLine_to_Handle_IntPatch_Line(const Handle_IntPatch_GLine* self_) {
+    try { return {new Handle_IntPatch_Line(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleIntPatchGLine_to_HandleStandardTransient(const HandleIntPatchGLine* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_IntPatch_GLine_to_Handle_Standard_Transient(const Handle_IntPatch_GLine* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" const char* IntPatch_GLine_inherited_SetValue(IntPatch_GLine* self, bool Uiso1, bool Viso1, bool Uiso2, bool Viso2) {
@@ -18467,7 +17401,7 @@ extern "C" OcctResult<int32_t> IntPatch_HCurve2dTool_nb_intervals(Handle(Adaptor
     try { return {IntPatch_HCurve2dTool::NbIntervals(*C, static_cast<GeomAbs_Shape>(S)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* IntPatch_HCurve2dTool_intervals(Handle(Adaptor2d_Curve2d) const* C, TColStd_Array1OfReal* T, int32_t S) {
+extern "C" const char* IntPatch_HCurve2dTool_intervals(Handle(Adaptor2d_Curve2d) const* C, NCollection_Array1_double* T, int32_t S) {
     try { IntPatch_HCurve2dTool::Intervals(*C, *T, static_cast<GeomAbs_Shape>(S)); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -18839,7 +17773,7 @@ extern "C" const char* IntPatch_Intersection_perform_handleadaptor3dsurface_hand
     try { self_->Perform(*S1, *D1, *S2, *D2, TolArc, TolTang, isGeomInt, theIsReqToKeepRLine, theIsReqToPostWLProc); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* IntPatch_Intersection_perform_handleadaptor3dsurface_handleadaptor3dtopoltool_handleadaptor3dsurface_handleadaptor3dtopoltool_real2_listofpnton2s_bool3(IntPatch_Intersection* self_, Handle(Adaptor3d_Surface) const* S1, Handle(Adaptor3d_TopolTool) const* D1, Handle(Adaptor3d_Surface) const* S2, Handle(Adaptor3d_TopolTool) const* D2, double TolArc, double TolTang, IntSurf_ListOfPntOn2S* LOfPnts, bool isGeomInt, bool theIsReqToKeepRLine, bool theIsReqToPostWLProc) {
+extern "C" const char* IntPatch_Intersection_perform_handleadaptor3dsurface_handleadaptor3dtopoltool_handleadaptor3dsurface_handleadaptor3dtopoltool_real2_list_pnton2s_bool3(IntPatch_Intersection* self_, Handle(Adaptor3d_Surface) const* S1, Handle(Adaptor3d_TopolTool) const* D1, Handle(Adaptor3d_Surface) const* S2, Handle(Adaptor3d_TopolTool) const* D2, double TolArc, double TolTang, NCollection_List_IntSurf_PntOn2S* LOfPnts, bool isGeomInt, bool theIsReqToKeepRLine, bool theIsReqToPostWLProc) {
     try { self_->Perform(*S1, *D1, *S2, *D2, TolArc, TolTang, *LOfPnts, isGeomInt, theIsReqToKeepRLine, theIsReqToPostWLProc); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -18883,10 +17817,6 @@ extern "C" OcctResult<Handle(IntPatch_Line) const*> IntPatch_Intersection_line(c
     try { return {&(self_->Line(Index)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<IntPatch_SequenceOfLine const*> IntPatch_Intersection_sequence_of_line(const IntPatch_Intersection* self_) {
-    try { return {&(self_->SequenceOfLine()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
 extern "C" const char* IntPatch_Intersection_dump(const IntPatch_Intersection* self_, int32_t Mode, Handle(Adaptor3d_Surface) const* S1, Handle(Adaptor3d_TopolTool) const* D1, Handle(Adaptor3d_Surface) const* S2, Handle(Adaptor3d_TopolTool) const* D2) {
     try { self_->Dump(Mode, *S1, *D1, *S2, *D2); return nullptr; }
     OCCT_CATCH_RETURN_VOID
@@ -18898,10 +17828,6 @@ extern "C" OcctResult<bool> IntPatch_Intersection_check_singular_points(Handle(A
 extern "C" OcctResult<double> IntPatch_Intersection_define_uv_max_step(Handle(Adaptor3d_Surface) const* theS1, Handle(Adaptor3d_TopolTool) const* theD1, Handle(Adaptor3d_Surface) const* theS2, Handle(Adaptor3d_TopolTool) const* theD2) {
     try { return {IntPatch_Intersection::DefineUVMaxStep(*theS1, *theD1, *theS2, *theD2), nullptr}; }
     OCCT_CATCH_RETURN
-}
-extern "C" const char* IntPatch_Intersection_prepare_surfaces(Handle(Adaptor3d_Surface) const* theS1, Handle(Adaptor3d_TopolTool) const* theD1, Handle(Adaptor3d_Surface) const* theS2, Handle(Adaptor3d_TopolTool) const* theD2, double Tol, NCollection_Vector_opencascade_handle_Adaptor3d_Surface* theSeqHS1, NCollection_Vector_opencascade_handle_Adaptor3d_Surface* theSeqHS2) {
-    try { IntPatch_Intersection::PrepareSurfaces(*theS1, *theD1, *theS2, *theD2, Tol, *theSeqHS1, *theSeqHS2); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
 }
 extern "C" void IntPatch_Intersection_destructor(IntPatch_Intersection* self_) { delete self_; }
 
@@ -18967,51 +17893,51 @@ extern "C" OcctResult<Handle(Standard_Type) const*> IntPatch_Line_get_type_descr
 }
 extern "C" OcctResult<const Standard_Transient*> IntPatch_Line_as_Standard_Transient(const IntPatch_Line* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> IntPatch_Line_as_Standard_Transient_mut(IntPatch_Line* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleIntPatchLine*> IntPatch_Line_to_handle(IntPatch_Line* obj) {
-    try { return {new HandleIntPatchLine(obj), nullptr}; }
+extern "C" OcctResult<Handle_IntPatch_Line*> IntPatch_Line_to_handle(IntPatch_Line* obj) {
+    try { return {new Handle_IntPatch_Line(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const IntPatch_Line*> HandleIntPatchLine_get(const HandleIntPatchLine* handle) {
+extern "C" OcctResult<const IntPatch_Line*> Handle_IntPatch_Line_get(const Handle_IntPatch_Line* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<IntPatch_Line*> HandleIntPatchLine_get_mut(HandleIntPatchLine* handle) {
+extern "C" OcctResult<IntPatch_Line*> Handle_IntPatch_Line_get_mut(Handle_IntPatch_Line* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleIntPatchLine_to_HandleStandardTransient(const HandleIntPatchLine* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_IntPatch_Line_to_Handle_Standard_Transient(const Handle_IntPatch_Line* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIntPatchALine*> HandleIntPatchLine_downcast_to_HandleIntPatchALine(const HandleIntPatchLine* self_) {
+extern "C" OcctResult<Handle_IntPatch_ALine*> Handle_IntPatch_Line_downcast_to_Handle_IntPatch_ALine(const Handle_IntPatch_Line* self_) {
     try {
     opencascade::handle<IntPatch_ALine> result = opencascade::handle<IntPatch_ALine>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleIntPatchALine(result), nullptr};
+    return {new Handle_IntPatch_ALine(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIntPatchGLine*> HandleIntPatchLine_downcast_to_HandleIntPatchGLine(const HandleIntPatchLine* self_) {
+extern "C" OcctResult<Handle_IntPatch_GLine*> Handle_IntPatch_Line_downcast_to_Handle_IntPatch_GLine(const Handle_IntPatch_Line* self_) {
     try {
     opencascade::handle<IntPatch_GLine> result = opencascade::handle<IntPatch_GLine>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleIntPatchGLine(result), nullptr};
+    return {new Handle_IntPatch_GLine(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIntPatchRLine*> HandleIntPatchLine_downcast_to_HandleIntPatchRLine(const HandleIntPatchLine* self_) {
+extern "C" OcctResult<Handle_IntPatch_RLine*> Handle_IntPatch_Line_downcast_to_Handle_IntPatch_RLine(const Handle_IntPatch_Line* self_) {
     try {
     opencascade::handle<IntPatch_RLine> result = opencascade::handle<IntPatch_RLine>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleIntPatchRLine(result), nullptr};
+    return {new Handle_IntPatch_RLine(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIntPatchWLine*> HandleIntPatchLine_downcast_to_HandleIntPatchWLine(const HandleIntPatchLine* self_) {
+extern "C" OcctResult<Handle_IntPatch_WLine*> Handle_IntPatch_Line_downcast_to_Handle_IntPatch_WLine(const Handle_IntPatch_Line* self_) {
     try {
     opencascade::handle<IntPatch_WLine> result = opencascade::handle<IntPatch_WLine>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleIntPatchWLine(result), nullptr};
+    return {new Handle_IntPatch_WLine(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
@@ -19056,10 +17982,6 @@ extern "C" OcctResult<IntPatch_LineConstructor*> IntPatch_LineConstructor_ctor_i
 extern "C" OcctResult<Handle(IntPatch_Line)*> IntPatch_LineConstructor_line(const IntPatch_LineConstructor* self_, int32_t index) {
     try { return {new Handle(IntPatch_Line)(self_->Line(index)), nullptr}; }
     OCCT_CATCH_RETURN
-}
-extern "C" const char* IntPatch_LineConstructor_perform(IntPatch_LineConstructor* self_, IntPatch_SequenceOfLine const* SL, Handle(IntPatch_Line) const* L, Handle(Adaptor3d_Surface) const* S1, Handle(Adaptor3d_TopolTool) const* D1, Handle(Adaptor3d_Surface) const* S2, Handle(Adaptor3d_TopolTool) const* D2, double Tol) {
-    try { self_->Perform(*SL, *L, *S1, *D1, *S2, *D2, Tol); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
 }
 extern "C" OcctResult<int32_t> IntPatch_LineConstructor_nb_lines(const IntPatch_LineConstructor* self_) {
     try { return {self_->NbLines(), nullptr}; }
@@ -19285,35 +18207,35 @@ extern "C" OcctResult<const IntPatch_Line*> IntPatch_PointLine_as_IntPatch_Line(
 extern "C" OcctResult<IntPatch_Line*> IntPatch_PointLine_as_IntPatch_Line_mut(IntPatch_PointLine* self_) { return {static_cast<IntPatch_Line*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> IntPatch_PointLine_as_Standard_Transient(const IntPatch_PointLine* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> IntPatch_PointLine_as_Standard_Transient_mut(IntPatch_PointLine* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<const IntPatch_PointLine*> HandleIntPatchPointLine_get(const HandleIntPatchPointLine* handle) {
+extern "C" OcctResult<const IntPatch_PointLine*> Handle_IntPatch_PointLine_get(const Handle_IntPatch_PointLine* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<IntPatch_PointLine*> HandleIntPatchPointLine_get_mut(HandleIntPatchPointLine* handle) {
+extern "C" OcctResult<IntPatch_PointLine*> Handle_IntPatch_PointLine_get_mut(Handle_IntPatch_PointLine* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIntPatchLine*> HandleIntPatchPointLine_to_HandleIntPatchLine(const HandleIntPatchPointLine* self_) {
-    try { return {new HandleIntPatchLine(*self_), nullptr}; }
+extern "C" OcctResult<Handle_IntPatch_Line*> Handle_IntPatch_PointLine_to_Handle_IntPatch_Line(const Handle_IntPatch_PointLine* self_) {
+    try { return {new Handle_IntPatch_Line(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleIntPatchPointLine_to_HandleStandardTransient(const HandleIntPatchPointLine* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_IntPatch_PointLine_to_Handle_Standard_Transient(const Handle_IntPatch_PointLine* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIntPatchRLine*> HandleIntPatchPointLine_downcast_to_HandleIntPatchRLine(const HandleIntPatchPointLine* self_) {
+extern "C" OcctResult<Handle_IntPatch_RLine*> Handle_IntPatch_PointLine_downcast_to_Handle_IntPatch_RLine(const Handle_IntPatch_PointLine* self_) {
     try {
     opencascade::handle<IntPatch_RLine> result = opencascade::handle<IntPatch_RLine>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleIntPatchRLine(result), nullptr};
+    return {new Handle_IntPatch_RLine(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIntPatchWLine*> HandleIntPatchPointLine_downcast_to_HandleIntPatchWLine(const HandleIntPatchPointLine* self_) {
+extern "C" OcctResult<Handle_IntPatch_WLine*> Handle_IntPatch_PointLine_downcast_to_Handle_IntPatch_WLine(const Handle_IntPatch_PointLine* self_) {
     try {
     opencascade::handle<IntPatch_WLine> result = opencascade::handle<IntPatch_WLine>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleIntPatchWLine(result), nullptr};
+    return {new Handle_IntPatch_WLine(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
@@ -19583,10 +18505,6 @@ extern "C" const char* IntPatch_Polyhedron_deflection_over_estimation_real(IntPa
     try { self_->DeflectionOverEstimation(flec); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<double> IntPatch_Polyhedron_deflection_on_triangle(const IntPatch_Polyhedron* self_, Handle(Adaptor3d_Surface) const* Surface, int32_t Index) {
-    try { return {self_->DeflectionOnTriangle(*Surface, Index), nullptr}; }
-    OCCT_CATCH_RETURN
-}
 extern "C" const char* IntPatch_Polyhedron_u_min_singularity(IntPatch_Polyhedron* self_, bool Sing) {
     try { self_->UMinSingularity(Sing); return nullptr; }
     OCCT_CATCH_RETURN_VOID
@@ -19647,7 +18565,7 @@ extern "C" const char* IntPatch_Polyhedron_fill_bounding(IntPatch_Polyhedron* se
     try { self_->FillBounding(); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<Handle(Bnd_HArray1OfBox) const*> IntPatch_Polyhedron_components_bounding(const IntPatch_Polyhedron* self_) {
+extern "C" OcctResult<Handle(NCollection_HArray1_Bnd_Box) const*> IntPatch_Polyhedron_components_bounding(const IntPatch_Polyhedron* self_) {
     try { return {&(self_->ComponentsBounding()), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -19690,6 +18608,64 @@ extern "C" const char* IntPatch_Polyhedron_dump(const IntPatch_Polyhedron* self_
 extern "C" void IntPatch_Polyhedron_destructor(IntPatch_Polyhedron* self_) { delete self_; }
 
 // ========================
+// IntPatch_PolyhedronBVH wrappers
+// ========================
+
+extern "C" OcctResult<IntPatch_PolyhedronBVH*> IntPatch_PolyhedronBVH_ctor() {
+    try { return {new IntPatch_PolyhedronBVH(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<IntPatch_PolyhedronBVH*> IntPatch_PolyhedronBVH_ctor_polyhedron(IntPatch_Polyhedron const* thePoly) {
+    try { return {new IntPatch_PolyhedronBVH(*thePoly), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Select3D_BndBox3d*> IntPatch_PolyhedronBVH_box_(const IntPatch_PolyhedronBVH* self_, int32_t theIndex) {
+    try { return {new Select3D_BndBox3d(self_->Box(theIndex)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" const char* IntPatch_PolyhedronBVH_init(IntPatch_PolyhedronBVH* self_, IntPatch_Polyhedron const* thePoly) {
+    try { self_->Init(*thePoly); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* IntPatch_PolyhedronBVH_clear(IntPatch_PolyhedronBVH* self_) {
+    try { self_->Clear(); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" OcctResult<int32_t> IntPatch_PolyhedronBVH_size(const IntPatch_PolyhedronBVH* self_) {
+    try { return {self_->Size(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<double> IntPatch_PolyhedronBVH_center(const IntPatch_PolyhedronBVH* self_, int32_t theIndex, int32_t theAxis) {
+    try { return {self_->Center(theIndex, theAxis), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" const char* IntPatch_PolyhedronBVH_swap(IntPatch_PolyhedronBVH* self_, int32_t theIndex1, int32_t theIndex2) {
+    try { self_->Swap(theIndex1, theIndex2); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" OcctResult<int32_t> IntPatch_PolyhedronBVH_original_index(const IntPatch_PolyhedronBVH* self_, int32_t theIndex) {
+    try { return {self_->OriginalIndex(theIndex), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<bool> IntPatch_PolyhedronBVH_is_initialized(const IntPatch_PolyhedronBVH* self_) {
+    try { return {self_->IsInitialized(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Handle_IntPatch_PolyhedronBVH*> IntPatch_PolyhedronBVH_to_handle(IntPatch_PolyhedronBVH* obj) {
+    try { return {new Handle_IntPatch_PolyhedronBVH(obj), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<const IntPatch_PolyhedronBVH*> Handle_IntPatch_PolyhedronBVH_get(const Handle_IntPatch_PolyhedronBVH* handle) {
+    try { return {(*handle).get(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<IntPatch_PolyhedronBVH*> Handle_IntPatch_PolyhedronBVH_get_mut(Handle_IntPatch_PolyhedronBVH* handle) {
+    try { return {(*handle).get(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" void IntPatch_PolyhedronBVH_destructor(IntPatch_PolyhedronBVH* self_) { delete self_; }
+
+// ========================
 // IntPatch_PolyhedronTool wrappers
 // ========================
 
@@ -19701,7 +18677,7 @@ extern "C" OcctResult<Bnd_Box const*> IntPatch_PolyhedronTool_bounding(IntPatch_
     try { return {&(IntPatch_PolyhedronTool::Bounding(*thePolyh)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(Bnd_HArray1OfBox) const*> IntPatch_PolyhedronTool_components_bounding(IntPatch_Polyhedron const* thePolyh) {
+extern "C" OcctResult<Handle(NCollection_HArray1_Bnd_Box) const*> IntPatch_PolyhedronTool_components_bounding(IntPatch_Polyhedron const* thePolyh) {
     try { return {&(IntPatch_PolyhedronTool::ComponentsBounding(*thePolyh)), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -19751,7 +18727,7 @@ extern "C" const char* IntPatch_PrmPrmIntersection_perform_handleadaptor3dsurfac
     try { self_->Perform(*Caro1, *Domain1, *Caro2, *Domain2, TolTangency, Epsilon, Deflection, Increment, ClearFlag); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* IntPatch_PrmPrmIntersection_perform_handleadaptor3dsurface_handleadaptor3dtopoltool_handleadaptor3dsurface_handleadaptor3dtopoltool_real4_listofpnton2s(IntPatch_PrmPrmIntersection* self_, Handle(Adaptor3d_Surface) const* Caro1, Handle(Adaptor3d_TopolTool) const* Domain1, Handle(Adaptor3d_Surface) const* Caro2, Handle(Adaptor3d_TopolTool) const* Domain2, double TolTangency, double Epsilon, double Deflection, double Increment, IntSurf_ListOfPntOn2S* ListOfPnts) {
+extern "C" const char* IntPatch_PrmPrmIntersection_perform_handleadaptor3dsurface_handleadaptor3dtopoltool_handleadaptor3dsurface_handleadaptor3dtopoltool_real4_list_pnton2s(IntPatch_PrmPrmIntersection* self_, Handle(Adaptor3d_Surface) const* Caro1, Handle(Adaptor3d_TopolTool) const* Domain1, Handle(Adaptor3d_Surface) const* Caro2, Handle(Adaptor3d_TopolTool) const* Domain2, double TolTangency, double Epsilon, double Deflection, double Increment, NCollection_List_IntSurf_PntOn2S* ListOfPnts) {
     try { self_->Perform(*Caro1, *Domain1, *Caro2, *Domain2, TolTangency, Epsilon, Deflection, Increment, *ListOfPnts); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -20029,28 +19005,28 @@ extern "C" OcctResult<const IntPatch_Line*> IntPatch_RLine_as_IntPatch_Line(cons
 extern "C" OcctResult<IntPatch_Line*> IntPatch_RLine_as_IntPatch_Line_mut(IntPatch_RLine* self_) { return {static_cast<IntPatch_Line*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> IntPatch_RLine_as_Standard_Transient(const IntPatch_RLine* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> IntPatch_RLine_as_Standard_Transient_mut(IntPatch_RLine* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleIntPatchRLine*> IntPatch_RLine_to_handle(IntPatch_RLine* obj) {
-    try { return {new HandleIntPatchRLine(obj), nullptr}; }
+extern "C" OcctResult<Handle_IntPatch_RLine*> IntPatch_RLine_to_handle(IntPatch_RLine* obj) {
+    try { return {new Handle_IntPatch_RLine(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const IntPatch_RLine*> HandleIntPatchRLine_get(const HandleIntPatchRLine* handle) {
+extern "C" OcctResult<const IntPatch_RLine*> Handle_IntPatch_RLine_get(const Handle_IntPatch_RLine* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<IntPatch_RLine*> HandleIntPatchRLine_get_mut(HandleIntPatchRLine* handle) {
+extern "C" OcctResult<IntPatch_RLine*> Handle_IntPatch_RLine_get_mut(Handle_IntPatch_RLine* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIntPatchPointLine*> HandleIntPatchRLine_to_HandleIntPatchPointLine(const HandleIntPatchRLine* self_) {
-    try { return {new HandleIntPatchPointLine(*self_), nullptr}; }
+extern "C" OcctResult<Handle_IntPatch_PointLine*> Handle_IntPatch_RLine_to_Handle_IntPatch_PointLine(const Handle_IntPatch_RLine* self_) {
+    try { return {new Handle_IntPatch_PointLine(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIntPatchLine*> HandleIntPatchRLine_to_HandleIntPatchLine(const HandleIntPatchRLine* self_) {
-    try { return {new HandleIntPatchLine(*self_), nullptr}; }
+extern "C" OcctResult<Handle_IntPatch_Line*> Handle_IntPatch_RLine_to_Handle_IntPatch_Line(const Handle_IntPatch_RLine* self_) {
+    try { return {new Handle_IntPatch_Line(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleIntPatchRLine_to_HandleStandardTransient(const HandleIntPatchRLine* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_IntPatch_RLine_to_Handle_Standard_Transient(const Handle_IntPatch_RLine* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" const char* IntPatch_RLine_inherited_SetValue(IntPatch_RLine* self, bool Uiso1, bool Viso1, bool Uiso2, bool Viso2) {
@@ -20301,20 +19277,20 @@ extern "C" OcctResult<Handle(Standard_Type) const*> IntPatch_TheIWLineOfTheIWalk
 }
 extern "C" OcctResult<const Standard_Transient*> IntPatch_TheIWLineOfTheIWalking_as_Standard_Transient(const IntPatch_TheIWLineOfTheIWalking* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> IntPatch_TheIWLineOfTheIWalking_as_Standard_Transient_mut(IntPatch_TheIWLineOfTheIWalking* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleIntPatchTheIWLineOfTheIWalking*> IntPatch_TheIWLineOfTheIWalking_to_handle(IntPatch_TheIWLineOfTheIWalking* obj) {
-    try { return {new HandleIntPatchTheIWLineOfTheIWalking(obj), nullptr}; }
+extern "C" OcctResult<Handle_IntPatch_TheIWLineOfTheIWalking*> IntPatch_TheIWLineOfTheIWalking_to_handle(IntPatch_TheIWLineOfTheIWalking* obj) {
+    try { return {new Handle_IntPatch_TheIWLineOfTheIWalking(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const IntPatch_TheIWLineOfTheIWalking*> HandleIntPatchTheIWLineOfTheIWalking_get(const HandleIntPatchTheIWLineOfTheIWalking* handle) {
+extern "C" OcctResult<const IntPatch_TheIWLineOfTheIWalking*> Handle_IntPatch_TheIWLineOfTheIWalking_get(const Handle_IntPatch_TheIWLineOfTheIWalking* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<IntPatch_TheIWLineOfTheIWalking*> HandleIntPatchTheIWLineOfTheIWalking_get_mut(HandleIntPatchTheIWLineOfTheIWalking* handle) {
+extern "C" OcctResult<IntPatch_TheIWLineOfTheIWalking*> Handle_IntPatch_TheIWLineOfTheIWalking_get_mut(Handle_IntPatch_TheIWLineOfTheIWalking* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleIntPatchTheIWLineOfTheIWalking_to_HandleStandardTransient(const HandleIntPatchTheIWLineOfTheIWalking* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_IntPatch_TheIWLineOfTheIWalking_to_Handle_Standard_Transient(const Handle_IntPatch_TheIWLineOfTheIWalking* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> IntPatch_TheIWLineOfTheIWalking_inherited_IsInstance(const IntPatch_TheIWLineOfTheIWalking* self, Handle(Standard_Type) const& theType) {
@@ -20359,11 +19335,11 @@ extern "C" const char* IntPatch_TheIWalking_set_tolerance(IntPatch_TheIWalking* 
     try { self_->SetTolerance(Epsilon, Deflection, Step); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* IntPatch_TheIWalking_perform_sequenceofpathpoint_sequenceofinteriorpoint_thesurffunction_handleadaptor3dsurface_bool(IntPatch_TheIWalking* self_, IntSurf_SequenceOfPathPoint const* Pnts1, IntSurf_SequenceOfInteriorPoint const* Pnts2, IntPatch_TheSurfFunction* Func, Handle(Adaptor3d_Surface) const* S, bool Reversed) {
+extern "C" const char* IntPatch_TheIWalking_perform_seq_pathpoint_seq_interiorpoint_thesurffunction_handleadaptor3dsurface_bool(IntPatch_TheIWalking* self_, NCollection_Sequence_IntSurf_PathPoint const* Pnts1, NCollection_Sequence_IntSurf_InteriorPoint const* Pnts2, IntPatch_TheSurfFunction* Func, Handle(Adaptor3d_Surface) const* S, bool Reversed) {
     try { self_->Perform(*Pnts1, *Pnts2, *Func, *S, Reversed); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* IntPatch_TheIWalking_perform_sequenceofpathpoint_thesurffunction_handleadaptor3dsurface_bool(IntPatch_TheIWalking* self_, IntSurf_SequenceOfPathPoint const* Pnts1, IntPatch_TheSurfFunction* Func, Handle(Adaptor3d_Surface) const* S, bool Reversed) {
+extern "C" const char* IntPatch_TheIWalking_perform_seq_pathpoint_thesurffunction_handleadaptor3dsurface_bool(IntPatch_TheIWalking* self_, NCollection_Sequence_IntSurf_PathPoint const* Pnts1, IntPatch_TheSurfFunction* Func, Handle(Adaptor3d_Surface) const* S, bool Reversed) {
     try { self_->Perform(*Pnts1, *Func, *S, Reversed); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -20833,28 +19809,28 @@ extern "C" OcctResult<const IntPatch_Line*> IntPatch_WLine_as_IntPatch_Line(cons
 extern "C" OcctResult<IntPatch_Line*> IntPatch_WLine_as_IntPatch_Line_mut(IntPatch_WLine* self_) { return {static_cast<IntPatch_Line*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> IntPatch_WLine_as_Standard_Transient(const IntPatch_WLine* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> IntPatch_WLine_as_Standard_Transient_mut(IntPatch_WLine* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleIntPatchWLine*> IntPatch_WLine_to_handle(IntPatch_WLine* obj) {
-    try { return {new HandleIntPatchWLine(obj), nullptr}; }
+extern "C" OcctResult<Handle_IntPatch_WLine*> IntPatch_WLine_to_handle(IntPatch_WLine* obj) {
+    try { return {new Handle_IntPatch_WLine(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const IntPatch_WLine*> HandleIntPatchWLine_get(const HandleIntPatchWLine* handle) {
+extern "C" OcctResult<const IntPatch_WLine*> Handle_IntPatch_WLine_get(const Handle_IntPatch_WLine* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<IntPatch_WLine*> HandleIntPatchWLine_get_mut(HandleIntPatchWLine* handle) {
+extern "C" OcctResult<IntPatch_WLine*> Handle_IntPatch_WLine_get_mut(Handle_IntPatch_WLine* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIntPatchPointLine*> HandleIntPatchWLine_to_HandleIntPatchPointLine(const HandleIntPatchWLine* self_) {
-    try { return {new HandleIntPatchPointLine(*self_), nullptr}; }
+extern "C" OcctResult<Handle_IntPatch_PointLine*> Handle_IntPatch_WLine_to_Handle_IntPatch_PointLine(const Handle_IntPatch_WLine* self_) {
+    try { return {new Handle_IntPatch_PointLine(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleIntPatchLine*> HandleIntPatchWLine_to_HandleIntPatchLine(const HandleIntPatchWLine* self_) {
-    try { return {new HandleIntPatchLine(*self_), nullptr}; }
+extern "C" OcctResult<Handle_IntPatch_Line*> Handle_IntPatch_WLine_to_Handle_IntPatch_Line(const Handle_IntPatch_WLine* self_) {
+    try { return {new Handle_IntPatch_Line(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleIntPatchWLine_to_HandleStandardTransient(const HandleIntPatchWLine* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_IntPatch_WLine_to_Handle_Standard_Transient(const Handle_IntPatch_WLine* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" const char* IntPatch_WLine_inherited_SetValue(IntPatch_WLine* self, bool Uiso1, bool Viso1, bool Uiso2, bool Viso2) {
@@ -20942,14 +19918,6 @@ extern "C" OcctResult<IntPatch_WLineTool*> IntPatch_WLineTool_ctor() {
 extern "C" OcctResult<Handle(IntPatch_WLine)*> IntPatch_WLineTool_compute_purged_w_line(Handle(IntPatch_WLine) const* theWLine, Handle(Adaptor3d_Surface) const* theS1, Handle(Adaptor3d_Surface) const* theS2, Handle(Adaptor3d_TopolTool) const* theDom1, Handle(Adaptor3d_TopolTool) const* theDom2) {
     try { return {new Handle(IntPatch_WLine)(IntPatch_WLineTool::ComputePurgedWLine(*theWLine, *theS1, *theS2, *theDom1, *theDom2)), nullptr}; }
     OCCT_CATCH_RETURN
-}
-extern "C" const char* IntPatch_WLineTool_join_w_lines(IntPatch_SequenceOfLine* theSlin, IntPatch_SequenceOfPoint* theSPnt, Handle(Adaptor3d_Surface) const* theS1, Handle(Adaptor3d_Surface) const* theS2, double theTol3D) {
-    try { IntPatch_WLineTool::JoinWLines(*theSlin, *theSPnt, *theS1, *theS2, theTol3D); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* IntPatch_WLineTool_extend_two_w_lines(IntPatch_SequenceOfLine* theSlin, Handle(Adaptor3d_Surface) const* theS1, Handle(Adaptor3d_Surface) const* theS2, double theToler3D, double const* theArrPeriods, Bnd_Box2d const* theBoxS1, Bnd_Box2d const* theBoxS2, NCollection_List_gp_Pnt const* theListOfCriticalPoints) {
-    try { IntPatch_WLineTool::ExtendTwoWLines(*theSlin, *theS1, *theS2, theToler3D, theArrPeriods, *theBoxS1, *theBoxS2, *theListOfCriticalPoints); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
 }
 extern "C" void IntPatch_WLineTool_destructor(IntPatch_WLineTool* self_) { delete self_; }
 
@@ -21075,7 +20043,7 @@ extern "C" OcctResult<IntPolyh_Intersection*> IntPolyh_Intersection_ctor_handlea
     try { return {new IntPolyh_Intersection(*theS1, theNbSU1, theNbSV1, *theS2, theNbSU2, theNbSV2), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<IntPolyh_Intersection*> IntPolyh_Intersection_ctor_handleadaptor3dsurface_array1ofreal2_handleadaptor3dsurface_array1ofreal2(Handle(Adaptor3d_Surface) const* theS1, TColStd_Array1OfReal const* theUPars1, TColStd_Array1OfReal const* theVPars1, Handle(Adaptor3d_Surface) const* theS2, TColStd_Array1OfReal const* theUPars2, TColStd_Array1OfReal const* theVPars2) {
+extern "C" OcctResult<IntPolyh_Intersection*> IntPolyh_Intersection_ctor_handleadaptor3dsurface_arr1_double2_handleadaptor3dsurface_arr1_double2(Handle(Adaptor3d_Surface) const* theS1, NCollection_Array1_double const* theUPars1, NCollection_Array1_double const* theVPars1, Handle(Adaptor3d_Surface) const* theS2, NCollection_Array1_double const* theUPars2, NCollection_Array1_double const* theVPars2) {
     try { return {new IntPolyh_Intersection(*theS1, *theUPars1, *theVPars1, *theS2, *theUPars2, *theVPars2), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -21129,7 +20097,7 @@ extern "C" OcctResult<Bnd_Box*> IntPolyh_MaillageAffinage_get_box(const IntPolyh
     try { return {new Bnd_Box(self_->GetBox(SurfID)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* IntPolyh_MaillageAffinage_make_sampling(IntPolyh_MaillageAffinage* self_, int32_t SurfID, TColStd_Array1OfReal* theUPars, TColStd_Array1OfReal* theVPars) {
+extern "C" const char* IntPolyh_MaillageAffinage_make_sampling(IntPolyh_MaillageAffinage* self_, int32_t SurfID, NCollection_Array1_double* theUPars, NCollection_Array1_double* theVPars) {
     try { self_->MakeSampling(SurfID, *theUPars, *theVPars); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -21141,15 +20109,15 @@ extern "C" const char* IntPolyh_MaillageAffinage_fill_array_of_pnt_int_bool(IntP
     try { self_->FillArrayOfPnt(SurfID, isShiftFwd); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* IntPolyh_MaillageAffinage_fill_array_of_pnt_int_array1ofreal2_realptr(IntPolyh_MaillageAffinage* self_, int32_t SurfID, TColStd_Array1OfReal const* Upars, TColStd_Array1OfReal const* Vpars, const double* theDeflTol) {
+extern "C" const char* IntPolyh_MaillageAffinage_fill_array_of_pnt_int_arr1_double2_realptr(IntPolyh_MaillageAffinage* self_, int32_t SurfID, NCollection_Array1_double const* Upars, NCollection_Array1_double const* Vpars, const double* theDeflTol) {
     try { self_->FillArrayOfPnt(SurfID, *Upars, *Vpars, theDeflTol); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* IntPolyh_MaillageAffinage_fill_array_of_pnt_int_bool_array1ofreal2_realptr(IntPolyh_MaillageAffinage* self_, int32_t SurfID, bool isShiftFwd, TColStd_Array1OfReal const* Upars, TColStd_Array1OfReal const* Vpars, const double* theDeflTol) {
+extern "C" const char* IntPolyh_MaillageAffinage_fill_array_of_pnt_int_bool_arr1_double2_realptr(IntPolyh_MaillageAffinage* self_, int32_t SurfID, bool isShiftFwd, NCollection_Array1_double const* Upars, NCollection_Array1_double const* Vpars, const double* theDeflTol) {
     try { self_->FillArrayOfPnt(SurfID, isShiftFwd, *Upars, *Vpars, theDeflTol); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* IntPolyh_MaillageAffinage_fill_array_of_pnt_int_bool_arrayofpointnormal_array1ofreal2_real(IntPolyh_MaillageAffinage* self_, int32_t SurfID, bool isShiftFwd, IntPolyh_ArrayOfPointNormal const* thePoints, TColStd_Array1OfReal const* theUPars, TColStd_Array1OfReal const* theVPars, double theDeflTol) {
+extern "C" const char* IntPolyh_MaillageAffinage_fill_array_of_pnt_int_bool_arrayofpointnormal_arr1_double2_real(IntPolyh_MaillageAffinage* self_, int32_t SurfID, bool isShiftFwd, IntPolyh_ArrayOfPointNormal const* thePoints, NCollection_Array1_double const* theUPars, NCollection_Array1_double const* theVPars, double theDeflTol) {
     try { self_->FillArrayOfPnt(SurfID, isShiftFwd, *thePoints, *theUPars, *theVPars, theDeflTol); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -21233,7 +20201,7 @@ extern "C" OcctResult<int32_t> IntPolyh_MaillageAffinage_get_fin_tt(const IntPol
     try { return {self_->GetFinTT(SurfID), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<IntPolyh_ListOfCouples*> IntPolyh_MaillageAffinage_get_couples(IntPolyh_MaillageAffinage* self_) {
+extern "C" OcctResult<NCollection_List_IntPolyh_Couple*> IntPolyh_MaillageAffinage_get_couples(IntPolyh_MaillageAffinage* self_) {
     try { return {&(self_->GetCouples()), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -21573,15 +20541,15 @@ extern "C" const char* IntPolyh_Tools_is_enlarge_possible(Handle(Adaptor3d_Surfa
     try { IntPolyh_Tools::IsEnlargePossible(*theSurf, *theUEnlarge, *theVEnlarge); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* IntPolyh_Tools_make_sampling(Handle(Adaptor3d_Surface) const* theSurf, int32_t theNbSU, int32_t theNbSV, bool theEnlargeZone, TColStd_Array1OfReal* theUPars, TColStd_Array1OfReal* theVPars) {
+extern "C" const char* IntPolyh_Tools_make_sampling(Handle(Adaptor3d_Surface) const* theSurf, int32_t theNbSU, int32_t theNbSV, bool theEnlargeZone, NCollection_Array1_double* theUPars, NCollection_Array1_double* theVPars) {
     try { IntPolyh_Tools::MakeSampling(*theSurf, theNbSU, theNbSV, theEnlargeZone, *theUPars, *theVPars); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<double> IntPolyh_Tools_compute_deflection(Handle(Adaptor3d_Surface) const* theSurf, TColStd_Array1OfReal const* theUPars, TColStd_Array1OfReal const* theVPars) {
+extern "C" OcctResult<double> IntPolyh_Tools_compute_deflection(Handle(Adaptor3d_Surface) const* theSurf, NCollection_Array1_double const* theUPars, NCollection_Array1_double const* theVPars) {
     try { return {IntPolyh_Tools::ComputeDeflection(*theSurf, *theUPars, *theVPars), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* IntPolyh_Tools_fill_array_of_point_normal(Handle(Adaptor3d_Surface) const* theSurf, TColStd_Array1OfReal const* theUPars, TColStd_Array1OfReal const* theVPars, IntPolyh_ArrayOfPointNormal* thePoints) {
+extern "C" const char* IntPolyh_Tools_fill_array_of_point_normal(Handle(Adaptor3d_Surface) const* theSurf, NCollection_Array1_double const* theUPars, NCollection_Array1_double const* theVPars, IntPolyh_ArrayOfPointNormal* thePoints) {
     try { IntPolyh_Tools::FillArrayOfPointNormal(*theSurf, *theUPars, *theVPars, *thePoints); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -22008,16 +20976,16 @@ extern "C" OcctResult<Handle(Standard_Type) const*> IntStart_SITopolTool_get_typ
 }
 extern "C" OcctResult<const Standard_Transient*> IntStart_SITopolTool_as_Standard_Transient(const IntStart_SITopolTool* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> IntStart_SITopolTool_as_Standard_Transient_mut(IntStart_SITopolTool* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<const IntStart_SITopolTool*> HandleIntStartSITopolTool_get(const HandleIntStartSITopolTool* handle) {
+extern "C" OcctResult<const IntStart_SITopolTool*> Handle_IntStart_SITopolTool_get(const Handle_IntStart_SITopolTool* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<IntStart_SITopolTool*> HandleIntStartSITopolTool_get_mut(HandleIntStartSITopolTool* handle) {
+extern "C" OcctResult<IntStart_SITopolTool*> Handle_IntStart_SITopolTool_get_mut(Handle_IntStart_SITopolTool* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleIntStartSITopolTool_to_HandleStandardTransient(const HandleIntStartSITopolTool* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_IntStart_SITopolTool_to_Handle_Standard_Transient(const Handle_IntStart_SITopolTool* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> IntStart_SITopolTool_inherited_IsInstance(const IntStart_SITopolTool* self, Handle(Standard_Type) const& theType) {
@@ -22218,20 +21186,20 @@ extern "C" OcctResult<Handle(Standard_Type) const*> IntSurf_LineOn2S_get_type_de
 }
 extern "C" OcctResult<const Standard_Transient*> IntSurf_LineOn2S_as_Standard_Transient(const IntSurf_LineOn2S* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> IntSurf_LineOn2S_as_Standard_Transient_mut(IntSurf_LineOn2S* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleIntSurfLineOn2S*> IntSurf_LineOn2S_to_handle(IntSurf_LineOn2S* obj) {
-    try { return {new HandleIntSurfLineOn2S(obj), nullptr}; }
+extern "C" OcctResult<Handle_IntSurf_LineOn2S*> IntSurf_LineOn2S_to_handle(IntSurf_LineOn2S* obj) {
+    try { return {new Handle_IntSurf_LineOn2S(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const IntSurf_LineOn2S*> HandleIntSurfLineOn2S_get(const HandleIntSurfLineOn2S* handle) {
+extern "C" OcctResult<const IntSurf_LineOn2S*> Handle_IntSurf_LineOn2S_get(const Handle_IntSurf_LineOn2S* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<IntSurf_LineOn2S*> HandleIntSurfLineOn2S_get_mut(HandleIntSurfLineOn2S* handle) {
+extern "C" OcctResult<IntSurf_LineOn2S*> Handle_IntSurf_LineOn2S_get_mut(Handle_IntSurf_LineOn2S* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleIntSurfLineOn2S_to_HandleStandardTransient(const HandleIntSurfLineOn2S* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_IntSurf_LineOn2S_to_Handle_Standard_Transient(const Handle_IntSurf_LineOn2S* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> IntSurf_LineOn2S_inherited_IsInstance(const IntSurf_LineOn2S* self, Handle(Standard_Type) const& theType) {
@@ -22624,15 +21592,15 @@ extern "C" OcctResult<IntWalk_PWalking*> IntWalk_PWalking_ctor_handleadaptor3dsu
     try { return {new IntWalk_PWalking(*Caro1, *Caro2, TolTangency, Epsilon, Deflection, Increment, U1, V1, U2, V2), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* IntWalk_PWalking_perform_array1ofreal(IntWalk_PWalking* self_, TColStd_Array1OfReal const* ParDep) {
+extern "C" const char* IntWalk_PWalking_perform_arr1_double(IntWalk_PWalking* self_, NCollection_Array1_double const* ParDep) {
     try { self_->Perform(*ParDep); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* IntWalk_PWalking_perform_array1ofreal_real8(IntWalk_PWalking* self_, TColStd_Array1OfReal const* ParDep, double u1min, double v1min, double u2min, double v2min, double u1max, double v1max, double u2max, double v2max) {
+extern "C" const char* IntWalk_PWalking_perform_arr1_double_real8(IntWalk_PWalking* self_, NCollection_Array1_double const* ParDep, double u1min, double v1min, double u2min, double v2min, double u1max, double v1max, double u2max, double v2max) {
     try { self_->Perform(*ParDep, u1min, v1min, u2min, v2min, u1max, v1max, u2max, v2max); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<bool> IntWalk_PWalking_perform_first_point(IntWalk_PWalking* self_, TColStd_Array1OfReal const* ParDep, IntSurf_PntOn2S* FirstPoint) {
+extern "C" OcctResult<bool> IntWalk_PWalking_perform_first_point(IntWalk_PWalking* self_, NCollection_Array1_double const* ParDep, IntSurf_PntOn2S* FirstPoint) {
     try { return {self_->PerformFirstPoint(*ParDep, *FirstPoint), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -22672,7 +21640,7 @@ extern "C" OcctResult<int32_t> IntWalk_PWalking_test_deflection(IntWalk_PWalking
     try { return {static_cast<int32_t>(self_->TestDeflection(static_cast<IntImp_ConstIsoparametric>(ChoixIso), static_cast<IntWalk_StatusDeflection>(theStatus))), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<bool> IntWalk_PWalking_test_arret(IntWalk_PWalking* self_, bool DejaReparti, TColStd_Array1OfReal* Param, int32_t& ChoixIso) {
+extern "C" OcctResult<bool> IntWalk_PWalking_test_arret(IntWalk_PWalking* self_, bool DejaReparti, NCollection_Array1_double* Param, int32_t& ChoixIso) {
     try {
     auto ChoixIso_enum_ = static_cast<IntImp_ConstIsoparametric>(ChoixIso);
     auto result_ = self_->TestArret(DejaReparti, *Param, ChoixIso_enum_);
@@ -22756,7 +21724,7 @@ extern "C" OcctResult<bool> IntWalk_TheFunctionOfTheInt2S_values(IntWalk_TheFunc
     try { return {self_->Values(*X, *F, *D), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* IntWalk_TheFunctionOfTheInt2S_compute_parameters(IntWalk_TheFunctionOfTheInt2S* self_, int32_t ChoixIso, TColStd_Array1OfReal const* Param, math_Vector* UVap, math_Vector* BornInf, math_Vector* BornSup, math_Vector* Tolerance) {
+extern "C" const char* IntWalk_TheFunctionOfTheInt2S_compute_parameters(IntWalk_TheFunctionOfTheInt2S* self_, int32_t ChoixIso, NCollection_Array1_double const* Param, math_Vector* UVap, math_Vector* BornInf, math_Vector* BornSup, math_Vector* Tolerance) {
     try { self_->ComputeParameters(static_cast<IntImp_ConstIsoparametric>(ChoixIso), *Param, *UVap, *BornInf, *BornSup, *Tolerance); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -22764,7 +21732,7 @@ extern "C" OcctResult<double> IntWalk_TheFunctionOfTheInt2S_root(const IntWalk_T
     try { return {self_->Root(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<bool> IntWalk_TheFunctionOfTheInt2S_is_tangent(IntWalk_TheFunctionOfTheInt2S* self_, math_Vector const* UVap, TColStd_Array1OfReal* Param, int32_t& BestChoix) {
+extern "C" OcctResult<bool> IntWalk_TheFunctionOfTheInt2S_is_tangent(IntWalk_TheFunctionOfTheInt2S* self_, math_Vector const* UVap, NCollection_Array1_double* Param, int32_t& BestChoix) {
     try {
     auto BestChoix_enum_ = static_cast<IntImp_ConstIsoparametric>(BestChoix);
     auto result_ = self_->IsTangent(*UVap, *Param, BestChoix_enum_);
@@ -22795,7 +21763,7 @@ extern "C" void IntWalk_TheFunctionOfTheInt2S_destructor(IntWalk_TheFunctionOfTh
 // IntWalk_TheInt2S wrappers
 // ========================
 
-extern "C" OcctResult<IntWalk_TheInt2S*> IntWalk_TheInt2S_ctor_array1ofreal_handleadaptor3dsurface2_real(TColStd_Array1OfReal const* Param, Handle(Adaptor3d_Surface) const* S1, Handle(Adaptor3d_Surface) const* S2, double TolTangency) {
+extern "C" OcctResult<IntWalk_TheInt2S*> IntWalk_TheInt2S_ctor_arr1_double_handleadaptor3dsurface2_real(NCollection_Array1_double const* Param, Handle(Adaptor3d_Surface) const* S1, Handle(Adaptor3d_Surface) const* S2, double TolTangency) {
     try { return {new IntWalk_TheInt2S(*Param, *S1, *S2, TolTangency), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -22803,11 +21771,11 @@ extern "C" OcctResult<IntWalk_TheInt2S*> IntWalk_TheInt2S_ctor_handleadaptor3dsu
     try { return {new IntWalk_TheInt2S(*S1, *S2, TolTangency), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<int32_t> IntWalk_TheInt2S_perform_array1ofreal_functionsetroot(IntWalk_TheInt2S* self_, TColStd_Array1OfReal const* Param, math_FunctionSetRoot* Rsnld) {
+extern "C" OcctResult<int32_t> IntWalk_TheInt2S_perform_arr1_double_functionsetroot(IntWalk_TheInt2S* self_, NCollection_Array1_double const* Param, math_FunctionSetRoot* Rsnld) {
     try { return {static_cast<int32_t>(self_->Perform(*Param, *Rsnld)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<int32_t> IntWalk_TheInt2S_perform_array1ofreal_functionsetroot_constisoparametric(IntWalk_TheInt2S* self_, TColStd_Array1OfReal const* Param, math_FunctionSetRoot* Rsnld, int32_t ChoixIso) {
+extern "C" OcctResult<int32_t> IntWalk_TheInt2S_perform_arr1_double_functionsetroot_constisoparametric(IntWalk_TheInt2S* self_, NCollection_Array1_double const* Param, math_FunctionSetRoot* Rsnld, int32_t ChoixIso) {
     try { return {static_cast<int32_t>(self_->Perform(*Param, *Rsnld, static_cast<IntImp_ConstIsoparametric>(ChoixIso))), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -23312,7 +22280,7 @@ extern "C" OcctResult<int32_t> Law_BSpFunc_nb_intervals(const Law_BSpFunc* self_
     try { return {self_->NbIntervals(static_cast<GeomAbs_Shape>(S)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* Law_BSpFunc_intervals(const Law_BSpFunc* self_, TColStd_Array1OfReal* T, int32_t S) {
+extern "C" const char* Law_BSpFunc_intervals(const Law_BSpFunc* self_, NCollection_Array1_double* T, int32_t S) {
     try { self_->Intervals(*T, static_cast<GeomAbs_Shape>(S)); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -23352,39 +22320,39 @@ extern "C" OcctResult<const Law_Function*> Law_BSpFunc_as_Law_Function(const Law
 extern "C" OcctResult<Law_Function*> Law_BSpFunc_as_Law_Function_mut(Law_BSpFunc* self_) { return {static_cast<Law_Function*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> Law_BSpFunc_as_Standard_Transient(const Law_BSpFunc* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> Law_BSpFunc_as_Standard_Transient_mut(Law_BSpFunc* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleLawBSpFunc*> Law_BSpFunc_to_handle(Law_BSpFunc* obj) {
-    try { return {new HandleLawBSpFunc(obj), nullptr}; }
+extern "C" OcctResult<Handle_Law_BSpFunc*> Law_BSpFunc_to_handle(Law_BSpFunc* obj) {
+    try { return {new Handle_Law_BSpFunc(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const Law_BSpFunc*> HandleLawBSpFunc_get(const HandleLawBSpFunc* handle) {
+extern "C" OcctResult<const Law_BSpFunc*> Handle_Law_BSpFunc_get(const Handle_Law_BSpFunc* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Law_BSpFunc*> HandleLawBSpFunc_get_mut(HandleLawBSpFunc* handle) {
+extern "C" OcctResult<Law_BSpFunc*> Handle_Law_BSpFunc_get_mut(Handle_Law_BSpFunc* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleLawFunction*> HandleLawBSpFunc_to_HandleLawFunction(const HandleLawBSpFunc* self_) {
-    try { return {new HandleLawFunction(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Law_Function*> Handle_Law_BSpFunc_to_Handle_Law_Function(const Handle_Law_BSpFunc* self_) {
+    try { return {new Handle_Law_Function(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleLawBSpFunc_to_HandleStandardTransient(const HandleLawBSpFunc* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_Law_BSpFunc_to_Handle_Standard_Transient(const Handle_Law_BSpFunc* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleLawInterpol*> HandleLawBSpFunc_downcast_to_HandleLawInterpol(const HandleLawBSpFunc* self_) {
+extern "C" OcctResult<Handle_Law_Interpol*> Handle_Law_BSpFunc_downcast_to_Handle_Law_Interpol(const Handle_Law_BSpFunc* self_) {
     try {
     opencascade::handle<Law_Interpol> result = opencascade::handle<Law_Interpol>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleLawInterpol(result), nullptr};
+    return {new Handle_Law_Interpol(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleLawS*> HandleLawBSpFunc_downcast_to_HandleLawS(const HandleLawBSpFunc* self_) {
+extern "C" OcctResult<Handle_Law_S*> Handle_Law_BSpFunc_downcast_to_Handle_Law_S(const Handle_Law_BSpFunc* self_) {
     try {
     opencascade::handle<Law_S> result = opencascade::handle<Law_S>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleLawS(result), nullptr};
+    return {new Handle_Law_S(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
@@ -23422,11 +22390,11 @@ extern "C" void Law_BSpFunc_destructor(Law_BSpFunc* self_) { delete self_; }
 // Law_BSpline wrappers
 // ========================
 
-extern "C" OcctResult<Law_BSpline*> Law_BSpline_ctor_array1ofreal2_array1ofinteger_int_bool(TColStd_Array1OfReal const* Poles, TColStd_Array1OfReal const* Knots, TColStd_Array1OfInteger const* Multiplicities, int32_t Degree, bool Periodic) {
+extern "C" OcctResult<Law_BSpline*> Law_BSpline_ctor_arr1_double2_arr1_int_int_bool(NCollection_Array1_double const* Poles, NCollection_Array1_double const* Knots, NCollection_Array1_int const* Multiplicities, int32_t Degree, bool Periodic) {
     try { return {new Law_BSpline(*Poles, *Knots, *Multiplicities, Degree, Periodic), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Law_BSpline*> Law_BSpline_ctor_array1ofreal3_array1ofinteger_int_bool(TColStd_Array1OfReal const* Poles, TColStd_Array1OfReal const* Weights, TColStd_Array1OfReal const* Knots, TColStd_Array1OfInteger const* Multiplicities, int32_t Degree, bool Periodic) {
+extern "C" OcctResult<Law_BSpline*> Law_BSpline_ctor_arr1_double3_arr1_int_int_bool(NCollection_Array1_double const* Poles, NCollection_Array1_double const* Weights, NCollection_Array1_double const* Knots, NCollection_Array1_int const* Multiplicities, int32_t Degree, bool Periodic) {
     try { return {new Law_BSpline(*Poles, *Weights, *Knots, *Multiplicities, Degree, Periodic), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -23454,7 +22422,7 @@ extern "C" const char* Law_BSpline_insert_knot(Law_BSpline* self_, double U, int
     try { self_->InsertKnot(U, M, ParametricTolerance, Add); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* Law_BSpline_insert_knots(Law_BSpline* self_, TColStd_Array1OfReal const* Knots, TColStd_Array1OfInteger const* Mults, double ParametricTolerance, bool Add) {
+extern "C" const char* Law_BSpline_insert_knots(Law_BSpline* self_, NCollection_Array1_double const* Knots, NCollection_Array1_int const* Mults, double ParametricTolerance, bool Add) {
     try { self_->InsertKnots(*Knots, *Mults, ParametricTolerance, Add); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -23478,7 +22446,7 @@ extern "C" const char* Law_BSpline_set_knot_int_real(Law_BSpline* self_, int32_t
     try { self_->SetKnot(Index, K); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* Law_BSpline_set_knots(Law_BSpline* self_, TColStd_Array1OfReal const* K) {
+extern "C" const char* Law_BSpline_set_knots(Law_BSpline* self_, NCollection_Array1_double const* K) {
     try { self_->SetKnots(*K); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -23602,11 +22570,11 @@ extern "C" OcctResult<double> Law_BSpline_knot(const Law_BSpline* self_, int32_t
     try { return {self_->Knot(Index), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* Law_BSpline_knots(const Law_BSpline* self_, TColStd_Array1OfReal* K) {
+extern "C" const char* Law_BSpline_knots(const Law_BSpline* self_, NCollection_Array1_double* K) {
     try { self_->Knots(*K); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* Law_BSpline_knot_sequence(const Law_BSpline* self_, TColStd_Array1OfReal* K) {
+extern "C" const char* Law_BSpline_knot_sequence(const Law_BSpline* self_, NCollection_Array1_double* K) {
     try { self_->KnotSequence(*K); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -23630,7 +22598,7 @@ extern "C" OcctResult<int32_t> Law_BSpline_multiplicity(const Law_BSpline* self_
     try { return {self_->Multiplicity(Index), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* Law_BSpline_multiplicities(const Law_BSpline* self_, TColStd_Array1OfInteger* M) {
+extern "C" const char* Law_BSpline_multiplicities(const Law_BSpline* self_, NCollection_Array1_int* M) {
     try { self_->Multiplicities(*M); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -23646,7 +22614,7 @@ extern "C" OcctResult<double> Law_BSpline_pole(const Law_BSpline* self_, int32_t
     try { return {self_->Pole(Index), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* Law_BSpline_poles(const Law_BSpline* self_, TColStd_Array1OfReal* P) {
+extern "C" const char* Law_BSpline_poles(const Law_BSpline* self_, NCollection_Array1_double* P) {
     try { self_->Poles(*P); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -23658,7 +22626,7 @@ extern "C" OcctResult<double> Law_BSpline_weight(const Law_BSpline* self_, int32
     try { return {self_->Weight(Index), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* Law_BSpline_weights(const Law_BSpline* self_, TColStd_Array1OfReal* W) {
+extern "C" const char* Law_BSpline_weights(const Law_BSpline* self_, NCollection_Array1_double* W) {
     try { self_->Weights(*W); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -23688,20 +22656,20 @@ extern "C" OcctResult<Handle(Standard_Type) const*> Law_BSpline_get_type_descrip
 }
 extern "C" OcctResult<const Standard_Transient*> Law_BSpline_as_Standard_Transient(const Law_BSpline* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> Law_BSpline_as_Standard_Transient_mut(Law_BSpline* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleLawBSpline*> Law_BSpline_to_handle(Law_BSpline* obj) {
-    try { return {new HandleLawBSpline(obj), nullptr}; }
+extern "C" OcctResult<Handle_Law_BSpline*> Law_BSpline_to_handle(Law_BSpline* obj) {
+    try { return {new Handle_Law_BSpline(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const Law_BSpline*> HandleLawBSpline_get(const HandleLawBSpline* handle) {
+extern "C" OcctResult<const Law_BSpline*> Handle_Law_BSpline_get(const Handle_Law_BSpline* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Law_BSpline*> HandleLawBSpline_get_mut(HandleLawBSpline* handle) {
+extern "C" OcctResult<Law_BSpline*> Handle_Law_BSpline_get_mut(Handle_Law_BSpline* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleLawBSpline_to_HandleStandardTransient(const HandleLawBSpline* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_Law_BSpline_to_Handle_Standard_Transient(const Handle_Law_BSpline* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> Law_BSpline_inherited_IsInstance(const Law_BSpline* self, Handle(Standard_Type) const& theType) {
@@ -23746,7 +22714,7 @@ extern "C" OcctResult<int32_t> Law_BSplineKnotSplitting_nb_splits(const Law_BSpl
     try { return {self_->NbSplits(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* Law_BSplineKnotSplitting_splitting(const Law_BSplineKnotSplitting* self_, TColStd_Array1OfInteger* SplitValues) {
+extern "C" const char* Law_BSplineKnotSplitting_splitting(const Law_BSplineKnotSplitting* self_, NCollection_Array1_int* SplitValues) {
     try { self_->Splitting(*SplitValues); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -23780,7 +22748,7 @@ extern "C" OcctResult<int32_t> Law_Composite_nb_intervals(const Law_Composite* s
     try { return {self_->NbIntervals(static_cast<GeomAbs_Shape>(S)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* Law_Composite_intervals(const Law_Composite* self_, TColStd_Array1OfReal* T, int32_t S) {
+extern "C" const char* Law_Composite_intervals(const Law_Composite* self_, NCollection_Array1_double* T, int32_t S) {
     try { self_->Intervals(*T, static_cast<GeomAbs_Shape>(S)); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -23802,10 +22770,6 @@ extern "C" const char* Law_Composite_bounds(Law_Composite* self_, double* PFirst
 }
 extern "C" OcctResult<Handle(Law_Function)*> Law_Composite_change_elementary_law(Law_Composite* self_, double W) {
     try { return {&(self_->ChangeElementaryLaw(W)), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Law_Laws*> Law_Composite_change_laws(Law_Composite* self_) {
-    try { return {&(self_->ChangeLaws()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> Law_Composite_is_periodic(const Law_Composite* self_) {
@@ -23832,24 +22796,24 @@ extern "C" OcctResult<const Law_Function*> Law_Composite_as_Law_Function(const L
 extern "C" OcctResult<Law_Function*> Law_Composite_as_Law_Function_mut(Law_Composite* self_) { return {static_cast<Law_Function*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> Law_Composite_as_Standard_Transient(const Law_Composite* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> Law_Composite_as_Standard_Transient_mut(Law_Composite* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleLawComposite*> Law_Composite_to_handle(Law_Composite* obj) {
-    try { return {new HandleLawComposite(obj), nullptr}; }
+extern "C" OcctResult<Handle_Law_Composite*> Law_Composite_to_handle(Law_Composite* obj) {
+    try { return {new Handle_Law_Composite(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const Law_Composite*> HandleLawComposite_get(const HandleLawComposite* handle) {
+extern "C" OcctResult<const Law_Composite*> Handle_Law_Composite_get(const Handle_Law_Composite* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Law_Composite*> HandleLawComposite_get_mut(HandleLawComposite* handle) {
+extern "C" OcctResult<Law_Composite*> Handle_Law_Composite_get_mut(Handle_Law_Composite* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleLawFunction*> HandleLawComposite_to_HandleLawFunction(const HandleLawComposite* self_) {
-    try { return {new HandleLawFunction(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Law_Function*> Handle_Law_Composite_to_Handle_Law_Function(const Handle_Law_Composite* self_) {
+    try { return {new Handle_Law_Function(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleLawComposite_to_HandleStandardTransient(const HandleLawComposite* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_Law_Composite_to_Handle_Standard_Transient(const Handle_Law_Composite* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> Law_Composite_inherited_IsInstance(const Law_Composite* self, Handle(Standard_Type) const& theType) {
@@ -23906,7 +22870,7 @@ extern "C" OcctResult<int32_t> Law_Constant_nb_intervals(const Law_Constant* sel
     try { return {self_->NbIntervals(static_cast<GeomAbs_Shape>(S)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* Law_Constant_intervals(const Law_Constant* self_, TColStd_Array1OfReal* T, int32_t S) {
+extern "C" const char* Law_Constant_intervals(const Law_Constant* self_, NCollection_Array1_double* T, int32_t S) {
     try { self_->Intervals(*T, static_cast<GeomAbs_Shape>(S)); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -23942,24 +22906,24 @@ extern "C" OcctResult<const Law_Function*> Law_Constant_as_Law_Function(const La
 extern "C" OcctResult<Law_Function*> Law_Constant_as_Law_Function_mut(Law_Constant* self_) { return {static_cast<Law_Function*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> Law_Constant_as_Standard_Transient(const Law_Constant* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> Law_Constant_as_Standard_Transient_mut(Law_Constant* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleLawConstant*> Law_Constant_to_handle(Law_Constant* obj) {
-    try { return {new HandleLawConstant(obj), nullptr}; }
+extern "C" OcctResult<Handle_Law_Constant*> Law_Constant_to_handle(Law_Constant* obj) {
+    try { return {new Handle_Law_Constant(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const Law_Constant*> HandleLawConstant_get(const HandleLawConstant* handle) {
+extern "C" OcctResult<const Law_Constant*> Handle_Law_Constant_get(const Handle_Law_Constant* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Law_Constant*> HandleLawConstant_get_mut(HandleLawConstant* handle) {
+extern "C" OcctResult<Law_Constant*> Handle_Law_Constant_get_mut(Handle_Law_Constant* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleLawFunction*> HandleLawConstant_to_HandleLawFunction(const HandleLawConstant* self_) {
-    try { return {new HandleLawFunction(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Law_Function*> Handle_Law_Constant_to_Handle_Law_Function(const Handle_Law_Constant* self_) {
+    try { return {new Handle_Law_Function(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleLawConstant_to_HandleStandardTransient(const HandleLawConstant* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_Law_Constant_to_Handle_Standard_Transient(const Handle_Law_Constant* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> Law_Constant_inherited_IsInstance(const Law_Constant* self, Handle(Standard_Type) const& theType) {
@@ -24008,7 +22972,7 @@ extern "C" OcctResult<int32_t> Law_Function_nb_intervals(const Law_Function* sel
     try { return {self_->NbIntervals(static_cast<GeomAbs_Shape>(S)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* Law_Function_intervals(const Law_Function* self_, TColStd_Array1OfReal* T, int32_t S) {
+extern "C" const char* Law_Function_intervals(const Law_Function* self_, NCollection_Array1_double* T, int32_t S) {
     try { self_->Intervals(*T, static_cast<GeomAbs_Shape>(S)); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -24042,63 +23006,63 @@ extern "C" OcctResult<Handle(Standard_Type) const*> Law_Function_get_type_descri
 }
 extern "C" OcctResult<const Standard_Transient*> Law_Function_as_Standard_Transient(const Law_Function* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> Law_Function_as_Standard_Transient_mut(Law_Function* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<const Law_Function*> HandleLawFunction_get(const HandleLawFunction* handle) {
+extern "C" OcctResult<const Law_Function*> Handle_Law_Function_get(const Handle_Law_Function* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Law_Function*> HandleLawFunction_get_mut(HandleLawFunction* handle) {
+extern "C" OcctResult<Law_Function*> Handle_Law_Function_get_mut(Handle_Law_Function* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleLawFunction_to_HandleStandardTransient(const HandleLawFunction* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_Law_Function_to_Handle_Standard_Transient(const Handle_Law_Function* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleLawBSpFunc*> HandleLawFunction_downcast_to_HandleLawBSpFunc(const HandleLawFunction* self_) {
+extern "C" OcctResult<Handle_Law_BSpFunc*> Handle_Law_Function_downcast_to_Handle_Law_BSpFunc(const Handle_Law_Function* self_) {
     try {
     opencascade::handle<Law_BSpFunc> result = opencascade::handle<Law_BSpFunc>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleLawBSpFunc(result), nullptr};
+    return {new Handle_Law_BSpFunc(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleLawComposite*> HandleLawFunction_downcast_to_HandleLawComposite(const HandleLawFunction* self_) {
+extern "C" OcctResult<Handle_Law_Composite*> Handle_Law_Function_downcast_to_Handle_Law_Composite(const Handle_Law_Function* self_) {
     try {
     opencascade::handle<Law_Composite> result = opencascade::handle<Law_Composite>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleLawComposite(result), nullptr};
+    return {new Handle_Law_Composite(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleLawConstant*> HandleLawFunction_downcast_to_HandleLawConstant(const HandleLawFunction* self_) {
+extern "C" OcctResult<Handle_Law_Constant*> Handle_Law_Function_downcast_to_Handle_Law_Constant(const Handle_Law_Function* self_) {
     try {
     opencascade::handle<Law_Constant> result = opencascade::handle<Law_Constant>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleLawConstant(result), nullptr};
+    return {new Handle_Law_Constant(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleLawInterpol*> HandleLawFunction_downcast_to_HandleLawInterpol(const HandleLawFunction* self_) {
+extern "C" OcctResult<Handle_Law_Interpol*> Handle_Law_Function_downcast_to_Handle_Law_Interpol(const Handle_Law_Function* self_) {
     try {
     opencascade::handle<Law_Interpol> result = opencascade::handle<Law_Interpol>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleLawInterpol(result), nullptr};
+    return {new Handle_Law_Interpol(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleLawLinear*> HandleLawFunction_downcast_to_HandleLawLinear(const HandleLawFunction* self_) {
+extern "C" OcctResult<Handle_Law_Linear*> Handle_Law_Function_downcast_to_Handle_Law_Linear(const Handle_Law_Function* self_) {
     try {
     opencascade::handle<Law_Linear> result = opencascade::handle<Law_Linear>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleLawLinear(result), nullptr};
+    return {new Handle_Law_Linear(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleLawS*> HandleLawFunction_downcast_to_HandleLawS(const HandleLawFunction* self_) {
+extern "C" OcctResult<Handle_Law_S*> Handle_Law_Function_downcast_to_Handle_Law_S(const Handle_Law_Function* self_) {
     try {
     opencascade::handle<Law_S> result = opencascade::handle<Law_S>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleLawS(result), nullptr};
+    return {new Handle_Law_S(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
@@ -24140,19 +23104,19 @@ extern "C" OcctResult<Law_Interpol*> Law_Interpol_ctor() {
     try { return {new Law_Interpol(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* Law_Interpol_set_array1ofpnt2d_bool(Law_Interpol* self_, TColgp_Array1OfPnt2d const* ParAndRad, bool Periodic) {
+extern "C" const char* Law_Interpol_set_arr1_pnt2d_bool(Law_Interpol* self_, NCollection_Array1_gp_Pnt2d const* ParAndRad, bool Periodic) {
     try { self_->Set(*ParAndRad, Periodic); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* Law_Interpol_set_in_relative_array1ofpnt2d_real2_bool(Law_Interpol* self_, TColgp_Array1OfPnt2d const* ParAndRad, double Ud, double Uf, bool Periodic) {
+extern "C" const char* Law_Interpol_set_in_relative_arr1_pnt2d_real2_bool(Law_Interpol* self_, NCollection_Array1_gp_Pnt2d const* ParAndRad, double Ud, double Uf, bool Periodic) {
     try { self_->SetInRelative(*ParAndRad, Ud, Uf, Periodic); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* Law_Interpol_set_array1ofpnt2d_real2_bool(Law_Interpol* self_, TColgp_Array1OfPnt2d const* ParAndRad, double Dd, double Df, bool Periodic) {
+extern "C" const char* Law_Interpol_set_arr1_pnt2d_real2_bool(Law_Interpol* self_, NCollection_Array1_gp_Pnt2d const* ParAndRad, double Dd, double Df, bool Periodic) {
     try { self_->Set(*ParAndRad, Dd, Df, Periodic); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* Law_Interpol_set_in_relative_array1ofpnt2d_real4_bool(Law_Interpol* self_, TColgp_Array1OfPnt2d const* ParAndRad, double Ud, double Uf, double Dd, double Df, bool Periodic) {
+extern "C" const char* Law_Interpol_set_in_relative_arr1_pnt2d_real4_bool(Law_Interpol* self_, NCollection_Array1_gp_Pnt2d const* ParAndRad, double Ud, double Uf, double Dd, double Df, bool Periodic) {
     try { self_->SetInRelative(*ParAndRad, Ud, Uf, Dd, Df, Periodic); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -24174,28 +23138,28 @@ extern "C" OcctResult<const Law_Function*> Law_Interpol_as_Law_Function(const La
 extern "C" OcctResult<Law_Function*> Law_Interpol_as_Law_Function_mut(Law_Interpol* self_) { return {static_cast<Law_Function*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> Law_Interpol_as_Standard_Transient(const Law_Interpol* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> Law_Interpol_as_Standard_Transient_mut(Law_Interpol* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleLawInterpol*> Law_Interpol_to_handle(Law_Interpol* obj) {
-    try { return {new HandleLawInterpol(obj), nullptr}; }
+extern "C" OcctResult<Handle_Law_Interpol*> Law_Interpol_to_handle(Law_Interpol* obj) {
+    try { return {new Handle_Law_Interpol(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const Law_Interpol*> HandleLawInterpol_get(const HandleLawInterpol* handle) {
+extern "C" OcctResult<const Law_Interpol*> Handle_Law_Interpol_get(const Handle_Law_Interpol* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Law_Interpol*> HandleLawInterpol_get_mut(HandleLawInterpol* handle) {
+extern "C" OcctResult<Law_Interpol*> Handle_Law_Interpol_get_mut(Handle_Law_Interpol* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleLawBSpFunc*> HandleLawInterpol_to_HandleLawBSpFunc(const HandleLawInterpol* self_) {
-    try { return {new HandleLawBSpFunc(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Law_BSpFunc*> Handle_Law_Interpol_to_Handle_Law_BSpFunc(const Handle_Law_Interpol* self_) {
+    try { return {new Handle_Law_BSpFunc(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleLawFunction*> HandleLawInterpol_to_HandleLawFunction(const HandleLawInterpol* self_) {
-    try { return {new HandleLawFunction(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Law_Function*> Handle_Law_Interpol_to_Handle_Law_Function(const Handle_Law_Interpol* self_) {
+    try { return {new Handle_Law_Function(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleLawInterpol_to_HandleStandardTransient(const HandleLawInterpol* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_Law_Interpol_to_Handle_Standard_Transient(const Handle_Law_Interpol* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<int32_t> Law_Interpol_inherited_Continuity(const Law_Interpol* self) {
@@ -24206,7 +23170,7 @@ extern "C" OcctResult<int32_t> Law_Interpol_inherited_NbIntervals(const Law_Inte
     try { return {self->NbIntervals(static_cast<GeomAbs_Shape>(S)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* Law_Interpol_inherited_Intervals(const Law_Interpol* self, TColStd_Array1OfReal& T, int32_t S) {
+extern "C" const char* Law_Interpol_inherited_Intervals(const Law_Interpol* self, NCollection_Array1_double& T, int32_t S) {
     try { self->Intervals(T, static_cast<GeomAbs_Shape>(S)); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -24272,11 +23236,11 @@ extern "C" void Law_Interpol_destructor(Law_Interpol* self_) { delete self_; }
 // Law_Interpolate wrappers
 // ========================
 
-extern "C" OcctResult<Law_Interpolate*> Law_Interpolate_ctor_handletcolstdharray1ofreal_bool_real(Handle(TColStd_HArray1OfReal) const* Points, bool PeriodicFlag, double Tolerance) {
+extern "C" OcctResult<Law_Interpolate*> Law_Interpolate_ctor_harr1_double_bool_real(Handle(NCollection_HArray1_double) const* Points, bool PeriodicFlag, double Tolerance) {
     try { return {new Law_Interpolate(*Points, PeriodicFlag, Tolerance), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Law_Interpolate*> Law_Interpolate_ctor_handletcolstdharray1ofreal2_bool_real(Handle(TColStd_HArray1OfReal) const* Points, Handle(TColStd_HArray1OfReal) const* Parameters, bool PeriodicFlag, double Tolerance) {
+extern "C" OcctResult<Law_Interpolate*> Law_Interpolate_ctor_harr1_double2_bool_real(Handle(NCollection_HArray1_double) const* Points, Handle(NCollection_HArray1_double) const* Parameters, bool PeriodicFlag, double Tolerance) {
     try { return {new Law_Interpolate(*Points, *Parameters, PeriodicFlag, Tolerance), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -24284,7 +23248,7 @@ extern "C" const char* Law_Interpolate_load_real2(Law_Interpolate* self_, double
     try { self_->Load(InitialTangent, FinalTangent); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* Law_Interpolate_load_array1ofreal_handletcolstdharray1ofboolean(Law_Interpolate* self_, TColStd_Array1OfReal const* Tangents, Handle(TColStd_HArray1OfBoolean) const* TangentFlags) {
+extern "C" const char* Law_Interpolate_load_arr1_double_harr1_bool(Law_Interpolate* self_, NCollection_Array1_double const* Tangents, Handle(NCollection_HArray1_bool) const* TangentFlags) {
     try { self_->Load(*Tangents, *TangentFlags); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -24330,7 +23294,7 @@ extern "C" OcctResult<int32_t> Law_Linear_nb_intervals(const Law_Linear* self_, 
     try { return {self_->NbIntervals(static_cast<GeomAbs_Shape>(S)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* Law_Linear_intervals(const Law_Linear* self_, TColStd_Array1OfReal* T, int32_t S) {
+extern "C" const char* Law_Linear_intervals(const Law_Linear* self_, NCollection_Array1_double* T, int32_t S) {
     try { self_->Intervals(*T, static_cast<GeomAbs_Shape>(S)); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -24366,24 +23330,24 @@ extern "C" OcctResult<const Law_Function*> Law_Linear_as_Law_Function(const Law_
 extern "C" OcctResult<Law_Function*> Law_Linear_as_Law_Function_mut(Law_Linear* self_) { return {static_cast<Law_Function*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> Law_Linear_as_Standard_Transient(const Law_Linear* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> Law_Linear_as_Standard_Transient_mut(Law_Linear* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleLawLinear*> Law_Linear_to_handle(Law_Linear* obj) {
-    try { return {new HandleLawLinear(obj), nullptr}; }
+extern "C" OcctResult<Handle_Law_Linear*> Law_Linear_to_handle(Law_Linear* obj) {
+    try { return {new Handle_Law_Linear(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const Law_Linear*> HandleLawLinear_get(const HandleLawLinear* handle) {
+extern "C" OcctResult<const Law_Linear*> Handle_Law_Linear_get(const Handle_Law_Linear* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Law_Linear*> HandleLawLinear_get_mut(HandleLawLinear* handle) {
+extern "C" OcctResult<Law_Linear*> Handle_Law_Linear_get_mut(Handle_Law_Linear* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleLawFunction*> HandleLawLinear_to_HandleLawFunction(const HandleLawLinear* self_) {
-    try { return {new HandleLawFunction(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Law_Function*> Handle_Law_Linear_to_Handle_Law_Function(const Handle_Law_Linear* self_) {
+    try { return {new Handle_Law_Function(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleLawLinear_to_HandleStandardTransient(const HandleLawLinear* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_Law_Linear_to_Handle_Standard_Transient(const Handle_Law_Linear* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> Law_Linear_inherited_IsInstance(const Law_Linear* self, Handle(Standard_Type) const& theType) {
@@ -24450,28 +23414,28 @@ extern "C" OcctResult<const Law_Function*> Law_S_as_Law_Function(const Law_S* se
 extern "C" OcctResult<Law_Function*> Law_S_as_Law_Function_mut(Law_S* self_) { return {static_cast<Law_Function*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> Law_S_as_Standard_Transient(const Law_S* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> Law_S_as_Standard_Transient_mut(Law_S* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleLawS*> Law_S_to_handle(Law_S* obj) {
-    try { return {new HandleLawS(obj), nullptr}; }
+extern "C" OcctResult<Handle_Law_S*> Law_S_to_handle(Law_S* obj) {
+    try { return {new Handle_Law_S(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const Law_S*> HandleLawS_get(const HandleLawS* handle) {
+extern "C" OcctResult<const Law_S*> Handle_Law_S_get(const Handle_Law_S* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Law_S*> HandleLawS_get_mut(HandleLawS* handle) {
+extern "C" OcctResult<Law_S*> Handle_Law_S_get_mut(Handle_Law_S* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleLawBSpFunc*> HandleLawS_to_HandleLawBSpFunc(const HandleLawS* self_) {
-    try { return {new HandleLawBSpFunc(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Law_BSpFunc*> Handle_Law_S_to_Handle_Law_BSpFunc(const Handle_Law_S* self_) {
+    try { return {new Handle_Law_BSpFunc(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleLawFunction*> HandleLawS_to_HandleLawFunction(const HandleLawS* self_) {
-    try { return {new HandleLawFunction(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Law_Function*> Handle_Law_S_to_Handle_Law_Function(const Handle_Law_S* self_) {
+    try { return {new Handle_Law_Function(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleLawS_to_HandleStandardTransient(const HandleLawS* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_Law_S_to_Handle_Standard_Transient(const Handle_Law_S* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<int32_t> Law_S_inherited_Continuity(const Law_S* self) {
@@ -24482,7 +23446,7 @@ extern "C" OcctResult<int32_t> Law_S_inherited_NbIntervals(const Law_S* self, in
     try { return {self->NbIntervals(static_cast<GeomAbs_Shape>(S)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* Law_S_inherited_Intervals(const Law_S* self, TColStd_Array1OfReal& T, int32_t S) {
+extern "C" const char* Law_S_inherited_Intervals(const Law_S* self, NCollection_Array1_double& T, int32_t S) {
     try { self->Intervals(T, static_cast<GeomAbs_Shape>(S)); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -24826,71 +23790,71 @@ extern "C" OcctResult<Handle(Standard_Type) const*> NLPlate_HGPPConstraint_get_t
 }
 extern "C" OcctResult<const Standard_Transient*> NLPlate_HGPPConstraint_as_Standard_Transient(const NLPlate_HGPPConstraint* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> NLPlate_HGPPConstraint_as_Standard_Transient_mut(NLPlate_HGPPConstraint* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<const NLPlate_HGPPConstraint*> HandleNLPlateHGPPConstraint_get(const HandleNLPlateHGPPConstraint* handle) {
+extern "C" OcctResult<const NLPlate_HGPPConstraint*> Handle_NLPlate_HGPPConstraint_get(const Handle_NLPlate_HGPPConstraint* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<NLPlate_HGPPConstraint*> HandleNLPlateHGPPConstraint_get_mut(HandleNLPlateHGPPConstraint* handle) {
+extern "C" OcctResult<NLPlate_HGPPConstraint*> Handle_NLPlate_HGPPConstraint_get_mut(Handle_NLPlate_HGPPConstraint* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleNLPlateHGPPConstraint_to_HandleStandardTransient(const HandleNLPlateHGPPConstraint* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_NLPlate_HGPPConstraint_to_Handle_Standard_Transient(const Handle_NLPlate_HGPPConstraint* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleNLPlateHPG0Constraint*> HandleNLPlateHGPPConstraint_downcast_to_HandleNLPlateHPG0Constraint(const HandleNLPlateHGPPConstraint* self_) {
+extern "C" OcctResult<Handle_NLPlate_HPG0Constraint*> Handle_NLPlate_HGPPConstraint_downcast_to_Handle_NLPlate_HPG0Constraint(const Handle_NLPlate_HGPPConstraint* self_) {
     try {
     opencascade::handle<NLPlate_HPG0Constraint> result = opencascade::handle<NLPlate_HPG0Constraint>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleNLPlateHPG0Constraint(result), nullptr};
+    return {new Handle_NLPlate_HPG0Constraint(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleNLPlateHPG0G1Constraint*> HandleNLPlateHGPPConstraint_downcast_to_HandleNLPlateHPG0G1Constraint(const HandleNLPlateHGPPConstraint* self_) {
+extern "C" OcctResult<Handle_NLPlate_HPG0G1Constraint*> Handle_NLPlate_HGPPConstraint_downcast_to_Handle_NLPlate_HPG0G1Constraint(const Handle_NLPlate_HGPPConstraint* self_) {
     try {
     opencascade::handle<NLPlate_HPG0G1Constraint> result = opencascade::handle<NLPlate_HPG0G1Constraint>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleNLPlateHPG0G1Constraint(result), nullptr};
+    return {new Handle_NLPlate_HPG0G1Constraint(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleNLPlateHPG0G2Constraint*> HandleNLPlateHGPPConstraint_downcast_to_HandleNLPlateHPG0G2Constraint(const HandleNLPlateHGPPConstraint* self_) {
+extern "C" OcctResult<Handle_NLPlate_HPG0G2Constraint*> Handle_NLPlate_HGPPConstraint_downcast_to_Handle_NLPlate_HPG0G2Constraint(const Handle_NLPlate_HGPPConstraint* self_) {
     try {
     opencascade::handle<NLPlate_HPG0G2Constraint> result = opencascade::handle<NLPlate_HPG0G2Constraint>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleNLPlateHPG0G2Constraint(result), nullptr};
+    return {new Handle_NLPlate_HPG0G2Constraint(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleNLPlateHPG0G3Constraint*> HandleNLPlateHGPPConstraint_downcast_to_HandleNLPlateHPG0G3Constraint(const HandleNLPlateHGPPConstraint* self_) {
+extern "C" OcctResult<Handle_NLPlate_HPG0G3Constraint*> Handle_NLPlate_HGPPConstraint_downcast_to_Handle_NLPlate_HPG0G3Constraint(const Handle_NLPlate_HGPPConstraint* self_) {
     try {
     opencascade::handle<NLPlate_HPG0G3Constraint> result = opencascade::handle<NLPlate_HPG0G3Constraint>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleNLPlateHPG0G3Constraint(result), nullptr};
+    return {new Handle_NLPlate_HPG0G3Constraint(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleNLPlateHPG1Constraint*> HandleNLPlateHGPPConstraint_downcast_to_HandleNLPlateHPG1Constraint(const HandleNLPlateHGPPConstraint* self_) {
+extern "C" OcctResult<Handle_NLPlate_HPG1Constraint*> Handle_NLPlate_HGPPConstraint_downcast_to_Handle_NLPlate_HPG1Constraint(const Handle_NLPlate_HGPPConstraint* self_) {
     try {
     opencascade::handle<NLPlate_HPG1Constraint> result = opencascade::handle<NLPlate_HPG1Constraint>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleNLPlateHPG1Constraint(result), nullptr};
+    return {new Handle_NLPlate_HPG1Constraint(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleNLPlateHPG2Constraint*> HandleNLPlateHGPPConstraint_downcast_to_HandleNLPlateHPG2Constraint(const HandleNLPlateHGPPConstraint* self_) {
+extern "C" OcctResult<Handle_NLPlate_HPG2Constraint*> Handle_NLPlate_HGPPConstraint_downcast_to_Handle_NLPlate_HPG2Constraint(const Handle_NLPlate_HGPPConstraint* self_) {
     try {
     opencascade::handle<NLPlate_HPG2Constraint> result = opencascade::handle<NLPlate_HPG2Constraint>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleNLPlateHPG2Constraint(result), nullptr};
+    return {new Handle_NLPlate_HPG2Constraint(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleNLPlateHPG3Constraint*> HandleNLPlateHGPPConstraint_downcast_to_HandleNLPlateHPG3Constraint(const HandleNLPlateHGPPConstraint* self_) {
+extern "C" OcctResult<Handle_NLPlate_HPG3Constraint*> Handle_NLPlate_HGPPConstraint_downcast_to_Handle_NLPlate_HPG3Constraint(const Handle_NLPlate_HGPPConstraint* self_) {
     try {
     opencascade::handle<NLPlate_HPG3Constraint> result = opencascade::handle<NLPlate_HPG3Constraint>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleNLPlateHPG3Constraint(result), nullptr};
+    return {new Handle_NLPlate_HPG3Constraint(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
@@ -24976,47 +23940,47 @@ extern "C" OcctResult<const NLPlate_HGPPConstraint*> NLPlate_HPG0Constraint_as_N
 extern "C" OcctResult<NLPlate_HGPPConstraint*> NLPlate_HPG0Constraint_as_NLPlate_HGPPConstraint_mut(NLPlate_HPG0Constraint* self_) { return {static_cast<NLPlate_HGPPConstraint*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> NLPlate_HPG0Constraint_as_Standard_Transient(const NLPlate_HPG0Constraint* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> NLPlate_HPG0Constraint_as_Standard_Transient_mut(NLPlate_HPG0Constraint* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleNLPlateHPG0Constraint*> NLPlate_HPG0Constraint_to_handle(NLPlate_HPG0Constraint* obj) {
-    try { return {new HandleNLPlateHPG0Constraint(obj), nullptr}; }
+extern "C" OcctResult<Handle_NLPlate_HPG0Constraint*> NLPlate_HPG0Constraint_to_handle(NLPlate_HPG0Constraint* obj) {
+    try { return {new Handle_NLPlate_HPG0Constraint(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const NLPlate_HPG0Constraint*> HandleNLPlateHPG0Constraint_get(const HandleNLPlateHPG0Constraint* handle) {
+extern "C" OcctResult<const NLPlate_HPG0Constraint*> Handle_NLPlate_HPG0Constraint_get(const Handle_NLPlate_HPG0Constraint* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<NLPlate_HPG0Constraint*> HandleNLPlateHPG0Constraint_get_mut(HandleNLPlateHPG0Constraint* handle) {
+extern "C" OcctResult<NLPlate_HPG0Constraint*> Handle_NLPlate_HPG0Constraint_get_mut(Handle_NLPlate_HPG0Constraint* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleNLPlateHGPPConstraint*> HandleNLPlateHPG0Constraint_to_HandleNLPlateHGPPConstraint(const HandleNLPlateHPG0Constraint* self_) {
-    try { return {new HandleNLPlateHGPPConstraint(*self_), nullptr}; }
+extern "C" OcctResult<Handle_NLPlate_HGPPConstraint*> Handle_NLPlate_HPG0Constraint_to_Handle_NLPlate_HGPPConstraint(const Handle_NLPlate_HPG0Constraint* self_) {
+    try { return {new Handle_NLPlate_HGPPConstraint(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleNLPlateHPG0Constraint_to_HandleStandardTransient(const HandleNLPlateHPG0Constraint* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_NLPlate_HPG0Constraint_to_Handle_Standard_Transient(const Handle_NLPlate_HPG0Constraint* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleNLPlateHPG0G1Constraint*> HandleNLPlateHPG0Constraint_downcast_to_HandleNLPlateHPG0G1Constraint(const HandleNLPlateHPG0Constraint* self_) {
+extern "C" OcctResult<Handle_NLPlate_HPG0G1Constraint*> Handle_NLPlate_HPG0Constraint_downcast_to_Handle_NLPlate_HPG0G1Constraint(const Handle_NLPlate_HPG0Constraint* self_) {
     try {
     opencascade::handle<NLPlate_HPG0G1Constraint> result = opencascade::handle<NLPlate_HPG0G1Constraint>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleNLPlateHPG0G1Constraint(result), nullptr};
+    return {new Handle_NLPlate_HPG0G1Constraint(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleNLPlateHPG0G2Constraint*> HandleNLPlateHPG0Constraint_downcast_to_HandleNLPlateHPG0G2Constraint(const HandleNLPlateHPG0Constraint* self_) {
+extern "C" OcctResult<Handle_NLPlate_HPG0G2Constraint*> Handle_NLPlate_HPG0Constraint_downcast_to_Handle_NLPlate_HPG0G2Constraint(const Handle_NLPlate_HPG0Constraint* self_) {
     try {
     opencascade::handle<NLPlate_HPG0G2Constraint> result = opencascade::handle<NLPlate_HPG0G2Constraint>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleNLPlateHPG0G2Constraint(result), nullptr};
+    return {new Handle_NLPlate_HPG0G2Constraint(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleNLPlateHPG0G3Constraint*> HandleNLPlateHPG0Constraint_downcast_to_HandleNLPlateHPG0G3Constraint(const HandleNLPlateHPG0Constraint* self_) {
+extern "C" OcctResult<Handle_NLPlate_HPG0G3Constraint*> Handle_NLPlate_HPG0Constraint_downcast_to_Handle_NLPlate_HPG0G3Constraint(const Handle_NLPlate_HPG0Constraint* self_) {
     try {
     opencascade::handle<NLPlate_HPG0G3Constraint> result = opencascade::handle<NLPlate_HPG0G3Constraint>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleNLPlateHPG0G3Constraint(result), nullptr};
+    return {new Handle_NLPlate_HPG0G3Constraint(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
@@ -25156,43 +24120,43 @@ extern "C" OcctResult<const NLPlate_HGPPConstraint*> NLPlate_HPG0G1Constraint_as
 extern "C" OcctResult<NLPlate_HGPPConstraint*> NLPlate_HPG0G1Constraint_as_NLPlate_HGPPConstraint_mut(NLPlate_HPG0G1Constraint* self_) { return {static_cast<NLPlate_HGPPConstraint*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> NLPlate_HPG0G1Constraint_as_Standard_Transient(const NLPlate_HPG0G1Constraint* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> NLPlate_HPG0G1Constraint_as_Standard_Transient_mut(NLPlate_HPG0G1Constraint* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleNLPlateHPG0G1Constraint*> NLPlate_HPG0G1Constraint_to_handle(NLPlate_HPG0G1Constraint* obj) {
-    try { return {new HandleNLPlateHPG0G1Constraint(obj), nullptr}; }
+extern "C" OcctResult<Handle_NLPlate_HPG0G1Constraint*> NLPlate_HPG0G1Constraint_to_handle(NLPlate_HPG0G1Constraint* obj) {
+    try { return {new Handle_NLPlate_HPG0G1Constraint(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const NLPlate_HPG0G1Constraint*> HandleNLPlateHPG0G1Constraint_get(const HandleNLPlateHPG0G1Constraint* handle) {
+extern "C" OcctResult<const NLPlate_HPG0G1Constraint*> Handle_NLPlate_HPG0G1Constraint_get(const Handle_NLPlate_HPG0G1Constraint* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<NLPlate_HPG0G1Constraint*> HandleNLPlateHPG0G1Constraint_get_mut(HandleNLPlateHPG0G1Constraint* handle) {
+extern "C" OcctResult<NLPlate_HPG0G1Constraint*> Handle_NLPlate_HPG0G1Constraint_get_mut(Handle_NLPlate_HPG0G1Constraint* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleNLPlateHPG0Constraint*> HandleNLPlateHPG0G1Constraint_to_HandleNLPlateHPG0Constraint(const HandleNLPlateHPG0G1Constraint* self_) {
-    try { return {new HandleNLPlateHPG0Constraint(*self_), nullptr}; }
+extern "C" OcctResult<Handle_NLPlate_HPG0Constraint*> Handle_NLPlate_HPG0G1Constraint_to_Handle_NLPlate_HPG0Constraint(const Handle_NLPlate_HPG0G1Constraint* self_) {
+    try { return {new Handle_NLPlate_HPG0Constraint(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleNLPlateHGPPConstraint*> HandleNLPlateHPG0G1Constraint_to_HandleNLPlateHGPPConstraint(const HandleNLPlateHPG0G1Constraint* self_) {
-    try { return {new HandleNLPlateHGPPConstraint(*self_), nullptr}; }
+extern "C" OcctResult<Handle_NLPlate_HGPPConstraint*> Handle_NLPlate_HPG0G1Constraint_to_Handle_NLPlate_HGPPConstraint(const Handle_NLPlate_HPG0G1Constraint* self_) {
+    try { return {new Handle_NLPlate_HGPPConstraint(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleNLPlateHPG0G1Constraint_to_HandleStandardTransient(const HandleNLPlateHPG0G1Constraint* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_NLPlate_HPG0G1Constraint_to_Handle_Standard_Transient(const Handle_NLPlate_HPG0G1Constraint* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleNLPlateHPG0G2Constraint*> HandleNLPlateHPG0G1Constraint_downcast_to_HandleNLPlateHPG0G2Constraint(const HandleNLPlateHPG0G1Constraint* self_) {
+extern "C" OcctResult<Handle_NLPlate_HPG0G2Constraint*> Handle_NLPlate_HPG0G1Constraint_downcast_to_Handle_NLPlate_HPG0G2Constraint(const Handle_NLPlate_HPG0G1Constraint* self_) {
     try {
     opencascade::handle<NLPlate_HPG0G2Constraint> result = opencascade::handle<NLPlate_HPG0G2Constraint>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleNLPlateHPG0G2Constraint(result), nullptr};
+    return {new Handle_NLPlate_HPG0G2Constraint(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleNLPlateHPG0G3Constraint*> HandleNLPlateHPG0G1Constraint_downcast_to_HandleNLPlateHPG0G3Constraint(const HandleNLPlateHPG0G1Constraint* self_) {
+extern "C" OcctResult<Handle_NLPlate_HPG0G3Constraint*> Handle_NLPlate_HPG0G1Constraint_downcast_to_Handle_NLPlate_HPG0G3Constraint(const Handle_NLPlate_HPG0G1Constraint* self_) {
     try {
     opencascade::handle<NLPlate_HPG0G3Constraint> result = opencascade::handle<NLPlate_HPG0G3Constraint>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleNLPlateHPG0G3Constraint(result), nullptr};
+    return {new Handle_NLPlate_HPG0G3Constraint(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
@@ -25338,39 +24302,39 @@ extern "C" OcctResult<const NLPlate_HGPPConstraint*> NLPlate_HPG0G2Constraint_as
 extern "C" OcctResult<NLPlate_HGPPConstraint*> NLPlate_HPG0G2Constraint_as_NLPlate_HGPPConstraint_mut(NLPlate_HPG0G2Constraint* self_) { return {static_cast<NLPlate_HGPPConstraint*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> NLPlate_HPG0G2Constraint_as_Standard_Transient(const NLPlate_HPG0G2Constraint* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> NLPlate_HPG0G2Constraint_as_Standard_Transient_mut(NLPlate_HPG0G2Constraint* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleNLPlateHPG0G2Constraint*> NLPlate_HPG0G2Constraint_to_handle(NLPlate_HPG0G2Constraint* obj) {
-    try { return {new HandleNLPlateHPG0G2Constraint(obj), nullptr}; }
+extern "C" OcctResult<Handle_NLPlate_HPG0G2Constraint*> NLPlate_HPG0G2Constraint_to_handle(NLPlate_HPG0G2Constraint* obj) {
+    try { return {new Handle_NLPlate_HPG0G2Constraint(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const NLPlate_HPG0G2Constraint*> HandleNLPlateHPG0G2Constraint_get(const HandleNLPlateHPG0G2Constraint* handle) {
+extern "C" OcctResult<const NLPlate_HPG0G2Constraint*> Handle_NLPlate_HPG0G2Constraint_get(const Handle_NLPlate_HPG0G2Constraint* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<NLPlate_HPG0G2Constraint*> HandleNLPlateHPG0G2Constraint_get_mut(HandleNLPlateHPG0G2Constraint* handle) {
+extern "C" OcctResult<NLPlate_HPG0G2Constraint*> Handle_NLPlate_HPG0G2Constraint_get_mut(Handle_NLPlate_HPG0G2Constraint* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleNLPlateHPG0G1Constraint*> HandleNLPlateHPG0G2Constraint_to_HandleNLPlateHPG0G1Constraint(const HandleNLPlateHPG0G2Constraint* self_) {
-    try { return {new HandleNLPlateHPG0G1Constraint(*self_), nullptr}; }
+extern "C" OcctResult<Handle_NLPlate_HPG0G1Constraint*> Handle_NLPlate_HPG0G2Constraint_to_Handle_NLPlate_HPG0G1Constraint(const Handle_NLPlate_HPG0G2Constraint* self_) {
+    try { return {new Handle_NLPlate_HPG0G1Constraint(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleNLPlateHPG0Constraint*> HandleNLPlateHPG0G2Constraint_to_HandleNLPlateHPG0Constraint(const HandleNLPlateHPG0G2Constraint* self_) {
-    try { return {new HandleNLPlateHPG0Constraint(*self_), nullptr}; }
+extern "C" OcctResult<Handle_NLPlate_HPG0Constraint*> Handle_NLPlate_HPG0G2Constraint_to_Handle_NLPlate_HPG0Constraint(const Handle_NLPlate_HPG0G2Constraint* self_) {
+    try { return {new Handle_NLPlate_HPG0Constraint(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleNLPlateHGPPConstraint*> HandleNLPlateHPG0G2Constraint_to_HandleNLPlateHGPPConstraint(const HandleNLPlateHPG0G2Constraint* self_) {
-    try { return {new HandleNLPlateHGPPConstraint(*self_), nullptr}; }
+extern "C" OcctResult<Handle_NLPlate_HGPPConstraint*> Handle_NLPlate_HPG0G2Constraint_to_Handle_NLPlate_HGPPConstraint(const Handle_NLPlate_HPG0G2Constraint* self_) {
+    try { return {new Handle_NLPlate_HGPPConstraint(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleNLPlateHPG0G2Constraint_to_HandleStandardTransient(const HandleNLPlateHPG0G2Constraint* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_NLPlate_HPG0G2Constraint_to_Handle_Standard_Transient(const Handle_NLPlate_HPG0G2Constraint* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleNLPlateHPG0G3Constraint*> HandleNLPlateHPG0G2Constraint_downcast_to_HandleNLPlateHPG0G3Constraint(const HandleNLPlateHPG0G2Constraint* self_) {
+extern "C" OcctResult<Handle_NLPlate_HPG0G3Constraint*> Handle_NLPlate_HPG0G2Constraint_downcast_to_Handle_NLPlate_HPG0G3Constraint(const Handle_NLPlate_HPG0G2Constraint* self_) {
     try {
     opencascade::handle<NLPlate_HPG0G3Constraint> result = opencascade::handle<NLPlate_HPG0G3Constraint>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleNLPlateHPG0G3Constraint(result), nullptr};
+    return {new Handle_NLPlate_HPG0G3Constraint(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
@@ -25526,36 +24490,36 @@ extern "C" OcctResult<const NLPlate_HGPPConstraint*> NLPlate_HPG0G3Constraint_as
 extern "C" OcctResult<NLPlate_HGPPConstraint*> NLPlate_HPG0G3Constraint_as_NLPlate_HGPPConstraint_mut(NLPlate_HPG0G3Constraint* self_) { return {static_cast<NLPlate_HGPPConstraint*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> NLPlate_HPG0G3Constraint_as_Standard_Transient(const NLPlate_HPG0G3Constraint* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> NLPlate_HPG0G3Constraint_as_Standard_Transient_mut(NLPlate_HPG0G3Constraint* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleNLPlateHPG0G3Constraint*> NLPlate_HPG0G3Constraint_to_handle(NLPlate_HPG0G3Constraint* obj) {
-    try { return {new HandleNLPlateHPG0G3Constraint(obj), nullptr}; }
+extern "C" OcctResult<Handle_NLPlate_HPG0G3Constraint*> NLPlate_HPG0G3Constraint_to_handle(NLPlate_HPG0G3Constraint* obj) {
+    try { return {new Handle_NLPlate_HPG0G3Constraint(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const NLPlate_HPG0G3Constraint*> HandleNLPlateHPG0G3Constraint_get(const HandleNLPlateHPG0G3Constraint* handle) {
+extern "C" OcctResult<const NLPlate_HPG0G3Constraint*> Handle_NLPlate_HPG0G3Constraint_get(const Handle_NLPlate_HPG0G3Constraint* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<NLPlate_HPG0G3Constraint*> HandleNLPlateHPG0G3Constraint_get_mut(HandleNLPlateHPG0G3Constraint* handle) {
+extern "C" OcctResult<NLPlate_HPG0G3Constraint*> Handle_NLPlate_HPG0G3Constraint_get_mut(Handle_NLPlate_HPG0G3Constraint* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleNLPlateHPG0G2Constraint*> HandleNLPlateHPG0G3Constraint_to_HandleNLPlateHPG0G2Constraint(const HandleNLPlateHPG0G3Constraint* self_) {
-    try { return {new HandleNLPlateHPG0G2Constraint(*self_), nullptr}; }
+extern "C" OcctResult<Handle_NLPlate_HPG0G2Constraint*> Handle_NLPlate_HPG0G3Constraint_to_Handle_NLPlate_HPG0G2Constraint(const Handle_NLPlate_HPG0G3Constraint* self_) {
+    try { return {new Handle_NLPlate_HPG0G2Constraint(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleNLPlateHPG0G1Constraint*> HandleNLPlateHPG0G3Constraint_to_HandleNLPlateHPG0G1Constraint(const HandleNLPlateHPG0G3Constraint* self_) {
-    try { return {new HandleNLPlateHPG0G1Constraint(*self_), nullptr}; }
+extern "C" OcctResult<Handle_NLPlate_HPG0G1Constraint*> Handle_NLPlate_HPG0G3Constraint_to_Handle_NLPlate_HPG0G1Constraint(const Handle_NLPlate_HPG0G3Constraint* self_) {
+    try { return {new Handle_NLPlate_HPG0G1Constraint(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleNLPlateHPG0Constraint*> HandleNLPlateHPG0G3Constraint_to_HandleNLPlateHPG0Constraint(const HandleNLPlateHPG0G3Constraint* self_) {
-    try { return {new HandleNLPlateHPG0Constraint(*self_), nullptr}; }
+extern "C" OcctResult<Handle_NLPlate_HPG0Constraint*> Handle_NLPlate_HPG0G3Constraint_to_Handle_NLPlate_HPG0Constraint(const Handle_NLPlate_HPG0G3Constraint* self_) {
+    try { return {new Handle_NLPlate_HPG0Constraint(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleNLPlateHGPPConstraint*> HandleNLPlateHPG0G3Constraint_to_HandleNLPlateHGPPConstraint(const HandleNLPlateHPG0G3Constraint* self_) {
-    try { return {new HandleNLPlateHGPPConstraint(*self_), nullptr}; }
+extern "C" OcctResult<Handle_NLPlate_HGPPConstraint*> Handle_NLPlate_HPG0G3Constraint_to_Handle_NLPlate_HGPPConstraint(const Handle_NLPlate_HPG0G3Constraint* self_) {
+    try { return {new Handle_NLPlate_HGPPConstraint(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleNLPlateHPG0G3Constraint_to_HandleStandardTransient(const HandleNLPlateHPG0G3Constraint* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_NLPlate_HPG0G3Constraint_to_Handle_Standard_Transient(const Handle_NLPlate_HPG0G3Constraint* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Plate_D2 const*> NLPlate_HPG0G3Constraint_inherited_G2Target(const NLPlate_HPG0G3Constraint* self) {
@@ -25724,39 +24688,39 @@ extern "C" OcctResult<const NLPlate_HGPPConstraint*> NLPlate_HPG1Constraint_as_N
 extern "C" OcctResult<NLPlate_HGPPConstraint*> NLPlate_HPG1Constraint_as_NLPlate_HGPPConstraint_mut(NLPlate_HPG1Constraint* self_) { return {static_cast<NLPlate_HGPPConstraint*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> NLPlate_HPG1Constraint_as_Standard_Transient(const NLPlate_HPG1Constraint* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> NLPlate_HPG1Constraint_as_Standard_Transient_mut(NLPlate_HPG1Constraint* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleNLPlateHPG1Constraint*> NLPlate_HPG1Constraint_to_handle(NLPlate_HPG1Constraint* obj) {
-    try { return {new HandleNLPlateHPG1Constraint(obj), nullptr}; }
+extern "C" OcctResult<Handle_NLPlate_HPG1Constraint*> NLPlate_HPG1Constraint_to_handle(NLPlate_HPG1Constraint* obj) {
+    try { return {new Handle_NLPlate_HPG1Constraint(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const NLPlate_HPG1Constraint*> HandleNLPlateHPG1Constraint_get(const HandleNLPlateHPG1Constraint* handle) {
+extern "C" OcctResult<const NLPlate_HPG1Constraint*> Handle_NLPlate_HPG1Constraint_get(const Handle_NLPlate_HPG1Constraint* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<NLPlate_HPG1Constraint*> HandleNLPlateHPG1Constraint_get_mut(HandleNLPlateHPG1Constraint* handle) {
+extern "C" OcctResult<NLPlate_HPG1Constraint*> Handle_NLPlate_HPG1Constraint_get_mut(Handle_NLPlate_HPG1Constraint* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleNLPlateHGPPConstraint*> HandleNLPlateHPG1Constraint_to_HandleNLPlateHGPPConstraint(const HandleNLPlateHPG1Constraint* self_) {
-    try { return {new HandleNLPlateHGPPConstraint(*self_), nullptr}; }
+extern "C" OcctResult<Handle_NLPlate_HGPPConstraint*> Handle_NLPlate_HPG1Constraint_to_Handle_NLPlate_HGPPConstraint(const Handle_NLPlate_HPG1Constraint* self_) {
+    try { return {new Handle_NLPlate_HGPPConstraint(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleNLPlateHPG1Constraint_to_HandleStandardTransient(const HandleNLPlateHPG1Constraint* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_NLPlate_HPG1Constraint_to_Handle_Standard_Transient(const Handle_NLPlate_HPG1Constraint* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleNLPlateHPG2Constraint*> HandleNLPlateHPG1Constraint_downcast_to_HandleNLPlateHPG2Constraint(const HandleNLPlateHPG1Constraint* self_) {
+extern "C" OcctResult<Handle_NLPlate_HPG2Constraint*> Handle_NLPlate_HPG1Constraint_downcast_to_Handle_NLPlate_HPG2Constraint(const Handle_NLPlate_HPG1Constraint* self_) {
     try {
     opencascade::handle<NLPlate_HPG2Constraint> result = opencascade::handle<NLPlate_HPG2Constraint>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleNLPlateHPG2Constraint(result), nullptr};
+    return {new Handle_NLPlate_HPG2Constraint(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleNLPlateHPG3Constraint*> HandleNLPlateHPG1Constraint_downcast_to_HandleNLPlateHPG3Constraint(const HandleNLPlateHPG1Constraint* self_) {
+extern "C" OcctResult<Handle_NLPlate_HPG3Constraint*> Handle_NLPlate_HPG1Constraint_downcast_to_Handle_NLPlate_HPG3Constraint(const Handle_NLPlate_HPG1Constraint* self_) {
     try {
     opencascade::handle<NLPlate_HPG3Constraint> result = opencascade::handle<NLPlate_HPG3Constraint>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleNLPlateHPG3Constraint(result), nullptr};
+    return {new Handle_NLPlate_HPG3Constraint(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
@@ -25888,35 +24852,35 @@ extern "C" OcctResult<const NLPlate_HGPPConstraint*> NLPlate_HPG2Constraint_as_N
 extern "C" OcctResult<NLPlate_HGPPConstraint*> NLPlate_HPG2Constraint_as_NLPlate_HGPPConstraint_mut(NLPlate_HPG2Constraint* self_) { return {static_cast<NLPlate_HGPPConstraint*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> NLPlate_HPG2Constraint_as_Standard_Transient(const NLPlate_HPG2Constraint* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> NLPlate_HPG2Constraint_as_Standard_Transient_mut(NLPlate_HPG2Constraint* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleNLPlateHPG2Constraint*> NLPlate_HPG2Constraint_to_handle(NLPlate_HPG2Constraint* obj) {
-    try { return {new HandleNLPlateHPG2Constraint(obj), nullptr}; }
+extern "C" OcctResult<Handle_NLPlate_HPG2Constraint*> NLPlate_HPG2Constraint_to_handle(NLPlate_HPG2Constraint* obj) {
+    try { return {new Handle_NLPlate_HPG2Constraint(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const NLPlate_HPG2Constraint*> HandleNLPlateHPG2Constraint_get(const HandleNLPlateHPG2Constraint* handle) {
+extern "C" OcctResult<const NLPlate_HPG2Constraint*> Handle_NLPlate_HPG2Constraint_get(const Handle_NLPlate_HPG2Constraint* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<NLPlate_HPG2Constraint*> HandleNLPlateHPG2Constraint_get_mut(HandleNLPlateHPG2Constraint* handle) {
+extern "C" OcctResult<NLPlate_HPG2Constraint*> Handle_NLPlate_HPG2Constraint_get_mut(Handle_NLPlate_HPG2Constraint* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleNLPlateHPG1Constraint*> HandleNLPlateHPG2Constraint_to_HandleNLPlateHPG1Constraint(const HandleNLPlateHPG2Constraint* self_) {
-    try { return {new HandleNLPlateHPG1Constraint(*self_), nullptr}; }
+extern "C" OcctResult<Handle_NLPlate_HPG1Constraint*> Handle_NLPlate_HPG2Constraint_to_Handle_NLPlate_HPG1Constraint(const Handle_NLPlate_HPG2Constraint* self_) {
+    try { return {new Handle_NLPlate_HPG1Constraint(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleNLPlateHGPPConstraint*> HandleNLPlateHPG2Constraint_to_HandleNLPlateHGPPConstraint(const HandleNLPlateHPG2Constraint* self_) {
-    try { return {new HandleNLPlateHGPPConstraint(*self_), nullptr}; }
+extern "C" OcctResult<Handle_NLPlate_HGPPConstraint*> Handle_NLPlate_HPG2Constraint_to_Handle_NLPlate_HGPPConstraint(const Handle_NLPlate_HPG2Constraint* self_) {
+    try { return {new Handle_NLPlate_HGPPConstraint(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleNLPlateHPG2Constraint_to_HandleStandardTransient(const HandleNLPlateHPG2Constraint* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_NLPlate_HPG2Constraint_to_Handle_Standard_Transient(const Handle_NLPlate_HPG2Constraint* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleNLPlateHPG3Constraint*> HandleNLPlateHPG2Constraint_downcast_to_HandleNLPlateHPG3Constraint(const HandleNLPlateHPG2Constraint* self_) {
+extern "C" OcctResult<Handle_NLPlate_HPG3Constraint*> Handle_NLPlate_HPG2Constraint_downcast_to_Handle_NLPlate_HPG3Constraint(const Handle_NLPlate_HPG2Constraint* self_) {
     try {
     opencascade::handle<NLPlate_HPG3Constraint> result = opencascade::handle<NLPlate_HPG3Constraint>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleNLPlateHPG3Constraint(result), nullptr};
+    return {new Handle_NLPlate_HPG3Constraint(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
@@ -26070,32 +25034,32 @@ extern "C" OcctResult<const NLPlate_HGPPConstraint*> NLPlate_HPG3Constraint_as_N
 extern "C" OcctResult<NLPlate_HGPPConstraint*> NLPlate_HPG3Constraint_as_NLPlate_HGPPConstraint_mut(NLPlate_HPG3Constraint* self_) { return {static_cast<NLPlate_HGPPConstraint*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> NLPlate_HPG3Constraint_as_Standard_Transient(const NLPlate_HPG3Constraint* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> NLPlate_HPG3Constraint_as_Standard_Transient_mut(NLPlate_HPG3Constraint* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleNLPlateHPG3Constraint*> NLPlate_HPG3Constraint_to_handle(NLPlate_HPG3Constraint* obj) {
-    try { return {new HandleNLPlateHPG3Constraint(obj), nullptr}; }
+extern "C" OcctResult<Handle_NLPlate_HPG3Constraint*> NLPlate_HPG3Constraint_to_handle(NLPlate_HPG3Constraint* obj) {
+    try { return {new Handle_NLPlate_HPG3Constraint(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const NLPlate_HPG3Constraint*> HandleNLPlateHPG3Constraint_get(const HandleNLPlateHPG3Constraint* handle) {
+extern "C" OcctResult<const NLPlate_HPG3Constraint*> Handle_NLPlate_HPG3Constraint_get(const Handle_NLPlate_HPG3Constraint* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<NLPlate_HPG3Constraint*> HandleNLPlateHPG3Constraint_get_mut(HandleNLPlateHPG3Constraint* handle) {
+extern "C" OcctResult<NLPlate_HPG3Constraint*> Handle_NLPlate_HPG3Constraint_get_mut(Handle_NLPlate_HPG3Constraint* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleNLPlateHPG2Constraint*> HandleNLPlateHPG3Constraint_to_HandleNLPlateHPG2Constraint(const HandleNLPlateHPG3Constraint* self_) {
-    try { return {new HandleNLPlateHPG2Constraint(*self_), nullptr}; }
+extern "C" OcctResult<Handle_NLPlate_HPG2Constraint*> Handle_NLPlate_HPG3Constraint_to_Handle_NLPlate_HPG2Constraint(const Handle_NLPlate_HPG3Constraint* self_) {
+    try { return {new Handle_NLPlate_HPG2Constraint(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleNLPlateHPG1Constraint*> HandleNLPlateHPG3Constraint_to_HandleNLPlateHPG1Constraint(const HandleNLPlateHPG3Constraint* self_) {
-    try { return {new HandleNLPlateHPG1Constraint(*self_), nullptr}; }
+extern "C" OcctResult<Handle_NLPlate_HPG1Constraint*> Handle_NLPlate_HPG3Constraint_to_Handle_NLPlate_HPG1Constraint(const Handle_NLPlate_HPG3Constraint* self_) {
+    try { return {new Handle_NLPlate_HPG1Constraint(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleNLPlateHGPPConstraint*> HandleNLPlateHPG3Constraint_to_HandleNLPlateHGPPConstraint(const HandleNLPlateHPG3Constraint* self_) {
-    try { return {new HandleNLPlateHGPPConstraint(*self_), nullptr}; }
+extern "C" OcctResult<Handle_NLPlate_HGPPConstraint*> Handle_NLPlate_HPG3Constraint_to_Handle_NLPlate_HGPPConstraint(const Handle_NLPlate_HPG3Constraint* self_) {
+    try { return {new Handle_NLPlate_HGPPConstraint(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleNLPlateHPG3Constraint_to_HandleStandardTransient(const HandleNLPlateHPG3Constraint* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_NLPlate_HPG3Constraint_to_Handle_Standard_Transient(const Handle_NLPlate_HPG3Constraint* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Plate_D2 const*> NLPlate_HPG3Constraint_inherited_G2Target(const NLPlate_HPG3Constraint* self) {
@@ -26358,7 +25322,7 @@ extern "C" void Plate_FreeGtoCConstraint_destructor(Plate_FreeGtoCConstraint* se
 // Plate_GlobalTranslationConstraint wrappers
 // ========================
 
-extern "C" OcctResult<Plate_GlobalTranslationConstraint*> Plate_GlobalTranslationConstraint_ctor_sequenceofxy(TColgp_SequenceOfXY const* SOfXY) {
+extern "C" OcctResult<Plate_GlobalTranslationConstraint*> Plate_GlobalTranslationConstraint_ctor_seq_xy(NCollection_Sequence_gp_XY const* SOfXY) {
     try { return {new Plate_GlobalTranslationConstraint(*SOfXY), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -26415,98 +25379,6 @@ extern "C" OcctResult<Plate_GtoCConstraint*> Plate_GtoCConstraint_clone(const Pl
 extern "C" void Plate_GtoCConstraint_destructor(Plate_GtoCConstraint* self_) { delete self_; }
 
 // ========================
-// Plate_HArray1OfPinpointConstraint wrappers
-// ========================
-
-extern "C" OcctResult<Plate_HArray1OfPinpointConstraint*> Plate_HArray1OfPinpointConstraint_ctor() {
-    try { return {new Plate_HArray1OfPinpointConstraint(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Plate_HArray1OfPinpointConstraint*> Plate_HArray1OfPinpointConstraint_ctor_int2(int32_t theLower, int32_t theUpper) {
-    try { return {new Plate_HArray1OfPinpointConstraint(theLower, theUpper), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Plate_HArray1OfPinpointConstraint*> Plate_HArray1OfPinpointConstraint_ctor_int2_pinpointconstraint(int32_t theLower, int32_t theUpper, Plate_PinpointConstraint const* theValue) {
-    try { return {new Plate_HArray1OfPinpointConstraint(theLower, theUpper, *theValue), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Plate_HArray1OfPinpointConstraint*> Plate_HArray1OfPinpointConstraint_ctor_pinpointconstraint_int2_bool(Plate_PinpointConstraint const* theBegin, int32_t theLower, int32_t theUpper, bool arg3) {
-    try { return {new Plate_HArray1OfPinpointConstraint(*theBegin, theLower, theUpper, arg3), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Plate_HArray1OfPinpointConstraint*> Plate_HArray1OfPinpointConstraint_ctor_array1ofpinpointconstraint(Plate_Array1OfPinpointConstraint const* theOther) {
-    try { return {new Plate_HArray1OfPinpointConstraint(*theOther), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Plate_Array1OfPinpointConstraint const*> Plate_HArray1OfPinpointConstraint_array1(const Plate_HArray1OfPinpointConstraint* self_) {
-    try { return {&(self_->Array1()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Plate_Array1OfPinpointConstraint*> Plate_HArray1OfPinpointConstraint_change_array1(Plate_HArray1OfPinpointConstraint* self_) {
-    try { return {&(self_->ChangeArray1()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Handle(Standard_Type) const*> Plate_HArray1OfPinpointConstraint_dynamic_type(const Plate_HArray1OfPinpointConstraint* self_) {
-    try { return {&(self_->DynamicType()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<char const*> Plate_HArray1OfPinpointConstraint_get_type_name() {
-    try { return {Plate_HArray1OfPinpointConstraint::get_type_name(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Handle(Standard_Type) const*> Plate_HArray1OfPinpointConstraint_get_type_descriptor() {
-    try { return {&(Plate_HArray1OfPinpointConstraint::get_type_descriptor()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<const Standard_Transient*> Plate_HArray1OfPinpointConstraint_as_Standard_Transient(const Plate_HArray1OfPinpointConstraint* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<Standard_Transient*> Plate_HArray1OfPinpointConstraint_as_Standard_Transient_mut(Plate_HArray1OfPinpointConstraint* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandlePlateHArray1OfPinpointConstraint*> Plate_HArray1OfPinpointConstraint_to_handle(Plate_HArray1OfPinpointConstraint* obj) {
-    try { return {new HandlePlateHArray1OfPinpointConstraint(obj), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<const Plate_HArray1OfPinpointConstraint*> HandlePlateHArray1OfPinpointConstraint_get(const HandlePlateHArray1OfPinpointConstraint* handle) {
-    try { return {(*handle).get(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Plate_HArray1OfPinpointConstraint*> HandlePlateHArray1OfPinpointConstraint_get_mut(HandlePlateHArray1OfPinpointConstraint* handle) {
-    try { return {(*handle).get(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<HandleStandardTransient*> HandlePlateHArray1OfPinpointConstraint_to_HandleStandardTransient(const HandlePlateHArray1OfPinpointConstraint* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<bool> Plate_HArray1OfPinpointConstraint_inherited_IsInstance(const Plate_HArray1OfPinpointConstraint* self, Handle(Standard_Type) const& theType) {
-    try { return {self->IsInstance(theType), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<bool> Plate_HArray1OfPinpointConstraint_inherited_IsKind(const Plate_HArray1OfPinpointConstraint* self, Handle(Standard_Type) const& theType) {
-    try { return {self->IsKind(theType), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Standard_Transient*> Plate_HArray1OfPinpointConstraint_inherited_This(const Plate_HArray1OfPinpointConstraint* self) {
-    try { return {self->This(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<int32_t> Plate_HArray1OfPinpointConstraint_inherited_GetRefCount(const Plate_HArray1OfPinpointConstraint* self) {
-    try { return {self->GetRefCount(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* Plate_HArray1OfPinpointConstraint_inherited_IncrementRefCounter(Plate_HArray1OfPinpointConstraint* self) {
-    try { self->IncrementRefCounter(); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<int32_t> Plate_HArray1OfPinpointConstraint_inherited_DecrementRefCounter(Plate_HArray1OfPinpointConstraint* self) {
-    try { return {self->DecrementRefCounter(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* Plate_HArray1OfPinpointConstraint_inherited_Delete(const Plate_HArray1OfPinpointConstraint* self) {
-    try { self->Delete(); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" void Plate_HArray1OfPinpointConstraint_destructor(Plate_HArray1OfPinpointConstraint* self_) { delete self_; }
-
-// ========================
 // Plate_LineConstraint wrappers
 // ========================
 
@@ -26532,11 +25404,11 @@ extern "C" OcctResult<Plate_LinearScalarConstraint*> Plate_LinearScalarConstrain
     try { return {new Plate_LinearScalarConstraint(*thePPC1, *theCoeff), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Plate_LinearScalarConstraint*> Plate_LinearScalarConstraint_ctor_array1ofpinpointconstraint_array1ofxyz(Plate_Array1OfPinpointConstraint const* thePPC, TColgp_Array1OfXYZ const* theCoeff) {
+extern "C" OcctResult<Plate_LinearScalarConstraint*> Plate_LinearScalarConstraint_ctor_arr1_pinpointconstraint_arr1_xyz(NCollection_Array1_Plate_PinpointConstraint const* thePPC, NCollection_Array1_gp_XYZ const* theCoeff) {
     try { return {new Plate_LinearScalarConstraint(*thePPC, *theCoeff), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Plate_LinearScalarConstraint*> Plate_LinearScalarConstraint_ctor_array1ofpinpointconstraint_array2ofxyz(Plate_Array1OfPinpointConstraint const* thePPC, TColgp_Array2OfXYZ const* theCoeff) {
+extern "C" OcctResult<Plate_LinearScalarConstraint*> Plate_LinearScalarConstraint_ctor_arr1_pinpointconstraint_arr2_xyz(NCollection_Array1_Plate_PinpointConstraint const* thePPC, NCollection_Array2_gp_XYZ const* theCoeff) {
     try { return {new Plate_LinearScalarConstraint(*thePPC, *theCoeff), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -26544,11 +25416,11 @@ extern "C" OcctResult<Plate_LinearScalarConstraint*> Plate_LinearScalarConstrain
     try { return {new Plate_LinearScalarConstraint(ColLen, RowLen), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Plate_Array1OfPinpointConstraint const*> Plate_LinearScalarConstraint_get_ppc(const Plate_LinearScalarConstraint* self_) {
+extern "C" OcctResult<NCollection_Array1_Plate_PinpointConstraint const*> Plate_LinearScalarConstraint_get_ppc(const Plate_LinearScalarConstraint* self_) {
     try { return {&(self_->GetPPC()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TColgp_Array2OfXYZ const*> Plate_LinearScalarConstraint_coeff(const Plate_LinearScalarConstraint* self_) {
+extern "C" OcctResult<NCollection_Array2_gp_XYZ const*> Plate_LinearScalarConstraint_coeff(const Plate_LinearScalarConstraint* self_) {
     try { return {&(self_->Coeff()), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -26570,11 +25442,11 @@ extern "C" OcctResult<Plate_LinearXYZConstraint*> Plate_LinearXYZConstraint_ctor
     try { return {new Plate_LinearXYZConstraint(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Plate_LinearXYZConstraint*> Plate_LinearXYZConstraint_ctor_array1ofpinpointconstraint_array1ofreal(Plate_Array1OfPinpointConstraint const* thePPC, TColStd_Array1OfReal const* theCoeff) {
+extern "C" OcctResult<Plate_LinearXYZConstraint*> Plate_LinearXYZConstraint_ctor_arr1_pinpointconstraint_arr1_double(NCollection_Array1_Plate_PinpointConstraint const* thePPC, NCollection_Array1_double const* theCoeff) {
     try { return {new Plate_LinearXYZConstraint(*thePPC, *theCoeff), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Plate_LinearXYZConstraint*> Plate_LinearXYZConstraint_ctor_array1ofpinpointconstraint_array2ofreal(Plate_Array1OfPinpointConstraint const* thePPC, TColStd_Array2OfReal const* theCoeff) {
+extern "C" OcctResult<Plate_LinearXYZConstraint*> Plate_LinearXYZConstraint_ctor_arr1_pinpointconstraint_arr2_double(NCollection_Array1_Plate_PinpointConstraint const* thePPC, NCollection_Array2_double const* theCoeff) {
     try { return {new Plate_LinearXYZConstraint(*thePPC, *theCoeff), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -26582,11 +25454,11 @@ extern "C" OcctResult<Plate_LinearXYZConstraint*> Plate_LinearXYZConstraint_ctor
     try { return {new Plate_LinearXYZConstraint(ColLen, RowLen), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Plate_Array1OfPinpointConstraint const*> Plate_LinearXYZConstraint_get_ppc(const Plate_LinearXYZConstraint* self_) {
+extern "C" OcctResult<NCollection_Array1_Plate_PinpointConstraint const*> Plate_LinearXYZConstraint_get_ppc(const Plate_LinearXYZConstraint* self_) {
     try { return {&(self_->GetPPC()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TColStd_Array2OfReal const*> Plate_LinearXYZConstraint_coeff(const Plate_LinearXYZConstraint* self_) {
+extern "C" OcctResult<NCollection_Array2_double const*> Plate_LinearXYZConstraint_coeff(const Plate_LinearXYZConstraint* self_) {
     try { return {&(self_->Coeff()), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -26660,6 +25532,10 @@ extern "C" OcctResult<gp_XYZ*> Plate_Plate_evaluate_derivative(const Plate_Plate
     try { return {new gp_XYZ(self_->EvaluateDerivative(*point2d, iu, iv)), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" OcctResult<Handle(NCollection_HArray2_gp_XYZ)*> Plate_Plate_coef_pol(const Plate_Plate* self_) {
+    try { return {new Handle(NCollection_HArray2_gp_XYZ)(self_->CoefPol()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" OcctResult<Plate_Plate*> Plate_Plate_copy(Plate_Plate* self_, Plate_Plate const* Ref) {
     try { return {&(self_->Copy(*Ref)), nullptr}; }
     OCCT_CATCH_RETURN
@@ -26716,10 +25592,6 @@ extern "C" const char* Plate_Plate_init(Plate_Plate* self_) {
     try { self_->Init(); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* Plate_Plate_coef_pol(const Plate_Plate* self_, Handle(TColgp_HArray2OfXYZ)* Coefs) {
-    try { self_->CoefPol(*Coefs); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
 extern "C" const char* Plate_Plate_set_polynomial_part_only(Plate_Plate* self_, bool PPOnly) {
     try { self_->SetPolynomialPartOnly(PPOnly); return nullptr; }
     OCCT_CATCH_RETURN_VOID
@@ -26732,7 +25604,7 @@ extern "C" const char* Plate_Plate_uv_box(const Plate_Plate* self_, double* UMin
     try { self_->UVBox(*UMin, *UMax, *VMin, *VMax); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* Plate_Plate_uv_constraints(const Plate_Plate* self_, TColgp_SequenceOfXY* Seq) {
+extern "C" const char* Plate_Plate_uv_constraints(const Plate_Plate* self_, NCollection_Sequence_gp_XY* Seq) {
     try { self_->UVConstraints(*Seq); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -26746,7 +25618,7 @@ extern "C" void Plate_Plate_destructor(Plate_Plate* self_) { delete self_; }
 // Plate_SampledCurveConstraint wrappers
 // ========================
 
-extern "C" OcctResult<Plate_SampledCurveConstraint*> Plate_SampledCurveConstraint_ctor_sequenceofpinpointconstraint_int(Plate_SequenceOfPinpointConstraint const* SOPPC, int32_t n) {
+extern "C" OcctResult<Plate_SampledCurveConstraint*> Plate_SampledCurveConstraint_ctor_seq_pinpointconstraint_int(NCollection_Sequence_Plate_PinpointConstraint const* SOPPC, int32_t n) {
     try { return {new Plate_SampledCurveConstraint(*SOPPC, n), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -26911,27 +25783,27 @@ extern "C" OcctResult<Handle(Geom_Surface)*> GeomFill_surface(Handle(Geom_Curve)
     try { return {new Handle(Geom_Surface)(GeomFill::Surface(*Curve1, *Curve2)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* GeomFill_get_circle_parameterisationtype_vec3_pnt2_real_pnt_array1ofpnt_array1ofreal(int32_t TConv, gp_Vec const* ns1, gp_Vec const* ns2, gp_Vec const* nplan, gp_Pnt const* pt1, gp_Pnt const* pt2, double Rayon, gp_Pnt const* Center, TColgp_Array1OfPnt* Poles, TColStd_Array1OfReal* Weigths) {
+extern "C" const char* GeomFill_get_circle_parameterisationtype_vec3_pnt2_real_pnt_arr1_pnt_arr1_double(int32_t TConv, gp_Vec const* ns1, gp_Vec const* ns2, gp_Vec const* nplan, gp_Pnt const* pt1, gp_Pnt const* pt2, double Rayon, gp_Pnt const* Center, NCollection_Array1_gp_Pnt* Poles, NCollection_Array1_double* Weigths) {
     try { GeomFill::GetCircle(static_cast<Convert_ParameterisationType>(TConv), *ns1, *ns2, *nplan, *pt1, *pt2, Rayon, *Center, *Poles, *Weigths); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<bool> GeomFill_get_circle_parameterisationtype_vec6_pnt2_vec2_real2_pnt_vec_array1ofpnt_array1ofvec_array1ofreal2(int32_t TConv, gp_Vec const* ns1, gp_Vec const* ns2, gp_Vec const* dn1w, gp_Vec const* dn2w, gp_Vec const* nplan, gp_Vec const* dnplan, gp_Pnt const* pts1, gp_Pnt const* pts2, gp_Vec const* tang1, gp_Vec const* tang2, double Rayon, double DRayon, gp_Pnt const* Center, gp_Vec const* DCenter, TColgp_Array1OfPnt* Poles, TColgp_Array1OfVec* DPoles, TColStd_Array1OfReal* Weigths, TColStd_Array1OfReal* DWeigths) {
+extern "C" OcctResult<bool> GeomFill_get_circle_parameterisationtype_vec6_pnt2_vec2_real2_pnt_vec_arr1_pnt_arr1_vec_arr1_double2(int32_t TConv, gp_Vec const* ns1, gp_Vec const* ns2, gp_Vec const* dn1w, gp_Vec const* dn2w, gp_Vec const* nplan, gp_Vec const* dnplan, gp_Pnt const* pts1, gp_Pnt const* pts2, gp_Vec const* tang1, gp_Vec const* tang2, double Rayon, double DRayon, gp_Pnt const* Center, gp_Vec const* DCenter, NCollection_Array1_gp_Pnt* Poles, NCollection_Array1_gp_Vec* DPoles, NCollection_Array1_double* Weigths, NCollection_Array1_double* DWeigths) {
     try { return {GeomFill::GetCircle(static_cast<Convert_ParameterisationType>(TConv), *ns1, *ns2, *dn1w, *dn2w, *nplan, *dnplan, *pts1, *pts2, *tang1, *tang2, Rayon, DRayon, *Center, *DCenter, *Poles, *DPoles, *Weigths, *DWeigths), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<bool> GeomFill_get_circle_parameterisationtype_vec9_pnt2_vec4_real3_pnt_vec2_array1ofpnt_array1ofvec2_array1ofreal3(int32_t TConv, gp_Vec const* ns1, gp_Vec const* ns2, gp_Vec const* dn1w, gp_Vec const* dn2w, gp_Vec const* d2n1w, gp_Vec const* d2n2w, gp_Vec const* nplan, gp_Vec const* dnplan, gp_Vec const* d2nplan, gp_Pnt const* pts1, gp_Pnt const* pts2, gp_Vec const* tang1, gp_Vec const* tang2, gp_Vec const* Dtang1, gp_Vec const* Dtang2, double Rayon, double DRayon, double D2Rayon, gp_Pnt const* Center, gp_Vec const* DCenter, gp_Vec const* D2Center, TColgp_Array1OfPnt* Poles, TColgp_Array1OfVec* DPoles, TColgp_Array1OfVec* D2Poles, TColStd_Array1OfReal* Weigths, TColStd_Array1OfReal* DWeigths, TColStd_Array1OfReal* D2Weigths) {
+extern "C" OcctResult<bool> GeomFill_get_circle_parameterisationtype_vec9_pnt2_vec4_real3_pnt_vec2_arr1_pnt_arr1_vec2_arr1_double3(int32_t TConv, gp_Vec const* ns1, gp_Vec const* ns2, gp_Vec const* dn1w, gp_Vec const* dn2w, gp_Vec const* d2n1w, gp_Vec const* d2n2w, gp_Vec const* nplan, gp_Vec const* dnplan, gp_Vec const* d2nplan, gp_Pnt const* pts1, gp_Pnt const* pts2, gp_Vec const* tang1, gp_Vec const* tang2, gp_Vec const* Dtang1, gp_Vec const* Dtang2, double Rayon, double DRayon, double D2Rayon, gp_Pnt const* Center, gp_Vec const* DCenter, gp_Vec const* D2Center, NCollection_Array1_gp_Pnt* Poles, NCollection_Array1_gp_Vec* DPoles, NCollection_Array1_gp_Vec* D2Poles, NCollection_Array1_double* Weigths, NCollection_Array1_double* DWeigths, NCollection_Array1_double* D2Weigths) {
     try { return {GeomFill::GetCircle(static_cast<Convert_ParameterisationType>(TConv), *ns1, *ns2, *dn1w, *dn2w, *d2n1w, *d2n2w, *nplan, *dnplan, *d2nplan, *pts1, *pts2, *tang1, *tang2, *Dtang1, *Dtang2, Rayon, DRayon, D2Rayon, *Center, *DCenter, *D2Center, *Poles, *DPoles, *D2Poles, *Weigths, *DWeigths, *D2Weigths), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* GeomFill_knots_parameterisationtype_array1ofreal(int32_t TypeConv, TColStd_Array1OfReal* TKnots) {
+extern "C" const char* GeomFill_knots_parameterisationtype_arr1_double(int32_t TypeConv, NCollection_Array1_double* TKnots) {
     try { GeomFill::Knots(static_cast<Convert_ParameterisationType>(TypeConv), *TKnots); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* GeomFill_mults_parameterisationtype_array1ofinteger(int32_t TypeConv, TColStd_Array1OfInteger* TMults) {
+extern "C" const char* GeomFill_mults_parameterisationtype_arr1_int(int32_t TypeConv, NCollection_Array1_int* TMults) {
     try { GeomFill::Mults(static_cast<Convert_ParameterisationType>(TypeConv), *TMults); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* GeomFill_get_minimal_weights_parameterisationtype_real2_array1ofreal(int32_t TConv, double AngleMin, double AngleMax, TColStd_Array1OfReal* Weigths) {
+extern "C" const char* GeomFill_get_minimal_weights_parameterisationtype_real2_arr1_double(int32_t TConv, double AngleMin, double AngleMax, NCollection_Array1_double* Weigths) {
     try { GeomFill::GetMinimalWeights(static_cast<Convert_ParameterisationType>(TConv), AngleMin, AngleMax, *Weigths); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -26995,12 +25867,12 @@ extern "C" OcctResult<Handle(Law_BSpFunc)*> Law_mix_bnd_handlelawlinear(Handle(L
     try { return {new Handle(Law_BSpFunc)(Law::MixBnd(*Lin)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(TColStd_HArray1OfReal)*> Law_mix_bnd_int_array1ofreal_array1ofinteger_handlelawlinear(int32_t Degree, TColStd_Array1OfReal const* Knots, TColStd_Array1OfInteger const* Mults, Handle(Law_Linear) const* Lin) {
-    try { return {new Handle(TColStd_HArray1OfReal)(Law::MixBnd(Degree, *Knots, *Mults, *Lin)), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HArray1_double)*> Law_mix_bnd_int_arr1_double_arr1_int_handlelawlinear(int32_t Degree, NCollection_Array1_double const* Knots, NCollection_Array1_int const* Mults, Handle(Law_Linear) const* Lin) {
+    try { return {new Handle(NCollection_HArray1_double)(Law::MixBnd(Degree, *Knots, *Mults, *Lin)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(TColStd_HArray1OfReal)*> Law_mix_tgt(int32_t Degree, TColStd_Array1OfReal const* Knots, TColStd_Array1OfInteger const* Mults, bool NulOnTheRight, int32_t Index) {
-    try { return {new Handle(TColStd_HArray1OfReal)(Law::MixTgt(Degree, *Knots, *Mults, NulOnTheRight, Index)), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HArray1_double)*> Law_mix_tgt(int32_t Degree, NCollection_Array1_double const* Knots, NCollection_Array1_int const* Mults, bool NulOnTheRight, int32_t Index) {
+    try { return {new Handle(NCollection_HArray1_double)(Law::MixTgt(Degree, *Knots, *Mults, NulOnTheRight, Index)), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(Law_BSpline)*> Law_reparametrize_curve_real2_bool2_real2_bool_int(Adaptor3d_Curve const* Curve, double First, double Last, bool HasDF, bool HasDL, double DFirst, double DLast, bool Rev, int32_t NbPoints) {
@@ -27030,21 +25902,10 @@ extern "C" const char* LocalAnalysis_dump_curvecontinuity_ostream(LocalAnalysis_
 
 
 // Nested type and typedef type destructors
-extern "C" void GeomFill_Array1OfLocationLaw_destructor(GeomFill_Array1OfLocationLaw* self_) { delete self_; }
-extern "C" void GeomFill_Array1OfSectionLaw_destructor(GeomFill_Array1OfSectionLaw* self_) { delete self_; }
-extern "C" void GeomFill_SequenceOfAx2_destructor(GeomFill_SequenceOfAx2* self_) { delete self_; }
-extern "C" void GeomFill_SequenceOfAx2_value_type_destructor(GeomFill_SequenceOfAx2::value_type* self_) { delete self_; }
-extern "C" void GeomFill_SequenceOfTrsf_destructor(GeomFill_SequenceOfTrsf* self_) { delete self_; }
-extern "C" void GeomInt_VectorOfReal_destructor(GeomInt_VectorOfReal* self_) { delete self_; }
-extern "C" void GeomPlate_Array1OfHCurve_destructor(GeomPlate_Array1OfHCurve* self_) { delete self_; }
-extern "C" void GeomPlate_Array1OfSequenceOfReal_destructor(GeomPlate_Array1OfSequenceOfReal* self_) { delete self_; }
-extern "C" void GeomPlate_Array1OfSequenceOfReal_value_type_destructor(GeomPlate_Array1OfSequenceOfReal::value_type* self_) { delete self_; }
-extern "C" void GeomPlate_SequenceOfAij_destructor(GeomPlate_SequenceOfAij* self_) { delete self_; }
-extern "C" void GeomPlate_SequenceOfCurveConstraint_destructor(GeomPlate_SequenceOfCurveConstraint* self_) { delete self_; }
-extern "C" void GeomPlate_SequenceOfPointConstraint_destructor(GeomPlate_SequenceOfPointConstraint* self_) { delete self_; }
+extern "C" void GeomFill_Gordon_ApproximationMode_destructor(GeomFill_Gordon::ApproximationMode* self_) { delete self_; }
+extern "C" void GeomFill_Gordon_ResultStatus_destructor(GeomFill_Gordon::ResultStatus* self_) { delete self_; }
+extern "C" void GeomFill_NetworkSurface_ResultStatus_destructor(GeomFill_NetworkSurface::ResultStatus* self_) { delete self_; }
 extern "C" void IntPatch_ImpImpIntersection_IntStatus_destructor(IntPatch_ImpImpIntersection::IntStatus* self_) { delete self_; }
-extern "C" void IntPatch_SequenceOfLine_destructor(IntPatch_SequenceOfLine* self_) { delete self_; }
-extern "C" void IntPatch_SequenceOfPoint_destructor(IntPatch_SequenceOfPoint* self_) { delete self_; }
 extern "C" void IntPatch_WLine_IntPatch_WLType_destructor(IntPatch_WLine::IntPatch_WLType* self_) { delete self_; }
 extern "C" void IntPolyh_ArrayOfEdges_destructor(IntPolyh_ArrayOfEdges* self_) { delete self_; }
 extern "C" void IntPolyh_ArrayOfPointNormal_destructor(IntPolyh_ArrayOfPointNormal* self_) { delete self_; }
@@ -27052,12 +25913,3 @@ extern "C" void IntPolyh_ArrayOfPoints_destructor(IntPolyh_ArrayOfPoints* self_)
 extern "C" void IntPolyh_ArrayOfSectionLines_destructor(IntPolyh_ArrayOfSectionLines* self_) { delete self_; }
 extern "C" void IntPolyh_ArrayOfTangentZones_destructor(IntPolyh_ArrayOfTangentZones* self_) { delete self_; }
 extern "C" void IntPolyh_ArrayOfTriangles_destructor(IntPolyh_ArrayOfTriangles* self_) { delete self_; }
-extern "C" void IntPolyh_ListOfCouples_destructor(IntPolyh_ListOfCouples* self_) { delete self_; }
-extern "C" void IntRes2d_SequenceOfIntersectionPoint_destructor(IntRes2d_SequenceOfIntersectionPoint* self_) { delete self_; }
-extern "C" void IntSurf_ListOfPntOn2S_destructor(IntSurf_ListOfPntOn2S* self_) { delete self_; }
-extern "C" void IntSurf_SequenceOfInteriorPoint_destructor(IntSurf_SequenceOfInteriorPoint* self_) { delete self_; }
-extern "C" void IntSurf_SequenceOfPathPoint_destructor(IntSurf_SequenceOfPathPoint* self_) { delete self_; }
-extern "C" void Intf_Array1OfLin_destructor(Intf_Array1OfLin* self_) { delete self_; }
-extern "C" void Law_Laws_destructor(Law_Laws* self_) { delete self_; }
-extern "C" void Plate_Array1OfPinpointConstraint_destructor(Plate_Array1OfPinpointConstraint* self_) { delete self_; }
-extern "C" void Plate_SequenceOfPinpointConstraint_destructor(Plate_SequenceOfPinpointConstraint* self_) { delete self_; }

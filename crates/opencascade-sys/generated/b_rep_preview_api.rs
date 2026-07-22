@@ -115,7 +115,7 @@ impl MakeBox {
         }
     }
 
-    /// Inherited: **Source:** `BRepPrimAPI_MakeBox.hxx`:79 - `BRepPrimAPI_MakeBox::Init()`
+    /// Inherited: **Source:** `BRepPrimAPI_MakeBox.hxx`:77 - `BRepPrimAPI_MakeBox::Init()`
     pub fn init(&mut self, theDX: f64, theDY: f64, theDZ: f64) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKPrim::BRepPreviewAPI_MakeBox_inherited_Init(
@@ -127,7 +127,7 @@ impl MakeBox {
         })
     }
 
-    /// Inherited: **Source:** `BRepPrimAPI_MakeBox.hxx`:99 - `BRepPrimAPI_MakeBox::Wedge()`
+    /// Inherited: **Source:** `BRepPrimAPI_MakeBox.hxx`:95 - `BRepPrimAPI_MakeBox::Wedge()`
     pub fn wedge(&mut self) -> &mut crate::b_rep_prim::Wedge {
         unsafe {
             &mut *(crate::check_result(
@@ -136,7 +136,7 @@ impl MakeBox {
         }
     }
 
-    /// Inherited: **Source:** `BRepPrimAPI_MakeBox.hxx`:106 - `BRepPrimAPI_MakeBox::Shell()`
+    /// Inherited: **Source:** `BRepPrimAPI_MakeBox.hxx`:102 - `BRepPrimAPI_MakeBox::Shell()`
     pub fn shell(&mut self) -> &crate::topo_ds::Shell {
         unsafe {
             &*(crate::check_result(
@@ -145,7 +145,7 @@ impl MakeBox {
         }
     }
 
-    /// Inherited: **Source:** `BRepPrimAPI_MakeBox.hxx`:110 - `BRepPrimAPI_MakeBox::Solid()`
+    /// Inherited: **Source:** `BRepPrimAPI_MakeBox.hxx`:106 - `BRepPrimAPI_MakeBox::Solid()`
     pub fn solid(&mut self) -> &crate::topo_ds::Solid {
         unsafe {
             &*(crate::check_result(
@@ -154,7 +154,7 @@ impl MakeBox {
         }
     }
 
-    /// Inherited: **Source:** `BRepPrimAPI_MakeBox.hxx`:114 - `BRepPrimAPI_MakeBox::BottomFace()`
+    /// Inherited: **Source:** `BRepPrimAPI_MakeBox.hxx`:110 - `BRepPrimAPI_MakeBox::BottomFace()`
     pub fn bottom_face(&mut self) -> &crate::topo_ds::Face {
         unsafe {
             &*(crate::check_result(
@@ -165,7 +165,7 @@ impl MakeBox {
         }
     }
 
-    /// Inherited: **Source:** `BRepPrimAPI_MakeBox.hxx`:117 - `BRepPrimAPI_MakeBox::BackFace()`
+    /// Inherited: **Source:** `BRepPrimAPI_MakeBox.hxx`:113 - `BRepPrimAPI_MakeBox::BackFace()`
     pub fn back_face(&mut self) -> &crate::topo_ds::Face {
         unsafe {
             &*(crate::check_result(
@@ -176,7 +176,7 @@ impl MakeBox {
         }
     }
 
-    /// Inherited: **Source:** `BRepPrimAPI_MakeBox.hxx`:120 - `BRepPrimAPI_MakeBox::FrontFace()`
+    /// Inherited: **Source:** `BRepPrimAPI_MakeBox.hxx`:116 - `BRepPrimAPI_MakeBox::FrontFace()`
     pub fn front_face(&mut self) -> &crate::topo_ds::Face {
         unsafe {
             &*(crate::check_result(
@@ -187,7 +187,7 @@ impl MakeBox {
         }
     }
 
-    /// Inherited: **Source:** `BRepPrimAPI_MakeBox.hxx`:123 - `BRepPrimAPI_MakeBox::LeftFace()`
+    /// Inherited: **Source:** `BRepPrimAPI_MakeBox.hxx`:119 - `BRepPrimAPI_MakeBox::LeftFace()`
     pub fn left_face(&mut self) -> &crate::topo_ds::Face {
         unsafe {
             &*(crate::check_result(
@@ -198,7 +198,7 @@ impl MakeBox {
         }
     }
 
-    /// Inherited: **Source:** `BRepPrimAPI_MakeBox.hxx`:126 - `BRepPrimAPI_MakeBox::RightFace()`
+    /// Inherited: **Source:** `BRepPrimAPI_MakeBox.hxx`:122 - `BRepPrimAPI_MakeBox::RightFace()`
     pub fn right_face(&mut self) -> &crate::topo_ds::Face {
         unsafe {
             &*(crate::check_result(
@@ -209,7 +209,7 @@ impl MakeBox {
         }
     }
 
-    /// Inherited: **Source:** `BRepPrimAPI_MakeBox.hxx`:129 - `BRepPrimAPI_MakeBox::TopFace()`
+    /// Inherited: **Source:** `BRepPrimAPI_MakeBox.hxx`:125 - `BRepPrimAPI_MakeBox::TopFace()`
     pub fn top_face(&mut self) -> &crate::topo_ds::Face {
         unsafe {
             &*(crate::check_result(

@@ -6,15 +6,15 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 
-/// **Source:** `ShapeCustom.hxx`:55 - `ShapeCustom::ApplyModifier`
+/// **Source:** `ShapeCustom.hxx`:57 - `ShapeCustom::ApplyModifier`
 /// Applies modifier to shape and checks sharing in the case assemblies.
 pub fn apply_modifier(
     S: &crate::topo_ds::Shape,
-    M: &crate::ffi_types::HandleBRepToolsModification,
-    context: &mut crate::ffi_types::TopTools_DataMapOfShapeShape,
+    M: &crate::ffi_types::Handle_BRepTools_Modification,
+    context: &mut crate::ffi_types::NCollection_DataMap_TopoDS_Shape_TopoDS_Shape_TopTools_ShapeMapHasher,
     MD: &mut crate::b_rep_tools::Modifier,
     theProgress: &crate::message::ProgressRange,
-    aReShape: &crate::ffi_types::HandleShapeBuildReShape,
+    aReShape: &crate::ffi_types::Handle_ShapeBuild_ReShape,
 ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
     unsafe {
         crate::OwnedPtr::from_raw(crate::check_result(
@@ -29,7 +29,7 @@ pub fn apply_modifier(
         ))
     }
 }
-/// **Source:** `ShapeCustom.hxx`:64 - `ShapeCustom::DirectFaces`
+/// **Source:** `ShapeCustom.hxx`:66 - `ShapeCustom::DirectFaces`
 /// Returns a new shape without indirect surfaces.
 pub fn direct_faces(S: &crate::topo_ds::Shape) -> crate::OwnedPtr<crate::topo_ds::Shape> {
     unsafe {
@@ -38,7 +38,7 @@ pub fn direct_faces(S: &crate::topo_ds::Shape) -> crate::OwnedPtr<crate::topo_ds
         ))
     }
 }
-/// **Source:** `ShapeCustom.hxx`:67 - `ShapeCustom::ScaleShape`
+/// **Source:** `ShapeCustom.hxx`:69 - `ShapeCustom::ScaleShape`
 /// Returns a new shape which is scaled original
 pub fn scale_shape(
     S: &crate::topo_ds::Shape,
@@ -50,7 +50,7 @@ pub fn scale_shape(
         ))
     }
 }
-/// **Source:** `ShapeCustom.hxx`:85 - `ShapeCustom::BSplineRestriction`
+/// **Source:** `ShapeCustom.hxx`:87 - `ShapeCustom::BSplineRestriction`
 /// Returns a new shape with all surfaces, curves and pcurves
 /// which type is BSpline/Bezier or based on them converted
 /// having Degree less than <MaxDegree> or number of spans less
@@ -64,7 +64,7 @@ pub fn scale_shape(
 /// then number of spans can exceed specified <GMaxSegment>
 /// <Rational> specifies if to convert Rational BSpline/Bezier into
 /// polynomial B-Spline.
-/// If flags ConvOffSurf,ConvOffCurve3d,ConvOffCurve2d are Standard_True there are means
+/// If flags ConvOffSurf,ConvOffCurve3d,ConvOffCurve2d are true there are means
 /// that Offset surfaces , Offset curves 3d and Offset curves 2d are converted to BSPline
 /// correspondingly.
 pub fn b_spline_restriction(
@@ -77,7 +77,7 @@ pub fn b_spline_restriction(
     Continuity2d: crate::geom_abs::Shape,
     Degree: bool,
     Rational: bool,
-    aParameters: &crate::ffi_types::HandleShapeCustomRestrictionParameters,
+    aParameters: &crate::ffi_types::Handle_ShapeCustom_RestrictionParameters,
 ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
     unsafe {
         crate::OwnedPtr::from_raw(crate::check_result(
@@ -96,7 +96,7 @@ pub fn b_spline_restriction(
         ))
     }
 }
-/// **Source:** `ShapeCustom.hxx`:99 - `ShapeCustom::ConvertToRevolution`
+/// **Source:** `ShapeCustom.hxx`:101 - `ShapeCustom::ConvertToRevolution`
 /// Returns a new shape with all elementary periodic surfaces converted
 /// to Geom_SurfaceOfRevolution
 pub fn convert_to_revolution(S: &crate::topo_ds::Shape) -> crate::OwnedPtr<crate::topo_ds::Shape> {
@@ -106,7 +106,7 @@ pub fn convert_to_revolution(S: &crate::topo_ds::Shape) -> crate::OwnedPtr<crate
         ))
     }
 }
-/// **Source:** `ShapeCustom.hxx`:103 - `ShapeCustom::SweptToElementary`
+/// **Source:** `ShapeCustom.hxx`:105 - `ShapeCustom::SweptToElementary`
 /// Returns a new shape with all surfaces of revolution and linear extrusion
 /// convert to elementary periodic surfaces
 pub fn swept_to_elementary(S: &crate::topo_ds::Shape) -> crate::OwnedPtr<crate::topo_ds::Shape> {
@@ -116,7 +116,7 @@ pub fn swept_to_elementary(S: &crate::topo_ds::Shape) -> crate::OwnedPtr<crate::
         ))
     }
 }
-/// **Source:** `ShapeCustom.hxx`:108 - `ShapeCustom::ConvertToBSpline`
+/// **Source:** `ShapeCustom.hxx`:110 - `ShapeCustom::ConvertToBSpline`
 /// Returns a new shape with all surfaces of linear extrusion, revolution,
 /// offset, and planar surfaces converted according to flags to
 /// Geom_BSplineSurface (with same parameterisation).
@@ -138,14 +138,14 @@ pub fn convert_to_b_spline(
 
 // Handle type re-exports (targets of handle upcasts/downcasts)
 pub use crate::ffi_types::{
-    HandleBRepToolsModification, HandleBRepToolsTrsfModification, HandleStandardTransient,
+    Handle_BRepTools_Modification, Handle_BRepTools_TrsfModification, Handle_Standard_Transient,
 };
 
 // ========================
 // From ShapeCustom_BSplineRestriction.hxx
 // ========================
 
-/// **Source:** `ShapeCustom_BSplineRestriction.hxx`:42 - `ShapeCustom_BSplineRestriction`
+/// **Source:** `ShapeCustom_BSplineRestriction.hxx`:39 - `ShapeCustom_BSplineRestriction`
 /// this tool intended for approximation surfaces, curves and pcurves with
 /// specified degree , max number of segments, tolerance 2d, tolerance 3d. Specified
 /// continuity can be reduced if approximation with specified continuity was not done.
@@ -160,7 +160,7 @@ unsafe impl crate::CppDeletable for BSplineRestriction {
 }
 
 impl BSplineRestriction {
-    /// **Source:** `ShapeCustom_BSplineRestriction.hxx`:47 - `ShapeCustom_BSplineRestriction::ShapeCustom_BSplineRestriction()`
+    /// **Source:** `ShapeCustom_BSplineRestriction.hxx`:44 - `ShapeCustom_BSplineRestriction::ShapeCustom_BSplineRestriction()`
     /// Empty constructor.
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
@@ -170,7 +170,7 @@ impl BSplineRestriction {
         }
     }
 
-    /// **Source:** `ShapeCustom_BSplineRestriction.hxx`:50 - `ShapeCustom_BSplineRestriction::ShapeCustom_BSplineRestriction()`
+    /// **Source:** `ShapeCustom_BSplineRestriction.hxx`:47 - `ShapeCustom_BSplineRestriction::ShapeCustom_BSplineRestriction()`
     /// Initializes with specified parameters of approximation.
     pub fn new_bool3_real2_shape2_int2_bool2(
         anApproxSurfaceFlag: bool,
@@ -190,7 +190,7 @@ impl BSplineRestriction {
         }
     }
 
-    /// **Source:** `ShapeCustom_BSplineRestriction.hxx`:63 - `ShapeCustom_BSplineRestriction::ShapeCustom_BSplineRestriction()`
+    /// **Source:** `ShapeCustom_BSplineRestriction.hxx`:60 - `ShapeCustom_BSplineRestriction::ShapeCustom_BSplineRestriction()`
     /// Initializes with specified parameters of approximation.
     pub fn new_bool3_real2_shape2_int2_bool2_handleshapecustomrestrictionparameters(
         anApproxSurfaceFlag: bool,
@@ -204,30 +204,30 @@ impl BSplineRestriction {
         aNbMaxSeg: i32,
         Degree: bool,
         Rational: bool,
-        aModes: &crate::ffi_types::HandleShapeCustomRestrictionParameters,
+        aModes: &crate::ffi_types::Handle_ShapeCustom_RestrictionParameters,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKShHealing::ShapeCustom_BSplineRestriction_ctor_bool3_real2_shape2_int2_bool2_handleshapecustomrestrictionparameters(anApproxSurfaceFlag, anApproxCurve3dFlag, anApproxCurve2dFlag, aTol3d, aTol2d, aContinuity3d.into(), aContinuity2d.into(), aMaxDegree, aNbMaxSeg, Degree, Rational, aModes)))
         }
     }
 
-    /// **Source:** `ShapeCustom_BSplineRestriction.hxx`:89 - `ShapeCustom_BSplineRestriction::NewSurface()`
-    /// Returns Standard_True if  the  face <F> has   been
-    /// modified.  In this  case, <S> is the new geometric
-    /// support of  the  face, <L> the new  location,<Tol>
-    /// the new   tolerance.<RevWires>  has to be   set to
-    /// Standard_True when  the modification reverses  the
-    /// normal of  the   surface.(the wires  have   to  be
-    /// reversed).  <RevFace>    has   to   be   set    to
-    /// Standard_True if  the  orientation of the modified
+    /// **Source:** `ShapeCustom_BSplineRestriction.hxx`:86 - `ShapeCustom_BSplineRestriction::NewSurface()`
+    /// Returns true if the face <F> has been
+    /// modified. In this case, <S> is the new geometric
+    /// support of the face, <L> the new location,
+    /// <Tol> the new tolerance. <RevWires> has to be set to
+    /// true when the modification reverses the
+    /// normal of the surface. (the wires have to be
+    /// reversed). <RevFace> has to be set to
+    /// true if the orientation of the modified
     /// face changes in the shells which contain it.
     ///
-    /// Otherwise, returns Standard_False, and <S>,   <L>,
-    /// <Tol> , <RevWires> ,<RevFace> are not  significant.
+    /// Otherwise, returns false, and <S>, <L>,
+    /// <Tol>, <RevWires>, <RevFace> are not significant.
     pub fn new_surface(
         &mut self,
         F: &crate::topo_ds::Face,
-        S: &mut crate::ffi_types::HandleGeomSurface,
+        S: &mut crate::ffi_types::Handle_Geom_Surface,
         L: &mut crate::top_loc::Location,
         Tol: &mut f64,
         RevWires: &mut bool,
@@ -246,20 +246,20 @@ impl BSplineRestriction {
         })
     }
 
-    /// **Source:** `ShapeCustom_BSplineRestriction.hxx`:105 - `ShapeCustom_BSplineRestriction::NewCurve()`
-    /// Returns Standard_True  if  curve from the edge <E> has  been
-    /// modified.  In this case,  <C> is the new geometric
-    /// support of the  edge, <L> the  new location, <Tol>
-    /// the         new    tolerance.
-    /// Otherwise, returns Standard_True if Surface is modified or
+    /// **Source:** `ShapeCustom_BSplineRestriction.hxx`:102 - `ShapeCustom_BSplineRestriction::NewCurve()`
+    /// Returns true if curve from the edge <E> has been
+    /// modified. In this case, <C> is the new geometric
+    /// support of the edge, <L> the new location, <Tol>
+    /// the new tolerance.
+    /// Otherwise, returns true if Surface is modified or
     /// one of pcurves of edge is modified. In this case C is copy of
     /// geometric support of the edge.
-    /// In other cases returns Standard_False, and  <C>,  <L>,  <Tol> are not
+    /// In other cases returns false, and <C>, <L>, <Tol> are not
     /// significant.
     pub fn new_curve(
         &mut self,
         E: &crate::topo_ds::Edge,
-        C: &mut crate::ffi_types::HandleGeomCurve,
+        C: &mut crate::ffi_types::Handle_Geom_Curve,
         L: &mut crate::top_loc::Location,
         Tol: &mut f64,
     ) -> bool {
@@ -274,17 +274,17 @@ impl BSplineRestriction {
         })
     }
 
-    /// **Source:** `ShapeCustom_BSplineRestriction.hxx`:121 - `ShapeCustom_BSplineRestriction::NewCurve2d()`
-    /// Returns Standard_True if  the edge  <E> has been modified.
+    /// **Source:** `ShapeCustom_BSplineRestriction.hxx`:118 - `ShapeCustom_BSplineRestriction::NewCurve2d()`
+    /// Returns true if the edge <E> has been modified.
     /// In this case,if curve on the surface is modified, <C>
-    /// is the new geometric support of  the edge, <L> the
+    /// is the new geometric support of the edge, <L> the
     /// new location, <Tol> the new tolerance. If curve on the surface
     /// is not modified C is copy curve on surface from the edge <E>.
     ///
-    /// Otherwise, returns  Standard_False, and <C>,  <L>,
+    /// Otherwise, returns false, and <C>, <L>,
     /// <Tol> are not significant.
     ///
-    /// <NewE> is the new  edge created from  <E>.  <NewF>
+    /// <NewE> is the new edge created from <E>. <NewF>
     /// is the new face created from <F>. They may be useful.
     pub fn new_curve2d(
         &mut self,
@@ -292,7 +292,7 @@ impl BSplineRestriction {
         F: &crate::topo_ds::Face,
         NewE: &crate::topo_ds::Edge,
         NewF: &crate::topo_ds::Face,
-        C: &mut crate::ffi_types::HandleGeom2dCurve,
+        C: &mut crate::ffi_types::Handle_Geom2d_Curve,
         Tol: &mut f64,
     ) -> bool {
         crate::check_result(unsafe {
@@ -308,14 +308,14 @@ impl BSplineRestriction {
         })
     }
 
-    /// **Source:** `ShapeCustom_BSplineRestriction.hxx`:131 - `ShapeCustom_BSplineRestriction::ConvertSurface()`
-    /// Returns Standard_True if  the surface has been modified.
-    /// if flag IsOf equals Standard_True Offset surfaces are approximated to Offset
-    /// if Standard_False to BSpline
+    /// **Source:** `ShapeCustom_BSplineRestriction.hxx`:128 - `ShapeCustom_BSplineRestriction::ConvertSurface()`
+    /// Returns true if the surface has been modified.
+    /// if flag IsOf equals true Offset surfaces are approximated to Offset
+    /// if false to BSpline
     pub fn convert_surface(
         &mut self,
-        aSurface: &crate::ffi_types::HandleGeomSurface,
-        S: &mut crate::ffi_types::HandleGeomSurface,
+        aSurface: &crate::ffi_types::Handle_Geom_Surface,
+        S: &mut crate::ffi_types::Handle_Geom_Surface,
         UF: f64,
         UL: f64,
         VF: f64,
@@ -336,14 +336,14 @@ impl BSplineRestriction {
         })
     }
 
-    /// **Source:** `ShapeCustom_BSplineRestriction.hxx`:142 - `ShapeCustom_BSplineRestriction::ConvertCurve()`
-    /// Returns Standard_True if  the curve has been modified.
-    /// if flag IsOf equals Standard_True Offset curves are approximated to Offset
-    /// if Standard_False to BSpline
+    /// **Source:** `ShapeCustom_BSplineRestriction.hxx`:139 - `ShapeCustom_BSplineRestriction::ConvertCurve()`
+    /// Returns true if the curve has been modified.
+    /// if flag IsOf equals true Offset curves are approximated to Offset
+    /// if false to BSpline
     pub fn convert_curve(
         &mut self,
-        aCurve: &crate::ffi_types::HandleGeomCurve,
-        C: &mut crate::ffi_types::HandleGeomCurve,
+        aCurve: &crate::ffi_types::Handle_Geom_Curve,
+        C: &mut crate::ffi_types::Handle_Geom_Curve,
         IsConvert: bool,
         First: f64,
         Last: f64,
@@ -364,14 +364,14 @@ impl BSplineRestriction {
         })
     }
 
-    /// **Source:** `ShapeCustom_BSplineRestriction.hxx`:153 - `ShapeCustom_BSplineRestriction::ConvertCurve2d()`
-    /// Returns Standard_True if the pcurve has been modified.
-    /// if flag IsOf equals Standard_True Offset pcurves are approximated to Offset
-    /// if Standard_False to BSpline
+    /// **Source:** `ShapeCustom_BSplineRestriction.hxx`:150 - `ShapeCustom_BSplineRestriction::ConvertCurve2d()`
+    /// Returns true if the pcurve has been modified.
+    /// if flag IsOf equals true Offset pcurves are approximated to Offset
+    /// if false to BSpline
     pub fn convert_curve2d(
         &mut self,
-        aCurve: &crate::ffi_types::HandleGeom2dCurve,
-        C: &mut crate::ffi_types::HandleGeom2dCurve,
+        aCurve: &crate::ffi_types::Handle_Geom2d_Curve,
+        C: &mut crate::ffi_types::Handle_Geom2d_Curve,
         IsConvert: bool,
         First: f64,
         Last: f64,
@@ -392,7 +392,7 @@ impl BSplineRestriction {
         })
     }
 
-    /// **Source:** `ShapeCustom_BSplineRestriction.hxx`:162 - `ShapeCustom_BSplineRestriction::SetTol3d()`
+    /// **Source:** `ShapeCustom_BSplineRestriction.hxx`:159 - `ShapeCustom_BSplineRestriction::SetTol3d()`
     /// Sets tolerance of approximation for curve3d and surface
     pub fn set_tol3d(&mut self, Tol3d: f64) {
         crate::check_void_result(unsafe {
@@ -403,7 +403,7 @@ impl BSplineRestriction {
         })
     }
 
-    /// **Source:** `ShapeCustom_BSplineRestriction.hxx`:165 - `ShapeCustom_BSplineRestriction::SetTol2d()`
+    /// **Source:** `ShapeCustom_BSplineRestriction.hxx`:162 - `ShapeCustom_BSplineRestriction::SetTol2d()`
     /// Sets tolerance of approximation for curve2d
     pub fn set_tol2d(&mut self, Tol2d: f64) {
         crate::check_void_result(unsafe {
@@ -414,7 +414,7 @@ impl BSplineRestriction {
         })
     }
 
-    /// **Source:** `ShapeCustom_BSplineRestriction.hxx`:169 - `ShapeCustom_BSplineRestriction::ModifyApproxSurfaceFlag()`
+    /// **Source:** `ShapeCustom_BSplineRestriction.hxx`:166 - `ShapeCustom_BSplineRestriction::ModifyApproxSurfaceFlag()`
     /// Returns (modifiable) the flag which defines whether the
     /// surface is approximated.
     pub fn modify_approx_surface_flag(&mut self) -> &mut bool {
@@ -423,7 +423,7 @@ impl BSplineRestriction {
         }
     }
 
-    /// **Source:** `ShapeCustom_BSplineRestriction.hxx`:173 - `ShapeCustom_BSplineRestriction::ModifyApproxCurve3dFlag()`
+    /// **Source:** `ShapeCustom_BSplineRestriction.hxx`:170 - `ShapeCustom_BSplineRestriction::ModifyApproxCurve3dFlag()`
     /// Returns (modifiable) the flag which defines whether the
     /// curve3d is approximated.
     pub fn modify_approx_curve3d_flag(&mut self) -> &mut bool {
@@ -432,7 +432,7 @@ impl BSplineRestriction {
         }
     }
 
-    /// **Source:** `ShapeCustom_BSplineRestriction.hxx`:176 - `ShapeCustom_BSplineRestriction::ModifyApproxCurve2dFlag()`
+    /// **Source:** `ShapeCustom_BSplineRestriction.hxx`:173 - `ShapeCustom_BSplineRestriction::ModifyApproxCurve2dFlag()`
     /// Returns (modifiable) the flag which defines whether the curve2d is approximated.
     pub fn modify_approx_curve2d_flag(&mut self) -> &mut bool {
         unsafe {
@@ -440,7 +440,7 @@ impl BSplineRestriction {
         }
     }
 
-    /// **Source:** `ShapeCustom_BSplineRestriction.hxx`:179 - `ShapeCustom_BSplineRestriction::SetContinuity3d()`
+    /// **Source:** `ShapeCustom_BSplineRestriction.hxx`:176 - `ShapeCustom_BSplineRestriction::SetContinuity3d()`
     /// Sets continuity3d for approximation curve3d and surface.
     pub fn set_continuity3d(&mut self, Continuity3d: crate::geom_abs::Shape) {
         crate::check_void_result(unsafe {
@@ -451,7 +451,7 @@ impl BSplineRestriction {
         })
     }
 
-    /// **Source:** `ShapeCustom_BSplineRestriction.hxx`:182 - `ShapeCustom_BSplineRestriction::SetContinuity2d()`
+    /// **Source:** `ShapeCustom_BSplineRestriction.hxx`:179 - `ShapeCustom_BSplineRestriction::SetContinuity2d()`
     /// Sets continuity3d for approximation curve2d.
     pub fn set_continuity2d(&mut self, Continuity2d: crate::geom_abs::Shape) {
         crate::check_void_result(unsafe {
@@ -462,7 +462,7 @@ impl BSplineRestriction {
         })
     }
 
-    /// **Source:** `ShapeCustom_BSplineRestriction.hxx`:185 - `ShapeCustom_BSplineRestriction::SetMaxDegree()`
+    /// **Source:** `ShapeCustom_BSplineRestriction.hxx`:182 - `ShapeCustom_BSplineRestriction::SetMaxDegree()`
     /// Sets max degree for approximation.
     pub fn set_max_degree(&mut self, MaxDegree: i32) {
         crate::check_void_result(unsafe {
@@ -473,7 +473,7 @@ impl BSplineRestriction {
         })
     }
 
-    /// **Source:** `ShapeCustom_BSplineRestriction.hxx`:188 - `ShapeCustom_BSplineRestriction::SetMaxNbSegments()`
+    /// **Source:** `ShapeCustom_BSplineRestriction.hxx`:185 - `ShapeCustom_BSplineRestriction::SetMaxNbSegments()`
     /// Sets max number of segments for approximation.
     pub fn set_max_nb_segments(&mut self, MaxNbSegments: i32) {
         crate::check_void_result(unsafe {
@@ -484,8 +484,8 @@ impl BSplineRestriction {
         })
     }
 
-    /// **Source:** `ShapeCustom_BSplineRestriction.hxx`:196 - `ShapeCustom_BSplineRestriction::SetPriority()`
-    /// Sets priority  for approximation curves and surface.
+    /// **Source:** `ShapeCustom_BSplineRestriction.hxx`:193 - `ShapeCustom_BSplineRestriction::SetPriority()`
+    /// Sets priority for approximation curves and surface.
     /// If Degree is True approximation is made with degree less
     /// then specified MaxDegree at the expense of number of spanes.
     /// If Degree is False approximation is made with number of
@@ -500,7 +500,7 @@ impl BSplineRestriction {
         })
     }
 
-    /// **Source:** `ShapeCustom_BSplineRestriction.hxx`:203 - `ShapeCustom_BSplineRestriction::SetConvRational()`
+    /// **Source:** `ShapeCustom_BSplineRestriction.hxx`:200 - `ShapeCustom_BSplineRestriction::SetConvRational()`
     /// Sets flag for define if rational BSpline or Bezier is
     /// converted to polynomial. If Rational is True approximation
     /// for rational BSpline and Bezier is made to polynomial even
@@ -515,23 +515,23 @@ impl BSplineRestriction {
         })
     }
 
-    /// **Source:** `ShapeCustom_BSplineRestriction.hxx`:207 - `ShapeCustom_BSplineRestriction::GetRestrictionParameters()`
+    /// **Source:** `ShapeCustom_BSplineRestriction.hxx`:204 - `ShapeCustom_BSplineRestriction::GetRestrictionParameters()`
     /// Returns the container of modes which defines
     /// what geometry should be converted to BSplines.
     pub fn get_restriction_parameters(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleShapeCustomRestrictionParameters> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_ShapeCustom_RestrictionParameters> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKShHealing::ShapeCustom_BSplineRestriction_get_restriction_parameters(self as *const Self)))
         }
     }
 
-    /// **Source:** `ShapeCustom_BSplineRestriction.hxx`:211 - `ShapeCustom_BSplineRestriction::SetRestrictionParameters()`
+    /// **Source:** `ShapeCustom_BSplineRestriction.hxx`:208 - `ShapeCustom_BSplineRestriction::SetRestrictionParameters()`
     /// Sets the container of modes which defines
     /// what geometry should be converted to BSplines.
     pub fn set_restriction_parameters(
         &mut self,
-        aModes: &crate::ffi_types::HandleShapeCustomRestrictionParameters,
+        aModes: &crate::ffi_types::Handle_ShapeCustom_RestrictionParameters,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKShHealing::ShapeCustom_BSplineRestriction_set_restriction_parameters(
@@ -541,7 +541,7 @@ impl BSplineRestriction {
         })
     }
 
-    /// **Source:** `ShapeCustom_BSplineRestriction.hxx`:214 - `ShapeCustom_BSplineRestriction::Curve3dError()`
+    /// **Source:** `ShapeCustom_BSplineRestriction.hxx`:211 - `ShapeCustom_BSplineRestriction::Curve3dError()`
     /// Returns error for approximation curve3d.
     pub fn curve3d_error(&self) -> f64 {
         crate::check_result(unsafe {
@@ -551,7 +551,7 @@ impl BSplineRestriction {
         })
     }
 
-    /// **Source:** `ShapeCustom_BSplineRestriction.hxx`:217 - `ShapeCustom_BSplineRestriction::Curve2dError()`
+    /// **Source:** `ShapeCustom_BSplineRestriction.hxx`:214 - `ShapeCustom_BSplineRestriction::Curve2dError()`
     /// Returns error for approximation curve2d.
     pub fn curve2d_error(&self) -> f64 {
         crate::check_result(unsafe {
@@ -561,7 +561,7 @@ impl BSplineRestriction {
         })
     }
 
-    /// **Source:** `ShapeCustom_BSplineRestriction.hxx`:220 - `ShapeCustom_BSplineRestriction::SurfaceError()`
+    /// **Source:** `ShapeCustom_BSplineRestriction.hxx`:217 - `ShapeCustom_BSplineRestriction::SurfaceError()`
     /// Returns error for approximation surface.
     pub fn surface_error(&self) -> f64 {
         crate::check_result(unsafe {
@@ -571,7 +571,7 @@ impl BSplineRestriction {
         })
     }
 
-    /// **Source:** `ShapeCustom_BSplineRestriction.hxx`:222 - `ShapeCustom_BSplineRestriction::NewPoint()`
+    /// **Source:** `ShapeCustom_BSplineRestriction.hxx`:219 - `ShapeCustom_BSplineRestriction::NewPoint()`
     pub fn new_point(
         &mut self,
         V: &crate::topo_ds::Vertex,
@@ -588,7 +588,7 @@ impl BSplineRestriction {
         })
     }
 
-    /// **Source:** `ShapeCustom_BSplineRestriction.hxx`:226 - `ShapeCustom_BSplineRestriction::NewParameter()`
+    /// **Source:** `ShapeCustom_BSplineRestriction.hxx`:221 - `ShapeCustom_BSplineRestriction::NewParameter()`
     pub fn new_parameter(
         &mut self,
         V: &crate::topo_ds::Vertex,
@@ -607,7 +607,7 @@ impl BSplineRestriction {
         })
     }
 
-    /// **Source:** `ShapeCustom_BSplineRestriction.hxx`:231 - `ShapeCustom_BSplineRestriction::Continuity()`
+    /// **Source:** `ShapeCustom_BSplineRestriction.hxx`:226 - `ShapeCustom_BSplineRestriction::Continuity()`
     pub fn continuity(
         &mut self,
         E: &crate::topo_ds::Edge,
@@ -631,7 +631,7 @@ impl BSplineRestriction {
         .unwrap()
     }
 
-    /// **Source:** `ShapeCustom_BSplineRestriction.hxx`:239 - `ShapeCustom_BSplineRestriction::MaxErrors()`
+    /// **Source:** `ShapeCustom_BSplineRestriction.hxx`:234 - `ShapeCustom_BSplineRestriction::MaxErrors()`
     /// Returns error for approximation surface, curve3d and curve2d.
     pub fn max_errors(&self, aCurve3dErr: &mut f64, aCurve2dErr: &mut f64) -> f64 {
         crate::check_result(unsafe {
@@ -643,7 +643,7 @@ impl BSplineRestriction {
         })
     }
 
-    /// **Source:** `ShapeCustom_BSplineRestriction.hxx`:243 - `ShapeCustom_BSplineRestriction::NbOfSpan()`
+    /// **Source:** `ShapeCustom_BSplineRestriction.hxx`:237 - `ShapeCustom_BSplineRestriction::NbOfSpan()`
     /// Returns number for approximation surface, curve3d and curve2d.
     pub fn nb_of_span(&self) -> i32 {
         crate::check_result(unsafe {
@@ -653,8 +653,8 @@ impl BSplineRestriction {
         })
     }
 
-    /// **Source:** `ShapeCustom_BSplineRestriction.hxx`:245 - `ShapeCustom_BSplineRestriction::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `ShapeCustom_BSplineRestriction.hxx`:239 - `ShapeCustom_BSplineRestriction::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKShHealing::ShapeCustom_BSplineRestriction_dynamic_type(
@@ -664,7 +664,7 @@ impl BSplineRestriction {
         }
     }
 
-    /// **Source:** `ShapeCustom_BSplineRestriction.hxx`:245 - `ShapeCustom_BSplineRestriction::get_type_name()`
+    /// **Source:** `ShapeCustom_BSplineRestriction.hxx`:239 - `ShapeCustom_BSplineRestriction::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -675,8 +675,8 @@ impl BSplineRestriction {
         .into_owned()
     }
 
-    /// **Source:** `ShapeCustom_BSplineRestriction.hxx`:245 - `ShapeCustom_BSplineRestriction::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    /// **Source:** `ShapeCustom_BSplineRestriction.hxx`:239 - `ShapeCustom_BSplineRestriction::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKShHealing::ShapeCustom_BSplineRestriction_get_type_descriptor(),
@@ -733,7 +733,7 @@ impl BSplineRestriction {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleShapeCustomBSplineRestriction> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_ShapeCustom_BSplineRestriction> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKShHealing::ShapeCustom_BSplineRestriction_to_handle(
@@ -743,26 +743,26 @@ impl BSplineRestriction {
         }
     }
 
-    /// Inherited: **Source:** `ShapeCustom_Modification.hxx`:36 - `ShapeCustom_Modification::SetMsgRegistrator()`
+    /// Inherited: **Source:** `ShapeCustom_Modification.hxx`:33 - `ShapeCustom_Modification::SetMsgRegistrator()`
     pub fn set_msg_registrator(
         &mut self,
-        msgreg: &crate::ffi_types::HandleShapeExtendBasicMsgRegistrator,
+        msgreg: &crate::ffi_types::Handle_ShapeExtend_BasicMsgRegistrator,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKShHealing::ShapeCustom_BSplineRestriction_inherited_SetMsgRegistrator(self as *mut Self, msgreg)
         })
     }
 
-    /// Inherited: **Source:** `ShapeCustom_Modification.hxx`:40 - `ShapeCustom_Modification::MsgRegistrator()`
+    /// Inherited: **Source:** `ShapeCustom_Modification.hxx`:37 - `ShapeCustom_Modification::MsgRegistrator()`
     pub fn msg_registrator(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleShapeExtendBasicMsgRegistrator> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_ShapeExtend_BasicMsgRegistrator> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKShHealing::ShapeCustom_BSplineRestriction_inherited_MsgRegistrator(self as *const Self)))
         }
     }
 
-    /// Inherited: **Source:** `ShapeCustom_Modification.hxx`:44 - `ShapeCustom_Modification::SendMsg()`
+    /// Inherited: **Source:** `ShapeCustom_Modification.hxx`:41 - `ShapeCustom_Modification::SendMsg()`
     pub fn send_msg(
         &self,
         shape: &crate::topo_ds::Shape,
@@ -779,11 +779,11 @@ impl BSplineRestriction {
         })
     }
 
-    /// Inherited: **Source:** `BRepTools_Modification.hxx`:71 - `BRepTools_Modification::NewTriangulation()`
+    /// Inherited: **Source:** `BRepTools_Modification.hxx`:68 - `BRepTools_Modification::NewTriangulation()`
     pub fn new_triangulation(
         &mut self,
         F: &crate::topo_ds::Face,
-        T: &mut crate::ffi_types::HandlePolyTriangulation,
+        T: &mut crate::ffi_types::Handle_Poly_Triangulation,
     ) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKShHealing::ShapeCustom_BSplineRestriction_inherited_NewTriangulation(
@@ -794,11 +794,11 @@ impl BSplineRestriction {
         })
     }
 
-    /// Inherited: **Source:** `BRepTools_Modification.hxx`:89 - `BRepTools_Modification::NewPolygon()`
+    /// Inherited: **Source:** `BRepTools_Modification.hxx`:86 - `BRepTools_Modification::NewPolygon()`
     pub fn new_polygon(
         &mut self,
         E: &crate::topo_ds::Edge,
-        P: &mut crate::ffi_types::HandlePolyPolygon3D,
+        P: &mut crate::ffi_types::Handle_Poly_Polygon3D,
     ) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKShHealing::ShapeCustom_BSplineRestriction_inherited_NewPolygon(
@@ -809,20 +809,20 @@ impl BSplineRestriction {
         })
     }
 
-    /// Inherited: **Source:** `BRepTools_Modification.hxx`:95 - `BRepTools_Modification::NewPolygonOnTriangulation()`
+    /// Inherited: **Source:** `BRepTools_Modification.hxx`:91 - `BRepTools_Modification::NewPolygonOnTriangulation()`
     pub fn new_polygon_on_triangulation(
         &mut self,
         E: &crate::topo_ds::Edge,
         F: &crate::topo_ds::Face,
-        P: &mut crate::ffi_types::HandlePolyPolygonOnTriangulation,
+        P: &mut crate::ffi_types::Handle_Poly_PolygonOnTriangulation,
     ) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKShHealing::ShapeCustom_BSplineRestriction_inherited_NewPolygonOnTriangulation(self as *mut Self, E, F, P)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKShHealing::ShapeCustom_BSplineRestriction_inherited_IsInstance(
                 self as *const Self,
@@ -831,8 +831,8 @@ impl BSplineRestriction {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKShHealing::ShapeCustom_BSplineRestriction_inherited_IsKind(
                 self as *const Self,
@@ -841,7 +841,7 @@ impl BSplineRestriction {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -857,7 +857,7 @@ impl BSplineRestriction {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKShHealing::ShapeCustom_BSplineRestriction_inherited_GetRefCount(
@@ -866,21 +866,21 @@ impl BSplineRestriction {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKShHealing::ShapeCustom_BSplineRestriction_inherited_IncrementRefCounter(self as *mut Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKShHealing::ShapeCustom_BSplineRestriction_inherited_DecrementRefCounter(self as *mut Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKShHealing::ShapeCustom_BSplineRestriction_inherited_Delete(
@@ -890,31 +890,31 @@ impl BSplineRestriction {
     }
 }
 
-pub use crate::ffi_types::HandleShapeCustomBSplineRestriction;
+pub use crate::ffi_types::Handle_ShapeCustom_BSplineRestriction;
 
-unsafe impl crate::CppDeletable for HandleShapeCustomBSplineRestriction {
+unsafe impl crate::CppDeletable for Handle_ShapeCustom_BSplineRestriction {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKShHealing::HandleShapeCustomBSplineRestriction_destructor(ptr);
+            crate::ffi_extern_TKShHealing::Handle_ShapeCustom_BSplineRestriction_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleShapeCustomBSplineRestriction {
+unsafe impl crate::CppCopyable for Handle_ShapeCustom_BSplineRestriction {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
         unsafe {
             crate::check_result(
-                crate::ffi_extern_TKShHealing::HandleShapeCustomBSplineRestriction_clone(ptr),
+                crate::ffi_extern_TKShHealing::Handle_ShapeCustom_BSplineRestriction_clone(ptr),
             )
         }
     }
 }
 
-impl HandleShapeCustomBSplineRestriction {
+impl Handle_ShapeCustom_BSplineRestriction {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
         unsafe {
-            crate::ffi_extern_TKShHealing::HandleShapeCustomBSplineRestriction_is_null(
+            crate::ffi_extern_TKShHealing::Handle_ShapeCustom_BSplineRestriction_is_null(
                 self as *const Self,
             )
         }
@@ -924,7 +924,7 @@ impl HandleShapeCustomBSplineRestriction {
     pub fn get(&self) -> &crate::ffi_types::ShapeCustom_BSplineRestriction {
         unsafe {
             &*crate::check_result(
-                crate::ffi_extern_TKShHealing::HandleShapeCustomBSplineRestriction_get(
+                crate::ffi_extern_TKShHealing::Handle_ShapeCustom_BSplineRestriction_get(
                     self as *const Self,
                 ),
             )
@@ -935,7 +935,7 @@ impl HandleShapeCustomBSplineRestriction {
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::ShapeCustom_BSplineRestriction {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi_extern_TKShHealing::HandleShapeCustomBSplineRestriction_get_mut(
+                crate::ffi_extern_TKShHealing::Handle_ShapeCustom_BSplineRestriction_get_mut(
                     self as *mut Self,
                 ),
             )
@@ -945,27 +945,27 @@ impl HandleShapeCustomBSplineRestriction {
     /// Upcast Handle<ShapeCustom_BSplineRestriction> to Handle<ShapeCustom_Modification>
     pub fn to_handle_shape_custom_modification(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleShapeCustomModification> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_ShapeCustom_Modification> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKShHealing::HandleShapeCustomBSplineRestriction_to_HandleShapeCustomModification(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKShHealing::Handle_ShapeCustom_BSplineRestriction_to_Handle_ShapeCustom_Modification(self as *const Self)))
         }
     }
 
     /// Upcast Handle<ShapeCustom_BSplineRestriction> to Handle<BRepTools_Modification>
     pub fn to_handle_b_rep_tools_modification(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleBRepToolsModification> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_BRepTools_Modification> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKShHealing::HandleShapeCustomBSplineRestriction_to_HandleBRepToolsModification(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKShHealing::Handle_ShapeCustom_BSplineRestriction_to_Handle_BRepTools_Modification(self as *const Self)))
         }
     }
 
     /// Upcast Handle<ShapeCustom_BSplineRestriction> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKShHealing::HandleShapeCustomBSplineRestriction_to_HandleStandardTransient(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKShHealing::Handle_ShapeCustom_BSplineRestriction_to_Handle_Standard_Transient(self as *const Self)))
         }
     }
 }
@@ -974,7 +974,7 @@ impl HandleShapeCustomBSplineRestriction {
 // From ShapeCustom_ConvertToBSpline.hxx
 // ========================
 
-/// **Source:** `ShapeCustom_ConvertToBSpline.hxx`:42 - `ShapeCustom_ConvertToBSpline`
+/// **Source:** `ShapeCustom_ConvertToBSpline.hxx`:39 - `ShapeCustom_ConvertToBSpline`
 /// implement a modification for BRepTools
 /// Modifier algorithm. Converts Surface of
 /// Linear Exctrusion, Revolution and Offset
@@ -991,7 +991,7 @@ unsafe impl crate::CppDeletable for ConvertToBSpline {
 }
 
 impl ConvertToBSpline {
-    /// **Source:** `ShapeCustom_ConvertToBSpline.hxx`:46 - `ShapeCustom_ConvertToBSpline::ShapeCustom_ConvertToBSpline()`
+    /// **Source:** `ShapeCustom_ConvertToBSpline.hxx`:43 - `ShapeCustom_ConvertToBSpline::ShapeCustom_ConvertToBSpline()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -1000,7 +1000,7 @@ impl ConvertToBSpline {
         }
     }
 
-    /// **Source:** `ShapeCustom_ConvertToBSpline.hxx`:50 - `ShapeCustom_ConvertToBSpline::SetExtrusionMode()`
+    /// **Source:** `ShapeCustom_ConvertToBSpline.hxx`:47 - `ShapeCustom_ConvertToBSpline::SetExtrusionMode()`
     /// Sets mode for conversion of Surfaces of Linear
     /// extrusion.
     pub fn set_extrusion_mode(&mut self, extrMode: bool) {
@@ -1012,7 +1012,7 @@ impl ConvertToBSpline {
         })
     }
 
-    /// **Source:** `ShapeCustom_ConvertToBSpline.hxx`:53 - `ShapeCustom_ConvertToBSpline::SetRevolutionMode()`
+    /// **Source:** `ShapeCustom_ConvertToBSpline.hxx`:50 - `ShapeCustom_ConvertToBSpline::SetRevolutionMode()`
     /// Sets mode for conversion of Surfaces of Revolution.
     pub fn set_revolution_mode(&mut self, revolMode: bool) {
         crate::check_void_result(unsafe {
@@ -1023,7 +1023,7 @@ impl ConvertToBSpline {
         })
     }
 
-    /// **Source:** `ShapeCustom_ConvertToBSpline.hxx`:56 - `ShapeCustom_ConvertToBSpline::SetOffsetMode()`
+    /// **Source:** `ShapeCustom_ConvertToBSpline.hxx`:53 - `ShapeCustom_ConvertToBSpline::SetOffsetMode()`
     /// Sets mode for conversion of Offset surfaces.
     pub fn set_offset_mode(&mut self, offsetMode: bool) {
         crate::check_void_result(unsafe {
@@ -1034,7 +1034,7 @@ impl ConvertToBSpline {
         })
     }
 
-    /// **Source:** `ShapeCustom_ConvertToBSpline.hxx`:59 - `ShapeCustom_ConvertToBSpline::SetPlaneMode()`
+    /// **Source:** `ShapeCustom_ConvertToBSpline.hxx`:56 - `ShapeCustom_ConvertToBSpline::SetPlaneMode()`
     /// Sets mode for conversion of Plane surfaces.
     pub fn set_plane_mode(&mut self, planeMode: bool) {
         crate::check_void_result(unsafe {
@@ -1045,17 +1045,17 @@ impl ConvertToBSpline {
         })
     }
 
-    /// **Source:** `ShapeCustom_ConvertToBSpline.hxx`:67 - `ShapeCustom_ConvertToBSpline::NewSurface()`
-    /// Returns Standard_True if the face <F> has  been
+    /// **Source:** `ShapeCustom_ConvertToBSpline.hxx`:64 - `ShapeCustom_ConvertToBSpline::NewSurface()`
+    /// Returns true if the face <F> has been
     /// modified. In this case, <S> is the new geometric
-    /// support of the face, <L> the new location,  <Tol>
-    /// the new tolerance.  Otherwise, returns
-    /// Standard_False, and <S>, <L>, <Tol> are  not
+    /// support of the face, <L> the new location,
+    /// <Tol> the new tolerance. Otherwise, returns
+    /// false, and <S>, <L>, <Tol> are not
     /// significant.
     pub fn new_surface(
         &mut self,
         F: &crate::topo_ds::Face,
-        S: &mut crate::ffi_types::HandleGeomSurface,
+        S: &mut crate::ffi_types::Handle_Geom_Surface,
         L: &mut crate::top_loc::Location,
         Tol: &mut f64,
         RevWires: &mut bool,
@@ -1074,17 +1074,17 @@ impl ConvertToBSpline {
         })
     }
 
-    /// **Source:** `ShapeCustom_ConvertToBSpline.hxx`:80 - `ShapeCustom_ConvertToBSpline::NewCurve()`
-    /// Returns Standard_True  if  the edge  <E> has  been
-    /// modified.  In this case,  <C> is the new geometric
-    /// support of the  edge, <L> the  new location, <Tol>
-    /// the         new    tolerance.   Otherwise, returns
-    /// Standard_False,    and  <C>,  <L>,   <Tol> are not
+    /// **Source:** `ShapeCustom_ConvertToBSpline.hxx`:77 - `ShapeCustom_ConvertToBSpline::NewCurve()`
+    /// Returns true if the edge <E> has been
+    /// modified. In this case, <C> is the new geometric
+    /// support of the edge, <L> the new location,
+    /// <Tol> the new tolerance. Otherwise, returns
+    /// false, and <C>, <L>, <Tol> are not
     /// significant.
     pub fn new_curve(
         &mut self,
         E: &crate::topo_ds::Edge,
-        C: &mut crate::ffi_types::HandleGeomCurve,
+        C: &mut crate::ffi_types::Handle_Geom_Curve,
         L: &mut crate::top_loc::Location,
         Tol: &mut f64,
     ) -> bool {
@@ -1099,11 +1099,11 @@ impl ConvertToBSpline {
         })
     }
 
-    /// **Source:** `ShapeCustom_ConvertToBSpline.hxx`:90 - `ShapeCustom_ConvertToBSpline::NewPoint()`
-    /// Returns  Standard_True if the  vertex <V> has been
-    /// modified.  In this  case, <P> is the new geometric
-    /// support of the vertex,   <Tol> the new  tolerance.
-    /// Otherwise, returns Standard_False, and <P>,  <Tol>
+    /// **Source:** `ShapeCustom_ConvertToBSpline.hxx`:87 - `ShapeCustom_ConvertToBSpline::NewPoint()`
+    /// Returns true if the vertex <V> has been
+    /// modified. In this case, <P> is the new geometric
+    /// support of the vertex, <Tol> the new tolerance.
+    /// Otherwise, returns false, and <P>, <Tol>
     /// are not significant.
     pub fn new_point(
         &mut self,
@@ -1121,16 +1121,16 @@ impl ConvertToBSpline {
         })
     }
 
-    /// **Source:** `ShapeCustom_ConvertToBSpline.hxx`:104 - `ShapeCustom_ConvertToBSpline::NewCurve2d()`
-    /// Returns Standard_True if  the edge  <E> has a  new
+    /// **Source:** `ShapeCustom_ConvertToBSpline.hxx`:99 - `ShapeCustom_ConvertToBSpline::NewCurve2d()`
+    /// Returns true if the edge <E> has a new
     /// curve on surface on the face <F>.In this case, <C>
-    /// is the new geometric support of  the edge, <L> the
+    /// is the new geometric support of the edge, <L> the
     /// new location, <Tol> the new tolerance.
     ///
-    /// Otherwise, returns  Standard_False, and <C>,  <L>,
+    /// Otherwise, returns false, and <C>, <L>,
     /// <Tol> are not significant.
     ///
-    /// <NewE> is the new  edge created from  <E>.  <NewF>
+    /// <NewE> is the new edge created from <E>. <NewF>
     /// is the new face created from <F>. They may be useful.
     pub fn new_curve2d(
         &mut self,
@@ -1138,7 +1138,7 @@ impl ConvertToBSpline {
         F: &crate::topo_ds::Face,
         NewE: &crate::topo_ds::Edge,
         NewF: &crate::topo_ds::Face,
-        C: &mut crate::ffi_types::HandleGeom2dCurve,
+        C: &mut crate::ffi_types::Handle_Geom2d_Curve,
         Tol: &mut f64,
     ) -> bool {
         crate::check_result(unsafe {
@@ -1154,11 +1154,11 @@ impl ConvertToBSpline {
         })
     }
 
-    /// **Source:** `ShapeCustom_ConvertToBSpline.hxx`:116 - `ShapeCustom_ConvertToBSpline::NewParameter()`
-    /// Returns Standard_True if the Vertex  <V> has a new
-    /// parameter on the  edge <E>. In  this case,  <P> is
-    /// the parameter,    <Tol>  the     new    tolerance.
-    /// Otherwise, returns Standard_False, and <P>,  <Tol>
+    /// **Source:** `ShapeCustom_ConvertToBSpline.hxx`:111 - `ShapeCustom_ConvertToBSpline::NewParameter()`
+    /// Returns true if the Vertex <V> has a new
+    /// parameter on the edge <E>. In this case, <P> is
+    /// the parameter, <Tol> the new tolerance.
+    /// Otherwise, returns false, and <P>, <Tol>
     /// are not significant.
     pub fn new_parameter(
         &mut self,
@@ -1178,12 +1178,12 @@ impl ConvertToBSpline {
         })
     }
 
-    /// **Source:** `ShapeCustom_ConvertToBSpline.hxx`:127 - `ShapeCustom_ConvertToBSpline::Continuity()`
-    /// Returns the  continuity of  <NewE> between <NewF1>
+    /// **Source:** `ShapeCustom_ConvertToBSpline.hxx`:122 - `ShapeCustom_ConvertToBSpline::Continuity()`
+    /// Returns the continuity of <NewE> between <NewF1>
     /// and <NewF2>.
     ///
-    /// <NewE> is the new  edge created from <E>.  <NewF1>
-    /// (resp. <NewF2>) is the new  face created from <F1>
+    /// <NewE> is the new edge created from <E>. <NewF1>
+    /// (resp. <NewF2>) is the new face created from <F1>
     /// (resp. <F2>).
     pub fn continuity(
         &mut self,
@@ -1208,8 +1208,8 @@ impl ConvertToBSpline {
         .unwrap()
     }
 
-    /// **Source:** `ShapeCustom_ConvertToBSpline.hxx`:134 - `ShapeCustom_ConvertToBSpline::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `ShapeCustom_ConvertToBSpline.hxx`:129 - `ShapeCustom_ConvertToBSpline::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKShHealing::ShapeCustom_ConvertToBSpline_dynamic_type(
@@ -1219,7 +1219,7 @@ impl ConvertToBSpline {
         }
     }
 
-    /// **Source:** `ShapeCustom_ConvertToBSpline.hxx`:134 - `ShapeCustom_ConvertToBSpline::get_type_name()`
+    /// **Source:** `ShapeCustom_ConvertToBSpline.hxx`:129 - `ShapeCustom_ConvertToBSpline::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -1230,8 +1230,8 @@ impl ConvertToBSpline {
         .into_owned()
     }
 
-    /// **Source:** `ShapeCustom_ConvertToBSpline.hxx`:134 - `ShapeCustom_ConvertToBSpline::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    /// **Source:** `ShapeCustom_ConvertToBSpline.hxx`:129 - `ShapeCustom_ConvertToBSpline::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKShHealing::ShapeCustom_ConvertToBSpline_get_type_descriptor(),
@@ -1288,7 +1288,7 @@ impl ConvertToBSpline {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleShapeCustomConvertToBSpline> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_ShapeCustom_ConvertToBSpline> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKShHealing::ShapeCustom_ConvertToBSpline_to_handle(
@@ -1298,10 +1298,10 @@ impl ConvertToBSpline {
         }
     }
 
-    /// Inherited: **Source:** `ShapeCustom_Modification.hxx`:36 - `ShapeCustom_Modification::SetMsgRegistrator()`
+    /// Inherited: **Source:** `ShapeCustom_Modification.hxx`:33 - `ShapeCustom_Modification::SetMsgRegistrator()`
     pub fn set_msg_registrator(
         &mut self,
-        msgreg: &crate::ffi_types::HandleShapeExtendBasicMsgRegistrator,
+        msgreg: &crate::ffi_types::Handle_ShapeExtend_BasicMsgRegistrator,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKShHealing::ShapeCustom_ConvertToBSpline_inherited_SetMsgRegistrator(
@@ -1311,16 +1311,16 @@ impl ConvertToBSpline {
         })
     }
 
-    /// Inherited: **Source:** `ShapeCustom_Modification.hxx`:40 - `ShapeCustom_Modification::MsgRegistrator()`
+    /// Inherited: **Source:** `ShapeCustom_Modification.hxx`:37 - `ShapeCustom_Modification::MsgRegistrator()`
     pub fn msg_registrator(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleShapeExtendBasicMsgRegistrator> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_ShapeExtend_BasicMsgRegistrator> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKShHealing::ShapeCustom_ConvertToBSpline_inherited_MsgRegistrator(self as *const Self)))
         }
     }
 
-    /// Inherited: **Source:** `ShapeCustom_Modification.hxx`:44 - `ShapeCustom_Modification::SendMsg()`
+    /// Inherited: **Source:** `ShapeCustom_Modification.hxx`:41 - `ShapeCustom_Modification::SendMsg()`
     pub fn send_msg(
         &self,
         shape: &crate::topo_ds::Shape,
@@ -1337,11 +1337,11 @@ impl ConvertToBSpline {
         })
     }
 
-    /// Inherited: **Source:** `BRepTools_Modification.hxx`:71 - `BRepTools_Modification::NewTriangulation()`
+    /// Inherited: **Source:** `BRepTools_Modification.hxx`:68 - `BRepTools_Modification::NewTriangulation()`
     pub fn new_triangulation(
         &mut self,
         F: &crate::topo_ds::Face,
-        T: &mut crate::ffi_types::HandlePolyTriangulation,
+        T: &mut crate::ffi_types::Handle_Poly_Triangulation,
     ) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKShHealing::ShapeCustom_ConvertToBSpline_inherited_NewTriangulation(
@@ -1352,11 +1352,11 @@ impl ConvertToBSpline {
         })
     }
 
-    /// Inherited: **Source:** `BRepTools_Modification.hxx`:89 - `BRepTools_Modification::NewPolygon()`
+    /// Inherited: **Source:** `BRepTools_Modification.hxx`:86 - `BRepTools_Modification::NewPolygon()`
     pub fn new_polygon(
         &mut self,
         E: &crate::topo_ds::Edge,
-        P: &mut crate::ffi_types::HandlePolyPolygon3D,
+        P: &mut crate::ffi_types::Handle_Poly_Polygon3D,
     ) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKShHealing::ShapeCustom_ConvertToBSpline_inherited_NewPolygon(
@@ -1367,20 +1367,20 @@ impl ConvertToBSpline {
         })
     }
 
-    /// Inherited: **Source:** `BRepTools_Modification.hxx`:95 - `BRepTools_Modification::NewPolygonOnTriangulation()`
+    /// Inherited: **Source:** `BRepTools_Modification.hxx`:91 - `BRepTools_Modification::NewPolygonOnTriangulation()`
     pub fn new_polygon_on_triangulation(
         &mut self,
         E: &crate::topo_ds::Edge,
         F: &crate::topo_ds::Face,
-        P: &mut crate::ffi_types::HandlePolyPolygonOnTriangulation,
+        P: &mut crate::ffi_types::Handle_Poly_PolygonOnTriangulation,
     ) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKShHealing::ShapeCustom_ConvertToBSpline_inherited_NewPolygonOnTriangulation(self as *mut Self, E, F, P)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKShHealing::ShapeCustom_ConvertToBSpline_inherited_IsInstance(
                 self as *const Self,
@@ -1389,8 +1389,8 @@ impl ConvertToBSpline {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKShHealing::ShapeCustom_ConvertToBSpline_inherited_IsKind(
                 self as *const Self,
@@ -1399,7 +1399,7 @@ impl ConvertToBSpline {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -1415,7 +1415,7 @@ impl ConvertToBSpline {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKShHealing::ShapeCustom_ConvertToBSpline_inherited_GetRefCount(
@@ -1424,21 +1424,21 @@ impl ConvertToBSpline {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKShHealing::ShapeCustom_ConvertToBSpline_inherited_IncrementRefCounter(self as *mut Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKShHealing::ShapeCustom_ConvertToBSpline_inherited_DecrementRefCounter(self as *mut Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKShHealing::ShapeCustom_ConvertToBSpline_inherited_Delete(
@@ -1448,31 +1448,31 @@ impl ConvertToBSpline {
     }
 }
 
-pub use crate::ffi_types::HandleShapeCustomConvertToBSpline;
+pub use crate::ffi_types::Handle_ShapeCustom_ConvertToBSpline;
 
-unsafe impl crate::CppDeletable for HandleShapeCustomConvertToBSpline {
+unsafe impl crate::CppDeletable for Handle_ShapeCustom_ConvertToBSpline {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKShHealing::HandleShapeCustomConvertToBSpline_destructor(ptr);
+            crate::ffi_extern_TKShHealing::Handle_ShapeCustom_ConvertToBSpline_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleShapeCustomConvertToBSpline {
+unsafe impl crate::CppCopyable for Handle_ShapeCustom_ConvertToBSpline {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
         unsafe {
             crate::check_result(
-                crate::ffi_extern_TKShHealing::HandleShapeCustomConvertToBSpline_clone(ptr),
+                crate::ffi_extern_TKShHealing::Handle_ShapeCustom_ConvertToBSpline_clone(ptr),
             )
         }
     }
 }
 
-impl HandleShapeCustomConvertToBSpline {
+impl Handle_ShapeCustom_ConvertToBSpline {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
         unsafe {
-            crate::ffi_extern_TKShHealing::HandleShapeCustomConvertToBSpline_is_null(
+            crate::ffi_extern_TKShHealing::Handle_ShapeCustom_ConvertToBSpline_is_null(
                 self as *const Self,
             )
         }
@@ -1482,7 +1482,7 @@ impl HandleShapeCustomConvertToBSpline {
     pub fn get(&self) -> &crate::ffi_types::ShapeCustom_ConvertToBSpline {
         unsafe {
             &*crate::check_result(
-                crate::ffi_extern_TKShHealing::HandleShapeCustomConvertToBSpline_get(
+                crate::ffi_extern_TKShHealing::Handle_ShapeCustom_ConvertToBSpline_get(
                     self as *const Self,
                 ),
             )
@@ -1493,7 +1493,7 @@ impl HandleShapeCustomConvertToBSpline {
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::ShapeCustom_ConvertToBSpline {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi_extern_TKShHealing::HandleShapeCustomConvertToBSpline_get_mut(
+                crate::ffi_extern_TKShHealing::Handle_ShapeCustom_ConvertToBSpline_get_mut(
                     self as *mut Self,
                 ),
             )
@@ -1503,27 +1503,27 @@ impl HandleShapeCustomConvertToBSpline {
     /// Upcast Handle<ShapeCustom_ConvertToBSpline> to Handle<ShapeCustom_Modification>
     pub fn to_handle_shape_custom_modification(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleShapeCustomModification> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_ShapeCustom_Modification> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKShHealing::HandleShapeCustomConvertToBSpline_to_HandleShapeCustomModification(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKShHealing::Handle_ShapeCustom_ConvertToBSpline_to_Handle_ShapeCustom_Modification(self as *const Self)))
         }
     }
 
     /// Upcast Handle<ShapeCustom_ConvertToBSpline> to Handle<BRepTools_Modification>
     pub fn to_handle_b_rep_tools_modification(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleBRepToolsModification> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_BRepTools_Modification> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKShHealing::HandleShapeCustomConvertToBSpline_to_HandleBRepToolsModification(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKShHealing::Handle_ShapeCustom_ConvertToBSpline_to_Handle_BRepTools_Modification(self as *const Self)))
         }
     }
 
     /// Upcast Handle<ShapeCustom_ConvertToBSpline> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKShHealing::HandleShapeCustomConvertToBSpline_to_HandleStandardTransient(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKShHealing::Handle_ShapeCustom_ConvertToBSpline_to_Handle_Standard_Transient(self as *const Self)))
         }
     }
 }
@@ -1532,7 +1532,7 @@ impl HandleShapeCustomConvertToBSpline {
 // From ShapeCustom_ConvertToRevolution.hxx
 // ========================
 
-/// **Source:** `ShapeCustom_ConvertToRevolution.hxx`:40 - `ShapeCustom_ConvertToRevolution`
+/// **Source:** `ShapeCustom_ConvertToRevolution.hxx`:37 - `ShapeCustom_ConvertToRevolution`
 /// implements a modification for the BRepTools
 /// Modifier algorithm. Converts all elementary
 /// surfaces into surfaces of revolution.
@@ -1547,7 +1547,7 @@ unsafe impl crate::CppDeletable for ConvertToRevolution {
 }
 
 impl ConvertToRevolution {
-    /// **Source:** `ShapeCustom_ConvertToRevolution.hxx`:44 - `ShapeCustom_ConvertToRevolution::ShapeCustom_ConvertToRevolution()`
+    /// **Source:** `ShapeCustom_ConvertToRevolution.hxx`:41 - `ShapeCustom_ConvertToRevolution::ShapeCustom_ConvertToRevolution()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -1556,17 +1556,17 @@ impl ConvertToRevolution {
         }
     }
 
-    /// **Source:** `ShapeCustom_ConvertToRevolution.hxx`:52 - `ShapeCustom_ConvertToRevolution::NewSurface()`
-    /// Returns Standard_True if the face <F> has  been
+    /// **Source:** `ShapeCustom_ConvertToRevolution.hxx`:49 - `ShapeCustom_ConvertToRevolution::NewSurface()`
+    /// Returns true if the face <F> has been
     /// modified. In this case, <S> is the new geometric
-    /// support of the face, <L> the new location,  <Tol>
-    /// the new tolerance.  Otherwise, returns
-    /// Standard_False, and <S>, <L>, <Tol> are  not
+    /// support of the face, <L> the new location, <Tol>
+    /// the new tolerance. Otherwise, returns
+    /// false, and <S>, <L>, <Tol> are not
     /// significant.
     pub fn new_surface(
         &mut self,
         F: &crate::topo_ds::Face,
-        S: &mut crate::ffi_types::HandleGeomSurface,
+        S: &mut crate::ffi_types::Handle_Geom_Surface,
         L: &mut crate::top_loc::Location,
         Tol: &mut f64,
         RevWires: &mut bool,
@@ -1585,17 +1585,17 @@ impl ConvertToRevolution {
         })
     }
 
-    /// **Source:** `ShapeCustom_ConvertToRevolution.hxx`:65 - `ShapeCustom_ConvertToRevolution::NewCurve()`
-    /// Returns Standard_True  if  the edge  <E> has  been
-    /// modified.  In this case,  <C> is the new geometric
-    /// support of the  edge, <L> the  new location, <Tol>
-    /// the         new    tolerance.   Otherwise, returns
-    /// Standard_False,    and  <C>,  <L>,   <Tol> are not
+    /// **Source:** `ShapeCustom_ConvertToRevolution.hxx`:62 - `ShapeCustom_ConvertToRevolution::NewCurve()`
+    /// Returns true if the edge <E> has been
+    /// modified. In this case, <C> is the new geometric
+    /// support of the edge, <L> the new location, <Tol>
+    /// the new tolerance. Otherwise, returns
+    /// false, and <C>, <L>, <Tol> are not
     /// significant.
     pub fn new_curve(
         &mut self,
         E: &crate::topo_ds::Edge,
-        C: &mut crate::ffi_types::HandleGeomCurve,
+        C: &mut crate::ffi_types::Handle_Geom_Curve,
         L: &mut crate::top_loc::Location,
         Tol: &mut f64,
     ) -> bool {
@@ -1610,11 +1610,11 @@ impl ConvertToRevolution {
         })
     }
 
-    /// **Source:** `ShapeCustom_ConvertToRevolution.hxx`:75 - `ShapeCustom_ConvertToRevolution::NewPoint()`
-    /// Returns  Standard_True if the  vertex <V> has been
-    /// modified.  In this  case, <P> is the new geometric
-    /// support of the vertex,   <Tol> the new  tolerance.
-    /// Otherwise, returns Standard_False, and <P>,  <Tol>
+    /// **Source:** `ShapeCustom_ConvertToRevolution.hxx`:72 - `ShapeCustom_ConvertToRevolution::NewPoint()`
+    /// Returns true if the vertex <V> has been
+    /// modified. In this case, <P> is the new geometric
+    /// support of the vertex, <Tol> the new tolerance.
+    /// Otherwise, returns false, and <P>, <Tol>
     /// are not significant.
     pub fn new_point(
         &mut self,
@@ -1632,16 +1632,16 @@ impl ConvertToRevolution {
         })
     }
 
-    /// **Source:** `ShapeCustom_ConvertToRevolution.hxx`:89 - `ShapeCustom_ConvertToRevolution::NewCurve2d()`
-    /// Returns Standard_True if  the edge  <E> has a  new
+    /// **Source:** `ShapeCustom_ConvertToRevolution.hxx`:84 - `ShapeCustom_ConvertToRevolution::NewCurve2d()`
+    /// Returns true if the edge <E> has a new
     /// curve on surface on the face <F>.In this case, <C>
-    /// is the new geometric support of  the edge, <L> the
+    /// is the new geometric support of the edge, <L> the
     /// new location, <Tol> the new tolerance.
     ///
-    /// Otherwise, returns  Standard_False, and <C>,  <L>,
+    /// Otherwise, returns false, and <C>, <L>,
     /// <Tol> are not significant.
     ///
-    /// <NewE> is the new  edge created from  <E>.  <NewF>
+    /// <NewE> is the new edge created from <E>. <NewF>
     /// is the new face created from <F>. They may be useful.
     pub fn new_curve2d(
         &mut self,
@@ -1649,7 +1649,7 @@ impl ConvertToRevolution {
         F: &crate::topo_ds::Face,
         NewE: &crate::topo_ds::Edge,
         NewF: &crate::topo_ds::Face,
-        C: &mut crate::ffi_types::HandleGeom2dCurve,
+        C: &mut crate::ffi_types::Handle_Geom2d_Curve,
         Tol: &mut f64,
     ) -> bool {
         crate::check_result(unsafe {
@@ -1665,11 +1665,11 @@ impl ConvertToRevolution {
         })
     }
 
-    /// **Source:** `ShapeCustom_ConvertToRevolution.hxx`:101 - `ShapeCustom_ConvertToRevolution::NewParameter()`
-    /// Returns Standard_True if the Vertex  <V> has a new
-    /// parameter on the  edge <E>. In  this case,  <P> is
-    /// the parameter,    <Tol>  the     new    tolerance.
-    /// Otherwise, returns Standard_False, and <P>,  <Tol>
+    /// **Source:** `ShapeCustom_ConvertToRevolution.hxx`:96 - `ShapeCustom_ConvertToRevolution::NewParameter()`
+    /// Returns true if the Vertex <V> has a new
+    /// parameter on the edge <E>. In this case, <P> is
+    /// the parameter, <Tol> the new tolerance.
+    /// Otherwise, returns false, and <P>, <Tol>
     /// are not significant.
     pub fn new_parameter(
         &mut self,
@@ -1689,12 +1689,12 @@ impl ConvertToRevolution {
         })
     }
 
-    /// **Source:** `ShapeCustom_ConvertToRevolution.hxx`:112 - `ShapeCustom_ConvertToRevolution::Continuity()`
-    /// Returns the  continuity of  <NewE> between <NewF1>
+    /// **Source:** `ShapeCustom_ConvertToRevolution.hxx`:107 - `ShapeCustom_ConvertToRevolution::Continuity()`
+    /// Returns the continuity of <NewE> between <NewF1>
     /// and <NewF2>.
     ///
-    /// <NewE> is the new  edge created from <E>.  <NewF1>
-    /// (resp. <NewF2>) is the new  face created from <F1>
+    /// <NewE> is the new edge created from <E>. <NewF1>
+    /// (resp. <NewF2>) is the new face created from <F1>
     /// (resp. <F2>).
     pub fn continuity(
         &mut self,
@@ -1719,8 +1719,8 @@ impl ConvertToRevolution {
         .unwrap()
     }
 
-    /// **Source:** `ShapeCustom_ConvertToRevolution.hxx`:119 - `ShapeCustom_ConvertToRevolution::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `ShapeCustom_ConvertToRevolution.hxx`:114 - `ShapeCustom_ConvertToRevolution::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKShHealing::ShapeCustom_ConvertToRevolution_dynamic_type(
@@ -1730,7 +1730,7 @@ impl ConvertToRevolution {
         }
     }
 
-    /// **Source:** `ShapeCustom_ConvertToRevolution.hxx`:119 - `ShapeCustom_ConvertToRevolution::get_type_name()`
+    /// **Source:** `ShapeCustom_ConvertToRevolution.hxx`:114 - `ShapeCustom_ConvertToRevolution::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -1741,8 +1741,8 @@ impl ConvertToRevolution {
         .into_owned()
     }
 
-    /// **Source:** `ShapeCustom_ConvertToRevolution.hxx`:119 - `ShapeCustom_ConvertToRevolution::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    /// **Source:** `ShapeCustom_ConvertToRevolution.hxx`:114 - `ShapeCustom_ConvertToRevolution::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKShHealing::ShapeCustom_ConvertToRevolution_get_type_descriptor(
@@ -1796,7 +1796,7 @@ impl ConvertToRevolution {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleShapeCustomConvertToRevolution> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_ShapeCustom_ConvertToRevolution> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKShHealing::ShapeCustom_ConvertToRevolution_to_handle(
@@ -1806,26 +1806,26 @@ impl ConvertToRevolution {
         }
     }
 
-    /// Inherited: **Source:** `ShapeCustom_Modification.hxx`:36 - `ShapeCustom_Modification::SetMsgRegistrator()`
+    /// Inherited: **Source:** `ShapeCustom_Modification.hxx`:33 - `ShapeCustom_Modification::SetMsgRegistrator()`
     pub fn set_msg_registrator(
         &mut self,
-        msgreg: &crate::ffi_types::HandleShapeExtendBasicMsgRegistrator,
+        msgreg: &crate::ffi_types::Handle_ShapeExtend_BasicMsgRegistrator,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKShHealing::ShapeCustom_ConvertToRevolution_inherited_SetMsgRegistrator(self as *mut Self, msgreg)
         })
     }
 
-    /// Inherited: **Source:** `ShapeCustom_Modification.hxx`:40 - `ShapeCustom_Modification::MsgRegistrator()`
+    /// Inherited: **Source:** `ShapeCustom_Modification.hxx`:37 - `ShapeCustom_Modification::MsgRegistrator()`
     pub fn msg_registrator(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleShapeExtendBasicMsgRegistrator> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_ShapeExtend_BasicMsgRegistrator> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKShHealing::ShapeCustom_ConvertToRevolution_inherited_MsgRegistrator(self as *const Self)))
         }
     }
 
-    /// Inherited: **Source:** `ShapeCustom_Modification.hxx`:44 - `ShapeCustom_Modification::SendMsg()`
+    /// Inherited: **Source:** `ShapeCustom_Modification.hxx`:41 - `ShapeCustom_Modification::SendMsg()`
     pub fn send_msg(
         &self,
         shape: &crate::topo_ds::Shape,
@@ -1842,22 +1842,22 @@ impl ConvertToRevolution {
         })
     }
 
-    /// Inherited: **Source:** `BRepTools_Modification.hxx`:71 - `BRepTools_Modification::NewTriangulation()`
+    /// Inherited: **Source:** `BRepTools_Modification.hxx`:68 - `BRepTools_Modification::NewTriangulation()`
     pub fn new_triangulation(
         &mut self,
         F: &crate::topo_ds::Face,
-        T: &mut crate::ffi_types::HandlePolyTriangulation,
+        T: &mut crate::ffi_types::Handle_Poly_Triangulation,
     ) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKShHealing::ShapeCustom_ConvertToRevolution_inherited_NewTriangulation(self as *mut Self, F, T)
         })
     }
 
-    /// Inherited: **Source:** `BRepTools_Modification.hxx`:89 - `BRepTools_Modification::NewPolygon()`
+    /// Inherited: **Source:** `BRepTools_Modification.hxx`:86 - `BRepTools_Modification::NewPolygon()`
     pub fn new_polygon(
         &mut self,
         E: &crate::topo_ds::Edge,
-        P: &mut crate::ffi_types::HandlePolyPolygon3D,
+        P: &mut crate::ffi_types::Handle_Poly_Polygon3D,
     ) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKShHealing::ShapeCustom_ConvertToRevolution_inherited_NewPolygon(
@@ -1868,20 +1868,20 @@ impl ConvertToRevolution {
         })
     }
 
-    /// Inherited: **Source:** `BRepTools_Modification.hxx`:95 - `BRepTools_Modification::NewPolygonOnTriangulation()`
+    /// Inherited: **Source:** `BRepTools_Modification.hxx`:91 - `BRepTools_Modification::NewPolygonOnTriangulation()`
     pub fn new_polygon_on_triangulation(
         &mut self,
         E: &crate::topo_ds::Edge,
         F: &crate::topo_ds::Face,
-        P: &mut crate::ffi_types::HandlePolyPolygonOnTriangulation,
+        P: &mut crate::ffi_types::Handle_Poly_PolygonOnTriangulation,
     ) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKShHealing::ShapeCustom_ConvertToRevolution_inherited_NewPolygonOnTriangulation(self as *mut Self, E, F, P)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKShHealing::ShapeCustom_ConvertToRevolution_inherited_IsInstance(
                 self as *const Self,
@@ -1890,8 +1890,8 @@ impl ConvertToRevolution {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKShHealing::ShapeCustom_ConvertToRevolution_inherited_IsKind(
                 self as *const Self,
@@ -1900,7 +1900,7 @@ impl ConvertToRevolution {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -1916,7 +1916,7 @@ impl ConvertToRevolution {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKShHealing::ShapeCustom_ConvertToRevolution_inherited_GetRefCount(
@@ -1925,21 +1925,21 @@ impl ConvertToRevolution {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKShHealing::ShapeCustom_ConvertToRevolution_inherited_IncrementRefCounter(self as *mut Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKShHealing::ShapeCustom_ConvertToRevolution_inherited_DecrementRefCounter(self as *mut Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKShHealing::ShapeCustom_ConvertToRevolution_inherited_Delete(
@@ -1949,31 +1949,31 @@ impl ConvertToRevolution {
     }
 }
 
-pub use crate::ffi_types::HandleShapeCustomConvertToRevolution;
+pub use crate::ffi_types::Handle_ShapeCustom_ConvertToRevolution;
 
-unsafe impl crate::CppDeletable for HandleShapeCustomConvertToRevolution {
+unsafe impl crate::CppDeletable for Handle_ShapeCustom_ConvertToRevolution {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKShHealing::HandleShapeCustomConvertToRevolution_destructor(ptr);
+            crate::ffi_extern_TKShHealing::Handle_ShapeCustom_ConvertToRevolution_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleShapeCustomConvertToRevolution {
+unsafe impl crate::CppCopyable for Handle_ShapeCustom_ConvertToRevolution {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
         unsafe {
             crate::check_result(
-                crate::ffi_extern_TKShHealing::HandleShapeCustomConvertToRevolution_clone(ptr),
+                crate::ffi_extern_TKShHealing::Handle_ShapeCustom_ConvertToRevolution_clone(ptr),
             )
         }
     }
 }
 
-impl HandleShapeCustomConvertToRevolution {
+impl Handle_ShapeCustom_ConvertToRevolution {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
         unsafe {
-            crate::ffi_extern_TKShHealing::HandleShapeCustomConvertToRevolution_is_null(
+            crate::ffi_extern_TKShHealing::Handle_ShapeCustom_ConvertToRevolution_is_null(
                 self as *const Self,
             )
         }
@@ -1983,7 +1983,7 @@ impl HandleShapeCustomConvertToRevolution {
     pub fn get(&self) -> &crate::ffi_types::ShapeCustom_ConvertToRevolution {
         unsafe {
             &*crate::check_result(
-                crate::ffi_extern_TKShHealing::HandleShapeCustomConvertToRevolution_get(
+                crate::ffi_extern_TKShHealing::Handle_ShapeCustom_ConvertToRevolution_get(
                     self as *const Self,
                 ),
             )
@@ -1994,7 +1994,7 @@ impl HandleShapeCustomConvertToRevolution {
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::ShapeCustom_ConvertToRevolution {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi_extern_TKShHealing::HandleShapeCustomConvertToRevolution_get_mut(
+                crate::ffi_extern_TKShHealing::Handle_ShapeCustom_ConvertToRevolution_get_mut(
                     self as *mut Self,
                 ),
             )
@@ -2004,27 +2004,27 @@ impl HandleShapeCustomConvertToRevolution {
     /// Upcast Handle<ShapeCustom_ConvertToRevolution> to Handle<ShapeCustom_Modification>
     pub fn to_handle_shape_custom_modification(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleShapeCustomModification> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_ShapeCustom_Modification> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKShHealing::HandleShapeCustomConvertToRevolution_to_HandleShapeCustomModification(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKShHealing::Handle_ShapeCustom_ConvertToRevolution_to_Handle_ShapeCustom_Modification(self as *const Self)))
         }
     }
 
     /// Upcast Handle<ShapeCustom_ConvertToRevolution> to Handle<BRepTools_Modification>
     pub fn to_handle_b_rep_tools_modification(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleBRepToolsModification> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_BRepTools_Modification> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKShHealing::HandleShapeCustomConvertToRevolution_to_HandleBRepToolsModification(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKShHealing::Handle_ShapeCustom_ConvertToRevolution_to_Handle_BRepTools_Modification(self as *const Self)))
         }
     }
 
     /// Upcast Handle<ShapeCustom_ConvertToRevolution> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKShHealing::HandleShapeCustomConvertToRevolution_to_HandleStandardTransient(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKShHealing::Handle_ShapeCustom_ConvertToRevolution_to_Handle_Standard_Transient(self as *const Self)))
         }
     }
 }
@@ -2056,7 +2056,7 @@ impl Curve {
     }
 
     /// **Source:** `ShapeCustom_Curve.hxx`:33 - `ShapeCustom_Curve::ShapeCustom_Curve()`
-    pub fn new_handlegeomcurve(C: &crate::ffi_types::HandleGeomCurve) -> crate::OwnedPtr<Self> {
+    pub fn new_handlegeomcurve(C: &crate::ffi_types::Handle_Geom_Curve) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKShHealing::ShapeCustom_Curve_ctor_handlegeomcurve(C),
@@ -2065,7 +2065,7 @@ impl Curve {
     }
 
     /// **Source:** `ShapeCustom_Curve.hxx`:35 - `ShapeCustom_Curve::Init()`
-    pub fn init(&mut self, C: &crate::ffi_types::HandleGeomCurve) {
+    pub fn init(&mut self, C: &crate::ffi_types::Handle_Geom_Curve) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKShHealing::ShapeCustom_Curve_init(self as *mut Self, C)
         })
@@ -2081,7 +2081,7 @@ impl Curve {
         &mut self,
         substitute: bool,
         preci: f64,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleGeomCurve> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Geom_Curve> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKShHealing::ShapeCustom_Curve_convert_to_periodic(
@@ -2098,7 +2098,7 @@ impl Curve {
 // From ShapeCustom_Curve2d.hxx
 // ========================
 
-/// **Source:** `ShapeCustom_Curve2d.hxx`:30 - `ShapeCustom_Curve2d`
+/// **Source:** `ShapeCustom_Curve2d.hxx`:31 - `ShapeCustom_Curve2d`
 /// Converts curve2d to analytical form with given
 /// precision or simplify curve2d.
 pub use crate::ffi_types::ShapeCustom_Curve2d as Curve2d;
@@ -2122,11 +2122,11 @@ impl Curve2d {
         }
     }
 
-    /// **Source:** `ShapeCustom_Curve2d.hxx`:37 - `ShapeCustom_Curve2d::IsLinear()`
+    /// **Source:** `ShapeCustom_Curve2d.hxx`:38 - `ShapeCustom_Curve2d::IsLinear()`
     /// Check if poleses is in the plane with given precision
     /// Returns false if no.
     pub fn is_linear(
-        thePoles: &crate::ffi_types::TColgp_Array1OfPnt2d,
+        thePoles: &crate::ffi_types::NCollection_Array1_gp_Pnt2d,
         theTolerance: f64,
         theDeviation: &mut f64,
     ) -> bool {
@@ -2139,19 +2139,19 @@ impl Curve2d {
         })
     }
 
-    /// **Source:** `ShapeCustom_Curve2d.hxx`:44 - `ShapeCustom_Curve2d::ConvertToLine2d()`
+    /// **Source:** `ShapeCustom_Curve2d.hxx`:45 - `ShapeCustom_Curve2d::ConvertToLine2d()`
     /// Try to convert BSpline2d or Bezier2d to line 2d
     /// only if it is linear. Recalculate first and last parameters.
     /// Returns line2d or null curve2d.
     pub fn convert_to_line2d(
-        theCurve: &crate::ffi_types::HandleGeom2dCurve,
+        theCurve: &crate::ffi_types::Handle_Geom2d_Curve,
         theFirstIn: f64,
         theLastIn: f64,
         theTolerance: f64,
         theNewFirst: &mut f64,
         theNewLast: &mut f64,
         theDeviation: &mut f64,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleGeom2dLine> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Geom2d_Line> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKShHealing::ShapeCustom_Curve2d_convert_to_line2d(
@@ -2167,12 +2167,12 @@ impl Curve2d {
         }
     }
 
-    /// **Source:** `ShapeCustom_Curve2d.hxx`:55 - `ShapeCustom_Curve2d::SimplifyBSpline2d()`
+    /// **Source:** `ShapeCustom_Curve2d.hxx`:57 - `ShapeCustom_Curve2d::SimplifyBSpline2d()`
     /// Try to remove knots from bspline where local derivatives are the same.
     /// Remove knots with given precision.
     /// Returns false if Bsplien was not modified
     pub fn simplify_b_spline2d(
-        theBSpline2d: &mut crate::ffi_types::HandleGeom2dBSplineCurve,
+        theBSpline2d: &mut crate::ffi_types::Handle_Geom2d_BSplineCurve,
         theTolerance: f64,
     ) -> bool {
         crate::check_result(unsafe {
@@ -2188,7 +2188,7 @@ impl Curve2d {
 // From ShapeCustom_DirectModification.hxx
 // ========================
 
-/// **Source:** `ShapeCustom_DirectModification.hxx`:40 - `ShapeCustom_DirectModification`
+/// **Source:** `ShapeCustom_DirectModification.hxx`:37 - `ShapeCustom_DirectModification`
 /// implements a modification for the BRepTools
 /// Modifier algorithm. Will redress indirect
 /// surfaces.
@@ -2203,7 +2203,7 @@ unsafe impl crate::CppDeletable for DirectModification {
 }
 
 impl DirectModification {
-    /// **Source:** `ShapeCustom_DirectModification.hxx`:44 - `ShapeCustom_DirectModification::ShapeCustom_DirectModification()`
+    /// **Source:** `ShapeCustom_DirectModification.hxx`:41 - `ShapeCustom_DirectModification::ShapeCustom_DirectModification()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -2212,17 +2212,17 @@ impl DirectModification {
         }
     }
 
-    /// **Source:** `ShapeCustom_DirectModification.hxx`:52 - `ShapeCustom_DirectModification::NewSurface()`
-    /// Returns Standard_True if the face <F> has  been
+    /// **Source:** `ShapeCustom_DirectModification.hxx`:49 - `ShapeCustom_DirectModification::NewSurface()`
+    /// Returns true if the face <F> has been
     /// modified. In this case, <S> is the new geometric
-    /// support of the face, <L> the new location,  <Tol>
-    /// the new tolerance.  Otherwise, returns
-    /// Standard_False, and <S>, <L>, <Tol> are  not
+    /// support of the face, <L> the new location, <Tol>
+    /// the new tolerance. Otherwise, returns
+    /// false, and <S>, <L>, <Tol> are not
     /// significant.
     pub fn new_surface(
         &mut self,
         F: &crate::topo_ds::Face,
-        S: &mut crate::ffi_types::HandleGeomSurface,
+        S: &mut crate::ffi_types::Handle_Geom_Surface,
         L: &mut crate::top_loc::Location,
         Tol: &mut f64,
         RevWires: &mut bool,
@@ -2241,17 +2241,17 @@ impl DirectModification {
         })
     }
 
-    /// **Source:** `ShapeCustom_DirectModification.hxx`:65 - `ShapeCustom_DirectModification::NewCurve()`
-    /// Returns Standard_True  if  the edge  <E> has  been
-    /// modified.  In this case,  <C> is the new geometric
-    /// support of the  edge, <L> the  new location, <Tol>
-    /// the         new    tolerance.   Otherwise, returns
-    /// Standard_False,    and  <C>,  <L>,   <Tol> are not
+    /// **Source:** `ShapeCustom_DirectModification.hxx`:62 - `ShapeCustom_DirectModification::NewCurve()`
+    /// Returns true if the edge <E> has been
+    /// modified. In this case, <C> is the new geometric
+    /// support of the edge, <L> the new location, <Tol>
+    /// the new tolerance. Otherwise, returns
+    /// false, and <C>, <L>, <Tol> are not
     /// significant.
     pub fn new_curve(
         &mut self,
         E: &crate::topo_ds::Edge,
-        C: &mut crate::ffi_types::HandleGeomCurve,
+        C: &mut crate::ffi_types::Handle_Geom_Curve,
         L: &mut crate::top_loc::Location,
         Tol: &mut f64,
     ) -> bool {
@@ -2266,11 +2266,11 @@ impl DirectModification {
         })
     }
 
-    /// **Source:** `ShapeCustom_DirectModification.hxx`:75 - `ShapeCustom_DirectModification::NewPoint()`
-    /// Returns  Standard_True if the  vertex <V> has been
-    /// modified.  In this  case, <P> is the new geometric
-    /// support of the vertex,   <Tol> the new  tolerance.
-    /// Otherwise, returns Standard_False, and <P>,  <Tol>
+    /// **Source:** `ShapeCustom_DirectModification.hxx`:72 - `ShapeCustom_DirectModification::NewPoint()`
+    /// Returns true if the vertex <V> has been
+    /// modified. In this case, <P> is the new geometric
+    /// support of the vertex, <Tol> the new tolerance.
+    /// Otherwise, returns false, and <P>, <Tol>
     /// are not significant.
     pub fn new_point(
         &mut self,
@@ -2288,16 +2288,16 @@ impl DirectModification {
         })
     }
 
-    /// **Source:** `ShapeCustom_DirectModification.hxx`:89 - `ShapeCustom_DirectModification::NewCurve2d()`
-    /// Returns Standard_True if  the edge  <E> has a  new
+    /// **Source:** `ShapeCustom_DirectModification.hxx`:84 - `ShapeCustom_DirectModification::NewCurve2d()`
+    /// Returns true if the edge <E> has a new
     /// curve on surface on the face <F>.In this case, <C>
-    /// is the new geometric support of  the edge, <L> the
+    /// is the new geometric support of the edge, <L> the
     /// new location, <Tol> the new tolerance.
     ///
-    /// Otherwise, returns  Standard_False, and <C>,  <L>,
+    /// Otherwise, returns false, and <C>, <L>,
     /// <Tol> are not significant.
     ///
-    /// <NewE> is the new  edge created from  <E>.  <NewF>
+    /// <NewE> is the new edge created from <E>. <NewF>
     /// is the new face created from <F>. They may be useful.
     pub fn new_curve2d(
         &mut self,
@@ -2305,7 +2305,7 @@ impl DirectModification {
         F: &crate::topo_ds::Face,
         NewE: &crate::topo_ds::Edge,
         NewF: &crate::topo_ds::Face,
-        C: &mut crate::ffi_types::HandleGeom2dCurve,
+        C: &mut crate::ffi_types::Handle_Geom2d_Curve,
         Tol: &mut f64,
     ) -> bool {
         crate::check_result(unsafe {
@@ -2321,11 +2321,11 @@ impl DirectModification {
         })
     }
 
-    /// **Source:** `ShapeCustom_DirectModification.hxx`:101 - `ShapeCustom_DirectModification::NewParameter()`
-    /// Returns Standard_True if the Vertex  <V> has a new
-    /// parameter on the  edge <E>. In  this case,  <P> is
-    /// the parameter,    <Tol>  the     new    tolerance.
-    /// Otherwise, returns Standard_False, and <P>,  <Tol>
+    /// **Source:** `ShapeCustom_DirectModification.hxx`:96 - `ShapeCustom_DirectModification::NewParameter()`
+    /// Returns true if the Vertex <V> has a new
+    /// parameter on the edge <E>. In this case, <P> is
+    /// the parameter, <Tol> the new tolerance.
+    /// Otherwise, returns false, and <P>, <Tol>
     /// are not significant.
     pub fn new_parameter(
         &mut self,
@@ -2345,12 +2345,12 @@ impl DirectModification {
         })
     }
 
-    /// **Source:** `ShapeCustom_DirectModification.hxx`:112 - `ShapeCustom_DirectModification::Continuity()`
-    /// Returns the  continuity of  <NewE> between <NewF1>
+    /// **Source:** `ShapeCustom_DirectModification.hxx`:107 - `ShapeCustom_DirectModification::Continuity()`
+    /// Returns the continuity of <NewE> between <NewF1>
     /// and <NewF2>.
     ///
-    /// <NewE> is the new  edge created from <E>.  <NewF1>
-    /// (resp. <NewF2>) is the new  face created from <F1>
+    /// <NewE> is the new edge created from <E>. <NewF1>
+    /// (resp. <NewF2>) is the new face created from <F1>
     /// (resp. <F2>).
     pub fn continuity(
         &mut self,
@@ -2375,8 +2375,8 @@ impl DirectModification {
         .unwrap()
     }
 
-    /// **Source:** `ShapeCustom_DirectModification.hxx`:119 - `ShapeCustom_DirectModification::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `ShapeCustom_DirectModification.hxx`:114 - `ShapeCustom_DirectModification::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKShHealing::ShapeCustom_DirectModification_dynamic_type(
@@ -2386,7 +2386,7 @@ impl DirectModification {
         }
     }
 
-    /// **Source:** `ShapeCustom_DirectModification.hxx`:119 - `ShapeCustom_DirectModification::get_type_name()`
+    /// **Source:** `ShapeCustom_DirectModification.hxx`:114 - `ShapeCustom_DirectModification::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -2397,8 +2397,8 @@ impl DirectModification {
         .into_owned()
     }
 
-    /// **Source:** `ShapeCustom_DirectModification.hxx`:119 - `ShapeCustom_DirectModification::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    /// **Source:** `ShapeCustom_DirectModification.hxx`:114 - `ShapeCustom_DirectModification::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKShHealing::ShapeCustom_DirectModification_get_type_descriptor(),
@@ -2455,7 +2455,7 @@ impl DirectModification {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleShapeCustomDirectModification> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_ShapeCustom_DirectModification> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKShHealing::ShapeCustom_DirectModification_to_handle(
@@ -2465,26 +2465,26 @@ impl DirectModification {
         }
     }
 
-    /// Inherited: **Source:** `ShapeCustom_Modification.hxx`:36 - `ShapeCustom_Modification::SetMsgRegistrator()`
+    /// Inherited: **Source:** `ShapeCustom_Modification.hxx`:33 - `ShapeCustom_Modification::SetMsgRegistrator()`
     pub fn set_msg_registrator(
         &mut self,
-        msgreg: &crate::ffi_types::HandleShapeExtendBasicMsgRegistrator,
+        msgreg: &crate::ffi_types::Handle_ShapeExtend_BasicMsgRegistrator,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKShHealing::ShapeCustom_DirectModification_inherited_SetMsgRegistrator(self as *mut Self, msgreg)
         })
     }
 
-    /// Inherited: **Source:** `ShapeCustom_Modification.hxx`:40 - `ShapeCustom_Modification::MsgRegistrator()`
+    /// Inherited: **Source:** `ShapeCustom_Modification.hxx`:37 - `ShapeCustom_Modification::MsgRegistrator()`
     pub fn msg_registrator(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleShapeExtendBasicMsgRegistrator> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_ShapeExtend_BasicMsgRegistrator> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKShHealing::ShapeCustom_DirectModification_inherited_MsgRegistrator(self as *const Self)))
         }
     }
 
-    /// Inherited: **Source:** `ShapeCustom_Modification.hxx`:44 - `ShapeCustom_Modification::SendMsg()`
+    /// Inherited: **Source:** `ShapeCustom_Modification.hxx`:41 - `ShapeCustom_Modification::SendMsg()`
     pub fn send_msg(
         &self,
         shape: &crate::topo_ds::Shape,
@@ -2501,11 +2501,11 @@ impl DirectModification {
         })
     }
 
-    /// Inherited: **Source:** `BRepTools_Modification.hxx`:71 - `BRepTools_Modification::NewTriangulation()`
+    /// Inherited: **Source:** `BRepTools_Modification.hxx`:68 - `BRepTools_Modification::NewTriangulation()`
     pub fn new_triangulation(
         &mut self,
         F: &crate::topo_ds::Face,
-        T: &mut crate::ffi_types::HandlePolyTriangulation,
+        T: &mut crate::ffi_types::Handle_Poly_Triangulation,
     ) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKShHealing::ShapeCustom_DirectModification_inherited_NewTriangulation(
@@ -2516,11 +2516,11 @@ impl DirectModification {
         })
     }
 
-    /// Inherited: **Source:** `BRepTools_Modification.hxx`:89 - `BRepTools_Modification::NewPolygon()`
+    /// Inherited: **Source:** `BRepTools_Modification.hxx`:86 - `BRepTools_Modification::NewPolygon()`
     pub fn new_polygon(
         &mut self,
         E: &crate::topo_ds::Edge,
-        P: &mut crate::ffi_types::HandlePolyPolygon3D,
+        P: &mut crate::ffi_types::Handle_Poly_Polygon3D,
     ) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKShHealing::ShapeCustom_DirectModification_inherited_NewPolygon(
@@ -2531,20 +2531,20 @@ impl DirectModification {
         })
     }
 
-    /// Inherited: **Source:** `BRepTools_Modification.hxx`:95 - `BRepTools_Modification::NewPolygonOnTriangulation()`
+    /// Inherited: **Source:** `BRepTools_Modification.hxx`:91 - `BRepTools_Modification::NewPolygonOnTriangulation()`
     pub fn new_polygon_on_triangulation(
         &mut self,
         E: &crate::topo_ds::Edge,
         F: &crate::topo_ds::Face,
-        P: &mut crate::ffi_types::HandlePolyPolygonOnTriangulation,
+        P: &mut crate::ffi_types::Handle_Poly_PolygonOnTriangulation,
     ) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKShHealing::ShapeCustom_DirectModification_inherited_NewPolygonOnTriangulation(self as *mut Self, E, F, P)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKShHealing::ShapeCustom_DirectModification_inherited_IsInstance(
                 self as *const Self,
@@ -2553,8 +2553,8 @@ impl DirectModification {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKShHealing::ShapeCustom_DirectModification_inherited_IsKind(
                 self as *const Self,
@@ -2563,7 +2563,7 @@ impl DirectModification {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -2579,7 +2579,7 @@ impl DirectModification {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKShHealing::ShapeCustom_DirectModification_inherited_GetRefCount(
@@ -2588,21 +2588,21 @@ impl DirectModification {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKShHealing::ShapeCustom_DirectModification_inherited_IncrementRefCounter(self as *mut Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKShHealing::ShapeCustom_DirectModification_inherited_DecrementRefCounter(self as *mut Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKShHealing::ShapeCustom_DirectModification_inherited_Delete(
@@ -2612,31 +2612,31 @@ impl DirectModification {
     }
 }
 
-pub use crate::ffi_types::HandleShapeCustomDirectModification;
+pub use crate::ffi_types::Handle_ShapeCustom_DirectModification;
 
-unsafe impl crate::CppDeletable for HandleShapeCustomDirectModification {
+unsafe impl crate::CppDeletable for Handle_ShapeCustom_DirectModification {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKShHealing::HandleShapeCustomDirectModification_destructor(ptr);
+            crate::ffi_extern_TKShHealing::Handle_ShapeCustom_DirectModification_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleShapeCustomDirectModification {
+unsafe impl crate::CppCopyable for Handle_ShapeCustom_DirectModification {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
         unsafe {
             crate::check_result(
-                crate::ffi_extern_TKShHealing::HandleShapeCustomDirectModification_clone(ptr),
+                crate::ffi_extern_TKShHealing::Handle_ShapeCustom_DirectModification_clone(ptr),
             )
         }
     }
 }
 
-impl HandleShapeCustomDirectModification {
+impl Handle_ShapeCustom_DirectModification {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
         unsafe {
-            crate::ffi_extern_TKShHealing::HandleShapeCustomDirectModification_is_null(
+            crate::ffi_extern_TKShHealing::Handle_ShapeCustom_DirectModification_is_null(
                 self as *const Self,
             )
         }
@@ -2646,7 +2646,7 @@ impl HandleShapeCustomDirectModification {
     pub fn get(&self) -> &crate::ffi_types::ShapeCustom_DirectModification {
         unsafe {
             &*crate::check_result(
-                crate::ffi_extern_TKShHealing::HandleShapeCustomDirectModification_get(
+                crate::ffi_extern_TKShHealing::Handle_ShapeCustom_DirectModification_get(
                     self as *const Self,
                 ),
             )
@@ -2657,7 +2657,7 @@ impl HandleShapeCustomDirectModification {
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::ShapeCustom_DirectModification {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi_extern_TKShHealing::HandleShapeCustomDirectModification_get_mut(
+                crate::ffi_extern_TKShHealing::Handle_ShapeCustom_DirectModification_get_mut(
                     self as *mut Self,
                 ),
             )
@@ -2667,27 +2667,27 @@ impl HandleShapeCustomDirectModification {
     /// Upcast Handle<ShapeCustom_DirectModification> to Handle<ShapeCustom_Modification>
     pub fn to_handle_shape_custom_modification(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleShapeCustomModification> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_ShapeCustom_Modification> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKShHealing::HandleShapeCustomDirectModification_to_HandleShapeCustomModification(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKShHealing::Handle_ShapeCustom_DirectModification_to_Handle_ShapeCustom_Modification(self as *const Self)))
         }
     }
 
     /// Upcast Handle<ShapeCustom_DirectModification> to Handle<BRepTools_Modification>
     pub fn to_handle_b_rep_tools_modification(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleBRepToolsModification> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_BRepTools_Modification> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKShHealing::HandleShapeCustomDirectModification_to_HandleBRepToolsModification(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKShHealing::Handle_ShapeCustom_DirectModification_to_Handle_BRepTools_Modification(self as *const Self)))
         }
     }
 
     /// Upcast Handle<ShapeCustom_DirectModification> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKShHealing::HandleShapeCustomDirectModification_to_HandleStandardTransient(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKShHealing::Handle_ShapeCustom_DirectModification_to_Handle_Standard_Transient(self as *const Self)))
         }
     }
 }
@@ -2696,7 +2696,7 @@ impl HandleShapeCustomDirectModification {
 // From ShapeCustom_Modification.hxx
 // ========================
 
-/// **Source:** `ShapeCustom_Modification.hxx`:31 - `ShapeCustom_Modification`
+/// **Source:** `ShapeCustom_Modification.hxx`:28 - `ShapeCustom_Modification`
 /// A base class of Modification's from ShapeCustom.
 /// Implements message sending mechanism.
 pub use crate::ffi_types::ShapeCustom_Modification as Modification;
@@ -2710,11 +2710,11 @@ unsafe impl crate::CppDeletable for Modification {
 }
 
 impl Modification {
-    /// **Source:** `ShapeCustom_Modification.hxx`:36 - `ShapeCustom_Modification::SetMsgRegistrator()`
+    /// **Source:** `ShapeCustom_Modification.hxx`:33 - `ShapeCustom_Modification::SetMsgRegistrator()`
     /// Sets message registrator
     pub fn set_msg_registrator(
         &mut self,
-        msgreg: &crate::ffi_types::HandleShapeExtendBasicMsgRegistrator,
+        msgreg: &crate::ffi_types::Handle_ShapeExtend_BasicMsgRegistrator,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKShHealing::ShapeCustom_Modification_set_msg_registrator(
@@ -2724,11 +2724,11 @@ impl Modification {
         })
     }
 
-    /// **Source:** `ShapeCustom_Modification.hxx`:40 - `ShapeCustom_Modification::MsgRegistrator()`
+    /// **Source:** `ShapeCustom_Modification.hxx`:37 - `ShapeCustom_Modification::MsgRegistrator()`
     /// Returns message registrator
     pub fn msg_registrator(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleShapeExtendBasicMsgRegistrator> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_ShapeExtend_BasicMsgRegistrator> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKShHealing::ShapeCustom_Modification_msg_registrator(
@@ -2738,7 +2738,7 @@ impl Modification {
         }
     }
 
-    /// **Source:** `ShapeCustom_Modification.hxx`:44 - `ShapeCustom_Modification::SendMsg()`
+    /// **Source:** `ShapeCustom_Modification.hxx`:41 - `ShapeCustom_Modification::SendMsg()`
     /// Sends a message to be attached to the shape.
     /// Calls corresponding message of message registrator.
     pub fn send_msg(
@@ -2757,8 +2757,8 @@ impl Modification {
         })
     }
 
-    /// **Source:** `ShapeCustom_Modification.hxx`:48 - `ShapeCustom_Modification::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `ShapeCustom_Modification.hxx`:45 - `ShapeCustom_Modification::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKShHealing::ShapeCustom_Modification_dynamic_type(
@@ -2768,7 +2768,7 @@ impl Modification {
         }
     }
 
-    /// **Source:** `ShapeCustom_Modification.hxx`:48 - `ShapeCustom_Modification::get_type_name()`
+    /// **Source:** `ShapeCustom_Modification.hxx`:45 - `ShapeCustom_Modification::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -2779,8 +2779,8 @@ impl Modification {
         .into_owned()
     }
 
-    /// **Source:** `ShapeCustom_Modification.hxx`:48 - `ShapeCustom_Modification::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    /// **Source:** `ShapeCustom_Modification.hxx`:45 - `ShapeCustom_Modification::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKShHealing::ShapeCustom_Modification_get_type_descriptor(),
@@ -2828,11 +2828,11 @@ impl Modification {
         }
     }
 
-    /// Inherited: **Source:** `BRepTools_Modification.hxx`:61 - `BRepTools_Modification::NewSurface()`
+    /// Inherited: **Source:** `BRepTools_Modification.hxx`:58 - `BRepTools_Modification::NewSurface()`
     pub fn new_surface(
         &mut self,
         F: &crate::topo_ds::Face,
-        S: &mut crate::ffi_types::HandleGeomSurface,
+        S: &mut crate::ffi_types::Handle_Geom_Surface,
         L: &mut crate::top_loc::Location,
         Tol: &mut f64,
         RevWires: &mut bool,
@@ -2851,11 +2851,11 @@ impl Modification {
         })
     }
 
-    /// Inherited: **Source:** `BRepTools_Modification.hxx`:71 - `BRepTools_Modification::NewTriangulation()`
+    /// Inherited: **Source:** `BRepTools_Modification.hxx`:68 - `BRepTools_Modification::NewTriangulation()`
     pub fn new_triangulation(
         &mut self,
         F: &crate::topo_ds::Face,
-        T: &mut crate::ffi_types::HandlePolyTriangulation,
+        T: &mut crate::ffi_types::Handle_Poly_Triangulation,
     ) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKShHealing::ShapeCustom_Modification_inherited_NewTriangulation(
@@ -2866,11 +2866,11 @@ impl Modification {
         })
     }
 
-    /// Inherited: **Source:** `BRepTools_Modification.hxx`:81 - `BRepTools_Modification::NewCurve()`
+    /// Inherited: **Source:** `BRepTools_Modification.hxx`:78 - `BRepTools_Modification::NewCurve()`
     pub fn new_curve(
         &mut self,
         E: &crate::topo_ds::Edge,
-        C: &mut crate::ffi_types::HandleGeomCurve,
+        C: &mut crate::ffi_types::Handle_Geom_Curve,
         L: &mut crate::top_loc::Location,
         Tol: &mut f64,
     ) -> bool {
@@ -2885,11 +2885,11 @@ impl Modification {
         })
     }
 
-    /// Inherited: **Source:** `BRepTools_Modification.hxx`:89 - `BRepTools_Modification::NewPolygon()`
+    /// Inherited: **Source:** `BRepTools_Modification.hxx`:86 - `BRepTools_Modification::NewPolygon()`
     pub fn new_polygon(
         &mut self,
         E: &crate::topo_ds::Edge,
-        P: &mut crate::ffi_types::HandlePolyPolygon3D,
+        P: &mut crate::ffi_types::Handle_Poly_Polygon3D,
     ) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKShHealing::ShapeCustom_Modification_inherited_NewPolygon(
@@ -2900,19 +2900,19 @@ impl Modification {
         })
     }
 
-    /// Inherited: **Source:** `BRepTools_Modification.hxx`:95 - `BRepTools_Modification::NewPolygonOnTriangulation()`
+    /// Inherited: **Source:** `BRepTools_Modification.hxx`:91 - `BRepTools_Modification::NewPolygonOnTriangulation()`
     pub fn new_polygon_on_triangulation(
         &mut self,
         E: &crate::topo_ds::Edge,
         F: &crate::topo_ds::Face,
-        P: &mut crate::ffi_types::HandlePolyPolygonOnTriangulation,
+        P: &mut crate::ffi_types::Handle_Poly_PolygonOnTriangulation,
     ) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKShHealing::ShapeCustom_Modification_inherited_NewPolygonOnTriangulation(self as *mut Self, E, F, P)
         })
     }
 
-    /// Inherited: **Source:** `BRepTools_Modification.hxx`:106 - `BRepTools_Modification::NewPoint()`
+    /// Inherited: **Source:** `BRepTools_Modification.hxx`:102 - `BRepTools_Modification::NewPoint()`
     pub fn new_point(
         &mut self,
         V: &crate::topo_ds::Vertex,
@@ -2929,14 +2929,14 @@ impl Modification {
         })
     }
 
-    /// Inherited: **Source:** `BRepTools_Modification.hxx`:120 - `BRepTools_Modification::NewCurve2d()`
+    /// Inherited: **Source:** `BRepTools_Modification.hxx`:114 - `BRepTools_Modification::NewCurve2d()`
     pub fn new_curve2d(
         &mut self,
         E: &crate::topo_ds::Edge,
         F: &crate::topo_ds::Face,
         NewE: &crate::topo_ds::Edge,
         NewF: &crate::topo_ds::Face,
-        C: &mut crate::ffi_types::HandleGeom2dCurve,
+        C: &mut crate::ffi_types::Handle_Geom2d_Curve,
         Tol: &mut f64,
     ) -> bool {
         crate::check_result(unsafe {
@@ -2952,7 +2952,7 @@ impl Modification {
         })
     }
 
-    /// Inherited: **Source:** `BRepTools_Modification.hxx`:133 - `BRepTools_Modification::NewParameter()`
+    /// Inherited: **Source:** `BRepTools_Modification.hxx`:127 - `BRepTools_Modification::NewParameter()`
     pub fn new_parameter(
         &mut self,
         V: &crate::topo_ds::Vertex,
@@ -2971,7 +2971,7 @@ impl Modification {
         })
     }
 
-    /// Inherited: **Source:** `BRepTools_Modification.hxx`:143 - `BRepTools_Modification::Continuity()`
+    /// Inherited: **Source:** `BRepTools_Modification.hxx`:137 - `BRepTools_Modification::Continuity()`
     pub fn continuity(
         &mut self,
         E: &crate::topo_ds::Edge,
@@ -2995,8 +2995,8 @@ impl Modification {
         .unwrap()
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKShHealing::ShapeCustom_Modification_inherited_IsInstance(
                 self as *const Self,
@@ -3005,8 +3005,8 @@ impl Modification {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKShHealing::ShapeCustom_Modification_inherited_IsKind(
                 self as *const Self,
@@ -3015,7 +3015,7 @@ impl Modification {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -3031,7 +3031,7 @@ impl Modification {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKShHealing::ShapeCustom_Modification_inherited_GetRefCount(
@@ -3040,7 +3040,7 @@ impl Modification {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKShHealing::ShapeCustom_Modification_inherited_IncrementRefCounter(
@@ -3049,7 +3049,7 @@ impl Modification {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKShHealing::ShapeCustom_Modification_inherited_DecrementRefCounter(
@@ -3058,7 +3058,7 @@ impl Modification {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKShHealing::ShapeCustom_Modification_inherited_Delete(
@@ -3068,31 +3068,31 @@ impl Modification {
     }
 }
 
-pub use crate::ffi_types::HandleShapeCustomModification;
+pub use crate::ffi_types::Handle_ShapeCustom_Modification;
 
-unsafe impl crate::CppDeletable for HandleShapeCustomModification {
+unsafe impl crate::CppDeletable for Handle_ShapeCustom_Modification {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKShHealing::HandleShapeCustomModification_destructor(ptr);
+            crate::ffi_extern_TKShHealing::Handle_ShapeCustom_Modification_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleShapeCustomModification {
+unsafe impl crate::CppCopyable for Handle_ShapeCustom_Modification {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
         unsafe {
-            crate::check_result(crate::ffi_extern_TKShHealing::HandleShapeCustomModification_clone(
-                ptr,
-            ))
+            crate::check_result(
+                crate::ffi_extern_TKShHealing::Handle_ShapeCustom_Modification_clone(ptr),
+            )
         }
     }
 }
 
-impl HandleShapeCustomModification {
+impl Handle_ShapeCustom_Modification {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
         unsafe {
-            crate::ffi_extern_TKShHealing::HandleShapeCustomModification_is_null(
+            crate::ffi_extern_TKShHealing::Handle_ShapeCustom_Modification_is_null(
                 self as *const Self,
             )
         }
@@ -3101,9 +3101,11 @@ impl HandleShapeCustomModification {
     /// Dereference this Handle to access the underlying ShapeCustom_Modification
     pub fn get(&self) -> &crate::ffi_types::ShapeCustom_Modification {
         unsafe {
-            &*crate::check_result(crate::ffi_extern_TKShHealing::HandleShapeCustomModification_get(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKShHealing::Handle_ShapeCustom_Modification_get(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -3111,7 +3113,7 @@ impl HandleShapeCustomModification {
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::ShapeCustom_Modification {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi_extern_TKShHealing::HandleShapeCustomModification_get_mut(
+                crate::ffi_extern_TKShHealing::Handle_ShapeCustom_Modification_get_mut(
                     self as *mut Self,
                 ),
             )
@@ -3121,18 +3123,18 @@ impl HandleShapeCustomModification {
     /// Upcast Handle<ShapeCustom_Modification> to Handle<BRepTools_Modification>
     pub fn to_handle_modification(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleBRepToolsModification> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_BRepTools_Modification> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKShHealing::HandleShapeCustomModification_to_HandleBRepToolsModification(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKShHealing::Handle_ShapeCustom_Modification_to_Handle_BRepTools_Modification(self as *const Self)))
         }
     }
 
     /// Upcast Handle<ShapeCustom_Modification> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKShHealing::HandleShapeCustomModification_to_HandleStandardTransient(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKShHealing::Handle_ShapeCustom_Modification_to_Handle_Standard_Transient(self as *const Self)))
         }
     }
 
@@ -3141,9 +3143,9 @@ impl HandleShapeCustomModification {
     /// Returns `None` if the handle does not point to a `ShapeCustom_BSplineRestriction` (or subclass).
     pub fn downcast_to_b_spline_restriction(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleShapeCustomBSplineRestriction>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_ShapeCustom_BSplineRestriction>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKShHealing::HandleShapeCustomModification_downcast_to_HandleShapeCustomBSplineRestriction(self as *const Self)
+            crate::ffi_extern_TKShHealing::Handle_ShapeCustom_Modification_downcast_to_Handle_ShapeCustom_BSplineRestriction(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -3157,9 +3159,9 @@ impl HandleShapeCustomModification {
     /// Returns `None` if the handle does not point to a `ShapeCustom_ConvertToBSpline` (or subclass).
     pub fn downcast_to_convert_to_b_spline(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleShapeCustomConvertToBSpline>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_ShapeCustom_ConvertToBSpline>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKShHealing::HandleShapeCustomModification_downcast_to_HandleShapeCustomConvertToBSpline(self as *const Self)
+            crate::ffi_extern_TKShHealing::Handle_ShapeCustom_Modification_downcast_to_Handle_ShapeCustom_ConvertToBSpline(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -3173,9 +3175,9 @@ impl HandleShapeCustomModification {
     /// Returns `None` if the handle does not point to a `ShapeCustom_ConvertToRevolution` (or subclass).
     pub fn downcast_to_convert_to_revolution(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleShapeCustomConvertToRevolution>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_ShapeCustom_ConvertToRevolution>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKShHealing::HandleShapeCustomModification_downcast_to_HandleShapeCustomConvertToRevolution(self as *const Self)
+            crate::ffi_extern_TKShHealing::Handle_ShapeCustom_Modification_downcast_to_Handle_ShapeCustom_ConvertToRevolution(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -3189,9 +3191,9 @@ impl HandleShapeCustomModification {
     /// Returns `None` if the handle does not point to a `ShapeCustom_DirectModification` (or subclass).
     pub fn downcast_to_direct_modification(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleShapeCustomDirectModification>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_ShapeCustom_DirectModification>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKShHealing::HandleShapeCustomModification_downcast_to_HandleShapeCustomDirectModification(self as *const Self)
+            crate::ffi_extern_TKShHealing::Handle_ShapeCustom_Modification_downcast_to_Handle_ShapeCustom_DirectModification(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -3205,9 +3207,9 @@ impl HandleShapeCustomModification {
     /// Returns `None` if the handle does not point to a `ShapeCustom_SweptToElementary` (or subclass).
     pub fn downcast_to_swept_to_elementary(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleShapeCustomSweptToElementary>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_ShapeCustom_SweptToElementary>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKShHealing::HandleShapeCustomModification_downcast_to_HandleShapeCustomSweptToElementary(self as *const Self)
+            crate::ffi_extern_TKShHealing::Handle_ShapeCustom_Modification_downcast_to_Handle_ShapeCustom_SweptToElementary(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -3221,7 +3223,7 @@ impl HandleShapeCustomModification {
 // From ShapeCustom_RestrictionParameters.hxx
 // ========================
 
-/// **Source:** `ShapeCustom_RestrictionParameters.hxx`:30 - `ShapeCustom_RestrictionParameters`
+/// **Source:** `ShapeCustom_RestrictionParameters.hxx`:27 - `ShapeCustom_RestrictionParameters`
 /// This class is axuluary tool which contains parameters for
 /// BSplineRestriction class.
 pub use crate::ffi_types::ShapeCustom_RestrictionParameters as RestrictionParameters;
@@ -3235,7 +3237,7 @@ unsafe impl crate::CppDeletable for RestrictionParameters {
 }
 
 impl RestrictionParameters {
-    /// **Source:** `ShapeCustom_RestrictionParameters.hxx`:35 - `ShapeCustom_RestrictionParameters::ShapeCustom_RestrictionParameters()`
+    /// **Source:** `ShapeCustom_RestrictionParameters.hxx`:32 - `ShapeCustom_RestrictionParameters::ShapeCustom_RestrictionParameters()`
     /// Sets default parameters.
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
@@ -3245,7 +3247,7 @@ impl RestrictionParameters {
         }
     }
 
-    /// **Source:** `ShapeCustom_RestrictionParameters.hxx`:38 - `ShapeCustom_RestrictionParameters::GMaxDegree()`
+    /// **Source:** `ShapeCustom_RestrictionParameters.hxx`:35 - `ShapeCustom_RestrictionParameters::GMaxDegree()`
     /// Returns (modifiable) maximal degree of approximation.
     pub fn g_max_degree(&mut self) -> &mut i32 {
         unsafe {
@@ -3257,7 +3259,7 @@ impl RestrictionParameters {
         }
     }
 
-    /// **Source:** `ShapeCustom_RestrictionParameters.hxx`:42 - `ShapeCustom_RestrictionParameters::GMaxSeg()`
+    /// **Source:** `ShapeCustom_RestrictionParameters.hxx`:39 - `ShapeCustom_RestrictionParameters::GMaxSeg()`
     /// Returns (modifiable) maximal number of spans of
     /// approximation.
     pub fn g_max_seg(&mut self) -> &mut i32 {
@@ -3270,7 +3272,7 @@ impl RestrictionParameters {
         }
     }
 
-    /// **Source:** `ShapeCustom_RestrictionParameters.hxx`:45 - `ShapeCustom_RestrictionParameters::ConvertPlane()`
+    /// **Source:** `ShapeCustom_RestrictionParameters.hxx`:42 - `ShapeCustom_RestrictionParameters::ConvertPlane()`
     /// Sets flag for define if Plane converted to BSpline surface.
     pub fn convert_plane(&mut self) -> &mut bool {
         unsafe {
@@ -3282,7 +3284,7 @@ impl RestrictionParameters {
         }
     }
 
-    /// **Source:** `ShapeCustom_RestrictionParameters.hxx`:49 - `ShapeCustom_RestrictionParameters::ConvertBezierSurf()`
+    /// **Source:** `ShapeCustom_RestrictionParameters.hxx`:46 - `ShapeCustom_RestrictionParameters::ConvertBezierSurf()`
     /// Sets flag for define if Bezier surface converted to BSpline
     /// surface.
     pub fn convert_bezier_surf(&mut self) -> &mut bool {
@@ -3291,7 +3293,7 @@ impl RestrictionParameters {
         }
     }
 
-    /// **Source:** `ShapeCustom_RestrictionParameters.hxx`:53 - `ShapeCustom_RestrictionParameters::ConvertRevolutionSurf()`
+    /// **Source:** `ShapeCustom_RestrictionParameters.hxx`:50 - `ShapeCustom_RestrictionParameters::ConvertRevolutionSurf()`
     /// Sets flag for define if surface of Revolution converted to
     /// BSpline surface.
     pub fn convert_revolution_surf(&mut self) -> &mut bool {
@@ -3300,7 +3302,7 @@ impl RestrictionParameters {
         }
     }
 
-    /// **Source:** `ShapeCustom_RestrictionParameters.hxx`:57 - `ShapeCustom_RestrictionParameters::ConvertExtrusionSurf()`
+    /// **Source:** `ShapeCustom_RestrictionParameters.hxx`:54 - `ShapeCustom_RestrictionParameters::ConvertExtrusionSurf()`
     /// Sets flag for define if surface of LinearExtrusion converted
     /// to BSpline surface.
     pub fn convert_extrusion_surf(&mut self) -> &mut bool {
@@ -3309,7 +3311,7 @@ impl RestrictionParameters {
         }
     }
 
-    /// **Source:** `ShapeCustom_RestrictionParameters.hxx`:61 - `ShapeCustom_RestrictionParameters::ConvertOffsetSurf()`
+    /// **Source:** `ShapeCustom_RestrictionParameters.hxx`:58 - `ShapeCustom_RestrictionParameters::ConvertOffsetSurf()`
     /// Sets flag for define if Offset surface converted to BSpline
     /// surface.
     pub fn convert_offset_surf(&mut self) -> &mut bool {
@@ -3318,7 +3320,7 @@ impl RestrictionParameters {
         }
     }
 
-    /// **Source:** `ShapeCustom_RestrictionParameters.hxx`:65 - `ShapeCustom_RestrictionParameters::ConvertCylindricalSurf()`
+    /// **Source:** `ShapeCustom_RestrictionParameters.hxx`:62 - `ShapeCustom_RestrictionParameters::ConvertCylindricalSurf()`
     /// Sets flag for define if cylindrical surface converted to BSpline
     /// surface.
     pub fn convert_cylindrical_surf(&mut self) -> &mut bool {
@@ -3327,7 +3329,7 @@ impl RestrictionParameters {
         }
     }
 
-    /// **Source:** `ShapeCustom_RestrictionParameters.hxx`:69 - `ShapeCustom_RestrictionParameters::ConvertConicalSurf()`
+    /// **Source:** `ShapeCustom_RestrictionParameters.hxx`:66 - `ShapeCustom_RestrictionParameters::ConvertConicalSurf()`
     /// Sets flag for define if conical surface converted to BSpline
     /// surface.
     pub fn convert_conical_surf(&mut self) -> &mut bool {
@@ -3336,7 +3338,7 @@ impl RestrictionParameters {
         }
     }
 
-    /// **Source:** `ShapeCustom_RestrictionParameters.hxx`:73 - `ShapeCustom_RestrictionParameters::ConvertToroidalSurf()`
+    /// **Source:** `ShapeCustom_RestrictionParameters.hxx`:70 - `ShapeCustom_RestrictionParameters::ConvertToroidalSurf()`
     /// Sets flag for define if toroidal surface converted to BSpline
     /// surface.
     pub fn convert_toroidal_surf(&mut self) -> &mut bool {
@@ -3345,7 +3347,7 @@ impl RestrictionParameters {
         }
     }
 
-    /// **Source:** `ShapeCustom_RestrictionParameters.hxx`:77 - `ShapeCustom_RestrictionParameters::ConvertSphericalSurf()`
+    /// **Source:** `ShapeCustom_RestrictionParameters.hxx`:74 - `ShapeCustom_RestrictionParameters::ConvertSphericalSurf()`
     /// Sets flag for define if spherical surface converted to BSpline
     /// surface.
     pub fn convert_spherical_surf(&mut self) -> &mut bool {
@@ -3354,7 +3356,7 @@ impl RestrictionParameters {
         }
     }
 
-    /// **Source:** `ShapeCustom_RestrictionParameters.hxx`:81 - `ShapeCustom_RestrictionParameters::SegmentSurfaceMode()`
+    /// **Source:** `ShapeCustom_RestrictionParameters.hxx`:78 - `ShapeCustom_RestrictionParameters::SegmentSurfaceMode()`
     /// Sets Segment mode for surface. If Segment is True surface is
     /// approximated in the bondaries of face lying on this surface.
     pub fn segment_surface_mode(&mut self) -> &mut bool {
@@ -3363,7 +3365,7 @@ impl RestrictionParameters {
         }
     }
 
-    /// **Source:** `ShapeCustom_RestrictionParameters.hxx`:84 - `ShapeCustom_RestrictionParameters::ConvertCurve3d()`
+    /// **Source:** `ShapeCustom_RestrictionParameters.hxx`:81 - `ShapeCustom_RestrictionParameters::ConvertCurve3d()`
     /// Sets flag for define if 3d curve converted to BSpline curve.
     pub fn convert_curve3d(&mut self) -> &mut bool {
         unsafe {
@@ -3375,7 +3377,7 @@ impl RestrictionParameters {
         }
     }
 
-    /// **Source:** `ShapeCustom_RestrictionParameters.hxx`:88 - `ShapeCustom_RestrictionParameters::ConvertOffsetCurv3d()`
+    /// **Source:** `ShapeCustom_RestrictionParameters.hxx`:85 - `ShapeCustom_RestrictionParameters::ConvertOffsetCurv3d()`
     /// Sets flag for define if Offset curve3d converted to BSpline
     /// surface.
     pub fn convert_offset_curv3d(&mut self) -> &mut bool {
@@ -3384,7 +3386,7 @@ impl RestrictionParameters {
         }
     }
 
-    /// **Source:** `ShapeCustom_RestrictionParameters.hxx`:92 - `ShapeCustom_RestrictionParameters::ConvertCurve2d()`
+    /// **Source:** `ShapeCustom_RestrictionParameters.hxx`:89 - `ShapeCustom_RestrictionParameters::ConvertCurve2d()`
     /// Returns (modifiable) flag for define if 2d curve converted
     /// to BSpline curve.
     pub fn convert_curve2d(&mut self) -> &mut bool {
@@ -3397,7 +3399,7 @@ impl RestrictionParameters {
         }
     }
 
-    /// **Source:** `ShapeCustom_RestrictionParameters.hxx`:96 - `ShapeCustom_RestrictionParameters::ConvertOffsetCurv2d()`
+    /// **Source:** `ShapeCustom_RestrictionParameters.hxx`:93 - `ShapeCustom_RestrictionParameters::ConvertOffsetCurv2d()`
     /// Returns (modifiable) flag for define if Offset curve2d
     /// converted to BSpline surface.
     pub fn convert_offset_curv2d(&mut self) -> &mut bool {
@@ -3406,8 +3408,8 @@ impl RestrictionParameters {
         }
     }
 
-    /// **Source:** `ShapeCustom_RestrictionParameters.hxx`:98 - `ShapeCustom_RestrictionParameters::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `ShapeCustom_RestrictionParameters.hxx`:95 - `ShapeCustom_RestrictionParameters::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKShHealing::ShapeCustom_RestrictionParameters_dynamic_type(
@@ -3417,7 +3419,7 @@ impl RestrictionParameters {
         }
     }
 
-    /// **Source:** `ShapeCustom_RestrictionParameters.hxx`:98 - `ShapeCustom_RestrictionParameters::get_type_name()`
+    /// **Source:** `ShapeCustom_RestrictionParameters.hxx`:95 - `ShapeCustom_RestrictionParameters::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -3428,8 +3430,8 @@ impl RestrictionParameters {
         .into_owned()
     }
 
-    /// **Source:** `ShapeCustom_RestrictionParameters.hxx`:98 - `ShapeCustom_RestrictionParameters::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    /// **Source:** `ShapeCustom_RestrictionParameters.hxx`:95 - `ShapeCustom_RestrictionParameters::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKShHealing::ShapeCustom_RestrictionParameters_get_type_descriptor()))
         }
@@ -3452,7 +3454,7 @@ impl RestrictionParameters {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleShapeCustomRestrictionParameters> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_ShapeCustom_RestrictionParameters> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKShHealing::ShapeCustom_RestrictionParameters_to_handle(
@@ -3462,8 +3464,8 @@ impl RestrictionParameters {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKShHealing::ShapeCustom_RestrictionParameters_inherited_IsInstance(
                 self as *const Self,
@@ -3472,8 +3474,8 @@ impl RestrictionParameters {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKShHealing::ShapeCustom_RestrictionParameters_inherited_IsKind(
                 self as *const Self,
@@ -3482,7 +3484,7 @@ impl RestrictionParameters {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -3498,7 +3500,7 @@ impl RestrictionParameters {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKShHealing::ShapeCustom_RestrictionParameters_inherited_GetRefCount(
@@ -3507,21 +3509,21 @@ impl RestrictionParameters {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKShHealing::ShapeCustom_RestrictionParameters_inherited_IncrementRefCounter(self as *mut Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKShHealing::ShapeCustom_RestrictionParameters_inherited_DecrementRefCounter(self as *mut Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKShHealing::ShapeCustom_RestrictionParameters_inherited_Delete(
@@ -3531,31 +3533,31 @@ impl RestrictionParameters {
     }
 }
 
-pub use crate::ffi_types::HandleShapeCustomRestrictionParameters;
+pub use crate::ffi_types::Handle_ShapeCustom_RestrictionParameters;
 
-unsafe impl crate::CppDeletable for HandleShapeCustomRestrictionParameters {
+unsafe impl crate::CppDeletable for Handle_ShapeCustom_RestrictionParameters {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKShHealing::HandleShapeCustomRestrictionParameters_destructor(ptr);
+            crate::ffi_extern_TKShHealing::Handle_ShapeCustom_RestrictionParameters_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleShapeCustomRestrictionParameters {
+unsafe impl crate::CppCopyable for Handle_ShapeCustom_RestrictionParameters {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
         unsafe {
             crate::check_result(
-                crate::ffi_extern_TKShHealing::HandleShapeCustomRestrictionParameters_clone(ptr),
+                crate::ffi_extern_TKShHealing::Handle_ShapeCustom_RestrictionParameters_clone(ptr),
             )
         }
     }
 }
 
-impl HandleShapeCustomRestrictionParameters {
+impl Handle_ShapeCustom_RestrictionParameters {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
         unsafe {
-            crate::ffi_extern_TKShHealing::HandleShapeCustomRestrictionParameters_is_null(
+            crate::ffi_extern_TKShHealing::Handle_ShapeCustom_RestrictionParameters_is_null(
                 self as *const Self,
             )
         }
@@ -3565,7 +3567,7 @@ impl HandleShapeCustomRestrictionParameters {
     pub fn get(&self) -> &crate::ffi_types::ShapeCustom_RestrictionParameters {
         unsafe {
             &*crate::check_result(
-                crate::ffi_extern_TKShHealing::HandleShapeCustomRestrictionParameters_get(
+                crate::ffi_extern_TKShHealing::Handle_ShapeCustom_RestrictionParameters_get(
                     self as *const Self,
                 ),
             )
@@ -3576,7 +3578,7 @@ impl HandleShapeCustomRestrictionParameters {
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::ShapeCustom_RestrictionParameters {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi_extern_TKShHealing::HandleShapeCustomRestrictionParameters_get_mut(
+                crate::ffi_extern_TKShHealing::Handle_ShapeCustom_RestrictionParameters_get_mut(
                     self as *mut Self,
                 ),
             )
@@ -3586,9 +3588,9 @@ impl HandleShapeCustomRestrictionParameters {
     /// Upcast Handle<ShapeCustom_RestrictionParameters> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKShHealing::HandleShapeCustomRestrictionParameters_to_HandleStandardTransient(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKShHealing::Handle_ShapeCustom_RestrictionParameters_to_Handle_Standard_Transient(self as *const Self)))
         }
     }
 }
@@ -3623,7 +3625,9 @@ impl Surface {
     }
 
     /// **Source:** `ShapeCustom_Surface.hxx`:39 - `ShapeCustom_Surface::ShapeCustom_Surface()`
-    pub fn new_handlegeomsurface(S: &crate::ffi_types::HandleGeomSurface) -> crate::OwnedPtr<Self> {
+    pub fn new_handlegeomsurface(
+        S: &crate::ffi_types::Handle_Geom_Surface,
+    ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKShHealing::ShapeCustom_Surface_ctor_handlegeomsurface(S),
@@ -3632,7 +3636,7 @@ impl Surface {
     }
 
     /// **Source:** `ShapeCustom_Surface.hxx`:41 - `ShapeCustom_Surface::Init()`
-    pub fn init(&mut self, S: &crate::ffi_types::HandleGeomSurface) {
+    pub fn init(&mut self, S: &crate::ffi_types::Handle_Geom_Surface) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKShHealing::ShapeCustom_Surface_init(self as *mut Self, S)
         })
@@ -3663,7 +3667,7 @@ impl Surface {
         &mut self,
         tol: f64,
         substitute: bool,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleGeomSurface> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Geom_Surface> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKShHealing::ShapeCustom_Surface_convert_to_analytical(
@@ -3685,7 +3689,7 @@ impl Surface {
         &mut self,
         substitute: bool,
         preci: f64,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleGeomSurface> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Geom_Surface> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKShHealing::ShapeCustom_Surface_convert_to_periodic(
@@ -3702,7 +3706,7 @@ impl Surface {
 // From ShapeCustom_SweptToElementary.hxx
 // ========================
 
-/// **Source:** `ShapeCustom_SweptToElementary.hxx`:39 - `ShapeCustom_SweptToElementary`
+/// **Source:** `ShapeCustom_SweptToElementary.hxx`:36 - `ShapeCustom_SweptToElementary`
 /// implements a modification for the BRepTools
 /// Modifier algorithm. Converts all elementary
 /// surfaces into surfaces of revolution.
@@ -3717,7 +3721,7 @@ unsafe impl crate::CppDeletable for SweptToElementary {
 }
 
 impl SweptToElementary {
-    /// **Source:** `ShapeCustom_SweptToElementary.hxx`:43 - `ShapeCustom_SweptToElementary::ShapeCustom_SweptToElementary()`
+    /// **Source:** `ShapeCustom_SweptToElementary.hxx`:40 - `ShapeCustom_SweptToElementary::ShapeCustom_SweptToElementary()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -3726,17 +3730,17 @@ impl SweptToElementary {
         }
     }
 
-    /// **Source:** `ShapeCustom_SweptToElementary.hxx`:51 - `ShapeCustom_SweptToElementary::NewSurface()`
-    /// Returns Standard_True if the face <F> has  been
+    /// **Source:** `ShapeCustom_SweptToElementary.hxx`:48 - `ShapeCustom_SweptToElementary::NewSurface()`
+    /// Returns true if the face <F> has been
     /// modified. In this case, <S> is the new geometric
-    /// support of the face, <L> the new location,  <Tol>
-    /// the new tolerance.  Otherwise, returns
-    /// Standard_False, and <S>, <L>, <Tol> are  not
+    /// support of the face, <L> the new location, <Tol>
+    /// the new tolerance. Otherwise, returns
+    /// false, and <S>, <L>, <Tol> are not
     /// significant.
     pub fn new_surface(
         &mut self,
         F: &crate::topo_ds::Face,
-        S: &mut crate::ffi_types::HandleGeomSurface,
+        S: &mut crate::ffi_types::Handle_Geom_Surface,
         L: &mut crate::top_loc::Location,
         Tol: &mut f64,
         RevWires: &mut bool,
@@ -3755,17 +3759,17 @@ impl SweptToElementary {
         })
     }
 
-    /// **Source:** `ShapeCustom_SweptToElementary.hxx`:64 - `ShapeCustom_SweptToElementary::NewCurve()`
-    /// Returns Standard_True  if  the edge  <E> has  been
-    /// modified.  In this case,  <C> is the new geometric
-    /// support of the  edge, <L> the  new location, <Tol>
-    /// the         new    tolerance.   Otherwise, returns
-    /// Standard_False,    and  <C>,  <L>,   <Tol> are not
+    /// **Source:** `ShapeCustom_SweptToElementary.hxx`:61 - `ShapeCustom_SweptToElementary::NewCurve()`
+    /// Returns true if the edge <E> has been
+    /// modified. In this case, <C> is the new geometric
+    /// support of the edge, <L> the new location, <Tol>
+    /// the new tolerance. Otherwise, returns
+    /// false, and <C>, <L>, <Tol> are not
     /// significant.
     pub fn new_curve(
         &mut self,
         E: &crate::topo_ds::Edge,
-        C: &mut crate::ffi_types::HandleGeomCurve,
+        C: &mut crate::ffi_types::Handle_Geom_Curve,
         L: &mut crate::top_loc::Location,
         Tol: &mut f64,
     ) -> bool {
@@ -3780,11 +3784,11 @@ impl SweptToElementary {
         })
     }
 
-    /// **Source:** `ShapeCustom_SweptToElementary.hxx`:74 - `ShapeCustom_SweptToElementary::NewPoint()`
-    /// Returns  Standard_True if the  vertex <V> has been
-    /// modified.  In this  case, <P> is the new geometric
-    /// support of the vertex,   <Tol> the new  tolerance.
-    /// Otherwise, returns Standard_False, and <P>,  <Tol>
+    /// **Source:** `ShapeCustom_SweptToElementary.hxx`:71 - `ShapeCustom_SweptToElementary::NewPoint()`
+    /// Returns true if the vertex <V> has been
+    /// modified. In this case, <P> is the new geometric
+    /// support of the vertex, <Tol> the new tolerance.
+    /// Otherwise, returns false, and <P>, <Tol>
     /// are not significant.
     pub fn new_point(
         &mut self,
@@ -3802,16 +3806,16 @@ impl SweptToElementary {
         })
     }
 
-    /// **Source:** `ShapeCustom_SweptToElementary.hxx`:88 - `ShapeCustom_SweptToElementary::NewCurve2d()`
-    /// Returns Standard_True if  the edge  <E> has a  new
+    /// **Source:** `ShapeCustom_SweptToElementary.hxx`:83 - `ShapeCustom_SweptToElementary::NewCurve2d()`
+    /// Returns true if the edge <E> has a new
     /// curve on surface on the face <F>.In this case, <C>
-    /// is the new geometric support of  the edge, <L> the
+    /// is the new geometric support of the edge, <L> the
     /// new location, <Tol> the new tolerance.
     ///
-    /// Otherwise, returns  Standard_False, and <C>,  <L>,
+    /// Otherwise, returns false, and <C>, <L>,
     /// <Tol> are not significant.
     ///
-    /// <NewE> is the new  edge created from  <E>.  <NewF>
+    /// <NewE> is the new edge created from <E>. <NewF>
     /// is the new face created from <F>. They may be useful.
     pub fn new_curve2d(
         &mut self,
@@ -3819,7 +3823,7 @@ impl SweptToElementary {
         F: &crate::topo_ds::Face,
         NewE: &crate::topo_ds::Edge,
         NewF: &crate::topo_ds::Face,
-        C: &mut crate::ffi_types::HandleGeom2dCurve,
+        C: &mut crate::ffi_types::Handle_Geom2d_Curve,
         Tol: &mut f64,
     ) -> bool {
         crate::check_result(unsafe {
@@ -3835,11 +3839,11 @@ impl SweptToElementary {
         })
     }
 
-    /// **Source:** `ShapeCustom_SweptToElementary.hxx`:100 - `ShapeCustom_SweptToElementary::NewParameter()`
-    /// Returns Standard_True if the Vertex  <V> has a new
-    /// parameter on the  edge <E>. In  this case,  <P> is
-    /// the parameter,    <Tol>  the     new    tolerance.
-    /// Otherwise, returns Standard_False, and <P>,  <Tol>
+    /// **Source:** `ShapeCustom_SweptToElementary.hxx`:95 - `ShapeCustom_SweptToElementary::NewParameter()`
+    /// Returns true if the Vertex <V> has a new
+    /// parameter on the edge <E>. In this case, <P> is
+    /// the parameter, <Tol> the new tolerance.
+    /// Otherwise, returns false, and <P>, <Tol>
     /// are not significant.
     pub fn new_parameter(
         &mut self,
@@ -3859,12 +3863,12 @@ impl SweptToElementary {
         })
     }
 
-    /// **Source:** `ShapeCustom_SweptToElementary.hxx`:111 - `ShapeCustom_SweptToElementary::Continuity()`
-    /// Returns the  continuity of  <NewE> between <NewF1>
+    /// **Source:** `ShapeCustom_SweptToElementary.hxx`:106 - `ShapeCustom_SweptToElementary::Continuity()`
+    /// Returns the continuity of <NewE> between <NewF1>
     /// and <NewF2>.
     ///
-    /// <NewE> is the new  edge created from <E>.  <NewF1>
-    /// (resp. <NewF2>) is the new  face created from <F1>
+    /// <NewE> is the new edge created from <E>. <NewF1>
+    /// (resp. <NewF2>) is the new face created from <F1>
     /// (resp. <F2>).
     pub fn continuity(
         &mut self,
@@ -3889,8 +3893,8 @@ impl SweptToElementary {
         .unwrap()
     }
 
-    /// **Source:** `ShapeCustom_SweptToElementary.hxx`:118 - `ShapeCustom_SweptToElementary::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `ShapeCustom_SweptToElementary.hxx`:113 - `ShapeCustom_SweptToElementary::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKShHealing::ShapeCustom_SweptToElementary_dynamic_type(
@@ -3900,7 +3904,7 @@ impl SweptToElementary {
         }
     }
 
-    /// **Source:** `ShapeCustom_SweptToElementary.hxx`:118 - `ShapeCustom_SweptToElementary::get_type_name()`
+    /// **Source:** `ShapeCustom_SweptToElementary.hxx`:113 - `ShapeCustom_SweptToElementary::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -3911,8 +3915,8 @@ impl SweptToElementary {
         .into_owned()
     }
 
-    /// **Source:** `ShapeCustom_SweptToElementary.hxx`:118 - `ShapeCustom_SweptToElementary::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    /// **Source:** `ShapeCustom_SweptToElementary.hxx`:113 - `ShapeCustom_SweptToElementary::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKShHealing::ShapeCustom_SweptToElementary_get_type_descriptor(),
@@ -3969,7 +3973,7 @@ impl SweptToElementary {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleShapeCustomSweptToElementary> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_ShapeCustom_SweptToElementary> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKShHealing::ShapeCustom_SweptToElementary_to_handle(
@@ -3979,10 +3983,10 @@ impl SweptToElementary {
         }
     }
 
-    /// Inherited: **Source:** `ShapeCustom_Modification.hxx`:36 - `ShapeCustom_Modification::SetMsgRegistrator()`
+    /// Inherited: **Source:** `ShapeCustom_Modification.hxx`:33 - `ShapeCustom_Modification::SetMsgRegistrator()`
     pub fn set_msg_registrator(
         &mut self,
-        msgreg: &crate::ffi_types::HandleShapeExtendBasicMsgRegistrator,
+        msgreg: &crate::ffi_types::Handle_ShapeExtend_BasicMsgRegistrator,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKShHealing::ShapeCustom_SweptToElementary_inherited_SetMsgRegistrator(
@@ -3992,16 +3996,16 @@ impl SweptToElementary {
         })
     }
 
-    /// Inherited: **Source:** `ShapeCustom_Modification.hxx`:40 - `ShapeCustom_Modification::MsgRegistrator()`
+    /// Inherited: **Source:** `ShapeCustom_Modification.hxx`:37 - `ShapeCustom_Modification::MsgRegistrator()`
     pub fn msg_registrator(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleShapeExtendBasicMsgRegistrator> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_ShapeExtend_BasicMsgRegistrator> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKShHealing::ShapeCustom_SweptToElementary_inherited_MsgRegistrator(self as *const Self)))
         }
     }
 
-    /// Inherited: **Source:** `ShapeCustom_Modification.hxx`:44 - `ShapeCustom_Modification::SendMsg()`
+    /// Inherited: **Source:** `ShapeCustom_Modification.hxx`:41 - `ShapeCustom_Modification::SendMsg()`
     pub fn send_msg(
         &self,
         shape: &crate::topo_ds::Shape,
@@ -4018,11 +4022,11 @@ impl SweptToElementary {
         })
     }
 
-    /// Inherited: **Source:** `BRepTools_Modification.hxx`:71 - `BRepTools_Modification::NewTriangulation()`
+    /// Inherited: **Source:** `BRepTools_Modification.hxx`:68 - `BRepTools_Modification::NewTriangulation()`
     pub fn new_triangulation(
         &mut self,
         F: &crate::topo_ds::Face,
-        T: &mut crate::ffi_types::HandlePolyTriangulation,
+        T: &mut crate::ffi_types::Handle_Poly_Triangulation,
     ) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKShHealing::ShapeCustom_SweptToElementary_inherited_NewTriangulation(
@@ -4033,11 +4037,11 @@ impl SweptToElementary {
         })
     }
 
-    /// Inherited: **Source:** `BRepTools_Modification.hxx`:89 - `BRepTools_Modification::NewPolygon()`
+    /// Inherited: **Source:** `BRepTools_Modification.hxx`:86 - `BRepTools_Modification::NewPolygon()`
     pub fn new_polygon(
         &mut self,
         E: &crate::topo_ds::Edge,
-        P: &mut crate::ffi_types::HandlePolyPolygon3D,
+        P: &mut crate::ffi_types::Handle_Poly_Polygon3D,
     ) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKShHealing::ShapeCustom_SweptToElementary_inherited_NewPolygon(
@@ -4048,20 +4052,20 @@ impl SweptToElementary {
         })
     }
 
-    /// Inherited: **Source:** `BRepTools_Modification.hxx`:95 - `BRepTools_Modification::NewPolygonOnTriangulation()`
+    /// Inherited: **Source:** `BRepTools_Modification.hxx`:91 - `BRepTools_Modification::NewPolygonOnTriangulation()`
     pub fn new_polygon_on_triangulation(
         &mut self,
         E: &crate::topo_ds::Edge,
         F: &crate::topo_ds::Face,
-        P: &mut crate::ffi_types::HandlePolyPolygonOnTriangulation,
+        P: &mut crate::ffi_types::Handle_Poly_PolygonOnTriangulation,
     ) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKShHealing::ShapeCustom_SweptToElementary_inherited_NewPolygonOnTriangulation(self as *mut Self, E, F, P)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKShHealing::ShapeCustom_SweptToElementary_inherited_IsInstance(
                 self as *const Self,
@@ -4070,8 +4074,8 @@ impl SweptToElementary {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKShHealing::ShapeCustom_SweptToElementary_inherited_IsKind(
                 self as *const Self,
@@ -4080,7 +4084,7 @@ impl SweptToElementary {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -4096,7 +4100,7 @@ impl SweptToElementary {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKShHealing::ShapeCustom_SweptToElementary_inherited_GetRefCount(
@@ -4105,21 +4109,21 @@ impl SweptToElementary {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKShHealing::ShapeCustom_SweptToElementary_inherited_IncrementRefCounter(self as *mut Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKShHealing::ShapeCustom_SweptToElementary_inherited_DecrementRefCounter(self as *mut Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKShHealing::ShapeCustom_SweptToElementary_inherited_Delete(
@@ -4129,31 +4133,31 @@ impl SweptToElementary {
     }
 }
 
-pub use crate::ffi_types::HandleShapeCustomSweptToElementary;
+pub use crate::ffi_types::Handle_ShapeCustom_SweptToElementary;
 
-unsafe impl crate::CppDeletable for HandleShapeCustomSweptToElementary {
+unsafe impl crate::CppDeletable for Handle_ShapeCustom_SweptToElementary {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKShHealing::HandleShapeCustomSweptToElementary_destructor(ptr);
+            crate::ffi_extern_TKShHealing::Handle_ShapeCustom_SweptToElementary_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleShapeCustomSweptToElementary {
+unsafe impl crate::CppCopyable for Handle_ShapeCustom_SweptToElementary {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
         unsafe {
             crate::check_result(
-                crate::ffi_extern_TKShHealing::HandleShapeCustomSweptToElementary_clone(ptr),
+                crate::ffi_extern_TKShHealing::Handle_ShapeCustom_SweptToElementary_clone(ptr),
             )
         }
     }
 }
 
-impl HandleShapeCustomSweptToElementary {
+impl Handle_ShapeCustom_SweptToElementary {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
         unsafe {
-            crate::ffi_extern_TKShHealing::HandleShapeCustomSweptToElementary_is_null(
+            crate::ffi_extern_TKShHealing::Handle_ShapeCustom_SweptToElementary_is_null(
                 self as *const Self,
             )
         }
@@ -4163,7 +4167,7 @@ impl HandleShapeCustomSweptToElementary {
     pub fn get(&self) -> &crate::ffi_types::ShapeCustom_SweptToElementary {
         unsafe {
             &*crate::check_result(
-                crate::ffi_extern_TKShHealing::HandleShapeCustomSweptToElementary_get(
+                crate::ffi_extern_TKShHealing::Handle_ShapeCustom_SweptToElementary_get(
                     self as *const Self,
                 ),
             )
@@ -4174,7 +4178,7 @@ impl HandleShapeCustomSweptToElementary {
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::ShapeCustom_SweptToElementary {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi_extern_TKShHealing::HandleShapeCustomSweptToElementary_get_mut(
+                crate::ffi_extern_TKShHealing::Handle_ShapeCustom_SweptToElementary_get_mut(
                     self as *mut Self,
                 ),
             )
@@ -4184,27 +4188,27 @@ impl HandleShapeCustomSweptToElementary {
     /// Upcast Handle<ShapeCustom_SweptToElementary> to Handle<ShapeCustom_Modification>
     pub fn to_handle_shape_custom_modification(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleShapeCustomModification> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_ShapeCustom_Modification> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKShHealing::HandleShapeCustomSweptToElementary_to_HandleShapeCustomModification(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKShHealing::Handle_ShapeCustom_SweptToElementary_to_Handle_ShapeCustom_Modification(self as *const Self)))
         }
     }
 
     /// Upcast Handle<ShapeCustom_SweptToElementary> to Handle<BRepTools_Modification>
     pub fn to_handle_b_rep_tools_modification(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleBRepToolsModification> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_BRepTools_Modification> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKShHealing::HandleShapeCustomSweptToElementary_to_HandleBRepToolsModification(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKShHealing::Handle_ShapeCustom_SweptToElementary_to_Handle_BRepTools_Modification(self as *const Self)))
         }
     }
 
     /// Upcast Handle<ShapeCustom_SweptToElementary> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKShHealing::HandleShapeCustomSweptToElementary_to_HandleStandardTransient(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKShHealing::Handle_ShapeCustom_SweptToElementary_to_Handle_Standard_Transient(self as *const Self)))
         }
     }
 }
@@ -4213,7 +4217,7 @@ impl HandleShapeCustomSweptToElementary {
 // From ShapeCustom_TrsfModification.hxx
 // ========================
 
-/// **Source:** `ShapeCustom_TrsfModification.hxx`:42 - `ShapeCustom_TrsfModification`
+/// **Source:** `ShapeCustom_TrsfModification.hxx`:39 - `ShapeCustom_TrsfModification`
 /// Complements BRepTools_TrsfModification to provide reversible
 /// scaling regarding tolerances.
 /// Uses actual tolerances (attached to the shapes) not ones
@@ -4230,7 +4234,7 @@ unsafe impl crate::CppDeletable for TrsfModification {
 }
 
 impl TrsfModification {
-    /// **Source:** `ShapeCustom_TrsfModification.hxx`:47 - `ShapeCustom_TrsfModification::ShapeCustom_TrsfModification()`
+    /// **Source:** `ShapeCustom_TrsfModification.hxx`:44 - `ShapeCustom_TrsfModification::ShapeCustom_TrsfModification()`
     /// Empty constructor
     pub fn new_trsf(T: &crate::gp::Trsf) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -4240,14 +4244,14 @@ impl TrsfModification {
         }
     }
 
-    /// **Source:** `ShapeCustom_TrsfModification.hxx`:52 - `ShapeCustom_TrsfModification::NewSurface()`
+    /// **Source:** `ShapeCustom_TrsfModification.hxx`:49 - `ShapeCustom_TrsfModification::NewSurface()`
     /// Calls inherited method.
     /// Sets <Tol> as actual tolerance of <F> multiplied with scale
     /// factor.
     pub fn new_surface(
         &mut self,
         F: &crate::topo_ds::Face,
-        S: &mut crate::ffi_types::HandleGeomSurface,
+        S: &mut crate::ffi_types::Handle_Geom_Surface,
         L: &mut crate::top_loc::Location,
         Tol: &mut f64,
         RevWires: &mut bool,
@@ -4266,14 +4270,14 @@ impl TrsfModification {
         })
     }
 
-    /// **Source:** `ShapeCustom_TrsfModification.hxx`:62 - `ShapeCustom_TrsfModification::NewCurve()`
+    /// **Source:** `ShapeCustom_TrsfModification.hxx`:59 - `ShapeCustom_TrsfModification::NewCurve()`
     /// Calls inherited method.
     /// Sets <Tol> as actual tolerance of <E> multiplied with scale
     /// factor.
     pub fn new_curve(
         &mut self,
         E: &crate::topo_ds::Edge,
-        C: &mut crate::ffi_types::HandleGeomCurve,
+        C: &mut crate::ffi_types::Handle_Geom_Curve,
         L: &mut crate::top_loc::Location,
         Tol: &mut f64,
     ) -> bool {
@@ -4288,7 +4292,7 @@ impl TrsfModification {
         })
     }
 
-    /// **Source:** `ShapeCustom_TrsfModification.hxx`:70 - `ShapeCustom_TrsfModification::NewPoint()`
+    /// **Source:** `ShapeCustom_TrsfModification.hxx`:67 - `ShapeCustom_TrsfModification::NewPoint()`
     /// Calls inherited method.
     /// Sets <Tol> as actual tolerance of <V> multiplied with scale
     /// factor.
@@ -4308,7 +4312,7 @@ impl TrsfModification {
         })
     }
 
-    /// **Source:** `ShapeCustom_TrsfModification.hxx`:77 - `ShapeCustom_TrsfModification::NewCurve2d()`
+    /// **Source:** `ShapeCustom_TrsfModification.hxx`:72 - `ShapeCustom_TrsfModification::NewCurve2d()`
     /// Calls inherited method.
     /// Sets <Tol> as actual tolerance of <E> multiplied with scale
     /// factor.
@@ -4318,7 +4322,7 @@ impl TrsfModification {
         F: &crate::topo_ds::Face,
         NewE: &crate::topo_ds::Edge,
         NewF: &crate::topo_ds::Face,
-        C: &mut crate::ffi_types::HandleGeom2dCurve,
+        C: &mut crate::ffi_types::Handle_Geom2d_Curve,
         Tol: &mut f64,
     ) -> bool {
         crate::check_result(unsafe {
@@ -4334,7 +4338,7 @@ impl TrsfModification {
         })
     }
 
-    /// **Source:** `ShapeCustom_TrsfModification.hxx`:87 - `ShapeCustom_TrsfModification::NewParameter()`
+    /// **Source:** `ShapeCustom_TrsfModification.hxx`:82 - `ShapeCustom_TrsfModification::NewParameter()`
     /// Calls inherited method.
     /// Sets <Tol> as actual tolerance of <V> multiplied with scale
     /// factor.
@@ -4356,8 +4360,8 @@ impl TrsfModification {
         })
     }
 
-    /// **Source:** `ShapeCustom_TrsfModification.hxx`:92 - `ShapeCustom_TrsfModification::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `ShapeCustom_TrsfModification.hxx`:87 - `ShapeCustom_TrsfModification::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKShHealing::ShapeCustom_TrsfModification_dynamic_type(
@@ -4367,7 +4371,7 @@ impl TrsfModification {
         }
     }
 
-    /// **Source:** `ShapeCustom_TrsfModification.hxx`:92 - `ShapeCustom_TrsfModification::get_type_name()`
+    /// **Source:** `ShapeCustom_TrsfModification.hxx`:87 - `ShapeCustom_TrsfModification::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -4378,8 +4382,8 @@ impl TrsfModification {
         .into_owned()
     }
 
-    /// **Source:** `ShapeCustom_TrsfModification.hxx`:92 - `ShapeCustom_TrsfModification::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    /// **Source:** `ShapeCustom_TrsfModification.hxx`:87 - `ShapeCustom_TrsfModification::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKShHealing::ShapeCustom_TrsfModification_get_type_descriptor(),
@@ -4438,7 +4442,7 @@ impl TrsfModification {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleShapeCustomTrsfModification> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_ShapeCustom_TrsfModification> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKShHealing::ShapeCustom_TrsfModification_to_handle(
@@ -4448,7 +4452,7 @@ impl TrsfModification {
         }
     }
 
-    /// Inherited: **Source:** `BRepTools_TrsfModification.hxx`:49 - `BRepTools_TrsfModification::Trsf()`
+    /// Inherited: **Source:** `BRepTools_TrsfModification.hxx`:46 - `BRepTools_TrsfModification::Trsf()`
     pub fn trsf(&mut self) -> &mut crate::gp::Trsf {
         unsafe {
             &mut *(crate::check_result(
@@ -4459,7 +4463,7 @@ impl TrsfModification {
         }
     }
 
-    /// Inherited: **Source:** `BRepTools_TrsfModification.hxx`:52 - `BRepTools_TrsfModification::IsCopyMesh()`
+    /// Inherited: **Source:** `BRepTools_TrsfModification.hxx`:49 - `BRepTools_TrsfModification::IsCopyMesh()`
     pub fn is_copy_mesh(&mut self) -> &mut bool {
         unsafe {
             &mut *(crate::check_result(
@@ -4470,11 +4474,11 @@ impl TrsfModification {
         }
     }
 
-    /// Inherited: **Source:** `BRepTools_TrsfModification.hxx`:76 - `BRepTools_TrsfModification::NewTriangulation()`
+    /// Inherited: **Source:** `BRepTools_TrsfModification.hxx`:72 - `BRepTools_TrsfModification::NewTriangulation()`
     pub fn new_triangulation(
         &mut self,
         F: &crate::topo_ds::Face,
-        T: &mut crate::ffi_types::HandlePolyTriangulation,
+        T: &mut crate::ffi_types::Handle_Poly_Triangulation,
     ) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKShHealing::ShapeCustom_TrsfModification_inherited_NewTriangulation(
@@ -4485,11 +4489,11 @@ impl TrsfModification {
         })
     }
 
-    /// Inherited: **Source:** `BRepTools_TrsfModification.hxx`:81 - `BRepTools_TrsfModification::NewPolygon()`
+    /// Inherited: **Source:** `BRepTools_TrsfModification.hxx`:78 - `BRepTools_TrsfModification::NewPolygon()`
     pub fn new_polygon(
         &mut self,
         E: &crate::topo_ds::Edge,
-        P: &mut crate::ffi_types::HandlePolyPolygon3D,
+        P: &mut crate::ffi_types::Handle_Poly_Polygon3D,
     ) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKShHealing::ShapeCustom_TrsfModification_inherited_NewPolygon(
@@ -4500,19 +4504,19 @@ impl TrsfModification {
         })
     }
 
-    /// Inherited: **Source:** `BRepTools_TrsfModification.hxx`:87 - `BRepTools_TrsfModification::NewPolygonOnTriangulation()`
+    /// Inherited: **Source:** `BRepTools_TrsfModification.hxx`:83 - `BRepTools_TrsfModification::NewPolygonOnTriangulation()`
     pub fn new_polygon_on_triangulation(
         &mut self,
         E: &crate::topo_ds::Edge,
         F: &crate::topo_ds::Face,
-        P: &mut crate::ffi_types::HandlePolyPolygonOnTriangulation,
+        P: &mut crate::ffi_types::Handle_Poly_PolygonOnTriangulation,
     ) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKShHealing::ShapeCustom_TrsfModification_inherited_NewPolygonOnTriangulation(self as *mut Self, E, F, P)
         })
     }
 
-    /// Inherited: **Source:** `BRepTools_TrsfModification.hxx`:142 - `BRepTools_TrsfModification::Continuity()`
+    /// Inherited: **Source:** `BRepTools_TrsfModification.hxx`:136 - `BRepTools_TrsfModification::Continuity()`
     pub fn continuity(
         &mut self,
         E: &crate::topo_ds::Edge,
@@ -4536,8 +4540,8 @@ impl TrsfModification {
         .unwrap()
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKShHealing::ShapeCustom_TrsfModification_inherited_IsInstance(
                 self as *const Self,
@@ -4546,8 +4550,8 @@ impl TrsfModification {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKShHealing::ShapeCustom_TrsfModification_inherited_IsKind(
                 self as *const Self,
@@ -4556,7 +4560,7 @@ impl TrsfModification {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -4572,7 +4576,7 @@ impl TrsfModification {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKShHealing::ShapeCustom_TrsfModification_inherited_GetRefCount(
@@ -4581,21 +4585,21 @@ impl TrsfModification {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKShHealing::ShapeCustom_TrsfModification_inherited_IncrementRefCounter(self as *mut Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKShHealing::ShapeCustom_TrsfModification_inherited_DecrementRefCounter(self as *mut Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKShHealing::ShapeCustom_TrsfModification_inherited_Delete(
@@ -4605,31 +4609,31 @@ impl TrsfModification {
     }
 }
 
-pub use crate::ffi_types::HandleShapeCustomTrsfModification;
+pub use crate::ffi_types::Handle_ShapeCustom_TrsfModification;
 
-unsafe impl crate::CppDeletable for HandleShapeCustomTrsfModification {
+unsafe impl crate::CppDeletable for Handle_ShapeCustom_TrsfModification {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKShHealing::HandleShapeCustomTrsfModification_destructor(ptr);
+            crate::ffi_extern_TKShHealing::Handle_ShapeCustom_TrsfModification_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleShapeCustomTrsfModification {
+unsafe impl crate::CppCopyable for Handle_ShapeCustom_TrsfModification {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
         unsafe {
             crate::check_result(
-                crate::ffi_extern_TKShHealing::HandleShapeCustomTrsfModification_clone(ptr),
+                crate::ffi_extern_TKShHealing::Handle_ShapeCustom_TrsfModification_clone(ptr),
             )
         }
     }
 }
 
-impl HandleShapeCustomTrsfModification {
+impl Handle_ShapeCustom_TrsfModification {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
         unsafe {
-            crate::ffi_extern_TKShHealing::HandleShapeCustomTrsfModification_is_null(
+            crate::ffi_extern_TKShHealing::Handle_ShapeCustom_TrsfModification_is_null(
                 self as *const Self,
             )
         }
@@ -4639,7 +4643,7 @@ impl HandleShapeCustomTrsfModification {
     pub fn get(&self) -> &crate::ffi_types::ShapeCustom_TrsfModification {
         unsafe {
             &*crate::check_result(
-                crate::ffi_extern_TKShHealing::HandleShapeCustomTrsfModification_get(
+                crate::ffi_extern_TKShHealing::Handle_ShapeCustom_TrsfModification_get(
                     self as *const Self,
                 ),
             )
@@ -4650,7 +4654,7 @@ impl HandleShapeCustomTrsfModification {
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::ShapeCustom_TrsfModification {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi_extern_TKShHealing::HandleShapeCustomTrsfModification_get_mut(
+                crate::ffi_extern_TKShHealing::Handle_ShapeCustom_TrsfModification_get_mut(
                     self as *mut Self,
                 ),
             )
@@ -4660,27 +4664,27 @@ impl HandleShapeCustomTrsfModification {
     /// Upcast Handle<ShapeCustom_TrsfModification> to Handle<BRepTools_TrsfModification>
     pub fn to_handle_trsf_modification(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleBRepToolsTrsfModification> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_BRepTools_TrsfModification> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKShHealing::HandleShapeCustomTrsfModification_to_HandleBRepToolsTrsfModification(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKShHealing::Handle_ShapeCustom_TrsfModification_to_Handle_BRepTools_TrsfModification(self as *const Self)))
         }
     }
 
     /// Upcast Handle<ShapeCustom_TrsfModification> to Handle<BRepTools_Modification>
     pub fn to_handle_modification(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleBRepToolsModification> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_BRepTools_Modification> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKShHealing::HandleShapeCustomTrsfModification_to_HandleBRepToolsModification(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKShHealing::Handle_ShapeCustom_TrsfModification_to_Handle_BRepTools_Modification(self as *const Self)))
         }
     }
 
     /// Upcast Handle<ShapeCustom_TrsfModification> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKShHealing::HandleShapeCustomTrsfModification_to_HandleStandardTransient(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKShHealing::Handle_ShapeCustom_TrsfModification_to_Handle_Standard_Transient(self as *const Self)))
         }
     }
 }

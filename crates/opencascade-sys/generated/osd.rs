@@ -70,7 +70,7 @@ pub fn set_signal_signalmode_bool(theSignalMode: crate::osd::SignalMode, theFloa
         )
     })
 }
-/// **Source:** `OSD.hxx`:88 - `OSD::SetSignal`
+/// **Source:** `OSD.hxx`:87 - `OSD::SetSignal`
 /// Sets signal and FPE handlers.
 /// Short-cut for OSD::SetSignal (OSD_SignalMode_Set, theFloatingSignal).
 pub fn set_signal_bool(theFloatingSignal: bool) {
@@ -78,7 +78,7 @@ pub fn set_signal_bool(theFloatingSignal: bool) {
         crate::ffi_extern_TKernel::OSD_set_signal_bool(theFloatingSignal)
     })
 }
-/// **Source:** `OSD.hxx`:97 - `OSD::SetThreadLocalSignal`
+/// **Source:** `OSD.hxx`:96 - `OSD::SetThreadLocalSignal`
 /// Initializes thread-local signal handlers.
 /// This includes _set_se_translator() on Windows platform, and SetFloatingSignal().
 /// The main purpose of this method is initializing handlers for newly created threads
@@ -91,7 +91,7 @@ pub fn set_thread_local_signal(theSignalMode: crate::osd::SignalMode, theFloatin
         )
     })
 }
-/// **Source:** `OSD.hxx`:104 - `OSD::SetFloatingSignal`
+/// **Source:** `OSD.hxx`:103 - `OSD::SetFloatingSignal`
 /// Enables / disables generation of C signal on floating point exceptions (FPE).
 /// This call does NOT register a handler for signal raised in case of FPE -
 /// SetSignal() should be called beforehand for complete setup.
@@ -101,7 +101,7 @@ pub fn set_floating_signal(theFloatingSignal: bool) {
         crate::ffi_extern_TKernel::OSD_set_floating_signal(theFloatingSignal)
     })
 }
-/// **Source:** `OSD.hxx`:108 - `OSD::SignalMode`
+/// **Source:** `OSD.hxx`:107 - `OSD::SignalMode`
 /// Returns signal mode set by the last call to SetSignal().
 /// By default, returns OSD_SignalMode_AsIs.
 pub fn signal_mode() -> crate::osd::SignalMode {
@@ -110,32 +110,32 @@ pub fn signal_mode() -> crate::osd::SignalMode {
     }))
     .unwrap()
 }
-/// **Source:** `OSD.hxx`:112 - `OSD::ToCatchFloatingSignals`
+/// **Source:** `OSD.hxx`:111 - `OSD::ToCatchFloatingSignals`
 /// Returns true if floating point exceptions will raise C signal
 /// according to current (platform-dependent) settings in this thread.
 pub fn to_catch_floating_signals() -> bool {
     crate::check_result(unsafe { crate::ffi_extern_TKernel::OSD_to_catch_floating_signals() })
 }
-/// **Source:** `OSD.hxx`:115 - `OSD::SecSleep`
+/// **Source:** `OSD.hxx`:114 - `OSD::SecSleep`
 /// Commands the process to sleep for a number of seconds.
 pub fn sec_sleep(theSeconds: i32) {
     crate::check_void_result(unsafe { crate::ffi_extern_TKernel::OSD_sec_sleep(theSeconds) })
 }
-/// **Source:** `OSD.hxx`:118 - `OSD::MilliSecSleep`
+/// **Source:** `OSD.hxx`:117 - `OSD::MilliSecSleep`
 /// Commands the process to sleep for a number of milliseconds
 pub fn milli_sec_sleep(theMilliseconds: i32) {
     crate::check_void_result(unsafe {
         crate::ffi_extern_TKernel::OSD_milli_sec_sleep(theMilliseconds)
     })
 }
-/// **Source:** `OSD.hxx`:123 - `OSD::RealToCString`
+/// **Source:** `OSD.hxx`:122 - `OSD::RealToCString`
 /// Converts aReal into aCstring in exponential format with a period as decimal point,
 /// no thousand separator and no grouping of digits.
 /// The conversion is independent from the current locale
 pub unsafe fn real_to_c_string(aReal: f64, aString: &mut *mut std::ffi::c_char) -> bool {
     crate::check_result(unsafe { crate::ffi_extern_TKernel::OSD_real_to_c_string(aReal, aString) })
 }
-/// **Source:** `OSD.hxx`:130 - `OSD::CStringToReal`
+/// **Source:** `OSD.hxx`:128 - `OSD::CStringToReal`
 /// Converts aCstring representing a real with a period as decimal point,
 /// no thousand separator and no grouping of digits into aReal.
 ///
@@ -146,21 +146,21 @@ pub fn c_string_to_real(aString: &str, aReal: &mut f64) -> bool {
         crate::ffi_extern_TKernel::OSD_c_string_to_real(c_aString.as_ptr(), aReal)
     })
 }
-/// **Source:** `OSD.hxx`:136 - `OSD::ControlBreak`
+/// **Source:** `OSD.hxx`:133 - `OSD::ControlBreak`
 /// since Windows NT does not support 'SIGINT' signal like UNIX,
 /// then this method checks whether Ctrl-Break keystroke was or
 /// not. If yes then raises Exception_CTRL_BREAK.
 pub fn control_break() {
     crate::check_void_result(unsafe { crate::ffi_extern_TKernel::OSD_control_break() })
 }
-/// **Source:** `OSD.hxx`:141 - `OSD::SignalStackTraceLength`
+/// **Source:** `OSD.hxx`:138 - `OSD::SignalStackTraceLength`
 /// Returns a length of stack trace to be put into exception redirected from signal;
 /// 0 by default meaning no stack trace.
 /// @sa Standard_Failure::GetStackString()
 pub fn signal_stack_trace_length() -> i32 {
     crate::check_result(unsafe { crate::ffi_extern_TKernel::OSD_signal_stack_trace_length() })
 }
-/// **Source:** `OSD.hxx`:144 - `OSD::SetSignalStackTraceLength`
+/// **Source:** `OSD.hxx`:141 - `OSD::SetSignalStackTraceLength`
 /// Sets a length of stack trace to be put into exception redirected from signal.
 pub fn set_signal_stack_trace_length(theLength: i32) {
     crate::check_void_result(unsafe {
@@ -579,7 +579,7 @@ impl TryFrom<i32> for WhoAmI {
 }
 
 // Handle type re-exports (targets of handle upcasts/downcasts)
-pub use crate::ffi_types::{HandleStandardFailure, HandleStandardTransient};
+pub use crate::ffi_types::Handle_Standard_Transient;
 
 // ========================
 // From OSD_CachedFileSystem.hxx
@@ -606,7 +606,7 @@ impl CachedFileSystem {
     /// **Source:** `OSD_CachedFileSystem.hxx`:30 - `OSD_CachedFileSystem::OSD_CachedFileSystem()`
     /// Constructor.
     pub fn new_handleosdfilesystem(
-        theLinkedFileSystem: &crate::ffi_types::HandleOSDFileSystem,
+        theLinkedFileSystem: &crate::ffi_types::Handle_OSD_FileSystem,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -618,7 +618,7 @@ impl CachedFileSystem {
     }
 
     /// **Source:** `OSD_CachedFileSystem.hxx`:27 - `OSD_CachedFileSystem::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKernel::OSD_CachedFileSystem_dynamic_type(
                 self as *const Self,
@@ -628,7 +628,7 @@ impl CachedFileSystem {
 
     /// **Source:** `OSD_CachedFileSystem.hxx`:34 - `OSD_CachedFileSystem::LinkedFileSystem()`
     /// Return linked file system; initialized with OSD_FileSystem::DefaultFileSystem() by default.
-    pub fn linked_file_system(&self) -> &crate::ffi_types::HandleOSDFileSystem {
+    pub fn linked_file_system(&self) -> &crate::ffi_types::Handle_OSD_FileSystem {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKernel::OSD_CachedFileSystem_linked_file_system(
@@ -642,7 +642,7 @@ impl CachedFileSystem {
     /// Sets linked file system.
     pub fn set_linked_file_system(
         &mut self,
-        theLinkedFileSystem: &crate::ffi_types::HandleOSDFileSystem,
+        theLinkedFileSystem: &crate::ffi_types::Handle_OSD_FileSystem,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKernel::OSD_CachedFileSystem_set_linked_file_system(
@@ -663,7 +663,7 @@ impl CachedFileSystem {
         })
     }
 
-    /// **Source:** `OSD_CachedFileSystem.hxx`:47 - `OSD_CachedFileSystem::IsOpenIStream()`
+    /// **Source:** `OSD_CachedFileSystem.hxx`:46 - `OSD_CachedFileSystem::IsOpenIStream()`
     /// Returns TRUE if current input stream is opened for reading operations.
     pub fn is_open_i_stream(
         &self,
@@ -677,7 +677,7 @@ impl CachedFileSystem {
         })
     }
 
-    /// **Source:** `OSD_CachedFileSystem.hxx`:51 - `OSD_CachedFileSystem::IsOpenOStream()`
+    /// **Source:** `OSD_CachedFileSystem.hxx`:49 - `OSD_CachedFileSystem::IsOpenOStream()`
     /// Returns TRUE if current output stream is opened for writing operations.
     pub fn is_open_o_stream(
         &self,
@@ -691,7 +691,7 @@ impl CachedFileSystem {
         })
     }
 
-    /// **Source:** `OSD_CachedFileSystem.hxx`:56 - `OSD_CachedFileSystem::OpenIStream()`
+    /// **Source:** `OSD_CachedFileSystem.hxx`:53 - `OSD_CachedFileSystem::OpenIStream()`
     /// Opens stream for specified file URL for reading operations or returns previously created
     /// stream pointing to the same URL.
     pub fn open_i_stream(
@@ -714,7 +714,7 @@ impl CachedFileSystem {
         }
     }
 
-    /// **Source:** `OSD_CachedFileSystem.hxx`:64 - `OSD_CachedFileSystem::OpenOStream()`
+    /// **Source:** `OSD_CachedFileSystem.hxx`:61 - `OSD_CachedFileSystem::OpenOStream()`
     /// Opens stream for specified file URL for writing operations (std::ostream) by calling parent's
     /// method.
     pub fn open_o_stream(
@@ -733,7 +733,7 @@ impl CachedFileSystem {
         }
     }
 
-    /// **Source:** `OSD_CachedFileSystem.hxx`:69 - `OSD_CachedFileSystem::OpenStreamBuffer()`
+    /// **Source:** `OSD_CachedFileSystem.hxx`:66 - `OSD_CachedFileSystem::OpenStreamBuffer()`
     /// Opens stream buffer for specified file URL.
     pub fn open_stream_buffer(
         &mut self,
@@ -767,7 +767,7 @@ impl CachedFileSystem {
     }
 
     /// **Source:** `OSD_CachedFileSystem.hxx`:27 - `OSD_CachedFileSystem::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKernel::OSD_CachedFileSystem_get_type_descriptor(),
@@ -822,7 +822,7 @@ impl CachedFileSystem {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleOSDCachedFileSystem> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_OSD_CachedFileSystem> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKernel::OSD_CachedFileSystem_to_handle(obj.into_raw()),
@@ -830,8 +830,8 @@ impl CachedFileSystem {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKernel::OSD_CachedFileSystem_inherited_IsInstance(
                 self as *const Self,
@@ -840,8 +840,8 @@ impl CachedFileSystem {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKernel::OSD_CachedFileSystem_inherited_IsKind(
                 self as *const Self,
@@ -850,7 +850,7 @@ impl CachedFileSystem {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -864,7 +864,7 @@ impl CachedFileSystem {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKernel::OSD_CachedFileSystem_inherited_GetRefCount(
@@ -873,7 +873,7 @@ impl CachedFileSystem {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKernel::OSD_CachedFileSystem_inherited_IncrementRefCounter(
@@ -882,7 +882,7 @@ impl CachedFileSystem {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKernel::OSD_CachedFileSystem_inherited_DecrementRefCounter(
@@ -891,7 +891,7 @@ impl CachedFileSystem {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKernel::OSD_CachedFileSystem_inherited_Delete(self as *const Self)
@@ -899,34 +899,36 @@ impl CachedFileSystem {
     }
 }
 
-pub use crate::ffi_types::HandleOSDCachedFileSystem;
+pub use crate::ffi_types::Handle_OSD_CachedFileSystem;
 
-unsafe impl crate::CppDeletable for HandleOSDCachedFileSystem {
+unsafe impl crate::CppDeletable for Handle_OSD_CachedFileSystem {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKernel::HandleOSDCachedFileSystem_destructor(ptr);
+            crate::ffi_extern_TKernel::Handle_OSD_CachedFileSystem_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleOSDCachedFileSystem {
+unsafe impl crate::CppCopyable for Handle_OSD_CachedFileSystem {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
         unsafe {
-            crate::check_result(crate::ffi_extern_TKernel::HandleOSDCachedFileSystem_clone(ptr))
+            crate::check_result(crate::ffi_extern_TKernel::Handle_OSD_CachedFileSystem_clone(ptr))
         }
     }
 }
 
-impl HandleOSDCachedFileSystem {
+impl Handle_OSD_CachedFileSystem {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
-        unsafe { crate::ffi_extern_TKernel::HandleOSDCachedFileSystem_is_null(self as *const Self) }
+        unsafe {
+            crate::ffi_extern_TKernel::Handle_OSD_CachedFileSystem_is_null(self as *const Self)
+        }
     }
 
     /// Dereference this Handle to access the underlying OSD_CachedFileSystem
     pub fn get(&self) -> &crate::ffi_types::OSD_CachedFileSystem {
         unsafe {
-            &*crate::check_result(crate::ffi_extern_TKernel::HandleOSDCachedFileSystem_get(
+            &*crate::check_result(crate::ffi_extern_TKernel::Handle_OSD_CachedFileSystem_get(
                 self as *const Self,
             ))
         }
@@ -935,17 +937,19 @@ impl HandleOSDCachedFileSystem {
     /// Dereference this Handle to mutably access the underlying OSD_CachedFileSystem
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::OSD_CachedFileSystem {
         unsafe {
-            &mut *crate::check_result(crate::ffi_extern_TKernel::HandleOSDCachedFileSystem_get_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKernel::Handle_OSD_CachedFileSystem_get_mut(self as *mut Self),
+            )
         }
     }
 
     /// Upcast Handle<OSD_CachedFileSystem> to Handle<OSD_FileSystem>
-    pub fn to_handle_file_system(&self) -> crate::OwnedPtr<crate::ffi_types::HandleOSDFileSystem> {
+    pub fn to_handle_file_system(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_OSD_FileSystem> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKernel::HandleOSDCachedFileSystem_to_HandleOSDFileSystem(
+                crate::ffi_extern_TKernel::Handle_OSD_CachedFileSystem_to_Handle_OSD_FileSystem(
                     self as *const Self,
                 ),
             ))
@@ -955,10 +959,10 @@ impl HandleOSDCachedFileSystem {
     /// Upcast Handle<OSD_CachedFileSystem> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKernel::HandleOSDCachedFileSystem_to_HandleStandardTransient(
+                crate::ffi_extern_TKernel::Handle_OSD_CachedFileSystem_to_Handle_Standard_Transient(
                     self as *const Self,
                 ),
             ))
@@ -1150,7 +1154,7 @@ impl Chronometer {
         })
     }
 
-    /// **Source:** `OSD_Chronometer.hxx`:121 - `OSD_Chronometer::GetThreadCPU()`
+    /// **Source:** `OSD_Chronometer.hxx`:120 - `OSD_Chronometer::GetThreadCPU()`
     /// Returns CPU time (user and system) consumed by the current
     /// thread since its start. Note that this measurement is
     /// platform-specific, as threads are implemented and managed
@@ -1838,7 +1842,7 @@ impl Error {
 // From OSD_Exception.hxx
 // ========================
 
-/// **Source:** `OSD_Exception.hxx`:34 - `OSD_Exception`
+/// **Source:** `OSD_Exception.hxx`:30 - `OSD_Exception`
 pub use crate::ffi_types::OSD_Exception as Exception;
 
 unsafe impl crate::CppDeletable for Exception {
@@ -1850,16 +1854,7 @@ unsafe impl crate::CppDeletable for Exception {
 }
 
 impl Exception {
-    /// **Source:** `OSD_Exception.hxx`:34 - `OSD_Exception::OSD_Exception()`
-    pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKernel::OSD_Exception_ctor(),
-            ))
-        }
-    }
-
-    /// **Source:** `OSD_Exception.hxx`:34 - `OSD_Exception::OSD_Exception()`
+    /// **Source:** `OSD_Exception.hxx`:30 - `OSD_Exception::OSD_Exception()`
     pub fn new_charptr(theMessage: &str) -> crate::OwnedPtr<Self> {
         let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
         unsafe {
@@ -1869,7 +1864,7 @@ impl Exception {
         }
     }
 
-    /// **Source:** `OSD_Exception.hxx`:34 - `OSD_Exception::OSD_Exception()`
+    /// **Source:** `OSD_Exception.hxx`:30 - `OSD_Exception::OSD_Exception()`
     pub fn new_charptr2(theMessage: &str, theStackTrace: &str) -> crate::OwnedPtr<Self> {
         let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
         let c_theStackTrace = std::ffi::CString::new(theStackTrace).unwrap();
@@ -1883,77 +1878,15 @@ impl Exception {
         }
     }
 
-    /// **Source:** `OSD_Exception.hxx`:34 - `OSD_Exception::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
-        unsafe {
-            &*(crate::check_result(crate::ffi_extern_TKernel::OSD_Exception_dynamic_type(
-                self as *const Self,
-            )))
-        }
-    }
-
-    /// **Source:** `OSD_Exception.hxx`:34 - `OSD_Exception::Raise()`
-    pub fn raise_charptr(theMessage: &str) {
-        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKernel::OSD_Exception_raise_charptr(c_theMessage.as_ptr())
-        })
-    }
-
-    /// **Source:** `OSD_Exception.hxx`:34 - `OSD_Exception::Raise()`
-    pub fn raise_sstream(theMessage: &mut crate::ffi_types::Standard_SStream) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKernel::OSD_Exception_raise_sstream(theMessage)
-        })
-    }
-
-    /// **Source:** `OSD_Exception.hxx`:34 - `OSD_Exception::NewInstance()`
-    pub fn new_instance_charptr(
-        theMessage: &str,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleOSDException> {
-        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKernel::OSD_Exception_new_instance_charptr(
-                    c_theMessage.as_ptr(),
-                ),
-            ))
-        }
-    }
-
-    /// **Source:** `OSD_Exception.hxx`:34 - `OSD_Exception::NewInstance()`
-    pub fn new_instance_charptr2(
-        theMessage: &str,
-        theStackTrace: &str,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleOSDException> {
-        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
-        let c_theStackTrace = std::ffi::CString::new(theStackTrace).unwrap();
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKernel::OSD_Exception_new_instance_charptr2(
-                    c_theMessage.as_ptr(),
-                    c_theStackTrace.as_ptr(),
-                ),
-            ))
-        }
-    }
-
-    /// **Source:** `OSD_Exception.hxx`:34 - `OSD_Exception::get_type_name()`
-    pub fn get_type_name() -> std::string::String {
+    /// **Source:** `OSD_Exception.hxx`:30 - `OSD_Exception::ExceptionType()`
+    pub fn exception_type(&self) -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi_extern_TKernel::OSD_Exception_get_type_name(),
+                crate::ffi_extern_TKernel::OSD_Exception_exception_type(self as *const Self),
             ))
         }
         .to_string_lossy()
         .into_owned()
-    }
-
-    /// **Source:** `OSD_Exception.hxx`:34 - `OSD_Exception::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
-        unsafe {
-            &*(crate::check_result(crate::ffi_extern_TKernel::OSD_Exception_get_type_descriptor()))
-        }
     }
 
     /// Upcast to Standard_Failure
@@ -1974,366 +1907,11 @@ impl Exception {
         }
     }
 
-    /// Upcast to Standard_Transient
-    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        unsafe {
-            &*crate::check_result(crate::ffi_extern_TKernel::OSD_Exception_as_Standard_Transient(
-                self as *const Self,
-            ))
-        }
-    }
-
-    /// Upcast to Standard_Transient (mutable)
-    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        unsafe {
-            &mut *crate::check_result(
-                crate::ffi_extern_TKernel::OSD_Exception_as_Standard_Transient_mut(
-                    self as *mut Self,
-                ),
-            )
-        }
-    }
-
-    /// Wrap in a Handle (reference-counted smart pointer)
-    pub fn to_handle(
-        obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleOSDException> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKernel::OSD_Exception_to_handle(obj.into_raw()),
-            ))
-        }
-    }
-
-    /// Inherited: **Source:** `Standard_Failure.hxx`:58 - `Standard_Failure::Print()`
+    /// Inherited: **Source:** `Standard_Failure.hxx`:73 - `Standard_Failure::Print()`
     pub fn print(&self, theStream: &mut crate::ffi_types::Standard_OStream) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKernel::OSD_Exception_inherited_Print(self as *const Self, theStream)
         })
-    }
-
-    /// Inherited: **Source:** `Standard_Failure.hxx`:72 - `Standard_Failure::Reraise()`
-    pub fn reraise(&mut self) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKernel::OSD_Exception_inherited_Reraise(self as *mut Self)
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Failure.hxx`:112 - `Standard_Failure::Jump()`
-    pub fn jump(&mut self) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKernel::OSD_Exception_inherited_Jump(self as *mut Self)
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKernel::OSD_Exception_inherited_IsInstance(
-                self as *const Self,
-                theType,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKernel::OSD_Exception_inherited_IsKind(self as *const Self, theType)
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
-    pub fn this(&self) -> Option<&crate::standard::Transient> {
-        {
-            let __val = crate::check_result(unsafe {
-                crate::ffi_extern_TKernel::OSD_Exception_inherited_This(self as *const Self)
-            });
-            if __val.is_null() {
-                None
-            } else {
-                Some(unsafe { &*__val })
-            }
-        }
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
-    pub fn get_ref_count(&self) -> i32 {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKernel::OSD_Exception_inherited_GetRefCount(self as *const Self)
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
-    pub fn increment_ref_counter(&mut self) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKernel::OSD_Exception_inherited_IncrementRefCounter(
-                self as *mut Self,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
-    pub fn decrement_ref_counter(&mut self) -> i32 {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKernel::OSD_Exception_inherited_DecrementRefCounter(
-                self as *mut Self,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
-    pub fn delete(&self) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKernel::OSD_Exception_inherited_Delete(self as *const Self)
-        })
-    }
-}
-
-pub use crate::ffi_types::HandleOSDException;
-
-unsafe impl crate::CppDeletable for HandleOSDException {
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            crate::ffi_extern_TKernel::HandleOSDException_destructor(ptr);
-        }
-    }
-}
-
-unsafe impl crate::CppCopyable for HandleOSDException {
-    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        unsafe { crate::check_result(crate::ffi_extern_TKernel::HandleOSDException_clone(ptr)) }
-    }
-}
-
-impl HandleOSDException {
-    /// Returns `true` if this Handle is null (doesn't point to any object).
-    pub fn is_null(&self) -> bool {
-        unsafe { crate::ffi_extern_TKernel::HandleOSDException_is_null(self as *const Self) }
-    }
-
-    /// Dereference this Handle to access the underlying OSD_Exception
-    pub fn get(&self) -> &crate::ffi_types::OSD_Exception {
-        unsafe {
-            &*crate::check_result(crate::ffi_extern_TKernel::HandleOSDException_get(
-                self as *const Self,
-            ))
-        }
-    }
-
-    /// Dereference this Handle to mutably access the underlying OSD_Exception
-    pub fn get_mut(&mut self) -> &mut crate::ffi_types::OSD_Exception {
-        unsafe {
-            &mut *crate::check_result(crate::ffi_extern_TKernel::HandleOSDException_get_mut(
-                self as *mut Self,
-            ))
-        }
-    }
-
-    /// Upcast Handle<OSD_Exception> to Handle<Standard_Failure>
-    pub fn to_handle_failure(&self) -> crate::OwnedPtr<crate::ffi_types::HandleStandardFailure> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKernel::HandleOSDException_to_HandleStandardFailure(
-                    self as *const Self,
-                ),
-            ))
-        }
-    }
-
-    /// Upcast Handle<OSD_Exception> to Handle<Standard_Transient>
-    pub fn to_handle_transient(
-        &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKernel::HandleOSDException_to_HandleStandardTransient(
-                    self as *const Self,
-                ),
-            ))
-        }
-    }
-
-    /// Downcast Handle<OSD_Exception> to Handle<OSD_Exception_ACCESS_VIOLATION>
-    ///
-    /// Returns `None` if the handle does not point to a `OSD_Exception_ACCESS_VIOLATION` (or subclass).
-    pub fn downcast_to_exception_access_violation(
-        &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleOSDExceptionACCESSVIOLATION>> {
-        let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKernel::HandleOSDException_downcast_to_HandleOSDExceptionACCESSVIOLATION(self as *const Self)
-        });
-        if __val.is_null() {
-            None
-        } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(__val) })
-        }
-    }
-
-    /// Downcast Handle<OSD_Exception> to Handle<OSD_Exception_ARRAY_BOUNDS_EXCEEDED>
-    ///
-    /// Returns `None` if the handle does not point to a `OSD_Exception_ARRAY_BOUNDS_EXCEEDED` (or subclass).
-    pub fn downcast_to_exception_array_bounds_exceeded(
-        &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleOSDExceptionARRAYBOUNDSEXCEEDED>> {
-        let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKernel::HandleOSDException_downcast_to_HandleOSDExceptionARRAYBOUNDSEXCEEDED(self as *const Self)
-        });
-        if __val.is_null() {
-            None
-        } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(__val) })
-        }
-    }
-
-    /// Downcast Handle<OSD_Exception> to Handle<OSD_Exception_CTRL_BREAK>
-    ///
-    /// Returns `None` if the handle does not point to a `OSD_Exception_CTRL_BREAK` (or subclass).
-    pub fn downcast_to_exception_ctrl_break(
-        &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleOSDExceptionCTRLBREAK>> {
-        let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKernel::HandleOSDException_downcast_to_HandleOSDExceptionCTRLBREAK(
-                self as *const Self,
-            )
-        });
-        if __val.is_null() {
-            None
-        } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(__val) })
-        }
-    }
-
-    /// Downcast Handle<OSD_Exception> to Handle<OSD_Exception_ILLEGAL_INSTRUCTION>
-    ///
-    /// Returns `None` if the handle does not point to a `OSD_Exception_ILLEGAL_INSTRUCTION` (or subclass).
-    pub fn downcast_to_exception_illegal_instruction(
-        &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleOSDExceptionILLEGALINSTRUCTION>> {
-        let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKernel::HandleOSDException_downcast_to_HandleOSDExceptionILLEGALINSTRUCTION(self as *const Self)
-        });
-        if __val.is_null() {
-            None
-        } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(__val) })
-        }
-    }
-
-    /// Downcast Handle<OSD_Exception> to Handle<OSD_Exception_INT_OVERFLOW>
-    ///
-    /// Returns `None` if the handle does not point to a `OSD_Exception_INT_OVERFLOW` (or subclass).
-    pub fn downcast_to_exception_int_overflow(
-        &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleOSDExceptionINTOVERFLOW>> {
-        let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKernel::HandleOSDException_downcast_to_HandleOSDExceptionINTOVERFLOW(
-                self as *const Self,
-            )
-        });
-        if __val.is_null() {
-            None
-        } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(__val) })
-        }
-    }
-
-    /// Downcast Handle<OSD_Exception> to Handle<OSD_Exception_INVALID_DISPOSITION>
-    ///
-    /// Returns `None` if the handle does not point to a `OSD_Exception_INVALID_DISPOSITION` (or subclass).
-    pub fn downcast_to_exception_invalid_disposition(
-        &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleOSDExceptionINVALIDDISPOSITION>> {
-        let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKernel::HandleOSDException_downcast_to_HandleOSDExceptionINVALIDDISPOSITION(self as *const Self)
-        });
-        if __val.is_null() {
-            None
-        } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(__val) })
-        }
-    }
-
-    /// Downcast Handle<OSD_Exception> to Handle<OSD_Exception_IN_PAGE_ERROR>
-    ///
-    /// Returns `None` if the handle does not point to a `OSD_Exception_IN_PAGE_ERROR` (or subclass).
-    pub fn downcast_to_exception_in_page_error(
-        &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleOSDExceptionINPAGEERROR>> {
-        let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKernel::HandleOSDException_downcast_to_HandleOSDExceptionINPAGEERROR(
-                self as *const Self,
-            )
-        });
-        if __val.is_null() {
-            None
-        } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(__val) })
-        }
-    }
-
-    /// Downcast Handle<OSD_Exception> to Handle<OSD_Exception_NONCONTINUABLE_EXCEPTION>
-    ///
-    /// Returns `None` if the handle does not point to a `OSD_Exception_NONCONTINUABLE_EXCEPTION` (or subclass).
-    pub fn downcast_to_exception_noncontinuable_exception(
-        &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleOSDExceptionNONCONTINUABLEEXCEPTION>> {
-        let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKernel::HandleOSDException_downcast_to_HandleOSDExceptionNONCONTINUABLEEXCEPTION(self as *const Self)
-        });
-        if __val.is_null() {
-            None
-        } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(__val) })
-        }
-    }
-
-    /// Downcast Handle<OSD_Exception> to Handle<OSD_Exception_PRIV_INSTRUCTION>
-    ///
-    /// Returns `None` if the handle does not point to a `OSD_Exception_PRIV_INSTRUCTION` (or subclass).
-    pub fn downcast_to_exception_priv_instruction(
-        &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleOSDExceptionPRIVINSTRUCTION>> {
-        let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKernel::HandleOSDException_downcast_to_HandleOSDExceptionPRIVINSTRUCTION(self as *const Self)
-        });
-        if __val.is_null() {
-            None
-        } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(__val) })
-        }
-    }
-
-    /// Downcast Handle<OSD_Exception> to Handle<OSD_Exception_STACK_OVERFLOW>
-    ///
-    /// Returns `None` if the handle does not point to a `OSD_Exception_STACK_OVERFLOW` (or subclass).
-    pub fn downcast_to_exception_stack_overflow(
-        &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleOSDExceptionSTACKOVERFLOW>> {
-        let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKernel::HandleOSDException_downcast_to_HandleOSDExceptionSTACKOVERFLOW(self as *const Self)
-        });
-        if __val.is_null() {
-            None
-        } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(__val) })
-        }
-    }
-
-    /// Downcast Handle<OSD_Exception> to Handle<OSD_Exception_STATUS_NO_MEMORY>
-    ///
-    /// Returns `None` if the handle does not point to a `OSD_Exception_STATUS_NO_MEMORY` (or subclass).
-    pub fn downcast_to_exception_status_no_memory(
-        &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleOSDExceptionSTATUSNOMEMORY>> {
-        let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKernel::HandleOSDException_downcast_to_HandleOSDExceptionSTATUSNOMEMORY(self as *const Self)
-        });
-        if __val.is_null() {
-            None
-        } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(__val) })
-        }
     }
 }
 
@@ -2341,7 +1919,7 @@ impl HandleOSDException {
 // From OSD_Exception_ACCESS_VIOLATION.hxx
 // ========================
 
-/// **Source:** `OSD_Exception_ACCESS_VIOLATION.hxx`:34 - `OSD_Exception_ACCESS_VIOLATION`
+/// **Source:** `OSD_Exception_ACCESS_VIOLATION.hxx`:30 - `OSD_Exception_ACCESS_VIOLATION`
 pub use crate::ffi_types::OSD_Exception_ACCESS_VIOLATION as Exception_ACCESS_VIOLATION;
 
 unsafe impl crate::CppDeletable for Exception_ACCESS_VIOLATION {
@@ -2353,16 +1931,7 @@ unsafe impl crate::CppDeletable for Exception_ACCESS_VIOLATION {
 }
 
 impl Exception_ACCESS_VIOLATION {
-    /// **Source:** `OSD_Exception_ACCESS_VIOLATION.hxx`:34 - `OSD_Exception_ACCESS_VIOLATION::OSD_Exception_ACCESS_VIOLATION()`
-    pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKernel::OSD_Exception_ACCESS_VIOLATION_ctor(),
-            ))
-        }
-    }
-
-    /// **Source:** `OSD_Exception_ACCESS_VIOLATION.hxx`:34 - `OSD_Exception_ACCESS_VIOLATION::OSD_Exception_ACCESS_VIOLATION()`
+    /// **Source:** `OSD_Exception_ACCESS_VIOLATION.hxx`:30 - `OSD_Exception_ACCESS_VIOLATION::OSD_Exception_ACCESS_VIOLATION()`
     pub fn new_charptr(theMessage: &str) -> crate::OwnedPtr<Self> {
         let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
         unsafe {
@@ -2374,7 +1943,7 @@ impl Exception_ACCESS_VIOLATION {
         }
     }
 
-    /// **Source:** `OSD_Exception_ACCESS_VIOLATION.hxx`:34 - `OSD_Exception_ACCESS_VIOLATION::OSD_Exception_ACCESS_VIOLATION()`
+    /// **Source:** `OSD_Exception_ACCESS_VIOLATION.hxx`:30 - `OSD_Exception_ACCESS_VIOLATION::OSD_Exception_ACCESS_VIOLATION()`
     pub fn new_charptr2(theMessage: &str, theStackTrace: &str) -> crate::OwnedPtr<Self> {
         let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
         let c_theStackTrace = std::ffi::CString::new(theStackTrace).unwrap();
@@ -2388,83 +1957,17 @@ impl Exception_ACCESS_VIOLATION {
         }
     }
 
-    /// **Source:** `OSD_Exception_ACCESS_VIOLATION.hxx`:34 - `OSD_Exception_ACCESS_VIOLATION::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `OSD_Exception_ACCESS_VIOLATION.hxx`:30 - `OSD_Exception_ACCESS_VIOLATION::ExceptionType()`
+    pub fn exception_type(&self) -> std::string::String {
         unsafe {
-            &*(crate::check_result(
-                crate::ffi_extern_TKernel::OSD_Exception_ACCESS_VIOLATION_dynamic_type(
+            std::ffi::CStr::from_ptr(crate::check_result(
+                crate::ffi_extern_TKernel::OSD_Exception_ACCESS_VIOLATION_exception_type(
                     self as *const Self,
                 ),
             ))
         }
-    }
-
-    /// **Source:** `OSD_Exception_ACCESS_VIOLATION.hxx`:34 - `OSD_Exception_ACCESS_VIOLATION::Raise()`
-    pub fn raise_charptr(theMessage: &str) {
-        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKernel::OSD_Exception_ACCESS_VIOLATION_raise_charptr(
-                c_theMessage.as_ptr(),
-            )
-        })
-    }
-
-    /// **Source:** `OSD_Exception_ACCESS_VIOLATION.hxx`:34 - `OSD_Exception_ACCESS_VIOLATION::Raise()`
-    pub fn raise_sstream(theMessage: &mut crate::ffi_types::Standard_SStream) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKernel::OSD_Exception_ACCESS_VIOLATION_raise_sstream(theMessage)
-        })
-    }
-
-    /// **Source:** `OSD_Exception_ACCESS_VIOLATION.hxx`:34 - `OSD_Exception_ACCESS_VIOLATION::NewInstance()`
-    pub fn new_instance_charptr(
-        theMessage: &str,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleOSDExceptionACCESSVIOLATION> {
-        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKernel::OSD_Exception_ACCESS_VIOLATION_new_instance_charptr(
-                    c_theMessage.as_ptr(),
-                ),
-            ))
-        }
-    }
-
-    /// **Source:** `OSD_Exception_ACCESS_VIOLATION.hxx`:34 - `OSD_Exception_ACCESS_VIOLATION::NewInstance()`
-    pub fn new_instance_charptr2(
-        theMessage: &str,
-        theStackTrace: &str,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleOSDExceptionACCESSVIOLATION> {
-        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
-        let c_theStackTrace = std::ffi::CString::new(theStackTrace).unwrap();
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKernel::OSD_Exception_ACCESS_VIOLATION_new_instance_charptr2(
-                    c_theMessage.as_ptr(),
-                    c_theStackTrace.as_ptr(),
-                ),
-            ))
-        }
-    }
-
-    /// **Source:** `OSD_Exception_ACCESS_VIOLATION.hxx`:34 - `OSD_Exception_ACCESS_VIOLATION::get_type_name()`
-    pub fn get_type_name() -> std::string::String {
-        unsafe {
-            std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi_extern_TKernel::OSD_Exception_ACCESS_VIOLATION_get_type_name(),
-            ))
-        }
         .to_string_lossy()
         .into_owned()
-    }
-
-    /// **Source:** `OSD_Exception_ACCESS_VIOLATION.hxx`:34 - `OSD_Exception_ACCESS_VIOLATION::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
-        unsafe {
-            &*(crate::check_result(
-                crate::ffi_extern_TKernel::OSD_Exception_ACCESS_VIOLATION_get_type_descriptor(),
-            ))
-        }
     }
 
     /// Upcast to OSD_Exception
@@ -2511,40 +2014,7 @@ impl Exception_ACCESS_VIOLATION {
         }
     }
 
-    /// Upcast to Standard_Transient
-    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        unsafe {
-            &*crate::check_result(
-                crate::ffi_extern_TKernel::OSD_Exception_ACCESS_VIOLATION_as_Standard_Transient(
-                    self as *const Self,
-                ),
-            )
-        }
-    }
-
-    /// Upcast to Standard_Transient (mutable)
-    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        unsafe {
-            &mut *crate::check_result(
-                crate::ffi_extern_TKernel::OSD_Exception_ACCESS_VIOLATION_as_Standard_Transient_mut(
-                    self as *mut Self,
-                ),
-            )
-        }
-    }
-
-    /// Wrap in a Handle (reference-counted smart pointer)
-    pub fn to_handle(
-        obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleOSDExceptionACCESSVIOLATION> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKernel::OSD_Exception_ACCESS_VIOLATION_to_handle(obj.into_raw()),
-            ))
-        }
-    }
-
-    /// Inherited: **Source:** `Standard_Failure.hxx`:58 - `Standard_Failure::Print()`
+    /// Inherited: **Source:** `Standard_Failure.hxx`:73 - `Standard_Failure::Print()`
     pub fn print(&self, theStream: &mut crate::ffi_types::Standard_OStream) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKernel::OSD_Exception_ACCESS_VIOLATION_inherited_Print(
@@ -2553,181 +2023,13 @@ impl Exception_ACCESS_VIOLATION {
             )
         })
     }
-
-    /// Inherited: **Source:** `Standard_Failure.hxx`:72 - `Standard_Failure::Reraise()`
-    pub fn reraise(&mut self) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKernel::OSD_Exception_ACCESS_VIOLATION_inherited_Reraise(
-                self as *mut Self,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Failure.hxx`:112 - `Standard_Failure::Jump()`
-    pub fn jump(&mut self) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKernel::OSD_Exception_ACCESS_VIOLATION_inherited_Jump(
-                self as *mut Self,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKernel::OSD_Exception_ACCESS_VIOLATION_inherited_IsInstance(
-                self as *const Self,
-                theType,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKernel::OSD_Exception_ACCESS_VIOLATION_inherited_IsKind(
-                self as *const Self,
-                theType,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
-    pub fn this(&self) -> Option<&crate::standard::Transient> {
-        {
-            let __val = crate::check_result(unsafe {
-                crate::ffi_extern_TKernel::OSD_Exception_ACCESS_VIOLATION_inherited_This(
-                    self as *const Self,
-                )
-            });
-            if __val.is_null() {
-                None
-            } else {
-                Some(unsafe { &*__val })
-            }
-        }
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
-    pub fn get_ref_count(&self) -> i32 {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKernel::OSD_Exception_ACCESS_VIOLATION_inherited_GetRefCount(
-                self as *const Self,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
-    pub fn increment_ref_counter(&mut self) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKernel::OSD_Exception_ACCESS_VIOLATION_inherited_IncrementRefCounter(
-                self as *mut Self,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
-    pub fn decrement_ref_counter(&mut self) -> i32 {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKernel::OSD_Exception_ACCESS_VIOLATION_inherited_DecrementRefCounter(
-                self as *mut Self,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
-    pub fn delete(&self) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKernel::OSD_Exception_ACCESS_VIOLATION_inherited_Delete(
-                self as *const Self,
-            )
-        })
-    }
-}
-
-pub use crate::ffi_types::HandleOSDExceptionACCESSVIOLATION;
-
-unsafe impl crate::CppDeletable for HandleOSDExceptionACCESSVIOLATION {
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            crate::ffi_extern_TKernel::HandleOSDExceptionACCESSVIOLATION_destructor(ptr);
-        }
-    }
-}
-
-unsafe impl crate::CppCopyable for HandleOSDExceptionACCESSVIOLATION {
-    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        unsafe {
-            crate::check_result(crate::ffi_extern_TKernel::HandleOSDExceptionACCESSVIOLATION_clone(
-                ptr,
-            ))
-        }
-    }
-}
-
-impl HandleOSDExceptionACCESSVIOLATION {
-    /// Returns `true` if this Handle is null (doesn't point to any object).
-    pub fn is_null(&self) -> bool {
-        unsafe {
-            crate::ffi_extern_TKernel::HandleOSDExceptionACCESSVIOLATION_is_null(
-                self as *const Self,
-            )
-        }
-    }
-
-    /// Dereference this Handle to access the underlying OSD_Exception_ACCESS_VIOLATION
-    pub fn get(&self) -> &crate::ffi_types::OSD_Exception_ACCESS_VIOLATION {
-        unsafe {
-            &*crate::check_result(crate::ffi_extern_TKernel::HandleOSDExceptionACCESSVIOLATION_get(
-                self as *const Self,
-            ))
-        }
-    }
-
-    /// Dereference this Handle to mutably access the underlying OSD_Exception_ACCESS_VIOLATION
-    pub fn get_mut(&mut self) -> &mut crate::ffi_types::OSD_Exception_ACCESS_VIOLATION {
-        unsafe {
-            &mut *crate::check_result(
-                crate::ffi_extern_TKernel::HandleOSDExceptionACCESSVIOLATION_get_mut(
-                    self as *mut Self,
-                ),
-            )
-        }
-    }
-
-    /// Upcast Handle<OSD_Exception_ACCESS_VIOLATION> to Handle<OSD_Exception>
-    pub fn to_handle_exception(&self) -> crate::OwnedPtr<crate::ffi_types::HandleOSDException> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKernel::HandleOSDExceptionACCESSVIOLATION_to_HandleOSDException(
-                    self as *const Self,
-                ),
-            ))
-        }
-    }
-
-    /// Upcast Handle<OSD_Exception_ACCESS_VIOLATION> to Handle<Standard_Failure>
-    pub fn to_handle_failure(&self) -> crate::OwnedPtr<crate::ffi_types::HandleStandardFailure> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKernel::HandleOSDExceptionACCESSVIOLATION_to_HandleStandardFailure(self as *const Self)))
-        }
-    }
-
-    /// Upcast Handle<OSD_Exception_ACCESS_VIOLATION> to Handle<Standard_Transient>
-    pub fn to_handle_transient(
-        &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKernel::HandleOSDExceptionACCESSVIOLATION_to_HandleStandardTransient(self as *const Self)))
-        }
-    }
 }
 
 // ========================
 // From OSD_Exception_ARRAY_BOUNDS_EXCEEDED.hxx
 // ========================
 
-/// **Source:** `OSD_Exception_ARRAY_BOUNDS_EXCEEDED.hxx`:34 - `OSD_Exception_ARRAY_BOUNDS_EXCEEDED`
+/// **Source:** `OSD_Exception_ARRAY_BOUNDS_EXCEEDED.hxx`:30 - `OSD_Exception_ARRAY_BOUNDS_EXCEEDED`
 pub use crate::ffi_types::OSD_Exception_ARRAY_BOUNDS_EXCEEDED as Exception_ARRAY_BOUNDS_EXCEEDED;
 
 unsafe impl crate::CppDeletable for Exception_ARRAY_BOUNDS_EXCEEDED {
@@ -2739,16 +2041,7 @@ unsafe impl crate::CppDeletable for Exception_ARRAY_BOUNDS_EXCEEDED {
 }
 
 impl Exception_ARRAY_BOUNDS_EXCEEDED {
-    /// **Source:** `OSD_Exception_ARRAY_BOUNDS_EXCEEDED.hxx`:34 - `OSD_Exception_ARRAY_BOUNDS_EXCEEDED::OSD_Exception_ARRAY_BOUNDS_EXCEEDED()`
-    pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKernel::OSD_Exception_ARRAY_BOUNDS_EXCEEDED_ctor(),
-            ))
-        }
-    }
-
-    /// **Source:** `OSD_Exception_ARRAY_BOUNDS_EXCEEDED.hxx`:34 - `OSD_Exception_ARRAY_BOUNDS_EXCEEDED::OSD_Exception_ARRAY_BOUNDS_EXCEEDED()`
+    /// **Source:** `OSD_Exception_ARRAY_BOUNDS_EXCEEDED.hxx`:30 - `OSD_Exception_ARRAY_BOUNDS_EXCEEDED::OSD_Exception_ARRAY_BOUNDS_EXCEEDED()`
     pub fn new_charptr(theMessage: &str) -> crate::OwnedPtr<Self> {
         let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
         unsafe {
@@ -2760,7 +2053,7 @@ impl Exception_ARRAY_BOUNDS_EXCEEDED {
         }
     }
 
-    /// **Source:** `OSD_Exception_ARRAY_BOUNDS_EXCEEDED.hxx`:34 - `OSD_Exception_ARRAY_BOUNDS_EXCEEDED::OSD_Exception_ARRAY_BOUNDS_EXCEEDED()`
+    /// **Source:** `OSD_Exception_ARRAY_BOUNDS_EXCEEDED.hxx`:30 - `OSD_Exception_ARRAY_BOUNDS_EXCEEDED::OSD_Exception_ARRAY_BOUNDS_EXCEEDED()`
     pub fn new_charptr2(theMessage: &str, theStackTrace: &str) -> crate::OwnedPtr<Self> {
         let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
         let c_theStackTrace = std::ffi::CString::new(theStackTrace).unwrap();
@@ -2774,79 +2067,17 @@ impl Exception_ARRAY_BOUNDS_EXCEEDED {
         }
     }
 
-    /// **Source:** `OSD_Exception_ARRAY_BOUNDS_EXCEEDED.hxx`:34 - `OSD_Exception_ARRAY_BOUNDS_EXCEEDED::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `OSD_Exception_ARRAY_BOUNDS_EXCEEDED.hxx`:30 - `OSD_Exception_ARRAY_BOUNDS_EXCEEDED::ExceptionType()`
+    pub fn exception_type(&self) -> std::string::String {
         unsafe {
-            &*(crate::check_result(
-                crate::ffi_extern_TKernel::OSD_Exception_ARRAY_BOUNDS_EXCEEDED_dynamic_type(
+            std::ffi::CStr::from_ptr(crate::check_result(
+                crate::ffi_extern_TKernel::OSD_Exception_ARRAY_BOUNDS_EXCEEDED_exception_type(
                     self as *const Self,
                 ),
             ))
         }
-    }
-
-    /// **Source:** `OSD_Exception_ARRAY_BOUNDS_EXCEEDED.hxx`:34 - `OSD_Exception_ARRAY_BOUNDS_EXCEEDED::Raise()`
-    pub fn raise_charptr(theMessage: &str) {
-        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKernel::OSD_Exception_ARRAY_BOUNDS_EXCEEDED_raise_charptr(
-                c_theMessage.as_ptr(),
-            )
-        })
-    }
-
-    /// **Source:** `OSD_Exception_ARRAY_BOUNDS_EXCEEDED.hxx`:34 - `OSD_Exception_ARRAY_BOUNDS_EXCEEDED::Raise()`
-    pub fn raise_sstream(theMessage: &mut crate::ffi_types::Standard_SStream) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKernel::OSD_Exception_ARRAY_BOUNDS_EXCEEDED_raise_sstream(theMessage)
-        })
-    }
-
-    /// **Source:** `OSD_Exception_ARRAY_BOUNDS_EXCEEDED.hxx`:34 - `OSD_Exception_ARRAY_BOUNDS_EXCEEDED::NewInstance()`
-    pub fn new_instance_charptr(
-        theMessage: &str,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleOSDExceptionARRAYBOUNDSEXCEEDED> {
-        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKernel::OSD_Exception_ARRAY_BOUNDS_EXCEEDED_new_instance_charptr(
-                    c_theMessage.as_ptr(),
-                ),
-            ))
-        }
-    }
-
-    /// **Source:** `OSD_Exception_ARRAY_BOUNDS_EXCEEDED.hxx`:34 - `OSD_Exception_ARRAY_BOUNDS_EXCEEDED::NewInstance()`
-    pub fn new_instance_charptr2(
-        theMessage: &str,
-        theStackTrace: &str,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleOSDExceptionARRAYBOUNDSEXCEEDED> {
-        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
-        let c_theStackTrace = std::ffi::CString::new(theStackTrace).unwrap();
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKernel::OSD_Exception_ARRAY_BOUNDS_EXCEEDED_new_instance_charptr2(c_theMessage.as_ptr(), c_theStackTrace.as_ptr())))
-        }
-    }
-
-    /// **Source:** `OSD_Exception_ARRAY_BOUNDS_EXCEEDED.hxx`:34 - `OSD_Exception_ARRAY_BOUNDS_EXCEEDED::get_type_name()`
-    pub fn get_type_name() -> std::string::String {
-        unsafe {
-            std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi_extern_TKernel::OSD_Exception_ARRAY_BOUNDS_EXCEEDED_get_type_name(),
-            ))
-        }
         .to_string_lossy()
         .into_owned()
-    }
-
-    /// **Source:** `OSD_Exception_ARRAY_BOUNDS_EXCEEDED.hxx`:34 - `OSD_Exception_ARRAY_BOUNDS_EXCEEDED::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
-        unsafe {
-            &*(crate::check_result(
-                crate::ffi_extern_TKernel::OSD_Exception_ARRAY_BOUNDS_EXCEEDED_get_type_descriptor(
-                ),
-            ))
-        }
     }
 
     /// Upcast to OSD_Exception
@@ -2889,34 +2120,7 @@ impl Exception_ARRAY_BOUNDS_EXCEEDED {
         }
     }
 
-    /// Upcast to Standard_Transient
-    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        unsafe {
-            &*crate::check_result(crate::ffi_extern_TKernel::OSD_Exception_ARRAY_BOUNDS_EXCEEDED_as_Standard_Transient(self as *const Self))
-        }
-    }
-
-    /// Upcast to Standard_Transient (mutable)
-    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        unsafe {
-            &mut *crate::check_result(crate::ffi_extern_TKernel::OSD_Exception_ARRAY_BOUNDS_EXCEEDED_as_Standard_Transient_mut(self as *mut Self))
-        }
-    }
-
-    /// Wrap in a Handle (reference-counted smart pointer)
-    pub fn to_handle(
-        obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleOSDExceptionARRAYBOUNDSEXCEEDED> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKernel::OSD_Exception_ARRAY_BOUNDS_EXCEEDED_to_handle(
-                    obj.into_raw(),
-                ),
-            ))
-        }
-    }
-
-    /// Inherited: **Source:** `Standard_Failure.hxx`:58 - `Standard_Failure::Print()`
+    /// Inherited: **Source:** `Standard_Failure.hxx`:73 - `Standard_Failure::Print()`
     pub fn print(&self, theStream: &mut crate::ffi_types::Standard_OStream) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKernel::OSD_Exception_ARRAY_BOUNDS_EXCEEDED_inherited_Print(
@@ -2925,175 +2129,13 @@ impl Exception_ARRAY_BOUNDS_EXCEEDED {
             )
         })
     }
-
-    /// Inherited: **Source:** `Standard_Failure.hxx`:72 - `Standard_Failure::Reraise()`
-    pub fn reraise(&mut self) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKernel::OSD_Exception_ARRAY_BOUNDS_EXCEEDED_inherited_Reraise(
-                self as *mut Self,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Failure.hxx`:112 - `Standard_Failure::Jump()`
-    pub fn jump(&mut self) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKernel::OSD_Exception_ARRAY_BOUNDS_EXCEEDED_inherited_Jump(
-                self as *mut Self,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKernel::OSD_Exception_ARRAY_BOUNDS_EXCEEDED_inherited_IsInstance(
-                self as *const Self,
-                theType,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKernel::OSD_Exception_ARRAY_BOUNDS_EXCEEDED_inherited_IsKind(
-                self as *const Self,
-                theType,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
-    pub fn this(&self) -> Option<&crate::standard::Transient> {
-        {
-            let __val = crate::check_result(unsafe {
-                crate::ffi_extern_TKernel::OSD_Exception_ARRAY_BOUNDS_EXCEEDED_inherited_This(
-                    self as *const Self,
-                )
-            });
-            if __val.is_null() {
-                None
-            } else {
-                Some(unsafe { &*__val })
-            }
-        }
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
-    pub fn get_ref_count(&self) -> i32 {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKernel::OSD_Exception_ARRAY_BOUNDS_EXCEEDED_inherited_GetRefCount(
-                self as *const Self,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
-    pub fn increment_ref_counter(&mut self) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKernel::OSD_Exception_ARRAY_BOUNDS_EXCEEDED_inherited_IncrementRefCounter(self as *mut Self)
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
-    pub fn decrement_ref_counter(&mut self) -> i32 {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKernel::OSD_Exception_ARRAY_BOUNDS_EXCEEDED_inherited_DecrementRefCounter(self as *mut Self)
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
-    pub fn delete(&self) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKernel::OSD_Exception_ARRAY_BOUNDS_EXCEEDED_inherited_Delete(
-                self as *const Self,
-            )
-        })
-    }
-}
-
-pub use crate::ffi_types::HandleOSDExceptionARRAYBOUNDSEXCEEDED;
-
-unsafe impl crate::CppDeletable for HandleOSDExceptionARRAYBOUNDSEXCEEDED {
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            crate::ffi_extern_TKernel::HandleOSDExceptionARRAYBOUNDSEXCEEDED_destructor(ptr);
-        }
-    }
-}
-
-unsafe impl crate::CppCopyable for HandleOSDExceptionARRAYBOUNDSEXCEEDED {
-    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        unsafe {
-            crate::check_result(
-                crate::ffi_extern_TKernel::HandleOSDExceptionARRAYBOUNDSEXCEEDED_clone(ptr),
-            )
-        }
-    }
-}
-
-impl HandleOSDExceptionARRAYBOUNDSEXCEEDED {
-    /// Returns `true` if this Handle is null (doesn't point to any object).
-    pub fn is_null(&self) -> bool {
-        unsafe {
-            crate::ffi_extern_TKernel::HandleOSDExceptionARRAYBOUNDSEXCEEDED_is_null(
-                self as *const Self,
-            )
-        }
-    }
-
-    /// Dereference this Handle to access the underlying OSD_Exception_ARRAY_BOUNDS_EXCEEDED
-    pub fn get(&self) -> &crate::ffi_types::OSD_Exception_ARRAY_BOUNDS_EXCEEDED {
-        unsafe {
-            &*crate::check_result(
-                crate::ffi_extern_TKernel::HandleOSDExceptionARRAYBOUNDSEXCEEDED_get(
-                    self as *const Self,
-                ),
-            )
-        }
-    }
-
-    /// Dereference this Handle to mutably access the underlying OSD_Exception_ARRAY_BOUNDS_EXCEEDED
-    pub fn get_mut(&mut self) -> &mut crate::ffi_types::OSD_Exception_ARRAY_BOUNDS_EXCEEDED {
-        unsafe {
-            &mut *crate::check_result(
-                crate::ffi_extern_TKernel::HandleOSDExceptionARRAYBOUNDSEXCEEDED_get_mut(
-                    self as *mut Self,
-                ),
-            )
-        }
-    }
-
-    /// Upcast Handle<OSD_Exception_ARRAY_BOUNDS_EXCEEDED> to Handle<OSD_Exception>
-    pub fn to_handle_exception(&self) -> crate::OwnedPtr<crate::ffi_types::HandleOSDException> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKernel::HandleOSDExceptionARRAYBOUNDSEXCEEDED_to_HandleOSDException(self as *const Self)))
-        }
-    }
-
-    /// Upcast Handle<OSD_Exception_ARRAY_BOUNDS_EXCEEDED> to Handle<Standard_Failure>
-    pub fn to_handle_failure(&self) -> crate::OwnedPtr<crate::ffi_types::HandleStandardFailure> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKernel::HandleOSDExceptionARRAYBOUNDSEXCEEDED_to_HandleStandardFailure(self as *const Self)))
-        }
-    }
-
-    /// Upcast Handle<OSD_Exception_ARRAY_BOUNDS_EXCEEDED> to Handle<Standard_Transient>
-    pub fn to_handle_transient(
-        &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKernel::HandleOSDExceptionARRAYBOUNDSEXCEEDED_to_HandleStandardTransient(self as *const Self)))
-        }
-    }
 }
 
 // ========================
 // From OSD_Exception_CTRL_BREAK.hxx
 // ========================
 
-/// **Source:** `OSD_Exception_CTRL_BREAK.hxx`:33 - `OSD_Exception_CTRL_BREAK`
+/// **Source:** `OSD_Exception_CTRL_BREAK.hxx`:29 - `OSD_Exception_CTRL_BREAK`
 pub use crate::ffi_types::OSD_Exception_CTRL_BREAK as Exception_CTRL_BREAK;
 
 unsafe impl crate::CppDeletable for Exception_CTRL_BREAK {
@@ -3105,16 +2147,7 @@ unsafe impl crate::CppDeletable for Exception_CTRL_BREAK {
 }
 
 impl Exception_CTRL_BREAK {
-    /// **Source:** `OSD_Exception_CTRL_BREAK.hxx`:33 - `OSD_Exception_CTRL_BREAK::OSD_Exception_CTRL_BREAK()`
-    pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKernel::OSD_Exception_CTRL_BREAK_ctor(),
-            ))
-        }
-    }
-
-    /// **Source:** `OSD_Exception_CTRL_BREAK.hxx`:33 - `OSD_Exception_CTRL_BREAK::OSD_Exception_CTRL_BREAK()`
+    /// **Source:** `OSD_Exception_CTRL_BREAK.hxx`:29 - `OSD_Exception_CTRL_BREAK::OSD_Exception_CTRL_BREAK()`
     pub fn new_charptr(theMessage: &str) -> crate::OwnedPtr<Self> {
         let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
         unsafe {
@@ -3126,7 +2159,7 @@ impl Exception_CTRL_BREAK {
         }
     }
 
-    /// **Source:** `OSD_Exception_CTRL_BREAK.hxx`:33 - `OSD_Exception_CTRL_BREAK::OSD_Exception_CTRL_BREAK()`
+    /// **Source:** `OSD_Exception_CTRL_BREAK.hxx`:29 - `OSD_Exception_CTRL_BREAK::OSD_Exception_CTRL_BREAK()`
     pub fn new_charptr2(theMessage: &str, theStackTrace: &str) -> crate::OwnedPtr<Self> {
         let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
         let c_theStackTrace = std::ffi::CString::new(theStackTrace).unwrap();
@@ -3140,81 +2173,17 @@ impl Exception_CTRL_BREAK {
         }
     }
 
-    /// **Source:** `OSD_Exception_CTRL_BREAK.hxx`:33 - `OSD_Exception_CTRL_BREAK::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `OSD_Exception_CTRL_BREAK.hxx`:29 - `OSD_Exception_CTRL_BREAK::ExceptionType()`
+    pub fn exception_type(&self) -> std::string::String {
         unsafe {
-            &*(crate::check_result(
-                crate::ffi_extern_TKernel::OSD_Exception_CTRL_BREAK_dynamic_type(
+            std::ffi::CStr::from_ptr(crate::check_result(
+                crate::ffi_extern_TKernel::OSD_Exception_CTRL_BREAK_exception_type(
                     self as *const Self,
                 ),
             ))
         }
-    }
-
-    /// **Source:** `OSD_Exception_CTRL_BREAK.hxx`:33 - `OSD_Exception_CTRL_BREAK::Raise()`
-    pub fn raise_charptr(theMessage: &str) {
-        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKernel::OSD_Exception_CTRL_BREAK_raise_charptr(c_theMessage.as_ptr())
-        })
-    }
-
-    /// **Source:** `OSD_Exception_CTRL_BREAK.hxx`:33 - `OSD_Exception_CTRL_BREAK::Raise()`
-    pub fn raise_sstream(theMessage: &mut crate::ffi_types::Standard_SStream) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKernel::OSD_Exception_CTRL_BREAK_raise_sstream(theMessage)
-        })
-    }
-
-    /// **Source:** `OSD_Exception_CTRL_BREAK.hxx`:33 - `OSD_Exception_CTRL_BREAK::NewInstance()`
-    pub fn new_instance_charptr(
-        theMessage: &str,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleOSDExceptionCTRLBREAK> {
-        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKernel::OSD_Exception_CTRL_BREAK_new_instance_charptr(
-                    c_theMessage.as_ptr(),
-                ),
-            ))
-        }
-    }
-
-    /// **Source:** `OSD_Exception_CTRL_BREAK.hxx`:33 - `OSD_Exception_CTRL_BREAK::NewInstance()`
-    pub fn new_instance_charptr2(
-        theMessage: &str,
-        theStackTrace: &str,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleOSDExceptionCTRLBREAK> {
-        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
-        let c_theStackTrace = std::ffi::CString::new(theStackTrace).unwrap();
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKernel::OSD_Exception_CTRL_BREAK_new_instance_charptr2(
-                    c_theMessage.as_ptr(),
-                    c_theStackTrace.as_ptr(),
-                ),
-            ))
-        }
-    }
-
-    /// **Source:** `OSD_Exception_CTRL_BREAK.hxx`:33 - `OSD_Exception_CTRL_BREAK::get_type_name()`
-    pub fn get_type_name() -> std::string::String {
-        unsafe {
-            std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi_extern_TKernel::OSD_Exception_CTRL_BREAK_get_type_name(),
-            ))
-        }
         .to_string_lossy()
         .into_owned()
-    }
-
-    /// **Source:** `OSD_Exception_CTRL_BREAK.hxx`:33 - `OSD_Exception_CTRL_BREAK::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
-        unsafe {
-            &*(crate::check_result(
-                crate::ffi_extern_TKernel::OSD_Exception_CTRL_BREAK_get_type_descriptor(),
-            ))
-        }
     }
 
     /// Upcast to OSD_Exception
@@ -3261,40 +2230,7 @@ impl Exception_CTRL_BREAK {
         }
     }
 
-    /// Upcast to Standard_Transient
-    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        unsafe {
-            &*crate::check_result(
-                crate::ffi_extern_TKernel::OSD_Exception_CTRL_BREAK_as_Standard_Transient(
-                    self as *const Self,
-                ),
-            )
-        }
-    }
-
-    /// Upcast to Standard_Transient (mutable)
-    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        unsafe {
-            &mut *crate::check_result(
-                crate::ffi_extern_TKernel::OSD_Exception_CTRL_BREAK_as_Standard_Transient_mut(
-                    self as *mut Self,
-                ),
-            )
-        }
-    }
-
-    /// Wrap in a Handle (reference-counted smart pointer)
-    pub fn to_handle(
-        obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleOSDExceptionCTRLBREAK> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKernel::OSD_Exception_CTRL_BREAK_to_handle(obj.into_raw()),
-            ))
-        }
-    }
-
-    /// Inherited: **Source:** `Standard_Failure.hxx`:58 - `Standard_Failure::Print()`
+    /// Inherited: **Source:** `Standard_Failure.hxx`:73 - `Standard_Failure::Print()`
     pub fn print(&self, theStream: &mut crate::ffi_types::Standard_OStream) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKernel::OSD_Exception_CTRL_BREAK_inherited_Print(
@@ -3303,179 +2239,13 @@ impl Exception_CTRL_BREAK {
             )
         })
     }
-
-    /// Inherited: **Source:** `Standard_Failure.hxx`:72 - `Standard_Failure::Reraise()`
-    pub fn reraise(&mut self) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKernel::OSD_Exception_CTRL_BREAK_inherited_Reraise(self as *mut Self)
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Failure.hxx`:112 - `Standard_Failure::Jump()`
-    pub fn jump(&mut self) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKernel::OSD_Exception_CTRL_BREAK_inherited_Jump(self as *mut Self)
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKernel::OSD_Exception_CTRL_BREAK_inherited_IsInstance(
-                self as *const Self,
-                theType,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKernel::OSD_Exception_CTRL_BREAK_inherited_IsKind(
-                self as *const Self,
-                theType,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
-    pub fn this(&self) -> Option<&crate::standard::Transient> {
-        {
-            let __val = crate::check_result(unsafe {
-                crate::ffi_extern_TKernel::OSD_Exception_CTRL_BREAK_inherited_This(
-                    self as *const Self,
-                )
-            });
-            if __val.is_null() {
-                None
-            } else {
-                Some(unsafe { &*__val })
-            }
-        }
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
-    pub fn get_ref_count(&self) -> i32 {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKernel::OSD_Exception_CTRL_BREAK_inherited_GetRefCount(
-                self as *const Self,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
-    pub fn increment_ref_counter(&mut self) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKernel::OSD_Exception_CTRL_BREAK_inherited_IncrementRefCounter(
-                self as *mut Self,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
-    pub fn decrement_ref_counter(&mut self) -> i32 {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKernel::OSD_Exception_CTRL_BREAK_inherited_DecrementRefCounter(
-                self as *mut Self,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
-    pub fn delete(&self) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKernel::OSD_Exception_CTRL_BREAK_inherited_Delete(
-                self as *const Self,
-            )
-        })
-    }
-}
-
-pub use crate::ffi_types::HandleOSDExceptionCTRLBREAK;
-
-unsafe impl crate::CppDeletable for HandleOSDExceptionCTRLBREAK {
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            crate::ffi_extern_TKernel::HandleOSDExceptionCTRLBREAK_destructor(ptr);
-        }
-    }
-}
-
-unsafe impl crate::CppCopyable for HandleOSDExceptionCTRLBREAK {
-    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        unsafe {
-            crate::check_result(crate::ffi_extern_TKernel::HandleOSDExceptionCTRLBREAK_clone(ptr))
-        }
-    }
-}
-
-impl HandleOSDExceptionCTRLBREAK {
-    /// Returns `true` if this Handle is null (doesn't point to any object).
-    pub fn is_null(&self) -> bool {
-        unsafe {
-            crate::ffi_extern_TKernel::HandleOSDExceptionCTRLBREAK_is_null(self as *const Self)
-        }
-    }
-
-    /// Dereference this Handle to access the underlying OSD_Exception_CTRL_BREAK
-    pub fn get(&self) -> &crate::ffi_types::OSD_Exception_CTRL_BREAK {
-        unsafe {
-            &*crate::check_result(crate::ffi_extern_TKernel::HandleOSDExceptionCTRLBREAK_get(
-                self as *const Self,
-            ))
-        }
-    }
-
-    /// Dereference this Handle to mutably access the underlying OSD_Exception_CTRL_BREAK
-    pub fn get_mut(&mut self) -> &mut crate::ffi_types::OSD_Exception_CTRL_BREAK {
-        unsafe {
-            &mut *crate::check_result(
-                crate::ffi_extern_TKernel::HandleOSDExceptionCTRLBREAK_get_mut(self as *mut Self),
-            )
-        }
-    }
-
-    /// Upcast Handle<OSD_Exception_CTRL_BREAK> to Handle<OSD_Exception>
-    pub fn to_handle_exception(&self) -> crate::OwnedPtr<crate::ffi_types::HandleOSDException> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKernel::HandleOSDExceptionCTRLBREAK_to_HandleOSDException(
-                    self as *const Self,
-                ),
-            ))
-        }
-    }
-
-    /// Upcast Handle<OSD_Exception_CTRL_BREAK> to Handle<Standard_Failure>
-    pub fn to_handle_failure(&self) -> crate::OwnedPtr<crate::ffi_types::HandleStandardFailure> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKernel::HandleOSDExceptionCTRLBREAK_to_HandleStandardFailure(
-                    self as *const Self,
-                ),
-            ))
-        }
-    }
-
-    /// Upcast Handle<OSD_Exception_CTRL_BREAK> to Handle<Standard_Transient>
-    pub fn to_handle_transient(
-        &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKernel::HandleOSDExceptionCTRLBREAK_to_HandleStandardTransient(
-                    self as *const Self,
-                ),
-            ))
-        }
-    }
 }
 
 // ========================
 // From OSD_Exception_ILLEGAL_INSTRUCTION.hxx
 // ========================
 
-/// **Source:** `OSD_Exception_ILLEGAL_INSTRUCTION.hxx`:34 - `OSD_Exception_ILLEGAL_INSTRUCTION`
+/// **Source:** `OSD_Exception_ILLEGAL_INSTRUCTION.hxx`:30 - `OSD_Exception_ILLEGAL_INSTRUCTION`
 pub use crate::ffi_types::OSD_Exception_ILLEGAL_INSTRUCTION as Exception_ILLEGAL_INSTRUCTION;
 
 unsafe impl crate::CppDeletable for Exception_ILLEGAL_INSTRUCTION {
@@ -3487,16 +2257,7 @@ unsafe impl crate::CppDeletable for Exception_ILLEGAL_INSTRUCTION {
 }
 
 impl Exception_ILLEGAL_INSTRUCTION {
-    /// **Source:** `OSD_Exception_ILLEGAL_INSTRUCTION.hxx`:34 - `OSD_Exception_ILLEGAL_INSTRUCTION::OSD_Exception_ILLEGAL_INSTRUCTION()`
-    pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKernel::OSD_Exception_ILLEGAL_INSTRUCTION_ctor(),
-            ))
-        }
-    }
-
-    /// **Source:** `OSD_Exception_ILLEGAL_INSTRUCTION.hxx`:34 - `OSD_Exception_ILLEGAL_INSTRUCTION::OSD_Exception_ILLEGAL_INSTRUCTION()`
+    /// **Source:** `OSD_Exception_ILLEGAL_INSTRUCTION.hxx`:30 - `OSD_Exception_ILLEGAL_INSTRUCTION::OSD_Exception_ILLEGAL_INSTRUCTION()`
     pub fn new_charptr(theMessage: &str) -> crate::OwnedPtr<Self> {
         let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
         unsafe {
@@ -3508,7 +2269,7 @@ impl Exception_ILLEGAL_INSTRUCTION {
         }
     }
 
-    /// **Source:** `OSD_Exception_ILLEGAL_INSTRUCTION.hxx`:34 - `OSD_Exception_ILLEGAL_INSTRUCTION::OSD_Exception_ILLEGAL_INSTRUCTION()`
+    /// **Source:** `OSD_Exception_ILLEGAL_INSTRUCTION.hxx`:30 - `OSD_Exception_ILLEGAL_INSTRUCTION::OSD_Exception_ILLEGAL_INSTRUCTION()`
     pub fn new_charptr2(theMessage: &str, theStackTrace: &str) -> crate::OwnedPtr<Self> {
         let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
         let c_theStackTrace = std::ffi::CString::new(theStackTrace).unwrap();
@@ -3522,83 +2283,17 @@ impl Exception_ILLEGAL_INSTRUCTION {
         }
     }
 
-    /// **Source:** `OSD_Exception_ILLEGAL_INSTRUCTION.hxx`:34 - `OSD_Exception_ILLEGAL_INSTRUCTION::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `OSD_Exception_ILLEGAL_INSTRUCTION.hxx`:30 - `OSD_Exception_ILLEGAL_INSTRUCTION::ExceptionType()`
+    pub fn exception_type(&self) -> std::string::String {
         unsafe {
-            &*(crate::check_result(
-                crate::ffi_extern_TKernel::OSD_Exception_ILLEGAL_INSTRUCTION_dynamic_type(
+            std::ffi::CStr::from_ptr(crate::check_result(
+                crate::ffi_extern_TKernel::OSD_Exception_ILLEGAL_INSTRUCTION_exception_type(
                     self as *const Self,
                 ),
             ))
         }
-    }
-
-    /// **Source:** `OSD_Exception_ILLEGAL_INSTRUCTION.hxx`:34 - `OSD_Exception_ILLEGAL_INSTRUCTION::Raise()`
-    pub fn raise_charptr(theMessage: &str) {
-        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKernel::OSD_Exception_ILLEGAL_INSTRUCTION_raise_charptr(
-                c_theMessage.as_ptr(),
-            )
-        })
-    }
-
-    /// **Source:** `OSD_Exception_ILLEGAL_INSTRUCTION.hxx`:34 - `OSD_Exception_ILLEGAL_INSTRUCTION::Raise()`
-    pub fn raise_sstream(theMessage: &mut crate::ffi_types::Standard_SStream) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKernel::OSD_Exception_ILLEGAL_INSTRUCTION_raise_sstream(theMessage)
-        })
-    }
-
-    /// **Source:** `OSD_Exception_ILLEGAL_INSTRUCTION.hxx`:34 - `OSD_Exception_ILLEGAL_INSTRUCTION::NewInstance()`
-    pub fn new_instance_charptr(
-        theMessage: &str,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleOSDExceptionILLEGALINSTRUCTION> {
-        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKernel::OSD_Exception_ILLEGAL_INSTRUCTION_new_instance_charptr(
-                    c_theMessage.as_ptr(),
-                ),
-            ))
-        }
-    }
-
-    /// **Source:** `OSD_Exception_ILLEGAL_INSTRUCTION.hxx`:34 - `OSD_Exception_ILLEGAL_INSTRUCTION::NewInstance()`
-    pub fn new_instance_charptr2(
-        theMessage: &str,
-        theStackTrace: &str,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleOSDExceptionILLEGALINSTRUCTION> {
-        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
-        let c_theStackTrace = std::ffi::CString::new(theStackTrace).unwrap();
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKernel::OSD_Exception_ILLEGAL_INSTRUCTION_new_instance_charptr2(
-                    c_theMessage.as_ptr(),
-                    c_theStackTrace.as_ptr(),
-                ),
-            ))
-        }
-    }
-
-    /// **Source:** `OSD_Exception_ILLEGAL_INSTRUCTION.hxx`:34 - `OSD_Exception_ILLEGAL_INSTRUCTION::get_type_name()`
-    pub fn get_type_name() -> std::string::String {
-        unsafe {
-            std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi_extern_TKernel::OSD_Exception_ILLEGAL_INSTRUCTION_get_type_name(),
-            ))
-        }
         .to_string_lossy()
         .into_owned()
-    }
-
-    /// **Source:** `OSD_Exception_ILLEGAL_INSTRUCTION.hxx`:34 - `OSD_Exception_ILLEGAL_INSTRUCTION::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
-        unsafe {
-            &*(crate::check_result(
-                crate::ffi_extern_TKernel::OSD_Exception_ILLEGAL_INSTRUCTION_get_type_descriptor(),
-            ))
-        }
     }
 
     /// Upcast to OSD_Exception
@@ -3641,38 +2336,7 @@ impl Exception_ILLEGAL_INSTRUCTION {
         }
     }
 
-    /// Upcast to Standard_Transient
-    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        unsafe {
-            &*crate::check_result(
-                crate::ffi_extern_TKernel::OSD_Exception_ILLEGAL_INSTRUCTION_as_Standard_Transient(
-                    self as *const Self,
-                ),
-            )
-        }
-    }
-
-    /// Upcast to Standard_Transient (mutable)
-    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        unsafe {
-            &mut *crate::check_result(crate::ffi_extern_TKernel::OSD_Exception_ILLEGAL_INSTRUCTION_as_Standard_Transient_mut(self as *mut Self))
-        }
-    }
-
-    /// Wrap in a Handle (reference-counted smart pointer)
-    pub fn to_handle(
-        obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleOSDExceptionILLEGALINSTRUCTION> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKernel::OSD_Exception_ILLEGAL_INSTRUCTION_to_handle(
-                    obj.into_raw(),
-                ),
-            ))
-        }
-    }
-
-    /// Inherited: **Source:** `Standard_Failure.hxx`:58 - `Standard_Failure::Print()`
+    /// Inherited: **Source:** `Standard_Failure.hxx`:73 - `Standard_Failure::Print()`
     pub fn print(&self, theStream: &mut crate::ffi_types::Standard_OStream) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKernel::OSD_Exception_ILLEGAL_INSTRUCTION_inherited_Print(
@@ -3681,175 +2345,13 @@ impl Exception_ILLEGAL_INSTRUCTION {
             )
         })
     }
-
-    /// Inherited: **Source:** `Standard_Failure.hxx`:72 - `Standard_Failure::Reraise()`
-    pub fn reraise(&mut self) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKernel::OSD_Exception_ILLEGAL_INSTRUCTION_inherited_Reraise(
-                self as *mut Self,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Failure.hxx`:112 - `Standard_Failure::Jump()`
-    pub fn jump(&mut self) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKernel::OSD_Exception_ILLEGAL_INSTRUCTION_inherited_Jump(
-                self as *mut Self,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKernel::OSD_Exception_ILLEGAL_INSTRUCTION_inherited_IsInstance(
-                self as *const Self,
-                theType,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKernel::OSD_Exception_ILLEGAL_INSTRUCTION_inherited_IsKind(
-                self as *const Self,
-                theType,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
-    pub fn this(&self) -> Option<&crate::standard::Transient> {
-        {
-            let __val = crate::check_result(unsafe {
-                crate::ffi_extern_TKernel::OSD_Exception_ILLEGAL_INSTRUCTION_inherited_This(
-                    self as *const Self,
-                )
-            });
-            if __val.is_null() {
-                None
-            } else {
-                Some(unsafe { &*__val })
-            }
-        }
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
-    pub fn get_ref_count(&self) -> i32 {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKernel::OSD_Exception_ILLEGAL_INSTRUCTION_inherited_GetRefCount(
-                self as *const Self,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
-    pub fn increment_ref_counter(&mut self) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKernel::OSD_Exception_ILLEGAL_INSTRUCTION_inherited_IncrementRefCounter(self as *mut Self)
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
-    pub fn decrement_ref_counter(&mut self) -> i32 {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKernel::OSD_Exception_ILLEGAL_INSTRUCTION_inherited_DecrementRefCounter(self as *mut Self)
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
-    pub fn delete(&self) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKernel::OSD_Exception_ILLEGAL_INSTRUCTION_inherited_Delete(
-                self as *const Self,
-            )
-        })
-    }
-}
-
-pub use crate::ffi_types::HandleOSDExceptionILLEGALINSTRUCTION;
-
-unsafe impl crate::CppDeletable for HandleOSDExceptionILLEGALINSTRUCTION {
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            crate::ffi_extern_TKernel::HandleOSDExceptionILLEGALINSTRUCTION_destructor(ptr);
-        }
-    }
-}
-
-unsafe impl crate::CppCopyable for HandleOSDExceptionILLEGALINSTRUCTION {
-    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        unsafe {
-            crate::check_result(
-                crate::ffi_extern_TKernel::HandleOSDExceptionILLEGALINSTRUCTION_clone(ptr),
-            )
-        }
-    }
-}
-
-impl HandleOSDExceptionILLEGALINSTRUCTION {
-    /// Returns `true` if this Handle is null (doesn't point to any object).
-    pub fn is_null(&self) -> bool {
-        unsafe {
-            crate::ffi_extern_TKernel::HandleOSDExceptionILLEGALINSTRUCTION_is_null(
-                self as *const Self,
-            )
-        }
-    }
-
-    /// Dereference this Handle to access the underlying OSD_Exception_ILLEGAL_INSTRUCTION
-    pub fn get(&self) -> &crate::ffi_types::OSD_Exception_ILLEGAL_INSTRUCTION {
-        unsafe {
-            &*crate::check_result(
-                crate::ffi_extern_TKernel::HandleOSDExceptionILLEGALINSTRUCTION_get(
-                    self as *const Self,
-                ),
-            )
-        }
-    }
-
-    /// Dereference this Handle to mutably access the underlying OSD_Exception_ILLEGAL_INSTRUCTION
-    pub fn get_mut(&mut self) -> &mut crate::ffi_types::OSD_Exception_ILLEGAL_INSTRUCTION {
-        unsafe {
-            &mut *crate::check_result(
-                crate::ffi_extern_TKernel::HandleOSDExceptionILLEGALINSTRUCTION_get_mut(
-                    self as *mut Self,
-                ),
-            )
-        }
-    }
-
-    /// Upcast Handle<OSD_Exception_ILLEGAL_INSTRUCTION> to Handle<OSD_Exception>
-    pub fn to_handle_exception(&self) -> crate::OwnedPtr<crate::ffi_types::HandleOSDException> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKernel::HandleOSDExceptionILLEGALINSTRUCTION_to_HandleOSDException(self as *const Self)))
-        }
-    }
-
-    /// Upcast Handle<OSD_Exception_ILLEGAL_INSTRUCTION> to Handle<Standard_Failure>
-    pub fn to_handle_failure(&self) -> crate::OwnedPtr<crate::ffi_types::HandleStandardFailure> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKernel::HandleOSDExceptionILLEGALINSTRUCTION_to_HandleStandardFailure(self as *const Self)))
-        }
-    }
-
-    /// Upcast Handle<OSD_Exception_ILLEGAL_INSTRUCTION> to Handle<Standard_Transient>
-    pub fn to_handle_transient(
-        &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKernel::HandleOSDExceptionILLEGALINSTRUCTION_to_HandleStandardTransient(self as *const Self)))
-        }
-    }
 }
 
 // ========================
 // From OSD_Exception_INT_OVERFLOW.hxx
 // ========================
 
-/// **Source:** `OSD_Exception_INT_OVERFLOW.hxx`:34 - `OSD_Exception_INT_OVERFLOW`
+/// **Source:** `OSD_Exception_INT_OVERFLOW.hxx`:30 - `OSD_Exception_INT_OVERFLOW`
 pub use crate::ffi_types::OSD_Exception_INT_OVERFLOW as Exception_INT_OVERFLOW;
 
 unsafe impl crate::CppDeletable for Exception_INT_OVERFLOW {
@@ -3861,16 +2363,7 @@ unsafe impl crate::CppDeletable for Exception_INT_OVERFLOW {
 }
 
 impl Exception_INT_OVERFLOW {
-    /// **Source:** `OSD_Exception_INT_OVERFLOW.hxx`:34 - `OSD_Exception_INT_OVERFLOW::OSD_Exception_INT_OVERFLOW()`
-    pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKernel::OSD_Exception_INT_OVERFLOW_ctor(),
-            ))
-        }
-    }
-
-    /// **Source:** `OSD_Exception_INT_OVERFLOW.hxx`:34 - `OSD_Exception_INT_OVERFLOW::OSD_Exception_INT_OVERFLOW()`
+    /// **Source:** `OSD_Exception_INT_OVERFLOW.hxx`:30 - `OSD_Exception_INT_OVERFLOW::OSD_Exception_INT_OVERFLOW()`
     pub fn new_charptr(theMessage: &str) -> crate::OwnedPtr<Self> {
         let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
         unsafe {
@@ -3882,7 +2375,7 @@ impl Exception_INT_OVERFLOW {
         }
     }
 
-    /// **Source:** `OSD_Exception_INT_OVERFLOW.hxx`:34 - `OSD_Exception_INT_OVERFLOW::OSD_Exception_INT_OVERFLOW()`
+    /// **Source:** `OSD_Exception_INT_OVERFLOW.hxx`:30 - `OSD_Exception_INT_OVERFLOW::OSD_Exception_INT_OVERFLOW()`
     pub fn new_charptr2(theMessage: &str, theStackTrace: &str) -> crate::OwnedPtr<Self> {
         let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
         let c_theStackTrace = std::ffi::CString::new(theStackTrace).unwrap();
@@ -3896,83 +2389,17 @@ impl Exception_INT_OVERFLOW {
         }
     }
 
-    /// **Source:** `OSD_Exception_INT_OVERFLOW.hxx`:34 - `OSD_Exception_INT_OVERFLOW::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `OSD_Exception_INT_OVERFLOW.hxx`:30 - `OSD_Exception_INT_OVERFLOW::ExceptionType()`
+    pub fn exception_type(&self) -> std::string::String {
         unsafe {
-            &*(crate::check_result(
-                crate::ffi_extern_TKernel::OSD_Exception_INT_OVERFLOW_dynamic_type(
+            std::ffi::CStr::from_ptr(crate::check_result(
+                crate::ffi_extern_TKernel::OSD_Exception_INT_OVERFLOW_exception_type(
                     self as *const Self,
                 ),
             ))
         }
-    }
-
-    /// **Source:** `OSD_Exception_INT_OVERFLOW.hxx`:34 - `OSD_Exception_INT_OVERFLOW::Raise()`
-    pub fn raise_charptr(theMessage: &str) {
-        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKernel::OSD_Exception_INT_OVERFLOW_raise_charptr(
-                c_theMessage.as_ptr(),
-            )
-        })
-    }
-
-    /// **Source:** `OSD_Exception_INT_OVERFLOW.hxx`:34 - `OSD_Exception_INT_OVERFLOW::Raise()`
-    pub fn raise_sstream(theMessage: &mut crate::ffi_types::Standard_SStream) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKernel::OSD_Exception_INT_OVERFLOW_raise_sstream(theMessage)
-        })
-    }
-
-    /// **Source:** `OSD_Exception_INT_OVERFLOW.hxx`:34 - `OSD_Exception_INT_OVERFLOW::NewInstance()`
-    pub fn new_instance_charptr(
-        theMessage: &str,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleOSDExceptionINTOVERFLOW> {
-        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKernel::OSD_Exception_INT_OVERFLOW_new_instance_charptr(
-                    c_theMessage.as_ptr(),
-                ),
-            ))
-        }
-    }
-
-    /// **Source:** `OSD_Exception_INT_OVERFLOW.hxx`:34 - `OSD_Exception_INT_OVERFLOW::NewInstance()`
-    pub fn new_instance_charptr2(
-        theMessage: &str,
-        theStackTrace: &str,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleOSDExceptionINTOVERFLOW> {
-        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
-        let c_theStackTrace = std::ffi::CString::new(theStackTrace).unwrap();
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKernel::OSD_Exception_INT_OVERFLOW_new_instance_charptr2(
-                    c_theMessage.as_ptr(),
-                    c_theStackTrace.as_ptr(),
-                ),
-            ))
-        }
-    }
-
-    /// **Source:** `OSD_Exception_INT_OVERFLOW.hxx`:34 - `OSD_Exception_INT_OVERFLOW::get_type_name()`
-    pub fn get_type_name() -> std::string::String {
-        unsafe {
-            std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi_extern_TKernel::OSD_Exception_INT_OVERFLOW_get_type_name(),
-            ))
-        }
         .to_string_lossy()
         .into_owned()
-    }
-
-    /// **Source:** `OSD_Exception_INT_OVERFLOW.hxx`:34 - `OSD_Exception_INT_OVERFLOW::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
-        unsafe {
-            &*(crate::check_result(
-                crate::ffi_extern_TKernel::OSD_Exception_INT_OVERFLOW_get_type_descriptor(),
-            ))
-        }
     }
 
     /// Upcast to OSD_Exception
@@ -4019,40 +2446,7 @@ impl Exception_INT_OVERFLOW {
         }
     }
 
-    /// Upcast to Standard_Transient
-    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        unsafe {
-            &*crate::check_result(
-                crate::ffi_extern_TKernel::OSD_Exception_INT_OVERFLOW_as_Standard_Transient(
-                    self as *const Self,
-                ),
-            )
-        }
-    }
-
-    /// Upcast to Standard_Transient (mutable)
-    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        unsafe {
-            &mut *crate::check_result(
-                crate::ffi_extern_TKernel::OSD_Exception_INT_OVERFLOW_as_Standard_Transient_mut(
-                    self as *mut Self,
-                ),
-            )
-        }
-    }
-
-    /// Wrap in a Handle (reference-counted smart pointer)
-    pub fn to_handle(
-        obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleOSDExceptionINTOVERFLOW> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKernel::OSD_Exception_INT_OVERFLOW_to_handle(obj.into_raw()),
-            ))
-        }
-    }
-
-    /// Inherited: **Source:** `Standard_Failure.hxx`:58 - `Standard_Failure::Print()`
+    /// Inherited: **Source:** `Standard_Failure.hxx`:73 - `Standard_Failure::Print()`
     pub fn print(&self, theStream: &mut crate::ffi_types::Standard_OStream) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKernel::OSD_Exception_INT_OVERFLOW_inherited_Print(
@@ -4061,181 +2455,13 @@ impl Exception_INT_OVERFLOW {
             )
         })
     }
-
-    /// Inherited: **Source:** `Standard_Failure.hxx`:72 - `Standard_Failure::Reraise()`
-    pub fn reraise(&mut self) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKernel::OSD_Exception_INT_OVERFLOW_inherited_Reraise(
-                self as *mut Self,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Failure.hxx`:112 - `Standard_Failure::Jump()`
-    pub fn jump(&mut self) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKernel::OSD_Exception_INT_OVERFLOW_inherited_Jump(self as *mut Self)
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKernel::OSD_Exception_INT_OVERFLOW_inherited_IsInstance(
-                self as *const Self,
-                theType,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKernel::OSD_Exception_INT_OVERFLOW_inherited_IsKind(
-                self as *const Self,
-                theType,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
-    pub fn this(&self) -> Option<&crate::standard::Transient> {
-        {
-            let __val = crate::check_result(unsafe {
-                crate::ffi_extern_TKernel::OSD_Exception_INT_OVERFLOW_inherited_This(
-                    self as *const Self,
-                )
-            });
-            if __val.is_null() {
-                None
-            } else {
-                Some(unsafe { &*__val })
-            }
-        }
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
-    pub fn get_ref_count(&self) -> i32 {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKernel::OSD_Exception_INT_OVERFLOW_inherited_GetRefCount(
-                self as *const Self,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
-    pub fn increment_ref_counter(&mut self) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKernel::OSD_Exception_INT_OVERFLOW_inherited_IncrementRefCounter(
-                self as *mut Self,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
-    pub fn decrement_ref_counter(&mut self) -> i32 {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKernel::OSD_Exception_INT_OVERFLOW_inherited_DecrementRefCounter(
-                self as *mut Self,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
-    pub fn delete(&self) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKernel::OSD_Exception_INT_OVERFLOW_inherited_Delete(
-                self as *const Self,
-            )
-        })
-    }
-}
-
-pub use crate::ffi_types::HandleOSDExceptionINTOVERFLOW;
-
-unsafe impl crate::CppDeletable for HandleOSDExceptionINTOVERFLOW {
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            crate::ffi_extern_TKernel::HandleOSDExceptionINTOVERFLOW_destructor(ptr);
-        }
-    }
-}
-
-unsafe impl crate::CppCopyable for HandleOSDExceptionINTOVERFLOW {
-    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        unsafe {
-            crate::check_result(crate::ffi_extern_TKernel::HandleOSDExceptionINTOVERFLOW_clone(ptr))
-        }
-    }
-}
-
-impl HandleOSDExceptionINTOVERFLOW {
-    /// Returns `true` if this Handle is null (doesn't point to any object).
-    pub fn is_null(&self) -> bool {
-        unsafe {
-            crate::ffi_extern_TKernel::HandleOSDExceptionINTOVERFLOW_is_null(self as *const Self)
-        }
-    }
-
-    /// Dereference this Handle to access the underlying OSD_Exception_INT_OVERFLOW
-    pub fn get(&self) -> &crate::ffi_types::OSD_Exception_INT_OVERFLOW {
-        unsafe {
-            &*crate::check_result(crate::ffi_extern_TKernel::HandleOSDExceptionINTOVERFLOW_get(
-                self as *const Self,
-            ))
-        }
-    }
-
-    /// Dereference this Handle to mutably access the underlying OSD_Exception_INT_OVERFLOW
-    pub fn get_mut(&mut self) -> &mut crate::ffi_types::OSD_Exception_INT_OVERFLOW {
-        unsafe {
-            &mut *crate::check_result(
-                crate::ffi_extern_TKernel::HandleOSDExceptionINTOVERFLOW_get_mut(self as *mut Self),
-            )
-        }
-    }
-
-    /// Upcast Handle<OSD_Exception_INT_OVERFLOW> to Handle<OSD_Exception>
-    pub fn to_handle_exception(&self) -> crate::OwnedPtr<crate::ffi_types::HandleOSDException> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKernel::HandleOSDExceptionINTOVERFLOW_to_HandleOSDException(
-                    self as *const Self,
-                ),
-            ))
-        }
-    }
-
-    /// Upcast Handle<OSD_Exception_INT_OVERFLOW> to Handle<Standard_Failure>
-    pub fn to_handle_failure(&self) -> crate::OwnedPtr<crate::ffi_types::HandleStandardFailure> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKernel::HandleOSDExceptionINTOVERFLOW_to_HandleStandardFailure(
-                    self as *const Self,
-                ),
-            ))
-        }
-    }
-
-    /// Upcast Handle<OSD_Exception_INT_OVERFLOW> to Handle<Standard_Transient>
-    pub fn to_handle_transient(
-        &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKernel::HandleOSDExceptionINTOVERFLOW_to_HandleStandardTransient(
-                    self as *const Self,
-                ),
-            ))
-        }
-    }
 }
 
 // ========================
 // From OSD_Exception_INVALID_DISPOSITION.hxx
 // ========================
 
-/// **Source:** `OSD_Exception_INVALID_DISPOSITION.hxx`:34 - `OSD_Exception_INVALID_DISPOSITION`
+/// **Source:** `OSD_Exception_INVALID_DISPOSITION.hxx`:30 - `OSD_Exception_INVALID_DISPOSITION`
 pub use crate::ffi_types::OSD_Exception_INVALID_DISPOSITION as Exception_INVALID_DISPOSITION;
 
 unsafe impl crate::CppDeletable for Exception_INVALID_DISPOSITION {
@@ -4247,16 +2473,7 @@ unsafe impl crate::CppDeletable for Exception_INVALID_DISPOSITION {
 }
 
 impl Exception_INVALID_DISPOSITION {
-    /// **Source:** `OSD_Exception_INVALID_DISPOSITION.hxx`:34 - `OSD_Exception_INVALID_DISPOSITION::OSD_Exception_INVALID_DISPOSITION()`
-    pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKernel::OSD_Exception_INVALID_DISPOSITION_ctor(),
-            ))
-        }
-    }
-
-    /// **Source:** `OSD_Exception_INVALID_DISPOSITION.hxx`:34 - `OSD_Exception_INVALID_DISPOSITION::OSD_Exception_INVALID_DISPOSITION()`
+    /// **Source:** `OSD_Exception_INVALID_DISPOSITION.hxx`:30 - `OSD_Exception_INVALID_DISPOSITION::OSD_Exception_INVALID_DISPOSITION()`
     pub fn new_charptr(theMessage: &str) -> crate::OwnedPtr<Self> {
         let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
         unsafe {
@@ -4268,7 +2485,7 @@ impl Exception_INVALID_DISPOSITION {
         }
     }
 
-    /// **Source:** `OSD_Exception_INVALID_DISPOSITION.hxx`:34 - `OSD_Exception_INVALID_DISPOSITION::OSD_Exception_INVALID_DISPOSITION()`
+    /// **Source:** `OSD_Exception_INVALID_DISPOSITION.hxx`:30 - `OSD_Exception_INVALID_DISPOSITION::OSD_Exception_INVALID_DISPOSITION()`
     pub fn new_charptr2(theMessage: &str, theStackTrace: &str) -> crate::OwnedPtr<Self> {
         let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
         let c_theStackTrace = std::ffi::CString::new(theStackTrace).unwrap();
@@ -4282,83 +2499,17 @@ impl Exception_INVALID_DISPOSITION {
         }
     }
 
-    /// **Source:** `OSD_Exception_INVALID_DISPOSITION.hxx`:34 - `OSD_Exception_INVALID_DISPOSITION::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `OSD_Exception_INVALID_DISPOSITION.hxx`:30 - `OSD_Exception_INVALID_DISPOSITION::ExceptionType()`
+    pub fn exception_type(&self) -> std::string::String {
         unsafe {
-            &*(crate::check_result(
-                crate::ffi_extern_TKernel::OSD_Exception_INVALID_DISPOSITION_dynamic_type(
+            std::ffi::CStr::from_ptr(crate::check_result(
+                crate::ffi_extern_TKernel::OSD_Exception_INVALID_DISPOSITION_exception_type(
                     self as *const Self,
                 ),
             ))
         }
-    }
-
-    /// **Source:** `OSD_Exception_INVALID_DISPOSITION.hxx`:34 - `OSD_Exception_INVALID_DISPOSITION::Raise()`
-    pub fn raise_charptr(theMessage: &str) {
-        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKernel::OSD_Exception_INVALID_DISPOSITION_raise_charptr(
-                c_theMessage.as_ptr(),
-            )
-        })
-    }
-
-    /// **Source:** `OSD_Exception_INVALID_DISPOSITION.hxx`:34 - `OSD_Exception_INVALID_DISPOSITION::Raise()`
-    pub fn raise_sstream(theMessage: &mut crate::ffi_types::Standard_SStream) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKernel::OSD_Exception_INVALID_DISPOSITION_raise_sstream(theMessage)
-        })
-    }
-
-    /// **Source:** `OSD_Exception_INVALID_DISPOSITION.hxx`:34 - `OSD_Exception_INVALID_DISPOSITION::NewInstance()`
-    pub fn new_instance_charptr(
-        theMessage: &str,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleOSDExceptionINVALIDDISPOSITION> {
-        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKernel::OSD_Exception_INVALID_DISPOSITION_new_instance_charptr(
-                    c_theMessage.as_ptr(),
-                ),
-            ))
-        }
-    }
-
-    /// **Source:** `OSD_Exception_INVALID_DISPOSITION.hxx`:34 - `OSD_Exception_INVALID_DISPOSITION::NewInstance()`
-    pub fn new_instance_charptr2(
-        theMessage: &str,
-        theStackTrace: &str,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleOSDExceptionINVALIDDISPOSITION> {
-        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
-        let c_theStackTrace = std::ffi::CString::new(theStackTrace).unwrap();
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKernel::OSD_Exception_INVALID_DISPOSITION_new_instance_charptr2(
-                    c_theMessage.as_ptr(),
-                    c_theStackTrace.as_ptr(),
-                ),
-            ))
-        }
-    }
-
-    /// **Source:** `OSD_Exception_INVALID_DISPOSITION.hxx`:34 - `OSD_Exception_INVALID_DISPOSITION::get_type_name()`
-    pub fn get_type_name() -> std::string::String {
-        unsafe {
-            std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi_extern_TKernel::OSD_Exception_INVALID_DISPOSITION_get_type_name(),
-            ))
-        }
         .to_string_lossy()
         .into_owned()
-    }
-
-    /// **Source:** `OSD_Exception_INVALID_DISPOSITION.hxx`:34 - `OSD_Exception_INVALID_DISPOSITION::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
-        unsafe {
-            &*(crate::check_result(
-                crate::ffi_extern_TKernel::OSD_Exception_INVALID_DISPOSITION_get_type_descriptor(),
-            ))
-        }
     }
 
     /// Upcast to OSD_Exception
@@ -4401,38 +2552,7 @@ impl Exception_INVALID_DISPOSITION {
         }
     }
 
-    /// Upcast to Standard_Transient
-    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        unsafe {
-            &*crate::check_result(
-                crate::ffi_extern_TKernel::OSD_Exception_INVALID_DISPOSITION_as_Standard_Transient(
-                    self as *const Self,
-                ),
-            )
-        }
-    }
-
-    /// Upcast to Standard_Transient (mutable)
-    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        unsafe {
-            &mut *crate::check_result(crate::ffi_extern_TKernel::OSD_Exception_INVALID_DISPOSITION_as_Standard_Transient_mut(self as *mut Self))
-        }
-    }
-
-    /// Wrap in a Handle (reference-counted smart pointer)
-    pub fn to_handle(
-        obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleOSDExceptionINVALIDDISPOSITION> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKernel::OSD_Exception_INVALID_DISPOSITION_to_handle(
-                    obj.into_raw(),
-                ),
-            ))
-        }
-    }
-
-    /// Inherited: **Source:** `Standard_Failure.hxx`:58 - `Standard_Failure::Print()`
+    /// Inherited: **Source:** `Standard_Failure.hxx`:73 - `Standard_Failure::Print()`
     pub fn print(&self, theStream: &mut crate::ffi_types::Standard_OStream) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKernel::OSD_Exception_INVALID_DISPOSITION_inherited_Print(
@@ -4441,175 +2561,13 @@ impl Exception_INVALID_DISPOSITION {
             )
         })
     }
-
-    /// Inherited: **Source:** `Standard_Failure.hxx`:72 - `Standard_Failure::Reraise()`
-    pub fn reraise(&mut self) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKernel::OSD_Exception_INVALID_DISPOSITION_inherited_Reraise(
-                self as *mut Self,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Failure.hxx`:112 - `Standard_Failure::Jump()`
-    pub fn jump(&mut self) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKernel::OSD_Exception_INVALID_DISPOSITION_inherited_Jump(
-                self as *mut Self,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKernel::OSD_Exception_INVALID_DISPOSITION_inherited_IsInstance(
-                self as *const Self,
-                theType,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKernel::OSD_Exception_INVALID_DISPOSITION_inherited_IsKind(
-                self as *const Self,
-                theType,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
-    pub fn this(&self) -> Option<&crate::standard::Transient> {
-        {
-            let __val = crate::check_result(unsafe {
-                crate::ffi_extern_TKernel::OSD_Exception_INVALID_DISPOSITION_inherited_This(
-                    self as *const Self,
-                )
-            });
-            if __val.is_null() {
-                None
-            } else {
-                Some(unsafe { &*__val })
-            }
-        }
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
-    pub fn get_ref_count(&self) -> i32 {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKernel::OSD_Exception_INVALID_DISPOSITION_inherited_GetRefCount(
-                self as *const Self,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
-    pub fn increment_ref_counter(&mut self) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKernel::OSD_Exception_INVALID_DISPOSITION_inherited_IncrementRefCounter(self as *mut Self)
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
-    pub fn decrement_ref_counter(&mut self) -> i32 {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKernel::OSD_Exception_INVALID_DISPOSITION_inherited_DecrementRefCounter(self as *mut Self)
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
-    pub fn delete(&self) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKernel::OSD_Exception_INVALID_DISPOSITION_inherited_Delete(
-                self as *const Self,
-            )
-        })
-    }
-}
-
-pub use crate::ffi_types::HandleOSDExceptionINVALIDDISPOSITION;
-
-unsafe impl crate::CppDeletable for HandleOSDExceptionINVALIDDISPOSITION {
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            crate::ffi_extern_TKernel::HandleOSDExceptionINVALIDDISPOSITION_destructor(ptr);
-        }
-    }
-}
-
-unsafe impl crate::CppCopyable for HandleOSDExceptionINVALIDDISPOSITION {
-    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        unsafe {
-            crate::check_result(
-                crate::ffi_extern_TKernel::HandleOSDExceptionINVALIDDISPOSITION_clone(ptr),
-            )
-        }
-    }
-}
-
-impl HandleOSDExceptionINVALIDDISPOSITION {
-    /// Returns `true` if this Handle is null (doesn't point to any object).
-    pub fn is_null(&self) -> bool {
-        unsafe {
-            crate::ffi_extern_TKernel::HandleOSDExceptionINVALIDDISPOSITION_is_null(
-                self as *const Self,
-            )
-        }
-    }
-
-    /// Dereference this Handle to access the underlying OSD_Exception_INVALID_DISPOSITION
-    pub fn get(&self) -> &crate::ffi_types::OSD_Exception_INVALID_DISPOSITION {
-        unsafe {
-            &*crate::check_result(
-                crate::ffi_extern_TKernel::HandleOSDExceptionINVALIDDISPOSITION_get(
-                    self as *const Self,
-                ),
-            )
-        }
-    }
-
-    /// Dereference this Handle to mutably access the underlying OSD_Exception_INVALID_DISPOSITION
-    pub fn get_mut(&mut self) -> &mut crate::ffi_types::OSD_Exception_INVALID_DISPOSITION {
-        unsafe {
-            &mut *crate::check_result(
-                crate::ffi_extern_TKernel::HandleOSDExceptionINVALIDDISPOSITION_get_mut(
-                    self as *mut Self,
-                ),
-            )
-        }
-    }
-
-    /// Upcast Handle<OSD_Exception_INVALID_DISPOSITION> to Handle<OSD_Exception>
-    pub fn to_handle_exception(&self) -> crate::OwnedPtr<crate::ffi_types::HandleOSDException> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKernel::HandleOSDExceptionINVALIDDISPOSITION_to_HandleOSDException(self as *const Self)))
-        }
-    }
-
-    /// Upcast Handle<OSD_Exception_INVALID_DISPOSITION> to Handle<Standard_Failure>
-    pub fn to_handle_failure(&self) -> crate::OwnedPtr<crate::ffi_types::HandleStandardFailure> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKernel::HandleOSDExceptionINVALIDDISPOSITION_to_HandleStandardFailure(self as *const Self)))
-        }
-    }
-
-    /// Upcast Handle<OSD_Exception_INVALID_DISPOSITION> to Handle<Standard_Transient>
-    pub fn to_handle_transient(
-        &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKernel::HandleOSDExceptionINVALIDDISPOSITION_to_HandleStandardTransient(self as *const Self)))
-        }
-    }
 }
 
 // ========================
 // From OSD_Exception_IN_PAGE_ERROR.hxx
 // ========================
 
-/// **Source:** `OSD_Exception_IN_PAGE_ERROR.hxx`:34 - `OSD_Exception_IN_PAGE_ERROR`
+/// **Source:** `OSD_Exception_IN_PAGE_ERROR.hxx`:30 - `OSD_Exception_IN_PAGE_ERROR`
 pub use crate::ffi_types::OSD_Exception_IN_PAGE_ERROR as Exception_IN_PAGE_ERROR;
 
 unsafe impl crate::CppDeletable for Exception_IN_PAGE_ERROR {
@@ -4621,16 +2579,7 @@ unsafe impl crate::CppDeletable for Exception_IN_PAGE_ERROR {
 }
 
 impl Exception_IN_PAGE_ERROR {
-    /// **Source:** `OSD_Exception_IN_PAGE_ERROR.hxx`:34 - `OSD_Exception_IN_PAGE_ERROR::OSD_Exception_IN_PAGE_ERROR()`
-    pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKernel::OSD_Exception_IN_PAGE_ERROR_ctor(),
-            ))
-        }
-    }
-
-    /// **Source:** `OSD_Exception_IN_PAGE_ERROR.hxx`:34 - `OSD_Exception_IN_PAGE_ERROR::OSD_Exception_IN_PAGE_ERROR()`
+    /// **Source:** `OSD_Exception_IN_PAGE_ERROR.hxx`:30 - `OSD_Exception_IN_PAGE_ERROR::OSD_Exception_IN_PAGE_ERROR()`
     pub fn new_charptr(theMessage: &str) -> crate::OwnedPtr<Self> {
         let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
         unsafe {
@@ -4642,7 +2591,7 @@ impl Exception_IN_PAGE_ERROR {
         }
     }
 
-    /// **Source:** `OSD_Exception_IN_PAGE_ERROR.hxx`:34 - `OSD_Exception_IN_PAGE_ERROR::OSD_Exception_IN_PAGE_ERROR()`
+    /// **Source:** `OSD_Exception_IN_PAGE_ERROR.hxx`:30 - `OSD_Exception_IN_PAGE_ERROR::OSD_Exception_IN_PAGE_ERROR()`
     pub fn new_charptr2(theMessage: &str, theStackTrace: &str) -> crate::OwnedPtr<Self> {
         let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
         let c_theStackTrace = std::ffi::CString::new(theStackTrace).unwrap();
@@ -4656,83 +2605,17 @@ impl Exception_IN_PAGE_ERROR {
         }
     }
 
-    /// **Source:** `OSD_Exception_IN_PAGE_ERROR.hxx`:34 - `OSD_Exception_IN_PAGE_ERROR::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `OSD_Exception_IN_PAGE_ERROR.hxx`:30 - `OSD_Exception_IN_PAGE_ERROR::ExceptionType()`
+    pub fn exception_type(&self) -> std::string::String {
         unsafe {
-            &*(crate::check_result(
-                crate::ffi_extern_TKernel::OSD_Exception_IN_PAGE_ERROR_dynamic_type(
+            std::ffi::CStr::from_ptr(crate::check_result(
+                crate::ffi_extern_TKernel::OSD_Exception_IN_PAGE_ERROR_exception_type(
                     self as *const Self,
                 ),
             ))
         }
-    }
-
-    /// **Source:** `OSD_Exception_IN_PAGE_ERROR.hxx`:34 - `OSD_Exception_IN_PAGE_ERROR::Raise()`
-    pub fn raise_charptr(theMessage: &str) {
-        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKernel::OSD_Exception_IN_PAGE_ERROR_raise_charptr(
-                c_theMessage.as_ptr(),
-            )
-        })
-    }
-
-    /// **Source:** `OSD_Exception_IN_PAGE_ERROR.hxx`:34 - `OSD_Exception_IN_PAGE_ERROR::Raise()`
-    pub fn raise_sstream(theMessage: &mut crate::ffi_types::Standard_SStream) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKernel::OSD_Exception_IN_PAGE_ERROR_raise_sstream(theMessage)
-        })
-    }
-
-    /// **Source:** `OSD_Exception_IN_PAGE_ERROR.hxx`:34 - `OSD_Exception_IN_PAGE_ERROR::NewInstance()`
-    pub fn new_instance_charptr(
-        theMessage: &str,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleOSDExceptionINPAGEERROR> {
-        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKernel::OSD_Exception_IN_PAGE_ERROR_new_instance_charptr(
-                    c_theMessage.as_ptr(),
-                ),
-            ))
-        }
-    }
-
-    /// **Source:** `OSD_Exception_IN_PAGE_ERROR.hxx`:34 - `OSD_Exception_IN_PAGE_ERROR::NewInstance()`
-    pub fn new_instance_charptr2(
-        theMessage: &str,
-        theStackTrace: &str,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleOSDExceptionINPAGEERROR> {
-        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
-        let c_theStackTrace = std::ffi::CString::new(theStackTrace).unwrap();
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKernel::OSD_Exception_IN_PAGE_ERROR_new_instance_charptr2(
-                    c_theMessage.as_ptr(),
-                    c_theStackTrace.as_ptr(),
-                ),
-            ))
-        }
-    }
-
-    /// **Source:** `OSD_Exception_IN_PAGE_ERROR.hxx`:34 - `OSD_Exception_IN_PAGE_ERROR::get_type_name()`
-    pub fn get_type_name() -> std::string::String {
-        unsafe {
-            std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi_extern_TKernel::OSD_Exception_IN_PAGE_ERROR_get_type_name(),
-            ))
-        }
         .to_string_lossy()
         .into_owned()
-    }
-
-    /// **Source:** `OSD_Exception_IN_PAGE_ERROR.hxx`:34 - `OSD_Exception_IN_PAGE_ERROR::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
-        unsafe {
-            &*(crate::check_result(
-                crate::ffi_extern_TKernel::OSD_Exception_IN_PAGE_ERROR_get_type_descriptor(),
-            ))
-        }
     }
 
     /// Upcast to OSD_Exception
@@ -4779,40 +2662,7 @@ impl Exception_IN_PAGE_ERROR {
         }
     }
 
-    /// Upcast to Standard_Transient
-    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        unsafe {
-            &*crate::check_result(
-                crate::ffi_extern_TKernel::OSD_Exception_IN_PAGE_ERROR_as_Standard_Transient(
-                    self as *const Self,
-                ),
-            )
-        }
-    }
-
-    /// Upcast to Standard_Transient (mutable)
-    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        unsafe {
-            &mut *crate::check_result(
-                crate::ffi_extern_TKernel::OSD_Exception_IN_PAGE_ERROR_as_Standard_Transient_mut(
-                    self as *mut Self,
-                ),
-            )
-        }
-    }
-
-    /// Wrap in a Handle (reference-counted smart pointer)
-    pub fn to_handle(
-        obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleOSDExceptionINPAGEERROR> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKernel::OSD_Exception_IN_PAGE_ERROR_to_handle(obj.into_raw()),
-            ))
-        }
-    }
-
-    /// Inherited: **Source:** `Standard_Failure.hxx`:58 - `Standard_Failure::Print()`
+    /// Inherited: **Source:** `Standard_Failure.hxx`:73 - `Standard_Failure::Print()`
     pub fn print(&self, theStream: &mut crate::ffi_types::Standard_OStream) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKernel::OSD_Exception_IN_PAGE_ERROR_inherited_Print(
@@ -4821,181 +2671,13 @@ impl Exception_IN_PAGE_ERROR {
             )
         })
     }
-
-    /// Inherited: **Source:** `Standard_Failure.hxx`:72 - `Standard_Failure::Reraise()`
-    pub fn reraise(&mut self) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKernel::OSD_Exception_IN_PAGE_ERROR_inherited_Reraise(
-                self as *mut Self,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Failure.hxx`:112 - `Standard_Failure::Jump()`
-    pub fn jump(&mut self) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKernel::OSD_Exception_IN_PAGE_ERROR_inherited_Jump(self as *mut Self)
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKernel::OSD_Exception_IN_PAGE_ERROR_inherited_IsInstance(
-                self as *const Self,
-                theType,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKernel::OSD_Exception_IN_PAGE_ERROR_inherited_IsKind(
-                self as *const Self,
-                theType,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
-    pub fn this(&self) -> Option<&crate::standard::Transient> {
-        {
-            let __val = crate::check_result(unsafe {
-                crate::ffi_extern_TKernel::OSD_Exception_IN_PAGE_ERROR_inherited_This(
-                    self as *const Self,
-                )
-            });
-            if __val.is_null() {
-                None
-            } else {
-                Some(unsafe { &*__val })
-            }
-        }
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
-    pub fn get_ref_count(&self) -> i32 {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKernel::OSD_Exception_IN_PAGE_ERROR_inherited_GetRefCount(
-                self as *const Self,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
-    pub fn increment_ref_counter(&mut self) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKernel::OSD_Exception_IN_PAGE_ERROR_inherited_IncrementRefCounter(
-                self as *mut Self,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
-    pub fn decrement_ref_counter(&mut self) -> i32 {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKernel::OSD_Exception_IN_PAGE_ERROR_inherited_DecrementRefCounter(
-                self as *mut Self,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
-    pub fn delete(&self) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKernel::OSD_Exception_IN_PAGE_ERROR_inherited_Delete(
-                self as *const Self,
-            )
-        })
-    }
-}
-
-pub use crate::ffi_types::HandleOSDExceptionINPAGEERROR;
-
-unsafe impl crate::CppDeletable for HandleOSDExceptionINPAGEERROR {
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            crate::ffi_extern_TKernel::HandleOSDExceptionINPAGEERROR_destructor(ptr);
-        }
-    }
-}
-
-unsafe impl crate::CppCopyable for HandleOSDExceptionINPAGEERROR {
-    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        unsafe {
-            crate::check_result(crate::ffi_extern_TKernel::HandleOSDExceptionINPAGEERROR_clone(ptr))
-        }
-    }
-}
-
-impl HandleOSDExceptionINPAGEERROR {
-    /// Returns `true` if this Handle is null (doesn't point to any object).
-    pub fn is_null(&self) -> bool {
-        unsafe {
-            crate::ffi_extern_TKernel::HandleOSDExceptionINPAGEERROR_is_null(self as *const Self)
-        }
-    }
-
-    /// Dereference this Handle to access the underlying OSD_Exception_IN_PAGE_ERROR
-    pub fn get(&self) -> &crate::ffi_types::OSD_Exception_IN_PAGE_ERROR {
-        unsafe {
-            &*crate::check_result(crate::ffi_extern_TKernel::HandleOSDExceptionINPAGEERROR_get(
-                self as *const Self,
-            ))
-        }
-    }
-
-    /// Dereference this Handle to mutably access the underlying OSD_Exception_IN_PAGE_ERROR
-    pub fn get_mut(&mut self) -> &mut crate::ffi_types::OSD_Exception_IN_PAGE_ERROR {
-        unsafe {
-            &mut *crate::check_result(
-                crate::ffi_extern_TKernel::HandleOSDExceptionINPAGEERROR_get_mut(self as *mut Self),
-            )
-        }
-    }
-
-    /// Upcast Handle<OSD_Exception_IN_PAGE_ERROR> to Handle<OSD_Exception>
-    pub fn to_handle_exception(&self) -> crate::OwnedPtr<crate::ffi_types::HandleOSDException> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKernel::HandleOSDExceptionINPAGEERROR_to_HandleOSDException(
-                    self as *const Self,
-                ),
-            ))
-        }
-    }
-
-    /// Upcast Handle<OSD_Exception_IN_PAGE_ERROR> to Handle<Standard_Failure>
-    pub fn to_handle_failure(&self) -> crate::OwnedPtr<crate::ffi_types::HandleStandardFailure> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKernel::HandleOSDExceptionINPAGEERROR_to_HandleStandardFailure(
-                    self as *const Self,
-                ),
-            ))
-        }
-    }
-
-    /// Upcast Handle<OSD_Exception_IN_PAGE_ERROR> to Handle<Standard_Transient>
-    pub fn to_handle_transient(
-        &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKernel::HandleOSDExceptionINPAGEERROR_to_HandleStandardTransient(
-                    self as *const Self,
-                ),
-            ))
-        }
-    }
 }
 
 // ========================
 // From OSD_Exception_NONCONTINUABLE_EXCEPTION.hxx
 // ========================
 
-/// **Source:** `OSD_Exception_NONCONTINUABLE_EXCEPTION.hxx`:34 - `OSD_Exception_NONCONTINUABLE_EXCEPTION`
+/// **Source:** `OSD_Exception_NONCONTINUABLE_EXCEPTION.hxx`:30 - `OSD_Exception_NONCONTINUABLE_EXCEPTION`
 pub use crate::ffi_types::OSD_Exception_NONCONTINUABLE_EXCEPTION as Exception_NONCONTINUABLE_EXCEPTION;
 
 unsafe impl crate::CppDeletable for Exception_NONCONTINUABLE_EXCEPTION {
@@ -5007,16 +2689,7 @@ unsafe impl crate::CppDeletable for Exception_NONCONTINUABLE_EXCEPTION {
 }
 
 impl Exception_NONCONTINUABLE_EXCEPTION {
-    /// **Source:** `OSD_Exception_NONCONTINUABLE_EXCEPTION.hxx`:34 - `OSD_Exception_NONCONTINUABLE_EXCEPTION::OSD_Exception_NONCONTINUABLE_EXCEPTION()`
-    pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKernel::OSD_Exception_NONCONTINUABLE_EXCEPTION_ctor(),
-            ))
-        }
-    }
-
-    /// **Source:** `OSD_Exception_NONCONTINUABLE_EXCEPTION.hxx`:34 - `OSD_Exception_NONCONTINUABLE_EXCEPTION::OSD_Exception_NONCONTINUABLE_EXCEPTION()`
+    /// **Source:** `OSD_Exception_NONCONTINUABLE_EXCEPTION.hxx`:30 - `OSD_Exception_NONCONTINUABLE_EXCEPTION::OSD_Exception_NONCONTINUABLE_EXCEPTION()`
     pub fn new_charptr(theMessage: &str) -> crate::OwnedPtr<Self> {
         let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
         unsafe {
@@ -5028,7 +2701,7 @@ impl Exception_NONCONTINUABLE_EXCEPTION {
         }
     }
 
-    /// **Source:** `OSD_Exception_NONCONTINUABLE_EXCEPTION.hxx`:34 - `OSD_Exception_NONCONTINUABLE_EXCEPTION::OSD_Exception_NONCONTINUABLE_EXCEPTION()`
+    /// **Source:** `OSD_Exception_NONCONTINUABLE_EXCEPTION.hxx`:30 - `OSD_Exception_NONCONTINUABLE_EXCEPTION::OSD_Exception_NONCONTINUABLE_EXCEPTION()`
     pub fn new_charptr2(theMessage: &str, theStackTrace: &str) -> crate::OwnedPtr<Self> {
         let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
         let c_theStackTrace = std::ffi::CString::new(theStackTrace).unwrap();
@@ -5042,74 +2715,17 @@ impl Exception_NONCONTINUABLE_EXCEPTION {
         }
     }
 
-    /// **Source:** `OSD_Exception_NONCONTINUABLE_EXCEPTION.hxx`:34 - `OSD_Exception_NONCONTINUABLE_EXCEPTION::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `OSD_Exception_NONCONTINUABLE_EXCEPTION.hxx`:30 - `OSD_Exception_NONCONTINUABLE_EXCEPTION::ExceptionType()`
+    pub fn exception_type(&self) -> std::string::String {
         unsafe {
-            &*(crate::check_result(
-                crate::ffi_extern_TKernel::OSD_Exception_NONCONTINUABLE_EXCEPTION_dynamic_type(
+            std::ffi::CStr::from_ptr(crate::check_result(
+                crate::ffi_extern_TKernel::OSD_Exception_NONCONTINUABLE_EXCEPTION_exception_type(
                     self as *const Self,
                 ),
             ))
         }
-    }
-
-    /// **Source:** `OSD_Exception_NONCONTINUABLE_EXCEPTION.hxx`:34 - `OSD_Exception_NONCONTINUABLE_EXCEPTION::Raise()`
-    pub fn raise_charptr(theMessage: &str) {
-        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKernel::OSD_Exception_NONCONTINUABLE_EXCEPTION_raise_charptr(
-                c_theMessage.as_ptr(),
-            )
-        })
-    }
-
-    /// **Source:** `OSD_Exception_NONCONTINUABLE_EXCEPTION.hxx`:34 - `OSD_Exception_NONCONTINUABLE_EXCEPTION::Raise()`
-    pub fn raise_sstream(theMessage: &mut crate::ffi_types::Standard_SStream) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKernel::OSD_Exception_NONCONTINUABLE_EXCEPTION_raise_sstream(
-                theMessage,
-            )
-        })
-    }
-
-    /// **Source:** `OSD_Exception_NONCONTINUABLE_EXCEPTION.hxx`:34 - `OSD_Exception_NONCONTINUABLE_EXCEPTION::NewInstance()`
-    pub fn new_instance_charptr(
-        theMessage: &str,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleOSDExceptionNONCONTINUABLEEXCEPTION> {
-        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKernel::OSD_Exception_NONCONTINUABLE_EXCEPTION_new_instance_charptr(c_theMessage.as_ptr())))
-        }
-    }
-
-    /// **Source:** `OSD_Exception_NONCONTINUABLE_EXCEPTION.hxx`:34 - `OSD_Exception_NONCONTINUABLE_EXCEPTION::NewInstance()`
-    pub fn new_instance_charptr2(
-        theMessage: &str,
-        theStackTrace: &str,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleOSDExceptionNONCONTINUABLEEXCEPTION> {
-        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
-        let c_theStackTrace = std::ffi::CString::new(theStackTrace).unwrap();
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKernel::OSD_Exception_NONCONTINUABLE_EXCEPTION_new_instance_charptr2(c_theMessage.as_ptr(), c_theStackTrace.as_ptr())))
-        }
-    }
-
-    /// **Source:** `OSD_Exception_NONCONTINUABLE_EXCEPTION.hxx`:34 - `OSD_Exception_NONCONTINUABLE_EXCEPTION::get_type_name()`
-    pub fn get_type_name() -> std::string::String {
-        unsafe {
-            std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi_extern_TKernel::OSD_Exception_NONCONTINUABLE_EXCEPTION_get_type_name(),
-            ))
-        }
         .to_string_lossy()
         .into_owned()
-    }
-
-    /// **Source:** `OSD_Exception_NONCONTINUABLE_EXCEPTION.hxx`:34 - `OSD_Exception_NONCONTINUABLE_EXCEPTION::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
-        unsafe {
-            &*(crate::check_result(crate::ffi_extern_TKernel::OSD_Exception_NONCONTINUABLE_EXCEPTION_get_type_descriptor()))
-        }
     }
 
     /// Upcast to OSD_Exception
@@ -5144,34 +2760,7 @@ impl Exception_NONCONTINUABLE_EXCEPTION {
         }
     }
 
-    /// Upcast to Standard_Transient
-    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        unsafe {
-            &*crate::check_result(crate::ffi_extern_TKernel::OSD_Exception_NONCONTINUABLE_EXCEPTION_as_Standard_Transient(self as *const Self))
-        }
-    }
-
-    /// Upcast to Standard_Transient (mutable)
-    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        unsafe {
-            &mut *crate::check_result(crate::ffi_extern_TKernel::OSD_Exception_NONCONTINUABLE_EXCEPTION_as_Standard_Transient_mut(self as *mut Self))
-        }
-    }
-
-    /// Wrap in a Handle (reference-counted smart pointer)
-    pub fn to_handle(
-        obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleOSDExceptionNONCONTINUABLEEXCEPTION> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKernel::OSD_Exception_NONCONTINUABLE_EXCEPTION_to_handle(
-                    obj.into_raw(),
-                ),
-            ))
-        }
-    }
-
-    /// Inherited: **Source:** `Standard_Failure.hxx`:58 - `Standard_Failure::Print()`
+    /// Inherited: **Source:** `Standard_Failure.hxx`:73 - `Standard_Failure::Print()`
     pub fn print(&self, theStream: &mut crate::ffi_types::Standard_OStream) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKernel::OSD_Exception_NONCONTINUABLE_EXCEPTION_inherited_Print(
@@ -5180,175 +2769,13 @@ impl Exception_NONCONTINUABLE_EXCEPTION {
             )
         })
     }
-
-    /// Inherited: **Source:** `Standard_Failure.hxx`:72 - `Standard_Failure::Reraise()`
-    pub fn reraise(&mut self) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKernel::OSD_Exception_NONCONTINUABLE_EXCEPTION_inherited_Reraise(
-                self as *mut Self,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Failure.hxx`:112 - `Standard_Failure::Jump()`
-    pub fn jump(&mut self) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKernel::OSD_Exception_NONCONTINUABLE_EXCEPTION_inherited_Jump(
-                self as *mut Self,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKernel::OSD_Exception_NONCONTINUABLE_EXCEPTION_inherited_IsInstance(
-                self as *const Self,
-                theType,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKernel::OSD_Exception_NONCONTINUABLE_EXCEPTION_inherited_IsKind(
-                self as *const Self,
-                theType,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
-    pub fn this(&self) -> Option<&crate::standard::Transient> {
-        {
-            let __val = crate::check_result(unsafe {
-                crate::ffi_extern_TKernel::OSD_Exception_NONCONTINUABLE_EXCEPTION_inherited_This(
-                    self as *const Self,
-                )
-            });
-            if __val.is_null() {
-                None
-            } else {
-                Some(unsafe { &*__val })
-            }
-        }
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
-    pub fn get_ref_count(&self) -> i32 {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKernel::OSD_Exception_NONCONTINUABLE_EXCEPTION_inherited_GetRefCount(
-                self as *const Self,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
-    pub fn increment_ref_counter(&mut self) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKernel::OSD_Exception_NONCONTINUABLE_EXCEPTION_inherited_IncrementRefCounter(self as *mut Self)
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
-    pub fn decrement_ref_counter(&mut self) -> i32 {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKernel::OSD_Exception_NONCONTINUABLE_EXCEPTION_inherited_DecrementRefCounter(self as *mut Self)
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
-    pub fn delete(&self) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKernel::OSD_Exception_NONCONTINUABLE_EXCEPTION_inherited_Delete(
-                self as *const Self,
-            )
-        })
-    }
-}
-
-pub use crate::ffi_types::HandleOSDExceptionNONCONTINUABLEEXCEPTION;
-
-unsafe impl crate::CppDeletable for HandleOSDExceptionNONCONTINUABLEEXCEPTION {
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            crate::ffi_extern_TKernel::HandleOSDExceptionNONCONTINUABLEEXCEPTION_destructor(ptr);
-        }
-    }
-}
-
-unsafe impl crate::CppCopyable for HandleOSDExceptionNONCONTINUABLEEXCEPTION {
-    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        unsafe {
-            crate::check_result(
-                crate::ffi_extern_TKernel::HandleOSDExceptionNONCONTINUABLEEXCEPTION_clone(ptr),
-            )
-        }
-    }
-}
-
-impl HandleOSDExceptionNONCONTINUABLEEXCEPTION {
-    /// Returns `true` if this Handle is null (doesn't point to any object).
-    pub fn is_null(&self) -> bool {
-        unsafe {
-            crate::ffi_extern_TKernel::HandleOSDExceptionNONCONTINUABLEEXCEPTION_is_null(
-                self as *const Self,
-            )
-        }
-    }
-
-    /// Dereference this Handle to access the underlying OSD_Exception_NONCONTINUABLE_EXCEPTION
-    pub fn get(&self) -> &crate::ffi_types::OSD_Exception_NONCONTINUABLE_EXCEPTION {
-        unsafe {
-            &*crate::check_result(
-                crate::ffi_extern_TKernel::HandleOSDExceptionNONCONTINUABLEEXCEPTION_get(
-                    self as *const Self,
-                ),
-            )
-        }
-    }
-
-    /// Dereference this Handle to mutably access the underlying OSD_Exception_NONCONTINUABLE_EXCEPTION
-    pub fn get_mut(&mut self) -> &mut crate::ffi_types::OSD_Exception_NONCONTINUABLE_EXCEPTION {
-        unsafe {
-            &mut *crate::check_result(
-                crate::ffi_extern_TKernel::HandleOSDExceptionNONCONTINUABLEEXCEPTION_get_mut(
-                    self as *mut Self,
-                ),
-            )
-        }
-    }
-
-    /// Upcast Handle<OSD_Exception_NONCONTINUABLE_EXCEPTION> to Handle<OSD_Exception>
-    pub fn to_handle_exception(&self) -> crate::OwnedPtr<crate::ffi_types::HandleOSDException> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKernel::HandleOSDExceptionNONCONTINUABLEEXCEPTION_to_HandleOSDException(self as *const Self)))
-        }
-    }
-
-    /// Upcast Handle<OSD_Exception_NONCONTINUABLE_EXCEPTION> to Handle<Standard_Failure>
-    pub fn to_handle_failure(&self) -> crate::OwnedPtr<crate::ffi_types::HandleStandardFailure> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKernel::HandleOSDExceptionNONCONTINUABLEEXCEPTION_to_HandleStandardFailure(self as *const Self)))
-        }
-    }
-
-    /// Upcast Handle<OSD_Exception_NONCONTINUABLE_EXCEPTION> to Handle<Standard_Transient>
-    pub fn to_handle_transient(
-        &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKernel::HandleOSDExceptionNONCONTINUABLEEXCEPTION_to_HandleStandardTransient(self as *const Self)))
-        }
-    }
 }
 
 // ========================
 // From OSD_Exception_PRIV_INSTRUCTION.hxx
 // ========================
 
-/// **Source:** `OSD_Exception_PRIV_INSTRUCTION.hxx`:34 - `OSD_Exception_PRIV_INSTRUCTION`
+/// **Source:** `OSD_Exception_PRIV_INSTRUCTION.hxx`:30 - `OSD_Exception_PRIV_INSTRUCTION`
 pub use crate::ffi_types::OSD_Exception_PRIV_INSTRUCTION as Exception_PRIV_INSTRUCTION;
 
 unsafe impl crate::CppDeletable for Exception_PRIV_INSTRUCTION {
@@ -5360,16 +2787,7 @@ unsafe impl crate::CppDeletable for Exception_PRIV_INSTRUCTION {
 }
 
 impl Exception_PRIV_INSTRUCTION {
-    /// **Source:** `OSD_Exception_PRIV_INSTRUCTION.hxx`:34 - `OSD_Exception_PRIV_INSTRUCTION::OSD_Exception_PRIV_INSTRUCTION()`
-    pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKernel::OSD_Exception_PRIV_INSTRUCTION_ctor(),
-            ))
-        }
-    }
-
-    /// **Source:** `OSD_Exception_PRIV_INSTRUCTION.hxx`:34 - `OSD_Exception_PRIV_INSTRUCTION::OSD_Exception_PRIV_INSTRUCTION()`
+    /// **Source:** `OSD_Exception_PRIV_INSTRUCTION.hxx`:30 - `OSD_Exception_PRIV_INSTRUCTION::OSD_Exception_PRIV_INSTRUCTION()`
     pub fn new_charptr(theMessage: &str) -> crate::OwnedPtr<Self> {
         let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
         unsafe {
@@ -5381,7 +2799,7 @@ impl Exception_PRIV_INSTRUCTION {
         }
     }
 
-    /// **Source:** `OSD_Exception_PRIV_INSTRUCTION.hxx`:34 - `OSD_Exception_PRIV_INSTRUCTION::OSD_Exception_PRIV_INSTRUCTION()`
+    /// **Source:** `OSD_Exception_PRIV_INSTRUCTION.hxx`:30 - `OSD_Exception_PRIV_INSTRUCTION::OSD_Exception_PRIV_INSTRUCTION()`
     pub fn new_charptr2(theMessage: &str, theStackTrace: &str) -> crate::OwnedPtr<Self> {
         let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
         let c_theStackTrace = std::ffi::CString::new(theStackTrace).unwrap();
@@ -5395,83 +2813,17 @@ impl Exception_PRIV_INSTRUCTION {
         }
     }
 
-    /// **Source:** `OSD_Exception_PRIV_INSTRUCTION.hxx`:34 - `OSD_Exception_PRIV_INSTRUCTION::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `OSD_Exception_PRIV_INSTRUCTION.hxx`:30 - `OSD_Exception_PRIV_INSTRUCTION::ExceptionType()`
+    pub fn exception_type(&self) -> std::string::String {
         unsafe {
-            &*(crate::check_result(
-                crate::ffi_extern_TKernel::OSD_Exception_PRIV_INSTRUCTION_dynamic_type(
+            std::ffi::CStr::from_ptr(crate::check_result(
+                crate::ffi_extern_TKernel::OSD_Exception_PRIV_INSTRUCTION_exception_type(
                     self as *const Self,
                 ),
             ))
         }
-    }
-
-    /// **Source:** `OSD_Exception_PRIV_INSTRUCTION.hxx`:34 - `OSD_Exception_PRIV_INSTRUCTION::Raise()`
-    pub fn raise_charptr(theMessage: &str) {
-        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKernel::OSD_Exception_PRIV_INSTRUCTION_raise_charptr(
-                c_theMessage.as_ptr(),
-            )
-        })
-    }
-
-    /// **Source:** `OSD_Exception_PRIV_INSTRUCTION.hxx`:34 - `OSD_Exception_PRIV_INSTRUCTION::Raise()`
-    pub fn raise_sstream(theMessage: &mut crate::ffi_types::Standard_SStream) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKernel::OSD_Exception_PRIV_INSTRUCTION_raise_sstream(theMessage)
-        })
-    }
-
-    /// **Source:** `OSD_Exception_PRIV_INSTRUCTION.hxx`:34 - `OSD_Exception_PRIV_INSTRUCTION::NewInstance()`
-    pub fn new_instance_charptr(
-        theMessage: &str,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleOSDExceptionPRIVINSTRUCTION> {
-        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKernel::OSD_Exception_PRIV_INSTRUCTION_new_instance_charptr(
-                    c_theMessage.as_ptr(),
-                ),
-            ))
-        }
-    }
-
-    /// **Source:** `OSD_Exception_PRIV_INSTRUCTION.hxx`:34 - `OSD_Exception_PRIV_INSTRUCTION::NewInstance()`
-    pub fn new_instance_charptr2(
-        theMessage: &str,
-        theStackTrace: &str,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleOSDExceptionPRIVINSTRUCTION> {
-        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
-        let c_theStackTrace = std::ffi::CString::new(theStackTrace).unwrap();
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKernel::OSD_Exception_PRIV_INSTRUCTION_new_instance_charptr2(
-                    c_theMessage.as_ptr(),
-                    c_theStackTrace.as_ptr(),
-                ),
-            ))
-        }
-    }
-
-    /// **Source:** `OSD_Exception_PRIV_INSTRUCTION.hxx`:34 - `OSD_Exception_PRIV_INSTRUCTION::get_type_name()`
-    pub fn get_type_name() -> std::string::String {
-        unsafe {
-            std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi_extern_TKernel::OSD_Exception_PRIV_INSTRUCTION_get_type_name(),
-            ))
-        }
         .to_string_lossy()
         .into_owned()
-    }
-
-    /// **Source:** `OSD_Exception_PRIV_INSTRUCTION.hxx`:34 - `OSD_Exception_PRIV_INSTRUCTION::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
-        unsafe {
-            &*(crate::check_result(
-                crate::ffi_extern_TKernel::OSD_Exception_PRIV_INSTRUCTION_get_type_descriptor(),
-            ))
-        }
     }
 
     /// Upcast to OSD_Exception
@@ -5518,40 +2870,7 @@ impl Exception_PRIV_INSTRUCTION {
         }
     }
 
-    /// Upcast to Standard_Transient
-    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        unsafe {
-            &*crate::check_result(
-                crate::ffi_extern_TKernel::OSD_Exception_PRIV_INSTRUCTION_as_Standard_Transient(
-                    self as *const Self,
-                ),
-            )
-        }
-    }
-
-    /// Upcast to Standard_Transient (mutable)
-    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        unsafe {
-            &mut *crate::check_result(
-                crate::ffi_extern_TKernel::OSD_Exception_PRIV_INSTRUCTION_as_Standard_Transient_mut(
-                    self as *mut Self,
-                ),
-            )
-        }
-    }
-
-    /// Wrap in a Handle (reference-counted smart pointer)
-    pub fn to_handle(
-        obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleOSDExceptionPRIVINSTRUCTION> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKernel::OSD_Exception_PRIV_INSTRUCTION_to_handle(obj.into_raw()),
-            ))
-        }
-    }
-
-    /// Inherited: **Source:** `Standard_Failure.hxx`:58 - `Standard_Failure::Print()`
+    /// Inherited: **Source:** `Standard_Failure.hxx`:73 - `Standard_Failure::Print()`
     pub fn print(&self, theStream: &mut crate::ffi_types::Standard_OStream) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKernel::OSD_Exception_PRIV_INSTRUCTION_inherited_Print(
@@ -5560,181 +2879,13 @@ impl Exception_PRIV_INSTRUCTION {
             )
         })
     }
-
-    /// Inherited: **Source:** `Standard_Failure.hxx`:72 - `Standard_Failure::Reraise()`
-    pub fn reraise(&mut self) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKernel::OSD_Exception_PRIV_INSTRUCTION_inherited_Reraise(
-                self as *mut Self,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Failure.hxx`:112 - `Standard_Failure::Jump()`
-    pub fn jump(&mut self) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKernel::OSD_Exception_PRIV_INSTRUCTION_inherited_Jump(
-                self as *mut Self,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKernel::OSD_Exception_PRIV_INSTRUCTION_inherited_IsInstance(
-                self as *const Self,
-                theType,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKernel::OSD_Exception_PRIV_INSTRUCTION_inherited_IsKind(
-                self as *const Self,
-                theType,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
-    pub fn this(&self) -> Option<&crate::standard::Transient> {
-        {
-            let __val = crate::check_result(unsafe {
-                crate::ffi_extern_TKernel::OSD_Exception_PRIV_INSTRUCTION_inherited_This(
-                    self as *const Self,
-                )
-            });
-            if __val.is_null() {
-                None
-            } else {
-                Some(unsafe { &*__val })
-            }
-        }
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
-    pub fn get_ref_count(&self) -> i32 {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKernel::OSD_Exception_PRIV_INSTRUCTION_inherited_GetRefCount(
-                self as *const Self,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
-    pub fn increment_ref_counter(&mut self) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKernel::OSD_Exception_PRIV_INSTRUCTION_inherited_IncrementRefCounter(
-                self as *mut Self,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
-    pub fn decrement_ref_counter(&mut self) -> i32 {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKernel::OSD_Exception_PRIV_INSTRUCTION_inherited_DecrementRefCounter(
-                self as *mut Self,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
-    pub fn delete(&self) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKernel::OSD_Exception_PRIV_INSTRUCTION_inherited_Delete(
-                self as *const Self,
-            )
-        })
-    }
-}
-
-pub use crate::ffi_types::HandleOSDExceptionPRIVINSTRUCTION;
-
-unsafe impl crate::CppDeletable for HandleOSDExceptionPRIVINSTRUCTION {
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            crate::ffi_extern_TKernel::HandleOSDExceptionPRIVINSTRUCTION_destructor(ptr);
-        }
-    }
-}
-
-unsafe impl crate::CppCopyable for HandleOSDExceptionPRIVINSTRUCTION {
-    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        unsafe {
-            crate::check_result(crate::ffi_extern_TKernel::HandleOSDExceptionPRIVINSTRUCTION_clone(
-                ptr,
-            ))
-        }
-    }
-}
-
-impl HandleOSDExceptionPRIVINSTRUCTION {
-    /// Returns `true` if this Handle is null (doesn't point to any object).
-    pub fn is_null(&self) -> bool {
-        unsafe {
-            crate::ffi_extern_TKernel::HandleOSDExceptionPRIVINSTRUCTION_is_null(
-                self as *const Self,
-            )
-        }
-    }
-
-    /// Dereference this Handle to access the underlying OSD_Exception_PRIV_INSTRUCTION
-    pub fn get(&self) -> &crate::ffi_types::OSD_Exception_PRIV_INSTRUCTION {
-        unsafe {
-            &*crate::check_result(crate::ffi_extern_TKernel::HandleOSDExceptionPRIVINSTRUCTION_get(
-                self as *const Self,
-            ))
-        }
-    }
-
-    /// Dereference this Handle to mutably access the underlying OSD_Exception_PRIV_INSTRUCTION
-    pub fn get_mut(&mut self) -> &mut crate::ffi_types::OSD_Exception_PRIV_INSTRUCTION {
-        unsafe {
-            &mut *crate::check_result(
-                crate::ffi_extern_TKernel::HandleOSDExceptionPRIVINSTRUCTION_get_mut(
-                    self as *mut Self,
-                ),
-            )
-        }
-    }
-
-    /// Upcast Handle<OSD_Exception_PRIV_INSTRUCTION> to Handle<OSD_Exception>
-    pub fn to_handle_exception(&self) -> crate::OwnedPtr<crate::ffi_types::HandleOSDException> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKernel::HandleOSDExceptionPRIVINSTRUCTION_to_HandleOSDException(
-                    self as *const Self,
-                ),
-            ))
-        }
-    }
-
-    /// Upcast Handle<OSD_Exception_PRIV_INSTRUCTION> to Handle<Standard_Failure>
-    pub fn to_handle_failure(&self) -> crate::OwnedPtr<crate::ffi_types::HandleStandardFailure> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKernel::HandleOSDExceptionPRIVINSTRUCTION_to_HandleStandardFailure(self as *const Self)))
-        }
-    }
-
-    /// Upcast Handle<OSD_Exception_PRIV_INSTRUCTION> to Handle<Standard_Transient>
-    pub fn to_handle_transient(
-        &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKernel::HandleOSDExceptionPRIVINSTRUCTION_to_HandleStandardTransient(self as *const Self)))
-        }
-    }
 }
 
 // ========================
 // From OSD_Exception_STACK_OVERFLOW.hxx
 // ========================
 
-/// **Source:** `OSD_Exception_STACK_OVERFLOW.hxx`:34 - `OSD_Exception_STACK_OVERFLOW`
+/// **Source:** `OSD_Exception_STACK_OVERFLOW.hxx`:30 - `OSD_Exception_STACK_OVERFLOW`
 pub use crate::ffi_types::OSD_Exception_STACK_OVERFLOW as Exception_STACK_OVERFLOW;
 
 unsafe impl crate::CppDeletable for Exception_STACK_OVERFLOW {
@@ -5746,16 +2897,7 @@ unsafe impl crate::CppDeletable for Exception_STACK_OVERFLOW {
 }
 
 impl Exception_STACK_OVERFLOW {
-    /// **Source:** `OSD_Exception_STACK_OVERFLOW.hxx`:34 - `OSD_Exception_STACK_OVERFLOW::OSD_Exception_STACK_OVERFLOW()`
-    pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKernel::OSD_Exception_STACK_OVERFLOW_ctor(),
-            ))
-        }
-    }
-
-    /// **Source:** `OSD_Exception_STACK_OVERFLOW.hxx`:34 - `OSD_Exception_STACK_OVERFLOW::OSD_Exception_STACK_OVERFLOW()`
+    /// **Source:** `OSD_Exception_STACK_OVERFLOW.hxx`:30 - `OSD_Exception_STACK_OVERFLOW::OSD_Exception_STACK_OVERFLOW()`
     pub fn new_charptr(theMessage: &str) -> crate::OwnedPtr<Self> {
         let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
         unsafe {
@@ -5767,7 +2909,7 @@ impl Exception_STACK_OVERFLOW {
         }
     }
 
-    /// **Source:** `OSD_Exception_STACK_OVERFLOW.hxx`:34 - `OSD_Exception_STACK_OVERFLOW::OSD_Exception_STACK_OVERFLOW()`
+    /// **Source:** `OSD_Exception_STACK_OVERFLOW.hxx`:30 - `OSD_Exception_STACK_OVERFLOW::OSD_Exception_STACK_OVERFLOW()`
     pub fn new_charptr2(theMessage: &str, theStackTrace: &str) -> crate::OwnedPtr<Self> {
         let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
         let c_theStackTrace = std::ffi::CString::new(theStackTrace).unwrap();
@@ -5781,83 +2923,17 @@ impl Exception_STACK_OVERFLOW {
         }
     }
 
-    /// **Source:** `OSD_Exception_STACK_OVERFLOW.hxx`:34 - `OSD_Exception_STACK_OVERFLOW::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `OSD_Exception_STACK_OVERFLOW.hxx`:30 - `OSD_Exception_STACK_OVERFLOW::ExceptionType()`
+    pub fn exception_type(&self) -> std::string::String {
         unsafe {
-            &*(crate::check_result(
-                crate::ffi_extern_TKernel::OSD_Exception_STACK_OVERFLOW_dynamic_type(
+            std::ffi::CStr::from_ptr(crate::check_result(
+                crate::ffi_extern_TKernel::OSD_Exception_STACK_OVERFLOW_exception_type(
                     self as *const Self,
                 ),
             ))
         }
-    }
-
-    /// **Source:** `OSD_Exception_STACK_OVERFLOW.hxx`:34 - `OSD_Exception_STACK_OVERFLOW::Raise()`
-    pub fn raise_charptr(theMessage: &str) {
-        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKernel::OSD_Exception_STACK_OVERFLOW_raise_charptr(
-                c_theMessage.as_ptr(),
-            )
-        })
-    }
-
-    /// **Source:** `OSD_Exception_STACK_OVERFLOW.hxx`:34 - `OSD_Exception_STACK_OVERFLOW::Raise()`
-    pub fn raise_sstream(theMessage: &mut crate::ffi_types::Standard_SStream) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKernel::OSD_Exception_STACK_OVERFLOW_raise_sstream(theMessage)
-        })
-    }
-
-    /// **Source:** `OSD_Exception_STACK_OVERFLOW.hxx`:34 - `OSD_Exception_STACK_OVERFLOW::NewInstance()`
-    pub fn new_instance_charptr(
-        theMessage: &str,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleOSDExceptionSTACKOVERFLOW> {
-        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKernel::OSD_Exception_STACK_OVERFLOW_new_instance_charptr(
-                    c_theMessage.as_ptr(),
-                ),
-            ))
-        }
-    }
-
-    /// **Source:** `OSD_Exception_STACK_OVERFLOW.hxx`:34 - `OSD_Exception_STACK_OVERFLOW::NewInstance()`
-    pub fn new_instance_charptr2(
-        theMessage: &str,
-        theStackTrace: &str,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleOSDExceptionSTACKOVERFLOW> {
-        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
-        let c_theStackTrace = std::ffi::CString::new(theStackTrace).unwrap();
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKernel::OSD_Exception_STACK_OVERFLOW_new_instance_charptr2(
-                    c_theMessage.as_ptr(),
-                    c_theStackTrace.as_ptr(),
-                ),
-            ))
-        }
-    }
-
-    /// **Source:** `OSD_Exception_STACK_OVERFLOW.hxx`:34 - `OSD_Exception_STACK_OVERFLOW::get_type_name()`
-    pub fn get_type_name() -> std::string::String {
-        unsafe {
-            std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi_extern_TKernel::OSD_Exception_STACK_OVERFLOW_get_type_name(),
-            ))
-        }
         .to_string_lossy()
         .into_owned()
-    }
-
-    /// **Source:** `OSD_Exception_STACK_OVERFLOW.hxx`:34 - `OSD_Exception_STACK_OVERFLOW::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
-        unsafe {
-            &*(crate::check_result(
-                crate::ffi_extern_TKernel::OSD_Exception_STACK_OVERFLOW_get_type_descriptor(),
-            ))
-        }
     }
 
     /// Upcast to OSD_Exception
@@ -5904,40 +2980,7 @@ impl Exception_STACK_OVERFLOW {
         }
     }
 
-    /// Upcast to Standard_Transient
-    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        unsafe {
-            &*crate::check_result(
-                crate::ffi_extern_TKernel::OSD_Exception_STACK_OVERFLOW_as_Standard_Transient(
-                    self as *const Self,
-                ),
-            )
-        }
-    }
-
-    /// Upcast to Standard_Transient (mutable)
-    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        unsafe {
-            &mut *crate::check_result(
-                crate::ffi_extern_TKernel::OSD_Exception_STACK_OVERFLOW_as_Standard_Transient_mut(
-                    self as *mut Self,
-                ),
-            )
-        }
-    }
-
-    /// Wrap in a Handle (reference-counted smart pointer)
-    pub fn to_handle(
-        obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleOSDExceptionSTACKOVERFLOW> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKernel::OSD_Exception_STACK_OVERFLOW_to_handle(obj.into_raw()),
-            ))
-        }
-    }
-
-    /// Inherited: **Source:** `Standard_Failure.hxx`:58 - `Standard_Failure::Print()`
+    /// Inherited: **Source:** `Standard_Failure.hxx`:73 - `Standard_Failure::Print()`
     pub fn print(&self, theStream: &mut crate::ffi_types::Standard_OStream) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKernel::OSD_Exception_STACK_OVERFLOW_inherited_Print(
@@ -5946,183 +2989,13 @@ impl Exception_STACK_OVERFLOW {
             )
         })
     }
-
-    /// Inherited: **Source:** `Standard_Failure.hxx`:72 - `Standard_Failure::Reraise()`
-    pub fn reraise(&mut self) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKernel::OSD_Exception_STACK_OVERFLOW_inherited_Reraise(
-                self as *mut Self,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Failure.hxx`:112 - `Standard_Failure::Jump()`
-    pub fn jump(&mut self) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKernel::OSD_Exception_STACK_OVERFLOW_inherited_Jump(
-                self as *mut Self,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKernel::OSD_Exception_STACK_OVERFLOW_inherited_IsInstance(
-                self as *const Self,
-                theType,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKernel::OSD_Exception_STACK_OVERFLOW_inherited_IsKind(
-                self as *const Self,
-                theType,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
-    pub fn this(&self) -> Option<&crate::standard::Transient> {
-        {
-            let __val = crate::check_result(unsafe {
-                crate::ffi_extern_TKernel::OSD_Exception_STACK_OVERFLOW_inherited_This(
-                    self as *const Self,
-                )
-            });
-            if __val.is_null() {
-                None
-            } else {
-                Some(unsafe { &*__val })
-            }
-        }
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
-    pub fn get_ref_count(&self) -> i32 {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKernel::OSD_Exception_STACK_OVERFLOW_inherited_GetRefCount(
-                self as *const Self,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
-    pub fn increment_ref_counter(&mut self) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKernel::OSD_Exception_STACK_OVERFLOW_inherited_IncrementRefCounter(
-                self as *mut Self,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
-    pub fn decrement_ref_counter(&mut self) -> i32 {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKernel::OSD_Exception_STACK_OVERFLOW_inherited_DecrementRefCounter(
-                self as *mut Self,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
-    pub fn delete(&self) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKernel::OSD_Exception_STACK_OVERFLOW_inherited_Delete(
-                self as *const Self,
-            )
-        })
-    }
-}
-
-pub use crate::ffi_types::HandleOSDExceptionSTACKOVERFLOW;
-
-unsafe impl crate::CppDeletable for HandleOSDExceptionSTACKOVERFLOW {
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            crate::ffi_extern_TKernel::HandleOSDExceptionSTACKOVERFLOW_destructor(ptr);
-        }
-    }
-}
-
-unsafe impl crate::CppCopyable for HandleOSDExceptionSTACKOVERFLOW {
-    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        unsafe {
-            crate::check_result(crate::ffi_extern_TKernel::HandleOSDExceptionSTACKOVERFLOW_clone(
-                ptr,
-            ))
-        }
-    }
-}
-
-impl HandleOSDExceptionSTACKOVERFLOW {
-    /// Returns `true` if this Handle is null (doesn't point to any object).
-    pub fn is_null(&self) -> bool {
-        unsafe {
-            crate::ffi_extern_TKernel::HandleOSDExceptionSTACKOVERFLOW_is_null(self as *const Self)
-        }
-    }
-
-    /// Dereference this Handle to access the underlying OSD_Exception_STACK_OVERFLOW
-    pub fn get(&self) -> &crate::ffi_types::OSD_Exception_STACK_OVERFLOW {
-        unsafe {
-            &*crate::check_result(crate::ffi_extern_TKernel::HandleOSDExceptionSTACKOVERFLOW_get(
-                self as *const Self,
-            ))
-        }
-    }
-
-    /// Dereference this Handle to mutably access the underlying OSD_Exception_STACK_OVERFLOW
-    pub fn get_mut(&mut self) -> &mut crate::ffi_types::OSD_Exception_STACK_OVERFLOW {
-        unsafe {
-            &mut *crate::check_result(
-                crate::ffi_extern_TKernel::HandleOSDExceptionSTACKOVERFLOW_get_mut(
-                    self as *mut Self,
-                ),
-            )
-        }
-    }
-
-    /// Upcast Handle<OSD_Exception_STACK_OVERFLOW> to Handle<OSD_Exception>
-    pub fn to_handle_exception(&self) -> crate::OwnedPtr<crate::ffi_types::HandleOSDException> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKernel::HandleOSDExceptionSTACKOVERFLOW_to_HandleOSDException(
-                    self as *const Self,
-                ),
-            ))
-        }
-    }
-
-    /// Upcast Handle<OSD_Exception_STACK_OVERFLOW> to Handle<Standard_Failure>
-    pub fn to_handle_failure(&self) -> crate::OwnedPtr<crate::ffi_types::HandleStandardFailure> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKernel::HandleOSDExceptionSTACKOVERFLOW_to_HandleStandardFailure(
-                    self as *const Self,
-                ),
-            ))
-        }
-    }
-
-    /// Upcast Handle<OSD_Exception_STACK_OVERFLOW> to Handle<Standard_Transient>
-    pub fn to_handle_transient(
-        &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKernel::HandleOSDExceptionSTACKOVERFLOW_to_HandleStandardTransient(self as *const Self)))
-        }
-    }
 }
 
 // ========================
 // From OSD_Exception_STATUS_NO_MEMORY.hxx
 // ========================
 
-/// **Source:** `OSD_Exception_STATUS_NO_MEMORY.hxx`:34 - `OSD_Exception_STATUS_NO_MEMORY`
+/// **Source:** `OSD_Exception_STATUS_NO_MEMORY.hxx`:30 - `OSD_Exception_STATUS_NO_MEMORY`
 pub use crate::ffi_types::OSD_Exception_STATUS_NO_MEMORY as Exception_STATUS_NO_MEMORY;
 
 unsafe impl crate::CppDeletable for Exception_STATUS_NO_MEMORY {
@@ -6134,16 +3007,7 @@ unsafe impl crate::CppDeletable for Exception_STATUS_NO_MEMORY {
 }
 
 impl Exception_STATUS_NO_MEMORY {
-    /// **Source:** `OSD_Exception_STATUS_NO_MEMORY.hxx`:34 - `OSD_Exception_STATUS_NO_MEMORY::OSD_Exception_STATUS_NO_MEMORY()`
-    pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKernel::OSD_Exception_STATUS_NO_MEMORY_ctor(),
-            ))
-        }
-    }
-
-    /// **Source:** `OSD_Exception_STATUS_NO_MEMORY.hxx`:34 - `OSD_Exception_STATUS_NO_MEMORY::OSD_Exception_STATUS_NO_MEMORY()`
+    /// **Source:** `OSD_Exception_STATUS_NO_MEMORY.hxx`:30 - `OSD_Exception_STATUS_NO_MEMORY::OSD_Exception_STATUS_NO_MEMORY()`
     pub fn new_charptr(theMessage: &str) -> crate::OwnedPtr<Self> {
         let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
         unsafe {
@@ -6155,7 +3019,7 @@ impl Exception_STATUS_NO_MEMORY {
         }
     }
 
-    /// **Source:** `OSD_Exception_STATUS_NO_MEMORY.hxx`:34 - `OSD_Exception_STATUS_NO_MEMORY::OSD_Exception_STATUS_NO_MEMORY()`
+    /// **Source:** `OSD_Exception_STATUS_NO_MEMORY.hxx`:30 - `OSD_Exception_STATUS_NO_MEMORY::OSD_Exception_STATUS_NO_MEMORY()`
     pub fn new_charptr2(theMessage: &str, theStackTrace: &str) -> crate::OwnedPtr<Self> {
         let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
         let c_theStackTrace = std::ffi::CString::new(theStackTrace).unwrap();
@@ -6169,83 +3033,17 @@ impl Exception_STATUS_NO_MEMORY {
         }
     }
 
-    /// **Source:** `OSD_Exception_STATUS_NO_MEMORY.hxx`:34 - `OSD_Exception_STATUS_NO_MEMORY::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `OSD_Exception_STATUS_NO_MEMORY.hxx`:30 - `OSD_Exception_STATUS_NO_MEMORY::ExceptionType()`
+    pub fn exception_type(&self) -> std::string::String {
         unsafe {
-            &*(crate::check_result(
-                crate::ffi_extern_TKernel::OSD_Exception_STATUS_NO_MEMORY_dynamic_type(
+            std::ffi::CStr::from_ptr(crate::check_result(
+                crate::ffi_extern_TKernel::OSD_Exception_STATUS_NO_MEMORY_exception_type(
                     self as *const Self,
                 ),
             ))
         }
-    }
-
-    /// **Source:** `OSD_Exception_STATUS_NO_MEMORY.hxx`:34 - `OSD_Exception_STATUS_NO_MEMORY::Raise()`
-    pub fn raise_charptr(theMessage: &str) {
-        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKernel::OSD_Exception_STATUS_NO_MEMORY_raise_charptr(
-                c_theMessage.as_ptr(),
-            )
-        })
-    }
-
-    /// **Source:** `OSD_Exception_STATUS_NO_MEMORY.hxx`:34 - `OSD_Exception_STATUS_NO_MEMORY::Raise()`
-    pub fn raise_sstream(theMessage: &mut crate::ffi_types::Standard_SStream) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKernel::OSD_Exception_STATUS_NO_MEMORY_raise_sstream(theMessage)
-        })
-    }
-
-    /// **Source:** `OSD_Exception_STATUS_NO_MEMORY.hxx`:34 - `OSD_Exception_STATUS_NO_MEMORY::NewInstance()`
-    pub fn new_instance_charptr(
-        theMessage: &str,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleOSDExceptionSTATUSNOMEMORY> {
-        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKernel::OSD_Exception_STATUS_NO_MEMORY_new_instance_charptr(
-                    c_theMessage.as_ptr(),
-                ),
-            ))
-        }
-    }
-
-    /// **Source:** `OSD_Exception_STATUS_NO_MEMORY.hxx`:34 - `OSD_Exception_STATUS_NO_MEMORY::NewInstance()`
-    pub fn new_instance_charptr2(
-        theMessage: &str,
-        theStackTrace: &str,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleOSDExceptionSTATUSNOMEMORY> {
-        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
-        let c_theStackTrace = std::ffi::CString::new(theStackTrace).unwrap();
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKernel::OSD_Exception_STATUS_NO_MEMORY_new_instance_charptr2(
-                    c_theMessage.as_ptr(),
-                    c_theStackTrace.as_ptr(),
-                ),
-            ))
-        }
-    }
-
-    /// **Source:** `OSD_Exception_STATUS_NO_MEMORY.hxx`:34 - `OSD_Exception_STATUS_NO_MEMORY::get_type_name()`
-    pub fn get_type_name() -> std::string::String {
-        unsafe {
-            std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi_extern_TKernel::OSD_Exception_STATUS_NO_MEMORY_get_type_name(),
-            ))
-        }
         .to_string_lossy()
         .into_owned()
-    }
-
-    /// **Source:** `OSD_Exception_STATUS_NO_MEMORY.hxx`:34 - `OSD_Exception_STATUS_NO_MEMORY::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
-        unsafe {
-            &*(crate::check_result(
-                crate::ffi_extern_TKernel::OSD_Exception_STATUS_NO_MEMORY_get_type_descriptor(),
-            ))
-        }
     }
 
     /// Upcast to OSD_Exception
@@ -6292,40 +3090,7 @@ impl Exception_STATUS_NO_MEMORY {
         }
     }
 
-    /// Upcast to Standard_Transient
-    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        unsafe {
-            &*crate::check_result(
-                crate::ffi_extern_TKernel::OSD_Exception_STATUS_NO_MEMORY_as_Standard_Transient(
-                    self as *const Self,
-                ),
-            )
-        }
-    }
-
-    /// Upcast to Standard_Transient (mutable)
-    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        unsafe {
-            &mut *crate::check_result(
-                crate::ffi_extern_TKernel::OSD_Exception_STATUS_NO_MEMORY_as_Standard_Transient_mut(
-                    self as *mut Self,
-                ),
-            )
-        }
-    }
-
-    /// Wrap in a Handle (reference-counted smart pointer)
-    pub fn to_handle(
-        obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleOSDExceptionSTATUSNOMEMORY> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKernel::OSD_Exception_STATUS_NO_MEMORY_to_handle(obj.into_raw()),
-            ))
-        }
-    }
-
-    /// Inherited: **Source:** `Standard_Failure.hxx`:58 - `Standard_Failure::Print()`
+    /// Inherited: **Source:** `Standard_Failure.hxx`:73 - `Standard_Failure::Print()`
     pub fn print(&self, theStream: &mut crate::ffi_types::Standard_OStream) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKernel::OSD_Exception_STATUS_NO_MEMORY_inherited_Print(
@@ -6333,172 +3098,6 @@ impl Exception_STATUS_NO_MEMORY {
                 theStream,
             )
         })
-    }
-
-    /// Inherited: **Source:** `Standard_Failure.hxx`:72 - `Standard_Failure::Reraise()`
-    pub fn reraise(&mut self) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKernel::OSD_Exception_STATUS_NO_MEMORY_inherited_Reraise(
-                self as *mut Self,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Failure.hxx`:112 - `Standard_Failure::Jump()`
-    pub fn jump(&mut self) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKernel::OSD_Exception_STATUS_NO_MEMORY_inherited_Jump(
-                self as *mut Self,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKernel::OSD_Exception_STATUS_NO_MEMORY_inherited_IsInstance(
-                self as *const Self,
-                theType,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKernel::OSD_Exception_STATUS_NO_MEMORY_inherited_IsKind(
-                self as *const Self,
-                theType,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
-    pub fn this(&self) -> Option<&crate::standard::Transient> {
-        {
-            let __val = crate::check_result(unsafe {
-                crate::ffi_extern_TKernel::OSD_Exception_STATUS_NO_MEMORY_inherited_This(
-                    self as *const Self,
-                )
-            });
-            if __val.is_null() {
-                None
-            } else {
-                Some(unsafe { &*__val })
-            }
-        }
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
-    pub fn get_ref_count(&self) -> i32 {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKernel::OSD_Exception_STATUS_NO_MEMORY_inherited_GetRefCount(
-                self as *const Self,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
-    pub fn increment_ref_counter(&mut self) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKernel::OSD_Exception_STATUS_NO_MEMORY_inherited_IncrementRefCounter(
-                self as *mut Self,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
-    pub fn decrement_ref_counter(&mut self) -> i32 {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKernel::OSD_Exception_STATUS_NO_MEMORY_inherited_DecrementRefCounter(
-                self as *mut Self,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
-    pub fn delete(&self) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKernel::OSD_Exception_STATUS_NO_MEMORY_inherited_Delete(
-                self as *const Self,
-            )
-        })
-    }
-}
-
-pub use crate::ffi_types::HandleOSDExceptionSTATUSNOMEMORY;
-
-unsafe impl crate::CppDeletable for HandleOSDExceptionSTATUSNOMEMORY {
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            crate::ffi_extern_TKernel::HandleOSDExceptionSTATUSNOMEMORY_destructor(ptr);
-        }
-    }
-}
-
-unsafe impl crate::CppCopyable for HandleOSDExceptionSTATUSNOMEMORY {
-    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        unsafe {
-            crate::check_result(crate::ffi_extern_TKernel::HandleOSDExceptionSTATUSNOMEMORY_clone(
-                ptr,
-            ))
-        }
-    }
-}
-
-impl HandleOSDExceptionSTATUSNOMEMORY {
-    /// Returns `true` if this Handle is null (doesn't point to any object).
-    pub fn is_null(&self) -> bool {
-        unsafe {
-            crate::ffi_extern_TKernel::HandleOSDExceptionSTATUSNOMEMORY_is_null(self as *const Self)
-        }
-    }
-
-    /// Dereference this Handle to access the underlying OSD_Exception_STATUS_NO_MEMORY
-    pub fn get(&self) -> &crate::ffi_types::OSD_Exception_STATUS_NO_MEMORY {
-        unsafe {
-            &*crate::check_result(crate::ffi_extern_TKernel::HandleOSDExceptionSTATUSNOMEMORY_get(
-                self as *const Self,
-            ))
-        }
-    }
-
-    /// Dereference this Handle to mutably access the underlying OSD_Exception_STATUS_NO_MEMORY
-    pub fn get_mut(&mut self) -> &mut crate::ffi_types::OSD_Exception_STATUS_NO_MEMORY {
-        unsafe {
-            &mut *crate::check_result(
-                crate::ffi_extern_TKernel::HandleOSDExceptionSTATUSNOMEMORY_get_mut(
-                    self as *mut Self,
-                ),
-            )
-        }
-    }
-
-    /// Upcast Handle<OSD_Exception_STATUS_NO_MEMORY> to Handle<OSD_Exception>
-    pub fn to_handle_exception(&self) -> crate::OwnedPtr<crate::ffi_types::HandleOSDException> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKernel::HandleOSDExceptionSTATUSNOMEMORY_to_HandleOSDException(
-                    self as *const Self,
-                ),
-            ))
-        }
-    }
-
-    /// Upcast Handle<OSD_Exception_STATUS_NO_MEMORY> to Handle<Standard_Failure>
-    pub fn to_handle_failure(&self) -> crate::OwnedPtr<crate::ffi_types::HandleStandardFailure> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKernel::HandleOSDExceptionSTATUSNOMEMORY_to_HandleStandardFailure(self as *const Self)))
-        }
-    }
-
-    /// Upcast Handle<OSD_Exception_STATUS_NO_MEMORY> to Handle<Standard_Transient>
-    pub fn to_handle_transient(
-        &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKernel::HandleOSDExceptionSTATUSNOMEMORY_to_HandleStandardTransient(self as *const Self)))
-        }
     }
 }
 
@@ -6621,7 +3220,7 @@ impl File {
         })
     }
 
-    /// **Source:** `OSD_File.hxx`:91 - `OSD_File::ReadLine()`
+    /// **Source:** `OSD_File.hxx`:89 - `OSD_File::ReadLine()`
     /// Reads bytes from the data pointed to by the object file
     /// into the buffer <Buffer>.
     /// Data is read until <NByte-1> bytes have been read,
@@ -6644,7 +3243,7 @@ impl File {
         })
     }
 
-    /// **Source:** `OSD_File.hxx`:105 - `OSD_File::Read()`
+    /// **Source:** `OSD_File.hxx`:103 - `OSD_File::Read()`
     /// Attempts to read Nbyte bytes from the files associated with
     /// the object File.
     /// Upon successful completion, Read returns the number of
@@ -6652,14 +3251,14 @@ impl File {
     /// may be less than Nbyte if the number of bytes left in the file
     /// is less than Nbyte bytes. For this reason the output
     /// parameter Readbyte will contain the number of read bytes.
-    pub unsafe fn read_address_int2(
+    pub unsafe fn read_voidptr_int2(
         &mut self,
         Buffer: *mut std::ffi::c_void,
         Nbyte: i32,
         Readbyte: &mut i32,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi_extern_TKernel::OSD_File_read_address_int2(
+            crate::ffi_extern_TKernel::OSD_File_read_voidptr_int2(
                 self as *mut Self,
                 Buffer,
                 Nbyte,
@@ -6668,7 +3267,7 @@ impl File {
         })
     }
 
-    /// **Source:** `OSD_File.hxx`:110 - `OSD_File::Write()`
+    /// **Source:** `OSD_File.hxx`:106 - `OSD_File::Write()`
     /// Attempts to write theNbBytes bytes from the AsciiString to the file.
     pub fn write_asciistring_int(
         &mut self,
@@ -6684,12 +3283,12 @@ impl File {
         })
     }
 
-    /// **Source:** `OSD_File.hxx`:117 - `OSD_File::Write()`
+    /// **Source:** `OSD_File.hxx`:113 - `OSD_File::Write()`
     /// Attempts to write theNbBytes bytes from the buffer pointed
     /// to by theBuffer to the file associated to the object File.
-    pub unsafe fn write_address_int(&mut self, theBuffer: *mut std::ffi::c_void, theNbBytes: i32) {
+    pub unsafe fn write_voidptr_int(&mut self, theBuffer: *mut std::ffi::c_void, theNbBytes: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi_extern_TKernel::OSD_File_write_address_int(
+            crate::ffi_extern_TKernel::OSD_File_write_voidptr_int(
                 self as *mut Self,
                 theBuffer,
                 theNbBytes,
@@ -6697,7 +3296,7 @@ impl File {
         })
     }
 
-    /// **Source:** `OSD_File.hxx`:120 - `OSD_File::Seek()`
+    /// **Source:** `OSD_File.hxx`:116 - `OSD_File::Seek()`
     /// Sets the seek pointer associated with the open file
     pub fn seek(&mut self, Offset: i32, Whence: crate::osd::FromWhere) {
         crate::check_void_result(unsafe {
@@ -6705,7 +3304,7 @@ impl File {
         })
     }
 
-    /// **Source:** `OSD_File.hxx`:123 - `OSD_File::Close()`
+    /// **Source:** `OSD_File.hxx`:119 - `OSD_File::Close()`
     /// Closes the file (and deletes a descriptor)
     pub fn close(&mut self) {
         crate::check_void_result(unsafe {
@@ -6713,7 +3312,7 @@ impl File {
         })
     }
 
-    /// **Source:** `OSD_File.hxx`:126 - `OSD_File::IsAtEnd()`
+    /// **Source:** `OSD_File.hxx`:122 - `OSD_File::IsAtEnd()`
     /// Returns TRUE if the seek pointer is at end of file.
     pub fn is_at_end(&mut self) -> bool {
         crate::check_result(unsafe {
@@ -6721,7 +3320,7 @@ impl File {
         })
     }
 
-    /// **Source:** `OSD_File.hxx`:130 - `OSD_File::KindOfFile()`
+    /// **Source:** `OSD_File.hxx`:126 - `OSD_File::KindOfFile()`
     /// Returns the kind of file. A file can be a
     /// file, a directory or a link.
     pub fn kind_of_file(&self) -> crate::osd::KindFile {
@@ -6731,7 +3330,7 @@ impl File {
         .unwrap()
     }
 
-    /// **Source:** `OSD_File.hxx`:134 - `OSD_File::BuildTemporary()`
+    /// **Source:** `OSD_File.hxx`:130 - `OSD_File::BuildTemporary()`
     /// Makes a temporary File
     /// This temporary file is already open !
     pub fn build_temporary(&mut self) {
@@ -6740,7 +3339,7 @@ impl File {
         })
     }
 
-    /// **Source:** `OSD_File.hxx`:137 - `OSD_File::SetLock()`
+    /// **Source:** `OSD_File.hxx`:133 - `OSD_File::SetLock()`
     /// Locks current file
     pub fn set_lock(&mut self, Lock: crate::osd::LockType) {
         crate::check_void_result(unsafe {
@@ -6748,7 +3347,7 @@ impl File {
         })
     }
 
-    /// **Source:** `OSD_File.hxx`:140 - `OSD_File::UnLock()`
+    /// **Source:** `OSD_File.hxx`:136 - `OSD_File::UnLock()`
     /// Unlocks current file
     pub fn un_lock(&mut self) {
         crate::check_void_result(unsafe {
@@ -6756,7 +3355,7 @@ impl File {
         })
     }
 
-    /// **Source:** `OSD_File.hxx`:143 - `OSD_File::GetLock()`
+    /// **Source:** `OSD_File.hxx`:139 - `OSD_File::GetLock()`
     /// Returns the current lock state
     pub fn get_lock(&self) -> crate::osd::LockType {
         crate::osd::LockType::try_from(crate::check_result(unsafe {
@@ -6765,7 +3364,7 @@ impl File {
         .unwrap()
     }
 
-    /// **Source:** `OSD_File.hxx`:146 - `OSD_File::IsLocked()`
+    /// **Source:** `OSD_File.hxx`:142 - `OSD_File::IsLocked()`
     /// Returns TRUE if this file is locked.
     pub fn is_locked(&self) -> bool {
         crate::check_result(unsafe {
@@ -6773,13 +3372,13 @@ impl File {
         })
     }
 
-    /// **Source:** `OSD_File.hxx`:156 - `OSD_File::Size()`
+    /// **Source:** `OSD_File.hxx`:152 - `OSD_File::Size()`
     /// Returns actual number of bytes of <me>.
     pub fn size(&mut self) -> usize {
         crate::check_result(unsafe { crate::ffi_extern_TKernel::OSD_File_size(self as *mut Self) })
     }
 
-    /// **Source:** `OSD_File.hxx`:159 - `OSD_File::IsOpen()`
+    /// **Source:** `OSD_File.hxx`:155 - `OSD_File::IsOpen()`
     /// Returns TRUE if <me> is open.
     pub fn is_open(&self) -> bool {
         crate::check_result(unsafe {
@@ -6787,7 +3386,7 @@ impl File {
         })
     }
 
-    /// **Source:** `OSD_File.hxx`:163 - `OSD_File::IsReadable()`
+    /// **Source:** `OSD_File.hxx`:159 - `OSD_File::IsReadable()`
     /// returns TRUE if the file exists and if the user
     /// has the authorization to read it.
     pub fn is_readable(&mut self) -> bool {
@@ -6796,7 +3395,7 @@ impl File {
         })
     }
 
-    /// **Source:** `OSD_File.hxx`:166 - `OSD_File::IsWriteable()`
+    /// **Source:** `OSD_File.hxx`:162 - `OSD_File::IsWriteable()`
     /// returns TRUE if the file can be read and overwritten.
     pub fn is_writeable(&mut self) -> bool {
         crate::check_result(unsafe {
@@ -6804,7 +3403,7 @@ impl File {
         })
     }
 
-    /// **Source:** `OSD_File.hxx`:169 - `OSD_File::IsExecutable()`
+    /// **Source:** `OSD_File.hxx`:165 - `OSD_File::IsExecutable()`
     /// returns TRUE if the file can be executed.
     pub fn is_executable(&mut self) -> bool {
         crate::check_result(unsafe {
@@ -6812,7 +3411,7 @@ impl File {
         })
     }
 
-    /// **Source:** `OSD_File.hxx`:177 - `OSD_File::ReadLastLine()`
+    /// **Source:** `OSD_File.hxx`:173 - `OSD_File::ReadLastLine()`
     /// Enables to emulate unix "tail -f" command.
     /// If a line is available in the file <me> returns it.
     /// Otherwise attempts to read again aNbTries times in the file
@@ -6835,13 +3434,13 @@ impl File {
         })
     }
 
-    /// **Source:** `OSD_File.hxx`:182 - `OSD_File::Edit()`
+    /// **Source:** `OSD_File.hxx`:178 - `OSD_File::Edit()`
     /// find an editor on the system and edit the given file
     pub fn edit(&mut self) -> bool {
         crate::check_result(unsafe { crate::ffi_extern_TKernel::OSD_File_edit(self as *mut Self) })
     }
 
-    /// **Source:** `OSD_File.hxx`:185 - `OSD_File::Rewind()`
+    /// **Source:** `OSD_File.hxx`:181 - `OSD_File::Rewind()`
     /// Set file pointer position to the beginning of the file
     pub fn rewind(&mut self) {
         crate::check_void_result(unsafe {
@@ -7247,7 +3846,7 @@ unsafe impl crate::CppDeletable for FileSystem {
 
 impl FileSystem {
     /// **Source:** `OSD_FileSystem.hxx`:25 - `OSD_FileSystem::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKernel::OSD_FileSystem_dynamic_type(
                 self as *const Self,
@@ -7255,7 +3854,7 @@ impl FileSystem {
         }
     }
 
-    /// **Source:** `OSD_FileSystem.hxx`:46 - `OSD_FileSystem::IsSupportedPath()`
+    /// **Source:** `OSD_FileSystem.hxx`:47 - `OSD_FileSystem::IsSupportedPath()`
     /// Returns TRUE if URL defines a supported protocol.
     pub fn is_supported_path(&self, theUrl: &crate::t_collection::AsciiString) -> bool {
         crate::check_result(unsafe {
@@ -7263,7 +3862,7 @@ impl FileSystem {
         })
     }
 
-    /// **Source:** `OSD_FileSystem.hxx`:49 - `OSD_FileSystem::IsOpenIStream()`
+    /// **Source:** `OSD_FileSystem.hxx`:50 - `OSD_FileSystem::IsOpenIStream()`
     /// Returns TRUE if current input stream is opened for reading operations.
     pub fn is_open_i_stream(
         &self,
@@ -7277,7 +3876,7 @@ impl FileSystem {
         })
     }
 
-    /// **Source:** `OSD_FileSystem.hxx`:52 - `OSD_FileSystem::IsOpenOStream()`
+    /// **Source:** `OSD_FileSystem.hxx`:53 - `OSD_FileSystem::IsOpenOStream()`
     /// Returns TRUE if current output stream is opened for writing operations.
     pub fn is_open_o_stream(
         &self,
@@ -7291,7 +3890,7 @@ impl FileSystem {
         })
     }
 
-    /// **Source:** `OSD_FileSystem.hxx`:68 - `OSD_FileSystem::OpenIStream()`
+    /// **Source:** `OSD_FileSystem.hxx`:69 - `OSD_FileSystem::OpenIStream()`
     /// Opens stream for specified file URL for reading operations (std::istream).
     /// Default implementation create a stream from file buffer returned by
     /// OSD_FileSystem::OpenFileBuffer().
@@ -7326,7 +3925,7 @@ impl FileSystem {
         }
     }
 
-    /// **Source:** `OSD_FileSystem.hxx`:81 - `OSD_FileSystem::OpenOStream()`
+    /// **Source:** `OSD_FileSystem.hxx`:82 - `OSD_FileSystem::OpenOStream()`
     /// Opens stream for specified file URL for writing operations (std::ostream).
     /// Default implementation create a stream from file buffer returned by
     /// OSD_FileSystem::OpenFileBuffer().
@@ -7350,7 +3949,7 @@ impl FileSystem {
         }
     }
 
-    /// **Source:** `OSD_FileSystem.hxx`:92 - `OSD_FileSystem::OpenStreamBuffer()`
+    /// **Source:** `OSD_FileSystem.hxx`:93 - `OSD_FileSystem::OpenStreamBuffer()`
     /// Opens stream buffer for specified file URL.
     /// @param[in] theUrl          path to open
     /// @param[in] theMode         flags describing the requested input mode for the stream
@@ -7390,7 +3989,7 @@ impl FileSystem {
     }
 
     /// **Source:** `OSD_FileSystem.hxx`:25 - `OSD_FileSystem::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKernel::OSD_FileSystem_get_type_descriptor()))
         }
@@ -7399,7 +3998,7 @@ impl FileSystem {
     /// **Source:** `OSD_FileSystem.hxx`:29 - `OSD_FileSystem::DefaultFileSystem()`
     /// Returns a global file system, which a selector between registered file systems
     /// (OSD_FileSystemSelector).
-    pub fn default_file_system() -> &'static crate::ffi_types::HandleOSDFileSystem {
+    pub fn default_file_system() -> &'static crate::ffi_types::Handle_OSD_FileSystem {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKernel::OSD_FileSystem_default_file_system()))
         }
@@ -7413,7 +4012,7 @@ impl FileSystem {
     /// @param[in] theIsPreferred add to the beginning of the list when TRUE, or add to the end
     /// otherwise
     pub fn add_default_protocol(
-        theFileSystem: &crate::ffi_types::HandleOSDFileSystem,
+        theFileSystem: &crate::ffi_types::Handle_OSD_FileSystem,
         theIsPreferred: bool,
     ) {
         crate::check_void_result(unsafe {
@@ -7427,7 +4026,7 @@ impl FileSystem {
     /// **Source:** `OSD_FileSystem.hxx`:42 - `OSD_FileSystem::RemoveDefaultProtocol()`
     /// Unregisters file system within the global file system selector returned by
     /// OSD_FileSystem::DefaultFileSystem().
-    pub fn remove_default_protocol(theFileSystem: &crate::ffi_types::HandleOSDFileSystem) {
+    pub fn remove_default_protocol(theFileSystem: &crate::ffi_types::Handle_OSD_FileSystem) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKernel::OSD_FileSystem_remove_default_protocol(theFileSystem)
         })
@@ -7453,8 +4052,8 @@ impl FileSystem {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKernel::OSD_FileSystem_inherited_IsInstance(
                 self as *const Self,
@@ -7463,14 +4062,14 @@ impl FileSystem {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKernel::OSD_FileSystem_inherited_IsKind(self as *const Self, theType)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -7484,14 +4083,14 @@ impl FileSystem {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKernel::OSD_FileSystem_inherited_GetRefCount(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKernel::OSD_FileSystem_inherited_IncrementRefCounter(
@@ -7500,7 +4099,7 @@ impl FileSystem {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKernel::OSD_FileSystem_inherited_DecrementRefCounter(
@@ -7509,7 +4108,7 @@ impl FileSystem {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKernel::OSD_FileSystem_inherited_Delete(self as *const Self)
@@ -7517,32 +4116,32 @@ impl FileSystem {
     }
 }
 
-pub use crate::ffi_types::HandleOSDFileSystem;
+pub use crate::ffi_types::Handle_OSD_FileSystem;
 
-unsafe impl crate::CppDeletable for HandleOSDFileSystem {
+unsafe impl crate::CppDeletable for Handle_OSD_FileSystem {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKernel::HandleOSDFileSystem_destructor(ptr);
+            crate::ffi_extern_TKernel::Handle_OSD_FileSystem_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleOSDFileSystem {
+unsafe impl crate::CppCopyable for Handle_OSD_FileSystem {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        unsafe { crate::check_result(crate::ffi_extern_TKernel::HandleOSDFileSystem_clone(ptr)) }
+        unsafe { crate::check_result(crate::ffi_extern_TKernel::Handle_OSD_FileSystem_clone(ptr)) }
     }
 }
 
-impl HandleOSDFileSystem {
+impl Handle_OSD_FileSystem {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
-        unsafe { crate::ffi_extern_TKernel::HandleOSDFileSystem_is_null(self as *const Self) }
+        unsafe { crate::ffi_extern_TKernel::Handle_OSD_FileSystem_is_null(self as *const Self) }
     }
 
     /// Dereference this Handle to access the underlying OSD_FileSystem
     pub fn get(&self) -> &crate::ffi_types::OSD_FileSystem {
         unsafe {
-            &*crate::check_result(crate::ffi_extern_TKernel::HandleOSDFileSystem_get(
+            &*crate::check_result(crate::ffi_extern_TKernel::Handle_OSD_FileSystem_get(
                 self as *const Self,
             ))
         }
@@ -7551,7 +4150,7 @@ impl HandleOSDFileSystem {
     /// Dereference this Handle to mutably access the underlying OSD_FileSystem
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::OSD_FileSystem {
         unsafe {
-            &mut *crate::check_result(crate::ffi_extern_TKernel::HandleOSDFileSystem_get_mut(
+            &mut *crate::check_result(crate::ffi_extern_TKernel::Handle_OSD_FileSystem_get_mut(
                 self as *mut Self,
             ))
         }
@@ -7560,10 +4159,10 @@ impl HandleOSDFileSystem {
     /// Upcast Handle<OSD_FileSystem> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKernel::HandleOSDFileSystem_to_HandleStandardTransient(
+                crate::ffi_extern_TKernel::Handle_OSD_FileSystem_to_Handle_Standard_Transient(
                     self as *const Self,
                 ),
             ))
@@ -7575,9 +4174,9 @@ impl HandleOSDFileSystem {
     /// Returns `None` if the handle does not point to a `OSD_CachedFileSystem` (or subclass).
     pub fn downcast_to_cached_file_system(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleOSDCachedFileSystem>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_OSD_CachedFileSystem>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKernel::HandleOSDFileSystem_downcast_to_HandleOSDCachedFileSystem(
+            crate::ffi_extern_TKernel::Handle_OSD_FileSystem_downcast_to_Handle_OSD_CachedFileSystem(
                 self as *const Self,
             )
         });
@@ -7593,11 +4192,9 @@ impl HandleOSDFileSystem {
     /// Returns `None` if the handle does not point to a `OSD_FileSystemSelector` (or subclass).
     pub fn downcast_to_file_system_selector(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleOSDFileSystemSelector>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_OSD_FileSystemSelector>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKernel::HandleOSDFileSystem_downcast_to_HandleOSDFileSystemSelector(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKernel::Handle_OSD_FileSystem_downcast_to_Handle_OSD_FileSystemSelector(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -7611,9 +4208,9 @@ impl HandleOSDFileSystem {
     /// Returns `None` if the handle does not point to a `OSD_LocalFileSystem` (or subclass).
     pub fn downcast_to_local_file_system(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleOSDLocalFileSystem>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_OSD_LocalFileSystem>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKernel::HandleOSDFileSystem_downcast_to_HandleOSDLocalFileSystem(
+            crate::ffi_extern_TKernel::Handle_OSD_FileSystem_downcast_to_Handle_OSD_LocalFileSystem(
                 self as *const Self,
             )
         });
@@ -7653,7 +4250,7 @@ impl FileSystemSelector {
     }
 
     /// **Source:** `OSD_FileSystemSelector.hxx`:24 - `OSD_FileSystemSelector::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKernel::OSD_FileSystemSelector_dynamic_type(
                 self as *const Self,
@@ -7668,7 +4265,7 @@ impl FileSystemSelector {
     /// otherwise
     pub fn add_protocol(
         &mut self,
-        theFileSystem: &crate::ffi_types::HandleOSDFileSystem,
+        theFileSystem: &crate::ffi_types::Handle_OSD_FileSystem,
         theIsPreferred: bool,
     ) {
         crate::check_void_result(unsafe {
@@ -7682,7 +4279,7 @@ impl FileSystemSelector {
 
     /// **Source:** `OSD_FileSystemSelector.hxx`:37 - `OSD_FileSystemSelector::RemoveProtocol()`
     /// Unregisters file system within this selector.
-    pub fn remove_protocol(&mut self, theFileSystem: &crate::ffi_types::HandleOSDFileSystem) {
+    pub fn remove_protocol(&mut self, theFileSystem: &crate::ffi_types::Handle_OSD_FileSystem) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKernel::OSD_FileSystemSelector_remove_protocol(
                 self as *mut Self,
@@ -7702,7 +4299,7 @@ impl FileSystemSelector {
         })
     }
 
-    /// **Source:** `OSD_FileSystemSelector.hxx`:45 - `OSD_FileSystemSelector::IsOpenIStream()`
+    /// **Source:** `OSD_FileSystemSelector.hxx`:44 - `OSD_FileSystemSelector::IsOpenIStream()`
     /// Returns TRUE if current input stream is opened for reading operations.
     pub fn is_open_i_stream(
         &self,
@@ -7716,7 +4313,7 @@ impl FileSystemSelector {
         })
     }
 
-    /// **Source:** `OSD_FileSystemSelector.hxx`:49 - `OSD_FileSystemSelector::IsOpenOStream()`
+    /// **Source:** `OSD_FileSystemSelector.hxx`:47 - `OSD_FileSystemSelector::IsOpenOStream()`
     /// Returns TRUE if current output stream is opened for writing operations.
     pub fn is_open_o_stream(
         &self,
@@ -7730,7 +4327,7 @@ impl FileSystemSelector {
         })
     }
 
-    /// **Source:** `OSD_FileSystemSelector.hxx`:53 - `OSD_FileSystemSelector::OpenIStream()`
+    /// **Source:** `OSD_FileSystemSelector.hxx`:50 - `OSD_FileSystemSelector::OpenIStream()`
     /// Opens input stream using one of registered protocols.
     pub fn open_i_stream(
         &mut self,
@@ -7752,7 +4349,7 @@ impl FileSystemSelector {
         }
     }
 
-    /// **Source:** `OSD_FileSystemSelector.hxx`:61 - `OSD_FileSystemSelector::OpenOStream()`
+    /// **Source:** `OSD_FileSystemSelector.hxx`:57 - `OSD_FileSystemSelector::OpenOStream()`
     /// Opens output stream using one of registered protocols.
     pub fn open_o_stream(
         &mut self,
@@ -7770,7 +4367,7 @@ impl FileSystemSelector {
         }
     }
 
-    /// **Source:** `OSD_FileSystemSelector.hxx`:66 - `OSD_FileSystemSelector::OpenStreamBuffer()`
+    /// **Source:** `OSD_FileSystemSelector.hxx`:62 - `OSD_FileSystemSelector::OpenStreamBuffer()`
     /// Opens stream buffer using one of registered protocols.
     pub fn open_stream_buffer(
         &mut self,
@@ -7804,7 +4401,7 @@ impl FileSystemSelector {
     }
 
     /// **Source:** `OSD_FileSystemSelector.hxx`:24 - `OSD_FileSystemSelector::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKernel::OSD_FileSystemSelector_get_type_descriptor(),
@@ -7859,7 +4456,7 @@ impl FileSystemSelector {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleOSDFileSystemSelector> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_OSD_FileSystemSelector> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKernel::OSD_FileSystemSelector_to_handle(obj.into_raw()),
@@ -7867,8 +4464,8 @@ impl FileSystemSelector {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKernel::OSD_FileSystemSelector_inherited_IsInstance(
                 self as *const Self,
@@ -7877,8 +4474,8 @@ impl FileSystemSelector {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKernel::OSD_FileSystemSelector_inherited_IsKind(
                 self as *const Self,
@@ -7887,7 +4484,7 @@ impl FileSystemSelector {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -7903,7 +4500,7 @@ impl FileSystemSelector {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKernel::OSD_FileSystemSelector_inherited_GetRefCount(
@@ -7912,7 +4509,7 @@ impl FileSystemSelector {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKernel::OSD_FileSystemSelector_inherited_IncrementRefCounter(
@@ -7921,7 +4518,7 @@ impl FileSystemSelector {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKernel::OSD_FileSystemSelector_inherited_DecrementRefCounter(
@@ -7930,7 +4527,7 @@ impl FileSystemSelector {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKernel::OSD_FileSystemSelector_inherited_Delete(self as *const Self)
@@ -7938,36 +4535,36 @@ impl FileSystemSelector {
     }
 }
 
-pub use crate::ffi_types::HandleOSDFileSystemSelector;
+pub use crate::ffi_types::Handle_OSD_FileSystemSelector;
 
-unsafe impl crate::CppDeletable for HandleOSDFileSystemSelector {
+unsafe impl crate::CppDeletable for Handle_OSD_FileSystemSelector {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKernel::HandleOSDFileSystemSelector_destructor(ptr);
+            crate::ffi_extern_TKernel::Handle_OSD_FileSystemSelector_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleOSDFileSystemSelector {
+unsafe impl crate::CppCopyable for Handle_OSD_FileSystemSelector {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
         unsafe {
-            crate::check_result(crate::ffi_extern_TKernel::HandleOSDFileSystemSelector_clone(ptr))
+            crate::check_result(crate::ffi_extern_TKernel::Handle_OSD_FileSystemSelector_clone(ptr))
         }
     }
 }
 
-impl HandleOSDFileSystemSelector {
+impl Handle_OSD_FileSystemSelector {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
         unsafe {
-            crate::ffi_extern_TKernel::HandleOSDFileSystemSelector_is_null(self as *const Self)
+            crate::ffi_extern_TKernel::Handle_OSD_FileSystemSelector_is_null(self as *const Self)
         }
     }
 
     /// Dereference this Handle to access the underlying OSD_FileSystemSelector
     pub fn get(&self) -> &crate::ffi_types::OSD_FileSystemSelector {
         unsafe {
-            &*crate::check_result(crate::ffi_extern_TKernel::HandleOSDFileSystemSelector_get(
+            &*crate::check_result(crate::ffi_extern_TKernel::Handle_OSD_FileSystemSelector_get(
                 self as *const Self,
             ))
         }
@@ -7977,16 +4574,18 @@ impl HandleOSDFileSystemSelector {
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::OSD_FileSystemSelector {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi_extern_TKernel::HandleOSDFileSystemSelector_get_mut(self as *mut Self),
+                crate::ffi_extern_TKernel::Handle_OSD_FileSystemSelector_get_mut(self as *mut Self),
             )
         }
     }
 
     /// Upcast Handle<OSD_FileSystemSelector> to Handle<OSD_FileSystem>
-    pub fn to_handle_file_system(&self) -> crate::OwnedPtr<crate::ffi_types::HandleOSDFileSystem> {
+    pub fn to_handle_file_system(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_OSD_FileSystem> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKernel::HandleOSDFileSystemSelector_to_HandleOSDFileSystem(
+                crate::ffi_extern_TKernel::Handle_OSD_FileSystemSelector_to_Handle_OSD_FileSystem(
                     self as *const Self,
                 ),
             ))
@@ -7996,13 +4595,9 @@ impl HandleOSDFileSystemSelector {
     /// Upcast Handle<OSD_FileSystemSelector> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKernel::HandleOSDFileSystemSelector_to_HandleStandardTransient(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKernel::Handle_OSD_FileSystemSelector_to_Handle_Standard_Transient(self as *const Self)))
         }
     }
 }
@@ -8152,7 +4747,7 @@ impl LocalFileSystem {
     }
 
     /// **Source:** `OSD_LocalFileSystem.hxx`:22 - `OSD_LocalFileSystem::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKernel::OSD_LocalFileSystem_dynamic_type(
                 self as *const Self,
@@ -8171,7 +4766,7 @@ impl LocalFileSystem {
         })
     }
 
-    /// **Source:** `OSD_LocalFileSystem.hxx`:32 - `OSD_LocalFileSystem::IsOpenIStream()`
+    /// **Source:** `OSD_LocalFileSystem.hxx`:31 - `OSD_LocalFileSystem::IsOpenIStream()`
     /// Returns TRUE if current input stream is opened for reading operations.
     pub fn is_open_i_stream(
         &self,
@@ -8185,7 +4780,7 @@ impl LocalFileSystem {
         })
     }
 
-    /// **Source:** `OSD_LocalFileSystem.hxx`:36 - `OSD_LocalFileSystem::IsOpenOStream()`
+    /// **Source:** `OSD_LocalFileSystem.hxx`:34 - `OSD_LocalFileSystem::IsOpenOStream()`
     /// Returns TRUE if current output stream is opened for writing operations.
     pub fn is_open_o_stream(
         &self,
@@ -8199,7 +4794,7 @@ impl LocalFileSystem {
         })
     }
 
-    /// **Source:** `OSD_LocalFileSystem.hxx`:40 - `OSD_LocalFileSystem::OpenStreamBuffer()`
+    /// **Source:** `OSD_LocalFileSystem.hxx`:37 - `OSD_LocalFileSystem::OpenStreamBuffer()`
     /// Opens stream buffer for specified file URL.
     pub fn open_stream_buffer(
         &mut self,
@@ -8233,7 +4828,7 @@ impl LocalFileSystem {
     }
 
     /// **Source:** `OSD_LocalFileSystem.hxx`:22 - `OSD_LocalFileSystem::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKernel::OSD_LocalFileSystem_get_type_descriptor(),
@@ -8286,7 +4881,7 @@ impl LocalFileSystem {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleOSDLocalFileSystem> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_OSD_LocalFileSystem> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKernel::OSD_LocalFileSystem_to_handle(obj.into_raw()),
@@ -8294,7 +4889,7 @@ impl LocalFileSystem {
         }
     }
 
-    /// Inherited: **Source:** `OSD_FileSystem.hxx`:68 - `OSD_FileSystem::OpenIStream()`
+    /// Inherited: **Source:** `OSD_FileSystem.hxx`:69 - `OSD_FileSystem::OpenIStream()`
     pub fn open_i_stream(
         &mut self,
         theUrl: &crate::t_collection::AsciiString,
@@ -8315,7 +4910,7 @@ impl LocalFileSystem {
         }
     }
 
-    /// Inherited: **Source:** `OSD_FileSystem.hxx`:81 - `OSD_FileSystem::OpenOStream()`
+    /// Inherited: **Source:** `OSD_FileSystem.hxx`:82 - `OSD_FileSystem::OpenOStream()`
     pub fn open_o_stream(
         &mut self,
         theUrl: &crate::t_collection::AsciiString,
@@ -8332,8 +4927,8 @@ impl LocalFileSystem {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKernel::OSD_LocalFileSystem_inherited_IsInstance(
                 self as *const Self,
@@ -8342,8 +4937,8 @@ impl LocalFileSystem {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKernel::OSD_LocalFileSystem_inherited_IsKind(
                 self as *const Self,
@@ -8352,7 +4947,7 @@ impl LocalFileSystem {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -8366,7 +4961,7 @@ impl LocalFileSystem {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKernel::OSD_LocalFileSystem_inherited_GetRefCount(
@@ -8375,7 +4970,7 @@ impl LocalFileSystem {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKernel::OSD_LocalFileSystem_inherited_IncrementRefCounter(
@@ -8384,7 +4979,7 @@ impl LocalFileSystem {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKernel::OSD_LocalFileSystem_inherited_DecrementRefCounter(
@@ -8393,7 +4988,7 @@ impl LocalFileSystem {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKernel::OSD_LocalFileSystem_inherited_Delete(self as *const Self)
@@ -8401,34 +4996,36 @@ impl LocalFileSystem {
     }
 }
 
-pub use crate::ffi_types::HandleOSDLocalFileSystem;
+pub use crate::ffi_types::Handle_OSD_LocalFileSystem;
 
-unsafe impl crate::CppDeletable for HandleOSDLocalFileSystem {
+unsafe impl crate::CppDeletable for Handle_OSD_LocalFileSystem {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKernel::HandleOSDLocalFileSystem_destructor(ptr);
+            crate::ffi_extern_TKernel::Handle_OSD_LocalFileSystem_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleOSDLocalFileSystem {
+unsafe impl crate::CppCopyable for Handle_OSD_LocalFileSystem {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
         unsafe {
-            crate::check_result(crate::ffi_extern_TKernel::HandleOSDLocalFileSystem_clone(ptr))
+            crate::check_result(crate::ffi_extern_TKernel::Handle_OSD_LocalFileSystem_clone(ptr))
         }
     }
 }
 
-impl HandleOSDLocalFileSystem {
+impl Handle_OSD_LocalFileSystem {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
-        unsafe { crate::ffi_extern_TKernel::HandleOSDLocalFileSystem_is_null(self as *const Self) }
+        unsafe {
+            crate::ffi_extern_TKernel::Handle_OSD_LocalFileSystem_is_null(self as *const Self)
+        }
     }
 
     /// Dereference this Handle to access the underlying OSD_LocalFileSystem
     pub fn get(&self) -> &crate::ffi_types::OSD_LocalFileSystem {
         unsafe {
-            &*crate::check_result(crate::ffi_extern_TKernel::HandleOSDLocalFileSystem_get(
+            &*crate::check_result(crate::ffi_extern_TKernel::Handle_OSD_LocalFileSystem_get(
                 self as *const Self,
             ))
         }
@@ -8437,17 +5034,19 @@ impl HandleOSDLocalFileSystem {
     /// Dereference this Handle to mutably access the underlying OSD_LocalFileSystem
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::OSD_LocalFileSystem {
         unsafe {
-            &mut *crate::check_result(crate::ffi_extern_TKernel::HandleOSDLocalFileSystem_get_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKernel::Handle_OSD_LocalFileSystem_get_mut(self as *mut Self),
+            )
         }
     }
 
     /// Upcast Handle<OSD_LocalFileSystem> to Handle<OSD_FileSystem>
-    pub fn to_handle_file_system(&self) -> crate::OwnedPtr<crate::ffi_types::HandleOSDFileSystem> {
+    pub fn to_handle_file_system(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_OSD_FileSystem> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKernel::HandleOSDLocalFileSystem_to_HandleOSDFileSystem(
+                crate::ffi_extern_TKernel::Handle_OSD_LocalFileSystem_to_Handle_OSD_FileSystem(
                     self as *const Self,
                 ),
             ))
@@ -8457,342 +5056,13 @@ impl HandleOSDLocalFileSystem {
     /// Upcast Handle<OSD_LocalFileSystem> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKernel::HandleOSDLocalFileSystem_to_HandleStandardTransient(
+                crate::ffi_extern_TKernel::Handle_OSD_LocalFileSystem_to_Handle_Standard_Transient(
                     self as *const Self,
                 ),
             ))
-        }
-    }
-}
-
-// ========================
-// From OSD_MAllocHook.hxx
-// ========================
-
-/// **Source:** `OSD_MAllocHook.hxx`:28 - `OSD_MAllocHook`
-///
-/// This class provides the possibility to set callback for memory
-/// allocation/deallocation.
-/// On MS Windows, it works only in Debug builds. It relies on the
-/// debug CRT function _CrtSetAllocHook (see MSDN for help).
-pub use crate::ffi_types::OSD_MAllocHook as MAllocHook;
-
-unsafe impl crate::CppDeletable for MAllocHook {
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            crate::ffi_extern_TKernel::OSD_MAllocHook_destructor(ptr);
-        }
-    }
-}
-
-impl MAllocHook {
-    /// **Source:** `OSD_MAllocHook.hxx` - `OSD_MAllocHook::OSD_MAllocHook()`
-    /// Default constructor
-    pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKernel::OSD_MAllocHook_ctor(),
-            ))
-        }
-    }
-
-    /// **Source:** `OSD_MAllocHook.hxx`:158 - `OSD_MAllocHook::SetCallback()`
-    /// Set handler of allocation/deallocation events
-    ///
-    /// You can pass here any implementation. For easy start, you can try
-    /// with the predefined handler LogFileHandler, which static instance
-    /// is returned by GetLogFileHandler().
-    /// To clear the handler, pass NULL here.
-    pub fn set_callback(theCB: &mut MAllocHook_Callback) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKernel::OSD_MAllocHook_set_callback(theCB as *mut _)
-        })
-    }
-
-    /// **Source:** `OSD_MAllocHook.hxx`:161 - `OSD_MAllocHook::GetCallback()`
-    /// Get current handler of allocation/deallocation events
-    pub unsafe fn get_callback() -> Option<&'static mut MAllocHook_Callback> {
-        {
-            let __val = crate::check_result(unsafe {
-                crate::ffi_extern_TKernel::OSD_MAllocHook_get_callback()
-            });
-            if __val.is_null() {
-                None
-            } else {
-                Some(unsafe { &mut *__val })
-            }
-        }
-    }
-
-    /// **Source:** `OSD_MAllocHook.hxx`:164 - `OSD_MAllocHook::GetLogFileHandler()`
-    /// Get static instance of LogFileHandler handler
-    pub unsafe fn get_log_file_handler() -> Option<&'static mut MAllocHook_LogFileHandler> {
-        {
-            let __val = crate::check_result(unsafe {
-                crate::ffi_extern_TKernel::OSD_MAllocHook_get_log_file_handler()
-            });
-            if __val.is_null() {
-                None
-            } else {
-                Some(unsafe { &mut *__val })
-            }
-        }
-    }
-
-    /// **Source:** `OSD_MAllocHook.hxx`:167 - `OSD_MAllocHook::GetCollectBySize()`
-    /// Get static instance of CollectBySize handler
-    pub unsafe fn get_collect_by_size() -> Option<&'static mut MAllocHook_CollectBySize> {
-        {
-            let __val = crate::check_result(unsafe {
-                crate::ffi_extern_TKernel::OSD_MAllocHook_get_collect_by_size()
-            });
-            if __val.is_null() {
-                None
-            } else {
-                Some(unsafe { &mut *__val })
-            }
-        }
-    }
-}
-
-/// **Source:** `OSD_MAllocHook.hxx`:34 - `OSD_MAllocHook_Callback`
-///
-/// Interface of a class that should handle allocation/deallocation events
-pub use crate::ffi_types::OSD_MAllocHook_Callback as MAllocHook_Callback;
-
-unsafe impl crate::CppDeletable for MAllocHook_Callback {
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            crate::ffi_extern_TKernel::OSD_MAllocHook_Callback_destructor(ptr);
-        }
-    }
-}
-
-impl MAllocHook_Callback {
-    /// **Source:** `OSD_MAllocHook.hxx`:45 - `OSD_MAllocHook_Callback::AllocEvent()`
-    /// Allocation event handler
-    ///
-    /// It is called when allocation is done
-    /// @param theSize
-    /// the size of the memory block in bytes
-    /// @param theRequestNum
-    /// the allocation order number of the memory block
-    pub fn alloc_event(&mut self, theSize: usize, theRequestNum: std::ffi::c_long) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKernel::OSD_MAllocHook_Callback_alloc_event(
-                self as *mut Self,
-                theSize,
-                theRequestNum,
-            )
-        })
-    }
-
-    /// **Source:** `OSD_MAllocHook.hxx`:57 - `OSD_MAllocHook_Callback::FreeEvent()`
-    /// Freeing event handler
-    ///
-    /// It is called when the block is freed
-    /// @param theData
-    /// the pointer to the user data section of the memory block
-    /// @param theSize
-    /// the size of the memory block in bytes
-    /// @param theRequestNum
-    /// the allocation order number of the memory block
-    pub unsafe fn free_event(
-        &mut self,
-        theData: *mut std::ffi::c_void,
-        theSize: usize,
-        theRequestNum: std::ffi::c_long,
-    ) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKernel::OSD_MAllocHook_Callback_free_event(
-                self as *mut Self,
-                theData,
-                theSize,
-                theRequestNum,
-            )
-        })
-    }
-}
-
-/// **Source:** `OSD_MAllocHook.hxx`:65 - `OSD_MAllocHook_LogFileHandler`
-///
-/// Implementation of the handler that collects all events
-/// to the log file. It contains the method to generate the report
-/// from the log file.
-pub use crate::ffi_types::OSD_MAllocHook_LogFileHandler as MAllocHook_LogFileHandler;
-
-unsafe impl crate::CppDeletable for MAllocHook_LogFileHandler {
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            crate::ffi_extern_TKernel::OSD_MAllocHook_LogFileHandler_destructor(ptr);
-        }
-    }
-}
-
-impl MAllocHook_LogFileHandler {
-    /// **Source:** `OSD_MAllocHook.hxx`:69 - `OSD_MAllocHook_LogFileHandler::OSD_MAllocHook_LogFileHandler()`
-    /// Constructor
-    pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKernel::OSD_MAllocHook_LogFileHandler_ctor(),
-            ))
-        }
-    }
-
-    /// **Source:** `OSD_MAllocHook.hxx`:76 - `OSD_MAllocHook_LogFileHandler::Open()`
-    /// Create the file and start collecting events.
-    /// Return false if the file with the given name cannot be created.
-    pub fn open(&mut self, theFileName: &str) -> bool {
-        let c_theFileName = std::ffi::CString::new(theFileName).unwrap();
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKernel::OSD_MAllocHook_LogFileHandler_open(
-                self as *mut Self,
-                c_theFileName.as_ptr(),
-            )
-        })
-    }
-
-    /// **Source:** `OSD_MAllocHook.hxx`:79 - `OSD_MAllocHook_LogFileHandler::Close()`
-    /// Close the file and stop collecting events
-    pub fn close(&mut self) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKernel::OSD_MAllocHook_LogFileHandler_close(self as *mut Self)
-        })
-    }
-
-    /// **Source:** `OSD_MAllocHook.hxx`:93 - `OSD_MAllocHook_LogFileHandler::AllocEvent()`
-    pub fn alloc_event(&mut self, arg0: usize, arg1: std::ffi::c_long) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKernel::OSD_MAllocHook_LogFileHandler_alloc_event(
-                self as *mut Self,
-                arg0,
-                arg1,
-            )
-        })
-    }
-
-    /// **Source:** `OSD_MAllocHook.hxx`:94 - `OSD_MAllocHook_LogFileHandler::FreeEvent()`
-    pub unsafe fn free_event(
-        &mut self,
-        arg0: *mut std::ffi::c_void,
-        arg1: usize,
-        arg2: std::ffi::c_long,
-    ) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKernel::OSD_MAllocHook_LogFileHandler_free_event(
-                self as *mut Self,
-                arg0,
-                arg1,
-                arg2,
-            )
-        })
-    }
-
-    /// **Source:** `OSD_MAllocHook.hxx`:88 - `OSD_MAllocHook_LogFileHandler::MakeReport()`
-    /// Make synthesized report on the given log file.
-    ///
-    /// Generate an easy to use report in the
-    /// new file with the given name, taking the given log file as input.
-    /// If theIncludeAlive is true then
-    /// include into the report the alive allocation numbers.
-    pub fn make_report(theLogFile: &str, theOutFile: &str, theIncludeAlive: bool) -> bool {
-        let c_theLogFile = std::ffi::CString::new(theLogFile).unwrap();
-        let c_theOutFile = std::ffi::CString::new(theOutFile).unwrap();
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKernel::OSD_MAllocHook_LogFileHandler_make_report(
-                c_theLogFile.as_ptr(),
-                c_theOutFile.as_ptr(),
-                theIncludeAlive,
-            )
-        })
-    }
-}
-
-/// **Source:** `OSD_MAllocHook.hxx`:106 - `OSD_MAllocHook_CollectBySize`
-///
-/// Implementation of the handler that collects numbers of
-/// allocations/deallocations for each block size directly in the memory.
-pub use crate::ffi_types::OSD_MAllocHook_CollectBySize as MAllocHook_CollectBySize;
-
-unsafe impl crate::CppDeletable for MAllocHook_CollectBySize {
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            crate::ffi_extern_TKernel::OSD_MAllocHook_CollectBySize_destructor(ptr);
-        }
-    }
-}
-
-impl MAllocHook_CollectBySize {
-    /// **Source:** `OSD_MAllocHook.hxx`:110 - `OSD_MAllocHook_CollectBySize::OSD_MAllocHook_CollectBySize()`
-    /// Constructor
-    pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKernel::OSD_MAllocHook_CollectBySize_ctor(),
-            ))
-        }
-    }
-
-    /// **Source:** `OSD_MAllocHook.hxx`:116 - `OSD_MAllocHook_CollectBySize::Reset()`
-    /// Reset the buffer and start collecting events.
-    pub fn reset(&mut self) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKernel::OSD_MAllocHook_CollectBySize_reset(self as *mut Self)
-        })
-    }
-
-    /// **Source:** `OSD_MAllocHook.hxx`:119 - `OSD_MAllocHook_CollectBySize::MakeReport()`
-    /// Write report in the given file.
-    pub fn make_report(&mut self, theOutFile: &str) -> bool {
-        let c_theOutFile = std::ffi::CString::new(theOutFile).unwrap();
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKernel::OSD_MAllocHook_CollectBySize_make_report(
-                self as *mut Self,
-                c_theOutFile.as_ptr(),
-            )
-        })
-    }
-
-    /// **Source:** `OSD_MAllocHook.hxx`:121 - `OSD_MAllocHook_CollectBySize::AllocEvent()`
-    pub fn alloc_event(&mut self, arg0: usize, arg1: std::ffi::c_long) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKernel::OSD_MAllocHook_CollectBySize_alloc_event(
-                self as *mut Self,
-                arg0,
-                arg1,
-            )
-        })
-    }
-
-    /// **Source:** `OSD_MAllocHook.hxx`:122 - `OSD_MAllocHook_CollectBySize::FreeEvent()`
-    pub unsafe fn free_event(
-        &mut self,
-        arg0: *mut std::ffi::c_void,
-        arg1: usize,
-        arg2: std::ffi::c_long,
-    ) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKernel::OSD_MAllocHook_CollectBySize_free_event(
-                self as *mut Self,
-                arg0,
-                arg1,
-                arg2,
-            )
-        })
-    }
-}
-
-/// **Source:** `OSD_MAllocHook.hxx`:125 - `OSD_MAllocHook_CollectBySize_Numbers`
-pub use crate::ffi_types::OSD_MAllocHook_CollectBySize_Numbers as MAllocHook_CollectBySize_Numbers;
-
-unsafe impl crate::CppDeletable for MAllocHook_CollectBySize_Numbers {
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            crate::ffi_extern_TKernel::OSD_MAllocHook_CollectBySize_Numbers_destructor(ptr);
         }
     }
 }
@@ -8921,7 +5191,7 @@ impl MemInfo {
     /// **Source:** `OSD_MemInfo.hxx`:99 - `OSD_MemInfo::Value()`
     /// Return value of specified counter in bytes.
     /// Notice that NOT all counters are available on various systems.
-    /// Standard_Size(-1) means invalid (unavailable) value.
+    /// size_t(-1) means invalid (unavailable) value.
     pub fn value(&self, theCounter: &crate::ffi_types::OSD_MemInfo_Counter) -> usize {
         crate::check_result(unsafe {
             crate::ffi_extern_TKernel::OSD_MemInfo_value(self as *const Self, theCounter)
@@ -8931,7 +5201,7 @@ impl MemInfo {
     /// **Source:** `OSD_MemInfo.hxx`:104 - `OSD_MemInfo::ValueMiB()`
     /// Return value of specified counter in MiB.
     /// Notice that NOT all counters are available on various systems.
-    /// Standard_Size(-1) means invalid (unavailable) value.
+    /// size_t(-1) means invalid (unavailable) value.
     pub fn value_mi_b(&self, theCounter: &crate::ffi_types::OSD_MemInfo_Counter) -> usize {
         crate::check_result(unsafe {
             crate::ffi_extern_TKernel::OSD_MemInfo_value_mi_b(self as *const Self, theCounter)
@@ -8941,7 +5211,7 @@ impl MemInfo {
     /// **Source:** `OSD_MemInfo.hxx`:109 - `OSD_MemInfo::ValuePreciseMiB()`
     /// Return floating value of specified counter in MiB.
     /// Notice that NOT all counters are available on various systems.
-    /// Standard_Real(-1) means invalid (unavailable) value.
+    /// double(-1) means invalid (unavailable) value.
     pub fn value_precise_mi_b(&self, theCounter: &crate::ffi_types::OSD_MemInfo_Counter) -> f64 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKernel::OSD_MemInfo_value_precise_mi_b(
@@ -8966,7 +5236,7 @@ impl MemInfo {
 // From OSD_OSDError.hxx
 // ========================
 
-/// **Source:** `OSD_OSDError.hxx`:34 - `OSD_OSDError`
+/// **Source:** `OSD_OSDError.hxx`:30 - `OSD_OSDError`
 pub use crate::ffi_types::OSD_OSDError as OSDError;
 
 unsafe impl crate::CppDeletable for OSDError {
@@ -8978,16 +5248,7 @@ unsafe impl crate::CppDeletable for OSDError {
 }
 
 impl OSDError {
-    /// **Source:** `OSD_OSDError.hxx`:34 - `OSD_OSDError::OSD_OSDError()`
-    pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKernel::OSD_OSDError_ctor(),
-            ))
-        }
-    }
-
-    /// **Source:** `OSD_OSDError.hxx`:34 - `OSD_OSDError::OSD_OSDError()`
+    /// **Source:** `OSD_OSDError.hxx`:30 - `OSD_OSDError::OSD_OSDError()`
     pub fn new_charptr(theMessage: &str) -> crate::OwnedPtr<Self> {
         let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
         unsafe {
@@ -8997,7 +5258,7 @@ impl OSDError {
         }
     }
 
-    /// **Source:** `OSD_OSDError.hxx`:34 - `OSD_OSDError::OSD_OSDError()`
+    /// **Source:** `OSD_OSDError.hxx`:30 - `OSD_OSDError::OSD_OSDError()`
     pub fn new_charptr2(theMessage: &str, theStackTrace: &str) -> crate::OwnedPtr<Self> {
         let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
         let c_theStackTrace = std::ffi::CString::new(theStackTrace).unwrap();
@@ -9011,75 +5272,15 @@ impl OSDError {
         }
     }
 
-    /// **Source:** `OSD_OSDError.hxx`:34 - `OSD_OSDError::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
-        unsafe {
-            &*(crate::check_result(crate::ffi_extern_TKernel::OSD_OSDError_dynamic_type(
-                self as *const Self,
-            )))
-        }
-    }
-
-    /// **Source:** `OSD_OSDError.hxx`:34 - `OSD_OSDError::Raise()`
-    pub fn raise_charptr(theMessage: &str) {
-        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKernel::OSD_OSDError_raise_charptr(c_theMessage.as_ptr())
-        })
-    }
-
-    /// **Source:** `OSD_OSDError.hxx`:34 - `OSD_OSDError::Raise()`
-    pub fn raise_sstream(theMessage: &mut crate::ffi_types::Standard_SStream) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKernel::OSD_OSDError_raise_sstream(theMessage)
-        })
-    }
-
-    /// **Source:** `OSD_OSDError.hxx`:34 - `OSD_OSDError::NewInstance()`
-    pub fn new_instance_charptr(
-        theMessage: &str,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleOSDOSDError> {
-        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKernel::OSD_OSDError_new_instance_charptr(c_theMessage.as_ptr()),
-            ))
-        }
-    }
-
-    /// **Source:** `OSD_OSDError.hxx`:34 - `OSD_OSDError::NewInstance()`
-    pub fn new_instance_charptr2(
-        theMessage: &str,
-        theStackTrace: &str,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleOSDOSDError> {
-        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
-        let c_theStackTrace = std::ffi::CString::new(theStackTrace).unwrap();
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKernel::OSD_OSDError_new_instance_charptr2(
-                    c_theMessage.as_ptr(),
-                    c_theStackTrace.as_ptr(),
-                ),
-            ))
-        }
-    }
-
-    /// **Source:** `OSD_OSDError.hxx`:34 - `OSD_OSDError::get_type_name()`
-    pub fn get_type_name() -> std::string::String {
+    /// **Source:** `OSD_OSDError.hxx`:30 - `OSD_OSDError::ExceptionType()`
+    pub fn exception_type(&self) -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi_extern_TKernel::OSD_OSDError_get_type_name(),
+                crate::ffi_extern_TKernel::OSD_OSDError_exception_type(self as *const Self),
             ))
         }
         .to_string_lossy()
         .into_owned()
-    }
-
-    /// **Source:** `OSD_OSDError.hxx`:34 - `OSD_OSDError::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
-        unsafe {
-            &*(crate::check_result(crate::ffi_extern_TKernel::OSD_OSDError_get_type_descriptor()))
-        }
     }
 
     /// Upcast to Standard_Failure
@@ -9100,180 +5301,11 @@ impl OSDError {
         }
     }
 
-    /// Upcast to Standard_Transient
-    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        unsafe {
-            &*crate::check_result(crate::ffi_extern_TKernel::OSD_OSDError_as_Standard_Transient(
-                self as *const Self,
-            ))
-        }
-    }
-
-    /// Upcast to Standard_Transient (mutable)
-    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        unsafe {
-            &mut *crate::check_result(
-                crate::ffi_extern_TKernel::OSD_OSDError_as_Standard_Transient_mut(
-                    self as *mut Self,
-                ),
-            )
-        }
-    }
-
-    /// Wrap in a Handle (reference-counted smart pointer)
-    pub fn to_handle(
-        obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleOSDOSDError> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKernel::OSD_OSDError_to_handle(obj.into_raw()),
-            ))
-        }
-    }
-
-    /// Inherited: **Source:** `Standard_Failure.hxx`:58 - `Standard_Failure::Print()`
+    /// Inherited: **Source:** `Standard_Failure.hxx`:73 - `Standard_Failure::Print()`
     pub fn print(&self, theStream: &mut crate::ffi_types::Standard_OStream) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKernel::OSD_OSDError_inherited_Print(self as *const Self, theStream)
         })
-    }
-
-    /// Inherited: **Source:** `Standard_Failure.hxx`:72 - `Standard_Failure::Reraise()`
-    pub fn reraise(&mut self) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKernel::OSD_OSDError_inherited_Reraise(self as *mut Self)
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Failure.hxx`:112 - `Standard_Failure::Jump()`
-    pub fn jump(&mut self) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKernel::OSD_OSDError_inherited_Jump(self as *mut Self)
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKernel::OSD_OSDError_inherited_IsInstance(
-                self as *const Self,
-                theType,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKernel::OSD_OSDError_inherited_IsKind(self as *const Self, theType)
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
-    pub fn this(&self) -> Option<&crate::standard::Transient> {
-        {
-            let __val = crate::check_result(unsafe {
-                crate::ffi_extern_TKernel::OSD_OSDError_inherited_This(self as *const Self)
-            });
-            if __val.is_null() {
-                None
-            } else {
-                Some(unsafe { &*__val })
-            }
-        }
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
-    pub fn get_ref_count(&self) -> i32 {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKernel::OSD_OSDError_inherited_GetRefCount(self as *const Self)
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
-    pub fn increment_ref_counter(&mut self) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKernel::OSD_OSDError_inherited_IncrementRefCounter(self as *mut Self)
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
-    pub fn decrement_ref_counter(&mut self) -> i32 {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKernel::OSD_OSDError_inherited_DecrementRefCounter(self as *mut Self)
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
-    pub fn delete(&self) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKernel::OSD_OSDError_inherited_Delete(self as *const Self)
-        })
-    }
-}
-
-pub use crate::ffi_types::HandleOSDOSDError;
-
-unsafe impl crate::CppDeletable for HandleOSDOSDError {
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            crate::ffi_extern_TKernel::HandleOSDOSDError_destructor(ptr);
-        }
-    }
-}
-
-unsafe impl crate::CppCopyable for HandleOSDOSDError {
-    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        unsafe { crate::check_result(crate::ffi_extern_TKernel::HandleOSDOSDError_clone(ptr)) }
-    }
-}
-
-impl HandleOSDOSDError {
-    /// Returns `true` if this Handle is null (doesn't point to any object).
-    pub fn is_null(&self) -> bool {
-        unsafe { crate::ffi_extern_TKernel::HandleOSDOSDError_is_null(self as *const Self) }
-    }
-
-    /// Dereference this Handle to access the underlying OSD_OSDError
-    pub fn get(&self) -> &crate::ffi_types::OSD_OSDError {
-        unsafe {
-            &*crate::check_result(crate::ffi_extern_TKernel::HandleOSDOSDError_get(
-                self as *const Self,
-            ))
-        }
-    }
-
-    /// Dereference this Handle to mutably access the underlying OSD_OSDError
-    pub fn get_mut(&mut self) -> &mut crate::ffi_types::OSD_OSDError {
-        unsafe {
-            &mut *crate::check_result(crate::ffi_extern_TKernel::HandleOSDOSDError_get_mut(
-                self as *mut Self,
-            ))
-        }
-    }
-
-    /// Upcast Handle<OSD_OSDError> to Handle<Standard_Failure>
-    pub fn to_handle_failure(&self) -> crate::OwnedPtr<crate::ffi_types::HandleStandardFailure> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKernel::HandleOSDOSDError_to_HandleStandardFailure(
-                    self as *const Self,
-                ),
-            ))
-        }
-    }
-
-    /// Upcast Handle<OSD_OSDError> to Handle<Standard_Transient>
-    pub fn to_handle_transient(
-        &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKernel::HandleOSDOSDError_to_HandleStandardTransient(
-                    self as *const Self,
-                ),
-            ))
-        }
     }
 }
 
@@ -9339,7 +5371,7 @@ impl Parallel {
         }
     }
 
-    /// **Source:** `OSD_Parallel.hxx`:294 - `OSD_Parallel::ToUseOcctThreads()`
+    /// **Source:** `OSD_Parallel.hxx`:291 - `OSD_Parallel::ToUseOcctThreads()`
     /// @name public methods
     /// Returns TRUE if OCCT threads should be used instead of auxiliary threads library;
     /// default value is FALSE if alternative library has been enabled while OCCT building and TRUE
@@ -9350,7 +5382,7 @@ impl Parallel {
         })
     }
 
-    /// **Source:** `OSD_Parallel.hxx`:298 - `OSD_Parallel::SetUseOcctThreads()`
+    /// **Source:** `OSD_Parallel.hxx`:295 - `OSD_Parallel::SetUseOcctThreads()`
     /// Sets if OCCT threads should be used instead of auxiliary threads library.
     /// Has no effect if OCCT has been built with no auxiliary threads library.
     pub fn set_use_occt_threads(theToUseOcct: bool) {
@@ -9359,7 +5391,7 @@ impl Parallel {
         })
     }
 
-    /// **Source:** `OSD_Parallel.hxx`:301 - `OSD_Parallel::NbLogicalProcessors()`
+    /// **Source:** `OSD_Parallel.hxx`:298 - `OSD_Parallel::NbLogicalProcessors()`
     /// Returns number of logical processors.
     pub fn nb_logical_processors() -> i32 {
         crate::check_result(unsafe {
@@ -9634,7 +5666,7 @@ impl Path {
         })
     }
 
-    /// **Source:** `OSD_Path.hxx`:163 - `OSD_Path::Node()`
+    /// **Source:** `OSD_Path.hxx`:162 - `OSD_Path::Node()`
     /// Returns Node of <me>.
     pub fn node(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe {
@@ -9644,7 +5676,7 @@ impl Path {
         }
     }
 
-    /// **Source:** `OSD_Path.hxx`:166 - `OSD_Path::UserName()`
+    /// **Source:** `OSD_Path.hxx`:165 - `OSD_Path::UserName()`
     /// Returns UserName of <me>.
     pub fn user_name(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe {
@@ -9654,7 +5686,7 @@ impl Path {
         }
     }
 
-    /// **Source:** `OSD_Path.hxx`:169 - `OSD_Path::Password()`
+    /// **Source:** `OSD_Path.hxx`:168 - `OSD_Path::Password()`
     /// Returns Password of <me>.
     pub fn password(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe {
@@ -9664,7 +5696,7 @@ impl Path {
         }
     }
 
-    /// **Source:** `OSD_Path.hxx`:172 - `OSD_Path::Disk()`
+    /// **Source:** `OSD_Path.hxx`:171 - `OSD_Path::Disk()`
     /// Returns Disk of <me>.
     pub fn disk(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe {
@@ -9674,7 +5706,7 @@ impl Path {
         }
     }
 
-    /// **Source:** `OSD_Path.hxx`:175 - `OSD_Path::Trek()`
+    /// **Source:** `OSD_Path.hxx`:174 - `OSD_Path::Trek()`
     /// Returns Trek of <me>.
     pub fn trek(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe {
@@ -9684,7 +5716,7 @@ impl Path {
         }
     }
 
-    /// **Source:** `OSD_Path.hxx`:179 - `OSD_Path::Name()`
+    /// **Source:** `OSD_Path.hxx`:178 - `OSD_Path::Name()`
     /// Returns file name of <me>.
     /// If <me> hasn't been initialized, it returns an empty AsciiString.
     pub fn name(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
@@ -9695,7 +5727,7 @@ impl Path {
         }
     }
 
-    /// **Source:** `OSD_Path.hxx`:183 - `OSD_Path::Extension()`
+    /// **Source:** `OSD_Path.hxx`:182 - `OSD_Path::Extension()`
     /// Returns my extension name.
     /// This returns an empty string if path contains no file name.
     pub fn extension(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
@@ -9706,7 +5738,7 @@ impl Path {
         }
     }
 
-    /// **Source:** `OSD_Path.hxx`:186 - `OSD_Path::SetNode()`
+    /// **Source:** `OSD_Path.hxx`:185 - `OSD_Path::SetNode()`
     /// Sets Node of <me>.
     pub fn set_node(&mut self, aName: &crate::t_collection::AsciiString) {
         crate::check_void_result(unsafe {
@@ -9714,7 +5746,7 @@ impl Path {
         })
     }
 
-    /// **Source:** `OSD_Path.hxx`:189 - `OSD_Path::SetUserName()`
+    /// **Source:** `OSD_Path.hxx`:188 - `OSD_Path::SetUserName()`
     /// Sets UserName of <me>.
     pub fn set_user_name(&mut self, aName: &crate::t_collection::AsciiString) {
         crate::check_void_result(unsafe {
@@ -9722,7 +5754,7 @@ impl Path {
         })
     }
 
-    /// **Source:** `OSD_Path.hxx`:192 - `OSD_Path::SetPassword()`
+    /// **Source:** `OSD_Path.hxx`:191 - `OSD_Path::SetPassword()`
     /// Sets Password of <me>.
     pub fn set_password(&mut self, aName: &crate::t_collection::AsciiString) {
         crate::check_void_result(unsafe {
@@ -9730,7 +5762,7 @@ impl Path {
         })
     }
 
-    /// **Source:** `OSD_Path.hxx`:195 - `OSD_Path::SetDisk()`
+    /// **Source:** `OSD_Path.hxx`:194 - `OSD_Path::SetDisk()`
     /// Sets Disk of <me>.
     pub fn set_disk(&mut self, aName: &crate::t_collection::AsciiString) {
         crate::check_void_result(unsafe {
@@ -9738,7 +5770,7 @@ impl Path {
         })
     }
 
-    /// **Source:** `OSD_Path.hxx`:198 - `OSD_Path::SetTrek()`
+    /// **Source:** `OSD_Path.hxx`:197 - `OSD_Path::SetTrek()`
     /// Sets Trek of <me>.
     pub fn set_trek(&mut self, aName: &crate::t_collection::AsciiString) {
         crate::check_void_result(unsafe {
@@ -9746,7 +5778,7 @@ impl Path {
         })
     }
 
-    /// **Source:** `OSD_Path.hxx`:202 - `OSD_Path::SetName()`
+    /// **Source:** `OSD_Path.hxx`:201 - `OSD_Path::SetName()`
     /// Sets file name of <me>.
     /// If <me> hasn't been initialized, it returns an empty AsciiString.
     pub fn set_name(&mut self, aName: &crate::t_collection::AsciiString) {
@@ -9755,7 +5787,7 @@ impl Path {
         })
     }
 
-    /// **Source:** `OSD_Path.hxx`:205 - `OSD_Path::SetExtension()`
+    /// **Source:** `OSD_Path.hxx`:204 - `OSD_Path::SetExtension()`
     /// Sets my extension name.
     pub fn set_extension(&mut self, aName: &crate::t_collection::AsciiString) {
         crate::check_void_result(unsafe {
@@ -9763,7 +5795,7 @@ impl Path {
         })
     }
 
-    /// **Source:** `OSD_Path.hxx`:210 - `OSD_Path::LocateExecFile()`
+    /// **Source:** `OSD_Path.hxx`:209 - `OSD_Path::LocateExecFile()`
     /// Finds the full path of an executable file, like the
     /// "which" Unix utility. Uses the path environment variable.
     /// Returns False if executable file not found.
@@ -9784,9 +5816,9 @@ impl Path {
         })
     }
 
-    /// **Source:** `OSD_Path.hxx`:219 - `OSD_Path::RelativePath()`
+    /// **Source:** `OSD_Path.hxx`:218 - `OSD_Path::RelativePath()`
     /// Returns the relative file path between the absolute directory
-    /// path <DirPath>  and the absolute file path <AbsFilePath>.
+    /// path <DirPath> and the absolute file path <AbsFilePath>.
     /// If <DirPath> starts with "/", paths are handled as
     /// on Unix, if it starts with a letter followed by ":", as on
     /// WNT. In particular on WNT directory names are not key sensitive.
@@ -9802,7 +5834,7 @@ impl Path {
         }
     }
 
-    /// **Source:** `OSD_Path.hxx`:228 - `OSD_Path::AbsolutePath()`
+    /// **Source:** `OSD_Path.hxx`:227 - `OSD_Path::AbsolutePath()`
     /// Returns the absolute file path from the absolute directory path
     /// <DirPath> and the relative file path returned by RelativePath().
     /// If the RelFilePath is an absolute path, it is returned and the
@@ -9819,7 +5851,7 @@ impl Path {
         }
     }
 
-    /// **Source:** `OSD_Path.hxx`:239 - `OSD_Path::FolderAndFileFromPath()`
+    /// **Source:** `OSD_Path.hxx`:238 - `OSD_Path::FolderAndFileFromPath()`
     /// Split absolute filepath into folder path and file name.
     /// Example: IN  theFilePath ='/media/cdrom/image.jpg'
     /// OUT theFolder   ='/media/cdrom/'
@@ -9841,7 +5873,7 @@ impl Path {
         })
     }
 
-    /// **Source:** `OSD_Path.hxx`:251 - `OSD_Path::FileNameAndExtension()`
+    /// **Source:** `OSD_Path.hxx`:250 - `OSD_Path::FileNameAndExtension()`
     /// Return file extension from the name in lower case.
     /// Extension is expected to be within 20-symbols length, and determined as file name tail after
     /// last dot. Example: IN  theFilePath ='Image.sbs.JPG'
@@ -9864,7 +5896,7 @@ impl Path {
         })
     }
 
-    /// **Source:** `OSD_Path.hxx`:260 - `OSD_Path::IsDosPath()`
+    /// **Source:** `OSD_Path.hxx`:259 - `OSD_Path::IsDosPath()`
     /// Detect absolute DOS-path also used in Windows.
     /// The total path length is limited to 256 characters.
     /// Sample path:
@@ -9877,7 +5909,7 @@ impl Path {
         })
     }
 
-    /// **Source:** `OSD_Path.hxx`:272 - `OSD_Path::IsNtExtendedPath()`
+    /// **Source:** `OSD_Path.hxx`:268 - `OSD_Path::IsNtExtendedPath()`
     /// Detect extended-length NT path (can be only absolute).
     /// Approximate maximum path is 32767 characters.
     /// Sample path:
@@ -9892,7 +5924,7 @@ impl Path {
         })
     }
 
-    /// **Source:** `OSD_Path.hxx`:281 - `OSD_Path::IsUncPath()`
+    /// **Source:** `OSD_Path.hxx`:277 - `OSD_Path::IsUncPath()`
     /// UNC is a naming convention used primarily to specify and map network drives in Microsoft
     /// Windows. Sample path:
     /// \\server\share\file
@@ -9904,7 +5936,7 @@ impl Path {
         })
     }
 
-    /// **Source:** `OSD_Path.hxx`:294 - `OSD_Path::IsUncExtendedPath()`
+    /// **Source:** `OSD_Path.hxx`:290 - `OSD_Path::IsUncExtendedPath()`
     /// Detect extended-length UNC path.
     /// Sample path:
     /// \\?\UNC\server\share
@@ -9916,7 +5948,7 @@ impl Path {
         })
     }
 
-    /// **Source:** `OSD_Path.hxx`:303 - `OSD_Path::IsUnixPath()`
+    /// **Source:** `OSD_Path.hxx`:299 - `OSD_Path::IsUnixPath()`
     /// Detect absolute UNIX-path.
     /// Sample path:
     /// /media/cdrom/file
@@ -9928,7 +5960,7 @@ impl Path {
         })
     }
 
-    /// **Source:** `OSD_Path.hxx`:312 - `OSD_Path::IsContentProtocolPath()`
+    /// **Source:** `OSD_Path.hxx`:305 - `OSD_Path::IsContentProtocolPath()`
     /// Detect special URLs on Android platform.
     /// Sample path:
     /// content://filename
@@ -9940,7 +5972,7 @@ impl Path {
         })
     }
 
-    /// **Source:** `OSD_Path.hxx`:322 - `OSD_Path::IsRemoteProtocolPath()`
+    /// **Source:** `OSD_Path.hxx`:315 - `OSD_Path::IsRemoteProtocolPath()`
     /// Detect remote protocol path (http / ftp / ...).
     /// Actually shouldn't be remote...
     /// Sample path:
@@ -9953,7 +5985,7 @@ impl Path {
         })
     }
 
-    /// **Source:** `OSD_Path.hxx`:342 - `OSD_Path::IsRelativePath()`
+    /// **Source:** `OSD_Path.hxx`:335 - `OSD_Path::IsRelativePath()`
     /// Method to recognize path is absolute or not.
     /// Detection is based on path syntax - no any filesystem / network access performed.
     /// @return true if path is incomplete (relative).
@@ -9964,7 +5996,7 @@ impl Path {
         })
     }
 
-    /// **Source:** `OSD_Path.hxx`:351 - `OSD_Path::IsAbsolutePath()`
+    /// **Source:** `OSD_Path.hxx`:344 - `OSD_Path::IsAbsolutePath()`
     /// Method to recognize path is absolute or not.
     /// Detection is based on path syntax - no any filesystem / network access performed.
     /// @return true if path is complete (absolute)
@@ -9980,7 +6012,7 @@ impl Path {
 // From OSD_PerfMeter.hxx
 // ========================
 
-/// **Source:** `OSD_PerfMeter.hxx`:25 - `OSD_PerfMeter`
+/// **Source:** `OSD_PerfMeter.hxx`:26 - `OSD_PerfMeter`
 /// This class enables measuring the CPU time between two points of code execution, regardless of
 /// the scope of these points of code. A meter is identified by its name (string). So multiple
 /// objects in various places of user code may point to the same meter. The results will be printed
@@ -9997,7 +6029,7 @@ unsafe impl crate::CppDeletable for PerfMeter {
 
 impl PerfMeter {
     /// **Source:** `OSD_PerfMeter.hxx`:30 - `OSD_PerfMeter::OSD_PerfMeter()`
-    /// Constructs a void meter (to further call Init and Start)
+    /// Constructs a void meter (to further call Init and Start).
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -10006,65 +6038,107 @@ impl PerfMeter {
         }
     }
 
-    /// **Source:** `OSD_PerfMeter.hxx`:36 - `OSD_PerfMeter::OSD_PerfMeter()`
-    /// Constructs and starts (if autoStart is true) the named meter
-    pub fn new_charptr_bool(theMeter: &str, theToAutoStart: bool) -> crate::OwnedPtr<Self> {
-        let c_theMeter = std::ffi::CString::new(theMeter).unwrap();
+    /// **Source:** `OSD_PerfMeter.hxx`:38 - `OSD_PerfMeter::OSD_PerfMeter()`
+    /// Constructs and starts (if autoStart is true) the named meter.
+    /// @param theMeterName Name of the meter. If the meter with such name was already created,
+    /// and hasn't been killed, it will be used.
+    /// @param theToAutoStart If true, the meter will be started immediately after creation.
+    /// Otherwise, the user should call Start() method to start the meter.
+    /// Note that if meter already exists, theToAutoStart == true will reset it.
+    pub fn new_asciistring_bool(
+        theMeterName: &crate::t_collection::AsciiString,
+        theToAutoStart: bool,
+    ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKernel::OSD_PerfMeter_ctor_charptr_bool(
-                    c_theMeter.as_ptr(),
+                crate::ffi_extern_TKernel::OSD_PerfMeter_ctor_asciistring_bool(
+                    theMeterName,
                     theToAutoStart,
                 ),
             ))
         }
     }
 
-    /// **Source:** `OSD_PerfMeter.hxx`:36 - `OSD_PerfMeter::OSD_PerfMeter()`
-    /// Constructs and starts (if autoStart is true) the named meter
-    pub fn new_charptr(theMeter: &str) -> crate::OwnedPtr<Self> {
-        Self::new_charptr_bool(theMeter, true)
+    /// **Source:** `OSD_PerfMeter.hxx`:38 - `OSD_PerfMeter::OSD_PerfMeter()`
+    /// Constructs and starts (if autoStart is true) the named meter.
+    /// @param theMeterName Name of the meter. If the meter with such name was already created,
+    /// and hasn't been killed, it will be used.
+    /// @param theToAutoStart If true, the meter will be started immediately after creation.
+    /// Otherwise, the user should call Start() method to start the meter.
+    /// Note that if meter already exists, theToAutoStart == true will reset it.
+    pub fn new_asciistring(
+        theMeterName: &crate::t_collection::AsciiString,
+    ) -> crate::OwnedPtr<Self> {
+        Self::new_asciistring_bool(theMeterName, true)
     }
 
-    /// **Source:** `OSD_PerfMeter.hxx`:46 - `OSD_PerfMeter::Init()`
-    /// Prepares the named meter
-    pub fn init(&mut self, theMeter: &str) {
-        let c_theMeter = std::ffi::CString::new(theMeter).unwrap();
+    /// **Source:** `OSD_PerfMeter.hxx`:48 - `OSD_PerfMeter::Init()`
+    /// Prepares the named meter. If the meter with such name was already created,
+    /// it will be used. Otherwise, a new meter will be created.
+    pub fn init(&mut self, theMeterName: &crate::t_collection::AsciiString) {
         crate::check_void_result(unsafe {
-            crate::ffi_extern_TKernel::OSD_PerfMeter_init(self as *mut Self, c_theMeter.as_ptr())
+            crate::ffi_extern_TKernel::OSD_PerfMeter_init(self as *mut Self, theMeterName)
         })
     }
 
-    /// **Source:** `OSD_PerfMeter.hxx`:54 - `OSD_PerfMeter::Start()`
-    /// Starts the meter
+    /// **Source:** `OSD_PerfMeter.hxx`:53 - `OSD_PerfMeter::Start()`
+    /// Starts the meter. If the meter was already started, it will be reset.
+    /// Note that the meter with the name specified in the constructor can still be used
+    /// in other places of the code.
     pub fn start(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKernel::OSD_PerfMeter_start(self as *const Self)
         })
     }
 
-    /// **Source:** `OSD_PerfMeter.hxx`:57 - `OSD_PerfMeter::Stop()`
-    /// Stops the meter
+    /// **Source:** `OSD_PerfMeter.hxx`:56 - `OSD_PerfMeter::Stop()`
+    /// Stops the meter.
     pub fn stop(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKernel::OSD_PerfMeter_stop(self as *const Self)
         })
     }
 
-    /// **Source:** `OSD_PerfMeter.hxx`:60 - `OSD_PerfMeter::Tick()`
-    /// Increments the counter w/o time measurement
-    pub fn tick(&self) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKernel::OSD_PerfMeter_tick(self as *const Self)
+    /// **Source:** `OSD_PerfMeter.hxx`:59 - `OSD_PerfMeter::Elapsed()`
+    /// Returns the elapsed time in seconds since the meter was started.
+    pub fn elapsed(&self) -> f64 {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKernel::OSD_PerfMeter_elapsed(self as *const Self)
         })
     }
 
-    /// **Source:** `OSD_PerfMeter.hxx`:63 - `OSD_PerfMeter::Flush()`
-    /// Outputs the meter data and resets it to initial state
-    pub fn flush(&self) {
+    /// **Source:** `OSD_PerfMeter.hxx`:62 - `OSD_PerfMeter::Kill()`
+    /// Outputs the meter data and resets it to initial state.
+    pub fn kill(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi_extern_TKernel::OSD_PerfMeter_flush(self as *const Self)
+            crate::ffi_extern_TKernel::OSD_PerfMeter_kill(self as *const Self)
         })
+    }
+
+    /// **Source:** `OSD_PerfMeter.hxx`:65 - `OSD_PerfMeter::Print()`
+    /// Prints the data of this meter.
+    pub fn print(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKernel::OSD_PerfMeter_print(self as *const Self),
+            ))
+        }
+    }
+
+    /// **Source:** `OSD_PerfMeter.hxx`:68 - `OSD_PerfMeter::PrintALL()`
+    /// Prints the data of all meters with non-zero elapsed time.
+    pub fn print_all() -> crate::OwnedPtr<crate::t_collection::AsciiString> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKernel::OSD_PerfMeter_print_all(),
+            ))
+        }
+    }
+
+    /// **Source:** `OSD_PerfMeter.hxx`:71 - `OSD_PerfMeter::ResetALL()`
+    /// Resets all meters.
+    pub fn reset_all() {
+        crate::check_void_result(unsafe { crate::ffi_extern_TKernel::OSD_PerfMeter_reset_all() })
     }
 }
 
@@ -10215,10 +6289,10 @@ impl Process {
 // ========================
 
 /// **Source:** `OSD_Protection.hxx`:45 - `OSD_Protection`
-/// This  class provides data to manage file protection
-/// Example:These rights are treated in a system dependent manner :
+/// This class provides data to manage file protection
+/// Example:These rights are treated in a system dependent manner:
 /// On UNIX you have User,Group and Other rights
-/// On VMS  you have Owner,Group,World and System rights
+/// On VMS you have Owner,Group,World and System rights
 /// An automatic conversion is done between OSD and UNIX/VMS.
 ///
 /// OSD	VMS	UNIX
@@ -10399,7 +6473,7 @@ impl Protection {
     /// **Source:** `OSD_Protection.hxx`:103 - `OSD_Protection::Add()`
     /// Add a right to a single protection.
     /// ex: aProt = RWD
-    /// me.Add(aProt,X)  ->  aProt = RWXD
+    /// me.Add(aProt,X)  -> aProt = RWXD
     pub fn add(
         &mut self,
         aProt: &mut crate::osd::SingleProtection,
@@ -10419,7 +6493,7 @@ impl Protection {
     /// **Source:** `OSD_Protection.hxx`:109 - `OSD_Protection::Sub()`
     /// Subtract a right to a single protection.
     /// ex: aProt = RWD
-    /// me.Sub(aProt,RW) ->  aProt = D
+    /// me.Sub(aProt,RW) -> aProt = D
     /// But me.Sub(aProt,RWX) is also valid and gives same result.
     pub fn sub(
         &mut self,
@@ -10442,7 +6516,7 @@ impl Protection {
 // From OSD_SIGBUS.hxx
 // ========================
 
-/// **Source:** `OSD_SIGBUS.hxx`:33 - `OSD_SIGBUS`
+/// **Source:** `OSD_SIGBUS.hxx`:29 - `OSD_SIGBUS`
 pub use crate::ffi_types::OSD_SIGBUS as SIGBUS;
 
 unsafe impl crate::CppDeletable for SIGBUS {
@@ -10454,16 +6528,7 @@ unsafe impl crate::CppDeletable for SIGBUS {
 }
 
 impl SIGBUS {
-    /// **Source:** `OSD_SIGBUS.hxx`:33 - `OSD_SIGBUS::OSD_SIGBUS()`
-    pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKernel::OSD_SIGBUS_ctor(),
-            ))
-        }
-    }
-
-    /// **Source:** `OSD_SIGBUS.hxx`:33 - `OSD_SIGBUS::OSD_SIGBUS()`
+    /// **Source:** `OSD_SIGBUS.hxx`:29 - `OSD_SIGBUS::OSD_SIGBUS()`
     pub fn new_charptr(theMessage: &str) -> crate::OwnedPtr<Self> {
         let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
         unsafe {
@@ -10473,7 +6538,7 @@ impl SIGBUS {
         }
     }
 
-    /// **Source:** `OSD_SIGBUS.hxx`:33 - `OSD_SIGBUS::OSD_SIGBUS()`
+    /// **Source:** `OSD_SIGBUS.hxx`:29 - `OSD_SIGBUS::OSD_SIGBUS()`
     pub fn new_charptr2(theMessage: &str, theStackTrace: &str) -> crate::OwnedPtr<Self> {
         let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
         let c_theStackTrace = std::ffi::CString::new(theStackTrace).unwrap();
@@ -10487,75 +6552,15 @@ impl SIGBUS {
         }
     }
 
-    /// **Source:** `OSD_SIGBUS.hxx`:33 - `OSD_SIGBUS::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
-        unsafe {
-            &*(crate::check_result(crate::ffi_extern_TKernel::OSD_SIGBUS_dynamic_type(
-                self as *const Self,
-            )))
-        }
-    }
-
-    /// **Source:** `OSD_SIGBUS.hxx`:33 - `OSD_SIGBUS::Raise()`
-    pub fn raise_charptr(theMessage: &str) {
-        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKernel::OSD_SIGBUS_raise_charptr(c_theMessage.as_ptr())
-        })
-    }
-
-    /// **Source:** `OSD_SIGBUS.hxx`:33 - `OSD_SIGBUS::Raise()`
-    pub fn raise_sstream(theMessage: &mut crate::ffi_types::Standard_SStream) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKernel::OSD_SIGBUS_raise_sstream(theMessage)
-        })
-    }
-
-    /// **Source:** `OSD_SIGBUS.hxx`:33 - `OSD_SIGBUS::NewInstance()`
-    pub fn new_instance_charptr(
-        theMessage: &str,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleOSDSIGBUS> {
-        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKernel::OSD_SIGBUS_new_instance_charptr(c_theMessage.as_ptr()),
-            ))
-        }
-    }
-
-    /// **Source:** `OSD_SIGBUS.hxx`:33 - `OSD_SIGBUS::NewInstance()`
-    pub fn new_instance_charptr2(
-        theMessage: &str,
-        theStackTrace: &str,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleOSDSIGBUS> {
-        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
-        let c_theStackTrace = std::ffi::CString::new(theStackTrace).unwrap();
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKernel::OSD_SIGBUS_new_instance_charptr2(
-                    c_theMessage.as_ptr(),
-                    c_theStackTrace.as_ptr(),
-                ),
-            ))
-        }
-    }
-
-    /// **Source:** `OSD_SIGBUS.hxx`:33 - `OSD_SIGBUS::get_type_name()`
-    pub fn get_type_name() -> std::string::String {
+    /// **Source:** `OSD_SIGBUS.hxx`:29 - `OSD_SIGBUS::ExceptionType()`
+    pub fn exception_type(&self) -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi_extern_TKernel::OSD_SIGBUS_get_type_name(),
+                crate::ffi_extern_TKernel::OSD_SIGBUS_exception_type(self as *const Self),
             ))
         }
         .to_string_lossy()
         .into_owned()
-    }
-
-    /// **Source:** `OSD_SIGBUS.hxx`:33 - `OSD_SIGBUS::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
-        unsafe {
-            &*(crate::check_result(crate::ffi_extern_TKernel::OSD_SIGBUS_get_type_descriptor()))
-        }
     }
 
     /// Upcast to OSD_Signal
@@ -10594,184 +6599,11 @@ impl SIGBUS {
         }
     }
 
-    /// Upcast to Standard_Transient
-    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        unsafe {
-            &*crate::check_result(crate::ffi_extern_TKernel::OSD_SIGBUS_as_Standard_Transient(
-                self as *const Self,
-            ))
-        }
-    }
-
-    /// Upcast to Standard_Transient (mutable)
-    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        unsafe {
-            &mut *crate::check_result(
-                crate::ffi_extern_TKernel::OSD_SIGBUS_as_Standard_Transient_mut(self as *mut Self),
-            )
-        }
-    }
-
-    /// Wrap in a Handle (reference-counted smart pointer)
-    pub fn to_handle(
-        obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleOSDSIGBUS> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKernel::OSD_SIGBUS_to_handle(obj.into_raw()),
-            ))
-        }
-    }
-
-    /// Inherited: **Source:** `Standard_Failure.hxx`:58 - `Standard_Failure::Print()`
+    /// Inherited: **Source:** `Standard_Failure.hxx`:73 - `Standard_Failure::Print()`
     pub fn print(&self, theStream: &mut crate::ffi_types::Standard_OStream) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKernel::OSD_SIGBUS_inherited_Print(self as *const Self, theStream)
         })
-    }
-
-    /// Inherited: **Source:** `Standard_Failure.hxx`:72 - `Standard_Failure::Reraise()`
-    pub fn reraise(&mut self) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKernel::OSD_SIGBUS_inherited_Reraise(self as *mut Self)
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Failure.hxx`:112 - `Standard_Failure::Jump()`
-    pub fn jump(&mut self) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKernel::OSD_SIGBUS_inherited_Jump(self as *mut Self)
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKernel::OSD_SIGBUS_inherited_IsInstance(self as *const Self, theType)
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKernel::OSD_SIGBUS_inherited_IsKind(self as *const Self, theType)
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
-    pub fn this(&self) -> Option<&crate::standard::Transient> {
-        {
-            let __val = crate::check_result(unsafe {
-                crate::ffi_extern_TKernel::OSD_SIGBUS_inherited_This(self as *const Self)
-            });
-            if __val.is_null() {
-                None
-            } else {
-                Some(unsafe { &*__val })
-            }
-        }
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
-    pub fn get_ref_count(&self) -> i32 {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKernel::OSD_SIGBUS_inherited_GetRefCount(self as *const Self)
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
-    pub fn increment_ref_counter(&mut self) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKernel::OSD_SIGBUS_inherited_IncrementRefCounter(self as *mut Self)
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
-    pub fn decrement_ref_counter(&mut self) -> i32 {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKernel::OSD_SIGBUS_inherited_DecrementRefCounter(self as *mut Self)
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
-    pub fn delete(&self) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKernel::OSD_SIGBUS_inherited_Delete(self as *const Self)
-        })
-    }
-}
-
-pub use crate::ffi_types::HandleOSDSIGBUS;
-
-unsafe impl crate::CppDeletable for HandleOSDSIGBUS {
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            crate::ffi_extern_TKernel::HandleOSDSIGBUS_destructor(ptr);
-        }
-    }
-}
-
-unsafe impl crate::CppCopyable for HandleOSDSIGBUS {
-    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        unsafe { crate::check_result(crate::ffi_extern_TKernel::HandleOSDSIGBUS_clone(ptr)) }
-    }
-}
-
-impl HandleOSDSIGBUS {
-    /// Returns `true` if this Handle is null (doesn't point to any object).
-    pub fn is_null(&self) -> bool {
-        unsafe { crate::ffi_extern_TKernel::HandleOSDSIGBUS_is_null(self as *const Self) }
-    }
-
-    /// Dereference this Handle to access the underlying OSD_SIGBUS
-    pub fn get(&self) -> &crate::ffi_types::OSD_SIGBUS {
-        unsafe {
-            &*crate::check_result(crate::ffi_extern_TKernel::HandleOSDSIGBUS_get(
-                self as *const Self,
-            ))
-        }
-    }
-
-    /// Dereference this Handle to mutably access the underlying OSD_SIGBUS
-    pub fn get_mut(&mut self) -> &mut crate::ffi_types::OSD_SIGBUS {
-        unsafe {
-            &mut *crate::check_result(crate::ffi_extern_TKernel::HandleOSDSIGBUS_get_mut(
-                self as *mut Self,
-            ))
-        }
-    }
-
-    /// Upcast Handle<OSD_SIGBUS> to Handle<OSD_Signal>
-    pub fn to_handle_signal(&self) -> crate::OwnedPtr<crate::ffi_types::HandleOSDSignal> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKernel::HandleOSDSIGBUS_to_HandleOSDSignal(self as *const Self),
-            ))
-        }
-    }
-
-    /// Upcast Handle<OSD_SIGBUS> to Handle<Standard_Failure>
-    pub fn to_handle_failure(&self) -> crate::OwnedPtr<crate::ffi_types::HandleStandardFailure> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKernel::HandleOSDSIGBUS_to_HandleStandardFailure(
-                    self as *const Self,
-                ),
-            ))
-        }
-    }
-
-    /// Upcast Handle<OSD_SIGBUS> to Handle<Standard_Transient>
-    pub fn to_handle_transient(
-        &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKernel::HandleOSDSIGBUS_to_HandleStandardTransient(
-                    self as *const Self,
-                ),
-            ))
-        }
     }
 }
 
@@ -10779,7 +6611,7 @@ impl HandleOSDSIGBUS {
 // From OSD_SIGHUP.hxx
 // ========================
 
-/// **Source:** `OSD_SIGHUP.hxx`:33 - `OSD_SIGHUP`
+/// **Source:** `OSD_SIGHUP.hxx`:29 - `OSD_SIGHUP`
 pub use crate::ffi_types::OSD_SIGHUP as SIGHUP;
 
 unsafe impl crate::CppDeletable for SIGHUP {
@@ -10791,16 +6623,7 @@ unsafe impl crate::CppDeletable for SIGHUP {
 }
 
 impl SIGHUP {
-    /// **Source:** `OSD_SIGHUP.hxx`:33 - `OSD_SIGHUP::OSD_SIGHUP()`
-    pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKernel::OSD_SIGHUP_ctor(),
-            ))
-        }
-    }
-
-    /// **Source:** `OSD_SIGHUP.hxx`:33 - `OSD_SIGHUP::OSD_SIGHUP()`
+    /// **Source:** `OSD_SIGHUP.hxx`:29 - `OSD_SIGHUP::OSD_SIGHUP()`
     pub fn new_charptr(theMessage: &str) -> crate::OwnedPtr<Self> {
         let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
         unsafe {
@@ -10810,7 +6633,7 @@ impl SIGHUP {
         }
     }
 
-    /// **Source:** `OSD_SIGHUP.hxx`:33 - `OSD_SIGHUP::OSD_SIGHUP()`
+    /// **Source:** `OSD_SIGHUP.hxx`:29 - `OSD_SIGHUP::OSD_SIGHUP()`
     pub fn new_charptr2(theMessage: &str, theStackTrace: &str) -> crate::OwnedPtr<Self> {
         let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
         let c_theStackTrace = std::ffi::CString::new(theStackTrace).unwrap();
@@ -10824,75 +6647,15 @@ impl SIGHUP {
         }
     }
 
-    /// **Source:** `OSD_SIGHUP.hxx`:33 - `OSD_SIGHUP::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
-        unsafe {
-            &*(crate::check_result(crate::ffi_extern_TKernel::OSD_SIGHUP_dynamic_type(
-                self as *const Self,
-            )))
-        }
-    }
-
-    /// **Source:** `OSD_SIGHUP.hxx`:33 - `OSD_SIGHUP::Raise()`
-    pub fn raise_charptr(theMessage: &str) {
-        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKernel::OSD_SIGHUP_raise_charptr(c_theMessage.as_ptr())
-        })
-    }
-
-    /// **Source:** `OSD_SIGHUP.hxx`:33 - `OSD_SIGHUP::Raise()`
-    pub fn raise_sstream(theMessage: &mut crate::ffi_types::Standard_SStream) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKernel::OSD_SIGHUP_raise_sstream(theMessage)
-        })
-    }
-
-    /// **Source:** `OSD_SIGHUP.hxx`:33 - `OSD_SIGHUP::NewInstance()`
-    pub fn new_instance_charptr(
-        theMessage: &str,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleOSDSIGHUP> {
-        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKernel::OSD_SIGHUP_new_instance_charptr(c_theMessage.as_ptr()),
-            ))
-        }
-    }
-
-    /// **Source:** `OSD_SIGHUP.hxx`:33 - `OSD_SIGHUP::NewInstance()`
-    pub fn new_instance_charptr2(
-        theMessage: &str,
-        theStackTrace: &str,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleOSDSIGHUP> {
-        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
-        let c_theStackTrace = std::ffi::CString::new(theStackTrace).unwrap();
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKernel::OSD_SIGHUP_new_instance_charptr2(
-                    c_theMessage.as_ptr(),
-                    c_theStackTrace.as_ptr(),
-                ),
-            ))
-        }
-    }
-
-    /// **Source:** `OSD_SIGHUP.hxx`:33 - `OSD_SIGHUP::get_type_name()`
-    pub fn get_type_name() -> std::string::String {
+    /// **Source:** `OSD_SIGHUP.hxx`:29 - `OSD_SIGHUP::ExceptionType()`
+    pub fn exception_type(&self) -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi_extern_TKernel::OSD_SIGHUP_get_type_name(),
+                crate::ffi_extern_TKernel::OSD_SIGHUP_exception_type(self as *const Self),
             ))
         }
         .to_string_lossy()
         .into_owned()
-    }
-
-    /// **Source:** `OSD_SIGHUP.hxx`:33 - `OSD_SIGHUP::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
-        unsafe {
-            &*(crate::check_result(crate::ffi_extern_TKernel::OSD_SIGHUP_get_type_descriptor()))
-        }
     }
 
     /// Upcast to OSD_Signal
@@ -10931,184 +6694,11 @@ impl SIGHUP {
         }
     }
 
-    /// Upcast to Standard_Transient
-    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        unsafe {
-            &*crate::check_result(crate::ffi_extern_TKernel::OSD_SIGHUP_as_Standard_Transient(
-                self as *const Self,
-            ))
-        }
-    }
-
-    /// Upcast to Standard_Transient (mutable)
-    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        unsafe {
-            &mut *crate::check_result(
-                crate::ffi_extern_TKernel::OSD_SIGHUP_as_Standard_Transient_mut(self as *mut Self),
-            )
-        }
-    }
-
-    /// Wrap in a Handle (reference-counted smart pointer)
-    pub fn to_handle(
-        obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleOSDSIGHUP> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKernel::OSD_SIGHUP_to_handle(obj.into_raw()),
-            ))
-        }
-    }
-
-    /// Inherited: **Source:** `Standard_Failure.hxx`:58 - `Standard_Failure::Print()`
+    /// Inherited: **Source:** `Standard_Failure.hxx`:73 - `Standard_Failure::Print()`
     pub fn print(&self, theStream: &mut crate::ffi_types::Standard_OStream) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKernel::OSD_SIGHUP_inherited_Print(self as *const Self, theStream)
         })
-    }
-
-    /// Inherited: **Source:** `Standard_Failure.hxx`:72 - `Standard_Failure::Reraise()`
-    pub fn reraise(&mut self) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKernel::OSD_SIGHUP_inherited_Reraise(self as *mut Self)
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Failure.hxx`:112 - `Standard_Failure::Jump()`
-    pub fn jump(&mut self) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKernel::OSD_SIGHUP_inherited_Jump(self as *mut Self)
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKernel::OSD_SIGHUP_inherited_IsInstance(self as *const Self, theType)
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKernel::OSD_SIGHUP_inherited_IsKind(self as *const Self, theType)
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
-    pub fn this(&self) -> Option<&crate::standard::Transient> {
-        {
-            let __val = crate::check_result(unsafe {
-                crate::ffi_extern_TKernel::OSD_SIGHUP_inherited_This(self as *const Self)
-            });
-            if __val.is_null() {
-                None
-            } else {
-                Some(unsafe { &*__val })
-            }
-        }
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
-    pub fn get_ref_count(&self) -> i32 {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKernel::OSD_SIGHUP_inherited_GetRefCount(self as *const Self)
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
-    pub fn increment_ref_counter(&mut self) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKernel::OSD_SIGHUP_inherited_IncrementRefCounter(self as *mut Self)
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
-    pub fn decrement_ref_counter(&mut self) -> i32 {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKernel::OSD_SIGHUP_inherited_DecrementRefCounter(self as *mut Self)
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
-    pub fn delete(&self) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKernel::OSD_SIGHUP_inherited_Delete(self as *const Self)
-        })
-    }
-}
-
-pub use crate::ffi_types::HandleOSDSIGHUP;
-
-unsafe impl crate::CppDeletable for HandleOSDSIGHUP {
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            crate::ffi_extern_TKernel::HandleOSDSIGHUP_destructor(ptr);
-        }
-    }
-}
-
-unsafe impl crate::CppCopyable for HandleOSDSIGHUP {
-    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        unsafe { crate::check_result(crate::ffi_extern_TKernel::HandleOSDSIGHUP_clone(ptr)) }
-    }
-}
-
-impl HandleOSDSIGHUP {
-    /// Returns `true` if this Handle is null (doesn't point to any object).
-    pub fn is_null(&self) -> bool {
-        unsafe { crate::ffi_extern_TKernel::HandleOSDSIGHUP_is_null(self as *const Self) }
-    }
-
-    /// Dereference this Handle to access the underlying OSD_SIGHUP
-    pub fn get(&self) -> &crate::ffi_types::OSD_SIGHUP {
-        unsafe {
-            &*crate::check_result(crate::ffi_extern_TKernel::HandleOSDSIGHUP_get(
-                self as *const Self,
-            ))
-        }
-    }
-
-    /// Dereference this Handle to mutably access the underlying OSD_SIGHUP
-    pub fn get_mut(&mut self) -> &mut crate::ffi_types::OSD_SIGHUP {
-        unsafe {
-            &mut *crate::check_result(crate::ffi_extern_TKernel::HandleOSDSIGHUP_get_mut(
-                self as *mut Self,
-            ))
-        }
-    }
-
-    /// Upcast Handle<OSD_SIGHUP> to Handle<OSD_Signal>
-    pub fn to_handle_signal(&self) -> crate::OwnedPtr<crate::ffi_types::HandleOSDSignal> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKernel::HandleOSDSIGHUP_to_HandleOSDSignal(self as *const Self),
-            ))
-        }
-    }
-
-    /// Upcast Handle<OSD_SIGHUP> to Handle<Standard_Failure>
-    pub fn to_handle_failure(&self) -> crate::OwnedPtr<crate::ffi_types::HandleStandardFailure> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKernel::HandleOSDSIGHUP_to_HandleStandardFailure(
-                    self as *const Self,
-                ),
-            ))
-        }
-    }
-
-    /// Upcast Handle<OSD_SIGHUP> to Handle<Standard_Transient>
-    pub fn to_handle_transient(
-        &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKernel::HandleOSDSIGHUP_to_HandleStandardTransient(
-                    self as *const Self,
-                ),
-            ))
-        }
     }
 }
 
@@ -11116,7 +6706,7 @@ impl HandleOSDSIGHUP {
 // From OSD_SIGILL.hxx
 // ========================
 
-/// **Source:** `OSD_SIGILL.hxx`:33 - `OSD_SIGILL`
+/// **Source:** `OSD_SIGILL.hxx`:29 - `OSD_SIGILL`
 pub use crate::ffi_types::OSD_SIGILL as SIGILL;
 
 unsafe impl crate::CppDeletable for SIGILL {
@@ -11128,16 +6718,7 @@ unsafe impl crate::CppDeletable for SIGILL {
 }
 
 impl SIGILL {
-    /// **Source:** `OSD_SIGILL.hxx`:33 - `OSD_SIGILL::OSD_SIGILL()`
-    pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKernel::OSD_SIGILL_ctor(),
-            ))
-        }
-    }
-
-    /// **Source:** `OSD_SIGILL.hxx`:33 - `OSD_SIGILL::OSD_SIGILL()`
+    /// **Source:** `OSD_SIGILL.hxx`:29 - `OSD_SIGILL::OSD_SIGILL()`
     pub fn new_charptr(theMessage: &str) -> crate::OwnedPtr<Self> {
         let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
         unsafe {
@@ -11147,7 +6728,7 @@ impl SIGILL {
         }
     }
 
-    /// **Source:** `OSD_SIGILL.hxx`:33 - `OSD_SIGILL::OSD_SIGILL()`
+    /// **Source:** `OSD_SIGILL.hxx`:29 - `OSD_SIGILL::OSD_SIGILL()`
     pub fn new_charptr2(theMessage: &str, theStackTrace: &str) -> crate::OwnedPtr<Self> {
         let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
         let c_theStackTrace = std::ffi::CString::new(theStackTrace).unwrap();
@@ -11161,75 +6742,15 @@ impl SIGILL {
         }
     }
 
-    /// **Source:** `OSD_SIGILL.hxx`:33 - `OSD_SIGILL::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
-        unsafe {
-            &*(crate::check_result(crate::ffi_extern_TKernel::OSD_SIGILL_dynamic_type(
-                self as *const Self,
-            )))
-        }
-    }
-
-    /// **Source:** `OSD_SIGILL.hxx`:33 - `OSD_SIGILL::Raise()`
-    pub fn raise_charptr(theMessage: &str) {
-        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKernel::OSD_SIGILL_raise_charptr(c_theMessage.as_ptr())
-        })
-    }
-
-    /// **Source:** `OSD_SIGILL.hxx`:33 - `OSD_SIGILL::Raise()`
-    pub fn raise_sstream(theMessage: &mut crate::ffi_types::Standard_SStream) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKernel::OSD_SIGILL_raise_sstream(theMessage)
-        })
-    }
-
-    /// **Source:** `OSD_SIGILL.hxx`:33 - `OSD_SIGILL::NewInstance()`
-    pub fn new_instance_charptr(
-        theMessage: &str,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleOSDSIGILL> {
-        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKernel::OSD_SIGILL_new_instance_charptr(c_theMessage.as_ptr()),
-            ))
-        }
-    }
-
-    /// **Source:** `OSD_SIGILL.hxx`:33 - `OSD_SIGILL::NewInstance()`
-    pub fn new_instance_charptr2(
-        theMessage: &str,
-        theStackTrace: &str,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleOSDSIGILL> {
-        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
-        let c_theStackTrace = std::ffi::CString::new(theStackTrace).unwrap();
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKernel::OSD_SIGILL_new_instance_charptr2(
-                    c_theMessage.as_ptr(),
-                    c_theStackTrace.as_ptr(),
-                ),
-            ))
-        }
-    }
-
-    /// **Source:** `OSD_SIGILL.hxx`:33 - `OSD_SIGILL::get_type_name()`
-    pub fn get_type_name() -> std::string::String {
+    /// **Source:** `OSD_SIGILL.hxx`:29 - `OSD_SIGILL::ExceptionType()`
+    pub fn exception_type(&self) -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi_extern_TKernel::OSD_SIGILL_get_type_name(),
+                crate::ffi_extern_TKernel::OSD_SIGILL_exception_type(self as *const Self),
             ))
         }
         .to_string_lossy()
         .into_owned()
-    }
-
-    /// **Source:** `OSD_SIGILL.hxx`:33 - `OSD_SIGILL::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
-        unsafe {
-            &*(crate::check_result(crate::ffi_extern_TKernel::OSD_SIGILL_get_type_descriptor()))
-        }
     }
 
     /// Upcast to OSD_Signal
@@ -11268,184 +6789,11 @@ impl SIGILL {
         }
     }
 
-    /// Upcast to Standard_Transient
-    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        unsafe {
-            &*crate::check_result(crate::ffi_extern_TKernel::OSD_SIGILL_as_Standard_Transient(
-                self as *const Self,
-            ))
-        }
-    }
-
-    /// Upcast to Standard_Transient (mutable)
-    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        unsafe {
-            &mut *crate::check_result(
-                crate::ffi_extern_TKernel::OSD_SIGILL_as_Standard_Transient_mut(self as *mut Self),
-            )
-        }
-    }
-
-    /// Wrap in a Handle (reference-counted smart pointer)
-    pub fn to_handle(
-        obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleOSDSIGILL> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKernel::OSD_SIGILL_to_handle(obj.into_raw()),
-            ))
-        }
-    }
-
-    /// Inherited: **Source:** `Standard_Failure.hxx`:58 - `Standard_Failure::Print()`
+    /// Inherited: **Source:** `Standard_Failure.hxx`:73 - `Standard_Failure::Print()`
     pub fn print(&self, theStream: &mut crate::ffi_types::Standard_OStream) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKernel::OSD_SIGILL_inherited_Print(self as *const Self, theStream)
         })
-    }
-
-    /// Inherited: **Source:** `Standard_Failure.hxx`:72 - `Standard_Failure::Reraise()`
-    pub fn reraise(&mut self) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKernel::OSD_SIGILL_inherited_Reraise(self as *mut Self)
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Failure.hxx`:112 - `Standard_Failure::Jump()`
-    pub fn jump(&mut self) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKernel::OSD_SIGILL_inherited_Jump(self as *mut Self)
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKernel::OSD_SIGILL_inherited_IsInstance(self as *const Self, theType)
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKernel::OSD_SIGILL_inherited_IsKind(self as *const Self, theType)
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
-    pub fn this(&self) -> Option<&crate::standard::Transient> {
-        {
-            let __val = crate::check_result(unsafe {
-                crate::ffi_extern_TKernel::OSD_SIGILL_inherited_This(self as *const Self)
-            });
-            if __val.is_null() {
-                None
-            } else {
-                Some(unsafe { &*__val })
-            }
-        }
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
-    pub fn get_ref_count(&self) -> i32 {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKernel::OSD_SIGILL_inherited_GetRefCount(self as *const Self)
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
-    pub fn increment_ref_counter(&mut self) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKernel::OSD_SIGILL_inherited_IncrementRefCounter(self as *mut Self)
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
-    pub fn decrement_ref_counter(&mut self) -> i32 {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKernel::OSD_SIGILL_inherited_DecrementRefCounter(self as *mut Self)
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
-    pub fn delete(&self) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKernel::OSD_SIGILL_inherited_Delete(self as *const Self)
-        })
-    }
-}
-
-pub use crate::ffi_types::HandleOSDSIGILL;
-
-unsafe impl crate::CppDeletable for HandleOSDSIGILL {
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            crate::ffi_extern_TKernel::HandleOSDSIGILL_destructor(ptr);
-        }
-    }
-}
-
-unsafe impl crate::CppCopyable for HandleOSDSIGILL {
-    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        unsafe { crate::check_result(crate::ffi_extern_TKernel::HandleOSDSIGILL_clone(ptr)) }
-    }
-}
-
-impl HandleOSDSIGILL {
-    /// Returns `true` if this Handle is null (doesn't point to any object).
-    pub fn is_null(&self) -> bool {
-        unsafe { crate::ffi_extern_TKernel::HandleOSDSIGILL_is_null(self as *const Self) }
-    }
-
-    /// Dereference this Handle to access the underlying OSD_SIGILL
-    pub fn get(&self) -> &crate::ffi_types::OSD_SIGILL {
-        unsafe {
-            &*crate::check_result(crate::ffi_extern_TKernel::HandleOSDSIGILL_get(
-                self as *const Self,
-            ))
-        }
-    }
-
-    /// Dereference this Handle to mutably access the underlying OSD_SIGILL
-    pub fn get_mut(&mut self) -> &mut crate::ffi_types::OSD_SIGILL {
-        unsafe {
-            &mut *crate::check_result(crate::ffi_extern_TKernel::HandleOSDSIGILL_get_mut(
-                self as *mut Self,
-            ))
-        }
-    }
-
-    /// Upcast Handle<OSD_SIGILL> to Handle<OSD_Signal>
-    pub fn to_handle_signal(&self) -> crate::OwnedPtr<crate::ffi_types::HandleOSDSignal> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKernel::HandleOSDSIGILL_to_HandleOSDSignal(self as *const Self),
-            ))
-        }
-    }
-
-    /// Upcast Handle<OSD_SIGILL> to Handle<Standard_Failure>
-    pub fn to_handle_failure(&self) -> crate::OwnedPtr<crate::ffi_types::HandleStandardFailure> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKernel::HandleOSDSIGILL_to_HandleStandardFailure(
-                    self as *const Self,
-                ),
-            ))
-        }
-    }
-
-    /// Upcast Handle<OSD_SIGILL> to Handle<Standard_Transient>
-    pub fn to_handle_transient(
-        &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKernel::HandleOSDSIGILL_to_HandleStandardTransient(
-                    self as *const Self,
-                ),
-            ))
-        }
     }
 }
 
@@ -11453,7 +6801,7 @@ impl HandleOSDSIGILL {
 // From OSD_SIGINT.hxx
 // ========================
 
-/// **Source:** `OSD_SIGINT.hxx`:33 - `OSD_SIGINT`
+/// **Source:** `OSD_SIGINT.hxx`:29 - `OSD_SIGINT`
 pub use crate::ffi_types::OSD_SIGINT as SIGINT;
 
 unsafe impl crate::CppDeletable for SIGINT {
@@ -11465,16 +6813,7 @@ unsafe impl crate::CppDeletable for SIGINT {
 }
 
 impl SIGINT {
-    /// **Source:** `OSD_SIGINT.hxx`:33 - `OSD_SIGINT::OSD_SIGINT()`
-    pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKernel::OSD_SIGINT_ctor(),
-            ))
-        }
-    }
-
-    /// **Source:** `OSD_SIGINT.hxx`:33 - `OSD_SIGINT::OSD_SIGINT()`
+    /// **Source:** `OSD_SIGINT.hxx`:29 - `OSD_SIGINT::OSD_SIGINT()`
     pub fn new_charptr(theMessage: &str) -> crate::OwnedPtr<Self> {
         let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
         unsafe {
@@ -11484,7 +6823,7 @@ impl SIGINT {
         }
     }
 
-    /// **Source:** `OSD_SIGINT.hxx`:33 - `OSD_SIGINT::OSD_SIGINT()`
+    /// **Source:** `OSD_SIGINT.hxx`:29 - `OSD_SIGINT::OSD_SIGINT()`
     pub fn new_charptr2(theMessage: &str, theStackTrace: &str) -> crate::OwnedPtr<Self> {
         let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
         let c_theStackTrace = std::ffi::CString::new(theStackTrace).unwrap();
@@ -11498,75 +6837,15 @@ impl SIGINT {
         }
     }
 
-    /// **Source:** `OSD_SIGINT.hxx`:33 - `OSD_SIGINT::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
-        unsafe {
-            &*(crate::check_result(crate::ffi_extern_TKernel::OSD_SIGINT_dynamic_type(
-                self as *const Self,
-            )))
-        }
-    }
-
-    /// **Source:** `OSD_SIGINT.hxx`:33 - `OSD_SIGINT::Raise()`
-    pub fn raise_charptr(theMessage: &str) {
-        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKernel::OSD_SIGINT_raise_charptr(c_theMessage.as_ptr())
-        })
-    }
-
-    /// **Source:** `OSD_SIGINT.hxx`:33 - `OSD_SIGINT::Raise()`
-    pub fn raise_sstream(theMessage: &mut crate::ffi_types::Standard_SStream) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKernel::OSD_SIGINT_raise_sstream(theMessage)
-        })
-    }
-
-    /// **Source:** `OSD_SIGINT.hxx`:33 - `OSD_SIGINT::NewInstance()`
-    pub fn new_instance_charptr(
-        theMessage: &str,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleOSDSIGINT> {
-        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKernel::OSD_SIGINT_new_instance_charptr(c_theMessage.as_ptr()),
-            ))
-        }
-    }
-
-    /// **Source:** `OSD_SIGINT.hxx`:33 - `OSD_SIGINT::NewInstance()`
-    pub fn new_instance_charptr2(
-        theMessage: &str,
-        theStackTrace: &str,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleOSDSIGINT> {
-        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
-        let c_theStackTrace = std::ffi::CString::new(theStackTrace).unwrap();
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKernel::OSD_SIGINT_new_instance_charptr2(
-                    c_theMessage.as_ptr(),
-                    c_theStackTrace.as_ptr(),
-                ),
-            ))
-        }
-    }
-
-    /// **Source:** `OSD_SIGINT.hxx`:33 - `OSD_SIGINT::get_type_name()`
-    pub fn get_type_name() -> std::string::String {
+    /// **Source:** `OSD_SIGINT.hxx`:29 - `OSD_SIGINT::ExceptionType()`
+    pub fn exception_type(&self) -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi_extern_TKernel::OSD_SIGINT_get_type_name(),
+                crate::ffi_extern_TKernel::OSD_SIGINT_exception_type(self as *const Self),
             ))
         }
         .to_string_lossy()
         .into_owned()
-    }
-
-    /// **Source:** `OSD_SIGINT.hxx`:33 - `OSD_SIGINT::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
-        unsafe {
-            &*(crate::check_result(crate::ffi_extern_TKernel::OSD_SIGINT_get_type_descriptor()))
-        }
     }
 
     /// Upcast to OSD_Signal
@@ -11605,184 +6884,11 @@ impl SIGINT {
         }
     }
 
-    /// Upcast to Standard_Transient
-    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        unsafe {
-            &*crate::check_result(crate::ffi_extern_TKernel::OSD_SIGINT_as_Standard_Transient(
-                self as *const Self,
-            ))
-        }
-    }
-
-    /// Upcast to Standard_Transient (mutable)
-    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        unsafe {
-            &mut *crate::check_result(
-                crate::ffi_extern_TKernel::OSD_SIGINT_as_Standard_Transient_mut(self as *mut Self),
-            )
-        }
-    }
-
-    /// Wrap in a Handle (reference-counted smart pointer)
-    pub fn to_handle(
-        obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleOSDSIGINT> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKernel::OSD_SIGINT_to_handle(obj.into_raw()),
-            ))
-        }
-    }
-
-    /// Inherited: **Source:** `Standard_Failure.hxx`:58 - `Standard_Failure::Print()`
+    /// Inherited: **Source:** `Standard_Failure.hxx`:73 - `Standard_Failure::Print()`
     pub fn print(&self, theStream: &mut crate::ffi_types::Standard_OStream) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKernel::OSD_SIGINT_inherited_Print(self as *const Self, theStream)
         })
-    }
-
-    /// Inherited: **Source:** `Standard_Failure.hxx`:72 - `Standard_Failure::Reraise()`
-    pub fn reraise(&mut self) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKernel::OSD_SIGINT_inherited_Reraise(self as *mut Self)
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Failure.hxx`:112 - `Standard_Failure::Jump()`
-    pub fn jump(&mut self) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKernel::OSD_SIGINT_inherited_Jump(self as *mut Self)
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKernel::OSD_SIGINT_inherited_IsInstance(self as *const Self, theType)
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKernel::OSD_SIGINT_inherited_IsKind(self as *const Self, theType)
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
-    pub fn this(&self) -> Option<&crate::standard::Transient> {
-        {
-            let __val = crate::check_result(unsafe {
-                crate::ffi_extern_TKernel::OSD_SIGINT_inherited_This(self as *const Self)
-            });
-            if __val.is_null() {
-                None
-            } else {
-                Some(unsafe { &*__val })
-            }
-        }
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
-    pub fn get_ref_count(&self) -> i32 {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKernel::OSD_SIGINT_inherited_GetRefCount(self as *const Self)
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
-    pub fn increment_ref_counter(&mut self) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKernel::OSD_SIGINT_inherited_IncrementRefCounter(self as *mut Self)
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
-    pub fn decrement_ref_counter(&mut self) -> i32 {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKernel::OSD_SIGINT_inherited_DecrementRefCounter(self as *mut Self)
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
-    pub fn delete(&self) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKernel::OSD_SIGINT_inherited_Delete(self as *const Self)
-        })
-    }
-}
-
-pub use crate::ffi_types::HandleOSDSIGINT;
-
-unsafe impl crate::CppDeletable for HandleOSDSIGINT {
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            crate::ffi_extern_TKernel::HandleOSDSIGINT_destructor(ptr);
-        }
-    }
-}
-
-unsafe impl crate::CppCopyable for HandleOSDSIGINT {
-    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        unsafe { crate::check_result(crate::ffi_extern_TKernel::HandleOSDSIGINT_clone(ptr)) }
-    }
-}
-
-impl HandleOSDSIGINT {
-    /// Returns `true` if this Handle is null (doesn't point to any object).
-    pub fn is_null(&self) -> bool {
-        unsafe { crate::ffi_extern_TKernel::HandleOSDSIGINT_is_null(self as *const Self) }
-    }
-
-    /// Dereference this Handle to access the underlying OSD_SIGINT
-    pub fn get(&self) -> &crate::ffi_types::OSD_SIGINT {
-        unsafe {
-            &*crate::check_result(crate::ffi_extern_TKernel::HandleOSDSIGINT_get(
-                self as *const Self,
-            ))
-        }
-    }
-
-    /// Dereference this Handle to mutably access the underlying OSD_SIGINT
-    pub fn get_mut(&mut self) -> &mut crate::ffi_types::OSD_SIGINT {
-        unsafe {
-            &mut *crate::check_result(crate::ffi_extern_TKernel::HandleOSDSIGINT_get_mut(
-                self as *mut Self,
-            ))
-        }
-    }
-
-    /// Upcast Handle<OSD_SIGINT> to Handle<OSD_Signal>
-    pub fn to_handle_signal(&self) -> crate::OwnedPtr<crate::ffi_types::HandleOSDSignal> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKernel::HandleOSDSIGINT_to_HandleOSDSignal(self as *const Self),
-            ))
-        }
-    }
-
-    /// Upcast Handle<OSD_SIGINT> to Handle<Standard_Failure>
-    pub fn to_handle_failure(&self) -> crate::OwnedPtr<crate::ffi_types::HandleStandardFailure> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKernel::HandleOSDSIGINT_to_HandleStandardFailure(
-                    self as *const Self,
-                ),
-            ))
-        }
-    }
-
-    /// Upcast Handle<OSD_SIGINT> to Handle<Standard_Transient>
-    pub fn to_handle_transient(
-        &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKernel::HandleOSDSIGINT_to_HandleStandardTransient(
-                    self as *const Self,
-                ),
-            ))
-        }
     }
 }
 
@@ -11790,7 +6896,7 @@ impl HandleOSDSIGINT {
 // From OSD_SIGKILL.hxx
 // ========================
 
-/// **Source:** `OSD_SIGKILL.hxx`:33 - `OSD_SIGKILL`
+/// **Source:** `OSD_SIGKILL.hxx`:29 - `OSD_SIGKILL`
 pub use crate::ffi_types::OSD_SIGKILL as SIGKILL;
 
 unsafe impl crate::CppDeletable for SIGKILL {
@@ -11802,16 +6908,7 @@ unsafe impl crate::CppDeletable for SIGKILL {
 }
 
 impl SIGKILL {
-    /// **Source:** `OSD_SIGKILL.hxx`:33 - `OSD_SIGKILL::OSD_SIGKILL()`
-    pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKernel::OSD_SIGKILL_ctor(),
-            ))
-        }
-    }
-
-    /// **Source:** `OSD_SIGKILL.hxx`:33 - `OSD_SIGKILL::OSD_SIGKILL()`
+    /// **Source:** `OSD_SIGKILL.hxx`:29 - `OSD_SIGKILL::OSD_SIGKILL()`
     pub fn new_charptr(theMessage: &str) -> crate::OwnedPtr<Self> {
         let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
         unsafe {
@@ -11821,7 +6918,7 @@ impl SIGKILL {
         }
     }
 
-    /// **Source:** `OSD_SIGKILL.hxx`:33 - `OSD_SIGKILL::OSD_SIGKILL()`
+    /// **Source:** `OSD_SIGKILL.hxx`:29 - `OSD_SIGKILL::OSD_SIGKILL()`
     pub fn new_charptr2(theMessage: &str, theStackTrace: &str) -> crate::OwnedPtr<Self> {
         let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
         let c_theStackTrace = std::ffi::CString::new(theStackTrace).unwrap();
@@ -11835,75 +6932,15 @@ impl SIGKILL {
         }
     }
 
-    /// **Source:** `OSD_SIGKILL.hxx`:33 - `OSD_SIGKILL::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
-        unsafe {
-            &*(crate::check_result(crate::ffi_extern_TKernel::OSD_SIGKILL_dynamic_type(
-                self as *const Self,
-            )))
-        }
-    }
-
-    /// **Source:** `OSD_SIGKILL.hxx`:33 - `OSD_SIGKILL::Raise()`
-    pub fn raise_charptr(theMessage: &str) {
-        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKernel::OSD_SIGKILL_raise_charptr(c_theMessage.as_ptr())
-        })
-    }
-
-    /// **Source:** `OSD_SIGKILL.hxx`:33 - `OSD_SIGKILL::Raise()`
-    pub fn raise_sstream(theMessage: &mut crate::ffi_types::Standard_SStream) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKernel::OSD_SIGKILL_raise_sstream(theMessage)
-        })
-    }
-
-    /// **Source:** `OSD_SIGKILL.hxx`:33 - `OSD_SIGKILL::NewInstance()`
-    pub fn new_instance_charptr(
-        theMessage: &str,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleOSDSIGKILL> {
-        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKernel::OSD_SIGKILL_new_instance_charptr(c_theMessage.as_ptr()),
-            ))
-        }
-    }
-
-    /// **Source:** `OSD_SIGKILL.hxx`:33 - `OSD_SIGKILL::NewInstance()`
-    pub fn new_instance_charptr2(
-        theMessage: &str,
-        theStackTrace: &str,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleOSDSIGKILL> {
-        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
-        let c_theStackTrace = std::ffi::CString::new(theStackTrace).unwrap();
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKernel::OSD_SIGKILL_new_instance_charptr2(
-                    c_theMessage.as_ptr(),
-                    c_theStackTrace.as_ptr(),
-                ),
-            ))
-        }
-    }
-
-    /// **Source:** `OSD_SIGKILL.hxx`:33 - `OSD_SIGKILL::get_type_name()`
-    pub fn get_type_name() -> std::string::String {
+    /// **Source:** `OSD_SIGKILL.hxx`:29 - `OSD_SIGKILL::ExceptionType()`
+    pub fn exception_type(&self) -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi_extern_TKernel::OSD_SIGKILL_get_type_name(),
+                crate::ffi_extern_TKernel::OSD_SIGKILL_exception_type(self as *const Self),
             ))
         }
         .to_string_lossy()
         .into_owned()
-    }
-
-    /// **Source:** `OSD_SIGKILL.hxx`:33 - `OSD_SIGKILL::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
-        unsafe {
-            &*(crate::check_result(crate::ffi_extern_TKernel::OSD_SIGKILL_get_type_descriptor()))
-        }
     }
 
     /// Upcast to OSD_Signal
@@ -11942,187 +6979,11 @@ impl SIGKILL {
         }
     }
 
-    /// Upcast to Standard_Transient
-    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        unsafe {
-            &*crate::check_result(crate::ffi_extern_TKernel::OSD_SIGKILL_as_Standard_Transient(
-                self as *const Self,
-            ))
-        }
-    }
-
-    /// Upcast to Standard_Transient (mutable)
-    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        unsafe {
-            &mut *crate::check_result(
-                crate::ffi_extern_TKernel::OSD_SIGKILL_as_Standard_Transient_mut(self as *mut Self),
-            )
-        }
-    }
-
-    /// Wrap in a Handle (reference-counted smart pointer)
-    pub fn to_handle(
-        obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleOSDSIGKILL> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKernel::OSD_SIGKILL_to_handle(obj.into_raw()),
-            ))
-        }
-    }
-
-    /// Inherited: **Source:** `Standard_Failure.hxx`:58 - `Standard_Failure::Print()`
+    /// Inherited: **Source:** `Standard_Failure.hxx`:73 - `Standard_Failure::Print()`
     pub fn print(&self, theStream: &mut crate::ffi_types::Standard_OStream) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKernel::OSD_SIGKILL_inherited_Print(self as *const Self, theStream)
         })
-    }
-
-    /// Inherited: **Source:** `Standard_Failure.hxx`:72 - `Standard_Failure::Reraise()`
-    pub fn reraise(&mut self) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKernel::OSD_SIGKILL_inherited_Reraise(self as *mut Self)
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Failure.hxx`:112 - `Standard_Failure::Jump()`
-    pub fn jump(&mut self) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKernel::OSD_SIGKILL_inherited_Jump(self as *mut Self)
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKernel::OSD_SIGKILL_inherited_IsInstance(
-                self as *const Self,
-                theType,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKernel::OSD_SIGKILL_inherited_IsKind(self as *const Self, theType)
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
-    pub fn this(&self) -> Option<&crate::standard::Transient> {
-        {
-            let __val = crate::check_result(unsafe {
-                crate::ffi_extern_TKernel::OSD_SIGKILL_inherited_This(self as *const Self)
-            });
-            if __val.is_null() {
-                None
-            } else {
-                Some(unsafe { &*__val })
-            }
-        }
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
-    pub fn get_ref_count(&self) -> i32 {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKernel::OSD_SIGKILL_inherited_GetRefCount(self as *const Self)
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
-    pub fn increment_ref_counter(&mut self) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKernel::OSD_SIGKILL_inherited_IncrementRefCounter(self as *mut Self)
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
-    pub fn decrement_ref_counter(&mut self) -> i32 {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKernel::OSD_SIGKILL_inherited_DecrementRefCounter(self as *mut Self)
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
-    pub fn delete(&self) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKernel::OSD_SIGKILL_inherited_Delete(self as *const Self)
-        })
-    }
-}
-
-pub use crate::ffi_types::HandleOSDSIGKILL;
-
-unsafe impl crate::CppDeletable for HandleOSDSIGKILL {
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            crate::ffi_extern_TKernel::HandleOSDSIGKILL_destructor(ptr);
-        }
-    }
-}
-
-unsafe impl crate::CppCopyable for HandleOSDSIGKILL {
-    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        unsafe { crate::check_result(crate::ffi_extern_TKernel::HandleOSDSIGKILL_clone(ptr)) }
-    }
-}
-
-impl HandleOSDSIGKILL {
-    /// Returns `true` if this Handle is null (doesn't point to any object).
-    pub fn is_null(&self) -> bool {
-        unsafe { crate::ffi_extern_TKernel::HandleOSDSIGKILL_is_null(self as *const Self) }
-    }
-
-    /// Dereference this Handle to access the underlying OSD_SIGKILL
-    pub fn get(&self) -> &crate::ffi_types::OSD_SIGKILL {
-        unsafe {
-            &*crate::check_result(crate::ffi_extern_TKernel::HandleOSDSIGKILL_get(
-                self as *const Self,
-            ))
-        }
-    }
-
-    /// Dereference this Handle to mutably access the underlying OSD_SIGKILL
-    pub fn get_mut(&mut self) -> &mut crate::ffi_types::OSD_SIGKILL {
-        unsafe {
-            &mut *crate::check_result(crate::ffi_extern_TKernel::HandleOSDSIGKILL_get_mut(
-                self as *mut Self,
-            ))
-        }
-    }
-
-    /// Upcast Handle<OSD_SIGKILL> to Handle<OSD_Signal>
-    pub fn to_handle_signal(&self) -> crate::OwnedPtr<crate::ffi_types::HandleOSDSignal> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKernel::HandleOSDSIGKILL_to_HandleOSDSignal(self as *const Self),
-            ))
-        }
-    }
-
-    /// Upcast Handle<OSD_SIGKILL> to Handle<Standard_Failure>
-    pub fn to_handle_failure(&self) -> crate::OwnedPtr<crate::ffi_types::HandleStandardFailure> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKernel::HandleOSDSIGKILL_to_HandleStandardFailure(
-                    self as *const Self,
-                ),
-            ))
-        }
-    }
-
-    /// Upcast Handle<OSD_SIGKILL> to Handle<Standard_Transient>
-    pub fn to_handle_transient(
-        &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKernel::HandleOSDSIGKILL_to_HandleStandardTransient(
-                    self as *const Self,
-                ),
-            ))
-        }
     }
 }
 
@@ -12130,7 +6991,7 @@ impl HandleOSDSIGKILL {
 // From OSD_SIGQUIT.hxx
 // ========================
 
-/// **Source:** `OSD_SIGQUIT.hxx`:33 - `OSD_SIGQUIT`
+/// **Source:** `OSD_SIGQUIT.hxx`:29 - `OSD_SIGQUIT`
 pub use crate::ffi_types::OSD_SIGQUIT as SIGQUIT;
 
 unsafe impl crate::CppDeletable for SIGQUIT {
@@ -12142,16 +7003,7 @@ unsafe impl crate::CppDeletable for SIGQUIT {
 }
 
 impl SIGQUIT {
-    /// **Source:** `OSD_SIGQUIT.hxx`:33 - `OSD_SIGQUIT::OSD_SIGQUIT()`
-    pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKernel::OSD_SIGQUIT_ctor(),
-            ))
-        }
-    }
-
-    /// **Source:** `OSD_SIGQUIT.hxx`:33 - `OSD_SIGQUIT::OSD_SIGQUIT()`
+    /// **Source:** `OSD_SIGQUIT.hxx`:29 - `OSD_SIGQUIT::OSD_SIGQUIT()`
     pub fn new_charptr(theMessage: &str) -> crate::OwnedPtr<Self> {
         let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
         unsafe {
@@ -12161,7 +7013,7 @@ impl SIGQUIT {
         }
     }
 
-    /// **Source:** `OSD_SIGQUIT.hxx`:33 - `OSD_SIGQUIT::OSD_SIGQUIT()`
+    /// **Source:** `OSD_SIGQUIT.hxx`:29 - `OSD_SIGQUIT::OSD_SIGQUIT()`
     pub fn new_charptr2(theMessage: &str, theStackTrace: &str) -> crate::OwnedPtr<Self> {
         let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
         let c_theStackTrace = std::ffi::CString::new(theStackTrace).unwrap();
@@ -12175,75 +7027,15 @@ impl SIGQUIT {
         }
     }
 
-    /// **Source:** `OSD_SIGQUIT.hxx`:33 - `OSD_SIGQUIT::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
-        unsafe {
-            &*(crate::check_result(crate::ffi_extern_TKernel::OSD_SIGQUIT_dynamic_type(
-                self as *const Self,
-            )))
-        }
-    }
-
-    /// **Source:** `OSD_SIGQUIT.hxx`:33 - `OSD_SIGQUIT::Raise()`
-    pub fn raise_charptr(theMessage: &str) {
-        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKernel::OSD_SIGQUIT_raise_charptr(c_theMessage.as_ptr())
-        })
-    }
-
-    /// **Source:** `OSD_SIGQUIT.hxx`:33 - `OSD_SIGQUIT::Raise()`
-    pub fn raise_sstream(theMessage: &mut crate::ffi_types::Standard_SStream) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKernel::OSD_SIGQUIT_raise_sstream(theMessage)
-        })
-    }
-
-    /// **Source:** `OSD_SIGQUIT.hxx`:33 - `OSD_SIGQUIT::NewInstance()`
-    pub fn new_instance_charptr(
-        theMessage: &str,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleOSDSIGQUIT> {
-        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKernel::OSD_SIGQUIT_new_instance_charptr(c_theMessage.as_ptr()),
-            ))
-        }
-    }
-
-    /// **Source:** `OSD_SIGQUIT.hxx`:33 - `OSD_SIGQUIT::NewInstance()`
-    pub fn new_instance_charptr2(
-        theMessage: &str,
-        theStackTrace: &str,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleOSDSIGQUIT> {
-        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
-        let c_theStackTrace = std::ffi::CString::new(theStackTrace).unwrap();
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKernel::OSD_SIGQUIT_new_instance_charptr2(
-                    c_theMessage.as_ptr(),
-                    c_theStackTrace.as_ptr(),
-                ),
-            ))
-        }
-    }
-
-    /// **Source:** `OSD_SIGQUIT.hxx`:33 - `OSD_SIGQUIT::get_type_name()`
-    pub fn get_type_name() -> std::string::String {
+    /// **Source:** `OSD_SIGQUIT.hxx`:29 - `OSD_SIGQUIT::ExceptionType()`
+    pub fn exception_type(&self) -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi_extern_TKernel::OSD_SIGQUIT_get_type_name(),
+                crate::ffi_extern_TKernel::OSD_SIGQUIT_exception_type(self as *const Self),
             ))
         }
         .to_string_lossy()
         .into_owned()
-    }
-
-    /// **Source:** `OSD_SIGQUIT.hxx`:33 - `OSD_SIGQUIT::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
-        unsafe {
-            &*(crate::check_result(crate::ffi_extern_TKernel::OSD_SIGQUIT_get_type_descriptor()))
-        }
     }
 
     /// Upcast to OSD_Signal
@@ -12282,187 +7074,11 @@ impl SIGQUIT {
         }
     }
 
-    /// Upcast to Standard_Transient
-    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        unsafe {
-            &*crate::check_result(crate::ffi_extern_TKernel::OSD_SIGQUIT_as_Standard_Transient(
-                self as *const Self,
-            ))
-        }
-    }
-
-    /// Upcast to Standard_Transient (mutable)
-    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        unsafe {
-            &mut *crate::check_result(
-                crate::ffi_extern_TKernel::OSD_SIGQUIT_as_Standard_Transient_mut(self as *mut Self),
-            )
-        }
-    }
-
-    /// Wrap in a Handle (reference-counted smart pointer)
-    pub fn to_handle(
-        obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleOSDSIGQUIT> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKernel::OSD_SIGQUIT_to_handle(obj.into_raw()),
-            ))
-        }
-    }
-
-    /// Inherited: **Source:** `Standard_Failure.hxx`:58 - `Standard_Failure::Print()`
+    /// Inherited: **Source:** `Standard_Failure.hxx`:73 - `Standard_Failure::Print()`
     pub fn print(&self, theStream: &mut crate::ffi_types::Standard_OStream) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKernel::OSD_SIGQUIT_inherited_Print(self as *const Self, theStream)
         })
-    }
-
-    /// Inherited: **Source:** `Standard_Failure.hxx`:72 - `Standard_Failure::Reraise()`
-    pub fn reraise(&mut self) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKernel::OSD_SIGQUIT_inherited_Reraise(self as *mut Self)
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Failure.hxx`:112 - `Standard_Failure::Jump()`
-    pub fn jump(&mut self) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKernel::OSD_SIGQUIT_inherited_Jump(self as *mut Self)
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKernel::OSD_SIGQUIT_inherited_IsInstance(
-                self as *const Self,
-                theType,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKernel::OSD_SIGQUIT_inherited_IsKind(self as *const Self, theType)
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
-    pub fn this(&self) -> Option<&crate::standard::Transient> {
-        {
-            let __val = crate::check_result(unsafe {
-                crate::ffi_extern_TKernel::OSD_SIGQUIT_inherited_This(self as *const Self)
-            });
-            if __val.is_null() {
-                None
-            } else {
-                Some(unsafe { &*__val })
-            }
-        }
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
-    pub fn get_ref_count(&self) -> i32 {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKernel::OSD_SIGQUIT_inherited_GetRefCount(self as *const Self)
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
-    pub fn increment_ref_counter(&mut self) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKernel::OSD_SIGQUIT_inherited_IncrementRefCounter(self as *mut Self)
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
-    pub fn decrement_ref_counter(&mut self) -> i32 {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKernel::OSD_SIGQUIT_inherited_DecrementRefCounter(self as *mut Self)
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
-    pub fn delete(&self) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKernel::OSD_SIGQUIT_inherited_Delete(self as *const Self)
-        })
-    }
-}
-
-pub use crate::ffi_types::HandleOSDSIGQUIT;
-
-unsafe impl crate::CppDeletable for HandleOSDSIGQUIT {
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            crate::ffi_extern_TKernel::HandleOSDSIGQUIT_destructor(ptr);
-        }
-    }
-}
-
-unsafe impl crate::CppCopyable for HandleOSDSIGQUIT {
-    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        unsafe { crate::check_result(crate::ffi_extern_TKernel::HandleOSDSIGQUIT_clone(ptr)) }
-    }
-}
-
-impl HandleOSDSIGQUIT {
-    /// Returns `true` if this Handle is null (doesn't point to any object).
-    pub fn is_null(&self) -> bool {
-        unsafe { crate::ffi_extern_TKernel::HandleOSDSIGQUIT_is_null(self as *const Self) }
-    }
-
-    /// Dereference this Handle to access the underlying OSD_SIGQUIT
-    pub fn get(&self) -> &crate::ffi_types::OSD_SIGQUIT {
-        unsafe {
-            &*crate::check_result(crate::ffi_extern_TKernel::HandleOSDSIGQUIT_get(
-                self as *const Self,
-            ))
-        }
-    }
-
-    /// Dereference this Handle to mutably access the underlying OSD_SIGQUIT
-    pub fn get_mut(&mut self) -> &mut crate::ffi_types::OSD_SIGQUIT {
-        unsafe {
-            &mut *crate::check_result(crate::ffi_extern_TKernel::HandleOSDSIGQUIT_get_mut(
-                self as *mut Self,
-            ))
-        }
-    }
-
-    /// Upcast Handle<OSD_SIGQUIT> to Handle<OSD_Signal>
-    pub fn to_handle_signal(&self) -> crate::OwnedPtr<crate::ffi_types::HandleOSDSignal> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKernel::HandleOSDSIGQUIT_to_HandleOSDSignal(self as *const Self),
-            ))
-        }
-    }
-
-    /// Upcast Handle<OSD_SIGQUIT> to Handle<Standard_Failure>
-    pub fn to_handle_failure(&self) -> crate::OwnedPtr<crate::ffi_types::HandleStandardFailure> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKernel::HandleOSDSIGQUIT_to_HandleStandardFailure(
-                    self as *const Self,
-                ),
-            ))
-        }
-    }
-
-    /// Upcast Handle<OSD_SIGQUIT> to Handle<Standard_Transient>
-    pub fn to_handle_transient(
-        &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKernel::HandleOSDSIGQUIT_to_HandleStandardTransient(
-                    self as *const Self,
-                ),
-            ))
-        }
     }
 }
 
@@ -12470,7 +7086,7 @@ impl HandleOSDSIGQUIT {
 // From OSD_SIGSEGV.hxx
 // ========================
 
-/// **Source:** `OSD_SIGSEGV.hxx`:34 - `OSD_SIGSEGV`
+/// **Source:** `OSD_SIGSEGV.hxx`:30 - `OSD_SIGSEGV`
 pub use crate::ffi_types::OSD_SIGSEGV as SIGSEGV;
 
 unsafe impl crate::CppDeletable for SIGSEGV {
@@ -12482,16 +7098,7 @@ unsafe impl crate::CppDeletable for SIGSEGV {
 }
 
 impl SIGSEGV {
-    /// **Source:** `OSD_SIGSEGV.hxx`:34 - `OSD_SIGSEGV::OSD_SIGSEGV()`
-    pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKernel::OSD_SIGSEGV_ctor(),
-            ))
-        }
-    }
-
-    /// **Source:** `OSD_SIGSEGV.hxx`:34 - `OSD_SIGSEGV::OSD_SIGSEGV()`
+    /// **Source:** `OSD_SIGSEGV.hxx`:30 - `OSD_SIGSEGV::OSD_SIGSEGV()`
     pub fn new_charptr(theMessage: &str) -> crate::OwnedPtr<Self> {
         let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
         unsafe {
@@ -12501,7 +7108,7 @@ impl SIGSEGV {
         }
     }
 
-    /// **Source:** `OSD_SIGSEGV.hxx`:34 - `OSD_SIGSEGV::OSD_SIGSEGV()`
+    /// **Source:** `OSD_SIGSEGV.hxx`:30 - `OSD_SIGSEGV::OSD_SIGSEGV()`
     pub fn new_charptr2(theMessage: &str, theStackTrace: &str) -> crate::OwnedPtr<Self> {
         let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
         let c_theStackTrace = std::ffi::CString::new(theStackTrace).unwrap();
@@ -12515,75 +7122,15 @@ impl SIGSEGV {
         }
     }
 
-    /// **Source:** `OSD_SIGSEGV.hxx`:34 - `OSD_SIGSEGV::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
-        unsafe {
-            &*(crate::check_result(crate::ffi_extern_TKernel::OSD_SIGSEGV_dynamic_type(
-                self as *const Self,
-            )))
-        }
-    }
-
-    /// **Source:** `OSD_SIGSEGV.hxx`:34 - `OSD_SIGSEGV::Raise()`
-    pub fn raise_charptr(theMessage: &str) {
-        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKernel::OSD_SIGSEGV_raise_charptr(c_theMessage.as_ptr())
-        })
-    }
-
-    /// **Source:** `OSD_SIGSEGV.hxx`:34 - `OSD_SIGSEGV::Raise()`
-    pub fn raise_sstream(theMessage: &mut crate::ffi_types::Standard_SStream) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKernel::OSD_SIGSEGV_raise_sstream(theMessage)
-        })
-    }
-
-    /// **Source:** `OSD_SIGSEGV.hxx`:34 - `OSD_SIGSEGV::NewInstance()`
-    pub fn new_instance_charptr(
-        theMessage: &str,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleOSDSIGSEGV> {
-        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKernel::OSD_SIGSEGV_new_instance_charptr(c_theMessage.as_ptr()),
-            ))
-        }
-    }
-
-    /// **Source:** `OSD_SIGSEGV.hxx`:34 - `OSD_SIGSEGV::NewInstance()`
-    pub fn new_instance_charptr2(
-        theMessage: &str,
-        theStackTrace: &str,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleOSDSIGSEGV> {
-        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
-        let c_theStackTrace = std::ffi::CString::new(theStackTrace).unwrap();
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKernel::OSD_SIGSEGV_new_instance_charptr2(
-                    c_theMessage.as_ptr(),
-                    c_theStackTrace.as_ptr(),
-                ),
-            ))
-        }
-    }
-
-    /// **Source:** `OSD_SIGSEGV.hxx`:34 - `OSD_SIGSEGV::get_type_name()`
-    pub fn get_type_name() -> std::string::String {
+    /// **Source:** `OSD_SIGSEGV.hxx`:30 - `OSD_SIGSEGV::ExceptionType()`
+    pub fn exception_type(&self) -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi_extern_TKernel::OSD_SIGSEGV_get_type_name(),
+                crate::ffi_extern_TKernel::OSD_SIGSEGV_exception_type(self as *const Self),
             ))
         }
         .to_string_lossy()
         .into_owned()
-    }
-
-    /// **Source:** `OSD_SIGSEGV.hxx`:34 - `OSD_SIGSEGV::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
-        unsafe {
-            &*(crate::check_result(crate::ffi_extern_TKernel::OSD_SIGSEGV_get_type_descriptor()))
-        }
     }
 
     /// Upcast to OSD_Signal
@@ -12622,187 +7169,11 @@ impl SIGSEGV {
         }
     }
 
-    /// Upcast to Standard_Transient
-    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        unsafe {
-            &*crate::check_result(crate::ffi_extern_TKernel::OSD_SIGSEGV_as_Standard_Transient(
-                self as *const Self,
-            ))
-        }
-    }
-
-    /// Upcast to Standard_Transient (mutable)
-    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        unsafe {
-            &mut *crate::check_result(
-                crate::ffi_extern_TKernel::OSD_SIGSEGV_as_Standard_Transient_mut(self as *mut Self),
-            )
-        }
-    }
-
-    /// Wrap in a Handle (reference-counted smart pointer)
-    pub fn to_handle(
-        obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleOSDSIGSEGV> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKernel::OSD_SIGSEGV_to_handle(obj.into_raw()),
-            ))
-        }
-    }
-
-    /// Inherited: **Source:** `Standard_Failure.hxx`:58 - `Standard_Failure::Print()`
+    /// Inherited: **Source:** `Standard_Failure.hxx`:73 - `Standard_Failure::Print()`
     pub fn print(&self, theStream: &mut crate::ffi_types::Standard_OStream) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKernel::OSD_SIGSEGV_inherited_Print(self as *const Self, theStream)
         })
-    }
-
-    /// Inherited: **Source:** `Standard_Failure.hxx`:72 - `Standard_Failure::Reraise()`
-    pub fn reraise(&mut self) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKernel::OSD_SIGSEGV_inherited_Reraise(self as *mut Self)
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Failure.hxx`:112 - `Standard_Failure::Jump()`
-    pub fn jump(&mut self) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKernel::OSD_SIGSEGV_inherited_Jump(self as *mut Self)
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKernel::OSD_SIGSEGV_inherited_IsInstance(
-                self as *const Self,
-                theType,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKernel::OSD_SIGSEGV_inherited_IsKind(self as *const Self, theType)
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
-    pub fn this(&self) -> Option<&crate::standard::Transient> {
-        {
-            let __val = crate::check_result(unsafe {
-                crate::ffi_extern_TKernel::OSD_SIGSEGV_inherited_This(self as *const Self)
-            });
-            if __val.is_null() {
-                None
-            } else {
-                Some(unsafe { &*__val })
-            }
-        }
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
-    pub fn get_ref_count(&self) -> i32 {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKernel::OSD_SIGSEGV_inherited_GetRefCount(self as *const Self)
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
-    pub fn increment_ref_counter(&mut self) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKernel::OSD_SIGSEGV_inherited_IncrementRefCounter(self as *mut Self)
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
-    pub fn decrement_ref_counter(&mut self) -> i32 {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKernel::OSD_SIGSEGV_inherited_DecrementRefCounter(self as *mut Self)
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
-    pub fn delete(&self) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKernel::OSD_SIGSEGV_inherited_Delete(self as *const Self)
-        })
-    }
-}
-
-pub use crate::ffi_types::HandleOSDSIGSEGV;
-
-unsafe impl crate::CppDeletable for HandleOSDSIGSEGV {
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            crate::ffi_extern_TKernel::HandleOSDSIGSEGV_destructor(ptr);
-        }
-    }
-}
-
-unsafe impl crate::CppCopyable for HandleOSDSIGSEGV {
-    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        unsafe { crate::check_result(crate::ffi_extern_TKernel::HandleOSDSIGSEGV_clone(ptr)) }
-    }
-}
-
-impl HandleOSDSIGSEGV {
-    /// Returns `true` if this Handle is null (doesn't point to any object).
-    pub fn is_null(&self) -> bool {
-        unsafe { crate::ffi_extern_TKernel::HandleOSDSIGSEGV_is_null(self as *const Self) }
-    }
-
-    /// Dereference this Handle to access the underlying OSD_SIGSEGV
-    pub fn get(&self) -> &crate::ffi_types::OSD_SIGSEGV {
-        unsafe {
-            &*crate::check_result(crate::ffi_extern_TKernel::HandleOSDSIGSEGV_get(
-                self as *const Self,
-            ))
-        }
-    }
-
-    /// Dereference this Handle to mutably access the underlying OSD_SIGSEGV
-    pub fn get_mut(&mut self) -> &mut crate::ffi_types::OSD_SIGSEGV {
-        unsafe {
-            &mut *crate::check_result(crate::ffi_extern_TKernel::HandleOSDSIGSEGV_get_mut(
-                self as *mut Self,
-            ))
-        }
-    }
-
-    /// Upcast Handle<OSD_SIGSEGV> to Handle<OSD_Signal>
-    pub fn to_handle_signal(&self) -> crate::OwnedPtr<crate::ffi_types::HandleOSDSignal> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKernel::HandleOSDSIGSEGV_to_HandleOSDSignal(self as *const Self),
-            ))
-        }
-    }
-
-    /// Upcast Handle<OSD_SIGSEGV> to Handle<Standard_Failure>
-    pub fn to_handle_failure(&self) -> crate::OwnedPtr<crate::ffi_types::HandleStandardFailure> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKernel::HandleOSDSIGSEGV_to_HandleStandardFailure(
-                    self as *const Self,
-                ),
-            ))
-        }
-    }
-
-    /// Upcast Handle<OSD_SIGSEGV> to Handle<Standard_Transient>
-    pub fn to_handle_transient(
-        &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKernel::HandleOSDSIGSEGV_to_HandleStandardTransient(
-                    self as *const Self,
-                ),
-            ))
-        }
     }
 }
 
@@ -12810,7 +7181,7 @@ impl HandleOSDSIGSEGV {
 // From OSD_SIGSYS.hxx
 // ========================
 
-/// **Source:** `OSD_SIGSYS.hxx`:33 - `OSD_SIGSYS`
+/// **Source:** `OSD_SIGSYS.hxx`:29 - `OSD_SIGSYS`
 pub use crate::ffi_types::OSD_SIGSYS as SIGSYS;
 
 unsafe impl crate::CppDeletable for SIGSYS {
@@ -12822,16 +7193,7 @@ unsafe impl crate::CppDeletable for SIGSYS {
 }
 
 impl SIGSYS {
-    /// **Source:** `OSD_SIGSYS.hxx`:33 - `OSD_SIGSYS::OSD_SIGSYS()`
-    pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKernel::OSD_SIGSYS_ctor(),
-            ))
-        }
-    }
-
-    /// **Source:** `OSD_SIGSYS.hxx`:33 - `OSD_SIGSYS::OSD_SIGSYS()`
+    /// **Source:** `OSD_SIGSYS.hxx`:29 - `OSD_SIGSYS::OSD_SIGSYS()`
     pub fn new_charptr(theMessage: &str) -> crate::OwnedPtr<Self> {
         let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
         unsafe {
@@ -12841,7 +7203,7 @@ impl SIGSYS {
         }
     }
 
-    /// **Source:** `OSD_SIGSYS.hxx`:33 - `OSD_SIGSYS::OSD_SIGSYS()`
+    /// **Source:** `OSD_SIGSYS.hxx`:29 - `OSD_SIGSYS::OSD_SIGSYS()`
     pub fn new_charptr2(theMessage: &str, theStackTrace: &str) -> crate::OwnedPtr<Self> {
         let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
         let c_theStackTrace = std::ffi::CString::new(theStackTrace).unwrap();
@@ -12855,75 +7217,15 @@ impl SIGSYS {
         }
     }
 
-    /// **Source:** `OSD_SIGSYS.hxx`:33 - `OSD_SIGSYS::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
-        unsafe {
-            &*(crate::check_result(crate::ffi_extern_TKernel::OSD_SIGSYS_dynamic_type(
-                self as *const Self,
-            )))
-        }
-    }
-
-    /// **Source:** `OSD_SIGSYS.hxx`:33 - `OSD_SIGSYS::Raise()`
-    pub fn raise_charptr(theMessage: &str) {
-        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKernel::OSD_SIGSYS_raise_charptr(c_theMessage.as_ptr())
-        })
-    }
-
-    /// **Source:** `OSD_SIGSYS.hxx`:33 - `OSD_SIGSYS::Raise()`
-    pub fn raise_sstream(theMessage: &mut crate::ffi_types::Standard_SStream) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKernel::OSD_SIGSYS_raise_sstream(theMessage)
-        })
-    }
-
-    /// **Source:** `OSD_SIGSYS.hxx`:33 - `OSD_SIGSYS::NewInstance()`
-    pub fn new_instance_charptr(
-        theMessage: &str,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleOSDSIGSYS> {
-        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKernel::OSD_SIGSYS_new_instance_charptr(c_theMessage.as_ptr()),
-            ))
-        }
-    }
-
-    /// **Source:** `OSD_SIGSYS.hxx`:33 - `OSD_SIGSYS::NewInstance()`
-    pub fn new_instance_charptr2(
-        theMessage: &str,
-        theStackTrace: &str,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleOSDSIGSYS> {
-        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
-        let c_theStackTrace = std::ffi::CString::new(theStackTrace).unwrap();
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKernel::OSD_SIGSYS_new_instance_charptr2(
-                    c_theMessage.as_ptr(),
-                    c_theStackTrace.as_ptr(),
-                ),
-            ))
-        }
-    }
-
-    /// **Source:** `OSD_SIGSYS.hxx`:33 - `OSD_SIGSYS::get_type_name()`
-    pub fn get_type_name() -> std::string::String {
+    /// **Source:** `OSD_SIGSYS.hxx`:29 - `OSD_SIGSYS::ExceptionType()`
+    pub fn exception_type(&self) -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi_extern_TKernel::OSD_SIGSYS_get_type_name(),
+                crate::ffi_extern_TKernel::OSD_SIGSYS_exception_type(self as *const Self),
             ))
         }
         .to_string_lossy()
         .into_owned()
-    }
-
-    /// **Source:** `OSD_SIGSYS.hxx`:33 - `OSD_SIGSYS::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
-        unsafe {
-            &*(crate::check_result(crate::ffi_extern_TKernel::OSD_SIGSYS_get_type_descriptor()))
-        }
     }
 
     /// Upcast to OSD_Signal
@@ -12962,184 +7264,11 @@ impl SIGSYS {
         }
     }
 
-    /// Upcast to Standard_Transient
-    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        unsafe {
-            &*crate::check_result(crate::ffi_extern_TKernel::OSD_SIGSYS_as_Standard_Transient(
-                self as *const Self,
-            ))
-        }
-    }
-
-    /// Upcast to Standard_Transient (mutable)
-    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        unsafe {
-            &mut *crate::check_result(
-                crate::ffi_extern_TKernel::OSD_SIGSYS_as_Standard_Transient_mut(self as *mut Self),
-            )
-        }
-    }
-
-    /// Wrap in a Handle (reference-counted smart pointer)
-    pub fn to_handle(
-        obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleOSDSIGSYS> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKernel::OSD_SIGSYS_to_handle(obj.into_raw()),
-            ))
-        }
-    }
-
-    /// Inherited: **Source:** `Standard_Failure.hxx`:58 - `Standard_Failure::Print()`
+    /// Inherited: **Source:** `Standard_Failure.hxx`:73 - `Standard_Failure::Print()`
     pub fn print(&self, theStream: &mut crate::ffi_types::Standard_OStream) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKernel::OSD_SIGSYS_inherited_Print(self as *const Self, theStream)
         })
-    }
-
-    /// Inherited: **Source:** `Standard_Failure.hxx`:72 - `Standard_Failure::Reraise()`
-    pub fn reraise(&mut self) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKernel::OSD_SIGSYS_inherited_Reraise(self as *mut Self)
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Failure.hxx`:112 - `Standard_Failure::Jump()`
-    pub fn jump(&mut self) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKernel::OSD_SIGSYS_inherited_Jump(self as *mut Self)
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKernel::OSD_SIGSYS_inherited_IsInstance(self as *const Self, theType)
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKernel::OSD_SIGSYS_inherited_IsKind(self as *const Self, theType)
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
-    pub fn this(&self) -> Option<&crate::standard::Transient> {
-        {
-            let __val = crate::check_result(unsafe {
-                crate::ffi_extern_TKernel::OSD_SIGSYS_inherited_This(self as *const Self)
-            });
-            if __val.is_null() {
-                None
-            } else {
-                Some(unsafe { &*__val })
-            }
-        }
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
-    pub fn get_ref_count(&self) -> i32 {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKernel::OSD_SIGSYS_inherited_GetRefCount(self as *const Self)
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
-    pub fn increment_ref_counter(&mut self) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKernel::OSD_SIGSYS_inherited_IncrementRefCounter(self as *mut Self)
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
-    pub fn decrement_ref_counter(&mut self) -> i32 {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKernel::OSD_SIGSYS_inherited_DecrementRefCounter(self as *mut Self)
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
-    pub fn delete(&self) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKernel::OSD_SIGSYS_inherited_Delete(self as *const Self)
-        })
-    }
-}
-
-pub use crate::ffi_types::HandleOSDSIGSYS;
-
-unsafe impl crate::CppDeletable for HandleOSDSIGSYS {
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            crate::ffi_extern_TKernel::HandleOSDSIGSYS_destructor(ptr);
-        }
-    }
-}
-
-unsafe impl crate::CppCopyable for HandleOSDSIGSYS {
-    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        unsafe { crate::check_result(crate::ffi_extern_TKernel::HandleOSDSIGSYS_clone(ptr)) }
-    }
-}
-
-impl HandleOSDSIGSYS {
-    /// Returns `true` if this Handle is null (doesn't point to any object).
-    pub fn is_null(&self) -> bool {
-        unsafe { crate::ffi_extern_TKernel::HandleOSDSIGSYS_is_null(self as *const Self) }
-    }
-
-    /// Dereference this Handle to access the underlying OSD_SIGSYS
-    pub fn get(&self) -> &crate::ffi_types::OSD_SIGSYS {
-        unsafe {
-            &*crate::check_result(crate::ffi_extern_TKernel::HandleOSDSIGSYS_get(
-                self as *const Self,
-            ))
-        }
-    }
-
-    /// Dereference this Handle to mutably access the underlying OSD_SIGSYS
-    pub fn get_mut(&mut self) -> &mut crate::ffi_types::OSD_SIGSYS {
-        unsafe {
-            &mut *crate::check_result(crate::ffi_extern_TKernel::HandleOSDSIGSYS_get_mut(
-                self as *mut Self,
-            ))
-        }
-    }
-
-    /// Upcast Handle<OSD_SIGSYS> to Handle<OSD_Signal>
-    pub fn to_handle_signal(&self) -> crate::OwnedPtr<crate::ffi_types::HandleOSDSignal> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKernel::HandleOSDSIGSYS_to_HandleOSDSignal(self as *const Self),
-            ))
-        }
-    }
-
-    /// Upcast Handle<OSD_SIGSYS> to Handle<Standard_Failure>
-    pub fn to_handle_failure(&self) -> crate::OwnedPtr<crate::ffi_types::HandleStandardFailure> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKernel::HandleOSDSIGSYS_to_HandleStandardFailure(
-                    self as *const Self,
-                ),
-            ))
-        }
-    }
-
-    /// Upcast Handle<OSD_SIGSYS> to Handle<Standard_Transient>
-    pub fn to_handle_transient(
-        &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKernel::HandleOSDSIGSYS_to_HandleStandardTransient(
-                    self as *const Self,
-                ),
-            ))
-        }
     }
 }
 
@@ -13210,7 +7339,7 @@ impl SharedLibrary {
     /// **Source:** `OSD_SharedLibrary.hxx`:67 - `OSD_SharedLibrary::DlOpen()`
     /// The DlOpen method provides an interface to the
     /// dynamic library loader to allow shared libraries
-    /// to be loaded and called at runtime.  The DlOpen
+    /// to be loaded and called at runtime. The DlOpen
     /// function attempts to load Filename, in the address
     /// space of the process, resolving symbols as appropriate.
     /// Any libraries that Filename depends upon are also loaded.
@@ -13223,8 +7352,8 @@ impl SharedLibrary {
     /// symbol binding during the DlOpen call.
     /// The DlOpen method returns a	handle that is used by DlSym
     /// or DlClose.
-    /// If there is an error, Standard_False is returned,
-    /// Standard_True otherwise.
+    /// If there is an error, false is returned,
+    /// true otherwise.
     /// If a NULL Filename is specified, DlOpen returns a handle
     /// for the main	executable, which allows access to dynamic
     /// symbols in the running program.
@@ -13283,7 +7412,7 @@ impl SharedLibrary {
 // From OSD_Signal.hxx
 // ========================
 
-/// **Source:** `OSD_Signal.hxx`:34 - `OSD_Signal`
+/// **Source:** `OSD_Signal.hxx`:30 - `OSD_Signal`
 pub use crate::ffi_types::OSD_Signal as Signal;
 
 unsafe impl crate::CppDeletable for Signal {
@@ -13295,16 +7424,7 @@ unsafe impl crate::CppDeletable for Signal {
 }
 
 impl Signal {
-    /// **Source:** `OSD_Signal.hxx`:34 - `OSD_Signal::OSD_Signal()`
-    pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKernel::OSD_Signal_ctor(),
-            ))
-        }
-    }
-
-    /// **Source:** `OSD_Signal.hxx`:34 - `OSD_Signal::OSD_Signal()`
+    /// **Source:** `OSD_Signal.hxx`:30 - `OSD_Signal::OSD_Signal()`
     pub fn new_charptr(theMessage: &str) -> crate::OwnedPtr<Self> {
         let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
         unsafe {
@@ -13314,7 +7434,7 @@ impl Signal {
         }
     }
 
-    /// **Source:** `OSD_Signal.hxx`:34 - `OSD_Signal::OSD_Signal()`
+    /// **Source:** `OSD_Signal.hxx`:30 - `OSD_Signal::OSD_Signal()`
     pub fn new_charptr2(theMessage: &str, theStackTrace: &str) -> crate::OwnedPtr<Self> {
         let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
         let c_theStackTrace = std::ffi::CString::new(theStackTrace).unwrap();
@@ -13328,75 +7448,15 @@ impl Signal {
         }
     }
 
-    /// **Source:** `OSD_Signal.hxx`:34 - `OSD_Signal::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
-        unsafe {
-            &*(crate::check_result(crate::ffi_extern_TKernel::OSD_Signal_dynamic_type(
-                self as *const Self,
-            )))
-        }
-    }
-
-    /// **Source:** `OSD_Signal.hxx`:34 - `OSD_Signal::Raise()`
-    pub fn raise_charptr(theMessage: &str) {
-        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKernel::OSD_Signal_raise_charptr(c_theMessage.as_ptr())
-        })
-    }
-
-    /// **Source:** `OSD_Signal.hxx`:34 - `OSD_Signal::Raise()`
-    pub fn raise_sstream(theMessage: &mut crate::ffi_types::Standard_SStream) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKernel::OSD_Signal_raise_sstream(theMessage)
-        })
-    }
-
-    /// **Source:** `OSD_Signal.hxx`:34 - `OSD_Signal::NewInstance()`
-    pub fn new_instance_charptr(
-        theMessage: &str,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleOSDSignal> {
-        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKernel::OSD_Signal_new_instance_charptr(c_theMessage.as_ptr()),
-            ))
-        }
-    }
-
-    /// **Source:** `OSD_Signal.hxx`:34 - `OSD_Signal::NewInstance()`
-    pub fn new_instance_charptr2(
-        theMessage: &str,
-        theStackTrace: &str,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleOSDSignal> {
-        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
-        let c_theStackTrace = std::ffi::CString::new(theStackTrace).unwrap();
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKernel::OSD_Signal_new_instance_charptr2(
-                    c_theMessage.as_ptr(),
-                    c_theStackTrace.as_ptr(),
-                ),
-            ))
-        }
-    }
-
-    /// **Source:** `OSD_Signal.hxx`:34 - `OSD_Signal::get_type_name()`
-    pub fn get_type_name() -> std::string::String {
+    /// **Source:** `OSD_Signal.hxx`:30 - `OSD_Signal::ExceptionType()`
+    pub fn exception_type(&self) -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi_extern_TKernel::OSD_Signal_get_type_name(),
+                crate::ffi_extern_TKernel::OSD_Signal_exception_type(self as *const Self),
             ))
         }
         .to_string_lossy()
         .into_owned()
-    }
-
-    /// **Source:** `OSD_Signal.hxx`:34 - `OSD_Signal::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
-        unsafe {
-            &*(crate::check_result(crate::ffi_extern_TKernel::OSD_Signal_get_type_descriptor()))
-        }
     }
 
     /// Upcast to Standard_Failure
@@ -13417,309 +7477,11 @@ impl Signal {
         }
     }
 
-    /// Upcast to Standard_Transient
-    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        unsafe {
-            &*crate::check_result(crate::ffi_extern_TKernel::OSD_Signal_as_Standard_Transient(
-                self as *const Self,
-            ))
-        }
-    }
-
-    /// Upcast to Standard_Transient (mutable)
-    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        unsafe {
-            &mut *crate::check_result(
-                crate::ffi_extern_TKernel::OSD_Signal_as_Standard_Transient_mut(self as *mut Self),
-            )
-        }
-    }
-
-    /// Wrap in a Handle (reference-counted smart pointer)
-    pub fn to_handle(
-        obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleOSDSignal> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKernel::OSD_Signal_to_handle(obj.into_raw()),
-            ))
-        }
-    }
-
-    /// Inherited: **Source:** `Standard_Failure.hxx`:58 - `Standard_Failure::Print()`
+    /// Inherited: **Source:** `Standard_Failure.hxx`:73 - `Standard_Failure::Print()`
     pub fn print(&self, theStream: &mut crate::ffi_types::Standard_OStream) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKernel::OSD_Signal_inherited_Print(self as *const Self, theStream)
         })
-    }
-
-    /// Inherited: **Source:** `Standard_Failure.hxx`:72 - `Standard_Failure::Reraise()`
-    pub fn reraise(&mut self) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKernel::OSD_Signal_inherited_Reraise(self as *mut Self)
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Failure.hxx`:112 - `Standard_Failure::Jump()`
-    pub fn jump(&mut self) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKernel::OSD_Signal_inherited_Jump(self as *mut Self)
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKernel::OSD_Signal_inherited_IsInstance(self as *const Self, theType)
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKernel::OSD_Signal_inherited_IsKind(self as *const Self, theType)
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
-    pub fn this(&self) -> Option<&crate::standard::Transient> {
-        {
-            let __val = crate::check_result(unsafe {
-                crate::ffi_extern_TKernel::OSD_Signal_inherited_This(self as *const Self)
-            });
-            if __val.is_null() {
-                None
-            } else {
-                Some(unsafe { &*__val })
-            }
-        }
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
-    pub fn get_ref_count(&self) -> i32 {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKernel::OSD_Signal_inherited_GetRefCount(self as *const Self)
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
-    pub fn increment_ref_counter(&mut self) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKernel::OSD_Signal_inherited_IncrementRefCounter(self as *mut Self)
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
-    pub fn decrement_ref_counter(&mut self) -> i32 {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKernel::OSD_Signal_inherited_DecrementRefCounter(self as *mut Self)
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
-    pub fn delete(&self) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKernel::OSD_Signal_inherited_Delete(self as *const Self)
-        })
-    }
-}
-
-pub use crate::ffi_types::HandleOSDSignal;
-
-unsafe impl crate::CppDeletable for HandleOSDSignal {
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            crate::ffi_extern_TKernel::HandleOSDSignal_destructor(ptr);
-        }
-    }
-}
-
-unsafe impl crate::CppCopyable for HandleOSDSignal {
-    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        unsafe { crate::check_result(crate::ffi_extern_TKernel::HandleOSDSignal_clone(ptr)) }
-    }
-}
-
-impl HandleOSDSignal {
-    /// Returns `true` if this Handle is null (doesn't point to any object).
-    pub fn is_null(&self) -> bool {
-        unsafe { crate::ffi_extern_TKernel::HandleOSDSignal_is_null(self as *const Self) }
-    }
-
-    /// Dereference this Handle to access the underlying OSD_Signal
-    pub fn get(&self) -> &crate::ffi_types::OSD_Signal {
-        unsafe {
-            &*crate::check_result(crate::ffi_extern_TKernel::HandleOSDSignal_get(
-                self as *const Self,
-            ))
-        }
-    }
-
-    /// Dereference this Handle to mutably access the underlying OSD_Signal
-    pub fn get_mut(&mut self) -> &mut crate::ffi_types::OSD_Signal {
-        unsafe {
-            &mut *crate::check_result(crate::ffi_extern_TKernel::HandleOSDSignal_get_mut(
-                self as *mut Self,
-            ))
-        }
-    }
-
-    /// Upcast Handle<OSD_Signal> to Handle<Standard_Failure>
-    pub fn to_handle_failure(&self) -> crate::OwnedPtr<crate::ffi_types::HandleStandardFailure> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKernel::HandleOSDSignal_to_HandleStandardFailure(
-                    self as *const Self,
-                ),
-            ))
-        }
-    }
-
-    /// Upcast Handle<OSD_Signal> to Handle<Standard_Transient>
-    pub fn to_handle_transient(
-        &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKernel::HandleOSDSignal_to_HandleStandardTransient(
-                    self as *const Self,
-                ),
-            ))
-        }
-    }
-
-    /// Downcast Handle<OSD_Signal> to Handle<OSD_SIGBUS>
-    ///
-    /// Returns `None` if the handle does not point to a `OSD_SIGBUS` (or subclass).
-    pub fn downcast_to_sigbus(&self) -> Option<crate::OwnedPtr<crate::ffi_types::HandleOSDSIGBUS>> {
-        let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKernel::HandleOSDSignal_downcast_to_HandleOSDSIGBUS(
-                self as *const Self,
-            )
-        });
-        if __val.is_null() {
-            None
-        } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(__val) })
-        }
-    }
-
-    /// Downcast Handle<OSD_Signal> to Handle<OSD_SIGHUP>
-    ///
-    /// Returns `None` if the handle does not point to a `OSD_SIGHUP` (or subclass).
-    pub fn downcast_to_sighup(&self) -> Option<crate::OwnedPtr<crate::ffi_types::HandleOSDSIGHUP>> {
-        let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKernel::HandleOSDSignal_downcast_to_HandleOSDSIGHUP(
-                self as *const Self,
-            )
-        });
-        if __val.is_null() {
-            None
-        } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(__val) })
-        }
-    }
-
-    /// Downcast Handle<OSD_Signal> to Handle<OSD_SIGILL>
-    ///
-    /// Returns `None` if the handle does not point to a `OSD_SIGILL` (or subclass).
-    pub fn downcast_to_sigill(&self) -> Option<crate::OwnedPtr<crate::ffi_types::HandleOSDSIGILL>> {
-        let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKernel::HandleOSDSignal_downcast_to_HandleOSDSIGILL(
-                self as *const Self,
-            )
-        });
-        if __val.is_null() {
-            None
-        } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(__val) })
-        }
-    }
-
-    /// Downcast Handle<OSD_Signal> to Handle<OSD_SIGINT>
-    ///
-    /// Returns `None` if the handle does not point to a `OSD_SIGINT` (or subclass).
-    pub fn downcast_to_sigint(&self) -> Option<crate::OwnedPtr<crate::ffi_types::HandleOSDSIGINT>> {
-        let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKernel::HandleOSDSignal_downcast_to_HandleOSDSIGINT(
-                self as *const Self,
-            )
-        });
-        if __val.is_null() {
-            None
-        } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(__val) })
-        }
-    }
-
-    /// Downcast Handle<OSD_Signal> to Handle<OSD_SIGKILL>
-    ///
-    /// Returns `None` if the handle does not point to a `OSD_SIGKILL` (or subclass).
-    pub fn downcast_to_sigkill(
-        &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleOSDSIGKILL>> {
-        let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKernel::HandleOSDSignal_downcast_to_HandleOSDSIGKILL(
-                self as *const Self,
-            )
-        });
-        if __val.is_null() {
-            None
-        } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(__val) })
-        }
-    }
-
-    /// Downcast Handle<OSD_Signal> to Handle<OSD_SIGQUIT>
-    ///
-    /// Returns `None` if the handle does not point to a `OSD_SIGQUIT` (or subclass).
-    pub fn downcast_to_sigquit(
-        &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleOSDSIGQUIT>> {
-        let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKernel::HandleOSDSignal_downcast_to_HandleOSDSIGQUIT(
-                self as *const Self,
-            )
-        });
-        if __val.is_null() {
-            None
-        } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(__val) })
-        }
-    }
-
-    /// Downcast Handle<OSD_Signal> to Handle<OSD_SIGSEGV>
-    ///
-    /// Returns `None` if the handle does not point to a `OSD_SIGSEGV` (or subclass).
-    pub fn downcast_to_sigsegv(
-        &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleOSDSIGSEGV>> {
-        let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKernel::HandleOSDSignal_downcast_to_HandleOSDSIGSEGV(
-                self as *const Self,
-            )
-        });
-        if __val.is_null() {
-            None
-        } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(__val) })
-        }
-    }
-
-    /// Downcast Handle<OSD_Signal> to Handle<OSD_SIGSYS>
-    ///
-    /// Returns `None` if the handle does not point to a `OSD_SIGSYS` (or subclass).
-    pub fn downcast_to_sigsys(&self) -> Option<crate::OwnedPtr<crate::ffi_types::HandleOSDSIGSYS>> {
-        let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKernel::HandleOSDSignal_downcast_to_HandleOSDSIGSYS(
-                self as *const Self,
-            )
-        });
-        if __val.is_null() {
-            None
-        } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(__val) })
-        }
     }
 }
 
@@ -13789,13 +7551,13 @@ impl Thread {
     /// specifies size of the stack to be allocated for the thread
     /// (by default - the same as for the current executable).
     /// Returns True if thread started successfully
-    pub unsafe fn run(&mut self, data: *mut std::ffi::c_void, WNTStackSize: i32) -> bool {
+    pub fn run(&mut self, data: *mut std::ffi::c_void, WNTStackSize: i32) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKernel::OSD_Thread_run(self as *mut Self, data, WNTStackSize)
         })
     }
 
-    /// **Source:** `OSD_Thread.hxx`:80 - `OSD_Thread::Detach()`
+    /// **Source:** `OSD_Thread.hxx`:79 - `OSD_Thread::Detach()`
     /// Detaches the execution thread from this Thread object,
     /// so that it cannot be waited.
     /// Note that mechanics of this operation is different on
@@ -13809,7 +7571,7 @@ impl Thread {
         })
     }
 
-    /// **Source:** `OSD_Thread.hxx`:83 - `OSD_Thread::Wait()`
+    /// **Source:** `OSD_Thread.hxx`:82 - `OSD_Thread::Wait()`
     /// Waits till the thread finishes execution.
     pub fn wait(&mut self) -> bool {
         crate::check_result(unsafe {
@@ -13817,7 +7579,7 @@ impl Thread {
         })
     }
 
-    /// **Source:** `OSD_Thread.hxx`:98 - `OSD_Thread::Wait()`
+    /// **Source:** `OSD_Thread.hxx`:97 - `OSD_Thread::Wait()`
     /// Wait till the thread finishes execution.
     /// Returns True if wait was successful, False in case of error.
     ///
@@ -13827,23 +7589,23 @@ impl Thread {
     /// Note however that it is advisable not to rely upon returned result
     /// value, as it is not always the value actually returned by the thread
     /// function. In addition, on Windows it is converted via DWORD.
-    pub unsafe fn wait_address(&mut self, theResult: &mut *mut std::ffi::c_void) -> bool {
+    pub unsafe fn wait_voidptr(&mut self, theResult: &mut *mut std::ffi::c_void) -> bool {
         crate::check_result(unsafe {
-            crate::ffi_extern_TKernel::OSD_Thread_wait_address(self as *mut Self, theResult)
+            crate::ffi_extern_TKernel::OSD_Thread_wait_voidptr(self as *mut Self, theResult)
         })
     }
 
-    /// **Source:** `OSD_Thread.hxx`:103 - `OSD_Thread::Wait()`
+    /// **Source:** `OSD_Thread.hxx`:102 - `OSD_Thread::Wait()`
     /// Waits for some time and if the thread is finished,
     /// it returns the result.
     /// The function returns false if the thread is not finished yet.
-    pub unsafe fn wait_int_address(
+    pub unsafe fn wait_int_voidptr(
         &mut self,
         time: i32,
         theResult: &mut *mut std::ffi::c_void,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi_extern_TKernel::OSD_Thread_wait_int_address(
+            crate::ffi_extern_TKernel::OSD_Thread_wait_int_voidptr(
                 self as *mut Self,
                 time,
                 theResult,
@@ -13851,7 +7613,7 @@ impl Thread {
         })
     }
 
-    /// **Source:** `OSD_Thread.hxx`:107 - `OSD_Thread::GetId()`
+    /// **Source:** `OSD_Thread.hxx`:106 - `OSD_Thread::GetId()`
     /// Returns ID of the currently controlled thread ID,
     /// or 0 if no thread is run
     pub fn get_id(&self) -> std::ffi::c_ulong {
@@ -13860,7 +7622,7 @@ impl Thread {
         })
     }
 
-    /// **Source:** `OSD_Thread.hxx`:110 - `OSD_Thread::Current()`
+    /// **Source:** `OSD_Thread.hxx`:109 - `OSD_Thread::Current()`
     /// Auxiliary: returns ID of the current thread
     pub fn current() -> std::ffi::c_ulong {
         crate::check_result(unsafe { crate::ffi_extern_TKernel::OSD_Thread_current() })
@@ -13885,7 +7647,7 @@ impl Thread {
 // From OSD_ThreadPool.hxx
 // ========================
 
-/// **Source:** `OSD_ThreadPool.hxx`:53 - `OSD_ThreadPool`
+/// **Source:** `OSD_ThreadPool.hxx`:56 - `OSD_ThreadPool`
 /// Class defining a thread pool for executing algorithms in multi-threaded mode.
 /// Thread pool allocates requested amount of threads and keep them alive
 /// (in sleep mode when unused) during thread pool lifetime.
@@ -13926,7 +7688,7 @@ unsafe impl crate::CppDeletable for ThreadPool {
 }
 
 impl ThreadPool {
-    /// **Source:** `OSD_ThreadPool.hxx`:69 - `OSD_ThreadPool::OSD_ThreadPool()`
+    /// **Source:** `OSD_ThreadPool.hxx`:72 - `OSD_ThreadPool::OSD_ThreadPool()`
     /// Main constructor.
     /// Application may consider specifying more threads than actually
     /// available (OSD_Parallel::NbLogicalProcessors()) and set up NbDefaultThreadsToLaunch() to a
@@ -13942,7 +7704,7 @@ impl ThreadPool {
         }
     }
 
-    /// **Source:** `OSD_ThreadPool.hxx`:69 - `OSD_ThreadPool::OSD_ThreadPool()`
+    /// **Source:** `OSD_ThreadPool.hxx`:72 - `OSD_ThreadPool::OSD_ThreadPool()`
     /// Main constructor.
     /// Application may consider specifying more threads than actually
     /// available (OSD_Parallel::NbLogicalProcessors()) and set up NbDefaultThreadsToLaunch() to a
@@ -13954,8 +7716,8 @@ impl ThreadPool {
         Self::new_int(-1)
     }
 
-    /// **Source:** `OSD_ThreadPool.hxx`:55 - `OSD_ThreadPool::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `OSD_ThreadPool.hxx`:58 - `OSD_ThreadPool::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKernel::OSD_ThreadPool_dynamic_type(
                 self as *const Self,
@@ -13963,7 +7725,7 @@ impl ThreadPool {
         }
     }
 
-    /// **Source:** `OSD_ThreadPool.hxx`:75 - `OSD_ThreadPool::HasThreads()`
+    /// **Source:** `OSD_ThreadPool.hxx`:78 - `OSD_ThreadPool::HasThreads()`
     /// Return TRUE if at least 2 threads are available (including self-thread).
     pub fn has_threads(&self) -> bool {
         crate::check_result(unsafe {
@@ -13971,7 +7733,7 @@ impl ThreadPool {
         })
     }
 
-    /// **Source:** `OSD_ThreadPool.hxx`:78 - `OSD_ThreadPool::LowerThreadIndex()`
+    /// **Source:** `OSD_ThreadPool.hxx`:81 - `OSD_ThreadPool::LowerThreadIndex()`
     /// Return the lower thread index.
     pub fn lower_thread_index(&self) -> i32 {
         crate::check_result(unsafe {
@@ -13979,7 +7741,7 @@ impl ThreadPool {
         })
     }
 
-    /// **Source:** `OSD_ThreadPool.hxx`:81 - `OSD_ThreadPool::UpperThreadIndex()`
+    /// **Source:** `OSD_ThreadPool.hxx`:84 - `OSD_ThreadPool::UpperThreadIndex()`
     /// Return the upper thread index (last index is reserved for self-thread).
     pub fn upper_thread_index(&self) -> i32 {
         crate::check_result(unsafe {
@@ -13987,7 +7749,7 @@ impl ThreadPool {
         })
     }
 
-    /// **Source:** `OSD_ThreadPool.hxx`:84 - `OSD_ThreadPool::NbThreads()`
+    /// **Source:** `OSD_ThreadPool.hxx`:87 - `OSD_ThreadPool::NbThreads()`
     /// Return the number of threads; >= 1.
     pub fn nb_threads(&self) -> i32 {
         crate::check_result(unsafe {
@@ -13995,7 +7757,7 @@ impl ThreadPool {
         })
     }
 
-    /// **Source:** `OSD_ThreadPool.hxx`:88 - `OSD_ThreadPool::NbDefaultThreadsToLaunch()`
+    /// **Source:** `OSD_ThreadPool.hxx`:91 - `OSD_ThreadPool::NbDefaultThreadsToLaunch()`
     /// Return maximum number of threads to be locked by a single Launcher object by default;
     /// the entire thread pool size is returned by default.
     pub fn nb_default_threads_to_launch(&self) -> i32 {
@@ -14006,7 +7768,7 @@ impl ThreadPool {
         })
     }
 
-    /// **Source:** `OSD_ThreadPool.hxx`:92 - `OSD_ThreadPool::SetNbDefaultThreadsToLaunch()`
+    /// **Source:** `OSD_ThreadPool.hxx`:95 - `OSD_ThreadPool::SetNbDefaultThreadsToLaunch()`
     /// Set maximum number of threads to be locked by a single Launcher object by default.
     /// Should be set BEFORE first usage.
     pub fn set_nb_default_threads_to_launch(&mut self, theNbThreads: i32) {
@@ -14018,7 +7780,7 @@ impl ThreadPool {
         })
     }
 
-    /// **Source:** `OSD_ThreadPool.hxx`:95 - `OSD_ThreadPool::IsInUse()`
+    /// **Source:** `OSD_ThreadPool.hxx`:98 - `OSD_ThreadPool::IsInUse()`
     /// Checks if thread pools has active consumers.
     pub fn is_in_use(&mut self) -> bool {
         crate::check_result(unsafe {
@@ -14026,7 +7788,7 @@ impl ThreadPool {
         })
     }
 
-    /// **Source:** `OSD_ThreadPool.hxx`:99 - `OSD_ThreadPool::Init()`
+    /// **Source:** `OSD_ThreadPool.hxx`:102 - `OSD_ThreadPool::Init()`
     /// Reinitialize the thread pool with a different number of threads.
     /// Should be called only with no active jobs, or exception Standard_ProgramError will be thrown!
     pub fn init(&mut self, theNbThreads: i32) {
@@ -14035,7 +7797,7 @@ impl ThreadPool {
         })
     }
 
-    /// **Source:** `OSD_ThreadPool.hxx`:55 - `OSD_ThreadPool::get_type_name()`
+    /// **Source:** `OSD_ThreadPool.hxx`:58 - `OSD_ThreadPool::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -14046,17 +7808,17 @@ impl ThreadPool {
         .into_owned()
     }
 
-    /// **Source:** `OSD_ThreadPool.hxx`:55 - `OSD_ThreadPool::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    /// **Source:** `OSD_ThreadPool.hxx`:58 - `OSD_ThreadPool::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKernel::OSD_ThreadPool_get_type_descriptor()))
         }
     }
 
-    /// **Source:** `OSD_ThreadPool.hxx`:59 - `OSD_ThreadPool::DefaultPool()`
+    /// **Source:** `OSD_ThreadPool.hxx`:62 - `OSD_ThreadPool::DefaultPool()`
     /// Return (or create) a default thread pool.
     /// Number of threads argument will be considered only when called first time.
-    pub fn default_pool(theNbThreads: i32) -> &'static crate::ffi_types::HandleOSDThreadPool {
+    pub fn default_pool(theNbThreads: i32) -> &'static crate::ffi_types::Handle_OSD_ThreadPool {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKernel::OSD_ThreadPool_default_pool(
                 theNbThreads,
@@ -14087,7 +7849,7 @@ impl ThreadPool {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleOSDThreadPool> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_OSD_ThreadPool> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKernel::OSD_ThreadPool_to_handle(obj.into_raw()),
@@ -14095,8 +7857,8 @@ impl ThreadPool {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKernel::OSD_ThreadPool_inherited_IsInstance(
                 self as *const Self,
@@ -14105,14 +7867,14 @@ impl ThreadPool {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKernel::OSD_ThreadPool_inherited_IsKind(self as *const Self, theType)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -14126,14 +7888,14 @@ impl ThreadPool {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKernel::OSD_ThreadPool_inherited_GetRefCount(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKernel::OSD_ThreadPool_inherited_IncrementRefCounter(
@@ -14142,7 +7904,7 @@ impl ThreadPool {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKernel::OSD_ThreadPool_inherited_DecrementRefCounter(
@@ -14151,7 +7913,7 @@ impl ThreadPool {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKernel::OSD_ThreadPool_inherited_Delete(self as *const Self)
@@ -14159,32 +7921,32 @@ impl ThreadPool {
     }
 }
 
-pub use crate::ffi_types::HandleOSDThreadPool;
+pub use crate::ffi_types::Handle_OSD_ThreadPool;
 
-unsafe impl crate::CppDeletable for HandleOSDThreadPool {
+unsafe impl crate::CppDeletable for Handle_OSD_ThreadPool {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKernel::HandleOSDThreadPool_destructor(ptr);
+            crate::ffi_extern_TKernel::Handle_OSD_ThreadPool_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleOSDThreadPool {
+unsafe impl crate::CppCopyable for Handle_OSD_ThreadPool {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        unsafe { crate::check_result(crate::ffi_extern_TKernel::HandleOSDThreadPool_clone(ptr)) }
+        unsafe { crate::check_result(crate::ffi_extern_TKernel::Handle_OSD_ThreadPool_clone(ptr)) }
     }
 }
 
-impl HandleOSDThreadPool {
+impl Handle_OSD_ThreadPool {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
-        unsafe { crate::ffi_extern_TKernel::HandleOSDThreadPool_is_null(self as *const Self) }
+        unsafe { crate::ffi_extern_TKernel::Handle_OSD_ThreadPool_is_null(self as *const Self) }
     }
 
     /// Dereference this Handle to access the underlying OSD_ThreadPool
     pub fn get(&self) -> &crate::ffi_types::OSD_ThreadPool {
         unsafe {
-            &*crate::check_result(crate::ffi_extern_TKernel::HandleOSDThreadPool_get(
+            &*crate::check_result(crate::ffi_extern_TKernel::Handle_OSD_ThreadPool_get(
                 self as *const Self,
             ))
         }
@@ -14193,7 +7955,7 @@ impl HandleOSDThreadPool {
     /// Dereference this Handle to mutably access the underlying OSD_ThreadPool
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::OSD_ThreadPool {
         unsafe {
-            &mut *crate::check_result(crate::ffi_extern_TKernel::HandleOSDThreadPool_get_mut(
+            &mut *crate::check_result(crate::ffi_extern_TKernel::Handle_OSD_ThreadPool_get_mut(
                 self as *mut Self,
             ))
         }
@@ -14202,10 +7964,10 @@ impl HandleOSDThreadPool {
     /// Upcast Handle<OSD_ThreadPool> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKernel::HandleOSDThreadPool_to_HandleStandardTransient(
+                crate::ffi_extern_TKernel::Handle_OSD_ThreadPool_to_Handle_Standard_Transient(
                     self as *const Self,
                 ),
             ))
@@ -14213,7 +7975,7 @@ impl HandleOSDThreadPool {
     }
 }
 
-/// **Source:** `OSD_ThreadPool.hxx`:201 - `OSD_ThreadPool_Launcher`
+/// **Source:** `OSD_ThreadPool.hxx`:204 - `OSD_ThreadPool_Launcher`
 /// Launcher object locking a subset of threads (or all threads)
 /// in a thread pool to perform parallel execution of the job.
 pub use crate::ffi_types::OSD_ThreadPool_Launcher as ThreadPool_Launcher;
@@ -14227,7 +7989,7 @@ unsafe impl crate::CppDeletable for ThreadPool_Launcher {
 }
 
 impl ThreadPool_Launcher {
-    /// **Source:** `OSD_ThreadPool.hxx`:212 - `OSD_ThreadPool_Launcher::OSD_ThreadPool_Launcher()`
+    /// **Source:** `OSD_ThreadPool.hxx`:215 - `OSD_ThreadPool_Launcher::OSD_ThreadPool_Launcher()`
     /// Lock specified number of threads from the thread pool.
     /// If thread pool is already locked by another user,
     /// Launcher will lock as many threads as possible
@@ -14250,7 +8012,7 @@ impl ThreadPool_Launcher {
         }
     }
 
-    /// **Source:** `OSD_ThreadPool.hxx`:212 - `OSD_ThreadPool_Launcher::OSD_ThreadPool_Launcher()`
+    /// **Source:** `OSD_ThreadPool.hxx`:215 - `OSD_ThreadPool_Launcher::OSD_ThreadPool_Launcher()`
     /// Lock specified number of threads from the thread pool.
     /// If thread pool is already locked by another user,
     /// Launcher will lock as many threads as possible
@@ -14263,7 +8025,7 @@ impl ThreadPool_Launcher {
         Self::new_threadpool_int(thePool, -1)
     }
 
-    /// **Source:** `OSD_ThreadPool.hxx`:219 - `OSD_ThreadPool_Launcher::HasThreads()`
+    /// **Source:** `OSD_ThreadPool.hxx`:222 - `OSD_ThreadPool_Launcher::HasThreads()`
     /// Return TRUE if at least 2 threads have been locked for parallel execution (including
     /// self-thread); otherwise, the functor will be executed within the caller thread.
     pub fn has_threads(&self) -> bool {
@@ -14272,7 +8034,7 @@ impl ThreadPool_Launcher {
         })
     }
 
-    /// **Source:** `OSD_ThreadPool.hxx`:222 - `OSD_ThreadPool_Launcher::NbThreads()`
+    /// **Source:** `OSD_ThreadPool.hxx`:225 - `OSD_ThreadPool_Launcher::NbThreads()`
     /// Return amount of locked threads; >= 1.
     pub fn nb_threads(&self) -> i32 {
         crate::check_result(unsafe {
@@ -14280,7 +8042,7 @@ impl ThreadPool_Launcher {
         })
     }
 
-    /// **Source:** `OSD_ThreadPool.hxx`:225 - `OSD_ThreadPool_Launcher::LowerThreadIndex()`
+    /// **Source:** `OSD_ThreadPool.hxx`:228 - `OSD_ThreadPool_Launcher::LowerThreadIndex()`
     /// Return the lower thread index.
     pub fn lower_thread_index(&self) -> i32 {
         crate::check_result(unsafe {
@@ -14290,7 +8052,7 @@ impl ThreadPool_Launcher {
         })
     }
 
-    /// **Source:** `OSD_ThreadPool.hxx`:228 - `OSD_ThreadPool_Launcher::UpperThreadIndex()`
+    /// **Source:** `OSD_ThreadPool.hxx`:231 - `OSD_ThreadPool_Launcher::UpperThreadIndex()`
     /// Return the upper thread index (last index is reserved for the self-thread).
     pub fn upper_thread_index(&self) -> i32 {
         crate::check_result(unsafe {
@@ -14300,7 +8062,7 @@ impl ThreadPool_Launcher {
         })
     }
 
-    /// **Source:** `OSD_ThreadPool.hxx`:248 - `OSD_ThreadPool_Launcher::Release()`
+    /// **Source:** `OSD_ThreadPool.hxx`:251 - `OSD_ThreadPool_Launcher::Release()`
     /// Release threads before Launcher destruction.
     pub fn release(&mut self) {
         crate::check_void_result(unsafe {
@@ -14319,8 +8081,8 @@ impl ThreadPool_Launcher {
 /// This function is portable and it measures ELAPSED
 /// time and CPU time in seconds and microseconds.
 /// Example: OSD_Timer aTimer;
-/// aTimer.Start();   // Start  the timers (t1).
-/// .....            // Do something.
+/// aTimer.Start();   // Start the timers (t1).
+/// .....             // Do something.
 /// aTimer.Stop();    // Stop the timers (t2).
 /// aTimer.Show();    // Give the elapsed time between t1 and t2.
 /// // Give also the process CPU time between
@@ -14397,7 +8159,7 @@ impl Timer {
     }
 
     /// **Source:** `OSD_Timer.hxx`:76 - `OSD_Timer::Show()`
-    /// Shows both the elapsed time and CPU  time on the
+    /// Shows both the elapsed time and CPU time on the
     /// output stream <OS>.
     pub fn show_ostream(&self, os: &mut crate::ffi_types::Standard_OStream) {
         crate::check_void_result(unsafe {
@@ -14407,7 +8169,7 @@ impl Timer {
 
     /// **Source:** `OSD_Timer.hxx`:80 - `OSD_Timer::Show()`
     /// returns both the elapsed time(seconds,minutes,hours)
-    /// and CPU  time.
+    /// and CPU time.
     pub fn show_real_int2_real(
         &self,
         theSeconds: &mut f64,

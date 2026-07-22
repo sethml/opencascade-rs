@@ -6,17 +6,17 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 
-/// **Source:** `Geom2dConvert.hxx`:78 - `Geom2dConvert::SplitBSplineCurve`
-/// -- Convert a curve to BSpline  by Approximation
+/// **Source:** `Geom2dConvert.hxx`:77 - `Geom2dConvert::SplitBSplineCurve`
+/// Convert a curve to BSpline by Approximation
 ///
 /// This method computes the arc of B-spline curve between the two
-/// knots FromK1 and ToK2.  If C is periodic the arc has the same
-/// orientation as C if SameOrientation = Standard_True.
-/// If C is not periodic  SameOrientation is not used for the
+/// knots FromK1 and ToK2. If C is periodic the arc has the same
+/// orientation as C if SameOrientation = true.
+/// If C is not periodic SameOrientation is not used for the
 /// computation and C is oriented from the knot fromK1 to the
 /// knot toK2.
 /// We just keep the local definition of C between the knots
-/// FromK1 and ToK2.  The returned B-spline curve has its first
+/// FromK1 and ToK2. The returned B-spline curve has its first
 /// and last knots with a multiplicity equal to degree + 1, where
 /// degree is the polynomial degree of C.
 /// The indexes of the knots FromK1 and ToK2 doesn't include the
@@ -26,16 +26,16 @@
 /// [FirstUKnotIndex, LastUKnotIndex]
 /// Raised if FromK1 = ToK2
 pub fn split_b_spline_curve_handlegeom2dbsplinecurve_int2_bool(
-    C: &crate::ffi_types::HandleGeom2dBSplineCurve,
+    C: &crate::ffi_types::Handle_Geom2d_BSplineCurve,
     FromK1: i32,
     ToK2: i32,
     SameOrientation: bool,
-) -> crate::OwnedPtr<crate::ffi_types::HandleGeom2dBSplineCurve> {
+) -> crate::OwnedPtr<crate::ffi_types::Handle_Geom2d_BSplineCurve> {
     unsafe {
         crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomBase::Geom2dConvert_split_b_spline_curve_handlegeom2dbsplinecurve_int2_bool(C, FromK1, ToK2, SameOrientation)))
     }
 }
-/// **Source:** `Geom2dConvert.hxx`:99 - `Geom2dConvert::SplitBSplineCurve`
+/// **Source:** `Geom2dConvert.hxx`:98 - `Geom2dConvert::SplitBSplineCurve`
 /// This function computes the segment of B-spline curve between the
 /// parametric values FromU1, ToU2.
 /// If C is periodic the arc has the same orientation as C if
@@ -44,7 +44,7 @@ pub fn split_b_spline_curve_handlegeom2dbsplinecurve_int2_bool(
 /// computation and C is oriented fromU1 toU2.
 /// If U1 and U2 and two parametric values we consider that
 /// U1 = U2 if Abs (U1 - U2) <= ParametricTolerance and
-/// ParametricTolerance must  be greater or equal to Resolution
+/// ParametricTolerance must be greater or equal to Resolution
 /// from package gp.
 ///
 /// Raised if FromU1 or ToU2 are out of the parametric bounds of the
@@ -52,22 +52,22 @@ pub fn split_b_spline_curve_handlegeom2dbsplinecurve_int2_bool(
 /// Raised if Abs (FromU1 - ToU2) <= ParametricTolerance
 /// Raised if ParametricTolerance < Resolution from gp.
 pub fn split_b_spline_curve_handlegeom2dbsplinecurve_real3_bool(
-    C: &crate::ffi_types::HandleGeom2dBSplineCurve,
+    C: &crate::ffi_types::Handle_Geom2d_BSplineCurve,
     FromU1: f64,
     ToU2: f64,
     ParametricTolerance: f64,
     SameOrientation: bool,
-) -> crate::OwnedPtr<crate::ffi_types::HandleGeom2dBSplineCurve> {
+) -> crate::OwnedPtr<crate::ffi_types::Handle_Geom2d_BSplineCurve> {
     unsafe {
         crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomBase::Geom2dConvert_split_b_spline_curve_handlegeom2dbsplinecurve_real3_bool(C, FromU1, ToU2, ParametricTolerance, SameOrientation)))
     }
 }
-/// **Source:** `Geom2dConvert.hxx`:170 - `Geom2dConvert::CurveToBSplineCurve`
+/// **Source:** `Geom2dConvert.hxx`:169 - `Geom2dConvert::CurveToBSplineCurve`
 /// This function converts a non infinite curve from
-/// Geom into a  B-spline curve.  C must  be  an ellipse or a
-/// circle or a trimmed conic  or a trimmed  line or a Bezier
-/// curve or a trimmed  Bezier curve or a  BSpline curve or  a
-/// trimmed BSpline   curve  or an  Offset  curve or a  trimmed
+/// Geom into a B-spline curve. C must be an ellipse or a
+/// circle or a trimmed conic or a trimmed line or a Bezier
+/// curve or a trimmed Bezier curve or a BSpline curve or a
+/// trimmed BSpline curve or an Offset curve or a trimmed
 /// Offset curve.
 /// The returned B-spline is not periodic except if C is a
 /// Circle or an Ellipse.
@@ -92,9 +92,9 @@ pub fn split_b_spline_curve_handlegeom2dbsplinecurve_real3_bool(
 ///
 /// t = tan (theta/2)
 ///
-/// with TgtThetaOver2  the routine will compute the number of spans
+/// with TgtThetaOver2 the routine will compute the number of spans
 /// using the rule num_spans = [ (ULast - UFirst) / 1.2 ] + 1
-/// with TgtThetaOver2_N, N  spans will be forced: an error will
+/// with TgtThetaOver2_N, N spans will be forced: an error will
 /// be raized if (ULast - UFirst) >= PI and N = 1,
 /// ULast - UFirst >= 2 PI and N = 2
 ///
@@ -128,53 +128,53 @@ pub fn split_b_spline_curve_handlegeom2dbsplinecurve_real3_bool(
 /// trimmed curve (this method of parameterization
 /// cannot be used to convert a quasi-complete circle or ellipse).
 pub fn curve_to_b_spline_curve_handlegeom2dcurve_parameterisationtype(
-    C: &crate::ffi_types::HandleGeom2dCurve,
+    C: &crate::ffi_types::Handle_Geom2d_Curve,
     Parameterisation: crate::convert::ParameterisationType,
-) -> crate::OwnedPtr<crate::ffi_types::HandleGeom2dBSplineCurve> {
+) -> crate::OwnedPtr<crate::ffi_types::Handle_Geom2d_BSplineCurve> {
     unsafe {
         crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomBase::Geom2dConvert_curve_to_b_spline_curve_handlegeom2dcurve_parameterisationtype(C, Parameterisation.into())))
     }
 }
-/// **Source:** `Geom2dConvert.hxx`:238 - `Geom2dConvert::C0BSplineToC1BSplineCurve`
-/// This Method reduces as   far as it  is possible the
-/// multiplicities of  the  knots of  the BSpline BS.(keeping  the geometry).
+/// **Source:** `Geom2dConvert.hxx`:237 - `Geom2dConvert::C0BSplineToC1BSplineCurve`
+/// This Method reduces as far as it is possible the
+/// multiplicities of the knots of the BSpline BS.(keeping the geometry).
 /// It returns a new BSpline which could still be C0.
 /// tolerance is a geometrical tolerance
 pub fn c0b_spline_to_c1b_spline_curve_handlegeom2dbsplinecurve_real(
-    BS: &mut crate::ffi_types::HandleGeom2dBSplineCurve,
+    BS: &mut crate::ffi_types::Handle_Geom2d_BSplineCurve,
     Tolerance: f64,
 ) {
     crate::check_void_result(unsafe {
         crate::ffi_extern_TKGeomBase::Geom2dConvert_c0b_spline_to_c1b_spline_curve_handlegeom2dbsplinecurve_real(BS, Tolerance)
     })
 }
-/// **Source:** `Geom2dConvert.hxx`:245 - `Geom2dConvert::C0BSplineToArrayOfC1BSplineCurve`
-/// This Method   reduces as far  as  it is possible  the
-/// multiplicities  of  the knots  of the BSpline  BS.(keeping the geometry).
+/// **Source:** `Geom2dConvert.hxx`:244 - `Geom2dConvert::C0BSplineToArrayOfC1BSplineCurve`
+/// This Method reduces as far as it is possible the
+/// multiplicities of the knots of the BSpline BS.(keeping the geometry).
 /// It returns an array of BSpline C1.
 /// Tolerance is a geometrical tolerance
-pub fn c0b_spline_to_array_of_c1b_spline_curve_handlegeom2dbsplinecurve_handletcolgeom2dharray1ofbsplinecurve_real(
-    BS: &crate::ffi_types::HandleGeom2dBSplineCurve,
-    tabBS: &mut crate::ffi_types::HandleTColGeom2dHArray1OfBSplineCurve,
+pub fn c0b_spline_to_array_of_c1b_spline_curve_handlegeom2dbsplinecurve_handlencollectionharray1opencascadehandlegeom2dbsplinecurve_real(
+    BS: &crate::ffi_types::Handle_Geom2d_BSplineCurve,
+    tabBS: &mut crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_Geom2d_BSplineCurve,
     Tolerance: f64,
 ) {
     crate::check_void_result(unsafe {
-        crate::ffi_extern_TKGeomBase::Geom2dConvert_c0b_spline_to_array_of_c1b_spline_curve_handlegeom2dbsplinecurve_handletcolgeom2dharray1ofbsplinecurve_real(BS, tabBS, Tolerance)
+        crate::ffi_extern_TKGeomBase::Geom2dConvert_c0b_spline_to_array_of_c1b_spline_curve_handlegeom2dbsplinecurve_handlencollectionharray1opencascadehandlegeom2dbsplinecurve_real(BS, tabBS, Tolerance)
     })
 }
-/// **Source:** `Geom2dConvert.hxx`:254 - `Geom2dConvert::C0BSplineToArrayOfC1BSplineCurve`
-/// This Method   reduces as far  as  it is possible  the
-/// multiplicities  of  the knots  of the BSpline  BS.(keeping the geometry).
+/// **Source:** `Geom2dConvert.hxx`:253 - `Geom2dConvert::C0BSplineToArrayOfC1BSplineCurve`
+/// This Method reduces as far as it is possible the
+/// multiplicities of the knots of the BSpline BS.(keeping the geometry).
 /// It returns an array of BSpline C1.
 /// tolerance is a geometrical tolerance
-pub fn c0b_spline_to_array_of_c1b_spline_curve_handlegeom2dbsplinecurve_handletcolgeom2dharray1ofbsplinecurve_real2(
-    BS: &crate::ffi_types::HandleGeom2dBSplineCurve,
-    tabBS: &mut crate::ffi_types::HandleTColGeom2dHArray1OfBSplineCurve,
+pub fn c0b_spline_to_array_of_c1b_spline_curve_handlegeom2dbsplinecurve_handlencollectionharray1opencascadehandlegeom2dbsplinecurve_real2(
+    BS: &crate::ffi_types::Handle_Geom2d_BSplineCurve,
+    tabBS: &mut crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_Geom2d_BSplineCurve,
     AngularTolerance: f64,
     Tolerance: f64,
 ) {
     crate::check_void_result(unsafe {
-        crate::ffi_extern_TKGeomBase::Geom2dConvert_c0b_spline_to_array_of_c1b_spline_curve_handlegeom2dbsplinecurve_handletcolgeom2dharray1ofbsplinecurve_real2(BS, tabBS, AngularTolerance, Tolerance)
+        crate::ffi_extern_TKGeomBase::Geom2dConvert_c0b_spline_to_array_of_c1b_spline_curve_handlegeom2dbsplinecurve_handlencollectionharray1opencascadehandlegeom2dbsplinecurve_real2(BS, tabBS, AngularTolerance, Tolerance)
     })
 }
 
@@ -182,7 +182,7 @@ pub fn c0b_spline_to_array_of_c1b_spline_curve_handlegeom2dbsplinecurve_handletc
 // From Geom2dConvert_ApproxArcsSegments.hxx
 // ========================
 
-/// **Source:** `Geom2dConvert_ApproxArcsSegments.hxx`:26 - `Geom2dConvert_ApproxArcsSegments`
+/// **Source:** `Geom2dConvert_ApproxArcsSegments.hxx`:27 - `Geom2dConvert_ApproxArcsSegments`
 /// Approximation of a free-form curve by a sequence of arcs+segments.
 pub use crate::ffi_types::Geom2dConvert_ApproxArcsSegments as ApproxArcsSegments;
 
@@ -195,7 +195,7 @@ unsafe impl crate::CppDeletable for ApproxArcsSegments {
 }
 
 impl ApproxArcsSegments {
-    /// **Source:** `Geom2dConvert_ApproxArcsSegments.hxx`:39 - `Geom2dConvert_ApproxArcsSegments::Geom2dConvert_ApproxArcsSegments()`
+    /// **Source:** `Geom2dConvert_ApproxArcsSegments.hxx`:40 - `Geom2dConvert_ApproxArcsSegments::Geom2dConvert_ApproxArcsSegments()`
     /// Constructor.
     pub fn new_curve2d_real2(
         theCurve: &crate::adaptor2d::Curve2d,
@@ -212,19 +212,14 @@ impl ApproxArcsSegments {
             ))
         }
     }
-
-    /// **Source:** `Geom2dConvert_ApproxArcsSegments.hxx`:44 - `Geom2dConvert_ApproxArcsSegments::GetResult()`
-    /// Get the result curve after approximation.
-    pub fn get_result(&self) -> &crate::ffi_types::TColGeom2d_SequenceOfCurve {
-        unsafe {
-            &*(crate::check_result(
-                crate::ffi_extern_TKGeomBase::Geom2dConvert_ApproxArcsSegments_get_result(
-                    self as *const Self,
-                ),
-            ))
-        }
-    }
 }
+
+// ── Skipped symbols for ApproxArcsSegments (1 total) ──
+// SKIPPED: **Source:** `Geom2dConvert_ApproxArcsSegments.hxx`:45 - `Geom2dConvert_ApproxArcsSegments::GetResult`
+//   method: Get the result curve after approximation.
+//   Reason: has unbindable types: return: unresolved template type (NCollection_Sequence<occ::handle<Geom2d_Curve>> const&)
+//   // pub fn get_result(&self) -> /* NCollection_Sequence<occ::handle<Geom2d_Curve>> const& */;
+//
 
 // ========================
 // From Geom2dConvert_ApproxCurve.hxx
@@ -253,7 +248,7 @@ impl ApproxCurve {
     /// -   the highest degree MaxDegree which the
     /// polynomial defining the BSpline is allowed to have.
     pub fn new_handlegeom2dcurve_real_shape_int2(
-        Curve: &crate::ffi_types::HandleGeom2dCurve,
+        Curve: &crate::ffi_types::Handle_Geom2d_Curve,
         Tol2d: f64,
         Order: crate::geom_abs::Shape,
         MaxSegments: i32,
@@ -273,7 +268,7 @@ impl ApproxCurve {
     /// -   the highest degree MaxDegree which the
     /// polynomial defining the BSpline is allowed to have.
     pub fn new_handleadaptor2dcurve2d_real_shape_int2(
-        Curve: &crate::ffi_types::HandleAdaptor2dCurve2d,
+        Curve: &crate::ffi_types::Handle_Adaptor2d_Curve2d,
         Tol2d: f64,
         Order: crate::geom_abs::Shape,
         MaxSegments: i32,
@@ -287,7 +282,7 @@ impl ApproxCurve {
     /// **Source:** `Geom2dConvert_ApproxCurve.hxx`:62 - `Geom2dConvert_ApproxCurve::Curve()`
     /// Returns the 2D BSpline curve resulting from the
     /// approximation algorithm.
-    pub fn curve(&self) -> crate::OwnedPtr<crate::ffi_types::HandleGeom2dBSplineCurve> {
+    pub fn curve(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_Geom2d_BSplineCurve> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKGeomBase::Geom2dConvert_ApproxCurve_curve(self as *const Self),
@@ -296,8 +291,8 @@ impl ApproxCurve {
     }
 
     /// **Source:** `Geom2dConvert_ApproxCurve.hxx`:66 - `Geom2dConvert_ApproxCurve::IsDone()`
-    /// returns  Standard_True  if  the  approximation  has
-    /// been  done  with  within  required tolerance
+    /// returns true if the approximation has
+    /// been done with within required tolerance
     pub fn is_done(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomBase::Geom2dConvert_ApproxCurve_is_done(self as *const Self)
@@ -305,8 +300,8 @@ impl ApproxCurve {
     }
 
     /// **Source:** `Geom2dConvert_ApproxCurve.hxx`:70 - `Geom2dConvert_ApproxCurve::HasResult()`
-    /// returns  Standard_True if the approximation did come out
-    /// with a result that  is not NECESSARELY within the required tolerance
+    /// returns true if the approximation did come out
+    /// with a result that is not NECESSARELY within the required tolerance
     pub fn has_result(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomBase::Geom2dConvert_ApproxCurve_has_result(self as *const Self)
@@ -317,7 +312,7 @@ impl ApproxCurve {
     /// Returns the greatest distance between a point on the
     /// source conic and the BSpline curve resulting from the
     /// approximation. (>0 when an approximation
-    /// has  been  done, 0  if  no  approximation)
+    /// has been done, 0 if no approximation)
     pub fn max_error(&self) -> f64 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomBase::Geom2dConvert_ApproxCurve_max_error(self as *const Self)
@@ -325,7 +320,7 @@ impl ApproxCurve {
     }
 
     /// **Source:** `Geom2dConvert_ApproxCurve.hxx`:79 - `Geom2dConvert_ApproxCurve::Dump()`
-    /// Print on the stream  o  information about the object
+    /// Print on the stream o information about the object
     pub fn dump(&self, o: &mut crate::ffi_types::Standard_OStream) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomBase::Geom2dConvert_ApproxCurve_dump(self as *const Self, o)
@@ -381,7 +376,7 @@ impl BSplineCurveKnotSplitting {
     /// Exceptions
     /// Standard_RangeError if ContinuityRange is less than zero.
     pub fn new_handlegeom2dbsplinecurve_int(
-        BasisCurve: &crate::ffi_types::HandleGeom2dBSplineCurve,
+        BasisCurve: &crate::ffi_types::Handle_Geom2d_BSplineCurve,
         ContinuityRange: i32,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -421,7 +416,7 @@ impl BSplineCurveKnotSplitting {
     /// -   1, and
     /// -   the number of split points computed in this
     /// framework (as given by the function NbSplits).
-    pub fn splitting(&self, SplitValues: &mut crate::ffi_types::TColStd_Array1OfInteger) {
+    pub fn splitting(&self, SplitValues: &mut crate::ffi_types::NCollection_Array1_int) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomBase::Geom2dConvert_BSplineCurveKnotSplitting_splitting(
                 self as *const Self,
@@ -489,7 +484,7 @@ impl BSplineCurveToBezierCurve {
     /// construct each individual Bezier curve (or all Bezier curves).
     /// Note: ParametricTolerance is not used.
     pub fn new_handlegeom2dbsplinecurve(
-        BasisCurve: &crate::ffi_types::HandleGeom2dBSplineCurve,
+        BasisCurve: &crate::ffi_types::Handle_Geom2d_BSplineCurve,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomBase::Geom2dConvert_BSplineCurveToBezierCurve_ctor_handlegeom2dbsplinecurve(BasisCurve)))
@@ -502,7 +497,7 @@ impl BSplineCurveToBezierCurve {
     /// limited by the two parameter values U1 and U2
     /// for Example if there is a Knot Uk and
     /// Uk < U < Uk + ParametricTolerance/2 the last curve
-    /// corresponds to the span [Uk-1, Uk] and not to  [Uk, Uk+1]
+    /// corresponds to the span [Uk-1, Uk] and not to [Uk, Uk+1]
     /// The result consists of a series of BasisCurve arcs
     /// limited by points corresponding to knot values of the curve.
     /// Use the available interrogation functions to ascertain
@@ -514,7 +509,7 @@ impl BSplineCurveToBezierCurve {
     /// is ParametricTolerance.
     /// Raised if Abs (U2 - U1) <= ParametricTolerance.
     pub fn new_handlegeom2dbsplinecurve_real3(
-        BasisCurve: &crate::ffi_types::HandleGeom2dBSplineCurve,
+        BasisCurve: &crate::ffi_types::Handle_Geom2d_BSplineCurve,
         U1: f64,
         U2: f64,
         ParametricTolerance: f64,
@@ -537,7 +532,7 @@ impl BSplineCurveToBezierCurve {
     pub fn arc(
         &mut self,
         Index: i32,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleGeom2dBezierCurve> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Geom2d_BezierCurve> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKGeomBase::Geom2dConvert_BSplineCurveToBezierCurve_arc(
@@ -548,33 +543,12 @@ impl BSplineCurveToBezierCurve {
         }
     }
 
-    /// **Source:** `Geom2dConvert_BSplineCurveToBezierCurve.hxx`:99 - `Geom2dConvert_BSplineCurveToBezierCurve::Arcs()`
-    /// Constructs all the Bezier curves whose data is
-    /// computed by this algorithm and loads these curves
-    /// into the Curves table.
-    /// The Bezier curves have the same orientation as the
-    /// BSpline curve analyzed in this framework.
-    /// Exceptions
-    /// Standard_DimensionError if the Curves array was
-    /// not created with the following bounds:
-    /// -   1 , and
-    /// -   the number of adjacent Bezier arcs computed by
-    /// this algorithm (as given by the function NbArcs).
-    pub fn arcs(&mut self, Curves: &mut crate::ffi_types::TColGeom2d_Array1OfBezierCurve) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKGeomBase::Geom2dConvert_BSplineCurveToBezierCurve_arcs(
-                self as *mut Self,
-                Curves,
-            )
-        })
-    }
-
     /// **Source:** `Geom2dConvert_BSplineCurveToBezierCurve.hxx`:105 - `Geom2dConvert_BSplineCurveToBezierCurve::Knots()`
     /// This methode returns the bspline's knots associated to
     /// the converted arcs
-    /// Raises DimensionError if the length  of Curves is not equal to
-    /// NbArcs +  1
-    pub fn knots(&self, TKnots: &mut crate::ffi_types::TColStd_Array1OfReal) {
+    /// Raises DimensionError if the length of Curves is not equal to
+    /// NbArcs + 1
+    pub fn knots(&self, TKnots: &mut crate::ffi_types::NCollection_Array1_double) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomBase::Geom2dConvert_BSplineCurveToBezierCurve_knots(
                 self as *const Self,
@@ -601,6 +575,15 @@ impl BSplineCurveToBezierCurve {
     }
 }
 
+// ── Skipped symbols for BSplineCurveToBezierCurve (1 total) ──
+// SKIPPED: **Source:** `Geom2dConvert_BSplineCurveToBezierCurve.hxx`:99 - `Geom2dConvert_BSplineCurveToBezierCurve::Arcs`
+//   method: Constructs all the Bezier curves whose data is
+//   method: computed by this algorithm and loads these curves
+//   method: into the Curves table.
+//   Reason: has unbindable types: param 'Curves': unresolved template type (NCollection_Array1<occ::handle<Geom2d_BezierCurve>>&)
+//   // pub fn arcs(&mut self, Curves: /* NCollection_Array1<occ::handle<Geom2d_BezierCurve>>& */);
+//
+
 // ========================
 // From Geom2dConvert_CompCurveToBSplineCurve.hxx
 // ========================
@@ -619,7 +602,7 @@ unsafe impl crate::CppDeletable for CompCurveToBSplineCurve {
 
 impl CompCurveToBSplineCurve {
     /// **Source:** `Geom2dConvert_CompCurveToBSplineCurve.hxx`:36 - `Geom2dConvert_CompCurveToBSplineCurve::Geom2dConvert_CompCurveToBSplineCurve()`
-    /// Initialize the algorithme
+    /// Initialize the algorithm
     /// - Parameterisation is used to convert
     pub fn new_parameterisationtype(
         Parameterisation: crate::convert::ParameterisationType,
@@ -630,10 +613,10 @@ impl CompCurveToBSplineCurve {
     }
 
     /// **Source:** `Geom2dConvert_CompCurveToBSplineCurve.hxx`:41 - `Geom2dConvert_CompCurveToBSplineCurve::Geom2dConvert_CompCurveToBSplineCurve()`
-    /// Initialize the algorithme with one curve
+    /// Initialize the algorithm with one curve
     /// - Parameterisation is used to convert
     pub fn new_handlegeom2dboundedcurve_parameterisationtype(
-        BasisCurve: &crate::ffi_types::HandleGeom2dBoundedCurve,
+        BasisCurve: &crate::ffi_types::Handle_Geom2d_BoundedCurve,
         Parameterisation: crate::convert::ParameterisationType,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -649,7 +632,7 @@ impl CompCurveToBSplineCurve {
     /// After is useful if BasisCurve is a closed curve .
     pub fn add(
         &mut self,
-        NewCurve: &crate::ffi_types::HandleGeom2dBoundedCurve,
+        NewCurve: &crate::ffi_types::Handle_Geom2d_BoundedCurve,
         Tolerance: f64,
         After: bool,
     ) -> bool {
@@ -664,7 +647,7 @@ impl CompCurveToBSplineCurve {
     }
 
     /// **Source:** `Geom2dConvert_CompCurveToBSplineCurve.hxx`:54 - `Geom2dConvert_CompCurveToBSplineCurve::BSplineCurve()`
-    pub fn b_spline_curve(&self) -> crate::OwnedPtr<crate::ffi_types::HandleGeom2dBSplineCurve> {
+    pub fn b_spline_curve(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_Geom2d_BSplineCurve> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKGeomBase::Geom2dConvert_CompCurveToBSplineCurve_b_spline_curve(

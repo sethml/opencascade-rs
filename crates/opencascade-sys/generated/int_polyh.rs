@@ -41,7 +41,7 @@ impl PointNormal {
 
 /// **Source:** `IntPolyh_Couple.hxx`:32 - `IntPolyh_Couple`
 /// The class represents the couple of indices with additional
-/// characteristics such as analyzed flag and an angle.<br>
+/// characteristics such as analyzed flag and an angle.
 /// In IntPolyh_MaillageAffinage algorithm the class is used as a
 /// couple of interfering triangles with the intersection angle.
 pub use crate::ffi_types::IntPolyh_Couple as Couple;
@@ -89,7 +89,7 @@ impl Couple {
         Self::new_int2_real(theTriangle1, theTriangle2, -2.0)
     }
 
-    /// **Source:** `IntPolyh_Couple.hxx`:58 - `IntPolyh_Couple::FirstValue()`
+    /// **Source:** `IntPolyh_Couple.hxx`:56 - `IntPolyh_Couple::FirstValue()`
     /// Returns the first index
     pub fn first_value(&self) -> i32 {
         crate::check_result(unsafe {
@@ -97,7 +97,7 @@ impl Couple {
         })
     }
 
-    /// **Source:** `IntPolyh_Couple.hxx`:61 - `IntPolyh_Couple::SecondValue()`
+    /// **Source:** `IntPolyh_Couple.hxx`:59 - `IntPolyh_Couple::SecondValue()`
     /// Returns the second index
     pub fn second_value(&self) -> i32 {
         crate::check_result(unsafe {
@@ -105,7 +105,7 @@ impl Couple {
         })
     }
 
-    /// **Source:** `IntPolyh_Couple.hxx`:64 - `IntPolyh_Couple::IsAnalyzed()`
+    /// **Source:** `IntPolyh_Couple.hxx`:62 - `IntPolyh_Couple::IsAnalyzed()`
     /// Returns TRUE if the couple has been analyzed
     pub fn is_analyzed(&self) -> bool {
         crate::check_result(unsafe {
@@ -113,7 +113,7 @@ impl Couple {
         })
     }
 
-    /// **Source:** `IntPolyh_Couple.hxx`:67 - `IntPolyh_Couple::Angle()`
+    /// **Source:** `IntPolyh_Couple.hxx`:65 - `IntPolyh_Couple::Angle()`
     /// Returns the angle
     pub fn angle(&self) -> f64 {
         crate::check_result(unsafe {
@@ -121,7 +121,7 @@ impl Couple {
         })
     }
 
-    /// **Source:** `IntPolyh_Couple.hxx`:70 - `IntPolyh_Couple::SetCoupleValue()`
+    /// **Source:** `IntPolyh_Couple.hxx`:68 - `IntPolyh_Couple::SetCoupleValue()`
     /// Sets the triangles
     pub fn set_couple_value(&mut self, theInd1: i32, theInd2: i32) {
         crate::check_void_result(unsafe {
@@ -133,7 +133,7 @@ impl Couple {
         })
     }
 
-    /// **Source:** `IntPolyh_Couple.hxx`:77 - `IntPolyh_Couple::SetAnalyzed()`
+    /// **Source:** `IntPolyh_Couple.hxx`:75 - `IntPolyh_Couple::SetAnalyzed()`
     /// Sets the analyzed flag
     pub fn set_analyzed(&mut self, theAnalyzed: bool) {
         crate::check_void_result(unsafe {
@@ -144,7 +144,7 @@ impl Couple {
         })
     }
 
-    /// **Source:** `IntPolyh_Couple.hxx`:80 - `IntPolyh_Couple::SetAngle()`
+    /// **Source:** `IntPolyh_Couple.hxx`:78 - `IntPolyh_Couple::SetAngle()`
     /// Sets the angle
     pub fn set_angle(&mut self, theAngle: f64) {
         crate::check_void_result(unsafe {
@@ -152,7 +152,7 @@ impl Couple {
         })
     }
 
-    /// **Source:** `IntPolyh_Couple.hxx`:83 - `IntPolyh_Couple::IsEqual()`
+    /// **Source:** `IntPolyh_Couple.hxx`:81 - `IntPolyh_Couple::IsEqual()`
     /// Returns true if the Couple is equal to <theOther>
     pub fn is_equal(&self, theOther: &Couple) -> bool {
         crate::check_result(unsafe {
@@ -160,7 +160,7 @@ impl Couple {
         })
     }
 
-    /// **Source:** `IntPolyh_Couple.hxx`:93 - `IntPolyh_Couple::Dump()`
+    /// **Source:** `IntPolyh_Couple.hxx`:91 - `IntPolyh_Couple::Dump()`
     pub fn dump(&self, v: i32) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::IntPolyh_Couple_dump(self as *const Self, v)
@@ -173,7 +173,7 @@ impl Couple {
 // ========================
 
 /// **Source:** `IntPolyh_Edge.hxx`:26 - `IntPolyh_Edge`
-/// The class represents the edge built between the two IntPolyh points.<br>
+/// The class represents the edge built between the two IntPolyh points.
 /// It is linked to two IntPolyh triangles.
 pub use crate::ffi_types::IntPolyh_Edge as Edge;
 
@@ -301,7 +301,7 @@ impl Edge {
 // From IntPolyh_Intersection.hxx
 // ========================
 
-/// **Source:** `IntPolyh_Intersection.hxx`:43 - `IntPolyh_Intersection`
+/// **Source:** `IntPolyh_Intersection.hxx`:44 - `IntPolyh_Intersection`
 /// API algorithm for intersection of two surfaces by intersection
 /// of their triangulations.
 ///
@@ -328,13 +328,13 @@ unsafe impl crate::CppDeletable for Intersection {
 }
 
 impl Intersection {
-    /// **Source:** `IntPolyh_Intersection.hxx`:51 - `IntPolyh_Intersection::IntPolyh_Intersection()`
+    /// **Source:** `IntPolyh_Intersection.hxx`:52 - `IntPolyh_Intersection::IntPolyh_Intersection()`
     /// @name Constructors
     /// Constructor for intersection of two surfaces with default parameters.
     /// Performs intersection.
     pub fn new_handleadaptor3dsurface2(
-        theS1: &crate::ffi_types::HandleAdaptor3dSurface,
-        theS2: &crate::ffi_types::HandleAdaptor3dSurface,
+        theS1: &crate::ffi_types::Handle_Adaptor3d_Surface,
+        theS2: &crate::ffi_types::Handle_Adaptor3d_Surface,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -345,17 +345,17 @@ impl Intersection {
         }
     }
 
-    /// **Source:** `IntPolyh_Intersection.hxx`:59 - `IntPolyh_Intersection::IntPolyh_Intersection()`
+    /// **Source:** `IntPolyh_Intersection.hxx`:60 - `IntPolyh_Intersection::IntPolyh_Intersection()`
     /// Constructor for intersection of two surfaces with the given
     /// size of the sampling nets:
     /// - <theNbSU1> x <theNbSV1> - for the first surface <theS1>;
     /// - <theNbSU2> x <theNbSV2> - for the second surface <theS2>.
     /// Performs intersection.
     pub fn new_handleadaptor3dsurface_int2_handleadaptor3dsurface_int2(
-        theS1: &crate::ffi_types::HandleAdaptor3dSurface,
+        theS1: &crate::ffi_types::Handle_Adaptor3d_Surface,
         theNbSU1: i32,
         theNbSV1: i32,
-        theS2: &crate::ffi_types::HandleAdaptor3dSurface,
+        theS2: &crate::ffi_types::Handle_Adaptor3d_Surface,
         theNbSU2: i32,
         theNbSV2: i32,
     ) -> crate::OwnedPtr<Self> {
@@ -364,23 +364,23 @@ impl Intersection {
         }
     }
 
-    /// **Source:** `IntPolyh_Intersection.hxx`:68 - `IntPolyh_Intersection::IntPolyh_Intersection()`
+    /// **Source:** `IntPolyh_Intersection.hxx`:69 - `IntPolyh_Intersection::IntPolyh_Intersection()`
     /// Constructor for intersection of two surfaces with the precomputed sampling.
     /// Performs intersection.
-    pub fn new_handleadaptor3dsurface_array1ofreal2_handleadaptor3dsurface_array1ofreal2(
-        theS1: &crate::ffi_types::HandleAdaptor3dSurface,
-        theUPars1: &crate::ffi_types::TColStd_Array1OfReal,
-        theVPars1: &crate::ffi_types::TColStd_Array1OfReal,
-        theS2: &crate::ffi_types::HandleAdaptor3dSurface,
-        theUPars2: &crate::ffi_types::TColStd_Array1OfReal,
-        theVPars2: &crate::ffi_types::TColStd_Array1OfReal,
+    pub fn new_handleadaptor3dsurface_arr1_double2_handleadaptor3dsurface_arr1_double2(
+        theS1: &crate::ffi_types::Handle_Adaptor3d_Surface,
+        theUPars1: &crate::ffi_types::NCollection_Array1_double,
+        theVPars1: &crate::ffi_types::NCollection_Array1_double,
+        theS2: &crate::ffi_types::Handle_Adaptor3d_Surface,
+        theUPars2: &crate::ffi_types::NCollection_Array1_double,
+        theVPars2: &crate::ffi_types::NCollection_Array1_double,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomAlgo::IntPolyh_Intersection_ctor_handleadaptor3dsurface_array1ofreal2_handleadaptor3dsurface_array1ofreal2(theS1, theUPars1, theVPars1, theS2, theUPars2, theVPars2)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomAlgo::IntPolyh_Intersection_ctor_handleadaptor3dsurface_arr1_double2_handleadaptor3dsurface_arr1_double2(theS1, theUPars1, theVPars1, theS2, theUPars2, theVPars2)))
         }
     }
 
-    /// **Source:** `IntPolyh_Intersection.hxx`:77 - `IntPolyh_Intersection::IsDone()`
+    /// **Source:** `IntPolyh_Intersection.hxx`:78 - `IntPolyh_Intersection::IsDone()`
     /// @name Getting the results
     /// Returns state of the operation
     pub fn is_done(&self) -> bool {
@@ -389,7 +389,7 @@ impl Intersection {
         })
     }
 
-    /// **Source:** `IntPolyh_Intersection.hxx`:80 - `IntPolyh_Intersection::IsParallel()`
+    /// **Source:** `IntPolyh_Intersection.hxx`:81 - `IntPolyh_Intersection::IsParallel()`
     /// Returns state of the operation
     pub fn is_parallel(&self) -> bool {
         crate::check_result(unsafe {
@@ -397,7 +397,7 @@ impl Intersection {
         })
     }
 
-    /// **Source:** `IntPolyh_Intersection.hxx`:83 - `IntPolyh_Intersection::NbSectionLines()`
+    /// **Source:** `IntPolyh_Intersection.hxx`:84 - `IntPolyh_Intersection::NbSectionLines()`
     /// Returns the number of section lines
     pub fn nb_section_lines(&self) -> i32 {
         crate::check_result(unsafe {
@@ -407,7 +407,7 @@ impl Intersection {
         })
     }
 
-    /// **Source:** `IntPolyh_Intersection.hxx`:86 - `IntPolyh_Intersection::NbPointsInLine()`
+    /// **Source:** `IntPolyh_Intersection.hxx`:87 - `IntPolyh_Intersection::NbPointsInLine()`
     /// Returns the number of points in the given line
     pub fn nb_points_in_line(&self, IndexLine: i32) -> i32 {
         crate::check_result(unsafe {
@@ -418,7 +418,7 @@ impl Intersection {
         })
     }
 
-    /// **Source:** `IntPolyh_Intersection.hxx`:92 - `IntPolyh_Intersection::NbTangentZones()`
+    /// **Source:** `IntPolyh_Intersection.hxx`:93 - `IntPolyh_Intersection::NbTangentZones()`
     pub fn nb_tangent_zones(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::IntPolyh_Intersection_nb_tangent_zones(
@@ -427,7 +427,7 @@ impl Intersection {
         })
     }
 
-    /// **Source:** `IntPolyh_Intersection.hxx`:95 - `IntPolyh_Intersection::NbPointsInTangentZone()`
+    /// **Source:** `IntPolyh_Intersection.hxx`:96 - `IntPolyh_Intersection::NbPointsInTangentZone()`
     /// Returns number of points in tangent zone
     pub fn nb_points_in_tangent_zone(&self, arg0: i32) -> i32 {
         crate::check_result(unsafe {
@@ -438,7 +438,7 @@ impl Intersection {
         })
     }
 
-    /// **Source:** `IntPolyh_Intersection.hxx`:98 - `IntPolyh_Intersection::GetLinePoint()`
+    /// **Source:** `IntPolyh_Intersection.hxx`:99 - `IntPolyh_Intersection::GetLinePoint()`
     /// Gets the parameters of the point in section line
     pub fn get_line_point(
         &self,
@@ -470,7 +470,7 @@ impl Intersection {
         })
     }
 
-    /// **Source:** `IntPolyh_Intersection.hxx`:110 - `IntPolyh_Intersection::GetTangentZonePoint()`
+    /// **Source:** `IntPolyh_Intersection.hxx`:111 - `IntPolyh_Intersection::GetTangentZonePoint()`
     /// Gets the parameters of the point in tangent zone
     pub fn get_tangent_zone_point(
         &self,
@@ -505,7 +505,7 @@ impl Intersection {
 // From IntPolyh_MaillageAffinage.hxx
 // ========================
 
-/// **Source:** `IntPolyh_MaillageAffinage.hxx`:35 - `IntPolyh_MaillageAffinage`
+/// **Source:** `IntPolyh_MaillageAffinage.hxx`:36 - `IntPolyh_MaillageAffinage`
 /// Low-level algorithm to compute intersection of the surfaces
 /// by computing the intersection of their triangulations.
 pub use crate::ffi_types::IntPolyh_MaillageAffinage as MaillageAffinage;
@@ -519,12 +519,12 @@ unsafe impl crate::CppDeletable for MaillageAffinage {
 }
 
 impl MaillageAffinage {
-    /// **Source:** `IntPolyh_MaillageAffinage.hxx`:40 - `IntPolyh_MaillageAffinage::IntPolyh_MaillageAffinage()`
+    /// **Source:** `IntPolyh_MaillageAffinage.hxx`:41 - `IntPolyh_MaillageAffinage::IntPolyh_MaillageAffinage()`
     pub fn new_handleadaptor3dsurface_int2_handleadaptor3dsurface_int3(
-        S1: &crate::ffi_types::HandleAdaptor3dSurface,
+        S1: &crate::ffi_types::Handle_Adaptor3d_Surface,
         NbSU1: i32,
         NbSV1: i32,
-        S2: &crate::ffi_types::HandleAdaptor3dSurface,
+        S2: &crate::ffi_types::Handle_Adaptor3d_Surface,
         NbSU2: i32,
         NbSV2: i32,
         PRINT: i32,
@@ -534,10 +534,10 @@ impl MaillageAffinage {
         }
     }
 
-    /// **Source:** `IntPolyh_MaillageAffinage.hxx`:48 - `IntPolyh_MaillageAffinage::IntPolyh_MaillageAffinage()`
+    /// **Source:** `IntPolyh_MaillageAffinage.hxx`:49 - `IntPolyh_MaillageAffinage::IntPolyh_MaillageAffinage()`
     pub fn new_handleadaptor3dsurface2_int(
-        S1: &crate::ffi_types::HandleAdaptor3dSurface,
-        S2: &crate::ffi_types::HandleAdaptor3dSurface,
+        S1: &crate::ffi_types::Handle_Adaptor3d_Surface,
+        S2: &crate::ffi_types::Handle_Adaptor3d_Surface,
         PRINT: i32,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -545,14 +545,14 @@ impl MaillageAffinage {
         }
     }
 
-    /// **Source:** `IntPolyh_MaillageAffinage.hxx`:54 - `IntPolyh_MaillageAffinage::MakeSampling()`
+    /// **Source:** `IntPolyh_MaillageAffinage.hxx`:55 - `IntPolyh_MaillageAffinage::MakeSampling()`
     /// Makes the sampling of the surface -
     /// Fills the arrays with the parametric values of the sampling points (triangulation nodes).
     pub fn make_sampling(
         &mut self,
         SurfID: i32,
-        theUPars: &mut crate::ffi_types::TColStd_Array1OfReal,
-        theVPars: &mut crate::ffi_types::TColStd_Array1OfReal,
+        theUPars: &mut crate::ffi_types::NCollection_Array1_double,
+        theVPars: &mut crate::ffi_types::NCollection_Array1_double,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::IntPolyh_MaillageAffinage_make_sampling(
@@ -564,7 +564,7 @@ impl MaillageAffinage {
         })
     }
 
-    /// **Source:** `IntPolyh_MaillageAffinage.hxx`:60 - `IntPolyh_MaillageAffinage::FillArrayOfPnt()`
+    /// **Source:** `IntPolyh_MaillageAffinage.hxx`:61 - `IntPolyh_MaillageAffinage::FillArrayOfPnt()`
     /// Computes points on one surface and fills an array of points;
     /// standard (default) method
     pub fn fill_array_of_pnt_int(&mut self, SurfID: i32) {
@@ -576,7 +576,7 @@ impl MaillageAffinage {
         })
     }
 
-    /// **Source:** `IntPolyh_MaillageAffinage.hxx`:69 - `IntPolyh_MaillageAffinage::FillArrayOfPnt()`
+    /// **Source:** `IntPolyh_MaillageAffinage.hxx`:70 - `IntPolyh_MaillageAffinage::FillArrayOfPnt()`
     /// isShiftFwd flag is added. The purpose is to define shift
     /// of points along normal to the surface in this point. The
     /// shift length represents maximal deflection of triangulation.
@@ -598,15 +598,15 @@ impl MaillageAffinage {
     /// Compute points on one surface and fill an array of points;
     /// If given, <theDeflTol> is the deflection tolerance of the given sampling.
     /// standard (default) method
-    pub fn fill_array_of_pnt_int_array1ofreal2_realptr(
+    pub fn fill_array_of_pnt_int_arr1_double2_realptr(
         &mut self,
         SurfID: i32,
-        Upars: &crate::ffi_types::TColStd_Array1OfReal,
-        Vpars: &crate::ffi_types::TColStd_Array1OfReal,
+        Upars: &crate::ffi_types::NCollection_Array1_double,
+        Vpars: &crate::ffi_types::NCollection_Array1_double,
         theDeflTol: Option<&f64>,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi_extern_TKGeomAlgo::IntPolyh_MaillageAffinage_fill_array_of_pnt_int_array1ofreal2_realptr(self as *mut Self, SurfID, Upars, Vpars, theDeflTol.map_or(std::ptr::null(), |r| r as *const _))
+            crate::ffi_extern_TKGeomAlgo::IntPolyh_MaillageAffinage_fill_array_of_pnt_int_arr1_double2_realptr(self as *mut Self, SurfID, Upars, Vpars, theDeflTol.map_or(std::ptr::null(), |r| r as *const _))
         })
     }
 
@@ -619,32 +619,32 @@ impl MaillageAffinage {
     /// Compute points on one surface and fill an array of points;
     /// If given, <theDeflTol> is the deflection tolerance of the given sampling.
     /// advanced method
-    pub fn fill_array_of_pnt_int_bool_array1ofreal2_realptr(
+    pub fn fill_array_of_pnt_int_bool_arr1_double2_realptr(
         &mut self,
         SurfID: i32,
         isShiftFwd: bool,
-        Upars: &crate::ffi_types::TColStd_Array1OfReal,
-        Vpars: &crate::ffi_types::TColStd_Array1OfReal,
+        Upars: &crate::ffi_types::NCollection_Array1_double,
+        Vpars: &crate::ffi_types::NCollection_Array1_double,
         theDeflTol: Option<&f64>,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi_extern_TKGeomAlgo::IntPolyh_MaillageAffinage_fill_array_of_pnt_int_bool_array1ofreal2_realptr(self as *mut Self, SurfID, isShiftFwd, Upars, Vpars, theDeflTol.map_or(std::ptr::null(), |r| r as *const _))
+            crate::ffi_extern_TKGeomAlgo::IntPolyh_MaillageAffinage_fill_array_of_pnt_int_bool_arr1_double2_realptr(self as *mut Self, SurfID, isShiftFwd, Upars, Vpars, theDeflTol.map_or(std::ptr::null(), |r| r as *const _))
         })
     }
 
     /// **Source:** `IntPolyh_MaillageAffinage.hxx`:95 - `IntPolyh_MaillageAffinage::FillArrayOfPnt()`
     /// Fills the array of points for the surface taking into account the shift
-    pub fn fill_array_of_pnt_int_bool_arrayofpointnormal_array1ofreal2_real(
+    pub fn fill_array_of_pnt_int_bool_arrayofpointnormal_arr1_double2_real(
         &mut self,
         SurfID: i32,
         isShiftFwd: bool,
         thePoints: &crate::ffi_types::IntPolyh_ArrayOfPointNormal,
-        theUPars: &crate::ffi_types::TColStd_Array1OfReal,
-        theVPars: &crate::ffi_types::TColStd_Array1OfReal,
+        theUPars: &crate::ffi_types::NCollection_Array1_double,
+        theVPars: &crate::ffi_types::NCollection_Array1_double,
         theDeflTol: f64,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi_extern_TKGeomAlgo::IntPolyh_MaillageAffinage_fill_array_of_pnt_int_bool_arrayofpointnormal_array1ofreal2_real(self as *mut Self, SurfID, isShiftFwd, thePoints, theUPars, theVPars, theDeflTol)
+            crate::ffi_extern_TKGeomAlgo::IntPolyh_MaillageAffinage_fill_array_of_pnt_int_bool_arrayofpointnormal_arr1_double2_real(self as *mut Self, SurfID, isShiftFwd, thePoints, theUPars, theVPars, theDeflTol)
         })
     }
 
@@ -658,8 +658,8 @@ impl MaillageAffinage {
     }
 
     /// **Source:** `IntPolyh_MaillageAffinage.hxx`:109 - `IntPolyh_MaillageAffinage::CommonBox()`
-    /// Compute the common box  witch is the intersection
-    /// of the two bounding boxes,  and mark the points of
+    /// Compute the common box which is the intersection
+    /// of the two bounding boxes, and mark the points of
     /// the two surfaces that are inside.
     pub fn common_box_box2_real6(
         &mut self,
@@ -699,8 +699,8 @@ impl MaillageAffinage {
     }
 
     /// **Source:** `IntPolyh_MaillageAffinage.hxx`:124 - `IntPolyh_MaillageAffinage::FillArrayOfTriangles()`
-    /// Compute triangles from the array of points, and --
-    /// mark the triangles  that use marked points by the
+    /// Compute triangles from the array of points, and
+    /// mark the triangles that use marked points by the
     /// CommonBox function.
     pub fn fill_array_of_triangles(&mut self, SurfID: i32) {
         crate::check_void_result(unsafe {
@@ -733,7 +733,7 @@ impl MaillageAffinage {
     }
 
     /// **Source:** `IntPolyh_MaillageAffinage.hxx`:134 - `IntPolyh_MaillageAffinage::ComputeDeflections()`
-    /// Compute deflection  for   all  triangles  of  one
+    /// Compute deflection for all triangles of one
     /// surface,and sort min and max of deflections
     pub fn compute_deflections(&mut self, SurfID: i32) {
         crate::check_void_result(unsafe {
@@ -745,10 +745,10 @@ impl MaillageAffinage {
     }
 
     /// **Source:** `IntPolyh_MaillageAffinage.hxx`:141 - `IntPolyh_MaillageAffinage::TrianglesDeflectionsRefinementBSB()`
-    /// Refine  both  surfaces using  BoundSortBox  as --
-    /// rejection.  The  criterions  used to refine a  --
-    /// triangle are:  The deflection The  size of the --
-    /// bounding boxes   (one surface may be   very small
+    /// Refine both surfaces using BoundSortBox as
+    /// rejection. The criterions used to refine a
+    /// triangle are: The deflection The size of the
+    /// bounding boxes (one surface may be very small
     /// compared to the other)
     pub fn triangles_deflections_refinement_bsb(&mut self) {
         crate::check_void_result(unsafe {
@@ -884,8 +884,8 @@ impl MaillageAffinage {
 
     /// **Source:** `IntPolyh_MaillageAffinage.hxx`:195 - `IntPolyh_MaillageAffinage::StartPointsChain()`
     /// Loop on the array of couples. Compute StartPoints.
-    /// Try to chain  the StartPoints into SectionLines or
-    /// put  the  point  in  the    ArrayOfTangentZones if
+    /// Try to chain the StartPoints into SectionLines or
+    /// put the point in the ArrayOfTangentZones if
     /// chaining it, is not possible.
     pub fn start_points_chain(
         &mut self,
@@ -901,8 +901,8 @@ impl MaillageAffinage {
         })
     }
 
-    /// **Source:** `IntPolyh_MaillageAffinage.hxx`:201 - `IntPolyh_MaillageAffinage::GetNextChainStartPoint()`
-    /// Mainly  used  by StartPointsChain(), this function
+    /// **Source:** `IntPolyh_MaillageAffinage.hxx`:200 - `IntPolyh_MaillageAffinage::GetNextChainStartPoint()`
+    /// Mainly used by StartPointsChain(), this function
     /// try to compute the next StartPoint.
     pub fn get_next_chain_start_point(
         &mut self,
@@ -924,7 +924,7 @@ impl MaillageAffinage {
         })
     }
 
-    /// **Source:** `IntPolyh_MaillageAffinage.hxx`:207 - `IntPolyh_MaillageAffinage::GetArrayOfPoints()`
+    /// **Source:** `IntPolyh_MaillageAffinage.hxx`:206 - `IntPolyh_MaillageAffinage::GetArrayOfPoints()`
     pub fn get_array_of_points(&self, SurfID: i32) -> &crate::ffi_types::IntPolyh_ArrayOfPoints {
         unsafe {
             &*(crate::check_result(
@@ -936,7 +936,7 @@ impl MaillageAffinage {
         }
     }
 
-    /// **Source:** `IntPolyh_MaillageAffinage.hxx`:210 - `IntPolyh_MaillageAffinage::GetArrayOfEdges()`
+    /// **Source:** `IntPolyh_MaillageAffinage.hxx`:208 - `IntPolyh_MaillageAffinage::GetArrayOfEdges()`
     pub fn get_array_of_edges(&self, SurfID: i32) -> &crate::ffi_types::IntPolyh_ArrayOfEdges {
         unsafe {
             &*(crate::check_result(
@@ -948,7 +948,7 @@ impl MaillageAffinage {
         }
     }
 
-    /// **Source:** `IntPolyh_MaillageAffinage.hxx`:212 - `IntPolyh_MaillageAffinage::GetArrayOfTriangles()`
+    /// **Source:** `IntPolyh_MaillageAffinage.hxx`:210 - `IntPolyh_MaillageAffinage::GetArrayOfTriangles()`
     pub fn get_array_of_triangles(
         &self,
         SurfID: i32,
@@ -963,7 +963,7 @@ impl MaillageAffinage {
         }
     }
 
-    /// **Source:** `IntPolyh_MaillageAffinage.hxx`:215 - `IntPolyh_MaillageAffinage::GetFinTE()`
+    /// **Source:** `IntPolyh_MaillageAffinage.hxx`:212 - `IntPolyh_MaillageAffinage::GetFinTE()`
     pub fn get_fin_te(&self, SurfID: i32) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::IntPolyh_MaillageAffinage_get_fin_te(
@@ -973,7 +973,7 @@ impl MaillageAffinage {
         })
     }
 
-    /// **Source:** `IntPolyh_MaillageAffinage.hxx`:217 - `IntPolyh_MaillageAffinage::GetFinTT()`
+    /// **Source:** `IntPolyh_MaillageAffinage.hxx`:214 - `IntPolyh_MaillageAffinage::GetFinTT()`
     pub fn get_fin_tt(&self, SurfID: i32) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::IntPolyh_MaillageAffinage_get_fin_tt(
@@ -983,7 +983,7 @@ impl MaillageAffinage {
         })
     }
 
-    /// **Source:** `IntPolyh_MaillageAffinage.hxx`:219 - `IntPolyh_MaillageAffinage::GetBox()`
+    /// **Source:** `IntPolyh_MaillageAffinage.hxx`:216 - `IntPolyh_MaillageAffinage::GetBox()`
     pub fn get_box(&self, SurfID: i32) -> crate::OwnedPtr<crate::bnd::Box> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -995,9 +995,9 @@ impl MaillageAffinage {
         }
     }
 
-    /// **Source:** `IntPolyh_MaillageAffinage.hxx`:222 - `IntPolyh_MaillageAffinage::GetCouples()`
+    /// **Source:** `IntPolyh_MaillageAffinage.hxx`:219 - `IntPolyh_MaillageAffinage::GetCouples()`
     /// This method returns list of couples of contact triangles.
-    pub fn get_couples(&mut self) -> &mut crate::ffi_types::IntPolyh_ListOfCouples {
+    pub fn get_couples(&mut self) -> &mut crate::ffi_types::NCollection_List_IntPolyh_Couple {
         unsafe {
             &mut *(crate::check_result(
                 crate::ffi_extern_TKGeomAlgo::IntPolyh_MaillageAffinage_get_couples(
@@ -1007,7 +1007,7 @@ impl MaillageAffinage {
         }
     }
 
-    /// **Source:** `IntPolyh_MaillageAffinage.hxx`:224 - `IntPolyh_MaillageAffinage::SetEnlargeZone()`
+    /// **Source:** `IntPolyh_MaillageAffinage.hxx`:221 - `IntPolyh_MaillageAffinage::SetEnlargeZone()`
     pub fn set_enlarge_zone(&mut self, EnlargeZone: bool) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::IntPolyh_MaillageAffinage_set_enlarge_zone(
@@ -1017,7 +1017,7 @@ impl MaillageAffinage {
         })
     }
 
-    /// **Source:** `IntPolyh_MaillageAffinage.hxx`:226 - `IntPolyh_MaillageAffinage::GetEnlargeZone()`
+    /// **Source:** `IntPolyh_MaillageAffinage.hxx`:223 - `IntPolyh_MaillageAffinage::GetEnlargeZone()`
     pub fn get_enlarge_zone(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::IntPolyh_MaillageAffinage_get_enlarge_zone(
@@ -1026,7 +1026,7 @@ impl MaillageAffinage {
         })
     }
 
-    /// **Source:** `IntPolyh_MaillageAffinage.hxx`:229 - `IntPolyh_MaillageAffinage::GetMinDeflection()`
+    /// **Source:** `IntPolyh_MaillageAffinage.hxx`:226 - `IntPolyh_MaillageAffinage::GetMinDeflection()`
     /// returns FlecheMin
     pub fn get_min_deflection(&self, SurfID: i32) -> f64 {
         crate::check_result(unsafe {
@@ -1037,7 +1037,7 @@ impl MaillageAffinage {
         })
     }
 
-    /// **Source:** `IntPolyh_MaillageAffinage.hxx`:232 - `IntPolyh_MaillageAffinage::GetMaxDeflection()`
+    /// **Source:** `IntPolyh_MaillageAffinage.hxx`:229 - `IntPolyh_MaillageAffinage::GetMaxDeflection()`
     /// returns FlecheMax
     pub fn get_max_deflection(&self, SurfID: i32) -> f64 {
         crate::check_result(unsafe {
@@ -1087,7 +1087,7 @@ impl Point {
         }
     }
 
-    /// **Source:** `IntPolyh_Point.hxx`:58 - `IntPolyh_Point::X()`
+    /// **Source:** `IntPolyh_Point.hxx`:54 - `IntPolyh_Point::X()`
     /// Returns X coordinate of the 3D point
     pub fn x(&self) -> f64 {
         crate::check_result(unsafe {
@@ -1095,7 +1095,7 @@ impl Point {
         })
     }
 
-    /// **Source:** `IntPolyh_Point.hxx`:61 - `IntPolyh_Point::Y()`
+    /// **Source:** `IntPolyh_Point.hxx`:57 - `IntPolyh_Point::Y()`
     /// Returns Y coordinate of the 3D point
     pub fn y(&self) -> f64 {
         crate::check_result(unsafe {
@@ -1103,7 +1103,7 @@ impl Point {
         })
     }
 
-    /// **Source:** `IntPolyh_Point.hxx`:64 - `IntPolyh_Point::Z()`
+    /// **Source:** `IntPolyh_Point.hxx`:60 - `IntPolyh_Point::Z()`
     /// Returns the Z coordinate of the 3D point
     pub fn z(&self) -> f64 {
         crate::check_result(unsafe {
@@ -1111,7 +1111,7 @@ impl Point {
         })
     }
 
-    /// **Source:** `IntPolyh_Point.hxx`:67 - `IntPolyh_Point::U()`
+    /// **Source:** `IntPolyh_Point.hxx`:63 - `IntPolyh_Point::U()`
     /// Returns the U coordinate of the 2D point
     pub fn u(&self) -> f64 {
         crate::check_result(unsafe {
@@ -1119,7 +1119,7 @@ impl Point {
         })
     }
 
-    /// **Source:** `IntPolyh_Point.hxx`:70 - `IntPolyh_Point::V()`
+    /// **Source:** `IntPolyh_Point.hxx`:66 - `IntPolyh_Point::V()`
     /// Returns the V coordinate of the 2D point
     pub fn v(&self) -> f64 {
         crate::check_result(unsafe {
@@ -1127,7 +1127,7 @@ impl Point {
         })
     }
 
-    /// **Source:** `IntPolyh_Point.hxx`:73 - `IntPolyh_Point::PartOfCommon()`
+    /// **Source:** `IntPolyh_Point.hxx`:69 - `IntPolyh_Point::PartOfCommon()`
     /// Returns 0 if the point is not common with the other surface
     pub fn part_of_common(&self) -> i32 {
         crate::check_result(unsafe {
@@ -1135,7 +1135,7 @@ impl Point {
         })
     }
 
-    /// **Source:** `IntPolyh_Point.hxx`:76 - `IntPolyh_Point::Set()`
+    /// **Source:** `IntPolyh_Point.hxx`:72 - `IntPolyh_Point::Set()`
     /// Sets the point
     pub fn set(&mut self, x: f64, y: f64, z: f64, u: f64, v: f64, II: i32) {
         crate::check_void_result(unsafe {
@@ -1143,7 +1143,7 @@ impl Point {
         })
     }
 
-    /// **Source:** `IntPolyh_Point.hxx`:92 - `IntPolyh_Point::SetX()`
+    /// **Source:** `IntPolyh_Point.hxx`:88 - `IntPolyh_Point::SetX()`
     /// Sets the X coordinate for the 3D point
     pub fn set_x(&mut self, x: f64) {
         crate::check_void_result(unsafe {
@@ -1151,7 +1151,7 @@ impl Point {
         })
     }
 
-    /// **Source:** `IntPolyh_Point.hxx`:95 - `IntPolyh_Point::SetY()`
+    /// **Source:** `IntPolyh_Point.hxx`:91 - `IntPolyh_Point::SetY()`
     /// Sets the Y coordinate for the 3D point
     pub fn set_y(&mut self, y: f64) {
         crate::check_void_result(unsafe {
@@ -1159,7 +1159,7 @@ impl Point {
         })
     }
 
-    /// **Source:** `IntPolyh_Point.hxx`:98 - `IntPolyh_Point::SetZ()`
+    /// **Source:** `IntPolyh_Point.hxx`:94 - `IntPolyh_Point::SetZ()`
     /// Sets the Z coordinate for the 3D point
     pub fn set_z(&mut self, z: f64) {
         crate::check_void_result(unsafe {
@@ -1167,7 +1167,7 @@ impl Point {
         })
     }
 
-    /// **Source:** `IntPolyh_Point.hxx`:101 - `IntPolyh_Point::SetU()`
+    /// **Source:** `IntPolyh_Point.hxx`:97 - `IntPolyh_Point::SetU()`
     /// Sets the U coordinate for the 2D point
     pub fn set_u(&mut self, u: f64) {
         crate::check_void_result(unsafe {
@@ -1175,7 +1175,7 @@ impl Point {
         })
     }
 
-    /// **Source:** `IntPolyh_Point.hxx`:104 - `IntPolyh_Point::SetV()`
+    /// **Source:** `IntPolyh_Point.hxx`:100 - `IntPolyh_Point::SetV()`
     /// Sets the V coordinate for the 2D point
     pub fn set_v(&mut self, v: f64) {
         crate::check_void_result(unsafe {
@@ -1183,7 +1183,7 @@ impl Point {
         })
     }
 
-    /// **Source:** `IntPolyh_Point.hxx`:107 - `IntPolyh_Point::SetPartOfCommon()`
+    /// **Source:** `IntPolyh_Point.hxx`:103 - `IntPolyh_Point::SetPartOfCommon()`
     /// Sets the part of common
     pub fn set_part_of_common(&mut self, ii: i32) {
         crate::check_void_result(unsafe {
@@ -1191,11 +1191,11 @@ impl Point {
         })
     }
 
-    /// **Source:** `IntPolyh_Point.hxx`:110 - `IntPolyh_Point::Middle()`
+    /// **Source:** `IntPolyh_Point.hxx`:106 - `IntPolyh_Point::Middle()`
     /// Creates middle point from P1 and P2 and stores it to this
     pub fn middle(
         &mut self,
-        MySurface: &crate::ffi_types::HandleAdaptor3dSurface,
+        MySurface: &crate::ffi_types::Handle_Adaptor3d_Surface,
         P1: &Point,
         P2: &Point,
     ) {
@@ -1209,7 +1209,7 @@ impl Point {
         })
     }
 
-    /// **Source:** `IntPolyh_Point.hxx`:114 - `IntPolyh_Point::Add()`
+    /// **Source:** `IntPolyh_Point.hxx`:110 - `IntPolyh_Point::Add()`
     /// Addition
     pub fn add(&self, P1: &Point) -> crate::OwnedPtr<Point> {
         unsafe {
@@ -1219,7 +1219,7 @@ impl Point {
         }
     }
 
-    /// **Source:** `IntPolyh_Point.hxx`:119 - `IntPolyh_Point::Sub()`
+    /// **Source:** `IntPolyh_Point.hxx`:115 - `IntPolyh_Point::Sub()`
     /// Subtraction
     pub fn sub(&self, P1: &Point) -> crate::OwnedPtr<Point> {
         unsafe {
@@ -1229,7 +1229,7 @@ impl Point {
         }
     }
 
-    /// **Source:** `IntPolyh_Point.hxx`:124 - `IntPolyh_Point::Divide()`
+    /// **Source:** `IntPolyh_Point.hxx`:120 - `IntPolyh_Point::Divide()`
     /// Division
     pub fn divide(&self, rr: f64) -> crate::OwnedPtr<Point> {
         unsafe {
@@ -1239,7 +1239,7 @@ impl Point {
         }
     }
 
-    /// **Source:** `IntPolyh_Point.hxx`:129 - `IntPolyh_Point::Multiplication()`
+    /// **Source:** `IntPolyh_Point.hxx`:125 - `IntPolyh_Point::Multiplication()`
     /// Multiplication
     pub fn multiplication(&self, rr: f64) -> crate::OwnedPtr<Point> {
         unsafe {
@@ -1252,7 +1252,7 @@ impl Point {
         }
     }
 
-    /// **Source:** `IntPolyh_Point.hxx`:134 - `IntPolyh_Point::SquareModulus()`
+    /// **Source:** `IntPolyh_Point.hxx`:130 - `IntPolyh_Point::SquareModulus()`
     /// Square modulus
     pub fn square_modulus(&self) -> f64 {
         crate::check_result(unsafe {
@@ -1260,7 +1260,7 @@ impl Point {
         })
     }
 
-    /// **Source:** `IntPolyh_Point.hxx`:136 - `IntPolyh_Point::SquareDistance()`
+    /// **Source:** `IntPolyh_Point.hxx`:132 - `IntPolyh_Point::SquareDistance()`
     /// Square distance to the other point
     pub fn square_distance(&self, P2: &Point) -> f64 {
         crate::check_result(unsafe {
@@ -1268,7 +1268,7 @@ impl Point {
         })
     }
 
-    /// **Source:** `IntPolyh_Point.hxx`:138 - `IntPolyh_Point::Dot()`
+    /// **Source:** `IntPolyh_Point.hxx`:134 - `IntPolyh_Point::Dot()`
     /// Dot
     pub fn dot(&self, P2: &Point) -> f64 {
         crate::check_result(unsafe {
@@ -1276,7 +1276,7 @@ impl Point {
         })
     }
 
-    /// **Source:** `IntPolyh_Point.hxx`:140 - `IntPolyh_Point::Cross()`
+    /// **Source:** `IntPolyh_Point.hxx`:136 - `IntPolyh_Point::Cross()`
     /// Cross
     pub fn cross(&mut self, P1: &Point, P2: &Point) {
         crate::check_void_result(unsafe {
@@ -1284,7 +1284,7 @@ impl Point {
         })
     }
 
-    /// **Source:** `IntPolyh_Point.hxx`:142 - `IntPolyh_Point::Dump()`
+    /// **Source:** `IntPolyh_Point.hxx`:138 - `IntPolyh_Point::Dump()`
     /// Dump
     pub fn dump(&self) {
         crate::check_void_result(unsafe {
@@ -1292,7 +1292,7 @@ impl Point {
         })
     }
 
-    /// **Source:** `IntPolyh_Point.hxx`:144 - `IntPolyh_Point::Dump()`
+    /// **Source:** `IntPolyh_Point.hxx`:140 - `IntPolyh_Point::Dump()`
     /// Dump
     pub fn dump_int(&self, i: i32) {
         crate::check_void_result(unsafe {
@@ -1300,7 +1300,7 @@ impl Point {
         })
     }
 
-    /// **Source:** `IntPolyh_Point.hxx`:147 - `IntPolyh_Point::SetDegenerated()`
+    /// **Source:** `IntPolyh_Point.hxx`:143 - `IntPolyh_Point::SetDegenerated()`
     /// Sets the degenerated flag
     pub fn set_degenerated(&mut self, theFlag: bool) {
         crate::check_void_result(unsafe {
@@ -1308,7 +1308,7 @@ impl Point {
         })
     }
 
-    /// **Source:** `IntPolyh_Point.hxx`:150 - `IntPolyh_Point::Degenerated()`
+    /// **Source:** `IntPolyh_Point.hxx`:146 - `IntPolyh_Point::Degenerated()`
     /// Returns the degenerated flag
     pub fn degenerated(&self) -> bool {
         crate::check_result(unsafe {
@@ -1321,7 +1321,7 @@ impl Point {
 // From IntPolyh_SectionLine.hxx
 // ========================
 
-/// **Source:** `IntPolyh_SectionLine.hxx`:27 - `IntPolyh_SectionLine`
+/// **Source:** `IntPolyh_SectionLine.hxx`:28 - `IntPolyh_SectionLine`
 pub use crate::ffi_types::IntPolyh_SectionLine as SectionLine;
 
 unsafe impl crate::CppDeletable for SectionLine {
@@ -1351,7 +1351,7 @@ impl std::borrow::ToOwned for SectionLine {
 }
 
 impl SectionLine {
-    /// **Source:** `IntPolyh_SectionLine.hxx`:32 - `IntPolyh_SectionLine::IntPolyh_SectionLine()`
+    /// **Source:** `IntPolyh_SectionLine.hxx`:33 - `IntPolyh_SectionLine::IntPolyh_SectionLine()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -1360,7 +1360,7 @@ impl SectionLine {
         }
     }
 
-    /// **Source:** `IntPolyh_SectionLine.hxx`:34 - `IntPolyh_SectionLine::IntPolyh_SectionLine()`
+    /// **Source:** `IntPolyh_SectionLine.hxx`:35 - `IntPolyh_SectionLine::IntPolyh_SectionLine()`
     pub fn new_int(nn: i32) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -1369,14 +1369,14 @@ impl SectionLine {
         }
     }
 
-    /// **Source:** `IntPolyh_SectionLine.hxx`:38 - `IntPolyh_SectionLine::Init()`
+    /// **Source:** `IntPolyh_SectionLine.hxx`:39 - `IntPolyh_SectionLine::Init()`
     pub fn init(&mut self, nn: i32) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::IntPolyh_SectionLine_init(self as *mut Self, nn)
         })
     }
 
-    /// **Source:** `IntPolyh_SectionLine.hxx`:40 - `IntPolyh_SectionLine::Value()`
+    /// **Source:** `IntPolyh_SectionLine.hxx`:41 - `IntPolyh_SectionLine::Value()`
     pub fn value(&self, nn: i32) -> &StartPoint {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKGeomAlgo::IntPolyh_SectionLine_value(
@@ -1386,7 +1386,7 @@ impl SectionLine {
         }
     }
 
-    /// **Source:** `IntPolyh_SectionLine.hxx`:44 - `IntPolyh_SectionLine::ChangeValue()`
+    /// **Source:** `IntPolyh_SectionLine.hxx`:45 - `IntPolyh_SectionLine::ChangeValue()`
     pub fn change_value(&mut self, nn: i32) -> &mut StartPoint {
         unsafe {
             &mut *(crate::check_result(
@@ -1398,7 +1398,7 @@ impl SectionLine {
         }
     }
 
-    /// **Source:** `IntPolyh_SectionLine.hxx`:48 - `IntPolyh_SectionLine::Copy()`
+    /// **Source:** `IntPolyh_SectionLine.hxx`:49 - `IntPolyh_SectionLine::Copy()`
     ///
     /// # Safety
     ///
@@ -1414,21 +1414,21 @@ impl SectionLine {
         }
     }
 
-    /// **Source:** `IntPolyh_SectionLine.hxx`:52 - `IntPolyh_SectionLine::GetN()`
+    /// **Source:** `IntPolyh_SectionLine.hxx`:53 - `IntPolyh_SectionLine::GetN()`
     pub fn get_n(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::IntPolyh_SectionLine_get_n(self as *const Self)
         })
     }
 
-    /// **Source:** `IntPolyh_SectionLine.hxx`:54 - `IntPolyh_SectionLine::NbStartPoints()`
+    /// **Source:** `IntPolyh_SectionLine.hxx`:55 - `IntPolyh_SectionLine::NbStartPoints()`
     pub fn nb_start_points(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::IntPolyh_SectionLine_nb_start_points(self as *const Self)
         })
     }
 
-    /// **Source:** `IntPolyh_SectionLine.hxx`:56 - `IntPolyh_SectionLine::IncrementNbStartPoints()`
+    /// **Source:** `IntPolyh_SectionLine.hxx`:57 - `IntPolyh_SectionLine::IncrementNbStartPoints()`
     pub fn increment_nb_start_points(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::IntPolyh_SectionLine_increment_nb_start_points(
@@ -1437,21 +1437,21 @@ impl SectionLine {
         })
     }
 
-    /// **Source:** `IntPolyh_SectionLine.hxx`:58 - `IntPolyh_SectionLine::Destroy()`
+    /// **Source:** `IntPolyh_SectionLine.hxx`:59 - `IntPolyh_SectionLine::Destroy()`
     pub fn destroy(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::IntPolyh_SectionLine_destroy(self as *mut Self)
         })
     }
 
-    /// **Source:** `IntPolyh_SectionLine.hxx`:62 - `IntPolyh_SectionLine::Dump()`
+    /// **Source:** `IntPolyh_SectionLine.hxx`:63 - `IntPolyh_SectionLine::Dump()`
     pub fn dump(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::IntPolyh_SectionLine_dump(self as *const Self)
         })
     }
 
-    /// **Source:** `IntPolyh_SectionLine.hxx`:64 - `IntPolyh_SectionLine::Prepend()`
+    /// **Source:** `IntPolyh_SectionLine.hxx`:65 - `IntPolyh_SectionLine::Prepend()`
     pub fn prepend(&mut self, SP: &StartPoint) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::IntPolyh_SectionLine_prepend(self as *mut Self, SP)
@@ -1637,49 +1637,49 @@ impl StartPoint {
         })
     }
 
-    /// **Source:** `IntPolyh_StartPoint.hxx`:85 - `IntPolyh_StartPoint::SetUV1()`
+    /// **Source:** `IntPolyh_StartPoint.hxx`:83 - `IntPolyh_StartPoint::SetUV1()`
     pub fn set_uv1(&mut self, UU1: f64, VV1: f64) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::IntPolyh_StartPoint_set_uv1(self as *mut Self, UU1, VV1)
         })
     }
 
-    /// **Source:** `IntPolyh_StartPoint.hxx`:87 - `IntPolyh_StartPoint::SetUV2()`
+    /// **Source:** `IntPolyh_StartPoint.hxx`:85 - `IntPolyh_StartPoint::SetUV2()`
     pub fn set_uv2(&mut self, UU2: f64, VV2: f64) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::IntPolyh_StartPoint_set_uv2(self as *mut Self, UU2, VV2)
         })
     }
 
-    /// **Source:** `IntPolyh_StartPoint.hxx`:89 - `IntPolyh_StartPoint::SetEdge1()`
+    /// **Source:** `IntPolyh_StartPoint.hxx`:87 - `IntPolyh_StartPoint::SetEdge1()`
     pub fn set_edge1(&mut self, IE1: i32) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::IntPolyh_StartPoint_set_edge1(self as *mut Self, IE1)
         })
     }
 
-    /// **Source:** `IntPolyh_StartPoint.hxx`:91 - `IntPolyh_StartPoint::SetLambda1()`
+    /// **Source:** `IntPolyh_StartPoint.hxx`:89 - `IntPolyh_StartPoint::SetLambda1()`
     pub fn set_lambda1(&mut self, LAM1: f64) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::IntPolyh_StartPoint_set_lambda1(self as *mut Self, LAM1)
         })
     }
 
-    /// **Source:** `IntPolyh_StartPoint.hxx`:93 - `IntPolyh_StartPoint::SetEdge2()`
+    /// **Source:** `IntPolyh_StartPoint.hxx`:91 - `IntPolyh_StartPoint::SetEdge2()`
     pub fn set_edge2(&mut self, IE2: i32) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::IntPolyh_StartPoint_set_edge2(self as *mut Self, IE2)
         })
     }
 
-    /// **Source:** `IntPolyh_StartPoint.hxx`:95 - `IntPolyh_StartPoint::SetLambda2()`
+    /// **Source:** `IntPolyh_StartPoint.hxx`:93 - `IntPolyh_StartPoint::SetLambda2()`
     pub fn set_lambda2(&mut self, LAM2: f64) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::IntPolyh_StartPoint_set_lambda2(self as *mut Self, LAM2)
         })
     }
 
-    /// **Source:** `IntPolyh_StartPoint.hxx`:97 - `IntPolyh_StartPoint::SetCoupleValue()`
+    /// **Source:** `IntPolyh_StartPoint.hxx`:95 - `IntPolyh_StartPoint::SetCoupleValue()`
     pub fn set_couple_value(&mut self, IT1: i32, IT2: i32) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::IntPolyh_StartPoint_set_couple_value(
@@ -1690,14 +1690,14 @@ impl StartPoint {
         })
     }
 
-    /// **Source:** `IntPolyh_StartPoint.hxx`:99 - `IntPolyh_StartPoint::SetAngle()`
+    /// **Source:** `IntPolyh_StartPoint.hxx`:97 - `IntPolyh_StartPoint::SetAngle()`
     pub fn set_angle(&mut self, ang: f64) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::IntPolyh_StartPoint_set_angle(self as *mut Self, ang)
         })
     }
 
-    /// **Source:** `IntPolyh_StartPoint.hxx`:101 - `IntPolyh_StartPoint::SetChainList()`
+    /// **Source:** `IntPolyh_StartPoint.hxx`:99 - `IntPolyh_StartPoint::SetChainList()`
     pub fn set_chain_list(&mut self, ChList: i32) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::IntPolyh_StartPoint_set_chain_list(
@@ -1707,21 +1707,21 @@ impl StartPoint {
         })
     }
 
-    /// **Source:** `IntPolyh_StartPoint.hxx`:103 - `IntPolyh_StartPoint::CheckSameSP()`
+    /// **Source:** `IntPolyh_StartPoint.hxx`:101 - `IntPolyh_StartPoint::CheckSameSP()`
     pub fn check_same_sp(&self, SP: &StartPoint) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::IntPolyh_StartPoint_check_same_sp(self as *const Self, SP)
         })
     }
 
-    /// **Source:** `IntPolyh_StartPoint.hxx`:105 - `IntPolyh_StartPoint::Dump()`
+    /// **Source:** `IntPolyh_StartPoint.hxx`:103 - `IntPolyh_StartPoint::Dump()`
     pub fn dump(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::IntPolyh_StartPoint_dump(self as *const Self)
         })
     }
 
-    /// **Source:** `IntPolyh_StartPoint.hxx`:107 - `IntPolyh_StartPoint::Dump()`
+    /// **Source:** `IntPolyh_StartPoint.hxx`:105 - `IntPolyh_StartPoint::Dump()`
     pub fn dump_int(&self, i: i32) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::IntPolyh_StartPoint_dump_int(self as *const Self, i)
@@ -1759,7 +1759,7 @@ impl Tools {
     /// **Source:** `IntPolyh_Tools.hxx`:27 - `IntPolyh_Tools::IsEnlargePossible()`
     /// Checks if the surface can be enlarged in U or V direction.
     pub fn is_enlarge_possible(
-        theSurf: &crate::ffi_types::HandleAdaptor3dSurface,
+        theSurf: &crate::ffi_types::Handle_Adaptor3d_Surface,
         theUEnlarge: &mut bool,
         theVEnlarge: &mut bool,
     ) {
@@ -1780,12 +1780,12 @@ impl Tools {
     /// The parameters of the sampling points are stored into
     /// <theUPars> and <theVPars> arrays.
     pub fn make_sampling(
-        theSurf: &crate::ffi_types::HandleAdaptor3dSurface,
+        theSurf: &crate::ffi_types::Handle_Adaptor3d_Surface,
         theNbSU: i32,
         theNbSV: i32,
         theEnlargeZone: bool,
-        theUPars: &mut crate::ffi_types::TColStd_Array1OfReal,
-        theVPars: &mut crate::ffi_types::TColStd_Array1OfReal,
+        theUPars: &mut crate::ffi_types::NCollection_Array1_double,
+        theVPars: &mut crate::ffi_types::NCollection_Array1_double,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::IntPolyh_Tools_make_sampling(
@@ -1802,9 +1802,9 @@ impl Tools {
     /// **Source:** `IntPolyh_Tools.hxx`:45 - `IntPolyh_Tools::ComputeDeflection()`
     /// Computes the deflection tolerance on the surface for the given sampling.
     pub fn compute_deflection(
-        theSurf: &crate::ffi_types::HandleAdaptor3dSurface,
-        theUPars: &crate::ffi_types::TColStd_Array1OfReal,
-        theVPars: &crate::ffi_types::TColStd_Array1OfReal,
+        theSurf: &crate::ffi_types::Handle_Adaptor3d_Surface,
+        theUPars: &crate::ffi_types::NCollection_Array1_double,
+        theVPars: &crate::ffi_types::NCollection_Array1_double,
     ) -> f64 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::IntPolyh_Tools_compute_deflection(
@@ -1817,9 +1817,9 @@ impl Tools {
     /// Fills the array <thePoints> with the points (triangulation nodes) on the surface
     /// and normal directions of the surface in these points.
     pub fn fill_array_of_point_normal(
-        theSurf: &crate::ffi_types::HandleAdaptor3dSurface,
-        theUPars: &crate::ffi_types::TColStd_Array1OfReal,
-        theVPars: &crate::ffi_types::TColStd_Array1OfReal,
+        theSurf: &crate::ffi_types::Handle_Adaptor3d_Surface,
+        theUPars: &crate::ffi_types::NCollection_Array1_double,
+        theVPars: &crate::ffi_types::NCollection_Array1_double,
         thePoints: &mut crate::ffi_types::IntPolyh_ArrayOfPointNormal,
     ) {
         crate::check_void_result(unsafe {
@@ -1870,7 +1870,7 @@ impl Triangle {
         }
     }
 
-    /// **Source:** `IntPolyh_Triangle.hxx`:72 - `IntPolyh_Triangle::FirstPoint()`
+    /// **Source:** `IntPolyh_Triangle.hxx`:70 - `IntPolyh_Triangle::FirstPoint()`
     /// Returns the first point
     pub fn first_point(&self) -> i32 {
         crate::check_result(unsafe {
@@ -1878,7 +1878,7 @@ impl Triangle {
         })
     }
 
-    /// **Source:** `IntPolyh_Triangle.hxx`:75 - `IntPolyh_Triangle::SecondPoint()`
+    /// **Source:** `IntPolyh_Triangle.hxx`:73 - `IntPolyh_Triangle::SecondPoint()`
     /// Returns the second point
     pub fn second_point(&self) -> i32 {
         crate::check_result(unsafe {
@@ -1886,7 +1886,7 @@ impl Triangle {
         })
     }
 
-    /// **Source:** `IntPolyh_Triangle.hxx`:78 - `IntPolyh_Triangle::ThirdPoint()`
+    /// **Source:** `IntPolyh_Triangle.hxx`:76 - `IntPolyh_Triangle::ThirdPoint()`
     /// Returns the third point
     pub fn third_point(&self) -> i32 {
         crate::check_result(unsafe {
@@ -1894,7 +1894,7 @@ impl Triangle {
         })
     }
 
-    /// **Source:** `IntPolyh_Triangle.hxx`:81 - `IntPolyh_Triangle::FirstEdge()`
+    /// **Source:** `IntPolyh_Triangle.hxx`:79 - `IntPolyh_Triangle::FirstEdge()`
     /// Returns the first edge
     pub fn first_edge(&self) -> i32 {
         crate::check_result(unsafe {
@@ -1902,7 +1902,7 @@ impl Triangle {
         })
     }
 
-    /// **Source:** `IntPolyh_Triangle.hxx`:84 - `IntPolyh_Triangle::FirstEdgeOrientation()`
+    /// **Source:** `IntPolyh_Triangle.hxx`:82 - `IntPolyh_Triangle::FirstEdgeOrientation()`
     /// Returns the orientation of the first edge
     pub fn first_edge_orientation(&self) -> i32 {
         crate::check_result(unsafe {
@@ -1912,7 +1912,7 @@ impl Triangle {
         })
     }
 
-    /// **Source:** `IntPolyh_Triangle.hxx`:87 - `IntPolyh_Triangle::SecondEdge()`
+    /// **Source:** `IntPolyh_Triangle.hxx`:85 - `IntPolyh_Triangle::SecondEdge()`
     /// Returns the second edge
     pub fn second_edge(&self) -> i32 {
         crate::check_result(unsafe {
@@ -1920,7 +1920,7 @@ impl Triangle {
         })
     }
 
-    /// **Source:** `IntPolyh_Triangle.hxx`:90 - `IntPolyh_Triangle::SecondEdgeOrientation()`
+    /// **Source:** `IntPolyh_Triangle.hxx`:88 - `IntPolyh_Triangle::SecondEdgeOrientation()`
     /// Returns the orientation of the second edge
     pub fn second_edge_orientation(&self) -> i32 {
         crate::check_result(unsafe {
@@ -1930,7 +1930,7 @@ impl Triangle {
         })
     }
 
-    /// **Source:** `IntPolyh_Triangle.hxx`:93 - `IntPolyh_Triangle::ThirdEdge()`
+    /// **Source:** `IntPolyh_Triangle.hxx`:91 - `IntPolyh_Triangle::ThirdEdge()`
     /// Returns the third edge
     pub fn third_edge(&self) -> i32 {
         crate::check_result(unsafe {
@@ -1938,7 +1938,7 @@ impl Triangle {
         })
     }
 
-    /// **Source:** `IntPolyh_Triangle.hxx`:96 - `IntPolyh_Triangle::ThirdEdgeOrientation()`
+    /// **Source:** `IntPolyh_Triangle.hxx`:94 - `IntPolyh_Triangle::ThirdEdgeOrientation()`
     /// Returns the orientation of the third edge
     pub fn third_edge_orientation(&self) -> i32 {
         crate::check_result(unsafe {
@@ -1948,7 +1948,7 @@ impl Triangle {
         })
     }
 
-    /// **Source:** `IntPolyh_Triangle.hxx`:99 - `IntPolyh_Triangle::Deflection()`
+    /// **Source:** `IntPolyh_Triangle.hxx`:97 - `IntPolyh_Triangle::Deflection()`
     /// Returns the deflection of the triangle
     pub fn deflection(&self) -> f64 {
         crate::check_result(unsafe {
@@ -1956,7 +1956,7 @@ impl Triangle {
         })
     }
 
-    /// **Source:** `IntPolyh_Triangle.hxx`:102 - `IntPolyh_Triangle::IsIntersectionPossible()`
+    /// **Source:** `IntPolyh_Triangle.hxx`:100 - `IntPolyh_Triangle::IsIntersectionPossible()`
     /// Returns possibility of the intersection
     pub fn is_intersection_possible(&self) -> bool {
         crate::check_result(unsafe {
@@ -1966,7 +1966,7 @@ impl Triangle {
         })
     }
 
-    /// **Source:** `IntPolyh_Triangle.hxx`:105 - `IntPolyh_Triangle::HasIntersection()`
+    /// **Source:** `IntPolyh_Triangle.hxx`:103 - `IntPolyh_Triangle::HasIntersection()`
     /// Returns true if the triangle has interfered the other triangle
     pub fn has_intersection(&self) -> bool {
         crate::check_result(unsafe {
@@ -1974,7 +1974,7 @@ impl Triangle {
         })
     }
 
-    /// **Source:** `IntPolyh_Triangle.hxx`:108 - `IntPolyh_Triangle::IsDegenerated()`
+    /// **Source:** `IntPolyh_Triangle.hxx`:106 - `IntPolyh_Triangle::IsDegenerated()`
     /// Returns the Degenerated flag
     pub fn is_degenerated(&self) -> bool {
         crate::check_result(unsafe {
@@ -1982,7 +1982,7 @@ impl Triangle {
         })
     }
 
-    /// **Source:** `IntPolyh_Triangle.hxx`:111 - `IntPolyh_Triangle::SetFirstPoint()`
+    /// **Source:** `IntPolyh_Triangle.hxx`:109 - `IntPolyh_Triangle::SetFirstPoint()`
     /// Sets the first point
     pub fn set_first_point(&mut self, thePoint: i32) {
         crate::check_void_result(unsafe {
@@ -1993,7 +1993,7 @@ impl Triangle {
         })
     }
 
-    /// **Source:** `IntPolyh_Triangle.hxx`:114 - `IntPolyh_Triangle::SetSecondPoint()`
+    /// **Source:** `IntPolyh_Triangle.hxx`:112 - `IntPolyh_Triangle::SetSecondPoint()`
     /// Sets the second point
     pub fn set_second_point(&mut self, thePoint: i32) {
         crate::check_void_result(unsafe {
@@ -2004,7 +2004,7 @@ impl Triangle {
         })
     }
 
-    /// **Source:** `IntPolyh_Triangle.hxx`:117 - `IntPolyh_Triangle::SetThirdPoint()`
+    /// **Source:** `IntPolyh_Triangle.hxx`:115 - `IntPolyh_Triangle::SetThirdPoint()`
     /// Sets the third point
     pub fn set_third_point(&mut self, thePoint: i32) {
         crate::check_void_result(unsafe {
@@ -2015,7 +2015,7 @@ impl Triangle {
         })
     }
 
-    /// **Source:** `IntPolyh_Triangle.hxx`:120 - `IntPolyh_Triangle::SetFirstEdge()`
+    /// **Source:** `IntPolyh_Triangle.hxx`:118 - `IntPolyh_Triangle::SetFirstEdge()`
     /// Sets the first edge
     pub fn set_first_edge(&mut self, theEdge: i32, theEdgeOrientation: i32) {
         crate::check_void_result(unsafe {
@@ -2027,7 +2027,7 @@ impl Triangle {
         })
     }
 
-    /// **Source:** `IntPolyh_Triangle.hxx`:127 - `IntPolyh_Triangle::SetSecondEdge()`
+    /// **Source:** `IntPolyh_Triangle.hxx`:125 - `IntPolyh_Triangle::SetSecondEdge()`
     /// Sets the second edge
     pub fn set_second_edge(&mut self, theEdge: i32, theEdgeOrientation: i32) {
         crate::check_void_result(unsafe {
@@ -2039,7 +2039,7 @@ impl Triangle {
         })
     }
 
-    /// **Source:** `IntPolyh_Triangle.hxx`:134 - `IntPolyh_Triangle::SetThirdEdge()`
+    /// **Source:** `IntPolyh_Triangle.hxx`:132 - `IntPolyh_Triangle::SetThirdEdge()`
     /// Sets the third edge
     pub fn set_third_edge(&mut self, theEdge: i32, theEdgeOrientation: i32) {
         crate::check_void_result(unsafe {
@@ -2051,7 +2051,7 @@ impl Triangle {
         })
     }
 
-    /// **Source:** `IntPolyh_Triangle.hxx`:141 - `IntPolyh_Triangle::SetDeflection()`
+    /// **Source:** `IntPolyh_Triangle.hxx`:139 - `IntPolyh_Triangle::SetDeflection()`
     /// Sets the deflection
     pub fn set_deflection(&mut self, theDeflection: f64) {
         crate::check_void_result(unsafe {
@@ -2062,7 +2062,7 @@ impl Triangle {
         })
     }
 
-    /// **Source:** `IntPolyh_Triangle.hxx`:144 - `IntPolyh_Triangle::SetIntersectionPossible()`
+    /// **Source:** `IntPolyh_Triangle.hxx`:142 - `IntPolyh_Triangle::SetIntersectionPossible()`
     /// Sets the flag of possibility of intersection
     pub fn set_intersection_possible(&mut self, theIP: bool) {
         crate::check_void_result(unsafe {
@@ -2073,7 +2073,7 @@ impl Triangle {
         })
     }
 
-    /// **Source:** `IntPolyh_Triangle.hxx`:147 - `IntPolyh_Triangle::SetIntersection()`
+    /// **Source:** `IntPolyh_Triangle.hxx`:145 - `IntPolyh_Triangle::SetIntersection()`
     /// Sets the flag of intersection
     pub fn set_intersection(&mut self, theInt: bool) {
         crate::check_void_result(unsafe {
@@ -2084,7 +2084,7 @@ impl Triangle {
         })
     }
 
-    /// **Source:** `IntPolyh_Triangle.hxx`:150 - `IntPolyh_Triangle::SetDegenerated()`
+    /// **Source:** `IntPolyh_Triangle.hxx`:148 - `IntPolyh_Triangle::SetDegenerated()`
     /// Sets the degenerated flag
     pub fn set_degenerated(&mut self, theDegFlag: bool) {
         crate::check_void_result(unsafe {
@@ -2095,7 +2095,7 @@ impl Triangle {
         })
     }
 
-    /// **Source:** `IntPolyh_Triangle.hxx`:153 - `IntPolyh_Triangle::GetEdgeNumber()`
+    /// **Source:** `IntPolyh_Triangle.hxx`:151 - `IntPolyh_Triangle::GetEdgeNumber()`
     /// Gets the edge number by the index
     pub fn get_edge_number(&self, theEdgeIndex: i32) -> i32 {
         crate::check_result(unsafe {
@@ -2106,7 +2106,7 @@ impl Triangle {
         })
     }
 
-    /// **Source:** `IntPolyh_Triangle.hxx`:159 - `IntPolyh_Triangle::SetEdge()`
+    /// **Source:** `IntPolyh_Triangle.hxx`:157 - `IntPolyh_Triangle::SetEdge()`
     /// Sets the edge by the index
     pub fn set_edge(&mut self, theEdgeIndex: i32, theEdgeNumber: i32) {
         crate::check_void_result(unsafe {
@@ -2118,7 +2118,7 @@ impl Triangle {
         })
     }
 
-    /// **Source:** `IntPolyh_Triangle.hxx`:168 - `IntPolyh_Triangle::GetEdgeOrientation()`
+    /// **Source:** `IntPolyh_Triangle.hxx`:166 - `IntPolyh_Triangle::GetEdgeOrientation()`
     /// Gets the edges orientation by the index
     pub fn get_edge_orientation(&self, theEdgeIndex: i32) -> i32 {
         crate::check_result(unsafe {
@@ -2129,7 +2129,7 @@ impl Triangle {
         })
     }
 
-    /// **Source:** `IntPolyh_Triangle.hxx`:174 - `IntPolyh_Triangle::SetEdgeOrientation()`
+    /// **Source:** `IntPolyh_Triangle.hxx`:172 - `IntPolyh_Triangle::SetEdgeOrientation()`
     /// Sets the edges orientation by the index
     pub fn set_edge_orientation(&mut self, theEdgeIndex: i32, theEdgeOrientation: i32) {
         crate::check_void_result(unsafe {
@@ -2141,11 +2141,11 @@ impl Triangle {
         })
     }
 
-    /// **Source:** `IntPolyh_Triangle.hxx`:184 - `IntPolyh_Triangle::ComputeDeflection()`
+    /// **Source:** `IntPolyh_Triangle.hxx`:181 - `IntPolyh_Triangle::ComputeDeflection()`
     /// Computes the deflection for the triangle
     pub fn compute_deflection(
         &mut self,
-        theSurface: &crate::ffi_types::HandleAdaptor3dSurface,
+        theSurface: &crate::ffi_types::Handle_Adaptor3d_Surface,
         thePoints: &crate::ffi_types::IntPolyh_ArrayOfPoints,
     ) -> f64 {
         crate::check_result(unsafe {
@@ -2157,7 +2157,7 @@ impl Triangle {
         })
     }
 
-    /// **Source:** `IntPolyh_Triangle.hxx`:188 - `IntPolyh_Triangle::GetNextTriangle()`
+    /// **Source:** `IntPolyh_Triangle.hxx`:185 - `IntPolyh_Triangle::GetNextTriangle()`
     /// Gets the adjacent triangle
     pub fn get_next_triangle(
         &self,
@@ -2175,12 +2175,12 @@ impl Triangle {
         })
     }
 
-    /// **Source:** `IntPolyh_Triangle.hxx`:193 - `IntPolyh_Triangle::MiddleRefinement()`
+    /// **Source:** `IntPolyh_Triangle.hxx`:190 - `IntPolyh_Triangle::MiddleRefinement()`
     /// Splits the triangle on two to decrease its deflection
     pub fn middle_refinement(
         &mut self,
         theTriangleNumber: i32,
-        theSurface: &crate::ffi_types::HandleAdaptor3dSurface,
+        theSurface: &crate::ffi_types::Handle_Adaptor3d_Surface,
         TPoints: &mut crate::ffi_types::IntPolyh_ArrayOfPoints,
         TTriangles: &mut crate::ffi_types::IntPolyh_ArrayOfTriangles,
         TEdges: &mut crate::ffi_types::IntPolyh_ArrayOfEdges,
@@ -2197,7 +2197,7 @@ impl Triangle {
         })
     }
 
-    /// **Source:** `IntPolyh_Triangle.hxx`:201 - `IntPolyh_Triangle::MultipleMiddleRefinement()`
+    /// **Source:** `IntPolyh_Triangle.hxx`:198 - `IntPolyh_Triangle::MultipleMiddleRefinement()`
     /// Splits the current triangle and new triangles until the refinement
     /// criterion is not achieved
     pub fn multiple_middle_refinement(
@@ -2205,7 +2205,7 @@ impl Triangle {
         theRefineCriterion: f64,
         theBox: &crate::bnd::Box,
         theTriangleNumber: i32,
-        theSurface: &crate::ffi_types::HandleAdaptor3dSurface,
+        theSurface: &crate::ffi_types::Handle_Adaptor3d_Surface,
         TPoints: &mut crate::ffi_types::IntPolyh_ArrayOfPoints,
         TTriangles: &mut crate::ffi_types::IntPolyh_ArrayOfTriangles,
         TEdges: &mut crate::ffi_types::IntPolyh_ArrayOfEdges,
@@ -2224,7 +2224,7 @@ impl Triangle {
         })
     }
 
-    /// **Source:** `IntPolyh_Triangle.hxx`:210 - `IntPolyh_Triangle::LinkEdges2Triangle()`
+    /// **Source:** `IntPolyh_Triangle.hxx`:207 - `IntPolyh_Triangle::LinkEdges2Triangle()`
     /// Links edges to triangle
     pub fn link_edges2_triangle(
         &mut self,
@@ -2244,7 +2244,7 @@ impl Triangle {
         })
     }
 
-    /// **Source:** `IntPolyh_Triangle.hxx`:216 - `IntPolyh_Triangle::SetEdgeAndOrientation()`
+    /// **Source:** `IntPolyh_Triangle.hxx`:213 - `IntPolyh_Triangle::SetEdgeAndOrientation()`
     /// Sets the appropriate edge and orientation for the triangle.
     pub fn set_edge_and_orientation(&mut self, theEdge: &Edge, theEdgeIndex: i32) {
         crate::check_void_result(unsafe {
@@ -2256,7 +2256,7 @@ impl Triangle {
         })
     }
 
-    /// **Source:** `IntPolyh_Triangle.hxx`:220 - `IntPolyh_Triangle::BoundingBox()`
+    /// **Source:** `IntPolyh_Triangle.hxx`:216 - `IntPolyh_Triangle::BoundingBox()`
     /// Returns the bounding box of the triangle.
     ///
     /// # Safety
@@ -2276,7 +2276,7 @@ impl Triangle {
         }
     }
 
-    /// **Source:** `IntPolyh_Triangle.hxx`:223 - `IntPolyh_Triangle::Dump()`
+    /// **Source:** `IntPolyh_Triangle.hxx`:219 - `IntPolyh_Triangle::Dump()`
     /// Dumps the contents of the triangle.
     pub fn dump(&self, v: i32) {
         crate::check_void_result(unsafe {
@@ -2293,5 +2293,5 @@ pub use crate::ffi_types::{
     IntPolyh_ArrayOfEdges as ArrayOfEdges, IntPolyh_ArrayOfPointNormal as ArrayOfPointNormal,
     IntPolyh_ArrayOfPoints as ArrayOfPoints, IntPolyh_ArrayOfSectionLines as ArrayOfSectionLines,
     IntPolyh_ArrayOfTangentZones as ArrayOfTangentZones,
-    IntPolyh_ArrayOfTriangles as ArrayOfTriangles, IntPolyh_ListOfCouples as ListOfCouples,
+    IntPolyh_ArrayOfTriangles as ArrayOfTriangles,
 };

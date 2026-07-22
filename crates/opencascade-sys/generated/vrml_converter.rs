@@ -65,7 +65,7 @@ impl TryFrom<i32> for TypeOfLight {
 }
 
 // Handle type re-exports (targets of handle upcasts/downcasts)
-pub use crate::ffi_types::HandleStandardTransient;
+pub use crate::ffi_types::Handle_Standard_Transient;
 
 // ========================
 // From VrmlConverter_Curve.hxx
@@ -73,14 +73,14 @@ pub use crate::ffi_types::HandleStandardTransient;
 
 /// **Source:** `VrmlConverter_Curve.hxx`:38 - `VrmlConverter_Curve`
 /// Curve - computes the presentation of objects to be
-/// seen  as curves  (the  computation  will  be  made
-/// with a constant  number  of  points),  converts this one
-/// into  VRML  objects  and  writes (adds) them  into
-/// anOStream.   All  requested   properties  of   the
-/// representation are specify  in aDrawer  of  Drawer
+/// seen as curves (the computation will be made
+/// with a constant number of points), converts this one
+/// into VRML objects and writes (adds) them into
+/// anOStream. All requested properties of the
+/// representation are specify in aDrawer of Drawer
 /// class (VrmlConverter).
 /// This kind of the presentation is converted into
-/// IndexedLineSet ( VRML ).
+/// IndexedLineSet (VRML).
 pub use crate::ffi_types::VrmlConverter_Curve as Curve;
 
 unsafe impl crate::CppDeletable for Curve {
@@ -107,7 +107,7 @@ impl Curve {
     /// The aspect is defined by LineAspect in aDrawer.
     pub fn add_curve_handlevrmlconverterdrawer_ostream(
         aCurve: &crate::adaptor3d::Curve,
-        aDrawer: &crate::ffi_types::HandleVrmlConverterDrawer,
+        aDrawer: &crate::ffi_types::Handle_VrmlConverter_Drawer,
         anOStream: &mut crate::ffi_types::Standard_OStream,
     ) {
         crate::check_void_result(unsafe {
@@ -124,7 +124,7 @@ impl Curve {
         aCurve: &crate::adaptor3d::Curve,
         U1: f64,
         U2: f64,
-        aDrawer: &crate::ffi_types::HandleVrmlConverterDrawer,
+        aDrawer: &crate::ffi_types::Handle_VrmlConverter_Drawer,
         anOStream: &mut crate::ffi_types::Standard_OStream,
     ) {
         crate::check_void_result(unsafe {
@@ -136,7 +136,7 @@ impl Curve {
     /// adds to the OStream the drawing of the curve aCurve.
     /// The aspect is the current aspect.
     /// The drawing will be limited between the points of parameter
-    /// U1 and U2. aNbPoints defines  number of points on  one interval.
+    /// U1 and U2. aNbPoints defines number of points on one interval.
     pub fn add_curve_real2_ostream_int(
         aCurve: &crate::adaptor3d::Curve,
         U1: f64,
@@ -156,14 +156,14 @@ impl Curve {
 // From VrmlConverter_DeflectionCurve.hxx
 // ========================
 
-/// **Source:** `VrmlConverter_DeflectionCurve.hxx`:39 - `VrmlConverter_DeflectionCurve`
-/// DeflectionCurve    -  computes the presentation of
-/// objects to be seen as  curves,   converts this  one into
-/// VRML    objects    and    writes (adds)  into
-/// anOStream.     All  requested properties  of   the
-/// representation  are specify in  aDrawer.
-/// This  kind of the presentation
-/// is converted into IndexedLineSet ( VRML ).
+/// **Source:** `VrmlConverter_DeflectionCurve.hxx`:40 - `VrmlConverter_DeflectionCurve`
+/// DeflectionCurve - computes the presentation of
+/// objects to be seen as curves, converts this one into
+/// VRML objects and writes (adds) into
+/// anOStream. All requested properties of the
+/// representation are specify in aDrawer.
+/// This kind of the presentation
+/// is converted into IndexedLineSet (VRML).
 /// The computation will be made according to a maximal
 /// chordial deviation.
 pub use crate::ffi_types::VrmlConverter_DeflectionCurve as DeflectionCurve;
@@ -187,7 +187,7 @@ impl DeflectionCurve {
         }
     }
 
-    /// **Source:** `VrmlConverter_DeflectionCurve.hxx`:48 - `VrmlConverter_DeflectionCurve::Add()`
+    /// **Source:** `VrmlConverter_DeflectionCurve.hxx`:49 - `VrmlConverter_DeflectionCurve::Add()`
     /// adds to the OStream the drawing of the curve aCurve with
     /// respect to the maximal chordial deviation defined
     /// by the drawer aDrawer.
@@ -195,14 +195,14 @@ impl DeflectionCurve {
     pub fn add_ostream_curve_handlevrmlconverterdrawer(
         anOStream: &mut crate::ffi_types::Standard_OStream,
         aCurve: &mut crate::adaptor3d::Curve,
-        aDrawer: &crate::ffi_types::HandleVrmlConverterDrawer,
+        aDrawer: &crate::ffi_types::Handle_VrmlConverter_Drawer,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlConverter_DeflectionCurve_add_ostream_curve_handlevrmlconverterdrawer(anOStream, aCurve, aDrawer)
         })
     }
 
-    /// **Source:** `VrmlConverter_DeflectionCurve.hxx`:58 - `VrmlConverter_DeflectionCurve::Add()`
+    /// **Source:** `VrmlConverter_DeflectionCurve.hxx`:59 - `VrmlConverter_DeflectionCurve::Add()`
     /// adds to the OStream the drawing of the curve aCurve with
     /// respect to the maximal chordial deviation defined
     /// by the drawer aDrawer.
@@ -214,14 +214,14 @@ impl DeflectionCurve {
         aCurve: &mut crate::adaptor3d::Curve,
         U1: f64,
         U2: f64,
-        aDrawer: &crate::ffi_types::HandleVrmlConverterDrawer,
+        aDrawer: &crate::ffi_types::Handle_VrmlConverter_Drawer,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlConverter_DeflectionCurve_add_ostream_curve_real2_handlevrmlconverterdrawer(anOStream, aCurve, U1, U2, aDrawer)
         })
     }
 
-    /// **Source:** `VrmlConverter_DeflectionCurve.hxx`:67 - `VrmlConverter_DeflectionCurve::Add()`
+    /// **Source:** `VrmlConverter_DeflectionCurve.hxx`:68 - `VrmlConverter_DeflectionCurve::Add()`
     /// adds to the OStream the drawing of the curve aCurve with
     /// respect to the maximal chordial deviation aDeflection.
     /// The aspect is the current aspect
@@ -241,7 +241,7 @@ impl DeflectionCurve {
         })
     }
 
-    /// **Source:** `VrmlConverter_DeflectionCurve.hxx`:75 - `VrmlConverter_DeflectionCurve::Add()`
+    /// **Source:** `VrmlConverter_DeflectionCurve.hxx`:76 - `VrmlConverter_DeflectionCurve::Add()`
     /// adds to the OStream the drawing of the curve aCurve with
     /// respect to the maximal chordial deviation aDeflection.
     /// The aspect is the current aspect
@@ -249,14 +249,14 @@ impl DeflectionCurve {
         anOStream: &mut crate::ffi_types::Standard_OStream,
         aCurve: &mut crate::adaptor3d::Curve,
         aDeflection: f64,
-        aDrawer: &crate::ffi_types::HandleVrmlConverterDrawer,
+        aDrawer: &crate::ffi_types::Handle_VrmlConverter_Drawer,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlConverter_DeflectionCurve_add_ostream_curve_real_handlevrmlconverterdrawer(anOStream, aCurve, aDeflection, aDrawer)
         })
     }
 
-    /// **Source:** `VrmlConverter_DeflectionCurve.hxx`:85 - `VrmlConverter_DeflectionCurve::Add()`
+    /// **Source:** `VrmlConverter_DeflectionCurve.hxx`:86 - `VrmlConverter_DeflectionCurve::Add()`
     /// adds to the OStream the drawing of the curve aCurve with
     /// respect to the maximal chordial deviation aDeflection.
     /// The aspect is the current aspect
@@ -280,18 +280,18 @@ impl DeflectionCurve {
         })
     }
 
-    /// **Source:** `VrmlConverter_DeflectionCurve.hxx`:93 - `VrmlConverter_DeflectionCurve::Add()`
+    /// **Source:** `VrmlConverter_DeflectionCurve.hxx`:94 - `VrmlConverter_DeflectionCurve::Add()`
     /// adds to the OStream the drawing of the curve aCurve with
     /// the array of parameters to retrieve points on curve.
-    pub fn add_ostream_curve_handletcolstdharray1ofreal_int_handlevrmlconverterdrawer(
+    pub fn add_ostream_curve_harr1_double_int_handlevrmlconverterdrawer(
         anOStream: &mut crate::ffi_types::Standard_OStream,
         aCurve: &crate::adaptor3d::Curve,
-        aParams: &crate::ffi_types::HandleTColStdHArray1OfReal,
+        aParams: &crate::ffi_types::Handle_NCollection_HArray1_double,
         aNbNodes: i32,
-        aDrawer: &crate::ffi_types::HandleVrmlConverterDrawer,
+        aDrawer: &crate::ffi_types::Handle_VrmlConverter_Drawer,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi_extern_TKDEVRML::VrmlConverter_DeflectionCurve_add_ostream_curve_handletcolstdharray1ofreal_int_handlevrmlconverterdrawer(anOStream, aCurve, aParams, aNbNodes, aDrawer)
+            crate::ffi_extern_TKDEVRML::VrmlConverter_DeflectionCurve_add_ostream_curve_harr1_double_int_handlevrmlconverterdrawer(anOStream, aCurve, aParams, aNbNodes, aDrawer)
         })
     }
 }
@@ -300,7 +300,7 @@ impl DeflectionCurve {
 // From VrmlConverter_Drawer.hxx
 // ========================
 
-/// **Source:** `VrmlConverter_Drawer.hxx`:37 - `VrmlConverter_Drawer`
+/// **Source:** `VrmlConverter_Drawer.hxx`:34 - `VrmlConverter_Drawer`
 /// qualifies the aspect properties for
 /// the VRML conversation of a specific kind of object.
 /// This includes for example color, maximal chordial deviation, etc...
@@ -315,7 +315,7 @@ unsafe impl crate::CppDeletable for Drawer {
 }
 
 impl Drawer {
-    /// **Source:** `VrmlConverter_Drawer.hxx`:41 - `VrmlConverter_Drawer::VrmlConverter_Drawer()`
+    /// **Source:** `VrmlConverter_Drawer.hxx`:38 - `VrmlConverter_Drawer::VrmlConverter_Drawer()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -324,30 +324,10 @@ impl Drawer {
         }
     }
 
-    /// **Source:** `VrmlConverter_Drawer.hxx`:45 - `VrmlConverter_Drawer::SetTypeOfDeflection()`
-    /// by default: TOD_Relative; however, except for the shapes,
-    /// the drawing  will be made using the absolute deviation.
-    pub fn set_type_of_deflection(&mut self, aTypeOfDeflection: crate::aspect::TypeOfDeflection) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKDEVRML::VrmlConverter_Drawer_set_type_of_deflection(
-                self as *mut Self,
-                aTypeOfDeflection.into(),
-            )
-        })
-    }
-
-    /// **Source:** `VrmlConverter_Drawer.hxx`:47 - `VrmlConverter_Drawer::TypeOfDeflection()`
-    pub fn type_of_deflection(&self) -> crate::aspect::TypeOfDeflection {
-        crate::aspect::TypeOfDeflection::try_from(crate::check_result(unsafe {
-            crate::ffi_extern_TKDEVRML::VrmlConverter_Drawer_type_of_deflection(self as *const Self)
-        }))
-        .unwrap()
-    }
-
-    /// **Source:** `VrmlConverter_Drawer.hxx`:57 - `VrmlConverter_Drawer::SetMaximalChordialDeviation()`
+    /// **Source:** `VrmlConverter_Drawer.hxx`:54 - `VrmlConverter_Drawer::SetMaximalChordialDeviation()`
     /// Defines the maximal chordial deviation when drawing any curve;
-    /// If this  value is  one  of  the  obvious  parameters  of  methods,
-    /// current  value  from  Drawer won't be used.
+    /// If this value is one of the obvious parameters of methods,
+    /// current value from Drawer won't be used.
     /// This value is used by:
     ///
     /// VrmlConverter_DeflectionCurve
@@ -362,7 +342,7 @@ impl Drawer {
         })
     }
 
-    /// **Source:** `VrmlConverter_Drawer.hxx`:61 - `VrmlConverter_Drawer::MaximalChordialDeviation()`
+    /// **Source:** `VrmlConverter_Drawer.hxx`:58 - `VrmlConverter_Drawer::MaximalChordialDeviation()`
     /// returns the maximal chordial deviation.
     /// Default value: 0.1
     pub fn maximal_chordial_deviation(&self) -> f64 {
@@ -373,7 +353,7 @@ impl Drawer {
         })
     }
 
-    /// **Source:** `VrmlConverter_Drawer.hxx`:64 - `VrmlConverter_Drawer::SetDeviationCoefficient()`
+    /// **Source:** `VrmlConverter_Drawer.hxx`:61 - `VrmlConverter_Drawer::SetDeviationCoefficient()`
     /// default 0.001
     pub fn set_deviation_coefficient(&mut self, aCoefficient: f64) {
         crate::check_void_result(unsafe {
@@ -384,7 +364,7 @@ impl Drawer {
         })
     }
 
-    /// **Source:** `VrmlConverter_Drawer.hxx`:66 - `VrmlConverter_Drawer::DeviationCoefficient()`
+    /// **Source:** `VrmlConverter_Drawer.hxx`:63 - `VrmlConverter_Drawer::DeviationCoefficient()`
     pub fn deviation_coefficient(&self) -> f64 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlConverter_Drawer_deviation_coefficient(
@@ -393,11 +373,11 @@ impl Drawer {
         })
     }
 
-    /// **Source:** `VrmlConverter_Drawer.hxx`:77 - `VrmlConverter_Drawer::SetDiscretisation()`
+    /// **Source:** `VrmlConverter_Drawer.hxx`:74 - `VrmlConverter_Drawer::SetDiscretisation()`
     /// default: 17 points.
-    /// Defines the Discretisation  (myNbPoints) when drawing any curve;
-    /// If this  value is  one  of  the  obvious  parameters  of  methods,
-    /// current  value  from  Drawer won't be used.
+    /// Defines the Discretisation (myNbPoints) when drawing any curve;
+    /// If this value is one of the obvious parameters of methods,
+    /// current value from Drawer won't be used.
     /// This value is used by:
     ///
     /// VrmlConverter_Curve
@@ -412,15 +392,15 @@ impl Drawer {
         })
     }
 
-    /// **Source:** `VrmlConverter_Drawer.hxx`:79 - `VrmlConverter_Drawer::Discretisation()`
+    /// **Source:** `VrmlConverter_Drawer.hxx`:76 - `VrmlConverter_Drawer::Discretisation()`
     pub fn discretisation(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlConverter_Drawer_discretisation(self as *const Self)
         })
     }
 
-    /// **Source:** `VrmlConverter_Drawer.hxx`:87 - `VrmlConverter_Drawer::SetMaximalParameterValue()`
-    /// defines the maximum value allowed  for the first and last
+    /// **Source:** `VrmlConverter_Drawer.hxx`:84 - `VrmlConverter_Drawer::SetMaximalParameterValue()`
+    /// defines the maximum value allowed for the first and last
     /// parameters of an infinite curve.
     /// Default value: 500.
     /// VrmlConverter_Curve
@@ -435,7 +415,7 @@ impl Drawer {
         })
     }
 
-    /// **Source:** `VrmlConverter_Drawer.hxx`:89 - `VrmlConverter_Drawer::MaximalParameterValue()`
+    /// **Source:** `VrmlConverter_Drawer.hxx`:86 - `VrmlConverter_Drawer::MaximalParameterValue()`
     pub fn maximal_parameter_value(&self) -> f64 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlConverter_Drawer_maximal_parameter_value(
@@ -444,7 +424,7 @@ impl Drawer {
         })
     }
 
-    /// **Source:** `VrmlConverter_Drawer.hxx`:93 - `VrmlConverter_Drawer::SetIsoOnPlane()`
+    /// **Source:** `VrmlConverter_Drawer.hxx`:90 - `VrmlConverter_Drawer::SetIsoOnPlane()`
     /// enables the drawing of isos on planes.
     /// By default there are no isos on planes.
     pub fn set_iso_on_plane(&mut self, OnOff: bool) {
@@ -456,7 +436,7 @@ impl Drawer {
         })
     }
 
-    /// **Source:** `VrmlConverter_Drawer.hxx`:96 - `VrmlConverter_Drawer::IsoOnPlane()`
+    /// **Source:** `VrmlConverter_Drawer.hxx`:93 - `VrmlConverter_Drawer::IsoOnPlane()`
     /// returns True if the drawing of isos on planes is enabled.
     pub fn iso_on_plane(&self) -> bool {
         crate::check_result(unsafe {
@@ -464,7 +444,7 @@ impl Drawer {
         })
     }
 
-    /// **Source:** `VrmlConverter_Drawer.hxx`:106 - `VrmlConverter_Drawer::UIsoAspect()`
+    /// **Source:** `VrmlConverter_Drawer.hxx`:103 - `VrmlConverter_Drawer::UIsoAspect()`
     /// Defines the attributes which are used when drawing an
     /// U isoparametric curve of a face. Defines the number
     /// of U isoparametric curves to be drawn for a single face.
@@ -475,7 +455,7 @@ impl Drawer {
     /// VrmlConverter_WFDeflectionRestrictedFace
     pub fn u_iso_aspect(
         &mut self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleVrmlConverterIsoAspect> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_VrmlConverter_IsoAspect> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDEVRML::VrmlConverter_Drawer_u_iso_aspect(self as *mut Self),
@@ -483,8 +463,11 @@ impl Drawer {
         }
     }
 
-    /// **Source:** `VrmlConverter_Drawer.hxx`:108 - `VrmlConverter_Drawer::SetUIsoAspect()`
-    pub fn set_u_iso_aspect(&mut self, anAspect: &crate::ffi_types::HandleVrmlConverterIsoAspect) {
+    /// **Source:** `VrmlConverter_Drawer.hxx`:105 - `VrmlConverter_Drawer::SetUIsoAspect()`
+    pub fn set_u_iso_aspect(
+        &mut self,
+        anAspect: &crate::ffi_types::Handle_VrmlConverter_IsoAspect,
+    ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlConverter_Drawer_set_u_iso_aspect(
                 self as *mut Self,
@@ -493,7 +476,7 @@ impl Drawer {
         })
     }
 
-    /// **Source:** `VrmlConverter_Drawer.hxx`:118 - `VrmlConverter_Drawer::VIsoAspect()`
+    /// **Source:** `VrmlConverter_Drawer.hxx`:115 - `VrmlConverter_Drawer::VIsoAspect()`
     /// Defines the attributes which are used when drawing an
     /// V isoparametric curve of a face. Defines the number
     /// of V isoparametric curves to be drawn for a single face.
@@ -504,7 +487,7 @@ impl Drawer {
     /// VrmlConverter_WFDeflectionRestrictedFace
     pub fn v_iso_aspect(
         &mut self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleVrmlConverterIsoAspect> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_VrmlConverter_IsoAspect> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDEVRML::VrmlConverter_Drawer_v_iso_aspect(self as *mut Self),
@@ -512,8 +495,11 @@ impl Drawer {
         }
     }
 
-    /// **Source:** `VrmlConverter_Drawer.hxx`:120 - `VrmlConverter_Drawer::SetVIsoAspect()`
-    pub fn set_v_iso_aspect(&mut self, anAspect: &crate::ffi_types::HandleVrmlConverterIsoAspect) {
+    /// **Source:** `VrmlConverter_Drawer.hxx`:117 - `VrmlConverter_Drawer::SetVIsoAspect()`
+    pub fn set_v_iso_aspect(
+        &mut self,
+        anAspect: &crate::ffi_types::Handle_VrmlConverter_IsoAspect,
+    ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlConverter_Drawer_set_v_iso_aspect(
                 self as *mut Self,
@@ -522,14 +508,14 @@ impl Drawer {
         })
     }
 
-    /// **Source:** `VrmlConverter_Drawer.hxx`:126 - `VrmlConverter_Drawer::FreeBoundaryAspect()`
+    /// **Source:** `VrmlConverter_Drawer.hxx`:123 - `VrmlConverter_Drawer::FreeBoundaryAspect()`
     /// The default values are the same default values from Vrml package.
     /// These attributes are used by the following algorithms:
     /// VrmlConverter_WFShape
     /// VrmlConverter_WFDeflectionShape
     pub fn free_boundary_aspect(
         &mut self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleVrmlConverterLineAspect> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_VrmlConverter_LineAspect> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDEVRML::VrmlConverter_Drawer_free_boundary_aspect(
@@ -539,10 +525,10 @@ impl Drawer {
         }
     }
 
-    /// **Source:** `VrmlConverter_Drawer.hxx`:128 - `VrmlConverter_Drawer::SetFreeBoundaryAspect()`
+    /// **Source:** `VrmlConverter_Drawer.hxx`:125 - `VrmlConverter_Drawer::SetFreeBoundaryAspect()`
     pub fn set_free_boundary_aspect(
         &mut self,
-        anAspect: &crate::ffi_types::HandleVrmlConverterLineAspect,
+        anAspect: &crate::ffi_types::Handle_VrmlConverter_LineAspect,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlConverter_Drawer_set_free_boundary_aspect(
@@ -552,9 +538,9 @@ impl Drawer {
         })
     }
 
-    /// **Source:** `VrmlConverter_Drawer.hxx`:132 - `VrmlConverter_Drawer::SetFreeBoundaryDraw()`
+    /// **Source:** `VrmlConverter_Drawer.hxx`:129 - `VrmlConverter_Drawer::SetFreeBoundaryDraw()`
     /// enables the drawing the free boundaries
-    /// By default the free boundaries  are drawn.
+    /// By default the free boundaries are drawn.
     pub fn set_free_boundary_draw(&mut self, OnOff: bool) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlConverter_Drawer_set_free_boundary_draw(
@@ -564,7 +550,7 @@ impl Drawer {
         })
     }
 
-    /// **Source:** `VrmlConverter_Drawer.hxx`:135 - `VrmlConverter_Drawer::FreeBoundaryDraw()`
+    /// **Source:** `VrmlConverter_Drawer.hxx`:132 - `VrmlConverter_Drawer::FreeBoundaryDraw()`
     /// returns True if the drawing of the free boundaries is enabled.
     pub fn free_boundary_draw(&self) -> bool {
         crate::check_result(unsafe {
@@ -572,14 +558,14 @@ impl Drawer {
         })
     }
 
-    /// **Source:** `VrmlConverter_Drawer.hxx`:141 - `VrmlConverter_Drawer::WireAspect()`
+    /// **Source:** `VrmlConverter_Drawer.hxx`:138 - `VrmlConverter_Drawer::WireAspect()`
     /// The default values are the same default values from Vrml package.
     /// These attributes are used by the following algorithms:
     /// VrmlConverter_WFShape
     /// VrmlConverter_WFDeflectionShape
     pub fn wire_aspect(
         &mut self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleVrmlConverterLineAspect> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_VrmlConverter_LineAspect> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDEVRML::VrmlConverter_Drawer_wire_aspect(self as *mut Self),
@@ -587,8 +573,11 @@ impl Drawer {
         }
     }
 
-    /// **Source:** `VrmlConverter_Drawer.hxx`:143 - `VrmlConverter_Drawer::SetWireAspect()`
-    pub fn set_wire_aspect(&mut self, anAspect: &crate::ffi_types::HandleVrmlConverterLineAspect) {
+    /// **Source:** `VrmlConverter_Drawer.hxx`:140 - `VrmlConverter_Drawer::SetWireAspect()`
+    pub fn set_wire_aspect(
+        &mut self,
+        anAspect: &crate::ffi_types::Handle_VrmlConverter_LineAspect,
+    ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlConverter_Drawer_set_wire_aspect(
                 self as *mut Self,
@@ -597,16 +586,16 @@ impl Drawer {
         })
     }
 
-    /// **Source:** `VrmlConverter_Drawer.hxx`:147 - `VrmlConverter_Drawer::SetWireDraw()`
+    /// **Source:** `VrmlConverter_Drawer.hxx`:144 - `VrmlConverter_Drawer::SetWireDraw()`
     /// enables the drawing the wire
-    /// By default the wire  are drawn.
+    /// By default the wire are drawn.
     pub fn set_wire_draw(&mut self, OnOff: bool) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlConverter_Drawer_set_wire_draw(self as *mut Self, OnOff)
         })
     }
 
-    /// **Source:** `VrmlConverter_Drawer.hxx`:150 - `VrmlConverter_Drawer::WireDraw()`
+    /// **Source:** `VrmlConverter_Drawer.hxx`:147 - `VrmlConverter_Drawer::WireDraw()`
     /// returns True if the drawing of the wire is enabled.
     pub fn wire_draw(&self) -> bool {
         crate::check_result(unsafe {
@@ -614,14 +603,14 @@ impl Drawer {
         })
     }
 
-    /// **Source:** `VrmlConverter_Drawer.hxx`:156 - `VrmlConverter_Drawer::UnFreeBoundaryAspect()`
+    /// **Source:** `VrmlConverter_Drawer.hxx`:153 - `VrmlConverter_Drawer::UnFreeBoundaryAspect()`
     /// The default values are the same default values from Vrml package.
     /// These attributes are used by the following algorithms:
     /// VrmlConverter_WFShape
     /// VrmlConverter_WFDeflectionShape
     pub fn un_free_boundary_aspect(
         &mut self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleVrmlConverterLineAspect> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_VrmlConverter_LineAspect> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDEVRML::VrmlConverter_Drawer_un_free_boundary_aspect(
@@ -631,10 +620,10 @@ impl Drawer {
         }
     }
 
-    /// **Source:** `VrmlConverter_Drawer.hxx`:158 - `VrmlConverter_Drawer::SetUnFreeBoundaryAspect()`
+    /// **Source:** `VrmlConverter_Drawer.hxx`:155 - `VrmlConverter_Drawer::SetUnFreeBoundaryAspect()`
     pub fn set_un_free_boundary_aspect(
         &mut self,
-        anAspect: &crate::ffi_types::HandleVrmlConverterLineAspect,
+        anAspect: &crate::ffi_types::Handle_VrmlConverter_LineAspect,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlConverter_Drawer_set_un_free_boundary_aspect(
@@ -644,9 +633,9 @@ impl Drawer {
         })
     }
 
-    /// **Source:** `VrmlConverter_Drawer.hxx`:162 - `VrmlConverter_Drawer::SetUnFreeBoundaryDraw()`
+    /// **Source:** `VrmlConverter_Drawer.hxx`:160 - `VrmlConverter_Drawer::SetUnFreeBoundaryDraw()`
     /// enables the drawing the unfree boundaries
-    /// By default the unfree boundaries  are drawn.
+    /// By default the unfree boundaries are drawn.
     pub fn set_un_free_boundary_draw(&mut self, OnOff: bool) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlConverter_Drawer_set_un_free_boundary_draw(
@@ -656,7 +645,7 @@ impl Drawer {
         })
     }
 
-    /// **Source:** `VrmlConverter_Drawer.hxx`:165 - `VrmlConverter_Drawer::UnFreeBoundaryDraw()`
+    /// **Source:** `VrmlConverter_Drawer.hxx`:163 - `VrmlConverter_Drawer::UnFreeBoundaryDraw()`
     /// returns True if the drawing of the unfree boundaries is enabled.
     pub fn un_free_boundary_draw(&self) -> bool {
         crate::check_result(unsafe {
@@ -666,11 +655,11 @@ impl Drawer {
         })
     }
 
-    /// **Source:** `VrmlConverter_Drawer.hxx`:168 - `VrmlConverter_Drawer::LineAspect()`
+    /// **Source:** `VrmlConverter_Drawer.hxx`:166 - `VrmlConverter_Drawer::LineAspect()`
     /// The default values are the same default values from Vrml package.
     pub fn line_aspect(
         &mut self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleVrmlConverterLineAspect> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_VrmlConverter_LineAspect> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDEVRML::VrmlConverter_Drawer_line_aspect(self as *mut Self),
@@ -678,8 +667,11 @@ impl Drawer {
         }
     }
 
-    /// **Source:** `VrmlConverter_Drawer.hxx`:170 - `VrmlConverter_Drawer::SetLineAspect()`
-    pub fn set_line_aspect(&mut self, anAspect: &crate::ffi_types::HandleVrmlConverterLineAspect) {
+    /// **Source:** `VrmlConverter_Drawer.hxx`:168 - `VrmlConverter_Drawer::SetLineAspect()`
+    pub fn set_line_aspect(
+        &mut self,
+        anAspect: &crate::ffi_types::Handle_VrmlConverter_LineAspect,
+    ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlConverter_Drawer_set_line_aspect(
                 self as *mut Self,
@@ -688,10 +680,10 @@ impl Drawer {
         })
     }
 
-    /// **Source:** `VrmlConverter_Drawer.hxx`:172 - `VrmlConverter_Drawer::PointAspect()`
+    /// **Source:** `VrmlConverter_Drawer.hxx`:170 - `VrmlConverter_Drawer::PointAspect()`
     pub fn point_aspect(
         &mut self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleVrmlConverterPointAspect> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_VrmlConverter_PointAspect> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDEVRML::VrmlConverter_Drawer_point_aspect(self as *mut Self),
@@ -699,10 +691,10 @@ impl Drawer {
         }
     }
 
-    /// **Source:** `VrmlConverter_Drawer.hxx`:174 - `VrmlConverter_Drawer::SetPointAspect()`
+    /// **Source:** `VrmlConverter_Drawer.hxx`:172 - `VrmlConverter_Drawer::SetPointAspect()`
     pub fn set_point_aspect(
         &mut self,
-        anAspect: &crate::ffi_types::HandleVrmlConverterPointAspect,
+        anAspect: &crate::ffi_types::Handle_VrmlConverter_PointAspect,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlConverter_Drawer_set_point_aspect(
@@ -712,11 +704,11 @@ impl Drawer {
         })
     }
 
-    /// **Source:** `VrmlConverter_Drawer.hxx`:177 - `VrmlConverter_Drawer::ShadingAspect()`
+    /// **Source:** `VrmlConverter_Drawer.hxx`:175 - `VrmlConverter_Drawer::ShadingAspect()`
     /// The default values are the same default values from Vrml package.
     pub fn shading_aspect(
         &mut self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleVrmlConverterShadingAspect> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_VrmlConverter_ShadingAspect> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDEVRML::VrmlConverter_Drawer_shading_aspect(self as *mut Self),
@@ -724,10 +716,10 @@ impl Drawer {
         }
     }
 
-    /// **Source:** `VrmlConverter_Drawer.hxx`:179 - `VrmlConverter_Drawer::SetShadingAspect()`
+    /// **Source:** `VrmlConverter_Drawer.hxx`:177 - `VrmlConverter_Drawer::SetShadingAspect()`
     pub fn set_shading_aspect(
         &mut self,
-        anAspect: &crate::ffi_types::HandleVrmlConverterShadingAspect,
+        anAspect: &crate::ffi_types::Handle_VrmlConverter_ShadingAspect,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlConverter_Drawer_set_shading_aspect(
@@ -737,8 +729,8 @@ impl Drawer {
         })
     }
 
-    /// **Source:** `VrmlConverter_Drawer.hxx`:183 - `VrmlConverter_Drawer::DrawHiddenLine()`
-    /// returns Standard_True if the hidden lines are to be drawn.
+    /// **Source:** `VrmlConverter_Drawer.hxx`:181 - `VrmlConverter_Drawer::DrawHiddenLine()`
+    /// returns true if the hidden lines are to be drawn.
     /// By default the hidden lines are not drawn.
     pub fn draw_hidden_line(&self) -> bool {
         crate::check_result(unsafe {
@@ -746,8 +738,8 @@ impl Drawer {
         })
     }
 
-    /// **Source:** `VrmlConverter_Drawer.hxx`:186 - `VrmlConverter_Drawer::EnableDrawHiddenLine()`
-    /// sets DrawHiddenLine  =  Standard_True  -  the hidden lines are drawn.
+    /// **Source:** `VrmlConverter_Drawer.hxx`:184 - `VrmlConverter_Drawer::EnableDrawHiddenLine()`
+    /// sets DrawHiddenLine = true  - the hidden lines are drawn.
     pub fn enable_draw_hidden_line(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlConverter_Drawer_enable_draw_hidden_line(
@@ -756,8 +748,8 @@ impl Drawer {
         })
     }
 
-    /// **Source:** `VrmlConverter_Drawer.hxx`:189 - `VrmlConverter_Drawer::DisableDrawHiddenLine()`
-    /// sets DrawHiddenLine  =  Standard_False  -  the hidden lines are not drawn.
+    /// **Source:** `VrmlConverter_Drawer.hxx`:187 - `VrmlConverter_Drawer::DisableDrawHiddenLine()`
+    /// sets DrawHiddenLine = false - the hidden lines are not drawn.
     pub fn disable_draw_hidden_line(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlConverter_Drawer_disable_draw_hidden_line(
@@ -766,12 +758,12 @@ impl Drawer {
         })
     }
 
-    /// **Source:** `VrmlConverter_Drawer.hxx`:193 - `VrmlConverter_Drawer::HiddenLineAspect()`
-    /// returns LineAspect  for  the hidden lines.
+    /// **Source:** `VrmlConverter_Drawer.hxx`:191 - `VrmlConverter_Drawer::HiddenLineAspect()`
+    /// returns LineAspect for the hidden lines.
     /// The default values are the same default values from Vrml package.
     pub fn hidden_line_aspect(
         &mut self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleVrmlConverterLineAspect> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_VrmlConverter_LineAspect> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDEVRML::VrmlConverter_Drawer_hidden_line_aspect(
@@ -781,11 +773,11 @@ impl Drawer {
         }
     }
 
-    /// **Source:** `VrmlConverter_Drawer.hxx`:196 - `VrmlConverter_Drawer::SetHiddenLineAspect()`
-    /// sets LineAspect  for  the hidden lines.
+    /// **Source:** `VrmlConverter_Drawer.hxx`:194 - `VrmlConverter_Drawer::SetHiddenLineAspect()`
+    /// sets LineAspect for the hidden lines.
     pub fn set_hidden_line_aspect(
         &mut self,
-        anAspect: &crate::ffi_types::HandleVrmlConverterLineAspect,
+        anAspect: &crate::ffi_types::Handle_VrmlConverter_LineAspect,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlConverter_Drawer_set_hidden_line_aspect(
@@ -795,12 +787,12 @@ impl Drawer {
         })
     }
 
-    /// **Source:** `VrmlConverter_Drawer.hxx`:200 - `VrmlConverter_Drawer::SeenLineAspect()`
-    /// returns LineAspect  for  the seen lines.
+    /// **Source:** `VrmlConverter_Drawer.hxx`:198 - `VrmlConverter_Drawer::SeenLineAspect()`
+    /// returns LineAspect for the seen lines.
     /// The default values are the same default values from Vrml package.
     pub fn seen_line_aspect(
         &mut self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleVrmlConverterLineAspect> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_VrmlConverter_LineAspect> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDEVRML::VrmlConverter_Drawer_seen_line_aspect(
@@ -810,11 +802,11 @@ impl Drawer {
         }
     }
 
-    /// **Source:** `VrmlConverter_Drawer.hxx`:203 - `VrmlConverter_Drawer::SetSeenLineAspect()`
-    /// sets LineAspect  for  the seen lines.
+    /// **Source:** `VrmlConverter_Drawer.hxx`:201 - `VrmlConverter_Drawer::SetSeenLineAspect()`
+    /// sets LineAspect for the seen lines.
     pub fn set_seen_line_aspect(
         &mut self,
-        anAspect: &crate::ffi_types::HandleVrmlConverterLineAspect,
+        anAspect: &crate::ffi_types::Handle_VrmlConverter_LineAspect,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlConverter_Drawer_set_seen_line_aspect(
@@ -824,8 +816,8 @@ impl Drawer {
         })
     }
 
-    /// **Source:** `VrmlConverter_Drawer.hxx`:205 - `VrmlConverter_Drawer::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `VrmlConverter_Drawer.hxx`:203 - `VrmlConverter_Drawer::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKDEVRML::VrmlConverter_Drawer_dynamic_type(
                 self as *const Self,
@@ -833,7 +825,7 @@ impl Drawer {
         }
     }
 
-    /// **Source:** `VrmlConverter_Drawer.hxx`:205 - `VrmlConverter_Drawer::get_type_name()`
+    /// **Source:** `VrmlConverter_Drawer.hxx`:203 - `VrmlConverter_Drawer::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -844,8 +836,8 @@ impl Drawer {
         .into_owned()
     }
 
-    /// **Source:** `VrmlConverter_Drawer.hxx`:205 - `VrmlConverter_Drawer::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    /// **Source:** `VrmlConverter_Drawer.hxx`:203 - `VrmlConverter_Drawer::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKDEVRML::VrmlConverter_Drawer_get_type_descriptor(),
@@ -878,7 +870,7 @@ impl Drawer {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleVrmlConverterDrawer> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_VrmlConverter_Drawer> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDEVRML::VrmlConverter_Drawer_to_handle(obj.into_raw()),
@@ -886,8 +878,8 @@ impl Drawer {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlConverter_Drawer_inherited_IsInstance(
                 self as *const Self,
@@ -896,8 +888,8 @@ impl Drawer {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlConverter_Drawer_inherited_IsKind(
                 self as *const Self,
@@ -906,7 +898,7 @@ impl Drawer {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -920,7 +912,7 @@ impl Drawer {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlConverter_Drawer_inherited_GetRefCount(
@@ -929,7 +921,7 @@ impl Drawer {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlConverter_Drawer_inherited_IncrementRefCounter(
@@ -938,7 +930,7 @@ impl Drawer {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlConverter_Drawer_inherited_DecrementRefCounter(
@@ -947,7 +939,7 @@ impl Drawer {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlConverter_Drawer_inherited_Delete(self as *const Self)
@@ -955,36 +947,36 @@ impl Drawer {
     }
 }
 
-pub use crate::ffi_types::HandleVrmlConverterDrawer;
+pub use crate::ffi_types::Handle_VrmlConverter_Drawer;
 
-unsafe impl crate::CppDeletable for HandleVrmlConverterDrawer {
+unsafe impl crate::CppDeletable for Handle_VrmlConverter_Drawer {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKDEVRML::HandleVrmlConverterDrawer_destructor(ptr);
+            crate::ffi_extern_TKDEVRML::Handle_VrmlConverter_Drawer_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleVrmlConverterDrawer {
+unsafe impl crate::CppCopyable for Handle_VrmlConverter_Drawer {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
         unsafe {
-            crate::check_result(crate::ffi_extern_TKDEVRML::HandleVrmlConverterDrawer_clone(ptr))
+            crate::check_result(crate::ffi_extern_TKDEVRML::Handle_VrmlConverter_Drawer_clone(ptr))
         }
     }
 }
 
-impl HandleVrmlConverterDrawer {
+impl Handle_VrmlConverter_Drawer {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
         unsafe {
-            crate::ffi_extern_TKDEVRML::HandleVrmlConverterDrawer_is_null(self as *const Self)
+            crate::ffi_extern_TKDEVRML::Handle_VrmlConverter_Drawer_is_null(self as *const Self)
         }
     }
 
     /// Dereference this Handle to access the underlying VrmlConverter_Drawer
     pub fn get(&self) -> &crate::ffi_types::VrmlConverter_Drawer {
         unsafe {
-            &*crate::check_result(crate::ffi_extern_TKDEVRML::HandleVrmlConverterDrawer_get(
+            &*crate::check_result(crate::ffi_extern_TKDEVRML::Handle_VrmlConverter_Drawer_get(
                 self as *const Self,
             ))
         }
@@ -994,7 +986,7 @@ impl HandleVrmlConverterDrawer {
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::VrmlConverter_Drawer {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi_extern_TKDEVRML::HandleVrmlConverterDrawer_get_mut(self as *mut Self),
+                crate::ffi_extern_TKDEVRML::Handle_VrmlConverter_Drawer_get_mut(self as *mut Self),
             )
         }
     }
@@ -1002,36 +994,44 @@ impl HandleVrmlConverterDrawer {
     /// Upcast Handle<VrmlConverter_Drawer> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKDEVRML::HandleVrmlConverterDrawer_to_HandleStandardTransient(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEVRML::Handle_VrmlConverter_Drawer_to_Handle_Standard_Transient(self as *const Self)))
         }
     }
 }
+
+// ── Skipped symbols for Drawer (2 total) ──
+// SKIPPED: **Source:** `VrmlConverter_Drawer.hxx`:42 - `VrmlConverter_Drawer::SetTypeOfDeflection`
+//   method: by default: TOD_Relative; however, except for the shapes,
+//   method: the drawing will be made using the absolute deviation.
+//   Reason: param 'aTypeOfDeflection' uses unknown type 'Aspect_TypeOfDeflection'
+//   // pub fn set_type_of_deflection(&mut self, aTypeOfDeflection: TypeOfDeflection);
+//
+// SKIPPED: **Source:** `VrmlConverter_Drawer.hxx`:44 - `VrmlConverter_Drawer::TypeOfDeflection`
+//   Reason: return type 'Aspect_TypeOfDeflection' is unknown
+//   // pub fn type_of_deflection(&self) -> OwnedPtr<Aspect_TypeOfDeflection>;
+//
 
 // ========================
 // From VrmlConverter_HLRShape.hxx
 // ========================
 
 /// **Source:** `VrmlConverter_HLRShape.hxx`:43 - `VrmlConverter_HLRShape`
-/// HLRShape  -  computes the presentation  of objects
-/// with removal of their hidden  lines for a specific
-/// projector, converts them into VRML  objects  and
-/// writes (adds) them into anOStream.  All requested
-/// properties of  the representation  are  specify in
-/// aDrawer of Drawer class.  This kind  of the presentation
-/// is  converted  into  IndexedLineSet  and   if  they  are  defined
-/// in  Projector into :
+/// HLRShape - computes the presentation of objects
+/// with removal of their hidden lines for a specific
+/// projector, converts them into VRML objects and
+/// writes (adds) them into anOStream. All requested
+/// properties of the representation are specify in
+/// aDrawer of Drawer class. This kind of the presentation
+/// is converted into IndexedLineSet and if they are defined
+/// in Projector info:
 /// PerspectiveCamera,
 /// OrthographicCamera,
 /// DirectionLight,
 /// PointLight,
 /// SpotLight
-/// from  Vrml  package.
+/// from Vrml package.
 pub use crate::ffi_types::VrmlConverter_HLRShape as HLRShape;
 
 unsafe impl crate::CppDeletable for HLRShape {
@@ -1057,8 +1057,8 @@ impl HLRShape {
     pub fn add(
         anOStream: &mut crate::ffi_types::Standard_OStream,
         aShape: &crate::topo_ds::Shape,
-        aDrawer: &crate::ffi_types::HandleVrmlConverterDrawer,
-        aProjector: &crate::ffi_types::HandleVrmlConverterProjector,
+        aDrawer: &crate::ffi_types::Handle_VrmlConverter_Drawer,
+        aProjector: &crate::ffi_types::Handle_VrmlConverter_Projector,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlConverter_HLRShape_add(
@@ -1072,9 +1072,9 @@ impl HLRShape {
 // From VrmlConverter_IsoAspect.hxx
 // ========================
 
-/// **Source:** `VrmlConverter_IsoAspect.hxx`:32 - `VrmlConverter_IsoAspect`
+/// **Source:** `VrmlConverter_IsoAspect.hxx`:29 - `VrmlConverter_IsoAspect`
 /// qualifies the aspect properties for
-/// the VRML conversation of iso curves .
+/// the VRML conversation of iso curves.
 pub use crate::ffi_types::VrmlConverter_IsoAspect as IsoAspect;
 
 unsafe impl crate::CppDeletable for IsoAspect {
@@ -1086,9 +1086,9 @@ unsafe impl crate::CppDeletable for IsoAspect {
 }
 
 impl IsoAspect {
-    /// **Source:** `VrmlConverter_IsoAspect.hxx`:38 - `VrmlConverter_IsoAspect::VrmlConverter_IsoAspect()`
+    /// **Source:** `VrmlConverter_IsoAspect.hxx`:35 - `VrmlConverter_IsoAspect::VrmlConverter_IsoAspect()`
     /// create a default IsoAspect.
-    /// Default value: myNumber  - 10.
+    /// Default value: myNumber - 10.
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -1097,9 +1097,9 @@ impl IsoAspect {
         }
     }
 
-    /// **Source:** `VrmlConverter_IsoAspect.hxx`:40 - `VrmlConverter_IsoAspect::VrmlConverter_IsoAspect()`
+    /// **Source:** `VrmlConverter_IsoAspect.hxx`:37 - `VrmlConverter_IsoAspect::VrmlConverter_IsoAspect()`
     pub fn new_handlevrmlmaterial_bool_int(
-        aMaterial: &crate::ffi_types::HandleVrmlMaterial,
+        aMaterial: &crate::ffi_types::Handle_Vrml_Material,
         OnOff: bool,
         aNumber: i32,
     ) -> crate::OwnedPtr<Self> {
@@ -1108,7 +1108,7 @@ impl IsoAspect {
         }
     }
 
-    /// **Source:** `VrmlConverter_IsoAspect.hxx`:44 - `VrmlConverter_IsoAspect::SetNumber()`
+    /// **Source:** `VrmlConverter_IsoAspect.hxx`:41 - `VrmlConverter_IsoAspect::SetNumber()`
     pub fn set_number(&mut self, aNumber: i32) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlConverter_IsoAspect_set_number(
@@ -1118,7 +1118,7 @@ impl IsoAspect {
         })
     }
 
-    /// **Source:** `VrmlConverter_IsoAspect.hxx`:48 - `VrmlConverter_IsoAspect::Number()`
+    /// **Source:** `VrmlConverter_IsoAspect.hxx`:45 - `VrmlConverter_IsoAspect::Number()`
     /// returns the number of U or V isoparametric curves drawn for a
     /// single face.
     pub fn number(&self) -> i32 {
@@ -1127,8 +1127,8 @@ impl IsoAspect {
         })
     }
 
-    /// **Source:** `VrmlConverter_IsoAspect.hxx`:50 - `VrmlConverter_IsoAspect::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `VrmlConverter_IsoAspect.hxx`:47 - `VrmlConverter_IsoAspect::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKDEVRML::VrmlConverter_IsoAspect_dynamic_type(
@@ -1138,7 +1138,7 @@ impl IsoAspect {
         }
     }
 
-    /// **Source:** `VrmlConverter_IsoAspect.hxx`:50 - `VrmlConverter_IsoAspect::get_type_name()`
+    /// **Source:** `VrmlConverter_IsoAspect.hxx`:47 - `VrmlConverter_IsoAspect::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -1149,8 +1149,8 @@ impl IsoAspect {
         .into_owned()
     }
 
-    /// **Source:** `VrmlConverter_IsoAspect.hxx`:50 - `VrmlConverter_IsoAspect::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    /// **Source:** `VrmlConverter_IsoAspect.hxx`:47 - `VrmlConverter_IsoAspect::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKDEVRML::VrmlConverter_IsoAspect_get_type_descriptor(),
@@ -1205,7 +1205,7 @@ impl IsoAspect {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleVrmlConverterIsoAspect> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_VrmlConverter_IsoAspect> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDEVRML::VrmlConverter_IsoAspect_to_handle(obj.into_raw()),
@@ -1213,8 +1213,8 @@ impl IsoAspect {
         }
     }
 
-    /// Inherited: **Source:** `VrmlConverter_LineAspect.hxx`:42 - `VrmlConverter_LineAspect::SetMaterial()`
-    pub fn set_material(&mut self, aMaterial: &crate::ffi_types::HandleVrmlMaterial) {
+    /// Inherited: **Source:** `VrmlConverter_LineAspect.hxx`:39 - `VrmlConverter_LineAspect::SetMaterial()`
+    pub fn set_material(&mut self, aMaterial: &crate::ffi_types::Handle_Vrml_Material) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlConverter_IsoAspect_inherited_SetMaterial(
                 self as *mut Self,
@@ -1223,8 +1223,8 @@ impl IsoAspect {
         })
     }
 
-    /// Inherited: **Source:** `VrmlConverter_LineAspect.hxx`:44 - `VrmlConverter_LineAspect::Material()`
-    pub fn material(&self) -> crate::OwnedPtr<crate::ffi_types::HandleVrmlMaterial> {
+    /// Inherited: **Source:** `VrmlConverter_LineAspect.hxx`:41 - `VrmlConverter_LineAspect::Material()`
+    pub fn material(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_Vrml_Material> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDEVRML::VrmlConverter_IsoAspect_inherited_Material(
@@ -1234,7 +1234,7 @@ impl IsoAspect {
         }
     }
 
-    /// Inherited: **Source:** `VrmlConverter_LineAspect.hxx`:49 - `VrmlConverter_LineAspect::SetHasMaterial()`
+    /// Inherited: **Source:** `VrmlConverter_LineAspect.hxx`:46 - `VrmlConverter_LineAspect::SetHasMaterial()`
     pub fn set_has_material(&mut self, OnOff: bool) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlConverter_IsoAspect_inherited_SetHasMaterial(
@@ -1244,7 +1244,7 @@ impl IsoAspect {
         })
     }
 
-    /// Inherited: **Source:** `VrmlConverter_LineAspect.hxx`:52 - `VrmlConverter_LineAspect::HasMaterial()`
+    /// Inherited: **Source:** `VrmlConverter_LineAspect.hxx`:49 - `VrmlConverter_LineAspect::HasMaterial()`
     pub fn has_material(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlConverter_IsoAspect_inherited_HasMaterial(
@@ -1253,8 +1253,8 @@ impl IsoAspect {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlConverter_IsoAspect_inherited_IsInstance(
                 self as *const Self,
@@ -1263,8 +1263,8 @@ impl IsoAspect {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlConverter_IsoAspect_inherited_IsKind(
                 self as *const Self,
@@ -1273,7 +1273,7 @@ impl IsoAspect {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -1289,7 +1289,7 @@ impl IsoAspect {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlConverter_IsoAspect_inherited_GetRefCount(
@@ -1298,7 +1298,7 @@ impl IsoAspect {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlConverter_IsoAspect_inherited_IncrementRefCounter(
@@ -1307,7 +1307,7 @@ impl IsoAspect {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlConverter_IsoAspect_inherited_DecrementRefCounter(
@@ -1316,7 +1316,7 @@ impl IsoAspect {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlConverter_IsoAspect_inherited_Delete(
@@ -1326,36 +1326,38 @@ impl IsoAspect {
     }
 }
 
-pub use crate::ffi_types::HandleVrmlConverterIsoAspect;
+pub use crate::ffi_types::Handle_VrmlConverter_IsoAspect;
 
-unsafe impl crate::CppDeletable for HandleVrmlConverterIsoAspect {
+unsafe impl crate::CppDeletable for Handle_VrmlConverter_IsoAspect {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKDEVRML::HandleVrmlConverterIsoAspect_destructor(ptr);
+            crate::ffi_extern_TKDEVRML::Handle_VrmlConverter_IsoAspect_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleVrmlConverterIsoAspect {
+unsafe impl crate::CppCopyable for Handle_VrmlConverter_IsoAspect {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
         unsafe {
-            crate::check_result(crate::ffi_extern_TKDEVRML::HandleVrmlConverterIsoAspect_clone(ptr))
+            crate::check_result(crate::ffi_extern_TKDEVRML::Handle_VrmlConverter_IsoAspect_clone(
+                ptr,
+            ))
         }
     }
 }
 
-impl HandleVrmlConverterIsoAspect {
+impl Handle_VrmlConverter_IsoAspect {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
         unsafe {
-            crate::ffi_extern_TKDEVRML::HandleVrmlConverterIsoAspect_is_null(self as *const Self)
+            crate::ffi_extern_TKDEVRML::Handle_VrmlConverter_IsoAspect_is_null(self as *const Self)
         }
     }
 
     /// Dereference this Handle to access the underlying VrmlConverter_IsoAspect
     pub fn get(&self) -> &crate::ffi_types::VrmlConverter_IsoAspect {
         unsafe {
-            &*crate::check_result(crate::ffi_extern_TKDEVRML::HandleVrmlConverterIsoAspect_get(
+            &*crate::check_result(crate::ffi_extern_TKDEVRML::Handle_VrmlConverter_IsoAspect_get(
                 self as *const Self,
             ))
         }
@@ -1365,7 +1367,9 @@ impl HandleVrmlConverterIsoAspect {
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::VrmlConverter_IsoAspect {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi_extern_TKDEVRML::HandleVrmlConverterIsoAspect_get_mut(self as *mut Self),
+                crate::ffi_extern_TKDEVRML::Handle_VrmlConverter_IsoAspect_get_mut(
+                    self as *mut Self,
+                ),
             )
         }
     }
@@ -1373,22 +1377,18 @@ impl HandleVrmlConverterIsoAspect {
     /// Upcast Handle<VrmlConverter_IsoAspect> to Handle<VrmlConverter_LineAspect>
     pub fn to_handle_line_aspect(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleVrmlConverterLineAspect> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_VrmlConverter_LineAspect> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEVRML::HandleVrmlConverterIsoAspect_to_HandleVrmlConverterLineAspect(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEVRML::Handle_VrmlConverter_IsoAspect_to_Handle_VrmlConverter_LineAspect(self as *const Self)))
         }
     }
 
     /// Upcast Handle<VrmlConverter_IsoAspect> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKDEVRML::HandleVrmlConverterIsoAspect_to_HandleStandardTransient(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEVRML::Handle_VrmlConverter_IsoAspect_to_Handle_Standard_Transient(self as *const Self)))
         }
     }
 }
@@ -1397,9 +1397,9 @@ impl HandleVrmlConverterIsoAspect {
 // From VrmlConverter_LineAspect.hxx
 // ========================
 
-/// **Source:** `VrmlConverter_LineAspect.hxx`:31 - `VrmlConverter_LineAspect`
+/// **Source:** `VrmlConverter_LineAspect.hxx`:28 - `VrmlConverter_LineAspect`
 /// qualifies the aspect properties for
-/// the VRML conversation of a Curve and  a  DeflectionCurve .
+/// the VRML conversation of a Curve and a DeflectionCurve.
 pub use crate::ffi_types::VrmlConverter_LineAspect as LineAspect;
 
 unsafe impl crate::CppDeletable for LineAspect {
@@ -1411,9 +1411,9 @@ unsafe impl crate::CppDeletable for LineAspect {
 }
 
 impl LineAspect {
-    /// **Source:** `VrmlConverter_LineAspect.hxx`:37 - `VrmlConverter_LineAspect::VrmlConverter_LineAspect()`
+    /// **Source:** `VrmlConverter_LineAspect.hxx`:34 - `VrmlConverter_LineAspect::VrmlConverter_LineAspect()`
     /// create a default LineAspect.
-    /// Default value: HasMaterial  =  False  - a  line  hasn't  own  material (color)
+    /// Default value: HasMaterial = False - a line hasn't own material (color)
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -1422,9 +1422,9 @@ impl LineAspect {
         }
     }
 
-    /// **Source:** `VrmlConverter_LineAspect.hxx`:39 - `VrmlConverter_LineAspect::VrmlConverter_LineAspect()`
+    /// **Source:** `VrmlConverter_LineAspect.hxx`:36 - `VrmlConverter_LineAspect::VrmlConverter_LineAspect()`
     pub fn new_handlevrmlmaterial_bool(
-        aMaterial: &crate::ffi_types::HandleVrmlMaterial,
+        aMaterial: &crate::ffi_types::Handle_Vrml_Material,
         OnOff: bool,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -1436,8 +1436,8 @@ impl LineAspect {
         }
     }
 
-    /// **Source:** `VrmlConverter_LineAspect.hxx`:42 - `VrmlConverter_LineAspect::SetMaterial()`
-    pub fn set_material(&mut self, aMaterial: &crate::ffi_types::HandleVrmlMaterial) {
+    /// **Source:** `VrmlConverter_LineAspect.hxx`:39 - `VrmlConverter_LineAspect::SetMaterial()`
+    pub fn set_material(&mut self, aMaterial: &crate::ffi_types::Handle_Vrml_Material) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlConverter_LineAspect_set_material(
                 self as *mut Self,
@@ -1446,8 +1446,8 @@ impl LineAspect {
         })
     }
 
-    /// **Source:** `VrmlConverter_LineAspect.hxx`:44 - `VrmlConverter_LineAspect::Material()`
-    pub fn material(&self) -> crate::OwnedPtr<crate::ffi_types::HandleVrmlMaterial> {
+    /// **Source:** `VrmlConverter_LineAspect.hxx`:41 - `VrmlConverter_LineAspect::Material()`
+    pub fn material(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_Vrml_Material> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDEVRML::VrmlConverter_LineAspect_material(self as *const Self),
@@ -1455,10 +1455,10 @@ impl LineAspect {
         }
     }
 
-    /// **Source:** `VrmlConverter_LineAspect.hxx`:49 - `VrmlConverter_LineAspect::SetHasMaterial()`
-    /// defines the necessary of writing  own  Material from Vrml into  output  OStream.
-    /// By default False  -  the material is not writing into OStream,
-    /// True  -  the material is writing.
+    /// **Source:** `VrmlConverter_LineAspect.hxx`:46 - `VrmlConverter_LineAspect::SetHasMaterial()`
+    /// defines the necessary of writing own Material from Vrml into output OStream.
+    /// By default False - the material is not writing into OStream,
+    /// True - the material is writing.
     pub fn set_has_material(&mut self, OnOff: bool) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlConverter_LineAspect_set_has_material(
@@ -1468,16 +1468,16 @@ impl LineAspect {
         })
     }
 
-    /// **Source:** `VrmlConverter_LineAspect.hxx`:52 - `VrmlConverter_LineAspect::HasMaterial()`
-    /// returns True if the  materials is  writing into OStream.
+    /// **Source:** `VrmlConverter_LineAspect.hxx`:49 - `VrmlConverter_LineAspect::HasMaterial()`
+    /// returns True if the materials is writing into OStream.
     pub fn has_material(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlConverter_LineAspect_has_material(self as *const Self)
         })
     }
 
-    /// **Source:** `VrmlConverter_LineAspect.hxx`:54 - `VrmlConverter_LineAspect::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `VrmlConverter_LineAspect.hxx`:51 - `VrmlConverter_LineAspect::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKDEVRML::VrmlConverter_LineAspect_dynamic_type(
@@ -1487,7 +1487,7 @@ impl LineAspect {
         }
     }
 
-    /// **Source:** `VrmlConverter_LineAspect.hxx`:54 - `VrmlConverter_LineAspect::get_type_name()`
+    /// **Source:** `VrmlConverter_LineAspect.hxx`:51 - `VrmlConverter_LineAspect::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -1498,8 +1498,8 @@ impl LineAspect {
         .into_owned()
     }
 
-    /// **Source:** `VrmlConverter_LineAspect.hxx`:54 - `VrmlConverter_LineAspect::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    /// **Source:** `VrmlConverter_LineAspect.hxx`:51 - `VrmlConverter_LineAspect::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKDEVRML::VrmlConverter_LineAspect_get_type_descriptor(),
@@ -1532,7 +1532,7 @@ impl LineAspect {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleVrmlConverterLineAspect> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_VrmlConverter_LineAspect> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDEVRML::VrmlConverter_LineAspect_to_handle(obj.into_raw()),
@@ -1540,8 +1540,8 @@ impl LineAspect {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlConverter_LineAspect_inherited_IsInstance(
                 self as *const Self,
@@ -1550,8 +1550,8 @@ impl LineAspect {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlConverter_LineAspect_inherited_IsKind(
                 self as *const Self,
@@ -1560,7 +1560,7 @@ impl LineAspect {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -1576,7 +1576,7 @@ impl LineAspect {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlConverter_LineAspect_inherited_GetRefCount(
@@ -1585,7 +1585,7 @@ impl LineAspect {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlConverter_LineAspect_inherited_IncrementRefCounter(
@@ -1594,7 +1594,7 @@ impl LineAspect {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlConverter_LineAspect_inherited_DecrementRefCounter(
@@ -1603,7 +1603,7 @@ impl LineAspect {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlConverter_LineAspect_inherited_Delete(
@@ -1613,38 +1613,38 @@ impl LineAspect {
     }
 }
 
-pub use crate::ffi_types::HandleVrmlConverterLineAspect;
+pub use crate::ffi_types::Handle_VrmlConverter_LineAspect;
 
-unsafe impl crate::CppDeletable for HandleVrmlConverterLineAspect {
+unsafe impl crate::CppDeletable for Handle_VrmlConverter_LineAspect {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKDEVRML::HandleVrmlConverterLineAspect_destructor(ptr);
+            crate::ffi_extern_TKDEVRML::Handle_VrmlConverter_LineAspect_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleVrmlConverterLineAspect {
+unsafe impl crate::CppCopyable for Handle_VrmlConverter_LineAspect {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
         unsafe {
-            crate::check_result(crate::ffi_extern_TKDEVRML::HandleVrmlConverterLineAspect_clone(
+            crate::check_result(crate::ffi_extern_TKDEVRML::Handle_VrmlConverter_LineAspect_clone(
                 ptr,
             ))
         }
     }
 }
 
-impl HandleVrmlConverterLineAspect {
+impl Handle_VrmlConverter_LineAspect {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
         unsafe {
-            crate::ffi_extern_TKDEVRML::HandleVrmlConverterLineAspect_is_null(self as *const Self)
+            crate::ffi_extern_TKDEVRML::Handle_VrmlConverter_LineAspect_is_null(self as *const Self)
         }
     }
 
     /// Dereference this Handle to access the underlying VrmlConverter_LineAspect
     pub fn get(&self) -> &crate::ffi_types::VrmlConverter_LineAspect {
         unsafe {
-            &*crate::check_result(crate::ffi_extern_TKDEVRML::HandleVrmlConverterLineAspect_get(
+            &*crate::check_result(crate::ffi_extern_TKDEVRML::Handle_VrmlConverter_LineAspect_get(
                 self as *const Self,
             ))
         }
@@ -1654,7 +1654,7 @@ impl HandleVrmlConverterLineAspect {
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::VrmlConverter_LineAspect {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi_extern_TKDEVRML::HandleVrmlConverterLineAspect_get_mut(
+                crate::ffi_extern_TKDEVRML::Handle_VrmlConverter_LineAspect_get_mut(
                     self as *mut Self,
                 ),
             )
@@ -1664,9 +1664,9 @@ impl HandleVrmlConverterLineAspect {
     /// Upcast Handle<VrmlConverter_LineAspect> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEVRML::HandleVrmlConverterLineAspect_to_HandleStandardTransient(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEVRML::Handle_VrmlConverter_LineAspect_to_Handle_Standard_Transient(self as *const Self)))
         }
     }
 
@@ -1675,9 +1675,9 @@ impl HandleVrmlConverterLineAspect {
     /// Returns `None` if the handle does not point to a `VrmlConverter_IsoAspect` (or subclass).
     pub fn downcast_to_iso_aspect(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleVrmlConverterIsoAspect>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_VrmlConverter_IsoAspect>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKDEVRML::HandleVrmlConverterLineAspect_downcast_to_HandleVrmlConverterIsoAspect(self as *const Self)
+            crate::ffi_extern_TKDEVRML::Handle_VrmlConverter_LineAspect_downcast_to_Handle_VrmlConverter_IsoAspect(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -1691,7 +1691,7 @@ impl HandleVrmlConverterLineAspect {
 // From VrmlConverter_PointAspect.hxx
 // ========================
 
-/// **Source:** `VrmlConverter_PointAspect.hxx`:31 - `VrmlConverter_PointAspect`
+/// **Source:** `VrmlConverter_PointAspect.hxx`:28 - `VrmlConverter_PointAspect`
 /// qualifies the aspect properties for
 /// the VRML conversation of a Point Set.
 pub use crate::ffi_types::VrmlConverter_PointAspect as PointAspect;
@@ -1705,9 +1705,9 @@ unsafe impl crate::CppDeletable for PointAspect {
 }
 
 impl PointAspect {
-    /// **Source:** `VrmlConverter_PointAspect.hxx`:37 - `VrmlConverter_PointAspect::VrmlConverter_PointAspect()`
+    /// **Source:** `VrmlConverter_PointAspect.hxx`:34 - `VrmlConverter_PointAspect::VrmlConverter_PointAspect()`
     /// create a default PointAspect.
-    /// Default value: HasMaterial  =  False  - a  line  hasn't  own  material (color)
+    /// Default value: HasMaterial = False - a line hasn't own material (color)
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -1716,9 +1716,9 @@ impl PointAspect {
         }
     }
 
-    /// **Source:** `VrmlConverter_PointAspect.hxx`:39 - `VrmlConverter_PointAspect::VrmlConverter_PointAspect()`
+    /// **Source:** `VrmlConverter_PointAspect.hxx`:36 - `VrmlConverter_PointAspect::VrmlConverter_PointAspect()`
     pub fn new_handlevrmlmaterial_bool(
-        aMaterial: &crate::ffi_types::HandleVrmlMaterial,
+        aMaterial: &crate::ffi_types::Handle_Vrml_Material,
         OnOff: bool,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -1730,8 +1730,8 @@ impl PointAspect {
         }
     }
 
-    /// **Source:** `VrmlConverter_PointAspect.hxx`:42 - `VrmlConverter_PointAspect::SetMaterial()`
-    pub fn set_material(&mut self, aMaterial: &crate::ffi_types::HandleVrmlMaterial) {
+    /// **Source:** `VrmlConverter_PointAspect.hxx`:39 - `VrmlConverter_PointAspect::SetMaterial()`
+    pub fn set_material(&mut self, aMaterial: &crate::ffi_types::Handle_Vrml_Material) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlConverter_PointAspect_set_material(
                 self as *mut Self,
@@ -1740,8 +1740,8 @@ impl PointAspect {
         })
     }
 
-    /// **Source:** `VrmlConverter_PointAspect.hxx`:44 - `VrmlConverter_PointAspect::Material()`
-    pub fn material(&self) -> crate::OwnedPtr<crate::ffi_types::HandleVrmlMaterial> {
+    /// **Source:** `VrmlConverter_PointAspect.hxx`:41 - `VrmlConverter_PointAspect::Material()`
+    pub fn material(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_Vrml_Material> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDEVRML::VrmlConverter_PointAspect_material(self as *const Self),
@@ -1749,10 +1749,10 @@ impl PointAspect {
         }
     }
 
-    /// **Source:** `VrmlConverter_PointAspect.hxx`:49 - `VrmlConverter_PointAspect::SetHasMaterial()`
-    /// defines the necessary of writing  own  Material from Vrml into  output  OStream.
-    /// By default False  -  the material is not writing into OStream,
-    /// True  -  the material is writing.
+    /// **Source:** `VrmlConverter_PointAspect.hxx`:46 - `VrmlConverter_PointAspect::SetHasMaterial()`
+    /// defines the necessary of writing own Material from Vrml into output OStream.
+    /// By default False - the material is not writing into OStream,
+    /// True - the material is writing.
     pub fn set_has_material(&mut self, OnOff: bool) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlConverter_PointAspect_set_has_material(
@@ -1762,16 +1762,16 @@ impl PointAspect {
         })
     }
 
-    /// **Source:** `VrmlConverter_PointAspect.hxx`:52 - `VrmlConverter_PointAspect::HasMaterial()`
-    /// returns True if the  materials is  writing into OStream.
+    /// **Source:** `VrmlConverter_PointAspect.hxx`:49 - `VrmlConverter_PointAspect::HasMaterial()`
+    /// returns True if the materials is writing into OStream.
     pub fn has_material(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlConverter_PointAspect_has_material(self as *const Self)
         })
     }
 
-    /// **Source:** `VrmlConverter_PointAspect.hxx`:54 - `VrmlConverter_PointAspect::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `VrmlConverter_PointAspect.hxx`:51 - `VrmlConverter_PointAspect::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKDEVRML::VrmlConverter_PointAspect_dynamic_type(
@@ -1781,7 +1781,7 @@ impl PointAspect {
         }
     }
 
-    /// **Source:** `VrmlConverter_PointAspect.hxx`:54 - `VrmlConverter_PointAspect::get_type_name()`
+    /// **Source:** `VrmlConverter_PointAspect.hxx`:51 - `VrmlConverter_PointAspect::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -1792,8 +1792,8 @@ impl PointAspect {
         .into_owned()
     }
 
-    /// **Source:** `VrmlConverter_PointAspect.hxx`:54 - `VrmlConverter_PointAspect::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    /// **Source:** `VrmlConverter_PointAspect.hxx`:51 - `VrmlConverter_PointAspect::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKDEVRML::VrmlConverter_PointAspect_get_type_descriptor(),
@@ -1826,7 +1826,7 @@ impl PointAspect {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleVrmlConverterPointAspect> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_VrmlConverter_PointAspect> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDEVRML::VrmlConverter_PointAspect_to_handle(obj.into_raw()),
@@ -1834,8 +1834,8 @@ impl PointAspect {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlConverter_PointAspect_inherited_IsInstance(
                 self as *const Self,
@@ -1844,8 +1844,8 @@ impl PointAspect {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlConverter_PointAspect_inherited_IsKind(
                 self as *const Self,
@@ -1854,7 +1854,7 @@ impl PointAspect {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -1870,7 +1870,7 @@ impl PointAspect {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlConverter_PointAspect_inherited_GetRefCount(
@@ -1879,7 +1879,7 @@ impl PointAspect {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlConverter_PointAspect_inherited_IncrementRefCounter(
@@ -1888,7 +1888,7 @@ impl PointAspect {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlConverter_PointAspect_inherited_DecrementRefCounter(
@@ -1897,7 +1897,7 @@ impl PointAspect {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlConverter_PointAspect_inherited_Delete(
@@ -1907,38 +1907,40 @@ impl PointAspect {
     }
 }
 
-pub use crate::ffi_types::HandleVrmlConverterPointAspect;
+pub use crate::ffi_types::Handle_VrmlConverter_PointAspect;
 
-unsafe impl crate::CppDeletable for HandleVrmlConverterPointAspect {
+unsafe impl crate::CppDeletable for Handle_VrmlConverter_PointAspect {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKDEVRML::HandleVrmlConverterPointAspect_destructor(ptr);
+            crate::ffi_extern_TKDEVRML::Handle_VrmlConverter_PointAspect_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleVrmlConverterPointAspect {
+unsafe impl crate::CppCopyable for Handle_VrmlConverter_PointAspect {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
         unsafe {
-            crate::check_result(crate::ffi_extern_TKDEVRML::HandleVrmlConverterPointAspect_clone(
+            crate::check_result(crate::ffi_extern_TKDEVRML::Handle_VrmlConverter_PointAspect_clone(
                 ptr,
             ))
         }
     }
 }
 
-impl HandleVrmlConverterPointAspect {
+impl Handle_VrmlConverter_PointAspect {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
         unsafe {
-            crate::ffi_extern_TKDEVRML::HandleVrmlConverterPointAspect_is_null(self as *const Self)
+            crate::ffi_extern_TKDEVRML::Handle_VrmlConverter_PointAspect_is_null(
+                self as *const Self,
+            )
         }
     }
 
     /// Dereference this Handle to access the underlying VrmlConverter_PointAspect
     pub fn get(&self) -> &crate::ffi_types::VrmlConverter_PointAspect {
         unsafe {
-            &*crate::check_result(crate::ffi_extern_TKDEVRML::HandleVrmlConverterPointAspect_get(
+            &*crate::check_result(crate::ffi_extern_TKDEVRML::Handle_VrmlConverter_PointAspect_get(
                 self as *const Self,
             ))
         }
@@ -1948,7 +1950,7 @@ impl HandleVrmlConverterPointAspect {
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::VrmlConverter_PointAspect {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi_extern_TKDEVRML::HandleVrmlConverterPointAspect_get_mut(
+                crate::ffi_extern_TKDEVRML::Handle_VrmlConverter_PointAspect_get_mut(
                     self as *mut Self,
                 ),
             )
@@ -1958,9 +1960,9 @@ impl HandleVrmlConverterPointAspect {
     /// Upcast Handle<VrmlConverter_PointAspect> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEVRML::HandleVrmlConverterPointAspect_to_HandleStandardTransient(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEVRML::Handle_VrmlConverter_PointAspect_to_Handle_Standard_Transient(self as *const Self)))
         }
     }
 }
@@ -1969,12 +1971,12 @@ impl HandleVrmlConverterPointAspect {
 // From VrmlConverter_Projector.hxx
 // ========================
 
-/// **Source:** `VrmlConverter_Projector.hxx`:44 - `VrmlConverter_Projector`
-/// defines projector  and calculates properties of cameras and lights from Vrml
-/// ( OrthograpicCamera, PerspectiveCamera, DirectionalLight, PointLight, SpotLight
-/// and  MatrixTransform  )  to display all scene  shapes  with  arbitrary locations
-/// for requested the Projection Vector,  High Point Direction and the Focus
-/// and adds them ( method Add ) to anOSream.
+/// **Source:** `VrmlConverter_Projector.hxx`:42 - `VrmlConverter_Projector`
+/// defines projector and calculates properties of cameras and lights from Vrml
+/// (OrthograpicCamera, PerspectiveCamera, DirectionalLight, PointLight, SpotLight
+/// and MatrixTransform) to display all scene shapes with arbitrary locations
+/// for requested the Projection Vector, High Point Direction and the Focus
+/// and adds them (method Add) to anOSream.
 pub use crate::ffi_types::VrmlConverter_Projector as Projector;
 
 unsafe impl crate::CppDeletable for Projector {
@@ -1986,9 +1988,9 @@ unsafe impl crate::CppDeletable for Projector {
 }
 
 impl Projector {
-    /// **Source:** `VrmlConverter_Projector.hxx`:48 - `VrmlConverter_Projector::VrmlConverter_Projector()`
-    pub fn new_array1ofshape_real7_typeofcamera_typeoflight(
-        Shapes: &crate::ffi_types::TopTools_Array1OfShape,
+    /// **Source:** `VrmlConverter_Projector.hxx`:46 - `VrmlConverter_Projector::VrmlConverter_Projector()`
+    pub fn new_arr1_shape_real7_typeofcamera_typeoflight(
+        Shapes: &crate::ffi_types::NCollection_Array1_TopoDS_Shape,
         Focus: f64,
         DX: f64,
         DY: f64,
@@ -2000,11 +2002,11 @@ impl Projector {
         Light: crate::vrml_converter::TypeOfLight,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEVRML::VrmlConverter_Projector_ctor_array1ofshape_real7_typeofcamera_typeoflight(Shapes, Focus, DX, DY, DZ, XUp, YUp, ZUp, Camera.into(), Light.into())))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEVRML::VrmlConverter_Projector_ctor_arr1_shape_real7_typeofcamera_typeoflight(Shapes, Focus, DX, DY, DZ, XUp, YUp, ZUp, Camera.into(), Light.into())))
         }
     }
 
-    /// **Source:** `VrmlConverter_Projector.hxx`:60 - `VrmlConverter_Projector::SetCamera()`
+    /// **Source:** `VrmlConverter_Projector.hxx`:58 - `VrmlConverter_Projector::SetCamera()`
     pub fn set_camera(&mut self, aCamera: crate::vrml_converter::TypeOfCamera) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlConverter_Projector_set_camera(
@@ -2014,7 +2016,7 @@ impl Projector {
         })
     }
 
-    /// **Source:** `VrmlConverter_Projector.hxx`:62 - `VrmlConverter_Projector::Camera()`
+    /// **Source:** `VrmlConverter_Projector.hxx`:60 - `VrmlConverter_Projector::Camera()`
     pub fn camera(&self) -> crate::vrml_converter::TypeOfCamera {
         crate::vrml_converter::TypeOfCamera::try_from(crate::check_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlConverter_Projector_camera(self as *const Self)
@@ -2022,7 +2024,7 @@ impl Projector {
         .unwrap()
     }
 
-    /// **Source:** `VrmlConverter_Projector.hxx`:64 - `VrmlConverter_Projector::SetLight()`
+    /// **Source:** `VrmlConverter_Projector.hxx`:62 - `VrmlConverter_Projector::SetLight()`
     pub fn set_light(&mut self, aLight: crate::vrml_converter::TypeOfLight) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlConverter_Projector_set_light(
@@ -2032,7 +2034,7 @@ impl Projector {
         })
     }
 
-    /// **Source:** `VrmlConverter_Projector.hxx`:66 - `VrmlConverter_Projector::Light()`
+    /// **Source:** `VrmlConverter_Projector.hxx`:64 - `VrmlConverter_Projector::Light()`
     pub fn light(&self) -> crate::vrml_converter::TypeOfLight {
         crate::vrml_converter::TypeOfLight::try_from(crate::check_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlConverter_Projector_light(self as *const Self)
@@ -2040,21 +2042,21 @@ impl Projector {
         .unwrap()
     }
 
-    /// **Source:** `VrmlConverter_Projector.hxx`:75 - `VrmlConverter_Projector::Add()`
-    /// Adds  into anOStream  if  they  are  defined in  Create.
+    /// **Source:** `VrmlConverter_Projector.hxx`:73 - `VrmlConverter_Projector::Add()`
+    /// Adds into anOStream if they are defined in Create.
     /// PerspectiveCamera,
     /// OrthographicCamera,
     /// DirectionLight,
     /// PointLight,
     /// SpotLight
-    /// with  MatrixTransform  from VrmlConverter;
+    /// with MatrixTransform from VrmlConverter;
     pub fn add(&self, anOStream: &mut crate::ffi_types::Standard_OStream) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlConverter_Projector_add(self as *const Self, anOStream)
         })
     }
 
-    /// **Source:** `VrmlConverter_Projector.hxx`:77 - `VrmlConverter_Projector::Projector()`
+    /// **Source:** `VrmlConverter_Projector.hxx`:75 - `VrmlConverter_Projector::Projector()`
     pub fn projector(&self) -> crate::OwnedPtr<crate::hlr_algo::Projector> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -2063,8 +2065,8 @@ impl Projector {
         }
     }
 
-    /// **Source:** `VrmlConverter_Projector.hxx`:79 - `VrmlConverter_Projector::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `VrmlConverter_Projector.hxx`:77 - `VrmlConverter_Projector::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKDEVRML::VrmlConverter_Projector_dynamic_type(
@@ -2074,7 +2076,7 @@ impl Projector {
         }
     }
 
-    /// **Source:** `VrmlConverter_Projector.hxx`:79 - `VrmlConverter_Projector::get_type_name()`
+    /// **Source:** `VrmlConverter_Projector.hxx`:77 - `VrmlConverter_Projector::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -2085,8 +2087,8 @@ impl Projector {
         .into_owned()
     }
 
-    /// **Source:** `VrmlConverter_Projector.hxx`:79 - `VrmlConverter_Projector::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    /// **Source:** `VrmlConverter_Projector.hxx`:77 - `VrmlConverter_Projector::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKDEVRML::VrmlConverter_Projector_get_type_descriptor(),
@@ -2119,7 +2121,7 @@ impl Projector {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleVrmlConverterProjector> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_VrmlConverter_Projector> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDEVRML::VrmlConverter_Projector_to_handle(obj.into_raw()),
@@ -2127,8 +2129,8 @@ impl Projector {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlConverter_Projector_inherited_IsInstance(
                 self as *const Self,
@@ -2137,8 +2139,8 @@ impl Projector {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlConverter_Projector_inherited_IsKind(
                 self as *const Self,
@@ -2147,7 +2149,7 @@ impl Projector {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -2163,7 +2165,7 @@ impl Projector {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlConverter_Projector_inherited_GetRefCount(
@@ -2172,7 +2174,7 @@ impl Projector {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlConverter_Projector_inherited_IncrementRefCounter(
@@ -2181,7 +2183,7 @@ impl Projector {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlConverter_Projector_inherited_DecrementRefCounter(
@@ -2190,7 +2192,7 @@ impl Projector {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlConverter_Projector_inherited_Delete(
@@ -2200,36 +2202,38 @@ impl Projector {
     }
 }
 
-pub use crate::ffi_types::HandleVrmlConverterProjector;
+pub use crate::ffi_types::Handle_VrmlConverter_Projector;
 
-unsafe impl crate::CppDeletable for HandleVrmlConverterProjector {
+unsafe impl crate::CppDeletable for Handle_VrmlConverter_Projector {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKDEVRML::HandleVrmlConverterProjector_destructor(ptr);
+            crate::ffi_extern_TKDEVRML::Handle_VrmlConverter_Projector_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleVrmlConverterProjector {
+unsafe impl crate::CppCopyable for Handle_VrmlConverter_Projector {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
         unsafe {
-            crate::check_result(crate::ffi_extern_TKDEVRML::HandleVrmlConverterProjector_clone(ptr))
+            crate::check_result(crate::ffi_extern_TKDEVRML::Handle_VrmlConverter_Projector_clone(
+                ptr,
+            ))
         }
     }
 }
 
-impl HandleVrmlConverterProjector {
+impl Handle_VrmlConverter_Projector {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
         unsafe {
-            crate::ffi_extern_TKDEVRML::HandleVrmlConverterProjector_is_null(self as *const Self)
+            crate::ffi_extern_TKDEVRML::Handle_VrmlConverter_Projector_is_null(self as *const Self)
         }
     }
 
     /// Dereference this Handle to access the underlying VrmlConverter_Projector
     pub fn get(&self) -> &crate::ffi_types::VrmlConverter_Projector {
         unsafe {
-            &*crate::check_result(crate::ffi_extern_TKDEVRML::HandleVrmlConverterProjector_get(
+            &*crate::check_result(crate::ffi_extern_TKDEVRML::Handle_VrmlConverter_Projector_get(
                 self as *const Self,
             ))
         }
@@ -2239,7 +2243,9 @@ impl HandleVrmlConverterProjector {
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::VrmlConverter_Projector {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi_extern_TKDEVRML::HandleVrmlConverterProjector_get_mut(self as *mut Self),
+                crate::ffi_extern_TKDEVRML::Handle_VrmlConverter_Projector_get_mut(
+                    self as *mut Self,
+                ),
             )
         }
     }
@@ -2247,13 +2253,9 @@ impl HandleVrmlConverterProjector {
     /// Upcast Handle<VrmlConverter_Projector> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKDEVRML::HandleVrmlConverterProjector_to_HandleStandardTransient(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEVRML::Handle_VrmlConverter_Projector_to_Handle_Standard_Transient(self as *const Self)))
         }
     }
 }
@@ -2262,14 +2264,14 @@ impl HandleVrmlConverterProjector {
 // From VrmlConverter_ShadedShape.hxx
 // ========================
 
-/// **Source:** `VrmlConverter_ShadedShape.hxx`:38 - `VrmlConverter_ShadedShape`
-/// ShadedShape - computes  the  shading presentation of shapes
+/// **Source:** `VrmlConverter_ShadedShape.hxx`:39 - `VrmlConverter_ShadedShape`
+/// ShadedShape - computes the shading presentation of shapes
 /// by triangulation algorithms, converts this one into VRML objects
 /// and writes (adds) into anOStream.
 /// All requested properties of the representation including
-/// the maximal chordial deviation  are specify in aDrawer.
-/// This  kind  of  the  presentation  is  converted  into
-/// IndexedFaceSet ( VRML ).
+/// the maximal chordial deviation are specify in aDrawer.
+/// This kind of the presentation is converted into
+/// IndexedFaceSet (VRML).
 pub use crate::ffi_types::VrmlConverter_ShadedShape as ShadedShape;
 
 unsafe impl crate::CppDeletable for ShadedShape {
@@ -2291,22 +2293,22 @@ impl ShadedShape {
         }
     }
 
-    /// **Source:** `VrmlConverter_ShadedShape.hxx`:43 - `VrmlConverter_ShadedShape::Add()`
+    /// **Source:** `VrmlConverter_ShadedShape.hxx`:44 - `VrmlConverter_ShadedShape::Add()`
     pub fn add(
         anOStream: &mut crate::ffi_types::Standard_OStream,
         aShape: &crate::topo_ds::Shape,
-        aDrawer: &crate::ffi_types::HandleVrmlConverterDrawer,
+        aDrawer: &crate::ffi_types::Handle_VrmlConverter_Drawer,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlConverter_ShadedShape_add(anOStream, aShape, aDrawer)
         })
     }
 
-    /// **Source:** `VrmlConverter_ShadedShape.hxx`:47 - `VrmlConverter_ShadedShape::ComputeNormal()`
+    /// **Source:** `VrmlConverter_ShadedShape.hxx`:48 - `VrmlConverter_ShadedShape::ComputeNormal()`
     pub fn compute_normal(
         aFace: &crate::topo_ds::Face,
         pc: &mut crate::poly::Connect,
-        Nor: &mut crate::ffi_types::TColgp_Array1OfDir,
+        Nor: &mut crate::ffi_types::NCollection_Array1_gp_Dir,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlConverter_ShadedShape_compute_normal(aFace, pc, Nor)
@@ -2318,9 +2320,9 @@ impl ShadedShape {
 // From VrmlConverter_ShadingAspect.hxx
 // ========================
 
-/// **Source:** `VrmlConverter_ShadingAspect.hxx`:32 - `VrmlConverter_ShadingAspect`
+/// **Source:** `VrmlConverter_ShadingAspect.hxx`:29 - `VrmlConverter_ShadingAspect`
 /// qualifies the aspect properties for
-/// the VRML conversation of ShadedShape .
+/// the VRML conversation of ShadedShape.
 pub use crate::ffi_types::VrmlConverter_ShadingAspect as ShadingAspect;
 
 unsafe impl crate::CppDeletable for ShadingAspect {
@@ -2332,7 +2334,7 @@ unsafe impl crate::CppDeletable for ShadingAspect {
 }
 
 impl ShadingAspect {
-    /// **Source:** `VrmlConverter_ShadingAspect.hxx`:37 - `VrmlConverter_ShadingAspect::VrmlConverter_ShadingAspect()`
+    /// **Source:** `VrmlConverter_ShadingAspect.hxx`:34 - `VrmlConverter_ShadingAspect::VrmlConverter_ShadingAspect()`
     /// create a default ShadingAspect.
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
@@ -2342,8 +2344,8 @@ impl ShadingAspect {
         }
     }
 
-    /// **Source:** `VrmlConverter_ShadingAspect.hxx`:39 - `VrmlConverter_ShadingAspect::SetFrontMaterial()`
-    pub fn set_front_material(&mut self, aMaterial: &crate::ffi_types::HandleVrmlMaterial) {
+    /// **Source:** `VrmlConverter_ShadingAspect.hxx`:36 - `VrmlConverter_ShadingAspect::SetFrontMaterial()`
+    pub fn set_front_material(&mut self, aMaterial: &crate::ffi_types::Handle_Vrml_Material) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlConverter_ShadingAspect_set_front_material(
                 self as *mut Self,
@@ -2352,8 +2354,8 @@ impl ShadingAspect {
         })
     }
 
-    /// **Source:** `VrmlConverter_ShadingAspect.hxx`:41 - `VrmlConverter_ShadingAspect::FrontMaterial()`
-    pub fn front_material(&self) -> crate::OwnedPtr<crate::ffi_types::HandleVrmlMaterial> {
+    /// **Source:** `VrmlConverter_ShadingAspect.hxx`:38 - `VrmlConverter_ShadingAspect::FrontMaterial()`
+    pub fn front_material(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_Vrml_Material> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDEVRML::VrmlConverter_ShadingAspect_front_material(
@@ -2363,7 +2365,7 @@ impl ShadingAspect {
         }
     }
 
-    /// **Source:** `VrmlConverter_ShadingAspect.hxx`:43 - `VrmlConverter_ShadingAspect::SetShapeHints()`
+    /// **Source:** `VrmlConverter_ShadingAspect.hxx`:40 - `VrmlConverter_ShadingAspect::SetShapeHints()`
     pub fn set_shape_hints(&mut self, aShapeHints: &crate::vrml::ShapeHints) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlConverter_ShadingAspect_set_shape_hints(
@@ -2373,7 +2375,7 @@ impl ShadingAspect {
         })
     }
 
-    /// **Source:** `VrmlConverter_ShadingAspect.hxx`:45 - `VrmlConverter_ShadingAspect::ShapeHints()`
+    /// **Source:** `VrmlConverter_ShadingAspect.hxx`:42 - `VrmlConverter_ShadingAspect::ShapeHints()`
     pub fn shape_hints(&self) -> crate::OwnedPtr<crate::vrml::ShapeHints> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -2384,14 +2386,14 @@ impl ShadingAspect {
         }
     }
 
-    /// **Source:** `VrmlConverter_ShadingAspect.hxx`:54 - `VrmlConverter_ShadingAspect::SetHasNormals()`
-    /// defines necessary of  a  calculation  of  normals for  ShadedShape  to  more
-    /// accurately  display  curved  surfaces,  pacticularly  when  smoooth  or  phong
-    /// shading  is  used  in  VRML  viewer.
-    /// By default False  -  the normals are not calculated,
-    /// True  -  the normals are calculated.
-    /// Warning: If  normals  are  calculated  the  resulting  VRML  file  will
-    /// be  substantially  lager.
+    /// **Source:** `VrmlConverter_ShadingAspect.hxx`:51 - `VrmlConverter_ShadingAspect::SetHasNormals()`
+    /// defines necessary of a calculation of normals for ShadedShape to more
+    /// accurately display curved surfaces, pacticularly when smoooth or phong
+    /// shading is used in VRML viewer.
+    /// By default False - the normals are not calculated,
+    /// True - the normals are calculated.
+    /// Warning: If normals are calculated the resulting VRML file will
+    /// be substantially lager.
     pub fn set_has_normals(&mut self, OnOff: bool) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlConverter_ShadingAspect_set_has_normals(
@@ -2401,7 +2403,7 @@ impl ShadingAspect {
         })
     }
 
-    /// **Source:** `VrmlConverter_ShadingAspect.hxx`:57 - `VrmlConverter_ShadingAspect::HasNormals()`
+    /// **Source:** `VrmlConverter_ShadingAspect.hxx`:54 - `VrmlConverter_ShadingAspect::HasNormals()`
     /// returns True if the normals are calculating
     pub fn has_normals(&self) -> bool {
         crate::check_result(unsafe {
@@ -2409,10 +2411,10 @@ impl ShadingAspect {
         })
     }
 
-    /// **Source:** `VrmlConverter_ShadingAspect.hxx`:62 - `VrmlConverter_ShadingAspect::SetHasMaterial()`
-    /// defines necessary of writing  Material from Vrml into  output  OStream.
-    /// By default False  -  the material is not writing into OStream,
-    /// True  -  the material is writing.
+    /// **Source:** `VrmlConverter_ShadingAspect.hxx`:59 - `VrmlConverter_ShadingAspect::SetHasMaterial()`
+    /// defines necessary of writing Material from Vrml into output OStream.
+    /// By default False - the material is not writing into OStream,
+    /// True - the material is writing.
     pub fn set_has_material(&mut self, OnOff: bool) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlConverter_ShadingAspect_set_has_material(
@@ -2422,8 +2424,8 @@ impl ShadingAspect {
         })
     }
 
-    /// **Source:** `VrmlConverter_ShadingAspect.hxx`:65 - `VrmlConverter_ShadingAspect::HasMaterial()`
-    /// returns True if the  materials is  writing into OStream.
+    /// **Source:** `VrmlConverter_ShadingAspect.hxx`:62 - `VrmlConverter_ShadingAspect::HasMaterial()`
+    /// returns True if the materials is writing into OStream.
     pub fn has_material(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlConverter_ShadingAspect_has_material(
@@ -2432,8 +2434,8 @@ impl ShadingAspect {
         })
     }
 
-    /// **Source:** `VrmlConverter_ShadingAspect.hxx`:67 - `VrmlConverter_ShadingAspect::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `VrmlConverter_ShadingAspect.hxx`:64 - `VrmlConverter_ShadingAspect::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKDEVRML::VrmlConverter_ShadingAspect_dynamic_type(
@@ -2443,7 +2445,7 @@ impl ShadingAspect {
         }
     }
 
-    /// **Source:** `VrmlConverter_ShadingAspect.hxx`:67 - `VrmlConverter_ShadingAspect::get_type_name()`
+    /// **Source:** `VrmlConverter_ShadingAspect.hxx`:64 - `VrmlConverter_ShadingAspect::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -2454,8 +2456,8 @@ impl ShadingAspect {
         .into_owned()
     }
 
-    /// **Source:** `VrmlConverter_ShadingAspect.hxx`:67 - `VrmlConverter_ShadingAspect::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    /// **Source:** `VrmlConverter_ShadingAspect.hxx`:64 - `VrmlConverter_ShadingAspect::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKDEVRML::VrmlConverter_ShadingAspect_get_type_descriptor(),
@@ -2488,7 +2490,7 @@ impl ShadingAspect {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleVrmlConverterShadingAspect> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_VrmlConverter_ShadingAspect> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDEVRML::VrmlConverter_ShadingAspect_to_handle(obj.into_raw()),
@@ -2496,8 +2498,8 @@ impl ShadingAspect {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlConverter_ShadingAspect_inherited_IsInstance(
                 self as *const Self,
@@ -2506,8 +2508,8 @@ impl ShadingAspect {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlConverter_ShadingAspect_inherited_IsKind(
                 self as *const Self,
@@ -2516,7 +2518,7 @@ impl ShadingAspect {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -2532,7 +2534,7 @@ impl ShadingAspect {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlConverter_ShadingAspect_inherited_GetRefCount(
@@ -2541,7 +2543,7 @@ impl ShadingAspect {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlConverter_ShadingAspect_inherited_IncrementRefCounter(
@@ -2550,7 +2552,7 @@ impl ShadingAspect {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlConverter_ShadingAspect_inherited_DecrementRefCounter(
@@ -2559,7 +2561,7 @@ impl ShadingAspect {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlConverter_ShadingAspect_inherited_Delete(
@@ -2569,31 +2571,31 @@ impl ShadingAspect {
     }
 }
 
-pub use crate::ffi_types::HandleVrmlConverterShadingAspect;
+pub use crate::ffi_types::Handle_VrmlConverter_ShadingAspect;
 
-unsafe impl crate::CppDeletable for HandleVrmlConverterShadingAspect {
+unsafe impl crate::CppDeletable for Handle_VrmlConverter_ShadingAspect {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKDEVRML::HandleVrmlConverterShadingAspect_destructor(ptr);
+            crate::ffi_extern_TKDEVRML::Handle_VrmlConverter_ShadingAspect_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleVrmlConverterShadingAspect {
+unsafe impl crate::CppCopyable for Handle_VrmlConverter_ShadingAspect {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
         unsafe {
-            crate::check_result(crate::ffi_extern_TKDEVRML::HandleVrmlConverterShadingAspect_clone(
-                ptr,
-            ))
+            crate::check_result(
+                crate::ffi_extern_TKDEVRML::Handle_VrmlConverter_ShadingAspect_clone(ptr),
+            )
         }
     }
 }
 
-impl HandleVrmlConverterShadingAspect {
+impl Handle_VrmlConverter_ShadingAspect {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
         unsafe {
-            crate::ffi_extern_TKDEVRML::HandleVrmlConverterShadingAspect_is_null(
+            crate::ffi_extern_TKDEVRML::Handle_VrmlConverter_ShadingAspect_is_null(
                 self as *const Self,
             )
         }
@@ -2602,9 +2604,11 @@ impl HandleVrmlConverterShadingAspect {
     /// Dereference this Handle to access the underlying VrmlConverter_ShadingAspect
     pub fn get(&self) -> &crate::ffi_types::VrmlConverter_ShadingAspect {
         unsafe {
-            &*crate::check_result(crate::ffi_extern_TKDEVRML::HandleVrmlConverterShadingAspect_get(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKDEVRML::Handle_VrmlConverter_ShadingAspect_get(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -2612,7 +2616,7 @@ impl HandleVrmlConverterShadingAspect {
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::VrmlConverter_ShadingAspect {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi_extern_TKDEVRML::HandleVrmlConverterShadingAspect_get_mut(
+                crate::ffi_extern_TKDEVRML::Handle_VrmlConverter_ShadingAspect_get_mut(
                     self as *mut Self,
                 ),
             )
@@ -2622,9 +2626,9 @@ impl HandleVrmlConverterShadingAspect {
     /// Upcast Handle<VrmlConverter_ShadingAspect> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEVRML::HandleVrmlConverterShadingAspect_to_HandleStandardTransient(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEVRML::Handle_VrmlConverter_ShadingAspect_to_Handle_Standard_Transient(self as *const Self)))
         }
     }
 }
@@ -2634,16 +2638,16 @@ impl HandleVrmlConverterShadingAspect {
 // ========================
 
 /// **Source:** `VrmlConverter_WFDeflectionRestrictedFace.hxx`:35 - `VrmlConverter_WFDeflectionRestrictedFace`
-/// WFDeflectionRestrictedFace    -    computes    the
-/// wireframe   presentation   of  faces       with
-/// restrictions by  displaying  a given  number of  U
-/// and/or  V  isoparametric  curves,  converts his
-/// into VRML objects   and writes (adds) them  into
-/// anOStream.    All   requested properties  of the
-/// representation  are  specify in  aDrawer of Drawer
-/// class (Prs3d).    This kind  of the presentation
-/// is     converted       into   IndexedFaceSet   and
-/// IndexedLineSet ( VRML ).
+/// WFDeflectionRestrictedFace - computes the
+/// wireframe presentation of faces with
+/// restrictions by displaying a given number of U
+/// and/or V isoparametric curves, converts his
+/// into VRML objects and writes (adds) them into
+/// anOStream. All requested properties of the
+/// representation are specify in aDrawer of Drawer
+/// class (Prs3d). This kind of the presentation
+/// is converted into IndexedFaceSet and
+/// IndexedLineSet (VRML).
 pub use crate::ffi_types::VrmlConverter_WFDeflectionRestrictedFace as WFDeflectionRestrictedFace;
 
 unsafe impl crate::CppDeletable for WFDeflectionRestrictedFace {
@@ -2668,8 +2672,8 @@ impl WFDeflectionRestrictedFace {
     /// **Source:** `VrmlConverter_WFDeflectionRestrictedFace.hxx`:40 - `VrmlConverter_WFDeflectionRestrictedFace::Add()`
     pub fn add_ostream_handlebrepadaptorsurface_handlevrmlconverterdrawer(
         anOStream: &mut crate::ffi_types::Standard_OStream,
-        aFace: &crate::ffi_types::HandleBRepAdaptorSurface,
-        aDrawer: &crate::ffi_types::HandleVrmlConverterDrawer,
+        aFace: &crate::ffi_types::Handle_BRepAdaptor_Surface,
+        aDrawer: &crate::ffi_types::Handle_VrmlConverter_Drawer,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlConverter_WFDeflectionRestrictedFace_add_ostream_handlebrepadaptorsurface_handlevrmlconverterdrawer(anOStream, aFace, aDrawer)
@@ -2679,8 +2683,8 @@ impl WFDeflectionRestrictedFace {
     /// **Source:** `VrmlConverter_WFDeflectionRestrictedFace.hxx`:44 - `VrmlConverter_WFDeflectionRestrictedFace::AddUIso()`
     pub fn add_u_iso(
         anOStream: &mut crate::ffi_types::Standard_OStream,
-        aFace: &crate::ffi_types::HandleBRepAdaptorSurface,
-        aDrawer: &crate::ffi_types::HandleVrmlConverterDrawer,
+        aFace: &crate::ffi_types::Handle_BRepAdaptor_Surface,
+        aDrawer: &crate::ffi_types::Handle_VrmlConverter_Drawer,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlConverter_WFDeflectionRestrictedFace_add_u_iso(
@@ -2692,8 +2696,8 @@ impl WFDeflectionRestrictedFace {
     /// **Source:** `VrmlConverter_WFDeflectionRestrictedFace.hxx`:48 - `VrmlConverter_WFDeflectionRestrictedFace::AddVIso()`
     pub fn add_v_iso(
         anOStream: &mut crate::ffi_types::Standard_OStream,
-        aFace: &crate::ffi_types::HandleBRepAdaptorSurface,
-        aDrawer: &crate::ffi_types::HandleVrmlConverterDrawer,
+        aFace: &crate::ffi_types::Handle_BRepAdaptor_Surface,
+        aDrawer: &crate::ffi_types::Handle_VrmlConverter_Drawer,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlConverter_WFDeflectionRestrictedFace_add_v_iso(
@@ -2705,13 +2709,13 @@ impl WFDeflectionRestrictedFace {
     /// **Source:** `VrmlConverter_WFDeflectionRestrictedFace.hxx`:52 - `VrmlConverter_WFDeflectionRestrictedFace::Add()`
     pub fn add_ostream_handlebrepadaptorsurface_bool2_real_int2_handlevrmlconverterdrawer(
         anOStream: &mut crate::ffi_types::Standard_OStream,
-        aFace: &crate::ffi_types::HandleBRepAdaptorSurface,
+        aFace: &crate::ffi_types::Handle_BRepAdaptor_Surface,
         DrawUIso: bool,
         DrawVIso: bool,
         Deflection: f64,
         NBUiso: i32,
         NBViso: i32,
-        aDrawer: &crate::ffi_types::HandleVrmlConverterDrawer,
+        aDrawer: &crate::ffi_types::Handle_VrmlConverter_Drawer,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlConverter_WFDeflectionRestrictedFace_add_ostream_handlebrepadaptorsurface_bool2_real_int2_handlevrmlconverterdrawer(anOStream, aFace, DrawUIso, DrawVIso, Deflection, NBUiso, NBViso, aDrawer)
@@ -2724,15 +2728,15 @@ impl WFDeflectionRestrictedFace {
 // ========================
 
 /// **Source:** `VrmlConverter_WFDeflectionShape.hxx`:37 - `VrmlConverter_WFDeflectionShape`
-/// WFDeflectionShape -   computes    the    wireframe
-/// presentation of compound set  of faces,  edges and
-/// vertices by displaying a  given number of U and/or
-/// V isoparametric  curves,   converts this  one into  VRML
+/// WFDeflectionShape - computes the wireframe
+/// presentation of compound set of faces, edges and
+/// vertices by displaying a given number of U and/or
+/// V isoparametric curves, converts this one into VRML
 /// objects and writes (adds) them into anOStream.
 /// All requested properties of the representation are
 /// specify in aDrawer.
-/// This kind of the presentation  is  converted  into
-/// IndexedLineSet and PointSet ( VRML ).
+/// This kind of the presentation is converted into
+/// IndexedLineSet and PointSet (VRML).
 pub use crate::ffi_types::VrmlConverter_WFDeflectionShape as WFDeflectionShape;
 
 unsafe impl crate::CppDeletable for WFDeflectionShape {
@@ -2758,7 +2762,7 @@ impl WFDeflectionShape {
     pub fn add(
         anOStream: &mut crate::ffi_types::Standard_OStream,
         aShape: &crate::topo_ds::Shape,
-        aDrawer: &crate::ffi_types::HandleVrmlConverterDrawer,
+        aDrawer: &crate::ffi_types::Handle_VrmlConverter_Drawer,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlConverter_WFDeflectionShape_add(
@@ -2773,15 +2777,15 @@ impl WFDeflectionShape {
 // ========================
 
 /// **Source:** `VrmlConverter_WFRestrictedFace.hxx`:34 - `VrmlConverter_WFRestrictedFace`
-/// WFRestrictedFace -     computes     the  wireframe
-/// presentation  of faces  with   restrictions by
-/// displaying   a  given  number    of  U   and/or  V
-/// isoparametric  curves,  converts this  one into VRML
-/// objects  and writes  (adds)  into anOStream.
-/// All requested  properties  of the representation
-/// are specify in  aDrawer.
+/// WFRestrictedFace - computes the wireframe
+/// presentation of faces with restrictions by
+/// displaying a given number of U and/or V
+/// isoparametric curves, converts this one into VRML
+/// objects and writes (adds) into anOStream.
+/// All requested properties of the representation
+/// are specify in aDrawer.
 /// This kind of the presentation is converted into
-/// IndexedLineSet ( VRML ).
+/// IndexedLineSet (VRML).
 pub use crate::ffi_types::VrmlConverter_WFRestrictedFace as WFRestrictedFace;
 
 unsafe impl crate::CppDeletable for WFRestrictedFace {
@@ -2806,8 +2810,8 @@ impl WFRestrictedFace {
     /// **Source:** `VrmlConverter_WFRestrictedFace.hxx`:39 - `VrmlConverter_WFRestrictedFace::Add()`
     pub fn add_ostream_handlebrepadaptorsurface_handlevrmlconverterdrawer(
         anOStream: &mut crate::ffi_types::Standard_OStream,
-        aFace: &crate::ffi_types::HandleBRepAdaptorSurface,
-        aDrawer: &crate::ffi_types::HandleVrmlConverterDrawer,
+        aFace: &crate::ffi_types::Handle_BRepAdaptor_Surface,
+        aDrawer: &crate::ffi_types::Handle_VrmlConverter_Drawer,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlConverter_WFRestrictedFace_add_ostream_handlebrepadaptorsurface_handlevrmlconverterdrawer(anOStream, aFace, aDrawer)
@@ -2817,8 +2821,8 @@ impl WFRestrictedFace {
     /// **Source:** `VrmlConverter_WFRestrictedFace.hxx`:43 - `VrmlConverter_WFRestrictedFace::AddUIso()`
     pub fn add_u_iso(
         anOStream: &mut crate::ffi_types::Standard_OStream,
-        aFace: &crate::ffi_types::HandleBRepAdaptorSurface,
-        aDrawer: &crate::ffi_types::HandleVrmlConverterDrawer,
+        aFace: &crate::ffi_types::Handle_BRepAdaptor_Surface,
+        aDrawer: &crate::ffi_types::Handle_VrmlConverter_Drawer,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlConverter_WFRestrictedFace_add_u_iso(
@@ -2830,8 +2834,8 @@ impl WFRestrictedFace {
     /// **Source:** `VrmlConverter_WFRestrictedFace.hxx`:47 - `VrmlConverter_WFRestrictedFace::AddVIso()`
     pub fn add_v_iso(
         anOStream: &mut crate::ffi_types::Standard_OStream,
-        aFace: &crate::ffi_types::HandleBRepAdaptorSurface,
-        aDrawer: &crate::ffi_types::HandleVrmlConverterDrawer,
+        aFace: &crate::ffi_types::Handle_BRepAdaptor_Surface,
+        aDrawer: &crate::ffi_types::Handle_VrmlConverter_Drawer,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlConverter_WFRestrictedFace_add_v_iso(
@@ -2843,12 +2847,12 @@ impl WFRestrictedFace {
     /// **Source:** `VrmlConverter_WFRestrictedFace.hxx`:51 - `VrmlConverter_WFRestrictedFace::Add()`
     pub fn add_ostream_handlebrepadaptorsurface_bool2_int2_handlevrmlconverterdrawer(
         anOStream: &mut crate::ffi_types::Standard_OStream,
-        aFace: &crate::ffi_types::HandleBRepAdaptorSurface,
+        aFace: &crate::ffi_types::Handle_BRepAdaptor_Surface,
         DrawUIso: bool,
         DrawVIso: bool,
         NBUiso: i32,
         NBViso: i32,
-        aDrawer: &crate::ffi_types::HandleVrmlConverterDrawer,
+        aDrawer: &crate::ffi_types::Handle_VrmlConverter_Drawer,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlConverter_WFRestrictedFace_add_ostream_handlebrepadaptorsurface_bool2_int2_handlevrmlconverterdrawer(anOStream, aFace, DrawUIso, DrawVIso, NBUiso, NBViso, aDrawer)
@@ -2862,14 +2866,14 @@ impl WFRestrictedFace {
 
 /// **Source:** `VrmlConverter_WFShape.hxx`:37 - `VrmlConverter_WFShape`
 /// WFShape - computes the wireframe presentation of
-/// compound set  of  faces,  edges  and vertices by
-/// displaying a given  number of U and/or V isoparametric
+/// compound set of faces, edges and vertices by
+/// displaying a given number of U and/or V isoparametric
 /// curves converts this one into VRML objects and writes (adds)
 /// them into anOStream.
 /// All requested properties of the representation are
 /// specify in aDrawer.
 /// This kind of the presentation is converted into
-/// IndexedLineSet and PointSet  ( VRML ).
+/// IndexedLineSet and PointSet (VRML).
 pub use crate::ffi_types::VrmlConverter_WFShape as WFShape;
 
 unsafe impl crate::CppDeletable for WFShape {
@@ -2895,7 +2899,7 @@ impl WFShape {
     pub fn add(
         anOStream: &mut crate::ffi_types::Standard_OStream,
         aShape: &crate::topo_ds::Shape,
-        aDrawer: &crate::ffi_types::HandleVrmlConverterDrawer,
+        aDrawer: &crate::ffi_types::Handle_VrmlConverter_Drawer,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlConverter_WFShape_add(anOStream, aShape, aDrawer)

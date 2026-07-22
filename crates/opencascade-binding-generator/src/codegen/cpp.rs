@@ -179,11 +179,12 @@ fn collect_unresolved_from_template_spelling(
             | "int" | "double" | "float" | "void" | "char" | "unsigned") {
             continue;
         }
-        if ident.contains('_') || ident.starts_with("Standard") {
-            let header = format!("{}.hxx", ident);
-            if !known_headers.contains(&header) {
-                unresolved.insert(ident);
-            }
+        // Try the .hxx header for any identifier that looks like an OCCT type
+        // (not requiring underscore as some OCCT types like Geom2dGridEval
+        // use CamelCase names without underscores).
+        let header = format!("{}.hxx", ident);
+        if !known_headers.contains(&header) {
+            unresolved.insert(ident);
         }
     }
 }
@@ -490,14 +491,16 @@ fn collect_template_arg_headers(
             | "int" | "double" | "float" | "void" | "char" | "unsigned") {
             continue;
         }
-        if ident.contains('_') || ident.starts_with("Standard") {
-            let header = format!("{}.hxx", ident);
-            if known_headers.contains(&header) {
-                headers.insert(header);
-            } else if let Some(resolver) = resolver {
-                if let Some(defining_header) = resolver.resolve(&ident) {
-                    headers.insert(defining_header.to_string());
-                }
+        // Try the .hxx header for any identifier that looks like an OCCT type.
+        // We used to require `ident.contains('_')` as a heuristic, but some
+        // OCCT types (e.g. Geom2dGridEval, BRepGraphInc) use CamelCase names
+        // without underscores and still live in their own .hxx file.
+        let header = format!("{}.hxx", ident);
+        if known_headers.contains(&header) {
+            headers.insert(header);
+        } else if let Some(resolver) = resolver {
+            if let Some(defining_header) = resolver.resolve(&ident) {
+                headers.insert(defining_header.to_string());
             }
         }
     }
@@ -613,7 +616,14 @@ fn generate_function_wrappers<T: std::borrow::Borrow<super::bindings::FunctionBi
             let call = format!("{}::{}({})", namespace, func.short_name, args_str);
 
             // Determine return pattern from pre-computed return type binding
-            if let Some(ref rt) = func.return_type {
+            // Functions returning void use `const char*` (single-field exception
+            // result), not `OcctResult<void>` (two-field, incompatible with void
+            // specialization in the preamble).
+            let is_void = func.return_type
+                .as_ref()
+                .map_or(false, |rt| rt.cpp_type == "void");
+            if !is_void && func.return_type.is_some() {
+                let rt = func.return_type.as_ref().unwrap();
                 let ret_type_cpp = rt.ffi_cpp_return_type();
                 let expr = rt.format_cpp_return_expr(&call);
                 writeln!(
@@ -970,9 +980,17 @@ pub fn generate_wrappers_for_group(
         }
         writeln!(output).unwrap();
 
+        // Handle-kind collections (HArray1/HSequence) generate their own handle
+        // destructor/clone/is_null in the collection wrapper, so skip them here to
+        // avoid a duplicate definition.
+        let handle_collection_types: HashSet<&str> = collections
+            .iter()
+            .filter(|c| c.kind.is_handle())
+            .map(|c| c.typedef_name.as_str())
+            .collect();
         writeln!(output, "// Handle type destructors, clone, and is_null functions").unwrap();
         for (inner_class, handle_name) in &handle_types {
-            if own_class_names.contains(inner_class) {
+            if own_class_names.contains(inner_class) && !handle_collection_types.contains(inner_class.as_str()) {
                 writeln!(output, "extern \"C\" void {}_destructor({}* self_) {{ delete self_; }}", handle_name, handle_name).unwrap();
                 writeln!(output, "extern \"C\" OcctResult<{}*> {}_clone(const {}* self_) {{", handle_name, handle_name, handle_name).unwrap();
                 writeln!(output, "    try {{ return {{new {}(*self_), nullptr}}; }}", handle_name).unwrap();

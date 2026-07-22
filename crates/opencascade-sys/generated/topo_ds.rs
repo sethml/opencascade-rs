@@ -14,7 +14,7 @@
 pub fn vertex(theShape: &Shape) -> &Vertex {
     unsafe { &*(crate::check_result(crate::ffi_extern_TKBRep::TopoDS_vertex(theShape))) }
 }
-/// **Source:** `TopoDS.hxx`:82 - `TopoDS::Vertex`
+/// **Source:** `TopoDS.hxx`:81 - `TopoDS::Vertex`
 /// Casts shape theShape to the more specialized return type, Vertex.
 /// @param theShape the shape to be cast
 /// @return the casted shape as TopoDS_Vertex
@@ -22,7 +22,7 @@ pub fn vertex(theShape: &Shape) -> &Vertex {
 pub fn vertex_mut(theShape: &mut Shape) -> &mut Vertex {
     unsafe { &mut *(crate::check_result(crate::ffi_extern_TKBRep::TopoDS_vertex_mut(theShape))) }
 }
-/// **Source:** `TopoDS.hxx`:94 - `TopoDS::Edge`
+/// **Source:** `TopoDS.hxx`:92 - `TopoDS::Edge`
 /// Casts shape theShape to the more specialized return type, Edge.
 /// @param theShape the shape to be cast
 /// @return the casted shape as TopoDS_Edge
@@ -30,7 +30,7 @@ pub fn vertex_mut(theShape: &mut Shape) -> &mut Vertex {
 pub fn edge(theShape: &Shape) -> &Edge {
     unsafe { &*(crate::check_result(crate::ffi_extern_TKBRep::TopoDS_edge(theShape))) }
 }
-/// **Source:** `TopoDS.hxx`:106 - `TopoDS::Edge`
+/// **Source:** `TopoDS.hxx`:103 - `TopoDS::Edge`
 /// Casts shape theShape to the more specialized return type, Edge.
 /// @param theShape the shape to be cast
 /// @return the casted shape as TopoDS_Edge
@@ -38,7 +38,7 @@ pub fn edge(theShape: &Shape) -> &Edge {
 pub fn edge_mut(theShape: &mut Shape) -> &mut Edge {
     unsafe { &mut *(crate::check_result(crate::ffi_extern_TKBRep::TopoDS_edge_mut(theShape))) }
 }
-/// **Source:** `TopoDS.hxx`:118 - `TopoDS::Wire`
+/// **Source:** `TopoDS.hxx`:114 - `TopoDS::Wire`
 /// Casts shape theShape to the more specialized return type, Wire.
 /// @param theShape the shape to be cast
 /// @return the casted shape as TopoDS_Wire
@@ -46,7 +46,7 @@ pub fn edge_mut(theShape: &mut Shape) -> &mut Edge {
 pub fn wire(theShape: &Shape) -> &Wire {
     unsafe { &*(crate::check_result(crate::ffi_extern_TKBRep::TopoDS_wire(theShape))) }
 }
-/// **Source:** `TopoDS.hxx`:130 - `TopoDS::Wire`
+/// **Source:** `TopoDS.hxx`:125 - `TopoDS::Wire`
 /// Casts shape theShape to the more specialized return type, Wire.
 /// @param theShape the shape to be cast
 /// @return the casted shape as TopoDS_Wire
@@ -54,7 +54,7 @@ pub fn wire(theShape: &Shape) -> &Wire {
 pub fn wire_mut(theShape: &mut Shape) -> &mut Wire {
     unsafe { &mut *(crate::check_result(crate::ffi_extern_TKBRep::TopoDS_wire_mut(theShape))) }
 }
-/// **Source:** `TopoDS.hxx`:142 - `TopoDS::Face`
+/// **Source:** `TopoDS.hxx`:136 - `TopoDS::Face`
 /// Casts shape theShape to the more specialized return type, Face.
 /// @param theShape the shape to be cast
 /// @return the casted shape as TopoDS_Face
@@ -62,7 +62,7 @@ pub fn wire_mut(theShape: &mut Shape) -> &mut Wire {
 pub fn face_shape(theShape: &Shape) -> &Face {
     unsafe { &*(crate::check_result(crate::ffi_extern_TKBRep::TopoDS_face_shape(theShape))) }
 }
-/// **Source:** `TopoDS.hxx`:154 - `TopoDS::Face`
+/// **Source:** `TopoDS.hxx`:147 - `TopoDS::Face`
 /// Casts shape theShape to the more specialized return type, Face.
 /// @param theShape the shape to be cast
 /// @return the casted shape as TopoDS_Face
@@ -70,7 +70,7 @@ pub fn face_shape(theShape: &Shape) -> &Face {
 pub fn face_mut(theShape: &mut Shape) -> &mut Face {
     unsafe { &mut *(crate::check_result(crate::ffi_extern_TKBRep::TopoDS_face_mut(theShape))) }
 }
-/// **Source:** `TopoDS.hxx`:166 - `TopoDS::Shell`
+/// **Source:** `TopoDS.hxx`:158 - `TopoDS::Shell`
 /// Casts shape theShape to the more specialized return type, Shell.
 /// @param theShape the shape to be cast
 /// @return the casted shape as TopoDS_Shell
@@ -78,7 +78,7 @@ pub fn face_mut(theShape: &mut Shape) -> &mut Face {
 pub fn shell_shape(theShape: &Shape) -> &Shell {
     unsafe { &*(crate::check_result(crate::ffi_extern_TKBRep::TopoDS_shell_shape(theShape))) }
 }
-/// **Source:** `TopoDS.hxx`:178 - `TopoDS::Shell`
+/// **Source:** `TopoDS.hxx`:169 - `TopoDS::Shell`
 /// Casts shape theShape to the more specialized return type, Shell.
 /// @param theShape the shape to be cast
 /// @return the casted shape as TopoDS_Shell
@@ -86,7 +86,7 @@ pub fn shell_shape(theShape: &Shape) -> &Shell {
 pub fn shell_mut(theShape: &mut Shape) -> &mut Shell {
     unsafe { &mut *(crate::check_result(crate::ffi_extern_TKBRep::TopoDS_shell_mut(theShape))) }
 }
-/// **Source:** `TopoDS.hxx`:190 - `TopoDS::Solid`
+/// **Source:** `TopoDS.hxx`:180 - `TopoDS::Solid`
 /// Casts shape theShape to the more specialized return type, Solid.
 /// @param theShape the shape to be cast
 /// @return the casted shape as TopoDS_Solid
@@ -94,7 +94,7 @@ pub fn shell_mut(theShape: &mut Shape) -> &mut Shell {
 pub fn solid(theShape: &Shape) -> &Solid {
     unsafe { &*(crate::check_result(crate::ffi_extern_TKBRep::TopoDS_solid(theShape))) }
 }
-/// **Source:** `TopoDS.hxx`:202 - `TopoDS::Solid`
+/// **Source:** `TopoDS.hxx`:191 - `TopoDS::Solid`
 /// Casts shape theShape to the more specialized return type, Solid.
 /// @param theShape the shape to be cast
 /// @return the casted shape as TopoDS_Solid
@@ -102,7 +102,7 @@ pub fn solid(theShape: &Shape) -> &Solid {
 pub fn solid_mut(theShape: &mut Shape) -> &mut Solid {
     unsafe { &mut *(crate::check_result(crate::ffi_extern_TKBRep::TopoDS_solid_mut(theShape))) }
 }
-/// **Source:** `TopoDS.hxx`:214 - `TopoDS::CompSolid`
+/// **Source:** `TopoDS.hxx`:202 - `TopoDS::CompSolid`
 /// Casts shape theShape to the more specialized return type, CompSolid.
 /// @param theShape the shape to be cast
 /// @return the casted shape as TopoDS_CompSolid
@@ -110,7 +110,7 @@ pub fn solid_mut(theShape: &mut Shape) -> &mut Solid {
 pub fn comp_solid(theShape: &Shape) -> &CompSolid {
     unsafe { &*(crate::check_result(crate::ffi_extern_TKBRep::TopoDS_comp_solid(theShape))) }
 }
-/// **Source:** `TopoDS.hxx`:226 - `TopoDS::CompSolid`
+/// **Source:** `TopoDS.hxx`:214 - `TopoDS::CompSolid`
 /// Casts shape theShape to the more specialized return type, CompSolid.
 /// @param theShape the shape to be cast
 /// @return the casted shape as TopoDS_CompSolid
@@ -120,7 +120,7 @@ pub fn comp_solid_mut(theShape: &mut Shape) -> &mut CompSolid {
         &mut *(crate::check_result(crate::ffi_extern_TKBRep::TopoDS_comp_solid_mut(theShape)))
     }
 }
-/// **Source:** `TopoDS.hxx`:238 - `TopoDS::Compound`
+/// **Source:** `TopoDS.hxx`:226 - `TopoDS::Compound`
 /// Casts shape theShape to the more specialized return type, Compound.
 /// @param theShape the shape to be cast
 /// @return the casted shape as TopoDS_Compound
@@ -128,7 +128,7 @@ pub fn comp_solid_mut(theShape: &mut Shape) -> &mut CompSolid {
 pub fn compound(theShape: &Shape) -> &Compound {
     unsafe { &*(crate::check_result(crate::ffi_extern_TKBRep::TopoDS_compound(theShape))) }
 }
-/// **Source:** `TopoDS.hxx`:250 - `TopoDS::Compound`
+/// **Source:** `TopoDS.hxx`:238 - `TopoDS::Compound`
 /// Casts shape theShape to the more specialized return type, Compound.
 /// @param theShape the shape to be cast
 /// @return the casted shape as TopoDS_Compound
@@ -139,29 +139,29 @@ pub fn compound_mut(theShape: &mut Shape) -> &mut Compound {
 
 // Handle type re-exports (targets of handle upcasts/downcasts)
 pub use crate::ffi_types::{
-    HandleBOPAlgoAlertAcquiredSelfIntersection, HandleBOPAlgoAlertBadPositioning,
-    HandleBOPAlgoAlertBuildingPCurveFailed, HandleBOPAlgoAlertEmptyShape,
-    HandleBOPAlgoAlertFaceBuilderUnusedEdges, HandleBOPAlgoAlertIntersectionOfPairOfShapesFailed,
-    HandleBOPAlgoAlertNotSplittableEdge, HandleBOPAlgoAlertRemovalOfIBForEdgesFailed,
-    HandleBOPAlgoAlertRemovalOfIBForFacesFailed, HandleBOPAlgoAlertRemovalOfIBForMDimShapes,
-    HandleBOPAlgoAlertRemovalOfIBForSolidsFailed, HandleBOPAlgoAlertSelfInterferingShape,
-    HandleBOPAlgoAlertShapeIsNotPeriodic, HandleBOPAlgoAlertShellSplitterFailed,
-    HandleBOPAlgoAlertSolidBuilderUnusedFaces, HandleBOPAlgoAlertTooSmallEdge,
-    HandleBOPAlgoAlertUnableToGlue, HandleBOPAlgoAlertUnableToMakeClosedEdgeOnFace,
-    HandleBOPAlgoAlertUnableToMakeIdentical, HandleBOPAlgoAlertUnableToMakePeriodic,
-    HandleBOPAlgoAlertUnableToOrientTheShape, HandleBOPAlgoAlertUnableToRemoveTheFeature,
-    HandleBOPAlgoAlertUnableToRepeat, HandleBOPAlgoAlertUnableToTrim,
-    HandleBOPAlgoAlertUnknownShape, HandleBOPAlgoAlertUnsupportedType, HandleBRepTEdge,
-    HandleBRepTFace, HandleBRepTVertex, HandleMessageAlert, HandleMessageAttribute,
-    HandleMessageAttributeStream, HandleStandardDomainError, HandleStandardFailure,
-    HandleStandardTransient,
+    Handle_BOPAlgo_AlertAcquiredSelfIntersection, Handle_BOPAlgo_AlertBadPositioning,
+    Handle_BOPAlgo_AlertBuildingPCurveFailed, Handle_BOPAlgo_AlertEmptyShape,
+    Handle_BOPAlgo_AlertFaceBuilderUnusedEdges,
+    Handle_BOPAlgo_AlertIntersectionOfPairOfShapesFailed, Handle_BOPAlgo_AlertNotSplittableEdge,
+    Handle_BOPAlgo_AlertRemovalOfIBForEdgesFailed, Handle_BOPAlgo_AlertRemovalOfIBForFacesFailed,
+    Handle_BOPAlgo_AlertRemovalOfIBForMDimShapes, Handle_BOPAlgo_AlertRemovalOfIBForSolidsFailed,
+    Handle_BOPAlgo_AlertSelfInterferingShape, Handle_BOPAlgo_AlertShapeIsNotPeriodic,
+    Handle_BOPAlgo_AlertShellSplitterFailed, Handle_BOPAlgo_AlertSolidBuilderUnusedFaces,
+    Handle_BOPAlgo_AlertTooSmallEdge, Handle_BOPAlgo_AlertUnableToGlue,
+    Handle_BOPAlgo_AlertUnableToMakeClosedEdgeOnFace, Handle_BOPAlgo_AlertUnableToMakeIdentical,
+    Handle_BOPAlgo_AlertUnableToMakePeriodic, Handle_BOPAlgo_AlertUnableToOrientTheShape,
+    Handle_BOPAlgo_AlertUnableToRemoveTheFeature, Handle_BOPAlgo_AlertUnableToRepeat,
+    Handle_BOPAlgo_AlertUnableToTrim, Handle_BOPAlgo_AlertUnknownShape,
+    Handle_BOPAlgo_AlertUnsupportedType, Handle_BRep_TEdge, Handle_BRep_TFace, Handle_BRep_TVertex,
+    Handle_Message_Alert, Handle_Message_Attribute, Handle_Message_AttributeStream,
+    Handle_Standard_Transient,
 };
 
 // ========================
 // From TopoDS_AlertAttribute.hxx
 // ========================
 
-/// **Source:** `TopoDS_AlertAttribute.hxx`:28 - `TopoDS_AlertAttribute`
+/// **Source:** `TopoDS_AlertAttribute.hxx`:29 - `TopoDS_AlertAttribute`
 /// Alert attribute object storing TopoDS shape in its field
 pub use crate::ffi_types::TopoDS_AlertAttribute as AlertAttribute;
 
@@ -174,7 +174,7 @@ unsafe impl crate::CppDeletable for AlertAttribute {
 }
 
 impl AlertAttribute {
-    /// **Source:** `TopoDS_AlertAttribute.hxx`:33 - `TopoDS_AlertAttribute::TopoDS_AlertAttribute()`
+    /// **Source:** `TopoDS_AlertAttribute.hxx`:34 - `TopoDS_AlertAttribute::TopoDS_AlertAttribute()`
     /// Constructor with shape argument
     pub fn new_shape_asciistring(
         theShape: &Shape,
@@ -189,8 +189,8 @@ impl AlertAttribute {
         }
     }
 
-    /// **Source:** `TopoDS_AlertAttribute.hxx`:30 - `TopoDS_AlertAttribute::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `TopoDS_AlertAttribute.hxx`:31 - `TopoDS_AlertAttribute::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKBRep::TopoDS_AlertAttribute_dynamic_type(
                 self as *const Self,
@@ -198,7 +198,7 @@ impl AlertAttribute {
         }
     }
 
-    /// **Source:** `TopoDS_AlertAttribute.hxx`:38 - `TopoDS_AlertAttribute::GetShape()`
+    /// **Source:** `TopoDS_AlertAttribute.hxx`:39 - `TopoDS_AlertAttribute::GetShape()`
     /// Returns contained shape
     pub fn get_shape(&self) -> &Shape {
         unsafe {
@@ -208,7 +208,7 @@ impl AlertAttribute {
         }
     }
 
-    /// **Source:** `TopoDS_AlertAttribute.hxx`:30 - `TopoDS_AlertAttribute::get_type_name()`
+    /// **Source:** `TopoDS_AlertAttribute.hxx`:31 - `TopoDS_AlertAttribute::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -219,8 +219,8 @@ impl AlertAttribute {
         .into_owned()
     }
 
-    /// **Source:** `TopoDS_AlertAttribute.hxx`:30 - `TopoDS_AlertAttribute::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    /// **Source:** `TopoDS_AlertAttribute.hxx`:31 - `TopoDS_AlertAttribute::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKBRep::TopoDS_AlertAttribute_get_type_descriptor(),
@@ -228,9 +228,9 @@ impl AlertAttribute {
         }
     }
 
-    /// **Source:** `TopoDS_AlertAttribute.hxx`:42 - `TopoDS_AlertAttribute::Send()`
+    /// **Source:** `TopoDS_AlertAttribute.hxx`:43 - `TopoDS_AlertAttribute::Send()`
     /// Push shape information into messenger
-    pub fn send(theMessenger: &crate::ffi_types::HandleMessageMessenger, theShape: &Shape) {
+    pub fn send(theMessenger: &crate::ffi_types::Handle_Message_Messenger, theShape: &Shape) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_AlertAttribute_send(theMessenger, theShape)
         })
@@ -305,7 +305,7 @@ impl AlertAttribute {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleTopoDSAlertAttribute> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_TopoDS_AlertAttribute> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKBRep::TopoDS_AlertAttribute_to_handle(obj.into_raw()),
@@ -313,7 +313,7 @@ impl AlertAttribute {
         }
     }
 
-    /// Inherited: **Source:** `Message_AttributeStream.hxx`:32 - `Message_AttributeStream::Stream()`
+    /// Inherited: **Source:** `Message_AttributeStream.hxx`:33 - `Message_AttributeStream::Stream()`
     pub fn stream(&self) -> &crate::ffi_types::Standard_SStream {
         unsafe {
             &*(crate::check_result(
@@ -324,7 +324,7 @@ impl AlertAttribute {
         }
     }
 
-    /// Inherited: **Source:** `Message_AttributeStream.hxx`:35 - `Message_AttributeStream::SetStream()`
+    /// Inherited: **Source:** `Message_AttributeStream.hxx`:36 - `Message_AttributeStream::SetStream()`
     pub fn set_stream(&mut self, theStream: &crate::ffi_types::Standard_SStream) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_AlertAttribute_inherited_SetStream(
@@ -334,7 +334,7 @@ impl AlertAttribute {
         })
     }
 
-    /// Inherited: **Source:** `Message_Attribute.hxx`:40 - `Message_Attribute::GetName()`
+    /// Inherited: **Source:** `Message_Attribute.hxx`:38 - `Message_Attribute::GetName()`
     pub fn get_name(&self) -> &crate::t_collection::AsciiString {
         unsafe {
             &*(crate::check_result(
@@ -345,7 +345,7 @@ impl AlertAttribute {
         }
     }
 
-    /// Inherited: **Source:** `Message_Attribute.hxx`:44 - `Message_Attribute::SetName()`
+    /// Inherited: **Source:** `Message_Attribute.hxx`:42 - `Message_Attribute::SetName()`
     pub fn set_name(&mut self, theName: &crate::t_collection::AsciiString) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_AlertAttribute_inherited_SetName(
@@ -355,8 +355,8 @@ impl AlertAttribute {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_AlertAttribute_inherited_IsInstance(
                 self as *const Self,
@@ -365,8 +365,8 @@ impl AlertAttribute {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_AlertAttribute_inherited_IsKind(
                 self as *const Self,
@@ -375,7 +375,7 @@ impl AlertAttribute {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -389,7 +389,7 @@ impl AlertAttribute {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_AlertAttribute_inherited_GetRefCount(
@@ -398,7 +398,7 @@ impl AlertAttribute {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_AlertAttribute_inherited_IncrementRefCounter(
@@ -407,7 +407,7 @@ impl AlertAttribute {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_AlertAttribute_inherited_DecrementRefCounter(
@@ -416,7 +416,7 @@ impl AlertAttribute {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_AlertAttribute_inherited_Delete(self as *const Self)
@@ -424,34 +424,36 @@ impl AlertAttribute {
     }
 }
 
-pub use crate::ffi_types::HandleTopoDSAlertAttribute;
+pub use crate::ffi_types::Handle_TopoDS_AlertAttribute;
 
-unsafe impl crate::CppDeletable for HandleTopoDSAlertAttribute {
+unsafe impl crate::CppDeletable for Handle_TopoDS_AlertAttribute {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKBRep::HandleTopoDSAlertAttribute_destructor(ptr);
+            crate::ffi_extern_TKBRep::Handle_TopoDS_AlertAttribute_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleTopoDSAlertAttribute {
+unsafe impl crate::CppCopyable for Handle_TopoDS_AlertAttribute {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
         unsafe {
-            crate::check_result(crate::ffi_extern_TKBRep::HandleTopoDSAlertAttribute_clone(ptr))
+            crate::check_result(crate::ffi_extern_TKBRep::Handle_TopoDS_AlertAttribute_clone(ptr))
         }
     }
 }
 
-impl HandleTopoDSAlertAttribute {
+impl Handle_TopoDS_AlertAttribute {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
-        unsafe { crate::ffi_extern_TKBRep::HandleTopoDSAlertAttribute_is_null(self as *const Self) }
+        unsafe {
+            crate::ffi_extern_TKBRep::Handle_TopoDS_AlertAttribute_is_null(self as *const Self)
+        }
     }
 
     /// Dereference this Handle to access the underlying TopoDS_AlertAttribute
     pub fn get(&self) -> &crate::ffi_types::TopoDS_AlertAttribute {
         unsafe {
-            &*crate::check_result(crate::ffi_extern_TKBRep::HandleTopoDSAlertAttribute_get(
+            &*crate::check_result(crate::ffi_extern_TKBRep::Handle_TopoDS_AlertAttribute_get(
                 self as *const Self,
             ))
         }
@@ -460,26 +462,28 @@ impl HandleTopoDSAlertAttribute {
     /// Dereference this Handle to mutably access the underlying TopoDS_AlertAttribute
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::TopoDS_AlertAttribute {
         unsafe {
-            &mut *crate::check_result(crate::ffi_extern_TKBRep::HandleTopoDSAlertAttribute_get_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKBRep::Handle_TopoDS_AlertAttribute_get_mut(self as *mut Self),
+            )
         }
     }
 
     /// Upcast Handle<TopoDS_AlertAttribute> to Handle<Message_AttributeStream>
     pub fn to_handle_attribute_stream(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleMessageAttributeStream> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Message_AttributeStream> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKBRep::HandleTopoDSAlertAttribute_to_HandleMessageAttributeStream(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKBRep::Handle_TopoDS_AlertAttribute_to_Handle_Message_AttributeStream(self as *const Self)))
         }
     }
 
     /// Upcast Handle<TopoDS_AlertAttribute> to Handle<Message_Attribute>
-    pub fn to_handle_attribute(&self) -> crate::OwnedPtr<crate::ffi_types::HandleMessageAttribute> {
+    pub fn to_handle_attribute(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Message_Attribute> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKBRep::HandleTopoDSAlertAttribute_to_HandleMessageAttribute(
+                crate::ffi_extern_TKBRep::Handle_TopoDS_AlertAttribute_to_Handle_Message_Attribute(
                     self as *const Self,
                 ),
             ))
@@ -489,10 +493,10 @@ impl HandleTopoDSAlertAttribute {
     /// Upcast Handle<TopoDS_AlertAttribute> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKBRep::HandleTopoDSAlertAttribute_to_HandleStandardTransient(
+                crate::ffi_extern_TKBRep::Handle_TopoDS_AlertAttribute_to_Handle_Standard_Transient(
                     self as *const Self,
                 ),
             ))
@@ -555,14 +559,14 @@ impl AlertWithShape {
 
     /// **Source:** `TopoDS_AlertWithShape.hxx`:39 - `TopoDS_AlertWithShape::Merge()`
     /// Returns false.
-    pub fn merge(&mut self, theTarget: &crate::ffi_types::HandleMessageAlert) -> bool {
+    pub fn merge(&mut self, theTarget: &crate::ffi_types::Handle_Message_Alert) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_AlertWithShape_merge(self as *mut Self, theTarget)
         })
     }
 
-    /// **Source:** `TopoDS_AlertWithShape.hxx`:43 - `TopoDS_AlertWithShape::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `TopoDS_AlertWithShape.hxx`:42 - `TopoDS_AlertWithShape::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKBRep::TopoDS_AlertWithShape_dynamic_type(
                 self as *const Self,
@@ -570,7 +574,7 @@ impl AlertWithShape {
         }
     }
 
-    /// **Source:** `TopoDS_AlertWithShape.hxx`:43 - `TopoDS_AlertWithShape::get_type_name()`
+    /// **Source:** `TopoDS_AlertWithShape.hxx`:42 - `TopoDS_AlertWithShape::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -581,8 +585,8 @@ impl AlertWithShape {
         .into_owned()
     }
 
-    /// **Source:** `TopoDS_AlertWithShape.hxx`:43 - `TopoDS_AlertWithShape::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    /// **Source:** `TopoDS_AlertWithShape.hxx`:42 - `TopoDS_AlertWithShape::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKBRep::TopoDS_AlertWithShape_get_type_descriptor(),
@@ -635,7 +639,7 @@ impl AlertWithShape {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleTopoDSAlertWithShape> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_TopoDS_AlertWithShape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKBRep::TopoDS_AlertWithShape_to_handle(obj.into_raw()),
@@ -643,8 +647,8 @@ impl AlertWithShape {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_AlertWithShape_inherited_IsInstance(
                 self as *const Self,
@@ -653,8 +657,8 @@ impl AlertWithShape {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_AlertWithShape_inherited_IsKind(
                 self as *const Self,
@@ -663,7 +667,7 @@ impl AlertWithShape {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -677,7 +681,7 @@ impl AlertWithShape {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_AlertWithShape_inherited_GetRefCount(
@@ -686,7 +690,7 @@ impl AlertWithShape {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_AlertWithShape_inherited_IncrementRefCounter(
@@ -695,7 +699,7 @@ impl AlertWithShape {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_AlertWithShape_inherited_DecrementRefCounter(
@@ -704,7 +708,7 @@ impl AlertWithShape {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_AlertWithShape_inherited_Delete(self as *const Self)
@@ -712,34 +716,36 @@ impl AlertWithShape {
     }
 }
 
-pub use crate::ffi_types::HandleTopoDSAlertWithShape;
+pub use crate::ffi_types::Handle_TopoDS_AlertWithShape;
 
-unsafe impl crate::CppDeletable for HandleTopoDSAlertWithShape {
+unsafe impl crate::CppDeletable for Handle_TopoDS_AlertWithShape {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKBRep::HandleTopoDSAlertWithShape_destructor(ptr);
+            crate::ffi_extern_TKBRep::Handle_TopoDS_AlertWithShape_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleTopoDSAlertWithShape {
+unsafe impl crate::CppCopyable for Handle_TopoDS_AlertWithShape {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
         unsafe {
-            crate::check_result(crate::ffi_extern_TKBRep::HandleTopoDSAlertWithShape_clone(ptr))
+            crate::check_result(crate::ffi_extern_TKBRep::Handle_TopoDS_AlertWithShape_clone(ptr))
         }
     }
 }
 
-impl HandleTopoDSAlertWithShape {
+impl Handle_TopoDS_AlertWithShape {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
-        unsafe { crate::ffi_extern_TKBRep::HandleTopoDSAlertWithShape_is_null(self as *const Self) }
+        unsafe {
+            crate::ffi_extern_TKBRep::Handle_TopoDS_AlertWithShape_is_null(self as *const Self)
+        }
     }
 
     /// Dereference this Handle to access the underlying TopoDS_AlertWithShape
     pub fn get(&self) -> &crate::ffi_types::TopoDS_AlertWithShape {
         unsafe {
-            &*crate::check_result(crate::ffi_extern_TKBRep::HandleTopoDSAlertWithShape_get(
+            &*crate::check_result(crate::ffi_extern_TKBRep::Handle_TopoDS_AlertWithShape_get(
                 self as *const Self,
             ))
         }
@@ -748,17 +754,17 @@ impl HandleTopoDSAlertWithShape {
     /// Dereference this Handle to mutably access the underlying TopoDS_AlertWithShape
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::TopoDS_AlertWithShape {
         unsafe {
-            &mut *crate::check_result(crate::ffi_extern_TKBRep::HandleTopoDSAlertWithShape_get_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKBRep::Handle_TopoDS_AlertWithShape_get_mut(self as *mut Self),
+            )
         }
     }
 
     /// Upcast Handle<TopoDS_AlertWithShape> to Handle<Message_Alert>
-    pub fn to_handle_alert(&self) -> crate::OwnedPtr<crate::ffi_types::HandleMessageAlert> {
+    pub fn to_handle_alert(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_Message_Alert> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKBRep::HandleTopoDSAlertWithShape_to_HandleMessageAlert(
+                crate::ffi_extern_TKBRep::Handle_TopoDS_AlertWithShape_to_Handle_Message_Alert(
                     self as *const Self,
                 ),
             ))
@@ -768,10 +774,10 @@ impl HandleTopoDSAlertWithShape {
     /// Upcast Handle<TopoDS_AlertWithShape> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKBRep::HandleTopoDSAlertWithShape_to_HandleStandardTransient(
+                crate::ffi_extern_TKBRep::Handle_TopoDS_AlertWithShape_to_Handle_Standard_Transient(
                     self as *const Self,
                 ),
             ))
@@ -783,9 +789,10 @@ impl HandleTopoDSAlertWithShape {
     /// Returns `None` if the handle does not point to a `BOPAlgo_AlertAcquiredSelfIntersection` (or subclass).
     pub fn downcast_to_alert_acquired_self_intersection(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleBOPAlgoAlertAcquiredSelfIntersection>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_BOPAlgo_AlertAcquiredSelfIntersection>>
+    {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKBRep::HandleTopoDSAlertWithShape_downcast_to_HandleBOPAlgoAlertAcquiredSelfIntersection(self as *const Self)
+            crate::ffi_extern_TKBRep::Handle_TopoDS_AlertWithShape_downcast_to_Handle_BOPAlgo_AlertAcquiredSelfIntersection(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -799,9 +806,9 @@ impl HandleTopoDSAlertWithShape {
     /// Returns `None` if the handle does not point to a `BOPAlgo_AlertBadPositioning` (or subclass).
     pub fn downcast_to_alert_bad_positioning(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleBOPAlgoAlertBadPositioning>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_BOPAlgo_AlertBadPositioning>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKBRep::HandleTopoDSAlertWithShape_downcast_to_HandleBOPAlgoAlertBadPositioning(self as *const Self)
+            crate::ffi_extern_TKBRep::Handle_TopoDS_AlertWithShape_downcast_to_Handle_BOPAlgo_AlertBadPositioning(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -815,9 +822,9 @@ impl HandleTopoDSAlertWithShape {
     /// Returns `None` if the handle does not point to a `BOPAlgo_AlertBuildingPCurveFailed` (or subclass).
     pub fn downcast_to_alert_building_p_curve_failed(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleBOPAlgoAlertBuildingPCurveFailed>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_BOPAlgo_AlertBuildingPCurveFailed>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKBRep::HandleTopoDSAlertWithShape_downcast_to_HandleBOPAlgoAlertBuildingPCurveFailed(self as *const Self)
+            crate::ffi_extern_TKBRep::Handle_TopoDS_AlertWithShape_downcast_to_Handle_BOPAlgo_AlertBuildingPCurveFailed(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -831,9 +838,9 @@ impl HandleTopoDSAlertWithShape {
     /// Returns `None` if the handle does not point to a `BOPAlgo_AlertEmptyShape` (or subclass).
     pub fn downcast_to_alert_empty_shape(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleBOPAlgoAlertEmptyShape>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_BOPAlgo_AlertEmptyShape>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKBRep::HandleTopoDSAlertWithShape_downcast_to_HandleBOPAlgoAlertEmptyShape(self as *const Self)
+            crate::ffi_extern_TKBRep::Handle_TopoDS_AlertWithShape_downcast_to_Handle_BOPAlgo_AlertEmptyShape(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -847,9 +854,9 @@ impl HandleTopoDSAlertWithShape {
     /// Returns `None` if the handle does not point to a `BOPAlgo_AlertFaceBuilderUnusedEdges` (or subclass).
     pub fn downcast_to_alert_face_builder_unused_edges(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleBOPAlgoAlertFaceBuilderUnusedEdges>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_BOPAlgo_AlertFaceBuilderUnusedEdges>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKBRep::HandleTopoDSAlertWithShape_downcast_to_HandleBOPAlgoAlertFaceBuilderUnusedEdges(self as *const Self)
+            crate::ffi_extern_TKBRep::Handle_TopoDS_AlertWithShape_downcast_to_Handle_BOPAlgo_AlertFaceBuilderUnusedEdges(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -863,10 +870,11 @@ impl HandleTopoDSAlertWithShape {
     /// Returns `None` if the handle does not point to a `BOPAlgo_AlertIntersectionOfPairOfShapesFailed` (or subclass).
     pub fn downcast_to_alert_intersection_of_pair_of_shapes_failed(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleBOPAlgoAlertIntersectionOfPairOfShapesFailed>>
-    {
+    ) -> Option<
+        crate::OwnedPtr<crate::ffi_types::Handle_BOPAlgo_AlertIntersectionOfPairOfShapesFailed>,
+    > {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKBRep::HandleTopoDSAlertWithShape_downcast_to_HandleBOPAlgoAlertIntersectionOfPairOfShapesFailed(self as *const Self)
+            crate::ffi_extern_TKBRep::Handle_TopoDS_AlertWithShape_downcast_to_Handle_BOPAlgo_AlertIntersectionOfPairOfShapesFailed(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -880,9 +888,9 @@ impl HandleTopoDSAlertWithShape {
     /// Returns `None` if the handle does not point to a `BOPAlgo_AlertNotSplittableEdge` (or subclass).
     pub fn downcast_to_alert_not_splittable_edge(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleBOPAlgoAlertNotSplittableEdge>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_BOPAlgo_AlertNotSplittableEdge>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKBRep::HandleTopoDSAlertWithShape_downcast_to_HandleBOPAlgoAlertNotSplittableEdge(self as *const Self)
+            crate::ffi_extern_TKBRep::Handle_TopoDS_AlertWithShape_downcast_to_Handle_BOPAlgo_AlertNotSplittableEdge(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -896,10 +904,10 @@ impl HandleTopoDSAlertWithShape {
     /// Returns `None` if the handle does not point to a `BOPAlgo_AlertRemovalOfIBForEdgesFailed` (or subclass).
     pub fn downcast_to_alert_removal_of_ib_for_edges_failed(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleBOPAlgoAlertRemovalOfIBForEdgesFailed>>
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_BOPAlgo_AlertRemovalOfIBForEdgesFailed>>
     {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKBRep::HandleTopoDSAlertWithShape_downcast_to_HandleBOPAlgoAlertRemovalOfIBForEdgesFailed(self as *const Self)
+            crate::ffi_extern_TKBRep::Handle_TopoDS_AlertWithShape_downcast_to_Handle_BOPAlgo_AlertRemovalOfIBForEdgesFailed(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -913,10 +921,10 @@ impl HandleTopoDSAlertWithShape {
     /// Returns `None` if the handle does not point to a `BOPAlgo_AlertRemovalOfIBForFacesFailed` (or subclass).
     pub fn downcast_to_alert_removal_of_ib_for_faces_failed(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleBOPAlgoAlertRemovalOfIBForFacesFailed>>
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_BOPAlgo_AlertRemovalOfIBForFacesFailed>>
     {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKBRep::HandleTopoDSAlertWithShape_downcast_to_HandleBOPAlgoAlertRemovalOfIBForFacesFailed(self as *const Self)
+            crate::ffi_extern_TKBRep::Handle_TopoDS_AlertWithShape_downcast_to_Handle_BOPAlgo_AlertRemovalOfIBForFacesFailed(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -930,9 +938,10 @@ impl HandleTopoDSAlertWithShape {
     /// Returns `None` if the handle does not point to a `BOPAlgo_AlertRemovalOfIBForMDimShapes` (or subclass).
     pub fn downcast_to_alert_removal_of_ib_for_m_dim_shapes(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleBOPAlgoAlertRemovalOfIBForMDimShapes>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_BOPAlgo_AlertRemovalOfIBForMDimShapes>>
+    {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKBRep::HandleTopoDSAlertWithShape_downcast_to_HandleBOPAlgoAlertRemovalOfIBForMDimShapes(self as *const Self)
+            crate::ffi_extern_TKBRep::Handle_TopoDS_AlertWithShape_downcast_to_Handle_BOPAlgo_AlertRemovalOfIBForMDimShapes(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -946,10 +955,10 @@ impl HandleTopoDSAlertWithShape {
     /// Returns `None` if the handle does not point to a `BOPAlgo_AlertRemovalOfIBForSolidsFailed` (or subclass).
     pub fn downcast_to_alert_removal_of_ib_for_solids_failed(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleBOPAlgoAlertRemovalOfIBForSolidsFailed>>
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_BOPAlgo_AlertRemovalOfIBForSolidsFailed>>
     {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKBRep::HandleTopoDSAlertWithShape_downcast_to_HandleBOPAlgoAlertRemovalOfIBForSolidsFailed(self as *const Self)
+            crate::ffi_extern_TKBRep::Handle_TopoDS_AlertWithShape_downcast_to_Handle_BOPAlgo_AlertRemovalOfIBForSolidsFailed(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -963,9 +972,9 @@ impl HandleTopoDSAlertWithShape {
     /// Returns `None` if the handle does not point to a `BOPAlgo_AlertSelfInterferingShape` (or subclass).
     pub fn downcast_to_alert_self_interfering_shape(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleBOPAlgoAlertSelfInterferingShape>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_BOPAlgo_AlertSelfInterferingShape>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKBRep::HandleTopoDSAlertWithShape_downcast_to_HandleBOPAlgoAlertSelfInterferingShape(self as *const Self)
+            crate::ffi_extern_TKBRep::Handle_TopoDS_AlertWithShape_downcast_to_Handle_BOPAlgo_AlertSelfInterferingShape(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -979,9 +988,9 @@ impl HandleTopoDSAlertWithShape {
     /// Returns `None` if the handle does not point to a `BOPAlgo_AlertShapeIsNotPeriodic` (or subclass).
     pub fn downcast_to_alert_shape_is_not_periodic(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleBOPAlgoAlertShapeIsNotPeriodic>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_BOPAlgo_AlertShapeIsNotPeriodic>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKBRep::HandleTopoDSAlertWithShape_downcast_to_HandleBOPAlgoAlertShapeIsNotPeriodic(self as *const Self)
+            crate::ffi_extern_TKBRep::Handle_TopoDS_AlertWithShape_downcast_to_Handle_BOPAlgo_AlertShapeIsNotPeriodic(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -995,9 +1004,9 @@ impl HandleTopoDSAlertWithShape {
     /// Returns `None` if the handle does not point to a `BOPAlgo_AlertShellSplitterFailed` (or subclass).
     pub fn downcast_to_alert_shell_splitter_failed(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleBOPAlgoAlertShellSplitterFailed>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_BOPAlgo_AlertShellSplitterFailed>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKBRep::HandleTopoDSAlertWithShape_downcast_to_HandleBOPAlgoAlertShellSplitterFailed(self as *const Self)
+            crate::ffi_extern_TKBRep::Handle_TopoDS_AlertWithShape_downcast_to_Handle_BOPAlgo_AlertShellSplitterFailed(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -1011,9 +1020,10 @@ impl HandleTopoDSAlertWithShape {
     /// Returns `None` if the handle does not point to a `BOPAlgo_AlertSolidBuilderUnusedFaces` (or subclass).
     pub fn downcast_to_alert_solid_builder_unused_faces(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleBOPAlgoAlertSolidBuilderUnusedFaces>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_BOPAlgo_AlertSolidBuilderUnusedFaces>>
+    {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKBRep::HandleTopoDSAlertWithShape_downcast_to_HandleBOPAlgoAlertSolidBuilderUnusedFaces(self as *const Self)
+            crate::ffi_extern_TKBRep::Handle_TopoDS_AlertWithShape_downcast_to_Handle_BOPAlgo_AlertSolidBuilderUnusedFaces(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -1027,9 +1037,9 @@ impl HandleTopoDSAlertWithShape {
     /// Returns `None` if the handle does not point to a `BOPAlgo_AlertTooSmallEdge` (or subclass).
     pub fn downcast_to_alert_too_small_edge(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleBOPAlgoAlertTooSmallEdge>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_BOPAlgo_AlertTooSmallEdge>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKBRep::HandleTopoDSAlertWithShape_downcast_to_HandleBOPAlgoAlertTooSmallEdge(self as *const Self)
+            crate::ffi_extern_TKBRep::Handle_TopoDS_AlertWithShape_downcast_to_Handle_BOPAlgo_AlertTooSmallEdge(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -1043,9 +1053,9 @@ impl HandleTopoDSAlertWithShape {
     /// Returns `None` if the handle does not point to a `BOPAlgo_AlertUnableToGlue` (or subclass).
     pub fn downcast_to_alert_unable_to_glue(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleBOPAlgoAlertUnableToGlue>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_BOPAlgo_AlertUnableToGlue>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKBRep::HandleTopoDSAlertWithShape_downcast_to_HandleBOPAlgoAlertUnableToGlue(self as *const Self)
+            crate::ffi_extern_TKBRep::Handle_TopoDS_AlertWithShape_downcast_to_Handle_BOPAlgo_AlertUnableToGlue(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -1059,10 +1069,10 @@ impl HandleTopoDSAlertWithShape {
     /// Returns `None` if the handle does not point to a `BOPAlgo_AlertUnableToMakeClosedEdgeOnFace` (or subclass).
     pub fn downcast_to_alert_unable_to_make_closed_edge_on_face(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleBOPAlgoAlertUnableToMakeClosedEdgeOnFace>>
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_BOPAlgo_AlertUnableToMakeClosedEdgeOnFace>>
     {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKBRep::HandleTopoDSAlertWithShape_downcast_to_HandleBOPAlgoAlertUnableToMakeClosedEdgeOnFace(self as *const Self)
+            crate::ffi_extern_TKBRep::Handle_TopoDS_AlertWithShape_downcast_to_Handle_BOPAlgo_AlertUnableToMakeClosedEdgeOnFace(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -1076,9 +1086,9 @@ impl HandleTopoDSAlertWithShape {
     /// Returns `None` if the handle does not point to a `BOPAlgo_AlertUnableToMakeIdentical` (or subclass).
     pub fn downcast_to_alert_unable_to_make_identical(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleBOPAlgoAlertUnableToMakeIdentical>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_BOPAlgo_AlertUnableToMakeIdentical>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKBRep::HandleTopoDSAlertWithShape_downcast_to_HandleBOPAlgoAlertUnableToMakeIdentical(self as *const Self)
+            crate::ffi_extern_TKBRep::Handle_TopoDS_AlertWithShape_downcast_to_Handle_BOPAlgo_AlertUnableToMakeIdentical(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -1092,9 +1102,9 @@ impl HandleTopoDSAlertWithShape {
     /// Returns `None` if the handle does not point to a `BOPAlgo_AlertUnableToMakePeriodic` (or subclass).
     pub fn downcast_to_alert_unable_to_make_periodic(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleBOPAlgoAlertUnableToMakePeriodic>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_BOPAlgo_AlertUnableToMakePeriodic>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKBRep::HandleTopoDSAlertWithShape_downcast_to_HandleBOPAlgoAlertUnableToMakePeriodic(self as *const Self)
+            crate::ffi_extern_TKBRep::Handle_TopoDS_AlertWithShape_downcast_to_Handle_BOPAlgo_AlertUnableToMakePeriodic(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -1108,9 +1118,9 @@ impl HandleTopoDSAlertWithShape {
     /// Returns `None` if the handle does not point to a `BOPAlgo_AlertUnableToOrientTheShape` (or subclass).
     pub fn downcast_to_alert_unable_to_orient_the_shape(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleBOPAlgoAlertUnableToOrientTheShape>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_BOPAlgo_AlertUnableToOrientTheShape>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKBRep::HandleTopoDSAlertWithShape_downcast_to_HandleBOPAlgoAlertUnableToOrientTheShape(self as *const Self)
+            crate::ffi_extern_TKBRep::Handle_TopoDS_AlertWithShape_downcast_to_Handle_BOPAlgo_AlertUnableToOrientTheShape(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -1124,9 +1134,10 @@ impl HandleTopoDSAlertWithShape {
     /// Returns `None` if the handle does not point to a `BOPAlgo_AlertUnableToRemoveTheFeature` (or subclass).
     pub fn downcast_to_alert_unable_to_remove_the_feature(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleBOPAlgoAlertUnableToRemoveTheFeature>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_BOPAlgo_AlertUnableToRemoveTheFeature>>
+    {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKBRep::HandleTopoDSAlertWithShape_downcast_to_HandleBOPAlgoAlertUnableToRemoveTheFeature(self as *const Self)
+            crate::ffi_extern_TKBRep::Handle_TopoDS_AlertWithShape_downcast_to_Handle_BOPAlgo_AlertUnableToRemoveTheFeature(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -1140,9 +1151,9 @@ impl HandleTopoDSAlertWithShape {
     /// Returns `None` if the handle does not point to a `BOPAlgo_AlertUnableToRepeat` (or subclass).
     pub fn downcast_to_alert_unable_to_repeat(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleBOPAlgoAlertUnableToRepeat>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_BOPAlgo_AlertUnableToRepeat>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKBRep::HandleTopoDSAlertWithShape_downcast_to_HandleBOPAlgoAlertUnableToRepeat(self as *const Self)
+            crate::ffi_extern_TKBRep::Handle_TopoDS_AlertWithShape_downcast_to_Handle_BOPAlgo_AlertUnableToRepeat(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -1156,9 +1167,9 @@ impl HandleTopoDSAlertWithShape {
     /// Returns `None` if the handle does not point to a `BOPAlgo_AlertUnableToTrim` (or subclass).
     pub fn downcast_to_alert_unable_to_trim(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleBOPAlgoAlertUnableToTrim>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_BOPAlgo_AlertUnableToTrim>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKBRep::HandleTopoDSAlertWithShape_downcast_to_HandleBOPAlgoAlertUnableToTrim(self as *const Self)
+            crate::ffi_extern_TKBRep::Handle_TopoDS_AlertWithShape_downcast_to_Handle_BOPAlgo_AlertUnableToTrim(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -1172,9 +1183,9 @@ impl HandleTopoDSAlertWithShape {
     /// Returns `None` if the handle does not point to a `BOPAlgo_AlertUnknownShape` (or subclass).
     pub fn downcast_to_alert_unknown_shape(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleBOPAlgoAlertUnknownShape>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_BOPAlgo_AlertUnknownShape>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKBRep::HandleTopoDSAlertWithShape_downcast_to_HandleBOPAlgoAlertUnknownShape(self as *const Self)
+            crate::ffi_extern_TKBRep::Handle_TopoDS_AlertWithShape_downcast_to_Handle_BOPAlgo_AlertUnknownShape(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -1188,9 +1199,9 @@ impl HandleTopoDSAlertWithShape {
     /// Returns `None` if the handle does not point to a `BOPAlgo_AlertUnsupportedType` (or subclass).
     pub fn downcast_to_alert_unsupported_type(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleBOPAlgoAlertUnsupportedType>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_BOPAlgo_AlertUnsupportedType>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKBRep::HandleTopoDSAlertWithShape_downcast_to_HandleBOPAlgoAlertUnsupportedType(self as *const Self)
+            crate::ffi_extern_TKBRep::Handle_TopoDS_AlertWithShape_downcast_to_Handle_BOPAlgo_AlertUnsupportedType(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -1205,27 +1216,27 @@ impl HandleTopoDSAlertWithShape {
 // ========================
 
 /// **Source:** `TopoDS_Builder.hxx`:71 - `TopoDS_Builder`
-/// A  Builder is used   to  create  Topological  Data
-/// Structures.It is the root of the Builder class hierarchy.
+/// A Builder is used to create Topological Data Structures.
+/// It is the root of the Builder class hierarchy.
 ///
-/// There are three groups of methods in the Builder :
+/// There are three groups of methods in the Builder:
 ///
 /// The Make methods create Shapes.
 ///
 /// The Add method includes a Shape in another Shape.
 ///
-/// The Remove  method  removes a  Shape from an other
+/// The Remove method removes a Shape from an other
 /// Shape.
 ///
 /// The methods in Builder are not static. They can be
 /// redefined in inherited builders.
 ///
-/// This   Builder does not  provide   methods to Make
-/// Vertices,  Edges, Faces,  Shells  or Solids. These
-/// methods are  provided  in  the inherited  Builders
+/// This Builder does not provide methods to Make
+/// Vertices, Edges, Faces, Shells or Solids. These
+/// methods are provided in the inherited Builders
 /// as they must provide the geometry.
 ///
-/// The Add method check for the following rules :
+/// The Add method check for the following rules:
 ///
 /// - Any SHAPE can be added in a COMPOUND.
 ///
@@ -1452,7 +1463,7 @@ impl CompSolid {
         }
     }
 
-    /// Inherited: **Source:** `TopoDS_Shape.hxx`:119 - `TopoDS_Shape::Orientation()`
+    /// Inherited: **Source:** `TopoDS_Shape.hxx`:118 - `TopoDS_Shape::Orientation()`
     pub fn orientation(&self) -> crate::top_abs::Orientation {
         crate::top_abs::Orientation::try_from(crate::check_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_CompSolid_inherited_Orientation(self as *const Self)
@@ -1460,7 +1471,7 @@ impl CompSolid {
         .unwrap()
     }
 
-    /// Inherited: **Source:** `TopoDS_Shape.hxx`:126 - `TopoDS_Shape::Oriented()`
+    /// Inherited: **Source:** `TopoDS_Shape.hxx`:125 - `TopoDS_Shape::Oriented()`
     pub fn oriented(&self, theOrient: crate::top_abs::Orientation) -> crate::OwnedPtr<Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -1472,8 +1483,8 @@ impl CompSolid {
         }
     }
 
-    /// Inherited: **Source:** `TopoDS_Shape.hxx`:134 - `TopoDS_Shape::TShape()`
-    pub fn t_shape(&self) -> &crate::ffi_types::HandleTopoDSTShape {
+    /// Inherited: **Source:** `TopoDS_Shape.hxx`:133 - `TopoDS_Shape::TShape()`
+    pub fn t_shape(&self) -> &crate::ffi_types::Handle_TopoDS_TShape {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKBRep::TopoDS_CompSolid_inherited_TShape(
                 self as *const Self,
@@ -1481,7 +1492,7 @@ impl CompSolid {
         }
     }
 
-    /// Inherited: **Source:** `TopoDS_Shape.hxx`:141 - `TopoDS_Shape::ShapeType()`
+    /// Inherited: **Source:** `TopoDS_Shape.hxx`:140 - `TopoDS_Shape::ShapeType()`
     pub fn shape_type(&self) -> crate::top_abs::ShapeEnum {
         crate::top_abs::ShapeEnum::try_from(crate::check_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_CompSolid_inherited_ShapeType(self as *const Self)
@@ -1489,63 +1500,63 @@ impl CompSolid {
         .unwrap()
     }
 
-    /// Inherited: **Source:** `TopoDS_Shape.hxx`:144 - `TopoDS_Shape::Free()`
+    /// Inherited: **Source:** `TopoDS_Shape.hxx`:143 - `TopoDS_Shape::Free()`
     pub fn free(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_CompSolid_inherited_Free(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `TopoDS_Shape.hxx`:150 - `TopoDS_Shape::Locked()`
+    /// Inherited: **Source:** `TopoDS_Shape.hxx`:149 - `TopoDS_Shape::Locked()`
     pub fn locked(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_CompSolid_inherited_Locked(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `TopoDS_Shape.hxx`:156 - `TopoDS_Shape::Modified()`
+    /// Inherited: **Source:** `TopoDS_Shape.hxx`:155 - `TopoDS_Shape::Modified()`
     pub fn modified(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_CompSolid_inherited_Modified(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `TopoDS_Shape.hxx`:162 - `TopoDS_Shape::Checked()`
+    /// Inherited: **Source:** `TopoDS_Shape.hxx`:161 - `TopoDS_Shape::Checked()`
     pub fn checked(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_CompSolid_inherited_Checked(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `TopoDS_Shape.hxx`:168 - `TopoDS_Shape::Orientable()`
+    /// Inherited: **Source:** `TopoDS_Shape.hxx`:167 - `TopoDS_Shape::Orientable()`
     pub fn orientable(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_CompSolid_inherited_Orientable(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `TopoDS_Shape.hxx`:174 - `TopoDS_Shape::Closed()`
+    /// Inherited: **Source:** `TopoDS_Shape.hxx`:173 - `TopoDS_Shape::Closed()`
     pub fn closed(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_CompSolid_inherited_Closed(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `TopoDS_Shape.hxx`:180 - `TopoDS_Shape::Infinite()`
+    /// Inherited: **Source:** `TopoDS_Shape.hxx`:179 - `TopoDS_Shape::Infinite()`
     pub fn infinite(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_CompSolid_inherited_Infinite(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `TopoDS_Shape.hxx`:186 - `TopoDS_Shape::Convex()`
+    /// Inherited: **Source:** `TopoDS_Shape.hxx`:185 - `TopoDS_Shape::Convex()`
     pub fn convex(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_CompSolid_inherited_Convex(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `TopoDS_Shape.hxx`:194 - `TopoDS_Shape::Move()`
+    /// Inherited: **Source:** `TopoDS_Shape.hxx`:193 - `TopoDS_Shape::Move()`
     pub fn move_(&mut self, thePosition: &crate::top_loc::Location, theRaiseExc: bool) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_CompSolid_inherited_Move(
@@ -1556,7 +1567,7 @@ impl CompSolid {
         })
     }
 
-    /// Inherited: **Source:** `TopoDS_Shape.hxx`:208 - `TopoDS_Shape::Moved()`
+    /// Inherited: **Source:** `TopoDS_Shape.hxx`:207 - `TopoDS_Shape::Moved()`
     pub fn moved(
         &self,
         thePosition: &crate::top_loc::Location,
@@ -1573,14 +1584,14 @@ impl CompSolid {
         }
     }
 
-    /// Inherited: **Source:** `TopoDS_Shape.hxx`:218 - `TopoDS_Shape::Reverse()`
+    /// Inherited: **Source:** `TopoDS_Shape.hxx`:216 - `TopoDS_Shape::Reverse()`
     pub fn reverse(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_CompSolid_inherited_Reverse(self as *mut Self)
         })
     }
 
-    /// Inherited: **Source:** `TopoDS_Shape.hxx`:223 - `TopoDS_Shape::Reversed()`
+    /// Inherited: **Source:** `TopoDS_Shape.hxx`:221 - `TopoDS_Shape::Reversed()`
     pub fn reversed(&self) -> crate::OwnedPtr<Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -1589,14 +1600,14 @@ impl CompSolid {
         }
     }
 
-    /// Inherited: **Source:** `TopoDS_Shape.hxx`:232 - `TopoDS_Shape::Complement()`
+    /// Inherited: **Source:** `TopoDS_Shape.hxx`:230 - `TopoDS_Shape::Complement()`
     pub fn complement(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_CompSolid_inherited_Complement(self as *mut Self)
         })
     }
 
-    /// Inherited: **Source:** `TopoDS_Shape.hxx`:237 - `TopoDS_Shape::Complemented()`
+    /// Inherited: **Source:** `TopoDS_Shape.hxx`:235 - `TopoDS_Shape::Complemented()`
     pub fn complemented(&self) -> crate::OwnedPtr<Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -1607,7 +1618,7 @@ impl CompSolid {
         }
     }
 
-    /// Inherited: **Source:** `TopoDS_Shape.hxx`:246 - `TopoDS_Shape::Compose()`
+    /// Inherited: **Source:** `TopoDS_Shape.hxx`:244 - `TopoDS_Shape::Compose()`
     pub fn compose(&mut self, theOrient: crate::top_abs::Orientation) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_CompSolid_inherited_Compose(
@@ -1617,7 +1628,7 @@ impl CompSolid {
         })
     }
 
-    /// Inherited: **Source:** `TopoDS_Shape.hxx`:251 - `TopoDS_Shape::Composed()`
+    /// Inherited: **Source:** `TopoDS_Shape.hxx`:249 - `TopoDS_Shape::Composed()`
     pub fn composed(&self, theOrient: crate::top_abs::Orientation) -> crate::OwnedPtr<Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -1629,14 +1640,14 @@ impl CompSolid {
         }
     }
 
-    /// Inherited: **Source:** `TopoDS_Shape.hxx`:260 - `TopoDS_Shape::NbChildren()`
+    /// Inherited: **Source:** `TopoDS_Shape.hxx`:258 - `TopoDS_Shape::NbChildren()`
     pub fn nb_children(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_CompSolid_inherited_NbChildren(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `TopoDS_Shape.hxx`:265 - `TopoDS_Shape::IsPartner()`
+    /// Inherited: **Source:** `TopoDS_Shape.hxx`:263 - `TopoDS_Shape::IsPartner()`
     pub fn is_partner(&self, theOther: &Shape) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_CompSolid_inherited_IsPartner(
@@ -1646,7 +1657,7 @@ impl CompSolid {
         })
     }
 
-    /// Inherited: **Source:** `TopoDS_Shape.hxx`:273 - `TopoDS_Shape::IsSame()`
+    /// Inherited: **Source:** `TopoDS_Shape.hxx`:268 - `TopoDS_Shape::IsSame()`
     pub fn is_same(&self, theOther: &Shape) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_CompSolid_inherited_IsSame(
@@ -1656,7 +1667,7 @@ impl CompSolid {
         })
     }
 
-    /// Inherited: **Source:** `TopoDS_Shape.hxx`:281 - `TopoDS_Shape::IsEqual()`
+    /// Inherited: **Source:** `TopoDS_Shape.hxx`:276 - `TopoDS_Shape::IsEqual()`
     pub fn is_equal(&self, theOther: &Shape) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_CompSolid_inherited_IsEqual(
@@ -1666,7 +1677,7 @@ impl CompSolid {
         })
     }
 
-    /// Inherited: **Source:** `TopoDS_Shape.hxx`:290 - `TopoDS_Shape::IsNotEqual()`
+    /// Inherited: **Source:** `TopoDS_Shape.hxx`:285 - `TopoDS_Shape::IsNotEqual()`
     pub fn is_not_equal(&self, theOther: &Shape) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_CompSolid_inherited_IsNotEqual(
@@ -1676,14 +1687,14 @@ impl CompSolid {
         })
     }
 
-    /// Inherited: **Source:** `TopoDS_Shape.hxx`:297 - `TopoDS_Shape::EmptyCopy()`
+    /// Inherited: **Source:** `TopoDS_Shape.hxx`:292 - `TopoDS_Shape::EmptyCopy()`
     pub fn empty_copy(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_CompSolid_inherited_EmptyCopy(self as *mut Self)
         })
     }
 
-    /// Inherited: **Source:** `TopoDS_Shape.hxx`:302 - `TopoDS_Shape::EmptyCopied()`
+    /// Inherited: **Source:** `TopoDS_Shape.hxx`:297 - `TopoDS_Shape::EmptyCopied()`
     pub fn empty_copied(&self) -> crate::OwnedPtr<Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -1804,7 +1815,7 @@ impl Compound {
         }
     }
 
-    /// Inherited: **Source:** `TopoDS_Shape.hxx`:119 - `TopoDS_Shape::Orientation()`
+    /// Inherited: **Source:** `TopoDS_Shape.hxx`:118 - `TopoDS_Shape::Orientation()`
     pub fn orientation(&self) -> crate::top_abs::Orientation {
         crate::top_abs::Orientation::try_from(crate::check_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_Compound_inherited_Orientation(self as *const Self)
@@ -1812,7 +1823,7 @@ impl Compound {
         .unwrap()
     }
 
-    /// Inherited: **Source:** `TopoDS_Shape.hxx`:126 - `TopoDS_Shape::Oriented()`
+    /// Inherited: **Source:** `TopoDS_Shape.hxx`:125 - `TopoDS_Shape::Oriented()`
     pub fn oriented(&self, theOrient: crate::top_abs::Orientation) -> crate::OwnedPtr<Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -1824,8 +1835,8 @@ impl Compound {
         }
     }
 
-    /// Inherited: **Source:** `TopoDS_Shape.hxx`:134 - `TopoDS_Shape::TShape()`
-    pub fn t_shape(&self) -> &crate::ffi_types::HandleTopoDSTShape {
+    /// Inherited: **Source:** `TopoDS_Shape.hxx`:133 - `TopoDS_Shape::TShape()`
+    pub fn t_shape(&self) -> &crate::ffi_types::Handle_TopoDS_TShape {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKBRep::TopoDS_Compound_inherited_TShape(
                 self as *const Self,
@@ -1833,7 +1844,7 @@ impl Compound {
         }
     }
 
-    /// Inherited: **Source:** `TopoDS_Shape.hxx`:141 - `TopoDS_Shape::ShapeType()`
+    /// Inherited: **Source:** `TopoDS_Shape.hxx`:140 - `TopoDS_Shape::ShapeType()`
     pub fn shape_type(&self) -> crate::top_abs::ShapeEnum {
         crate::top_abs::ShapeEnum::try_from(crate::check_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_Compound_inherited_ShapeType(self as *const Self)
@@ -1841,63 +1852,63 @@ impl Compound {
         .unwrap()
     }
 
-    /// Inherited: **Source:** `TopoDS_Shape.hxx`:144 - `TopoDS_Shape::Free()`
+    /// Inherited: **Source:** `TopoDS_Shape.hxx`:143 - `TopoDS_Shape::Free()`
     pub fn free(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_Compound_inherited_Free(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `TopoDS_Shape.hxx`:150 - `TopoDS_Shape::Locked()`
+    /// Inherited: **Source:** `TopoDS_Shape.hxx`:149 - `TopoDS_Shape::Locked()`
     pub fn locked(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_Compound_inherited_Locked(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `TopoDS_Shape.hxx`:156 - `TopoDS_Shape::Modified()`
+    /// Inherited: **Source:** `TopoDS_Shape.hxx`:155 - `TopoDS_Shape::Modified()`
     pub fn modified(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_Compound_inherited_Modified(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `TopoDS_Shape.hxx`:162 - `TopoDS_Shape::Checked()`
+    /// Inherited: **Source:** `TopoDS_Shape.hxx`:161 - `TopoDS_Shape::Checked()`
     pub fn checked(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_Compound_inherited_Checked(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `TopoDS_Shape.hxx`:168 - `TopoDS_Shape::Orientable()`
+    /// Inherited: **Source:** `TopoDS_Shape.hxx`:167 - `TopoDS_Shape::Orientable()`
     pub fn orientable(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_Compound_inherited_Orientable(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `TopoDS_Shape.hxx`:174 - `TopoDS_Shape::Closed()`
+    /// Inherited: **Source:** `TopoDS_Shape.hxx`:173 - `TopoDS_Shape::Closed()`
     pub fn closed(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_Compound_inherited_Closed(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `TopoDS_Shape.hxx`:180 - `TopoDS_Shape::Infinite()`
+    /// Inherited: **Source:** `TopoDS_Shape.hxx`:179 - `TopoDS_Shape::Infinite()`
     pub fn infinite(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_Compound_inherited_Infinite(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `TopoDS_Shape.hxx`:186 - `TopoDS_Shape::Convex()`
+    /// Inherited: **Source:** `TopoDS_Shape.hxx`:185 - `TopoDS_Shape::Convex()`
     pub fn convex(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_Compound_inherited_Convex(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `TopoDS_Shape.hxx`:194 - `TopoDS_Shape::Move()`
+    /// Inherited: **Source:** `TopoDS_Shape.hxx`:193 - `TopoDS_Shape::Move()`
     pub fn move_(&mut self, thePosition: &crate::top_loc::Location, theRaiseExc: bool) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_Compound_inherited_Move(
@@ -1908,7 +1919,7 @@ impl Compound {
         })
     }
 
-    /// Inherited: **Source:** `TopoDS_Shape.hxx`:208 - `TopoDS_Shape::Moved()`
+    /// Inherited: **Source:** `TopoDS_Shape.hxx`:207 - `TopoDS_Shape::Moved()`
     pub fn moved(
         &self,
         thePosition: &crate::top_loc::Location,
@@ -1925,14 +1936,14 @@ impl Compound {
         }
     }
 
-    /// Inherited: **Source:** `TopoDS_Shape.hxx`:218 - `TopoDS_Shape::Reverse()`
+    /// Inherited: **Source:** `TopoDS_Shape.hxx`:216 - `TopoDS_Shape::Reverse()`
     pub fn reverse(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_Compound_inherited_Reverse(self as *mut Self)
         })
     }
 
-    /// Inherited: **Source:** `TopoDS_Shape.hxx`:223 - `TopoDS_Shape::Reversed()`
+    /// Inherited: **Source:** `TopoDS_Shape.hxx`:221 - `TopoDS_Shape::Reversed()`
     pub fn reversed(&self) -> crate::OwnedPtr<Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -1941,14 +1952,14 @@ impl Compound {
         }
     }
 
-    /// Inherited: **Source:** `TopoDS_Shape.hxx`:232 - `TopoDS_Shape::Complement()`
+    /// Inherited: **Source:** `TopoDS_Shape.hxx`:230 - `TopoDS_Shape::Complement()`
     pub fn complement(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_Compound_inherited_Complement(self as *mut Self)
         })
     }
 
-    /// Inherited: **Source:** `TopoDS_Shape.hxx`:237 - `TopoDS_Shape::Complemented()`
+    /// Inherited: **Source:** `TopoDS_Shape.hxx`:235 - `TopoDS_Shape::Complemented()`
     pub fn complemented(&self) -> crate::OwnedPtr<Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -1959,7 +1970,7 @@ impl Compound {
         }
     }
 
-    /// Inherited: **Source:** `TopoDS_Shape.hxx`:246 - `TopoDS_Shape::Compose()`
+    /// Inherited: **Source:** `TopoDS_Shape.hxx`:244 - `TopoDS_Shape::Compose()`
     pub fn compose(&mut self, theOrient: crate::top_abs::Orientation) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_Compound_inherited_Compose(
@@ -1969,7 +1980,7 @@ impl Compound {
         })
     }
 
-    /// Inherited: **Source:** `TopoDS_Shape.hxx`:251 - `TopoDS_Shape::Composed()`
+    /// Inherited: **Source:** `TopoDS_Shape.hxx`:249 - `TopoDS_Shape::Composed()`
     pub fn composed(&self, theOrient: crate::top_abs::Orientation) -> crate::OwnedPtr<Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -1981,14 +1992,14 @@ impl Compound {
         }
     }
 
-    /// Inherited: **Source:** `TopoDS_Shape.hxx`:260 - `TopoDS_Shape::NbChildren()`
+    /// Inherited: **Source:** `TopoDS_Shape.hxx`:258 - `TopoDS_Shape::NbChildren()`
     pub fn nb_children(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_Compound_inherited_NbChildren(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `TopoDS_Shape.hxx`:265 - `TopoDS_Shape::IsPartner()`
+    /// Inherited: **Source:** `TopoDS_Shape.hxx`:263 - `TopoDS_Shape::IsPartner()`
     pub fn is_partner(&self, theOther: &Shape) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_Compound_inherited_IsPartner(
@@ -1998,7 +2009,7 @@ impl Compound {
         })
     }
 
-    /// Inherited: **Source:** `TopoDS_Shape.hxx`:273 - `TopoDS_Shape::IsSame()`
+    /// Inherited: **Source:** `TopoDS_Shape.hxx`:268 - `TopoDS_Shape::IsSame()`
     pub fn is_same(&self, theOther: &Shape) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_Compound_inherited_IsSame(
@@ -2008,7 +2019,7 @@ impl Compound {
         })
     }
 
-    /// Inherited: **Source:** `TopoDS_Shape.hxx`:281 - `TopoDS_Shape::IsEqual()`
+    /// Inherited: **Source:** `TopoDS_Shape.hxx`:276 - `TopoDS_Shape::IsEqual()`
     pub fn is_equal(&self, theOther: &Shape) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_Compound_inherited_IsEqual(
@@ -2018,7 +2029,7 @@ impl Compound {
         })
     }
 
-    /// Inherited: **Source:** `TopoDS_Shape.hxx`:290 - `TopoDS_Shape::IsNotEqual()`
+    /// Inherited: **Source:** `TopoDS_Shape.hxx`:285 - `TopoDS_Shape::IsNotEqual()`
     pub fn is_not_equal(&self, theOther: &Shape) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_Compound_inherited_IsNotEqual(
@@ -2028,14 +2039,14 @@ impl Compound {
         })
     }
 
-    /// Inherited: **Source:** `TopoDS_Shape.hxx`:297 - `TopoDS_Shape::EmptyCopy()`
+    /// Inherited: **Source:** `TopoDS_Shape.hxx`:292 - `TopoDS_Shape::EmptyCopy()`
     pub fn empty_copy(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_Compound_inherited_EmptyCopy(self as *mut Self)
         })
     }
 
-    /// Inherited: **Source:** `TopoDS_Shape.hxx`:302 - `TopoDS_Shape::EmptyCopied()`
+    /// Inherited: **Source:** `TopoDS_Shape.hxx`:297 - `TopoDS_Shape::EmptyCopied()`
     pub fn empty_copied(&self) -> crate::OwnedPtr<Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -2155,7 +2166,7 @@ impl Edge {
         }
     }
 
-    /// Inherited: **Source:** `TopoDS_Shape.hxx`:119 - `TopoDS_Shape::Orientation()`
+    /// Inherited: **Source:** `TopoDS_Shape.hxx`:118 - `TopoDS_Shape::Orientation()`
     pub fn orientation(&self) -> crate::top_abs::Orientation {
         crate::top_abs::Orientation::try_from(crate::check_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_Edge_inherited_Orientation(self as *const Self)
@@ -2163,7 +2174,7 @@ impl Edge {
         .unwrap()
     }
 
-    /// Inherited: **Source:** `TopoDS_Shape.hxx`:126 - `TopoDS_Shape::Oriented()`
+    /// Inherited: **Source:** `TopoDS_Shape.hxx`:125 - `TopoDS_Shape::Oriented()`
     pub fn oriented(&self, theOrient: crate::top_abs::Orientation) -> crate::OwnedPtr<Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -2175,8 +2186,8 @@ impl Edge {
         }
     }
 
-    /// Inherited: **Source:** `TopoDS_Shape.hxx`:134 - `TopoDS_Shape::TShape()`
-    pub fn t_shape(&self) -> &crate::ffi_types::HandleTopoDSTShape {
+    /// Inherited: **Source:** `TopoDS_Shape.hxx`:133 - `TopoDS_Shape::TShape()`
+    pub fn t_shape(&self) -> &crate::ffi_types::Handle_TopoDS_TShape {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKBRep::TopoDS_Edge_inherited_TShape(
                 self as *const Self,
@@ -2184,7 +2195,7 @@ impl Edge {
         }
     }
 
-    /// Inherited: **Source:** `TopoDS_Shape.hxx`:141 - `TopoDS_Shape::ShapeType()`
+    /// Inherited: **Source:** `TopoDS_Shape.hxx`:140 - `TopoDS_Shape::ShapeType()`
     pub fn shape_type(&self) -> crate::top_abs::ShapeEnum {
         crate::top_abs::ShapeEnum::try_from(crate::check_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_Edge_inherited_ShapeType(self as *const Self)
@@ -2192,63 +2203,63 @@ impl Edge {
         .unwrap()
     }
 
-    /// Inherited: **Source:** `TopoDS_Shape.hxx`:144 - `TopoDS_Shape::Free()`
+    /// Inherited: **Source:** `TopoDS_Shape.hxx`:143 - `TopoDS_Shape::Free()`
     pub fn free(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_Edge_inherited_Free(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `TopoDS_Shape.hxx`:150 - `TopoDS_Shape::Locked()`
+    /// Inherited: **Source:** `TopoDS_Shape.hxx`:149 - `TopoDS_Shape::Locked()`
     pub fn locked(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_Edge_inherited_Locked(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `TopoDS_Shape.hxx`:156 - `TopoDS_Shape::Modified()`
+    /// Inherited: **Source:** `TopoDS_Shape.hxx`:155 - `TopoDS_Shape::Modified()`
     pub fn modified(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_Edge_inherited_Modified(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `TopoDS_Shape.hxx`:162 - `TopoDS_Shape::Checked()`
+    /// Inherited: **Source:** `TopoDS_Shape.hxx`:161 - `TopoDS_Shape::Checked()`
     pub fn checked(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_Edge_inherited_Checked(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `TopoDS_Shape.hxx`:168 - `TopoDS_Shape::Orientable()`
+    /// Inherited: **Source:** `TopoDS_Shape.hxx`:167 - `TopoDS_Shape::Orientable()`
     pub fn orientable(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_Edge_inherited_Orientable(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `TopoDS_Shape.hxx`:174 - `TopoDS_Shape::Closed()`
+    /// Inherited: **Source:** `TopoDS_Shape.hxx`:173 - `TopoDS_Shape::Closed()`
     pub fn closed(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_Edge_inherited_Closed(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `TopoDS_Shape.hxx`:180 - `TopoDS_Shape::Infinite()`
+    /// Inherited: **Source:** `TopoDS_Shape.hxx`:179 - `TopoDS_Shape::Infinite()`
     pub fn infinite(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_Edge_inherited_Infinite(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `TopoDS_Shape.hxx`:186 - `TopoDS_Shape::Convex()`
+    /// Inherited: **Source:** `TopoDS_Shape.hxx`:185 - `TopoDS_Shape::Convex()`
     pub fn convex(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_Edge_inherited_Convex(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `TopoDS_Shape.hxx`:194 - `TopoDS_Shape::Move()`
+    /// Inherited: **Source:** `TopoDS_Shape.hxx`:193 - `TopoDS_Shape::Move()`
     pub fn move_(&mut self, thePosition: &crate::top_loc::Location, theRaiseExc: bool) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_Edge_inherited_Move(
@@ -2259,7 +2270,7 @@ impl Edge {
         })
     }
 
-    /// Inherited: **Source:** `TopoDS_Shape.hxx`:208 - `TopoDS_Shape::Moved()`
+    /// Inherited: **Source:** `TopoDS_Shape.hxx`:207 - `TopoDS_Shape::Moved()`
     pub fn moved(
         &self,
         thePosition: &crate::top_loc::Location,
@@ -2276,14 +2287,14 @@ impl Edge {
         }
     }
 
-    /// Inherited: **Source:** `TopoDS_Shape.hxx`:218 - `TopoDS_Shape::Reverse()`
+    /// Inherited: **Source:** `TopoDS_Shape.hxx`:216 - `TopoDS_Shape::Reverse()`
     pub fn reverse(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_Edge_inherited_Reverse(self as *mut Self)
         })
     }
 
-    /// Inherited: **Source:** `TopoDS_Shape.hxx`:223 - `TopoDS_Shape::Reversed()`
+    /// Inherited: **Source:** `TopoDS_Shape.hxx`:221 - `TopoDS_Shape::Reversed()`
     pub fn reversed(&self) -> crate::OwnedPtr<Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -2292,14 +2303,14 @@ impl Edge {
         }
     }
 
-    /// Inherited: **Source:** `TopoDS_Shape.hxx`:232 - `TopoDS_Shape::Complement()`
+    /// Inherited: **Source:** `TopoDS_Shape.hxx`:230 - `TopoDS_Shape::Complement()`
     pub fn complement(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_Edge_inherited_Complement(self as *mut Self)
         })
     }
 
-    /// Inherited: **Source:** `TopoDS_Shape.hxx`:237 - `TopoDS_Shape::Complemented()`
+    /// Inherited: **Source:** `TopoDS_Shape.hxx`:235 - `TopoDS_Shape::Complemented()`
     pub fn complemented(&self) -> crate::OwnedPtr<Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -2308,7 +2319,7 @@ impl Edge {
         }
     }
 
-    /// Inherited: **Source:** `TopoDS_Shape.hxx`:246 - `TopoDS_Shape::Compose()`
+    /// Inherited: **Source:** `TopoDS_Shape.hxx`:244 - `TopoDS_Shape::Compose()`
     pub fn compose(&mut self, theOrient: crate::top_abs::Orientation) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_Edge_inherited_Compose(
@@ -2318,7 +2329,7 @@ impl Edge {
         })
     }
 
-    /// Inherited: **Source:** `TopoDS_Shape.hxx`:251 - `TopoDS_Shape::Composed()`
+    /// Inherited: **Source:** `TopoDS_Shape.hxx`:249 - `TopoDS_Shape::Composed()`
     pub fn composed(&self, theOrient: crate::top_abs::Orientation) -> crate::OwnedPtr<Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -2330,35 +2341,35 @@ impl Edge {
         }
     }
 
-    /// Inherited: **Source:** `TopoDS_Shape.hxx`:260 - `TopoDS_Shape::NbChildren()`
+    /// Inherited: **Source:** `TopoDS_Shape.hxx`:258 - `TopoDS_Shape::NbChildren()`
     pub fn nb_children(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_Edge_inherited_NbChildren(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `TopoDS_Shape.hxx`:265 - `TopoDS_Shape::IsPartner()`
+    /// Inherited: **Source:** `TopoDS_Shape.hxx`:263 - `TopoDS_Shape::IsPartner()`
     pub fn is_partner(&self, theOther: &Shape) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_Edge_inherited_IsPartner(self as *const Self, theOther)
         })
     }
 
-    /// Inherited: **Source:** `TopoDS_Shape.hxx`:273 - `TopoDS_Shape::IsSame()`
+    /// Inherited: **Source:** `TopoDS_Shape.hxx`:268 - `TopoDS_Shape::IsSame()`
     pub fn is_same(&self, theOther: &Shape) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_Edge_inherited_IsSame(self as *const Self, theOther)
         })
     }
 
-    /// Inherited: **Source:** `TopoDS_Shape.hxx`:281 - `TopoDS_Shape::IsEqual()`
+    /// Inherited: **Source:** `TopoDS_Shape.hxx`:276 - `TopoDS_Shape::IsEqual()`
     pub fn is_equal(&self, theOther: &Shape) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_Edge_inherited_IsEqual(self as *const Self, theOther)
         })
     }
 
-    /// Inherited: **Source:** `TopoDS_Shape.hxx`:290 - `TopoDS_Shape::IsNotEqual()`
+    /// Inherited: **Source:** `TopoDS_Shape.hxx`:285 - `TopoDS_Shape::IsNotEqual()`
     pub fn is_not_equal(&self, theOther: &Shape) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_Edge_inherited_IsNotEqual(
@@ -2368,14 +2379,14 @@ impl Edge {
         })
     }
 
-    /// Inherited: **Source:** `TopoDS_Shape.hxx`:297 - `TopoDS_Shape::EmptyCopy()`
+    /// Inherited: **Source:** `TopoDS_Shape.hxx`:292 - `TopoDS_Shape::EmptyCopy()`
     pub fn empty_copy(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_Edge_inherited_EmptyCopy(self as *mut Self)
         })
     }
 
-    /// Inherited: **Source:** `TopoDS_Shape.hxx`:302 - `TopoDS_Shape::EmptyCopied()`
+    /// Inherited: **Source:** `TopoDS_Shape.hxx`:297 - `TopoDS_Shape::EmptyCopied()`
     pub fn empty_copied(&self) -> crate::OwnedPtr<Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -2492,7 +2503,7 @@ impl Face {
         }
     }
 
-    /// Inherited: **Source:** `TopoDS_Shape.hxx`:119 - `TopoDS_Shape::Orientation()`
+    /// Inherited: **Source:** `TopoDS_Shape.hxx`:118 - `TopoDS_Shape::Orientation()`
     pub fn orientation(&self) -> crate::top_abs::Orientation {
         crate::top_abs::Orientation::try_from(crate::check_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_Face_inherited_Orientation(self as *const Self)
@@ -2500,7 +2511,7 @@ impl Face {
         .unwrap()
     }
 
-    /// Inherited: **Source:** `TopoDS_Shape.hxx`:126 - `TopoDS_Shape::Oriented()`
+    /// Inherited: **Source:** `TopoDS_Shape.hxx`:125 - `TopoDS_Shape::Oriented()`
     pub fn oriented(&self, theOrient: crate::top_abs::Orientation) -> crate::OwnedPtr<Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -2512,8 +2523,8 @@ impl Face {
         }
     }
 
-    /// Inherited: **Source:** `TopoDS_Shape.hxx`:134 - `TopoDS_Shape::TShape()`
-    pub fn t_shape(&self) -> &crate::ffi_types::HandleTopoDSTShape {
+    /// Inherited: **Source:** `TopoDS_Shape.hxx`:133 - `TopoDS_Shape::TShape()`
+    pub fn t_shape(&self) -> &crate::ffi_types::Handle_TopoDS_TShape {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKBRep::TopoDS_Face_inherited_TShape(
                 self as *const Self,
@@ -2521,7 +2532,7 @@ impl Face {
         }
     }
 
-    /// Inherited: **Source:** `TopoDS_Shape.hxx`:141 - `TopoDS_Shape::ShapeType()`
+    /// Inherited: **Source:** `TopoDS_Shape.hxx`:140 - `TopoDS_Shape::ShapeType()`
     pub fn shape_type(&self) -> crate::top_abs::ShapeEnum {
         crate::top_abs::ShapeEnum::try_from(crate::check_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_Face_inherited_ShapeType(self as *const Self)
@@ -2529,63 +2540,63 @@ impl Face {
         .unwrap()
     }
 
-    /// Inherited: **Source:** `TopoDS_Shape.hxx`:144 - `TopoDS_Shape::Free()`
+    /// Inherited: **Source:** `TopoDS_Shape.hxx`:143 - `TopoDS_Shape::Free()`
     pub fn free(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_Face_inherited_Free(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `TopoDS_Shape.hxx`:150 - `TopoDS_Shape::Locked()`
+    /// Inherited: **Source:** `TopoDS_Shape.hxx`:149 - `TopoDS_Shape::Locked()`
     pub fn locked(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_Face_inherited_Locked(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `TopoDS_Shape.hxx`:156 - `TopoDS_Shape::Modified()`
+    /// Inherited: **Source:** `TopoDS_Shape.hxx`:155 - `TopoDS_Shape::Modified()`
     pub fn modified(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_Face_inherited_Modified(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `TopoDS_Shape.hxx`:162 - `TopoDS_Shape::Checked()`
+    /// Inherited: **Source:** `TopoDS_Shape.hxx`:161 - `TopoDS_Shape::Checked()`
     pub fn checked(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_Face_inherited_Checked(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `TopoDS_Shape.hxx`:168 - `TopoDS_Shape::Orientable()`
+    /// Inherited: **Source:** `TopoDS_Shape.hxx`:167 - `TopoDS_Shape::Orientable()`
     pub fn orientable(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_Face_inherited_Orientable(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `TopoDS_Shape.hxx`:174 - `TopoDS_Shape::Closed()`
+    /// Inherited: **Source:** `TopoDS_Shape.hxx`:173 - `TopoDS_Shape::Closed()`
     pub fn closed(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_Face_inherited_Closed(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `TopoDS_Shape.hxx`:180 - `TopoDS_Shape::Infinite()`
+    /// Inherited: **Source:** `TopoDS_Shape.hxx`:179 - `TopoDS_Shape::Infinite()`
     pub fn infinite(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_Face_inherited_Infinite(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `TopoDS_Shape.hxx`:186 - `TopoDS_Shape::Convex()`
+    /// Inherited: **Source:** `TopoDS_Shape.hxx`:185 - `TopoDS_Shape::Convex()`
     pub fn convex(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_Face_inherited_Convex(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `TopoDS_Shape.hxx`:194 - `TopoDS_Shape::Move()`
+    /// Inherited: **Source:** `TopoDS_Shape.hxx`:193 - `TopoDS_Shape::Move()`
     pub fn move_(&mut self, thePosition: &crate::top_loc::Location, theRaiseExc: bool) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_Face_inherited_Move(
@@ -2596,7 +2607,7 @@ impl Face {
         })
     }
 
-    /// Inherited: **Source:** `TopoDS_Shape.hxx`:208 - `TopoDS_Shape::Moved()`
+    /// Inherited: **Source:** `TopoDS_Shape.hxx`:207 - `TopoDS_Shape::Moved()`
     pub fn moved(
         &self,
         thePosition: &crate::top_loc::Location,
@@ -2613,14 +2624,14 @@ impl Face {
         }
     }
 
-    /// Inherited: **Source:** `TopoDS_Shape.hxx`:218 - `TopoDS_Shape::Reverse()`
+    /// Inherited: **Source:** `TopoDS_Shape.hxx`:216 - `TopoDS_Shape::Reverse()`
     pub fn reverse(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_Face_inherited_Reverse(self as *mut Self)
         })
     }
 
-    /// Inherited: **Source:** `TopoDS_Shape.hxx`:223 - `TopoDS_Shape::Reversed()`
+    /// Inherited: **Source:** `TopoDS_Shape.hxx`:221 - `TopoDS_Shape::Reversed()`
     pub fn reversed(&self) -> crate::OwnedPtr<Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -2629,14 +2640,14 @@ impl Face {
         }
     }
 
-    /// Inherited: **Source:** `TopoDS_Shape.hxx`:232 - `TopoDS_Shape::Complement()`
+    /// Inherited: **Source:** `TopoDS_Shape.hxx`:230 - `TopoDS_Shape::Complement()`
     pub fn complement(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_Face_inherited_Complement(self as *mut Self)
         })
     }
 
-    /// Inherited: **Source:** `TopoDS_Shape.hxx`:237 - `TopoDS_Shape::Complemented()`
+    /// Inherited: **Source:** `TopoDS_Shape.hxx`:235 - `TopoDS_Shape::Complemented()`
     pub fn complemented(&self) -> crate::OwnedPtr<Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -2645,7 +2656,7 @@ impl Face {
         }
     }
 
-    /// Inherited: **Source:** `TopoDS_Shape.hxx`:246 - `TopoDS_Shape::Compose()`
+    /// Inherited: **Source:** `TopoDS_Shape.hxx`:244 - `TopoDS_Shape::Compose()`
     pub fn compose(&mut self, theOrient: crate::top_abs::Orientation) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_Face_inherited_Compose(
@@ -2655,7 +2666,7 @@ impl Face {
         })
     }
 
-    /// Inherited: **Source:** `TopoDS_Shape.hxx`:251 - `TopoDS_Shape::Composed()`
+    /// Inherited: **Source:** `TopoDS_Shape.hxx`:249 - `TopoDS_Shape::Composed()`
     pub fn composed(&self, theOrient: crate::top_abs::Orientation) -> crate::OwnedPtr<Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -2667,35 +2678,35 @@ impl Face {
         }
     }
 
-    /// Inherited: **Source:** `TopoDS_Shape.hxx`:260 - `TopoDS_Shape::NbChildren()`
+    /// Inherited: **Source:** `TopoDS_Shape.hxx`:258 - `TopoDS_Shape::NbChildren()`
     pub fn nb_children(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_Face_inherited_NbChildren(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `TopoDS_Shape.hxx`:265 - `TopoDS_Shape::IsPartner()`
+    /// Inherited: **Source:** `TopoDS_Shape.hxx`:263 - `TopoDS_Shape::IsPartner()`
     pub fn is_partner(&self, theOther: &Shape) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_Face_inherited_IsPartner(self as *const Self, theOther)
         })
     }
 
-    /// Inherited: **Source:** `TopoDS_Shape.hxx`:273 - `TopoDS_Shape::IsSame()`
+    /// Inherited: **Source:** `TopoDS_Shape.hxx`:268 - `TopoDS_Shape::IsSame()`
     pub fn is_same(&self, theOther: &Shape) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_Face_inherited_IsSame(self as *const Self, theOther)
         })
     }
 
-    /// Inherited: **Source:** `TopoDS_Shape.hxx`:281 - `TopoDS_Shape::IsEqual()`
+    /// Inherited: **Source:** `TopoDS_Shape.hxx`:276 - `TopoDS_Shape::IsEqual()`
     pub fn is_equal(&self, theOther: &Shape) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_Face_inherited_IsEqual(self as *const Self, theOther)
         })
     }
 
-    /// Inherited: **Source:** `TopoDS_Shape.hxx`:290 - `TopoDS_Shape::IsNotEqual()`
+    /// Inherited: **Source:** `TopoDS_Shape.hxx`:285 - `TopoDS_Shape::IsNotEqual()`
     pub fn is_not_equal(&self, theOther: &Shape) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_Face_inherited_IsNotEqual(
@@ -2705,14 +2716,14 @@ impl Face {
         })
     }
 
-    /// Inherited: **Source:** `TopoDS_Shape.hxx`:297 - `TopoDS_Shape::EmptyCopy()`
+    /// Inherited: **Source:** `TopoDS_Shape.hxx`:292 - `TopoDS_Shape::EmptyCopy()`
     pub fn empty_copy(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_Face_inherited_EmptyCopy(self as *mut Self)
         })
     }
 
-    /// Inherited: **Source:** `TopoDS_Shape.hxx`:302 - `TopoDS_Shape::EmptyCopied()`
+    /// Inherited: **Source:** `TopoDS_Shape.hxx`:297 - `TopoDS_Shape::EmptyCopied()`
     pub fn empty_copied(&self) -> crate::OwnedPtr<Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -2726,9 +2737,7 @@ impl Face {
 // From TopoDS_FrozenShape.hxx
 // ========================
 
-/// **Source:** `TopoDS_FrozenShape.hxx`:39 - `TopoDS_FrozenShape`
-/// An  attempt was  made to   modify  a Shape  already
-/// shared or protected.
+/// **Source:** `TopoDS_FrozenShape.hxx`:35 - `TopoDS_FrozenShape`
 pub use crate::ffi_types::TopoDS_FrozenShape as FrozenShape;
 
 unsafe impl crate::CppDeletable for FrozenShape {
@@ -2739,17 +2748,24 @@ unsafe impl crate::CppDeletable for FrozenShape {
     }
 }
 
-impl FrozenShape {
-    /// **Source:** `TopoDS_FrozenShape.hxx`:39 - `TopoDS_FrozenShape::TopoDS_FrozenShape()`
-    pub fn new() -> crate::OwnedPtr<Self> {
+unsafe impl crate::CppCopyable for FrozenShape {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        unsafe { crate::check_result(crate::ffi_extern_TKBRep::TopoDS_FrozenShape_clone(ptr)) }
+    }
+}
+
+impl std::borrow::ToOwned for FrozenShape {
+    type Owned = crate::OwnedPtr<Self>;
+
+    fn to_owned(&self) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKBRep::TopoDS_FrozenShape_ctor(),
-            ))
+            crate::OwnedPtr::from_raw(<Self as crate::CppCopyable>::cpp_copy(self as *const Self))
         }
     }
+}
 
-    /// **Source:** `TopoDS_FrozenShape.hxx`:39 - `TopoDS_FrozenShape::TopoDS_FrozenShape()`
+impl FrozenShape {
+    /// **Source:** `TopoDS_FrozenShape.hxx`:35 - `TopoDS_FrozenShape::TopoDS_FrozenShape()`
     pub fn new_charptr(theMessage: &str) -> crate::OwnedPtr<Self> {
         let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
         unsafe {
@@ -2759,7 +2775,7 @@ impl FrozenShape {
         }
     }
 
-    /// **Source:** `TopoDS_FrozenShape.hxx`:39 - `TopoDS_FrozenShape::TopoDS_FrozenShape()`
+    /// **Source:** `TopoDS_FrozenShape.hxx`:35 - `TopoDS_FrozenShape::TopoDS_FrozenShape()`
     pub fn new_charptr2(theMessage: &str, theStackTrace: &str) -> crate::OwnedPtr<Self> {
         let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
         let c_theStackTrace = std::ffi::CString::new(theStackTrace).unwrap();
@@ -2773,79 +2789,15 @@ impl FrozenShape {
         }
     }
 
-    /// **Source:** `TopoDS_FrozenShape.hxx`:39 - `TopoDS_FrozenShape::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
-        unsafe {
-            &*(crate::check_result(crate::ffi_extern_TKBRep::TopoDS_FrozenShape_dynamic_type(
-                self as *const Self,
-            )))
-        }
-    }
-
-    /// **Source:** `TopoDS_FrozenShape.hxx`:39 - `TopoDS_FrozenShape::Raise()`
-    pub fn raise_charptr(theMessage: &str) {
-        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKBRep::TopoDS_FrozenShape_raise_charptr(c_theMessage.as_ptr())
-        })
-    }
-
-    /// **Source:** `TopoDS_FrozenShape.hxx`:39 - `TopoDS_FrozenShape::Raise()`
-    pub fn raise_sstream(theMessage: &mut crate::ffi_types::Standard_SStream) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKBRep::TopoDS_FrozenShape_raise_sstream(theMessage)
-        })
-    }
-
-    /// **Source:** `TopoDS_FrozenShape.hxx`:39 - `TopoDS_FrozenShape::NewInstance()`
-    pub fn new_instance_charptr(
-        theMessage: &str,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleTopoDSFrozenShape> {
-        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKBRep::TopoDS_FrozenShape_new_instance_charptr(
-                    c_theMessage.as_ptr(),
-                ),
-            ))
-        }
-    }
-
-    /// **Source:** `TopoDS_FrozenShape.hxx`:39 - `TopoDS_FrozenShape::NewInstance()`
-    pub fn new_instance_charptr2(
-        theMessage: &str,
-        theStackTrace: &str,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleTopoDSFrozenShape> {
-        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
-        let c_theStackTrace = std::ffi::CString::new(theStackTrace).unwrap();
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKBRep::TopoDS_FrozenShape_new_instance_charptr2(
-                    c_theMessage.as_ptr(),
-                    c_theStackTrace.as_ptr(),
-                ),
-            ))
-        }
-    }
-
-    /// **Source:** `TopoDS_FrozenShape.hxx`:39 - `TopoDS_FrozenShape::get_type_name()`
-    pub fn get_type_name() -> std::string::String {
+    /// **Source:** `TopoDS_FrozenShape.hxx`:35 - `TopoDS_FrozenShape::ExceptionType()`
+    pub fn exception_type(&self) -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi_extern_TKBRep::TopoDS_FrozenShape_get_type_name(),
+                crate::ffi_extern_TKBRep::TopoDS_FrozenShape_exception_type(self as *const Self),
             ))
         }
         .to_string_lossy()
         .into_owned()
-    }
-
-    /// **Source:** `TopoDS_FrozenShape.hxx`:39 - `TopoDS_FrozenShape::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
-        unsafe {
-            &*(crate::check_result(
-                crate::ffi_extern_TKBRep::TopoDS_FrozenShape_get_type_descriptor(),
-            ))
-        }
     }
 
     /// Upcast to Standard_DomainError
@@ -2890,40 +2842,7 @@ impl FrozenShape {
         }
     }
 
-    /// Upcast to Standard_Transient
-    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        unsafe {
-            &*crate::check_result(
-                crate::ffi_extern_TKBRep::TopoDS_FrozenShape_as_Standard_Transient(
-                    self as *const Self,
-                ),
-            )
-        }
-    }
-
-    /// Upcast to Standard_Transient (mutable)
-    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        unsafe {
-            &mut *crate::check_result(
-                crate::ffi_extern_TKBRep::TopoDS_FrozenShape_as_Standard_Transient_mut(
-                    self as *mut Self,
-                ),
-            )
-        }
-    }
-
-    /// Wrap in a Handle (reference-counted smart pointer)
-    pub fn to_handle(
-        obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleTopoDSFrozenShape> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKBRep::TopoDS_FrozenShape_to_handle(obj.into_raw()),
-            ))
-        }
-    }
-
-    /// Inherited: **Source:** `Standard_Failure.hxx`:58 - `Standard_Failure::Print()`
+    /// Inherited: **Source:** `Standard_Failure.hxx`:73 - `Standard_Failure::Print()`
     pub fn print(&self, theStream: &mut crate::ffi_types::Standard_OStream) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_FrozenShape_inherited_Print(
@@ -2932,172 +2851,14 @@ impl FrozenShape {
             )
         })
     }
-
-    /// Inherited: **Source:** `Standard_Failure.hxx`:72 - `Standard_Failure::Reraise()`
-    pub fn reraise(&mut self) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKBRep::TopoDS_FrozenShape_inherited_Reraise(self as *mut Self)
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Failure.hxx`:112 - `Standard_Failure::Jump()`
-    pub fn jump(&mut self) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKBRep::TopoDS_FrozenShape_inherited_Jump(self as *mut Self)
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKBRep::TopoDS_FrozenShape_inherited_IsInstance(
-                self as *const Self,
-                theType,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKBRep::TopoDS_FrozenShape_inherited_IsKind(
-                self as *const Self,
-                theType,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
-    pub fn this(&self) -> Option<&crate::standard::Transient> {
-        {
-            let __val = crate::check_result(unsafe {
-                crate::ffi_extern_TKBRep::TopoDS_FrozenShape_inherited_This(self as *const Self)
-            });
-            if __val.is_null() {
-                None
-            } else {
-                Some(unsafe { &*__val })
-            }
-        }
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
-    pub fn get_ref_count(&self) -> i32 {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKBRep::TopoDS_FrozenShape_inherited_GetRefCount(self as *const Self)
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
-    pub fn increment_ref_counter(&mut self) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKBRep::TopoDS_FrozenShape_inherited_IncrementRefCounter(
-                self as *mut Self,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
-    pub fn decrement_ref_counter(&mut self) -> i32 {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKBRep::TopoDS_FrozenShape_inherited_DecrementRefCounter(
-                self as *mut Self,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
-    pub fn delete(&self) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKBRep::TopoDS_FrozenShape_inherited_Delete(self as *const Self)
-        })
-    }
-}
-
-pub use crate::ffi_types::HandleTopoDSFrozenShape;
-
-unsafe impl crate::CppDeletable for HandleTopoDSFrozenShape {
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            crate::ffi_extern_TKBRep::HandleTopoDSFrozenShape_destructor(ptr);
-        }
-    }
-}
-
-unsafe impl crate::CppCopyable for HandleTopoDSFrozenShape {
-    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        unsafe { crate::check_result(crate::ffi_extern_TKBRep::HandleTopoDSFrozenShape_clone(ptr)) }
-    }
-}
-
-impl HandleTopoDSFrozenShape {
-    /// Returns `true` if this Handle is null (doesn't point to any object).
-    pub fn is_null(&self) -> bool {
-        unsafe { crate::ffi_extern_TKBRep::HandleTopoDSFrozenShape_is_null(self as *const Self) }
-    }
-
-    /// Dereference this Handle to access the underlying TopoDS_FrozenShape
-    pub fn get(&self) -> &crate::ffi_types::TopoDS_FrozenShape {
-        unsafe {
-            &*crate::check_result(crate::ffi_extern_TKBRep::HandleTopoDSFrozenShape_get(
-                self as *const Self,
-            ))
-        }
-    }
-
-    /// Dereference this Handle to mutably access the underlying TopoDS_FrozenShape
-    pub fn get_mut(&mut self) -> &mut crate::ffi_types::TopoDS_FrozenShape {
-        unsafe {
-            &mut *crate::check_result(crate::ffi_extern_TKBRep::HandleTopoDSFrozenShape_get_mut(
-                self as *mut Self,
-            ))
-        }
-    }
-
-    /// Upcast Handle<TopoDS_FrozenShape> to Handle<Standard_DomainError>
-    pub fn to_handle_domain_error(
-        &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardDomainError> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKBRep::HandleTopoDSFrozenShape_to_HandleStandardDomainError(
-                    self as *const Self,
-                ),
-            ))
-        }
-    }
-
-    /// Upcast Handle<TopoDS_FrozenShape> to Handle<Standard_Failure>
-    pub fn to_handle_failure(&self) -> crate::OwnedPtr<crate::ffi_types::HandleStandardFailure> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKBRep::HandleTopoDSFrozenShape_to_HandleStandardFailure(
-                    self as *const Self,
-                ),
-            ))
-        }
-    }
-
-    /// Upcast Handle<TopoDS_FrozenShape> to Handle<Standard_Transient>
-    pub fn to_handle_transient(
-        &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKBRep::HandleTopoDSFrozenShape_to_HandleStandardTransient(
-                    self as *const Self,
-                ),
-            ))
-        }
-    }
 }
 
 // ========================
 // From TopoDS_HShape.hxx
 // ========================
 
-/// **Source:** `TopoDS_HShape.hxx`:29 - `TopoDS_HShape`
-/// Class to manipulate a Shape with  handle.
+/// **Source:** `TopoDS_HShape.hxx`:26 - `TopoDS_HShape`
+/// Class to manipulate a Shape with handle.
 pub use crate::ffi_types::TopoDS_HShape as HShape;
 
 unsafe impl crate::CppDeletable for HShape {
@@ -3109,8 +2870,8 @@ unsafe impl crate::CppDeletable for HShape {
 }
 
 impl HShape {
-    /// **Source:** `TopoDS_HShape.hxx`:34 - `TopoDS_HShape::TopoDS_HShape()`
-    /// Constructs an empty shape object
+    /// **Source:** `TopoDS_HShape.hxx`:31 - `TopoDS_HShape::TopoDS_HShape()`
+    /// Constructs an empty shape object.
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -3119,7 +2880,7 @@ impl HShape {
         }
     }
 
-    /// **Source:** `TopoDS_HShape.hxx`:37 - `TopoDS_HShape::TopoDS_HShape()`
+    /// **Source:** `TopoDS_HShape.hxx`:34 - `TopoDS_HShape::TopoDS_HShape()`
     /// Constructs a shape object defined by the shape aShape.
     pub fn new_shape(aShape: &Shape) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -3129,15 +2890,15 @@ impl HShape {
         }
     }
 
-    /// **Source:** `TopoDS_HShape.hxx`:40 - `TopoDS_HShape::Shape()`
-    /// Loads this shape with the shape aShape
+    /// **Source:** `TopoDS_HShape.hxx`:37 - `TopoDS_HShape::Shape()`
+    /// Loads this shape with the shape aShape.
     pub fn shape_shape(&mut self, aShape: &Shape) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_HShape_shape_shape(self as *mut Self, aShape)
         })
     }
 
-    /// **Source:** `TopoDS_HShape.hxx`:43 - `TopoDS_HShape::Shape()`
+    /// **Source:** `TopoDS_HShape.hxx`:40 - `TopoDS_HShape::Shape()`
     /// Returns a reference to a constant TopoDS_Shape based on this shape.
     pub fn shape(&self) -> &Shape {
         unsafe {
@@ -3147,7 +2908,7 @@ impl HShape {
         }
     }
 
-    /// **Source:** `TopoDS_HShape.hxx`:51 - `TopoDS_HShape::ChangeShape()`
+    /// **Source:** `TopoDS_HShape.hxx`:48 - `TopoDS_HShape::ChangeShape()`
     /// Exchanges the TopoDS_Shape object defining this
     /// shape for another one referencing the same underlying shape
     /// Accesses the list of shapes within the underlying
@@ -3162,8 +2923,8 @@ impl HShape {
         }
     }
 
-    /// **Source:** `TopoDS_HShape.hxx`:53 - `TopoDS_HShape::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `TopoDS_HShape.hxx`:50 - `TopoDS_HShape::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKBRep::TopoDS_HShape_dynamic_type(
                 self as *const Self,
@@ -3171,7 +2932,7 @@ impl HShape {
         }
     }
 
-    /// **Source:** `TopoDS_HShape.hxx`:53 - `TopoDS_HShape::get_type_name()`
+    /// **Source:** `TopoDS_HShape.hxx`:50 - `TopoDS_HShape::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -3182,8 +2943,8 @@ impl HShape {
         .into_owned()
     }
 
-    /// **Source:** `TopoDS_HShape.hxx`:53 - `TopoDS_HShape::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    /// **Source:** `TopoDS_HShape.hxx`:50 - `TopoDS_HShape::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKBRep::TopoDS_HShape_get_type_descriptor()))
         }
@@ -3212,7 +2973,7 @@ impl HShape {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleTopoDSHShape> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_TopoDS_HShape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKBRep::TopoDS_HShape_to_handle(obj.into_raw()),
@@ -3220,8 +2981,8 @@ impl HShape {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_HShape_inherited_IsInstance(
                 self as *const Self,
@@ -3230,14 +2991,14 @@ impl HShape {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_HShape_inherited_IsKind(self as *const Self, theType)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -3251,28 +3012,28 @@ impl HShape {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_HShape_inherited_GetRefCount(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_HShape_inherited_IncrementRefCounter(self as *mut Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_HShape_inherited_DecrementRefCounter(self as *mut Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_HShape_inherited_Delete(self as *const Self)
@@ -3280,32 +3041,32 @@ impl HShape {
     }
 }
 
-pub use crate::ffi_types::HandleTopoDSHShape;
+pub use crate::ffi_types::Handle_TopoDS_HShape;
 
-unsafe impl crate::CppDeletable for HandleTopoDSHShape {
+unsafe impl crate::CppDeletable for Handle_TopoDS_HShape {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKBRep::HandleTopoDSHShape_destructor(ptr);
+            crate::ffi_extern_TKBRep::Handle_TopoDS_HShape_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleTopoDSHShape {
+unsafe impl crate::CppCopyable for Handle_TopoDS_HShape {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        unsafe { crate::check_result(crate::ffi_extern_TKBRep::HandleTopoDSHShape_clone(ptr)) }
+        unsafe { crate::check_result(crate::ffi_extern_TKBRep::Handle_TopoDS_HShape_clone(ptr)) }
     }
 }
 
-impl HandleTopoDSHShape {
+impl Handle_TopoDS_HShape {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
-        unsafe { crate::ffi_extern_TKBRep::HandleTopoDSHShape_is_null(self as *const Self) }
+        unsafe { crate::ffi_extern_TKBRep::Handle_TopoDS_HShape_is_null(self as *const Self) }
     }
 
     /// Dereference this Handle to access the underlying TopoDS_HShape
     pub fn get(&self) -> &crate::ffi_types::TopoDS_HShape {
         unsafe {
-            &*crate::check_result(crate::ffi_extern_TKBRep::HandleTopoDSHShape_get(
+            &*crate::check_result(crate::ffi_extern_TKBRep::Handle_TopoDS_HShape_get(
                 self as *const Self,
             ))
         }
@@ -3314,7 +3075,7 @@ impl HandleTopoDSHShape {
     /// Dereference this Handle to mutably access the underlying TopoDS_HShape
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::TopoDS_HShape {
         unsafe {
-            &mut *crate::check_result(crate::ffi_extern_TKBRep::HandleTopoDSHShape_get_mut(
+            &mut *crate::check_result(crate::ffi_extern_TKBRep::Handle_TopoDS_HShape_get_mut(
                 self as *mut Self,
             ))
         }
@@ -3323,10 +3084,10 @@ impl HandleTopoDSHShape {
     /// Upcast Handle<TopoDS_HShape> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKBRep::HandleTopoDSHShape_to_HandleStandardTransient(
+                crate::ffi_extern_TKBRep::Handle_TopoDS_HShape_to_Handle_Standard_Transient(
                     self as *const Self,
                 ),
             ))
@@ -3338,7 +3099,7 @@ impl HandleTopoDSHShape {
 // From TopoDS_Iterator.hxx
 // ========================
 
-/// **Source:** `TopoDS_Iterator.hxx`:31 - `TopoDS_Iterator`
+/// **Source:** `TopoDS_Iterator.hxx`:32 - `TopoDS_Iterator`
 /// Iterates on the underlying shape underlying a given
 /// TopoDS_Shape object, providing access to its
 /// component sub-shapes. Each component shape is
@@ -3371,7 +3132,7 @@ impl std::borrow::ToOwned for Iterator {
 }
 
 impl Iterator {
-    /// **Source:** `TopoDS_Iterator.hxx`:37 - `TopoDS_Iterator::TopoDS_Iterator()`
+    /// **Source:** `TopoDS_Iterator.hxx`:38 - `TopoDS_Iterator::TopoDS_Iterator()`
     /// Creates an empty Iterator.
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
@@ -3381,7 +3142,7 @@ impl Iterator {
         }
     }
 
-    /// **Source:** `TopoDS_Iterator.hxx`:49 - `TopoDS_Iterator::TopoDS_Iterator()`
+    /// **Source:** `TopoDS_Iterator.hxx`:50 - `TopoDS_Iterator::TopoDS_Iterator()`
     /// Creates an Iterator on <S> sub-shapes.
     /// Note:
     /// - If cumOri is true, the function composes all
@@ -3397,7 +3158,7 @@ impl Iterator {
         }
     }
 
-    /// **Source:** `TopoDS_Iterator.hxx`:49 - `TopoDS_Iterator::TopoDS_Iterator()`
+    /// **Source:** `TopoDS_Iterator.hxx`:50 - `TopoDS_Iterator::TopoDS_Iterator()`
     /// Creates an Iterator on <S> sub-shapes.
     /// Note:
     /// - If cumOri is true, the function composes all
@@ -3409,7 +3170,7 @@ impl Iterator {
         Self::new_shape_bool2(S, cumOri, true)
     }
 
-    /// **Source:** `TopoDS_Iterator.hxx`:49 - `TopoDS_Iterator::TopoDS_Iterator()`
+    /// **Source:** `TopoDS_Iterator.hxx`:50 - `TopoDS_Iterator::TopoDS_Iterator()`
     /// Creates an Iterator on <S> sub-shapes.
     /// Note:
     /// - If cumOri is true, the function composes all
@@ -3474,13 +3235,24 @@ impl Iterator {
     }
 }
 
+// ── Skipped symbols for Iterator (2 total) ──
+// SKIPPED: **Source:** `TopoDS_Iterator.hxx`:89 - `TopoDS_Iterator::begin`
+//   method: Returns an STL-compatible iterator for range-based for loops.
+//   method: @warning Do not call Next() or Initialize() externally during range-for iteration.
+//   Reason: has unbindable types: return: unresolved template type (NCollection_ForwardRangeIterator<TopoDS_Iterator>)
+//   // pub fn begin(&mut self) -> OwnedPtr<NCollection_ForwardRangeIterator<TopoDS_Iterator>>;
+//
+// SKIPPED: **Source:** `TopoDS_Iterator.hxx`:95 - `TopoDS_Iterator::end`
+//   method: Returns a sentinel marking the end of iteration.
+//   Reason: return type 'NCollection_ForwardRangeSentinel' is unknown
+//   // pub fn end(&self) -> OwnedPtr<NCollection_ForwardRangeSentinel>;
+//
+
 // ========================
 // From TopoDS_LockedShape.hxx
 // ========================
 
-/// **Source:** `TopoDS_LockedShape.hxx`:39 - `TopoDS_LockedShape`
-/// An attempt was made to modify a geometry of Shape already
-/// shared or protected.
+/// **Source:** `TopoDS_LockedShape.hxx`:35 - `TopoDS_LockedShape`
 pub use crate::ffi_types::TopoDS_LockedShape as LockedShape;
 
 unsafe impl crate::CppDeletable for LockedShape {
@@ -3491,17 +3263,24 @@ unsafe impl crate::CppDeletable for LockedShape {
     }
 }
 
-impl LockedShape {
-    /// **Source:** `TopoDS_LockedShape.hxx`:39 - `TopoDS_LockedShape::TopoDS_LockedShape()`
-    pub fn new() -> crate::OwnedPtr<Self> {
+unsafe impl crate::CppCopyable for LockedShape {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        unsafe { crate::check_result(crate::ffi_extern_TKBRep::TopoDS_LockedShape_clone(ptr)) }
+    }
+}
+
+impl std::borrow::ToOwned for LockedShape {
+    type Owned = crate::OwnedPtr<Self>;
+
+    fn to_owned(&self) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKBRep::TopoDS_LockedShape_ctor(),
-            ))
+            crate::OwnedPtr::from_raw(<Self as crate::CppCopyable>::cpp_copy(self as *const Self))
         }
     }
+}
 
-    /// **Source:** `TopoDS_LockedShape.hxx`:39 - `TopoDS_LockedShape::TopoDS_LockedShape()`
+impl LockedShape {
+    /// **Source:** `TopoDS_LockedShape.hxx`:35 - `TopoDS_LockedShape::TopoDS_LockedShape()`
     pub fn new_charptr(theMessage: &str) -> crate::OwnedPtr<Self> {
         let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
         unsafe {
@@ -3511,7 +3290,7 @@ impl LockedShape {
         }
     }
 
-    /// **Source:** `TopoDS_LockedShape.hxx`:39 - `TopoDS_LockedShape::TopoDS_LockedShape()`
+    /// **Source:** `TopoDS_LockedShape.hxx`:35 - `TopoDS_LockedShape::TopoDS_LockedShape()`
     pub fn new_charptr2(theMessage: &str, theStackTrace: &str) -> crate::OwnedPtr<Self> {
         let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
         let c_theStackTrace = std::ffi::CString::new(theStackTrace).unwrap();
@@ -3525,79 +3304,15 @@ impl LockedShape {
         }
     }
 
-    /// **Source:** `TopoDS_LockedShape.hxx`:39 - `TopoDS_LockedShape::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
-        unsafe {
-            &*(crate::check_result(crate::ffi_extern_TKBRep::TopoDS_LockedShape_dynamic_type(
-                self as *const Self,
-            )))
-        }
-    }
-
-    /// **Source:** `TopoDS_LockedShape.hxx`:39 - `TopoDS_LockedShape::Raise()`
-    pub fn raise_charptr(theMessage: &str) {
-        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKBRep::TopoDS_LockedShape_raise_charptr(c_theMessage.as_ptr())
-        })
-    }
-
-    /// **Source:** `TopoDS_LockedShape.hxx`:39 - `TopoDS_LockedShape::Raise()`
-    pub fn raise_sstream(theMessage: &mut crate::ffi_types::Standard_SStream) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKBRep::TopoDS_LockedShape_raise_sstream(theMessage)
-        })
-    }
-
-    /// **Source:** `TopoDS_LockedShape.hxx`:39 - `TopoDS_LockedShape::NewInstance()`
-    pub fn new_instance_charptr(
-        theMessage: &str,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleTopoDSLockedShape> {
-        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKBRep::TopoDS_LockedShape_new_instance_charptr(
-                    c_theMessage.as_ptr(),
-                ),
-            ))
-        }
-    }
-
-    /// **Source:** `TopoDS_LockedShape.hxx`:39 - `TopoDS_LockedShape::NewInstance()`
-    pub fn new_instance_charptr2(
-        theMessage: &str,
-        theStackTrace: &str,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleTopoDSLockedShape> {
-        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
-        let c_theStackTrace = std::ffi::CString::new(theStackTrace).unwrap();
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKBRep::TopoDS_LockedShape_new_instance_charptr2(
-                    c_theMessage.as_ptr(),
-                    c_theStackTrace.as_ptr(),
-                ),
-            ))
-        }
-    }
-
-    /// **Source:** `TopoDS_LockedShape.hxx`:39 - `TopoDS_LockedShape::get_type_name()`
-    pub fn get_type_name() -> std::string::String {
+    /// **Source:** `TopoDS_LockedShape.hxx`:35 - `TopoDS_LockedShape::ExceptionType()`
+    pub fn exception_type(&self) -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi_extern_TKBRep::TopoDS_LockedShape_get_type_name(),
+                crate::ffi_extern_TKBRep::TopoDS_LockedShape_exception_type(self as *const Self),
             ))
         }
         .to_string_lossy()
         .into_owned()
-    }
-
-    /// **Source:** `TopoDS_LockedShape.hxx`:39 - `TopoDS_LockedShape::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
-        unsafe {
-            &*(crate::check_result(
-                crate::ffi_extern_TKBRep::TopoDS_LockedShape_get_type_descriptor(),
-            ))
-        }
     }
 
     /// Upcast to Standard_DomainError
@@ -3642,40 +3357,7 @@ impl LockedShape {
         }
     }
 
-    /// Upcast to Standard_Transient
-    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        unsafe {
-            &*crate::check_result(
-                crate::ffi_extern_TKBRep::TopoDS_LockedShape_as_Standard_Transient(
-                    self as *const Self,
-                ),
-            )
-        }
-    }
-
-    /// Upcast to Standard_Transient (mutable)
-    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        unsafe {
-            &mut *crate::check_result(
-                crate::ffi_extern_TKBRep::TopoDS_LockedShape_as_Standard_Transient_mut(
-                    self as *mut Self,
-                ),
-            )
-        }
-    }
-
-    /// Wrap in a Handle (reference-counted smart pointer)
-    pub fn to_handle(
-        obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleTopoDSLockedShape> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKBRep::TopoDS_LockedShape_to_handle(obj.into_raw()),
-            ))
-        }
-    }
-
-    /// Inherited: **Source:** `Standard_Failure.hxx`:58 - `Standard_Failure::Print()`
+    /// Inherited: **Source:** `Standard_Failure.hxx`:73 - `Standard_Failure::Print()`
     pub fn print(&self, theStream: &mut crate::ffi_types::Standard_OStream) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_LockedShape_inherited_Print(
@@ -3683,164 +3365,6 @@ impl LockedShape {
                 theStream,
             )
         })
-    }
-
-    /// Inherited: **Source:** `Standard_Failure.hxx`:72 - `Standard_Failure::Reraise()`
-    pub fn reraise(&mut self) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKBRep::TopoDS_LockedShape_inherited_Reraise(self as *mut Self)
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Failure.hxx`:112 - `Standard_Failure::Jump()`
-    pub fn jump(&mut self) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKBRep::TopoDS_LockedShape_inherited_Jump(self as *mut Self)
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKBRep::TopoDS_LockedShape_inherited_IsInstance(
-                self as *const Self,
-                theType,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKBRep::TopoDS_LockedShape_inherited_IsKind(
-                self as *const Self,
-                theType,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
-    pub fn this(&self) -> Option<&crate::standard::Transient> {
-        {
-            let __val = crate::check_result(unsafe {
-                crate::ffi_extern_TKBRep::TopoDS_LockedShape_inherited_This(self as *const Self)
-            });
-            if __val.is_null() {
-                None
-            } else {
-                Some(unsafe { &*__val })
-            }
-        }
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
-    pub fn get_ref_count(&self) -> i32 {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKBRep::TopoDS_LockedShape_inherited_GetRefCount(self as *const Self)
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
-    pub fn increment_ref_counter(&mut self) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKBRep::TopoDS_LockedShape_inherited_IncrementRefCounter(
-                self as *mut Self,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
-    pub fn decrement_ref_counter(&mut self) -> i32 {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKBRep::TopoDS_LockedShape_inherited_DecrementRefCounter(
-                self as *mut Self,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
-    pub fn delete(&self) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKBRep::TopoDS_LockedShape_inherited_Delete(self as *const Self)
-        })
-    }
-}
-
-pub use crate::ffi_types::HandleTopoDSLockedShape;
-
-unsafe impl crate::CppDeletable for HandleTopoDSLockedShape {
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            crate::ffi_extern_TKBRep::HandleTopoDSLockedShape_destructor(ptr);
-        }
-    }
-}
-
-unsafe impl crate::CppCopyable for HandleTopoDSLockedShape {
-    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        unsafe { crate::check_result(crate::ffi_extern_TKBRep::HandleTopoDSLockedShape_clone(ptr)) }
-    }
-}
-
-impl HandleTopoDSLockedShape {
-    /// Returns `true` if this Handle is null (doesn't point to any object).
-    pub fn is_null(&self) -> bool {
-        unsafe { crate::ffi_extern_TKBRep::HandleTopoDSLockedShape_is_null(self as *const Self) }
-    }
-
-    /// Dereference this Handle to access the underlying TopoDS_LockedShape
-    pub fn get(&self) -> &crate::ffi_types::TopoDS_LockedShape {
-        unsafe {
-            &*crate::check_result(crate::ffi_extern_TKBRep::HandleTopoDSLockedShape_get(
-                self as *const Self,
-            ))
-        }
-    }
-
-    /// Dereference this Handle to mutably access the underlying TopoDS_LockedShape
-    pub fn get_mut(&mut self) -> &mut crate::ffi_types::TopoDS_LockedShape {
-        unsafe {
-            &mut *crate::check_result(crate::ffi_extern_TKBRep::HandleTopoDSLockedShape_get_mut(
-                self as *mut Self,
-            ))
-        }
-    }
-
-    /// Upcast Handle<TopoDS_LockedShape> to Handle<Standard_DomainError>
-    pub fn to_handle_domain_error(
-        &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardDomainError> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKBRep::HandleTopoDSLockedShape_to_HandleStandardDomainError(
-                    self as *const Self,
-                ),
-            ))
-        }
-    }
-
-    /// Upcast Handle<TopoDS_LockedShape> to Handle<Standard_Failure>
-    pub fn to_handle_failure(&self) -> crate::OwnedPtr<crate::ffi_types::HandleStandardFailure> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKBRep::HandleTopoDSLockedShape_to_HandleStandardFailure(
-                    self as *const Self,
-                ),
-            ))
-        }
-    }
-
-    /// Upcast Handle<TopoDS_LockedShape> to Handle<Standard_Transient>
-    pub fn to_handle_transient(
-        &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKBRep::HandleTopoDSLockedShape_to_HandleStandardTransient(
-                    self as *const Self,
-                ),
-            ))
-        }
     }
 }
 
@@ -3940,7 +3464,7 @@ impl Shape {
     }
 
     /// **Source:** `TopoDS_Shape.hxx`:110 - `TopoDS_Shape::Located()`
-    /// Returns a  shape  similar to <me> with the local
+    /// Returns a shape similar to <me> with the local
     /// coordinate system set to <Loc>.
     /// @param theLoc the new local coordinate system.
     /// @param theRaiseExc flag to raise exception in case of transformation with scale or negative.
@@ -3961,7 +3485,7 @@ impl Shape {
         }
     }
 
-    /// **Source:** `TopoDS_Shape.hxx`:119 - `TopoDS_Shape::Orientation()`
+    /// **Source:** `TopoDS_Shape.hxx`:118 - `TopoDS_Shape::Orientation()`
     /// Returns the shape orientation.
     pub fn orientation(&self) -> crate::top_abs::Orientation {
         crate::top_abs::Orientation::try_from(crate::check_result(unsafe {
@@ -3970,7 +3494,7 @@ impl Shape {
         .unwrap()
     }
 
-    /// **Source:** `TopoDS_Shape.hxx`:122 - `TopoDS_Shape::Orientation()`
+    /// **Source:** `TopoDS_Shape.hxx`:121 - `TopoDS_Shape::Orientation()`
     /// Sets the shape orientation.
     pub fn orientation_orientation(&mut self, theOrient: crate::top_abs::Orientation) {
         crate::check_void_result(unsafe {
@@ -3981,8 +3505,8 @@ impl Shape {
         })
     }
 
-    /// **Source:** `TopoDS_Shape.hxx`:126 - `TopoDS_Shape::Oriented()`
-    /// Returns  a    shape  similar  to  <me>   with  the
+    /// **Source:** `TopoDS_Shape.hxx`:125 - `TopoDS_Shape::Oriented()`
+    /// Returns a shape similar to <me> with the
     /// orientation set to <Or>.
     pub fn oriented(&self, theOrient: crate::top_abs::Orientation) -> crate::OwnedPtr<Shape> {
         unsafe {
@@ -3995,9 +3519,9 @@ impl Shape {
         }
     }
 
-    /// **Source:** `TopoDS_Shape.hxx`:134 - `TopoDS_Shape::TShape()`
+    /// **Source:** `TopoDS_Shape.hxx`:133 - `TopoDS_Shape::TShape()`
     /// Returns a handle to the actual shape implementation.
-    pub fn t_shape(&self) -> &crate::ffi_types::HandleTopoDSTShape {
+    pub fn t_shape(&self) -> &crate::ffi_types::Handle_TopoDS_TShape {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKBRep::TopoDS_Shape_t_shape(
                 self as *const Self,
@@ -4005,7 +3529,7 @@ impl Shape {
         }
     }
 
-    /// **Source:** `TopoDS_Shape.hxx`:141 - `TopoDS_Shape::ShapeType()`
+    /// **Source:** `TopoDS_Shape.hxx`:140 - `TopoDS_Shape::ShapeType()`
     /// Returns the value of the TopAbs_ShapeEnum
     /// enumeration that corresponds to this shape, for
     /// example VERTEX, EDGE, and so on.
@@ -4018,7 +3542,7 @@ impl Shape {
         .unwrap()
     }
 
-    /// **Source:** `TopoDS_Shape.hxx`:144 - `TopoDS_Shape::Free()`
+    /// **Source:** `TopoDS_Shape.hxx`:143 - `TopoDS_Shape::Free()`
     /// Returns the free flag.
     pub fn free(&self) -> bool {
         crate::check_result(unsafe {
@@ -4026,7 +3550,7 @@ impl Shape {
         })
     }
 
-    /// **Source:** `TopoDS_Shape.hxx`:147 - `TopoDS_Shape::Free()`
+    /// **Source:** `TopoDS_Shape.hxx`:146 - `TopoDS_Shape::Free()`
     /// Sets the free flag.
     pub fn free_bool(&mut self, theIsFree: bool) {
         crate::check_void_result(unsafe {
@@ -4034,7 +3558,7 @@ impl Shape {
         })
     }
 
-    /// **Source:** `TopoDS_Shape.hxx`:150 - `TopoDS_Shape::Locked()`
+    /// **Source:** `TopoDS_Shape.hxx`:149 - `TopoDS_Shape::Locked()`
     /// Returns the locked flag.
     pub fn locked(&self) -> bool {
         crate::check_result(unsafe {
@@ -4042,7 +3566,7 @@ impl Shape {
         })
     }
 
-    /// **Source:** `TopoDS_Shape.hxx`:153 - `TopoDS_Shape::Locked()`
+    /// **Source:** `TopoDS_Shape.hxx`:152 - `TopoDS_Shape::Locked()`
     /// Sets the locked flag.
     pub fn locked_bool(&mut self, theIsLocked: bool) {
         crate::check_void_result(unsafe {
@@ -4050,7 +3574,7 @@ impl Shape {
         })
     }
 
-    /// **Source:** `TopoDS_Shape.hxx`:156 - `TopoDS_Shape::Modified()`
+    /// **Source:** `TopoDS_Shape.hxx`:155 - `TopoDS_Shape::Modified()`
     /// Returns the modification flag.
     pub fn modified(&self) -> bool {
         crate::check_result(unsafe {
@@ -4058,7 +3582,7 @@ impl Shape {
         })
     }
 
-    /// **Source:** `TopoDS_Shape.hxx`:159 - `TopoDS_Shape::Modified()`
+    /// **Source:** `TopoDS_Shape.hxx`:158 - `TopoDS_Shape::Modified()`
     /// Sets the modification flag.
     pub fn modified_bool(&mut self, theIsModified: bool) {
         crate::check_void_result(unsafe {
@@ -4066,7 +3590,7 @@ impl Shape {
         })
     }
 
-    /// **Source:** `TopoDS_Shape.hxx`:162 - `TopoDS_Shape::Checked()`
+    /// **Source:** `TopoDS_Shape.hxx`:161 - `TopoDS_Shape::Checked()`
     /// Returns the checked flag.
     pub fn checked(&self) -> bool {
         crate::check_result(unsafe {
@@ -4074,7 +3598,7 @@ impl Shape {
         })
     }
 
-    /// **Source:** `TopoDS_Shape.hxx`:165 - `TopoDS_Shape::Checked()`
+    /// **Source:** `TopoDS_Shape.hxx`:164 - `TopoDS_Shape::Checked()`
     /// Sets the checked flag.
     pub fn checked_bool(&mut self, theIsChecked: bool) {
         crate::check_void_result(unsafe {
@@ -4082,7 +3606,7 @@ impl Shape {
         })
     }
 
-    /// **Source:** `TopoDS_Shape.hxx`:168 - `TopoDS_Shape::Orientable()`
+    /// **Source:** `TopoDS_Shape.hxx`:167 - `TopoDS_Shape::Orientable()`
     /// Returns the orientability flag.
     pub fn orientable(&self) -> bool {
         crate::check_result(unsafe {
@@ -4090,7 +3614,7 @@ impl Shape {
         })
     }
 
-    /// **Source:** `TopoDS_Shape.hxx`:171 - `TopoDS_Shape::Orientable()`
+    /// **Source:** `TopoDS_Shape.hxx`:170 - `TopoDS_Shape::Orientable()`
     /// Sets the orientability flag.
     pub fn orientable_bool(&mut self, theIsOrientable: bool) {
         crate::check_void_result(unsafe {
@@ -4101,7 +3625,7 @@ impl Shape {
         })
     }
 
-    /// **Source:** `TopoDS_Shape.hxx`:174 - `TopoDS_Shape::Closed()`
+    /// **Source:** `TopoDS_Shape.hxx`:173 - `TopoDS_Shape::Closed()`
     /// Returns the closedness flag.
     pub fn closed(&self) -> bool {
         crate::check_result(unsafe {
@@ -4109,7 +3633,7 @@ impl Shape {
         })
     }
 
-    /// **Source:** `TopoDS_Shape.hxx`:177 - `TopoDS_Shape::Closed()`
+    /// **Source:** `TopoDS_Shape.hxx`:176 - `TopoDS_Shape::Closed()`
     /// Sets the closedness flag.
     pub fn closed_bool(&mut self, theIsClosed: bool) {
         crate::check_void_result(unsafe {
@@ -4117,7 +3641,7 @@ impl Shape {
         })
     }
 
-    /// **Source:** `TopoDS_Shape.hxx`:180 - `TopoDS_Shape::Infinite()`
+    /// **Source:** `TopoDS_Shape.hxx`:179 - `TopoDS_Shape::Infinite()`
     /// Returns the infinity flag.
     pub fn infinite(&self) -> bool {
         crate::check_result(unsafe {
@@ -4125,7 +3649,7 @@ impl Shape {
         })
     }
 
-    /// **Source:** `TopoDS_Shape.hxx`:183 - `TopoDS_Shape::Infinite()`
+    /// **Source:** `TopoDS_Shape.hxx`:182 - `TopoDS_Shape::Infinite()`
     /// Sets the infinity flag.
     pub fn infinite_bool(&mut self, theIsInfinite: bool) {
         crate::check_void_result(unsafe {
@@ -4133,7 +3657,7 @@ impl Shape {
         })
     }
 
-    /// **Source:** `TopoDS_Shape.hxx`:186 - `TopoDS_Shape::Convex()`
+    /// **Source:** `TopoDS_Shape.hxx`:185 - `TopoDS_Shape::Convex()`
     /// Returns the convexness flag.
     pub fn convex(&self) -> bool {
         crate::check_result(unsafe {
@@ -4141,7 +3665,7 @@ impl Shape {
         })
     }
 
-    /// **Source:** `TopoDS_Shape.hxx`:189 - `TopoDS_Shape::Convex()`
+    /// **Source:** `TopoDS_Shape.hxx`:188 - `TopoDS_Shape::Convex()`
     /// Sets the convexness flag.
     pub fn convex_bool(&mut self, theIsConvex: bool) {
         crate::check_void_result(unsafe {
@@ -4149,7 +3673,7 @@ impl Shape {
         })
     }
 
-    /// **Source:** `TopoDS_Shape.hxx`:194 - `TopoDS_Shape::Move()`
+    /// **Source:** `TopoDS_Shape.hxx`:193 - `TopoDS_Shape::Move()`
     /// Multiplies the Shape location by thePosition.
     /// @param thePosition the transformation to apply.
     /// @param theRaiseExc flag to raise exception in case of transformation with scale or negative.
@@ -4163,7 +3687,7 @@ impl Shape {
         })
     }
 
-    /// **Source:** `TopoDS_Shape.hxx`:208 - `TopoDS_Shape::Moved()`
+    /// **Source:** `TopoDS_Shape.hxx`:207 - `TopoDS_Shape::Moved()`
     /// Returns a shape similar to <me> with a location multiplied by thePosition.
     /// @param thePosition the transformation to apply.
     /// @param theRaiseExc flag to raise exception in case of transformation with scale or negative.
@@ -4184,7 +3708,7 @@ impl Shape {
         }
     }
 
-    /// **Source:** `TopoDS_Shape.hxx`:218 - `TopoDS_Shape::Reverse()`
+    /// **Source:** `TopoDS_Shape.hxx`:216 - `TopoDS_Shape::Reverse()`
     /// Reverses the orientation, using the Reverse method
     /// from the TopAbs package.
     pub fn reverse(&mut self) {
@@ -4193,9 +3717,9 @@ impl Shape {
         })
     }
 
-    /// **Source:** `TopoDS_Shape.hxx`:223 - `TopoDS_Shape::Reversed()`
-    /// Returns    a shape  similar    to  <me>  with  the
-    /// orientation  reversed, using  the   Reverse method
+    /// **Source:** `TopoDS_Shape.hxx`:221 - `TopoDS_Shape::Reversed()`
+    /// Returns a shape similar to <me> with the
+    /// orientation reversed, using the Reverse method
     /// from the TopAbs package.
     pub fn reversed(&self) -> crate::OwnedPtr<Shape> {
         unsafe {
@@ -4205,8 +3729,8 @@ impl Shape {
         }
     }
 
-    /// **Source:** `TopoDS_Shape.hxx`:232 - `TopoDS_Shape::Complement()`
-    /// Complements the orientation, using the  Complement
+    /// **Source:** `TopoDS_Shape.hxx`:230 - `TopoDS_Shape::Complement()`
+    /// Complements the orientation, using the Complement
     /// method from the TopAbs package.
     pub fn complement(&mut self) {
         crate::check_void_result(unsafe {
@@ -4214,9 +3738,9 @@ impl Shape {
         })
     }
 
-    /// **Source:** `TopoDS_Shape.hxx`:237 - `TopoDS_Shape::Complemented()`
-    /// Returns  a   shape  similar  to   <me>   with  the
-    /// orientation complemented,  using   the  Complement
+    /// **Source:** `TopoDS_Shape.hxx`:235 - `TopoDS_Shape::Complemented()`
+    /// Returns a shape similar to <me> with the
+    /// orientation complemented, using the Complement
     /// method from the TopAbs package.
     pub fn complemented(&self) -> crate::OwnedPtr<Shape> {
         unsafe {
@@ -4226,7 +3750,7 @@ impl Shape {
         }
     }
 
-    /// **Source:** `TopoDS_Shape.hxx`:246 - `TopoDS_Shape::Compose()`
+    /// **Source:** `TopoDS_Shape.hxx`:244 - `TopoDS_Shape::Compose()`
     /// Updates the Shape Orientation by composition with theOrient,
     /// using the Compose method from the TopAbs package.
     pub fn compose(&mut self, theOrient: crate::top_abs::Orientation) {
@@ -4235,8 +3759,8 @@ impl Shape {
         })
     }
 
-    /// **Source:** `TopoDS_Shape.hxx`:251 - `TopoDS_Shape::Composed()`
-    /// Returns  a  shape   similar   to  <me>   with  the
+    /// **Source:** `TopoDS_Shape.hxx`:249 - `TopoDS_Shape::Composed()`
+    /// Returns a shape similar to <me> with the
     /// orientation composed with theOrient, using the
     /// Compose method from the TopAbs package.
     pub fn composed(&self, theOrient: crate::top_abs::Orientation) -> crate::OwnedPtr<Shape> {
@@ -4250,7 +3774,7 @@ impl Shape {
         }
     }
 
-    /// **Source:** `TopoDS_Shape.hxx`:260 - `TopoDS_Shape::NbChildren()`
+    /// **Source:** `TopoDS_Shape.hxx`:258 - `TopoDS_Shape::NbChildren()`
     /// Returns the number of direct sub-shapes (children).
     /// @sa TopoDS_Iterator for accessing sub-shapes
     pub fn nb_children(&self) -> i32 {
@@ -4259,9 +3783,9 @@ impl Shape {
         })
     }
 
-    /// **Source:** `TopoDS_Shape.hxx`:265 - `TopoDS_Shape::IsPartner()`
-    /// Returns True if two shapes  are partners, i.e.  if
-    /// they   share   the   same  TShape.  Locations  and
+    /// **Source:** `TopoDS_Shape.hxx`:263 - `TopoDS_Shape::IsPartner()`
+    /// Returns True if two shapes are partners, i.e. if
+    /// they share the same TShape. Locations and
     /// Orientations may differ.
     pub fn is_partner(&self, theOther: &Shape) -> bool {
         crate::check_result(unsafe {
@@ -4269,9 +3793,9 @@ impl Shape {
         })
     }
 
-    /// **Source:** `TopoDS_Shape.hxx`:273 - `TopoDS_Shape::IsSame()`
-    /// Returns True if two shapes are same, i.e.  if they
-    /// share  the  same TShape  with the same  Locations.
+    /// **Source:** `TopoDS_Shape.hxx`:268 - `TopoDS_Shape::IsSame()`
+    /// Returns True if two shapes are same, i.e. if they
+    /// share the same TShape with the same Locations.
     /// Orientations may differ.
     pub fn is_same(&self, theOther: &Shape) -> bool {
         crate::check_result(unsafe {
@@ -4279,9 +3803,9 @@ impl Shape {
         })
     }
 
-    /// **Source:** `TopoDS_Shape.hxx`:281 - `TopoDS_Shape::IsEqual()`
+    /// **Source:** `TopoDS_Shape.hxx`:276 - `TopoDS_Shape::IsEqual()`
     /// Returns True if two shapes are equal, i.e. if they
-    /// share the same TShape with  the same Locations and
+    /// share the same TShape with the same Locations and
     /// Orientations.
     pub fn is_equal(&self, theOther: &Shape) -> bool {
         crate::check_result(unsafe {
@@ -4289,7 +3813,7 @@ impl Shape {
         })
     }
 
-    /// **Source:** `TopoDS_Shape.hxx`:290 - `TopoDS_Shape::IsNotEqual()`
+    /// **Source:** `TopoDS_Shape.hxx`:285 - `TopoDS_Shape::IsNotEqual()`
     /// Negation of the IsEqual method.
     pub fn is_not_equal(&self, theOther: &Shape) -> bool {
         crate::check_result(unsafe {
@@ -4297,8 +3821,8 @@ impl Shape {
         })
     }
 
-    /// **Source:** `TopoDS_Shape.hxx`:297 - `TopoDS_Shape::EmptyCopy()`
-    /// Replace   <me> by  a  new   Shape with the    same
+    /// **Source:** `TopoDS_Shape.hxx`:292 - `TopoDS_Shape::EmptyCopy()`
+    /// Replace <me> by a new Shape with the same
     /// Orientation and Location and a new TShape with the
     /// same geometry and no sub-shapes.
     pub fn empty_copy(&mut self) {
@@ -4307,9 +3831,9 @@ impl Shape {
         })
     }
 
-    /// **Source:** `TopoDS_Shape.hxx`:302 - `TopoDS_Shape::EmptyCopied()`
-    /// Returns a new Shape with the  same Orientation and
-    /// Location and  a new TShape  with the same geometry
+    /// **Source:** `TopoDS_Shape.hxx`:297 - `TopoDS_Shape::EmptyCopied()`
+    /// Returns a new Shape with the same Orientation and
+    /// Location and a new TShape with the same geometry
     /// and no sub-shapes.
     pub fn empty_copied(&self) -> crate::OwnedPtr<Shape> {
         unsafe {
@@ -4319,8 +3843,11 @@ impl Shape {
         }
     }
 
-    /// **Source:** `TopoDS_Shape.hxx`:309 - `TopoDS_Shape::TShape()`
-    pub fn t_shape_handletopodstshape(&mut self, theTShape: &crate::ffi_types::HandleTopoDSTShape) {
+    /// **Source:** `TopoDS_Shape.hxx`:304 - `TopoDS_Shape::TShape()`
+    pub fn t_shape_handletopodstshape(
+        &mut self,
+        theTShape: &crate::ffi_types::Handle_TopoDS_TShape,
+    ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_Shape_t_shape_handletopodstshape(
                 self as *mut Self,
@@ -4437,7 +3964,7 @@ impl Shell {
         }
     }
 
-    /// Inherited: **Source:** `TopoDS_Shape.hxx`:119 - `TopoDS_Shape::Orientation()`
+    /// Inherited: **Source:** `TopoDS_Shape.hxx`:118 - `TopoDS_Shape::Orientation()`
     pub fn orientation(&self) -> crate::top_abs::Orientation {
         crate::top_abs::Orientation::try_from(crate::check_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_Shell_inherited_Orientation(self as *const Self)
@@ -4445,7 +3972,7 @@ impl Shell {
         .unwrap()
     }
 
-    /// Inherited: **Source:** `TopoDS_Shape.hxx`:126 - `TopoDS_Shape::Oriented()`
+    /// Inherited: **Source:** `TopoDS_Shape.hxx`:125 - `TopoDS_Shape::Oriented()`
     pub fn oriented(&self, theOrient: crate::top_abs::Orientation) -> crate::OwnedPtr<Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -4457,8 +3984,8 @@ impl Shell {
         }
     }
 
-    /// Inherited: **Source:** `TopoDS_Shape.hxx`:134 - `TopoDS_Shape::TShape()`
-    pub fn t_shape(&self) -> &crate::ffi_types::HandleTopoDSTShape {
+    /// Inherited: **Source:** `TopoDS_Shape.hxx`:133 - `TopoDS_Shape::TShape()`
+    pub fn t_shape(&self) -> &crate::ffi_types::Handle_TopoDS_TShape {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKBRep::TopoDS_Shell_inherited_TShape(
                 self as *const Self,
@@ -4466,7 +3993,7 @@ impl Shell {
         }
     }
 
-    /// Inherited: **Source:** `TopoDS_Shape.hxx`:141 - `TopoDS_Shape::ShapeType()`
+    /// Inherited: **Source:** `TopoDS_Shape.hxx`:140 - `TopoDS_Shape::ShapeType()`
     pub fn shape_type(&self) -> crate::top_abs::ShapeEnum {
         crate::top_abs::ShapeEnum::try_from(crate::check_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_Shell_inherited_ShapeType(self as *const Self)
@@ -4474,63 +4001,63 @@ impl Shell {
         .unwrap()
     }
 
-    /// Inherited: **Source:** `TopoDS_Shape.hxx`:144 - `TopoDS_Shape::Free()`
+    /// Inherited: **Source:** `TopoDS_Shape.hxx`:143 - `TopoDS_Shape::Free()`
     pub fn free(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_Shell_inherited_Free(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `TopoDS_Shape.hxx`:150 - `TopoDS_Shape::Locked()`
+    /// Inherited: **Source:** `TopoDS_Shape.hxx`:149 - `TopoDS_Shape::Locked()`
     pub fn locked(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_Shell_inherited_Locked(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `TopoDS_Shape.hxx`:156 - `TopoDS_Shape::Modified()`
+    /// Inherited: **Source:** `TopoDS_Shape.hxx`:155 - `TopoDS_Shape::Modified()`
     pub fn modified(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_Shell_inherited_Modified(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `TopoDS_Shape.hxx`:162 - `TopoDS_Shape::Checked()`
+    /// Inherited: **Source:** `TopoDS_Shape.hxx`:161 - `TopoDS_Shape::Checked()`
     pub fn checked(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_Shell_inherited_Checked(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `TopoDS_Shape.hxx`:168 - `TopoDS_Shape::Orientable()`
+    /// Inherited: **Source:** `TopoDS_Shape.hxx`:167 - `TopoDS_Shape::Orientable()`
     pub fn orientable(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_Shell_inherited_Orientable(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `TopoDS_Shape.hxx`:174 - `TopoDS_Shape::Closed()`
+    /// Inherited: **Source:** `TopoDS_Shape.hxx`:173 - `TopoDS_Shape::Closed()`
     pub fn closed(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_Shell_inherited_Closed(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `TopoDS_Shape.hxx`:180 - `TopoDS_Shape::Infinite()`
+    /// Inherited: **Source:** `TopoDS_Shape.hxx`:179 - `TopoDS_Shape::Infinite()`
     pub fn infinite(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_Shell_inherited_Infinite(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `TopoDS_Shape.hxx`:186 - `TopoDS_Shape::Convex()`
+    /// Inherited: **Source:** `TopoDS_Shape.hxx`:185 - `TopoDS_Shape::Convex()`
     pub fn convex(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_Shell_inherited_Convex(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `TopoDS_Shape.hxx`:194 - `TopoDS_Shape::Move()`
+    /// Inherited: **Source:** `TopoDS_Shape.hxx`:193 - `TopoDS_Shape::Move()`
     pub fn move_(&mut self, thePosition: &crate::top_loc::Location, theRaiseExc: bool) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_Shell_inherited_Move(
@@ -4541,7 +4068,7 @@ impl Shell {
         })
     }
 
-    /// Inherited: **Source:** `TopoDS_Shape.hxx`:208 - `TopoDS_Shape::Moved()`
+    /// Inherited: **Source:** `TopoDS_Shape.hxx`:207 - `TopoDS_Shape::Moved()`
     pub fn moved(
         &self,
         thePosition: &crate::top_loc::Location,
@@ -4558,14 +4085,14 @@ impl Shell {
         }
     }
 
-    /// Inherited: **Source:** `TopoDS_Shape.hxx`:218 - `TopoDS_Shape::Reverse()`
+    /// Inherited: **Source:** `TopoDS_Shape.hxx`:216 - `TopoDS_Shape::Reverse()`
     pub fn reverse(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_Shell_inherited_Reverse(self as *mut Self)
         })
     }
 
-    /// Inherited: **Source:** `TopoDS_Shape.hxx`:223 - `TopoDS_Shape::Reversed()`
+    /// Inherited: **Source:** `TopoDS_Shape.hxx`:221 - `TopoDS_Shape::Reversed()`
     pub fn reversed(&self) -> crate::OwnedPtr<Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -4574,14 +4101,14 @@ impl Shell {
         }
     }
 
-    /// Inherited: **Source:** `TopoDS_Shape.hxx`:232 - `TopoDS_Shape::Complement()`
+    /// Inherited: **Source:** `TopoDS_Shape.hxx`:230 - `TopoDS_Shape::Complement()`
     pub fn complement(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_Shell_inherited_Complement(self as *mut Self)
         })
     }
 
-    /// Inherited: **Source:** `TopoDS_Shape.hxx`:237 - `TopoDS_Shape::Complemented()`
+    /// Inherited: **Source:** `TopoDS_Shape.hxx`:235 - `TopoDS_Shape::Complemented()`
     pub fn complemented(&self) -> crate::OwnedPtr<Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -4590,7 +4117,7 @@ impl Shell {
         }
     }
 
-    /// Inherited: **Source:** `TopoDS_Shape.hxx`:246 - `TopoDS_Shape::Compose()`
+    /// Inherited: **Source:** `TopoDS_Shape.hxx`:244 - `TopoDS_Shape::Compose()`
     pub fn compose(&mut self, theOrient: crate::top_abs::Orientation) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_Shell_inherited_Compose(
@@ -4600,7 +4127,7 @@ impl Shell {
         })
     }
 
-    /// Inherited: **Source:** `TopoDS_Shape.hxx`:251 - `TopoDS_Shape::Composed()`
+    /// Inherited: **Source:** `TopoDS_Shape.hxx`:249 - `TopoDS_Shape::Composed()`
     pub fn composed(&self, theOrient: crate::top_abs::Orientation) -> crate::OwnedPtr<Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -4612,14 +4139,14 @@ impl Shell {
         }
     }
 
-    /// Inherited: **Source:** `TopoDS_Shape.hxx`:260 - `TopoDS_Shape::NbChildren()`
+    /// Inherited: **Source:** `TopoDS_Shape.hxx`:258 - `TopoDS_Shape::NbChildren()`
     pub fn nb_children(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_Shell_inherited_NbChildren(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `TopoDS_Shape.hxx`:265 - `TopoDS_Shape::IsPartner()`
+    /// Inherited: **Source:** `TopoDS_Shape.hxx`:263 - `TopoDS_Shape::IsPartner()`
     pub fn is_partner(&self, theOther: &Shape) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_Shell_inherited_IsPartner(
@@ -4629,21 +4156,21 @@ impl Shell {
         })
     }
 
-    /// Inherited: **Source:** `TopoDS_Shape.hxx`:273 - `TopoDS_Shape::IsSame()`
+    /// Inherited: **Source:** `TopoDS_Shape.hxx`:268 - `TopoDS_Shape::IsSame()`
     pub fn is_same(&self, theOther: &Shape) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_Shell_inherited_IsSame(self as *const Self, theOther)
         })
     }
 
-    /// Inherited: **Source:** `TopoDS_Shape.hxx`:281 - `TopoDS_Shape::IsEqual()`
+    /// Inherited: **Source:** `TopoDS_Shape.hxx`:276 - `TopoDS_Shape::IsEqual()`
     pub fn is_equal(&self, theOther: &Shape) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_Shell_inherited_IsEqual(self as *const Self, theOther)
         })
     }
 
-    /// Inherited: **Source:** `TopoDS_Shape.hxx`:290 - `TopoDS_Shape::IsNotEqual()`
+    /// Inherited: **Source:** `TopoDS_Shape.hxx`:285 - `TopoDS_Shape::IsNotEqual()`
     pub fn is_not_equal(&self, theOther: &Shape) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_Shell_inherited_IsNotEqual(
@@ -4653,14 +4180,14 @@ impl Shell {
         })
     }
 
-    /// Inherited: **Source:** `TopoDS_Shape.hxx`:297 - `TopoDS_Shape::EmptyCopy()`
+    /// Inherited: **Source:** `TopoDS_Shape.hxx`:292 - `TopoDS_Shape::EmptyCopy()`
     pub fn empty_copy(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_Shell_inherited_EmptyCopy(self as *mut Self)
         })
     }
 
-    /// Inherited: **Source:** `TopoDS_Shape.hxx`:302 - `TopoDS_Shape::EmptyCopied()`
+    /// Inherited: **Source:** `TopoDS_Shape.hxx`:297 - `TopoDS_Shape::EmptyCopied()`
     pub fn empty_copied(&self) -> crate::OwnedPtr<Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -4778,7 +4305,7 @@ impl Solid {
         }
     }
 
-    /// Inherited: **Source:** `TopoDS_Shape.hxx`:119 - `TopoDS_Shape::Orientation()`
+    /// Inherited: **Source:** `TopoDS_Shape.hxx`:118 - `TopoDS_Shape::Orientation()`
     pub fn orientation(&self) -> crate::top_abs::Orientation {
         crate::top_abs::Orientation::try_from(crate::check_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_Solid_inherited_Orientation(self as *const Self)
@@ -4786,7 +4313,7 @@ impl Solid {
         .unwrap()
     }
 
-    /// Inherited: **Source:** `TopoDS_Shape.hxx`:126 - `TopoDS_Shape::Oriented()`
+    /// Inherited: **Source:** `TopoDS_Shape.hxx`:125 - `TopoDS_Shape::Oriented()`
     pub fn oriented(&self, theOrient: crate::top_abs::Orientation) -> crate::OwnedPtr<Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -4798,8 +4325,8 @@ impl Solid {
         }
     }
 
-    /// Inherited: **Source:** `TopoDS_Shape.hxx`:134 - `TopoDS_Shape::TShape()`
-    pub fn t_shape(&self) -> &crate::ffi_types::HandleTopoDSTShape {
+    /// Inherited: **Source:** `TopoDS_Shape.hxx`:133 - `TopoDS_Shape::TShape()`
+    pub fn t_shape(&self) -> &crate::ffi_types::Handle_TopoDS_TShape {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKBRep::TopoDS_Solid_inherited_TShape(
                 self as *const Self,
@@ -4807,7 +4334,7 @@ impl Solid {
         }
     }
 
-    /// Inherited: **Source:** `TopoDS_Shape.hxx`:141 - `TopoDS_Shape::ShapeType()`
+    /// Inherited: **Source:** `TopoDS_Shape.hxx`:140 - `TopoDS_Shape::ShapeType()`
     pub fn shape_type(&self) -> crate::top_abs::ShapeEnum {
         crate::top_abs::ShapeEnum::try_from(crate::check_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_Solid_inherited_ShapeType(self as *const Self)
@@ -4815,63 +4342,63 @@ impl Solid {
         .unwrap()
     }
 
-    /// Inherited: **Source:** `TopoDS_Shape.hxx`:144 - `TopoDS_Shape::Free()`
+    /// Inherited: **Source:** `TopoDS_Shape.hxx`:143 - `TopoDS_Shape::Free()`
     pub fn free(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_Solid_inherited_Free(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `TopoDS_Shape.hxx`:150 - `TopoDS_Shape::Locked()`
+    /// Inherited: **Source:** `TopoDS_Shape.hxx`:149 - `TopoDS_Shape::Locked()`
     pub fn locked(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_Solid_inherited_Locked(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `TopoDS_Shape.hxx`:156 - `TopoDS_Shape::Modified()`
+    /// Inherited: **Source:** `TopoDS_Shape.hxx`:155 - `TopoDS_Shape::Modified()`
     pub fn modified(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_Solid_inherited_Modified(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `TopoDS_Shape.hxx`:162 - `TopoDS_Shape::Checked()`
+    /// Inherited: **Source:** `TopoDS_Shape.hxx`:161 - `TopoDS_Shape::Checked()`
     pub fn checked(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_Solid_inherited_Checked(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `TopoDS_Shape.hxx`:168 - `TopoDS_Shape::Orientable()`
+    /// Inherited: **Source:** `TopoDS_Shape.hxx`:167 - `TopoDS_Shape::Orientable()`
     pub fn orientable(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_Solid_inherited_Orientable(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `TopoDS_Shape.hxx`:174 - `TopoDS_Shape::Closed()`
+    /// Inherited: **Source:** `TopoDS_Shape.hxx`:173 - `TopoDS_Shape::Closed()`
     pub fn closed(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_Solid_inherited_Closed(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `TopoDS_Shape.hxx`:180 - `TopoDS_Shape::Infinite()`
+    /// Inherited: **Source:** `TopoDS_Shape.hxx`:179 - `TopoDS_Shape::Infinite()`
     pub fn infinite(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_Solid_inherited_Infinite(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `TopoDS_Shape.hxx`:186 - `TopoDS_Shape::Convex()`
+    /// Inherited: **Source:** `TopoDS_Shape.hxx`:185 - `TopoDS_Shape::Convex()`
     pub fn convex(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_Solid_inherited_Convex(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `TopoDS_Shape.hxx`:194 - `TopoDS_Shape::Move()`
+    /// Inherited: **Source:** `TopoDS_Shape.hxx`:193 - `TopoDS_Shape::Move()`
     pub fn move_(&mut self, thePosition: &crate::top_loc::Location, theRaiseExc: bool) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_Solid_inherited_Move(
@@ -4882,7 +4409,7 @@ impl Solid {
         })
     }
 
-    /// Inherited: **Source:** `TopoDS_Shape.hxx`:208 - `TopoDS_Shape::Moved()`
+    /// Inherited: **Source:** `TopoDS_Shape.hxx`:207 - `TopoDS_Shape::Moved()`
     pub fn moved(
         &self,
         thePosition: &crate::top_loc::Location,
@@ -4899,14 +4426,14 @@ impl Solid {
         }
     }
 
-    /// Inherited: **Source:** `TopoDS_Shape.hxx`:218 - `TopoDS_Shape::Reverse()`
+    /// Inherited: **Source:** `TopoDS_Shape.hxx`:216 - `TopoDS_Shape::Reverse()`
     pub fn reverse(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_Solid_inherited_Reverse(self as *mut Self)
         })
     }
 
-    /// Inherited: **Source:** `TopoDS_Shape.hxx`:223 - `TopoDS_Shape::Reversed()`
+    /// Inherited: **Source:** `TopoDS_Shape.hxx`:221 - `TopoDS_Shape::Reversed()`
     pub fn reversed(&self) -> crate::OwnedPtr<Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -4915,14 +4442,14 @@ impl Solid {
         }
     }
 
-    /// Inherited: **Source:** `TopoDS_Shape.hxx`:232 - `TopoDS_Shape::Complement()`
+    /// Inherited: **Source:** `TopoDS_Shape.hxx`:230 - `TopoDS_Shape::Complement()`
     pub fn complement(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_Solid_inherited_Complement(self as *mut Self)
         })
     }
 
-    /// Inherited: **Source:** `TopoDS_Shape.hxx`:237 - `TopoDS_Shape::Complemented()`
+    /// Inherited: **Source:** `TopoDS_Shape.hxx`:235 - `TopoDS_Shape::Complemented()`
     pub fn complemented(&self) -> crate::OwnedPtr<Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -4931,7 +4458,7 @@ impl Solid {
         }
     }
 
-    /// Inherited: **Source:** `TopoDS_Shape.hxx`:246 - `TopoDS_Shape::Compose()`
+    /// Inherited: **Source:** `TopoDS_Shape.hxx`:244 - `TopoDS_Shape::Compose()`
     pub fn compose(&mut self, theOrient: crate::top_abs::Orientation) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_Solid_inherited_Compose(
@@ -4941,7 +4468,7 @@ impl Solid {
         })
     }
 
-    /// Inherited: **Source:** `TopoDS_Shape.hxx`:251 - `TopoDS_Shape::Composed()`
+    /// Inherited: **Source:** `TopoDS_Shape.hxx`:249 - `TopoDS_Shape::Composed()`
     pub fn composed(&self, theOrient: crate::top_abs::Orientation) -> crate::OwnedPtr<Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -4953,14 +4480,14 @@ impl Solid {
         }
     }
 
-    /// Inherited: **Source:** `TopoDS_Shape.hxx`:260 - `TopoDS_Shape::NbChildren()`
+    /// Inherited: **Source:** `TopoDS_Shape.hxx`:258 - `TopoDS_Shape::NbChildren()`
     pub fn nb_children(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_Solid_inherited_NbChildren(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `TopoDS_Shape.hxx`:265 - `TopoDS_Shape::IsPartner()`
+    /// Inherited: **Source:** `TopoDS_Shape.hxx`:263 - `TopoDS_Shape::IsPartner()`
     pub fn is_partner(&self, theOther: &Shape) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_Solid_inherited_IsPartner(
@@ -4970,21 +4497,21 @@ impl Solid {
         })
     }
 
-    /// Inherited: **Source:** `TopoDS_Shape.hxx`:273 - `TopoDS_Shape::IsSame()`
+    /// Inherited: **Source:** `TopoDS_Shape.hxx`:268 - `TopoDS_Shape::IsSame()`
     pub fn is_same(&self, theOther: &Shape) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_Solid_inherited_IsSame(self as *const Self, theOther)
         })
     }
 
-    /// Inherited: **Source:** `TopoDS_Shape.hxx`:281 - `TopoDS_Shape::IsEqual()`
+    /// Inherited: **Source:** `TopoDS_Shape.hxx`:276 - `TopoDS_Shape::IsEqual()`
     pub fn is_equal(&self, theOther: &Shape) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_Solid_inherited_IsEqual(self as *const Self, theOther)
         })
     }
 
-    /// Inherited: **Source:** `TopoDS_Shape.hxx`:290 - `TopoDS_Shape::IsNotEqual()`
+    /// Inherited: **Source:** `TopoDS_Shape.hxx`:285 - `TopoDS_Shape::IsNotEqual()`
     pub fn is_not_equal(&self, theOther: &Shape) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_Solid_inherited_IsNotEqual(
@@ -4994,14 +4521,14 @@ impl Solid {
         })
     }
 
-    /// Inherited: **Source:** `TopoDS_Shape.hxx`:297 - `TopoDS_Shape::EmptyCopy()`
+    /// Inherited: **Source:** `TopoDS_Shape.hxx`:292 - `TopoDS_Shape::EmptyCopy()`
     pub fn empty_copy(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_Solid_inherited_EmptyCopy(self as *mut Self)
         })
     }
 
-    /// Inherited: **Source:** `TopoDS_Shape.hxx`:302 - `TopoDS_Shape::EmptyCopied()`
+    /// Inherited: **Source:** `TopoDS_Shape.hxx`:297 - `TopoDS_Shape::EmptyCopied()`
     pub fn empty_copied(&self) -> crate::OwnedPtr<Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -5015,7 +4542,7 @@ impl Solid {
 // From TopoDS_TCompSolid.hxx
 // ========================
 
-/// **Source:** `TopoDS_TCompSolid.hxx`:29 - `TopoDS_TCompSolid`
+/// **Source:** `TopoDS_TCompSolid.hxx`:25 - `TopoDS_TCompSolid`
 /// A set of solids connected by their faces.
 pub use crate::ffi_types::TopoDS_TCompSolid as TCompSolid;
 
@@ -5028,7 +4555,7 @@ unsafe impl crate::CppDeletable for TCompSolid {
 }
 
 impl TCompSolid {
-    /// **Source:** `TopoDS_TCompSolid.hxx`:33 - `TopoDS_TCompSolid::TopoDS_TCompSolid()`
+    /// **Source:** `TopoDS_TCompSolid.hxx`:29 - `TopoDS_TCompSolid::TopoDS_TCompSolid()`
     /// Creates an empty TCompSolid.
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
@@ -5038,18 +4565,9 @@ impl TCompSolid {
         }
     }
 
-    /// **Source:** `TopoDS_TCompSolid.hxx`:39 - `TopoDS_TCompSolid::ShapeType()`
-    /// returns COMPSOLID
-    pub fn shape_type(&self) -> crate::top_abs::ShapeEnum {
-        crate::top_abs::ShapeEnum::try_from(crate::check_result(unsafe {
-            crate::ffi_extern_TKBRep::TopoDS_TCompSolid_shape_type(self as *const Self)
-        }))
-        .unwrap()
-    }
-
-    /// **Source:** `TopoDS_TCompSolid.hxx`:42 - `TopoDS_TCompSolid::EmptyCopy()`
+    /// **Source:** `TopoDS_TCompSolid.hxx`:35 - `TopoDS_TCompSolid::EmptyCopy()`
     /// Returns an empty TCompSolid.
-    pub fn empty_copy(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTopoDSTShape> {
+    pub fn empty_copy(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_TopoDS_TShape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKBRep::TopoDS_TCompSolid_empty_copy(self as *const Self),
@@ -5057,8 +4575,8 @@ impl TCompSolid {
         }
     }
 
-    /// **Source:** `TopoDS_TCompSolid.hxx`:44 - `TopoDS_TCompSolid::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `TopoDS_TCompSolid.hxx`:37 - `TopoDS_TCompSolid::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKBRep::TopoDS_TCompSolid_dynamic_type(
                 self as *const Self,
@@ -5066,7 +4584,7 @@ impl TCompSolid {
         }
     }
 
-    /// **Source:** `TopoDS_TCompSolid.hxx`:44 - `TopoDS_TCompSolid::get_type_name()`
+    /// **Source:** `TopoDS_TCompSolid.hxx`:37 - `TopoDS_TCompSolid::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -5077,8 +4595,8 @@ impl TCompSolid {
         .into_owned()
     }
 
-    /// **Source:** `TopoDS_TCompSolid.hxx`:44 - `TopoDS_TCompSolid::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    /// **Source:** `TopoDS_TCompSolid.hxx`:37 - `TopoDS_TCompSolid::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKBRep::TopoDS_TCompSolid_get_type_descriptor(),
@@ -5129,7 +4647,7 @@ impl TCompSolid {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleTopoDSTCompSolid> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_TopoDS_TCompSolid> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKBRep::TopoDS_TCompSolid_to_handle(obj.into_raw()),
@@ -5137,71 +4655,79 @@ impl TCompSolid {
         }
     }
 
-    /// Inherited: **Source:** `TopoDS_TShape.hxx`:59 - `TopoDS_TShape::Free()`
+    /// Inherited: **Source:** `TopoDS_TShape.hxx`:86 - `TopoDS_TShape::Free()`
     pub fn free(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_TCompSolid_inherited_Free(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `TopoDS_TShape.hxx`:65 - `TopoDS_TShape::Locked()`
+    /// Inherited: **Source:** `TopoDS_TShape.hxx`:92 - `TopoDS_TShape::Locked()`
     pub fn locked(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_TCompSolid_inherited_Locked(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `TopoDS_TShape.hxx`:71 - `TopoDS_TShape::Modified()`
+    /// Inherited: **Source:** `TopoDS_TShape.hxx`:98 - `TopoDS_TShape::Modified()`
     pub fn modified(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_TCompSolid_inherited_Modified(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `TopoDS_TShape.hxx`:86 - `TopoDS_TShape::Checked()`
+    /// Inherited: **Source:** `TopoDS_TShape.hxx`:112 - `TopoDS_TShape::Checked()`
     pub fn checked(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_TCompSolid_inherited_Checked(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `TopoDS_TShape.hxx`:95 - `TopoDS_TShape::Orientable()`
+    /// Inherited: **Source:** `TopoDS_TShape.hxx`:118 - `TopoDS_TShape::Orientable()`
     pub fn orientable(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_TCompSolid_inherited_Orientable(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `TopoDS_TShape.hxx`:104 - `TopoDS_TShape::Closed()`
+    /// Inherited: **Source:** `TopoDS_TShape.hxx`:124 - `TopoDS_TShape::Closed()`
     pub fn closed(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_TCompSolid_inherited_Closed(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `TopoDS_TShape.hxx`:110 - `TopoDS_TShape::Infinite()`
+    /// Inherited: **Source:** `TopoDS_TShape.hxx`:130 - `TopoDS_TShape::Infinite()`
     pub fn infinite(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_TCompSolid_inherited_Infinite(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `TopoDS_TShape.hxx`:119 - `TopoDS_TShape::Convex()`
+    /// Inherited: **Source:** `TopoDS_TShape.hxx`:136 - `TopoDS_TShape::Convex()`
     pub fn convex(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_TCompSolid_inherited_Convex(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `TopoDS_TShape.hxx`:133 - `TopoDS_TShape::NbChildren()`
+    /// Inherited: **Source:** `TopoDS_TShape.hxx`:144 - `TopoDS_TShape::ShapeType()`
+    pub fn shape_type(&self) -> crate::top_abs::ShapeEnum {
+        crate::top_abs::ShapeEnum::try_from(crate::check_result(unsafe {
+            crate::ffi_extern_TKBRep::TopoDS_TCompSolid_inherited_ShapeType(self as *const Self)
+        }))
+        .unwrap()
+    }
+
+    /// Inherited: **Source:** `TopoDS_TShape.hxx`:154 - `TopoDS_TShape::NbChildren()`
     pub fn nb_children(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_TCompSolid_inherited_NbChildren(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_TCompSolid_inherited_IsInstance(
                 self as *const Self,
@@ -5210,8 +4736,8 @@ impl TCompSolid {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_TCompSolid_inherited_IsKind(
                 self as *const Self,
@@ -5220,7 +4746,7 @@ impl TCompSolid {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -5234,14 +4760,14 @@ impl TCompSolid {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_TCompSolid_inherited_GetRefCount(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_TCompSolid_inherited_IncrementRefCounter(
@@ -5250,7 +4776,7 @@ impl TCompSolid {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_TCompSolid_inherited_DecrementRefCounter(
@@ -5259,7 +4785,7 @@ impl TCompSolid {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_TCompSolid_inherited_Delete(self as *const Self)
@@ -5267,32 +4793,34 @@ impl TCompSolid {
     }
 }
 
-pub use crate::ffi_types::HandleTopoDSTCompSolid;
+pub use crate::ffi_types::Handle_TopoDS_TCompSolid;
 
-unsafe impl crate::CppDeletable for HandleTopoDSTCompSolid {
+unsafe impl crate::CppDeletable for Handle_TopoDS_TCompSolid {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKBRep::HandleTopoDSTCompSolid_destructor(ptr);
+            crate::ffi_extern_TKBRep::Handle_TopoDS_TCompSolid_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleTopoDSTCompSolid {
+unsafe impl crate::CppCopyable for Handle_TopoDS_TCompSolid {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        unsafe { crate::check_result(crate::ffi_extern_TKBRep::HandleTopoDSTCompSolid_clone(ptr)) }
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKBRep::Handle_TopoDS_TCompSolid_clone(ptr))
+        }
     }
 }
 
-impl HandleTopoDSTCompSolid {
+impl Handle_TopoDS_TCompSolid {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
-        unsafe { crate::ffi_extern_TKBRep::HandleTopoDSTCompSolid_is_null(self as *const Self) }
+        unsafe { crate::ffi_extern_TKBRep::Handle_TopoDS_TCompSolid_is_null(self as *const Self) }
     }
 
     /// Dereference this Handle to access the underlying TopoDS_TCompSolid
     pub fn get(&self) -> &crate::ffi_types::TopoDS_TCompSolid {
         unsafe {
-            &*crate::check_result(crate::ffi_extern_TKBRep::HandleTopoDSTCompSolid_get(
+            &*crate::check_result(crate::ffi_extern_TKBRep::Handle_TopoDS_TCompSolid_get(
                 self as *const Self,
             ))
         }
@@ -5301,17 +4829,17 @@ impl HandleTopoDSTCompSolid {
     /// Dereference this Handle to mutably access the underlying TopoDS_TCompSolid
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::TopoDS_TCompSolid {
         unsafe {
-            &mut *crate::check_result(crate::ffi_extern_TKBRep::HandleTopoDSTCompSolid_get_mut(
+            &mut *crate::check_result(crate::ffi_extern_TKBRep::Handle_TopoDS_TCompSolid_get_mut(
                 self as *mut Self,
             ))
         }
     }
 
     /// Upcast Handle<TopoDS_TCompSolid> to Handle<TopoDS_TShape>
-    pub fn to_handle_t_shape(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTopoDSTShape> {
+    pub fn to_handle_t_shape(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_TopoDS_TShape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKBRep::HandleTopoDSTCompSolid_to_HandleTopoDSTShape(
+                crate::ffi_extern_TKBRep::Handle_TopoDS_TCompSolid_to_Handle_TopoDS_TShape(
                     self as *const Self,
                 ),
             ))
@@ -5321,10 +4849,10 @@ impl HandleTopoDSTCompSolid {
     /// Upcast Handle<TopoDS_TCompSolid> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKBRep::HandleTopoDSTCompSolid_to_HandleStandardTransient(
+                crate::ffi_extern_TKBRep::Handle_TopoDS_TCompSolid_to_Handle_Standard_Transient(
                     self as *const Self,
                 ),
             ))
@@ -5336,7 +4864,7 @@ impl HandleTopoDSTCompSolid {
 // From TopoDS_TCompound.hxx
 // ========================
 
-/// **Source:** `TopoDS_TCompound.hxx`:29 - `TopoDS_TCompound`
+/// **Source:** `TopoDS_TCompound.hxx`:25 - `TopoDS_TCompound`
 /// A TCompound is an all-purpose set of Shapes.
 pub use crate::ffi_types::TopoDS_TCompound as TCompound;
 
@@ -5349,7 +4877,7 @@ unsafe impl crate::CppDeletable for TCompound {
 }
 
 impl TCompound {
-    /// **Source:** `TopoDS_TCompound.hxx`:33 - `TopoDS_TCompound::TopoDS_TCompound()`
+    /// **Source:** `TopoDS_TCompound.hxx`:29 - `TopoDS_TCompound::TopoDS_TCompound()`
     /// Creates an empty TCompound.
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
@@ -5359,18 +4887,9 @@ impl TCompound {
         }
     }
 
-    /// **Source:** `TopoDS_TCompound.hxx`:40 - `TopoDS_TCompound::ShapeType()`
-    /// Returns COMPOUND.
-    pub fn shape_type(&self) -> crate::top_abs::ShapeEnum {
-        crate::top_abs::ShapeEnum::try_from(crate::check_result(unsafe {
-            crate::ffi_extern_TKBRep::TopoDS_TCompound_shape_type(self as *const Self)
-        }))
-        .unwrap()
-    }
-
-    /// **Source:** `TopoDS_TCompound.hxx`:43 - `TopoDS_TCompound::EmptyCopy()`
+    /// **Source:** `TopoDS_TCompound.hxx`:36 - `TopoDS_TCompound::EmptyCopy()`
     /// Returns an empty TCompound.
-    pub fn empty_copy(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTopoDSTShape> {
+    pub fn empty_copy(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_TopoDS_TShape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKBRep::TopoDS_TCompound_empty_copy(self as *const Self),
@@ -5378,8 +4897,8 @@ impl TCompound {
         }
     }
 
-    /// **Source:** `TopoDS_TCompound.hxx`:45 - `TopoDS_TCompound::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `TopoDS_TCompound.hxx`:38 - `TopoDS_TCompound::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKBRep::TopoDS_TCompound_dynamic_type(
                 self as *const Self,
@@ -5387,7 +4906,7 @@ impl TCompound {
         }
     }
 
-    /// **Source:** `TopoDS_TCompound.hxx`:45 - `TopoDS_TCompound::get_type_name()`
+    /// **Source:** `TopoDS_TCompound.hxx`:38 - `TopoDS_TCompound::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -5398,8 +4917,8 @@ impl TCompound {
         .into_owned()
     }
 
-    /// **Source:** `TopoDS_TCompound.hxx`:45 - `TopoDS_TCompound::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    /// **Source:** `TopoDS_TCompound.hxx`:38 - `TopoDS_TCompound::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKBRep::TopoDS_TCompound_get_type_descriptor()))
         }
@@ -5446,7 +4965,7 @@ impl TCompound {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleTopoDSTCompound> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_TopoDS_TCompound> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKBRep::TopoDS_TCompound_to_handle(obj.into_raw()),
@@ -5454,71 +4973,79 @@ impl TCompound {
         }
     }
 
-    /// Inherited: **Source:** `TopoDS_TShape.hxx`:59 - `TopoDS_TShape::Free()`
+    /// Inherited: **Source:** `TopoDS_TShape.hxx`:86 - `TopoDS_TShape::Free()`
     pub fn free(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_TCompound_inherited_Free(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `TopoDS_TShape.hxx`:65 - `TopoDS_TShape::Locked()`
+    /// Inherited: **Source:** `TopoDS_TShape.hxx`:92 - `TopoDS_TShape::Locked()`
     pub fn locked(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_TCompound_inherited_Locked(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `TopoDS_TShape.hxx`:71 - `TopoDS_TShape::Modified()`
+    /// Inherited: **Source:** `TopoDS_TShape.hxx`:98 - `TopoDS_TShape::Modified()`
     pub fn modified(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_TCompound_inherited_Modified(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `TopoDS_TShape.hxx`:86 - `TopoDS_TShape::Checked()`
+    /// Inherited: **Source:** `TopoDS_TShape.hxx`:112 - `TopoDS_TShape::Checked()`
     pub fn checked(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_TCompound_inherited_Checked(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `TopoDS_TShape.hxx`:95 - `TopoDS_TShape::Orientable()`
+    /// Inherited: **Source:** `TopoDS_TShape.hxx`:118 - `TopoDS_TShape::Orientable()`
     pub fn orientable(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_TCompound_inherited_Orientable(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `TopoDS_TShape.hxx`:104 - `TopoDS_TShape::Closed()`
+    /// Inherited: **Source:** `TopoDS_TShape.hxx`:124 - `TopoDS_TShape::Closed()`
     pub fn closed(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_TCompound_inherited_Closed(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `TopoDS_TShape.hxx`:110 - `TopoDS_TShape::Infinite()`
+    /// Inherited: **Source:** `TopoDS_TShape.hxx`:130 - `TopoDS_TShape::Infinite()`
     pub fn infinite(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_TCompound_inherited_Infinite(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `TopoDS_TShape.hxx`:119 - `TopoDS_TShape::Convex()`
+    /// Inherited: **Source:** `TopoDS_TShape.hxx`:136 - `TopoDS_TShape::Convex()`
     pub fn convex(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_TCompound_inherited_Convex(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `TopoDS_TShape.hxx`:133 - `TopoDS_TShape::NbChildren()`
+    /// Inherited: **Source:** `TopoDS_TShape.hxx`:144 - `TopoDS_TShape::ShapeType()`
+    pub fn shape_type(&self) -> crate::top_abs::ShapeEnum {
+        crate::top_abs::ShapeEnum::try_from(crate::check_result(unsafe {
+            crate::ffi_extern_TKBRep::TopoDS_TCompound_inherited_ShapeType(self as *const Self)
+        }))
+        .unwrap()
+    }
+
+    /// Inherited: **Source:** `TopoDS_TShape.hxx`:154 - `TopoDS_TShape::NbChildren()`
     pub fn nb_children(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_TCompound_inherited_NbChildren(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_TCompound_inherited_IsInstance(
                 self as *const Self,
@@ -5527,8 +5054,8 @@ impl TCompound {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_TCompound_inherited_IsKind(
                 self as *const Self,
@@ -5537,7 +5064,7 @@ impl TCompound {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -5551,14 +5078,14 @@ impl TCompound {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_TCompound_inherited_GetRefCount(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_TCompound_inherited_IncrementRefCounter(
@@ -5567,7 +5094,7 @@ impl TCompound {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_TCompound_inherited_DecrementRefCounter(
@@ -5576,7 +5103,7 @@ impl TCompound {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_TCompound_inherited_Delete(self as *const Self)
@@ -5584,32 +5111,32 @@ impl TCompound {
     }
 }
 
-pub use crate::ffi_types::HandleTopoDSTCompound;
+pub use crate::ffi_types::Handle_TopoDS_TCompound;
 
-unsafe impl crate::CppDeletable for HandleTopoDSTCompound {
+unsafe impl crate::CppDeletable for Handle_TopoDS_TCompound {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKBRep::HandleTopoDSTCompound_destructor(ptr);
+            crate::ffi_extern_TKBRep::Handle_TopoDS_TCompound_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleTopoDSTCompound {
+unsafe impl crate::CppCopyable for Handle_TopoDS_TCompound {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        unsafe { crate::check_result(crate::ffi_extern_TKBRep::HandleTopoDSTCompound_clone(ptr)) }
+        unsafe { crate::check_result(crate::ffi_extern_TKBRep::Handle_TopoDS_TCompound_clone(ptr)) }
     }
 }
 
-impl HandleTopoDSTCompound {
+impl Handle_TopoDS_TCompound {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
-        unsafe { crate::ffi_extern_TKBRep::HandleTopoDSTCompound_is_null(self as *const Self) }
+        unsafe { crate::ffi_extern_TKBRep::Handle_TopoDS_TCompound_is_null(self as *const Self) }
     }
 
     /// Dereference this Handle to access the underlying TopoDS_TCompound
     pub fn get(&self) -> &crate::ffi_types::TopoDS_TCompound {
         unsafe {
-            &*crate::check_result(crate::ffi_extern_TKBRep::HandleTopoDSTCompound_get(
+            &*crate::check_result(crate::ffi_extern_TKBRep::Handle_TopoDS_TCompound_get(
                 self as *const Self,
             ))
         }
@@ -5618,17 +5145,17 @@ impl HandleTopoDSTCompound {
     /// Dereference this Handle to mutably access the underlying TopoDS_TCompound
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::TopoDS_TCompound {
         unsafe {
-            &mut *crate::check_result(crate::ffi_extern_TKBRep::HandleTopoDSTCompound_get_mut(
+            &mut *crate::check_result(crate::ffi_extern_TKBRep::Handle_TopoDS_TCompound_get_mut(
                 self as *mut Self,
             ))
         }
     }
 
     /// Upcast Handle<TopoDS_TCompound> to Handle<TopoDS_TShape>
-    pub fn to_handle_t_shape(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTopoDSTShape> {
+    pub fn to_handle_t_shape(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_TopoDS_TShape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKBRep::HandleTopoDSTCompound_to_HandleTopoDSTShape(
+                crate::ffi_extern_TKBRep::Handle_TopoDS_TCompound_to_Handle_TopoDS_TShape(
                     self as *const Self,
                 ),
             ))
@@ -5638,10 +5165,10 @@ impl HandleTopoDSTCompound {
     /// Upcast Handle<TopoDS_TCompound> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKBRep::HandleTopoDSTCompound_to_HandleStandardTransient(
+                crate::ffi_extern_TKBRep::Handle_TopoDS_TCompound_to_Handle_Standard_Transient(
                     self as *const Self,
                 ),
             ))
@@ -5653,9 +5180,9 @@ impl HandleTopoDSTCompound {
 // From TopoDS_TEdge.hxx
 // ========================
 
-/// **Source:** `TopoDS_TEdge.hxx`:30 - `TopoDS_TEdge`
-/// A topological part  of a  curve  in 2D or 3D,  the
-/// boundary    is   a   set  of oriented    Vertices.
+/// **Source:** `TopoDS_TEdge.hxx`:25 - `TopoDS_TEdge`
+/// A topological part of a curve in 2D or 3D, the
+/// boundary is a set of oriented Vertices.
 pub use crate::ffi_types::TopoDS_TEdge as TEdge;
 
 unsafe impl crate::CppDeletable for TEdge {
@@ -5667,17 +5194,18 @@ unsafe impl crate::CppDeletable for TEdge {
 }
 
 impl TEdge {
-    /// **Source:** `TopoDS_TEdge.hxx`:34 - `TopoDS_TEdge::ShapeType()`
-    /// Returns  EDGE.
-    pub fn shape_type(&self) -> crate::top_abs::ShapeEnum {
-        crate::top_abs::ShapeEnum::try_from(crate::check_result(unsafe {
-            crate::ffi_extern_TKBRep::TopoDS_TEdge_shape_type(self as *const Self)
-        }))
-        .unwrap()
+    /// **Source:** `TopoDS_TEdge.hxx`:29 - `TopoDS_TEdge::EmptyCopy()`
+    /// Returns an empty TEdge.
+    pub fn empty_copy(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_TopoDS_TShape> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKBRep::TopoDS_TEdge_empty_copy(self as *const Self),
+            ))
+        }
     }
 
-    /// **Source:** `TopoDS_TEdge.hxx`:36 - `TopoDS_TEdge::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `TopoDS_TEdge.hxx`:31 - `TopoDS_TEdge::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKBRep::TopoDS_TEdge_dynamic_type(
                 self as *const Self,
@@ -5685,7 +5213,7 @@ impl TEdge {
         }
     }
 
-    /// **Source:** `TopoDS_TEdge.hxx`:36 - `TopoDS_TEdge::get_type_name()`
+    /// **Source:** `TopoDS_TEdge.hxx`:31 - `TopoDS_TEdge::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -5696,8 +5224,8 @@ impl TEdge {
         .into_owned()
     }
 
-    /// **Source:** `TopoDS_TEdge.hxx`:36 - `TopoDS_TEdge::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    /// **Source:** `TopoDS_TEdge.hxx`:31 - `TopoDS_TEdge::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKBRep::TopoDS_TEdge_get_type_descriptor()))
         }
@@ -5739,80 +5267,90 @@ impl TEdge {
         }
     }
 
-    /// Inherited: **Source:** `TopoDS_TShape.hxx`:59 - `TopoDS_TShape::Free()`
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_TopoDS_TEdge> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKBRep::TopoDS_TEdge_to_handle(obj.into_raw()),
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `TopoDS_TShape.hxx`:86 - `TopoDS_TShape::Free()`
     pub fn free(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_TEdge_inherited_Free(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `TopoDS_TShape.hxx`:65 - `TopoDS_TShape::Locked()`
+    /// Inherited: **Source:** `TopoDS_TShape.hxx`:92 - `TopoDS_TShape::Locked()`
     pub fn locked(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_TEdge_inherited_Locked(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `TopoDS_TShape.hxx`:71 - `TopoDS_TShape::Modified()`
+    /// Inherited: **Source:** `TopoDS_TShape.hxx`:98 - `TopoDS_TShape::Modified()`
     pub fn modified(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_TEdge_inherited_Modified(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `TopoDS_TShape.hxx`:86 - `TopoDS_TShape::Checked()`
+    /// Inherited: **Source:** `TopoDS_TShape.hxx`:112 - `TopoDS_TShape::Checked()`
     pub fn checked(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_TEdge_inherited_Checked(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `TopoDS_TShape.hxx`:95 - `TopoDS_TShape::Orientable()`
+    /// Inherited: **Source:** `TopoDS_TShape.hxx`:118 - `TopoDS_TShape::Orientable()`
     pub fn orientable(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_TEdge_inherited_Orientable(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `TopoDS_TShape.hxx`:104 - `TopoDS_TShape::Closed()`
+    /// Inherited: **Source:** `TopoDS_TShape.hxx`:124 - `TopoDS_TShape::Closed()`
     pub fn closed(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_TEdge_inherited_Closed(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `TopoDS_TShape.hxx`:110 - `TopoDS_TShape::Infinite()`
+    /// Inherited: **Source:** `TopoDS_TShape.hxx`:130 - `TopoDS_TShape::Infinite()`
     pub fn infinite(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_TEdge_inherited_Infinite(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `TopoDS_TShape.hxx`:119 - `TopoDS_TShape::Convex()`
+    /// Inherited: **Source:** `TopoDS_TShape.hxx`:136 - `TopoDS_TShape::Convex()`
     pub fn convex(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_TEdge_inherited_Convex(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `TopoDS_TShape.hxx`:129 - `TopoDS_TShape::EmptyCopy()`
-    pub fn empty_copy(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTopoDSTShape> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKBRep::TopoDS_TEdge_inherited_EmptyCopy(self as *const Self),
-            ))
-        }
+    /// Inherited: **Source:** `TopoDS_TShape.hxx`:144 - `TopoDS_TShape::ShapeType()`
+    pub fn shape_type(&self) -> crate::top_abs::ShapeEnum {
+        crate::top_abs::ShapeEnum::try_from(crate::check_result(unsafe {
+            crate::ffi_extern_TKBRep::TopoDS_TEdge_inherited_ShapeType(self as *const Self)
+        }))
+        .unwrap()
     }
 
-    /// Inherited: **Source:** `TopoDS_TShape.hxx`:133 - `TopoDS_TShape::NbChildren()`
+    /// Inherited: **Source:** `TopoDS_TShape.hxx`:154 - `TopoDS_TShape::NbChildren()`
     pub fn nb_children(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_TEdge_inherited_NbChildren(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_TEdge_inherited_IsInstance(
                 self as *const Self,
@@ -5821,14 +5359,14 @@ impl TEdge {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_TEdge_inherited_IsKind(self as *const Self, theType)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -5842,28 +5380,28 @@ impl TEdge {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_TEdge_inherited_GetRefCount(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_TEdge_inherited_IncrementRefCounter(self as *mut Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_TEdge_inherited_DecrementRefCounter(self as *mut Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_TEdge_inherited_Delete(self as *const Self)
@@ -5871,32 +5409,32 @@ impl TEdge {
     }
 }
 
-pub use crate::ffi_types::HandleTopoDSTEdge;
+pub use crate::ffi_types::Handle_TopoDS_TEdge;
 
-unsafe impl crate::CppDeletable for HandleTopoDSTEdge {
+unsafe impl crate::CppDeletable for Handle_TopoDS_TEdge {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKBRep::HandleTopoDSTEdge_destructor(ptr);
+            crate::ffi_extern_TKBRep::Handle_TopoDS_TEdge_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleTopoDSTEdge {
+unsafe impl crate::CppCopyable for Handle_TopoDS_TEdge {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        unsafe { crate::check_result(crate::ffi_extern_TKBRep::HandleTopoDSTEdge_clone(ptr)) }
+        unsafe { crate::check_result(crate::ffi_extern_TKBRep::Handle_TopoDS_TEdge_clone(ptr)) }
     }
 }
 
-impl HandleTopoDSTEdge {
+impl Handle_TopoDS_TEdge {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
-        unsafe { crate::ffi_extern_TKBRep::HandleTopoDSTEdge_is_null(self as *const Self) }
+        unsafe { crate::ffi_extern_TKBRep::Handle_TopoDS_TEdge_is_null(self as *const Self) }
     }
 
     /// Dereference this Handle to access the underlying TopoDS_TEdge
     pub fn get(&self) -> &crate::ffi_types::TopoDS_TEdge {
         unsafe {
-            &*crate::check_result(crate::ffi_extern_TKBRep::HandleTopoDSTEdge_get(
+            &*crate::check_result(crate::ffi_extern_TKBRep::Handle_TopoDS_TEdge_get(
                 self as *const Self,
             ))
         }
@@ -5905,17 +5443,17 @@ impl HandleTopoDSTEdge {
     /// Dereference this Handle to mutably access the underlying TopoDS_TEdge
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::TopoDS_TEdge {
         unsafe {
-            &mut *crate::check_result(crate::ffi_extern_TKBRep::HandleTopoDSTEdge_get_mut(
+            &mut *crate::check_result(crate::ffi_extern_TKBRep::Handle_TopoDS_TEdge_get_mut(
                 self as *mut Self,
             ))
         }
     }
 
     /// Upcast Handle<TopoDS_TEdge> to Handle<TopoDS_TShape>
-    pub fn to_handle_t_shape(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTopoDSTShape> {
+    pub fn to_handle_t_shape(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_TopoDS_TShape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKBRep::HandleTopoDSTEdge_to_HandleTopoDSTShape(
+                crate::ffi_extern_TKBRep::Handle_TopoDS_TEdge_to_Handle_TopoDS_TShape(
                     self as *const Self,
                 ),
             ))
@@ -5925,10 +5463,10 @@ impl HandleTopoDSTEdge {
     /// Upcast Handle<TopoDS_TEdge> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKBRep::HandleTopoDSTEdge_to_HandleStandardTransient(
+                crate::ffi_extern_TKBRep::Handle_TopoDS_TEdge_to_Handle_Standard_Transient(
                     self as *const Self,
                 ),
             ))
@@ -5938,9 +5476,11 @@ impl HandleTopoDSTEdge {
     /// Downcast Handle<TopoDS_TEdge> to Handle<BRep_TEdge>
     ///
     /// Returns `None` if the handle does not point to a `BRep_TEdge` (or subclass).
-    pub fn downcast_to_t_edge(&self) -> Option<crate::OwnedPtr<crate::ffi_types::HandleBRepTEdge>> {
+    pub fn downcast_to_t_edge(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_BRep_TEdge>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKBRep::HandleTopoDSTEdge_downcast_to_HandleBRepTEdge(
+            crate::ffi_extern_TKBRep::Handle_TopoDS_TEdge_downcast_to_Handle_BRep_TEdge(
                 self as *const Self,
             )
         });
@@ -5956,10 +5496,9 @@ impl HandleTopoDSTEdge {
 // From TopoDS_TFace.hxx
 // ========================
 
-/// **Source:** `TopoDS_TFace.hxx`:31 - `TopoDS_TFace`
-/// A  topological part  of a surface   or  of the  2D
-/// space.  The  boundary  is  a   set of  wires   and
-/// vertices.
+/// **Source:** `TopoDS_TFace.hxx`:26 - `TopoDS_TFace`
+/// A topological part of a surface or of the 2D
+/// space. The boundary is a set of wires and vertices.
 pub use crate::ffi_types::TopoDS_TFace as TFace;
 
 unsafe impl crate::CppDeletable for TFace {
@@ -5971,7 +5510,7 @@ unsafe impl crate::CppDeletable for TFace {
 }
 
 impl TFace {
-    /// **Source:** `TopoDS_TFace.hxx`:35 - `TopoDS_TFace::TopoDS_TFace()`
+    /// **Source:** `TopoDS_TFace.hxx`:30 - `TopoDS_TFace::TopoDS_TFace()`
     /// Creates an empty TFace.
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
@@ -5981,18 +5520,9 @@ impl TFace {
         }
     }
 
-    /// **Source:** `TopoDS_TFace.hxx`:41 - `TopoDS_TFace::ShapeType()`
-    /// returns FACE.
-    pub fn shape_type(&self) -> crate::top_abs::ShapeEnum {
-        crate::top_abs::ShapeEnum::try_from(crate::check_result(unsafe {
-            crate::ffi_extern_TKBRep::TopoDS_TFace_shape_type(self as *const Self)
-        }))
-        .unwrap()
-    }
-
-    /// **Source:** `TopoDS_TFace.hxx`:44 - `TopoDS_TFace::EmptyCopy()`
+    /// **Source:** `TopoDS_TFace.hxx`:36 - `TopoDS_TFace::EmptyCopy()`
     /// Returns an empty TFace.
-    pub fn empty_copy(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTopoDSTShape> {
+    pub fn empty_copy(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_TopoDS_TShape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKBRep::TopoDS_TFace_empty_copy(self as *const Self),
@@ -6000,8 +5530,8 @@ impl TFace {
         }
     }
 
-    /// **Source:** `TopoDS_TFace.hxx`:46 - `TopoDS_TFace::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `TopoDS_TFace.hxx`:38 - `TopoDS_TFace::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKBRep::TopoDS_TFace_dynamic_type(
                 self as *const Self,
@@ -6009,7 +5539,7 @@ impl TFace {
         }
     }
 
-    /// **Source:** `TopoDS_TFace.hxx`:46 - `TopoDS_TFace::get_type_name()`
+    /// **Source:** `TopoDS_TFace.hxx`:38 - `TopoDS_TFace::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -6020,8 +5550,8 @@ impl TFace {
         .into_owned()
     }
 
-    /// **Source:** `TopoDS_TFace.hxx`:46 - `TopoDS_TFace::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    /// **Source:** `TopoDS_TFace.hxx`:38 - `TopoDS_TFace::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKBRep::TopoDS_TFace_get_type_descriptor()))
         }
@@ -6066,7 +5596,7 @@ impl TFace {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleTopoDSTFace> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_TopoDS_TFace> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKBRep::TopoDS_TFace_to_handle(obj.into_raw()),
@@ -6074,71 +5604,79 @@ impl TFace {
         }
     }
 
-    /// Inherited: **Source:** `TopoDS_TShape.hxx`:59 - `TopoDS_TShape::Free()`
+    /// Inherited: **Source:** `TopoDS_TShape.hxx`:86 - `TopoDS_TShape::Free()`
     pub fn free(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_TFace_inherited_Free(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `TopoDS_TShape.hxx`:65 - `TopoDS_TShape::Locked()`
+    /// Inherited: **Source:** `TopoDS_TShape.hxx`:92 - `TopoDS_TShape::Locked()`
     pub fn locked(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_TFace_inherited_Locked(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `TopoDS_TShape.hxx`:71 - `TopoDS_TShape::Modified()`
+    /// Inherited: **Source:** `TopoDS_TShape.hxx`:98 - `TopoDS_TShape::Modified()`
     pub fn modified(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_TFace_inherited_Modified(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `TopoDS_TShape.hxx`:86 - `TopoDS_TShape::Checked()`
+    /// Inherited: **Source:** `TopoDS_TShape.hxx`:112 - `TopoDS_TShape::Checked()`
     pub fn checked(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_TFace_inherited_Checked(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `TopoDS_TShape.hxx`:95 - `TopoDS_TShape::Orientable()`
+    /// Inherited: **Source:** `TopoDS_TShape.hxx`:118 - `TopoDS_TShape::Orientable()`
     pub fn orientable(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_TFace_inherited_Orientable(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `TopoDS_TShape.hxx`:104 - `TopoDS_TShape::Closed()`
+    /// Inherited: **Source:** `TopoDS_TShape.hxx`:124 - `TopoDS_TShape::Closed()`
     pub fn closed(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_TFace_inherited_Closed(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `TopoDS_TShape.hxx`:110 - `TopoDS_TShape::Infinite()`
+    /// Inherited: **Source:** `TopoDS_TShape.hxx`:130 - `TopoDS_TShape::Infinite()`
     pub fn infinite(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_TFace_inherited_Infinite(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `TopoDS_TShape.hxx`:119 - `TopoDS_TShape::Convex()`
+    /// Inherited: **Source:** `TopoDS_TShape.hxx`:136 - `TopoDS_TShape::Convex()`
     pub fn convex(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_TFace_inherited_Convex(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `TopoDS_TShape.hxx`:133 - `TopoDS_TShape::NbChildren()`
+    /// Inherited: **Source:** `TopoDS_TShape.hxx`:144 - `TopoDS_TShape::ShapeType()`
+    pub fn shape_type(&self) -> crate::top_abs::ShapeEnum {
+        crate::top_abs::ShapeEnum::try_from(crate::check_result(unsafe {
+            crate::ffi_extern_TKBRep::TopoDS_TFace_inherited_ShapeType(self as *const Self)
+        }))
+        .unwrap()
+    }
+
+    /// Inherited: **Source:** `TopoDS_TShape.hxx`:154 - `TopoDS_TShape::NbChildren()`
     pub fn nb_children(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_TFace_inherited_NbChildren(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_TFace_inherited_IsInstance(
                 self as *const Self,
@@ -6147,14 +5685,14 @@ impl TFace {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_TFace_inherited_IsKind(self as *const Self, theType)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -6168,28 +5706,28 @@ impl TFace {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_TFace_inherited_GetRefCount(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_TFace_inherited_IncrementRefCounter(self as *mut Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_TFace_inherited_DecrementRefCounter(self as *mut Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_TFace_inherited_Delete(self as *const Self)
@@ -6197,32 +5735,32 @@ impl TFace {
     }
 }
 
-pub use crate::ffi_types::HandleTopoDSTFace;
+pub use crate::ffi_types::Handle_TopoDS_TFace;
 
-unsafe impl crate::CppDeletable for HandleTopoDSTFace {
+unsafe impl crate::CppDeletable for Handle_TopoDS_TFace {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKBRep::HandleTopoDSTFace_destructor(ptr);
+            crate::ffi_extern_TKBRep::Handle_TopoDS_TFace_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleTopoDSTFace {
+unsafe impl crate::CppCopyable for Handle_TopoDS_TFace {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        unsafe { crate::check_result(crate::ffi_extern_TKBRep::HandleTopoDSTFace_clone(ptr)) }
+        unsafe { crate::check_result(crate::ffi_extern_TKBRep::Handle_TopoDS_TFace_clone(ptr)) }
     }
 }
 
-impl HandleTopoDSTFace {
+impl Handle_TopoDS_TFace {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
-        unsafe { crate::ffi_extern_TKBRep::HandleTopoDSTFace_is_null(self as *const Self) }
+        unsafe { crate::ffi_extern_TKBRep::Handle_TopoDS_TFace_is_null(self as *const Self) }
     }
 
     /// Dereference this Handle to access the underlying TopoDS_TFace
     pub fn get(&self) -> &crate::ffi_types::TopoDS_TFace {
         unsafe {
-            &*crate::check_result(crate::ffi_extern_TKBRep::HandleTopoDSTFace_get(
+            &*crate::check_result(crate::ffi_extern_TKBRep::Handle_TopoDS_TFace_get(
                 self as *const Self,
             ))
         }
@@ -6231,17 +5769,17 @@ impl HandleTopoDSTFace {
     /// Dereference this Handle to mutably access the underlying TopoDS_TFace
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::TopoDS_TFace {
         unsafe {
-            &mut *crate::check_result(crate::ffi_extern_TKBRep::HandleTopoDSTFace_get_mut(
+            &mut *crate::check_result(crate::ffi_extern_TKBRep::Handle_TopoDS_TFace_get_mut(
                 self as *mut Self,
             ))
         }
     }
 
     /// Upcast Handle<TopoDS_TFace> to Handle<TopoDS_TShape>
-    pub fn to_handle_t_shape(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTopoDSTShape> {
+    pub fn to_handle_t_shape(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_TopoDS_TShape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKBRep::HandleTopoDSTFace_to_HandleTopoDSTShape(
+                crate::ffi_extern_TKBRep::Handle_TopoDS_TFace_to_Handle_TopoDS_TShape(
                     self as *const Self,
                 ),
             ))
@@ -6251,10 +5789,10 @@ impl HandleTopoDSTFace {
     /// Upcast Handle<TopoDS_TFace> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKBRep::HandleTopoDSTFace_to_HandleStandardTransient(
+                crate::ffi_extern_TKBRep::Handle_TopoDS_TFace_to_Handle_Standard_Transient(
                     self as *const Self,
                 ),
             ))
@@ -6264,9 +5802,11 @@ impl HandleTopoDSTFace {
     /// Downcast Handle<TopoDS_TFace> to Handle<BRep_TFace>
     ///
     /// Returns `None` if the handle does not point to a `BRep_TFace` (or subclass).
-    pub fn downcast_to_t_face(&self) -> Option<crate::OwnedPtr<crate::ffi_types::HandleBRepTFace>> {
+    pub fn downcast_to_t_face(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_BRep_TFace>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKBRep::HandleTopoDSTFace_downcast_to_HandleBRepTFace(
+            crate::ffi_extern_TKBRep::Handle_TopoDS_TFace_downcast_to_Handle_BRep_TFace(
                 self as *const Self,
             )
         });
@@ -6282,20 +5822,20 @@ impl HandleTopoDSTFace {
 // From TopoDS_TShape.hxx
 // ========================
 
-/// **Source:** `TopoDS_TShape.hxx`:54 - `TopoDS_TShape`
-/// A TShape  is a topological  structure describing a
+/// **Source:** `TopoDS_TShape.hxx`:62 - `TopoDS_TShape`
+/// A TShape is a topological structure describing a
 /// set of points in a 2D or 3D space.
 ///
 /// A topological shape is a structure made from other
-/// shapes.  This is a deferred class  used to support
+/// shapes. This is a deferred class used to support
 /// topological objects.
 ///
-/// TShapes are   defined   by  their  optional domain
-/// (geometry)  and  their  components  (other TShapes
-/// with  Locations and Orientations).  The components
-/// are stored in a List of Shapes.
+/// TShapes are defined by their optional domain
+/// (geometry) and their components (other TShapes
+/// with Locations and Orientations). The components
+/// are stored in a list in the base class.
 ///
-/// A   TShape contains  the   following boolean flags :
+/// A TShape contains the following boolean flags:
 ///
 /// - Free       : Free or Frozen.
 /// - Modified   : Has been modified.
@@ -6304,9 +5844,10 @@ impl HandleTopoDSTFace {
 /// - Closed     : Is closed (note that only Wires and Shells may be closed).
 /// - Infinite   : Is infinite.
 /// - Convex     : Is convex.
+/// - Locked     : Is locked against modifications.
 ///
 /// Users have no direct access to the classes derived
-/// from TShape.  They  handle them with   the classes
+/// from TShape. They handle them with the classes
 /// derived from Shape.
 pub use crate::ffi_types::TopoDS_TShape as TShape;
 
@@ -6319,7 +5860,7 @@ unsafe impl crate::CppDeletable for TShape {
 }
 
 impl TShape {
-    /// **Source:** `TopoDS_TShape.hxx`:59 - `TopoDS_TShape::Free()`
+    /// **Source:** `TopoDS_TShape.hxx`:86 - `TopoDS_TShape::Free()`
     /// Returns the free flag.
     pub fn free(&self) -> bool {
         crate::check_result(unsafe {
@@ -6327,7 +5868,7 @@ impl TShape {
         })
     }
 
-    /// **Source:** `TopoDS_TShape.hxx`:62 - `TopoDS_TShape::Free()`
+    /// **Source:** `TopoDS_TShape.hxx`:89 - `TopoDS_TShape::Free()`
     /// Sets the free flag.
     pub fn free_bool(&mut self, theIsFree: bool) {
         crate::check_void_result(unsafe {
@@ -6335,7 +5876,7 @@ impl TShape {
         })
     }
 
-    /// **Source:** `TopoDS_TShape.hxx`:65 - `TopoDS_TShape::Locked()`
+    /// **Source:** `TopoDS_TShape.hxx`:92 - `TopoDS_TShape::Locked()`
     /// Returns the locked flag.
     pub fn locked(&self) -> bool {
         crate::check_result(unsafe {
@@ -6343,7 +5884,7 @@ impl TShape {
         })
     }
 
-    /// **Source:** `TopoDS_TShape.hxx`:68 - `TopoDS_TShape::Locked()`
+    /// **Source:** `TopoDS_TShape.hxx`:95 - `TopoDS_TShape::Locked()`
     /// Sets the locked flag.
     pub fn locked_bool(&mut self, theIsLocked: bool) {
         crate::check_void_result(unsafe {
@@ -6351,7 +5892,7 @@ impl TShape {
         })
     }
 
-    /// **Source:** `TopoDS_TShape.hxx`:71 - `TopoDS_TShape::Modified()`
+    /// **Source:** `TopoDS_TShape.hxx`:98 - `TopoDS_TShape::Modified()`
     /// Returns the modification flag.
     pub fn modified(&self) -> bool {
         crate::check_result(unsafe {
@@ -6359,7 +5900,7 @@ impl TShape {
         })
     }
 
-    /// **Source:** `TopoDS_TShape.hxx`:74 - `TopoDS_TShape::Modified()`
+    /// **Source:** `TopoDS_TShape.hxx`:101 - `TopoDS_TShape::Modified()`
     /// Sets the modification flag.
     pub fn modified_bool(&mut self, theIsModified: bool) {
         crate::check_void_result(unsafe {
@@ -6367,7 +5908,7 @@ impl TShape {
         })
     }
 
-    /// **Source:** `TopoDS_TShape.hxx`:86 - `TopoDS_TShape::Checked()`
+    /// **Source:** `TopoDS_TShape.hxx`:112 - `TopoDS_TShape::Checked()`
     /// Returns the checked flag.
     pub fn checked(&self) -> bool {
         crate::check_result(unsafe {
@@ -6375,7 +5916,7 @@ impl TShape {
         })
     }
 
-    /// **Source:** `TopoDS_TShape.hxx`:89 - `TopoDS_TShape::Checked()`
+    /// **Source:** `TopoDS_TShape.hxx`:115 - `TopoDS_TShape::Checked()`
     /// Sets the checked flag.
     pub fn checked_bool(&mut self, theIsChecked: bool) {
         crate::check_void_result(unsafe {
@@ -6383,7 +5924,7 @@ impl TShape {
         })
     }
 
-    /// **Source:** `TopoDS_TShape.hxx`:95 - `TopoDS_TShape::Orientable()`
+    /// **Source:** `TopoDS_TShape.hxx`:118 - `TopoDS_TShape::Orientable()`
     /// Returns the orientability flag.
     pub fn orientable(&self) -> bool {
         crate::check_result(unsafe {
@@ -6391,7 +5932,7 @@ impl TShape {
         })
     }
 
-    /// **Source:** `TopoDS_TShape.hxx`:98 - `TopoDS_TShape::Orientable()`
+    /// **Source:** `TopoDS_TShape.hxx`:121 - `TopoDS_TShape::Orientable()`
     /// Sets the orientability flag.
     pub fn orientable_bool(&mut self, theIsOrientable: bool) {
         crate::check_void_result(unsafe {
@@ -6402,7 +5943,7 @@ impl TShape {
         })
     }
 
-    /// **Source:** `TopoDS_TShape.hxx`:104 - `TopoDS_TShape::Closed()`
+    /// **Source:** `TopoDS_TShape.hxx`:124 - `TopoDS_TShape::Closed()`
     /// Returns the closedness flag.
     pub fn closed(&self) -> bool {
         crate::check_result(unsafe {
@@ -6410,7 +5951,7 @@ impl TShape {
         })
     }
 
-    /// **Source:** `TopoDS_TShape.hxx`:107 - `TopoDS_TShape::Closed()`
+    /// **Source:** `TopoDS_TShape.hxx`:127 - `TopoDS_TShape::Closed()`
     /// Sets the closedness flag.
     pub fn closed_bool(&mut self, theIsClosed: bool) {
         crate::check_void_result(unsafe {
@@ -6418,7 +5959,7 @@ impl TShape {
         })
     }
 
-    /// **Source:** `TopoDS_TShape.hxx`:110 - `TopoDS_TShape::Infinite()`
+    /// **Source:** `TopoDS_TShape.hxx`:130 - `TopoDS_TShape::Infinite()`
     /// Returns the infinity flag.
     pub fn infinite(&self) -> bool {
         crate::check_result(unsafe {
@@ -6426,7 +5967,7 @@ impl TShape {
         })
     }
 
-    /// **Source:** `TopoDS_TShape.hxx`:113 - `TopoDS_TShape::Infinite()`
+    /// **Source:** `TopoDS_TShape.hxx`:133 - `TopoDS_TShape::Infinite()`
     /// Sets the infinity flag.
     pub fn infinite_bool(&mut self, theIsInfinite: bool) {
         crate::check_void_result(unsafe {
@@ -6434,7 +5975,7 @@ impl TShape {
         })
     }
 
-    /// **Source:** `TopoDS_TShape.hxx`:119 - `TopoDS_TShape::Convex()`
+    /// **Source:** `TopoDS_TShape.hxx`:136 - `TopoDS_TShape::Convex()`
     /// Returns the convexness flag.
     pub fn convex(&self) -> bool {
         crate::check_result(unsafe {
@@ -6442,7 +5983,7 @@ impl TShape {
         })
     }
 
-    /// **Source:** `TopoDS_TShape.hxx`:122 - `TopoDS_TShape::Convex()`
+    /// **Source:** `TopoDS_TShape.hxx`:139 - `TopoDS_TShape::Convex()`
     /// Sets the convexness flag.
     pub fn convex_bool(&mut self, theIsConvex: bool) {
         crate::check_void_result(unsafe {
@@ -6450,9 +5991,10 @@ impl TShape {
         })
     }
 
-    /// **Source:** `TopoDS_TShape.hxx`:126 - `TopoDS_TShape::ShapeType()`
-    /// Returns the type as a term of the ShapeEnum enum :
-    /// VERTEX, EDGE, WIRE, FACE, ....
+    /// **Source:** `TopoDS_TShape.hxx`:144 - `TopoDS_TShape::ShapeType()`
+    /// Returns the type as a term of the ShapeEnum enum:
+    /// VERTEX, EDGE, WIRE, FACE, SHELL, SOLID, COMPSOLID, COMPOUND.
+    /// The type is embedded in the lower 4 bits of the state.
     pub fn shape_type(&self) -> crate::top_abs::ShapeEnum {
         crate::top_abs::ShapeEnum::try_from(crate::check_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_TShape_shape_type(self as *const Self)
@@ -6460,9 +6002,9 @@ impl TShape {
         .unwrap()
     }
 
-    /// **Source:** `TopoDS_TShape.hxx`:129 - `TopoDS_TShape::EmptyCopy()`
-    /// Returns a copy  of the  TShape  with no sub-shapes.
-    pub fn empty_copy(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTopoDSTShape> {
+    /// **Source:** `TopoDS_TShape.hxx`:150 - `TopoDS_TShape::EmptyCopy()`
+    /// Returns a copy of the TShape with no sub-shapes.
+    pub fn empty_copy(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_TopoDS_TShape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKBRep::TopoDS_TShape_empty_copy(self as *const Self),
@@ -6470,7 +6012,7 @@ impl TShape {
         }
     }
 
-    /// **Source:** `TopoDS_TShape.hxx`:133 - `TopoDS_TShape::NbChildren()`
+    /// **Source:** `TopoDS_TShape.hxx`:154 - `TopoDS_TShape::NbChildren()`
     /// Returns the number of direct sub-shapes (children).
     /// @sa TopoDS_Iterator for accessing sub-shapes
     pub fn nb_children(&self) -> i32 {
@@ -6479,8 +6021,8 @@ impl TShape {
         })
     }
 
-    /// **Source:** `TopoDS_TShape.hxx`:142 - `TopoDS_TShape::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `TopoDS_TShape.hxx`:162 - `TopoDS_TShape::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKBRep::TopoDS_TShape_dynamic_type(
                 self as *const Self,
@@ -6488,7 +6030,7 @@ impl TShape {
         }
     }
 
-    /// **Source:** `TopoDS_TShape.hxx`:142 - `TopoDS_TShape::get_type_name()`
+    /// **Source:** `TopoDS_TShape.hxx`:162 - `TopoDS_TShape::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -6499,8 +6041,8 @@ impl TShape {
         .into_owned()
     }
 
-    /// **Source:** `TopoDS_TShape.hxx`:142 - `TopoDS_TShape::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    /// **Source:** `TopoDS_TShape.hxx`:162 - `TopoDS_TShape::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKBRep::TopoDS_TShape_get_type_descriptor()))
         }
@@ -6526,8 +6068,8 @@ impl TShape {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_TShape_inherited_IsInstance(
                 self as *const Self,
@@ -6536,14 +6078,14 @@ impl TShape {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_TShape_inherited_IsKind(self as *const Self, theType)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -6557,28 +6099,28 @@ impl TShape {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_TShape_inherited_GetRefCount(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_TShape_inherited_IncrementRefCounter(self as *mut Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_TShape_inherited_DecrementRefCounter(self as *mut Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_TShape_inherited_Delete(self as *const Self)
@@ -6586,32 +6128,32 @@ impl TShape {
     }
 }
 
-pub use crate::ffi_types::HandleTopoDSTShape;
+pub use crate::ffi_types::Handle_TopoDS_TShape;
 
-unsafe impl crate::CppDeletable for HandleTopoDSTShape {
+unsafe impl crate::CppDeletable for Handle_TopoDS_TShape {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKBRep::HandleTopoDSTShape_destructor(ptr);
+            crate::ffi_extern_TKBRep::Handle_TopoDS_TShape_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleTopoDSTShape {
+unsafe impl crate::CppCopyable for Handle_TopoDS_TShape {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        unsafe { crate::check_result(crate::ffi_extern_TKBRep::HandleTopoDSTShape_clone(ptr)) }
+        unsafe { crate::check_result(crate::ffi_extern_TKBRep::Handle_TopoDS_TShape_clone(ptr)) }
     }
 }
 
-impl HandleTopoDSTShape {
+impl Handle_TopoDS_TShape {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
-        unsafe { crate::ffi_extern_TKBRep::HandleTopoDSTShape_is_null(self as *const Self) }
+        unsafe { crate::ffi_extern_TKBRep::Handle_TopoDS_TShape_is_null(self as *const Self) }
     }
 
     /// Dereference this Handle to access the underlying TopoDS_TShape
     pub fn get(&self) -> &crate::ffi_types::TopoDS_TShape {
         unsafe {
-            &*crate::check_result(crate::ffi_extern_TKBRep::HandleTopoDSTShape_get(
+            &*crate::check_result(crate::ffi_extern_TKBRep::Handle_TopoDS_TShape_get(
                 self as *const Self,
             ))
         }
@@ -6620,7 +6162,7 @@ impl HandleTopoDSTShape {
     /// Dereference this Handle to mutably access the underlying TopoDS_TShape
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::TopoDS_TShape {
         unsafe {
-            &mut *crate::check_result(crate::ffi_extern_TKBRep::HandleTopoDSTShape_get_mut(
+            &mut *crate::check_result(crate::ffi_extern_TKBRep::Handle_TopoDS_TShape_get_mut(
                 self as *mut Self,
             ))
         }
@@ -6629,10 +6171,10 @@ impl HandleTopoDSTShape {
     /// Upcast Handle<TopoDS_TShape> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKBRep::HandleTopoDSTShape_to_HandleStandardTransient(
+                crate::ffi_extern_TKBRep::Handle_TopoDS_TShape_to_Handle_Standard_Transient(
                     self as *const Self,
                 ),
             ))
@@ -6644,9 +6186,9 @@ impl HandleTopoDSTShape {
     /// Returns `None` if the handle does not point to a `BRep_TEdge` (or subclass).
     pub fn downcast_to_b_rep_t_edge(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleBRepTEdge>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_BRep_TEdge>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKBRep::HandleTopoDSTShape_downcast_to_HandleBRepTEdge(
+            crate::ffi_extern_TKBRep::Handle_TopoDS_TShape_downcast_to_Handle_BRep_TEdge(
                 self as *const Self,
             )
         });
@@ -6662,9 +6204,9 @@ impl HandleTopoDSTShape {
     /// Returns `None` if the handle does not point to a `BRep_TFace` (or subclass).
     pub fn downcast_to_b_rep_t_face(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleBRepTFace>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_BRep_TFace>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKBRep::HandleTopoDSTShape_downcast_to_HandleBRepTFace(
+            crate::ffi_extern_TKBRep::Handle_TopoDS_TShape_downcast_to_Handle_BRep_TFace(
                 self as *const Self,
             )
         });
@@ -6680,9 +6222,9 @@ impl HandleTopoDSTShape {
     /// Returns `None` if the handle does not point to a `BRep_TVertex` (or subclass).
     pub fn downcast_to_b_rep_t_vertex(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleBRepTVertex>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_BRep_TVertex>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKBRep::HandleTopoDSTShape_downcast_to_HandleBRepTVertex(
+            crate::ffi_extern_TKBRep::Handle_TopoDS_TShape_downcast_to_Handle_BRep_TVertex(
                 self as *const Self,
             )
         });
@@ -6698,9 +6240,9 @@ impl HandleTopoDSTShape {
     /// Returns `None` if the handle does not point to a `TopoDS_TCompSolid` (or subclass).
     pub fn downcast_to_t_comp_solid(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleTopoDSTCompSolid>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_TopoDS_TCompSolid>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKBRep::HandleTopoDSTShape_downcast_to_HandleTopoDSTCompSolid(
+            crate::ffi_extern_TKBRep::Handle_TopoDS_TShape_downcast_to_Handle_TopoDS_TCompSolid(
                 self as *const Self,
             )
         });
@@ -6716,9 +6258,9 @@ impl HandleTopoDSTShape {
     /// Returns `None` if the handle does not point to a `TopoDS_TCompound` (or subclass).
     pub fn downcast_to_t_compound(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleTopoDSTCompound>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_TopoDS_TCompound>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKBRep::HandleTopoDSTShape_downcast_to_HandleTopoDSTCompound(
+            crate::ffi_extern_TKBRep::Handle_TopoDS_TShape_downcast_to_Handle_TopoDS_TCompound(
                 self as *const Self,
             )
         });
@@ -6734,9 +6276,9 @@ impl HandleTopoDSTShape {
     /// Returns `None` if the handle does not point to a `TopoDS_TEdge` (or subclass).
     pub fn downcast_to_topo_ds_t_edge(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleTopoDSTEdge>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_TopoDS_TEdge>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKBRep::HandleTopoDSTShape_downcast_to_HandleTopoDSTEdge(
+            crate::ffi_extern_TKBRep::Handle_TopoDS_TShape_downcast_to_Handle_TopoDS_TEdge(
                 self as *const Self,
             )
         });
@@ -6752,9 +6294,9 @@ impl HandleTopoDSTShape {
     /// Returns `None` if the handle does not point to a `TopoDS_TFace` (or subclass).
     pub fn downcast_to_topo_ds_t_face(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleTopoDSTFace>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_TopoDS_TFace>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKBRep::HandleTopoDSTShape_downcast_to_HandleTopoDSTFace(
+            crate::ffi_extern_TKBRep::Handle_TopoDS_TShape_downcast_to_Handle_TopoDS_TFace(
                 self as *const Self,
             )
         });
@@ -6770,9 +6312,9 @@ impl HandleTopoDSTShape {
     /// Returns `None` if the handle does not point to a `TopoDS_TShell` (or subclass).
     pub fn downcast_to_t_shell(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleTopoDSTShell>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_TopoDS_TShell>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKBRep::HandleTopoDSTShape_downcast_to_HandleTopoDSTShell(
+            crate::ffi_extern_TKBRep::Handle_TopoDS_TShape_downcast_to_Handle_TopoDS_TShell(
                 self as *const Self,
             )
         });
@@ -6788,9 +6330,9 @@ impl HandleTopoDSTShape {
     /// Returns `None` if the handle does not point to a `TopoDS_TSolid` (or subclass).
     pub fn downcast_to_t_solid(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleTopoDSTSolid>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_TopoDS_TSolid>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKBRep::HandleTopoDSTShape_downcast_to_HandleTopoDSTSolid(
+            crate::ffi_extern_TKBRep::Handle_TopoDS_TShape_downcast_to_Handle_TopoDS_TSolid(
                 self as *const Self,
             )
         });
@@ -6806,9 +6348,9 @@ impl HandleTopoDSTShape {
     /// Returns `None` if the handle does not point to a `TopoDS_TVertex` (or subclass).
     pub fn downcast_to_topo_ds_t_vertex(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleTopoDSTVertex>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_TopoDS_TVertex>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKBRep::HandleTopoDSTShape_downcast_to_HandleTopoDSTVertex(
+            crate::ffi_extern_TKBRep::Handle_TopoDS_TShape_downcast_to_Handle_TopoDS_TVertex(
                 self as *const Self,
             )
         });
@@ -6824,9 +6366,9 @@ impl HandleTopoDSTShape {
     /// Returns `None` if the handle does not point to a `TopoDS_TWire` (or subclass).
     pub fn downcast_to_t_wire(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleTopoDSTWire>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_TopoDS_TWire>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKBRep::HandleTopoDSTShape_downcast_to_HandleTopoDSTWire(
+            crate::ffi_extern_TKBRep::Handle_TopoDS_TShape_downcast_to_Handle_TopoDS_TWire(
                 self as *const Self,
             )
         });
@@ -6842,7 +6384,7 @@ impl HandleTopoDSTShape {
 // From TopoDS_TShell.hxx
 // ========================
 
-/// **Source:** `TopoDS_TShell.hxx`:29 - `TopoDS_TShell`
+/// **Source:** `TopoDS_TShell.hxx`:25 - `TopoDS_TShell`
 /// A set of faces connected by their edges.
 pub use crate::ffi_types::TopoDS_TShell as TShell;
 
@@ -6855,7 +6397,7 @@ unsafe impl crate::CppDeletable for TShell {
 }
 
 impl TShell {
-    /// **Source:** `TopoDS_TShell.hxx`:33 - `TopoDS_TShell::TopoDS_TShell()`
+    /// **Source:** `TopoDS_TShell.hxx`:29 - `TopoDS_TShell::TopoDS_TShell()`
     /// Creates an empty TShell.
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
@@ -6865,18 +6407,9 @@ impl TShell {
         }
     }
 
-    /// **Source:** `TopoDS_TShell.hxx`:39 - `TopoDS_TShell::ShapeType()`
-    /// Returns SHELL.
-    pub fn shape_type(&self) -> crate::top_abs::ShapeEnum {
-        crate::top_abs::ShapeEnum::try_from(crate::check_result(unsafe {
-            crate::ffi_extern_TKBRep::TopoDS_TShell_shape_type(self as *const Self)
-        }))
-        .unwrap()
-    }
-
-    /// **Source:** `TopoDS_TShell.hxx`:42 - `TopoDS_TShell::EmptyCopy()`
+    /// **Source:** `TopoDS_TShell.hxx`:35 - `TopoDS_TShell::EmptyCopy()`
     /// Returns an empty TShell.
-    pub fn empty_copy(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTopoDSTShape> {
+    pub fn empty_copy(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_TopoDS_TShape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKBRep::TopoDS_TShell_empty_copy(self as *const Self),
@@ -6884,8 +6417,8 @@ impl TShell {
         }
     }
 
-    /// **Source:** `TopoDS_TShell.hxx`:44 - `TopoDS_TShell::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `TopoDS_TShell.hxx`:37 - `TopoDS_TShell::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKBRep::TopoDS_TShell_dynamic_type(
                 self as *const Self,
@@ -6893,7 +6426,7 @@ impl TShell {
         }
     }
 
-    /// **Source:** `TopoDS_TShell.hxx`:44 - `TopoDS_TShell::get_type_name()`
+    /// **Source:** `TopoDS_TShell.hxx`:37 - `TopoDS_TShell::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -6904,8 +6437,8 @@ impl TShell {
         .into_owned()
     }
 
-    /// **Source:** `TopoDS_TShell.hxx`:44 - `TopoDS_TShell::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    /// **Source:** `TopoDS_TShell.hxx`:37 - `TopoDS_TShell::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKBRep::TopoDS_TShell_get_type_descriptor()))
         }
@@ -6952,7 +6485,7 @@ impl TShell {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleTopoDSTShell> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_TopoDS_TShell> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKBRep::TopoDS_TShell_to_handle(obj.into_raw()),
@@ -6960,71 +6493,79 @@ impl TShell {
         }
     }
 
-    /// Inherited: **Source:** `TopoDS_TShape.hxx`:59 - `TopoDS_TShape::Free()`
+    /// Inherited: **Source:** `TopoDS_TShape.hxx`:86 - `TopoDS_TShape::Free()`
     pub fn free(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_TShell_inherited_Free(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `TopoDS_TShape.hxx`:65 - `TopoDS_TShape::Locked()`
+    /// Inherited: **Source:** `TopoDS_TShape.hxx`:92 - `TopoDS_TShape::Locked()`
     pub fn locked(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_TShell_inherited_Locked(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `TopoDS_TShape.hxx`:71 - `TopoDS_TShape::Modified()`
+    /// Inherited: **Source:** `TopoDS_TShape.hxx`:98 - `TopoDS_TShape::Modified()`
     pub fn modified(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_TShell_inherited_Modified(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `TopoDS_TShape.hxx`:86 - `TopoDS_TShape::Checked()`
+    /// Inherited: **Source:** `TopoDS_TShape.hxx`:112 - `TopoDS_TShape::Checked()`
     pub fn checked(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_TShell_inherited_Checked(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `TopoDS_TShape.hxx`:95 - `TopoDS_TShape::Orientable()`
+    /// Inherited: **Source:** `TopoDS_TShape.hxx`:118 - `TopoDS_TShape::Orientable()`
     pub fn orientable(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_TShell_inherited_Orientable(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `TopoDS_TShape.hxx`:104 - `TopoDS_TShape::Closed()`
+    /// Inherited: **Source:** `TopoDS_TShape.hxx`:124 - `TopoDS_TShape::Closed()`
     pub fn closed(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_TShell_inherited_Closed(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `TopoDS_TShape.hxx`:110 - `TopoDS_TShape::Infinite()`
+    /// Inherited: **Source:** `TopoDS_TShape.hxx`:130 - `TopoDS_TShape::Infinite()`
     pub fn infinite(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_TShell_inherited_Infinite(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `TopoDS_TShape.hxx`:119 - `TopoDS_TShape::Convex()`
+    /// Inherited: **Source:** `TopoDS_TShape.hxx`:136 - `TopoDS_TShape::Convex()`
     pub fn convex(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_TShell_inherited_Convex(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `TopoDS_TShape.hxx`:133 - `TopoDS_TShape::NbChildren()`
+    /// Inherited: **Source:** `TopoDS_TShape.hxx`:144 - `TopoDS_TShape::ShapeType()`
+    pub fn shape_type(&self) -> crate::top_abs::ShapeEnum {
+        crate::top_abs::ShapeEnum::try_from(crate::check_result(unsafe {
+            crate::ffi_extern_TKBRep::TopoDS_TShell_inherited_ShapeType(self as *const Self)
+        }))
+        .unwrap()
+    }
+
+    /// Inherited: **Source:** `TopoDS_TShape.hxx`:154 - `TopoDS_TShape::NbChildren()`
     pub fn nb_children(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_TShell_inherited_NbChildren(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_TShell_inherited_IsInstance(
                 self as *const Self,
@@ -7033,14 +6574,14 @@ impl TShell {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_TShell_inherited_IsKind(self as *const Self, theType)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -7054,28 +6595,28 @@ impl TShell {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_TShell_inherited_GetRefCount(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_TShell_inherited_IncrementRefCounter(self as *mut Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_TShell_inherited_DecrementRefCounter(self as *mut Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_TShell_inherited_Delete(self as *const Self)
@@ -7083,32 +6624,32 @@ impl TShell {
     }
 }
 
-pub use crate::ffi_types::HandleTopoDSTShell;
+pub use crate::ffi_types::Handle_TopoDS_TShell;
 
-unsafe impl crate::CppDeletable for HandleTopoDSTShell {
+unsafe impl crate::CppDeletable for Handle_TopoDS_TShell {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKBRep::HandleTopoDSTShell_destructor(ptr);
+            crate::ffi_extern_TKBRep::Handle_TopoDS_TShell_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleTopoDSTShell {
+unsafe impl crate::CppCopyable for Handle_TopoDS_TShell {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        unsafe { crate::check_result(crate::ffi_extern_TKBRep::HandleTopoDSTShell_clone(ptr)) }
+        unsafe { crate::check_result(crate::ffi_extern_TKBRep::Handle_TopoDS_TShell_clone(ptr)) }
     }
 }
 
-impl HandleTopoDSTShell {
+impl Handle_TopoDS_TShell {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
-        unsafe { crate::ffi_extern_TKBRep::HandleTopoDSTShell_is_null(self as *const Self) }
+        unsafe { crate::ffi_extern_TKBRep::Handle_TopoDS_TShell_is_null(self as *const Self) }
     }
 
     /// Dereference this Handle to access the underlying TopoDS_TShell
     pub fn get(&self) -> &crate::ffi_types::TopoDS_TShell {
         unsafe {
-            &*crate::check_result(crate::ffi_extern_TKBRep::HandleTopoDSTShell_get(
+            &*crate::check_result(crate::ffi_extern_TKBRep::Handle_TopoDS_TShell_get(
                 self as *const Self,
             ))
         }
@@ -7117,17 +6658,17 @@ impl HandleTopoDSTShell {
     /// Dereference this Handle to mutably access the underlying TopoDS_TShell
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::TopoDS_TShell {
         unsafe {
-            &mut *crate::check_result(crate::ffi_extern_TKBRep::HandleTopoDSTShell_get_mut(
+            &mut *crate::check_result(crate::ffi_extern_TKBRep::Handle_TopoDS_TShell_get_mut(
                 self as *mut Self,
             ))
         }
     }
 
     /// Upcast Handle<TopoDS_TShell> to Handle<TopoDS_TShape>
-    pub fn to_handle_t_shape(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTopoDSTShape> {
+    pub fn to_handle_t_shape(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_TopoDS_TShape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKBRep::HandleTopoDSTShell_to_HandleTopoDSTShape(
+                crate::ffi_extern_TKBRep::Handle_TopoDS_TShell_to_Handle_TopoDS_TShape(
                     self as *const Self,
                 ),
             ))
@@ -7137,10 +6678,10 @@ impl HandleTopoDSTShell {
     /// Upcast Handle<TopoDS_TShell> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKBRep::HandleTopoDSTShell_to_HandleStandardTransient(
+                crate::ffi_extern_TKBRep::Handle_TopoDS_TShell_to_Handle_Standard_Transient(
                     self as *const Self,
                 ),
             ))
@@ -7152,7 +6693,7 @@ impl HandleTopoDSTShell {
 // From TopoDS_TSolid.hxx
 // ========================
 
-/// **Source:** `TopoDS_TSolid.hxx`:30 - `TopoDS_TSolid`
+/// **Source:** `TopoDS_TSolid.hxx`:26 - `TopoDS_TSolid`
 /// A Topological part of 3D space, bounded by shells,
 /// edges and vertices.
 pub use crate::ffi_types::TopoDS_TSolid as TSolid;
@@ -7166,7 +6707,7 @@ unsafe impl crate::CppDeletable for TSolid {
 }
 
 impl TSolid {
-    /// **Source:** `TopoDS_TSolid.hxx`:34 - `TopoDS_TSolid::TopoDS_TSolid()`
+    /// **Source:** `TopoDS_TSolid.hxx`:30 - `TopoDS_TSolid::TopoDS_TSolid()`
     /// Creates an empty TSolid.
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
@@ -7176,18 +6717,9 @@ impl TSolid {
         }
     }
 
-    /// **Source:** `TopoDS_TSolid.hxx`:41 - `TopoDS_TSolid::ShapeType()`
-    /// returns SOLID.
-    pub fn shape_type(&self) -> crate::top_abs::ShapeEnum {
-        crate::top_abs::ShapeEnum::try_from(crate::check_result(unsafe {
-            crate::ffi_extern_TKBRep::TopoDS_TSolid_shape_type(self as *const Self)
-        }))
-        .unwrap()
-    }
-
-    /// **Source:** `TopoDS_TSolid.hxx`:44 - `TopoDS_TSolid::EmptyCopy()`
+    /// **Source:** `TopoDS_TSolid.hxx`:37 - `TopoDS_TSolid::EmptyCopy()`
     /// Returns an empty TSolid.
-    pub fn empty_copy(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTopoDSTShape> {
+    pub fn empty_copy(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_TopoDS_TShape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKBRep::TopoDS_TSolid_empty_copy(self as *const Self),
@@ -7195,8 +6727,8 @@ impl TSolid {
         }
     }
 
-    /// **Source:** `TopoDS_TSolid.hxx`:46 - `TopoDS_TSolid::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `TopoDS_TSolid.hxx`:39 - `TopoDS_TSolid::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKBRep::TopoDS_TSolid_dynamic_type(
                 self as *const Self,
@@ -7204,7 +6736,7 @@ impl TSolid {
         }
     }
 
-    /// **Source:** `TopoDS_TSolid.hxx`:46 - `TopoDS_TSolid::get_type_name()`
+    /// **Source:** `TopoDS_TSolid.hxx`:39 - `TopoDS_TSolid::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -7215,8 +6747,8 @@ impl TSolid {
         .into_owned()
     }
 
-    /// **Source:** `TopoDS_TSolid.hxx`:46 - `TopoDS_TSolid::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    /// **Source:** `TopoDS_TSolid.hxx`:39 - `TopoDS_TSolid::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKBRep::TopoDS_TSolid_get_type_descriptor()))
         }
@@ -7263,7 +6795,7 @@ impl TSolid {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleTopoDSTSolid> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_TopoDS_TSolid> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKBRep::TopoDS_TSolid_to_handle(obj.into_raw()),
@@ -7271,71 +6803,79 @@ impl TSolid {
         }
     }
 
-    /// Inherited: **Source:** `TopoDS_TShape.hxx`:59 - `TopoDS_TShape::Free()`
+    /// Inherited: **Source:** `TopoDS_TShape.hxx`:86 - `TopoDS_TShape::Free()`
     pub fn free(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_TSolid_inherited_Free(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `TopoDS_TShape.hxx`:65 - `TopoDS_TShape::Locked()`
+    /// Inherited: **Source:** `TopoDS_TShape.hxx`:92 - `TopoDS_TShape::Locked()`
     pub fn locked(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_TSolid_inherited_Locked(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `TopoDS_TShape.hxx`:71 - `TopoDS_TShape::Modified()`
+    /// Inherited: **Source:** `TopoDS_TShape.hxx`:98 - `TopoDS_TShape::Modified()`
     pub fn modified(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_TSolid_inherited_Modified(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `TopoDS_TShape.hxx`:86 - `TopoDS_TShape::Checked()`
+    /// Inherited: **Source:** `TopoDS_TShape.hxx`:112 - `TopoDS_TShape::Checked()`
     pub fn checked(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_TSolid_inherited_Checked(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `TopoDS_TShape.hxx`:95 - `TopoDS_TShape::Orientable()`
+    /// Inherited: **Source:** `TopoDS_TShape.hxx`:118 - `TopoDS_TShape::Orientable()`
     pub fn orientable(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_TSolid_inherited_Orientable(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `TopoDS_TShape.hxx`:104 - `TopoDS_TShape::Closed()`
+    /// Inherited: **Source:** `TopoDS_TShape.hxx`:124 - `TopoDS_TShape::Closed()`
     pub fn closed(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_TSolid_inherited_Closed(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `TopoDS_TShape.hxx`:110 - `TopoDS_TShape::Infinite()`
+    /// Inherited: **Source:** `TopoDS_TShape.hxx`:130 - `TopoDS_TShape::Infinite()`
     pub fn infinite(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_TSolid_inherited_Infinite(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `TopoDS_TShape.hxx`:119 - `TopoDS_TShape::Convex()`
+    /// Inherited: **Source:** `TopoDS_TShape.hxx`:136 - `TopoDS_TShape::Convex()`
     pub fn convex(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_TSolid_inherited_Convex(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `TopoDS_TShape.hxx`:133 - `TopoDS_TShape::NbChildren()`
+    /// Inherited: **Source:** `TopoDS_TShape.hxx`:144 - `TopoDS_TShape::ShapeType()`
+    pub fn shape_type(&self) -> crate::top_abs::ShapeEnum {
+        crate::top_abs::ShapeEnum::try_from(crate::check_result(unsafe {
+            crate::ffi_extern_TKBRep::TopoDS_TSolid_inherited_ShapeType(self as *const Self)
+        }))
+        .unwrap()
+    }
+
+    /// Inherited: **Source:** `TopoDS_TShape.hxx`:154 - `TopoDS_TShape::NbChildren()`
     pub fn nb_children(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_TSolid_inherited_NbChildren(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_TSolid_inherited_IsInstance(
                 self as *const Self,
@@ -7344,14 +6884,14 @@ impl TSolid {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_TSolid_inherited_IsKind(self as *const Self, theType)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -7365,28 +6905,28 @@ impl TSolid {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_TSolid_inherited_GetRefCount(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_TSolid_inherited_IncrementRefCounter(self as *mut Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_TSolid_inherited_DecrementRefCounter(self as *mut Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_TSolid_inherited_Delete(self as *const Self)
@@ -7394,32 +6934,32 @@ impl TSolid {
     }
 }
 
-pub use crate::ffi_types::HandleTopoDSTSolid;
+pub use crate::ffi_types::Handle_TopoDS_TSolid;
 
-unsafe impl crate::CppDeletable for HandleTopoDSTSolid {
+unsafe impl crate::CppDeletable for Handle_TopoDS_TSolid {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKBRep::HandleTopoDSTSolid_destructor(ptr);
+            crate::ffi_extern_TKBRep::Handle_TopoDS_TSolid_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleTopoDSTSolid {
+unsafe impl crate::CppCopyable for Handle_TopoDS_TSolid {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        unsafe { crate::check_result(crate::ffi_extern_TKBRep::HandleTopoDSTSolid_clone(ptr)) }
+        unsafe { crate::check_result(crate::ffi_extern_TKBRep::Handle_TopoDS_TSolid_clone(ptr)) }
     }
 }
 
-impl HandleTopoDSTSolid {
+impl Handle_TopoDS_TSolid {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
-        unsafe { crate::ffi_extern_TKBRep::HandleTopoDSTSolid_is_null(self as *const Self) }
+        unsafe { crate::ffi_extern_TKBRep::Handle_TopoDS_TSolid_is_null(self as *const Self) }
     }
 
     /// Dereference this Handle to access the underlying TopoDS_TSolid
     pub fn get(&self) -> &crate::ffi_types::TopoDS_TSolid {
         unsafe {
-            &*crate::check_result(crate::ffi_extern_TKBRep::HandleTopoDSTSolid_get(
+            &*crate::check_result(crate::ffi_extern_TKBRep::Handle_TopoDS_TSolid_get(
                 self as *const Self,
             ))
         }
@@ -7428,17 +6968,17 @@ impl HandleTopoDSTSolid {
     /// Dereference this Handle to mutably access the underlying TopoDS_TSolid
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::TopoDS_TSolid {
         unsafe {
-            &mut *crate::check_result(crate::ffi_extern_TKBRep::HandleTopoDSTSolid_get_mut(
+            &mut *crate::check_result(crate::ffi_extern_TKBRep::Handle_TopoDS_TSolid_get_mut(
                 self as *mut Self,
             ))
         }
     }
 
     /// Upcast Handle<TopoDS_TSolid> to Handle<TopoDS_TShape>
-    pub fn to_handle_t_shape(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTopoDSTShape> {
+    pub fn to_handle_t_shape(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_TopoDS_TShape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKBRep::HandleTopoDSTSolid_to_HandleTopoDSTShape(
+                crate::ffi_extern_TKBRep::Handle_TopoDS_TSolid_to_Handle_TopoDS_TShape(
                     self as *const Self,
                 ),
             ))
@@ -7448,10 +6988,10 @@ impl HandleTopoDSTSolid {
     /// Upcast Handle<TopoDS_TSolid> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKBRep::HandleTopoDSTSolid_to_HandleStandardTransient(
+                crate::ffi_extern_TKBRep::Handle_TopoDS_TSolid_to_Handle_Standard_Transient(
                     self as *const Self,
                 ),
             ))
@@ -7463,9 +7003,9 @@ impl HandleTopoDSTSolid {
 // From TopoDS_TVertex.hxx
 // ========================
 
-/// **Source:** `TopoDS_TVertex.hxx`:34 - `TopoDS_TVertex`
-/// A  Vertex is a topological  point in  two or three
-/// dimensions.
+/// **Source:** `TopoDS_TVertex.hxx`:30 - `TopoDS_TVertex`
+/// A Vertex is a topological point in two or three dimensions.
+/// TVertex has no children (sub-shapes).
 pub use crate::ffi_types::TopoDS_TVertex as TVertex;
 
 unsafe impl crate::CppDeletable for TVertex {
@@ -7477,17 +7017,8 @@ unsafe impl crate::CppDeletable for TVertex {
 }
 
 impl TVertex {
-    /// **Source:** `TopoDS_TVertex.hxx`:38 - `TopoDS_TVertex::ShapeType()`
-    /// Returns VERTEX.
-    pub fn shape_type(&self) -> crate::top_abs::ShapeEnum {
-        crate::top_abs::ShapeEnum::try_from(crate::check_result(unsafe {
-            crate::ffi_extern_TKBRep::TopoDS_TVertex_shape_type(self as *const Self)
-        }))
-        .unwrap()
-    }
-
-    /// **Source:** `TopoDS_TVertex.hxx`:40 - `TopoDS_TVertex::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `TopoDS_TVertex.hxx`:33 - `TopoDS_TVertex::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKBRep::TopoDS_TVertex_dynamic_type(
                 self as *const Self,
@@ -7495,7 +7026,7 @@ impl TVertex {
         }
     }
 
-    /// **Source:** `TopoDS_TVertex.hxx`:40 - `TopoDS_TVertex::get_type_name()`
+    /// **Source:** `TopoDS_TVertex.hxx`:33 - `TopoDS_TVertex::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -7506,8 +7037,8 @@ impl TVertex {
         .into_owned()
     }
 
-    /// **Source:** `TopoDS_TVertex.hxx`:40 - `TopoDS_TVertex::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    /// **Source:** `TopoDS_TVertex.hxx`:33 - `TopoDS_TVertex::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKBRep::TopoDS_TVertex_get_type_descriptor()))
         }
@@ -7551,64 +7082,72 @@ impl TVertex {
         }
     }
 
-    /// Inherited: **Source:** `TopoDS_TShape.hxx`:59 - `TopoDS_TShape::Free()`
+    /// Inherited: **Source:** `TopoDS_TShape.hxx`:86 - `TopoDS_TShape::Free()`
     pub fn free(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_TVertex_inherited_Free(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `TopoDS_TShape.hxx`:65 - `TopoDS_TShape::Locked()`
+    /// Inherited: **Source:** `TopoDS_TShape.hxx`:92 - `TopoDS_TShape::Locked()`
     pub fn locked(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_TVertex_inherited_Locked(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `TopoDS_TShape.hxx`:71 - `TopoDS_TShape::Modified()`
+    /// Inherited: **Source:** `TopoDS_TShape.hxx`:98 - `TopoDS_TShape::Modified()`
     pub fn modified(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_TVertex_inherited_Modified(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `TopoDS_TShape.hxx`:86 - `TopoDS_TShape::Checked()`
+    /// Inherited: **Source:** `TopoDS_TShape.hxx`:112 - `TopoDS_TShape::Checked()`
     pub fn checked(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_TVertex_inherited_Checked(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `TopoDS_TShape.hxx`:95 - `TopoDS_TShape::Orientable()`
+    /// Inherited: **Source:** `TopoDS_TShape.hxx`:118 - `TopoDS_TShape::Orientable()`
     pub fn orientable(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_TVertex_inherited_Orientable(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `TopoDS_TShape.hxx`:104 - `TopoDS_TShape::Closed()`
+    /// Inherited: **Source:** `TopoDS_TShape.hxx`:124 - `TopoDS_TShape::Closed()`
     pub fn closed(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_TVertex_inherited_Closed(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `TopoDS_TShape.hxx`:110 - `TopoDS_TShape::Infinite()`
+    /// Inherited: **Source:** `TopoDS_TShape.hxx`:130 - `TopoDS_TShape::Infinite()`
     pub fn infinite(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_TVertex_inherited_Infinite(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `TopoDS_TShape.hxx`:119 - `TopoDS_TShape::Convex()`
+    /// Inherited: **Source:** `TopoDS_TShape.hxx`:136 - `TopoDS_TShape::Convex()`
     pub fn convex(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_TVertex_inherited_Convex(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `TopoDS_TShape.hxx`:129 - `TopoDS_TShape::EmptyCopy()`
-    pub fn empty_copy(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTopoDSTShape> {
+    /// Inherited: **Source:** `TopoDS_TShape.hxx`:144 - `TopoDS_TShape::ShapeType()`
+    pub fn shape_type(&self) -> crate::top_abs::ShapeEnum {
+        crate::top_abs::ShapeEnum::try_from(crate::check_result(unsafe {
+            crate::ffi_extern_TKBRep::TopoDS_TVertex_inherited_ShapeType(self as *const Self)
+        }))
+        .unwrap()
+    }
+
+    /// Inherited: **Source:** `TopoDS_TShape.hxx`:150 - `TopoDS_TShape::EmptyCopy()`
+    pub fn empty_copy(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_TopoDS_TShape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKBRep::TopoDS_TVertex_inherited_EmptyCopy(self as *const Self),
@@ -7616,15 +7155,15 @@ impl TVertex {
         }
     }
 
-    /// Inherited: **Source:** `TopoDS_TShape.hxx`:133 - `TopoDS_TShape::NbChildren()`
+    /// Inherited: **Source:** `TopoDS_TShape.hxx`:154 - `TopoDS_TShape::NbChildren()`
     pub fn nb_children(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_TVertex_inherited_NbChildren(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_TVertex_inherited_IsInstance(
                 self as *const Self,
@@ -7633,14 +7172,14 @@ impl TVertex {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_TVertex_inherited_IsKind(self as *const Self, theType)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -7654,14 +7193,14 @@ impl TVertex {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_TVertex_inherited_GetRefCount(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_TVertex_inherited_IncrementRefCounter(
@@ -7670,7 +7209,7 @@ impl TVertex {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_TVertex_inherited_DecrementRefCounter(
@@ -7679,7 +7218,7 @@ impl TVertex {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_TVertex_inherited_Delete(self as *const Self)
@@ -7687,32 +7226,32 @@ impl TVertex {
     }
 }
 
-pub use crate::ffi_types::HandleTopoDSTVertex;
+pub use crate::ffi_types::Handle_TopoDS_TVertex;
 
-unsafe impl crate::CppDeletable for HandleTopoDSTVertex {
+unsafe impl crate::CppDeletable for Handle_TopoDS_TVertex {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKBRep::HandleTopoDSTVertex_destructor(ptr);
+            crate::ffi_extern_TKBRep::Handle_TopoDS_TVertex_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleTopoDSTVertex {
+unsafe impl crate::CppCopyable for Handle_TopoDS_TVertex {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        unsafe { crate::check_result(crate::ffi_extern_TKBRep::HandleTopoDSTVertex_clone(ptr)) }
+        unsafe { crate::check_result(crate::ffi_extern_TKBRep::Handle_TopoDS_TVertex_clone(ptr)) }
     }
 }
 
-impl HandleTopoDSTVertex {
+impl Handle_TopoDS_TVertex {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
-        unsafe { crate::ffi_extern_TKBRep::HandleTopoDSTVertex_is_null(self as *const Self) }
+        unsafe { crate::ffi_extern_TKBRep::Handle_TopoDS_TVertex_is_null(self as *const Self) }
     }
 
     /// Dereference this Handle to access the underlying TopoDS_TVertex
     pub fn get(&self) -> &crate::ffi_types::TopoDS_TVertex {
         unsafe {
-            &*crate::check_result(crate::ffi_extern_TKBRep::HandleTopoDSTVertex_get(
+            &*crate::check_result(crate::ffi_extern_TKBRep::Handle_TopoDS_TVertex_get(
                 self as *const Self,
             ))
         }
@@ -7721,17 +7260,17 @@ impl HandleTopoDSTVertex {
     /// Dereference this Handle to mutably access the underlying TopoDS_TVertex
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::TopoDS_TVertex {
         unsafe {
-            &mut *crate::check_result(crate::ffi_extern_TKBRep::HandleTopoDSTVertex_get_mut(
+            &mut *crate::check_result(crate::ffi_extern_TKBRep::Handle_TopoDS_TVertex_get_mut(
                 self as *mut Self,
             ))
         }
     }
 
     /// Upcast Handle<TopoDS_TVertex> to Handle<TopoDS_TShape>
-    pub fn to_handle_t_shape(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTopoDSTShape> {
+    pub fn to_handle_t_shape(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_TopoDS_TShape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKBRep::HandleTopoDSTVertex_to_HandleTopoDSTShape(
+                crate::ffi_extern_TKBRep::Handle_TopoDS_TVertex_to_Handle_TopoDS_TShape(
                     self as *const Self,
                 ),
             ))
@@ -7741,10 +7280,10 @@ impl HandleTopoDSTVertex {
     /// Upcast Handle<TopoDS_TVertex> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKBRep::HandleTopoDSTVertex_to_HandleStandardTransient(
+                crate::ffi_extern_TKBRep::Handle_TopoDS_TVertex_to_Handle_Standard_Transient(
                     self as *const Self,
                 ),
             ))
@@ -7756,9 +7295,9 @@ impl HandleTopoDSTVertex {
     /// Returns `None` if the handle does not point to a `BRep_TVertex` (or subclass).
     pub fn downcast_to_t_vertex(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleBRepTVertex>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_BRep_TVertex>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKBRep::HandleTopoDSTVertex_downcast_to_HandleBRepTVertex(
+            crate::ffi_extern_TKBRep::Handle_TopoDS_TVertex_downcast_to_Handle_BRep_TVertex(
                 self as *const Self,
             )
         });
@@ -7774,7 +7313,7 @@ impl HandleTopoDSTVertex {
 // From TopoDS_TWire.hxx
 // ========================
 
-/// **Source:** `TopoDS_TWire.hxx`:29 - `TopoDS_TWire`
+/// **Source:** `TopoDS_TWire.hxx`:25 - `TopoDS_TWire`
 /// A set of edges connected by their vertices.
 pub use crate::ffi_types::TopoDS_TWire as TWire;
 
@@ -7787,7 +7326,7 @@ unsafe impl crate::CppDeletable for TWire {
 }
 
 impl TWire {
-    /// **Source:** `TopoDS_TWire.hxx`:33 - `TopoDS_TWire::TopoDS_TWire()`
+    /// **Source:** `TopoDS_TWire.hxx`:29 - `TopoDS_TWire::TopoDS_TWire()`
     /// Creates an empty TWire.
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
@@ -7797,18 +7336,9 @@ impl TWire {
         }
     }
 
-    /// **Source:** `TopoDS_TWire.hxx`:39 - `TopoDS_TWire::ShapeType()`
-    /// Returns WIRE.
-    pub fn shape_type(&self) -> crate::top_abs::ShapeEnum {
-        crate::top_abs::ShapeEnum::try_from(crate::check_result(unsafe {
-            crate::ffi_extern_TKBRep::TopoDS_TWire_shape_type(self as *const Self)
-        }))
-        .unwrap()
-    }
-
-    /// **Source:** `TopoDS_TWire.hxx`:42 - `TopoDS_TWire::EmptyCopy()`
+    /// **Source:** `TopoDS_TWire.hxx`:35 - `TopoDS_TWire::EmptyCopy()`
     /// Returns an empty TWire.
-    pub fn empty_copy(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTopoDSTShape> {
+    pub fn empty_copy(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_TopoDS_TShape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKBRep::TopoDS_TWire_empty_copy(self as *const Self),
@@ -7816,8 +7346,8 @@ impl TWire {
         }
     }
 
-    /// **Source:** `TopoDS_TWire.hxx`:44 - `TopoDS_TWire::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `TopoDS_TWire.hxx`:37 - `TopoDS_TWire::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKBRep::TopoDS_TWire_dynamic_type(
                 self as *const Self,
@@ -7825,7 +7355,7 @@ impl TWire {
         }
     }
 
-    /// **Source:** `TopoDS_TWire.hxx`:44 - `TopoDS_TWire::get_type_name()`
+    /// **Source:** `TopoDS_TWire.hxx`:37 - `TopoDS_TWire::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -7836,8 +7366,8 @@ impl TWire {
         .into_owned()
     }
 
-    /// **Source:** `TopoDS_TWire.hxx`:44 - `TopoDS_TWire::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    /// **Source:** `TopoDS_TWire.hxx`:37 - `TopoDS_TWire::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKBRep::TopoDS_TWire_get_type_descriptor()))
         }
@@ -7882,7 +7412,7 @@ impl TWire {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleTopoDSTWire> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_TopoDS_TWire> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKBRep::TopoDS_TWire_to_handle(obj.into_raw()),
@@ -7890,71 +7420,79 @@ impl TWire {
         }
     }
 
-    /// Inherited: **Source:** `TopoDS_TShape.hxx`:59 - `TopoDS_TShape::Free()`
+    /// Inherited: **Source:** `TopoDS_TShape.hxx`:86 - `TopoDS_TShape::Free()`
     pub fn free(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_TWire_inherited_Free(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `TopoDS_TShape.hxx`:65 - `TopoDS_TShape::Locked()`
+    /// Inherited: **Source:** `TopoDS_TShape.hxx`:92 - `TopoDS_TShape::Locked()`
     pub fn locked(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_TWire_inherited_Locked(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `TopoDS_TShape.hxx`:71 - `TopoDS_TShape::Modified()`
+    /// Inherited: **Source:** `TopoDS_TShape.hxx`:98 - `TopoDS_TShape::Modified()`
     pub fn modified(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_TWire_inherited_Modified(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `TopoDS_TShape.hxx`:86 - `TopoDS_TShape::Checked()`
+    /// Inherited: **Source:** `TopoDS_TShape.hxx`:112 - `TopoDS_TShape::Checked()`
     pub fn checked(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_TWire_inherited_Checked(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `TopoDS_TShape.hxx`:95 - `TopoDS_TShape::Orientable()`
+    /// Inherited: **Source:** `TopoDS_TShape.hxx`:118 - `TopoDS_TShape::Orientable()`
     pub fn orientable(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_TWire_inherited_Orientable(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `TopoDS_TShape.hxx`:104 - `TopoDS_TShape::Closed()`
+    /// Inherited: **Source:** `TopoDS_TShape.hxx`:124 - `TopoDS_TShape::Closed()`
     pub fn closed(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_TWire_inherited_Closed(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `TopoDS_TShape.hxx`:110 - `TopoDS_TShape::Infinite()`
+    /// Inherited: **Source:** `TopoDS_TShape.hxx`:130 - `TopoDS_TShape::Infinite()`
     pub fn infinite(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_TWire_inherited_Infinite(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `TopoDS_TShape.hxx`:119 - `TopoDS_TShape::Convex()`
+    /// Inherited: **Source:** `TopoDS_TShape.hxx`:136 - `TopoDS_TShape::Convex()`
     pub fn convex(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_TWire_inherited_Convex(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `TopoDS_TShape.hxx`:133 - `TopoDS_TShape::NbChildren()`
+    /// Inherited: **Source:** `TopoDS_TShape.hxx`:144 - `TopoDS_TShape::ShapeType()`
+    pub fn shape_type(&self) -> crate::top_abs::ShapeEnum {
+        crate::top_abs::ShapeEnum::try_from(crate::check_result(unsafe {
+            crate::ffi_extern_TKBRep::TopoDS_TWire_inherited_ShapeType(self as *const Self)
+        }))
+        .unwrap()
+    }
+
+    /// Inherited: **Source:** `TopoDS_TShape.hxx`:154 - `TopoDS_TShape::NbChildren()`
     pub fn nb_children(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_TWire_inherited_NbChildren(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_TWire_inherited_IsInstance(
                 self as *const Self,
@@ -7963,14 +7501,14 @@ impl TWire {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_TWire_inherited_IsKind(self as *const Self, theType)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -7984,28 +7522,28 @@ impl TWire {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_TWire_inherited_GetRefCount(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_TWire_inherited_IncrementRefCounter(self as *mut Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_TWire_inherited_DecrementRefCounter(self as *mut Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_TWire_inherited_Delete(self as *const Self)
@@ -8013,32 +7551,32 @@ impl TWire {
     }
 }
 
-pub use crate::ffi_types::HandleTopoDSTWire;
+pub use crate::ffi_types::Handle_TopoDS_TWire;
 
-unsafe impl crate::CppDeletable for HandleTopoDSTWire {
+unsafe impl crate::CppDeletable for Handle_TopoDS_TWire {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKBRep::HandleTopoDSTWire_destructor(ptr);
+            crate::ffi_extern_TKBRep::Handle_TopoDS_TWire_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleTopoDSTWire {
+unsafe impl crate::CppCopyable for Handle_TopoDS_TWire {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        unsafe { crate::check_result(crate::ffi_extern_TKBRep::HandleTopoDSTWire_clone(ptr)) }
+        unsafe { crate::check_result(crate::ffi_extern_TKBRep::Handle_TopoDS_TWire_clone(ptr)) }
     }
 }
 
-impl HandleTopoDSTWire {
+impl Handle_TopoDS_TWire {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
-        unsafe { crate::ffi_extern_TKBRep::HandleTopoDSTWire_is_null(self as *const Self) }
+        unsafe { crate::ffi_extern_TKBRep::Handle_TopoDS_TWire_is_null(self as *const Self) }
     }
 
     /// Dereference this Handle to access the underlying TopoDS_TWire
     pub fn get(&self) -> &crate::ffi_types::TopoDS_TWire {
         unsafe {
-            &*crate::check_result(crate::ffi_extern_TKBRep::HandleTopoDSTWire_get(
+            &*crate::check_result(crate::ffi_extern_TKBRep::Handle_TopoDS_TWire_get(
                 self as *const Self,
             ))
         }
@@ -8047,17 +7585,17 @@ impl HandleTopoDSTWire {
     /// Dereference this Handle to mutably access the underlying TopoDS_TWire
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::TopoDS_TWire {
         unsafe {
-            &mut *crate::check_result(crate::ffi_extern_TKBRep::HandleTopoDSTWire_get_mut(
+            &mut *crate::check_result(crate::ffi_extern_TKBRep::Handle_TopoDS_TWire_get_mut(
                 self as *mut Self,
             ))
         }
     }
 
     /// Upcast Handle<TopoDS_TWire> to Handle<TopoDS_TShape>
-    pub fn to_handle_t_shape(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTopoDSTShape> {
+    pub fn to_handle_t_shape(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_TopoDS_TShape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKBRep::HandleTopoDSTWire_to_HandleTopoDSTShape(
+                crate::ffi_extern_TKBRep::Handle_TopoDS_TWire_to_Handle_TopoDS_TShape(
                     self as *const Self,
                 ),
             ))
@@ -8067,10 +7605,10 @@ impl HandleTopoDSTWire {
     /// Upcast Handle<TopoDS_TWire> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKBRep::HandleTopoDSTWire_to_HandleStandardTransient(
+                crate::ffi_extern_TKBRep::Handle_TopoDS_TWire_to_Handle_Standard_Transient(
                     self as *const Self,
                 ),
             ))
@@ -8082,8 +7620,7 @@ impl HandleTopoDSTWire {
 // From TopoDS_UnCompatibleShapes.hxx
 // ========================
 
-/// **Source:** `TopoDS_UnCompatibleShapes.hxx`:38 - `TopoDS_UnCompatibleShapes`
-/// An incorrect insertion was attempted.
+/// **Source:** `TopoDS_UnCompatibleShapes.hxx`:34 - `TopoDS_UnCompatibleShapes`
 pub use crate::ffi_types::TopoDS_UnCompatibleShapes as UnCompatibleShapes;
 
 unsafe impl crate::CppDeletable for UnCompatibleShapes {
@@ -8094,17 +7631,26 @@ unsafe impl crate::CppDeletable for UnCompatibleShapes {
     }
 }
 
-impl UnCompatibleShapes {
-    /// **Source:** `TopoDS_UnCompatibleShapes.hxx`:38 - `TopoDS_UnCompatibleShapes::TopoDS_UnCompatibleShapes()`
-    pub fn new() -> crate::OwnedPtr<Self> {
+unsafe impl crate::CppCopyable for UnCompatibleShapes {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKBRep::TopoDS_UnCompatibleShapes_ctor(),
-            ))
+            crate::check_result(crate::ffi_extern_TKBRep::TopoDS_UnCompatibleShapes_clone(ptr))
         }
     }
+}
 
-    /// **Source:** `TopoDS_UnCompatibleShapes.hxx`:38 - `TopoDS_UnCompatibleShapes::TopoDS_UnCompatibleShapes()`
+impl std::borrow::ToOwned for UnCompatibleShapes {
+    type Owned = crate::OwnedPtr<Self>;
+
+    fn to_owned(&self) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(<Self as crate::CppCopyable>::cpp_copy(self as *const Self))
+        }
+    }
+}
+
+impl UnCompatibleShapes {
+    /// **Source:** `TopoDS_UnCompatibleShapes.hxx`:34 - `TopoDS_UnCompatibleShapes::TopoDS_UnCompatibleShapes()`
     pub fn new_charptr(theMessage: &str) -> crate::OwnedPtr<Self> {
         let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
         unsafe {
@@ -8116,7 +7662,7 @@ impl UnCompatibleShapes {
         }
     }
 
-    /// **Source:** `TopoDS_UnCompatibleShapes.hxx`:38 - `TopoDS_UnCompatibleShapes::TopoDS_UnCompatibleShapes()`
+    /// **Source:** `TopoDS_UnCompatibleShapes.hxx`:34 - `TopoDS_UnCompatibleShapes::TopoDS_UnCompatibleShapes()`
     pub fn new_charptr2(theMessage: &str, theStackTrace: &str) -> crate::OwnedPtr<Self> {
         let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
         let c_theStackTrace = std::ffi::CString::new(theStackTrace).unwrap();
@@ -8130,81 +7676,17 @@ impl UnCompatibleShapes {
         }
     }
 
-    /// **Source:** `TopoDS_UnCompatibleShapes.hxx`:38 - `TopoDS_UnCompatibleShapes::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `TopoDS_UnCompatibleShapes.hxx`:34 - `TopoDS_UnCompatibleShapes::ExceptionType()`
+    pub fn exception_type(&self) -> std::string::String {
         unsafe {
-            &*(crate::check_result(
-                crate::ffi_extern_TKBRep::TopoDS_UnCompatibleShapes_dynamic_type(
+            std::ffi::CStr::from_ptr(crate::check_result(
+                crate::ffi_extern_TKBRep::TopoDS_UnCompatibleShapes_exception_type(
                     self as *const Self,
                 ),
             ))
         }
-    }
-
-    /// **Source:** `TopoDS_UnCompatibleShapes.hxx`:38 - `TopoDS_UnCompatibleShapes::Raise()`
-    pub fn raise_charptr(theMessage: &str) {
-        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKBRep::TopoDS_UnCompatibleShapes_raise_charptr(c_theMessage.as_ptr())
-        })
-    }
-
-    /// **Source:** `TopoDS_UnCompatibleShapes.hxx`:38 - `TopoDS_UnCompatibleShapes::Raise()`
-    pub fn raise_sstream(theMessage: &mut crate::ffi_types::Standard_SStream) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKBRep::TopoDS_UnCompatibleShapes_raise_sstream(theMessage)
-        })
-    }
-
-    /// **Source:** `TopoDS_UnCompatibleShapes.hxx`:38 - `TopoDS_UnCompatibleShapes::NewInstance()`
-    pub fn new_instance_charptr(
-        theMessage: &str,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleTopoDSUnCompatibleShapes> {
-        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKBRep::TopoDS_UnCompatibleShapes_new_instance_charptr(
-                    c_theMessage.as_ptr(),
-                ),
-            ))
-        }
-    }
-
-    /// **Source:** `TopoDS_UnCompatibleShapes.hxx`:38 - `TopoDS_UnCompatibleShapes::NewInstance()`
-    pub fn new_instance_charptr2(
-        theMessage: &str,
-        theStackTrace: &str,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleTopoDSUnCompatibleShapes> {
-        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
-        let c_theStackTrace = std::ffi::CString::new(theStackTrace).unwrap();
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKBRep::TopoDS_UnCompatibleShapes_new_instance_charptr2(
-                    c_theMessage.as_ptr(),
-                    c_theStackTrace.as_ptr(),
-                ),
-            ))
-        }
-    }
-
-    /// **Source:** `TopoDS_UnCompatibleShapes.hxx`:38 - `TopoDS_UnCompatibleShapes::get_type_name()`
-    pub fn get_type_name() -> std::string::String {
-        unsafe {
-            std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi_extern_TKBRep::TopoDS_UnCompatibleShapes_get_type_name(),
-            ))
-        }
         .to_string_lossy()
         .into_owned()
-    }
-
-    /// **Source:** `TopoDS_UnCompatibleShapes.hxx`:38 - `TopoDS_UnCompatibleShapes::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
-        unsafe {
-            &*(crate::check_result(
-                crate::ffi_extern_TKBRep::TopoDS_UnCompatibleShapes_get_type_descriptor(),
-            ))
-        }
     }
 
     /// Upcast to Standard_DomainError
@@ -8251,40 +7733,7 @@ impl UnCompatibleShapes {
         }
     }
 
-    /// Upcast to Standard_Transient
-    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        unsafe {
-            &*crate::check_result(
-                crate::ffi_extern_TKBRep::TopoDS_UnCompatibleShapes_as_Standard_Transient(
-                    self as *const Self,
-                ),
-            )
-        }
-    }
-
-    /// Upcast to Standard_Transient (mutable)
-    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        unsafe {
-            &mut *crate::check_result(
-                crate::ffi_extern_TKBRep::TopoDS_UnCompatibleShapes_as_Standard_Transient_mut(
-                    self as *mut Self,
-                ),
-            )
-        }
-    }
-
-    /// Wrap in a Handle (reference-counted smart pointer)
-    pub fn to_handle(
-        obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleTopoDSUnCompatibleShapes> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKBRep::TopoDS_UnCompatibleShapes_to_handle(obj.into_raw()),
-            ))
-        }
-    }
-
-    /// Inherited: **Source:** `Standard_Failure.hxx`:58 - `Standard_Failure::Print()`
+    /// Inherited: **Source:** `Standard_Failure.hxx`:73 - `Standard_Failure::Print()`
     pub fn print(&self, theStream: &mut crate::ffi_types::Standard_OStream) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_UnCompatibleShapes_inherited_Print(
@@ -8292,170 +7741,6 @@ impl UnCompatibleShapes {
                 theStream,
             )
         })
-    }
-
-    /// Inherited: **Source:** `Standard_Failure.hxx`:72 - `Standard_Failure::Reraise()`
-    pub fn reraise(&mut self) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKBRep::TopoDS_UnCompatibleShapes_inherited_Reraise(self as *mut Self)
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Failure.hxx`:112 - `Standard_Failure::Jump()`
-    pub fn jump(&mut self) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKBRep::TopoDS_UnCompatibleShapes_inherited_Jump(self as *mut Self)
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKBRep::TopoDS_UnCompatibleShapes_inherited_IsInstance(
-                self as *const Self,
-                theType,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKBRep::TopoDS_UnCompatibleShapes_inherited_IsKind(
-                self as *const Self,
-                theType,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
-    pub fn this(&self) -> Option<&crate::standard::Transient> {
-        {
-            let __val = crate::check_result(unsafe {
-                crate::ffi_extern_TKBRep::TopoDS_UnCompatibleShapes_inherited_This(
-                    self as *const Self,
-                )
-            });
-            if __val.is_null() {
-                None
-            } else {
-                Some(unsafe { &*__val })
-            }
-        }
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
-    pub fn get_ref_count(&self) -> i32 {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKBRep::TopoDS_UnCompatibleShapes_inherited_GetRefCount(
-                self as *const Self,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
-    pub fn increment_ref_counter(&mut self) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKBRep::TopoDS_UnCompatibleShapes_inherited_IncrementRefCounter(
-                self as *mut Self,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
-    pub fn decrement_ref_counter(&mut self) -> i32 {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKBRep::TopoDS_UnCompatibleShapes_inherited_DecrementRefCounter(
-                self as *mut Self,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
-    pub fn delete(&self) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKBRep::TopoDS_UnCompatibleShapes_inherited_Delete(
-                self as *const Self,
-            )
-        })
-    }
-}
-
-pub use crate::ffi_types::HandleTopoDSUnCompatibleShapes;
-
-unsafe impl crate::CppDeletable for HandleTopoDSUnCompatibleShapes {
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            crate::ffi_extern_TKBRep::HandleTopoDSUnCompatibleShapes_destructor(ptr);
-        }
-    }
-}
-
-unsafe impl crate::CppCopyable for HandleTopoDSUnCompatibleShapes {
-    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        unsafe {
-            crate::check_result(crate::ffi_extern_TKBRep::HandleTopoDSUnCompatibleShapes_clone(ptr))
-        }
-    }
-}
-
-impl HandleTopoDSUnCompatibleShapes {
-    /// Returns `true` if this Handle is null (doesn't point to any object).
-    pub fn is_null(&self) -> bool {
-        unsafe {
-            crate::ffi_extern_TKBRep::HandleTopoDSUnCompatibleShapes_is_null(self as *const Self)
-        }
-    }
-
-    /// Dereference this Handle to access the underlying TopoDS_UnCompatibleShapes
-    pub fn get(&self) -> &crate::ffi_types::TopoDS_UnCompatibleShapes {
-        unsafe {
-            &*crate::check_result(crate::ffi_extern_TKBRep::HandleTopoDSUnCompatibleShapes_get(
-                self as *const Self,
-            ))
-        }
-    }
-
-    /// Dereference this Handle to mutably access the underlying TopoDS_UnCompatibleShapes
-    pub fn get_mut(&mut self) -> &mut crate::ffi_types::TopoDS_UnCompatibleShapes {
-        unsafe {
-            &mut *crate::check_result(
-                crate::ffi_extern_TKBRep::HandleTopoDSUnCompatibleShapes_get_mut(self as *mut Self),
-            )
-        }
-    }
-
-    /// Upcast Handle<TopoDS_UnCompatibleShapes> to Handle<Standard_DomainError>
-    pub fn to_handle_domain_error(
-        &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardDomainError> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKBRep::HandleTopoDSUnCompatibleShapes_to_HandleStandardDomainError(self as *const Self)))
-        }
-    }
-
-    /// Upcast Handle<TopoDS_UnCompatibleShapes> to Handle<Standard_Failure>
-    pub fn to_handle_failure(&self) -> crate::OwnedPtr<crate::ffi_types::HandleStandardFailure> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKBRep::HandleTopoDSUnCompatibleShapes_to_HandleStandardFailure(
-                    self as *const Self,
-                ),
-            ))
-        }
-    }
-
-    /// Upcast Handle<TopoDS_UnCompatibleShapes> to Handle<Standard_Transient>
-    pub fn to_handle_transient(
-        &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKBRep::HandleTopoDSUnCompatibleShapes_to_HandleStandardTransient(
-                    self as *const Self,
-                ),
-            ))
-        }
     }
 }
 
@@ -8567,7 +7852,7 @@ impl Vertex {
         }
     }
 
-    /// Inherited: **Source:** `TopoDS_Shape.hxx`:119 - `TopoDS_Shape::Orientation()`
+    /// Inherited: **Source:** `TopoDS_Shape.hxx`:118 - `TopoDS_Shape::Orientation()`
     pub fn orientation(&self) -> crate::top_abs::Orientation {
         crate::top_abs::Orientation::try_from(crate::check_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_Vertex_inherited_Orientation(self as *const Self)
@@ -8575,7 +7860,7 @@ impl Vertex {
         .unwrap()
     }
 
-    /// Inherited: **Source:** `TopoDS_Shape.hxx`:126 - `TopoDS_Shape::Oriented()`
+    /// Inherited: **Source:** `TopoDS_Shape.hxx`:125 - `TopoDS_Shape::Oriented()`
     pub fn oriented(&self, theOrient: crate::top_abs::Orientation) -> crate::OwnedPtr<Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -8587,8 +7872,8 @@ impl Vertex {
         }
     }
 
-    /// Inherited: **Source:** `TopoDS_Shape.hxx`:134 - `TopoDS_Shape::TShape()`
-    pub fn t_shape(&self) -> &crate::ffi_types::HandleTopoDSTShape {
+    /// Inherited: **Source:** `TopoDS_Shape.hxx`:133 - `TopoDS_Shape::TShape()`
+    pub fn t_shape(&self) -> &crate::ffi_types::Handle_TopoDS_TShape {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKBRep::TopoDS_Vertex_inherited_TShape(
                 self as *const Self,
@@ -8596,7 +7881,7 @@ impl Vertex {
         }
     }
 
-    /// Inherited: **Source:** `TopoDS_Shape.hxx`:141 - `TopoDS_Shape::ShapeType()`
+    /// Inherited: **Source:** `TopoDS_Shape.hxx`:140 - `TopoDS_Shape::ShapeType()`
     pub fn shape_type(&self) -> crate::top_abs::ShapeEnum {
         crate::top_abs::ShapeEnum::try_from(crate::check_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_Vertex_inherited_ShapeType(self as *const Self)
@@ -8604,63 +7889,63 @@ impl Vertex {
         .unwrap()
     }
 
-    /// Inherited: **Source:** `TopoDS_Shape.hxx`:144 - `TopoDS_Shape::Free()`
+    /// Inherited: **Source:** `TopoDS_Shape.hxx`:143 - `TopoDS_Shape::Free()`
     pub fn free(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_Vertex_inherited_Free(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `TopoDS_Shape.hxx`:150 - `TopoDS_Shape::Locked()`
+    /// Inherited: **Source:** `TopoDS_Shape.hxx`:149 - `TopoDS_Shape::Locked()`
     pub fn locked(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_Vertex_inherited_Locked(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `TopoDS_Shape.hxx`:156 - `TopoDS_Shape::Modified()`
+    /// Inherited: **Source:** `TopoDS_Shape.hxx`:155 - `TopoDS_Shape::Modified()`
     pub fn modified(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_Vertex_inherited_Modified(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `TopoDS_Shape.hxx`:162 - `TopoDS_Shape::Checked()`
+    /// Inherited: **Source:** `TopoDS_Shape.hxx`:161 - `TopoDS_Shape::Checked()`
     pub fn checked(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_Vertex_inherited_Checked(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `TopoDS_Shape.hxx`:168 - `TopoDS_Shape::Orientable()`
+    /// Inherited: **Source:** `TopoDS_Shape.hxx`:167 - `TopoDS_Shape::Orientable()`
     pub fn orientable(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_Vertex_inherited_Orientable(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `TopoDS_Shape.hxx`:174 - `TopoDS_Shape::Closed()`
+    /// Inherited: **Source:** `TopoDS_Shape.hxx`:173 - `TopoDS_Shape::Closed()`
     pub fn closed(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_Vertex_inherited_Closed(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `TopoDS_Shape.hxx`:180 - `TopoDS_Shape::Infinite()`
+    /// Inherited: **Source:** `TopoDS_Shape.hxx`:179 - `TopoDS_Shape::Infinite()`
     pub fn infinite(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_Vertex_inherited_Infinite(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `TopoDS_Shape.hxx`:186 - `TopoDS_Shape::Convex()`
+    /// Inherited: **Source:** `TopoDS_Shape.hxx`:185 - `TopoDS_Shape::Convex()`
     pub fn convex(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_Vertex_inherited_Convex(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `TopoDS_Shape.hxx`:194 - `TopoDS_Shape::Move()`
+    /// Inherited: **Source:** `TopoDS_Shape.hxx`:193 - `TopoDS_Shape::Move()`
     pub fn move_(&mut self, thePosition: &crate::top_loc::Location, theRaiseExc: bool) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_Vertex_inherited_Move(
@@ -8671,7 +7956,7 @@ impl Vertex {
         })
     }
 
-    /// Inherited: **Source:** `TopoDS_Shape.hxx`:208 - `TopoDS_Shape::Moved()`
+    /// Inherited: **Source:** `TopoDS_Shape.hxx`:207 - `TopoDS_Shape::Moved()`
     pub fn moved(
         &self,
         thePosition: &crate::top_loc::Location,
@@ -8688,14 +7973,14 @@ impl Vertex {
         }
     }
 
-    /// Inherited: **Source:** `TopoDS_Shape.hxx`:218 - `TopoDS_Shape::Reverse()`
+    /// Inherited: **Source:** `TopoDS_Shape.hxx`:216 - `TopoDS_Shape::Reverse()`
     pub fn reverse(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_Vertex_inherited_Reverse(self as *mut Self)
         })
     }
 
-    /// Inherited: **Source:** `TopoDS_Shape.hxx`:223 - `TopoDS_Shape::Reversed()`
+    /// Inherited: **Source:** `TopoDS_Shape.hxx`:221 - `TopoDS_Shape::Reversed()`
     pub fn reversed(&self) -> crate::OwnedPtr<Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -8704,14 +7989,14 @@ impl Vertex {
         }
     }
 
-    /// Inherited: **Source:** `TopoDS_Shape.hxx`:232 - `TopoDS_Shape::Complement()`
+    /// Inherited: **Source:** `TopoDS_Shape.hxx`:230 - `TopoDS_Shape::Complement()`
     pub fn complement(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_Vertex_inherited_Complement(self as *mut Self)
         })
     }
 
-    /// Inherited: **Source:** `TopoDS_Shape.hxx`:237 - `TopoDS_Shape::Complemented()`
+    /// Inherited: **Source:** `TopoDS_Shape.hxx`:235 - `TopoDS_Shape::Complemented()`
     pub fn complemented(&self) -> crate::OwnedPtr<Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -8720,7 +8005,7 @@ impl Vertex {
         }
     }
 
-    /// Inherited: **Source:** `TopoDS_Shape.hxx`:246 - `TopoDS_Shape::Compose()`
+    /// Inherited: **Source:** `TopoDS_Shape.hxx`:244 - `TopoDS_Shape::Compose()`
     pub fn compose(&mut self, theOrient: crate::top_abs::Orientation) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_Vertex_inherited_Compose(
@@ -8730,7 +8015,7 @@ impl Vertex {
         })
     }
 
-    /// Inherited: **Source:** `TopoDS_Shape.hxx`:251 - `TopoDS_Shape::Composed()`
+    /// Inherited: **Source:** `TopoDS_Shape.hxx`:249 - `TopoDS_Shape::Composed()`
     pub fn composed(&self, theOrient: crate::top_abs::Orientation) -> crate::OwnedPtr<Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -8742,14 +8027,14 @@ impl Vertex {
         }
     }
 
-    /// Inherited: **Source:** `TopoDS_Shape.hxx`:260 - `TopoDS_Shape::NbChildren()`
+    /// Inherited: **Source:** `TopoDS_Shape.hxx`:258 - `TopoDS_Shape::NbChildren()`
     pub fn nb_children(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_Vertex_inherited_NbChildren(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `TopoDS_Shape.hxx`:265 - `TopoDS_Shape::IsPartner()`
+    /// Inherited: **Source:** `TopoDS_Shape.hxx`:263 - `TopoDS_Shape::IsPartner()`
     pub fn is_partner(&self, theOther: &Shape) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_Vertex_inherited_IsPartner(
@@ -8759,21 +8044,21 @@ impl Vertex {
         })
     }
 
-    /// Inherited: **Source:** `TopoDS_Shape.hxx`:273 - `TopoDS_Shape::IsSame()`
+    /// Inherited: **Source:** `TopoDS_Shape.hxx`:268 - `TopoDS_Shape::IsSame()`
     pub fn is_same(&self, theOther: &Shape) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_Vertex_inherited_IsSame(self as *const Self, theOther)
         })
     }
 
-    /// Inherited: **Source:** `TopoDS_Shape.hxx`:281 - `TopoDS_Shape::IsEqual()`
+    /// Inherited: **Source:** `TopoDS_Shape.hxx`:276 - `TopoDS_Shape::IsEqual()`
     pub fn is_equal(&self, theOther: &Shape) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_Vertex_inherited_IsEqual(self as *const Self, theOther)
         })
     }
 
-    /// Inherited: **Source:** `TopoDS_Shape.hxx`:290 - `TopoDS_Shape::IsNotEqual()`
+    /// Inherited: **Source:** `TopoDS_Shape.hxx`:285 - `TopoDS_Shape::IsNotEqual()`
     pub fn is_not_equal(&self, theOther: &Shape) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_Vertex_inherited_IsNotEqual(
@@ -8783,14 +8068,14 @@ impl Vertex {
         })
     }
 
-    /// Inherited: **Source:** `TopoDS_Shape.hxx`:297 - `TopoDS_Shape::EmptyCopy()`
+    /// Inherited: **Source:** `TopoDS_Shape.hxx`:292 - `TopoDS_Shape::EmptyCopy()`
     pub fn empty_copy(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_Vertex_inherited_EmptyCopy(self as *mut Self)
         })
     }
 
-    /// Inherited: **Source:** `TopoDS_Shape.hxx`:302 - `TopoDS_Shape::EmptyCopied()`
+    /// Inherited: **Source:** `TopoDS_Shape.hxx`:297 - `TopoDS_Shape::EmptyCopied()`
     pub fn empty_copied(&self) -> crate::OwnedPtr<Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -8907,7 +8192,7 @@ impl Wire {
         }
     }
 
-    /// Inherited: **Source:** `TopoDS_Shape.hxx`:119 - `TopoDS_Shape::Orientation()`
+    /// Inherited: **Source:** `TopoDS_Shape.hxx`:118 - `TopoDS_Shape::Orientation()`
     pub fn orientation(&self) -> crate::top_abs::Orientation {
         crate::top_abs::Orientation::try_from(crate::check_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_Wire_inherited_Orientation(self as *const Self)
@@ -8915,7 +8200,7 @@ impl Wire {
         .unwrap()
     }
 
-    /// Inherited: **Source:** `TopoDS_Shape.hxx`:126 - `TopoDS_Shape::Oriented()`
+    /// Inherited: **Source:** `TopoDS_Shape.hxx`:125 - `TopoDS_Shape::Oriented()`
     pub fn oriented(&self, theOrient: crate::top_abs::Orientation) -> crate::OwnedPtr<Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -8927,8 +8212,8 @@ impl Wire {
         }
     }
 
-    /// Inherited: **Source:** `TopoDS_Shape.hxx`:134 - `TopoDS_Shape::TShape()`
-    pub fn t_shape(&self) -> &crate::ffi_types::HandleTopoDSTShape {
+    /// Inherited: **Source:** `TopoDS_Shape.hxx`:133 - `TopoDS_Shape::TShape()`
+    pub fn t_shape(&self) -> &crate::ffi_types::Handle_TopoDS_TShape {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKBRep::TopoDS_Wire_inherited_TShape(
                 self as *const Self,
@@ -8936,7 +8221,7 @@ impl Wire {
         }
     }
 
-    /// Inherited: **Source:** `TopoDS_Shape.hxx`:141 - `TopoDS_Shape::ShapeType()`
+    /// Inherited: **Source:** `TopoDS_Shape.hxx`:140 - `TopoDS_Shape::ShapeType()`
     pub fn shape_type(&self) -> crate::top_abs::ShapeEnum {
         crate::top_abs::ShapeEnum::try_from(crate::check_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_Wire_inherited_ShapeType(self as *const Self)
@@ -8944,63 +8229,63 @@ impl Wire {
         .unwrap()
     }
 
-    /// Inherited: **Source:** `TopoDS_Shape.hxx`:144 - `TopoDS_Shape::Free()`
+    /// Inherited: **Source:** `TopoDS_Shape.hxx`:143 - `TopoDS_Shape::Free()`
     pub fn free(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_Wire_inherited_Free(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `TopoDS_Shape.hxx`:150 - `TopoDS_Shape::Locked()`
+    /// Inherited: **Source:** `TopoDS_Shape.hxx`:149 - `TopoDS_Shape::Locked()`
     pub fn locked(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_Wire_inherited_Locked(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `TopoDS_Shape.hxx`:156 - `TopoDS_Shape::Modified()`
+    /// Inherited: **Source:** `TopoDS_Shape.hxx`:155 - `TopoDS_Shape::Modified()`
     pub fn modified(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_Wire_inherited_Modified(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `TopoDS_Shape.hxx`:162 - `TopoDS_Shape::Checked()`
+    /// Inherited: **Source:** `TopoDS_Shape.hxx`:161 - `TopoDS_Shape::Checked()`
     pub fn checked(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_Wire_inherited_Checked(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `TopoDS_Shape.hxx`:168 - `TopoDS_Shape::Orientable()`
+    /// Inherited: **Source:** `TopoDS_Shape.hxx`:167 - `TopoDS_Shape::Orientable()`
     pub fn orientable(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_Wire_inherited_Orientable(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `TopoDS_Shape.hxx`:174 - `TopoDS_Shape::Closed()`
+    /// Inherited: **Source:** `TopoDS_Shape.hxx`:173 - `TopoDS_Shape::Closed()`
     pub fn closed(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_Wire_inherited_Closed(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `TopoDS_Shape.hxx`:180 - `TopoDS_Shape::Infinite()`
+    /// Inherited: **Source:** `TopoDS_Shape.hxx`:179 - `TopoDS_Shape::Infinite()`
     pub fn infinite(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_Wire_inherited_Infinite(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `TopoDS_Shape.hxx`:186 - `TopoDS_Shape::Convex()`
+    /// Inherited: **Source:** `TopoDS_Shape.hxx`:185 - `TopoDS_Shape::Convex()`
     pub fn convex(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_Wire_inherited_Convex(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `TopoDS_Shape.hxx`:194 - `TopoDS_Shape::Move()`
+    /// Inherited: **Source:** `TopoDS_Shape.hxx`:193 - `TopoDS_Shape::Move()`
     pub fn move_(&mut self, thePosition: &crate::top_loc::Location, theRaiseExc: bool) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_Wire_inherited_Move(
@@ -9011,7 +8296,7 @@ impl Wire {
         })
     }
 
-    /// Inherited: **Source:** `TopoDS_Shape.hxx`:208 - `TopoDS_Shape::Moved()`
+    /// Inherited: **Source:** `TopoDS_Shape.hxx`:207 - `TopoDS_Shape::Moved()`
     pub fn moved(
         &self,
         thePosition: &crate::top_loc::Location,
@@ -9028,14 +8313,14 @@ impl Wire {
         }
     }
 
-    /// Inherited: **Source:** `TopoDS_Shape.hxx`:218 - `TopoDS_Shape::Reverse()`
+    /// Inherited: **Source:** `TopoDS_Shape.hxx`:216 - `TopoDS_Shape::Reverse()`
     pub fn reverse(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_Wire_inherited_Reverse(self as *mut Self)
         })
     }
 
-    /// Inherited: **Source:** `TopoDS_Shape.hxx`:223 - `TopoDS_Shape::Reversed()`
+    /// Inherited: **Source:** `TopoDS_Shape.hxx`:221 - `TopoDS_Shape::Reversed()`
     pub fn reversed(&self) -> crate::OwnedPtr<Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -9044,14 +8329,14 @@ impl Wire {
         }
     }
 
-    /// Inherited: **Source:** `TopoDS_Shape.hxx`:232 - `TopoDS_Shape::Complement()`
+    /// Inherited: **Source:** `TopoDS_Shape.hxx`:230 - `TopoDS_Shape::Complement()`
     pub fn complement(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_Wire_inherited_Complement(self as *mut Self)
         })
     }
 
-    /// Inherited: **Source:** `TopoDS_Shape.hxx`:237 - `TopoDS_Shape::Complemented()`
+    /// Inherited: **Source:** `TopoDS_Shape.hxx`:235 - `TopoDS_Shape::Complemented()`
     pub fn complemented(&self) -> crate::OwnedPtr<Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -9060,7 +8345,7 @@ impl Wire {
         }
     }
 
-    /// Inherited: **Source:** `TopoDS_Shape.hxx`:246 - `TopoDS_Shape::Compose()`
+    /// Inherited: **Source:** `TopoDS_Shape.hxx`:244 - `TopoDS_Shape::Compose()`
     pub fn compose(&mut self, theOrient: crate::top_abs::Orientation) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_Wire_inherited_Compose(
@@ -9070,7 +8355,7 @@ impl Wire {
         })
     }
 
-    /// Inherited: **Source:** `TopoDS_Shape.hxx`:251 - `TopoDS_Shape::Composed()`
+    /// Inherited: **Source:** `TopoDS_Shape.hxx`:249 - `TopoDS_Shape::Composed()`
     pub fn composed(&self, theOrient: crate::top_abs::Orientation) -> crate::OwnedPtr<Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -9082,35 +8367,35 @@ impl Wire {
         }
     }
 
-    /// Inherited: **Source:** `TopoDS_Shape.hxx`:260 - `TopoDS_Shape::NbChildren()`
+    /// Inherited: **Source:** `TopoDS_Shape.hxx`:258 - `TopoDS_Shape::NbChildren()`
     pub fn nb_children(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_Wire_inherited_NbChildren(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `TopoDS_Shape.hxx`:265 - `TopoDS_Shape::IsPartner()`
+    /// Inherited: **Source:** `TopoDS_Shape.hxx`:263 - `TopoDS_Shape::IsPartner()`
     pub fn is_partner(&self, theOther: &Shape) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_Wire_inherited_IsPartner(self as *const Self, theOther)
         })
     }
 
-    /// Inherited: **Source:** `TopoDS_Shape.hxx`:273 - `TopoDS_Shape::IsSame()`
+    /// Inherited: **Source:** `TopoDS_Shape.hxx`:268 - `TopoDS_Shape::IsSame()`
     pub fn is_same(&self, theOther: &Shape) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_Wire_inherited_IsSame(self as *const Self, theOther)
         })
     }
 
-    /// Inherited: **Source:** `TopoDS_Shape.hxx`:281 - `TopoDS_Shape::IsEqual()`
+    /// Inherited: **Source:** `TopoDS_Shape.hxx`:276 - `TopoDS_Shape::IsEqual()`
     pub fn is_equal(&self, theOther: &Shape) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_Wire_inherited_IsEqual(self as *const Self, theOther)
         })
     }
 
-    /// Inherited: **Source:** `TopoDS_Shape.hxx`:290 - `TopoDS_Shape::IsNotEqual()`
+    /// Inherited: **Source:** `TopoDS_Shape.hxx`:285 - `TopoDS_Shape::IsNotEqual()`
     pub fn is_not_equal(&self, theOther: &Shape) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_Wire_inherited_IsNotEqual(
@@ -9120,14 +8405,14 @@ impl Wire {
         })
     }
 
-    /// Inherited: **Source:** `TopoDS_Shape.hxx`:297 - `TopoDS_Shape::EmptyCopy()`
+    /// Inherited: **Source:** `TopoDS_Shape.hxx`:292 - `TopoDS_Shape::EmptyCopy()`
     pub fn empty_copy(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBRep::TopoDS_Wire_inherited_EmptyCopy(self as *mut Self)
         })
     }
 
-    /// Inherited: **Source:** `TopoDS_Shape.hxx`:302 - `TopoDS_Shape::EmptyCopied()`
+    /// Inherited: **Source:** `TopoDS_Shape.hxx`:297 - `TopoDS_Shape::EmptyCopied()`
     pub fn empty_copied(&self) -> crate::OwnedPtr<Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -9136,9 +8421,3 @@ impl Wire {
         }
     }
 }
-
-// ========================
-// Additional type re-exports
-// ========================
-
-pub use crate::ffi_types::TopoDS_ListOfShape as ListOfShape;

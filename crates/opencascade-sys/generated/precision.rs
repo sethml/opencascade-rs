@@ -9,8 +9,8 @@
 /// **Source:** `Precision.hxx`:123 - `Precision::Angular`
 /// Returns the recommended precision value
 /// when checking the equality of two angles (given in radians).
-/// Standard_Real Angle1 = ... , Angle2 = ... ;
-/// If ( Abs( Angle2 - Angle1 ) < Precision::Angular() ) ...
+/// double Angle1 = ... , Angle2 = ... ;
+/// If ( std::abs( Angle2 - Angle1 ) < Precision::Angular() ) ...
 /// The tolerance of angular equality may be used to check the parallelism of two vectors :
 /// gp_Vec V1, V2 ;
 /// V1 = ...
@@ -24,7 +24,7 @@
 /// D1 = ...
 /// D2 = ...
 /// you can use :
-/// If ( Abs( D1.D2 ) < Precision::Angular() ) ...
+/// If ( std::abs( D1.D2 ) < Precision::Angular() ) ...
 /// (although the function IsNormal does exist).
 pub fn angular() -> f64 {
     crate::check_result(unsafe { crate::ffi_extern_TKernel::Precision_angular() })
@@ -79,7 +79,38 @@ pub fn confusion() -> f64 {
 pub fn square_confusion() -> f64 {
     crate::check_result(unsafe { crate::ffi_extern_TKernel::Precision_square_confusion() })
 }
-/// **Source:** `Precision.hxx`:193 - `Precision::Intersection`
+/// **Source:** `Precision.hxx`:192 - `Precision::Computational`
+/// Returns a precision value at machine epsilon level, used for
+/// low-level numerical computations and floating-point comparisons.
+/// Unlike the geometric tolerances (Confusion, Intersection, Approximation)
+/// which are application-level values for modeling operations, this value
+/// represents the fundamental limit of floating-point arithmetic precision.
+///
+/// Typical use cases include:
+/// -   Checking if squared magnitudes are effectively zero (e.g., vector.SquareMagnitude() <
+/// SquareComputational())
+/// -   Division-by-zero protection in numerical algorithms
+/// -   Convergence criteria in iterative solvers at machine precision level
+/// -   Detecting numerical degeneracies in low-level computations
+///
+/// The computational tolerance is equal to DBL_EPSILON (approximately 2.22e-16),
+/// which is the smallest positive value such that 1.0 + eps != 1.0 in double
+/// precision floating-point arithmetic. This is the fundamental machine epsilon
+/// for double (double) type.
+///
+/// Note: This value should NOT be used for geometric comparisons.
+/// Use Precision::Confusion() for comparing geometric distances,
+/// Precision::Angular() for angles, etc.
+pub fn computational() -> f64 {
+    crate::check_result(unsafe { crate::ffi_extern_TKernel::Precision_computational() })
+}
+/// **Source:** `Precision.hxx`:196 - `Precision::SquareComputational`
+/// Returns square of Computational.
+/// Created for speed and convenience when comparing squared values.
+pub fn square_computational() -> f64 {
+    crate::check_result(unsafe { crate::ffi_extern_TKernel::Precision_square_computational() })
+}
+/// **Source:** `Precision.hxx`:220 - `Precision::Intersection`
 /// Returns the precision value in real space, frequently
 /// used by intersection algorithms to decide that a solution is reached.
 /// This function provides an acceptable level of precision
@@ -105,7 +136,7 @@ pub fn square_confusion() -> f64 {
 pub fn intersection() -> f64 {
     crate::check_result(unsafe { crate::ffi_extern_TKernel::Precision_intersection() })
 }
-/// **Source:** `Precision.hxx`:208 - `Precision::Approximation`
+/// **Source:** `Precision.hxx`:235 - `Precision::Approximation`
 /// Returns the precision value in real space, frequently used
 /// by approximation algorithms.
 /// This function provides an acceptable level of precision for
@@ -122,16 +153,16 @@ pub fn intersection() -> f64 {
 pub fn approximation() -> f64 {
     crate::check_result(unsafe { crate::ffi_extern_TKernel::Precision_approximation() })
 }
-/// **Source:** `Precision.hxx`:215 - `Precision::Parametric`
-/// Convert a real  space precision  to  a  parametric
-/// space precision.   <T>  is the mean  value  of the
+/// **Source:** `Precision.hxx`:242 - `Precision::Parametric`
+/// Convert a real space precision to a parametric
+/// space precision. <T> is the mean value of the
 /// length of the tangent of the curve or the surface.
 ///
 /// Value is P / T
 pub fn parametric_real2(P: f64, T: f64) -> f64 {
     crate::check_result(unsafe { crate::ffi_extern_TKernel::Precision_parametric_real2(P, T) })
 }
-/// **Source:** `Precision.hxx`:264 - `Precision::PConfusion`
+/// **Source:** `Precision.hxx`:288 - `Precision::PConfusion`
 /// Returns a precision value in parametric space, which may be used :
 /// -   to test the coincidence of two points in the real space,
 /// by using parameter values, or
@@ -161,7 +192,7 @@ pub fn parametric_real2(P: f64, T: f64) -> f64 {
 /// parameter u of this curve is ten times greater than the
 /// previous one. This shows that for two different curves,
 /// the distance between two points on the curve, resulting
-/// from the same variation of parameter du, may vary   considerably.
+/// from the same variation of parameter du, may vary considerably.
 /// -   Moreover, the variation of the parameter along the
 /// curve is generally not proportional to the curvilinear
 /// abscissa along the curve. So the distance between two
@@ -179,13 +210,13 @@ pub fn parametric_real2(P: f64, T: f64) -> f64 {
 pub fn p_confusion_real(T: f64) -> f64 {
     crate::check_result(unsafe { crate::ffi_extern_TKernel::Precision_p_confusion_real(T) })
 }
-/// **Source:** `Precision.hxx`:271 - `Precision::SquarePConfusion`
+/// **Source:** `Precision.hxx`:292 - `Precision::SquarePConfusion`
 /// Returns square of PConfusion.
 /// Created for speed and convenience.
 pub fn square_p_confusion() -> f64 {
     crate::check_result(unsafe { crate::ffi_extern_TKernel::Precision_square_p_confusion() })
 }
-/// **Source:** `Precision.hxx`:286 - `Precision::PIntersection`
+/// **Source:** `Precision.hxx`:307 - `Precision::PIntersection`
 /// Returns a precision value in parametric space, which
 /// may be used by intersection algorithms, to decide that
 /// a solution is reached. The purpose of this function is to
@@ -202,7 +233,7 @@ pub fn square_p_confusion() -> f64 {
 pub fn p_intersection_real(T: f64) -> f64 {
     crate::check_result(unsafe { crate::ffi_extern_TKernel::Precision_p_intersection_real(T) })
 }
-/// **Source:** `Precision.hxx`:304 - `Precision::PApproximation`
+/// **Source:** `Precision.hxx`:322 - `Precision::PApproximation`
 /// Returns a precision value in parametric space, which may
 /// be used by approximation algorithms. The purpose of this
 /// function is to provide an acceptable level of precision in
@@ -219,58 +250,58 @@ pub fn p_intersection_real(T: f64) -> f64 {
 pub fn p_approximation_real(T: f64) -> f64 {
     crate::check_result(unsafe { crate::ffi_extern_TKernel::Precision_p_approximation_real(T) })
 }
-/// **Source:** `Precision.hxx`:313 - `Precision::Parametric`
-/// Convert a real  space precision  to  a  parametric
+/// **Source:** `Precision.hxx`:328 - `Precision::Parametric`
+/// Convert a real space precision to a parametric
 /// space precision on a default curve.
 ///
 /// Value is Parametric(P,1.e+2)
 pub fn parametric_real(P: f64) -> f64 {
     crate::check_result(unsafe { crate::ffi_extern_TKernel::Precision_parametric_real(P) })
 }
-/// **Source:** `Precision.hxx`:319 - `Precision::PConfusion`
-/// Used  to test distances  in parametric  space on a
+/// **Source:** `Precision.hxx`:334 - `Precision::PConfusion`
+/// Used to test distances in parametric space on a
 /// default curve.
 ///
 /// This is Precision::Parametric(Precision::Confusion())
 pub fn p_confusion() -> f64 {
     crate::check_result(unsafe { crate::ffi_extern_TKernel::Precision_p_confusion() })
 }
-/// **Source:** `Precision.hxx`:325 - `Precision::PIntersection`
-/// Used for Intersections  in parametric  space  on a
+/// **Source:** `Precision.hxx`:340 - `Precision::PIntersection`
+/// Used for Intersections in parametric space on a
 /// default curve.
 ///
 /// This is Precision::Parametric(Precision::Intersection())
 pub fn p_intersection() -> f64 {
     crate::check_result(unsafe { crate::ffi_extern_TKernel::Precision_p_intersection() })
 }
-/// **Source:** `Precision.hxx`:331 - `Precision::PApproximation`
-/// Used for  Approximations  in parametric space on a
+/// **Source:** `Precision.hxx`:346 - `Precision::PApproximation`
+/// Used for Approximations in parametric space on a
 /// default curve.
 ///
 /// This is Precision::Parametric(Precision::Approximation())
 pub fn p_approximation() -> f64 {
     crate::check_result(unsafe { crate::ffi_extern_TKernel::Precision_p_approximation() })
 }
-/// **Source:** `Precision.hxx`:335 - `Precision::IsInfinite`
+/// **Source:** `Precision.hxx`:350 - `Precision::IsInfinite`
 /// Returns True if R may be considered as an infinite
-/// number. Currently Abs(R) > 1e100
+/// number. Currently std::abs(R) > 1e100
 pub fn is_infinite(R: f64) -> bool {
     crate::check_result(unsafe { crate::ffi_extern_TKernel::Precision_is_infinite(R) })
 }
-/// **Source:** `Precision.hxx`:342 - `Precision::IsPositiveInfinite`
-/// Returns True if R may be considered as  a positive
+/// **Source:** `Precision.hxx`:357 - `Precision::IsPositiveInfinite`
+/// Returns True if R may be considered as a positive
 /// infinite number. Currently R > 1e100
 pub fn is_positive_infinite(R: f64) -> bool {
     crate::check_result(unsafe { crate::ffi_extern_TKernel::Precision_is_positive_infinite(R) })
 }
-/// **Source:** `Precision.hxx`:349 - `Precision::IsNegativeInfinite`
-/// Returns True if R may  be considered as a negative
+/// **Source:** `Precision.hxx`:364 - `Precision::IsNegativeInfinite`
+/// Returns True if R may be considered as a negative
 /// infinite number. Currently R < -1e100
 pub fn is_negative_infinite(R: f64) -> bool {
     crate::check_result(unsafe { crate::ffi_extern_TKernel::Precision_is_negative_infinite(R) })
 }
-/// **Source:** `Precision.hxx`:356 - `Precision::Infinite`
-/// Returns a  big number that  can  be  considered as
+/// **Source:** `Precision.hxx`:371 - `Precision::Infinite`
+/// Returns a big number that can be considered as
 /// infinite. Use -Infinite() for a negative big number.
 pub fn infinite() -> f64 {
     crate::check_result(unsafe { crate::ffi_extern_TKernel::Precision_infinite() })

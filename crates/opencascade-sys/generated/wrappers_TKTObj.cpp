@@ -5,46 +5,35 @@
 
 #include <CDF_Application.hxx>
 #include <CDM_Application.hxx>
-#include <CDM_MetaDataLookUpTable.hxx>
 #include <Message_Algorithm.hxx>
 #include <Message_ExecStatus.hxx>
 #include <Message_Gravity.hxx>
 #include <Message_Messenger.hxx>
 #include <Message_ProgressRange.hxx>
-#include <Standard_GUID.hxx>
 #include <Standard_Handle.hxx>
 #include <Standard_IStream.hxx>
 #include <Standard_OStream.hxx>
 #include <Standard_Type.hxx>
-#include <TColStd_SequenceOfAsciiString.hxx>
-#include <TCollection_ExtendedString.hxx>
-#include <TCollection_HAsciiString.hxx>
-#include <TCollection_HExtendedString.hxx>
 #include <TDF_Attribute.hxx>
 #include <TDF_AttributeDelta.hxx>
-#include <TDF_AttributeIndexedMap.hxx>
 #include <TDF_DeltaOnModification.hxx>
-#include <TDF_IDFilter.hxx>
 #include <TDF_RelocationTable.hxx>
 #include <TDocStd_Application.hxx>
 #include <TDocStd_Document.hxx>
 #include <TObj_Application.hxx>
 #include <TObj_Assistant.hxx>
 #include <TObj_CheckModel.hxx>
-#include <TObj_Container.hxx>
 #include <TObj_DeletingMode.hxx>
 #include <TObj_HiddenPartition.hxx>
 #include <TObj_LabelIterator.hxx>
 #include <TObj_Model.hxx>
 #include <TObj_ModelIterator.hxx>
-#include <TObj_Object.hxx>
 #include <TObj_ObjectIterator.hxx>
 #include <TObj_OcafObjectIterator.hxx>
 #include <TObj_Partition.hxx>
 #include <TObj_Persistence.hxx>
 #include <TObj_ReferenceIterator.hxx>
 #include <TObj_SequenceIterator.hxx>
-#include <TObj_SequenceOfObject.hxx>
 #include <TObj_TIntSparseArray.hxx>
 #include <TObj_TModel.hxx>
 #include <TObj_TNameContainer.hxx>
@@ -53,155 +42,149 @@
 #include <TObj_TXYZ.hxx>
 
 // Handle type aliases
-typedef opencascade::handle<CDF_Application> HandleCDFApplication;
-typedef opencascade::handle<CDM_Application> HandleCDMApplication;
-typedef opencascade::handle<Message_Algorithm> HandleMessageAlgorithm;
-typedef opencascade::handle<Message_Messenger> HandleMessageMessenger;
-typedef opencascade::handle<Standard_Transient> HandleStandardTransient;
-typedef opencascade::handle<Standard_Type> HandleStandardType;
-typedef opencascade::handle<TCollection_HAsciiString> HandleTCollectionHAsciiString;
-typedef opencascade::handle<TCollection_HExtendedString> HandleTCollectionHExtendedString;
-typedef opencascade::handle<TDF_Attribute> HandleTDFAttribute;
-typedef opencascade::handle<TDF_AttributeDelta> HandleTDFAttributeDelta;
-typedef opencascade::handle<TDF_DeltaOnModification> HandleTDFDeltaOnModification;
-typedef opencascade::handle<TDF_RelocationTable> HandleTDFRelocationTable;
-typedef opencascade::handle<TDocStd_Application> HandleTDocStdApplication;
-typedef opencascade::handle<TDocStd_Document> HandleTDocStdDocument;
-typedef opencascade::handle<TObj_Application> HandleTObjApplication;
-typedef opencascade::handle<TObj_CheckModel> HandleTObjCheckModel;
-typedef opencascade::handle<TObj_HSequenceOfObject> HandleTObjHSequenceOfObject;
-typedef opencascade::handle<TObj_HiddenPartition> HandleTObjHiddenPartition;
-typedef opencascade::handle<TObj_LabelIterator> HandleTObjLabelIterator;
-typedef opencascade::handle<TObj_Model> HandleTObjModel;
-typedef opencascade::handle<TObj_ModelIterator> HandleTObjModelIterator;
-typedef opencascade::handle<TObj_Object> HandleTObjObject;
-typedef opencascade::handle<TObj_ObjectIterator> HandleTObjObjectIterator;
-typedef opencascade::handle<TObj_OcafObjectIterator> HandleTObjOcafObjectIterator;
-typedef opencascade::handle<TObj_Partition> HandleTObjPartition;
-typedef opencascade::handle<TObj_ReferenceIterator> HandleTObjReferenceIterator;
-typedef opencascade::handle<TObj_SequenceIterator> HandleTObjSequenceIterator;
-typedef opencascade::handle<TObj_TIntSparseArray> HandleTObjTIntSparseArray;
-typedef opencascade::handle<TObj_TModel> HandleTObjTModel;
-typedef opencascade::handle<TObj_TNameContainer> HandleTObjTNameContainer;
-typedef opencascade::handle<TObj_TObject> HandleTObjTObject;
-typedef opencascade::handle<TObj_TReference> HandleTObjTReference;
-typedef opencascade::handle<TObj_TXYZ> HandleTObjTXYZ;
+typedef opencascade::handle<CDF_Application> Handle_CDF_Application;
+typedef opencascade::handle<CDM_Application> Handle_CDM_Application;
+typedef opencascade::handle<Message_Algorithm> Handle_Message_Algorithm;
+typedef opencascade::handle<Message_Messenger> Handle_Message_Messenger;
+typedef opencascade::handle<NCollection_HSequence_opencascade_handle_TObj_Object> Handle_NCollection_HSequence_opencascade_handle_TObj_Object;
+typedef opencascade::handle<Standard_Transient> Handle_Standard_Transient;
+typedef opencascade::handle<Standard_Type> Handle_Standard_Type;
+typedef opencascade::handle<TCollection_HAsciiString> Handle_TCollection_HAsciiString;
+typedef opencascade::handle<TCollection_HExtendedString> Handle_TCollection_HExtendedString;
+typedef opencascade::handle<TDF_Attribute> Handle_TDF_Attribute;
+typedef opencascade::handle<TDF_AttributeDelta> Handle_TDF_AttributeDelta;
+typedef opencascade::handle<TDF_DeltaOnModification> Handle_TDF_DeltaOnModification;
+typedef opencascade::handle<TDF_RelocationTable> Handle_TDF_RelocationTable;
+typedef opencascade::handle<TDocStd_Application> Handle_TDocStd_Application;
+typedef opencascade::handle<TDocStd_Document> Handle_TDocStd_Document;
+typedef opencascade::handle<TObj_Application> Handle_TObj_Application;
+typedef opencascade::handle<TObj_CheckModel> Handle_TObj_CheckModel;
+typedef opencascade::handle<TObj_HiddenPartition> Handle_TObj_HiddenPartition;
+typedef opencascade::handle<TObj_LabelIterator> Handle_TObj_LabelIterator;
+typedef opencascade::handle<TObj_Model> Handle_TObj_Model;
+typedef opencascade::handle<TObj_ModelIterator> Handle_TObj_ModelIterator;
+typedef opencascade::handle<TObj_Object> Handle_TObj_Object;
+typedef opencascade::handle<TObj_ObjectIterator> Handle_TObj_ObjectIterator;
+typedef opencascade::handle<TObj_OcafObjectIterator> Handle_TObj_OcafObjectIterator;
+typedef opencascade::handle<TObj_Partition> Handle_TObj_Partition;
+typedef opencascade::handle<TObj_ReferenceIterator> Handle_TObj_ReferenceIterator;
+typedef opencascade::handle<TObj_SequenceIterator> Handle_TObj_SequenceIterator;
+typedef opencascade::handle<TObj_TIntSparseArray> Handle_TObj_TIntSparseArray;
+typedef opencascade::handle<TObj_TModel> Handle_TObj_TModel;
+typedef opencascade::handle<TObj_TNameContainer> Handle_TObj_TNameContainer;
+typedef opencascade::handle<TObj_TObject> Handle_TObj_TObject;
+typedef opencascade::handle<TObj_TReference> Handle_TObj_TReference;
+typedef opencascade::handle<TObj_TXYZ> Handle_TObj_TXYZ;
 
 // Handle type destructors, clone, and is_null functions
-extern "C" void HandleTObjApplication_destructor(HandleTObjApplication* self_) { delete self_; }
-extern "C" OcctResult<HandleTObjApplication*> HandleTObjApplication_clone(const HandleTObjApplication* self_) {
-    try { return {new HandleTObjApplication(*self_), nullptr}; }
+extern "C" void Handle_TObj_Application_destructor(Handle_TObj_Application* self_) { delete self_; }
+extern "C" OcctResult<Handle_TObj_Application*> Handle_TObj_Application_clone(const Handle_TObj_Application* self_) {
+    try { return {new Handle_TObj_Application(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleTObjApplication_is_null(const HandleTObjApplication* self_) { return self_->IsNull(); }
-extern "C" void HandleTObjCheckModel_destructor(HandleTObjCheckModel* self_) { delete self_; }
-extern "C" OcctResult<HandleTObjCheckModel*> HandleTObjCheckModel_clone(const HandleTObjCheckModel* self_) {
-    try { return {new HandleTObjCheckModel(*self_), nullptr}; }
+extern "C" bool Handle_TObj_Application_is_null(const Handle_TObj_Application* self_) { return self_->IsNull(); }
+extern "C" void Handle_TObj_CheckModel_destructor(Handle_TObj_CheckModel* self_) { delete self_; }
+extern "C" OcctResult<Handle_TObj_CheckModel*> Handle_TObj_CheckModel_clone(const Handle_TObj_CheckModel* self_) {
+    try { return {new Handle_TObj_CheckModel(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleTObjCheckModel_is_null(const HandleTObjCheckModel* self_) { return self_->IsNull(); }
-extern "C" void HandleTObjHSequenceOfObject_destructor(HandleTObjHSequenceOfObject* self_) { delete self_; }
-extern "C" OcctResult<HandleTObjHSequenceOfObject*> HandleTObjHSequenceOfObject_clone(const HandleTObjHSequenceOfObject* self_) {
-    try { return {new HandleTObjHSequenceOfObject(*self_), nullptr}; }
+extern "C" bool Handle_TObj_CheckModel_is_null(const Handle_TObj_CheckModel* self_) { return self_->IsNull(); }
+extern "C" void Handle_TObj_HiddenPartition_destructor(Handle_TObj_HiddenPartition* self_) { delete self_; }
+extern "C" OcctResult<Handle_TObj_HiddenPartition*> Handle_TObj_HiddenPartition_clone(const Handle_TObj_HiddenPartition* self_) {
+    try { return {new Handle_TObj_HiddenPartition(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleTObjHSequenceOfObject_is_null(const HandleTObjHSequenceOfObject* self_) { return self_->IsNull(); }
-extern "C" void HandleTObjHiddenPartition_destructor(HandleTObjHiddenPartition* self_) { delete self_; }
-extern "C" OcctResult<HandleTObjHiddenPartition*> HandleTObjHiddenPartition_clone(const HandleTObjHiddenPartition* self_) {
-    try { return {new HandleTObjHiddenPartition(*self_), nullptr}; }
+extern "C" bool Handle_TObj_HiddenPartition_is_null(const Handle_TObj_HiddenPartition* self_) { return self_->IsNull(); }
+extern "C" void Handle_TObj_LabelIterator_destructor(Handle_TObj_LabelIterator* self_) { delete self_; }
+extern "C" OcctResult<Handle_TObj_LabelIterator*> Handle_TObj_LabelIterator_clone(const Handle_TObj_LabelIterator* self_) {
+    try { return {new Handle_TObj_LabelIterator(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleTObjHiddenPartition_is_null(const HandleTObjHiddenPartition* self_) { return self_->IsNull(); }
-extern "C" void HandleTObjLabelIterator_destructor(HandleTObjLabelIterator* self_) { delete self_; }
-extern "C" OcctResult<HandleTObjLabelIterator*> HandleTObjLabelIterator_clone(const HandleTObjLabelIterator* self_) {
-    try { return {new HandleTObjLabelIterator(*self_), nullptr}; }
+extern "C" bool Handle_TObj_LabelIterator_is_null(const Handle_TObj_LabelIterator* self_) { return self_->IsNull(); }
+extern "C" void Handle_TObj_Model_destructor(Handle_TObj_Model* self_) { delete self_; }
+extern "C" OcctResult<Handle_TObj_Model*> Handle_TObj_Model_clone(const Handle_TObj_Model* self_) {
+    try { return {new Handle_TObj_Model(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleTObjLabelIterator_is_null(const HandleTObjLabelIterator* self_) { return self_->IsNull(); }
-extern "C" void HandleTObjModel_destructor(HandleTObjModel* self_) { delete self_; }
-extern "C" OcctResult<HandleTObjModel*> HandleTObjModel_clone(const HandleTObjModel* self_) {
-    try { return {new HandleTObjModel(*self_), nullptr}; }
+extern "C" bool Handle_TObj_Model_is_null(const Handle_TObj_Model* self_) { return self_->IsNull(); }
+extern "C" void Handle_TObj_ModelIterator_destructor(Handle_TObj_ModelIterator* self_) { delete self_; }
+extern "C" OcctResult<Handle_TObj_ModelIterator*> Handle_TObj_ModelIterator_clone(const Handle_TObj_ModelIterator* self_) {
+    try { return {new Handle_TObj_ModelIterator(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleTObjModel_is_null(const HandleTObjModel* self_) { return self_->IsNull(); }
-extern "C" void HandleTObjModelIterator_destructor(HandleTObjModelIterator* self_) { delete self_; }
-extern "C" OcctResult<HandleTObjModelIterator*> HandleTObjModelIterator_clone(const HandleTObjModelIterator* self_) {
-    try { return {new HandleTObjModelIterator(*self_), nullptr}; }
+extern "C" bool Handle_TObj_ModelIterator_is_null(const Handle_TObj_ModelIterator* self_) { return self_->IsNull(); }
+extern "C" void Handle_TObj_Object_destructor(Handle_TObj_Object* self_) { delete self_; }
+extern "C" OcctResult<Handle_TObj_Object*> Handle_TObj_Object_clone(const Handle_TObj_Object* self_) {
+    try { return {new Handle_TObj_Object(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleTObjModelIterator_is_null(const HandleTObjModelIterator* self_) { return self_->IsNull(); }
-extern "C" void HandleTObjObject_destructor(HandleTObjObject* self_) { delete self_; }
-extern "C" OcctResult<HandleTObjObject*> HandleTObjObject_clone(const HandleTObjObject* self_) {
-    try { return {new HandleTObjObject(*self_), nullptr}; }
+extern "C" bool Handle_TObj_Object_is_null(const Handle_TObj_Object* self_) { return self_->IsNull(); }
+extern "C" void Handle_TObj_ObjectIterator_destructor(Handle_TObj_ObjectIterator* self_) { delete self_; }
+extern "C" OcctResult<Handle_TObj_ObjectIterator*> Handle_TObj_ObjectIterator_clone(const Handle_TObj_ObjectIterator* self_) {
+    try { return {new Handle_TObj_ObjectIterator(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleTObjObject_is_null(const HandleTObjObject* self_) { return self_->IsNull(); }
-extern "C" void HandleTObjObjectIterator_destructor(HandleTObjObjectIterator* self_) { delete self_; }
-extern "C" OcctResult<HandleTObjObjectIterator*> HandleTObjObjectIterator_clone(const HandleTObjObjectIterator* self_) {
-    try { return {new HandleTObjObjectIterator(*self_), nullptr}; }
+extern "C" bool Handle_TObj_ObjectIterator_is_null(const Handle_TObj_ObjectIterator* self_) { return self_->IsNull(); }
+extern "C" void Handle_TObj_OcafObjectIterator_destructor(Handle_TObj_OcafObjectIterator* self_) { delete self_; }
+extern "C" OcctResult<Handle_TObj_OcafObjectIterator*> Handle_TObj_OcafObjectIterator_clone(const Handle_TObj_OcafObjectIterator* self_) {
+    try { return {new Handle_TObj_OcafObjectIterator(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleTObjObjectIterator_is_null(const HandleTObjObjectIterator* self_) { return self_->IsNull(); }
-extern "C" void HandleTObjOcafObjectIterator_destructor(HandleTObjOcafObjectIterator* self_) { delete self_; }
-extern "C" OcctResult<HandleTObjOcafObjectIterator*> HandleTObjOcafObjectIterator_clone(const HandleTObjOcafObjectIterator* self_) {
-    try { return {new HandleTObjOcafObjectIterator(*self_), nullptr}; }
+extern "C" bool Handle_TObj_OcafObjectIterator_is_null(const Handle_TObj_OcafObjectIterator* self_) { return self_->IsNull(); }
+extern "C" void Handle_TObj_Partition_destructor(Handle_TObj_Partition* self_) { delete self_; }
+extern "C" OcctResult<Handle_TObj_Partition*> Handle_TObj_Partition_clone(const Handle_TObj_Partition* self_) {
+    try { return {new Handle_TObj_Partition(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleTObjOcafObjectIterator_is_null(const HandleTObjOcafObjectIterator* self_) { return self_->IsNull(); }
-extern "C" void HandleTObjPartition_destructor(HandleTObjPartition* self_) { delete self_; }
-extern "C" OcctResult<HandleTObjPartition*> HandleTObjPartition_clone(const HandleTObjPartition* self_) {
-    try { return {new HandleTObjPartition(*self_), nullptr}; }
+extern "C" bool Handle_TObj_Partition_is_null(const Handle_TObj_Partition* self_) { return self_->IsNull(); }
+extern "C" void Handle_TObj_ReferenceIterator_destructor(Handle_TObj_ReferenceIterator* self_) { delete self_; }
+extern "C" OcctResult<Handle_TObj_ReferenceIterator*> Handle_TObj_ReferenceIterator_clone(const Handle_TObj_ReferenceIterator* self_) {
+    try { return {new Handle_TObj_ReferenceIterator(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleTObjPartition_is_null(const HandleTObjPartition* self_) { return self_->IsNull(); }
-extern "C" void HandleTObjReferenceIterator_destructor(HandleTObjReferenceIterator* self_) { delete self_; }
-extern "C" OcctResult<HandleTObjReferenceIterator*> HandleTObjReferenceIterator_clone(const HandleTObjReferenceIterator* self_) {
-    try { return {new HandleTObjReferenceIterator(*self_), nullptr}; }
+extern "C" bool Handle_TObj_ReferenceIterator_is_null(const Handle_TObj_ReferenceIterator* self_) { return self_->IsNull(); }
+extern "C" void Handle_TObj_SequenceIterator_destructor(Handle_TObj_SequenceIterator* self_) { delete self_; }
+extern "C" OcctResult<Handle_TObj_SequenceIterator*> Handle_TObj_SequenceIterator_clone(const Handle_TObj_SequenceIterator* self_) {
+    try { return {new Handle_TObj_SequenceIterator(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleTObjReferenceIterator_is_null(const HandleTObjReferenceIterator* self_) { return self_->IsNull(); }
-extern "C" void HandleTObjSequenceIterator_destructor(HandleTObjSequenceIterator* self_) { delete self_; }
-extern "C" OcctResult<HandleTObjSequenceIterator*> HandleTObjSequenceIterator_clone(const HandleTObjSequenceIterator* self_) {
-    try { return {new HandleTObjSequenceIterator(*self_), nullptr}; }
+extern "C" bool Handle_TObj_SequenceIterator_is_null(const Handle_TObj_SequenceIterator* self_) { return self_->IsNull(); }
+extern "C" void Handle_TObj_TIntSparseArray_destructor(Handle_TObj_TIntSparseArray* self_) { delete self_; }
+extern "C" OcctResult<Handle_TObj_TIntSparseArray*> Handle_TObj_TIntSparseArray_clone(const Handle_TObj_TIntSparseArray* self_) {
+    try { return {new Handle_TObj_TIntSparseArray(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleTObjSequenceIterator_is_null(const HandleTObjSequenceIterator* self_) { return self_->IsNull(); }
-extern "C" void HandleTObjTIntSparseArray_destructor(HandleTObjTIntSparseArray* self_) { delete self_; }
-extern "C" OcctResult<HandleTObjTIntSparseArray*> HandleTObjTIntSparseArray_clone(const HandleTObjTIntSparseArray* self_) {
-    try { return {new HandleTObjTIntSparseArray(*self_), nullptr}; }
+extern "C" bool Handle_TObj_TIntSparseArray_is_null(const Handle_TObj_TIntSparseArray* self_) { return self_->IsNull(); }
+extern "C" void Handle_TObj_TModel_destructor(Handle_TObj_TModel* self_) { delete self_; }
+extern "C" OcctResult<Handle_TObj_TModel*> Handle_TObj_TModel_clone(const Handle_TObj_TModel* self_) {
+    try { return {new Handle_TObj_TModel(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleTObjTIntSparseArray_is_null(const HandleTObjTIntSparseArray* self_) { return self_->IsNull(); }
-extern "C" void HandleTObjTModel_destructor(HandleTObjTModel* self_) { delete self_; }
-extern "C" OcctResult<HandleTObjTModel*> HandleTObjTModel_clone(const HandleTObjTModel* self_) {
-    try { return {new HandleTObjTModel(*self_), nullptr}; }
+extern "C" bool Handle_TObj_TModel_is_null(const Handle_TObj_TModel* self_) { return self_->IsNull(); }
+extern "C" void Handle_TObj_TNameContainer_destructor(Handle_TObj_TNameContainer* self_) { delete self_; }
+extern "C" OcctResult<Handle_TObj_TNameContainer*> Handle_TObj_TNameContainer_clone(const Handle_TObj_TNameContainer* self_) {
+    try { return {new Handle_TObj_TNameContainer(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleTObjTModel_is_null(const HandleTObjTModel* self_) { return self_->IsNull(); }
-extern "C" void HandleTObjTNameContainer_destructor(HandleTObjTNameContainer* self_) { delete self_; }
-extern "C" OcctResult<HandleTObjTNameContainer*> HandleTObjTNameContainer_clone(const HandleTObjTNameContainer* self_) {
-    try { return {new HandleTObjTNameContainer(*self_), nullptr}; }
+extern "C" bool Handle_TObj_TNameContainer_is_null(const Handle_TObj_TNameContainer* self_) { return self_->IsNull(); }
+extern "C" void Handle_TObj_TObject_destructor(Handle_TObj_TObject* self_) { delete self_; }
+extern "C" OcctResult<Handle_TObj_TObject*> Handle_TObj_TObject_clone(const Handle_TObj_TObject* self_) {
+    try { return {new Handle_TObj_TObject(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleTObjTNameContainer_is_null(const HandleTObjTNameContainer* self_) { return self_->IsNull(); }
-extern "C" void HandleTObjTObject_destructor(HandleTObjTObject* self_) { delete self_; }
-extern "C" OcctResult<HandleTObjTObject*> HandleTObjTObject_clone(const HandleTObjTObject* self_) {
-    try { return {new HandleTObjTObject(*self_), nullptr}; }
+extern "C" bool Handle_TObj_TObject_is_null(const Handle_TObj_TObject* self_) { return self_->IsNull(); }
+extern "C" void Handle_TObj_TReference_destructor(Handle_TObj_TReference* self_) { delete self_; }
+extern "C" OcctResult<Handle_TObj_TReference*> Handle_TObj_TReference_clone(const Handle_TObj_TReference* self_) {
+    try { return {new Handle_TObj_TReference(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleTObjTObject_is_null(const HandleTObjTObject* self_) { return self_->IsNull(); }
-extern "C" void HandleTObjTReference_destructor(HandleTObjTReference* self_) { delete self_; }
-extern "C" OcctResult<HandleTObjTReference*> HandleTObjTReference_clone(const HandleTObjTReference* self_) {
-    try { return {new HandleTObjTReference(*self_), nullptr}; }
+extern "C" bool Handle_TObj_TReference_is_null(const Handle_TObj_TReference* self_) { return self_->IsNull(); }
+extern "C" void Handle_TObj_TXYZ_destructor(Handle_TObj_TXYZ* self_) { delete self_; }
+extern "C" OcctResult<Handle_TObj_TXYZ*> Handle_TObj_TXYZ_clone(const Handle_TObj_TXYZ* self_) {
+    try { return {new Handle_TObj_TXYZ(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleTObjTReference_is_null(const HandleTObjTReference* self_) { return self_->IsNull(); }
-extern "C" void HandleTObjTXYZ_destructor(HandleTObjTXYZ* self_) { delete self_; }
-extern "C" OcctResult<HandleTObjTXYZ*> HandleTObjTXYZ_clone(const HandleTObjTXYZ* self_) {
-    try { return {new HandleTObjTXYZ(*self_), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" bool HandleTObjTXYZ_is_null(const HandleTObjTXYZ* self_) { return self_->IsNull(); }
+extern "C" bool Handle_TObj_TXYZ_is_null(const Handle_TObj_TXYZ* self_) { return self_->IsNull(); }
 
 // ========================
 // TObj_Application wrappers
@@ -275,32 +258,32 @@ extern "C" OcctResult<const CDM_Application*> TObj_Application_as_CDM_Applicatio
 extern "C" OcctResult<CDM_Application*> TObj_Application_as_CDM_Application_mut(TObj_Application* self_) { return {static_cast<CDM_Application*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> TObj_Application_as_Standard_Transient(const TObj_Application* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> TObj_Application_as_Standard_Transient_mut(TObj_Application* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleTObjApplication*> TObj_Application_to_handle(TObj_Application* obj) {
-    try { return {new HandleTObjApplication(obj), nullptr}; }
+extern "C" OcctResult<Handle_TObj_Application*> TObj_Application_to_handle(TObj_Application* obj) {
+    try { return {new Handle_TObj_Application(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const TObj_Application*> HandleTObjApplication_get(const HandleTObjApplication* handle) {
+extern "C" OcctResult<const TObj_Application*> Handle_TObj_Application_get(const Handle_TObj_Application* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TObj_Application*> HandleTObjApplication_get_mut(HandleTObjApplication* handle) {
+extern "C" OcctResult<TObj_Application*> Handle_TObj_Application_get_mut(Handle_TObj_Application* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTDocStdApplication*> HandleTObjApplication_to_HandleTDocStdApplication(const HandleTObjApplication* self_) {
-    try { return {new HandleTDocStdApplication(*self_), nullptr}; }
+extern "C" OcctResult<Handle_TDocStd_Application*> Handle_TObj_Application_to_Handle_TDocStd_Application(const Handle_TObj_Application* self_) {
+    try { return {new Handle_TDocStd_Application(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleCDFApplication*> HandleTObjApplication_to_HandleCDFApplication(const HandleTObjApplication* self_) {
-    try { return {new HandleCDFApplication(*self_), nullptr}; }
+extern "C" OcctResult<Handle_CDF_Application*> Handle_TObj_Application_to_Handle_CDF_Application(const Handle_TObj_Application* self_) {
+    try { return {new Handle_CDF_Application(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleCDMApplication*> HandleTObjApplication_to_HandleCDMApplication(const HandleTObjApplication* self_) {
-    try { return {new HandleCDMApplication(*self_), nullptr}; }
+extern "C" OcctResult<Handle_CDM_Application*> Handle_TObj_Application_to_Handle_CDM_Application(const Handle_TObj_Application* self_) {
+    try { return {new Handle_CDM_Application(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleTObjApplication_to_HandleStandardTransient(const HandleTObjApplication* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_TObj_Application_to_Handle_Standard_Transient(const Handle_TObj_Application* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> TObj_Application_inherited_IsDriverLoaded(const TObj_Application* self) {
@@ -315,11 +298,11 @@ extern "C" const char* TObj_Application_inherited_DefineFormat(TObj_Application*
     try { self->DefineFormat(theFormat, theDescription, theExtension, theReader, theWriter); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* TObj_Application_inherited_ReadingFormats(TObj_Application* self, TColStd_SequenceOfAsciiString& theFormats) {
+extern "C" const char* TObj_Application_inherited_ReadingFormats(TObj_Application* self, NCollection_Sequence_TCollection_AsciiString& theFormats) {
     try { self->ReadingFormats(theFormats); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* TObj_Application_inherited_WritingFormats(TObj_Application* self, TColStd_SequenceOfAsciiString& theFormats) {
+extern "C" const char* TObj_Application_inherited_WritingFormats(TObj_Application* self, NCollection_Sequence_TCollection_AsciiString& theFormats) {
     try { self->WritingFormats(theFormats); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -327,9 +310,9 @@ extern "C" OcctResult<int32_t> TObj_Application_inherited_NbDocuments(const TObj
     try { return {self->NbDocuments(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* TObj_Application_inherited_GetDocument(const TObj_Application* self, int32_t index, Handle(TDocStd_Document)& aDoc) {
-    try { self->GetDocument(index, aDoc); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
+extern "C" OcctResult<Handle(TDocStd_Document)*> TObj_Application_inherited_GetDocument(const TObj_Application* self, int32_t index) {
+    try { return {new Handle(TDocStd_Document)(self->GetDocument(index)), nullptr}; }
+    OCCT_CATCH_RETURN
 }
 extern "C" const char* TObj_Application_inherited_NewDocument(TObj_Application* self, TCollection_ExtendedString const& format, Handle(CDM_Document)& aDoc) {
     try { self->NewDocument(format, aDoc); return nullptr; }
@@ -425,10 +408,6 @@ extern "C" OcctResult<TCollection_ExtendedString*> TObj_Application_inherited_Na
 }
 extern "C" OcctResult<TCollection_AsciiString*> TObj_Application_inherited_Version(const TObj_Application* self) {
     try { return {new TCollection_AsciiString(self->Version()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<CDM_MetaDataLookUpTable*> TObj_Application_inherited_MetaDataLookUpTable(TObj_Application* self) {
-    try { return {&(self->MetaDataLookUpTable()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> TObj_Application_inherited_IsInstance(const TObj_Application* self, Handle(Standard_Type) const& theType) {
@@ -555,24 +534,24 @@ extern "C" OcctResult<const Message_Algorithm*> TObj_CheckModel_as_Message_Algor
 extern "C" OcctResult<Message_Algorithm*> TObj_CheckModel_as_Message_Algorithm_mut(TObj_CheckModel* self_) { return {static_cast<Message_Algorithm*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> TObj_CheckModel_as_Standard_Transient(const TObj_CheckModel* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> TObj_CheckModel_as_Standard_Transient_mut(TObj_CheckModel* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleTObjCheckModel*> TObj_CheckModel_to_handle(TObj_CheckModel* obj) {
-    try { return {new HandleTObjCheckModel(obj), nullptr}; }
+extern "C" OcctResult<Handle_TObj_CheckModel*> TObj_CheckModel_to_handle(TObj_CheckModel* obj) {
+    try { return {new Handle_TObj_CheckModel(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const TObj_CheckModel*> HandleTObjCheckModel_get(const HandleTObjCheckModel* handle) {
+extern "C" OcctResult<const TObj_CheckModel*> Handle_TObj_CheckModel_get(const Handle_TObj_CheckModel* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TObj_CheckModel*> HandleTObjCheckModel_get_mut(HandleTObjCheckModel* handle) {
+extern "C" OcctResult<TObj_CheckModel*> Handle_TObj_CheckModel_get_mut(Handle_TObj_CheckModel* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleMessageAlgorithm*> HandleTObjCheckModel_to_HandleMessageAlgorithm(const HandleTObjCheckModel* self_) {
-    try { return {new HandleMessageAlgorithm(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Message_Algorithm*> Handle_TObj_CheckModel_to_Handle_Message_Algorithm(const Handle_TObj_CheckModel* self_) {
+    try { return {new Handle_Message_Algorithm(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleTObjCheckModel_to_HandleStandardTransient(const HandleTObjCheckModel* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_TObj_CheckModel_to_Handle_Standard_Transient(const Handle_TObj_CheckModel* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" const char* TObj_CheckModel_inherited_SetStatus(TObj_CheckModel* self, int32_t theStat) {
@@ -615,8 +594,8 @@ extern "C" OcctResult<Handle(TColStd_HPackedMapOfInteger)*> TObj_CheckModel_inhe
     try { return {new Handle(TColStd_HPackedMapOfInteger)(self->GetMessageNumbers(static_cast<Message_Status>(theStatus))), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(TColStd_HSequenceOfHExtendedString)*> TObj_CheckModel_inherited_GetMessageStrings(const TObj_CheckModel* self, int32_t theStatus) {
-    try { return {new Handle(TColStd_HSequenceOfHExtendedString)(self->GetMessageStrings(static_cast<Message_Status>(theStatus))), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HSequence_opencascade_handle_TCollection_HExtendedString)*> TObj_CheckModel_inherited_GetMessageStrings(const TObj_CheckModel* self, int32_t theStatus) {
+    try { return {new Handle(NCollection_HSequence_opencascade_handle_TCollection_HExtendedString)(self->GetMessageStrings(static_cast<Message_Status>(theStatus))), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> TObj_CheckModel_inherited_IsInstance(const TObj_CheckModel* self, Handle(Standard_Type) const& theType) {
@@ -679,28 +658,28 @@ extern "C" OcctResult<const TObj_Object*> TObj_HiddenPartition_as_TObj_Object(co
 extern "C" OcctResult<TObj_Object*> TObj_HiddenPartition_as_TObj_Object_mut(TObj_HiddenPartition* self_) { return {static_cast<TObj_Object*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> TObj_HiddenPartition_as_Standard_Transient(const TObj_HiddenPartition* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> TObj_HiddenPartition_as_Standard_Transient_mut(TObj_HiddenPartition* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleTObjHiddenPartition*> TObj_HiddenPartition_to_handle(TObj_HiddenPartition* obj) {
-    try { return {new HandleTObjHiddenPartition(obj), nullptr}; }
+extern "C" OcctResult<Handle_TObj_HiddenPartition*> TObj_HiddenPartition_to_handle(TObj_HiddenPartition* obj) {
+    try { return {new Handle_TObj_HiddenPartition(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const TObj_HiddenPartition*> HandleTObjHiddenPartition_get(const HandleTObjHiddenPartition* handle) {
+extern "C" OcctResult<const TObj_HiddenPartition*> Handle_TObj_HiddenPartition_get(const Handle_TObj_HiddenPartition* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TObj_HiddenPartition*> HandleTObjHiddenPartition_get_mut(HandleTObjHiddenPartition* handle) {
+extern "C" OcctResult<TObj_HiddenPartition*> Handle_TObj_HiddenPartition_get_mut(Handle_TObj_HiddenPartition* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTObjPartition*> HandleTObjHiddenPartition_to_HandleTObjPartition(const HandleTObjHiddenPartition* self_) {
-    try { return {new HandleTObjPartition(*self_), nullptr}; }
+extern "C" OcctResult<Handle_TObj_Partition*> Handle_TObj_HiddenPartition_to_Handle_TObj_Partition(const Handle_TObj_HiddenPartition* self_) {
+    try { return {new Handle_TObj_Partition(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTObjObject*> HandleTObjHiddenPartition_to_HandleTObjObject(const HandleTObjHiddenPartition* self_) {
-    try { return {new HandleTObjObject(*self_), nullptr}; }
+extern "C" OcctResult<Handle_TObj_Object*> Handle_TObj_HiddenPartition_to_Handle_TObj_Object(const Handle_TObj_HiddenPartition* self_) {
+    try { return {new Handle_TObj_Object(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleTObjHiddenPartition_to_HandleStandardTransient(const HandleTObjHiddenPartition* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_TObj_HiddenPartition_to_Handle_Standard_Transient(const Handle_TObj_HiddenPartition* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> TObj_HiddenPartition_inherited_SetName(const TObj_HiddenPartition* self, Handle(TCollection_HExtendedString) const& theName) {
@@ -961,35 +940,35 @@ extern "C" OcctResult<const TObj_ObjectIterator*> TObj_LabelIterator_as_TObj_Obj
 extern "C" OcctResult<TObj_ObjectIterator*> TObj_LabelIterator_as_TObj_ObjectIterator_mut(TObj_LabelIterator* self_) { return {static_cast<TObj_ObjectIterator*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> TObj_LabelIterator_as_Standard_Transient(const TObj_LabelIterator* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> TObj_LabelIterator_as_Standard_Transient_mut(TObj_LabelIterator* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<const TObj_LabelIterator*> HandleTObjLabelIterator_get(const HandleTObjLabelIterator* handle) {
+extern "C" OcctResult<const TObj_LabelIterator*> Handle_TObj_LabelIterator_get(const Handle_TObj_LabelIterator* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TObj_LabelIterator*> HandleTObjLabelIterator_get_mut(HandleTObjLabelIterator* handle) {
+extern "C" OcctResult<TObj_LabelIterator*> Handle_TObj_LabelIterator_get_mut(Handle_TObj_LabelIterator* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTObjObjectIterator*> HandleTObjLabelIterator_to_HandleTObjObjectIterator(const HandleTObjLabelIterator* self_) {
-    try { return {new HandleTObjObjectIterator(*self_), nullptr}; }
+extern "C" OcctResult<Handle_TObj_ObjectIterator*> Handle_TObj_LabelIterator_to_Handle_TObj_ObjectIterator(const Handle_TObj_LabelIterator* self_) {
+    try { return {new Handle_TObj_ObjectIterator(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleTObjLabelIterator_to_HandleStandardTransient(const HandleTObjLabelIterator* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_TObj_LabelIterator_to_Handle_Standard_Transient(const Handle_TObj_LabelIterator* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTObjOcafObjectIterator*> HandleTObjLabelIterator_downcast_to_HandleTObjOcafObjectIterator(const HandleTObjLabelIterator* self_) {
+extern "C" OcctResult<Handle_TObj_OcafObjectIterator*> Handle_TObj_LabelIterator_downcast_to_Handle_TObj_OcafObjectIterator(const Handle_TObj_LabelIterator* self_) {
     try {
     opencascade::handle<TObj_OcafObjectIterator> result = opencascade::handle<TObj_OcafObjectIterator>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleTObjOcafObjectIterator(result), nullptr};
+    return {new Handle_TObj_OcafObjectIterator(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTObjReferenceIterator*> HandleTObjLabelIterator_downcast_to_HandleTObjReferenceIterator(const HandleTObjLabelIterator* self_) {
+extern "C" OcctResult<Handle_TObj_ReferenceIterator*> Handle_TObj_LabelIterator_downcast_to_Handle_TObj_ReferenceIterator(const Handle_TObj_LabelIterator* self_) {
     try {
     opencascade::handle<TObj_ReferenceIterator> result = opencascade::handle<TObj_ReferenceIterator>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleTObjReferenceIterator(result), nullptr};
+    return {new Handle_TObj_ReferenceIterator(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
@@ -1201,16 +1180,16 @@ extern "C" OcctResult<Handle(Standard_Type) const*> TObj_Model_get_type_descript
 }
 extern "C" OcctResult<const Standard_Transient*> TObj_Model_as_Standard_Transient(const TObj_Model* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> TObj_Model_as_Standard_Transient_mut(TObj_Model* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<const TObj_Model*> HandleTObjModel_get(const HandleTObjModel* handle) {
+extern "C" OcctResult<const TObj_Model*> Handle_TObj_Model_get(const Handle_TObj_Model* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TObj_Model*> HandleTObjModel_get_mut(HandleTObjModel* handle) {
+extern "C" OcctResult<TObj_Model*> Handle_TObj_Model_get_mut(Handle_TObj_Model* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleTObjModel_to_HandleStandardTransient(const HandleTObjModel* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_TObj_Model_to_Handle_Standard_Transient(const Handle_TObj_Model* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 
@@ -1250,24 +1229,24 @@ extern "C" OcctResult<const TObj_ObjectIterator*> TObj_ModelIterator_as_TObj_Obj
 extern "C" OcctResult<TObj_ObjectIterator*> TObj_ModelIterator_as_TObj_ObjectIterator_mut(TObj_ModelIterator* self_) { return {static_cast<TObj_ObjectIterator*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> TObj_ModelIterator_as_Standard_Transient(const TObj_ModelIterator* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> TObj_ModelIterator_as_Standard_Transient_mut(TObj_ModelIterator* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleTObjModelIterator*> TObj_ModelIterator_to_handle(TObj_ModelIterator* obj) {
-    try { return {new HandleTObjModelIterator(obj), nullptr}; }
+extern "C" OcctResult<Handle_TObj_ModelIterator*> TObj_ModelIterator_to_handle(TObj_ModelIterator* obj) {
+    try { return {new Handle_TObj_ModelIterator(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const TObj_ModelIterator*> HandleTObjModelIterator_get(const HandleTObjModelIterator* handle) {
+extern "C" OcctResult<const TObj_ModelIterator*> Handle_TObj_ModelIterator_get(const Handle_TObj_ModelIterator* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TObj_ModelIterator*> HandleTObjModelIterator_get_mut(HandleTObjModelIterator* handle) {
+extern "C" OcctResult<TObj_ModelIterator*> Handle_TObj_ModelIterator_get_mut(Handle_TObj_ModelIterator* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTObjObjectIterator*> HandleTObjModelIterator_to_HandleTObjObjectIterator(const HandleTObjModelIterator* self_) {
-    try { return {new HandleTObjObjectIterator(*self_), nullptr}; }
+extern "C" OcctResult<Handle_TObj_ObjectIterator*> Handle_TObj_ModelIterator_to_Handle_TObj_ObjectIterator(const Handle_TObj_ModelIterator* self_) {
+    try { return {new Handle_TObj_ObjectIterator(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleTObjModelIterator_to_HandleStandardTransient(const HandleTObjModelIterator* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_TObj_ModelIterator_to_Handle_Standard_Transient(const Handle_TObj_ModelIterator* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> TObj_ModelIterator_inherited_IsInstance(const TObj_ModelIterator* self, Handle(Standard_Type) const& theType) {
@@ -1376,8 +1355,8 @@ extern "C" OcctResult<bool> TObj_Object_set_name_handletcollectionhasciistring(c
     try { return {self_->SetName(*theName), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<bool> TObj_Object_set_name_charptr(const TObj_Object* self_, const char* name) {
-    try { return {self_->SetName(name), nullptr}; }
+extern "C" OcctResult<bool> TObj_Object_set_name_charptr(const TObj_Object* self_, const char* theName) {
+    try { return {self_->SetName(theName), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> TObj_Object_has_reference(const TObj_Object* self_, Handle(TObj_Object) const* theObject) {
@@ -1514,35 +1493,35 @@ extern "C" OcctResult<Handle(Standard_Type) const*> TObj_Object_get_type_descrip
 }
 extern "C" OcctResult<const Standard_Transient*> TObj_Object_as_Standard_Transient(const TObj_Object* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> TObj_Object_as_Standard_Transient_mut(TObj_Object* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleTObjObject*> TObj_Object_to_handle(TObj_Object* obj) {
-    try { return {new HandleTObjObject(obj), nullptr}; }
+extern "C" OcctResult<Handle_TObj_Object*> TObj_Object_to_handle(TObj_Object* obj) {
+    try { return {new Handle_TObj_Object(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const TObj_Object*> HandleTObjObject_get(const HandleTObjObject* handle) {
+extern "C" OcctResult<const TObj_Object*> Handle_TObj_Object_get(const Handle_TObj_Object* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TObj_Object*> HandleTObjObject_get_mut(HandleTObjObject* handle) {
+extern "C" OcctResult<TObj_Object*> Handle_TObj_Object_get_mut(Handle_TObj_Object* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleTObjObject_to_HandleStandardTransient(const HandleTObjObject* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_TObj_Object_to_Handle_Standard_Transient(const Handle_TObj_Object* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTObjHiddenPartition*> HandleTObjObject_downcast_to_HandleTObjHiddenPartition(const HandleTObjObject* self_) {
+extern "C" OcctResult<Handle_TObj_HiddenPartition*> Handle_TObj_Object_downcast_to_Handle_TObj_HiddenPartition(const Handle_TObj_Object* self_) {
     try {
     opencascade::handle<TObj_HiddenPartition> result = opencascade::handle<TObj_HiddenPartition>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleTObjHiddenPartition(result), nullptr};
+    return {new Handle_TObj_HiddenPartition(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTObjPartition*> HandleTObjObject_downcast_to_HandleTObjPartition(const HandleTObjObject* self_) {
+extern "C" OcctResult<Handle_TObj_Partition*> Handle_TObj_Object_downcast_to_Handle_TObj_Partition(const Handle_TObj_Object* self_) {
     try {
     opencascade::handle<TObj_Partition> result = opencascade::handle<TObj_Partition>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleTObjPartition(result), nullptr};
+    return {new Handle_TObj_Partition(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
@@ -1610,51 +1589,51 @@ extern "C" OcctResult<Handle(Standard_Type) const*> TObj_ObjectIterator_get_type
 }
 extern "C" OcctResult<const Standard_Transient*> TObj_ObjectIterator_as_Standard_Transient(const TObj_ObjectIterator* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> TObj_ObjectIterator_as_Standard_Transient_mut(TObj_ObjectIterator* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleTObjObjectIterator*> TObj_ObjectIterator_to_handle(TObj_ObjectIterator* obj) {
-    try { return {new HandleTObjObjectIterator(obj), nullptr}; }
+extern "C" OcctResult<Handle_TObj_ObjectIterator*> TObj_ObjectIterator_to_handle(TObj_ObjectIterator* obj) {
+    try { return {new Handle_TObj_ObjectIterator(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const TObj_ObjectIterator*> HandleTObjObjectIterator_get(const HandleTObjObjectIterator* handle) {
+extern "C" OcctResult<const TObj_ObjectIterator*> Handle_TObj_ObjectIterator_get(const Handle_TObj_ObjectIterator* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TObj_ObjectIterator*> HandleTObjObjectIterator_get_mut(HandleTObjObjectIterator* handle) {
+extern "C" OcctResult<TObj_ObjectIterator*> Handle_TObj_ObjectIterator_get_mut(Handle_TObj_ObjectIterator* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleTObjObjectIterator_to_HandleStandardTransient(const HandleTObjObjectIterator* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_TObj_ObjectIterator_to_Handle_Standard_Transient(const Handle_TObj_ObjectIterator* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTObjModelIterator*> HandleTObjObjectIterator_downcast_to_HandleTObjModelIterator(const HandleTObjObjectIterator* self_) {
+extern "C" OcctResult<Handle_TObj_ModelIterator*> Handle_TObj_ObjectIterator_downcast_to_Handle_TObj_ModelIterator(const Handle_TObj_ObjectIterator* self_) {
     try {
     opencascade::handle<TObj_ModelIterator> result = opencascade::handle<TObj_ModelIterator>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleTObjModelIterator(result), nullptr};
+    return {new Handle_TObj_ModelIterator(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTObjOcafObjectIterator*> HandleTObjObjectIterator_downcast_to_HandleTObjOcafObjectIterator(const HandleTObjObjectIterator* self_) {
+extern "C" OcctResult<Handle_TObj_OcafObjectIterator*> Handle_TObj_ObjectIterator_downcast_to_Handle_TObj_OcafObjectIterator(const Handle_TObj_ObjectIterator* self_) {
     try {
     opencascade::handle<TObj_OcafObjectIterator> result = opencascade::handle<TObj_OcafObjectIterator>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleTObjOcafObjectIterator(result), nullptr};
+    return {new Handle_TObj_OcafObjectIterator(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTObjReferenceIterator*> HandleTObjObjectIterator_downcast_to_HandleTObjReferenceIterator(const HandleTObjObjectIterator* self_) {
+extern "C" OcctResult<Handle_TObj_ReferenceIterator*> Handle_TObj_ObjectIterator_downcast_to_Handle_TObj_ReferenceIterator(const Handle_TObj_ObjectIterator* self_) {
     try {
     opencascade::handle<TObj_ReferenceIterator> result = opencascade::handle<TObj_ReferenceIterator>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleTObjReferenceIterator(result), nullptr};
+    return {new Handle_TObj_ReferenceIterator(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTObjSequenceIterator*> HandleTObjObjectIterator_downcast_to_HandleTObjSequenceIterator(const HandleTObjObjectIterator* self_) {
+extern "C" OcctResult<Handle_TObj_SequenceIterator*> Handle_TObj_ObjectIterator_downcast_to_Handle_TObj_SequenceIterator(const Handle_TObj_ObjectIterator* self_) {
     try {
     opencascade::handle<TObj_SequenceIterator> result = opencascade::handle<TObj_SequenceIterator>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleTObjSequenceIterator(result), nullptr};
+    return {new Handle_TObj_SequenceIterator(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
@@ -1714,28 +1693,28 @@ extern "C" OcctResult<const TObj_ObjectIterator*> TObj_OcafObjectIterator_as_TOb
 extern "C" OcctResult<TObj_ObjectIterator*> TObj_OcafObjectIterator_as_TObj_ObjectIterator_mut(TObj_OcafObjectIterator* self_) { return {static_cast<TObj_ObjectIterator*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> TObj_OcafObjectIterator_as_Standard_Transient(const TObj_OcafObjectIterator* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> TObj_OcafObjectIterator_as_Standard_Transient_mut(TObj_OcafObjectIterator* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleTObjOcafObjectIterator*> TObj_OcafObjectIterator_to_handle(TObj_OcafObjectIterator* obj) {
-    try { return {new HandleTObjOcafObjectIterator(obj), nullptr}; }
+extern "C" OcctResult<Handle_TObj_OcafObjectIterator*> TObj_OcafObjectIterator_to_handle(TObj_OcafObjectIterator* obj) {
+    try { return {new Handle_TObj_OcafObjectIterator(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const TObj_OcafObjectIterator*> HandleTObjOcafObjectIterator_get(const HandleTObjOcafObjectIterator* handle) {
+extern "C" OcctResult<const TObj_OcafObjectIterator*> Handle_TObj_OcafObjectIterator_get(const Handle_TObj_OcafObjectIterator* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TObj_OcafObjectIterator*> HandleTObjOcafObjectIterator_get_mut(HandleTObjOcafObjectIterator* handle) {
+extern "C" OcctResult<TObj_OcafObjectIterator*> Handle_TObj_OcafObjectIterator_get_mut(Handle_TObj_OcafObjectIterator* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTObjLabelIterator*> HandleTObjOcafObjectIterator_to_HandleTObjLabelIterator(const HandleTObjOcafObjectIterator* self_) {
-    try { return {new HandleTObjLabelIterator(*self_), nullptr}; }
+extern "C" OcctResult<Handle_TObj_LabelIterator*> Handle_TObj_OcafObjectIterator_to_Handle_TObj_LabelIterator(const Handle_TObj_OcafObjectIterator* self_) {
+    try { return {new Handle_TObj_LabelIterator(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTObjObjectIterator*> HandleTObjOcafObjectIterator_to_HandleTObjObjectIterator(const HandleTObjOcafObjectIterator* self_) {
-    try { return {new HandleTObjObjectIterator(*self_), nullptr}; }
+extern "C" OcctResult<Handle_TObj_ObjectIterator*> Handle_TObj_OcafObjectIterator_to_Handle_TObj_ObjectIterator(const Handle_TObj_OcafObjectIterator* self_) {
+    try { return {new Handle_TObj_ObjectIterator(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleTObjOcafObjectIterator_to_HandleStandardTransient(const HandleTObjOcafObjectIterator* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_TObj_OcafObjectIterator_to_Handle_Standard_Transient(const Handle_TObj_OcafObjectIterator* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> TObj_OcafObjectIterator_inherited_More(const TObj_OcafObjectIterator* self) {
@@ -1848,31 +1827,31 @@ extern "C" OcctResult<const TObj_Object*> TObj_Partition_as_TObj_Object(const TO
 extern "C" OcctResult<TObj_Object*> TObj_Partition_as_TObj_Object_mut(TObj_Partition* self_) { return {static_cast<TObj_Object*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> TObj_Partition_as_Standard_Transient(const TObj_Partition* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> TObj_Partition_as_Standard_Transient_mut(TObj_Partition* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleTObjPartition*> TObj_Partition_to_handle(TObj_Partition* obj) {
-    try { return {new HandleTObjPartition(obj), nullptr}; }
+extern "C" OcctResult<Handle_TObj_Partition*> TObj_Partition_to_handle(TObj_Partition* obj) {
+    try { return {new Handle_TObj_Partition(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const TObj_Partition*> HandleTObjPartition_get(const HandleTObjPartition* handle) {
+extern "C" OcctResult<const TObj_Partition*> Handle_TObj_Partition_get(const Handle_TObj_Partition* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TObj_Partition*> HandleTObjPartition_get_mut(HandleTObjPartition* handle) {
+extern "C" OcctResult<TObj_Partition*> Handle_TObj_Partition_get_mut(Handle_TObj_Partition* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTObjObject*> HandleTObjPartition_to_HandleTObjObject(const HandleTObjPartition* self_) {
-    try { return {new HandleTObjObject(*self_), nullptr}; }
+extern "C" OcctResult<Handle_TObj_Object*> Handle_TObj_Partition_to_Handle_TObj_Object(const Handle_TObj_Partition* self_) {
+    try { return {new Handle_TObj_Object(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleTObjPartition_to_HandleStandardTransient(const HandleTObjPartition* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_TObj_Partition_to_Handle_Standard_Transient(const Handle_TObj_Partition* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTObjHiddenPartition*> HandleTObjPartition_downcast_to_HandleTObjHiddenPartition(const HandleTObjPartition* self_) {
+extern "C" OcctResult<Handle_TObj_HiddenPartition*> Handle_TObj_Partition_downcast_to_Handle_TObj_HiddenPartition(const Handle_TObj_Partition* self_) {
     try {
     opencascade::handle<TObj_HiddenPartition> result = opencascade::handle<TObj_HiddenPartition>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleTObjHiddenPartition(result), nullptr};
+    return {new Handle_TObj_HiddenPartition(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
@@ -2109,28 +2088,28 @@ extern "C" OcctResult<const TObj_ObjectIterator*> TObj_ReferenceIterator_as_TObj
 extern "C" OcctResult<TObj_ObjectIterator*> TObj_ReferenceIterator_as_TObj_ObjectIterator_mut(TObj_ReferenceIterator* self_) { return {static_cast<TObj_ObjectIterator*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> TObj_ReferenceIterator_as_Standard_Transient(const TObj_ReferenceIterator* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> TObj_ReferenceIterator_as_Standard_Transient_mut(TObj_ReferenceIterator* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleTObjReferenceIterator*> TObj_ReferenceIterator_to_handle(TObj_ReferenceIterator* obj) {
-    try { return {new HandleTObjReferenceIterator(obj), nullptr}; }
+extern "C" OcctResult<Handle_TObj_ReferenceIterator*> TObj_ReferenceIterator_to_handle(TObj_ReferenceIterator* obj) {
+    try { return {new Handle_TObj_ReferenceIterator(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const TObj_ReferenceIterator*> HandleTObjReferenceIterator_get(const HandleTObjReferenceIterator* handle) {
+extern "C" OcctResult<const TObj_ReferenceIterator*> Handle_TObj_ReferenceIterator_get(const Handle_TObj_ReferenceIterator* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TObj_ReferenceIterator*> HandleTObjReferenceIterator_get_mut(HandleTObjReferenceIterator* handle) {
+extern "C" OcctResult<TObj_ReferenceIterator*> Handle_TObj_ReferenceIterator_get_mut(Handle_TObj_ReferenceIterator* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTObjLabelIterator*> HandleTObjReferenceIterator_to_HandleTObjLabelIterator(const HandleTObjReferenceIterator* self_) {
-    try { return {new HandleTObjLabelIterator(*self_), nullptr}; }
+extern "C" OcctResult<Handle_TObj_LabelIterator*> Handle_TObj_ReferenceIterator_to_Handle_TObj_LabelIterator(const Handle_TObj_ReferenceIterator* self_) {
+    try { return {new Handle_TObj_LabelIterator(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTObjObjectIterator*> HandleTObjReferenceIterator_to_HandleTObjObjectIterator(const HandleTObjReferenceIterator* self_) {
-    try { return {new HandleTObjObjectIterator(*self_), nullptr}; }
+extern "C" OcctResult<Handle_TObj_ObjectIterator*> Handle_TObj_ReferenceIterator_to_Handle_TObj_ObjectIterator(const Handle_TObj_ReferenceIterator* self_) {
+    try { return {new Handle_TObj_ObjectIterator(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleTObjReferenceIterator_to_HandleStandardTransient(const HandleTObjReferenceIterator* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_TObj_ReferenceIterator_to_Handle_Standard_Transient(const Handle_TObj_ReferenceIterator* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> TObj_ReferenceIterator_inherited_More(const TObj_ReferenceIterator* self) {
@@ -2183,7 +2162,7 @@ extern "C" void TObj_ReferenceIterator_destructor(TObj_ReferenceIterator* self_)
 // TObj_SequenceIterator wrappers
 // ========================
 
-extern "C" OcctResult<TObj_SequenceIterator*> TObj_SequenceIterator_ctor_handletobjhsequenceofobject_handlestandardtype(Handle(TObj_HSequenceOfObject) const* theObjects, Handle(Standard_Type) const* theType) {
+extern "C" OcctResult<TObj_SequenceIterator*> TObj_SequenceIterator_ctor_handlencollectionhsequenceopencascadehandletobjobject_handlestandardtype(Handle(NCollection_HSequence_opencascade_handle_TObj_Object) const* theObjects, Handle(Standard_Type) const* theType) {
     try { return {new TObj_SequenceIterator(*theObjects, *theType), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -2215,24 +2194,24 @@ extern "C" OcctResult<const TObj_ObjectIterator*> TObj_SequenceIterator_as_TObj_
 extern "C" OcctResult<TObj_ObjectIterator*> TObj_SequenceIterator_as_TObj_ObjectIterator_mut(TObj_SequenceIterator* self_) { return {static_cast<TObj_ObjectIterator*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> TObj_SequenceIterator_as_Standard_Transient(const TObj_SequenceIterator* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> TObj_SequenceIterator_as_Standard_Transient_mut(TObj_SequenceIterator* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleTObjSequenceIterator*> TObj_SequenceIterator_to_handle(TObj_SequenceIterator* obj) {
-    try { return {new HandleTObjSequenceIterator(obj), nullptr}; }
+extern "C" OcctResult<Handle_TObj_SequenceIterator*> TObj_SequenceIterator_to_handle(TObj_SequenceIterator* obj) {
+    try { return {new Handle_TObj_SequenceIterator(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const TObj_SequenceIterator*> HandleTObjSequenceIterator_get(const HandleTObjSequenceIterator* handle) {
+extern "C" OcctResult<const TObj_SequenceIterator*> Handle_TObj_SequenceIterator_get(const Handle_TObj_SequenceIterator* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TObj_SequenceIterator*> HandleTObjSequenceIterator_get_mut(HandleTObjSequenceIterator* handle) {
+extern "C" OcctResult<TObj_SequenceIterator*> Handle_TObj_SequenceIterator_get_mut(Handle_TObj_SequenceIterator* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTObjObjectIterator*> HandleTObjSequenceIterator_to_HandleTObjObjectIterator(const HandleTObjSequenceIterator* self_) {
-    try { return {new HandleTObjObjectIterator(*self_), nullptr}; }
+extern "C" OcctResult<Handle_TObj_ObjectIterator*> Handle_TObj_SequenceIterator_to_Handle_TObj_ObjectIterator(const Handle_TObj_SequenceIterator* self_) {
+    try { return {new Handle_TObj_ObjectIterator(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleTObjSequenceIterator_to_HandleStandardTransient(const HandleTObjSequenceIterator* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_TObj_SequenceIterator_to_Handle_Standard_Transient(const Handle_TObj_SequenceIterator* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> TObj_SequenceIterator_inherited_IsInstance(const TObj_SequenceIterator* self, Handle(Standard_Type) const& theType) {
@@ -2264,94 +2243,6 @@ extern "C" const char* TObj_SequenceIterator_inherited_Delete(const TObj_Sequenc
     OCCT_CATCH_RETURN_VOID
 }
 extern "C" void TObj_SequenceIterator_destructor(TObj_SequenceIterator* self_) { delete self_; }
-
-// ========================
-// TObj_HSequenceOfObject wrappers
-// ========================
-
-extern "C" OcctResult<TObj_HSequenceOfObject*> TObj_HSequenceOfObject_ctor() {
-    try { return {new TObj_HSequenceOfObject(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<TObj_HSequenceOfObject*> TObj_HSequenceOfObject_ctor_sequenceofobject(TObj_SequenceOfObject const* theOther) {
-    try { return {new TObj_HSequenceOfObject(*theOther), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<TObj_SequenceOfObject const*> TObj_HSequenceOfObject_sequence(const TObj_HSequenceOfObject* self_) {
-    try { return {&(self_->Sequence()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* TObj_HSequenceOfObject_append_handletobjobject(TObj_HSequenceOfObject* self_, Handle(TObj_Object) const* theItem) {
-    try { self_->Append(*theItem); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* TObj_HSequenceOfObject_append_sequenceofobject(TObj_HSequenceOfObject* self_, TObj_SequenceOfObject* theSequence) {
-    try { self_->Append(*theSequence); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<TObj_SequenceOfObject*> TObj_HSequenceOfObject_change_sequence(TObj_HSequenceOfObject* self_) {
-    try { return {&(self_->ChangeSequence()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Handle(Standard_Type) const*> TObj_HSequenceOfObject_dynamic_type(const TObj_HSequenceOfObject* self_) {
-    try { return {&(self_->DynamicType()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<char const*> TObj_HSequenceOfObject_get_type_name() {
-    try { return {TObj_HSequenceOfObject::get_type_name(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Handle(Standard_Type) const*> TObj_HSequenceOfObject_get_type_descriptor() {
-    try { return {&(TObj_HSequenceOfObject::get_type_descriptor()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<const Standard_Transient*> TObj_HSequenceOfObject_as_Standard_Transient(const TObj_HSequenceOfObject* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<Standard_Transient*> TObj_HSequenceOfObject_as_Standard_Transient_mut(TObj_HSequenceOfObject* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleTObjHSequenceOfObject*> TObj_HSequenceOfObject_to_handle(TObj_HSequenceOfObject* obj) {
-    try { return {new HandleTObjHSequenceOfObject(obj), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<const TObj_HSequenceOfObject*> HandleTObjHSequenceOfObject_get(const HandleTObjHSequenceOfObject* handle) {
-    try { return {(*handle).get(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<TObj_HSequenceOfObject*> HandleTObjHSequenceOfObject_get_mut(HandleTObjHSequenceOfObject* handle) {
-    try { return {(*handle).get(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<HandleStandardTransient*> HandleTObjHSequenceOfObject_to_HandleStandardTransient(const HandleTObjHSequenceOfObject* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<bool> TObj_HSequenceOfObject_inherited_IsInstance(const TObj_HSequenceOfObject* self, Handle(Standard_Type) const& theType) {
-    try { return {self->IsInstance(theType), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<bool> TObj_HSequenceOfObject_inherited_IsKind(const TObj_HSequenceOfObject* self, Handle(Standard_Type) const& theType) {
-    try { return {self->IsKind(theType), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Standard_Transient*> TObj_HSequenceOfObject_inherited_This(const TObj_HSequenceOfObject* self) {
-    try { return {self->This(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<int32_t> TObj_HSequenceOfObject_inherited_GetRefCount(const TObj_HSequenceOfObject* self) {
-    try { return {self->GetRefCount(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* TObj_HSequenceOfObject_inherited_IncrementRefCounter(TObj_HSequenceOfObject* self) {
-    try { self->IncrementRefCounter(); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<int32_t> TObj_HSequenceOfObject_inherited_DecrementRefCounter(TObj_HSequenceOfObject* self) {
-    try { return {self->DecrementRefCounter(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* TObj_HSequenceOfObject_inherited_Delete(const TObj_HSequenceOfObject* self) {
-    try { self->Delete(); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" void TObj_HSequenceOfObject_destructor(TObj_HSequenceOfObject* self_) { delete self_; }
 
 // ========================
 // TObj_TIntSparseArray wrappers
@@ -2453,24 +2344,24 @@ extern "C" OcctResult<const TDF_Attribute*> TObj_TIntSparseArray_as_TDF_Attribut
 extern "C" OcctResult<TDF_Attribute*> TObj_TIntSparseArray_as_TDF_Attribute_mut(TObj_TIntSparseArray* self_) { return {static_cast<TDF_Attribute*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> TObj_TIntSparseArray_as_Standard_Transient(const TObj_TIntSparseArray* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> TObj_TIntSparseArray_as_Standard_Transient_mut(TObj_TIntSparseArray* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleTObjTIntSparseArray*> TObj_TIntSparseArray_to_handle(TObj_TIntSparseArray* obj) {
-    try { return {new HandleTObjTIntSparseArray(obj), nullptr}; }
+extern "C" OcctResult<Handle_TObj_TIntSparseArray*> TObj_TIntSparseArray_to_handle(TObj_TIntSparseArray* obj) {
+    try { return {new Handle_TObj_TIntSparseArray(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const TObj_TIntSparseArray*> HandleTObjTIntSparseArray_get(const HandleTObjTIntSparseArray* handle) {
+extern "C" OcctResult<const TObj_TIntSparseArray*> Handle_TObj_TIntSparseArray_get(const Handle_TObj_TIntSparseArray* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TObj_TIntSparseArray*> HandleTObjTIntSparseArray_get_mut(HandleTObjTIntSparseArray* handle) {
+extern "C" OcctResult<TObj_TIntSparseArray*> Handle_TObj_TIntSparseArray_get_mut(Handle_TObj_TIntSparseArray* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTDFAttribute*> HandleTObjTIntSparseArray_to_HandleTDFAttribute(const HandleTObjTIntSparseArray* self_) {
-    try { return {new HandleTDFAttribute(*self_), nullptr}; }
+extern "C" OcctResult<Handle_TDF_Attribute*> Handle_TObj_TIntSparseArray_to_Handle_TDF_Attribute(const Handle_TObj_TIntSparseArray* self_) {
+    try { return {new Handle_TDF_Attribute(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleTObjTIntSparseArray_to_HandleStandardTransient(const HandleTObjTIntSparseArray* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_TObj_TIntSparseArray_to_Handle_Standard_Transient(const Handle_TObj_TIntSparseArray* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" const char* TObj_TIntSparseArray_inherited_SetID(TObj_TIntSparseArray* self, Standard_GUID const& arg0) {
@@ -2573,10 +2464,6 @@ extern "C" const char* TObj_TIntSparseArray_inherited_References(const TObj_TInt
     try { self->References(aDataSet); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* TObj_TIntSparseArray_inherited_ExtendedDump(const TObj_TIntSparseArray* self, Standard_OStream& anOS, TDF_IDFilter const& aFilter, TDF_AttributeIndexedMap& aMap) {
-    try { self->ExtendedDump(anOS, aFilter, aMap); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
 extern "C" const char* TObj_TIntSparseArray_inherited_Forget(TObj_TIntSparseArray* self, int32_t aTransaction) {
     try { self->Forget(aTransaction); return nullptr; }
     OCCT_CATCH_RETURN_VOID
@@ -2663,24 +2550,24 @@ extern "C" OcctResult<const TDF_Attribute*> TObj_TModel_as_TDF_Attribute(const T
 extern "C" OcctResult<TDF_Attribute*> TObj_TModel_as_TDF_Attribute_mut(TObj_TModel* self_) { return {static_cast<TDF_Attribute*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> TObj_TModel_as_Standard_Transient(const TObj_TModel* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> TObj_TModel_as_Standard_Transient_mut(TObj_TModel* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleTObjTModel*> TObj_TModel_to_handle(TObj_TModel* obj) {
-    try { return {new HandleTObjTModel(obj), nullptr}; }
+extern "C" OcctResult<Handle_TObj_TModel*> TObj_TModel_to_handle(TObj_TModel* obj) {
+    try { return {new Handle_TObj_TModel(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const TObj_TModel*> HandleTObjTModel_get(const HandleTObjTModel* handle) {
+extern "C" OcctResult<const TObj_TModel*> Handle_TObj_TModel_get(const Handle_TObj_TModel* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TObj_TModel*> HandleTObjTModel_get_mut(HandleTObjTModel* handle) {
+extern "C" OcctResult<TObj_TModel*> Handle_TObj_TModel_get_mut(Handle_TObj_TModel* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTDFAttribute*> HandleTObjTModel_to_HandleTDFAttribute(const HandleTObjTModel* self_) {
-    try { return {new HandleTDFAttribute(*self_), nullptr}; }
+extern "C" OcctResult<Handle_TDF_Attribute*> Handle_TObj_TModel_to_Handle_TDF_Attribute(const Handle_TObj_TModel* self_) {
+    try { return {new Handle_TDF_Attribute(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleTObjTModel_to_HandleStandardTransient(const HandleTObjTModel* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_TObj_TModel_to_Handle_Standard_Transient(const Handle_TObj_TModel* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" const char* TObj_TModel_inherited_SetID(TObj_TModel* self, Standard_GUID const& arg0) {
@@ -2799,10 +2686,6 @@ extern "C" const char* TObj_TModel_inherited_References(const TObj_TModel* self,
     try { self->References(aDataSet); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* TObj_TModel_inherited_ExtendedDump(const TObj_TModel* self, Standard_OStream& anOS, TDF_IDFilter const& aFilter, TDF_AttributeIndexedMap& aMap) {
-    try { self->ExtendedDump(anOS, aFilter, aMap); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
 extern "C" const char* TObj_TModel_inherited_Forget(TObj_TModel* self, int32_t aTransaction) {
     try { self->Forget(aTransaction); return nullptr; }
     OCCT_CATCH_RETURN_VOID
@@ -2869,14 +2752,6 @@ extern "C" const char* TObj_TNameContainer_clear(TObj_TNameContainer* self_) {
     try { self_->Clear(); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* TObj_TNameContainer_set(TObj_TNameContainer* self_, TObj_DataMapOfNameLabel const* theElem) {
-    try { self_->Set(*theElem); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<TObj_DataMapOfNameLabel const*> TObj_TNameContainer_get(const TObj_TNameContainer* self_) {
-    try { return {&(self_->Get()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
 extern "C" const char* TObj_TNameContainer_restore(TObj_TNameContainer* self_, Handle(TDF_Attribute) const* theWith) {
     try { self_->Restore(*theWith); return nullptr; }
     OCCT_CATCH_RETURN_VOID
@@ -2893,7 +2768,7 @@ extern "C" OcctResult<Standard_GUID const*> TObj_TNameContainer_get_id() {
     try { return {&(TObj_TNameContainer::GetID()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(TObj_TNameContainer)*> TObj_TNameContainer_set_label(TDF_Label const* theLabel) {
+extern "C" OcctResult<Handle(TObj_TNameContainer)*> TObj_TNameContainer_set(TDF_Label const* theLabel) {
     try { return {new Handle(TObj_TNameContainer)(TObj_TNameContainer::Set(*theLabel)), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -2909,24 +2784,24 @@ extern "C" OcctResult<const TDF_Attribute*> TObj_TNameContainer_as_TDF_Attribute
 extern "C" OcctResult<TDF_Attribute*> TObj_TNameContainer_as_TDF_Attribute_mut(TObj_TNameContainer* self_) { return {static_cast<TDF_Attribute*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> TObj_TNameContainer_as_Standard_Transient(const TObj_TNameContainer* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> TObj_TNameContainer_as_Standard_Transient_mut(TObj_TNameContainer* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleTObjTNameContainer*> TObj_TNameContainer_to_handle(TObj_TNameContainer* obj) {
-    try { return {new HandleTObjTNameContainer(obj), nullptr}; }
+extern "C" OcctResult<Handle_TObj_TNameContainer*> TObj_TNameContainer_to_handle(TObj_TNameContainer* obj) {
+    try { return {new Handle_TObj_TNameContainer(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const TObj_TNameContainer*> HandleTObjTNameContainer_get(const HandleTObjTNameContainer* handle) {
+extern "C" OcctResult<const TObj_TNameContainer*> Handle_TObj_TNameContainer_get(const Handle_TObj_TNameContainer* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TObj_TNameContainer*> HandleTObjTNameContainer_get_mut(HandleTObjTNameContainer* handle) {
+extern "C" OcctResult<TObj_TNameContainer*> Handle_TObj_TNameContainer_get_mut(Handle_TObj_TNameContainer* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTDFAttribute*> HandleTObjTNameContainer_to_HandleTDFAttribute(const HandleTObjTNameContainer* self_) {
-    try { return {new HandleTDFAttribute(*self_), nullptr}; }
+extern "C" OcctResult<Handle_TDF_Attribute*> Handle_TObj_TNameContainer_to_Handle_TDF_Attribute(const Handle_TObj_TNameContainer* self_) {
+    try { return {new Handle_TDF_Attribute(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleTObjTNameContainer_to_HandleStandardTransient(const HandleTObjTNameContainer* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_TObj_TNameContainer_to_Handle_Standard_Transient(const Handle_TObj_TNameContainer* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" const char* TObj_TNameContainer_inherited_SetID(TObj_TNameContainer* self, Standard_GUID const& arg0) {
@@ -3045,10 +2920,6 @@ extern "C" const char* TObj_TNameContainer_inherited_References(const TObj_TName
     try { self->References(aDataSet); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* TObj_TNameContainer_inherited_ExtendedDump(const TObj_TNameContainer* self, Standard_OStream& anOS, TDF_IDFilter const& aFilter, TDF_AttributeIndexedMap& aMap) {
-    try { self->ExtendedDump(anOS, aFilter, aMap); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
 extern "C" const char* TObj_TNameContainer_inherited_Forget(TObj_TNameContainer* self, int32_t aTransaction) {
     try { self->Forget(aTransaction); return nullptr; }
     OCCT_CATCH_RETURN_VOID
@@ -3147,24 +3018,24 @@ extern "C" OcctResult<const TDF_Attribute*> TObj_TObject_as_TDF_Attribute(const 
 extern "C" OcctResult<TDF_Attribute*> TObj_TObject_as_TDF_Attribute_mut(TObj_TObject* self_) { return {static_cast<TDF_Attribute*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> TObj_TObject_as_Standard_Transient(const TObj_TObject* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> TObj_TObject_as_Standard_Transient_mut(TObj_TObject* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleTObjTObject*> TObj_TObject_to_handle(TObj_TObject* obj) {
-    try { return {new HandleTObjTObject(obj), nullptr}; }
+extern "C" OcctResult<Handle_TObj_TObject*> TObj_TObject_to_handle(TObj_TObject* obj) {
+    try { return {new Handle_TObj_TObject(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const TObj_TObject*> HandleTObjTObject_get(const HandleTObjTObject* handle) {
+extern "C" OcctResult<const TObj_TObject*> Handle_TObj_TObject_get(const Handle_TObj_TObject* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TObj_TObject*> HandleTObjTObject_get_mut(HandleTObjTObject* handle) {
+extern "C" OcctResult<TObj_TObject*> Handle_TObj_TObject_get_mut(Handle_TObj_TObject* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTDFAttribute*> HandleTObjTObject_to_HandleTDFAttribute(const HandleTObjTObject* self_) {
-    try { return {new HandleTDFAttribute(*self_), nullptr}; }
+extern "C" OcctResult<Handle_TDF_Attribute*> Handle_TObj_TObject_to_Handle_TDF_Attribute(const Handle_TObj_TObject* self_) {
+    try { return {new Handle_TDF_Attribute(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleTObjTObject_to_HandleStandardTransient(const HandleTObjTObject* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_TObj_TObject_to_Handle_Standard_Transient(const Handle_TObj_TObject* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" const char* TObj_TObject_inherited_SetID(TObj_TObject* self, Standard_GUID const& arg0) {
@@ -3273,10 +3144,6 @@ extern "C" OcctResult<Handle(TDF_DeltaOnRemoval)*> TObj_TObject_inherited_DeltaO
 }
 extern "C" const char* TObj_TObject_inherited_References(const TObj_TObject* self, Handle(TDF_DataSet) const& aDataSet) {
     try { self->References(aDataSet); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* TObj_TObject_inherited_ExtendedDump(const TObj_TObject* self, Standard_OStream& anOS, TDF_IDFilter const& aFilter, TDF_AttributeIndexedMap& aMap) {
-    try { self->ExtendedDump(anOS, aFilter, aMap); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
 extern "C" const char* TObj_TObject_inherited_Forget(TObj_TObject* self, int32_t aTransaction) {
@@ -3401,24 +3268,24 @@ extern "C" OcctResult<const TDF_Attribute*> TObj_TReference_as_TDF_Attribute(con
 extern "C" OcctResult<TDF_Attribute*> TObj_TReference_as_TDF_Attribute_mut(TObj_TReference* self_) { return {static_cast<TDF_Attribute*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> TObj_TReference_as_Standard_Transient(const TObj_TReference* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> TObj_TReference_as_Standard_Transient_mut(TObj_TReference* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleTObjTReference*> TObj_TReference_to_handle(TObj_TReference* obj) {
-    try { return {new HandleTObjTReference(obj), nullptr}; }
+extern "C" OcctResult<Handle_TObj_TReference*> TObj_TReference_to_handle(TObj_TReference* obj) {
+    try { return {new Handle_TObj_TReference(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const TObj_TReference*> HandleTObjTReference_get(const HandleTObjTReference* handle) {
+extern "C" OcctResult<const TObj_TReference*> Handle_TObj_TReference_get(const Handle_TObj_TReference* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TObj_TReference*> HandleTObjTReference_get_mut(HandleTObjTReference* handle) {
+extern "C" OcctResult<TObj_TReference*> Handle_TObj_TReference_get_mut(Handle_TObj_TReference* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTDFAttribute*> HandleTObjTReference_to_HandleTDFAttribute(const HandleTObjTReference* self_) {
-    try { return {new HandleTDFAttribute(*self_), nullptr}; }
+extern "C" OcctResult<Handle_TDF_Attribute*> Handle_TObj_TReference_to_Handle_TDF_Attribute(const Handle_TObj_TReference* self_) {
+    try { return {new Handle_TDF_Attribute(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleTObjTReference_to_HandleStandardTransient(const HandleTObjTReference* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_TObj_TReference_to_Handle_Standard_Transient(const Handle_TObj_TReference* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" const char* TObj_TReference_inherited_SetID(TObj_TReference* self, Standard_GUID const& arg0) {
@@ -3517,10 +3384,6 @@ extern "C" const char* TObj_TReference_inherited_References(const TObj_TReferenc
     try { self->References(aDataSet); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* TObj_TReference_inherited_ExtendedDump(const TObj_TReference* self, Standard_OStream& anOS, TDF_IDFilter const& aFilter, TDF_AttributeIndexedMap& aMap) {
-    try { self->ExtendedDump(anOS, aFilter, aMap); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
 extern "C" const char* TObj_TReference_inherited_Forget(TObj_TReference* self, int32_t aTransaction) {
     try { self->Forget(aTransaction); return nullptr; }
     OCCT_CATCH_RETURN_VOID
@@ -3615,24 +3478,24 @@ extern "C" OcctResult<const TDF_Attribute*> TObj_TXYZ_as_TDF_Attribute(const TOb
 extern "C" OcctResult<TDF_Attribute*> TObj_TXYZ_as_TDF_Attribute_mut(TObj_TXYZ* self_) { return {static_cast<TDF_Attribute*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> TObj_TXYZ_as_Standard_Transient(const TObj_TXYZ* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> TObj_TXYZ_as_Standard_Transient_mut(TObj_TXYZ* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleTObjTXYZ*> TObj_TXYZ_to_handle(TObj_TXYZ* obj) {
-    try { return {new HandleTObjTXYZ(obj), nullptr}; }
+extern "C" OcctResult<Handle_TObj_TXYZ*> TObj_TXYZ_to_handle(TObj_TXYZ* obj) {
+    try { return {new Handle_TObj_TXYZ(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const TObj_TXYZ*> HandleTObjTXYZ_get(const HandleTObjTXYZ* handle) {
+extern "C" OcctResult<const TObj_TXYZ*> Handle_TObj_TXYZ_get(const Handle_TObj_TXYZ* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TObj_TXYZ*> HandleTObjTXYZ_get_mut(HandleTObjTXYZ* handle) {
+extern "C" OcctResult<TObj_TXYZ*> Handle_TObj_TXYZ_get_mut(Handle_TObj_TXYZ* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTDFAttribute*> HandleTObjTXYZ_to_HandleTDFAttribute(const HandleTObjTXYZ* self_) {
-    try { return {new HandleTDFAttribute(*self_), nullptr}; }
+extern "C" OcctResult<Handle_TDF_Attribute*> Handle_TObj_TXYZ_to_Handle_TDF_Attribute(const Handle_TObj_TXYZ* self_) {
+    try { return {new Handle_TDF_Attribute(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleTObjTXYZ_to_HandleStandardTransient(const HandleTObjTXYZ* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_TObj_TXYZ_to_Handle_Standard_Transient(const Handle_TObj_TXYZ* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" const char* TObj_TXYZ_inherited_SetID(TObj_TXYZ* self, Standard_GUID const& arg0) {
@@ -3751,10 +3614,6 @@ extern "C" const char* TObj_TXYZ_inherited_References(const TObj_TXYZ* self, Han
     try { self->References(aDataSet); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* TObj_TXYZ_inherited_ExtendedDump(const TObj_TXYZ* self, Standard_OStream& anOS, TDF_IDFilter const& aFilter, TDF_AttributeIndexedMap& aMap) {
-    try { self->ExtendedDump(anOS, aFilter, aMap); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
 extern "C" const char* TObj_TXYZ_inherited_Forget(TObj_TXYZ* self, int32_t aTransaction) {
     try { self->Forget(aTransaction); return nullptr; }
     OCCT_CATCH_RETURN_VOID
@@ -3791,6 +3650,4 @@ extern "C" void TObj_TXYZ_destructor(TObj_TXYZ* self_) { delete self_; }
 
 
 // Nested type and typedef type destructors
-extern "C" void TObj_DataMapOfNameLabel_destructor(TObj_DataMapOfNameLabel* self_) { delete self_; }
-extern "C" void TObj_SequenceOfObject_destructor(TObj_SequenceOfObject* self_) { delete self_; }
 extern "C" void TObj_TIntSparseArray_Iterator_destructor(TObj_TIntSparseArray::Iterator* self_) { delete self_; }

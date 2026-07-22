@@ -294,14 +294,14 @@ impl TryFrom<i32> for Volume3dElementShape {
 
 // Handle type re-exports (targets of handle upcasts/downcasts)
 pub use crate::ffi_types::{
-    HandleStandardTransient, HandleStepDataSelectMember, HandleStepDataSelectNamed,
+    Handle_Standard_Transient, Handle_StepData_SelectMember, Handle_StepData_SelectNamed,
 };
 
 // ========================
 // From StepElement_AnalysisItemWithinRepresentation.hxx
 // ========================
 
-/// **Source:** `StepElement_AnalysisItemWithinRepresentation.hxx`:31 - `StepElement_AnalysisItemWithinRepresentation`
+/// **Source:** `StepElement_AnalysisItemWithinRepresentation.hxx`:28 - `StepElement_AnalysisItemWithinRepresentation`
 /// Representation of STEP entity AnalysisItemWithinRepresentation
 pub use crate::ffi_types::StepElement_AnalysisItemWithinRepresentation as AnalysisItemWithinRepresentation;
 
@@ -316,7 +316,7 @@ unsafe impl crate::CppDeletable for AnalysisItemWithinRepresentation {
 }
 
 impl AnalysisItemWithinRepresentation {
-    /// **Source:** `StepElement_AnalysisItemWithinRepresentation.hxx`:36 - `StepElement_AnalysisItemWithinRepresentation::StepElement_AnalysisItemWithinRepresentation()`
+    /// **Source:** `StepElement_AnalysisItemWithinRepresentation.hxx`:33 - `StepElement_AnalysisItemWithinRepresentation::StepElement_AnalysisItemWithinRepresentation()`
     /// Empty constructor
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
@@ -326,14 +326,14 @@ impl AnalysisItemWithinRepresentation {
         }
     }
 
-    /// **Source:** `StepElement_AnalysisItemWithinRepresentation.hxx`:39 - `StepElement_AnalysisItemWithinRepresentation::Init()`
+    /// **Source:** `StepElement_AnalysisItemWithinRepresentation.hxx`:36 - `StepElement_AnalysisItemWithinRepresentation::Init()`
     /// Initialize all fields (own and inherited)
     pub fn init(
         &mut self,
-        aName: &crate::ffi_types::HandleTCollectionHAsciiString,
-        aDescription: &crate::ffi_types::HandleTCollectionHAsciiString,
-        aItem: &crate::ffi_types::HandleStepReprRepresentationItem,
-        aRep: &crate::ffi_types::HandleStepReprRepresentation,
+        aName: &crate::ffi_types::Handle_TCollection_HAsciiString,
+        aDescription: &crate::ffi_types::Handle_TCollection_HAsciiString,
+        aItem: &crate::ffi_types::Handle_StepRepr_RepresentationItem,
+        aRep: &crate::ffi_types::Handle_StepRepr_Representation,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepElement_AnalysisItemWithinRepresentation_init(
@@ -346,9 +346,9 @@ impl AnalysisItemWithinRepresentation {
         })
     }
 
-    /// **Source:** `StepElement_AnalysisItemWithinRepresentation.hxx`:45 - `StepElement_AnalysisItemWithinRepresentation::Name()`
+    /// **Source:** `StepElement_AnalysisItemWithinRepresentation.hxx`:42 - `StepElement_AnalysisItemWithinRepresentation::Name()`
     /// Returns field Name
-    pub fn name(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTCollectionHAsciiString> {
+    pub fn name(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_TCollection_HAsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDESTEP::StepElement_AnalysisItemWithinRepresentation_name(
@@ -358,9 +358,9 @@ impl AnalysisItemWithinRepresentation {
         }
     }
 
-    /// **Source:** `StepElement_AnalysisItemWithinRepresentation.hxx`:48 - `StepElement_AnalysisItemWithinRepresentation::SetName()`
+    /// **Source:** `StepElement_AnalysisItemWithinRepresentation.hxx`:45 - `StepElement_AnalysisItemWithinRepresentation::SetName()`
     /// Set field Name
-    pub fn set_name(&mut self, Name: &crate::ffi_types::HandleTCollectionHAsciiString) {
+    pub fn set_name(&mut self, Name: &crate::ffi_types::Handle_TCollection_HAsciiString) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepElement_AnalysisItemWithinRepresentation_set_name(
                 self as *mut Self,
@@ -369,19 +369,21 @@ impl AnalysisItemWithinRepresentation {
         })
     }
 
-    /// **Source:** `StepElement_AnalysisItemWithinRepresentation.hxx`:51 - `StepElement_AnalysisItemWithinRepresentation::Description()`
+    /// **Source:** `StepElement_AnalysisItemWithinRepresentation.hxx`:48 - `StepElement_AnalysisItemWithinRepresentation::Description()`
     /// Returns field Description
-    pub fn description(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTCollectionHAsciiString> {
+    pub fn description(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_TCollection_HAsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::StepElement_AnalysisItemWithinRepresentation_description(self as *const Self)))
         }
     }
 
-    /// **Source:** `StepElement_AnalysisItemWithinRepresentation.hxx`:54 - `StepElement_AnalysisItemWithinRepresentation::SetDescription()`
+    /// **Source:** `StepElement_AnalysisItemWithinRepresentation.hxx`:51 - `StepElement_AnalysisItemWithinRepresentation::SetDescription()`
     /// Set field Description
     pub fn set_description(
         &mut self,
-        Description: &crate::ffi_types::HandleTCollectionHAsciiString,
+        Description: &crate::ffi_types::Handle_TCollection_HAsciiString,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepElement_AnalysisItemWithinRepresentation_set_description(
@@ -391,9 +393,9 @@ impl AnalysisItemWithinRepresentation {
         })
     }
 
-    /// **Source:** `StepElement_AnalysisItemWithinRepresentation.hxx`:57 - `StepElement_AnalysisItemWithinRepresentation::Item()`
+    /// **Source:** `StepElement_AnalysisItemWithinRepresentation.hxx`:54 - `StepElement_AnalysisItemWithinRepresentation::Item()`
     /// Returns field Item
-    pub fn item(&self) -> crate::OwnedPtr<crate::ffi_types::HandleStepReprRepresentationItem> {
+    pub fn item(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_StepRepr_RepresentationItem> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDESTEP::StepElement_AnalysisItemWithinRepresentation_item(
@@ -403,9 +405,9 @@ impl AnalysisItemWithinRepresentation {
         }
     }
 
-    /// **Source:** `StepElement_AnalysisItemWithinRepresentation.hxx`:60 - `StepElement_AnalysisItemWithinRepresentation::SetItem()`
+    /// **Source:** `StepElement_AnalysisItemWithinRepresentation.hxx`:57 - `StepElement_AnalysisItemWithinRepresentation::SetItem()`
     /// Set field Item
-    pub fn set_item(&mut self, Item: &crate::ffi_types::HandleStepReprRepresentationItem) {
+    pub fn set_item(&mut self, Item: &crate::ffi_types::Handle_StepRepr_RepresentationItem) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepElement_AnalysisItemWithinRepresentation_set_item(
                 self as *mut Self,
@@ -414,9 +416,9 @@ impl AnalysisItemWithinRepresentation {
         })
     }
 
-    /// **Source:** `StepElement_AnalysisItemWithinRepresentation.hxx`:63 - `StepElement_AnalysisItemWithinRepresentation::Rep()`
+    /// **Source:** `StepElement_AnalysisItemWithinRepresentation.hxx`:60 - `StepElement_AnalysisItemWithinRepresentation::Rep()`
     /// Returns field Rep
-    pub fn rep(&self) -> crate::OwnedPtr<crate::ffi_types::HandleStepReprRepresentation> {
+    pub fn rep(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_StepRepr_Representation> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDESTEP::StepElement_AnalysisItemWithinRepresentation_rep(
@@ -426,9 +428,9 @@ impl AnalysisItemWithinRepresentation {
         }
     }
 
-    /// **Source:** `StepElement_AnalysisItemWithinRepresentation.hxx`:66 - `StepElement_AnalysisItemWithinRepresentation::SetRep()`
+    /// **Source:** `StepElement_AnalysisItemWithinRepresentation.hxx`:63 - `StepElement_AnalysisItemWithinRepresentation::SetRep()`
     /// Set field Rep
-    pub fn set_rep(&mut self, Rep: &crate::ffi_types::HandleStepReprRepresentation) {
+    pub fn set_rep(&mut self, Rep: &crate::ffi_types::Handle_StepRepr_Representation) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepElement_AnalysisItemWithinRepresentation_set_rep(
                 self as *mut Self,
@@ -437,20 +439,20 @@ impl AnalysisItemWithinRepresentation {
         })
     }
 
-    /// **Source:** `StepElement_AnalysisItemWithinRepresentation.hxx`:68 - `StepElement_AnalysisItemWithinRepresentation::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `StepElement_AnalysisItemWithinRepresentation.hxx`:65 - `StepElement_AnalysisItemWithinRepresentation::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKDESTEP::StepElement_AnalysisItemWithinRepresentation_dynamic_type(self as *const Self)))
         }
     }
 
-    /// **Source:** `StepElement_AnalysisItemWithinRepresentation.hxx`:68 - `StepElement_AnalysisItemWithinRepresentation::get_type_name()`
+    /// **Source:** `StepElement_AnalysisItemWithinRepresentation.hxx`:65 - `StepElement_AnalysisItemWithinRepresentation::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe { std::ffi::CStr::from_ptr(crate::check_result(crate::ffi_extern_TKDESTEP::StepElement_AnalysisItemWithinRepresentation_get_type_name())) }.to_string_lossy().into_owned()
     }
 
-    /// **Source:** `StepElement_AnalysisItemWithinRepresentation.hxx`:68 - `StepElement_AnalysisItemWithinRepresentation::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    /// **Source:** `StepElement_AnalysisItemWithinRepresentation.hxx`:65 - `StepElement_AnalysisItemWithinRepresentation::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKDESTEP::StepElement_AnalysisItemWithinRepresentation_get_type_descriptor()))
         }
@@ -473,7 +475,8 @@ impl AnalysisItemWithinRepresentation {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStepElementAnalysisItemWithinRepresentation> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_StepElement_AnalysisItemWithinRepresentation>
+    {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDESTEP::StepElement_AnalysisItemWithinRepresentation_to_handle(
@@ -483,21 +486,21 @@ impl AnalysisItemWithinRepresentation {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepElement_AnalysisItemWithinRepresentation_inherited_IsInstance(self as *const Self, theType)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepElement_AnalysisItemWithinRepresentation_inherited_IsKind(self as *const Self, theType)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -511,28 +514,28 @@ impl AnalysisItemWithinRepresentation {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepElement_AnalysisItemWithinRepresentation_inherited_GetRefCount(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepElement_AnalysisItemWithinRepresentation_inherited_IncrementRefCounter(self as *mut Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepElement_AnalysisItemWithinRepresentation_inherited_DecrementRefCounter(self as *mut Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepElement_AnalysisItemWithinRepresentation_inherited_Delete(self as *const Self)
@@ -540,33 +543,29 @@ impl AnalysisItemWithinRepresentation {
     }
 }
 
-pub use crate::ffi_types::HandleStepElementAnalysisItemWithinRepresentation;
+pub use crate::ffi_types::Handle_StepElement_AnalysisItemWithinRepresentation;
 
-unsafe impl crate::CppDeletable for HandleStepElementAnalysisItemWithinRepresentation {
+unsafe impl crate::CppDeletable for Handle_StepElement_AnalysisItemWithinRepresentation {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKDESTEP::HandleStepElementAnalysisItemWithinRepresentation_destructor(ptr);
+            crate::ffi_extern_TKDESTEP::Handle_StepElement_AnalysisItemWithinRepresentation_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleStepElementAnalysisItemWithinRepresentation {
+unsafe impl crate::CppCopyable for Handle_StepElement_AnalysisItemWithinRepresentation {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
         unsafe {
-            crate::check_result(
-                crate::ffi_extern_TKDESTEP::HandleStepElementAnalysisItemWithinRepresentation_clone(
-                    ptr,
-                ),
-            )
+            crate::check_result(crate::ffi_extern_TKDESTEP::Handle_StepElement_AnalysisItemWithinRepresentation_clone(ptr))
         }
     }
 }
 
-impl HandleStepElementAnalysisItemWithinRepresentation {
+impl Handle_StepElement_AnalysisItemWithinRepresentation {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
         unsafe {
-            crate::ffi_extern_TKDESTEP::HandleStepElementAnalysisItemWithinRepresentation_is_null(
+            crate::ffi_extern_TKDESTEP::Handle_StepElement_AnalysisItemWithinRepresentation_is_null(
                 self as *const Self,
             )
         }
@@ -576,7 +575,7 @@ impl HandleStepElementAnalysisItemWithinRepresentation {
     pub fn get(&self) -> &crate::ffi_types::StepElement_AnalysisItemWithinRepresentation {
         unsafe {
             &*crate::check_result(
-                crate::ffi_extern_TKDESTEP::HandleStepElementAnalysisItemWithinRepresentation_get(
+                crate::ffi_extern_TKDESTEP::Handle_StepElement_AnalysisItemWithinRepresentation_get(
                     self as *const Self,
                 ),
             )
@@ -588,16 +587,16 @@ impl HandleStepElementAnalysisItemWithinRepresentation {
         &mut self,
     ) -> &mut crate::ffi_types::StepElement_AnalysisItemWithinRepresentation {
         unsafe {
-            &mut *crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepElementAnalysisItemWithinRepresentation_get_mut(self as *mut Self))
+            &mut *crate::check_result(crate::ffi_extern_TKDESTEP::Handle_StepElement_AnalysisItemWithinRepresentation_get_mut(self as *mut Self))
         }
     }
 
     /// Upcast Handle<StepElement_AnalysisItemWithinRepresentation> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepElementAnalysisItemWithinRepresentation_to_HandleStandardTransient(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::Handle_StepElement_AnalysisItemWithinRepresentation_to_Handle_Standard_Transient(self as *const Self)))
         }
     }
 }
@@ -606,7 +605,7 @@ impl HandleStepElementAnalysisItemWithinRepresentation {
 // From StepElement_Curve3dElementDescriptor.hxx
 // ========================
 
-/// **Source:** `StepElement_Curve3dElementDescriptor.hxx`:30 - `StepElement_Curve3dElementDescriptor`
+/// **Source:** `StepElement_Curve3dElementDescriptor.hxx`:31 - `StepElement_Curve3dElementDescriptor`
 /// Representation of STEP entity Curve3dElementDescriptor
 pub use crate::ffi_types::StepElement_Curve3dElementDescriptor as Curve3dElementDescriptor;
 
@@ -619,7 +618,7 @@ unsafe impl crate::CppDeletable for Curve3dElementDescriptor {
 }
 
 impl Curve3dElementDescriptor {
-    /// **Source:** `StepElement_Curve3dElementDescriptor.hxx`:35 - `StepElement_Curve3dElementDescriptor::StepElement_Curve3dElementDescriptor()`
+    /// **Source:** `StepElement_Curve3dElementDescriptor.hxx`:36 - `StepElement_Curve3dElementDescriptor::StepElement_Curve3dElementDescriptor()`
     /// Empty constructor
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
@@ -629,13 +628,13 @@ impl Curve3dElementDescriptor {
         }
     }
 
-    /// **Source:** `StepElement_Curve3dElementDescriptor.hxx`:38 - `StepElement_Curve3dElementDescriptor::Init()`
+    /// **Source:** `StepElement_Curve3dElementDescriptor.hxx`:39 - `StepElement_Curve3dElementDescriptor::Init()`
     /// Initialize all fields (own and inherited)
     pub fn init(
         &mut self,
         aElementDescriptor_TopologyOrder: crate::step_element::ElementOrder,
-        aElementDescriptor_Description: &crate::ffi_types::HandleTCollectionHAsciiString,
-        aPurpose: &crate::ffi_types::HandleStepElementHArray1OfHSequenceOfCurveElementPurposeMember,
+        aElementDescriptor_Description: &crate::ffi_types::Handle_TCollection_HAsciiString,
+        aPurpose: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_NCollection_HSequence_opencascade_handle_StepElement_CurveElementPurposeMember,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepElement_Curve3dElementDescriptor_init(
@@ -647,13 +646,9 @@ impl Curve3dElementDescriptor {
         })
     }
 
-    /// **Source:** `StepElement_Curve3dElementDescriptor.hxx`:44 - `StepElement_Curve3dElementDescriptor::Purpose()`
+    /// **Source:** `StepElement_Curve3dElementDescriptor.hxx`:49 - `StepElement_Curve3dElementDescriptor::Purpose()`
     /// Returns field Purpose
-    pub fn purpose(
-        &self,
-    ) -> crate::OwnedPtr<
-        crate::ffi_types::HandleStepElementHArray1OfHSequenceOfCurveElementPurposeMember,
-    > {
+    pub fn purpose(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_NCollection_HSequence_opencascade_handle_StepElement_CurveElementPurposeMember>{
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDESTEP::StepElement_Curve3dElementDescriptor_purpose(
@@ -663,11 +658,11 @@ impl Curve3dElementDescriptor {
         }
     }
 
-    /// **Source:** `StepElement_Curve3dElementDescriptor.hxx`:47 - `StepElement_Curve3dElementDescriptor::SetPurpose()`
+    /// **Source:** `StepElement_Curve3dElementDescriptor.hxx`:52 - `StepElement_Curve3dElementDescriptor::SetPurpose()`
     /// Set field Purpose
     pub fn set_purpose(
         &mut self,
-        Purpose: &crate::ffi_types::HandleStepElementHArray1OfHSequenceOfCurveElementPurposeMember,
+        Purpose: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_NCollection_HSequence_opencascade_handle_StepElement_CurveElementPurposeMember,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepElement_Curve3dElementDescriptor_set_purpose(
@@ -677,8 +672,8 @@ impl Curve3dElementDescriptor {
         })
     }
 
-    /// **Source:** `StepElement_Curve3dElementDescriptor.hxx`:50 - `StepElement_Curve3dElementDescriptor::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `StepElement_Curve3dElementDescriptor.hxx`:57 - `StepElement_Curve3dElementDescriptor::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKDESTEP::StepElement_Curve3dElementDescriptor_dynamic_type(
@@ -688,7 +683,7 @@ impl Curve3dElementDescriptor {
         }
     }
 
-    /// **Source:** `StepElement_Curve3dElementDescriptor.hxx`:50 - `StepElement_Curve3dElementDescriptor::get_type_name()`
+    /// **Source:** `StepElement_Curve3dElementDescriptor.hxx`:57 - `StepElement_Curve3dElementDescriptor::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -699,8 +694,8 @@ impl Curve3dElementDescriptor {
         .into_owned()
     }
 
-    /// **Source:** `StepElement_Curve3dElementDescriptor.hxx`:50 - `StepElement_Curve3dElementDescriptor::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    /// **Source:** `StepElement_Curve3dElementDescriptor.hxx`:57 - `StepElement_Curve3dElementDescriptor::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKDESTEP::StepElement_Curve3dElementDescriptor_get_type_descriptor()))
         }
@@ -737,7 +732,7 @@ impl Curve3dElementDescriptor {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStepElementCurve3dElementDescriptor> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_StepElement_Curve3dElementDescriptor> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDESTEP::StepElement_Curve3dElementDescriptor_to_handle(
@@ -747,37 +742,39 @@ impl Curve3dElementDescriptor {
         }
     }
 
-    /// Inherited: **Source:** `StepElement_ElementDescriptor.hxx`:42 - `StepElement_ElementDescriptor::TopologyOrder()`
+    /// Inherited: **Source:** `StepElement_ElementDescriptor.hxx`:39 - `StepElement_ElementDescriptor::TopologyOrder()`
     pub fn topology_order(&self) -> crate::step_element::ElementOrder {
         crate::step_element::ElementOrder::try_from(crate::check_result(unsafe { crate::ffi_extern_TKDESTEP::StepElement_Curve3dElementDescriptor_inherited_TopologyOrder(self as *const Self) })).unwrap()
     }
 
-    /// Inherited: **Source:** `StepElement_ElementDescriptor.hxx`:45 - `StepElement_ElementDescriptor::SetTopologyOrder()`
+    /// Inherited: **Source:** `StepElement_ElementDescriptor.hxx`:42 - `StepElement_ElementDescriptor::SetTopologyOrder()`
     pub fn set_topology_order(&mut self, TopologyOrder: crate::step_element::ElementOrder) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepElement_Curve3dElementDescriptor_inherited_SetTopologyOrder(self as *mut Self, TopologyOrder.into())
         })
     }
 
-    /// Inherited: **Source:** `StepElement_ElementDescriptor.hxx`:48 - `StepElement_ElementDescriptor::Description()`
-    pub fn description(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTCollectionHAsciiString> {
+    /// Inherited: **Source:** `StepElement_ElementDescriptor.hxx`:45 - `StepElement_ElementDescriptor::Description()`
+    pub fn description(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_TCollection_HAsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::StepElement_Curve3dElementDescriptor_inherited_Description(self as *const Self)))
         }
     }
 
-    /// Inherited: **Source:** `StepElement_ElementDescriptor.hxx`:51 - `StepElement_ElementDescriptor::SetDescription()`
+    /// Inherited: **Source:** `StepElement_ElementDescriptor.hxx`:48 - `StepElement_ElementDescriptor::SetDescription()`
     pub fn set_description(
         &mut self,
-        Description: &crate::ffi_types::HandleTCollectionHAsciiString,
+        Description: &crate::ffi_types::Handle_TCollection_HAsciiString,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepElement_Curve3dElementDescriptor_inherited_SetDescription(self as *mut Self, Description)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepElement_Curve3dElementDescriptor_inherited_IsInstance(
                 self as *const Self,
@@ -786,8 +783,8 @@ impl Curve3dElementDescriptor {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepElement_Curve3dElementDescriptor_inherited_IsKind(
                 self as *const Self,
@@ -796,7 +793,7 @@ impl Curve3dElementDescriptor {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -812,7 +809,7 @@ impl Curve3dElementDescriptor {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepElement_Curve3dElementDescriptor_inherited_GetRefCount(
@@ -821,21 +818,21 @@ impl Curve3dElementDescriptor {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepElement_Curve3dElementDescriptor_inherited_IncrementRefCounter(self as *mut Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepElement_Curve3dElementDescriptor_inherited_DecrementRefCounter(self as *mut Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepElement_Curve3dElementDescriptor_inherited_Delete(
@@ -845,31 +842,31 @@ impl Curve3dElementDescriptor {
     }
 }
 
-pub use crate::ffi_types::HandleStepElementCurve3dElementDescriptor;
+pub use crate::ffi_types::Handle_StepElement_Curve3dElementDescriptor;
 
-unsafe impl crate::CppDeletable for HandleStepElementCurve3dElementDescriptor {
+unsafe impl crate::CppDeletable for Handle_StepElement_Curve3dElementDescriptor {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKDESTEP::HandleStepElementCurve3dElementDescriptor_destructor(ptr);
+            crate::ffi_extern_TKDESTEP::Handle_StepElement_Curve3dElementDescriptor_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleStepElementCurve3dElementDescriptor {
+unsafe impl crate::CppCopyable for Handle_StepElement_Curve3dElementDescriptor {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
         unsafe {
             crate::check_result(
-                crate::ffi_extern_TKDESTEP::HandleStepElementCurve3dElementDescriptor_clone(ptr),
+                crate::ffi_extern_TKDESTEP::Handle_StepElement_Curve3dElementDescriptor_clone(ptr),
             )
         }
     }
 }
 
-impl HandleStepElementCurve3dElementDescriptor {
+impl Handle_StepElement_Curve3dElementDescriptor {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
         unsafe {
-            crate::ffi_extern_TKDESTEP::HandleStepElementCurve3dElementDescriptor_is_null(
+            crate::ffi_extern_TKDESTEP::Handle_StepElement_Curve3dElementDescriptor_is_null(
                 self as *const Self,
             )
         }
@@ -879,7 +876,7 @@ impl HandleStepElementCurve3dElementDescriptor {
     pub fn get(&self) -> &crate::ffi_types::StepElement_Curve3dElementDescriptor {
         unsafe {
             &*crate::check_result(
-                crate::ffi_extern_TKDESTEP::HandleStepElementCurve3dElementDescriptor_get(
+                crate::ffi_extern_TKDESTEP::Handle_StepElement_Curve3dElementDescriptor_get(
                     self as *const Self,
                 ),
             )
@@ -890,7 +887,7 @@ impl HandleStepElementCurve3dElementDescriptor {
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::StepElement_Curve3dElementDescriptor {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi_extern_TKDESTEP::HandleStepElementCurve3dElementDescriptor_get_mut(
+                crate::ffi_extern_TKDESTEP::Handle_StepElement_Curve3dElementDescriptor_get_mut(
                     self as *mut Self,
                 ),
             )
@@ -900,18 +897,18 @@ impl HandleStepElementCurve3dElementDescriptor {
     /// Upcast Handle<StepElement_Curve3dElementDescriptor> to Handle<StepElement_ElementDescriptor>
     pub fn to_handle_element_descriptor(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStepElementElementDescriptor> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_StepElement_ElementDescriptor> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepElementCurve3dElementDescriptor_to_HandleStepElementElementDescriptor(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::Handle_StepElement_Curve3dElementDescriptor_to_Handle_StepElement_ElementDescriptor(self as *const Self)))
         }
     }
 
     /// Upcast Handle<StepElement_Curve3dElementDescriptor> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepElementCurve3dElementDescriptor_to_HandleStandardTransient(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::Handle_StepElement_Curve3dElementDescriptor_to_Handle_Standard_Transient(self as *const Self)))
         }
     }
 }
@@ -920,7 +917,7 @@ impl HandleStepElementCurve3dElementDescriptor {
 // From StepElement_CurveElementEndReleasePacket.hxx
 // ========================
 
-/// **Source:** `StepElement_CurveElementEndReleasePacket.hxx`:29 - `StepElement_CurveElementEndReleasePacket`
+/// **Source:** `StepElement_CurveElementEndReleasePacket.hxx`:26 - `StepElement_CurveElementEndReleasePacket`
 /// Representation of STEP entity CurveElementEndReleasePacket
 pub use crate::ffi_types::StepElement_CurveElementEndReleasePacket as CurveElementEndReleasePacket;
 
@@ -933,7 +930,7 @@ unsafe impl crate::CppDeletable for CurveElementEndReleasePacket {
 }
 
 impl CurveElementEndReleasePacket {
-    /// **Source:** `StepElement_CurveElementEndReleasePacket.hxx`:34 - `StepElement_CurveElementEndReleasePacket::StepElement_CurveElementEndReleasePacket()`
+    /// **Source:** `StepElement_CurveElementEndReleasePacket.hxx`:31 - `StepElement_CurveElementEndReleasePacket::StepElement_CurveElementEndReleasePacket()`
     /// Empty constructor
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
@@ -943,7 +940,7 @@ impl CurveElementEndReleasePacket {
         }
     }
 
-    /// **Source:** `StepElement_CurveElementEndReleasePacket.hxx`:37 - `StepElement_CurveElementEndReleasePacket::Init()`
+    /// **Source:** `StepElement_CurveElementEndReleasePacket.hxx`:34 - `StepElement_CurveElementEndReleasePacket::Init()`
     /// Initialize all fields (own and inherited)
     pub fn init(&mut self, aReleaseFreedom: &CurveElementFreedom, aReleaseStiffness: f64) {
         crate::check_void_result(unsafe {
@@ -955,7 +952,7 @@ impl CurveElementEndReleasePacket {
         })
     }
 
-    /// **Source:** `StepElement_CurveElementEndReleasePacket.hxx`:41 - `StepElement_CurveElementEndReleasePacket::ReleaseFreedom()`
+    /// **Source:** `StepElement_CurveElementEndReleasePacket.hxx`:38 - `StepElement_CurveElementEndReleasePacket::ReleaseFreedom()`
     /// Returns field ReleaseFreedom
     pub fn release_freedom(&self) -> crate::OwnedPtr<CurveElementFreedom> {
         unsafe {
@@ -963,7 +960,7 @@ impl CurveElementEndReleasePacket {
         }
     }
 
-    /// **Source:** `StepElement_CurveElementEndReleasePacket.hxx`:44 - `StepElement_CurveElementEndReleasePacket::SetReleaseFreedom()`
+    /// **Source:** `StepElement_CurveElementEndReleasePacket.hxx`:41 - `StepElement_CurveElementEndReleasePacket::SetReleaseFreedom()`
     /// Set field ReleaseFreedom
     pub fn set_release_freedom(&mut self, ReleaseFreedom: &CurveElementFreedom) {
         crate::check_void_result(unsafe {
@@ -974,7 +971,7 @@ impl CurveElementEndReleasePacket {
         })
     }
 
-    /// **Source:** `StepElement_CurveElementEndReleasePacket.hxx`:47 - `StepElement_CurveElementEndReleasePacket::ReleaseStiffness()`
+    /// **Source:** `StepElement_CurveElementEndReleasePacket.hxx`:44 - `StepElement_CurveElementEndReleasePacket::ReleaseStiffness()`
     /// Returns field ReleaseStiffness
     pub fn release_stiffness(&self) -> f64 {
         crate::check_result(unsafe {
@@ -984,7 +981,7 @@ impl CurveElementEndReleasePacket {
         })
     }
 
-    /// **Source:** `StepElement_CurveElementEndReleasePacket.hxx`:50 - `StepElement_CurveElementEndReleasePacket::SetReleaseStiffness()`
+    /// **Source:** `StepElement_CurveElementEndReleasePacket.hxx`:47 - `StepElement_CurveElementEndReleasePacket::SetReleaseStiffness()`
     /// Set field ReleaseStiffness
     pub fn set_release_stiffness(&mut self, ReleaseStiffness: f64) {
         crate::check_void_result(unsafe {
@@ -992,8 +989,8 @@ impl CurveElementEndReleasePacket {
         })
     }
 
-    /// **Source:** `StepElement_CurveElementEndReleasePacket.hxx`:52 - `StepElement_CurveElementEndReleasePacket::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `StepElement_CurveElementEndReleasePacket.hxx`:49 - `StepElement_CurveElementEndReleasePacket::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKDESTEP::StepElement_CurveElementEndReleasePacket_dynamic_type(
@@ -1003,7 +1000,7 @@ impl CurveElementEndReleasePacket {
         }
     }
 
-    /// **Source:** `StepElement_CurveElementEndReleasePacket.hxx`:52 - `StepElement_CurveElementEndReleasePacket::get_type_name()`
+    /// **Source:** `StepElement_CurveElementEndReleasePacket.hxx`:49 - `StepElement_CurveElementEndReleasePacket::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -1015,8 +1012,8 @@ impl CurveElementEndReleasePacket {
         .into_owned()
     }
 
-    /// **Source:** `StepElement_CurveElementEndReleasePacket.hxx`:52 - `StepElement_CurveElementEndReleasePacket::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    /// **Source:** `StepElement_CurveElementEndReleasePacket.hxx`:49 - `StepElement_CurveElementEndReleasePacket::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKDESTEP::StepElement_CurveElementEndReleasePacket_get_type_descriptor()))
         }
@@ -1039,7 +1036,7 @@ impl CurveElementEndReleasePacket {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStepElementCurveElementEndReleasePacket> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_StepElement_CurveElementEndReleasePacket> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDESTEP::StepElement_CurveElementEndReleasePacket_to_handle(
@@ -1049,15 +1046,15 @@ impl CurveElementEndReleasePacket {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepElement_CurveElementEndReleasePacket_inherited_IsInstance(self as *const Self, theType)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepElement_CurveElementEndReleasePacket_inherited_IsKind(
                 self as *const Self,
@@ -1066,7 +1063,7 @@ impl CurveElementEndReleasePacket {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -1082,28 +1079,28 @@ impl CurveElementEndReleasePacket {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepElement_CurveElementEndReleasePacket_inherited_GetRefCount(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepElement_CurveElementEndReleasePacket_inherited_IncrementRefCounter(self as *mut Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepElement_CurveElementEndReleasePacket_inherited_DecrementRefCounter(self as *mut Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepElement_CurveElementEndReleasePacket_inherited_Delete(
@@ -1113,23 +1110,23 @@ impl CurveElementEndReleasePacket {
     }
 }
 
-pub use crate::ffi_types::HandleStepElementCurveElementEndReleasePacket;
+pub use crate::ffi_types::Handle_StepElement_CurveElementEndReleasePacket;
 
-unsafe impl crate::CppDeletable for HandleStepElementCurveElementEndReleasePacket {
+unsafe impl crate::CppDeletable for Handle_StepElement_CurveElementEndReleasePacket {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKDESTEP::HandleStepElementCurveElementEndReleasePacket_destructor(
+            crate::ffi_extern_TKDESTEP::Handle_StepElement_CurveElementEndReleasePacket_destructor(
                 ptr,
             );
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleStepElementCurveElementEndReleasePacket {
+unsafe impl crate::CppCopyable for Handle_StepElement_CurveElementEndReleasePacket {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
         unsafe {
             crate::check_result(
-                crate::ffi_extern_TKDESTEP::HandleStepElementCurveElementEndReleasePacket_clone(
+                crate::ffi_extern_TKDESTEP::Handle_StepElement_CurveElementEndReleasePacket_clone(
                     ptr,
                 ),
             )
@@ -1137,11 +1134,11 @@ unsafe impl crate::CppCopyable for HandleStepElementCurveElementEndReleasePacket
     }
 }
 
-impl HandleStepElementCurveElementEndReleasePacket {
+impl Handle_StepElement_CurveElementEndReleasePacket {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
         unsafe {
-            crate::ffi_extern_TKDESTEP::HandleStepElementCurveElementEndReleasePacket_is_null(
+            crate::ffi_extern_TKDESTEP::Handle_StepElement_CurveElementEndReleasePacket_is_null(
                 self as *const Self,
             )
         }
@@ -1151,7 +1148,7 @@ impl HandleStepElementCurveElementEndReleasePacket {
     pub fn get(&self) -> &crate::ffi_types::StepElement_CurveElementEndReleasePacket {
         unsafe {
             &*crate::check_result(
-                crate::ffi_extern_TKDESTEP::HandleStepElementCurveElementEndReleasePacket_get(
+                crate::ffi_extern_TKDESTEP::Handle_StepElement_CurveElementEndReleasePacket_get(
                     self as *const Self,
                 ),
             )
@@ -1162,7 +1159,7 @@ impl HandleStepElementCurveElementEndReleasePacket {
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::StepElement_CurveElementEndReleasePacket {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi_extern_TKDESTEP::HandleStepElementCurveElementEndReleasePacket_get_mut(
+                crate::ffi_extern_TKDESTEP::Handle_StepElement_CurveElementEndReleasePacket_get_mut(
                     self as *mut Self,
                 ),
             )
@@ -1172,9 +1169,9 @@ impl HandleStepElementCurveElementEndReleasePacket {
     /// Upcast Handle<StepElement_CurveElementEndReleasePacket> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepElementCurveElementEndReleasePacket_to_HandleStandardTransient(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::Handle_StepElement_CurveElementEndReleasePacket_to_Handle_Standard_Transient(self as *const Self)))
         }
     }
 }
@@ -1206,10 +1203,10 @@ impl CurveElementFreedom {
         }
     }
 
-    /// **Source:** `StepElement_CurveElementFreedom.hxx`:42 - `StepElement_CurveElementFreedom::CaseNum()`
+    /// **Source:** `StepElement_CurveElementFreedom.hxx`:41 - `StepElement_CurveElementFreedom::CaseNum()`
     /// Recognizes a kind of CurveElementFreedom select type
     /// return 0
-    pub fn case_num(&self, ent: &crate::ffi_types::HandleStandardTransient) -> i32 {
+    pub fn case_num(&self, ent: &crate::ffi_types::Handle_Standard_Transient) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepElement_CurveElementFreedom_case_num(
                 self as *const Self,
@@ -1218,12 +1215,12 @@ impl CurveElementFreedom {
         })
     }
 
-    /// **Source:** `StepElement_CurveElementFreedom.hxx`:48 - `StepElement_CurveElementFreedom::CaseMem()`
+    /// **Source:** `StepElement_CurveElementFreedom.hxx`:47 - `StepElement_CurveElementFreedom::CaseMem()`
     /// Recognizes a items of select member CurveElementFreedomMember
     /// 1 -> EnumeratedCurveElementFreedom
     /// 2 -> ApplicationDefinedDegreeOfFreedom
     /// 0 else
-    pub fn case_mem(&self, ent: &crate::ffi_types::HandleStepDataSelectMember) -> i32 {
+    pub fn case_mem(&self, ent: &crate::ffi_types::Handle_StepData_SelectMember) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepElement_CurveElementFreedom_case_mem(
                 self as *const Self,
@@ -1232,9 +1229,9 @@ impl CurveElementFreedom {
         })
     }
 
-    /// **Source:** `StepElement_CurveElementFreedom.hxx`:52 - `StepElement_CurveElementFreedom::NewMember()`
+    /// **Source:** `StepElement_CurveElementFreedom.hxx`:50 - `StepElement_CurveElementFreedom::NewMember()`
     /// Returns a new select member the type CurveElementFreedomMember
-    pub fn new_member(&self) -> crate::OwnedPtr<crate::ffi_types::HandleStepDataSelectMember> {
+    pub fn new_member(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_StepData_SelectMember> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDESTEP::StepElement_CurveElementFreedom_new_member(
@@ -1244,7 +1241,7 @@ impl CurveElementFreedom {
         }
     }
 
-    /// **Source:** `StepElement_CurveElementFreedom.hxx`:55 - `StepElement_CurveElementFreedom::SetEnumeratedCurveElementFreedom()`
+    /// **Source:** `StepElement_CurveElementFreedom.hxx`:53 - `StepElement_CurveElementFreedom::SetEnumeratedCurveElementFreedom()`
     /// Set Value for EnumeratedCurveElementFreedom
     pub fn set_enumerated_curve_element_freedom(
         &mut self,
@@ -1255,7 +1252,7 @@ impl CurveElementFreedom {
         })
     }
 
-    /// **Source:** `StepElement_CurveElementFreedom.hxx`:59 - `StepElement_CurveElementFreedom::EnumeratedCurveElementFreedom()`
+    /// **Source:** `StepElement_CurveElementFreedom.hxx`:57 - `StepElement_CurveElementFreedom::EnumeratedCurveElementFreedom()`
     /// Returns Value as EnumeratedCurveElementFreedom (or Null if another type)
     pub fn enumerated_curve_element_freedom(
         &self,
@@ -1263,22 +1260,22 @@ impl CurveElementFreedom {
         crate::step_element::EnumeratedCurveElementFreedom::try_from(crate::check_result(unsafe { crate::ffi_extern_TKDESTEP::StepElement_CurveElementFreedom_enumerated_curve_element_freedom(self as *const Self) })).unwrap()
     }
 
-    /// **Source:** `StepElement_CurveElementFreedom.hxx`:62 - `StepElement_CurveElementFreedom::SetApplicationDefinedDegreeOfFreedom()`
+    /// **Source:** `StepElement_CurveElementFreedom.hxx`:60 - `StepElement_CurveElementFreedom::SetApplicationDefinedDegreeOfFreedom()`
     /// Set Value for ApplicationDefinedDegreeOfFreedom
     pub fn set_application_defined_degree_of_freedom(
         &mut self,
-        aVal: &crate::ffi_types::HandleTCollectionHAsciiString,
+        aVal: &crate::ffi_types::Handle_TCollection_HAsciiString,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepElement_CurveElementFreedom_set_application_defined_degree_of_freedom(self as *mut Self, aVal)
         })
     }
 
-    /// **Source:** `StepElement_CurveElementFreedom.hxx`:66 - `StepElement_CurveElementFreedom::ApplicationDefinedDegreeOfFreedom()`
+    /// **Source:** `StepElement_CurveElementFreedom.hxx`:64 - `StepElement_CurveElementFreedom::ApplicationDefinedDegreeOfFreedom()`
     /// Returns Value as ApplicationDefinedDegreeOfFreedom (or Null if another type)
     pub fn application_defined_degree_of_freedom(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleTCollectionHAsciiString> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_TCollection_HAsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::StepElement_CurveElementFreedom_application_defined_degree_of_freedom(self as *const Self)))
         }
@@ -1303,7 +1300,7 @@ impl CurveElementFreedom {
     }
 
     /// Inherited: **Source:** `StepData_SelectType.hxx`:64 - `StepData_SelectType::Matches()`
-    pub fn matches(&self, ent: &crate::ffi_types::HandleStandardTransient) -> bool {
+    pub fn matches(&self, ent: &crate::ffi_types::Handle_Standard_Transient) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepElement_CurveElementFreedom_inherited_Matches(
                 self as *const Self,
@@ -1313,7 +1310,7 @@ impl CurveElementFreedom {
     }
 
     /// Inherited: **Source:** `StepData_SelectType.hxx`:69 - `StepData_SelectType::SetValue()`
-    pub fn set_value(&mut self, ent: &crate::ffi_types::HandleStandardTransient) {
+    pub fn set_value(&mut self, ent: &crate::ffi_types::Handle_Standard_Transient) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepElement_CurveElementFreedom_inherited_SetValue(
                 self as *mut Self,
@@ -1332,7 +1329,7 @@ impl CurveElementFreedom {
     }
 
     /// Inherited: **Source:** `StepData_SelectType.hxx`:76 - `StepData_SelectType::Value()`
-    pub fn value(&self) -> &crate::ffi_types::HandleStandardTransient {
+    pub fn value(&self) -> &crate::ffi_types::Handle_Standard_Transient {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKDESTEP::StepElement_CurveElementFreedom_inherited_Value(
@@ -1352,7 +1349,7 @@ impl CurveElementFreedom {
     }
 
     /// Inherited: **Source:** `StepData_SelectType.hxx`:83 - `StepData_SelectType::Type()`
-    pub fn type_(&self) -> crate::OwnedPtr<crate::ffi_types::HandleStandardType> {
+    pub fn type_(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Type> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDESTEP::StepElement_CurveElementFreedom_inherited_Type(
@@ -1372,7 +1369,7 @@ impl CurveElementFreedom {
     }
 
     /// Inherited: **Source:** `StepData_SelectType.hxx`:94 - `StepData_SelectType::Description()`
-    pub fn description(&self) -> crate::OwnedPtr<crate::ffi_types::HandleStepDataPDescr> {
+    pub fn description(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_StepData_PDescr> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDESTEP::StepElement_CurveElementFreedom_inherited_Description(
@@ -1392,7 +1389,7 @@ impl CurveElementFreedom {
     }
 
     /// Inherited: **Source:** `StepData_SelectType.hxx`:118 - `StepData_SelectType::Member()`
-    pub fn member(&self) -> crate::OwnedPtr<crate::ffi_types::HandleStepDataSelectMember> {
+    pub fn member(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_StepData_SelectMember> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDESTEP::StepElement_CurveElementFreedom_inherited_Member(
@@ -1463,8 +1460,8 @@ impl CurveElementFreedom {
 // From StepElement_CurveElementFreedomMember.hxx
 // ========================
 
-/// **Source:** `StepElement_CurveElementFreedomMember.hxx`:29 - `StepElement_CurveElementFreedomMember`
-/// Representation of member for  STEP SELECT type CurveElementFreedom
+/// **Source:** `StepElement_CurveElementFreedomMember.hxx`:26 - `StepElement_CurveElementFreedomMember`
+/// Representation of member for STEP SELECT type CurveElementFreedom
 pub use crate::ffi_types::StepElement_CurveElementFreedomMember as CurveElementFreedomMember;
 
 unsafe impl crate::CppDeletable for CurveElementFreedomMember {
@@ -1476,7 +1473,7 @@ unsafe impl crate::CppDeletable for CurveElementFreedomMember {
 }
 
 impl CurveElementFreedomMember {
-    /// **Source:** `StepElement_CurveElementFreedomMember.hxx`:34 - `StepElement_CurveElementFreedomMember::StepElement_CurveElementFreedomMember()`
+    /// **Source:** `StepElement_CurveElementFreedomMember.hxx`:31 - `StepElement_CurveElementFreedomMember::StepElement_CurveElementFreedomMember()`
     /// Empty constructor
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
@@ -1486,7 +1483,7 @@ impl CurveElementFreedomMember {
         }
     }
 
-    /// **Source:** `StepElement_CurveElementFreedomMember.hxx`:37 - `StepElement_CurveElementFreedomMember::HasName()`
+    /// **Source:** `StepElement_CurveElementFreedomMember.hxx`:34 - `StepElement_CurveElementFreedomMember::HasName()`
     /// Returns True if has name
     pub fn has_name(&self) -> bool {
         crate::check_result(unsafe {
@@ -1496,7 +1493,7 @@ impl CurveElementFreedomMember {
         })
     }
 
-    /// **Source:** `StepElement_CurveElementFreedomMember.hxx`:40 - `StepElement_CurveElementFreedomMember::Name()`
+    /// **Source:** `StepElement_CurveElementFreedomMember.hxx`:37 - `StepElement_CurveElementFreedomMember::Name()`
     /// Returns set name
     pub fn name(&self) -> std::string::String {
         unsafe {
@@ -1510,7 +1507,7 @@ impl CurveElementFreedomMember {
         .into_owned()
     }
 
-    /// **Source:** `StepElement_CurveElementFreedomMember.hxx`:43 - `StepElement_CurveElementFreedomMember::SetName()`
+    /// **Source:** `StepElement_CurveElementFreedomMember.hxx`:40 - `StepElement_CurveElementFreedomMember::SetName()`
     /// Set name
     pub fn set_name(&mut self, name: &str) -> bool {
         let c_name = std::ffi::CString::new(name).unwrap();
@@ -1522,7 +1519,7 @@ impl CurveElementFreedomMember {
         })
     }
 
-    /// **Source:** `StepElement_CurveElementFreedomMember.hxx`:46 - `StepElement_CurveElementFreedomMember::Matches()`
+    /// **Source:** `StepElement_CurveElementFreedomMember.hxx`:43 - `StepElement_CurveElementFreedomMember::Matches()`
     /// Tells if the name of a SelectMember matches a given one;
     pub fn matches(&self, name: &str) -> bool {
         let c_name = std::ffi::CString::new(name).unwrap();
@@ -1534,8 +1531,8 @@ impl CurveElementFreedomMember {
         })
     }
 
-    /// **Source:** `StepElement_CurveElementFreedomMember.hxx`:49 - `StepElement_CurveElementFreedomMember::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `StepElement_CurveElementFreedomMember.hxx`:45 - `StepElement_CurveElementFreedomMember::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKDESTEP::StepElement_CurveElementFreedomMember_dynamic_type(
@@ -1545,7 +1542,7 @@ impl CurveElementFreedomMember {
         }
     }
 
-    /// **Source:** `StepElement_CurveElementFreedomMember.hxx`:49 - `StepElement_CurveElementFreedomMember::get_type_name()`
+    /// **Source:** `StepElement_CurveElementFreedomMember.hxx`:45 - `StepElement_CurveElementFreedomMember::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -1556,8 +1553,8 @@ impl CurveElementFreedomMember {
         .into_owned()
     }
 
-    /// **Source:** `StepElement_CurveElementFreedomMember.hxx`:49 - `StepElement_CurveElementFreedomMember::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    /// **Source:** `StepElement_CurveElementFreedomMember.hxx`:45 - `StepElement_CurveElementFreedomMember::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKDESTEP::StepElement_CurveElementFreedomMember_get_type_descriptor()))
         }
@@ -1608,7 +1605,7 @@ impl CurveElementFreedomMember {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStepElementCurveElementFreedomMember> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_StepElement_CurveElementFreedomMember> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDESTEP::StepElement_CurveElementFreedomMember_to_handle(
@@ -1618,7 +1615,7 @@ impl CurveElementFreedomMember {
         }
     }
 
-    /// Inherited: **Source:** `StepData_SelectNamed.hxx`:47 - `StepData_SelectNamed::Field()`
+    /// Inherited: **Source:** `StepData_SelectNamed.hxx`:44 - `StepData_SelectNamed::Field()`
     pub fn field(&self) -> &crate::step_data::Field {
         unsafe {
             &*(crate::check_result(
@@ -1629,7 +1626,7 @@ impl CurveElementFreedomMember {
         }
     }
 
-    /// Inherited: **Source:** `StepData_SelectNamed.hxx`:49 - `StepData_SelectNamed::CField()`
+    /// Inherited: **Source:** `StepData_SelectNamed.hxx`:46 - `StepData_SelectNamed::CField()`
     pub fn c_field(&mut self) -> &mut crate::step_data::Field {
         unsafe {
             &mut *(crate::check_result(
@@ -1640,7 +1637,7 @@ impl CurveElementFreedomMember {
         }
     }
 
-    /// Inherited: **Source:** `StepData_SelectNamed.hxx`:51 - `StepData_SelectNamed::Kind()`
+    /// Inherited: **Source:** `StepData_SelectNamed.hxx`:48 - `StepData_SelectNamed::Kind()`
     pub fn kind(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepElement_CurveElementFreedomMember_inherited_Kind(
@@ -1649,7 +1646,7 @@ impl CurveElementFreedomMember {
         })
     }
 
-    /// Inherited: **Source:** `StepData_SelectNamed.hxx`:53 - `StepData_SelectNamed::SetKind()`
+    /// Inherited: **Source:** `StepData_SelectNamed.hxx`:50 - `StepData_SelectNamed::SetKind()`
     pub fn set_kind(&mut self, kind: i32) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepElement_CurveElementFreedomMember_inherited_SetKind(
@@ -1659,7 +1656,7 @@ impl CurveElementFreedomMember {
         })
     }
 
-    /// Inherited: **Source:** `StepData_SelectNamed.hxx`:57 - `StepData_SelectNamed::Int()`
+    /// Inherited: **Source:** `StepData_SelectNamed.hxx`:54 - `StepData_SelectNamed::Int()`
     pub fn int(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepElement_CurveElementFreedomMember_inherited_Int(
@@ -1668,7 +1665,7 @@ impl CurveElementFreedomMember {
         })
     }
 
-    /// Inherited: **Source:** `StepData_SelectNamed.hxx`:61 - `StepData_SelectNamed::SetInt()`
+    /// Inherited: **Source:** `StepData_SelectNamed.hxx`:58 - `StepData_SelectNamed::SetInt()`
     pub fn set_int(&mut self, val: i32) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepElement_CurveElementFreedomMember_inherited_SetInt(
@@ -1678,7 +1675,7 @@ impl CurveElementFreedomMember {
         })
     }
 
-    /// Inherited: **Source:** `StepData_SelectNamed.hxx`:63 - `StepData_SelectNamed::Real()`
+    /// Inherited: **Source:** `StepData_SelectNamed.hxx`:60 - `StepData_SelectNamed::Real()`
     pub fn real(&self) -> f64 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepElement_CurveElementFreedomMember_inherited_Real(
@@ -1687,7 +1684,7 @@ impl CurveElementFreedomMember {
         })
     }
 
-    /// Inherited: **Source:** `StepData_SelectNamed.hxx`:65 - `StepData_SelectNamed::SetReal()`
+    /// Inherited: **Source:** `StepData_SelectNamed.hxx`:62 - `StepData_SelectNamed::SetReal()`
     pub fn set_real(&mut self, val: f64) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepElement_CurveElementFreedomMember_inherited_SetReal(
@@ -1697,7 +1694,7 @@ impl CurveElementFreedomMember {
         })
     }
 
-    /// Inherited: **Source:** `StepData_SelectMember.hxx`:74 - `StepData_SelectMember::ParamType()`
+    /// Inherited: **Source:** `StepData_SelectMember.hxx`:71 - `StepData_SelectMember::ParamType()`
     pub fn param_type(&self) -> crate::interface::ParamType {
         crate::interface::ParamType::try_from(crate::check_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepElement_CurveElementFreedomMember_inherited_ParamType(
@@ -1707,7 +1704,7 @@ impl CurveElementFreedomMember {
         .unwrap()
     }
 
-    /// Inherited: **Source:** `StepData_SelectMember.hxx`:85 - `StepData_SelectMember::Integer()`
+    /// Inherited: **Source:** `StepData_SelectMember.hxx`:82 - `StepData_SelectMember::Integer()`
     pub fn integer(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepElement_CurveElementFreedomMember_inherited_Integer(
@@ -1716,7 +1713,7 @@ impl CurveElementFreedomMember {
         })
     }
 
-    /// Inherited: **Source:** `StepData_SelectMember.hxx`:87 - `StepData_SelectMember::SetInteger()`
+    /// Inherited: **Source:** `StepData_SelectMember.hxx`:84 - `StepData_SelectMember::SetInteger()`
     pub fn set_integer(&mut self, val: i32) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepElement_CurveElementFreedomMember_inherited_SetInteger(
@@ -1726,7 +1723,7 @@ impl CurveElementFreedomMember {
         })
     }
 
-    /// Inherited: **Source:** `StepData_SelectMember.hxx`:89 - `StepData_SelectMember::Boolean()`
+    /// Inherited: **Source:** `StepData_SelectMember.hxx`:86 - `StepData_SelectMember::Boolean()`
     pub fn boolean(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepElement_CurveElementFreedomMember_inherited_Boolean(
@@ -1735,7 +1732,7 @@ impl CurveElementFreedomMember {
         })
     }
 
-    /// Inherited: **Source:** `StepData_SelectMember.hxx`:91 - `StepData_SelectMember::SetBoolean()`
+    /// Inherited: **Source:** `StepData_SelectMember.hxx`:88 - `StepData_SelectMember::SetBoolean()`
     pub fn set_boolean(&mut self, val: bool) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepElement_CurveElementFreedomMember_inherited_SetBoolean(
@@ -1745,7 +1742,7 @@ impl CurveElementFreedomMember {
         })
     }
 
-    /// Inherited: **Source:** `StepData_SelectMember.hxx`:93 - `StepData_SelectMember::Logical()`
+    /// Inherited: **Source:** `StepData_SelectMember.hxx`:90 - `StepData_SelectMember::Logical()`
     pub fn logical(&self) -> crate::step_data::Logical {
         crate::step_data::Logical::try_from(crate::check_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepElement_CurveElementFreedomMember_inherited_Logical(
@@ -1755,7 +1752,7 @@ impl CurveElementFreedomMember {
         .unwrap()
     }
 
-    /// Inherited: **Source:** `StepData_SelectMember.hxx`:95 - `StepData_SelectMember::SetLogical()`
+    /// Inherited: **Source:** `StepData_SelectMember.hxx`:92 - `StepData_SelectMember::SetLogical()`
     pub fn set_logical(&mut self, val: crate::step_data::Logical) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepElement_CurveElementFreedomMember_inherited_SetLogical(
@@ -1765,7 +1762,7 @@ impl CurveElementFreedomMember {
         })
     }
 
-    /// Inherited: **Source:** `StepData_SelectMember.hxx`:105 - `StepData_SelectMember::Enum()`
+    /// Inherited: **Source:** `StepData_SelectMember.hxx`:102 - `StepData_SelectMember::Enum()`
     pub fn enum_(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepElement_CurveElementFreedomMember_inherited_Enum(
@@ -1774,8 +1771,8 @@ impl CurveElementFreedomMember {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepElement_CurveElementFreedomMember_inherited_IsInstance(
                 self as *const Self,
@@ -1784,8 +1781,8 @@ impl CurveElementFreedomMember {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepElement_CurveElementFreedomMember_inherited_IsKind(
                 self as *const Self,
@@ -1794,7 +1791,7 @@ impl CurveElementFreedomMember {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -1810,7 +1807,7 @@ impl CurveElementFreedomMember {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepElement_CurveElementFreedomMember_inherited_GetRefCount(
@@ -1819,21 +1816,21 @@ impl CurveElementFreedomMember {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepElement_CurveElementFreedomMember_inherited_IncrementRefCounter(self as *mut Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepElement_CurveElementFreedomMember_inherited_DecrementRefCounter(self as *mut Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepElement_CurveElementFreedomMember_inherited_Delete(
@@ -1843,31 +1840,33 @@ impl CurveElementFreedomMember {
     }
 }
 
-pub use crate::ffi_types::HandleStepElementCurveElementFreedomMember;
+pub use crate::ffi_types::Handle_StepElement_CurveElementFreedomMember;
 
-unsafe impl crate::CppDeletable for HandleStepElementCurveElementFreedomMember {
+unsafe impl crate::CppDeletable for Handle_StepElement_CurveElementFreedomMember {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKDESTEP::HandleStepElementCurveElementFreedomMember_destructor(ptr);
+            crate::ffi_extern_TKDESTEP::Handle_StepElement_CurveElementFreedomMember_destructor(
+                ptr,
+            );
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleStepElementCurveElementFreedomMember {
+unsafe impl crate::CppCopyable for Handle_StepElement_CurveElementFreedomMember {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
         unsafe {
             crate::check_result(
-                crate::ffi_extern_TKDESTEP::HandleStepElementCurveElementFreedomMember_clone(ptr),
+                crate::ffi_extern_TKDESTEP::Handle_StepElement_CurveElementFreedomMember_clone(ptr),
             )
         }
     }
 }
 
-impl HandleStepElementCurveElementFreedomMember {
+impl Handle_StepElement_CurveElementFreedomMember {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
         unsafe {
-            crate::ffi_extern_TKDESTEP::HandleStepElementCurveElementFreedomMember_is_null(
+            crate::ffi_extern_TKDESTEP::Handle_StepElement_CurveElementFreedomMember_is_null(
                 self as *const Self,
             )
         }
@@ -1877,7 +1876,7 @@ impl HandleStepElementCurveElementFreedomMember {
     pub fn get(&self) -> &crate::ffi_types::StepElement_CurveElementFreedomMember {
         unsafe {
             &*crate::check_result(
-                crate::ffi_extern_TKDESTEP::HandleStepElementCurveElementFreedomMember_get(
+                crate::ffi_extern_TKDESTEP::Handle_StepElement_CurveElementFreedomMember_get(
                     self as *const Self,
                 ),
             )
@@ -1888,7 +1887,7 @@ impl HandleStepElementCurveElementFreedomMember {
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::StepElement_CurveElementFreedomMember {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi_extern_TKDESTEP::HandleStepElementCurveElementFreedomMember_get_mut(
+                crate::ffi_extern_TKDESTEP::Handle_StepElement_CurveElementFreedomMember_get_mut(
                     self as *mut Self,
                 ),
             )
@@ -1898,27 +1897,27 @@ impl HandleStepElementCurveElementFreedomMember {
     /// Upcast Handle<StepElement_CurveElementFreedomMember> to Handle<StepData_SelectNamed>
     pub fn to_handle_select_named(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStepDataSelectNamed> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_StepData_SelectNamed> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepElementCurveElementFreedomMember_to_HandleStepDataSelectNamed(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::Handle_StepElement_CurveElementFreedomMember_to_Handle_StepData_SelectNamed(self as *const Self)))
         }
     }
 
     /// Upcast Handle<StepElement_CurveElementFreedomMember> to Handle<StepData_SelectMember>
     pub fn to_handle_select_member(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStepDataSelectMember> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_StepData_SelectMember> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepElementCurveElementFreedomMember_to_HandleStepDataSelectMember(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::Handle_StepElement_CurveElementFreedomMember_to_Handle_StepData_SelectMember(self as *const Self)))
         }
     }
 
     /// Upcast Handle<StepElement_CurveElementFreedomMember> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepElementCurveElementFreedomMember_to_HandleStandardTransient(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::Handle_StepElement_CurveElementFreedomMember_to_Handle_Standard_Transient(self as *const Self)))
         }
     }
 }
@@ -1950,10 +1949,10 @@ impl CurveElementPurpose {
         }
     }
 
-    /// **Source:** `StepElement_CurveElementPurpose.hxx`:42 - `StepElement_CurveElementPurpose::CaseNum()`
+    /// **Source:** `StepElement_CurveElementPurpose.hxx`:41 - `StepElement_CurveElementPurpose::CaseNum()`
     /// Recognizes a kind of CurveElementPurpose select type
     /// return 0
-    pub fn case_num(&self, ent: &crate::ffi_types::HandleStandardTransient) -> i32 {
+    pub fn case_num(&self, ent: &crate::ffi_types::Handle_Standard_Transient) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepElement_CurveElementPurpose_case_num(
                 self as *const Self,
@@ -1962,12 +1961,12 @@ impl CurveElementPurpose {
         })
     }
 
-    /// **Source:** `StepElement_CurveElementPurpose.hxx`:48 - `StepElement_CurveElementPurpose::CaseMem()`
+    /// **Source:** `StepElement_CurveElementPurpose.hxx`:47 - `StepElement_CurveElementPurpose::CaseMem()`
     /// Recognizes a items of select member CurveElementPurposeMember
     /// 1 -> EnumeratedCurveElementPurpose
     /// 2 -> ApplicationDefinedElementPurpose
     /// 0 else
-    pub fn case_mem(&self, ent: &crate::ffi_types::HandleStepDataSelectMember) -> i32 {
+    pub fn case_mem(&self, ent: &crate::ffi_types::Handle_StepData_SelectMember) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepElement_CurveElementPurpose_case_mem(
                 self as *const Self,
@@ -1976,9 +1975,9 @@ impl CurveElementPurpose {
         })
     }
 
-    /// **Source:** `StepElement_CurveElementPurpose.hxx`:52 - `StepElement_CurveElementPurpose::NewMember()`
+    /// **Source:** `StepElement_CurveElementPurpose.hxx`:50 - `StepElement_CurveElementPurpose::NewMember()`
     /// Returns a new select member the type CurveElementPurposeMember
-    pub fn new_member(&self) -> crate::OwnedPtr<crate::ffi_types::HandleStepDataSelectMember> {
+    pub fn new_member(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_StepData_SelectMember> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDESTEP::StepElement_CurveElementPurpose_new_member(
@@ -1988,7 +1987,7 @@ impl CurveElementPurpose {
         }
     }
 
-    /// **Source:** `StepElement_CurveElementPurpose.hxx`:55 - `StepElement_CurveElementPurpose::SetEnumeratedCurveElementPurpose()`
+    /// **Source:** `StepElement_CurveElementPurpose.hxx`:53 - `StepElement_CurveElementPurpose::SetEnumeratedCurveElementPurpose()`
     /// Set Value for EnumeratedCurveElementPurpose
     pub fn set_enumerated_curve_element_purpose(
         &mut self,
@@ -1999,7 +1998,7 @@ impl CurveElementPurpose {
         })
     }
 
-    /// **Source:** `StepElement_CurveElementPurpose.hxx`:59 - `StepElement_CurveElementPurpose::EnumeratedCurveElementPurpose()`
+    /// **Source:** `StepElement_CurveElementPurpose.hxx`:57 - `StepElement_CurveElementPurpose::EnumeratedCurveElementPurpose()`
     /// Returns Value as EnumeratedCurveElementPurpose (or Null if another type)
     pub fn enumerated_curve_element_purpose(
         &self,
@@ -2007,22 +2006,22 @@ impl CurveElementPurpose {
         crate::step_element::EnumeratedCurveElementPurpose::try_from(crate::check_result(unsafe { crate::ffi_extern_TKDESTEP::StepElement_CurveElementPurpose_enumerated_curve_element_purpose(self as *const Self) })).unwrap()
     }
 
-    /// **Source:** `StepElement_CurveElementPurpose.hxx`:62 - `StepElement_CurveElementPurpose::SetApplicationDefinedElementPurpose()`
+    /// **Source:** `StepElement_CurveElementPurpose.hxx`:60 - `StepElement_CurveElementPurpose::SetApplicationDefinedElementPurpose()`
     /// Set Value for ApplicationDefinedElementPurpose
     pub fn set_application_defined_element_purpose(
         &mut self,
-        aVal: &crate::ffi_types::HandleTCollectionHAsciiString,
+        aVal: &crate::ffi_types::Handle_TCollection_HAsciiString,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepElement_CurveElementPurpose_set_application_defined_element_purpose(self as *mut Self, aVal)
         })
     }
 
-    /// **Source:** `StepElement_CurveElementPurpose.hxx`:66 - `StepElement_CurveElementPurpose::ApplicationDefinedElementPurpose()`
+    /// **Source:** `StepElement_CurveElementPurpose.hxx`:64 - `StepElement_CurveElementPurpose::ApplicationDefinedElementPurpose()`
     /// Returns Value as ApplicationDefinedElementPurpose (or Null if another type)
     pub fn application_defined_element_purpose(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleTCollectionHAsciiString> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_TCollection_HAsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::StepElement_CurveElementPurpose_application_defined_element_purpose(self as *const Self)))
         }
@@ -2047,7 +2046,7 @@ impl CurveElementPurpose {
     }
 
     /// Inherited: **Source:** `StepData_SelectType.hxx`:64 - `StepData_SelectType::Matches()`
-    pub fn matches(&self, ent: &crate::ffi_types::HandleStandardTransient) -> bool {
+    pub fn matches(&self, ent: &crate::ffi_types::Handle_Standard_Transient) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepElement_CurveElementPurpose_inherited_Matches(
                 self as *const Self,
@@ -2057,7 +2056,7 @@ impl CurveElementPurpose {
     }
 
     /// Inherited: **Source:** `StepData_SelectType.hxx`:69 - `StepData_SelectType::SetValue()`
-    pub fn set_value(&mut self, ent: &crate::ffi_types::HandleStandardTransient) {
+    pub fn set_value(&mut self, ent: &crate::ffi_types::Handle_Standard_Transient) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepElement_CurveElementPurpose_inherited_SetValue(
                 self as *mut Self,
@@ -2076,7 +2075,7 @@ impl CurveElementPurpose {
     }
 
     /// Inherited: **Source:** `StepData_SelectType.hxx`:76 - `StepData_SelectType::Value()`
-    pub fn value(&self) -> &crate::ffi_types::HandleStandardTransient {
+    pub fn value(&self) -> &crate::ffi_types::Handle_Standard_Transient {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKDESTEP::StepElement_CurveElementPurpose_inherited_Value(
@@ -2096,7 +2095,7 @@ impl CurveElementPurpose {
     }
 
     /// Inherited: **Source:** `StepData_SelectType.hxx`:83 - `StepData_SelectType::Type()`
-    pub fn type_(&self) -> crate::OwnedPtr<crate::ffi_types::HandleStandardType> {
+    pub fn type_(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Type> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDESTEP::StepElement_CurveElementPurpose_inherited_Type(
@@ -2116,7 +2115,7 @@ impl CurveElementPurpose {
     }
 
     /// Inherited: **Source:** `StepData_SelectType.hxx`:94 - `StepData_SelectType::Description()`
-    pub fn description(&self) -> crate::OwnedPtr<crate::ffi_types::HandleStepDataPDescr> {
+    pub fn description(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_StepData_PDescr> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDESTEP::StepElement_CurveElementPurpose_inherited_Description(
@@ -2136,7 +2135,7 @@ impl CurveElementPurpose {
     }
 
     /// Inherited: **Source:** `StepData_SelectType.hxx`:118 - `StepData_SelectType::Member()`
-    pub fn member(&self) -> crate::OwnedPtr<crate::ffi_types::HandleStepDataSelectMember> {
+    pub fn member(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_StepData_SelectMember> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDESTEP::StepElement_CurveElementPurpose_inherited_Member(
@@ -2207,8 +2206,8 @@ impl CurveElementPurpose {
 // From StepElement_CurveElementPurposeMember.hxx
 // ========================
 
-/// **Source:** `StepElement_CurveElementPurposeMember.hxx`:29 - `StepElement_CurveElementPurposeMember`
-/// Representation of member for  STEP SELECT type CurveElementPurpose
+/// **Source:** `StepElement_CurveElementPurposeMember.hxx`:26 - `StepElement_CurveElementPurposeMember`
+/// Representation of member for STEP SELECT type CurveElementPurpose
 pub use crate::ffi_types::StepElement_CurveElementPurposeMember as CurveElementPurposeMember;
 
 unsafe impl crate::CppDeletable for CurveElementPurposeMember {
@@ -2220,7 +2219,7 @@ unsafe impl crate::CppDeletable for CurveElementPurposeMember {
 }
 
 impl CurveElementPurposeMember {
-    /// **Source:** `StepElement_CurveElementPurposeMember.hxx`:34 - `StepElement_CurveElementPurposeMember::StepElement_CurveElementPurposeMember()`
+    /// **Source:** `StepElement_CurveElementPurposeMember.hxx`:31 - `StepElement_CurveElementPurposeMember::StepElement_CurveElementPurposeMember()`
     /// Empty constructor
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
@@ -2230,7 +2229,7 @@ impl CurveElementPurposeMember {
         }
     }
 
-    /// **Source:** `StepElement_CurveElementPurposeMember.hxx`:37 - `StepElement_CurveElementPurposeMember::HasName()`
+    /// **Source:** `StepElement_CurveElementPurposeMember.hxx`:34 - `StepElement_CurveElementPurposeMember::HasName()`
     /// Returns True if has name
     pub fn has_name(&self) -> bool {
         crate::check_result(unsafe {
@@ -2240,7 +2239,7 @@ impl CurveElementPurposeMember {
         })
     }
 
-    /// **Source:** `StepElement_CurveElementPurposeMember.hxx`:40 - `StepElement_CurveElementPurposeMember::Name()`
+    /// **Source:** `StepElement_CurveElementPurposeMember.hxx`:37 - `StepElement_CurveElementPurposeMember::Name()`
     /// Returns set name
     pub fn name(&self) -> std::string::String {
         unsafe {
@@ -2254,7 +2253,7 @@ impl CurveElementPurposeMember {
         .into_owned()
     }
 
-    /// **Source:** `StepElement_CurveElementPurposeMember.hxx`:43 - `StepElement_CurveElementPurposeMember::SetName()`
+    /// **Source:** `StepElement_CurveElementPurposeMember.hxx`:40 - `StepElement_CurveElementPurposeMember::SetName()`
     /// Set name
     pub fn set_name(&mut self, name: &str) -> bool {
         let c_name = std::ffi::CString::new(name).unwrap();
@@ -2266,7 +2265,7 @@ impl CurveElementPurposeMember {
         })
     }
 
-    /// **Source:** `StepElement_CurveElementPurposeMember.hxx`:46 - `StepElement_CurveElementPurposeMember::Matches()`
+    /// **Source:** `StepElement_CurveElementPurposeMember.hxx`:43 - `StepElement_CurveElementPurposeMember::Matches()`
     /// Tells if the name of a SelectMember matches a given one;
     pub fn matches(&self, name: &str) -> bool {
         let c_name = std::ffi::CString::new(name).unwrap();
@@ -2278,8 +2277,8 @@ impl CurveElementPurposeMember {
         })
     }
 
-    /// **Source:** `StepElement_CurveElementPurposeMember.hxx`:49 - `StepElement_CurveElementPurposeMember::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `StepElement_CurveElementPurposeMember.hxx`:45 - `StepElement_CurveElementPurposeMember::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKDESTEP::StepElement_CurveElementPurposeMember_dynamic_type(
@@ -2289,7 +2288,7 @@ impl CurveElementPurposeMember {
         }
     }
 
-    /// **Source:** `StepElement_CurveElementPurposeMember.hxx`:49 - `StepElement_CurveElementPurposeMember::get_type_name()`
+    /// **Source:** `StepElement_CurveElementPurposeMember.hxx`:45 - `StepElement_CurveElementPurposeMember::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -2300,8 +2299,8 @@ impl CurveElementPurposeMember {
         .into_owned()
     }
 
-    /// **Source:** `StepElement_CurveElementPurposeMember.hxx`:49 - `StepElement_CurveElementPurposeMember::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    /// **Source:** `StepElement_CurveElementPurposeMember.hxx`:45 - `StepElement_CurveElementPurposeMember::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKDESTEP::StepElement_CurveElementPurposeMember_get_type_descriptor()))
         }
@@ -2352,7 +2351,7 @@ impl CurveElementPurposeMember {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStepElementCurveElementPurposeMember> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_StepElement_CurveElementPurposeMember> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDESTEP::StepElement_CurveElementPurposeMember_to_handle(
@@ -2362,7 +2361,7 @@ impl CurveElementPurposeMember {
         }
     }
 
-    /// Inherited: **Source:** `StepData_SelectNamed.hxx`:47 - `StepData_SelectNamed::Field()`
+    /// Inherited: **Source:** `StepData_SelectNamed.hxx`:44 - `StepData_SelectNamed::Field()`
     pub fn field(&self) -> &crate::step_data::Field {
         unsafe {
             &*(crate::check_result(
@@ -2373,7 +2372,7 @@ impl CurveElementPurposeMember {
         }
     }
 
-    /// Inherited: **Source:** `StepData_SelectNamed.hxx`:49 - `StepData_SelectNamed::CField()`
+    /// Inherited: **Source:** `StepData_SelectNamed.hxx`:46 - `StepData_SelectNamed::CField()`
     pub fn c_field(&mut self) -> &mut crate::step_data::Field {
         unsafe {
             &mut *(crate::check_result(
@@ -2384,7 +2383,7 @@ impl CurveElementPurposeMember {
         }
     }
 
-    /// Inherited: **Source:** `StepData_SelectNamed.hxx`:51 - `StepData_SelectNamed::Kind()`
+    /// Inherited: **Source:** `StepData_SelectNamed.hxx`:48 - `StepData_SelectNamed::Kind()`
     pub fn kind(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepElement_CurveElementPurposeMember_inherited_Kind(
@@ -2393,7 +2392,7 @@ impl CurveElementPurposeMember {
         })
     }
 
-    /// Inherited: **Source:** `StepData_SelectNamed.hxx`:53 - `StepData_SelectNamed::SetKind()`
+    /// Inherited: **Source:** `StepData_SelectNamed.hxx`:50 - `StepData_SelectNamed::SetKind()`
     pub fn set_kind(&mut self, kind: i32) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepElement_CurveElementPurposeMember_inherited_SetKind(
@@ -2403,7 +2402,7 @@ impl CurveElementPurposeMember {
         })
     }
 
-    /// Inherited: **Source:** `StepData_SelectNamed.hxx`:57 - `StepData_SelectNamed::Int()`
+    /// Inherited: **Source:** `StepData_SelectNamed.hxx`:54 - `StepData_SelectNamed::Int()`
     pub fn int(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepElement_CurveElementPurposeMember_inherited_Int(
@@ -2412,7 +2411,7 @@ impl CurveElementPurposeMember {
         })
     }
 
-    /// Inherited: **Source:** `StepData_SelectNamed.hxx`:61 - `StepData_SelectNamed::SetInt()`
+    /// Inherited: **Source:** `StepData_SelectNamed.hxx`:58 - `StepData_SelectNamed::SetInt()`
     pub fn set_int(&mut self, val: i32) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepElement_CurveElementPurposeMember_inherited_SetInt(
@@ -2422,7 +2421,7 @@ impl CurveElementPurposeMember {
         })
     }
 
-    /// Inherited: **Source:** `StepData_SelectNamed.hxx`:63 - `StepData_SelectNamed::Real()`
+    /// Inherited: **Source:** `StepData_SelectNamed.hxx`:60 - `StepData_SelectNamed::Real()`
     pub fn real(&self) -> f64 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepElement_CurveElementPurposeMember_inherited_Real(
@@ -2431,7 +2430,7 @@ impl CurveElementPurposeMember {
         })
     }
 
-    /// Inherited: **Source:** `StepData_SelectNamed.hxx`:65 - `StepData_SelectNamed::SetReal()`
+    /// Inherited: **Source:** `StepData_SelectNamed.hxx`:62 - `StepData_SelectNamed::SetReal()`
     pub fn set_real(&mut self, val: f64) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepElement_CurveElementPurposeMember_inherited_SetReal(
@@ -2441,7 +2440,7 @@ impl CurveElementPurposeMember {
         })
     }
 
-    /// Inherited: **Source:** `StepData_SelectMember.hxx`:74 - `StepData_SelectMember::ParamType()`
+    /// Inherited: **Source:** `StepData_SelectMember.hxx`:71 - `StepData_SelectMember::ParamType()`
     pub fn param_type(&self) -> crate::interface::ParamType {
         crate::interface::ParamType::try_from(crate::check_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepElement_CurveElementPurposeMember_inherited_ParamType(
@@ -2451,7 +2450,7 @@ impl CurveElementPurposeMember {
         .unwrap()
     }
 
-    /// Inherited: **Source:** `StepData_SelectMember.hxx`:85 - `StepData_SelectMember::Integer()`
+    /// Inherited: **Source:** `StepData_SelectMember.hxx`:82 - `StepData_SelectMember::Integer()`
     pub fn integer(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepElement_CurveElementPurposeMember_inherited_Integer(
@@ -2460,7 +2459,7 @@ impl CurveElementPurposeMember {
         })
     }
 
-    /// Inherited: **Source:** `StepData_SelectMember.hxx`:87 - `StepData_SelectMember::SetInteger()`
+    /// Inherited: **Source:** `StepData_SelectMember.hxx`:84 - `StepData_SelectMember::SetInteger()`
     pub fn set_integer(&mut self, val: i32) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepElement_CurveElementPurposeMember_inherited_SetInteger(
@@ -2470,7 +2469,7 @@ impl CurveElementPurposeMember {
         })
     }
 
-    /// Inherited: **Source:** `StepData_SelectMember.hxx`:89 - `StepData_SelectMember::Boolean()`
+    /// Inherited: **Source:** `StepData_SelectMember.hxx`:86 - `StepData_SelectMember::Boolean()`
     pub fn boolean(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepElement_CurveElementPurposeMember_inherited_Boolean(
@@ -2479,7 +2478,7 @@ impl CurveElementPurposeMember {
         })
     }
 
-    /// Inherited: **Source:** `StepData_SelectMember.hxx`:91 - `StepData_SelectMember::SetBoolean()`
+    /// Inherited: **Source:** `StepData_SelectMember.hxx`:88 - `StepData_SelectMember::SetBoolean()`
     pub fn set_boolean(&mut self, val: bool) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepElement_CurveElementPurposeMember_inherited_SetBoolean(
@@ -2489,7 +2488,7 @@ impl CurveElementPurposeMember {
         })
     }
 
-    /// Inherited: **Source:** `StepData_SelectMember.hxx`:93 - `StepData_SelectMember::Logical()`
+    /// Inherited: **Source:** `StepData_SelectMember.hxx`:90 - `StepData_SelectMember::Logical()`
     pub fn logical(&self) -> crate::step_data::Logical {
         crate::step_data::Logical::try_from(crate::check_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepElement_CurveElementPurposeMember_inherited_Logical(
@@ -2499,7 +2498,7 @@ impl CurveElementPurposeMember {
         .unwrap()
     }
 
-    /// Inherited: **Source:** `StepData_SelectMember.hxx`:95 - `StepData_SelectMember::SetLogical()`
+    /// Inherited: **Source:** `StepData_SelectMember.hxx`:92 - `StepData_SelectMember::SetLogical()`
     pub fn set_logical(&mut self, val: crate::step_data::Logical) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepElement_CurveElementPurposeMember_inherited_SetLogical(
@@ -2509,7 +2508,7 @@ impl CurveElementPurposeMember {
         })
     }
 
-    /// Inherited: **Source:** `StepData_SelectMember.hxx`:105 - `StepData_SelectMember::Enum()`
+    /// Inherited: **Source:** `StepData_SelectMember.hxx`:102 - `StepData_SelectMember::Enum()`
     pub fn enum_(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepElement_CurveElementPurposeMember_inherited_Enum(
@@ -2518,8 +2517,8 @@ impl CurveElementPurposeMember {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepElement_CurveElementPurposeMember_inherited_IsInstance(
                 self as *const Self,
@@ -2528,8 +2527,8 @@ impl CurveElementPurposeMember {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepElement_CurveElementPurposeMember_inherited_IsKind(
                 self as *const Self,
@@ -2538,7 +2537,7 @@ impl CurveElementPurposeMember {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -2554,7 +2553,7 @@ impl CurveElementPurposeMember {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepElement_CurveElementPurposeMember_inherited_GetRefCount(
@@ -2563,21 +2562,21 @@ impl CurveElementPurposeMember {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepElement_CurveElementPurposeMember_inherited_IncrementRefCounter(self as *mut Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepElement_CurveElementPurposeMember_inherited_DecrementRefCounter(self as *mut Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepElement_CurveElementPurposeMember_inherited_Delete(
@@ -2587,31 +2586,33 @@ impl CurveElementPurposeMember {
     }
 }
 
-pub use crate::ffi_types::HandleStepElementCurveElementPurposeMember;
+pub use crate::ffi_types::Handle_StepElement_CurveElementPurposeMember;
 
-unsafe impl crate::CppDeletable for HandleStepElementCurveElementPurposeMember {
+unsafe impl crate::CppDeletable for Handle_StepElement_CurveElementPurposeMember {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKDESTEP::HandleStepElementCurveElementPurposeMember_destructor(ptr);
+            crate::ffi_extern_TKDESTEP::Handle_StepElement_CurveElementPurposeMember_destructor(
+                ptr,
+            );
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleStepElementCurveElementPurposeMember {
+unsafe impl crate::CppCopyable for Handle_StepElement_CurveElementPurposeMember {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
         unsafe {
             crate::check_result(
-                crate::ffi_extern_TKDESTEP::HandleStepElementCurveElementPurposeMember_clone(ptr),
+                crate::ffi_extern_TKDESTEP::Handle_StepElement_CurveElementPurposeMember_clone(ptr),
             )
         }
     }
 }
 
-impl HandleStepElementCurveElementPurposeMember {
+impl Handle_StepElement_CurveElementPurposeMember {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
         unsafe {
-            crate::ffi_extern_TKDESTEP::HandleStepElementCurveElementPurposeMember_is_null(
+            crate::ffi_extern_TKDESTEP::Handle_StepElement_CurveElementPurposeMember_is_null(
                 self as *const Self,
             )
         }
@@ -2621,7 +2622,7 @@ impl HandleStepElementCurveElementPurposeMember {
     pub fn get(&self) -> &crate::ffi_types::StepElement_CurveElementPurposeMember {
         unsafe {
             &*crate::check_result(
-                crate::ffi_extern_TKDESTEP::HandleStepElementCurveElementPurposeMember_get(
+                crate::ffi_extern_TKDESTEP::Handle_StepElement_CurveElementPurposeMember_get(
                     self as *const Self,
                 ),
             )
@@ -2632,7 +2633,7 @@ impl HandleStepElementCurveElementPurposeMember {
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::StepElement_CurveElementPurposeMember {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi_extern_TKDESTEP::HandleStepElementCurveElementPurposeMember_get_mut(
+                crate::ffi_extern_TKDESTEP::Handle_StepElement_CurveElementPurposeMember_get_mut(
                     self as *mut Self,
                 ),
             )
@@ -2642,27 +2643,27 @@ impl HandleStepElementCurveElementPurposeMember {
     /// Upcast Handle<StepElement_CurveElementPurposeMember> to Handle<StepData_SelectNamed>
     pub fn to_handle_select_named(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStepDataSelectNamed> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_StepData_SelectNamed> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepElementCurveElementPurposeMember_to_HandleStepDataSelectNamed(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::Handle_StepElement_CurveElementPurposeMember_to_Handle_StepData_SelectNamed(self as *const Self)))
         }
     }
 
     /// Upcast Handle<StepElement_CurveElementPurposeMember> to Handle<StepData_SelectMember>
     pub fn to_handle_select_member(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStepDataSelectMember> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_StepData_SelectMember> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepElementCurveElementPurposeMember_to_HandleStepDataSelectMember(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::Handle_StepElement_CurveElementPurposeMember_to_Handle_StepData_SelectMember(self as *const Self)))
         }
     }
 
     /// Upcast Handle<StepElement_CurveElementPurposeMember> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepElementCurveElementPurposeMember_to_HandleStandardTransient(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::Handle_StepElement_CurveElementPurposeMember_to_Handle_Standard_Transient(self as *const Self)))
         }
     }
 }
@@ -2671,7 +2672,7 @@ impl HandleStepElementCurveElementPurposeMember {
 // From StepElement_CurveElementSectionDefinition.hxx
 // ========================
 
-/// **Source:** `StepElement_CurveElementSectionDefinition.hxx`:30 - `StepElement_CurveElementSectionDefinition`
+/// **Source:** `StepElement_CurveElementSectionDefinition.hxx`:27 - `StepElement_CurveElementSectionDefinition`
 /// Representation of STEP entity CurveElementSectionDefinition
 pub use crate::ffi_types::StepElement_CurveElementSectionDefinition as CurveElementSectionDefinition;
 
@@ -2684,7 +2685,7 @@ unsafe impl crate::CppDeletable for CurveElementSectionDefinition {
 }
 
 impl CurveElementSectionDefinition {
-    /// **Source:** `StepElement_CurveElementSectionDefinition.hxx`:35 - `StepElement_CurveElementSectionDefinition::StepElement_CurveElementSectionDefinition()`
+    /// **Source:** `StepElement_CurveElementSectionDefinition.hxx`:32 - `StepElement_CurveElementSectionDefinition::StepElement_CurveElementSectionDefinition()`
     /// Empty constructor
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
@@ -2694,11 +2695,11 @@ impl CurveElementSectionDefinition {
         }
     }
 
-    /// **Source:** `StepElement_CurveElementSectionDefinition.hxx`:38 - `StepElement_CurveElementSectionDefinition::Init()`
+    /// **Source:** `StepElement_CurveElementSectionDefinition.hxx`:35 - `StepElement_CurveElementSectionDefinition::Init()`
     /// Initialize all fields (own and inherited)
     pub fn init(
         &mut self,
-        aDescription: &crate::ffi_types::HandleTCollectionHAsciiString,
+        aDescription: &crate::ffi_types::Handle_TCollection_HAsciiString,
         aSectionAngle: f64,
     ) {
         crate::check_void_result(unsafe {
@@ -2710,9 +2711,11 @@ impl CurveElementSectionDefinition {
         })
     }
 
-    /// **Source:** `StepElement_CurveElementSectionDefinition.hxx`:42 - `StepElement_CurveElementSectionDefinition::Description()`
+    /// **Source:** `StepElement_CurveElementSectionDefinition.hxx`:39 - `StepElement_CurveElementSectionDefinition::Description()`
     /// Returns field Description
-    pub fn description(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTCollectionHAsciiString> {
+    pub fn description(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_TCollection_HAsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDESTEP::StepElement_CurveElementSectionDefinition_description(
@@ -2722,11 +2725,11 @@ impl CurveElementSectionDefinition {
         }
     }
 
-    /// **Source:** `StepElement_CurveElementSectionDefinition.hxx`:45 - `StepElement_CurveElementSectionDefinition::SetDescription()`
+    /// **Source:** `StepElement_CurveElementSectionDefinition.hxx`:42 - `StepElement_CurveElementSectionDefinition::SetDescription()`
     /// Set field Description
     pub fn set_description(
         &mut self,
-        Description: &crate::ffi_types::HandleTCollectionHAsciiString,
+        Description: &crate::ffi_types::Handle_TCollection_HAsciiString,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepElement_CurveElementSectionDefinition_set_description(
@@ -2736,7 +2739,7 @@ impl CurveElementSectionDefinition {
         })
     }
 
-    /// **Source:** `StepElement_CurveElementSectionDefinition.hxx`:48 - `StepElement_CurveElementSectionDefinition::SectionAngle()`
+    /// **Source:** `StepElement_CurveElementSectionDefinition.hxx`:45 - `StepElement_CurveElementSectionDefinition::SectionAngle()`
     /// Returns field SectionAngle
     pub fn section_angle(&self) -> f64 {
         crate::check_result(unsafe {
@@ -2746,7 +2749,7 @@ impl CurveElementSectionDefinition {
         })
     }
 
-    /// **Source:** `StepElement_CurveElementSectionDefinition.hxx`:51 - `StepElement_CurveElementSectionDefinition::SetSectionAngle()`
+    /// **Source:** `StepElement_CurveElementSectionDefinition.hxx`:48 - `StepElement_CurveElementSectionDefinition::SetSectionAngle()`
     /// Set field SectionAngle
     pub fn set_section_angle(&mut self, SectionAngle: f64) {
         crate::check_void_result(unsafe {
@@ -2757,8 +2760,8 @@ impl CurveElementSectionDefinition {
         })
     }
 
-    /// **Source:** `StepElement_CurveElementSectionDefinition.hxx`:53 - `StepElement_CurveElementSectionDefinition::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `StepElement_CurveElementSectionDefinition.hxx`:50 - `StepElement_CurveElementSectionDefinition::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKDESTEP::StepElement_CurveElementSectionDefinition_dynamic_type(
@@ -2768,7 +2771,7 @@ impl CurveElementSectionDefinition {
         }
     }
 
-    /// **Source:** `StepElement_CurveElementSectionDefinition.hxx`:53 - `StepElement_CurveElementSectionDefinition::get_type_name()`
+    /// **Source:** `StepElement_CurveElementSectionDefinition.hxx`:50 - `StepElement_CurveElementSectionDefinition::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -2780,8 +2783,8 @@ impl CurveElementSectionDefinition {
         .into_owned()
     }
 
-    /// **Source:** `StepElement_CurveElementSectionDefinition.hxx`:53 - `StepElement_CurveElementSectionDefinition::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    /// **Source:** `StepElement_CurveElementSectionDefinition.hxx`:50 - `StepElement_CurveElementSectionDefinition::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKDESTEP::StepElement_CurveElementSectionDefinition_get_type_descriptor()))
         }
@@ -2804,7 +2807,7 @@ impl CurveElementSectionDefinition {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStepElementCurveElementSectionDefinition> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_StepElement_CurveElementSectionDefinition> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDESTEP::StepElement_CurveElementSectionDefinition_to_handle(
@@ -2814,15 +2817,15 @@ impl CurveElementSectionDefinition {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepElement_CurveElementSectionDefinition_inherited_IsInstance(self as *const Self, theType)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepElement_CurveElementSectionDefinition_inherited_IsKind(
                 self as *const Self,
@@ -2831,7 +2834,7 @@ impl CurveElementSectionDefinition {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -2847,28 +2850,28 @@ impl CurveElementSectionDefinition {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepElement_CurveElementSectionDefinition_inherited_GetRefCount(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepElement_CurveElementSectionDefinition_inherited_IncrementRefCounter(self as *mut Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepElement_CurveElementSectionDefinition_inherited_DecrementRefCounter(self as *mut Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepElement_CurveElementSectionDefinition_inherited_Delete(
@@ -2878,23 +2881,23 @@ impl CurveElementSectionDefinition {
     }
 }
 
-pub use crate::ffi_types::HandleStepElementCurveElementSectionDefinition;
+pub use crate::ffi_types::Handle_StepElement_CurveElementSectionDefinition;
 
-unsafe impl crate::CppDeletable for HandleStepElementCurveElementSectionDefinition {
+unsafe impl crate::CppDeletable for Handle_StepElement_CurveElementSectionDefinition {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKDESTEP::HandleStepElementCurveElementSectionDefinition_destructor(
+            crate::ffi_extern_TKDESTEP::Handle_StepElement_CurveElementSectionDefinition_destructor(
                 ptr,
             );
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleStepElementCurveElementSectionDefinition {
+unsafe impl crate::CppCopyable for Handle_StepElement_CurveElementSectionDefinition {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
         unsafe {
             crate::check_result(
-                crate::ffi_extern_TKDESTEP::HandleStepElementCurveElementSectionDefinition_clone(
+                crate::ffi_extern_TKDESTEP::Handle_StepElement_CurveElementSectionDefinition_clone(
                     ptr,
                 ),
             )
@@ -2902,11 +2905,11 @@ unsafe impl crate::CppCopyable for HandleStepElementCurveElementSectionDefinitio
     }
 }
 
-impl HandleStepElementCurveElementSectionDefinition {
+impl Handle_StepElement_CurveElementSectionDefinition {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
         unsafe {
-            crate::ffi_extern_TKDESTEP::HandleStepElementCurveElementSectionDefinition_is_null(
+            crate::ffi_extern_TKDESTEP::Handle_StepElement_CurveElementSectionDefinition_is_null(
                 self as *const Self,
             )
         }
@@ -2916,7 +2919,7 @@ impl HandleStepElementCurveElementSectionDefinition {
     pub fn get(&self) -> &crate::ffi_types::StepElement_CurveElementSectionDefinition {
         unsafe {
             &*crate::check_result(
-                crate::ffi_extern_TKDESTEP::HandleStepElementCurveElementSectionDefinition_get(
+                crate::ffi_extern_TKDESTEP::Handle_StepElement_CurveElementSectionDefinition_get(
                     self as *const Self,
                 ),
             )
@@ -2926,20 +2929,16 @@ impl HandleStepElementCurveElementSectionDefinition {
     /// Dereference this Handle to mutably access the underlying StepElement_CurveElementSectionDefinition
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::StepElement_CurveElementSectionDefinition {
         unsafe {
-            &mut *crate::check_result(
-                crate::ffi_extern_TKDESTEP::HandleStepElementCurveElementSectionDefinition_get_mut(
-                    self as *mut Self,
-                ),
-            )
+            &mut *crate::check_result(crate::ffi_extern_TKDESTEP::Handle_StepElement_CurveElementSectionDefinition_get_mut(self as *mut Self))
         }
     }
 
     /// Upcast Handle<StepElement_CurveElementSectionDefinition> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepElementCurveElementSectionDefinition_to_HandleStandardTransient(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::Handle_StepElement_CurveElementSectionDefinition_to_Handle_Standard_Transient(self as *const Self)))
         }
     }
 
@@ -2949,10 +2948,10 @@ impl HandleStepElementCurveElementSectionDefinition {
     pub fn downcast_to_curve_element_section_derived_definitions(
         &self,
     ) -> Option<
-        crate::OwnedPtr<crate::ffi_types::HandleStepElementCurveElementSectionDerivedDefinitions>,
+        crate::OwnedPtr<crate::ffi_types::Handle_StepElement_CurveElementSectionDerivedDefinitions>,
     > {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKDESTEP::HandleStepElementCurveElementSectionDefinition_downcast_to_HandleStepElementCurveElementSectionDerivedDefinitions(self as *const Self)
+            crate::ffi_extern_TKDESTEP::Handle_StepElement_CurveElementSectionDefinition_downcast_to_Handle_StepElement_CurveElementSectionDerivedDefinitions(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -2966,7 +2965,7 @@ impl HandleStepElementCurveElementSectionDefinition {
 // From StepElement_CurveElementSectionDerivedDefinitions.hxx
 // ========================
 
-/// **Source:** `StepElement_CurveElementSectionDerivedDefinitions.hxx`:33 - `StepElement_CurveElementSectionDerivedDefinitions`
+/// **Source:** `StepElement_CurveElementSectionDerivedDefinitions.hxx`:29 - `StepElement_CurveElementSectionDerivedDefinitions`
 /// Representation of STEP entity CurveElementSectionDerivedDefinitions
 pub use crate::ffi_types::StepElement_CurveElementSectionDerivedDefinitions as CurveElementSectionDerivedDefinitions;
 
@@ -2979,7 +2978,7 @@ unsafe impl crate::CppDeletable for CurveElementSectionDerivedDefinitions {
 }
 
 impl CurveElementSectionDerivedDefinitions {
-    /// **Source:** `StepElement_CurveElementSectionDerivedDefinitions.hxx`:39 - `StepElement_CurveElementSectionDerivedDefinitions::StepElement_CurveElementSectionDerivedDefinitions()`
+    /// **Source:** `StepElement_CurveElementSectionDerivedDefinitions.hxx`:35 - `StepElement_CurveElementSectionDerivedDefinitions::StepElement_CurveElementSectionDerivedDefinitions()`
     /// Empty constructor
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
@@ -2990,20 +2989,20 @@ impl CurveElementSectionDerivedDefinitions {
         }
     }
 
-    /// **Source:** `StepElement_CurveElementSectionDerivedDefinitions.hxx`:42 - `StepElement_CurveElementSectionDerivedDefinitions::Init()`
+    /// **Source:** `StepElement_CurveElementSectionDerivedDefinitions.hxx`:38 - `StepElement_CurveElementSectionDerivedDefinitions::Init()`
     /// Initialize all fields (own and inherited)
     pub fn init(
         &mut self,
-        aCurveElementSectionDefinition_Description: &crate::ffi_types::HandleTCollectionHAsciiString,
+        aCurveElementSectionDefinition_Description: &crate::ffi_types::Handle_TCollection_HAsciiString,
         aCurveElementSectionDefinition_SectionAngle: f64,
         aCrossSectionalArea: f64,
-        aShearArea: &crate::ffi_types::HandleStepElementHArray1OfMeasureOrUnspecifiedValue,
-        aSecondMomentOfArea: &crate::ffi_types::HandleTColStdHArray1OfReal,
+        aShearArea: &crate::ffi_types::Handle_NCollection_HArray1_StepElement_MeasureOrUnspecifiedValue,
+        aSecondMomentOfArea: &crate::ffi_types::Handle_NCollection_HArray1_double,
         aTorsionalConstant: f64,
         aWarpingConstant: &MeasureOrUnspecifiedValue,
-        aLocationOfCentroid: &crate::ffi_types::HandleStepElementHArray1OfMeasureOrUnspecifiedValue,
-        aLocationOfShearCentre: &crate::ffi_types::HandleStepElementHArray1OfMeasureOrUnspecifiedValue,
-        aLocationOfNonStructuralMass: &crate::ffi_types::HandleStepElementHArray1OfMeasureOrUnspecifiedValue,
+        aLocationOfCentroid: &crate::ffi_types::Handle_NCollection_HArray1_StepElement_MeasureOrUnspecifiedValue,
+        aLocationOfShearCentre: &crate::ffi_types::Handle_NCollection_HArray1_StepElement_MeasureOrUnspecifiedValue,
+        aLocationOfNonStructuralMass: &crate::ffi_types::Handle_NCollection_HArray1_StepElement_MeasureOrUnspecifiedValue,
         aNonStructuralMass: &MeasureOrUnspecifiedValue,
         aPolarMoment: &MeasureOrUnspecifiedValue,
     ) {
@@ -3026,7 +3025,7 @@ impl CurveElementSectionDerivedDefinitions {
         })
     }
 
-    /// **Source:** `StepElement_CurveElementSectionDerivedDefinitions.hxx`:57 - `StepElement_CurveElementSectionDerivedDefinitions::CrossSectionalArea()`
+    /// **Source:** `StepElement_CurveElementSectionDerivedDefinitions.hxx`:56 - `StepElement_CurveElementSectionDerivedDefinitions::CrossSectionalArea()`
     /// Returns field CrossSectionalArea
     pub fn cross_sectional_area(&self) -> f64 {
         crate::check_result(unsafe {
@@ -3034,7 +3033,7 @@ impl CurveElementSectionDerivedDefinitions {
         })
     }
 
-    /// **Source:** `StepElement_CurveElementSectionDerivedDefinitions.hxx`:60 - `StepElement_CurveElementSectionDerivedDefinitions::SetCrossSectionalArea()`
+    /// **Source:** `StepElement_CurveElementSectionDerivedDefinitions.hxx`:59 - `StepElement_CurveElementSectionDerivedDefinitions::SetCrossSectionalArea()`
     /// Set field CrossSectionalArea
     pub fn set_cross_sectional_area(&mut self, CrossSectionalArea: f64) {
         crate::check_void_result(unsafe {
@@ -3046,8 +3045,9 @@ impl CurveElementSectionDerivedDefinitions {
     /// Returns field ShearArea
     pub fn shear_area(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStepElementHArray1OfMeasureOrUnspecifiedValue>
-    {
+    ) -> crate::OwnedPtr<
+        crate::ffi_types::Handle_NCollection_HArray1_StepElement_MeasureOrUnspecifiedValue,
+    > {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::StepElement_CurveElementSectionDerivedDefinitions_shear_area(self as *const Self)))
         }
@@ -3057,7 +3057,7 @@ impl CurveElementSectionDerivedDefinitions {
     /// Set field ShearArea
     pub fn set_shear_area(
         &mut self,
-        ShearArea: &crate::ffi_types::HandleStepElementHArray1OfMeasureOrUnspecifiedValue,
+        ShearArea: &crate::ffi_types::Handle_NCollection_HArray1_StepElement_MeasureOrUnspecifiedValue,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepElement_CurveElementSectionDerivedDefinitions_set_shear_area(self as *mut Self, ShearArea)
@@ -3068,7 +3068,7 @@ impl CurveElementSectionDerivedDefinitions {
     /// Returns field SecondMomentOfArea
     pub fn second_moment_of_area(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleTColStdHArray1OfReal> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HArray1_double> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::StepElement_CurveElementSectionDerivedDefinitions_second_moment_of_area(self as *const Self)))
         }
@@ -3078,7 +3078,7 @@ impl CurveElementSectionDerivedDefinitions {
     /// Set field SecondMomentOfArea
     pub fn set_second_moment_of_area(
         &mut self,
-        SecondMomentOfArea: &crate::ffi_types::HandleTColStdHArray1OfReal,
+        SecondMomentOfArea: &crate::ffi_types::Handle_NCollection_HArray1_double,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepElement_CurveElementSectionDerivedDefinitions_set_second_moment_of_area(self as *mut Self, SecondMomentOfArea)
@@ -3117,73 +3117,76 @@ impl CurveElementSectionDerivedDefinitions {
         })
     }
 
-    /// **Source:** `StepElement_CurveElementSectionDerivedDefinitions.hxx`:90 - `StepElement_CurveElementSectionDerivedDefinitions::LocationOfCentroid()`
+    /// **Source:** `StepElement_CurveElementSectionDerivedDefinitions.hxx`:91 - `StepElement_CurveElementSectionDerivedDefinitions::LocationOfCentroid()`
     /// Returns field LocationOfCentroid
     pub fn location_of_centroid(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStepElementHArray1OfMeasureOrUnspecifiedValue>
-    {
+    ) -> crate::OwnedPtr<
+        crate::ffi_types::Handle_NCollection_HArray1_StepElement_MeasureOrUnspecifiedValue,
+    > {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::StepElement_CurveElementSectionDerivedDefinitions_location_of_centroid(self as *const Self)))
         }
     }
 
-    /// **Source:** `StepElement_CurveElementSectionDerivedDefinitions.hxx`:93 - `StepElement_CurveElementSectionDerivedDefinitions::SetLocationOfCentroid()`
+    /// **Source:** `StepElement_CurveElementSectionDerivedDefinitions.hxx`:94 - `StepElement_CurveElementSectionDerivedDefinitions::SetLocationOfCentroid()`
     /// Set field LocationOfCentroid
     pub fn set_location_of_centroid(
         &mut self,
-        LocationOfCentroid: &crate::ffi_types::HandleStepElementHArray1OfMeasureOrUnspecifiedValue,
+        LocationOfCentroid: &crate::ffi_types::Handle_NCollection_HArray1_StepElement_MeasureOrUnspecifiedValue,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepElement_CurveElementSectionDerivedDefinitions_set_location_of_centroid(self as *mut Self, LocationOfCentroid)
         })
     }
 
-    /// **Source:** `StepElement_CurveElementSectionDerivedDefinitions.hxx`:97 - `StepElement_CurveElementSectionDerivedDefinitions::LocationOfShearCentre()`
+    /// **Source:** `StepElement_CurveElementSectionDerivedDefinitions.hxx`:100 - `StepElement_CurveElementSectionDerivedDefinitions::LocationOfShearCentre()`
     /// Returns field LocationOfShearCentre
     pub fn location_of_shear_centre(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStepElementHArray1OfMeasureOrUnspecifiedValue>
-    {
+    ) -> crate::OwnedPtr<
+        crate::ffi_types::Handle_NCollection_HArray1_StepElement_MeasureOrUnspecifiedValue,
+    > {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::StepElement_CurveElementSectionDerivedDefinitions_location_of_shear_centre(self as *const Self)))
         }
     }
 
-    /// **Source:** `StepElement_CurveElementSectionDerivedDefinitions.hxx`:101 - `StepElement_CurveElementSectionDerivedDefinitions::SetLocationOfShearCentre()`
+    /// **Source:** `StepElement_CurveElementSectionDerivedDefinitions.hxx`:103 - `StepElement_CurveElementSectionDerivedDefinitions::SetLocationOfShearCentre()`
     /// Set field LocationOfShearCentre
     pub fn set_location_of_shear_centre(
         &mut self,
-        LocationOfShearCentre: &crate::ffi_types::HandleStepElementHArray1OfMeasureOrUnspecifiedValue,
+        LocationOfShearCentre: &crate::ffi_types::Handle_NCollection_HArray1_StepElement_MeasureOrUnspecifiedValue,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepElement_CurveElementSectionDerivedDefinitions_set_location_of_shear_centre(self as *mut Self, LocationOfShearCentre)
         })
     }
 
-    /// **Source:** `StepElement_CurveElementSectionDerivedDefinitions.hxx`:106 - `StepElement_CurveElementSectionDerivedDefinitions::LocationOfNonStructuralMass()`
+    /// **Source:** `StepElement_CurveElementSectionDerivedDefinitions.hxx`:109 - `StepElement_CurveElementSectionDerivedDefinitions::LocationOfNonStructuralMass()`
     /// Returns field LocationOfNonStructuralMass
     pub fn location_of_non_structural_mass(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStepElementHArray1OfMeasureOrUnspecifiedValue>
-    {
+    ) -> crate::OwnedPtr<
+        crate::ffi_types::Handle_NCollection_HArray1_StepElement_MeasureOrUnspecifiedValue,
+    > {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::StepElement_CurveElementSectionDerivedDefinitions_location_of_non_structural_mass(self as *const Self)))
         }
     }
 
-    /// **Source:** `StepElement_CurveElementSectionDerivedDefinitions.hxx`:109 - `StepElement_CurveElementSectionDerivedDefinitions::SetLocationOfNonStructuralMass()`
+    /// **Source:** `StepElement_CurveElementSectionDerivedDefinitions.hxx`:112 - `StepElement_CurveElementSectionDerivedDefinitions::SetLocationOfNonStructuralMass()`
     /// Set field LocationOfNonStructuralMass
     pub fn set_location_of_non_structural_mass(
         &mut self,
-        LocationOfNonStructuralMass: &crate::ffi_types::HandleStepElementHArray1OfMeasureOrUnspecifiedValue,
+        LocationOfNonStructuralMass: &crate::ffi_types::Handle_NCollection_HArray1_StepElement_MeasureOrUnspecifiedValue,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepElement_CurveElementSectionDerivedDefinitions_set_location_of_non_structural_mass(self as *mut Self, LocationOfNonStructuralMass)
         })
     }
 
-    /// **Source:** `StepElement_CurveElementSectionDerivedDefinitions.hxx`:113 - `StepElement_CurveElementSectionDerivedDefinitions::NonStructuralMass()`
+    /// **Source:** `StepElement_CurveElementSectionDerivedDefinitions.hxx`:117 - `StepElement_CurveElementSectionDerivedDefinitions::NonStructuralMass()`
     /// Returns field NonStructuralMass
     pub fn non_structural_mass(&self) -> crate::OwnedPtr<MeasureOrUnspecifiedValue> {
         unsafe {
@@ -3191,7 +3194,7 @@ impl CurveElementSectionDerivedDefinitions {
         }
     }
 
-    /// **Source:** `StepElement_CurveElementSectionDerivedDefinitions.hxx`:116 - `StepElement_CurveElementSectionDerivedDefinitions::SetNonStructuralMass()`
+    /// **Source:** `StepElement_CurveElementSectionDerivedDefinitions.hxx`:120 - `StepElement_CurveElementSectionDerivedDefinitions::SetNonStructuralMass()`
     /// Set field NonStructuralMass
     pub fn set_non_structural_mass(&mut self, NonStructuralMass: &MeasureOrUnspecifiedValue) {
         crate::check_void_result(unsafe {
@@ -3199,7 +3202,7 @@ impl CurveElementSectionDerivedDefinitions {
         })
     }
 
-    /// **Source:** `StepElement_CurveElementSectionDerivedDefinitions.hxx`:120 - `StepElement_CurveElementSectionDerivedDefinitions::PolarMoment()`
+    /// **Source:** `StepElement_CurveElementSectionDerivedDefinitions.hxx`:124 - `StepElement_CurveElementSectionDerivedDefinitions::PolarMoment()`
     /// Returns field PolarMoment
     pub fn polar_moment(&self) -> crate::OwnedPtr<MeasureOrUnspecifiedValue> {
         unsafe {
@@ -3207,7 +3210,7 @@ impl CurveElementSectionDerivedDefinitions {
         }
     }
 
-    /// **Source:** `StepElement_CurveElementSectionDerivedDefinitions.hxx`:123 - `StepElement_CurveElementSectionDerivedDefinitions::SetPolarMoment()`
+    /// **Source:** `StepElement_CurveElementSectionDerivedDefinitions.hxx`:127 - `StepElement_CurveElementSectionDerivedDefinitions::SetPolarMoment()`
     /// Set field PolarMoment
     pub fn set_polar_moment(&mut self, PolarMoment: &MeasureOrUnspecifiedValue) {
         crate::check_void_result(unsafe {
@@ -3215,20 +3218,20 @@ impl CurveElementSectionDerivedDefinitions {
         })
     }
 
-    /// **Source:** `StepElement_CurveElementSectionDerivedDefinitions.hxx`:125 - `StepElement_CurveElementSectionDerivedDefinitions::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `StepElement_CurveElementSectionDerivedDefinitions.hxx`:129 - `StepElement_CurveElementSectionDerivedDefinitions::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKDESTEP::StepElement_CurveElementSectionDerivedDefinitions_dynamic_type(self as *const Self)))
         }
     }
 
-    /// **Source:** `StepElement_CurveElementSectionDerivedDefinitions.hxx`:125 - `StepElement_CurveElementSectionDerivedDefinitions::get_type_name()`
+    /// **Source:** `StepElement_CurveElementSectionDerivedDefinitions.hxx`:129 - `StepElement_CurveElementSectionDerivedDefinitions::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe { std::ffi::CStr::from_ptr(crate::check_result(crate::ffi_extern_TKDESTEP::StepElement_CurveElementSectionDerivedDefinitions_get_type_name())) }.to_string_lossy().into_owned()
     }
 
-    /// **Source:** `StepElement_CurveElementSectionDerivedDefinitions.hxx`:125 - `StepElement_CurveElementSectionDerivedDefinitions::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    /// **Source:** `StepElement_CurveElementSectionDerivedDefinitions.hxx`:129 - `StepElement_CurveElementSectionDerivedDefinitions::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKDESTEP::StepElement_CurveElementSectionDerivedDefinitions_get_type_descriptor()))
         }
@@ -3267,59 +3270,61 @@ impl CurveElementSectionDerivedDefinitions {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStepElementCurveElementSectionDerivedDefinitions>
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_StepElement_CurveElementSectionDerivedDefinitions>
     {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::StepElement_CurveElementSectionDerivedDefinitions_to_handle(obj.into_raw())))
         }
     }
 
-    /// Inherited: **Source:** `StepElement_CurveElementSectionDefinition.hxx`:42 - `StepElement_CurveElementSectionDefinition::Description()`
-    pub fn description(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTCollectionHAsciiString> {
+    /// Inherited: **Source:** `StepElement_CurveElementSectionDefinition.hxx`:39 - `StepElement_CurveElementSectionDefinition::Description()`
+    pub fn description(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_TCollection_HAsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::StepElement_CurveElementSectionDerivedDefinitions_inherited_Description(self as *const Self)))
         }
     }
 
-    /// Inherited: **Source:** `StepElement_CurveElementSectionDefinition.hxx`:45 - `StepElement_CurveElementSectionDefinition::SetDescription()`
+    /// Inherited: **Source:** `StepElement_CurveElementSectionDefinition.hxx`:42 - `StepElement_CurveElementSectionDefinition::SetDescription()`
     pub fn set_description(
         &mut self,
-        Description: &crate::ffi_types::HandleTCollectionHAsciiString,
+        Description: &crate::ffi_types::Handle_TCollection_HAsciiString,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepElement_CurveElementSectionDerivedDefinitions_inherited_SetDescription(self as *mut Self, Description)
         })
     }
 
-    /// Inherited: **Source:** `StepElement_CurveElementSectionDefinition.hxx`:48 - `StepElement_CurveElementSectionDefinition::SectionAngle()`
+    /// Inherited: **Source:** `StepElement_CurveElementSectionDefinition.hxx`:45 - `StepElement_CurveElementSectionDefinition::SectionAngle()`
     pub fn section_angle(&self) -> f64 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepElement_CurveElementSectionDerivedDefinitions_inherited_SectionAngle(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `StepElement_CurveElementSectionDefinition.hxx`:51 - `StepElement_CurveElementSectionDefinition::SetSectionAngle()`
+    /// Inherited: **Source:** `StepElement_CurveElementSectionDefinition.hxx`:48 - `StepElement_CurveElementSectionDefinition::SetSectionAngle()`
     pub fn set_section_angle(&mut self, SectionAngle: f64) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepElement_CurveElementSectionDerivedDefinitions_inherited_SetSectionAngle(self as *mut Self, SectionAngle)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepElement_CurveElementSectionDerivedDefinitions_inherited_IsInstance(self as *const Self, theType)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepElement_CurveElementSectionDerivedDefinitions_inherited_IsKind(self as *const Self, theType)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -3333,28 +3338,28 @@ impl CurveElementSectionDerivedDefinitions {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepElement_CurveElementSectionDerivedDefinitions_inherited_GetRefCount(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepElement_CurveElementSectionDerivedDefinitions_inherited_IncrementRefCounter(self as *mut Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepElement_CurveElementSectionDerivedDefinitions_inherited_DecrementRefCounter(self as *mut Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepElement_CurveElementSectionDerivedDefinitions_inherited_Delete(self as *const Self)
@@ -3362,36 +3367,36 @@ impl CurveElementSectionDerivedDefinitions {
     }
 }
 
-pub use crate::ffi_types::HandleStepElementCurveElementSectionDerivedDefinitions;
+pub use crate::ffi_types::Handle_StepElement_CurveElementSectionDerivedDefinitions;
 
-unsafe impl crate::CppDeletable for HandleStepElementCurveElementSectionDerivedDefinitions {
+unsafe impl crate::CppDeletable for Handle_StepElement_CurveElementSectionDerivedDefinitions {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKDESTEP::HandleStepElementCurveElementSectionDerivedDefinitions_destructor(ptr);
+            crate::ffi_extern_TKDESTEP::Handle_StepElement_CurveElementSectionDerivedDefinitions_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleStepElementCurveElementSectionDerivedDefinitions {
+unsafe impl crate::CppCopyable for Handle_StepElement_CurveElementSectionDerivedDefinitions {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
         unsafe {
-            crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepElementCurveElementSectionDerivedDefinitions_clone(ptr))
+            crate::check_result(crate::ffi_extern_TKDESTEP::Handle_StepElement_CurveElementSectionDerivedDefinitions_clone(ptr))
         }
     }
 }
 
-impl HandleStepElementCurveElementSectionDerivedDefinitions {
+impl Handle_StepElement_CurveElementSectionDerivedDefinitions {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
         unsafe {
-            crate::ffi_extern_TKDESTEP::HandleStepElementCurveElementSectionDerivedDefinitions_is_null(self as *const Self)
+            crate::ffi_extern_TKDESTEP::Handle_StepElement_CurveElementSectionDerivedDefinitions_is_null(self as *const Self)
         }
     }
 
     /// Dereference this Handle to access the underlying StepElement_CurveElementSectionDerivedDefinitions
     pub fn get(&self) -> &crate::ffi_types::StepElement_CurveElementSectionDerivedDefinitions {
         unsafe {
-            &*crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepElementCurveElementSectionDerivedDefinitions_get(self as *const Self))
+            &*crate::check_result(crate::ffi_extern_TKDESTEP::Handle_StepElement_CurveElementSectionDerivedDefinitions_get(self as *const Self))
         }
     }
 
@@ -3400,25 +3405,25 @@ impl HandleStepElementCurveElementSectionDerivedDefinitions {
         &mut self,
     ) -> &mut crate::ffi_types::StepElement_CurveElementSectionDerivedDefinitions {
         unsafe {
-            &mut *crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepElementCurveElementSectionDerivedDefinitions_get_mut(self as *mut Self))
+            &mut *crate::check_result(crate::ffi_extern_TKDESTEP::Handle_StepElement_CurveElementSectionDerivedDefinitions_get_mut(self as *mut Self))
         }
     }
 
     /// Upcast Handle<StepElement_CurveElementSectionDerivedDefinitions> to Handle<StepElement_CurveElementSectionDefinition>
     pub fn to_handle_curve_element_section_definition(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStepElementCurveElementSectionDefinition> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_StepElement_CurveElementSectionDefinition> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepElementCurveElementSectionDerivedDefinitions_to_HandleStepElementCurveElementSectionDefinition(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::Handle_StepElement_CurveElementSectionDerivedDefinitions_to_Handle_StepElement_CurveElementSectionDefinition(self as *const Self)))
         }
     }
 
     /// Upcast Handle<StepElement_CurveElementSectionDerivedDefinitions> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepElementCurveElementSectionDerivedDefinitions_to_HandleStandardTransient(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::Handle_StepElement_CurveElementSectionDerivedDefinitions_to_Handle_Standard_Transient(self as *const Self)))
         }
     }
 }
@@ -3450,16 +3455,16 @@ impl ElementAspect {
         }
     }
 
-    /// **Source:** `StepElement_ElementAspect.hxx`:42 - `StepElement_ElementAspect::CaseNum()`
+    /// **Source:** `StepElement_ElementAspect.hxx`:41 - `StepElement_ElementAspect::CaseNum()`
     /// Recognizes a kind of ElementAspect select type
     /// return 0
-    pub fn case_num(&self, ent: &crate::ffi_types::HandleStandardTransient) -> i32 {
+    pub fn case_num(&self, ent: &crate::ffi_types::Handle_Standard_Transient) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepElement_ElementAspect_case_num(self as *const Self, ent)
         })
     }
 
-    /// **Source:** `StepElement_ElementAspect.hxx`:56 - `StepElement_ElementAspect::CaseMem()`
+    /// **Source:** `StepElement_ElementAspect.hxx`:55 - `StepElement_ElementAspect::CaseMem()`
     /// Recognizes a items of select member ElementAspectMember
     /// 1 -> ElementVolume
     /// 2 -> Volume3dFace
@@ -3472,15 +3477,15 @@ impl ElementAspect {
     /// 9 -> Surface2dEdge
     /// 10 -> CurveEdge
     /// 0 else
-    pub fn case_mem(&self, ent: &crate::ffi_types::HandleStepDataSelectMember) -> i32 {
+    pub fn case_mem(&self, ent: &crate::ffi_types::Handle_StepData_SelectMember) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepElement_ElementAspect_case_mem(self as *const Self, ent)
         })
     }
 
-    /// **Source:** `StepElement_ElementAspect.hxx`:60 - `StepElement_ElementAspect::NewMember()`
+    /// **Source:** `StepElement_ElementAspect.hxx`:58 - `StepElement_ElementAspect::NewMember()`
     /// Returns a new select member the type ElementAspectMember
-    pub fn new_member(&self) -> crate::OwnedPtr<crate::ffi_types::HandleStepDataSelectMember> {
+    pub fn new_member(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_StepData_SelectMember> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDESTEP::StepElement_ElementAspect_new_member(
@@ -3490,7 +3495,7 @@ impl ElementAspect {
         }
     }
 
-    /// **Source:** `StepElement_ElementAspect.hxx`:63 - `StepElement_ElementAspect::SetElementVolume()`
+    /// **Source:** `StepElement_ElementAspect.hxx`:61 - `StepElement_ElementAspect::SetElementVolume()`
     /// Set Value for ElementVolume
     pub fn set_element_volume(&mut self, aVal: crate::step_element::ElementVolume) {
         crate::check_void_result(unsafe {
@@ -3501,7 +3506,7 @@ impl ElementAspect {
         })
     }
 
-    /// **Source:** `StepElement_ElementAspect.hxx`:66 - `StepElement_ElementAspect::ElementVolume()`
+    /// **Source:** `StepElement_ElementAspect.hxx`:64 - `StepElement_ElementAspect::ElementVolume()`
     /// Returns Value as ElementVolume (or Null if another type)
     pub fn element_volume(&self) -> crate::step_element::ElementVolume {
         crate::step_element::ElementVolume::try_from(crate::check_result(unsafe {
@@ -3512,7 +3517,7 @@ impl ElementAspect {
         .unwrap()
     }
 
-    /// **Source:** `StepElement_ElementAspect.hxx`:69 - `StepElement_ElementAspect::SetVolume3dFace()`
+    /// **Source:** `StepElement_ElementAspect.hxx`:67 - `StepElement_ElementAspect::SetVolume3dFace()`
     /// Set Value for Volume3dFace
     pub fn set_volume3d_face(&mut self, aVal: i32) {
         crate::check_void_result(unsafe {
@@ -3523,7 +3528,7 @@ impl ElementAspect {
         })
     }
 
-    /// **Source:** `StepElement_ElementAspect.hxx`:72 - `StepElement_ElementAspect::Volume3dFace()`
+    /// **Source:** `StepElement_ElementAspect.hxx`:70 - `StepElement_ElementAspect::Volume3dFace()`
     /// Returns Value as Volume3dFace (or Null if another type)
     pub fn volume3d_face(&self) -> i32 {
         crate::check_result(unsafe {
@@ -3531,7 +3536,7 @@ impl ElementAspect {
         })
     }
 
-    /// **Source:** `StepElement_ElementAspect.hxx`:75 - `StepElement_ElementAspect::SetVolume2dFace()`
+    /// **Source:** `StepElement_ElementAspect.hxx`:73 - `StepElement_ElementAspect::SetVolume2dFace()`
     /// Set Value for Volume2dFace
     pub fn set_volume2d_face(&mut self, aVal: i32) {
         crate::check_void_result(unsafe {
@@ -3542,7 +3547,7 @@ impl ElementAspect {
         })
     }
 
-    /// **Source:** `StepElement_ElementAspect.hxx`:78 - `StepElement_ElementAspect::Volume2dFace()`
+    /// **Source:** `StepElement_ElementAspect.hxx`:76 - `StepElement_ElementAspect::Volume2dFace()`
     /// Returns Value as Volume2dFace (or Null if another type)
     pub fn volume2d_face(&self) -> i32 {
         crate::check_result(unsafe {
@@ -3550,7 +3555,7 @@ impl ElementAspect {
         })
     }
 
-    /// **Source:** `StepElement_ElementAspect.hxx`:81 - `StepElement_ElementAspect::SetVolume3dEdge()`
+    /// **Source:** `StepElement_ElementAspect.hxx`:79 - `StepElement_ElementAspect::SetVolume3dEdge()`
     /// Set Value for Volume3dEdge
     pub fn set_volume3d_edge(&mut self, aVal: i32) {
         crate::check_void_result(unsafe {
@@ -3561,7 +3566,7 @@ impl ElementAspect {
         })
     }
 
-    /// **Source:** `StepElement_ElementAspect.hxx`:84 - `StepElement_ElementAspect::Volume3dEdge()`
+    /// **Source:** `StepElement_ElementAspect.hxx`:82 - `StepElement_ElementAspect::Volume3dEdge()`
     /// Returns Value as Volume3dEdge (or Null if another type)
     pub fn volume3d_edge(&self) -> i32 {
         crate::check_result(unsafe {
@@ -3569,7 +3574,7 @@ impl ElementAspect {
         })
     }
 
-    /// **Source:** `StepElement_ElementAspect.hxx`:87 - `StepElement_ElementAspect::SetVolume2dEdge()`
+    /// **Source:** `StepElement_ElementAspect.hxx`:85 - `StepElement_ElementAspect::SetVolume2dEdge()`
     /// Set Value for Volume2dEdge
     pub fn set_volume2d_edge(&mut self, aVal: i32) {
         crate::check_void_result(unsafe {
@@ -3580,7 +3585,7 @@ impl ElementAspect {
         })
     }
 
-    /// **Source:** `StepElement_ElementAspect.hxx`:90 - `StepElement_ElementAspect::Volume2dEdge()`
+    /// **Source:** `StepElement_ElementAspect.hxx`:88 - `StepElement_ElementAspect::Volume2dEdge()`
     /// Returns Value as Volume2dEdge (or Null if another type)
     pub fn volume2d_edge(&self) -> i32 {
         crate::check_result(unsafe {
@@ -3588,7 +3593,7 @@ impl ElementAspect {
         })
     }
 
-    /// **Source:** `StepElement_ElementAspect.hxx`:93 - `StepElement_ElementAspect::SetSurface3dFace()`
+    /// **Source:** `StepElement_ElementAspect.hxx`:91 - `StepElement_ElementAspect::SetSurface3dFace()`
     /// Set Value for Surface3dFace
     pub fn set_surface3d_face(&mut self, aVal: i32) {
         crate::check_void_result(unsafe {
@@ -3599,7 +3604,7 @@ impl ElementAspect {
         })
     }
 
-    /// **Source:** `StepElement_ElementAspect.hxx`:96 - `StepElement_ElementAspect::Surface3dFace()`
+    /// **Source:** `StepElement_ElementAspect.hxx`:94 - `StepElement_ElementAspect::Surface3dFace()`
     /// Returns Value as Surface3dFace (or Null if another type)
     pub fn surface3d_face(&self) -> i32 {
         crate::check_result(unsafe {
@@ -3609,7 +3614,7 @@ impl ElementAspect {
         })
     }
 
-    /// **Source:** `StepElement_ElementAspect.hxx`:99 - `StepElement_ElementAspect::SetSurface2dFace()`
+    /// **Source:** `StepElement_ElementAspect.hxx`:97 - `StepElement_ElementAspect::SetSurface2dFace()`
     /// Set Value for Surface2dFace
     pub fn set_surface2d_face(&mut self, aVal: i32) {
         crate::check_void_result(unsafe {
@@ -3620,7 +3625,7 @@ impl ElementAspect {
         })
     }
 
-    /// **Source:** `StepElement_ElementAspect.hxx`:102 - `StepElement_ElementAspect::Surface2dFace()`
+    /// **Source:** `StepElement_ElementAspect.hxx`:100 - `StepElement_ElementAspect::Surface2dFace()`
     /// Returns Value as Surface2dFace (or Null if another type)
     pub fn surface2d_face(&self) -> i32 {
         crate::check_result(unsafe {
@@ -3630,7 +3635,7 @@ impl ElementAspect {
         })
     }
 
-    /// **Source:** `StepElement_ElementAspect.hxx`:105 - `StepElement_ElementAspect::SetSurface3dEdge()`
+    /// **Source:** `StepElement_ElementAspect.hxx`:103 - `StepElement_ElementAspect::SetSurface3dEdge()`
     /// Set Value for Surface3dEdge
     pub fn set_surface3d_edge(&mut self, aVal: i32) {
         crate::check_void_result(unsafe {
@@ -3641,7 +3646,7 @@ impl ElementAspect {
         })
     }
 
-    /// **Source:** `StepElement_ElementAspect.hxx`:108 - `StepElement_ElementAspect::Surface3dEdge()`
+    /// **Source:** `StepElement_ElementAspect.hxx`:106 - `StepElement_ElementAspect::Surface3dEdge()`
     /// Returns Value as Surface3dEdge (or Null if another type)
     pub fn surface3d_edge(&self) -> i32 {
         crate::check_result(unsafe {
@@ -3651,7 +3656,7 @@ impl ElementAspect {
         })
     }
 
-    /// **Source:** `StepElement_ElementAspect.hxx`:111 - `StepElement_ElementAspect::SetSurface2dEdge()`
+    /// **Source:** `StepElement_ElementAspect.hxx`:109 - `StepElement_ElementAspect::SetSurface2dEdge()`
     /// Set Value for Surface2dEdge
     pub fn set_surface2d_edge(&mut self, aVal: i32) {
         crate::check_void_result(unsafe {
@@ -3662,7 +3667,7 @@ impl ElementAspect {
         })
     }
 
-    /// **Source:** `StepElement_ElementAspect.hxx`:114 - `StepElement_ElementAspect::Surface2dEdge()`
+    /// **Source:** `StepElement_ElementAspect.hxx`:112 - `StepElement_ElementAspect::Surface2dEdge()`
     /// Returns Value as Surface2dEdge (or Null if another type)
     pub fn surface2d_edge(&self) -> i32 {
         crate::check_result(unsafe {
@@ -3672,7 +3677,7 @@ impl ElementAspect {
         })
     }
 
-    /// **Source:** `StepElement_ElementAspect.hxx`:117 - `StepElement_ElementAspect::SetCurveEdge()`
+    /// **Source:** `StepElement_ElementAspect.hxx`:115 - `StepElement_ElementAspect::SetCurveEdge()`
     /// Set Value for CurveEdge
     pub fn set_curve_edge(&mut self, aVal: crate::step_element::CurveEdge) {
         crate::check_void_result(unsafe {
@@ -3683,7 +3688,7 @@ impl ElementAspect {
         })
     }
 
-    /// **Source:** `StepElement_ElementAspect.hxx`:120 - `StepElement_ElementAspect::CurveEdge()`
+    /// **Source:** `StepElement_ElementAspect.hxx`:118 - `StepElement_ElementAspect::CurveEdge()`
     /// Returns Value as CurveEdge (or Null if another type)
     pub fn curve_edge(&self) -> crate::step_element::CurveEdge {
         crate::step_element::CurveEdge::try_from(crate::check_result(unsafe {
@@ -3715,7 +3720,7 @@ impl ElementAspect {
     }
 
     /// Inherited: **Source:** `StepData_SelectType.hxx`:64 - `StepData_SelectType::Matches()`
-    pub fn matches(&self, ent: &crate::ffi_types::HandleStandardTransient) -> bool {
+    pub fn matches(&self, ent: &crate::ffi_types::Handle_Standard_Transient) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepElement_ElementAspect_inherited_Matches(
                 self as *const Self,
@@ -3725,7 +3730,7 @@ impl ElementAspect {
     }
 
     /// Inherited: **Source:** `StepData_SelectType.hxx`:69 - `StepData_SelectType::SetValue()`
-    pub fn set_value(&mut self, ent: &crate::ffi_types::HandleStandardTransient) {
+    pub fn set_value(&mut self, ent: &crate::ffi_types::Handle_Standard_Transient) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepElement_ElementAspect_inherited_SetValue(
                 self as *mut Self,
@@ -3744,7 +3749,7 @@ impl ElementAspect {
     }
 
     /// Inherited: **Source:** `StepData_SelectType.hxx`:76 - `StepData_SelectType::Value()`
-    pub fn value(&self) -> &crate::ffi_types::HandleStandardTransient {
+    pub fn value(&self) -> &crate::ffi_types::Handle_Standard_Transient {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKDESTEP::StepElement_ElementAspect_inherited_Value(
@@ -3764,7 +3769,7 @@ impl ElementAspect {
     }
 
     /// Inherited: **Source:** `StepData_SelectType.hxx`:83 - `StepData_SelectType::Type()`
-    pub fn type_(&self) -> crate::OwnedPtr<crate::ffi_types::HandleStandardType> {
+    pub fn type_(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Type> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDESTEP::StepElement_ElementAspect_inherited_Type(
@@ -3784,7 +3789,7 @@ impl ElementAspect {
     }
 
     /// Inherited: **Source:** `StepData_SelectType.hxx`:94 - `StepData_SelectType::Description()`
-    pub fn description(&self) -> crate::OwnedPtr<crate::ffi_types::HandleStepDataPDescr> {
+    pub fn description(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_StepData_PDescr> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDESTEP::StepElement_ElementAspect_inherited_Description(
@@ -3804,7 +3809,7 @@ impl ElementAspect {
     }
 
     /// Inherited: **Source:** `StepData_SelectType.hxx`:118 - `StepData_SelectType::Member()`
-    pub fn member(&self) -> crate::OwnedPtr<crate::ffi_types::HandleStepDataSelectMember> {
+    pub fn member(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_StepData_SelectMember> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDESTEP::StepElement_ElementAspect_inherited_Member(
@@ -3873,8 +3878,8 @@ impl ElementAspect {
 // From StepElement_ElementAspectMember.hxx
 // ========================
 
-/// **Source:** `StepElement_ElementAspectMember.hxx`:29 - `StepElement_ElementAspectMember`
-/// Representation of member for  STEP SELECT type ElementAspect
+/// **Source:** `StepElement_ElementAspectMember.hxx`:26 - `StepElement_ElementAspectMember`
+/// Representation of member for STEP SELECT type ElementAspect
 pub use crate::ffi_types::StepElement_ElementAspectMember as ElementAspectMember;
 
 unsafe impl crate::CppDeletable for ElementAspectMember {
@@ -3886,7 +3891,7 @@ unsafe impl crate::CppDeletable for ElementAspectMember {
 }
 
 impl ElementAspectMember {
-    /// **Source:** `StepElement_ElementAspectMember.hxx`:34 - `StepElement_ElementAspectMember::StepElement_ElementAspectMember()`
+    /// **Source:** `StepElement_ElementAspectMember.hxx`:31 - `StepElement_ElementAspectMember::StepElement_ElementAspectMember()`
     /// Empty constructor
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
@@ -3896,7 +3901,7 @@ impl ElementAspectMember {
         }
     }
 
-    /// **Source:** `StepElement_ElementAspectMember.hxx`:37 - `StepElement_ElementAspectMember::HasName()`
+    /// **Source:** `StepElement_ElementAspectMember.hxx`:34 - `StepElement_ElementAspectMember::HasName()`
     /// Returns True if has name
     pub fn has_name(&self) -> bool {
         crate::check_result(unsafe {
@@ -3906,7 +3911,7 @@ impl ElementAspectMember {
         })
     }
 
-    /// **Source:** `StepElement_ElementAspectMember.hxx`:40 - `StepElement_ElementAspectMember::Name()`
+    /// **Source:** `StepElement_ElementAspectMember.hxx`:37 - `StepElement_ElementAspectMember::Name()`
     /// Returns set name
     pub fn name(&self) -> std::string::String {
         unsafe {
@@ -3920,7 +3925,7 @@ impl ElementAspectMember {
         .into_owned()
     }
 
-    /// **Source:** `StepElement_ElementAspectMember.hxx`:43 - `StepElement_ElementAspectMember::SetName()`
+    /// **Source:** `StepElement_ElementAspectMember.hxx`:40 - `StepElement_ElementAspectMember::SetName()`
     /// Set name
     pub fn set_name(&mut self, name: &str) -> bool {
         let c_name = std::ffi::CString::new(name).unwrap();
@@ -3932,7 +3937,7 @@ impl ElementAspectMember {
         })
     }
 
-    /// **Source:** `StepElement_ElementAspectMember.hxx`:46 - `StepElement_ElementAspectMember::Matches()`
+    /// **Source:** `StepElement_ElementAspectMember.hxx`:43 - `StepElement_ElementAspectMember::Matches()`
     /// Tells if the name of a SelectMember matches a given one;
     pub fn matches(&self, name: &str) -> bool {
         let c_name = std::ffi::CString::new(name).unwrap();
@@ -3944,8 +3949,8 @@ impl ElementAspectMember {
         })
     }
 
-    /// **Source:** `StepElement_ElementAspectMember.hxx`:49 - `StepElement_ElementAspectMember::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `StepElement_ElementAspectMember.hxx`:45 - `StepElement_ElementAspectMember::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKDESTEP::StepElement_ElementAspectMember_dynamic_type(
@@ -3955,7 +3960,7 @@ impl ElementAspectMember {
         }
     }
 
-    /// **Source:** `StepElement_ElementAspectMember.hxx`:49 - `StepElement_ElementAspectMember::get_type_name()`
+    /// **Source:** `StepElement_ElementAspectMember.hxx`:45 - `StepElement_ElementAspectMember::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -3966,8 +3971,8 @@ impl ElementAspectMember {
         .into_owned()
     }
 
-    /// **Source:** `StepElement_ElementAspectMember.hxx`:49 - `StepElement_ElementAspectMember::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    /// **Source:** `StepElement_ElementAspectMember.hxx`:45 - `StepElement_ElementAspectMember::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKDESTEP::StepElement_ElementAspectMember_get_type_descriptor(),
@@ -4028,7 +4033,7 @@ impl ElementAspectMember {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStepElementElementAspectMember> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_StepElement_ElementAspectMember> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDESTEP::StepElement_ElementAspectMember_to_handle(
@@ -4038,7 +4043,7 @@ impl ElementAspectMember {
         }
     }
 
-    /// Inherited: **Source:** `StepData_SelectNamed.hxx`:47 - `StepData_SelectNamed::Field()`
+    /// Inherited: **Source:** `StepData_SelectNamed.hxx`:44 - `StepData_SelectNamed::Field()`
     pub fn field(&self) -> &crate::step_data::Field {
         unsafe {
             &*(crate::check_result(
@@ -4049,7 +4054,7 @@ impl ElementAspectMember {
         }
     }
 
-    /// Inherited: **Source:** `StepData_SelectNamed.hxx`:49 - `StepData_SelectNamed::CField()`
+    /// Inherited: **Source:** `StepData_SelectNamed.hxx`:46 - `StepData_SelectNamed::CField()`
     pub fn c_field(&mut self) -> &mut crate::step_data::Field {
         unsafe {
             &mut *(crate::check_result(
@@ -4060,7 +4065,7 @@ impl ElementAspectMember {
         }
     }
 
-    /// Inherited: **Source:** `StepData_SelectNamed.hxx`:51 - `StepData_SelectNamed::Kind()`
+    /// Inherited: **Source:** `StepData_SelectNamed.hxx`:48 - `StepData_SelectNamed::Kind()`
     pub fn kind(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepElement_ElementAspectMember_inherited_Kind(
@@ -4069,7 +4074,7 @@ impl ElementAspectMember {
         })
     }
 
-    /// Inherited: **Source:** `StepData_SelectNamed.hxx`:53 - `StepData_SelectNamed::SetKind()`
+    /// Inherited: **Source:** `StepData_SelectNamed.hxx`:50 - `StepData_SelectNamed::SetKind()`
     pub fn set_kind(&mut self, kind: i32) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepElement_ElementAspectMember_inherited_SetKind(
@@ -4079,7 +4084,7 @@ impl ElementAspectMember {
         })
     }
 
-    /// Inherited: **Source:** `StepData_SelectNamed.hxx`:57 - `StepData_SelectNamed::Int()`
+    /// Inherited: **Source:** `StepData_SelectNamed.hxx`:54 - `StepData_SelectNamed::Int()`
     pub fn int(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepElement_ElementAspectMember_inherited_Int(
@@ -4088,7 +4093,7 @@ impl ElementAspectMember {
         })
     }
 
-    /// Inherited: **Source:** `StepData_SelectNamed.hxx`:61 - `StepData_SelectNamed::SetInt()`
+    /// Inherited: **Source:** `StepData_SelectNamed.hxx`:58 - `StepData_SelectNamed::SetInt()`
     pub fn set_int(&mut self, val: i32) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepElement_ElementAspectMember_inherited_SetInt(
@@ -4098,7 +4103,7 @@ impl ElementAspectMember {
         })
     }
 
-    /// Inherited: **Source:** `StepData_SelectNamed.hxx`:63 - `StepData_SelectNamed::Real()`
+    /// Inherited: **Source:** `StepData_SelectNamed.hxx`:60 - `StepData_SelectNamed::Real()`
     pub fn real(&self) -> f64 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepElement_ElementAspectMember_inherited_Real(
@@ -4107,7 +4112,7 @@ impl ElementAspectMember {
         })
     }
 
-    /// Inherited: **Source:** `StepData_SelectNamed.hxx`:65 - `StepData_SelectNamed::SetReal()`
+    /// Inherited: **Source:** `StepData_SelectNamed.hxx`:62 - `StepData_SelectNamed::SetReal()`
     pub fn set_real(&mut self, val: f64) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepElement_ElementAspectMember_inherited_SetReal(
@@ -4117,7 +4122,7 @@ impl ElementAspectMember {
         })
     }
 
-    /// Inherited: **Source:** `StepData_SelectMember.hxx`:74 - `StepData_SelectMember::ParamType()`
+    /// Inherited: **Source:** `StepData_SelectMember.hxx`:71 - `StepData_SelectMember::ParamType()`
     pub fn param_type(&self) -> crate::interface::ParamType {
         crate::interface::ParamType::try_from(crate::check_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepElement_ElementAspectMember_inherited_ParamType(
@@ -4127,7 +4132,7 @@ impl ElementAspectMember {
         .unwrap()
     }
 
-    /// Inherited: **Source:** `StepData_SelectMember.hxx`:85 - `StepData_SelectMember::Integer()`
+    /// Inherited: **Source:** `StepData_SelectMember.hxx`:82 - `StepData_SelectMember::Integer()`
     pub fn integer(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepElement_ElementAspectMember_inherited_Integer(
@@ -4136,7 +4141,7 @@ impl ElementAspectMember {
         })
     }
 
-    /// Inherited: **Source:** `StepData_SelectMember.hxx`:87 - `StepData_SelectMember::SetInteger()`
+    /// Inherited: **Source:** `StepData_SelectMember.hxx`:84 - `StepData_SelectMember::SetInteger()`
     pub fn set_integer(&mut self, val: i32) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepElement_ElementAspectMember_inherited_SetInteger(
@@ -4146,7 +4151,7 @@ impl ElementAspectMember {
         })
     }
 
-    /// Inherited: **Source:** `StepData_SelectMember.hxx`:89 - `StepData_SelectMember::Boolean()`
+    /// Inherited: **Source:** `StepData_SelectMember.hxx`:86 - `StepData_SelectMember::Boolean()`
     pub fn boolean(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepElement_ElementAspectMember_inherited_Boolean(
@@ -4155,7 +4160,7 @@ impl ElementAspectMember {
         })
     }
 
-    /// Inherited: **Source:** `StepData_SelectMember.hxx`:91 - `StepData_SelectMember::SetBoolean()`
+    /// Inherited: **Source:** `StepData_SelectMember.hxx`:88 - `StepData_SelectMember::SetBoolean()`
     pub fn set_boolean(&mut self, val: bool) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepElement_ElementAspectMember_inherited_SetBoolean(
@@ -4165,7 +4170,7 @@ impl ElementAspectMember {
         })
     }
 
-    /// Inherited: **Source:** `StepData_SelectMember.hxx`:93 - `StepData_SelectMember::Logical()`
+    /// Inherited: **Source:** `StepData_SelectMember.hxx`:90 - `StepData_SelectMember::Logical()`
     pub fn logical(&self) -> crate::step_data::Logical {
         crate::step_data::Logical::try_from(crate::check_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepElement_ElementAspectMember_inherited_Logical(
@@ -4175,7 +4180,7 @@ impl ElementAspectMember {
         .unwrap()
     }
 
-    /// Inherited: **Source:** `StepData_SelectMember.hxx`:95 - `StepData_SelectMember::SetLogical()`
+    /// Inherited: **Source:** `StepData_SelectMember.hxx`:92 - `StepData_SelectMember::SetLogical()`
     pub fn set_logical(&mut self, val: crate::step_data::Logical) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepElement_ElementAspectMember_inherited_SetLogical(
@@ -4185,7 +4190,7 @@ impl ElementAspectMember {
         })
     }
 
-    /// Inherited: **Source:** `StepData_SelectMember.hxx`:105 - `StepData_SelectMember::Enum()`
+    /// Inherited: **Source:** `StepData_SelectMember.hxx`:102 - `StepData_SelectMember::Enum()`
     pub fn enum_(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepElement_ElementAspectMember_inherited_Enum(
@@ -4194,8 +4199,8 @@ impl ElementAspectMember {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepElement_ElementAspectMember_inherited_IsInstance(
                 self as *const Self,
@@ -4204,8 +4209,8 @@ impl ElementAspectMember {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepElement_ElementAspectMember_inherited_IsKind(
                 self as *const Self,
@@ -4214,7 +4219,7 @@ impl ElementAspectMember {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -4230,7 +4235,7 @@ impl ElementAspectMember {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepElement_ElementAspectMember_inherited_GetRefCount(
@@ -4239,21 +4244,21 @@ impl ElementAspectMember {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepElement_ElementAspectMember_inherited_IncrementRefCounter(self as *mut Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepElement_ElementAspectMember_inherited_DecrementRefCounter(self as *mut Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepElement_ElementAspectMember_inherited_Delete(
@@ -4263,31 +4268,31 @@ impl ElementAspectMember {
     }
 }
 
-pub use crate::ffi_types::HandleStepElementElementAspectMember;
+pub use crate::ffi_types::Handle_StepElement_ElementAspectMember;
 
-unsafe impl crate::CppDeletable for HandleStepElementElementAspectMember {
+unsafe impl crate::CppDeletable for Handle_StepElement_ElementAspectMember {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKDESTEP::HandleStepElementElementAspectMember_destructor(ptr);
+            crate::ffi_extern_TKDESTEP::Handle_StepElement_ElementAspectMember_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleStepElementElementAspectMember {
+unsafe impl crate::CppCopyable for Handle_StepElement_ElementAspectMember {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
         unsafe {
             crate::check_result(
-                crate::ffi_extern_TKDESTEP::HandleStepElementElementAspectMember_clone(ptr),
+                crate::ffi_extern_TKDESTEP::Handle_StepElement_ElementAspectMember_clone(ptr),
             )
         }
     }
 }
 
-impl HandleStepElementElementAspectMember {
+impl Handle_StepElement_ElementAspectMember {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
         unsafe {
-            crate::ffi_extern_TKDESTEP::HandleStepElementElementAspectMember_is_null(
+            crate::ffi_extern_TKDESTEP::Handle_StepElement_ElementAspectMember_is_null(
                 self as *const Self,
             )
         }
@@ -4297,7 +4302,7 @@ impl HandleStepElementElementAspectMember {
     pub fn get(&self) -> &crate::ffi_types::StepElement_ElementAspectMember {
         unsafe {
             &*crate::check_result(
-                crate::ffi_extern_TKDESTEP::HandleStepElementElementAspectMember_get(
+                crate::ffi_extern_TKDESTEP::Handle_StepElement_ElementAspectMember_get(
                     self as *const Self,
                 ),
             )
@@ -4308,7 +4313,7 @@ impl HandleStepElementElementAspectMember {
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::StepElement_ElementAspectMember {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi_extern_TKDESTEP::HandleStepElementElementAspectMember_get_mut(
+                crate::ffi_extern_TKDESTEP::Handle_StepElement_ElementAspectMember_get_mut(
                     self as *mut Self,
                 ),
             )
@@ -4318,27 +4323,27 @@ impl HandleStepElementElementAspectMember {
     /// Upcast Handle<StepElement_ElementAspectMember> to Handle<StepData_SelectNamed>
     pub fn to_handle_select_named(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStepDataSelectNamed> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_StepData_SelectNamed> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepElementElementAspectMember_to_HandleStepDataSelectNamed(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::Handle_StepElement_ElementAspectMember_to_Handle_StepData_SelectNamed(self as *const Self)))
         }
     }
 
     /// Upcast Handle<StepElement_ElementAspectMember> to Handle<StepData_SelectMember>
     pub fn to_handle_select_member(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStepDataSelectMember> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_StepData_SelectMember> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepElementElementAspectMember_to_HandleStepDataSelectMember(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::Handle_StepElement_ElementAspectMember_to_Handle_StepData_SelectMember(self as *const Self)))
         }
     }
 
     /// Upcast Handle<StepElement_ElementAspectMember> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepElementElementAspectMember_to_HandleStandardTransient(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::Handle_StepElement_ElementAspectMember_to_Handle_Standard_Transient(self as *const Self)))
         }
     }
 }
@@ -4347,7 +4352,7 @@ impl HandleStepElementElementAspectMember {
 // From StepElement_ElementDescriptor.hxx
 // ========================
 
-/// **Source:** `StepElement_ElementDescriptor.hxx`:30 - `StepElement_ElementDescriptor`
+/// **Source:** `StepElement_ElementDescriptor.hxx`:27 - `StepElement_ElementDescriptor`
 /// Representation of STEP entity ElementDescriptor
 pub use crate::ffi_types::StepElement_ElementDescriptor as ElementDescriptor;
 
@@ -4360,7 +4365,7 @@ unsafe impl crate::CppDeletable for ElementDescriptor {
 }
 
 impl ElementDescriptor {
-    /// **Source:** `StepElement_ElementDescriptor.hxx`:35 - `StepElement_ElementDescriptor::StepElement_ElementDescriptor()`
+    /// **Source:** `StepElement_ElementDescriptor.hxx`:32 - `StepElement_ElementDescriptor::StepElement_ElementDescriptor()`
     /// Empty constructor
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
@@ -4370,12 +4375,12 @@ impl ElementDescriptor {
         }
     }
 
-    /// **Source:** `StepElement_ElementDescriptor.hxx`:38 - `StepElement_ElementDescriptor::Init()`
+    /// **Source:** `StepElement_ElementDescriptor.hxx`:35 - `StepElement_ElementDescriptor::Init()`
     /// Initialize all fields (own and inherited)
     pub fn init(
         &mut self,
         aTopologyOrder: crate::step_element::ElementOrder,
-        aDescription: &crate::ffi_types::HandleTCollectionHAsciiString,
+        aDescription: &crate::ffi_types::Handle_TCollection_HAsciiString,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepElement_ElementDescriptor_init(
@@ -4386,7 +4391,7 @@ impl ElementDescriptor {
         })
     }
 
-    /// **Source:** `StepElement_ElementDescriptor.hxx`:42 - `StepElement_ElementDescriptor::TopologyOrder()`
+    /// **Source:** `StepElement_ElementDescriptor.hxx`:39 - `StepElement_ElementDescriptor::TopologyOrder()`
     /// Returns field TopologyOrder
     pub fn topology_order(&self) -> crate::step_element::ElementOrder {
         crate::step_element::ElementOrder::try_from(crate::check_result(unsafe {
@@ -4397,7 +4402,7 @@ impl ElementDescriptor {
         .unwrap()
     }
 
-    /// **Source:** `StepElement_ElementDescriptor.hxx`:45 - `StepElement_ElementDescriptor::SetTopologyOrder()`
+    /// **Source:** `StepElement_ElementDescriptor.hxx`:42 - `StepElement_ElementDescriptor::SetTopologyOrder()`
     /// Set field TopologyOrder
     pub fn set_topology_order(&mut self, TopologyOrder: crate::step_element::ElementOrder) {
         crate::check_void_result(unsafe {
@@ -4408,9 +4413,11 @@ impl ElementDescriptor {
         })
     }
 
-    /// **Source:** `StepElement_ElementDescriptor.hxx`:48 - `StepElement_ElementDescriptor::Description()`
+    /// **Source:** `StepElement_ElementDescriptor.hxx`:45 - `StepElement_ElementDescriptor::Description()`
     /// Returns field Description
-    pub fn description(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTCollectionHAsciiString> {
+    pub fn description(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_TCollection_HAsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDESTEP::StepElement_ElementDescriptor_description(
@@ -4420,11 +4427,11 @@ impl ElementDescriptor {
         }
     }
 
-    /// **Source:** `StepElement_ElementDescriptor.hxx`:51 - `StepElement_ElementDescriptor::SetDescription()`
+    /// **Source:** `StepElement_ElementDescriptor.hxx`:48 - `StepElement_ElementDescriptor::SetDescription()`
     /// Set field Description
     pub fn set_description(
         &mut self,
-        Description: &crate::ffi_types::HandleTCollectionHAsciiString,
+        Description: &crate::ffi_types::Handle_TCollection_HAsciiString,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepElement_ElementDescriptor_set_description(
@@ -4434,8 +4441,8 @@ impl ElementDescriptor {
         })
     }
 
-    /// **Source:** `StepElement_ElementDescriptor.hxx`:53 - `StepElement_ElementDescriptor::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `StepElement_ElementDescriptor.hxx`:50 - `StepElement_ElementDescriptor::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKDESTEP::StepElement_ElementDescriptor_dynamic_type(
@@ -4445,7 +4452,7 @@ impl ElementDescriptor {
         }
     }
 
-    /// **Source:** `StepElement_ElementDescriptor.hxx`:53 - `StepElement_ElementDescriptor::get_type_name()`
+    /// **Source:** `StepElement_ElementDescriptor.hxx`:50 - `StepElement_ElementDescriptor::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -4456,8 +4463,8 @@ impl ElementDescriptor {
         .into_owned()
     }
 
-    /// **Source:** `StepElement_ElementDescriptor.hxx`:53 - `StepElement_ElementDescriptor::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    /// **Source:** `StepElement_ElementDescriptor.hxx`:50 - `StepElement_ElementDescriptor::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKDESTEP::StepElement_ElementDescriptor_get_type_descriptor(),
@@ -4490,7 +4497,7 @@ impl ElementDescriptor {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStepElementElementDescriptor> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_StepElement_ElementDescriptor> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDESTEP::StepElement_ElementDescriptor_to_handle(obj.into_raw()),
@@ -4498,8 +4505,8 @@ impl ElementDescriptor {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepElement_ElementDescriptor_inherited_IsInstance(
                 self as *const Self,
@@ -4508,8 +4515,8 @@ impl ElementDescriptor {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepElement_ElementDescriptor_inherited_IsKind(
                 self as *const Self,
@@ -4518,7 +4525,7 @@ impl ElementDescriptor {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -4534,7 +4541,7 @@ impl ElementDescriptor {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepElement_ElementDescriptor_inherited_GetRefCount(
@@ -4543,7 +4550,7 @@ impl ElementDescriptor {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepElement_ElementDescriptor_inherited_IncrementRefCounter(
@@ -4552,7 +4559,7 @@ impl ElementDescriptor {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepElement_ElementDescriptor_inherited_DecrementRefCounter(
@@ -4561,7 +4568,7 @@ impl ElementDescriptor {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepElement_ElementDescriptor_inherited_Delete(
@@ -4571,31 +4578,31 @@ impl ElementDescriptor {
     }
 }
 
-pub use crate::ffi_types::HandleStepElementElementDescriptor;
+pub use crate::ffi_types::Handle_StepElement_ElementDescriptor;
 
-unsafe impl crate::CppDeletable for HandleStepElementElementDescriptor {
+unsafe impl crate::CppDeletable for Handle_StepElement_ElementDescriptor {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKDESTEP::HandleStepElementElementDescriptor_destructor(ptr);
+            crate::ffi_extern_TKDESTEP::Handle_StepElement_ElementDescriptor_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleStepElementElementDescriptor {
+unsafe impl crate::CppCopyable for Handle_StepElement_ElementDescriptor {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
         unsafe {
             crate::check_result(
-                crate::ffi_extern_TKDESTEP::HandleStepElementElementDescriptor_clone(ptr),
+                crate::ffi_extern_TKDESTEP::Handle_StepElement_ElementDescriptor_clone(ptr),
             )
         }
     }
 }
 
-impl HandleStepElementElementDescriptor {
+impl Handle_StepElement_ElementDescriptor {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
         unsafe {
-            crate::ffi_extern_TKDESTEP::HandleStepElementElementDescriptor_is_null(
+            crate::ffi_extern_TKDESTEP::Handle_StepElement_ElementDescriptor_is_null(
                 self as *const Self,
             )
         }
@@ -4605,7 +4612,7 @@ impl HandleStepElementElementDescriptor {
     pub fn get(&self) -> &crate::ffi_types::StepElement_ElementDescriptor {
         unsafe {
             &*crate::check_result(
-                crate::ffi_extern_TKDESTEP::HandleStepElementElementDescriptor_get(
+                crate::ffi_extern_TKDESTEP::Handle_StepElement_ElementDescriptor_get(
                     self as *const Self,
                 ),
             )
@@ -4616,7 +4623,7 @@ impl HandleStepElementElementDescriptor {
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::StepElement_ElementDescriptor {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi_extern_TKDESTEP::HandleStepElementElementDescriptor_get_mut(
+                crate::ffi_extern_TKDESTEP::Handle_StepElement_ElementDescriptor_get_mut(
                     self as *mut Self,
                 ),
             )
@@ -4626,9 +4633,9 @@ impl HandleStepElementElementDescriptor {
     /// Upcast Handle<StepElement_ElementDescriptor> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepElementElementDescriptor_to_HandleStandardTransient(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::Handle_StepElement_ElementDescriptor_to_Handle_Standard_Transient(self as *const Self)))
         }
     }
 
@@ -4637,9 +4644,10 @@ impl HandleStepElementElementDescriptor {
     /// Returns `None` if the handle does not point to a `StepElement_Curve3dElementDescriptor` (or subclass).
     pub fn downcast_to_curve3d_element_descriptor(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleStepElementCurve3dElementDescriptor>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_StepElement_Curve3dElementDescriptor>>
+    {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKDESTEP::HandleStepElementElementDescriptor_downcast_to_HandleStepElementCurve3dElementDescriptor(self as *const Self)
+            crate::ffi_extern_TKDESTEP::Handle_StepElement_ElementDescriptor_downcast_to_Handle_StepElement_Curve3dElementDescriptor(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -4653,10 +4661,10 @@ impl HandleStepElementElementDescriptor {
     /// Returns `None` if the handle does not point to a `StepElement_Surface3dElementDescriptor` (or subclass).
     pub fn downcast_to_surface3d_element_descriptor(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleStepElementSurface3dElementDescriptor>>
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_StepElement_Surface3dElementDescriptor>>
     {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKDESTEP::HandleStepElementElementDescriptor_downcast_to_HandleStepElementSurface3dElementDescriptor(self as *const Self)
+            crate::ffi_extern_TKDESTEP::Handle_StepElement_ElementDescriptor_downcast_to_Handle_StepElement_Surface3dElementDescriptor(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -4670,9 +4678,10 @@ impl HandleStepElementElementDescriptor {
     /// Returns `None` if the handle does not point to a `StepElement_Volume3dElementDescriptor` (or subclass).
     pub fn downcast_to_volume3d_element_descriptor(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleStepElementVolume3dElementDescriptor>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_StepElement_Volume3dElementDescriptor>>
+    {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKDESTEP::HandleStepElementElementDescriptor_downcast_to_HandleStepElementVolume3dElementDescriptor(self as *const Self)
+            crate::ffi_extern_TKDESTEP::Handle_StepElement_ElementDescriptor_downcast_to_Handle_StepElement_Volume3dElementDescriptor(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -4686,7 +4695,7 @@ impl HandleStepElementElementDescriptor {
 // From StepElement_ElementMaterial.hxx
 // ========================
 
-/// **Source:** `StepElement_ElementMaterial.hxx`:29 - `StepElement_ElementMaterial`
+/// **Source:** `StepElement_ElementMaterial.hxx`:28 - `StepElement_ElementMaterial`
 /// Representation of STEP entity ElementMaterial
 pub use crate::ffi_types::StepElement_ElementMaterial as ElementMaterial;
 
@@ -4699,7 +4708,7 @@ unsafe impl crate::CppDeletable for ElementMaterial {
 }
 
 impl ElementMaterial {
-    /// **Source:** `StepElement_ElementMaterial.hxx`:34 - `StepElement_ElementMaterial::StepElement_ElementMaterial()`
+    /// **Source:** `StepElement_ElementMaterial.hxx`:33 - `StepElement_ElementMaterial::StepElement_ElementMaterial()`
     /// Empty constructor
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
@@ -4709,13 +4718,13 @@ impl ElementMaterial {
         }
     }
 
-    /// **Source:** `StepElement_ElementMaterial.hxx`:37 - `StepElement_ElementMaterial::Init()`
+    /// **Source:** `StepElement_ElementMaterial.hxx`:36 - `StepElement_ElementMaterial::Init()`
     /// Initialize all fields (own and inherited)
     pub fn init(
         &mut self,
-        aMaterialId: &crate::ffi_types::HandleTCollectionHAsciiString,
-        aDescription: &crate::ffi_types::HandleTCollectionHAsciiString,
-        aProperties: &crate::ffi_types::HandleStepReprHArray1OfMaterialPropertyRepresentation,
+        aMaterialId: &crate::ffi_types::Handle_TCollection_HAsciiString,
+        aDescription: &crate::ffi_types::Handle_TCollection_HAsciiString,
+        aProperties: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepRepr_MaterialPropertyRepresentation,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepElement_ElementMaterial_init(
@@ -4729,7 +4738,9 @@ impl ElementMaterial {
 
     /// **Source:** `StepElement_ElementMaterial.hxx`:43 - `StepElement_ElementMaterial::MaterialId()`
     /// Returns field MaterialId
-    pub fn material_id(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTCollectionHAsciiString> {
+    pub fn material_id(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_TCollection_HAsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDESTEP::StepElement_ElementMaterial_material_id(
@@ -4743,7 +4754,7 @@ impl ElementMaterial {
     /// Set field MaterialId
     pub fn set_material_id(
         &mut self,
-        MaterialId: &crate::ffi_types::HandleTCollectionHAsciiString,
+        MaterialId: &crate::ffi_types::Handle_TCollection_HAsciiString,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepElement_ElementMaterial_set_material_id(
@@ -4755,7 +4766,9 @@ impl ElementMaterial {
 
     /// **Source:** `StepElement_ElementMaterial.hxx`:49 - `StepElement_ElementMaterial::Description()`
     /// Returns field Description
-    pub fn description(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTCollectionHAsciiString> {
+    pub fn description(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_TCollection_HAsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDESTEP::StepElement_ElementMaterial_description(
@@ -4769,7 +4782,7 @@ impl ElementMaterial {
     /// Set field Description
     pub fn set_description(
         &mut self,
-        Description: &crate::ffi_types::HandleTCollectionHAsciiString,
+        Description: &crate::ffi_types::Handle_TCollection_HAsciiString,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepElement_ElementMaterial_set_description(
@@ -4779,12 +4792,9 @@ impl ElementMaterial {
         })
     }
 
-    /// **Source:** `StepElement_ElementMaterial.hxx`:55 - `StepElement_ElementMaterial::Properties()`
+    /// **Source:** `StepElement_ElementMaterial.hxx`:57 - `StepElement_ElementMaterial::Properties()`
     /// Returns field Properties
-    pub fn properties(
-        &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStepReprHArray1OfMaterialPropertyRepresentation>
-    {
+    pub fn properties(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepRepr_MaterialPropertyRepresentation>{
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDESTEP::StepElement_ElementMaterial_properties(
@@ -4794,11 +4804,11 @@ impl ElementMaterial {
         }
     }
 
-    /// **Source:** `StepElement_ElementMaterial.hxx`:58 - `StepElement_ElementMaterial::SetProperties()`
+    /// **Source:** `StepElement_ElementMaterial.hxx`:60 - `StepElement_ElementMaterial::SetProperties()`
     /// Set field Properties
     pub fn set_properties(
         &mut self,
-        Properties: &crate::ffi_types::HandleStepReprHArray1OfMaterialPropertyRepresentation,
+        Properties: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepRepr_MaterialPropertyRepresentation,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepElement_ElementMaterial_set_properties(
@@ -4808,8 +4818,8 @@ impl ElementMaterial {
         })
     }
 
-    /// **Source:** `StepElement_ElementMaterial.hxx`:61 - `StepElement_ElementMaterial::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `StepElement_ElementMaterial.hxx`:64 - `StepElement_ElementMaterial::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKDESTEP::StepElement_ElementMaterial_dynamic_type(
@@ -4819,7 +4829,7 @@ impl ElementMaterial {
         }
     }
 
-    /// **Source:** `StepElement_ElementMaterial.hxx`:61 - `StepElement_ElementMaterial::get_type_name()`
+    /// **Source:** `StepElement_ElementMaterial.hxx`:64 - `StepElement_ElementMaterial::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -4830,8 +4840,8 @@ impl ElementMaterial {
         .into_owned()
     }
 
-    /// **Source:** `StepElement_ElementMaterial.hxx`:61 - `StepElement_ElementMaterial::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    /// **Source:** `StepElement_ElementMaterial.hxx`:64 - `StepElement_ElementMaterial::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKDESTEP::StepElement_ElementMaterial_get_type_descriptor(),
@@ -4864,7 +4874,7 @@ impl ElementMaterial {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStepElementElementMaterial> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_StepElement_ElementMaterial> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDESTEP::StepElement_ElementMaterial_to_handle(obj.into_raw()),
@@ -4872,8 +4882,8 @@ impl ElementMaterial {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepElement_ElementMaterial_inherited_IsInstance(
                 self as *const Self,
@@ -4882,8 +4892,8 @@ impl ElementMaterial {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepElement_ElementMaterial_inherited_IsKind(
                 self as *const Self,
@@ -4892,7 +4902,7 @@ impl ElementMaterial {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -4908,7 +4918,7 @@ impl ElementMaterial {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepElement_ElementMaterial_inherited_GetRefCount(
@@ -4917,7 +4927,7 @@ impl ElementMaterial {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepElement_ElementMaterial_inherited_IncrementRefCounter(
@@ -4926,7 +4936,7 @@ impl ElementMaterial {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepElement_ElementMaterial_inherited_DecrementRefCounter(
@@ -4935,7 +4945,7 @@ impl ElementMaterial {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepElement_ElementMaterial_inherited_Delete(
@@ -4945,31 +4955,31 @@ impl ElementMaterial {
     }
 }
 
-pub use crate::ffi_types::HandleStepElementElementMaterial;
+pub use crate::ffi_types::Handle_StepElement_ElementMaterial;
 
-unsafe impl crate::CppDeletable for HandleStepElementElementMaterial {
+unsafe impl crate::CppDeletable for Handle_StepElement_ElementMaterial {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKDESTEP::HandleStepElementElementMaterial_destructor(ptr);
+            crate::ffi_extern_TKDESTEP::Handle_StepElement_ElementMaterial_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleStepElementElementMaterial {
+unsafe impl crate::CppCopyable for Handle_StepElement_ElementMaterial {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
         unsafe {
-            crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepElementElementMaterial_clone(
-                ptr,
-            ))
+            crate::check_result(
+                crate::ffi_extern_TKDESTEP::Handle_StepElement_ElementMaterial_clone(ptr),
+            )
         }
     }
 }
 
-impl HandleStepElementElementMaterial {
+impl Handle_StepElement_ElementMaterial {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
         unsafe {
-            crate::ffi_extern_TKDESTEP::HandleStepElementElementMaterial_is_null(
+            crate::ffi_extern_TKDESTEP::Handle_StepElement_ElementMaterial_is_null(
                 self as *const Self,
             )
         }
@@ -4978,9 +4988,11 @@ impl HandleStepElementElementMaterial {
     /// Dereference this Handle to access the underlying StepElement_ElementMaterial
     pub fn get(&self) -> &crate::ffi_types::StepElement_ElementMaterial {
         unsafe {
-            &*crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepElementElementMaterial_get(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKDESTEP::Handle_StepElement_ElementMaterial_get(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -4988,7 +5000,7 @@ impl HandleStepElementElementMaterial {
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::StepElement_ElementMaterial {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi_extern_TKDESTEP::HandleStepElementElementMaterial_get_mut(
+                crate::ffi_extern_TKDESTEP::Handle_StepElement_ElementMaterial_get_mut(
                     self as *mut Self,
                 ),
             )
@@ -4998,3632 +5010,9 @@ impl HandleStepElementElementMaterial {
     /// Upcast Handle<StepElement_ElementMaterial> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepElementElementMaterial_to_HandleStandardTransient(self as *const Self)))
-        }
-    }
-}
-
-// ========================
-// From StepElement_HArray1OfCurveElementEndReleasePacket.hxx
-// ========================
-
-/// **Source:** `StepElement_HArray1OfCurveElementEndReleasePacket.hxx`:20 - `StepElement_HArray1OfCurveElementEndReleasePacket`
-pub use crate::ffi_types::StepElement_HArray1OfCurveElementEndReleasePacket as HArray1OfCurveElementEndReleasePacket;
-
-unsafe impl crate::CppDeletable for HArray1OfCurveElementEndReleasePacket {
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            crate::ffi_extern_TKDESTEP::StepElement_HArray1OfCurveElementEndReleasePacket_destructor(ptr);
-        }
-    }
-}
-
-impl HArray1OfCurveElementEndReleasePacket {
-    /// **Source:** `StepElement_HArray1OfCurveElementEndReleasePacket.hxx`:20 - `StepElement_HArray1OfCurveElementEndReleasePacket::StepElement_HArray1OfCurveElementEndReleasePacket()`
-    pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKDESTEP::StepElement_HArray1OfCurveElementEndReleasePacket_ctor(
-                ),
-            ))
-        }
-    }
-
-    /// **Source:** `StepElement_HArray1OfCurveElementEndReleasePacket.hxx`:20 - `StepElement_HArray1OfCurveElementEndReleasePacket::StepElement_HArray1OfCurveElementEndReleasePacket()`
-    pub fn new_int2(theLower: i32, theUpper: i32) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::StepElement_HArray1OfCurveElementEndReleasePacket_ctor_int2(theLower, theUpper)))
-        }
-    }
-
-    /// **Source:** `StepElement_HArray1OfCurveElementEndReleasePacket.hxx`:20 - `StepElement_HArray1OfCurveElementEndReleasePacket::StepElement_HArray1OfCurveElementEndReleasePacket()`
-    pub fn new_int2_handlestepelementcurveelementendreleasepacket(
-        theLower: i32,
-        theUpper: i32,
-        theValue: &crate::ffi_types::HandleStepElementCurveElementEndReleasePacket,
-    ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::StepElement_HArray1OfCurveElementEndReleasePacket_ctor_int2_handlestepelementcurveelementendreleasepacket(theLower, theUpper, theValue)))
-        }
-    }
-
-    /// **Source:** `StepElement_HArray1OfCurveElementEndReleasePacket.hxx`:20 - `StepElement_HArray1OfCurveElementEndReleasePacket::StepElement_HArray1OfCurveElementEndReleasePacket()`
-    pub fn new_handlestepelementcurveelementendreleasepacket_int2_bool(
-        theBegin: &crate::ffi_types::HandleStepElementCurveElementEndReleasePacket,
-        theLower: i32,
-        theUpper: i32,
-        arg3: bool,
-    ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::StepElement_HArray1OfCurveElementEndReleasePacket_ctor_handlestepelementcurveelementendreleasepacket_int2_bool(theBegin, theLower, theUpper, arg3)))
-        }
-    }
-
-    /// **Source:** `StepElement_HArray1OfCurveElementEndReleasePacket.hxx`:20 - `StepElement_HArray1OfCurveElementEndReleasePacket::StepElement_HArray1OfCurveElementEndReleasePacket()`
-    pub fn new_array1ofcurveelementendreleasepacket(
-        theOther: &crate::ffi_types::StepElement_Array1OfCurveElementEndReleasePacket,
-    ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::StepElement_HArray1OfCurveElementEndReleasePacket_ctor_array1ofcurveelementendreleasepacket(theOther)))
-        }
-    }
-
-    /// **Source:** `StepElement_HArray1OfCurveElementEndReleasePacket.hxx`:20 - `StepElement_HArray1OfCurveElementEndReleasePacket::Array1()`
-    pub fn array1(&self) -> &crate::ffi_types::StepElement_Array1OfCurveElementEndReleasePacket {
-        unsafe {
-            &*(crate::check_result(crate::ffi_extern_TKDESTEP::StepElement_HArray1OfCurveElementEndReleasePacket_array1(self as *const Self)))
-        }
-    }
-
-    /// **Source:** `StepElement_HArray1OfCurveElementEndReleasePacket.hxx`:20 - `StepElement_HArray1OfCurveElementEndReleasePacket::ChangeArray1()`
-    pub fn change_array1(
-        &mut self,
-    ) -> &mut crate::ffi_types::StepElement_Array1OfCurveElementEndReleasePacket {
-        unsafe {
-            &mut *(crate::check_result(crate::ffi_extern_TKDESTEP::StepElement_HArray1OfCurveElementEndReleasePacket_change_array1(self as *mut Self)))
-        }
-    }
-
-    /// **Source:** `StepElement_HArray1OfCurveElementEndReleasePacket.hxx`:20 - `StepElement_HArray1OfCurveElementEndReleasePacket::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
-        unsafe {
-            &*(crate::check_result(crate::ffi_extern_TKDESTEP::StepElement_HArray1OfCurveElementEndReleasePacket_dynamic_type(self as *const Self)))
-        }
-    }
-
-    /// **Source:** `StepElement_HArray1OfCurveElementEndReleasePacket.hxx`:20 - `StepElement_HArray1OfCurveElementEndReleasePacket::get_type_name()`
-    pub fn get_type_name() -> std::string::String {
-        unsafe { std::ffi::CStr::from_ptr(crate::check_result(crate::ffi_extern_TKDESTEP::StepElement_HArray1OfCurveElementEndReleasePacket_get_type_name())) }.to_string_lossy().into_owned()
-    }
-
-    /// **Source:** `StepElement_HArray1OfCurveElementEndReleasePacket.hxx`:20 - `StepElement_HArray1OfCurveElementEndReleasePacket::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
-        unsafe {
-            &*(crate::check_result(crate::ffi_extern_TKDESTEP::StepElement_HArray1OfCurveElementEndReleasePacket_get_type_descriptor()))
-        }
-    }
-
-    /// Upcast to Standard_Transient
-    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        unsafe {
-            &*crate::check_result(crate::ffi_extern_TKDESTEP::StepElement_HArray1OfCurveElementEndReleasePacket_as_Standard_Transient(self as *const Self))
-        }
-    }
-
-    /// Upcast to Standard_Transient (mutable)
-    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        unsafe {
-            &mut *crate::check_result(crate::ffi_extern_TKDESTEP::StepElement_HArray1OfCurveElementEndReleasePacket_as_Standard_Transient_mut(self as *mut Self))
-        }
-    }
-
-    /// Wrap in a Handle (reference-counted smart pointer)
-    pub fn to_handle(
-        obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStepElementHArray1OfCurveElementEndReleasePacket>
-    {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::StepElement_HArray1OfCurveElementEndReleasePacket_to_handle(obj.into_raw())))
-        }
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKDESTEP::StepElement_HArray1OfCurveElementEndReleasePacket_inherited_IsInstance(self as *const Self, theType)
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKDESTEP::StepElement_HArray1OfCurveElementEndReleasePacket_inherited_IsKind(self as *const Self, theType)
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
-    pub fn this(&self) -> Option<&crate::standard::Transient> {
-        {
-            let __val = crate::check_result(unsafe {
-                crate::ffi_extern_TKDESTEP::StepElement_HArray1OfCurveElementEndReleasePacket_inherited_This(self as *const Self)
-            });
-            if __val.is_null() {
-                None
-            } else {
-                Some(unsafe { &*__val })
-            }
-        }
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
-    pub fn get_ref_count(&self) -> i32 {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKDESTEP::StepElement_HArray1OfCurveElementEndReleasePacket_inherited_GetRefCount(self as *const Self)
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
-    pub fn increment_ref_counter(&mut self) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKDESTEP::StepElement_HArray1OfCurveElementEndReleasePacket_inherited_IncrementRefCounter(self as *mut Self)
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
-    pub fn decrement_ref_counter(&mut self) -> i32 {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKDESTEP::StepElement_HArray1OfCurveElementEndReleasePacket_inherited_DecrementRefCounter(self as *mut Self)
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
-    pub fn delete(&self) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKDESTEP::StepElement_HArray1OfCurveElementEndReleasePacket_inherited_Delete(self as *const Self)
-        })
-    }
-}
-
-pub use crate::ffi_types::HandleStepElementHArray1OfCurveElementEndReleasePacket;
-
-unsafe impl crate::CppDeletable for HandleStepElementHArray1OfCurveElementEndReleasePacket {
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            crate::ffi_extern_TKDESTEP::HandleStepElementHArray1OfCurveElementEndReleasePacket_destructor(ptr);
-        }
-    }
-}
-
-unsafe impl crate::CppCopyable for HandleStepElementHArray1OfCurveElementEndReleasePacket {
-    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        unsafe {
-            crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepElementHArray1OfCurveElementEndReleasePacket_clone(ptr))
-        }
-    }
-}
-
-impl HandleStepElementHArray1OfCurveElementEndReleasePacket {
-    /// Returns `true` if this Handle is null (doesn't point to any object).
-    pub fn is_null(&self) -> bool {
-        unsafe {
-            crate::ffi_extern_TKDESTEP::HandleStepElementHArray1OfCurveElementEndReleasePacket_is_null(self as *const Self)
-        }
-    }
-
-    /// Dereference this Handle to access the underlying StepElement_HArray1OfCurveElementEndReleasePacket
-    pub fn get(&self) -> &crate::ffi_types::StepElement_HArray1OfCurveElementEndReleasePacket {
-        unsafe {
-            &*crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepElementHArray1OfCurveElementEndReleasePacket_get(self as *const Self))
-        }
-    }
-
-    /// Dereference this Handle to mutably access the underlying StepElement_HArray1OfCurveElementEndReleasePacket
-    pub fn get_mut(
-        &mut self,
-    ) -> &mut crate::ffi_types::StepElement_HArray1OfCurveElementEndReleasePacket {
-        unsafe {
-            &mut *crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepElementHArray1OfCurveElementEndReleasePacket_get_mut(self as *mut Self))
-        }
-    }
-
-    /// Upcast Handle<StepElement_HArray1OfCurveElementEndReleasePacket> to Handle<Standard_Transient>
-    pub fn to_handle_transient(
-        &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepElementHArray1OfCurveElementEndReleasePacket_to_HandleStandardTransient(self as *const Self)))
-        }
-    }
-}
-
-// ========================
-// From StepElement_HArray1OfCurveElementSectionDefinition.hxx
-// ========================
-
-/// **Source:** `StepElement_HArray1OfCurveElementSectionDefinition.hxx`:20 - `StepElement_HArray1OfCurveElementSectionDefinition`
-pub use crate::ffi_types::StepElement_HArray1OfCurveElementSectionDefinition as HArray1OfCurveElementSectionDefinition;
-
-unsafe impl crate::CppDeletable for HArray1OfCurveElementSectionDefinition {
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            crate::ffi_extern_TKDESTEP::StepElement_HArray1OfCurveElementSectionDefinition_destructor(ptr);
-        }
-    }
-}
-
-impl HArray1OfCurveElementSectionDefinition {
-    /// **Source:** `StepElement_HArray1OfCurveElementSectionDefinition.hxx`:20 - `StepElement_HArray1OfCurveElementSectionDefinition::StepElement_HArray1OfCurveElementSectionDefinition()`
-    pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKDESTEP::StepElement_HArray1OfCurveElementSectionDefinition_ctor(
-                ),
-            ))
-        }
-    }
-
-    /// **Source:** `StepElement_HArray1OfCurveElementSectionDefinition.hxx`:20 - `StepElement_HArray1OfCurveElementSectionDefinition::StepElement_HArray1OfCurveElementSectionDefinition()`
-    pub fn new_int2(theLower: i32, theUpper: i32) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::StepElement_HArray1OfCurveElementSectionDefinition_ctor_int2(theLower, theUpper)))
-        }
-    }
-
-    /// **Source:** `StepElement_HArray1OfCurveElementSectionDefinition.hxx`:20 - `StepElement_HArray1OfCurveElementSectionDefinition::StepElement_HArray1OfCurveElementSectionDefinition()`
-    pub fn new_int2_handlestepelementcurveelementsectiondefinition(
-        theLower: i32,
-        theUpper: i32,
-        theValue: &crate::ffi_types::HandleStepElementCurveElementSectionDefinition,
-    ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::StepElement_HArray1OfCurveElementSectionDefinition_ctor_int2_handlestepelementcurveelementsectiondefinition(theLower, theUpper, theValue)))
-        }
-    }
-
-    /// **Source:** `StepElement_HArray1OfCurveElementSectionDefinition.hxx`:20 - `StepElement_HArray1OfCurveElementSectionDefinition::StepElement_HArray1OfCurveElementSectionDefinition()`
-    pub fn new_handlestepelementcurveelementsectiondefinition_int2_bool(
-        theBegin: &crate::ffi_types::HandleStepElementCurveElementSectionDefinition,
-        theLower: i32,
-        theUpper: i32,
-        arg3: bool,
-    ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::StepElement_HArray1OfCurveElementSectionDefinition_ctor_handlestepelementcurveelementsectiondefinition_int2_bool(theBegin, theLower, theUpper, arg3)))
-        }
-    }
-
-    /// **Source:** `StepElement_HArray1OfCurveElementSectionDefinition.hxx`:20 - `StepElement_HArray1OfCurveElementSectionDefinition::StepElement_HArray1OfCurveElementSectionDefinition()`
-    pub fn new_array1ofcurveelementsectiondefinition(
-        theOther: &crate::ffi_types::StepElement_Array1OfCurveElementSectionDefinition,
-    ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::StepElement_HArray1OfCurveElementSectionDefinition_ctor_array1ofcurveelementsectiondefinition(theOther)))
-        }
-    }
-
-    /// **Source:** `StepElement_HArray1OfCurveElementSectionDefinition.hxx`:20 - `StepElement_HArray1OfCurveElementSectionDefinition::Array1()`
-    pub fn array1(&self) -> &crate::ffi_types::StepElement_Array1OfCurveElementSectionDefinition {
-        unsafe {
-            &*(crate::check_result(crate::ffi_extern_TKDESTEP::StepElement_HArray1OfCurveElementSectionDefinition_array1(self as *const Self)))
-        }
-    }
-
-    /// **Source:** `StepElement_HArray1OfCurveElementSectionDefinition.hxx`:20 - `StepElement_HArray1OfCurveElementSectionDefinition::ChangeArray1()`
-    pub fn change_array1(
-        &mut self,
-    ) -> &mut crate::ffi_types::StepElement_Array1OfCurveElementSectionDefinition {
-        unsafe {
-            &mut *(crate::check_result(crate::ffi_extern_TKDESTEP::StepElement_HArray1OfCurveElementSectionDefinition_change_array1(self as *mut Self)))
-        }
-    }
-
-    /// **Source:** `StepElement_HArray1OfCurveElementSectionDefinition.hxx`:20 - `StepElement_HArray1OfCurveElementSectionDefinition::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
-        unsafe {
-            &*(crate::check_result(crate::ffi_extern_TKDESTEP::StepElement_HArray1OfCurveElementSectionDefinition_dynamic_type(self as *const Self)))
-        }
-    }
-
-    /// **Source:** `StepElement_HArray1OfCurveElementSectionDefinition.hxx`:20 - `StepElement_HArray1OfCurveElementSectionDefinition::get_type_name()`
-    pub fn get_type_name() -> std::string::String {
-        unsafe { std::ffi::CStr::from_ptr(crate::check_result(crate::ffi_extern_TKDESTEP::StepElement_HArray1OfCurveElementSectionDefinition_get_type_name())) }.to_string_lossy().into_owned()
-    }
-
-    /// **Source:** `StepElement_HArray1OfCurveElementSectionDefinition.hxx`:20 - `StepElement_HArray1OfCurveElementSectionDefinition::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
-        unsafe {
-            &*(crate::check_result(crate::ffi_extern_TKDESTEP::StepElement_HArray1OfCurveElementSectionDefinition_get_type_descriptor()))
-        }
-    }
-
-    /// Upcast to Standard_Transient
-    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        unsafe {
-            &*crate::check_result(crate::ffi_extern_TKDESTEP::StepElement_HArray1OfCurveElementSectionDefinition_as_Standard_Transient(self as *const Self))
-        }
-    }
-
-    /// Upcast to Standard_Transient (mutable)
-    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        unsafe {
-            &mut *crate::check_result(crate::ffi_extern_TKDESTEP::StepElement_HArray1OfCurveElementSectionDefinition_as_Standard_Transient_mut(self as *mut Self))
-        }
-    }
-
-    /// Wrap in a Handle (reference-counted smart pointer)
-    pub fn to_handle(
-        obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStepElementHArray1OfCurveElementSectionDefinition>
-    {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::StepElement_HArray1OfCurveElementSectionDefinition_to_handle(obj.into_raw())))
-        }
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKDESTEP::StepElement_HArray1OfCurveElementSectionDefinition_inherited_IsInstance(self as *const Self, theType)
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKDESTEP::StepElement_HArray1OfCurveElementSectionDefinition_inherited_IsKind(self as *const Self, theType)
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
-    pub fn this(&self) -> Option<&crate::standard::Transient> {
-        {
-            let __val = crate::check_result(unsafe {
-                crate::ffi_extern_TKDESTEP::StepElement_HArray1OfCurveElementSectionDefinition_inherited_This(self as *const Self)
-            });
-            if __val.is_null() {
-                None
-            } else {
-                Some(unsafe { &*__val })
-            }
-        }
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
-    pub fn get_ref_count(&self) -> i32 {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKDESTEP::StepElement_HArray1OfCurveElementSectionDefinition_inherited_GetRefCount(self as *const Self)
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
-    pub fn increment_ref_counter(&mut self) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKDESTEP::StepElement_HArray1OfCurveElementSectionDefinition_inherited_IncrementRefCounter(self as *mut Self)
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
-    pub fn decrement_ref_counter(&mut self) -> i32 {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKDESTEP::StepElement_HArray1OfCurveElementSectionDefinition_inherited_DecrementRefCounter(self as *mut Self)
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
-    pub fn delete(&self) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKDESTEP::StepElement_HArray1OfCurveElementSectionDefinition_inherited_Delete(self as *const Self)
-        })
-    }
-}
-
-pub use crate::ffi_types::HandleStepElementHArray1OfCurveElementSectionDefinition;
-
-unsafe impl crate::CppDeletable for HandleStepElementHArray1OfCurveElementSectionDefinition {
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            crate::ffi_extern_TKDESTEP::HandleStepElementHArray1OfCurveElementSectionDefinition_destructor(ptr);
-        }
-    }
-}
-
-unsafe impl crate::CppCopyable for HandleStepElementHArray1OfCurveElementSectionDefinition {
-    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        unsafe {
-            crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepElementHArray1OfCurveElementSectionDefinition_clone(ptr))
-        }
-    }
-}
-
-impl HandleStepElementHArray1OfCurveElementSectionDefinition {
-    /// Returns `true` if this Handle is null (doesn't point to any object).
-    pub fn is_null(&self) -> bool {
-        unsafe {
-            crate::ffi_extern_TKDESTEP::HandleStepElementHArray1OfCurveElementSectionDefinition_is_null(self as *const Self)
-        }
-    }
-
-    /// Dereference this Handle to access the underlying StepElement_HArray1OfCurveElementSectionDefinition
-    pub fn get(&self) -> &crate::ffi_types::StepElement_HArray1OfCurveElementSectionDefinition {
-        unsafe {
-            &*crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepElementHArray1OfCurveElementSectionDefinition_get(self as *const Self))
-        }
-    }
-
-    /// Dereference this Handle to mutably access the underlying StepElement_HArray1OfCurveElementSectionDefinition
-    pub fn get_mut(
-        &mut self,
-    ) -> &mut crate::ffi_types::StepElement_HArray1OfCurveElementSectionDefinition {
-        unsafe {
-            &mut *crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepElementHArray1OfCurveElementSectionDefinition_get_mut(self as *mut Self))
-        }
-    }
-
-    /// Upcast Handle<StepElement_HArray1OfCurveElementSectionDefinition> to Handle<Standard_Transient>
-    pub fn to_handle_transient(
-        &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepElementHArray1OfCurveElementSectionDefinition_to_HandleStandardTransient(self as *const Self)))
-        }
-    }
-}
-
-// ========================
-// From StepElement_HArray1OfHSequenceOfCurveElementPurposeMember.hxx
-// ========================
-
-/// **Source:** `StepElement_HArray1OfHSequenceOfCurveElementPurposeMember.hxx`:21 - `StepElement_HArray1OfHSequenceOfCurveElementPurposeMember`
-pub use crate::ffi_types::StepElement_HArray1OfHSequenceOfCurveElementPurposeMember as HArray1OfHSequenceOfCurveElementPurposeMember;
-
-unsafe impl crate::CppDeletable for HArray1OfHSequenceOfCurveElementPurposeMember {
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            crate::ffi_extern_TKDESTEP::StepElement_HArray1OfHSequenceOfCurveElementPurposeMember_destructor(ptr);
-        }
-    }
-}
-
-impl HArray1OfHSequenceOfCurveElementPurposeMember {
-    /// **Source:** `StepElement_HArray1OfHSequenceOfCurveElementPurposeMember.hxx`:21 - `StepElement_HArray1OfHSequenceOfCurveElementPurposeMember::StepElement_HArray1OfHSequenceOfCurveElementPurposeMember()`
-    pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::StepElement_HArray1OfHSequenceOfCurveElementPurposeMember_ctor()))
-        }
-    }
-
-    /// **Source:** `StepElement_HArray1OfHSequenceOfCurveElementPurposeMember.hxx`:21 - `StepElement_HArray1OfHSequenceOfCurveElementPurposeMember::StepElement_HArray1OfHSequenceOfCurveElementPurposeMember()`
-    pub fn new_int2(theLower: i32, theUpper: i32) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::StepElement_HArray1OfHSequenceOfCurveElementPurposeMember_ctor_int2(theLower, theUpper)))
-        }
-    }
-
-    /// **Source:** `StepElement_HArray1OfHSequenceOfCurveElementPurposeMember.hxx`:21 - `StepElement_HArray1OfHSequenceOfCurveElementPurposeMember::StepElement_HArray1OfHSequenceOfCurveElementPurposeMember()`
-    pub fn new_int2_handlestepelementhsequenceofcurveelementpurposemember(
-        theLower: i32,
-        theUpper: i32,
-        theValue: &crate::ffi_types::HandleStepElementHSequenceOfCurveElementPurposeMember,
-    ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::StepElement_HArray1OfHSequenceOfCurveElementPurposeMember_ctor_int2_handlestepelementhsequenceofcurveelementpurposemember(theLower, theUpper, theValue)))
-        }
-    }
-
-    /// **Source:** `StepElement_HArray1OfHSequenceOfCurveElementPurposeMember.hxx`:21 - `StepElement_HArray1OfHSequenceOfCurveElementPurposeMember::StepElement_HArray1OfHSequenceOfCurveElementPurposeMember()`
-    pub fn new_handlestepelementhsequenceofcurveelementpurposemember_int2_bool(
-        theBegin: &crate::ffi_types::HandleStepElementHSequenceOfCurveElementPurposeMember,
-        theLower: i32,
-        theUpper: i32,
-        arg3: bool,
-    ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::StepElement_HArray1OfHSequenceOfCurveElementPurposeMember_ctor_handlestepelementhsequenceofcurveelementpurposemember_int2_bool(theBegin, theLower, theUpper, arg3)))
-        }
-    }
-
-    /// **Source:** `StepElement_HArray1OfHSequenceOfCurveElementPurposeMember.hxx`:21 - `StepElement_HArray1OfHSequenceOfCurveElementPurposeMember::StepElement_HArray1OfHSequenceOfCurveElementPurposeMember()`
-    pub fn new_array1ofhsequenceofcurveelementpurposemember(
-        theOther: &crate::ffi_types::StepElement_Array1OfHSequenceOfCurveElementPurposeMember,
-    ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::StepElement_HArray1OfHSequenceOfCurveElementPurposeMember_ctor_array1ofhsequenceofcurveelementpurposemember(theOther)))
-        }
-    }
-
-    /// **Source:** `StepElement_HArray1OfHSequenceOfCurveElementPurposeMember.hxx`:21 - `StepElement_HArray1OfHSequenceOfCurveElementPurposeMember::Array1()`
-    pub fn array1(
-        &self,
-    ) -> &crate::ffi_types::StepElement_Array1OfHSequenceOfCurveElementPurposeMember {
-        unsafe {
-            &*(crate::check_result(crate::ffi_extern_TKDESTEP::StepElement_HArray1OfHSequenceOfCurveElementPurposeMember_array1(self as *const Self)))
-        }
-    }
-
-    /// **Source:** `StepElement_HArray1OfHSequenceOfCurveElementPurposeMember.hxx`:21 - `StepElement_HArray1OfHSequenceOfCurveElementPurposeMember::ChangeArray1()`
-    pub fn change_array1(
-        &mut self,
-    ) -> &mut crate::ffi_types::StepElement_Array1OfHSequenceOfCurveElementPurposeMember {
-        unsafe {
-            &mut *(crate::check_result(crate::ffi_extern_TKDESTEP::StepElement_HArray1OfHSequenceOfCurveElementPurposeMember_change_array1(self as *mut Self)))
-        }
-    }
-
-    /// **Source:** `StepElement_HArray1OfHSequenceOfCurveElementPurposeMember.hxx`:21 - `StepElement_HArray1OfHSequenceOfCurveElementPurposeMember::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
-        unsafe {
-            &*(crate::check_result(crate::ffi_extern_TKDESTEP::StepElement_HArray1OfHSequenceOfCurveElementPurposeMember_dynamic_type(self as *const Self)))
-        }
-    }
-
-    /// **Source:** `StepElement_HArray1OfHSequenceOfCurveElementPurposeMember.hxx`:21 - `StepElement_HArray1OfHSequenceOfCurveElementPurposeMember::get_type_name()`
-    pub fn get_type_name() -> std::string::String {
-        unsafe { std::ffi::CStr::from_ptr(crate::check_result(crate::ffi_extern_TKDESTEP::StepElement_HArray1OfHSequenceOfCurveElementPurposeMember_get_type_name())) }.to_string_lossy().into_owned()
-    }
-
-    /// **Source:** `StepElement_HArray1OfHSequenceOfCurveElementPurposeMember.hxx`:21 - `StepElement_HArray1OfHSequenceOfCurveElementPurposeMember::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
-        unsafe {
-            &*(crate::check_result(crate::ffi_extern_TKDESTEP::StepElement_HArray1OfHSequenceOfCurveElementPurposeMember_get_type_descriptor()))
-        }
-    }
-
-    /// Upcast to Standard_Transient
-    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        unsafe {
-            &*crate::check_result(crate::ffi_extern_TKDESTEP::StepElement_HArray1OfHSequenceOfCurveElementPurposeMember_as_Standard_Transient(self as *const Self))
-        }
-    }
-
-    /// Upcast to Standard_Transient (mutable)
-    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        unsafe {
-            &mut *crate::check_result(crate::ffi_extern_TKDESTEP::StepElement_HArray1OfHSequenceOfCurveElementPurposeMember_as_Standard_Transient_mut(self as *mut Self))
-        }
-    }
-
-    /// Wrap in a Handle (reference-counted smart pointer)
-    pub fn to_handle(
-        obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<
-        crate::ffi_types::HandleStepElementHArray1OfHSequenceOfCurveElementPurposeMember,
-    > {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::StepElement_HArray1OfHSequenceOfCurveElementPurposeMember_to_handle(obj.into_raw())))
-        }
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKDESTEP::StepElement_HArray1OfHSequenceOfCurveElementPurposeMember_inherited_IsInstance(self as *const Self, theType)
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKDESTEP::StepElement_HArray1OfHSequenceOfCurveElementPurposeMember_inherited_IsKind(self as *const Self, theType)
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
-    pub fn this(&self) -> Option<&crate::standard::Transient> {
-        {
-            let __val = crate::check_result(unsafe {
-                crate::ffi_extern_TKDESTEP::StepElement_HArray1OfHSequenceOfCurveElementPurposeMember_inherited_This(self as *const Self)
-            });
-            if __val.is_null() {
-                None
-            } else {
-                Some(unsafe { &*__val })
-            }
-        }
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
-    pub fn get_ref_count(&self) -> i32 {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKDESTEP::StepElement_HArray1OfHSequenceOfCurveElementPurposeMember_inherited_GetRefCount(self as *const Self)
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
-    pub fn increment_ref_counter(&mut self) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKDESTEP::StepElement_HArray1OfHSequenceOfCurveElementPurposeMember_inherited_IncrementRefCounter(self as *mut Self)
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
-    pub fn decrement_ref_counter(&mut self) -> i32 {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKDESTEP::StepElement_HArray1OfHSequenceOfCurveElementPurposeMember_inherited_DecrementRefCounter(self as *mut Self)
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
-    pub fn delete(&self) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKDESTEP::StepElement_HArray1OfHSequenceOfCurveElementPurposeMember_inherited_Delete(self as *const Self)
-        })
-    }
-}
-
-pub use crate::ffi_types::HandleStepElementHArray1OfHSequenceOfCurveElementPurposeMember;
-
-unsafe impl crate::CppDeletable for HandleStepElementHArray1OfHSequenceOfCurveElementPurposeMember {
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            crate::ffi_extern_TKDESTEP::HandleStepElementHArray1OfHSequenceOfCurveElementPurposeMember_destructor(ptr);
-        }
-    }
-}
-
-unsafe impl crate::CppCopyable for HandleStepElementHArray1OfHSequenceOfCurveElementPurposeMember {
-    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        unsafe {
-            crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepElementHArray1OfHSequenceOfCurveElementPurposeMember_clone(ptr))
-        }
-    }
-}
-
-impl HandleStepElementHArray1OfHSequenceOfCurveElementPurposeMember {
-    /// Returns `true` if this Handle is null (doesn't point to any object).
-    pub fn is_null(&self) -> bool {
-        unsafe {
-            crate::ffi_extern_TKDESTEP::HandleStepElementHArray1OfHSequenceOfCurveElementPurposeMember_is_null(self as *const Self)
-        }
-    }
-
-    /// Dereference this Handle to access the underlying StepElement_HArray1OfHSequenceOfCurveElementPurposeMember
-    pub fn get(
-        &self,
-    ) -> &crate::ffi_types::StepElement_HArray1OfHSequenceOfCurveElementPurposeMember {
-        unsafe {
-            &*crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepElementHArray1OfHSequenceOfCurveElementPurposeMember_get(self as *const Self))
-        }
-    }
-
-    /// Dereference this Handle to mutably access the underlying StepElement_HArray1OfHSequenceOfCurveElementPurposeMember
-    pub fn get_mut(
-        &mut self,
-    ) -> &mut crate::ffi_types::StepElement_HArray1OfHSequenceOfCurveElementPurposeMember {
-        unsafe {
-            &mut *crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepElementHArray1OfHSequenceOfCurveElementPurposeMember_get_mut(self as *mut Self))
-        }
-    }
-
-    /// Upcast Handle<StepElement_HArray1OfHSequenceOfCurveElementPurposeMember> to Handle<Standard_Transient>
-    pub fn to_handle_transient(
-        &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepElementHArray1OfHSequenceOfCurveElementPurposeMember_to_HandleStandardTransient(self as *const Self)))
-        }
-    }
-}
-
-// ========================
-// From StepElement_HArray1OfHSequenceOfSurfaceElementPurposeMember.hxx
-// ========================
-
-/// **Source:** `StepElement_HArray1OfHSequenceOfSurfaceElementPurposeMember.hxx`:20 - `StepElement_HArray1OfHSequenceOfSurfaceElementPurposeMember`
-pub use crate::ffi_types::StepElement_HArray1OfHSequenceOfSurfaceElementPurposeMember as HArray1OfHSequenceOfSurfaceElementPurposeMember;
-
-unsafe impl crate::CppDeletable for HArray1OfHSequenceOfSurfaceElementPurposeMember {
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            crate::ffi_extern_TKDESTEP::StepElement_HArray1OfHSequenceOfSurfaceElementPurposeMember_destructor(ptr);
-        }
-    }
-}
-
-impl HArray1OfHSequenceOfSurfaceElementPurposeMember {
-    /// **Source:** `StepElement_HArray1OfHSequenceOfSurfaceElementPurposeMember.hxx`:20 - `StepElement_HArray1OfHSequenceOfSurfaceElementPurposeMember::StepElement_HArray1OfHSequenceOfSurfaceElementPurposeMember()`
-    pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::StepElement_HArray1OfHSequenceOfSurfaceElementPurposeMember_ctor()))
-        }
-    }
-
-    /// **Source:** `StepElement_HArray1OfHSequenceOfSurfaceElementPurposeMember.hxx`:20 - `StepElement_HArray1OfHSequenceOfSurfaceElementPurposeMember::StepElement_HArray1OfHSequenceOfSurfaceElementPurposeMember()`
-    pub fn new_int2(theLower: i32, theUpper: i32) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::StepElement_HArray1OfHSequenceOfSurfaceElementPurposeMember_ctor_int2(theLower, theUpper)))
-        }
-    }
-
-    /// **Source:** `StepElement_HArray1OfHSequenceOfSurfaceElementPurposeMember.hxx`:20 - `StepElement_HArray1OfHSequenceOfSurfaceElementPurposeMember::StepElement_HArray1OfHSequenceOfSurfaceElementPurposeMember()`
-    pub fn new_int2_handlestepelementhsequenceofsurfaceelementpurposemember(
-        theLower: i32,
-        theUpper: i32,
-        theValue: &crate::ffi_types::HandleStepElementHSequenceOfSurfaceElementPurposeMember,
-    ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::StepElement_HArray1OfHSequenceOfSurfaceElementPurposeMember_ctor_int2_handlestepelementhsequenceofsurfaceelementpurposemember(theLower, theUpper, theValue)))
-        }
-    }
-
-    /// **Source:** `StepElement_HArray1OfHSequenceOfSurfaceElementPurposeMember.hxx`:20 - `StepElement_HArray1OfHSequenceOfSurfaceElementPurposeMember::StepElement_HArray1OfHSequenceOfSurfaceElementPurposeMember()`
-    pub fn new_handlestepelementhsequenceofsurfaceelementpurposemember_int2_bool(
-        theBegin: &crate::ffi_types::HandleStepElementHSequenceOfSurfaceElementPurposeMember,
-        theLower: i32,
-        theUpper: i32,
-        arg3: bool,
-    ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::StepElement_HArray1OfHSequenceOfSurfaceElementPurposeMember_ctor_handlestepelementhsequenceofsurfaceelementpurposemember_int2_bool(theBegin, theLower, theUpper, arg3)))
-        }
-    }
-
-    /// **Source:** `StepElement_HArray1OfHSequenceOfSurfaceElementPurposeMember.hxx`:20 - `StepElement_HArray1OfHSequenceOfSurfaceElementPurposeMember::StepElement_HArray1OfHSequenceOfSurfaceElementPurposeMember()`
-    pub fn new_array1ofhsequenceofsurfaceelementpurposemember(
-        theOther: &crate::ffi_types::StepElement_Array1OfHSequenceOfSurfaceElementPurposeMember,
-    ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::StepElement_HArray1OfHSequenceOfSurfaceElementPurposeMember_ctor_array1ofhsequenceofsurfaceelementpurposemember(theOther)))
-        }
-    }
-
-    /// **Source:** `StepElement_HArray1OfHSequenceOfSurfaceElementPurposeMember.hxx`:20 - `StepElement_HArray1OfHSequenceOfSurfaceElementPurposeMember::Array1()`
-    pub fn array1(
-        &self,
-    ) -> &crate::ffi_types::StepElement_Array1OfHSequenceOfSurfaceElementPurposeMember {
-        unsafe {
-            &*(crate::check_result(crate::ffi_extern_TKDESTEP::StepElement_HArray1OfHSequenceOfSurfaceElementPurposeMember_array1(self as *const Self)))
-        }
-    }
-
-    /// **Source:** `StepElement_HArray1OfHSequenceOfSurfaceElementPurposeMember.hxx`:20 - `StepElement_HArray1OfHSequenceOfSurfaceElementPurposeMember::ChangeArray1()`
-    pub fn change_array1(
-        &mut self,
-    ) -> &mut crate::ffi_types::StepElement_Array1OfHSequenceOfSurfaceElementPurposeMember {
-        unsafe {
-            &mut *(crate::check_result(crate::ffi_extern_TKDESTEP::StepElement_HArray1OfHSequenceOfSurfaceElementPurposeMember_change_array1(self as *mut Self)))
-        }
-    }
-
-    /// **Source:** `StepElement_HArray1OfHSequenceOfSurfaceElementPurposeMember.hxx`:20 - `StepElement_HArray1OfHSequenceOfSurfaceElementPurposeMember::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
-        unsafe {
-            &*(crate::check_result(crate::ffi_extern_TKDESTEP::StepElement_HArray1OfHSequenceOfSurfaceElementPurposeMember_dynamic_type(self as *const Self)))
-        }
-    }
-
-    /// **Source:** `StepElement_HArray1OfHSequenceOfSurfaceElementPurposeMember.hxx`:20 - `StepElement_HArray1OfHSequenceOfSurfaceElementPurposeMember::get_type_name()`
-    pub fn get_type_name() -> std::string::String {
-        unsafe { std::ffi::CStr::from_ptr(crate::check_result(crate::ffi_extern_TKDESTEP::StepElement_HArray1OfHSequenceOfSurfaceElementPurposeMember_get_type_name())) }.to_string_lossy().into_owned()
-    }
-
-    /// **Source:** `StepElement_HArray1OfHSequenceOfSurfaceElementPurposeMember.hxx`:20 - `StepElement_HArray1OfHSequenceOfSurfaceElementPurposeMember::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
-        unsafe {
-            &*(crate::check_result(crate::ffi_extern_TKDESTEP::StepElement_HArray1OfHSequenceOfSurfaceElementPurposeMember_get_type_descriptor()))
-        }
-    }
-
-    /// Upcast to Standard_Transient
-    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        unsafe {
-            &*crate::check_result(crate::ffi_extern_TKDESTEP::StepElement_HArray1OfHSequenceOfSurfaceElementPurposeMember_as_Standard_Transient(self as *const Self))
-        }
-    }
-
-    /// Upcast to Standard_Transient (mutable)
-    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        unsafe {
-            &mut *crate::check_result(crate::ffi_extern_TKDESTEP::StepElement_HArray1OfHSequenceOfSurfaceElementPurposeMember_as_Standard_Transient_mut(self as *mut Self))
-        }
-    }
-
-    /// Wrap in a Handle (reference-counted smart pointer)
-    pub fn to_handle(
-        obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<
-        crate::ffi_types::HandleStepElementHArray1OfHSequenceOfSurfaceElementPurposeMember,
-    > {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::StepElement_HArray1OfHSequenceOfSurfaceElementPurposeMember_to_handle(obj.into_raw())))
-        }
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKDESTEP::StepElement_HArray1OfHSequenceOfSurfaceElementPurposeMember_inherited_IsInstance(self as *const Self, theType)
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKDESTEP::StepElement_HArray1OfHSequenceOfSurfaceElementPurposeMember_inherited_IsKind(self as *const Self, theType)
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
-    pub fn this(&self) -> Option<&crate::standard::Transient> {
-        {
-            let __val = crate::check_result(unsafe {
-                crate::ffi_extern_TKDESTEP::StepElement_HArray1OfHSequenceOfSurfaceElementPurposeMember_inherited_This(self as *const Self)
-            });
-            if __val.is_null() {
-                None
-            } else {
-                Some(unsafe { &*__val })
-            }
-        }
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
-    pub fn get_ref_count(&self) -> i32 {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKDESTEP::StepElement_HArray1OfHSequenceOfSurfaceElementPurposeMember_inherited_GetRefCount(self as *const Self)
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
-    pub fn increment_ref_counter(&mut self) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKDESTEP::StepElement_HArray1OfHSequenceOfSurfaceElementPurposeMember_inherited_IncrementRefCounter(self as *mut Self)
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
-    pub fn decrement_ref_counter(&mut self) -> i32 {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKDESTEP::StepElement_HArray1OfHSequenceOfSurfaceElementPurposeMember_inherited_DecrementRefCounter(self as *mut Self)
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
-    pub fn delete(&self) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKDESTEP::StepElement_HArray1OfHSequenceOfSurfaceElementPurposeMember_inherited_Delete(self as *const Self)
-        })
-    }
-}
-
-pub use crate::ffi_types::HandleStepElementHArray1OfHSequenceOfSurfaceElementPurposeMember;
-
-unsafe impl crate::CppDeletable
-    for HandleStepElementHArray1OfHSequenceOfSurfaceElementPurposeMember
-{
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            crate::ffi_extern_TKDESTEP::HandleStepElementHArray1OfHSequenceOfSurfaceElementPurposeMember_destructor(ptr);
-        }
-    }
-}
-
-unsafe impl crate::CppCopyable
-    for HandleStepElementHArray1OfHSequenceOfSurfaceElementPurposeMember
-{
-    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        unsafe {
-            crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepElementHArray1OfHSequenceOfSurfaceElementPurposeMember_clone(ptr))
-        }
-    }
-}
-
-impl HandleStepElementHArray1OfHSequenceOfSurfaceElementPurposeMember {
-    /// Returns `true` if this Handle is null (doesn't point to any object).
-    pub fn is_null(&self) -> bool {
-        unsafe {
-            crate::ffi_extern_TKDESTEP::HandleStepElementHArray1OfHSequenceOfSurfaceElementPurposeMember_is_null(self as *const Self)
-        }
-    }
-
-    /// Dereference this Handle to access the underlying StepElement_HArray1OfHSequenceOfSurfaceElementPurposeMember
-    pub fn get(
-        &self,
-    ) -> &crate::ffi_types::StepElement_HArray1OfHSequenceOfSurfaceElementPurposeMember {
-        unsafe {
-            &*crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepElementHArray1OfHSequenceOfSurfaceElementPurposeMember_get(self as *const Self))
-        }
-    }
-
-    /// Dereference this Handle to mutably access the underlying StepElement_HArray1OfHSequenceOfSurfaceElementPurposeMember
-    pub fn get_mut(
-        &mut self,
-    ) -> &mut crate::ffi_types::StepElement_HArray1OfHSequenceOfSurfaceElementPurposeMember {
-        unsafe {
-            &mut *crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepElementHArray1OfHSequenceOfSurfaceElementPurposeMember_get_mut(self as *mut Self))
-        }
-    }
-
-    /// Upcast Handle<StepElement_HArray1OfHSequenceOfSurfaceElementPurposeMember> to Handle<Standard_Transient>
-    pub fn to_handle_transient(
-        &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepElementHArray1OfHSequenceOfSurfaceElementPurposeMember_to_HandleStandardTransient(self as *const Self)))
-        }
-    }
-}
-
-// ========================
-// From StepElement_HArray1OfMeasureOrUnspecifiedValue.hxx
-// ========================
-
-/// **Source:** `StepElement_HArray1OfMeasureOrUnspecifiedValue.hxx`:20 - `StepElement_HArray1OfMeasureOrUnspecifiedValue`
-pub use crate::ffi_types::StepElement_HArray1OfMeasureOrUnspecifiedValue as HArray1OfMeasureOrUnspecifiedValue;
-
-unsafe impl crate::CppDeletable for HArray1OfMeasureOrUnspecifiedValue {
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            crate::ffi_extern_TKDESTEP::StepElement_HArray1OfMeasureOrUnspecifiedValue_destructor(
-                ptr,
-            );
-        }
-    }
-}
-
-impl HArray1OfMeasureOrUnspecifiedValue {
-    /// **Source:** `StepElement_HArray1OfMeasureOrUnspecifiedValue.hxx`:20 - `StepElement_HArray1OfMeasureOrUnspecifiedValue::StepElement_HArray1OfMeasureOrUnspecifiedValue()`
-    pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKDESTEP::StepElement_HArray1OfMeasureOrUnspecifiedValue_ctor(),
-            ))
-        }
-    }
-
-    /// **Source:** `StepElement_HArray1OfMeasureOrUnspecifiedValue.hxx`:20 - `StepElement_HArray1OfMeasureOrUnspecifiedValue::StepElement_HArray1OfMeasureOrUnspecifiedValue()`
-    pub fn new_int2(theLower: i32, theUpper: i32) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::StepElement_HArray1OfMeasureOrUnspecifiedValue_ctor_int2(theLower, theUpper)))
-        }
-    }
-
-    /// **Source:** `StepElement_HArray1OfMeasureOrUnspecifiedValue.hxx`:20 - `StepElement_HArray1OfMeasureOrUnspecifiedValue::StepElement_HArray1OfMeasureOrUnspecifiedValue()`
-    pub fn new_int2_measureorunspecifiedvalue(
-        theLower: i32,
-        theUpper: i32,
-        theValue: &MeasureOrUnspecifiedValue,
-    ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::StepElement_HArray1OfMeasureOrUnspecifiedValue_ctor_int2_measureorunspecifiedvalue(theLower, theUpper, theValue)))
-        }
-    }
-
-    /// **Source:** `StepElement_HArray1OfMeasureOrUnspecifiedValue.hxx`:20 - `StepElement_HArray1OfMeasureOrUnspecifiedValue::StepElement_HArray1OfMeasureOrUnspecifiedValue()`
-    pub fn new_measureorunspecifiedvalue_int2_bool(
-        theBegin: &MeasureOrUnspecifiedValue,
-        theLower: i32,
-        theUpper: i32,
-        arg3: bool,
-    ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::StepElement_HArray1OfMeasureOrUnspecifiedValue_ctor_measureorunspecifiedvalue_int2_bool(theBegin, theLower, theUpper, arg3)))
-        }
-    }
-
-    /// **Source:** `StepElement_HArray1OfMeasureOrUnspecifiedValue.hxx`:20 - `StepElement_HArray1OfMeasureOrUnspecifiedValue::StepElement_HArray1OfMeasureOrUnspecifiedValue()`
-    pub fn new_array1ofmeasureorunspecifiedvalue(
-        theOther: &crate::ffi_types::StepElement_Array1OfMeasureOrUnspecifiedValue,
-    ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::StepElement_HArray1OfMeasureOrUnspecifiedValue_ctor_array1ofmeasureorunspecifiedvalue(theOther)))
-        }
-    }
-
-    /// **Source:** `StepElement_HArray1OfMeasureOrUnspecifiedValue.hxx`:20 - `StepElement_HArray1OfMeasureOrUnspecifiedValue::Array1()`
-    pub fn array1(&self) -> &crate::ffi_types::StepElement_Array1OfMeasureOrUnspecifiedValue {
-        unsafe {
-            &*(crate::check_result(
-                crate::ffi_extern_TKDESTEP::StepElement_HArray1OfMeasureOrUnspecifiedValue_array1(
-                    self as *const Self,
-                ),
-            ))
-        }
-    }
-
-    /// **Source:** `StepElement_HArray1OfMeasureOrUnspecifiedValue.hxx`:20 - `StepElement_HArray1OfMeasureOrUnspecifiedValue::ChangeArray1()`
-    pub fn change_array1(
-        &mut self,
-    ) -> &mut crate::ffi_types::StepElement_Array1OfMeasureOrUnspecifiedValue {
-        unsafe {
-            &mut *(crate::check_result(crate::ffi_extern_TKDESTEP::StepElement_HArray1OfMeasureOrUnspecifiedValue_change_array1(self as *mut Self)))
-        }
-    }
-
-    /// **Source:** `StepElement_HArray1OfMeasureOrUnspecifiedValue.hxx`:20 - `StepElement_HArray1OfMeasureOrUnspecifiedValue::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
-        unsafe {
-            &*(crate::check_result(crate::ffi_extern_TKDESTEP::StepElement_HArray1OfMeasureOrUnspecifiedValue_dynamic_type(self as *const Self)))
-        }
-    }
-
-    /// **Source:** `StepElement_HArray1OfMeasureOrUnspecifiedValue.hxx`:20 - `StepElement_HArray1OfMeasureOrUnspecifiedValue::get_type_name()`
-    pub fn get_type_name() -> std::string::String {
-        unsafe { std::ffi::CStr::from_ptr(crate::check_result(crate::ffi_extern_TKDESTEP::StepElement_HArray1OfMeasureOrUnspecifiedValue_get_type_name())) }.to_string_lossy().into_owned()
-    }
-
-    /// **Source:** `StepElement_HArray1OfMeasureOrUnspecifiedValue.hxx`:20 - `StepElement_HArray1OfMeasureOrUnspecifiedValue::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
-        unsafe {
-            &*(crate::check_result(crate::ffi_extern_TKDESTEP::StepElement_HArray1OfMeasureOrUnspecifiedValue_get_type_descriptor()))
-        }
-    }
-
-    /// Upcast to Standard_Transient
-    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        unsafe {
-            &*crate::check_result(crate::ffi_extern_TKDESTEP::StepElement_HArray1OfMeasureOrUnspecifiedValue_as_Standard_Transient(self as *const Self))
-        }
-    }
-
-    /// Upcast to Standard_Transient (mutable)
-    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        unsafe {
-            &mut *crate::check_result(crate::ffi_extern_TKDESTEP::StepElement_HArray1OfMeasureOrUnspecifiedValue_as_Standard_Transient_mut(self as *mut Self))
-        }
-    }
-
-    /// Wrap in a Handle (reference-counted smart pointer)
-    pub fn to_handle(
-        obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStepElementHArray1OfMeasureOrUnspecifiedValue>
-    {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::StepElement_HArray1OfMeasureOrUnspecifiedValue_to_handle(obj.into_raw())))
-        }
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKDESTEP::StepElement_HArray1OfMeasureOrUnspecifiedValue_inherited_IsInstance(self as *const Self, theType)
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKDESTEP::StepElement_HArray1OfMeasureOrUnspecifiedValue_inherited_IsKind(self as *const Self, theType)
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
-    pub fn this(&self) -> Option<&crate::standard::Transient> {
-        {
-            let __val = crate::check_result(unsafe {
-                crate::ffi_extern_TKDESTEP::StepElement_HArray1OfMeasureOrUnspecifiedValue_inherited_This(self as *const Self)
-            });
-            if __val.is_null() {
-                None
-            } else {
-                Some(unsafe { &*__val })
-            }
-        }
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
-    pub fn get_ref_count(&self) -> i32 {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKDESTEP::StepElement_HArray1OfMeasureOrUnspecifiedValue_inherited_GetRefCount(self as *const Self)
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
-    pub fn increment_ref_counter(&mut self) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKDESTEP::StepElement_HArray1OfMeasureOrUnspecifiedValue_inherited_IncrementRefCounter(self as *mut Self)
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
-    pub fn decrement_ref_counter(&mut self) -> i32 {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKDESTEP::StepElement_HArray1OfMeasureOrUnspecifiedValue_inherited_DecrementRefCounter(self as *mut Self)
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
-    pub fn delete(&self) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKDESTEP::StepElement_HArray1OfMeasureOrUnspecifiedValue_inherited_Delete(self as *const Self)
-        })
-    }
-}
-
-pub use crate::ffi_types::HandleStepElementHArray1OfMeasureOrUnspecifiedValue;
-
-unsafe impl crate::CppDeletable for HandleStepElementHArray1OfMeasureOrUnspecifiedValue {
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            crate::ffi_extern_TKDESTEP::HandleStepElementHArray1OfMeasureOrUnspecifiedValue_destructor(ptr);
-        }
-    }
-}
-
-unsafe impl crate::CppCopyable for HandleStepElementHArray1OfMeasureOrUnspecifiedValue {
-    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        unsafe {
-            crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepElementHArray1OfMeasureOrUnspecifiedValue_clone(ptr))
-        }
-    }
-}
-
-impl HandleStepElementHArray1OfMeasureOrUnspecifiedValue {
-    /// Returns `true` if this Handle is null (doesn't point to any object).
-    pub fn is_null(&self) -> bool {
-        unsafe {
-            crate::ffi_extern_TKDESTEP::HandleStepElementHArray1OfMeasureOrUnspecifiedValue_is_null(
-                self as *const Self,
-            )
-        }
-    }
-
-    /// Dereference this Handle to access the underlying StepElement_HArray1OfMeasureOrUnspecifiedValue
-    pub fn get(&self) -> &crate::ffi_types::StepElement_HArray1OfMeasureOrUnspecifiedValue {
-        unsafe {
-            &*crate::check_result(
-                crate::ffi_extern_TKDESTEP::HandleStepElementHArray1OfMeasureOrUnspecifiedValue_get(
-                    self as *const Self,
-                ),
-            )
-        }
-    }
-
-    /// Dereference this Handle to mutably access the underlying StepElement_HArray1OfMeasureOrUnspecifiedValue
-    pub fn get_mut(
-        &mut self,
-    ) -> &mut crate::ffi_types::StepElement_HArray1OfMeasureOrUnspecifiedValue {
-        unsafe {
-            &mut *crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepElementHArray1OfMeasureOrUnspecifiedValue_get_mut(self as *mut Self))
-        }
-    }
-
-    /// Upcast Handle<StepElement_HArray1OfMeasureOrUnspecifiedValue> to Handle<Standard_Transient>
-    pub fn to_handle_transient(
-        &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepElementHArray1OfMeasureOrUnspecifiedValue_to_HandleStandardTransient(self as *const Self)))
-        }
-    }
-}
-
-// ========================
-// From StepElement_HArray1OfSurfaceSection.hxx
-// ========================
-
-/// **Source:** `StepElement_HArray1OfSurfaceSection.hxx`:20 - `StepElement_HArray1OfSurfaceSection`
-pub use crate::ffi_types::StepElement_HArray1OfSurfaceSection as HArray1OfSurfaceSection;
-
-unsafe impl crate::CppDeletable for HArray1OfSurfaceSection {
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            crate::ffi_extern_TKDESTEP::StepElement_HArray1OfSurfaceSection_destructor(ptr);
-        }
-    }
-}
-
-impl HArray1OfSurfaceSection {
-    /// **Source:** `StepElement_HArray1OfSurfaceSection.hxx`:20 - `StepElement_HArray1OfSurfaceSection::StepElement_HArray1OfSurfaceSection()`
-    pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKDESTEP::StepElement_HArray1OfSurfaceSection_ctor(),
-            ))
-        }
-    }
-
-    /// **Source:** `StepElement_HArray1OfSurfaceSection.hxx`:20 - `StepElement_HArray1OfSurfaceSection::StepElement_HArray1OfSurfaceSection()`
-    pub fn new_int2(theLower: i32, theUpper: i32) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKDESTEP::StepElement_HArray1OfSurfaceSection_ctor_int2(
-                    theLower, theUpper,
-                ),
-            ))
-        }
-    }
-
-    /// **Source:** `StepElement_HArray1OfSurfaceSection.hxx`:20 - `StepElement_HArray1OfSurfaceSection::StepElement_HArray1OfSurfaceSection()`
-    pub fn new_int2_handlestepelementsurfacesection(
-        theLower: i32,
-        theUpper: i32,
-        theValue: &crate::ffi_types::HandleStepElementSurfaceSection,
-    ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::StepElement_HArray1OfSurfaceSection_ctor_int2_handlestepelementsurfacesection(theLower, theUpper, theValue)))
-        }
-    }
-
-    /// **Source:** `StepElement_HArray1OfSurfaceSection.hxx`:20 - `StepElement_HArray1OfSurfaceSection::StepElement_HArray1OfSurfaceSection()`
-    pub fn new_handlestepelementsurfacesection_int2_bool(
-        theBegin: &crate::ffi_types::HandleStepElementSurfaceSection,
-        theLower: i32,
-        theUpper: i32,
-        arg3: bool,
-    ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::StepElement_HArray1OfSurfaceSection_ctor_handlestepelementsurfacesection_int2_bool(theBegin, theLower, theUpper, arg3)))
-        }
-    }
-
-    /// **Source:** `StepElement_HArray1OfSurfaceSection.hxx`:20 - `StepElement_HArray1OfSurfaceSection::StepElement_HArray1OfSurfaceSection()`
-    pub fn new_array1ofsurfacesection(
-        theOther: &crate::ffi_types::StepElement_Array1OfSurfaceSection,
-    ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::StepElement_HArray1OfSurfaceSection_ctor_array1ofsurfacesection(theOther)))
-        }
-    }
-
-    /// **Source:** `StepElement_HArray1OfSurfaceSection.hxx`:20 - `StepElement_HArray1OfSurfaceSection::Array1()`
-    pub fn array1(&self) -> &crate::ffi_types::StepElement_Array1OfSurfaceSection {
-        unsafe {
-            &*(crate::check_result(
-                crate::ffi_extern_TKDESTEP::StepElement_HArray1OfSurfaceSection_array1(
-                    self as *const Self,
-                ),
-            ))
-        }
-    }
-
-    /// **Source:** `StepElement_HArray1OfSurfaceSection.hxx`:20 - `StepElement_HArray1OfSurfaceSection::ChangeArray1()`
-    pub fn change_array1(&mut self) -> &mut crate::ffi_types::StepElement_Array1OfSurfaceSection {
-        unsafe {
-            &mut *(crate::check_result(
-                crate::ffi_extern_TKDESTEP::StepElement_HArray1OfSurfaceSection_change_array1(
-                    self as *mut Self,
-                ),
-            ))
-        }
-    }
-
-    /// **Source:** `StepElement_HArray1OfSurfaceSection.hxx`:20 - `StepElement_HArray1OfSurfaceSection::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
-        unsafe {
-            &*(crate::check_result(
-                crate::ffi_extern_TKDESTEP::StepElement_HArray1OfSurfaceSection_dynamic_type(
-                    self as *const Self,
-                ),
-            ))
-        }
-    }
-
-    /// **Source:** `StepElement_HArray1OfSurfaceSection.hxx`:20 - `StepElement_HArray1OfSurfaceSection::get_type_name()`
-    pub fn get_type_name() -> std::string::String {
-        unsafe {
-            std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi_extern_TKDESTEP::StepElement_HArray1OfSurfaceSection_get_type_name(),
-            ))
-        }
-        .to_string_lossy()
-        .into_owned()
-    }
-
-    /// **Source:** `StepElement_HArray1OfSurfaceSection.hxx`:20 - `StepElement_HArray1OfSurfaceSection::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
-        unsafe {
-            &*(crate::check_result(
-                crate::ffi_extern_TKDESTEP::StepElement_HArray1OfSurfaceSection_get_type_descriptor(
-                ),
-            ))
-        }
-    }
-
-    /// Upcast to Standard_Transient
-    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        unsafe {
-            &*crate::check_result(crate::ffi_extern_TKDESTEP::StepElement_HArray1OfSurfaceSection_as_Standard_Transient(self as *const Self))
-        }
-    }
-
-    /// Upcast to Standard_Transient (mutable)
-    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        unsafe {
-            &mut *crate::check_result(crate::ffi_extern_TKDESTEP::StepElement_HArray1OfSurfaceSection_as_Standard_Transient_mut(self as *mut Self))
-        }
-    }
-
-    /// Wrap in a Handle (reference-counted smart pointer)
-    pub fn to_handle(
-        obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStepElementHArray1OfSurfaceSection> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKDESTEP::StepElement_HArray1OfSurfaceSection_to_handle(
-                    obj.into_raw(),
-                ),
-            ))
-        }
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKDESTEP::StepElement_HArray1OfSurfaceSection_inherited_IsInstance(
-                self as *const Self,
-                theType,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKDESTEP::StepElement_HArray1OfSurfaceSection_inherited_IsKind(
-                self as *const Self,
-                theType,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
-    pub fn this(&self) -> Option<&crate::standard::Transient> {
-        {
-            let __val = crate::check_result(unsafe {
-                crate::ffi_extern_TKDESTEP::StepElement_HArray1OfSurfaceSection_inherited_This(
-                    self as *const Self,
-                )
-            });
-            if __val.is_null() {
-                None
-            } else {
-                Some(unsafe { &*__val })
-            }
-        }
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
-    pub fn get_ref_count(&self) -> i32 {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKDESTEP::StepElement_HArray1OfSurfaceSection_inherited_GetRefCount(
-                self as *const Self,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
-    pub fn increment_ref_counter(&mut self) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKDESTEP::StepElement_HArray1OfSurfaceSection_inherited_IncrementRefCounter(self as *mut Self)
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
-    pub fn decrement_ref_counter(&mut self) -> i32 {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKDESTEP::StepElement_HArray1OfSurfaceSection_inherited_DecrementRefCounter(self as *mut Self)
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
-    pub fn delete(&self) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKDESTEP::StepElement_HArray1OfSurfaceSection_inherited_Delete(
-                self as *const Self,
-            )
-        })
-    }
-}
-
-pub use crate::ffi_types::HandleStepElementHArray1OfSurfaceSection;
-
-unsafe impl crate::CppDeletable for HandleStepElementHArray1OfSurfaceSection {
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            crate::ffi_extern_TKDESTEP::HandleStepElementHArray1OfSurfaceSection_destructor(ptr);
-        }
-    }
-}
-
-unsafe impl crate::CppCopyable for HandleStepElementHArray1OfSurfaceSection {
-    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        unsafe {
-            crate::check_result(
-                crate::ffi_extern_TKDESTEP::HandleStepElementHArray1OfSurfaceSection_clone(ptr),
-            )
-        }
-    }
-}
-
-impl HandleStepElementHArray1OfSurfaceSection {
-    /// Returns `true` if this Handle is null (doesn't point to any object).
-    pub fn is_null(&self) -> bool {
-        unsafe {
-            crate::ffi_extern_TKDESTEP::HandleStepElementHArray1OfSurfaceSection_is_null(
-                self as *const Self,
-            )
-        }
-    }
-
-    /// Dereference this Handle to access the underlying StepElement_HArray1OfSurfaceSection
-    pub fn get(&self) -> &crate::ffi_types::StepElement_HArray1OfSurfaceSection {
-        unsafe {
-            &*crate::check_result(
-                crate::ffi_extern_TKDESTEP::HandleStepElementHArray1OfSurfaceSection_get(
-                    self as *const Self,
-                ),
-            )
-        }
-    }
-
-    /// Dereference this Handle to mutably access the underlying StepElement_HArray1OfSurfaceSection
-    pub fn get_mut(&mut self) -> &mut crate::ffi_types::StepElement_HArray1OfSurfaceSection {
-        unsafe {
-            &mut *crate::check_result(
-                crate::ffi_extern_TKDESTEP::HandleStepElementHArray1OfSurfaceSection_get_mut(
-                    self as *mut Self,
-                ),
-            )
-        }
-    }
-
-    /// Upcast Handle<StepElement_HArray1OfSurfaceSection> to Handle<Standard_Transient>
-    pub fn to_handle_transient(
-        &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepElementHArray1OfSurfaceSection_to_HandleStandardTransient(self as *const Self)))
-        }
-    }
-}
-
-// ========================
-// From StepElement_HArray1OfVolumeElementPurpose.hxx
-// ========================
-
-/// **Source:** `StepElement_HArray1OfVolumeElementPurpose.hxx`:21 - `StepElement_HArray1OfVolumeElementPurpose`
-pub use crate::ffi_types::StepElement_HArray1OfVolumeElementPurpose as HArray1OfVolumeElementPurpose;
-
-unsafe impl crate::CppDeletable for HArray1OfVolumeElementPurpose {
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            crate::ffi_extern_TKDESTEP::StepElement_HArray1OfVolumeElementPurpose_destructor(ptr);
-        }
-    }
-}
-
-impl HArray1OfVolumeElementPurpose {
-    /// **Source:** `StepElement_HArray1OfVolumeElementPurpose.hxx`:21 - `StepElement_HArray1OfVolumeElementPurpose::StepElement_HArray1OfVolumeElementPurpose()`
-    pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKDESTEP::StepElement_HArray1OfVolumeElementPurpose_ctor(),
-            ))
-        }
-    }
-
-    /// **Source:** `StepElement_HArray1OfVolumeElementPurpose.hxx`:21 - `StepElement_HArray1OfVolumeElementPurpose::StepElement_HArray1OfVolumeElementPurpose()`
-    pub fn new_int2(theLower: i32, theUpper: i32) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKDESTEP::StepElement_HArray1OfVolumeElementPurpose_ctor_int2(
-                    theLower, theUpper,
-                ),
-            ))
-        }
-    }
-
-    /// **Source:** `StepElement_HArray1OfVolumeElementPurpose.hxx`:21 - `StepElement_HArray1OfVolumeElementPurpose::StepElement_HArray1OfVolumeElementPurpose()`
-    pub fn new_int2_volumeelementpurpose(
-        theLower: i32,
-        theUpper: i32,
-        theValue: &VolumeElementPurpose,
-    ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::StepElement_HArray1OfVolumeElementPurpose_ctor_int2_volumeelementpurpose(theLower, theUpper, theValue)))
-        }
-    }
-
-    /// **Source:** `StepElement_HArray1OfVolumeElementPurpose.hxx`:21 - `StepElement_HArray1OfVolumeElementPurpose::StepElement_HArray1OfVolumeElementPurpose()`
-    pub fn new_volumeelementpurpose_int2_bool(
-        theBegin: &VolumeElementPurpose,
-        theLower: i32,
-        theUpper: i32,
-        arg3: bool,
-    ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::StepElement_HArray1OfVolumeElementPurpose_ctor_volumeelementpurpose_int2_bool(theBegin, theLower, theUpper, arg3)))
-        }
-    }
-
-    /// **Source:** `StepElement_HArray1OfVolumeElementPurpose.hxx`:21 - `StepElement_HArray1OfVolumeElementPurpose::StepElement_HArray1OfVolumeElementPurpose()`
-    pub fn new_array1ofvolumeelementpurpose(
-        theOther: &crate::ffi_types::StepElement_Array1OfVolumeElementPurpose,
-    ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::StepElement_HArray1OfVolumeElementPurpose_ctor_array1ofvolumeelementpurpose(theOther)))
-        }
-    }
-
-    /// **Source:** `StepElement_HArray1OfVolumeElementPurpose.hxx`:21 - `StepElement_HArray1OfVolumeElementPurpose::Array1()`
-    pub fn array1(&self) -> &crate::ffi_types::StepElement_Array1OfVolumeElementPurpose {
-        unsafe {
-            &*(crate::check_result(
-                crate::ffi_extern_TKDESTEP::StepElement_HArray1OfVolumeElementPurpose_array1(
-                    self as *const Self,
-                ),
-            ))
-        }
-    }
-
-    /// **Source:** `StepElement_HArray1OfVolumeElementPurpose.hxx`:21 - `StepElement_HArray1OfVolumeElementPurpose::ChangeArray1()`
-    pub fn change_array1(
-        &mut self,
-    ) -> &mut crate::ffi_types::StepElement_Array1OfVolumeElementPurpose {
-        unsafe {
-            &mut *(crate::check_result(
-                crate::ffi_extern_TKDESTEP::StepElement_HArray1OfVolumeElementPurpose_change_array1(
-                    self as *mut Self,
-                ),
-            ))
-        }
-    }
-
-    /// **Source:** `StepElement_HArray1OfVolumeElementPurpose.hxx`:21 - `StepElement_HArray1OfVolumeElementPurpose::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
-        unsafe {
-            &*(crate::check_result(
-                crate::ffi_extern_TKDESTEP::StepElement_HArray1OfVolumeElementPurpose_dynamic_type(
-                    self as *const Self,
-                ),
-            ))
-        }
-    }
-
-    /// **Source:** `StepElement_HArray1OfVolumeElementPurpose.hxx`:21 - `StepElement_HArray1OfVolumeElementPurpose::get_type_name()`
-    pub fn get_type_name() -> std::string::String {
-        unsafe {
-            std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi_extern_TKDESTEP::StepElement_HArray1OfVolumeElementPurpose_get_type_name(
-                ),
-            ))
-        }
-        .to_string_lossy()
-        .into_owned()
-    }
-
-    /// **Source:** `StepElement_HArray1OfVolumeElementPurpose.hxx`:21 - `StepElement_HArray1OfVolumeElementPurpose::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
-        unsafe {
-            &*(crate::check_result(crate::ffi_extern_TKDESTEP::StepElement_HArray1OfVolumeElementPurpose_get_type_descriptor()))
-        }
-    }
-
-    /// Upcast to Standard_Transient
-    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        unsafe {
-            &*crate::check_result(crate::ffi_extern_TKDESTEP::StepElement_HArray1OfVolumeElementPurpose_as_Standard_Transient(self as *const Self))
-        }
-    }
-
-    /// Upcast to Standard_Transient (mutable)
-    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        unsafe {
-            &mut *crate::check_result(crate::ffi_extern_TKDESTEP::StepElement_HArray1OfVolumeElementPurpose_as_Standard_Transient_mut(self as *mut Self))
-        }
-    }
-
-    /// Wrap in a Handle (reference-counted smart pointer)
-    pub fn to_handle(
-        obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStepElementHArray1OfVolumeElementPurpose> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKDESTEP::StepElement_HArray1OfVolumeElementPurpose_to_handle(
-                    obj.into_raw(),
-                ),
-            ))
-        }
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKDESTEP::StepElement_HArray1OfVolumeElementPurpose_inherited_IsInstance(self as *const Self, theType)
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKDESTEP::StepElement_HArray1OfVolumeElementPurpose_inherited_IsKind(
-                self as *const Self,
-                theType,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
-    pub fn this(&self) -> Option<&crate::standard::Transient> {
-        {
-            let __val = crate::check_result(unsafe {
-                crate::ffi_extern_TKDESTEP::StepElement_HArray1OfVolumeElementPurpose_inherited_This(
-                    self as *const Self,
-                )
-            });
-            if __val.is_null() {
-                None
-            } else {
-                Some(unsafe { &*__val })
-            }
-        }
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
-    pub fn get_ref_count(&self) -> i32 {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKDESTEP::StepElement_HArray1OfVolumeElementPurpose_inherited_GetRefCount(self as *const Self)
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
-    pub fn increment_ref_counter(&mut self) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKDESTEP::StepElement_HArray1OfVolumeElementPurpose_inherited_IncrementRefCounter(self as *mut Self)
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
-    pub fn decrement_ref_counter(&mut self) -> i32 {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKDESTEP::StepElement_HArray1OfVolumeElementPurpose_inherited_DecrementRefCounter(self as *mut Self)
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
-    pub fn delete(&self) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKDESTEP::StepElement_HArray1OfVolumeElementPurpose_inherited_Delete(
-                self as *const Self,
-            )
-        })
-    }
-}
-
-pub use crate::ffi_types::HandleStepElementHArray1OfVolumeElementPurpose;
-
-unsafe impl crate::CppDeletable for HandleStepElementHArray1OfVolumeElementPurpose {
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            crate::ffi_extern_TKDESTEP::HandleStepElementHArray1OfVolumeElementPurpose_destructor(
-                ptr,
-            );
-        }
-    }
-}
-
-unsafe impl crate::CppCopyable for HandleStepElementHArray1OfVolumeElementPurpose {
-    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        unsafe {
-            crate::check_result(
-                crate::ffi_extern_TKDESTEP::HandleStepElementHArray1OfVolumeElementPurpose_clone(
-                    ptr,
-                ),
-            )
-        }
-    }
-}
-
-impl HandleStepElementHArray1OfVolumeElementPurpose {
-    /// Returns `true` if this Handle is null (doesn't point to any object).
-    pub fn is_null(&self) -> bool {
-        unsafe {
-            crate::ffi_extern_TKDESTEP::HandleStepElementHArray1OfVolumeElementPurpose_is_null(
-                self as *const Self,
-            )
-        }
-    }
-
-    /// Dereference this Handle to access the underlying StepElement_HArray1OfVolumeElementPurpose
-    pub fn get(&self) -> &crate::ffi_types::StepElement_HArray1OfVolumeElementPurpose {
-        unsafe {
-            &*crate::check_result(
-                crate::ffi_extern_TKDESTEP::HandleStepElementHArray1OfVolumeElementPurpose_get(
-                    self as *const Self,
-                ),
-            )
-        }
-    }
-
-    /// Dereference this Handle to mutably access the underlying StepElement_HArray1OfVolumeElementPurpose
-    pub fn get_mut(&mut self) -> &mut crate::ffi_types::StepElement_HArray1OfVolumeElementPurpose {
-        unsafe {
-            &mut *crate::check_result(
-                crate::ffi_extern_TKDESTEP::HandleStepElementHArray1OfVolumeElementPurpose_get_mut(
-                    self as *mut Self,
-                ),
-            )
-        }
-    }
-
-    /// Upcast Handle<StepElement_HArray1OfVolumeElementPurpose> to Handle<Standard_Transient>
-    pub fn to_handle_transient(
-        &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepElementHArray1OfVolumeElementPurpose_to_HandleStandardTransient(self as *const Self)))
-        }
-    }
-}
-
-// ========================
-// From StepElement_HArray1OfVolumeElementPurposeMember.hxx
-// ========================
-
-/// **Source:** `StepElement_HArray1OfVolumeElementPurposeMember.hxx`:20 - `StepElement_HArray1OfVolumeElementPurposeMember`
-pub use crate::ffi_types::StepElement_HArray1OfVolumeElementPurposeMember as HArray1OfVolumeElementPurposeMember;
-
-unsafe impl crate::CppDeletable for HArray1OfVolumeElementPurposeMember {
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            crate::ffi_extern_TKDESTEP::StepElement_HArray1OfVolumeElementPurposeMember_destructor(
-                ptr,
-            );
-        }
-    }
-}
-
-impl HArray1OfVolumeElementPurposeMember {
-    /// **Source:** `StepElement_HArray1OfVolumeElementPurposeMember.hxx`:20 - `StepElement_HArray1OfVolumeElementPurposeMember::StepElement_HArray1OfVolumeElementPurposeMember()`
-    pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKDESTEP::StepElement_HArray1OfVolumeElementPurposeMember_ctor(),
-            ))
-        }
-    }
-
-    /// **Source:** `StepElement_HArray1OfVolumeElementPurposeMember.hxx`:20 - `StepElement_HArray1OfVolumeElementPurposeMember::StepElement_HArray1OfVolumeElementPurposeMember()`
-    pub fn new_int2(theLower: i32, theUpper: i32) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::StepElement_HArray1OfVolumeElementPurposeMember_ctor_int2(theLower, theUpper)))
-        }
-    }
-
-    /// **Source:** `StepElement_HArray1OfVolumeElementPurposeMember.hxx`:20 - `StepElement_HArray1OfVolumeElementPurposeMember::StepElement_HArray1OfVolumeElementPurposeMember()`
-    pub fn new_int2_handlestepelementvolumeelementpurposemember(
-        theLower: i32,
-        theUpper: i32,
-        theValue: &crate::ffi_types::HandleStepElementVolumeElementPurposeMember,
-    ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::StepElement_HArray1OfVolumeElementPurposeMember_ctor_int2_handlestepelementvolumeelementpurposemember(theLower, theUpper, theValue)))
-        }
-    }
-
-    /// **Source:** `StepElement_HArray1OfVolumeElementPurposeMember.hxx`:20 - `StepElement_HArray1OfVolumeElementPurposeMember::StepElement_HArray1OfVolumeElementPurposeMember()`
-    pub fn new_handlestepelementvolumeelementpurposemember_int2_bool(
-        theBegin: &crate::ffi_types::HandleStepElementVolumeElementPurposeMember,
-        theLower: i32,
-        theUpper: i32,
-        arg3: bool,
-    ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::StepElement_HArray1OfVolumeElementPurposeMember_ctor_handlestepelementvolumeelementpurposemember_int2_bool(theBegin, theLower, theUpper, arg3)))
-        }
-    }
-
-    /// **Source:** `StepElement_HArray1OfVolumeElementPurposeMember.hxx`:20 - `StepElement_HArray1OfVolumeElementPurposeMember::StepElement_HArray1OfVolumeElementPurposeMember()`
-    pub fn new_array1ofvolumeelementpurposemember(
-        theOther: &crate::ffi_types::StepElement_Array1OfVolumeElementPurposeMember,
-    ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::StepElement_HArray1OfVolumeElementPurposeMember_ctor_array1ofvolumeelementpurposemember(theOther)))
-        }
-    }
-
-    /// **Source:** `StepElement_HArray1OfVolumeElementPurposeMember.hxx`:20 - `StepElement_HArray1OfVolumeElementPurposeMember::Array1()`
-    pub fn array1(&self) -> &crate::ffi_types::StepElement_Array1OfVolumeElementPurposeMember {
-        unsafe {
-            &*(crate::check_result(
-                crate::ffi_extern_TKDESTEP::StepElement_HArray1OfVolumeElementPurposeMember_array1(
-                    self as *const Self,
-                ),
-            ))
-        }
-    }
-
-    /// **Source:** `StepElement_HArray1OfVolumeElementPurposeMember.hxx`:20 - `StepElement_HArray1OfVolumeElementPurposeMember::ChangeArray1()`
-    pub fn change_array1(
-        &mut self,
-    ) -> &mut crate::ffi_types::StepElement_Array1OfVolumeElementPurposeMember {
-        unsafe {
-            &mut *(crate::check_result(crate::ffi_extern_TKDESTEP::StepElement_HArray1OfVolumeElementPurposeMember_change_array1(self as *mut Self)))
-        }
-    }
-
-    /// **Source:** `StepElement_HArray1OfVolumeElementPurposeMember.hxx`:20 - `StepElement_HArray1OfVolumeElementPurposeMember::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
-        unsafe {
-            &*(crate::check_result(crate::ffi_extern_TKDESTEP::StepElement_HArray1OfVolumeElementPurposeMember_dynamic_type(self as *const Self)))
-        }
-    }
-
-    /// **Source:** `StepElement_HArray1OfVolumeElementPurposeMember.hxx`:20 - `StepElement_HArray1OfVolumeElementPurposeMember::get_type_name()`
-    pub fn get_type_name() -> std::string::String {
-        unsafe { std::ffi::CStr::from_ptr(crate::check_result(crate::ffi_extern_TKDESTEP::StepElement_HArray1OfVolumeElementPurposeMember_get_type_name())) }.to_string_lossy().into_owned()
-    }
-
-    /// **Source:** `StepElement_HArray1OfVolumeElementPurposeMember.hxx`:20 - `StepElement_HArray1OfVolumeElementPurposeMember::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
-        unsafe {
-            &*(crate::check_result(crate::ffi_extern_TKDESTEP::StepElement_HArray1OfVolumeElementPurposeMember_get_type_descriptor()))
-        }
-    }
-
-    /// Upcast to Standard_Transient
-    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        unsafe {
-            &*crate::check_result(crate::ffi_extern_TKDESTEP::StepElement_HArray1OfVolumeElementPurposeMember_as_Standard_Transient(self as *const Self))
-        }
-    }
-
-    /// Upcast to Standard_Transient (mutable)
-    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        unsafe {
-            &mut *crate::check_result(crate::ffi_extern_TKDESTEP::StepElement_HArray1OfVolumeElementPurposeMember_as_Standard_Transient_mut(self as *mut Self))
-        }
-    }
-
-    /// Wrap in a Handle (reference-counted smart pointer)
-    pub fn to_handle(
-        obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStepElementHArray1OfVolumeElementPurposeMember>
-    {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::StepElement_HArray1OfVolumeElementPurposeMember_to_handle(obj.into_raw())))
-        }
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKDESTEP::StepElement_HArray1OfVolumeElementPurposeMember_inherited_IsInstance(self as *const Self, theType)
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKDESTEP::StepElement_HArray1OfVolumeElementPurposeMember_inherited_IsKind(self as *const Self, theType)
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
-    pub fn this(&self) -> Option<&crate::standard::Transient> {
-        {
-            let __val = crate::check_result(unsafe {
-                crate::ffi_extern_TKDESTEP::StepElement_HArray1OfVolumeElementPurposeMember_inherited_This(self as *const Self)
-            });
-            if __val.is_null() {
-                None
-            } else {
-                Some(unsafe { &*__val })
-            }
-        }
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
-    pub fn get_ref_count(&self) -> i32 {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKDESTEP::StepElement_HArray1OfVolumeElementPurposeMember_inherited_GetRefCount(self as *const Self)
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
-    pub fn increment_ref_counter(&mut self) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKDESTEP::StepElement_HArray1OfVolumeElementPurposeMember_inherited_IncrementRefCounter(self as *mut Self)
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
-    pub fn decrement_ref_counter(&mut self) -> i32 {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKDESTEP::StepElement_HArray1OfVolumeElementPurposeMember_inherited_DecrementRefCounter(self as *mut Self)
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
-    pub fn delete(&self) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKDESTEP::StepElement_HArray1OfVolumeElementPurposeMember_inherited_Delete(self as *const Self)
-        })
-    }
-}
-
-pub use crate::ffi_types::HandleStepElementHArray1OfVolumeElementPurposeMember;
-
-unsafe impl crate::CppDeletable for HandleStepElementHArray1OfVolumeElementPurposeMember {
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            crate::ffi_extern_TKDESTEP::HandleStepElementHArray1OfVolumeElementPurposeMember_destructor(ptr);
-        }
-    }
-}
-
-unsafe impl crate::CppCopyable for HandleStepElementHArray1OfVolumeElementPurposeMember {
-    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        unsafe {
-            crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepElementHArray1OfVolumeElementPurposeMember_clone(ptr))
-        }
-    }
-}
-
-impl HandleStepElementHArray1OfVolumeElementPurposeMember {
-    /// Returns `true` if this Handle is null (doesn't point to any object).
-    pub fn is_null(&self) -> bool {
-        unsafe {
-            crate::ffi_extern_TKDESTEP::HandleStepElementHArray1OfVolumeElementPurposeMember_is_null(
-                self as *const Self,
-            )
-        }
-    }
-
-    /// Dereference this Handle to access the underlying StepElement_HArray1OfVolumeElementPurposeMember
-    pub fn get(&self) -> &crate::ffi_types::StepElement_HArray1OfVolumeElementPurposeMember {
-        unsafe {
-            &*crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepElementHArray1OfVolumeElementPurposeMember_get(self as *const Self))
-        }
-    }
-
-    /// Dereference this Handle to mutably access the underlying StepElement_HArray1OfVolumeElementPurposeMember
-    pub fn get_mut(
-        &mut self,
-    ) -> &mut crate::ffi_types::StepElement_HArray1OfVolumeElementPurposeMember {
-        unsafe {
-            &mut *crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepElementHArray1OfVolumeElementPurposeMember_get_mut(self as *mut Self))
-        }
-    }
-
-    /// Upcast Handle<StepElement_HArray1OfVolumeElementPurposeMember> to Handle<Standard_Transient>
-    pub fn to_handle_transient(
-        &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepElementHArray1OfVolumeElementPurposeMember_to_HandleStandardTransient(self as *const Self)))
-        }
-    }
-}
-
-// ========================
-// From StepElement_HArray2OfCurveElementPurposeMember.hxx
-// ========================
-
-/// **Source:** `StepElement_HArray2OfCurveElementPurposeMember.hxx`:21 - `StepElement_HArray2OfCurveElementPurposeMember`
-pub use crate::ffi_types::StepElement_HArray2OfCurveElementPurposeMember as HArray2OfCurveElementPurposeMember;
-
-unsafe impl crate::CppDeletable for HArray2OfCurveElementPurposeMember {
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            crate::ffi_extern_TKDESTEP::StepElement_HArray2OfCurveElementPurposeMember_destructor(
-                ptr,
-            );
-        }
-    }
-}
-
-impl HArray2OfCurveElementPurposeMember {
-    /// **Source:** `StepElement_HArray2OfCurveElementPurposeMember.hxx`:21 - `StepElement_HArray2OfCurveElementPurposeMember::StepElement_HArray2OfCurveElementPurposeMember()`
-    pub fn new_int4(
-        theRowLow: i32,
-        theRowUpp: i32,
-        theColLow: i32,
-        theColUpp: i32,
-    ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::StepElement_HArray2OfCurveElementPurposeMember_ctor_int4(theRowLow, theRowUpp, theColLow, theColUpp)))
-        }
-    }
-
-    /// **Source:** `StepElement_HArray2OfCurveElementPurposeMember.hxx`:21 - `StepElement_HArray2OfCurveElementPurposeMember::StepElement_HArray2OfCurveElementPurposeMember()`
-    pub fn new_int4_handlestepelementcurveelementpurposemember(
-        theRowLow: i32,
-        theRowUpp: i32,
-        theColLow: i32,
-        theColUpp: i32,
-        theValue: &crate::ffi_types::HandleStepElementCurveElementPurposeMember,
-    ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::StepElement_HArray2OfCurveElementPurposeMember_ctor_int4_handlestepelementcurveelementpurposemember(theRowLow, theRowUpp, theColLow, theColUpp, theValue)))
-        }
-    }
-
-    /// **Source:** `StepElement_HArray2OfCurveElementPurposeMember.hxx`:21 - `StepElement_HArray2OfCurveElementPurposeMember::StepElement_HArray2OfCurveElementPurposeMember()`
-    pub fn new_array2ofcurveelementpurposemember(
-        theOther: &crate::ffi_types::StepElement_Array2OfCurveElementPurposeMember,
-    ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::StepElement_HArray2OfCurveElementPurposeMember_ctor_array2ofcurveelementpurposemember(theOther)))
-        }
-    }
-
-    /// **Source:** `StepElement_HArray2OfCurveElementPurposeMember.hxx`:21 - `StepElement_HArray2OfCurveElementPurposeMember::Array2()`
-    pub fn array2(&self) -> &crate::ffi_types::StepElement_Array2OfCurveElementPurposeMember {
-        unsafe {
-            &*(crate::check_result(
-                crate::ffi_extern_TKDESTEP::StepElement_HArray2OfCurveElementPurposeMember_array2(
-                    self as *const Self,
-                ),
-            ))
-        }
-    }
-
-    /// **Source:** `StepElement_HArray2OfCurveElementPurposeMember.hxx`:21 - `StepElement_HArray2OfCurveElementPurposeMember::ChangeArray2()`
-    pub fn change_array2(
-        &mut self,
-    ) -> &mut crate::ffi_types::StepElement_Array2OfCurveElementPurposeMember {
-        unsafe {
-            &mut *(crate::check_result(crate::ffi_extern_TKDESTEP::StepElement_HArray2OfCurveElementPurposeMember_change_array2(self as *mut Self)))
-        }
-    }
-
-    /// **Source:** `StepElement_HArray2OfCurveElementPurposeMember.hxx`:21 - `StepElement_HArray2OfCurveElementPurposeMember::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
-        unsafe {
-            &*(crate::check_result(crate::ffi_extern_TKDESTEP::StepElement_HArray2OfCurveElementPurposeMember_dynamic_type(self as *const Self)))
-        }
-    }
-
-    /// **Source:** `StepElement_HArray2OfCurveElementPurposeMember.hxx`:21 - `StepElement_HArray2OfCurveElementPurposeMember::get_type_name()`
-    pub fn get_type_name() -> std::string::String {
-        unsafe { std::ffi::CStr::from_ptr(crate::check_result(crate::ffi_extern_TKDESTEP::StepElement_HArray2OfCurveElementPurposeMember_get_type_name())) }.to_string_lossy().into_owned()
-    }
-
-    /// **Source:** `StepElement_HArray2OfCurveElementPurposeMember.hxx`:21 - `StepElement_HArray2OfCurveElementPurposeMember::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
-        unsafe {
-            &*(crate::check_result(crate::ffi_extern_TKDESTEP::StepElement_HArray2OfCurveElementPurposeMember_get_type_descriptor()))
-        }
-    }
-
-    /// Upcast to Standard_Transient
-    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        unsafe {
-            &*crate::check_result(crate::ffi_extern_TKDESTEP::StepElement_HArray2OfCurveElementPurposeMember_as_Standard_Transient(self as *const Self))
-        }
-    }
-
-    /// Upcast to Standard_Transient (mutable)
-    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        unsafe {
-            &mut *crate::check_result(crate::ffi_extern_TKDESTEP::StepElement_HArray2OfCurveElementPurposeMember_as_Standard_Transient_mut(self as *mut Self))
-        }
-    }
-
-    /// Wrap in a Handle (reference-counted smart pointer)
-    pub fn to_handle(
-        obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStepElementHArray2OfCurveElementPurposeMember>
-    {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::StepElement_HArray2OfCurveElementPurposeMember_to_handle(obj.into_raw())))
-        }
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKDESTEP::StepElement_HArray2OfCurveElementPurposeMember_inherited_IsInstance(self as *const Self, theType)
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKDESTEP::StepElement_HArray2OfCurveElementPurposeMember_inherited_IsKind(self as *const Self, theType)
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
-    pub fn this(&self) -> Option<&crate::standard::Transient> {
-        {
-            let __val = crate::check_result(unsafe {
-                crate::ffi_extern_TKDESTEP::StepElement_HArray2OfCurveElementPurposeMember_inherited_This(self as *const Self)
-            });
-            if __val.is_null() {
-                None
-            } else {
-                Some(unsafe { &*__val })
-            }
-        }
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
-    pub fn get_ref_count(&self) -> i32 {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKDESTEP::StepElement_HArray2OfCurveElementPurposeMember_inherited_GetRefCount(self as *const Self)
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
-    pub fn increment_ref_counter(&mut self) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKDESTEP::StepElement_HArray2OfCurveElementPurposeMember_inherited_IncrementRefCounter(self as *mut Self)
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
-    pub fn decrement_ref_counter(&mut self) -> i32 {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKDESTEP::StepElement_HArray2OfCurveElementPurposeMember_inherited_DecrementRefCounter(self as *mut Self)
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
-    pub fn delete(&self) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKDESTEP::StepElement_HArray2OfCurveElementPurposeMember_inherited_Delete(self as *const Self)
-        })
-    }
-}
-
-pub use crate::ffi_types::HandleStepElementHArray2OfCurveElementPurposeMember;
-
-unsafe impl crate::CppDeletable for HandleStepElementHArray2OfCurveElementPurposeMember {
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            crate::ffi_extern_TKDESTEP::HandleStepElementHArray2OfCurveElementPurposeMember_destructor(ptr);
-        }
-    }
-}
-
-unsafe impl crate::CppCopyable for HandleStepElementHArray2OfCurveElementPurposeMember {
-    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        unsafe {
-            crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepElementHArray2OfCurveElementPurposeMember_clone(ptr))
-        }
-    }
-}
-
-impl HandleStepElementHArray2OfCurveElementPurposeMember {
-    /// Returns `true` if this Handle is null (doesn't point to any object).
-    pub fn is_null(&self) -> bool {
-        unsafe {
-            crate::ffi_extern_TKDESTEP::HandleStepElementHArray2OfCurveElementPurposeMember_is_null(
-                self as *const Self,
-            )
-        }
-    }
-
-    /// Dereference this Handle to access the underlying StepElement_HArray2OfCurveElementPurposeMember
-    pub fn get(&self) -> &crate::ffi_types::StepElement_HArray2OfCurveElementPurposeMember {
-        unsafe {
-            &*crate::check_result(
-                crate::ffi_extern_TKDESTEP::HandleStepElementHArray2OfCurveElementPurposeMember_get(
-                    self as *const Self,
-                ),
-            )
-        }
-    }
-
-    /// Dereference this Handle to mutably access the underlying StepElement_HArray2OfCurveElementPurposeMember
-    pub fn get_mut(
-        &mut self,
-    ) -> &mut crate::ffi_types::StepElement_HArray2OfCurveElementPurposeMember {
-        unsafe {
-            &mut *crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepElementHArray2OfCurveElementPurposeMember_get_mut(self as *mut Self))
-        }
-    }
-
-    /// Upcast Handle<StepElement_HArray2OfCurveElementPurposeMember> to Handle<Standard_Transient>
-    pub fn to_handle_transient(
-        &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepElementHArray2OfCurveElementPurposeMember_to_HandleStandardTransient(self as *const Self)))
-        }
-    }
-}
-
-// ========================
-// From StepElement_HArray2OfSurfaceElementPurpose.hxx
-// ========================
-
-/// **Source:** `StepElement_HArray2OfSurfaceElementPurpose.hxx`:21 - `StepElement_HArray2OfSurfaceElementPurpose`
-pub use crate::ffi_types::StepElement_HArray2OfSurfaceElementPurpose as HArray2OfSurfaceElementPurpose;
-
-unsafe impl crate::CppDeletable for HArray2OfSurfaceElementPurpose {
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            crate::ffi_extern_TKDESTEP::StepElement_HArray2OfSurfaceElementPurpose_destructor(ptr);
-        }
-    }
-}
-
-impl HArray2OfSurfaceElementPurpose {
-    /// **Source:** `StepElement_HArray2OfSurfaceElementPurpose.hxx`:21 - `StepElement_HArray2OfSurfaceElementPurpose::StepElement_HArray2OfSurfaceElementPurpose()`
-    pub fn new_int4(
-        theRowLow: i32,
-        theRowUpp: i32,
-        theColLow: i32,
-        theColUpp: i32,
-    ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKDESTEP::StepElement_HArray2OfSurfaceElementPurpose_ctor_int4(
-                    theRowLow, theRowUpp, theColLow, theColUpp,
-                ),
-            ))
-        }
-    }
-
-    /// **Source:** `StepElement_HArray2OfSurfaceElementPurpose.hxx`:21 - `StepElement_HArray2OfSurfaceElementPurpose::StepElement_HArray2OfSurfaceElementPurpose()`
-    pub fn new_int4_surfaceelementpurpose(
-        theRowLow: i32,
-        theRowUpp: i32,
-        theColLow: i32,
-        theColUpp: i32,
-        theValue: &SurfaceElementPurpose,
-    ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::StepElement_HArray2OfSurfaceElementPurpose_ctor_int4_surfaceelementpurpose(theRowLow, theRowUpp, theColLow, theColUpp, theValue)))
-        }
-    }
-
-    /// **Source:** `StepElement_HArray2OfSurfaceElementPurpose.hxx`:21 - `StepElement_HArray2OfSurfaceElementPurpose::StepElement_HArray2OfSurfaceElementPurpose()`
-    pub fn new_array2ofsurfaceelementpurpose(
-        theOther: &crate::ffi_types::StepElement_Array2OfSurfaceElementPurpose,
-    ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::StepElement_HArray2OfSurfaceElementPurpose_ctor_array2ofsurfaceelementpurpose(theOther)))
-        }
-    }
-
-    /// **Source:** `StepElement_HArray2OfSurfaceElementPurpose.hxx`:21 - `StepElement_HArray2OfSurfaceElementPurpose::Array2()`
-    pub fn array2(&self) -> &crate::ffi_types::StepElement_Array2OfSurfaceElementPurpose {
-        unsafe {
-            &*(crate::check_result(
-                crate::ffi_extern_TKDESTEP::StepElement_HArray2OfSurfaceElementPurpose_array2(
-                    self as *const Self,
-                ),
-            ))
-        }
-    }
-
-    /// **Source:** `StepElement_HArray2OfSurfaceElementPurpose.hxx`:21 - `StepElement_HArray2OfSurfaceElementPurpose::ChangeArray2()`
-    pub fn change_array2(
-        &mut self,
-    ) -> &mut crate::ffi_types::StepElement_Array2OfSurfaceElementPurpose {
-        unsafe {
-            &mut *(crate::check_result(crate::ffi_extern_TKDESTEP::StepElement_HArray2OfSurfaceElementPurpose_change_array2(self as *mut Self)))
-        }
-    }
-
-    /// **Source:** `StepElement_HArray2OfSurfaceElementPurpose.hxx`:21 - `StepElement_HArray2OfSurfaceElementPurpose::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
-        unsafe {
-            &*(crate::check_result(
-                crate::ffi_extern_TKDESTEP::StepElement_HArray2OfSurfaceElementPurpose_dynamic_type(
-                    self as *const Self,
-                ),
-            ))
-        }
-    }
-
-    /// **Source:** `StepElement_HArray2OfSurfaceElementPurpose.hxx`:21 - `StepElement_HArray2OfSurfaceElementPurpose::get_type_name()`
-    pub fn get_type_name() -> std::string::String {
-        unsafe { std::ffi::CStr::from_ptr(crate::check_result(crate::ffi_extern_TKDESTEP::StepElement_HArray2OfSurfaceElementPurpose_get_type_name())) }.to_string_lossy().into_owned()
-    }
-
-    /// **Source:** `StepElement_HArray2OfSurfaceElementPurpose.hxx`:21 - `StepElement_HArray2OfSurfaceElementPurpose::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
-        unsafe {
-            &*(crate::check_result(crate::ffi_extern_TKDESTEP::StepElement_HArray2OfSurfaceElementPurpose_get_type_descriptor()))
-        }
-    }
-
-    /// Upcast to Standard_Transient
-    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        unsafe {
-            &*crate::check_result(crate::ffi_extern_TKDESTEP::StepElement_HArray2OfSurfaceElementPurpose_as_Standard_Transient(self as *const Self))
-        }
-    }
-
-    /// Upcast to Standard_Transient (mutable)
-    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        unsafe {
-            &mut *crate::check_result(crate::ffi_extern_TKDESTEP::StepElement_HArray2OfSurfaceElementPurpose_as_Standard_Transient_mut(self as *mut Self))
-        }
-    }
-
-    /// Wrap in a Handle (reference-counted smart pointer)
-    pub fn to_handle(
-        obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStepElementHArray2OfSurfaceElementPurpose> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKDESTEP::StepElement_HArray2OfSurfaceElementPurpose_to_handle(
-                    obj.into_raw(),
-                ),
-            ))
-        }
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKDESTEP::StepElement_HArray2OfSurfaceElementPurpose_inherited_IsInstance(self as *const Self, theType)
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKDESTEP::StepElement_HArray2OfSurfaceElementPurpose_inherited_IsKind(
-                self as *const Self,
-                theType,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
-    pub fn this(&self) -> Option<&crate::standard::Transient> {
-        {
-            let __val = crate::check_result(unsafe {
-                crate::ffi_extern_TKDESTEP::StepElement_HArray2OfSurfaceElementPurpose_inherited_This(self as *const Self)
-            });
-            if __val.is_null() {
-                None
-            } else {
-                Some(unsafe { &*__val })
-            }
-        }
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
-    pub fn get_ref_count(&self) -> i32 {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKDESTEP::StepElement_HArray2OfSurfaceElementPurpose_inherited_GetRefCount(self as *const Self)
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
-    pub fn increment_ref_counter(&mut self) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKDESTEP::StepElement_HArray2OfSurfaceElementPurpose_inherited_IncrementRefCounter(self as *mut Self)
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
-    pub fn decrement_ref_counter(&mut self) -> i32 {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKDESTEP::StepElement_HArray2OfSurfaceElementPurpose_inherited_DecrementRefCounter(self as *mut Self)
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
-    pub fn delete(&self) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKDESTEP::StepElement_HArray2OfSurfaceElementPurpose_inherited_Delete(
-                self as *const Self,
-            )
-        })
-    }
-}
-
-pub use crate::ffi_types::HandleStepElementHArray2OfSurfaceElementPurpose;
-
-unsafe impl crate::CppDeletable for HandleStepElementHArray2OfSurfaceElementPurpose {
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            crate::ffi_extern_TKDESTEP::HandleStepElementHArray2OfSurfaceElementPurpose_destructor(
-                ptr,
-            );
-        }
-    }
-}
-
-unsafe impl crate::CppCopyable for HandleStepElementHArray2OfSurfaceElementPurpose {
-    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        unsafe {
-            crate::check_result(
-                crate::ffi_extern_TKDESTEP::HandleStepElementHArray2OfSurfaceElementPurpose_clone(
-                    ptr,
-                ),
-            )
-        }
-    }
-}
-
-impl HandleStepElementHArray2OfSurfaceElementPurpose {
-    /// Returns `true` if this Handle is null (doesn't point to any object).
-    pub fn is_null(&self) -> bool {
-        unsafe {
-            crate::ffi_extern_TKDESTEP::HandleStepElementHArray2OfSurfaceElementPurpose_is_null(
-                self as *const Self,
-            )
-        }
-    }
-
-    /// Dereference this Handle to access the underlying StepElement_HArray2OfSurfaceElementPurpose
-    pub fn get(&self) -> &crate::ffi_types::StepElement_HArray2OfSurfaceElementPurpose {
-        unsafe {
-            &*crate::check_result(
-                crate::ffi_extern_TKDESTEP::HandleStepElementHArray2OfSurfaceElementPurpose_get(
-                    self as *const Self,
-                ),
-            )
-        }
-    }
-
-    /// Dereference this Handle to mutably access the underlying StepElement_HArray2OfSurfaceElementPurpose
-    pub fn get_mut(&mut self) -> &mut crate::ffi_types::StepElement_HArray2OfSurfaceElementPurpose {
-        unsafe {
-            &mut *crate::check_result(
-                crate::ffi_extern_TKDESTEP::HandleStepElementHArray2OfSurfaceElementPurpose_get_mut(
-                    self as *mut Self,
-                ),
-            )
-        }
-    }
-
-    /// Upcast Handle<StepElement_HArray2OfSurfaceElementPurpose> to Handle<Standard_Transient>
-    pub fn to_handle_transient(
-        &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepElementHArray2OfSurfaceElementPurpose_to_HandleStandardTransient(self as *const Self)))
-        }
-    }
-}
-
-// ========================
-// From StepElement_HArray2OfSurfaceElementPurposeMember.hxx
-// ========================
-
-/// **Source:** `StepElement_HArray2OfSurfaceElementPurposeMember.hxx`:21 - `StepElement_HArray2OfSurfaceElementPurposeMember`
-pub use crate::ffi_types::StepElement_HArray2OfSurfaceElementPurposeMember as HArray2OfSurfaceElementPurposeMember;
-
-unsafe impl crate::CppDeletable for HArray2OfSurfaceElementPurposeMember {
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            crate::ffi_extern_TKDESTEP::StepElement_HArray2OfSurfaceElementPurposeMember_destructor(
-                ptr,
-            );
-        }
-    }
-}
-
-impl HArray2OfSurfaceElementPurposeMember {
-    /// **Source:** `StepElement_HArray2OfSurfaceElementPurposeMember.hxx`:21 - `StepElement_HArray2OfSurfaceElementPurposeMember::StepElement_HArray2OfSurfaceElementPurposeMember()`
-    pub fn new_int4(
-        theRowLow: i32,
-        theRowUpp: i32,
-        theColLow: i32,
-        theColUpp: i32,
-    ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::StepElement_HArray2OfSurfaceElementPurposeMember_ctor_int4(theRowLow, theRowUpp, theColLow, theColUpp)))
-        }
-    }
-
-    /// **Source:** `StepElement_HArray2OfSurfaceElementPurposeMember.hxx`:21 - `StepElement_HArray2OfSurfaceElementPurposeMember::StepElement_HArray2OfSurfaceElementPurposeMember()`
-    pub fn new_int4_handlestepelementsurfaceelementpurposemember(
-        theRowLow: i32,
-        theRowUpp: i32,
-        theColLow: i32,
-        theColUpp: i32,
-        theValue: &crate::ffi_types::HandleStepElementSurfaceElementPurposeMember,
-    ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::StepElement_HArray2OfSurfaceElementPurposeMember_ctor_int4_handlestepelementsurfaceelementpurposemember(theRowLow, theRowUpp, theColLow, theColUpp, theValue)))
-        }
-    }
-
-    /// **Source:** `StepElement_HArray2OfSurfaceElementPurposeMember.hxx`:21 - `StepElement_HArray2OfSurfaceElementPurposeMember::StepElement_HArray2OfSurfaceElementPurposeMember()`
-    pub fn new_array2ofsurfaceelementpurposemember(
-        theOther: &crate::ffi_types::StepElement_Array2OfSurfaceElementPurposeMember,
-    ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::StepElement_HArray2OfSurfaceElementPurposeMember_ctor_array2ofsurfaceelementpurposemember(theOther)))
-        }
-    }
-
-    /// **Source:** `StepElement_HArray2OfSurfaceElementPurposeMember.hxx`:21 - `StepElement_HArray2OfSurfaceElementPurposeMember::Array2()`
-    pub fn array2(&self) -> &crate::ffi_types::StepElement_Array2OfSurfaceElementPurposeMember {
-        unsafe {
-            &*(crate::check_result(
-                crate::ffi_extern_TKDESTEP::StepElement_HArray2OfSurfaceElementPurposeMember_array2(
-                    self as *const Self,
-                ),
-            ))
-        }
-    }
-
-    /// **Source:** `StepElement_HArray2OfSurfaceElementPurposeMember.hxx`:21 - `StepElement_HArray2OfSurfaceElementPurposeMember::ChangeArray2()`
-    pub fn change_array2(
-        &mut self,
-    ) -> &mut crate::ffi_types::StepElement_Array2OfSurfaceElementPurposeMember {
-        unsafe {
-            &mut *(crate::check_result(crate::ffi_extern_TKDESTEP::StepElement_HArray2OfSurfaceElementPurposeMember_change_array2(self as *mut Self)))
-        }
-    }
-
-    /// **Source:** `StepElement_HArray2OfSurfaceElementPurposeMember.hxx`:21 - `StepElement_HArray2OfSurfaceElementPurposeMember::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
-        unsafe {
-            &*(crate::check_result(crate::ffi_extern_TKDESTEP::StepElement_HArray2OfSurfaceElementPurposeMember_dynamic_type(self as *const Self)))
-        }
-    }
-
-    /// **Source:** `StepElement_HArray2OfSurfaceElementPurposeMember.hxx`:21 - `StepElement_HArray2OfSurfaceElementPurposeMember::get_type_name()`
-    pub fn get_type_name() -> std::string::String {
-        unsafe { std::ffi::CStr::from_ptr(crate::check_result(crate::ffi_extern_TKDESTEP::StepElement_HArray2OfSurfaceElementPurposeMember_get_type_name())) }.to_string_lossy().into_owned()
-    }
-
-    /// **Source:** `StepElement_HArray2OfSurfaceElementPurposeMember.hxx`:21 - `StepElement_HArray2OfSurfaceElementPurposeMember::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
-        unsafe {
-            &*(crate::check_result(crate::ffi_extern_TKDESTEP::StepElement_HArray2OfSurfaceElementPurposeMember_get_type_descriptor()))
-        }
-    }
-
-    /// Upcast to Standard_Transient
-    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        unsafe {
-            &*crate::check_result(crate::ffi_extern_TKDESTEP::StepElement_HArray2OfSurfaceElementPurposeMember_as_Standard_Transient(self as *const Self))
-        }
-    }
-
-    /// Upcast to Standard_Transient (mutable)
-    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        unsafe {
-            &mut *crate::check_result(crate::ffi_extern_TKDESTEP::StepElement_HArray2OfSurfaceElementPurposeMember_as_Standard_Transient_mut(self as *mut Self))
-        }
-    }
-
-    /// Wrap in a Handle (reference-counted smart pointer)
-    pub fn to_handle(
-        obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStepElementHArray2OfSurfaceElementPurposeMember>
-    {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::StepElement_HArray2OfSurfaceElementPurposeMember_to_handle(obj.into_raw())))
-        }
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKDESTEP::StepElement_HArray2OfSurfaceElementPurposeMember_inherited_IsInstance(self as *const Self, theType)
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKDESTEP::StepElement_HArray2OfSurfaceElementPurposeMember_inherited_IsKind(self as *const Self, theType)
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
-    pub fn this(&self) -> Option<&crate::standard::Transient> {
-        {
-            let __val = crate::check_result(unsafe {
-                crate::ffi_extern_TKDESTEP::StepElement_HArray2OfSurfaceElementPurposeMember_inherited_This(self as *const Self)
-            });
-            if __val.is_null() {
-                None
-            } else {
-                Some(unsafe { &*__val })
-            }
-        }
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
-    pub fn get_ref_count(&self) -> i32 {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKDESTEP::StepElement_HArray2OfSurfaceElementPurposeMember_inherited_GetRefCount(self as *const Self)
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
-    pub fn increment_ref_counter(&mut self) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKDESTEP::StepElement_HArray2OfSurfaceElementPurposeMember_inherited_IncrementRefCounter(self as *mut Self)
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
-    pub fn decrement_ref_counter(&mut self) -> i32 {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKDESTEP::StepElement_HArray2OfSurfaceElementPurposeMember_inherited_DecrementRefCounter(self as *mut Self)
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
-    pub fn delete(&self) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKDESTEP::StepElement_HArray2OfSurfaceElementPurposeMember_inherited_Delete(self as *const Self)
-        })
-    }
-}
-
-pub use crate::ffi_types::HandleStepElementHArray2OfSurfaceElementPurposeMember;
-
-unsafe impl crate::CppDeletable for HandleStepElementHArray2OfSurfaceElementPurposeMember {
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            crate::ffi_extern_TKDESTEP::HandleStepElementHArray2OfSurfaceElementPurposeMember_destructor(ptr);
-        }
-    }
-}
-
-unsafe impl crate::CppCopyable for HandleStepElementHArray2OfSurfaceElementPurposeMember {
-    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        unsafe {
-            crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepElementHArray2OfSurfaceElementPurposeMember_clone(ptr))
-        }
-    }
-}
-
-impl HandleStepElementHArray2OfSurfaceElementPurposeMember {
-    /// Returns `true` if this Handle is null (doesn't point to any object).
-    pub fn is_null(&self) -> bool {
-        unsafe {
-            crate::ffi_extern_TKDESTEP::HandleStepElementHArray2OfSurfaceElementPurposeMember_is_null(self as *const Self)
-        }
-    }
-
-    /// Dereference this Handle to access the underlying StepElement_HArray2OfSurfaceElementPurposeMember
-    pub fn get(&self) -> &crate::ffi_types::StepElement_HArray2OfSurfaceElementPurposeMember {
-        unsafe {
-            &*crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepElementHArray2OfSurfaceElementPurposeMember_get(self as *const Self))
-        }
-    }
-
-    /// Dereference this Handle to mutably access the underlying StepElement_HArray2OfSurfaceElementPurposeMember
-    pub fn get_mut(
-        &mut self,
-    ) -> &mut crate::ffi_types::StepElement_HArray2OfSurfaceElementPurposeMember {
-        unsafe {
-            &mut *crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepElementHArray2OfSurfaceElementPurposeMember_get_mut(self as *mut Self))
-        }
-    }
-
-    /// Upcast Handle<StepElement_HArray2OfSurfaceElementPurposeMember> to Handle<Standard_Transient>
-    pub fn to_handle_transient(
-        &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepElementHArray2OfSurfaceElementPurposeMember_to_HandleStandardTransient(self as *const Self)))
-        }
-    }
-}
-
-// ========================
-// From StepElement_HSequenceOfCurveElementPurposeMember.hxx
-// ========================
-
-/// **Source:** `StepElement_HSequenceOfCurveElementPurposeMember.hxx`:21 - `StepElement_HSequenceOfCurveElementPurposeMember`
-pub use crate::ffi_types::StepElement_HSequenceOfCurveElementPurposeMember as HSequenceOfCurveElementPurposeMember;
-
-unsafe impl crate::CppDeletable for HSequenceOfCurveElementPurposeMember {
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            crate::ffi_extern_TKDESTEP::StepElement_HSequenceOfCurveElementPurposeMember_destructor(
-                ptr,
-            );
-        }
-    }
-}
-
-impl HSequenceOfCurveElementPurposeMember {
-    /// **Source:** `StepElement_HSequenceOfCurveElementPurposeMember.hxx`:21 - `StepElement_HSequenceOfCurveElementPurposeMember::StepElement_HSequenceOfCurveElementPurposeMember()`
-    pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKDESTEP::StepElement_HSequenceOfCurveElementPurposeMember_ctor(),
-            ))
-        }
-    }
-
-    /// **Source:** `StepElement_HSequenceOfCurveElementPurposeMember.hxx`:21 - `StepElement_HSequenceOfCurveElementPurposeMember::StepElement_HSequenceOfCurveElementPurposeMember()`
-    pub fn new_sequenceofcurveelementpurposemember(
-        theOther: &crate::ffi_types::StepElement_SequenceOfCurveElementPurposeMember,
-    ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::StepElement_HSequenceOfCurveElementPurposeMember_ctor_sequenceofcurveelementpurposemember(theOther)))
-        }
-    }
-
-    /// **Source:** `StepElement_HSequenceOfCurveElementPurposeMember.hxx`:21 - `StepElement_HSequenceOfCurveElementPurposeMember::Sequence()`
-    pub fn sequence(&self) -> &crate::ffi_types::StepElement_SequenceOfCurveElementPurposeMember {
-        unsafe {
-            &*(crate::check_result(crate::ffi_extern_TKDESTEP::StepElement_HSequenceOfCurveElementPurposeMember_sequence(self as *const Self)))
-        }
-    }
-
-    /// **Source:** `StepElement_HSequenceOfCurveElementPurposeMember.hxx`:21 - `StepElement_HSequenceOfCurveElementPurposeMember::Append()`
-    pub fn append_handlestepelementcurveelementpurposemember(
-        &mut self,
-        theItem: &crate::ffi_types::HandleStepElementCurveElementPurposeMember,
-    ) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKDESTEP::StepElement_HSequenceOfCurveElementPurposeMember_append_handlestepelementcurveelementpurposemember(self as *mut Self, theItem)
-        })
-    }
-
-    /// **Source:** `StepElement_HSequenceOfCurveElementPurposeMember.hxx`:21 - `StepElement_HSequenceOfCurveElementPurposeMember::Append()`
-    pub fn append_sequenceofcurveelementpurposemember(
-        &mut self,
-        theSequence: &mut crate::ffi_types::StepElement_SequenceOfCurveElementPurposeMember,
-    ) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKDESTEP::StepElement_HSequenceOfCurveElementPurposeMember_append_sequenceofcurveelementpurposemember(self as *mut Self, theSequence)
-        })
-    }
-
-    /// **Source:** `StepElement_HSequenceOfCurveElementPurposeMember.hxx`:21 - `StepElement_HSequenceOfCurveElementPurposeMember::ChangeSequence()`
-    pub fn change_sequence(
-        &mut self,
-    ) -> &mut crate::ffi_types::StepElement_SequenceOfCurveElementPurposeMember {
-        unsafe {
-            &mut *(crate::check_result(crate::ffi_extern_TKDESTEP::StepElement_HSequenceOfCurveElementPurposeMember_change_sequence(self as *mut Self)))
-        }
-    }
-
-    /// **Source:** `StepElement_HSequenceOfCurveElementPurposeMember.hxx`:21 - `StepElement_HSequenceOfCurveElementPurposeMember::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
-        unsafe {
-            &*(crate::check_result(crate::ffi_extern_TKDESTEP::StepElement_HSequenceOfCurveElementPurposeMember_dynamic_type(self as *const Self)))
-        }
-    }
-
-    /// **Source:** `StepElement_HSequenceOfCurveElementPurposeMember.hxx`:21 - `StepElement_HSequenceOfCurveElementPurposeMember::get_type_name()`
-    pub fn get_type_name() -> std::string::String {
-        unsafe { std::ffi::CStr::from_ptr(crate::check_result(crate::ffi_extern_TKDESTEP::StepElement_HSequenceOfCurveElementPurposeMember_get_type_name())) }.to_string_lossy().into_owned()
-    }
-
-    /// **Source:** `StepElement_HSequenceOfCurveElementPurposeMember.hxx`:21 - `StepElement_HSequenceOfCurveElementPurposeMember::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
-        unsafe {
-            &*(crate::check_result(crate::ffi_extern_TKDESTEP::StepElement_HSequenceOfCurveElementPurposeMember_get_type_descriptor()))
-        }
-    }
-
-    /// Upcast to Standard_Transient
-    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        unsafe {
-            &*crate::check_result(crate::ffi_extern_TKDESTEP::StepElement_HSequenceOfCurveElementPurposeMember_as_Standard_Transient(self as *const Self))
-        }
-    }
-
-    /// Upcast to Standard_Transient (mutable)
-    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        unsafe {
-            &mut *crate::check_result(crate::ffi_extern_TKDESTEP::StepElement_HSequenceOfCurveElementPurposeMember_as_Standard_Transient_mut(self as *mut Self))
-        }
-    }
-
-    /// Wrap in a Handle (reference-counted smart pointer)
-    pub fn to_handle(
-        obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStepElementHSequenceOfCurveElementPurposeMember>
-    {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::StepElement_HSequenceOfCurveElementPurposeMember_to_handle(obj.into_raw())))
-        }
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKDESTEP::StepElement_HSequenceOfCurveElementPurposeMember_inherited_IsInstance(self as *const Self, theType)
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKDESTEP::StepElement_HSequenceOfCurveElementPurposeMember_inherited_IsKind(self as *const Self, theType)
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
-    pub fn this(&self) -> Option<&crate::standard::Transient> {
-        {
-            let __val = crate::check_result(unsafe {
-                crate::ffi_extern_TKDESTEP::StepElement_HSequenceOfCurveElementPurposeMember_inherited_This(self as *const Self)
-            });
-            if __val.is_null() {
-                None
-            } else {
-                Some(unsafe { &*__val })
-            }
-        }
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
-    pub fn get_ref_count(&self) -> i32 {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKDESTEP::StepElement_HSequenceOfCurveElementPurposeMember_inherited_GetRefCount(self as *const Self)
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
-    pub fn increment_ref_counter(&mut self) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKDESTEP::StepElement_HSequenceOfCurveElementPurposeMember_inherited_IncrementRefCounter(self as *mut Self)
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
-    pub fn decrement_ref_counter(&mut self) -> i32 {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKDESTEP::StepElement_HSequenceOfCurveElementPurposeMember_inherited_DecrementRefCounter(self as *mut Self)
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
-    pub fn delete(&self) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKDESTEP::StepElement_HSequenceOfCurveElementPurposeMember_inherited_Delete(self as *const Self)
-        })
-    }
-}
-
-pub use crate::ffi_types::HandleStepElementHSequenceOfCurveElementPurposeMember;
-
-unsafe impl crate::CppDeletable for HandleStepElementHSequenceOfCurveElementPurposeMember {
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            crate::ffi_extern_TKDESTEP::HandleStepElementHSequenceOfCurveElementPurposeMember_destructor(ptr);
-        }
-    }
-}
-
-unsafe impl crate::CppCopyable for HandleStepElementHSequenceOfCurveElementPurposeMember {
-    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        unsafe {
-            crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepElementHSequenceOfCurveElementPurposeMember_clone(ptr))
-        }
-    }
-}
-
-impl HandleStepElementHSequenceOfCurveElementPurposeMember {
-    /// Returns `true` if this Handle is null (doesn't point to any object).
-    pub fn is_null(&self) -> bool {
-        unsafe {
-            crate::ffi_extern_TKDESTEP::HandleStepElementHSequenceOfCurveElementPurposeMember_is_null(self as *const Self)
-        }
-    }
-
-    /// Dereference this Handle to access the underlying StepElement_HSequenceOfCurveElementPurposeMember
-    pub fn get(&self) -> &crate::ffi_types::StepElement_HSequenceOfCurveElementPurposeMember {
-        unsafe {
-            &*crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepElementHSequenceOfCurveElementPurposeMember_get(self as *const Self))
-        }
-    }
-
-    /// Dereference this Handle to mutably access the underlying StepElement_HSequenceOfCurveElementPurposeMember
-    pub fn get_mut(
-        &mut self,
-    ) -> &mut crate::ffi_types::StepElement_HSequenceOfCurveElementPurposeMember {
-        unsafe {
-            &mut *crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepElementHSequenceOfCurveElementPurposeMember_get_mut(self as *mut Self))
-        }
-    }
-
-    /// Upcast Handle<StepElement_HSequenceOfCurveElementPurposeMember> to Handle<Standard_Transient>
-    pub fn to_handle_transient(
-        &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepElementHSequenceOfCurveElementPurposeMember_to_HandleStandardTransient(self as *const Self)))
-        }
-    }
-}
-
-// ========================
-// From StepElement_HSequenceOfCurveElementSectionDefinition.hxx
-// ========================
-
-/// **Source:** `StepElement_HSequenceOfCurveElementSectionDefinition.hxx`:20 - `StepElement_HSequenceOfCurveElementSectionDefinition`
-pub use crate::ffi_types::StepElement_HSequenceOfCurveElementSectionDefinition as HSequenceOfCurveElementSectionDefinition;
-
-unsafe impl crate::CppDeletable for HSequenceOfCurveElementSectionDefinition {
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            crate::ffi_extern_TKDESTEP::StepElement_HSequenceOfCurveElementSectionDefinition_destructor(ptr);
-        }
-    }
-}
-
-impl HSequenceOfCurveElementSectionDefinition {
-    /// **Source:** `StepElement_HSequenceOfCurveElementSectionDefinition.hxx`:20 - `StepElement_HSequenceOfCurveElementSectionDefinition::StepElement_HSequenceOfCurveElementSectionDefinition()`
-    pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::StepElement_HSequenceOfCurveElementSectionDefinition_ctor()))
-        }
-    }
-
-    /// **Source:** `StepElement_HSequenceOfCurveElementSectionDefinition.hxx`:20 - `StepElement_HSequenceOfCurveElementSectionDefinition::StepElement_HSequenceOfCurveElementSectionDefinition()`
-    pub fn new_sequenceofcurveelementsectiondefinition(
-        theOther: &crate::ffi_types::StepElement_SequenceOfCurveElementSectionDefinition,
-    ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::StepElement_HSequenceOfCurveElementSectionDefinition_ctor_sequenceofcurveelementsectiondefinition(theOther)))
-        }
-    }
-
-    /// **Source:** `StepElement_HSequenceOfCurveElementSectionDefinition.hxx`:20 - `StepElement_HSequenceOfCurveElementSectionDefinition::Sequence()`
-    pub fn sequence(
-        &self,
-    ) -> &crate::ffi_types::StepElement_SequenceOfCurveElementSectionDefinition {
-        unsafe {
-            &*(crate::check_result(crate::ffi_extern_TKDESTEP::StepElement_HSequenceOfCurveElementSectionDefinition_sequence(self as *const Self)))
-        }
-    }
-
-    /// **Source:** `StepElement_HSequenceOfCurveElementSectionDefinition.hxx`:20 - `StepElement_HSequenceOfCurveElementSectionDefinition::Append()`
-    pub fn append_handlestepelementcurveelementsectiondefinition(
-        &mut self,
-        theItem: &crate::ffi_types::HandleStepElementCurveElementSectionDefinition,
-    ) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKDESTEP::StepElement_HSequenceOfCurveElementSectionDefinition_append_handlestepelementcurveelementsectiondefinition(self as *mut Self, theItem)
-        })
-    }
-
-    /// **Source:** `StepElement_HSequenceOfCurveElementSectionDefinition.hxx`:20 - `StepElement_HSequenceOfCurveElementSectionDefinition::Append()`
-    pub fn append_sequenceofcurveelementsectiondefinition(
-        &mut self,
-        theSequence: &mut crate::ffi_types::StepElement_SequenceOfCurveElementSectionDefinition,
-    ) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKDESTEP::StepElement_HSequenceOfCurveElementSectionDefinition_append_sequenceofcurveelementsectiondefinition(self as *mut Self, theSequence)
-        })
-    }
-
-    /// **Source:** `StepElement_HSequenceOfCurveElementSectionDefinition.hxx`:20 - `StepElement_HSequenceOfCurveElementSectionDefinition::ChangeSequence()`
-    pub fn change_sequence(
-        &mut self,
-    ) -> &mut crate::ffi_types::StepElement_SequenceOfCurveElementSectionDefinition {
-        unsafe {
-            &mut *(crate::check_result(crate::ffi_extern_TKDESTEP::StepElement_HSequenceOfCurveElementSectionDefinition_change_sequence(self as *mut Self)))
-        }
-    }
-
-    /// **Source:** `StepElement_HSequenceOfCurveElementSectionDefinition.hxx`:20 - `StepElement_HSequenceOfCurveElementSectionDefinition::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
-        unsafe {
-            &*(crate::check_result(crate::ffi_extern_TKDESTEP::StepElement_HSequenceOfCurveElementSectionDefinition_dynamic_type(self as *const Self)))
-        }
-    }
-
-    /// **Source:** `StepElement_HSequenceOfCurveElementSectionDefinition.hxx`:20 - `StepElement_HSequenceOfCurveElementSectionDefinition::get_type_name()`
-    pub fn get_type_name() -> std::string::String {
-        unsafe { std::ffi::CStr::from_ptr(crate::check_result(crate::ffi_extern_TKDESTEP::StepElement_HSequenceOfCurveElementSectionDefinition_get_type_name())) }.to_string_lossy().into_owned()
-    }
-
-    /// **Source:** `StepElement_HSequenceOfCurveElementSectionDefinition.hxx`:20 - `StepElement_HSequenceOfCurveElementSectionDefinition::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
-        unsafe {
-            &*(crate::check_result(crate::ffi_extern_TKDESTEP::StepElement_HSequenceOfCurveElementSectionDefinition_get_type_descriptor()))
-        }
-    }
-
-    /// Upcast to Standard_Transient
-    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        unsafe {
-            &*crate::check_result(crate::ffi_extern_TKDESTEP::StepElement_HSequenceOfCurveElementSectionDefinition_as_Standard_Transient(self as *const Self))
-        }
-    }
-
-    /// Upcast to Standard_Transient (mutable)
-    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        unsafe {
-            &mut *crate::check_result(crate::ffi_extern_TKDESTEP::StepElement_HSequenceOfCurveElementSectionDefinition_as_Standard_Transient_mut(self as *mut Self))
-        }
-    }
-
-    /// Wrap in a Handle (reference-counted smart pointer)
-    pub fn to_handle(
-        obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStepElementHSequenceOfCurveElementSectionDefinition>
-    {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::StepElement_HSequenceOfCurveElementSectionDefinition_to_handle(obj.into_raw())))
-        }
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKDESTEP::StepElement_HSequenceOfCurveElementSectionDefinition_inherited_IsInstance(self as *const Self, theType)
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKDESTEP::StepElement_HSequenceOfCurveElementSectionDefinition_inherited_IsKind(self as *const Self, theType)
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
-    pub fn this(&self) -> Option<&crate::standard::Transient> {
-        {
-            let __val = crate::check_result(unsafe {
-                crate::ffi_extern_TKDESTEP::StepElement_HSequenceOfCurveElementSectionDefinition_inherited_This(self as *const Self)
-            });
-            if __val.is_null() {
-                None
-            } else {
-                Some(unsafe { &*__val })
-            }
-        }
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
-    pub fn get_ref_count(&self) -> i32 {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKDESTEP::StepElement_HSequenceOfCurveElementSectionDefinition_inherited_GetRefCount(self as *const Self)
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
-    pub fn increment_ref_counter(&mut self) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKDESTEP::StepElement_HSequenceOfCurveElementSectionDefinition_inherited_IncrementRefCounter(self as *mut Self)
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
-    pub fn decrement_ref_counter(&mut self) -> i32 {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKDESTEP::StepElement_HSequenceOfCurveElementSectionDefinition_inherited_DecrementRefCounter(self as *mut Self)
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
-    pub fn delete(&self) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKDESTEP::StepElement_HSequenceOfCurveElementSectionDefinition_inherited_Delete(self as *const Self)
-        })
-    }
-}
-
-pub use crate::ffi_types::HandleStepElementHSequenceOfCurveElementSectionDefinition;
-
-unsafe impl crate::CppDeletable for HandleStepElementHSequenceOfCurveElementSectionDefinition {
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            crate::ffi_extern_TKDESTEP::HandleStepElementHSequenceOfCurveElementSectionDefinition_destructor(ptr);
-        }
-    }
-}
-
-unsafe impl crate::CppCopyable for HandleStepElementHSequenceOfCurveElementSectionDefinition {
-    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        unsafe {
-            crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepElementHSequenceOfCurveElementSectionDefinition_clone(ptr))
-        }
-    }
-}
-
-impl HandleStepElementHSequenceOfCurveElementSectionDefinition {
-    /// Returns `true` if this Handle is null (doesn't point to any object).
-    pub fn is_null(&self) -> bool {
-        unsafe {
-            crate::ffi_extern_TKDESTEP::HandleStepElementHSequenceOfCurveElementSectionDefinition_is_null(self as *const Self)
-        }
-    }
-
-    /// Dereference this Handle to access the underlying StepElement_HSequenceOfCurveElementSectionDefinition
-    pub fn get(&self) -> &crate::ffi_types::StepElement_HSequenceOfCurveElementSectionDefinition {
-        unsafe {
-            &*crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepElementHSequenceOfCurveElementSectionDefinition_get(self as *const Self))
-        }
-    }
-
-    /// Dereference this Handle to mutably access the underlying StepElement_HSequenceOfCurveElementSectionDefinition
-    pub fn get_mut(
-        &mut self,
-    ) -> &mut crate::ffi_types::StepElement_HSequenceOfCurveElementSectionDefinition {
-        unsafe {
-            &mut *crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepElementHSequenceOfCurveElementSectionDefinition_get_mut(self as *mut Self))
-        }
-    }
-
-    /// Upcast Handle<StepElement_HSequenceOfCurveElementSectionDefinition> to Handle<Standard_Transient>
-    pub fn to_handle_transient(
-        &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepElementHSequenceOfCurveElementSectionDefinition_to_HandleStandardTransient(self as *const Self)))
-        }
-    }
-}
-
-// ========================
-// From StepElement_HSequenceOfElementMaterial.hxx
-// ========================
-
-/// **Source:** `StepElement_HSequenceOfElementMaterial.hxx`:20 - `StepElement_HSequenceOfElementMaterial`
-pub use crate::ffi_types::StepElement_HSequenceOfElementMaterial as HSequenceOfElementMaterial;
-
-unsafe impl crate::CppDeletable for HSequenceOfElementMaterial {
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            crate::ffi_extern_TKDESTEP::StepElement_HSequenceOfElementMaterial_destructor(ptr);
-        }
-    }
-}
-
-impl HSequenceOfElementMaterial {
-    /// **Source:** `StepElement_HSequenceOfElementMaterial.hxx`:20 - `StepElement_HSequenceOfElementMaterial::StepElement_HSequenceOfElementMaterial()`
-    pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKDESTEP::StepElement_HSequenceOfElementMaterial_ctor(),
-            ))
-        }
-    }
-
-    /// **Source:** `StepElement_HSequenceOfElementMaterial.hxx`:20 - `StepElement_HSequenceOfElementMaterial::StepElement_HSequenceOfElementMaterial()`
-    pub fn new_sequenceofelementmaterial(
-        theOther: &crate::ffi_types::StepElement_SequenceOfElementMaterial,
-    ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::StepElement_HSequenceOfElementMaterial_ctor_sequenceofelementmaterial(theOther)))
-        }
-    }
-
-    /// **Source:** `StepElement_HSequenceOfElementMaterial.hxx`:20 - `StepElement_HSequenceOfElementMaterial::Sequence()`
-    pub fn sequence(&self) -> &crate::ffi_types::StepElement_SequenceOfElementMaterial {
-        unsafe {
-            &*(crate::check_result(
-                crate::ffi_extern_TKDESTEP::StepElement_HSequenceOfElementMaterial_sequence(
-                    self as *const Self,
-                ),
-            ))
-        }
-    }
-
-    /// **Source:** `StepElement_HSequenceOfElementMaterial.hxx`:20 - `StepElement_HSequenceOfElementMaterial::Append()`
-    pub fn append_handlestepelementelementmaterial(
-        &mut self,
-        theItem: &crate::ffi_types::HandleStepElementElementMaterial,
-    ) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKDESTEP::StepElement_HSequenceOfElementMaterial_append_handlestepelementelementmaterial(self as *mut Self, theItem)
-        })
-    }
-
-    /// **Source:** `StepElement_HSequenceOfElementMaterial.hxx`:20 - `StepElement_HSequenceOfElementMaterial::Append()`
-    pub fn append_sequenceofelementmaterial(
-        &mut self,
-        theSequence: &mut crate::ffi_types::StepElement_SequenceOfElementMaterial,
-    ) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKDESTEP::StepElement_HSequenceOfElementMaterial_append_sequenceofelementmaterial(self as *mut Self, theSequence)
-        })
-    }
-
-    /// **Source:** `StepElement_HSequenceOfElementMaterial.hxx`:20 - `StepElement_HSequenceOfElementMaterial::ChangeSequence()`
-    pub fn change_sequence(
-        &mut self,
-    ) -> &mut crate::ffi_types::StepElement_SequenceOfElementMaterial {
-        unsafe {
-            &mut *(crate::check_result(
-                crate::ffi_extern_TKDESTEP::StepElement_HSequenceOfElementMaterial_change_sequence(
-                    self as *mut Self,
-                ),
-            ))
-        }
-    }
-
-    /// **Source:** `StepElement_HSequenceOfElementMaterial.hxx`:20 - `StepElement_HSequenceOfElementMaterial::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
-        unsafe {
-            &*(crate::check_result(
-                crate::ffi_extern_TKDESTEP::StepElement_HSequenceOfElementMaterial_dynamic_type(
-                    self as *const Self,
-                ),
-            ))
-        }
-    }
-
-    /// **Source:** `StepElement_HSequenceOfElementMaterial.hxx`:20 - `StepElement_HSequenceOfElementMaterial::get_type_name()`
-    pub fn get_type_name() -> std::string::String {
-        unsafe {
-            std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi_extern_TKDESTEP::StepElement_HSequenceOfElementMaterial_get_type_name(),
-            ))
-        }
-        .to_string_lossy()
-        .into_owned()
-    }
-
-    /// **Source:** `StepElement_HSequenceOfElementMaterial.hxx`:20 - `StepElement_HSequenceOfElementMaterial::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
-        unsafe {
-            &*(crate::check_result(crate::ffi_extern_TKDESTEP::StepElement_HSequenceOfElementMaterial_get_type_descriptor()))
-        }
-    }
-
-    /// Upcast to Standard_Transient
-    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        unsafe {
-            &*crate::check_result(crate::ffi_extern_TKDESTEP::StepElement_HSequenceOfElementMaterial_as_Standard_Transient(self as *const Self))
-        }
-    }
-
-    /// Upcast to Standard_Transient (mutable)
-    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        unsafe {
-            &mut *crate::check_result(crate::ffi_extern_TKDESTEP::StepElement_HSequenceOfElementMaterial_as_Standard_Transient_mut(self as *mut Self))
-        }
-    }
-
-    /// Wrap in a Handle (reference-counted smart pointer)
-    pub fn to_handle(
-        obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStepElementHSequenceOfElementMaterial> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKDESTEP::StepElement_HSequenceOfElementMaterial_to_handle(
-                    obj.into_raw(),
-                ),
-            ))
-        }
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKDESTEP::StepElement_HSequenceOfElementMaterial_inherited_IsInstance(
-                self as *const Self,
-                theType,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKDESTEP::StepElement_HSequenceOfElementMaterial_inherited_IsKind(
-                self as *const Self,
-                theType,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
-    pub fn this(&self) -> Option<&crate::standard::Transient> {
-        {
-            let __val = crate::check_result(unsafe {
-                crate::ffi_extern_TKDESTEP::StepElement_HSequenceOfElementMaterial_inherited_This(
-                    self as *const Self,
-                )
-            });
-            if __val.is_null() {
-                None
-            } else {
-                Some(unsafe { &*__val })
-            }
-        }
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
-    pub fn get_ref_count(&self) -> i32 {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKDESTEP::StepElement_HSequenceOfElementMaterial_inherited_GetRefCount(
-                self as *const Self,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
-    pub fn increment_ref_counter(&mut self) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKDESTEP::StepElement_HSequenceOfElementMaterial_inherited_IncrementRefCounter(self as *mut Self)
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
-    pub fn decrement_ref_counter(&mut self) -> i32 {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKDESTEP::StepElement_HSequenceOfElementMaterial_inherited_DecrementRefCounter(self as *mut Self)
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
-    pub fn delete(&self) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKDESTEP::StepElement_HSequenceOfElementMaterial_inherited_Delete(
-                self as *const Self,
-            )
-        })
-    }
-}
-
-pub use crate::ffi_types::HandleStepElementHSequenceOfElementMaterial;
-
-unsafe impl crate::CppDeletable for HandleStepElementHSequenceOfElementMaterial {
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            crate::ffi_extern_TKDESTEP::HandleStepElementHSequenceOfElementMaterial_destructor(ptr);
-        }
-    }
-}
-
-unsafe impl crate::CppCopyable for HandleStepElementHSequenceOfElementMaterial {
-    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        unsafe {
-            crate::check_result(
-                crate::ffi_extern_TKDESTEP::HandleStepElementHSequenceOfElementMaterial_clone(ptr),
-            )
-        }
-    }
-}
-
-impl HandleStepElementHSequenceOfElementMaterial {
-    /// Returns `true` if this Handle is null (doesn't point to any object).
-    pub fn is_null(&self) -> bool {
-        unsafe {
-            crate::ffi_extern_TKDESTEP::HandleStepElementHSequenceOfElementMaterial_is_null(
-                self as *const Self,
-            )
-        }
-    }
-
-    /// Dereference this Handle to access the underlying StepElement_HSequenceOfElementMaterial
-    pub fn get(&self) -> &crate::ffi_types::StepElement_HSequenceOfElementMaterial {
-        unsafe {
-            &*crate::check_result(
-                crate::ffi_extern_TKDESTEP::HandleStepElementHSequenceOfElementMaterial_get(
-                    self as *const Self,
-                ),
-            )
-        }
-    }
-
-    /// Dereference this Handle to mutably access the underlying StepElement_HSequenceOfElementMaterial
-    pub fn get_mut(&mut self) -> &mut crate::ffi_types::StepElement_HSequenceOfElementMaterial {
-        unsafe {
-            &mut *crate::check_result(
-                crate::ffi_extern_TKDESTEP::HandleStepElementHSequenceOfElementMaterial_get_mut(
-                    self as *mut Self,
-                ),
-            )
-        }
-    }
-
-    /// Upcast Handle<StepElement_HSequenceOfElementMaterial> to Handle<Standard_Transient>
-    pub fn to_handle_transient(
-        &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepElementHSequenceOfElementMaterial_to_HandleStandardTransient(self as *const Self)))
-        }
-    }
-}
-
-// ========================
-// From StepElement_HSequenceOfSurfaceElementPurposeMember.hxx
-// ========================
-
-/// **Source:** `StepElement_HSequenceOfSurfaceElementPurposeMember.hxx`:20 - `StepElement_HSequenceOfSurfaceElementPurposeMember`
-pub use crate::ffi_types::StepElement_HSequenceOfSurfaceElementPurposeMember as HSequenceOfSurfaceElementPurposeMember;
-
-unsafe impl crate::CppDeletable for HSequenceOfSurfaceElementPurposeMember {
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            crate::ffi_extern_TKDESTEP::StepElement_HSequenceOfSurfaceElementPurposeMember_destructor(ptr);
-        }
-    }
-}
-
-impl HSequenceOfSurfaceElementPurposeMember {
-    /// **Source:** `StepElement_HSequenceOfSurfaceElementPurposeMember.hxx`:20 - `StepElement_HSequenceOfSurfaceElementPurposeMember::StepElement_HSequenceOfSurfaceElementPurposeMember()`
-    pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKDESTEP::StepElement_HSequenceOfSurfaceElementPurposeMember_ctor(
-                ),
-            ))
-        }
-    }
-
-    /// **Source:** `StepElement_HSequenceOfSurfaceElementPurposeMember.hxx`:20 - `StepElement_HSequenceOfSurfaceElementPurposeMember::StepElement_HSequenceOfSurfaceElementPurposeMember()`
-    pub fn new_sequenceofsurfaceelementpurposemember(
-        theOther: &crate::ffi_types::StepElement_SequenceOfSurfaceElementPurposeMember,
-    ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::StepElement_HSequenceOfSurfaceElementPurposeMember_ctor_sequenceofsurfaceelementpurposemember(theOther)))
-        }
-    }
-
-    /// **Source:** `StepElement_HSequenceOfSurfaceElementPurposeMember.hxx`:20 - `StepElement_HSequenceOfSurfaceElementPurposeMember::Sequence()`
-    pub fn sequence(&self) -> &crate::ffi_types::StepElement_SequenceOfSurfaceElementPurposeMember {
-        unsafe {
-            &*(crate::check_result(crate::ffi_extern_TKDESTEP::StepElement_HSequenceOfSurfaceElementPurposeMember_sequence(self as *const Self)))
-        }
-    }
-
-    /// **Source:** `StepElement_HSequenceOfSurfaceElementPurposeMember.hxx`:20 - `StepElement_HSequenceOfSurfaceElementPurposeMember::Append()`
-    pub fn append_handlestepelementsurfaceelementpurposemember(
-        &mut self,
-        theItem: &crate::ffi_types::HandleStepElementSurfaceElementPurposeMember,
-    ) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKDESTEP::StepElement_HSequenceOfSurfaceElementPurposeMember_append_handlestepelementsurfaceelementpurposemember(self as *mut Self, theItem)
-        })
-    }
-
-    /// **Source:** `StepElement_HSequenceOfSurfaceElementPurposeMember.hxx`:20 - `StepElement_HSequenceOfSurfaceElementPurposeMember::Append()`
-    pub fn append_sequenceofsurfaceelementpurposemember(
-        &mut self,
-        theSequence: &mut crate::ffi_types::StepElement_SequenceOfSurfaceElementPurposeMember,
-    ) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKDESTEP::StepElement_HSequenceOfSurfaceElementPurposeMember_append_sequenceofsurfaceelementpurposemember(self as *mut Self, theSequence)
-        })
-    }
-
-    /// **Source:** `StepElement_HSequenceOfSurfaceElementPurposeMember.hxx`:20 - `StepElement_HSequenceOfSurfaceElementPurposeMember::ChangeSequence()`
-    pub fn change_sequence(
-        &mut self,
-    ) -> &mut crate::ffi_types::StepElement_SequenceOfSurfaceElementPurposeMember {
-        unsafe {
-            &mut *(crate::check_result(crate::ffi_extern_TKDESTEP::StepElement_HSequenceOfSurfaceElementPurposeMember_change_sequence(self as *mut Self)))
-        }
-    }
-
-    /// **Source:** `StepElement_HSequenceOfSurfaceElementPurposeMember.hxx`:20 - `StepElement_HSequenceOfSurfaceElementPurposeMember::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
-        unsafe {
-            &*(crate::check_result(crate::ffi_extern_TKDESTEP::StepElement_HSequenceOfSurfaceElementPurposeMember_dynamic_type(self as *const Self)))
-        }
-    }
-
-    /// **Source:** `StepElement_HSequenceOfSurfaceElementPurposeMember.hxx`:20 - `StepElement_HSequenceOfSurfaceElementPurposeMember::get_type_name()`
-    pub fn get_type_name() -> std::string::String {
-        unsafe { std::ffi::CStr::from_ptr(crate::check_result(crate::ffi_extern_TKDESTEP::StepElement_HSequenceOfSurfaceElementPurposeMember_get_type_name())) }.to_string_lossy().into_owned()
-    }
-
-    /// **Source:** `StepElement_HSequenceOfSurfaceElementPurposeMember.hxx`:20 - `StepElement_HSequenceOfSurfaceElementPurposeMember::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
-        unsafe {
-            &*(crate::check_result(crate::ffi_extern_TKDESTEP::StepElement_HSequenceOfSurfaceElementPurposeMember_get_type_descriptor()))
-        }
-    }
-
-    /// Upcast to Standard_Transient
-    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        unsafe {
-            &*crate::check_result(crate::ffi_extern_TKDESTEP::StepElement_HSequenceOfSurfaceElementPurposeMember_as_Standard_Transient(self as *const Self))
-        }
-    }
-
-    /// Upcast to Standard_Transient (mutable)
-    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        unsafe {
-            &mut *crate::check_result(crate::ffi_extern_TKDESTEP::StepElement_HSequenceOfSurfaceElementPurposeMember_as_Standard_Transient_mut(self as *mut Self))
-        }
-    }
-
-    /// Wrap in a Handle (reference-counted smart pointer)
-    pub fn to_handle(
-        obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStepElementHSequenceOfSurfaceElementPurposeMember>
-    {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::StepElement_HSequenceOfSurfaceElementPurposeMember_to_handle(obj.into_raw())))
-        }
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKDESTEP::StepElement_HSequenceOfSurfaceElementPurposeMember_inherited_IsInstance(self as *const Self, theType)
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKDESTEP::StepElement_HSequenceOfSurfaceElementPurposeMember_inherited_IsKind(self as *const Self, theType)
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
-    pub fn this(&self) -> Option<&crate::standard::Transient> {
-        {
-            let __val = crate::check_result(unsafe {
-                crate::ffi_extern_TKDESTEP::StepElement_HSequenceOfSurfaceElementPurposeMember_inherited_This(self as *const Self)
-            });
-            if __val.is_null() {
-                None
-            } else {
-                Some(unsafe { &*__val })
-            }
-        }
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
-    pub fn get_ref_count(&self) -> i32 {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKDESTEP::StepElement_HSequenceOfSurfaceElementPurposeMember_inherited_GetRefCount(self as *const Self)
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
-    pub fn increment_ref_counter(&mut self) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKDESTEP::StepElement_HSequenceOfSurfaceElementPurposeMember_inherited_IncrementRefCounter(self as *mut Self)
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
-    pub fn decrement_ref_counter(&mut self) -> i32 {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKDESTEP::StepElement_HSequenceOfSurfaceElementPurposeMember_inherited_DecrementRefCounter(self as *mut Self)
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
-    pub fn delete(&self) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKDESTEP::StepElement_HSequenceOfSurfaceElementPurposeMember_inherited_Delete(self as *const Self)
-        })
-    }
-}
-
-pub use crate::ffi_types::HandleStepElementHSequenceOfSurfaceElementPurposeMember;
-
-unsafe impl crate::CppDeletable for HandleStepElementHSequenceOfSurfaceElementPurposeMember {
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            crate::ffi_extern_TKDESTEP::HandleStepElementHSequenceOfSurfaceElementPurposeMember_destructor(ptr);
-        }
-    }
-}
-
-unsafe impl crate::CppCopyable for HandleStepElementHSequenceOfSurfaceElementPurposeMember {
-    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        unsafe {
-            crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepElementHSequenceOfSurfaceElementPurposeMember_clone(ptr))
-        }
-    }
-}
-
-impl HandleStepElementHSequenceOfSurfaceElementPurposeMember {
-    /// Returns `true` if this Handle is null (doesn't point to any object).
-    pub fn is_null(&self) -> bool {
-        unsafe {
-            crate::ffi_extern_TKDESTEP::HandleStepElementHSequenceOfSurfaceElementPurposeMember_is_null(self as *const Self)
-        }
-    }
-
-    /// Dereference this Handle to access the underlying StepElement_HSequenceOfSurfaceElementPurposeMember
-    pub fn get(&self) -> &crate::ffi_types::StepElement_HSequenceOfSurfaceElementPurposeMember {
-        unsafe {
-            &*crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepElementHSequenceOfSurfaceElementPurposeMember_get(self as *const Self))
-        }
-    }
-
-    /// Dereference this Handle to mutably access the underlying StepElement_HSequenceOfSurfaceElementPurposeMember
-    pub fn get_mut(
-        &mut self,
-    ) -> &mut crate::ffi_types::StepElement_HSequenceOfSurfaceElementPurposeMember {
-        unsafe {
-            &mut *crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepElementHSequenceOfSurfaceElementPurposeMember_get_mut(self as *mut Self))
-        }
-    }
-
-    /// Upcast Handle<StepElement_HSequenceOfSurfaceElementPurposeMember> to Handle<Standard_Transient>
-    pub fn to_handle_transient(
-        &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepElementHSequenceOfSurfaceElementPurposeMember_to_HandleStandardTransient(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::Handle_StepElement_ElementMaterial_to_Handle_Standard_Transient(self as *const Self)))
         }
     }
 }
@@ -8655,10 +5044,10 @@ impl MeasureOrUnspecifiedValue {
         }
     }
 
-    /// **Source:** `StepElement_MeasureOrUnspecifiedValue.hxx`:41 - `StepElement_MeasureOrUnspecifiedValue::CaseNum()`
+    /// **Source:** `StepElement_MeasureOrUnspecifiedValue.hxx`:40 - `StepElement_MeasureOrUnspecifiedValue::CaseNum()`
     /// Recognizes a kind of MeasureOrUnspecifiedValue select type
     /// return 0
-    pub fn case_num(&self, ent: &crate::ffi_types::HandleStandardTransient) -> i32 {
+    pub fn case_num(&self, ent: &crate::ffi_types::Handle_Standard_Transient) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepElement_MeasureOrUnspecifiedValue_case_num(
                 self as *const Self,
@@ -8667,12 +5056,12 @@ impl MeasureOrUnspecifiedValue {
         })
     }
 
-    /// **Source:** `StepElement_MeasureOrUnspecifiedValue.hxx`:47 - `StepElement_MeasureOrUnspecifiedValue::CaseMem()`
+    /// **Source:** `StepElement_MeasureOrUnspecifiedValue.hxx`:46 - `StepElement_MeasureOrUnspecifiedValue::CaseMem()`
     /// Recognizes a items of select member MeasureOrUnspecifiedValueMember
     /// 1 -> ContextDependentMeasure
     /// 2 -> UnspecifiedValue
     /// 0 else
-    pub fn case_mem(&self, ent: &crate::ffi_types::HandleStepDataSelectMember) -> i32 {
+    pub fn case_mem(&self, ent: &crate::ffi_types::Handle_StepData_SelectMember) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepElement_MeasureOrUnspecifiedValue_case_mem(
                 self as *const Self,
@@ -8681,9 +5070,9 @@ impl MeasureOrUnspecifiedValue {
         })
     }
 
-    /// **Source:** `StepElement_MeasureOrUnspecifiedValue.hxx`:51 - `StepElement_MeasureOrUnspecifiedValue::NewMember()`
+    /// **Source:** `StepElement_MeasureOrUnspecifiedValue.hxx`:49 - `StepElement_MeasureOrUnspecifiedValue::NewMember()`
     /// Returns a new select member the type MeasureOrUnspecifiedValueMember
-    pub fn new_member(&self) -> crate::OwnedPtr<crate::ffi_types::HandleStepDataSelectMember> {
+    pub fn new_member(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_StepData_SelectMember> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDESTEP::StepElement_MeasureOrUnspecifiedValue_new_member(
@@ -8693,7 +5082,7 @@ impl MeasureOrUnspecifiedValue {
         }
     }
 
-    /// **Source:** `StepElement_MeasureOrUnspecifiedValue.hxx`:54 - `StepElement_MeasureOrUnspecifiedValue::SetContextDependentMeasure()`
+    /// **Source:** `StepElement_MeasureOrUnspecifiedValue.hxx`:52 - `StepElement_MeasureOrUnspecifiedValue::SetContextDependentMeasure()`
     /// Set Value for ContextDependentMeasure
     pub fn set_context_dependent_measure(&mut self, aVal: f64) {
         crate::check_void_result(unsafe {
@@ -8701,7 +5090,7 @@ impl MeasureOrUnspecifiedValue {
         })
     }
 
-    /// **Source:** `StepElement_MeasureOrUnspecifiedValue.hxx`:57 - `StepElement_MeasureOrUnspecifiedValue::ContextDependentMeasure()`
+    /// **Source:** `StepElement_MeasureOrUnspecifiedValue.hxx`:55 - `StepElement_MeasureOrUnspecifiedValue::ContextDependentMeasure()`
     /// Returns Value as ContextDependentMeasure (or Null if another type)
     pub fn context_dependent_measure(&self) -> f64 {
         crate::check_result(unsafe {
@@ -8709,7 +5098,7 @@ impl MeasureOrUnspecifiedValue {
         })
     }
 
-    /// **Source:** `StepElement_MeasureOrUnspecifiedValue.hxx`:60 - `StepElement_MeasureOrUnspecifiedValue::SetUnspecifiedValue()`
+    /// **Source:** `StepElement_MeasureOrUnspecifiedValue.hxx`:58 - `StepElement_MeasureOrUnspecifiedValue::SetUnspecifiedValue()`
     /// Set Value for UnspecifiedValue
     pub fn set_unspecified_value(&mut self, aVal: crate::step_element::UnspecifiedValue) {
         crate::check_void_result(unsafe {
@@ -8720,7 +5109,7 @@ impl MeasureOrUnspecifiedValue {
         })
     }
 
-    /// **Source:** `StepElement_MeasureOrUnspecifiedValue.hxx`:63 - `StepElement_MeasureOrUnspecifiedValue::UnspecifiedValue()`
+    /// **Source:** `StepElement_MeasureOrUnspecifiedValue.hxx`:61 - `StepElement_MeasureOrUnspecifiedValue::UnspecifiedValue()`
     /// Returns Value as UnspecifiedValue (or Null if another type)
     pub fn unspecified_value(&self) -> crate::step_element::UnspecifiedValue {
         crate::step_element::UnspecifiedValue::try_from(crate::check_result(unsafe {
@@ -8746,7 +5135,7 @@ impl MeasureOrUnspecifiedValue {
     }
 
     /// Inherited: **Source:** `StepData_SelectType.hxx`:64 - `StepData_SelectType::Matches()`
-    pub fn matches(&self, ent: &crate::ffi_types::HandleStandardTransient) -> bool {
+    pub fn matches(&self, ent: &crate::ffi_types::Handle_Standard_Transient) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepElement_MeasureOrUnspecifiedValue_inherited_Matches(
                 self as *const Self,
@@ -8756,7 +5145,7 @@ impl MeasureOrUnspecifiedValue {
     }
 
     /// Inherited: **Source:** `StepData_SelectType.hxx`:69 - `StepData_SelectType::SetValue()`
-    pub fn set_value(&mut self, ent: &crate::ffi_types::HandleStandardTransient) {
+    pub fn set_value(&mut self, ent: &crate::ffi_types::Handle_Standard_Transient) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepElement_MeasureOrUnspecifiedValue_inherited_SetValue(
                 self as *mut Self,
@@ -8775,7 +5164,7 @@ impl MeasureOrUnspecifiedValue {
     }
 
     /// Inherited: **Source:** `StepData_SelectType.hxx`:76 - `StepData_SelectType::Value()`
-    pub fn value(&self) -> &crate::ffi_types::HandleStandardTransient {
+    pub fn value(&self) -> &crate::ffi_types::Handle_Standard_Transient {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKDESTEP::StepElement_MeasureOrUnspecifiedValue_inherited_Value(
@@ -8795,7 +5184,7 @@ impl MeasureOrUnspecifiedValue {
     }
 
     /// Inherited: **Source:** `StepData_SelectType.hxx`:83 - `StepData_SelectType::Type()`
-    pub fn type_(&self) -> crate::OwnedPtr<crate::ffi_types::HandleStandardType> {
+    pub fn type_(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Type> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDESTEP::StepElement_MeasureOrUnspecifiedValue_inherited_Type(
@@ -8815,7 +5204,7 @@ impl MeasureOrUnspecifiedValue {
     }
 
     /// Inherited: **Source:** `StepData_SelectType.hxx`:94 - `StepData_SelectType::Description()`
-    pub fn description(&self) -> crate::OwnedPtr<crate::ffi_types::HandleStepDataPDescr> {
+    pub fn description(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_StepData_PDescr> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::StepElement_MeasureOrUnspecifiedValue_inherited_Description(self as *const Self)))
         }
@@ -8831,7 +5220,7 @@ impl MeasureOrUnspecifiedValue {
     }
 
     /// Inherited: **Source:** `StepData_SelectType.hxx`:118 - `StepData_SelectType::Member()`
-    pub fn member(&self) -> crate::OwnedPtr<crate::ffi_types::HandleStepDataSelectMember> {
+    pub fn member(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_StepData_SelectMember> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDESTEP::StepElement_MeasureOrUnspecifiedValue_inherited_Member(
@@ -8902,8 +5291,8 @@ impl MeasureOrUnspecifiedValue {
 // From StepElement_MeasureOrUnspecifiedValueMember.hxx
 // ========================
 
-/// **Source:** `StepElement_MeasureOrUnspecifiedValueMember.hxx`:29 - `StepElement_MeasureOrUnspecifiedValueMember`
-/// Representation of member for  STEP SELECT type MeasureOrUnspecifiedValue
+/// **Source:** `StepElement_MeasureOrUnspecifiedValueMember.hxx`:26 - `StepElement_MeasureOrUnspecifiedValueMember`
+/// Representation of member for STEP SELECT type MeasureOrUnspecifiedValue
 pub use crate::ffi_types::StepElement_MeasureOrUnspecifiedValueMember as MeasureOrUnspecifiedValueMember;
 
 unsafe impl crate::CppDeletable for MeasureOrUnspecifiedValueMember {
@@ -8915,7 +5304,7 @@ unsafe impl crate::CppDeletable for MeasureOrUnspecifiedValueMember {
 }
 
 impl MeasureOrUnspecifiedValueMember {
-    /// **Source:** `StepElement_MeasureOrUnspecifiedValueMember.hxx`:34 - `StepElement_MeasureOrUnspecifiedValueMember::StepElement_MeasureOrUnspecifiedValueMember()`
+    /// **Source:** `StepElement_MeasureOrUnspecifiedValueMember.hxx`:31 - `StepElement_MeasureOrUnspecifiedValueMember::StepElement_MeasureOrUnspecifiedValueMember()`
     /// Empty constructor
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
@@ -8925,7 +5314,7 @@ impl MeasureOrUnspecifiedValueMember {
         }
     }
 
-    /// **Source:** `StepElement_MeasureOrUnspecifiedValueMember.hxx`:37 - `StepElement_MeasureOrUnspecifiedValueMember::HasName()`
+    /// **Source:** `StepElement_MeasureOrUnspecifiedValueMember.hxx`:34 - `StepElement_MeasureOrUnspecifiedValueMember::HasName()`
     /// Returns True if has name
     pub fn has_name(&self) -> bool {
         crate::check_result(unsafe {
@@ -8935,7 +5324,7 @@ impl MeasureOrUnspecifiedValueMember {
         })
     }
 
-    /// **Source:** `StepElement_MeasureOrUnspecifiedValueMember.hxx`:40 - `StepElement_MeasureOrUnspecifiedValueMember::Name()`
+    /// **Source:** `StepElement_MeasureOrUnspecifiedValueMember.hxx`:37 - `StepElement_MeasureOrUnspecifiedValueMember::Name()`
     /// Returns set name
     pub fn name(&self) -> std::string::String {
         unsafe {
@@ -8949,7 +5338,7 @@ impl MeasureOrUnspecifiedValueMember {
         .into_owned()
     }
 
-    /// **Source:** `StepElement_MeasureOrUnspecifiedValueMember.hxx`:43 - `StepElement_MeasureOrUnspecifiedValueMember::SetName()`
+    /// **Source:** `StepElement_MeasureOrUnspecifiedValueMember.hxx`:40 - `StepElement_MeasureOrUnspecifiedValueMember::SetName()`
     /// Set name
     pub fn set_name(&mut self, name: &str) -> bool {
         let c_name = std::ffi::CString::new(name).unwrap();
@@ -8961,7 +5350,7 @@ impl MeasureOrUnspecifiedValueMember {
         })
     }
 
-    /// **Source:** `StepElement_MeasureOrUnspecifiedValueMember.hxx`:46 - `StepElement_MeasureOrUnspecifiedValueMember::Matches()`
+    /// **Source:** `StepElement_MeasureOrUnspecifiedValueMember.hxx`:43 - `StepElement_MeasureOrUnspecifiedValueMember::Matches()`
     /// Tells if the name of a SelectMember matches a given one;
     pub fn matches(&self, name: &str) -> bool {
         let c_name = std::ffi::CString::new(name).unwrap();
@@ -8973,20 +5362,20 @@ impl MeasureOrUnspecifiedValueMember {
         })
     }
 
-    /// **Source:** `StepElement_MeasureOrUnspecifiedValueMember.hxx`:49 - `StepElement_MeasureOrUnspecifiedValueMember::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `StepElement_MeasureOrUnspecifiedValueMember.hxx`:45 - `StepElement_MeasureOrUnspecifiedValueMember::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKDESTEP::StepElement_MeasureOrUnspecifiedValueMember_dynamic_type(self as *const Self)))
         }
     }
 
-    /// **Source:** `StepElement_MeasureOrUnspecifiedValueMember.hxx`:49 - `StepElement_MeasureOrUnspecifiedValueMember::get_type_name()`
+    /// **Source:** `StepElement_MeasureOrUnspecifiedValueMember.hxx`:45 - `StepElement_MeasureOrUnspecifiedValueMember::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe { std::ffi::CStr::from_ptr(crate::check_result(crate::ffi_extern_TKDESTEP::StepElement_MeasureOrUnspecifiedValueMember_get_type_name())) }.to_string_lossy().into_owned()
     }
 
-    /// **Source:** `StepElement_MeasureOrUnspecifiedValueMember.hxx`:49 - `StepElement_MeasureOrUnspecifiedValueMember::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    /// **Source:** `StepElement_MeasureOrUnspecifiedValueMember.hxx`:45 - `StepElement_MeasureOrUnspecifiedValueMember::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKDESTEP::StepElement_MeasureOrUnspecifiedValueMember_get_type_descriptor()))
         }
@@ -9037,7 +5426,7 @@ impl MeasureOrUnspecifiedValueMember {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStepElementMeasureOrUnspecifiedValueMember> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_StepElement_MeasureOrUnspecifiedValueMember> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDESTEP::StepElement_MeasureOrUnspecifiedValueMember_to_handle(
@@ -9047,21 +5436,21 @@ impl MeasureOrUnspecifiedValueMember {
         }
     }
 
-    /// Inherited: **Source:** `StepData_SelectNamed.hxx`:47 - `StepData_SelectNamed::Field()`
+    /// Inherited: **Source:** `StepData_SelectNamed.hxx`:44 - `StepData_SelectNamed::Field()`
     pub fn field(&self) -> &crate::step_data::Field {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKDESTEP::StepElement_MeasureOrUnspecifiedValueMember_inherited_Field(self as *const Self)))
         }
     }
 
-    /// Inherited: **Source:** `StepData_SelectNamed.hxx`:49 - `StepData_SelectNamed::CField()`
+    /// Inherited: **Source:** `StepData_SelectNamed.hxx`:46 - `StepData_SelectNamed::CField()`
     pub fn c_field(&mut self) -> &mut crate::step_data::Field {
         unsafe {
             &mut *(crate::check_result(crate::ffi_extern_TKDESTEP::StepElement_MeasureOrUnspecifiedValueMember_inherited_CField(self as *mut Self)))
         }
     }
 
-    /// Inherited: **Source:** `StepData_SelectNamed.hxx`:51 - `StepData_SelectNamed::Kind()`
+    /// Inherited: **Source:** `StepData_SelectNamed.hxx`:48 - `StepData_SelectNamed::Kind()`
     pub fn kind(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepElement_MeasureOrUnspecifiedValueMember_inherited_Kind(
@@ -9070,14 +5459,14 @@ impl MeasureOrUnspecifiedValueMember {
         })
     }
 
-    /// Inherited: **Source:** `StepData_SelectNamed.hxx`:53 - `StepData_SelectNamed::SetKind()`
+    /// Inherited: **Source:** `StepData_SelectNamed.hxx`:50 - `StepData_SelectNamed::SetKind()`
     pub fn set_kind(&mut self, kind: i32) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepElement_MeasureOrUnspecifiedValueMember_inherited_SetKind(self as *mut Self, kind)
         })
     }
 
-    /// Inherited: **Source:** `StepData_SelectNamed.hxx`:57 - `StepData_SelectNamed::Int()`
+    /// Inherited: **Source:** `StepData_SelectNamed.hxx`:54 - `StepData_SelectNamed::Int()`
     pub fn int(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepElement_MeasureOrUnspecifiedValueMember_inherited_Int(
@@ -9086,7 +5475,7 @@ impl MeasureOrUnspecifiedValueMember {
         })
     }
 
-    /// Inherited: **Source:** `StepData_SelectNamed.hxx`:61 - `StepData_SelectNamed::SetInt()`
+    /// Inherited: **Source:** `StepData_SelectNamed.hxx`:58 - `StepData_SelectNamed::SetInt()`
     pub fn set_int(&mut self, val: i32) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepElement_MeasureOrUnspecifiedValueMember_inherited_SetInt(
@@ -9096,7 +5485,7 @@ impl MeasureOrUnspecifiedValueMember {
         })
     }
 
-    /// Inherited: **Source:** `StepData_SelectNamed.hxx`:63 - `StepData_SelectNamed::Real()`
+    /// Inherited: **Source:** `StepData_SelectNamed.hxx`:60 - `StepData_SelectNamed::Real()`
     pub fn real(&self) -> f64 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepElement_MeasureOrUnspecifiedValueMember_inherited_Real(
@@ -9105,59 +5494,59 @@ impl MeasureOrUnspecifiedValueMember {
         })
     }
 
-    /// Inherited: **Source:** `StepData_SelectNamed.hxx`:65 - `StepData_SelectNamed::SetReal()`
+    /// Inherited: **Source:** `StepData_SelectNamed.hxx`:62 - `StepData_SelectNamed::SetReal()`
     pub fn set_real(&mut self, val: f64) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepElement_MeasureOrUnspecifiedValueMember_inherited_SetReal(self as *mut Self, val)
         })
     }
 
-    /// Inherited: **Source:** `StepData_SelectMember.hxx`:74 - `StepData_SelectMember::ParamType()`
+    /// Inherited: **Source:** `StepData_SelectMember.hxx`:71 - `StepData_SelectMember::ParamType()`
     pub fn param_type(&self) -> crate::interface::ParamType {
         crate::interface::ParamType::try_from(crate::check_result(unsafe { crate::ffi_extern_TKDESTEP::StepElement_MeasureOrUnspecifiedValueMember_inherited_ParamType(self as *const Self) })).unwrap()
     }
 
-    /// Inherited: **Source:** `StepData_SelectMember.hxx`:85 - `StepData_SelectMember::Integer()`
+    /// Inherited: **Source:** `StepData_SelectMember.hxx`:82 - `StepData_SelectMember::Integer()`
     pub fn integer(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepElement_MeasureOrUnspecifiedValueMember_inherited_Integer(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `StepData_SelectMember.hxx`:87 - `StepData_SelectMember::SetInteger()`
+    /// Inherited: **Source:** `StepData_SelectMember.hxx`:84 - `StepData_SelectMember::SetInteger()`
     pub fn set_integer(&mut self, val: i32) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepElement_MeasureOrUnspecifiedValueMember_inherited_SetInteger(self as *mut Self, val)
         })
     }
 
-    /// Inherited: **Source:** `StepData_SelectMember.hxx`:89 - `StepData_SelectMember::Boolean()`
+    /// Inherited: **Source:** `StepData_SelectMember.hxx`:86 - `StepData_SelectMember::Boolean()`
     pub fn boolean(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepElement_MeasureOrUnspecifiedValueMember_inherited_Boolean(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `StepData_SelectMember.hxx`:91 - `StepData_SelectMember::SetBoolean()`
+    /// Inherited: **Source:** `StepData_SelectMember.hxx`:88 - `StepData_SelectMember::SetBoolean()`
     pub fn set_boolean(&mut self, val: bool) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepElement_MeasureOrUnspecifiedValueMember_inherited_SetBoolean(self as *mut Self, val)
         })
     }
 
-    /// Inherited: **Source:** `StepData_SelectMember.hxx`:93 - `StepData_SelectMember::Logical()`
+    /// Inherited: **Source:** `StepData_SelectMember.hxx`:90 - `StepData_SelectMember::Logical()`
     pub fn logical(&self) -> crate::step_data::Logical {
         crate::step_data::Logical::try_from(crate::check_result(unsafe { crate::ffi_extern_TKDESTEP::StepElement_MeasureOrUnspecifiedValueMember_inherited_Logical(self as *const Self) })).unwrap()
     }
 
-    /// Inherited: **Source:** `StepData_SelectMember.hxx`:95 - `StepData_SelectMember::SetLogical()`
+    /// Inherited: **Source:** `StepData_SelectMember.hxx`:92 - `StepData_SelectMember::SetLogical()`
     pub fn set_logical(&mut self, val: crate::step_data::Logical) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepElement_MeasureOrUnspecifiedValueMember_inherited_SetLogical(self as *mut Self, val.into())
         })
     }
 
-    /// Inherited: **Source:** `StepData_SelectMember.hxx`:105 - `StepData_SelectMember::Enum()`
+    /// Inherited: **Source:** `StepData_SelectMember.hxx`:102 - `StepData_SelectMember::Enum()`
     pub fn enum_(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepElement_MeasureOrUnspecifiedValueMember_inherited_Enum(
@@ -9166,15 +5555,15 @@ impl MeasureOrUnspecifiedValueMember {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepElement_MeasureOrUnspecifiedValueMember_inherited_IsInstance(self as *const Self, theType)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepElement_MeasureOrUnspecifiedValueMember_inherited_IsKind(
                 self as *const Self,
@@ -9183,7 +5572,7 @@ impl MeasureOrUnspecifiedValueMember {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -9197,28 +5586,28 @@ impl MeasureOrUnspecifiedValueMember {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepElement_MeasureOrUnspecifiedValueMember_inherited_GetRefCount(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepElement_MeasureOrUnspecifiedValueMember_inherited_IncrementRefCounter(self as *mut Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepElement_MeasureOrUnspecifiedValueMember_inherited_DecrementRefCounter(self as *mut Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepElement_MeasureOrUnspecifiedValueMember_inherited_Delete(
@@ -9228,35 +5617,29 @@ impl MeasureOrUnspecifiedValueMember {
     }
 }
 
-pub use crate::ffi_types::HandleStepElementMeasureOrUnspecifiedValueMember;
+pub use crate::ffi_types::Handle_StepElement_MeasureOrUnspecifiedValueMember;
 
-unsafe impl crate::CppDeletable for HandleStepElementMeasureOrUnspecifiedValueMember {
+unsafe impl crate::CppDeletable for Handle_StepElement_MeasureOrUnspecifiedValueMember {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKDESTEP::HandleStepElementMeasureOrUnspecifiedValueMember_destructor(
-                ptr,
-            );
+            crate::ffi_extern_TKDESTEP::Handle_StepElement_MeasureOrUnspecifiedValueMember_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleStepElementMeasureOrUnspecifiedValueMember {
+unsafe impl crate::CppCopyable for Handle_StepElement_MeasureOrUnspecifiedValueMember {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
         unsafe {
-            crate::check_result(
-                crate::ffi_extern_TKDESTEP::HandleStepElementMeasureOrUnspecifiedValueMember_clone(
-                    ptr,
-                ),
-            )
+            crate::check_result(crate::ffi_extern_TKDESTEP::Handle_StepElement_MeasureOrUnspecifiedValueMember_clone(ptr))
         }
     }
 }
 
-impl HandleStepElementMeasureOrUnspecifiedValueMember {
+impl Handle_StepElement_MeasureOrUnspecifiedValueMember {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
         unsafe {
-            crate::ffi_extern_TKDESTEP::HandleStepElementMeasureOrUnspecifiedValueMember_is_null(
+            crate::ffi_extern_TKDESTEP::Handle_StepElement_MeasureOrUnspecifiedValueMember_is_null(
                 self as *const Self,
             )
         }
@@ -9266,7 +5649,7 @@ impl HandleStepElementMeasureOrUnspecifiedValueMember {
     pub fn get(&self) -> &crate::ffi_types::StepElement_MeasureOrUnspecifiedValueMember {
         unsafe {
             &*crate::check_result(
-                crate::ffi_extern_TKDESTEP::HandleStepElementMeasureOrUnspecifiedValueMember_get(
+                crate::ffi_extern_TKDESTEP::Handle_StepElement_MeasureOrUnspecifiedValueMember_get(
                     self as *const Self,
                 ),
             )
@@ -9278,34 +5661,34 @@ impl HandleStepElementMeasureOrUnspecifiedValueMember {
         &mut self,
     ) -> &mut crate::ffi_types::StepElement_MeasureOrUnspecifiedValueMember {
         unsafe {
-            &mut *crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepElementMeasureOrUnspecifiedValueMember_get_mut(self as *mut Self))
+            &mut *crate::check_result(crate::ffi_extern_TKDESTEP::Handle_StepElement_MeasureOrUnspecifiedValueMember_get_mut(self as *mut Self))
         }
     }
 
     /// Upcast Handle<StepElement_MeasureOrUnspecifiedValueMember> to Handle<StepData_SelectNamed>
     pub fn to_handle_select_named(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStepDataSelectNamed> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_StepData_SelectNamed> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepElementMeasureOrUnspecifiedValueMember_to_HandleStepDataSelectNamed(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::Handle_StepElement_MeasureOrUnspecifiedValueMember_to_Handle_StepData_SelectNamed(self as *const Self)))
         }
     }
 
     /// Upcast Handle<StepElement_MeasureOrUnspecifiedValueMember> to Handle<StepData_SelectMember>
     pub fn to_handle_select_member(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStepDataSelectMember> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_StepData_SelectMember> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepElementMeasureOrUnspecifiedValueMember_to_HandleStepDataSelectMember(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::Handle_StepElement_MeasureOrUnspecifiedValueMember_to_Handle_StepData_SelectMember(self as *const Self)))
         }
     }
 
     /// Upcast Handle<StepElement_MeasureOrUnspecifiedValueMember> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepElementMeasureOrUnspecifiedValueMember_to_HandleStandardTransient(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::Handle_StepElement_MeasureOrUnspecifiedValueMember_to_Handle_Standard_Transient(self as *const Self)))
         }
     }
 }
@@ -9314,7 +5697,7 @@ impl HandleStepElementMeasureOrUnspecifiedValueMember {
 // From StepElement_Surface3dElementDescriptor.hxx
 // ========================
 
-/// **Source:** `StepElement_Surface3dElementDescriptor.hxx`:31 - `StepElement_Surface3dElementDescriptor`
+/// **Source:** `StepElement_Surface3dElementDescriptor.hxx`:32 - `StepElement_Surface3dElementDescriptor`
 /// Representation of STEP entity Surface3dElementDescriptor
 pub use crate::ffi_types::StepElement_Surface3dElementDescriptor as Surface3dElementDescriptor;
 
@@ -9327,7 +5710,7 @@ unsafe impl crate::CppDeletable for Surface3dElementDescriptor {
 }
 
 impl Surface3dElementDescriptor {
-    /// **Source:** `StepElement_Surface3dElementDescriptor.hxx`:36 - `StepElement_Surface3dElementDescriptor::StepElement_Surface3dElementDescriptor()`
+    /// **Source:** `StepElement_Surface3dElementDescriptor.hxx`:37 - `StepElement_Surface3dElementDescriptor::StepElement_Surface3dElementDescriptor()`
     /// Empty constructor
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
@@ -9337,13 +5720,13 @@ impl Surface3dElementDescriptor {
         }
     }
 
-    /// **Source:** `StepElement_Surface3dElementDescriptor.hxx`:39 - `StepElement_Surface3dElementDescriptor::Init()`
+    /// **Source:** `StepElement_Surface3dElementDescriptor.hxx`:40 - `StepElement_Surface3dElementDescriptor::Init()`
     /// Initialize all fields (own and inherited)
     pub fn init(
         &mut self,
         aElementDescriptor_TopologyOrder: crate::step_element::ElementOrder,
-        aElementDescriptor_Description: &crate::ffi_types::HandleTCollectionHAsciiString,
-        aPurpose: &crate::ffi_types::HandleStepElementHArray1OfHSequenceOfSurfaceElementPurposeMember,
+        aElementDescriptor_Description: &crate::ffi_types::Handle_TCollection_HAsciiString,
+        aPurpose: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_NCollection_HSequence_opencascade_handle_StepElement_SurfaceElementPurposeMember,
         aShape: crate::step_element::Element2dShape,
     ) {
         crate::check_void_result(unsafe {
@@ -9357,13 +5740,9 @@ impl Surface3dElementDescriptor {
         })
     }
 
-    /// **Source:** `StepElement_Surface3dElementDescriptor.hxx`:46 - `StepElement_Surface3dElementDescriptor::Purpose()`
+    /// **Source:** `StepElement_Surface3dElementDescriptor.hxx`:51 - `StepElement_Surface3dElementDescriptor::Purpose()`
     /// Returns field Purpose
-    pub fn purpose(
-        &self,
-    ) -> crate::OwnedPtr<
-        crate::ffi_types::HandleStepElementHArray1OfHSequenceOfSurfaceElementPurposeMember,
-    > {
+    pub fn purpose(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_NCollection_HSequence_opencascade_handle_StepElement_SurfaceElementPurposeMember>{
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDESTEP::StepElement_Surface3dElementDescriptor_purpose(
@@ -9373,11 +5752,11 @@ impl Surface3dElementDescriptor {
         }
     }
 
-    /// **Source:** `StepElement_Surface3dElementDescriptor.hxx`:50 - `StepElement_Surface3dElementDescriptor::SetPurpose()`
+    /// **Source:** `StepElement_Surface3dElementDescriptor.hxx`:54 - `StepElement_Surface3dElementDescriptor::SetPurpose()`
     /// Set field Purpose
     pub fn set_purpose(
         &mut self,
-        Purpose: &crate::ffi_types::HandleStepElementHArray1OfHSequenceOfSurfaceElementPurposeMember,
+        Purpose: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_NCollection_HSequence_opencascade_handle_StepElement_SurfaceElementPurposeMember,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepElement_Surface3dElementDescriptor_set_purpose(
@@ -9387,7 +5766,7 @@ impl Surface3dElementDescriptor {
         })
     }
 
-    /// **Source:** `StepElement_Surface3dElementDescriptor.hxx`:54 - `StepElement_Surface3dElementDescriptor::Shape()`
+    /// **Source:** `StepElement_Surface3dElementDescriptor.hxx`:60 - `StepElement_Surface3dElementDescriptor::Shape()`
     /// Returns field Shape
     pub fn shape(&self) -> crate::step_element::Element2dShape {
         crate::step_element::Element2dShape::try_from(crate::check_result(unsafe {
@@ -9398,7 +5777,7 @@ impl Surface3dElementDescriptor {
         .unwrap()
     }
 
-    /// **Source:** `StepElement_Surface3dElementDescriptor.hxx`:57 - `StepElement_Surface3dElementDescriptor::SetShape()`
+    /// **Source:** `StepElement_Surface3dElementDescriptor.hxx`:63 - `StepElement_Surface3dElementDescriptor::SetShape()`
     /// Set field Shape
     pub fn set_shape(&mut self, Shape: crate::step_element::Element2dShape) {
         crate::check_void_result(unsafe {
@@ -9409,8 +5788,8 @@ impl Surface3dElementDescriptor {
         })
     }
 
-    /// **Source:** `StepElement_Surface3dElementDescriptor.hxx`:59 - `StepElement_Surface3dElementDescriptor::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `StepElement_Surface3dElementDescriptor.hxx`:65 - `StepElement_Surface3dElementDescriptor::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKDESTEP::StepElement_Surface3dElementDescriptor_dynamic_type(
@@ -9420,7 +5799,7 @@ impl Surface3dElementDescriptor {
         }
     }
 
-    /// **Source:** `StepElement_Surface3dElementDescriptor.hxx`:59 - `StepElement_Surface3dElementDescriptor::get_type_name()`
+    /// **Source:** `StepElement_Surface3dElementDescriptor.hxx`:65 - `StepElement_Surface3dElementDescriptor::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -9431,8 +5810,8 @@ impl Surface3dElementDescriptor {
         .into_owned()
     }
 
-    /// **Source:** `StepElement_Surface3dElementDescriptor.hxx`:59 - `StepElement_Surface3dElementDescriptor::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    /// **Source:** `StepElement_Surface3dElementDescriptor.hxx`:65 - `StepElement_Surface3dElementDescriptor::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKDESTEP::StepElement_Surface3dElementDescriptor_get_type_descriptor()))
         }
@@ -9469,7 +5848,7 @@ impl Surface3dElementDescriptor {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStepElementSurface3dElementDescriptor> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_StepElement_Surface3dElementDescriptor> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDESTEP::StepElement_Surface3dElementDescriptor_to_handle(
@@ -9479,37 +5858,39 @@ impl Surface3dElementDescriptor {
         }
     }
 
-    /// Inherited: **Source:** `StepElement_ElementDescriptor.hxx`:42 - `StepElement_ElementDescriptor::TopologyOrder()`
+    /// Inherited: **Source:** `StepElement_ElementDescriptor.hxx`:39 - `StepElement_ElementDescriptor::TopologyOrder()`
     pub fn topology_order(&self) -> crate::step_element::ElementOrder {
         crate::step_element::ElementOrder::try_from(crate::check_result(unsafe { crate::ffi_extern_TKDESTEP::StepElement_Surface3dElementDescriptor_inherited_TopologyOrder(self as *const Self) })).unwrap()
     }
 
-    /// Inherited: **Source:** `StepElement_ElementDescriptor.hxx`:45 - `StepElement_ElementDescriptor::SetTopologyOrder()`
+    /// Inherited: **Source:** `StepElement_ElementDescriptor.hxx`:42 - `StepElement_ElementDescriptor::SetTopologyOrder()`
     pub fn set_topology_order(&mut self, TopologyOrder: crate::step_element::ElementOrder) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepElement_Surface3dElementDescriptor_inherited_SetTopologyOrder(self as *mut Self, TopologyOrder.into())
         })
     }
 
-    /// Inherited: **Source:** `StepElement_ElementDescriptor.hxx`:48 - `StepElement_ElementDescriptor::Description()`
-    pub fn description(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTCollectionHAsciiString> {
+    /// Inherited: **Source:** `StepElement_ElementDescriptor.hxx`:45 - `StepElement_ElementDescriptor::Description()`
+    pub fn description(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_TCollection_HAsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::StepElement_Surface3dElementDescriptor_inherited_Description(self as *const Self)))
         }
     }
 
-    /// Inherited: **Source:** `StepElement_ElementDescriptor.hxx`:51 - `StepElement_ElementDescriptor::SetDescription()`
+    /// Inherited: **Source:** `StepElement_ElementDescriptor.hxx`:48 - `StepElement_ElementDescriptor::SetDescription()`
     pub fn set_description(
         &mut self,
-        Description: &crate::ffi_types::HandleTCollectionHAsciiString,
+        Description: &crate::ffi_types::Handle_TCollection_HAsciiString,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepElement_Surface3dElementDescriptor_inherited_SetDescription(self as *mut Self, Description)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepElement_Surface3dElementDescriptor_inherited_IsInstance(
                 self as *const Self,
@@ -9518,8 +5899,8 @@ impl Surface3dElementDescriptor {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepElement_Surface3dElementDescriptor_inherited_IsKind(
                 self as *const Self,
@@ -9528,7 +5909,7 @@ impl Surface3dElementDescriptor {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -9544,7 +5925,7 @@ impl Surface3dElementDescriptor {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepElement_Surface3dElementDescriptor_inherited_GetRefCount(
@@ -9553,21 +5934,21 @@ impl Surface3dElementDescriptor {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepElement_Surface3dElementDescriptor_inherited_IncrementRefCounter(self as *mut Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepElement_Surface3dElementDescriptor_inherited_DecrementRefCounter(self as *mut Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepElement_Surface3dElementDescriptor_inherited_Delete(
@@ -9577,31 +5958,35 @@ impl Surface3dElementDescriptor {
     }
 }
 
-pub use crate::ffi_types::HandleStepElementSurface3dElementDescriptor;
+pub use crate::ffi_types::Handle_StepElement_Surface3dElementDescriptor;
 
-unsafe impl crate::CppDeletable for HandleStepElementSurface3dElementDescriptor {
+unsafe impl crate::CppDeletable for Handle_StepElement_Surface3dElementDescriptor {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKDESTEP::HandleStepElementSurface3dElementDescriptor_destructor(ptr);
+            crate::ffi_extern_TKDESTEP::Handle_StepElement_Surface3dElementDescriptor_destructor(
+                ptr,
+            );
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleStepElementSurface3dElementDescriptor {
+unsafe impl crate::CppCopyable for Handle_StepElement_Surface3dElementDescriptor {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
         unsafe {
             crate::check_result(
-                crate::ffi_extern_TKDESTEP::HandleStepElementSurface3dElementDescriptor_clone(ptr),
+                crate::ffi_extern_TKDESTEP::Handle_StepElement_Surface3dElementDescriptor_clone(
+                    ptr,
+                ),
             )
         }
     }
 }
 
-impl HandleStepElementSurface3dElementDescriptor {
+impl Handle_StepElement_Surface3dElementDescriptor {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
         unsafe {
-            crate::ffi_extern_TKDESTEP::HandleStepElementSurface3dElementDescriptor_is_null(
+            crate::ffi_extern_TKDESTEP::Handle_StepElement_Surface3dElementDescriptor_is_null(
                 self as *const Self,
             )
         }
@@ -9611,7 +5996,7 @@ impl HandleStepElementSurface3dElementDescriptor {
     pub fn get(&self) -> &crate::ffi_types::StepElement_Surface3dElementDescriptor {
         unsafe {
             &*crate::check_result(
-                crate::ffi_extern_TKDESTEP::HandleStepElementSurface3dElementDescriptor_get(
+                crate::ffi_extern_TKDESTEP::Handle_StepElement_Surface3dElementDescriptor_get(
                     self as *const Self,
                 ),
             )
@@ -9622,7 +6007,7 @@ impl HandleStepElementSurface3dElementDescriptor {
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::StepElement_Surface3dElementDescriptor {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi_extern_TKDESTEP::HandleStepElementSurface3dElementDescriptor_get_mut(
+                crate::ffi_extern_TKDESTEP::Handle_StepElement_Surface3dElementDescriptor_get_mut(
                     self as *mut Self,
                 ),
             )
@@ -9632,18 +6017,18 @@ impl HandleStepElementSurface3dElementDescriptor {
     /// Upcast Handle<StepElement_Surface3dElementDescriptor> to Handle<StepElement_ElementDescriptor>
     pub fn to_handle_element_descriptor(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStepElementElementDescriptor> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_StepElement_ElementDescriptor> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepElementSurface3dElementDescriptor_to_HandleStepElementElementDescriptor(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::Handle_StepElement_Surface3dElementDescriptor_to_Handle_StepElement_ElementDescriptor(self as *const Self)))
         }
     }
 
     /// Upcast Handle<StepElement_Surface3dElementDescriptor> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepElementSurface3dElementDescriptor_to_HandleStandardTransient(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::Handle_StepElement_Surface3dElementDescriptor_to_Handle_Standard_Transient(self as *const Self)))
         }
     }
 }
@@ -9652,7 +6037,7 @@ impl HandleStepElementSurface3dElementDescriptor {
 // From StepElement_SurfaceElementProperty.hxx
 // ========================
 
-/// **Source:** `StepElement_SurfaceElementProperty.hxx`:30 - `StepElement_SurfaceElementProperty`
+/// **Source:** `StepElement_SurfaceElementProperty.hxx`:27 - `StepElement_SurfaceElementProperty`
 /// Representation of STEP entity SurfaceElementProperty
 pub use crate::ffi_types::StepElement_SurfaceElementProperty as SurfaceElementProperty;
 
@@ -9665,7 +6050,7 @@ unsafe impl crate::CppDeletable for SurfaceElementProperty {
 }
 
 impl SurfaceElementProperty {
-    /// **Source:** `StepElement_SurfaceElementProperty.hxx`:35 - `StepElement_SurfaceElementProperty::StepElement_SurfaceElementProperty()`
+    /// **Source:** `StepElement_SurfaceElementProperty.hxx`:32 - `StepElement_SurfaceElementProperty::StepElement_SurfaceElementProperty()`
     /// Empty constructor
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
@@ -9675,13 +6060,13 @@ impl SurfaceElementProperty {
         }
     }
 
-    /// **Source:** `StepElement_SurfaceElementProperty.hxx`:38 - `StepElement_SurfaceElementProperty::Init()`
+    /// **Source:** `StepElement_SurfaceElementProperty.hxx`:35 - `StepElement_SurfaceElementProperty::Init()`
     /// Initialize all fields (own and inherited)
     pub fn init(
         &mut self,
-        aPropertyId: &crate::ffi_types::HandleTCollectionHAsciiString,
-        aDescription: &crate::ffi_types::HandleTCollectionHAsciiString,
-        aSection: &crate::ffi_types::HandleStepElementSurfaceSectionField,
+        aPropertyId: &crate::ffi_types::Handle_TCollection_HAsciiString,
+        aDescription: &crate::ffi_types::Handle_TCollection_HAsciiString,
+        aSection: &crate::ffi_types::Handle_StepElement_SurfaceSectionField,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepElement_SurfaceElementProperty_init(
@@ -9693,9 +6078,11 @@ impl SurfaceElementProperty {
         })
     }
 
-    /// **Source:** `StepElement_SurfaceElementProperty.hxx`:43 - `StepElement_SurfaceElementProperty::PropertyId()`
+    /// **Source:** `StepElement_SurfaceElementProperty.hxx`:40 - `StepElement_SurfaceElementProperty::PropertyId()`
     /// Returns field PropertyId
-    pub fn property_id(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTCollectionHAsciiString> {
+    pub fn property_id(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_TCollection_HAsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDESTEP::StepElement_SurfaceElementProperty_property_id(
@@ -9705,11 +6092,11 @@ impl SurfaceElementProperty {
         }
     }
 
-    /// **Source:** `StepElement_SurfaceElementProperty.hxx`:46 - `StepElement_SurfaceElementProperty::SetPropertyId()`
+    /// **Source:** `StepElement_SurfaceElementProperty.hxx`:43 - `StepElement_SurfaceElementProperty::SetPropertyId()`
     /// Set field PropertyId
     pub fn set_property_id(
         &mut self,
-        PropertyId: &crate::ffi_types::HandleTCollectionHAsciiString,
+        PropertyId: &crate::ffi_types::Handle_TCollection_HAsciiString,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepElement_SurfaceElementProperty_set_property_id(
@@ -9719,9 +6106,11 @@ impl SurfaceElementProperty {
         })
     }
 
-    /// **Source:** `StepElement_SurfaceElementProperty.hxx`:49 - `StepElement_SurfaceElementProperty::Description()`
+    /// **Source:** `StepElement_SurfaceElementProperty.hxx`:46 - `StepElement_SurfaceElementProperty::Description()`
     /// Returns field Description
-    pub fn description(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTCollectionHAsciiString> {
+    pub fn description(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_TCollection_HAsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDESTEP::StepElement_SurfaceElementProperty_description(
@@ -9731,11 +6120,11 @@ impl SurfaceElementProperty {
         }
     }
 
-    /// **Source:** `StepElement_SurfaceElementProperty.hxx`:52 - `StepElement_SurfaceElementProperty::SetDescription()`
+    /// **Source:** `StepElement_SurfaceElementProperty.hxx`:49 - `StepElement_SurfaceElementProperty::SetDescription()`
     /// Set field Description
     pub fn set_description(
         &mut self,
-        Description: &crate::ffi_types::HandleTCollectionHAsciiString,
+        Description: &crate::ffi_types::Handle_TCollection_HAsciiString,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepElement_SurfaceElementProperty_set_description(
@@ -9745,11 +6134,11 @@ impl SurfaceElementProperty {
         })
     }
 
-    /// **Source:** `StepElement_SurfaceElementProperty.hxx`:55 - `StepElement_SurfaceElementProperty::Section()`
+    /// **Source:** `StepElement_SurfaceElementProperty.hxx`:52 - `StepElement_SurfaceElementProperty::Section()`
     /// Returns field Section
     pub fn section(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStepElementSurfaceSectionField> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_StepElement_SurfaceSectionField> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDESTEP::StepElement_SurfaceElementProperty_section(
@@ -9759,11 +6148,11 @@ impl SurfaceElementProperty {
         }
     }
 
-    /// **Source:** `StepElement_SurfaceElementProperty.hxx`:58 - `StepElement_SurfaceElementProperty::SetSection()`
+    /// **Source:** `StepElement_SurfaceElementProperty.hxx`:55 - `StepElement_SurfaceElementProperty::SetSection()`
     /// Set field Section
     pub fn set_section(
         &mut self,
-        Section: &crate::ffi_types::HandleStepElementSurfaceSectionField,
+        Section: &crate::ffi_types::Handle_StepElement_SurfaceSectionField,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepElement_SurfaceElementProperty_set_section(
@@ -9773,8 +6162,8 @@ impl SurfaceElementProperty {
         })
     }
 
-    /// **Source:** `StepElement_SurfaceElementProperty.hxx`:60 - `StepElement_SurfaceElementProperty::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `StepElement_SurfaceElementProperty.hxx`:57 - `StepElement_SurfaceElementProperty::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKDESTEP::StepElement_SurfaceElementProperty_dynamic_type(
@@ -9784,7 +6173,7 @@ impl SurfaceElementProperty {
         }
     }
 
-    /// **Source:** `StepElement_SurfaceElementProperty.hxx`:60 - `StepElement_SurfaceElementProperty::get_type_name()`
+    /// **Source:** `StepElement_SurfaceElementProperty.hxx`:57 - `StepElement_SurfaceElementProperty::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -9795,8 +6184,8 @@ impl SurfaceElementProperty {
         .into_owned()
     }
 
-    /// **Source:** `StepElement_SurfaceElementProperty.hxx`:60 - `StepElement_SurfaceElementProperty::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    /// **Source:** `StepElement_SurfaceElementProperty.hxx`:57 - `StepElement_SurfaceElementProperty::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKDESTEP::StepElement_SurfaceElementProperty_get_type_descriptor(
@@ -9822,7 +6211,7 @@ impl SurfaceElementProperty {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStepElementSurfaceElementProperty> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_StepElement_SurfaceElementProperty> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDESTEP::StepElement_SurfaceElementProperty_to_handle(
@@ -9832,8 +6221,8 @@ impl SurfaceElementProperty {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepElement_SurfaceElementProperty_inherited_IsInstance(
                 self as *const Self,
@@ -9842,8 +6231,8 @@ impl SurfaceElementProperty {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepElement_SurfaceElementProperty_inherited_IsKind(
                 self as *const Self,
@@ -9852,7 +6241,7 @@ impl SurfaceElementProperty {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -9868,7 +6257,7 @@ impl SurfaceElementProperty {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepElement_SurfaceElementProperty_inherited_GetRefCount(
@@ -9877,21 +6266,21 @@ impl SurfaceElementProperty {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepElement_SurfaceElementProperty_inherited_IncrementRefCounter(self as *mut Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepElement_SurfaceElementProperty_inherited_DecrementRefCounter(self as *mut Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepElement_SurfaceElementProperty_inherited_Delete(
@@ -9901,31 +6290,31 @@ impl SurfaceElementProperty {
     }
 }
 
-pub use crate::ffi_types::HandleStepElementSurfaceElementProperty;
+pub use crate::ffi_types::Handle_StepElement_SurfaceElementProperty;
 
-unsafe impl crate::CppDeletable for HandleStepElementSurfaceElementProperty {
+unsafe impl crate::CppDeletable for Handle_StepElement_SurfaceElementProperty {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKDESTEP::HandleStepElementSurfaceElementProperty_destructor(ptr);
+            crate::ffi_extern_TKDESTEP::Handle_StepElement_SurfaceElementProperty_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleStepElementSurfaceElementProperty {
+unsafe impl crate::CppCopyable for Handle_StepElement_SurfaceElementProperty {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
         unsafe {
             crate::check_result(
-                crate::ffi_extern_TKDESTEP::HandleStepElementSurfaceElementProperty_clone(ptr),
+                crate::ffi_extern_TKDESTEP::Handle_StepElement_SurfaceElementProperty_clone(ptr),
             )
         }
     }
 }
 
-impl HandleStepElementSurfaceElementProperty {
+impl Handle_StepElement_SurfaceElementProperty {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
         unsafe {
-            crate::ffi_extern_TKDESTEP::HandleStepElementSurfaceElementProperty_is_null(
+            crate::ffi_extern_TKDESTEP::Handle_StepElement_SurfaceElementProperty_is_null(
                 self as *const Self,
             )
         }
@@ -9935,7 +6324,7 @@ impl HandleStepElementSurfaceElementProperty {
     pub fn get(&self) -> &crate::ffi_types::StepElement_SurfaceElementProperty {
         unsafe {
             &*crate::check_result(
-                crate::ffi_extern_TKDESTEP::HandleStepElementSurfaceElementProperty_get(
+                crate::ffi_extern_TKDESTEP::Handle_StepElement_SurfaceElementProperty_get(
                     self as *const Self,
                 ),
             )
@@ -9946,7 +6335,7 @@ impl HandleStepElementSurfaceElementProperty {
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::StepElement_SurfaceElementProperty {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi_extern_TKDESTEP::HandleStepElementSurfaceElementProperty_get_mut(
+                crate::ffi_extern_TKDESTEP::Handle_StepElement_SurfaceElementProperty_get_mut(
                     self as *mut Self,
                 ),
             )
@@ -9956,9 +6345,9 @@ impl HandleStepElementSurfaceElementProperty {
     /// Upcast Handle<StepElement_SurfaceElementProperty> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepElementSurfaceElementProperty_to_HandleStandardTransient(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::Handle_StepElement_SurfaceElementProperty_to_Handle_Standard_Transient(self as *const Self)))
         }
     }
 }
@@ -9990,10 +6379,10 @@ impl SurfaceElementPurpose {
         }
     }
 
-    /// **Source:** `StepElement_SurfaceElementPurpose.hxx`:42 - `StepElement_SurfaceElementPurpose::CaseNum()`
+    /// **Source:** `StepElement_SurfaceElementPurpose.hxx`:41 - `StepElement_SurfaceElementPurpose::CaseNum()`
     /// Recognizes a kind of SurfaceElementPurpose select type
     /// return 0
-    pub fn case_num(&self, ent: &crate::ffi_types::HandleStandardTransient) -> i32 {
+    pub fn case_num(&self, ent: &crate::ffi_types::Handle_Standard_Transient) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepElement_SurfaceElementPurpose_case_num(
                 self as *const Self,
@@ -10002,12 +6391,12 @@ impl SurfaceElementPurpose {
         })
     }
 
-    /// **Source:** `StepElement_SurfaceElementPurpose.hxx`:48 - `StepElement_SurfaceElementPurpose::CaseMem()`
+    /// **Source:** `StepElement_SurfaceElementPurpose.hxx`:47 - `StepElement_SurfaceElementPurpose::CaseMem()`
     /// Recognizes a items of select member SurfaceElementPurposeMember
     /// 1 -> EnumeratedSurfaceElementPurpose
     /// 2 -> ApplicationDefinedElementPurpose
     /// 0 else
-    pub fn case_mem(&self, ent: &crate::ffi_types::HandleStepDataSelectMember) -> i32 {
+    pub fn case_mem(&self, ent: &crate::ffi_types::Handle_StepData_SelectMember) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepElement_SurfaceElementPurpose_case_mem(
                 self as *const Self,
@@ -10016,9 +6405,9 @@ impl SurfaceElementPurpose {
         })
     }
 
-    /// **Source:** `StepElement_SurfaceElementPurpose.hxx`:52 - `StepElement_SurfaceElementPurpose::NewMember()`
+    /// **Source:** `StepElement_SurfaceElementPurpose.hxx`:50 - `StepElement_SurfaceElementPurpose::NewMember()`
     /// Returns a new select member the type SurfaceElementPurposeMember
-    pub fn new_member(&self) -> crate::OwnedPtr<crate::ffi_types::HandleStepDataSelectMember> {
+    pub fn new_member(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_StepData_SelectMember> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDESTEP::StepElement_SurfaceElementPurpose_new_member(
@@ -10028,7 +6417,7 @@ impl SurfaceElementPurpose {
         }
     }
 
-    /// **Source:** `StepElement_SurfaceElementPurpose.hxx`:55 - `StepElement_SurfaceElementPurpose::SetEnumeratedSurfaceElementPurpose()`
+    /// **Source:** `StepElement_SurfaceElementPurpose.hxx`:53 - `StepElement_SurfaceElementPurpose::SetEnumeratedSurfaceElementPurpose()`
     /// Set Value for EnumeratedSurfaceElementPurpose
     pub fn set_enumerated_surface_element_purpose(
         &mut self,
@@ -10039,7 +6428,7 @@ impl SurfaceElementPurpose {
         })
     }
 
-    /// **Source:** `StepElement_SurfaceElementPurpose.hxx`:60 - `StepElement_SurfaceElementPurpose::EnumeratedSurfaceElementPurpose()`
+    /// **Source:** `StepElement_SurfaceElementPurpose.hxx`:58 - `StepElement_SurfaceElementPurpose::EnumeratedSurfaceElementPurpose()`
     /// Returns Value as EnumeratedSurfaceElementPurpose (or Null if another type)
     pub fn enumerated_surface_element_purpose(
         &self,
@@ -10047,22 +6436,22 @@ impl SurfaceElementPurpose {
         crate::step_element::EnumeratedSurfaceElementPurpose::try_from(crate::check_result(unsafe { crate::ffi_extern_TKDESTEP::StepElement_SurfaceElementPurpose_enumerated_surface_element_purpose(self as *const Self) })).unwrap()
     }
 
-    /// **Source:** `StepElement_SurfaceElementPurpose.hxx`:63 - `StepElement_SurfaceElementPurpose::SetApplicationDefinedElementPurpose()`
+    /// **Source:** `StepElement_SurfaceElementPurpose.hxx`:61 - `StepElement_SurfaceElementPurpose::SetApplicationDefinedElementPurpose()`
     /// Set Value for ApplicationDefinedElementPurpose
     pub fn set_application_defined_element_purpose(
         &mut self,
-        aVal: &crate::ffi_types::HandleTCollectionHAsciiString,
+        aVal: &crate::ffi_types::Handle_TCollection_HAsciiString,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepElement_SurfaceElementPurpose_set_application_defined_element_purpose(self as *mut Self, aVal)
         })
     }
 
-    /// **Source:** `StepElement_SurfaceElementPurpose.hxx`:67 - `StepElement_SurfaceElementPurpose::ApplicationDefinedElementPurpose()`
+    /// **Source:** `StepElement_SurfaceElementPurpose.hxx`:65 - `StepElement_SurfaceElementPurpose::ApplicationDefinedElementPurpose()`
     /// Returns Value as ApplicationDefinedElementPurpose (or Null if another type)
     pub fn application_defined_element_purpose(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleTCollectionHAsciiString> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_TCollection_HAsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::StepElement_SurfaceElementPurpose_application_defined_element_purpose(self as *const Self)))
         }
@@ -10083,7 +6472,7 @@ impl SurfaceElementPurpose {
     }
 
     /// Inherited: **Source:** `StepData_SelectType.hxx`:64 - `StepData_SelectType::Matches()`
-    pub fn matches(&self, ent: &crate::ffi_types::HandleStandardTransient) -> bool {
+    pub fn matches(&self, ent: &crate::ffi_types::Handle_Standard_Transient) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepElement_SurfaceElementPurpose_inherited_Matches(
                 self as *const Self,
@@ -10093,7 +6482,7 @@ impl SurfaceElementPurpose {
     }
 
     /// Inherited: **Source:** `StepData_SelectType.hxx`:69 - `StepData_SelectType::SetValue()`
-    pub fn set_value(&mut self, ent: &crate::ffi_types::HandleStandardTransient) {
+    pub fn set_value(&mut self, ent: &crate::ffi_types::Handle_Standard_Transient) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepElement_SurfaceElementPurpose_inherited_SetValue(
                 self as *mut Self,
@@ -10112,7 +6501,7 @@ impl SurfaceElementPurpose {
     }
 
     /// Inherited: **Source:** `StepData_SelectType.hxx`:76 - `StepData_SelectType::Value()`
-    pub fn value(&self) -> &crate::ffi_types::HandleStandardTransient {
+    pub fn value(&self) -> &crate::ffi_types::Handle_Standard_Transient {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKDESTEP::StepElement_SurfaceElementPurpose_inherited_Value(
@@ -10132,7 +6521,7 @@ impl SurfaceElementPurpose {
     }
 
     /// Inherited: **Source:** `StepData_SelectType.hxx`:83 - `StepData_SelectType::Type()`
-    pub fn type_(&self) -> crate::OwnedPtr<crate::ffi_types::HandleStandardType> {
+    pub fn type_(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Type> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDESTEP::StepElement_SurfaceElementPurpose_inherited_Type(
@@ -10152,7 +6541,7 @@ impl SurfaceElementPurpose {
     }
 
     /// Inherited: **Source:** `StepData_SelectType.hxx`:94 - `StepData_SelectType::Description()`
-    pub fn description(&self) -> crate::OwnedPtr<crate::ffi_types::HandleStepDataPDescr> {
+    pub fn description(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_StepData_PDescr> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDESTEP::StepElement_SurfaceElementPurpose_inherited_Description(
@@ -10172,7 +6561,7 @@ impl SurfaceElementPurpose {
     }
 
     /// Inherited: **Source:** `StepData_SelectType.hxx`:118 - `StepData_SelectType::Member()`
-    pub fn member(&self) -> crate::OwnedPtr<crate::ffi_types::HandleStepDataSelectMember> {
+    pub fn member(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_StepData_SelectMember> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDESTEP::StepElement_SurfaceElementPurpose_inherited_Member(
@@ -10243,8 +6632,8 @@ impl SurfaceElementPurpose {
 // From StepElement_SurfaceElementPurposeMember.hxx
 // ========================
 
-/// **Source:** `StepElement_SurfaceElementPurposeMember.hxx`:29 - `StepElement_SurfaceElementPurposeMember`
-/// Representation of member for  STEP SELECT type SurfaceElementPurpose
+/// **Source:** `StepElement_SurfaceElementPurposeMember.hxx`:26 - `StepElement_SurfaceElementPurposeMember`
+/// Representation of member for STEP SELECT type SurfaceElementPurpose
 pub use crate::ffi_types::StepElement_SurfaceElementPurposeMember as SurfaceElementPurposeMember;
 
 unsafe impl crate::CppDeletable for SurfaceElementPurposeMember {
@@ -10256,7 +6645,7 @@ unsafe impl crate::CppDeletable for SurfaceElementPurposeMember {
 }
 
 impl SurfaceElementPurposeMember {
-    /// **Source:** `StepElement_SurfaceElementPurposeMember.hxx`:34 - `StepElement_SurfaceElementPurposeMember::StepElement_SurfaceElementPurposeMember()`
+    /// **Source:** `StepElement_SurfaceElementPurposeMember.hxx`:31 - `StepElement_SurfaceElementPurposeMember::StepElement_SurfaceElementPurposeMember()`
     /// Empty constructor
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
@@ -10266,7 +6655,7 @@ impl SurfaceElementPurposeMember {
         }
     }
 
-    /// **Source:** `StepElement_SurfaceElementPurposeMember.hxx`:37 - `StepElement_SurfaceElementPurposeMember::HasName()`
+    /// **Source:** `StepElement_SurfaceElementPurposeMember.hxx`:34 - `StepElement_SurfaceElementPurposeMember::HasName()`
     /// Returns True if has name
     pub fn has_name(&self) -> bool {
         crate::check_result(unsafe {
@@ -10276,7 +6665,7 @@ impl SurfaceElementPurposeMember {
         })
     }
 
-    /// **Source:** `StepElement_SurfaceElementPurposeMember.hxx`:40 - `StepElement_SurfaceElementPurposeMember::Name()`
+    /// **Source:** `StepElement_SurfaceElementPurposeMember.hxx`:37 - `StepElement_SurfaceElementPurposeMember::Name()`
     /// Returns set name
     pub fn name(&self) -> std::string::String {
         unsafe {
@@ -10290,7 +6679,7 @@ impl SurfaceElementPurposeMember {
         .into_owned()
     }
 
-    /// **Source:** `StepElement_SurfaceElementPurposeMember.hxx`:43 - `StepElement_SurfaceElementPurposeMember::SetName()`
+    /// **Source:** `StepElement_SurfaceElementPurposeMember.hxx`:40 - `StepElement_SurfaceElementPurposeMember::SetName()`
     /// Set name
     pub fn set_name(&mut self, name: &str) -> bool {
         let c_name = std::ffi::CString::new(name).unwrap();
@@ -10302,7 +6691,7 @@ impl SurfaceElementPurposeMember {
         })
     }
 
-    /// **Source:** `StepElement_SurfaceElementPurposeMember.hxx`:46 - `StepElement_SurfaceElementPurposeMember::Matches()`
+    /// **Source:** `StepElement_SurfaceElementPurposeMember.hxx`:43 - `StepElement_SurfaceElementPurposeMember::Matches()`
     /// Tells if the name of a SelectMember matches a given one;
     pub fn matches(&self, name: &str) -> bool {
         let c_name = std::ffi::CString::new(name).unwrap();
@@ -10314,8 +6703,8 @@ impl SurfaceElementPurposeMember {
         })
     }
 
-    /// **Source:** `StepElement_SurfaceElementPurposeMember.hxx`:49 - `StepElement_SurfaceElementPurposeMember::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `StepElement_SurfaceElementPurposeMember.hxx`:45 - `StepElement_SurfaceElementPurposeMember::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKDESTEP::StepElement_SurfaceElementPurposeMember_dynamic_type(
@@ -10325,7 +6714,7 @@ impl SurfaceElementPurposeMember {
         }
     }
 
-    /// **Source:** `StepElement_SurfaceElementPurposeMember.hxx`:49 - `StepElement_SurfaceElementPurposeMember::get_type_name()`
+    /// **Source:** `StepElement_SurfaceElementPurposeMember.hxx`:45 - `StepElement_SurfaceElementPurposeMember::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -10336,8 +6725,8 @@ impl SurfaceElementPurposeMember {
         .into_owned()
     }
 
-    /// **Source:** `StepElement_SurfaceElementPurposeMember.hxx`:49 - `StepElement_SurfaceElementPurposeMember::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    /// **Source:** `StepElement_SurfaceElementPurposeMember.hxx`:45 - `StepElement_SurfaceElementPurposeMember::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKDESTEP::StepElement_SurfaceElementPurposeMember_get_type_descriptor()))
         }
@@ -10388,7 +6777,7 @@ impl SurfaceElementPurposeMember {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStepElementSurfaceElementPurposeMember> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_StepElement_SurfaceElementPurposeMember> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDESTEP::StepElement_SurfaceElementPurposeMember_to_handle(
@@ -10398,7 +6787,7 @@ impl SurfaceElementPurposeMember {
         }
     }
 
-    /// Inherited: **Source:** `StepData_SelectNamed.hxx`:47 - `StepData_SelectNamed::Field()`
+    /// Inherited: **Source:** `StepData_SelectNamed.hxx`:44 - `StepData_SelectNamed::Field()`
     pub fn field(&self) -> &crate::step_data::Field {
         unsafe {
             &*(crate::check_result(
@@ -10409,14 +6798,14 @@ impl SurfaceElementPurposeMember {
         }
     }
 
-    /// Inherited: **Source:** `StepData_SelectNamed.hxx`:49 - `StepData_SelectNamed::CField()`
+    /// Inherited: **Source:** `StepData_SelectNamed.hxx`:46 - `StepData_SelectNamed::CField()`
     pub fn c_field(&mut self) -> &mut crate::step_data::Field {
         unsafe {
             &mut *(crate::check_result(crate::ffi_extern_TKDESTEP::StepElement_SurfaceElementPurposeMember_inherited_CField(self as *mut Self)))
         }
     }
 
-    /// Inherited: **Source:** `StepData_SelectNamed.hxx`:51 - `StepData_SelectNamed::Kind()`
+    /// Inherited: **Source:** `StepData_SelectNamed.hxx`:48 - `StepData_SelectNamed::Kind()`
     pub fn kind(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepElement_SurfaceElementPurposeMember_inherited_Kind(
@@ -10425,7 +6814,7 @@ impl SurfaceElementPurposeMember {
         })
     }
 
-    /// Inherited: **Source:** `StepData_SelectNamed.hxx`:53 - `StepData_SelectNamed::SetKind()`
+    /// Inherited: **Source:** `StepData_SelectNamed.hxx`:50 - `StepData_SelectNamed::SetKind()`
     pub fn set_kind(&mut self, kind: i32) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepElement_SurfaceElementPurposeMember_inherited_SetKind(
@@ -10435,7 +6824,7 @@ impl SurfaceElementPurposeMember {
         })
     }
 
-    /// Inherited: **Source:** `StepData_SelectNamed.hxx`:57 - `StepData_SelectNamed::Int()`
+    /// Inherited: **Source:** `StepData_SelectNamed.hxx`:54 - `StepData_SelectNamed::Int()`
     pub fn int(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepElement_SurfaceElementPurposeMember_inherited_Int(
@@ -10444,7 +6833,7 @@ impl SurfaceElementPurposeMember {
         })
     }
 
-    /// Inherited: **Source:** `StepData_SelectNamed.hxx`:61 - `StepData_SelectNamed::SetInt()`
+    /// Inherited: **Source:** `StepData_SelectNamed.hxx`:58 - `StepData_SelectNamed::SetInt()`
     pub fn set_int(&mut self, val: i32) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepElement_SurfaceElementPurposeMember_inherited_SetInt(
@@ -10454,7 +6843,7 @@ impl SurfaceElementPurposeMember {
         })
     }
 
-    /// Inherited: **Source:** `StepData_SelectNamed.hxx`:63 - `StepData_SelectNamed::Real()`
+    /// Inherited: **Source:** `StepData_SelectNamed.hxx`:60 - `StepData_SelectNamed::Real()`
     pub fn real(&self) -> f64 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepElement_SurfaceElementPurposeMember_inherited_Real(
@@ -10463,7 +6852,7 @@ impl SurfaceElementPurposeMember {
         })
     }
 
-    /// Inherited: **Source:** `StepData_SelectNamed.hxx`:65 - `StepData_SelectNamed::SetReal()`
+    /// Inherited: **Source:** `StepData_SelectNamed.hxx`:62 - `StepData_SelectNamed::SetReal()`
     pub fn set_real(&mut self, val: f64) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepElement_SurfaceElementPurposeMember_inherited_SetReal(
@@ -10473,7 +6862,7 @@ impl SurfaceElementPurposeMember {
         })
     }
 
-    /// Inherited: **Source:** `StepData_SelectMember.hxx`:74 - `StepData_SelectMember::ParamType()`
+    /// Inherited: **Source:** `StepData_SelectMember.hxx`:71 - `StepData_SelectMember::ParamType()`
     pub fn param_type(&self) -> crate::interface::ParamType {
         crate::interface::ParamType::try_from(crate::check_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepElement_SurfaceElementPurposeMember_inherited_ParamType(
@@ -10483,7 +6872,7 @@ impl SurfaceElementPurposeMember {
         .unwrap()
     }
 
-    /// Inherited: **Source:** `StepData_SelectMember.hxx`:85 - `StepData_SelectMember::Integer()`
+    /// Inherited: **Source:** `StepData_SelectMember.hxx`:82 - `StepData_SelectMember::Integer()`
     pub fn integer(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepElement_SurfaceElementPurposeMember_inherited_Integer(
@@ -10492,7 +6881,7 @@ impl SurfaceElementPurposeMember {
         })
     }
 
-    /// Inherited: **Source:** `StepData_SelectMember.hxx`:87 - `StepData_SelectMember::SetInteger()`
+    /// Inherited: **Source:** `StepData_SelectMember.hxx`:84 - `StepData_SelectMember::SetInteger()`
     pub fn set_integer(&mut self, val: i32) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepElement_SurfaceElementPurposeMember_inherited_SetInteger(
@@ -10502,7 +6891,7 @@ impl SurfaceElementPurposeMember {
         })
     }
 
-    /// Inherited: **Source:** `StepData_SelectMember.hxx`:89 - `StepData_SelectMember::Boolean()`
+    /// Inherited: **Source:** `StepData_SelectMember.hxx`:86 - `StepData_SelectMember::Boolean()`
     pub fn boolean(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepElement_SurfaceElementPurposeMember_inherited_Boolean(
@@ -10511,7 +6900,7 @@ impl SurfaceElementPurposeMember {
         })
     }
 
-    /// Inherited: **Source:** `StepData_SelectMember.hxx`:91 - `StepData_SelectMember::SetBoolean()`
+    /// Inherited: **Source:** `StepData_SelectMember.hxx`:88 - `StepData_SelectMember::SetBoolean()`
     pub fn set_boolean(&mut self, val: bool) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepElement_SurfaceElementPurposeMember_inherited_SetBoolean(
@@ -10521,7 +6910,7 @@ impl SurfaceElementPurposeMember {
         })
     }
 
-    /// Inherited: **Source:** `StepData_SelectMember.hxx`:93 - `StepData_SelectMember::Logical()`
+    /// Inherited: **Source:** `StepData_SelectMember.hxx`:90 - `StepData_SelectMember::Logical()`
     pub fn logical(&self) -> crate::step_data::Logical {
         crate::step_data::Logical::try_from(crate::check_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepElement_SurfaceElementPurposeMember_inherited_Logical(
@@ -10531,7 +6920,7 @@ impl SurfaceElementPurposeMember {
         .unwrap()
     }
 
-    /// Inherited: **Source:** `StepData_SelectMember.hxx`:95 - `StepData_SelectMember::SetLogical()`
+    /// Inherited: **Source:** `StepData_SelectMember.hxx`:92 - `StepData_SelectMember::SetLogical()`
     pub fn set_logical(&mut self, val: crate::step_data::Logical) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepElement_SurfaceElementPurposeMember_inherited_SetLogical(
@@ -10541,7 +6930,7 @@ impl SurfaceElementPurposeMember {
         })
     }
 
-    /// Inherited: **Source:** `StepData_SelectMember.hxx`:105 - `StepData_SelectMember::Enum()`
+    /// Inherited: **Source:** `StepData_SelectMember.hxx`:102 - `StepData_SelectMember::Enum()`
     pub fn enum_(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepElement_SurfaceElementPurposeMember_inherited_Enum(
@@ -10550,8 +6939,8 @@ impl SurfaceElementPurposeMember {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepElement_SurfaceElementPurposeMember_inherited_IsInstance(
                 self as *const Self,
@@ -10560,8 +6949,8 @@ impl SurfaceElementPurposeMember {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepElement_SurfaceElementPurposeMember_inherited_IsKind(
                 self as *const Self,
@@ -10570,7 +6959,7 @@ impl SurfaceElementPurposeMember {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -10586,28 +6975,28 @@ impl SurfaceElementPurposeMember {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepElement_SurfaceElementPurposeMember_inherited_GetRefCount(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepElement_SurfaceElementPurposeMember_inherited_IncrementRefCounter(self as *mut Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepElement_SurfaceElementPurposeMember_inherited_DecrementRefCounter(self as *mut Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepElement_SurfaceElementPurposeMember_inherited_Delete(
@@ -10617,33 +7006,35 @@ impl SurfaceElementPurposeMember {
     }
 }
 
-pub use crate::ffi_types::HandleStepElementSurfaceElementPurposeMember;
+pub use crate::ffi_types::Handle_StepElement_SurfaceElementPurposeMember;
 
-unsafe impl crate::CppDeletable for HandleStepElementSurfaceElementPurposeMember {
+unsafe impl crate::CppDeletable for Handle_StepElement_SurfaceElementPurposeMember {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKDESTEP::HandleStepElementSurfaceElementPurposeMember_destructor(
+            crate::ffi_extern_TKDESTEP::Handle_StepElement_SurfaceElementPurposeMember_destructor(
                 ptr,
             );
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleStepElementSurfaceElementPurposeMember {
+unsafe impl crate::CppCopyable for Handle_StepElement_SurfaceElementPurposeMember {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
         unsafe {
             crate::check_result(
-                crate::ffi_extern_TKDESTEP::HandleStepElementSurfaceElementPurposeMember_clone(ptr),
+                crate::ffi_extern_TKDESTEP::Handle_StepElement_SurfaceElementPurposeMember_clone(
+                    ptr,
+                ),
             )
         }
     }
 }
 
-impl HandleStepElementSurfaceElementPurposeMember {
+impl Handle_StepElement_SurfaceElementPurposeMember {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
         unsafe {
-            crate::ffi_extern_TKDESTEP::HandleStepElementSurfaceElementPurposeMember_is_null(
+            crate::ffi_extern_TKDESTEP::Handle_StepElement_SurfaceElementPurposeMember_is_null(
                 self as *const Self,
             )
         }
@@ -10653,7 +7044,7 @@ impl HandleStepElementSurfaceElementPurposeMember {
     pub fn get(&self) -> &crate::ffi_types::StepElement_SurfaceElementPurposeMember {
         unsafe {
             &*crate::check_result(
-                crate::ffi_extern_TKDESTEP::HandleStepElementSurfaceElementPurposeMember_get(
+                crate::ffi_extern_TKDESTEP::Handle_StepElement_SurfaceElementPurposeMember_get(
                     self as *const Self,
                 ),
             )
@@ -10664,7 +7055,7 @@ impl HandleStepElementSurfaceElementPurposeMember {
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::StepElement_SurfaceElementPurposeMember {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi_extern_TKDESTEP::HandleStepElementSurfaceElementPurposeMember_get_mut(
+                crate::ffi_extern_TKDESTEP::Handle_StepElement_SurfaceElementPurposeMember_get_mut(
                     self as *mut Self,
                 ),
             )
@@ -10674,27 +7065,27 @@ impl HandleStepElementSurfaceElementPurposeMember {
     /// Upcast Handle<StepElement_SurfaceElementPurposeMember> to Handle<StepData_SelectNamed>
     pub fn to_handle_select_named(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStepDataSelectNamed> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_StepData_SelectNamed> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepElementSurfaceElementPurposeMember_to_HandleStepDataSelectNamed(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::Handle_StepElement_SurfaceElementPurposeMember_to_Handle_StepData_SelectNamed(self as *const Self)))
         }
     }
 
     /// Upcast Handle<StepElement_SurfaceElementPurposeMember> to Handle<StepData_SelectMember>
     pub fn to_handle_select_member(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStepDataSelectMember> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_StepData_SelectMember> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepElementSurfaceElementPurposeMember_to_HandleStepDataSelectMember(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::Handle_StepElement_SurfaceElementPurposeMember_to_Handle_StepData_SelectMember(self as *const Self)))
         }
     }
 
     /// Upcast Handle<StepElement_SurfaceElementPurposeMember> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepElementSurfaceElementPurposeMember_to_HandleStandardTransient(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::Handle_StepElement_SurfaceElementPurposeMember_to_Handle_Standard_Transient(self as *const Self)))
         }
     }
 }
@@ -10703,7 +7094,7 @@ impl HandleStepElementSurfaceElementPurposeMember {
 // From StepElement_SurfaceSection.hxx
 // ========================
 
-/// **Source:** `StepElement_SurfaceSection.hxx`:28 - `StepElement_SurfaceSection`
+/// **Source:** `StepElement_SurfaceSection.hxx`:25 - `StepElement_SurfaceSection`
 /// Representation of STEP entity SurfaceSection
 pub use crate::ffi_types::StepElement_SurfaceSection as SurfaceSection;
 
@@ -10716,7 +7107,7 @@ unsafe impl crate::CppDeletable for SurfaceSection {
 }
 
 impl SurfaceSection {
-    /// **Source:** `StepElement_SurfaceSection.hxx`:33 - `StepElement_SurfaceSection::StepElement_SurfaceSection()`
+    /// **Source:** `StepElement_SurfaceSection.hxx`:30 - `StepElement_SurfaceSection::StepElement_SurfaceSection()`
     /// Empty constructor
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
@@ -10726,7 +7117,7 @@ impl SurfaceSection {
         }
     }
 
-    /// **Source:** `StepElement_SurfaceSection.hxx`:36 - `StepElement_SurfaceSection::Init()`
+    /// **Source:** `StepElement_SurfaceSection.hxx`:33 - `StepElement_SurfaceSection::Init()`
     /// Initialize all fields (own and inherited)
     pub fn init(
         &mut self,
@@ -10744,7 +7135,7 @@ impl SurfaceSection {
         })
     }
 
-    /// **Source:** `StepElement_SurfaceSection.hxx`:41 - `StepElement_SurfaceSection::Offset()`
+    /// **Source:** `StepElement_SurfaceSection.hxx`:38 - `StepElement_SurfaceSection::Offset()`
     /// Returns field Offset
     pub fn offset(&self) -> crate::OwnedPtr<MeasureOrUnspecifiedValue> {
         unsafe {
@@ -10754,7 +7145,7 @@ impl SurfaceSection {
         }
     }
 
-    /// **Source:** `StepElement_SurfaceSection.hxx`:44 - `StepElement_SurfaceSection::SetOffset()`
+    /// **Source:** `StepElement_SurfaceSection.hxx`:41 - `StepElement_SurfaceSection::SetOffset()`
     /// Set field Offset
     pub fn set_offset(&mut self, Offset: &MeasureOrUnspecifiedValue) {
         crate::check_void_result(unsafe {
@@ -10765,7 +7156,7 @@ impl SurfaceSection {
         })
     }
 
-    /// **Source:** `StepElement_SurfaceSection.hxx`:47 - `StepElement_SurfaceSection::NonStructuralMass()`
+    /// **Source:** `StepElement_SurfaceSection.hxx`:44 - `StepElement_SurfaceSection::NonStructuralMass()`
     /// Returns field NonStructuralMass
     pub fn non_structural_mass(&self) -> crate::OwnedPtr<MeasureOrUnspecifiedValue> {
         unsafe {
@@ -10777,7 +7168,7 @@ impl SurfaceSection {
         }
     }
 
-    /// **Source:** `StepElement_SurfaceSection.hxx`:50 - `StepElement_SurfaceSection::SetNonStructuralMass()`
+    /// **Source:** `StepElement_SurfaceSection.hxx`:47 - `StepElement_SurfaceSection::SetNonStructuralMass()`
     /// Set field NonStructuralMass
     pub fn set_non_structural_mass(&mut self, NonStructuralMass: &MeasureOrUnspecifiedValue) {
         crate::check_void_result(unsafe {
@@ -10788,7 +7179,7 @@ impl SurfaceSection {
         })
     }
 
-    /// **Source:** `StepElement_SurfaceSection.hxx`:54 - `StepElement_SurfaceSection::NonStructuralMassOffset()`
+    /// **Source:** `StepElement_SurfaceSection.hxx`:51 - `StepElement_SurfaceSection::NonStructuralMassOffset()`
     /// Returns field NonStructuralMassOffset
     pub fn non_structural_mass_offset(&self) -> crate::OwnedPtr<MeasureOrUnspecifiedValue> {
         unsafe {
@@ -10800,7 +7191,7 @@ impl SurfaceSection {
         }
     }
 
-    /// **Source:** `StepElement_SurfaceSection.hxx`:57 - `StepElement_SurfaceSection::SetNonStructuralMassOffset()`
+    /// **Source:** `StepElement_SurfaceSection.hxx`:54 - `StepElement_SurfaceSection::SetNonStructuralMassOffset()`
     /// Set field NonStructuralMassOffset
     pub fn set_non_structural_mass_offset(
         &mut self,
@@ -10814,8 +7205,8 @@ impl SurfaceSection {
         })
     }
 
-    /// **Source:** `StepElement_SurfaceSection.hxx`:60 - `StepElement_SurfaceSection::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `StepElement_SurfaceSection.hxx`:57 - `StepElement_SurfaceSection::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKDESTEP::StepElement_SurfaceSection_dynamic_type(
@@ -10825,7 +7216,7 @@ impl SurfaceSection {
         }
     }
 
-    /// **Source:** `StepElement_SurfaceSection.hxx`:60 - `StepElement_SurfaceSection::get_type_name()`
+    /// **Source:** `StepElement_SurfaceSection.hxx`:57 - `StepElement_SurfaceSection::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -10836,8 +7227,8 @@ impl SurfaceSection {
         .into_owned()
     }
 
-    /// **Source:** `StepElement_SurfaceSection.hxx`:60 - `StepElement_SurfaceSection::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    /// **Source:** `StepElement_SurfaceSection.hxx`:57 - `StepElement_SurfaceSection::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKDESTEP::StepElement_SurfaceSection_get_type_descriptor(),
@@ -10870,7 +7261,7 @@ impl SurfaceSection {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStepElementSurfaceSection> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_StepElement_SurfaceSection> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDESTEP::StepElement_SurfaceSection_to_handle(obj.into_raw()),
@@ -10878,8 +7269,8 @@ impl SurfaceSection {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepElement_SurfaceSection_inherited_IsInstance(
                 self as *const Self,
@@ -10888,8 +7279,8 @@ impl SurfaceSection {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepElement_SurfaceSection_inherited_IsKind(
                 self as *const Self,
@@ -10898,7 +7289,7 @@ impl SurfaceSection {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -10914,7 +7305,7 @@ impl SurfaceSection {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepElement_SurfaceSection_inherited_GetRefCount(
@@ -10923,7 +7314,7 @@ impl SurfaceSection {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepElement_SurfaceSection_inherited_IncrementRefCounter(
@@ -10932,7 +7323,7 @@ impl SurfaceSection {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepElement_SurfaceSection_inherited_DecrementRefCounter(
@@ -10941,7 +7332,7 @@ impl SurfaceSection {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepElement_SurfaceSection_inherited_Delete(
@@ -10951,40 +7342,44 @@ impl SurfaceSection {
     }
 }
 
-pub use crate::ffi_types::HandleStepElementSurfaceSection;
+pub use crate::ffi_types::Handle_StepElement_SurfaceSection;
 
-unsafe impl crate::CppDeletable for HandleStepElementSurfaceSection {
+unsafe impl crate::CppDeletable for Handle_StepElement_SurfaceSection {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKDESTEP::HandleStepElementSurfaceSection_destructor(ptr);
+            crate::ffi_extern_TKDESTEP::Handle_StepElement_SurfaceSection_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleStepElementSurfaceSection {
+unsafe impl crate::CppCopyable for Handle_StepElement_SurfaceSection {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
         unsafe {
-            crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepElementSurfaceSection_clone(
-                ptr,
-            ))
+            crate::check_result(
+                crate::ffi_extern_TKDESTEP::Handle_StepElement_SurfaceSection_clone(ptr),
+            )
         }
     }
 }
 
-impl HandleStepElementSurfaceSection {
+impl Handle_StepElement_SurfaceSection {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
         unsafe {
-            crate::ffi_extern_TKDESTEP::HandleStepElementSurfaceSection_is_null(self as *const Self)
+            crate::ffi_extern_TKDESTEP::Handle_StepElement_SurfaceSection_is_null(
+                self as *const Self,
+            )
         }
     }
 
     /// Dereference this Handle to access the underlying StepElement_SurfaceSection
     pub fn get(&self) -> &crate::ffi_types::StepElement_SurfaceSection {
         unsafe {
-            &*crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepElementSurfaceSection_get(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKDESTEP::Handle_StepElement_SurfaceSection_get(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -10992,7 +7387,7 @@ impl HandleStepElementSurfaceSection {
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::StepElement_SurfaceSection {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi_extern_TKDESTEP::HandleStepElementSurfaceSection_get_mut(
+                crate::ffi_extern_TKDESTEP::Handle_StepElement_SurfaceSection_get_mut(
                     self as *mut Self,
                 ),
             )
@@ -11002,9 +7397,9 @@ impl HandleStepElementSurfaceSection {
     /// Upcast Handle<StepElement_SurfaceSection> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepElementSurfaceSection_to_HandleStandardTransient(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::Handle_StepElement_SurfaceSection_to_Handle_Standard_Transient(self as *const Self)))
         }
     }
 
@@ -11013,9 +7408,9 @@ impl HandleStepElementSurfaceSection {
     /// Returns `None` if the handle does not point to a `StepElement_UniformSurfaceSection` (or subclass).
     pub fn downcast_to_uniform_surface_section(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleStepElementUniformSurfaceSection>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_StepElement_UniformSurfaceSection>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKDESTEP::HandleStepElementSurfaceSection_downcast_to_HandleStepElementUniformSurfaceSection(self as *const Self)
+            crate::ffi_extern_TKDESTEP::Handle_StepElement_SurfaceSection_downcast_to_Handle_StepElement_UniformSurfaceSection(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -11029,7 +7424,7 @@ impl HandleStepElementSurfaceSection {
 // From StepElement_SurfaceSectionField.hxx
 // ========================
 
-/// **Source:** `StepElement_SurfaceSectionField.hxx`:28 - `StepElement_SurfaceSectionField`
+/// **Source:** `StepElement_SurfaceSectionField.hxx`:25 - `StepElement_SurfaceSectionField`
 /// Representation of STEP entity SurfaceSectionField
 pub use crate::ffi_types::StepElement_SurfaceSectionField as SurfaceSectionField;
 
@@ -11042,7 +7437,7 @@ unsafe impl crate::CppDeletable for SurfaceSectionField {
 }
 
 impl SurfaceSectionField {
-    /// **Source:** `StepElement_SurfaceSectionField.hxx`:33 - `StepElement_SurfaceSectionField::StepElement_SurfaceSectionField()`
+    /// **Source:** `StepElement_SurfaceSectionField.hxx`:30 - `StepElement_SurfaceSectionField::StepElement_SurfaceSectionField()`
     /// Empty constructor
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
@@ -11052,8 +7447,8 @@ impl SurfaceSectionField {
         }
     }
 
-    /// **Source:** `StepElement_SurfaceSectionField.hxx`:35 - `StepElement_SurfaceSectionField::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `StepElement_SurfaceSectionField.hxx`:32 - `StepElement_SurfaceSectionField::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKDESTEP::StepElement_SurfaceSectionField_dynamic_type(
@@ -11063,7 +7458,7 @@ impl SurfaceSectionField {
         }
     }
 
-    /// **Source:** `StepElement_SurfaceSectionField.hxx`:35 - `StepElement_SurfaceSectionField::get_type_name()`
+    /// **Source:** `StepElement_SurfaceSectionField.hxx`:32 - `StepElement_SurfaceSectionField::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -11074,8 +7469,8 @@ impl SurfaceSectionField {
         .into_owned()
     }
 
-    /// **Source:** `StepElement_SurfaceSectionField.hxx`:35 - `StepElement_SurfaceSectionField::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    /// **Source:** `StepElement_SurfaceSectionField.hxx`:32 - `StepElement_SurfaceSectionField::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKDESTEP::StepElement_SurfaceSectionField_get_type_descriptor(),
@@ -11104,7 +7499,7 @@ impl SurfaceSectionField {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStepElementSurfaceSectionField> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_StepElement_SurfaceSectionField> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDESTEP::StepElement_SurfaceSectionField_to_handle(
@@ -11114,8 +7509,8 @@ impl SurfaceSectionField {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepElement_SurfaceSectionField_inherited_IsInstance(
                 self as *const Self,
@@ -11124,8 +7519,8 @@ impl SurfaceSectionField {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepElement_SurfaceSectionField_inherited_IsKind(
                 self as *const Self,
@@ -11134,7 +7529,7 @@ impl SurfaceSectionField {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -11150,7 +7545,7 @@ impl SurfaceSectionField {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepElement_SurfaceSectionField_inherited_GetRefCount(
@@ -11159,21 +7554,21 @@ impl SurfaceSectionField {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepElement_SurfaceSectionField_inherited_IncrementRefCounter(self as *mut Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepElement_SurfaceSectionField_inherited_DecrementRefCounter(self as *mut Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepElement_SurfaceSectionField_inherited_Delete(
@@ -11183,31 +7578,31 @@ impl SurfaceSectionField {
     }
 }
 
-pub use crate::ffi_types::HandleStepElementSurfaceSectionField;
+pub use crate::ffi_types::Handle_StepElement_SurfaceSectionField;
 
-unsafe impl crate::CppDeletable for HandleStepElementSurfaceSectionField {
+unsafe impl crate::CppDeletable for Handle_StepElement_SurfaceSectionField {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKDESTEP::HandleStepElementSurfaceSectionField_destructor(ptr);
+            crate::ffi_extern_TKDESTEP::Handle_StepElement_SurfaceSectionField_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleStepElementSurfaceSectionField {
+unsafe impl crate::CppCopyable for Handle_StepElement_SurfaceSectionField {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
         unsafe {
             crate::check_result(
-                crate::ffi_extern_TKDESTEP::HandleStepElementSurfaceSectionField_clone(ptr),
+                crate::ffi_extern_TKDESTEP::Handle_StepElement_SurfaceSectionField_clone(ptr),
             )
         }
     }
 }
 
-impl HandleStepElementSurfaceSectionField {
+impl Handle_StepElement_SurfaceSectionField {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
         unsafe {
-            crate::ffi_extern_TKDESTEP::HandleStepElementSurfaceSectionField_is_null(
+            crate::ffi_extern_TKDESTEP::Handle_StepElement_SurfaceSectionField_is_null(
                 self as *const Self,
             )
         }
@@ -11217,7 +7612,7 @@ impl HandleStepElementSurfaceSectionField {
     pub fn get(&self) -> &crate::ffi_types::StepElement_SurfaceSectionField {
         unsafe {
             &*crate::check_result(
-                crate::ffi_extern_TKDESTEP::HandleStepElementSurfaceSectionField_get(
+                crate::ffi_extern_TKDESTEP::Handle_StepElement_SurfaceSectionField_get(
                     self as *const Self,
                 ),
             )
@@ -11228,7 +7623,7 @@ impl HandleStepElementSurfaceSectionField {
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::StepElement_SurfaceSectionField {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi_extern_TKDESTEP::HandleStepElementSurfaceSectionField_get_mut(
+                crate::ffi_extern_TKDESTEP::Handle_StepElement_SurfaceSectionField_get_mut(
                     self as *mut Self,
                 ),
             )
@@ -11238,9 +7633,9 @@ impl HandleStepElementSurfaceSectionField {
     /// Upcast Handle<StepElement_SurfaceSectionField> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepElementSurfaceSectionField_to_HandleStandardTransient(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::Handle_StepElement_SurfaceSectionField_to_Handle_Standard_Transient(self as *const Self)))
         }
     }
 
@@ -11249,10 +7644,10 @@ impl HandleStepElementSurfaceSectionField {
     /// Returns `None` if the handle does not point to a `StepElement_SurfaceSectionFieldConstant` (or subclass).
     pub fn downcast_to_surface_section_field_constant(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleStepElementSurfaceSectionFieldConstant>>
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_StepElement_SurfaceSectionFieldConstant>>
     {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKDESTEP::HandleStepElementSurfaceSectionField_downcast_to_HandleStepElementSurfaceSectionFieldConstant(self as *const Self)
+            crate::ffi_extern_TKDESTEP::Handle_StepElement_SurfaceSectionField_downcast_to_Handle_StepElement_SurfaceSectionFieldConstant(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -11266,10 +7661,10 @@ impl HandleStepElementSurfaceSectionField {
     /// Returns `None` if the handle does not point to a `StepElement_SurfaceSectionFieldVarying` (or subclass).
     pub fn downcast_to_surface_section_field_varying(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleStepElementSurfaceSectionFieldVarying>>
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_StepElement_SurfaceSectionFieldVarying>>
     {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKDESTEP::HandleStepElementSurfaceSectionField_downcast_to_HandleStepElementSurfaceSectionFieldVarying(self as *const Self)
+            crate::ffi_extern_TKDESTEP::Handle_StepElement_SurfaceSectionField_downcast_to_Handle_StepElement_SurfaceSectionFieldVarying(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -11283,7 +7678,7 @@ impl HandleStepElementSurfaceSectionField {
 // From StepElement_SurfaceSectionFieldConstant.hxx
 // ========================
 
-/// **Source:** `StepElement_SurfaceSectionFieldConstant.hxx`:29 - `StepElement_SurfaceSectionFieldConstant`
+/// **Source:** `StepElement_SurfaceSectionFieldConstant.hxx`:26 - `StepElement_SurfaceSectionFieldConstant`
 /// Representation of STEP entity SurfaceSectionFieldConstant
 pub use crate::ffi_types::StepElement_SurfaceSectionFieldConstant as SurfaceSectionFieldConstant;
 
@@ -11296,7 +7691,7 @@ unsafe impl crate::CppDeletable for SurfaceSectionFieldConstant {
 }
 
 impl SurfaceSectionFieldConstant {
-    /// **Source:** `StepElement_SurfaceSectionFieldConstant.hxx`:34 - `StepElement_SurfaceSectionFieldConstant::StepElement_SurfaceSectionFieldConstant()`
+    /// **Source:** `StepElement_SurfaceSectionFieldConstant.hxx`:31 - `StepElement_SurfaceSectionFieldConstant::StepElement_SurfaceSectionFieldConstant()`
     /// Empty constructor
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
@@ -11306,9 +7701,9 @@ impl SurfaceSectionFieldConstant {
         }
     }
 
-    /// **Source:** `StepElement_SurfaceSectionFieldConstant.hxx`:37 - `StepElement_SurfaceSectionFieldConstant::Init()`
+    /// **Source:** `StepElement_SurfaceSectionFieldConstant.hxx`:34 - `StepElement_SurfaceSectionFieldConstant::Init()`
     /// Initialize all fields (own and inherited)
-    pub fn init(&mut self, aDefinition: &crate::ffi_types::HandleStepElementSurfaceSection) {
+    pub fn init(&mut self, aDefinition: &crate::ffi_types::Handle_StepElement_SurfaceSection) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepElement_SurfaceSectionFieldConstant_init(
                 self as *mut Self,
@@ -11317,9 +7712,11 @@ impl SurfaceSectionFieldConstant {
         })
     }
 
-    /// **Source:** `StepElement_SurfaceSectionFieldConstant.hxx`:40 - `StepElement_SurfaceSectionFieldConstant::Definition()`
+    /// **Source:** `StepElement_SurfaceSectionFieldConstant.hxx`:37 - `StepElement_SurfaceSectionFieldConstant::Definition()`
     /// Returns field Definition
-    pub fn definition(&self) -> crate::OwnedPtr<crate::ffi_types::HandleStepElementSurfaceSection> {
+    pub fn definition(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_StepElement_SurfaceSection> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDESTEP::StepElement_SurfaceSectionFieldConstant_definition(
@@ -11329,11 +7726,11 @@ impl SurfaceSectionFieldConstant {
         }
     }
 
-    /// **Source:** `StepElement_SurfaceSectionFieldConstant.hxx`:43 - `StepElement_SurfaceSectionFieldConstant::SetDefinition()`
+    /// **Source:** `StepElement_SurfaceSectionFieldConstant.hxx`:40 - `StepElement_SurfaceSectionFieldConstant::SetDefinition()`
     /// Set field Definition
     pub fn set_definition(
         &mut self,
-        Definition: &crate::ffi_types::HandleStepElementSurfaceSection,
+        Definition: &crate::ffi_types::Handle_StepElement_SurfaceSection,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepElement_SurfaceSectionFieldConstant_set_definition(
@@ -11343,8 +7740,8 @@ impl SurfaceSectionFieldConstant {
         })
     }
 
-    /// **Source:** `StepElement_SurfaceSectionFieldConstant.hxx`:45 - `StepElement_SurfaceSectionFieldConstant::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `StepElement_SurfaceSectionFieldConstant.hxx`:42 - `StepElement_SurfaceSectionFieldConstant::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKDESTEP::StepElement_SurfaceSectionFieldConstant_dynamic_type(
@@ -11354,7 +7751,7 @@ impl SurfaceSectionFieldConstant {
         }
     }
 
-    /// **Source:** `StepElement_SurfaceSectionFieldConstant.hxx`:45 - `StepElement_SurfaceSectionFieldConstant::get_type_name()`
+    /// **Source:** `StepElement_SurfaceSectionFieldConstant.hxx`:42 - `StepElement_SurfaceSectionFieldConstant::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -11365,8 +7762,8 @@ impl SurfaceSectionFieldConstant {
         .into_owned()
     }
 
-    /// **Source:** `StepElement_SurfaceSectionFieldConstant.hxx`:45 - `StepElement_SurfaceSectionFieldConstant::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    /// **Source:** `StepElement_SurfaceSectionFieldConstant.hxx`:42 - `StepElement_SurfaceSectionFieldConstant::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKDESTEP::StepElement_SurfaceSectionFieldConstant_get_type_descriptor()))
         }
@@ -11403,7 +7800,7 @@ impl SurfaceSectionFieldConstant {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStepElementSurfaceSectionFieldConstant> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_StepElement_SurfaceSectionFieldConstant> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDESTEP::StepElement_SurfaceSectionFieldConstant_to_handle(
@@ -11413,8 +7810,8 @@ impl SurfaceSectionFieldConstant {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepElement_SurfaceSectionFieldConstant_inherited_IsInstance(
                 self as *const Self,
@@ -11423,8 +7820,8 @@ impl SurfaceSectionFieldConstant {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepElement_SurfaceSectionFieldConstant_inherited_IsKind(
                 self as *const Self,
@@ -11433,7 +7830,7 @@ impl SurfaceSectionFieldConstant {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -11449,28 +7846,28 @@ impl SurfaceSectionFieldConstant {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepElement_SurfaceSectionFieldConstant_inherited_GetRefCount(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepElement_SurfaceSectionFieldConstant_inherited_IncrementRefCounter(self as *mut Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepElement_SurfaceSectionFieldConstant_inherited_DecrementRefCounter(self as *mut Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepElement_SurfaceSectionFieldConstant_inherited_Delete(
@@ -11480,33 +7877,35 @@ impl SurfaceSectionFieldConstant {
     }
 }
 
-pub use crate::ffi_types::HandleStepElementSurfaceSectionFieldConstant;
+pub use crate::ffi_types::Handle_StepElement_SurfaceSectionFieldConstant;
 
-unsafe impl crate::CppDeletable for HandleStepElementSurfaceSectionFieldConstant {
+unsafe impl crate::CppDeletable for Handle_StepElement_SurfaceSectionFieldConstant {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKDESTEP::HandleStepElementSurfaceSectionFieldConstant_destructor(
+            crate::ffi_extern_TKDESTEP::Handle_StepElement_SurfaceSectionFieldConstant_destructor(
                 ptr,
             );
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleStepElementSurfaceSectionFieldConstant {
+unsafe impl crate::CppCopyable for Handle_StepElement_SurfaceSectionFieldConstant {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
         unsafe {
             crate::check_result(
-                crate::ffi_extern_TKDESTEP::HandleStepElementSurfaceSectionFieldConstant_clone(ptr),
+                crate::ffi_extern_TKDESTEP::Handle_StepElement_SurfaceSectionFieldConstant_clone(
+                    ptr,
+                ),
             )
         }
     }
 }
 
-impl HandleStepElementSurfaceSectionFieldConstant {
+impl Handle_StepElement_SurfaceSectionFieldConstant {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
         unsafe {
-            crate::ffi_extern_TKDESTEP::HandleStepElementSurfaceSectionFieldConstant_is_null(
+            crate::ffi_extern_TKDESTEP::Handle_StepElement_SurfaceSectionFieldConstant_is_null(
                 self as *const Self,
             )
         }
@@ -11516,7 +7915,7 @@ impl HandleStepElementSurfaceSectionFieldConstant {
     pub fn get(&self) -> &crate::ffi_types::StepElement_SurfaceSectionFieldConstant {
         unsafe {
             &*crate::check_result(
-                crate::ffi_extern_TKDESTEP::HandleStepElementSurfaceSectionFieldConstant_get(
+                crate::ffi_extern_TKDESTEP::Handle_StepElement_SurfaceSectionFieldConstant_get(
                     self as *const Self,
                 ),
             )
@@ -11527,7 +7926,7 @@ impl HandleStepElementSurfaceSectionFieldConstant {
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::StepElement_SurfaceSectionFieldConstant {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi_extern_TKDESTEP::HandleStepElementSurfaceSectionFieldConstant_get_mut(
+                crate::ffi_extern_TKDESTEP::Handle_StepElement_SurfaceSectionFieldConstant_get_mut(
                     self as *mut Self,
                 ),
             )
@@ -11537,18 +7936,18 @@ impl HandleStepElementSurfaceSectionFieldConstant {
     /// Upcast Handle<StepElement_SurfaceSectionFieldConstant> to Handle<StepElement_SurfaceSectionField>
     pub fn to_handle_surface_section_field(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStepElementSurfaceSectionField> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_StepElement_SurfaceSectionField> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepElementSurfaceSectionFieldConstant_to_HandleStepElementSurfaceSectionField(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::Handle_StepElement_SurfaceSectionFieldConstant_to_Handle_StepElement_SurfaceSectionField(self as *const Self)))
         }
     }
 
     /// Upcast Handle<StepElement_SurfaceSectionFieldConstant> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepElementSurfaceSectionFieldConstant_to_HandleStandardTransient(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::Handle_StepElement_SurfaceSectionFieldConstant_to_Handle_Standard_Transient(self as *const Self)))
         }
     }
 }
@@ -11557,7 +7956,7 @@ impl HandleStepElementSurfaceSectionFieldConstant {
 // From StepElement_SurfaceSectionFieldVarying.hxx
 // ========================
 
-/// **Source:** `StepElement_SurfaceSectionFieldVarying.hxx`:29 - `StepElement_SurfaceSectionFieldVarying`
+/// **Source:** `StepElement_SurfaceSectionFieldVarying.hxx`:28 - `StepElement_SurfaceSectionFieldVarying`
 /// Representation of STEP entity SurfaceSectionFieldVarying
 pub use crate::ffi_types::StepElement_SurfaceSectionFieldVarying as SurfaceSectionFieldVarying;
 
@@ -11570,7 +7969,7 @@ unsafe impl crate::CppDeletable for SurfaceSectionFieldVarying {
 }
 
 impl SurfaceSectionFieldVarying {
-    /// **Source:** `StepElement_SurfaceSectionFieldVarying.hxx`:34 - `StepElement_SurfaceSectionFieldVarying::StepElement_SurfaceSectionFieldVarying()`
+    /// **Source:** `StepElement_SurfaceSectionFieldVarying.hxx`:33 - `StepElement_SurfaceSectionFieldVarying::StepElement_SurfaceSectionFieldVarying()`
     /// Empty constructor
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
@@ -11580,11 +7979,11 @@ impl SurfaceSectionFieldVarying {
         }
     }
 
-    /// **Source:** `StepElement_SurfaceSectionFieldVarying.hxx`:37 - `StepElement_SurfaceSectionFieldVarying::Init()`
+    /// **Source:** `StepElement_SurfaceSectionFieldVarying.hxx`:36 - `StepElement_SurfaceSectionFieldVarying::Init()`
     /// Initialize all fields (own and inherited)
     pub fn init(
         &mut self,
-        aDefinitions: &crate::ffi_types::HandleStepElementHArray1OfSurfaceSection,
+        aDefinitions: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepElement_SurfaceSection,
         aAdditionalNodeValues: bool,
     ) {
         crate::check_void_result(unsafe {
@@ -11596,11 +7995,13 @@ impl SurfaceSectionFieldVarying {
         })
     }
 
-    /// **Source:** `StepElement_SurfaceSectionFieldVarying.hxx`:41 - `StepElement_SurfaceSectionFieldVarying::Definitions()`
+    /// **Source:** `StepElement_SurfaceSectionFieldVarying.hxx`:42 - `StepElement_SurfaceSectionFieldVarying::Definitions()`
     /// Returns field Definitions
     pub fn definitions(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStepElementHArray1OfSurfaceSection> {
+    ) -> crate::OwnedPtr<
+        crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepElement_SurfaceSection,
+    > {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDESTEP::StepElement_SurfaceSectionFieldVarying_definitions(
@@ -11610,11 +8011,11 @@ impl SurfaceSectionFieldVarying {
         }
     }
 
-    /// **Source:** `StepElement_SurfaceSectionFieldVarying.hxx`:44 - `StepElement_SurfaceSectionFieldVarying::SetDefinitions()`
+    /// **Source:** `StepElement_SurfaceSectionFieldVarying.hxx`:45 - `StepElement_SurfaceSectionFieldVarying::SetDefinitions()`
     /// Set field Definitions
     pub fn set_definitions(
         &mut self,
-        Definitions: &crate::ffi_types::HandleStepElementHArray1OfSurfaceSection,
+        Definitions: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepElement_SurfaceSection,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepElement_SurfaceSectionFieldVarying_set_definitions(
@@ -11624,7 +8025,7 @@ impl SurfaceSectionFieldVarying {
         })
     }
 
-    /// **Source:** `StepElement_SurfaceSectionFieldVarying.hxx`:48 - `StepElement_SurfaceSectionFieldVarying::AdditionalNodeValues()`
+    /// **Source:** `StepElement_SurfaceSectionFieldVarying.hxx`:49 - `StepElement_SurfaceSectionFieldVarying::AdditionalNodeValues()`
     /// Returns field AdditionalNodeValues
     pub fn additional_node_values(&self) -> bool {
         crate::check_result(unsafe {
@@ -11632,7 +8033,7 @@ impl SurfaceSectionFieldVarying {
         })
     }
 
-    /// **Source:** `StepElement_SurfaceSectionFieldVarying.hxx`:51 - `StepElement_SurfaceSectionFieldVarying::SetAdditionalNodeValues()`
+    /// **Source:** `StepElement_SurfaceSectionFieldVarying.hxx`:52 - `StepElement_SurfaceSectionFieldVarying::SetAdditionalNodeValues()`
     /// Set field AdditionalNodeValues
     pub fn set_additional_node_values(&mut self, AdditionalNodeValues: bool) {
         crate::check_void_result(unsafe {
@@ -11640,8 +8041,8 @@ impl SurfaceSectionFieldVarying {
         })
     }
 
-    /// **Source:** `StepElement_SurfaceSectionFieldVarying.hxx`:53 - `StepElement_SurfaceSectionFieldVarying::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `StepElement_SurfaceSectionFieldVarying.hxx`:54 - `StepElement_SurfaceSectionFieldVarying::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKDESTEP::StepElement_SurfaceSectionFieldVarying_dynamic_type(
@@ -11651,7 +8052,7 @@ impl SurfaceSectionFieldVarying {
         }
     }
 
-    /// **Source:** `StepElement_SurfaceSectionFieldVarying.hxx`:53 - `StepElement_SurfaceSectionFieldVarying::get_type_name()`
+    /// **Source:** `StepElement_SurfaceSectionFieldVarying.hxx`:54 - `StepElement_SurfaceSectionFieldVarying::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -11662,8 +8063,8 @@ impl SurfaceSectionFieldVarying {
         .into_owned()
     }
 
-    /// **Source:** `StepElement_SurfaceSectionFieldVarying.hxx`:53 - `StepElement_SurfaceSectionFieldVarying::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    /// **Source:** `StepElement_SurfaceSectionFieldVarying.hxx`:54 - `StepElement_SurfaceSectionFieldVarying::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKDESTEP::StepElement_SurfaceSectionFieldVarying_get_type_descriptor()))
         }
@@ -11700,7 +8101,7 @@ impl SurfaceSectionFieldVarying {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStepElementSurfaceSectionFieldVarying> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_StepElement_SurfaceSectionFieldVarying> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDESTEP::StepElement_SurfaceSectionFieldVarying_to_handle(
@@ -11710,8 +8111,8 @@ impl SurfaceSectionFieldVarying {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepElement_SurfaceSectionFieldVarying_inherited_IsInstance(
                 self as *const Self,
@@ -11720,8 +8121,8 @@ impl SurfaceSectionFieldVarying {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepElement_SurfaceSectionFieldVarying_inherited_IsKind(
                 self as *const Self,
@@ -11730,7 +8131,7 @@ impl SurfaceSectionFieldVarying {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -11746,7 +8147,7 @@ impl SurfaceSectionFieldVarying {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepElement_SurfaceSectionFieldVarying_inherited_GetRefCount(
@@ -11755,21 +8156,21 @@ impl SurfaceSectionFieldVarying {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepElement_SurfaceSectionFieldVarying_inherited_IncrementRefCounter(self as *mut Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepElement_SurfaceSectionFieldVarying_inherited_DecrementRefCounter(self as *mut Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepElement_SurfaceSectionFieldVarying_inherited_Delete(
@@ -11779,31 +8180,35 @@ impl SurfaceSectionFieldVarying {
     }
 }
 
-pub use crate::ffi_types::HandleStepElementSurfaceSectionFieldVarying;
+pub use crate::ffi_types::Handle_StepElement_SurfaceSectionFieldVarying;
 
-unsafe impl crate::CppDeletable for HandleStepElementSurfaceSectionFieldVarying {
+unsafe impl crate::CppDeletable for Handle_StepElement_SurfaceSectionFieldVarying {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKDESTEP::HandleStepElementSurfaceSectionFieldVarying_destructor(ptr);
+            crate::ffi_extern_TKDESTEP::Handle_StepElement_SurfaceSectionFieldVarying_destructor(
+                ptr,
+            );
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleStepElementSurfaceSectionFieldVarying {
+unsafe impl crate::CppCopyable for Handle_StepElement_SurfaceSectionFieldVarying {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
         unsafe {
             crate::check_result(
-                crate::ffi_extern_TKDESTEP::HandleStepElementSurfaceSectionFieldVarying_clone(ptr),
+                crate::ffi_extern_TKDESTEP::Handle_StepElement_SurfaceSectionFieldVarying_clone(
+                    ptr,
+                ),
             )
         }
     }
 }
 
-impl HandleStepElementSurfaceSectionFieldVarying {
+impl Handle_StepElement_SurfaceSectionFieldVarying {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
         unsafe {
-            crate::ffi_extern_TKDESTEP::HandleStepElementSurfaceSectionFieldVarying_is_null(
+            crate::ffi_extern_TKDESTEP::Handle_StepElement_SurfaceSectionFieldVarying_is_null(
                 self as *const Self,
             )
         }
@@ -11813,7 +8218,7 @@ impl HandleStepElementSurfaceSectionFieldVarying {
     pub fn get(&self) -> &crate::ffi_types::StepElement_SurfaceSectionFieldVarying {
         unsafe {
             &*crate::check_result(
-                crate::ffi_extern_TKDESTEP::HandleStepElementSurfaceSectionFieldVarying_get(
+                crate::ffi_extern_TKDESTEP::Handle_StepElement_SurfaceSectionFieldVarying_get(
                     self as *const Self,
                 ),
             )
@@ -11824,7 +8229,7 @@ impl HandleStepElementSurfaceSectionFieldVarying {
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::StepElement_SurfaceSectionFieldVarying {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi_extern_TKDESTEP::HandleStepElementSurfaceSectionFieldVarying_get_mut(
+                crate::ffi_extern_TKDESTEP::Handle_StepElement_SurfaceSectionFieldVarying_get_mut(
                     self as *mut Self,
                 ),
             )
@@ -11834,18 +8239,18 @@ impl HandleStepElementSurfaceSectionFieldVarying {
     /// Upcast Handle<StepElement_SurfaceSectionFieldVarying> to Handle<StepElement_SurfaceSectionField>
     pub fn to_handle_surface_section_field(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStepElementSurfaceSectionField> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_StepElement_SurfaceSectionField> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepElementSurfaceSectionFieldVarying_to_HandleStepElementSurfaceSectionField(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::Handle_StepElement_SurfaceSectionFieldVarying_to_Handle_StepElement_SurfaceSectionField(self as *const Self)))
         }
     }
 
     /// Upcast Handle<StepElement_SurfaceSectionFieldVarying> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepElementSurfaceSectionFieldVarying_to_HandleStandardTransient(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::Handle_StepElement_SurfaceSectionFieldVarying_to_Handle_Standard_Transient(self as *const Self)))
         }
     }
 }
@@ -11854,7 +8259,7 @@ impl HandleStepElementSurfaceSectionFieldVarying {
 // From StepElement_UniformSurfaceSection.hxx
 // ========================
 
-/// **Source:** `StepElement_UniformSurfaceSection.hxx`:28 - `StepElement_UniformSurfaceSection`
+/// **Source:** `StepElement_UniformSurfaceSection.hxx`:25 - `StepElement_UniformSurfaceSection`
 /// Representation of STEP entity UniformSurfaceSection
 pub use crate::ffi_types::StepElement_UniformSurfaceSection as UniformSurfaceSection;
 
@@ -11867,7 +8272,7 @@ unsafe impl crate::CppDeletable for UniformSurfaceSection {
 }
 
 impl UniformSurfaceSection {
-    /// **Source:** `StepElement_UniformSurfaceSection.hxx`:33 - `StepElement_UniformSurfaceSection::StepElement_UniformSurfaceSection()`
+    /// **Source:** `StepElement_UniformSurfaceSection.hxx`:30 - `StepElement_UniformSurfaceSection::StepElement_UniformSurfaceSection()`
     /// Empty constructor
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
@@ -11877,7 +8282,7 @@ impl UniformSurfaceSection {
         }
     }
 
-    /// **Source:** `StepElement_UniformSurfaceSection.hxx`:36 - `StepElement_UniformSurfaceSection::Init()`
+    /// **Source:** `StepElement_UniformSurfaceSection.hxx`:33 - `StepElement_UniformSurfaceSection::Init()`
     /// Initialize all fields (own and inherited)
     pub fn init(
         &mut self,
@@ -11901,7 +8306,7 @@ impl UniformSurfaceSection {
         })
     }
 
-    /// **Source:** `StepElement_UniformSurfaceSection.hxx`:45 - `StepElement_UniformSurfaceSection::Thickness()`
+    /// **Source:** `StepElement_UniformSurfaceSection.hxx`:42 - `StepElement_UniformSurfaceSection::Thickness()`
     /// Returns field Thickness
     pub fn thickness(&self) -> f64 {
         crate::check_result(unsafe {
@@ -11911,7 +8316,7 @@ impl UniformSurfaceSection {
         })
     }
 
-    /// **Source:** `StepElement_UniformSurfaceSection.hxx`:48 - `StepElement_UniformSurfaceSection::SetThickness()`
+    /// **Source:** `StepElement_UniformSurfaceSection.hxx`:45 - `StepElement_UniformSurfaceSection::SetThickness()`
     /// Set field Thickness
     pub fn set_thickness(&mut self, Thickness: f64) {
         crate::check_void_result(unsafe {
@@ -11922,7 +8327,7 @@ impl UniformSurfaceSection {
         })
     }
 
-    /// **Source:** `StepElement_UniformSurfaceSection.hxx`:51 - `StepElement_UniformSurfaceSection::BendingThickness()`
+    /// **Source:** `StepElement_UniformSurfaceSection.hxx`:48 - `StepElement_UniformSurfaceSection::BendingThickness()`
     /// Returns field BendingThickness
     pub fn bending_thickness(&self) -> crate::OwnedPtr<MeasureOrUnspecifiedValue> {
         unsafe {
@@ -11934,7 +8339,7 @@ impl UniformSurfaceSection {
         }
     }
 
-    /// **Source:** `StepElement_UniformSurfaceSection.hxx`:54 - `StepElement_UniformSurfaceSection::SetBendingThickness()`
+    /// **Source:** `StepElement_UniformSurfaceSection.hxx`:51 - `StepElement_UniformSurfaceSection::SetBendingThickness()`
     /// Set field BendingThickness
     pub fn set_bending_thickness(&mut self, BendingThickness: &MeasureOrUnspecifiedValue) {
         crate::check_void_result(unsafe {
@@ -11945,7 +8350,7 @@ impl UniformSurfaceSection {
         })
     }
 
-    /// **Source:** `StepElement_UniformSurfaceSection.hxx`:58 - `StepElement_UniformSurfaceSection::ShearThickness()`
+    /// **Source:** `StepElement_UniformSurfaceSection.hxx`:55 - `StepElement_UniformSurfaceSection::ShearThickness()`
     /// Returns field ShearThickness
     pub fn shear_thickness(&self) -> crate::OwnedPtr<MeasureOrUnspecifiedValue> {
         unsafe {
@@ -11957,7 +8362,7 @@ impl UniformSurfaceSection {
         }
     }
 
-    /// **Source:** `StepElement_UniformSurfaceSection.hxx`:61 - `StepElement_UniformSurfaceSection::SetShearThickness()`
+    /// **Source:** `StepElement_UniformSurfaceSection.hxx`:58 - `StepElement_UniformSurfaceSection::SetShearThickness()`
     /// Set field ShearThickness
     pub fn set_shear_thickness(&mut self, ShearThickness: &MeasureOrUnspecifiedValue) {
         crate::check_void_result(unsafe {
@@ -11968,8 +8373,8 @@ impl UniformSurfaceSection {
         })
     }
 
-    /// **Source:** `StepElement_UniformSurfaceSection.hxx`:64 - `StepElement_UniformSurfaceSection::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `StepElement_UniformSurfaceSection.hxx`:61 - `StepElement_UniformSurfaceSection::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKDESTEP::StepElement_UniformSurfaceSection_dynamic_type(
@@ -11979,7 +8384,7 @@ impl UniformSurfaceSection {
         }
     }
 
-    /// **Source:** `StepElement_UniformSurfaceSection.hxx`:64 - `StepElement_UniformSurfaceSection::get_type_name()`
+    /// **Source:** `StepElement_UniformSurfaceSection.hxx`:61 - `StepElement_UniformSurfaceSection::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -11990,8 +8395,8 @@ impl UniformSurfaceSection {
         .into_owned()
     }
 
-    /// **Source:** `StepElement_UniformSurfaceSection.hxx`:64 - `StepElement_UniformSurfaceSection::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    /// **Source:** `StepElement_UniformSurfaceSection.hxx`:61 - `StepElement_UniformSurfaceSection::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKDESTEP::StepElement_UniformSurfaceSection_get_type_descriptor(),
@@ -12034,7 +8439,7 @@ impl UniformSurfaceSection {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStepElementUniformSurfaceSection> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_StepElement_UniformSurfaceSection> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDESTEP::StepElement_UniformSurfaceSection_to_handle(
@@ -12044,7 +8449,7 @@ impl UniformSurfaceSection {
         }
     }
 
-    /// Inherited: **Source:** `StepElement_SurfaceSection.hxx`:41 - `StepElement_SurfaceSection::Offset()`
+    /// Inherited: **Source:** `StepElement_SurfaceSection.hxx`:38 - `StepElement_SurfaceSection::Offset()`
     pub fn offset(&self) -> crate::OwnedPtr<MeasureOrUnspecifiedValue> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -12055,7 +8460,7 @@ impl UniformSurfaceSection {
         }
     }
 
-    /// Inherited: **Source:** `StepElement_SurfaceSection.hxx`:44 - `StepElement_SurfaceSection::SetOffset()`
+    /// Inherited: **Source:** `StepElement_SurfaceSection.hxx`:41 - `StepElement_SurfaceSection::SetOffset()`
     pub fn set_offset(&mut self, Offset: &MeasureOrUnspecifiedValue) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepElement_UniformSurfaceSection_inherited_SetOffset(
@@ -12065,28 +8470,28 @@ impl UniformSurfaceSection {
         })
     }
 
-    /// Inherited: **Source:** `StepElement_SurfaceSection.hxx`:47 - `StepElement_SurfaceSection::NonStructuralMass()`
+    /// Inherited: **Source:** `StepElement_SurfaceSection.hxx`:44 - `StepElement_SurfaceSection::NonStructuralMass()`
     pub fn non_structural_mass(&self) -> crate::OwnedPtr<MeasureOrUnspecifiedValue> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::StepElement_UniformSurfaceSection_inherited_NonStructuralMass(self as *const Self)))
         }
     }
 
-    /// Inherited: **Source:** `StepElement_SurfaceSection.hxx`:50 - `StepElement_SurfaceSection::SetNonStructuralMass()`
+    /// Inherited: **Source:** `StepElement_SurfaceSection.hxx`:47 - `StepElement_SurfaceSection::SetNonStructuralMass()`
     pub fn set_non_structural_mass(&mut self, NonStructuralMass: &MeasureOrUnspecifiedValue) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepElement_UniformSurfaceSection_inherited_SetNonStructuralMass(self as *mut Self, NonStructuralMass)
         })
     }
 
-    /// Inherited: **Source:** `StepElement_SurfaceSection.hxx`:54 - `StepElement_SurfaceSection::NonStructuralMassOffset()`
+    /// Inherited: **Source:** `StepElement_SurfaceSection.hxx`:51 - `StepElement_SurfaceSection::NonStructuralMassOffset()`
     pub fn non_structural_mass_offset(&self) -> crate::OwnedPtr<MeasureOrUnspecifiedValue> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::StepElement_UniformSurfaceSection_inherited_NonStructuralMassOffset(self as *const Self)))
         }
     }
 
-    /// Inherited: **Source:** `StepElement_SurfaceSection.hxx`:57 - `StepElement_SurfaceSection::SetNonStructuralMassOffset()`
+    /// Inherited: **Source:** `StepElement_SurfaceSection.hxx`:54 - `StepElement_SurfaceSection::SetNonStructuralMassOffset()`
     pub fn set_non_structural_mass_offset(
         &mut self,
         NonStructuralMassOffset: &MeasureOrUnspecifiedValue,
@@ -12096,8 +8501,8 @@ impl UniformSurfaceSection {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepElement_UniformSurfaceSection_inherited_IsInstance(
                 self as *const Self,
@@ -12106,8 +8511,8 @@ impl UniformSurfaceSection {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepElement_UniformSurfaceSection_inherited_IsKind(
                 self as *const Self,
@@ -12116,7 +8521,7 @@ impl UniformSurfaceSection {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -12132,7 +8537,7 @@ impl UniformSurfaceSection {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepElement_UniformSurfaceSection_inherited_GetRefCount(
@@ -12141,21 +8546,21 @@ impl UniformSurfaceSection {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepElement_UniformSurfaceSection_inherited_IncrementRefCounter(self as *mut Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepElement_UniformSurfaceSection_inherited_DecrementRefCounter(self as *mut Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepElement_UniformSurfaceSection_inherited_Delete(
@@ -12165,31 +8570,31 @@ impl UniformSurfaceSection {
     }
 }
 
-pub use crate::ffi_types::HandleStepElementUniformSurfaceSection;
+pub use crate::ffi_types::Handle_StepElement_UniformSurfaceSection;
 
-unsafe impl crate::CppDeletable for HandleStepElementUniformSurfaceSection {
+unsafe impl crate::CppDeletable for Handle_StepElement_UniformSurfaceSection {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKDESTEP::HandleStepElementUniformSurfaceSection_destructor(ptr);
+            crate::ffi_extern_TKDESTEP::Handle_StepElement_UniformSurfaceSection_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleStepElementUniformSurfaceSection {
+unsafe impl crate::CppCopyable for Handle_StepElement_UniformSurfaceSection {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
         unsafe {
             crate::check_result(
-                crate::ffi_extern_TKDESTEP::HandleStepElementUniformSurfaceSection_clone(ptr),
+                crate::ffi_extern_TKDESTEP::Handle_StepElement_UniformSurfaceSection_clone(ptr),
             )
         }
     }
 }
 
-impl HandleStepElementUniformSurfaceSection {
+impl Handle_StepElement_UniformSurfaceSection {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
         unsafe {
-            crate::ffi_extern_TKDESTEP::HandleStepElementUniformSurfaceSection_is_null(
+            crate::ffi_extern_TKDESTEP::Handle_StepElement_UniformSurfaceSection_is_null(
                 self as *const Self,
             )
         }
@@ -12199,7 +8604,7 @@ impl HandleStepElementUniformSurfaceSection {
     pub fn get(&self) -> &crate::ffi_types::StepElement_UniformSurfaceSection {
         unsafe {
             &*crate::check_result(
-                crate::ffi_extern_TKDESTEP::HandleStepElementUniformSurfaceSection_get(
+                crate::ffi_extern_TKDESTEP::Handle_StepElement_UniformSurfaceSection_get(
                     self as *const Self,
                 ),
             )
@@ -12210,7 +8615,7 @@ impl HandleStepElementUniformSurfaceSection {
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::StepElement_UniformSurfaceSection {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi_extern_TKDESTEP::HandleStepElementUniformSurfaceSection_get_mut(
+                crate::ffi_extern_TKDESTEP::Handle_StepElement_UniformSurfaceSection_get_mut(
                     self as *mut Self,
                 ),
             )
@@ -12220,18 +8625,18 @@ impl HandleStepElementUniformSurfaceSection {
     /// Upcast Handle<StepElement_UniformSurfaceSection> to Handle<StepElement_SurfaceSection>
     pub fn to_handle_surface_section(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStepElementSurfaceSection> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_StepElement_SurfaceSection> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepElementUniformSurfaceSection_to_HandleStepElementSurfaceSection(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::Handle_StepElement_UniformSurfaceSection_to_Handle_StepElement_SurfaceSection(self as *const Self)))
         }
     }
 
     /// Upcast Handle<StepElement_UniformSurfaceSection> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepElementUniformSurfaceSection_to_HandleStandardTransient(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::Handle_StepElement_UniformSurfaceSection_to_Handle_Standard_Transient(self as *const Self)))
         }
     }
 }
@@ -12240,7 +8645,7 @@ impl HandleStepElementUniformSurfaceSection {
 // From StepElement_Volume3dElementDescriptor.hxx
 // ========================
 
-/// **Source:** `StepElement_Volume3dElementDescriptor.hxx`:31 - `StepElement_Volume3dElementDescriptor`
+/// **Source:** `StepElement_Volume3dElementDescriptor.hxx`:30 - `StepElement_Volume3dElementDescriptor`
 /// Representation of STEP entity Volume3dElementDescriptor
 pub use crate::ffi_types::StepElement_Volume3dElementDescriptor as Volume3dElementDescriptor;
 
@@ -12253,7 +8658,7 @@ unsafe impl crate::CppDeletable for Volume3dElementDescriptor {
 }
 
 impl Volume3dElementDescriptor {
-    /// **Source:** `StepElement_Volume3dElementDescriptor.hxx`:36 - `StepElement_Volume3dElementDescriptor::StepElement_Volume3dElementDescriptor()`
+    /// **Source:** `StepElement_Volume3dElementDescriptor.hxx`:35 - `StepElement_Volume3dElementDescriptor::StepElement_Volume3dElementDescriptor()`
     /// Empty constructor
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
@@ -12263,13 +8668,13 @@ impl Volume3dElementDescriptor {
         }
     }
 
-    /// **Source:** `StepElement_Volume3dElementDescriptor.hxx`:39 - `StepElement_Volume3dElementDescriptor::Init()`
+    /// **Source:** `StepElement_Volume3dElementDescriptor.hxx`:38 - `StepElement_Volume3dElementDescriptor::Init()`
     /// Initialize all fields (own and inherited)
     pub fn init(
         &mut self,
         aElementDescriptor_TopologyOrder: crate::step_element::ElementOrder,
-        aElementDescriptor_Description: &crate::ffi_types::HandleTCollectionHAsciiString,
-        aPurpose: &crate::ffi_types::HandleStepElementHArray1OfVolumeElementPurposeMember,
+        aElementDescriptor_Description: &crate::ffi_types::Handle_TCollection_HAsciiString,
+        aPurpose: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepElement_VolumeElementPurposeMember,
         aShape: crate::step_element::Volume3dElementShape,
     ) {
         crate::check_void_result(unsafe {
@@ -12283,12 +8688,9 @@ impl Volume3dElementDescriptor {
         })
     }
 
-    /// **Source:** `StepElement_Volume3dElementDescriptor.hxx`:45 - `StepElement_Volume3dElementDescriptor::Purpose()`
+    /// **Source:** `StepElement_Volume3dElementDescriptor.hxx`:48 - `StepElement_Volume3dElementDescriptor::Purpose()`
     /// Returns field Purpose
-    pub fn purpose(
-        &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStepElementHArray1OfVolumeElementPurposeMember>
-    {
+    pub fn purpose(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepElement_VolumeElementPurposeMember>{
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDESTEP::StepElement_Volume3dElementDescriptor_purpose(
@@ -12298,11 +8700,11 @@ impl Volume3dElementDescriptor {
         }
     }
 
-    /// **Source:** `StepElement_Volume3dElementDescriptor.hxx`:48 - `StepElement_Volume3dElementDescriptor::SetPurpose()`
+    /// **Source:** `StepElement_Volume3dElementDescriptor.hxx`:51 - `StepElement_Volume3dElementDescriptor::SetPurpose()`
     /// Set field Purpose
     pub fn set_purpose(
         &mut self,
-        Purpose: &crate::ffi_types::HandleStepElementHArray1OfVolumeElementPurposeMember,
+        Purpose: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_StepElement_VolumeElementPurposeMember,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepElement_Volume3dElementDescriptor_set_purpose(
@@ -12312,7 +8714,7 @@ impl Volume3dElementDescriptor {
         })
     }
 
-    /// **Source:** `StepElement_Volume3dElementDescriptor.hxx`:52 - `StepElement_Volume3dElementDescriptor::Shape()`
+    /// **Source:** `StepElement_Volume3dElementDescriptor.hxx`:56 - `StepElement_Volume3dElementDescriptor::Shape()`
     /// Returns field Shape
     pub fn shape(&self) -> crate::step_element::Volume3dElementShape {
         crate::step_element::Volume3dElementShape::try_from(crate::check_result(unsafe {
@@ -12323,7 +8725,7 @@ impl Volume3dElementDescriptor {
         .unwrap()
     }
 
-    /// **Source:** `StepElement_Volume3dElementDescriptor.hxx`:55 - `StepElement_Volume3dElementDescriptor::SetShape()`
+    /// **Source:** `StepElement_Volume3dElementDescriptor.hxx`:59 - `StepElement_Volume3dElementDescriptor::SetShape()`
     /// Set field Shape
     pub fn set_shape(&mut self, Shape: crate::step_element::Volume3dElementShape) {
         crate::check_void_result(unsafe {
@@ -12334,8 +8736,8 @@ impl Volume3dElementDescriptor {
         })
     }
 
-    /// **Source:** `StepElement_Volume3dElementDescriptor.hxx`:57 - `StepElement_Volume3dElementDescriptor::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `StepElement_Volume3dElementDescriptor.hxx`:61 - `StepElement_Volume3dElementDescriptor::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKDESTEP::StepElement_Volume3dElementDescriptor_dynamic_type(
@@ -12345,7 +8747,7 @@ impl Volume3dElementDescriptor {
         }
     }
 
-    /// **Source:** `StepElement_Volume3dElementDescriptor.hxx`:57 - `StepElement_Volume3dElementDescriptor::get_type_name()`
+    /// **Source:** `StepElement_Volume3dElementDescriptor.hxx`:61 - `StepElement_Volume3dElementDescriptor::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -12356,8 +8758,8 @@ impl Volume3dElementDescriptor {
         .into_owned()
     }
 
-    /// **Source:** `StepElement_Volume3dElementDescriptor.hxx`:57 - `StepElement_Volume3dElementDescriptor::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    /// **Source:** `StepElement_Volume3dElementDescriptor.hxx`:61 - `StepElement_Volume3dElementDescriptor::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKDESTEP::StepElement_Volume3dElementDescriptor_get_type_descriptor()))
         }
@@ -12394,7 +8796,7 @@ impl Volume3dElementDescriptor {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStepElementVolume3dElementDescriptor> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_StepElement_Volume3dElementDescriptor> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDESTEP::StepElement_Volume3dElementDescriptor_to_handle(
@@ -12404,37 +8806,39 @@ impl Volume3dElementDescriptor {
         }
     }
 
-    /// Inherited: **Source:** `StepElement_ElementDescriptor.hxx`:42 - `StepElement_ElementDescriptor::TopologyOrder()`
+    /// Inherited: **Source:** `StepElement_ElementDescriptor.hxx`:39 - `StepElement_ElementDescriptor::TopologyOrder()`
     pub fn topology_order(&self) -> crate::step_element::ElementOrder {
         crate::step_element::ElementOrder::try_from(crate::check_result(unsafe { crate::ffi_extern_TKDESTEP::StepElement_Volume3dElementDescriptor_inherited_TopologyOrder(self as *const Self) })).unwrap()
     }
 
-    /// Inherited: **Source:** `StepElement_ElementDescriptor.hxx`:45 - `StepElement_ElementDescriptor::SetTopologyOrder()`
+    /// Inherited: **Source:** `StepElement_ElementDescriptor.hxx`:42 - `StepElement_ElementDescriptor::SetTopologyOrder()`
     pub fn set_topology_order(&mut self, TopologyOrder: crate::step_element::ElementOrder) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepElement_Volume3dElementDescriptor_inherited_SetTopologyOrder(self as *mut Self, TopologyOrder.into())
         })
     }
 
-    /// Inherited: **Source:** `StepElement_ElementDescriptor.hxx`:48 - `StepElement_ElementDescriptor::Description()`
-    pub fn description(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTCollectionHAsciiString> {
+    /// Inherited: **Source:** `StepElement_ElementDescriptor.hxx`:45 - `StepElement_ElementDescriptor::Description()`
+    pub fn description(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_TCollection_HAsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::StepElement_Volume3dElementDescriptor_inherited_Description(self as *const Self)))
         }
     }
 
-    /// Inherited: **Source:** `StepElement_ElementDescriptor.hxx`:51 - `StepElement_ElementDescriptor::SetDescription()`
+    /// Inherited: **Source:** `StepElement_ElementDescriptor.hxx`:48 - `StepElement_ElementDescriptor::SetDescription()`
     pub fn set_description(
         &mut self,
-        Description: &crate::ffi_types::HandleTCollectionHAsciiString,
+        Description: &crate::ffi_types::Handle_TCollection_HAsciiString,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepElement_Volume3dElementDescriptor_inherited_SetDescription(self as *mut Self, Description)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepElement_Volume3dElementDescriptor_inherited_IsInstance(
                 self as *const Self,
@@ -12443,8 +8847,8 @@ impl Volume3dElementDescriptor {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepElement_Volume3dElementDescriptor_inherited_IsKind(
                 self as *const Self,
@@ -12453,7 +8857,7 @@ impl Volume3dElementDescriptor {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -12469,7 +8873,7 @@ impl Volume3dElementDescriptor {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepElement_Volume3dElementDescriptor_inherited_GetRefCount(
@@ -12478,21 +8882,21 @@ impl Volume3dElementDescriptor {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepElement_Volume3dElementDescriptor_inherited_IncrementRefCounter(self as *mut Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepElement_Volume3dElementDescriptor_inherited_DecrementRefCounter(self as *mut Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepElement_Volume3dElementDescriptor_inherited_Delete(
@@ -12502,31 +8906,33 @@ impl Volume3dElementDescriptor {
     }
 }
 
-pub use crate::ffi_types::HandleStepElementVolume3dElementDescriptor;
+pub use crate::ffi_types::Handle_StepElement_Volume3dElementDescriptor;
 
-unsafe impl crate::CppDeletable for HandleStepElementVolume3dElementDescriptor {
+unsafe impl crate::CppDeletable for Handle_StepElement_Volume3dElementDescriptor {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKDESTEP::HandleStepElementVolume3dElementDescriptor_destructor(ptr);
+            crate::ffi_extern_TKDESTEP::Handle_StepElement_Volume3dElementDescriptor_destructor(
+                ptr,
+            );
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleStepElementVolume3dElementDescriptor {
+unsafe impl crate::CppCopyable for Handle_StepElement_Volume3dElementDescriptor {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
         unsafe {
             crate::check_result(
-                crate::ffi_extern_TKDESTEP::HandleStepElementVolume3dElementDescriptor_clone(ptr),
+                crate::ffi_extern_TKDESTEP::Handle_StepElement_Volume3dElementDescriptor_clone(ptr),
             )
         }
     }
 }
 
-impl HandleStepElementVolume3dElementDescriptor {
+impl Handle_StepElement_Volume3dElementDescriptor {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
         unsafe {
-            crate::ffi_extern_TKDESTEP::HandleStepElementVolume3dElementDescriptor_is_null(
+            crate::ffi_extern_TKDESTEP::Handle_StepElement_Volume3dElementDescriptor_is_null(
                 self as *const Self,
             )
         }
@@ -12536,7 +8942,7 @@ impl HandleStepElementVolume3dElementDescriptor {
     pub fn get(&self) -> &crate::ffi_types::StepElement_Volume3dElementDescriptor {
         unsafe {
             &*crate::check_result(
-                crate::ffi_extern_TKDESTEP::HandleStepElementVolume3dElementDescriptor_get(
+                crate::ffi_extern_TKDESTEP::Handle_StepElement_Volume3dElementDescriptor_get(
                     self as *const Self,
                 ),
             )
@@ -12547,7 +8953,7 @@ impl HandleStepElementVolume3dElementDescriptor {
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::StepElement_Volume3dElementDescriptor {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi_extern_TKDESTEP::HandleStepElementVolume3dElementDescriptor_get_mut(
+                crate::ffi_extern_TKDESTEP::Handle_StepElement_Volume3dElementDescriptor_get_mut(
                     self as *mut Self,
                 ),
             )
@@ -12557,18 +8963,18 @@ impl HandleStepElementVolume3dElementDescriptor {
     /// Upcast Handle<StepElement_Volume3dElementDescriptor> to Handle<StepElement_ElementDescriptor>
     pub fn to_handle_element_descriptor(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStepElementElementDescriptor> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_StepElement_ElementDescriptor> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepElementVolume3dElementDescriptor_to_HandleStepElementElementDescriptor(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::Handle_StepElement_Volume3dElementDescriptor_to_Handle_StepElement_ElementDescriptor(self as *const Self)))
         }
     }
 
     /// Upcast Handle<StepElement_Volume3dElementDescriptor> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepElementVolume3dElementDescriptor_to_HandleStandardTransient(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::Handle_StepElement_Volume3dElementDescriptor_to_Handle_Standard_Transient(self as *const Self)))
         }
     }
 }
@@ -12600,10 +9006,10 @@ impl VolumeElementPurpose {
         }
     }
 
-    /// **Source:** `StepElement_VolumeElementPurpose.hxx`:42 - `StepElement_VolumeElementPurpose::CaseNum()`
+    /// **Source:** `StepElement_VolumeElementPurpose.hxx`:41 - `StepElement_VolumeElementPurpose::CaseNum()`
     /// Recognizes a kind of VolumeElementPurpose select type
     /// return 0
-    pub fn case_num(&self, ent: &crate::ffi_types::HandleStandardTransient) -> i32 {
+    pub fn case_num(&self, ent: &crate::ffi_types::Handle_Standard_Transient) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepElement_VolumeElementPurpose_case_num(
                 self as *const Self,
@@ -12612,12 +9018,12 @@ impl VolumeElementPurpose {
         })
     }
 
-    /// **Source:** `StepElement_VolumeElementPurpose.hxx`:48 - `StepElement_VolumeElementPurpose::CaseMem()`
+    /// **Source:** `StepElement_VolumeElementPurpose.hxx`:47 - `StepElement_VolumeElementPurpose::CaseMem()`
     /// Recognizes a items of select member VolumeElementPurposeMember
     /// 1 -> EnumeratedVolumeElementPurpose
     /// 2 -> ApplicationDefinedElementPurpose
     /// 0 else
-    pub fn case_mem(&self, ent: &crate::ffi_types::HandleStepDataSelectMember) -> i32 {
+    pub fn case_mem(&self, ent: &crate::ffi_types::Handle_StepData_SelectMember) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepElement_VolumeElementPurpose_case_mem(
                 self as *const Self,
@@ -12626,9 +9032,9 @@ impl VolumeElementPurpose {
         })
     }
 
-    /// **Source:** `StepElement_VolumeElementPurpose.hxx`:52 - `StepElement_VolumeElementPurpose::NewMember()`
+    /// **Source:** `StepElement_VolumeElementPurpose.hxx`:50 - `StepElement_VolumeElementPurpose::NewMember()`
     /// Returns a new select member the type VolumeElementPurposeMember
-    pub fn new_member(&self) -> crate::OwnedPtr<crate::ffi_types::HandleStepDataSelectMember> {
+    pub fn new_member(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_StepData_SelectMember> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDESTEP::StepElement_VolumeElementPurpose_new_member(
@@ -12638,7 +9044,7 @@ impl VolumeElementPurpose {
         }
     }
 
-    /// **Source:** `StepElement_VolumeElementPurpose.hxx`:55 - `StepElement_VolumeElementPurpose::SetEnumeratedVolumeElementPurpose()`
+    /// **Source:** `StepElement_VolumeElementPurpose.hxx`:53 - `StepElement_VolumeElementPurpose::SetEnumeratedVolumeElementPurpose()`
     /// Set Value for EnumeratedVolumeElementPurpose
     pub fn set_enumerated_volume_element_purpose(
         &mut self,
@@ -12649,7 +9055,7 @@ impl VolumeElementPurpose {
         })
     }
 
-    /// **Source:** `StepElement_VolumeElementPurpose.hxx`:59 - `StepElement_VolumeElementPurpose::EnumeratedVolumeElementPurpose()`
+    /// **Source:** `StepElement_VolumeElementPurpose.hxx`:57 - `StepElement_VolumeElementPurpose::EnumeratedVolumeElementPurpose()`
     /// Returns Value as EnumeratedVolumeElementPurpose (or Null if another type)
     pub fn enumerated_volume_element_purpose(
         &self,
@@ -12657,22 +9063,22 @@ impl VolumeElementPurpose {
         crate::step_element::EnumeratedVolumeElementPurpose::try_from(crate::check_result(unsafe { crate::ffi_extern_TKDESTEP::StepElement_VolumeElementPurpose_enumerated_volume_element_purpose(self as *const Self) })).unwrap()
     }
 
-    /// **Source:** `StepElement_VolumeElementPurpose.hxx`:62 - `StepElement_VolumeElementPurpose::SetApplicationDefinedElementPurpose()`
+    /// **Source:** `StepElement_VolumeElementPurpose.hxx`:60 - `StepElement_VolumeElementPurpose::SetApplicationDefinedElementPurpose()`
     /// Set Value for ApplicationDefinedElementPurpose
     pub fn set_application_defined_element_purpose(
         &mut self,
-        aVal: &crate::ffi_types::HandleTCollectionHAsciiString,
+        aVal: &crate::ffi_types::Handle_TCollection_HAsciiString,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepElement_VolumeElementPurpose_set_application_defined_element_purpose(self as *mut Self, aVal)
         })
     }
 
-    /// **Source:** `StepElement_VolumeElementPurpose.hxx`:66 - `StepElement_VolumeElementPurpose::ApplicationDefinedElementPurpose()`
+    /// **Source:** `StepElement_VolumeElementPurpose.hxx`:64 - `StepElement_VolumeElementPurpose::ApplicationDefinedElementPurpose()`
     /// Returns Value as ApplicationDefinedElementPurpose (or Null if another type)
     pub fn application_defined_element_purpose(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleTCollectionHAsciiString> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_TCollection_HAsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::StepElement_VolumeElementPurpose_application_defined_element_purpose(self as *const Self)))
         }
@@ -12697,7 +9103,7 @@ impl VolumeElementPurpose {
     }
 
     /// Inherited: **Source:** `StepData_SelectType.hxx`:64 - `StepData_SelectType::Matches()`
-    pub fn matches(&self, ent: &crate::ffi_types::HandleStandardTransient) -> bool {
+    pub fn matches(&self, ent: &crate::ffi_types::Handle_Standard_Transient) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepElement_VolumeElementPurpose_inherited_Matches(
                 self as *const Self,
@@ -12707,7 +9113,7 @@ impl VolumeElementPurpose {
     }
 
     /// Inherited: **Source:** `StepData_SelectType.hxx`:69 - `StepData_SelectType::SetValue()`
-    pub fn set_value(&mut self, ent: &crate::ffi_types::HandleStandardTransient) {
+    pub fn set_value(&mut self, ent: &crate::ffi_types::Handle_Standard_Transient) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepElement_VolumeElementPurpose_inherited_SetValue(
                 self as *mut Self,
@@ -12726,7 +9132,7 @@ impl VolumeElementPurpose {
     }
 
     /// Inherited: **Source:** `StepData_SelectType.hxx`:76 - `StepData_SelectType::Value()`
-    pub fn value(&self) -> &crate::ffi_types::HandleStandardTransient {
+    pub fn value(&self) -> &crate::ffi_types::Handle_Standard_Transient {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKDESTEP::StepElement_VolumeElementPurpose_inherited_Value(
@@ -12746,7 +9152,7 @@ impl VolumeElementPurpose {
     }
 
     /// Inherited: **Source:** `StepData_SelectType.hxx`:83 - `StepData_SelectType::Type()`
-    pub fn type_(&self) -> crate::OwnedPtr<crate::ffi_types::HandleStandardType> {
+    pub fn type_(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Type> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDESTEP::StepElement_VolumeElementPurpose_inherited_Type(
@@ -12766,7 +9172,7 @@ impl VolumeElementPurpose {
     }
 
     /// Inherited: **Source:** `StepData_SelectType.hxx`:94 - `StepData_SelectType::Description()`
-    pub fn description(&self) -> crate::OwnedPtr<crate::ffi_types::HandleStepDataPDescr> {
+    pub fn description(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_StepData_PDescr> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDESTEP::StepElement_VolumeElementPurpose_inherited_Description(
@@ -12786,7 +9192,7 @@ impl VolumeElementPurpose {
     }
 
     /// Inherited: **Source:** `StepData_SelectType.hxx`:118 - `StepData_SelectType::Member()`
-    pub fn member(&self) -> crate::OwnedPtr<crate::ffi_types::HandleStepDataSelectMember> {
+    pub fn member(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_StepData_SelectMember> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDESTEP::StepElement_VolumeElementPurpose_inherited_Member(
@@ -12857,8 +9263,8 @@ impl VolumeElementPurpose {
 // From StepElement_VolumeElementPurposeMember.hxx
 // ========================
 
-/// **Source:** `StepElement_VolumeElementPurposeMember.hxx`:29 - `StepElement_VolumeElementPurposeMember`
-/// Representation of member for  STEP SELECT type VolumeElementPurpose
+/// **Source:** `StepElement_VolumeElementPurposeMember.hxx`:26 - `StepElement_VolumeElementPurposeMember`
+/// Representation of member for STEP SELECT type VolumeElementPurpose
 pub use crate::ffi_types::StepElement_VolumeElementPurposeMember as VolumeElementPurposeMember;
 
 unsafe impl crate::CppDeletable for VolumeElementPurposeMember {
@@ -12870,7 +9276,7 @@ unsafe impl crate::CppDeletable for VolumeElementPurposeMember {
 }
 
 impl VolumeElementPurposeMember {
-    /// **Source:** `StepElement_VolumeElementPurposeMember.hxx`:34 - `StepElement_VolumeElementPurposeMember::StepElement_VolumeElementPurposeMember()`
+    /// **Source:** `StepElement_VolumeElementPurposeMember.hxx`:31 - `StepElement_VolumeElementPurposeMember::StepElement_VolumeElementPurposeMember()`
     /// Empty constructor
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
@@ -12880,7 +9286,7 @@ impl VolumeElementPurposeMember {
         }
     }
 
-    /// **Source:** `StepElement_VolumeElementPurposeMember.hxx`:37 - `StepElement_VolumeElementPurposeMember::HasName()`
+    /// **Source:** `StepElement_VolumeElementPurposeMember.hxx`:34 - `StepElement_VolumeElementPurposeMember::HasName()`
     /// Returns True if has name
     pub fn has_name(&self) -> bool {
         crate::check_result(unsafe {
@@ -12890,7 +9296,7 @@ impl VolumeElementPurposeMember {
         })
     }
 
-    /// **Source:** `StepElement_VolumeElementPurposeMember.hxx`:40 - `StepElement_VolumeElementPurposeMember::Name()`
+    /// **Source:** `StepElement_VolumeElementPurposeMember.hxx`:37 - `StepElement_VolumeElementPurposeMember::Name()`
     /// Returns set name
     pub fn name(&self) -> std::string::String {
         unsafe {
@@ -12904,7 +9310,7 @@ impl VolumeElementPurposeMember {
         .into_owned()
     }
 
-    /// **Source:** `StepElement_VolumeElementPurposeMember.hxx`:43 - `StepElement_VolumeElementPurposeMember::SetName()`
+    /// **Source:** `StepElement_VolumeElementPurposeMember.hxx`:40 - `StepElement_VolumeElementPurposeMember::SetName()`
     /// Set name
     pub fn set_name(&mut self, name: &str) -> bool {
         let c_name = std::ffi::CString::new(name).unwrap();
@@ -12916,7 +9322,7 @@ impl VolumeElementPurposeMember {
         })
     }
 
-    /// **Source:** `StepElement_VolumeElementPurposeMember.hxx`:46 - `StepElement_VolumeElementPurposeMember::Matches()`
+    /// **Source:** `StepElement_VolumeElementPurposeMember.hxx`:43 - `StepElement_VolumeElementPurposeMember::Matches()`
     /// Tells if the name of a SelectMember matches a given one;
     pub fn matches(&self, name: &str) -> bool {
         let c_name = std::ffi::CString::new(name).unwrap();
@@ -12928,8 +9334,8 @@ impl VolumeElementPurposeMember {
         })
     }
 
-    /// **Source:** `StepElement_VolumeElementPurposeMember.hxx`:49 - `StepElement_VolumeElementPurposeMember::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `StepElement_VolumeElementPurposeMember.hxx`:45 - `StepElement_VolumeElementPurposeMember::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKDESTEP::StepElement_VolumeElementPurposeMember_dynamic_type(
@@ -12939,7 +9345,7 @@ impl VolumeElementPurposeMember {
         }
     }
 
-    /// **Source:** `StepElement_VolumeElementPurposeMember.hxx`:49 - `StepElement_VolumeElementPurposeMember::get_type_name()`
+    /// **Source:** `StepElement_VolumeElementPurposeMember.hxx`:45 - `StepElement_VolumeElementPurposeMember::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -12950,8 +9356,8 @@ impl VolumeElementPurposeMember {
         .into_owned()
     }
 
-    /// **Source:** `StepElement_VolumeElementPurposeMember.hxx`:49 - `StepElement_VolumeElementPurposeMember::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    /// **Source:** `StepElement_VolumeElementPurposeMember.hxx`:45 - `StepElement_VolumeElementPurposeMember::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKDESTEP::StepElement_VolumeElementPurposeMember_get_type_descriptor()))
         }
@@ -13002,7 +9408,7 @@ impl VolumeElementPurposeMember {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStepElementVolumeElementPurposeMember> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_StepElement_VolumeElementPurposeMember> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDESTEP::StepElement_VolumeElementPurposeMember_to_handle(
@@ -13012,7 +9418,7 @@ impl VolumeElementPurposeMember {
         }
     }
 
-    /// Inherited: **Source:** `StepData_SelectNamed.hxx`:47 - `StepData_SelectNamed::Field()`
+    /// Inherited: **Source:** `StepData_SelectNamed.hxx`:44 - `StepData_SelectNamed::Field()`
     pub fn field(&self) -> &crate::step_data::Field {
         unsafe {
             &*(crate::check_result(
@@ -13023,7 +9429,7 @@ impl VolumeElementPurposeMember {
         }
     }
 
-    /// Inherited: **Source:** `StepData_SelectNamed.hxx`:49 - `StepData_SelectNamed::CField()`
+    /// Inherited: **Source:** `StepData_SelectNamed.hxx`:46 - `StepData_SelectNamed::CField()`
     pub fn c_field(&mut self) -> &mut crate::step_data::Field {
         unsafe {
             &mut *(crate::check_result(
@@ -13034,7 +9440,7 @@ impl VolumeElementPurposeMember {
         }
     }
 
-    /// Inherited: **Source:** `StepData_SelectNamed.hxx`:51 - `StepData_SelectNamed::Kind()`
+    /// Inherited: **Source:** `StepData_SelectNamed.hxx`:48 - `StepData_SelectNamed::Kind()`
     pub fn kind(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepElement_VolumeElementPurposeMember_inherited_Kind(
@@ -13043,7 +9449,7 @@ impl VolumeElementPurposeMember {
         })
     }
 
-    /// Inherited: **Source:** `StepData_SelectNamed.hxx`:53 - `StepData_SelectNamed::SetKind()`
+    /// Inherited: **Source:** `StepData_SelectNamed.hxx`:50 - `StepData_SelectNamed::SetKind()`
     pub fn set_kind(&mut self, kind: i32) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepElement_VolumeElementPurposeMember_inherited_SetKind(
@@ -13053,7 +9459,7 @@ impl VolumeElementPurposeMember {
         })
     }
 
-    /// Inherited: **Source:** `StepData_SelectNamed.hxx`:57 - `StepData_SelectNamed::Int()`
+    /// Inherited: **Source:** `StepData_SelectNamed.hxx`:54 - `StepData_SelectNamed::Int()`
     pub fn int(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepElement_VolumeElementPurposeMember_inherited_Int(
@@ -13062,7 +9468,7 @@ impl VolumeElementPurposeMember {
         })
     }
 
-    /// Inherited: **Source:** `StepData_SelectNamed.hxx`:61 - `StepData_SelectNamed::SetInt()`
+    /// Inherited: **Source:** `StepData_SelectNamed.hxx`:58 - `StepData_SelectNamed::SetInt()`
     pub fn set_int(&mut self, val: i32) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepElement_VolumeElementPurposeMember_inherited_SetInt(
@@ -13072,7 +9478,7 @@ impl VolumeElementPurposeMember {
         })
     }
 
-    /// Inherited: **Source:** `StepData_SelectNamed.hxx`:63 - `StepData_SelectNamed::Real()`
+    /// Inherited: **Source:** `StepData_SelectNamed.hxx`:60 - `StepData_SelectNamed::Real()`
     pub fn real(&self) -> f64 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepElement_VolumeElementPurposeMember_inherited_Real(
@@ -13081,7 +9487,7 @@ impl VolumeElementPurposeMember {
         })
     }
 
-    /// Inherited: **Source:** `StepData_SelectNamed.hxx`:65 - `StepData_SelectNamed::SetReal()`
+    /// Inherited: **Source:** `StepData_SelectNamed.hxx`:62 - `StepData_SelectNamed::SetReal()`
     pub fn set_real(&mut self, val: f64) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepElement_VolumeElementPurposeMember_inherited_SetReal(
@@ -13091,7 +9497,7 @@ impl VolumeElementPurposeMember {
         })
     }
 
-    /// Inherited: **Source:** `StepData_SelectMember.hxx`:74 - `StepData_SelectMember::ParamType()`
+    /// Inherited: **Source:** `StepData_SelectMember.hxx`:71 - `StepData_SelectMember::ParamType()`
     pub fn param_type(&self) -> crate::interface::ParamType {
         crate::interface::ParamType::try_from(crate::check_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepElement_VolumeElementPurposeMember_inherited_ParamType(
@@ -13101,7 +9507,7 @@ impl VolumeElementPurposeMember {
         .unwrap()
     }
 
-    /// Inherited: **Source:** `StepData_SelectMember.hxx`:85 - `StepData_SelectMember::Integer()`
+    /// Inherited: **Source:** `StepData_SelectMember.hxx`:82 - `StepData_SelectMember::Integer()`
     pub fn integer(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepElement_VolumeElementPurposeMember_inherited_Integer(
@@ -13110,7 +9516,7 @@ impl VolumeElementPurposeMember {
         })
     }
 
-    /// Inherited: **Source:** `StepData_SelectMember.hxx`:87 - `StepData_SelectMember::SetInteger()`
+    /// Inherited: **Source:** `StepData_SelectMember.hxx`:84 - `StepData_SelectMember::SetInteger()`
     pub fn set_integer(&mut self, val: i32) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepElement_VolumeElementPurposeMember_inherited_SetInteger(
@@ -13120,7 +9526,7 @@ impl VolumeElementPurposeMember {
         })
     }
 
-    /// Inherited: **Source:** `StepData_SelectMember.hxx`:89 - `StepData_SelectMember::Boolean()`
+    /// Inherited: **Source:** `StepData_SelectMember.hxx`:86 - `StepData_SelectMember::Boolean()`
     pub fn boolean(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepElement_VolumeElementPurposeMember_inherited_Boolean(
@@ -13129,7 +9535,7 @@ impl VolumeElementPurposeMember {
         })
     }
 
-    /// Inherited: **Source:** `StepData_SelectMember.hxx`:91 - `StepData_SelectMember::SetBoolean()`
+    /// Inherited: **Source:** `StepData_SelectMember.hxx`:88 - `StepData_SelectMember::SetBoolean()`
     pub fn set_boolean(&mut self, val: bool) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepElement_VolumeElementPurposeMember_inherited_SetBoolean(
@@ -13139,7 +9545,7 @@ impl VolumeElementPurposeMember {
         })
     }
 
-    /// Inherited: **Source:** `StepData_SelectMember.hxx`:93 - `StepData_SelectMember::Logical()`
+    /// Inherited: **Source:** `StepData_SelectMember.hxx`:90 - `StepData_SelectMember::Logical()`
     pub fn logical(&self) -> crate::step_data::Logical {
         crate::step_data::Logical::try_from(crate::check_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepElement_VolumeElementPurposeMember_inherited_Logical(
@@ -13149,7 +9555,7 @@ impl VolumeElementPurposeMember {
         .unwrap()
     }
 
-    /// Inherited: **Source:** `StepData_SelectMember.hxx`:95 - `StepData_SelectMember::SetLogical()`
+    /// Inherited: **Source:** `StepData_SelectMember.hxx`:92 - `StepData_SelectMember::SetLogical()`
     pub fn set_logical(&mut self, val: crate::step_data::Logical) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepElement_VolumeElementPurposeMember_inherited_SetLogical(
@@ -13159,7 +9565,7 @@ impl VolumeElementPurposeMember {
         })
     }
 
-    /// Inherited: **Source:** `StepData_SelectMember.hxx`:105 - `StepData_SelectMember::Enum()`
+    /// Inherited: **Source:** `StepData_SelectMember.hxx`:102 - `StepData_SelectMember::Enum()`
     pub fn enum_(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepElement_VolumeElementPurposeMember_inherited_Enum(
@@ -13168,8 +9574,8 @@ impl VolumeElementPurposeMember {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepElement_VolumeElementPurposeMember_inherited_IsInstance(
                 self as *const Self,
@@ -13178,8 +9584,8 @@ impl VolumeElementPurposeMember {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepElement_VolumeElementPurposeMember_inherited_IsKind(
                 self as *const Self,
@@ -13188,7 +9594,7 @@ impl VolumeElementPurposeMember {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -13204,7 +9610,7 @@ impl VolumeElementPurposeMember {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepElement_VolumeElementPurposeMember_inherited_GetRefCount(
@@ -13213,21 +9619,21 @@ impl VolumeElementPurposeMember {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepElement_VolumeElementPurposeMember_inherited_IncrementRefCounter(self as *mut Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepElement_VolumeElementPurposeMember_inherited_DecrementRefCounter(self as *mut Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepElement_VolumeElementPurposeMember_inherited_Delete(
@@ -13237,31 +9643,35 @@ impl VolumeElementPurposeMember {
     }
 }
 
-pub use crate::ffi_types::HandleStepElementVolumeElementPurposeMember;
+pub use crate::ffi_types::Handle_StepElement_VolumeElementPurposeMember;
 
-unsafe impl crate::CppDeletable for HandleStepElementVolumeElementPurposeMember {
+unsafe impl crate::CppDeletable for Handle_StepElement_VolumeElementPurposeMember {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKDESTEP::HandleStepElementVolumeElementPurposeMember_destructor(ptr);
+            crate::ffi_extern_TKDESTEP::Handle_StepElement_VolumeElementPurposeMember_destructor(
+                ptr,
+            );
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleStepElementVolumeElementPurposeMember {
+unsafe impl crate::CppCopyable for Handle_StepElement_VolumeElementPurposeMember {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
         unsafe {
             crate::check_result(
-                crate::ffi_extern_TKDESTEP::HandleStepElementVolumeElementPurposeMember_clone(ptr),
+                crate::ffi_extern_TKDESTEP::Handle_StepElement_VolumeElementPurposeMember_clone(
+                    ptr,
+                ),
             )
         }
     }
 }
 
-impl HandleStepElementVolumeElementPurposeMember {
+impl Handle_StepElement_VolumeElementPurposeMember {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
         unsafe {
-            crate::ffi_extern_TKDESTEP::HandleStepElementVolumeElementPurposeMember_is_null(
+            crate::ffi_extern_TKDESTEP::Handle_StepElement_VolumeElementPurposeMember_is_null(
                 self as *const Self,
             )
         }
@@ -13271,7 +9681,7 @@ impl HandleStepElementVolumeElementPurposeMember {
     pub fn get(&self) -> &crate::ffi_types::StepElement_VolumeElementPurposeMember {
         unsafe {
             &*crate::check_result(
-                crate::ffi_extern_TKDESTEP::HandleStepElementVolumeElementPurposeMember_get(
+                crate::ffi_extern_TKDESTEP::Handle_StepElement_VolumeElementPurposeMember_get(
                     self as *const Self,
                 ),
             )
@@ -13282,7 +9692,7 @@ impl HandleStepElementVolumeElementPurposeMember {
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::StepElement_VolumeElementPurposeMember {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi_extern_TKDESTEP::HandleStepElementVolumeElementPurposeMember_get_mut(
+                crate::ffi_extern_TKDESTEP::Handle_StepElement_VolumeElementPurposeMember_get_mut(
                     self as *mut Self,
                 ),
             )
@@ -13292,49 +9702,27 @@ impl HandleStepElementVolumeElementPurposeMember {
     /// Upcast Handle<StepElement_VolumeElementPurposeMember> to Handle<StepData_SelectNamed>
     pub fn to_handle_select_named(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStepDataSelectNamed> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_StepData_SelectNamed> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepElementVolumeElementPurposeMember_to_HandleStepDataSelectNamed(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::Handle_StepElement_VolumeElementPurposeMember_to_Handle_StepData_SelectNamed(self as *const Self)))
         }
     }
 
     /// Upcast Handle<StepElement_VolumeElementPurposeMember> to Handle<StepData_SelectMember>
     pub fn to_handle_select_member(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStepDataSelectMember> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_StepData_SelectMember> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepElementVolumeElementPurposeMember_to_HandleStepDataSelectMember(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::Handle_StepElement_VolumeElementPurposeMember_to_Handle_StepData_SelectMember(self as *const Self)))
         }
     }
 
     /// Upcast Handle<StepElement_VolumeElementPurposeMember> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepElementVolumeElementPurposeMember_to_HandleStandardTransient(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::Handle_StepElement_VolumeElementPurposeMember_to_Handle_Standard_Transient(self as *const Self)))
         }
     }
 }
-
-// ========================
-// Additional type re-exports
-// ========================
-
-pub use crate::ffi_types::{
-    StepElement_Array1OfCurveElementEndReleasePacket as Array1OfCurveElementEndReleasePacket,
-    StepElement_Array1OfCurveElementSectionDefinition as Array1OfCurveElementSectionDefinition,
-    StepElement_Array1OfHSequenceOfCurveElementPurposeMember as Array1OfHSequenceOfCurveElementPurposeMember,
-    StepElement_Array1OfHSequenceOfSurfaceElementPurposeMember as Array1OfHSequenceOfSurfaceElementPurposeMember,
-    StepElement_Array1OfMeasureOrUnspecifiedValue as Array1OfMeasureOrUnspecifiedValue,
-    StepElement_Array1OfSurfaceSection as Array1OfSurfaceSection,
-    StepElement_Array1OfVolumeElementPurpose as Array1OfVolumeElementPurpose,
-    StepElement_Array1OfVolumeElementPurposeMember as Array1OfVolumeElementPurposeMember,
-    StepElement_Array2OfCurveElementPurposeMember as Array2OfCurveElementPurposeMember,
-    StepElement_Array2OfSurfaceElementPurpose as Array2OfSurfaceElementPurpose,
-    StepElement_Array2OfSurfaceElementPurposeMember as Array2OfSurfaceElementPurposeMember,
-    StepElement_SequenceOfCurveElementPurposeMember as SequenceOfCurveElementPurposeMember,
-    StepElement_SequenceOfCurveElementSectionDefinition as SequenceOfCurveElementSectionDefinition,
-    StepElement_SequenceOfElementMaterial as SequenceOfElementMaterial,
-    StepElement_SequenceOfSurfaceElementPurposeMember as SequenceOfSurfaceElementPurposeMember,
-};

@@ -35,13 +35,13 @@ impl TryFrom<i32> for LoopEnum {
 }
 
 // Handle type re-exports (targets of handle upcasts/downcasts)
-pub use crate::ffi_types::HandleStandardTransient;
+pub use crate::ffi_types::Handle_Standard_Transient;
 
 // ========================
 // From TopOpeBRepBuild_Area1dBuilder.hxx
 // ========================
 
-/// **Source:** `TopOpeBRepBuild_Area1dBuilder.hxx`:33 - `TopOpeBRepBuild_Area1dBuilder`
+/// **Source:** `TopOpeBRepBuild_Area1dBuilder.hxx`:34 - `TopOpeBRepBuild_Area1dBuilder`
 pub use crate::ffi_types::TopOpeBRepBuild_Area1dBuilder as Area1dBuilder;
 
 unsafe impl crate::CppDeletable for Area1dBuilder {
@@ -53,7 +53,7 @@ unsafe impl crate::CppDeletable for Area1dBuilder {
 }
 
 impl Area1dBuilder {
-    /// **Source:** `TopOpeBRepBuild_Area1dBuilder.hxx`:38 - `TopOpeBRepBuild_Area1dBuilder::TopOpeBRepBuild_Area1dBuilder()`
+    /// **Source:** `TopOpeBRepBuild_Area1dBuilder.hxx`:39 - `TopOpeBRepBuild_Area1dBuilder::TopOpeBRepBuild_Area1dBuilder()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -62,7 +62,7 @@ impl Area1dBuilder {
         }
     }
 
-    /// **Source:** `TopOpeBRepBuild_Area1dBuilder.hxx`:42 - `TopOpeBRepBuild_Area1dBuilder::TopOpeBRepBuild_Area1dBuilder()`
+    /// **Source:** `TopOpeBRepBuild_Area1dBuilder.hxx`:43 - `TopOpeBRepBuild_Area1dBuilder::TopOpeBRepBuild_Area1dBuilder()`
     /// Creates a Area1dBuilder to find the areas of
     /// the shapes described by <LS> using the classifier <LC>.
     pub fn new_paveset_paveclassifier_bool(
@@ -75,7 +75,7 @@ impl Area1dBuilder {
         }
     }
 
-    /// **Source:** `TopOpeBRepBuild_Area1dBuilder.hxx`:42 - `TopOpeBRepBuild_Area1dBuilder::TopOpeBRepBuild_Area1dBuilder()`
+    /// **Source:** `TopOpeBRepBuild_Area1dBuilder.hxx`:43 - `TopOpeBRepBuild_Area1dBuilder::TopOpeBRepBuild_Area1dBuilder()`
     /// Creates a Area1dBuilder to find the areas of
     /// the shapes described by <LS> using the classifier <LC>.
     pub fn new_paveset_paveclassifier(
@@ -85,7 +85,7 @@ impl Area1dBuilder {
         Self::new_paveset_paveclassifier_bool(LS, LC, false)
     }
 
-    /// **Source:** `TopOpeBRepBuild_Area1dBuilder.hxx`:48 - `TopOpeBRepBuild_Area1dBuilder::InitAreaBuilder()`
+    /// **Source:** `TopOpeBRepBuild_Area1dBuilder.hxx`:49 - `TopOpeBRepBuild_Area1dBuilder::InitAreaBuilder()`
     /// Sets a Area1dBuilder to find the areas of
     /// the shapes described by <LS> using the classifier <LC>.
     pub fn init_area_builder(
@@ -104,68 +104,6 @@ impl Area1dBuilder {
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_Area1dBuilder.hxx`:53 - `TopOpeBRepBuild_Area1dBuilder::ADD_Loop_TO_LISTOFLoop()`
-    pub unsafe fn add_loop_to_listof_loop(
-        &self,
-        L: &crate::ffi_types::HandleTopOpeBRepBuildLoop,
-        LOL: &mut crate::ffi_types::TopOpeBRepBuild_ListOfLoop,
-        s: *mut std::ffi::c_void,
-    ) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKBool::TopOpeBRepBuild_Area1dBuilder_add_loop_to_listof_loop(
-                self as *const Self,
-                L,
-                LOL,
-                s,
-            )
-        })
-    }
-
-    /// **Source:** `TopOpeBRepBuild_Area1dBuilder.hxx`:58 - `TopOpeBRepBuild_Area1dBuilder::REM_Loop_FROM_LISTOFLoop()`
-    pub unsafe fn rem_loop_from_listof_loop(
-        &self,
-        ITLOL: &mut crate::ffi_types::TopOpeBRepBuild_ListIteratorOfListOfLoop,
-        LOL: &mut crate::ffi_types::TopOpeBRepBuild_ListOfLoop,
-        s: *mut std::ffi::c_void,
-    ) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKBool::TopOpeBRepBuild_Area1dBuilder_rem_loop_from_listof_loop(
-                self as *const Self,
-                ITLOL,
-                LOL,
-                s,
-            )
-        })
-    }
-
-    /// **Source:** `TopOpeBRepBuild_Area1dBuilder.hxx`:63 - `TopOpeBRepBuild_Area1dBuilder::ADD_LISTOFLoop_TO_LISTOFLoop()`
-    pub unsafe fn add_listof_loop_to_listof_loop(
-        &self,
-        LOL1: &mut crate::ffi_types::TopOpeBRepBuild_ListOfLoop,
-        LOL2: &mut crate::ffi_types::TopOpeBRepBuild_ListOfLoop,
-        s: *mut std::ffi::c_void,
-        s1: *mut std::ffi::c_void,
-        s2: *mut std::ffi::c_void,
-    ) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKBool::TopOpeBRepBuild_Area1dBuilder_add_listof_loop_to_listof_loop(
-                self as *const Self,
-                LOL1,
-                LOL2,
-                s,
-                s1,
-                s2,
-            )
-        })
-    }
-
-    /// **Source:** `TopOpeBRepBuild_Area1dBuilder.hxx`:70 - `TopOpeBRepBuild_Area1dBuilder::DumpList()`
-    pub fn dump_list(L: &crate::ffi_types::TopOpeBRepBuild_ListOfLoop) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKBool::TopOpeBRepBuild_Area1dBuilder_dump_list(L)
-        })
-    }
-
     /// Upcast to TopOpeBRepBuild_AreaBuilder
     pub fn as_area_builder(&self) -> &AreaBuilder {
         unsafe {
@@ -180,7 +118,7 @@ impl Area1dBuilder {
         }
     }
 
-    /// Inherited: **Source:** `TopOpeBRepBuild_AreaBuilder.hxx`:74 - `TopOpeBRepBuild_AreaBuilder::InitArea()`
+    /// Inherited: **Source:** `TopOpeBRepBuild_AreaBuilder.hxx`:73 - `TopOpeBRepBuild_AreaBuilder::InitArea()`
     pub fn init_area(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_Area1dBuilder_inherited_InitArea(
@@ -189,7 +127,7 @@ impl Area1dBuilder {
         })
     }
 
-    /// Inherited: **Source:** `TopOpeBRepBuild_AreaBuilder.hxx`:76 - `TopOpeBRepBuild_AreaBuilder::MoreArea()`
+    /// Inherited: **Source:** `TopOpeBRepBuild_AreaBuilder.hxx`:75 - `TopOpeBRepBuild_AreaBuilder::MoreArea()`
     pub fn more_area(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_Area1dBuilder_inherited_MoreArea(
@@ -198,7 +136,7 @@ impl Area1dBuilder {
         })
     }
 
-    /// Inherited: **Source:** `TopOpeBRepBuild_AreaBuilder.hxx`:78 - `TopOpeBRepBuild_AreaBuilder::NextArea()`
+    /// Inherited: **Source:** `TopOpeBRepBuild_AreaBuilder.hxx`:77 - `TopOpeBRepBuild_AreaBuilder::NextArea()`
     pub fn next_area(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_Area1dBuilder_inherited_NextArea(
@@ -207,7 +145,7 @@ impl Area1dBuilder {
         })
     }
 
-    /// Inherited: **Source:** `TopOpeBRepBuild_AreaBuilder.hxx`:81 - `TopOpeBRepBuild_AreaBuilder::InitLoop()`
+    /// Inherited: **Source:** `TopOpeBRepBuild_AreaBuilder.hxx`:80 - `TopOpeBRepBuild_AreaBuilder::InitLoop()`
     pub fn init_loop(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_Area1dBuilder_inherited_InitLoop(
@@ -216,7 +154,7 @@ impl Area1dBuilder {
         })
     }
 
-    /// Inherited: **Source:** `TopOpeBRepBuild_AreaBuilder.hxx`:83 - `TopOpeBRepBuild_AreaBuilder::MoreLoop()`
+    /// Inherited: **Source:** `TopOpeBRepBuild_AreaBuilder.hxx`:82 - `TopOpeBRepBuild_AreaBuilder::MoreLoop()`
     pub fn more_loop(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_Area1dBuilder_inherited_MoreLoop(
@@ -225,7 +163,7 @@ impl Area1dBuilder {
         })
     }
 
-    /// Inherited: **Source:** `TopOpeBRepBuild_AreaBuilder.hxx`:85 - `TopOpeBRepBuild_AreaBuilder::NextLoop()`
+    /// Inherited: **Source:** `TopOpeBRepBuild_AreaBuilder.hxx`:84 - `TopOpeBRepBuild_AreaBuilder::NextLoop()`
     pub fn next_loop(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_Area1dBuilder_inherited_NextLoop(
@@ -234,8 +172,8 @@ impl Area1dBuilder {
         })
     }
 
-    /// Inherited: **Source:** `TopOpeBRepBuild_AreaBuilder.hxx`:88 - `TopOpeBRepBuild_AreaBuilder::Loop()`
-    pub fn loop_(&self) -> &crate::ffi_types::HandleTopOpeBRepBuildLoop {
+    /// Inherited: **Source:** `TopOpeBRepBuild_AreaBuilder.hxx`:87 - `TopOpeBRepBuild_AreaBuilder::Loop()`
+    pub fn loop_(&self) -> &crate::ffi_types::Handle_TopOpeBRepBuild_Loop {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKBool::TopOpeBRepBuild_Area1dBuilder_inherited_Loop(
@@ -246,6 +184,24 @@ impl Area1dBuilder {
     }
 }
 
+// ── Skipped symbols for Area1dBuilder (4 total) ──
+// SKIPPED: **Source:** `TopOpeBRepBuild_Area1dBuilder.hxx`:53 - `TopOpeBRepBuild_Area1dBuilder::ADD_Loop_TO_LISTOFLoop`
+//   Reason: has unbindable types: param 'LOL': unresolved template type (NCollection_List<occ::handle<TopOpeBRepBuild_Loop>>&)
+//   // pub fn add_loop_to_listof_loop(&self, L: &HandleLoop, LOL: /* NCollection_List<occ::handle<TopOpeBRepBuild_Loop>>& */, s: *mut void);
+//
+// SKIPPED: **Source:** `TopOpeBRepBuild_Area1dBuilder.hxx`:58 - `TopOpeBRepBuild_Area1dBuilder::REM_Loop_FROM_LISTOFLoop`
+//   Reason: has unbindable types: param 'ITLOL': unresolved template type (NCollection_List<occ::handle<TopOpeBRepBuild_Loop>>::Iterator&); param 'LOL': unresolved template type (NCollection_List<occ::handle<TopOpeBRepBuild_Loop>>&)
+//   // pub fn rem_loop_from_listof_loop(&self, ITLOL: /* NCollection_List<occ::handle<TopOpeBRepBuild_Loop>>::Iterator& */, LOL: /* NCollection_List<occ::handle<TopOpeBRepBuild_Loop>>& */, s: *mut void);
+//
+// SKIPPED: **Source:** `TopOpeBRepBuild_Area1dBuilder.hxx`:63 - `TopOpeBRepBuild_Area1dBuilder::ADD_LISTOFLoop_TO_LISTOFLoop`
+//   Reason: has unbindable types: param 'LOL1': unresolved template type (NCollection_List<occ::handle<TopOpeBRepBuild_Loop>>&); param 'LOL2': unresolved template type (NCollection_List<occ::handle<TopOpeBRepBuild_Loop>>&)
+//   // pub fn add_listof_loop_to_listof_loop(&self, LOL1: /* NCollection_List<occ::handle<TopOpeBRepBuild_Loop>>& */, LOL2: /* NCollection_List<occ::handle<TopOpeBRepBuild_Loop>>& */, s: *mut void, s1: *mut void, s2: *mut void);
+//
+// SKIPPED: **Source:** `TopOpeBRepBuild_Area1dBuilder.hxx`:70 - `TopOpeBRepBuild_Area1dBuilder::DumpList`
+//   Reason: has unbindable types: param 'L': unresolved template type (NCollection_List<occ::handle<TopOpeBRepBuild_Loop>> const&)
+//   // pub fn dump_list(L: /* NCollection_List<occ::handle<TopOpeBRepBuild_Loop>> const& */);
+//
+
 // ========================
 // From TopOpeBRepBuild_Area2dBuilder.hxx
 // ========================
@@ -255,8 +211,8 @@ impl Area1dBuilder {
 /// where the Loop is the composite topological object of the boundary,
 /// here wire or block of edges.
 /// The LoopSet gives an iteration on Loops.
-/// For each Loop  it indicates if it is on the boundary (wire) or if it
-/// results from  an interference (block of edges).
+/// For each Loop it indicates if it is on the boundary (wire) or if it
+/// results from an interference (block of edges).
 /// The result of the Area2dBuilder is an iteration on areas.
 /// An area is described by a set of Loops.
 pub use crate::ffi_types::TopOpeBRepBuild_Area2dBuilder as Area2dBuilder;
@@ -335,7 +291,7 @@ impl Area2dBuilder {
         }
     }
 
-    /// Inherited: **Source:** `TopOpeBRepBuild_AreaBuilder.hxx`:74 - `TopOpeBRepBuild_AreaBuilder::InitArea()`
+    /// Inherited: **Source:** `TopOpeBRepBuild_AreaBuilder.hxx`:73 - `TopOpeBRepBuild_AreaBuilder::InitArea()`
     pub fn init_area(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_Area2dBuilder_inherited_InitArea(
@@ -344,7 +300,7 @@ impl Area2dBuilder {
         })
     }
 
-    /// Inherited: **Source:** `TopOpeBRepBuild_AreaBuilder.hxx`:76 - `TopOpeBRepBuild_AreaBuilder::MoreArea()`
+    /// Inherited: **Source:** `TopOpeBRepBuild_AreaBuilder.hxx`:75 - `TopOpeBRepBuild_AreaBuilder::MoreArea()`
     pub fn more_area(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_Area2dBuilder_inherited_MoreArea(
@@ -353,7 +309,7 @@ impl Area2dBuilder {
         })
     }
 
-    /// Inherited: **Source:** `TopOpeBRepBuild_AreaBuilder.hxx`:78 - `TopOpeBRepBuild_AreaBuilder::NextArea()`
+    /// Inherited: **Source:** `TopOpeBRepBuild_AreaBuilder.hxx`:77 - `TopOpeBRepBuild_AreaBuilder::NextArea()`
     pub fn next_area(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_Area2dBuilder_inherited_NextArea(
@@ -362,7 +318,7 @@ impl Area2dBuilder {
         })
     }
 
-    /// Inherited: **Source:** `TopOpeBRepBuild_AreaBuilder.hxx`:81 - `TopOpeBRepBuild_AreaBuilder::InitLoop()`
+    /// Inherited: **Source:** `TopOpeBRepBuild_AreaBuilder.hxx`:80 - `TopOpeBRepBuild_AreaBuilder::InitLoop()`
     pub fn init_loop(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_Area2dBuilder_inherited_InitLoop(
@@ -371,7 +327,7 @@ impl Area2dBuilder {
         })
     }
 
-    /// Inherited: **Source:** `TopOpeBRepBuild_AreaBuilder.hxx`:83 - `TopOpeBRepBuild_AreaBuilder::MoreLoop()`
+    /// Inherited: **Source:** `TopOpeBRepBuild_AreaBuilder.hxx`:82 - `TopOpeBRepBuild_AreaBuilder::MoreLoop()`
     pub fn more_loop(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_Area2dBuilder_inherited_MoreLoop(
@@ -380,7 +336,7 @@ impl Area2dBuilder {
         })
     }
 
-    /// Inherited: **Source:** `TopOpeBRepBuild_AreaBuilder.hxx`:85 - `TopOpeBRepBuild_AreaBuilder::NextLoop()`
+    /// Inherited: **Source:** `TopOpeBRepBuild_AreaBuilder.hxx`:84 - `TopOpeBRepBuild_AreaBuilder::NextLoop()`
     pub fn next_loop(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_Area2dBuilder_inherited_NextLoop(
@@ -389,8 +345,8 @@ impl Area2dBuilder {
         })
     }
 
-    /// Inherited: **Source:** `TopOpeBRepBuild_AreaBuilder.hxx`:88 - `TopOpeBRepBuild_AreaBuilder::Loop()`
-    pub fn loop_(&self) -> &crate::ffi_types::HandleTopOpeBRepBuildLoop {
+    /// Inherited: **Source:** `TopOpeBRepBuild_AreaBuilder.hxx`:87 - `TopOpeBRepBuild_AreaBuilder::Loop()`
+    pub fn loop_(&self) -> &crate::ffi_types::Handle_TopOpeBRepBuild_Loop {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKBool::TopOpeBRepBuild_Area2dBuilder_inherited_Loop(
@@ -398,49 +354,6 @@ impl Area2dBuilder {
                 ),
             ))
         }
-    }
-
-    /// Inherited: **Source:** `TopOpeBRepBuild_AreaBuilder.hxx`:90 - `TopOpeBRepBuild_AreaBuilder::ADD_Loop_TO_LISTOFLoop()`
-    pub unsafe fn add_loop_to_listof_loop(
-        &self,
-        L: &crate::ffi_types::HandleTopOpeBRepBuildLoop,
-        LOL: &mut crate::ffi_types::TopOpeBRepBuild_ListOfLoop,
-        s: *mut std::ffi::c_void,
-    ) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKBool::TopOpeBRepBuild_Area2dBuilder_inherited_ADD_Loop_TO_LISTOFLoop(
-                self as *const Self,
-                L,
-                LOL,
-                s,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `TopOpeBRepBuild_AreaBuilder.hxx`:94 - `TopOpeBRepBuild_AreaBuilder::REM_Loop_FROM_LISTOFLoop()`
-    pub unsafe fn rem_loop_from_listof_loop(
-        &self,
-        ITLOL: &mut crate::ffi_types::TopOpeBRepBuild_ListIteratorOfListOfLoop,
-        LOL: &mut crate::ffi_types::TopOpeBRepBuild_ListOfLoop,
-        s: *mut std::ffi::c_void,
-    ) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKBool::TopOpeBRepBuild_Area2dBuilder_inherited_REM_Loop_FROM_LISTOFLoop(self as *const Self, ITLOL, LOL, s)
-        })
-    }
-
-    /// Inherited: **Source:** `TopOpeBRepBuild_AreaBuilder.hxx`:99 - `TopOpeBRepBuild_AreaBuilder::ADD_LISTOFLoop_TO_LISTOFLoop()`
-    pub unsafe fn add_listof_loop_to_listof_loop(
-        &self,
-        LOL1: &mut crate::ffi_types::TopOpeBRepBuild_ListOfLoop,
-        LOL2: &mut crate::ffi_types::TopOpeBRepBuild_ListOfLoop,
-        s: *mut std::ffi::c_void,
-        s1: *mut std::ffi::c_void,
-        s2: *mut std::ffi::c_void,
-    ) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKBool::TopOpeBRepBuild_Area2dBuilder_inherited_ADD_LISTOFLoop_TO_LISTOFLoop(self as *const Self, LOL1, LOL2, s, s1, s2)
-        })
     }
 }
 
@@ -453,8 +366,8 @@ impl Area2dBuilder {
 /// where the Loop is the composite topological object of the boundary,
 /// here wire or block of edges.
 /// The LoopSet gives an iteration on Loops.
-/// For each Loop  it indicates if it is on the boundary (wire) or if it
-/// results from  an interference (block of edges).
+/// For each Loop it indicates if it is on the boundary (wire) or if it
+/// results from an interference (block of edges).
 /// The result of the Area3dBuilder is an iteration on areas.
 /// An area is described by a set of Loops.
 pub use crate::ffi_types::TopOpeBRepBuild_Area3dBuilder as Area3dBuilder;
@@ -533,7 +446,7 @@ impl Area3dBuilder {
         }
     }
 
-    /// Inherited: **Source:** `TopOpeBRepBuild_AreaBuilder.hxx`:74 - `TopOpeBRepBuild_AreaBuilder::InitArea()`
+    /// Inherited: **Source:** `TopOpeBRepBuild_AreaBuilder.hxx`:73 - `TopOpeBRepBuild_AreaBuilder::InitArea()`
     pub fn init_area(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_Area3dBuilder_inherited_InitArea(
@@ -542,7 +455,7 @@ impl Area3dBuilder {
         })
     }
 
-    /// Inherited: **Source:** `TopOpeBRepBuild_AreaBuilder.hxx`:76 - `TopOpeBRepBuild_AreaBuilder::MoreArea()`
+    /// Inherited: **Source:** `TopOpeBRepBuild_AreaBuilder.hxx`:75 - `TopOpeBRepBuild_AreaBuilder::MoreArea()`
     pub fn more_area(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_Area3dBuilder_inherited_MoreArea(
@@ -551,7 +464,7 @@ impl Area3dBuilder {
         })
     }
 
-    /// Inherited: **Source:** `TopOpeBRepBuild_AreaBuilder.hxx`:78 - `TopOpeBRepBuild_AreaBuilder::NextArea()`
+    /// Inherited: **Source:** `TopOpeBRepBuild_AreaBuilder.hxx`:77 - `TopOpeBRepBuild_AreaBuilder::NextArea()`
     pub fn next_area(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_Area3dBuilder_inherited_NextArea(
@@ -560,7 +473,7 @@ impl Area3dBuilder {
         })
     }
 
-    /// Inherited: **Source:** `TopOpeBRepBuild_AreaBuilder.hxx`:81 - `TopOpeBRepBuild_AreaBuilder::InitLoop()`
+    /// Inherited: **Source:** `TopOpeBRepBuild_AreaBuilder.hxx`:80 - `TopOpeBRepBuild_AreaBuilder::InitLoop()`
     pub fn init_loop(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_Area3dBuilder_inherited_InitLoop(
@@ -569,7 +482,7 @@ impl Area3dBuilder {
         })
     }
 
-    /// Inherited: **Source:** `TopOpeBRepBuild_AreaBuilder.hxx`:83 - `TopOpeBRepBuild_AreaBuilder::MoreLoop()`
+    /// Inherited: **Source:** `TopOpeBRepBuild_AreaBuilder.hxx`:82 - `TopOpeBRepBuild_AreaBuilder::MoreLoop()`
     pub fn more_loop(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_Area3dBuilder_inherited_MoreLoop(
@@ -578,7 +491,7 @@ impl Area3dBuilder {
         })
     }
 
-    /// Inherited: **Source:** `TopOpeBRepBuild_AreaBuilder.hxx`:85 - `TopOpeBRepBuild_AreaBuilder::NextLoop()`
+    /// Inherited: **Source:** `TopOpeBRepBuild_AreaBuilder.hxx`:84 - `TopOpeBRepBuild_AreaBuilder::NextLoop()`
     pub fn next_loop(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_Area3dBuilder_inherited_NextLoop(
@@ -587,8 +500,8 @@ impl Area3dBuilder {
         })
     }
 
-    /// Inherited: **Source:** `TopOpeBRepBuild_AreaBuilder.hxx`:88 - `TopOpeBRepBuild_AreaBuilder::Loop()`
-    pub fn loop_(&self) -> &crate::ffi_types::HandleTopOpeBRepBuildLoop {
+    /// Inherited: **Source:** `TopOpeBRepBuild_AreaBuilder.hxx`:87 - `TopOpeBRepBuild_AreaBuilder::Loop()`
+    pub fn loop_(&self) -> &crate::ffi_types::Handle_TopOpeBRepBuild_Loop {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKBool::TopOpeBRepBuild_Area3dBuilder_inherited_Loop(
@@ -597,71 +510,28 @@ impl Area3dBuilder {
             ))
         }
     }
-
-    /// Inherited: **Source:** `TopOpeBRepBuild_AreaBuilder.hxx`:90 - `TopOpeBRepBuild_AreaBuilder::ADD_Loop_TO_LISTOFLoop()`
-    pub unsafe fn add_loop_to_listof_loop(
-        &self,
-        L: &crate::ffi_types::HandleTopOpeBRepBuildLoop,
-        LOL: &mut crate::ffi_types::TopOpeBRepBuild_ListOfLoop,
-        s: *mut std::ffi::c_void,
-    ) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKBool::TopOpeBRepBuild_Area3dBuilder_inherited_ADD_Loop_TO_LISTOFLoop(
-                self as *const Self,
-                L,
-                LOL,
-                s,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `TopOpeBRepBuild_AreaBuilder.hxx`:94 - `TopOpeBRepBuild_AreaBuilder::REM_Loop_FROM_LISTOFLoop()`
-    pub unsafe fn rem_loop_from_listof_loop(
-        &self,
-        ITLOL: &mut crate::ffi_types::TopOpeBRepBuild_ListIteratorOfListOfLoop,
-        LOL: &mut crate::ffi_types::TopOpeBRepBuild_ListOfLoop,
-        s: *mut std::ffi::c_void,
-    ) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKBool::TopOpeBRepBuild_Area3dBuilder_inherited_REM_Loop_FROM_LISTOFLoop(self as *const Self, ITLOL, LOL, s)
-        })
-    }
-
-    /// Inherited: **Source:** `TopOpeBRepBuild_AreaBuilder.hxx`:99 - `TopOpeBRepBuild_AreaBuilder::ADD_LISTOFLoop_TO_LISTOFLoop()`
-    pub unsafe fn add_listof_loop_to_listof_loop(
-        &self,
-        LOL1: &mut crate::ffi_types::TopOpeBRepBuild_ListOfLoop,
-        LOL2: &mut crate::ffi_types::TopOpeBRepBuild_ListOfLoop,
-        s: *mut std::ffi::c_void,
-        s1: *mut std::ffi::c_void,
-        s2: *mut std::ffi::c_void,
-    ) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKBool::TopOpeBRepBuild_Area3dBuilder_inherited_ADD_LISTOFLoop_TO_LISTOFLoop(self as *const Self, LOL1, LOL2, s, s1, s2)
-        })
-    }
 }
 
 // ========================
 // From TopOpeBRepBuild_AreaBuilder.hxx
 // ========================
 
-/// **Source:** `TopOpeBRepBuild_AreaBuilder.hxx`:52 - `TopOpeBRepBuild_AreaBuilder`
-/// The AreaBuilder algorithm is  used  to
-/// reconstruct complex  topological objects as  Faces
+/// **Source:** `TopOpeBRepBuild_AreaBuilder.hxx`:51 - `TopOpeBRepBuild_AreaBuilder`
+/// The AreaBuilder algorithm is used to
+/// reconstruct complex topological objects as Faces
 /// or Solids.
-/// * Loop is  the  composite topological object of
+/// * Loop is the composite topological object of
 /// the boundary. Wire for a Face. Shell for a Solid.
-/// *  LoopSet is a  tool describing the object  to
-/// build.  It gives an iteration  on Loops.  For each
+/// * LoopSet is a tool describing the object to
+/// build. It gives an iteration on Loops. For each
 /// Loop it tells if it is on the boundary or if it is
 /// an interference.
-/// * LoopClassifier  is an algorithm  used to test
-/// if a Loop is inside  another  Loop.
-/// The  result of the  reconstruction is an iteration
-/// on the reconstructed areas.  An  area is described
+/// * LoopClassifier is an algorithm used to test
+/// if a Loop is inside another Loop.
+/// The result of the reconstruction is an iteration
+/// on the reconstructed areas. An area is described
 /// by a set of Loops.
-/// A AreaBuilder is built with :
+/// A AreaBuilder is built with:
 /// - a LoopSet describing the object to reconstruct.
 /// - a LoopClassifier providing the classification algorithm.
 pub use crate::ffi_types::TopOpeBRepBuild_AreaBuilder as AreaBuilder;
@@ -675,7 +545,7 @@ unsafe impl crate::CppDeletable for AreaBuilder {
 }
 
 impl AreaBuilder {
-    /// **Source:** `TopOpeBRepBuild_AreaBuilder.hxx`:57 - `TopOpeBRepBuild_AreaBuilder::TopOpeBRepBuild_AreaBuilder()`
+    /// **Source:** `TopOpeBRepBuild_AreaBuilder.hxx`:56 - `TopOpeBRepBuild_AreaBuilder::TopOpeBRepBuild_AreaBuilder()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -684,7 +554,7 @@ impl AreaBuilder {
         }
     }
 
-    /// **Source:** `TopOpeBRepBuild_AreaBuilder.hxx`:61 - `TopOpeBRepBuild_AreaBuilder::TopOpeBRepBuild_AreaBuilder()`
+    /// **Source:** `TopOpeBRepBuild_AreaBuilder.hxx`:60 - `TopOpeBRepBuild_AreaBuilder::TopOpeBRepBuild_AreaBuilder()`
     /// Creates a AreaBuilder to build the areas on
     /// the shapes described by <LS> using the classifier <LC>.
     pub fn new_loopset_loopclassifier_bool(
@@ -697,7 +567,7 @@ impl AreaBuilder {
         }
     }
 
-    /// **Source:** `TopOpeBRepBuild_AreaBuilder.hxx`:61 - `TopOpeBRepBuild_AreaBuilder::TopOpeBRepBuild_AreaBuilder()`
+    /// **Source:** `TopOpeBRepBuild_AreaBuilder.hxx`:60 - `TopOpeBRepBuild_AreaBuilder::TopOpeBRepBuild_AreaBuilder()`
     /// Creates a AreaBuilder to build the areas on
     /// the shapes described by <LS> using the classifier <LC>.
     pub fn new_loopset_loopclassifier(
@@ -707,7 +577,7 @@ impl AreaBuilder {
         Self::new_loopset_loopclassifier_bool(LS, LC, false)
     }
 
-    /// **Source:** `TopOpeBRepBuild_AreaBuilder.hxx`:69 - `TopOpeBRepBuild_AreaBuilder::InitAreaBuilder()`
+    /// **Source:** `TopOpeBRepBuild_AreaBuilder.hxx`:68 - `TopOpeBRepBuild_AreaBuilder::InitAreaBuilder()`
     /// Sets a AreaBuilder to find the areas on
     /// the shapes described by <LS> using the classifier <LC>.
     pub fn init_area_builder(
@@ -726,7 +596,7 @@ impl AreaBuilder {
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_AreaBuilder.hxx`:74 - `TopOpeBRepBuild_AreaBuilder::InitArea()`
+    /// **Source:** `TopOpeBRepBuild_AreaBuilder.hxx`:73 - `TopOpeBRepBuild_AreaBuilder::InitArea()`
     /// Initialize iteration on areas.
     pub fn init_area(&mut self) -> i32 {
         crate::check_result(unsafe {
@@ -734,21 +604,21 @@ impl AreaBuilder {
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_AreaBuilder.hxx`:76 - `TopOpeBRepBuild_AreaBuilder::MoreArea()`
+    /// **Source:** `TopOpeBRepBuild_AreaBuilder.hxx`:75 - `TopOpeBRepBuild_AreaBuilder::MoreArea()`
     pub fn more_area(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_AreaBuilder_more_area(self as *const Self)
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_AreaBuilder.hxx`:78 - `TopOpeBRepBuild_AreaBuilder::NextArea()`
+    /// **Source:** `TopOpeBRepBuild_AreaBuilder.hxx`:77 - `TopOpeBRepBuild_AreaBuilder::NextArea()`
     pub fn next_area(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_AreaBuilder_next_area(self as *mut Self)
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_AreaBuilder.hxx`:81 - `TopOpeBRepBuild_AreaBuilder::InitLoop()`
+    /// **Source:** `TopOpeBRepBuild_AreaBuilder.hxx`:80 - `TopOpeBRepBuild_AreaBuilder::InitLoop()`
     /// Initialize iteration on loops of current Area.
     pub fn init_loop(&mut self) -> i32 {
         crate::check_result(unsafe {
@@ -756,91 +626,50 @@ impl AreaBuilder {
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_AreaBuilder.hxx`:83 - `TopOpeBRepBuild_AreaBuilder::MoreLoop()`
+    /// **Source:** `TopOpeBRepBuild_AreaBuilder.hxx`:82 - `TopOpeBRepBuild_AreaBuilder::MoreLoop()`
     pub fn more_loop(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_AreaBuilder_more_loop(self as *const Self)
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_AreaBuilder.hxx`:85 - `TopOpeBRepBuild_AreaBuilder::NextLoop()`
+    /// **Source:** `TopOpeBRepBuild_AreaBuilder.hxx`:84 - `TopOpeBRepBuild_AreaBuilder::NextLoop()`
     pub fn next_loop(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_AreaBuilder_next_loop(self as *mut Self)
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_AreaBuilder.hxx`:88 - `TopOpeBRepBuild_AreaBuilder::Loop()`
+    /// **Source:** `TopOpeBRepBuild_AreaBuilder.hxx`:87 - `TopOpeBRepBuild_AreaBuilder::Loop()`
     /// Returns the current Loop in the current area.
-    pub fn loop_(&self) -> &crate::ffi_types::HandleTopOpeBRepBuildLoop {
+    pub fn loop_(&self) -> &crate::ffi_types::Handle_TopOpeBRepBuild_Loop {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKBool::TopOpeBRepBuild_AreaBuilder_loop_(
                 self as *const Self,
             )))
         }
     }
-
-    /// **Source:** `TopOpeBRepBuild_AreaBuilder.hxx`:90 - `TopOpeBRepBuild_AreaBuilder::ADD_Loop_TO_LISTOFLoop()`
-    pub unsafe fn add_loop_to_listof_loop(
-        &self,
-        L: &crate::ffi_types::HandleTopOpeBRepBuildLoop,
-        LOL: &mut crate::ffi_types::TopOpeBRepBuild_ListOfLoop,
-        s: *mut std::ffi::c_void,
-    ) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKBool::TopOpeBRepBuild_AreaBuilder_add_loop_to_listof_loop(
-                self as *const Self,
-                L,
-                LOL,
-                s,
-            )
-        })
-    }
-
-    /// **Source:** `TopOpeBRepBuild_AreaBuilder.hxx`:94 - `TopOpeBRepBuild_AreaBuilder::REM_Loop_FROM_LISTOFLoop()`
-    pub unsafe fn rem_loop_from_listof_loop(
-        &self,
-        ITLOL: &mut crate::ffi_types::TopOpeBRepBuild_ListIteratorOfListOfLoop,
-        LOL: &mut crate::ffi_types::TopOpeBRepBuild_ListOfLoop,
-        s: *mut std::ffi::c_void,
-    ) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKBool::TopOpeBRepBuild_AreaBuilder_rem_loop_from_listof_loop(
-                self as *const Self,
-                ITLOL,
-                LOL,
-                s,
-            )
-        })
-    }
-
-    /// **Source:** `TopOpeBRepBuild_AreaBuilder.hxx`:99 - `TopOpeBRepBuild_AreaBuilder::ADD_LISTOFLoop_TO_LISTOFLoop()`
-    pub unsafe fn add_listof_loop_to_listof_loop(
-        &self,
-        LOL1: &mut crate::ffi_types::TopOpeBRepBuild_ListOfLoop,
-        LOL2: &mut crate::ffi_types::TopOpeBRepBuild_ListOfLoop,
-        s: *mut std::ffi::c_void,
-        s1: *mut std::ffi::c_void,
-        s2: *mut std::ffi::c_void,
-    ) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKBool::TopOpeBRepBuild_AreaBuilder_add_listof_loop_to_listof_loop(
-                self as *const Self,
-                LOL1,
-                LOL2,
-                s,
-                s1,
-                s2,
-            )
-        })
-    }
 }
+
+// ── Skipped symbols for AreaBuilder (3 total) ──
+// SKIPPED: **Source:** `TopOpeBRepBuild_AreaBuilder.hxx`:89 - `TopOpeBRepBuild_AreaBuilder::ADD_Loop_TO_LISTOFLoop`
+//   Reason: has unbindable types: param 'LOL': unresolved template type (NCollection_List<occ::handle<TopOpeBRepBuild_Loop>>&)
+//   // pub fn add_loop_to_listof_loop(&self, L: &HandleLoop, LOL: /* NCollection_List<occ::handle<TopOpeBRepBuild_Loop>>& */, s: *mut void);
+//
+// SKIPPED: **Source:** `TopOpeBRepBuild_AreaBuilder.hxx`:94 - `TopOpeBRepBuild_AreaBuilder::REM_Loop_FROM_LISTOFLoop`
+//   Reason: has unbindable types: param 'ITLOL': unresolved template type (NCollection_List<occ::handle<TopOpeBRepBuild_Loop>>::Iterator&); param 'LOL': unresolved template type (NCollection_List<occ::handle<TopOpeBRepBuild_Loop>>&)
+//   // pub fn rem_loop_from_listof_loop(&self, ITLOL: /* NCollection_List<occ::handle<TopOpeBRepBuild_Loop>>::Iterator& */, LOL: /* NCollection_List<occ::handle<TopOpeBRepBuild_Loop>>& */, s: *mut void);
+//
+// SKIPPED: **Source:** `TopOpeBRepBuild_AreaBuilder.hxx`:99 - `TopOpeBRepBuild_AreaBuilder::ADD_LISTOFLoop_TO_LISTOFLoop`
+//   Reason: has unbindable types: param 'LOL1': unresolved template type (NCollection_List<occ::handle<TopOpeBRepBuild_Loop>>&); param 'LOL2': unresolved template type (NCollection_List<occ::handle<TopOpeBRepBuild_Loop>>&)
+//   // pub fn add_listof_loop_to_listof_loop(&self, LOL1: /* NCollection_List<occ::handle<TopOpeBRepBuild_Loop>>& */, LOL2: /* NCollection_List<occ::handle<TopOpeBRepBuild_Loop>>& */, s: *mut void, s1: *mut void, s2: *mut void);
+//
 
 // ========================
 // From TopOpeBRepBuild_BlockBuilder.hxx
 // ========================
 
-/// **Source:** `TopOpeBRepBuild_BlockBuilder.hxx`:32 - `TopOpeBRepBuild_BlockBuilder`
+/// **Source:** `TopOpeBRepBuild_BlockBuilder.hxx`:34 - `TopOpeBRepBuild_BlockBuilder`
 pub use crate::ffi_types::TopOpeBRepBuild_BlockBuilder as BlockBuilder;
 
 unsafe impl crate::CppDeletable for BlockBuilder {
@@ -852,7 +681,7 @@ unsafe impl crate::CppDeletable for BlockBuilder {
 }
 
 impl BlockBuilder {
-    /// **Source:** `TopOpeBRepBuild_BlockBuilder.hxx`:37 - `TopOpeBRepBuild_BlockBuilder::TopOpeBRepBuild_BlockBuilder()`
+    /// **Source:** `TopOpeBRepBuild_BlockBuilder.hxx`:39 - `TopOpeBRepBuild_BlockBuilder::TopOpeBRepBuild_BlockBuilder()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -861,7 +690,7 @@ impl BlockBuilder {
         }
     }
 
-    /// **Source:** `TopOpeBRepBuild_BlockBuilder.hxx`:39 - `TopOpeBRepBuild_BlockBuilder::TopOpeBRepBuild_BlockBuilder()`
+    /// **Source:** `TopOpeBRepBuild_BlockBuilder.hxx`:41 - `TopOpeBRepBuild_BlockBuilder::TopOpeBRepBuild_BlockBuilder()`
     pub fn new_shapeset(SS: &mut ShapeSet) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -870,35 +699,35 @@ impl BlockBuilder {
         }
     }
 
-    /// **Source:** `TopOpeBRepBuild_BlockBuilder.hxx`:41 - `TopOpeBRepBuild_BlockBuilder::MakeBlock()`
+    /// **Source:** `TopOpeBRepBuild_BlockBuilder.hxx`:43 - `TopOpeBRepBuild_BlockBuilder::MakeBlock()`
     pub fn make_block(&mut self, SS: &mut ShapeSet) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_BlockBuilder_make_block(self as *mut Self, SS)
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_BlockBuilder.hxx`:43 - `TopOpeBRepBuild_BlockBuilder::InitBlock()`
+    /// **Source:** `TopOpeBRepBuild_BlockBuilder.hxx`:45 - `TopOpeBRepBuild_BlockBuilder::InitBlock()`
     pub fn init_block(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_BlockBuilder_init_block(self as *mut Self)
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_BlockBuilder.hxx`:45 - `TopOpeBRepBuild_BlockBuilder::MoreBlock()`
+    /// **Source:** `TopOpeBRepBuild_BlockBuilder.hxx`:47 - `TopOpeBRepBuild_BlockBuilder::MoreBlock()`
     pub fn more_block(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_BlockBuilder_more_block(self as *const Self)
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_BlockBuilder.hxx`:47 - `TopOpeBRepBuild_BlockBuilder::NextBlock()`
+    /// **Source:** `TopOpeBRepBuild_BlockBuilder.hxx`:49 - `TopOpeBRepBuild_BlockBuilder::NextBlock()`
     pub fn next_block(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_BlockBuilder_next_block(self as *mut Self)
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_BlockBuilder.hxx`:49 - `TopOpeBRepBuild_BlockBuilder::BlockIterator()`
+    /// **Source:** `TopOpeBRepBuild_BlockBuilder.hxx`:51 - `TopOpeBRepBuild_BlockBuilder::BlockIterator()`
     pub fn block_iterator(&self) -> crate::OwnedPtr<BlockIterator> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -909,7 +738,7 @@ impl BlockBuilder {
         }
     }
 
-    /// **Source:** `TopOpeBRepBuild_BlockBuilder.hxx`:52 - `TopOpeBRepBuild_BlockBuilder::Element()`
+    /// **Source:** `TopOpeBRepBuild_BlockBuilder.hxx`:54 - `TopOpeBRepBuild_BlockBuilder::Element()`
     /// Returns the current element of <BI>.
     ///
     /// # Safety
@@ -928,7 +757,7 @@ impl BlockBuilder {
         }
     }
 
-    /// **Source:** `TopOpeBRepBuild_BlockBuilder.hxx`:54 - `TopOpeBRepBuild_BlockBuilder::Element()`
+    /// **Source:** `TopOpeBRepBuild_BlockBuilder.hxx`:56 - `TopOpeBRepBuild_BlockBuilder::Element()`
     pub fn element_int(&self, I: i32) -> &crate::topo_ds::Shape {
         unsafe {
             &*(crate::check_result(
@@ -940,7 +769,7 @@ impl BlockBuilder {
         }
     }
 
-    /// **Source:** `TopOpeBRepBuild_BlockBuilder.hxx`:56 - `TopOpeBRepBuild_BlockBuilder::Element()`
+    /// **Source:** `TopOpeBRepBuild_BlockBuilder.hxx`:58 - `TopOpeBRepBuild_BlockBuilder::Element()`
     pub fn element_shape(&self, S: &crate::topo_ds::Shape) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_BlockBuilder_element_shape(
@@ -950,7 +779,7 @@ impl BlockBuilder {
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_BlockBuilder.hxx`:58 - `TopOpeBRepBuild_BlockBuilder::ElementIsValid()`
+    /// **Source:** `TopOpeBRepBuild_BlockBuilder.hxx`:60 - `TopOpeBRepBuild_BlockBuilder::ElementIsValid()`
     pub fn element_is_valid_blockiterator(&self, BI: &BlockIterator) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_BlockBuilder_element_is_valid_blockiterator(
@@ -960,7 +789,7 @@ impl BlockBuilder {
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_BlockBuilder.hxx`:60 - `TopOpeBRepBuild_BlockBuilder::ElementIsValid()`
+    /// **Source:** `TopOpeBRepBuild_BlockBuilder.hxx`:62 - `TopOpeBRepBuild_BlockBuilder::ElementIsValid()`
     pub fn element_is_valid_int(&self, I: i32) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_BlockBuilder_element_is_valid_int(
@@ -970,14 +799,14 @@ impl BlockBuilder {
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_BlockBuilder.hxx`:62 - `TopOpeBRepBuild_BlockBuilder::AddElement()`
+    /// **Source:** `TopOpeBRepBuild_BlockBuilder.hxx`:64 - `TopOpeBRepBuild_BlockBuilder::AddElement()`
     pub fn add_element(&mut self, S: &crate::topo_ds::Shape) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_BlockBuilder_add_element(self as *mut Self, S)
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_BlockBuilder.hxx`:64 - `TopOpeBRepBuild_BlockBuilder::SetValid()`
+    /// **Source:** `TopOpeBRepBuild_BlockBuilder.hxx`:66 - `TopOpeBRepBuild_BlockBuilder::SetValid()`
     pub fn set_valid_blockiterator_bool(&mut self, BI: &BlockIterator, isvalid: bool) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_BlockBuilder_set_valid_blockiterator_bool(
@@ -988,7 +817,7 @@ impl BlockBuilder {
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_BlockBuilder.hxx`:67 - `TopOpeBRepBuild_BlockBuilder::SetValid()`
+    /// **Source:** `TopOpeBRepBuild_BlockBuilder.hxx`:68 - `TopOpeBRepBuild_BlockBuilder::SetValid()`
     pub fn set_valid_int_bool(&mut self, I: i32, isvalid: bool) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_BlockBuilder_set_valid_int_bool(
@@ -999,7 +828,7 @@ impl BlockBuilder {
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_BlockBuilder.hxx`:69 - `TopOpeBRepBuild_BlockBuilder::CurrentBlockIsRegular()`
+    /// **Source:** `TopOpeBRepBuild_BlockBuilder.hxx`:70 - `TopOpeBRepBuild_BlockBuilder::CurrentBlockIsRegular()`
     pub fn current_block_is_regular(&mut self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_BlockBuilder_current_block_is_regular(
@@ -1044,35 +873,35 @@ impl BlockIterator {
         }
     }
 
-    /// **Source:** `TopOpeBRepBuild_BlockIterator.hxx`:37 - `TopOpeBRepBuild_BlockIterator::Initialize()`
+    /// **Source:** `TopOpeBRepBuild_BlockIterator.hxx`:36 - `TopOpeBRepBuild_BlockIterator::Initialize()`
     pub fn initialize(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_BlockIterator_initialize(self as *mut Self)
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_BlockIterator.hxx`:39 - `TopOpeBRepBuild_BlockIterator::More()`
+    /// **Source:** `TopOpeBRepBuild_BlockIterator.hxx`:38 - `TopOpeBRepBuild_BlockIterator::More()`
     pub fn more(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_BlockIterator_more(self as *const Self)
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_BlockIterator.hxx`:41 - `TopOpeBRepBuild_BlockIterator::Next()`
+    /// **Source:** `TopOpeBRepBuild_BlockIterator.hxx`:40 - `TopOpeBRepBuild_BlockIterator::Next()`
     pub fn next(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_BlockIterator_next(self as *mut Self)
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_BlockIterator.hxx`:43 - `TopOpeBRepBuild_BlockIterator::Value()`
+    /// **Source:** `TopOpeBRepBuild_BlockIterator.hxx`:42 - `TopOpeBRepBuild_BlockIterator::Value()`
     pub fn value(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_BlockIterator_value(self as *const Self)
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_BlockIterator.hxx`:45 - `TopOpeBRepBuild_BlockIterator::Extent()`
+    /// **Source:** `TopOpeBRepBuild_BlockIterator.hxx`:44 - `TopOpeBRepBuild_BlockIterator::Extent()`
     pub fn extent(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_BlockIterator_extent(self as *const Self)
@@ -1084,13 +913,13 @@ impl BlockIterator {
 // From TopOpeBRepBuild_Builder.hxx
 // ========================
 
-/// **Source:** `TopOpeBRepBuild_Builder.hxx`:77 - `TopOpeBRepBuild_Builder`
-/// The Builder  algorithm    constructs   topological
-/// objects  from   an    existing  topology  and  new
+/// **Source:** `TopOpeBRepBuild_Builder.hxx`:73 - `TopOpeBRepBuild_Builder`
+/// The Builder algorithm constructs topological
+/// objects from an existing topology and new
 /// geometries attached to the topology. It is used to
 /// construct the result of a topological operation;
-/// the existing  topologies are the parts involved in
-/// the  topological  operation and the new geometries
+/// the existing topologies are the parts involved in
+/// the topological operation and the new geometries
 /// are the intersection lines and points.
 pub use crate::ffi_types::TopOpeBRepBuild_Builder as Builder;
 
@@ -1103,7 +932,7 @@ unsafe impl crate::CppDeletable for Builder {
 }
 
 impl Builder {
-    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:82 - `TopOpeBRepBuild_Builder::TopOpeBRepBuild_Builder()`
+    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:78 - `TopOpeBRepBuild_Builder::TopOpeBRepBuild_Builder()`
     pub fn new_buildtool(BT: &crate::top_ope_b_rep_ds::BuildTool) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -1112,7 +941,7 @@ impl Builder {
         }
     }
 
-    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:86 - `TopOpeBRepBuild_Builder::ChangeBuildTool()`
+    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:82 - `TopOpeBRepBuild_Builder::ChangeBuildTool()`
     pub fn change_build_tool(&mut self) -> &mut crate::top_ope_b_rep_ds::BuildTool {
         unsafe {
             &mut *(crate::check_result(
@@ -1123,7 +952,7 @@ impl Builder {
         }
     }
 
-    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:88 - `TopOpeBRepBuild_Builder::BuildTool()`
+    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:84 - `TopOpeBRepBuild_Builder::BuildTool()`
     pub fn build_tool(&self) -> &crate::top_ope_b_rep_ds::BuildTool {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKBool::TopOpeBRepBuild_Builder_build_tool(
@@ -1132,26 +961,26 @@ impl Builder {
         }
     }
 
-    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:92 - `TopOpeBRepBuild_Builder::Perform()`
+    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:88 - `TopOpeBRepBuild_Builder::Perform()`
     /// Stores the data structure <HDS>,
     /// Create shapes from the new geometries.
     pub fn perform_handletopopebrepdshdatastructure(
         &mut self,
-        HDS: &crate::ffi_types::HandleTopOpeBRepDSHDataStructure,
+        HDS: &crate::ffi_types::Handle_TopOpeBRepDS_HDataStructure,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_Builder_perform_handletopopebrepdshdatastructure(self as *mut Self, HDS)
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:98 - `TopOpeBRepBuild_Builder::Perform()`
+    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:94 - `TopOpeBRepBuild_Builder::Perform()`
     /// Stores the data structure <HDS>,
     /// Create shapes from the new geometries,
     /// Evaluates if an operation performed on shapes S1,S2
     /// is a particular case.
     pub fn perform_handletopopebrepdshdatastructure_shape2(
         &mut self,
-        HDS: &crate::ffi_types::HandleTopOpeBRepDSHDataStructure,
+        HDS: &crate::ffi_types::Handle_TopOpeBRepDS_HDataStructure,
         S1: &crate::topo_ds::Shape,
         S2: &crate::topo_ds::Shape,
     ) {
@@ -1160,11 +989,11 @@ impl Builder {
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:103 - `TopOpeBRepBuild_Builder::DataStructure()`
+    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:99 - `TopOpeBRepBuild_Builder::DataStructure()`
     /// returns the DS handled by this builder
     pub fn data_structure(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleTopOpeBRepDSHDataStructure> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_TopOpeBRepDS_HDataStructure> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKBool::TopOpeBRepBuild_Builder_data_structure(
@@ -1174,7 +1003,7 @@ impl Builder {
         }
     }
 
-    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:107 - `TopOpeBRepBuild_Builder::Clear()`
+    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:103 - `TopOpeBRepBuild_Builder::Clear()`
     /// Removes all splits and merges already performed.
     /// Does NOT clear the handled DS.
     pub fn clear(&mut self) {
@@ -1183,17 +1012,17 @@ impl Builder {
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:114 - `TopOpeBRepBuild_Builder::MergeEdges()`
-    /// Merges  the two edges <S1> and <S2> keeping the
+    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:110 - `TopOpeBRepBuild_Builder::MergeEdges()`
+    /// Merges the two edges <S1> and <S2> keeping the
     /// parts in each edge of states <TB1> and <TB2>.
     /// Booleans onA, onB, onAB indicate whether parts of edges
     /// found as state ON respectively on first, second, and both
     /// shapes must be (or not) built.
     pub fn merge_edges(
         &mut self,
-        L1: &crate::ffi_types::TopTools_ListOfShape,
+        L1: &crate::ffi_types::NCollection_List_TopoDS_Shape,
         TB1: crate::top_abs::State,
-        L2: &crate::ffi_types::TopTools_ListOfShape,
+        L2: &crate::ffi_types::NCollection_List_TopoDS_Shape,
         TB2: crate::top_abs::State,
         onA: bool,
         onB: bool,
@@ -1213,14 +1042,14 @@ impl Builder {
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:124 - `TopOpeBRepBuild_Builder::MergeFaces()`
-    /// Merges  the two faces <S1>   and <S2> keeping the
+    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:120 - `TopOpeBRepBuild_Builder::MergeFaces()`
+    /// Merges the two faces <S1> and <S2> keeping the
     /// parts in each face of states <TB1> and <TB2>.
     pub fn merge_faces(
         &mut self,
-        S1: &crate::ffi_types::TopTools_ListOfShape,
+        S1: &crate::ffi_types::NCollection_List_TopoDS_Shape,
         TB1: crate::top_abs::State,
-        S2: &crate::ffi_types::TopTools_ListOfShape,
+        S2: &crate::ffi_types::NCollection_List_TopoDS_Shape,
         TB2: crate::top_abs::State,
         onA: bool,
         onB: bool,
@@ -1240,8 +1069,8 @@ impl Builder {
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:134 - `TopOpeBRepBuild_Builder::MergeSolids()`
-    /// Merges  the two solids <S1>   and <S2> keeping the
+    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:130 - `TopOpeBRepBuild_Builder::MergeSolids()`
+    /// Merges the two solids <S1> and <S2> keeping the
     /// parts in each solid of states <TB1> and <TB2>.
     pub fn merge_solids(
         &mut self,
@@ -1261,7 +1090,7 @@ impl Builder {
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:141 - `TopOpeBRepBuild_Builder::MergeShapes()`
+    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:137 - `TopOpeBRepBuild_Builder::MergeShapes()`
     /// Merges the two shapes <S1> and <S2> keeping the
     /// parts of states <TB1>,<TB2> in <S1>,<S2>.
     pub fn merge_shapes(
@@ -1282,29 +1111,29 @@ impl Builder {
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:146 - `TopOpeBRepBuild_Builder::End()`
+    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:142 - `TopOpeBRepBuild_Builder::End()`
     pub fn end(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_Builder_end(self as *mut Self)
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:148 - `TopOpeBRepBuild_Builder::Classify()`
+    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:144 - `TopOpeBRepBuild_Builder::Classify()`
     pub fn classify(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_Builder_classify(self as *const Self)
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:150 - `TopOpeBRepBuild_Builder::ChangeClassify()`
+    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:146 - `TopOpeBRepBuild_Builder::ChangeClassify()`
     pub fn change_classify(&mut self, B: bool) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_Builder_change_classify(self as *mut Self, B)
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:154 - `TopOpeBRepBuild_Builder::MergeSolid()`
-    /// Merges the solid <S>  keeping the
+    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:150 - `TopOpeBRepBuild_Builder::MergeSolid()`
+    /// Merges the solid <S> keeping the
     /// parts of state <TB>.
     pub fn merge_solid(&mut self, S: &crate::topo_ds::Shape, TB: crate::top_abs::State) {
         crate::check_void_result(unsafe {
@@ -1316,7 +1145,7 @@ impl Builder {
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:157 - `TopOpeBRepBuild_Builder::NewVertex()`
+    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:153 - `TopOpeBRepBuild_Builder::NewVertex()`
     /// Returns the vertex created on point <I>.
     pub fn new_vertex(&self, I: i32) -> &crate::topo_ds::Shape {
         unsafe {
@@ -1327,9 +1156,9 @@ impl Builder {
         }
     }
 
-    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:160 - `TopOpeBRepBuild_Builder::NewEdges()`
+    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:156 - `TopOpeBRepBuild_Builder::NewEdges()`
     /// Returns the edges created on curve <I>.
-    pub fn new_edges(&self, I: i32) -> &crate::ffi_types::TopTools_ListOfShape {
+    pub fn new_edges(&self, I: i32) -> &crate::ffi_types::NCollection_List_TopoDS_Shape {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKBool::TopOpeBRepBuild_Builder_new_edges(
                 self as *const Self,
@@ -1338,9 +1167,9 @@ impl Builder {
         }
     }
 
-    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:163 - `TopOpeBRepBuild_Builder::NewFaces()`
+    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:159 - `TopOpeBRepBuild_Builder::NewFaces()`
     /// Returns the faces created on surface <I>.
-    pub fn new_faces(&self, I: i32) -> &crate::ffi_types::TopTools_ListOfShape {
+    pub fn new_faces(&self, I: i32) -> &crate::ffi_types::NCollection_List_TopoDS_Shape {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKBool::TopOpeBRepBuild_Builder_new_faces(
                 self as *const Self,
@@ -1349,7 +1178,7 @@ impl Builder {
         }
     }
 
-    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:166 - `TopOpeBRepBuild_Builder::IsSplit()`
+    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:162 - `TopOpeBRepBuild_Builder::IsSplit()`
     /// Returns True if the shape <S> has been split.
     pub fn is_split(&self, S: &crate::topo_ds::Shape, TB: crate::top_abs::State) -> bool {
         crate::check_result(unsafe {
@@ -1361,7 +1190,7 @@ impl Builder {
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:169 - `TopOpeBRepBuild_Builder::Splits()`
+    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:165 - `TopOpeBRepBuild_Builder::Splits()`
     /// Returns the split parts <TB> of shape <S>.
     ///
     /// # Safety
@@ -1373,7 +1202,7 @@ impl Builder {
         &self,
         S: &crate::topo_ds::Shape,
         TB: crate::top_abs::State,
-    ) -> &crate::ffi_types::TopTools_ListOfShape {
+    ) -> &crate::ffi_types::NCollection_List_TopoDS_Shape {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKBool::TopOpeBRepBuild_Builder_splits(
                 self as *const Self,
@@ -1383,7 +1212,7 @@ impl Builder {
         }
     }
 
-    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:173 - `TopOpeBRepBuild_Builder::IsMerged()`
+    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:169 - `TopOpeBRepBuild_Builder::IsMerged()`
     /// Returns True if the shape <S> has been merged.
     pub fn is_merged(&self, S: &crate::topo_ds::Shape, TB: crate::top_abs::State) -> bool {
         crate::check_result(unsafe {
@@ -1395,7 +1224,7 @@ impl Builder {
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:176 - `TopOpeBRepBuild_Builder::Merged()`
+    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:172 - `TopOpeBRepBuild_Builder::Merged()`
     /// Returns the merged parts <TB> of shape <S>.
     ///
     /// # Safety
@@ -1407,7 +1236,7 @@ impl Builder {
         &self,
         S: &crate::topo_ds::Shape,
         TB: crate::top_abs::State,
-    ) -> &crate::ffi_types::TopTools_ListOfShape {
+    ) -> &crate::ffi_types::NCollection_List_TopoDS_Shape {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKBool::TopOpeBRepBuild_Builder_merged(
                 self as *const Self,
@@ -1417,14 +1246,14 @@ impl Builder {
         }
     }
 
-    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:179 - `TopOpeBRepBuild_Builder::InitSection()`
+    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:175 - `TopOpeBRepBuild_Builder::InitSection()`
     pub fn init_section(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_Builder_init_section(self as *mut Self)
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:182 - `TopOpeBRepBuild_Builder::SplitSectionEdges()`
+    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:178 - `TopOpeBRepBuild_Builder::SplitSectionEdges()`
     /// create parts ON solid of section edges
     pub fn split_section_edges(&mut self) {
         crate::check_void_result(unsafe {
@@ -1432,7 +1261,7 @@ impl Builder {
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:185 - `TopOpeBRepBuild_Builder::SplitSectionEdge()`
+    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:181 - `TopOpeBRepBuild_Builder::SplitSectionEdge()`
     /// create parts ON solid of section edges
     pub fn split_section_edge(&mut self, E: &crate::topo_ds::Shape) {
         crate::check_void_result(unsafe {
@@ -1443,32 +1272,32 @@ impl Builder {
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:188 - `TopOpeBRepBuild_Builder::SectionCurves()`
+    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:184 - `TopOpeBRepBuild_Builder::SectionCurves()`
     /// return the section edges built on new curves.
-    pub fn section_curves(&mut self, L: &mut crate::ffi_types::TopTools_ListOfShape) {
+    pub fn section_curves(&mut self, L: &mut crate::ffi_types::NCollection_List_TopoDS_Shape) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_Builder_section_curves(self as *mut Self, L)
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:192 - `TopOpeBRepBuild_Builder::SectionEdges()`
+    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:188 - `TopOpeBRepBuild_Builder::SectionEdges()`
     /// return the parts of edges found ON the boundary
     /// of the two arguments S1,S2 of Perform()
-    pub fn section_edges(&mut self, L: &mut crate::ffi_types::TopTools_ListOfShape) {
+    pub fn section_edges(&mut self, L: &mut crate::ffi_types::NCollection_List_TopoDS_Shape) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_Builder_section_edges(self as *mut Self, L)
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:197 - `TopOpeBRepBuild_Builder::FillSecEdgeAncestorMap()`
+    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:193 - `TopOpeBRepBuild_Builder::FillSecEdgeAncestorMap()`
     /// Fills anAncMap with pairs (edge,ancestor edge) for each
     /// split from the map aMapON for the shape object identified
     /// by ShapeRank
     pub fn fill_sec_edge_ancestor_map(
         &self,
         aShapeRank: i32,
-        aMapON: &crate::ffi_types::TopTools_MapOfShape,
-        anAncMap: &mut crate::ffi_types::TopTools_DataMapOfShapeShape,
+        aMapON: &crate::ffi_types::NCollection_Map_TopoDS_Shape_TopTools_ShapeMapHasher,
+        anAncMap: &mut crate::ffi_types::NCollection_DataMap_TopoDS_Shape_TopoDS_Shape_TopTools_ShapeMapHasher,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_Builder_fill_sec_edge_ancestor_map(
@@ -1480,19 +1309,19 @@ impl Builder {
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:202 - `TopOpeBRepBuild_Builder::Section()`
+    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:199 - `TopOpeBRepBuild_Builder::Section()`
     /// return all section edges.
-    pub fn section_listofshape(&mut self, L: &mut crate::ffi_types::TopTools_ListOfShape) {
+    pub fn section_list_shape(&mut self, L: &mut crate::ffi_types::NCollection_List_TopoDS_Shape) {
         crate::check_void_result(unsafe {
-            crate::ffi_extern_TKBool::TopOpeBRepBuild_Builder_section_listofshape(
+            crate::ffi_extern_TKBool::TopOpeBRepBuild_Builder_section_list_shape(
                 self as *mut Self,
                 L,
             )
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:204 - `TopOpeBRepBuild_Builder::Section()`
-    pub fn section(&mut self) -> &crate::ffi_types::TopTools_ListOfShape {
+    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:201 - `TopOpeBRepBuild_Builder::Section()`
+    pub fn section(&mut self) -> &crate::ffi_types::NCollection_List_TopoDS_Shape {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKBool::TopOpeBRepBuild_Builder_section(
                 self as *mut Self,
@@ -1500,29 +1329,26 @@ impl Builder {
         }
     }
 
-    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:208 - `TopOpeBRepBuild_Builder::BuildVertices()`
+    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:205 - `TopOpeBRepBuild_Builder::BuildVertices()`
     /// update the DS by creating new geometries.
     /// create vertices on DS points.
-    pub fn build_vertices(&mut self, DS: &crate::ffi_types::HandleTopOpeBRepDSHDataStructure) {
+    pub fn build_vertices(&mut self, DS: &crate::ffi_types::Handle_TopOpeBRepDS_HDataStructure) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_Builder_build_vertices(self as *mut Self, DS)
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:212 - `TopOpeBRepBuild_Builder::BuildEdges()`
+    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:209 - `TopOpeBRepBuild_Builder::BuildEdges()`
     /// update the DS by creating new geometries.
     /// create shapes from the new geometries.
-    pub fn build_edges(&mut self, DS: &crate::ffi_types::HandleTopOpeBRepDSHDataStructure) {
+    pub fn build_edges(&mut self, DS: &crate::ffi_types::Handle_TopOpeBRepDS_HDataStructure) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_Builder_build_edges(self as *mut Self, DS)
         })
     }
 
     /// **Source:** `TopOpeBRepBuild_Builder.hxx`:214 - `TopOpeBRepBuild_Builder::MSplit()`
-    pub fn m_split(
-        &self,
-        s: crate::top_abs::State,
-    ) -> &crate::ffi_types::TopOpeBRepDS_DataMapOfShapeListOfShapeOn1State {
+    pub fn m_split(&self, s: crate::top_abs::State) -> &crate::ffi_types::NCollection_DataMap_TopoDS_Shape_TopOpeBRepDS_ListOfShapeOn1State_TopTools_ShapeMapHasher{
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKBool::TopOpeBRepBuild_Builder_m_split(
                 self as *const Self,
@@ -1531,11 +1357,8 @@ impl Builder {
         }
     }
 
-    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:217 - `TopOpeBRepBuild_Builder::ChangeMSplit()`
-    pub fn change_m_split(
-        &mut self,
-        s: crate::top_abs::State,
-    ) -> &mut crate::ffi_types::TopOpeBRepDS_DataMapOfShapeListOfShapeOn1State {
+    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:219 - `TopOpeBRepBuild_Builder::ChangeMSplit()`
+    pub fn change_m_split(&mut self, s: crate::top_abs::State) -> &mut crate::ffi_types::NCollection_DataMap_TopoDS_Shape_TopOpeBRepDS_ListOfShapeOn1State_TopTools_ShapeMapHasher{
         unsafe {
             &mut *(crate::check_result(
                 crate::ffi_extern_TKBool::TopOpeBRepBuild_Builder_change_m_split(
@@ -1546,53 +1369,53 @@ impl Builder {
         }
     }
 
-    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:220 - `TopOpeBRepBuild_Builder::MakeEdges()`
+    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:221 - `TopOpeBRepBuild_Builder::MakeEdges()`
     pub fn make_edges(
         &mut self,
         E: &crate::topo_ds::Shape,
         B: &mut EdgeBuilder,
-        L: &mut crate::ffi_types::TopTools_ListOfShape,
+        L: &mut crate::ffi_types::NCollection_List_TopoDS_Shape,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_Builder_make_edges(self as *mut Self, E, B, L)
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:224 - `TopOpeBRepBuild_Builder::MakeFaces()`
+    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:225 - `TopOpeBRepBuild_Builder::MakeFaces()`
     pub fn make_faces(
         &mut self,
         F: &crate::topo_ds::Shape,
         B: &mut FaceBuilder,
-        L: &mut crate::ffi_types::TopTools_ListOfShape,
+        L: &mut crate::ffi_types::NCollection_List_TopoDS_Shape,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_Builder_make_faces(self as *mut Self, F, B, L)
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:228 - `TopOpeBRepBuild_Builder::MakeSolids()`
+    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:229 - `TopOpeBRepBuild_Builder::MakeSolids()`
     pub fn make_solids(
         &mut self,
         B: &mut SolidBuilder,
-        L: &mut crate::ffi_types::TopTools_ListOfShape,
+        L: &mut crate::ffi_types::NCollection_List_TopoDS_Shape,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_Builder_make_solids(self as *mut Self, B, L)
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:230 - `TopOpeBRepBuild_Builder::MakeShells()`
+    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:232 - `TopOpeBRepBuild_Builder::MakeShells()`
     pub fn make_shells(
         &mut self,
         B: &mut SolidBuilder,
-        L: &mut crate::ffi_types::TopTools_ListOfShape,
+        L: &mut crate::ffi_types::NCollection_List_TopoDS_Shape,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_Builder_make_shells(self as *mut Self, B, L)
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:235 - `TopOpeBRepBuild_Builder::ChangeSplit()`
+    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:238 - `TopOpeBRepBuild_Builder::ChangeSplit()`
     /// Returns a ref.on the list of shapes connected to <S> as
     /// <TB> split parts of <S>.
     /// Mark <S> as split in <TB> parts.
@@ -1606,7 +1429,7 @@ impl Builder {
         &mut self,
         S: &crate::topo_ds::Shape,
         TB: crate::top_abs::State,
-    ) -> &mut crate::ffi_types::TopTools_ListOfShape {
+    ) -> &mut crate::ffi_types::NCollection_List_TopoDS_Shape {
         unsafe {
             &mut *(crate::check_result(
                 crate::ffi_extern_TKBool::TopOpeBRepBuild_Builder_change_split(
@@ -1618,39 +1441,39 @@ impl Builder {
         }
     }
 
-    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:237 - `TopOpeBRepBuild_Builder::Opec12()`
+    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:241 - `TopOpeBRepBuild_Builder::Opec12()`
     pub fn opec12(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_Builder_opec12(self as *const Self)
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:239 - `TopOpeBRepBuild_Builder::Opec21()`
+    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:243 - `TopOpeBRepBuild_Builder::Opec21()`
     pub fn opec21(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_Builder_opec21(self as *const Self)
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:241 - `TopOpeBRepBuild_Builder::Opecom()`
+    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:245 - `TopOpeBRepBuild_Builder::Opecom()`
     pub fn opecom(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_Builder_opecom(self as *const Self)
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:243 - `TopOpeBRepBuild_Builder::Opefus()`
+    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:247 - `TopOpeBRepBuild_Builder::Opefus()`
     pub fn opefus(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_Builder_opefus(self as *const Self)
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:245 - `TopOpeBRepBuild_Builder::ShapePosition()`
+    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:249 - `TopOpeBRepBuild_Builder::ShapePosition()`
     pub fn shape_position(
         &mut self,
         S: &crate::topo_ds::Shape,
-        LS: &crate::ffi_types::TopTools_ListOfShape,
+        LS: &crate::ffi_types::NCollection_List_TopoDS_Shape,
     ) -> crate::top_abs::State {
         crate::top_abs::State::try_from(crate::check_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_Builder_shape_position(
@@ -1662,11 +1485,11 @@ impl Builder {
         .unwrap()
     }
 
-    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:247 - `TopOpeBRepBuild_Builder::KeepShape()`
+    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:252 - `TopOpeBRepBuild_Builder::KeepShape()`
     pub fn keep_shape(
         &mut self,
         S: &crate::topo_ds::Shape,
-        LS: &crate::ffi_types::TopTools_ListOfShape,
+        LS: &crate::ffi_types::NCollection_List_TopoDS_Shape,
         T: crate::top_abs::State,
     ) -> bool {
         crate::check_result(unsafe {
@@ -1679,11 +1502,11 @@ impl Builder {
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:258 - `TopOpeBRepBuild_Builder::FindSameDomain()`
+    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:262 - `TopOpeBRepBuild_Builder::FindSameDomain()`
     pub fn find_same_domain(
         &self,
-        L1: &mut crate::ffi_types::TopTools_ListOfShape,
-        L2: &mut crate::ffi_types::TopTools_ListOfShape,
+        L1: &mut crate::ffi_types::NCollection_List_TopoDS_Shape,
+        L2: &mut crate::ffi_types::NCollection_List_TopoDS_Shape,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_Builder_find_same_domain(
@@ -1694,11 +1517,11 @@ impl Builder {
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:260 - `TopOpeBRepBuild_Builder::FindSameDomainSameOrientation()`
+    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:265 - `TopOpeBRepBuild_Builder::FindSameDomainSameOrientation()`
     pub fn find_same_domain_same_orientation(
         &self,
-        LSO: &mut crate::ffi_types::TopTools_ListOfShape,
-        LDO: &mut crate::ffi_types::TopTools_ListOfShape,
+        LSO: &mut crate::ffi_types::NCollection_List_TopoDS_Shape,
+        LDO: &mut crate::ffi_types::NCollection_List_TopoDS_Shape,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_Builder_find_same_domain_same_orientation(
@@ -1709,26 +1532,26 @@ impl Builder {
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:263 - `TopOpeBRepBuild_Builder::MapShapes()`
+    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:268 - `TopOpeBRepBuild_Builder::MapShapes()`
     pub fn map_shapes(&mut self, S1: &crate::topo_ds::Shape, S2: &crate::topo_ds::Shape) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_Builder_map_shapes(self as *mut Self, S1, S2)
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:265 - `TopOpeBRepBuild_Builder::ClearMaps()`
+    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:270 - `TopOpeBRepBuild_Builder::ClearMaps()`
     pub fn clear_maps(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_Builder_clear_maps(self as *mut Self)
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:267 - `TopOpeBRepBuild_Builder::FindSameRank()`
+    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:272 - `TopOpeBRepBuild_Builder::FindSameRank()`
     pub fn find_same_rank(
         &self,
-        L1: &crate::ffi_types::TopTools_ListOfShape,
+        L1: &crate::ffi_types::NCollection_List_TopoDS_Shape,
         R: i32,
-        L2: &mut crate::ffi_types::TopTools_ListOfShape,
+        L2: &mut crate::ffi_types::NCollection_List_TopoDS_Shape,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_Builder_find_same_rank(
@@ -1740,14 +1563,14 @@ impl Builder {
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:271 - `TopOpeBRepBuild_Builder::ShapeRank()`
+    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:276 - `TopOpeBRepBuild_Builder::ShapeRank()`
     pub fn shape_rank(&self, S: &crate::topo_ds::Shape) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_Builder_shape_rank(self as *const Self, S)
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:273 - `TopOpeBRepBuild_Builder::IsShapeOf()`
+    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:278 - `TopOpeBRepBuild_Builder::IsShapeOf()`
     pub fn is_shape_of(&self, S: &crate::topo_ds::Shape, I12: i32) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_Builder_is_shape_of(
@@ -1758,28 +1581,28 @@ impl Builder {
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:279 - `TopOpeBRepBuild_Builder::FindIsKPart()`
+    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:283 - `TopOpeBRepBuild_Builder::FindIsKPart()`
     pub fn find_is_k_part(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_Builder_find_is_k_part(self as *mut Self)
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:281 - `TopOpeBRepBuild_Builder::IsKPart()`
+    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:285 - `TopOpeBRepBuild_Builder::IsKPart()`
     pub fn is_k_part(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_Builder_is_k_part(self as *const Self)
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:283 - `TopOpeBRepBuild_Builder::MergeKPart()`
+    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:287 - `TopOpeBRepBuild_Builder::MergeKPart()`
     pub fn merge_k_part(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_Builder_merge_k_part(self as *mut Self)
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:285 - `TopOpeBRepBuild_Builder::MergeKPart()`
+    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:289 - `TopOpeBRepBuild_Builder::MergeKPart()`
     pub fn merge_k_part_state2(&mut self, TB1: crate::top_abs::State, TB2: crate::top_abs::State) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_Builder_merge_k_part_state2(
@@ -1790,14 +1613,14 @@ impl Builder {
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:287 - `TopOpeBRepBuild_Builder::MergeKPartiskole()`
+    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:291 - `TopOpeBRepBuild_Builder::MergeKPartiskole()`
     pub fn merge_k_partiskole(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_Builder_merge_k_partiskole(self as *mut Self)
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:289 - `TopOpeBRepBuild_Builder::MergeKPartiskoletge()`
+    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:293 - `TopOpeBRepBuild_Builder::MergeKPartiskoletge()`
     pub fn merge_k_partiskoletge(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_Builder_merge_k_partiskoletge(
@@ -1806,78 +1629,78 @@ impl Builder {
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:291 - `TopOpeBRepBuild_Builder::MergeKPartisdisj()`
+    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:295 - `TopOpeBRepBuild_Builder::MergeKPartisdisj()`
     pub fn merge_k_partisdisj(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_Builder_merge_k_partisdisj(self as *mut Self)
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:293 - `TopOpeBRepBuild_Builder::MergeKPartisfafa()`
+    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:297 - `TopOpeBRepBuild_Builder::MergeKPartisfafa()`
     pub fn merge_k_partisfafa(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_Builder_merge_k_partisfafa(self as *mut Self)
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:295 - `TopOpeBRepBuild_Builder::MergeKPartissoso()`
+    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:299 - `TopOpeBRepBuild_Builder::MergeKPartissoso()`
     pub fn merge_k_partissoso(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_Builder_merge_k_partissoso(self as *mut Self)
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:297 - `TopOpeBRepBuild_Builder::KPiskole()`
+    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:301 - `TopOpeBRepBuild_Builder::KPiskole()`
     pub fn k_piskole(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_Builder_k_piskole(self as *mut Self)
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:299 - `TopOpeBRepBuild_Builder::KPiskoletge()`
+    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:303 - `TopOpeBRepBuild_Builder::KPiskoletge()`
     pub fn k_piskoletge(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_Builder_k_piskoletge(self as *mut Self)
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:301 - `TopOpeBRepBuild_Builder::KPisdisj()`
+    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:305 - `TopOpeBRepBuild_Builder::KPisdisj()`
     pub fn k_pisdisj(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_Builder_k_pisdisj(self as *mut Self)
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:303 - `TopOpeBRepBuild_Builder::KPisfafa()`
+    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:307 - `TopOpeBRepBuild_Builder::KPisfafa()`
     pub fn k_pisfafa(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_Builder_k_pisfafa(self as *mut Self)
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:305 - `TopOpeBRepBuild_Builder::KPissoso()`
+    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:309 - `TopOpeBRepBuild_Builder::KPissoso()`
     pub fn k_pissoso(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_Builder_k_pissoso(self as *mut Self)
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:307 - `TopOpeBRepBuild_Builder::KPClearMaps()`
+    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:311 - `TopOpeBRepBuild_Builder::KPClearMaps()`
     pub fn kp_clear_maps(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_Builder_kp_clear_maps(self as *mut Self)
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:309 - `TopOpeBRepBuild_Builder::KPlhg()`
-    pub fn k_plhg_shape_shapeenum_listofshape(
+    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:313 - `TopOpeBRepBuild_Builder::KPlhg()`
+    pub fn k_plhg_shape_shapeenum_list_shape(
         &self,
         S: &crate::topo_ds::Shape,
         T: crate::top_abs::ShapeEnum,
-        L: &mut crate::ffi_types::TopTools_ListOfShape,
+        L: &mut crate::ffi_types::NCollection_List_TopoDS_Shape,
     ) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi_extern_TKBool::TopOpeBRepBuild_Builder_k_plhg_shape_shapeenum_listofshape(
+            crate::ffi_extern_TKBool::TopOpeBRepBuild_Builder_k_plhg_shape_shapeenum_list_shape(
                 self as *const Self,
                 S,
                 T.into(),
@@ -1886,7 +1709,7 @@ impl Builder {
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:313 - `TopOpeBRepBuild_Builder::KPlhg()`
+    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:317 - `TopOpeBRepBuild_Builder::KPlhg()`
     pub fn k_plhg_shape_shapeenum(
         &self,
         S: &crate::topo_ds::Shape,
@@ -1901,15 +1724,15 @@ impl Builder {
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:315 - `TopOpeBRepBuild_Builder::KPlhsd()`
-    pub fn k_plhsd_shape_shapeenum_listofshape(
+    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:319 - `TopOpeBRepBuild_Builder::KPlhsd()`
+    pub fn k_plhsd_shape_shapeenum_list_shape(
         &self,
         S: &crate::topo_ds::Shape,
         T: crate::top_abs::ShapeEnum,
-        L: &mut crate::ffi_types::TopTools_ListOfShape,
+        L: &mut crate::ffi_types::NCollection_List_TopoDS_Shape,
     ) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi_extern_TKBool::TopOpeBRepBuild_Builder_k_plhsd_shape_shapeenum_listofshape(
+            crate::ffi_extern_TKBool::TopOpeBRepBuild_Builder_k_plhsd_shape_shapeenum_list_shape(
                 self as *const Self,
                 S,
                 T.into(),
@@ -1918,7 +1741,7 @@ impl Builder {
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:319 - `TopOpeBRepBuild_Builder::KPlhsd()`
+    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:323 - `TopOpeBRepBuild_Builder::KPlhsd()`
     pub fn k_plhsd_shape_shapeenum(
         &self,
         S: &crate::topo_ds::Shape,
@@ -1933,15 +1756,15 @@ impl Builder {
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:321 - `TopOpeBRepBuild_Builder::KPclasSS()`
-    pub fn k_pclas_ss_shape_listofshape_shape(
+    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:325 - `TopOpeBRepBuild_Builder::KPclasSS()`
+    pub fn k_pclas_ss_shape_list_shape_shape(
         &mut self,
         S1: &crate::topo_ds::Shape,
-        exceptLS1: &crate::ffi_types::TopTools_ListOfShape,
+        exceptLS1: &crate::ffi_types::NCollection_List_TopoDS_Shape,
         S2: &crate::topo_ds::Shape,
     ) -> crate::top_abs::State {
         crate::top_abs::State::try_from(crate::check_result(unsafe {
-            crate::ffi_extern_TKBool::TopOpeBRepBuild_Builder_k_pclas_ss_shape_listofshape_shape(
+            crate::ffi_extern_TKBool::TopOpeBRepBuild_Builder_k_pclas_ss_shape_list_shape_shape(
                 self as *mut Self,
                 S1,
                 exceptLS1,
@@ -1951,7 +1774,7 @@ impl Builder {
         .unwrap()
     }
 
-    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:325 - `TopOpeBRepBuild_Builder::KPclasSS()`
+    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:329 - `TopOpeBRepBuild_Builder::KPclasSS()`
     pub fn k_pclas_ss_shape3(
         &mut self,
         S1: &crate::topo_ds::Shape,
@@ -1969,7 +1792,7 @@ impl Builder {
         .unwrap()
     }
 
-    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:329 - `TopOpeBRepBuild_Builder::KPclasSS()`
+    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:333 - `TopOpeBRepBuild_Builder::KPclasSS()`
     pub fn k_pclas_ss_shape2(
         &mut self,
         S1: &crate::topo_ds::Shape,
@@ -1985,12 +1808,12 @@ impl Builder {
         .unwrap()
     }
 
-    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:331 - `TopOpeBRepBuild_Builder::KPiskolesh()`
+    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:335 - `TopOpeBRepBuild_Builder::KPiskolesh()`
     pub fn k_piskolesh(
         &self,
         S: &crate::topo_ds::Shape,
-        LS: &mut crate::ffi_types::TopTools_ListOfShape,
-        LF: &mut crate::ffi_types::TopTools_ListOfShape,
+        LS: &mut crate::ffi_types::NCollection_List_TopoDS_Shape,
+        LF: &mut crate::ffi_types::NCollection_List_TopoDS_Shape,
     ) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_Builder_k_piskolesh(
@@ -2002,12 +1825,12 @@ impl Builder {
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:335 - `TopOpeBRepBuild_Builder::KPiskoletgesh()`
+    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:339 - `TopOpeBRepBuild_Builder::KPiskoletgesh()`
     pub fn k_piskoletgesh(
         &self,
         S: &crate::topo_ds::Shape,
-        LS: &mut crate::ffi_types::TopTools_ListOfShape,
-        LF: &mut crate::ffi_types::TopTools_ListOfShape,
+        LS: &mut crate::ffi_types::NCollection_List_TopoDS_Shape,
+        LF: &mut crate::ffi_types::NCollection_List_TopoDS_Shape,
     ) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_Builder_k_piskoletgesh(
@@ -2019,11 +1842,11 @@ impl Builder {
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:339 - `TopOpeBRepBuild_Builder::KPSameDomain()`
+    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:343 - `TopOpeBRepBuild_Builder::KPSameDomain()`
     pub fn kp_same_domain(
         &self,
-        L1: &mut crate::ffi_types::TopTools_ListOfShape,
-        L2: &mut crate::ffi_types::TopTools_ListOfShape,
+        L1: &mut crate::ffi_types::NCollection_List_TopoDS_Shape,
+        L2: &mut crate::ffi_types::NCollection_List_TopoDS_Shape,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_Builder_kp_same_domain(
@@ -2034,28 +1857,28 @@ impl Builder {
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:341 - `TopOpeBRepBuild_Builder::KPisdisjsh()`
+    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:346 - `TopOpeBRepBuild_Builder::KPisdisjsh()`
     pub fn k_pisdisjsh(&self, S: &crate::topo_ds::Shape) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_Builder_k_pisdisjsh(self as *const Self, S)
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:343 - `TopOpeBRepBuild_Builder::KPisfafash()`
+    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:348 - `TopOpeBRepBuild_Builder::KPisfafash()`
     pub fn k_pisfafash(&self, S: &crate::topo_ds::Shape) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_Builder_k_pisfafash(self as *const Self, S)
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:345 - `TopOpeBRepBuild_Builder::KPissososh()`
+    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:350 - `TopOpeBRepBuild_Builder::KPissososh()`
     pub fn k_pissososh(&self, S: &crate::topo_ds::Shape) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_Builder_k_pissososh(self as *const Self, S)
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:347 - `TopOpeBRepBuild_Builder::KPiskoleanalyse()`
+    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:352 - `TopOpeBRepBuild_Builder::KPiskoleanalyse()`
     pub fn k_piskoleanalyse(
         &self,
         FT1: crate::top_abs::State,
@@ -2080,7 +1903,7 @@ impl Builder {
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:355 - `TopOpeBRepBuild_Builder::KPiskoletgeanalyse()`
+    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:360 - `TopOpeBRepBuild_Builder::KPiskoletgeanalyse()`
     pub fn k_piskoletgeanalyse(
         &self,
         Conf: crate::top_ope_b_rep_ds::Config,
@@ -2099,7 +1922,7 @@ impl Builder {
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:360 - `TopOpeBRepBuild_Builder::KPisdisjanalyse()`
+    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:365 - `TopOpeBRepBuild_Builder::KPisdisjanalyse()`
     pub fn k_pisdisjanalyse(
         &self,
         ST1: crate::top_abs::State,
@@ -2120,7 +1943,7 @@ impl Builder {
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:372 - `TopOpeBRepBuild_Builder::KPclassF()`
+    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:377 - `TopOpeBRepBuild_Builder::KPclassF()`
     pub fn k_pclass_f(
         &mut self,
         F1: &crate::topo_ds::Shape,
@@ -2132,7 +1955,7 @@ impl Builder {
         .unwrap()
     }
 
-    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:374 - `TopOpeBRepBuild_Builder::KPclassFF()`
+    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:379 - `TopOpeBRepBuild_Builder::KPclassFF()`
     pub fn k_pclass_ff(
         &mut self,
         F1: &crate::topo_ds::Shape,
@@ -2155,7 +1978,7 @@ impl Builder {
         *T2 = crate::top_abs::State::try_from(T2_i32_).unwrap();
     }
 
-    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:379 - `TopOpeBRepBuild_Builder::KPiskoleFF()`
+    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:384 - `TopOpeBRepBuild_Builder::KPiskoleFF()`
     pub fn k_piskole_ff(
         &mut self,
         F1: &crate::topo_ds::Shape,
@@ -2179,11 +2002,11 @@ impl Builder {
         result_
     }
 
-    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:387 - `TopOpeBRepBuild_Builder::KPmakeface()`
+    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:392 - `TopOpeBRepBuild_Builder::KPmakeface()`
     pub fn k_pmakeface(
         &mut self,
         F1: &crate::topo_ds::Shape,
-        LF2: &crate::ffi_types::TopTools_ListOfShape,
+        LF2: &crate::ffi_types::NCollection_List_TopoDS_Shape,
         T1: crate::top_abs::State,
         T2: crate::top_abs::State,
         R1: bool,
@@ -2204,7 +2027,7 @@ impl Builder {
         }
     }
 
-    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:396 - `TopOpeBRepBuild_Builder::SplitEvisoONperiodicF()`
+    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:401 - `TopOpeBRepBuild_Builder::SplitEvisoONperiodicF()`
     pub fn split_eviso_o_nperiodic_f(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_Builder_split_eviso_o_nperiodic_f(
@@ -2213,11 +2036,11 @@ impl Builder {
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:398 - `TopOpeBRepBuild_Builder::GMergeSolids()`
+    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:403 - `TopOpeBRepBuild_Builder::GMergeSolids()`
     pub fn g_merge_solids(
         &mut self,
-        LSO1: &crate::ffi_types::TopTools_ListOfShape,
-        LSO2: &crate::ffi_types::TopTools_ListOfShape,
+        LSO1: &crate::ffi_types::NCollection_List_TopoDS_Shape,
+        LSO2: &crate::ffi_types::NCollection_List_TopoDS_Shape,
         G: &GTopo,
     ) {
         crate::check_void_result(unsafe {
@@ -2230,11 +2053,11 @@ impl Builder {
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:402 - `TopOpeBRepBuild_Builder::GFillSolidsSFS()`
+    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:407 - `TopOpeBRepBuild_Builder::GFillSolidsSFS()`
     pub fn g_fill_solids_sfs(
         &mut self,
-        LSO1: &crate::ffi_types::TopTools_ListOfShape,
-        LSO2: &crate::ffi_types::TopTools_ListOfShape,
+        LSO1: &crate::ffi_types::NCollection_List_TopoDS_Shape,
+        LSO2: &crate::ffi_types::NCollection_List_TopoDS_Shape,
         G: &GTopo,
         SFS: &mut ShellFaceSet,
     ) {
@@ -2249,11 +2072,11 @@ impl Builder {
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:407 - `TopOpeBRepBuild_Builder::GFillSolidSFS()`
+    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:412 - `TopOpeBRepBuild_Builder::GFillSolidSFS()`
     pub fn g_fill_solid_sfs(
         &mut self,
         SO1: &crate::topo_ds::Shape,
-        LSO2: &crate::ffi_types::TopTools_ListOfShape,
+        LSO2: &crate::ffi_types::NCollection_List_TopoDS_Shape,
         G: &GTopo,
         SFS: &mut ShellFaceSet,
     ) {
@@ -2268,7 +2091,7 @@ impl Builder {
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:412 - `TopOpeBRepBuild_Builder::GFillSurfaceTopologySFS()`
+    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:417 - `TopOpeBRepBuild_Builder::GFillSurfaceTopologySFS()`
     pub fn g_fill_surface_topology_sfs_shape_gtopo_shellfaceset(
         &mut self,
         SO1: &crate::topo_ds::Shape,
@@ -2280,7 +2103,7 @@ impl Builder {
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:416 - `TopOpeBRepBuild_Builder::GFillSurfaceTopologySFS()`
+    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:421 - `TopOpeBRepBuild_Builder::GFillSurfaceTopologySFS()`
     pub fn g_fill_surface_topology_sfs_surfaceiterator_gtopo_shellfaceset(
         &self,
         IT: &crate::top_ope_b_rep_ds::SurfaceIterator,
@@ -2292,11 +2115,11 @@ impl Builder {
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:420 - `TopOpeBRepBuild_Builder::GFillShellSFS()`
+    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:425 - `TopOpeBRepBuild_Builder::GFillShellSFS()`
     pub fn g_fill_shell_sfs(
         &mut self,
         SH1: &crate::topo_ds::Shape,
-        LSO2: &crate::ffi_types::TopTools_ListOfShape,
+        LSO2: &crate::ffi_types::NCollection_List_TopoDS_Shape,
         G: &GTopo,
         SFS: &mut ShellFaceSet,
     ) {
@@ -2311,11 +2134,11 @@ impl Builder {
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:425 - `TopOpeBRepBuild_Builder::GFillFaceSFS()`
+    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:430 - `TopOpeBRepBuild_Builder::GFillFaceSFS()`
     pub fn g_fill_face_sfs(
         &mut self,
         F1: &crate::topo_ds::Shape,
-        LSO2: &crate::ffi_types::TopTools_ListOfShape,
+        LSO2: &crate::ffi_types::NCollection_List_TopoDS_Shape,
         G: &GTopo,
         SFS: &mut ShellFaceSet,
     ) {
@@ -2330,11 +2153,11 @@ impl Builder {
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:430 - `TopOpeBRepBuild_Builder::GSplitFaceSFS()`
+    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:435 - `TopOpeBRepBuild_Builder::GSplitFaceSFS()`
     pub fn g_split_face_sfs(
         &mut self,
         F1: &crate::topo_ds::Shape,
-        LSclass: &crate::ffi_types::TopTools_ListOfShape,
+        LSclass: &crate::ffi_types::NCollection_List_TopoDS_Shape,
         G: &GTopo,
         SFS: &mut ShellFaceSet,
     ) {
@@ -2349,7 +2172,7 @@ impl Builder {
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:435 - `TopOpeBRepBuild_Builder::GMergeFaceSFS()`
+    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:440 - `TopOpeBRepBuild_Builder::GMergeFaceSFS()`
     pub fn g_merge_face_sfs(
         &mut self,
         F: &crate::topo_ds::Shape,
@@ -2366,12 +2189,12 @@ impl Builder {
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:439 - `TopOpeBRepBuild_Builder::GSplitFace()`
+    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:444 - `TopOpeBRepBuild_Builder::GSplitFace()`
     pub fn g_split_face(
         &mut self,
         F: &crate::topo_ds::Shape,
         G: &GTopo,
-        LSclass: &crate::ffi_types::TopTools_ListOfShape,
+        LSclass: &crate::ffi_types::NCollection_List_TopoDS_Shape,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_Builder_g_split_face(
@@ -2383,7 +2206,7 @@ impl Builder {
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:443 - `TopOpeBRepBuild_Builder::AddONPatchesSFS()`
+    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:448 - `TopOpeBRepBuild_Builder::AddONPatchesSFS()`
     pub fn add_on_patches_sfs(&mut self, G: &GTopo, SFS: &mut ShellFaceSet) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_Builder_add_on_patches_sfs(
@@ -2394,12 +2217,12 @@ impl Builder {
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:446 - `TopOpeBRepBuild_Builder::FillOnPatches()`
+    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:451 - `TopOpeBRepBuild_Builder::FillOnPatches()`
     pub fn fill_on_patches(
         &mut self,
-        anEdgesON: &crate::ffi_types::TopTools_ListOfShape,
+        anEdgesON: &crate::ffi_types::NCollection_List_TopoDS_Shape,
         aBaseFace: &crate::topo_ds::Shape,
-        avoidMap: &crate::ffi_types::TopTools_IndexedMapOfOrientedShape,
+        avoidMap: &crate::ffi_types::NCollection_IndexedMap_TopoDS_Shape,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_Builder_fill_on_patches(
@@ -2411,13 +2234,13 @@ impl Builder {
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:450 - `TopOpeBRepBuild_Builder::FindFacesTouchingEdge()`
+    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:455 - `TopOpeBRepBuild_Builder::FindFacesTouchingEdge()`
     pub fn find_faces_touching_edge(
         &self,
         aFace: &crate::topo_ds::Shape,
         anEdge: &crate::topo_ds::Shape,
         aShRank: i32,
-        aFaces: &mut crate::ffi_types::TopTools_ListOfShape,
+        aFaces: &mut crate::ffi_types::NCollection_List_TopoDS_Shape,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_Builder_find_faces_touching_edge(
@@ -2430,11 +2253,11 @@ impl Builder {
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:455 - `TopOpeBRepBuild_Builder::GMergeFaces()`
+    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:460 - `TopOpeBRepBuild_Builder::GMergeFaces()`
     pub fn g_merge_faces(
         &mut self,
-        LF1: &crate::ffi_types::TopTools_ListOfShape,
-        LF2: &crate::ffi_types::TopTools_ListOfShape,
+        LF1: &crate::ffi_types::NCollection_List_TopoDS_Shape,
+        LF2: &crate::ffi_types::NCollection_List_TopoDS_Shape,
         G: &GTopo,
     ) {
         crate::check_void_result(unsafe {
@@ -2447,11 +2270,11 @@ impl Builder {
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:459 - `TopOpeBRepBuild_Builder::GFillFacesWES()`
+    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:464 - `TopOpeBRepBuild_Builder::GFillFacesWES()`
     pub fn g_fill_faces_wes(
         &mut self,
-        LF1: &crate::ffi_types::TopTools_ListOfShape,
-        LF2: &crate::ffi_types::TopTools_ListOfShape,
+        LF1: &crate::ffi_types::NCollection_List_TopoDS_Shape,
+        LF2: &crate::ffi_types::NCollection_List_TopoDS_Shape,
         G: &GTopo,
         WES: &mut WireEdgeSet,
     ) {
@@ -2466,11 +2289,11 @@ impl Builder {
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:464 - `TopOpeBRepBuild_Builder::GFillFacesWESK()`
+    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:469 - `TopOpeBRepBuild_Builder::GFillFacesWESK()`
     pub fn g_fill_faces_wesk(
         &mut self,
-        LF1: &crate::ffi_types::TopTools_ListOfShape,
-        LF2: &crate::ffi_types::TopTools_ListOfShape,
+        LF1: &crate::ffi_types::NCollection_List_TopoDS_Shape,
+        LF2: &crate::ffi_types::NCollection_List_TopoDS_Shape,
         G: &GTopo,
         WES: &mut WireEdgeSet,
         K: i32,
@@ -2487,12 +2310,12 @@ impl Builder {
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:470 - `TopOpeBRepBuild_Builder::GFillFacesWESMakeFaces()`
+    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:475 - `TopOpeBRepBuild_Builder::GFillFacesWESMakeFaces()`
     pub fn g_fill_faces_wes_make_faces(
         &mut self,
-        LF1: &crate::ffi_types::TopTools_ListOfShape,
-        LF2: &crate::ffi_types::TopTools_ListOfShape,
-        LSO: &crate::ffi_types::TopTools_ListOfShape,
+        LF1: &crate::ffi_types::NCollection_List_TopoDS_Shape,
+        LF2: &crate::ffi_types::NCollection_List_TopoDS_Shape,
+        LSO: &crate::ffi_types::NCollection_List_TopoDS_Shape,
         G: &GTopo,
     ) {
         crate::check_void_result(unsafe {
@@ -2506,11 +2329,11 @@ impl Builder {
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:475 - `TopOpeBRepBuild_Builder::GFillFaceWES()`
+    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:480 - `TopOpeBRepBuild_Builder::GFillFaceWES()`
     pub fn g_fill_face_wes(
         &mut self,
         F: &crate::topo_ds::Shape,
-        LF2: &crate::ffi_types::TopTools_ListOfShape,
+        LF2: &crate::ffi_types::NCollection_List_TopoDS_Shape,
         G: &GTopo,
         WES: &mut WireEdgeSet,
     ) {
@@ -2525,7 +2348,7 @@ impl Builder {
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:480 - `TopOpeBRepBuild_Builder::GFillCurveTopologyWES()`
+    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:485 - `TopOpeBRepBuild_Builder::GFillCurveTopologyWES()`
     pub fn g_fill_curve_topology_wes_shape_gtopo_wireedgeset(
         &mut self,
         F: &crate::topo_ds::Shape,
@@ -2537,7 +2360,7 @@ impl Builder {
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:484 - `TopOpeBRepBuild_Builder::GFillCurveTopologyWES()`
+    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:489 - `TopOpeBRepBuild_Builder::GFillCurveTopologyWES()`
     pub fn g_fill_curve_topology_wes_curveiterator_gtopo_wireedgeset(
         &self,
         IT: &crate::top_ope_b_rep_ds::CurveIterator,
@@ -2549,12 +2372,12 @@ impl Builder {
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:488 - `TopOpeBRepBuild_Builder::GFillONPartsWES()`
+    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:493 - `TopOpeBRepBuild_Builder::GFillONPartsWES()`
     pub fn g_fill_on_parts_wes(
         &mut self,
         F: &crate::topo_ds::Shape,
         G: &GTopo,
-        LSclass: &crate::ffi_types::TopTools_ListOfShape,
+        LSclass: &crate::ffi_types::NCollection_List_TopoDS_Shape,
         WES: &mut WireEdgeSet,
     ) {
         crate::check_void_result(unsafe {
@@ -2568,11 +2391,11 @@ impl Builder {
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:493 - `TopOpeBRepBuild_Builder::GFillWireWES()`
+    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:498 - `TopOpeBRepBuild_Builder::GFillWireWES()`
     pub fn g_fill_wire_wes(
         &mut self,
         W: &crate::topo_ds::Shape,
-        LF2: &crate::ffi_types::TopTools_ListOfShape,
+        LF2: &crate::ffi_types::NCollection_List_TopoDS_Shape,
         G: &GTopo,
         WES: &mut WireEdgeSet,
     ) {
@@ -2587,11 +2410,11 @@ impl Builder {
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:498 - `TopOpeBRepBuild_Builder::GFillEdgeWES()`
+    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:503 - `TopOpeBRepBuild_Builder::GFillEdgeWES()`
     pub fn g_fill_edge_wes(
         &mut self,
         E: &crate::topo_ds::Shape,
-        LF2: &crate::ffi_types::TopTools_ListOfShape,
+        LF2: &crate::ffi_types::NCollection_List_TopoDS_Shape,
         G: &GTopo,
         WES: &mut WireEdgeSet,
     ) {
@@ -2606,11 +2429,11 @@ impl Builder {
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:503 - `TopOpeBRepBuild_Builder::GSplitEdgeWES()`
+    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:508 - `TopOpeBRepBuild_Builder::GSplitEdgeWES()`
     pub fn g_split_edge_wes(
         &mut self,
         E: &crate::topo_ds::Shape,
-        LF2: &crate::ffi_types::TopTools_ListOfShape,
+        LF2: &crate::ffi_types::NCollection_List_TopoDS_Shape,
         G: &GTopo,
         WES: &mut WireEdgeSet,
     ) {
@@ -2625,7 +2448,7 @@ impl Builder {
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:508 - `TopOpeBRepBuild_Builder::GMergeEdgeWES()`
+    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:513 - `TopOpeBRepBuild_Builder::GMergeEdgeWES()`
     pub fn g_merge_edge_wes(
         &mut self,
         E: &crate::topo_ds::Shape,
@@ -2642,12 +2465,12 @@ impl Builder {
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:512 - `TopOpeBRepBuild_Builder::GSplitEdge()`
+    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:517 - `TopOpeBRepBuild_Builder::GSplitEdge()`
     pub fn g_split_edge(
         &mut self,
         E: &crate::topo_ds::Shape,
         G: &GTopo,
-        LSclass: &crate::ffi_types::TopTools_ListOfShape,
+        LSclass: &crate::ffi_types::NCollection_List_TopoDS_Shape,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_Builder_g_split_edge(
@@ -2659,11 +2482,11 @@ impl Builder {
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:516 - `TopOpeBRepBuild_Builder::GMergeEdges()`
+    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:521 - `TopOpeBRepBuild_Builder::GMergeEdges()`
     pub fn g_merge_edges(
         &mut self,
-        LE1: &crate::ffi_types::TopTools_ListOfShape,
-        LE2: &crate::ffi_types::TopTools_ListOfShape,
+        LE1: &crate::ffi_types::NCollection_List_TopoDS_Shape,
+        LE2: &crate::ffi_types::NCollection_List_TopoDS_Shape,
         G: &GTopo,
     ) {
         crate::check_void_result(unsafe {
@@ -2676,11 +2499,11 @@ impl Builder {
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:520 - `TopOpeBRepBuild_Builder::GFillEdgesPVS()`
+    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:525 - `TopOpeBRepBuild_Builder::GFillEdgesPVS()`
     pub fn g_fill_edges_pvs(
         &mut self,
-        LE1: &crate::ffi_types::TopTools_ListOfShape,
-        LE2: &crate::ffi_types::TopTools_ListOfShape,
+        LE1: &crate::ffi_types::NCollection_List_TopoDS_Shape,
+        LE2: &crate::ffi_types::NCollection_List_TopoDS_Shape,
         G: &GTopo,
         PVS: &mut PaveSet,
     ) {
@@ -2695,11 +2518,11 @@ impl Builder {
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:525 - `TopOpeBRepBuild_Builder::GFillEdgePVS()`
+    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:530 - `TopOpeBRepBuild_Builder::GFillEdgePVS()`
     pub fn g_fill_edge_pvs(
         &mut self,
         E: &crate::topo_ds::Shape,
-        LE2: &crate::ffi_types::TopTools_ListOfShape,
+        LE2: &crate::ffi_types::NCollection_List_TopoDS_Shape,
         G: &GTopo,
         PVS: &mut PaveSet,
     ) {
@@ -2714,7 +2537,7 @@ impl Builder {
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:530 - `TopOpeBRepBuild_Builder::GFillPointTopologyPVS()`
+    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:535 - `TopOpeBRepBuild_Builder::GFillPointTopologyPVS()`
     pub fn g_fill_point_topology_pvs_shape_gtopo_paveset(
         &mut self,
         E: &crate::topo_ds::Shape,
@@ -2726,7 +2549,7 @@ impl Builder {
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:534 - `TopOpeBRepBuild_Builder::GFillPointTopologyPVS()`
+    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:539 - `TopOpeBRepBuild_Builder::GFillPointTopologyPVS()`
     pub fn g_fill_point_topology_pvs_shape_pointiterator_gtopo_paveset(
         &self,
         E: &crate::topo_ds::Shape,
@@ -2739,7 +2562,7 @@ impl Builder {
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:539 - `TopOpeBRepBuild_Builder::GParamOnReference()`
+    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:544 - `TopOpeBRepBuild_Builder::GParamOnReference()`
     pub fn g_param_on_reference(
         &self,
         V: &crate::topo_ds::Vertex,
@@ -2756,11 +2579,11 @@ impl Builder {
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:543 - `TopOpeBRepBuild_Builder::GKeepShape()`
+    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:548 - `TopOpeBRepBuild_Builder::GKeepShape()`
     pub fn g_keep_shape(
         &mut self,
         S: &crate::topo_ds::Shape,
-        Lref: &crate::ffi_types::TopTools_ListOfShape,
+        Lref: &crate::ffi_types::NCollection_List_TopoDS_Shape,
         T: crate::top_abs::State,
     ) -> bool {
         crate::check_result(unsafe {
@@ -2773,12 +2596,12 @@ impl Builder {
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:548 - `TopOpeBRepBuild_Builder::GKeepShape1()`
+    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:553 - `TopOpeBRepBuild_Builder::GKeepShape1()`
     /// return True if S is classified <T> / Lref shapes
     pub fn g_keep_shape1(
         &mut self,
         S: &crate::topo_ds::Shape,
-        Lref: &crate::ffi_types::TopTools_ListOfShape,
+        Lref: &crate::ffi_types::NCollection_List_TopoDS_Shape,
         T: crate::top_abs::State,
         pos: &mut crate::top_abs::State,
     ) -> bool {
@@ -2796,16 +2619,16 @@ impl Builder {
         result_
     }
 
-    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:555 - `TopOpeBRepBuild_Builder::GKeepShapes()`
+    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:560 - `TopOpeBRepBuild_Builder::GKeepShapes()`
     /// add to Lou the shapes of Lin classified <T> / Lref shapes.
     /// Lou is not cleared. (S is a dummy trace argument)
     pub fn g_keep_shapes(
         &mut self,
         S: &crate::topo_ds::Shape,
-        Lref: &crate::ffi_types::TopTools_ListOfShape,
+        Lref: &crate::ffi_types::NCollection_List_TopoDS_Shape,
         T: crate::top_abs::State,
-        Lin: &crate::ffi_types::TopTools_ListOfShape,
-        Lou: &mut crate::ffi_types::TopTools_ListOfShape,
+        Lin: &crate::ffi_types::NCollection_List_TopoDS_Shape,
+        Lou: &mut crate::ffi_types::NCollection_List_TopoDS_Shape,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_Builder_g_keep_shapes(
@@ -2819,12 +2642,12 @@ impl Builder {
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:561 - `TopOpeBRepBuild_Builder::GSFSMakeSolids()`
+    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:566 - `TopOpeBRepBuild_Builder::GSFSMakeSolids()`
     pub fn gsfs_make_solids(
         &mut self,
         SOF: &crate::topo_ds::Shape,
         SFS: &mut ShellFaceSet,
-        LOSO: &mut crate::ffi_types::TopTools_ListOfShape,
+        LOSO: &mut crate::ffi_types::NCollection_List_TopoDS_Shape,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_Builder_gsfs_make_solids(
@@ -2836,12 +2659,12 @@ impl Builder {
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:565 - `TopOpeBRepBuild_Builder::GSOBUMakeSolids()`
+    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:570 - `TopOpeBRepBuild_Builder::GSOBUMakeSolids()`
     pub fn gsobu_make_solids(
         &mut self,
         SOF: &crate::topo_ds::Shape,
         SOBU: &mut SolidBuilder,
-        LOSO: &mut crate::ffi_types::TopTools_ListOfShape,
+        LOSO: &mut crate::ffi_types::NCollection_List_TopoDS_Shape,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_Builder_gsobu_make_solids(
@@ -2853,12 +2676,12 @@ impl Builder {
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:569 - `TopOpeBRepBuild_Builder::GWESMakeFaces()`
+    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:574 - `TopOpeBRepBuild_Builder::GWESMakeFaces()`
     pub fn gwes_make_faces(
         &mut self,
         FF: &crate::topo_ds::Shape,
         WES: &mut WireEdgeSet,
-        LOF: &mut crate::ffi_types::TopTools_ListOfShape,
+        LOF: &mut crate::ffi_types::NCollection_List_TopoDS_Shape,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_Builder_gwes_make_faces(
@@ -2870,13 +2693,13 @@ impl Builder {
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:573 - `TopOpeBRepBuild_Builder::GFABUMakeFaces()`
+    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:578 - `TopOpeBRepBuild_Builder::GFABUMakeFaces()`
     pub fn gfabu_make_faces(
         &mut self,
         FF: &crate::topo_ds::Shape,
         FABU: &mut FaceBuilder,
-        LOF: &mut crate::ffi_types::TopTools_ListOfShape,
-        MWisOld: &mut crate::ffi_types::TopTools_DataMapOfShapeInteger,
+        LOF: &mut crate::ffi_types::NCollection_List_TopoDS_Shape,
+        MWisOld: &mut crate::ffi_types::NCollection_DataMap_TopoDS_Shape_int_TopTools_ShapeMapHasher,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_Builder_gfabu_make_faces(
@@ -2889,12 +2712,12 @@ impl Builder {
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:578 - `TopOpeBRepBuild_Builder::RegularizeFaces()`
+    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:584 - `TopOpeBRepBuild_Builder::RegularizeFaces()`
     pub fn regularize_faces(
         &mut self,
         FF: &crate::topo_ds::Shape,
-        lnewFace: &crate::ffi_types::TopTools_ListOfShape,
-        LOF: &mut crate::ffi_types::TopTools_ListOfShape,
+        lnewFace: &crate::ffi_types::NCollection_List_TopoDS_Shape,
+        LOF: &mut crate::ffi_types::NCollection_List_TopoDS_Shape,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_Builder_regularize_faces(
@@ -2906,12 +2729,12 @@ impl Builder {
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:582 - `TopOpeBRepBuild_Builder::RegularizeFace()`
+    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:588 - `TopOpeBRepBuild_Builder::RegularizeFace()`
     pub fn regularize_face(
         &mut self,
         FF: &crate::topo_ds::Shape,
         newFace: &crate::topo_ds::Shape,
-        LOF: &mut crate::ffi_types::TopTools_ListOfShape,
+        LOF: &mut crate::ffi_types::NCollection_List_TopoDS_Shape,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_Builder_regularize_face(
@@ -2923,12 +2746,12 @@ impl Builder {
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:586 - `TopOpeBRepBuild_Builder::RegularizeSolids()`
+    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:592 - `TopOpeBRepBuild_Builder::RegularizeSolids()`
     pub fn regularize_solids(
         &mut self,
         SS: &crate::topo_ds::Shape,
-        lnewSolid: &crate::ffi_types::TopTools_ListOfShape,
-        LOS: &mut crate::ffi_types::TopTools_ListOfShape,
+        lnewSolid: &crate::ffi_types::NCollection_List_TopoDS_Shape,
+        LOS: &mut crate::ffi_types::NCollection_List_TopoDS_Shape,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_Builder_regularize_solids(
@@ -2940,12 +2763,12 @@ impl Builder {
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:590 - `TopOpeBRepBuild_Builder::RegularizeSolid()`
+    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:596 - `TopOpeBRepBuild_Builder::RegularizeSolid()`
     pub fn regularize_solid(
         &mut self,
         SS: &crate::topo_ds::Shape,
         newSolid: &crate::topo_ds::Shape,
-        LOS: &mut crate::ffi_types::TopTools_ListOfShape,
+        LOS: &mut crate::ffi_types::NCollection_List_TopoDS_Shape,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_Builder_regularize_solid(
@@ -2957,12 +2780,12 @@ impl Builder {
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:594 - `TopOpeBRepBuild_Builder::GPVSMakeEdges()`
+    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:600 - `TopOpeBRepBuild_Builder::GPVSMakeEdges()`
     pub fn gpvs_make_edges(
         &self,
         EF: &crate::topo_ds::Shape,
         PVS: &mut PaveSet,
-        LOE: &mut crate::ffi_types::TopTools_ListOfShape,
+        LOE: &mut crate::ffi_types::NCollection_List_TopoDS_Shape,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_Builder_gpvs_make_edges(
@@ -2974,12 +2797,12 @@ impl Builder {
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:598 - `TopOpeBRepBuild_Builder::GEDBUMakeEdges()`
+    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:604 - `TopOpeBRepBuild_Builder::GEDBUMakeEdges()`
     pub fn gedbu_make_edges(
         &self,
         EF: &crate::topo_ds::Shape,
         EDBU: &mut EdgeBuilder,
-        LOE: &mut crate::ffi_types::TopTools_ListOfShape,
+        LOE: &mut crate::ffi_types::NCollection_List_TopoDS_Shape,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_Builder_gedbu_make_edges(
@@ -2991,7 +2814,7 @@ impl Builder {
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:602 - `TopOpeBRepBuild_Builder::GToSplit()`
+    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:608 - `TopOpeBRepBuild_Builder::GToSplit()`
     pub fn g_to_split(&self, S: &crate::topo_ds::Shape, TB: crate::top_abs::State) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_Builder_g_to_split(
@@ -3002,22 +2825,22 @@ impl Builder {
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:604 - `TopOpeBRepBuild_Builder::GToMerge()`
+    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:610 - `TopOpeBRepBuild_Builder::GToMerge()`
     pub fn g_to_merge(&self, S: &crate::topo_ds::Shape) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_Builder_g_to_merge(self as *const Self, S)
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:610 - `TopOpeBRepBuild_Builder::GFindSamDom()`
-    pub fn g_find_sam_dom_shape_listofshape2(
+    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:616 - `TopOpeBRepBuild_Builder::GFindSamDom()`
+    pub fn g_find_sam_dom_shape_list_shape2(
         &self,
         S: &crate::topo_ds::Shape,
-        L1: &mut crate::ffi_types::TopTools_ListOfShape,
-        L2: &mut crate::ffi_types::TopTools_ListOfShape,
+        L1: &mut crate::ffi_types::NCollection_List_TopoDS_Shape,
+        L2: &mut crate::ffi_types::NCollection_List_TopoDS_Shape,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi_extern_TKBool::TopOpeBRepBuild_Builder_g_find_sam_dom_shape_listofshape2(
+            crate::ffi_extern_TKBool::TopOpeBRepBuild_Builder_g_find_sam_dom_shape_list_shape2(
                 self as *const Self,
                 S,
                 L1,
@@ -3026,14 +2849,14 @@ impl Builder {
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:614 - `TopOpeBRepBuild_Builder::GFindSamDom()`
-    pub fn g_find_sam_dom_listofshape2(
+    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:620 - `TopOpeBRepBuild_Builder::GFindSamDom()`
+    pub fn g_find_sam_dom_list_shape2(
         &self,
-        L1: &mut crate::ffi_types::TopTools_ListOfShape,
-        L2: &mut crate::ffi_types::TopTools_ListOfShape,
+        L1: &mut crate::ffi_types::NCollection_List_TopoDS_Shape,
+        L2: &mut crate::ffi_types::NCollection_List_TopoDS_Shape,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi_extern_TKBool::TopOpeBRepBuild_Builder_g_find_sam_dom_listofshape2(
+            crate::ffi_extern_TKBool::TopOpeBRepBuild_Builder_g_find_sam_dom_list_shape2(
                 self as *const Self,
                 L1,
                 L2,
@@ -3041,15 +2864,15 @@ impl Builder {
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:616 - `TopOpeBRepBuild_Builder::GFindSamDomSODO()`
-    pub fn g_find_sam_dom_sodo_shape_listofshape2(
+    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:623 - `TopOpeBRepBuild_Builder::GFindSamDomSODO()`
+    pub fn g_find_sam_dom_sodo_shape_list_shape2(
         &self,
         S: &crate::topo_ds::Shape,
-        LSO: &mut crate::ffi_types::TopTools_ListOfShape,
-        LDO: &mut crate::ffi_types::TopTools_ListOfShape,
+        LSO: &mut crate::ffi_types::NCollection_List_TopoDS_Shape,
+        LDO: &mut crate::ffi_types::NCollection_List_TopoDS_Shape,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi_extern_TKBool::TopOpeBRepBuild_Builder_g_find_sam_dom_sodo_shape_listofshape2(
+            crate::ffi_extern_TKBool::TopOpeBRepBuild_Builder_g_find_sam_dom_sodo_shape_list_shape2(
                 self as *const Self,
                 S,
                 LSO,
@@ -3058,14 +2881,14 @@ impl Builder {
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:620 - `TopOpeBRepBuild_Builder::GFindSamDomSODO()`
-    pub fn g_find_sam_dom_sodo_listofshape2(
+    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:627 - `TopOpeBRepBuild_Builder::GFindSamDomSODO()`
+    pub fn g_find_sam_dom_sodo_list_shape2(
         &self,
-        LSO: &mut crate::ffi_types::TopTools_ListOfShape,
-        LDO: &mut crate::ffi_types::TopTools_ListOfShape,
+        LSO: &mut crate::ffi_types::NCollection_List_TopoDS_Shape,
+        LDO: &mut crate::ffi_types::NCollection_List_TopoDS_Shape,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi_extern_TKBool::TopOpeBRepBuild_Builder_g_find_sam_dom_sodo_listofshape2(
+            crate::ffi_extern_TKBool::TopOpeBRepBuild_Builder_g_find_sam_dom_sodo_list_shape2(
                 self as *const Self,
                 LSO,
                 LDO,
@@ -3073,7 +2896,7 @@ impl Builder {
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:622 - `TopOpeBRepBuild_Builder::GMapShapes()`
+    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:630 - `TopOpeBRepBuild_Builder::GMapShapes()`
     pub fn g_map_shapes(&mut self, S1: &crate::topo_ds::Shape, S2: &crate::topo_ds::Shape) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_Builder_g_map_shapes(
@@ -3084,19 +2907,19 @@ impl Builder {
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:624 - `TopOpeBRepBuild_Builder::GClearMaps()`
+    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:632 - `TopOpeBRepBuild_Builder::GClearMaps()`
     pub fn g_clear_maps(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_Builder_g_clear_maps(self as *mut Self)
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:626 - `TopOpeBRepBuild_Builder::GFindSameRank()`
+    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:634 - `TopOpeBRepBuild_Builder::GFindSameRank()`
     pub fn g_find_same_rank(
         &self,
-        L1: &crate::ffi_types::TopTools_ListOfShape,
+        L1: &crate::ffi_types::NCollection_List_TopoDS_Shape,
         R: i32,
-        L2: &mut crate::ffi_types::TopTools_ListOfShape,
+        L2: &mut crate::ffi_types::NCollection_List_TopoDS_Shape,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_Builder_g_find_same_rank(
@@ -3108,14 +2931,14 @@ impl Builder {
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:630 - `TopOpeBRepBuild_Builder::GShapeRank()`
+    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:638 - `TopOpeBRepBuild_Builder::GShapeRank()`
     pub fn g_shape_rank(&self, S: &crate::topo_ds::Shape) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_Builder_g_shape_rank(self as *const Self, S)
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:632 - `TopOpeBRepBuild_Builder::GIsShapeOf()`
+    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:640 - `TopOpeBRepBuild_Builder::GIsShapeOf()`
     pub fn g_is_shape_of(&self, S: &crate::topo_ds::Shape, I12: i32) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_Builder_g_is_shape_of(
@@ -3126,22 +2949,22 @@ impl Builder {
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:645 - `TopOpeBRepBuild_Builder::GdumpLS()`
-    pub fn gdump_ls(&self, L: &crate::ffi_types::TopTools_ListOfShape) {
+    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:653 - `TopOpeBRepBuild_Builder::GdumpLS()`
+    pub fn gdump_ls(&self, L: &crate::ffi_types::NCollection_List_TopoDS_Shape) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_Builder_gdump_ls(self as *const Self, L)
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:653 - `TopOpeBRepBuild_Builder::GdumpSHA()`
-    pub unsafe fn gdump_sha(&self, S: &crate::topo_ds::Shape, str: *mut std::ffi::c_void) {
+    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:661 - `TopOpeBRepBuild_Builder::GdumpSHA()`
+    pub fn gdump_sha(&self, S: &crate::topo_ds::Shape, str: *mut std::ffi::c_void) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_Builder_gdump_sha(self as *const Self, S, str)
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:655 - `TopOpeBRepBuild_Builder::GdumpSHAORI()`
-    pub unsafe fn gdump_shaori(&self, S: &crate::topo_ds::Shape, str: *mut std::ffi::c_void) {
+    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:663 - `TopOpeBRepBuild_Builder::GdumpSHAORI()`
+    pub fn gdump_shaori(&self, S: &crate::topo_ds::Shape, str: *mut std::ffi::c_void) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_Builder_gdump_shaori(
                 self as *const Self,
@@ -3151,8 +2974,8 @@ impl Builder {
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:657 - `TopOpeBRepBuild_Builder::GdumpSHAORIGEO()`
-    pub unsafe fn gdump_shaorigeo(&self, S: &crate::topo_ds::Shape, str: *mut std::ffi::c_void) {
+    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:665 - `TopOpeBRepBuild_Builder::GdumpSHAORIGEO()`
+    pub fn gdump_shaorigeo(&self, S: &crate::topo_ds::Shape, str: *mut std::ffi::c_void) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_Builder_gdump_shaorigeo(
                 self as *const Self,
@@ -3162,7 +2985,7 @@ impl Builder {
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:660 - `TopOpeBRepBuild_Builder::GdumpSHASTA()`
+    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:667 - `TopOpeBRepBuild_Builder::GdumpSHASTA()`
     pub fn gdump_shasta_int_state_asciistring2(
         &self,
         iS: i32,
@@ -3181,7 +3004,7 @@ impl Builder {
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:665 - `TopOpeBRepBuild_Builder::GdumpSHASTA()`
+    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:672 - `TopOpeBRepBuild_Builder::GdumpSHASTA()`
     pub fn gdump_shasta_shape_state_asciistring2(
         &self,
         S: &crate::topo_ds::Shape,
@@ -3200,7 +3023,7 @@ impl Builder {
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:670 - `TopOpeBRepBuild_Builder::GdumpSHASTA()`
+    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:677 - `TopOpeBRepBuild_Builder::GdumpSHASTA()`
     pub fn gdump_shasta_int_state_shapeset_asciistring3(
         &self,
         iS: i32,
@@ -3215,15 +3038,15 @@ impl Builder {
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:677 - `TopOpeBRepBuild_Builder::GdumpEDG()`
-    pub unsafe fn gdump_edg(&self, S: &crate::topo_ds::Shape, str: *mut std::ffi::c_void) {
+    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:684 - `TopOpeBRepBuild_Builder::GdumpEDG()`
+    pub fn gdump_edg(&self, S: &crate::topo_ds::Shape, str: *mut std::ffi::c_void) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_Builder_gdump_edg(self as *const Self, S, str)
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:679 - `TopOpeBRepBuild_Builder::GdumpEDGVER()`
-    pub unsafe fn gdump_edgver(
+    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:686 - `TopOpeBRepBuild_Builder::GdumpEDGVER()`
+    pub fn gdump_edgver(
         &self,
         E: &crate::topo_ds::Shape,
         V: &crate::topo_ds::Shape,
@@ -3239,10 +3062,10 @@ impl Builder {
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:683 - `TopOpeBRepBuild_Builder::GdumpSAMDOM()`
-    pub unsafe fn gdump_samdom(
+    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:690 - `TopOpeBRepBuild_Builder::GdumpSAMDOM()`
+    pub fn gdump_samdom(
         &self,
-        L: &crate::ffi_types::TopTools_ListOfShape,
+        L: &crate::ffi_types::NCollection_List_TopoDS_Shape,
         str: *mut std::ffi::c_void,
     ) {
         crate::check_void_result(unsafe {
@@ -3254,35 +3077,35 @@ impl Builder {
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:686 - `TopOpeBRepBuild_Builder::GdumpEXP()`
+    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:693 - `TopOpeBRepBuild_Builder::GdumpEXP()`
     pub fn gdump_exp(&self, E: &crate::top_ope_b_rep_tool::ShapeExplorer) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_Builder_gdump_exp(self as *const Self, E)
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:688 - `TopOpeBRepBuild_Builder::GdumpSOBU()`
+    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:695 - `TopOpeBRepBuild_Builder::GdumpSOBU()`
     pub fn gdump_sobu(&self, SB: &mut SolidBuilder) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_Builder_gdump_sobu(self as *const Self, SB)
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:690 - `TopOpeBRepBuild_Builder::GdumpFABU()`
+    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:697 - `TopOpeBRepBuild_Builder::GdumpFABU()`
     pub fn gdump_fabu(&self, FB: &mut FaceBuilder) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_Builder_gdump_fabu(self as *const Self, FB)
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:692 - `TopOpeBRepBuild_Builder::GdumpEDBU()`
+    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:699 - `TopOpeBRepBuild_Builder::GdumpEDBU()`
     pub fn gdump_edbu(&self, EB: &mut EdgeBuilder) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_Builder_gdump_edbu(self as *const Self, EB)
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:694 - `TopOpeBRepBuild_Builder::GtraceSPS()`
+    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:701 - `TopOpeBRepBuild_Builder::GtraceSPS()`
     pub fn gtrace_sps_int(&self, iS: i32) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_Builder_gtrace_sps_int(
@@ -3292,7 +3115,7 @@ impl Builder {
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:696 - `TopOpeBRepBuild_Builder::GtraceSPS()`
+    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:703 - `TopOpeBRepBuild_Builder::GtraceSPS()`
     pub fn gtrace_sps_int2(&self, iS: i32, jS: i32) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_Builder_gtrace_sps_int2(
@@ -3303,7 +3126,7 @@ impl Builder {
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:699 - `TopOpeBRepBuild_Builder::GtraceSPS()`
+    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:705 - `TopOpeBRepBuild_Builder::GtraceSPS()`
     pub fn gtrace_sps_shape(&self, S: &crate::topo_ds::Shape) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_Builder_gtrace_sps_shape(
@@ -3313,7 +3136,7 @@ impl Builder {
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:701 - `TopOpeBRepBuild_Builder::GtraceSPS()`
+    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:707 - `TopOpeBRepBuild_Builder::GtraceSPS()`
     pub fn gtrace_sps_shape_int(&self, S: &crate::topo_ds::Shape, IS: &mut i32) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_Builder_gtrace_sps_shape_int(
@@ -3324,21 +3147,21 @@ impl Builder {
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:703 - `TopOpeBRepBuild_Builder::GdumpSHASETreset()`
+    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:709 - `TopOpeBRepBuild_Builder::GdumpSHASETreset()`
     pub fn gdump_shase_treset(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_Builder_gdump_shase_treset(self as *mut Self)
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:705 - `TopOpeBRepBuild_Builder::GdumpSHASETindex()`
+    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:711 - `TopOpeBRepBuild_Builder::GdumpSHASETindex()`
     pub fn gdump_shase_tindex(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_Builder_gdump_shase_tindex(self as *mut Self)
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:251 - `TopOpeBRepBuild_Builder::TopType()`
+    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:256 - `TopOpeBRepBuild_Builder::TopType()`
     pub fn top_type(S: &crate::topo_ds::Shape) -> crate::top_abs::ShapeEnum {
         crate::top_abs::ShapeEnum::try_from(crate::check_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_Builder_top_type(S)
@@ -3346,14 +3169,14 @@ impl Builder {
         .unwrap()
     }
 
-    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:253 - `TopOpeBRepBuild_Builder::Reverse()`
+    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:258 - `TopOpeBRepBuild_Builder::Reverse()`
     pub fn reverse(T1: crate::top_abs::State, T2: crate::top_abs::State) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_Builder_reverse(T1.into(), T2.into())
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:255 - `TopOpeBRepBuild_Builder::Orient()`
+    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:260 - `TopOpeBRepBuild_Builder::Orient()`
     pub fn orient(O: crate::top_abs::Orientation, R: bool) -> crate::top_abs::Orientation {
         crate::top_abs::Orientation::try_from(crate::check_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_Builder_orient(O.into(), R)
@@ -3361,21 +3184,24 @@ impl Builder {
         .unwrap()
     }
 
-    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:276 - `TopOpeBRepBuild_Builder::Contains()`
-    pub fn contains(S: &crate::topo_ds::Shape, L: &crate::ffi_types::TopTools_ListOfShape) -> bool {
+    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:280 - `TopOpeBRepBuild_Builder::Contains()`
+    pub fn contains(
+        S: &crate::topo_ds::Shape,
+        L: &crate::ffi_types::NCollection_List_TopoDS_Shape,
+    ) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_Builder_contains(S, L)
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:366 - `TopOpeBRepBuild_Builder::KPls()`
-    pub fn k_pls_shape_shapeenum_listofshape(
+    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:371 - `TopOpeBRepBuild_Builder::KPls()`
+    pub fn k_pls_shape_shapeenum_list_shape(
         S: &crate::topo_ds::Shape,
         T: crate::top_abs::ShapeEnum,
-        L: &mut crate::ffi_types::TopTools_ListOfShape,
+        L: &mut crate::ffi_types::NCollection_List_TopoDS_Shape,
     ) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi_extern_TKBool::TopOpeBRepBuild_Builder_k_pls_shape_shapeenum_listofshape(
+            crate::ffi_extern_TKBool::TopOpeBRepBuild_Builder_k_pls_shape_shapeenum_list_shape(
                 S,
                 T.into(),
                 L,
@@ -3383,126 +3209,128 @@ impl Builder {
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:370 - `TopOpeBRepBuild_Builder::KPls()`
+    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:375 - `TopOpeBRepBuild_Builder::KPls()`
     pub fn k_pls_shape_shapeenum(S: &crate::topo_ds::Shape, T: crate::top_abs::ShapeEnum) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_Builder_k_pls_shape_shapeenum(S, T.into())
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:384 - `TopOpeBRepBuild_Builder::KPContains()`
+    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:389 - `TopOpeBRepBuild_Builder::KPContains()`
     pub fn kp_contains(
         S: &crate::topo_ds::Shape,
-        L: &crate::ffi_types::TopTools_ListOfShape,
+        L: &crate::ffi_types::NCollection_List_TopoDS_Shape,
     ) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_Builder_kp_contains(S, L)
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:394 - `TopOpeBRepBuild_Builder::KPreturn()`
+    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:399 - `TopOpeBRepBuild_Builder::KPreturn()`
     pub fn k_preturn(KP: i32) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_Builder_k_preturn(KP)
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:606 - `TopOpeBRepBuild_Builder::GTakeCommonOfSame()`
+    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:612 - `TopOpeBRepBuild_Builder::GTakeCommonOfSame()`
     pub fn g_take_common_of_same(G: &GTopo) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_Builder_g_take_common_of_same(G)
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:608 - `TopOpeBRepBuild_Builder::GTakeCommonOfDiff()`
+    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:614 - `TopOpeBRepBuild_Builder::GTakeCommonOfDiff()`
     pub fn g_take_common_of_diff(G: &GTopo) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_Builder_g_take_common_of_diff(G)
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:635 - `TopOpeBRepBuild_Builder::GContains()`
+    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:642 - `TopOpeBRepBuild_Builder::GContains()`
     pub fn g_contains(
         S: &crate::topo_ds::Shape,
-        L: &crate::ffi_types::TopTools_ListOfShape,
+        L: &crate::ffi_types::NCollection_List_TopoDS_Shape,
     ) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_Builder_g_contains(S, L)
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:638 - `TopOpeBRepBuild_Builder::GCopyList()`
-    pub fn g_copy_list_listofshape_int2_listofshape(
-        Lin: &crate::ffi_types::TopTools_ListOfShape,
+    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:645 - `TopOpeBRepBuild_Builder::GCopyList()`
+    pub fn g_copy_list_list_shape_int2_list_shape(
+        Lin: &crate::ffi_types::NCollection_List_TopoDS_Shape,
         i1: i32,
         i2: i32,
-        Lou: &mut crate::ffi_types::TopTools_ListOfShape,
+        Lou: &mut crate::ffi_types::NCollection_List_TopoDS_Shape,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi_extern_TKBool::TopOpeBRepBuild_Builder_g_copy_list_listofshape_int2_listofshape(Lin, i1, i2, Lou)
+            crate::ffi_extern_TKBool::TopOpeBRepBuild_Builder_g_copy_list_list_shape_int2_list_shape(
+                Lin, i1, i2, Lou,
+            )
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:643 - `TopOpeBRepBuild_Builder::GCopyList()`
-    pub fn g_copy_list_listofshape2(
-        Lin: &crate::ffi_types::TopTools_ListOfShape,
-        Lou: &mut crate::ffi_types::TopTools_ListOfShape,
+    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:650 - `TopOpeBRepBuild_Builder::GCopyList()`
+    pub fn g_copy_list_list_shape2(
+        Lin: &crate::ffi_types::NCollection_List_TopoDS_Shape,
+        Lou: &mut crate::ffi_types::NCollection_List_TopoDS_Shape,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi_extern_TKBool::TopOpeBRepBuild_Builder_g_copy_list_listofshape2(Lin, Lou)
+            crate::ffi_extern_TKBool::TopOpeBRepBuild_Builder_g_copy_list_list_shape2(Lin, Lou)
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:647 - `TopOpeBRepBuild_Builder::GdumpPNT()`
+    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:655 - `TopOpeBRepBuild_Builder::GdumpPNT()`
     pub fn gdump_pnt(P: &crate::gp::Pnt) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_Builder_gdump_pnt(P)
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:649 - `TopOpeBRepBuild_Builder::GdumpORIPARPNT()`
+    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:657 - `TopOpeBRepBuild_Builder::GdumpORIPARPNT()`
     pub fn gdump_oriparpnt(o: crate::top_abs::Orientation, p: f64, Pnt: &crate::gp::Pnt) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_Builder_gdump_oriparpnt(o.into(), p, Pnt)
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:707 - `TopOpeBRepBuild_Builder::PrintGeo()`
+    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:713 - `TopOpeBRepBuild_Builder::PrintGeo()`
     pub fn print_geo(S: &crate::topo_ds::Shape) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_Builder_print_geo(S)
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:709 - `TopOpeBRepBuild_Builder::PrintSur()`
+    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:715 - `TopOpeBRepBuild_Builder::PrintSur()`
     pub fn print_sur(F: &crate::topo_ds::Face) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_Builder_print_sur(F)
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:711 - `TopOpeBRepBuild_Builder::PrintCur()`
+    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:717 - `TopOpeBRepBuild_Builder::PrintCur()`
     pub fn print_cur(E: &crate::topo_ds::Edge) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_Builder_print_cur(E)
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:713 - `TopOpeBRepBuild_Builder::PrintPnt()`
+    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:719 - `TopOpeBRepBuild_Builder::PrintPnt()`
     pub fn print_pnt(V: &crate::topo_ds::Vertex) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_Builder_print_pnt(V)
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:715 - `TopOpeBRepBuild_Builder::PrintOri()`
+    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:721 - `TopOpeBRepBuild_Builder::PrintOri()`
     pub fn print_ori(S: &crate::topo_ds::Shape) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_Builder_print_ori(S)
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:717 - `TopOpeBRepBuild_Builder::StringState()`
+    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:723 - `TopOpeBRepBuild_Builder::StringState()`
     pub fn string_state(
         S: crate::top_abs::State,
     ) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
@@ -3513,7 +3341,7 @@ impl Builder {
         }
     }
 
-    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:719 - `TopOpeBRepBuild_Builder::GcheckNBOUNDS()`
+    /// **Source:** `TopOpeBRepBuild_Builder.hxx`:725 - `TopOpeBRepBuild_Builder::GcheckNBOUNDS()`
     pub fn gcheck_nbounds(E: &crate::topo_ds::Shape) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_Builder_gcheck_nbounds(E)
@@ -3526,9 +3354,9 @@ impl Builder {
 // ========================
 
 /// **Source:** `TopOpeBRepBuild_Builder1.hxx`:46 - `TopOpeBRepBuild_Builder1`
-/// extension  of  the  class  TopOpeBRepBuild_Builder  dedicated
-/// to  avoid  bugs  in  "Rebuilding Result" algorithm  for  the  case  of  SOLID/SOLID  Boolean
-/// Operations
+/// extension of the class TopOpeBRepBuild_Builder dedicated
+/// to avoid bugs in "Rebuilding Result" algorithm for the
+/// case of SOLID/SOLID Boolean Operations
 pub use crate::ffi_types::TopOpeBRepBuild_Builder1 as Builder1;
 
 unsafe impl crate::CppDeletable for Builder1 {
@@ -3551,7 +3379,7 @@ impl Builder1 {
 
     /// **Source:** `TopOpeBRepBuild_Builder1.hxx`:57 - `TopOpeBRepBuild_Builder1::Clear()`
     /// Removes all splits and merges already performed.
-    /// Does NOT clear the handled DS  (except  ShapeWithStatesMaps).
+    /// Does NOT clear the handled DS (except ShapeWithStatesMaps).
     pub fn clear(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_Builder1_clear(self as *mut Self)
@@ -3561,17 +3389,17 @@ impl Builder1 {
     /// **Source:** `TopOpeBRepBuild_Builder1.hxx`:59 - `TopOpeBRepBuild_Builder1::Perform()`
     pub fn perform_handletopopebrepdshdatastructure(
         &mut self,
-        HDS: &crate::ffi_types::HandleTopOpeBRepDSHDataStructure,
+        HDS: &crate::ffi_types::Handle_TopOpeBRepDS_HDataStructure,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_Builder1_perform_handletopopebrepdshdatastructure(self as *mut Self, HDS)
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_Builder1.hxx`:62 - `TopOpeBRepBuild_Builder1::Perform()`
+    /// **Source:** `TopOpeBRepBuild_Builder1.hxx`:61 - `TopOpeBRepBuild_Builder1::Perform()`
     pub fn perform_handletopopebrepdshdatastructure_shape2(
         &mut self,
-        HDS: &crate::ffi_types::HandleTopOpeBRepDSHDataStructure,
+        HDS: &crate::ffi_types::Handle_TopOpeBRepDS_HDataStructure,
         S1: &crate::topo_ds::Shape,
         S2: &crate::topo_ds::Shape,
     ) {
@@ -3580,14 +3408,14 @@ impl Builder1 {
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_Builder1.hxx`:66 - `TopOpeBRepBuild_Builder1::MergeKPart()`
+    /// **Source:** `TopOpeBRepBuild_Builder1.hxx`:65 - `TopOpeBRepBuild_Builder1::MergeKPart()`
     pub fn merge_k_part(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_Builder1_merge_k_part(self as *mut Self)
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_Builder1.hxx`:68 - `TopOpeBRepBuild_Builder1::MergeKPart()`
+    /// **Source:** `TopOpeBRepBuild_Builder1.hxx`:67 - `TopOpeBRepBuild_Builder1::MergeKPart()`
     pub fn merge_k_part_state2(&mut self, TB1: crate::top_abs::State, TB2: crate::top_abs::State) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_Builder1_merge_k_part_state2(
@@ -3598,11 +3426,11 @@ impl Builder1 {
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_Builder1.hxx`:71 - `TopOpeBRepBuild_Builder1::GFillSolidSFS()`
+    /// **Source:** `TopOpeBRepBuild_Builder1.hxx`:69 - `TopOpeBRepBuild_Builder1::GFillSolidSFS()`
     pub fn g_fill_solid_sfs(
         &mut self,
         SO1: &crate::topo_ds::Shape,
-        LSO2: &crate::ffi_types::TopTools_ListOfShape,
+        LSO2: &crate::ffi_types::NCollection_List_TopoDS_Shape,
         G: &GTopo,
         SFS: &mut ShellFaceSet,
     ) {
@@ -3617,11 +3445,11 @@ impl Builder1 {
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_Builder1.hxx`:76 - `TopOpeBRepBuild_Builder1::GFillShellSFS()`
+    /// **Source:** `TopOpeBRepBuild_Builder1.hxx`:74 - `TopOpeBRepBuild_Builder1::GFillShellSFS()`
     pub fn g_fill_shell_sfs(
         &mut self,
         SH1: &crate::topo_ds::Shape,
-        LSO2: &crate::ffi_types::TopTools_ListOfShape,
+        LSO2: &crate::ffi_types::NCollection_List_TopoDS_Shape,
         G: &GTopo,
         SFS: &mut ShellFaceSet,
     ) {
@@ -3636,12 +3464,12 @@ impl Builder1 {
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_Builder1.hxx`:81 - `TopOpeBRepBuild_Builder1::GWESMakeFaces()`
+    /// **Source:** `TopOpeBRepBuild_Builder1.hxx`:79 - `TopOpeBRepBuild_Builder1::GWESMakeFaces()`
     pub fn gwes_make_faces(
         &mut self,
         FF: &crate::topo_ds::Shape,
         WES: &mut WireEdgeSet,
-        LOF: &mut crate::ffi_types::TopTools_ListOfShape,
+        LOF: &mut crate::ffi_types::NCollection_List_TopoDS_Shape,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_Builder1_gwes_make_faces(
@@ -3653,7 +3481,7 @@ impl Builder1 {
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_Builder1.hxx`:85 - `TopOpeBRepBuild_Builder1::GFillSplitsPVS()`
+    /// **Source:** `TopOpeBRepBuild_Builder1.hxx`:83 - `TopOpeBRepBuild_Builder1::GFillSplitsPVS()`
     pub fn g_fill_splits_pvs(
         &mut self,
         anEdge: &crate::topo_ds::Shape,
@@ -3670,11 +3498,11 @@ impl Builder1 {
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_Builder1.hxx`:89 - `TopOpeBRepBuild_Builder1::GFillFaceNotSameDomSFS()`
+    /// **Source:** `TopOpeBRepBuild_Builder1.hxx`:87 - `TopOpeBRepBuild_Builder1::GFillFaceNotSameDomSFS()`
     pub fn g_fill_face_not_same_dom_sfs(
         &mut self,
         F1: &crate::topo_ds::Shape,
-        LSO2: &crate::ffi_types::TopTools_ListOfShape,
+        LSO2: &crate::ffi_types::NCollection_List_TopoDS_Shape,
         G: &GTopo,
         SFS: &mut ShellFaceSet,
     ) {
@@ -3689,11 +3517,11 @@ impl Builder1 {
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_Builder1.hxx`:94 - `TopOpeBRepBuild_Builder1::GFillFaceNotSameDomWES()`
+    /// **Source:** `TopOpeBRepBuild_Builder1.hxx`:92 - `TopOpeBRepBuild_Builder1::GFillFaceNotSameDomWES()`
     pub fn g_fill_face_not_same_dom_wes(
         &mut self,
         F1: &crate::topo_ds::Shape,
-        LSO2: &crate::ffi_types::TopTools_ListOfShape,
+        LSO2: &crate::ffi_types::NCollection_List_TopoDS_Shape,
         G: &GTopo,
         WES: &mut WireEdgeSet,
     ) {
@@ -3708,11 +3536,11 @@ impl Builder1 {
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_Builder1.hxx`:99 - `TopOpeBRepBuild_Builder1::GFillWireNotSameDomWES()`
+    /// **Source:** `TopOpeBRepBuild_Builder1.hxx`:97 - `TopOpeBRepBuild_Builder1::GFillWireNotSameDomWES()`
     pub fn g_fill_wire_not_same_dom_wes(
         &mut self,
         W1: &crate::topo_ds::Shape,
-        LSO2: &crate::ffi_types::TopTools_ListOfShape,
+        LSO2: &crate::ffi_types::NCollection_List_TopoDS_Shape,
         G: &GTopo,
         WES: &mut WireEdgeSet,
     ) {
@@ -3727,11 +3555,11 @@ impl Builder1 {
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_Builder1.hxx`:104 - `TopOpeBRepBuild_Builder1::GFillEdgeNotSameDomWES()`
+    /// **Source:** `TopOpeBRepBuild_Builder1.hxx`:102 - `TopOpeBRepBuild_Builder1::GFillEdgeNotSameDomWES()`
     pub fn g_fill_edge_not_same_dom_wes(
         &mut self,
         E1: &crate::topo_ds::Shape,
-        LSO2: &crate::ffi_types::TopTools_ListOfShape,
+        LSO2: &crate::ffi_types::NCollection_List_TopoDS_Shape,
         G: &GTopo,
         WES: &mut WireEdgeSet,
     ) {
@@ -3746,11 +3574,11 @@ impl Builder1 {
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_Builder1.hxx`:109 - `TopOpeBRepBuild_Builder1::GFillFaceSameDomSFS()`
+    /// **Source:** `TopOpeBRepBuild_Builder1.hxx`:107 - `TopOpeBRepBuild_Builder1::GFillFaceSameDomSFS()`
     pub fn g_fill_face_same_dom_sfs(
         &mut self,
         F1: &crate::topo_ds::Shape,
-        LSO2: &crate::ffi_types::TopTools_ListOfShape,
+        LSO2: &crate::ffi_types::NCollection_List_TopoDS_Shape,
         G: &GTopo,
         SFS: &mut ShellFaceSet,
     ) {
@@ -3765,11 +3593,11 @@ impl Builder1 {
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_Builder1.hxx`:114 - `TopOpeBRepBuild_Builder1::GFillFaceSameDomWES()`
+    /// **Source:** `TopOpeBRepBuild_Builder1.hxx`:112 - `TopOpeBRepBuild_Builder1::GFillFaceSameDomWES()`
     pub fn g_fill_face_same_dom_wes(
         &mut self,
         F1: &crate::topo_ds::Shape,
-        LSO2: &crate::ffi_types::TopTools_ListOfShape,
+        LSO2: &crate::ffi_types::NCollection_List_TopoDS_Shape,
         G: &GTopo,
         WES: &mut WireEdgeSet,
     ) {
@@ -3784,11 +3612,11 @@ impl Builder1 {
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_Builder1.hxx`:119 - `TopOpeBRepBuild_Builder1::GFillWireSameDomWES()`
+    /// **Source:** `TopOpeBRepBuild_Builder1.hxx`:117 - `TopOpeBRepBuild_Builder1::GFillWireSameDomWES()`
     pub fn g_fill_wire_same_dom_wes(
         &mut self,
         W1: &crate::topo_ds::Shape,
-        LSO2: &crate::ffi_types::TopTools_ListOfShape,
+        LSO2: &crate::ffi_types::NCollection_List_TopoDS_Shape,
         G: &GTopo,
         WES: &mut WireEdgeSet,
     ) {
@@ -3803,11 +3631,11 @@ impl Builder1 {
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_Builder1.hxx`:124 - `TopOpeBRepBuild_Builder1::GFillEdgeSameDomWES()`
+    /// **Source:** `TopOpeBRepBuild_Builder1.hxx`:122 - `TopOpeBRepBuild_Builder1::GFillEdgeSameDomWES()`
     pub fn g_fill_edge_same_dom_wes(
         &mut self,
         E1: &crate::topo_ds::Shape,
-        LSO2: &crate::ffi_types::TopTools_ListOfShape,
+        LSO2: &crate::ffi_types::NCollection_List_TopoDS_Shape,
         G: &GTopo,
         WES: &mut WireEdgeSet,
     ) {
@@ -3822,11 +3650,11 @@ impl Builder1 {
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_Builder1.hxx`:129 - `TopOpeBRepBuild_Builder1::PerformONParts()`
+    /// **Source:** `TopOpeBRepBuild_Builder1.hxx`:127 - `TopOpeBRepBuild_Builder1::PerformONParts()`
     pub fn perform_on_parts(
         &mut self,
         F: &crate::topo_ds::Shape,
-        SDfaces: &crate::ffi_types::TopTools_IndexedMapOfShape,
+        SDfaces: &crate::ffi_types::NCollection_IndexedMap_TopoDS_Shape_TopTools_ShapeMapHasher,
         G: &GTopo,
         WES: &mut WireEdgeSet,
     ) {
@@ -3841,7 +3669,7 @@ impl Builder1 {
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_Builder1.hxx`:134 - `TopOpeBRepBuild_Builder1::PerformPieceIn2D()`
+    /// **Source:** `TopOpeBRepBuild_Builder1.hxx`:133 - `TopOpeBRepBuild_Builder1::PerformPieceIn2D()`
     pub fn perform_piece_in2_d(
         &mut self,
         aPieceToPerform: &crate::topo_ds::Edge,
@@ -3864,15 +3692,15 @@ impl Builder1 {
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_Builder1.hxx`:141 - `TopOpeBRepBuild_Builder1::PerformPieceOn2D()`
+    /// **Source:** `TopOpeBRepBuild_Builder1.hxx`:140 - `TopOpeBRepBuild_Builder1::PerformPieceOn2D()`
     pub fn perform_piece_on2_d(
         &mut self,
         aPieceObj: &crate::topo_ds::Shape,
         aFaceObj: &crate::topo_ds::Shape,
         aEdgeObj: &crate::topo_ds::Shape,
-        aListOfPieces: &mut crate::ffi_types::TopTools_ListOfShape,
-        aListOfFaces: &mut crate::ffi_types::TopTools_ListOfShape,
-        aListOfPiecesOut2d: &mut crate::ffi_types::TopTools_ListOfShape,
+        aListOfPieces: &mut crate::ffi_types::NCollection_List_TopoDS_Shape,
+        aListOfFaces: &mut crate::ffi_types::NCollection_List_TopoDS_Shape,
+        aListOfPiecesOut2d: &mut crate::ffi_types::NCollection_List_TopoDS_Shape,
     ) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_Builder1_perform_piece_on2_d(
@@ -3887,13 +3715,13 @@ impl Builder1 {
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_Builder1.hxx`:148 - `TopOpeBRepBuild_Builder1::TwoPiecesON()`
+    /// **Source:** `TopOpeBRepBuild_Builder1.hxx`:147 - `TopOpeBRepBuild_Builder1::TwoPiecesON()`
     pub fn two_pieces_on(
         &mut self,
-        aSeq: &crate::ffi_types::TopTools_SequenceOfShape,
-        aListOfPieces: &mut crate::ffi_types::TopTools_ListOfShape,
-        aListOfFaces: &mut crate::ffi_types::TopTools_ListOfShape,
-        aListOfPiecesOut2d: &mut crate::ffi_types::TopTools_ListOfShape,
+        aSeq: &crate::ffi_types::NCollection_Sequence_TopoDS_Shape,
+        aListOfPieces: &mut crate::ffi_types::NCollection_List_TopoDS_Shape,
+        aListOfFaces: &mut crate::ffi_types::NCollection_List_TopoDS_Shape,
+        aListOfPiecesOut2d: &mut crate::ffi_types::NCollection_List_TopoDS_Shape,
     ) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_Builder1_two_pieces_on(
@@ -3906,7 +3734,7 @@ impl Builder1 {
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_Builder1.hxx`:153 - `TopOpeBRepBuild_Builder1::CorrectResult2d()`
+    /// **Source:** `TopOpeBRepBuild_Builder1.hxx`:152 - `TopOpeBRepBuild_Builder1::CorrectResult2d()`
     pub fn correct_result2d(&mut self, aResult: &mut crate::topo_ds::Shape) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_Builder1_correct_result2d(
@@ -3938,7 +3766,7 @@ impl Builder1 {
         }
     }
 
-    /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:86 - `TopOpeBRepBuild_Builder::ChangeBuildTool()`
+    /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:82 - `TopOpeBRepBuild_Builder::ChangeBuildTool()`
     pub fn change_build_tool(&mut self) -> &mut crate::top_ope_b_rep_ds::BuildTool {
         unsafe {
             &mut *(crate::check_result(
@@ -3949,7 +3777,7 @@ impl Builder1 {
         }
     }
 
-    /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:88 - `TopOpeBRepBuild_Builder::BuildTool()`
+    /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:84 - `TopOpeBRepBuild_Builder::BuildTool()`
     pub fn build_tool(&self) -> &crate::top_ope_b_rep_ds::BuildTool {
         unsafe {
             &*(crate::check_result(
@@ -3960,10 +3788,10 @@ impl Builder1 {
         }
     }
 
-    /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:103 - `TopOpeBRepBuild_Builder::DataStructure()`
+    /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:99 - `TopOpeBRepBuild_Builder::DataStructure()`
     pub fn data_structure(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleTopOpeBRepDSHDataStructure> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_TopOpeBRepDS_HDataStructure> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKBool::TopOpeBRepBuild_Builder1_inherited_DataStructure(
@@ -3973,12 +3801,12 @@ impl Builder1 {
         }
     }
 
-    /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:114 - `TopOpeBRepBuild_Builder::MergeEdges()`
+    /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:110 - `TopOpeBRepBuild_Builder::MergeEdges()`
     pub fn merge_edges(
         &mut self,
-        L1: &crate::ffi_types::TopTools_ListOfShape,
+        L1: &crate::ffi_types::NCollection_List_TopoDS_Shape,
         TB1: crate::top_abs::State,
-        L2: &crate::ffi_types::TopTools_ListOfShape,
+        L2: &crate::ffi_types::NCollection_List_TopoDS_Shape,
         TB2: crate::top_abs::State,
         onA: bool,
         onB: bool,
@@ -3998,12 +3826,12 @@ impl Builder1 {
         })
     }
 
-    /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:124 - `TopOpeBRepBuild_Builder::MergeFaces()`
+    /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:120 - `TopOpeBRepBuild_Builder::MergeFaces()`
     pub fn merge_faces(
         &mut self,
-        S1: &crate::ffi_types::TopTools_ListOfShape,
+        S1: &crate::ffi_types::NCollection_List_TopoDS_Shape,
         TB1: crate::top_abs::State,
-        S2: &crate::ffi_types::TopTools_ListOfShape,
+        S2: &crate::ffi_types::NCollection_List_TopoDS_Shape,
         TB2: crate::top_abs::State,
         onA: bool,
         onB: bool,
@@ -4023,7 +3851,7 @@ impl Builder1 {
         })
     }
 
-    /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:134 - `TopOpeBRepBuild_Builder::MergeSolids()`
+    /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:130 - `TopOpeBRepBuild_Builder::MergeSolids()`
     pub fn merge_solids(
         &mut self,
         S1: &crate::topo_ds::Shape,
@@ -4042,7 +3870,7 @@ impl Builder1 {
         })
     }
 
-    /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:141 - `TopOpeBRepBuild_Builder::MergeShapes()`
+    /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:137 - `TopOpeBRepBuild_Builder::MergeShapes()`
     pub fn merge_shapes(
         &mut self,
         S1: &crate::topo_ds::Shape,
@@ -4061,14 +3889,14 @@ impl Builder1 {
         })
     }
 
-    /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:146 - `TopOpeBRepBuild_Builder::End()`
+    /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:142 - `TopOpeBRepBuild_Builder::End()`
     pub fn end(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_Builder1_inherited_End(self as *mut Self)
         })
     }
 
-    /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:148 - `TopOpeBRepBuild_Builder::Classify()`
+    /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:144 - `TopOpeBRepBuild_Builder::Classify()`
     pub fn classify(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_Builder1_inherited_Classify(
@@ -4077,7 +3905,7 @@ impl Builder1 {
         })
     }
 
-    /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:150 - `TopOpeBRepBuild_Builder::ChangeClassify()`
+    /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:146 - `TopOpeBRepBuild_Builder::ChangeClassify()`
     pub fn change_classify(&mut self, B: bool) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_Builder1_inherited_ChangeClassify(
@@ -4087,7 +3915,7 @@ impl Builder1 {
         })
     }
 
-    /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:154 - `TopOpeBRepBuild_Builder::MergeSolid()`
+    /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:150 - `TopOpeBRepBuild_Builder::MergeSolid()`
     pub fn merge_solid(&mut self, S: &crate::topo_ds::Shape, TB: crate::top_abs::State) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_Builder1_inherited_MergeSolid(
@@ -4098,7 +3926,7 @@ impl Builder1 {
         })
     }
 
-    /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:157 - `TopOpeBRepBuild_Builder::NewVertex()`
+    /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:153 - `TopOpeBRepBuild_Builder::NewVertex()`
     pub fn new_vertex(&self, I: i32) -> &crate::topo_ds::Shape {
         unsafe {
             &*(crate::check_result(
@@ -4110,8 +3938,8 @@ impl Builder1 {
         }
     }
 
-    /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:160 - `TopOpeBRepBuild_Builder::NewEdges()`
-    pub fn new_edges(&self, I: i32) -> &crate::ffi_types::TopTools_ListOfShape {
+    /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:156 - `TopOpeBRepBuild_Builder::NewEdges()`
+    pub fn new_edges(&self, I: i32) -> &crate::ffi_types::NCollection_List_TopoDS_Shape {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKBool::TopOpeBRepBuild_Builder1_inherited_NewEdges(
@@ -4122,8 +3950,8 @@ impl Builder1 {
         }
     }
 
-    /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:163 - `TopOpeBRepBuild_Builder::NewFaces()`
-    pub fn new_faces(&self, I: i32) -> &crate::ffi_types::TopTools_ListOfShape {
+    /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:159 - `TopOpeBRepBuild_Builder::NewFaces()`
+    pub fn new_faces(&self, I: i32) -> &crate::ffi_types::NCollection_List_TopoDS_Shape {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKBool::TopOpeBRepBuild_Builder1_inherited_NewFaces(
@@ -4134,7 +3962,7 @@ impl Builder1 {
         }
     }
 
-    /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:166 - `TopOpeBRepBuild_Builder::IsSplit()`
+    /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:162 - `TopOpeBRepBuild_Builder::IsSplit()`
     pub fn is_split(&self, S: &crate::topo_ds::Shape, TB: crate::top_abs::State) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_Builder1_inherited_IsSplit(
@@ -4145,7 +3973,7 @@ impl Builder1 {
         })
     }
 
-    /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:173 - `TopOpeBRepBuild_Builder::IsMerged()`
+    /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:169 - `TopOpeBRepBuild_Builder::IsMerged()`
     pub fn is_merged(&self, S: &crate::topo_ds::Shape, TB: crate::top_abs::State) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_Builder1_inherited_IsMerged(
@@ -4156,7 +3984,7 @@ impl Builder1 {
         })
     }
 
-    /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:179 - `TopOpeBRepBuild_Builder::InitSection()`
+    /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:175 - `TopOpeBRepBuild_Builder::InitSection()`
     pub fn init_section(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_Builder1_inherited_InitSection(
@@ -4165,7 +3993,7 @@ impl Builder1 {
         })
     }
 
-    /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:182 - `TopOpeBRepBuild_Builder::SplitSectionEdges()`
+    /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:178 - `TopOpeBRepBuild_Builder::SplitSectionEdges()`
     pub fn split_section_edges(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_Builder1_inherited_SplitSectionEdges(
@@ -4174,7 +4002,7 @@ impl Builder1 {
         })
     }
 
-    /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:185 - `TopOpeBRepBuild_Builder::SplitSectionEdge()`
+    /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:181 - `TopOpeBRepBuild_Builder::SplitSectionEdge()`
     pub fn split_section_edge(&mut self, E: &crate::topo_ds::Shape) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_Builder1_inherited_SplitSectionEdge(
@@ -4184,8 +4012,8 @@ impl Builder1 {
         })
     }
 
-    /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:188 - `TopOpeBRepBuild_Builder::SectionCurves()`
-    pub fn section_curves(&mut self, L: &mut crate::ffi_types::TopTools_ListOfShape) {
+    /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:184 - `TopOpeBRepBuild_Builder::SectionCurves()`
+    pub fn section_curves(&mut self, L: &mut crate::ffi_types::NCollection_List_TopoDS_Shape) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_Builder1_inherited_SectionCurves(
                 self as *mut Self,
@@ -4194,8 +4022,8 @@ impl Builder1 {
         })
     }
 
-    /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:192 - `TopOpeBRepBuild_Builder::SectionEdges()`
-    pub fn section_edges(&mut self, L: &mut crate::ffi_types::TopTools_ListOfShape) {
+    /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:188 - `TopOpeBRepBuild_Builder::SectionEdges()`
+    pub fn section_edges(&mut self, L: &mut crate::ffi_types::NCollection_List_TopoDS_Shape) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_Builder1_inherited_SectionEdges(
                 self as *mut Self,
@@ -4204,12 +4032,12 @@ impl Builder1 {
         })
     }
 
-    /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:197 - `TopOpeBRepBuild_Builder::FillSecEdgeAncestorMap()`
+    /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:193 - `TopOpeBRepBuild_Builder::FillSecEdgeAncestorMap()`
     pub fn fill_sec_edge_ancestor_map(
         &self,
         aShapeRank: i32,
-        aMapON: &crate::ffi_types::TopTools_MapOfShape,
-        anAncMap: &mut crate::ffi_types::TopTools_DataMapOfShapeShape,
+        aMapON: &crate::ffi_types::NCollection_Map_TopoDS_Shape_TopTools_ShapeMapHasher,
+        anAncMap: &mut crate::ffi_types::NCollection_DataMap_TopoDS_Shape_TopoDS_Shape_TopTools_ShapeMapHasher,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_Builder1_inherited_FillSecEdgeAncestorMap(
@@ -4221,8 +4049,8 @@ impl Builder1 {
         })
     }
 
-    /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:202 - `TopOpeBRepBuild_Builder::Section()`
-    pub fn section(&mut self, L: &mut crate::ffi_types::TopTools_ListOfShape) {
+    /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:199 - `TopOpeBRepBuild_Builder::Section()`
+    pub fn section(&mut self, L: &mut crate::ffi_types::NCollection_List_TopoDS_Shape) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_Builder1_inherited_Section(
                 self as *mut Self,
@@ -4231,8 +4059,8 @@ impl Builder1 {
         })
     }
 
-    /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:208 - `TopOpeBRepBuild_Builder::BuildVertices()`
-    pub fn build_vertices(&mut self, DS: &crate::ffi_types::HandleTopOpeBRepDSHDataStructure) {
+    /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:205 - `TopOpeBRepBuild_Builder::BuildVertices()`
+    pub fn build_vertices(&mut self, DS: &crate::ffi_types::Handle_TopOpeBRepDS_HDataStructure) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_Builder1_inherited_BuildVertices(
                 self as *mut Self,
@@ -4241,8 +4069,8 @@ impl Builder1 {
         })
     }
 
-    /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:212 - `TopOpeBRepBuild_Builder::BuildEdges()`
-    pub fn build_edges(&mut self, DS: &crate::ffi_types::HandleTopOpeBRepDSHDataStructure) {
+    /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:209 - `TopOpeBRepBuild_Builder::BuildEdges()`
+    pub fn build_edges(&mut self, DS: &crate::ffi_types::Handle_TopOpeBRepDS_HDataStructure) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_Builder1_inherited_BuildEdges(
                 self as *mut Self,
@@ -4252,10 +4080,7 @@ impl Builder1 {
     }
 
     /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:214 - `TopOpeBRepBuild_Builder::MSplit()`
-    pub fn m_split(
-        &self,
-        s: crate::top_abs::State,
-    ) -> &crate::ffi_types::TopOpeBRepDS_DataMapOfShapeListOfShapeOn1State {
+    pub fn m_split(&self, s: crate::top_abs::State) -> &crate::ffi_types::NCollection_DataMap_TopoDS_Shape_TopOpeBRepDS_ListOfShapeOn1State_TopTools_ShapeMapHasher{
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKBool::TopOpeBRepBuild_Builder1_inherited_MSplit(
@@ -4266,11 +4091,8 @@ impl Builder1 {
         }
     }
 
-    /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:217 - `TopOpeBRepBuild_Builder::ChangeMSplit()`
-    pub fn change_m_split(
-        &mut self,
-        s: crate::top_abs::State,
-    ) -> &mut crate::ffi_types::TopOpeBRepDS_DataMapOfShapeListOfShapeOn1State {
+    /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:219 - `TopOpeBRepBuild_Builder::ChangeMSplit()`
+    pub fn change_m_split(&mut self, s: crate::top_abs::State) -> &mut crate::ffi_types::NCollection_DataMap_TopoDS_Shape_TopOpeBRepDS_ListOfShapeOn1State_TopTools_ShapeMapHasher{
         unsafe {
             &mut *(crate::check_result(
                 crate::ffi_extern_TKBool::TopOpeBRepBuild_Builder1_inherited_ChangeMSplit(
@@ -4281,12 +4103,12 @@ impl Builder1 {
         }
     }
 
-    /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:220 - `TopOpeBRepBuild_Builder::MakeEdges()`
+    /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:221 - `TopOpeBRepBuild_Builder::MakeEdges()`
     pub fn make_edges(
         &mut self,
         E: &crate::topo_ds::Shape,
         B: &mut EdgeBuilder,
-        L: &mut crate::ffi_types::TopTools_ListOfShape,
+        L: &mut crate::ffi_types::NCollection_List_TopoDS_Shape,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_Builder1_inherited_MakeEdges(
@@ -4298,12 +4120,12 @@ impl Builder1 {
         })
     }
 
-    /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:224 - `TopOpeBRepBuild_Builder::MakeFaces()`
+    /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:225 - `TopOpeBRepBuild_Builder::MakeFaces()`
     pub fn make_faces(
         &mut self,
         F: &crate::topo_ds::Shape,
         B: &mut FaceBuilder,
-        L: &mut crate::ffi_types::TopTools_ListOfShape,
+        L: &mut crate::ffi_types::NCollection_List_TopoDS_Shape,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_Builder1_inherited_MakeFaces(
@@ -4315,11 +4137,11 @@ impl Builder1 {
         })
     }
 
-    /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:228 - `TopOpeBRepBuild_Builder::MakeSolids()`
+    /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:229 - `TopOpeBRepBuild_Builder::MakeSolids()`
     pub fn make_solids(
         &mut self,
         B: &mut SolidBuilder,
-        L: &mut crate::ffi_types::TopTools_ListOfShape,
+        L: &mut crate::ffi_types::NCollection_List_TopoDS_Shape,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_Builder1_inherited_MakeSolids(
@@ -4330,11 +4152,11 @@ impl Builder1 {
         })
     }
 
-    /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:230 - `TopOpeBRepBuild_Builder::MakeShells()`
+    /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:232 - `TopOpeBRepBuild_Builder::MakeShells()`
     pub fn make_shells(
         &mut self,
         B: &mut SolidBuilder,
-        L: &mut crate::ffi_types::TopTools_ListOfShape,
+        L: &mut crate::ffi_types::NCollection_List_TopoDS_Shape,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_Builder1_inherited_MakeShells(
@@ -4345,39 +4167,39 @@ impl Builder1 {
         })
     }
 
-    /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:237 - `TopOpeBRepBuild_Builder::Opec12()`
+    /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:241 - `TopOpeBRepBuild_Builder::Opec12()`
     pub fn opec12(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_Builder1_inherited_Opec12(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:239 - `TopOpeBRepBuild_Builder::Opec21()`
+    /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:243 - `TopOpeBRepBuild_Builder::Opec21()`
     pub fn opec21(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_Builder1_inherited_Opec21(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:241 - `TopOpeBRepBuild_Builder::Opecom()`
+    /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:245 - `TopOpeBRepBuild_Builder::Opecom()`
     pub fn opecom(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_Builder1_inherited_Opecom(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:243 - `TopOpeBRepBuild_Builder::Opefus()`
+    /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:247 - `TopOpeBRepBuild_Builder::Opefus()`
     pub fn opefus(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_Builder1_inherited_Opefus(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:245 - `TopOpeBRepBuild_Builder::ShapePosition()`
+    /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:249 - `TopOpeBRepBuild_Builder::ShapePosition()`
     pub fn shape_position(
         &mut self,
         S: &crate::topo_ds::Shape,
-        LS: &crate::ffi_types::TopTools_ListOfShape,
+        LS: &crate::ffi_types::NCollection_List_TopoDS_Shape,
     ) -> crate::top_abs::State {
         crate::top_abs::State::try_from(crate::check_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_Builder1_inherited_ShapePosition(
@@ -4389,11 +4211,11 @@ impl Builder1 {
         .unwrap()
     }
 
-    /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:247 - `TopOpeBRepBuild_Builder::KeepShape()`
+    /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:252 - `TopOpeBRepBuild_Builder::KeepShape()`
     pub fn keep_shape(
         &mut self,
         S: &crate::topo_ds::Shape,
-        LS: &crate::ffi_types::TopTools_ListOfShape,
+        LS: &crate::ffi_types::NCollection_List_TopoDS_Shape,
         T: crate::top_abs::State,
     ) -> bool {
         crate::check_result(unsafe {
@@ -4406,11 +4228,11 @@ impl Builder1 {
         })
     }
 
-    /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:258 - `TopOpeBRepBuild_Builder::FindSameDomain()`
+    /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:262 - `TopOpeBRepBuild_Builder::FindSameDomain()`
     pub fn find_same_domain(
         &self,
-        L1: &mut crate::ffi_types::TopTools_ListOfShape,
-        L2: &mut crate::ffi_types::TopTools_ListOfShape,
+        L1: &mut crate::ffi_types::NCollection_List_TopoDS_Shape,
+        L2: &mut crate::ffi_types::NCollection_List_TopoDS_Shape,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_Builder1_inherited_FindSameDomain(
@@ -4421,18 +4243,18 @@ impl Builder1 {
         })
     }
 
-    /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:260 - `TopOpeBRepBuild_Builder::FindSameDomainSameOrientation()`
+    /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:265 - `TopOpeBRepBuild_Builder::FindSameDomainSameOrientation()`
     pub fn find_same_domain_same_orientation(
         &self,
-        LSO: &mut crate::ffi_types::TopTools_ListOfShape,
-        LDO: &mut crate::ffi_types::TopTools_ListOfShape,
+        LSO: &mut crate::ffi_types::NCollection_List_TopoDS_Shape,
+        LDO: &mut crate::ffi_types::NCollection_List_TopoDS_Shape,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_Builder1_inherited_FindSameDomainSameOrientation(self as *const Self, LSO, LDO)
         })
     }
 
-    /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:263 - `TopOpeBRepBuild_Builder::MapShapes()`
+    /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:268 - `TopOpeBRepBuild_Builder::MapShapes()`
     pub fn map_shapes(&mut self, S1: &crate::topo_ds::Shape, S2: &crate::topo_ds::Shape) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_Builder1_inherited_MapShapes(
@@ -4443,7 +4265,7 @@ impl Builder1 {
         })
     }
 
-    /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:265 - `TopOpeBRepBuild_Builder::ClearMaps()`
+    /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:270 - `TopOpeBRepBuild_Builder::ClearMaps()`
     pub fn clear_maps(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_Builder1_inherited_ClearMaps(
@@ -4452,12 +4274,12 @@ impl Builder1 {
         })
     }
 
-    /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:267 - `TopOpeBRepBuild_Builder::FindSameRank()`
+    /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:272 - `TopOpeBRepBuild_Builder::FindSameRank()`
     pub fn find_same_rank(
         &self,
-        L1: &crate::ffi_types::TopTools_ListOfShape,
+        L1: &crate::ffi_types::NCollection_List_TopoDS_Shape,
         R: i32,
-        L2: &mut crate::ffi_types::TopTools_ListOfShape,
+        L2: &mut crate::ffi_types::NCollection_List_TopoDS_Shape,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_Builder1_inherited_FindSameRank(
@@ -4469,7 +4291,7 @@ impl Builder1 {
         })
     }
 
-    /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:271 - `TopOpeBRepBuild_Builder::ShapeRank()`
+    /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:276 - `TopOpeBRepBuild_Builder::ShapeRank()`
     pub fn shape_rank(&self, S: &crate::topo_ds::Shape) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_Builder1_inherited_ShapeRank(
@@ -4479,7 +4301,7 @@ impl Builder1 {
         })
     }
 
-    /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:273 - `TopOpeBRepBuild_Builder::IsShapeOf()`
+    /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:278 - `TopOpeBRepBuild_Builder::IsShapeOf()`
     pub fn is_shape_of(&self, S: &crate::topo_ds::Shape, I12: i32) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_Builder1_inherited_IsShapeOf(
@@ -4490,7 +4312,7 @@ impl Builder1 {
         })
     }
 
-    /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:279 - `TopOpeBRepBuild_Builder::FindIsKPart()`
+    /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:283 - `TopOpeBRepBuild_Builder::FindIsKPart()`
     pub fn find_is_k_part(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_Builder1_inherited_FindIsKPart(
@@ -4499,7 +4321,7 @@ impl Builder1 {
         })
     }
 
-    /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:281 - `TopOpeBRepBuild_Builder::IsKPart()`
+    /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:285 - `TopOpeBRepBuild_Builder::IsKPart()`
     pub fn is_k_part(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_Builder1_inherited_IsKPart(
@@ -4508,7 +4330,7 @@ impl Builder1 {
         })
     }
 
-    /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:287 - `TopOpeBRepBuild_Builder::MergeKPartiskole()`
+    /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:291 - `TopOpeBRepBuild_Builder::MergeKPartiskole()`
     pub fn merge_k_partiskole(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_Builder1_inherited_MergeKPartiskole(
@@ -4517,7 +4339,7 @@ impl Builder1 {
         })
     }
 
-    /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:289 - `TopOpeBRepBuild_Builder::MergeKPartiskoletge()`
+    /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:293 - `TopOpeBRepBuild_Builder::MergeKPartiskoletge()`
     pub fn merge_k_partiskoletge(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_Builder1_inherited_MergeKPartiskoletge(
@@ -4526,7 +4348,7 @@ impl Builder1 {
         })
     }
 
-    /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:291 - `TopOpeBRepBuild_Builder::MergeKPartisdisj()`
+    /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:295 - `TopOpeBRepBuild_Builder::MergeKPartisdisj()`
     pub fn merge_k_partisdisj(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_Builder1_inherited_MergeKPartisdisj(
@@ -4535,7 +4357,7 @@ impl Builder1 {
         })
     }
 
-    /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:293 - `TopOpeBRepBuild_Builder::MergeKPartisfafa()`
+    /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:297 - `TopOpeBRepBuild_Builder::MergeKPartisfafa()`
     pub fn merge_k_partisfafa(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_Builder1_inherited_MergeKPartisfafa(
@@ -4544,7 +4366,7 @@ impl Builder1 {
         })
     }
 
-    /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:295 - `TopOpeBRepBuild_Builder::MergeKPartissoso()`
+    /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:299 - `TopOpeBRepBuild_Builder::MergeKPartissoso()`
     pub fn merge_k_partissoso(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_Builder1_inherited_MergeKPartissoso(
@@ -4553,14 +4375,14 @@ impl Builder1 {
         })
     }
 
-    /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:297 - `TopOpeBRepBuild_Builder::KPiskole()`
+    /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:301 - `TopOpeBRepBuild_Builder::KPiskole()`
     pub fn k_piskole(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_Builder1_inherited_KPiskole(self as *mut Self)
         })
     }
 
-    /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:299 - `TopOpeBRepBuild_Builder::KPiskoletge()`
+    /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:303 - `TopOpeBRepBuild_Builder::KPiskoletge()`
     pub fn k_piskoletge(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_Builder1_inherited_KPiskoletge(
@@ -4569,28 +4391,28 @@ impl Builder1 {
         })
     }
 
-    /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:301 - `TopOpeBRepBuild_Builder::KPisdisj()`
+    /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:305 - `TopOpeBRepBuild_Builder::KPisdisj()`
     pub fn k_pisdisj(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_Builder1_inherited_KPisdisj(self as *mut Self)
         })
     }
 
-    /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:303 - `TopOpeBRepBuild_Builder::KPisfafa()`
+    /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:307 - `TopOpeBRepBuild_Builder::KPisfafa()`
     pub fn k_pisfafa(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_Builder1_inherited_KPisfafa(self as *mut Self)
         })
     }
 
-    /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:305 - `TopOpeBRepBuild_Builder::KPissoso()`
+    /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:309 - `TopOpeBRepBuild_Builder::KPissoso()`
     pub fn k_pissoso(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_Builder1_inherited_KPissoso(self as *mut Self)
         })
     }
 
-    /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:307 - `TopOpeBRepBuild_Builder::KPClearMaps()`
+    /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:311 - `TopOpeBRepBuild_Builder::KPClearMaps()`
     pub fn kp_clear_maps(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_Builder1_inherited_KPClearMaps(
@@ -4599,12 +4421,12 @@ impl Builder1 {
         })
     }
 
-    /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:309 - `TopOpeBRepBuild_Builder::KPlhg()`
+    /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:313 - `TopOpeBRepBuild_Builder::KPlhg()`
     pub fn k_plhg(
         &self,
         S: &crate::topo_ds::Shape,
         T: crate::top_abs::ShapeEnum,
-        L: &mut crate::ffi_types::TopTools_ListOfShape,
+        L: &mut crate::ffi_types::NCollection_List_TopoDS_Shape,
     ) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_Builder1_inherited_KPlhg(
@@ -4616,12 +4438,12 @@ impl Builder1 {
         })
     }
 
-    /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:315 - `TopOpeBRepBuild_Builder::KPlhsd()`
+    /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:319 - `TopOpeBRepBuild_Builder::KPlhsd()`
     pub fn k_plhsd(
         &self,
         S: &crate::topo_ds::Shape,
         T: crate::top_abs::ShapeEnum,
-        L: &mut crate::ffi_types::TopTools_ListOfShape,
+        L: &mut crate::ffi_types::NCollection_List_TopoDS_Shape,
     ) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_Builder1_inherited_KPlhsd(
@@ -4633,11 +4455,11 @@ impl Builder1 {
         })
     }
 
-    /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:321 - `TopOpeBRepBuild_Builder::KPclasSS()`
+    /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:325 - `TopOpeBRepBuild_Builder::KPclasSS()`
     pub fn k_pclas_ss(
         &mut self,
         S1: &crate::topo_ds::Shape,
-        exceptLS1: &crate::ffi_types::TopTools_ListOfShape,
+        exceptLS1: &crate::ffi_types::NCollection_List_TopoDS_Shape,
         S2: &crate::topo_ds::Shape,
     ) -> crate::top_abs::State {
         crate::top_abs::State::try_from(crate::check_result(unsafe {
@@ -4651,12 +4473,12 @@ impl Builder1 {
         .unwrap()
     }
 
-    /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:331 - `TopOpeBRepBuild_Builder::KPiskolesh()`
+    /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:335 - `TopOpeBRepBuild_Builder::KPiskolesh()`
     pub fn k_piskolesh(
         &self,
         S: &crate::topo_ds::Shape,
-        LS: &mut crate::ffi_types::TopTools_ListOfShape,
-        LF: &mut crate::ffi_types::TopTools_ListOfShape,
+        LS: &mut crate::ffi_types::NCollection_List_TopoDS_Shape,
+        LF: &mut crate::ffi_types::NCollection_List_TopoDS_Shape,
     ) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_Builder1_inherited_KPiskolesh(
@@ -4668,12 +4490,12 @@ impl Builder1 {
         })
     }
 
-    /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:335 - `TopOpeBRepBuild_Builder::KPiskoletgesh()`
+    /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:339 - `TopOpeBRepBuild_Builder::KPiskoletgesh()`
     pub fn k_piskoletgesh(
         &self,
         S: &crate::topo_ds::Shape,
-        LS: &mut crate::ffi_types::TopTools_ListOfShape,
-        LF: &mut crate::ffi_types::TopTools_ListOfShape,
+        LS: &mut crate::ffi_types::NCollection_List_TopoDS_Shape,
+        LF: &mut crate::ffi_types::NCollection_List_TopoDS_Shape,
     ) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_Builder1_inherited_KPiskoletgesh(
@@ -4685,11 +4507,11 @@ impl Builder1 {
         })
     }
 
-    /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:339 - `TopOpeBRepBuild_Builder::KPSameDomain()`
+    /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:343 - `TopOpeBRepBuild_Builder::KPSameDomain()`
     pub fn kp_same_domain(
         &self,
-        L1: &mut crate::ffi_types::TopTools_ListOfShape,
-        L2: &mut crate::ffi_types::TopTools_ListOfShape,
+        L1: &mut crate::ffi_types::NCollection_List_TopoDS_Shape,
+        L2: &mut crate::ffi_types::NCollection_List_TopoDS_Shape,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_Builder1_inherited_KPSameDomain(
@@ -4700,7 +4522,7 @@ impl Builder1 {
         })
     }
 
-    /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:341 - `TopOpeBRepBuild_Builder::KPisdisjsh()`
+    /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:346 - `TopOpeBRepBuild_Builder::KPisdisjsh()`
     pub fn k_pisdisjsh(&self, S: &crate::topo_ds::Shape) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_Builder1_inherited_KPisdisjsh(
@@ -4710,7 +4532,7 @@ impl Builder1 {
         })
     }
 
-    /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:343 - `TopOpeBRepBuild_Builder::KPisfafash()`
+    /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:348 - `TopOpeBRepBuild_Builder::KPisfafash()`
     pub fn k_pisfafash(&self, S: &crate::topo_ds::Shape) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_Builder1_inherited_KPisfafash(
@@ -4720,7 +4542,7 @@ impl Builder1 {
         })
     }
 
-    /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:345 - `TopOpeBRepBuild_Builder::KPissososh()`
+    /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:350 - `TopOpeBRepBuild_Builder::KPissososh()`
     pub fn k_pissososh(&self, S: &crate::topo_ds::Shape) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_Builder1_inherited_KPissososh(
@@ -4730,7 +4552,7 @@ impl Builder1 {
         })
     }
 
-    /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:347 - `TopOpeBRepBuild_Builder::KPiskoleanalyse()`
+    /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:352 - `TopOpeBRepBuild_Builder::KPiskoleanalyse()`
     pub fn k_piskoleanalyse(
         &self,
         FT1: crate::top_abs::State,
@@ -4755,7 +4577,7 @@ impl Builder1 {
         })
     }
 
-    /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:355 - `TopOpeBRepBuild_Builder::KPiskoletgeanalyse()`
+    /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:360 - `TopOpeBRepBuild_Builder::KPiskoletgeanalyse()`
     pub fn k_piskoletgeanalyse(
         &self,
         Conf: crate::top_ope_b_rep_ds::Config,
@@ -4774,7 +4596,7 @@ impl Builder1 {
         })
     }
 
-    /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:360 - `TopOpeBRepBuild_Builder::KPisdisjanalyse()`
+    /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:365 - `TopOpeBRepBuild_Builder::KPisdisjanalyse()`
     pub fn k_pisdisjanalyse(
         &self,
         ST1: crate::top_abs::State,
@@ -4795,7 +4617,7 @@ impl Builder1 {
         })
     }
 
-    /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:372 - `TopOpeBRepBuild_Builder::KPclassF()`
+    /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:377 - `TopOpeBRepBuild_Builder::KPclassF()`
     pub fn k_pclass_f(
         &mut self,
         F1: &crate::topo_ds::Shape,
@@ -4811,11 +4633,11 @@ impl Builder1 {
         .unwrap()
     }
 
-    /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:387 - `TopOpeBRepBuild_Builder::KPmakeface()`
+    /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:392 - `TopOpeBRepBuild_Builder::KPmakeface()`
     pub fn k_pmakeface(
         &mut self,
         F1: &crate::topo_ds::Shape,
-        LF2: &crate::ffi_types::TopTools_ListOfShape,
+        LF2: &crate::ffi_types::NCollection_List_TopoDS_Shape,
         T1: crate::top_abs::State,
         T2: crate::top_abs::State,
         R1: bool,
@@ -4836,7 +4658,7 @@ impl Builder1 {
         }
     }
 
-    /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:396 - `TopOpeBRepBuild_Builder::SplitEvisoONperiodicF()`
+    /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:401 - `TopOpeBRepBuild_Builder::SplitEvisoONperiodicF()`
     pub fn split_eviso_o_nperiodic_f(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_Builder1_inherited_SplitEvisoONperiodicF(
@@ -4845,11 +4667,11 @@ impl Builder1 {
         })
     }
 
-    /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:398 - `TopOpeBRepBuild_Builder::GMergeSolids()`
+    /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:403 - `TopOpeBRepBuild_Builder::GMergeSolids()`
     pub fn g_merge_solids(
         &mut self,
-        LSO1: &crate::ffi_types::TopTools_ListOfShape,
-        LSO2: &crate::ffi_types::TopTools_ListOfShape,
+        LSO1: &crate::ffi_types::NCollection_List_TopoDS_Shape,
+        LSO2: &crate::ffi_types::NCollection_List_TopoDS_Shape,
         G: &GTopo,
     ) {
         crate::check_void_result(unsafe {
@@ -4862,11 +4684,11 @@ impl Builder1 {
         })
     }
 
-    /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:402 - `TopOpeBRepBuild_Builder::GFillSolidsSFS()`
+    /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:407 - `TopOpeBRepBuild_Builder::GFillSolidsSFS()`
     pub fn g_fill_solids_sfs(
         &mut self,
-        LSO1: &crate::ffi_types::TopTools_ListOfShape,
-        LSO2: &crate::ffi_types::TopTools_ListOfShape,
+        LSO1: &crate::ffi_types::NCollection_List_TopoDS_Shape,
+        LSO2: &crate::ffi_types::NCollection_List_TopoDS_Shape,
         G: &GTopo,
         SFS: &mut ShellFaceSet,
     ) {
@@ -4881,7 +4703,7 @@ impl Builder1 {
         })
     }
 
-    /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:412 - `TopOpeBRepBuild_Builder::GFillSurfaceTopologySFS()`
+    /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:417 - `TopOpeBRepBuild_Builder::GFillSurfaceTopologySFS()`
     pub fn g_fill_surface_topology_sfs(
         &mut self,
         SO1: &crate::topo_ds::Shape,
@@ -4898,11 +4720,11 @@ impl Builder1 {
         })
     }
 
-    /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:425 - `TopOpeBRepBuild_Builder::GFillFaceSFS()`
+    /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:430 - `TopOpeBRepBuild_Builder::GFillFaceSFS()`
     pub fn g_fill_face_sfs(
         &mut self,
         F1: &crate::topo_ds::Shape,
-        LSO2: &crate::ffi_types::TopTools_ListOfShape,
+        LSO2: &crate::ffi_types::NCollection_List_TopoDS_Shape,
         G: &GTopo,
         SFS: &mut ShellFaceSet,
     ) {
@@ -4917,11 +4739,11 @@ impl Builder1 {
         })
     }
 
-    /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:430 - `TopOpeBRepBuild_Builder::GSplitFaceSFS()`
+    /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:435 - `TopOpeBRepBuild_Builder::GSplitFaceSFS()`
     pub fn g_split_face_sfs(
         &mut self,
         F1: &crate::topo_ds::Shape,
-        LSclass: &crate::ffi_types::TopTools_ListOfShape,
+        LSclass: &crate::ffi_types::NCollection_List_TopoDS_Shape,
         G: &GTopo,
         SFS: &mut ShellFaceSet,
     ) {
@@ -4936,7 +4758,7 @@ impl Builder1 {
         })
     }
 
-    /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:435 - `TopOpeBRepBuild_Builder::GMergeFaceSFS()`
+    /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:440 - `TopOpeBRepBuild_Builder::GMergeFaceSFS()`
     pub fn g_merge_face_sfs(
         &mut self,
         F: &crate::topo_ds::Shape,
@@ -4953,12 +4775,12 @@ impl Builder1 {
         })
     }
 
-    /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:439 - `TopOpeBRepBuild_Builder::GSplitFace()`
+    /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:444 - `TopOpeBRepBuild_Builder::GSplitFace()`
     pub fn g_split_face(
         &mut self,
         F: &crate::topo_ds::Shape,
         G: &GTopo,
-        LSclass: &crate::ffi_types::TopTools_ListOfShape,
+        LSclass: &crate::ffi_types::NCollection_List_TopoDS_Shape,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_Builder1_inherited_GSplitFace(
@@ -4970,7 +4792,7 @@ impl Builder1 {
         })
     }
 
-    /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:443 - `TopOpeBRepBuild_Builder::AddONPatchesSFS()`
+    /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:448 - `TopOpeBRepBuild_Builder::AddONPatchesSFS()`
     pub fn add_on_patches_sfs(&mut self, G: &GTopo, SFS: &mut ShellFaceSet) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_Builder1_inherited_AddONPatchesSFS(
@@ -4981,12 +4803,12 @@ impl Builder1 {
         })
     }
 
-    /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:446 - `TopOpeBRepBuild_Builder::FillOnPatches()`
+    /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:451 - `TopOpeBRepBuild_Builder::FillOnPatches()`
     pub fn fill_on_patches(
         &mut self,
-        anEdgesON: &crate::ffi_types::TopTools_ListOfShape,
+        anEdgesON: &crate::ffi_types::NCollection_List_TopoDS_Shape,
         aBaseFace: &crate::topo_ds::Shape,
-        avoidMap: &crate::ffi_types::TopTools_IndexedMapOfOrientedShape,
+        avoidMap: &crate::ffi_types::NCollection_IndexedMap_TopoDS_Shape,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_Builder1_inherited_FillOnPatches(
@@ -4998,13 +4820,13 @@ impl Builder1 {
         })
     }
 
-    /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:450 - `TopOpeBRepBuild_Builder::FindFacesTouchingEdge()`
+    /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:455 - `TopOpeBRepBuild_Builder::FindFacesTouchingEdge()`
     pub fn find_faces_touching_edge(
         &self,
         aFace: &crate::topo_ds::Shape,
         anEdge: &crate::topo_ds::Shape,
         aShRank: i32,
-        aFaces: &mut crate::ffi_types::TopTools_ListOfShape,
+        aFaces: &mut crate::ffi_types::NCollection_List_TopoDS_Shape,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_Builder1_inherited_FindFacesTouchingEdge(
@@ -5017,11 +4839,11 @@ impl Builder1 {
         })
     }
 
-    /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:455 - `TopOpeBRepBuild_Builder::GMergeFaces()`
+    /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:460 - `TopOpeBRepBuild_Builder::GMergeFaces()`
     pub fn g_merge_faces(
         &mut self,
-        LF1: &crate::ffi_types::TopTools_ListOfShape,
-        LF2: &crate::ffi_types::TopTools_ListOfShape,
+        LF1: &crate::ffi_types::NCollection_List_TopoDS_Shape,
+        LF2: &crate::ffi_types::NCollection_List_TopoDS_Shape,
         G: &GTopo,
     ) {
         crate::check_void_result(unsafe {
@@ -5034,11 +4856,11 @@ impl Builder1 {
         })
     }
 
-    /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:459 - `TopOpeBRepBuild_Builder::GFillFacesWES()`
+    /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:464 - `TopOpeBRepBuild_Builder::GFillFacesWES()`
     pub fn g_fill_faces_wes(
         &mut self,
-        LF1: &crate::ffi_types::TopTools_ListOfShape,
-        LF2: &crate::ffi_types::TopTools_ListOfShape,
+        LF1: &crate::ffi_types::NCollection_List_TopoDS_Shape,
+        LF2: &crate::ffi_types::NCollection_List_TopoDS_Shape,
         G: &GTopo,
         WES: &mut WireEdgeSet,
     ) {
@@ -5053,11 +4875,11 @@ impl Builder1 {
         })
     }
 
-    /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:464 - `TopOpeBRepBuild_Builder::GFillFacesWESK()`
+    /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:469 - `TopOpeBRepBuild_Builder::GFillFacesWESK()`
     pub fn g_fill_faces_wesk(
         &mut self,
-        LF1: &crate::ffi_types::TopTools_ListOfShape,
-        LF2: &crate::ffi_types::TopTools_ListOfShape,
+        LF1: &crate::ffi_types::NCollection_List_TopoDS_Shape,
+        LF2: &crate::ffi_types::NCollection_List_TopoDS_Shape,
         G: &GTopo,
         WES: &mut WireEdgeSet,
         K: i32,
@@ -5074,12 +4896,12 @@ impl Builder1 {
         })
     }
 
-    /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:470 - `TopOpeBRepBuild_Builder::GFillFacesWESMakeFaces()`
+    /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:475 - `TopOpeBRepBuild_Builder::GFillFacesWESMakeFaces()`
     pub fn g_fill_faces_wes_make_faces(
         &mut self,
-        LF1: &crate::ffi_types::TopTools_ListOfShape,
-        LF2: &crate::ffi_types::TopTools_ListOfShape,
-        LSO: &crate::ffi_types::TopTools_ListOfShape,
+        LF1: &crate::ffi_types::NCollection_List_TopoDS_Shape,
+        LF2: &crate::ffi_types::NCollection_List_TopoDS_Shape,
+        LSO: &crate::ffi_types::NCollection_List_TopoDS_Shape,
         G: &GTopo,
     ) {
         crate::check_void_result(unsafe {
@@ -5093,11 +4915,11 @@ impl Builder1 {
         })
     }
 
-    /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:475 - `TopOpeBRepBuild_Builder::GFillFaceWES()`
+    /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:480 - `TopOpeBRepBuild_Builder::GFillFaceWES()`
     pub fn g_fill_face_wes(
         &mut self,
         F: &crate::topo_ds::Shape,
-        LF2: &crate::ffi_types::TopTools_ListOfShape,
+        LF2: &crate::ffi_types::NCollection_List_TopoDS_Shape,
         G: &GTopo,
         WES: &mut WireEdgeSet,
     ) {
@@ -5112,7 +4934,7 @@ impl Builder1 {
         })
     }
 
-    /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:480 - `TopOpeBRepBuild_Builder::GFillCurveTopologyWES()`
+    /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:485 - `TopOpeBRepBuild_Builder::GFillCurveTopologyWES()`
     pub fn g_fill_curve_topology_wes(
         &mut self,
         F: &crate::topo_ds::Shape,
@@ -5129,12 +4951,12 @@ impl Builder1 {
         })
     }
 
-    /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:488 - `TopOpeBRepBuild_Builder::GFillONPartsWES()`
+    /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:493 - `TopOpeBRepBuild_Builder::GFillONPartsWES()`
     pub fn g_fill_on_parts_wes(
         &mut self,
         F: &crate::topo_ds::Shape,
         G: &GTopo,
-        LSclass: &crate::ffi_types::TopTools_ListOfShape,
+        LSclass: &crate::ffi_types::NCollection_List_TopoDS_Shape,
         WES: &mut WireEdgeSet,
     ) {
         crate::check_void_result(unsafe {
@@ -5148,11 +4970,11 @@ impl Builder1 {
         })
     }
 
-    /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:493 - `TopOpeBRepBuild_Builder::GFillWireWES()`
+    /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:498 - `TopOpeBRepBuild_Builder::GFillWireWES()`
     pub fn g_fill_wire_wes(
         &mut self,
         W: &crate::topo_ds::Shape,
-        LF2: &crate::ffi_types::TopTools_ListOfShape,
+        LF2: &crate::ffi_types::NCollection_List_TopoDS_Shape,
         G: &GTopo,
         WES: &mut WireEdgeSet,
     ) {
@@ -5167,11 +4989,11 @@ impl Builder1 {
         })
     }
 
-    /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:498 - `TopOpeBRepBuild_Builder::GFillEdgeWES()`
+    /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:503 - `TopOpeBRepBuild_Builder::GFillEdgeWES()`
     pub fn g_fill_edge_wes(
         &mut self,
         E: &crate::topo_ds::Shape,
-        LF2: &crate::ffi_types::TopTools_ListOfShape,
+        LF2: &crate::ffi_types::NCollection_List_TopoDS_Shape,
         G: &GTopo,
         WES: &mut WireEdgeSet,
     ) {
@@ -5186,11 +5008,11 @@ impl Builder1 {
         })
     }
 
-    /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:503 - `TopOpeBRepBuild_Builder::GSplitEdgeWES()`
+    /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:508 - `TopOpeBRepBuild_Builder::GSplitEdgeWES()`
     pub fn g_split_edge_wes(
         &mut self,
         E: &crate::topo_ds::Shape,
-        LF2: &crate::ffi_types::TopTools_ListOfShape,
+        LF2: &crate::ffi_types::NCollection_List_TopoDS_Shape,
         G: &GTopo,
         WES: &mut WireEdgeSet,
     ) {
@@ -5205,7 +5027,7 @@ impl Builder1 {
         })
     }
 
-    /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:508 - `TopOpeBRepBuild_Builder::GMergeEdgeWES()`
+    /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:513 - `TopOpeBRepBuild_Builder::GMergeEdgeWES()`
     pub fn g_merge_edge_wes(
         &mut self,
         E: &crate::topo_ds::Shape,
@@ -5222,12 +5044,12 @@ impl Builder1 {
         })
     }
 
-    /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:512 - `TopOpeBRepBuild_Builder::GSplitEdge()`
+    /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:517 - `TopOpeBRepBuild_Builder::GSplitEdge()`
     pub fn g_split_edge(
         &mut self,
         E: &crate::topo_ds::Shape,
         G: &GTopo,
-        LSclass: &crate::ffi_types::TopTools_ListOfShape,
+        LSclass: &crate::ffi_types::NCollection_List_TopoDS_Shape,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_Builder1_inherited_GSplitEdge(
@@ -5239,11 +5061,11 @@ impl Builder1 {
         })
     }
 
-    /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:516 - `TopOpeBRepBuild_Builder::GMergeEdges()`
+    /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:521 - `TopOpeBRepBuild_Builder::GMergeEdges()`
     pub fn g_merge_edges(
         &mut self,
-        LE1: &crate::ffi_types::TopTools_ListOfShape,
-        LE2: &crate::ffi_types::TopTools_ListOfShape,
+        LE1: &crate::ffi_types::NCollection_List_TopoDS_Shape,
+        LE2: &crate::ffi_types::NCollection_List_TopoDS_Shape,
         G: &GTopo,
     ) {
         crate::check_void_result(unsafe {
@@ -5256,11 +5078,11 @@ impl Builder1 {
         })
     }
 
-    /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:520 - `TopOpeBRepBuild_Builder::GFillEdgesPVS()`
+    /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:525 - `TopOpeBRepBuild_Builder::GFillEdgesPVS()`
     pub fn g_fill_edges_pvs(
         &mut self,
-        LE1: &crate::ffi_types::TopTools_ListOfShape,
-        LE2: &crate::ffi_types::TopTools_ListOfShape,
+        LE1: &crate::ffi_types::NCollection_List_TopoDS_Shape,
+        LE2: &crate::ffi_types::NCollection_List_TopoDS_Shape,
         G: &GTopo,
         PVS: &mut PaveSet,
     ) {
@@ -5275,11 +5097,11 @@ impl Builder1 {
         })
     }
 
-    /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:525 - `TopOpeBRepBuild_Builder::GFillEdgePVS()`
+    /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:530 - `TopOpeBRepBuild_Builder::GFillEdgePVS()`
     pub fn g_fill_edge_pvs(
         &mut self,
         E: &crate::topo_ds::Shape,
-        LE2: &crate::ffi_types::TopTools_ListOfShape,
+        LE2: &crate::ffi_types::NCollection_List_TopoDS_Shape,
         G: &GTopo,
         PVS: &mut PaveSet,
     ) {
@@ -5294,7 +5116,7 @@ impl Builder1 {
         })
     }
 
-    /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:530 - `TopOpeBRepBuild_Builder::GFillPointTopologyPVS()`
+    /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:535 - `TopOpeBRepBuild_Builder::GFillPointTopologyPVS()`
     pub fn g_fill_point_topology_pvs(
         &mut self,
         E: &crate::topo_ds::Shape,
@@ -5311,7 +5133,7 @@ impl Builder1 {
         })
     }
 
-    /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:539 - `TopOpeBRepBuild_Builder::GParamOnReference()`
+    /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:544 - `TopOpeBRepBuild_Builder::GParamOnReference()`
     pub fn g_param_on_reference(
         &self,
         V: &crate::topo_ds::Vertex,
@@ -5328,11 +5150,11 @@ impl Builder1 {
         })
     }
 
-    /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:543 - `TopOpeBRepBuild_Builder::GKeepShape()`
+    /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:548 - `TopOpeBRepBuild_Builder::GKeepShape()`
     pub fn g_keep_shape(
         &mut self,
         S: &crate::topo_ds::Shape,
-        Lref: &crate::ffi_types::TopTools_ListOfShape,
+        Lref: &crate::ffi_types::NCollection_List_TopoDS_Shape,
         T: crate::top_abs::State,
     ) -> bool {
         crate::check_result(unsafe {
@@ -5345,14 +5167,14 @@ impl Builder1 {
         })
     }
 
-    /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:555 - `TopOpeBRepBuild_Builder::GKeepShapes()`
+    /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:560 - `TopOpeBRepBuild_Builder::GKeepShapes()`
     pub fn g_keep_shapes(
         &mut self,
         S: &crate::topo_ds::Shape,
-        Lref: &crate::ffi_types::TopTools_ListOfShape,
+        Lref: &crate::ffi_types::NCollection_List_TopoDS_Shape,
         T: crate::top_abs::State,
-        Lin: &crate::ffi_types::TopTools_ListOfShape,
-        Lou: &mut crate::ffi_types::TopTools_ListOfShape,
+        Lin: &crate::ffi_types::NCollection_List_TopoDS_Shape,
+        Lou: &mut crate::ffi_types::NCollection_List_TopoDS_Shape,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_Builder1_inherited_GKeepShapes(
@@ -5366,12 +5188,12 @@ impl Builder1 {
         })
     }
 
-    /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:561 - `TopOpeBRepBuild_Builder::GSFSMakeSolids()`
+    /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:566 - `TopOpeBRepBuild_Builder::GSFSMakeSolids()`
     pub fn gsfs_make_solids(
         &mut self,
         SOF: &crate::topo_ds::Shape,
         SFS: &mut ShellFaceSet,
-        LOSO: &mut crate::ffi_types::TopTools_ListOfShape,
+        LOSO: &mut crate::ffi_types::NCollection_List_TopoDS_Shape,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_Builder1_inherited_GSFSMakeSolids(
@@ -5383,12 +5205,12 @@ impl Builder1 {
         })
     }
 
-    /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:565 - `TopOpeBRepBuild_Builder::GSOBUMakeSolids()`
+    /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:570 - `TopOpeBRepBuild_Builder::GSOBUMakeSolids()`
     pub fn gsobu_make_solids(
         &mut self,
         SOF: &crate::topo_ds::Shape,
         SOBU: &mut SolidBuilder,
-        LOSO: &mut crate::ffi_types::TopTools_ListOfShape,
+        LOSO: &mut crate::ffi_types::NCollection_List_TopoDS_Shape,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_Builder1_inherited_GSOBUMakeSolids(
@@ -5400,13 +5222,13 @@ impl Builder1 {
         })
     }
 
-    /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:573 - `TopOpeBRepBuild_Builder::GFABUMakeFaces()`
+    /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:578 - `TopOpeBRepBuild_Builder::GFABUMakeFaces()`
     pub fn gfabu_make_faces(
         &mut self,
         FF: &crate::topo_ds::Shape,
         FABU: &mut FaceBuilder,
-        LOF: &mut crate::ffi_types::TopTools_ListOfShape,
-        MWisOld: &mut crate::ffi_types::TopTools_DataMapOfShapeInteger,
+        LOF: &mut crate::ffi_types::NCollection_List_TopoDS_Shape,
+        MWisOld: &mut crate::ffi_types::NCollection_DataMap_TopoDS_Shape_int_TopTools_ShapeMapHasher,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_Builder1_inherited_GFABUMakeFaces(
@@ -5419,12 +5241,12 @@ impl Builder1 {
         })
     }
 
-    /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:578 - `TopOpeBRepBuild_Builder::RegularizeFaces()`
+    /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:584 - `TopOpeBRepBuild_Builder::RegularizeFaces()`
     pub fn regularize_faces(
         &mut self,
         FF: &crate::topo_ds::Shape,
-        lnewFace: &crate::ffi_types::TopTools_ListOfShape,
-        LOF: &mut crate::ffi_types::TopTools_ListOfShape,
+        lnewFace: &crate::ffi_types::NCollection_List_TopoDS_Shape,
+        LOF: &mut crate::ffi_types::NCollection_List_TopoDS_Shape,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_Builder1_inherited_RegularizeFaces(
@@ -5436,12 +5258,12 @@ impl Builder1 {
         })
     }
 
-    /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:582 - `TopOpeBRepBuild_Builder::RegularizeFace()`
+    /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:588 - `TopOpeBRepBuild_Builder::RegularizeFace()`
     pub fn regularize_face(
         &mut self,
         FF: &crate::topo_ds::Shape,
         newFace: &crate::topo_ds::Shape,
-        LOF: &mut crate::ffi_types::TopTools_ListOfShape,
+        LOF: &mut crate::ffi_types::NCollection_List_TopoDS_Shape,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_Builder1_inherited_RegularizeFace(
@@ -5453,12 +5275,12 @@ impl Builder1 {
         })
     }
 
-    /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:586 - `TopOpeBRepBuild_Builder::RegularizeSolids()`
+    /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:592 - `TopOpeBRepBuild_Builder::RegularizeSolids()`
     pub fn regularize_solids(
         &mut self,
         SS: &crate::topo_ds::Shape,
-        lnewSolid: &crate::ffi_types::TopTools_ListOfShape,
-        LOS: &mut crate::ffi_types::TopTools_ListOfShape,
+        lnewSolid: &crate::ffi_types::NCollection_List_TopoDS_Shape,
+        LOS: &mut crate::ffi_types::NCollection_List_TopoDS_Shape,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_Builder1_inherited_RegularizeSolids(
@@ -5470,12 +5292,12 @@ impl Builder1 {
         })
     }
 
-    /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:590 - `TopOpeBRepBuild_Builder::RegularizeSolid()`
+    /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:596 - `TopOpeBRepBuild_Builder::RegularizeSolid()`
     pub fn regularize_solid(
         &mut self,
         SS: &crate::topo_ds::Shape,
         newSolid: &crate::topo_ds::Shape,
-        LOS: &mut crate::ffi_types::TopTools_ListOfShape,
+        LOS: &mut crate::ffi_types::NCollection_List_TopoDS_Shape,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_Builder1_inherited_RegularizeSolid(
@@ -5487,12 +5309,12 @@ impl Builder1 {
         })
     }
 
-    /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:594 - `TopOpeBRepBuild_Builder::GPVSMakeEdges()`
+    /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:600 - `TopOpeBRepBuild_Builder::GPVSMakeEdges()`
     pub fn gpvs_make_edges(
         &self,
         EF: &crate::topo_ds::Shape,
         PVS: &mut PaveSet,
-        LOE: &mut crate::ffi_types::TopTools_ListOfShape,
+        LOE: &mut crate::ffi_types::NCollection_List_TopoDS_Shape,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_Builder1_inherited_GPVSMakeEdges(
@@ -5504,12 +5326,12 @@ impl Builder1 {
         })
     }
 
-    /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:598 - `TopOpeBRepBuild_Builder::GEDBUMakeEdges()`
+    /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:604 - `TopOpeBRepBuild_Builder::GEDBUMakeEdges()`
     pub fn gedbu_make_edges(
         &self,
         EF: &crate::topo_ds::Shape,
         EDBU: &mut EdgeBuilder,
-        LOE: &mut crate::ffi_types::TopTools_ListOfShape,
+        LOE: &mut crate::ffi_types::NCollection_List_TopoDS_Shape,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_Builder1_inherited_GEDBUMakeEdges(
@@ -5521,7 +5343,7 @@ impl Builder1 {
         })
     }
 
-    /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:602 - `TopOpeBRepBuild_Builder::GToSplit()`
+    /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:608 - `TopOpeBRepBuild_Builder::GToSplit()`
     pub fn g_to_split(&self, S: &crate::topo_ds::Shape, TB: crate::top_abs::State) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_Builder1_inherited_GToSplit(
@@ -5532,7 +5354,7 @@ impl Builder1 {
         })
     }
 
-    /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:604 - `TopOpeBRepBuild_Builder::GToMerge()`
+    /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:610 - `TopOpeBRepBuild_Builder::GToMerge()`
     pub fn g_to_merge(&self, S: &crate::topo_ds::Shape) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_Builder1_inherited_GToMerge(
@@ -5542,12 +5364,12 @@ impl Builder1 {
         })
     }
 
-    /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:610 - `TopOpeBRepBuild_Builder::GFindSamDom()`
+    /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:616 - `TopOpeBRepBuild_Builder::GFindSamDom()`
     pub fn g_find_sam_dom(
         &self,
         S: &crate::topo_ds::Shape,
-        L1: &mut crate::ffi_types::TopTools_ListOfShape,
-        L2: &mut crate::ffi_types::TopTools_ListOfShape,
+        L1: &mut crate::ffi_types::NCollection_List_TopoDS_Shape,
+        L2: &mut crate::ffi_types::NCollection_List_TopoDS_Shape,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_Builder1_inherited_GFindSamDom(
@@ -5559,12 +5381,12 @@ impl Builder1 {
         })
     }
 
-    /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:616 - `TopOpeBRepBuild_Builder::GFindSamDomSODO()`
+    /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:623 - `TopOpeBRepBuild_Builder::GFindSamDomSODO()`
     pub fn g_find_sam_dom_sodo(
         &self,
         S: &crate::topo_ds::Shape,
-        LSO: &mut crate::ffi_types::TopTools_ListOfShape,
-        LDO: &mut crate::ffi_types::TopTools_ListOfShape,
+        LSO: &mut crate::ffi_types::NCollection_List_TopoDS_Shape,
+        LDO: &mut crate::ffi_types::NCollection_List_TopoDS_Shape,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_Builder1_inherited_GFindSamDomSODO(
@@ -5576,7 +5398,7 @@ impl Builder1 {
         })
     }
 
-    /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:622 - `TopOpeBRepBuild_Builder::GMapShapes()`
+    /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:630 - `TopOpeBRepBuild_Builder::GMapShapes()`
     pub fn g_map_shapes(&mut self, S1: &crate::topo_ds::Shape, S2: &crate::topo_ds::Shape) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_Builder1_inherited_GMapShapes(
@@ -5587,7 +5409,7 @@ impl Builder1 {
         })
     }
 
-    /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:624 - `TopOpeBRepBuild_Builder::GClearMaps()`
+    /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:632 - `TopOpeBRepBuild_Builder::GClearMaps()`
     pub fn g_clear_maps(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_Builder1_inherited_GClearMaps(
@@ -5596,12 +5418,12 @@ impl Builder1 {
         })
     }
 
-    /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:626 - `TopOpeBRepBuild_Builder::GFindSameRank()`
+    /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:634 - `TopOpeBRepBuild_Builder::GFindSameRank()`
     pub fn g_find_same_rank(
         &self,
-        L1: &crate::ffi_types::TopTools_ListOfShape,
+        L1: &crate::ffi_types::NCollection_List_TopoDS_Shape,
         R: i32,
-        L2: &mut crate::ffi_types::TopTools_ListOfShape,
+        L2: &mut crate::ffi_types::NCollection_List_TopoDS_Shape,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_Builder1_inherited_GFindSameRank(
@@ -5613,7 +5435,7 @@ impl Builder1 {
         })
     }
 
-    /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:630 - `TopOpeBRepBuild_Builder::GShapeRank()`
+    /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:638 - `TopOpeBRepBuild_Builder::GShapeRank()`
     pub fn g_shape_rank(&self, S: &crate::topo_ds::Shape) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_Builder1_inherited_GShapeRank(
@@ -5623,7 +5445,7 @@ impl Builder1 {
         })
     }
 
-    /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:632 - `TopOpeBRepBuild_Builder::GIsShapeOf()`
+    /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:640 - `TopOpeBRepBuild_Builder::GIsShapeOf()`
     pub fn g_is_shape_of(&self, S: &crate::topo_ds::Shape, I12: i32) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_Builder1_inherited_GIsShapeOf(
@@ -5634,8 +5456,8 @@ impl Builder1 {
         })
     }
 
-    /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:645 - `TopOpeBRepBuild_Builder::GdumpLS()`
-    pub fn gdump_ls(&self, L: &crate::ffi_types::TopTools_ListOfShape) {
+    /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:653 - `TopOpeBRepBuild_Builder::GdumpLS()`
+    pub fn gdump_ls(&self, L: &crate::ffi_types::NCollection_List_TopoDS_Shape) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_Builder1_inherited_GdumpLS(
                 self as *const Self,
@@ -5644,40 +5466,40 @@ impl Builder1 {
         })
     }
 
-    /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:653 - `TopOpeBRepBuild_Builder::GdumpSHA()`
-    pub unsafe fn gdump_sha(&self, S: &crate::topo_ds::Shape, str: *mut std::ffi::c_void) {
+    /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:661 - `TopOpeBRepBuild_Builder::GdumpSHA()`
+    pub fn gdump_sha(&self, S: &crate::topo_ds::Shape, str: Option<&mut std::ffi::c_void>) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_Builder1_inherited_GdumpSHA(
                 self as *const Self,
                 S,
-                str,
+                str.map_or(std::ptr::null_mut(), |r| r as *mut _),
             )
         })
     }
 
-    /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:655 - `TopOpeBRepBuild_Builder::GdumpSHAORI()`
-    pub unsafe fn gdump_shaori(&self, S: &crate::topo_ds::Shape, str: *mut std::ffi::c_void) {
+    /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:663 - `TopOpeBRepBuild_Builder::GdumpSHAORI()`
+    pub fn gdump_shaori(&self, S: &crate::topo_ds::Shape, str: Option<&mut std::ffi::c_void>) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_Builder1_inherited_GdumpSHAORI(
                 self as *const Self,
                 S,
-                str,
+                str.map_or(std::ptr::null_mut(), |r| r as *mut _),
             )
         })
     }
 
-    /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:657 - `TopOpeBRepBuild_Builder::GdumpSHAORIGEO()`
-    pub unsafe fn gdump_shaorigeo(&self, S: &crate::topo_ds::Shape, str: *mut std::ffi::c_void) {
+    /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:665 - `TopOpeBRepBuild_Builder::GdumpSHAORIGEO()`
+    pub fn gdump_shaorigeo(&self, S: &crate::topo_ds::Shape, str: Option<&mut std::ffi::c_void>) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_Builder1_inherited_GdumpSHAORIGEO(
                 self as *const Self,
                 S,
-                str,
+                str.map_or(std::ptr::null_mut(), |r| r as *mut _),
             )
         })
     }
 
-    /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:660 - `TopOpeBRepBuild_Builder::GdumpSHASTA()`
+    /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:667 - `TopOpeBRepBuild_Builder::GdumpSHASTA()`
     pub fn gdump_shasta(
         &self,
         iS: i32,
@@ -5696,50 +5518,50 @@ impl Builder1 {
         })
     }
 
-    /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:677 - `TopOpeBRepBuild_Builder::GdumpEDG()`
-    pub unsafe fn gdump_edg(&self, S: &crate::topo_ds::Shape, str: *mut std::ffi::c_void) {
+    /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:684 - `TopOpeBRepBuild_Builder::GdumpEDG()`
+    pub fn gdump_edg(&self, S: &crate::topo_ds::Shape, str: Option<&mut std::ffi::c_void>) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_Builder1_inherited_GdumpEDG(
                 self as *const Self,
                 S,
-                str,
+                str.map_or(std::ptr::null_mut(), |r| r as *mut _),
             )
         })
     }
 
-    /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:679 - `TopOpeBRepBuild_Builder::GdumpEDGVER()`
-    pub unsafe fn gdump_edgver(
+    /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:686 - `TopOpeBRepBuild_Builder::GdumpEDGVER()`
+    pub fn gdump_edgver(
         &self,
         E: &crate::topo_ds::Shape,
         V: &crate::topo_ds::Shape,
-        str: *mut std::ffi::c_void,
+        str: Option<&mut std::ffi::c_void>,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_Builder1_inherited_GdumpEDGVER(
                 self as *const Self,
                 E,
                 V,
-                str,
+                str.map_or(std::ptr::null_mut(), |r| r as *mut _),
             )
         })
     }
 
-    /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:683 - `TopOpeBRepBuild_Builder::GdumpSAMDOM()`
-    pub unsafe fn gdump_samdom(
+    /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:690 - `TopOpeBRepBuild_Builder::GdumpSAMDOM()`
+    pub fn gdump_samdom(
         &self,
-        L: &crate::ffi_types::TopTools_ListOfShape,
-        str: *mut std::ffi::c_void,
+        L: &crate::ffi_types::NCollection_List_TopoDS_Shape,
+        str: Option<&mut std::ffi::c_void>,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_Builder1_inherited_GdumpSAMDOM(
                 self as *const Self,
                 L,
-                str,
+                str.map_or(std::ptr::null_mut(), |r| r as *mut _),
             )
         })
     }
 
-    /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:686 - `TopOpeBRepBuild_Builder::GdumpEXP()`
+    /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:693 - `TopOpeBRepBuild_Builder::GdumpEXP()`
     pub fn gdump_exp(&self, E: &crate::top_ope_b_rep_tool::ShapeExplorer) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_Builder1_inherited_GdumpEXP(
@@ -5749,7 +5571,7 @@ impl Builder1 {
         })
     }
 
-    /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:688 - `TopOpeBRepBuild_Builder::GdumpSOBU()`
+    /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:695 - `TopOpeBRepBuild_Builder::GdumpSOBU()`
     pub fn gdump_sobu(&self, SB: &mut SolidBuilder) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_Builder1_inherited_GdumpSOBU(
@@ -5759,7 +5581,7 @@ impl Builder1 {
         })
     }
 
-    /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:690 - `TopOpeBRepBuild_Builder::GdumpFABU()`
+    /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:697 - `TopOpeBRepBuild_Builder::GdumpFABU()`
     pub fn gdump_fabu(&self, FB: &mut FaceBuilder) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_Builder1_inherited_GdumpFABU(
@@ -5769,7 +5591,7 @@ impl Builder1 {
         })
     }
 
-    /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:692 - `TopOpeBRepBuild_Builder::GdumpEDBU()`
+    /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:699 - `TopOpeBRepBuild_Builder::GdumpEDBU()`
     pub fn gdump_edbu(&self, EB: &mut EdgeBuilder) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_Builder1_inherited_GdumpEDBU(
@@ -5779,7 +5601,7 @@ impl Builder1 {
         })
     }
 
-    /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:694 - `TopOpeBRepBuild_Builder::GtraceSPS()`
+    /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:701 - `TopOpeBRepBuild_Builder::GtraceSPS()`
     pub fn gtrace_sps(&self, iS: i32) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_Builder1_inherited_GtraceSPS(
@@ -5789,7 +5611,7 @@ impl Builder1 {
         })
     }
 
-    /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:703 - `TopOpeBRepBuild_Builder::GdumpSHASETreset()`
+    /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:709 - `TopOpeBRepBuild_Builder::GdumpSHASETreset()`
     pub fn gdump_shase_treset(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_Builder1_inherited_GdumpSHASETreset(
@@ -5798,7 +5620,7 @@ impl Builder1 {
         })
     }
 
-    /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:705 - `TopOpeBRepBuild_Builder::GdumpSHASETindex()`
+    /// Inherited: **Source:** `TopOpeBRepBuild_Builder.hxx`:711 - `TopOpeBRepBuild_Builder::GdumpSHASETindex()`
     pub fn gdump_shase_tindex(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_Builder1_inherited_GdumpSHASETindex(
@@ -5812,7 +5634,7 @@ impl Builder1 {
 // From TopOpeBRepBuild_BuilderON.hxx
 // ========================
 
-/// **Source:** `TopOpeBRepBuild_BuilderON.hxx`:32 - `TopOpeBRepBuild_BuilderON`
+/// **Source:** `TopOpeBRepBuild_BuilderON.hxx`:33 - `TopOpeBRepBuild_BuilderON`
 pub use crate::ffi_types::TopOpeBRepBuild_BuilderON as BuilderON;
 
 unsafe impl crate::CppDeletable for BuilderON {
@@ -5824,7 +5646,7 @@ unsafe impl crate::CppDeletable for BuilderON {
 }
 
 impl BuilderON {
-    /// **Source:** `TopOpeBRepBuild_BuilderON.hxx`:37 - `TopOpeBRepBuild_BuilderON::TopOpeBRepBuild_BuilderON()`
+    /// **Source:** `TopOpeBRepBuild_BuilderON.hxx`:38 - `TopOpeBRepBuild_BuilderON::TopOpeBRepBuild_BuilderON()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -5833,26 +5655,26 @@ impl BuilderON {
         }
     }
 
-    /// **Source:** `TopOpeBRepBuild_BuilderON.hxx`:39 - `TopOpeBRepBuild_BuilderON::TopOpeBRepBuild_BuilderON()`
-    pub unsafe fn new_builderptr_shape_gtopoptr_listofshapeptr_wireedgesetptr(
+    /// **Source:** `TopOpeBRepBuild_BuilderON.hxx`:40 - `TopOpeBRepBuild_BuilderON::TopOpeBRepBuild_BuilderON()`
+    pub unsafe fn new_builderptr_shape_gtopoptr_list_shapeptr_wireedgesetptr(
         PB: &*mut Builder,
         F: &crate::topo_ds::Shape,
         PG: &*mut GTopo,
-        PLSclass: &*mut crate::ffi_types::TopoDS_ListOfShape,
+        PLSclass: &*mut crate::ffi_types::NCollection_List_TopoDS_Shape,
         PWES: &*mut WireEdgeSet,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKBool::TopOpeBRepBuild_BuilderON_ctor_builderptr_shape_gtopoptr_listofshapeptr_wireedgesetptr(PB, F, PG, PLSclass, PWES)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKBool::TopOpeBRepBuild_BuilderON_ctor_builderptr_shape_gtopoptr_list_shapeptr_wireedgesetptr(PB, F, PG, PLSclass, PWES)))
         }
     }
 
-    /// **Source:** `TopOpeBRepBuild_BuilderON.hxx`:45 - `TopOpeBRepBuild_BuilderON::Perform()`
+    /// **Source:** `TopOpeBRepBuild_BuilderON.hxx`:46 - `TopOpeBRepBuild_BuilderON::Perform()`
     pub unsafe fn perform(
         &mut self,
         PB: &*mut Builder,
         F: &crate::topo_ds::Shape,
         PG: &*mut GTopo,
-        PLSclass: &*mut crate::ffi_types::TopoDS_ListOfShape,
+        PLSclass: &*mut crate::ffi_types::NCollection_List_TopoDS_Shape,
         PWES: &*mut WireEdgeSet,
     ) {
         crate::check_void_result(unsafe {
@@ -5867,8 +5689,11 @@ impl BuilderON {
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_BuilderON.hxx`:51 - `TopOpeBRepBuild_BuilderON::GFillONCheckI()`
-    pub fn g_fill_on_check_i(&self, I: &crate::ffi_types::HandleTopOpeBRepDSInterference) -> bool {
+    /// **Source:** `TopOpeBRepBuild_BuilderON.hxx`:52 - `TopOpeBRepBuild_BuilderON::GFillONCheckI()`
+    pub fn g_fill_on_check_i(
+        &self,
+        I: &crate::ffi_types::Handle_TopOpeBRepDS_Interference,
+    ) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_BuilderON_g_fill_on_check_i(
                 self as *const Self,
@@ -5877,8 +5702,8 @@ impl BuilderON {
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_BuilderON.hxx`:53 - `TopOpeBRepBuild_BuilderON::GFillONPartsWES1()`
-    pub fn g_fill_on_parts_wes1(&mut self, I: &crate::ffi_types::HandleTopOpeBRepDSInterference) {
+    /// **Source:** `TopOpeBRepBuild_BuilderON.hxx`:54 - `TopOpeBRepBuild_BuilderON::GFillONPartsWES1()`
+    pub fn g_fill_on_parts_wes1(&mut self, I: &crate::ffi_types::Handle_TopOpeBRepDS_Interference) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_BuilderON_g_fill_on_parts_wes1(
                 self as *mut Self,
@@ -5887,10 +5712,10 @@ impl BuilderON {
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_BuilderON.hxx`:55 - `TopOpeBRepBuild_BuilderON::GFillONPartsWES2()`
+    /// **Source:** `TopOpeBRepBuild_BuilderON.hxx`:56 - `TopOpeBRepBuild_BuilderON::GFillONPartsWES2()`
     pub fn g_fill_on_parts_wes2(
         &mut self,
-        I: &crate::ffi_types::HandleTopOpeBRepDSInterference,
+        I: &crate::ffi_types::Handle_TopOpeBRepDS_Interference,
         EspON: &crate::topo_ds::Shape,
     ) {
         crate::check_void_result(unsafe {
@@ -5902,13 +5727,13 @@ impl BuilderON {
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_BuilderON.hxx`:58 - `TopOpeBRepBuild_BuilderON::Perform2d()`
+    /// **Source:** `TopOpeBRepBuild_BuilderON.hxx`:59 - `TopOpeBRepBuild_BuilderON::Perform2d()`
     pub unsafe fn perform2d(
         &mut self,
         PB: &*mut Builder,
         F: &crate::topo_ds::Shape,
         PG: &*mut GTopo,
-        PLSclass: &*mut crate::ffi_types::TopoDS_ListOfShape,
+        PLSclass: &*mut crate::ffi_types::NCollection_List_TopoDS_Shape,
         PWES: &*mut WireEdgeSet,
     ) {
         crate::check_void_result(unsafe {
@@ -5923,10 +5748,10 @@ impl BuilderON {
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_BuilderON.hxx`:64 - `TopOpeBRepBuild_BuilderON::GFillONParts2dWES2()`
+    /// **Source:** `TopOpeBRepBuild_BuilderON.hxx`:65 - `TopOpeBRepBuild_BuilderON::GFillONParts2dWES2()`
     pub fn g_fill_on_parts2d_wes2(
         &mut self,
-        I: &crate::ffi_types::HandleTopOpeBRepDSInterference,
+        I: &crate::ffi_types::Handle_TopOpeBRepDS_Interference,
         EspON: &crate::topo_ds::Shape,
     ) {
         crate::check_void_result(unsafe {
@@ -5960,8 +5785,8 @@ impl CompositeClassifier {
     /// **Source:** `TopOpeBRepBuild_CompositeClassifier.hxx`:37 - `TopOpeBRepBuild_CompositeClassifier::Compare()`
     pub fn compare(
         &mut self,
-        L1: &crate::ffi_types::HandleTopOpeBRepBuildLoop,
-        L2: &crate::ffi_types::HandleTopOpeBRepBuildLoop,
+        L1: &crate::ffi_types::Handle_TopOpeBRepBuild_Loop,
+        L2: &crate::ffi_types::Handle_TopOpeBRepBuild_Loop,
     ) -> crate::top_abs::State {
         crate::top_abs::State::try_from(crate::check_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_CompositeClassifier_compare(
@@ -5973,7 +5798,7 @@ impl CompositeClassifier {
         .unwrap()
     }
 
-    /// **Source:** `TopOpeBRepBuild_CompositeClassifier.hxx`:42 - `TopOpeBRepBuild_CompositeClassifier::CompareShapes()`
+    /// **Source:** `TopOpeBRepBuild_CompositeClassifier.hxx`:41 - `TopOpeBRepBuild_CompositeClassifier::CompareShapes()`
     /// classify shape <B1> with shape <B2>
     pub fn compare_shapes(
         &mut self,
@@ -5990,7 +5815,7 @@ impl CompositeClassifier {
         .unwrap()
     }
 
-    /// **Source:** `TopOpeBRepBuild_CompositeClassifier.hxx`:46 - `TopOpeBRepBuild_CompositeClassifier::CompareElementToShape()`
+    /// **Source:** `TopOpeBRepBuild_CompositeClassifier.hxx`:45 - `TopOpeBRepBuild_CompositeClassifier::CompareElementToShape()`
     /// classify element <E> with shape <B>
     pub fn compare_element_to_shape(
         &mut self,
@@ -6007,7 +5832,7 @@ impl CompositeClassifier {
         .unwrap()
     }
 
-    /// **Source:** `TopOpeBRepBuild_CompositeClassifier.hxx`:51 - `TopOpeBRepBuild_CompositeClassifier::ResetShape()`
+    /// **Source:** `TopOpeBRepBuild_CompositeClassifier.hxx`:50 - `TopOpeBRepBuild_CompositeClassifier::ResetShape()`
     /// prepare classification involving shape <B>
     /// calls ResetElement on first element of <B>
     pub fn reset_shape(&mut self, B: &crate::topo_ds::Shape) {
@@ -6019,7 +5844,7 @@ impl CompositeClassifier {
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_CompositeClassifier.hxx`:54 - `TopOpeBRepBuild_CompositeClassifier::ResetElement()`
+    /// **Source:** `TopOpeBRepBuild_CompositeClassifier.hxx`:53 - `TopOpeBRepBuild_CompositeClassifier::ResetElement()`
     /// prepare classification involving element <E>.
     pub fn reset_element(&mut self, E: &crate::topo_ds::Shape) {
         crate::check_void_result(unsafe {
@@ -6030,7 +5855,7 @@ impl CompositeClassifier {
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_CompositeClassifier.hxx`:59 - `TopOpeBRepBuild_CompositeClassifier::CompareElement()`
+    /// **Source:** `TopOpeBRepBuild_CompositeClassifier.hxx`:58 - `TopOpeBRepBuild_CompositeClassifier::CompareElement()`
     /// Add element <E> in the set of elements used in classification.
     /// Returns FALSE if the element <E> has been already added to the set of elements,
     /// otherwise returns TRUE.
@@ -6043,7 +5868,7 @@ impl CompositeClassifier {
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_CompositeClassifier.hxx`:63 - `TopOpeBRepBuild_CompositeClassifier::State()`
+    /// **Source:** `TopOpeBRepBuild_CompositeClassifier.hxx`:62 - `TopOpeBRepBuild_CompositeClassifier::State()`
     /// Returns state of classification of 2D point, defined by
     /// ResetElement, with the current set of elements, defined by Compare.
     pub fn state(&mut self) -> crate::top_abs::State {
@@ -6072,7 +5897,7 @@ impl CompositeClassifier {
 // From TopOpeBRepBuild_CorrectFace2d.hxx
 // ========================
 
-/// **Source:** `TopOpeBRepBuild_CorrectFace2d.hxx`:36 - `TopOpeBRepBuild_CorrectFace2d`
+/// **Source:** `TopOpeBRepBuild_CorrectFace2d.hxx`:38 - `TopOpeBRepBuild_CorrectFace2d`
 pub use crate::ffi_types::TopOpeBRepBuild_CorrectFace2d as CorrectFace2d;
 
 unsafe impl crate::CppDeletable for CorrectFace2d {
@@ -6084,7 +5909,7 @@ unsafe impl crate::CppDeletable for CorrectFace2d {
 }
 
 impl CorrectFace2d {
-    /// **Source:** `TopOpeBRepBuild_CorrectFace2d.hxx`:41 - `TopOpeBRepBuild_CorrectFace2d::TopOpeBRepBuild_CorrectFace2d()`
+    /// **Source:** `TopOpeBRepBuild_CorrectFace2d.hxx`:43 - `TopOpeBRepBuild_CorrectFace2d::TopOpeBRepBuild_CorrectFace2d()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -6093,18 +5918,18 @@ impl CorrectFace2d {
         }
     }
 
-    /// **Source:** `TopOpeBRepBuild_CorrectFace2d.hxx`:43 - `TopOpeBRepBuild_CorrectFace2d::TopOpeBRepBuild_CorrectFace2d()`
-    pub fn new_face_indexedmapoforientedshape_indexeddatamapofshapeshape(
+    /// **Source:** `TopOpeBRepBuild_CorrectFace2d.hxx`:45 - `TopOpeBRepBuild_CorrectFace2d::TopOpeBRepBuild_CorrectFace2d()`
+    pub fn new_face_imap_shape_idmap_shape_shape(
         aFace: &crate::topo_ds::Face,
-        anAvoidMap: &crate::ffi_types::TopTools_IndexedMapOfOrientedShape,
-        aMap: &mut crate::ffi_types::TopTools_IndexedDataMapOfShapeShape,
+        anAvoidMap: &crate::ffi_types::NCollection_IndexedMap_TopoDS_Shape,
+        aMap: &mut crate::ffi_types::NCollection_IndexedDataMap_TopoDS_Shape_TopoDS_Shape_TopTools_ShapeMapHasher,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKBool::TopOpeBRepBuild_CorrectFace2d_ctor_face_indexedmapoforientedshape_indexeddatamapofshapeshape(aFace, anAvoidMap, aMap)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKBool::TopOpeBRepBuild_CorrectFace2d_ctor_face_imap_shape_idmap_shape_shape(aFace, anAvoidMap, aMap)))
         }
     }
 
-    /// **Source:** `TopOpeBRepBuild_CorrectFace2d.hxx`:48 - `TopOpeBRepBuild_CorrectFace2d::Face()`
+    /// **Source:** `TopOpeBRepBuild_CorrectFace2d.hxx`:50 - `TopOpeBRepBuild_CorrectFace2d::Face()`
     pub fn face(&self) -> &crate::topo_ds::Face {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKBool::TopOpeBRepBuild_CorrectFace2d_face(
@@ -6113,21 +5938,21 @@ impl CorrectFace2d {
         }
     }
 
-    /// **Source:** `TopOpeBRepBuild_CorrectFace2d.hxx`:50 - `TopOpeBRepBuild_CorrectFace2d::Perform()`
+    /// **Source:** `TopOpeBRepBuild_CorrectFace2d.hxx`:52 - `TopOpeBRepBuild_CorrectFace2d::Perform()`
     pub fn perform(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_CorrectFace2d_perform(self as *mut Self)
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_CorrectFace2d.hxx`:52 - `TopOpeBRepBuild_CorrectFace2d::IsDone()`
+    /// **Source:** `TopOpeBRepBuild_CorrectFace2d.hxx`:54 - `TopOpeBRepBuild_CorrectFace2d::IsDone()`
     pub fn is_done(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_CorrectFace2d_is_done(self as *const Self)
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_CorrectFace2d.hxx`:54 - `TopOpeBRepBuild_CorrectFace2d::ErrorStatus()`
+    /// **Source:** `TopOpeBRepBuild_CorrectFace2d.hxx`:56 - `TopOpeBRepBuild_CorrectFace2d::ErrorStatus()`
     pub fn error_status(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_CorrectFace2d_error_status(
@@ -6136,7 +5961,7 @@ impl CorrectFace2d {
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_CorrectFace2d.hxx`:56 - `TopOpeBRepBuild_CorrectFace2d::CorrectedFace()`
+    /// **Source:** `TopOpeBRepBuild_CorrectFace2d.hxx`:58 - `TopOpeBRepBuild_CorrectFace2d::CorrectedFace()`
     pub fn corrected_face(&self) -> &crate::topo_ds::Face {
         unsafe {
             &*(crate::check_result(
@@ -6147,10 +5972,10 @@ impl CorrectFace2d {
         }
     }
 
-    /// **Source:** `TopOpeBRepBuild_CorrectFace2d.hxx`:58 - `TopOpeBRepBuild_CorrectFace2d::SetMapOfTrans2dInfo()`
+    /// **Source:** `TopOpeBRepBuild_CorrectFace2d.hxx`:60 - `TopOpeBRepBuild_CorrectFace2d::SetMapOfTrans2dInfo()`
     pub fn set_map_of_trans2d_info(
         &mut self,
-        aMap: &mut crate::ffi_types::TopTools_IndexedDataMapOfShapeShape,
+        aMap: &mut crate::ffi_types::NCollection_IndexedDataMap_TopoDS_Shape_TopoDS_Shape_TopTools_ShapeMapHasher,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_CorrectFace2d_set_map_of_trans2d_info(
@@ -6160,10 +5985,8 @@ impl CorrectFace2d {
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_CorrectFace2d.hxx`:60 - `TopOpeBRepBuild_CorrectFace2d::MapOfTrans2dInfo()`
-    pub fn map_of_trans2d_info(
-        &mut self,
-    ) -> &mut crate::ffi_types::TopTools_IndexedDataMapOfShapeShape {
+    /// **Source:** `TopOpeBRepBuild_CorrectFace2d.hxx`:64 - `TopOpeBRepBuild_CorrectFace2d::MapOfTrans2dInfo()`
+    pub fn map_of_trans2d_info(&mut self) -> &mut crate::ffi_types::NCollection_IndexedDataMap_TopoDS_Shape_TopoDS_Shape_TopTools_ShapeMapHasher{
         unsafe {
             &mut *(crate::check_result(
                 crate::ffi_extern_TKBool::TopOpeBRepBuild_CorrectFace2d_map_of_trans2d_info(
@@ -6173,7 +5996,7 @@ impl CorrectFace2d {
         }
     }
 
-    /// **Source:** `TopOpeBRepBuild_CorrectFace2d.hxx`:62 - `TopOpeBRepBuild_CorrectFace2d::GetP2dFL()`
+    /// **Source:** `TopOpeBRepBuild_CorrectFace2d.hxx`:66 - `TopOpeBRepBuild_CorrectFace2d::GetP2dFL()`
     pub fn get_p2d_fl(
         aFace: &crate::topo_ds::Face,
         anEdge: &crate::topo_ds::Edge,
@@ -6187,10 +6010,10 @@ impl CorrectFace2d {
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_CorrectFace2d.hxx`:67 - `TopOpeBRepBuild_CorrectFace2d::CheckList()`
+    /// **Source:** `TopOpeBRepBuild_CorrectFace2d.hxx`:71 - `TopOpeBRepBuild_CorrectFace2d::CheckList()`
     pub fn check_list(
         aFace: &crate::topo_ds::Face,
-        aHeadList: &mut crate::ffi_types::TopTools_ListOfShape,
+        aHeadList: &mut crate::ffi_types::NCollection_List_TopoDS_Shape,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_CorrectFace2d_check_list(aFace, aHeadList)
@@ -6349,7 +6172,7 @@ impl EdgeBuilder {
         }
     }
 
-    /// Inherited: **Source:** `TopOpeBRepBuild_Area1dBuilder.hxx`:48 - `TopOpeBRepBuild_Area1dBuilder::InitAreaBuilder()`
+    /// Inherited: **Source:** `TopOpeBRepBuild_Area1dBuilder.hxx`:49 - `TopOpeBRepBuild_Area1dBuilder::InitAreaBuilder()`
     pub fn init_area_builder(
         &mut self,
         LS: &mut LoopSet,
@@ -6366,55 +6189,7 @@ impl EdgeBuilder {
         })
     }
 
-    /// Inherited: **Source:** `TopOpeBRepBuild_Area1dBuilder.hxx`:53 - `TopOpeBRepBuild_Area1dBuilder::ADD_Loop_TO_LISTOFLoop()`
-    pub unsafe fn add_loop_to_listof_loop(
-        &self,
-        L: &crate::ffi_types::HandleTopOpeBRepBuildLoop,
-        LOL: &mut crate::ffi_types::TopOpeBRepBuild_ListOfLoop,
-        s: *mut std::ffi::c_void,
-    ) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKBool::TopOpeBRepBuild_EdgeBuilder_inherited_ADD_Loop_TO_LISTOFLoop(
-                self as *const Self,
-                L,
-                LOL,
-                s,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `TopOpeBRepBuild_Area1dBuilder.hxx`:58 - `TopOpeBRepBuild_Area1dBuilder::REM_Loop_FROM_LISTOFLoop()`
-    pub unsafe fn rem_loop_from_listof_loop(
-        &self,
-        ITLOL: &mut crate::ffi_types::TopOpeBRepBuild_ListIteratorOfListOfLoop,
-        LOL: &mut crate::ffi_types::TopOpeBRepBuild_ListOfLoop,
-        s: *mut std::ffi::c_void,
-    ) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKBool::TopOpeBRepBuild_EdgeBuilder_inherited_REM_Loop_FROM_LISTOFLoop(
-                self as *const Self,
-                ITLOL,
-                LOL,
-                s,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `TopOpeBRepBuild_Area1dBuilder.hxx`:63 - `TopOpeBRepBuild_Area1dBuilder::ADD_LISTOFLoop_TO_LISTOFLoop()`
-    pub unsafe fn add_listof_loop_to_listof_loop(
-        &self,
-        LOL1: &mut crate::ffi_types::TopOpeBRepBuild_ListOfLoop,
-        LOL2: &mut crate::ffi_types::TopOpeBRepBuild_ListOfLoop,
-        s: *mut std::ffi::c_void,
-        s1: *mut std::ffi::c_void,
-        s2: *mut std::ffi::c_void,
-    ) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKBool::TopOpeBRepBuild_EdgeBuilder_inherited_ADD_LISTOFLoop_TO_LISTOFLoop(self as *const Self, LOL1, LOL2, s, s1, s2)
-        })
-    }
-
-    /// Inherited: **Source:** `TopOpeBRepBuild_AreaBuilder.hxx`:74 - `TopOpeBRepBuild_AreaBuilder::InitArea()`
+    /// Inherited: **Source:** `TopOpeBRepBuild_AreaBuilder.hxx`:73 - `TopOpeBRepBuild_AreaBuilder::InitArea()`
     pub fn init_area(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_EdgeBuilder_inherited_InitArea(
@@ -6423,7 +6198,7 @@ impl EdgeBuilder {
         })
     }
 
-    /// Inherited: **Source:** `TopOpeBRepBuild_AreaBuilder.hxx`:76 - `TopOpeBRepBuild_AreaBuilder::MoreArea()`
+    /// Inherited: **Source:** `TopOpeBRepBuild_AreaBuilder.hxx`:75 - `TopOpeBRepBuild_AreaBuilder::MoreArea()`
     pub fn more_area(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_EdgeBuilder_inherited_MoreArea(
@@ -6432,7 +6207,7 @@ impl EdgeBuilder {
         })
     }
 
-    /// Inherited: **Source:** `TopOpeBRepBuild_AreaBuilder.hxx`:78 - `TopOpeBRepBuild_AreaBuilder::NextArea()`
+    /// Inherited: **Source:** `TopOpeBRepBuild_AreaBuilder.hxx`:77 - `TopOpeBRepBuild_AreaBuilder::NextArea()`
     pub fn next_area(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_EdgeBuilder_inherited_NextArea(
@@ -6441,7 +6216,7 @@ impl EdgeBuilder {
         })
     }
 
-    /// Inherited: **Source:** `TopOpeBRepBuild_AreaBuilder.hxx`:81 - `TopOpeBRepBuild_AreaBuilder::InitLoop()`
+    /// Inherited: **Source:** `TopOpeBRepBuild_AreaBuilder.hxx`:80 - `TopOpeBRepBuild_AreaBuilder::InitLoop()`
     pub fn init_loop(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_EdgeBuilder_inherited_InitLoop(
@@ -6450,7 +6225,7 @@ impl EdgeBuilder {
         })
     }
 
-    /// Inherited: **Source:** `TopOpeBRepBuild_AreaBuilder.hxx`:83 - `TopOpeBRepBuild_AreaBuilder::MoreLoop()`
+    /// Inherited: **Source:** `TopOpeBRepBuild_AreaBuilder.hxx`:82 - `TopOpeBRepBuild_AreaBuilder::MoreLoop()`
     pub fn more_loop(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_EdgeBuilder_inherited_MoreLoop(
@@ -6459,7 +6234,7 @@ impl EdgeBuilder {
         })
     }
 
-    /// Inherited: **Source:** `TopOpeBRepBuild_AreaBuilder.hxx`:85 - `TopOpeBRepBuild_AreaBuilder::NextLoop()`
+    /// Inherited: **Source:** `TopOpeBRepBuild_AreaBuilder.hxx`:84 - `TopOpeBRepBuild_AreaBuilder::NextLoop()`
     pub fn next_loop(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_EdgeBuilder_inherited_NextLoop(
@@ -6468,8 +6243,8 @@ impl EdgeBuilder {
         })
     }
 
-    /// Inherited: **Source:** `TopOpeBRepBuild_AreaBuilder.hxx`:88 - `TopOpeBRepBuild_AreaBuilder::Loop()`
-    pub fn loop_(&self) -> &crate::ffi_types::HandleTopOpeBRepBuildLoop {
+    /// Inherited: **Source:** `TopOpeBRepBuild_AreaBuilder.hxx`:87 - `TopOpeBRepBuild_AreaBuilder::Loop()`
+    pub fn loop_(&self) -> &crate::ffi_types::Handle_TopOpeBRepBuild_Loop {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKBool::TopOpeBRepBuild_EdgeBuilder_inherited_Loop(
@@ -6489,8 +6264,8 @@ impl EdgeBuilder {
 /// where the Loop is the composite topological object of the boundary,
 /// here wire or block of edges.
 /// The LoopSet gives an iteration on Loops.
-/// For each Loop  it indicates if it is on the boundary (wire) or if it
-/// results from  an interference (block of edges).
+/// For each Loop it indicates if it is on the boundary (wire) or if it
+/// results from an interference (block of edges).
 /// The result of the FaceAreaBuilder is an iteration on areas.
 /// An area is described by a set of Loops.
 pub use crate::ffi_types::TopOpeBRepBuild_FaceAreaBuilder as FaceAreaBuilder;
@@ -6536,7 +6311,7 @@ impl FaceAreaBuilder {
         Self::new_loopset_loopclassifier_bool(LS, LC, false)
     }
 
-    /// **Source:** `TopOpeBRepBuild_FaceAreaBuilder.hxx`:51 - `TopOpeBRepBuild_FaceAreaBuilder::InitFaceAreaBuilder()`
+    /// **Source:** `TopOpeBRepBuild_FaceAreaBuilder.hxx`:50 - `TopOpeBRepBuild_FaceAreaBuilder::InitFaceAreaBuilder()`
     pub fn init_face_area_builder(
         &mut self,
         LS: &mut LoopSet,
@@ -6598,7 +6373,7 @@ impl FaceAreaBuilder {
         })
     }
 
-    /// Inherited: **Source:** `TopOpeBRepBuild_AreaBuilder.hxx`:74 - `TopOpeBRepBuild_AreaBuilder::InitArea()`
+    /// Inherited: **Source:** `TopOpeBRepBuild_AreaBuilder.hxx`:73 - `TopOpeBRepBuild_AreaBuilder::InitArea()`
     pub fn init_area(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_FaceAreaBuilder_inherited_InitArea(
@@ -6607,7 +6382,7 @@ impl FaceAreaBuilder {
         })
     }
 
-    /// Inherited: **Source:** `TopOpeBRepBuild_AreaBuilder.hxx`:76 - `TopOpeBRepBuild_AreaBuilder::MoreArea()`
+    /// Inherited: **Source:** `TopOpeBRepBuild_AreaBuilder.hxx`:75 - `TopOpeBRepBuild_AreaBuilder::MoreArea()`
     pub fn more_area(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_FaceAreaBuilder_inherited_MoreArea(
@@ -6616,7 +6391,7 @@ impl FaceAreaBuilder {
         })
     }
 
-    /// Inherited: **Source:** `TopOpeBRepBuild_AreaBuilder.hxx`:78 - `TopOpeBRepBuild_AreaBuilder::NextArea()`
+    /// Inherited: **Source:** `TopOpeBRepBuild_AreaBuilder.hxx`:77 - `TopOpeBRepBuild_AreaBuilder::NextArea()`
     pub fn next_area(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_FaceAreaBuilder_inherited_NextArea(
@@ -6625,7 +6400,7 @@ impl FaceAreaBuilder {
         })
     }
 
-    /// Inherited: **Source:** `TopOpeBRepBuild_AreaBuilder.hxx`:81 - `TopOpeBRepBuild_AreaBuilder::InitLoop()`
+    /// Inherited: **Source:** `TopOpeBRepBuild_AreaBuilder.hxx`:80 - `TopOpeBRepBuild_AreaBuilder::InitLoop()`
     pub fn init_loop(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_FaceAreaBuilder_inherited_InitLoop(
@@ -6634,7 +6409,7 @@ impl FaceAreaBuilder {
         })
     }
 
-    /// Inherited: **Source:** `TopOpeBRepBuild_AreaBuilder.hxx`:83 - `TopOpeBRepBuild_AreaBuilder::MoreLoop()`
+    /// Inherited: **Source:** `TopOpeBRepBuild_AreaBuilder.hxx`:82 - `TopOpeBRepBuild_AreaBuilder::MoreLoop()`
     pub fn more_loop(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_FaceAreaBuilder_inherited_MoreLoop(
@@ -6643,7 +6418,7 @@ impl FaceAreaBuilder {
         })
     }
 
-    /// Inherited: **Source:** `TopOpeBRepBuild_AreaBuilder.hxx`:85 - `TopOpeBRepBuild_AreaBuilder::NextLoop()`
+    /// Inherited: **Source:** `TopOpeBRepBuild_AreaBuilder.hxx`:84 - `TopOpeBRepBuild_AreaBuilder::NextLoop()`
     pub fn next_loop(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_FaceAreaBuilder_inherited_NextLoop(
@@ -6652,8 +6427,8 @@ impl FaceAreaBuilder {
         })
     }
 
-    /// Inherited: **Source:** `TopOpeBRepBuild_AreaBuilder.hxx`:88 - `TopOpeBRepBuild_AreaBuilder::Loop()`
-    pub fn loop_(&self) -> &crate::ffi_types::HandleTopOpeBRepBuildLoop {
+    /// Inherited: **Source:** `TopOpeBRepBuild_AreaBuilder.hxx`:87 - `TopOpeBRepBuild_AreaBuilder::Loop()`
+    pub fn loop_(&self) -> &crate::ffi_types::Handle_TopOpeBRepBuild_Loop {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKBool::TopOpeBRepBuild_FaceAreaBuilder_inherited_Loop(
@@ -6662,51 +6437,13 @@ impl FaceAreaBuilder {
             ))
         }
     }
-
-    /// Inherited: **Source:** `TopOpeBRepBuild_AreaBuilder.hxx`:90 - `TopOpeBRepBuild_AreaBuilder::ADD_Loop_TO_LISTOFLoop()`
-    pub unsafe fn add_loop_to_listof_loop(
-        &self,
-        L: &crate::ffi_types::HandleTopOpeBRepBuildLoop,
-        LOL: &mut crate::ffi_types::TopOpeBRepBuild_ListOfLoop,
-        s: *mut std::ffi::c_void,
-    ) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKBool::TopOpeBRepBuild_FaceAreaBuilder_inherited_ADD_Loop_TO_LISTOFLoop(self as *const Self, L, LOL, s)
-        })
-    }
-
-    /// Inherited: **Source:** `TopOpeBRepBuild_AreaBuilder.hxx`:94 - `TopOpeBRepBuild_AreaBuilder::REM_Loop_FROM_LISTOFLoop()`
-    pub unsafe fn rem_loop_from_listof_loop(
-        &self,
-        ITLOL: &mut crate::ffi_types::TopOpeBRepBuild_ListIteratorOfListOfLoop,
-        LOL: &mut crate::ffi_types::TopOpeBRepBuild_ListOfLoop,
-        s: *mut std::ffi::c_void,
-    ) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKBool::TopOpeBRepBuild_FaceAreaBuilder_inherited_REM_Loop_FROM_LISTOFLoop(self as *const Self, ITLOL, LOL, s)
-        })
-    }
-
-    /// Inherited: **Source:** `TopOpeBRepBuild_AreaBuilder.hxx`:99 - `TopOpeBRepBuild_AreaBuilder::ADD_LISTOFLoop_TO_LISTOFLoop()`
-    pub unsafe fn add_listof_loop_to_listof_loop(
-        &self,
-        LOL1: &mut crate::ffi_types::TopOpeBRepBuild_ListOfLoop,
-        LOL2: &mut crate::ffi_types::TopOpeBRepBuild_ListOfLoop,
-        s: *mut std::ffi::c_void,
-        s1: *mut std::ffi::c_void,
-        s2: *mut std::ffi::c_void,
-    ) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKBool::TopOpeBRepBuild_FaceAreaBuilder_inherited_ADD_LISTOFLoop_TO_LISTOFLoop(self as *const Self, LOL1, LOL2, s, s1, s2)
-        })
-    }
 }
 
 // ========================
 // From TopOpeBRepBuild_FaceBuilder.hxx
 // ========================
 
-/// **Source:** `TopOpeBRepBuild_FaceBuilder.hxx`:36 - `TopOpeBRepBuild_FaceBuilder`
+/// **Source:** `TopOpeBRepBuild_FaceBuilder.hxx`:38 - `TopOpeBRepBuild_FaceBuilder`
 pub use crate::ffi_types::TopOpeBRepBuild_FaceBuilder as FaceBuilder;
 
 unsafe impl crate::CppDeletable for FaceBuilder {
@@ -6718,7 +6455,7 @@ unsafe impl crate::CppDeletable for FaceBuilder {
 }
 
 impl FaceBuilder {
-    /// **Source:** `TopOpeBRepBuild_FaceBuilder.hxx`:41 - `TopOpeBRepBuild_FaceBuilder::TopOpeBRepBuild_FaceBuilder()`
+    /// **Source:** `TopOpeBRepBuild_FaceBuilder.hxx`:43 - `TopOpeBRepBuild_FaceBuilder::TopOpeBRepBuild_FaceBuilder()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -6727,7 +6464,7 @@ impl FaceBuilder {
         }
     }
 
-    /// **Source:** `TopOpeBRepBuild_FaceBuilder.hxx`:45 - `TopOpeBRepBuild_FaceBuilder::TopOpeBRepBuild_FaceBuilder()`
+    /// **Source:** `TopOpeBRepBuild_FaceBuilder.hxx`:47 - `TopOpeBRepBuild_FaceBuilder::TopOpeBRepBuild_FaceBuilder()`
     /// Create a FaceBuilder to build the faces on
     /// the shapes (wires, blocks of edge) described by <LS>.
     pub fn new_wireedgeset_shape_bool(
@@ -6744,7 +6481,7 @@ impl FaceBuilder {
         }
     }
 
-    /// **Source:** `TopOpeBRepBuild_FaceBuilder.hxx`:45 - `TopOpeBRepBuild_FaceBuilder::TopOpeBRepBuild_FaceBuilder()`
+    /// **Source:** `TopOpeBRepBuild_FaceBuilder.hxx`:47 - `TopOpeBRepBuild_FaceBuilder::TopOpeBRepBuild_FaceBuilder()`
     /// Create a FaceBuilder to build the faces on
     /// the shapes (wires, blocks of edge) described by <LS>.
     pub fn new_wireedgeset_shape(
@@ -6754,7 +6491,7 @@ impl FaceBuilder {
         Self::new_wireedgeset_shape_bool(ES, F, false)
     }
 
-    /// **Source:** `TopOpeBRepBuild_FaceBuilder.hxx`:49 - `TopOpeBRepBuild_FaceBuilder::InitFaceBuilder()`
+    /// **Source:** `TopOpeBRepBuild_FaceBuilder.hxx`:51 - `TopOpeBRepBuild_FaceBuilder::InitFaceBuilder()`
     pub fn init_face_builder(
         &mut self,
         ES: &mut WireEdgeSet,
@@ -6771,15 +6508,15 @@ impl FaceBuilder {
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_FaceBuilder.hxx`:57 - `TopOpeBRepBuild_FaceBuilder::DetectUnclosedWire()`
-    /// Removes   are  non 3d-closed  wires.
-    /// Fills  up maps <mapVVsameG> and  <mapVon1Edge>,  in order to
+    /// **Source:** `TopOpeBRepBuild_FaceBuilder.hxx`:59 - `TopOpeBRepBuild_FaceBuilder::DetectUnclosedWire()`
+    /// Removes are non 3d-closed wires.
+    /// Fills up maps <mapVVsameG> and <mapVon1Edge>, in order to
     /// correct 3d-closed but unclosed (topologic connexity) wires.
     /// modifies myBlockBuilder
     pub fn detect_unclosed_wire(
         &mut self,
-        mapVVsameG: &mut crate::ffi_types::TopTools_IndexedDataMapOfShapeShape,
-        mapVon1Edge: &mut crate::ffi_types::TopTools_IndexedDataMapOfShapeShape,
+        mapVVsameG: &mut crate::ffi_types::NCollection_IndexedDataMap_TopoDS_Shape_TopoDS_Shape_TopTools_ShapeMapHasher,
+        mapVon1Edge: &mut crate::ffi_types::NCollection_IndexedDataMap_TopoDS_Shape_TopoDS_Shape_TopTools_ShapeMapHasher,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_FaceBuilder_detect_unclosed_wire(
@@ -6790,13 +6527,13 @@ impl FaceBuilder {
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_FaceBuilder.hxx`:62 - `TopOpeBRepBuild_FaceBuilder::CorrectGclosedWire()`
+    /// **Source:** `TopOpeBRepBuild_FaceBuilder.hxx`:65 - `TopOpeBRepBuild_FaceBuilder::CorrectGclosedWire()`
     /// Using the given maps, change the topology of the 3d-closed
     /// wires, in order to get closed wires.
     pub fn correct_gclosed_wire(
         &mut self,
-        mapVVref: &crate::ffi_types::TopTools_IndexedDataMapOfShapeShape,
-        mapVon1Edge: &crate::ffi_types::TopTools_IndexedDataMapOfShapeShape,
+        mapVVref: &crate::ffi_types::NCollection_IndexedDataMap_TopoDS_Shape_TopoDS_Shape_TopTools_ShapeMapHasher,
+        mapVon1Edge: &crate::ffi_types::NCollection_IndexedDataMap_TopoDS_Shape_TopoDS_Shape_TopTools_ShapeMapHasher,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_FaceBuilder_correct_gclosed_wire(
@@ -6807,14 +6544,14 @@ impl FaceBuilder {
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_FaceBuilder.hxx`:69 - `TopOpeBRepBuild_FaceBuilder::DetectPseudoInternalEdge()`
+    /// **Source:** `TopOpeBRepBuild_FaceBuilder.hxx`:74 - `TopOpeBRepBuild_FaceBuilder::DetectPseudoInternalEdge()`
     /// Removes edges appearing twice (FORWARD,REVERSED) with a bounding
     /// vertex not connected to any other edge.
     /// mapE contains edges found.
     /// modifies myBlockBuilder.
     pub fn detect_pseudo_internal_edge(
         &mut self,
-        mapE: &mut crate::ffi_types::TopTools_IndexedMapOfShape,
+        mapE: &mut crate::ffi_types::NCollection_IndexedMap_TopoDS_Shape_TopTools_ShapeMapHasher,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_FaceBuilder_detect_pseudo_internal_edge(
@@ -6824,7 +6561,7 @@ impl FaceBuilder {
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_FaceBuilder.hxx`:72 - `TopOpeBRepBuild_FaceBuilder::Face()`
+    /// **Source:** `TopOpeBRepBuild_FaceBuilder.hxx`:78 - `TopOpeBRepBuild_FaceBuilder::Face()`
     /// return myFace
     pub fn face(&self) -> &crate::topo_ds::Shape {
         unsafe {
@@ -6834,56 +6571,56 @@ impl FaceBuilder {
         }
     }
 
-    /// **Source:** `TopOpeBRepBuild_FaceBuilder.hxx`:74 - `TopOpeBRepBuild_FaceBuilder::InitFace()`
+    /// **Source:** `TopOpeBRepBuild_FaceBuilder.hxx`:80 - `TopOpeBRepBuild_FaceBuilder::InitFace()`
     pub fn init_face(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_FaceBuilder_init_face(self as *mut Self)
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_FaceBuilder.hxx`:76 - `TopOpeBRepBuild_FaceBuilder::MoreFace()`
+    /// **Source:** `TopOpeBRepBuild_FaceBuilder.hxx`:82 - `TopOpeBRepBuild_FaceBuilder::MoreFace()`
     pub fn more_face(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_FaceBuilder_more_face(self as *const Self)
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_FaceBuilder.hxx`:78 - `TopOpeBRepBuild_FaceBuilder::NextFace()`
+    /// **Source:** `TopOpeBRepBuild_FaceBuilder.hxx`:84 - `TopOpeBRepBuild_FaceBuilder::NextFace()`
     pub fn next_face(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_FaceBuilder_next_face(self as *mut Self)
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_FaceBuilder.hxx`:80 - `TopOpeBRepBuild_FaceBuilder::InitWire()`
+    /// **Source:** `TopOpeBRepBuild_FaceBuilder.hxx`:86 - `TopOpeBRepBuild_FaceBuilder::InitWire()`
     pub fn init_wire(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_FaceBuilder_init_wire(self as *mut Self)
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_FaceBuilder.hxx`:82 - `TopOpeBRepBuild_FaceBuilder::MoreWire()`
+    /// **Source:** `TopOpeBRepBuild_FaceBuilder.hxx`:88 - `TopOpeBRepBuild_FaceBuilder::MoreWire()`
     pub fn more_wire(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_FaceBuilder_more_wire(self as *const Self)
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_FaceBuilder.hxx`:84 - `TopOpeBRepBuild_FaceBuilder::NextWire()`
+    /// **Source:** `TopOpeBRepBuild_FaceBuilder.hxx`:90 - `TopOpeBRepBuild_FaceBuilder::NextWire()`
     pub fn next_wire(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_FaceBuilder_next_wire(self as *mut Self)
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_FaceBuilder.hxx`:86 - `TopOpeBRepBuild_FaceBuilder::IsOldWire()`
+    /// **Source:** `TopOpeBRepBuild_FaceBuilder.hxx`:92 - `TopOpeBRepBuild_FaceBuilder::IsOldWire()`
     pub fn is_old_wire(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_FaceBuilder_is_old_wire(self as *const Self)
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_FaceBuilder.hxx`:92 - `TopOpeBRepBuild_FaceBuilder::OldWire()`
+    /// **Source:** `TopOpeBRepBuild_FaceBuilder.hxx`:98 - `TopOpeBRepBuild_FaceBuilder::OldWire()`
     /// Returns current wire
     /// This wire may be :
     /// * an old wire OldWire(), which has not been reconstructed;
@@ -6896,7 +6633,7 @@ impl FaceBuilder {
         }
     }
 
-    /// **Source:** `TopOpeBRepBuild_FaceBuilder.hxx`:95 - `TopOpeBRepBuild_FaceBuilder::FindNextValidElement()`
+    /// **Source:** `TopOpeBRepBuild_FaceBuilder.hxx`:101 - `TopOpeBRepBuild_FaceBuilder::FindNextValidElement()`
     /// Iterates on myBlockIterator until finding a valid element
     pub fn find_next_valid_element(&mut self) {
         crate::check_void_result(unsafe {
@@ -6906,28 +6643,28 @@ impl FaceBuilder {
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_FaceBuilder.hxx`:97 - `TopOpeBRepBuild_FaceBuilder::InitEdge()`
+    /// **Source:** `TopOpeBRepBuild_FaceBuilder.hxx`:103 - `TopOpeBRepBuild_FaceBuilder::InitEdge()`
     pub fn init_edge(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_FaceBuilder_init_edge(self as *mut Self)
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_FaceBuilder.hxx`:99 - `TopOpeBRepBuild_FaceBuilder::MoreEdge()`
+    /// **Source:** `TopOpeBRepBuild_FaceBuilder.hxx`:105 - `TopOpeBRepBuild_FaceBuilder::MoreEdge()`
     pub fn more_edge(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_FaceBuilder_more_edge(self as *const Self)
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_FaceBuilder.hxx`:101 - `TopOpeBRepBuild_FaceBuilder::NextEdge()`
+    /// **Source:** `TopOpeBRepBuild_FaceBuilder.hxx`:107 - `TopOpeBRepBuild_FaceBuilder::NextEdge()`
     pub fn next_edge(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_FaceBuilder_next_edge(self as *mut Self)
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_FaceBuilder.hxx`:104 - `TopOpeBRepBuild_FaceBuilder::Edge()`
+    /// **Source:** `TopOpeBRepBuild_FaceBuilder.hxx`:110 - `TopOpeBRepBuild_FaceBuilder::Edge()`
     /// Returns current new edge of current new wire.
     pub fn edge(&self) -> &crate::topo_ds::Shape {
         unsafe {
@@ -6937,7 +6674,7 @@ impl FaceBuilder {
         }
     }
 
-    /// **Source:** `TopOpeBRepBuild_FaceBuilder.hxx`:106 - `TopOpeBRepBuild_FaceBuilder::EdgeConnexity()`
+    /// **Source:** `TopOpeBRepBuild_FaceBuilder.hxx`:112 - `TopOpeBRepBuild_FaceBuilder::EdgeConnexity()`
     pub fn edge_connexity(&self, E: &crate::topo_ds::Shape) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_FaceBuilder_edge_connexity(
@@ -6947,7 +6684,7 @@ impl FaceBuilder {
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_FaceBuilder.hxx`:108 - `TopOpeBRepBuild_FaceBuilder::AddEdgeWire()`
+    /// **Source:** `TopOpeBRepBuild_FaceBuilder.hxx`:114 - `TopOpeBRepBuild_FaceBuilder::AddEdgeWire()`
     pub fn add_edge_wire(&self, E: &crate::topo_ds::Shape, W: &mut crate::topo_ds::Shape) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_FaceBuilder_add_edge_wire(
@@ -6963,7 +6700,7 @@ impl FaceBuilder {
 // From TopOpeBRepBuild_FuseFace.hxx
 // ========================
 
-/// **Source:** `TopOpeBRepBuild_FuseFace.hxx`:27 - `TopOpeBRepBuild_FuseFace`
+/// **Source:** `TopOpeBRepBuild_FuseFace.hxx`:28 - `TopOpeBRepBuild_FuseFace`
 pub use crate::ffi_types::TopOpeBRepBuild_FuseFace as FuseFace;
 
 unsafe impl crate::CppDeletable for FuseFace {
@@ -6975,7 +6712,7 @@ unsafe impl crate::CppDeletable for FuseFace {
 }
 
 impl FuseFace {
-    /// **Source:** `TopOpeBRepBuild_FuseFace.hxx`:32 - `TopOpeBRepBuild_FuseFace::TopOpeBRepBuild_FuseFace()`
+    /// **Source:** `TopOpeBRepBuild_FuseFace.hxx`:33 - `TopOpeBRepBuild_FuseFace::TopOpeBRepBuild_FuseFace()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -6984,26 +6721,26 @@ impl FuseFace {
         }
     }
 
-    /// **Source:** `TopOpeBRepBuild_FuseFace.hxx`:34 - `TopOpeBRepBuild_FuseFace::TopOpeBRepBuild_FuseFace()`
-    pub fn new_listofshape2_int(
-        LIF: &crate::ffi_types::TopTools_ListOfShape,
-        LRF: &crate::ffi_types::TopTools_ListOfShape,
+    /// **Source:** `TopOpeBRepBuild_FuseFace.hxx`:35 - `TopOpeBRepBuild_FuseFace::TopOpeBRepBuild_FuseFace()`
+    pub fn new_list_shape2_int(
+        LIF: &crate::ffi_types::NCollection_List_TopoDS_Shape,
+        LRF: &crate::ffi_types::NCollection_List_TopoDS_Shape,
         CXM: i32,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKBool::TopOpeBRepBuild_FuseFace_ctor_listofshape2_int(
+                crate::ffi_extern_TKBool::TopOpeBRepBuild_FuseFace_ctor_list_shape2_int(
                     LIF, LRF, CXM,
                 ),
             ))
         }
     }
 
-    /// **Source:** `TopOpeBRepBuild_FuseFace.hxx`:38 - `TopOpeBRepBuild_FuseFace::Init()`
+    /// **Source:** `TopOpeBRepBuild_FuseFace.hxx`:39 - `TopOpeBRepBuild_FuseFace::Init()`
     pub fn init(
         &mut self,
-        LIF: &crate::ffi_types::TopTools_ListOfShape,
-        LRF: &crate::ffi_types::TopTools_ListOfShape,
+        LIF: &crate::ffi_types::NCollection_List_TopoDS_Shape,
+        LRF: &crate::ffi_types::NCollection_List_TopoDS_Shape,
         CXM: i32,
     ) {
         crate::check_void_result(unsafe {
@@ -7016,50 +6753,50 @@ impl FuseFace {
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_FuseFace.hxx`:42 - `TopOpeBRepBuild_FuseFace::PerformFace()`
+    /// **Source:** `TopOpeBRepBuild_FuseFace.hxx`:43 - `TopOpeBRepBuild_FuseFace::PerformFace()`
     pub fn perform_face(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_FuseFace_perform_face(self as *mut Self)
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_FuseFace.hxx`:44 - `TopOpeBRepBuild_FuseFace::PerformEdge()`
+    /// **Source:** `TopOpeBRepBuild_FuseFace.hxx`:45 - `TopOpeBRepBuild_FuseFace::PerformEdge()`
     pub fn perform_edge(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_FuseFace_perform_edge(self as *mut Self)
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_FuseFace.hxx`:46 - `TopOpeBRepBuild_FuseFace::ClearEdge()`
+    /// **Source:** `TopOpeBRepBuild_FuseFace.hxx`:47 - `TopOpeBRepBuild_FuseFace::ClearEdge()`
     pub fn clear_edge(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_FuseFace_clear_edge(self as *mut Self)
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_FuseFace.hxx`:48 - `TopOpeBRepBuild_FuseFace::ClearVertex()`
+    /// **Source:** `TopOpeBRepBuild_FuseFace.hxx`:49 - `TopOpeBRepBuild_FuseFace::ClearVertex()`
     pub fn clear_vertex(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_FuseFace_clear_vertex(self as *mut Self)
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_FuseFace.hxx`:50 - `TopOpeBRepBuild_FuseFace::IsDone()`
+    /// **Source:** `TopOpeBRepBuild_FuseFace.hxx`:51 - `TopOpeBRepBuild_FuseFace::IsDone()`
     pub fn is_done(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_FuseFace_is_done(self as *const Self)
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_FuseFace.hxx`:52 - `TopOpeBRepBuild_FuseFace::IsModified()`
+    /// **Source:** `TopOpeBRepBuild_FuseFace.hxx`:53 - `TopOpeBRepBuild_FuseFace::IsModified()`
     pub fn is_modified(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_FuseFace_is_modified(self as *const Self)
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_FuseFace.hxx`:54 - `TopOpeBRepBuild_FuseFace::LFuseFace()`
-    pub fn l_fuse_face(&self) -> &crate::ffi_types::TopTools_ListOfShape {
+    /// **Source:** `TopOpeBRepBuild_FuseFace.hxx`:55 - `TopOpeBRepBuild_FuseFace::LFuseFace()`
+    pub fn l_fuse_face(&self) -> &crate::ffi_types::NCollection_List_TopoDS_Shape {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKBool::TopOpeBRepBuild_FuseFace_l_fuse_face(
                 self as *const Self,
@@ -7067,8 +6804,8 @@ impl FuseFace {
         }
     }
 
-    /// **Source:** `TopOpeBRepBuild_FuseFace.hxx`:56 - `TopOpeBRepBuild_FuseFace::LInternEdge()`
-    pub fn l_intern_edge(&self) -> &crate::ffi_types::TopTools_ListOfShape {
+    /// **Source:** `TopOpeBRepBuild_FuseFace.hxx`:57 - `TopOpeBRepBuild_FuseFace::LInternEdge()`
+    pub fn l_intern_edge(&self) -> &crate::ffi_types::NCollection_List_TopoDS_Shape {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKBool::TopOpeBRepBuild_FuseFace_l_intern_edge(
@@ -7078,8 +6815,8 @@ impl FuseFace {
         }
     }
 
-    /// **Source:** `TopOpeBRepBuild_FuseFace.hxx`:58 - `TopOpeBRepBuild_FuseFace::LExternEdge()`
-    pub fn l_extern_edge(&self) -> &crate::ffi_types::TopTools_ListOfShape {
+    /// **Source:** `TopOpeBRepBuild_FuseFace.hxx`:59 - `TopOpeBRepBuild_FuseFace::LExternEdge()`
+    pub fn l_extern_edge(&self) -> &crate::ffi_types::NCollection_List_TopoDS_Shape {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKBool::TopOpeBRepBuild_FuseFace_l_extern_edge(
@@ -7089,8 +6826,8 @@ impl FuseFace {
         }
     }
 
-    /// **Source:** `TopOpeBRepBuild_FuseFace.hxx`:60 - `TopOpeBRepBuild_FuseFace::LModifEdge()`
-    pub fn l_modif_edge(&self) -> &crate::ffi_types::TopTools_ListOfShape {
+    /// **Source:** `TopOpeBRepBuild_FuseFace.hxx`:61 - `TopOpeBRepBuild_FuseFace::LModifEdge()`
+    pub fn l_modif_edge(&self) -> &crate::ffi_types::NCollection_List_TopoDS_Shape {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKBool::TopOpeBRepBuild_FuseFace_l_modif_edge(
@@ -7100,8 +6837,8 @@ impl FuseFace {
         }
     }
 
-    /// **Source:** `TopOpeBRepBuild_FuseFace.hxx`:62 - `TopOpeBRepBuild_FuseFace::LInternVertex()`
-    pub fn l_intern_vertex(&self) -> &crate::ffi_types::TopTools_ListOfShape {
+    /// **Source:** `TopOpeBRepBuild_FuseFace.hxx`:63 - `TopOpeBRepBuild_FuseFace::LInternVertex()`
+    pub fn l_intern_vertex(&self) -> &crate::ffi_types::NCollection_List_TopoDS_Shape {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKBool::TopOpeBRepBuild_FuseFace_l_intern_vertex(
@@ -7111,8 +6848,8 @@ impl FuseFace {
         }
     }
 
-    /// **Source:** `TopOpeBRepBuild_FuseFace.hxx`:64 - `TopOpeBRepBuild_FuseFace::LExternVertex()`
-    pub fn l_extern_vertex(&self) -> &crate::ffi_types::TopTools_ListOfShape {
+    /// **Source:** `TopOpeBRepBuild_FuseFace.hxx`:65 - `TopOpeBRepBuild_FuseFace::LExternVertex()`
+    pub fn l_extern_vertex(&self) -> &crate::ffi_types::NCollection_List_TopoDS_Shape {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKBool::TopOpeBRepBuild_FuseFace_l_extern_vertex(
@@ -7122,8 +6859,8 @@ impl FuseFace {
         }
     }
 
-    /// **Source:** `TopOpeBRepBuild_FuseFace.hxx`:66 - `TopOpeBRepBuild_FuseFace::LModifVertex()`
-    pub fn l_modif_vertex(&self) -> &crate::ffi_types::TopTools_ListOfShape {
+    /// **Source:** `TopOpeBRepBuild_FuseFace.hxx`:67 - `TopOpeBRepBuild_FuseFace::LModifVertex()`
+    pub fn l_modif_vertex(&self) -> &crate::ffi_types::NCollection_List_TopoDS_Shape {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKBool::TopOpeBRepBuild_FuseFace_l_modif_vertex(
@@ -7534,14 +7271,14 @@ impl GTopo {
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_GTopo.hxx`:77 - `TopOpeBRepBuild_GTopo::Value()`
+    /// **Source:** `TopOpeBRepBuild_GTopo.hxx`:76 - `TopOpeBRepBuild_GTopo::Value()`
     pub fn value_int(&self, II: i32) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_GTopo_value_int(self as *const Self, II)
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_GTopo.hxx`:79 - `TopOpeBRepBuild_GTopo::ChangeValue()`
+    /// **Source:** `TopOpeBRepBuild_GTopo.hxx`:78 - `TopOpeBRepBuild_GTopo::ChangeValue()`
     pub fn change_value_int2_bool(&mut self, i1: i32, i2: i32, b: bool) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_GTopo_change_value_int2_bool(
@@ -7553,7 +7290,7 @@ impl GTopo {
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_GTopo.hxx`:83 - `TopOpeBRepBuild_GTopo::ChangeValue()`
+    /// **Source:** `TopOpeBRepBuild_GTopo.hxx`:80 - `TopOpeBRepBuild_GTopo::ChangeValue()`
     pub fn change_value_state2_bool(
         &mut self,
         s1: crate::top_abs::State,
@@ -7570,14 +7307,14 @@ impl GTopo {
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_GTopo.hxx`:87 - `TopOpeBRepBuild_GTopo::GIndex()`
+    /// **Source:** `TopOpeBRepBuild_GTopo.hxx`:82 - `TopOpeBRepBuild_GTopo::GIndex()`
     pub fn g_index(&self, S: crate::top_abs::State) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_GTopo_g_index(self as *const Self, S.into())
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_GTopo.hxx`:89 - `TopOpeBRepBuild_GTopo::GState()`
+    /// **Source:** `TopOpeBRepBuild_GTopo.hxx`:84 - `TopOpeBRepBuild_GTopo::GState()`
     pub fn g_state(&self, I: i32) -> crate::top_abs::State {
         crate::top_abs::State::try_from(crate::check_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_GTopo_g_state(self as *const Self, I)
@@ -7585,14 +7322,14 @@ impl GTopo {
         .unwrap()
     }
 
-    /// **Source:** `TopOpeBRepBuild_GTopo.hxx`:91 - `TopOpeBRepBuild_GTopo::Index()`
+    /// **Source:** `TopOpeBRepBuild_GTopo.hxx`:86 - `TopOpeBRepBuild_GTopo::Index()`
     pub fn index(&self, II: i32, i1: &mut i32, i2: &mut i32) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_GTopo_index(self as *const Self, II, i1, i2)
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_GTopo.hxx`:95 - `TopOpeBRepBuild_GTopo::DumpVal()`
+    /// **Source:** `TopOpeBRepBuild_GTopo.hxx`:88 - `TopOpeBRepBuild_GTopo::DumpVal()`
     pub fn dump_val(
         &self,
         OS: &mut crate::ffi_types::Standard_OStream,
@@ -7609,25 +7346,21 @@ impl GTopo {
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_GTopo.hxx`:99 - `TopOpeBRepBuild_GTopo::DumpType()`
+    /// **Source:** `TopOpeBRepBuild_GTopo.hxx`:92 - `TopOpeBRepBuild_GTopo::DumpType()`
     pub fn dump_type(&self, OS: &mut crate::ffi_types::Standard_OStream) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_GTopo_dump_type(self as *const Self, OS)
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_GTopo.hxx`:106 - `TopOpeBRepBuild_GTopo::Dump()`
-    pub unsafe fn dump(
-        &self,
-        OS: &mut crate::ffi_types::Standard_OStream,
-        s: *mut std::ffi::c_void,
-    ) {
+    /// **Source:** `TopOpeBRepBuild_GTopo.hxx`:99 - `TopOpeBRepBuild_GTopo::Dump()`
+    pub fn dump(&self, OS: &mut crate::ffi_types::Standard_OStream, s: *mut std::ffi::c_void) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_GTopo_dump(self as *const Self, OS, s)
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_GTopo.hxx`:108 - `TopOpeBRepBuild_GTopo::StatesON()`
+    /// **Source:** `TopOpeBRepBuild_GTopo.hxx`:101 - `TopOpeBRepBuild_GTopo::StatesON()`
     pub fn states_on(&self, s1: &mut crate::top_abs::State, s2: &mut crate::top_abs::State) {
         let mut s1_i32_: i32 = (*s1).into();
         let mut s2_i32_: i32 = (*s2).into();
@@ -7642,35 +7375,35 @@ impl GTopo {
         *s2 = crate::top_abs::State::try_from(s2_i32_).unwrap();
     }
 
-    /// **Source:** `TopOpeBRepBuild_GTopo.hxx`:110 - `TopOpeBRepBuild_GTopo::IsToReverse1()`
+    /// **Source:** `TopOpeBRepBuild_GTopo.hxx`:103 - `TopOpeBRepBuild_GTopo::IsToReverse1()`
     pub fn is_to_reverse1(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_GTopo_is_to_reverse1(self as *const Self)
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_GTopo.hxx`:112 - `TopOpeBRepBuild_GTopo::IsToReverse2()`
+    /// **Source:** `TopOpeBRepBuild_GTopo.hxx`:105 - `TopOpeBRepBuild_GTopo::IsToReverse2()`
     pub fn is_to_reverse2(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_GTopo_is_to_reverse2(self as *const Self)
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_GTopo.hxx`:114 - `TopOpeBRepBuild_GTopo::SetReverse()`
+    /// **Source:** `TopOpeBRepBuild_GTopo.hxx`:107 - `TopOpeBRepBuild_GTopo::SetReverse()`
     pub fn set_reverse(&mut self, rev: bool) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_GTopo_set_reverse(self as *mut Self, rev)
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_GTopo.hxx`:116 - `TopOpeBRepBuild_GTopo::Reverse()`
+    /// **Source:** `TopOpeBRepBuild_GTopo.hxx`:109 - `TopOpeBRepBuild_GTopo::Reverse()`
     pub fn reverse(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_GTopo_reverse(self as *const Self)
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_GTopo.hxx`:118 - `TopOpeBRepBuild_GTopo::CopyPermuted()`
+    /// **Source:** `TopOpeBRepBuild_GTopo.hxx`:111 - `TopOpeBRepBuild_GTopo::CopyPermuted()`
     pub fn copy_permuted(&self) -> crate::OwnedPtr<GTopo> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -7679,7 +7412,7 @@ impl GTopo {
         }
     }
 
-    /// **Source:** `TopOpeBRepBuild_GTopo.hxx`:101 - `TopOpeBRepBuild_GTopo::DumpSSB()`
+    /// **Source:** `TopOpeBRepBuild_GTopo.hxx`:94 - `TopOpeBRepBuild_GTopo::DumpSSB()`
     pub fn dump_ssb(
         OS: &mut crate::ffi_types::Standard_OStream,
         s1: crate::top_abs::State,
@@ -7696,13 +7429,13 @@ impl GTopo {
 // From TopOpeBRepBuild_HBuilder.hxx
 // ========================
 
-/// **Source:** `TopOpeBRepBuild_HBuilder.hxx`:46 - `TopOpeBRepBuild_HBuilder`
-/// The HBuilder  algorithm    constructs   topological
-/// objects  from   an    existing  topology  and  new
+/// **Source:** `TopOpeBRepBuild_HBuilder.hxx`:42 - `TopOpeBRepBuild_HBuilder`
+/// The HBuilder algorithm constructs topological
+/// objects from an existing topology and new
 /// geometries attached to the topology. It is used to
 /// construct the result of a topological operation;
-/// the existing  topologies are the parts involved in
-/// the  topological  operation and the new geometries
+/// the existing topologies are the parts involved in
+/// the topological operation and the new geometries
 /// are the intersection lines and points.
 pub use crate::ffi_types::TopOpeBRepBuild_HBuilder as HBuilder;
 
@@ -7715,7 +7448,7 @@ unsafe impl crate::CppDeletable for HBuilder {
 }
 
 impl HBuilder {
-    /// **Source:** `TopOpeBRepBuild_HBuilder.hxx`:50 - `TopOpeBRepBuild_HBuilder::TopOpeBRepBuild_HBuilder()`
+    /// **Source:** `TopOpeBRepBuild_HBuilder.hxx`:46 - `TopOpeBRepBuild_HBuilder::TopOpeBRepBuild_HBuilder()`
     pub fn new_buildtool(BT: &crate::top_ope_b_rep_ds::BuildTool) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -7724,7 +7457,7 @@ impl HBuilder {
         }
     }
 
-    /// **Source:** `TopOpeBRepBuild_HBuilder.hxx`:52 - `TopOpeBRepBuild_HBuilder::BuildTool()`
+    /// **Source:** `TopOpeBRepBuild_HBuilder.hxx`:48 - `TopOpeBRepBuild_HBuilder::BuildTool()`
     pub fn build_tool(&self) -> &crate::top_ope_b_rep_ds::BuildTool {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKBool::TopOpeBRepBuild_HBuilder_build_tool(
@@ -7733,24 +7466,24 @@ impl HBuilder {
         }
     }
 
-    /// **Source:** `TopOpeBRepBuild_HBuilder.hxx`:56 - `TopOpeBRepBuild_HBuilder::Perform()`
+    /// **Source:** `TopOpeBRepBuild_HBuilder.hxx`:52 - `TopOpeBRepBuild_HBuilder::Perform()`
     /// Stores the data structure <HDS>,
     /// Create shapes from the new geometries described in <HDS>.
     pub fn perform_handletopopebrepdshdatastructure(
         &mut self,
-        HDS: &crate::ffi_types::HandleTopOpeBRepDSHDataStructure,
+        HDS: &crate::ffi_types::Handle_TopOpeBRepDS_HDataStructure,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_HBuilder_perform_handletopopebrepdshdatastructure(self as *mut Self, HDS)
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_HBuilder.hxx`:60 - `TopOpeBRepBuild_HBuilder::Perform()`
+    /// **Source:** `TopOpeBRepBuild_HBuilder.hxx`:56 - `TopOpeBRepBuild_HBuilder::Perform()`
     /// Same as previous + evaluates if an operation performed on shapes S1,S2
     /// is a particular case.
     pub fn perform_handletopopebrepdshdatastructure_shape2(
         &mut self,
-        HDS: &crate::ffi_types::HandleTopOpeBRepDSHDataStructure,
+        HDS: &crate::ffi_types::Handle_TopOpeBRepDS_HDataStructure,
         S1: &crate::topo_ds::Shape,
         S2: &crate::topo_ds::Shape,
     ) {
@@ -7759,7 +7492,7 @@ impl HBuilder {
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_HBuilder.hxx`:66 - `TopOpeBRepBuild_HBuilder::Clear()`
+    /// **Source:** `TopOpeBRepBuild_HBuilder.hxx`:62 - `TopOpeBRepBuild_HBuilder::Clear()`
     /// Removes all split and merge already performed.
     /// Does NOT clear the handled DS.
     pub fn clear(&mut self) {
@@ -7768,11 +7501,11 @@ impl HBuilder {
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_HBuilder.hxx`:69 - `TopOpeBRepBuild_HBuilder::DataStructure()`
+    /// **Source:** `TopOpeBRepBuild_HBuilder.hxx`:65 - `TopOpeBRepBuild_HBuilder::DataStructure()`
     /// returns the DS handled by this builder
     pub fn data_structure(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleTopOpeBRepDSHDataStructure> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_TopOpeBRepDS_HDataStructure> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKBool::TopOpeBRepBuild_HBuilder_data_structure(
@@ -7782,7 +7515,7 @@ impl HBuilder {
         }
     }
 
-    /// **Source:** `TopOpeBRepBuild_HBuilder.hxx`:71 - `TopOpeBRepBuild_HBuilder::ChangeBuildTool()`
+    /// **Source:** `TopOpeBRepBuild_HBuilder.hxx`:67 - `TopOpeBRepBuild_HBuilder::ChangeBuildTool()`
     pub fn change_build_tool(&mut self) -> &mut crate::top_ope_b_rep_ds::BuildTool {
         unsafe {
             &mut *(crate::check_result(
@@ -7793,7 +7526,7 @@ impl HBuilder {
         }
     }
 
-    /// **Source:** `TopOpeBRepBuild_HBuilder.hxx`:75 - `TopOpeBRepBuild_HBuilder::MergeShapes()`
+    /// **Source:** `TopOpeBRepBuild_HBuilder.hxx`:71 - `TopOpeBRepBuild_HBuilder::MergeShapes()`
     /// Merges the two shapes <S1> and <S2> keeping the
     /// parts of states <TB1>,<TB2> in <S1>,<S2>.
     pub fn merge_shapes(
@@ -7814,8 +7547,8 @@ impl HBuilder {
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_HBuilder.hxx`:82 - `TopOpeBRepBuild_HBuilder::MergeSolids()`
-    /// Merges  the two solids <S1>   and <S2> keeping the
+    /// **Source:** `TopOpeBRepBuild_HBuilder.hxx`:78 - `TopOpeBRepBuild_HBuilder::MergeSolids()`
+    /// Merges the two solids <S1> and <S2> keeping the
     /// parts in each solid of states <TB1> and <TB2>.
     pub fn merge_solids(
         &mut self,
@@ -7835,8 +7568,8 @@ impl HBuilder {
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_HBuilder.hxx`:89 - `TopOpeBRepBuild_HBuilder::MergeSolid()`
-    /// Merges the solid <S>  keeping the
+    /// **Source:** `TopOpeBRepBuild_HBuilder.hxx`:85 - `TopOpeBRepBuild_HBuilder::MergeSolid()`
+    /// Merges the solid <S> keeping the
     /// parts of state <TB>.
     pub fn merge_solid(&mut self, S: &crate::topo_ds::Shape, TB: crate::top_abs::State) {
         crate::check_void_result(unsafe {
@@ -7848,7 +7581,7 @@ impl HBuilder {
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_HBuilder.hxx`:92 - `TopOpeBRepBuild_HBuilder::IsSplit()`
+    /// **Source:** `TopOpeBRepBuild_HBuilder.hxx`:88 - `TopOpeBRepBuild_HBuilder::IsSplit()`
     /// Returns True if the shape <S> has been split.
     pub fn is_split(&self, S: &crate::topo_ds::Shape, ToBuild: crate::top_abs::State) -> bool {
         crate::check_result(unsafe {
@@ -7860,7 +7593,7 @@ impl HBuilder {
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_HBuilder.hxx`:95 - `TopOpeBRepBuild_HBuilder::Splits()`
+    /// **Source:** `TopOpeBRepBuild_HBuilder.hxx`:91 - `TopOpeBRepBuild_HBuilder::Splits()`
     /// Returns the split parts <ToBuild> of shape <S>.
     ///
     /// # Safety
@@ -7872,7 +7605,7 @@ impl HBuilder {
         &self,
         S: &crate::topo_ds::Shape,
         ToBuild: crate::top_abs::State,
-    ) -> &crate::ffi_types::TopTools_ListOfShape {
+    ) -> &crate::ffi_types::NCollection_List_TopoDS_Shape {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKBool::TopOpeBRepBuild_HBuilder_splits(
                 self as *const Self,
@@ -7882,7 +7615,7 @@ impl HBuilder {
         }
     }
 
-    /// **Source:** `TopOpeBRepBuild_HBuilder.hxx`:99 - `TopOpeBRepBuild_HBuilder::IsMerged()`
+    /// **Source:** `TopOpeBRepBuild_HBuilder.hxx`:95 - `TopOpeBRepBuild_HBuilder::IsMerged()`
     /// Returns True if the shape <S> has been merged.
     pub fn is_merged(&self, S: &crate::topo_ds::Shape, ToBuild: crate::top_abs::State) -> bool {
         crate::check_result(unsafe {
@@ -7894,7 +7627,7 @@ impl HBuilder {
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_HBuilder.hxx`:103 - `TopOpeBRepBuild_HBuilder::Merged()`
+    /// **Source:** `TopOpeBRepBuild_HBuilder.hxx`:98 - `TopOpeBRepBuild_HBuilder::Merged()`
     /// Returns the merged parts <ToBuild> of shape <S>.
     ///
     /// # Safety
@@ -7906,7 +7639,7 @@ impl HBuilder {
         &self,
         S: &crate::topo_ds::Shape,
         ToBuild: crate::top_abs::State,
-    ) -> &crate::ffi_types::TopTools_ListOfShape {
+    ) -> &crate::ffi_types::NCollection_List_TopoDS_Shape {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKBool::TopOpeBRepBuild_HBuilder_merged(
                 self as *const Self,
@@ -7916,7 +7649,7 @@ impl HBuilder {
         }
     }
 
-    /// **Source:** `TopOpeBRepBuild_HBuilder.hxx`:107 - `TopOpeBRepBuild_HBuilder::NewVertex()`
+    /// **Source:** `TopOpeBRepBuild_HBuilder.hxx`:102 - `TopOpeBRepBuild_HBuilder::NewVertex()`
     /// Returns the vertex created on point <I>.
     pub fn new_vertex(&self, I: i32) -> &crate::topo_ds::Shape {
         unsafe {
@@ -7927,9 +7660,9 @@ impl HBuilder {
         }
     }
 
-    /// **Source:** `TopOpeBRepBuild_HBuilder.hxx`:110 - `TopOpeBRepBuild_HBuilder::NewEdges()`
+    /// **Source:** `TopOpeBRepBuild_HBuilder.hxx`:105 - `TopOpeBRepBuild_HBuilder::NewEdges()`
     /// Returns the edges created on curve <I>.
-    pub fn new_edges(&self, I: i32) -> &crate::ffi_types::TopTools_ListOfShape {
+    pub fn new_edges(&self, I: i32) -> &crate::ffi_types::NCollection_List_TopoDS_Shape {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKBool::TopOpeBRepBuild_HBuilder_new_edges(
                 self as *const Self,
@@ -7938,9 +7671,12 @@ impl HBuilder {
         }
     }
 
-    /// **Source:** `TopOpeBRepBuild_HBuilder.hxx`:113 - `TopOpeBRepBuild_HBuilder::ChangeNewEdges()`
+    /// **Source:** `TopOpeBRepBuild_HBuilder.hxx`:108 - `TopOpeBRepBuild_HBuilder::ChangeNewEdges()`
     /// Returns the edges created on curve <I>.
-    pub fn change_new_edges(&mut self, I: i32) -> &mut crate::ffi_types::TopTools_ListOfShape {
+    pub fn change_new_edges(
+        &mut self,
+        I: i32,
+    ) -> &mut crate::ffi_types::NCollection_List_TopoDS_Shape {
         unsafe {
             &mut *(crate::check_result(
                 crate::ffi_extern_TKBool::TopOpeBRepBuild_HBuilder_change_new_edges(
@@ -7951,9 +7687,9 @@ impl HBuilder {
         }
     }
 
-    /// **Source:** `TopOpeBRepBuild_HBuilder.hxx`:116 - `TopOpeBRepBuild_HBuilder::NewFaces()`
+    /// **Source:** `TopOpeBRepBuild_HBuilder.hxx`:111 - `TopOpeBRepBuild_HBuilder::NewFaces()`
     /// Returns the faces created on surface <I>.
-    pub fn new_faces(&self, I: i32) -> &crate::ffi_types::TopTools_ListOfShape {
+    pub fn new_faces(&self, I: i32) -> &crate::ffi_types::NCollection_List_TopoDS_Shape {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKBool::TopOpeBRepBuild_HBuilder_new_faces(
                 self as *const Self,
@@ -7962,8 +7698,8 @@ impl HBuilder {
         }
     }
 
-    /// **Source:** `TopOpeBRepBuild_HBuilder.hxx`:118 - `TopOpeBRepBuild_HBuilder::Section()`
-    pub fn section(&mut self) -> &crate::ffi_types::TopTools_ListOfShape {
+    /// **Source:** `TopOpeBRepBuild_HBuilder.hxx`:113 - `TopOpeBRepBuild_HBuilder::Section()`
+    pub fn section(&mut self) -> &crate::ffi_types::NCollection_List_TopoDS_Shape {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKBool::TopOpeBRepBuild_HBuilder_section(
                 self as *mut Self,
@@ -7971,7 +7707,7 @@ impl HBuilder {
         }
     }
 
-    /// **Source:** `TopOpeBRepBuild_HBuilder.hxx`:120 - `TopOpeBRepBuild_HBuilder::InitExtendedSectionDS()`
+    /// **Source:** `TopOpeBRepBuild_HBuilder.hxx`:115 - `TopOpeBRepBuild_HBuilder::InitExtendedSectionDS()`
     pub fn init_extended_section_ds(&mut self, k: i32) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_HBuilder_init_extended_section_ds(
@@ -7981,28 +7717,28 @@ impl HBuilder {
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_HBuilder.hxx`:122 - `TopOpeBRepBuild_HBuilder::InitSection()`
+    /// **Source:** `TopOpeBRepBuild_HBuilder.hxx`:117 - `TopOpeBRepBuild_HBuilder::InitSection()`
     pub fn init_section(&mut self, k: i32) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_HBuilder_init_section(self as *mut Self, k)
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_HBuilder.hxx`:124 - `TopOpeBRepBuild_HBuilder::MoreSection()`
+    /// **Source:** `TopOpeBRepBuild_HBuilder.hxx`:119 - `TopOpeBRepBuild_HBuilder::MoreSection()`
     pub fn more_section(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_HBuilder_more_section(self as *const Self)
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_HBuilder.hxx`:126 - `TopOpeBRepBuild_HBuilder::NextSection()`
+    /// **Source:** `TopOpeBRepBuild_HBuilder.hxx`:121 - `TopOpeBRepBuild_HBuilder::NextSection()`
     pub fn next_section(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_HBuilder_next_section(self as *mut Self)
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_HBuilder.hxx`:128 - `TopOpeBRepBuild_HBuilder::CurrentSection()`
+    /// **Source:** `TopOpeBRepBuild_HBuilder.hxx`:123 - `TopOpeBRepBuild_HBuilder::CurrentSection()`
     pub fn current_section(&self) -> &crate::topo_ds::Shape {
         unsafe {
             &*(crate::check_result(
@@ -8013,7 +7749,7 @@ impl HBuilder {
         }
     }
 
-    /// **Source:** `TopOpeBRepBuild_HBuilder.hxx`:130 - `TopOpeBRepBuild_HBuilder::GetDSEdgeFromSectEdge()`
+    /// **Source:** `TopOpeBRepBuild_HBuilder.hxx`:125 - `TopOpeBRepBuild_HBuilder::GetDSEdgeFromSectEdge()`
     pub fn get_ds_edge_from_sect_edge(&mut self, E: &crate::topo_ds::Shape, rank: i32) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_HBuilder_get_ds_edge_from_sect_edge(
@@ -8024,12 +7760,12 @@ impl HBuilder {
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_HBuilder.hxx`:133 - `TopOpeBRepBuild_HBuilder::GetDSFaceFromDSEdge()`
+    /// **Source:** `TopOpeBRepBuild_HBuilder.hxx`:127 - `TopOpeBRepBuild_HBuilder::GetDSFaceFromDSEdge()`
     pub fn get_ds_face_from_ds_edge(
         &mut self,
         indexEdg: i32,
         rank: i32,
-    ) -> &mut crate::ffi_types::TColStd_ListOfInteger {
+    ) -> &mut crate::ffi_types::NCollection_List_int {
         unsafe {
             &mut *(crate::check_result(
                 crate::ffi_extern_TKBool::TopOpeBRepBuild_HBuilder_get_ds_face_from_ds_edge(
@@ -8041,7 +7777,7 @@ impl HBuilder {
         }
     }
 
-    /// **Source:** `TopOpeBRepBuild_HBuilder.hxx`:136 - `TopOpeBRepBuild_HBuilder::GetDSCurveFromSectEdge()`
+    /// **Source:** `TopOpeBRepBuild_HBuilder.hxx`:129 - `TopOpeBRepBuild_HBuilder::GetDSCurveFromSectEdge()`
     pub fn get_ds_curve_from_sect_edge(&mut self, SectEdge: &crate::topo_ds::Shape) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_HBuilder_get_ds_curve_from_sect_edge(
@@ -8051,7 +7787,7 @@ impl HBuilder {
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_HBuilder.hxx`:138 - `TopOpeBRepBuild_HBuilder::GetDSFaceFromDSCurve()`
+    /// **Source:** `TopOpeBRepBuild_HBuilder.hxx`:131 - `TopOpeBRepBuild_HBuilder::GetDSFaceFromDSCurve()`
     pub fn get_ds_face_from_ds_curve(&mut self, indexCur: i32, rank: i32) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_HBuilder_get_ds_face_from_ds_curve(
@@ -8062,7 +7798,7 @@ impl HBuilder {
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_HBuilder.hxx`:141 - `TopOpeBRepBuild_HBuilder::GetDSPointFromNewVertex()`
+    /// **Source:** `TopOpeBRepBuild_HBuilder.hxx`:133 - `TopOpeBRepBuild_HBuilder::GetDSPointFromNewVertex()`
     pub fn get_ds_point_from_new_vertex(&mut self, NewVert: &crate::topo_ds::Shape) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_HBuilder_get_ds_point_from_new_vertex(
@@ -8072,7 +7808,7 @@ impl HBuilder {
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_HBuilder.hxx`:149 - `TopOpeBRepBuild_HBuilder::EdgeCurveAncestors()`
+    /// **Source:** `TopOpeBRepBuild_HBuilder.hxx`:141 - `TopOpeBRepBuild_HBuilder::EdgeCurveAncestors()`
     /// search for the couple of face F1,F2
     /// (from arguments of supra Perform(S1,S2,HDS)) method which
     /// intersection gives section edge E built on an intersection curve.
@@ -8097,10 +7833,10 @@ impl HBuilder {
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_HBuilder.hxx`:162 - `TopOpeBRepBuild_HBuilder::EdgeSectionAncestors()`
+    /// **Source:** `TopOpeBRepBuild_HBuilder.hxx`:154 - `TopOpeBRepBuild_HBuilder::EdgeSectionAncestors()`
     /// search for the couple of face F1,F2
     /// (from arguments of supra Perform(S1,S2,HDS)) method which
-    /// intersection gives section edge E built on at least one edge .
+    /// intersection gives section edge E built on at least one edge.
     /// returns True if F1,F2 have been valued.
     /// returns False if E is not a section edge built
     /// on at least one edge of S1 and/or S2.
@@ -8109,10 +7845,10 @@ impl HBuilder {
     pub fn edge_section_ancestors(
         &mut self,
         E: &crate::topo_ds::Shape,
-        LF1: &mut crate::ffi_types::TopTools_ListOfShape,
-        LF2: &mut crate::ffi_types::TopTools_ListOfShape,
-        LE1: &mut crate::ffi_types::TopTools_ListOfShape,
-        LE2: &mut crate::ffi_types::TopTools_ListOfShape,
+        LF1: &mut crate::ffi_types::NCollection_List_TopoDS_Shape,
+        LF2: &mut crate::ffi_types::NCollection_List_TopoDS_Shape,
+        LE1: &mut crate::ffi_types::NCollection_List_TopoDS_Shape,
+        LE2: &mut crate::ffi_types::NCollection_List_TopoDS_Shape,
     ) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_HBuilder_edge_section_ancestors(
@@ -8126,7 +7862,7 @@ impl HBuilder {
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_HBuilder.hxx`:169 - `TopOpeBRepBuild_HBuilder::IsKPart()`
+    /// **Source:** `TopOpeBRepBuild_HBuilder.hxx`:161 - `TopOpeBRepBuild_HBuilder::IsKPart()`
     /// Returns 0 is standard operation, != 0 if particular case
     pub fn is_k_part(&mut self) -> i32 {
         crate::check_result(unsafe {
@@ -8134,7 +7870,7 @@ impl HBuilder {
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_HBuilder.hxx`:171 - `TopOpeBRepBuild_HBuilder::MergeKPart()`
+    /// **Source:** `TopOpeBRepBuild_HBuilder.hxx`:163 - `TopOpeBRepBuild_HBuilder::MergeKPart()`
     pub fn merge_k_part(&mut self, TB1: crate::top_abs::State, TB2: crate::top_abs::State) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_HBuilder_merge_k_part(
@@ -8145,7 +7881,7 @@ impl HBuilder {
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_HBuilder.hxx`:173 - `TopOpeBRepBuild_HBuilder::ChangeBuilder()`
+    /// **Source:** `TopOpeBRepBuild_HBuilder.hxx`:165 - `TopOpeBRepBuild_HBuilder::ChangeBuilder()`
     pub fn change_builder(&mut self) -> &mut Builder {
         unsafe {
             &mut *(crate::check_result(
@@ -8156,8 +7892,8 @@ impl HBuilder {
         }
     }
 
-    /// **Source:** `TopOpeBRepBuild_HBuilder.hxx`:175 - `TopOpeBRepBuild_HBuilder::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `TopOpeBRepBuild_HBuilder.hxx`:167 - `TopOpeBRepBuild_HBuilder::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKBool::TopOpeBRepBuild_HBuilder_dynamic_type(
@@ -8167,7 +7903,7 @@ impl HBuilder {
         }
     }
 
-    /// **Source:** `TopOpeBRepBuild_HBuilder.hxx`:175 - `TopOpeBRepBuild_HBuilder::get_type_name()`
+    /// **Source:** `TopOpeBRepBuild_HBuilder.hxx`:167 - `TopOpeBRepBuild_HBuilder::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -8178,8 +7914,8 @@ impl HBuilder {
         .into_owned()
     }
 
-    /// **Source:** `TopOpeBRepBuild_HBuilder.hxx`:175 - `TopOpeBRepBuild_HBuilder::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    /// **Source:** `TopOpeBRepBuild_HBuilder.hxx`:167 - `TopOpeBRepBuild_HBuilder::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKBool::TopOpeBRepBuild_HBuilder_get_type_descriptor(),
@@ -8212,7 +7948,7 @@ impl HBuilder {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleTopOpeBRepBuildHBuilder> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_TopOpeBRepBuild_HBuilder> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKBool::TopOpeBRepBuild_HBuilder_to_handle(obj.into_raw()),
@@ -8220,8 +7956,8 @@ impl HBuilder {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_HBuilder_inherited_IsInstance(
                 self as *const Self,
@@ -8230,8 +7966,8 @@ impl HBuilder {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_HBuilder_inherited_IsKind(
                 self as *const Self,
@@ -8240,7 +7976,7 @@ impl HBuilder {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -8256,7 +7992,7 @@ impl HBuilder {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_HBuilder_inherited_GetRefCount(
@@ -8265,7 +8001,7 @@ impl HBuilder {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_HBuilder_inherited_IncrementRefCounter(
@@ -8274,7 +8010,7 @@ impl HBuilder {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_HBuilder_inherited_DecrementRefCounter(
@@ -8283,7 +8019,7 @@ impl HBuilder {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_HBuilder_inherited_Delete(self as *const Self)
@@ -8291,36 +8027,38 @@ impl HBuilder {
     }
 }
 
-pub use crate::ffi_types::HandleTopOpeBRepBuildHBuilder;
+pub use crate::ffi_types::Handle_TopOpeBRepBuild_HBuilder;
 
-unsafe impl crate::CppDeletable for HandleTopOpeBRepBuildHBuilder {
+unsafe impl crate::CppDeletable for Handle_TopOpeBRepBuild_HBuilder {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKBool::HandleTopOpeBRepBuildHBuilder_destructor(ptr);
+            crate::ffi_extern_TKBool::Handle_TopOpeBRepBuild_HBuilder_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleTopOpeBRepBuildHBuilder {
+unsafe impl crate::CppCopyable for Handle_TopOpeBRepBuild_HBuilder {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
         unsafe {
-            crate::check_result(crate::ffi_extern_TKBool::HandleTopOpeBRepBuildHBuilder_clone(ptr))
+            crate::check_result(crate::ffi_extern_TKBool::Handle_TopOpeBRepBuild_HBuilder_clone(
+                ptr,
+            ))
         }
     }
 }
 
-impl HandleTopOpeBRepBuildHBuilder {
+impl Handle_TopOpeBRepBuild_HBuilder {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
         unsafe {
-            crate::ffi_extern_TKBool::HandleTopOpeBRepBuildHBuilder_is_null(self as *const Self)
+            crate::ffi_extern_TKBool::Handle_TopOpeBRepBuild_HBuilder_is_null(self as *const Self)
         }
     }
 
     /// Dereference this Handle to access the underlying TopOpeBRepBuild_HBuilder
     pub fn get(&self) -> &crate::ffi_types::TopOpeBRepBuild_HBuilder {
         unsafe {
-            &*crate::check_result(crate::ffi_extern_TKBool::HandleTopOpeBRepBuildHBuilder_get(
+            &*crate::check_result(crate::ffi_extern_TKBool::Handle_TopOpeBRepBuild_HBuilder_get(
                 self as *const Self,
             ))
         }
@@ -8330,7 +8068,9 @@ impl HandleTopOpeBRepBuildHBuilder {
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::TopOpeBRepBuild_HBuilder {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi_extern_TKBool::HandleTopOpeBRepBuildHBuilder_get_mut(self as *mut Self),
+                crate::ffi_extern_TKBool::Handle_TopOpeBRepBuild_HBuilder_get_mut(
+                    self as *mut Self,
+                ),
             )
         }
     }
@@ -8338,13 +8078,9 @@ impl HandleTopOpeBRepBuildHBuilder {
     /// Upcast Handle<TopOpeBRepBuild_HBuilder> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKBool::HandleTopOpeBRepBuildHBuilder_to_HandleStandardTransient(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKBool::Handle_TopOpeBRepBuild_HBuilder_to_Handle_Standard_Transient(self as *const Self)))
         }
     }
 }
@@ -8353,7 +8089,7 @@ impl HandleTopOpeBRepBuildHBuilder {
 // From TopOpeBRepBuild_Loop.hxx
 // ========================
 
-/// **Source:** `TopOpeBRepBuild_Loop.hxx`:33 - `TopOpeBRepBuild_Loop`
+/// **Source:** `TopOpeBRepBuild_Loop.hxx`:30 - `TopOpeBRepBuild_Loop`
 /// a Loop is an existing shape (Shell,Wire) or a set
 /// of shapes (Faces,Edges) which are connex.
 /// a set of connex shape is represented by a BlockIterator
@@ -8368,7 +8104,7 @@ unsafe impl crate::CppDeletable for Loop {
 }
 
 impl Loop {
-    /// **Source:** `TopOpeBRepBuild_Loop.hxx`:37 - `TopOpeBRepBuild_Loop::TopOpeBRepBuild_Loop()`
+    /// **Source:** `TopOpeBRepBuild_Loop.hxx`:34 - `TopOpeBRepBuild_Loop::TopOpeBRepBuild_Loop()`
     pub fn new_shape(S: &crate::topo_ds::Shape) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -8377,7 +8113,7 @@ impl Loop {
         }
     }
 
-    /// **Source:** `TopOpeBRepBuild_Loop.hxx`:39 - `TopOpeBRepBuild_Loop::TopOpeBRepBuild_Loop()`
+    /// **Source:** `TopOpeBRepBuild_Loop.hxx`:36 - `TopOpeBRepBuild_Loop::TopOpeBRepBuild_Loop()`
     pub fn new_blockiterator(BI: &BlockIterator) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -8386,14 +8122,14 @@ impl Loop {
         }
     }
 
-    /// **Source:** `TopOpeBRepBuild_Loop.hxx`:41 - `TopOpeBRepBuild_Loop::IsShape()`
+    /// **Source:** `TopOpeBRepBuild_Loop.hxx`:38 - `TopOpeBRepBuild_Loop::IsShape()`
     pub fn is_shape(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_Loop_is_shape(self as *const Self)
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_Loop.hxx`:43 - `TopOpeBRepBuild_Loop::Shape()`
+    /// **Source:** `TopOpeBRepBuild_Loop.hxx`:40 - `TopOpeBRepBuild_Loop::Shape()`
     pub fn shape(&self) -> &crate::topo_ds::Shape {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKBool::TopOpeBRepBuild_Loop_shape(
@@ -8402,7 +8138,7 @@ impl Loop {
         }
     }
 
-    /// **Source:** `TopOpeBRepBuild_Loop.hxx`:45 - `TopOpeBRepBuild_Loop::BlockIterator()`
+    /// **Source:** `TopOpeBRepBuild_Loop.hxx`:42 - `TopOpeBRepBuild_Loop::BlockIterator()`
     pub fn block_iterator(&self) -> &BlockIterator {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKBool::TopOpeBRepBuild_Loop_block_iterator(
@@ -8411,15 +8147,15 @@ impl Loop {
         }
     }
 
-    /// **Source:** `TopOpeBRepBuild_Loop.hxx`:47 - `TopOpeBRepBuild_Loop::Dump()`
+    /// **Source:** `TopOpeBRepBuild_Loop.hxx`:44 - `TopOpeBRepBuild_Loop::Dump()`
     pub fn dump(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_Loop_dump(self as *const Self)
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_Loop.hxx`:49 - `TopOpeBRepBuild_Loop::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `TopOpeBRepBuild_Loop.hxx`:46 - `TopOpeBRepBuild_Loop::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKBool::TopOpeBRepBuild_Loop_dynamic_type(
                 self as *const Self,
@@ -8427,7 +8163,7 @@ impl Loop {
         }
     }
 
-    /// **Source:** `TopOpeBRepBuild_Loop.hxx`:49 - `TopOpeBRepBuild_Loop::get_type_name()`
+    /// **Source:** `TopOpeBRepBuild_Loop.hxx`:46 - `TopOpeBRepBuild_Loop::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -8438,8 +8174,8 @@ impl Loop {
         .into_owned()
     }
 
-    /// **Source:** `TopOpeBRepBuild_Loop.hxx`:49 - `TopOpeBRepBuild_Loop::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    /// **Source:** `TopOpeBRepBuild_Loop.hxx`:46 - `TopOpeBRepBuild_Loop::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKBool::TopOpeBRepBuild_Loop_get_type_descriptor(),
@@ -8472,7 +8208,7 @@ impl Loop {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleTopOpeBRepBuildLoop> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_TopOpeBRepBuild_Loop> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKBool::TopOpeBRepBuild_Loop_to_handle(obj.into_raw()),
@@ -8480,8 +8216,8 @@ impl Loop {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_Loop_inherited_IsInstance(
                 self as *const Self,
@@ -8490,8 +8226,8 @@ impl Loop {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_Loop_inherited_IsKind(
                 self as *const Self,
@@ -8500,7 +8236,7 @@ impl Loop {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -8514,7 +8250,7 @@ impl Loop {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_Loop_inherited_GetRefCount(
@@ -8523,7 +8259,7 @@ impl Loop {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_Loop_inherited_IncrementRefCounter(
@@ -8532,7 +8268,7 @@ impl Loop {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_Loop_inherited_DecrementRefCounter(
@@ -8541,7 +8277,7 @@ impl Loop {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_Loop_inherited_Delete(self as *const Self)
@@ -8549,34 +8285,36 @@ impl Loop {
     }
 }
 
-pub use crate::ffi_types::HandleTopOpeBRepBuildLoop;
+pub use crate::ffi_types::Handle_TopOpeBRepBuild_Loop;
 
-unsafe impl crate::CppDeletable for HandleTopOpeBRepBuildLoop {
+unsafe impl crate::CppDeletable for Handle_TopOpeBRepBuild_Loop {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKBool::HandleTopOpeBRepBuildLoop_destructor(ptr);
+            crate::ffi_extern_TKBool::Handle_TopOpeBRepBuild_Loop_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleTopOpeBRepBuildLoop {
+unsafe impl crate::CppCopyable for Handle_TopOpeBRepBuild_Loop {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
         unsafe {
-            crate::check_result(crate::ffi_extern_TKBool::HandleTopOpeBRepBuildLoop_clone(ptr))
+            crate::check_result(crate::ffi_extern_TKBool::Handle_TopOpeBRepBuild_Loop_clone(ptr))
         }
     }
 }
 
-impl HandleTopOpeBRepBuildLoop {
+impl Handle_TopOpeBRepBuild_Loop {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
-        unsafe { crate::ffi_extern_TKBool::HandleTopOpeBRepBuildLoop_is_null(self as *const Self) }
+        unsafe {
+            crate::ffi_extern_TKBool::Handle_TopOpeBRepBuild_Loop_is_null(self as *const Self)
+        }
     }
 
     /// Dereference this Handle to access the underlying TopOpeBRepBuild_Loop
     pub fn get(&self) -> &crate::ffi_types::TopOpeBRepBuild_Loop {
         unsafe {
-            &*crate::check_result(crate::ffi_extern_TKBool::HandleTopOpeBRepBuildLoop_get(
+            &*crate::check_result(crate::ffi_extern_TKBool::Handle_TopOpeBRepBuild_Loop_get(
                 self as *const Self,
             ))
         }
@@ -8585,19 +8323,19 @@ impl HandleTopOpeBRepBuildLoop {
     /// Dereference this Handle to mutably access the underlying TopOpeBRepBuild_Loop
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::TopOpeBRepBuild_Loop {
         unsafe {
-            &mut *crate::check_result(crate::ffi_extern_TKBool::HandleTopOpeBRepBuildLoop_get_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKBool::Handle_TopOpeBRepBuild_Loop_get_mut(self as *mut Self),
+            )
         }
     }
 
     /// Upcast Handle<TopOpeBRepBuild_Loop> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKBool::HandleTopOpeBRepBuildLoop_to_HandleStandardTransient(
+                crate::ffi_extern_TKBool::Handle_TopOpeBRepBuild_Loop_to_Handle_Standard_Transient(
                     self as *const Self,
                 ),
             ))
@@ -8609,9 +8347,9 @@ impl HandleTopOpeBRepBuildLoop {
     /// Returns `None` if the handle does not point to a `TopOpeBRepBuild_Pave` (or subclass).
     pub fn downcast_to_pave(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleTopOpeBRepBuildPave>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_TopOpeBRepBuild_Pave>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKBool::HandleTopOpeBRepBuildLoop_downcast_to_HandleTopOpeBRepBuildPave(self as *const Self)
+            crate::ffi_extern_TKBool::Handle_TopOpeBRepBuild_Loop_downcast_to_Handle_TopOpeBRepBuild_Pave(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -8642,8 +8380,8 @@ impl LoopClassifier {
     /// Returns the state of loop <L1> compared with loop <L2>.
     pub fn compare(
         &mut self,
-        L1: &crate::ffi_types::HandleTopOpeBRepBuildLoop,
-        L2: &crate::ffi_types::HandleTopOpeBRepBuildLoop,
+        L1: &crate::ffi_types::Handle_TopOpeBRepBuild_Loop,
+        L2: &crate::ffi_types::Handle_TopOpeBRepBuild_Loop,
     ) -> crate::top_abs::State {
         crate::top_abs::State::try_from(crate::check_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_LoopClassifier_compare(
@@ -8681,17 +8419,6 @@ impl LoopSet {
         }
     }
 
-    /// **Source:** `TopOpeBRepBuild_LoopSet.hxx`:39 - `TopOpeBRepBuild_LoopSet::ChangeListOfLoop()`
-    pub fn change_list_of_loop(&mut self) -> &mut crate::ffi_types::TopOpeBRepBuild_ListOfLoop {
-        unsafe {
-            &mut *(crate::check_result(
-                crate::ffi_extern_TKBool::TopOpeBRepBuild_LoopSet_change_list_of_loop(
-                    self as *mut Self,
-                ),
-            ))
-        }
-    }
-
     /// **Source:** `TopOpeBRepBuild_LoopSet.hxx`:41 - `TopOpeBRepBuild_LoopSet::InitLoop()`
     pub fn init_loop(&mut self) {
         crate::check_void_result(unsafe {
@@ -8714,7 +8441,7 @@ impl LoopSet {
     }
 
     /// **Source:** `TopOpeBRepBuild_LoopSet.hxx`:47 - `TopOpeBRepBuild_LoopSet::Loop()`
-    pub fn loop_(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTopOpeBRepBuildLoop> {
+    pub fn loop_(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_TopOpeBRepBuild_Loop> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKBool::TopOpeBRepBuild_LoopSet_loop_(self as *const Self),
@@ -8723,11 +8450,17 @@ impl LoopSet {
     }
 }
 
+// ── Skipped symbols for LoopSet (1 total) ──
+// SKIPPED: **Source:** `TopOpeBRepBuild_LoopSet.hxx`:39 - `TopOpeBRepBuild_LoopSet::ChangeListOfLoop`
+//   Reason: has unbindable types: return: unresolved template type (NCollection_List<occ::handle<TopOpeBRepBuild_Loop>>&)
+//   // pub fn change_list_of_loop(&mut self) -> /* NCollection_List<occ::handle<TopOpeBRepBuild_Loop>>& */;
+//
+
 // ========================
 // From TopOpeBRepBuild_Pave.hxx
 // ========================
 
-/// **Source:** `TopOpeBRepBuild_Pave.hxx`:30 - `TopOpeBRepBuild_Pave`
+/// **Source:** `TopOpeBRepBuild_Pave.hxx`:27 - `TopOpeBRepBuild_Pave`
 pub use crate::ffi_types::TopOpeBRepBuild_Pave as Pave;
 
 unsafe impl crate::CppDeletable for Pave {
@@ -8739,7 +8472,7 @@ unsafe impl crate::CppDeletable for Pave {
 }
 
 impl Pave {
-    /// **Source:** `TopOpeBRepBuild_Pave.hxx`:37 - `TopOpeBRepBuild_Pave::TopOpeBRepBuild_Pave()`
+    /// **Source:** `TopOpeBRepBuild_Pave.hxx`:34 - `TopOpeBRepBuild_Pave::TopOpeBRepBuild_Pave()`
     /// V = vertex, P = parameter of vertex <V>
     /// bound = True if <V> is an old vertex
     /// bound = False if <V> is a new vertex
@@ -8755,7 +8488,7 @@ impl Pave {
         }
     }
 
-    /// **Source:** `TopOpeBRepBuild_Pave.hxx`:41 - `TopOpeBRepBuild_Pave::HasSameDomain()`
+    /// **Source:** `TopOpeBRepBuild_Pave.hxx`:36 - `TopOpeBRepBuild_Pave::HasSameDomain()`
     pub fn has_same_domain_bool(&mut self, b: bool) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_Pave_has_same_domain_bool(
@@ -8765,21 +8498,21 @@ impl Pave {
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_Pave.hxx`:43 - `TopOpeBRepBuild_Pave::SameDomain()`
+    /// **Source:** `TopOpeBRepBuild_Pave.hxx`:38 - `TopOpeBRepBuild_Pave::SameDomain()`
     pub fn same_domain_shape(&mut self, VSD: &crate::topo_ds::Shape) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_Pave_same_domain_shape(self as *mut Self, VSD)
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_Pave.hxx`:45 - `TopOpeBRepBuild_Pave::HasSameDomain()`
+    /// **Source:** `TopOpeBRepBuild_Pave.hxx`:40 - `TopOpeBRepBuild_Pave::HasSameDomain()`
     pub fn has_same_domain(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_Pave_has_same_domain(self as *const Self)
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_Pave.hxx`:47 - `TopOpeBRepBuild_Pave::SameDomain()`
+    /// **Source:** `TopOpeBRepBuild_Pave.hxx`:42 - `TopOpeBRepBuild_Pave::SameDomain()`
     pub fn same_domain(&self) -> &crate::topo_ds::Shape {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKBool::TopOpeBRepBuild_Pave_same_domain(
@@ -8788,7 +8521,7 @@ impl Pave {
         }
     }
 
-    /// **Source:** `TopOpeBRepBuild_Pave.hxx`:49 - `TopOpeBRepBuild_Pave::Vertex()`
+    /// **Source:** `TopOpeBRepBuild_Pave.hxx`:44 - `TopOpeBRepBuild_Pave::Vertex()`
     pub fn vertex(&self) -> &crate::topo_ds::Shape {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKBool::TopOpeBRepBuild_Pave_vertex(
@@ -8797,7 +8530,7 @@ impl Pave {
         }
     }
 
-    /// **Source:** `TopOpeBRepBuild_Pave.hxx`:51 - `TopOpeBRepBuild_Pave::ChangeVertex()`
+    /// **Source:** `TopOpeBRepBuild_Pave.hxx`:46 - `TopOpeBRepBuild_Pave::ChangeVertex()`
     pub fn change_vertex(&mut self) -> &mut crate::topo_ds::Shape {
         unsafe {
             &mut *(crate::check_result(
@@ -8806,21 +8539,21 @@ impl Pave {
         }
     }
 
-    /// **Source:** `TopOpeBRepBuild_Pave.hxx`:53 - `TopOpeBRepBuild_Pave::Parameter()`
+    /// **Source:** `TopOpeBRepBuild_Pave.hxx`:48 - `TopOpeBRepBuild_Pave::Parameter()`
     pub fn parameter(&self) -> f64 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_Pave_parameter(self as *const Self)
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_Pave.hxx`:55 - `TopOpeBRepBuild_Pave::Parameter()`
+    /// **Source:** `TopOpeBRepBuild_Pave.hxx`:50 - `TopOpeBRepBuild_Pave::Parameter()`
     pub fn parameter_real(&mut self, Par: f64) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_Pave_parameter_real(self as *mut Self, Par)
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_Pave.hxx`:57 - `TopOpeBRepBuild_Pave::InterferenceType()`
+    /// **Source:** `TopOpeBRepBuild_Pave.hxx`:52 - `TopOpeBRepBuild_Pave::InterferenceType()`
     pub fn interference_type(&mut self) -> &mut crate::top_ope_b_rep_ds::Kind {
         {
             let __val = crate::check_result(unsafe {
@@ -8830,14 +8563,14 @@ impl Pave {
         }
     }
 
-    /// **Source:** `TopOpeBRepBuild_Pave.hxx`:59 - `TopOpeBRepBuild_Pave::IsShape()`
+    /// **Source:** `TopOpeBRepBuild_Pave.hxx`:54 - `TopOpeBRepBuild_Pave::IsShape()`
     pub fn is_shape(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_Pave_is_shape(self as *const Self)
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_Pave.hxx`:61 - `TopOpeBRepBuild_Pave::Shape()`
+    /// **Source:** `TopOpeBRepBuild_Pave.hxx`:56 - `TopOpeBRepBuild_Pave::Shape()`
     pub fn shape(&self) -> &crate::topo_ds::Shape {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKBool::TopOpeBRepBuild_Pave_shape(
@@ -8846,15 +8579,15 @@ impl Pave {
         }
     }
 
-    /// **Source:** `TopOpeBRepBuild_Pave.hxx`:63 - `TopOpeBRepBuild_Pave::Dump()`
+    /// **Source:** `TopOpeBRepBuild_Pave.hxx`:58 - `TopOpeBRepBuild_Pave::Dump()`
     pub fn dump(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_Pave_dump(self as *const Self)
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_Pave.hxx`:65 - `TopOpeBRepBuild_Pave::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `TopOpeBRepBuild_Pave.hxx`:60 - `TopOpeBRepBuild_Pave::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKBool::TopOpeBRepBuild_Pave_dynamic_type(
                 self as *const Self,
@@ -8862,7 +8595,7 @@ impl Pave {
         }
     }
 
-    /// **Source:** `TopOpeBRepBuild_Pave.hxx`:65 - `TopOpeBRepBuild_Pave::get_type_name()`
+    /// **Source:** `TopOpeBRepBuild_Pave.hxx`:60 - `TopOpeBRepBuild_Pave::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -8873,8 +8606,8 @@ impl Pave {
         .into_owned()
     }
 
-    /// **Source:** `TopOpeBRepBuild_Pave.hxx`:65 - `TopOpeBRepBuild_Pave::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    /// **Source:** `TopOpeBRepBuild_Pave.hxx`:60 - `TopOpeBRepBuild_Pave::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKBool::TopOpeBRepBuild_Pave_get_type_descriptor(),
@@ -8929,7 +8662,7 @@ impl Pave {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleTopOpeBRepBuildPave> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_TopOpeBRepBuild_Pave> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKBool::TopOpeBRepBuild_Pave_to_handle(obj.into_raw()),
@@ -8937,7 +8670,7 @@ impl Pave {
         }
     }
 
-    /// Inherited: **Source:** `TopOpeBRepBuild_Loop.hxx`:45 - `TopOpeBRepBuild_Loop::BlockIterator()`
+    /// Inherited: **Source:** `TopOpeBRepBuild_Loop.hxx`:42 - `TopOpeBRepBuild_Loop::BlockIterator()`
     pub fn block_iterator(&self) -> &BlockIterator {
         unsafe {
             &*(crate::check_result(
@@ -8948,8 +8681,8 @@ impl Pave {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_Pave_inherited_IsInstance(
                 self as *const Self,
@@ -8958,8 +8691,8 @@ impl Pave {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_Pave_inherited_IsKind(
                 self as *const Self,
@@ -8968,7 +8701,7 @@ impl Pave {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -8982,7 +8715,7 @@ impl Pave {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_Pave_inherited_GetRefCount(
@@ -8991,7 +8724,7 @@ impl Pave {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_Pave_inherited_IncrementRefCounter(
@@ -9000,7 +8733,7 @@ impl Pave {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_Pave_inherited_DecrementRefCounter(
@@ -9009,7 +8742,7 @@ impl Pave {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_Pave_inherited_Delete(self as *const Self)
@@ -9017,34 +8750,36 @@ impl Pave {
     }
 }
 
-pub use crate::ffi_types::HandleTopOpeBRepBuildPave;
+pub use crate::ffi_types::Handle_TopOpeBRepBuild_Pave;
 
-unsafe impl crate::CppDeletable for HandleTopOpeBRepBuildPave {
+unsafe impl crate::CppDeletable for Handle_TopOpeBRepBuild_Pave {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKBool::HandleTopOpeBRepBuildPave_destructor(ptr);
+            crate::ffi_extern_TKBool::Handle_TopOpeBRepBuild_Pave_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleTopOpeBRepBuildPave {
+unsafe impl crate::CppCopyable for Handle_TopOpeBRepBuild_Pave {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
         unsafe {
-            crate::check_result(crate::ffi_extern_TKBool::HandleTopOpeBRepBuildPave_clone(ptr))
+            crate::check_result(crate::ffi_extern_TKBool::Handle_TopOpeBRepBuild_Pave_clone(ptr))
         }
     }
 }
 
-impl HandleTopOpeBRepBuildPave {
+impl Handle_TopOpeBRepBuild_Pave {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
-        unsafe { crate::ffi_extern_TKBool::HandleTopOpeBRepBuildPave_is_null(self as *const Self) }
+        unsafe {
+            crate::ffi_extern_TKBool::Handle_TopOpeBRepBuild_Pave_is_null(self as *const Self)
+        }
     }
 
     /// Dereference this Handle to access the underlying TopOpeBRepBuild_Pave
     pub fn get(&self) -> &crate::ffi_types::TopOpeBRepBuild_Pave {
         unsafe {
-            &*crate::check_result(crate::ffi_extern_TKBool::HandleTopOpeBRepBuildPave_get(
+            &*crate::check_result(crate::ffi_extern_TKBool::Handle_TopOpeBRepBuild_Pave_get(
                 self as *const Self,
             ))
         }
@@ -9053,30 +8788,26 @@ impl HandleTopOpeBRepBuildPave {
     /// Dereference this Handle to mutably access the underlying TopOpeBRepBuild_Pave
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::TopOpeBRepBuild_Pave {
         unsafe {
-            &mut *crate::check_result(crate::ffi_extern_TKBool::HandleTopOpeBRepBuildPave_get_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKBool::Handle_TopOpeBRepBuild_Pave_get_mut(self as *mut Self),
+            )
         }
     }
 
     /// Upcast Handle<TopOpeBRepBuild_Pave> to Handle<TopOpeBRepBuild_Loop>
-    pub fn to_handle_loop(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTopOpeBRepBuildLoop> {
+    pub fn to_handle_loop(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_TopOpeBRepBuild_Loop> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKBool::HandleTopOpeBRepBuildPave_to_HandleTopOpeBRepBuildLoop(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKBool::Handle_TopOpeBRepBuild_Pave_to_Handle_TopOpeBRepBuild_Loop(self as *const Self)))
         }
     }
 
     /// Upcast Handle<TopOpeBRepBuild_Pave> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKBool::HandleTopOpeBRepBuildPave_to_HandleStandardTransient(
+                crate::ffi_extern_TKBool::Handle_TopOpeBRepBuild_Pave_to_Handle_Standard_Transient(
                     self as *const Self,
                 ),
             ))
@@ -9123,8 +8854,8 @@ impl PaveClassifier {
     /// Returns state of vertex <L1> compared with <L2>.
     pub fn compare(
         &mut self,
-        L1: &crate::ffi_types::HandleTopOpeBRepBuildLoop,
-        L2: &crate::ffi_types::HandleTopOpeBRepBuildLoop,
+        L1: &crate::ffi_types::Handle_TopOpeBRepBuild_Loop,
+        L2: &crate::ffi_types::Handle_TopOpeBRepBuild_Loop,
     ) -> crate::top_abs::State {
         crate::top_abs::State::try_from(crate::check_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_PaveClassifier_compare(
@@ -9196,7 +8927,7 @@ impl PaveClassifier {
 // From TopOpeBRepBuild_PaveSet.hxx
 // ========================
 
-/// **Source:** `TopOpeBRepBuild_PaveSet.hxx`:33 - `TopOpeBRepBuild_PaveSet`
+/// **Source:** `TopOpeBRepBuild_PaveSet.hxx`:34 - `TopOpeBRepBuild_PaveSet`
 /// class providing an exploration of a set of vertices to build edges.
 /// It is similar to LoopSet from TopOpeBRepBuild where Loop is Pave.
 pub use crate::ffi_types::TopOpeBRepBuild_PaveSet as PaveSet;
@@ -9210,7 +8941,7 @@ unsafe impl crate::CppDeletable for PaveSet {
 }
 
 impl PaveSet {
-    /// **Source:** `TopOpeBRepBuild_PaveSet.hxx`:39 - `TopOpeBRepBuild_PaveSet::TopOpeBRepBuild_PaveSet()`
+    /// **Source:** `TopOpeBRepBuild_PaveSet.hxx`:40 - `TopOpeBRepBuild_PaveSet::TopOpeBRepBuild_PaveSet()`
     /// Create a Pave set on edge <E>. It contains <E> vertices.
     pub fn new_shape(E: &crate::topo_ds::Shape) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -9220,44 +8951,44 @@ impl PaveSet {
         }
     }
 
-    /// **Source:** `TopOpeBRepBuild_PaveSet.hxx`:41 - `TopOpeBRepBuild_PaveSet::RemovePV()`
+    /// **Source:** `TopOpeBRepBuild_PaveSet.hxx`:42 - `TopOpeBRepBuild_PaveSet::RemovePV()`
     pub fn remove_pv(&mut self, B: bool) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_PaveSet_remove_pv(self as *mut Self, B)
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_PaveSet.hxx`:44 - `TopOpeBRepBuild_PaveSet::Append()`
+    /// **Source:** `TopOpeBRepBuild_PaveSet.hxx`:45 - `TopOpeBRepBuild_PaveSet::Append()`
     /// Add <PV> in the Pave set.
-    pub fn append(&mut self, PV: &crate::ffi_types::HandleTopOpeBRepBuildPave) {
+    pub fn append(&mut self, PV: &crate::ffi_types::Handle_TopOpeBRepBuild_Pave) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_PaveSet_append(self as *mut Self, PV)
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_PaveSet.hxx`:46 - `TopOpeBRepBuild_PaveSet::InitLoop()`
+    /// **Source:** `TopOpeBRepBuild_PaveSet.hxx`:47 - `TopOpeBRepBuild_PaveSet::InitLoop()`
     pub fn init_loop(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_PaveSet_init_loop(self as *mut Self)
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_PaveSet.hxx`:48 - `TopOpeBRepBuild_PaveSet::MoreLoop()`
+    /// **Source:** `TopOpeBRepBuild_PaveSet.hxx`:49 - `TopOpeBRepBuild_PaveSet::MoreLoop()`
     pub fn more_loop(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_PaveSet_more_loop(self as *const Self)
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_PaveSet.hxx`:50 - `TopOpeBRepBuild_PaveSet::NextLoop()`
+    /// **Source:** `TopOpeBRepBuild_PaveSet.hxx`:51 - `TopOpeBRepBuild_PaveSet::NextLoop()`
     pub fn next_loop(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_PaveSet_next_loop(self as *mut Self)
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_PaveSet.hxx`:52 - `TopOpeBRepBuild_PaveSet::Loop()`
-    pub fn loop_(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTopOpeBRepBuildLoop> {
+    /// **Source:** `TopOpeBRepBuild_PaveSet.hxx`:53 - `TopOpeBRepBuild_PaveSet::Loop()`
+    pub fn loop_(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_TopOpeBRepBuild_Loop> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKBool::TopOpeBRepBuild_PaveSet_loop_(self as *const Self),
@@ -9265,7 +8996,7 @@ impl PaveSet {
         }
     }
 
-    /// **Source:** `TopOpeBRepBuild_PaveSet.hxx`:54 - `TopOpeBRepBuild_PaveSet::Edge()`
+    /// **Source:** `TopOpeBRepBuild_PaveSet.hxx`:55 - `TopOpeBRepBuild_PaveSet::Edge()`
     pub fn edge(&self) -> &crate::topo_ds::Edge {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKBool::TopOpeBRepBuild_PaveSet_edge(
@@ -9274,7 +9005,7 @@ impl PaveSet {
         }
     }
 
-    /// **Source:** `TopOpeBRepBuild_PaveSet.hxx`:56 - `TopOpeBRepBuild_PaveSet::HasEqualParameters()`
+    /// **Source:** `TopOpeBRepBuild_PaveSet.hxx`:57 - `TopOpeBRepBuild_PaveSet::HasEqualParameters()`
     pub fn has_equal_parameters(&mut self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_PaveSet_has_equal_parameters(
@@ -9283,27 +9014,17 @@ impl PaveSet {
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_PaveSet.hxx`:58 - `TopOpeBRepBuild_PaveSet::EqualParameters()`
+    /// **Source:** `TopOpeBRepBuild_PaveSet.hxx`:59 - `TopOpeBRepBuild_PaveSet::EqualParameters()`
     pub fn equal_parameters(&self) -> f64 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_PaveSet_equal_parameters(self as *const Self)
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_PaveSet.hxx`:60 - `TopOpeBRepBuild_PaveSet::ClosedVertices()`
+    /// **Source:** `TopOpeBRepBuild_PaveSet.hxx`:61 - `TopOpeBRepBuild_PaveSet::ClosedVertices()`
     pub fn closed_vertices(&mut self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_PaveSet_closed_vertices(self as *mut Self)
-        })
-    }
-
-    /// **Source:** `TopOpeBRepBuild_PaveSet.hxx`:62 - `TopOpeBRepBuild_PaveSet::SortPave()`
-    pub fn sort_pave(
-        Lin: &crate::ffi_types::TopOpeBRepBuild_ListOfPave,
-        Lout: &mut crate::ffi_types::TopOpeBRepBuild_ListOfPave,
-    ) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKBool::TopOpeBRepBuild_PaveSet_sort_pave(Lin, Lout)
         })
     }
 
@@ -9328,18 +9049,13 @@ impl PaveSet {
             )
         }
     }
-
-    /// Inherited: **Source:** `TopOpeBRepBuild_LoopSet.hxx`:39 - `TopOpeBRepBuild_LoopSet::ChangeListOfLoop()`
-    pub fn change_list_of_loop(&mut self) -> &mut crate::ffi_types::TopOpeBRepBuild_ListOfLoop {
-        unsafe {
-            &mut *(crate::check_result(
-                crate::ffi_extern_TKBool::TopOpeBRepBuild_PaveSet_inherited_ChangeListOfLoop(
-                    self as *mut Self,
-                ),
-            ))
-        }
-    }
 }
+
+// ── Skipped symbols for PaveSet (1 total) ──
+// SKIPPED: **Source:** `TopOpeBRepBuild_PaveSet.hxx`:63 - `TopOpeBRepBuild_PaveSet::SortPave`
+//   Reason: has unbindable types: param 'Lin': unresolved template type (NCollection_List<occ::handle<TopOpeBRepBuild_Pave>> const&); param 'Lout': unresolved template type (NCollection_List<occ::handle<TopOpeBRepBuild_Pave>>&)
+//   // pub fn sort_pave(Lin: /* NCollection_List<occ::handle<TopOpeBRepBuild_Pave>> const& */, Lout: /* NCollection_List<occ::handle<TopOpeBRepBuild_Pave>>& */);
+//
 
 // ========================
 // From TopOpeBRepBuild_ShapeListOfShape.hxx
@@ -9377,13 +9093,13 @@ impl ShapeListOfShape {
     }
 
     /// **Source:** `TopOpeBRepBuild_ShapeListOfShape.hxx`:37 - `TopOpeBRepBuild_ShapeListOfShape::TopOpeBRepBuild_ShapeListOfShape()`
-    pub fn new_shape_listofshape(
+    pub fn new_shape_list_shape(
         S: &crate::topo_ds::Shape,
-        L: &crate::ffi_types::TopTools_ListOfShape,
+        L: &crate::ffi_types::NCollection_List_TopoDS_Shape,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKBool::TopOpeBRepBuild_ShapeListOfShape_ctor_shape_listofshape(
+                crate::ffi_extern_TKBool::TopOpeBRepBuild_ShapeListOfShape_ctor_shape_list_shape(
                     S, L,
                 ),
             ))
@@ -9391,7 +9107,7 @@ impl ShapeListOfShape {
     }
 
     /// **Source:** `TopOpeBRepBuild_ShapeListOfShape.hxx`:40 - `TopOpeBRepBuild_ShapeListOfShape::List()`
-    pub fn list(&self) -> &crate::ffi_types::TopTools_ListOfShape {
+    pub fn list(&self) -> &crate::ffi_types::NCollection_List_TopoDS_Shape {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKBool::TopOpeBRepBuild_ShapeListOfShape_list(
@@ -9402,7 +9118,7 @@ impl ShapeListOfShape {
     }
 
     /// **Source:** `TopOpeBRepBuild_ShapeListOfShape.hxx`:42 - `TopOpeBRepBuild_ShapeListOfShape::ChangeList()`
-    pub fn change_list(&mut self) -> &mut crate::ffi_types::TopTools_ListOfShape {
+    pub fn change_list(&mut self) -> &mut crate::ffi_types::NCollection_List_TopoDS_Shape {
         unsafe {
             &mut *(crate::check_result(
                 crate::ffi_extern_TKBool::TopOpeBRepBuild_ShapeListOfShape_change_list(
@@ -9439,20 +9155,20 @@ impl ShapeListOfShape {
 // From TopOpeBRepBuild_ShapeSet.hxx
 // ========================
 
-/// **Source:** `TopOpeBRepBuild_ShapeSet.hxx`:54 - `TopOpeBRepBuild_ShapeSet`
+/// **Source:** `TopOpeBRepBuild_ShapeSet.hxx`:55 - `TopOpeBRepBuild_ShapeSet`
 /// Auxiliary class providing an exploration of a set
 /// of shapes to build faces or solids.
 /// To build faces  : shapes are wires, elements are edges.
 /// To build solids : shapes are shells, elements are faces.
 /// The ShapeSet stores a list of shapes, a list of elements
 /// to start reconstructions, and a map to search neighbours.
-/// The map stores the connection  between elements through
+/// The map stores the connection between elements through
 /// subshapes of type <SubShapeType> given in constructor.
-/// <SubShapeType> is :
+/// <SubShapeType> is:
 /// - TopAbs_VERTEX to connect edges
 /// - TopAbs_EDGE to connect faces
 ///
-/// Signature needed by the BlockBuilder :
+/// Signature needed by the BlockBuilder:
 /// InitStartElements(me : in out)
 /// MoreStartElements(me) returns Boolean;
 /// NextStartElement(me : in out);
@@ -9472,9 +9188,9 @@ unsafe impl crate::CppDeletable for ShapeSet {
 }
 
 impl ShapeSet {
-    /// **Source:** `TopOpeBRepBuild_ShapeSet.hxx`:62 - `TopOpeBRepBuild_ShapeSet::TopOpeBRepBuild_ShapeSet()`
-    /// Creates a ShapeSet  in order to build shapes connected
-    /// by <SubShapeType>  shapes.
+    /// **Source:** `TopOpeBRepBuild_ShapeSet.hxx`:63 - `TopOpeBRepBuild_ShapeSet::TopOpeBRepBuild_ShapeSet()`
+    /// Creates a ShapeSet in order to build shapes connected
+    /// by <SubShapeType> shapes.
     /// <checkshape>:check (or not) the shapes, startelements, elements added.
     pub fn new_shapeenum_bool(
         SubShapeType: crate::top_abs::ShapeEnum,
@@ -9490,15 +9206,15 @@ impl ShapeSet {
         }
     }
 
-    /// **Source:** `TopOpeBRepBuild_ShapeSet.hxx`:62 - `TopOpeBRepBuild_ShapeSet::TopOpeBRepBuild_ShapeSet()`
-    /// Creates a ShapeSet  in order to build shapes connected
-    /// by <SubShapeType>  shapes.
+    /// **Source:** `TopOpeBRepBuild_ShapeSet.hxx`:63 - `TopOpeBRepBuild_ShapeSet::TopOpeBRepBuild_ShapeSet()`
+    /// Creates a ShapeSet in order to build shapes connected
+    /// by <SubShapeType> shapes.
     /// <checkshape>:check (or not) the shapes, startelements, elements added.
     pub fn new_shapeenum(SubShapeType: crate::top_abs::ShapeEnum) -> crate::OwnedPtr<Self> {
         Self::new_shapeenum_bool(SubShapeType, true)
     }
 
-    /// **Source:** `TopOpeBRepBuild_ShapeSet.hxx`:68 - `TopOpeBRepBuild_ShapeSet::AddShape()`
+    /// **Source:** `TopOpeBRepBuild_ShapeSet.hxx`:69 - `TopOpeBRepBuild_ShapeSet::AddShape()`
     /// Adds <S> to the list of shapes. (wires or shells).
     pub fn add_shape(&mut self, S: &crate::topo_ds::Shape) {
         crate::check_void_result(unsafe {
@@ -9506,7 +9222,7 @@ impl ShapeSet {
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_ShapeSet.hxx`:73 - `TopOpeBRepBuild_ShapeSet::AddStartElement()`
+    /// **Source:** `TopOpeBRepBuild_ShapeSet.hxx`:74 - `TopOpeBRepBuild_ShapeSet::AddStartElement()`
     /// (S is a face or edge)
     /// Add S to the list of starting shapes used for reconstructions.
     /// apply AddElement(S).
@@ -9519,7 +9235,7 @@ impl ShapeSet {
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_ShapeSet.hxx`:78 - `TopOpeBRepBuild_ShapeSet::AddElement()`
+    /// **Source:** `TopOpeBRepBuild_ShapeSet.hxx`:79 - `TopOpeBRepBuild_ShapeSet::AddElement()`
     /// for each subshape SE of S of type mySubShapeType
     /// - Add subshapes of S to the map of subshapes (mySubShapeMap)
     /// - Add S to the list of shape incident to subshapes of S.
@@ -9529,9 +9245,9 @@ impl ShapeSet {
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_ShapeSet.hxx`:81 - `TopOpeBRepBuild_ShapeSet::StartElements()`
+    /// **Source:** `TopOpeBRepBuild_ShapeSet.hxx`:82 - `TopOpeBRepBuild_ShapeSet::StartElements()`
     /// return a reference on myStartShapes
-    pub fn start_elements(&self) -> &crate::ffi_types::TopTools_ListOfShape {
+    pub fn start_elements(&self) -> &crate::ffi_types::NCollection_List_TopoDS_Shape {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKBool::TopOpeBRepBuild_ShapeSet_start_elements(
@@ -9541,28 +9257,28 @@ impl ShapeSet {
         }
     }
 
-    /// **Source:** `TopOpeBRepBuild_ShapeSet.hxx`:83 - `TopOpeBRepBuild_ShapeSet::InitShapes()`
+    /// **Source:** `TopOpeBRepBuild_ShapeSet.hxx`:84 - `TopOpeBRepBuild_ShapeSet::InitShapes()`
     pub fn init_shapes(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_ShapeSet_init_shapes(self as *mut Self)
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_ShapeSet.hxx`:85 - `TopOpeBRepBuild_ShapeSet::MoreShapes()`
+    /// **Source:** `TopOpeBRepBuild_ShapeSet.hxx`:86 - `TopOpeBRepBuild_ShapeSet::MoreShapes()`
     pub fn more_shapes(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_ShapeSet_more_shapes(self as *const Self)
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_ShapeSet.hxx`:87 - `TopOpeBRepBuild_ShapeSet::NextShape()`
+    /// **Source:** `TopOpeBRepBuild_ShapeSet.hxx`:88 - `TopOpeBRepBuild_ShapeSet::NextShape()`
     pub fn next_shape(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_ShapeSet_next_shape(self as *mut Self)
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_ShapeSet.hxx`:89 - `TopOpeBRepBuild_ShapeSet::Shape()`
+    /// **Source:** `TopOpeBRepBuild_ShapeSet.hxx`:90 - `TopOpeBRepBuild_ShapeSet::Shape()`
     pub fn shape(&self) -> &crate::topo_ds::Shape {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKBool::TopOpeBRepBuild_ShapeSet_shape(
@@ -9571,7 +9287,7 @@ impl ShapeSet {
         }
     }
 
-    /// **Source:** `TopOpeBRepBuild_ShapeSet.hxx`:91 - `TopOpeBRepBuild_ShapeSet::InitStartElements()`
+    /// **Source:** `TopOpeBRepBuild_ShapeSet.hxx`:92 - `TopOpeBRepBuild_ShapeSet::InitStartElements()`
     pub fn init_start_elements(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_ShapeSet_init_start_elements(
@@ -9580,7 +9296,7 @@ impl ShapeSet {
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_ShapeSet.hxx`:93 - `TopOpeBRepBuild_ShapeSet::MoreStartElements()`
+    /// **Source:** `TopOpeBRepBuild_ShapeSet.hxx`:94 - `TopOpeBRepBuild_ShapeSet::MoreStartElements()`
     pub fn more_start_elements(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_ShapeSet_more_start_elements(
@@ -9589,14 +9305,14 @@ impl ShapeSet {
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_ShapeSet.hxx`:95 - `TopOpeBRepBuild_ShapeSet::NextStartElement()`
+    /// **Source:** `TopOpeBRepBuild_ShapeSet.hxx`:96 - `TopOpeBRepBuild_ShapeSet::NextStartElement()`
     pub fn next_start_element(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_ShapeSet_next_start_element(self as *mut Self)
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_ShapeSet.hxx`:97 - `TopOpeBRepBuild_ShapeSet::StartElement()`
+    /// **Source:** `TopOpeBRepBuild_ShapeSet.hxx`:98 - `TopOpeBRepBuild_ShapeSet::StartElement()`
     pub fn start_element(&self) -> &crate::topo_ds::Shape {
         unsafe {
             &*(crate::check_result(
@@ -9607,28 +9323,28 @@ impl ShapeSet {
         }
     }
 
-    /// **Source:** `TopOpeBRepBuild_ShapeSet.hxx`:99 - `TopOpeBRepBuild_ShapeSet::InitNeighbours()`
+    /// **Source:** `TopOpeBRepBuild_ShapeSet.hxx`:100 - `TopOpeBRepBuild_ShapeSet::InitNeighbours()`
     pub fn init_neighbours(&mut self, S: &crate::topo_ds::Shape) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_ShapeSet_init_neighbours(self as *mut Self, S)
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_ShapeSet.hxx`:101 - `TopOpeBRepBuild_ShapeSet::MoreNeighbours()`
+    /// **Source:** `TopOpeBRepBuild_ShapeSet.hxx`:102 - `TopOpeBRepBuild_ShapeSet::MoreNeighbours()`
     pub fn more_neighbours(&mut self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_ShapeSet_more_neighbours(self as *mut Self)
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_ShapeSet.hxx`:103 - `TopOpeBRepBuild_ShapeSet::NextNeighbour()`
+    /// **Source:** `TopOpeBRepBuild_ShapeSet.hxx`:104 - `TopOpeBRepBuild_ShapeSet::NextNeighbour()`
     pub fn next_neighbour(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_ShapeSet_next_neighbour(self as *mut Self)
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_ShapeSet.hxx`:105 - `TopOpeBRepBuild_ShapeSet::Neighbour()`
+    /// **Source:** `TopOpeBRepBuild_ShapeSet.hxx`:106 - `TopOpeBRepBuild_ShapeSet::Neighbour()`
     pub fn neighbour(&self) -> &crate::topo_ds::Shape {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKBool::TopOpeBRepBuild_ShapeSet_neighbour(
@@ -9637,8 +9353,8 @@ impl ShapeSet {
         }
     }
 
-    /// **Source:** `TopOpeBRepBuild_ShapeSet.hxx`:107 - `TopOpeBRepBuild_ShapeSet::ChangeStartShapes()`
-    pub fn change_start_shapes(&mut self) -> &mut crate::ffi_types::TopTools_ListOfShape {
+    /// **Source:** `TopOpeBRepBuild_ShapeSet.hxx`:108 - `TopOpeBRepBuild_ShapeSet::ChangeStartShapes()`
+    pub fn change_start_shapes(&mut self) -> &mut crate::ffi_types::NCollection_List_TopoDS_Shape {
         unsafe {
             &mut *(crate::check_result(
                 crate::ffi_extern_TKBool::TopOpeBRepBuild_ShapeSet_change_start_shapes(
@@ -9648,7 +9364,7 @@ impl ShapeSet {
         }
     }
 
-    /// **Source:** `TopOpeBRepBuild_ShapeSet.hxx`:112 - `TopOpeBRepBuild_ShapeSet::FindNeighbours()`
+    /// **Source:** `TopOpeBRepBuild_ShapeSet.hxx`:113 - `TopOpeBRepBuild_ShapeSet::FindNeighbours()`
     /// Build the list of neighbour shapes of myCurrentShape
     /// (neighbour shapes and myCurrentShapes are of type t)
     /// Initialize myIncidentShapesIter on neighbour shapes.
@@ -9658,7 +9374,7 @@ impl ShapeSet {
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_ShapeSet.hxx`:114 - `TopOpeBRepBuild_ShapeSet::MakeNeighboursList()`
+    /// **Source:** `TopOpeBRepBuild_ShapeSet.hxx`:115 - `TopOpeBRepBuild_ShapeSet::MakeNeighboursList()`
     ///
     /// # Safety
     ///
@@ -9669,7 +9385,7 @@ impl ShapeSet {
         &mut self,
         E: &crate::topo_ds::Shape,
         V: &crate::topo_ds::Shape,
-    ) -> &crate::ffi_types::TopTools_ListOfShape {
+    ) -> &crate::ffi_types::NCollection_List_TopoDS_Shape {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKBool::TopOpeBRepBuild_ShapeSet_make_neighbours_list(
@@ -9681,7 +9397,7 @@ impl ShapeSet {
         }
     }
 
-    /// **Source:** `TopOpeBRepBuild_ShapeSet.hxx`:117 - `TopOpeBRepBuild_ShapeSet::MaxNumberSubShape()`
+    /// **Source:** `TopOpeBRepBuild_ShapeSet.hxx`:119 - `TopOpeBRepBuild_ShapeSet::MaxNumberSubShape()`
     pub fn max_number_sub_shape(&mut self, Shape: &crate::topo_ds::Shape) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_ShapeSet_max_number_sub_shape(
@@ -9691,7 +9407,7 @@ impl ShapeSet {
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_ShapeSet.hxx`:119 - `TopOpeBRepBuild_ShapeSet::CheckShape()`
+    /// **Source:** `TopOpeBRepBuild_ShapeSet.hxx`:121 - `TopOpeBRepBuild_ShapeSet::CheckShape()`
     pub fn check_shape_bool(&mut self, checkshape: bool) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_ShapeSet_check_shape_bool(
@@ -9701,14 +9417,14 @@ impl ShapeSet {
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_ShapeSet.hxx`:121 - `TopOpeBRepBuild_ShapeSet::CheckShape()`
+    /// **Source:** `TopOpeBRepBuild_ShapeSet.hxx`:123 - `TopOpeBRepBuild_ShapeSet::CheckShape()`
     pub fn check_shape(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_ShapeSet_check_shape(self as *const Self)
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_ShapeSet.hxx`:123 - `TopOpeBRepBuild_ShapeSet::CheckShape()`
+    /// **Source:** `TopOpeBRepBuild_ShapeSet.hxx`:125 - `TopOpeBRepBuild_ShapeSet::CheckShape()`
     pub fn check_shape_shape_bool(&mut self, S: &crate::topo_ds::Shape, checkgeom: bool) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_ShapeSet_check_shape_shape_bool(
@@ -9719,7 +9435,7 @@ impl ShapeSet {
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_ShapeSet.hxx`:126 - `TopOpeBRepBuild_ShapeSet::DumpName()`
+    /// **Source:** `TopOpeBRepBuild_ShapeSet.hxx`:127 - `TopOpeBRepBuild_ShapeSet::DumpName()`
     pub fn dump_name(
         &self,
         OS: &mut crate::ffi_types::Standard_OStream,
@@ -9734,7 +9450,7 @@ impl ShapeSet {
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_ShapeSet.hxx`:128 - `TopOpeBRepBuild_ShapeSet::DumpCheck()`
+    /// **Source:** `TopOpeBRepBuild_ShapeSet.hxx`:129 - `TopOpeBRepBuild_ShapeSet::DumpCheck()`
     pub fn dump_check(
         &self,
         OS: &mut crate::ffi_types::Standard_OStream,
@@ -9753,21 +9469,21 @@ impl ShapeSet {
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_ShapeSet.hxx`:133 - `TopOpeBRepBuild_ShapeSet::DumpSS()`
+    /// **Source:** `TopOpeBRepBuild_ShapeSet.hxx`:134 - `TopOpeBRepBuild_ShapeSet::DumpSS()`
     pub fn dump_ss(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_ShapeSet_dump_ss(self as *mut Self)
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_ShapeSet.hxx`:135 - `TopOpeBRepBuild_ShapeSet::DumpBB()`
+    /// **Source:** `TopOpeBRepBuild_ShapeSet.hxx`:136 - `TopOpeBRepBuild_ShapeSet::DumpBB()`
     pub fn dump_bb(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_ShapeSet_dump_bb(self as *mut Self)
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_ShapeSet.hxx`:137 - `TopOpeBRepBuild_ShapeSet::DEBName()`
+    /// **Source:** `TopOpeBRepBuild_ShapeSet.hxx`:138 - `TopOpeBRepBuild_ShapeSet::DEBName()`
     pub fn deb_name_asciistring(&mut self, N: &crate::t_collection::AsciiString) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_ShapeSet_deb_name_asciistring(
@@ -9777,7 +9493,7 @@ impl ShapeSet {
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_ShapeSet.hxx`:139 - `TopOpeBRepBuild_ShapeSet::DEBName()`
+    /// **Source:** `TopOpeBRepBuild_ShapeSet.hxx`:140 - `TopOpeBRepBuild_ShapeSet::DEBName()`
     pub fn deb_name(&self) -> &crate::t_collection::AsciiString {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKBool::TopOpeBRepBuild_ShapeSet_deb_name(
@@ -9786,21 +9502,21 @@ impl ShapeSet {
         }
     }
 
-    /// **Source:** `TopOpeBRepBuild_ShapeSet.hxx`:141 - `TopOpeBRepBuild_ShapeSet::DEBNumber()`
+    /// **Source:** `TopOpeBRepBuild_ShapeSet.hxx`:142 - `TopOpeBRepBuild_ShapeSet::DEBNumber()`
     pub fn deb_number_int(&mut self, I: i32) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_ShapeSet_deb_number_int(self as *mut Self, I)
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_ShapeSet.hxx`:143 - `TopOpeBRepBuild_ShapeSet::DEBNumber()`
+    /// **Source:** `TopOpeBRepBuild_ShapeSet.hxx`:144 - `TopOpeBRepBuild_ShapeSet::DEBNumber()`
     pub fn deb_number(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_ShapeSet_deb_number(self as *const Self)
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_ShapeSet.hxx`:145 - `TopOpeBRepBuild_ShapeSet::SName()`
+    /// **Source:** `TopOpeBRepBuild_ShapeSet.hxx`:146 - `TopOpeBRepBuild_ShapeSet::SName()`
     pub fn s_name_shape_asciistring2(
         &self,
         S: &crate::topo_ds::Shape,
@@ -9819,7 +9535,7 @@ impl ShapeSet {
         }
     }
 
-    /// **Source:** `TopOpeBRepBuild_ShapeSet.hxx`:150 - `TopOpeBRepBuild_ShapeSet::SNameori()`
+    /// **Source:** `TopOpeBRepBuild_ShapeSet.hxx`:151 - `TopOpeBRepBuild_ShapeSet::SNameori()`
     pub fn s_nameori_shape_asciistring2(
         &self,
         S: &crate::topo_ds::Shape,
@@ -9838,16 +9554,16 @@ impl ShapeSet {
         }
     }
 
-    /// **Source:** `TopOpeBRepBuild_ShapeSet.hxx`:155 - `TopOpeBRepBuild_ShapeSet::SName()`
-    pub fn s_name_listofshape_asciistring2(
+    /// **Source:** `TopOpeBRepBuild_ShapeSet.hxx`:156 - `TopOpeBRepBuild_ShapeSet::SName()`
+    pub fn s_name_list_shape_asciistring2(
         &self,
-        S: &crate::ffi_types::TopTools_ListOfShape,
+        S: &crate::ffi_types::NCollection_List_TopoDS_Shape,
         sb: &crate::t_collection::AsciiString,
         sa: &crate::t_collection::AsciiString,
     ) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKBool::TopOpeBRepBuild_ShapeSet_s_name_listofshape_asciistring2(
+                crate::ffi_extern_TKBool::TopOpeBRepBuild_ShapeSet_s_name_list_shape_asciistring2(
                     self as *const Self,
                     S,
                     sb,
@@ -9857,15 +9573,15 @@ impl ShapeSet {
         }
     }
 
-    /// **Source:** `TopOpeBRepBuild_ShapeSet.hxx`:160 - `TopOpeBRepBuild_ShapeSet::SNameori()`
-    pub fn s_nameori_listofshape_asciistring2(
+    /// **Source:** `TopOpeBRepBuild_ShapeSet.hxx`:161 - `TopOpeBRepBuild_ShapeSet::SNameori()`
+    pub fn s_nameori_list_shape_asciistring2(
         &self,
-        S: &crate::ffi_types::TopTools_ListOfShape,
+        S: &crate::ffi_types::NCollection_List_TopoDS_Shape,
         sb: &crate::t_collection::AsciiString,
         sa: &crate::t_collection::AsciiString,
     ) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKBool::TopOpeBRepBuild_ShapeSet_s_nameori_listofshape_asciistring2(self as *const Self, S, sb, sa)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKBool::TopOpeBRepBuild_ShapeSet_s_nameori_list_shape_asciistring2(self as *const Self, S, sb, sa)))
         }
     }
 }
@@ -9874,7 +9590,7 @@ impl ShapeSet {
 // From TopOpeBRepBuild_ShellFaceClassifier.hxx
 // ========================
 
-/// **Source:** `TopOpeBRepBuild_ShellFaceClassifier.hxx`:33 - `TopOpeBRepBuild_ShellFaceClassifier`
+/// **Source:** `TopOpeBRepBuild_ShellFaceClassifier.hxx`:34 - `TopOpeBRepBuild_ShellFaceClassifier`
 /// Classify faces and shells.
 /// shapes are Shells, Elements are Faces.
 pub use crate::ffi_types::TopOpeBRepBuild_ShellFaceClassifier as ShellFaceClassifier;
@@ -9888,7 +9604,7 @@ unsafe impl crate::CppDeletable for ShellFaceClassifier {
 }
 
 impl ShellFaceClassifier {
-    /// **Source:** `TopOpeBRepBuild_ShellFaceClassifier.hxx`:42 - `TopOpeBRepBuild_ShellFaceClassifier::TopOpeBRepBuild_ShellFaceClassifier()`
+    /// **Source:** `TopOpeBRepBuild_ShellFaceClassifier.hxx`:43 - `TopOpeBRepBuild_ShellFaceClassifier::TopOpeBRepBuild_ShellFaceClassifier()`
     /// Creates a classifier in 3D space, to compare :
     /// a face with a set of faces
     /// a shell with a set of faces
@@ -9901,14 +9617,14 @@ impl ShellFaceClassifier {
         }
     }
 
-    /// **Source:** `TopOpeBRepBuild_ShellFaceClassifier.hxx`:44 - `TopOpeBRepBuild_ShellFaceClassifier::Clear()`
+    /// **Source:** `TopOpeBRepBuild_ShellFaceClassifier.hxx`:45 - `TopOpeBRepBuild_ShellFaceClassifier::Clear()`
     pub fn clear(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_ShellFaceClassifier_clear(self as *mut Self)
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_ShellFaceClassifier.hxx`:47 - `TopOpeBRepBuild_ShellFaceClassifier::CompareShapes()`
+    /// **Source:** `TopOpeBRepBuild_ShellFaceClassifier.hxx`:48 - `TopOpeBRepBuild_ShellFaceClassifier::CompareShapes()`
     /// classify shell <B1> with shell <B2>
     pub fn compare_shapes(
         &mut self,
@@ -9925,7 +9641,7 @@ impl ShellFaceClassifier {
         .unwrap()
     }
 
-    /// **Source:** `TopOpeBRepBuild_ShellFaceClassifier.hxx`:50 - `TopOpeBRepBuild_ShellFaceClassifier::CompareElementToShape()`
+    /// **Source:** `TopOpeBRepBuild_ShellFaceClassifier.hxx`:52 - `TopOpeBRepBuild_ShellFaceClassifier::CompareElementToShape()`
     /// classify face <F> with shell <S>
     pub fn compare_element_to_shape(
         &mut self,
@@ -9942,7 +9658,7 @@ impl ShellFaceClassifier {
         .unwrap()
     }
 
-    /// **Source:** `TopOpeBRepBuild_ShellFaceClassifier.hxx`:54 - `TopOpeBRepBuild_ShellFaceClassifier::ResetShape()`
+    /// **Source:** `TopOpeBRepBuild_ShellFaceClassifier.hxx`:57 - `TopOpeBRepBuild_ShellFaceClassifier::ResetShape()`
     /// prepare classification involving shell <S>
     /// calls ResetElement on first face of <S>
     pub fn reset_shape(&mut self, S: &crate::topo_ds::Shape) {
@@ -9954,7 +9670,7 @@ impl ShellFaceClassifier {
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_ShellFaceClassifier.hxx`:58 - `TopOpeBRepBuild_ShellFaceClassifier::ResetElement()`
+    /// **Source:** `TopOpeBRepBuild_ShellFaceClassifier.hxx`:61 - `TopOpeBRepBuild_ShellFaceClassifier::ResetElement()`
     /// prepare classification involving face <F>
     /// define 3D point (later used in Compare()) on first vertex of face <F>.
     pub fn reset_element(&mut self, F: &crate::topo_ds::Shape) {
@@ -9966,7 +9682,7 @@ impl ShellFaceClassifier {
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_ShellFaceClassifier.hxx`:63 - `TopOpeBRepBuild_ShellFaceClassifier::CompareElement()`
+    /// **Source:** `TopOpeBRepBuild_ShellFaceClassifier.hxx`:66 - `TopOpeBRepBuild_ShellFaceClassifier::CompareElement()`
     /// Add the face <F> in the set of faces used in 3D point
     /// classification. Returns FALSE if the face <F> has been already
     /// added to the set of faces, otherwise returns TRUE.
@@ -9979,7 +9695,7 @@ impl ShellFaceClassifier {
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_ShellFaceClassifier.hxx`:67 - `TopOpeBRepBuild_ShellFaceClassifier::State()`
+    /// **Source:** `TopOpeBRepBuild_ShellFaceClassifier.hxx`:70 - `TopOpeBRepBuild_ShellFaceClassifier::State()`
     /// Returns state of classification of 3D point, defined by
     /// ResetElement, with the current set of faces, defined by Compare.
     pub fn state(&mut self) -> crate::top_abs::State {
@@ -10020,8 +9736,8 @@ impl ShellFaceClassifier {
     /// Inherited: **Source:** `TopOpeBRepBuild_CompositeClassifier.hxx`:37 - `TopOpeBRepBuild_CompositeClassifier::Compare()`
     pub fn compare(
         &mut self,
-        L1: &crate::ffi_types::HandleTopOpeBRepBuildLoop,
-        L2: &crate::ffi_types::HandleTopOpeBRepBuildLoop,
+        L1: &crate::ffi_types::Handle_TopOpeBRepBuild_Loop,
+        L2: &crate::ffi_types::Handle_TopOpeBRepBuild_Loop,
     ) -> crate::top_abs::State {
         crate::top_abs::State::try_from(crate::check_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_ShellFaceClassifier_inherited_Compare(
@@ -10038,7 +9754,7 @@ impl ShellFaceClassifier {
 // From TopOpeBRepBuild_ShellFaceSet.hxx
 // ========================
 
-/// **Source:** `TopOpeBRepBuild_ShellFaceSet.hxx`:35 - `TopOpeBRepBuild_ShellFaceSet`
+/// **Source:** `TopOpeBRepBuild_ShellFaceSet.hxx`:36 - `TopOpeBRepBuild_ShellFaceSet`
 /// a bound is a shell, a boundelement is a face.
 /// The ShapeSet stores :
 /// - a list of shell (bounds),
@@ -10055,7 +9771,7 @@ unsafe impl crate::CppDeletable for ShellFaceSet {
 }
 
 impl ShellFaceSet {
-    /// **Source:** `TopOpeBRepBuild_ShellFaceSet.hxx`:42 - `TopOpeBRepBuild_ShellFaceSet::TopOpeBRepBuild_ShellFaceSet()`
+    /// **Source:** `TopOpeBRepBuild_ShellFaceSet.hxx`:43 - `TopOpeBRepBuild_ShellFaceSet::TopOpeBRepBuild_ShellFaceSet()`
     /// Creates a ShellFaceSet to build blocks of faces
     /// connected by edges.
     pub fn new() -> crate::OwnedPtr<Self> {
@@ -10066,16 +9782,16 @@ impl ShellFaceSet {
         }
     }
 
-    /// **Source:** `TopOpeBRepBuild_ShellFaceSet.hxx`:46 - `TopOpeBRepBuild_ShellFaceSet::TopOpeBRepBuild_ShellFaceSet()`
+    /// **Source:** `TopOpeBRepBuild_ShellFaceSet.hxx`:47 - `TopOpeBRepBuild_ShellFaceSet::TopOpeBRepBuild_ShellFaceSet()`
     /// Creates a ShellFaceSet to build blocks of faces
     /// connected by edges.
-    pub unsafe fn new_shape_address(
+    pub fn new_shape_voidptr(
         S: &crate::topo_ds::Shape,
         Addr: *mut std::ffi::c_void,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKBool::TopOpeBRepBuild_ShellFaceSet_ctor_shape_address(S, Addr),
+                crate::ffi_extern_TKBool::TopOpeBRepBuild_ShellFaceSet_ctor_shape_voidptr(S, Addr),
             ))
         }
     }
@@ -10120,7 +9836,7 @@ impl ShellFaceSet {
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_ShellFaceSet.hxx`:59 - `TopOpeBRepBuild_ShellFaceSet::SName()`
+    /// **Source:** `TopOpeBRepBuild_ShellFaceSet.hxx`:60 - `TopOpeBRepBuild_ShellFaceSet::SName()`
     pub fn s_name_shape_asciistring2(
         &self,
         S: &crate::topo_ds::Shape,
@@ -10139,19 +9855,19 @@ impl ShellFaceSet {
         }
     }
 
-    /// **Source:** `TopOpeBRepBuild_ShellFaceSet.hxx`:64 - `TopOpeBRepBuild_ShellFaceSet::SName()`
-    pub fn s_name_listofshape_asciistring2(
+    /// **Source:** `TopOpeBRepBuild_ShellFaceSet.hxx`:65 - `TopOpeBRepBuild_ShellFaceSet::SName()`
+    pub fn s_name_list_shape_asciistring2(
         &self,
-        S: &crate::ffi_types::TopTools_ListOfShape,
+        S: &crate::ffi_types::NCollection_List_TopoDS_Shape,
         sb: &crate::t_collection::AsciiString,
         sa: &crate::t_collection::AsciiString,
     ) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKBool::TopOpeBRepBuild_ShellFaceSet_s_name_listofshape_asciistring2(self as *const Self, S, sb, sa)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKBool::TopOpeBRepBuild_ShellFaceSet_s_name_list_shape_asciistring2(self as *const Self, S, sb, sa)))
         }
     }
 
-    /// **Source:** `TopOpeBRepBuild_ShellFaceSet.hxx`:69 - `TopOpeBRepBuild_ShellFaceSet::SNameori()`
+    /// **Source:** `TopOpeBRepBuild_ShellFaceSet.hxx`:70 - `TopOpeBRepBuild_ShellFaceSet::SNameori()`
     pub fn s_nameori_shape_asciistring2(
         &self,
         S: &crate::topo_ds::Shape,
@@ -10170,15 +9886,15 @@ impl ShellFaceSet {
         }
     }
 
-    /// **Source:** `TopOpeBRepBuild_ShellFaceSet.hxx`:74 - `TopOpeBRepBuild_ShellFaceSet::SNameori()`
-    pub fn s_nameori_listofshape_asciistring2(
+    /// **Source:** `TopOpeBRepBuild_ShellFaceSet.hxx`:75 - `TopOpeBRepBuild_ShellFaceSet::SNameori()`
+    pub fn s_nameori_list_shape_asciistring2(
         &self,
-        S: &crate::ffi_types::TopTools_ListOfShape,
+        S: &crate::ffi_types::NCollection_List_TopoDS_Shape,
         sb: &crate::t_collection::AsciiString,
         sa: &crate::t_collection::AsciiString,
     ) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKBool::TopOpeBRepBuild_ShellFaceSet_s_nameori_listofshape_asciistring2(self as *const Self, S, sb, sa)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKBool::TopOpeBRepBuild_ShellFaceSet_s_nameori_list_shape_asciistring2(self as *const Self, S, sb, sa)))
         }
     }
 
@@ -10200,8 +9916,8 @@ impl ShellFaceSet {
         }
     }
 
-    /// Inherited: **Source:** `TopOpeBRepBuild_ShapeSet.hxx`:81 - `TopOpeBRepBuild_ShapeSet::StartElements()`
-    pub fn start_elements(&self) -> &crate::ffi_types::TopTools_ListOfShape {
+    /// Inherited: **Source:** `TopOpeBRepBuild_ShapeSet.hxx`:82 - `TopOpeBRepBuild_ShapeSet::StartElements()`
+    pub fn start_elements(&self) -> &crate::ffi_types::NCollection_List_TopoDS_Shape {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKBool::TopOpeBRepBuild_ShellFaceSet_inherited_StartElements(
@@ -10211,7 +9927,7 @@ impl ShellFaceSet {
         }
     }
 
-    /// Inherited: **Source:** `TopOpeBRepBuild_ShapeSet.hxx`:83 - `TopOpeBRepBuild_ShapeSet::InitShapes()`
+    /// Inherited: **Source:** `TopOpeBRepBuild_ShapeSet.hxx`:84 - `TopOpeBRepBuild_ShapeSet::InitShapes()`
     pub fn init_shapes(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_ShellFaceSet_inherited_InitShapes(
@@ -10220,7 +9936,7 @@ impl ShellFaceSet {
         })
     }
 
-    /// Inherited: **Source:** `TopOpeBRepBuild_ShapeSet.hxx`:85 - `TopOpeBRepBuild_ShapeSet::MoreShapes()`
+    /// Inherited: **Source:** `TopOpeBRepBuild_ShapeSet.hxx`:86 - `TopOpeBRepBuild_ShapeSet::MoreShapes()`
     pub fn more_shapes(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_ShellFaceSet_inherited_MoreShapes(
@@ -10229,7 +9945,7 @@ impl ShellFaceSet {
         })
     }
 
-    /// Inherited: **Source:** `TopOpeBRepBuild_ShapeSet.hxx`:87 - `TopOpeBRepBuild_ShapeSet::NextShape()`
+    /// Inherited: **Source:** `TopOpeBRepBuild_ShapeSet.hxx`:88 - `TopOpeBRepBuild_ShapeSet::NextShape()`
     pub fn next_shape(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_ShellFaceSet_inherited_NextShape(
@@ -10238,7 +9954,7 @@ impl ShellFaceSet {
         })
     }
 
-    /// Inherited: **Source:** `TopOpeBRepBuild_ShapeSet.hxx`:89 - `TopOpeBRepBuild_ShapeSet::Shape()`
+    /// Inherited: **Source:** `TopOpeBRepBuild_ShapeSet.hxx`:90 - `TopOpeBRepBuild_ShapeSet::Shape()`
     pub fn shape(&self) -> &crate::topo_ds::Shape {
         unsafe {
             &*(crate::check_result(
@@ -10249,7 +9965,7 @@ impl ShellFaceSet {
         }
     }
 
-    /// Inherited: **Source:** `TopOpeBRepBuild_ShapeSet.hxx`:91 - `TopOpeBRepBuild_ShapeSet::InitStartElements()`
+    /// Inherited: **Source:** `TopOpeBRepBuild_ShapeSet.hxx`:92 - `TopOpeBRepBuild_ShapeSet::InitStartElements()`
     pub fn init_start_elements(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_ShellFaceSet_inherited_InitStartElements(
@@ -10258,7 +9974,7 @@ impl ShellFaceSet {
         })
     }
 
-    /// Inherited: **Source:** `TopOpeBRepBuild_ShapeSet.hxx`:93 - `TopOpeBRepBuild_ShapeSet::MoreStartElements()`
+    /// Inherited: **Source:** `TopOpeBRepBuild_ShapeSet.hxx`:94 - `TopOpeBRepBuild_ShapeSet::MoreStartElements()`
     pub fn more_start_elements(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_ShellFaceSet_inherited_MoreStartElements(
@@ -10267,7 +9983,7 @@ impl ShellFaceSet {
         })
     }
 
-    /// Inherited: **Source:** `TopOpeBRepBuild_ShapeSet.hxx`:95 - `TopOpeBRepBuild_ShapeSet::NextStartElement()`
+    /// Inherited: **Source:** `TopOpeBRepBuild_ShapeSet.hxx`:96 - `TopOpeBRepBuild_ShapeSet::NextStartElement()`
     pub fn next_start_element(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_ShellFaceSet_inherited_NextStartElement(
@@ -10276,7 +9992,7 @@ impl ShellFaceSet {
         })
     }
 
-    /// Inherited: **Source:** `TopOpeBRepBuild_ShapeSet.hxx`:97 - `TopOpeBRepBuild_ShapeSet::StartElement()`
+    /// Inherited: **Source:** `TopOpeBRepBuild_ShapeSet.hxx`:98 - `TopOpeBRepBuild_ShapeSet::StartElement()`
     pub fn start_element(&self) -> &crate::topo_ds::Shape {
         unsafe {
             &*(crate::check_result(
@@ -10287,7 +10003,7 @@ impl ShellFaceSet {
         }
     }
 
-    /// Inherited: **Source:** `TopOpeBRepBuild_ShapeSet.hxx`:99 - `TopOpeBRepBuild_ShapeSet::InitNeighbours()`
+    /// Inherited: **Source:** `TopOpeBRepBuild_ShapeSet.hxx`:100 - `TopOpeBRepBuild_ShapeSet::InitNeighbours()`
     pub fn init_neighbours(&mut self, S: &crate::topo_ds::Shape) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_ShellFaceSet_inherited_InitNeighbours(
@@ -10297,7 +10013,7 @@ impl ShellFaceSet {
         })
     }
 
-    /// Inherited: **Source:** `TopOpeBRepBuild_ShapeSet.hxx`:101 - `TopOpeBRepBuild_ShapeSet::MoreNeighbours()`
+    /// Inherited: **Source:** `TopOpeBRepBuild_ShapeSet.hxx`:102 - `TopOpeBRepBuild_ShapeSet::MoreNeighbours()`
     pub fn more_neighbours(&mut self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_ShellFaceSet_inherited_MoreNeighbours(
@@ -10306,7 +10022,7 @@ impl ShellFaceSet {
         })
     }
 
-    /// Inherited: **Source:** `TopOpeBRepBuild_ShapeSet.hxx`:103 - `TopOpeBRepBuild_ShapeSet::NextNeighbour()`
+    /// Inherited: **Source:** `TopOpeBRepBuild_ShapeSet.hxx`:104 - `TopOpeBRepBuild_ShapeSet::NextNeighbour()`
     pub fn next_neighbour(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_ShellFaceSet_inherited_NextNeighbour(
@@ -10315,7 +10031,7 @@ impl ShellFaceSet {
         })
     }
 
-    /// Inherited: **Source:** `TopOpeBRepBuild_ShapeSet.hxx`:105 - `TopOpeBRepBuild_ShapeSet::Neighbour()`
+    /// Inherited: **Source:** `TopOpeBRepBuild_ShapeSet.hxx`:106 - `TopOpeBRepBuild_ShapeSet::Neighbour()`
     pub fn neighbour(&self) -> &crate::topo_ds::Shape {
         unsafe {
             &*(crate::check_result(
@@ -10326,8 +10042,8 @@ impl ShellFaceSet {
         }
     }
 
-    /// Inherited: **Source:** `TopOpeBRepBuild_ShapeSet.hxx`:107 - `TopOpeBRepBuild_ShapeSet::ChangeStartShapes()`
-    pub fn change_start_shapes(&mut self) -> &mut crate::ffi_types::TopTools_ListOfShape {
+    /// Inherited: **Source:** `TopOpeBRepBuild_ShapeSet.hxx`:108 - `TopOpeBRepBuild_ShapeSet::ChangeStartShapes()`
+    pub fn change_start_shapes(&mut self) -> &mut crate::ffi_types::NCollection_List_TopoDS_Shape {
         unsafe {
             &mut *(crate::check_result(
                 crate::ffi_extern_TKBool::TopOpeBRepBuild_ShellFaceSet_inherited_ChangeStartShapes(
@@ -10337,7 +10053,7 @@ impl ShellFaceSet {
         }
     }
 
-    /// Inherited: **Source:** `TopOpeBRepBuild_ShapeSet.hxx`:112 - `TopOpeBRepBuild_ShapeSet::FindNeighbours()`
+    /// Inherited: **Source:** `TopOpeBRepBuild_ShapeSet.hxx`:113 - `TopOpeBRepBuild_ShapeSet::FindNeighbours()`
     pub fn find_neighbours(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_ShellFaceSet_inherited_FindNeighbours(
@@ -10346,7 +10062,7 @@ impl ShellFaceSet {
         })
     }
 
-    /// Inherited: **Source:** `TopOpeBRepBuild_ShapeSet.hxx`:117 - `TopOpeBRepBuild_ShapeSet::MaxNumberSubShape()`
+    /// Inherited: **Source:** `TopOpeBRepBuild_ShapeSet.hxx`:119 - `TopOpeBRepBuild_ShapeSet::MaxNumberSubShape()`
     pub fn max_number_sub_shape(&mut self, Shape: &crate::topo_ds::Shape) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_ShellFaceSet_inherited_MaxNumberSubShape(
@@ -10356,7 +10072,7 @@ impl ShellFaceSet {
         })
     }
 
-    /// Inherited: **Source:** `TopOpeBRepBuild_ShapeSet.hxx`:119 - `TopOpeBRepBuild_ShapeSet::CheckShape()`
+    /// Inherited: **Source:** `TopOpeBRepBuild_ShapeSet.hxx`:121 - `TopOpeBRepBuild_ShapeSet::CheckShape()`
     pub fn check_shape(&mut self, checkshape: bool) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_ShellFaceSet_inherited_CheckShape(
@@ -10366,7 +10082,7 @@ impl ShellFaceSet {
         })
     }
 
-    /// Inherited: **Source:** `TopOpeBRepBuild_ShapeSet.hxx`:126 - `TopOpeBRepBuild_ShapeSet::DumpName()`
+    /// Inherited: **Source:** `TopOpeBRepBuild_ShapeSet.hxx`:127 - `TopOpeBRepBuild_ShapeSet::DumpName()`
     pub fn dump_name(
         &self,
         OS: &mut crate::ffi_types::Standard_OStream,
@@ -10381,7 +10097,7 @@ impl ShellFaceSet {
         })
     }
 
-    /// Inherited: **Source:** `TopOpeBRepBuild_ShapeSet.hxx`:128 - `TopOpeBRepBuild_ShapeSet::DumpCheck()`
+    /// Inherited: **Source:** `TopOpeBRepBuild_ShapeSet.hxx`:129 - `TopOpeBRepBuild_ShapeSet::DumpCheck()`
     pub fn dump_check(
         &self,
         OS: &mut crate::ffi_types::Standard_OStream,
@@ -10400,7 +10116,7 @@ impl ShellFaceSet {
         })
     }
 
-    /// Inherited: **Source:** `TopOpeBRepBuild_ShapeSet.hxx`:135 - `TopOpeBRepBuild_ShapeSet::DumpBB()`
+    /// Inherited: **Source:** `TopOpeBRepBuild_ShapeSet.hxx`:136 - `TopOpeBRepBuild_ShapeSet::DumpBB()`
     pub fn dump_bb(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_ShellFaceSet_inherited_DumpBB(
@@ -10409,7 +10125,7 @@ impl ShellFaceSet {
         })
     }
 
-    /// Inherited: **Source:** `TopOpeBRepBuild_ShapeSet.hxx`:137 - `TopOpeBRepBuild_ShapeSet::DEBName()`
+    /// Inherited: **Source:** `TopOpeBRepBuild_ShapeSet.hxx`:138 - `TopOpeBRepBuild_ShapeSet::DEBName()`
     pub fn deb_name(&mut self, N: &crate::t_collection::AsciiString) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_ShellFaceSet_inherited_DEBName(
@@ -10419,7 +10135,7 @@ impl ShellFaceSet {
         })
     }
 
-    /// Inherited: **Source:** `TopOpeBRepBuild_ShapeSet.hxx`:141 - `TopOpeBRepBuild_ShapeSet::DEBNumber()`
+    /// Inherited: **Source:** `TopOpeBRepBuild_ShapeSet.hxx`:142 - `TopOpeBRepBuild_ShapeSet::DEBNumber()`
     pub fn deb_number(&mut self, I: i32) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_ShellFaceSet_inherited_DEBNumber(
@@ -10434,7 +10150,7 @@ impl ShellFaceSet {
 // From TopOpeBRepBuild_ShellToSolid.hxx
 // ========================
 
-/// **Source:** `TopOpeBRepBuild_ShellToSolid.hxx`:28 - `TopOpeBRepBuild_ShellToSolid`
+/// **Source:** `TopOpeBRepBuild_ShellToSolid.hxx`:29 - `TopOpeBRepBuild_ShellToSolid`
 /// This class builds solids from a set of shells SSh and a solid F.
 pub use crate::ffi_types::TopOpeBRepBuild_ShellToSolid as ShellToSolid;
 
@@ -10447,7 +10163,7 @@ unsafe impl crate::CppDeletable for ShellToSolid {
 }
 
 impl ShellToSolid {
-    /// **Source:** `TopOpeBRepBuild_ShellToSolid.hxx`:33 - `TopOpeBRepBuild_ShellToSolid::TopOpeBRepBuild_ShellToSolid()`
+    /// **Source:** `TopOpeBRepBuild_ShellToSolid.hxx`:34 - `TopOpeBRepBuild_ShellToSolid::TopOpeBRepBuild_ShellToSolid()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -10456,25 +10172,25 @@ impl ShellToSolid {
         }
     }
 
-    /// **Source:** `TopOpeBRepBuild_ShellToSolid.hxx`:35 - `TopOpeBRepBuild_ShellToSolid::Init()`
+    /// **Source:** `TopOpeBRepBuild_ShellToSolid.hxx`:36 - `TopOpeBRepBuild_ShellToSolid::Init()`
     pub fn init(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_ShellToSolid_init(self as *mut Self)
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_ShellToSolid.hxx`:37 - `TopOpeBRepBuild_ShellToSolid::AddShell()`
+    /// **Source:** `TopOpeBRepBuild_ShellToSolid.hxx`:38 - `TopOpeBRepBuild_ShellToSolid::AddShell()`
     pub fn add_shell(&mut self, Sh: &crate::topo_ds::Shell) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_ShellToSolid_add_shell(self as *mut Self, Sh)
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_ShellToSolid.hxx`:39 - `TopOpeBRepBuild_ShellToSolid::MakeSolids()`
+    /// **Source:** `TopOpeBRepBuild_ShellToSolid.hxx`:40 - `TopOpeBRepBuild_ShellToSolid::MakeSolids()`
     pub fn make_solids(
         &mut self,
         So: &crate::topo_ds::Solid,
-        LSo: &mut crate::ffi_types::TopTools_ListOfShape,
+        LSo: &mut crate::ffi_types::NCollection_List_TopoDS_Shape,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_ShellToSolid_make_solids(
@@ -10495,8 +10211,8 @@ impl ShellToSolid {
 /// where the Loop is the composite topological object of the boundary,
 /// here wire or block of edges.
 /// The LoopSet gives an iteration on Loops.
-/// For each Loop  it indicates if it is on the boundary (wire) or if it
-/// results from  an interference (block of edges).
+/// For each Loop it indicates if it is on the boundary (wire) or if it
+/// results from an interference (block of edges).
 /// The result of the SolidAreaBuilder is an iteration on areas.
 /// An area is described by a set of Loops.
 pub use crate::ffi_types::TopOpeBRepBuild_SolidAreaBuilder as SolidAreaBuilder;
@@ -10542,7 +10258,7 @@ impl SolidAreaBuilder {
         Self::new_loopset_loopclassifier_bool(LS, LC, false)
     }
 
-    /// **Source:** `TopOpeBRepBuild_SolidAreaBuilder.hxx`:49 - `TopOpeBRepBuild_SolidAreaBuilder::InitSolidAreaBuilder()`
+    /// **Source:** `TopOpeBRepBuild_SolidAreaBuilder.hxx`:48 - `TopOpeBRepBuild_SolidAreaBuilder::InitSolidAreaBuilder()`
     pub fn init_solid_area_builder(
         &mut self,
         LS: &mut LoopSet,
@@ -10604,7 +10320,7 @@ impl SolidAreaBuilder {
         })
     }
 
-    /// Inherited: **Source:** `TopOpeBRepBuild_AreaBuilder.hxx`:74 - `TopOpeBRepBuild_AreaBuilder::InitArea()`
+    /// Inherited: **Source:** `TopOpeBRepBuild_AreaBuilder.hxx`:73 - `TopOpeBRepBuild_AreaBuilder::InitArea()`
     pub fn init_area(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_SolidAreaBuilder_inherited_InitArea(
@@ -10613,7 +10329,7 @@ impl SolidAreaBuilder {
         })
     }
 
-    /// Inherited: **Source:** `TopOpeBRepBuild_AreaBuilder.hxx`:76 - `TopOpeBRepBuild_AreaBuilder::MoreArea()`
+    /// Inherited: **Source:** `TopOpeBRepBuild_AreaBuilder.hxx`:75 - `TopOpeBRepBuild_AreaBuilder::MoreArea()`
     pub fn more_area(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_SolidAreaBuilder_inherited_MoreArea(
@@ -10622,7 +10338,7 @@ impl SolidAreaBuilder {
         })
     }
 
-    /// Inherited: **Source:** `TopOpeBRepBuild_AreaBuilder.hxx`:78 - `TopOpeBRepBuild_AreaBuilder::NextArea()`
+    /// Inherited: **Source:** `TopOpeBRepBuild_AreaBuilder.hxx`:77 - `TopOpeBRepBuild_AreaBuilder::NextArea()`
     pub fn next_area(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_SolidAreaBuilder_inherited_NextArea(
@@ -10631,7 +10347,7 @@ impl SolidAreaBuilder {
         })
     }
 
-    /// Inherited: **Source:** `TopOpeBRepBuild_AreaBuilder.hxx`:81 - `TopOpeBRepBuild_AreaBuilder::InitLoop()`
+    /// Inherited: **Source:** `TopOpeBRepBuild_AreaBuilder.hxx`:80 - `TopOpeBRepBuild_AreaBuilder::InitLoop()`
     pub fn init_loop(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_SolidAreaBuilder_inherited_InitLoop(
@@ -10640,7 +10356,7 @@ impl SolidAreaBuilder {
         })
     }
 
-    /// Inherited: **Source:** `TopOpeBRepBuild_AreaBuilder.hxx`:83 - `TopOpeBRepBuild_AreaBuilder::MoreLoop()`
+    /// Inherited: **Source:** `TopOpeBRepBuild_AreaBuilder.hxx`:82 - `TopOpeBRepBuild_AreaBuilder::MoreLoop()`
     pub fn more_loop(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_SolidAreaBuilder_inherited_MoreLoop(
@@ -10649,7 +10365,7 @@ impl SolidAreaBuilder {
         })
     }
 
-    /// Inherited: **Source:** `TopOpeBRepBuild_AreaBuilder.hxx`:85 - `TopOpeBRepBuild_AreaBuilder::NextLoop()`
+    /// Inherited: **Source:** `TopOpeBRepBuild_AreaBuilder.hxx`:84 - `TopOpeBRepBuild_AreaBuilder::NextLoop()`
     pub fn next_loop(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_SolidAreaBuilder_inherited_NextLoop(
@@ -10658,8 +10374,8 @@ impl SolidAreaBuilder {
         })
     }
 
-    /// Inherited: **Source:** `TopOpeBRepBuild_AreaBuilder.hxx`:88 - `TopOpeBRepBuild_AreaBuilder::Loop()`
-    pub fn loop_(&self) -> &crate::ffi_types::HandleTopOpeBRepBuildLoop {
+    /// Inherited: **Source:** `TopOpeBRepBuild_AreaBuilder.hxx`:87 - `TopOpeBRepBuild_AreaBuilder::Loop()`
+    pub fn loop_(&self) -> &crate::ffi_types::Handle_TopOpeBRepBuild_Loop {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKBool::TopOpeBRepBuild_SolidAreaBuilder_inherited_Loop(
@@ -10667,44 +10383,6 @@ impl SolidAreaBuilder {
                 ),
             ))
         }
-    }
-
-    /// Inherited: **Source:** `TopOpeBRepBuild_AreaBuilder.hxx`:90 - `TopOpeBRepBuild_AreaBuilder::ADD_Loop_TO_LISTOFLoop()`
-    pub unsafe fn add_loop_to_listof_loop(
-        &self,
-        L: &crate::ffi_types::HandleTopOpeBRepBuildLoop,
-        LOL: &mut crate::ffi_types::TopOpeBRepBuild_ListOfLoop,
-        s: *mut std::ffi::c_void,
-    ) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKBool::TopOpeBRepBuild_SolidAreaBuilder_inherited_ADD_Loop_TO_LISTOFLoop(self as *const Self, L, LOL, s)
-        })
-    }
-
-    /// Inherited: **Source:** `TopOpeBRepBuild_AreaBuilder.hxx`:94 - `TopOpeBRepBuild_AreaBuilder::REM_Loop_FROM_LISTOFLoop()`
-    pub unsafe fn rem_loop_from_listof_loop(
-        &self,
-        ITLOL: &mut crate::ffi_types::TopOpeBRepBuild_ListIteratorOfListOfLoop,
-        LOL: &mut crate::ffi_types::TopOpeBRepBuild_ListOfLoop,
-        s: *mut std::ffi::c_void,
-    ) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKBool::TopOpeBRepBuild_SolidAreaBuilder_inherited_REM_Loop_FROM_LISTOFLoop(self as *const Self, ITLOL, LOL, s)
-        })
-    }
-
-    /// Inherited: **Source:** `TopOpeBRepBuild_AreaBuilder.hxx`:99 - `TopOpeBRepBuild_AreaBuilder::ADD_LISTOFLoop_TO_LISTOFLoop()`
-    pub unsafe fn add_listof_loop_to_listof_loop(
-        &self,
-        LOL1: &mut crate::ffi_types::TopOpeBRepBuild_ListOfLoop,
-        LOL2: &mut crate::ffi_types::TopOpeBRepBuild_ListOfLoop,
-        s: *mut std::ffi::c_void,
-        s1: *mut std::ffi::c_void,
-        s2: *mut std::ffi::c_void,
-    ) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKBool::TopOpeBRepBuild_SolidAreaBuilder_inherited_ADD_LISTOFLoop_TO_LISTOFLoop(self as *const Self, LOL1, LOL2, s, s1, s2)
-        })
     }
 }
 
@@ -10764,56 +10442,56 @@ impl SolidBuilder {
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_SolidBuilder.hxx`:47 - `TopOpeBRepBuild_SolidBuilder::InitSolid()`
+    /// **Source:** `TopOpeBRepBuild_SolidBuilder.hxx`:46 - `TopOpeBRepBuild_SolidBuilder::InitSolid()`
     pub fn init_solid(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_SolidBuilder_init_solid(self as *mut Self)
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_SolidBuilder.hxx`:49 - `TopOpeBRepBuild_SolidBuilder::MoreSolid()`
+    /// **Source:** `TopOpeBRepBuild_SolidBuilder.hxx`:48 - `TopOpeBRepBuild_SolidBuilder::MoreSolid()`
     pub fn more_solid(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_SolidBuilder_more_solid(self as *const Self)
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_SolidBuilder.hxx`:51 - `TopOpeBRepBuild_SolidBuilder::NextSolid()`
+    /// **Source:** `TopOpeBRepBuild_SolidBuilder.hxx`:50 - `TopOpeBRepBuild_SolidBuilder::NextSolid()`
     pub fn next_solid(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_SolidBuilder_next_solid(self as *mut Self)
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_SolidBuilder.hxx`:53 - `TopOpeBRepBuild_SolidBuilder::InitShell()`
+    /// **Source:** `TopOpeBRepBuild_SolidBuilder.hxx`:52 - `TopOpeBRepBuild_SolidBuilder::InitShell()`
     pub fn init_shell(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_SolidBuilder_init_shell(self as *mut Self)
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_SolidBuilder.hxx`:55 - `TopOpeBRepBuild_SolidBuilder::MoreShell()`
+    /// **Source:** `TopOpeBRepBuild_SolidBuilder.hxx`:54 - `TopOpeBRepBuild_SolidBuilder::MoreShell()`
     pub fn more_shell(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_SolidBuilder_more_shell(self as *const Self)
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_SolidBuilder.hxx`:57 - `TopOpeBRepBuild_SolidBuilder::NextShell()`
+    /// **Source:** `TopOpeBRepBuild_SolidBuilder.hxx`:56 - `TopOpeBRepBuild_SolidBuilder::NextShell()`
     pub fn next_shell(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_SolidBuilder_next_shell(self as *mut Self)
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_SolidBuilder.hxx`:59 - `TopOpeBRepBuild_SolidBuilder::IsOldShell()`
+    /// **Source:** `TopOpeBRepBuild_SolidBuilder.hxx`:58 - `TopOpeBRepBuild_SolidBuilder::IsOldShell()`
     pub fn is_old_shell(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_SolidBuilder_is_old_shell(self as *const Self)
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_SolidBuilder.hxx`:65 - `TopOpeBRepBuild_SolidBuilder::OldShell()`
+    /// **Source:** `TopOpeBRepBuild_SolidBuilder.hxx`:64 - `TopOpeBRepBuild_SolidBuilder::OldShell()`
     /// Returns current shell
     /// This shell may be :
     /// * an old shell OldShell(), which has not been reconstructed;
@@ -10828,28 +10506,28 @@ impl SolidBuilder {
         }
     }
 
-    /// **Source:** `TopOpeBRepBuild_SolidBuilder.hxx`:67 - `TopOpeBRepBuild_SolidBuilder::InitFace()`
+    /// **Source:** `TopOpeBRepBuild_SolidBuilder.hxx`:66 - `TopOpeBRepBuild_SolidBuilder::InitFace()`
     pub fn init_face(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_SolidBuilder_init_face(self as *mut Self)
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_SolidBuilder.hxx`:69 - `TopOpeBRepBuild_SolidBuilder::MoreFace()`
+    /// **Source:** `TopOpeBRepBuild_SolidBuilder.hxx`:68 - `TopOpeBRepBuild_SolidBuilder::MoreFace()`
     pub fn more_face(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_SolidBuilder_more_face(self as *const Self)
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_SolidBuilder.hxx`:71 - `TopOpeBRepBuild_SolidBuilder::NextFace()`
+    /// **Source:** `TopOpeBRepBuild_SolidBuilder.hxx`:70 - `TopOpeBRepBuild_SolidBuilder::NextFace()`
     pub fn next_face(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_SolidBuilder_next_face(self as *mut Self)
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_SolidBuilder.hxx`:74 - `TopOpeBRepBuild_SolidBuilder::Face()`
+    /// **Source:** `TopOpeBRepBuild_SolidBuilder.hxx`:73 - `TopOpeBRepBuild_SolidBuilder::Face()`
     /// Returns current new face of current new shell.
     pub fn face(&self) -> &crate::topo_ds::Shape {
         unsafe {
@@ -10864,8 +10542,8 @@ impl SolidBuilder {
 // From TopOpeBRepBuild_Tools.hxx
 // ========================
 
-/// **Source:** `TopOpeBRepBuild_Tools.hxx`:41 - `TopOpeBRepBuild_Tools`
-/// Auxiliary  methods  used  in  TopOpeBRepBuild_Builder1  class
+/// **Source:** `TopOpeBRepBuild_Tools.hxx`:42 - `TopOpeBRepBuild_Tools`
+/// Auxiliary methods used in TopOpeBRepBuild_Builder1 class
 pub use crate::ffi_types::TopOpeBRepBuild_Tools as Tools;
 
 unsafe impl crate::CppDeletable for Tools {
@@ -10887,14 +10565,14 @@ impl Tools {
         }
     }
 
-    /// **Source:** `TopOpeBRepBuild_Tools.hxx`:46 - `TopOpeBRepBuild_Tools::FindState()`
+    /// **Source:** `TopOpeBRepBuild_Tools.hxx`:47 - `TopOpeBRepBuild_Tools::FindState()`
     pub fn find_state(
         aVertex: &crate::topo_ds::Shape,
         aState: crate::top_abs::State,
         aShapeEnum: crate::top_abs::ShapeEnum,
-        aMapVertexEdges: &crate::ffi_types::TopTools_IndexedDataMapOfShapeListOfShape,
-        aMapProcessedVertices: &mut crate::ffi_types::TopTools_MapOfShape,
-        aMapVs: &mut crate::ffi_types::TopOpeBRepDS_DataMapOfShapeState,
+        aMapVertexEdges: &crate::ffi_types::NCollection_IndexedDataMap_TopoDS_Shape_NCollection_List_TopoDS_Shape_TopTools_ShapeMapHasher,
+        aMapProcessedVertices: &mut crate::ffi_types::NCollection_Map_TopoDS_Shape_TopTools_ShapeMapHasher,
+        aMapVs: &mut crate::ffi_types::NCollection_DataMap_TopoDS_Shape_TopAbs_State_TopTools_ShapeMapHasher,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_Tools_find_state(
@@ -10908,15 +10586,15 @@ impl Tools {
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_Tools.hxx`:54 - `TopOpeBRepBuild_Tools::PropagateState()`
+    /// **Source:** `TopOpeBRepBuild_Tools.hxx`:57 - `TopOpeBRepBuild_Tools::PropagateState()`
     pub fn propagate_state(
-        aSplEdgesState: &crate::ffi_types::TopOpeBRepDS_DataMapOfShapeState,
-        anEdgesToRestMap: &crate::ffi_types::TopTools_IndexedMapOfShape,
+        aSplEdgesState: &crate::ffi_types::NCollection_DataMap_TopoDS_Shape_TopAbs_State_TopTools_ShapeMapHasher,
+        anEdgesToRestMap: &crate::ffi_types::NCollection_IndexedMap_TopoDS_Shape_TopTools_ShapeMapHasher,
         aShapeEnum1: crate::top_abs::ShapeEnum,
         aShapeEnum2: crate::top_abs::ShapeEnum,
         aShapeClassifier: &mut crate::top_ope_b_rep_tool::ShapeClassifier,
-        aMapOfShapeWithState: &mut crate::ffi_types::TopOpeBRepDS_IndexedDataMapOfShapeWithState,
-        anUnkStateShapes: &crate::ffi_types::TopTools_MapOfShape,
+        aMapOfShapeWithState: &mut crate::ffi_types::NCollection_IndexedDataMap_TopoDS_Shape_TopOpeBRepDS_ShapeWithState_TopTools_ShapeMapHasher,
+        anUnkStateShapes: &crate::ffi_types::NCollection_Map_TopoDS_Shape_TopTools_ShapeMapHasher,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_Tools_propagate_state(
@@ -10931,12 +10609,12 @@ impl Tools {
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_Tools.hxx`:63 - `TopOpeBRepBuild_Tools::FindStateThroughVertex()`
+    /// **Source:** `TopOpeBRepBuild_Tools.hxx`:67 - `TopOpeBRepBuild_Tools::FindStateThroughVertex()`
     pub fn find_state_through_vertex(
         aShape: &crate::topo_ds::Shape,
         aShapeClassifier: &mut crate::top_ope_b_rep_tool::ShapeClassifier,
-        aMapOfShapeWithState: &mut crate::ffi_types::TopOpeBRepDS_IndexedDataMapOfShapeWithState,
-        anAvoidSubshMap: &crate::ffi_types::TopTools_MapOfShape,
+        aMapOfShapeWithState: &mut crate::ffi_types::NCollection_IndexedDataMap_TopoDS_Shape_TopOpeBRepDS_ShapeWithState_TopTools_ShapeMapHasher,
+        anAvoidSubshMap: &crate::ffi_types::NCollection_Map_TopoDS_Shape_TopTools_ShapeMapHasher,
     ) -> crate::top_abs::State {
         crate::top_abs::State::try_from(crate::check_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_Tools_find_state_through_vertex(
@@ -10949,10 +10627,10 @@ impl Tools {
         .unwrap()
     }
 
-    /// **Source:** `TopOpeBRepBuild_Tools.hxx`:69 - `TopOpeBRepBuild_Tools::PropagateStateForWires()`
+    /// **Source:** `TopOpeBRepBuild_Tools.hxx`:74 - `TopOpeBRepBuild_Tools::PropagateStateForWires()`
     pub fn propagate_state_for_wires(
-        aFacesToRestMap: &crate::ffi_types::TopTools_IndexedMapOfShape,
-        aMapOfShapeWithState: &mut crate::ffi_types::TopOpeBRepDS_IndexedDataMapOfShapeWithState,
+        aFacesToRestMap: &crate::ffi_types::NCollection_IndexedMap_TopoDS_Shape_TopTools_ShapeMapHasher,
+        aMapOfShapeWithState: &mut crate::ffi_types::NCollection_IndexedDataMap_TopoDS_Shape_TopOpeBRepDS_ShapeWithState_TopTools_ShapeMapHasher,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_Tools_propagate_state_for_wires(
@@ -10962,11 +10640,11 @@ impl Tools {
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_Tools.hxx`:73 - `TopOpeBRepBuild_Tools::SpreadStateToChild()`
+    /// **Source:** `TopOpeBRepBuild_Tools.hxx`:79 - `TopOpeBRepBuild_Tools::SpreadStateToChild()`
     pub fn spread_state_to_child(
         aShape: &crate::topo_ds::Shape,
         aState: crate::top_abs::State,
-        aMapOfShapeWithState: &mut crate::ffi_types::TopOpeBRepDS_IndexedDataMapOfShapeWithState,
+        aMapOfShapeWithState: &mut crate::ffi_types::NCollection_IndexedDataMap_TopoDS_Shape_TopOpeBRepDS_ShapeWithState_TopTools_ShapeMapHasher,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_Tools_spread_state_to_child(
@@ -10977,13 +10655,13 @@ impl Tools {
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_Tools.hxx`:78 - `TopOpeBRepBuild_Tools::FindState1()`
+    /// **Source:** `TopOpeBRepBuild_Tools.hxx`:85 - `TopOpeBRepBuild_Tools::FindState1()`
     pub fn find_state1(
         anEdge: &crate::topo_ds::Shape,
         aState: crate::top_abs::State,
-        aMapEdgesFaces: &crate::ffi_types::TopTools_IndexedDataMapOfShapeListOfShape,
-        aMapProcessedVertices: &mut crate::ffi_types::TopTools_MapOfShape,
-        aMapVs: &mut crate::ffi_types::TopOpeBRepDS_DataMapOfShapeState,
+        aMapEdgesFaces: &crate::ffi_types::NCollection_IndexedDataMap_TopoDS_Shape_NCollection_List_TopoDS_Shape_TopTools_ShapeMapHasher,
+        aMapProcessedVertices: &mut crate::ffi_types::NCollection_Map_TopoDS_Shape_TopTools_ShapeMapHasher,
+        aMapVs: &mut crate::ffi_types::NCollection_DataMap_TopoDS_Shape_TopAbs_State_TopTools_ShapeMapHasher,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_Tools_find_state1(
@@ -10996,13 +10674,13 @@ impl Tools {
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_Tools.hxx`:85 - `TopOpeBRepBuild_Tools::FindState2()`
+    /// **Source:** `TopOpeBRepBuild_Tools.hxx`:94 - `TopOpeBRepBuild_Tools::FindState2()`
     pub fn find_state2(
         anEdge: &crate::topo_ds::Shape,
         aState: crate::top_abs::State,
-        aMapEdgesFaces: &crate::ffi_types::TopTools_IndexedDataMapOfShapeListOfShape,
-        aMapProcessedEdges: &mut crate::ffi_types::TopTools_MapOfShape,
-        aMapVs: &mut crate::ffi_types::TopOpeBRepDS_DataMapOfShapeState,
+        aMapEdgesFaces: &crate::ffi_types::NCollection_IndexedDataMap_TopoDS_Shape_NCollection_List_TopoDS_Shape_TopTools_ShapeMapHasher,
+        aMapProcessedEdges: &mut crate::ffi_types::NCollection_Map_TopoDS_Shape_TopTools_ShapeMapHasher,
+        aMapVs: &mut crate::ffi_types::NCollection_DataMap_TopoDS_Shape_TopAbs_State_TopTools_ShapeMapHasher,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_Tools_find_state2(
@@ -11015,11 +10693,11 @@ impl Tools {
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_Tools.hxx`:92 - `TopOpeBRepBuild_Tools::GetAdjacentFace()`
+    /// **Source:** `TopOpeBRepBuild_Tools.hxx`:103 - `TopOpeBRepBuild_Tools::GetAdjacentFace()`
     pub fn get_adjacent_face(
         aFaceObj: &crate::topo_ds::Shape,
         anEObj: &crate::topo_ds::Shape,
-        anEdgeFaceMap: &crate::ffi_types::TopTools_IndexedDataMapOfShapeListOfShape,
+        anEdgeFaceMap: &crate::ffi_types::NCollection_IndexedDataMap_TopoDS_Shape_NCollection_List_TopoDS_Shape_TopTools_ShapeMapHasher,
         anAdjFaceObj: &mut crate::topo_ds::Shape,
     ) -> bool {
         crate::check_result(unsafe {
@@ -11032,7 +10710,7 @@ impl Tools {
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_Tools.hxx`:98 - `TopOpeBRepBuild_Tools::GetNormalToFaceOnEdge()`
+    /// **Source:** `TopOpeBRepBuild_Tools.hxx`:111 - `TopOpeBRepBuild_Tools::GetNormalToFaceOnEdge()`
     pub fn get_normal_to_face_on_edge(
         aFObj: &crate::topo_ds::Face,
         anEdgeObj: &crate::topo_ds::Edge,
@@ -11045,10 +10723,10 @@ impl Tools {
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_Tools.hxx`:105 - `TopOpeBRepBuild_Tools::GetNormalInNearestPoint()`
-    /// This  function  used  to  compute  normal  in  point  which  is  located
-    /// near  the  point  with  param  UV    (used  for  computation  of  normals  where  the  normal
-    /// in  the  point UV  equal  to  zero).
+    /// **Source:** `TopOpeBRepBuild_Tools.hxx`:118 - `TopOpeBRepBuild_Tools::GetNormalInNearestPoint()`
+    /// This function used to compute normal in point which is located
+    /// near the point with param UV (used for computation of normals where the normal
+    /// in the point UV equal to zero).
     pub fn get_normal_in_nearest_point(
         aFace: &crate::topo_ds::Face,
         anEdge: &crate::topo_ds::Edge,
@@ -11061,7 +10739,7 @@ impl Tools {
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_Tools.hxx`:109 - `TopOpeBRepBuild_Tools::GetTangentToEdgeEdge()`
+    /// **Source:** `TopOpeBRepBuild_Tools.hxx`:122 - `TopOpeBRepBuild_Tools::GetTangentToEdgeEdge()`
     pub fn get_tangent_to_edge_edge(
         aFObj: &crate::topo_ds::Face,
         anEdgeObj: &crate::topo_ds::Edge,
@@ -11075,7 +10753,7 @@ impl Tools {
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_Tools.hxx`:114 - `TopOpeBRepBuild_Tools::GetTangentToEdge()`
+    /// **Source:** `TopOpeBRepBuild_Tools.hxx`:127 - `TopOpeBRepBuild_Tools::GetTangentToEdge()`
     pub fn get_tangent_to_edge(
         anEdgeObj: &crate::topo_ds::Edge,
         aTangent: &mut crate::gp::Vec,
@@ -11085,8 +10763,8 @@ impl Tools {
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_Tools.hxx`:118 - `TopOpeBRepBuild_Tools::UpdatePCurves()`
-    /// Recompute  PCurves  of  the  all  edges  from  the  wire  on  the  <toFace>
+    /// **Source:** `TopOpeBRepBuild_Tools.hxx`:130 - `TopOpeBRepBuild_Tools::UpdatePCurves()`
+    /// Recompute PCurves of the all edges from the wire on the <toFace>
     pub fn update_p_curves(
         aWire: &crate::topo_ds::Wire,
         fromFace: &crate::topo_ds::Face,
@@ -11097,8 +10775,8 @@ impl Tools {
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_Tools.hxx`:123 - `TopOpeBRepBuild_Tools::UpdateEdgeOnPeriodicalFace()`
-    /// recompute  PCurves  of  the  closing  (SIM  ,  with 2  PCurves)  edge on  the  NewFace
+    /// **Source:** `TopOpeBRepBuild_Tools.hxx`:135 - `TopOpeBRepBuild_Tools::UpdateEdgeOnPeriodicalFace()`
+    /// Recompute PCurves of the closing (SIM, with 2 PCurves) edge on the NewFace
     pub fn update_edge_on_periodical_face(
         aEdgeToUpdate: &crate::topo_ds::Edge,
         OldFace: &crate::topo_ds::Face,
@@ -11113,8 +10791,8 @@ impl Tools {
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_Tools.hxx`:128 - `TopOpeBRepBuild_Tools::UpdateEdgeOnFace()`
-    /// recompute  PCurve  of  the    edge on  the  NewFace
+    /// **Source:** `TopOpeBRepBuild_Tools.hxx`:140 - `TopOpeBRepBuild_Tools::UpdateEdgeOnFace()`
+    /// Recompute PCurve of the edge on the NewFace
     pub fn update_edge_on_face(
         aEdgeToUpdate: &crate::topo_ds::Edge,
         OldFace: &crate::topo_ds::Face,
@@ -11129,7 +10807,7 @@ impl Tools {
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_Tools.hxx`:132 - `TopOpeBRepBuild_Tools::IsDegEdgesTheSame()`
+    /// **Source:** `TopOpeBRepBuild_Tools.hxx`:144 - `TopOpeBRepBuild_Tools::IsDegEdgesTheSame()`
     pub fn is_deg_edges_the_same(
         anE1: &crate::topo_ds::Shape,
         anE2: &crate::topo_ds::Shape,
@@ -11139,27 +10817,27 @@ impl Tools {
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_Tools.hxx`:137 - `TopOpeBRepBuild_Tools::NormalizeFace()`
-    /// test  if  <oldFace>  does  not  contain  INTERNAL  or  EXTERNAL  edges
-    /// and  remove  such  edges  in  case  of  its  presence.  The  result  is  stored  in <corrFace>
+    /// **Source:** `TopOpeBRepBuild_Tools.hxx`:148 - `TopOpeBRepBuild_Tools::NormalizeFace()`
+    /// test if <oldFace> does not contain INTERNAL or EXTERNAL edges
+    /// and remove such edges in case of its presence. The result is stored in <corrFace>
     pub fn normalize_face(oldFace: &crate::topo_ds::Shape, corrFace: &mut crate::topo_ds::Shape) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_Tools_normalize_face(oldFace, corrFace)
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_Tools.hxx`:145 - `TopOpeBRepBuild_Tools::CorrectFace2d()`
-    /// test  if  UV  representation  of  <oldFace>  is  good  (i.e.  face  is  closed  in  2d).
-    /// if  face  is  not  closed  ,  this  method  will  try  to  close  such  face  and  will
-    /// return  corrected  edges  in  the  <aMapOfCorrect2dEdges>.  Parameter  <aSourceShapes>
-    /// used  to  fix  the  edge  (or  wires)  which  should  be  correct  (Corrector  used  it  as  a
-    /// start  shapes). NOTE  :  Parameter  corrFace  doesn't  mean  anything.  If  you  want  to use
-    /// this  method  ,  rebuild  resulting  face after  by  yourself  using  corrected  edges.
+    /// **Source:** `TopOpeBRepBuild_Tools.hxx`:156 - `TopOpeBRepBuild_Tools::CorrectFace2d()`
+    /// test if UV representation of <oldFace> is good (i.e. face is closed in 2d).
+    /// if face is not closed, this method will try to close such face and will
+    /// return corrected edges in the <aMapOfCorrect2dEdges>. Parameter <aSourceShapes>
+    /// used to fix the edge (or wires) which should be correct (Corrector used it as a
+    /// start shapes). NOTE: Parameter corrFace doesn't mean anything. If you want to use
+    /// this method, rebuild resulting face after by yourself using corrected edges.
     pub fn correct_face2d(
         oldFace: &crate::topo_ds::Shape,
         corrFace: &mut crate::topo_ds::Shape,
-        aSourceShapes: &crate::ffi_types::TopTools_IndexedMapOfOrientedShape,
-        aMapOfCorrect2dEdges: &mut crate::ffi_types::TopTools_IndexedDataMapOfShapeShape,
+        aSourceShapes: &crate::ffi_types::NCollection_IndexedMap_TopoDS_Shape,
+        aMapOfCorrect2dEdges: &mut crate::ffi_types::NCollection_IndexedDataMap_TopoDS_Shape_TopoDS_Shape_TopTools_ShapeMapHasher,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_Tools_correct_face2d(
@@ -11171,28 +10849,28 @@ impl Tools {
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_Tools.hxx`:151 - `TopOpeBRepBuild_Tools::CorrectTolerances()`
+    /// **Source:** `TopOpeBRepBuild_Tools.hxx`:163 - `TopOpeBRepBuild_Tools::CorrectTolerances()`
     pub fn correct_tolerances(aS: &crate::topo_ds::Shape, aTolMax: f64) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_Tools_correct_tolerances(aS, aTolMax)
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_Tools.hxx`:154 - `TopOpeBRepBuild_Tools::CorrectCurveOnSurface()`
+    /// **Source:** `TopOpeBRepBuild_Tools.hxx`:166 - `TopOpeBRepBuild_Tools::CorrectCurveOnSurface()`
     pub fn correct_curve_on_surface(aS: &crate::topo_ds::Shape, aTolMax: f64) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_Tools_correct_curve_on_surface(aS, aTolMax)
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_Tools.hxx`:157 - `TopOpeBRepBuild_Tools::CorrectPointOnCurve()`
+    /// **Source:** `TopOpeBRepBuild_Tools.hxx`:169 - `TopOpeBRepBuild_Tools::CorrectPointOnCurve()`
     pub fn correct_point_on_curve(aS: &crate::topo_ds::Shape, aTolMax: f64) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_Tools_correct_point_on_curve(aS, aTolMax)
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_Tools.hxx`:161 - `TopOpeBRepBuild_Tools::CheckFaceClosed2d()`
+    /// **Source:** `TopOpeBRepBuild_Tools.hxx`:173 - `TopOpeBRepBuild_Tools::CheckFaceClosed2d()`
     /// Checks if <theFace> has the properly closed in 2D boundary(ies)
     pub fn check_face_closed2d(theFace: &crate::topo_ds::Face) -> bool {
         crate::check_result(unsafe {
@@ -11205,7 +10883,7 @@ impl Tools {
 // From TopOpeBRepBuild_Tools2d.hxx
 // ========================
 
-/// **Source:** `TopOpeBRepBuild_Tools2d.hxx`:27 - `TopOpeBRepBuild_Tools2d`
+/// **Source:** `TopOpeBRepBuild_Tools2d.hxx`:30 - `TopOpeBRepBuild_Tools2d`
 pub use crate::ffi_types::TopOpeBRepBuild_Tools2d as Tools2d;
 
 unsafe impl crate::CppDeletable for Tools2d {
@@ -11227,10 +10905,10 @@ impl Tools2d {
         }
     }
 
-    /// **Source:** `TopOpeBRepBuild_Tools2d.hxx`:32 - `TopOpeBRepBuild_Tools2d::MakeMapOfShapeVertexInfo()`
+    /// **Source:** `TopOpeBRepBuild_Tools2d.hxx`:35 - `TopOpeBRepBuild_Tools2d::MakeMapOfShapeVertexInfo()`
     pub fn make_map_of_shape_vertex_info(
         aWire: &crate::topo_ds::Wire,
-        aMap: &mut crate::ffi_types::TopOpeBRepBuild_IndexedDataMapOfShapeVertexInfo,
+        aMap: &mut crate::ffi_types::NCollection_IndexedDataMap_TopoDS_Shape_TopOpeBRepBuild_VertexInfo_TopTools_ShapeMapHasher,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_Tools2d_make_map_of_shape_vertex_info(
@@ -11239,19 +10917,19 @@ impl Tools2d {
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_Tools2d.hxx`:36 - `TopOpeBRepBuild_Tools2d::DumpMapOfShapeVertexInfo()`
+    /// **Source:** `TopOpeBRepBuild_Tools2d.hxx`:40 - `TopOpeBRepBuild_Tools2d::DumpMapOfShapeVertexInfo()`
     pub fn dump_map_of_shape_vertex_info(
-        aMap: &crate::ffi_types::TopOpeBRepBuild_IndexedDataMapOfShapeVertexInfo,
+        aMap: &crate::ffi_types::NCollection_IndexedDataMap_TopoDS_Shape_TopOpeBRepBuild_VertexInfo_TopTools_ShapeMapHasher,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_Tools2d_dump_map_of_shape_vertex_info(aMap)
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_Tools2d.hxx`:39 - `TopOpeBRepBuild_Tools2d::Path()`
+    /// **Source:** `TopOpeBRepBuild_Tools2d.hxx`:45 - `TopOpeBRepBuild_Tools2d::Path()`
     pub fn path(
         aWire: &crate::topo_ds::Wire,
-        aResList: &mut crate::ffi_types::TopTools_ListOfShape,
+        aResList: &mut crate::ffi_types::NCollection_List_TopoDS_Shape,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_Tools2d_path(aWire, aResList)
@@ -11263,7 +10941,7 @@ impl Tools2d {
 // From TopOpeBRepBuild_VertexInfo.hxx
 // ========================
 
-/// **Source:** `TopOpeBRepBuild_VertexInfo.hxx`:29 - `TopOpeBRepBuild_VertexInfo`
+/// **Source:** `TopOpeBRepBuild_VertexInfo.hxx`:30 - `TopOpeBRepBuild_VertexInfo`
 pub use crate::ffi_types::TopOpeBRepBuild_VertexInfo as VertexInfo;
 
 unsafe impl crate::CppDeletable for VertexInfo {
@@ -11275,7 +10953,7 @@ unsafe impl crate::CppDeletable for VertexInfo {
 }
 
 impl VertexInfo {
-    /// **Source:** `TopOpeBRepBuild_VertexInfo.hxx`:34 - `TopOpeBRepBuild_VertexInfo::TopOpeBRepBuild_VertexInfo()`
+    /// **Source:** `TopOpeBRepBuild_VertexInfo.hxx`:35 - `TopOpeBRepBuild_VertexInfo::TopOpeBRepBuild_VertexInfo()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -11284,14 +10962,14 @@ impl VertexInfo {
         }
     }
 
-    /// **Source:** `TopOpeBRepBuild_VertexInfo.hxx`:36 - `TopOpeBRepBuild_VertexInfo::SetVertex()`
+    /// **Source:** `TopOpeBRepBuild_VertexInfo.hxx`:37 - `TopOpeBRepBuild_VertexInfo::SetVertex()`
     pub fn set_vertex(&mut self, aV: &crate::topo_ds::Vertex) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_VertexInfo_set_vertex(self as *mut Self, aV)
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_VertexInfo.hxx`:38 - `TopOpeBRepBuild_VertexInfo::Vertex()`
+    /// **Source:** `TopOpeBRepBuild_VertexInfo.hxx`:39 - `TopOpeBRepBuild_VertexInfo::Vertex()`
     pub fn vertex(&self) -> &crate::topo_ds::Vertex {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKBool::TopOpeBRepBuild_VertexInfo_vertex(
@@ -11300,49 +10978,49 @@ impl VertexInfo {
         }
     }
 
-    /// **Source:** `TopOpeBRepBuild_VertexInfo.hxx`:40 - `TopOpeBRepBuild_VertexInfo::SetSmart()`
+    /// **Source:** `TopOpeBRepBuild_VertexInfo.hxx`:41 - `TopOpeBRepBuild_VertexInfo::SetSmart()`
     pub fn set_smart(&mut self, aFlag: bool) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_VertexInfo_set_smart(self as *mut Self, aFlag)
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_VertexInfo.hxx`:42 - `TopOpeBRepBuild_VertexInfo::Smart()`
+    /// **Source:** `TopOpeBRepBuild_VertexInfo.hxx`:43 - `TopOpeBRepBuild_VertexInfo::Smart()`
     pub fn smart(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_VertexInfo_smart(self as *const Self)
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_VertexInfo.hxx`:44 - `TopOpeBRepBuild_VertexInfo::NbCases()`
+    /// **Source:** `TopOpeBRepBuild_VertexInfo.hxx`:45 - `TopOpeBRepBuild_VertexInfo::NbCases()`
     pub fn nb_cases(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_VertexInfo_nb_cases(self as *const Self)
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_VertexInfo.hxx`:46 - `TopOpeBRepBuild_VertexInfo::FoundOut()`
+    /// **Source:** `TopOpeBRepBuild_VertexInfo.hxx`:47 - `TopOpeBRepBuild_VertexInfo::FoundOut()`
     pub fn found_out(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_VertexInfo_found_out(self as *const Self)
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_VertexInfo.hxx`:48 - `TopOpeBRepBuild_VertexInfo::AddIn()`
+    /// **Source:** `TopOpeBRepBuild_VertexInfo.hxx`:49 - `TopOpeBRepBuild_VertexInfo::AddIn()`
     pub fn add_in(&mut self, anE: &crate::topo_ds::Edge) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_VertexInfo_add_in(self as *mut Self, anE)
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_VertexInfo.hxx`:50 - `TopOpeBRepBuild_VertexInfo::AddOut()`
+    /// **Source:** `TopOpeBRepBuild_VertexInfo.hxx`:51 - `TopOpeBRepBuild_VertexInfo::AddOut()`
     pub fn add_out(&mut self, anE: &crate::topo_ds::Edge) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_VertexInfo_add_out(self as *mut Self, anE)
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_VertexInfo.hxx`:52 - `TopOpeBRepBuild_VertexInfo::SetCurrentIn()`
+    /// **Source:** `TopOpeBRepBuild_VertexInfo.hxx`:53 - `TopOpeBRepBuild_VertexInfo::SetCurrentIn()`
     pub fn set_current_in(&mut self, anE: &crate::topo_ds::Edge) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_VertexInfo_set_current_in(
@@ -11352,8 +11030,8 @@ impl VertexInfo {
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_VertexInfo.hxx`:54 - `TopOpeBRepBuild_VertexInfo::EdgesIn()`
-    pub fn edges_in(&self) -> &crate::ffi_types::TopTools_IndexedMapOfOrientedShape {
+    /// **Source:** `TopOpeBRepBuild_VertexInfo.hxx`:55 - `TopOpeBRepBuild_VertexInfo::EdgesIn()`
+    pub fn edges_in(&self) -> &crate::ffi_types::NCollection_IndexedMap_TopoDS_Shape {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKBool::TopOpeBRepBuild_VertexInfo_edges_in(
                 self as *const Self,
@@ -11361,8 +11039,8 @@ impl VertexInfo {
         }
     }
 
-    /// **Source:** `TopOpeBRepBuild_VertexInfo.hxx`:56 - `TopOpeBRepBuild_VertexInfo::EdgesOut()`
-    pub fn edges_out(&self) -> &crate::ffi_types::TopTools_IndexedMapOfOrientedShape {
+    /// **Source:** `TopOpeBRepBuild_VertexInfo.hxx`:57 - `TopOpeBRepBuild_VertexInfo::EdgesOut()`
+    pub fn edges_out(&self) -> &crate::ffi_types::NCollection_IndexedMap_TopoDS_Shape {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKBool::TopOpeBRepBuild_VertexInfo_edges_out(
                 self as *const Self,
@@ -11370,10 +11048,10 @@ impl VertexInfo {
         }
     }
 
-    /// **Source:** `TopOpeBRepBuild_VertexInfo.hxx`:58 - `TopOpeBRepBuild_VertexInfo::ChangeEdgesOut()`
+    /// **Source:** `TopOpeBRepBuild_VertexInfo.hxx`:59 - `TopOpeBRepBuild_VertexInfo::ChangeEdgesOut()`
     pub fn change_edges_out(
         &mut self,
-    ) -> &mut crate::ffi_types::TopTools_IndexedMapOfOrientedShape {
+    ) -> &mut crate::ffi_types::NCollection_IndexedMap_TopoDS_Shape {
         unsafe {
             &mut *(crate::check_result(
                 crate::ffi_extern_TKBool::TopOpeBRepBuild_VertexInfo_change_edges_out(
@@ -11383,14 +11061,14 @@ impl VertexInfo {
         }
     }
 
-    /// **Source:** `TopOpeBRepBuild_VertexInfo.hxx`:60 - `TopOpeBRepBuild_VertexInfo::Dump()`
+    /// **Source:** `TopOpeBRepBuild_VertexInfo.hxx`:61 - `TopOpeBRepBuild_VertexInfo::Dump()`
     pub fn dump(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_VertexInfo_dump(self as *const Self)
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_VertexInfo.hxx`:62 - `TopOpeBRepBuild_VertexInfo::CurrentOut()`
+    /// **Source:** `TopOpeBRepBuild_VertexInfo.hxx`:63 - `TopOpeBRepBuild_VertexInfo::CurrentOut()`
     pub fn current_out(&mut self) -> &crate::topo_ds::Edge {
         unsafe {
             &*(crate::check_result(
@@ -11399,7 +11077,7 @@ impl VertexInfo {
         }
     }
 
-    /// **Source:** `TopOpeBRepBuild_VertexInfo.hxx`:64 - `TopOpeBRepBuild_VertexInfo::AppendPassed()`
+    /// **Source:** `TopOpeBRepBuild_VertexInfo.hxx`:65 - `TopOpeBRepBuild_VertexInfo::AppendPassed()`
     pub fn append_passed(&mut self, anE: &crate::topo_ds::Edge) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_VertexInfo_append_passed(
@@ -11409,15 +11087,15 @@ impl VertexInfo {
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_VertexInfo.hxx`:66 - `TopOpeBRepBuild_VertexInfo::RemovePassed()`
+    /// **Source:** `TopOpeBRepBuild_VertexInfo.hxx`:67 - `TopOpeBRepBuild_VertexInfo::RemovePassed()`
     pub fn remove_passed(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_VertexInfo_remove_passed(self as *mut Self)
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_VertexInfo.hxx`:68 - `TopOpeBRepBuild_VertexInfo::ListPassed()`
-    pub fn list_passed(&self) -> &crate::ffi_types::TopTools_ListOfShape {
+    /// **Source:** `TopOpeBRepBuild_VertexInfo.hxx`:69 - `TopOpeBRepBuild_VertexInfo::ListPassed()`
+    pub fn list_passed(&self) -> &crate::ffi_types::NCollection_List_TopoDS_Shape {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKBool::TopOpeBRepBuild_VertexInfo_list_passed(
@@ -11427,8 +11105,8 @@ impl VertexInfo {
         }
     }
 
-    /// **Source:** `TopOpeBRepBuild_VertexInfo.hxx`:70 - `TopOpeBRepBuild_VertexInfo::Prepare()`
-    pub fn prepare(&mut self, aL: &crate::ffi_types::TopTools_ListOfShape) {
+    /// **Source:** `TopOpeBRepBuild_VertexInfo.hxx`:71 - `TopOpeBRepBuild_VertexInfo::Prepare()`
+    pub fn prepare(&mut self, aL: &crate::ffi_types::NCollection_List_TopoDS_Shape) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_VertexInfo_prepare(self as *mut Self, aL)
         })
@@ -11468,8 +11146,8 @@ impl WireEdgeClassifier {
     /// **Source:** `TopOpeBRepBuild_WireEdgeClassifier.hxx`:46 - `TopOpeBRepBuild_WireEdgeClassifier::Compare()`
     pub fn compare(
         &mut self,
-        L1: &crate::ffi_types::HandleTopOpeBRepBuildLoop,
-        L2: &crate::ffi_types::HandleTopOpeBRepBuildLoop,
+        L1: &crate::ffi_types::Handle_TopOpeBRepBuild_Loop,
+        L2: &crate::ffi_types::Handle_TopOpeBRepBuild_Loop,
     ) -> crate::top_abs::State {
         crate::top_abs::State::try_from(crate::check_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_WireEdgeClassifier_compare(
@@ -11481,10 +11159,10 @@ impl WireEdgeClassifier {
         .unwrap()
     }
 
-    /// **Source:** `TopOpeBRepBuild_WireEdgeClassifier.hxx`:50 - `TopOpeBRepBuild_WireEdgeClassifier::LoopToShape()`
+    /// **Source:** `TopOpeBRepBuild_WireEdgeClassifier.hxx`:49 - `TopOpeBRepBuild_WireEdgeClassifier::LoopToShape()`
     pub fn loop_to_shape(
         &mut self,
-        L: &crate::ffi_types::HandleTopOpeBRepBuildLoop,
+        L: &crate::ffi_types::Handle_TopOpeBRepBuild_Loop,
     ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -11496,7 +11174,7 @@ impl WireEdgeClassifier {
         }
     }
 
-    /// **Source:** `TopOpeBRepBuild_WireEdgeClassifier.hxx`:53 - `TopOpeBRepBuild_WireEdgeClassifier::CompareShapes()`
+    /// **Source:** `TopOpeBRepBuild_WireEdgeClassifier.hxx`:52 - `TopOpeBRepBuild_WireEdgeClassifier::CompareShapes()`
     /// classify wire <B1> with wire <B2>
     pub fn compare_shapes(
         &mut self,
@@ -11513,7 +11191,7 @@ impl WireEdgeClassifier {
         .unwrap()
     }
 
-    /// **Source:** `TopOpeBRepBuild_WireEdgeClassifier.hxx`:57 - `TopOpeBRepBuild_WireEdgeClassifier::CompareElementToShape()`
+    /// **Source:** `TopOpeBRepBuild_WireEdgeClassifier.hxx`:56 - `TopOpeBRepBuild_WireEdgeClassifier::CompareElementToShape()`
     /// classify edge <E> with wire <B>
     pub fn compare_element_to_shape(
         &mut self,
@@ -11530,7 +11208,7 @@ impl WireEdgeClassifier {
         .unwrap()
     }
 
-    /// **Source:** `TopOpeBRepBuild_WireEdgeClassifier.hxx`:62 - `TopOpeBRepBuild_WireEdgeClassifier::ResetShape()`
+    /// **Source:** `TopOpeBRepBuild_WireEdgeClassifier.hxx`:61 - `TopOpeBRepBuild_WireEdgeClassifier::ResetShape()`
     /// prepare classification involving wire <B>
     /// calls ResetElement on first edge of <B>
     pub fn reset_shape(&mut self, B: &crate::topo_ds::Shape) {
@@ -11542,7 +11220,7 @@ impl WireEdgeClassifier {
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_WireEdgeClassifier.hxx`:66 - `TopOpeBRepBuild_WireEdgeClassifier::ResetElement()`
+    /// **Source:** `TopOpeBRepBuild_WireEdgeClassifier.hxx`:65 - `TopOpeBRepBuild_WireEdgeClassifier::ResetElement()`
     /// prepare classification involving edge <E>
     /// define 2D point (later used in Compare()) on first vertex of edge <E>.
     pub fn reset_element(&mut self, E: &crate::topo_ds::Shape) {
@@ -11554,7 +11232,7 @@ impl WireEdgeClassifier {
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_WireEdgeClassifier.hxx`:70 - `TopOpeBRepBuild_WireEdgeClassifier::CompareElement()`
+    /// **Source:** `TopOpeBRepBuild_WireEdgeClassifier.hxx`:69 - `TopOpeBRepBuild_WireEdgeClassifier::CompareElement()`
     /// Add the edge <E> in the set of edges used in 2D point
     /// classification.
     pub fn compare_element(&mut self, E: &crate::topo_ds::Shape) -> bool {
@@ -11566,7 +11244,7 @@ impl WireEdgeClassifier {
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_WireEdgeClassifier.hxx`:74 - `TopOpeBRepBuild_WireEdgeClassifier::State()`
+    /// **Source:** `TopOpeBRepBuild_WireEdgeClassifier.hxx`:73 - `TopOpeBRepBuild_WireEdgeClassifier::State()`
     /// Returns state of classification of 2D point, defined by
     /// ResetElement, with the current set of edges, defined by Compare.
     pub fn state(&mut self) -> crate::top_abs::State {
@@ -11609,7 +11287,7 @@ impl WireEdgeClassifier {
 // From TopOpeBRepBuild_WireEdgeSet.hxx
 // ========================
 
-/// **Source:** `TopOpeBRepBuild_WireEdgeSet.hxx`:40 - `TopOpeBRepBuild_WireEdgeSet`
+/// **Source:** `TopOpeBRepBuild_WireEdgeSet.hxx`:41 - `TopOpeBRepBuild_WireEdgeSet`
 /// a bound is a wire, a boundelement is an edge.
 /// The ShapeSet stores :
 /// - a list of wire (bounds),
@@ -11626,17 +11304,17 @@ unsafe impl crate::CppDeletable for WireEdgeSet {
 }
 
 impl WireEdgeSet {
-    /// **Source:** `TopOpeBRepBuild_WireEdgeSet.hxx`:48 - `TopOpeBRepBuild_WireEdgeSet::TopOpeBRepBuild_WireEdgeSet()`
+    /// **Source:** `TopOpeBRepBuild_WireEdgeSet.hxx`:49 - `TopOpeBRepBuild_WireEdgeSet::TopOpeBRepBuild_WireEdgeSet()`
     /// Creates a WireEdgeSet to build edges connected by vertices
     /// on face F. Edges of the WireEdgeSet must have a representation
     /// on surface of face F.
-    pub unsafe fn new_shape_address(
+    pub fn new_shape_voidptr(
         F: &crate::topo_ds::Shape,
         Addr: *mut std::ffi::c_void,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKBool::TopOpeBRepBuild_WireEdgeSet_ctor_shape_address(F, Addr),
+                crate::ffi_extern_TKBool::TopOpeBRepBuild_WireEdgeSet_ctor_shape_voidptr(F, Addr),
             ))
         }
     }
@@ -11705,7 +11383,7 @@ impl WireEdgeSet {
         &mut self,
         E: &crate::topo_ds::Shape,
         V: &crate::topo_ds::Shape,
-    ) -> &crate::ffi_types::TopTools_ListOfShape {
+    ) -> &crate::ffi_types::NCollection_List_TopoDS_Shape {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKBool::TopOpeBRepBuild_WireEdgeSet_make_neighbours_list(
@@ -11724,7 +11402,7 @@ impl WireEdgeSet {
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_WireEdgeSet.hxx`:77 - `TopOpeBRepBuild_WireEdgeSet::SName()`
+    /// **Source:** `TopOpeBRepBuild_WireEdgeSet.hxx`:78 - `TopOpeBRepBuild_WireEdgeSet::SName()`
     pub fn s_name_shape_asciistring2(
         &self,
         S: &crate::topo_ds::Shape,
@@ -11743,19 +11421,19 @@ impl WireEdgeSet {
         }
     }
 
-    /// **Source:** `TopOpeBRepBuild_WireEdgeSet.hxx`:82 - `TopOpeBRepBuild_WireEdgeSet::SName()`
-    pub fn s_name_listofshape_asciistring2(
+    /// **Source:** `TopOpeBRepBuild_WireEdgeSet.hxx`:83 - `TopOpeBRepBuild_WireEdgeSet::SName()`
+    pub fn s_name_list_shape_asciistring2(
         &self,
-        S: &crate::ffi_types::TopTools_ListOfShape,
+        S: &crate::ffi_types::NCollection_List_TopoDS_Shape,
         sb: &crate::t_collection::AsciiString,
         sa: &crate::t_collection::AsciiString,
     ) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKBool::TopOpeBRepBuild_WireEdgeSet_s_name_listofshape_asciistring2(self as *const Self, S, sb, sa)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKBool::TopOpeBRepBuild_WireEdgeSet_s_name_list_shape_asciistring2(self as *const Self, S, sb, sa)))
         }
     }
 
-    /// **Source:** `TopOpeBRepBuild_WireEdgeSet.hxx`:87 - `TopOpeBRepBuild_WireEdgeSet::SNameori()`
+    /// **Source:** `TopOpeBRepBuild_WireEdgeSet.hxx`:88 - `TopOpeBRepBuild_WireEdgeSet::SNameori()`
     pub fn s_nameori_shape_asciistring2(
         &self,
         S: &crate::topo_ds::Shape,
@@ -11774,15 +11452,15 @@ impl WireEdgeSet {
         }
     }
 
-    /// **Source:** `TopOpeBRepBuild_WireEdgeSet.hxx`:92 - `TopOpeBRepBuild_WireEdgeSet::SNameori()`
-    pub fn s_nameori_listofshape_asciistring2(
+    /// **Source:** `TopOpeBRepBuild_WireEdgeSet.hxx`:93 - `TopOpeBRepBuild_WireEdgeSet::SNameori()`
+    pub fn s_nameori_list_shape_asciistring2(
         &self,
-        S: &crate::ffi_types::TopTools_ListOfShape,
+        S: &crate::ffi_types::NCollection_List_TopoDS_Shape,
         sb: &crate::t_collection::AsciiString,
         sa: &crate::t_collection::AsciiString,
     ) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKBool::TopOpeBRepBuild_WireEdgeSet_s_nameori_listofshape_asciistring2(self as *const Self, S, sb, sa)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKBool::TopOpeBRepBuild_WireEdgeSet_s_nameori_list_shape_asciistring2(self as *const Self, S, sb, sa)))
         }
     }
 
@@ -11816,8 +11494,8 @@ impl WireEdgeSet {
         }
     }
 
-    /// Inherited: **Source:** `TopOpeBRepBuild_ShapeSet.hxx`:81 - `TopOpeBRepBuild_ShapeSet::StartElements()`
-    pub fn start_elements(&self) -> &crate::ffi_types::TopTools_ListOfShape {
+    /// Inherited: **Source:** `TopOpeBRepBuild_ShapeSet.hxx`:82 - `TopOpeBRepBuild_ShapeSet::StartElements()`
+    pub fn start_elements(&self) -> &crate::ffi_types::NCollection_List_TopoDS_Shape {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKBool::TopOpeBRepBuild_WireEdgeSet_inherited_StartElements(
@@ -11827,7 +11505,7 @@ impl WireEdgeSet {
         }
     }
 
-    /// Inherited: **Source:** `TopOpeBRepBuild_ShapeSet.hxx`:83 - `TopOpeBRepBuild_ShapeSet::InitShapes()`
+    /// Inherited: **Source:** `TopOpeBRepBuild_ShapeSet.hxx`:84 - `TopOpeBRepBuild_ShapeSet::InitShapes()`
     pub fn init_shapes(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_WireEdgeSet_inherited_InitShapes(
@@ -11836,7 +11514,7 @@ impl WireEdgeSet {
         })
     }
 
-    /// Inherited: **Source:** `TopOpeBRepBuild_ShapeSet.hxx`:85 - `TopOpeBRepBuild_ShapeSet::MoreShapes()`
+    /// Inherited: **Source:** `TopOpeBRepBuild_ShapeSet.hxx`:86 - `TopOpeBRepBuild_ShapeSet::MoreShapes()`
     pub fn more_shapes(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_WireEdgeSet_inherited_MoreShapes(
@@ -11845,7 +11523,7 @@ impl WireEdgeSet {
         })
     }
 
-    /// Inherited: **Source:** `TopOpeBRepBuild_ShapeSet.hxx`:87 - `TopOpeBRepBuild_ShapeSet::NextShape()`
+    /// Inherited: **Source:** `TopOpeBRepBuild_ShapeSet.hxx`:88 - `TopOpeBRepBuild_ShapeSet::NextShape()`
     pub fn next_shape(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_WireEdgeSet_inherited_NextShape(
@@ -11854,7 +11532,7 @@ impl WireEdgeSet {
         })
     }
 
-    /// Inherited: **Source:** `TopOpeBRepBuild_ShapeSet.hxx`:89 - `TopOpeBRepBuild_ShapeSet::Shape()`
+    /// Inherited: **Source:** `TopOpeBRepBuild_ShapeSet.hxx`:90 - `TopOpeBRepBuild_ShapeSet::Shape()`
     pub fn shape(&self) -> &crate::topo_ds::Shape {
         unsafe {
             &*(crate::check_result(
@@ -11865,7 +11543,7 @@ impl WireEdgeSet {
         }
     }
 
-    /// Inherited: **Source:** `TopOpeBRepBuild_ShapeSet.hxx`:91 - `TopOpeBRepBuild_ShapeSet::InitStartElements()`
+    /// Inherited: **Source:** `TopOpeBRepBuild_ShapeSet.hxx`:92 - `TopOpeBRepBuild_ShapeSet::InitStartElements()`
     pub fn init_start_elements(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_WireEdgeSet_inherited_InitStartElements(
@@ -11874,7 +11552,7 @@ impl WireEdgeSet {
         })
     }
 
-    /// Inherited: **Source:** `TopOpeBRepBuild_ShapeSet.hxx`:93 - `TopOpeBRepBuild_ShapeSet::MoreStartElements()`
+    /// Inherited: **Source:** `TopOpeBRepBuild_ShapeSet.hxx`:94 - `TopOpeBRepBuild_ShapeSet::MoreStartElements()`
     pub fn more_start_elements(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_WireEdgeSet_inherited_MoreStartElements(
@@ -11883,7 +11561,7 @@ impl WireEdgeSet {
         })
     }
 
-    /// Inherited: **Source:** `TopOpeBRepBuild_ShapeSet.hxx`:95 - `TopOpeBRepBuild_ShapeSet::NextStartElement()`
+    /// Inherited: **Source:** `TopOpeBRepBuild_ShapeSet.hxx`:96 - `TopOpeBRepBuild_ShapeSet::NextStartElement()`
     pub fn next_start_element(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_WireEdgeSet_inherited_NextStartElement(
@@ -11892,7 +11570,7 @@ impl WireEdgeSet {
         })
     }
 
-    /// Inherited: **Source:** `TopOpeBRepBuild_ShapeSet.hxx`:97 - `TopOpeBRepBuild_ShapeSet::StartElement()`
+    /// Inherited: **Source:** `TopOpeBRepBuild_ShapeSet.hxx`:98 - `TopOpeBRepBuild_ShapeSet::StartElement()`
     pub fn start_element(&self) -> &crate::topo_ds::Shape {
         unsafe {
             &*(crate::check_result(
@@ -11903,7 +11581,7 @@ impl WireEdgeSet {
         }
     }
 
-    /// Inherited: **Source:** `TopOpeBRepBuild_ShapeSet.hxx`:101 - `TopOpeBRepBuild_ShapeSet::MoreNeighbours()`
+    /// Inherited: **Source:** `TopOpeBRepBuild_ShapeSet.hxx`:102 - `TopOpeBRepBuild_ShapeSet::MoreNeighbours()`
     pub fn more_neighbours(&mut self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_WireEdgeSet_inherited_MoreNeighbours(
@@ -11912,7 +11590,7 @@ impl WireEdgeSet {
         })
     }
 
-    /// Inherited: **Source:** `TopOpeBRepBuild_ShapeSet.hxx`:103 - `TopOpeBRepBuild_ShapeSet::NextNeighbour()`
+    /// Inherited: **Source:** `TopOpeBRepBuild_ShapeSet.hxx`:104 - `TopOpeBRepBuild_ShapeSet::NextNeighbour()`
     pub fn next_neighbour(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_WireEdgeSet_inherited_NextNeighbour(
@@ -11921,7 +11599,7 @@ impl WireEdgeSet {
         })
     }
 
-    /// Inherited: **Source:** `TopOpeBRepBuild_ShapeSet.hxx`:105 - `TopOpeBRepBuild_ShapeSet::Neighbour()`
+    /// Inherited: **Source:** `TopOpeBRepBuild_ShapeSet.hxx`:106 - `TopOpeBRepBuild_ShapeSet::Neighbour()`
     pub fn neighbour(&self) -> &crate::topo_ds::Shape {
         unsafe {
             &*(crate::check_result(
@@ -11932,8 +11610,8 @@ impl WireEdgeSet {
         }
     }
 
-    /// Inherited: **Source:** `TopOpeBRepBuild_ShapeSet.hxx`:107 - `TopOpeBRepBuild_ShapeSet::ChangeStartShapes()`
-    pub fn change_start_shapes(&mut self) -> &mut crate::ffi_types::TopTools_ListOfShape {
+    /// Inherited: **Source:** `TopOpeBRepBuild_ShapeSet.hxx`:108 - `TopOpeBRepBuild_ShapeSet::ChangeStartShapes()`
+    pub fn change_start_shapes(&mut self) -> &mut crate::ffi_types::NCollection_List_TopoDS_Shape {
         unsafe {
             &mut *(crate::check_result(
                 crate::ffi_extern_TKBool::TopOpeBRepBuild_WireEdgeSet_inherited_ChangeStartShapes(
@@ -11943,7 +11621,7 @@ impl WireEdgeSet {
         }
     }
 
-    /// Inherited: **Source:** `TopOpeBRepBuild_ShapeSet.hxx`:117 - `TopOpeBRepBuild_ShapeSet::MaxNumberSubShape()`
+    /// Inherited: **Source:** `TopOpeBRepBuild_ShapeSet.hxx`:119 - `TopOpeBRepBuild_ShapeSet::MaxNumberSubShape()`
     pub fn max_number_sub_shape(&mut self, Shape: &crate::topo_ds::Shape) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_WireEdgeSet_inherited_MaxNumberSubShape(
@@ -11953,7 +11631,7 @@ impl WireEdgeSet {
         })
     }
 
-    /// Inherited: **Source:** `TopOpeBRepBuild_ShapeSet.hxx`:119 - `TopOpeBRepBuild_ShapeSet::CheckShape()`
+    /// Inherited: **Source:** `TopOpeBRepBuild_ShapeSet.hxx`:121 - `TopOpeBRepBuild_ShapeSet::CheckShape()`
     pub fn check_shape(&mut self, checkshape: bool) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_WireEdgeSet_inherited_CheckShape(
@@ -11963,7 +11641,7 @@ impl WireEdgeSet {
         })
     }
 
-    /// Inherited: **Source:** `TopOpeBRepBuild_ShapeSet.hxx`:126 - `TopOpeBRepBuild_ShapeSet::DumpName()`
+    /// Inherited: **Source:** `TopOpeBRepBuild_ShapeSet.hxx`:127 - `TopOpeBRepBuild_ShapeSet::DumpName()`
     pub fn dump_name(
         &self,
         OS: &mut crate::ffi_types::Standard_OStream,
@@ -11978,7 +11656,7 @@ impl WireEdgeSet {
         })
     }
 
-    /// Inherited: **Source:** `TopOpeBRepBuild_ShapeSet.hxx`:128 - `TopOpeBRepBuild_ShapeSet::DumpCheck()`
+    /// Inherited: **Source:** `TopOpeBRepBuild_ShapeSet.hxx`:129 - `TopOpeBRepBuild_ShapeSet::DumpCheck()`
     pub fn dump_check(
         &self,
         OS: &mut crate::ffi_types::Standard_OStream,
@@ -11997,7 +11675,7 @@ impl WireEdgeSet {
         })
     }
 
-    /// Inherited: **Source:** `TopOpeBRepBuild_ShapeSet.hxx`:135 - `TopOpeBRepBuild_ShapeSet::DumpBB()`
+    /// Inherited: **Source:** `TopOpeBRepBuild_ShapeSet.hxx`:136 - `TopOpeBRepBuild_ShapeSet::DumpBB()`
     pub fn dump_bb(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_WireEdgeSet_inherited_DumpBB(
@@ -12006,7 +11684,7 @@ impl WireEdgeSet {
         })
     }
 
-    /// Inherited: **Source:** `TopOpeBRepBuild_ShapeSet.hxx`:137 - `TopOpeBRepBuild_ShapeSet::DEBName()`
+    /// Inherited: **Source:** `TopOpeBRepBuild_ShapeSet.hxx`:138 - `TopOpeBRepBuild_ShapeSet::DEBName()`
     pub fn deb_name(&mut self, N: &crate::t_collection::AsciiString) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_WireEdgeSet_inherited_DEBName(
@@ -12016,7 +11694,7 @@ impl WireEdgeSet {
         })
     }
 
-    /// Inherited: **Source:** `TopOpeBRepBuild_ShapeSet.hxx`:141 - `TopOpeBRepBuild_ShapeSet::DEBNumber()`
+    /// Inherited: **Source:** `TopOpeBRepBuild_ShapeSet.hxx`:142 - `TopOpeBRepBuild_ShapeSet::DEBNumber()`
     pub fn deb_number(&mut self, I: i32) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_WireEdgeSet_inherited_DEBNumber(
@@ -12031,8 +11709,8 @@ impl WireEdgeSet {
 // From TopOpeBRepBuild_WireToFace.hxx
 // ========================
 
-/// **Source:** `TopOpeBRepBuild_WireToFace.hxx`:31 - `TopOpeBRepBuild_WireToFace`
-/// This class builds faces from a set of wires  SW and a face F.
+/// **Source:** `TopOpeBRepBuild_WireToFace.hxx`:32 - `TopOpeBRepBuild_WireToFace`
+/// This class builds faces from a set of wires SW and a face F.
 /// The face must have and underlying surface, say S.
 /// All of the edges of all of the wires must have a 2d representation
 /// on surface S (except if S is planar)
@@ -12047,7 +11725,7 @@ unsafe impl crate::CppDeletable for WireToFace {
 }
 
 impl WireToFace {
-    /// **Source:** `TopOpeBRepBuild_WireToFace.hxx`:36 - `TopOpeBRepBuild_WireToFace::TopOpeBRepBuild_WireToFace()`
+    /// **Source:** `TopOpeBRepBuild_WireToFace.hxx`:37 - `TopOpeBRepBuild_WireToFace::TopOpeBRepBuild_WireToFace()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -12056,25 +11734,25 @@ impl WireToFace {
         }
     }
 
-    /// **Source:** `TopOpeBRepBuild_WireToFace.hxx`:38 - `TopOpeBRepBuild_WireToFace::Init()`
+    /// **Source:** `TopOpeBRepBuild_WireToFace.hxx`:39 - `TopOpeBRepBuild_WireToFace::Init()`
     pub fn init(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_WireToFace_init(self as *mut Self)
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_WireToFace.hxx`:40 - `TopOpeBRepBuild_WireToFace::AddWire()`
+    /// **Source:** `TopOpeBRepBuild_WireToFace.hxx`:41 - `TopOpeBRepBuild_WireToFace::AddWire()`
     pub fn add_wire(&mut self, W: &crate::topo_ds::Wire) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_WireToFace_add_wire(self as *mut Self, W)
         })
     }
 
-    /// **Source:** `TopOpeBRepBuild_WireToFace.hxx`:42 - `TopOpeBRepBuild_WireToFace::MakeFaces()`
+    /// **Source:** `TopOpeBRepBuild_WireToFace.hxx`:43 - `TopOpeBRepBuild_WireToFace::MakeFaces()`
     pub fn make_faces(
         &mut self,
         F: &crate::topo_ds::Face,
-        LF: &mut crate::ffi_types::TopTools_ListOfShape,
+        LF: &mut crate::ffi_types::NCollection_List_TopoDS_Shape,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepBuild_WireToFace_make_faces(
@@ -12085,13 +11763,3 @@ impl WireToFace {
         })
     }
 }
-
-// ========================
-// Additional type re-exports
-// ========================
-
-pub use crate::ffi_types::{
-    TopOpeBRepBuild_IndexedDataMapOfShapeVertexInfo as IndexedDataMapOfShapeVertexInfo,
-    TopOpeBRepBuild_ListIteratorOfListOfLoop as ListIteratorOfListOfLoop,
-    TopOpeBRepBuild_ListOfLoop as ListOfLoop, TopOpeBRepBuild_ListOfPave as ListOfPave,
-};

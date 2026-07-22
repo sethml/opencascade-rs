@@ -58,7 +58,7 @@ impl MakeAxis1Placement {
 
     /// **Source:** `GeomToStep_MakeAxis1Placement.hxx`:50 - `GeomToStep_MakeAxis1Placement::GeomToStep_MakeAxis1Placement()`
     pub fn new_handlegeomaxis1placement_factors(
-        A: &crate::ffi_types::HandleGeomAxis1Placement,
+        A: &crate::ffi_types::Handle_Geom_Axis1Placement,
         theLocalFactors: &crate::step_data::Factors,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -68,7 +68,7 @@ impl MakeAxis1Placement {
 
     /// **Source:** `GeomToStep_MakeAxis1Placement.hxx`:54 - `GeomToStep_MakeAxis1Placement::GeomToStep_MakeAxis1Placement()`
     pub fn new_handlegeom2daxisplacement_factors(
-        A: &crate::ffi_types::HandleGeom2dAxisPlacement,
+        A: &crate::ffi_types::Handle_Geom2d_AxisPlacement,
         theLocalFactors: &crate::step_data::Factors,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -77,7 +77,7 @@ impl MakeAxis1Placement {
     }
 
     /// **Source:** `GeomToStep_MakeAxis1Placement.hxx`:58 - `GeomToStep_MakeAxis1Placement::Value()`
-    pub fn value(&self) -> &crate::ffi_types::HandleStepGeomAxis1Placement {
+    pub fn value(&self) -> &crate::ffi_types::Handle_StepGeom_Axis1Placement {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKDESTEP::GeomToStep_MakeAxis1Placement_value(
@@ -170,7 +170,7 @@ impl MakeAxis2Placement2d {
     }
 
     /// **Source:** `GeomToStep_MakeAxis2Placement2d.hxx`:47 - `GeomToStep_MakeAxis2Placement2d::Value()`
-    pub fn value(&self) -> &crate::ffi_types::HandleStepGeomAxis2Placement2d {
+    pub fn value(&self) -> &crate::ffi_types::Handle_StepGeom_Axis2Placement2d {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKDESTEP::GeomToStep_MakeAxis2Placement2d_value(
@@ -290,7 +290,7 @@ impl MakeAxis2Placement3d {
 
     /// **Source:** `GeomToStep_MakeAxis2Placement3d.hxx`:56 - `GeomToStep_MakeAxis2Placement3d::GeomToStep_MakeAxis2Placement3d()`
     pub fn new_handlegeomaxis2placement_factors(
-        A: &crate::ffi_types::HandleGeomAxis2Placement,
+        A: &crate::ffi_types::Handle_Geom_Axis2Placement,
         theLocalFactors: &crate::step_data::Factors,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -299,7 +299,7 @@ impl MakeAxis2Placement3d {
     }
 
     /// **Source:** `GeomToStep_MakeAxis2Placement3d.hxx`:60 - `GeomToStep_MakeAxis2Placement3d::Value()`
-    pub fn value(&self) -> &crate::ffi_types::HandleStepGeomAxis2Placement3d {
+    pub fn value(&self) -> &crate::ffi_types::Handle_StepGeom_Axis2Placement3d {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKDESTEP::GeomToStep_MakeAxis2Placement3d_value(
@@ -364,7 +364,7 @@ unsafe impl crate::CppDeletable for MakeBSplineCurveWithKnots {
 impl MakeBSplineCurveWithKnots {
     /// **Source:** `GeomToStep_MakeBSplineCurveWithKnots.hxx`:39 - `GeomToStep_MakeBSplineCurveWithKnots::GeomToStep_MakeBSplineCurveWithKnots()`
     pub fn new_handlegeombsplinecurve_factors(
-        Bsplin: &crate::ffi_types::HandleGeomBSplineCurve,
+        Bsplin: &crate::ffi_types::Handle_Geom_BSplineCurve,
         theLocalFactors: &crate::step_data::Factors,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -374,7 +374,7 @@ impl MakeBSplineCurveWithKnots {
 
     /// **Source:** `GeomToStep_MakeBSplineCurveWithKnots.hxx`:43 - `GeomToStep_MakeBSplineCurveWithKnots::GeomToStep_MakeBSplineCurveWithKnots()`
     pub fn new_handlegeom2dbsplinecurve_factors(
-        Bsplin: &crate::ffi_types::HandleGeom2dBSplineCurve,
+        Bsplin: &crate::ffi_types::Handle_Geom2d_BSplineCurve,
         theLocalFactors: &crate::step_data::Factors,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -383,7 +383,7 @@ impl MakeBSplineCurveWithKnots {
     }
 
     /// **Source:** `GeomToStep_MakeBSplineCurveWithKnots.hxx`:47 - `GeomToStep_MakeBSplineCurveWithKnots::Value()`
-    pub fn value(&self) -> &crate::ffi_types::HandleStepGeomBSplineCurveWithKnots {
+    pub fn value(&self) -> &crate::ffi_types::Handle_StepGeom_BSplineCurveWithKnots {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKDESTEP::GeomToStep_MakeBSplineCurveWithKnots_value(
@@ -444,7 +444,7 @@ unsafe impl crate::CppDeletable for MakeBSplineCurveWithKnotsAndRationalBSplineC
 impl MakeBSplineCurveWithKnotsAndRationalBSplineCurve {
     /// **Source:** `GeomToStep_MakeBSplineCurveWithKnotsAndRationalBSplineCurve.hxx`:40 - `GeomToStep_MakeBSplineCurveWithKnotsAndRationalBSplineCurve::GeomToStep_MakeBSplineCurveWithKnotsAndRationalBSplineCurve()`
     pub fn new_handlegeombsplinecurve_factors(
-        Bsplin: &crate::ffi_types::HandleGeomBSplineCurve,
+        Bsplin: &crate::ffi_types::Handle_Geom_BSplineCurve,
         theLocalFactors: &crate::step_data::Factors,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -454,7 +454,7 @@ impl MakeBSplineCurveWithKnotsAndRationalBSplineCurve {
 
     /// **Source:** `GeomToStep_MakeBSplineCurveWithKnotsAndRationalBSplineCurve.hxx`:44 - `GeomToStep_MakeBSplineCurveWithKnotsAndRationalBSplineCurve::GeomToStep_MakeBSplineCurveWithKnotsAndRationalBSplineCurve()`
     pub fn new_handlegeom2dbsplinecurve_factors(
-        Bsplin: &crate::ffi_types::HandleGeom2dBSplineCurve,
+        Bsplin: &crate::ffi_types::Handle_Geom2d_BSplineCurve,
         theLocalFactors: &crate::step_data::Factors,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -465,7 +465,7 @@ impl MakeBSplineCurveWithKnotsAndRationalBSplineCurve {
     /// **Source:** `GeomToStep_MakeBSplineCurveWithKnotsAndRationalBSplineCurve.hxx`:48 - `GeomToStep_MakeBSplineCurveWithKnotsAndRationalBSplineCurve::Value()`
     pub fn value(
         &self,
-    ) -> &crate::ffi_types::HandleStepGeomBSplineCurveWithKnotsAndRationalBSplineCurve {
+    ) -> &crate::ffi_types::Handle_StepGeom_BSplineCurveWithKnotsAndRationalBSplineCurve {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKDESTEP::GeomToStep_MakeBSplineCurveWithKnotsAndRationalBSplineCurve_value(self as *const Self)))
         }
@@ -516,7 +516,7 @@ unsafe impl crate::CppDeletable for MakeBSplineSurfaceWithKnots {
 impl MakeBSplineSurfaceWithKnots {
     /// **Source:** `GeomToStep_MakeBSplineSurfaceWithKnots.hxx`:38 - `GeomToStep_MakeBSplineSurfaceWithKnots::GeomToStep_MakeBSplineSurfaceWithKnots()`
     pub fn new_handlegeombsplinesurface_factors(
-        Bsplin: &crate::ffi_types::HandleGeomBSplineSurface,
+        Bsplin: &crate::ffi_types::Handle_Geom_BSplineSurface,
         theLocalFactors: &crate::step_data::Factors,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -525,7 +525,7 @@ impl MakeBSplineSurfaceWithKnots {
     }
 
     /// **Source:** `GeomToStep_MakeBSplineSurfaceWithKnots.hxx`:42 - `GeomToStep_MakeBSplineSurfaceWithKnots::Value()`
-    pub fn value(&self) -> &crate::ffi_types::HandleStepGeomBSplineSurfaceWithKnots {
+    pub fn value(&self) -> &crate::ffi_types::Handle_StepGeom_BSplineSurfaceWithKnots {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKDESTEP::GeomToStep_MakeBSplineSurfaceWithKnots_value(
@@ -582,7 +582,7 @@ unsafe impl crate::CppDeletable for MakeBSplineSurfaceWithKnotsAndRationalBSplin
 impl MakeBSplineSurfaceWithKnotsAndRationalBSplineSurface {
     /// **Source:** `GeomToStep_MakeBSplineSurfaceWithKnotsAndRationalBSplineSurface.hxx`:39 - `GeomToStep_MakeBSplineSurfaceWithKnotsAndRationalBSplineSurface::GeomToStep_MakeBSplineSurfaceWithKnotsAndRationalBSplineSurface()`
     pub fn new_handlegeombsplinesurface_factors(
-        Bsplin: &crate::ffi_types::HandleGeomBSplineSurface,
+        Bsplin: &crate::ffi_types::Handle_Geom_BSplineSurface,
         theLocalFactors: &crate::step_data::Factors,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -590,10 +590,10 @@ impl MakeBSplineSurfaceWithKnotsAndRationalBSplineSurface {
         }
     }
 
-    /// **Source:** `GeomToStep_MakeBSplineSurfaceWithKnotsAndRationalBSplineSurface.hxx`:43 - `GeomToStep_MakeBSplineSurfaceWithKnotsAndRationalBSplineSurface::Value()`
+    /// **Source:** `GeomToStep_MakeBSplineSurfaceWithKnotsAndRationalBSplineSurface.hxx`:44 - `GeomToStep_MakeBSplineSurfaceWithKnotsAndRationalBSplineSurface::Value()`
     pub fn value(
         &self,
-    ) -> &crate::ffi_types::HandleStepGeomBSplineSurfaceWithKnotsAndRationalBSplineSurface {
+    ) -> &crate::ffi_types::Handle_StepGeom_BSplineSurfaceWithKnotsAndRationalBSplineSurface {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKDESTEP::GeomToStep_MakeBSplineSurfaceWithKnotsAndRationalBSplineSurface_value(self as *const Self)))
         }
@@ -644,7 +644,7 @@ unsafe impl crate::CppDeletable for MakeBoundedCurve {
 impl MakeBoundedCurve {
     /// **Source:** `GeomToStep_MakeBoundedCurve.hxx`:40 - `GeomToStep_MakeBoundedCurve::GeomToStep_MakeBoundedCurve()`
     pub fn new_handlegeomboundedcurve_factors(
-        C: &crate::ffi_types::HandleGeomBoundedCurve,
+        C: &crate::ffi_types::Handle_Geom_BoundedCurve,
         theLocalFactors: &crate::step_data::Factors,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -654,7 +654,7 @@ impl MakeBoundedCurve {
 
     /// **Source:** `GeomToStep_MakeBoundedCurve.hxx`:44 - `GeomToStep_MakeBoundedCurve::GeomToStep_MakeBoundedCurve()`
     pub fn new_handlegeom2dboundedcurve_factors(
-        C: &crate::ffi_types::HandleGeom2dBoundedCurve,
+        C: &crate::ffi_types::Handle_Geom2d_BoundedCurve,
         theLocalFactors: &crate::step_data::Factors,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -663,7 +663,7 @@ impl MakeBoundedCurve {
     }
 
     /// **Source:** `GeomToStep_MakeBoundedCurve.hxx`:48 - `GeomToStep_MakeBoundedCurve::Value()`
-    pub fn value(&self) -> &crate::ffi_types::HandleStepGeomBoundedCurve {
+    pub fn value(&self) -> &crate::ffi_types::Handle_StepGeom_BoundedCurve {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKDESTEP::GeomToStep_MakeBoundedCurve_value(
                 self as *const Self,
@@ -726,7 +726,7 @@ unsafe impl crate::CppDeletable for MakeBoundedSurface {
 impl MakeBoundedSurface {
     /// **Source:** `GeomToStep_MakeBoundedSurface.hxx`:39 - `GeomToStep_MakeBoundedSurface::GeomToStep_MakeBoundedSurface()`
     pub fn new_handlegeomboundedsurface_factors(
-        C: &crate::ffi_types::HandleGeomBoundedSurface,
+        C: &crate::ffi_types::Handle_Geom_BoundedSurface,
         theLocalFactors: &crate::step_data::Factors,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -735,7 +735,7 @@ impl MakeBoundedSurface {
     }
 
     /// **Source:** `GeomToStep_MakeBoundedSurface.hxx`:43 - `GeomToStep_MakeBoundedSurface::Value()`
-    pub fn value(&self) -> &crate::ffi_types::HandleStepGeomBoundedSurface {
+    pub fn value(&self) -> &crate::ffi_types::Handle_StepGeom_BoundedSurface {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKDESTEP::GeomToStep_MakeBoundedSurface_value(
@@ -819,7 +819,7 @@ impl MakeCartesianPoint {
 
     /// **Source:** `GeomToStep_MakeCartesianPoint.hxx`:45 - `GeomToStep_MakeCartesianPoint::GeomToStep_MakeCartesianPoint()`
     pub fn new_handlegeomcartesianpoint_real(
-        P: &crate::ffi_types::HandleGeomCartesianPoint,
+        P: &crate::ffi_types::Handle_Geom_CartesianPoint,
         aFactor: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -829,7 +829,7 @@ impl MakeCartesianPoint {
 
     /// **Source:** `GeomToStep_MakeCartesianPoint.hxx`:48 - `GeomToStep_MakeCartesianPoint::GeomToStep_MakeCartesianPoint()`
     pub fn new_handlegeom2dcartesianpoint(
-        P: &crate::ffi_types::HandleGeom2dCartesianPoint,
+        P: &crate::ffi_types::Handle_Geom2d_CartesianPoint,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::GeomToStep_MakeCartesianPoint_ctor_handlegeom2dcartesianpoint(P)))
@@ -837,7 +837,7 @@ impl MakeCartesianPoint {
     }
 
     /// **Source:** `GeomToStep_MakeCartesianPoint.hxx`:50 - `GeomToStep_MakeCartesianPoint::Value()`
-    pub fn value(&self) -> &crate::ffi_types::HandleStepGeomCartesianPoint {
+    pub fn value(&self) -> &crate::ffi_types::Handle_StepGeom_CartesianPoint {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKDESTEP::GeomToStep_MakeCartesianPoint_value(
@@ -880,6 +880,75 @@ impl MakeCartesianPoint {
 }
 
 // ========================
+// From GeomToStep_MakeCartesianTransformationOperator.hxx
+// ========================
+
+/// **Source:** `GeomToStep_MakeCartesianTransformationOperator.hxx`:30 - `GeomToStep_MakeCartesianTransformationOperator`
+/// This class creates a cartesian_transformation_operator from gp_Trsf.
+/// This entity is used in OCCT to implement a transformation with scaling.
+/// In case of other inputs without scaling use Axis2Placement3d.
+pub use crate::ffi_types::GeomToStep_MakeCartesianTransformationOperator as MakeCartesianTransformationOperator;
+
+unsafe impl crate::CppDeletable for MakeCartesianTransformationOperator {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            crate::ffi_extern_TKDESTEP::GeomToStep_MakeCartesianTransformationOperator_destructor(
+                ptr,
+            );
+        }
+    }
+}
+
+impl MakeCartesianTransformationOperator {
+    /// **Source:** `GeomToStep_MakeCartesianTransformationOperator.hxx`:38 - `GeomToStep_MakeCartesianTransformationOperator::GeomToStep_MakeCartesianTransformationOperator()`
+    /// Main constructor.
+    /// @param[in] theTrsf Transformation to create the operator from it.
+    /// @param[in] theLocalFactors Unit scale factors
+    pub fn new_trsf_factors(
+        theTrsf: &crate::gp::Trsf,
+        theLocalFactors: &crate::step_data::Factors,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::GeomToStep_MakeCartesianTransformationOperator_ctor_trsf_factors(theTrsf, theLocalFactors)))
+        }
+    }
+
+    /// **Source:** `GeomToStep_MakeCartesianTransformationOperator.hxx`:44 - `GeomToStep_MakeCartesianTransformationOperator::Value()`
+    /// Returns the created entity.
+    /// @return The created value.
+    pub fn value(&self) -> &crate::ffi_types::Handle_StepGeom_CartesianTransformationOperator3d {
+        unsafe {
+            &*(crate::check_result(
+                crate::ffi_extern_TKDESTEP::GeomToStep_MakeCartesianTransformationOperator_value(
+                    self as *const Self,
+                ),
+            ))
+        }
+    }
+
+    /// Upcast to GeomToStep_Root
+    pub fn as_root(&self) -> &Root {
+        unsafe {
+            &*crate::check_result(crate::ffi_extern_TKDESTEP::GeomToStep_MakeCartesianTransformationOperator_as_GeomToStep_Root(self as *const Self))
+        }
+    }
+
+    /// Upcast to GeomToStep_Root (mutable)
+    pub fn as_root_mut(&mut self) -> &mut Root {
+        unsafe {
+            &mut *crate::check_result(crate::ffi_extern_TKDESTEP::GeomToStep_MakeCartesianTransformationOperator_as_GeomToStep_Root_mut(self as *mut Self))
+        }
+    }
+
+    /// Inherited: **Source:** `GeomToStep_Root.hxx`:34 - `GeomToStep_Root::IsDone()`
+    pub fn is_done(&self) -> bool {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKDESTEP::GeomToStep_MakeCartesianTransformationOperator_inherited_IsDone(self as *const Self)
+        })
+    }
+}
+
+// ========================
 // From GeomToStep_MakeCircle.hxx
 // ========================
 
@@ -916,7 +985,7 @@ impl MakeCircle {
 
     /// **Source:** `GeomToStep_MakeCircle.hxx`:44 - `GeomToStep_MakeCircle::GeomToStep_MakeCircle()`
     pub fn new_handlegeomcircle_factors(
-        C: &crate::ffi_types::HandleGeomCircle,
+        C: &crate::ffi_types::Handle_Geom_Circle,
         theLocalFactors: &crate::step_data::Factors,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -931,7 +1000,7 @@ impl MakeCircle {
 
     /// **Source:** `GeomToStep_MakeCircle.hxx`:48 - `GeomToStep_MakeCircle::GeomToStep_MakeCircle()`
     pub fn new_handlegeom2dcircle_factors(
-        C: &crate::ffi_types::HandleGeom2dCircle,
+        C: &crate::ffi_types::Handle_Geom2d_Circle,
         theLocalFactors: &crate::step_data::Factors,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -945,7 +1014,7 @@ impl MakeCircle {
     }
 
     /// **Source:** `GeomToStep_MakeCircle.hxx`:52 - `GeomToStep_MakeCircle::Value()`
-    pub fn value(&self) -> &crate::ffi_types::HandleStepGeomCircle {
+    pub fn value(&self) -> &crate::ffi_types::Handle_StepGeom_Circle {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKDESTEP::GeomToStep_MakeCircle_value(
                 self as *const Self,
@@ -1005,7 +1074,7 @@ unsafe impl crate::CppDeletable for MakeConic {
 impl MakeConic {
     /// **Source:** `GeomToStep_MakeConic.hxx`:38 - `GeomToStep_MakeConic::GeomToStep_MakeConic()`
     pub fn new_handlegeomconic_factors(
-        C: &crate::ffi_types::HandleGeomConic,
+        C: &crate::ffi_types::Handle_Geom_Conic,
         theLocalFactors: &crate::step_data::Factors,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -1020,7 +1089,7 @@ impl MakeConic {
 
     /// **Source:** `GeomToStep_MakeConic.hxx`:42 - `GeomToStep_MakeConic::GeomToStep_MakeConic()`
     pub fn new_handlegeom2dconic_factors(
-        C: &crate::ffi_types::HandleGeom2dConic,
+        C: &crate::ffi_types::Handle_Geom2d_Conic,
         theLocalFactors: &crate::step_data::Factors,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -1034,7 +1103,7 @@ impl MakeConic {
     }
 
     /// **Source:** `GeomToStep_MakeConic.hxx`:46 - `GeomToStep_MakeConic::Value()`
-    pub fn value(&self) -> &crate::ffi_types::HandleStepGeomConic {
+    pub fn value(&self) -> &crate::ffi_types::Handle_StepGeom_Conic {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKDESTEP::GeomToStep_MakeConic_value(
                 self as *const Self,
@@ -1094,7 +1163,7 @@ unsafe impl crate::CppDeletable for MakeConicalSurface {
 impl MakeConicalSurface {
     /// **Source:** `GeomToStep_MakeConicalSurface.hxx`:37 - `GeomToStep_MakeConicalSurface::GeomToStep_MakeConicalSurface()`
     pub fn new_handlegeomconicalsurface_factors(
-        CSurf: &crate::ffi_types::HandleGeomConicalSurface,
+        CSurf: &crate::ffi_types::Handle_Geom_ConicalSurface,
         theLocalFactors: &crate::step_data::Factors,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -1103,7 +1172,7 @@ impl MakeConicalSurface {
     }
 
     /// **Source:** `GeomToStep_MakeConicalSurface.hxx`:41 - `GeomToStep_MakeConicalSurface::Value()`
-    pub fn value(&self) -> &crate::ffi_types::HandleStepGeomConicalSurface {
+    pub fn value(&self) -> &crate::ffi_types::Handle_StepGeom_ConicalSurface {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKDESTEP::GeomToStep_MakeConicalSurface_value(
@@ -1167,7 +1236,7 @@ unsafe impl crate::CppDeletable for MakeCurve {
 impl MakeCurve {
     /// **Source:** `GeomToStep_MakeCurve.hxx`:38 - `GeomToStep_MakeCurve::GeomToStep_MakeCurve()`
     pub fn new_handlegeomcurve_factors(
-        C: &crate::ffi_types::HandleGeomCurve,
+        C: &crate::ffi_types::Handle_Geom_Curve,
         theLocalFactors: &crate::step_data::Factors,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -1182,7 +1251,7 @@ impl MakeCurve {
 
     /// **Source:** `GeomToStep_MakeCurve.hxx`:42 - `GeomToStep_MakeCurve::GeomToStep_MakeCurve()`
     pub fn new_handlegeom2dcurve_factors(
-        C: &crate::ffi_types::HandleGeom2dCurve,
+        C: &crate::ffi_types::Handle_Geom2d_Curve,
         theLocalFactors: &crate::step_data::Factors,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -1196,7 +1265,7 @@ impl MakeCurve {
     }
 
     /// **Source:** `GeomToStep_MakeCurve.hxx`:46 - `GeomToStep_MakeCurve::Value()`
-    pub fn value(&self) -> &crate::ffi_types::HandleStepGeomCurve {
+    pub fn value(&self) -> &crate::ffi_types::Handle_StepGeom_Curve {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKDESTEP::GeomToStep_MakeCurve_value(
                 self as *const Self,
@@ -1256,7 +1325,7 @@ unsafe impl crate::CppDeletable for MakeCylindricalSurface {
 impl MakeCylindricalSurface {
     /// **Source:** `GeomToStep_MakeCylindricalSurface.hxx`:37 - `GeomToStep_MakeCylindricalSurface::GeomToStep_MakeCylindricalSurface()`
     pub fn new_handlegeomcylindricalsurface_factors(
-        CSurf: &crate::ffi_types::HandleGeomCylindricalSurface,
+        CSurf: &crate::ffi_types::Handle_Geom_CylindricalSurface,
         theLocalFactors: &crate::step_data::Factors,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -1265,7 +1334,7 @@ impl MakeCylindricalSurface {
     }
 
     /// **Source:** `GeomToStep_MakeCylindricalSurface.hxx`:41 - `GeomToStep_MakeCylindricalSurface::Value()`
-    pub fn value(&self) -> &crate::ffi_types::HandleStepGeomCylindricalSurface {
+    pub fn value(&self) -> &crate::ffi_types::Handle_StepGeom_CylindricalSurface {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKDESTEP::GeomToStep_MakeCylindricalSurface_value(
@@ -1343,7 +1412,7 @@ impl MakeDirection {
 
     /// **Source:** `GeomToStep_MakeDirection.hxx`:44 - `GeomToStep_MakeDirection::GeomToStep_MakeDirection()`
     pub fn new_handlegeomdirection(
-        D: &crate::ffi_types::HandleGeomDirection,
+        D: &crate::ffi_types::Handle_Geom_Direction,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -1354,7 +1423,7 @@ impl MakeDirection {
 
     /// **Source:** `GeomToStep_MakeDirection.hxx`:46 - `GeomToStep_MakeDirection::GeomToStep_MakeDirection()`
     pub fn new_handlegeom2ddirection(
-        D: &crate::ffi_types::HandleGeom2dDirection,
+        D: &crate::ffi_types::Handle_Geom2d_Direction,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -1364,7 +1433,7 @@ impl MakeDirection {
     }
 
     /// **Source:** `GeomToStep_MakeDirection.hxx`:48 - `GeomToStep_MakeDirection::Value()`
-    pub fn value(&self) -> &crate::ffi_types::HandleStepGeomDirection {
+    pub fn value(&self) -> &crate::ffi_types::Handle_StepGeom_Direction {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKDESTEP::GeomToStep_MakeDirection_value(
                 self as *const Self,
@@ -1427,7 +1496,7 @@ unsafe impl crate::CppDeletable for MakeElementarySurface {
 impl MakeElementarySurface {
     /// **Source:** `GeomToStep_MakeElementarySurface.hxx`:39 - `GeomToStep_MakeElementarySurface::GeomToStep_MakeElementarySurface()`
     pub fn new_handlegeomelementarysurface_factors(
-        S: &crate::ffi_types::HandleGeomElementarySurface,
+        S: &crate::ffi_types::Handle_Geom_ElementarySurface,
         theLocalFactors: &crate::step_data::Factors,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -1436,7 +1505,7 @@ impl MakeElementarySurface {
     }
 
     /// **Source:** `GeomToStep_MakeElementarySurface.hxx`:43 - `GeomToStep_MakeElementarySurface::Value()`
-    pub fn value(&self) -> &crate::ffi_types::HandleStepGeomElementarySurface {
+    pub fn value(&self) -> &crate::ffi_types::Handle_StepGeom_ElementarySurface {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKDESTEP::GeomToStep_MakeElementarySurface_value(
@@ -1515,7 +1584,7 @@ impl MakeEllipse {
 
     /// **Source:** `GeomToStep_MakeEllipse.hxx`:44 - `GeomToStep_MakeEllipse::GeomToStep_MakeEllipse()`
     pub fn new_handlegeomellipse_factors(
-        C: &crate::ffi_types::HandleGeomEllipse,
+        C: &crate::ffi_types::Handle_Geom_Ellipse,
         theLocalFactors: &crate::step_data::Factors,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -1530,7 +1599,7 @@ impl MakeEllipse {
 
     /// **Source:** `GeomToStep_MakeEllipse.hxx`:48 - `GeomToStep_MakeEllipse::GeomToStep_MakeEllipse()`
     pub fn new_handlegeom2dellipse_factors(
-        C: &crate::ffi_types::HandleGeom2dEllipse,
+        C: &crate::ffi_types::Handle_Geom2d_Ellipse,
         theLocalFactors: &crate::step_data::Factors,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -1544,7 +1613,7 @@ impl MakeEllipse {
     }
 
     /// **Source:** `GeomToStep_MakeEllipse.hxx`:52 - `GeomToStep_MakeEllipse::Value()`
-    pub fn value(&self) -> &crate::ffi_types::HandleStepGeomEllipse {
+    pub fn value(&self) -> &crate::ffi_types::Handle_StepGeom_Ellipse {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKDESTEP::GeomToStep_MakeEllipse_value(
                 self as *const Self,
@@ -1603,7 +1672,7 @@ unsafe impl crate::CppDeletable for MakeHyperbola {
 impl MakeHyperbola {
     /// **Source:** `GeomToStep_MakeHyperbola.hxx`:37 - `GeomToStep_MakeHyperbola::GeomToStep_MakeHyperbola()`
     pub fn new_handlegeom2dhyperbola_factors(
-        C: &crate::ffi_types::HandleGeom2dHyperbola,
+        C: &crate::ffi_types::Handle_Geom2d_Hyperbola,
         theLocalFactors: &crate::step_data::Factors,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -1613,7 +1682,7 @@ impl MakeHyperbola {
 
     /// **Source:** `GeomToStep_MakeHyperbola.hxx`:41 - `GeomToStep_MakeHyperbola::GeomToStep_MakeHyperbola()`
     pub fn new_handlegeomhyperbola_factors(
-        C: &crate::ffi_types::HandleGeomHyperbola,
+        C: &crate::ffi_types::Handle_Geom_Hyperbola,
         theLocalFactors: &crate::step_data::Factors,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -1622,7 +1691,7 @@ impl MakeHyperbola {
     }
 
     /// **Source:** `GeomToStep_MakeHyperbola.hxx`:45 - `GeomToStep_MakeHyperbola::Value()`
-    pub fn value(&self) -> &crate::ffi_types::HandleStepGeomHyperbola {
+    pub fn value(&self) -> &crate::ffi_types::Handle_StepGeom_Hyperbola {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKDESTEP::GeomToStep_MakeHyperbola_value(
                 self as *const Self,
@@ -1714,7 +1783,7 @@ impl MakeLine {
 
     /// **Source:** `GeomToStep_MakeLine.hxx`:46 - `GeomToStep_MakeLine::GeomToStep_MakeLine()`
     pub fn new_handlegeomline_factors(
-        C: &crate::ffi_types::HandleGeomLine,
+        C: &crate::ffi_types::Handle_Geom_Line,
         theLocalFactors: &crate::step_data::Factors,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -1729,7 +1798,7 @@ impl MakeLine {
 
     /// **Source:** `GeomToStep_MakeLine.hxx`:49 - `GeomToStep_MakeLine::GeomToStep_MakeLine()`
     pub fn new_handlegeom2dline_factors(
-        C: &crate::ffi_types::HandleGeom2dLine,
+        C: &crate::ffi_types::Handle_Geom2d_Line,
         theLocalFactors: &crate::step_data::Factors,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -1743,7 +1812,7 @@ impl MakeLine {
     }
 
     /// **Source:** `GeomToStep_MakeLine.hxx`:52 - `GeomToStep_MakeLine::Value()`
-    pub fn value(&self) -> &crate::ffi_types::HandleStepGeomLine {
+    pub fn value(&self) -> &crate::ffi_types::Handle_StepGeom_Line {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKDESTEP::GeomToStep_MakeLine_value(
                 self as *const Self,
@@ -1802,7 +1871,7 @@ unsafe impl crate::CppDeletable for MakeParabola {
 impl MakeParabola {
     /// **Source:** `GeomToStep_MakeParabola.hxx`:37 - `GeomToStep_MakeParabola::GeomToStep_MakeParabola()`
     pub fn new_handlegeom2dparabola_factors(
-        C: &crate::ffi_types::HandleGeom2dParabola,
+        C: &crate::ffi_types::Handle_Geom2d_Parabola,
         theLocalFactors: &crate::step_data::Factors,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -1812,7 +1881,7 @@ impl MakeParabola {
 
     /// **Source:** `GeomToStep_MakeParabola.hxx`:41 - `GeomToStep_MakeParabola::GeomToStep_MakeParabola()`
     pub fn new_handlegeomparabola_factors(
-        C: &crate::ffi_types::HandleGeomParabola,
+        C: &crate::ffi_types::Handle_Geom_Parabola,
         theLocalFactors: &crate::step_data::Factors,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -1826,7 +1895,7 @@ impl MakeParabola {
     }
 
     /// **Source:** `GeomToStep_MakeParabola.hxx`:45 - `GeomToStep_MakeParabola::Value()`
-    pub fn value(&self) -> &crate::ffi_types::HandleStepGeomParabola {
+    pub fn value(&self) -> &crate::ffi_types::Handle_StepGeom_Parabola {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKDESTEP::GeomToStep_MakeParabola_value(
                 self as *const Self,
@@ -1903,7 +1972,7 @@ impl MakePlane {
 
     /// **Source:** `GeomToStep_MakePlane.hxx`:42 - `GeomToStep_MakePlane::GeomToStep_MakePlane()`
     pub fn new_handlegeomplane_factors(
-        P: &crate::ffi_types::HandleGeomPlane,
+        P: &crate::ffi_types::Handle_Geom_Plane,
         theLocalFactors: &crate::step_data::Factors,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -1917,7 +1986,7 @@ impl MakePlane {
     }
 
     /// **Source:** `GeomToStep_MakePlane.hxx`:46 - `GeomToStep_MakePlane::Value()`
-    pub fn value(&self) -> &crate::ffi_types::HandleStepGeomPlane {
+    pub fn value(&self) -> &crate::ffi_types::Handle_StepGeom_Plane {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKDESTEP::GeomToStep_MakePlane_value(
                 self as *const Self,
@@ -1959,7 +2028,7 @@ impl MakePlane {
 // From GeomToStep_MakePolyline.hxx
 // ========================
 
-/// **Source:** `GeomToStep_MakePolyline.hxx`:32 - `GeomToStep_MakePolyline`
+/// **Source:** `GeomToStep_MakePolyline.hxx`:33 - `GeomToStep_MakePolyline`
 /// This class implements the mapping between an Array1 of points
 /// from gp and a Polyline from StepGeom.
 pub use crate::ffi_types::GeomToStep_MakePolyline as MakePolyline;
@@ -1973,14 +2042,14 @@ unsafe impl crate::CppDeletable for MakePolyline {
 }
 
 impl MakePolyline {
-    /// **Source:** `GeomToStep_MakePolyline.hxx`:37 - `GeomToStep_MakePolyline::GeomToStep_MakePolyline()`
-    pub fn new_array1ofpnt_factors(
-        P: &crate::ffi_types::TColgp_Array1OfPnt,
+    /// **Source:** `GeomToStep_MakePolyline.hxx`:38 - `GeomToStep_MakePolyline::GeomToStep_MakePolyline()`
+    pub fn new_arr1_pnt_factors(
+        P: &crate::ffi_types::NCollection_Array1_gp_Pnt,
         theLocalFactors: &crate::step_data::Factors,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKDESTEP::GeomToStep_MakePolyline_ctor_array1ofpnt_factors(
+                crate::ffi_extern_TKDESTEP::GeomToStep_MakePolyline_ctor_arr1_pnt_factors(
                     P,
                     theLocalFactors,
                 ),
@@ -1988,14 +2057,14 @@ impl MakePolyline {
         }
     }
 
-    /// **Source:** `GeomToStep_MakePolyline.hxx`:41 - `GeomToStep_MakePolyline::GeomToStep_MakePolyline()`
-    pub fn new_array1ofpnt2d_factors(
-        P: &crate::ffi_types::TColgp_Array1OfPnt2d,
+    /// **Source:** `GeomToStep_MakePolyline.hxx`:42 - `GeomToStep_MakePolyline::GeomToStep_MakePolyline()`
+    pub fn new_arr1_pnt2d_factors(
+        P: &crate::ffi_types::NCollection_Array1_gp_Pnt2d,
         theLocalFactors: &crate::step_data::Factors,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKDESTEP::GeomToStep_MakePolyline_ctor_array1ofpnt2d_factors(
+                crate::ffi_extern_TKDESTEP::GeomToStep_MakePolyline_ctor_arr1_pnt2d_factors(
                     P,
                     theLocalFactors,
                 ),
@@ -2003,8 +2072,8 @@ impl MakePolyline {
         }
     }
 
-    /// **Source:** `GeomToStep_MakePolyline.hxx`:45 - `GeomToStep_MakePolyline::Value()`
-    pub fn value(&self) -> &crate::ffi_types::HandleStepGeomPolyline {
+    /// **Source:** `GeomToStep_MakePolyline.hxx`:46 - `GeomToStep_MakePolyline::Value()`
+    pub fn value(&self) -> &crate::ffi_types::Handle_StepGeom_Polyline {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKDESTEP::GeomToStep_MakePolyline_value(
                 self as *const Self,
@@ -2067,7 +2136,7 @@ unsafe impl crate::CppDeletable for MakeRectangularTrimmedSurface {
 impl MakeRectangularTrimmedSurface {
     /// **Source:** `GeomToStep_MakeRectangularTrimmedSurface.hxx`:39 - `GeomToStep_MakeRectangularTrimmedSurface::GeomToStep_MakeRectangularTrimmedSurface()`
     pub fn new_handlegeomrectangulartrimmedsurface_factors(
-        RTSurf: &crate::ffi_types::HandleGeomRectangularTrimmedSurface,
+        RTSurf: &crate::ffi_types::Handle_Geom_RectangularTrimmedSurface,
         theLocalFactors: &crate::step_data::Factors,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -2076,7 +2145,7 @@ impl MakeRectangularTrimmedSurface {
     }
 
     /// **Source:** `GeomToStep_MakeRectangularTrimmedSurface.hxx`:43 - `GeomToStep_MakeRectangularTrimmedSurface::Value()`
-    pub fn value(&self) -> &crate::ffi_types::HandleStepGeomRectangularTrimmedSurface {
+    pub fn value(&self) -> &crate::ffi_types::Handle_StepGeom_RectangularTrimmedSurface {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKDESTEP::GeomToStep_MakeRectangularTrimmedSurface_value(
@@ -2132,7 +2201,7 @@ unsafe impl crate::CppDeletable for MakeSphericalSurface {
 impl MakeSphericalSurface {
     /// **Source:** `GeomToStep_MakeSphericalSurface.hxx`:38 - `GeomToStep_MakeSphericalSurface::GeomToStep_MakeSphericalSurface()`
     pub fn new_handlegeomsphericalsurface_factors(
-        CSurf: &crate::ffi_types::HandleGeomSphericalSurface,
+        CSurf: &crate::ffi_types::Handle_Geom_SphericalSurface,
         theLocalFactors: &crate::step_data::Factors,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -2141,7 +2210,7 @@ impl MakeSphericalSurface {
     }
 
     /// **Source:** `GeomToStep_MakeSphericalSurface.hxx`:42 - `GeomToStep_MakeSphericalSurface::Value()`
-    pub fn value(&self) -> &crate::ffi_types::HandleStepGeomSphericalSurface {
+    pub fn value(&self) -> &crate::ffi_types::Handle_StepGeom_SphericalSurface {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKDESTEP::GeomToStep_MakeSphericalSurface_value(
@@ -2205,7 +2274,7 @@ unsafe impl crate::CppDeletable for MakeSurface {
 impl MakeSurface {
     /// **Source:** `GeomToStep_MakeSurface.hxx`:38 - `GeomToStep_MakeSurface::GeomToStep_MakeSurface()`
     pub fn new_handlegeomsurface_factors(
-        C: &crate::ffi_types::HandleGeomSurface,
+        C: &crate::ffi_types::Handle_Geom_Surface,
         theLocalFactors: &crate::step_data::Factors,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -2219,7 +2288,7 @@ impl MakeSurface {
     }
 
     /// **Source:** `GeomToStep_MakeSurface.hxx`:42 - `GeomToStep_MakeSurface::Value()`
-    pub fn value(&self) -> &crate::ffi_types::HandleStepGeomSurface {
+    pub fn value(&self) -> &crate::ffi_types::Handle_StepGeom_Surface {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKDESTEP::GeomToStep_MakeSurface_value(
                 self as *const Self,
@@ -2279,7 +2348,7 @@ unsafe impl crate::CppDeletable for MakeSurfaceOfLinearExtrusion {
 impl MakeSurfaceOfLinearExtrusion {
     /// **Source:** `GeomToStep_MakeSurfaceOfLinearExtrusion.hxx`:38 - `GeomToStep_MakeSurfaceOfLinearExtrusion::GeomToStep_MakeSurfaceOfLinearExtrusion()`
     pub fn new_handlegeomsurfaceoflinearextrusion_factors(
-        CSurf: &crate::ffi_types::HandleGeomSurfaceOfLinearExtrusion,
+        CSurf: &crate::ffi_types::Handle_Geom_SurfaceOfLinearExtrusion,
         theLocalFactors: &crate::step_data::Factors,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -2288,7 +2357,7 @@ impl MakeSurfaceOfLinearExtrusion {
     }
 
     /// **Source:** `GeomToStep_MakeSurfaceOfLinearExtrusion.hxx`:42 - `GeomToStep_MakeSurfaceOfLinearExtrusion::Value()`
-    pub fn value(&self) -> &crate::ffi_types::HandleStepGeomSurfaceOfLinearExtrusion {
+    pub fn value(&self) -> &crate::ffi_types::Handle_StepGeom_SurfaceOfLinearExtrusion {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKDESTEP::GeomToStep_MakeSurfaceOfLinearExtrusion_value(
@@ -2344,7 +2413,7 @@ unsafe impl crate::CppDeletable for MakeSurfaceOfRevolution {
 impl MakeSurfaceOfRevolution {
     /// **Source:** `GeomToStep_MakeSurfaceOfRevolution.hxx`:38 - `GeomToStep_MakeSurfaceOfRevolution::GeomToStep_MakeSurfaceOfRevolution()`
     pub fn new_handlegeomsurfaceofrevolution_factors(
-        RevSurf: &crate::ffi_types::HandleGeomSurfaceOfRevolution,
+        RevSurf: &crate::ffi_types::Handle_Geom_SurfaceOfRevolution,
         theLocalFactors: &crate::step_data::Factors,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -2353,7 +2422,7 @@ impl MakeSurfaceOfRevolution {
     }
 
     /// **Source:** `GeomToStep_MakeSurfaceOfRevolution.hxx`:42 - `GeomToStep_MakeSurfaceOfRevolution::Value()`
-    pub fn value(&self) -> &crate::ffi_types::HandleStepGeomSurfaceOfRevolution {
+    pub fn value(&self) -> &crate::ffi_types::Handle_StepGeom_SurfaceOfRevolution {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKDESTEP::GeomToStep_MakeSurfaceOfRevolution_value(
@@ -2414,7 +2483,7 @@ unsafe impl crate::CppDeletable for MakeSweptSurface {
 impl MakeSweptSurface {
     /// **Source:** `GeomToStep_MakeSweptSurface.hxx`:39 - `GeomToStep_MakeSweptSurface::GeomToStep_MakeSweptSurface()`
     pub fn new_handlegeomsweptsurface_factors(
-        S: &crate::ffi_types::HandleGeomSweptSurface,
+        S: &crate::ffi_types::Handle_Geom_SweptSurface,
         theLocalFactors: &crate::step_data::Factors,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -2423,7 +2492,7 @@ impl MakeSweptSurface {
     }
 
     /// **Source:** `GeomToStep_MakeSweptSurface.hxx`:43 - `GeomToStep_MakeSweptSurface::Value()`
-    pub fn value(&self) -> &crate::ffi_types::HandleStepGeomSweptSurface {
+    pub fn value(&self) -> &crate::ffi_types::Handle_StepGeom_SweptSurface {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKDESTEP::GeomToStep_MakeSweptSurface_value(
                 self as *const Self,
@@ -2485,7 +2554,7 @@ unsafe impl crate::CppDeletable for MakeToroidalSurface {
 impl MakeToroidalSurface {
     /// **Source:** `GeomToStep_MakeToroidalSurface.hxx`:38 - `GeomToStep_MakeToroidalSurface::GeomToStep_MakeToroidalSurface()`
     pub fn new_handlegeomtoroidalsurface_factors(
-        TorSurf: &crate::ffi_types::HandleGeomToroidalSurface,
+        TorSurf: &crate::ffi_types::Handle_Geom_ToroidalSurface,
         theLocalFactors: &crate::step_data::Factors,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -2494,7 +2563,7 @@ impl MakeToroidalSurface {
     }
 
     /// **Source:** `GeomToStep_MakeToroidalSurface.hxx`:42 - `GeomToStep_MakeToroidalSurface::Value()`
-    pub fn value(&self) -> &crate::ffi_types::HandleStepGeomToroidalSurface {
+    pub fn value(&self) -> &crate::ffi_types::Handle_StepGeom_ToroidalSurface {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKDESTEP::GeomToStep_MakeToroidalSurface_value(
@@ -2588,7 +2657,7 @@ impl MakeVector {
 
     /// **Source:** `GeomToStep_MakeVector.hxx`:49 - `GeomToStep_MakeVector::GeomToStep_MakeVector()`
     pub fn new_handlegeomvector_factors(
-        V: &crate::ffi_types::HandleGeomVector,
+        V: &crate::ffi_types::Handle_Geom_Vector,
         theLocalFactors: &crate::step_data::Factors,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -2603,7 +2672,7 @@ impl MakeVector {
 
     /// **Source:** `GeomToStep_MakeVector.hxx`:53 - `GeomToStep_MakeVector::GeomToStep_MakeVector()`
     pub fn new_handlegeom2dvector_factors(
-        V: &crate::ffi_types::HandleGeom2dVector,
+        V: &crate::ffi_types::Handle_Geom2d_Vector,
         theLocalFactors: &crate::step_data::Factors,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -2617,7 +2686,7 @@ impl MakeVector {
     }
 
     /// **Source:** `GeomToStep_MakeVector.hxx`:57 - `GeomToStep_MakeVector::Value()`
-    pub fn value(&self) -> &crate::ffi_types::HandleStepGeomVector {
+    pub fn value(&self) -> &crate::ffi_types::Handle_StepGeom_Vector {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKDESTEP::GeomToStep_MakeVector_value(
                 self as *const Self,

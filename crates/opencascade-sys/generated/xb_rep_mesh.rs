@@ -6,14 +6,285 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 
-/// **Source:** `XBRepMesh.hxx`:31 - `XBRepMesh::Discret`
-pub unsafe fn discret(
-    theShape: &crate::topo_ds::Shape,
-    theDeflection: f64,
-    theAngle: f64,
-    theAlgo: &mut *mut crate::b_rep_mesh::DiscretRoot,
-) -> i32 {
-    crate::check_result(unsafe {
-        crate::ffi_extern_TKXMesh::XBRepMesh_discret(theShape, theDeflection, theAngle, theAlgo)
-    })
+// Handle type re-exports (targets of handle upcasts/downcasts)
+pub use crate::ffi_types::{Handle_BRepMesh_DiscretAlgoFactory, Handle_Standard_Transient};
+
+// ========================
+// From XBRepMesh_Factory.hxx
+// ========================
+
+/// **Source:** `XBRepMesh_Factory.hxx`:22 - `XBRepMesh_Factory`
+/// Factory for creating XBRepMesh meshing algorithm instances.
+/// This factory is registered under the name "XBRepMesh" and provides
+/// an alternative meshing algorithm based on BRepMesh_IncrementalMesh.
+pub use crate::ffi_types::XBRepMesh_Factory as Factory;
+
+unsafe impl crate::CppDeletable for Factory {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            crate::ffi_extern_TKXMesh::XBRepMesh_Factory_destructor(ptr);
+        }
+    }
+}
+
+impl Factory {
+    /// **Source:** `XBRepMesh_Factory.hxx`:28 - `XBRepMesh_Factory::XBRepMesh_Factory()`
+    /// Constructor. Registers this factory under the name "XBRepMesh".
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKXMesh::XBRepMesh_Factory_ctor(),
+            ))
+        }
+    }
+
+    /// **Source:** `XBRepMesh_Factory.hxx`:24 - `XBRepMesh_Factory::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKXMesh::XBRepMesh_Factory_dynamic_type(
+                self as *const Self,
+            )))
+        }
+    }
+
+    /// **Source:** `XBRepMesh_Factory.hxx`:35 - `XBRepMesh_Factory::CreateAlgorithm()`
+    /// Creates a new meshing algorithm instance.
+    /// @param[in] theShape         shape to be meshed
+    /// @param[in] theLinDeflection linear deflection for meshing
+    /// @param[in] theAngDeflection angular deflection for meshing
+    /// @return new meshing algorithm instance
+    pub fn create_algorithm(
+        &mut self,
+        theShape: &crate::topo_ds::Shape,
+        theLinDeflection: f64,
+        theAngDeflection: f64,
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_BRepMesh_DiscretRoot> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKXMesh::XBRepMesh_Factory_create_algorithm(
+                    self as *mut Self,
+                    theShape,
+                    theLinDeflection,
+                    theAngDeflection,
+                ),
+            ))
+        }
+    }
+
+    /// **Source:** `XBRepMesh_Factory.hxx`:24 - `XBRepMesh_Factory::get_type_name()`
+    pub fn get_type_name() -> std::string::String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::check_result(
+                crate::ffi_extern_TKXMesh::XBRepMesh_Factory_get_type_name(),
+            ))
+        }
+        .to_string_lossy()
+        .into_owned()
+    }
+
+    /// **Source:** `XBRepMesh_Factory.hxx`:24 - `XBRepMesh_Factory::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
+        unsafe {
+            &*(crate::check_result(
+                crate::ffi_extern_TKXMesh::XBRepMesh_Factory_get_type_descriptor(),
+            ))
+        }
+    }
+
+    /// Upcast to BRepMesh_DiscretAlgoFactory
+    pub fn as_b_rep_mesh_discret_algo_factory(&self) -> &crate::b_rep_mesh::DiscretAlgoFactory {
+        unsafe {
+            &*crate::check_result(
+                crate::ffi_extern_TKXMesh::XBRepMesh_Factory_as_BRepMesh_DiscretAlgoFactory(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast to BRepMesh_DiscretAlgoFactory (mutable)
+    pub fn as_b_rep_mesh_discret_algo_factory_mut(
+        &mut self,
+    ) -> &mut crate::b_rep_mesh::DiscretAlgoFactory {
+        unsafe {
+            &mut *crate::check_result(
+                crate::ffi_extern_TKXMesh::XBRepMesh_Factory_as_BRepMesh_DiscretAlgoFactory_mut(
+                    self as *mut Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe {
+            &*crate::check_result(
+                crate::ffi_extern_TKXMesh::XBRepMesh_Factory_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *crate::check_result(
+                crate::ffi_extern_TKXMesh::XBRepMesh_Factory_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
+            )
+        }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_XBRepMesh_Factory> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKXMesh::XBRepMesh_Factory_to_handle(obj.into_raw()),
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `BRepMesh_DiscretAlgoFactory.hxx`:70 - `BRepMesh_DiscretAlgoFactory::Name()`
+    pub fn name(&self) -> &crate::t_collection::AsciiString {
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKXMesh::XBRepMesh_Factory_inherited_Name(
+                self as *const Self,
+            )))
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKXMesh::XBRepMesh_Factory_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
+        })
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKXMesh::XBRepMesh_Factory_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
+        })
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
+    pub fn this(&self) -> Option<&crate::standard::Transient> {
+        {
+            let __val = crate::check_result(unsafe {
+                crate::ffi_extern_TKXMesh::XBRepMesh_Factory_inherited_This(self as *const Self)
+            });
+            if __val.is_null() {
+                None
+            } else {
+                Some(unsafe { &*__val })
+            }
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKXMesh::XBRepMesh_Factory_inherited_GetRefCount(self as *const Self)
+        })
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKXMesh::XBRepMesh_Factory_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
+        })
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKXMesh::XBRepMesh_Factory_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
+        })
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKXMesh::XBRepMesh_Factory_inherited_Delete(self as *const Self)
+        })
+    }
+}
+
+pub use crate::ffi_types::Handle_XBRepMesh_Factory;
+
+unsafe impl crate::CppDeletable for Handle_XBRepMesh_Factory {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            crate::ffi_extern_TKXMesh::Handle_XBRepMesh_Factory_destructor(ptr);
+        }
+    }
+}
+
+unsafe impl crate::CppCopyable for Handle_XBRepMesh_Factory {
+    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKXMesh::Handle_XBRepMesh_Factory_clone(ptr))
+        }
+    }
+}
+
+impl Handle_XBRepMesh_Factory {
+    /// Returns `true` if this Handle is null (doesn't point to any object).
+    pub fn is_null(&self) -> bool {
+        unsafe { crate::ffi_extern_TKXMesh::Handle_XBRepMesh_Factory_is_null(self as *const Self) }
+    }
+
+    /// Dereference this Handle to access the underlying XBRepMesh_Factory
+    pub fn get(&self) -> &crate::ffi_types::XBRepMesh_Factory {
+        unsafe {
+            &*crate::check_result(crate::ffi_extern_TKXMesh::Handle_XBRepMesh_Factory_get(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Dereference this Handle to mutably access the underlying XBRepMesh_Factory
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::XBRepMesh_Factory {
+        unsafe {
+            &mut *crate::check_result(crate::ffi_extern_TKXMesh::Handle_XBRepMesh_Factory_get_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Upcast Handle<XBRepMesh_Factory> to Handle<BRepMesh_DiscretAlgoFactory>
+    pub fn to_handle_discret_algo_factory(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_BRepMesh_DiscretAlgoFactory> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKXMesh::Handle_XBRepMesh_Factory_to_Handle_BRepMesh_DiscretAlgoFactory(self as *const Self)))
+        }
+    }
+
+    /// Upcast Handle<XBRepMesh_Factory> to Handle<Standard_Transient>
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKXMesh::Handle_XBRepMesh_Factory_to_Handle_Standard_Transient(
+                    self as *const Self,
+                ),
+            ))
+        }
+    }
 }

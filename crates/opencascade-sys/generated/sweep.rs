@@ -11,7 +11,7 @@
 // ========================
 
 /// **Source:** `Sweep_NumShape.hxx`:30 - `Sweep_NumShape`
-/// Gives    a  simple  indexed   representation  of a
+/// Gives a simple indexed representation of a
 /// Directing Edge topology.
 pub use crate::ffi_types::Sweep_NumShape as NumShape;
 
@@ -37,14 +37,14 @@ impl NumShape {
     /// **Source:** `Sweep_NumShape.hxx`:49 - `Sweep_NumShape::Sweep_NumShape()`
     /// Creates a new simple indexed edge.
     ///
-    /// For an Edge : Index is the  number of vertices (0,
-    /// 1 or 2),Type is TopAbs_EDGE, Closed  is true if it
-    /// is a  closed edge, BegInf is true  if  the Edge is
-    /// infinite at the  begenning, EndInf is true  if the
+    /// For an Edge : Index is the number of vertices (0,
+    /// 1 or 2),Type is TopAbs_EDGE, Closed is true if it
+    /// is a closed edge, BegInf is true if the Edge is
+    /// infinite at the beginning, EndInf is true if the
     /// edge is infinite at the end.
     ///
     /// For a Vertex : Index is the index of the vertex in
-    /// the edge (1 or 2),  Type  is TopAbsVERTEX, all the
+    /// the edge (1 or 2), Type is TopAbsVERTEX, all the
     /// other fields have no meanning.
     pub fn new_int_shapeenum_bool3(
         Index: i32,
@@ -69,14 +69,14 @@ impl NumShape {
     /// **Source:** `Sweep_NumShape.hxx`:49 - `Sweep_NumShape::Sweep_NumShape()`
     /// Creates a new simple indexed edge.
     ///
-    /// For an Edge : Index is the  number of vertices (0,
-    /// 1 or 2),Type is TopAbs_EDGE, Closed  is true if it
-    /// is a  closed edge, BegInf is true  if  the Edge is
-    /// infinite at the  begenning, EndInf is true  if the
+    /// For an Edge : Index is the number of vertices (0,
+    /// 1 or 2),Type is TopAbs_EDGE, Closed is true if it
+    /// is a closed edge, BegInf is true if the Edge is
+    /// infinite at the beginning, EndInf is true if the
     /// edge is infinite at the end.
     ///
     /// For a Vertex : Index is the index of the vertex in
-    /// the edge (1 or 2),  Type  is TopAbsVERTEX, all the
+    /// the edge (1 or 2), Type is TopAbsVERTEX, all the
     /// other fields have no meanning.
     pub fn new_int_shapeenum_bool2(
         Index: i32,
@@ -90,14 +90,14 @@ impl NumShape {
     /// **Source:** `Sweep_NumShape.hxx`:49 - `Sweep_NumShape::Sweep_NumShape()`
     /// Creates a new simple indexed edge.
     ///
-    /// For an Edge : Index is the  number of vertices (0,
-    /// 1 or 2),Type is TopAbs_EDGE, Closed  is true if it
-    /// is a  closed edge, BegInf is true  if  the Edge is
-    /// infinite at the  begenning, EndInf is true  if the
+    /// For an Edge : Index is the number of vertices (0,
+    /// 1 or 2),Type is TopAbs_EDGE, Closed is true if it
+    /// is a closed edge, BegInf is true if the Edge is
+    /// infinite at the beginning, EndInf is true if the
     /// edge is infinite at the end.
     ///
     /// For a Vertex : Index is the index of the vertex in
-    /// the edge (1 or 2),  Type  is TopAbsVERTEX, all the
+    /// the edge (1 or 2), Type is TopAbsVERTEX, all the
     /// other fields have no meanning.
     pub fn new_int_shapeenum_bool(
         Index: i32,
@@ -110,14 +110,14 @@ impl NumShape {
     /// **Source:** `Sweep_NumShape.hxx`:49 - `Sweep_NumShape::Sweep_NumShape()`
     /// Creates a new simple indexed edge.
     ///
-    /// For an Edge : Index is the  number of vertices (0,
-    /// 1 or 2),Type is TopAbs_EDGE, Closed  is true if it
-    /// is a  closed edge, BegInf is true  if  the Edge is
-    /// infinite at the  begenning, EndInf is true  if the
+    /// For an Edge : Index is the number of vertices (0,
+    /// 1 or 2),Type is TopAbs_EDGE, Closed is true if it
+    /// is a closed edge, BegInf is true if the Edge is
+    /// infinite at the beginning, EndInf is true if the
     /// edge is infinite at the end.
     ///
     /// For a Vertex : Index is the index of the vertex in
-    /// the edge (1 or 2),  Type  is TopAbsVERTEX, all the
+    /// the edge (1 or 2), Type is TopAbsVERTEX, all the
     /// other fields have no meanning.
     pub fn new_int_shapeenum(Index: i32, Type: crate::top_abs::ShapeEnum) -> crate::OwnedPtr<Self> {
         Self::new_int_shapeenum_bool3(Index, Type, false, false, false)
@@ -126,10 +126,10 @@ impl NumShape {
     /// **Source:** `Sweep_NumShape.hxx`:67 - `Sweep_NumShape::Init()`
     /// Reinitialize a simple indexed edge.
     ///
-    /// For an Edge : Index is the  number of vertices (0,
-    /// 1 or 2),Type is TopAbs_EDGE, Closed  is true if it
-    /// is a  closed edge, BegInf is true  if  the Edge is
-    /// infinite at the  begenning, EndInf is true  if the
+    /// For an Edge : Index is the number of vertices (0,
+    /// 1 or 2),Type is TopAbs_EDGE, Closed is true if it
+    /// is a closed edge, BegInf is true if the Edge is
+    /// infinite at the beginning, EndInf is true if the
     /// edge is infinite at the end.
     ///
     /// For a Vertex : Index is the index of the vertex in
@@ -207,7 +207,7 @@ impl NumShape {
 
 /// **Source:** `Sweep_NumShapeIterator.hxx`:30 - `Sweep_NumShapeIterator`
 /// This class provides iteration services required by
-/// the   Swept Primitives  for   a Directing NumShape
+/// the Swept Primitives for a Directing NumShape
 /// Line.
 pub use crate::ffi_types::Sweep_NumShapeIterator as NumShapeIterator;
 
@@ -278,8 +278,8 @@ impl NumShapeIterator {
 // ========================
 
 /// **Source:** `Sweep_NumShapeTool.hxx`:31 - `Sweep_NumShapeTool`
-/// This class provides  the indexation and  type analysis
-/// services required by  the NumShape Directing Shapes of
+/// This class provides the indexation and type analysis
+/// services required by the NumShape Directing Shapes of
 /// Swept Primitives.
 pub use crate::ffi_types::Sweep_NumShapeTool as NumShapeTool;
 
@@ -293,8 +293,8 @@ unsafe impl crate::CppDeletable for NumShapeTool {
 
 impl NumShapeTool {
     /// **Source:** `Sweep_NumShapeTool.hxx`:39 - `Sweep_NumShapeTool::Sweep_NumShapeTool()`
-    /// Create a new NumShapeTool with <aShape>.  The Tool
-    /// must prepare an indexation  for  all the subshapes
+    /// Create a new NumShapeTool with <aShape>. The Tool
+    /// must prepare an indexation for all the subshapes
     /// of this shape.
     pub fn new_numshape(aShape: &NumShape) -> crate::OwnedPtr<Self> {
         unsafe {

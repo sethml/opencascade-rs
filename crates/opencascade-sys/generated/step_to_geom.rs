@@ -6,30 +6,30 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 
-/// **Source:** `StepToGeom.hxx`:116 - `StepToGeom::MakeAxis1Placement`
+/// **Source:** `StepToGeom.hxx`:117 - `StepToGeom::MakeAxis1Placement`
 pub fn make_axis1_placement(
-    SA: &crate::ffi_types::HandleStepGeomAxis1Placement,
+    SA: &crate::ffi_types::Handle_StepGeom_Axis1Placement,
     theLocalFactors: &crate::step_data::Factors,
-) -> crate::OwnedPtr<crate::ffi_types::HandleGeomAxis1Placement> {
+) -> crate::OwnedPtr<crate::ffi_types::Handle_Geom_Axis1Placement> {
     unsafe {
         crate::OwnedPtr::from_raw(crate::check_result(
             crate::ffi_extern_TKDESTEP::StepToGeom_make_axis1_placement(SA, theLocalFactors),
         ))
     }
 }
-/// **Source:** `StepToGeom.hxx`:119 - `StepToGeom::MakeAxis2Placement`
+/// **Source:** `StepToGeom.hxx`:120 - `StepToGeom::MakeAxis2Placement`
 pub fn make_axis2_placement_handlestepgeomaxis2placement3d_factors(
-    SA: &crate::ffi_types::HandleStepGeomAxis2Placement3d,
+    SA: &crate::ffi_types::Handle_StepGeom_Axis2Placement3d,
     theLocalFactors: &crate::step_data::Factors,
-) -> crate::OwnedPtr<crate::ffi_types::HandleGeomAxis2Placement> {
+) -> crate::OwnedPtr<crate::ffi_types::Handle_Geom_Axis2Placement> {
     unsafe {
         crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::StepToGeom_make_axis2_placement_handlestepgeomaxis2placement3d_factors(SA, theLocalFactors)))
     }
 }
-/// **Source:** `StepToGeom.hxx`:122 - `StepToGeom::MakeAxis2Placement`
+/// **Source:** `StepToGeom.hxx`:123 - `StepToGeom::MakeAxis2Placement`
 pub fn make_axis2_placement_handlestepgeomsuparameters(
-    SP: &crate::ffi_types::HandleStepGeomSuParameters,
-) -> crate::OwnedPtr<crate::ffi_types::HandleGeomAxis2Placement> {
+    SP: &crate::ffi_types::Handle_StepGeom_SuParameters,
+) -> crate::OwnedPtr<crate::ffi_types::Handle_Geom_Axis2Placement> {
     unsafe {
         crate::OwnedPtr::from_raw(crate::check_result(
             crate::ffi_extern_TKDESTEP::StepToGeom_make_axis2_placement_handlestepgeomsuparameters(
@@ -38,165 +38,165 @@ pub fn make_axis2_placement_handlestepgeomsuparameters(
         ))
     }
 }
-/// **Source:** `StepToGeom.hxx`:124 - `StepToGeom::MakeAxisPlacement`
+/// **Source:** `StepToGeom.hxx`:125 - `StepToGeom::MakeAxisPlacement`
 pub fn make_axis_placement(
-    SA: &crate::ffi_types::HandleStepGeomAxis2Placement2d,
+    SA: &crate::ffi_types::Handle_StepGeom_Axis2Placement2d,
     theLocalFactors: &crate::step_data::Factors,
-) -> crate::OwnedPtr<crate::ffi_types::HandleGeom2dAxisPlacement> {
+) -> crate::OwnedPtr<crate::ffi_types::Handle_Geom2d_AxisPlacement> {
     unsafe {
         crate::OwnedPtr::from_raw(crate::check_result(
             crate::ffi_extern_TKDESTEP::StepToGeom_make_axis_placement(SA, theLocalFactors),
         ))
     }
 }
-/// **Source:** `StepToGeom.hxx`:127 - `StepToGeom::MakeBoundedCurve`
+/// **Source:** `StepToGeom.hxx`:128 - `StepToGeom::MakeBoundedCurve`
 pub fn make_bounded_curve(
-    SC: &crate::ffi_types::HandleStepGeomBoundedCurve,
+    SC: &crate::ffi_types::Handle_StepGeom_BoundedCurve,
     theLocalFactors: &crate::step_data::Factors,
-) -> crate::OwnedPtr<crate::ffi_types::HandleGeomBoundedCurve> {
+) -> crate::OwnedPtr<crate::ffi_types::Handle_Geom_BoundedCurve> {
     unsafe {
         crate::OwnedPtr::from_raw(crate::check_result(
             crate::ffi_extern_TKDESTEP::StepToGeom_make_bounded_curve(SC, theLocalFactors),
         ))
     }
 }
-/// **Source:** `StepToGeom.hxx`:130 - `StepToGeom::MakeBoundedCurve2d`
+/// **Source:** `StepToGeom.hxx`:131 - `StepToGeom::MakeBoundedCurve2d`
 pub fn make_bounded_curve2d(
-    SC: &crate::ffi_types::HandleStepGeomBoundedCurve,
+    SC: &crate::ffi_types::Handle_StepGeom_BoundedCurve,
     theLocalFactors: &crate::step_data::Factors,
-) -> crate::OwnedPtr<crate::ffi_types::HandleGeom2dBoundedCurve> {
+) -> crate::OwnedPtr<crate::ffi_types::Handle_Geom2d_BoundedCurve> {
     unsafe {
         crate::OwnedPtr::from_raw(crate::check_result(
             crate::ffi_extern_TKDESTEP::StepToGeom_make_bounded_curve2d(SC, theLocalFactors),
         ))
     }
 }
-/// **Source:** `StepToGeom.hxx`:133 - `StepToGeom::MakeBoundedSurface`
+/// **Source:** `StepToGeom.hxx`:134 - `StepToGeom::MakeBoundedSurface`
 pub fn make_bounded_surface(
-    SS: &crate::ffi_types::HandleStepGeomBoundedSurface,
+    SS: &crate::ffi_types::Handle_StepGeom_BoundedSurface,
     theLocalFactors: &crate::step_data::Factors,
-) -> crate::OwnedPtr<crate::ffi_types::HandleGeomBoundedSurface> {
+) -> crate::OwnedPtr<crate::ffi_types::Handle_Geom_BoundedSurface> {
     unsafe {
         crate::OwnedPtr::from_raw(crate::check_result(
             crate::ffi_extern_TKDESTEP::StepToGeom_make_bounded_surface(SS, theLocalFactors),
         ))
     }
 }
-/// **Source:** `StepToGeom.hxx`:136 - `StepToGeom::MakeBSplineCurve`
+/// **Source:** `StepToGeom.hxx`:137 - `StepToGeom::MakeBSplineCurve`
 pub fn make_b_spline_curve(
-    SC: &crate::ffi_types::HandleStepGeomBSplineCurve,
+    SC: &crate::ffi_types::Handle_StepGeom_BSplineCurve,
     theLocalFactors: &crate::step_data::Factors,
-) -> crate::OwnedPtr<crate::ffi_types::HandleGeomBSplineCurve> {
+) -> crate::OwnedPtr<crate::ffi_types::Handle_Geom_BSplineCurve> {
     unsafe {
         crate::OwnedPtr::from_raw(crate::check_result(
             crate::ffi_extern_TKDESTEP::StepToGeom_make_b_spline_curve(SC, theLocalFactors),
         ))
     }
 }
-/// **Source:** `StepToGeom.hxx`:139 - `StepToGeom::MakeBSplineCurve2d`
+/// **Source:** `StepToGeom.hxx`:140 - `StepToGeom::MakeBSplineCurve2d`
 pub fn make_b_spline_curve2d(
-    SC: &crate::ffi_types::HandleStepGeomBSplineCurve,
+    SC: &crate::ffi_types::Handle_StepGeom_BSplineCurve,
     theLocalFactors: &crate::step_data::Factors,
-) -> crate::OwnedPtr<crate::ffi_types::HandleGeom2dBSplineCurve> {
+) -> crate::OwnedPtr<crate::ffi_types::Handle_Geom2d_BSplineCurve> {
     unsafe {
         crate::OwnedPtr::from_raw(crate::check_result(
             crate::ffi_extern_TKDESTEP::StepToGeom_make_b_spline_curve2d(SC, theLocalFactors),
         ))
     }
 }
-/// **Source:** `StepToGeom.hxx`:142 - `StepToGeom::MakeBSplineSurface`
+/// **Source:** `StepToGeom.hxx`:143 - `StepToGeom::MakeBSplineSurface`
 pub fn make_b_spline_surface(
-    SS: &crate::ffi_types::HandleStepGeomBSplineSurface,
+    SS: &crate::ffi_types::Handle_StepGeom_BSplineSurface,
     theLocalFactors: &crate::step_data::Factors,
-) -> crate::OwnedPtr<crate::ffi_types::HandleGeomBSplineSurface> {
+) -> crate::OwnedPtr<crate::ffi_types::Handle_Geom_BSplineSurface> {
     unsafe {
         crate::OwnedPtr::from_raw(crate::check_result(
             crate::ffi_extern_TKDESTEP::StepToGeom_make_b_spline_surface(SS, theLocalFactors),
         ))
     }
 }
-/// **Source:** `StepToGeom.hxx`:145 - `StepToGeom::MakeCartesianPoint`
+/// **Source:** `StepToGeom.hxx`:146 - `StepToGeom::MakeCartesianPoint`
 pub fn make_cartesian_point(
-    SP: &crate::ffi_types::HandleStepGeomCartesianPoint,
+    SP: &crate::ffi_types::Handle_StepGeom_CartesianPoint,
     theLocalFactors: &crate::step_data::Factors,
-) -> crate::OwnedPtr<crate::ffi_types::HandleGeomCartesianPoint> {
+) -> crate::OwnedPtr<crate::ffi_types::Handle_Geom_CartesianPoint> {
     unsafe {
         crate::OwnedPtr::from_raw(crate::check_result(
             crate::ffi_extern_TKDESTEP::StepToGeom_make_cartesian_point(SP, theLocalFactors),
         ))
     }
 }
-/// **Source:** `StepToGeom.hxx`:148 - `StepToGeom::MakeCartesianPoint2d`
+/// **Source:** `StepToGeom.hxx`:149 - `StepToGeom::MakeCartesianPoint2d`
 pub fn make_cartesian_point2d(
-    SP: &crate::ffi_types::HandleStepGeomCartesianPoint,
+    SP: &crate::ffi_types::Handle_StepGeom_CartesianPoint,
     theLocalFactors: &crate::step_data::Factors,
-) -> crate::OwnedPtr<crate::ffi_types::HandleGeom2dCartesianPoint> {
+) -> crate::OwnedPtr<crate::ffi_types::Handle_Geom2d_CartesianPoint> {
     unsafe {
         crate::OwnedPtr::from_raw(crate::check_result(
             crate::ffi_extern_TKDESTEP::StepToGeom_make_cartesian_point2d(SP, theLocalFactors),
         ))
     }
 }
-/// **Source:** `StepToGeom.hxx`:151 - `StepToGeom::MakeCircle`
+/// **Source:** `StepToGeom.hxx`:152 - `StepToGeom::MakeCircle`
 pub fn make_circle(
-    SC: &crate::ffi_types::HandleStepGeomCircle,
+    SC: &crate::ffi_types::Handle_StepGeom_Circle,
     theLocalFactors: &crate::step_data::Factors,
-) -> crate::OwnedPtr<crate::ffi_types::HandleGeomCircle> {
+) -> crate::OwnedPtr<crate::ffi_types::Handle_Geom_Circle> {
     unsafe {
         crate::OwnedPtr::from_raw(crate::check_result(
             crate::ffi_extern_TKDESTEP::StepToGeom_make_circle(SC, theLocalFactors),
         ))
     }
 }
-/// **Source:** `StepToGeom.hxx`:154 - `StepToGeom::MakeCircle2d`
+/// **Source:** `StepToGeom.hxx`:155 - `StepToGeom::MakeCircle2d`
 pub fn make_circle2d(
-    SC: &crate::ffi_types::HandleStepGeomCircle,
+    SC: &crate::ffi_types::Handle_StepGeom_Circle,
     theLocalFactors: &crate::step_data::Factors,
-) -> crate::OwnedPtr<crate::ffi_types::HandleGeom2dCircle> {
+) -> crate::OwnedPtr<crate::ffi_types::Handle_Geom2d_Circle> {
     unsafe {
         crate::OwnedPtr::from_raw(crate::check_result(
             crate::ffi_extern_TKDESTEP::StepToGeom_make_circle2d(SC, theLocalFactors),
         ))
     }
 }
-/// **Source:** `StepToGeom.hxx`:157 - `StepToGeom::MakeConic`
+/// **Source:** `StepToGeom.hxx`:158 - `StepToGeom::MakeConic`
 pub fn make_conic(
-    SC: &crate::ffi_types::HandleStepGeomConic,
+    SC: &crate::ffi_types::Handle_StepGeom_Conic,
     theLocalFactors: &crate::step_data::Factors,
-) -> crate::OwnedPtr<crate::ffi_types::HandleGeomConic> {
+) -> crate::OwnedPtr<crate::ffi_types::Handle_Geom_Conic> {
     unsafe {
         crate::OwnedPtr::from_raw(crate::check_result(
             crate::ffi_extern_TKDESTEP::StepToGeom_make_conic(SC, theLocalFactors),
         ))
     }
 }
-/// **Source:** `StepToGeom.hxx`:160 - `StepToGeom::MakeConic2d`
+/// **Source:** `StepToGeom.hxx`:161 - `StepToGeom::MakeConic2d`
 pub fn make_conic2d(
-    SC: &crate::ffi_types::HandleStepGeomConic,
+    SC: &crate::ffi_types::Handle_StepGeom_Conic,
     theLocalFactors: &crate::step_data::Factors,
-) -> crate::OwnedPtr<crate::ffi_types::HandleGeom2dConic> {
+) -> crate::OwnedPtr<crate::ffi_types::Handle_Geom2d_Conic> {
     unsafe {
         crate::OwnedPtr::from_raw(crate::check_result(
             crate::ffi_extern_TKDESTEP::StepToGeom_make_conic2d(SC, theLocalFactors),
         ))
     }
 }
-/// **Source:** `StepToGeom.hxx`:163 - `StepToGeom::MakeConicalSurface`
+/// **Source:** `StepToGeom.hxx`:164 - `StepToGeom::MakeConicalSurface`
 pub fn make_conical_surface(
-    SS: &crate::ffi_types::HandleStepGeomConicalSurface,
+    SS: &crate::ffi_types::Handle_StepGeom_ConicalSurface,
     theLocalFactors: &crate::step_data::Factors,
-) -> crate::OwnedPtr<crate::ffi_types::HandleGeomConicalSurface> {
+) -> crate::OwnedPtr<crate::ffi_types::Handle_Geom_ConicalSurface> {
     unsafe {
         crate::OwnedPtr::from_raw(crate::check_result(
             crate::ffi_extern_TKDESTEP::StepToGeom_make_conical_surface(SS, theLocalFactors),
         ))
     }
 }
-/// **Source:** `StepToGeom.hxx`:166 - `StepToGeom::MakeCurve`
+/// **Source:** `StepToGeom.hxx`:167 - `StepToGeom::MakeCurve`
 pub fn make_curve_handlestepgeomcurve_factors(
-    SC: &crate::ffi_types::HandleStepGeomCurve,
+    SC: &crate::ffi_types::Handle_StepGeom_Curve,
     theLocalFactors: &crate::step_data::Factors,
-) -> crate::OwnedPtr<crate::ffi_types::HandleGeomCurve> {
+) -> crate::OwnedPtr<crate::ffi_types::Handle_Geom_Curve> {
     unsafe {
         crate::OwnedPtr::from_raw(crate::check_result(
             crate::ffi_extern_TKDESTEP::StepToGeom_make_curve_handlestepgeomcurve_factors(
@@ -206,185 +206,185 @@ pub fn make_curve_handlestepgeomcurve_factors(
         ))
     }
 }
-/// **Source:** `StepToGeom.hxx`:169 - `StepToGeom::MakeCurve2d`
+/// **Source:** `StepToGeom.hxx`:170 - `StepToGeom::MakeCurve2d`
 pub fn make_curve2d(
-    SC: &crate::ffi_types::HandleStepGeomCurve,
+    SC: &crate::ffi_types::Handle_StepGeom_Curve,
     theLocalFactors: &crate::step_data::Factors,
-) -> crate::OwnedPtr<crate::ffi_types::HandleGeom2dCurve> {
+) -> crate::OwnedPtr<crate::ffi_types::Handle_Geom2d_Curve> {
     unsafe {
         crate::OwnedPtr::from_raw(crate::check_result(
             crate::ffi_extern_TKDESTEP::StepToGeom_make_curve2d(SC, theLocalFactors),
         ))
     }
 }
-/// **Source:** `StepToGeom.hxx`:172 - `StepToGeom::MakeCylindricalSurface`
+/// **Source:** `StepToGeom.hxx`:173 - `StepToGeom::MakeCylindricalSurface`
 pub fn make_cylindrical_surface(
-    SS: &crate::ffi_types::HandleStepGeomCylindricalSurface,
+    SS: &crate::ffi_types::Handle_StepGeom_CylindricalSurface,
     theLocalFactors: &crate::step_data::Factors,
-) -> crate::OwnedPtr<crate::ffi_types::HandleGeomCylindricalSurface> {
+) -> crate::OwnedPtr<crate::ffi_types::Handle_Geom_CylindricalSurface> {
     unsafe {
         crate::OwnedPtr::from_raw(crate::check_result(
             crate::ffi_extern_TKDESTEP::StepToGeom_make_cylindrical_surface(SS, theLocalFactors),
         ))
     }
 }
-/// **Source:** `StepToGeom.hxx`:175 - `StepToGeom::MakeDirection`
+/// **Source:** `StepToGeom.hxx`:176 - `StepToGeom::MakeDirection`
 pub fn make_direction(
-    SD: &crate::ffi_types::HandleStepGeomDirection,
-) -> crate::OwnedPtr<crate::ffi_types::HandleGeomDirection> {
+    SD: &crate::ffi_types::Handle_StepGeom_Direction,
+) -> crate::OwnedPtr<crate::ffi_types::Handle_Geom_Direction> {
     unsafe {
         crate::OwnedPtr::from_raw(crate::check_result(
             crate::ffi_extern_TKDESTEP::StepToGeom_make_direction(SD),
         ))
     }
 }
-/// **Source:** `StepToGeom.hxx`:176 - `StepToGeom::MakeDirection2d`
+/// **Source:** `StepToGeom.hxx`:178 - `StepToGeom::MakeDirection2d`
 pub fn make_direction2d(
-    SD: &crate::ffi_types::HandleStepGeomDirection,
-) -> crate::OwnedPtr<crate::ffi_types::HandleGeom2dDirection> {
+    SD: &crate::ffi_types::Handle_StepGeom_Direction,
+) -> crate::OwnedPtr<crate::ffi_types::Handle_Geom2d_Direction> {
     unsafe {
         crate::OwnedPtr::from_raw(crate::check_result(
             crate::ffi_extern_TKDESTEP::StepToGeom_make_direction2d(SD),
         ))
     }
 }
-/// **Source:** `StepToGeom.hxx`:178 - `StepToGeom::MakeElementarySurface`
+/// **Source:** `StepToGeom.hxx`:180 - `StepToGeom::MakeElementarySurface`
 pub fn make_elementary_surface(
-    SS: &crate::ffi_types::HandleStepGeomElementarySurface,
+    SS: &crate::ffi_types::Handle_StepGeom_ElementarySurface,
     theLocalFactors: &crate::step_data::Factors,
-) -> crate::OwnedPtr<crate::ffi_types::HandleGeomElementarySurface> {
+) -> crate::OwnedPtr<crate::ffi_types::Handle_Geom_ElementarySurface> {
     unsafe {
         crate::OwnedPtr::from_raw(crate::check_result(
             crate::ffi_extern_TKDESTEP::StepToGeom_make_elementary_surface(SS, theLocalFactors),
         ))
     }
 }
-/// **Source:** `StepToGeom.hxx`:181 - `StepToGeom::MakeEllipse`
+/// **Source:** `StepToGeom.hxx`:183 - `StepToGeom::MakeEllipse`
 pub fn make_ellipse(
-    SC: &crate::ffi_types::HandleStepGeomEllipse,
+    SC: &crate::ffi_types::Handle_StepGeom_Ellipse,
     theLocalFactors: &crate::step_data::Factors,
-) -> crate::OwnedPtr<crate::ffi_types::HandleGeomEllipse> {
+) -> crate::OwnedPtr<crate::ffi_types::Handle_Geom_Ellipse> {
     unsafe {
         crate::OwnedPtr::from_raw(crate::check_result(
             crate::ffi_extern_TKDESTEP::StepToGeom_make_ellipse(SC, theLocalFactors),
         ))
     }
 }
-/// **Source:** `StepToGeom.hxx`:184 - `StepToGeom::MakeEllipse2d`
+/// **Source:** `StepToGeom.hxx`:186 - `StepToGeom::MakeEllipse2d`
 pub fn make_ellipse2d(
-    SC: &crate::ffi_types::HandleStepGeomEllipse,
+    SC: &crate::ffi_types::Handle_StepGeom_Ellipse,
     theLocalFactors: &crate::step_data::Factors,
-) -> crate::OwnedPtr<crate::ffi_types::HandleGeom2dEllipse> {
+) -> crate::OwnedPtr<crate::ffi_types::Handle_Geom2d_Ellipse> {
     unsafe {
         crate::OwnedPtr::from_raw(crate::check_result(
             crate::ffi_extern_TKDESTEP::StepToGeom_make_ellipse2d(SC, theLocalFactors),
         ))
     }
 }
-/// **Source:** `StepToGeom.hxx`:187 - `StepToGeom::MakeHyperbola`
+/// **Source:** `StepToGeom.hxx`:189 - `StepToGeom::MakeHyperbola`
 pub fn make_hyperbola(
-    SC: &crate::ffi_types::HandleStepGeomHyperbola,
+    SC: &crate::ffi_types::Handle_StepGeom_Hyperbola,
     theLocalFactors: &crate::step_data::Factors,
-) -> crate::OwnedPtr<crate::ffi_types::HandleGeomHyperbola> {
+) -> crate::OwnedPtr<crate::ffi_types::Handle_Geom_Hyperbola> {
     unsafe {
         crate::OwnedPtr::from_raw(crate::check_result(
             crate::ffi_extern_TKDESTEP::StepToGeom_make_hyperbola(SC, theLocalFactors),
         ))
     }
 }
-/// **Source:** `StepToGeom.hxx`:190 - `StepToGeom::MakeHyperbola2d`
+/// **Source:** `StepToGeom.hxx`:192 - `StepToGeom::MakeHyperbola2d`
 pub fn make_hyperbola2d(
-    SC: &crate::ffi_types::HandleStepGeomHyperbola,
+    SC: &crate::ffi_types::Handle_StepGeom_Hyperbola,
     theLocalFactors: &crate::step_data::Factors,
-) -> crate::OwnedPtr<crate::ffi_types::HandleGeom2dHyperbola> {
+) -> crate::OwnedPtr<crate::ffi_types::Handle_Geom2d_Hyperbola> {
     unsafe {
         crate::OwnedPtr::from_raw(crate::check_result(
             crate::ffi_extern_TKDESTEP::StepToGeom_make_hyperbola2d(SC, theLocalFactors),
         ))
     }
 }
-/// **Source:** `StepToGeom.hxx`:193 - `StepToGeom::MakeLine`
+/// **Source:** `StepToGeom.hxx`:195 - `StepToGeom::MakeLine`
 pub fn make_line(
-    SC: &crate::ffi_types::HandleStepGeomLine,
+    SC: &crate::ffi_types::Handle_StepGeom_Line,
     theLocalFactors: &crate::step_data::Factors,
-) -> crate::OwnedPtr<crate::ffi_types::HandleGeomLine> {
+) -> crate::OwnedPtr<crate::ffi_types::Handle_Geom_Line> {
     unsafe {
         crate::OwnedPtr::from_raw(crate::check_result(
             crate::ffi_extern_TKDESTEP::StepToGeom_make_line(SC, theLocalFactors),
         ))
     }
 }
-/// **Source:** `StepToGeom.hxx`:196 - `StepToGeom::MakeLine2d`
+/// **Source:** `StepToGeom.hxx`:198 - `StepToGeom::MakeLine2d`
 pub fn make_line2d(
-    SC: &crate::ffi_types::HandleStepGeomLine,
+    SC: &crate::ffi_types::Handle_StepGeom_Line,
     theLocalFactors: &crate::step_data::Factors,
-) -> crate::OwnedPtr<crate::ffi_types::HandleGeom2dLine> {
+) -> crate::OwnedPtr<crate::ffi_types::Handle_Geom2d_Line> {
     unsafe {
         crate::OwnedPtr::from_raw(crate::check_result(
             crate::ffi_extern_TKDESTEP::StepToGeom_make_line2d(SC, theLocalFactors),
         ))
     }
 }
-/// **Source:** `StepToGeom.hxx`:199 - `StepToGeom::MakeParabola`
+/// **Source:** `StepToGeom.hxx`:201 - `StepToGeom::MakeParabola`
 pub fn make_parabola(
-    SC: &crate::ffi_types::HandleStepGeomParabola,
+    SC: &crate::ffi_types::Handle_StepGeom_Parabola,
     theLocalFactors: &crate::step_data::Factors,
-) -> crate::OwnedPtr<crate::ffi_types::HandleGeomParabola> {
+) -> crate::OwnedPtr<crate::ffi_types::Handle_Geom_Parabola> {
     unsafe {
         crate::OwnedPtr::from_raw(crate::check_result(
             crate::ffi_extern_TKDESTEP::StepToGeom_make_parabola(SC, theLocalFactors),
         ))
     }
 }
-/// **Source:** `StepToGeom.hxx`:202 - `StepToGeom::MakeParabola2d`
+/// **Source:** `StepToGeom.hxx`:204 - `StepToGeom::MakeParabola2d`
 pub fn make_parabola2d(
-    SC: &crate::ffi_types::HandleStepGeomParabola,
+    SC: &crate::ffi_types::Handle_StepGeom_Parabola,
     theLocalFactors: &crate::step_data::Factors,
-) -> crate::OwnedPtr<crate::ffi_types::HandleGeom2dParabola> {
+) -> crate::OwnedPtr<crate::ffi_types::Handle_Geom2d_Parabola> {
     unsafe {
         crate::OwnedPtr::from_raw(crate::check_result(
             crate::ffi_extern_TKDESTEP::StepToGeom_make_parabola2d(SC, theLocalFactors),
         ))
     }
 }
-/// **Source:** `StepToGeom.hxx`:205 - `StepToGeom::MakePlane`
+/// **Source:** `StepToGeom.hxx`:207 - `StepToGeom::MakePlane`
 pub fn make_plane(
-    SP: &crate::ffi_types::HandleStepGeomPlane,
+    SP: &crate::ffi_types::Handle_StepGeom_Plane,
     theLocalFactors: &crate::step_data::Factors,
-) -> crate::OwnedPtr<crate::ffi_types::HandleGeomPlane> {
+) -> crate::OwnedPtr<crate::ffi_types::Handle_Geom_Plane> {
     unsafe {
         crate::OwnedPtr::from_raw(crate::check_result(
             crate::ffi_extern_TKDESTEP::StepToGeom_make_plane(SP, theLocalFactors),
         ))
     }
 }
-/// **Source:** `StepToGeom.hxx`:208 - `StepToGeom::MakePolyline`
+/// **Source:** `StepToGeom.hxx`:210 - `StepToGeom::MakePolyline`
 pub fn make_polyline(
-    SPL: &crate::ffi_types::HandleStepGeomPolyline,
+    SPL: &crate::ffi_types::Handle_StepGeom_Polyline,
     theLocalFactors: &crate::step_data::Factors,
-) -> crate::OwnedPtr<crate::ffi_types::HandleGeomBSplineCurve> {
+) -> crate::OwnedPtr<crate::ffi_types::Handle_Geom_BSplineCurve> {
     unsafe {
         crate::OwnedPtr::from_raw(crate::check_result(
             crate::ffi_extern_TKDESTEP::StepToGeom_make_polyline(SPL, theLocalFactors),
         ))
     }
 }
-/// **Source:** `StepToGeom.hxx`:211 - `StepToGeom::MakePolyline2d`
+/// **Source:** `StepToGeom.hxx`:213 - `StepToGeom::MakePolyline2d`
 pub fn make_polyline2d(
-    SPL: &crate::ffi_types::HandleStepGeomPolyline,
+    SPL: &crate::ffi_types::Handle_StepGeom_Polyline,
     theLocalFactors: &crate::step_data::Factors,
-) -> crate::OwnedPtr<crate::ffi_types::HandleGeom2dBSplineCurve> {
+) -> crate::OwnedPtr<crate::ffi_types::Handle_Geom2d_BSplineCurve> {
     unsafe {
         crate::OwnedPtr::from_raw(crate::check_result(
             crate::ffi_extern_TKDESTEP::StepToGeom_make_polyline2d(SPL, theLocalFactors),
         ))
     }
 }
-/// **Source:** `StepToGeom.hxx`:214 - `StepToGeom::MakeRectangularTrimmedSurface`
+/// **Source:** `StepToGeom.hxx`:216 - `StepToGeom::MakeRectangularTrimmedSurface`
 pub fn make_rectangular_trimmed_surface(
-    SS: &crate::ffi_types::HandleStepGeomRectangularTrimmedSurface,
+    SS: &crate::ffi_types::Handle_StepGeom_RectangularTrimmedSurface,
     theLocalFactors: &crate::step_data::Factors,
-) -> crate::OwnedPtr<crate::ffi_types::HandleGeomRectangularTrimmedSurface> {
+) -> crate::OwnedPtr<crate::ffi_types::Handle_Geom_RectangularTrimmedSurface> {
     unsafe {
         crate::OwnedPtr::from_raw(crate::check_result(
             crate::ffi_extern_TKDESTEP::StepToGeom_make_rectangular_trimmed_surface(
@@ -394,22 +394,22 @@ pub fn make_rectangular_trimmed_surface(
         ))
     }
 }
-/// **Source:** `StepToGeom.hxx`:217 - `StepToGeom::MakeSphericalSurface`
+/// **Source:** `StepToGeom.hxx`:219 - `StepToGeom::MakeSphericalSurface`
 pub fn make_spherical_surface(
-    SS: &crate::ffi_types::HandleStepGeomSphericalSurface,
+    SS: &crate::ffi_types::Handle_StepGeom_SphericalSurface,
     theLocalFactors: &crate::step_data::Factors,
-) -> crate::OwnedPtr<crate::ffi_types::HandleGeomSphericalSurface> {
+) -> crate::OwnedPtr<crate::ffi_types::Handle_Geom_SphericalSurface> {
     unsafe {
         crate::OwnedPtr::from_raw(crate::check_result(
             crate::ffi_extern_TKDESTEP::StepToGeom_make_spherical_surface(SS, theLocalFactors),
         ))
     }
 }
-/// **Source:** `StepToGeom.hxx`:220 - `StepToGeom::MakeSurface`
+/// **Source:** `StepToGeom.hxx`:222 - `StepToGeom::MakeSurface`
 pub fn make_surface_handlestepgeomsurface_factors(
-    SS: &crate::ffi_types::HandleStepGeomSurface,
+    SS: &crate::ffi_types::Handle_StepGeom_Surface,
     theLocalFactors: &crate::step_data::Factors,
-) -> crate::OwnedPtr<crate::ffi_types::HandleGeomSurface> {
+) -> crate::OwnedPtr<crate::ffi_types::Handle_Geom_Surface> {
     unsafe {
         crate::OwnedPtr::from_raw(crate::check_result(
             crate::ffi_extern_TKDESTEP::StepToGeom_make_surface_handlestepgeomsurface_factors(
@@ -419,11 +419,11 @@ pub fn make_surface_handlestepgeomsurface_factors(
         ))
     }
 }
-/// **Source:** `StepToGeom.hxx`:223 - `StepToGeom::MakeSurfaceOfLinearExtrusion`
+/// **Source:** `StepToGeom.hxx`:225 - `StepToGeom::MakeSurfaceOfLinearExtrusion`
 pub fn make_surface_of_linear_extrusion(
-    SS: &crate::ffi_types::HandleStepGeomSurfaceOfLinearExtrusion,
+    SS: &crate::ffi_types::Handle_StepGeom_SurfaceOfLinearExtrusion,
     theLocalFactors: &crate::step_data::Factors,
-) -> crate::OwnedPtr<crate::ffi_types::HandleGeomSurfaceOfLinearExtrusion> {
+) -> crate::OwnedPtr<crate::ffi_types::Handle_Geom_SurfaceOfLinearExtrusion> {
     unsafe {
         crate::OwnedPtr::from_raw(crate::check_result(
             crate::ffi_extern_TKDESTEP::StepToGeom_make_surface_of_linear_extrusion(
@@ -433,42 +433,42 @@ pub fn make_surface_of_linear_extrusion(
         ))
     }
 }
-/// **Source:** `StepToGeom.hxx`:226 - `StepToGeom::MakeSurfaceOfRevolution`
+/// **Source:** `StepToGeom.hxx`:228 - `StepToGeom::MakeSurfaceOfRevolution`
 pub fn make_surface_of_revolution(
-    SS: &crate::ffi_types::HandleStepGeomSurfaceOfRevolution,
+    SS: &crate::ffi_types::Handle_StepGeom_SurfaceOfRevolution,
     theLocalFactors: &crate::step_data::Factors,
-) -> crate::OwnedPtr<crate::ffi_types::HandleGeomSurfaceOfRevolution> {
+) -> crate::OwnedPtr<crate::ffi_types::Handle_Geom_SurfaceOfRevolution> {
     unsafe {
         crate::OwnedPtr::from_raw(crate::check_result(
             crate::ffi_extern_TKDESTEP::StepToGeom_make_surface_of_revolution(SS, theLocalFactors),
         ))
     }
 }
-/// **Source:** `StepToGeom.hxx`:229 - `StepToGeom::MakeSweptSurface`
+/// **Source:** `StepToGeom.hxx`:231 - `StepToGeom::MakeSweptSurface`
 pub fn make_swept_surface(
-    SS: &crate::ffi_types::HandleStepGeomSweptSurface,
+    SS: &crate::ffi_types::Handle_StepGeom_SweptSurface,
     theLocalFactors: &crate::step_data::Factors,
-) -> crate::OwnedPtr<crate::ffi_types::HandleGeomSweptSurface> {
+) -> crate::OwnedPtr<crate::ffi_types::Handle_Geom_SweptSurface> {
     unsafe {
         crate::OwnedPtr::from_raw(crate::check_result(
             crate::ffi_extern_TKDESTEP::StepToGeom_make_swept_surface(SS, theLocalFactors),
         ))
     }
 }
-/// **Source:** `StepToGeom.hxx`:232 - `StepToGeom::MakeToroidalSurface`
+/// **Source:** `StepToGeom.hxx`:234 - `StepToGeom::MakeToroidalSurface`
 pub fn make_toroidal_surface(
-    SS: &crate::ffi_types::HandleStepGeomToroidalSurface,
+    SS: &crate::ffi_types::Handle_StepGeom_ToroidalSurface,
     theLocalFactors: &crate::step_data::Factors,
-) -> crate::OwnedPtr<crate::ffi_types::HandleGeomToroidalSurface> {
+) -> crate::OwnedPtr<crate::ffi_types::Handle_Geom_ToroidalSurface> {
     unsafe {
         crate::OwnedPtr::from_raw(crate::check_result(
             crate::ffi_extern_TKDESTEP::StepToGeom_make_toroidal_surface(SS, theLocalFactors),
         ))
     }
 }
-/// **Source:** `StepToGeom.hxx`:235 - `StepToGeom::MakeTransformation2d`
+/// **Source:** `StepToGeom.hxx`:237 - `StepToGeom::MakeTransformation2d`
 pub fn make_transformation2d(
-    SCTO: &crate::ffi_types::HandleStepGeomCartesianTransformationOperator2d,
+    SCTO: &crate::ffi_types::Handle_StepGeom_CartesianTransformationOperator2d,
     CT: &mut crate::gp::Trsf2d,
     theLocalFactors: &crate::step_data::Factors,
 ) -> bool {
@@ -476,9 +476,9 @@ pub fn make_transformation2d(
         crate::ffi_extern_TKDESTEP::StepToGeom_make_transformation2d(SCTO, CT, theLocalFactors)
     })
 }
-/// **Source:** `StepToGeom.hxx`:239 - `StepToGeom::MakeTransformation3d`
+/// **Source:** `StepToGeom.hxx`:241 - `StepToGeom::MakeTransformation3d`
 pub fn make_transformation3d(
-    SCTO: &crate::ffi_types::HandleStepGeomCartesianTransformationOperator3d,
+    SCTO: &crate::ffi_types::Handle_StepGeom_CartesianTransformationOperator3d,
     CT: &mut crate::gp::Trsf,
     theLocalFactors: &crate::step_data::Factors,
 ) -> bool {
@@ -486,54 +486,54 @@ pub fn make_transformation3d(
         crate::ffi_extern_TKDESTEP::StepToGeom_make_transformation3d(SCTO, CT, theLocalFactors)
     })
 }
-/// **Source:** `StepToGeom.hxx`:243 - `StepToGeom::MakeTrimmedCurve`
+/// **Source:** `StepToGeom.hxx`:245 - `StepToGeom::MakeTrimmedCurve`
 pub fn make_trimmed_curve(
-    SC: &crate::ffi_types::HandleStepGeomTrimmedCurve,
+    SC: &crate::ffi_types::Handle_StepGeom_TrimmedCurve,
     theLocalFactors: &crate::step_data::Factors,
-) -> crate::OwnedPtr<crate::ffi_types::HandleGeomTrimmedCurve> {
+) -> crate::OwnedPtr<crate::ffi_types::Handle_Geom_TrimmedCurve> {
     unsafe {
         crate::OwnedPtr::from_raw(crate::check_result(
             crate::ffi_extern_TKDESTEP::StepToGeom_make_trimmed_curve(SC, theLocalFactors),
         ))
     }
 }
-/// **Source:** `StepToGeom.hxx`:246 - `StepToGeom::MakeTrimmedCurve2d`
+/// **Source:** `StepToGeom.hxx`:248 - `StepToGeom::MakeTrimmedCurve2d`
 pub fn make_trimmed_curve2d(
-    SC: &crate::ffi_types::HandleStepGeomTrimmedCurve,
+    SC: &crate::ffi_types::Handle_StepGeom_TrimmedCurve,
     theLocalFactors: &crate::step_data::Factors,
-) -> crate::OwnedPtr<crate::ffi_types::HandleGeom2dBSplineCurve> {
+) -> crate::OwnedPtr<crate::ffi_types::Handle_Geom2d_BSplineCurve> {
     unsafe {
         crate::OwnedPtr::from_raw(crate::check_result(
             crate::ffi_extern_TKDESTEP::StepToGeom_make_trimmed_curve2d(SC, theLocalFactors),
         ))
     }
 }
-/// **Source:** `StepToGeom.hxx`:249 - `StepToGeom::MakeVectorWithMagnitude`
+/// **Source:** `StepToGeom.hxx`:251 - `StepToGeom::MakeVectorWithMagnitude`
 pub fn make_vector_with_magnitude(
-    SV: &crate::ffi_types::HandleStepGeomVector,
+    SV: &crate::ffi_types::Handle_StepGeom_Vector,
     theLocalFactors: &crate::step_data::Factors,
-) -> crate::OwnedPtr<crate::ffi_types::HandleGeomVectorWithMagnitude> {
+) -> crate::OwnedPtr<crate::ffi_types::Handle_Geom_VectorWithMagnitude> {
     unsafe {
         crate::OwnedPtr::from_raw(crate::check_result(
             crate::ffi_extern_TKDESTEP::StepToGeom_make_vector_with_magnitude(SV, theLocalFactors),
         ))
     }
 }
-/// **Source:** `StepToGeom.hxx`:252 - `StepToGeom::MakeVectorWithMagnitude2d`
+/// **Source:** `StepToGeom.hxx`:254 - `StepToGeom::MakeVectorWithMagnitude2d`
 pub fn make_vector_with_magnitude2d(
-    SV: &crate::ffi_types::HandleStepGeomVector,
-) -> crate::OwnedPtr<crate::ffi_types::HandleGeom2dVectorWithMagnitude> {
+    SV: &crate::ffi_types::Handle_StepGeom_Vector,
+) -> crate::OwnedPtr<crate::ffi_types::Handle_Geom2d_VectorWithMagnitude> {
     unsafe {
         crate::OwnedPtr::from_raw(crate::check_result(
             crate::ffi_extern_TKDESTEP::StepToGeom_make_vector_with_magnitude2d(SV),
         ))
     }
 }
-/// **Source:** `StepToGeom.hxx`:254 - `StepToGeom::MakeYprRotation`
+/// **Source:** `StepToGeom.hxx`:256 - `StepToGeom::MakeYprRotation`
 pub fn make_ypr_rotation(
     SR: &crate::step_kinematics::SpatialRotation,
-    theCntxt: &crate::ffi_types::HandleStepReprGlobalUnitAssignedContext,
-) -> crate::OwnedPtr<crate::ffi_types::HandleTColStdHArray1OfReal> {
+    theCntxt: &crate::ffi_types::Handle_StepRepr_GlobalUnitAssignedContext,
+) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HArray1_double> {
     unsafe {
         crate::OwnedPtr::from_raw(crate::check_result(
             crate::ffi_extern_TKDESTEP::StepToGeom_make_ypr_rotation(SR, theCntxt),

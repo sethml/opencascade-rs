@@ -12,7 +12,7 @@
 pub fn read_file_charptr_progressrange(
     theFile: &str,
     aProgress: &crate::message::ProgressRange,
-) -> crate::OwnedPtr<crate::ffi_types::HandlePolyTriangulation> {
+) -> crate::OwnedPtr<crate::ffi_types::Handle_Poly_Triangulation> {
     let c_theFile = std::ffi::CString::new(theFile).unwrap();
     unsafe {
         crate::OwnedPtr::from_raw(crate::check_result(
@@ -62,7 +62,7 @@ impl TryFrom<i32> for SubMeshReason {
 
 // Handle type re-exports (targets of handle upcasts/downcasts)
 pub use crate::ffi_types::{
-    HandleRWMeshCafReader, HandleRWMeshMaterialMap, HandleStandardTransient,
+    Handle_RWMesh_CafReader, Handle_RWMesh_MaterialMap, Handle_Standard_Transient,
 };
 
 // ========================
@@ -93,7 +93,7 @@ impl CafReader {
     }
 
     /// **Source:** `RWObj_CafReader.hxx`:23 - `RWObj_CafReader::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKDEOBJ::RWObj_CafReader_dynamic_type(
                 self as *const Self,
@@ -132,7 +132,7 @@ impl CafReader {
     }
 
     /// **Source:** `RWObj_CafReader.hxx`:23 - `RWObj_CafReader::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKDEOBJ::RWObj_CafReader_get_type_descriptor()))
         }
@@ -181,7 +181,7 @@ impl CafReader {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleRWObjCafReader> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_RWObj_CafReader> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDEOBJ::RWObj_CafReader_to_handle(obj.into_raw()),
@@ -189,8 +189,8 @@ impl CafReader {
         }
     }
 
-    /// Inherited: **Source:** `RWMesh_CafReader.hxx`:72 - `RWMesh_CafReader::Document()`
-    pub fn document(&self) -> &crate::ffi_types::HandleTDocStdDocument {
+    /// Inherited: **Source:** `RWMesh_CafReader.hxx`:74 - `RWMesh_CafReader::Document()`
+    pub fn document(&self) -> &crate::ffi_types::Handle_TDocStd_Document {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKDEOBJ::RWObj_CafReader_inherited_Document(
                 self as *const Self,
@@ -198,8 +198,8 @@ impl CafReader {
         }
     }
 
-    /// Inherited: **Source:** `RWMesh_CafReader.hxx`:76 - `RWMesh_CafReader::SetDocument()`
-    pub fn set_document(&mut self, theDoc: &crate::ffi_types::HandleTDocStdDocument) {
+    /// Inherited: **Source:** `RWMesh_CafReader.hxx`:78 - `RWMesh_CafReader::SetDocument()`
+    pub fn set_document(&mut self, theDoc: &crate::ffi_types::Handle_TDocStd_Document) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEOBJ::RWObj_CafReader_inherited_SetDocument(
                 self as *mut Self,
@@ -208,7 +208,7 @@ impl CafReader {
         })
     }
 
-    /// Inherited: **Source:** `RWMesh_CafReader.hxx`:79 - `RWMesh_CafReader::RootPrefix()`
+    /// Inherited: **Source:** `RWMesh_CafReader.hxx`:81 - `RWMesh_CafReader::RootPrefix()`
     pub fn root_prefix(&self) -> &crate::t_collection::AsciiString {
         unsafe {
             &*(crate::check_result(
@@ -219,7 +219,7 @@ impl CafReader {
         }
     }
 
-    /// Inherited: **Source:** `RWMesh_CafReader.hxx`:82 - `RWMesh_CafReader::SetRootPrefix()`
+    /// Inherited: **Source:** `RWMesh_CafReader.hxx`:84 - `RWMesh_CafReader::SetRootPrefix()`
     pub fn set_root_prefix(&mut self, theRootPrefix: &crate::t_collection::AsciiString) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEOBJ::RWObj_CafReader_inherited_SetRootPrefix(
@@ -229,7 +229,7 @@ impl CafReader {
         })
     }
 
-    /// Inherited: **Source:** `RWMesh_CafReader.hxx`:95 - `RWMesh_CafReader::ToFillIncompleteDocument()`
+    /// Inherited: **Source:** `RWMesh_CafReader.hxx`:97 - `RWMesh_CafReader::ToFillIncompleteDocument()`
     pub fn to_fill_incomplete_document(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEOBJ::RWObj_CafReader_inherited_ToFillIncompleteDocument(
@@ -238,7 +238,7 @@ impl CafReader {
         })
     }
 
-    /// Inherited: **Source:** `RWMesh_CafReader.hxx`:98 - `RWMesh_CafReader::SetFillIncompleteDocument()`
+    /// Inherited: **Source:** `RWMesh_CafReader.hxx`:100 - `RWMesh_CafReader::SetFillIncompleteDocument()`
     pub fn set_fill_incomplete_document(&mut self, theToFillIncomplete: bool) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEOBJ::RWObj_CafReader_inherited_SetFillIncompleteDocument(
@@ -248,14 +248,14 @@ impl CafReader {
         })
     }
 
-    /// Inherited: **Source:** `RWMesh_CafReader.hxx`:104 - `RWMesh_CafReader::MemoryLimitMiB()`
+    /// Inherited: **Source:** `RWMesh_CafReader.hxx`:106 - `RWMesh_CafReader::MemoryLimitMiB()`
     pub fn memory_limit_mi_b(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEOBJ::RWObj_CafReader_inherited_MemoryLimitMiB(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `RWMesh_CafReader.hxx`:107 - `RWMesh_CafReader::SetMemoryLimitMiB()`
+    /// Inherited: **Source:** `RWMesh_CafReader.hxx`:109 - `RWMesh_CafReader::SetMemoryLimitMiB()`
     pub fn set_memory_limit_mi_b(&mut self, theLimitMiB: i32) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEOBJ::RWObj_CafReader_inherited_SetMemoryLimitMiB(
@@ -265,7 +265,7 @@ impl CafReader {
         })
     }
 
-    /// Inherited: **Source:** `RWMesh_CafReader.hxx`:111 - `RWMesh_CafReader::CoordinateSystemConverter()`
+    /// Inherited: **Source:** `RWMesh_CafReader.hxx`:113 - `RWMesh_CafReader::CoordinateSystemConverter()`
     pub fn coordinate_system_converter(&self) -> &crate::rw_mesh::CoordinateSystemConverter {
         unsafe {
             &*(crate::check_result(
@@ -276,7 +276,7 @@ impl CafReader {
         }
     }
 
-    /// Inherited: **Source:** `RWMesh_CafReader.hxx`:117 - `RWMesh_CafReader::SetCoordinateSystemConverter()`
+    /// Inherited: **Source:** `RWMesh_CafReader.hxx`:119 - `RWMesh_CafReader::SetCoordinateSystemConverter()`
     pub fn set_coordinate_system_converter(
         &mut self,
         theConverter: &crate::rw_mesh::CoordinateSystemConverter,
@@ -289,7 +289,7 @@ impl CafReader {
         })
     }
 
-    /// Inherited: **Source:** `RWMesh_CafReader.hxx`:124 - `RWMesh_CafReader::SystemLengthUnit()`
+    /// Inherited: **Source:** `RWMesh_CafReader.hxx`:126 - `RWMesh_CafReader::SystemLengthUnit()`
     pub fn system_length_unit(&self) -> f64 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEOBJ::RWObj_CafReader_inherited_SystemLengthUnit(
@@ -298,7 +298,7 @@ impl CafReader {
         })
     }
 
-    /// Inherited: **Source:** `RWMesh_CafReader.hxx`:128 - `RWMesh_CafReader::SetSystemLengthUnit()`
+    /// Inherited: **Source:** `RWMesh_CafReader.hxx`:130 - `RWMesh_CafReader::SetSystemLengthUnit()`
     pub fn set_system_length_unit(&mut self, theUnits: f64) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEOBJ::RWObj_CafReader_inherited_SetSystemLengthUnit(
@@ -308,7 +308,7 @@ impl CafReader {
         })
     }
 
-    /// Inherited: **Source:** `RWMesh_CafReader.hxx`:134 - `RWMesh_CafReader::HasSystemCoordinateSystem()`
+    /// Inherited: **Source:** `RWMesh_CafReader.hxx`:133 - `RWMesh_CafReader::HasSystemCoordinateSystem()`
     pub fn has_system_coordinate_system(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEOBJ::RWObj_CafReader_inherited_HasSystemCoordinateSystem(
@@ -317,7 +317,7 @@ impl CafReader {
         })
     }
 
-    /// Inherited: **Source:** `RWMesh_CafReader.hxx`:141 - `RWMesh_CafReader::SystemCoordinateSystem()`
+    /// Inherited: **Source:** `RWMesh_CafReader.hxx`:137 - `RWMesh_CafReader::SystemCoordinateSystem()`
     pub fn system_coordinate_system(&self) -> &crate::gp::Ax3 {
         unsafe {
             &*(crate::check_result(
@@ -328,7 +328,7 @@ impl CafReader {
         }
     }
 
-    /// Inherited: **Source:** `RWMesh_CafReader.hxx`:147 - `RWMesh_CafReader::SetSystemCoordinateSystem()`
+    /// Inherited: **Source:** `RWMesh_CafReader.hxx`:143 - `RWMesh_CafReader::SetSystemCoordinateSystem()`
     pub fn set_system_coordinate_system(&mut self, theCS: &crate::gp::Ax3) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEOBJ::RWObj_CafReader_inherited_SetSystemCoordinateSystem(
@@ -338,14 +338,14 @@ impl CafReader {
         })
     }
 
-    /// Inherited: **Source:** `RWMesh_CafReader.hxx`:160 - `RWMesh_CafReader::FileLengthUnit()`
+    /// Inherited: **Source:** `RWMesh_CafReader.hxx`:156 - `RWMesh_CafReader::FileLengthUnit()`
     pub fn file_length_unit(&self) -> f64 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEOBJ::RWObj_CafReader_inherited_FileLengthUnit(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `RWMesh_CafReader.hxx`:164 - `RWMesh_CafReader::SetFileLengthUnit()`
+    /// Inherited: **Source:** `RWMesh_CafReader.hxx`:160 - `RWMesh_CafReader::SetFileLengthUnit()`
     pub fn set_file_length_unit(&mut self, theUnits: f64) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEOBJ::RWObj_CafReader_inherited_SetFileLengthUnit(
@@ -355,7 +355,7 @@ impl CafReader {
         })
     }
 
-    /// Inherited: **Source:** `RWMesh_CafReader.hxx`:170 - `RWMesh_CafReader::HasFileCoordinateSystem()`
+    /// Inherited: **Source:** `RWMesh_CafReader.hxx`:163 - `RWMesh_CafReader::HasFileCoordinateSystem()`
     pub fn has_file_coordinate_system(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEOBJ::RWObj_CafReader_inherited_HasFileCoordinateSystem(
@@ -364,7 +364,7 @@ impl CafReader {
         })
     }
 
-    /// Inherited: **Source:** `RWMesh_CafReader.hxx`:177 - `RWMesh_CafReader::FileCoordinateSystem()`
+    /// Inherited: **Source:** `RWMesh_CafReader.hxx`:167 - `RWMesh_CafReader::FileCoordinateSystem()`
     pub fn file_coordinate_system(&self) -> &crate::gp::Ax3 {
         unsafe {
             &*(crate::check_result(
@@ -375,7 +375,7 @@ impl CafReader {
         }
     }
 
-    /// Inherited: **Source:** `RWMesh_CafReader.hxx`:180 - `RWMesh_CafReader::SetFileCoordinateSystem()`
+    /// Inherited: **Source:** `RWMesh_CafReader.hxx`:170 - `RWMesh_CafReader::SetFileCoordinateSystem()`
     pub fn set_file_coordinate_system(&mut self, theCS: &crate::gp::Ax3) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEOBJ::RWObj_CafReader_inherited_SetFileCoordinateSystem(
@@ -385,7 +385,7 @@ impl CafReader {
         })
     }
 
-    /// Inherited: **Source:** `RWMesh_CafReader.hxx`:194 - `RWMesh_CafReader::Perform()`
+    /// Inherited: **Source:** `RWMesh_CafReader.hxx`:184 - `RWMesh_CafReader::Perform()`
     pub fn perform(
         &mut self,
         theFile: &crate::t_collection::AsciiString,
@@ -400,14 +400,14 @@ impl CafReader {
         })
     }
 
-    /// Inherited: **Source:** `RWMesh_CafReader.hxx`:211 - `RWMesh_CafReader::ExtraStatus()`
+    /// Inherited: **Source:** `RWMesh_CafReader.hxx`:201 - `RWMesh_CafReader::ExtraStatus()`
     pub fn extra_status(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEOBJ::RWObj_CafReader_inherited_ExtraStatus(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `RWMesh_CafReader.hxx`:215 - `RWMesh_CafReader::SingleShape()`
+    /// Inherited: **Source:** `RWMesh_CafReader.hxx`:205 - `RWMesh_CafReader::SingleShape()`
     pub fn single_shape(&self) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -418,8 +418,10 @@ impl CafReader {
         }
     }
 
-    /// Inherited: **Source:** `RWMesh_CafReader.hxx`:218 - `RWMesh_CafReader::ExternalFiles()`
-    pub fn external_files(&self) -> &crate::ffi_types::Interface_IndexedMapOfAsciiString {
+    /// Inherited: **Source:** `RWMesh_CafReader.hxx`:208 - `RWMesh_CafReader::ExternalFiles()`
+    pub fn external_files(
+        &self,
+    ) -> &crate::ffi_types::NCollection_IndexedMap_TCollection_AsciiString {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKDEOBJ::RWObj_CafReader_inherited_ExternalFiles(
@@ -429,8 +431,11 @@ impl CafReader {
         }
     }
 
-    /// Inherited: **Source:** `RWMesh_CafReader.hxx`:224 - `RWMesh_CafReader::Metadata()`
-    pub fn metadata(&self) -> &crate::ffi_types::TColStd_IndexedDataMapOfStringString {
+    /// Inherited: **Source:** `RWMesh_CafReader.hxx`:214 - `RWMesh_CafReader::Metadata()`
+    pub fn metadata(
+        &self,
+    ) -> &crate::ffi_types::NCollection_IndexedDataMap_TCollection_AsciiString_TCollection_AsciiString
+    {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKDEOBJ::RWObj_CafReader_inherited_Metadata(
                 self as *const Self,
@@ -438,7 +443,7 @@ impl CafReader {
         }
     }
 
-    /// Inherited: **Source:** `RWMesh_CafReader.hxx`:227 - `RWMesh_CafReader::ProbeHeader()`
+    /// Inherited: **Source:** `RWMesh_CafReader.hxx`:221 - `RWMesh_CafReader::ProbeHeader()`
     pub fn probe_header(
         &mut self,
         theFile: &crate::t_collection::AsciiString,
@@ -453,8 +458,8 @@ impl CafReader {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEOBJ::RWObj_CafReader_inherited_IsInstance(
                 self as *const Self,
@@ -463,8 +468,8 @@ impl CafReader {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEOBJ::RWObj_CafReader_inherited_IsKind(
                 self as *const Self,
@@ -473,7 +478,7 @@ impl CafReader {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -487,14 +492,14 @@ impl CafReader {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEOBJ::RWObj_CafReader_inherited_GetRefCount(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEOBJ::RWObj_CafReader_inherited_IncrementRefCounter(
@@ -503,7 +508,7 @@ impl CafReader {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEOBJ::RWObj_CafReader_inherited_DecrementRefCounter(
@@ -512,7 +517,7 @@ impl CafReader {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEOBJ::RWObj_CafReader_inherited_Delete(self as *const Self)
@@ -520,32 +525,32 @@ impl CafReader {
     }
 }
 
-pub use crate::ffi_types::HandleRWObjCafReader;
+pub use crate::ffi_types::Handle_RWObj_CafReader;
 
-unsafe impl crate::CppDeletable for HandleRWObjCafReader {
+unsafe impl crate::CppDeletable for Handle_RWObj_CafReader {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKDEOBJ::HandleRWObjCafReader_destructor(ptr);
+            crate::ffi_extern_TKDEOBJ::Handle_RWObj_CafReader_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleRWObjCafReader {
+unsafe impl crate::CppCopyable for Handle_RWObj_CafReader {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        unsafe { crate::check_result(crate::ffi_extern_TKDEOBJ::HandleRWObjCafReader_clone(ptr)) }
+        unsafe { crate::check_result(crate::ffi_extern_TKDEOBJ::Handle_RWObj_CafReader_clone(ptr)) }
     }
 }
 
-impl HandleRWObjCafReader {
+impl Handle_RWObj_CafReader {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
-        unsafe { crate::ffi_extern_TKDEOBJ::HandleRWObjCafReader_is_null(self as *const Self) }
+        unsafe { crate::ffi_extern_TKDEOBJ::Handle_RWObj_CafReader_is_null(self as *const Self) }
     }
 
     /// Dereference this Handle to access the underlying RWObj_CafReader
     pub fn get(&self) -> &crate::ffi_types::RWObj_CafReader {
         unsafe {
-            &*crate::check_result(crate::ffi_extern_TKDEOBJ::HandleRWObjCafReader_get(
+            &*crate::check_result(crate::ffi_extern_TKDEOBJ::Handle_RWObj_CafReader_get(
                 self as *const Self,
             ))
         }
@@ -554,17 +559,19 @@ impl HandleRWObjCafReader {
     /// Dereference this Handle to mutably access the underlying RWObj_CafReader
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::RWObj_CafReader {
         unsafe {
-            &mut *crate::check_result(crate::ffi_extern_TKDEOBJ::HandleRWObjCafReader_get_mut(
+            &mut *crate::check_result(crate::ffi_extern_TKDEOBJ::Handle_RWObj_CafReader_get_mut(
                 self as *mut Self,
             ))
         }
     }
 
     /// Upcast Handle<RWObj_CafReader> to Handle<RWMesh_CafReader>
-    pub fn to_handle_caf_reader(&self) -> crate::OwnedPtr<crate::ffi_types::HandleRWMeshCafReader> {
+    pub fn to_handle_caf_reader(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_RWMesh_CafReader> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKDEOBJ::HandleRWObjCafReader_to_HandleRWMeshCafReader(
+                crate::ffi_extern_TKDEOBJ::Handle_RWObj_CafReader_to_Handle_RWMesh_CafReader(
                     self as *const Self,
                 ),
             ))
@@ -574,10 +581,10 @@ impl HandleRWObjCafReader {
     /// Upcast Handle<RWObj_CafReader> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKDEOBJ::HandleRWObjCafReader_to_HandleStandardTransient(
+                crate::ffi_extern_TKDEOBJ::Handle_RWObj_CafReader_to_Handle_Standard_Transient(
                     self as *const Self,
                 ),
             ))
@@ -589,7 +596,7 @@ impl HandleRWObjCafReader {
 // From RWObj_CafWriter.hxx
 // ========================
 
-/// **Source:** `RWObj_CafWriter.hxx`:35 - `RWObj_CafWriter`
+/// **Source:** `RWObj_CafWriter.hxx`:37 - `RWObj_CafWriter`
 /// OBJ writer context from XCAF document.
 pub use crate::ffi_types::RWObj_CafWriter as CafWriter;
 
@@ -602,7 +609,7 @@ unsafe impl crate::CppDeletable for CafWriter {
 }
 
 impl CafWriter {
-    /// **Source:** `RWObj_CafWriter.hxx`:41 - `RWObj_CafWriter::RWObj_CafWriter()`
+    /// **Source:** `RWObj_CafWriter.hxx`:43 - `RWObj_CafWriter::RWObj_CafWriter()`
     /// Main constructor.
     /// @param[in] theFile  path to output OBJ file
     pub fn new_asciistring(theFile: &crate::t_collection::AsciiString) -> crate::OwnedPtr<Self> {
@@ -613,8 +620,8 @@ impl CafWriter {
         }
     }
 
-    /// **Source:** `RWObj_CafWriter.hxx`:37 - `RWObj_CafWriter::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `RWObj_CafWriter.hxx`:39 - `RWObj_CafWriter::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKDEOBJ::RWObj_CafWriter_dynamic_type(
                 self as *const Self,
@@ -622,7 +629,7 @@ impl CafWriter {
         }
     }
 
-    /// **Source:** `RWObj_CafWriter.hxx`:47 - `RWObj_CafWriter::CoordinateSystemConverter()`
+    /// **Source:** `RWObj_CafWriter.hxx`:49 - `RWObj_CafWriter::CoordinateSystemConverter()`
     /// Return transformation from OCCT to OBJ coordinate system.
     pub fn coordinate_system_converter(&self) -> &crate::rw_mesh::CoordinateSystemConverter {
         unsafe {
@@ -634,7 +641,7 @@ impl CafWriter {
         }
     }
 
-    /// **Source:** `RWObj_CafWriter.hxx`:50 - `RWObj_CafWriter::ChangeCoordinateSystemConverter()`
+    /// **Source:** `RWObj_CafWriter.hxx`:52 - `RWObj_CafWriter::ChangeCoordinateSystemConverter()`
     /// Return transformation from OCCT to OBJ coordinate system.
     pub fn change_coordinate_system_converter(
         &mut self,
@@ -648,7 +655,7 @@ impl CafWriter {
         }
     }
 
-    /// **Source:** `RWObj_CafWriter.hxx`:53 - `RWObj_CafWriter::SetCoordinateSystemConverter()`
+    /// **Source:** `RWObj_CafWriter.hxx`:55 - `RWObj_CafWriter::SetCoordinateSystemConverter()`
     /// Set transformation from OCCT to OBJ coordinate system.
     pub fn set_coordinate_system_converter(
         &mut self,
@@ -662,7 +669,7 @@ impl CafWriter {
         })
     }
 
-    /// **Source:** `RWObj_CafWriter.hxx`:59 - `RWObj_CafWriter::DefaultStyle()`
+    /// **Source:** `RWObj_CafWriter.hxx`:61 - `RWObj_CafWriter::DefaultStyle()`
     /// Return default material definition to be used for nodes with only color defined.
     pub fn default_style(&self) -> &crate::xcaf_prs::Style {
         unsafe {
@@ -672,7 +679,7 @@ impl CafWriter {
         }
     }
 
-    /// **Source:** `RWObj_CafWriter.hxx`:62 - `RWObj_CafWriter::SetDefaultStyle()`
+    /// **Source:** `RWObj_CafWriter.hxx`:64 - `RWObj_CafWriter::SetDefaultStyle()`
     /// Set default material definition to be used for nodes with only color defined.
     pub fn set_default_style(&mut self, theStyle: &crate::xcaf_prs::Style) {
         crate::check_void_result(unsafe {
@@ -683,7 +690,7 @@ impl CafWriter {
         })
     }
 
-    /// **Source:** `RWObj_CafWriter.hxx`:76 - `RWObj_CafWriter::Perform()`
+    /// **Source:** `RWObj_CafWriter.hxx`:78 - `RWObj_CafWriter::Perform()`
     /// Write OBJ file and associated MTL material file.
     /// Triangulation data should be precomputed within shapes!
     /// @param[in] theDocument     input document
@@ -696,38 +703,38 @@ impl CafWriter {
     /// @param[in] theFileInfo     map with file metadata to put into OBJ header section
     /// @param[in] theProgress     optional progress indicator
     /// @return FALSE on file writing failure
-    pub fn perform_handletdocstddocument_labelsequence_mapofasciistringptr_indexeddatamapofstringstring_progressrange(
+    pub fn perform_handletdocstddocument_seq_label_map_asciistringptr_idmap_asciistring_asciistring_progressrange(
         &mut self,
-        theDocument: &crate::ffi_types::HandleTDocStdDocument,
-        theRootLabels: &crate::ffi_types::TDF_LabelSequence,
-        theLabelFilter: &crate::ffi_types::TColStd_MapOfAsciiString,
-        theFileInfo: &crate::ffi_types::TColStd_IndexedDataMapOfStringString,
+        theDocument: &crate::ffi_types::Handle_TDocStd_Document,
+        theRootLabels: &crate::ffi_types::NCollection_Sequence_TDF_Label,
+        theLabelFilter: &crate::ffi_types::NCollection_Map_TCollection_AsciiString,
+        theFileInfo: &crate::ffi_types::NCollection_IndexedDataMap_TCollection_AsciiString_TCollection_AsciiString,
         theProgress: &crate::message::ProgressRange,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi_extern_TKDEOBJ::RWObj_CafWriter_perform_handletdocstddocument_labelsequence_mapofasciistringptr_indexeddatamapofstringstring_progressrange(self as *mut Self, theDocument, theRootLabels, theLabelFilter as *const _, theFileInfo, theProgress)
+            crate::ffi_extern_TKDEOBJ::RWObj_CafWriter_perform_handletdocstddocument_seq_label_map_asciistringptr_idmap_asciistring_asciistring_progressrange(self as *mut Self, theDocument, theRootLabels, theLabelFilter as *const _, theFileInfo, theProgress)
         })
     }
 
-    /// **Source:** `RWObj_CafWriter.hxx`:88 - `RWObj_CafWriter::Perform()`
+    /// **Source:** `RWObj_CafWriter.hxx`:91 - `RWObj_CafWriter::Perform()`
     /// Write OBJ file and associated MTL material file.
     /// Triangulation data should be precomputed within shapes!
     /// @param[in] theDocument     input document
     /// @param[in] theFileInfo     map with file metadata to put into glTF header section
     /// @param[in] theProgress     optional progress indicator
     /// @return FALSE on file writing failure
-    pub fn perform_handletdocstddocument_indexeddatamapofstringstring_progressrange(
+    pub fn perform_handletdocstddocument_idmap_asciistring_asciistring_progressrange(
         &mut self,
-        theDocument: &crate::ffi_types::HandleTDocStdDocument,
-        theFileInfo: &crate::ffi_types::TColStd_IndexedDataMapOfStringString,
+        theDocument: &crate::ffi_types::Handle_TDocStd_Document,
+        theFileInfo: &crate::ffi_types::NCollection_IndexedDataMap_TCollection_AsciiString_TCollection_AsciiString,
         theProgress: &crate::message::ProgressRange,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi_extern_TKDEOBJ::RWObj_CafWriter_perform_handletdocstddocument_indexeddatamapofstringstring_progressrange(self as *mut Self, theDocument, theFileInfo, theProgress)
+            crate::ffi_extern_TKDEOBJ::RWObj_CafWriter_perform_handletdocstddocument_idmap_asciistring_asciistring_progressrange(self as *mut Self, theDocument, theFileInfo, theProgress)
         })
     }
 
-    /// **Source:** `RWObj_CafWriter.hxx`:37 - `RWObj_CafWriter::get_type_name()`
+    /// **Source:** `RWObj_CafWriter.hxx`:39 - `RWObj_CafWriter::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -738,8 +745,8 @@ impl CafWriter {
         .into_owned()
     }
 
-    /// **Source:** `RWObj_CafWriter.hxx`:37 - `RWObj_CafWriter::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    /// **Source:** `RWObj_CafWriter.hxx`:39 - `RWObj_CafWriter::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKDEOBJ::RWObj_CafWriter_get_type_descriptor()))
         }
@@ -768,7 +775,7 @@ impl CafWriter {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleRWObjCafWriter> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_RWObj_CafWriter> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDEOBJ::RWObj_CafWriter_to_handle(obj.into_raw()),
@@ -776,8 +783,8 @@ impl CafWriter {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEOBJ::RWObj_CafWriter_inherited_IsInstance(
                 self as *const Self,
@@ -786,8 +793,8 @@ impl CafWriter {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEOBJ::RWObj_CafWriter_inherited_IsKind(
                 self as *const Self,
@@ -796,7 +803,7 @@ impl CafWriter {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -810,14 +817,14 @@ impl CafWriter {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEOBJ::RWObj_CafWriter_inherited_GetRefCount(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEOBJ::RWObj_CafWriter_inherited_IncrementRefCounter(
@@ -826,7 +833,7 @@ impl CafWriter {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEOBJ::RWObj_CafWriter_inherited_DecrementRefCounter(
@@ -835,7 +842,7 @@ impl CafWriter {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEOBJ::RWObj_CafWriter_inherited_Delete(self as *const Self)
@@ -843,32 +850,32 @@ impl CafWriter {
     }
 }
 
-pub use crate::ffi_types::HandleRWObjCafWriter;
+pub use crate::ffi_types::Handle_RWObj_CafWriter;
 
-unsafe impl crate::CppDeletable for HandleRWObjCafWriter {
+unsafe impl crate::CppDeletable for Handle_RWObj_CafWriter {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKDEOBJ::HandleRWObjCafWriter_destructor(ptr);
+            crate::ffi_extern_TKDEOBJ::Handle_RWObj_CafWriter_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleRWObjCafWriter {
+unsafe impl crate::CppCopyable for Handle_RWObj_CafWriter {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        unsafe { crate::check_result(crate::ffi_extern_TKDEOBJ::HandleRWObjCafWriter_clone(ptr)) }
+        unsafe { crate::check_result(crate::ffi_extern_TKDEOBJ::Handle_RWObj_CafWriter_clone(ptr)) }
     }
 }
 
-impl HandleRWObjCafWriter {
+impl Handle_RWObj_CafWriter {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
-        unsafe { crate::ffi_extern_TKDEOBJ::HandleRWObjCafWriter_is_null(self as *const Self) }
+        unsafe { crate::ffi_extern_TKDEOBJ::Handle_RWObj_CafWriter_is_null(self as *const Self) }
     }
 
     /// Dereference this Handle to access the underlying RWObj_CafWriter
     pub fn get(&self) -> &crate::ffi_types::RWObj_CafWriter {
         unsafe {
-            &*crate::check_result(crate::ffi_extern_TKDEOBJ::HandleRWObjCafWriter_get(
+            &*crate::check_result(crate::ffi_extern_TKDEOBJ::Handle_RWObj_CafWriter_get(
                 self as *const Self,
             ))
         }
@@ -877,7 +884,7 @@ impl HandleRWObjCafWriter {
     /// Dereference this Handle to mutably access the underlying RWObj_CafWriter
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::RWObj_CafWriter {
         unsafe {
-            &mut *crate::check_result(crate::ffi_extern_TKDEOBJ::HandleRWObjCafWriter_get_mut(
+            &mut *crate::check_result(crate::ffi_extern_TKDEOBJ::Handle_RWObj_CafWriter_get_mut(
                 self as *mut Self,
             ))
         }
@@ -886,10 +893,10 @@ impl HandleRWObjCafWriter {
     /// Upcast Handle<RWObj_CafWriter> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKDEOBJ::HandleRWObjCafWriter_to_HandleStandardTransient(
+                crate::ffi_extern_TKDEOBJ::Handle_RWObj_CafWriter_to_Handle_Standard_Transient(
                     self as *const Self,
                 ),
             ))
@@ -928,7 +935,7 @@ impl Material {
 // From RWObj_MtlReader.hxx
 // ========================
 
-/// **Source:** `RWObj_MtlReader.hxx`:23 - `RWObj_MtlReader`
+/// **Source:** `RWObj_MtlReader.hxx`:24 - `RWObj_MtlReader`
 /// Reader of mtl files.
 pub use crate::ffi_types::RWObj_MtlReader as MtlReader;
 
@@ -941,17 +948,21 @@ unsafe impl crate::CppDeletable for MtlReader {
 }
 
 impl MtlReader {
-    /// **Source:** `RWObj_MtlReader.hxx`:27 - `RWObj_MtlReader::RWObj_MtlReader()`
+    /// **Source:** `RWObj_MtlReader.hxx`:28 - `RWObj_MtlReader::RWObj_MtlReader()`
     /// Main constructor.
-    pub fn new_datamap_tcollection_asciistring_rwobj_material(
+    pub fn new_dmap_asciistring_material(
         theMaterials: &mut crate::ffi_types::NCollection_DataMap_TCollection_AsciiString_RWObj_Material,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEOBJ::RWObj_MtlReader_ctor_datamap_tcollection_asciistring_rwobj_material(theMaterials)))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKDEOBJ::RWObj_MtlReader_ctor_dmap_asciistring_material(
+                    theMaterials,
+                ),
+            ))
         }
     }
 
-    /// **Source:** `RWObj_MtlReader.hxx`:33 - `RWObj_MtlReader::Read()`
+    /// **Source:** `RWObj_MtlReader.hxx`:34 - `RWObj_MtlReader::Read()`
     /// Read the file.
     pub fn read(
         &mut self,
@@ -992,7 +1003,7 @@ impl ObjMaterialMap {
     }
 
     /// **Source:** `RWObj_ObjMaterialMap.hxx`:23 - `RWObj_ObjMaterialMap::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKDEOBJ::RWObj_ObjMaterialMap_dynamic_type(
                 self as *const Self,
@@ -1016,7 +1027,7 @@ impl ObjMaterialMap {
         }
     }
 
-    /// **Source:** `RWObj_ObjMaterialMap.hxx`:36 - `RWObj_ObjMaterialMap::DefineMaterial()`
+    /// **Source:** `RWObj_ObjMaterialMap.hxx`:35 - `RWObj_ObjMaterialMap::DefineMaterial()`
     /// Virtual method actually defining the material (e.g. export to the file).
     pub fn define_material(
         &mut self,
@@ -1046,7 +1057,7 @@ impl ObjMaterialMap {
     }
 
     /// **Source:** `RWObj_ObjMaterialMap.hxx`:23 - `RWObj_ObjMaterialMap::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKDEOBJ::RWObj_ObjMaterialMap_get_type_descriptor(),
@@ -1101,7 +1112,7 @@ impl ObjMaterialMap {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleRWObjObjMaterialMap> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_RWObj_ObjMaterialMap> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDEOBJ::RWObj_ObjMaterialMap_to_handle(obj.into_raw()),
@@ -1158,7 +1169,7 @@ impl ObjMaterialMap {
     pub fn copy_texture(
         &mut self,
         theResTexture: &mut crate::t_collection::AsciiString,
-        theTexture: &crate::ffi_types::HandleImageTexture,
+        theTexture: &crate::ffi_types::Handle_Image_Texture,
         theKey: &crate::t_collection::AsciiString,
     ) -> bool {
         crate::check_result(unsafe {
@@ -1178,8 +1189,8 @@ impl ObjMaterialMap {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEOBJ::RWObj_ObjMaterialMap_inherited_IsInstance(
                 self as *const Self,
@@ -1188,8 +1199,8 @@ impl ObjMaterialMap {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEOBJ::RWObj_ObjMaterialMap_inherited_IsKind(
                 self as *const Self,
@@ -1198,7 +1209,7 @@ impl ObjMaterialMap {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -1212,7 +1223,7 @@ impl ObjMaterialMap {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEOBJ::RWObj_ObjMaterialMap_inherited_GetRefCount(
@@ -1221,7 +1232,7 @@ impl ObjMaterialMap {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEOBJ::RWObj_ObjMaterialMap_inherited_IncrementRefCounter(
@@ -1230,7 +1241,7 @@ impl ObjMaterialMap {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEOBJ::RWObj_ObjMaterialMap_inherited_DecrementRefCounter(
@@ -1239,7 +1250,7 @@ impl ObjMaterialMap {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEOBJ::RWObj_ObjMaterialMap_inherited_Delete(self as *const Self)
@@ -1247,34 +1258,36 @@ impl ObjMaterialMap {
     }
 }
 
-pub use crate::ffi_types::HandleRWObjObjMaterialMap;
+pub use crate::ffi_types::Handle_RWObj_ObjMaterialMap;
 
-unsafe impl crate::CppDeletable for HandleRWObjObjMaterialMap {
+unsafe impl crate::CppDeletable for Handle_RWObj_ObjMaterialMap {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKDEOBJ::HandleRWObjObjMaterialMap_destructor(ptr);
+            crate::ffi_extern_TKDEOBJ::Handle_RWObj_ObjMaterialMap_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleRWObjObjMaterialMap {
+unsafe impl crate::CppCopyable for Handle_RWObj_ObjMaterialMap {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
         unsafe {
-            crate::check_result(crate::ffi_extern_TKDEOBJ::HandleRWObjObjMaterialMap_clone(ptr))
+            crate::check_result(crate::ffi_extern_TKDEOBJ::Handle_RWObj_ObjMaterialMap_clone(ptr))
         }
     }
 }
 
-impl HandleRWObjObjMaterialMap {
+impl Handle_RWObj_ObjMaterialMap {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
-        unsafe { crate::ffi_extern_TKDEOBJ::HandleRWObjObjMaterialMap_is_null(self as *const Self) }
+        unsafe {
+            crate::ffi_extern_TKDEOBJ::Handle_RWObj_ObjMaterialMap_is_null(self as *const Self)
+        }
     }
 
     /// Dereference this Handle to access the underlying RWObj_ObjMaterialMap
     pub fn get(&self) -> &crate::ffi_types::RWObj_ObjMaterialMap {
         unsafe {
-            &*crate::check_result(crate::ffi_extern_TKDEOBJ::HandleRWObjObjMaterialMap_get(
+            &*crate::check_result(crate::ffi_extern_TKDEOBJ::Handle_RWObj_ObjMaterialMap_get(
                 self as *const Self,
             ))
         }
@@ -1283,19 +1296,19 @@ impl HandleRWObjObjMaterialMap {
     /// Dereference this Handle to mutably access the underlying RWObj_ObjMaterialMap
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::RWObj_ObjMaterialMap {
         unsafe {
-            &mut *crate::check_result(crate::ffi_extern_TKDEOBJ::HandleRWObjObjMaterialMap_get_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKDEOBJ::Handle_RWObj_ObjMaterialMap_get_mut(self as *mut Self),
+            )
         }
     }
 
     /// Upcast Handle<RWObj_ObjMaterialMap> to Handle<RWMesh_MaterialMap>
     pub fn to_handle_material_map(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleRWMeshMaterialMap> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_RWMesh_MaterialMap> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKDEOBJ::HandleRWObjObjMaterialMap_to_HandleRWMeshMaterialMap(
+                crate::ffi_extern_TKDEOBJ::Handle_RWObj_ObjMaterialMap_to_Handle_RWMesh_MaterialMap(
                     self as *const Self,
                 ),
             ))
@@ -1305,10 +1318,10 @@ impl HandleRWObjObjMaterialMap {
     /// Upcast Handle<RWObj_ObjMaterialMap> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKDEOBJ::HandleRWObjObjMaterialMap_to_HandleStandardTransient(
+                crate::ffi_extern_TKDEOBJ::Handle_RWObj_ObjMaterialMap_to_Handle_Standard_Transient(
                     self as *const Self,
                 ),
             ))
@@ -1320,7 +1333,7 @@ impl HandleRWObjObjMaterialMap {
 // From RWObj_ObjWriterContext.hxx
 // ========================
 
-/// **Source:** `RWObj_ObjWriterContext.hxx`:22 - `RWObj_ObjWriterContext`
+/// **Source:** `RWObj_ObjWriterContext.hxx`:30 - `RWObj_ObjWriterContext`
 /// Auxiliary low-level tool writing OBJ file.
 pub use crate::ffi_types::RWObj_ObjWriterContext as ObjWriterContext;
 
@@ -1333,7 +1346,7 @@ unsafe impl crate::CppDeletable for ObjWriterContext {
 }
 
 impl ObjWriterContext {
-    /// **Source:** `RWObj_ObjWriterContext.hxx`:26 - `RWObj_ObjWriterContext::RWObj_ObjWriterContext()`
+    /// **Source:** `RWObj_ObjWriterContext.hxx`:34 - `RWObj_ObjWriterContext::RWObj_ObjWriterContext()`
     /// Main constructor.
     pub fn new_asciistring(theName: &crate::t_collection::AsciiString) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -1343,7 +1356,7 @@ impl ObjWriterContext {
         }
     }
 
-    /// **Source:** `RWObj_ObjWriterContext.hxx`:32 - `RWObj_ObjWriterContext::IsOpened()`
+    /// **Source:** `RWObj_ObjWriterContext.hxx`:40 - `RWObj_ObjWriterContext::IsOpened()`
     /// Return true if file has been opened.
     pub fn is_opened(&self) -> bool {
         crate::check_result(unsafe {
@@ -1351,7 +1364,7 @@ impl ObjWriterContext {
         })
     }
 
-    /// **Source:** `RWObj_ObjWriterContext.hxx`:35 - `RWObj_ObjWriterContext::Close()`
+    /// **Source:** `RWObj_ObjWriterContext.hxx`:43 - `RWObj_ObjWriterContext::Close()`
     /// Correctly close the file.
     pub fn close(&mut self) -> bool {
         crate::check_result(unsafe {
@@ -1359,7 +1372,7 @@ impl ObjWriterContext {
         })
     }
 
-    /// **Source:** `RWObj_ObjWriterContext.hxx`:38 - `RWObj_ObjWriterContext::HasNormals()`
+    /// **Source:** `RWObj_ObjWriterContext.hxx`:46 - `RWObj_ObjWriterContext::HasNormals()`
     /// Return true if normals are defined.
     pub fn has_normals(&self) -> bool {
         crate::check_result(unsafe {
@@ -1367,7 +1380,7 @@ impl ObjWriterContext {
         })
     }
 
-    /// **Source:** `RWObj_ObjWriterContext.hxx`:41 - `RWObj_ObjWriterContext::SetNormals()`
+    /// **Source:** `RWObj_ObjWriterContext.hxx`:49 - `RWObj_ObjWriterContext::SetNormals()`
     /// Set if normals are defined.
     pub fn set_normals(&mut self, theHasNormals: bool) {
         crate::check_void_result(unsafe {
@@ -1378,7 +1391,7 @@ impl ObjWriterContext {
         })
     }
 
-    /// **Source:** `RWObj_ObjWriterContext.hxx`:44 - `RWObj_ObjWriterContext::HasTexCoords()`
+    /// **Source:** `RWObj_ObjWriterContext.hxx`:52 - `RWObj_ObjWriterContext::HasTexCoords()`
     /// Return true if normals are defined.
     pub fn has_tex_coords(&self) -> bool {
         crate::check_result(unsafe {
@@ -1386,7 +1399,7 @@ impl ObjWriterContext {
         })
     }
 
-    /// **Source:** `RWObj_ObjWriterContext.hxx`:47 - `RWObj_ObjWriterContext::SetTexCoords()`
+    /// **Source:** `RWObj_ObjWriterContext.hxx`:55 - `RWObj_ObjWriterContext::SetTexCoords()`
     /// Set if normals are defined.
     pub fn set_tex_coords(&mut self, theHasTexCoords: bool) {
         crate::check_void_result(unsafe {
@@ -1397,14 +1410,14 @@ impl ObjWriterContext {
         })
     }
 
-    /// **Source:** `RWObj_ObjWriterContext.hxx`:50 - `RWObj_ObjWriterContext::WriteHeader()`
+    /// **Source:** `RWObj_ObjWriterContext.hxx`:58 - `RWObj_ObjWriterContext::WriteHeader()`
     /// Write the header.
     pub fn write_header(
         &mut self,
         theNbNodes: i32,
         theNbElems: i32,
         theMatLib: &crate::t_collection::AsciiString,
-        theFileInfo: &crate::ffi_types::TColStd_IndexedDataMapOfStringString,
+        theFileInfo: &crate::ffi_types::NCollection_IndexedDataMap_TCollection_AsciiString_TCollection_AsciiString,
     ) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEOBJ::RWObj_ObjWriterContext_write_header(
@@ -1417,7 +1430,7 @@ impl ObjWriterContext {
         })
     }
 
-    /// **Source:** `RWObj_ObjWriterContext.hxx`:56 - `RWObj_ObjWriterContext::ActiveMaterial()`
+    /// **Source:** `RWObj_ObjWriterContext.hxx`:66 - `RWObj_ObjWriterContext::ActiveMaterial()`
     /// Return active material or empty string if not set.
     pub fn active_material(&self) -> &crate::t_collection::AsciiString {
         unsafe {
@@ -1429,7 +1442,7 @@ impl ObjWriterContext {
         }
     }
 
-    /// **Source:** `RWObj_ObjWriterContext.hxx`:59 - `RWObj_ObjWriterContext::WriteActiveMaterial()`
+    /// **Source:** `RWObj_ObjWriterContext.hxx`:69 - `RWObj_ObjWriterContext::WriteActiveMaterial()`
     /// Set active material.
     pub fn write_active_material(
         &mut self,
@@ -1443,9 +1456,9 @@ impl ObjWriterContext {
         })
     }
 
-    /// **Source:** `RWObj_ObjWriterContext.hxx`:62 - `RWObj_ObjWriterContext::WriteTriangle()`
+    /// **Source:** `RWObj_ObjWriterContext.hxx`:72 - `RWObj_ObjWriterContext::WriteTriangle()`
     /// Writing a triangle
-    pub fn write_triangle(&mut self, theTri: &crate::ffi_types::Graphic3d_Vec3i) -> bool {
+    pub fn write_triangle(&mut self, theTri: &crate::ffi_types::BVH_Vec3i) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEOBJ::RWObj_ObjWriterContext_write_triangle(
                 self as *mut Self,
@@ -1454,17 +1467,17 @@ impl ObjWriterContext {
         })
     }
 
-    /// **Source:** `RWObj_ObjWriterContext.hxx`:65 - `RWObj_ObjWriterContext::WriteQuad()`
+    /// **Source:** `RWObj_ObjWriterContext.hxx`:75 - `RWObj_ObjWriterContext::WriteQuad()`
     /// Writing a quad
-    pub fn write_quad(&mut self, theQuad: &crate::ffi_types::Graphic3d_Vec4i) -> bool {
+    pub fn write_quad(&mut self, theQuad: &crate::ffi_types::BVH_Vec4i) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEOBJ::RWObj_ObjWriterContext_write_quad(self as *mut Self, theQuad)
         })
     }
 
-    /// **Source:** `RWObj_ObjWriterContext.hxx`:68 - `RWObj_ObjWriterContext::WriteVertex()`
+    /// **Source:** `RWObj_ObjWriterContext.hxx`:78 - `RWObj_ObjWriterContext::WriteVertex()`
     /// Writing a vector
-    pub fn write_vertex(&mut self, theValue: &crate::ffi_types::Graphic3d_Vec3) -> bool {
+    pub fn write_vertex(&mut self, theValue: &crate::ffi_types::BVH_Vec3f) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEOBJ::RWObj_ObjWriterContext_write_vertex(
                 self as *mut Self,
@@ -1473,9 +1486,9 @@ impl ObjWriterContext {
         })
     }
 
-    /// **Source:** `RWObj_ObjWriterContext.hxx`:71 - `RWObj_ObjWriterContext::WriteNormal()`
+    /// **Source:** `RWObj_ObjWriterContext.hxx`:81 - `RWObj_ObjWriterContext::WriteNormal()`
     /// Writing a vector
-    pub fn write_normal(&mut self, theValue: &crate::ffi_types::Graphic3d_Vec3) -> bool {
+    pub fn write_normal(&mut self, theValue: &crate::ffi_types::BVH_Vec3f) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEOBJ::RWObj_ObjWriterContext_write_normal(
                 self as *mut Self,
@@ -1484,9 +1497,9 @@ impl ObjWriterContext {
         })
     }
 
-    /// **Source:** `RWObj_ObjWriterContext.hxx`:74 - `RWObj_ObjWriterContext::WriteTexCoord()`
+    /// **Source:** `RWObj_ObjWriterContext.hxx`:84 - `RWObj_ObjWriterContext::WriteTexCoord()`
     /// Writing a vector
-    pub fn write_tex_coord(&mut self, theValue: &crate::ffi_types::Graphic3d_Vec2) -> bool {
+    pub fn write_tex_coord(&mut self, theValue: &crate::ffi_types::BVH_Vec2f) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEOBJ::RWObj_ObjWriterContext_write_tex_coord(
                 self as *mut Self,
@@ -1495,7 +1508,7 @@ impl ObjWriterContext {
         })
     }
 
-    /// **Source:** `RWObj_ObjWriterContext.hxx`:77 - `RWObj_ObjWriterContext::WriteGroup()`
+    /// **Source:** `RWObj_ObjWriterContext.hxx`:87 - `RWObj_ObjWriterContext::WriteGroup()`
     /// Writing a group name
     pub fn write_group(&mut self, theValue: &crate::t_collection::AsciiString) -> bool {
         crate::check_result(unsafe {
@@ -1506,7 +1519,7 @@ impl ObjWriterContext {
         })
     }
 
-    /// **Source:** `RWObj_ObjWriterContext.hxx`:80 - `RWObj_ObjWriterContext::FlushFace()`
+    /// **Source:** `RWObj_ObjWriterContext.hxx`:90 - `RWObj_ObjWriterContext::FlushFace()`
     /// Increment indices shift.
     pub fn flush_face(&mut self, theNbNodes: i32) {
         crate::check_void_result(unsafe {
@@ -1522,7 +1535,7 @@ impl ObjWriterContext {
 // From RWObj_Reader.hxx
 // ========================
 
-/// **Source:** `RWObj_Reader.hxx`:43 - `RWObj_Reader`
+/// **Source:** `RWObj_Reader.hxx`:42 - `RWObj_Reader`
 /// An abstract class implementing procedure to read OBJ file.
 ///
 /// This class is not bound to particular data structure
@@ -1541,8 +1554,8 @@ unsafe impl crate::CppDeletable for Reader {
 }
 
 impl Reader {
-    /// **Source:** `RWObj_Reader.hxx`:45 - `RWObj_Reader::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `RWObj_Reader.hxx`:44 - `RWObj_Reader::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKDEOBJ::RWObj_Reader_dynamic_type(
                 self as *const Self,
@@ -1550,7 +1563,7 @@ impl Reader {
         }
     }
 
-    /// **Source:** `RWObj_Reader.hxx`:52 - `RWObj_Reader::Read()`
+    /// **Source:** `RWObj_Reader.hxx`:51 - `RWObj_Reader::Read()`
     /// Open stream and pass it to Read method
     /// Returns true if success, false on error.
     pub fn read_asciistring_progressrange(
@@ -1567,7 +1580,7 @@ impl Reader {
         })
     }
 
-    /// **Source:** `RWObj_Reader.hxx`:63 - `RWObj_Reader::Read()`
+    /// **Source:** `RWObj_Reader.hxx`:61 - `RWObj_Reader::Read()`
     /// Reads data from OBJ file.
     /// Unicode paths can be given in UTF-8 encoding.
     /// Returns true if success, false on error or user break.
@@ -1587,7 +1600,7 @@ impl Reader {
         })
     }
 
-    /// **Source:** `RWObj_Reader.hxx`:75 - `RWObj_Reader::Probe()`
+    /// **Source:** `RWObj_Reader.hxx`:73 - `RWObj_Reader::Probe()`
     /// Open stream and pass it to Probe method.
     /// @param theFile     path to the file
     /// @param theProgress progress indicator
@@ -1607,7 +1620,7 @@ impl Reader {
         })
     }
 
-    /// **Source:** `RWObj_Reader.hxx`:91 - `RWObj_Reader::Probe()`
+    /// **Source:** `RWObj_Reader.hxx`:88 - `RWObj_Reader::Probe()`
     /// Probe data from OBJ file (comments, external references) without actually reading mesh data.
     /// Although mesh data will not be collected, the full file content will be parsed, due to OBJ
     /// format limitations.
@@ -1632,7 +1645,7 @@ impl Reader {
         })
     }
 
-    /// **Source:** `RWObj_Reader.hxx`:99 - `RWObj_Reader::FileComments()`
+    /// **Source:** `RWObj_Reader.hxx`:96 - `RWObj_Reader::FileComments()`
     /// Returns file comments (lines starting with # at the beginning of file).
     pub fn file_comments(&self) -> &crate::t_collection::AsciiString {
         unsafe {
@@ -1642,9 +1655,11 @@ impl Reader {
         }
     }
 
-    /// **Source:** `RWObj_Reader.hxx`:102 - `RWObj_Reader::ExternalFiles()`
+    /// **Source:** `RWObj_Reader.hxx`:99 - `RWObj_Reader::ExternalFiles()`
     /// Return the list of external file references.
-    pub fn external_files(&self) -> &crate::ffi_types::Interface_IndexedMapOfAsciiString {
+    pub fn external_files(
+        &self,
+    ) -> &crate::ffi_types::NCollection_IndexedMap_TCollection_AsciiString {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKDEOBJ::RWObj_Reader_external_files(
                 self as *const Self,
@@ -1652,7 +1667,7 @@ impl Reader {
         }
     }
 
-    /// **Source:** `RWObj_Reader.hxx`:108 - `RWObj_Reader::NbProbeNodes()`
+    /// **Source:** `RWObj_Reader.hxx`:105 - `RWObj_Reader::NbProbeNodes()`
     /// Number of probed nodes.
     pub fn nb_probe_nodes(&self) -> i32 {
         crate::check_result(unsafe {
@@ -1660,14 +1675,14 @@ impl Reader {
         })
     }
 
-    /// **Source:** `RWObj_Reader.hxx`:111 - `RWObj_Reader::NbProbeElems()`
+    /// **Source:** `RWObj_Reader.hxx`:108 - `RWObj_Reader::NbProbeElems()`
     pub fn nb_probe_elems(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEOBJ::RWObj_Reader_nb_probe_elems(self as *const Self)
         })
     }
 
-    /// **Source:** `RWObj_Reader.hxx`:114 - `RWObj_Reader::MemoryLimit()`
+    /// **Source:** `RWObj_Reader.hxx`:111 - `RWObj_Reader::MemoryLimit()`
     /// Returns memory limit in bytes; -1 (no limit) by default.
     pub fn memory_limit(&self) -> usize {
         crate::check_result(unsafe {
@@ -1675,7 +1690,7 @@ impl Reader {
         })
     }
 
-    /// **Source:** `RWObj_Reader.hxx`:118 - `RWObj_Reader::SetMemoryLimit()`
+    /// **Source:** `RWObj_Reader.hxx`:115 - `RWObj_Reader::SetMemoryLimit()`
     /// Specify memory limit in bytes, so that import will be aborted
     /// by specified limit before memory allocation error occurs.
     pub fn set_memory_limit(&mut self, theMemLimit: usize) {
@@ -1684,7 +1699,7 @@ impl Reader {
         })
     }
 
-    /// **Source:** `RWObj_Reader.hxx`:121 - `RWObj_Reader::Transformation()`
+    /// **Source:** `RWObj_Reader.hxx`:118 - `RWObj_Reader::Transformation()`
     /// Return transformation from one coordinate system to another; no transformation by default.
     pub fn transformation(&self) -> &crate::rw_mesh::CoordinateSystemConverter {
         unsafe {
@@ -1694,7 +1709,7 @@ impl Reader {
         }
     }
 
-    /// **Source:** `RWObj_Reader.hxx`:126 - `RWObj_Reader::SetTransformation()`
+    /// **Source:** `RWObj_Reader.hxx`:123 - `RWObj_Reader::SetTransformation()`
     /// Setup transformation from one coordinate system to another.
     /// OBJ file might be exported following various coordinate system conventions,
     /// so that it might be useful automatically transform data during file reading.
@@ -1710,7 +1725,7 @@ impl Reader {
         })
     }
 
-    /// **Source:** `RWObj_Reader.hxx`:132 - `RWObj_Reader::IsSinglePrecision()`
+    /// **Source:** `RWObj_Reader.hxx`:129 - `RWObj_Reader::IsSinglePrecision()`
     /// Return single precision flag for reading vertex data (coordinates); FALSE by default.
     pub fn is_single_precision(&self) -> bool {
         crate::check_result(unsafe {
@@ -1718,7 +1733,7 @@ impl Reader {
         })
     }
 
-    /// **Source:** `RWObj_Reader.hxx`:135 - `RWObj_Reader::SetSinglePrecision()`
+    /// **Source:** `RWObj_Reader.hxx`:132 - `RWObj_Reader::SetSinglePrecision()`
     /// Setup single/double precision flag for reading vertex data (coordinates).
     pub fn set_single_precision(&mut self, theIsSinglePrecision: bool) {
         crate::check_void_result(unsafe {
@@ -1729,7 +1744,7 @@ impl Reader {
         })
     }
 
-    /// **Source:** `RWObj_Reader.hxx`:45 - `RWObj_Reader::get_type_name()`
+    /// **Source:** `RWObj_Reader.hxx`:44 - `RWObj_Reader::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -1740,8 +1755,8 @@ impl Reader {
         .into_owned()
     }
 
-    /// **Source:** `RWObj_Reader.hxx`:45 - `RWObj_Reader::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    /// **Source:** `RWObj_Reader.hxx`:44 - `RWObj_Reader::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKDEOBJ::RWObj_Reader_get_type_descriptor()))
         }
@@ -1767,8 +1782,8 @@ impl Reader {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEOBJ::RWObj_Reader_inherited_IsInstance(
                 self as *const Self,
@@ -1777,14 +1792,14 @@ impl Reader {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEOBJ::RWObj_Reader_inherited_IsKind(self as *const Self, theType)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -1798,28 +1813,28 @@ impl Reader {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEOBJ::RWObj_Reader_inherited_GetRefCount(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEOBJ::RWObj_Reader_inherited_IncrementRefCounter(self as *mut Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEOBJ::RWObj_Reader_inherited_DecrementRefCounter(self as *mut Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEOBJ::RWObj_Reader_inherited_Delete(self as *const Self)
@@ -1827,32 +1842,32 @@ impl Reader {
     }
 }
 
-pub use crate::ffi_types::HandleRWObjReader;
+pub use crate::ffi_types::Handle_RWObj_Reader;
 
-unsafe impl crate::CppDeletable for HandleRWObjReader {
+unsafe impl crate::CppDeletable for Handle_RWObj_Reader {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKDEOBJ::HandleRWObjReader_destructor(ptr);
+            crate::ffi_extern_TKDEOBJ::Handle_RWObj_Reader_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleRWObjReader {
+unsafe impl crate::CppCopyable for Handle_RWObj_Reader {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        unsafe { crate::check_result(crate::ffi_extern_TKDEOBJ::HandleRWObjReader_clone(ptr)) }
+        unsafe { crate::check_result(crate::ffi_extern_TKDEOBJ::Handle_RWObj_Reader_clone(ptr)) }
     }
 }
 
-impl HandleRWObjReader {
+impl Handle_RWObj_Reader {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
-        unsafe { crate::ffi_extern_TKDEOBJ::HandleRWObjReader_is_null(self as *const Self) }
+        unsafe { crate::ffi_extern_TKDEOBJ::Handle_RWObj_Reader_is_null(self as *const Self) }
     }
 
     /// Dereference this Handle to access the underlying RWObj_Reader
     pub fn get(&self) -> &crate::ffi_types::RWObj_Reader {
         unsafe {
-            &*crate::check_result(crate::ffi_extern_TKDEOBJ::HandleRWObjReader_get(
+            &*crate::check_result(crate::ffi_extern_TKDEOBJ::Handle_RWObj_Reader_get(
                 self as *const Self,
             ))
         }
@@ -1861,7 +1876,7 @@ impl HandleRWObjReader {
     /// Dereference this Handle to mutably access the underlying RWObj_Reader
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::RWObj_Reader {
         unsafe {
-            &mut *crate::check_result(crate::ffi_extern_TKDEOBJ::HandleRWObjReader_get_mut(
+            &mut *crate::check_result(crate::ffi_extern_TKDEOBJ::Handle_RWObj_Reader_get_mut(
                 self as *mut Self,
             ))
         }
@@ -1870,10 +1885,10 @@ impl HandleRWObjReader {
     /// Upcast Handle<RWObj_Reader> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKDEOBJ::HandleRWObjReader_to_HandleStandardTransient(
+                crate::ffi_extern_TKDEOBJ::Handle_RWObj_Reader_to_Handle_Standard_Transient(
                     self as *const Self,
                 ),
             ))
@@ -1885,11 +1900,9 @@ impl HandleRWObjReader {
     /// Returns `None` if the handle does not point to a `RWObj_TriangulationReader` (or subclass).
     pub fn downcast_to_triangulation_reader(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleRWObjTriangulationReader>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_RWObj_TriangulationReader>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKDEOBJ::HandleRWObjReader_downcast_to_HandleRWObjTriangulationReader(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKDEOBJ::Handle_RWObj_Reader_downcast_to_Handle_RWObj_TriangulationReader(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -1992,7 +2005,7 @@ impl TriangulationReader {
     }
 
     /// **Source:** `RWObj_TriangulationReader.hxx`:40 - `RWObj_TriangulationReader::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKDEOBJ::RWObj_TriangulationReader_dynamic_type(
@@ -2028,7 +2041,7 @@ impl TriangulationReader {
     /// Create Poly_Triangulation from collected data
     pub fn get_triangulation(
         &mut self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandlePolyTriangulation> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Poly_Triangulation> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDEOBJ::RWObj_TriangulationReader_get_triangulation(
@@ -2062,7 +2075,7 @@ impl TriangulationReader {
     }
 
     /// **Source:** `RWObj_TriangulationReader.hxx`:40 - `RWObj_TriangulationReader::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKDEOBJ::RWObj_TriangulationReader_get_type_descriptor(),
@@ -2117,7 +2130,7 @@ impl TriangulationReader {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleRWObjTriangulationReader> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_RWObj_TriangulationReader> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDEOBJ::RWObj_TriangulationReader_to_handle(obj.into_raw()),
@@ -2125,7 +2138,7 @@ impl TriangulationReader {
         }
     }
 
-    /// Inherited: **Source:** `RWObj_Reader.hxx`:52 - `RWObj_Reader::Read()`
+    /// Inherited: **Source:** `RWObj_Reader.hxx`:51 - `RWObj_Reader::Read()`
     pub fn read(
         &mut self,
         theFile: &crate::t_collection::AsciiString,
@@ -2140,7 +2153,7 @@ impl TriangulationReader {
         })
     }
 
-    /// Inherited: **Source:** `RWObj_Reader.hxx`:75 - `RWObj_Reader::Probe()`
+    /// Inherited: **Source:** `RWObj_Reader.hxx`:73 - `RWObj_Reader::Probe()`
     pub fn probe(
         &mut self,
         theFile: &crate::t_collection::AsciiString,
@@ -2155,7 +2168,7 @@ impl TriangulationReader {
         })
     }
 
-    /// Inherited: **Source:** `RWObj_Reader.hxx`:99 - `RWObj_Reader::FileComments()`
+    /// Inherited: **Source:** `RWObj_Reader.hxx`:96 - `RWObj_Reader::FileComments()`
     pub fn file_comments(&self) -> &crate::t_collection::AsciiString {
         unsafe {
             &*(crate::check_result(
@@ -2166,8 +2179,10 @@ impl TriangulationReader {
         }
     }
 
-    /// Inherited: **Source:** `RWObj_Reader.hxx`:102 - `RWObj_Reader::ExternalFiles()`
-    pub fn external_files(&self) -> &crate::ffi_types::Interface_IndexedMapOfAsciiString {
+    /// Inherited: **Source:** `RWObj_Reader.hxx`:99 - `RWObj_Reader::ExternalFiles()`
+    pub fn external_files(
+        &self,
+    ) -> &crate::ffi_types::NCollection_IndexedMap_TCollection_AsciiString {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKDEOBJ::RWObj_TriangulationReader_inherited_ExternalFiles(
@@ -2177,7 +2192,7 @@ impl TriangulationReader {
         }
     }
 
-    /// Inherited: **Source:** `RWObj_Reader.hxx`:108 - `RWObj_Reader::NbProbeNodes()`
+    /// Inherited: **Source:** `RWObj_Reader.hxx`:105 - `RWObj_Reader::NbProbeNodes()`
     pub fn nb_probe_nodes(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEOBJ::RWObj_TriangulationReader_inherited_NbProbeNodes(
@@ -2186,7 +2201,7 @@ impl TriangulationReader {
         })
     }
 
-    /// Inherited: **Source:** `RWObj_Reader.hxx`:111 - `RWObj_Reader::NbProbeElems()`
+    /// Inherited: **Source:** `RWObj_Reader.hxx`:108 - `RWObj_Reader::NbProbeElems()`
     pub fn nb_probe_elems(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEOBJ::RWObj_TriangulationReader_inherited_NbProbeElems(
@@ -2195,7 +2210,7 @@ impl TriangulationReader {
         })
     }
 
-    /// Inherited: **Source:** `RWObj_Reader.hxx`:114 - `RWObj_Reader::MemoryLimit()`
+    /// Inherited: **Source:** `RWObj_Reader.hxx`:111 - `RWObj_Reader::MemoryLimit()`
     pub fn memory_limit(&self) -> usize {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEOBJ::RWObj_TriangulationReader_inherited_MemoryLimit(
@@ -2204,7 +2219,7 @@ impl TriangulationReader {
         })
     }
 
-    /// Inherited: **Source:** `RWObj_Reader.hxx`:118 - `RWObj_Reader::SetMemoryLimit()`
+    /// Inherited: **Source:** `RWObj_Reader.hxx`:115 - `RWObj_Reader::SetMemoryLimit()`
     pub fn set_memory_limit(&mut self, theMemLimit: usize) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEOBJ::RWObj_TriangulationReader_inherited_SetMemoryLimit(
@@ -2214,7 +2229,7 @@ impl TriangulationReader {
         })
     }
 
-    /// Inherited: **Source:** `RWObj_Reader.hxx`:121 - `RWObj_Reader::Transformation()`
+    /// Inherited: **Source:** `RWObj_Reader.hxx`:118 - `RWObj_Reader::Transformation()`
     pub fn transformation(&self) -> &crate::rw_mesh::CoordinateSystemConverter {
         unsafe {
             &*(crate::check_result(
@@ -2225,7 +2240,7 @@ impl TriangulationReader {
         }
     }
 
-    /// Inherited: **Source:** `RWObj_Reader.hxx`:126 - `RWObj_Reader::SetTransformation()`
+    /// Inherited: **Source:** `RWObj_Reader.hxx`:123 - `RWObj_Reader::SetTransformation()`
     pub fn set_transformation(
         &mut self,
         theCSConverter: &crate::rw_mesh::CoordinateSystemConverter,
@@ -2238,7 +2253,7 @@ impl TriangulationReader {
         })
     }
 
-    /// Inherited: **Source:** `RWObj_Reader.hxx`:132 - `RWObj_Reader::IsSinglePrecision()`
+    /// Inherited: **Source:** `RWObj_Reader.hxx`:129 - `RWObj_Reader::IsSinglePrecision()`
     pub fn is_single_precision(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEOBJ::RWObj_TriangulationReader_inherited_IsSinglePrecision(
@@ -2247,7 +2262,7 @@ impl TriangulationReader {
         })
     }
 
-    /// Inherited: **Source:** `RWObj_Reader.hxx`:135 - `RWObj_Reader::SetSinglePrecision()`
+    /// Inherited: **Source:** `RWObj_Reader.hxx`:132 - `RWObj_Reader::SetSinglePrecision()`
     pub fn set_single_precision(&mut self, theIsSinglePrecision: bool) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEOBJ::RWObj_TriangulationReader_inherited_SetSinglePrecision(
@@ -2257,8 +2272,8 @@ impl TriangulationReader {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEOBJ::RWObj_TriangulationReader_inherited_IsInstance(
                 self as *const Self,
@@ -2267,8 +2282,8 @@ impl TriangulationReader {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEOBJ::RWObj_TriangulationReader_inherited_IsKind(
                 self as *const Self,
@@ -2277,7 +2292,7 @@ impl TriangulationReader {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -2293,7 +2308,7 @@ impl TriangulationReader {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEOBJ::RWObj_TriangulationReader_inherited_GetRefCount(
@@ -2302,7 +2317,7 @@ impl TriangulationReader {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEOBJ::RWObj_TriangulationReader_inherited_IncrementRefCounter(
@@ -2311,7 +2326,7 @@ impl TriangulationReader {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEOBJ::RWObj_TriangulationReader_inherited_DecrementRefCounter(
@@ -2320,7 +2335,7 @@ impl TriangulationReader {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEOBJ::RWObj_TriangulationReader_inherited_Delete(
@@ -2330,38 +2345,38 @@ impl TriangulationReader {
     }
 }
 
-pub use crate::ffi_types::HandleRWObjTriangulationReader;
+pub use crate::ffi_types::Handle_RWObj_TriangulationReader;
 
-unsafe impl crate::CppDeletable for HandleRWObjTriangulationReader {
+unsafe impl crate::CppDeletable for Handle_RWObj_TriangulationReader {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKDEOBJ::HandleRWObjTriangulationReader_destructor(ptr);
+            crate::ffi_extern_TKDEOBJ::Handle_RWObj_TriangulationReader_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleRWObjTriangulationReader {
+unsafe impl crate::CppCopyable for Handle_RWObj_TriangulationReader {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
         unsafe {
-            crate::check_result(crate::ffi_extern_TKDEOBJ::HandleRWObjTriangulationReader_clone(
+            crate::check_result(crate::ffi_extern_TKDEOBJ::Handle_RWObj_TriangulationReader_clone(
                 ptr,
             ))
         }
     }
 }
 
-impl HandleRWObjTriangulationReader {
+impl Handle_RWObj_TriangulationReader {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
         unsafe {
-            crate::ffi_extern_TKDEOBJ::HandleRWObjTriangulationReader_is_null(self as *const Self)
+            crate::ffi_extern_TKDEOBJ::Handle_RWObj_TriangulationReader_is_null(self as *const Self)
         }
     }
 
     /// Dereference this Handle to access the underlying RWObj_TriangulationReader
     pub fn get(&self) -> &crate::ffi_types::RWObj_TriangulationReader {
         unsafe {
-            &*crate::check_result(crate::ffi_extern_TKDEOBJ::HandleRWObjTriangulationReader_get(
+            &*crate::check_result(crate::ffi_extern_TKDEOBJ::Handle_RWObj_TriangulationReader_get(
                 self as *const Self,
             ))
         }
@@ -2371,7 +2386,7 @@ impl HandleRWObjTriangulationReader {
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::RWObj_TriangulationReader {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi_extern_TKDEOBJ::HandleRWObjTriangulationReader_get_mut(
+                crate::ffi_extern_TKDEOBJ::Handle_RWObj_TriangulationReader_get_mut(
                     self as *mut Self,
                 ),
             )
@@ -2379,10 +2394,10 @@ impl HandleRWObjTriangulationReader {
     }
 
     /// Upcast Handle<RWObj_TriangulationReader> to Handle<RWObj_Reader>
-    pub fn to_handle_reader(&self) -> crate::OwnedPtr<crate::ffi_types::HandleRWObjReader> {
+    pub fn to_handle_reader(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_RWObj_Reader> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKDEOBJ::HandleRWObjTriangulationReader_to_HandleRWObjReader(
+                crate::ffi_extern_TKDEOBJ::Handle_RWObj_TriangulationReader_to_Handle_RWObj_Reader(
                     self as *const Self,
                 ),
             ))
@@ -2392,9 +2407,9 @@ impl HandleRWObjTriangulationReader {
     /// Upcast Handle<RWObj_TriangulationReader> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEOBJ::HandleRWObjTriangulationReader_to_HandleStandardTransient(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEOBJ::Handle_RWObj_TriangulationReader_to_Handle_Standard_Transient(self as *const Self)))
         }
     }
 }

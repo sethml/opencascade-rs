@@ -20,7 +20,7 @@ pub fn define_connect_type(
     }))
     .unwrap()
 }
-/// **Source:** `ChFi3d.hxx`:47 - `ChFi3d::IsTangentFaces`
+/// **Source:** `ChFi3d.hxx`:46 - `ChFi3d::IsTangentFaces`
 /// Returns true if theEdge between theFace1 and theFace2 is tangent
 pub fn is_tangent_faces(
     theEdge: &crate::topo_ds::Edge,
@@ -37,10 +37,10 @@ pub fn is_tangent_faces(
         )
     })
 }
-/// **Source:** `ChFi3d.hxx`:86 - `ChFi3d::SameSide`
-/// Enables  to  determine while  processing  an  angle, if
+/// **Source:** `ChFi3d.hxx`:85 - `ChFi3d::SameSide`
+/// Enables to determine while processing an angle, if
 /// two fillets or chamfers constituting a face have
-/// identic or opposed  concave  edges.
+/// identic or opposed concave edges.
 pub fn same_side(
     Or: crate::top_abs::Orientation,
     OrSave1: crate::top_abs::Orientation,
@@ -100,10 +100,10 @@ impl TryFrom<i32> for FilletShape {
 // From ChFi3d_Builder.hxx
 // ========================
 
-/// **Source:** `ChFi3d_Builder.hxx`:64 - `ChFi3d_Builder`
-/// Root  class  for calculation of  surfaces (fillets,
-/// chamfers)  destined  to smooth edges  of
-/// a gap on a Shape and the reconstruction of  the   Shape.
+/// **Source:** `ChFi3d_Builder.hxx`:66 - `ChFi3d_Builder`
+/// Root class for calculation of surfaces (fillets,
+/// chamfers) destined to smooth edges of
+/// a gap on a Shape and the reconstruction of the Shape.
 pub use crate::ffi_types::ChFi3d_Builder as Builder;
 
 unsafe impl crate::CppDeletable for Builder {
@@ -115,7 +115,7 @@ unsafe impl crate::CppDeletable for Builder {
 }
 
 impl Builder {
-    /// **Source:** `ChFi3d_Builder.hxx`:71 - `ChFi3d_Builder::SetParams()`
+    /// **Source:** `ChFi3d_Builder.hxx`:73 - `ChFi3d_Builder::SetParams()`
     pub fn set_params(
         &mut self,
         Tang: f64,
@@ -138,7 +138,7 @@ impl Builder {
         })
     }
 
-    /// **Source:** `ChFi3d_Builder.hxx`:78 - `ChFi3d_Builder::SetContinuity()`
+    /// **Source:** `ChFi3d_Builder.hxx`:80 - `ChFi3d_Builder::SetContinuity()`
     pub fn set_continuity(
         &mut self,
         InternalContinuity: crate::geom_abs::Shape,
@@ -153,26 +153,26 @@ impl Builder {
         })
     }
 
-    /// **Source:** `ChFi3d_Builder.hxx`:82 - `ChFi3d_Builder::Remove()`
-    /// extracts from  the list the contour containing edge E.
+    /// **Source:** `ChFi3d_Builder.hxx`:84 - `ChFi3d_Builder::Remove()`
+    /// extracts from the list the contour containing edge E.
     pub fn remove(&mut self, E: &crate::topo_ds::Edge) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKFillet::ChFi3d_Builder_remove(self as *mut Self, E)
         })
     }
 
-    /// **Source:** `ChFi3d_Builder.hxx`:86 - `ChFi3d_Builder::Contains()`
-    /// gives the number of  the contour containing E or 0
-    /// if E does  not  belong to  any  contour.
+    /// **Source:** `ChFi3d_Builder.hxx`:88 - `ChFi3d_Builder::Contains()`
+    /// gives the number of the contour containing E or 0
+    /// if E does not belong to any contour.
     pub fn contains_edge(&self, E: &crate::topo_ds::Edge) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKFillet::ChFi3d_Builder_contains_edge(self as *const Self, E)
         })
     }
 
-    /// **Source:** `ChFi3d_Builder.hxx`:91 - `ChFi3d_Builder::Contains()`
-    /// gives  the number of  the contour containing E or 0
-    /// if E does  not  belong  to  any  contour.
+    /// **Source:** `ChFi3d_Builder.hxx`:93 - `ChFi3d_Builder::Contains()`
+    /// gives the number of the contour containing E or 0
+    /// if E does not belong to any contour.
     /// Sets in IndexInSpine the index of E in the contour if it's found
     pub fn contains_edge_int(&self, E: &crate::topo_ds::Edge, IndexInSpine: &mut i32) -> i32 {
         crate::check_result(unsafe {
@@ -184,19 +184,19 @@ impl Builder {
         })
     }
 
-    /// **Source:** `ChFi3d_Builder.hxx`:96 - `ChFi3d_Builder::NbElements()`
-    /// gives the number of  disjoint contours on  which
-    /// the  fillets  are  calculated
+    /// **Source:** `ChFi3d_Builder.hxx`:97 - `ChFi3d_Builder::NbElements()`
+    /// gives the number of disjoint contours on which
+    /// the fillets are calculated
     pub fn nb_elements(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKFillet::ChFi3d_Builder_nb_elements(self as *const Self)
         })
     }
 
-    /// **Source:** `ChFi3d_Builder.hxx`:100 - `ChFi3d_Builder::Value()`
-    /// gives the n'th set  of edges (contour)
+    /// **Source:** `ChFi3d_Builder.hxx`:101 - `ChFi3d_Builder::Value()`
+    /// gives the n'th set of edges (contour)
     /// if I >NbElements()
-    pub fn value(&self, I: i32) -> crate::OwnedPtr<crate::ffi_types::HandleChFiDSSpine> {
+    pub fn value(&self, I: i32) -> crate::OwnedPtr<crate::ffi_types::Handle_ChFiDS_Spine> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKFillet::ChFi3d_Builder_value(self as *const Self, I),
@@ -204,15 +204,15 @@ impl Builder {
         }
     }
 
-    /// **Source:** `ChFi3d_Builder.hxx`:103 - `ChFi3d_Builder::Length()`
-    /// returns the length of  the contour of index IC.
+    /// **Source:** `ChFi3d_Builder.hxx`:104 - `ChFi3d_Builder::Length()`
+    /// returns the length of the contour of index IC.
     pub fn length(&self, IC: i32) -> f64 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKFillet::ChFi3d_Builder_length(self as *const Self, IC)
         })
     }
 
-    /// **Source:** `ChFi3d_Builder.hxx`:107 - `ChFi3d_Builder::FirstVertex()`
+    /// **Source:** `ChFi3d_Builder.hxx`:108 - `ChFi3d_Builder::FirstVertex()`
     /// returns the First vertex V of
     /// the contour of index IC.
     pub fn first_vertex(&self, IC: i32) -> crate::OwnedPtr<crate::topo_ds::Vertex> {
@@ -223,7 +223,7 @@ impl Builder {
         }
     }
 
-    /// **Source:** `ChFi3d_Builder.hxx`:111 - `ChFi3d_Builder::LastVertex()`
+    /// **Source:** `ChFi3d_Builder.hxx`:112 - `ChFi3d_Builder::LastVertex()`
     /// returns the Last vertex V of
     /// the contour of index IC.
     pub fn last_vertex(&self, IC: i32) -> crate::OwnedPtr<crate::topo_ds::Vertex> {
@@ -234,7 +234,7 @@ impl Builder {
         }
     }
 
-    /// **Source:** `ChFi3d_Builder.hxx`:115 - `ChFi3d_Builder::Abscissa()`
+    /// **Source:** `ChFi3d_Builder.hxx`:116 - `ChFi3d_Builder::Abscissa()`
     /// returns the abscissa of the vertex V on
     /// the contour of index IC.
     pub fn abscissa(&self, IC: i32, V: &crate::topo_ds::Vertex) -> f64 {
@@ -243,7 +243,7 @@ impl Builder {
         })
     }
 
-    /// **Source:** `ChFi3d_Builder.hxx`:119 - `ChFi3d_Builder::RelativeAbscissa()`
+    /// **Source:** `ChFi3d_Builder.hxx`:120 - `ChFi3d_Builder::RelativeAbscissa()`
     /// returns the relative abscissa([0.,1.]) of the
     /// vertex V on the contour of index IC.
     pub fn relative_abscissa(&self, IC: i32, V: &crate::topo_ds::Vertex) -> f64 {
@@ -279,7 +279,7 @@ impl Builder {
     }
 
     /// **Source:** `ChFi3d_Builder.hxx`:134 - `ChFi3d_Builder::IsDone()`
-    /// returns True if the computation  is  success
+    /// returns True if the computation is success
     pub fn is_done(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKFillet::ChFi3d_Builder_is_done(self as *const Self)
@@ -298,7 +298,7 @@ impl Builder {
     }
 
     /// **Source:** `ChFi3d_Builder.hxx`:141 - `ChFi3d_Builder::Generated()`
-    /// Advanced  function for the history
+    /// Advanced function for the history
     ///
     /// # Safety
     ///
@@ -308,7 +308,7 @@ impl Builder {
     pub unsafe fn generated(
         &mut self,
         EouV: &crate::topo_ds::Shape,
-    ) -> &crate::ffi_types::TopTools_ListOfShape {
+    ) -> &crate::ffi_types::NCollection_List_TopoDS_Shape {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKFillet::ChFi3d_Builder_generated(
                 self as *mut Self,
@@ -318,7 +318,7 @@ impl Builder {
     }
 
     /// **Source:** `ChFi3d_Builder.hxx`:145 - `ChFi3d_Builder::NbFaultyContours()`
-    /// Returns the number of contours on  which the calculation
+    /// Returns the number of contours on which the calculation
     /// has failed.
     pub fn nb_faulty_contours(&self) -> i32 {
         crate::check_result(unsafe {
@@ -327,7 +327,7 @@ impl Builder {
     }
 
     /// **Source:** `ChFi3d_Builder.hxx`:149 - `ChFi3d_Builder::FaultyContour()`
-    /// Returns the number of  I'th contour on  which the calculation
+    /// Returns the number of I'th contour on which the calculation
     /// has failed.
     pub fn faulty_contour(&self, I: i32) -> i32 {
         crate::check_result(unsafe {
@@ -336,7 +336,7 @@ impl Builder {
     }
 
     /// **Source:** `ChFi3d_Builder.hxx`:152 - `ChFi3d_Builder::NbComputedSurfaces()`
-    /// Returns the number of  surfaces calculated  on  the contour IC.
+    /// Returns the number of surfaces calculated on the contour IC.
     pub fn nb_computed_surfaces(&self, IC: i32) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKFillet::ChFi3d_Builder_nb_computed_surfaces(self as *const Self, IC)
@@ -344,12 +344,12 @@ impl Builder {
     }
 
     /// **Source:** `ChFi3d_Builder.hxx`:155 - `ChFi3d_Builder::ComputedSurface()`
-    /// Returns the IS'th surface calculated on  the contour IC.
+    /// Returns the IS'th surface calculated on the contour IC.
     pub fn computed_surface(
         &self,
         IC: i32,
         IS: i32,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleGeomSurface> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Geom_Surface> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKFillet::ChFi3d_Builder_computed_surface(
@@ -361,8 +361,8 @@ impl Builder {
         }
     }
 
-    /// **Source:** `ChFi3d_Builder.hxx`:160 - `ChFi3d_Builder::NbFaultyVertices()`
-    /// Returns the number of vertices on  which the calculation
+    /// **Source:** `ChFi3d_Builder.hxx`:159 - `ChFi3d_Builder::NbFaultyVertices()`
+    /// Returns the number of vertices on which the calculation
     /// has failed.
     pub fn nb_faulty_vertices(&self) -> i32 {
         crate::check_result(unsafe {
@@ -370,8 +370,8 @@ impl Builder {
         })
     }
 
-    /// **Source:** `ChFi3d_Builder.hxx`:163 - `ChFi3d_Builder::FaultyVertex()`
-    /// Returns the IV'th vertex on  which the calculation has failed.
+    /// **Source:** `ChFi3d_Builder.hxx`:162 - `ChFi3d_Builder::FaultyVertex()`
+    /// Returns the IV'th vertex on which the calculation has failed.
     pub fn faulty_vertex(&self, IV: i32) -> crate::OwnedPtr<crate::topo_ds::Vertex> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -380,15 +380,15 @@ impl Builder {
         }
     }
 
-    /// **Source:** `ChFi3d_Builder.hxx`:166 - `ChFi3d_Builder::HasResult()`
-    /// returns True if  a partial result has  been  calculated
+    /// **Source:** `ChFi3d_Builder.hxx`:165 - `ChFi3d_Builder::HasResult()`
+    /// returns True if a partial result has been calculated
     pub fn has_result(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKFillet::ChFi3d_Builder_has_result(self as *const Self)
         })
     }
 
-    /// **Source:** `ChFi3d_Builder.hxx`:170 - `ChFi3d_Builder::BadShape()`
+    /// **Source:** `ChFi3d_Builder.hxx`:169 - `ChFi3d_Builder::BadShape()`
     /// if (HasResult()) returns partial result
     /// if (!HasResult())
     pub fn bad_shape(&self) -> crate::OwnedPtr<crate::topo_ds::Shape> {
@@ -399,9 +399,9 @@ impl Builder {
         }
     }
 
-    /// **Source:** `ChFi3d_Builder.hxx`:174 - `ChFi3d_Builder::StripeStatus()`
+    /// **Source:** `ChFi3d_Builder.hxx`:173 - `ChFi3d_Builder::StripeStatus()`
     /// for the stripe IC ,indication on the cause
-    /// of  failure WalkingFailure,TwistedSurface,Error, Ok
+    /// of failure WalkingFailure,TwistedSurface,Error, Ok
     pub fn stripe_status(&self, IC: i32) -> crate::ch_fi_ds::ErrorStatus {
         crate::ch_fi_ds::ErrorStatus::try_from(crate::check_result(unsafe {
             crate::ffi_extern_TKFillet::ChFi3d_Builder_stripe_status(self as *const Self, IC)
@@ -409,7 +409,7 @@ impl Builder {
         .unwrap()
     }
 
-    /// **Source:** `ChFi3d_Builder.hxx`:178 - `ChFi3d_Builder::Reset()`
+    /// **Source:** `ChFi3d_Builder.hxx`:177 - `ChFi3d_Builder::Reset()`
     /// Reset all results of compute and returns the algorithm
     /// in the state of the last acquisition to enable modification of contours or areas.
     pub fn reset(&mut self) {
@@ -418,9 +418,9 @@ impl Builder {
         })
     }
 
-    /// **Source:** `ChFi3d_Builder.hxx`:181 - `ChFi3d_Builder::Builder()`
-    /// Returns the Builder of  topologic operations.
-    pub fn builder(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTopOpeBRepBuildHBuilder> {
+    /// **Source:** `ChFi3d_Builder.hxx`:180 - `ChFi3d_Builder::Builder()`
+    /// Returns the Builder of topologic operations.
+    pub fn builder(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_TopOpeBRepBuild_HBuilder> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKFillet::ChFi3d_Builder_builder(self as *const Self),
@@ -428,41 +428,7 @@ impl Builder {
         }
     }
 
-    /// **Source:** `ChFi3d_Builder.hxx`:186 - `ChFi3d_Builder::SplitKPart()`
-    /// Method, implemented in the inheritants, calculates
-    /// the elements of construction of the surface (fillet or
-    /// chamfer).
-    pub fn split_k_part(
-        &mut self,
-        Data: &crate::ffi_types::HandleChFiDSSurfData,
-        SetData: &mut crate::ffi_types::ChFiDS_SequenceOfSurfData,
-        Spine: &crate::ffi_types::HandleChFiDSSpine,
-        Iedge: i32,
-        S1: &crate::ffi_types::HandleAdaptor3dSurface,
-        I1: &crate::ffi_types::HandleAdaptor3dTopolTool,
-        S2: &crate::ffi_types::HandleAdaptor3dSurface,
-        I2: &crate::ffi_types::HandleAdaptor3dTopolTool,
-        Intf: &mut bool,
-        Intl: &mut bool,
-    ) -> bool {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKFillet::ChFi3d_Builder_split_k_part(
-                self as *mut Self,
-                Data,
-                SetData,
-                Spine,
-                Iedge,
-                S1,
-                I1,
-                S2,
-                I2,
-                Intf,
-                Intl,
-            )
-        })
-    }
-
-    /// **Source:** `ChFi3d_Builder.hxx`:197 - `ChFi3d_Builder::PerformTwoCornerbyInter()`
+    /// **Source:** `ChFi3d_Builder.hxx`:196 - `ChFi3d_Builder::PerformTwoCornerbyInter()`
     pub fn perform_two_cornerby_inter(&mut self, Index: i32) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKFillet::ChFi3d_Builder_perform_two_cornerby_inter(
@@ -473,11 +439,20 @@ impl Builder {
     }
 }
 
+// ── Skipped symbols for Builder (1 total) ──
+// SKIPPED: **Source:** `ChFi3d_Builder.hxx`:185 - `ChFi3d_Builder::SplitKPart`
+//   method: Method, implemented in the inheritants, calculates
+//   method: the elements of construction of the surface (fillet or
+//   method: chamfer).
+//   Reason: has unbindable types: param 'SetData': unresolved template type (NCollection_Sequence<occ::handle<ChFiDS_SurfData>>&)
+//   // pub fn split_k_part(&mut self, Data: &HandleSurfData, SetData: /* NCollection_Sequence<occ::handle<ChFiDS_SurfData>>& */, Spine: &HandleSpine, Iedge: i32, S1: &HandleSurface, I1: &HandleTopolTool, S2: &HandleSurface, I2: &HandleTopolTool, Intf: &mut bool, Intl: &mut bool) -> bool;
+//
+
 // ========================
 // From ChFi3d_ChBuilder.hxx
 // ========================
 
-/// **Source:** `ChFi3d_ChBuilder.hxx`:42 - `ChFi3d_ChBuilder`
+/// **Source:** `ChFi3d_ChBuilder.hxx`:46 - `ChFi3d_ChBuilder`
 /// construction tool for 3D chamfers on edges (on a solid).
 pub use crate::ffi_types::ChFi3d_ChBuilder as ChBuilder;
 
@@ -490,7 +465,7 @@ unsafe impl crate::CppDeletable for ChBuilder {
 }
 
 impl ChBuilder {
-    /// **Source:** `ChFi3d_ChBuilder.hxx`:49 - `ChFi3d_ChBuilder::ChFi3d_ChBuilder()`
+    /// **Source:** `ChFi3d_ChBuilder.hxx`:53 - `ChFi3d_ChBuilder::ChFi3d_ChBuilder()`
     /// initializes the Builder with the Shape <S> for the
     /// computation of chamfers
     pub fn new_shape_real(S: &crate::topo_ds::Shape, Ta: f64) -> crate::OwnedPtr<Self> {
@@ -501,14 +476,14 @@ impl ChBuilder {
         }
     }
 
-    /// **Source:** `ChFi3d_ChBuilder.hxx`:49 - `ChFi3d_ChBuilder::ChFi3d_ChBuilder()`
+    /// **Source:** `ChFi3d_ChBuilder.hxx`:53 - `ChFi3d_ChBuilder::ChFi3d_ChBuilder()`
     /// initializes the Builder with the Shape <S> for the
     /// computation of chamfers
     pub fn new_shape(S: &crate::topo_ds::Shape) -> crate::OwnedPtr<Self> {
         Self::new_shape_real(S, 1.0e-2)
     }
 
-    /// **Source:** `ChFi3d_ChBuilder.hxx`:56 - `ChFi3d_ChBuilder::Add()`
+    /// **Source:** `ChFi3d_ChBuilder.hxx`:60 - `ChFi3d_ChBuilder::Add()`
     /// initializes a contour with the edge <E> as first
     /// (the next are found by propagation ).
     /// The two distances (parameters of the chamfer) must
@@ -520,9 +495,9 @@ impl ChBuilder {
         })
     }
 
-    /// **Source:** `ChFi3d_ChBuilder.hxx`:62 - `ChFi3d_ChBuilder::Add()`
+    /// **Source:** `ChFi3d_ChBuilder.hxx`:66 - `ChFi3d_ChBuilder::Add()`
     /// initializes a new contour with the edge <E> as first
-    /// (the next are found by propagation ), and  the
+    /// (the next are found by propagation ), and the
     /// distance <Dis>
     /// if the edge <E> has more than 2 adjacent faces
     pub fn add_real_edge(&mut self, Dis: f64, E: &crate::topo_ds::Edge) {
@@ -531,7 +506,7 @@ impl ChBuilder {
         })
     }
 
-    /// **Source:** `ChFi3d_ChBuilder.hxx`:68 - `ChFi3d_ChBuilder::SetDist()`
+    /// **Source:** `ChFi3d_ChBuilder.hxx`:72 - `ChFi3d_ChBuilder::SetDist()`
     /// set the distance <Dis> of the fillet
     /// contour of index <IC> in the DS with <Dis> on <F>.
     /// if the face <F> is not one of common faces
@@ -542,7 +517,7 @@ impl ChBuilder {
         })
     }
 
-    /// **Source:** `ChFi3d_ChBuilder.hxx`:74 - `ChFi3d_ChBuilder::GetDist()`
+    /// **Source:** `ChFi3d_ChBuilder.hxx`:76 - `ChFi3d_ChBuilder::GetDist()`
     /// gives the distances <Dis> of the fillet
     /// contour of index <IC> in the DS
     pub fn get_dist(&self, IC: i32, Dis: &mut f64) {
@@ -551,9 +526,9 @@ impl ChBuilder {
         })
     }
 
-    /// **Source:** `ChFi3d_ChBuilder.hxx`:80 - `ChFi3d_ChBuilder::Add()`
+    /// **Source:** `ChFi3d_ChBuilder.hxx`:82 - `ChFi3d_ChBuilder::Add()`
     /// initializes a new contour with the edge <E> as first
-    /// (the next are found by propagation ), and  the
+    /// (the next are found by propagation ), and the
     /// distance <Dis1> and <Dis2>
     /// if the edge <E> has more than 2 adjacent faces
     pub fn add_real2_edge_face(
@@ -574,7 +549,7 @@ impl ChBuilder {
         })
     }
 
-    /// **Source:** `ChFi3d_ChBuilder.hxx`:89 - `ChFi3d_ChBuilder::SetDists()`
+    /// **Source:** `ChFi3d_ChBuilder.hxx`:91 - `ChFi3d_ChBuilder::SetDists()`
     /// set the distances <Dis1> and <Dis2> of the fillet
     /// contour of index <IC> in the DS with <Dis1> on <F>.
     /// if the face <F> is not one of common faces
@@ -591,7 +566,7 @@ impl ChBuilder {
         })
     }
 
-    /// **Source:** `ChFi3d_ChBuilder.hxx`:96 - `ChFi3d_ChBuilder::Dists()`
+    /// **Source:** `ChFi3d_ChBuilder.hxx`:98 - `ChFi3d_ChBuilder::Dists()`
     /// gives the distances <Dis1> and <Dis2> of the fillet
     /// contour of index <IC> in the DS
     pub fn dists(&self, IC: i32, Dis1: &mut f64, Dis2: &mut f64) {
@@ -602,7 +577,7 @@ impl ChBuilder {
 
     /// **Source:** `ChFi3d_ChBuilder.hxx`:104 - `ChFi3d_ChBuilder::AddDA()`
     /// initializes a new contour with the edge <E> as first
-    /// (the next are found by propagation ), and  the
+    /// (the next are found by propagation ), and the
     /// distance <Dis1> and <Angle>
     /// if the edge <E> has more than 2 adjacent faces
     pub fn add_da(
@@ -648,7 +623,7 @@ impl ChBuilder {
         })
     }
 
-    /// **Source:** `ChFi3d_ChBuilder.hxx`:125 - `ChFi3d_ChBuilder::SetMode()`
+    /// **Source:** `ChFi3d_ChBuilder.hxx`:123 - `ChFi3d_ChBuilder::SetMode()`
     /// set the mode of shamfer
     pub fn set_mode(&mut self, theMode: crate::ch_fi_ds::ChamfMode) {
         crate::check_void_result(unsafe {
@@ -656,7 +631,7 @@ impl ChBuilder {
         })
     }
 
-    /// **Source:** `ChFi3d_ChBuilder.hxx`:128 - `ChFi3d_ChBuilder::IsChamfer()`
+    /// **Source:** `ChFi3d_ChBuilder.hxx`:126 - `ChFi3d_ChBuilder::IsChamfer()`
     /// renvoi la methode des chanfreins utilisee
     pub fn is_chamfer(&self, IC: i32) -> crate::ch_fi_ds::ChamfMethod {
         crate::ch_fi_ds::ChamfMethod::try_from(crate::check_result(unsafe {
@@ -665,7 +640,7 @@ impl ChBuilder {
         .unwrap()
     }
 
-    /// **Source:** `ChFi3d_ChBuilder.hxx`:131 - `ChFi3d_ChBuilder::Mode()`
+    /// **Source:** `ChFi3d_ChBuilder.hxx`:129 - `ChFi3d_ChBuilder::Mode()`
     /// returns the mode of chamfer used
     pub fn mode(&self) -> crate::ch_fi_ds::ChamfMode {
         crate::ch_fi_ds::ChamfMode::try_from(crate::check_result(unsafe {
@@ -674,7 +649,7 @@ impl ChBuilder {
         .unwrap()
     }
 
-    /// **Source:** `ChFi3d_ChBuilder.hxx`:134 - `ChFi3d_ChBuilder::ResetContour()`
+    /// **Source:** `ChFi3d_ChBuilder.hxx`:132 - `ChFi3d_ChBuilder::ResetContour()`
     /// Reset tous rayons du contour IC.
     pub fn reset_contour(&mut self, IC: i32) {
         crate::check_void_result(unsafe {
@@ -682,26 +657,26 @@ impl ChBuilder {
         })
     }
 
-    /// **Source:** `ChFi3d_ChBuilder.hxx`:136 - `ChFi3d_ChBuilder::Simulate()`
+    /// **Source:** `ChFi3d_ChBuilder.hxx`:134 - `ChFi3d_ChBuilder::Simulate()`
     pub fn simulate(&mut self, IC: i32) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKFillet::ChFi3d_ChBuilder_simulate(self as *mut Self, IC)
         })
     }
 
-    /// **Source:** `ChFi3d_ChBuilder.hxx`:138 - `ChFi3d_ChBuilder::NbSurf()`
+    /// **Source:** `ChFi3d_ChBuilder.hxx`:136 - `ChFi3d_ChBuilder::NbSurf()`
     pub fn nb_surf(&self, IC: i32) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKFillet::ChFi3d_ChBuilder_nb_surf(self as *const Self, IC)
         })
     }
 
-    /// **Source:** `ChFi3d_ChBuilder.hxx`:140 - `ChFi3d_ChBuilder::Sect()`
+    /// **Source:** `ChFi3d_ChBuilder.hxx`:138 - `ChFi3d_ChBuilder::Sect()`
     pub fn sect(
         &self,
         IC: i32,
         IS: i32,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleChFiDSSecHArray1> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HArray1_ChFiDS_CircSection> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKFillet::ChFi3d_ChBuilder_sect(self as *const Self, IC, IS),
@@ -709,21 +684,21 @@ impl ChBuilder {
         }
     }
 
-    /// **Source:** `ChFi3d_ChBuilder.hxx`:143 - `ChFi3d_ChBuilder::SimulSurf()`
+    /// **Source:** `ChFi3d_ChBuilder.hxx`:141 - `ChFi3d_ChBuilder::SimulSurf()`
     pub fn simul_surf_handlechfidssurfdata_handlechfidselspine_handlechfidsspine_int_handlebrepadaptorsurface_handleadaptor3dtopoltool_handlebrepadaptorcurve2d_handlebrepadaptorsurface_handlebrepadaptorcurve2d_bool_handlebrepadaptorsurface_handleadaptor3dtopoltool_orientation_real4_bool6_vector(
         &mut self,
-        Data: &mut crate::ffi_types::HandleChFiDSSurfData,
-        Guide: &crate::ffi_types::HandleChFiDSElSpine,
-        Spine: &crate::ffi_types::HandleChFiDSSpine,
+        Data: &mut crate::ffi_types::Handle_ChFiDS_SurfData,
+        Guide: &crate::ffi_types::Handle_ChFiDS_ElSpine,
+        Spine: &crate::ffi_types::Handle_ChFiDS_Spine,
         Choix: i32,
-        S1: &crate::ffi_types::HandleBRepAdaptorSurface,
-        I1: &crate::ffi_types::HandleAdaptor3dTopolTool,
-        PC1: &crate::ffi_types::HandleBRepAdaptorCurve2d,
-        Sref1: &crate::ffi_types::HandleBRepAdaptorSurface,
-        PCref1: &crate::ffi_types::HandleBRepAdaptorCurve2d,
+        S1: &crate::ffi_types::Handle_BRepAdaptor_Surface,
+        I1: &crate::ffi_types::Handle_Adaptor3d_TopolTool,
+        PC1: &crate::ffi_types::Handle_BRepAdaptor_Curve2d,
+        Sref1: &crate::ffi_types::Handle_BRepAdaptor_Surface,
+        PCref1: &crate::ffi_types::Handle_BRepAdaptor_Curve2d,
         Decroch1: &mut bool,
-        S2: &crate::ffi_types::HandleBRepAdaptorSurface,
-        I2: &crate::ffi_types::HandleAdaptor3dTopolTool,
+        S2: &crate::ffi_types::Handle_BRepAdaptor_Surface,
+        I2: &crate::ffi_types::Handle_Adaptor3d_TopolTool,
         Or2: crate::top_abs::Orientation,
         Fleche: f64,
         TolGuide: f64,
@@ -742,21 +717,21 @@ impl ChBuilder {
         })
     }
 
-    /// **Source:** `ChFi3d_ChBuilder.hxx`:168 - `ChFi3d_ChBuilder::SimulSurf()`
+    /// **Source:** `ChFi3d_ChBuilder.hxx`:166 - `ChFi3d_ChBuilder::SimulSurf()`
     pub fn simul_surf_handlechfidssurfdata_handlechfidselspine_handlechfidsspine_int_handlebrepadaptorsurface_handleadaptor3dtopoltool_orientation_handlebrepadaptorsurface_handleadaptor3dtopoltool_handlebrepadaptorcurve2d_handlebrepadaptorsurface_handlebrepadaptorcurve2d_bool_real4_bool6_vector(
         &mut self,
-        Data: &mut crate::ffi_types::HandleChFiDSSurfData,
-        Guide: &crate::ffi_types::HandleChFiDSElSpine,
-        Spine: &crate::ffi_types::HandleChFiDSSpine,
+        Data: &mut crate::ffi_types::Handle_ChFiDS_SurfData,
+        Guide: &crate::ffi_types::Handle_ChFiDS_ElSpine,
+        Spine: &crate::ffi_types::Handle_ChFiDS_Spine,
         Choix: i32,
-        S1: &crate::ffi_types::HandleBRepAdaptorSurface,
-        I1: &crate::ffi_types::HandleAdaptor3dTopolTool,
+        S1: &crate::ffi_types::Handle_BRepAdaptor_Surface,
+        I1: &crate::ffi_types::Handle_Adaptor3d_TopolTool,
         Or1: crate::top_abs::Orientation,
-        S2: &crate::ffi_types::HandleBRepAdaptorSurface,
-        I2: &crate::ffi_types::HandleAdaptor3dTopolTool,
-        PC2: &crate::ffi_types::HandleBRepAdaptorCurve2d,
-        Sref2: &crate::ffi_types::HandleBRepAdaptorSurface,
-        PCref2: &crate::ffi_types::HandleBRepAdaptorCurve2d,
+        S2: &crate::ffi_types::Handle_BRepAdaptor_Surface,
+        I2: &crate::ffi_types::Handle_Adaptor3d_TopolTool,
+        PC2: &crate::ffi_types::Handle_BRepAdaptor_Curve2d,
+        Sref2: &crate::ffi_types::Handle_BRepAdaptor_Surface,
+        PCref2: &crate::ffi_types::Handle_BRepAdaptor_Curve2d,
         Decroch2: &mut bool,
         Fleche: f64,
         TolGuide: f64,
@@ -775,25 +750,25 @@ impl ChBuilder {
         })
     }
 
-    /// **Source:** `ChFi3d_ChBuilder.hxx`:193 - `ChFi3d_ChBuilder::SimulSurf()`
+    /// **Source:** `ChFi3d_ChBuilder.hxx`:191 - `ChFi3d_ChBuilder::SimulSurf()`
     pub fn simul_surf_handlechfidssurfdata_handlechfidselspine_handlechfidsspine_int_handlebrepadaptorsurface_handleadaptor3dtopoltool_handlebrepadaptorcurve2d_handlebrepadaptorsurface_handlebrepadaptorcurve2d_bool_orientation_handlebrepadaptorsurface_handleadaptor3dtopoltool_handlebrepadaptorcurve2d_handlebrepadaptorsurface_handlebrepadaptorcurve2d_bool_orientation_real4_bool7_vector(
         &mut self,
-        Data: &mut crate::ffi_types::HandleChFiDSSurfData,
-        Guide: &crate::ffi_types::HandleChFiDSElSpine,
-        Spine: &crate::ffi_types::HandleChFiDSSpine,
+        Data: &mut crate::ffi_types::Handle_ChFiDS_SurfData,
+        Guide: &crate::ffi_types::Handle_ChFiDS_ElSpine,
+        Spine: &crate::ffi_types::Handle_ChFiDS_Spine,
         Choix: i32,
-        S1: &crate::ffi_types::HandleBRepAdaptorSurface,
-        I1: &crate::ffi_types::HandleAdaptor3dTopolTool,
-        PC1: &crate::ffi_types::HandleBRepAdaptorCurve2d,
-        Sref1: &crate::ffi_types::HandleBRepAdaptorSurface,
-        PCref1: &crate::ffi_types::HandleBRepAdaptorCurve2d,
+        S1: &crate::ffi_types::Handle_BRepAdaptor_Surface,
+        I1: &crate::ffi_types::Handle_Adaptor3d_TopolTool,
+        PC1: &crate::ffi_types::Handle_BRepAdaptor_Curve2d,
+        Sref1: &crate::ffi_types::Handle_BRepAdaptor_Surface,
+        PCref1: &crate::ffi_types::Handle_BRepAdaptor_Curve2d,
         Decroch1: &mut bool,
         Or1: crate::top_abs::Orientation,
-        S2: &crate::ffi_types::HandleBRepAdaptorSurface,
-        I2: &crate::ffi_types::HandleAdaptor3dTopolTool,
-        PC2: &crate::ffi_types::HandleBRepAdaptorCurve2d,
-        Sref2: &crate::ffi_types::HandleBRepAdaptorSurface,
-        PCref2: &crate::ffi_types::HandleBRepAdaptorCurve2d,
+        S2: &crate::ffi_types::Handle_BRepAdaptor_Surface,
+        I2: &crate::ffi_types::Handle_Adaptor3d_TopolTool,
+        PC2: &crate::ffi_types::Handle_BRepAdaptor_Curve2d,
+        Sref2: &crate::ffi_types::Handle_BRepAdaptor_Surface,
+        PCref2: &crate::ffi_types::Handle_BRepAdaptor_Curve2d,
         Decroch2: &mut bool,
         Or2: crate::top_abs::Orientation,
         Fleche: f64,
@@ -811,156 +786,6 @@ impl ChBuilder {
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKFillet::ChFi3d_ChBuilder_simul_surf_handlechfidssurfdata_handlechfidselspine_handlechfidsspine_int_handlebrepadaptorsurface_handleadaptor3dtopoltool_handlebrepadaptorcurve2d_handlebrepadaptorsurface_handlebrepadaptorcurve2d_bool_orientation_handlebrepadaptorsurface_handleadaptor3dtopoltool_handlebrepadaptorcurve2d_handlebrepadaptorsurface_handlebrepadaptorcurve2d_bool_orientation_real4_bool7_vector(self as *mut Self, Data, Guide, Spine, Choix, S1, I1, PC1, Sref1, PCref1, Decroch1, Or1.into(), S2, I2, PC2, Sref2, PCref2, Decroch2, Or2.into(), Fleche, TolGuide, First, Last, Inside, Appro, Forward, RecP1, RecRst1, RecP2, RecRst2, Soldep)
-        })
-    }
-
-    /// **Source:** `ChFi3d_ChBuilder.hxx`:227 - `ChFi3d_ChBuilder::PerformSurf()`
-    /// Methode, implemented in inheritants, calculates
-    /// the elements of construction of  the surface (fillet
-    /// or chamfer).
-    pub fn perform_surf_sequenceofsurfdata_handlechfidselspine_handlechfidsspine_int_handlebrepadaptorsurface_handleadaptor3dtopoltool_handlebrepadaptorsurface_handleadaptor3dtopoltool_real5_bool5_vector_int2(
-        &mut self,
-        Data: &mut crate::ffi_types::ChFiDS_SequenceOfSurfData,
-        Guide: &crate::ffi_types::HandleChFiDSElSpine,
-        Spine: &crate::ffi_types::HandleChFiDSSpine,
-        Choix: i32,
-        S1: &crate::ffi_types::HandleBRepAdaptorSurface,
-        I1: &crate::ffi_types::HandleAdaptor3dTopolTool,
-        S2: &crate::ffi_types::HandleBRepAdaptorSurface,
-        I2: &crate::ffi_types::HandleAdaptor3dTopolTool,
-        MaxStep: f64,
-        Fleche: f64,
-        TolGuide: f64,
-        First: &mut f64,
-        Last: &mut f64,
-        Inside: bool,
-        Appro: bool,
-        Forward: bool,
-        RecOnS1: bool,
-        RecOnS2: bool,
-        Soldep: &crate::ffi_types::math_Vector,
-        Intf: &mut i32,
-        Intl: &mut i32,
-    ) -> bool {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKFillet::ChFi3d_ChBuilder_perform_surf_sequenceofsurfdata_handlechfidselspine_handlechfidsspine_int_handlebrepadaptorsurface_handleadaptor3dtopoltool_handlebrepadaptorsurface_handleadaptor3dtopoltool_real5_bool5_vector_int2(self as *mut Self, Data, Guide, Spine, Choix, S1, I1, S2, I2, MaxStep, Fleche, TolGuide, First, Last, Inside, Appro, Forward, RecOnS1, RecOnS2, Soldep, Intf, Intl)
-        })
-    }
-
-    /// **Source:** `ChFi3d_ChBuilder.hxx`:252 - `ChFi3d_ChBuilder::PerformSurf()`
-    /// Method, implemented in  the inheritants, calculates
-    /// the elements of construction of  the surface (fillet
-    /// or chamfer) contact edge/face.
-    pub fn perform_surf_sequenceofsurfdata_handlechfidselspine_handlechfidsspine_int_handlebrepadaptorsurface_handleadaptor3dtopoltool_handlebrepadaptorcurve2d_handlebrepadaptorsurface_handlebrepadaptorcurve2d_bool_handlebrepadaptorsurface_handleadaptor3dtopoltool_orientation_real5_bool6_vector(
-        &mut self,
-        Data: &mut crate::ffi_types::ChFiDS_SequenceOfSurfData,
-        Guide: &crate::ffi_types::HandleChFiDSElSpine,
-        Spine: &crate::ffi_types::HandleChFiDSSpine,
-        Choix: i32,
-        S1: &crate::ffi_types::HandleBRepAdaptorSurface,
-        I1: &crate::ffi_types::HandleAdaptor3dTopolTool,
-        PC1: &crate::ffi_types::HandleBRepAdaptorCurve2d,
-        Sref1: &crate::ffi_types::HandleBRepAdaptorSurface,
-        PCref1: &crate::ffi_types::HandleBRepAdaptorCurve2d,
-        Decroch1: &mut bool,
-        S2: &crate::ffi_types::HandleBRepAdaptorSurface,
-        I2: &crate::ffi_types::HandleAdaptor3dTopolTool,
-        Or2: crate::top_abs::Orientation,
-        MaxStep: f64,
-        Fleche: f64,
-        TolGuide: f64,
-        First: &mut f64,
-        Last: &mut f64,
-        Inside: bool,
-        Appro: bool,
-        Forward: bool,
-        RecP: bool,
-        RecS: bool,
-        RecRst: bool,
-        Soldep: &crate::ffi_types::math_Vector,
-    ) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKFillet::ChFi3d_ChBuilder_perform_surf_sequenceofsurfdata_handlechfidselspine_handlechfidsspine_int_handlebrepadaptorsurface_handleadaptor3dtopoltool_handlebrepadaptorcurve2d_handlebrepadaptorsurface_handlebrepadaptorcurve2d_bool_handlebrepadaptorsurface_handleadaptor3dtopoltool_orientation_real5_bool6_vector(self as *mut Self, Data, Guide, Spine, Choix, S1, I1, PC1, Sref1, PCref1, Decroch1, S2, I2, Or2.into(), MaxStep, Fleche, TolGuide, First, Last, Inside, Appro, Forward, RecP, RecS, RecRst, Soldep)
-        })
-    }
-
-    /// **Source:** `ChFi3d_ChBuilder.hxx`:281 - `ChFi3d_ChBuilder::PerformSurf()`
-    /// Method, implemented in inheritants, calculates
-    /// the elements of construction of  the surface (fillet
-    /// or chamfer) contact edge/face.
-    pub fn perform_surf_sequenceofsurfdata_handlechfidselspine_handlechfidsspine_int_handlebrepadaptorsurface_handleadaptor3dtopoltool_orientation_handlebrepadaptorsurface_handleadaptor3dtopoltool_handlebrepadaptorcurve2d_handlebrepadaptorsurface_handlebrepadaptorcurve2d_bool_real5_bool6_vector(
-        &mut self,
-        Data: &mut crate::ffi_types::ChFiDS_SequenceOfSurfData,
-        Guide: &crate::ffi_types::HandleChFiDSElSpine,
-        Spine: &crate::ffi_types::HandleChFiDSSpine,
-        Choix: i32,
-        S1: &crate::ffi_types::HandleBRepAdaptorSurface,
-        I1: &crate::ffi_types::HandleAdaptor3dTopolTool,
-        Or1: crate::top_abs::Orientation,
-        S2: &crate::ffi_types::HandleBRepAdaptorSurface,
-        I2: &crate::ffi_types::HandleAdaptor3dTopolTool,
-        PC2: &crate::ffi_types::HandleBRepAdaptorCurve2d,
-        Sref2: &crate::ffi_types::HandleBRepAdaptorSurface,
-        PCref2: &crate::ffi_types::HandleBRepAdaptorCurve2d,
-        Decroch2: &mut bool,
-        MaxStep: f64,
-        Fleche: f64,
-        TolGuide: f64,
-        First: &mut f64,
-        Last: &mut f64,
-        Inside: bool,
-        Appro: bool,
-        Forward: bool,
-        RecP: bool,
-        RecS: bool,
-        RecRst: bool,
-        Soldep: &crate::ffi_types::math_Vector,
-    ) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKFillet::ChFi3d_ChBuilder_perform_surf_sequenceofsurfdata_handlechfidselspine_handlechfidsspine_int_handlebrepadaptorsurface_handleadaptor3dtopoltool_orientation_handlebrepadaptorsurface_handleadaptor3dtopoltool_handlebrepadaptorcurve2d_handlebrepadaptorsurface_handlebrepadaptorcurve2d_bool_real5_bool6_vector(self as *mut Self, Data, Guide, Spine, Choix, S1, I1, Or1.into(), S2, I2, PC2, Sref2, PCref2, Decroch2, MaxStep, Fleche, TolGuide, First, Last, Inside, Appro, Forward, RecP, RecS, RecRst, Soldep)
-        })
-    }
-
-    /// **Source:** `ChFi3d_ChBuilder.hxx`:310 - `ChFi3d_ChBuilder::PerformSurf()`
-    /// Method, implemented in  inheritants, calculates
-    /// the elements of construction of  the surface (fillet
-    /// or chamfer) contact edge/edge.
-    pub fn perform_surf_sequenceofsurfdata_handlechfidselspine_handlechfidsspine_int_handlebrepadaptorsurface_handleadaptor3dtopoltool_handlebrepadaptorcurve2d_handlebrepadaptorsurface_handlebrepadaptorcurve2d_bool_orientation_handlebrepadaptorsurface_handleadaptor3dtopoltool_handlebrepadaptorcurve2d_handlebrepadaptorsurface_handlebrepadaptorcurve2d_bool_orientation_real5_bool7_vector(
-        &mut self,
-        Data: &mut crate::ffi_types::ChFiDS_SequenceOfSurfData,
-        Guide: &crate::ffi_types::HandleChFiDSElSpine,
-        Spine: &crate::ffi_types::HandleChFiDSSpine,
-        Choix: i32,
-        S1: &crate::ffi_types::HandleBRepAdaptorSurface,
-        I1: &crate::ffi_types::HandleAdaptor3dTopolTool,
-        PC1: &crate::ffi_types::HandleBRepAdaptorCurve2d,
-        Sref1: &crate::ffi_types::HandleBRepAdaptorSurface,
-        PCref1: &crate::ffi_types::HandleBRepAdaptorCurve2d,
-        Decroch1: &mut bool,
-        Or1: crate::top_abs::Orientation,
-        S2: &crate::ffi_types::HandleBRepAdaptorSurface,
-        I2: &crate::ffi_types::HandleAdaptor3dTopolTool,
-        PC2: &crate::ffi_types::HandleBRepAdaptorCurve2d,
-        Sref2: &crate::ffi_types::HandleBRepAdaptorSurface,
-        PCref2: &crate::ffi_types::HandleBRepAdaptorCurve2d,
-        Decroch2: &mut bool,
-        Or2: crate::top_abs::Orientation,
-        MaxStep: f64,
-        Fleche: f64,
-        TolGuide: f64,
-        First: &mut f64,
-        Last: &mut f64,
-        Inside: bool,
-        Appro: bool,
-        Forward: bool,
-        RecP1: bool,
-        RecRst1: bool,
-        RecP2: bool,
-        RecRst2: bool,
-        Soldep: &crate::ffi_types::math_Vector,
-    ) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKFillet::ChFi3d_ChBuilder_perform_surf_sequenceofsurfdata_handlechfidselspine_handlechfidsspine_int_handlebrepadaptorsurface_handleadaptor3dtopoltool_handlebrepadaptorcurve2d_handlebrepadaptorsurface_handlebrepadaptorcurve2d_bool_orientation_handlebrepadaptorsurface_handleadaptor3dtopoltool_handlebrepadaptorcurve2d_handlebrepadaptorsurface_handlebrepadaptorcurve2d_bool_orientation_real5_bool7_vector(self as *mut Self, Data, Guide, Spine, Choix, S1, I1, PC1, Sref1, PCref1, Decroch1, Or1.into(), S2, I2, PC2, Sref2, PCref2, Decroch2, Or2.into(), MaxStep, Fleche, TolGuide, First, Last, Inside, Appro, Forward, RecP1, RecRst1, RecP2, RecRst2, Soldep)
         })
     }
 
@@ -984,7 +809,7 @@ impl ChBuilder {
         }
     }
 
-    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:71 - `ChFi3d_Builder::SetParams()`
+    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:73 - `ChFi3d_Builder::SetParams()`
     pub fn set_params(
         &mut self,
         Tang: f64,
@@ -1007,7 +832,7 @@ impl ChBuilder {
         })
     }
 
-    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:78 - `ChFi3d_Builder::SetContinuity()`
+    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:80 - `ChFi3d_Builder::SetContinuity()`
     pub fn set_continuity(
         &mut self,
         InternalContinuity: crate::geom_abs::Shape,
@@ -1022,29 +847,29 @@ impl ChBuilder {
         })
     }
 
-    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:82 - `ChFi3d_Builder::Remove()`
+    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:84 - `ChFi3d_Builder::Remove()`
     pub fn remove(&mut self, E: &crate::topo_ds::Edge) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKFillet::ChFi3d_ChBuilder_inherited_Remove(self as *mut Self, E)
         })
     }
 
-    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:86 - `ChFi3d_Builder::Contains()`
+    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:88 - `ChFi3d_Builder::Contains()`
     pub fn contains(&self, E: &crate::topo_ds::Edge) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKFillet::ChFi3d_ChBuilder_inherited_Contains(self as *const Self, E)
         })
     }
 
-    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:96 - `ChFi3d_Builder::NbElements()`
+    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:97 - `ChFi3d_Builder::NbElements()`
     pub fn nb_elements(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKFillet::ChFi3d_ChBuilder_inherited_NbElements(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:100 - `ChFi3d_Builder::Value()`
-    pub fn value(&self, I: i32) -> crate::OwnedPtr<crate::ffi_types::HandleChFiDSSpine> {
+    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:101 - `ChFi3d_Builder::Value()`
+    pub fn value(&self, I: i32) -> crate::OwnedPtr<crate::ffi_types::Handle_ChFiDS_Spine> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKFillet::ChFi3d_ChBuilder_inherited_Value(
@@ -1055,14 +880,14 @@ impl ChBuilder {
         }
     }
 
-    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:103 - `ChFi3d_Builder::Length()`
+    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:104 - `ChFi3d_Builder::Length()`
     pub fn length(&self, IC: i32) -> f64 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKFillet::ChFi3d_ChBuilder_inherited_Length(self as *const Self, IC)
         })
     }
 
-    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:107 - `ChFi3d_Builder::FirstVertex()`
+    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:108 - `ChFi3d_Builder::FirstVertex()`
     pub fn first_vertex(&self, IC: i32) -> crate::OwnedPtr<crate::topo_ds::Vertex> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -1074,7 +899,7 @@ impl ChBuilder {
         }
     }
 
-    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:111 - `ChFi3d_Builder::LastVertex()`
+    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:112 - `ChFi3d_Builder::LastVertex()`
     pub fn last_vertex(&self, IC: i32) -> crate::OwnedPtr<crate::topo_ds::Vertex> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -1086,7 +911,7 @@ impl ChBuilder {
         }
     }
 
-    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:115 - `ChFi3d_Builder::Abscissa()`
+    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:116 - `ChFi3d_Builder::Abscissa()`
     pub fn abscissa(&self, IC: i32, V: &crate::topo_ds::Vertex) -> f64 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKFillet::ChFi3d_ChBuilder_inherited_Abscissa(
@@ -1097,7 +922,7 @@ impl ChBuilder {
         })
     }
 
-    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:119 - `ChFi3d_Builder::RelativeAbscissa()`
+    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:120 - `ChFi3d_Builder::RelativeAbscissa()`
     pub fn relative_abscissa(&self, IC: i32, V: &crate::topo_ds::Vertex) -> f64 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKFillet::ChFi3d_ChBuilder_inherited_RelativeAbscissa(
@@ -1182,7 +1007,7 @@ impl ChBuilder {
         &self,
         IC: i32,
         IS: i32,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleGeomSurface> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Geom_Surface> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKFillet::ChFi3d_ChBuilder_inherited_ComputedSurface(
@@ -1194,7 +1019,7 @@ impl ChBuilder {
         }
     }
 
-    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:160 - `ChFi3d_Builder::NbFaultyVertices()`
+    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:159 - `ChFi3d_Builder::NbFaultyVertices()`
     pub fn nb_faulty_vertices(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKFillet::ChFi3d_ChBuilder_inherited_NbFaultyVertices(
@@ -1203,7 +1028,7 @@ impl ChBuilder {
         })
     }
 
-    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:163 - `ChFi3d_Builder::FaultyVertex()`
+    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:162 - `ChFi3d_Builder::FaultyVertex()`
     pub fn faulty_vertex(&self, IV: i32) -> crate::OwnedPtr<crate::topo_ds::Vertex> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -1215,14 +1040,14 @@ impl ChBuilder {
         }
     }
 
-    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:166 - `ChFi3d_Builder::HasResult()`
+    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:165 - `ChFi3d_Builder::HasResult()`
     pub fn has_result(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKFillet::ChFi3d_ChBuilder_inherited_HasResult(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:170 - `ChFi3d_Builder::BadShape()`
+    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:169 - `ChFi3d_Builder::BadShape()`
     pub fn bad_shape(&self) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -1233,7 +1058,7 @@ impl ChBuilder {
         }
     }
 
-    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:174 - `ChFi3d_Builder::StripeStatus()`
+    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:173 - `ChFi3d_Builder::StripeStatus()`
     pub fn stripe_status(&self, IC: i32) -> crate::ch_fi_ds::ErrorStatus {
         crate::ch_fi_ds::ErrorStatus::try_from(crate::check_result(unsafe {
             crate::ffi_extern_TKFillet::ChFi3d_ChBuilder_inherited_StripeStatus(
@@ -1244,15 +1069,15 @@ impl ChBuilder {
         .unwrap()
     }
 
-    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:178 - `ChFi3d_Builder::Reset()`
+    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:177 - `ChFi3d_Builder::Reset()`
     pub fn reset(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKFillet::ChFi3d_ChBuilder_inherited_Reset(self as *mut Self)
         })
     }
 
-    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:181 - `ChFi3d_Builder::Builder()`
-    pub fn builder(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTopOpeBRepBuildHBuilder> {
+    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:180 - `ChFi3d_Builder::Builder()`
+    pub fn builder(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_TopOpeBRepBuild_HBuilder> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKFillet::ChFi3d_ChBuilder_inherited_Builder(self as *const Self),
@@ -1260,38 +1085,7 @@ impl ChBuilder {
         }
     }
 
-    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:186 - `ChFi3d_Builder::SplitKPart()`
-    pub fn split_k_part(
-        &mut self,
-        Data: &crate::ffi_types::HandleChFiDSSurfData,
-        SetData: &mut crate::ffi_types::ChFiDS_SequenceOfSurfData,
-        Spine: &crate::ffi_types::HandleChFiDSSpine,
-        Iedge: i32,
-        S1: &crate::ffi_types::HandleAdaptor3dSurface,
-        I1: &crate::ffi_types::HandleAdaptor3dTopolTool,
-        S2: &crate::ffi_types::HandleAdaptor3dSurface,
-        I2: &crate::ffi_types::HandleAdaptor3dTopolTool,
-        Intf: &mut bool,
-        Intl: &mut bool,
-    ) -> bool {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKFillet::ChFi3d_ChBuilder_inherited_SplitKPart(
-                self as *mut Self,
-                Data,
-                SetData,
-                Spine,
-                Iedge,
-                S1,
-                I1,
-                S2,
-                I2,
-                Intf,
-                Intl,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:197 - `ChFi3d_Builder::PerformTwoCornerbyInter()`
+    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:196 - `ChFi3d_Builder::PerformTwoCornerbyInter()`
     pub fn perform_two_cornerby_inter(&mut self, Index: i32) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKFillet::ChFi3d_ChBuilder_inherited_PerformTwoCornerbyInter(
@@ -1302,12 +1096,42 @@ impl ChBuilder {
     }
 }
 
+// ── Skipped symbols for ChBuilder (4 total) ──
+// SKIPPED: **Source:** `ChFi3d_ChBuilder.hxx`:225 - `ChFi3d_ChBuilder::PerformSurf`
+//   method: Methode, implemented in inheritants, calculates
+//   method: the elements of construction of the surface (fillet
+//   method: or chamfer).
+//   Reason: has unbindable types: param 'Data': unresolved template type (NCollection_Sequence<occ::handle<ChFiDS_SurfData>>&)
+//   // pub fn perform_surf(&mut self, Data: /* NCollection_Sequence<occ::handle<ChFiDS_SurfData>>& */, Guide: &HandleElSpine, Spine: &HandleSpine, Choix: i32, S1: &HandleSurface, I1: &HandleTopolTool, S2: &HandleSurface, I2: &HandleTopolTool, MaxStep: f64, Fleche: f64, TolGuide: f64, First: &mut f64, Last: &mut f64, Inside: bool, Appro: bool, Forward: bool, RecOnS1: bool, RecOnS2: bool, Soldep: &Vector, Intf: &mut i32, Intl: &mut i32) -> bool;
+//
+// SKIPPED: **Source:** `ChFi3d_ChBuilder.hxx`:250 - `ChFi3d_ChBuilder::PerformSurf`
+//   method: Method, implemented in the inheritants, calculates
+//   method: the elements of construction of the surface (fillet
+//   method: or chamfer) contact edge/face.
+//   Reason: has unbindable types: param 'Data': unresolved template type (NCollection_Sequence<occ::handle<ChFiDS_SurfData>>&)
+//   // pub fn perform_surf(&mut self, Data: /* NCollection_Sequence<occ::handle<ChFiDS_SurfData>>& */, Guide: &HandleElSpine, Spine: &HandleSpine, Choix: i32, S1: &HandleSurface, I1: &HandleTopolTool, PC1: &HandleCurve2d, Sref1: &HandleSurface, PCref1: &HandleCurve2d, Decroch1: &mut bool, S2: &HandleSurface, I2: &HandleTopolTool, Or2: Orientation, MaxStep: f64, Fleche: f64, TolGuide: f64, First: &mut f64, Last: &mut f64, Inside: bool, Appro: bool, Forward: bool, RecP: bool, RecS: bool, RecRst: bool, Soldep: &Vector);
+//
+// SKIPPED: **Source:** `ChFi3d_ChBuilder.hxx`:279 - `ChFi3d_ChBuilder::PerformSurf`
+//   method: Method, implemented in inheritants, calculates
+//   method: the elements of construction of the surface (fillet
+//   method: or chamfer) contact edge/face.
+//   Reason: has unbindable types: param 'Data': unresolved template type (NCollection_Sequence<occ::handle<ChFiDS_SurfData>>&)
+//   // pub fn perform_surf(&mut self, Data: /* NCollection_Sequence<occ::handle<ChFiDS_SurfData>>& */, Guide: &HandleElSpine, Spine: &HandleSpine, Choix: i32, S1: &HandleSurface, I1: &HandleTopolTool, Or1: Orientation, S2: &HandleSurface, I2: &HandleTopolTool, PC2: &HandleCurve2d, Sref2: &HandleSurface, PCref2: &HandleCurve2d, Decroch2: &mut bool, MaxStep: f64, Fleche: f64, TolGuide: f64, First: &mut f64, Last: &mut f64, Inside: bool, Appro: bool, Forward: bool, RecP: bool, RecS: bool, RecRst: bool, Soldep: &Vector);
+//
+// SKIPPED: **Source:** `ChFi3d_ChBuilder.hxx`:308 - `ChFi3d_ChBuilder::PerformSurf`
+//   method: Method, implemented in inheritants, calculates
+//   method: the elements of construction of the surface (fillet
+//   method: or chamfer) contact edge/edge.
+//   Reason: has unbindable types: param 'Data': unresolved template type (NCollection_Sequence<occ::handle<ChFiDS_SurfData>>&)
+//   // pub fn perform_surf(&mut self, Data: /* NCollection_Sequence<occ::handle<ChFiDS_SurfData>>& */, Guide: &HandleElSpine, Spine: &HandleSpine, Choix: i32, S1: &HandleSurface, I1: &HandleTopolTool, PC1: &HandleCurve2d, Sref1: &HandleSurface, PCref1: &HandleCurve2d, Decroch1: &mut bool, Or1: Orientation, S2: &HandleSurface, I2: &HandleTopolTool, PC2: &HandleCurve2d, Sref2: &HandleSurface, PCref2: &HandleCurve2d, Decroch2: &mut bool, Or2: Orientation, MaxStep: f64, Fleche: f64, TolGuide: f64, First: &mut f64, Last: &mut f64, Inside: bool, Appro: bool, Forward: bool, RecP1: bool, RecRst1: bool, RecP2: bool, RecRst2: bool, Soldep: &Vector);
+//
+
 // ========================
 // From ChFi3d_FilBuilder.hxx
 // ========================
 
-/// **Source:** `ChFi3d_FilBuilder.hxx`:44 - `ChFi3d_FilBuilder`
-/// Tool  of  construction of  fillets 3d on  edges (on a solid).
+/// **Source:** `ChFi3d_FilBuilder.hxx`:48 - `ChFi3d_FilBuilder`
+/// Tool of construction of fillets 3d on edges (on a solid).
 pub use crate::ffi_types::ChFi3d_FilBuilder as FilBuilder;
 
 unsafe impl crate::CppDeletable for FilBuilder {
@@ -1319,7 +1143,7 @@ unsafe impl crate::CppDeletable for FilBuilder {
 }
 
 impl FilBuilder {
-    /// **Source:** `ChFi3d_FilBuilder.hxx`:49 - `ChFi3d_FilBuilder::ChFi3d_FilBuilder()`
+    /// **Source:** `ChFi3d_FilBuilder.hxx`:53 - `ChFi3d_FilBuilder::ChFi3d_FilBuilder()`
     pub fn new_shape_filletshape_real(
         S: &crate::topo_ds::Shape,
         FShape: crate::ch_fi3d::FilletShape,
@@ -1336,7 +1160,7 @@ impl FilBuilder {
         }
     }
 
-    /// **Source:** `ChFi3d_FilBuilder.hxx`:49 - `ChFi3d_FilBuilder::ChFi3d_FilBuilder()`
+    /// **Source:** `ChFi3d_FilBuilder.hxx`:53 - `ChFi3d_FilBuilder::ChFi3d_FilBuilder()`
     pub fn new_shape_filletshape(
         S: &crate::topo_ds::Shape,
         FShape: crate::ch_fi3d::FilletShape,
@@ -1344,7 +1168,7 @@ impl FilBuilder {
         Self::new_shape_filletshape_real(S, FShape, 1.0e-2)
     }
 
-    /// **Source:** `ChFi3d_FilBuilder.hxx`:54 - `ChFi3d_FilBuilder::SetFilletShape()`
+    /// **Source:** `ChFi3d_FilBuilder.hxx`:58 - `ChFi3d_FilBuilder::SetFilletShape()`
     /// Sets the type of fillet surface.
     pub fn set_fillet_shape(&mut self, FShape: crate::ch_fi3d::FilletShape) {
         crate::check_void_result(unsafe {
@@ -1355,7 +1179,7 @@ impl FilBuilder {
         })
     }
 
-    /// **Source:** `ChFi3d_FilBuilder.hxx`:57 - `ChFi3d_FilBuilder::GetFilletShape()`
+    /// **Source:** `ChFi3d_FilBuilder.hxx`:61 - `ChFi3d_FilBuilder::GetFilletShape()`
     /// Returns the type of fillet surface.
     pub fn get_fillet_shape(&self) -> crate::ch_fi3d::FilletShape {
         crate::ch_fi3d::FilletShape::try_from(crate::check_result(unsafe {
@@ -1364,18 +1188,18 @@ impl FilBuilder {
         .unwrap()
     }
 
-    /// **Source:** `ChFi3d_FilBuilder.hxx`:62 - `ChFi3d_FilBuilder::Add()`
-    /// initialisation of  a contour with the first edge
-    /// (the following are found  by propagation).
-    /// Attention, you  need  to start  with  SetRadius.
+    /// **Source:** `ChFi3d_FilBuilder.hxx`:66 - `ChFi3d_FilBuilder::Add()`
+    /// initialisation of a contour with the first edge
+    /// (the following are found by propagation).
+    /// Attention, you need to start with SetRadius.
     pub fn add_edge(&mut self, E: &crate::topo_ds::Edge) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKFillet::ChFi3d_FilBuilder_add_edge(self as *mut Self, E)
         })
     }
 
-    /// **Source:** `ChFi3d_FilBuilder.hxx`:65 - `ChFi3d_FilBuilder::Add()`
-    /// initialisation of the constant vector the corresponding  1st  edge.
+    /// **Source:** `ChFi3d_FilBuilder.hxx`:69 - `ChFi3d_FilBuilder::Add()`
+    /// initialisation of the constant vector the corresponding 1st edge.
     pub fn add_real_edge(&mut self, Radius: f64, E: &crate::topo_ds::Edge) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKFillet::ChFi3d_FilBuilder_add_real_edge(
@@ -1386,11 +1210,11 @@ impl FilBuilder {
         })
     }
 
-    /// **Source:** `ChFi3d_FilBuilder.hxx`:68 - `ChFi3d_FilBuilder::SetRadius()`
+    /// **Source:** `ChFi3d_FilBuilder.hxx`:72 - `ChFi3d_FilBuilder::SetRadius()`
     /// Set the radius of the contour of index IC.
     pub fn set_radius_handlelawfunction_int2(
         &mut self,
-        C: &crate::ffi_types::HandleLawFunction,
+        C: &crate::ffi_types::Handle_Law_Function,
         IC: i32,
         IinC: i32,
     ) {
@@ -1404,7 +1228,7 @@ impl FilBuilder {
         })
     }
 
-    /// **Source:** `ChFi3d_FilBuilder.hxx`:73 - `ChFi3d_FilBuilder::IsConstant()`
+    /// **Source:** `ChFi3d_FilBuilder.hxx`:75 - `ChFi3d_FilBuilder::IsConstant()`
     /// Returns true the contour is flagged as edge constant.
     pub fn is_constant_int(&mut self, IC: i32) -> bool {
         crate::check_result(unsafe {
@@ -1412,7 +1236,7 @@ impl FilBuilder {
         })
     }
 
-    /// **Source:** `ChFi3d_FilBuilder.hxx`:77 - `ChFi3d_FilBuilder::Radius()`
+    /// **Source:** `ChFi3d_FilBuilder.hxx`:79 - `ChFi3d_FilBuilder::Radius()`
     /// Returns the vector if the contour is flagged as edge
     /// constant.
     pub fn radius_int(&mut self, IC: i32) -> f64 {
@@ -1421,7 +1245,7 @@ impl FilBuilder {
         })
     }
 
-    /// **Source:** `ChFi3d_FilBuilder.hxx`:80 - `ChFi3d_FilBuilder::ResetContour()`
+    /// **Source:** `ChFi3d_FilBuilder.hxx`:82 - `ChFi3d_FilBuilder::ResetContour()`
     /// Reset all vectors of contour IC.
     pub fn reset_contour(&mut self, IC: i32) {
         crate::check_void_result(unsafe {
@@ -1429,9 +1253,9 @@ impl FilBuilder {
         })
     }
 
-    /// **Source:** `ChFi3d_FilBuilder.hxx`:84 - `ChFi3d_FilBuilder::SetRadius()`
-    /// Set a constant on edge E of  the contour of
-    /// index IC. Since  then  E is flagged as constant.
+    /// **Source:** `ChFi3d_FilBuilder.hxx`:86 - `ChFi3d_FilBuilder::SetRadius()`
+    /// Set a constant on edge E of the contour of
+    /// index IC. Since then E is flagged as constant.
     pub fn set_radius_real_int_edge(&mut self, Radius: f64, IC: i32, E: &crate::topo_ds::Edge) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKFillet::ChFi3d_FilBuilder_set_radius_real_int_edge(
@@ -1452,7 +1276,7 @@ impl FilBuilder {
     }
 
     /// **Source:** `ChFi3d_FilBuilder.hxx`:92 - `ChFi3d_FilBuilder::SetRadius()`
-    /// Set a vector on vertex  V of  the contour of index IC.
+    /// Set a vector on vertex V of the contour of index IC.
     pub fn set_radius_real_int_vertex(&mut self, Radius: f64, IC: i32, V: &crate::topo_ds::Vertex) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKFillet::ChFi3d_FilBuilder_set_radius_real_int_vertex(
@@ -1464,8 +1288,8 @@ impl FilBuilder {
         })
     }
 
-    /// **Source:** `ChFi3d_FilBuilder.hxx`:97 - `ChFi3d_FilBuilder::UnSet()`
-    /// Extracts the vector of  the vertex V.
+    /// **Source:** `ChFi3d_FilBuilder.hxx`:95 - `ChFi3d_FilBuilder::UnSet()`
+    /// Extracts the vector of the vertex V.
     pub fn un_set_int_vertex(&mut self, IC: i32, V: &crate::topo_ds::Vertex) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKFillet::ChFi3d_FilBuilder_un_set_int_vertex(
@@ -1476,9 +1300,9 @@ impl FilBuilder {
         })
     }
 
-    /// **Source:** `ChFi3d_FilBuilder.hxx`:101 - `ChFi3d_FilBuilder::SetRadius()`
-    /// Set  a vertex on the point of parametre U in the edge IinC
-    /// of  the contour of index IC
+    /// **Source:** `ChFi3d_FilBuilder.hxx`:99 - `ChFi3d_FilBuilder::SetRadius()`
+    /// Set a vertex on the point of parameter U in the edge IinC
+    /// of the contour of index IC
     pub fn set_radius_xy_int2(&mut self, UandR: &crate::gp::XY, IC: i32, IinC: i32) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKFillet::ChFi3d_FilBuilder_set_radius_xy_int2(
@@ -1490,7 +1314,7 @@ impl FilBuilder {
         })
     }
 
-    /// **Source:** `ChFi3d_FilBuilder.hxx`:106 - `ChFi3d_FilBuilder::IsConstant()`
+    /// **Source:** `ChFi3d_FilBuilder.hxx`:102 - `ChFi3d_FilBuilder::IsConstant()`
     /// Returns true E is flagged as edge constant.
     pub fn is_constant_int_edge(&mut self, IC: i32, E: &crate::topo_ds::Edge) -> bool {
         crate::check_result(unsafe {
@@ -1502,7 +1326,7 @@ impl FilBuilder {
         })
     }
 
-    /// **Source:** `ChFi3d_FilBuilder.hxx`:109 - `ChFi3d_FilBuilder::Radius()`
+    /// **Source:** `ChFi3d_FilBuilder.hxx`:105 - `ChFi3d_FilBuilder::Radius()`
     /// Returns the vector if E is flagged as edge constant.
     pub fn radius_int_edge(&mut self, IC: i32, E: &crate::topo_ds::Edge) -> f64 {
         crate::check_result(unsafe {
@@ -1510,10 +1334,10 @@ impl FilBuilder {
         })
     }
 
-    /// **Source:** `ChFi3d_FilBuilder.hxx`:114 - `ChFi3d_FilBuilder::GetBounds()`
-    /// Returns in First and Last  les extremities of  the
-    /// part of variable  vector framing E, returns
-    /// False  if  E is flagged as edge constant.
+    /// **Source:** `ChFi3d_FilBuilder.hxx`:110 - `ChFi3d_FilBuilder::GetBounds()`
+    /// Returns in First and Last extremities of the
+    /// part of variable vector framing E, returns
+    /// False if E is flagged as edge constant.
     pub fn get_bounds(
         &mut self,
         IC: i32,
@@ -1532,15 +1356,15 @@ impl FilBuilder {
         })
     }
 
-    /// **Source:** `ChFi3d_FilBuilder.hxx`:122 - `ChFi3d_FilBuilder::GetLaw()`
-    /// Returns the rule of  elementary  evolution of  the
-    /// part to  variable vector framing E, returns a
+    /// **Source:** `ChFi3d_FilBuilder.hxx`:115 - `ChFi3d_FilBuilder::GetLaw()`
+    /// Returns the rule of elementary evolution of the
+    /// part to variable vector framing E, returns a
     /// rule zero if E is flagged as edge constant.
     pub fn get_law(
         &mut self,
         IC: i32,
         E: &crate::topo_ds::Edge,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleLawFunction> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Law_Function> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKFillet::ChFi3d_FilBuilder_get_law(self as *mut Self, IC, E),
@@ -1548,40 +1372,40 @@ impl FilBuilder {
         }
     }
 
-    /// **Source:** `ChFi3d_FilBuilder.hxx`:126 - `ChFi3d_FilBuilder::SetLaw()`
-    /// Sets the rule of elementary evolution of  the
-    /// part to variable  vector framing E.
+    /// **Source:** `ChFi3d_FilBuilder.hxx`:119 - `ChFi3d_FilBuilder::SetLaw()`
+    /// Sets the rule of elementary evolution of the
+    /// part to variable vector framing E.
     pub fn set_law(
         &mut self,
         IC: i32,
         E: &crate::topo_ds::Edge,
-        L: &crate::ffi_types::HandleLawFunction,
+        L: &crate::ffi_types::Handle_Law_Function,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKFillet::ChFi3d_FilBuilder_set_law(self as *mut Self, IC, E, L)
         })
     }
 
-    /// **Source:** `ChFi3d_FilBuilder.hxx`:130 - `ChFi3d_FilBuilder::Simulate()`
+    /// **Source:** `ChFi3d_FilBuilder.hxx`:123 - `ChFi3d_FilBuilder::Simulate()`
     pub fn simulate(&mut self, IC: i32) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKFillet::ChFi3d_FilBuilder_simulate(self as *mut Self, IC)
         })
     }
 
-    /// **Source:** `ChFi3d_FilBuilder.hxx`:132 - `ChFi3d_FilBuilder::NbSurf()`
+    /// **Source:** `ChFi3d_FilBuilder.hxx`:125 - `ChFi3d_FilBuilder::NbSurf()`
     pub fn nb_surf(&self, IC: i32) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKFillet::ChFi3d_FilBuilder_nb_surf(self as *const Self, IC)
         })
     }
 
-    /// **Source:** `ChFi3d_FilBuilder.hxx`:134 - `ChFi3d_FilBuilder::Sect()`
+    /// **Source:** `ChFi3d_FilBuilder.hxx`:127 - `ChFi3d_FilBuilder::Sect()`
     pub fn sect(
         &self,
         IC: i32,
         IS: i32,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleChFiDSSecHArray1> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HArray1_ChFiDS_CircSection> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKFillet::ChFi3d_FilBuilder_sect(self as *const Self, IC, IS),
@@ -1609,7 +1433,7 @@ impl FilBuilder {
         }
     }
 
-    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:71 - `ChFi3d_Builder::SetParams()`
+    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:73 - `ChFi3d_Builder::SetParams()`
     pub fn set_params(
         &mut self,
         Tang: f64,
@@ -1632,7 +1456,7 @@ impl FilBuilder {
         })
     }
 
-    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:78 - `ChFi3d_Builder::SetContinuity()`
+    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:80 - `ChFi3d_Builder::SetContinuity()`
     pub fn set_continuity(
         &mut self,
         InternalContinuity: crate::geom_abs::Shape,
@@ -1647,29 +1471,29 @@ impl FilBuilder {
         })
     }
 
-    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:82 - `ChFi3d_Builder::Remove()`
+    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:84 - `ChFi3d_Builder::Remove()`
     pub fn remove(&mut self, E: &crate::topo_ds::Edge) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKFillet::ChFi3d_FilBuilder_inherited_Remove(self as *mut Self, E)
         })
     }
 
-    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:86 - `ChFi3d_Builder::Contains()`
+    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:88 - `ChFi3d_Builder::Contains()`
     pub fn contains(&self, E: &crate::topo_ds::Edge) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKFillet::ChFi3d_FilBuilder_inherited_Contains(self as *const Self, E)
         })
     }
 
-    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:96 - `ChFi3d_Builder::NbElements()`
+    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:97 - `ChFi3d_Builder::NbElements()`
     pub fn nb_elements(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKFillet::ChFi3d_FilBuilder_inherited_NbElements(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:100 - `ChFi3d_Builder::Value()`
-    pub fn value(&self, I: i32) -> crate::OwnedPtr<crate::ffi_types::HandleChFiDSSpine> {
+    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:101 - `ChFi3d_Builder::Value()`
+    pub fn value(&self, I: i32) -> crate::OwnedPtr<crate::ffi_types::Handle_ChFiDS_Spine> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKFillet::ChFi3d_FilBuilder_inherited_Value(
@@ -1680,14 +1504,14 @@ impl FilBuilder {
         }
     }
 
-    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:103 - `ChFi3d_Builder::Length()`
+    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:104 - `ChFi3d_Builder::Length()`
     pub fn length(&self, IC: i32) -> f64 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKFillet::ChFi3d_FilBuilder_inherited_Length(self as *const Self, IC)
         })
     }
 
-    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:107 - `ChFi3d_Builder::FirstVertex()`
+    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:108 - `ChFi3d_Builder::FirstVertex()`
     pub fn first_vertex(&self, IC: i32) -> crate::OwnedPtr<crate::topo_ds::Vertex> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -1699,7 +1523,7 @@ impl FilBuilder {
         }
     }
 
-    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:111 - `ChFi3d_Builder::LastVertex()`
+    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:112 - `ChFi3d_Builder::LastVertex()`
     pub fn last_vertex(&self, IC: i32) -> crate::OwnedPtr<crate::topo_ds::Vertex> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -1711,7 +1535,7 @@ impl FilBuilder {
         }
     }
 
-    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:115 - `ChFi3d_Builder::Abscissa()`
+    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:116 - `ChFi3d_Builder::Abscissa()`
     pub fn abscissa(&self, IC: i32, V: &crate::topo_ds::Vertex) -> f64 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKFillet::ChFi3d_FilBuilder_inherited_Abscissa(
@@ -1722,7 +1546,7 @@ impl FilBuilder {
         })
     }
 
-    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:119 - `ChFi3d_Builder::RelativeAbscissa()`
+    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:120 - `ChFi3d_Builder::RelativeAbscissa()`
     pub fn relative_abscissa(&self, IC: i32, V: &crate::topo_ds::Vertex) -> f64 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKFillet::ChFi3d_FilBuilder_inherited_RelativeAbscissa(
@@ -1807,7 +1631,7 @@ impl FilBuilder {
         &self,
         IC: i32,
         IS: i32,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleGeomSurface> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Geom_Surface> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKFillet::ChFi3d_FilBuilder_inherited_ComputedSurface(
@@ -1819,7 +1643,7 @@ impl FilBuilder {
         }
     }
 
-    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:160 - `ChFi3d_Builder::NbFaultyVertices()`
+    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:159 - `ChFi3d_Builder::NbFaultyVertices()`
     pub fn nb_faulty_vertices(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKFillet::ChFi3d_FilBuilder_inherited_NbFaultyVertices(
@@ -1828,7 +1652,7 @@ impl FilBuilder {
         })
     }
 
-    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:163 - `ChFi3d_Builder::FaultyVertex()`
+    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:162 - `ChFi3d_Builder::FaultyVertex()`
     pub fn faulty_vertex(&self, IV: i32) -> crate::OwnedPtr<crate::topo_ds::Vertex> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -1840,14 +1664,14 @@ impl FilBuilder {
         }
     }
 
-    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:166 - `ChFi3d_Builder::HasResult()`
+    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:165 - `ChFi3d_Builder::HasResult()`
     pub fn has_result(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKFillet::ChFi3d_FilBuilder_inherited_HasResult(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:170 - `ChFi3d_Builder::BadShape()`
+    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:169 - `ChFi3d_Builder::BadShape()`
     pub fn bad_shape(&self) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -1858,7 +1682,7 @@ impl FilBuilder {
         }
     }
 
-    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:174 - `ChFi3d_Builder::StripeStatus()`
+    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:173 - `ChFi3d_Builder::StripeStatus()`
     pub fn stripe_status(&self, IC: i32) -> crate::ch_fi_ds::ErrorStatus {
         crate::ch_fi_ds::ErrorStatus::try_from(crate::check_result(unsafe {
             crate::ffi_extern_TKFillet::ChFi3d_FilBuilder_inherited_StripeStatus(
@@ -1869,15 +1693,15 @@ impl FilBuilder {
         .unwrap()
     }
 
-    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:178 - `ChFi3d_Builder::Reset()`
+    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:177 - `ChFi3d_Builder::Reset()`
     pub fn reset(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKFillet::ChFi3d_FilBuilder_inherited_Reset(self as *mut Self)
         })
     }
 
-    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:181 - `ChFi3d_Builder::Builder()`
-    pub fn builder(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTopOpeBRepBuildHBuilder> {
+    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:180 - `ChFi3d_Builder::Builder()`
+    pub fn builder(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_TopOpeBRepBuild_HBuilder> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKFillet::ChFi3d_FilBuilder_inherited_Builder(
@@ -1887,38 +1711,7 @@ impl FilBuilder {
         }
     }
 
-    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:186 - `ChFi3d_Builder::SplitKPart()`
-    pub fn split_k_part(
-        &mut self,
-        Data: &crate::ffi_types::HandleChFiDSSurfData,
-        SetData: &mut crate::ffi_types::ChFiDS_SequenceOfSurfData,
-        Spine: &crate::ffi_types::HandleChFiDSSpine,
-        Iedge: i32,
-        S1: &crate::ffi_types::HandleAdaptor3dSurface,
-        I1: &crate::ffi_types::HandleAdaptor3dTopolTool,
-        S2: &crate::ffi_types::HandleAdaptor3dSurface,
-        I2: &crate::ffi_types::HandleAdaptor3dTopolTool,
-        Intf: &mut bool,
-        Intl: &mut bool,
-    ) -> bool {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKFillet::ChFi3d_FilBuilder_inherited_SplitKPart(
-                self as *mut Self,
-                Data,
-                SetData,
-                Spine,
-                Iedge,
-                S1,
-                I1,
-                S2,
-                I2,
-                Intf,
-                Intl,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:197 - `ChFi3d_Builder::PerformTwoCornerbyInter()`
+    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:196 - `ChFi3d_Builder::PerformTwoCornerbyInter()`
     pub fn perform_two_cornerby_inter(&mut self, Index: i32) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKFillet::ChFi3d_FilBuilder_inherited_PerformTwoCornerbyInter(
@@ -1934,7 +1727,7 @@ impl FilBuilder {
 // ========================
 
 /// **Source:** `ChFi3d_SearchSing.hxx`:31 - `ChFi3d_SearchSing`
-/// Searches   singularities on fillet.
+/// Searches singularities on fillet.
 /// F(t) = (C1(t) - C2(t)).(C1'(t) - C2'(t));
 pub use crate::ffi_types::ChFi3d_SearchSing as SearchSing;
 
@@ -1949,8 +1742,8 @@ unsafe impl crate::CppDeletable for SearchSing {
 impl SearchSing {
     /// **Source:** `ChFi3d_SearchSing.hxx`:36 - `ChFi3d_SearchSing::ChFi3d_SearchSing()`
     pub fn new_handlegeomcurve2(
-        C1: &crate::ffi_types::HandleGeomCurve,
-        C2: &crate::ffi_types::HandleGeomCurve,
+        C1: &crate::ffi_types::Handle_Geom_Curve,
+        C2: &crate::ffi_types::Handle_Geom_Curve,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -1959,7 +1752,7 @@ impl SearchSing {
         }
     }
 
-    /// **Source:** `ChFi3d_SearchSing.hxx`:42 - `ChFi3d_SearchSing::Value()`
+    /// **Source:** `ChFi3d_SearchSing.hxx`:43 - `ChFi3d_SearchSing::Value()`
     /// computes the value of the function <F> for the
     /// variable <X>.
     /// returns True if the computation was done successfully,
@@ -1970,7 +1763,7 @@ impl SearchSing {
         })
     }
 
-    /// **Source:** `ChFi3d_SearchSing.hxx`:48 - `ChFi3d_SearchSing::Derivative()`
+    /// **Source:** `ChFi3d_SearchSing.hxx`:49 - `ChFi3d_SearchSing::Derivative()`
     /// computes the derivative <D> of the function
     /// for the variable <X>.
     /// Returns True if the calculation were successfully done,
@@ -1981,7 +1774,7 @@ impl SearchSing {
         })
     }
 
-    /// **Source:** `ChFi3d_SearchSing.hxx`:54 - `ChFi3d_SearchSing::Values()`
+    /// **Source:** `ChFi3d_SearchSing.hxx`:55 - `ChFi3d_SearchSing::Values()`
     /// computes the value <F> and the derivative <D> of the
     /// function for the variable <X>.
     /// Returns True if the calculation were successfully done,

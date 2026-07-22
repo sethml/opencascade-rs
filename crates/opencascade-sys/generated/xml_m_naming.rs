@@ -9,8 +9,8 @@
 /// **Source:** `XmlMNaming.hxx`:33 - `XmlMNaming::AddDrivers`
 /// Adds the attribute drivers to <aDriverTable>.
 pub fn add_drivers_handlexmlmdfadrivertable_handlemessagemessenger_5(
-    aDriverTable: &crate::ffi_types::HandleXmlMDFADriverTable,
-    aMessageDriver: &crate::ffi_types::HandleMessageMessenger,
+    aDriverTable: &crate::ffi_types::Handle_XmlMDF_ADriverTable,
+    aMessageDriver: &crate::ffi_types::Handle_Message_Messenger,
 ) {
     crate::check_void_result(unsafe {
         crate::ffi_extern_TKXml::XmlMNaming_add_drivers_handlexmlmdfadrivertable_handlemessagemessenger_5(aDriverTable, aMessageDriver)
@@ -18,13 +18,13 @@ pub fn add_drivers_handlexmlmdfadrivertable_handlemessagemessenger_5(
 }
 
 // Handle type re-exports (targets of handle upcasts/downcasts)
-pub use crate::ffi_types::{HandleStandardTransient, HandleXmlMDFADriver};
+pub use crate::ffi_types::{Handle_Standard_Transient, Handle_XmlMDF_ADriver};
 
 // ========================
 // From XmlMNaming_NamedShapeDriver.hxx
 // ========================
 
-/// **Source:** `XmlMNaming_NamedShapeDriver.hxx`:36 - `XmlMNaming_NamedShapeDriver`
+/// **Source:** `XmlMNaming_NamedShapeDriver.hxx`:33 - `XmlMNaming_NamedShapeDriver`
 pub use crate::ffi_types::XmlMNaming_NamedShapeDriver as NamedShapeDriver;
 
 unsafe impl crate::CppDeletable for NamedShapeDriver {
@@ -36,9 +36,9 @@ unsafe impl crate::CppDeletable for NamedShapeDriver {
 }
 
 impl NamedShapeDriver {
-    /// **Source:** `XmlMNaming_NamedShapeDriver.hxx`:39 - `XmlMNaming_NamedShapeDriver::XmlMNaming_NamedShapeDriver()`
+    /// **Source:** `XmlMNaming_NamedShapeDriver.hxx`:36 - `XmlMNaming_NamedShapeDriver::XmlMNaming_NamedShapeDriver()`
     pub fn new_handlemessagemessenger(
-        aMessageDriver: &crate::ffi_types::HandleMessageMessenger,
+        aMessageDriver: &crate::ffi_types::Handle_Message_Messenger,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -49,8 +49,8 @@ impl NamedShapeDriver {
         }
     }
 
-    /// **Source:** `XmlMNaming_NamedShapeDriver.hxx`:41 - `XmlMNaming_NamedShapeDriver::NewEmpty()`
-    pub fn new_empty(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTDFAttribute> {
+    /// **Source:** `XmlMNaming_NamedShapeDriver.hxx`:38 - `XmlMNaming_NamedShapeDriver::NewEmpty()`
+    pub fn new_empty(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_TDF_Attribute> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKXml::XmlMNaming_NamedShapeDriver_new_empty(self as *const Self),
@@ -58,11 +58,11 @@ impl NamedShapeDriver {
         }
     }
 
-    /// **Source:** `XmlMNaming_NamedShapeDriver.hxx`:43 - `XmlMNaming_NamedShapeDriver::Paste()`
+    /// **Source:** `XmlMNaming_NamedShapeDriver.hxx`:40 - `XmlMNaming_NamedShapeDriver::Paste()`
     pub fn paste_persistent_handletdfattribute_rrelocationtable(
         &self,
         theSource: &crate::xml_obj_mgt::Persistent,
-        theTarget: &crate::ffi_types::HandleTDFAttribute,
+        theTarget: &crate::ffi_types::Handle_TDF_Attribute,
         theRelocTable: &mut crate::xml_obj_mgt::RRelocationTable,
     ) -> bool {
         crate::check_result(unsafe {
@@ -70,10 +70,10 @@ impl NamedShapeDriver {
         })
     }
 
-    /// **Source:** `XmlMNaming_NamedShapeDriver.hxx`:48 - `XmlMNaming_NamedShapeDriver::Paste()`
+    /// **Source:** `XmlMNaming_NamedShapeDriver.hxx`:44 - `XmlMNaming_NamedShapeDriver::Paste()`
     pub fn paste_handletdfattribute_persistent_srelocationtable(
         &self,
-        theSource: &crate::ffi_types::HandleTDFAttribute,
+        theSource: &crate::ffi_types::Handle_TDF_Attribute,
         theTarget: &mut crate::xml_obj_mgt::Persistent,
         theRelocTable: &mut crate::xml_obj_mgt::SRelocationTable,
     ) {
@@ -82,7 +82,7 @@ impl NamedShapeDriver {
         })
     }
 
-    /// **Source:** `XmlMNaming_NamedShapeDriver.hxx`:54 - `XmlMNaming_NamedShapeDriver::ReadShapeSection()`
+    /// **Source:** `XmlMNaming_NamedShapeDriver.hxx`:49 - `XmlMNaming_NamedShapeDriver::ReadShapeSection()`
     /// Input the shapes from DOM element
     pub fn read_shape_section(
         &mut self,
@@ -98,7 +98,7 @@ impl NamedShapeDriver {
         })
     }
 
-    /// **Source:** `XmlMNaming_NamedShapeDriver.hxx`:59 - `XmlMNaming_NamedShapeDriver::WriteShapeSection()`
+    /// **Source:** `XmlMNaming_NamedShapeDriver.hxx`:54 - `XmlMNaming_NamedShapeDriver::WriteShapeSection()`
     /// Output the shapes into DOM element
     pub fn write_shape_section(
         &mut self,
@@ -116,7 +116,7 @@ impl NamedShapeDriver {
         })
     }
 
-    /// **Source:** `XmlMNaming_NamedShapeDriver.hxx`:65 - `XmlMNaming_NamedShapeDriver::Clear()`
+    /// **Source:** `XmlMNaming_NamedShapeDriver.hxx`:60 - `XmlMNaming_NamedShapeDriver::Clear()`
     /// Clear myShapeSet
     pub fn clear(&mut self) {
         crate::check_void_result(unsafe {
@@ -124,7 +124,7 @@ impl NamedShapeDriver {
         })
     }
 
-    /// **Source:** `XmlMNaming_NamedShapeDriver.hxx`:68 - `XmlMNaming_NamedShapeDriver::GetShapesLocations()`
+    /// **Source:** `XmlMNaming_NamedShapeDriver.hxx`:63 - `XmlMNaming_NamedShapeDriver::GetShapesLocations()`
     /// get the format of topology
     pub fn get_shapes_locations(&mut self) -> &mut crate::top_tools::LocationSet {
         unsafe {
@@ -136,8 +136,8 @@ impl NamedShapeDriver {
         }
     }
 
-    /// **Source:** `XmlMNaming_NamedShapeDriver.hxx`:70 - `XmlMNaming_NamedShapeDriver::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `XmlMNaming_NamedShapeDriver.hxx`:65 - `XmlMNaming_NamedShapeDriver::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKXml::XmlMNaming_NamedShapeDriver_dynamic_type(
@@ -147,7 +147,7 @@ impl NamedShapeDriver {
         }
     }
 
-    /// **Source:** `XmlMNaming_NamedShapeDriver.hxx`:70 - `XmlMNaming_NamedShapeDriver::get_type_name()`
+    /// **Source:** `XmlMNaming_NamedShapeDriver.hxx`:65 - `XmlMNaming_NamedShapeDriver::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -158,8 +158,8 @@ impl NamedShapeDriver {
         .into_owned()
     }
 
-    /// **Source:** `XmlMNaming_NamedShapeDriver.hxx`:70 - `XmlMNaming_NamedShapeDriver::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    /// **Source:** `XmlMNaming_NamedShapeDriver.hxx`:65 - `XmlMNaming_NamedShapeDriver::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKXml::XmlMNaming_NamedShapeDriver_get_type_descriptor(),
@@ -214,7 +214,7 @@ impl NamedShapeDriver {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleXmlMNamingNamedShapeDriver> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_XmlMNaming_NamedShapeDriver> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKXml::XmlMNaming_NamedShapeDriver_to_handle(obj.into_raw()),
@@ -222,7 +222,7 @@ impl NamedShapeDriver {
         }
     }
 
-    /// Inherited: **Source:** `XmlMDF_ADriver.hxx`:42 - `XmlMDF_ADriver::VersionNumber()`
+    /// Inherited: **Source:** `XmlMDF_ADriver.hxx`:39 - `XmlMDF_ADriver::VersionNumber()`
     pub fn version_number(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKXml::XmlMNaming_NamedShapeDriver_inherited_VersionNumber(
@@ -231,8 +231,8 @@ impl NamedShapeDriver {
         })
     }
 
-    /// Inherited: **Source:** `XmlMDF_ADriver.hxx`:49 - `XmlMDF_ADriver::SourceType()`
-    pub fn source_type(&self) -> crate::OwnedPtr<crate::ffi_types::HandleStandardType> {
+    /// Inherited: **Source:** `XmlMDF_ADriver.hxx`:46 - `XmlMDF_ADriver::SourceType()`
+    pub fn source_type(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Type> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKXml::XmlMNaming_NamedShapeDriver_inherited_SourceType(
@@ -242,7 +242,7 @@ impl NamedShapeDriver {
         }
     }
 
-    /// Inherited: **Source:** `XmlMDF_ADriver.hxx`:52 - `XmlMDF_ADriver::TypeName()`
+    /// Inherited: **Source:** `XmlMDF_ADriver.hxx`:49 - `XmlMDF_ADriver::TypeName()`
     pub fn type_name(&self) -> &crate::t_collection::AsciiString {
         unsafe {
             &*(crate::check_result(
@@ -253,7 +253,7 @@ impl NamedShapeDriver {
         }
     }
 
-    /// Inherited: **Source:** `XmlMDF_ADriver.hxx`:55 - `XmlMDF_ADriver::Namespace()`
+    /// Inherited: **Source:** `XmlMDF_ADriver.hxx`:52 - `XmlMDF_ADriver::Namespace()`
     pub fn namespace(&self) -> &crate::t_collection::AsciiString {
         unsafe {
             &*(crate::check_result(
@@ -264,8 +264,8 @@ impl NamedShapeDriver {
         }
     }
 
-    /// Inherited: **Source:** `XmlMDF_ADriver.hxx`:72 - `XmlMDF_ADriver::MessageDriver()`
-    pub fn message_driver(&self) -> &crate::ffi_types::HandleMessageMessenger {
+    /// Inherited: **Source:** `XmlMDF_ADriver.hxx`:69 - `XmlMDF_ADriver::MessageDriver()`
+    pub fn message_driver(&self) -> &crate::ffi_types::Handle_Message_Messenger {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKXml::XmlMNaming_NamedShapeDriver_inherited_MessageDriver(
@@ -275,8 +275,8 @@ impl NamedShapeDriver {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKXml::XmlMNaming_NamedShapeDriver_inherited_IsInstance(
                 self as *const Self,
@@ -285,8 +285,8 @@ impl NamedShapeDriver {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKXml::XmlMNaming_NamedShapeDriver_inherited_IsKind(
                 self as *const Self,
@@ -295,7 +295,7 @@ impl NamedShapeDriver {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -311,7 +311,7 @@ impl NamedShapeDriver {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKXml::XmlMNaming_NamedShapeDriver_inherited_GetRefCount(
@@ -320,7 +320,7 @@ impl NamedShapeDriver {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKXml::XmlMNaming_NamedShapeDriver_inherited_IncrementRefCounter(
@@ -329,7 +329,7 @@ impl NamedShapeDriver {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKXml::XmlMNaming_NamedShapeDriver_inherited_DecrementRefCounter(
@@ -338,7 +338,7 @@ impl NamedShapeDriver {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKXml::XmlMNaming_NamedShapeDriver_inherited_Delete(
@@ -348,38 +348,38 @@ impl NamedShapeDriver {
     }
 }
 
-pub use crate::ffi_types::HandleXmlMNamingNamedShapeDriver;
+pub use crate::ffi_types::Handle_XmlMNaming_NamedShapeDriver;
 
-unsafe impl crate::CppDeletable for HandleXmlMNamingNamedShapeDriver {
+unsafe impl crate::CppDeletable for Handle_XmlMNaming_NamedShapeDriver {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKXml::HandleXmlMNamingNamedShapeDriver_destructor(ptr);
+            crate::ffi_extern_TKXml::Handle_XmlMNaming_NamedShapeDriver_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleXmlMNamingNamedShapeDriver {
+unsafe impl crate::CppCopyable for Handle_XmlMNaming_NamedShapeDriver {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
         unsafe {
-            crate::check_result(crate::ffi_extern_TKXml::HandleXmlMNamingNamedShapeDriver_clone(
+            crate::check_result(crate::ffi_extern_TKXml::Handle_XmlMNaming_NamedShapeDriver_clone(
                 ptr,
             ))
         }
     }
 }
 
-impl HandleXmlMNamingNamedShapeDriver {
+impl Handle_XmlMNaming_NamedShapeDriver {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
         unsafe {
-            crate::ffi_extern_TKXml::HandleXmlMNamingNamedShapeDriver_is_null(self as *const Self)
+            crate::ffi_extern_TKXml::Handle_XmlMNaming_NamedShapeDriver_is_null(self as *const Self)
         }
     }
 
     /// Dereference this Handle to access the underlying XmlMNaming_NamedShapeDriver
     pub fn get(&self) -> &crate::ffi_types::XmlMNaming_NamedShapeDriver {
         unsafe {
-            &*crate::check_result(crate::ffi_extern_TKXml::HandleXmlMNamingNamedShapeDriver_get(
+            &*crate::check_result(crate::ffi_extern_TKXml::Handle_XmlMNaming_NamedShapeDriver_get(
                 self as *const Self,
             ))
         }
@@ -389,7 +389,7 @@ impl HandleXmlMNamingNamedShapeDriver {
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::XmlMNaming_NamedShapeDriver {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi_extern_TKXml::HandleXmlMNamingNamedShapeDriver_get_mut(
+                crate::ffi_extern_TKXml::Handle_XmlMNaming_NamedShapeDriver_get_mut(
                     self as *mut Self,
                 ),
             )
@@ -397,22 +397,18 @@ impl HandleXmlMNamingNamedShapeDriver {
     }
 
     /// Upcast Handle<XmlMNaming_NamedShapeDriver> to Handle<XmlMDF_ADriver>
-    pub fn to_handle_a_driver(&self) -> crate::OwnedPtr<crate::ffi_types::HandleXmlMDFADriver> {
+    pub fn to_handle_a_driver(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_XmlMDF_ADriver> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKXml::HandleXmlMNamingNamedShapeDriver_to_HandleXmlMDFADriver(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKXml::Handle_XmlMNaming_NamedShapeDriver_to_Handle_XmlMDF_ADriver(self as *const Self)))
         }
     }
 
     /// Upcast Handle<XmlMNaming_NamedShapeDriver> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKXml::HandleXmlMNamingNamedShapeDriver_to_HandleStandardTransient(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKXml::Handle_XmlMNaming_NamedShapeDriver_to_Handle_Standard_Transient(self as *const Self)))
         }
     }
 }
@@ -421,7 +417,7 @@ impl HandleXmlMNamingNamedShapeDriver {
 // From XmlMNaming_NamingDriver.hxx
 // ========================
 
-/// **Source:** `XmlMNaming_NamingDriver.hxx`:30 - `XmlMNaming_NamingDriver`
+/// **Source:** `XmlMNaming_NamingDriver.hxx`:27 - `XmlMNaming_NamingDriver`
 pub use crate::ffi_types::XmlMNaming_NamingDriver as NamingDriver;
 
 unsafe impl crate::CppDeletable for NamingDriver {
@@ -433,9 +429,9 @@ unsafe impl crate::CppDeletable for NamingDriver {
 }
 
 impl NamingDriver {
-    /// **Source:** `XmlMNaming_NamingDriver.hxx`:34 - `XmlMNaming_NamingDriver::XmlMNaming_NamingDriver()`
+    /// **Source:** `XmlMNaming_NamingDriver.hxx`:31 - `XmlMNaming_NamingDriver::XmlMNaming_NamingDriver()`
     pub fn new_handlemessagemessenger(
-        aMessageDriver: &crate::ffi_types::HandleMessageMessenger,
+        aMessageDriver: &crate::ffi_types::Handle_Message_Messenger,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -446,8 +442,8 @@ impl NamingDriver {
         }
     }
 
-    /// **Source:** `XmlMNaming_NamingDriver.hxx`:36 - `XmlMNaming_NamingDriver::NewEmpty()`
-    pub fn new_empty(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTDFAttribute> {
+    /// **Source:** `XmlMNaming_NamingDriver.hxx`:33 - `XmlMNaming_NamingDriver::NewEmpty()`
+    pub fn new_empty(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_TDF_Attribute> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKXml::XmlMNaming_NamingDriver_new_empty(self as *const Self),
@@ -455,11 +451,11 @@ impl NamingDriver {
         }
     }
 
-    /// **Source:** `XmlMNaming_NamingDriver.hxx`:39 - `XmlMNaming_NamingDriver::Paste()`
+    /// **Source:** `XmlMNaming_NamingDriver.hxx`:35 - `XmlMNaming_NamingDriver::Paste()`
     pub fn paste_persistent_handletdfattribute_rrelocationtable(
         &self,
         theSource: &crate::xml_obj_mgt::Persistent,
-        theTarget: &crate::ffi_types::HandleTDFAttribute,
+        theTarget: &crate::ffi_types::Handle_TDF_Attribute,
         theRelocTable: &mut crate::xml_obj_mgt::RRelocationTable,
     ) -> bool {
         crate::check_result(unsafe {
@@ -467,10 +463,10 @@ impl NamingDriver {
         })
     }
 
-    /// **Source:** `XmlMNaming_NamingDriver.hxx`:43 - `XmlMNaming_NamingDriver::Paste()`
+    /// **Source:** `XmlMNaming_NamingDriver.hxx`:39 - `XmlMNaming_NamingDriver::Paste()`
     pub fn paste_handletdfattribute_persistent_srelocationtable(
         &self,
-        theSource: &crate::ffi_types::HandleTDFAttribute,
+        theSource: &crate::ffi_types::Handle_TDF_Attribute,
         theTarget: &mut crate::xml_obj_mgt::Persistent,
         theRelocTable: &mut crate::xml_obj_mgt::SRelocationTable,
     ) {
@@ -479,8 +475,8 @@ impl NamingDriver {
         })
     }
 
-    /// **Source:** `XmlMNaming_NamingDriver.hxx`:47 - `XmlMNaming_NamingDriver::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `XmlMNaming_NamingDriver.hxx`:43 - `XmlMNaming_NamingDriver::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKXml::XmlMNaming_NamingDriver_dynamic_type(
                 self as *const Self,
@@ -488,7 +484,7 @@ impl NamingDriver {
         }
     }
 
-    /// **Source:** `XmlMNaming_NamingDriver.hxx`:47 - `XmlMNaming_NamingDriver::get_type_name()`
+    /// **Source:** `XmlMNaming_NamingDriver.hxx`:43 - `XmlMNaming_NamingDriver::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -499,8 +495,8 @@ impl NamingDriver {
         .into_owned()
     }
 
-    /// **Source:** `XmlMNaming_NamingDriver.hxx`:47 - `XmlMNaming_NamingDriver::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    /// **Source:** `XmlMNaming_NamingDriver.hxx`:43 - `XmlMNaming_NamingDriver::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKXml::XmlMNaming_NamingDriver_get_type_descriptor(),
@@ -555,7 +551,7 @@ impl NamingDriver {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleXmlMNamingNamingDriver> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_XmlMNaming_NamingDriver> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKXml::XmlMNaming_NamingDriver_to_handle(obj.into_raw()),
@@ -563,7 +559,7 @@ impl NamingDriver {
         }
     }
 
-    /// Inherited: **Source:** `XmlMDF_ADriver.hxx`:42 - `XmlMDF_ADriver::VersionNumber()`
+    /// Inherited: **Source:** `XmlMDF_ADriver.hxx`:39 - `XmlMDF_ADriver::VersionNumber()`
     pub fn version_number(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKXml::XmlMNaming_NamingDriver_inherited_VersionNumber(
@@ -572,8 +568,8 @@ impl NamingDriver {
         })
     }
 
-    /// Inherited: **Source:** `XmlMDF_ADriver.hxx`:49 - `XmlMDF_ADriver::SourceType()`
-    pub fn source_type(&self) -> crate::OwnedPtr<crate::ffi_types::HandleStandardType> {
+    /// Inherited: **Source:** `XmlMDF_ADriver.hxx`:46 - `XmlMDF_ADriver::SourceType()`
+    pub fn source_type(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Type> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKXml::XmlMNaming_NamingDriver_inherited_SourceType(
@@ -583,7 +579,7 @@ impl NamingDriver {
         }
     }
 
-    /// Inherited: **Source:** `XmlMDF_ADriver.hxx`:52 - `XmlMDF_ADriver::TypeName()`
+    /// Inherited: **Source:** `XmlMDF_ADriver.hxx`:49 - `XmlMDF_ADriver::TypeName()`
     pub fn type_name(&self) -> &crate::t_collection::AsciiString {
         unsafe {
             &*(crate::check_result(
@@ -594,7 +590,7 @@ impl NamingDriver {
         }
     }
 
-    /// Inherited: **Source:** `XmlMDF_ADriver.hxx`:55 - `XmlMDF_ADriver::Namespace()`
+    /// Inherited: **Source:** `XmlMDF_ADriver.hxx`:52 - `XmlMDF_ADriver::Namespace()`
     pub fn namespace(&self) -> &crate::t_collection::AsciiString {
         unsafe {
             &*(crate::check_result(
@@ -605,8 +601,8 @@ impl NamingDriver {
         }
     }
 
-    /// Inherited: **Source:** `XmlMDF_ADriver.hxx`:72 - `XmlMDF_ADriver::MessageDriver()`
-    pub fn message_driver(&self) -> &crate::ffi_types::HandleMessageMessenger {
+    /// Inherited: **Source:** `XmlMDF_ADriver.hxx`:69 - `XmlMDF_ADriver::MessageDriver()`
+    pub fn message_driver(&self) -> &crate::ffi_types::Handle_Message_Messenger {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKXml::XmlMNaming_NamingDriver_inherited_MessageDriver(
@@ -616,8 +612,8 @@ impl NamingDriver {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKXml::XmlMNaming_NamingDriver_inherited_IsInstance(
                 self as *const Self,
@@ -626,8 +622,8 @@ impl NamingDriver {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKXml::XmlMNaming_NamingDriver_inherited_IsKind(
                 self as *const Self,
@@ -636,7 +632,7 @@ impl NamingDriver {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -650,7 +646,7 @@ impl NamingDriver {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKXml::XmlMNaming_NamingDriver_inherited_GetRefCount(
@@ -659,7 +655,7 @@ impl NamingDriver {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKXml::XmlMNaming_NamingDriver_inherited_IncrementRefCounter(
@@ -668,7 +664,7 @@ impl NamingDriver {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKXml::XmlMNaming_NamingDriver_inherited_DecrementRefCounter(
@@ -677,7 +673,7 @@ impl NamingDriver {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKXml::XmlMNaming_NamingDriver_inherited_Delete(self as *const Self)
@@ -685,36 +681,36 @@ impl NamingDriver {
     }
 }
 
-pub use crate::ffi_types::HandleXmlMNamingNamingDriver;
+pub use crate::ffi_types::Handle_XmlMNaming_NamingDriver;
 
-unsafe impl crate::CppDeletable for HandleXmlMNamingNamingDriver {
+unsafe impl crate::CppDeletable for Handle_XmlMNaming_NamingDriver {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKXml::HandleXmlMNamingNamingDriver_destructor(ptr);
+            crate::ffi_extern_TKXml::Handle_XmlMNaming_NamingDriver_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleXmlMNamingNamingDriver {
+unsafe impl crate::CppCopyable for Handle_XmlMNaming_NamingDriver {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
         unsafe {
-            crate::check_result(crate::ffi_extern_TKXml::HandleXmlMNamingNamingDriver_clone(ptr))
+            crate::check_result(crate::ffi_extern_TKXml::Handle_XmlMNaming_NamingDriver_clone(ptr))
         }
     }
 }
 
-impl HandleXmlMNamingNamingDriver {
+impl Handle_XmlMNaming_NamingDriver {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
         unsafe {
-            crate::ffi_extern_TKXml::HandleXmlMNamingNamingDriver_is_null(self as *const Self)
+            crate::ffi_extern_TKXml::Handle_XmlMNaming_NamingDriver_is_null(self as *const Self)
         }
     }
 
     /// Dereference this Handle to access the underlying XmlMNaming_NamingDriver
     pub fn get(&self) -> &crate::ffi_types::XmlMNaming_NamingDriver {
         unsafe {
-            &*crate::check_result(crate::ffi_extern_TKXml::HandleXmlMNamingNamingDriver_get(
+            &*crate::check_result(crate::ffi_extern_TKXml::Handle_XmlMNaming_NamingDriver_get(
                 self as *const Self,
             ))
         }
@@ -724,16 +720,16 @@ impl HandleXmlMNamingNamingDriver {
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::XmlMNaming_NamingDriver {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi_extern_TKXml::HandleXmlMNamingNamingDriver_get_mut(self as *mut Self),
+                crate::ffi_extern_TKXml::Handle_XmlMNaming_NamingDriver_get_mut(self as *mut Self),
             )
         }
     }
 
     /// Upcast Handle<XmlMNaming_NamingDriver> to Handle<XmlMDF_ADriver>
-    pub fn to_handle_a_driver(&self) -> crate::OwnedPtr<crate::ffi_types::HandleXmlMDFADriver> {
+    pub fn to_handle_a_driver(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_XmlMDF_ADriver> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKXml::HandleXmlMNamingNamingDriver_to_HandleXmlMDFADriver(
+                crate::ffi_extern_TKXml::Handle_XmlMNaming_NamingDriver_to_Handle_XmlMDF_ADriver(
                     self as *const Self,
                 ),
             ))
@@ -743,13 +739,9 @@ impl HandleXmlMNamingNamingDriver {
     /// Upcast Handle<XmlMNaming_NamingDriver> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKXml::HandleXmlMNamingNamingDriver_to_HandleStandardTransient(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKXml::Handle_XmlMNaming_NamingDriver_to_Handle_Standard_Transient(self as *const Self)))
         }
     }
 }
@@ -761,7 +753,7 @@ impl HandleXmlMNamingNamingDriver {
 /// **Source:** `XmlMNaming_Shape1.hxx`:33 - `XmlMNaming_Shape1`
 /// The XmlMNaming_Shape1 is the Persistent view of a TopoDS_Shape.
 ///
-/// a  Shape1 contains :
+/// Shape1 contains:
 /// - a reference to a TShape
 /// - a reference to Location
 /// - an Orientation.
@@ -848,7 +840,7 @@ impl Shape1 {
         })
     }
 
-    /// **Source:** `XmlMNaming_Shape1.hxx`:58 - `XmlMNaming_Shape1::SetVertex()`
+    /// **Source:** `XmlMNaming_Shape1.hxx`:56 - `XmlMNaming_Shape1::SetVertex()`
     pub fn set_vertex(&mut self, theVertex: &crate::topo_ds::Shape) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKXml::XmlMNaming_Shape1_set_vertex(self as *mut Self, theVertex)

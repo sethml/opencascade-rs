@@ -58,7 +58,7 @@ unsafe impl crate::CppDeletable for Builder {
 
 impl Builder {
     /// **Source:** `BRepPrim_Builder.hxx`:44 - `BRepPrim_Builder::BRepPrim_Builder()`
-    /// Creates an empty, useless  Builder. Necesseray for
+    /// Creates an empty, useless Builder. Necesseray for
     /// compilation.
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
@@ -96,7 +96,7 @@ impl Builder {
     }
 
     /// **Source:** `BRepPrim_Builder.hxx`:56 - `BRepPrim_Builder::MakeFace()`
-    /// Returns in   <F> a  Face  built  with   the  plane
+    /// Returns in <F> a Face built with the plane
     /// equation <P>. Used by all primitives.
     pub fn make_face(&self, F: &mut crate::topo_ds::Face, P: &crate::gp::Pln) {
         crate::check_void_result(unsafe {
@@ -121,8 +121,8 @@ impl Builder {
     }
 
     /// **Source:** `BRepPrim_Builder.hxx`:66 - `BRepPrim_Builder::MakeEdge()`
-    /// Returns   in <E>  an  Edge  built  with  the  line
-    /// equation  <L>.
+    /// Returns in <E> an Edge built with the line
+    /// equation <L>.
     pub fn make_edge_edge_lin(&self, E: &mut crate::topo_ds::Edge, L: &crate::gp::Lin) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKPrim::BRepPrim_Builder_make_edge_edge_lin(self as *const Self, E, L)
@@ -130,8 +130,8 @@ impl Builder {
     }
 
     /// **Source:** `BRepPrim_Builder.hxx`:70 - `BRepPrim_Builder::MakeEdge()`
-    /// Returns  in <E>   an  Edge  built  with the circle
-    /// equation  <C>.
+    /// Returns in <E> an Edge built with the circle
+    /// equation <C>.
     pub fn make_edge_edge_circ(&self, E: &mut crate::topo_ds::Edge, C: &crate::gp::Circ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKPrim::BRepPrim_Builder_make_edge_edge_circ(
@@ -163,8 +163,8 @@ impl Builder {
     }
 
     /// **Source:** `BRepPrim_Builder.hxx`:80 - `BRepPrim_Builder::SetPCurve()`
-    /// Sets the    lines  <L1,L2>  to   be     the curves
-    /// representing the edge <E>  in the parametric space
+    /// Sets the lines <L1,L2> to be the curves
+    /// representing the edge <E> in the parametric space
     /// of the closed surface of <F>.
     pub fn set_p_curve_edge_face_lin2d2(
         &self,
@@ -185,8 +185,8 @@ impl Builder {
     }
 
     /// **Source:** `BRepPrim_Builder.hxx`:88 - `BRepPrim_Builder::SetPCurve()`
-    /// Sets the  circle <C> to  be the curve representing
-    /// the  edge <E>  in   the  parametric  space of  the
+    /// Sets the circle <C> to be the curve representing
+    /// the edge <E> in the parametric space of the
     /// surface of <F>.
     pub fn set_p_curve_edge_face_circ2d(
         &self,
@@ -221,8 +221,8 @@ impl Builder {
     }
 
     /// **Source:** `BRepPrim_Builder.hxx`:99 - `BRepPrim_Builder::AddEdgeVertex()`
-    /// Adds the Vertex <V> in the Edge <E>.  <P> is the
-    /// parameter of the vertex on the  edge.  If direct
+    /// Adds the Vertex <V> in the Edge <E>. <P> is the
+    /// parameter of the vertex on the edge. If direct
     /// is False the Vertex is reversed.
     pub fn add_edge_vertex_edge_vertex_real_bool(
         &self,
@@ -243,8 +243,8 @@ impl Builder {
     }
 
     /// **Source:** `BRepPrim_Builder.hxx`:107 - `BRepPrim_Builder::AddEdgeVertex()`
-    /// Adds  the Vertex <V>  in the Edge <E>.   <P1,P2>
-    /// are the  parameters of the  vertex on the closed
+    /// Adds the Vertex <V> in the Edge <E>. <P1,P2>
+    /// are the parameters of the vertex on the closed
     /// edge.
     pub fn add_edge_vertex_edge_vertex_real2(
         &self,
@@ -265,8 +265,8 @@ impl Builder {
     }
 
     /// **Source:** `BRepPrim_Builder.hxx`:114 - `BRepPrim_Builder::SetParameters()`
-    /// <P1,P2> are the parameters of the  vertex on the
-    /// edge.  The edge is a closed curve.
+    /// <P1,P2> are the parameters of the vertex on the
+    /// edge. The edge is a closed curve.
     pub fn set_parameters(
         &self,
         E: &mut crate::topo_ds::Edge,
@@ -286,7 +286,7 @@ impl Builder {
     }
 
     /// **Source:** `BRepPrim_Builder.hxx`:121 - `BRepPrim_Builder::AddWireEdge()`
-    /// Adds the Edge <E> in the  Wire <W>, if direct is
+    /// Adds the Edge <E> in the Wire <W>, if direct is
     /// False the Edge is reversed.
     pub fn add_wire_edge(
         &self,
@@ -304,23 +304,23 @@ impl Builder {
         })
     }
 
-    /// **Source:** `BRepPrim_Builder.hxx`:126 - `BRepPrim_Builder::AddFaceWire()`
-    /// Adds the Wire <W> in  the Face <F>.
+    /// **Source:** `BRepPrim_Builder.hxx`:124 - `BRepPrim_Builder::AddFaceWire()`
+    /// Adds the Wire <W> in the Face <F>.
     pub fn add_face_wire(&self, F: &mut crate::topo_ds::Face, W: &crate::topo_ds::Wire) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKPrim::BRepPrim_Builder_add_face_wire(self as *const Self, F, W)
         })
     }
 
-    /// **Source:** `BRepPrim_Builder.hxx`:129 - `BRepPrim_Builder::AddShellFace()`
-    /// Adds the Face <F>  in the Shell <Sh>.
+    /// **Source:** `BRepPrim_Builder.hxx`:127 - `BRepPrim_Builder::AddShellFace()`
+    /// Adds the Face <F> in the Shell <Sh>.
     pub fn add_shell_face(&self, Sh: &mut crate::topo_ds::Shell, F: &crate::topo_ds::Face) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKPrim::BRepPrim_Builder_add_shell_face(self as *const Self, Sh, F)
         })
     }
 
-    /// **Source:** `BRepPrim_Builder.hxx`:133 - `BRepPrim_Builder::CompleteEdge()`
+    /// **Source:** `BRepPrim_Builder.hxx`:131 - `BRepPrim_Builder::CompleteEdge()`
     /// This is called once an edge is completed. It gives
     /// the opportunity to perform any post treatment.
     pub fn complete_edge(&self, E: &mut crate::topo_ds::Edge) {
@@ -329,8 +329,8 @@ impl Builder {
         })
     }
 
-    /// **Source:** `BRepPrim_Builder.hxx`:137 - `BRepPrim_Builder::CompleteWire()`
-    /// This is called once a wire is  completed. It gives
+    /// **Source:** `BRepPrim_Builder.hxx`:135 - `BRepPrim_Builder::CompleteWire()`
+    /// This is called once a wire is completed. It gives
     /// the opportunity to perform any post treatment.
     pub fn complete_wire(&self, W: &mut crate::topo_ds::Wire) {
         crate::check_void_result(unsafe {
@@ -338,8 +338,8 @@ impl Builder {
         })
     }
 
-    /// **Source:** `BRepPrim_Builder.hxx`:141 - `BRepPrim_Builder::CompleteFace()`
-    /// This is called once a face is  completed. It gives
+    /// **Source:** `BRepPrim_Builder.hxx`:139 - `BRepPrim_Builder::CompleteFace()`
+    /// This is called once a face is completed. It gives
     /// the opportunity to perform any post treatment.
     pub fn complete_face(&self, F: &mut crate::topo_ds::Face) {
         crate::check_void_result(unsafe {
@@ -347,8 +347,8 @@ impl Builder {
         })
     }
 
-    /// **Source:** `BRepPrim_Builder.hxx`:145 - `BRepPrim_Builder::CompleteShell()`
-    /// This is called once a shell is  completed. It gives
+    /// **Source:** `BRepPrim_Builder.hxx`:143 - `BRepPrim_Builder::CompleteShell()`
+    /// This is called once a shell is completed. It gives
     /// the opportunity to perform any post treatment.
     pub fn complete_shell(&self, S: &mut crate::topo_ds::Shell) {
         crate::check_void_result(unsafe {
@@ -432,14 +432,14 @@ impl Cone {
     }
 
     /// **Source:** `BRepPrim_Cone.hxx`:70 - `BRepPrim_Cone::BRepPrim_Cone()`
-    /// create a  Cone at origin  on Z axis, of height  H,
-    /// radius R1 at Z = 0, R2 at  Z = H, X is  the origin
-    /// of angles.  If R1 or  R2 is 0   there is  an apex.
+    /// create a Cone at origin on Z axis, of height H,
+    /// radius R1 at Z = 0, R2 at Z = H, X is the origin
+    /// of angles. If R1 or R2 is 0 there is an apex.
     /// Otherwise, it is a truncated cone.
     ///
-    /// Error  : R1 and R2  < Resolution
+    /// Error  : R1 and R2 < Resolution
     /// R1 or R2 negative
-    /// Abs(R1-R2) < Resolution
+    /// std::abs(R1-R2) < Resolution
     /// H < Resolution
     /// H negative
     pub fn new_real3(R1: f64, R2: f64, H: f64) -> crate::OwnedPtr<Self> {
@@ -450,7 +450,7 @@ impl Cone {
         }
     }
 
-    /// **Source:** `BRepPrim_Cone.hxx`:75 - `BRepPrim_Cone::BRepPrim_Cone()`
+    /// **Source:** `BRepPrim_Cone.hxx`:73 - `BRepPrim_Cone::BRepPrim_Cone()`
     /// same as above but at a given point
     pub fn new_pnt_real3(
         Center: &crate::gp::Pnt,
@@ -465,7 +465,7 @@ impl Cone {
         }
     }
 
-    /// **Source:** `BRepPrim_Cone.hxx`:81 - `BRepPrim_Cone::BRepPrim_Cone()`
+    /// **Source:** `BRepPrim_Cone.hxx`:79 - `BRepPrim_Cone::BRepPrim_Cone()`
     /// same as above with given axes system.
     pub fn new_ax2_real3(Axes: &crate::gp::Ax2, R1: f64, R2: f64, H: f64) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -495,8 +495,8 @@ impl Cone {
         Self::new_real_ax2_real2(Angle, Position, Height, 0.0)
     }
 
-    /// **Source:** `BRepPrim_Cone.hxx`:88 - `BRepPrim_Cone::MakeEmptyLateralFace()`
-    /// The surface normal should be directed  towards the
+    /// **Source:** `BRepPrim_Cone.hxx`:86 - `BRepPrim_Cone::MakeEmptyLateralFace()`
+    /// The surface normal should be directed towards the
     /// outside.
     pub fn make_empty_lateral_face(&self) -> crate::OwnedPtr<crate::topo_ds::Face> {
         unsafe {
@@ -581,7 +581,7 @@ impl Cone {
         })
     }
 
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:73 - `BRepPrim_OneAxis::SetMeridianOffset()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:71 - `BRepPrim_OneAxis::SetMeridianOffset()`
     pub fn set_meridian_offset(&mut self, MeridianOffset: f64) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKPrim::BRepPrim_Cone_inherited_SetMeridianOffset(
@@ -591,7 +591,7 @@ impl Cone {
         })
     }
 
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:76 - `BRepPrim_OneAxis::Axes()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:74 - `BRepPrim_OneAxis::Axes()`
     pub fn axes(&self) -> &crate::gp::Ax2 {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKPrim::BRepPrim_Cone_inherited_Axes(
@@ -600,77 +600,77 @@ impl Cone {
         }
     }
 
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:80 - `BRepPrim_OneAxis::Angle()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:78 - `BRepPrim_OneAxis::Angle()`
     pub fn angle(&self) -> f64 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKPrim::BRepPrim_Cone_inherited_Angle(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:84 - `BRepPrim_OneAxis::VMin()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:82 - `BRepPrim_OneAxis::VMin()`
     pub fn v_min(&self) -> f64 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKPrim::BRepPrim_Cone_inherited_VMin(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:88 - `BRepPrim_OneAxis::VMax()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:86 - `BRepPrim_OneAxis::VMax()`
     pub fn v_max(&self) -> f64 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKPrim::BRepPrim_Cone_inherited_VMax(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:116 - `BRepPrim_OneAxis::MeridianOnAxis()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:114 - `BRepPrim_OneAxis::MeridianOnAxis()`
     pub fn meridian_on_axis(&self, V: f64) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKPrim::BRepPrim_Cone_inherited_MeridianOnAxis(self as *const Self, V)
         })
     }
 
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:122 - `BRepPrim_OneAxis::MeridianClosed()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:120 - `BRepPrim_OneAxis::MeridianClosed()`
     pub fn meridian_closed(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKPrim::BRepPrim_Cone_inherited_MeridianClosed(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:126 - `BRepPrim_OneAxis::VMaxInfinite()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:124 - `BRepPrim_OneAxis::VMaxInfinite()`
     pub fn v_max_infinite(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKPrim::BRepPrim_Cone_inherited_VMaxInfinite(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:130 - `BRepPrim_OneAxis::VMinInfinite()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:128 - `BRepPrim_OneAxis::VMinInfinite()`
     pub fn v_min_infinite(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKPrim::BRepPrim_Cone_inherited_VMinInfinite(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:137 - `BRepPrim_OneAxis::HasTop()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:135 - `BRepPrim_OneAxis::HasTop()`
     pub fn has_top(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKPrim::BRepPrim_Cone_inherited_HasTop(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:144 - `BRepPrim_OneAxis::HasBottom()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:142 - `BRepPrim_OneAxis::HasBottom()`
     pub fn has_bottom(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKPrim::BRepPrim_Cone_inherited_HasBottom(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:149 - `BRepPrim_OneAxis::HasSides()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:147 - `BRepPrim_OneAxis::HasSides()`
     pub fn has_sides(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKPrim::BRepPrim_Cone_inherited_HasSides(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:153 - `BRepPrim_OneAxis::Shell()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:151 - `BRepPrim_OneAxis::Shell()`
     pub fn shell(&mut self) -> &crate::topo_ds::Shell {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKPrim::BRepPrim_Cone_inherited_Shell(
@@ -679,7 +679,7 @@ impl Cone {
         }
     }
 
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:157 - `BRepPrim_OneAxis::LateralFace()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:155 - `BRepPrim_OneAxis::LateralFace()`
     pub fn lateral_face(&mut self) -> &crate::topo_ds::Face {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKPrim::BRepPrim_Cone_inherited_LateralFace(
@@ -688,7 +688,7 @@ impl Cone {
         }
     }
 
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:161 - `BRepPrim_OneAxis::TopFace()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:159 - `BRepPrim_OneAxis::TopFace()`
     pub fn top_face(&mut self) -> &crate::topo_ds::Face {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKPrim::BRepPrim_Cone_inherited_TopFace(
@@ -697,7 +697,7 @@ impl Cone {
         }
     }
 
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:165 - `BRepPrim_OneAxis::BottomFace()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:163 - `BRepPrim_OneAxis::BottomFace()`
     pub fn bottom_face(&mut self) -> &crate::topo_ds::Face {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKPrim::BRepPrim_Cone_inherited_BottomFace(
@@ -706,7 +706,7 @@ impl Cone {
         }
     }
 
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:169 - `BRepPrim_OneAxis::StartFace()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:167 - `BRepPrim_OneAxis::StartFace()`
     pub fn start_face(&mut self) -> &crate::topo_ds::Face {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKPrim::BRepPrim_Cone_inherited_StartFace(
@@ -715,7 +715,7 @@ impl Cone {
         }
     }
 
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:173 - `BRepPrim_OneAxis::EndFace()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:171 - `BRepPrim_OneAxis::EndFace()`
     pub fn end_face(&mut self) -> &crate::topo_ds::Face {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKPrim::BRepPrim_Cone_inherited_EndFace(
@@ -724,7 +724,7 @@ impl Cone {
         }
     }
 
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:176 - `BRepPrim_OneAxis::LateralWire()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:174 - `BRepPrim_OneAxis::LateralWire()`
     pub fn lateral_wire(&mut self) -> &crate::topo_ds::Wire {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKPrim::BRepPrim_Cone_inherited_LateralWire(
@@ -733,7 +733,7 @@ impl Cone {
         }
     }
 
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:180 - `BRepPrim_OneAxis::LateralStartWire()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:178 - `BRepPrim_OneAxis::LateralStartWire()`
     pub fn lateral_start_wire(&mut self) -> &crate::topo_ds::Wire {
         unsafe {
             &*(crate::check_result(
@@ -744,7 +744,7 @@ impl Cone {
         }
     }
 
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:184 - `BRepPrim_OneAxis::LateralEndWire()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:182 - `BRepPrim_OneAxis::LateralEndWire()`
     pub fn lateral_end_wire(&mut self) -> &crate::topo_ds::Wire {
         unsafe {
             &*(crate::check_result(
@@ -753,7 +753,7 @@ impl Cone {
         }
     }
 
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:187 - `BRepPrim_OneAxis::TopWire()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:185 - `BRepPrim_OneAxis::TopWire()`
     pub fn top_wire(&mut self) -> &crate::topo_ds::Wire {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKPrim::BRepPrim_Cone_inherited_TopWire(
@@ -762,7 +762,7 @@ impl Cone {
         }
     }
 
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:190 - `BRepPrim_OneAxis::BottomWire()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:188 - `BRepPrim_OneAxis::BottomWire()`
     pub fn bottom_wire(&mut self) -> &crate::topo_ds::Wire {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKPrim::BRepPrim_Cone_inherited_BottomWire(
@@ -771,7 +771,7 @@ impl Cone {
         }
     }
 
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:193 - `BRepPrim_OneAxis::StartWire()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:191 - `BRepPrim_OneAxis::StartWire()`
     pub fn start_wire(&mut self) -> &crate::topo_ds::Wire {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKPrim::BRepPrim_Cone_inherited_StartWire(
@@ -780,7 +780,7 @@ impl Cone {
         }
     }
 
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:197 - `BRepPrim_OneAxis::AxisStartWire()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:195 - `BRepPrim_OneAxis::AxisStartWire()`
     pub fn axis_start_wire(&mut self) -> &crate::topo_ds::Wire {
         unsafe {
             &*(crate::check_result(
@@ -789,7 +789,7 @@ impl Cone {
         }
     }
 
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:200 - `BRepPrim_OneAxis::EndWire()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:198 - `BRepPrim_OneAxis::EndWire()`
     pub fn end_wire(&mut self) -> &crate::topo_ds::Wire {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKPrim::BRepPrim_Cone_inherited_EndWire(
@@ -798,7 +798,7 @@ impl Cone {
         }
     }
 
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:204 - `BRepPrim_OneAxis::AxisEndWire()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:202 - `BRepPrim_OneAxis::AxisEndWire()`
     pub fn axis_end_wire(&mut self) -> &crate::topo_ds::Wire {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKPrim::BRepPrim_Cone_inherited_AxisEndWire(
@@ -807,7 +807,7 @@ impl Cone {
         }
     }
 
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:208 - `BRepPrim_OneAxis::AxisEdge()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:206 - `BRepPrim_OneAxis::AxisEdge()`
     pub fn axis_edge(&mut self) -> &crate::topo_ds::Edge {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKPrim::BRepPrim_Cone_inherited_AxisEdge(
@@ -816,7 +816,7 @@ impl Cone {
         }
     }
 
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:211 - `BRepPrim_OneAxis::StartEdge()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:209 - `BRepPrim_OneAxis::StartEdge()`
     pub fn start_edge(&mut self) -> &crate::topo_ds::Edge {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKPrim::BRepPrim_Cone_inherited_StartEdge(
@@ -825,7 +825,7 @@ impl Cone {
         }
     }
 
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:215 - `BRepPrim_OneAxis::EndEdge()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:213 - `BRepPrim_OneAxis::EndEdge()`
     pub fn end_edge(&mut self) -> &crate::topo_ds::Edge {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKPrim::BRepPrim_Cone_inherited_EndEdge(
@@ -834,7 +834,7 @@ impl Cone {
         }
     }
 
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:219 - `BRepPrim_OneAxis::StartTopEdge()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:217 - `BRepPrim_OneAxis::StartTopEdge()`
     pub fn start_top_edge(&mut self) -> &crate::topo_ds::Edge {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKPrim::BRepPrim_Cone_inherited_StartTopEdge(
@@ -843,7 +843,7 @@ impl Cone {
         }
     }
 
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:223 - `BRepPrim_OneAxis::StartBottomEdge()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:221 - `BRepPrim_OneAxis::StartBottomEdge()`
     pub fn start_bottom_edge(&mut self) -> &crate::topo_ds::Edge {
         unsafe {
             &*(crate::check_result(
@@ -854,7 +854,7 @@ impl Cone {
         }
     }
 
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:227 - `BRepPrim_OneAxis::EndTopEdge()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:225 - `BRepPrim_OneAxis::EndTopEdge()`
     pub fn end_top_edge(&mut self) -> &crate::topo_ds::Edge {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKPrim::BRepPrim_Cone_inherited_EndTopEdge(
@@ -863,7 +863,7 @@ impl Cone {
         }
     }
 
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:231 - `BRepPrim_OneAxis::EndBottomEdge()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:229 - `BRepPrim_OneAxis::EndBottomEdge()`
     pub fn end_bottom_edge(&mut self) -> &crate::topo_ds::Edge {
         unsafe {
             &*(crate::check_result(
@@ -872,7 +872,7 @@ impl Cone {
         }
     }
 
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:235 - `BRepPrim_OneAxis::TopEdge()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:233 - `BRepPrim_OneAxis::TopEdge()`
     pub fn top_edge(&mut self) -> &crate::topo_ds::Edge {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKPrim::BRepPrim_Cone_inherited_TopEdge(
@@ -881,7 +881,7 @@ impl Cone {
         }
     }
 
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:239 - `BRepPrim_OneAxis::BottomEdge()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:237 - `BRepPrim_OneAxis::BottomEdge()`
     pub fn bottom_edge(&mut self) -> &crate::topo_ds::Edge {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKPrim::BRepPrim_Cone_inherited_BottomEdge(
@@ -890,7 +890,7 @@ impl Cone {
         }
     }
 
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:242 - `BRepPrim_OneAxis::AxisTopVertex()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:240 - `BRepPrim_OneAxis::AxisTopVertex()`
     pub fn axis_top_vertex(&mut self) -> &crate::topo_ds::Vertex {
         unsafe {
             &*(crate::check_result(
@@ -899,7 +899,7 @@ impl Cone {
         }
     }
 
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:246 - `BRepPrim_OneAxis::AxisBottomVertex()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:244 - `BRepPrim_OneAxis::AxisBottomVertex()`
     pub fn axis_bottom_vertex(&mut self) -> &crate::topo_ds::Vertex {
         unsafe {
             &*(crate::check_result(
@@ -910,7 +910,7 @@ impl Cone {
         }
     }
 
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:249 - `BRepPrim_OneAxis::TopStartVertex()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:247 - `BRepPrim_OneAxis::TopStartVertex()`
     pub fn top_start_vertex(&mut self) -> &crate::topo_ds::Vertex {
         unsafe {
             &*(crate::check_result(
@@ -919,7 +919,7 @@ impl Cone {
         }
     }
 
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:252 - `BRepPrim_OneAxis::TopEndVertex()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:250 - `BRepPrim_OneAxis::TopEndVertex()`
     pub fn top_end_vertex(&mut self) -> &crate::topo_ds::Vertex {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKPrim::BRepPrim_Cone_inherited_TopEndVertex(
@@ -928,7 +928,7 @@ impl Cone {
         }
     }
 
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:255 - `BRepPrim_OneAxis::BottomStartVertex()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:253 - `BRepPrim_OneAxis::BottomStartVertex()`
     pub fn bottom_start_vertex(&mut self) -> &crate::topo_ds::Vertex {
         unsafe {
             &*(crate::check_result(
@@ -939,7 +939,7 @@ impl Cone {
         }
     }
 
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:258 - `BRepPrim_OneAxis::BottomEndVertex()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:256 - `BRepPrim_OneAxis::BottomEndVertex()`
     pub fn bottom_end_vertex(&mut self) -> &crate::topo_ds::Vertex {
         unsafe {
             &*(crate::check_result(
@@ -1022,9 +1022,9 @@ impl Cylinder {
     }
 
     /// **Source:** `BRepPrim_Cylinder.hxx`:61 - `BRepPrim_Cylinder::BRepPrim_Cylinder()`
-    /// create a Cylinder  at origin on Z  axis, of
+    /// create a Cylinder at origin on Z axis, of
     /// height H and radius R
-    /// Error  : Radius  < Resolution
+    /// Error : Radius < Resolution
     /// H < Resolution
     /// H negative
     pub fn new_real2(R: f64, H: f64) -> crate::OwnedPtr<Self> {
@@ -1045,8 +1045,8 @@ impl Cylinder {
         }
     }
 
-    /// **Source:** `BRepPrim_Cylinder.hxx`:70 - `BRepPrim_Cylinder::MakeEmptyLateralFace()`
-    /// The surface normal should be directed  towards the
+    /// **Source:** `BRepPrim_Cylinder.hxx`:68 - `BRepPrim_Cylinder::MakeEmptyLateralFace()`
+    /// The surface normal should be directed towards the
     /// outside.
     pub fn make_empty_lateral_face(&self) -> crate::OwnedPtr<crate::topo_ds::Face> {
         unsafe {
@@ -1135,7 +1135,7 @@ impl Cylinder {
         })
     }
 
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:73 - `BRepPrim_OneAxis::SetMeridianOffset()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:71 - `BRepPrim_OneAxis::SetMeridianOffset()`
     pub fn set_meridian_offset(&mut self, MeridianOffset: f64) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKPrim::BRepPrim_Cylinder_inherited_SetMeridianOffset(
@@ -1145,7 +1145,7 @@ impl Cylinder {
         })
     }
 
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:76 - `BRepPrim_OneAxis::Axes()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:74 - `BRepPrim_OneAxis::Axes()`
     pub fn axes(&self) -> &crate::gp::Ax2 {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKPrim::BRepPrim_Cylinder_inherited_Axes(
@@ -1154,28 +1154,28 @@ impl Cylinder {
         }
     }
 
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:80 - `BRepPrim_OneAxis::Angle()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:78 - `BRepPrim_OneAxis::Angle()`
     pub fn angle(&self) -> f64 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKPrim::BRepPrim_Cylinder_inherited_Angle(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:84 - `BRepPrim_OneAxis::VMin()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:82 - `BRepPrim_OneAxis::VMin()`
     pub fn v_min(&self) -> f64 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKPrim::BRepPrim_Cylinder_inherited_VMin(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:88 - `BRepPrim_OneAxis::VMax()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:86 - `BRepPrim_OneAxis::VMax()`
     pub fn v_max(&self) -> f64 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKPrim::BRepPrim_Cylinder_inherited_VMax(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:116 - `BRepPrim_OneAxis::MeridianOnAxis()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:114 - `BRepPrim_OneAxis::MeridianOnAxis()`
     pub fn meridian_on_axis(&self, V: f64) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKPrim::BRepPrim_Cylinder_inherited_MeridianOnAxis(
@@ -1185,7 +1185,7 @@ impl Cylinder {
         })
     }
 
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:122 - `BRepPrim_OneAxis::MeridianClosed()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:120 - `BRepPrim_OneAxis::MeridianClosed()`
     pub fn meridian_closed(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKPrim::BRepPrim_Cylinder_inherited_MeridianClosed(
@@ -1194,42 +1194,42 @@ impl Cylinder {
         })
     }
 
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:126 - `BRepPrim_OneAxis::VMaxInfinite()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:124 - `BRepPrim_OneAxis::VMaxInfinite()`
     pub fn v_max_infinite(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKPrim::BRepPrim_Cylinder_inherited_VMaxInfinite(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:130 - `BRepPrim_OneAxis::VMinInfinite()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:128 - `BRepPrim_OneAxis::VMinInfinite()`
     pub fn v_min_infinite(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKPrim::BRepPrim_Cylinder_inherited_VMinInfinite(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:137 - `BRepPrim_OneAxis::HasTop()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:135 - `BRepPrim_OneAxis::HasTop()`
     pub fn has_top(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKPrim::BRepPrim_Cylinder_inherited_HasTop(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:144 - `BRepPrim_OneAxis::HasBottom()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:142 - `BRepPrim_OneAxis::HasBottom()`
     pub fn has_bottom(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKPrim::BRepPrim_Cylinder_inherited_HasBottom(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:149 - `BRepPrim_OneAxis::HasSides()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:147 - `BRepPrim_OneAxis::HasSides()`
     pub fn has_sides(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKPrim::BRepPrim_Cylinder_inherited_HasSides(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:153 - `BRepPrim_OneAxis::Shell()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:151 - `BRepPrim_OneAxis::Shell()`
     pub fn shell(&mut self) -> &crate::topo_ds::Shell {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKPrim::BRepPrim_Cylinder_inherited_Shell(
@@ -1238,7 +1238,7 @@ impl Cylinder {
         }
     }
 
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:157 - `BRepPrim_OneAxis::LateralFace()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:155 - `BRepPrim_OneAxis::LateralFace()`
     pub fn lateral_face(&mut self) -> &crate::topo_ds::Face {
         unsafe {
             &*(crate::check_result(
@@ -1249,7 +1249,7 @@ impl Cylinder {
         }
     }
 
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:161 - `BRepPrim_OneAxis::TopFace()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:159 - `BRepPrim_OneAxis::TopFace()`
     pub fn top_face(&mut self) -> &crate::topo_ds::Face {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKPrim::BRepPrim_Cylinder_inherited_TopFace(
@@ -1258,7 +1258,7 @@ impl Cylinder {
         }
     }
 
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:165 - `BRepPrim_OneAxis::BottomFace()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:163 - `BRepPrim_OneAxis::BottomFace()`
     pub fn bottom_face(&mut self) -> &crate::topo_ds::Face {
         unsafe {
             &*(crate::check_result(
@@ -1267,7 +1267,7 @@ impl Cylinder {
         }
     }
 
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:169 - `BRepPrim_OneAxis::StartFace()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:167 - `BRepPrim_OneAxis::StartFace()`
     pub fn start_face(&mut self) -> &crate::topo_ds::Face {
         unsafe {
             &*(crate::check_result(
@@ -1276,7 +1276,7 @@ impl Cylinder {
         }
     }
 
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:173 - `BRepPrim_OneAxis::EndFace()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:171 - `BRepPrim_OneAxis::EndFace()`
     pub fn end_face(&mut self) -> &crate::topo_ds::Face {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKPrim::BRepPrim_Cylinder_inherited_EndFace(
@@ -1285,7 +1285,7 @@ impl Cylinder {
         }
     }
 
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:176 - `BRepPrim_OneAxis::LateralWire()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:174 - `BRepPrim_OneAxis::LateralWire()`
     pub fn lateral_wire(&mut self) -> &crate::topo_ds::Wire {
         unsafe {
             &*(crate::check_result(
@@ -1296,7 +1296,7 @@ impl Cylinder {
         }
     }
 
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:180 - `BRepPrim_OneAxis::LateralStartWire()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:178 - `BRepPrim_OneAxis::LateralStartWire()`
     pub fn lateral_start_wire(&mut self) -> &crate::topo_ds::Wire {
         unsafe {
             &*(crate::check_result(
@@ -1307,7 +1307,7 @@ impl Cylinder {
         }
     }
 
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:184 - `BRepPrim_OneAxis::LateralEndWire()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:182 - `BRepPrim_OneAxis::LateralEndWire()`
     pub fn lateral_end_wire(&mut self) -> &crate::topo_ds::Wire {
         unsafe {
             &*(crate::check_result(
@@ -1318,7 +1318,7 @@ impl Cylinder {
         }
     }
 
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:187 - `BRepPrim_OneAxis::TopWire()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:185 - `BRepPrim_OneAxis::TopWire()`
     pub fn top_wire(&mut self) -> &crate::topo_ds::Wire {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKPrim::BRepPrim_Cylinder_inherited_TopWire(
@@ -1327,7 +1327,7 @@ impl Cylinder {
         }
     }
 
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:190 - `BRepPrim_OneAxis::BottomWire()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:188 - `BRepPrim_OneAxis::BottomWire()`
     pub fn bottom_wire(&mut self) -> &crate::topo_ds::Wire {
         unsafe {
             &*(crate::check_result(
@@ -1336,7 +1336,7 @@ impl Cylinder {
         }
     }
 
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:193 - `BRepPrim_OneAxis::StartWire()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:191 - `BRepPrim_OneAxis::StartWire()`
     pub fn start_wire(&mut self) -> &crate::topo_ds::Wire {
         unsafe {
             &*(crate::check_result(
@@ -1345,7 +1345,7 @@ impl Cylinder {
         }
     }
 
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:197 - `BRepPrim_OneAxis::AxisStartWire()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:195 - `BRepPrim_OneAxis::AxisStartWire()`
     pub fn axis_start_wire(&mut self) -> &crate::topo_ds::Wire {
         unsafe {
             &*(crate::check_result(
@@ -1356,7 +1356,7 @@ impl Cylinder {
         }
     }
 
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:200 - `BRepPrim_OneAxis::EndWire()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:198 - `BRepPrim_OneAxis::EndWire()`
     pub fn end_wire(&mut self) -> &crate::topo_ds::Wire {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKPrim::BRepPrim_Cylinder_inherited_EndWire(
@@ -1365,7 +1365,7 @@ impl Cylinder {
         }
     }
 
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:204 - `BRepPrim_OneAxis::AxisEndWire()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:202 - `BRepPrim_OneAxis::AxisEndWire()`
     pub fn axis_end_wire(&mut self) -> &crate::topo_ds::Wire {
         unsafe {
             &*(crate::check_result(
@@ -1376,7 +1376,7 @@ impl Cylinder {
         }
     }
 
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:208 - `BRepPrim_OneAxis::AxisEdge()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:206 - `BRepPrim_OneAxis::AxisEdge()`
     pub fn axis_edge(&mut self) -> &crate::topo_ds::Edge {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKPrim::BRepPrim_Cylinder_inherited_AxisEdge(
@@ -1385,7 +1385,7 @@ impl Cylinder {
         }
     }
 
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:211 - `BRepPrim_OneAxis::StartEdge()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:209 - `BRepPrim_OneAxis::StartEdge()`
     pub fn start_edge(&mut self) -> &crate::topo_ds::Edge {
         unsafe {
             &*(crate::check_result(
@@ -1394,7 +1394,7 @@ impl Cylinder {
         }
     }
 
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:215 - `BRepPrim_OneAxis::EndEdge()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:213 - `BRepPrim_OneAxis::EndEdge()`
     pub fn end_edge(&mut self) -> &crate::topo_ds::Edge {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKPrim::BRepPrim_Cylinder_inherited_EndEdge(
@@ -1403,7 +1403,7 @@ impl Cylinder {
         }
     }
 
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:219 - `BRepPrim_OneAxis::StartTopEdge()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:217 - `BRepPrim_OneAxis::StartTopEdge()`
     pub fn start_top_edge(&mut self) -> &crate::topo_ds::Edge {
         unsafe {
             &*(crate::check_result(
@@ -1414,7 +1414,7 @@ impl Cylinder {
         }
     }
 
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:223 - `BRepPrim_OneAxis::StartBottomEdge()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:221 - `BRepPrim_OneAxis::StartBottomEdge()`
     pub fn start_bottom_edge(&mut self) -> &crate::topo_ds::Edge {
         unsafe {
             &*(crate::check_result(
@@ -1425,7 +1425,7 @@ impl Cylinder {
         }
     }
 
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:227 - `BRepPrim_OneAxis::EndTopEdge()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:225 - `BRepPrim_OneAxis::EndTopEdge()`
     pub fn end_top_edge(&mut self) -> &crate::topo_ds::Edge {
         unsafe {
             &*(crate::check_result(
@@ -1434,7 +1434,7 @@ impl Cylinder {
         }
     }
 
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:231 - `BRepPrim_OneAxis::EndBottomEdge()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:229 - `BRepPrim_OneAxis::EndBottomEdge()`
     pub fn end_bottom_edge(&mut self) -> &crate::topo_ds::Edge {
         unsafe {
             &*(crate::check_result(
@@ -1445,7 +1445,7 @@ impl Cylinder {
         }
     }
 
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:235 - `BRepPrim_OneAxis::TopEdge()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:233 - `BRepPrim_OneAxis::TopEdge()`
     pub fn top_edge(&mut self) -> &crate::topo_ds::Edge {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKPrim::BRepPrim_Cylinder_inherited_TopEdge(
@@ -1454,7 +1454,7 @@ impl Cylinder {
         }
     }
 
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:239 - `BRepPrim_OneAxis::BottomEdge()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:237 - `BRepPrim_OneAxis::BottomEdge()`
     pub fn bottom_edge(&mut self) -> &crate::topo_ds::Edge {
         unsafe {
             &*(crate::check_result(
@@ -1463,7 +1463,7 @@ impl Cylinder {
         }
     }
 
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:242 - `BRepPrim_OneAxis::AxisTopVertex()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:240 - `BRepPrim_OneAxis::AxisTopVertex()`
     pub fn axis_top_vertex(&mut self) -> &crate::topo_ds::Vertex {
         unsafe {
             &*(crate::check_result(
@@ -1474,7 +1474,7 @@ impl Cylinder {
         }
     }
 
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:246 - `BRepPrim_OneAxis::AxisBottomVertex()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:244 - `BRepPrim_OneAxis::AxisBottomVertex()`
     pub fn axis_bottom_vertex(&mut self) -> &crate::topo_ds::Vertex {
         unsafe {
             &*(crate::check_result(
@@ -1485,7 +1485,7 @@ impl Cylinder {
         }
     }
 
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:249 - `BRepPrim_OneAxis::TopStartVertex()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:247 - `BRepPrim_OneAxis::TopStartVertex()`
     pub fn top_start_vertex(&mut self) -> &crate::topo_ds::Vertex {
         unsafe {
             &*(crate::check_result(
@@ -1496,7 +1496,7 @@ impl Cylinder {
         }
     }
 
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:252 - `BRepPrim_OneAxis::TopEndVertex()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:250 - `BRepPrim_OneAxis::TopEndVertex()`
     pub fn top_end_vertex(&mut self) -> &crate::topo_ds::Vertex {
         unsafe {
             &*(crate::check_result(
@@ -1507,7 +1507,7 @@ impl Cylinder {
         }
     }
 
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:255 - `BRepPrim_OneAxis::BottomStartVertex()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:253 - `BRepPrim_OneAxis::BottomStartVertex()`
     pub fn bottom_start_vertex(&mut self) -> &crate::topo_ds::Vertex {
         unsafe {
             &*(crate::check_result(
@@ -1518,7 +1518,7 @@ impl Cylinder {
         }
     }
 
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:258 - `BRepPrim_OneAxis::BottomEndVertex()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:256 - `BRepPrim_OneAxis::BottomEndVertex()`
     pub fn bottom_end_vertex(&mut self) -> &crate::topo_ds::Vertex {
         unsafe {
             &*(crate::check_result(
@@ -1535,10 +1535,10 @@ impl Cylinder {
 // ========================
 
 /// **Source:** `BRepPrim_FaceBuilder.hxx`:36 - `BRepPrim_FaceBuilder`
-/// The  FaceBuilder is an algorithm   to build a BRep
+/// The FaceBuilder is an algorithm to build a BRep
 /// Face from a Geom Surface.
 ///
-/// The  face covers  the  whole surface or  the  area
+/// The face covers the whole surface or the area
 /// delimited by UMin, UMax, VMin, VMax
 pub use crate::ffi_types::BRepPrim_FaceBuilder as FaceBuilder;
 
@@ -1563,7 +1563,7 @@ impl FaceBuilder {
     /// **Source:** `BRepPrim_FaceBuilder.hxx`:43 - `BRepPrim_FaceBuilder::BRepPrim_FaceBuilder()`
     pub fn new_builder_handlegeomsurface(
         B: &crate::b_rep::Builder,
-        S: &crate::ffi_types::HandleGeomSurface,
+        S: &crate::ffi_types::Handle_Geom_Surface,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -1575,7 +1575,7 @@ impl FaceBuilder {
     /// **Source:** `BRepPrim_FaceBuilder.hxx`:45 - `BRepPrim_FaceBuilder::BRepPrim_FaceBuilder()`
     pub fn new_builder_handlegeomsurface_real4(
         B: &crate::b_rep::Builder,
-        S: &crate::ffi_types::HandleGeomSurface,
+        S: &crate::ffi_types::Handle_Geom_Surface,
         UMin: f64,
         UMax: f64,
         VMin: f64,
@@ -1594,7 +1594,7 @@ impl FaceBuilder {
     pub fn init_builder_handlegeomsurface(
         &mut self,
         B: &crate::b_rep::Builder,
-        S: &crate::ffi_types::HandleGeomSurface,
+        S: &crate::ffi_types::Handle_Geom_Surface,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKPrim::BRepPrim_FaceBuilder_init_builder_handlegeomsurface(
@@ -1609,7 +1609,7 @@ impl FaceBuilder {
     pub fn init_builder_handlegeomsurface_real4(
         &mut self,
         B: &crate::b_rep::Builder,
-        S: &crate::ffi_types::HandleGeomSurface,
+        S: &crate::ffi_types::Handle_Geom_Surface,
         UMin: f64,
         UMax: f64,
         VMin: f64,
@@ -1677,14 +1677,14 @@ impl FaceBuilder {
 ///
 /// Axes: an Axis2 (coordinate system)
 ///
-/// YMin, YMax the  coordinates of the ymin and ymax
+/// YMin, YMax the coordinates of the ymin and ymax
 /// rectangular faces parallel to the ZX plane (of the
 /// coordinate systems)
 ///
-/// ZMin,ZMax,XMin,XMax the rectangular
+/// ZMin, ZMax, XMin, XMax the rectangular
 /// left (YMin) face parallel to the Z and X axes.
 ///
-/// Z2Min,Z2Max,X2Min,X2Max the rectangular
+/// Z2Min, Z2Max, X2Min, X2Max the rectangular
 /// right (YMax) face parallel to the Z and X axes.
 ///
 /// For a box Z2Min = ZMin, Z2Max = ZMax,
@@ -1992,7 +1992,7 @@ impl GWedge {
         })
     }
 
-    /// **Source:** `BRepPrim_GWedge.hxx`:187 - `BRepPrim_GWedge::Edge()`
+    /// **Source:** `BRepPrim_GWedge.hxx`:186 - `BRepPrim_GWedge::Edge()`
     /// Returns the Edge of <me> located in <d1><d2> direction.
     pub fn edge(
         &mut self,
@@ -2008,7 +2008,7 @@ impl GWedge {
         }
     }
 
-    /// **Source:** `BRepPrim_GWedge.hxx`:191 - `BRepPrim_GWedge::Line()`
+    /// **Source:** `BRepPrim_GWedge.hxx`:190 - `BRepPrim_GWedge::Line()`
     /// Returns the line of the Edge of <me> located in
     /// <d1><d2> direction.
     pub fn line(
@@ -2027,7 +2027,7 @@ impl GWedge {
         }
     }
 
-    /// **Source:** `BRepPrim_GWedge.hxx`:195 - `BRepPrim_GWedge::HasVertex()`
+    /// **Source:** `BRepPrim_GWedge.hxx`:194 - `BRepPrim_GWedge::HasVertex()`
     /// Returns True if <me> has a Vertex in <d1><d2><d3>
     /// direction.
     pub fn has_vertex(
@@ -2046,7 +2046,7 @@ impl GWedge {
         })
     }
 
-    /// **Source:** `BRepPrim_GWedge.hxx`:201 - `BRepPrim_GWedge::Vertex()`
+    /// **Source:** `BRepPrim_GWedge.hxx`:200 - `BRepPrim_GWedge::Vertex()`
     /// Returns the Vertex of <me> located in <d1><d2><d3>
     /// direction.
     pub fn vertex(
@@ -2065,7 +2065,7 @@ impl GWedge {
         }
     }
 
-    /// **Source:** `BRepPrim_GWedge.hxx`:207 - `BRepPrim_GWedge::Point()`
+    /// **Source:** `BRepPrim_GWedge.hxx`:206 - `BRepPrim_GWedge::Point()`
     /// Returns the point of the Vertex of <me> located in
     /// <d1><d2><d3> direction.
     pub fn point(
@@ -2086,7 +2086,7 @@ impl GWedge {
         }
     }
 
-    /// **Source:** `BRepPrim_GWedge.hxx`:213 - `BRepPrim_GWedge::IsDegeneratedShape()`
+    /// **Source:** `BRepPrim_GWedge.hxx`:212 - `BRepPrim_GWedge::IsDegeneratedShape()`
     /// Checks a shape on degeneracy
     /// @return TRUE if a shape is degenerated
     pub fn is_degenerated_shape(&mut self) -> bool {
@@ -2100,37 +2100,35 @@ impl GWedge {
 // From BRepPrim_OneAxis.hxx
 // ========================
 
-/// **Source:** `BRepPrim_OneAxis.hxx`:63 - `BRepPrim_OneAxis`
-/// Algorithm to  build  primitives with  one  axis of
+/// **Source:** `BRepPrim_OneAxis.hxx`:61 - `BRepPrim_OneAxis`
+/// Algorithm to build primitives with one axis of
 /// revolution.
 ///
-/// The revolution  body is described by :
+/// The revolution body is described by:
 ///
-/// A coordinate  system (Ax2 from  gp). The Z axis is
+/// A coordinate system (Ax2 from gp). The Z axis is
 /// the rotational axis.
 ///
-/// An Angle around the Axis, When  the Angle  is 2*PI
-/// the primitive is not limited  by planar faces. The
+/// An Angle around the Axis, When the Angle is 2*PI
+/// the primitive is not limited by planar faces. The
 /// U parameter range from 0 to Angle.
 ///
 /// A parameter range VMin, VMax on the meridian.
 ///
-/// A meridian : The  meridian is a curve described by
+/// A meridian: The meridian is a curve described by
 /// a set of deferred methods.
 ///
-/// The  topology consists of  A shell,  Faces,  Wires,
-/// Edges and Vertices.  Methods  are provided to build
-/// all the elements.  Building an element  implies the
-/// automatic building  of  all its  sub-elements.
+/// The topology consists of A shell, Faces, Wires,
+/// Edges and Vertices. Methods are provided to build
+/// all the elements. Building an element implies the
+/// automatic building of all its sub-elements.
 ///
 /// So building the shell builds everything.
 ///
-/// There are at most 5 faces :
+/// There are at most 5 faces:
 ///
 /// - The LateralFace.
-///
 /// - The TopFace and the BottomFace.
-///
 /// - The StartFace and the EndFace.
 pub use crate::ffi_types::BRepPrim_OneAxis as OneAxis;
 
@@ -2143,11 +2141,11 @@ unsafe impl crate::CppDeletable for OneAxis {
 }
 
 impl OneAxis {
-    /// **Source:** `BRepPrim_OneAxis.hxx`:73 - `BRepPrim_OneAxis::SetMeridianOffset()`
-    /// The MeridianOffset is added  to the  parameters on
-    /// the meridian curve and  to  the  V values  of  the
-    /// pcurves. This is  used for the sphere for example,
-    /// to give a range on the meridian  edge which is not
+    /// **Source:** `BRepPrim_OneAxis.hxx`:71 - `BRepPrim_OneAxis::SetMeridianOffset()`
+    /// The MeridianOffset is added to the parameters on
+    /// the meridian curve and to the V values of the
+    /// pcurves. This is used for the sphere for example,
+    /// to give a range on the meridian edge which is not
     /// VMin, VMax.
     pub fn set_meridian_offset(&mut self, MeridianOffset: f64) {
         crate::check_void_result(unsafe {
@@ -2158,7 +2156,7 @@ impl OneAxis {
         })
     }
 
-    /// **Source:** `BRepPrim_OneAxis.hxx`:76 - `BRepPrim_OneAxis::Axes()`
+    /// **Source:** `BRepPrim_OneAxis.hxx`:74 - `BRepPrim_OneAxis::Axes()`
     /// Returns the Ax2 from <me>.
     pub fn axes(&self) -> &crate::gp::Ax2 {
         unsafe {
@@ -2168,60 +2166,60 @@ impl OneAxis {
         }
     }
 
-    /// **Source:** `BRepPrim_OneAxis.hxx`:78 - `BRepPrim_OneAxis::Axes()`
+    /// **Source:** `BRepPrim_OneAxis.hxx`:76 - `BRepPrim_OneAxis::Axes()`
     pub fn axes_ax2(&mut self, A: &crate::gp::Ax2) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKPrim::BRepPrim_OneAxis_axes_ax2(self as *mut Self, A)
         })
     }
 
-    /// **Source:** `BRepPrim_OneAxis.hxx`:80 - `BRepPrim_OneAxis::Angle()`
+    /// **Source:** `BRepPrim_OneAxis.hxx`:78 - `BRepPrim_OneAxis::Angle()`
     pub fn angle(&self) -> f64 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKPrim::BRepPrim_OneAxis_angle(self as *const Self)
         })
     }
 
-    /// **Source:** `BRepPrim_OneAxis.hxx`:82 - `BRepPrim_OneAxis::Angle()`
+    /// **Source:** `BRepPrim_OneAxis.hxx`:80 - `BRepPrim_OneAxis::Angle()`
     pub fn angle_real(&mut self, A: f64) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKPrim::BRepPrim_OneAxis_angle_real(self as *mut Self, A)
         })
     }
 
-    /// **Source:** `BRepPrim_OneAxis.hxx`:84 - `BRepPrim_OneAxis::VMin()`
+    /// **Source:** `BRepPrim_OneAxis.hxx`:82 - `BRepPrim_OneAxis::VMin()`
     pub fn v_min(&self) -> f64 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKPrim::BRepPrim_OneAxis_v_min(self as *const Self)
         })
     }
 
-    /// **Source:** `BRepPrim_OneAxis.hxx`:86 - `BRepPrim_OneAxis::VMin()`
+    /// **Source:** `BRepPrim_OneAxis.hxx`:84 - `BRepPrim_OneAxis::VMin()`
     pub fn v_min_real(&mut self, V: f64) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKPrim::BRepPrim_OneAxis_v_min_real(self as *mut Self, V)
         })
     }
 
-    /// **Source:** `BRepPrim_OneAxis.hxx`:88 - `BRepPrim_OneAxis::VMax()`
+    /// **Source:** `BRepPrim_OneAxis.hxx`:86 - `BRepPrim_OneAxis::VMax()`
     pub fn v_max(&self) -> f64 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKPrim::BRepPrim_OneAxis_v_max(self as *const Self)
         })
     }
 
-    /// **Source:** `BRepPrim_OneAxis.hxx`:90 - `BRepPrim_OneAxis::VMax()`
+    /// **Source:** `BRepPrim_OneAxis.hxx`:88 - `BRepPrim_OneAxis::VMax()`
     pub fn v_max_real(&mut self, V: f64) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKPrim::BRepPrim_OneAxis_v_max_real(self as *mut Self, V)
         })
     }
 
-    /// **Source:** `BRepPrim_OneAxis.hxx`:97 - `BRepPrim_OneAxis::MakeEmptyLateralFace()`
-    /// Returns a face with  no edges.  The surface is the
+    /// **Source:** `BRepPrim_OneAxis.hxx`:95 - `BRepPrim_OneAxis::MakeEmptyLateralFace()`
+    /// Returns a face with no edges. The surface is the
     /// lateral surface with normals pointing outward. The
-    /// U parameter is the angle with the  origin on the X
-    /// axis. The  V parameter is   the  parameter of  the
+    /// U parameter is the angle with the origin on the X
+    /// axis. The V parameter is the parameter of the
     /// meridian.
     pub fn make_empty_lateral_face(&self) -> crate::OwnedPtr<crate::topo_ds::Face> {
         unsafe {
@@ -2233,9 +2231,9 @@ impl OneAxis {
         }
     }
 
-    /// **Source:** `BRepPrim_OneAxis.hxx`:102 - `BRepPrim_OneAxis::MakeEmptyMeridianEdge()`
-    /// Returns  an  edge with  a 3D curve   made from the
-    /// meridian  in the XZ  plane rotated by <Ang> around
+    /// **Source:** `BRepPrim_OneAxis.hxx`:100 - `BRepPrim_OneAxis::MakeEmptyMeridianEdge()`
+    /// Returns an edge with a 3D curve made from the
+    /// meridian in the XZ plane rotated by <Ang> around
     /// the Z-axis. Ang may be 0 or myAngle.
     pub fn make_empty_meridian_edge(&self, Ang: f64) -> crate::OwnedPtr<crate::topo_ds::Edge> {
         unsafe {
@@ -2248,9 +2246,9 @@ impl OneAxis {
         }
     }
 
-    /// **Source:** `BRepPrim_OneAxis.hxx`:107 - `BRepPrim_OneAxis::SetMeridianPCurve()`
-    /// Sets the  parametric curve of the  edge <E> in the
-    /// face  <F> to be  the   2d representation  of   the
+    /// **Source:** `BRepPrim_OneAxis.hxx`:105 - `BRepPrim_OneAxis::SetMeridianPCurve()`
+    /// Sets the parametric curve of the edge <E> in the
+    /// face <F> to be the 2d representation of the
     /// meridian.
     pub fn set_meridian_p_curve(&self, E: &mut crate::topo_ds::Edge, F: &crate::topo_ds::Face) {
         crate::check_void_result(unsafe {
@@ -2262,7 +2260,7 @@ impl OneAxis {
         })
     }
 
-    /// **Source:** `BRepPrim_OneAxis.hxx`:111 - `BRepPrim_OneAxis::MeridianValue()`
+    /// **Source:** `BRepPrim_OneAxis.hxx`:109 - `BRepPrim_OneAxis::MeridianValue()`
     /// Returns the meridian point at parameter <V> in the
     /// plane XZ.
     pub fn meridian_value(&self, V: f64) -> crate::OwnedPtr<crate::gp::Pnt2d> {
@@ -2273,19 +2271,19 @@ impl OneAxis {
         }
     }
 
-    /// **Source:** `BRepPrim_OneAxis.hxx`:116 - `BRepPrim_OneAxis::MeridianOnAxis()`
-    /// Returns True if the point of  parameter <V> on the
+    /// **Source:** `BRepPrim_OneAxis.hxx`:114 - `BRepPrim_OneAxis::MeridianOnAxis()`
+    /// Returns True if the point of parameter <V> on the
     /// meridian is on the Axis. Default implementation is
-    /// Abs(MeridianValue(V).X()) < Precision::Confusion()
+    /// std::abs(MeridianValue(V).X()) < Precision::Confusion()
     pub fn meridian_on_axis(&self, V: f64) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKPrim::BRepPrim_OneAxis_meridian_on_axis(self as *const Self, V)
         })
     }
 
-    /// **Source:** `BRepPrim_OneAxis.hxx`:122 - `BRepPrim_OneAxis::MeridianClosed()`
-    /// Returns True  if the  meridian is  closed. Default
-    /// implementation                                  is
+    /// **Source:** `BRepPrim_OneAxis.hxx`:120 - `BRepPrim_OneAxis::MeridianClosed()`
+    /// Returns True if the meridian is closed.
+    /// Default implementation is:
     /// MeridianValue(VMin).IsEqual(MeridianValue(VMax),
     /// Precision::Confusion())
     pub fn meridian_closed(&self) -> bool {
@@ -2294,28 +2292,28 @@ impl OneAxis {
         })
     }
 
-    /// **Source:** `BRepPrim_OneAxis.hxx`:126 - `BRepPrim_OneAxis::VMaxInfinite()`
-    /// Returns  True   if  VMax    is  infinite.  Default
-    /// Precision::IsPositiveInfinite(VMax);
+    /// **Source:** `BRepPrim_OneAxis.hxx`:124 - `BRepPrim_OneAxis::VMaxInfinite()`
+    /// Returns True if VMax is infinite.
+    /// Default Precision::IsPositiveInfinite(VMax);
     pub fn v_max_infinite(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKPrim::BRepPrim_OneAxis_v_max_infinite(self as *const Self)
         })
     }
 
-    /// **Source:** `BRepPrim_OneAxis.hxx`:130 - `BRepPrim_OneAxis::VMinInfinite()`
-    /// Returns  True   if  VMin    is  infinite.  Default
-    /// Precision::IsNegativeInfinite(VMax);
+    /// **Source:** `BRepPrim_OneAxis.hxx`:128 - `BRepPrim_OneAxis::VMinInfinite()`
+    /// Returns True if VMin is infinite.
+    /// Default Precision::IsNegativeInfinite(VMax);
     pub fn v_min_infinite(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKPrim::BRepPrim_OneAxis_v_min_infinite(self as *const Self)
         })
     }
 
-    /// **Source:** `BRepPrim_OneAxis.hxx`:137 - `BRepPrim_OneAxis::HasTop()`
-    /// Returns True if  there is  a top  face.
+    /// **Source:** `BRepPrim_OneAxis.hxx`:135 - `BRepPrim_OneAxis::HasTop()`
+    /// Returns True if there is a top face.
     ///
-    /// That is neither : VMaxInfinite()
+    /// That is neither: VMaxInfinite()
     /// MeridianClosed()
     /// MeridianOnAxis(VMax)
     pub fn has_top(&self) -> bool {
@@ -2324,10 +2322,10 @@ impl OneAxis {
         })
     }
 
-    /// **Source:** `BRepPrim_OneAxis.hxx`:144 - `BRepPrim_OneAxis::HasBottom()`
-    /// Returns   True if there is   a bottom  face.
+    /// **Source:** `BRepPrim_OneAxis.hxx`:142 - `BRepPrim_OneAxis::HasBottom()`
+    /// Returns True if there is a bottom face.
     ///
-    /// That is neither : VMinInfinite()
+    /// That is neither: VMinInfinite()
     /// MeridianClosed()
     /// MeridianOnAxis(VMin)
     pub fn has_bottom(&self) -> bool {
@@ -2336,18 +2334,18 @@ impl OneAxis {
         })
     }
 
-    /// **Source:** `BRepPrim_OneAxis.hxx`:149 - `BRepPrim_OneAxis::HasSides()`
-    /// Returns True if  there are Start   and  End faces.
+    /// **Source:** `BRepPrim_OneAxis.hxx`:147 - `BRepPrim_OneAxis::HasSides()`
+    /// Returns True if there are Start and End faces.
     ///
-    /// That is : 2*PI  - Angle > Precision::Angular()
+    /// That is: 2*PI - Angle > Precision::Angular()
     pub fn has_sides(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKPrim::BRepPrim_OneAxis_has_sides(self as *const Self)
         })
     }
 
-    /// **Source:** `BRepPrim_OneAxis.hxx`:153 - `BRepPrim_OneAxis::Shell()`
-    /// Returns the Shell containing all the  Faces of the
+    /// **Source:** `BRepPrim_OneAxis.hxx`:151 - `BRepPrim_OneAxis::Shell()`
+    /// Returns the Shell containing all the Faces of the
     /// primitive.
     pub fn shell(&mut self) -> &crate::topo_ds::Shell {
         unsafe {
@@ -2357,8 +2355,8 @@ impl OneAxis {
         }
     }
 
-    /// **Source:** `BRepPrim_OneAxis.hxx`:157 - `BRepPrim_OneAxis::LateralFace()`
-    /// Returns  the lateral Face.   It is oriented toward
+    /// **Source:** `BRepPrim_OneAxis.hxx`:155 - `BRepPrim_OneAxis::LateralFace()`
+    /// Returns the lateral Face. It is oriented toward
     /// the outside of the primitive.
     pub fn lateral_face(&mut self) -> &crate::topo_ds::Face {
         unsafe {
@@ -2368,8 +2366,8 @@ impl OneAxis {
         }
     }
 
-    /// **Source:** `BRepPrim_OneAxis.hxx`:161 - `BRepPrim_OneAxis::TopFace()`
-    /// Returns the   top planar  Face.    It  is Oriented
+    /// **Source:** `BRepPrim_OneAxis.hxx`:159 - `BRepPrim_OneAxis::TopFace()`
+    /// Returns the top planar Face. It is Oriented
     /// toward the +Z axis (outside).
     pub fn top_face(&mut self) -> &crate::topo_ds::Face {
         unsafe {
@@ -2379,8 +2377,8 @@ impl OneAxis {
         }
     }
 
-    /// **Source:** `BRepPrim_OneAxis.hxx`:165 - `BRepPrim_OneAxis::BottomFace()`
-    /// Returns  the Bottom planar Face.   It is  Oriented
+    /// **Source:** `BRepPrim_OneAxis.hxx`:163 - `BRepPrim_OneAxis::BottomFace()`
+    /// Returns the Bottom planar Face. It is Oriented
     /// toward the -Z axis (outside).
     pub fn bottom_face(&mut self) -> &crate::topo_ds::Face {
         unsafe {
@@ -2390,8 +2388,8 @@ impl OneAxis {
         }
     }
 
-    /// **Source:** `BRepPrim_OneAxis.hxx`:169 - `BRepPrim_OneAxis::StartFace()`
-    /// Returns  the  Face   starting   the slice, it   is
+    /// **Source:** `BRepPrim_OneAxis.hxx`:167 - `BRepPrim_OneAxis::StartFace()`
+    /// Returns the Face starting the slice, it is
     /// oriented toward the exterior of the primitive.
     pub fn start_face(&mut self) -> &crate::topo_ds::Face {
         unsafe {
@@ -2401,8 +2399,8 @@ impl OneAxis {
         }
     }
 
-    /// **Source:** `BRepPrim_OneAxis.hxx`:173 - `BRepPrim_OneAxis::EndFace()`
-    /// Returns the Face ending the slice, it  is oriented
+    /// **Source:** `BRepPrim_OneAxis.hxx`:171 - `BRepPrim_OneAxis::EndFace()`
+    /// Returns the Face ending the slice, it is oriented
     /// toward the exterior of the primitive.
     pub fn end_face(&mut self) -> &crate::topo_ds::Face {
         unsafe {
@@ -2412,8 +2410,8 @@ impl OneAxis {
         }
     }
 
-    /// **Source:** `BRepPrim_OneAxis.hxx`:176 - `BRepPrim_OneAxis::LateralWire()`
-    /// Returns  the wire in the lateral face.
+    /// **Source:** `BRepPrim_OneAxis.hxx`:174 - `BRepPrim_OneAxis::LateralWire()`
+    /// Returns the wire in the lateral face.
     pub fn lateral_wire(&mut self) -> &crate::topo_ds::Wire {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKPrim::BRepPrim_OneAxis_lateral_wire(
@@ -2422,8 +2420,8 @@ impl OneAxis {
         }
     }
 
-    /// **Source:** `BRepPrim_OneAxis.hxx`:180 - `BRepPrim_OneAxis::LateralStartWire()`
-    /// Returns the   wire in the   lateral  face with the
+    /// **Source:** `BRepPrim_OneAxis.hxx`:178 - `BRepPrim_OneAxis::LateralStartWire()`
+    /// Returns the wire in the lateral face with the
     /// start edge.
     pub fn lateral_start_wire(&mut self) -> &crate::topo_ds::Wire {
         unsafe {
@@ -2433,7 +2431,7 @@ impl OneAxis {
         }
     }
 
-    /// **Source:** `BRepPrim_OneAxis.hxx`:184 - `BRepPrim_OneAxis::LateralEndWire()`
+    /// **Source:** `BRepPrim_OneAxis.hxx`:182 - `BRepPrim_OneAxis::LateralEndWire()`
     /// Returns the wire with in lateral face with the end
     /// edge.
     pub fn lateral_end_wire(&mut self) -> &crate::topo_ds::Wire {
@@ -2444,7 +2442,7 @@ impl OneAxis {
         }
     }
 
-    /// **Source:** `BRepPrim_OneAxis.hxx`:187 - `BRepPrim_OneAxis::TopWire()`
+    /// **Source:** `BRepPrim_OneAxis.hxx`:185 - `BRepPrim_OneAxis::TopWire()`
     /// Returns the wire in the top face.
     pub fn top_wire(&mut self) -> &crate::topo_ds::Wire {
         unsafe {
@@ -2454,7 +2452,7 @@ impl OneAxis {
         }
     }
 
-    /// **Source:** `BRepPrim_OneAxis.hxx`:190 - `BRepPrim_OneAxis::BottomWire()`
+    /// **Source:** `BRepPrim_OneAxis.hxx`:188 - `BRepPrim_OneAxis::BottomWire()`
     /// Returns the wire in the bottom face.
     pub fn bottom_wire(&mut self) -> &crate::topo_ds::Wire {
         unsafe {
@@ -2464,8 +2462,8 @@ impl OneAxis {
         }
     }
 
-    /// **Source:** `BRepPrim_OneAxis.hxx`:193 - `BRepPrim_OneAxis::StartWire()`
-    /// Returns the wire  in the  start face.
+    /// **Source:** `BRepPrim_OneAxis.hxx`:191 - `BRepPrim_OneAxis::StartWire()`
+    /// Returns the wire in the start face.
     pub fn start_wire(&mut self) -> &crate::topo_ds::Wire {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKPrim::BRepPrim_OneAxis_start_wire(
@@ -2474,8 +2472,8 @@ impl OneAxis {
         }
     }
 
-    /// **Source:** `BRepPrim_OneAxis.hxx`:197 - `BRepPrim_OneAxis::AxisStartWire()`
-    /// Returns  the wire   in the  start   face  with the
+    /// **Source:** `BRepPrim_OneAxis.hxx`:195 - `BRepPrim_OneAxis::AxisStartWire()`
+    /// Returns the wire in the start face with the
     /// AxisEdge.
     pub fn axis_start_wire(&mut self) -> &crate::topo_ds::Wire {
         unsafe {
@@ -2485,8 +2483,8 @@ impl OneAxis {
         }
     }
 
-    /// **Source:** `BRepPrim_OneAxis.hxx`:200 - `BRepPrim_OneAxis::EndWire()`
-    /// Returns the Wire in   the end face.
+    /// **Source:** `BRepPrim_OneAxis.hxx`:198 - `BRepPrim_OneAxis::EndWire()`
+    /// Returns the Wire in the end face.
     pub fn end_wire(&mut self) -> &crate::topo_ds::Wire {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKPrim::BRepPrim_OneAxis_end_wire(
@@ -2495,8 +2493,8 @@ impl OneAxis {
         }
     }
 
-    /// **Source:** `BRepPrim_OneAxis.hxx`:204 - `BRepPrim_OneAxis::AxisEndWire()`
-    /// Returns  the Wire  in  the   end   face  with  the
+    /// **Source:** `BRepPrim_OneAxis.hxx`:202 - `BRepPrim_OneAxis::AxisEndWire()`
+    /// Returns the Wire in the end face with the
     /// AxisEdge.
     pub fn axis_end_wire(&mut self) -> &crate::topo_ds::Wire {
         unsafe {
@@ -2506,7 +2504,7 @@ impl OneAxis {
         }
     }
 
-    /// **Source:** `BRepPrim_OneAxis.hxx`:208 - `BRepPrim_OneAxis::AxisEdge()`
+    /// **Source:** `BRepPrim_OneAxis.hxx`:206 - `BRepPrim_OneAxis::AxisEdge()`
     /// Returns the Edge built along the Axis and oriented
     /// on +Z of the Axis.
     pub fn axis_edge(&mut self) -> &crate::topo_ds::Edge {
@@ -2517,8 +2515,8 @@ impl OneAxis {
         }
     }
 
-    /// **Source:** `BRepPrim_OneAxis.hxx`:211 - `BRepPrim_OneAxis::StartEdge()`
-    /// Returns the   Edge at angle 0.
+    /// **Source:** `BRepPrim_OneAxis.hxx`:209 - `BRepPrim_OneAxis::StartEdge()`
+    /// Returns the Edge at angle 0.
     pub fn start_edge(&mut self) -> &crate::topo_ds::Edge {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKPrim::BRepPrim_OneAxis_start_edge(
@@ -2527,8 +2525,8 @@ impl OneAxis {
         }
     }
 
-    /// **Source:** `BRepPrim_OneAxis.hxx`:215 - `BRepPrim_OneAxis::EndEdge()`
-    /// Returns the  Edge at  angle Angle.  If !HasSides()
+    /// **Source:** `BRepPrim_OneAxis.hxx`:213 - `BRepPrim_OneAxis::EndEdge()`
+    /// Returns the Edge at angle Angle. If !HasSides()
     /// the StartEdge and the EndEdge are the same edge.
     pub fn end_edge(&mut self) -> &crate::topo_ds::Edge {
         unsafe {
@@ -2538,7 +2536,7 @@ impl OneAxis {
         }
     }
 
-    /// **Source:** `BRepPrim_OneAxis.hxx`:219 - `BRepPrim_OneAxis::StartTopEdge()`
+    /// **Source:** `BRepPrim_OneAxis.hxx`:217 - `BRepPrim_OneAxis::StartTopEdge()`
     /// Returns the linear Edge between start Face and top
     /// Face.
     pub fn start_top_edge(&mut self) -> &crate::topo_ds::Edge {
@@ -2549,8 +2547,8 @@ impl OneAxis {
         }
     }
 
-    /// **Source:** `BRepPrim_OneAxis.hxx`:223 - `BRepPrim_OneAxis::StartBottomEdge()`
-    /// Returns the linear  Edge between  start  Face  and
+    /// **Source:** `BRepPrim_OneAxis.hxx`:221 - `BRepPrim_OneAxis::StartBottomEdge()`
+    /// Returns the linear Edge between start Face and
     /// bottom Face.
     pub fn start_bottom_edge(&mut self) -> &crate::topo_ds::Edge {
         unsafe {
@@ -2560,8 +2558,8 @@ impl OneAxis {
         }
     }
 
-    /// **Source:** `BRepPrim_OneAxis.hxx`:227 - `BRepPrim_OneAxis::EndTopEdge()`
-    /// Returns the linear Edge  between end Face and  top
+    /// **Source:** `BRepPrim_OneAxis.hxx`:225 - `BRepPrim_OneAxis::EndTopEdge()`
+    /// Returns the linear Edge between end Face and top
     /// Face.
     pub fn end_top_edge(&mut self) -> &crate::topo_ds::Edge {
         unsafe {
@@ -2571,8 +2569,8 @@ impl OneAxis {
         }
     }
 
-    /// **Source:** `BRepPrim_OneAxis.hxx`:231 - `BRepPrim_OneAxis::EndBottomEdge()`
-    /// Returns  the  linear  Edge  between end  Face  and
+    /// **Source:** `BRepPrim_OneAxis.hxx`:229 - `BRepPrim_OneAxis::EndBottomEdge()`
+    /// Returns the linear Edge between end Face and
     /// bottom Face.
     pub fn end_bottom_edge(&mut self) -> &crate::topo_ds::Edge {
         unsafe {
@@ -2582,8 +2580,8 @@ impl OneAxis {
         }
     }
 
-    /// **Source:** `BRepPrim_OneAxis.hxx`:235 - `BRepPrim_OneAxis::TopEdge()`
-    /// Returns the edge at VMax. If  MeridianClosed() the
+    /// **Source:** `BRepPrim_OneAxis.hxx`:233 - `BRepPrim_OneAxis::TopEdge()`
+    /// Returns the edge at VMax. If MeridianClosed() the
     /// TopEdge and the BottomEdge are the same edge.
     pub fn top_edge(&mut self) -> &crate::topo_ds::Edge {
         unsafe {
@@ -2593,8 +2591,8 @@ impl OneAxis {
         }
     }
 
-    /// **Source:** `BRepPrim_OneAxis.hxx`:239 - `BRepPrim_OneAxis::BottomEdge()`
-    /// Returns the edge  at VMin. If MeridianClosed() the
+    /// **Source:** `BRepPrim_OneAxis.hxx`:237 - `BRepPrim_OneAxis::BottomEdge()`
+    /// Returns the edge at VMin. If MeridianClosed() the
     /// TopEdge and the BottomEdge are the same edge.
     pub fn bottom_edge(&mut self) -> &crate::topo_ds::Edge {
         unsafe {
@@ -2604,7 +2602,7 @@ impl OneAxis {
         }
     }
 
-    /// **Source:** `BRepPrim_OneAxis.hxx`:242 - `BRepPrim_OneAxis::AxisTopVertex()`
+    /// **Source:** `BRepPrim_OneAxis.hxx`:240 - `BRepPrim_OneAxis::AxisTopVertex()`
     /// Returns the Vertex at the Top altitude on the axis.
     pub fn axis_top_vertex(&mut self) -> &crate::topo_ds::Vertex {
         unsafe {
@@ -2614,8 +2612,8 @@ impl OneAxis {
         }
     }
 
-    /// **Source:** `BRepPrim_OneAxis.hxx`:246 - `BRepPrim_OneAxis::AxisBottomVertex()`
-    /// Returns the Vertex  at the Bottom  altitude on the
+    /// **Source:** `BRepPrim_OneAxis.hxx`:244 - `BRepPrim_OneAxis::AxisBottomVertex()`
+    /// Returns the Vertex at the Bottom altitude on the
     /// axis.
     pub fn axis_bottom_vertex(&mut self) -> &crate::topo_ds::Vertex {
         unsafe {
@@ -2625,7 +2623,7 @@ impl OneAxis {
         }
     }
 
-    /// **Source:** `BRepPrim_OneAxis.hxx`:249 - `BRepPrim_OneAxis::TopStartVertex()`
+    /// **Source:** `BRepPrim_OneAxis.hxx`:247 - `BRepPrim_OneAxis::TopStartVertex()`
     /// Returns the vertex (0,VMax)
     pub fn top_start_vertex(&mut self) -> &crate::topo_ds::Vertex {
         unsafe {
@@ -2635,7 +2633,7 @@ impl OneAxis {
         }
     }
 
-    /// **Source:** `BRepPrim_OneAxis.hxx`:252 - `BRepPrim_OneAxis::TopEndVertex()`
+    /// **Source:** `BRepPrim_OneAxis.hxx`:250 - `BRepPrim_OneAxis::TopEndVertex()`
     /// Returns the vertex (angle,VMax)
     pub fn top_end_vertex(&mut self) -> &crate::topo_ds::Vertex {
         unsafe {
@@ -2645,7 +2643,7 @@ impl OneAxis {
         }
     }
 
-    /// **Source:** `BRepPrim_OneAxis.hxx`:255 - `BRepPrim_OneAxis::BottomStartVertex()`
+    /// **Source:** `BRepPrim_OneAxis.hxx`:253 - `BRepPrim_OneAxis::BottomStartVertex()`
     /// Returns the vertex (0,VMin)
     pub fn bottom_start_vertex(&mut self) -> &crate::topo_ds::Vertex {
         unsafe {
@@ -2655,7 +2653,7 @@ impl OneAxis {
         }
     }
 
-    /// **Source:** `BRepPrim_OneAxis.hxx`:258 - `BRepPrim_OneAxis::BottomEndVertex()`
+    /// **Source:** `BRepPrim_OneAxis.hxx`:256 - `BRepPrim_OneAxis::BottomEndVertex()`
     /// Returns the vertex (angle,VMax)
     pub fn bottom_end_vertex(&mut self) -> &crate::topo_ds::Vertex {
         unsafe {
@@ -2671,7 +2669,7 @@ impl OneAxis {
 // ========================
 
 /// **Source:** `BRepPrim_Revolution.hxx`:35 - `BRepPrim_Revolution`
-/// Implement  the OneAxis algorithm   for a revolution
+/// Implement the OneAxis algorithm for a revolution
 /// surface.
 pub use crate::ffi_types::BRepPrim_Revolution as Revolution;
 
@@ -2685,15 +2683,15 @@ unsafe impl crate::CppDeletable for Revolution {
 
 impl Revolution {
     /// **Source:** `BRepPrim_Revolution.hxx`:43 - `BRepPrim_Revolution::BRepPrim_Revolution()`
-    /// Create a  revolution body <M>  is the  meridian nd
-    /// must   be in the XZ  plane   of <A>. <PM>  is  the
+    /// Create a revolution body <M> is the meridian nd
+    /// must be in the XZ plane of <A>. <PM> is the
     /// meridian in the XZ plane.
     pub fn new_ax2_real2_handlegeomcurve_handlegeom2dcurve(
         A: &crate::gp::Ax2,
         VMin: f64,
         VMax: f64,
-        M: &crate::ffi_types::HandleGeomCurve,
-        PM: &crate::ffi_types::HandleGeom2dCurve,
+        M: &crate::ffi_types::Handle_Geom_Curve,
+        PM: &crate::ffi_types::Handle_Geom2d_Curve,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKPrim::BRepPrim_Revolution_ctor_ax2_real2_handlegeomcurve_handlegeom2dcurve(A, VMin, VMax, M, PM)))
@@ -2701,7 +2699,7 @@ impl Revolution {
     }
 
     /// **Source:** `BRepPrim_Revolution.hxx`:51 - `BRepPrim_Revolution::MakeEmptyLateralFace()`
-    /// The surface normal should be directed  towards the
+    /// The surface normal should be directed towards the
     /// outside.
     pub fn make_empty_lateral_face(&self) -> crate::OwnedPtr<crate::topo_ds::Face> {
         unsafe {
@@ -2714,8 +2712,8 @@ impl Revolution {
     }
 
     /// **Source:** `BRepPrim_Revolution.hxx`:56 - `BRepPrim_Revolution::MakeEmptyMeridianEdge()`
-    /// Returns  an  edge with  a 3D curve   made from the
-    /// meridian  in the XZ  plane rotated by <Ang> around
+    /// Returns an edge with a 3D curve made from the
+    /// meridian in the XZ plane rotated by <Ang> around
     /// the Z-axis. Ang may be 0 or myAngle.
     pub fn make_empty_meridian_edge(&self, Ang: f64) -> crate::OwnedPtr<crate::topo_ds::Edge> {
         unsafe {
@@ -2743,8 +2741,8 @@ impl Revolution {
     }
 
     /// **Source:** `BRepPrim_Revolution.hxx`:65 - `BRepPrim_Revolution::SetMeridianPCurve()`
-    /// Sets the  parametric urve of  the edge <E>  in the
-    /// face <F>   to be  the  2d  representation  of  the
+    /// Sets the parametric urve of the edge <E> in the
+    /// face <F> to be the 2d representation of the
     /// meridian.
     pub fn set_meridian_p_curve(&self, E: &mut crate::topo_ds::Edge, F: &crate::topo_ds::Face) {
         crate::check_void_result(unsafe {
@@ -2778,7 +2776,7 @@ impl Revolution {
         }
     }
 
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:73 - `BRepPrim_OneAxis::SetMeridianOffset()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:71 - `BRepPrim_OneAxis::SetMeridianOffset()`
     pub fn set_meridian_offset(&mut self, MeridianOffset: f64) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKPrim::BRepPrim_Revolution_inherited_SetMeridianOffset(
@@ -2788,7 +2786,7 @@ impl Revolution {
         })
     }
 
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:76 - `BRepPrim_OneAxis::Axes()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:74 - `BRepPrim_OneAxis::Axes()`
     pub fn axes(&self) -> &crate::gp::Ax2 {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKPrim::BRepPrim_Revolution_inherited_Axes(
@@ -2797,28 +2795,28 @@ impl Revolution {
         }
     }
 
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:80 - `BRepPrim_OneAxis::Angle()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:78 - `BRepPrim_OneAxis::Angle()`
     pub fn angle(&self) -> f64 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKPrim::BRepPrim_Revolution_inherited_Angle(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:84 - `BRepPrim_OneAxis::VMin()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:82 - `BRepPrim_OneAxis::VMin()`
     pub fn v_min(&self) -> f64 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKPrim::BRepPrim_Revolution_inherited_VMin(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:88 - `BRepPrim_OneAxis::VMax()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:86 - `BRepPrim_OneAxis::VMax()`
     pub fn v_max(&self) -> f64 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKPrim::BRepPrim_Revolution_inherited_VMax(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:116 - `BRepPrim_OneAxis::MeridianOnAxis()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:114 - `BRepPrim_OneAxis::MeridianOnAxis()`
     pub fn meridian_on_axis(&self, V: f64) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKPrim::BRepPrim_Revolution_inherited_MeridianOnAxis(
@@ -2828,7 +2826,7 @@ impl Revolution {
         })
     }
 
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:122 - `BRepPrim_OneAxis::MeridianClosed()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:120 - `BRepPrim_OneAxis::MeridianClosed()`
     pub fn meridian_closed(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKPrim::BRepPrim_Revolution_inherited_MeridianClosed(
@@ -2837,7 +2835,7 @@ impl Revolution {
         })
     }
 
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:126 - `BRepPrim_OneAxis::VMaxInfinite()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:124 - `BRepPrim_OneAxis::VMaxInfinite()`
     pub fn v_max_infinite(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKPrim::BRepPrim_Revolution_inherited_VMaxInfinite(
@@ -2846,7 +2844,7 @@ impl Revolution {
         })
     }
 
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:130 - `BRepPrim_OneAxis::VMinInfinite()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:128 - `BRepPrim_OneAxis::VMinInfinite()`
     pub fn v_min_infinite(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKPrim::BRepPrim_Revolution_inherited_VMinInfinite(
@@ -2855,28 +2853,28 @@ impl Revolution {
         })
     }
 
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:137 - `BRepPrim_OneAxis::HasTop()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:135 - `BRepPrim_OneAxis::HasTop()`
     pub fn has_top(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKPrim::BRepPrim_Revolution_inherited_HasTop(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:144 - `BRepPrim_OneAxis::HasBottom()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:142 - `BRepPrim_OneAxis::HasBottom()`
     pub fn has_bottom(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKPrim::BRepPrim_Revolution_inherited_HasBottom(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:149 - `BRepPrim_OneAxis::HasSides()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:147 - `BRepPrim_OneAxis::HasSides()`
     pub fn has_sides(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKPrim::BRepPrim_Revolution_inherited_HasSides(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:153 - `BRepPrim_OneAxis::Shell()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:151 - `BRepPrim_OneAxis::Shell()`
     pub fn shell(&mut self) -> &crate::topo_ds::Shell {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKPrim::BRepPrim_Revolution_inherited_Shell(
@@ -2885,7 +2883,7 @@ impl Revolution {
         }
     }
 
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:157 - `BRepPrim_OneAxis::LateralFace()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:155 - `BRepPrim_OneAxis::LateralFace()`
     pub fn lateral_face(&mut self) -> &crate::topo_ds::Face {
         unsafe {
             &*(crate::check_result(
@@ -2896,7 +2894,7 @@ impl Revolution {
         }
     }
 
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:161 - `BRepPrim_OneAxis::TopFace()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:159 - `BRepPrim_OneAxis::TopFace()`
     pub fn top_face(&mut self) -> &crate::topo_ds::Face {
         unsafe {
             &*(crate::check_result(
@@ -2905,7 +2903,7 @@ impl Revolution {
         }
     }
 
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:165 - `BRepPrim_OneAxis::BottomFace()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:163 - `BRepPrim_OneAxis::BottomFace()`
     pub fn bottom_face(&mut self) -> &crate::topo_ds::Face {
         unsafe {
             &*(crate::check_result(
@@ -2916,7 +2914,7 @@ impl Revolution {
         }
     }
 
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:169 - `BRepPrim_OneAxis::StartFace()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:167 - `BRepPrim_OneAxis::StartFace()`
     pub fn start_face(&mut self) -> &crate::topo_ds::Face {
         unsafe {
             &*(crate::check_result(
@@ -2927,7 +2925,7 @@ impl Revolution {
         }
     }
 
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:173 - `BRepPrim_OneAxis::EndFace()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:171 - `BRepPrim_OneAxis::EndFace()`
     pub fn end_face(&mut self) -> &crate::topo_ds::Face {
         unsafe {
             &*(crate::check_result(
@@ -2936,7 +2934,7 @@ impl Revolution {
         }
     }
 
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:176 - `BRepPrim_OneAxis::LateralWire()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:174 - `BRepPrim_OneAxis::LateralWire()`
     pub fn lateral_wire(&mut self) -> &crate::topo_ds::Wire {
         unsafe {
             &*(crate::check_result(
@@ -2947,7 +2945,7 @@ impl Revolution {
         }
     }
 
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:180 - `BRepPrim_OneAxis::LateralStartWire()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:178 - `BRepPrim_OneAxis::LateralStartWire()`
     pub fn lateral_start_wire(&mut self) -> &crate::topo_ds::Wire {
         unsafe {
             &*(crate::check_result(
@@ -2958,7 +2956,7 @@ impl Revolution {
         }
     }
 
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:184 - `BRepPrim_OneAxis::LateralEndWire()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:182 - `BRepPrim_OneAxis::LateralEndWire()`
     pub fn lateral_end_wire(&mut self) -> &crate::topo_ds::Wire {
         unsafe {
             &*(crate::check_result(
@@ -2969,7 +2967,7 @@ impl Revolution {
         }
     }
 
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:187 - `BRepPrim_OneAxis::TopWire()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:185 - `BRepPrim_OneAxis::TopWire()`
     pub fn top_wire(&mut self) -> &crate::topo_ds::Wire {
         unsafe {
             &*(crate::check_result(
@@ -2978,7 +2976,7 @@ impl Revolution {
         }
     }
 
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:190 - `BRepPrim_OneAxis::BottomWire()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:188 - `BRepPrim_OneAxis::BottomWire()`
     pub fn bottom_wire(&mut self) -> &crate::topo_ds::Wire {
         unsafe {
             &*(crate::check_result(
@@ -2989,7 +2987,7 @@ impl Revolution {
         }
     }
 
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:193 - `BRepPrim_OneAxis::StartWire()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:191 - `BRepPrim_OneAxis::StartWire()`
     pub fn start_wire(&mut self) -> &crate::topo_ds::Wire {
         unsafe {
             &*(crate::check_result(
@@ -3000,7 +2998,7 @@ impl Revolution {
         }
     }
 
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:197 - `BRepPrim_OneAxis::AxisStartWire()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:195 - `BRepPrim_OneAxis::AxisStartWire()`
     pub fn axis_start_wire(&mut self) -> &crate::topo_ds::Wire {
         unsafe {
             &*(crate::check_result(
@@ -3011,7 +3009,7 @@ impl Revolution {
         }
     }
 
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:200 - `BRepPrim_OneAxis::EndWire()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:198 - `BRepPrim_OneAxis::EndWire()`
     pub fn end_wire(&mut self) -> &crate::topo_ds::Wire {
         unsafe {
             &*(crate::check_result(
@@ -3020,7 +3018,7 @@ impl Revolution {
         }
     }
 
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:204 - `BRepPrim_OneAxis::AxisEndWire()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:202 - `BRepPrim_OneAxis::AxisEndWire()`
     pub fn axis_end_wire(&mut self) -> &crate::topo_ds::Wire {
         unsafe {
             &*(crate::check_result(
@@ -3031,7 +3029,7 @@ impl Revolution {
         }
     }
 
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:208 - `BRepPrim_OneAxis::AxisEdge()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:206 - `BRepPrim_OneAxis::AxisEdge()`
     pub fn axis_edge(&mut self) -> &crate::topo_ds::Edge {
         unsafe {
             &*(crate::check_result(
@@ -3040,7 +3038,7 @@ impl Revolution {
         }
     }
 
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:211 - `BRepPrim_OneAxis::StartEdge()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:209 - `BRepPrim_OneAxis::StartEdge()`
     pub fn start_edge(&mut self) -> &crate::topo_ds::Edge {
         unsafe {
             &*(crate::check_result(
@@ -3051,7 +3049,7 @@ impl Revolution {
         }
     }
 
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:215 - `BRepPrim_OneAxis::EndEdge()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:213 - `BRepPrim_OneAxis::EndEdge()`
     pub fn end_edge(&mut self) -> &crate::topo_ds::Edge {
         unsafe {
             &*(crate::check_result(
@@ -3060,7 +3058,7 @@ impl Revolution {
         }
     }
 
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:219 - `BRepPrim_OneAxis::StartTopEdge()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:217 - `BRepPrim_OneAxis::StartTopEdge()`
     pub fn start_top_edge(&mut self) -> &crate::topo_ds::Edge {
         unsafe {
             &*(crate::check_result(
@@ -3071,7 +3069,7 @@ impl Revolution {
         }
     }
 
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:223 - `BRepPrim_OneAxis::StartBottomEdge()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:221 - `BRepPrim_OneAxis::StartBottomEdge()`
     pub fn start_bottom_edge(&mut self) -> &crate::topo_ds::Edge {
         unsafe {
             &*(crate::check_result(
@@ -3082,7 +3080,7 @@ impl Revolution {
         }
     }
 
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:227 - `BRepPrim_OneAxis::EndTopEdge()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:225 - `BRepPrim_OneAxis::EndTopEdge()`
     pub fn end_top_edge(&mut self) -> &crate::topo_ds::Edge {
         unsafe {
             &*(crate::check_result(
@@ -3093,7 +3091,7 @@ impl Revolution {
         }
     }
 
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:231 - `BRepPrim_OneAxis::EndBottomEdge()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:229 - `BRepPrim_OneAxis::EndBottomEdge()`
     pub fn end_bottom_edge(&mut self) -> &crate::topo_ds::Edge {
         unsafe {
             &*(crate::check_result(
@@ -3104,7 +3102,7 @@ impl Revolution {
         }
     }
 
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:235 - `BRepPrim_OneAxis::TopEdge()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:233 - `BRepPrim_OneAxis::TopEdge()`
     pub fn top_edge(&mut self) -> &crate::topo_ds::Edge {
         unsafe {
             &*(crate::check_result(
@@ -3113,7 +3111,7 @@ impl Revolution {
         }
     }
 
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:239 - `BRepPrim_OneAxis::BottomEdge()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:237 - `BRepPrim_OneAxis::BottomEdge()`
     pub fn bottom_edge(&mut self) -> &crate::topo_ds::Edge {
         unsafe {
             &*(crate::check_result(
@@ -3124,7 +3122,7 @@ impl Revolution {
         }
     }
 
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:242 - `BRepPrim_OneAxis::AxisTopVertex()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:240 - `BRepPrim_OneAxis::AxisTopVertex()`
     pub fn axis_top_vertex(&mut self) -> &crate::topo_ds::Vertex {
         unsafe {
             &*(crate::check_result(
@@ -3135,7 +3133,7 @@ impl Revolution {
         }
     }
 
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:246 - `BRepPrim_OneAxis::AxisBottomVertex()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:244 - `BRepPrim_OneAxis::AxisBottomVertex()`
     pub fn axis_bottom_vertex(&mut self) -> &crate::topo_ds::Vertex {
         unsafe {
             &*(crate::check_result(
@@ -3146,7 +3144,7 @@ impl Revolution {
         }
     }
 
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:249 - `BRepPrim_OneAxis::TopStartVertex()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:247 - `BRepPrim_OneAxis::TopStartVertex()`
     pub fn top_start_vertex(&mut self) -> &crate::topo_ds::Vertex {
         unsafe {
             &*(crate::check_result(
@@ -3157,7 +3155,7 @@ impl Revolution {
         }
     }
 
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:252 - `BRepPrim_OneAxis::TopEndVertex()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:250 - `BRepPrim_OneAxis::TopEndVertex()`
     pub fn top_end_vertex(&mut self) -> &crate::topo_ds::Vertex {
         unsafe {
             &*(crate::check_result(
@@ -3168,7 +3166,7 @@ impl Revolution {
         }
     }
 
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:255 - `BRepPrim_OneAxis::BottomStartVertex()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:253 - `BRepPrim_OneAxis::BottomStartVertex()`
     pub fn bottom_start_vertex(&mut self) -> &crate::topo_ds::Vertex {
         unsafe {
             &*(crate::check_result(
@@ -3179,7 +3177,7 @@ impl Revolution {
         }
     }
 
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:258 - `BRepPrim_OneAxis::BottomEndVertex()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:256 - `BRepPrim_OneAxis::BottomEndVertex()`
     pub fn bottom_end_vertex(&mut self) -> &crate::topo_ds::Vertex {
         unsafe {
             &*(crate::check_result(
@@ -3209,8 +3207,8 @@ unsafe impl crate::CppDeletable for Sphere {
 
 impl Sphere {
     /// **Source:** `BRepPrim_Sphere.hxx`:38 - `BRepPrim_Sphere::BRepPrim_Sphere()`
-    /// Creates a Sphere at  origin with  Radius. The axes
-    /// of the sphere are the  reference axes. An error is
+    /// Creates a Sphere at origin with Radius. The axes
+    /// of the sphere are the reference axes. An error is
     /// raised if the radius is < Resolution.
     pub fn new_real(Radius: f64) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -3243,7 +3241,7 @@ impl Sphere {
     }
 
     /// **Source:** `BRepPrim_Sphere.hxx`:50 - `BRepPrim_Sphere::MakeEmptyLateralFace()`
-    /// The surface normal should be directed  towards the
+    /// The surface normal should be directed towards the
     /// outside.
     pub fn make_empty_lateral_face(&self) -> crate::OwnedPtr<crate::topo_ds::Face> {
         unsafe {
@@ -3330,7 +3328,7 @@ impl Sphere {
         })
     }
 
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:73 - `BRepPrim_OneAxis::SetMeridianOffset()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:71 - `BRepPrim_OneAxis::SetMeridianOffset()`
     pub fn set_meridian_offset(&mut self, MeridianOffset: f64) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKPrim::BRepPrim_Sphere_inherited_SetMeridianOffset(
@@ -3340,7 +3338,7 @@ impl Sphere {
         })
     }
 
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:76 - `BRepPrim_OneAxis::Axes()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:74 - `BRepPrim_OneAxis::Axes()`
     pub fn axes(&self) -> &crate::gp::Ax2 {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKPrim::BRepPrim_Sphere_inherited_Axes(
@@ -3349,28 +3347,28 @@ impl Sphere {
         }
     }
 
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:80 - `BRepPrim_OneAxis::Angle()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:78 - `BRepPrim_OneAxis::Angle()`
     pub fn angle(&self) -> f64 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKPrim::BRepPrim_Sphere_inherited_Angle(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:84 - `BRepPrim_OneAxis::VMin()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:82 - `BRepPrim_OneAxis::VMin()`
     pub fn v_min(&self) -> f64 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKPrim::BRepPrim_Sphere_inherited_VMin(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:88 - `BRepPrim_OneAxis::VMax()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:86 - `BRepPrim_OneAxis::VMax()`
     pub fn v_max(&self) -> f64 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKPrim::BRepPrim_Sphere_inherited_VMax(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:116 - `BRepPrim_OneAxis::MeridianOnAxis()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:114 - `BRepPrim_OneAxis::MeridianOnAxis()`
     pub fn meridian_on_axis(&self, V: f64) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKPrim::BRepPrim_Sphere_inherited_MeridianOnAxis(
@@ -3380,49 +3378,49 @@ impl Sphere {
         })
     }
 
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:122 - `BRepPrim_OneAxis::MeridianClosed()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:120 - `BRepPrim_OneAxis::MeridianClosed()`
     pub fn meridian_closed(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKPrim::BRepPrim_Sphere_inherited_MeridianClosed(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:126 - `BRepPrim_OneAxis::VMaxInfinite()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:124 - `BRepPrim_OneAxis::VMaxInfinite()`
     pub fn v_max_infinite(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKPrim::BRepPrim_Sphere_inherited_VMaxInfinite(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:130 - `BRepPrim_OneAxis::VMinInfinite()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:128 - `BRepPrim_OneAxis::VMinInfinite()`
     pub fn v_min_infinite(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKPrim::BRepPrim_Sphere_inherited_VMinInfinite(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:137 - `BRepPrim_OneAxis::HasTop()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:135 - `BRepPrim_OneAxis::HasTop()`
     pub fn has_top(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKPrim::BRepPrim_Sphere_inherited_HasTop(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:144 - `BRepPrim_OneAxis::HasBottom()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:142 - `BRepPrim_OneAxis::HasBottom()`
     pub fn has_bottom(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKPrim::BRepPrim_Sphere_inherited_HasBottom(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:149 - `BRepPrim_OneAxis::HasSides()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:147 - `BRepPrim_OneAxis::HasSides()`
     pub fn has_sides(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKPrim::BRepPrim_Sphere_inherited_HasSides(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:153 - `BRepPrim_OneAxis::Shell()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:151 - `BRepPrim_OneAxis::Shell()`
     pub fn shell(&mut self) -> &crate::topo_ds::Shell {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKPrim::BRepPrim_Sphere_inherited_Shell(
@@ -3431,7 +3429,7 @@ impl Sphere {
         }
     }
 
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:157 - `BRepPrim_OneAxis::LateralFace()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:155 - `BRepPrim_OneAxis::LateralFace()`
     pub fn lateral_face(&mut self) -> &crate::topo_ds::Face {
         unsafe {
             &*(crate::check_result(
@@ -3440,7 +3438,7 @@ impl Sphere {
         }
     }
 
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:161 - `BRepPrim_OneAxis::TopFace()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:159 - `BRepPrim_OneAxis::TopFace()`
     pub fn top_face(&mut self) -> &crate::topo_ds::Face {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKPrim::BRepPrim_Sphere_inherited_TopFace(
@@ -3449,7 +3447,7 @@ impl Sphere {
         }
     }
 
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:165 - `BRepPrim_OneAxis::BottomFace()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:163 - `BRepPrim_OneAxis::BottomFace()`
     pub fn bottom_face(&mut self) -> &crate::topo_ds::Face {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKPrim::BRepPrim_Sphere_inherited_BottomFace(
@@ -3458,7 +3456,7 @@ impl Sphere {
         }
     }
 
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:169 - `BRepPrim_OneAxis::StartFace()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:167 - `BRepPrim_OneAxis::StartFace()`
     pub fn start_face(&mut self) -> &crate::topo_ds::Face {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKPrim::BRepPrim_Sphere_inherited_StartFace(
@@ -3467,7 +3465,7 @@ impl Sphere {
         }
     }
 
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:173 - `BRepPrim_OneAxis::EndFace()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:171 - `BRepPrim_OneAxis::EndFace()`
     pub fn end_face(&mut self) -> &crate::topo_ds::Face {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKPrim::BRepPrim_Sphere_inherited_EndFace(
@@ -3476,7 +3474,7 @@ impl Sphere {
         }
     }
 
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:176 - `BRepPrim_OneAxis::LateralWire()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:174 - `BRepPrim_OneAxis::LateralWire()`
     pub fn lateral_wire(&mut self) -> &crate::topo_ds::Wire {
         unsafe {
             &*(crate::check_result(
@@ -3485,7 +3483,7 @@ impl Sphere {
         }
     }
 
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:180 - `BRepPrim_OneAxis::LateralStartWire()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:178 - `BRepPrim_OneAxis::LateralStartWire()`
     pub fn lateral_start_wire(&mut self) -> &crate::topo_ds::Wire {
         unsafe {
             &*(crate::check_result(
@@ -3496,7 +3494,7 @@ impl Sphere {
         }
     }
 
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:184 - `BRepPrim_OneAxis::LateralEndWire()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:182 - `BRepPrim_OneAxis::LateralEndWire()`
     pub fn lateral_end_wire(&mut self) -> &crate::topo_ds::Wire {
         unsafe {
             &*(crate::check_result(
@@ -3507,7 +3505,7 @@ impl Sphere {
         }
     }
 
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:187 - `BRepPrim_OneAxis::TopWire()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:185 - `BRepPrim_OneAxis::TopWire()`
     pub fn top_wire(&mut self) -> &crate::topo_ds::Wire {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKPrim::BRepPrim_Sphere_inherited_TopWire(
@@ -3516,7 +3514,7 @@ impl Sphere {
         }
     }
 
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:190 - `BRepPrim_OneAxis::BottomWire()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:188 - `BRepPrim_OneAxis::BottomWire()`
     pub fn bottom_wire(&mut self) -> &crate::topo_ds::Wire {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKPrim::BRepPrim_Sphere_inherited_BottomWire(
@@ -3525,7 +3523,7 @@ impl Sphere {
         }
     }
 
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:193 - `BRepPrim_OneAxis::StartWire()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:191 - `BRepPrim_OneAxis::StartWire()`
     pub fn start_wire(&mut self) -> &crate::topo_ds::Wire {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKPrim::BRepPrim_Sphere_inherited_StartWire(
@@ -3534,7 +3532,7 @@ impl Sphere {
         }
     }
 
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:197 - `BRepPrim_OneAxis::AxisStartWire()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:195 - `BRepPrim_OneAxis::AxisStartWire()`
     pub fn axis_start_wire(&mut self) -> &crate::topo_ds::Wire {
         unsafe {
             &*(crate::check_result(
@@ -3545,7 +3543,7 @@ impl Sphere {
         }
     }
 
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:200 - `BRepPrim_OneAxis::EndWire()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:198 - `BRepPrim_OneAxis::EndWire()`
     pub fn end_wire(&mut self) -> &crate::topo_ds::Wire {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKPrim::BRepPrim_Sphere_inherited_EndWire(
@@ -3554,7 +3552,7 @@ impl Sphere {
         }
     }
 
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:204 - `BRepPrim_OneAxis::AxisEndWire()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:202 - `BRepPrim_OneAxis::AxisEndWire()`
     pub fn axis_end_wire(&mut self) -> &crate::topo_ds::Wire {
         unsafe {
             &*(crate::check_result(
@@ -3563,7 +3561,7 @@ impl Sphere {
         }
     }
 
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:208 - `BRepPrim_OneAxis::AxisEdge()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:206 - `BRepPrim_OneAxis::AxisEdge()`
     pub fn axis_edge(&mut self) -> &crate::topo_ds::Edge {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKPrim::BRepPrim_Sphere_inherited_AxisEdge(
@@ -3572,7 +3570,7 @@ impl Sphere {
         }
     }
 
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:211 - `BRepPrim_OneAxis::StartEdge()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:209 - `BRepPrim_OneAxis::StartEdge()`
     pub fn start_edge(&mut self) -> &crate::topo_ds::Edge {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKPrim::BRepPrim_Sphere_inherited_StartEdge(
@@ -3581,7 +3579,7 @@ impl Sphere {
         }
     }
 
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:215 - `BRepPrim_OneAxis::EndEdge()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:213 - `BRepPrim_OneAxis::EndEdge()`
     pub fn end_edge(&mut self) -> &crate::topo_ds::Edge {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKPrim::BRepPrim_Sphere_inherited_EndEdge(
@@ -3590,7 +3588,7 @@ impl Sphere {
         }
     }
 
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:219 - `BRepPrim_OneAxis::StartTopEdge()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:217 - `BRepPrim_OneAxis::StartTopEdge()`
     pub fn start_top_edge(&mut self) -> &crate::topo_ds::Edge {
         unsafe {
             &*(crate::check_result(
@@ -3599,7 +3597,7 @@ impl Sphere {
         }
     }
 
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:223 - `BRepPrim_OneAxis::StartBottomEdge()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:221 - `BRepPrim_OneAxis::StartBottomEdge()`
     pub fn start_bottom_edge(&mut self) -> &crate::topo_ds::Edge {
         unsafe {
             &*(crate::check_result(
@@ -3610,7 +3608,7 @@ impl Sphere {
         }
     }
 
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:227 - `BRepPrim_OneAxis::EndTopEdge()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:225 - `BRepPrim_OneAxis::EndTopEdge()`
     pub fn end_top_edge(&mut self) -> &crate::topo_ds::Edge {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKPrim::BRepPrim_Sphere_inherited_EndTopEdge(
@@ -3619,7 +3617,7 @@ impl Sphere {
         }
     }
 
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:231 - `BRepPrim_OneAxis::EndBottomEdge()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:229 - `BRepPrim_OneAxis::EndBottomEdge()`
     pub fn end_bottom_edge(&mut self) -> &crate::topo_ds::Edge {
         unsafe {
             &*(crate::check_result(
@@ -3630,7 +3628,7 @@ impl Sphere {
         }
     }
 
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:235 - `BRepPrim_OneAxis::TopEdge()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:233 - `BRepPrim_OneAxis::TopEdge()`
     pub fn top_edge(&mut self) -> &crate::topo_ds::Edge {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKPrim::BRepPrim_Sphere_inherited_TopEdge(
@@ -3639,7 +3637,7 @@ impl Sphere {
         }
     }
 
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:239 - `BRepPrim_OneAxis::BottomEdge()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:237 - `BRepPrim_OneAxis::BottomEdge()`
     pub fn bottom_edge(&mut self) -> &crate::topo_ds::Edge {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKPrim::BRepPrim_Sphere_inherited_BottomEdge(
@@ -3648,7 +3646,7 @@ impl Sphere {
         }
     }
 
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:242 - `BRepPrim_OneAxis::AxisTopVertex()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:240 - `BRepPrim_OneAxis::AxisTopVertex()`
     pub fn axis_top_vertex(&mut self) -> &crate::topo_ds::Vertex {
         unsafe {
             &*(crate::check_result(
@@ -3659,7 +3657,7 @@ impl Sphere {
         }
     }
 
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:246 - `BRepPrim_OneAxis::AxisBottomVertex()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:244 - `BRepPrim_OneAxis::AxisBottomVertex()`
     pub fn axis_bottom_vertex(&mut self) -> &crate::topo_ds::Vertex {
         unsafe {
             &*(crate::check_result(
@@ -3670,7 +3668,7 @@ impl Sphere {
         }
     }
 
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:249 - `BRepPrim_OneAxis::TopStartVertex()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:247 - `BRepPrim_OneAxis::TopStartVertex()`
     pub fn top_start_vertex(&mut self) -> &crate::topo_ds::Vertex {
         unsafe {
             &*(crate::check_result(
@@ -3681,7 +3679,7 @@ impl Sphere {
         }
     }
 
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:252 - `BRepPrim_OneAxis::TopEndVertex()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:250 - `BRepPrim_OneAxis::TopEndVertex()`
     pub fn top_end_vertex(&mut self) -> &crate::topo_ds::Vertex {
         unsafe {
             &*(crate::check_result(
@@ -3690,7 +3688,7 @@ impl Sphere {
         }
     }
 
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:255 - `BRepPrim_OneAxis::BottomStartVertex()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:253 - `BRepPrim_OneAxis::BottomStartVertex()`
     pub fn bottom_start_vertex(&mut self) -> &crate::topo_ds::Vertex {
         unsafe {
             &*(crate::check_result(
@@ -3701,7 +3699,7 @@ impl Sphere {
         }
     }
 
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:258 - `BRepPrim_OneAxis::BottomEndVertex()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:256 - `BRepPrim_OneAxis::BottomEndVertex()`
     pub fn bottom_end_vertex(&mut self) -> &crate::topo_ds::Vertex {
         unsafe {
             &*(crate::check_result(
@@ -3749,7 +3747,7 @@ impl Torus {
         }
     }
 
-    /// **Source:** `BRepPrim_Torus.hxx`:46 - `BRepPrim_Torus::BRepPrim_Torus()`
+    /// **Source:** `BRepPrim_Torus.hxx`:44 - `BRepPrim_Torus::BRepPrim_Torus()`
     /// Torus centered at origin
     pub fn new_real2(Major: f64, Minor: f64) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -3759,7 +3757,7 @@ impl Torus {
         }
     }
 
-    /// **Source:** `BRepPrim_Torus.hxx`:49 - `BRepPrim_Torus::BRepPrim_Torus()`
+    /// **Source:** `BRepPrim_Torus.hxx`:47 - `BRepPrim_Torus::BRepPrim_Torus()`
     /// Torus at Center
     pub fn new_pnt_real2(Center: &crate::gp::Pnt, Major: f64, Minor: f64) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -3769,8 +3767,8 @@ impl Torus {
         }
     }
 
-    /// **Source:** `BRepPrim_Torus.hxx`:55 - `BRepPrim_Torus::MakeEmptyLateralFace()`
-    /// The surface normal should be directed  towards the
+    /// **Source:** `BRepPrim_Torus.hxx`:51 - `BRepPrim_Torus::MakeEmptyLateralFace()`
+    /// The surface normal should be directed towards the
     /// outside.
     pub fn make_empty_lateral_face(&self) -> crate::OwnedPtr<crate::topo_ds::Face> {
         unsafe {
@@ -3855,7 +3853,7 @@ impl Torus {
         })
     }
 
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:73 - `BRepPrim_OneAxis::SetMeridianOffset()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:71 - `BRepPrim_OneAxis::SetMeridianOffset()`
     pub fn set_meridian_offset(&mut self, MeridianOffset: f64) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKPrim::BRepPrim_Torus_inherited_SetMeridianOffset(
@@ -3865,7 +3863,7 @@ impl Torus {
         })
     }
 
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:76 - `BRepPrim_OneAxis::Axes()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:74 - `BRepPrim_OneAxis::Axes()`
     pub fn axes(&self) -> &crate::gp::Ax2 {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKPrim::BRepPrim_Torus_inherited_Axes(
@@ -3874,28 +3872,28 @@ impl Torus {
         }
     }
 
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:80 - `BRepPrim_OneAxis::Angle()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:78 - `BRepPrim_OneAxis::Angle()`
     pub fn angle(&self) -> f64 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKPrim::BRepPrim_Torus_inherited_Angle(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:84 - `BRepPrim_OneAxis::VMin()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:82 - `BRepPrim_OneAxis::VMin()`
     pub fn v_min(&self) -> f64 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKPrim::BRepPrim_Torus_inherited_VMin(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:88 - `BRepPrim_OneAxis::VMax()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:86 - `BRepPrim_OneAxis::VMax()`
     pub fn v_max(&self) -> f64 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKPrim::BRepPrim_Torus_inherited_VMax(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:116 - `BRepPrim_OneAxis::MeridianOnAxis()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:114 - `BRepPrim_OneAxis::MeridianOnAxis()`
     pub fn meridian_on_axis(&self, V: f64) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKPrim::BRepPrim_Torus_inherited_MeridianOnAxis(
@@ -3905,49 +3903,49 @@ impl Torus {
         })
     }
 
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:122 - `BRepPrim_OneAxis::MeridianClosed()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:120 - `BRepPrim_OneAxis::MeridianClosed()`
     pub fn meridian_closed(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKPrim::BRepPrim_Torus_inherited_MeridianClosed(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:126 - `BRepPrim_OneAxis::VMaxInfinite()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:124 - `BRepPrim_OneAxis::VMaxInfinite()`
     pub fn v_max_infinite(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKPrim::BRepPrim_Torus_inherited_VMaxInfinite(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:130 - `BRepPrim_OneAxis::VMinInfinite()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:128 - `BRepPrim_OneAxis::VMinInfinite()`
     pub fn v_min_infinite(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKPrim::BRepPrim_Torus_inherited_VMinInfinite(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:137 - `BRepPrim_OneAxis::HasTop()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:135 - `BRepPrim_OneAxis::HasTop()`
     pub fn has_top(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKPrim::BRepPrim_Torus_inherited_HasTop(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:144 - `BRepPrim_OneAxis::HasBottom()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:142 - `BRepPrim_OneAxis::HasBottom()`
     pub fn has_bottom(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKPrim::BRepPrim_Torus_inherited_HasBottom(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:149 - `BRepPrim_OneAxis::HasSides()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:147 - `BRepPrim_OneAxis::HasSides()`
     pub fn has_sides(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKPrim::BRepPrim_Torus_inherited_HasSides(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:153 - `BRepPrim_OneAxis::Shell()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:151 - `BRepPrim_OneAxis::Shell()`
     pub fn shell(&mut self) -> &crate::topo_ds::Shell {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKPrim::BRepPrim_Torus_inherited_Shell(
@@ -3956,7 +3954,7 @@ impl Torus {
         }
     }
 
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:157 - `BRepPrim_OneAxis::LateralFace()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:155 - `BRepPrim_OneAxis::LateralFace()`
     pub fn lateral_face(&mut self) -> &crate::topo_ds::Face {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKPrim::BRepPrim_Torus_inherited_LateralFace(
@@ -3965,7 +3963,7 @@ impl Torus {
         }
     }
 
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:161 - `BRepPrim_OneAxis::TopFace()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:159 - `BRepPrim_OneAxis::TopFace()`
     pub fn top_face(&mut self) -> &crate::topo_ds::Face {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKPrim::BRepPrim_Torus_inherited_TopFace(
@@ -3974,7 +3972,7 @@ impl Torus {
         }
     }
 
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:165 - `BRepPrim_OneAxis::BottomFace()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:163 - `BRepPrim_OneAxis::BottomFace()`
     pub fn bottom_face(&mut self) -> &crate::topo_ds::Face {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKPrim::BRepPrim_Torus_inherited_BottomFace(
@@ -3983,7 +3981,7 @@ impl Torus {
         }
     }
 
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:169 - `BRepPrim_OneAxis::StartFace()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:167 - `BRepPrim_OneAxis::StartFace()`
     pub fn start_face(&mut self) -> &crate::topo_ds::Face {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKPrim::BRepPrim_Torus_inherited_StartFace(
@@ -3992,7 +3990,7 @@ impl Torus {
         }
     }
 
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:173 - `BRepPrim_OneAxis::EndFace()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:171 - `BRepPrim_OneAxis::EndFace()`
     pub fn end_face(&mut self) -> &crate::topo_ds::Face {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKPrim::BRepPrim_Torus_inherited_EndFace(
@@ -4001,7 +3999,7 @@ impl Torus {
         }
     }
 
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:176 - `BRepPrim_OneAxis::LateralWire()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:174 - `BRepPrim_OneAxis::LateralWire()`
     pub fn lateral_wire(&mut self) -> &crate::topo_ds::Wire {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKPrim::BRepPrim_Torus_inherited_LateralWire(
@@ -4010,7 +4008,7 @@ impl Torus {
         }
     }
 
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:180 - `BRepPrim_OneAxis::LateralStartWire()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:178 - `BRepPrim_OneAxis::LateralStartWire()`
     pub fn lateral_start_wire(&mut self) -> &crate::topo_ds::Wire {
         unsafe {
             &*(crate::check_result(
@@ -4021,7 +4019,7 @@ impl Torus {
         }
     }
 
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:184 - `BRepPrim_OneAxis::LateralEndWire()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:182 - `BRepPrim_OneAxis::LateralEndWire()`
     pub fn lateral_end_wire(&mut self) -> &crate::topo_ds::Wire {
         unsafe {
             &*(crate::check_result(
@@ -4032,7 +4030,7 @@ impl Torus {
         }
     }
 
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:187 - `BRepPrim_OneAxis::TopWire()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:185 - `BRepPrim_OneAxis::TopWire()`
     pub fn top_wire(&mut self) -> &crate::topo_ds::Wire {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKPrim::BRepPrim_Torus_inherited_TopWire(
@@ -4041,7 +4039,7 @@ impl Torus {
         }
     }
 
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:190 - `BRepPrim_OneAxis::BottomWire()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:188 - `BRepPrim_OneAxis::BottomWire()`
     pub fn bottom_wire(&mut self) -> &crate::topo_ds::Wire {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKPrim::BRepPrim_Torus_inherited_BottomWire(
@@ -4050,7 +4048,7 @@ impl Torus {
         }
     }
 
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:193 - `BRepPrim_OneAxis::StartWire()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:191 - `BRepPrim_OneAxis::StartWire()`
     pub fn start_wire(&mut self) -> &crate::topo_ds::Wire {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKPrim::BRepPrim_Torus_inherited_StartWire(
@@ -4059,7 +4057,7 @@ impl Torus {
         }
     }
 
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:197 - `BRepPrim_OneAxis::AxisStartWire()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:195 - `BRepPrim_OneAxis::AxisStartWire()`
     pub fn axis_start_wire(&mut self) -> &crate::topo_ds::Wire {
         unsafe {
             &*(crate::check_result(
@@ -4068,7 +4066,7 @@ impl Torus {
         }
     }
 
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:200 - `BRepPrim_OneAxis::EndWire()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:198 - `BRepPrim_OneAxis::EndWire()`
     pub fn end_wire(&mut self) -> &crate::topo_ds::Wire {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKPrim::BRepPrim_Torus_inherited_EndWire(
@@ -4077,7 +4075,7 @@ impl Torus {
         }
     }
 
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:204 - `BRepPrim_OneAxis::AxisEndWire()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:202 - `BRepPrim_OneAxis::AxisEndWire()`
     pub fn axis_end_wire(&mut self) -> &crate::topo_ds::Wire {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKPrim::BRepPrim_Torus_inherited_AxisEndWire(
@@ -4086,7 +4084,7 @@ impl Torus {
         }
     }
 
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:208 - `BRepPrim_OneAxis::AxisEdge()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:206 - `BRepPrim_OneAxis::AxisEdge()`
     pub fn axis_edge(&mut self) -> &crate::topo_ds::Edge {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKPrim::BRepPrim_Torus_inherited_AxisEdge(
@@ -4095,7 +4093,7 @@ impl Torus {
         }
     }
 
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:211 - `BRepPrim_OneAxis::StartEdge()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:209 - `BRepPrim_OneAxis::StartEdge()`
     pub fn start_edge(&mut self) -> &crate::topo_ds::Edge {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKPrim::BRepPrim_Torus_inherited_StartEdge(
@@ -4104,7 +4102,7 @@ impl Torus {
         }
     }
 
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:215 - `BRepPrim_OneAxis::EndEdge()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:213 - `BRepPrim_OneAxis::EndEdge()`
     pub fn end_edge(&mut self) -> &crate::topo_ds::Edge {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKPrim::BRepPrim_Torus_inherited_EndEdge(
@@ -4113,7 +4111,7 @@ impl Torus {
         }
     }
 
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:219 - `BRepPrim_OneAxis::StartTopEdge()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:217 - `BRepPrim_OneAxis::StartTopEdge()`
     pub fn start_top_edge(&mut self) -> &crate::topo_ds::Edge {
         unsafe {
             &*(crate::check_result(
@@ -4122,7 +4120,7 @@ impl Torus {
         }
     }
 
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:223 - `BRepPrim_OneAxis::StartBottomEdge()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:221 - `BRepPrim_OneAxis::StartBottomEdge()`
     pub fn start_bottom_edge(&mut self) -> &crate::topo_ds::Edge {
         unsafe {
             &*(crate::check_result(
@@ -4133,7 +4131,7 @@ impl Torus {
         }
     }
 
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:227 - `BRepPrim_OneAxis::EndTopEdge()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:225 - `BRepPrim_OneAxis::EndTopEdge()`
     pub fn end_top_edge(&mut self) -> &crate::topo_ds::Edge {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKPrim::BRepPrim_Torus_inherited_EndTopEdge(
@@ -4142,7 +4140,7 @@ impl Torus {
         }
     }
 
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:231 - `BRepPrim_OneAxis::EndBottomEdge()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:229 - `BRepPrim_OneAxis::EndBottomEdge()`
     pub fn end_bottom_edge(&mut self) -> &crate::topo_ds::Edge {
         unsafe {
             &*(crate::check_result(
@@ -4151,7 +4149,7 @@ impl Torus {
         }
     }
 
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:235 - `BRepPrim_OneAxis::TopEdge()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:233 - `BRepPrim_OneAxis::TopEdge()`
     pub fn top_edge(&mut self) -> &crate::topo_ds::Edge {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKPrim::BRepPrim_Torus_inherited_TopEdge(
@@ -4160,7 +4158,7 @@ impl Torus {
         }
     }
 
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:239 - `BRepPrim_OneAxis::BottomEdge()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:237 - `BRepPrim_OneAxis::BottomEdge()`
     pub fn bottom_edge(&mut self) -> &crate::topo_ds::Edge {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKPrim::BRepPrim_Torus_inherited_BottomEdge(
@@ -4169,7 +4167,7 @@ impl Torus {
         }
     }
 
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:242 - `BRepPrim_OneAxis::AxisTopVertex()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:240 - `BRepPrim_OneAxis::AxisTopVertex()`
     pub fn axis_top_vertex(&mut self) -> &crate::topo_ds::Vertex {
         unsafe {
             &*(crate::check_result(
@@ -4178,7 +4176,7 @@ impl Torus {
         }
     }
 
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:246 - `BRepPrim_OneAxis::AxisBottomVertex()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:244 - `BRepPrim_OneAxis::AxisBottomVertex()`
     pub fn axis_bottom_vertex(&mut self) -> &crate::topo_ds::Vertex {
         unsafe {
             &*(crate::check_result(
@@ -4189,7 +4187,7 @@ impl Torus {
         }
     }
 
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:249 - `BRepPrim_OneAxis::TopStartVertex()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:247 - `BRepPrim_OneAxis::TopStartVertex()`
     pub fn top_start_vertex(&mut self) -> &crate::topo_ds::Vertex {
         unsafe {
             &*(crate::check_result(
@@ -4200,7 +4198,7 @@ impl Torus {
         }
     }
 
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:252 - `BRepPrim_OneAxis::TopEndVertex()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:250 - `BRepPrim_OneAxis::TopEndVertex()`
     pub fn top_end_vertex(&mut self) -> &crate::topo_ds::Vertex {
         unsafe {
             &*(crate::check_result(
@@ -4209,7 +4207,7 @@ impl Torus {
         }
     }
 
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:255 - `BRepPrim_OneAxis::BottomStartVertex()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:253 - `BRepPrim_OneAxis::BottomStartVertex()`
     pub fn bottom_start_vertex(&mut self) -> &crate::topo_ds::Vertex {
         unsafe {
             &*(crate::check_result(
@@ -4220,7 +4218,7 @@ impl Torus {
         }
     }
 
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:258 - `BRepPrim_OneAxis::BottomEndVertex()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:256 - `BRepPrim_OneAxis::BottomEndVertex()`
     pub fn bottom_end_vertex(&mut self) -> &crate::topo_ds::Vertex {
         unsafe {
             &*(crate::check_result(
@@ -4260,7 +4258,7 @@ impl Wedge {
     }
 
     /// **Source:** `BRepPrim_Wedge.hxx`:47 - `BRepPrim_Wedge::BRepPrim_Wedge()`
-    /// Creates a  Wedge  algorithm.   <Axes> is  the axis
+    /// Creates a Wedge algorithm. <Axes> is the axis
     /// system for the primitive.
     ///
     /// XMin, YMin, ZMin are set to 0
@@ -4285,7 +4283,7 @@ impl Wedge {
     }
 
     /// **Source:** `BRepPrim_Wedge.hxx`:64 - `BRepPrim_Wedge::BRepPrim_Wedge()`
-    /// Creates  a Wedge  primitive. <Axes> is   the  axis
+    /// Creates a Wedge primitive. <Axes> is the axis
     /// system for the primitive.
     ///
     /// XMin, YMin, ZMin are set to 0
@@ -4312,7 +4310,7 @@ impl Wedge {
     }
 
     /// **Source:** `BRepPrim_Wedge.hxx`:76 - `BRepPrim_Wedge::BRepPrim_Wedge()`
-    /// Create  a Wedge primitive.   <Axes>  is  the  axis
+    /// Create a Wedge primitive. <Axes> is the axis
     /// system for the primitive.
     ///
     /// all the fields are set to the corresponding value
@@ -4537,7 +4535,7 @@ impl Wedge {
         })
     }
 
-    /// Inherited: **Source:** `BRepPrim_GWedge.hxx`:187 - `BRepPrim_GWedge::Edge()`
+    /// Inherited: **Source:** `BRepPrim_GWedge.hxx`:186 - `BRepPrim_GWedge::Edge()`
     pub fn edge(
         &mut self,
         d1: crate::b_rep_prim::Direction,
@@ -4552,7 +4550,7 @@ impl Wedge {
         }
     }
 
-    /// Inherited: **Source:** `BRepPrim_GWedge.hxx`:191 - `BRepPrim_GWedge::Line()`
+    /// Inherited: **Source:** `BRepPrim_GWedge.hxx`:190 - `BRepPrim_GWedge::Line()`
     pub fn line(
         &mut self,
         d1: crate::b_rep_prim::Direction,
@@ -4569,7 +4567,7 @@ impl Wedge {
         }
     }
 
-    /// Inherited: **Source:** `BRepPrim_GWedge.hxx`:195 - `BRepPrim_GWedge::HasVertex()`
+    /// Inherited: **Source:** `BRepPrim_GWedge.hxx`:194 - `BRepPrim_GWedge::HasVertex()`
     pub fn has_vertex(
         &self,
         d1: crate::b_rep_prim::Direction,
@@ -4586,7 +4584,7 @@ impl Wedge {
         })
     }
 
-    /// Inherited: **Source:** `BRepPrim_GWedge.hxx`:201 - `BRepPrim_GWedge::Vertex()`
+    /// Inherited: **Source:** `BRepPrim_GWedge.hxx`:200 - `BRepPrim_GWedge::Vertex()`
     pub fn vertex(
         &mut self,
         d1: crate::b_rep_prim::Direction,
@@ -4603,7 +4601,7 @@ impl Wedge {
         }
     }
 
-    /// Inherited: **Source:** `BRepPrim_GWedge.hxx`:207 - `BRepPrim_GWedge::Point()`
+    /// Inherited: **Source:** `BRepPrim_GWedge.hxx`:206 - `BRepPrim_GWedge::Point()`
     pub fn point(
         &mut self,
         d1: crate::b_rep_prim::Direction,
@@ -4622,7 +4620,7 @@ impl Wedge {
         }
     }
 
-    /// Inherited: **Source:** `BRepPrim_GWedge.hxx`:213 - `BRepPrim_GWedge::IsDegeneratedShape()`
+    /// Inherited: **Source:** `BRepPrim_GWedge.hxx`:212 - `BRepPrim_GWedge::IsDegeneratedShape()`
     pub fn is_degenerated_shape(&mut self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKPrim::BRepPrim_Wedge_inherited_IsDegeneratedShape(self as *mut Self)

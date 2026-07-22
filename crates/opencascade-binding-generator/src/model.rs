@@ -121,8 +121,12 @@ pub struct ParsedField {
 /// `#[repr(C)]` Rust struct with real fields instead of an opaque type.
 #[derive(Debug, Clone)]
 pub struct ParsedClass {
-    /// Full class name (e.g., "gp_Pnt", "BRepPrimAPI_MakeBox")
+    /// Full class name (e.g., "gp_Pnt", "BRepPrimAPI_MakeBox", "BRepGraph::EditorView")
     pub name: String,
+    /// Qualified C++ name from clang display_name (e.g., "BRepGraph::EditorView")
+    /// Preserves `::` scope separators for nested classes. Falls back to `name`
+    /// if clang doesn't provide a qualified display name.
+    pub display_name: String,
     /// Module name extracted from prefix (e.g., "gp", "BRepPrimAPI")
     pub module: String,
     /// Documentation comment from the header
@@ -488,6 +492,25 @@ impl Type {
             Type::CHAR16 => "char16".to_string(),
             Type::U8 => "u8".to_string(),
             Type::I8 => "i8".to_string(),
+        }
+    }
+
+    /// Token used to build overload suffixes. Same as [`short_name`](Self::short_name)
+    /// except collection types use a concise registered token (`imap_shape`, `arr1_pnt`,
+    /// `harr1_pnt`) instead of the verbose mangled name (which carries the full template
+    /// argument list including the hasher).
+    pub fn suffix_token(&self) -> String {
+        match self {
+            Type::ConstRef(inner) | Type::MutRef(inner) | Type::RValueRef(inner) => {
+                inner.suffix_token()
+            }
+            Type::ConstPtr(inner) | Type::MutPtr(inner) => format!("{}ptr", inner.suffix_token()),
+            Type::FixedArray(inner, size) => format!("{}{}", inner.suffix_token(), size),
+            Type::Class(name) => crate::codegen::collections::collection_suffix_token(name)
+                .unwrap_or_else(|| extract_short_name(name)),
+            Type::Handle(name) => crate::codegen::collections::collection_suffix_token(name)
+                .unwrap_or_else(|| crate::type_mapping::handle_param_name(name)),
+            _ => self.short_name(),
         }
     }
 
@@ -1123,7 +1146,7 @@ pub fn overload_suffix_from_params(params: &[Param]) -> String {
 
     let type_names: Vec<String> = params
         .iter()
-        .map(|p| p.ty.short_name().to_lowercase())
+        .map(|p| p.ty.suffix_token().to_lowercase())
         .collect();
 
     // Compress consecutive identical types: ["real", "real", "real"] -> ["real3"]

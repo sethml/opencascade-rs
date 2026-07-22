@@ -11,8 +11,8 @@
 // ========================
 
 /// **Source:** `TopCnx_EdgeFaceTransition.hxx`:31 - `TopCnx_EdgeFaceTransition`
-/// TheEdgeFaceTransition is an algorithm to   compute
-/// the  cumulated  transition for interferences on an
+/// TheEdgeFaceTransition is an algorithm to compute
+/// the cumulated transition for interferences on an
 /// edge.
 pub use crate::ffi_types::TopCnx_EdgeFaceTransition as EdgeFaceTransition;
 
@@ -36,7 +36,7 @@ impl EdgeFaceTransition {
     }
 
     /// **Source:** `TopCnx_EdgeFaceTransition.hxx`:41 - `TopCnx_EdgeFaceTransition::Reset()`
-    /// Initialize  the     algorithm    with the    local
+    /// Initialize the algorithm with the local
     /// description of the edge.
     pub fn reset_dir2_real(&mut self, Tgt: &crate::gp::Dir, Norm: &crate::gp::Dir, Curv: f64) {
         crate::check_void_result(unsafe {
@@ -58,10 +58,10 @@ impl EdgeFaceTransition {
     }
 
     /// **Source:** `TopCnx_EdgeFaceTransition.hxx`:51 - `TopCnx_EdgeFaceTransition::AddInterference()`
-    /// Add a curve  element to the  boundary.  Or  is the
-    /// orientation of   the interference on  the boundary
-    /// curve. Tr is  the transition  of the interference.
-    /// BTr     is   the    boundary  transition    of the
+    /// Add a curve element to the boundary. Or is the
+    /// orientation of the interference on the boundary
+    /// curve. Tr is the transition of the interference.
+    /// BTr is the boundary transition of the
     /// interference.
     pub fn add_interference(
         &mut self,

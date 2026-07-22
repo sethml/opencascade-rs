@@ -11,23 +11,23 @@
 // ========================
 
 /// **Source:** `TopTrans_CurveTransition.hxx`:45 - `TopTrans_CurveTransition`
-/// This algorithm  is used to  compute the transition
+/// This algorithm is used to compute the transition
 /// of a Curve intersecting a curvilinear boundary.
 ///
-/// The geometric  elements  are described locally  at
-/// the   intersection   point  by    a   second order
+/// The geometric elements are described locally at
+/// the intersection point by a second order
 /// development.
 ///
-/// The curve is described  by the intersection point,
+/// The curve is described by the intersection point,
 /// the tangent vector and the curvature.
 ///
-/// The  boundary  is described  by   a set  of  curve
+/// The boundary is described by a set of curve
 /// elements, a curve element is either :
 ///
 /// - A curve.
 ///
-/// - A curve and an orientation  called a half-curve,
-/// the boundary  of the curve is  before or after the
+/// - A curve and an orientation called a half-curve,
+/// the boundary of the curve is before or after the
 /// intersection point depending on the orientation.
 pub use crate::ffi_types::TopTrans_CurveTransition as CurveTransition;
 
@@ -41,7 +41,7 @@ unsafe impl crate::CppDeletable for CurveTransition {
 
 impl CurveTransition {
     /// **Source:** `TopTrans_CurveTransition.hxx`:51 - `TopTrans_CurveTransition::TopTrans_CurveTransition()`
-    /// Create an empty  Curve Transition.
+    /// Create an empty Curve Transition.
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -73,10 +73,10 @@ impl CurveTransition {
     }
 
     /// **Source:** `TopTrans_CurveTransition.hxx`:65 - `TopTrans_CurveTransition::Compare()`
-    /// Add  a curve element to the  boundary.    If Or is
-    /// REVERSED  the curve  is   before the intersection,
-    /// else if  Or  is FORWARD  the   curv  is after  the
-    /// intersection   and    if   Or  is   INTERNAL   the
+    /// Add a curve element to the boundary. If Or is
+    /// REVERSED the curve is before the intersection,
+    /// else if Or is FORWARD the curv is after the
+    /// intersection and if Or is INTERNAL the
     /// intersection is in the middle of the curv.
     pub fn compare(
         &mut self,
@@ -101,7 +101,7 @@ impl CurveTransition {
     }
 
     /// **Source:** `TopTrans_CurveTransition.hxx`:76 - `TopTrans_CurveTransition::StateBefore()`
-    /// returns   the  state   of  the   curve  before the
+    /// returns the state of the curve before the
     /// intersection, this is the position relative to the
     /// boundary of a point very close to the intersection
     /// on the negative side of the tangent.
@@ -113,7 +113,7 @@ impl CurveTransition {
     }
 
     /// **Source:** `TopTrans_CurveTransition.hxx`:82 - `TopTrans_CurveTransition::StateAfter()`
-    /// returns  the    state of  the  curve   after   the
+    /// returns the state of the curve after the
     /// intersection, this is the position relative to the
     /// boundary of a point very close to the intersection
     /// on the positive side of the tangent.
@@ -129,11 +129,11 @@ impl CurveTransition {
 // From TopTrans_SurfaceTransition.hxx
 // ========================
 
-/// **Source:** `TopTrans_SurfaceTransition.hxx`:50 - `TopTrans_SurfaceTransition`
-/// This algorithm  is used to  compute the transition
+/// **Source:** `TopTrans_SurfaceTransition.hxx`:49 - `TopTrans_SurfaceTransition`
+/// This algorithm is used to compute the transition
 /// of a 3D surface intersecting a topological surfacic
 /// boundary on a 3D curve ( intersection curve ).
-/// The  boundary is  described  by a  set of faces
+/// The boundary is described by a set of faces
 /// each face is described by
 /// - its support surface,
 /// - an orientation defining its matter side.
@@ -141,14 +141,14 @@ impl CurveTransition {
 /// intersection point by a second order development.
 /// A surface is described by the normal vector, the
 /// principal directions and the principal curvatures.
-/// A curve is described  by the  tangent, the normal
+/// A curve is described by the tangent, the normal
 /// and the curvature.
-/// The  algorithm  keeps track of the two faces elements
+/// The algorithm keeps track of the two faces elements
 /// closest to the part of the curve "before" and "after"
-/// the intersection,  these  two elements are updated
+/// the intersection, these two elements are updated
 /// for each new face.
-/// The position of the  curve can be computed when at
-/// least  one surface  element has   been given, this
+/// The position of the curve can be computed when at
+/// least one surface element has been given, this
 /// position is "In","Out" or "On" for the part of the
 /// curve "Before" or "After" the intersection.
 pub use crate::ffi_types::TopTrans_SurfaceTransition as SurfaceTransition;
@@ -162,7 +162,7 @@ unsafe impl crate::CppDeletable for SurfaceTransition {
 }
 
 impl SurfaceTransition {
-    /// **Source:** `TopTrans_SurfaceTransition.hxx`:56 - `TopTrans_SurfaceTransition::TopTrans_SurfaceTransition()`
+    /// **Source:** `TopTrans_SurfaceTransition.hxx`:55 - `TopTrans_SurfaceTransition::TopTrans_SurfaceTransition()`
     /// Create an empty Surface Transition.
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
@@ -172,8 +172,8 @@ impl SurfaceTransition {
         }
     }
 
-    /// **Source:** `TopTrans_SurfaceTransition.hxx`:62 - `TopTrans_SurfaceTransition::Reset()`
-    /// Initialize  a  Surface Transition with the local
+    /// **Source:** `TopTrans_SurfaceTransition.hxx`:61 - `TopTrans_SurfaceTransition::Reset()`
+    /// Initialize a Surface Transition with the local
     /// description of the intersection curve and of the
     /// reference surface.
     /// PREQUESITORY : Norm oriented OUTSIDE "geometric matter"
@@ -199,8 +199,8 @@ impl SurfaceTransition {
         })
     }
 
-    /// **Source:** `TopTrans_SurfaceTransition.hxx`:71 - `TopTrans_SurfaceTransition::Reset()`
-    /// Initialize  a  Surface Transition  with the  local
+    /// **Source:** `TopTrans_SurfaceTransition.hxx`:70 - `TopTrans_SurfaceTransition::Reset()`
+    /// Initialize a Surface Transition with the local
     /// description of a straight line.
     pub fn reset_dir2(&mut self, Tgt: &crate::gp::Dir, Norm: &crate::gp::Dir) {
         crate::check_void_result(unsafe {
@@ -212,7 +212,7 @@ impl SurfaceTransition {
         })
     }
 
-    /// **Source:** `TopTrans_SurfaceTransition.hxx`:87 - `TopTrans_SurfaceTransition::Compare()`
+    /// **Source:** `TopTrans_SurfaceTransition.hxx`:86 - `TopTrans_SurfaceTransition::Compare()`
     /// Add a face element to the boundary.
     ///
     /// - S defines topological orientation for the face :
@@ -243,7 +243,7 @@ impl SurfaceTransition {
         })
     }
 
-    /// **Source:** `TopTrans_SurfaceTransition.hxx`:97 - `TopTrans_SurfaceTransition::Compare()`
+    /// **Source:** `TopTrans_SurfaceTransition.hxx`:96 - `TopTrans_SurfaceTransition::Compare()`
     /// Add a plane or a cylindric face to the boundary.
     pub fn compare_real_dir_orientation2(
         &mut self,
@@ -263,10 +263,10 @@ impl SurfaceTransition {
         })
     }
 
-    /// **Source:** `TopTrans_SurfaceTransition.hxx`:106 - `TopTrans_SurfaceTransition::StateBefore()`
+    /// **Source:** `TopTrans_SurfaceTransition.hxx`:105 - `TopTrans_SurfaceTransition::StateBefore()`
     /// Returns the state of the reference surface before
     /// the interference, this is the position relative to
-    /// the surface of a  point very close to the intersection
+    /// the surface of a point very close to the intersection
     /// on the negative side of the tangent.
     pub fn state_before(&self) -> crate::top_abs::State {
         crate::top_abs::State::try_from(crate::check_result(unsafe {
@@ -277,10 +277,10 @@ impl SurfaceTransition {
         .unwrap()
     }
 
-    /// **Source:** `TopTrans_SurfaceTransition.hxx`:112 - `TopTrans_SurfaceTransition::StateAfter()`
+    /// **Source:** `TopTrans_SurfaceTransition.hxx`:111 - `TopTrans_SurfaceTransition::StateAfter()`
     /// Returns the state of the reference surface after
     /// interference, this is the position relative to the
-    /// surface of a point very  close to the intersection
+    /// surface of a point very close to the intersection
     /// on the positive side of the tangent.
     pub fn state_after(&self) -> crate::top_abs::State {
         crate::top_abs::State::try_from(crate::check_result(unsafe {
@@ -291,7 +291,7 @@ impl SurfaceTransition {
         .unwrap()
     }
 
-    /// **Source:** `TopTrans_SurfaceTransition.hxx`:114 - `TopTrans_SurfaceTransition::GetBefore()`
+    /// **Source:** `TopTrans_SurfaceTransition.hxx`:113 - `TopTrans_SurfaceTransition::GetBefore()`
     pub fn get_before(Tran: crate::top_abs::Orientation) -> crate::top_abs::State {
         crate::top_abs::State::try_from(crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::TopTrans_SurfaceTransition_get_before(Tran.into())
@@ -299,7 +299,7 @@ impl SurfaceTransition {
         .unwrap()
     }
 
-    /// **Source:** `TopTrans_SurfaceTransition.hxx`:116 - `TopTrans_SurfaceTransition::GetAfter()`
+    /// **Source:** `TopTrans_SurfaceTransition.hxx`:115 - `TopTrans_SurfaceTransition::GetAfter()`
     pub fn get_after(Tran: crate::top_abs::Orientation) -> crate::top_abs::State {
         crate::top_abs::State::try_from(crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::TopTrans_SurfaceTransition_get_after(Tran.into())

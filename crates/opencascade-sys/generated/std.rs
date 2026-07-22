@@ -11,8 +11,8 @@
 // ========================
 
 pub use crate::ffi_types::{
-    std_pair_Standard_Integer_Standard_Integer as pair_Standard_Integer_Standard_Integer,
-    std_pair_Standard_Real_Standard_Real as pair_Standard_Real_Standard_Real,
+    std_pair_double_double as pair_double_double,
+    std_pair_gp_Pnt2d_gp_Pnt2d as pair_gp_Pnt2d_gp_Pnt2d, std_pair_int_int as pair_int_int,
     std_shared_ptr_std_istream as shared_ptr_std_istream,
     std_shared_ptr_std_ostream as shared_ptr_std_ostream,
     std_shared_ptr_std_streambuf as shared_ptr_std_streambuf,

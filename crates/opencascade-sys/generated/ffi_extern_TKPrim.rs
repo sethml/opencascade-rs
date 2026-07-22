@@ -41,46 +41,46 @@ unsafe extern "C" {
     pub fn BRepPreviewAPI_MakeBox_as_BRepBuilderAPI_Command_mut(
         self_: *mut BRepPreviewAPI_MakeBox,
     ) -> crate::OcctResult<*mut BRepBuilderAPI_Command>;
-    /// Inherited: **Source:** `BRepPrimAPI_MakeBox.hxx`:79 - `BRepPrimAPI_MakeBox::Init()`
+    /// Inherited: **Source:** `BRepPrimAPI_MakeBox.hxx`:77 - `BRepPrimAPI_MakeBox::Init()`
     pub fn BRepPreviewAPI_MakeBox_inherited_Init(
         self_: *mut BRepPreviewAPI_MakeBox,
         theDX: f64,
         theDY: f64,
         theDZ: f64,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BRepPrimAPI_MakeBox.hxx`:99 - `BRepPrimAPI_MakeBox::Wedge()`
+    /// Inherited: **Source:** `BRepPrimAPI_MakeBox.hxx`:95 - `BRepPrimAPI_MakeBox::Wedge()`
     pub fn BRepPreviewAPI_MakeBox_inherited_Wedge(
         self_: *mut BRepPreviewAPI_MakeBox,
     ) -> crate::OcctResult<*mut BRepPrim_Wedge>;
-    /// Inherited: **Source:** `BRepPrimAPI_MakeBox.hxx`:106 - `BRepPrimAPI_MakeBox::Shell()`
+    /// Inherited: **Source:** `BRepPrimAPI_MakeBox.hxx`:102 - `BRepPrimAPI_MakeBox::Shell()`
     pub fn BRepPreviewAPI_MakeBox_inherited_Shell(
         self_: *mut BRepPreviewAPI_MakeBox,
     ) -> crate::OcctResult<*const TopoDS_Shell>;
-    /// Inherited: **Source:** `BRepPrimAPI_MakeBox.hxx`:110 - `BRepPrimAPI_MakeBox::Solid()`
+    /// Inherited: **Source:** `BRepPrimAPI_MakeBox.hxx`:106 - `BRepPrimAPI_MakeBox::Solid()`
     pub fn BRepPreviewAPI_MakeBox_inherited_Solid(
         self_: *mut BRepPreviewAPI_MakeBox,
     ) -> crate::OcctResult<*const TopoDS_Solid>;
-    /// Inherited: **Source:** `BRepPrimAPI_MakeBox.hxx`:114 - `BRepPrimAPI_MakeBox::BottomFace()`
+    /// Inherited: **Source:** `BRepPrimAPI_MakeBox.hxx`:110 - `BRepPrimAPI_MakeBox::BottomFace()`
     pub fn BRepPreviewAPI_MakeBox_inherited_BottomFace(
         self_: *mut BRepPreviewAPI_MakeBox,
     ) -> crate::OcctResult<*const TopoDS_Face>;
-    /// Inherited: **Source:** `BRepPrimAPI_MakeBox.hxx`:117 - `BRepPrimAPI_MakeBox::BackFace()`
+    /// Inherited: **Source:** `BRepPrimAPI_MakeBox.hxx`:113 - `BRepPrimAPI_MakeBox::BackFace()`
     pub fn BRepPreviewAPI_MakeBox_inherited_BackFace(
         self_: *mut BRepPreviewAPI_MakeBox,
     ) -> crate::OcctResult<*const TopoDS_Face>;
-    /// Inherited: **Source:** `BRepPrimAPI_MakeBox.hxx`:120 - `BRepPrimAPI_MakeBox::FrontFace()`
+    /// Inherited: **Source:** `BRepPrimAPI_MakeBox.hxx`:116 - `BRepPrimAPI_MakeBox::FrontFace()`
     pub fn BRepPreviewAPI_MakeBox_inherited_FrontFace(
         self_: *mut BRepPreviewAPI_MakeBox,
     ) -> crate::OcctResult<*const TopoDS_Face>;
-    /// Inherited: **Source:** `BRepPrimAPI_MakeBox.hxx`:123 - `BRepPrimAPI_MakeBox::LeftFace()`
+    /// Inherited: **Source:** `BRepPrimAPI_MakeBox.hxx`:119 - `BRepPrimAPI_MakeBox::LeftFace()`
     pub fn BRepPreviewAPI_MakeBox_inherited_LeftFace(
         self_: *mut BRepPreviewAPI_MakeBox,
     ) -> crate::OcctResult<*const TopoDS_Face>;
-    /// Inherited: **Source:** `BRepPrimAPI_MakeBox.hxx`:126 - `BRepPrimAPI_MakeBox::RightFace()`
+    /// Inherited: **Source:** `BRepPrimAPI_MakeBox.hxx`:122 - `BRepPrimAPI_MakeBox::RightFace()`
     pub fn BRepPreviewAPI_MakeBox_inherited_RightFace(
         self_: *mut BRepPreviewAPI_MakeBox,
     ) -> crate::OcctResult<*const TopoDS_Face>;
-    /// Inherited: **Source:** `BRepPrimAPI_MakeBox.hxx`:129 - `BRepPrimAPI_MakeBox::TopFace()`
+    /// Inherited: **Source:** `BRepPrimAPI_MakeBox.hxx`:125 - `BRepPrimAPI_MakeBox::TopFace()`
     pub fn BRepPreviewAPI_MakeBox_inherited_TopFace(
         self_: *mut BRepPreviewAPI_MakeBox,
     ) -> crate::OcctResult<*const TopoDS_Face>;
@@ -210,34 +210,34 @@ unsafe extern "C" {
         E: *const TopoDS_Edge,
         direct: bool,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepPrim_Builder.hxx`:126 - `BRepPrim_Builder::AddFaceWire()`
+    /// **Source:** `BRepPrim_Builder.hxx`:124 - `BRepPrim_Builder::AddFaceWire()`
     pub fn BRepPrim_Builder_add_face_wire(
         self_: *const BRepPrim_Builder,
         F: *mut TopoDS_Face,
         W: *const TopoDS_Wire,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepPrim_Builder.hxx`:129 - `BRepPrim_Builder::AddShellFace()`
+    /// **Source:** `BRepPrim_Builder.hxx`:127 - `BRepPrim_Builder::AddShellFace()`
     pub fn BRepPrim_Builder_add_shell_face(
         self_: *const BRepPrim_Builder,
         Sh: *mut TopoDS_Shell,
         F: *const TopoDS_Face,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepPrim_Builder.hxx`:133 - `BRepPrim_Builder::CompleteEdge()`
+    /// **Source:** `BRepPrim_Builder.hxx`:131 - `BRepPrim_Builder::CompleteEdge()`
     pub fn BRepPrim_Builder_complete_edge(
         self_: *const BRepPrim_Builder,
         E: *mut TopoDS_Edge,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepPrim_Builder.hxx`:137 - `BRepPrim_Builder::CompleteWire()`
+    /// **Source:** `BRepPrim_Builder.hxx`:135 - `BRepPrim_Builder::CompleteWire()`
     pub fn BRepPrim_Builder_complete_wire(
         self_: *const BRepPrim_Builder,
         W: *mut TopoDS_Wire,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepPrim_Builder.hxx`:141 - `BRepPrim_Builder::CompleteFace()`
+    /// **Source:** `BRepPrim_Builder.hxx`:139 - `BRepPrim_Builder::CompleteFace()`
     pub fn BRepPrim_Builder_complete_face(
         self_: *const BRepPrim_Builder,
         F: *mut TopoDS_Face,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepPrim_Builder.hxx`:145 - `BRepPrim_Builder::CompleteShell()`
+    /// **Source:** `BRepPrim_Builder.hxx`:143 - `BRepPrim_Builder::CompleteShell()`
     pub fn BRepPrim_Builder_complete_shell(
         self_: *const BRepPrim_Builder,
         S: *mut TopoDS_Shell,
@@ -269,21 +269,21 @@ unsafe extern "C" {
         R2: f64,
         H: f64,
     ) -> crate::OcctResult<*mut BRepPrim_Cone>;
-    /// **Source:** `BRepPrim_Cone.hxx`:75 - `BRepPrim_Cone::BRepPrim_Cone()`
+    /// **Source:** `BRepPrim_Cone.hxx`:73 - `BRepPrim_Cone::BRepPrim_Cone()`
     pub fn BRepPrim_Cone_ctor_pnt_real3(
         Center: *const gp_Pnt,
         R1: f64,
         R2: f64,
         H: f64,
     ) -> crate::OcctResult<*mut BRepPrim_Cone>;
-    /// **Source:** `BRepPrim_Cone.hxx`:81 - `BRepPrim_Cone::BRepPrim_Cone()`
+    /// **Source:** `BRepPrim_Cone.hxx`:79 - `BRepPrim_Cone::BRepPrim_Cone()`
     pub fn BRepPrim_Cone_ctor_ax2_real3(
         Axes: *const gp_Ax2,
         R1: f64,
         R2: f64,
         H: f64,
     ) -> crate::OcctResult<*mut BRepPrim_Cone>;
-    /// **Source:** `BRepPrim_Cone.hxx`:88 - `BRepPrim_Cone::MakeEmptyLateralFace()`
+    /// **Source:** `BRepPrim_Cone.hxx`:86 - `BRepPrim_Cone::MakeEmptyLateralFace()`
     pub fn BRepPrim_Cone_make_empty_lateral_face(
         self_: *const BRepPrim_Cone,
     ) -> crate::OcctResult<*mut TopoDS_Face>;
@@ -319,164 +319,164 @@ unsafe extern "C" {
         E: *mut TopoDS_Edge,
         F: *const TopoDS_Face,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:73 - `BRepPrim_OneAxis::SetMeridianOffset()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:71 - `BRepPrim_OneAxis::SetMeridianOffset()`
     pub fn BRepPrim_Cone_inherited_SetMeridianOffset(
         self_: *mut BRepPrim_Cone,
         MeridianOffset: f64,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:76 - `BRepPrim_OneAxis::Axes()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:74 - `BRepPrim_OneAxis::Axes()`
     pub fn BRepPrim_Cone_inherited_Axes(
         self_: *const BRepPrim_Cone,
     ) -> crate::OcctResult<*const gp_Ax2>;
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:80 - `BRepPrim_OneAxis::Angle()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:78 - `BRepPrim_OneAxis::Angle()`
     pub fn BRepPrim_Cone_inherited_Angle(self_: *const BRepPrim_Cone) -> crate::OcctResult<f64>;
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:84 - `BRepPrim_OneAxis::VMin()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:82 - `BRepPrim_OneAxis::VMin()`
     pub fn BRepPrim_Cone_inherited_VMin(self_: *const BRepPrim_Cone) -> crate::OcctResult<f64>;
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:88 - `BRepPrim_OneAxis::VMax()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:86 - `BRepPrim_OneAxis::VMax()`
     pub fn BRepPrim_Cone_inherited_VMax(self_: *const BRepPrim_Cone) -> crate::OcctResult<f64>;
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:116 - `BRepPrim_OneAxis::MeridianOnAxis()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:114 - `BRepPrim_OneAxis::MeridianOnAxis()`
     pub fn BRepPrim_Cone_inherited_MeridianOnAxis(
         self_: *const BRepPrim_Cone,
         V: f64,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:122 - `BRepPrim_OneAxis::MeridianClosed()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:120 - `BRepPrim_OneAxis::MeridianClosed()`
     pub fn BRepPrim_Cone_inherited_MeridianClosed(
         self_: *const BRepPrim_Cone,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:126 - `BRepPrim_OneAxis::VMaxInfinite()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:124 - `BRepPrim_OneAxis::VMaxInfinite()`
     pub fn BRepPrim_Cone_inherited_VMaxInfinite(
         self_: *const BRepPrim_Cone,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:130 - `BRepPrim_OneAxis::VMinInfinite()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:128 - `BRepPrim_OneAxis::VMinInfinite()`
     pub fn BRepPrim_Cone_inherited_VMinInfinite(
         self_: *const BRepPrim_Cone,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:137 - `BRepPrim_OneAxis::HasTop()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:135 - `BRepPrim_OneAxis::HasTop()`
     pub fn BRepPrim_Cone_inherited_HasTop(self_: *const BRepPrim_Cone) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:144 - `BRepPrim_OneAxis::HasBottom()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:142 - `BRepPrim_OneAxis::HasBottom()`
     pub fn BRepPrim_Cone_inherited_HasBottom(
         self_: *const BRepPrim_Cone,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:149 - `BRepPrim_OneAxis::HasSides()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:147 - `BRepPrim_OneAxis::HasSides()`
     pub fn BRepPrim_Cone_inherited_HasSides(self_: *const BRepPrim_Cone)
         -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:153 - `BRepPrim_OneAxis::Shell()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:151 - `BRepPrim_OneAxis::Shell()`
     pub fn BRepPrim_Cone_inherited_Shell(
         self_: *mut BRepPrim_Cone,
     ) -> crate::OcctResult<*const TopoDS_Shell>;
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:157 - `BRepPrim_OneAxis::LateralFace()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:155 - `BRepPrim_OneAxis::LateralFace()`
     pub fn BRepPrim_Cone_inherited_LateralFace(
         self_: *mut BRepPrim_Cone,
     ) -> crate::OcctResult<*const TopoDS_Face>;
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:161 - `BRepPrim_OneAxis::TopFace()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:159 - `BRepPrim_OneAxis::TopFace()`
     pub fn BRepPrim_Cone_inherited_TopFace(
         self_: *mut BRepPrim_Cone,
     ) -> crate::OcctResult<*const TopoDS_Face>;
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:165 - `BRepPrim_OneAxis::BottomFace()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:163 - `BRepPrim_OneAxis::BottomFace()`
     pub fn BRepPrim_Cone_inherited_BottomFace(
         self_: *mut BRepPrim_Cone,
     ) -> crate::OcctResult<*const TopoDS_Face>;
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:169 - `BRepPrim_OneAxis::StartFace()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:167 - `BRepPrim_OneAxis::StartFace()`
     pub fn BRepPrim_Cone_inherited_StartFace(
         self_: *mut BRepPrim_Cone,
     ) -> crate::OcctResult<*const TopoDS_Face>;
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:173 - `BRepPrim_OneAxis::EndFace()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:171 - `BRepPrim_OneAxis::EndFace()`
     pub fn BRepPrim_Cone_inherited_EndFace(
         self_: *mut BRepPrim_Cone,
     ) -> crate::OcctResult<*const TopoDS_Face>;
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:176 - `BRepPrim_OneAxis::LateralWire()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:174 - `BRepPrim_OneAxis::LateralWire()`
     pub fn BRepPrim_Cone_inherited_LateralWire(
         self_: *mut BRepPrim_Cone,
     ) -> crate::OcctResult<*const TopoDS_Wire>;
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:180 - `BRepPrim_OneAxis::LateralStartWire()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:178 - `BRepPrim_OneAxis::LateralStartWire()`
     pub fn BRepPrim_Cone_inherited_LateralStartWire(
         self_: *mut BRepPrim_Cone,
     ) -> crate::OcctResult<*const TopoDS_Wire>;
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:184 - `BRepPrim_OneAxis::LateralEndWire()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:182 - `BRepPrim_OneAxis::LateralEndWire()`
     pub fn BRepPrim_Cone_inherited_LateralEndWire(
         self_: *mut BRepPrim_Cone,
     ) -> crate::OcctResult<*const TopoDS_Wire>;
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:187 - `BRepPrim_OneAxis::TopWire()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:185 - `BRepPrim_OneAxis::TopWire()`
     pub fn BRepPrim_Cone_inherited_TopWire(
         self_: *mut BRepPrim_Cone,
     ) -> crate::OcctResult<*const TopoDS_Wire>;
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:190 - `BRepPrim_OneAxis::BottomWire()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:188 - `BRepPrim_OneAxis::BottomWire()`
     pub fn BRepPrim_Cone_inherited_BottomWire(
         self_: *mut BRepPrim_Cone,
     ) -> crate::OcctResult<*const TopoDS_Wire>;
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:193 - `BRepPrim_OneAxis::StartWire()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:191 - `BRepPrim_OneAxis::StartWire()`
     pub fn BRepPrim_Cone_inherited_StartWire(
         self_: *mut BRepPrim_Cone,
     ) -> crate::OcctResult<*const TopoDS_Wire>;
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:197 - `BRepPrim_OneAxis::AxisStartWire()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:195 - `BRepPrim_OneAxis::AxisStartWire()`
     pub fn BRepPrim_Cone_inherited_AxisStartWire(
         self_: *mut BRepPrim_Cone,
     ) -> crate::OcctResult<*const TopoDS_Wire>;
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:200 - `BRepPrim_OneAxis::EndWire()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:198 - `BRepPrim_OneAxis::EndWire()`
     pub fn BRepPrim_Cone_inherited_EndWire(
         self_: *mut BRepPrim_Cone,
     ) -> crate::OcctResult<*const TopoDS_Wire>;
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:204 - `BRepPrim_OneAxis::AxisEndWire()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:202 - `BRepPrim_OneAxis::AxisEndWire()`
     pub fn BRepPrim_Cone_inherited_AxisEndWire(
         self_: *mut BRepPrim_Cone,
     ) -> crate::OcctResult<*const TopoDS_Wire>;
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:208 - `BRepPrim_OneAxis::AxisEdge()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:206 - `BRepPrim_OneAxis::AxisEdge()`
     pub fn BRepPrim_Cone_inherited_AxisEdge(
         self_: *mut BRepPrim_Cone,
     ) -> crate::OcctResult<*const TopoDS_Edge>;
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:211 - `BRepPrim_OneAxis::StartEdge()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:209 - `BRepPrim_OneAxis::StartEdge()`
     pub fn BRepPrim_Cone_inherited_StartEdge(
         self_: *mut BRepPrim_Cone,
     ) -> crate::OcctResult<*const TopoDS_Edge>;
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:215 - `BRepPrim_OneAxis::EndEdge()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:213 - `BRepPrim_OneAxis::EndEdge()`
     pub fn BRepPrim_Cone_inherited_EndEdge(
         self_: *mut BRepPrim_Cone,
     ) -> crate::OcctResult<*const TopoDS_Edge>;
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:219 - `BRepPrim_OneAxis::StartTopEdge()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:217 - `BRepPrim_OneAxis::StartTopEdge()`
     pub fn BRepPrim_Cone_inherited_StartTopEdge(
         self_: *mut BRepPrim_Cone,
     ) -> crate::OcctResult<*const TopoDS_Edge>;
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:223 - `BRepPrim_OneAxis::StartBottomEdge()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:221 - `BRepPrim_OneAxis::StartBottomEdge()`
     pub fn BRepPrim_Cone_inherited_StartBottomEdge(
         self_: *mut BRepPrim_Cone,
     ) -> crate::OcctResult<*const TopoDS_Edge>;
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:227 - `BRepPrim_OneAxis::EndTopEdge()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:225 - `BRepPrim_OneAxis::EndTopEdge()`
     pub fn BRepPrim_Cone_inherited_EndTopEdge(
         self_: *mut BRepPrim_Cone,
     ) -> crate::OcctResult<*const TopoDS_Edge>;
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:231 - `BRepPrim_OneAxis::EndBottomEdge()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:229 - `BRepPrim_OneAxis::EndBottomEdge()`
     pub fn BRepPrim_Cone_inherited_EndBottomEdge(
         self_: *mut BRepPrim_Cone,
     ) -> crate::OcctResult<*const TopoDS_Edge>;
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:235 - `BRepPrim_OneAxis::TopEdge()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:233 - `BRepPrim_OneAxis::TopEdge()`
     pub fn BRepPrim_Cone_inherited_TopEdge(
         self_: *mut BRepPrim_Cone,
     ) -> crate::OcctResult<*const TopoDS_Edge>;
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:239 - `BRepPrim_OneAxis::BottomEdge()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:237 - `BRepPrim_OneAxis::BottomEdge()`
     pub fn BRepPrim_Cone_inherited_BottomEdge(
         self_: *mut BRepPrim_Cone,
     ) -> crate::OcctResult<*const TopoDS_Edge>;
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:242 - `BRepPrim_OneAxis::AxisTopVertex()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:240 - `BRepPrim_OneAxis::AxisTopVertex()`
     pub fn BRepPrim_Cone_inherited_AxisTopVertex(
         self_: *mut BRepPrim_Cone,
     ) -> crate::OcctResult<*const TopoDS_Vertex>;
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:246 - `BRepPrim_OneAxis::AxisBottomVertex()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:244 - `BRepPrim_OneAxis::AxisBottomVertex()`
     pub fn BRepPrim_Cone_inherited_AxisBottomVertex(
         self_: *mut BRepPrim_Cone,
     ) -> crate::OcctResult<*const TopoDS_Vertex>;
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:249 - `BRepPrim_OneAxis::TopStartVertex()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:247 - `BRepPrim_OneAxis::TopStartVertex()`
     pub fn BRepPrim_Cone_inherited_TopStartVertex(
         self_: *mut BRepPrim_Cone,
     ) -> crate::OcctResult<*const TopoDS_Vertex>;
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:252 - `BRepPrim_OneAxis::TopEndVertex()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:250 - `BRepPrim_OneAxis::TopEndVertex()`
     pub fn BRepPrim_Cone_inherited_TopEndVertex(
         self_: *mut BRepPrim_Cone,
     ) -> crate::OcctResult<*const TopoDS_Vertex>;
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:255 - `BRepPrim_OneAxis::BottomStartVertex()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:253 - `BRepPrim_OneAxis::BottomStartVertex()`
     pub fn BRepPrim_Cone_inherited_BottomStartVertex(
         self_: *mut BRepPrim_Cone,
     ) -> crate::OcctResult<*const TopoDS_Vertex>;
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:258 - `BRepPrim_OneAxis::BottomEndVertex()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:256 - `BRepPrim_OneAxis::BottomEndVertex()`
     pub fn BRepPrim_Cone_inherited_BottomEndVertex(
         self_: *mut BRepPrim_Cone,
     ) -> crate::OcctResult<*const TopoDS_Vertex>;
@@ -511,7 +511,7 @@ unsafe extern "C" {
         R: f64,
         H: f64,
     ) -> crate::OcctResult<*mut BRepPrim_Cylinder>;
-    /// **Source:** `BRepPrim_Cylinder.hxx`:70 - `BRepPrim_Cylinder::MakeEmptyLateralFace()`
+    /// **Source:** `BRepPrim_Cylinder.hxx`:68 - `BRepPrim_Cylinder::MakeEmptyLateralFace()`
     pub fn BRepPrim_Cylinder_make_empty_lateral_face(
         self_: *const BRepPrim_Cylinder,
     ) -> crate::OcctResult<*mut TopoDS_Face>;
@@ -547,173 +547,173 @@ unsafe extern "C" {
         E: *mut TopoDS_Edge,
         F: *const TopoDS_Face,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:73 - `BRepPrim_OneAxis::SetMeridianOffset()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:71 - `BRepPrim_OneAxis::SetMeridianOffset()`
     pub fn BRepPrim_Cylinder_inherited_SetMeridianOffset(
         self_: *mut BRepPrim_Cylinder,
         MeridianOffset: f64,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:76 - `BRepPrim_OneAxis::Axes()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:74 - `BRepPrim_OneAxis::Axes()`
     pub fn BRepPrim_Cylinder_inherited_Axes(
         self_: *const BRepPrim_Cylinder,
     ) -> crate::OcctResult<*const gp_Ax2>;
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:80 - `BRepPrim_OneAxis::Angle()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:78 - `BRepPrim_OneAxis::Angle()`
     pub fn BRepPrim_Cylinder_inherited_Angle(
         self_: *const BRepPrim_Cylinder,
     ) -> crate::OcctResult<f64>;
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:84 - `BRepPrim_OneAxis::VMin()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:82 - `BRepPrim_OneAxis::VMin()`
     pub fn BRepPrim_Cylinder_inherited_VMin(
         self_: *const BRepPrim_Cylinder,
     ) -> crate::OcctResult<f64>;
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:88 - `BRepPrim_OneAxis::VMax()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:86 - `BRepPrim_OneAxis::VMax()`
     pub fn BRepPrim_Cylinder_inherited_VMax(
         self_: *const BRepPrim_Cylinder,
     ) -> crate::OcctResult<f64>;
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:116 - `BRepPrim_OneAxis::MeridianOnAxis()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:114 - `BRepPrim_OneAxis::MeridianOnAxis()`
     pub fn BRepPrim_Cylinder_inherited_MeridianOnAxis(
         self_: *const BRepPrim_Cylinder,
         V: f64,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:122 - `BRepPrim_OneAxis::MeridianClosed()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:120 - `BRepPrim_OneAxis::MeridianClosed()`
     pub fn BRepPrim_Cylinder_inherited_MeridianClosed(
         self_: *const BRepPrim_Cylinder,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:126 - `BRepPrim_OneAxis::VMaxInfinite()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:124 - `BRepPrim_OneAxis::VMaxInfinite()`
     pub fn BRepPrim_Cylinder_inherited_VMaxInfinite(
         self_: *const BRepPrim_Cylinder,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:130 - `BRepPrim_OneAxis::VMinInfinite()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:128 - `BRepPrim_OneAxis::VMinInfinite()`
     pub fn BRepPrim_Cylinder_inherited_VMinInfinite(
         self_: *const BRepPrim_Cylinder,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:137 - `BRepPrim_OneAxis::HasTop()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:135 - `BRepPrim_OneAxis::HasTop()`
     pub fn BRepPrim_Cylinder_inherited_HasTop(
         self_: *const BRepPrim_Cylinder,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:144 - `BRepPrim_OneAxis::HasBottom()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:142 - `BRepPrim_OneAxis::HasBottom()`
     pub fn BRepPrim_Cylinder_inherited_HasBottom(
         self_: *const BRepPrim_Cylinder,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:149 - `BRepPrim_OneAxis::HasSides()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:147 - `BRepPrim_OneAxis::HasSides()`
     pub fn BRepPrim_Cylinder_inherited_HasSides(
         self_: *const BRepPrim_Cylinder,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:153 - `BRepPrim_OneAxis::Shell()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:151 - `BRepPrim_OneAxis::Shell()`
     pub fn BRepPrim_Cylinder_inherited_Shell(
         self_: *mut BRepPrim_Cylinder,
     ) -> crate::OcctResult<*const TopoDS_Shell>;
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:157 - `BRepPrim_OneAxis::LateralFace()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:155 - `BRepPrim_OneAxis::LateralFace()`
     pub fn BRepPrim_Cylinder_inherited_LateralFace(
         self_: *mut BRepPrim_Cylinder,
     ) -> crate::OcctResult<*const TopoDS_Face>;
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:161 - `BRepPrim_OneAxis::TopFace()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:159 - `BRepPrim_OneAxis::TopFace()`
     pub fn BRepPrim_Cylinder_inherited_TopFace(
         self_: *mut BRepPrim_Cylinder,
     ) -> crate::OcctResult<*const TopoDS_Face>;
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:165 - `BRepPrim_OneAxis::BottomFace()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:163 - `BRepPrim_OneAxis::BottomFace()`
     pub fn BRepPrim_Cylinder_inherited_BottomFace(
         self_: *mut BRepPrim_Cylinder,
     ) -> crate::OcctResult<*const TopoDS_Face>;
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:169 - `BRepPrim_OneAxis::StartFace()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:167 - `BRepPrim_OneAxis::StartFace()`
     pub fn BRepPrim_Cylinder_inherited_StartFace(
         self_: *mut BRepPrim_Cylinder,
     ) -> crate::OcctResult<*const TopoDS_Face>;
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:173 - `BRepPrim_OneAxis::EndFace()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:171 - `BRepPrim_OneAxis::EndFace()`
     pub fn BRepPrim_Cylinder_inherited_EndFace(
         self_: *mut BRepPrim_Cylinder,
     ) -> crate::OcctResult<*const TopoDS_Face>;
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:176 - `BRepPrim_OneAxis::LateralWire()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:174 - `BRepPrim_OneAxis::LateralWire()`
     pub fn BRepPrim_Cylinder_inherited_LateralWire(
         self_: *mut BRepPrim_Cylinder,
     ) -> crate::OcctResult<*const TopoDS_Wire>;
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:180 - `BRepPrim_OneAxis::LateralStartWire()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:178 - `BRepPrim_OneAxis::LateralStartWire()`
     pub fn BRepPrim_Cylinder_inherited_LateralStartWire(
         self_: *mut BRepPrim_Cylinder,
     ) -> crate::OcctResult<*const TopoDS_Wire>;
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:184 - `BRepPrim_OneAxis::LateralEndWire()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:182 - `BRepPrim_OneAxis::LateralEndWire()`
     pub fn BRepPrim_Cylinder_inherited_LateralEndWire(
         self_: *mut BRepPrim_Cylinder,
     ) -> crate::OcctResult<*const TopoDS_Wire>;
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:187 - `BRepPrim_OneAxis::TopWire()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:185 - `BRepPrim_OneAxis::TopWire()`
     pub fn BRepPrim_Cylinder_inherited_TopWire(
         self_: *mut BRepPrim_Cylinder,
     ) -> crate::OcctResult<*const TopoDS_Wire>;
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:190 - `BRepPrim_OneAxis::BottomWire()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:188 - `BRepPrim_OneAxis::BottomWire()`
     pub fn BRepPrim_Cylinder_inherited_BottomWire(
         self_: *mut BRepPrim_Cylinder,
     ) -> crate::OcctResult<*const TopoDS_Wire>;
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:193 - `BRepPrim_OneAxis::StartWire()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:191 - `BRepPrim_OneAxis::StartWire()`
     pub fn BRepPrim_Cylinder_inherited_StartWire(
         self_: *mut BRepPrim_Cylinder,
     ) -> crate::OcctResult<*const TopoDS_Wire>;
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:197 - `BRepPrim_OneAxis::AxisStartWire()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:195 - `BRepPrim_OneAxis::AxisStartWire()`
     pub fn BRepPrim_Cylinder_inherited_AxisStartWire(
         self_: *mut BRepPrim_Cylinder,
     ) -> crate::OcctResult<*const TopoDS_Wire>;
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:200 - `BRepPrim_OneAxis::EndWire()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:198 - `BRepPrim_OneAxis::EndWire()`
     pub fn BRepPrim_Cylinder_inherited_EndWire(
         self_: *mut BRepPrim_Cylinder,
     ) -> crate::OcctResult<*const TopoDS_Wire>;
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:204 - `BRepPrim_OneAxis::AxisEndWire()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:202 - `BRepPrim_OneAxis::AxisEndWire()`
     pub fn BRepPrim_Cylinder_inherited_AxisEndWire(
         self_: *mut BRepPrim_Cylinder,
     ) -> crate::OcctResult<*const TopoDS_Wire>;
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:208 - `BRepPrim_OneAxis::AxisEdge()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:206 - `BRepPrim_OneAxis::AxisEdge()`
     pub fn BRepPrim_Cylinder_inherited_AxisEdge(
         self_: *mut BRepPrim_Cylinder,
     ) -> crate::OcctResult<*const TopoDS_Edge>;
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:211 - `BRepPrim_OneAxis::StartEdge()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:209 - `BRepPrim_OneAxis::StartEdge()`
     pub fn BRepPrim_Cylinder_inherited_StartEdge(
         self_: *mut BRepPrim_Cylinder,
     ) -> crate::OcctResult<*const TopoDS_Edge>;
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:215 - `BRepPrim_OneAxis::EndEdge()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:213 - `BRepPrim_OneAxis::EndEdge()`
     pub fn BRepPrim_Cylinder_inherited_EndEdge(
         self_: *mut BRepPrim_Cylinder,
     ) -> crate::OcctResult<*const TopoDS_Edge>;
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:219 - `BRepPrim_OneAxis::StartTopEdge()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:217 - `BRepPrim_OneAxis::StartTopEdge()`
     pub fn BRepPrim_Cylinder_inherited_StartTopEdge(
         self_: *mut BRepPrim_Cylinder,
     ) -> crate::OcctResult<*const TopoDS_Edge>;
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:223 - `BRepPrim_OneAxis::StartBottomEdge()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:221 - `BRepPrim_OneAxis::StartBottomEdge()`
     pub fn BRepPrim_Cylinder_inherited_StartBottomEdge(
         self_: *mut BRepPrim_Cylinder,
     ) -> crate::OcctResult<*const TopoDS_Edge>;
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:227 - `BRepPrim_OneAxis::EndTopEdge()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:225 - `BRepPrim_OneAxis::EndTopEdge()`
     pub fn BRepPrim_Cylinder_inherited_EndTopEdge(
         self_: *mut BRepPrim_Cylinder,
     ) -> crate::OcctResult<*const TopoDS_Edge>;
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:231 - `BRepPrim_OneAxis::EndBottomEdge()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:229 - `BRepPrim_OneAxis::EndBottomEdge()`
     pub fn BRepPrim_Cylinder_inherited_EndBottomEdge(
         self_: *mut BRepPrim_Cylinder,
     ) -> crate::OcctResult<*const TopoDS_Edge>;
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:235 - `BRepPrim_OneAxis::TopEdge()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:233 - `BRepPrim_OneAxis::TopEdge()`
     pub fn BRepPrim_Cylinder_inherited_TopEdge(
         self_: *mut BRepPrim_Cylinder,
     ) -> crate::OcctResult<*const TopoDS_Edge>;
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:239 - `BRepPrim_OneAxis::BottomEdge()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:237 - `BRepPrim_OneAxis::BottomEdge()`
     pub fn BRepPrim_Cylinder_inherited_BottomEdge(
         self_: *mut BRepPrim_Cylinder,
     ) -> crate::OcctResult<*const TopoDS_Edge>;
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:242 - `BRepPrim_OneAxis::AxisTopVertex()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:240 - `BRepPrim_OneAxis::AxisTopVertex()`
     pub fn BRepPrim_Cylinder_inherited_AxisTopVertex(
         self_: *mut BRepPrim_Cylinder,
     ) -> crate::OcctResult<*const TopoDS_Vertex>;
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:246 - `BRepPrim_OneAxis::AxisBottomVertex()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:244 - `BRepPrim_OneAxis::AxisBottomVertex()`
     pub fn BRepPrim_Cylinder_inherited_AxisBottomVertex(
         self_: *mut BRepPrim_Cylinder,
     ) -> crate::OcctResult<*const TopoDS_Vertex>;
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:249 - `BRepPrim_OneAxis::TopStartVertex()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:247 - `BRepPrim_OneAxis::TopStartVertex()`
     pub fn BRepPrim_Cylinder_inherited_TopStartVertex(
         self_: *mut BRepPrim_Cylinder,
     ) -> crate::OcctResult<*const TopoDS_Vertex>;
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:252 - `BRepPrim_OneAxis::TopEndVertex()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:250 - `BRepPrim_OneAxis::TopEndVertex()`
     pub fn BRepPrim_Cylinder_inherited_TopEndVertex(
         self_: *mut BRepPrim_Cylinder,
     ) -> crate::OcctResult<*const TopoDS_Vertex>;
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:255 - `BRepPrim_OneAxis::BottomStartVertex()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:253 - `BRepPrim_OneAxis::BottomStartVertex()`
     pub fn BRepPrim_Cylinder_inherited_BottomStartVertex(
         self_: *mut BRepPrim_Cylinder,
     ) -> crate::OcctResult<*const TopoDS_Vertex>;
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:258 - `BRepPrim_OneAxis::BottomEndVertex()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:256 - `BRepPrim_OneAxis::BottomEndVertex()`
     pub fn BRepPrim_Cylinder_inherited_BottomEndVertex(
         self_: *mut BRepPrim_Cylinder,
     ) -> crate::OcctResult<*const TopoDS_Vertex>;
@@ -724,12 +724,12 @@ unsafe extern "C" {
     /// **Source:** `BRepPrim_FaceBuilder.hxx`:43 - `BRepPrim_FaceBuilder::BRepPrim_FaceBuilder()`
     pub fn BRepPrim_FaceBuilder_ctor_builder_handlegeomsurface(
         B: *const BRep_Builder,
-        S: *const HandleGeomSurface,
+        S: *const Handle_Geom_Surface,
     ) -> crate::OcctResult<*mut BRepPrim_FaceBuilder>;
     /// **Source:** `BRepPrim_FaceBuilder.hxx`:45 - `BRepPrim_FaceBuilder::BRepPrim_FaceBuilder()`
     pub fn BRepPrim_FaceBuilder_ctor_builder_handlegeomsurface_real4(
         B: *const BRep_Builder,
-        S: *const HandleGeomSurface,
+        S: *const Handle_Geom_Surface,
         UMin: f64,
         UMax: f64,
         VMin: f64,
@@ -739,13 +739,13 @@ unsafe extern "C" {
     pub fn BRepPrim_FaceBuilder_init_builder_handlegeomsurface(
         self_: *mut BRepPrim_FaceBuilder,
         B: *const BRep_Builder,
-        S: *const HandleGeomSurface,
+        S: *const Handle_Geom_Surface,
     ) -> *const std::ffi::c_char;
     /// **Source:** `BRepPrim_FaceBuilder.hxx`:54 - `BRepPrim_FaceBuilder::Init()`
     pub fn BRepPrim_FaceBuilder_init_builder_handlegeomsurface_real4(
         self_: *mut BRepPrim_FaceBuilder,
         B: *const BRep_Builder,
-        S: *const HandleGeomSurface,
+        S: *const Handle_Geom_Surface,
         UMin: f64,
         UMax: f64,
         VMin: f64,
@@ -867,240 +867,240 @@ unsafe extern "C" {
         d1: i32,
         d2: i32,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BRepPrim_GWedge.hxx`:187 - `BRepPrim_GWedge::Edge()`
+    /// **Source:** `BRepPrim_GWedge.hxx`:186 - `BRepPrim_GWedge::Edge()`
     pub fn BRepPrim_GWedge_edge(
         self_: *mut BRepPrim_GWedge,
         d1: i32,
         d2: i32,
     ) -> crate::OcctResult<*const TopoDS_Edge>;
-    /// **Source:** `BRepPrim_GWedge.hxx`:191 - `BRepPrim_GWedge::Line()`
+    /// **Source:** `BRepPrim_GWedge.hxx`:190 - `BRepPrim_GWedge::Line()`
     pub fn BRepPrim_GWedge_line(
         self_: *mut BRepPrim_GWedge,
         d1: i32,
         d2: i32,
     ) -> crate::OcctResult<*mut gp_Lin>;
-    /// **Source:** `BRepPrim_GWedge.hxx`:195 - `BRepPrim_GWedge::HasVertex()`
+    /// **Source:** `BRepPrim_GWedge.hxx`:194 - `BRepPrim_GWedge::HasVertex()`
     pub fn BRepPrim_GWedge_has_vertex(
         self_: *const BRepPrim_GWedge,
         d1: i32,
         d2: i32,
         d3: i32,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BRepPrim_GWedge.hxx`:201 - `BRepPrim_GWedge::Vertex()`
+    /// **Source:** `BRepPrim_GWedge.hxx`:200 - `BRepPrim_GWedge::Vertex()`
     pub fn BRepPrim_GWedge_vertex(
         self_: *mut BRepPrim_GWedge,
         d1: i32,
         d2: i32,
         d3: i32,
     ) -> crate::OcctResult<*const TopoDS_Vertex>;
-    /// **Source:** `BRepPrim_GWedge.hxx`:207 - `BRepPrim_GWedge::Point()`
+    /// **Source:** `BRepPrim_GWedge.hxx`:206 - `BRepPrim_GWedge::Point()`
     pub fn BRepPrim_GWedge_point(
         self_: *mut BRepPrim_GWedge,
         d1: i32,
         d2: i32,
         d3: i32,
     ) -> crate::OcctResult<*mut gp_Pnt>;
-    /// **Source:** `BRepPrim_GWedge.hxx`:213 - `BRepPrim_GWedge::IsDegeneratedShape()`
+    /// **Source:** `BRepPrim_GWedge.hxx`:212 - `BRepPrim_GWedge::IsDegeneratedShape()`
     pub fn BRepPrim_GWedge_is_degenerated_shape(
         self_: *mut BRepPrim_GWedge,
     ) -> crate::OcctResult<bool>;
     // ======================== BRepPrim_OneAxis ========================
     pub fn BRepPrim_OneAxis_destructor(self_: *mut BRepPrim_OneAxis);
-    /// **Source:** `BRepPrim_OneAxis.hxx`:73 - `BRepPrim_OneAxis::SetMeridianOffset()`
+    /// **Source:** `BRepPrim_OneAxis.hxx`:71 - `BRepPrim_OneAxis::SetMeridianOffset()`
     pub fn BRepPrim_OneAxis_set_meridian_offset(
         self_: *mut BRepPrim_OneAxis,
         MeridianOffset: f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepPrim_OneAxis.hxx`:76 - `BRepPrim_OneAxis::Axes()`
+    /// **Source:** `BRepPrim_OneAxis.hxx`:74 - `BRepPrim_OneAxis::Axes()`
     pub fn BRepPrim_OneAxis_axes(
         self_: *const BRepPrim_OneAxis,
     ) -> crate::OcctResult<*const gp_Ax2>;
-    /// **Source:** `BRepPrim_OneAxis.hxx`:78 - `BRepPrim_OneAxis::Axes()`
+    /// **Source:** `BRepPrim_OneAxis.hxx`:76 - `BRepPrim_OneAxis::Axes()`
     pub fn BRepPrim_OneAxis_axes_ax2(
         self_: *mut BRepPrim_OneAxis,
         A: *const gp_Ax2,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepPrim_OneAxis.hxx`:80 - `BRepPrim_OneAxis::Angle()`
+    /// **Source:** `BRepPrim_OneAxis.hxx`:78 - `BRepPrim_OneAxis::Angle()`
     pub fn BRepPrim_OneAxis_angle(self_: *const BRepPrim_OneAxis) -> crate::OcctResult<f64>;
-    /// **Source:** `BRepPrim_OneAxis.hxx`:82 - `BRepPrim_OneAxis::Angle()`
+    /// **Source:** `BRepPrim_OneAxis.hxx`:80 - `BRepPrim_OneAxis::Angle()`
     pub fn BRepPrim_OneAxis_angle_real(
         self_: *mut BRepPrim_OneAxis,
         A: f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepPrim_OneAxis.hxx`:84 - `BRepPrim_OneAxis::VMin()`
+    /// **Source:** `BRepPrim_OneAxis.hxx`:82 - `BRepPrim_OneAxis::VMin()`
     pub fn BRepPrim_OneAxis_v_min(self_: *const BRepPrim_OneAxis) -> crate::OcctResult<f64>;
-    /// **Source:** `BRepPrim_OneAxis.hxx`:86 - `BRepPrim_OneAxis::VMin()`
+    /// **Source:** `BRepPrim_OneAxis.hxx`:84 - `BRepPrim_OneAxis::VMin()`
     pub fn BRepPrim_OneAxis_v_min_real(
         self_: *mut BRepPrim_OneAxis,
         V: f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepPrim_OneAxis.hxx`:88 - `BRepPrim_OneAxis::VMax()`
+    /// **Source:** `BRepPrim_OneAxis.hxx`:86 - `BRepPrim_OneAxis::VMax()`
     pub fn BRepPrim_OneAxis_v_max(self_: *const BRepPrim_OneAxis) -> crate::OcctResult<f64>;
-    /// **Source:** `BRepPrim_OneAxis.hxx`:90 - `BRepPrim_OneAxis::VMax()`
+    /// **Source:** `BRepPrim_OneAxis.hxx`:88 - `BRepPrim_OneAxis::VMax()`
     pub fn BRepPrim_OneAxis_v_max_real(
         self_: *mut BRepPrim_OneAxis,
         V: f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepPrim_OneAxis.hxx`:97 - `BRepPrim_OneAxis::MakeEmptyLateralFace()`
+    /// **Source:** `BRepPrim_OneAxis.hxx`:95 - `BRepPrim_OneAxis::MakeEmptyLateralFace()`
     pub fn BRepPrim_OneAxis_make_empty_lateral_face(
         self_: *const BRepPrim_OneAxis,
     ) -> crate::OcctResult<*mut TopoDS_Face>;
-    /// **Source:** `BRepPrim_OneAxis.hxx`:102 - `BRepPrim_OneAxis::MakeEmptyMeridianEdge()`
+    /// **Source:** `BRepPrim_OneAxis.hxx`:100 - `BRepPrim_OneAxis::MakeEmptyMeridianEdge()`
     pub fn BRepPrim_OneAxis_make_empty_meridian_edge(
         self_: *const BRepPrim_OneAxis,
         Ang: f64,
     ) -> crate::OcctResult<*mut TopoDS_Edge>;
-    /// **Source:** `BRepPrim_OneAxis.hxx`:107 - `BRepPrim_OneAxis::SetMeridianPCurve()`
+    /// **Source:** `BRepPrim_OneAxis.hxx`:105 - `BRepPrim_OneAxis::SetMeridianPCurve()`
     pub fn BRepPrim_OneAxis_set_meridian_p_curve(
         self_: *const BRepPrim_OneAxis,
         E: *mut TopoDS_Edge,
         F: *const TopoDS_Face,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepPrim_OneAxis.hxx`:111 - `BRepPrim_OneAxis::MeridianValue()`
+    /// **Source:** `BRepPrim_OneAxis.hxx`:109 - `BRepPrim_OneAxis::MeridianValue()`
     pub fn BRepPrim_OneAxis_meridian_value(
         self_: *const BRepPrim_OneAxis,
         V: f64,
     ) -> crate::OcctResult<*mut gp_Pnt2d>;
-    /// **Source:** `BRepPrim_OneAxis.hxx`:116 - `BRepPrim_OneAxis::MeridianOnAxis()`
+    /// **Source:** `BRepPrim_OneAxis.hxx`:114 - `BRepPrim_OneAxis::MeridianOnAxis()`
     pub fn BRepPrim_OneAxis_meridian_on_axis(
         self_: *const BRepPrim_OneAxis,
         V: f64,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BRepPrim_OneAxis.hxx`:122 - `BRepPrim_OneAxis::MeridianClosed()`
+    /// **Source:** `BRepPrim_OneAxis.hxx`:120 - `BRepPrim_OneAxis::MeridianClosed()`
     pub fn BRepPrim_OneAxis_meridian_closed(
         self_: *const BRepPrim_OneAxis,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BRepPrim_OneAxis.hxx`:126 - `BRepPrim_OneAxis::VMaxInfinite()`
+    /// **Source:** `BRepPrim_OneAxis.hxx`:124 - `BRepPrim_OneAxis::VMaxInfinite()`
     pub fn BRepPrim_OneAxis_v_max_infinite(
         self_: *const BRepPrim_OneAxis,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BRepPrim_OneAxis.hxx`:130 - `BRepPrim_OneAxis::VMinInfinite()`
+    /// **Source:** `BRepPrim_OneAxis.hxx`:128 - `BRepPrim_OneAxis::VMinInfinite()`
     pub fn BRepPrim_OneAxis_v_min_infinite(
         self_: *const BRepPrim_OneAxis,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BRepPrim_OneAxis.hxx`:137 - `BRepPrim_OneAxis::HasTop()`
+    /// **Source:** `BRepPrim_OneAxis.hxx`:135 - `BRepPrim_OneAxis::HasTop()`
     pub fn BRepPrim_OneAxis_has_top(self_: *const BRepPrim_OneAxis) -> crate::OcctResult<bool>;
-    /// **Source:** `BRepPrim_OneAxis.hxx`:144 - `BRepPrim_OneAxis::HasBottom()`
+    /// **Source:** `BRepPrim_OneAxis.hxx`:142 - `BRepPrim_OneAxis::HasBottom()`
     pub fn BRepPrim_OneAxis_has_bottom(self_: *const BRepPrim_OneAxis) -> crate::OcctResult<bool>;
-    /// **Source:** `BRepPrim_OneAxis.hxx`:149 - `BRepPrim_OneAxis::HasSides()`
+    /// **Source:** `BRepPrim_OneAxis.hxx`:147 - `BRepPrim_OneAxis::HasSides()`
     pub fn BRepPrim_OneAxis_has_sides(self_: *const BRepPrim_OneAxis) -> crate::OcctResult<bool>;
-    /// **Source:** `BRepPrim_OneAxis.hxx`:153 - `BRepPrim_OneAxis::Shell()`
+    /// **Source:** `BRepPrim_OneAxis.hxx`:151 - `BRepPrim_OneAxis::Shell()`
     pub fn BRepPrim_OneAxis_shell(
         self_: *mut BRepPrim_OneAxis,
     ) -> crate::OcctResult<*const TopoDS_Shell>;
-    /// **Source:** `BRepPrim_OneAxis.hxx`:157 - `BRepPrim_OneAxis::LateralFace()`
+    /// **Source:** `BRepPrim_OneAxis.hxx`:155 - `BRepPrim_OneAxis::LateralFace()`
     pub fn BRepPrim_OneAxis_lateral_face(
         self_: *mut BRepPrim_OneAxis,
     ) -> crate::OcctResult<*const TopoDS_Face>;
-    /// **Source:** `BRepPrim_OneAxis.hxx`:161 - `BRepPrim_OneAxis::TopFace()`
+    /// **Source:** `BRepPrim_OneAxis.hxx`:159 - `BRepPrim_OneAxis::TopFace()`
     pub fn BRepPrim_OneAxis_top_face(
         self_: *mut BRepPrim_OneAxis,
     ) -> crate::OcctResult<*const TopoDS_Face>;
-    /// **Source:** `BRepPrim_OneAxis.hxx`:165 - `BRepPrim_OneAxis::BottomFace()`
+    /// **Source:** `BRepPrim_OneAxis.hxx`:163 - `BRepPrim_OneAxis::BottomFace()`
     pub fn BRepPrim_OneAxis_bottom_face(
         self_: *mut BRepPrim_OneAxis,
     ) -> crate::OcctResult<*const TopoDS_Face>;
-    /// **Source:** `BRepPrim_OneAxis.hxx`:169 - `BRepPrim_OneAxis::StartFace()`
+    /// **Source:** `BRepPrim_OneAxis.hxx`:167 - `BRepPrim_OneAxis::StartFace()`
     pub fn BRepPrim_OneAxis_start_face(
         self_: *mut BRepPrim_OneAxis,
     ) -> crate::OcctResult<*const TopoDS_Face>;
-    /// **Source:** `BRepPrim_OneAxis.hxx`:173 - `BRepPrim_OneAxis::EndFace()`
+    /// **Source:** `BRepPrim_OneAxis.hxx`:171 - `BRepPrim_OneAxis::EndFace()`
     pub fn BRepPrim_OneAxis_end_face(
         self_: *mut BRepPrim_OneAxis,
     ) -> crate::OcctResult<*const TopoDS_Face>;
-    /// **Source:** `BRepPrim_OneAxis.hxx`:176 - `BRepPrim_OneAxis::LateralWire()`
+    /// **Source:** `BRepPrim_OneAxis.hxx`:174 - `BRepPrim_OneAxis::LateralWire()`
     pub fn BRepPrim_OneAxis_lateral_wire(
         self_: *mut BRepPrim_OneAxis,
     ) -> crate::OcctResult<*const TopoDS_Wire>;
-    /// **Source:** `BRepPrim_OneAxis.hxx`:180 - `BRepPrim_OneAxis::LateralStartWire()`
+    /// **Source:** `BRepPrim_OneAxis.hxx`:178 - `BRepPrim_OneAxis::LateralStartWire()`
     pub fn BRepPrim_OneAxis_lateral_start_wire(
         self_: *mut BRepPrim_OneAxis,
     ) -> crate::OcctResult<*const TopoDS_Wire>;
-    /// **Source:** `BRepPrim_OneAxis.hxx`:184 - `BRepPrim_OneAxis::LateralEndWire()`
+    /// **Source:** `BRepPrim_OneAxis.hxx`:182 - `BRepPrim_OneAxis::LateralEndWire()`
     pub fn BRepPrim_OneAxis_lateral_end_wire(
         self_: *mut BRepPrim_OneAxis,
     ) -> crate::OcctResult<*const TopoDS_Wire>;
-    /// **Source:** `BRepPrim_OneAxis.hxx`:187 - `BRepPrim_OneAxis::TopWire()`
+    /// **Source:** `BRepPrim_OneAxis.hxx`:185 - `BRepPrim_OneAxis::TopWire()`
     pub fn BRepPrim_OneAxis_top_wire(
         self_: *mut BRepPrim_OneAxis,
     ) -> crate::OcctResult<*const TopoDS_Wire>;
-    /// **Source:** `BRepPrim_OneAxis.hxx`:190 - `BRepPrim_OneAxis::BottomWire()`
+    /// **Source:** `BRepPrim_OneAxis.hxx`:188 - `BRepPrim_OneAxis::BottomWire()`
     pub fn BRepPrim_OneAxis_bottom_wire(
         self_: *mut BRepPrim_OneAxis,
     ) -> crate::OcctResult<*const TopoDS_Wire>;
-    /// **Source:** `BRepPrim_OneAxis.hxx`:193 - `BRepPrim_OneAxis::StartWire()`
+    /// **Source:** `BRepPrim_OneAxis.hxx`:191 - `BRepPrim_OneAxis::StartWire()`
     pub fn BRepPrim_OneAxis_start_wire(
         self_: *mut BRepPrim_OneAxis,
     ) -> crate::OcctResult<*const TopoDS_Wire>;
-    /// **Source:** `BRepPrim_OneAxis.hxx`:197 - `BRepPrim_OneAxis::AxisStartWire()`
+    /// **Source:** `BRepPrim_OneAxis.hxx`:195 - `BRepPrim_OneAxis::AxisStartWire()`
     pub fn BRepPrim_OneAxis_axis_start_wire(
         self_: *mut BRepPrim_OneAxis,
     ) -> crate::OcctResult<*const TopoDS_Wire>;
-    /// **Source:** `BRepPrim_OneAxis.hxx`:200 - `BRepPrim_OneAxis::EndWire()`
+    /// **Source:** `BRepPrim_OneAxis.hxx`:198 - `BRepPrim_OneAxis::EndWire()`
     pub fn BRepPrim_OneAxis_end_wire(
         self_: *mut BRepPrim_OneAxis,
     ) -> crate::OcctResult<*const TopoDS_Wire>;
-    /// **Source:** `BRepPrim_OneAxis.hxx`:204 - `BRepPrim_OneAxis::AxisEndWire()`
+    /// **Source:** `BRepPrim_OneAxis.hxx`:202 - `BRepPrim_OneAxis::AxisEndWire()`
     pub fn BRepPrim_OneAxis_axis_end_wire(
         self_: *mut BRepPrim_OneAxis,
     ) -> crate::OcctResult<*const TopoDS_Wire>;
-    /// **Source:** `BRepPrim_OneAxis.hxx`:208 - `BRepPrim_OneAxis::AxisEdge()`
+    /// **Source:** `BRepPrim_OneAxis.hxx`:206 - `BRepPrim_OneAxis::AxisEdge()`
     pub fn BRepPrim_OneAxis_axis_edge(
         self_: *mut BRepPrim_OneAxis,
     ) -> crate::OcctResult<*const TopoDS_Edge>;
-    /// **Source:** `BRepPrim_OneAxis.hxx`:211 - `BRepPrim_OneAxis::StartEdge()`
+    /// **Source:** `BRepPrim_OneAxis.hxx`:209 - `BRepPrim_OneAxis::StartEdge()`
     pub fn BRepPrim_OneAxis_start_edge(
         self_: *mut BRepPrim_OneAxis,
     ) -> crate::OcctResult<*const TopoDS_Edge>;
-    /// **Source:** `BRepPrim_OneAxis.hxx`:215 - `BRepPrim_OneAxis::EndEdge()`
+    /// **Source:** `BRepPrim_OneAxis.hxx`:213 - `BRepPrim_OneAxis::EndEdge()`
     pub fn BRepPrim_OneAxis_end_edge(
         self_: *mut BRepPrim_OneAxis,
     ) -> crate::OcctResult<*const TopoDS_Edge>;
-    /// **Source:** `BRepPrim_OneAxis.hxx`:219 - `BRepPrim_OneAxis::StartTopEdge()`
+    /// **Source:** `BRepPrim_OneAxis.hxx`:217 - `BRepPrim_OneAxis::StartTopEdge()`
     pub fn BRepPrim_OneAxis_start_top_edge(
         self_: *mut BRepPrim_OneAxis,
     ) -> crate::OcctResult<*const TopoDS_Edge>;
-    /// **Source:** `BRepPrim_OneAxis.hxx`:223 - `BRepPrim_OneAxis::StartBottomEdge()`
+    /// **Source:** `BRepPrim_OneAxis.hxx`:221 - `BRepPrim_OneAxis::StartBottomEdge()`
     pub fn BRepPrim_OneAxis_start_bottom_edge(
         self_: *mut BRepPrim_OneAxis,
     ) -> crate::OcctResult<*const TopoDS_Edge>;
-    /// **Source:** `BRepPrim_OneAxis.hxx`:227 - `BRepPrim_OneAxis::EndTopEdge()`
+    /// **Source:** `BRepPrim_OneAxis.hxx`:225 - `BRepPrim_OneAxis::EndTopEdge()`
     pub fn BRepPrim_OneAxis_end_top_edge(
         self_: *mut BRepPrim_OneAxis,
     ) -> crate::OcctResult<*const TopoDS_Edge>;
-    /// **Source:** `BRepPrim_OneAxis.hxx`:231 - `BRepPrim_OneAxis::EndBottomEdge()`
+    /// **Source:** `BRepPrim_OneAxis.hxx`:229 - `BRepPrim_OneAxis::EndBottomEdge()`
     pub fn BRepPrim_OneAxis_end_bottom_edge(
         self_: *mut BRepPrim_OneAxis,
     ) -> crate::OcctResult<*const TopoDS_Edge>;
-    /// **Source:** `BRepPrim_OneAxis.hxx`:235 - `BRepPrim_OneAxis::TopEdge()`
+    /// **Source:** `BRepPrim_OneAxis.hxx`:233 - `BRepPrim_OneAxis::TopEdge()`
     pub fn BRepPrim_OneAxis_top_edge(
         self_: *mut BRepPrim_OneAxis,
     ) -> crate::OcctResult<*const TopoDS_Edge>;
-    /// **Source:** `BRepPrim_OneAxis.hxx`:239 - `BRepPrim_OneAxis::BottomEdge()`
+    /// **Source:** `BRepPrim_OneAxis.hxx`:237 - `BRepPrim_OneAxis::BottomEdge()`
     pub fn BRepPrim_OneAxis_bottom_edge(
         self_: *mut BRepPrim_OneAxis,
     ) -> crate::OcctResult<*const TopoDS_Edge>;
-    /// **Source:** `BRepPrim_OneAxis.hxx`:242 - `BRepPrim_OneAxis::AxisTopVertex()`
+    /// **Source:** `BRepPrim_OneAxis.hxx`:240 - `BRepPrim_OneAxis::AxisTopVertex()`
     pub fn BRepPrim_OneAxis_axis_top_vertex(
         self_: *mut BRepPrim_OneAxis,
     ) -> crate::OcctResult<*const TopoDS_Vertex>;
-    /// **Source:** `BRepPrim_OneAxis.hxx`:246 - `BRepPrim_OneAxis::AxisBottomVertex()`
+    /// **Source:** `BRepPrim_OneAxis.hxx`:244 - `BRepPrim_OneAxis::AxisBottomVertex()`
     pub fn BRepPrim_OneAxis_axis_bottom_vertex(
         self_: *mut BRepPrim_OneAxis,
     ) -> crate::OcctResult<*const TopoDS_Vertex>;
-    /// **Source:** `BRepPrim_OneAxis.hxx`:249 - `BRepPrim_OneAxis::TopStartVertex()`
+    /// **Source:** `BRepPrim_OneAxis.hxx`:247 - `BRepPrim_OneAxis::TopStartVertex()`
     pub fn BRepPrim_OneAxis_top_start_vertex(
         self_: *mut BRepPrim_OneAxis,
     ) -> crate::OcctResult<*const TopoDS_Vertex>;
-    /// **Source:** `BRepPrim_OneAxis.hxx`:252 - `BRepPrim_OneAxis::TopEndVertex()`
+    /// **Source:** `BRepPrim_OneAxis.hxx`:250 - `BRepPrim_OneAxis::TopEndVertex()`
     pub fn BRepPrim_OneAxis_top_end_vertex(
         self_: *mut BRepPrim_OneAxis,
     ) -> crate::OcctResult<*const TopoDS_Vertex>;
-    /// **Source:** `BRepPrim_OneAxis.hxx`:255 - `BRepPrim_OneAxis::BottomStartVertex()`
+    /// **Source:** `BRepPrim_OneAxis.hxx`:253 - `BRepPrim_OneAxis::BottomStartVertex()`
     pub fn BRepPrim_OneAxis_bottom_start_vertex(
         self_: *mut BRepPrim_OneAxis,
     ) -> crate::OcctResult<*const TopoDS_Vertex>;
-    /// **Source:** `BRepPrim_OneAxis.hxx`:258 - `BRepPrim_OneAxis::BottomEndVertex()`
+    /// **Source:** `BRepPrim_OneAxis.hxx`:256 - `BRepPrim_OneAxis::BottomEndVertex()`
     pub fn BRepPrim_OneAxis_bottom_end_vertex(
         self_: *mut BRepPrim_OneAxis,
     ) -> crate::OcctResult<*const TopoDS_Vertex>;
@@ -1111,8 +1111,8 @@ unsafe extern "C" {
         A: *const gp_Ax2,
         VMin: f64,
         VMax: f64,
-        M: *const HandleGeomCurve,
-        PM: *const HandleGeom2dCurve,
+        M: *const Handle_Geom_Curve,
+        PM: *const Handle_Geom2d_Curve,
     ) -> crate::OcctResult<*mut BRepPrim_Revolution>;
     /// **Source:** `BRepPrim_Revolution.hxx`:51 - `BRepPrim_Revolution::MakeEmptyLateralFace()`
     pub fn BRepPrim_Revolution_make_empty_lateral_face(
@@ -1142,173 +1142,173 @@ unsafe extern "C" {
     pub fn BRepPrim_Revolution_as_BRepPrim_OneAxis_mut(
         self_: *mut BRepPrim_Revolution,
     ) -> crate::OcctResult<*mut BRepPrim_OneAxis>;
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:73 - `BRepPrim_OneAxis::SetMeridianOffset()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:71 - `BRepPrim_OneAxis::SetMeridianOffset()`
     pub fn BRepPrim_Revolution_inherited_SetMeridianOffset(
         self_: *mut BRepPrim_Revolution,
         MeridianOffset: f64,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:76 - `BRepPrim_OneAxis::Axes()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:74 - `BRepPrim_OneAxis::Axes()`
     pub fn BRepPrim_Revolution_inherited_Axes(
         self_: *const BRepPrim_Revolution,
     ) -> crate::OcctResult<*const gp_Ax2>;
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:80 - `BRepPrim_OneAxis::Angle()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:78 - `BRepPrim_OneAxis::Angle()`
     pub fn BRepPrim_Revolution_inherited_Angle(
         self_: *const BRepPrim_Revolution,
     ) -> crate::OcctResult<f64>;
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:84 - `BRepPrim_OneAxis::VMin()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:82 - `BRepPrim_OneAxis::VMin()`
     pub fn BRepPrim_Revolution_inherited_VMin(
         self_: *const BRepPrim_Revolution,
     ) -> crate::OcctResult<f64>;
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:88 - `BRepPrim_OneAxis::VMax()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:86 - `BRepPrim_OneAxis::VMax()`
     pub fn BRepPrim_Revolution_inherited_VMax(
         self_: *const BRepPrim_Revolution,
     ) -> crate::OcctResult<f64>;
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:116 - `BRepPrim_OneAxis::MeridianOnAxis()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:114 - `BRepPrim_OneAxis::MeridianOnAxis()`
     pub fn BRepPrim_Revolution_inherited_MeridianOnAxis(
         self_: *const BRepPrim_Revolution,
         V: f64,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:122 - `BRepPrim_OneAxis::MeridianClosed()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:120 - `BRepPrim_OneAxis::MeridianClosed()`
     pub fn BRepPrim_Revolution_inherited_MeridianClosed(
         self_: *const BRepPrim_Revolution,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:126 - `BRepPrim_OneAxis::VMaxInfinite()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:124 - `BRepPrim_OneAxis::VMaxInfinite()`
     pub fn BRepPrim_Revolution_inherited_VMaxInfinite(
         self_: *const BRepPrim_Revolution,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:130 - `BRepPrim_OneAxis::VMinInfinite()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:128 - `BRepPrim_OneAxis::VMinInfinite()`
     pub fn BRepPrim_Revolution_inherited_VMinInfinite(
         self_: *const BRepPrim_Revolution,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:137 - `BRepPrim_OneAxis::HasTop()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:135 - `BRepPrim_OneAxis::HasTop()`
     pub fn BRepPrim_Revolution_inherited_HasTop(
         self_: *const BRepPrim_Revolution,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:144 - `BRepPrim_OneAxis::HasBottom()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:142 - `BRepPrim_OneAxis::HasBottom()`
     pub fn BRepPrim_Revolution_inherited_HasBottom(
         self_: *const BRepPrim_Revolution,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:149 - `BRepPrim_OneAxis::HasSides()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:147 - `BRepPrim_OneAxis::HasSides()`
     pub fn BRepPrim_Revolution_inherited_HasSides(
         self_: *const BRepPrim_Revolution,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:153 - `BRepPrim_OneAxis::Shell()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:151 - `BRepPrim_OneAxis::Shell()`
     pub fn BRepPrim_Revolution_inherited_Shell(
         self_: *mut BRepPrim_Revolution,
     ) -> crate::OcctResult<*const TopoDS_Shell>;
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:157 - `BRepPrim_OneAxis::LateralFace()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:155 - `BRepPrim_OneAxis::LateralFace()`
     pub fn BRepPrim_Revolution_inherited_LateralFace(
         self_: *mut BRepPrim_Revolution,
     ) -> crate::OcctResult<*const TopoDS_Face>;
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:161 - `BRepPrim_OneAxis::TopFace()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:159 - `BRepPrim_OneAxis::TopFace()`
     pub fn BRepPrim_Revolution_inherited_TopFace(
         self_: *mut BRepPrim_Revolution,
     ) -> crate::OcctResult<*const TopoDS_Face>;
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:165 - `BRepPrim_OneAxis::BottomFace()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:163 - `BRepPrim_OneAxis::BottomFace()`
     pub fn BRepPrim_Revolution_inherited_BottomFace(
         self_: *mut BRepPrim_Revolution,
     ) -> crate::OcctResult<*const TopoDS_Face>;
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:169 - `BRepPrim_OneAxis::StartFace()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:167 - `BRepPrim_OneAxis::StartFace()`
     pub fn BRepPrim_Revolution_inherited_StartFace(
         self_: *mut BRepPrim_Revolution,
     ) -> crate::OcctResult<*const TopoDS_Face>;
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:173 - `BRepPrim_OneAxis::EndFace()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:171 - `BRepPrim_OneAxis::EndFace()`
     pub fn BRepPrim_Revolution_inherited_EndFace(
         self_: *mut BRepPrim_Revolution,
     ) -> crate::OcctResult<*const TopoDS_Face>;
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:176 - `BRepPrim_OneAxis::LateralWire()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:174 - `BRepPrim_OneAxis::LateralWire()`
     pub fn BRepPrim_Revolution_inherited_LateralWire(
         self_: *mut BRepPrim_Revolution,
     ) -> crate::OcctResult<*const TopoDS_Wire>;
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:180 - `BRepPrim_OneAxis::LateralStartWire()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:178 - `BRepPrim_OneAxis::LateralStartWire()`
     pub fn BRepPrim_Revolution_inherited_LateralStartWire(
         self_: *mut BRepPrim_Revolution,
     ) -> crate::OcctResult<*const TopoDS_Wire>;
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:184 - `BRepPrim_OneAxis::LateralEndWire()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:182 - `BRepPrim_OneAxis::LateralEndWire()`
     pub fn BRepPrim_Revolution_inherited_LateralEndWire(
         self_: *mut BRepPrim_Revolution,
     ) -> crate::OcctResult<*const TopoDS_Wire>;
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:187 - `BRepPrim_OneAxis::TopWire()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:185 - `BRepPrim_OneAxis::TopWire()`
     pub fn BRepPrim_Revolution_inherited_TopWire(
         self_: *mut BRepPrim_Revolution,
     ) -> crate::OcctResult<*const TopoDS_Wire>;
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:190 - `BRepPrim_OneAxis::BottomWire()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:188 - `BRepPrim_OneAxis::BottomWire()`
     pub fn BRepPrim_Revolution_inherited_BottomWire(
         self_: *mut BRepPrim_Revolution,
     ) -> crate::OcctResult<*const TopoDS_Wire>;
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:193 - `BRepPrim_OneAxis::StartWire()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:191 - `BRepPrim_OneAxis::StartWire()`
     pub fn BRepPrim_Revolution_inherited_StartWire(
         self_: *mut BRepPrim_Revolution,
     ) -> crate::OcctResult<*const TopoDS_Wire>;
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:197 - `BRepPrim_OneAxis::AxisStartWire()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:195 - `BRepPrim_OneAxis::AxisStartWire()`
     pub fn BRepPrim_Revolution_inherited_AxisStartWire(
         self_: *mut BRepPrim_Revolution,
     ) -> crate::OcctResult<*const TopoDS_Wire>;
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:200 - `BRepPrim_OneAxis::EndWire()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:198 - `BRepPrim_OneAxis::EndWire()`
     pub fn BRepPrim_Revolution_inherited_EndWire(
         self_: *mut BRepPrim_Revolution,
     ) -> crate::OcctResult<*const TopoDS_Wire>;
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:204 - `BRepPrim_OneAxis::AxisEndWire()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:202 - `BRepPrim_OneAxis::AxisEndWire()`
     pub fn BRepPrim_Revolution_inherited_AxisEndWire(
         self_: *mut BRepPrim_Revolution,
     ) -> crate::OcctResult<*const TopoDS_Wire>;
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:208 - `BRepPrim_OneAxis::AxisEdge()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:206 - `BRepPrim_OneAxis::AxisEdge()`
     pub fn BRepPrim_Revolution_inherited_AxisEdge(
         self_: *mut BRepPrim_Revolution,
     ) -> crate::OcctResult<*const TopoDS_Edge>;
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:211 - `BRepPrim_OneAxis::StartEdge()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:209 - `BRepPrim_OneAxis::StartEdge()`
     pub fn BRepPrim_Revolution_inherited_StartEdge(
         self_: *mut BRepPrim_Revolution,
     ) -> crate::OcctResult<*const TopoDS_Edge>;
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:215 - `BRepPrim_OneAxis::EndEdge()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:213 - `BRepPrim_OneAxis::EndEdge()`
     pub fn BRepPrim_Revolution_inherited_EndEdge(
         self_: *mut BRepPrim_Revolution,
     ) -> crate::OcctResult<*const TopoDS_Edge>;
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:219 - `BRepPrim_OneAxis::StartTopEdge()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:217 - `BRepPrim_OneAxis::StartTopEdge()`
     pub fn BRepPrim_Revolution_inherited_StartTopEdge(
         self_: *mut BRepPrim_Revolution,
     ) -> crate::OcctResult<*const TopoDS_Edge>;
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:223 - `BRepPrim_OneAxis::StartBottomEdge()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:221 - `BRepPrim_OneAxis::StartBottomEdge()`
     pub fn BRepPrim_Revolution_inherited_StartBottomEdge(
         self_: *mut BRepPrim_Revolution,
     ) -> crate::OcctResult<*const TopoDS_Edge>;
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:227 - `BRepPrim_OneAxis::EndTopEdge()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:225 - `BRepPrim_OneAxis::EndTopEdge()`
     pub fn BRepPrim_Revolution_inherited_EndTopEdge(
         self_: *mut BRepPrim_Revolution,
     ) -> crate::OcctResult<*const TopoDS_Edge>;
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:231 - `BRepPrim_OneAxis::EndBottomEdge()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:229 - `BRepPrim_OneAxis::EndBottomEdge()`
     pub fn BRepPrim_Revolution_inherited_EndBottomEdge(
         self_: *mut BRepPrim_Revolution,
     ) -> crate::OcctResult<*const TopoDS_Edge>;
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:235 - `BRepPrim_OneAxis::TopEdge()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:233 - `BRepPrim_OneAxis::TopEdge()`
     pub fn BRepPrim_Revolution_inherited_TopEdge(
         self_: *mut BRepPrim_Revolution,
     ) -> crate::OcctResult<*const TopoDS_Edge>;
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:239 - `BRepPrim_OneAxis::BottomEdge()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:237 - `BRepPrim_OneAxis::BottomEdge()`
     pub fn BRepPrim_Revolution_inherited_BottomEdge(
         self_: *mut BRepPrim_Revolution,
     ) -> crate::OcctResult<*const TopoDS_Edge>;
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:242 - `BRepPrim_OneAxis::AxisTopVertex()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:240 - `BRepPrim_OneAxis::AxisTopVertex()`
     pub fn BRepPrim_Revolution_inherited_AxisTopVertex(
         self_: *mut BRepPrim_Revolution,
     ) -> crate::OcctResult<*const TopoDS_Vertex>;
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:246 - `BRepPrim_OneAxis::AxisBottomVertex()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:244 - `BRepPrim_OneAxis::AxisBottomVertex()`
     pub fn BRepPrim_Revolution_inherited_AxisBottomVertex(
         self_: *mut BRepPrim_Revolution,
     ) -> crate::OcctResult<*const TopoDS_Vertex>;
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:249 - `BRepPrim_OneAxis::TopStartVertex()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:247 - `BRepPrim_OneAxis::TopStartVertex()`
     pub fn BRepPrim_Revolution_inherited_TopStartVertex(
         self_: *mut BRepPrim_Revolution,
     ) -> crate::OcctResult<*const TopoDS_Vertex>;
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:252 - `BRepPrim_OneAxis::TopEndVertex()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:250 - `BRepPrim_OneAxis::TopEndVertex()`
     pub fn BRepPrim_Revolution_inherited_TopEndVertex(
         self_: *mut BRepPrim_Revolution,
     ) -> crate::OcctResult<*const TopoDS_Vertex>;
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:255 - `BRepPrim_OneAxis::BottomStartVertex()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:253 - `BRepPrim_OneAxis::BottomStartVertex()`
     pub fn BRepPrim_Revolution_inherited_BottomStartVertex(
         self_: *mut BRepPrim_Revolution,
     ) -> crate::OcctResult<*const TopoDS_Vertex>;
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:258 - `BRepPrim_OneAxis::BottomEndVertex()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:256 - `BRepPrim_OneAxis::BottomEndVertex()`
     pub fn BRepPrim_Revolution_inherited_BottomEndVertex(
         self_: *mut BRepPrim_Revolution,
     ) -> crate::OcctResult<*const TopoDS_Vertex>;
@@ -1362,168 +1362,168 @@ unsafe extern "C" {
         E: *mut TopoDS_Edge,
         F: *const TopoDS_Face,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:73 - `BRepPrim_OneAxis::SetMeridianOffset()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:71 - `BRepPrim_OneAxis::SetMeridianOffset()`
     pub fn BRepPrim_Sphere_inherited_SetMeridianOffset(
         self_: *mut BRepPrim_Sphere,
         MeridianOffset: f64,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:76 - `BRepPrim_OneAxis::Axes()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:74 - `BRepPrim_OneAxis::Axes()`
     pub fn BRepPrim_Sphere_inherited_Axes(
         self_: *const BRepPrim_Sphere,
     ) -> crate::OcctResult<*const gp_Ax2>;
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:80 - `BRepPrim_OneAxis::Angle()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:78 - `BRepPrim_OneAxis::Angle()`
     pub fn BRepPrim_Sphere_inherited_Angle(self_: *const BRepPrim_Sphere)
         -> crate::OcctResult<f64>;
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:84 - `BRepPrim_OneAxis::VMin()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:82 - `BRepPrim_OneAxis::VMin()`
     pub fn BRepPrim_Sphere_inherited_VMin(self_: *const BRepPrim_Sphere) -> crate::OcctResult<f64>;
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:88 - `BRepPrim_OneAxis::VMax()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:86 - `BRepPrim_OneAxis::VMax()`
     pub fn BRepPrim_Sphere_inherited_VMax(self_: *const BRepPrim_Sphere) -> crate::OcctResult<f64>;
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:116 - `BRepPrim_OneAxis::MeridianOnAxis()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:114 - `BRepPrim_OneAxis::MeridianOnAxis()`
     pub fn BRepPrim_Sphere_inherited_MeridianOnAxis(
         self_: *const BRepPrim_Sphere,
         V: f64,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:122 - `BRepPrim_OneAxis::MeridianClosed()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:120 - `BRepPrim_OneAxis::MeridianClosed()`
     pub fn BRepPrim_Sphere_inherited_MeridianClosed(
         self_: *const BRepPrim_Sphere,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:126 - `BRepPrim_OneAxis::VMaxInfinite()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:124 - `BRepPrim_OneAxis::VMaxInfinite()`
     pub fn BRepPrim_Sphere_inherited_VMaxInfinite(
         self_: *const BRepPrim_Sphere,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:130 - `BRepPrim_OneAxis::VMinInfinite()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:128 - `BRepPrim_OneAxis::VMinInfinite()`
     pub fn BRepPrim_Sphere_inherited_VMinInfinite(
         self_: *const BRepPrim_Sphere,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:137 - `BRepPrim_OneAxis::HasTop()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:135 - `BRepPrim_OneAxis::HasTop()`
     pub fn BRepPrim_Sphere_inherited_HasTop(
         self_: *const BRepPrim_Sphere,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:144 - `BRepPrim_OneAxis::HasBottom()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:142 - `BRepPrim_OneAxis::HasBottom()`
     pub fn BRepPrim_Sphere_inherited_HasBottom(
         self_: *const BRepPrim_Sphere,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:149 - `BRepPrim_OneAxis::HasSides()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:147 - `BRepPrim_OneAxis::HasSides()`
     pub fn BRepPrim_Sphere_inherited_HasSides(
         self_: *const BRepPrim_Sphere,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:153 - `BRepPrim_OneAxis::Shell()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:151 - `BRepPrim_OneAxis::Shell()`
     pub fn BRepPrim_Sphere_inherited_Shell(
         self_: *mut BRepPrim_Sphere,
     ) -> crate::OcctResult<*const TopoDS_Shell>;
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:157 - `BRepPrim_OneAxis::LateralFace()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:155 - `BRepPrim_OneAxis::LateralFace()`
     pub fn BRepPrim_Sphere_inherited_LateralFace(
         self_: *mut BRepPrim_Sphere,
     ) -> crate::OcctResult<*const TopoDS_Face>;
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:161 - `BRepPrim_OneAxis::TopFace()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:159 - `BRepPrim_OneAxis::TopFace()`
     pub fn BRepPrim_Sphere_inherited_TopFace(
         self_: *mut BRepPrim_Sphere,
     ) -> crate::OcctResult<*const TopoDS_Face>;
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:165 - `BRepPrim_OneAxis::BottomFace()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:163 - `BRepPrim_OneAxis::BottomFace()`
     pub fn BRepPrim_Sphere_inherited_BottomFace(
         self_: *mut BRepPrim_Sphere,
     ) -> crate::OcctResult<*const TopoDS_Face>;
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:169 - `BRepPrim_OneAxis::StartFace()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:167 - `BRepPrim_OneAxis::StartFace()`
     pub fn BRepPrim_Sphere_inherited_StartFace(
         self_: *mut BRepPrim_Sphere,
     ) -> crate::OcctResult<*const TopoDS_Face>;
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:173 - `BRepPrim_OneAxis::EndFace()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:171 - `BRepPrim_OneAxis::EndFace()`
     pub fn BRepPrim_Sphere_inherited_EndFace(
         self_: *mut BRepPrim_Sphere,
     ) -> crate::OcctResult<*const TopoDS_Face>;
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:176 - `BRepPrim_OneAxis::LateralWire()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:174 - `BRepPrim_OneAxis::LateralWire()`
     pub fn BRepPrim_Sphere_inherited_LateralWire(
         self_: *mut BRepPrim_Sphere,
     ) -> crate::OcctResult<*const TopoDS_Wire>;
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:180 - `BRepPrim_OneAxis::LateralStartWire()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:178 - `BRepPrim_OneAxis::LateralStartWire()`
     pub fn BRepPrim_Sphere_inherited_LateralStartWire(
         self_: *mut BRepPrim_Sphere,
     ) -> crate::OcctResult<*const TopoDS_Wire>;
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:184 - `BRepPrim_OneAxis::LateralEndWire()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:182 - `BRepPrim_OneAxis::LateralEndWire()`
     pub fn BRepPrim_Sphere_inherited_LateralEndWire(
         self_: *mut BRepPrim_Sphere,
     ) -> crate::OcctResult<*const TopoDS_Wire>;
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:187 - `BRepPrim_OneAxis::TopWire()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:185 - `BRepPrim_OneAxis::TopWire()`
     pub fn BRepPrim_Sphere_inherited_TopWire(
         self_: *mut BRepPrim_Sphere,
     ) -> crate::OcctResult<*const TopoDS_Wire>;
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:190 - `BRepPrim_OneAxis::BottomWire()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:188 - `BRepPrim_OneAxis::BottomWire()`
     pub fn BRepPrim_Sphere_inherited_BottomWire(
         self_: *mut BRepPrim_Sphere,
     ) -> crate::OcctResult<*const TopoDS_Wire>;
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:193 - `BRepPrim_OneAxis::StartWire()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:191 - `BRepPrim_OneAxis::StartWire()`
     pub fn BRepPrim_Sphere_inherited_StartWire(
         self_: *mut BRepPrim_Sphere,
     ) -> crate::OcctResult<*const TopoDS_Wire>;
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:197 - `BRepPrim_OneAxis::AxisStartWire()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:195 - `BRepPrim_OneAxis::AxisStartWire()`
     pub fn BRepPrim_Sphere_inherited_AxisStartWire(
         self_: *mut BRepPrim_Sphere,
     ) -> crate::OcctResult<*const TopoDS_Wire>;
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:200 - `BRepPrim_OneAxis::EndWire()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:198 - `BRepPrim_OneAxis::EndWire()`
     pub fn BRepPrim_Sphere_inherited_EndWire(
         self_: *mut BRepPrim_Sphere,
     ) -> crate::OcctResult<*const TopoDS_Wire>;
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:204 - `BRepPrim_OneAxis::AxisEndWire()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:202 - `BRepPrim_OneAxis::AxisEndWire()`
     pub fn BRepPrim_Sphere_inherited_AxisEndWire(
         self_: *mut BRepPrim_Sphere,
     ) -> crate::OcctResult<*const TopoDS_Wire>;
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:208 - `BRepPrim_OneAxis::AxisEdge()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:206 - `BRepPrim_OneAxis::AxisEdge()`
     pub fn BRepPrim_Sphere_inherited_AxisEdge(
         self_: *mut BRepPrim_Sphere,
     ) -> crate::OcctResult<*const TopoDS_Edge>;
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:211 - `BRepPrim_OneAxis::StartEdge()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:209 - `BRepPrim_OneAxis::StartEdge()`
     pub fn BRepPrim_Sphere_inherited_StartEdge(
         self_: *mut BRepPrim_Sphere,
     ) -> crate::OcctResult<*const TopoDS_Edge>;
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:215 - `BRepPrim_OneAxis::EndEdge()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:213 - `BRepPrim_OneAxis::EndEdge()`
     pub fn BRepPrim_Sphere_inherited_EndEdge(
         self_: *mut BRepPrim_Sphere,
     ) -> crate::OcctResult<*const TopoDS_Edge>;
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:219 - `BRepPrim_OneAxis::StartTopEdge()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:217 - `BRepPrim_OneAxis::StartTopEdge()`
     pub fn BRepPrim_Sphere_inherited_StartTopEdge(
         self_: *mut BRepPrim_Sphere,
     ) -> crate::OcctResult<*const TopoDS_Edge>;
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:223 - `BRepPrim_OneAxis::StartBottomEdge()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:221 - `BRepPrim_OneAxis::StartBottomEdge()`
     pub fn BRepPrim_Sphere_inherited_StartBottomEdge(
         self_: *mut BRepPrim_Sphere,
     ) -> crate::OcctResult<*const TopoDS_Edge>;
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:227 - `BRepPrim_OneAxis::EndTopEdge()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:225 - `BRepPrim_OneAxis::EndTopEdge()`
     pub fn BRepPrim_Sphere_inherited_EndTopEdge(
         self_: *mut BRepPrim_Sphere,
     ) -> crate::OcctResult<*const TopoDS_Edge>;
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:231 - `BRepPrim_OneAxis::EndBottomEdge()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:229 - `BRepPrim_OneAxis::EndBottomEdge()`
     pub fn BRepPrim_Sphere_inherited_EndBottomEdge(
         self_: *mut BRepPrim_Sphere,
     ) -> crate::OcctResult<*const TopoDS_Edge>;
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:235 - `BRepPrim_OneAxis::TopEdge()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:233 - `BRepPrim_OneAxis::TopEdge()`
     pub fn BRepPrim_Sphere_inherited_TopEdge(
         self_: *mut BRepPrim_Sphere,
     ) -> crate::OcctResult<*const TopoDS_Edge>;
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:239 - `BRepPrim_OneAxis::BottomEdge()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:237 - `BRepPrim_OneAxis::BottomEdge()`
     pub fn BRepPrim_Sphere_inherited_BottomEdge(
         self_: *mut BRepPrim_Sphere,
     ) -> crate::OcctResult<*const TopoDS_Edge>;
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:242 - `BRepPrim_OneAxis::AxisTopVertex()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:240 - `BRepPrim_OneAxis::AxisTopVertex()`
     pub fn BRepPrim_Sphere_inherited_AxisTopVertex(
         self_: *mut BRepPrim_Sphere,
     ) -> crate::OcctResult<*const TopoDS_Vertex>;
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:246 - `BRepPrim_OneAxis::AxisBottomVertex()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:244 - `BRepPrim_OneAxis::AxisBottomVertex()`
     pub fn BRepPrim_Sphere_inherited_AxisBottomVertex(
         self_: *mut BRepPrim_Sphere,
     ) -> crate::OcctResult<*const TopoDS_Vertex>;
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:249 - `BRepPrim_OneAxis::TopStartVertex()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:247 - `BRepPrim_OneAxis::TopStartVertex()`
     pub fn BRepPrim_Sphere_inherited_TopStartVertex(
         self_: *mut BRepPrim_Sphere,
     ) -> crate::OcctResult<*const TopoDS_Vertex>;
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:252 - `BRepPrim_OneAxis::TopEndVertex()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:250 - `BRepPrim_OneAxis::TopEndVertex()`
     pub fn BRepPrim_Sphere_inherited_TopEndVertex(
         self_: *mut BRepPrim_Sphere,
     ) -> crate::OcctResult<*const TopoDS_Vertex>;
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:255 - `BRepPrim_OneAxis::BottomStartVertex()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:253 - `BRepPrim_OneAxis::BottomStartVertex()`
     pub fn BRepPrim_Sphere_inherited_BottomStartVertex(
         self_: *mut BRepPrim_Sphere,
     ) -> crate::OcctResult<*const TopoDS_Vertex>;
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:258 - `BRepPrim_OneAxis::BottomEndVertex()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:256 - `BRepPrim_OneAxis::BottomEndVertex()`
     pub fn BRepPrim_Sphere_inherited_BottomEndVertex(
         self_: *mut BRepPrim_Sphere,
     ) -> crate::OcctResult<*const TopoDS_Vertex>;
@@ -1535,18 +1535,18 @@ unsafe extern "C" {
         Major: f64,
         Minor: f64,
     ) -> crate::OcctResult<*mut BRepPrim_Torus>;
-    /// **Source:** `BRepPrim_Torus.hxx`:46 - `BRepPrim_Torus::BRepPrim_Torus()`
+    /// **Source:** `BRepPrim_Torus.hxx`:44 - `BRepPrim_Torus::BRepPrim_Torus()`
     pub fn BRepPrim_Torus_ctor_real2(
         Major: f64,
         Minor: f64,
     ) -> crate::OcctResult<*mut BRepPrim_Torus>;
-    /// **Source:** `BRepPrim_Torus.hxx`:49 - `BRepPrim_Torus::BRepPrim_Torus()`
+    /// **Source:** `BRepPrim_Torus.hxx`:47 - `BRepPrim_Torus::BRepPrim_Torus()`
     pub fn BRepPrim_Torus_ctor_pnt_real2(
         Center: *const gp_Pnt,
         Major: f64,
         Minor: f64,
     ) -> crate::OcctResult<*mut BRepPrim_Torus>;
-    /// **Source:** `BRepPrim_Torus.hxx`:55 - `BRepPrim_Torus::MakeEmptyLateralFace()`
+    /// **Source:** `BRepPrim_Torus.hxx`:51 - `BRepPrim_Torus::MakeEmptyLateralFace()`
     pub fn BRepPrim_Torus_make_empty_lateral_face(
         self_: *const BRepPrim_Torus,
     ) -> crate::OcctResult<*mut TopoDS_Face>;
@@ -1582,166 +1582,166 @@ unsafe extern "C" {
         E: *mut TopoDS_Edge,
         F: *const TopoDS_Face,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:73 - `BRepPrim_OneAxis::SetMeridianOffset()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:71 - `BRepPrim_OneAxis::SetMeridianOffset()`
     pub fn BRepPrim_Torus_inherited_SetMeridianOffset(
         self_: *mut BRepPrim_Torus,
         MeridianOffset: f64,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:76 - `BRepPrim_OneAxis::Axes()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:74 - `BRepPrim_OneAxis::Axes()`
     pub fn BRepPrim_Torus_inherited_Axes(
         self_: *const BRepPrim_Torus,
     ) -> crate::OcctResult<*const gp_Ax2>;
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:80 - `BRepPrim_OneAxis::Angle()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:78 - `BRepPrim_OneAxis::Angle()`
     pub fn BRepPrim_Torus_inherited_Angle(self_: *const BRepPrim_Torus) -> crate::OcctResult<f64>;
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:84 - `BRepPrim_OneAxis::VMin()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:82 - `BRepPrim_OneAxis::VMin()`
     pub fn BRepPrim_Torus_inherited_VMin(self_: *const BRepPrim_Torus) -> crate::OcctResult<f64>;
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:88 - `BRepPrim_OneAxis::VMax()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:86 - `BRepPrim_OneAxis::VMax()`
     pub fn BRepPrim_Torus_inherited_VMax(self_: *const BRepPrim_Torus) -> crate::OcctResult<f64>;
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:116 - `BRepPrim_OneAxis::MeridianOnAxis()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:114 - `BRepPrim_OneAxis::MeridianOnAxis()`
     pub fn BRepPrim_Torus_inherited_MeridianOnAxis(
         self_: *const BRepPrim_Torus,
         V: f64,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:122 - `BRepPrim_OneAxis::MeridianClosed()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:120 - `BRepPrim_OneAxis::MeridianClosed()`
     pub fn BRepPrim_Torus_inherited_MeridianClosed(
         self_: *const BRepPrim_Torus,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:126 - `BRepPrim_OneAxis::VMaxInfinite()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:124 - `BRepPrim_OneAxis::VMaxInfinite()`
     pub fn BRepPrim_Torus_inherited_VMaxInfinite(
         self_: *const BRepPrim_Torus,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:130 - `BRepPrim_OneAxis::VMinInfinite()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:128 - `BRepPrim_OneAxis::VMinInfinite()`
     pub fn BRepPrim_Torus_inherited_VMinInfinite(
         self_: *const BRepPrim_Torus,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:137 - `BRepPrim_OneAxis::HasTop()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:135 - `BRepPrim_OneAxis::HasTop()`
     pub fn BRepPrim_Torus_inherited_HasTop(self_: *const BRepPrim_Torus)
         -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:144 - `BRepPrim_OneAxis::HasBottom()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:142 - `BRepPrim_OneAxis::HasBottom()`
     pub fn BRepPrim_Torus_inherited_HasBottom(
         self_: *const BRepPrim_Torus,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:149 - `BRepPrim_OneAxis::HasSides()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:147 - `BRepPrim_OneAxis::HasSides()`
     pub fn BRepPrim_Torus_inherited_HasSides(
         self_: *const BRepPrim_Torus,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:153 - `BRepPrim_OneAxis::Shell()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:151 - `BRepPrim_OneAxis::Shell()`
     pub fn BRepPrim_Torus_inherited_Shell(
         self_: *mut BRepPrim_Torus,
     ) -> crate::OcctResult<*const TopoDS_Shell>;
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:157 - `BRepPrim_OneAxis::LateralFace()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:155 - `BRepPrim_OneAxis::LateralFace()`
     pub fn BRepPrim_Torus_inherited_LateralFace(
         self_: *mut BRepPrim_Torus,
     ) -> crate::OcctResult<*const TopoDS_Face>;
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:161 - `BRepPrim_OneAxis::TopFace()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:159 - `BRepPrim_OneAxis::TopFace()`
     pub fn BRepPrim_Torus_inherited_TopFace(
         self_: *mut BRepPrim_Torus,
     ) -> crate::OcctResult<*const TopoDS_Face>;
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:165 - `BRepPrim_OneAxis::BottomFace()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:163 - `BRepPrim_OneAxis::BottomFace()`
     pub fn BRepPrim_Torus_inherited_BottomFace(
         self_: *mut BRepPrim_Torus,
     ) -> crate::OcctResult<*const TopoDS_Face>;
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:169 - `BRepPrim_OneAxis::StartFace()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:167 - `BRepPrim_OneAxis::StartFace()`
     pub fn BRepPrim_Torus_inherited_StartFace(
         self_: *mut BRepPrim_Torus,
     ) -> crate::OcctResult<*const TopoDS_Face>;
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:173 - `BRepPrim_OneAxis::EndFace()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:171 - `BRepPrim_OneAxis::EndFace()`
     pub fn BRepPrim_Torus_inherited_EndFace(
         self_: *mut BRepPrim_Torus,
     ) -> crate::OcctResult<*const TopoDS_Face>;
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:176 - `BRepPrim_OneAxis::LateralWire()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:174 - `BRepPrim_OneAxis::LateralWire()`
     pub fn BRepPrim_Torus_inherited_LateralWire(
         self_: *mut BRepPrim_Torus,
     ) -> crate::OcctResult<*const TopoDS_Wire>;
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:180 - `BRepPrim_OneAxis::LateralStartWire()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:178 - `BRepPrim_OneAxis::LateralStartWire()`
     pub fn BRepPrim_Torus_inherited_LateralStartWire(
         self_: *mut BRepPrim_Torus,
     ) -> crate::OcctResult<*const TopoDS_Wire>;
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:184 - `BRepPrim_OneAxis::LateralEndWire()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:182 - `BRepPrim_OneAxis::LateralEndWire()`
     pub fn BRepPrim_Torus_inherited_LateralEndWire(
         self_: *mut BRepPrim_Torus,
     ) -> crate::OcctResult<*const TopoDS_Wire>;
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:187 - `BRepPrim_OneAxis::TopWire()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:185 - `BRepPrim_OneAxis::TopWire()`
     pub fn BRepPrim_Torus_inherited_TopWire(
         self_: *mut BRepPrim_Torus,
     ) -> crate::OcctResult<*const TopoDS_Wire>;
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:190 - `BRepPrim_OneAxis::BottomWire()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:188 - `BRepPrim_OneAxis::BottomWire()`
     pub fn BRepPrim_Torus_inherited_BottomWire(
         self_: *mut BRepPrim_Torus,
     ) -> crate::OcctResult<*const TopoDS_Wire>;
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:193 - `BRepPrim_OneAxis::StartWire()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:191 - `BRepPrim_OneAxis::StartWire()`
     pub fn BRepPrim_Torus_inherited_StartWire(
         self_: *mut BRepPrim_Torus,
     ) -> crate::OcctResult<*const TopoDS_Wire>;
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:197 - `BRepPrim_OneAxis::AxisStartWire()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:195 - `BRepPrim_OneAxis::AxisStartWire()`
     pub fn BRepPrim_Torus_inherited_AxisStartWire(
         self_: *mut BRepPrim_Torus,
     ) -> crate::OcctResult<*const TopoDS_Wire>;
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:200 - `BRepPrim_OneAxis::EndWire()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:198 - `BRepPrim_OneAxis::EndWire()`
     pub fn BRepPrim_Torus_inherited_EndWire(
         self_: *mut BRepPrim_Torus,
     ) -> crate::OcctResult<*const TopoDS_Wire>;
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:204 - `BRepPrim_OneAxis::AxisEndWire()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:202 - `BRepPrim_OneAxis::AxisEndWire()`
     pub fn BRepPrim_Torus_inherited_AxisEndWire(
         self_: *mut BRepPrim_Torus,
     ) -> crate::OcctResult<*const TopoDS_Wire>;
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:208 - `BRepPrim_OneAxis::AxisEdge()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:206 - `BRepPrim_OneAxis::AxisEdge()`
     pub fn BRepPrim_Torus_inherited_AxisEdge(
         self_: *mut BRepPrim_Torus,
     ) -> crate::OcctResult<*const TopoDS_Edge>;
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:211 - `BRepPrim_OneAxis::StartEdge()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:209 - `BRepPrim_OneAxis::StartEdge()`
     pub fn BRepPrim_Torus_inherited_StartEdge(
         self_: *mut BRepPrim_Torus,
     ) -> crate::OcctResult<*const TopoDS_Edge>;
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:215 - `BRepPrim_OneAxis::EndEdge()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:213 - `BRepPrim_OneAxis::EndEdge()`
     pub fn BRepPrim_Torus_inherited_EndEdge(
         self_: *mut BRepPrim_Torus,
     ) -> crate::OcctResult<*const TopoDS_Edge>;
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:219 - `BRepPrim_OneAxis::StartTopEdge()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:217 - `BRepPrim_OneAxis::StartTopEdge()`
     pub fn BRepPrim_Torus_inherited_StartTopEdge(
         self_: *mut BRepPrim_Torus,
     ) -> crate::OcctResult<*const TopoDS_Edge>;
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:223 - `BRepPrim_OneAxis::StartBottomEdge()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:221 - `BRepPrim_OneAxis::StartBottomEdge()`
     pub fn BRepPrim_Torus_inherited_StartBottomEdge(
         self_: *mut BRepPrim_Torus,
     ) -> crate::OcctResult<*const TopoDS_Edge>;
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:227 - `BRepPrim_OneAxis::EndTopEdge()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:225 - `BRepPrim_OneAxis::EndTopEdge()`
     pub fn BRepPrim_Torus_inherited_EndTopEdge(
         self_: *mut BRepPrim_Torus,
     ) -> crate::OcctResult<*const TopoDS_Edge>;
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:231 - `BRepPrim_OneAxis::EndBottomEdge()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:229 - `BRepPrim_OneAxis::EndBottomEdge()`
     pub fn BRepPrim_Torus_inherited_EndBottomEdge(
         self_: *mut BRepPrim_Torus,
     ) -> crate::OcctResult<*const TopoDS_Edge>;
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:235 - `BRepPrim_OneAxis::TopEdge()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:233 - `BRepPrim_OneAxis::TopEdge()`
     pub fn BRepPrim_Torus_inherited_TopEdge(
         self_: *mut BRepPrim_Torus,
     ) -> crate::OcctResult<*const TopoDS_Edge>;
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:239 - `BRepPrim_OneAxis::BottomEdge()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:237 - `BRepPrim_OneAxis::BottomEdge()`
     pub fn BRepPrim_Torus_inherited_BottomEdge(
         self_: *mut BRepPrim_Torus,
     ) -> crate::OcctResult<*const TopoDS_Edge>;
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:242 - `BRepPrim_OneAxis::AxisTopVertex()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:240 - `BRepPrim_OneAxis::AxisTopVertex()`
     pub fn BRepPrim_Torus_inherited_AxisTopVertex(
         self_: *mut BRepPrim_Torus,
     ) -> crate::OcctResult<*const TopoDS_Vertex>;
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:246 - `BRepPrim_OneAxis::AxisBottomVertex()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:244 - `BRepPrim_OneAxis::AxisBottomVertex()`
     pub fn BRepPrim_Torus_inherited_AxisBottomVertex(
         self_: *mut BRepPrim_Torus,
     ) -> crate::OcctResult<*const TopoDS_Vertex>;
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:249 - `BRepPrim_OneAxis::TopStartVertex()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:247 - `BRepPrim_OneAxis::TopStartVertex()`
     pub fn BRepPrim_Torus_inherited_TopStartVertex(
         self_: *mut BRepPrim_Torus,
     ) -> crate::OcctResult<*const TopoDS_Vertex>;
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:252 - `BRepPrim_OneAxis::TopEndVertex()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:250 - `BRepPrim_OneAxis::TopEndVertex()`
     pub fn BRepPrim_Torus_inherited_TopEndVertex(
         self_: *mut BRepPrim_Torus,
     ) -> crate::OcctResult<*const TopoDS_Vertex>;
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:255 - `BRepPrim_OneAxis::BottomStartVertex()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:253 - `BRepPrim_OneAxis::BottomStartVertex()`
     pub fn BRepPrim_Torus_inherited_BottomStartVertex(
         self_: *mut BRepPrim_Torus,
     ) -> crate::OcctResult<*const TopoDS_Vertex>;
-    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:258 - `BRepPrim_OneAxis::BottomEndVertex()`
+    /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:256 - `BRepPrim_OneAxis::BottomEndVertex()`
     pub fn BRepPrim_Torus_inherited_BottomEndVertex(
         self_: *mut BRepPrim_Torus,
     ) -> crate::OcctResult<*const TopoDS_Vertex>;
@@ -1874,40 +1874,40 @@ unsafe extern "C" {
         d1: i32,
         d2: i32,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `BRepPrim_GWedge.hxx`:187 - `BRepPrim_GWedge::Edge()`
+    /// Inherited: **Source:** `BRepPrim_GWedge.hxx`:186 - `BRepPrim_GWedge::Edge()`
     pub fn BRepPrim_Wedge_inherited_Edge(
         self_: *mut BRepPrim_Wedge,
         d1: i32,
         d2: i32,
     ) -> crate::OcctResult<*const TopoDS_Edge>;
-    /// Inherited: **Source:** `BRepPrim_GWedge.hxx`:191 - `BRepPrim_GWedge::Line()`
+    /// Inherited: **Source:** `BRepPrim_GWedge.hxx`:190 - `BRepPrim_GWedge::Line()`
     pub fn BRepPrim_Wedge_inherited_Line(
         self_: *mut BRepPrim_Wedge,
         d1: i32,
         d2: i32,
     ) -> crate::OcctResult<*mut gp_Lin>;
-    /// Inherited: **Source:** `BRepPrim_GWedge.hxx`:195 - `BRepPrim_GWedge::HasVertex()`
+    /// Inherited: **Source:** `BRepPrim_GWedge.hxx`:194 - `BRepPrim_GWedge::HasVertex()`
     pub fn BRepPrim_Wedge_inherited_HasVertex(
         self_: *const BRepPrim_Wedge,
         d1: i32,
         d2: i32,
         d3: i32,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `BRepPrim_GWedge.hxx`:201 - `BRepPrim_GWedge::Vertex()`
+    /// Inherited: **Source:** `BRepPrim_GWedge.hxx`:200 - `BRepPrim_GWedge::Vertex()`
     pub fn BRepPrim_Wedge_inherited_Vertex(
         self_: *mut BRepPrim_Wedge,
         d1: i32,
         d2: i32,
         d3: i32,
     ) -> crate::OcctResult<*const TopoDS_Vertex>;
-    /// Inherited: **Source:** `BRepPrim_GWedge.hxx`:207 - `BRepPrim_GWedge::Point()`
+    /// Inherited: **Source:** `BRepPrim_GWedge.hxx`:206 - `BRepPrim_GWedge::Point()`
     pub fn BRepPrim_Wedge_inherited_Point(
         self_: *mut BRepPrim_Wedge,
         d1: i32,
         d2: i32,
         d3: i32,
     ) -> crate::OcctResult<*mut gp_Pnt>;
-    /// Inherited: **Source:** `BRepPrim_GWedge.hxx`:213 - `BRepPrim_GWedge::IsDegeneratedShape()`
+    /// Inherited: **Source:** `BRepPrim_GWedge.hxx`:212 - `BRepPrim_GWedge::IsDegeneratedShape()`
     pub fn BRepPrim_Wedge_inherited_IsDegeneratedShape(
         self_: *mut BRepPrim_Wedge,
     ) -> crate::OcctResult<bool>;
@@ -1921,33 +1921,33 @@ unsafe extern "C" {
         dy: f64,
         dz: f64,
     ) -> crate::OcctResult<*mut BRepPrimAPI_MakeBox>;
-    /// **Source:** `BRepPrimAPI_MakeBox.hxx`:64 - `BRepPrimAPI_MakeBox::BRepPrimAPI_MakeBox()`
+    /// **Source:** `BRepPrimAPI_MakeBox.hxx`:62 - `BRepPrimAPI_MakeBox::BRepPrimAPI_MakeBox()`
     pub fn BRepPrimAPI_MakeBox_ctor_pnt_real3(
         P: *const gp_Pnt,
         dx: f64,
         dy: f64,
         dz: f64,
     ) -> crate::OcctResult<*mut BRepPrimAPI_MakeBox>;
-    /// **Source:** `BRepPrimAPI_MakeBox.hxx`:70 - `BRepPrimAPI_MakeBox::BRepPrimAPI_MakeBox()`
+    /// **Source:** `BRepPrimAPI_MakeBox.hxx`:68 - `BRepPrimAPI_MakeBox::BRepPrimAPI_MakeBox()`
     pub fn BRepPrimAPI_MakeBox_ctor_pnt2(
         P1: *const gp_Pnt,
         P2: *const gp_Pnt,
     ) -> crate::OcctResult<*mut BRepPrimAPI_MakeBox>;
-    /// **Source:** `BRepPrimAPI_MakeBox.hxx`:73 - `BRepPrimAPI_MakeBox::BRepPrimAPI_MakeBox()`
+    /// **Source:** `BRepPrimAPI_MakeBox.hxx`:71 - `BRepPrimAPI_MakeBox::BRepPrimAPI_MakeBox()`
     pub fn BRepPrimAPI_MakeBox_ctor_ax2_real3(
         Axes: *const gp_Ax2,
         dx: f64,
         dy: f64,
         dz: f64,
     ) -> crate::OcctResult<*mut BRepPrimAPI_MakeBox>;
-    /// **Source:** `BRepPrimAPI_MakeBox.hxx`:79 - `BRepPrimAPI_MakeBox::Init()`
+    /// **Source:** `BRepPrimAPI_MakeBox.hxx`:77 - `BRepPrimAPI_MakeBox::Init()`
     pub fn BRepPrimAPI_MakeBox_init_real3(
         self_: *mut BRepPrimAPI_MakeBox,
         theDX: f64,
         theDY: f64,
         theDZ: f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepPrimAPI_MakeBox.hxx`:84 - `BRepPrimAPI_MakeBox::Init()`
+    /// **Source:** `BRepPrimAPI_MakeBox.hxx`:80 - `BRepPrimAPI_MakeBox::Init()`
     pub fn BRepPrimAPI_MakeBox_init_pnt_real3(
         self_: *mut BRepPrimAPI_MakeBox,
         thePnt: *const gp_Pnt,
@@ -1955,13 +1955,13 @@ unsafe extern "C" {
         theDY: f64,
         theDZ: f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepPrimAPI_MakeBox.hxx`:90 - `BRepPrimAPI_MakeBox::Init()`
+    /// **Source:** `BRepPrimAPI_MakeBox.hxx`:86 - `BRepPrimAPI_MakeBox::Init()`
     pub fn BRepPrimAPI_MakeBox_init_pnt2(
         self_: *mut BRepPrimAPI_MakeBox,
         thePnt1: *const gp_Pnt,
         thePnt2: *const gp_Pnt,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepPrimAPI_MakeBox.hxx`:93 - `BRepPrimAPI_MakeBox::Init()`
+    /// **Source:** `BRepPrimAPI_MakeBox.hxx`:89 - `BRepPrimAPI_MakeBox::Init()`
     pub fn BRepPrimAPI_MakeBox_init_ax2_real3(
         self_: *mut BRepPrimAPI_MakeBox,
         theAxes: *const gp_Ax2,
@@ -1969,44 +1969,44 @@ unsafe extern "C" {
         theDY: f64,
         theDZ: f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepPrimAPI_MakeBox.hxx`:99 - `BRepPrimAPI_MakeBox::Wedge()`
+    /// **Source:** `BRepPrimAPI_MakeBox.hxx`:95 - `BRepPrimAPI_MakeBox::Wedge()`
     pub fn BRepPrimAPI_MakeBox_wedge(
         self_: *mut BRepPrimAPI_MakeBox,
     ) -> crate::OcctResult<*mut BRepPrim_Wedge>;
-    /// **Source:** `BRepPrimAPI_MakeBox.hxx`:102 - `BRepPrimAPI_MakeBox::Build()`
+    /// **Source:** `BRepPrimAPI_MakeBox.hxx`:98 - `BRepPrimAPI_MakeBox::Build()`
     pub fn BRepPrimAPI_MakeBox_build(
         self_: *mut BRepPrimAPI_MakeBox,
         theRange: *const Message_ProgressRange,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepPrimAPI_MakeBox.hxx`:106 - `BRepPrimAPI_MakeBox::Shell()`
+    /// **Source:** `BRepPrimAPI_MakeBox.hxx`:102 - `BRepPrimAPI_MakeBox::Shell()`
     pub fn BRepPrimAPI_MakeBox_shell(
         self_: *mut BRepPrimAPI_MakeBox,
     ) -> crate::OcctResult<*const TopoDS_Shell>;
-    /// **Source:** `BRepPrimAPI_MakeBox.hxx`:110 - `BRepPrimAPI_MakeBox::Solid()`
+    /// **Source:** `BRepPrimAPI_MakeBox.hxx`:106 - `BRepPrimAPI_MakeBox::Solid()`
     pub fn BRepPrimAPI_MakeBox_solid(
         self_: *mut BRepPrimAPI_MakeBox,
     ) -> crate::OcctResult<*const TopoDS_Solid>;
-    /// **Source:** `BRepPrimAPI_MakeBox.hxx`:114 - `BRepPrimAPI_MakeBox::BottomFace()`
+    /// **Source:** `BRepPrimAPI_MakeBox.hxx`:110 - `BRepPrimAPI_MakeBox::BottomFace()`
     pub fn BRepPrimAPI_MakeBox_bottom_face(
         self_: *mut BRepPrimAPI_MakeBox,
     ) -> crate::OcctResult<*const TopoDS_Face>;
-    /// **Source:** `BRepPrimAPI_MakeBox.hxx`:117 - `BRepPrimAPI_MakeBox::BackFace()`
+    /// **Source:** `BRepPrimAPI_MakeBox.hxx`:113 - `BRepPrimAPI_MakeBox::BackFace()`
     pub fn BRepPrimAPI_MakeBox_back_face(
         self_: *mut BRepPrimAPI_MakeBox,
     ) -> crate::OcctResult<*const TopoDS_Face>;
-    /// **Source:** `BRepPrimAPI_MakeBox.hxx`:120 - `BRepPrimAPI_MakeBox::FrontFace()`
+    /// **Source:** `BRepPrimAPI_MakeBox.hxx`:116 - `BRepPrimAPI_MakeBox::FrontFace()`
     pub fn BRepPrimAPI_MakeBox_front_face(
         self_: *mut BRepPrimAPI_MakeBox,
     ) -> crate::OcctResult<*const TopoDS_Face>;
-    /// **Source:** `BRepPrimAPI_MakeBox.hxx`:123 - `BRepPrimAPI_MakeBox::LeftFace()`
+    /// **Source:** `BRepPrimAPI_MakeBox.hxx`:119 - `BRepPrimAPI_MakeBox::LeftFace()`
     pub fn BRepPrimAPI_MakeBox_left_face(
         self_: *mut BRepPrimAPI_MakeBox,
     ) -> crate::OcctResult<*const TopoDS_Face>;
-    /// **Source:** `BRepPrimAPI_MakeBox.hxx`:126 - `BRepPrimAPI_MakeBox::RightFace()`
+    /// **Source:** `BRepPrimAPI_MakeBox.hxx`:122 - `BRepPrimAPI_MakeBox::RightFace()`
     pub fn BRepPrimAPI_MakeBox_right_face(
         self_: *mut BRepPrimAPI_MakeBox,
     ) -> crate::OcctResult<*const TopoDS_Face>;
-    /// **Source:** `BRepPrimAPI_MakeBox.hxx`:129 - `BRepPrimAPI_MakeBox::TopFace()`
+    /// **Source:** `BRepPrimAPI_MakeBox.hxx`:125 - `BRepPrimAPI_MakeBox::TopFace()`
     pub fn BRepPrimAPI_MakeBox_top_face(
         self_: *mut BRepPrimAPI_MakeBox,
     ) -> crate::OcctResult<*const TopoDS_Face>;
@@ -2051,21 +2051,21 @@ unsafe extern "C" {
         R2: f64,
         H: f64,
     ) -> crate::OcctResult<*mut BRepPrimAPI_MakeCone>;
-    /// **Source:** `BRepPrimAPI_MakeCone.hxx`:51 - `BRepPrimAPI_MakeCone::BRepPrimAPI_MakeCone()`
+    /// **Source:** `BRepPrimAPI_MakeCone.hxx`:49 - `BRepPrimAPI_MakeCone::BRepPrimAPI_MakeCone()`
     pub fn BRepPrimAPI_MakeCone_ctor_real4(
         R1: f64,
         R2: f64,
         H: f64,
         angle: f64,
     ) -> crate::OcctResult<*mut BRepPrimAPI_MakeCone>;
-    /// **Source:** `BRepPrimAPI_MakeCone.hxx`:61 - `BRepPrimAPI_MakeCone::BRepPrimAPI_MakeCone()`
+    /// **Source:** `BRepPrimAPI_MakeCone.hxx`:59 - `BRepPrimAPI_MakeCone::BRepPrimAPI_MakeCone()`
     pub fn BRepPrimAPI_MakeCone_ctor_ax2_real3(
         Axes: *const gp_Ax2,
         R1: f64,
         R2: f64,
         H: f64,
     ) -> crate::OcctResult<*mut BRepPrimAPI_MakeCone>;
-    /// **Source:** `BRepPrimAPI_MakeCone.hxx`:97 - `BRepPrimAPI_MakeCone::BRepPrimAPI_MakeCone()`
+    /// **Source:** `BRepPrimAPI_MakeCone.hxx`:95 - `BRepPrimAPI_MakeCone::BRepPrimAPI_MakeCone()`
     pub fn BRepPrimAPI_MakeCone_ctor_ax2_real4(
         Axes: *const gp_Ax2,
         R1: f64,
@@ -2073,11 +2073,11 @@ unsafe extern "C" {
         H: f64,
         angle: f64,
     ) -> crate::OcctResult<*mut BRepPrimAPI_MakeCone>;
-    /// **Source:** `BRepPrimAPI_MakeCone.hxx`:104 - `BRepPrimAPI_MakeCone::OneAxis()`
+    /// **Source:** `BRepPrimAPI_MakeCone.hxx`:102 - `BRepPrimAPI_MakeCone::OneAxis()`
     pub fn BRepPrimAPI_MakeCone_one_axis(
         self_: *mut BRepPrimAPI_MakeCone,
     ) -> crate::OcctResult<*mut std::ffi::c_void>;
-    /// **Source:** `BRepPrimAPI_MakeCone.hxx`:107 - `BRepPrimAPI_MakeCone::Cone()`
+    /// **Source:** `BRepPrimAPI_MakeCone.hxx`:105 - `BRepPrimAPI_MakeCone::Cone()`
     pub fn BRepPrimAPI_MakeCone_cone(
         self_: *mut BRepPrimAPI_MakeCone,
     ) -> crate::OcctResult<*mut BRepPrim_Cone>;
@@ -2152,24 +2152,24 @@ unsafe extern "C" {
         H: f64,
         Angle: f64,
     ) -> crate::OcctResult<*mut BRepPrimAPI_MakeCylinder>;
-    /// **Source:** `BRepPrimAPI_MakeCylinder.hxx`:55 - `BRepPrimAPI_MakeCylinder::BRepPrimAPI_MakeCylinder()`
+    /// **Source:** `BRepPrimAPI_MakeCylinder.hxx`:53 - `BRepPrimAPI_MakeCylinder::BRepPrimAPI_MakeCylinder()`
     pub fn BRepPrimAPI_MakeCylinder_ctor_ax2_real2(
         Axes: *const gp_Ax2,
         R: f64,
         H: f64,
     ) -> crate::OcctResult<*mut BRepPrimAPI_MakeCylinder>;
-    /// **Source:** `BRepPrimAPI_MakeCylinder.hxx`:85 - `BRepPrimAPI_MakeCylinder::BRepPrimAPI_MakeCylinder()`
+    /// **Source:** `BRepPrimAPI_MakeCylinder.hxx`:81 - `BRepPrimAPI_MakeCylinder::BRepPrimAPI_MakeCylinder()`
     pub fn BRepPrimAPI_MakeCylinder_ctor_ax2_real3(
         Axes: *const gp_Ax2,
         R: f64,
         H: f64,
         Angle: f64,
     ) -> crate::OcctResult<*mut BRepPrimAPI_MakeCylinder>;
-    /// **Source:** `BRepPrimAPI_MakeCylinder.hxx`:91 - `BRepPrimAPI_MakeCylinder::OneAxis()`
+    /// **Source:** `BRepPrimAPI_MakeCylinder.hxx`:87 - `BRepPrimAPI_MakeCylinder::OneAxis()`
     pub fn BRepPrimAPI_MakeCylinder_one_axis(
         self_: *mut BRepPrimAPI_MakeCylinder,
     ) -> crate::OcctResult<*mut std::ffi::c_void>;
-    /// **Source:** `BRepPrimAPI_MakeCylinder.hxx`:94 - `BRepPrimAPI_MakeCylinder::Cylinder()`
+    /// **Source:** `BRepPrimAPI_MakeCylinder.hxx`:90 - `BRepPrimAPI_MakeCylinder::Cylinder()`
     pub fn BRepPrimAPI_MakeCylinder_cylinder(
         self_: *mut BRepPrimAPI_MakeCylinder,
     ) -> crate::OcctResult<*mut BRepPrim_Cylinder>;
@@ -2343,14 +2343,14 @@ unsafe extern "C" {
     ) -> *const std::ffi::c_char;
     // ======================== BRepPrimAPI_MakePrism ========================
     pub fn BRepPrimAPI_MakePrism_destructor(self_: *mut BRepPrimAPI_MakePrism);
-    /// **Source:** `BRepPrimAPI_MakePrism.hxx`:55 - `BRepPrimAPI_MakePrism::BRepPrimAPI_MakePrism()`
+    /// **Source:** `BRepPrimAPI_MakePrism.hxx`:56 - `BRepPrimAPI_MakePrism::BRepPrimAPI_MakePrism()`
     pub fn BRepPrimAPI_MakePrism_ctor_shape_vec_bool2(
         S: *const TopoDS_Shape,
         V: *const gp_Vec,
         Copy: bool,
         Canonize: bool,
     ) -> crate::OcctResult<*mut BRepPrimAPI_MakePrism>;
-    /// **Source:** `BRepPrimAPI_MakePrism.hxx`:66 - `BRepPrimAPI_MakePrism::BRepPrimAPI_MakePrism()`
+    /// **Source:** `BRepPrimAPI_MakePrism.hxx`:67 - `BRepPrimAPI_MakePrism::BRepPrimAPI_MakePrism()`
     pub fn BRepPrimAPI_MakePrism_ctor_shape_dir_bool3(
         S: *const TopoDS_Shape,
         D: *const gp_Dir,
@@ -2358,28 +2358,28 @@ unsafe extern "C" {
         Copy: bool,
         Canonize: bool,
     ) -> crate::OcctResult<*mut BRepPrimAPI_MakePrism>;
-    /// **Source:** `BRepPrimAPI_MakePrism.hxx`:73 - `BRepPrimAPI_MakePrism::Prism()`
+    /// **Source:** `BRepPrimAPI_MakePrism.hxx`:74 - `BRepPrimAPI_MakePrism::Prism()`
     pub fn BRepPrimAPI_MakePrism_prism(
         self_: *const BRepPrimAPI_MakePrism,
     ) -> crate::OcctResult<*const BRepSweep_Prism>;
-    /// **Source:** `BRepPrimAPI_MakePrism.hxx`:76 - `BRepPrimAPI_MakePrism::Build()`
+    /// **Source:** `BRepPrimAPI_MakePrism.hxx`:77 - `BRepPrimAPI_MakePrism::Build()`
     pub fn BRepPrimAPI_MakePrism_build(
         self_: *mut BRepPrimAPI_MakePrism,
         theRange: *const Message_ProgressRange,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepPrimAPI_MakePrism.hxx`:80 - `BRepPrimAPI_MakePrism::FirstShape()`
+    /// **Source:** `BRepPrimAPI_MakePrism.hxx`:81 - `BRepPrimAPI_MakePrism::FirstShape()`
     pub fn BRepPrimAPI_MakePrism_first_shape(
         self_: *mut BRepPrimAPI_MakePrism,
     ) -> crate::OcctResult<*mut TopoDS_Shape>;
-    /// **Source:** `BRepPrimAPI_MakePrism.hxx`:88 - `BRepPrimAPI_MakePrism::LastShape()`
+    /// **Source:** `BRepPrimAPI_MakePrism.hxx`:89 - `BRepPrimAPI_MakePrism::LastShape()`
     pub fn BRepPrimAPI_MakePrism_last_shape(
         self_: *mut BRepPrimAPI_MakePrism,
     ) -> crate::OcctResult<*mut TopoDS_Shape>;
-    /// **Source:** `BRepPrimAPI_MakePrism.hxx`:91 - `BRepPrimAPI_MakePrism::Generated()`
+    /// **Source:** `BRepPrimAPI_MakePrism.hxx`:92 - `BRepPrimAPI_MakePrism::Generated()`
     pub fn BRepPrimAPI_MakePrism_generated(
         self_: *mut BRepPrimAPI_MakePrism,
         S: *const TopoDS_Shape,
-    ) -> crate::OcctResult<*const TopTools_ListOfShape>;
+    ) -> crate::OcctResult<*const NCollection_List_TopoDS_Shape>;
     /// **Source:** `BRepPrimAPI_MakePrism.hxx`:95 - `BRepPrimAPI_MakePrism::IsDeleted()`
     pub fn BRepPrimAPI_MakePrism_is_deleted(
         self_: *mut BRepPrimAPI_MakePrism,
@@ -2433,41 +2433,41 @@ unsafe extern "C" {
     ) -> *const std::ffi::c_char;
     // ======================== BRepPrimAPI_MakeRevol ========================
     pub fn BRepPrimAPI_MakeRevol_destructor(self_: *mut BRepPrimAPI_MakeRevol);
-    /// **Source:** `BRepPrimAPI_MakeRevol.hxx`:69 - `BRepPrimAPI_MakeRevol::BRepPrimAPI_MakeRevol()`
+    /// **Source:** `BRepPrimAPI_MakeRevol.hxx`:70 - `BRepPrimAPI_MakeRevol::BRepPrimAPI_MakeRevol()`
     pub fn BRepPrimAPI_MakeRevol_ctor_shape_ax1_real_bool(
         S: *const TopoDS_Shape,
         A: *const gp_Ax1,
         D: f64,
         Copy: bool,
     ) -> crate::OcctResult<*mut BRepPrimAPI_MakeRevol>;
-    /// **Source:** `BRepPrimAPI_MakeRevol.hxx`:76 - `BRepPrimAPI_MakeRevol::BRepPrimAPI_MakeRevol()`
+    /// **Source:** `BRepPrimAPI_MakeRevol.hxx`:77 - `BRepPrimAPI_MakeRevol::BRepPrimAPI_MakeRevol()`
     pub fn BRepPrimAPI_MakeRevol_ctor_shape_ax1_bool(
         S: *const TopoDS_Shape,
         A: *const gp_Ax1,
         Copy: bool,
     ) -> crate::OcctResult<*mut BRepPrimAPI_MakeRevol>;
-    /// **Source:** `BRepPrimAPI_MakeRevol.hxx`:81 - `BRepPrimAPI_MakeRevol::Revol()`
+    /// **Source:** `BRepPrimAPI_MakeRevol.hxx`:82 - `BRepPrimAPI_MakeRevol::Revol()`
     pub fn BRepPrimAPI_MakeRevol_revol(
         self_: *const BRepPrimAPI_MakeRevol,
     ) -> crate::OcctResult<*const BRepSweep_Revol>;
-    /// **Source:** `BRepPrimAPI_MakeRevol.hxx`:84 - `BRepPrimAPI_MakeRevol::Build()`
+    /// **Source:** `BRepPrimAPI_MakeRevol.hxx`:85 - `BRepPrimAPI_MakeRevol::Build()`
     pub fn BRepPrimAPI_MakeRevol_build(
         self_: *mut BRepPrimAPI_MakeRevol,
         theRange: *const Message_ProgressRange,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepPrimAPI_MakeRevol.hxx`:89 - `BRepPrimAPI_MakeRevol::FirstShape()`
+    /// **Source:** `BRepPrimAPI_MakeRevol.hxx`:90 - `BRepPrimAPI_MakeRevol::FirstShape()`
     pub fn BRepPrimAPI_MakeRevol_first_shape(
         self_: *mut BRepPrimAPI_MakeRevol,
     ) -> crate::OcctResult<*mut TopoDS_Shape>;
-    /// **Source:** `BRepPrimAPI_MakeRevol.hxx`:92 - `BRepPrimAPI_MakeRevol::LastShape()`
+    /// **Source:** `BRepPrimAPI_MakeRevol.hxx`:93 - `BRepPrimAPI_MakeRevol::LastShape()`
     pub fn BRepPrimAPI_MakeRevol_last_shape(
         self_: *mut BRepPrimAPI_MakeRevol,
     ) -> crate::OcctResult<*mut TopoDS_Shape>;
-    /// **Source:** `BRepPrimAPI_MakeRevol.hxx`:97 - `BRepPrimAPI_MakeRevol::Generated()`
+    /// **Source:** `BRepPrimAPI_MakeRevol.hxx`:98 - `BRepPrimAPI_MakeRevol::Generated()`
     pub fn BRepPrimAPI_MakeRevol_generated(
         self_: *mut BRepPrimAPI_MakeRevol,
         S: *const TopoDS_Shape,
-    ) -> crate::OcctResult<*const TopTools_ListOfShape>;
+    ) -> crate::OcctResult<*const NCollection_List_TopoDS_Shape>;
     /// **Source:** `BRepPrimAPI_MakeRevol.hxx`:101 - `BRepPrimAPI_MakeRevol::IsDeleted()`
     pub fn BRepPrimAPI_MakeRevol_is_deleted(
         self_: *mut BRepPrimAPI_MakeRevol,
@@ -2490,7 +2490,7 @@ unsafe extern "C" {
     /// **Source:** `BRepPrimAPI_MakeRevol.hxx`:115 - `BRepPrimAPI_MakeRevol::Degenerated()`
     pub fn BRepPrimAPI_MakeRevol_degenerated(
         self_: *const BRepPrimAPI_MakeRevol,
-    ) -> crate::OcctResult<*const TopTools_ListOfShape>;
+    ) -> crate::OcctResult<*const NCollection_List_TopoDS_Shape>;
     /// Upcast BRepPrimAPI_MakeRevol to BRepPrimAPI_MakeSweep
     pub fn BRepPrimAPI_MakeRevol_as_BRepPrimAPI_MakeSweep(
         self_: *const BRepPrimAPI_MakeRevol,
@@ -2531,22 +2531,22 @@ unsafe extern "C" {
     pub fn BRepPrimAPI_MakeRevolution_destructor(self_: *mut BRepPrimAPI_MakeRevolution);
     /// **Source:** `BRepPrimAPI_MakeRevolution.hxx`:40 - `BRepPrimAPI_MakeRevolution::BRepPrimAPI_MakeRevolution()`
     pub fn BRepPrimAPI_MakeRevolution_ctor_handlegeomcurve(
-        Meridian: *const HandleGeomCurve,
+        Meridian: *const Handle_Geom_Curve,
     ) -> crate::OcctResult<*mut BRepPrimAPI_MakeRevolution>;
     /// **Source:** `BRepPrimAPI_MakeRevolution.hxx`:43 - `BRepPrimAPI_MakeRevolution::BRepPrimAPI_MakeRevolution()`
     pub fn BRepPrimAPI_MakeRevolution_ctor_handlegeomcurve_real(
-        Meridian: *const HandleGeomCurve,
+        Meridian: *const Handle_Geom_Curve,
         angle: f64,
     ) -> crate::OcctResult<*mut BRepPrimAPI_MakeRevolution>;
     /// **Source:** `BRepPrimAPI_MakeRevolution.hxx`:47 - `BRepPrimAPI_MakeRevolution::BRepPrimAPI_MakeRevolution()`
     pub fn BRepPrimAPI_MakeRevolution_ctor_handlegeomcurve_real2(
-        Meridian: *const HandleGeomCurve,
+        Meridian: *const Handle_Geom_Curve,
         VMin: f64,
         VMax: f64,
     ) -> crate::OcctResult<*mut BRepPrimAPI_MakeRevolution>;
     /// **Source:** `BRepPrimAPI_MakeRevolution.hxx`:52 - `BRepPrimAPI_MakeRevolution::BRepPrimAPI_MakeRevolution()`
     pub fn BRepPrimAPI_MakeRevolution_ctor_handlegeomcurve_real3(
-        Meridian: *const HandleGeomCurve,
+        Meridian: *const Handle_Geom_Curve,
         VMin: f64,
         VMax: f64,
         angle: f64,
@@ -2554,25 +2554,25 @@ unsafe extern "C" {
     /// **Source:** `BRepPrimAPI_MakeRevolution.hxx`:58 - `BRepPrimAPI_MakeRevolution::BRepPrimAPI_MakeRevolution()`
     pub fn BRepPrimAPI_MakeRevolution_ctor_ax2_handlegeomcurve(
         Axes: *const gp_Ax2,
-        Meridian: *const HandleGeomCurve,
+        Meridian: *const Handle_Geom_Curve,
     ) -> crate::OcctResult<*mut BRepPrimAPI_MakeRevolution>;
     /// **Source:** `BRepPrimAPI_MakeRevolution.hxx`:62 - `BRepPrimAPI_MakeRevolution::BRepPrimAPI_MakeRevolution()`
     pub fn BRepPrimAPI_MakeRevolution_ctor_ax2_handlegeomcurve_real(
         Axes: *const gp_Ax2,
-        Meridian: *const HandleGeomCurve,
+        Meridian: *const Handle_Geom_Curve,
         angle: f64,
     ) -> crate::OcctResult<*mut BRepPrimAPI_MakeRevolution>;
     /// **Source:** `BRepPrimAPI_MakeRevolution.hxx`:67 - `BRepPrimAPI_MakeRevolution::BRepPrimAPI_MakeRevolution()`
     pub fn BRepPrimAPI_MakeRevolution_ctor_ax2_handlegeomcurve_real2(
         Axes: *const gp_Ax2,
-        Meridian: *const HandleGeomCurve,
+        Meridian: *const Handle_Geom_Curve,
         VMin: f64,
         VMax: f64,
     ) -> crate::OcctResult<*mut BRepPrimAPI_MakeRevolution>;
     /// **Source:** `BRepPrimAPI_MakeRevolution.hxx`:81 - `BRepPrimAPI_MakeRevolution::BRepPrimAPI_MakeRevolution()`
     pub fn BRepPrimAPI_MakeRevolution_ctor_ax2_handlegeomcurve_real3(
         Axes: *const gp_Ax2,
-        Meridian: *const HandleGeomCurve,
+        Meridian: *const Handle_Geom_Curve,
         VMin: f64,
         VMax: f64,
         angle: f64,
@@ -2660,32 +2660,32 @@ unsafe extern "C" {
         angle1: f64,
         angle2: f64,
     ) -> crate::OcctResult<*mut BRepPrimAPI_MakeSphere>;
-    /// **Source:** `BRepPrimAPI_MakeSphere.hxx`:60 - `BRepPrimAPI_MakeSphere::BRepPrimAPI_MakeSphere()`
+    /// **Source:** `BRepPrimAPI_MakeSphere.hxx`:58 - `BRepPrimAPI_MakeSphere::BRepPrimAPI_MakeSphere()`
     pub fn BRepPrimAPI_MakeSphere_ctor_real4(
         R: f64,
         angle1: f64,
         angle2: f64,
         angle3: f64,
     ) -> crate::OcctResult<*mut BRepPrimAPI_MakeSphere>;
-    /// **Source:** `BRepPrimAPI_MakeSphere.hxx`:68 - `BRepPrimAPI_MakeSphere::BRepPrimAPI_MakeSphere()`
+    /// **Source:** `BRepPrimAPI_MakeSphere.hxx`:66 - `BRepPrimAPI_MakeSphere::BRepPrimAPI_MakeSphere()`
     pub fn BRepPrimAPI_MakeSphere_ctor_pnt_real(
         Center: *const gp_Pnt,
         R: f64,
     ) -> crate::OcctResult<*mut BRepPrimAPI_MakeSphere>;
-    /// **Source:** `BRepPrimAPI_MakeSphere.hxx`:74 - `BRepPrimAPI_MakeSphere::BRepPrimAPI_MakeSphere()`
+    /// **Source:** `BRepPrimAPI_MakeSphere.hxx`:72 - `BRepPrimAPI_MakeSphere::BRepPrimAPI_MakeSphere()`
     pub fn BRepPrimAPI_MakeSphere_ctor_pnt_real2(
         Center: *const gp_Pnt,
         R: f64,
         angle: f64,
     ) -> crate::OcctResult<*mut BRepPrimAPI_MakeSphere>;
-    /// **Source:** `BRepPrimAPI_MakeSphere.hxx`:83 - `BRepPrimAPI_MakeSphere::BRepPrimAPI_MakeSphere()`
+    /// **Source:** `BRepPrimAPI_MakeSphere.hxx`:79 - `BRepPrimAPI_MakeSphere::BRepPrimAPI_MakeSphere()`
     pub fn BRepPrimAPI_MakeSphere_ctor_pnt_real3(
         Center: *const gp_Pnt,
         R: f64,
         angle1: f64,
         angle2: f64,
     ) -> crate::OcctResult<*mut BRepPrimAPI_MakeSphere>;
-    /// **Source:** `BRepPrimAPI_MakeSphere.hxx`:94 - `BRepPrimAPI_MakeSphere::BRepPrimAPI_MakeSphere()`
+    /// **Source:** `BRepPrimAPI_MakeSphere.hxx`:90 - `BRepPrimAPI_MakeSphere::BRepPrimAPI_MakeSphere()`
     pub fn BRepPrimAPI_MakeSphere_ctor_pnt_real4(
         Center: *const gp_Pnt,
         R: f64,
@@ -2693,25 +2693,25 @@ unsafe extern "C" {
         angle2: f64,
         angle3: f64,
     ) -> crate::OcctResult<*mut BRepPrimAPI_MakeSphere>;
-    /// **Source:** `BRepPrimAPI_MakeSphere.hxx`:103 - `BRepPrimAPI_MakeSphere::BRepPrimAPI_MakeSphere()`
+    /// **Source:** `BRepPrimAPI_MakeSphere.hxx`:99 - `BRepPrimAPI_MakeSphere::BRepPrimAPI_MakeSphere()`
     pub fn BRepPrimAPI_MakeSphere_ctor_ax2_real(
         Axis: *const gp_Ax2,
         R: f64,
     ) -> crate::OcctResult<*mut BRepPrimAPI_MakeSphere>;
-    /// **Source:** `BRepPrimAPI_MakeSphere.hxx`:109 - `BRepPrimAPI_MakeSphere::BRepPrimAPI_MakeSphere()`
+    /// **Source:** `BRepPrimAPI_MakeSphere.hxx`:105 - `BRepPrimAPI_MakeSphere::BRepPrimAPI_MakeSphere()`
     pub fn BRepPrimAPI_MakeSphere_ctor_ax2_real2(
         Axis: *const gp_Ax2,
         R: f64,
         angle: f64,
     ) -> crate::OcctResult<*mut BRepPrimAPI_MakeSphere>;
-    /// **Source:** `BRepPrimAPI_MakeSphere.hxx`:118 - `BRepPrimAPI_MakeSphere::BRepPrimAPI_MakeSphere()`
+    /// **Source:** `BRepPrimAPI_MakeSphere.hxx`:112 - `BRepPrimAPI_MakeSphere::BRepPrimAPI_MakeSphere()`
     pub fn BRepPrimAPI_MakeSphere_ctor_ax2_real3(
         Axis: *const gp_Ax2,
         R: f64,
         angle1: f64,
         angle2: f64,
     ) -> crate::OcctResult<*mut BRepPrimAPI_MakeSphere>;
-    /// **Source:** `BRepPrimAPI_MakeSphere.hxx`:133 - `BRepPrimAPI_MakeSphere::BRepPrimAPI_MakeSphere()`
+    /// **Source:** `BRepPrimAPI_MakeSphere.hxx`:127 - `BRepPrimAPI_MakeSphere::BRepPrimAPI_MakeSphere()`
     pub fn BRepPrimAPI_MakeSphere_ctor_ax2_real4(
         Axis: *const gp_Ax2,
         R: f64,
@@ -2719,11 +2719,11 @@ unsafe extern "C" {
         angle2: f64,
         angle3: f64,
     ) -> crate::OcctResult<*mut BRepPrimAPI_MakeSphere>;
-    /// **Source:** `BRepPrimAPI_MakeSphere.hxx`:140 - `BRepPrimAPI_MakeSphere::OneAxis()`
+    /// **Source:** `BRepPrimAPI_MakeSphere.hxx`:134 - `BRepPrimAPI_MakeSphere::OneAxis()`
     pub fn BRepPrimAPI_MakeSphere_one_axis(
         self_: *mut BRepPrimAPI_MakeSphere,
     ) -> crate::OcctResult<*mut std::ffi::c_void>;
-    /// **Source:** `BRepPrimAPI_MakeSphere.hxx`:143 - `BRepPrimAPI_MakeSphere::Sphere()`
+    /// **Source:** `BRepPrimAPI_MakeSphere.hxx`:137 - `BRepPrimAPI_MakeSphere::Sphere()`
     pub fn BRepPrimAPI_MakeSphere_sphere(
         self_: *mut BRepPrimAPI_MakeSphere,
     ) -> crate::OcctResult<*mut BRepPrim_Sphere>;
@@ -2846,14 +2846,14 @@ unsafe extern "C" {
         R2: f64,
         angle: f64,
     ) -> crate::OcctResult<*mut BRepPrimAPI_MakeTorus>;
-    /// **Source:** `BRepPrimAPI_MakeTorus.hxx`:56 - `BRepPrimAPI_MakeTorus::BRepPrimAPI_MakeTorus()`
+    /// **Source:** `BRepPrimAPI_MakeTorus.hxx`:54 - `BRepPrimAPI_MakeTorus::BRepPrimAPI_MakeTorus()`
     pub fn BRepPrimAPI_MakeTorus_ctor_real4(
         R1: f64,
         R2: f64,
         angle1: f64,
         angle2: f64,
     ) -> crate::OcctResult<*mut BRepPrimAPI_MakeTorus>;
-    /// **Source:** `BRepPrimAPI_MakeTorus.hxx`:67 - `BRepPrimAPI_MakeTorus::BRepPrimAPI_MakeTorus()`
+    /// **Source:** `BRepPrimAPI_MakeTorus.hxx`:65 - `BRepPrimAPI_MakeTorus::BRepPrimAPI_MakeTorus()`
     pub fn BRepPrimAPI_MakeTorus_ctor_real5(
         R1: f64,
         R2: f64,
@@ -2861,20 +2861,20 @@ unsafe extern "C" {
         angle2: f64,
         angle: f64,
     ) -> crate::OcctResult<*mut BRepPrimAPI_MakeTorus>;
-    /// **Source:** `BRepPrimAPI_MakeTorus.hxx`:77 - `BRepPrimAPI_MakeTorus::BRepPrimAPI_MakeTorus()`
+    /// **Source:** `BRepPrimAPI_MakeTorus.hxx`:75 - `BRepPrimAPI_MakeTorus::BRepPrimAPI_MakeTorus()`
     pub fn BRepPrimAPI_MakeTorus_ctor_ax2_real2(
         Axes: *const gp_Ax2,
         R1: f64,
         R2: f64,
     ) -> crate::OcctResult<*mut BRepPrimAPI_MakeTorus>;
-    /// **Source:** `BRepPrimAPI_MakeTorus.hxx`:86 - `BRepPrimAPI_MakeTorus::BRepPrimAPI_MakeTorus()`
+    /// **Source:** `BRepPrimAPI_MakeTorus.hxx`:82 - `BRepPrimAPI_MakeTorus::BRepPrimAPI_MakeTorus()`
     pub fn BRepPrimAPI_MakeTorus_ctor_ax2_real3(
         Axes: *const gp_Ax2,
         R1: f64,
         R2: f64,
         angle: f64,
     ) -> crate::OcctResult<*mut BRepPrimAPI_MakeTorus>;
-    /// **Source:** `BRepPrimAPI_MakeTorus.hxx`:97 - `BRepPrimAPI_MakeTorus::BRepPrimAPI_MakeTorus()`
+    /// **Source:** `BRepPrimAPI_MakeTorus.hxx`:93 - `BRepPrimAPI_MakeTorus::BRepPrimAPI_MakeTorus()`
     pub fn BRepPrimAPI_MakeTorus_ctor_ax2_real4(
         Axes: *const gp_Ax2,
         R1: f64,
@@ -2882,7 +2882,7 @@ unsafe extern "C" {
         angle1: f64,
         angle2: f64,
     ) -> crate::OcctResult<*mut BRepPrimAPI_MakeTorus>;
-    /// **Source:** `BRepPrimAPI_MakeTorus.hxx`:123 - `BRepPrimAPI_MakeTorus::BRepPrimAPI_MakeTorus()`
+    /// **Source:** `BRepPrimAPI_MakeTorus.hxx`:120 - `BRepPrimAPI_MakeTorus::BRepPrimAPI_MakeTorus()`
     pub fn BRepPrimAPI_MakeTorus_ctor_ax2_real5(
         Axes: *const gp_Ax2,
         R1: f64,
@@ -2891,11 +2891,11 @@ unsafe extern "C" {
         angle2: f64,
         angle: f64,
     ) -> crate::OcctResult<*mut BRepPrimAPI_MakeTorus>;
-    /// **Source:** `BRepPrimAPI_MakeTorus.hxx`:131 - `BRepPrimAPI_MakeTorus::OneAxis()`
+    /// **Source:** `BRepPrimAPI_MakeTorus.hxx`:128 - `BRepPrimAPI_MakeTorus::OneAxis()`
     pub fn BRepPrimAPI_MakeTorus_one_axis(
         self_: *mut BRepPrimAPI_MakeTorus,
     ) -> crate::OcctResult<*mut std::ffi::c_void>;
-    /// **Source:** `BRepPrimAPI_MakeTorus.hxx`:134 - `BRepPrimAPI_MakeTorus::Torus()`
+    /// **Source:** `BRepPrimAPI_MakeTorus.hxx`:131 - `BRepPrimAPI_MakeTorus::Torus()`
     pub fn BRepPrimAPI_MakeTorus_torus(
         self_: *mut BRepPrimAPI_MakeTorus,
     ) -> crate::OcctResult<*mut BRepPrim_Torus>;
@@ -3116,25 +3116,25 @@ unsafe extern "C" {
     ) -> crate::OcctResult<i32>;
     // ======================== BRepSweep_NumLinearRegularSweep ========================
     pub fn BRepSweep_NumLinearRegularSweep_destructor(self_: *mut BRepSweep_NumLinearRegularSweep);
-    /// **Source:** `BRepSweep_NumLinearRegularSweep.hxx`:75 - `BRepSweep_NumLinearRegularSweep::MakeEmptyVertex()`
+    /// **Source:** `BRepSweep_NumLinearRegularSweep.hxx`:74 - `BRepSweep_NumLinearRegularSweep::MakeEmptyVertex()`
     pub fn BRepSweep_NumLinearRegularSweep_make_empty_vertex(
         self_: *mut BRepSweep_NumLinearRegularSweep,
         aGenV: *const TopoDS_Shape,
         aDirV: *const Sweep_NumShape,
     ) -> crate::OcctResult<*mut TopoDS_Shape>;
-    /// **Source:** `BRepSweep_NumLinearRegularSweep.hxx`:81 - `BRepSweep_NumLinearRegularSweep::MakeEmptyDirectingEdge()`
+    /// **Source:** `BRepSweep_NumLinearRegularSweep.hxx`:80 - `BRepSweep_NumLinearRegularSweep::MakeEmptyDirectingEdge()`
     pub fn BRepSweep_NumLinearRegularSweep_make_empty_directing_edge(
         self_: *mut BRepSweep_NumLinearRegularSweep,
         aGenV: *const TopoDS_Shape,
         aDirE: *const Sweep_NumShape,
     ) -> crate::OcctResult<*mut TopoDS_Shape>;
-    /// **Source:** `BRepSweep_NumLinearRegularSweep.hxx`:86 - `BRepSweep_NumLinearRegularSweep::MakeEmptyGeneratingEdge()`
+    /// **Source:** `BRepSweep_NumLinearRegularSweep.hxx`:85 - `BRepSweep_NumLinearRegularSweep::MakeEmptyGeneratingEdge()`
     pub fn BRepSweep_NumLinearRegularSweep_make_empty_generating_edge(
         self_: *mut BRepSweep_NumLinearRegularSweep,
         aGenE: *const TopoDS_Shape,
         aDirV: *const Sweep_NumShape,
     ) -> crate::OcctResult<*mut TopoDS_Shape>;
-    /// **Source:** `BRepSweep_NumLinearRegularSweep.hxx`:92 - `BRepSweep_NumLinearRegularSweep::SetParameters()`
+    /// **Source:** `BRepSweep_NumLinearRegularSweep.hxx`:91 - `BRepSweep_NumLinearRegularSweep::SetParameters()`
     pub fn BRepSweep_NumLinearRegularSweep_set_parameters(
         self_: *mut BRepSweep_NumLinearRegularSweep,
         aNewFace: *const TopoDS_Shape,
@@ -3143,7 +3143,7 @@ unsafe extern "C" {
         aGenV: *const TopoDS_Shape,
         aDirV: *const Sweep_NumShape,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepSweep_NumLinearRegularSweep.hxx`:101 - `BRepSweep_NumLinearRegularSweep::SetDirectingParameter()`
+    /// **Source:** `BRepSweep_NumLinearRegularSweep.hxx`:100 - `BRepSweep_NumLinearRegularSweep::SetDirectingParameter()`
     pub fn BRepSweep_NumLinearRegularSweep_set_directing_parameter(
         self_: *mut BRepSweep_NumLinearRegularSweep,
         aNewEdge: *const TopoDS_Shape,
@@ -3152,7 +3152,7 @@ unsafe extern "C" {
         aDirE: *const Sweep_NumShape,
         aDirV: *const Sweep_NumShape,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepSweep_NumLinearRegularSweep.hxx`:110 - `BRepSweep_NumLinearRegularSweep::SetGeneratingParameter()`
+    /// **Source:** `BRepSweep_NumLinearRegularSweep.hxx`:109 - `BRepSweep_NumLinearRegularSweep::SetGeneratingParameter()`
     pub fn BRepSweep_NumLinearRegularSweep_set_generating_parameter(
         self_: *mut BRepSweep_NumLinearRegularSweep,
         aNewEdge: *const TopoDS_Shape,
@@ -3161,13 +3161,13 @@ unsafe extern "C" {
         aGenV: *const TopoDS_Shape,
         aDirV: *const Sweep_NumShape,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepSweep_NumLinearRegularSweep.hxx`:121 - `BRepSweep_NumLinearRegularSweep::MakeEmptyFace()`
+    /// **Source:** `BRepSweep_NumLinearRegularSweep.hxx`:120 - `BRepSweep_NumLinearRegularSweep::MakeEmptyFace()`
     pub fn BRepSweep_NumLinearRegularSweep_make_empty_face(
         self_: *mut BRepSweep_NumLinearRegularSweep,
         aGenS: *const TopoDS_Shape,
         aDirS: *const Sweep_NumShape,
     ) -> crate::OcctResult<*mut TopoDS_Shape>;
-    /// **Source:** `BRepSweep_NumLinearRegularSweep.hxx`:127 - `BRepSweep_NumLinearRegularSweep::SetPCurve()`
+    /// **Source:** `BRepSweep_NumLinearRegularSweep.hxx`:126 - `BRepSweep_NumLinearRegularSweep::SetPCurve()`
     pub fn BRepSweep_NumLinearRegularSweep_set_p_curve(
         self_: *mut BRepSweep_NumLinearRegularSweep,
         aNewFace: *const TopoDS_Shape,
@@ -3177,7 +3177,7 @@ unsafe extern "C" {
         aDirV: *const Sweep_NumShape,
         orien: i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepSweep_NumLinearRegularSweep.hxx`:137 - `BRepSweep_NumLinearRegularSweep::SetGeneratingPCurve()`
+    /// **Source:** `BRepSweep_NumLinearRegularSweep.hxx`:136 - `BRepSweep_NumLinearRegularSweep::SetGeneratingPCurve()`
     pub fn BRepSweep_NumLinearRegularSweep_set_generating_p_curve(
         self_: *mut BRepSweep_NumLinearRegularSweep,
         aNewFace: *const TopoDS_Shape,
@@ -3187,7 +3187,7 @@ unsafe extern "C" {
         aDirV: *const Sweep_NumShape,
         orien: i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepSweep_NumLinearRegularSweep.hxx`:147 - `BRepSweep_NumLinearRegularSweep::SetDirectingPCurve()`
+    /// **Source:** `BRepSweep_NumLinearRegularSweep.hxx`:146 - `BRepSweep_NumLinearRegularSweep::SetDirectingPCurve()`
     pub fn BRepSweep_NumLinearRegularSweep_set_directing_p_curve(
         self_: *mut BRepSweep_NumLinearRegularSweep,
         aNewFace: *const TopoDS_Shape,
@@ -3197,13 +3197,13 @@ unsafe extern "C" {
         aDirE: *const Sweep_NumShape,
         orien: i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepSweep_NumLinearRegularSweep.hxx`:158 - `BRepSweep_NumLinearRegularSweep::DirectSolid()`
+    /// **Source:** `BRepSweep_NumLinearRegularSweep.hxx`:157 - `BRepSweep_NumLinearRegularSweep::DirectSolid()`
     pub fn BRepSweep_NumLinearRegularSweep_direct_solid(
         self_: *mut BRepSweep_NumLinearRegularSweep,
         aGenS: *const TopoDS_Shape,
         aDirS: *const Sweep_NumShape,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `BRepSweep_NumLinearRegularSweep.hxx`:164 - `BRepSweep_NumLinearRegularSweep::GGDShapeIsToAdd()`
+    /// **Source:** `BRepSweep_NumLinearRegularSweep.hxx`:163 - `BRepSweep_NumLinearRegularSweep::GGDShapeIsToAdd()`
     pub fn BRepSweep_NumLinearRegularSweep_ggd_shape_is_to_add(
         self_: *const BRepSweep_NumLinearRegularSweep,
         aNewShape: *const TopoDS_Shape,
@@ -3212,7 +3212,7 @@ unsafe extern "C" {
         aSubGenS: *const TopoDS_Shape,
         aDirS: *const Sweep_NumShape,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BRepSweep_NumLinearRegularSweep.hxx`:173 - `BRepSweep_NumLinearRegularSweep::GDDShapeIsToAdd()`
+    /// **Source:** `BRepSweep_NumLinearRegularSweep.hxx`:172 - `BRepSweep_NumLinearRegularSweep::GDDShapeIsToAdd()`
     pub fn BRepSweep_NumLinearRegularSweep_gdd_shape_is_to_add(
         self_: *const BRepSweep_NumLinearRegularSweep,
         aNewShape: *const TopoDS_Shape,
@@ -3221,7 +3221,7 @@ unsafe extern "C" {
         aDirS: *const Sweep_NumShape,
         aSubDirS: *const Sweep_NumShape,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BRepSweep_NumLinearRegularSweep.hxx`:184 - `BRepSweep_NumLinearRegularSweep::SeparatedWires()`
+    /// **Source:** `BRepSweep_NumLinearRegularSweep.hxx`:182 - `BRepSweep_NumLinearRegularSweep::SeparatedWires()`
     pub fn BRepSweep_NumLinearRegularSweep_separated_wires(
         self_: *const BRepSweep_NumLinearRegularSweep,
         aNewShape: *const TopoDS_Shape,
@@ -3230,72 +3230,72 @@ unsafe extern "C" {
         aSubGenS: *const TopoDS_Shape,
         aDirS: *const Sweep_NumShape,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BRepSweep_NumLinearRegularSweep.hxx`:194 - `BRepSweep_NumLinearRegularSweep::SplitShell()`
+    /// **Source:** `BRepSweep_NumLinearRegularSweep.hxx`:192 - `BRepSweep_NumLinearRegularSweep::SplitShell()`
     pub fn BRepSweep_NumLinearRegularSweep_split_shell(
         self_: *const BRepSweep_NumLinearRegularSweep,
         aNewShape: *const TopoDS_Shape,
     ) -> crate::OcctResult<*mut TopoDS_Shape>;
-    /// **Source:** `BRepSweep_NumLinearRegularSweep.hxx`:199 - `BRepSweep_NumLinearRegularSweep::SetContinuity()`
+    /// **Source:** `BRepSweep_NumLinearRegularSweep.hxx`:197 - `BRepSweep_NumLinearRegularSweep::SetContinuity()`
     pub fn BRepSweep_NumLinearRegularSweep_set_continuity(
         self_: *mut BRepSweep_NumLinearRegularSweep,
         aGenS: *const TopoDS_Shape,
         aDirS: *const Sweep_NumShape,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepSweep_NumLinearRegularSweep.hxx`:206 - `BRepSweep_NumLinearRegularSweep::HasShape()`
+    /// **Source:** `BRepSweep_NumLinearRegularSweep.hxx`:204 - `BRepSweep_NumLinearRegularSweep::HasShape()`
     pub fn BRepSweep_NumLinearRegularSweep_has_shape(
         self_: *const BRepSweep_NumLinearRegularSweep,
         aGenS: *const TopoDS_Shape,
         aDirS: *const Sweep_NumShape,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BRepSweep_NumLinearRegularSweep.hxx`:210 - `BRepSweep_NumLinearRegularSweep::IsInvariant()`
+    /// **Source:** `BRepSweep_NumLinearRegularSweep.hxx`:208 - `BRepSweep_NumLinearRegularSweep::IsInvariant()`
     pub fn BRepSweep_NumLinearRegularSweep_is_invariant(
         self_: *const BRepSweep_NumLinearRegularSweep,
         aGenS: *const TopoDS_Shape,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BRepSweep_NumLinearRegularSweep.hxx`:214 - `BRepSweep_NumLinearRegularSweep::Shape()`
+    /// **Source:** `BRepSweep_NumLinearRegularSweep.hxx`:212 - `BRepSweep_NumLinearRegularSweep::Shape()`
     pub fn BRepSweep_NumLinearRegularSweep_shape_shape_numshape(
         self_: *mut BRepSweep_NumLinearRegularSweep,
         aGenS: *const TopoDS_Shape,
         aDirS: *const Sweep_NumShape,
     ) -> crate::OcctResult<*mut TopoDS_Shape>;
-    /// **Source:** `BRepSweep_NumLinearRegularSweep.hxx`:218 - `BRepSweep_NumLinearRegularSweep::Shape()`
+    /// **Source:** `BRepSweep_NumLinearRegularSweep.hxx`:216 - `BRepSweep_NumLinearRegularSweep::Shape()`
     pub fn BRepSweep_NumLinearRegularSweep_shape_shape(
         self_: *mut BRepSweep_NumLinearRegularSweep,
         aGenS: *const TopoDS_Shape,
     ) -> crate::OcctResult<*mut TopoDS_Shape>;
-    /// **Source:** `BRepSweep_NumLinearRegularSweep.hxx`:222 - `BRepSweep_NumLinearRegularSweep::IsUsed()`
+    /// **Source:** `BRepSweep_NumLinearRegularSweep.hxx`:220 - `BRepSweep_NumLinearRegularSweep::IsUsed()`
     pub fn BRepSweep_NumLinearRegularSweep_is_used(
         self_: *const BRepSweep_NumLinearRegularSweep,
         aGenS: *const TopoDS_Shape,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BRepSweep_NumLinearRegularSweep.hxx`:226 - `BRepSweep_NumLinearRegularSweep::GenIsUsed()`
+    /// **Source:** `BRepSweep_NumLinearRegularSweep.hxx`:224 - `BRepSweep_NumLinearRegularSweep::GenIsUsed()`
     pub fn BRepSweep_NumLinearRegularSweep_gen_is_used(
         self_: *const BRepSweep_NumLinearRegularSweep,
         theS: *const TopoDS_Shape,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BRepSweep_NumLinearRegularSweep.hxx`:230 - `BRepSweep_NumLinearRegularSweep::Shape()`
+    /// **Source:** `BRepSweep_NumLinearRegularSweep.hxx`:228 - `BRepSweep_NumLinearRegularSweep::Shape()`
     pub fn BRepSweep_NumLinearRegularSweep_shape(
         self_: *mut BRepSweep_NumLinearRegularSweep,
     ) -> crate::OcctResult<*mut TopoDS_Shape>;
-    /// **Source:** `BRepSweep_NumLinearRegularSweep.hxx`:234 - `BRepSweep_NumLinearRegularSweep::FirstShape()`
+    /// **Source:** `BRepSweep_NumLinearRegularSweep.hxx`:232 - `BRepSweep_NumLinearRegularSweep::FirstShape()`
     pub fn BRepSweep_NumLinearRegularSweep_first_shape(
         self_: *mut BRepSweep_NumLinearRegularSweep,
     ) -> crate::OcctResult<*mut TopoDS_Shape>;
-    /// **Source:** `BRepSweep_NumLinearRegularSweep.hxx`:238 - `BRepSweep_NumLinearRegularSweep::LastShape()`
+    /// **Source:** `BRepSweep_NumLinearRegularSweep.hxx`:236 - `BRepSweep_NumLinearRegularSweep::LastShape()`
     pub fn BRepSweep_NumLinearRegularSweep_last_shape(
         self_: *mut BRepSweep_NumLinearRegularSweep,
     ) -> crate::OcctResult<*mut TopoDS_Shape>;
-    /// **Source:** `BRepSweep_NumLinearRegularSweep.hxx`:242 - `BRepSweep_NumLinearRegularSweep::FirstShape()`
+    /// **Source:** `BRepSweep_NumLinearRegularSweep.hxx`:240 - `BRepSweep_NumLinearRegularSweep::FirstShape()`
     pub fn BRepSweep_NumLinearRegularSweep_first_shape_shape(
         self_: *mut BRepSweep_NumLinearRegularSweep,
         aGenS: *const TopoDS_Shape,
     ) -> crate::OcctResult<*mut TopoDS_Shape>;
-    /// **Source:** `BRepSweep_NumLinearRegularSweep.hxx`:246 - `BRepSweep_NumLinearRegularSweep::LastShape()`
+    /// **Source:** `BRepSweep_NumLinearRegularSweep.hxx`:244 - `BRepSweep_NumLinearRegularSweep::LastShape()`
     pub fn BRepSweep_NumLinearRegularSweep_last_shape_shape(
         self_: *mut BRepSweep_NumLinearRegularSweep,
         aGenS: *const TopoDS_Shape,
     ) -> crate::OcctResult<*mut TopoDS_Shape>;
-    /// **Source:** `BRepSweep_NumLinearRegularSweep.hxx`:248 - `BRepSweep_NumLinearRegularSweep::Closed()`
+    /// **Source:** `BRepSweep_NumLinearRegularSweep.hxx`:246 - `BRepSweep_NumLinearRegularSweep::Closed()`
     pub fn BRepSweep_NumLinearRegularSweep_closed(
         self_: *const BRepSweep_NumLinearRegularSweep,
     ) -> crate::OcctResult<bool>;
@@ -3370,38 +3370,38 @@ unsafe extern "C" {
         A: *const gp_Ax1,
         C: bool,
     ) -> crate::OcctResult<*mut BRepSweep_Revol>;
-    /// **Source:** `BRepSweep_Revol.hxx`:52 - `BRepSweep_Revol::Shape()`
+    /// **Source:** `BRepSweep_Revol.hxx`:50 - `BRepSweep_Revol::Shape()`
     pub fn BRepSweep_Revol_shape(
         self_: *mut BRepSweep_Revol,
     ) -> crate::OcctResult<*mut TopoDS_Shape>;
-    /// **Source:** `BRepSweep_Revol.hxx`:56 - `BRepSweep_Revol::Shape()`
+    /// **Source:** `BRepSweep_Revol.hxx`:54 - `BRepSweep_Revol::Shape()`
     pub fn BRepSweep_Revol_shape_shape(
         self_: *mut BRepSweep_Revol,
         aGenS: *const TopoDS_Shape,
     ) -> crate::OcctResult<*mut TopoDS_Shape>;
-    /// **Source:** `BRepSweep_Revol.hxx`:60 - `BRepSweep_Revol::FirstShape()`
+    /// **Source:** `BRepSweep_Revol.hxx`:58 - `BRepSweep_Revol::FirstShape()`
     pub fn BRepSweep_Revol_first_shape(
         self_: *mut BRepSweep_Revol,
     ) -> crate::OcctResult<*mut TopoDS_Shape>;
-    /// **Source:** `BRepSweep_Revol.hxx`:64 - `BRepSweep_Revol::FirstShape()`
+    /// **Source:** `BRepSweep_Revol.hxx`:62 - `BRepSweep_Revol::FirstShape()`
     pub fn BRepSweep_Revol_first_shape_shape(
         self_: *mut BRepSweep_Revol,
         aGenS: *const TopoDS_Shape,
     ) -> crate::OcctResult<*mut TopoDS_Shape>;
-    /// **Source:** `BRepSweep_Revol.hxx`:67 - `BRepSweep_Revol::LastShape()`
+    /// **Source:** `BRepSweep_Revol.hxx`:65 - `BRepSweep_Revol::LastShape()`
     pub fn BRepSweep_Revol_last_shape(
         self_: *mut BRepSweep_Revol,
     ) -> crate::OcctResult<*mut TopoDS_Shape>;
-    /// **Source:** `BRepSweep_Revol.hxx`:72 - `BRepSweep_Revol::LastShape()`
+    /// **Source:** `BRepSweep_Revol.hxx`:70 - `BRepSweep_Revol::LastShape()`
     pub fn BRepSweep_Revol_last_shape_shape(
         self_: *mut BRepSweep_Revol,
         aGenS: *const TopoDS_Shape,
     ) -> crate::OcctResult<*mut TopoDS_Shape>;
-    /// **Source:** `BRepSweep_Revol.hxx`:75 - `BRepSweep_Revol::Axe()`
+    /// **Source:** `BRepSweep_Revol.hxx`:73 - `BRepSweep_Revol::Axe()`
     pub fn BRepSweep_Revol_axe(self_: *const BRepSweep_Revol) -> crate::OcctResult<*mut gp_Ax1>;
-    /// **Source:** `BRepSweep_Revol.hxx`:78 - `BRepSweep_Revol::Angle()`
+    /// **Source:** `BRepSweep_Revol.hxx`:76 - `BRepSweep_Revol::Angle()`
     pub fn BRepSweep_Revol_angle(self_: *const BRepSweep_Revol) -> crate::OcctResult<f64>;
-    /// **Source:** `BRepSweep_Revol.hxx`:81 - `BRepSweep_Revol::IsUsed()`
+    /// **Source:** `BRepSweep_Revol.hxx`:79 - `BRepSweep_Revol::IsUsed()`
     pub fn BRepSweep_Revol_is_used(
         self_: *const BRepSweep_Revol,
         aGenS: *const TopoDS_Shape,
@@ -3429,13 +3429,13 @@ unsafe extern "C" {
         aGenV: *const TopoDS_Shape,
         aDirE: *const Sweep_NumShape,
     ) -> crate::OcctResult<*mut TopoDS_Shape>;
-    /// **Source:** `BRepSweep_Rotation.hxx`:61 - `BRepSweep_Rotation::MakeEmptyGeneratingEdge()`
+    /// **Source:** `BRepSweep_Rotation.hxx`:60 - `BRepSweep_Rotation::MakeEmptyGeneratingEdge()`
     pub fn BRepSweep_Rotation_make_empty_generating_edge(
         self_: *mut BRepSweep_Rotation,
         aGenE: *const TopoDS_Shape,
         aDirV: *const Sweep_NumShape,
     ) -> crate::OcctResult<*mut TopoDS_Shape>;
-    /// **Source:** `BRepSweep_Rotation.hxx`:68 - `BRepSweep_Rotation::SetParameters()`
+    /// **Source:** `BRepSweep_Rotation.hxx`:66 - `BRepSweep_Rotation::SetParameters()`
     pub fn BRepSweep_Rotation_set_parameters(
         self_: *mut BRepSweep_Rotation,
         aNewFace: *const TopoDS_Shape,
@@ -3444,7 +3444,7 @@ unsafe extern "C" {
         aGenV: *const TopoDS_Shape,
         aDirV: *const Sweep_NumShape,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepSweep_Rotation.hxx`:77 - `BRepSweep_Rotation::SetDirectingParameter()`
+    /// **Source:** `BRepSweep_Rotation.hxx`:75 - `BRepSweep_Rotation::SetDirectingParameter()`
     pub fn BRepSweep_Rotation_set_directing_parameter(
         self_: *mut BRepSweep_Rotation,
         aNewEdge: *const TopoDS_Shape,
@@ -3453,7 +3453,7 @@ unsafe extern "C" {
         aDirE: *const Sweep_NumShape,
         aDirV: *const Sweep_NumShape,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepSweep_Rotation.hxx`:86 - `BRepSweep_Rotation::SetGeneratingParameter()`
+    /// **Source:** `BRepSweep_Rotation.hxx`:84 - `BRepSweep_Rotation::SetGeneratingParameter()`
     pub fn BRepSweep_Rotation_set_generating_parameter(
         self_: *mut BRepSweep_Rotation,
         aNewEdge: *const TopoDS_Shape,
@@ -3462,13 +3462,13 @@ unsafe extern "C" {
         aGenV: *const TopoDS_Shape,
         aDirV: *const Sweep_NumShape,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepSweep_Rotation.hxx`:97 - `BRepSweep_Rotation::MakeEmptyFace()`
+    /// **Source:** `BRepSweep_Rotation.hxx`:95 - `BRepSweep_Rotation::MakeEmptyFace()`
     pub fn BRepSweep_Rotation_make_empty_face(
         self_: *mut BRepSweep_Rotation,
         aGenS: *const TopoDS_Shape,
         aDirS: *const Sweep_NumShape,
     ) -> crate::OcctResult<*mut TopoDS_Shape>;
-    /// **Source:** `BRepSweep_Rotation.hxx`:103 - `BRepSweep_Rotation::SetPCurve()`
+    /// **Source:** `BRepSweep_Rotation.hxx`:101 - `BRepSweep_Rotation::SetPCurve()`
     pub fn BRepSweep_Rotation_set_p_curve(
         self_: *mut BRepSweep_Rotation,
         aNewFace: *const TopoDS_Shape,
@@ -3478,7 +3478,7 @@ unsafe extern "C" {
         aDirV: *const Sweep_NumShape,
         orien: i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepSweep_Rotation.hxx`:113 - `BRepSweep_Rotation::SetGeneratingPCurve()`
+    /// **Source:** `BRepSweep_Rotation.hxx`:111 - `BRepSweep_Rotation::SetGeneratingPCurve()`
     pub fn BRepSweep_Rotation_set_generating_p_curve(
         self_: *mut BRepSweep_Rotation,
         aNewFace: *const TopoDS_Shape,
@@ -3488,7 +3488,7 @@ unsafe extern "C" {
         aDirV: *const Sweep_NumShape,
         orien: i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepSweep_Rotation.hxx`:123 - `BRepSweep_Rotation::SetDirectingPCurve()`
+    /// **Source:** `BRepSweep_Rotation.hxx`:121 - `BRepSweep_Rotation::SetDirectingPCurve()`
     pub fn BRepSweep_Rotation_set_directing_p_curve(
         self_: *mut BRepSweep_Rotation,
         aNewFace: *const TopoDS_Shape,
@@ -3498,13 +3498,13 @@ unsafe extern "C" {
         aDirE: *const Sweep_NumShape,
         orien: i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepSweep_Rotation.hxx`:134 - `BRepSweep_Rotation::DirectSolid()`
+    /// **Source:** `BRepSweep_Rotation.hxx`:132 - `BRepSweep_Rotation::DirectSolid()`
     pub fn BRepSweep_Rotation_direct_solid(
         self_: *mut BRepSweep_Rotation,
         aGenS: *const TopoDS_Shape,
         aDirS: *const Sweep_NumShape,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `BRepSweep_Rotation.hxx`:141 - `BRepSweep_Rotation::GGDShapeIsToAdd()`
+    /// **Source:** `BRepSweep_Rotation.hxx`:138 - `BRepSweep_Rotation::GGDShapeIsToAdd()`
     pub fn BRepSweep_Rotation_ggd_shape_is_to_add(
         self_: *const BRepSweep_Rotation,
         aNewShape: *const TopoDS_Shape,
@@ -3513,7 +3513,7 @@ unsafe extern "C" {
         aSubGenS: *const TopoDS_Shape,
         aDirS: *const Sweep_NumShape,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BRepSweep_Rotation.hxx`:151 - `BRepSweep_Rotation::GDDShapeIsToAdd()`
+    /// **Source:** `BRepSweep_Rotation.hxx`:147 - `BRepSweep_Rotation::GDDShapeIsToAdd()`
     pub fn BRepSweep_Rotation_gdd_shape_is_to_add(
         self_: *const BRepSweep_Rotation,
         aNewShape: *const TopoDS_Shape,
@@ -3522,7 +3522,7 @@ unsafe extern "C" {
         aDirS: *const Sweep_NumShape,
         aSubDirS: *const Sweep_NumShape,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BRepSweep_Rotation.hxx`:163 - `BRepSweep_Rotation::SeparatedWires()`
+    /// **Source:** `BRepSweep_Rotation.hxx`:158 - `BRepSweep_Rotation::SeparatedWires()`
     pub fn BRepSweep_Rotation_separated_wires(
         self_: *const BRepSweep_Rotation,
         aNewShape: *const TopoDS_Shape,
@@ -3531,27 +3531,27 @@ unsafe extern "C" {
         aSubGenS: *const TopoDS_Shape,
         aDirS: *const Sweep_NumShape,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BRepSweep_Rotation.hxx`:173 - `BRepSweep_Rotation::SplitShell()`
+    /// **Source:** `BRepSweep_Rotation.hxx`:168 - `BRepSweep_Rotation::SplitShell()`
     pub fn BRepSweep_Rotation_split_shell(
         self_: *const BRepSweep_Rotation,
         aNewShape: *const TopoDS_Shape,
     ) -> crate::OcctResult<*mut TopoDS_Shape>;
-    /// **Source:** `BRepSweep_Rotation.hxx`:180 - `BRepSweep_Rotation::HasShape()`
+    /// **Source:** `BRepSweep_Rotation.hxx`:174 - `BRepSweep_Rotation::HasShape()`
     pub fn BRepSweep_Rotation_has_shape(
         self_: *const BRepSweep_Rotation,
         aGenS: *const TopoDS_Shape,
         aDirS: *const Sweep_NumShape,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BRepSweep_Rotation.hxx`:185 - `BRepSweep_Rotation::IsInvariant()`
+    /// **Source:** `BRepSweep_Rotation.hxx`:179 - `BRepSweep_Rotation::IsInvariant()`
     pub fn BRepSweep_Rotation_is_invariant(
         self_: *const BRepSweep_Rotation,
         aGenS: *const TopoDS_Shape,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BRepSweep_Rotation.hxx`:188 - `BRepSweep_Rotation::Axe()`
+    /// **Source:** `BRepSweep_Rotation.hxx`:182 - `BRepSweep_Rotation::Axe()`
     pub fn BRepSweep_Rotation_axe(
         self_: *const BRepSweep_Rotation,
     ) -> crate::OcctResult<*mut gp_Ax1>;
-    /// **Source:** `BRepSweep_Rotation.hxx`:191 - `BRepSweep_Rotation::Angle()`
+    /// **Source:** `BRepSweep_Rotation.hxx`:185 - `BRepSweep_Rotation::Angle()`
     pub fn BRepSweep_Rotation_angle(self_: *const BRepSweep_Rotation) -> crate::OcctResult<f64>;
     /// Upcast BRepSweep_Rotation to BRepSweep_Trsf
     pub fn BRepSweep_Rotation_as_BRepSweep_Trsf(
@@ -3579,69 +3579,69 @@ unsafe extern "C" {
         aGenS: *const TopoDS_Shape,
         aDirV: *const Sweep_NumShape,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `BRepSweep_Trsf.hxx`:180 - `BRepSweep_Trsf::SetContinuity()`
+    /// Inherited: **Source:** `BRepSweep_Trsf.hxx`:179 - `BRepSweep_Trsf::SetContinuity()`
     pub fn BRepSweep_Rotation_inherited_SetContinuity(
         self_: *mut BRepSweep_Rotation,
         aGenS: *const TopoDS_Shape,
         aDirS: *const Sweep_NumShape,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BRepSweep_NumLinearRegularSweep.hxx`:214 - `BRepSweep_NumLinearRegularSweep::Shape()`
+    /// Inherited: **Source:** `BRepSweep_NumLinearRegularSweep.hxx`:212 - `BRepSweep_NumLinearRegularSweep::Shape()`
     pub fn BRepSweep_Rotation_inherited_Shape(
         self_: *mut BRepSweep_Rotation,
         aGenS: *const TopoDS_Shape,
         aDirS: *const Sweep_NumShape,
     ) -> crate::OcctResult<*mut TopoDS_Shape>;
-    /// Inherited: **Source:** `BRepSweep_NumLinearRegularSweep.hxx`:222 - `BRepSweep_NumLinearRegularSweep::IsUsed()`
+    /// Inherited: **Source:** `BRepSweep_NumLinearRegularSweep.hxx`:220 - `BRepSweep_NumLinearRegularSweep::IsUsed()`
     pub fn BRepSweep_Rotation_inherited_IsUsed(
         self_: *const BRepSweep_Rotation,
         aGenS: *const TopoDS_Shape,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `BRepSweep_NumLinearRegularSweep.hxx`:226 - `BRepSweep_NumLinearRegularSweep::GenIsUsed()`
+    /// Inherited: **Source:** `BRepSweep_NumLinearRegularSweep.hxx`:224 - `BRepSweep_NumLinearRegularSweep::GenIsUsed()`
     pub fn BRepSweep_Rotation_inherited_GenIsUsed(
         self_: *const BRepSweep_Rotation,
         theS: *const TopoDS_Shape,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `BRepSweep_NumLinearRegularSweep.hxx`:234 - `BRepSweep_NumLinearRegularSweep::FirstShape()`
+    /// Inherited: **Source:** `BRepSweep_NumLinearRegularSweep.hxx`:232 - `BRepSweep_NumLinearRegularSweep::FirstShape()`
     pub fn BRepSweep_Rotation_inherited_FirstShape(
         self_: *mut BRepSweep_Rotation,
     ) -> crate::OcctResult<*mut TopoDS_Shape>;
-    /// Inherited: **Source:** `BRepSweep_NumLinearRegularSweep.hxx`:238 - `BRepSweep_NumLinearRegularSweep::LastShape()`
+    /// Inherited: **Source:** `BRepSweep_NumLinearRegularSweep.hxx`:236 - `BRepSweep_NumLinearRegularSweep::LastShape()`
     pub fn BRepSweep_Rotation_inherited_LastShape(
         self_: *mut BRepSweep_Rotation,
     ) -> crate::OcctResult<*mut TopoDS_Shape>;
-    /// Inherited: **Source:** `BRepSweep_NumLinearRegularSweep.hxx`:248 - `BRepSweep_NumLinearRegularSweep::Closed()`
+    /// Inherited: **Source:** `BRepSweep_NumLinearRegularSweep.hxx`:246 - `BRepSweep_NumLinearRegularSweep::Closed()`
     pub fn BRepSweep_Rotation_inherited_Closed(
         self_: *const BRepSweep_Rotation,
     ) -> crate::OcctResult<bool>;
     // ======================== BRepSweep_Tool ========================
     pub fn BRepSweep_Tool_destructor(self_: *mut BRepSweep_Tool);
-    /// **Source:** `BRepSweep_Tool.hxx`:39 - `BRepSweep_Tool::BRepSweep_Tool()`
+    /// **Source:** `BRepSweep_Tool.hxx`:40 - `BRepSweep_Tool::BRepSweep_Tool()`
     pub fn BRepSweep_Tool_ctor_shape(
         aShape: *const TopoDS_Shape,
     ) -> crate::OcctResult<*mut BRepSweep_Tool>;
-    /// **Source:** `BRepSweep_Tool.hxx`:42 - `BRepSweep_Tool::NbShapes()`
+    /// **Source:** `BRepSweep_Tool.hxx`:43 - `BRepSweep_Tool::NbShapes()`
     pub fn BRepSweep_Tool_nb_shapes(self_: *const BRepSweep_Tool) -> crate::OcctResult<i32>;
-    /// **Source:** `BRepSweep_Tool.hxx`:45 - `BRepSweep_Tool::Index()`
+    /// **Source:** `BRepSweep_Tool.hxx`:46 - `BRepSweep_Tool::Index()`
     pub fn BRepSweep_Tool_index(
         self_: *const BRepSweep_Tool,
         aShape: *const TopoDS_Shape,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `BRepSweep_Tool.hxx`:48 - `BRepSweep_Tool::Shape()`
+    /// **Source:** `BRepSweep_Tool.hxx`:49 - `BRepSweep_Tool::Shape()`
     pub fn BRepSweep_Tool_shape(
         self_: *const BRepSweep_Tool,
         anIndex: i32,
     ) -> crate::OcctResult<*mut TopoDS_Shape>;
-    /// **Source:** `BRepSweep_Tool.hxx`:51 - `BRepSweep_Tool::Type()`
+    /// **Source:** `BRepSweep_Tool.hxx`:52 - `BRepSweep_Tool::Type()`
     pub fn BRepSweep_Tool_type_(
         self_: *const BRepSweep_Tool,
         aShape: *const TopoDS_Shape,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `BRepSweep_Tool.hxx`:54 - `BRepSweep_Tool::Orientation()`
+    /// **Source:** `BRepSweep_Tool.hxx`:55 - `BRepSweep_Tool::Orientation()`
     pub fn BRepSweep_Tool_orientation(
         self_: *const BRepSweep_Tool,
         aShape: *const TopoDS_Shape,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `BRepSweep_Tool.hxx`:57 - `BRepSweep_Tool::SetOrientation()`
+    /// **Source:** `BRepSweep_Tool.hxx`:58 - `BRepSweep_Tool::SetOrientation()`
     pub fn BRepSweep_Tool_set_orientation(
         self_: *const BRepSweep_Tool,
         aShape: *mut TopoDS_Shape,
@@ -3813,42 +3813,42 @@ unsafe extern "C" {
         aGenS: *const TopoDS_Shape,
         aDirV: *const Sweep_NumShape,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `BRepSweep_Trsf.hxx`:180 - `BRepSweep_Trsf::SetContinuity()`
+    /// Inherited: **Source:** `BRepSweep_Trsf.hxx`:179 - `BRepSweep_Trsf::SetContinuity()`
     pub fn BRepSweep_Translation_inherited_SetContinuity(
         self_: *mut BRepSweep_Translation,
         aGenS: *const TopoDS_Shape,
         aDirS: *const Sweep_NumShape,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BRepSweep_NumLinearRegularSweep.hxx`:194 - `BRepSweep_NumLinearRegularSweep::SplitShell()`
+    /// Inherited: **Source:** `BRepSweep_NumLinearRegularSweep.hxx`:192 - `BRepSweep_NumLinearRegularSweep::SplitShell()`
     pub fn BRepSweep_Translation_inherited_SplitShell(
         self_: *const BRepSweep_Translation,
         aNewShape: *const TopoDS_Shape,
     ) -> crate::OcctResult<*mut TopoDS_Shape>;
-    /// Inherited: **Source:** `BRepSweep_NumLinearRegularSweep.hxx`:214 - `BRepSweep_NumLinearRegularSweep::Shape()`
+    /// Inherited: **Source:** `BRepSweep_NumLinearRegularSweep.hxx`:212 - `BRepSweep_NumLinearRegularSweep::Shape()`
     pub fn BRepSweep_Translation_inherited_Shape(
         self_: *mut BRepSweep_Translation,
         aGenS: *const TopoDS_Shape,
         aDirS: *const Sweep_NumShape,
     ) -> crate::OcctResult<*mut TopoDS_Shape>;
-    /// Inherited: **Source:** `BRepSweep_NumLinearRegularSweep.hxx`:222 - `BRepSweep_NumLinearRegularSweep::IsUsed()`
+    /// Inherited: **Source:** `BRepSweep_NumLinearRegularSweep.hxx`:220 - `BRepSweep_NumLinearRegularSweep::IsUsed()`
     pub fn BRepSweep_Translation_inherited_IsUsed(
         self_: *const BRepSweep_Translation,
         aGenS: *const TopoDS_Shape,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `BRepSweep_NumLinearRegularSweep.hxx`:226 - `BRepSweep_NumLinearRegularSweep::GenIsUsed()`
+    /// Inherited: **Source:** `BRepSweep_NumLinearRegularSweep.hxx`:224 - `BRepSweep_NumLinearRegularSweep::GenIsUsed()`
     pub fn BRepSweep_Translation_inherited_GenIsUsed(
         self_: *const BRepSweep_Translation,
         theS: *const TopoDS_Shape,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `BRepSweep_NumLinearRegularSweep.hxx`:234 - `BRepSweep_NumLinearRegularSweep::FirstShape()`
+    /// Inherited: **Source:** `BRepSweep_NumLinearRegularSweep.hxx`:232 - `BRepSweep_NumLinearRegularSweep::FirstShape()`
     pub fn BRepSweep_Translation_inherited_FirstShape(
         self_: *mut BRepSweep_Translation,
     ) -> crate::OcctResult<*mut TopoDS_Shape>;
-    /// Inherited: **Source:** `BRepSweep_NumLinearRegularSweep.hxx`:238 - `BRepSweep_NumLinearRegularSweep::LastShape()`
+    /// Inherited: **Source:** `BRepSweep_NumLinearRegularSweep.hxx`:236 - `BRepSweep_NumLinearRegularSweep::LastShape()`
     pub fn BRepSweep_Translation_inherited_LastShape(
         self_: *mut BRepSweep_Translation,
     ) -> crate::OcctResult<*mut TopoDS_Shape>;
-    /// Inherited: **Source:** `BRepSweep_NumLinearRegularSweep.hxx`:248 - `BRepSweep_NumLinearRegularSweep::Closed()`
+    /// Inherited: **Source:** `BRepSweep_NumLinearRegularSweep.hxx`:246 - `BRepSweep_NumLinearRegularSweep::Closed()`
     pub fn BRepSweep_Translation_inherited_Closed(
         self_: *const BRepSweep_Translation,
     ) -> crate::OcctResult<bool>;
@@ -3961,7 +3961,7 @@ unsafe extern "C" {
         aDirS: *const Sweep_NumShape,
         aSubDirS: *const Sweep_NumShape,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BRepSweep_Trsf.hxx`:160 - `BRepSweep_Trsf::SeparatedWires()`
+    /// **Source:** `BRepSweep_Trsf.hxx`:159 - `BRepSweep_Trsf::SeparatedWires()`
     pub fn BRepSweep_Trsf_separated_wires(
         self_: *const BRepSweep_Trsf,
         aNewShape: *const TopoDS_Shape,
@@ -3970,18 +3970,18 @@ unsafe extern "C" {
         aSubGenS: *const TopoDS_Shape,
         aDirS: *const Sweep_NumShape,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BRepSweep_Trsf.hxx`:170 - `BRepSweep_Trsf::HasShape()`
+    /// **Source:** `BRepSweep_Trsf.hxx`:169 - `BRepSweep_Trsf::HasShape()`
     pub fn BRepSweep_Trsf_has_shape(
         self_: *const BRepSweep_Trsf,
         aGenS: *const TopoDS_Shape,
         aDirS: *const Sweep_NumShape,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BRepSweep_Trsf.hxx`:175 - `BRepSweep_Trsf::IsInvariant()`
+    /// **Source:** `BRepSweep_Trsf.hxx`:174 - `BRepSweep_Trsf::IsInvariant()`
     pub fn BRepSweep_Trsf_is_invariant(
         self_: *const BRepSweep_Trsf,
         aGenS: *const TopoDS_Shape,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BRepSweep_Trsf.hxx`:180 - `BRepSweep_Trsf::SetContinuity()`
+    /// **Source:** `BRepSweep_Trsf.hxx`:179 - `BRepSweep_Trsf::SetContinuity()`
     pub fn BRepSweep_Trsf_set_continuity(
         self_: *mut BRepSweep_Trsf,
         aGenS: *const TopoDS_Shape,
@@ -3995,42 +3995,42 @@ unsafe extern "C" {
     pub fn BRepSweep_Trsf_as_BRepSweep_NumLinearRegularSweep_mut(
         self_: *mut BRepSweep_Trsf,
     ) -> crate::OcctResult<*mut BRepSweep_NumLinearRegularSweep>;
-    /// Inherited: **Source:** `BRepSweep_NumLinearRegularSweep.hxx`:158 - `BRepSweep_NumLinearRegularSweep::DirectSolid()`
+    /// Inherited: **Source:** `BRepSweep_NumLinearRegularSweep.hxx`:157 - `BRepSweep_NumLinearRegularSweep::DirectSolid()`
     pub fn BRepSweep_Trsf_inherited_DirectSolid(
         self_: *mut BRepSweep_Trsf,
         aGenS: *const TopoDS_Shape,
         aDirS: *const Sweep_NumShape,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `BRepSweep_NumLinearRegularSweep.hxx`:194 - `BRepSweep_NumLinearRegularSweep::SplitShell()`
+    /// Inherited: **Source:** `BRepSweep_NumLinearRegularSweep.hxx`:192 - `BRepSweep_NumLinearRegularSweep::SplitShell()`
     pub fn BRepSweep_Trsf_inherited_SplitShell(
         self_: *const BRepSweep_Trsf,
         aNewShape: *const TopoDS_Shape,
     ) -> crate::OcctResult<*mut TopoDS_Shape>;
-    /// Inherited: **Source:** `BRepSweep_NumLinearRegularSweep.hxx`:214 - `BRepSweep_NumLinearRegularSweep::Shape()`
+    /// Inherited: **Source:** `BRepSweep_NumLinearRegularSweep.hxx`:212 - `BRepSweep_NumLinearRegularSweep::Shape()`
     pub fn BRepSweep_Trsf_inherited_Shape(
         self_: *mut BRepSweep_Trsf,
         aGenS: *const TopoDS_Shape,
         aDirS: *const Sweep_NumShape,
     ) -> crate::OcctResult<*mut TopoDS_Shape>;
-    /// Inherited: **Source:** `BRepSweep_NumLinearRegularSweep.hxx`:222 - `BRepSweep_NumLinearRegularSweep::IsUsed()`
+    /// Inherited: **Source:** `BRepSweep_NumLinearRegularSweep.hxx`:220 - `BRepSweep_NumLinearRegularSweep::IsUsed()`
     pub fn BRepSweep_Trsf_inherited_IsUsed(
         self_: *const BRepSweep_Trsf,
         aGenS: *const TopoDS_Shape,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `BRepSweep_NumLinearRegularSweep.hxx`:226 - `BRepSweep_NumLinearRegularSweep::GenIsUsed()`
+    /// Inherited: **Source:** `BRepSweep_NumLinearRegularSweep.hxx`:224 - `BRepSweep_NumLinearRegularSweep::GenIsUsed()`
     pub fn BRepSweep_Trsf_inherited_GenIsUsed(
         self_: *const BRepSweep_Trsf,
         theS: *const TopoDS_Shape,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `BRepSweep_NumLinearRegularSweep.hxx`:234 - `BRepSweep_NumLinearRegularSweep::FirstShape()`
+    /// Inherited: **Source:** `BRepSweep_NumLinearRegularSweep.hxx`:232 - `BRepSweep_NumLinearRegularSweep::FirstShape()`
     pub fn BRepSweep_Trsf_inherited_FirstShape(
         self_: *mut BRepSweep_Trsf,
     ) -> crate::OcctResult<*mut TopoDS_Shape>;
-    /// Inherited: **Source:** `BRepSweep_NumLinearRegularSweep.hxx`:238 - `BRepSweep_NumLinearRegularSweep::LastShape()`
+    /// Inherited: **Source:** `BRepSweep_NumLinearRegularSweep.hxx`:236 - `BRepSweep_NumLinearRegularSweep::LastShape()`
     pub fn BRepSweep_Trsf_inherited_LastShape(
         self_: *mut BRepSweep_Trsf,
     ) -> crate::OcctResult<*mut TopoDS_Shape>;
-    /// Inherited: **Source:** `BRepSweep_NumLinearRegularSweep.hxx`:248 - `BRepSweep_NumLinearRegularSweep::Closed()`
+    /// Inherited: **Source:** `BRepSweep_NumLinearRegularSweep.hxx`:246 - `BRepSweep_NumLinearRegularSweep::Closed()`
     pub fn BRepSweep_Trsf_inherited_Closed(self_: *const BRepSweep_Trsf)
         -> crate::OcctResult<bool>;
     // ======================== Sweep_NumShape ========================

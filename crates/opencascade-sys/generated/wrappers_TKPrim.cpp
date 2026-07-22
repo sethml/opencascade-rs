@@ -3,7 +3,6 @@
 
 #include "occt_preamble.hxx"
 
-#include <BRepClass3d_MapOfInter.hxx>
 #include <BRepPreviewAPI_MakeBox.hxx>
 #include <BRepPrimAPI_MakeBox.hxx>
 #include <BRepPrimAPI_MakeCone.hxx>
@@ -38,9 +37,6 @@
 #include <BRepSweep_Translation.hxx>
 #include <BRepSweep_Trsf.hxx>
 #include <BRep_Builder.hxx>
-#include <Geom2d_Curve.hxx>
-#include <Geom_Curve.hxx>
-#include <Geom_Surface.hxx>
 #include <Message_ProgressRange.hxx>
 #include <Standard_Handle.hxx>
 #include <Sweep_NumShape.hxx>
@@ -48,8 +44,6 @@
 #include <Sweep_NumShapeTool.hxx>
 #include <TopAbs_Orientation.hxx>
 #include <TopAbs_ShapeEnum.hxx>
-#include <TopLoc_Location.hxx>
-#include <TopTools_ListOfShape.hxx>
 #include <TopoDS_Edge.hxx>
 #include <TopoDS_Face.hxx>
 #include <TopoDS_Shell.hxx>
@@ -58,18 +52,14 @@
 #include <TopoDS_Wire.hxx>
 #include <gp_Ax1.hxx>
 #include <gp_Ax2.hxx>
-#include <gp_Circ.hxx>
 #include <gp_Circ2d.hxx>
-#include <gp_Dir.hxx>
-#include <gp_Lin.hxx>
 #include <gp_Lin2d.hxx>
 #include <gp_Pln.hxx>
-#include <gp_Vec.hxx>
 
 // Handle type aliases
-typedef opencascade::handle<Geom2d_Curve> HandleGeom2dCurve;
-typedef opencascade::handle<Geom_Curve> HandleGeomCurve;
-typedef opencascade::handle<Geom_Surface> HandleGeomSurface;
+typedef opencascade::handle<Geom2d_Curve> Handle_Geom2d_Curve;
+typedef opencascade::handle<Geom_Curve> Handle_Geom_Curve;
+typedef opencascade::handle<Geom_Surface> Handle_Geom_Surface;
 
 // Handle type destructors, clone, and is_null functions
 
@@ -1927,8 +1917,8 @@ extern "C" OcctResult<BRepPrimAPI_MakeCone*> BRepPrimAPI_MakeCone_ctor_ax2_real4
     try { return {new BRepPrimAPI_MakeCone(*Axes, R1, R2, H, angle), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Standard_Address*> BRepPrimAPI_MakeCone_one_axis(BRepPrimAPI_MakeCone* self_) {
-    try { return {new Standard_Address(self_->OneAxis()), nullptr}; }
+extern "C" OcctResult<void*> BRepPrimAPI_MakeCone_one_axis(BRepPrimAPI_MakeCone* self_) {
+    try { return {self_->OneAxis(), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<BRepPrim_Cone*> BRepPrimAPI_MakeCone_cone(BRepPrimAPI_MakeCone* self_) {
@@ -1995,8 +1985,8 @@ extern "C" OcctResult<BRepPrimAPI_MakeCylinder*> BRepPrimAPI_MakeCylinder_ctor_a
     try { return {new BRepPrimAPI_MakeCylinder(*Axes, R, H, Angle), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Standard_Address*> BRepPrimAPI_MakeCylinder_one_axis(BRepPrimAPI_MakeCylinder* self_) {
-    try { return {new Standard_Address(self_->OneAxis()), nullptr}; }
+extern "C" OcctResult<void*> BRepPrimAPI_MakeCylinder_one_axis(BRepPrimAPI_MakeCylinder* self_) {
+    try { return {self_->OneAxis(), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<BRepPrim_Cylinder*> BRepPrimAPI_MakeCylinder_cylinder(BRepPrimAPI_MakeCylinder* self_) {
@@ -2089,8 +2079,8 @@ extern "C" void BRepPrimAPI_MakeHalfSpace_destructor(BRepPrimAPI_MakeHalfSpace* 
 // BRepPrimAPI_MakeOneAxis wrappers
 // ========================
 
-extern "C" OcctResult<Standard_Address*> BRepPrimAPI_MakeOneAxis_one_axis(BRepPrimAPI_MakeOneAxis* self_) {
-    try { return {new Standard_Address(self_->OneAxis()), nullptr}; }
+extern "C" OcctResult<void*> BRepPrimAPI_MakeOneAxis_one_axis(BRepPrimAPI_MakeOneAxis* self_) {
+    try { return {self_->OneAxis(), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" const char* BRepPrimAPI_MakeOneAxis_build(BRepPrimAPI_MakeOneAxis* self_, Message_ProgressRange const* theRange) {
@@ -2167,7 +2157,7 @@ extern "C" const char* BRepPrimAPI_MakePrism_build(BRepPrimAPI_MakePrism* self_,
     try { self_->Build(*theRange); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<TopTools_ListOfShape const*> BRepPrimAPI_MakePrism_generated(BRepPrimAPI_MakePrism* self_, TopoDS_Shape const* S) {
+extern "C" OcctResult<NCollection_List_TopoDS_Shape const*> BRepPrimAPI_MakePrism_generated(BRepPrimAPI_MakePrism* self_, TopoDS_Shape const* S) {
     try { return {&(self_->Generated(*S)), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -2231,7 +2221,7 @@ extern "C" const char* BRepPrimAPI_MakeRevol_build(BRepPrimAPI_MakeRevol* self_,
     try { self_->Build(*theRange); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<TopTools_ListOfShape const*> BRepPrimAPI_MakeRevol_generated(BRepPrimAPI_MakeRevol* self_, TopoDS_Shape const* S) {
+extern "C" OcctResult<NCollection_List_TopoDS_Shape const*> BRepPrimAPI_MakeRevol_generated(BRepPrimAPI_MakeRevol* self_, TopoDS_Shape const* S) {
     try { return {&(self_->Generated(*S)), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -2243,7 +2233,7 @@ extern "C" OcctResult<bool> BRepPrimAPI_MakeRevol_has_degenerated(const BRepPrim
     try { return {self_->HasDegenerated(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TopTools_ListOfShape const*> BRepPrimAPI_MakeRevol_degenerated(const BRepPrimAPI_MakeRevol* self_) {
+extern "C" OcctResult<NCollection_List_TopoDS_Shape const*> BRepPrimAPI_MakeRevol_degenerated(const BRepPrimAPI_MakeRevol* self_) {
     try { return {&(self_->Degenerated()), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -2303,8 +2293,8 @@ extern "C" OcctResult<BRepPrimAPI_MakeRevolution*> BRepPrimAPI_MakeRevolution_ct
     try { return {new BRepPrimAPI_MakeRevolution(*Axes, *Meridian, VMin, VMax, angle), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Standard_Address*> BRepPrimAPI_MakeRevolution_one_axis(BRepPrimAPI_MakeRevolution* self_) {
-    try { return {new Standard_Address(self_->OneAxis()), nullptr}; }
+extern "C" OcctResult<void*> BRepPrimAPI_MakeRevolution_one_axis(BRepPrimAPI_MakeRevolution* self_) {
+    try { return {self_->OneAxis(), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<BRepPrim_Revolution*> BRepPrimAPI_MakeRevolution_revolution(BRepPrimAPI_MakeRevolution* self_) {
@@ -2403,8 +2393,8 @@ extern "C" OcctResult<BRepPrimAPI_MakeSphere*> BRepPrimAPI_MakeSphere_ctor_ax2_r
     try { return {new BRepPrimAPI_MakeSphere(*Axis, R, angle1, angle2, angle3), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Standard_Address*> BRepPrimAPI_MakeSphere_one_axis(BRepPrimAPI_MakeSphere* self_) {
-    try { return {new Standard_Address(self_->OneAxis()), nullptr}; }
+extern "C" OcctResult<void*> BRepPrimAPI_MakeSphere_one_axis(BRepPrimAPI_MakeSphere* self_) {
+    try { return {self_->OneAxis(), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<BRepPrim_Sphere*> BRepPrimAPI_MakeSphere_sphere(BRepPrimAPI_MakeSphere* self_) {
@@ -2525,8 +2515,8 @@ extern "C" OcctResult<BRepPrimAPI_MakeTorus*> BRepPrimAPI_MakeTorus_ctor_ax2_rea
     try { return {new BRepPrimAPI_MakeTorus(*Axes, R1, R2, angle1, angle2, angle), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Standard_Address*> BRepPrimAPI_MakeTorus_one_axis(BRepPrimAPI_MakeTorus* self_) {
-    try { return {new Standard_Address(self_->OneAxis()), nullptr}; }
+extern "C" OcctResult<void*> BRepPrimAPI_MakeTorus_one_axis(BRepPrimAPI_MakeTorus* self_) {
+    try { return {self_->OneAxis(), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<BRepPrim_Torus*> BRepPrimAPI_MakeTorus_torus(BRepPrimAPI_MakeTorus* self_) {

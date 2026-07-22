@@ -104,6 +104,19 @@ pub struct BindingConfig {
     /// All constructors (including convenience wrappers) for the class will be `unsafe fn`.
     #[serde(default)]
     pub unsafe_constructors: std::collections::HashMap<String, String>,
+
+    /// Skip OCCT 8.0.0 deprecated backward-compatibility alias headers (those marked
+    /// with `Standard_HEADER_DEPRECATED` and the standard "Deprecated typedef for
+    /// backward compatibility" banner, e.g. `TColgp_HArray1OfPnt.hxx` which is now
+    /// just `typedef NCollection_HArray1<gp_Pnt>`). Generating these produces
+    /// duplicate/mis-toolkited bindings for the underlying canonical types, so they
+    /// are excluded by default. Defaults to true.
+    #[serde(default = "default_true")]
+    pub exclude_deprecated_headers: bool,
+}
+
+fn default_true() -> bool {
+    true
 }
 
 /// Configuration for splitting generated output files for build parallelization.
@@ -327,17 +340,86 @@ pub fn expand_headers(config: &BindingConfig, occt_include_dir: &Path) -> Result
         });
     }
 
+    // 6. Remove OCCT 8.0 deprecated backward-compatibility alias headers by content.
+    //    These carry a standard banner comment; excluding them here avoids listing
+    //    each of the ~970 alias headers individually in `exclude_headers`.
+    if config.exclude_deprecated_headers {
+        let before = headers.len();
+        headers.retain(|path| !is_deprecated_alias_header(path));
+        let excluded = before - headers.len();
+        if excluded > 0 {
+            println!("  Excluded {} deprecated alias headers (OCCT 8.0.0)", excluded);
+        }
+    }
+
     Ok(headers)
 }
 
-/// Discover OCCT module→toolkit mappings by reading TK*/PACKAGES files.
+/// Detect an OCCT 8.0.0 deprecated backward-compatibility alias header (e.g.
+/// `TColgp_HArray1OfPnt.hxx`, `TopTools_HSequenceOfShape.hxx`). These consist solely
+/// of a `Standard_DEPRECATED` typedef forwarding to the canonical NCollection type and
+/// carry the banner comment below. Matching the banner (rather than the raw
+/// `Standard_HEADER_DEPRECATED` macro) avoids false positives such as `Standard_Macro.hxx`,
+/// which merely defines that macro.
+fn is_deprecated_alias_header(path: &Path) -> bool {
+    match std::fs::read_to_string(path) {
+        Ok(content) => content.contains("Deprecated typedef for backward compatibility"),
+        Err(_) => false,
+    }
+}
+
+/// Discover OCCT package→toolkit mappings.
 ///
-/// Returns a map from C++ module name (e.g., "gp", "TopoDS") to toolkit name
-/// (e.g., "TKMath", "TKBRep").
+/// Returns a map from C++ package name (e.g., "gp", "TopoDS") to toolkit name
+/// (e.g., "TKMath", "TKBRep"). The binding generator uses this to split
+/// generated wrappers and extern blocks by toolkit.
+///
+/// Supports both V8's hierarchical `src/<Module>/<Toolkit>/PACKAGES.cmake`
+/// layout and V7's flat `src/<Toolkit>/PACKAGES` layout. V8 is detected by
+/// the presence of `adm/MODULES`; if absent, falls back to V7 behavior.
 pub fn discover_toolkit_modules(occt_source_dir: &Path) -> Result<std::collections::HashMap<String, String>> {
     use std::collections::HashMap;
     let mut module_to_toolkit: HashMap<String, String> = HashMap::new();
 
+    // V8 layout: adm/MODULES lists module→toolkits; per-toolkit PACKAGES.cmake
+    // lists packages. Located one level up from `src/`.
+    let occt_root = occt_source_dir.parent().unwrap_or_else(|| Path::new("."));
+    let adm_modules = occt_root.join("adm").join("MODULES");
+
+    if adm_modules.exists() {
+        let adm_content = std::fs::read_to_string(&adm_modules)
+            .with_context(|| format!("Failed to read {}", adm_modules.display()))?;
+        for line in adm_content.lines() {
+            let line = line.trim();
+            if line.is_empty() || line.starts_with('#') {
+                continue;
+            }
+            let mut parts = line.split_whitespace();
+            let _module = match parts.next() {
+                Some(m) => m,
+                None => continue,
+            };
+            for toolkit in parts {
+                // Look for src/<Module>/<Toolkit>/PACKAGES.cmake
+                let packages_cmake = occt_source_dir
+                    .join(_module)
+                    .join(toolkit)
+                    .join("PACKAGES.cmake");
+                if packages_cmake.exists() {
+                    if let Ok(content) = std::fs::read_to_string(&packages_cmake) {
+                        for pkg in parse_packages_cmake(&content) {
+                            module_to_toolkit.insert(pkg, toolkit.to_string());
+                        }
+                    }
+                }
+            }
+        }
+        if !module_to_toolkit.is_empty() {
+            return Ok(module_to_toolkit);
+        }
+    }
+
+    // Fallback: V7 flat layout - src/<Toolkit>/PACKAGES (plain text)
     let entries = std::fs::read_dir(occt_source_dir)
         .with_context(|| format!("Failed to read OCCT source directory: {}", occt_source_dir.display()))?;
 
@@ -362,4 +444,106 @@ pub fn discover_toolkit_modules(occt_source_dir: &Path) -> Result<std::collectio
     }
 
     Ok(module_to_toolkit)
+}
+
+/// Parse a PACKAGES.cmake file's contents, returning the list of package names.
+///
+/// The format is:
+/// ```text
+/// # Auto-generated list of packages for TKernel toolkit
+/// set(OCCT_TKernel_LIST_OF_PACKAGES
+///   FSD
+///   OSD
+///   ...
+/// )
+/// ```
+/// We extract everything between `set(...)` and split on whitespace.
+fn parse_packages_cmake(content: &str) -> Vec<String> {
+    // Find the `set(OCCT_..._LIST_OF_PACKAGES ... )` form.
+    let marker = "_LIST_OF_PACKAGES";
+    let start_idx = match content.find(marker) {
+        Some(i) => i + marker.len(),
+        None => return Vec::new(),
+    };
+    // Find the opening `(` of `set(`. We need to be robust here: the variable
+    // name follows immediately. After the variable name, the rest until the
+    // closing `)` is the package list.
+    let rest = &content[start_idx..];
+    // Skip whitespace and any optional characters until we hit the package
+    // list. In cmake `set(VAR a b c)`, after `VAR` there is whitespace then
+    // the values. We look for the first newline (packages are listed one per
+    // line) but fall back to any whitespace.
+    let close_paren = match rest.rfind(')') {
+        Some(i) => i,
+        None => return Vec::new(),
+    };
+    let body = &rest[..close_paren];
+    // Skip leading whitespace/newlines, then parse package names separated by
+    // whitespace. Each non-empty token is a package name.
+    body.split_whitespace().map(|s| s.to_string()).collect()
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn test_parse_packages_cmake_basic() {
+        let content = "# Auto-generated list of packages for TKernel toolkit
+set(OCCT_TKernel_LIST_OF_PACKAGES
+  FSD
+  OSD
+  Plugin
+  Standard
+)
+";
+        let pkgs = parse_packages_cmake(content);
+        assert_eq!(pkgs, vec!["FSD", "OSD", "Plugin", "Standard"]);
+    }
+
+    #[test]
+    fn test_parse_packages_cmake_single_line() {
+        let content = "set(OCCT_TKBRep_LIST_OF_PACKAGES BinTools BRep BRepAdaptor)\n";
+        let pkgs = parse_packages_cmake(content);
+        assert_eq!(pkgs, vec!["BinTools", "BRep", "BRepAdaptor"]);
+    }
+
+    #[test]
+    fn test_parse_packages_cmake_empty() {
+        let content = "set(OCCT_TKempty_LIST_OF_PACKAGES
+)
+";
+        let pkgs = parse_packages_cmake(content);
+        assert!(pkgs.is_empty());
+    }
+
+    #[test]
+    fn test_parse_packages_cmake_no_marker() {
+        let content = "some other cmake content";
+        let pkgs = parse_packages_cmake(content);
+        assert!(pkgs.is_empty());
+    }
+
+    #[test]
+    fn test_discover_toolkit_modules_v8() {
+        // Use the real OCCT source tree checked out as a submodule.
+        let repo_root = Path::new(env!("CARGO_MANIFEST_DIR"))
+            .parent().unwrap()       // crates/
+            .parent().unwrap();      // repo root
+        let occt_src = repo_root.join("crates").join("occt-sys").join("OCCT").join("src");
+        if !occt_src.exists() {
+            eprintln!("Skipping: OCCT source not available at {}", occt_src.display());
+            return;
+        }
+        let map = discover_toolkit_modules(&occt_src).expect("discovery should succeed");
+        // Spot checks against the known V8 layout (these packages should exist
+        // and map to the indicated toolkits, per adm/MODULES + PACKAGES.cmake).
+        assert_eq!(map.get("gp"), Some(&"TKMath".to_string()), "gp should be in TKMath");
+        assert_eq!(map.get("Standard"), Some(&"TKernel".to_string()), "Standard should be in TKernel");
+        assert_eq!(map.get("TopoDS"), Some(&"TKBRep".to_string()), "TopoDS should be in TKBRep");
+        assert_eq!(map.get("BRepBuilderAPI"), Some(&"TKTopAlgo".to_string()), "BRepBuilderAPI should be in TKTopAlgo");
+        assert_eq!(map.get("BRepPrimAPI"), Some(&"TKPrim".to_string()), "BRepPrimAPI should be in TKPrim");
+        // Sanity-check that the map is non-trivial.
+        assert!(map.len() > 50, "expected many package entries, got {}", map.len());
+    }
 }

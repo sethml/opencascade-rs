@@ -8,14 +8,15 @@
 
 // Handle type re-exports (targets of handle upcasts/downcasts)
 pub use crate::ffi_types::{
-    HandleCDFApplication, HandleCDMApplication, HandleStandardTransient, HandleTDocStdApplication,
+    Handle_CDF_Application, Handle_CDM_Application, Handle_Standard_Transient,
+    Handle_TDocStd_Application,
 };
 
 // ========================
 // From AppStd_Application.hxx
 // ========================
 
-/// **Source:** `AppStd_Application.hxx`:27 - `AppStd_Application`
+/// **Source:** `AppStd_Application.hxx`:24 - `AppStd_Application`
 /// Legacy class defining resources name for standard OCAF documents
 pub use crate::ffi_types::AppStd_Application as Application;
 
@@ -38,9 +39,8 @@ impl Application {
         }
     }
 
-    /// **Source:** `AppStd_Application.hxx`:32 - `AppStd_Application::ResourcesName()`
-    /// returns   the file  name  which  contains  application
-    /// resources
+    /// **Source:** `AppStd_Application.hxx`:28 - `AppStd_Application::ResourcesName()`
+    /// returns the file name which contains application resources
     pub fn resources_name(&mut self) -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -51,8 +51,8 @@ impl Application {
         .into_owned()
     }
 
-    /// **Source:** `AppStd_Application.hxx`:37 - `AppStd_Application::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `AppStd_Application.hxx`:33 - `AppStd_Application::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKCAF::AppStd_Application_dynamic_type(
                 self as *const Self,
@@ -60,7 +60,7 @@ impl Application {
         }
     }
 
-    /// **Source:** `AppStd_Application.hxx`:37 - `AppStd_Application::get_type_name()`
+    /// **Source:** `AppStd_Application.hxx`:33 - `AppStd_Application::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -71,8 +71,8 @@ impl Application {
         .into_owned()
     }
 
-    /// **Source:** `AppStd_Application.hxx`:37 - `AppStd_Application::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    /// **Source:** `AppStd_Application.hxx`:33 - `AppStd_Application::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKCAF::AppStd_Application_get_type_descriptor(),
@@ -167,7 +167,7 @@ impl Application {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleAppStdApplication> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_AppStd_Application> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKCAF::AppStd_Application_to_handle(obj.into_raw()),
@@ -175,7 +175,7 @@ impl Application {
         }
     }
 
-    /// Inherited: **Source:** `TDocStd_Application.hxx`:76 - `TDocStd_Application::IsDriverLoaded()`
+    /// Inherited: **Source:** `TDocStd_Application.hxx`:74 - `TDocStd_Application::IsDriverLoaded()`
     pub fn is_driver_loaded(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKCAF::AppStd_Application_inherited_IsDriverLoaded(
@@ -184,8 +184,8 @@ impl Application {
         })
     }
 
-    /// Inherited: **Source:** `TDocStd_Application.hxx`:96 - `TDocStd_Application::Resources()`
-    pub fn resources(&mut self) -> crate::OwnedPtr<crate::ffi_types::HandleResourceManager> {
+    /// Inherited: **Source:** `TDocStd_Application.hxx`:94 - `TDocStd_Application::Resources()`
+    pub fn resources(&mut self) -> crate::OwnedPtr<crate::ffi_types::Handle_Resource_Manager> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKCAF::AppStd_Application_inherited_Resources(self as *mut Self),
@@ -193,14 +193,14 @@ impl Application {
         }
     }
 
-    /// Inherited: **Source:** `TDocStd_Application.hxx`:140 - `TDocStd_Application::DefineFormat()`
+    /// Inherited: **Source:** `TDocStd_Application.hxx`:138 - `TDocStd_Application::DefineFormat()`
     pub fn define_format(
         &mut self,
         theFormat: &crate::t_collection::AsciiString,
         theDescription: &crate::t_collection::AsciiString,
         theExtension: &crate::t_collection::AsciiString,
-        theReader: &crate::ffi_types::HandlePCDMRetrievalDriver,
-        theWriter: &crate::ffi_types::HandlePCDMStorageDriver,
+        theReader: &crate::ffi_types::Handle_PCDM_RetrievalDriver,
+        theWriter: &crate::ffi_types::Handle_PCDM_StorageDriver,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKCAF::AppStd_Application_inherited_DefineFormat(
@@ -214,10 +214,10 @@ impl Application {
         })
     }
 
-    /// Inherited: **Source:** `TDocStd_Application.hxx`:149 - `TDocStd_Application::ReadingFormats()`
+    /// Inherited: **Source:** `TDocStd_Application.hxx`:147 - `TDocStd_Application::ReadingFormats()`
     pub fn reading_formats(
         &mut self,
-        theFormats: &mut crate::ffi_types::TColStd_SequenceOfAsciiString,
+        theFormats: &mut crate::ffi_types::NCollection_Sequence_TCollection_AsciiString,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKCAF::AppStd_Application_inherited_ReadingFormats(
@@ -227,10 +227,10 @@ impl Application {
         })
     }
 
-    /// Inherited: **Source:** `TDocStd_Application.hxx`:154 - `TDocStd_Application::WritingFormats()`
+    /// Inherited: **Source:** `TDocStd_Application.hxx`:152 - `TDocStd_Application::WritingFormats()`
     pub fn writing_formats(
         &mut self,
-        theFormats: &mut crate::ffi_types::TColStd_SequenceOfAsciiString,
+        theFormats: &mut crate::ffi_types::NCollection_Sequence_TCollection_AsciiString,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKCAF::AppStd_Application_inherited_WritingFormats(
@@ -240,29 +240,33 @@ impl Application {
         })
     }
 
-    /// Inherited: **Source:** `TDocStd_Application.hxx`:157 - `TDocStd_Application::NbDocuments()`
+    /// Inherited: **Source:** `TDocStd_Application.hxx`:155 - `TDocStd_Application::NbDocuments()`
     pub fn nb_documents(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKCAF::AppStd_Application_inherited_NbDocuments(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `TDocStd_Application.hxx`:171 - `TDocStd_Application::GetDocument()`
-    pub fn get_document(&self, index: i32, aDoc: &mut crate::ffi_types::HandleTDocStdDocument) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKCAF::AppStd_Application_inherited_GetDocument(
-                self as *const Self,
-                index,
-                aDoc,
-            )
-        })
+    /// Inherited: **Source:** `TDocStd_Application.hxx`:161 - `TDocStd_Application::GetDocument()`
+    pub fn get_document(
+        &self,
+        index: i32,
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_TDocStd_Document> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKCAF::AppStd_Application_inherited_GetDocument(
+                    self as *const Self,
+                    index,
+                ),
+            ))
+        }
     }
 
-    /// Inherited: **Source:** `TDocStd_Application.hxx`:179 - `TDocStd_Application::NewDocument()`
+    /// Inherited: **Source:** `TDocStd_Application.hxx`:172 - `TDocStd_Application::NewDocument()`
     pub fn new_document(
         &mut self,
         format: &crate::t_collection::ExtendedString,
-        aDoc: &mut crate::ffi_types::HandleCDMDocument,
+        aDoc: &mut crate::ffi_types::Handle_CDM_Document,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKCAF::AppStd_Application_inherited_NewDocument(
@@ -273,8 +277,8 @@ impl Application {
         })
     }
 
-    /// Inherited: **Source:** `TDocStd_Application.hxx`:194 - `TDocStd_Application::InitDocument()`
-    pub fn init_document(&self, aDoc: &crate::ffi_types::HandleCDMDocument) {
+    /// Inherited: **Source:** `TDocStd_Application.hxx`:187 - `TDocStd_Application::InitDocument()`
+    pub fn init_document(&self, aDoc: &crate::ffi_types::Handle_CDM_Document) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKCAF::AppStd_Application_inherited_InitDocument(
                 self as *const Self,
@@ -283,14 +287,14 @@ impl Application {
         })
     }
 
-    /// Inherited: **Source:** `TDocStd_Application.hxx`:199 - `TDocStd_Application::Close()`
-    pub fn close(&mut self, aDoc: &crate::ffi_types::HandleTDocStdDocument) {
+    /// Inherited: **Source:** `TDocStd_Application.hxx`:191 - `TDocStd_Application::Close()`
+    pub fn close(&mut self, aDoc: &crate::ffi_types::Handle_TDocStd_Document) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKCAF::AppStd_Application_inherited_Close(self as *mut Self, aDoc)
         })
     }
 
-    /// Inherited: **Source:** `TDocStd_Application.hxx`:221 - `TDocStd_Application::IsInSession()`
+    /// Inherited: **Source:** `TDocStd_Application.hxx`:213 - `TDocStd_Application::IsInSession()`
     pub fn is_in_session(&self, path: &crate::t_collection::ExtendedString) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKCAF::AppStd_Application_inherited_IsInSession(
@@ -300,12 +304,12 @@ impl Application {
         })
     }
 
-    /// Inherited: **Source:** `TDocStd_Application.hxx`:232 - `TDocStd_Application::Open()`
+    /// Inherited: **Source:** `TDocStd_Application.hxx`:224 - `TDocStd_Application::Open()`
     pub fn open(
         &mut self,
         thePath: &crate::t_collection::ExtendedString,
-        theDoc: &mut crate::ffi_types::HandleTDocStdDocument,
-        theFilter: &crate::ffi_types::HandlePCDMReaderFilter,
+        theDoc: &mut crate::ffi_types::Handle_TDocStd_Document,
+        theFilter: &crate::ffi_types::Handle_PCDM_ReaderFilter,
         theRange: &crate::message::ProgressRange,
     ) -> crate::pcdm::ReaderStatus {
         crate::pcdm::ReaderStatus::try_from(crate::check_result(unsafe {
@@ -320,10 +324,10 @@ impl Application {
         .unwrap()
     }
 
-    /// Inherited: **Source:** `TDocStd_Application.hxx`:278 - `TDocStd_Application::SaveAs()`
+    /// Inherited: **Source:** `TDocStd_Application.hxx`:270 - `TDocStd_Application::SaveAs()`
     pub fn save_as(
         &mut self,
-        theDoc: &crate::ffi_types::HandleTDocStdDocument,
+        theDoc: &crate::ffi_types::Handle_TDocStd_Document,
         path: &crate::t_collection::ExtendedString,
         theRange: &crate::message::ProgressRange,
     ) -> crate::pcdm::StoreStatus {
@@ -338,10 +342,10 @@ impl Application {
         .unwrap()
     }
 
-    /// Inherited: **Source:** `TDocStd_Application.hxx`:294 - `TDocStd_Application::Save()`
+    /// Inherited: **Source:** `TDocStd_Application.hxx`:286 - `TDocStd_Application::Save()`
     pub fn save(
         &mut self,
-        theDoc: &crate::ffi_types::HandleTDocStdDocument,
+        theDoc: &crate::ffi_types::Handle_TDocStd_Document,
         theRange: &crate::message::ProgressRange,
     ) -> crate::pcdm::StoreStatus {
         crate::pcdm::StoreStatus::try_from(crate::check_result(unsafe {
@@ -354,8 +358,8 @@ impl Application {
         .unwrap()
     }
 
-    /// Inherited: **Source:** `TDocStd_Application.hxx`:321 - `TDocStd_Application::OnOpenTransaction()`
-    pub fn on_open_transaction(&mut self, theDoc: &crate::ffi_types::HandleTDocStdDocument) {
+    /// Inherited: **Source:** `TDocStd_Application.hxx`:312 - `TDocStd_Application::OnOpenTransaction()`
+    pub fn on_open_transaction(&mut self, theDoc: &crate::ffi_types::Handle_TDocStd_Document) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKCAF::AppStd_Application_inherited_OnOpenTransaction(
                 self as *mut Self,
@@ -364,8 +368,8 @@ impl Application {
         })
     }
 
-    /// Inherited: **Source:** `TDocStd_Application.hxx`:324 - `TDocStd_Application::OnCommitTransaction()`
-    pub fn on_commit_transaction(&mut self, theDoc: &crate::ffi_types::HandleTDocStdDocument) {
+    /// Inherited: **Source:** `TDocStd_Application.hxx`:315 - `TDocStd_Application::OnCommitTransaction()`
+    pub fn on_commit_transaction(&mut self, theDoc: &crate::ffi_types::Handle_TDocStd_Document) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKCAF::AppStd_Application_inherited_OnCommitTransaction(
                 self as *mut Self,
@@ -374,8 +378,8 @@ impl Application {
         })
     }
 
-    /// Inherited: **Source:** `TDocStd_Application.hxx`:327 - `TDocStd_Application::OnAbortTransaction()`
-    pub fn on_abort_transaction(&mut self, theDoc: &crate::ffi_types::HandleTDocStdDocument) {
+    /// Inherited: **Source:** `TDocStd_Application.hxx`:318 - `TDocStd_Application::OnAbortTransaction()`
+    pub fn on_abort_transaction(&mut self, theDoc: &crate::ffi_types::Handle_TDocStd_Document) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKCAF::AppStd_Application_inherited_OnAbortTransaction(
                 self as *mut Self,
@@ -384,10 +388,10 @@ impl Application {
         })
     }
 
-    /// Inherited: **Source:** `CDF_Application.hxx`:73 - `CDF_Application::CanClose()`
+    /// Inherited: **Source:** `CDF_Application.hxx`:71 - `CDF_Application::CanClose()`
     pub fn can_close(
         &mut self,
-        aDocument: &crate::ffi_types::HandleCDMDocument,
+        aDocument: &crate::ffi_types::Handle_CDM_Document,
     ) -> crate::cdm::CanCloseStatus {
         crate::cdm::CanCloseStatus::try_from(crate::check_result(unsafe {
             crate::ffi_extern_TKCAF::AppStd_Application_inherited_CanClose(
@@ -398,15 +402,15 @@ impl Application {
         .unwrap()
     }
 
-    /// Inherited: **Source:** `CDF_Application.hxx`:97 - `CDF_Application::Retrieve()`
+    /// Inherited: **Source:** `CDF_Application.hxx`:95 - `CDF_Application::Retrieve()`
     pub fn retrieve(
         &mut self,
         aFolder: &crate::t_collection::ExtendedString,
         aName: &crate::t_collection::ExtendedString,
         UseStorageConfiguration: bool,
-        theFilter: &crate::ffi_types::HandlePCDMReaderFilter,
+        theFilter: &crate::ffi_types::Handle_PCDM_ReaderFilter,
         theRange: &crate::message::ProgressRange,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleCDMDocument> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_CDM_Document> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKCAF::AppStd_Application_inherited_Retrieve(
@@ -421,7 +425,7 @@ impl Application {
         }
     }
 
-    /// Inherited: **Source:** `CDF_Application.hxx`:126 - `CDF_Application::CanRetrieve()`
+    /// Inherited: **Source:** `CDF_Application.hxx`:124 - `CDF_Application::CanRetrieve()`
     pub fn can_retrieve(
         &mut self,
         theFolder: &crate::t_collection::ExtendedString,
@@ -439,7 +443,7 @@ impl Application {
         .unwrap()
     }
 
-    /// Inherited: **Source:** `CDF_Application.hxx`:136 - `CDF_Application::GetRetrieveStatus()`
+    /// Inherited: **Source:** `CDF_Application.hxx`:134 - `CDF_Application::GetRetrieveStatus()`
     pub fn get_retrieve_status(&self) -> crate::pcdm::ReaderStatus {
         crate::pcdm::ReaderStatus::try_from(crate::check_result(unsafe {
             crate::ffi_extern_TKCAF::AppStd_Application_inherited_GetRetrieveStatus(
@@ -449,12 +453,12 @@ impl Application {
         .unwrap()
     }
 
-    /// Inherited: **Source:** `CDF_Application.hxx`:140 - `CDF_Application::Read()`
+    /// Inherited: **Source:** `CDF_Application.hxx`:138 - `CDF_Application::Read()`
     pub fn read(
         &mut self,
         theIStream: &mut crate::ffi_types::Standard_IStream,
-        theDocument: &mut crate::ffi_types::HandleCDMDocument,
-        theFilter: &crate::ffi_types::HandlePCDMReaderFilter,
+        theDocument: &mut crate::ffi_types::Handle_CDM_Document,
+        theFilter: &crate::ffi_types::Handle_PCDM_ReaderFilter,
         theRange: &crate::message::ProgressRange,
     ) {
         crate::check_void_result(unsafe {
@@ -468,11 +472,11 @@ impl Application {
         })
     }
 
-    /// Inherited: **Source:** `CDF_Application.hxx`:158 - `CDF_Application::ReaderFromFormat()`
+    /// Inherited: **Source:** `CDF_Application.hxx`:156 - `CDF_Application::ReaderFromFormat()`
     pub fn reader_from_format(
         &mut self,
         aFormat: &crate::t_collection::ExtendedString,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandlePCDMReader> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_PCDM_Reader> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKCAF::AppStd_Application_inherited_ReaderFromFormat(
@@ -483,11 +487,11 @@ impl Application {
         }
     }
 
-    /// Inherited: **Source:** `CDF_Application.hxx`:173 - `CDF_Application::WriterFromFormat()`
+    /// Inherited: **Source:** `CDF_Application.hxx`:171 - `CDF_Application::WriterFromFormat()`
     pub fn writer_from_format(
         &mut self,
         aFormat: &crate::t_collection::ExtendedString,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandlePCDMStorageDriver> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_PCDM_StorageDriver> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKCAF::AppStd_Application_inherited_WriterFromFormat(
@@ -498,7 +502,7 @@ impl Application {
         }
     }
 
-    /// Inherited: **Source:** `CDF_Application.hxx`:179 - `CDF_Application::Format()`
+    /// Inherited: **Source:** `CDF_Application.hxx`:177 - `CDF_Application::Format()`
     pub fn format(
         &mut self,
         aFileName: &crate::t_collection::ExtendedString,
@@ -513,8 +517,8 @@ impl Application {
         })
     }
 
-    /// Inherited: **Source:** `CDF_Application.hxx`:187 - `CDF_Application::MetaDataDriver()`
-    pub fn meta_data_driver(&self) -> crate::OwnedPtr<crate::ffi_types::HandleCDFMetaDataDriver> {
+    /// Inherited: **Source:** `CDF_Application.hxx`:185 - `CDF_Application::MetaDataDriver()`
+    pub fn meta_data_driver(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_CDF_MetaDataDriver> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKCAF::AppStd_Application_inherited_MetaDataDriver(
@@ -524,8 +528,10 @@ impl Application {
         }
     }
 
-    /// Inherited: **Source:** `CDM_Application.hxx`:45 - `CDM_Application::MessageDriver()`
-    pub fn message_driver(&mut self) -> crate::OwnedPtr<crate::ffi_types::HandleMessageMessenger> {
+    /// Inherited: **Source:** `CDM_Application.hxx`:43 - `CDM_Application::MessageDriver()`
+    pub fn message_driver(
+        &mut self,
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Message_Messenger> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKCAF::AppStd_Application_inherited_MessageDriver(
@@ -535,8 +541,8 @@ impl Application {
         }
     }
 
-    /// Inherited: **Source:** `CDM_Application.hxx`:49 - `CDM_Application::BeginOfUpdate()`
-    pub fn begin_of_update(&mut self, aDocument: &crate::ffi_types::HandleCDMDocument) {
+    /// Inherited: **Source:** `CDM_Application.hxx`:47 - `CDM_Application::BeginOfUpdate()`
+    pub fn begin_of_update(&mut self, aDocument: &crate::ffi_types::Handle_CDM_Document) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKCAF::AppStd_Application_inherited_BeginOfUpdate(
                 self as *mut Self,
@@ -545,10 +551,10 @@ impl Application {
         })
     }
 
-    /// Inherited: **Source:** `CDM_Application.hxx`:53 - `CDM_Application::EndOfUpdate()`
+    /// Inherited: **Source:** `CDM_Application.hxx`:51 - `CDM_Application::EndOfUpdate()`
     pub fn end_of_update(
         &mut self,
-        aDocument: &crate::ffi_types::HandleCDMDocument,
+        aDocument: &crate::ffi_types::Handle_CDM_Document,
         theStatus: bool,
         ErrorString: &crate::t_collection::ExtendedString,
     ) {
@@ -562,7 +568,7 @@ impl Application {
         })
     }
 
-    /// Inherited: **Source:** `CDM_Application.hxx`:61 - `CDM_Application::Name()`
+    /// Inherited: **Source:** `CDM_Application.hxx`:59 - `CDM_Application::Name()`
     pub fn name(&self) -> crate::OwnedPtr<crate::t_collection::ExtendedString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -571,7 +577,7 @@ impl Application {
         }
     }
 
-    /// Inherited: **Source:** `CDM_Application.hxx`:64 - `CDM_Application::Version()`
+    /// Inherited: **Source:** `CDM_Application.hxx`:62 - `CDM_Application::Version()`
     pub fn version(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -580,19 +586,8 @@ impl Application {
         }
     }
 
-    /// Inherited: **Source:** `CDM_Application.hxx`:67 - `CDM_Application::MetaDataLookUpTable()`
-    pub fn meta_data_look_up_table(&mut self) -> &mut crate::ffi_types::CDM_MetaDataLookUpTable {
-        unsafe {
-            &mut *(crate::check_result(
-                crate::ffi_extern_TKCAF::AppStd_Application_inherited_MetaDataLookUpTable(
-                    self as *mut Self,
-                ),
-            ))
-        }
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKCAF::AppStd_Application_inherited_IsInstance(
                 self as *const Self,
@@ -601,8 +596,8 @@ impl Application {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKCAF::AppStd_Application_inherited_IsKind(
                 self as *const Self,
@@ -611,7 +606,7 @@ impl Application {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -625,14 +620,14 @@ impl Application {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKCAF::AppStd_Application_inherited_GetRefCount(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKCAF::AppStd_Application_inherited_IncrementRefCounter(
@@ -641,7 +636,7 @@ impl Application {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKCAF::AppStd_Application_inherited_DecrementRefCounter(
@@ -650,7 +645,7 @@ impl Application {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKCAF::AppStd_Application_inherited_Delete(self as *const Self)
@@ -658,32 +653,34 @@ impl Application {
     }
 }
 
-pub use crate::ffi_types::HandleAppStdApplication;
+pub use crate::ffi_types::Handle_AppStd_Application;
 
-unsafe impl crate::CppDeletable for HandleAppStdApplication {
+unsafe impl crate::CppDeletable for Handle_AppStd_Application {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKCAF::HandleAppStdApplication_destructor(ptr);
+            crate::ffi_extern_TKCAF::Handle_AppStd_Application_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleAppStdApplication {
+unsafe impl crate::CppCopyable for Handle_AppStd_Application {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        unsafe { crate::check_result(crate::ffi_extern_TKCAF::HandleAppStdApplication_clone(ptr)) }
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKCAF::Handle_AppStd_Application_clone(ptr))
+        }
     }
 }
 
-impl HandleAppStdApplication {
+impl Handle_AppStd_Application {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
-        unsafe { crate::ffi_extern_TKCAF::HandleAppStdApplication_is_null(self as *const Self) }
+        unsafe { crate::ffi_extern_TKCAF::Handle_AppStd_Application_is_null(self as *const Self) }
     }
 
     /// Dereference this Handle to access the underlying AppStd_Application
     pub fn get(&self) -> &crate::ffi_types::AppStd_Application {
         unsafe {
-            &*crate::check_result(crate::ffi_extern_TKCAF::HandleAppStdApplication_get(
+            &*crate::check_result(crate::ffi_extern_TKCAF::Handle_AppStd_Application_get(
                 self as *const Self,
             ))
         }
@@ -692,7 +689,7 @@ impl HandleAppStdApplication {
     /// Dereference this Handle to mutably access the underlying AppStd_Application
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::AppStd_Application {
         unsafe {
-            &mut *crate::check_result(crate::ffi_extern_TKCAF::HandleAppStdApplication_get_mut(
+            &mut *crate::check_result(crate::ffi_extern_TKCAF::Handle_AppStd_Application_get_mut(
                 self as *mut Self,
             ))
         }
@@ -701,10 +698,10 @@ impl HandleAppStdApplication {
     /// Upcast Handle<AppStd_Application> to Handle<TDocStd_Application>
     pub fn to_handle_t_doc_std_application(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleTDocStdApplication> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_TDocStd_Application> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKCAF::HandleAppStdApplication_to_HandleTDocStdApplication(
+                crate::ffi_extern_TKCAF::Handle_AppStd_Application_to_Handle_TDocStd_Application(
                     self as *const Self,
                 ),
             ))
@@ -714,10 +711,10 @@ impl HandleAppStdApplication {
     /// Upcast Handle<AppStd_Application> to Handle<CDF_Application>
     pub fn to_handle_cdf_application(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleCDFApplication> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_CDF_Application> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKCAF::HandleAppStdApplication_to_HandleCDFApplication(
+                crate::ffi_extern_TKCAF::Handle_AppStd_Application_to_Handle_CDF_Application(
                     self as *const Self,
                 ),
             ))
@@ -727,10 +724,10 @@ impl HandleAppStdApplication {
     /// Upcast Handle<AppStd_Application> to Handle<CDM_Application>
     pub fn to_handle_cdm_application(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleCDMApplication> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_CDM_Application> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKCAF::HandleAppStdApplication_to_HandleCDMApplication(
+                crate::ffi_extern_TKCAF::Handle_AppStd_Application_to_Handle_CDM_Application(
                     self as *const Self,
                 ),
             ))
@@ -740,10 +737,10 @@ impl HandleAppStdApplication {
     /// Upcast Handle<AppStd_Application> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKCAF::HandleAppStdApplication_to_HandleStandardTransient(
+                crate::ffi_extern_TKCAF::Handle_AppStd_Application_to_Handle_Standard_Transient(
                     self as *const Self,
                 ),
             ))

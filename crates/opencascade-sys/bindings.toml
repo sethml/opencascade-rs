@@ -35,6 +35,46 @@ exclude_modules = [
     "TKV3d",               # PCH stub
     "TKXSBase",            # PCH stub
     "TKernel",             # PCH stub
+
+    # === Visualization module (3D interactive rendering) ===
+    # Excluded because the repo uses wgpu for rendering (crates/viewer),
+    # not OCCT's OpenGl-based viewer. Some Visualization libraries
+    # (TKService, TKV3d) are still built as transitive dependencies.
+    "AIS",
+    "Aspect",
+    "D3DHost",
+    "DsgPrs",
+    "Font",
+    "Graphic3d",
+    "Image",
+    "IVtk",
+    "IVtkOCC",
+    "IVtkTools",
+    "IVtkVTK",
+    "Media",
+    "MeshVS",
+    "OpenGl",
+    "Prs3d",
+    "PrsDim",
+    "PrsMgr",
+    "Select3D",
+    "SelectBasics",
+    "SelectMgr",
+    "Shaders",
+    "StdPrs",
+    "StdSelect",
+    "Textures",
+    "V3d",
+    # (OCCT 8.0.0) Nested class without standalone header.
+    # EditorView is BRepGraph::EditorView defined in BRepGraph_EditorView.hxx,
+    # not EditorView.hxx. The binding generator mis-emits it as a bare type name.
+    "EditorView",
+    # (OCCT 8.0.0) Namespace-level free functions without umbrella headers.
+    # MathLin, MathRoot, MathUtils are namespaces with static/utility methods
+    # that the generator tries to emit as <Namespace>.hxx includes.
+    "MathLin",
+    "MathRoot",
+    "MathUtils",
 ]
 
 # Exclude specific headers (even if their module is in `modules` above).
@@ -65,6 +105,11 @@ exclude_headers = [
     # Packed color-component unions: clang exposes no fields, producing empty
     # opaque structs that trigger Rust FFI-safety warnings.
     "Image_Color.hxx",
+
+    # NOTE: OCCT 8.0.0 deprecated backward-compatibility alias headers (e.g.
+    # TColgp_HArray1OfPnt.hxx, Draw_MapOfAsciiString.hxx) no longer need to be listed
+    # here — they are excluded automatically via `exclude_deprecated_headers` (on by
+    # default), which matches the standard deprecation banner in their content.
 ]
 
 # Include specific individual headers (from modules not fully included above).
@@ -98,6 +143,20 @@ non_allocatable_classes = [
     "Message_ProgressScope::NullString",  # Forward-declared only, no full definition
     "Message_LazyProgressScope",           # Protected operator new/delete (protected inheritance)
     "Poly_CoherentTriPtr",                 # Hidden operator new/delete (DEFINE_NCOLLECTION_ALLOC)
+    # (OCCT 8.0.0) BRepGraph helper classes with deleted constructors
+    "BRepGraph_Compact",
+    "BRepGraph_Copy",
+    "BRepGraph_Deduplicate",
+    "BRepGraph_Transform",
+    "BRepGraph_Validate",
+    "BRepGraph_Tool",
+    "BRepGraphInc_Populate",
+    "BRepGraphInc_Reconstruct",
+    "BRepGraphInc_BitFlags",
+    # Private uint64_t typedef nested in BRepGraphInc_BitFlags; referenced by the
+    # (skipped) Blocks() accessor. Not deletable, so suppress destructor generation.
+    "BRepGraphInc_BitFlags::BlockType",
+    "BRepGraph_CacheMesh",
 ]
 
 
@@ -139,6 +198,14 @@ STEPControl_Writer = "Uses OCCT global state that is not thread-safe. Use step_c
 # appears in parsed method signatures.
 # Format: "Template<Args>" = { header = "Header.hxx", module = "Module", handle = true }
 [template_instantiations]
+# (OCCT 8.0.0) Formerly TColgp_HArray1OfPnt / TColStd_HArray1OfReal /
+# TopTools_HSequenceOfShape, now deprecated aliases for these NCollection template
+# instantiations. Register them as handle types so GeomAPI_Interpolate and the
+# free-bounds APIs that consume them generate valid bindings.
+"NCollection_HArray1<gp_Pnt>" = { header = "NCollection_HArray1.hxx", module = "NCollection", handle = true }
+"NCollection_HArray1<double>" = { header = "NCollection_HArray1.hxx", module = "NCollection", handle = true }
+"NCollection_HArray1<Standard_Boolean>" = { header = "NCollection_HArray1.hxx", module = "NCollection", handle = true }
+"NCollection_HSequence<TopoDS_Shape>" = { header = "NCollection_HSequence.hxx", module = "NCollection", handle = true }
 "BVH_Builder<double, 3>" = { header = "BVH_Builder.hxx", module = "BVH", handle = true }
 "BVH_Tree<double, 3>" = { header = "BVH_Tree.hxx", module = "BVH", handle = true }
 "NCollection_Shared<NCollection_List<gp_Pnt2d>>" = { header = "NCollection_Shared.hxx", module = "NCollection", handle = true }

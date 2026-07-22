@@ -6,24 +6,21 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 
-/// Indicates the outcome of a construction, i.e.
-/// whether it is successful or not, as explained below.
-/// gce_Done: Construction was successful.
-/// gce_ConfusedPoints: Two points are coincident.
-/// gce_NegativeRadius: Radius value is negative.
-/// gce_ColinearPoints: Three points are collinear.
-/// gce_IntersectionError: Intersection cannot be computed.
-/// gce_NullAxis: Axis is undefined.
-/// gce_NullAngle: Angle value is invalid (usually null).
-/// gce_NullRadius: Radius is null.
-/// gce_InvertAxis: Axis value is invalid.
-/// gce_BadAngle: Angle value is invalid.
-/// gce_InvertRadius: Radius value is incorrect
-/// (usually with respect to another radius).
-/// gce_NullFocusLength: Focal distance is null.
-/// gce_NullVector: Vector is null.
-/// gce_BadEquation: Coefficients are
-/// incorrect (applies to the equation of a geometric object).
+/// Defines status codes returned by `gce` construction algorithms.
+/// - `gce_Done`: construction completed successfully.
+/// - `gce_ConfusedPoints`: two points are coincident.
+/// - `gce_NegativeRadius`: a radius value is negative.
+/// - `gce_ColinearPoints`: three points are collinear.
+/// - `gce_IntersectionError`: intersection cannot be computed.
+/// - `gce_NullAxis`: axis is undefined.
+/// - `gce_NullAngle`: angle value is invalid (usually null).
+/// - `gce_NullRadius`: radius is null.
+/// - `gce_InvertAxis`: axis value is invalid.
+/// - `gce_BadAngle`: angle value is invalid.
+/// - `gce_InvertRadius`: radius values are inconsistent.
+/// - `gce_NullFocusLength`: focal distance is null.
+/// - `gce_NullVector`: vector is null.
+/// - `gce_BadEquation`: coefficients of an equation are invalid.
 /// C++ enum: `gce_ErrorType`
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 #[repr(i32)]
@@ -78,23 +75,15 @@ impl TryFrom<i32> for ErrorType {
 // From gce_MakeCirc.hxx
 // ========================
 
-/// **Source:** `gce_MakeCirc.hxx`:47 - `gce_MakeCirc`
-/// This class implements the following algorithms used
-/// to create Circ from gp.
-///
-/// * Create a Circ coaxial to another and passing
-/// though a point.
-/// * Create a Circ coaxial to another at the distance
-/// Dist.
-/// * Create a Circ passing through 3 points.
-/// * Create a Circ with its center and the normal of its
-/// plane and its radius.
-/// * Create a Circ with its center and its plane and its
-/// radius.
-/// * Create a Circ with its axis and radius.
-/// * Create a Circ with two points giving its axis and
-/// its radius.
-/// * Create a Circ with is Ax2 and its Radius.
+/// **Source:** `gce_MakeCirc.hxx`:39 - `gce_MakeCirc`
+/// This class implements construction algorithms for `gp_Circ`.
+/// Supported constructions include:
+/// - circle from axis and radius;
+/// - circle coaxial to another one, through point or at signed offset;
+/// - circle through three points;
+/// - circle from center and normal/plane;
+/// - circle from center and axis-defining point;
+/// - circle from axis and radius.
 pub use crate::ffi_types::gce_MakeCirc as MakeCirc;
 
 unsafe impl crate::CppDeletable for MakeCirc {
@@ -106,11 +95,11 @@ unsafe impl crate::CppDeletable for MakeCirc {
 }
 
 impl MakeCirc {
-    /// **Source:** `gce_MakeCirc.hxx`:56 - `gce_MakeCirc::gce_MakeCirc()`
-    /// A2 locates the circle and gives its orientation in 3D space.
-    /// Warnings :
-    /// It is not forbidden to create a circle with Radius = 0.0
-    /// The status is "NegativeRadius" if Radius < 0.0
+    /// **Source:** `gce_MakeCirc.hxx`:48 - `gce_MakeCirc::gce_MakeCirc()`
+    /// Creates a circle from axis placement and radius.
+    /// @note Construction fails with `gce_NegativeRadius` if `Radius` is negative.
+    /// @param[in] A2 local coordinate system
+    /// @param[in] Radius radius value
     pub fn new_ax2_real(A2: &crate::gp::Ax2, Radius: f64) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -119,12 +108,12 @@ impl MakeCirc {
         }
     }
 
-    /// **Source:** `gce_MakeCirc.hxx`:63 - `gce_MakeCirc::gce_MakeCirc()`
-    /// Makes a Circ from gp <TheCirc> coaxial to another
-    /// Circ <Circ> at a distance <Dist>.
-    /// If Dist is greater than zero the result is encloses
-    /// the circle <Circ>, else the result is enclosed by the
-    /// circle <Circ>.
+    /// **Source:** `gce_MakeCirc.hxx`:55 - `gce_MakeCirc::gce_MakeCirc()`
+    /// Creates a circle coaxial to input circle at signed distance.
+    /// @note If `Dist` is positive, the result encloses `Circ`.
+    /// @note If `Dist` is negative, the result is enclosed by `Circ`.
+    /// @param[in] Circ source circle
+    /// @param[in] Dist signed distance
     pub fn new_circ_real(Circ: &crate::gp::Circ, Dist: f64) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -133,9 +122,10 @@ impl MakeCirc {
         }
     }
 
-    /// **Source:** `gce_MakeCirc.hxx`:67 - `gce_MakeCirc::gce_MakeCirc()`
-    /// Makes a Circ from gp <TheCirc> coaxial to another
-    /// Circ <Circ> and passing through a Pnt2d <Point>.
+    /// **Source:** `gce_MakeCirc.hxx`:60 - `gce_MakeCirc::gce_MakeCirc()`
+    /// Creates a circle coaxial to input circle and passing through a point.
+    /// @param[in] Circ source circle
+    /// @param[in] Point reference point
     pub fn new_circ_pnt(Circ: &crate::gp::Circ, Point: &crate::gp::Pnt) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -144,9 +134,11 @@ impl MakeCirc {
         }
     }
 
-    /// **Source:** `gce_MakeCirc.hxx`:71 - `gce_MakeCirc::gce_MakeCirc()`
-    /// Makes a Circ from gp <TheCirc> passing through 3
-    /// Pnt2d <P1>,<P2>,<P3>.
+    /// **Source:** `gce_MakeCirc.hxx`:66 - `gce_MakeCirc::gce_MakeCirc()`
+    /// Creates a circle passing through three points.
+    /// @param[in] P1 first point
+    /// @param[in] P2 second point
+    /// @param[in] P3 third point
     pub fn new_pnt3(
         P1: &crate::gp::Pnt,
         P2: &crate::gp::Pnt,
@@ -159,10 +151,11 @@ impl MakeCirc {
         }
     }
 
-    /// **Source:** `gce_MakeCirc.hxx`:76 - `gce_MakeCirc::gce_MakeCirc()`
-    /// Makes a Circ from gp <TheCirc> with its center
-    /// <Center> and the normal of its plane <Norm> and
-    /// its radius <Radius>.
+    /// **Source:** `gce_MakeCirc.hxx`:72 - `gce_MakeCirc::gce_MakeCirc()`
+    /// Creates a circle from center, plane normal and radius.
+    /// @param[in] Center center point
+    /// @param[in] Norm input value
+    /// @param[in] Radius radius value
     pub fn new_pnt_dir_real(
         Center: &crate::gp::Pnt,
         Norm: &crate::gp::Dir,
@@ -175,10 +168,11 @@ impl MakeCirc {
         }
     }
 
-    /// **Source:** `gce_MakeCirc.hxx`:83 - `gce_MakeCirc::gce_MakeCirc()`
-    /// Makes a Circ from gp <TheCirc> with its center
-    /// <Center> and the normal of its plane <Plane> and
-    /// its radius <Radius>.
+    /// **Source:** `gce_MakeCirc.hxx`:78 - `gce_MakeCirc::gce_MakeCirc()`
+    /// Creates a circle from center, reference plane and radius.
+    /// @param[in] Center center point
+    /// @param[in] Plane reference plane
+    /// @param[in] Radius radius value
     pub fn new_pnt_pln_real(
         Center: &crate::gp::Pnt,
         Plane: &crate::gp::Pln,
@@ -191,10 +185,11 @@ impl MakeCirc {
         }
     }
 
-    /// **Source:** `gce_MakeCirc.hxx`:90 - `gce_MakeCirc::gce_MakeCirc()`
-    /// Makes a Circ from gp <TheCirc> with its center
-    /// <Center> and a point <Ptaxis> giving the normal
-    /// of its plane <Plane> and its radius <Radius>.
+    /// **Source:** `gce_MakeCirc.hxx`:84 - `gce_MakeCirc::gce_MakeCirc()`
+    /// Creates a circle from center, axis-defining point and radius.
+    /// @param[in] Center center point
+    /// @param[in] Ptaxis point defining axis direction
+    /// @param[in] Radius radius value
     pub fn new_pnt2_real(
         Center: &crate::gp::Pnt,
         Ptaxis: &crate::gp::Pnt,
@@ -207,23 +202,11 @@ impl MakeCirc {
         }
     }
 
-    /// **Source:** `gce_MakeCirc.hxx`:110 - `gce_MakeCirc::gce_MakeCirc()`
-    /// Makes a Circ from gp <TheCirc> with its center
-    /// <Center> and its radius <Radius>.
-    /// Warning
-    /// The MakeCirc class does not prevent the
-    /// construction of a circle with a null radius.
-    /// If an error occurs (that is, when IsDone returns
-    /// false), the Status function returns:
-    /// -   gce_Negative Radius if:
-    /// -   Radius is less than 0.0, or
-    /// -   Dist is less than 0.0 and the absolute value of
-    /// Dist is greater than the radius of Circ;
-    /// -   gce_IntersectionError if the points P1, P2 and
-    /// P3 are collinear, and the three are not coincident;
-    /// -   gce_ConfusedPoints if two of the three points
-    /// P1, P2 and P3 are coincident; or
-    /// -   gce_NullAxis if Center and Ptaxis are coincident.
+    /// **Source:** `gce_MakeCirc.hxx`:90 - `gce_MakeCirc::gce_MakeCirc()`
+    /// Creates a circle from axis and radius.
+    /// @note Construction fails with `gce_NegativeRadius` if `Radius` is negative.
+    /// @param[in] Axis axis definition
+    /// @param[in] Radius radius value
     pub fn new_ax1_real(Axis: &crate::gp::Ax1, Radius: f64) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -232,9 +215,10 @@ impl MakeCirc {
         }
     }
 
-    /// **Source:** `gce_MakeCirc.hxx`:114 - `gce_MakeCirc::Value()`
+    /// **Source:** `gce_MakeCirc.hxx`:95 - `gce_MakeCirc::Value()`
     /// Returns the constructed circle.
     /// Exceptions StdFail_NotDone if no circle is constructed.
+    /// @return resulting circle
     pub fn value(&self) -> &crate::gp::Circ {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKGeomBase::gce_MakeCirc_value(
@@ -243,12 +227,14 @@ impl MakeCirc {
         }
     }
 
-    /// **Source:** `gce_MakeCirc.hxx`:116 - `gce_MakeCirc::Operator()`
-    pub fn operator(&self) -> &crate::gp::Circ {
+    /// **Source:** `gce_MakeCirc.hxx`:99 - `gce_MakeCirc::Operator()`
+    /// Alias for Value() returning a copy.
+    /// @return resulting object
+    pub fn operator(&self) -> crate::OwnedPtr<crate::gp::Circ> {
         unsafe {
-            &*(crate::check_result(crate::ffi_extern_TKGeomBase::gce_MakeCirc_operator(
-                self as *const Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomBase::gce_MakeCirc_operator(self as *const Self),
+            ))
         }
     }
 
@@ -270,14 +256,21 @@ impl MakeCirc {
         }
     }
 
-    /// Inherited: **Source:** `gce_Root.hxx`:40 - `gce_Root::IsDone()`
+    /// Inherited: **Source:** `gce_Root.hxx`:39 - `gce_Root::IsDone()`
     pub fn is_done(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomBase::gce_MakeCirc_inherited_IsDone(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `gce_Root.hxx`:46 - `gce_Root::Status()`
+    /// Inherited: **Source:** `gce_Root.hxx`:43 - `gce_Root::IsError()`
+    pub fn is_error(&self) -> bool {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKGeomBase::gce_MakeCirc_inherited_IsError(self as *const Self)
+        })
+    }
+
+    /// Inherited: **Source:** `gce_Root.hxx`:50 - `gce_Root::Status()`
     pub fn status(&self) -> crate::gce::ErrorType {
         crate::gce::ErrorType::try_from(crate::check_result(unsafe {
             crate::ffi_extern_TKGeomBase::gce_MakeCirc_inherited_Status(self as *const Self)
@@ -290,19 +283,14 @@ impl MakeCirc {
 // From gce_MakeCirc2d.hxx
 // ========================
 
-/// **Source:** `gce_MakeCirc2d.hxx`:41 - `gce_MakeCirc2d`
-/// This class implements the following algorithms used
-/// to create Circ2d from gp.
-///
-/// * Create a Circ2d concentric with another and passing
-/// though a point.
-/// * Create a Circ2d concentric with another at the distance
-/// Dist.
-/// * Create a Circ2d passing through 3 points.
-/// * Create a Circ2d with its center and radius.
-/// * Create a Circ2d with its center and a point given
-/// the radius.
-/// * Create a Circ2d with its axis and its radius.
+/// **Source:** `gce_MakeCirc2d.hxx`:36 - `gce_MakeCirc2d`
+/// This class implements construction algorithms for `gp_Circ2d`.
+/// Supported constructions include:
+/// - circle from axis and radius;
+/// - circle concentric to another one, through point or at signed offset;
+/// - circle through three points;
+/// - circle from center and radius;
+/// - circle from center and one point.
 pub use crate::ffi_types::gce_MakeCirc2d as MakeCirc2d;
 
 unsafe impl crate::CppDeletable for MakeCirc2d {
@@ -314,13 +302,13 @@ unsafe impl crate::CppDeletable for MakeCirc2d {
 }
 
 impl MakeCirc2d {
-    /// **Source:** `gce_MakeCirc2d.hxx`:52 - `gce_MakeCirc2d::gce_MakeCirc2d()`
-    /// The location point of XAxis is the center of the circle.
-    /// Warnings :
-    /// It is not forbidden to create a circle with Radius = 0.0
-    /// If Sense is true the local coordinate system of the solution
-    /// is direct and non direct in the other case.
-    /// The status is "NegativeRadius" if Radius < 0.0.
+    /// **Source:** `gce_MakeCirc2d.hxx`:47 - `gce_MakeCirc2d::gce_MakeCirc2d()`
+    /// Creates a circle from axis and radius.
+    /// @note The location of `XAxis` is the circle center.
+    /// @note Construction fails with `gce_NegativeRadius` if `Radius` is negative.
+    /// @param[in] XAxis axis placement
+    /// @param[in] Radius radius value
+    /// @param[in] Sense orientation flag
     pub fn new_ax2d_real_bool(
         XAxis: &crate::gp::Ax2d,
         Radius: f64,
@@ -335,10 +323,12 @@ impl MakeCirc2d {
         }
     }
 
-    /// **Source:** `gce_MakeCirc2d.hxx`:59 - `gce_MakeCirc2d::gce_MakeCirc2d()`
-    /// The location point of Axis is the center of the circle.
-    /// Warnings :
-    /// It is not forbidden to create a circle with Radius = 0.0
+    /// **Source:** `gce_MakeCirc2d.hxx`:56 - `gce_MakeCirc2d::gce_MakeCirc2d()`
+    /// Creates a circle from local coordinate system and radius.
+    /// @note The location of `Axis` is the circle center.
+    /// @note Construction fails with `gce_NegativeRadius` if `Radius` is negative.
+    /// @param[in] Axis axis definition
+    /// @param[in] Radius radius value
     pub fn new_ax22d_real(Axis: &crate::gp::Ax22d, Radius: f64) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -347,14 +337,11 @@ impl MakeCirc2d {
         }
     }
 
-    /// **Source:** `gce_MakeCirc2d.hxx`:68 - `gce_MakeCirc2d::gce_MakeCirc2d()`
-    /// Makes a Circ2d from gp <TheCirc> concentric with another
-    /// circ2d <Circ> with a distance <Dist>.
-    /// If Dist is greater than zero the result encloses
-    /// the circle <Circ>, else the result is enclosed by the
-    /// circle <Circ>.
-    /// The local coordinate system of the solution is the
-    /// same as Circ.
+    /// **Source:** `gce_MakeCirc2d.hxx`:62 - `gce_MakeCirc2d::gce_MakeCirc2d()`
+    /// Creates a circle concentric to input circle with signed offset.
+    /// @note Result radius is `Abs(Circ.Radius() + Dist)`.
+    /// @param[in] Circ source circle
+    /// @param[in] Dist signed distance
     pub fn new_circ2d_real(Circ: &crate::gp::Circ2d, Dist: f64) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -363,11 +350,10 @@ impl MakeCirc2d {
         }
     }
 
-    /// **Source:** `gce_MakeCirc2d.hxx`:74 - `gce_MakeCirc2d::gce_MakeCirc2d()`
-    /// Makes a Circ2d from gp <TheCirc> concentric with another
-    /// circ2d <Circ> and passing through a Pnt2d <Point>.
-    /// The local coordinate system of the solution is the
-    /// same as Circ.
+    /// **Source:** `gce_MakeCirc2d.hxx`:67 - `gce_MakeCirc2d::gce_MakeCirc2d()`
+    /// Creates a circle concentric to input circle and passing through a point.
+    /// @param[in] Circ source circle
+    /// @param[in] Point reference point
     pub fn new_circ2d_pnt2d(
         Circ: &crate::gp::Circ2d,
         Point: &crate::gp::Pnt2d,
@@ -379,11 +365,13 @@ impl MakeCirc2d {
         }
     }
 
-    /// **Source:** `gce_MakeCirc2d.hxx`:80 - `gce_MakeCirc2d::gce_MakeCirc2d()`
-    /// Makes a Circ2d from gp <TheCirc> passing through 3
-    /// Pnt2d <P1>,<P2>,<P3>.
-    /// The local coordinate system of the solution is given
-    /// by the three points P1, P2, P3.
+    /// **Source:** `gce_MakeCirc2d.hxx`:75 - `gce_MakeCirc2d::gce_MakeCirc2d()`
+    /// Creates a circle passing through three points.
+    /// @note The local coordinate system of the result is derived
+    /// from input points.
+    /// @param[in] P1 first point
+    /// @param[in] P2 second point
+    /// @param[in] P3 third point
     pub fn new_pnt2d3(
         P1: &crate::gp::Pnt2d,
         P2: &crate::gp::Pnt2d,
@@ -396,11 +384,12 @@ impl MakeCirc2d {
         }
     }
 
-    /// **Source:** `gce_MakeCirc2d.hxx`:86 - `gce_MakeCirc2d::gce_MakeCirc2d()`
-    /// Makes a Circ2d from gp <TheCirc> with its center
-    /// <Center> and its radius <Radius>.
-    /// If Sense is true the local coordinate system of
-    /// the solution is direct and non direct in the other case.
+    /// **Source:** `gce_MakeCirc2d.hxx`:82 - `gce_MakeCirc2d::gce_MakeCirc2d()`
+    /// Creates a circle from center and radius.
+    /// @note Construction fails with `gce_NegativeRadius` if `Radius` is negative.
+    /// @param[in] Center center point
+    /// @param[in] Radius radius value
+    /// @param[in] Sense orientation flag
     pub fn new_pnt2d_real_bool(
         Center: &crate::gp::Pnt2d,
         Radius: f64,
@@ -415,11 +404,12 @@ impl MakeCirc2d {
         }
     }
 
-    /// **Source:** `gce_MakeCirc2d.hxx`:94 - `gce_MakeCirc2d::gce_MakeCirc2d()`
-    /// Makes a Circ2d from gp <TheCirc> with its center
-    /// <Center> and a point giving the radius.
-    /// If Sense is true the local coordinate system of
-    /// the solution is direct and non direct in the other case.
+    /// **Source:** `gce_MakeCirc2d.hxx`:91 - `gce_MakeCirc2d::gce_MakeCirc2d()`
+    /// Creates a circle from center and one point on circle.
+    /// @note `Sense` controls result orientation.
+    /// @param[in] Center center point
+    /// @param[in] Point reference point
+    /// @param[in] Sense orientation flag
     pub fn new_pnt2d2_bool(
         Center: &crate::gp::Pnt2d,
         Point: &crate::gp::Pnt2d,
@@ -432,31 +422,33 @@ impl MakeCirc2d {
         }
     }
 
-    /// **Source:** `gce_MakeCirc2d.hxx`:52 - `gce_MakeCirc2d::gce_MakeCirc2d()`
-    /// The location point of XAxis is the center of the circle.
-    /// Warnings :
-    /// It is not forbidden to create a circle with Radius = 0.0
-    /// If Sense is true the local coordinate system of the solution
-    /// is direct and non direct in the other case.
-    /// The status is "NegativeRadius" if Radius < 0.0.
+    /// **Source:** `gce_MakeCirc2d.hxx`:47 - `gce_MakeCirc2d::gce_MakeCirc2d()`
+    /// Creates a circle from axis and radius.
+    /// @note The location of `XAxis` is the circle center.
+    /// @note Construction fails with `gce_NegativeRadius` if `Radius` is negative.
+    /// @param[in] XAxis axis placement
+    /// @param[in] Radius radius value
+    /// @param[in] Sense orientation flag
     pub fn new_ax2d_real(XAxis: &crate::gp::Ax2d, Radius: f64) -> crate::OwnedPtr<Self> {
         Self::new_ax2d_real_bool(XAxis, Radius, true)
     }
 
-    /// **Source:** `gce_MakeCirc2d.hxx`:86 - `gce_MakeCirc2d::gce_MakeCirc2d()`
-    /// Makes a Circ2d from gp <TheCirc> with its center
-    /// <Center> and its radius <Radius>.
-    /// If Sense is true the local coordinate system of
-    /// the solution is direct and non direct in the other case.
+    /// **Source:** `gce_MakeCirc2d.hxx`:82 - `gce_MakeCirc2d::gce_MakeCirc2d()`
+    /// Creates a circle from center and radius.
+    /// @note Construction fails with `gce_NegativeRadius` if `Radius` is negative.
+    /// @param[in] Center center point
+    /// @param[in] Radius radius value
+    /// @param[in] Sense orientation flag
     pub fn new_pnt2d_real(Center: &crate::gp::Pnt2d, Radius: f64) -> crate::OwnedPtr<Self> {
         Self::new_pnt2d_real_bool(Center, Radius, true)
     }
 
-    /// **Source:** `gce_MakeCirc2d.hxx`:94 - `gce_MakeCirc2d::gce_MakeCirc2d()`
-    /// Makes a Circ2d from gp <TheCirc> with its center
-    /// <Center> and a point giving the radius.
-    /// If Sense is true the local coordinate system of
-    /// the solution is direct and non direct in the other case.
+    /// **Source:** `gce_MakeCirc2d.hxx`:91 - `gce_MakeCirc2d::gce_MakeCirc2d()`
+    /// Creates a circle from center and one point on circle.
+    /// @note `Sense` controls result orientation.
+    /// @param[in] Center center point
+    /// @param[in] Point reference point
+    /// @param[in] Sense orientation flag
     pub fn new_pnt2d2(
         Center: &crate::gp::Pnt2d,
         Point: &crate::gp::Pnt2d,
@@ -464,9 +456,10 @@ impl MakeCirc2d {
         Self::new_pnt2d2_bool(Center, Point, true)
     }
 
-    /// **Source:** `gce_MakeCirc2d.hxx`:100 - `gce_MakeCirc2d::Value()`
+    /// **Source:** `gce_MakeCirc2d.hxx`:98 - `gce_MakeCirc2d::Value()`
     /// Returns the constructed circle.
     /// Exceptions StdFail_NotDone if no circle is constructed.
+    /// @return resulting circle
     pub fn value(&self) -> &crate::gp::Circ2d {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKGeomBase::gce_MakeCirc2d_value(
@@ -476,11 +469,13 @@ impl MakeCirc2d {
     }
 
     /// **Source:** `gce_MakeCirc2d.hxx`:102 - `gce_MakeCirc2d::Operator()`
-    pub fn operator(&self) -> &crate::gp::Circ2d {
+    /// Alias for Value() returning a copy.
+    /// @return resulting object
+    pub fn operator(&self) -> crate::OwnedPtr<crate::gp::Circ2d> {
         unsafe {
-            &*(crate::check_result(crate::ffi_extern_TKGeomBase::gce_MakeCirc2d_operator(
-                self as *const Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomBase::gce_MakeCirc2d_operator(self as *const Self),
+            ))
         }
     }
 
@@ -502,14 +497,21 @@ impl MakeCirc2d {
         }
     }
 
-    /// Inherited: **Source:** `gce_Root.hxx`:40 - `gce_Root::IsDone()`
+    /// Inherited: **Source:** `gce_Root.hxx`:39 - `gce_Root::IsDone()`
     pub fn is_done(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomBase::gce_MakeCirc2d_inherited_IsDone(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `gce_Root.hxx`:46 - `gce_Root::Status()`
+    /// Inherited: **Source:** `gce_Root.hxx`:43 - `gce_Root::IsError()`
+    pub fn is_error(&self) -> bool {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKGeomBase::gce_MakeCirc2d_inherited_IsError(self as *const Self)
+        })
+    }
+
+    /// Inherited: **Source:** `gce_Root.hxx`:50 - `gce_Root::Status()`
     pub fn status(&self) -> crate::gce::ErrorType {
         crate::gce::ErrorType::try_from(crate::check_result(unsafe {
             crate::ffi_extern_TKGeomBase::gce_MakeCirc2d_inherited_Status(self as *const Self)
@@ -522,18 +524,14 @@ impl MakeCirc2d {
 // From gce_MakeCone.hxx
 // ========================
 
-/// **Source:** `gce_MakeCone.hxx`:42 - `gce_MakeCone`
-/// This class implements the following algorithms used
-/// to create a Cone from gp.
-/// * Create a Cone coaxial to another and passing
-/// through a point.
-/// * Create a Cone coaxial to another at a distance
-/// <Dist>.
-/// * Create a Cone by 4 points.
-/// * Create a Cone by its axis and 2 points.
-/// * Create a Cone by 2 points and 2 radius.
-/// * Create a Cone by an Ax2 an angle and the radius of
-/// its reference section.
+/// **Source:** `gce_MakeCone.hxx`:38 - `gce_MakeCone`
+/// This class implements construction algorithms for `gp_Cone`.
+/// Supported constructions include:
+/// - from axis placement, semi-angle and reference radius;
+/// - cone coaxial to another cone, through a point or at signed offset;
+/// - cone from four points;
+/// - cone from axis and two points;
+/// - cone from two axis points and two section radii.
 pub use crate::ffi_types::gce_MakeCone as MakeCone;
 
 unsafe impl crate::CppDeletable for MakeCone {
@@ -545,14 +543,16 @@ unsafe impl crate::CppDeletable for MakeCone {
 }
 
 impl MakeCone {
-    /// **Source:** `gce_MakeCone.hxx`:54 - `gce_MakeCone::gce_MakeCone()`
-    /// Creates an infinite conical surface. A2 locates the cone
-    /// in the space and defines the reference plane of the surface.
-    /// Ang is the conical surface semi-angle between 0 and PI/2 radians.
-    /// Radius is the radius of the circle in the reference plane of
-    /// the cone.
-    /// If Radius is lower than 0.0 the status is "
-    /// If Ang < Resolution from gp  or Ang >= (PI/2) - Resolution.
+    /// **Source:** `gce_MakeCone.hxx`:52 - `gce_MakeCone::gce_MakeCone()`
+    /// Creates a cone from axis placement, semi-angle and reference radius.
+    /// @note `A2` defines cone position and reference section plane.
+    /// @note `Ang` is the cone semi-angle (radians), expected in ]0, PI/2[.
+    /// @note Construction fails with `gce_NegativeRadius` if `Radius` is negative.
+    /// @note Construction fails with `gce_BadAngle` if
+    /// `Ang <= gp::Resolution()` or `PI/2 - Ang <= gp::Resolution()`.
+    /// @param[in] A2 local coordinate system
+    /// @param[in] Ang angle value
+    /// @param[in] Radius radius value
     pub fn new_ax2_real2(A2: &crate::gp::Ax2, Ang: f64, Radius: f64) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -561,9 +561,12 @@ impl MakeCone {
         }
     }
 
-    /// **Source:** `gce_MakeCone.hxx`:60 - `gce_MakeCone::gce_MakeCone()`
-    /// Makes a Cone from gp <TheCone> coaxial to another
-    /// Cone <Cone> and passing through a Pnt <Point>.
+    /// **Source:** `gce_MakeCone.hxx`:59 - `gce_MakeCone::gce_MakeCone()`
+    /// Creates a cone coaxial to input cone and passing through a point.
+    /// @note Construction fails with `gce_NegativeRadius` when no non-negative
+    /// solution radius can be found.
+    /// @param[in] Cone source cone
+    /// @param[in] Point reference point
     pub fn new_cone_pnt(Cone: &crate::gp::Cone, Point: &crate::gp::Pnt) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -572,10 +575,13 @@ impl MakeCone {
         }
     }
 
-    /// **Source:** `gce_MakeCone.hxx`:65 - `gce_MakeCone::gce_MakeCone()`
-    /// Makes a Cone from gp <TheCone> coaxial to another
-    /// Cone <Cone> at the distance <Dist> which can
-    /// be greater or lower than zero.
+    /// **Source:** `gce_MakeCone.hxx`:67 - `gce_MakeCone::gce_MakeCone()`
+    /// Creates a cone coaxial to input cone at signed distance.
+    /// @note Construction fails with `gce_NullAngle` if semi-angle cosine is
+    /// numerically too small.
+    /// @note Construction fails with `gce_NegativeRadius` if resulting radius is negative.
+    /// @param[in] Cone source cone
+    /// @param[in] Dist signed distance
     pub fn new_cone_real(Cone: &crate::gp::Cone, Dist: f64) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -584,21 +590,21 @@ impl MakeCone {
         }
     }
 
-    /// **Source:** `gce_MakeCone.hxx`:81 - `gce_MakeCone::gce_MakeCone()`
-    /// Makes a Cone from gp <TheCone> by four points <P1>,
-    /// <P2>,<P3> and <P4>.
-    /// Its axis is <P1P2> and the radius of its base is
-    /// the distance between <P3> and <P1P2>.
-    /// The distance between <P4> and <P1P2> is the radius of
-    /// the section passing through <P4>.
-    /// If <P1> and <P2> are confused or <P3> and <P4> are
-    /// confused we have the status "ConfusedPoints"
-    /// if <P1>,<P2>,<P3>,<P4> are colinear we have the
-    /// status "ColinearPoints"
-    /// If <P3P4> is perpendicular to <P1P2> we have the
-    /// status "NullAngle".
-    /// <P3P4> is colinear to <P1P2> we have the status
-    /// "NullAngle".
+    /// **Source:** `gce_MakeCone.hxx`:83 - `gce_MakeCone::gce_MakeCone()`
+    /// Creates a cone from four points.
+    /// @note `P1` and `P2` define the axis direction.
+    /// @note Distance from `P3` to that axis defines base radius.
+    /// @note Distance from `P4` to that axis defines radius of section through `P4`.
+    /// @note Construction fails with `gce_ConfusedPoints` if `P1`/`P2` or `P3`/`P4`
+    /// are coincident.
+    /// @note Construction fails with `gce_NullAngle` if section distances produce
+    /// zero cone angle.
+    /// @note Construction fails with `gce_NullRadius` for degenerate right-angle
+    /// or zero-angle radius configuration.
+    /// @param[in] P1 first point
+    /// @param[in] P2 second point
+    /// @param[in] P3 third point
+    /// @param[in] P4 fourth point
     pub fn new_pnt4(
         P1: &crate::gp::Pnt,
         P2: &crate::gp::Pnt,
@@ -612,18 +618,14 @@ impl MakeCone {
         }
     }
 
-    /// **Source:** `gce_MakeCone.hxx`:97 - `gce_MakeCone::gce_MakeCone()`
-    /// Makes a Cone by its axis <Axis> and two points.
-    /// The distance between <P1> and the axis is the radius
-    /// of the section passing through <P1>.
-    /// The distance between <P2> and the axis is the radius
-    /// of the section passing through <P2>.
-    /// If <P1P2> is colinear to <Axis> we have the status
-    /// "NullAngle"
-    /// If <P3P4> is perpendicular to <Axis> we have the status
-    /// "NullAngle"
-    /// If <P1> and <P2> are confused we have the status
-    /// "ConfusedPoints"
+    /// **Source:** `gce_MakeCone.hxx`:95 - `gce_MakeCone::gce_MakeCone()`
+    /// Creates a cone from axis and two points.
+    /// @note Distance from `P1` to axis gives first section radius.
+    /// @note Distance from `P2` to axis gives second section radius.
+    /// @note Error status is propagated from the 4-point construction.
+    /// @param[in] Axis axis definition
+    /// @param[in] P1 first point
+    /// @param[in] P2 second point
     pub fn new_ax1_pnt2(
         Axis: &crate::gp::Ax1,
         P1: &crate::gp::Pnt,
@@ -636,18 +638,14 @@ impl MakeCone {
         }
     }
 
-    /// **Source:** `gce_MakeCone.hxx`:110 - `gce_MakeCone::gce_MakeCone()`
-    /// Makes a Cone by its axis <Axis> and two points.
-    /// The distance between <P1> and the axis is the radius
-    /// of the section passing through <P1>
-    /// The distance between <P2> and the axis is the radius
-    /// of the section passing through <P2>
-    /// If <P1P2> is colinear to <Axis> we have the status
-    /// "NullAngle"
-    /// If <P3P4> is perpendicular to <Axis> we have the status
-    /// "NullAngle"
-    /// If <P1> and <P2> are confused we have the status
-    /// "ConfusedPoints"
+    /// **Source:** `gce_MakeCone.hxx`:104 - `gce_MakeCone::gce_MakeCone()`
+    /// Creates a cone from line axis and two points.
+    /// @note Distance from `P1` to axis gives first section radius.
+    /// @note Distance from `P2` to axis gives second section radius.
+    /// @note Error status is propagated from the 4-point construction.
+    /// @param[in] Axis axis definition
+    /// @param[in] P1 first point
+    /// @param[in] P2 second point
     pub fn new_lin_pnt2(
         Axis: &crate::gp::Lin,
         P1: &crate::gp::Pnt,
@@ -660,30 +658,18 @@ impl MakeCone {
         }
     }
 
-    /// **Source:** `gce_MakeCone.hxx`:135 - `gce_MakeCone::gce_MakeCone()`
-    /// Makes a Cone with two points and two radius.
-    /// The axis of the solution is the line passing through
-    /// <P1> and <P2>.
-    /// <R1> is the radius of the section passing through <P1>
-    /// and <R2> the radius of the section passing through <P2>.
-    /// If <P1> and <P2> are confused we have the status "NullAxis".
-    /// Warning
-    /// If an error occurs (that is, when IsDone returns
-    /// false), the Status function returns:
-    /// -   gce_NegativeRadius if Radius, R1 or R2 is less than 0.0;
-    /// -   gce_BadAngle if Ang is less than
-    /// gp::Resolution() or greater than Pi/2.- gp::Resolution();
-    /// -   gce_ConfusedPoints if P1 and P2 or P3 and P4 are coincident;
-    /// -   gce_NullAxis if the points P1 and P2, are coincident (5th syntax only);
-    /// -   gce_NullAngle if:
-    /// -   the vector joining P1 to P2 is parallel to either
-    /// Axis or the line joining P3 to P4, or
-    /// -   R1 and R2 are equal, (that is, their difference is
-    /// less than gp::Resolution()); or
-    /// -   gce_NullRadius if:
-    /// -   the vector joining P1 to P2 is perpendicular to the line joining P3 to P4,
-    /// -   the vector joining P1 to P2 is perpendicular to Axis, or
-    /// -   P1, P2, P3, and P4 are collinear.
+    /// **Source:** `gce_MakeCone.hxx`:117 - `gce_MakeCone::gce_MakeCone()`
+    /// Creates a cone from two axis points and two section radii.
+    /// @note The axis is the line passing through `P1` and `P2`.
+    /// @note `R1` is section radius at `P1`, `R2` is section radius at `P2`.
+    /// @note Construction fails with `gce_NullAxis` if `P1` and `P2` are coincident.
+    /// @note Construction fails with `gce_NegativeRadius` if `R1` or `R2` is negative.
+    /// @note Construction fails with `gce_NullAngle` for degenerate zero-angle
+    /// or right-angle configurations.
+    /// @param[in] P1 first point
+    /// @param[in] P2 second point
+    /// @param[in] R1 first radius value
+    /// @param[in] R2 second radius value
     pub fn new_pnt2_real2(
         P1: &crate::gp::Pnt,
         P2: &crate::gp::Pnt,
@@ -697,9 +683,10 @@ impl MakeCone {
         }
     }
 
-    /// **Source:** `gce_MakeCone.hxx`:142 - `gce_MakeCone::Value()`
+    /// **Source:** `gce_MakeCone.hxx`:125 - `gce_MakeCone::Value()`
     /// Returns the constructed cone.
     /// Exceptions StdFail_NotDone if no cone is constructed.
+    /// @return resulting cone
     pub fn value(&self) -> &crate::gp::Cone {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKGeomBase::gce_MakeCone_value(
@@ -708,12 +695,14 @@ impl MakeCone {
         }
     }
 
-    /// **Source:** `gce_MakeCone.hxx`:144 - `gce_MakeCone::Operator()`
-    pub fn operator(&self) -> &crate::gp::Cone {
+    /// **Source:** `gce_MakeCone.hxx`:129 - `gce_MakeCone::Operator()`
+    /// Alias for Value() returning a copy.
+    /// @return resulting object
+    pub fn operator(&self) -> crate::OwnedPtr<crate::gp::Cone> {
         unsafe {
-            &*(crate::check_result(crate::ffi_extern_TKGeomBase::gce_MakeCone_operator(
-                self as *const Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomBase::gce_MakeCone_operator(self as *const Self),
+            ))
         }
     }
 
@@ -735,14 +724,21 @@ impl MakeCone {
         }
     }
 
-    /// Inherited: **Source:** `gce_Root.hxx`:40 - `gce_Root::IsDone()`
+    /// Inherited: **Source:** `gce_Root.hxx`:39 - `gce_Root::IsDone()`
     pub fn is_done(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomBase::gce_MakeCone_inherited_IsDone(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `gce_Root.hxx`:46 - `gce_Root::Status()`
+    /// Inherited: **Source:** `gce_Root.hxx`:43 - `gce_Root::IsError()`
+    pub fn is_error(&self) -> bool {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKGeomBase::gce_MakeCone_inherited_IsError(self as *const Self)
+        })
+    }
+
+    /// Inherited: **Source:** `gce_Root.hxx`:50 - `gce_Root::Status()`
     pub fn status(&self) -> crate::gce::ErrorType {
         crate::gce::ErrorType::try_from(crate::check_result(unsafe {
             crate::ffi_extern_TKGeomBase::gce_MakeCone_inherited_Status(self as *const Self)
@@ -755,16 +751,14 @@ impl MakeCone {
 // From gce_MakeCylinder.hxx
 // ========================
 
-/// **Source:** `gce_MakeCylinder.hxx`:40 - `gce_MakeCylinder`
-/// This class implements the following algorithms used
-/// to create a Cylinder from gp.
-/// * Create a Cylinder coaxial to another and passing
-/// through a point.
-/// * Create a Cylinder coaxial to another at a distance
-/// <Dist>.
-/// * Create a Cylinder with 3 points.
-/// * Create a Cylinder by its axis and radius.
-/// * Create a cylinder by its circular base.
+/// **Source:** `gce_MakeCylinder.hxx`:38 - `gce_MakeCylinder`
+/// This class implements construction algorithms for `gp_Cylinder`.
+/// Supported constructions include:
+/// - cylinder from axis placement and radius;
+/// - cylinder coaxial to another, through point or at signed offset;
+/// - cylinder from three points;
+/// - cylinder from axis and radius;
+/// - cylinder from circular base.
 pub use crate::ffi_types::gce_MakeCylinder as MakeCylinder;
 
 unsafe impl crate::CppDeletable for MakeCylinder {
@@ -777,8 +771,10 @@ unsafe impl crate::CppDeletable for MakeCylinder {
 
 impl MakeCylinder {
     /// **Source:** `gce_MakeCylinder.hxx`:47 - `gce_MakeCylinder::gce_MakeCylinder()`
-    /// <A2> is the local cartesian coordinate system of <me>.
-    /// The status is "NegativeRadius" if R < 0.0
+    /// Creates a cylinder from axis placement and radius.
+    /// @note Construction fails with `gce_NegativeRadius` if `Radius` is negative.
+    /// @param[in] A2 local coordinate system
+    /// @param[in] Radius radius value
     pub fn new_ax2_real(A2: &crate::gp::Ax2, Radius: f64) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -787,9 +783,10 @@ impl MakeCylinder {
         }
     }
 
-    /// **Source:** `gce_MakeCylinder.hxx`:51 - `gce_MakeCylinder::gce_MakeCylinder()`
-    /// Makes a Cylinder from gp <TheCylinder> coaxial to another
-    /// Cylinder <Cylinder> and passing through a Pnt <Point>.
+    /// **Source:** `gce_MakeCylinder.hxx`:52 - `gce_MakeCylinder::gce_MakeCylinder()`
+    /// Creates a cylinder coaxial to input cylinder and passing through a point.
+    /// @param[in] Cyl source cylinder
+    /// @param[in] Point reference point
     pub fn new_cylinder_pnt(
         Cyl: &crate::gp::Cylinder,
         Point: &crate::gp::Pnt,
@@ -802,11 +799,10 @@ impl MakeCylinder {
     }
 
     /// **Source:** `gce_MakeCylinder.hxx`:58 - `gce_MakeCylinder::gce_MakeCylinder()`
-    /// Makes a Cylinder from gp <TheCylinder> coaxial to another
-    /// Cylinder <Cylinder> at the distance <Dist> which can
-    /// be greater or lower than zero.
-    /// The radius of the result is the absolute value of the
-    /// radius of <Cyl> plus <Dist>
+    /// Creates a cylinder coaxial to input cylinder at signed distance.
+    /// @note Construction fails with `gce_NegativeRadius` if resulting radius is negative.
+    /// @param[in] Cyl source cylinder
+    /// @param[in] Dist signed distance
     pub fn new_cylinder_real(Cyl: &crate::gp::Cylinder, Dist: f64) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -815,11 +811,13 @@ impl MakeCylinder {
         }
     }
 
-    /// **Source:** `gce_MakeCylinder.hxx`:64 - `gce_MakeCylinder::gce_MakeCylinder()`
-    /// Makes a Cylinder from gp <TheCylinder> with 3 points
-    /// <P1>,<P2>,<P3>.
-    /// Its axis is <P1P2> and its radius is the distance
-    /// between <P3> and <P1P2>
+    /// **Source:** `gce_MakeCylinder.hxx`:66 - `gce_MakeCylinder::gce_MakeCylinder()`
+    /// Creates a cylinder from three points.
+    /// @note Axis is defined by points `P1` and `P2`.
+    /// @note Radius is the distance from `P3` to that axis.
+    /// @param[in] P1 first point
+    /// @param[in] P2 second point
+    /// @param[in] P3 third point
     pub fn new_pnt3(
         P1: &crate::gp::Pnt,
         P2: &crate::gp::Pnt,
@@ -832,8 +830,10 @@ impl MakeCylinder {
         }
     }
 
-    /// **Source:** `gce_MakeCylinder.hxx`:67 - `gce_MakeCylinder::gce_MakeCylinder()`
+    /// **Source:** `gce_MakeCylinder.hxx`:71 - `gce_MakeCylinder::gce_MakeCylinder()`
     /// Makes a Cylinder by its axis <Axis> and radius <Radius>.
+    /// @param[in] Axis axis definition
+    /// @param[in] Radius radius value
     pub fn new_ax1_real(Axis: &crate::gp::Ax1, Radius: f64) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -842,16 +842,11 @@ impl MakeCylinder {
         }
     }
 
-    /// **Source:** `gce_MakeCylinder.hxx`:78 - `gce_MakeCylinder::gce_MakeCylinder()`
-    /// Makes a Cylinder by its circular base.
-    /// Warning
-    /// If an error occurs (that is, when IsDone returns
-    /// false), the Status function returns:
-    /// -   gce_NegativeRadius if:
-    /// -   Radius is less than 0.0, or
-    /// -   Dist is negative and has an absolute value
-    /// which is greater than the radius of Cyl; or
-    /// -   gce_ConfusedPoints if points P1 and P2 are coincident.
+    /// **Source:** `gce_MakeCylinder.hxx`:77 - `gce_MakeCylinder::gce_MakeCylinder()`
+    /// Creates a cylinder from circular base.
+    /// @note The resulting cylinder axis equals the circle axis.
+    /// @note This constructor succeeds for any valid `Circ`.
+    /// @param[in] Circ source circle
     pub fn new_circ(Circ: &crate::gp::Circ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -863,6 +858,7 @@ impl MakeCylinder {
     /// **Source:** `gce_MakeCylinder.hxx`:82 - `gce_MakeCylinder::Value()`
     /// Returns the constructed cylinder.
     /// Exceptions StdFail_NotDone if no cylinder is constructed.
+    /// @return resulting cylinder
     pub fn value(&self) -> &crate::gp::Cylinder {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKGeomBase::gce_MakeCylinder_value(
@@ -871,12 +867,14 @@ impl MakeCylinder {
         }
     }
 
-    /// **Source:** `gce_MakeCylinder.hxx`:84 - `gce_MakeCylinder::Operator()`
-    pub fn operator(&self) -> &crate::gp::Cylinder {
+    /// **Source:** `gce_MakeCylinder.hxx`:86 - `gce_MakeCylinder::Operator()`
+    /// Alias for Value() returning a copy.
+    /// @return resulting object
+    pub fn operator(&self) -> crate::OwnedPtr<crate::gp::Cylinder> {
         unsafe {
-            &*(crate::check_result(crate::ffi_extern_TKGeomBase::gce_MakeCylinder_operator(
-                self as *const Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomBase::gce_MakeCylinder_operator(self as *const Self),
+            ))
         }
     }
 
@@ -898,14 +896,21 @@ impl MakeCylinder {
         }
     }
 
-    /// Inherited: **Source:** `gce_Root.hxx`:40 - `gce_Root::IsDone()`
+    /// Inherited: **Source:** `gce_Root.hxx`:39 - `gce_Root::IsDone()`
     pub fn is_done(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomBase::gce_MakeCylinder_inherited_IsDone(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `gce_Root.hxx`:46 - `gce_Root::Status()`
+    /// Inherited: **Source:** `gce_Root.hxx`:43 - `gce_Root::IsError()`
+    pub fn is_error(&self) -> bool {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKGeomBase::gce_MakeCylinder_inherited_IsError(self as *const Self)
+        })
+    }
+
+    /// Inherited: **Source:** `gce_Root.hxx`:50 - `gce_Root::Status()`
     pub fn status(&self) -> crate::gce::ErrorType {
         crate::gce::ErrorType::try_from(crate::check_result(unsafe {
             crate::ffi_extern_TKGeomBase::gce_MakeCylinder_inherited_Status(self as *const Self)
@@ -918,14 +923,11 @@ impl MakeCylinder {
 // From gce_MakeDir.hxx
 // ========================
 
-/// **Source:** `gce_MakeDir.hxx`:37 - `gce_MakeDir`
-/// This class implements the following algorithms used
-/// to create a Dir from gp.
-/// * Create a Dir parallel to another and passing
-/// through a point.
-/// * Create a Dir passing through 2 points.
-/// * Create a Dir from its axis (Ax1 from gp).
-/// * Create a Dir from a point and a direction.
+/// **Source:** `gce_MakeDir.hxx`:34 - `gce_MakeDir`
+/// This class implements construction algorithms for `gp_Dir`.
+/// Supported constructions include:
+/// - direction from vector or coordinate components;
+/// - direction from two points.
 pub use crate::ffi_types::gce_MakeDir as MakeDir;
 
 unsafe impl crate::CppDeletable for MakeDir {
@@ -937,9 +939,11 @@ unsafe impl crate::CppDeletable for MakeDir {
 }
 
 impl MakeDir {
-    /// **Source:** `gce_MakeDir.hxx`:44 - `gce_MakeDir::gce_MakeDir()`
+    /// **Source:** `gce_MakeDir.hxx`:43 - `gce_MakeDir::gce_MakeDir()`
     /// Normalizes the vector V and creates a direction.
-    /// Status is "NullVector" if V.Magnitude() <= Resolution.
+    /// @note Construction fails with `gce_NullVector` if
+    /// `V.Magnitude() <= gp::Resolution()`.
+    /// @param[in] V direction vector
     pub fn new_vec(V: &crate::gp::Vec) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -949,9 +953,10 @@ impl MakeDir {
     }
 
     /// **Source:** `gce_MakeDir.hxx`:49 - `gce_MakeDir::gce_MakeDir()`
-    /// Creates a direction from a triplet of coordinates.
-    /// Status is "NullVector" if Coord.Modulus() <=
-    /// Resolution from gp.
+    /// Creates a direction from a coordinate vector.
+    /// @note Construction fails with `gce_NullVector` if
+    /// `Coord.Modulus() <= gp::Resolution()`.
+    /// @param[in] Coord coordinate vector
     pub fn new_xyz(Coord: &crate::gp::XYZ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -960,10 +965,13 @@ impl MakeDir {
         }
     }
 
-    /// **Source:** `gce_MakeDir.hxx`:54 - `gce_MakeDir::gce_MakeDir()`
+    /// **Source:** `gce_MakeDir.hxx`:57 - `gce_MakeDir::gce_MakeDir()`
     /// Creates a direction with its 3 cartesian coordinates.
-    /// Status is "NullVector" if Sqrt(Xv*Xv + Yv*Yv + Zv*Zv)
-    /// <= Resolution
+    /// @note Construction fails with `gce_NullVector` if
+    /// `Xv*Xv + Yv*Yv + Zv*Zv <= gp::Resolution()`.
+    /// @param[in] Xv X coordinate value
+    /// @param[in] Yv Y coordinate value
+    /// @param[in] Zv Z coordinate value
     pub fn new_real3(Xv: f64, Yv: f64, Zv: f64) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -972,19 +980,11 @@ impl MakeDir {
         }
     }
 
-    /// **Source:** `gce_MakeDir.hxx`:70 - `gce_MakeDir::gce_MakeDir()`
-    /// Make a Dir from gp <TheDir> passing through 2
-    /// Pnt <P1>,<P2>.
-    /// Status is "ConfusedPoints" if <p1> and <P2> are confused.
-    /// Warning
-    /// If an error occurs (that is, when IsDone returns
-    /// false), the Status function returns:
-    /// -   gce_ConfusedPoints if points P1 and P2 are coincident, or
-    /// -   gce_NullVector if one of the following is less
-    /// than or equal to gp::Resolution():
-    /// -   the magnitude of vector V,
-    /// -   the modulus of Coord,
-    /// -   Sqrt(Xv*Xv + Yv*Yv + Zv*Zv).
+    /// **Source:** `gce_MakeDir.hxx`:63 - `gce_MakeDir::gce_MakeDir()`
+    /// Creates a direction from two points.
+    /// @note Construction fails with `gce_ConfusedPoints` if points are coincident.
+    /// @param[in] P1 first point
+    /// @param[in] P2 second point
     pub fn new_pnt2(P1: &crate::gp::Pnt, P2: &crate::gp::Pnt) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -993,9 +993,10 @@ impl MakeDir {
         }
     }
 
-    /// **Source:** `gce_MakeDir.hxx`:74 - `gce_MakeDir::Value()`
+    /// **Source:** `gce_MakeDir.hxx`:68 - `gce_MakeDir::Value()`
     /// Returns the constructed unit vector.
     /// Exceptions StdFail_NotDone if no unit vector is constructed.
+    /// @return resulting direction
     pub fn value(&self) -> &crate::gp::Dir {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKGeomBase::gce_MakeDir_value(
@@ -1004,12 +1005,14 @@ impl MakeDir {
         }
     }
 
-    /// **Source:** `gce_MakeDir.hxx`:76 - `gce_MakeDir::Operator()`
-    pub fn operator(&self) -> &crate::gp::Dir {
+    /// **Source:** `gce_MakeDir.hxx`:72 - `gce_MakeDir::Operator()`
+    /// Alias for Value() returning a copy.
+    /// @return resulting object
+    pub fn operator(&self) -> crate::OwnedPtr<crate::gp::Dir> {
         unsafe {
-            &*(crate::check_result(crate::ffi_extern_TKGeomBase::gce_MakeDir_operator(
-                self as *const Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomBase::gce_MakeDir_operator(self as *const Self),
+            ))
         }
     }
 
@@ -1031,14 +1034,21 @@ impl MakeDir {
         }
     }
 
-    /// Inherited: **Source:** `gce_Root.hxx`:40 - `gce_Root::IsDone()`
+    /// Inherited: **Source:** `gce_Root.hxx`:39 - `gce_Root::IsDone()`
     pub fn is_done(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomBase::gce_MakeDir_inherited_IsDone(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `gce_Root.hxx`:46 - `gce_Root::Status()`
+    /// Inherited: **Source:** `gce_Root.hxx`:43 - `gce_Root::IsError()`
+    pub fn is_error(&self) -> bool {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKGeomBase::gce_MakeDir_inherited_IsError(self as *const Self)
+        })
+    }
+
+    /// Inherited: **Source:** `gce_Root.hxx`:50 - `gce_Root::Status()`
     pub fn status(&self) -> crate::gce::ErrorType {
         crate::gce::ErrorType::try_from(crate::check_result(unsafe {
             crate::ffi_extern_TKGeomBase::gce_MakeDir_inherited_Status(self as *const Self)
@@ -1051,13 +1061,11 @@ impl MakeDir {
 // From gce_MakeDir2d.hxx
 // ========================
 
-/// **Source:** `gce_MakeDir2d.hxx`:36 - `gce_MakeDir2d`
-/// This class implements the following algorithms used
-/// to create a Dir2d from gp.
-/// * Create a Dir2d with 2 points.
-/// * Create a Dir2d with a Vec2d.
-/// * Create a Dir2d with a XY from gp.
-/// * Create a Dir2d with a 2 Reals (Coordinates).
+/// **Source:** `gce_MakeDir2d.hxx`:34 - `gce_MakeDir2d`
+/// This class implements construction algorithms for `gp_Dir2d`.
+/// Supported constructions include:
+/// - direction from vector or coordinate components;
+/// - direction from two points.
 pub use crate::ffi_types::gce_MakeDir2d as MakeDir2d;
 
 unsafe impl crate::CppDeletable for MakeDir2d {
@@ -1071,7 +1079,9 @@ unsafe impl crate::CppDeletable for MakeDir2d {
 impl MakeDir2d {
     /// **Source:** `gce_MakeDir2d.hxx`:43 - `gce_MakeDir2d::gce_MakeDir2d()`
     /// Normalizes the vector V and creates a direction.
-    /// Status is "NullVector" if V.Magnitude() <= Resolution.
+    /// @note Construction fails with `gce_NullVector` if
+    /// `V.Magnitude() <= gp::Resolution()`.
+    /// @param[in] V direction vector
     pub fn new_vec2d(V: &crate::gp::Vec2d) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -1080,10 +1090,11 @@ impl MakeDir2d {
         }
     }
 
-    /// **Source:** `gce_MakeDir2d.hxx`:48 - `gce_MakeDir2d::gce_MakeDir2d()`
-    /// Creates a direction from a triplet of coordinates.
-    /// Status is "NullVector" if Coord.Modulus() <=
-    /// Resolution from gp.
+    /// **Source:** `gce_MakeDir2d.hxx`:49 - `gce_MakeDir2d::gce_MakeDir2d()`
+    /// Creates a direction from a coordinate vector.
+    /// @note Construction fails with `gce_NullVector` if
+    /// `Coord.Modulus() <= gp::Resolution()`.
+    /// @param[in] Coord coordinate vector
     pub fn new_xy(Coord: &crate::gp::XY) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -1092,10 +1103,12 @@ impl MakeDir2d {
         }
     }
 
-    /// **Source:** `gce_MakeDir2d.hxx`:53 - `gce_MakeDir2d::gce_MakeDir2d()`
-    /// Creates a direction with its 3 cartesian coordinates.
-    /// Status is "NullVector" if Sqrt(Xv*Xv + Yv*Yv )
-    /// <= Resolution
+    /// **Source:** `gce_MakeDir2d.hxx`:56 - `gce_MakeDir2d::gce_MakeDir2d()`
+    /// Creates a direction with its two cartesian coordinates.
+    /// @note Construction fails with `gce_NullVector` if
+    /// `Xv*Xv + Yv*Yv <= gp::Resolution()`.
+    /// @param[in] Xv X coordinate value
+    /// @param[in] Yv Y coordinate value
     pub fn new_real2(Xv: f64, Yv: f64) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -1104,19 +1117,11 @@ impl MakeDir2d {
         }
     }
 
-    /// **Source:** `gce_MakeDir2d.hxx`:67 - `gce_MakeDir2d::gce_MakeDir2d()`
-    /// Make a Dir2d from gp <TheDir> passing through 2
-    /// Pnt <P1>,<P2>.
-    /// Status is "ConfusedPoints" if <P1> and <P2> are confused.
-    /// Warning
-    /// If an error occurs (that is, when IsDone returns
-    /// false), the Status function returns:
-    /// -   gce_ConfusedPoints if points P1 and P2 are coincident, or
-    /// -   gce_NullVector if one of the following is less
-    /// than or equal to gp::Resolution():
-    /// -   the magnitude of vector V,
-    /// -   the modulus of Coord,
-    /// -   Sqrt(Xv*Xv + Yv*Yv).
+    /// **Source:** `gce_MakeDir2d.hxx`:62 - `gce_MakeDir2d::gce_MakeDir2d()`
+    /// Creates a direction from two points.
+    /// @note Construction fails with `gce_ConfusedPoints` if points are coincident.
+    /// @param[in] P1 first point
+    /// @param[in] P2 second point
     pub fn new_pnt2d2(P1: &crate::gp::Pnt2d, P2: &crate::gp::Pnt2d) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -1125,9 +1130,10 @@ impl MakeDir2d {
         }
     }
 
-    /// **Source:** `gce_MakeDir2d.hxx`:71 - `gce_MakeDir2d::Value()`
+    /// **Source:** `gce_MakeDir2d.hxx`:67 - `gce_MakeDir2d::Value()`
     /// Returns the constructed unit vector.
     /// Exceptions StdFail_NotDone if no unit vector is constructed.
+    /// @return resulting direction
     pub fn value(&self) -> &crate::gp::Dir2d {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKGeomBase::gce_MakeDir2d_value(
@@ -1136,12 +1142,14 @@ impl MakeDir2d {
         }
     }
 
-    /// **Source:** `gce_MakeDir2d.hxx`:73 - `gce_MakeDir2d::Operator()`
-    pub fn operator(&self) -> &crate::gp::Dir2d {
+    /// **Source:** `gce_MakeDir2d.hxx`:71 - `gce_MakeDir2d::Operator()`
+    /// Alias for Value() returning a copy.
+    /// @return resulting object
+    pub fn operator(&self) -> crate::OwnedPtr<crate::gp::Dir2d> {
         unsafe {
-            &*(crate::check_result(crate::ffi_extern_TKGeomBase::gce_MakeDir2d_operator(
-                self as *const Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomBase::gce_MakeDir2d_operator(self as *const Self),
+            ))
         }
     }
 
@@ -1163,14 +1171,21 @@ impl MakeDir2d {
         }
     }
 
-    /// Inherited: **Source:** `gce_Root.hxx`:40 - `gce_Root::IsDone()`
+    /// Inherited: **Source:** `gce_Root.hxx`:39 - `gce_Root::IsDone()`
     pub fn is_done(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomBase::gce_MakeDir2d_inherited_IsDone(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `gce_Root.hxx`:46 - `gce_Root::Status()`
+    /// Inherited: **Source:** `gce_Root.hxx`:43 - `gce_Root::IsError()`
+    pub fn is_error(&self) -> bool {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKGeomBase::gce_MakeDir2d_inherited_IsError(self as *const Self)
+        })
+    }
+
+    /// Inherited: **Source:** `gce_Root.hxx`:50 - `gce_Root::Status()`
     pub fn status(&self) -> crate::gce::ErrorType {
         crate::gce::ErrorType::try_from(crate::check_result(unsafe {
             crate::ffi_extern_TKGeomBase::gce_MakeDir2d_inherited_Status(self as *const Self)
@@ -1183,13 +1198,11 @@ impl MakeDir2d {
 // From gce_MakeElips.hxx
 // ========================
 
-/// **Source:** `gce_MakeElips.hxx`:35 - `gce_MakeElips`
-/// This class implements the following algorithms used to
-/// create an ellipse from gp.
-///
-/// * Create an ellipse from its center, and two points:
-/// one on the ciconference giving the major radius, the
-/// other giving the value of the small radius.
+/// **Source:** `gce_MakeElips.hxx`:33 - `gce_MakeElips`
+/// This class implements construction algorithms for `gp_Elips`.
+/// Supported constructions include:
+/// - ellipse from local coordinate system and radii;
+/// - ellipse from center and two points.
 pub use crate::ffi_types::gce_MakeElips as MakeElips;
 
 unsafe impl crate::CppDeletable for MakeElips {
@@ -1201,14 +1214,20 @@ unsafe impl crate::CppDeletable for MakeElips {
 }
 
 impl MakeElips {
-    /// **Source:** `gce_MakeElips.hxx`:47 - `gce_MakeElips::gce_MakeElips()`
+    /// **Source:** `gce_MakeElips.hxx`:51 - `gce_MakeElips::gce_MakeElips()`
     /// The major radius of the ellipse is on the "XAxis" and the
     /// minor radius is on the "YAxis" of the ellipse. The "XAxis"
     /// is defined with the "XDirection" of A2 and the "YAxis" is
     /// defined with the "YDirection" of A2.
-    /// Warnings :
-    /// It is not forbidden to create an ellipse with
-    /// MajorRadius = MinorRadius.
+    /// @note It is possible to create an ellipse with
+    /// `MajorRadius == MinorRadius`.
+    /// @note Construction fails with `gce_InvertRadius` if
+    /// `MajorRadius < MinorRadius`.
+    /// @note Construction fails with `gce_NegativeRadius` if
+    /// `MinorRadius < 0.0`.
+    /// @param[in] A2 local coordinate system
+    /// @param[in] MajorRadius major radius value
+    /// @param[in] MinorRadius minor radius value
     pub fn new_ax2_real2(
         A2: &crate::gp::Ax2,
         MajorRadius: f64,
@@ -1225,21 +1244,16 @@ impl MakeElips {
         }
     }
 
-    /// **Source:** `gce_MakeElips.hxx`:65 - `gce_MakeElips::gce_MakeElips()`
-    /// Make an ellipse with its center and two points.
-    /// Warning
-    /// The MakeElips class does not prevent the
-    /// construction of an ellipse where the MajorRadius is
-    /// equal to the MinorRadius.
-    /// If an error occurs (that is, when IsDone returns
-    /// false), the Status function returns:
-    /// -   gce_InvertRadius if MajorRadius is less than MinorRadius;
-    /// -   gce_NegativeRadius if MinorRadius is less than 0.0;
-    /// -   gce_NullAxis if the points S1 and Center are coincident; or
-    /// -   gce_InvertAxis if:
-    /// -   the major radius computed with Center and S1
-    /// is less than the minor radius computed with Center, S1 and S2, or
-    /// -   Center, S1 and S2 are collinear.
+    /// **Source:** `gce_MakeElips.hxx`:64 - `gce_MakeElips::gce_MakeElips()`
+    /// Creates an ellipse from center and two points.
+    /// @note `S1` defines major radius direction and value.
+    /// @note Minor radius is computed as distance from `S2` to major axis.
+    /// @note Construction fails with `gce_NullAxis` if `S1` and `Center` coincide.
+    /// @note Construction fails with `gce_InvertAxis` when computed minor radius
+    /// is null/greater than major radius, or when points are collinear.
+    /// @param[in] S1 first point
+    /// @param[in] S2 second point
+    /// @param[in] Center center point
     pub fn new_pnt3(
         S1: &crate::gp::Pnt,
         S2: &crate::gp::Pnt,
@@ -1255,6 +1269,7 @@ impl MakeElips {
     /// **Source:** `gce_MakeElips.hxx`:69 - `gce_MakeElips::Value()`
     /// Returns the constructed ellipse.
     /// Exceptions StdFail_NotDone if no ellipse is constructed.
+    /// @return resulting ellipse
     pub fn value(&self) -> &crate::gp::Elips {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKGeomBase::gce_MakeElips_value(
@@ -1263,12 +1278,14 @@ impl MakeElips {
         }
     }
 
-    /// **Source:** `gce_MakeElips.hxx`:71 - `gce_MakeElips::Operator()`
-    pub fn operator(&self) -> &crate::gp::Elips {
+    /// **Source:** `gce_MakeElips.hxx`:73 - `gce_MakeElips::Operator()`
+    /// Alias for Value() returning a copy.
+    /// @return resulting object
+    pub fn operator(&self) -> crate::OwnedPtr<crate::gp::Elips> {
         unsafe {
-            &*(crate::check_result(crate::ffi_extern_TKGeomBase::gce_MakeElips_operator(
-                self as *const Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomBase::gce_MakeElips_operator(self as *const Self),
+            ))
         }
     }
 
@@ -1290,14 +1307,21 @@ impl MakeElips {
         }
     }
 
-    /// Inherited: **Source:** `gce_Root.hxx`:40 - `gce_Root::IsDone()`
+    /// Inherited: **Source:** `gce_Root.hxx`:39 - `gce_Root::IsDone()`
     pub fn is_done(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomBase::gce_MakeElips_inherited_IsDone(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `gce_Root.hxx`:46 - `gce_Root::Status()`
+    /// Inherited: **Source:** `gce_Root.hxx`:43 - `gce_Root::IsError()`
+    pub fn is_error(&self) -> bool {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKGeomBase::gce_MakeElips_inherited_IsError(self as *const Self)
+        })
+    }
+
+    /// Inherited: **Source:** `gce_Root.hxx`:50 - `gce_Root::Status()`
     pub fn status(&self) -> crate::gce::ErrorType {
         crate::gce::ErrorType::try_from(crate::check_result(unsafe {
             crate::ffi_extern_TKGeomBase::gce_MakeElips_inherited_Status(self as *const Self)
@@ -1310,15 +1334,11 @@ impl MakeElips {
 // From gce_MakeElips2d.hxx
 // ========================
 
-/// **Source:** `gce_MakeElips2d.hxx`:39 - `gce_MakeElips2d`
-/// This class implements the following algorithms used to
-/// create Elips2d from gp.
-///
-/// * Create an ellipse from its center, and two points:
-/// one on the ciconference giving the major radius, the
-/// other giving the value of the small radius.
-/// * Create an ellipse from its major axis and its major
-/// radius and its minor radius.
+/// **Source:** `gce_MakeElips2d.hxx`:34 - `gce_MakeElips2d`
+/// This class implements construction algorithms for `gp_Elips2d`.
+/// Supported constructions include:
+/// - ellipse from major axis (or local 2D coordinate system) and radii;
+/// - ellipse from center and two points.
 pub use crate::ffi_types::gce_MakeElips2d as MakeElips2d;
 
 unsafe impl crate::CppDeletable for MakeElips2d {
@@ -1330,14 +1350,20 @@ unsafe impl crate::CppDeletable for MakeElips2d {
 }
 
 impl MakeElips2d {
-    /// **Source:** `gce_MakeElips2d.hxx`:51 - `gce_MakeElips2d::gce_MakeElips2d()`
+    /// **Source:** `gce_MakeElips2d.hxx`:52 - `gce_MakeElips2d::gce_MakeElips2d()`
     /// Creates an ellipse with the major axis, the major and the
     /// minor radius. The location of the MajorAxis is the center
-    /// of the  ellipse.
+    /// of the ellipse.
     /// The sense of parametrization is given by Sense.
     /// It is possible to create an ellipse with MajorRadius = MinorRadius.
-    /// the status is "InvertRadius" if MajorRadius < MinorRadius or
-    /// "NegativeRadius" if MinorRadius < 0.0
+    /// @note Construction fails with `gce_InvertRadius` if
+    /// `MajorRadius < MinorRadius`.
+    /// @note Construction fails with `gce_NegativeRadius` if
+    /// `MajorRadius < 0.0`.
+    /// @param[in] MajorAxis major axis placement
+    /// @param[in] MajorRadius major radius value
+    /// @param[in] MinorRadius minor radius value
+    /// @param[in] Sense orientation flag
     pub fn new_ax2d_real2_bool(
         MajorAxis: &crate::gp::Ax2d,
         MajorRadius: f64,
@@ -1356,15 +1382,20 @@ impl MakeElips2d {
         }
     }
 
-    /// **Source:** `gce_MakeElips2d.hxx`:64 - `gce_MakeElips2d::gce_MakeElips2d()`
+    /// **Source:** `gce_MakeElips2d.hxx`:70 - `gce_MakeElips2d::gce_MakeElips2d()`
     /// Axis defines the Xaxis and Yaxis of the ellipse which defines
     /// the origin and the sense of parametrization.
     /// Creates an ellipse with the AxisPlacement the major and the
     /// minor radius. The location of Axis is the center
-    /// of the  ellipse.
+    /// of the ellipse.
     /// It is possible to create an ellipse with MajorRadius = MinorRadius.
-    /// the status is "InvertRadius" if MajorRadius < MinorRadius or
-    /// "NegativeRadius" if MinorRadius < 0.0
+    /// @note Construction fails with `gce_InvertRadius` if
+    /// `MajorRadius < MinorRadius`.
+    /// @note Construction fails with `gce_NegativeRadius` if
+    /// `MajorRadius < 0.0`.
+    /// @param[in] A local coordinate system
+    /// @param[in] MajorRadius major radius value
+    /// @param[in] MinorRadius minor radius value
     pub fn new_ax22d_real2(
         A: &crate::gp::Ax22d,
         MajorRadius: f64,
@@ -1381,27 +1412,17 @@ impl MakeElips2d {
         }
     }
 
-    /// **Source:** `gce_MakeElips2d.hxx`:88 - `gce_MakeElips2d::gce_MakeElips2d()`
-    /// Makes an Elips2d with its center and two points.
-    /// The sense of parametrization is given by S1, S2,
-    /// and Center.
-    /// Depending on the constructor, the  implicit orientation of the ellipse is:
-    /// -   the sense defined by A,
-    /// -   the sense defined by points Center, S1 and S2,
-    /// -   the trigonometric sense if Sense is not given or is true, or
-    /// -   the opposite if Sense is false.
-    /// It is possible to construct an ellipse where the major
-    /// and minor radii are equal.
-    /// Warning
-    /// If an error occurs (that is, when IsDone returns
-    /// false), the Status function returns:
-    /// -   gce_InvertRadius if MajorRadius is less than MinorRadius,
-    /// -   gce_NegativeRadius if MajorRadius or
-    /// MinorRadius is less than 0.0,
-    /// -   gce_NullAxis if points S1, S2 and Center are collinear, or
-    /// -   gce_InvertAxis if the major radius computed with
-    /// Center and S1 is less than the minor radius
-    /// computed with Center, S1 and S2.
+    /// **Source:** `gce_MakeElips2d.hxx`:84 - `gce_MakeElips2d::gce_MakeElips2d()`
+    /// Creates an ellipse from center and two points.
+    /// @note `S1` defines major radius direction and value.
+    /// @note Minor radius is computed as distance from `S2` to major axis.
+    /// @note Construction fails with `gce_NullAxis` when computed minor radius
+    /// is null.
+    /// @note Construction fails with `gce_InvertAxis` when computed minor radius
+    /// exceeds major radius.
+    /// @param[in] S1 first point
+    /// @param[in] S2 second point
+    /// @param[in] Center center point
     pub fn new_pnt2d3(
         S1: &crate::gp::Pnt2d,
         S2: &crate::gp::Pnt2d,
@@ -1414,14 +1435,20 @@ impl MakeElips2d {
         }
     }
 
-    /// **Source:** `gce_MakeElips2d.hxx`:51 - `gce_MakeElips2d::gce_MakeElips2d()`
+    /// **Source:** `gce_MakeElips2d.hxx`:52 - `gce_MakeElips2d::gce_MakeElips2d()`
     /// Creates an ellipse with the major axis, the major and the
     /// minor radius. The location of the MajorAxis is the center
-    /// of the  ellipse.
+    /// of the ellipse.
     /// The sense of parametrization is given by Sense.
     /// It is possible to create an ellipse with MajorRadius = MinorRadius.
-    /// the status is "InvertRadius" if MajorRadius < MinorRadius or
-    /// "NegativeRadius" if MinorRadius < 0.0
+    /// @note Construction fails with `gce_InvertRadius` if
+    /// `MajorRadius < MinorRadius`.
+    /// @note Construction fails with `gce_NegativeRadius` if
+    /// `MajorRadius < 0.0`.
+    /// @param[in] MajorAxis major axis placement
+    /// @param[in] MajorRadius major radius value
+    /// @param[in] MinorRadius minor radius value
+    /// @param[in] Sense orientation flag
     pub fn new_ax2d_real2(
         MajorAxis: &crate::gp::Ax2d,
         MajorRadius: f64,
@@ -1430,9 +1457,10 @@ impl MakeElips2d {
         Self::new_ax2d_real2_bool(MajorAxis, MajorRadius, MinorRadius, true)
     }
 
-    /// **Source:** `gce_MakeElips2d.hxx`:92 - `gce_MakeElips2d::Value()`
+    /// **Source:** `gce_MakeElips2d.hxx`:89 - `gce_MakeElips2d::Value()`
     /// Returns the constructed ellipse.
     /// Exceptions StdFail_NotDone if no ellipse is constructed.
+    /// @return resulting ellipse
     pub fn value(&self) -> &crate::gp::Elips2d {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKGeomBase::gce_MakeElips2d_value(
@@ -1441,12 +1469,14 @@ impl MakeElips2d {
         }
     }
 
-    /// **Source:** `gce_MakeElips2d.hxx`:94 - `gce_MakeElips2d::Operator()`
-    pub fn operator(&self) -> &crate::gp::Elips2d {
+    /// **Source:** `gce_MakeElips2d.hxx`:93 - `gce_MakeElips2d::Operator()`
+    /// Alias for Value() returning a copy.
+    /// @return resulting object
+    pub fn operator(&self) -> crate::OwnedPtr<crate::gp::Elips2d> {
         unsafe {
-            &*(crate::check_result(crate::ffi_extern_TKGeomBase::gce_MakeElips2d_operator(
-                self as *const Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomBase::gce_MakeElips2d_operator(self as *const Self),
+            ))
         }
     }
 
@@ -1468,14 +1498,21 @@ impl MakeElips2d {
         }
     }
 
-    /// Inherited: **Source:** `gce_Root.hxx`:40 - `gce_Root::IsDone()`
+    /// Inherited: **Source:** `gce_Root.hxx`:39 - `gce_Root::IsDone()`
     pub fn is_done(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomBase::gce_MakeElips2d_inherited_IsDone(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `gce_Root.hxx`:46 - `gce_Root::Status()`
+    /// Inherited: **Source:** `gce_Root.hxx`:43 - `gce_Root::IsError()`
+    pub fn is_error(&self) -> bool {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKGeomBase::gce_MakeElips2d_inherited_IsError(self as *const Self)
+        })
+    }
+
+    /// Inherited: **Source:** `gce_Root.hxx`:50 - `gce_Root::Status()`
     pub fn status(&self) -> crate::gce::ErrorType {
         crate::gce::ErrorType::try_from(crate::check_result(unsafe {
             crate::ffi_extern_TKGeomBase::gce_MakeElips2d_inherited_Status(self as *const Self)
@@ -1488,15 +1525,11 @@ impl MakeElips2d {
 // From gce_MakeHypr.hxx
 // ========================
 
-/// **Source:** `gce_MakeHypr.hxx`:66 - `gce_MakeHypr`
-/// This class implements the following algorithms used to
-/// create Hyperbola from gp.
-/// * Create an Hyperbola from its center, and two points:
-/// one on its axis of symmetry giving the major radius, the
-/// other giving the value of the small radius.
-/// The three points give the plane of the hyperbola.
-/// * Create an hyperbola from its axisplacement and its
-/// MajorRadius and its MinorRadius.
+/// **Source:** `gce_MakeHypr.hxx`:61 - `gce_MakeHypr`
+/// This class implements construction algorithms for `gp_Hypr`.
+/// Supported constructions include:
+/// - hyperbola from center and two points (one on major axis);
+/// - hyperbola from local coordinate system and radii.
 ///
 /// ^YAxis
 /// |
@@ -1510,8 +1543,8 @@ impl MakeElips2d {
 /// SecondConjugateBranch
 /// |
 ///
-/// The local cartesian coordinate system of the ellipse is an
-/// axis placement (two axis).
+/// The local Cartesian coordinate system of the hyperbola is an
+/// axis placement (two axes).
 ///
 /// The "XDirection" and the "YDirection" of the axis placement
 /// define the plane of the hyperbola.
@@ -1520,12 +1553,11 @@ impl MakeElips2d {
 /// to the hyperbola's plane.
 ///
 /// The "XAxis" of the hyperbola ("Location", "XDirection") is the
-/// major axis  and the  "YAxis" of the hyperbola ("Location",
+/// major axis and the "YAxis" of the hyperbola ("Location",
 /// "YDirection") is the minor axis.
 ///
-/// Warnings :
-/// The major radius (on the major axis) can be lower than the
-/// minor radius (on the minor axis).
+/// @note The major radius (on major axis) can be lower than the
+/// minor radius (on minor axis).
 pub use crate::ffi_types::gce_MakeHypr as MakeHypr;
 
 unsafe impl crate::CppDeletable for MakeHypr {
@@ -1537,17 +1569,16 @@ unsafe impl crate::CppDeletable for MakeHypr {
 }
 
 impl MakeHypr {
-    /// **Source:** `gce_MakeHypr.hxx`:81 - `gce_MakeHypr::gce_MakeHypr()`
-    /// A2 is the local coordinate system of the hyperbola.
-    /// In the local coordinates system A2 the equation of the
-    /// hyperbola is :
-    /// X*X / MajorRadius*MajorRadius - Y*Y / MinorRadius*MinorRadius = 1.0
-    /// It is not forbidden to create an Hyperbola with MajorRadius =
-    /// MinorRadius.
-    /// For the hyperbola the MajorRadius can be lower than the
-    /// MinorRadius.
-    /// The status is "NegativeRadius" if MajorRadius < 0.0 and
-    /// "InvertRadius" if MinorRadius > MajorRadius.
+    /// **Source:** `gce_MakeHypr.hxx`:75 - `gce_MakeHypr::gce_MakeHypr()`
+    /// Creates a hyperbola from a local coordinate system and radii.
+    /// @note In the local coordinate system of `A2`, the equation is
+    /// `X*X / (MajorRadius*MajorRadius) - Y*Y / (MinorRadius*MinorRadius) = 1.0`.
+    /// @note Construction with `MajorRadius == MinorRadius` is valid.
+    /// @note Construction fails with `gce_NegativeRadius` if
+    /// `MajorRadius < 0.0` or `MinorRadius < 0.0`.
+    /// @param[in] A2 local coordinate system
+    /// @param[in] MajorRadius major radius value
+    /// @param[in] MinorRadius minor radius value
     pub fn new_ax2_real2(
         A2: &crate::gp::Ax2,
         MajorRadius: f64,
@@ -1564,22 +1595,18 @@ impl MakeHypr {
         }
     }
 
-    /// **Source:** `gce_MakeHypr.hxx`:100 - `gce_MakeHypr::gce_MakeHypr()`
-    /// Constructs a hyperbola
-    /// -   centered on the point Center, where:
-    /// -   the plane of the hyperbola is defined by Center, S1 and S2,
-    /// -   its major axis is defined by Center and S1,
-    /// -   its major radius is the distance between Center and S1, and
-    /// -   its minor radius is the distance between S2 and the major axis.
-    /// Warning
-    /// If an error occurs (that is, when IsDone returns
-    /// false), the Status function returns:
-    /// -   gce_NegativeRadius if MajorRadius is less than 0.0;
-    /// -   gce_InvertRadius if:
-    /// -   the major radius (computed with Center, S1) is
-    /// less than the minor radius (computed with Center, S1 and S2), or
-    /// -   MajorRadius is less than MinorRadius; or
-    /// -   gce_ColinearPoints if S1, S2 and Center are collinear.
+    /// **Source:** `gce_MakeHypr.hxx`:90 - `gce_MakeHypr::gce_MakeHypr()`
+    /// Creates a hyperbola from center and two points.
+    /// @note `Center` is the hyperbola center, `Center`-`S1` defines the major axis,
+    /// major radius is `Distance(Center, S1)`, and minor radius is distance from
+    /// `S2` to this major axis.
+    /// @note Construction fails with `gce_ConfusedPoints` if any two of `S1`, `S2`,
+    /// and `Center` are coincident.
+    /// @note Construction fails with `gce_ColinearPoints` if `S1`, `S2`, and `Center`
+    /// are collinear.
+    /// @param[in] S1 first point
+    /// @param[in] S2 second point
+    /// @param[in] Center center point
     pub fn new_pnt3(
         S1: &crate::gp::Pnt,
         S2: &crate::gp::Pnt,
@@ -1592,9 +1619,10 @@ impl MakeHypr {
         }
     }
 
-    /// **Source:** `gce_MakeHypr.hxx`:104 - `gce_MakeHypr::Value()`
+    /// **Source:** `gce_MakeHypr.hxx`:95 - `gce_MakeHypr::Value()`
     /// Returns the constructed hyperbola.
     /// Exceptions StdFail_NotDone if no hyperbola is constructed.
+    /// @return resulting hyperbola
     pub fn value(&self) -> &crate::gp::Hypr {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKGeomBase::gce_MakeHypr_value(
@@ -1603,12 +1631,14 @@ impl MakeHypr {
         }
     }
 
-    /// **Source:** `gce_MakeHypr.hxx`:106 - `gce_MakeHypr::Operator()`
-    pub fn operator(&self) -> &crate::gp::Hypr {
+    /// **Source:** `gce_MakeHypr.hxx`:99 - `gce_MakeHypr::Operator()`
+    /// Alias for Value() returning a copy.
+    /// @return resulting object
+    pub fn operator(&self) -> crate::OwnedPtr<crate::gp::Hypr> {
         unsafe {
-            &*(crate::check_result(crate::ffi_extern_TKGeomBase::gce_MakeHypr_operator(
-                self as *const Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomBase::gce_MakeHypr_operator(self as *const Self),
+            ))
         }
     }
 
@@ -1630,14 +1660,21 @@ impl MakeHypr {
         }
     }
 
-    /// Inherited: **Source:** `gce_Root.hxx`:40 - `gce_Root::IsDone()`
+    /// Inherited: **Source:** `gce_Root.hxx`:39 - `gce_Root::IsDone()`
     pub fn is_done(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomBase::gce_MakeHypr_inherited_IsDone(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `gce_Root.hxx`:46 - `gce_Root::Status()`
+    /// Inherited: **Source:** `gce_Root.hxx`:43 - `gce_Root::IsError()`
+    pub fn is_error(&self) -> bool {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKGeomBase::gce_MakeHypr_inherited_IsError(self as *const Self)
+        })
+    }
+
+    /// Inherited: **Source:** `gce_Root.hxx`:50 - `gce_Root::Status()`
     pub fn status(&self) -> crate::gce::ErrorType {
         crate::gce::ErrorType::try_from(crate::check_result(unsafe {
             crate::ffi_extern_TKGeomBase::gce_MakeHypr_inherited_Status(self as *const Self)
@@ -1650,14 +1687,12 @@ impl MakeHypr {
 // From gce_MakeHypr2d.hxx
 // ========================
 
-/// **Source:** `gce_MakeHypr2d.hxx`:63 - `gce_MakeHypr2d`
-/// This class implements the following algorithms used to
-/// create a 2d Hyperbola from gp.
-/// * Create a 2d Hyperbola from its center and two points:
-/// one on its axis of symmetry giving the major radius, the
-/// other giving the value of the small radius.
-/// * Create a 2d Hyperbola from its major axis and its major
-/// radius and its minor radius.
+/// **Source:** `gce_MakeHypr2d.hxx`:60 - `gce_MakeHypr2d`
+/// This class implements construction algorithms for `gp_Hypr2d`.
+/// Supported constructions include:
+/// - hyperbola from center and two points (one on major axis);
+/// - hyperbola from major axis and radii;
+/// - hyperbola from local coordinate system and radii.
 ///
 /// ^YAxis
 /// |
@@ -1672,10 +1707,10 @@ impl MakeHypr {
 /// |
 ///
 /// An axis placement (one axis) is associated with the hyperbola.
-/// This axis is the "XAxis" or major axis of the hyperbola. It is
-/// the symmetry axis of the main branch of hyperbola.
-/// The "YAxis" is normal to this axis and pass through its location
-/// point. It is the minor axis.
+/// This axis is the "XAxis" or major axis of the hyperbola.
+/// It is the symmetry axis of the main branch.
+/// The "YAxis" is normal to this axis and passes through its location point.
+/// It is the minor axis.
 ///
 /// The major radius is the distance between the Location point
 /// of the hyperbola C and the vertex of the Main Branch (or the
@@ -1694,12 +1729,18 @@ unsafe impl crate::CppDeletable for MakeHypr2d {
 }
 
 impl MakeHypr2d {
-    /// **Source:** `gce_MakeHypr2d.hxx`:73 - `gce_MakeHypr2d::gce_MakeHypr2d()`
-    /// Constructs a hyperbola
-    /// centered on the point Center, where:
-    /// -   the major axis of the hyperbola is defined by Center and point S1,
-    /// -   the major radius is the distance between Center and S1, and
-    /// -   the minor radius is the distance between point S2 and the major axis.
+    /// **Source:** `gce_MakeHypr2d.hxx`:76 - `gce_MakeHypr2d::gce_MakeHypr2d()`
+    /// Creates a hyperbola from center and two points.
+    /// @note `Center` is the hyperbola center, `Center`-`S1` defines major axis,
+    /// major radius is `Distance(Center, S1)`, and minor radius is distance
+    /// from `S2` to this major axis.
+    /// @note Construction fails with `gce_ConfusedPoints` if any two of `S1`, `S2`,
+    /// and `Center` are coincident.
+    /// @note Construction fails with `gce_ColinearPoints` if `S1`, `S2`, and `Center`
+    /// are collinear.
+    /// @param[in] S1 first point
+    /// @param[in] S2 second point
+    /// @param[in] Center center point
     pub fn new_pnt2d3(
         S1: &crate::gp::Pnt2d,
         S2: &crate::gp::Pnt2d,
@@ -1712,16 +1753,16 @@ impl MakeHypr2d {
         }
     }
 
-    /// **Source:** `gce_MakeHypr2d.hxx`:84 - `gce_MakeHypr2d::gce_MakeHypr2d()`
-    /// Constructs a hyperbola with major and minor radii MajorRadius and
-    /// MinorRadius, where:
-    /// -   the center of the hyperbola is the origin of the axis MajorAxis, and
-    /// -   the major axis is defined by MajorAxis if Sense
-    /// is true, or the opposite axis to MajorAxis if Sense is false; or
-    /// -   centered on the origin of the coordinate system
-    /// A, with major and minor radii MajorRadius and
-    /// MinorRadius, where its major axis is the "X Axis"
-    /// of A (A is the local coordinate system of the hyperbola).
+    /// **Source:** `gce_MakeHypr2d.hxx`:87 - `gce_MakeHypr2d::gce_MakeHypr2d()`
+    /// Creates a hyperbola from major axis and radii.
+    /// @note Center is located at `MajorAxis.Location()`.
+    /// @note If `Sense` is `false`, the opposite direction of `MajorAxis` is used.
+    /// @note Construction fails with `gce_NegativeRadius` if
+    /// `MajorRadius < 0.0` or `MinorRadius < 0.0`.
+    /// @param[in] MajorAxis major axis placement
+    /// @param[in] MajorRadius major radius value
+    /// @param[in] MinorRadius minor radius value
+    /// @param[in] Sense orientation flag
     pub fn new_ax2d_real2_bool(
         MajorAxis: &crate::gp::Ax2d,
         MajorRadius: f64,
@@ -1740,11 +1781,15 @@ impl MakeHypr2d {
         }
     }
 
-    /// **Source:** `gce_MakeHypr2d.hxx`:93 - `gce_MakeHypr2d::gce_MakeHypr2d()`
-    /// Creates a Hypr2d centered on the origin of the coordinate system
-    /// A, with major and minor radii MajorRadius and
-    /// MinorRadius, where its major axis is the "X Axis"
-    /// of A (A is the local coordinate system of the hyperbola).
+    /// **Source:** `gce_MakeHypr2d.hxx`:100 - `gce_MakeHypr2d::gce_MakeHypr2d()`
+    /// Creates a hyperbola from local coordinate system and radii.
+    /// @note The result is centered at `A.Location()`, and its major axis follows
+    /// the X axis direction of `A`.
+    /// @note Construction fails with `gce_NegativeRadius` if
+    /// `MajorRadius < 0.0` or `MinorRadius < 0.0`.
+    /// @param[in] A local coordinate system
+    /// @param[in] MajorRadius major radius value
+    /// @param[in] MinorRadius minor radius value
     pub fn new_ax22d_real2(
         A: &crate::gp::Ax22d,
         MajorRadius: f64,
@@ -1761,9 +1806,10 @@ impl MakeHypr2d {
         }
     }
 
-    /// **Source:** `gce_MakeHypr2d.hxx`:99 - `gce_MakeHypr2d::Value()`
+    /// **Source:** `gce_MakeHypr2d.hxx`:107 - `gce_MakeHypr2d::Value()`
     /// Returns the constructed hyperbola.
     /// Exceptions StdFail_NotDone if no hyperbola is constructed.
+    /// @return resulting hyperbola
     pub fn value(&self) -> &crate::gp::Hypr2d {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKGeomBase::gce_MakeHypr2d_value(
@@ -1772,12 +1818,14 @@ impl MakeHypr2d {
         }
     }
 
-    /// **Source:** `gce_MakeHypr2d.hxx`:101 - `gce_MakeHypr2d::Operator()`
-    pub fn operator(&self) -> &crate::gp::Hypr2d {
+    /// **Source:** `gce_MakeHypr2d.hxx`:111 - `gce_MakeHypr2d::Operator()`
+    /// Alias for Value() returning a copy.
+    /// @return resulting object
+    pub fn operator(&self) -> crate::OwnedPtr<crate::gp::Hypr2d> {
         unsafe {
-            &*(crate::check_result(crate::ffi_extern_TKGeomBase::gce_MakeHypr2d_operator(
-                self as *const Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomBase::gce_MakeHypr2d_operator(self as *const Self),
+            ))
         }
     }
 
@@ -1799,14 +1847,21 @@ impl MakeHypr2d {
         }
     }
 
-    /// Inherited: **Source:** `gce_Root.hxx`:40 - `gce_Root::IsDone()`
+    /// Inherited: **Source:** `gce_Root.hxx`:39 - `gce_Root::IsDone()`
     pub fn is_done(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomBase::gce_MakeHypr2d_inherited_IsDone(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `gce_Root.hxx`:46 - `gce_Root::Status()`
+    /// Inherited: **Source:** `gce_Root.hxx`:43 - `gce_Root::IsError()`
+    pub fn is_error(&self) -> bool {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKGeomBase::gce_MakeHypr2d_inherited_IsError(self as *const Self)
+        })
+    }
+
+    /// Inherited: **Source:** `gce_Root.hxx`:50 - `gce_Root::Status()`
     pub fn status(&self) -> crate::gce::ErrorType {
         crate::gce::ErrorType::try_from(crate::check_result(unsafe {
             crate::ffi_extern_TKGeomBase::gce_MakeHypr2d_inherited_Status(self as *const Self)
@@ -1819,14 +1874,13 @@ impl MakeHypr2d {
 // From gce_MakeLin.hxx
 // ========================
 
-/// **Source:** `gce_MakeLin.hxx`:37 - `gce_MakeLin`
-/// This class implements the following algorithms used
-/// to create a Lin from gp.
-/// * Create a Lin parallel to another and passing
-/// through a point.
-/// * Create a Lin passing through 2 points.
-/// * Create a lin from its axis (Ax1 from gp).
-/// * Create a lin from a point and a direction.
+/// **Source:** `gce_MakeLin.hxx`:36 - `gce_MakeLin`
+/// This class implements construction algorithms for `gp_Lin`.
+/// Supported constructions include:
+/// - line from axis placement;
+/// - line from point and direction;
+/// - parallel line through point;
+/// - line through two points.
 pub use crate::ffi_types::gce_MakeLin as MakeLin;
 
 unsafe impl crate::CppDeletable for MakeLin {
@@ -1838,8 +1892,10 @@ unsafe impl crate::CppDeletable for MakeLin {
 }
 
 impl MakeLin {
-    /// **Source:** `gce_MakeLin.hxx`:43 - `gce_MakeLin::gce_MakeLin()`
+    /// **Source:** `gce_MakeLin.hxx`:44 - `gce_MakeLin::gce_MakeLin()`
     /// Creates a line located along the axis A1.
+    /// @note The location of `A1` is the line origin.
+    /// @param[in] A1 axis placement
     pub fn new_ax1(A1: &crate::gp::Ax1) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -1848,9 +1904,11 @@ impl MakeLin {
         }
     }
 
-    /// **Source:** `gce_MakeLin.hxx`:47 - `gce_MakeLin::gce_MakeLin()`
+    /// **Source:** `gce_MakeLin.hxx`:50 - `gce_MakeLin::gce_MakeLin()`
     /// <P> is the location point (origin) of the line and
     /// <V> is the direction of the line.
+    /// @param[in] P point
+    /// @param[in] V direction vector
     pub fn new_pnt_dir(P: &crate::gp::Pnt, V: &crate::gp::Dir) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -1859,9 +1917,10 @@ impl MakeLin {
         }
     }
 
-    /// **Source:** `gce_MakeLin.hxx`:51 - `gce_MakeLin::gce_MakeLin()`
-    /// Make a Lin from gp <TheLin> parallel to another
-    /// Lin <Lin> and passing through a Pnt <Point>.
+    /// **Source:** `gce_MakeLin.hxx`:55 - `gce_MakeLin::gce_MakeLin()`
+    /// Creates a line parallel to input line and passing through a point.
+    /// @param[in] Lin source line
+    /// @param[in] Point reference point
     pub fn new_lin_pnt(Lin: &crate::gp::Lin, Point: &crate::gp::Pnt) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -1870,10 +1929,11 @@ impl MakeLin {
         }
     }
 
-    /// **Source:** `gce_MakeLin.hxx`:56 - `gce_MakeLin::gce_MakeLin()`
-    /// Make a Lin from gp <TheLin> passing through 2
-    /// Pnt <P1>,<P2>.
-    /// It returns false if <p1> and <P2> are confused.
+    /// **Source:** `gce_MakeLin.hxx`:61 - `gce_MakeLin::gce_MakeLin()`
+    /// Creates a line passing through two points.
+    /// @note Construction fails with `gce_ConfusedPoints` if points are coincident.
+    /// @param[in] P1 first point
+    /// @param[in] P2 second point
     pub fn new_pnt2(P1: &crate::gp::Pnt, P2: &crate::gp::Pnt) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -1882,9 +1942,10 @@ impl MakeLin {
         }
     }
 
-    /// **Source:** `gce_MakeLin.hxx`:60 - `gce_MakeLin::Value()`
+    /// **Source:** `gce_MakeLin.hxx`:66 - `gce_MakeLin::Value()`
     /// Returns the constructed line.
     /// Exceptions StdFail_NotDone is raised if no line is constructed.
+    /// @return resulting line
     pub fn value(&self) -> &crate::gp::Lin {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKGeomBase::gce_MakeLin_value(
@@ -1893,12 +1954,14 @@ impl MakeLin {
         }
     }
 
-    /// **Source:** `gce_MakeLin.hxx`:62 - `gce_MakeLin::Operator()`
-    pub fn operator(&self) -> &crate::gp::Lin {
+    /// **Source:** `gce_MakeLin.hxx`:70 - `gce_MakeLin::Operator()`
+    /// Alias for Value() returning a copy.
+    /// @return resulting object
+    pub fn operator(&self) -> crate::OwnedPtr<crate::gp::Lin> {
         unsafe {
-            &*(crate::check_result(crate::ffi_extern_TKGeomBase::gce_MakeLin_operator(
-                self as *const Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomBase::gce_MakeLin_operator(self as *const Self),
+            ))
         }
     }
 
@@ -1920,14 +1983,21 @@ impl MakeLin {
         }
     }
 
-    /// Inherited: **Source:** `gce_Root.hxx`:40 - `gce_Root::IsDone()`
+    /// Inherited: **Source:** `gce_Root.hxx`:39 - `gce_Root::IsDone()`
     pub fn is_done(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomBase::gce_MakeLin_inherited_IsDone(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `gce_Root.hxx`:46 - `gce_Root::Status()`
+    /// Inherited: **Source:** `gce_Root.hxx`:43 - `gce_Root::IsError()`
+    pub fn is_error(&self) -> bool {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKGeomBase::gce_MakeLin_inherited_IsError(self as *const Self)
+        })
+    }
+
+    /// Inherited: **Source:** `gce_Root.hxx`:50 - `gce_Root::Status()`
     pub fn status(&self) -> crate::gce::ErrorType {
         crate::gce::ErrorType::try_from(crate::check_result(unsafe {
             crate::ffi_extern_TKGeomBase::gce_MakeLin_inherited_Status(self as *const Self)
@@ -1940,18 +2010,14 @@ impl MakeLin {
 // From gce_MakeLin2d.hxx
 // ========================
 
-/// **Source:** `gce_MakeLin2d.hxx`:41 - `gce_MakeLin2d`
-/// This class implements the following algorithms used
-/// to create Lin2d from gp.
-///
-/// * Create a Lin2d parallel to another and passing
-/// through a point.
-/// * Create a Lin2d parallel to another at the distance
-/// Dist.
-/// * Create a Lin2d passing through 2 points.
-/// * Create a Lin2d from its axis (Ax1 from gp).
-/// * Create a Lin2d from a point and a direction.
-/// * Create a Lin2d from its equation.
+/// **Source:** `gce_MakeLin2d.hxx`:37 - `gce_MakeLin2d`
+/// This class implements construction algorithms for `gp_Lin2d`.
+/// Supported constructions include:
+/// - line from axis placement;
+/// - line from point and direction;
+/// - line from cartesian equation;
+/// - parallel line through point or at signed distance;
+/// - line through two points.
 pub use crate::ffi_types::gce_MakeLin2d as MakeLin2d;
 
 unsafe impl crate::CppDeletable for MakeLin2d {
@@ -1963,8 +2029,10 @@ unsafe impl crate::CppDeletable for MakeLin2d {
 }
 
 impl MakeLin2d {
-    /// **Source:** `gce_MakeLin2d.hxx`:47 - `gce_MakeLin2d::gce_MakeLin2d()`
+    /// **Source:** `gce_MakeLin2d.hxx`:45 - `gce_MakeLin2d::gce_MakeLin2d()`
     /// Creates a line located with A.
+    /// @note The location of `A` is the line origin.
+    /// @param[in] A local coordinate system
     pub fn new_ax2d(A: &crate::gp::Ax2d) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -1976,6 +2044,8 @@ impl MakeLin2d {
     /// **Source:** `gce_MakeLin2d.hxx`:51 - `gce_MakeLin2d::gce_MakeLin2d()`
     /// <P> is the location point (origin) of the line and
     /// <V> is the direction of the line.
+    /// @param[in] P point
+    /// @param[in] V direction vector
     pub fn new_pnt2d_dir2d(P: &crate::gp::Pnt2d, V: &crate::gp::Dir2d) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -1984,9 +2054,13 @@ impl MakeLin2d {
         }
     }
 
-    /// **Source:** `gce_MakeLin2d.hxx`:55 - `gce_MakeLin2d::gce_MakeLin2d()`
+    /// **Source:** `gce_MakeLin2d.hxx`:59 - `gce_MakeLin2d::gce_MakeLin2d()`
     /// Creates the line from the equation A*X + B*Y + C = 0.0
-    /// the status is "NullAxis"if Sqrt(A*A + B*B) <= Resolution from gp.
+    /// @note Construction fails with `gce_NullAxis` if
+    /// `A*A + B*B <= gp::Resolution()`.
+    /// @param[in] A equation coefficient A
+    /// @param[in] B equation coefficient B
+    /// @param[in] C equation coefficient C
     pub fn new_real3(A: f64, B: f64, C: f64) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -1995,12 +2069,12 @@ impl MakeLin2d {
         }
     }
 
-    /// **Source:** `gce_MakeLin2d.hxx`:64 - `gce_MakeLin2d::gce_MakeLin2d()`
-    /// Make a Lin2d from gp <TheLin> parallel to another
-    /// Lin2d <Lin> at a distance <Dist>.
-    /// If Dist is greater than zero the result is on the
-    /// right of the Line <Lin>, else the result is on the
-    /// left of the Line <Lin>.
+    /// **Source:** `gce_MakeLin2d.hxx`:66 - `gce_MakeLin2d::gce_MakeLin2d()`
+    /// Creates a line parallel to input line at signed distance.
+    /// @note If `Dist` is positive, the result is on the right side
+    /// of `Lin` (in line local orientation), otherwise on the left.
+    /// @param[in] Lin source line
+    /// @param[in] Dist signed distance
     pub fn new_lin2d_real(Lin: &crate::gp::Lin2d, Dist: f64) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -2009,9 +2083,10 @@ impl MakeLin2d {
         }
     }
 
-    /// **Source:** `gce_MakeLin2d.hxx`:68 - `gce_MakeLin2d::gce_MakeLin2d()`
-    /// Make a Lin2d from gp <TheLin> parallel to another
-    /// Lin2d <Lin> and passing through a Pnt2d <Point>.
+    /// **Source:** `gce_MakeLin2d.hxx`:71 - `gce_MakeLin2d::gce_MakeLin2d()`
+    /// Creates a line parallel to input line and passing through a point.
+    /// @param[in] Lin source line
+    /// @param[in] Point reference point
     pub fn new_lin2d_pnt2d(
         Lin: &crate::gp::Lin2d,
         Point: &crate::gp::Pnt2d,
@@ -2023,16 +2098,12 @@ impl MakeLin2d {
         }
     }
 
-    /// **Source:** `gce_MakeLin2d.hxx`:79 - `gce_MakeLin2d::gce_MakeLin2d()`
-    /// Make a Lin2d from gp <TheLin> passing through 2
-    /// Pnt2d <P1>,<P2>.
-    /// It returns false if <P1> and <P2> are confused.
-    /// Warning
-    /// If an error occurs (that is, when IsDone returns
-    /// false), the Status function returns:
-    /// -   gce_NullAxis if Sqrt(A*A + B*B) is less
-    /// than or equal to gp::Resolution(), or
-    /// -   gce_ConfusedPoints if points P1 and P2 are coincident.
+    /// **Source:** `gce_MakeLin2d.hxx`:78 - `gce_MakeLin2d::gce_MakeLin2d()`
+    /// Creates a line passing through two points.
+    /// @note Construction fails with `gce_ConfusedPoints` if `P1` and `P2`
+    /// are coincident.
+    /// @param[in] P1 first point
+    /// @param[in] P2 second point
     pub fn new_pnt2d2(P1: &crate::gp::Pnt2d, P2: &crate::gp::Pnt2d) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -2044,15 +2115,18 @@ impl MakeLin2d {
     /// **Source:** `gce_MakeLin2d.hxx`:83 - `gce_MakeLin2d::Value()`
     /// Returns the constructed line.
     /// Exceptions StdFail_NotDone if no line is constructed.
-    pub fn value(&self) -> crate::OwnedPtr<crate::gp::Lin2d> {
+    /// @return resulting line
+    pub fn value(&self) -> &crate::gp::Lin2d {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKGeomBase::gce_MakeLin2d_value(self as *const Self),
-            ))
+            &*(crate::check_result(crate::ffi_extern_TKGeomBase::gce_MakeLin2d_value(
+                self as *const Self,
+            )))
         }
     }
 
-    /// **Source:** `gce_MakeLin2d.hxx`:85 - `gce_MakeLin2d::Operator()`
+    /// **Source:** `gce_MakeLin2d.hxx`:87 - `gce_MakeLin2d::Operator()`
+    /// Alias for Value() returning a copy.
+    /// @return resulting object
     pub fn operator(&self) -> crate::OwnedPtr<crate::gp::Lin2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -2079,14 +2153,21 @@ impl MakeLin2d {
         }
     }
 
-    /// Inherited: **Source:** `gce_Root.hxx`:40 - `gce_Root::IsDone()`
+    /// Inherited: **Source:** `gce_Root.hxx`:39 - `gce_Root::IsDone()`
     pub fn is_done(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomBase::gce_MakeLin2d_inherited_IsDone(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `gce_Root.hxx`:46 - `gce_Root::Status()`
+    /// Inherited: **Source:** `gce_Root.hxx`:43 - `gce_Root::IsError()`
+    pub fn is_error(&self) -> bool {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKGeomBase::gce_MakeLin2d_inherited_IsError(self as *const Self)
+        })
+    }
+
+    /// Inherited: **Source:** `gce_Root.hxx`:50 - `gce_Root::Status()`
     pub fn status(&self) -> crate::gce::ErrorType {
         crate::gce::ErrorType::try_from(crate::check_result(unsafe {
             crate::ffi_extern_TKGeomBase::gce_MakeLin2d_inherited_Status(self as *const Self)
@@ -2100,7 +2181,7 @@ impl MakeLin2d {
 // ========================
 
 /// **Source:** `gce_MakeMirror.hxx`:39 - `gce_MakeMirror`
-/// This class mplements elementary construction algorithms for a
+/// This class implements elementary construction algorithms for a
 /// symmetrical transformation in 3D space about a point,
 /// axis or plane. The result is a gp_Trsf transformation.
 /// A MakeMirror object provides a framework for:
@@ -2118,7 +2199,9 @@ unsafe impl crate::CppDeletable for MakeMirror {
 }
 
 impl MakeMirror {
-    /// **Source:** `gce_MakeMirror.hxx`:44 - `gce_MakeMirror::gce_MakeMirror()`
+    /// **Source:** `gce_MakeMirror.hxx`:46 - `gce_MakeMirror::gce_MakeMirror()`
+    /// Constructs a central symmetry about a point.
+    /// @param[in] Point center point
     pub fn new_pnt(Point: &crate::gp::Pnt) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -2127,7 +2210,9 @@ impl MakeMirror {
         }
     }
 
-    /// **Source:** `gce_MakeMirror.hxx`:46 - `gce_MakeMirror::gce_MakeMirror()`
+    /// **Source:** `gce_MakeMirror.hxx`:50 - `gce_MakeMirror::gce_MakeMirror()`
+    /// Constructs an axial symmetry about an axis.
+    /// @param[in] Axis mirror axis
     pub fn new_ax1(Axis: &crate::gp::Ax1) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -2136,7 +2221,9 @@ impl MakeMirror {
         }
     }
 
-    /// **Source:** `gce_MakeMirror.hxx`:48 - `gce_MakeMirror::gce_MakeMirror()`
+    /// **Source:** `gce_MakeMirror.hxx`:54 - `gce_MakeMirror::gce_MakeMirror()`
+    /// Constructs an axial symmetry about a line.
+    /// @param[in] Line mirror line
     pub fn new_lin(Line: &crate::gp::Lin) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -2145,9 +2232,10 @@ impl MakeMirror {
         }
     }
 
-    /// **Source:** `gce_MakeMirror.hxx`:52 - `gce_MakeMirror::gce_MakeMirror()`
-    /// Makes a symmetry transformation af axis defined by
-    /// <Point> and <Direc>.
+    /// **Source:** `gce_MakeMirror.hxx`:59 - `gce_MakeMirror::gce_MakeMirror()`
+    /// Constructs an axial symmetry about an axis defined by point and direction.
+    /// @param[in] Point point on the axis
+    /// @param[in] Direc axis direction
     pub fn new_pnt_dir(Point: &crate::gp::Pnt, Direc: &crate::gp::Dir) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -2156,8 +2244,9 @@ impl MakeMirror {
         }
     }
 
-    /// **Source:** `gce_MakeMirror.hxx`:55 - `gce_MakeMirror::gce_MakeMirror()`
-    /// Makes a symmetry transformation of plane <Plane>.
+    /// **Source:** `gce_MakeMirror.hxx`:63 - `gce_MakeMirror::gce_MakeMirror()`
+    /// Constructs a planar symmetry about a plane.
+    /// @param[in] Plane mirror plane
     pub fn new_pln(Plane: &crate::gp::Pln) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -2166,8 +2255,9 @@ impl MakeMirror {
         }
     }
 
-    /// **Source:** `gce_MakeMirror.hxx`:58 - `gce_MakeMirror::gce_MakeMirror()`
-    /// Makes a symmetry transformation of plane <Plane>.
+    /// **Source:** `gce_MakeMirror.hxx`:67 - `gce_MakeMirror::gce_MakeMirror()`
+    /// Constructs a planar symmetry about a plane.
+    /// @param[in] Plane mirror plane
     pub fn new_ax2(Plane: &crate::gp::Ax2) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -2176,8 +2266,9 @@ impl MakeMirror {
         }
     }
 
-    /// **Source:** `gce_MakeMirror.hxx`:61 - `gce_MakeMirror::Value()`
+    /// **Source:** `gce_MakeMirror.hxx`:71 - `gce_MakeMirror::Value()`
     /// Returns the constructed transformation.
+    /// @return resulting transformation
     pub fn value(&self) -> &crate::gp::Trsf {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKGeomBase::gce_MakeMirror_value(
@@ -2186,12 +2277,14 @@ impl MakeMirror {
         }
     }
 
-    /// **Source:** `gce_MakeMirror.hxx`:63 - `gce_MakeMirror::Operator()`
-    pub fn operator(&self) -> &crate::gp::Trsf {
+    /// **Source:** `gce_MakeMirror.hxx`:75 - `gce_MakeMirror::Operator()`
+    /// Alias for Value() returning a copy.
+    /// @return resulting transformation
+    pub fn operator(&self) -> crate::OwnedPtr<crate::gp::Trsf> {
         unsafe {
-            &*(crate::check_result(crate::ffi_extern_TKGeomBase::gce_MakeMirror_operator(
-                self as *const Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomBase::gce_MakeMirror_operator(self as *const Self),
+            ))
         }
     }
 }
@@ -2218,7 +2311,9 @@ unsafe impl crate::CppDeletable for MakeMirror2d {
 }
 
 impl MakeMirror2d {
-    /// **Source:** `gce_MakeMirror2d.hxx`:41 - `gce_MakeMirror2d::gce_MakeMirror2d()`
+    /// **Source:** `gce_MakeMirror2d.hxx`:43 - `gce_MakeMirror2d::gce_MakeMirror2d()`
+    /// Constructs a central symmetry about a point.
+    /// @param[in] Point center point
     pub fn new_pnt2d(Point: &crate::gp::Pnt2d) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -2227,7 +2322,9 @@ impl MakeMirror2d {
         }
     }
 
-    /// **Source:** `gce_MakeMirror2d.hxx`:43 - `gce_MakeMirror2d::gce_MakeMirror2d()`
+    /// **Source:** `gce_MakeMirror2d.hxx`:47 - `gce_MakeMirror2d::gce_MakeMirror2d()`
+    /// Constructs an axial symmetry about an axis.
+    /// @param[in] Axis mirror axis
     pub fn new_ax2d(Axis: &crate::gp::Ax2d) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -2236,7 +2333,9 @@ impl MakeMirror2d {
         }
     }
 
-    /// **Source:** `gce_MakeMirror2d.hxx`:45 - `gce_MakeMirror2d::gce_MakeMirror2d()`
+    /// **Source:** `gce_MakeMirror2d.hxx`:51 - `gce_MakeMirror2d::gce_MakeMirror2d()`
+    /// Constructs an axial symmetry about a line.
+    /// @param[in] Line mirror line
     pub fn new_lin2d(Line: &crate::gp::Lin2d) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -2245,9 +2344,10 @@ impl MakeMirror2d {
         }
     }
 
-    /// **Source:** `gce_MakeMirror2d.hxx`:49 - `gce_MakeMirror2d::gce_MakeMirror2d()`
-    /// Makes a symmetry transformation af axis defined by
-    /// <Point> and <Direc>.
+    /// **Source:** `gce_MakeMirror2d.hxx`:56 - `gce_MakeMirror2d::gce_MakeMirror2d()`
+    /// Constructs an axial symmetry about an axis defined by point and direction.
+    /// @param[in] Point point on the axis
+    /// @param[in] Direc axis direction
     pub fn new_pnt2d_dir2d(
         Point: &crate::gp::Pnt2d,
         Direc: &crate::gp::Dir2d,
@@ -2259,8 +2359,9 @@ impl MakeMirror2d {
         }
     }
 
-    /// **Source:** `gce_MakeMirror2d.hxx`:52 - `gce_MakeMirror2d::Value()`
+    /// **Source:** `gce_MakeMirror2d.hxx`:60 - `gce_MakeMirror2d::Value()`
     /// Returns the constructed transformation.
+    /// @return resulting transformation
     pub fn value(&self) -> &crate::gp::Trsf2d {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKGeomBase::gce_MakeMirror2d_value(
@@ -2269,12 +2370,14 @@ impl MakeMirror2d {
         }
     }
 
-    /// **Source:** `gce_MakeMirror2d.hxx`:54 - `gce_MakeMirror2d::Operator()`
-    pub fn operator(&self) -> &crate::gp::Trsf2d {
+    /// **Source:** `gce_MakeMirror2d.hxx`:64 - `gce_MakeMirror2d::Operator()`
+    /// Alias for Value() returning a copy.
+    /// @return resulting transformation
+    pub fn operator(&self) -> crate::OwnedPtr<crate::gp::Trsf2d> {
         unsafe {
-            &*(crate::check_result(crate::ffi_extern_TKGeomBase::gce_MakeMirror2d_operator(
-                self as *const Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomBase::gce_MakeMirror2d_operator(self as *const Self),
+            ))
         }
     }
 }
@@ -2283,34 +2386,26 @@ impl MakeMirror2d {
 // From gce_MakeParab.hxx
 // ========================
 
-/// **Source:** `gce_MakeParab.hxx`:57 - `gce_MakeParab`
-/// This class implements the following algorithms used to
-/// create Parab from gp.
-/// Defines the parabola in the parameterization range  :
-/// ]-infinite, +infinite[
-/// The vertex of the parabola is the "Location" point of the
-/// local coordinate system (axis placement) of the parabola.
+/// **Source:** `gce_MakeParab.hxx`:49 - `gce_MakeParab`
+/// Implements construction algorithms for `gp_Parab`.
+/// The parabola is infinite in the parameter range ]-infinite, +infinite[.
+/// The vertex is the `Location` point of the local coordinate system.
 ///
-/// The "XDirection" and the "YDirection" of this system define
-/// the plane of the parabola.
+/// The `XDirection` and `YDirection` define the parabola plane.
 ///
-/// The "XAxis" of the parabola ("Location", "XDirection") is
-/// the axis of symmetry of the parabola. The Xaxis is oriented
-/// from the vertex of the parabola to the Focus of the parabola.
+/// The `XAxis` (`Location`, `XDirection`) is the symmetry axis and is oriented
+/// from the vertex to the focus.
 ///
-/// The "YAxis" of the parabola ("Location", "YDirection") is
-/// parallel to the directrix of the parabola.
+/// The `YAxis` (`Location`, `YDirection`) is parallel to the directrix.
 ///
-/// The equation of the parabola in the local coordinates system is
-/// Y**2 = (2*P) * X
-/// P is the distance between the focus and the directrix of the
-/// parabola (called Parameter).
-/// The focal length F = P/2 is the distance between the vertex
-/// and the focus of the parabola.
+/// The equation in the local coordinate system is:
+/// `Y**2 = (2*P) * X`, where `P` is the parameter
+/// (distance between focus and directrix).
+/// The focal length `F = P / 2` is the distance from vertex to focus.
 ///
-/// * Creates a parabola with its local coordinate system "A2"
-/// and it's focal length "Focal".
-/// * Create a parabola with its directrix and its focus point.
+/// Supported constructions:
+/// - from local coordinate system and focal length;
+/// - from directrix and focus.
 pub use crate::ffi_types::gce_MakeParab as MakeParab;
 
 unsafe impl crate::CppDeletable for MakeParab {
@@ -2322,15 +2417,11 @@ unsafe impl crate::CppDeletable for MakeParab {
 }
 
 impl MakeParab {
-    /// **Source:** `gce_MakeParab.hxx`:70 - `gce_MakeParab::gce_MakeParab()`
-    /// --- Purpose ;
-    /// Creates a parabola with its local coordinate system "A2"
-    /// and it's focal length "Focal".
-    /// The XDirection of A2 defines the axis of symmetry of the
-    /// parabola. The YDirection of A2 is parallel to the directrix
-    /// of the parabola. The Location point of A2 is the vertex of
-    /// the parabola
-    /// The status is "NullFocusLength" if Focal < 0.0
+    /// **Source:** `gce_MakeParab.hxx`:58 - `gce_MakeParab::gce_MakeParab()`
+    /// Creates a parabola from local coordinate system and focal length.
+    /// @param[in] A2 local coordinate system of the parabola
+    /// @param[in] Focal focal length
+    /// @note `TheError` is set to `gce_NullFocusLength` if `Focal < 0.0`.
     pub fn new_ax2_real(A2: &crate::gp::Ax2, Focal: f64) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -2339,15 +2430,10 @@ impl MakeParab {
         }
     }
 
-    /// **Source:** `gce_MakeParab.hxx`:80 - `gce_MakeParab::gce_MakeParab()`
-    /// D is the directrix of the parabola and F the focus point.
-    /// The symmetry axis (XAxis) of the parabola is normal to the
-    /// directrix and pass through the focus point F, but its
-    /// location point is the vertex of the parabola.
-    /// The YAxis of the parabola is parallel to D and its location
-    /// point is the vertex of the parabola. The normal to the plane
-    /// of the parabola is the cross product between the XAxis and the
-    /// YAxis.
+    /// **Source:** `gce_MakeParab.hxx`:63 - `gce_MakeParab::gce_MakeParab()`
+    /// Creates a parabola from directrix and focus.
+    /// @param[in] D directrix of the parabola
+    /// @param[in] F focus point of the parabola
     pub fn new_ax1_pnt(D: &crate::gp::Ax1, F: &crate::gp::Pnt) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -2356,9 +2442,10 @@ impl MakeParab {
         }
     }
 
-    /// **Source:** `gce_MakeParab.hxx`:84 - `gce_MakeParab::Value()`
+    /// **Source:** `gce_MakeParab.hxx`:68 - `gce_MakeParab::Value()`
     /// Returns the constructed parabola.
-    /// Exceptions StdFail_NotDone if no parabola is constructed.
+    /// @return resulting parabola
+    /// @throw StdFail_NotDone if construction has failed
     pub fn value(&self) -> &crate::gp::Parab {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKGeomBase::gce_MakeParab_value(
@@ -2367,12 +2454,14 @@ impl MakeParab {
         }
     }
 
-    /// **Source:** `gce_MakeParab.hxx`:86 - `gce_MakeParab::Operator()`
-    pub fn operator(&self) -> &crate::gp::Parab {
+    /// **Source:** `gce_MakeParab.hxx`:72 - `gce_MakeParab::Operator()`
+    /// Alias for Value() returning a copy.
+    /// @return resulting parabola
+    pub fn operator(&self) -> crate::OwnedPtr<crate::gp::Parab> {
         unsafe {
-            &*(crate::check_result(crate::ffi_extern_TKGeomBase::gce_MakeParab_operator(
-                self as *const Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomBase::gce_MakeParab_operator(self as *const Self),
+            ))
         }
     }
 
@@ -2394,14 +2483,21 @@ impl MakeParab {
         }
     }
 
-    /// Inherited: **Source:** `gce_Root.hxx`:40 - `gce_Root::IsDone()`
+    /// Inherited: **Source:** `gce_Root.hxx`:39 - `gce_Root::IsDone()`
     pub fn is_done(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomBase::gce_MakeParab_inherited_IsDone(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `gce_Root.hxx`:46 - `gce_Root::Status()`
+    /// Inherited: **Source:** `gce_Root.hxx`:43 - `gce_Root::IsError()`
+    pub fn is_error(&self) -> bool {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKGeomBase::gce_MakeParab_inherited_IsError(self as *const Self)
+        })
+    }
+
+    /// Inherited: **Source:** `gce_Root.hxx`:50 - `gce_Root::Status()`
     pub fn status(&self) -> crate::gce::ErrorType {
         crate::gce::ErrorType::try_from(crate::check_result(unsafe {
             crate::ffi_extern_TKGeomBase::gce_MakeParab_inherited_Status(self as *const Self)
@@ -2414,30 +2510,20 @@ impl MakeParab {
 // From gce_MakeParab2d.hxx
 // ========================
 
-/// **Source:** `gce_MakeParab2d.hxx`:54 - `gce_MakeParab2d`
-/// This class implements the following algorithms used to
-/// create Parab2d from gp.
-/// Defines an infinite parabola.
-/// An axis placement one axis defines the local cartesian
-/// coordinate system ("XAxis") of the parabola.
-/// The vertex of the parabola is the "Location" point of the
-/// local coordinate system of the parabola.
-/// The "XAxis" of the parabola is its axis of symmetry.
-/// The "XAxis" is oriented from the vertex of the parabola to the
-/// Focus of the parabola.
-/// The "YAxis" is parallel to the directrix of the parabola and
-/// its "Location" point is the vertex of the parabola.
-/// The equation of the parabola in the local coordinate system is
-/// Y**2 = (2*P) * X
-/// P is the distance between the focus and the directrix of the
-/// parabola called Parameter).
-/// The focal length F = P/2 is the distance between the vertex
-/// and the focus of the parabola.
+/// **Source:** `gce_MakeParab2d.hxx`:44 - `gce_MakeParab2d`
+/// Implements construction algorithms for `gp_Parab2d`.
+/// The parabola is infinite and represented in a local 2D coordinate system.
+/// The `XAxis` is the symmetry axis directed from vertex to focus,
+/// and the `YAxis` is parallel to the directrix.
+/// The equation in local coordinates is:
+/// `Y**2 = (2*P) * X`, where `P` is the distance between focus and directrix.
+/// The focal length `F = P / 2` is the distance from vertex to focus.
 ///
-/// * Create a Parab2d from one apex  and the center.
-/// * Create a Parab2d with the directrix and the focus point.
-/// * Create a Parab2d with its vertex point and its axis
-/// of symmetry and its focus length.
+/// Supported constructions:
+/// - from symmetry axis and focal length;
+/// - from full axis system and focal length;
+/// - from directrix and focus;
+/// - from focus and vertex.
 pub use crate::ffi_types::gce_MakeParab2d as MakeParab2d;
 
 unsafe impl crate::CppDeletable for MakeParab2d {
@@ -2449,11 +2535,13 @@ unsafe impl crate::CppDeletable for MakeParab2d {
 }
 
 impl MakeParab2d {
-    /// **Source:** `gce_MakeParab2d.hxx`:63 - `gce_MakeParab2d::gce_MakeParab2d()`
-    /// Creates a parabola with its axis of symmetry ("MirrorAxis")
-    /// and its focal length.
-    /// Warnings : It is possible to have Focal = 0.
-    /// The status is "NullFocalLength" Raised if Focal < 0.0
+    /// **Source:** `gce_MakeParab2d.hxx`:55 - `gce_MakeParab2d::gce_MakeParab2d()`
+    /// Creates a parabola from symmetry axis and focal length.
+    /// @param[in] MirrorAxis symmetry axis of the parabola
+    /// @param[in] Focal focal length
+    /// @param[in] Sense orientation of parametrization
+    /// @note `Focal = 0` is accepted.
+    /// @note `TheError` is set to `gce_NullFocusLength` if `Focal < 0.0`.
     pub fn new_ax2d_real_bool(
         MirrorAxis: &crate::gp::Ax2d,
         Focal: f64,
@@ -2468,11 +2556,12 @@ impl MakeParab2d {
         }
     }
 
-    /// **Source:** `gce_MakeParab2d.hxx`:71 - `gce_MakeParab2d::gce_MakeParab2d()`
-    /// Creates a parabola with its local coordinate system <A>
-    /// and its focal length.
-    /// Warnings : It is possible to have Focal = 0.
-    /// The status is "NullFocalLength" Raised if Focal < 0.0
+    /// **Source:** `gce_MakeParab2d.hxx`:64 - `gce_MakeParab2d::gce_MakeParab2d()`
+    /// Creates a parabola from full local coordinate system and focal length.
+    /// @param[in] A local coordinate system of the parabola
+    /// @param[in] Focal focal length
+    /// @note `Focal = 0` is accepted.
+    /// @note `TheError` is set to `gce_NullFocusLength` if `Focal < 0.0`.
     pub fn new_ax22d_real(A: &crate::gp::Ax22d, Focal: f64) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -2481,9 +2570,11 @@ impl MakeParab2d {
         }
     }
 
-    /// **Source:** `gce_MakeParab2d.hxx`:75 - `gce_MakeParab2d::gce_MakeParab2d()`
-    /// Creates a parabola with the directrix and the focus point.
-    /// The sense of parametrization is given by Sense.
+    /// **Source:** `gce_MakeParab2d.hxx`:70 - `gce_MakeParab2d::gce_MakeParab2d()`
+    /// Creates a parabola from directrix and focus.
+    /// @param[in] D directrix of the parabola
+    /// @param[in] F focus point of the parabola
+    /// @param[in] Sense orientation of parametrization
     pub fn new_ax2d_pnt2d_bool(
         D: &crate::gp::Ax2d,
         F: &crate::gp::Pnt2d,
@@ -2496,16 +2587,13 @@ impl MakeParab2d {
         }
     }
 
-    /// **Source:** `gce_MakeParab2d.hxx`:88 - `gce_MakeParab2d::gce_MakeParab2d()`
-    /// Make an Parab2d with S1 as the Focal point and Center
-    /// as the apex of the parabola
-    /// Warning
-    /// The MakeParab2d class does not prevent the
-    /// construction of a parabola with a null focal distance.
-    /// If an error occurs (that is, when IsDone returns
-    /// false), the Status function returns:
-    /// -   gce_NullFocusLength if Focal is less than 0.0, or
-    /// -   gce_NullAxis if S1 and Center are coincident.
+    /// **Source:** `gce_MakeParab2d.hxx`:78 - `gce_MakeParab2d::gce_MakeParab2d()`
+    /// Creates a parabola from focus and vertex.
+    /// @param[in] S1 focus point
+    /// @param[in] Center vertex point
+    /// @param[in] Sense orientation of parametrization
+    /// @note The class does not prevent zero focal distance.
+    /// @note `TheError` is set to `gce_NullAxis` if `S1` and `Center` are coincident.
     pub fn new_pnt2d2_bool(
         S1: &crate::gp::Pnt2d,
         Center: &crate::gp::Pnt2d,
@@ -2518,39 +2606,41 @@ impl MakeParab2d {
         }
     }
 
-    /// **Source:** `gce_MakeParab2d.hxx`:63 - `gce_MakeParab2d::gce_MakeParab2d()`
-    /// Creates a parabola with its axis of symmetry ("MirrorAxis")
-    /// and its focal length.
-    /// Warnings : It is possible to have Focal = 0.
-    /// The status is "NullFocalLength" Raised if Focal < 0.0
+    /// **Source:** `gce_MakeParab2d.hxx`:55 - `gce_MakeParab2d::gce_MakeParab2d()`
+    /// Creates a parabola from symmetry axis and focal length.
+    /// @param[in] MirrorAxis symmetry axis of the parabola
+    /// @param[in] Focal focal length
+    /// @param[in] Sense orientation of parametrization
+    /// @note `Focal = 0` is accepted.
+    /// @note `TheError` is set to `gce_NullFocusLength` if `Focal < 0.0`.
     pub fn new_ax2d_real(MirrorAxis: &crate::gp::Ax2d, Focal: f64) -> crate::OwnedPtr<Self> {
         Self::new_ax2d_real_bool(MirrorAxis, Focal, true)
     }
 
-    /// **Source:** `gce_MakeParab2d.hxx`:75 - `gce_MakeParab2d::gce_MakeParab2d()`
-    /// Creates a parabola with the directrix and the focus point.
-    /// The sense of parametrization is given by Sense.
+    /// **Source:** `gce_MakeParab2d.hxx`:70 - `gce_MakeParab2d::gce_MakeParab2d()`
+    /// Creates a parabola from directrix and focus.
+    /// @param[in] D directrix of the parabola
+    /// @param[in] F focus point of the parabola
+    /// @param[in] Sense orientation of parametrization
     pub fn new_ax2d_pnt2d(D: &crate::gp::Ax2d, F: &crate::gp::Pnt2d) -> crate::OwnedPtr<Self> {
         Self::new_ax2d_pnt2d_bool(D, F, true)
     }
 
-    /// **Source:** `gce_MakeParab2d.hxx`:88 - `gce_MakeParab2d::gce_MakeParab2d()`
-    /// Make an Parab2d with S1 as the Focal point and Center
-    /// as the apex of the parabola
-    /// Warning
-    /// The MakeParab2d class does not prevent the
-    /// construction of a parabola with a null focal distance.
-    /// If an error occurs (that is, when IsDone returns
-    /// false), the Status function returns:
-    /// -   gce_NullFocusLength if Focal is less than 0.0, or
-    /// -   gce_NullAxis if S1 and Center are coincident.
+    /// **Source:** `gce_MakeParab2d.hxx`:78 - `gce_MakeParab2d::gce_MakeParab2d()`
+    /// Creates a parabola from focus and vertex.
+    /// @param[in] S1 focus point
+    /// @param[in] Center vertex point
+    /// @param[in] Sense orientation of parametrization
+    /// @note The class does not prevent zero focal distance.
+    /// @note `TheError` is set to `gce_NullAxis` if `S1` and `Center` are coincident.
     pub fn new_pnt2d2(S1: &crate::gp::Pnt2d, Center: &crate::gp::Pnt2d) -> crate::OwnedPtr<Self> {
         Self::new_pnt2d2_bool(S1, Center, true)
     }
 
-    /// **Source:** `gce_MakeParab2d.hxx`:94 - `gce_MakeParab2d::Value()`
+    /// **Source:** `gce_MakeParab2d.hxx`:85 - `gce_MakeParab2d::Value()`
     /// Returns the constructed parabola.
-    /// Exceptions StdFail_NotDone if no parabola is constructed.
+    /// @return resulting parabola
+    /// @throw StdFail_NotDone if construction has failed
     pub fn value(&self) -> &crate::gp::Parab2d {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKGeomBase::gce_MakeParab2d_value(
@@ -2559,12 +2649,14 @@ impl MakeParab2d {
         }
     }
 
-    /// **Source:** `gce_MakeParab2d.hxx`:96 - `gce_MakeParab2d::Operator()`
-    pub fn operator(&self) -> &crate::gp::Parab2d {
+    /// **Source:** `gce_MakeParab2d.hxx`:89 - `gce_MakeParab2d::Operator()`
+    /// Alias for Value() returning a copy.
+    /// @return resulting parabola
+    pub fn operator(&self) -> crate::OwnedPtr<crate::gp::Parab2d> {
         unsafe {
-            &*(crate::check_result(crate::ffi_extern_TKGeomBase::gce_MakeParab2d_operator(
-                self as *const Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomBase::gce_MakeParab2d_operator(self as *const Self),
+            ))
         }
     }
 
@@ -2586,14 +2678,21 @@ impl MakeParab2d {
         }
     }
 
-    /// Inherited: **Source:** `gce_Root.hxx`:40 - `gce_Root::IsDone()`
+    /// Inherited: **Source:** `gce_Root.hxx`:39 - `gce_Root::IsDone()`
     pub fn is_done(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomBase::gce_MakeParab2d_inherited_IsDone(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `gce_Root.hxx`:46 - `gce_Root::Status()`
+    /// Inherited: **Source:** `gce_Root.hxx`:43 - `gce_Root::IsError()`
+    pub fn is_error(&self) -> bool {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKGeomBase::gce_MakeParab2d_inherited_IsError(self as *const Self)
+        })
+    }
+
+    /// Inherited: **Source:** `gce_Root.hxx`:50 - `gce_Root::Status()`
     pub fn status(&self) -> crate::gce::ErrorType {
         crate::gce::ErrorType::try_from(crate::check_result(unsafe {
             crate::ffi_extern_TKGeomBase::gce_MakeParab2d_inherited_Status(self as *const Self)
@@ -2606,24 +2705,18 @@ impl MakeParab2d {
 // From gce_MakePln.hxx
 // ========================
 
-/// **Source:** `gce_MakePln.hxx`:48 - `gce_MakePln`
-/// This class implements the following algorithms used
-/// to create a Plane from gp.
-/// * Create a Pln parallel to another and passing
-/// through a point.
-/// * Create a Pln passing through 3 points.
-/// * Create a Pln by its normal.
-/// Defines a non-persistent plane.
-/// The plane is located in 3D space with an axis placement
-/// two axis. It is the local coordinate system of the plane.
-///
-/// The "Location" point and the main direction of this axis
-/// placement define the "Axis" of the plane. It is the axis
-/// normal to the plane which gives the orientation of the
-/// plane.
-///
-/// The "XDirection" and the "YDirection" of the axis
-/// placement define the plane ("XAxis" and "YAxis") .
+/// **Source:** `gce_MakePln.hxx`:42 - `gce_MakePln`
+/// This class implements construction algorithms for `gp_Pln`.
+/// Supported constructions include:
+/// - plane from axis placement or point+normal;
+/// - plane from cartesian equation;
+/// - plane parallel to another plane through point or at signed distance;
+/// - plane through two or three points;
+/// - plane through axis location normal to axis direction.
+/// @note A plane is positioned by local coordinate system (`gp_Ax3`):
+/// - `Location` is the origin,
+/// - main direction is the plane normal,
+/// - `XDirection` and `YDirection` define in-plane axes.
 pub use crate::ffi_types::gce_MakePln as MakePln;
 
 unsafe impl crate::CppDeletable for MakePln {
@@ -2635,13 +2728,14 @@ unsafe impl crate::CppDeletable for MakePln {
 }
 
 impl MakePln {
-    /// **Source:** `gce_MakePln.hxx`:59 - `gce_MakePln::gce_MakePln()`
+    /// **Source:** `gce_MakePln.hxx`:54 - `gce_MakePln::gce_MakePln()`
     /// The coordinate system of the plane is defined with the axis
     /// placement A2.
     /// The "Direction" of A2 defines the normal to the plane.
     /// The "Location" of A2 defines the location (origin) of the plane.
     /// The "XDirection" and "YDirection" of A2 define the "XAxis" and
     /// the "YAxis" of the plane used to parametrize the plane.
+    /// @param[in] A2 local coordinate system
     pub fn new_ax2(A2: &crate::gp::Ax2) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -2650,9 +2744,11 @@ impl MakePln {
         }
     }
 
-    /// **Source:** `gce_MakePln.hxx`:63 - `gce_MakePln::gce_MakePln()`
-    /// Creates a plane with the  "Location" point <P>
+    /// **Source:** `gce_MakePln.hxx`:60 - `gce_MakePln::gce_MakePln()`
+    /// Creates a plane with the "Location" point <P>
     /// and the normal direction <V>.
+    /// @param[in] P point
+    /// @param[in] V direction vector
     pub fn new_pnt_dir(P: &crate::gp::Pnt, V: &crate::gp::Dir) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -2661,12 +2757,16 @@ impl MakePln {
         }
     }
 
-    /// **Source:** `gce_MakePln.hxx`:70 - `gce_MakePln::gce_MakePln()`
+    /// **Source:** `gce_MakePln.hxx`:71 - `gce_MakePln::gce_MakePln()`
     /// Creates a plane from its cartesian equation :
     /// A * X + B * Y + C * Z + D = 0.0
     ///
-    /// the status is "BadEquation" if Sqrt (A*A + B*B + C*C) <=
-    /// Resolution from gp.
+    /// @note Construction fails with `gce_BadEquation` if
+    /// `A*A + B*B + C*C <= gp::Resolution()`.
+    /// @param[in] A equation coefficient A
+    /// @param[in] B equation coefficient B
+    /// @param[in] C equation coefficient C
+    /// @param[in] D equation constant term
     pub fn new_real4(A: f64, B: f64, C: f64, D: f64) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -2675,9 +2775,10 @@ impl MakePln {
         }
     }
 
-    /// **Source:** `gce_MakePln.hxx`:77 - `gce_MakePln::gce_MakePln()`
-    /// Make a Pln from gp <ThePln> parallel to another
-    /// Pln <Pln> and passing through a Pnt <Point>.
+    /// **Source:** `gce_MakePln.hxx`:76 - `gce_MakePln::gce_MakePln()`
+    /// Creates a plane parallel to input plane and passing through a point.
+    /// @param[in] Pln source plane
+    /// @param[in] Point reference point
     pub fn new_pln_pnt(Pln: &crate::gp::Pln, Point: &crate::gp::Pnt) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -2686,14 +2787,11 @@ impl MakePln {
         }
     }
 
-    /// **Source:** `gce_MakePln.hxx`:86 - `gce_MakePln::gce_MakePln()`
-    /// Make a Pln from gp <ThePln> parallel to another
-    /// Pln <Pln> at the distance <Dist> which can be greater
-    /// or less than zero.
-    /// In the first case the result is at the distance
-    /// <Dist> to the plane <Pln> in the direction of the
-    /// normal to <Pln>.
-    /// Otherwise it is in the opposite direction.
+    /// **Source:** `gce_MakePln.hxx`:82 - `gce_MakePln::gce_MakePln()`
+    /// Creates a plane parallel to input plane at signed distance.
+    /// @note Positive `Dist` shifts along the plane normal, negative in opposite direction.
+    /// @param[in] Pln source plane
+    /// @param[in] Dist signed distance
     pub fn new_pln_real(Pln: &crate::gp::Pln, Dist: f64) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -2702,10 +2800,12 @@ impl MakePln {
         }
     }
 
-    /// **Source:** `gce_MakePln.hxx`:91 - `gce_MakePln::gce_MakePln()`
-    /// Make a Pln from gp <ThePln> passing through 3
-    /// Pnt <P1>,<P2>,<P3>.
-    /// It returns false if <P1> <P2> <P3> are confused.
+    /// **Source:** `gce_MakePln.hxx`:89 - `gce_MakePln::gce_MakePln()`
+    /// Creates a plane through three points.
+    /// @note Construction fails with `gce_ColinearPoints` if points are collinear.
+    /// @param[in] P1 first point
+    /// @param[in] P2 second point
+    /// @param[in] P3 third point
     pub fn new_pnt3(
         P1: &crate::gp::Pnt,
         P2: &crate::gp::Pnt,
@@ -2718,10 +2818,11 @@ impl MakePln {
         }
     }
 
-    /// **Source:** `gce_MakePln.hxx`:96 - `gce_MakePln::gce_MakePln()`
-    /// Make a Pln from gp <ThePln> perpendicular to the line
-    /// passing through <P1>,<P2>.
-    /// The status is "ConfusedPoints" if <P1> <P2> are confused.
+    /// **Source:** `gce_MakePln.hxx`:95 - `gce_MakePln::gce_MakePln()`
+    /// Creates a plane through `P1`, normal to direction (`P1`,`P2`).
+    /// @note Construction fails with `gce_ConfusedPoints` if `P1` and `P2` coincide.
+    /// @param[in] P1 first point
+    /// @param[in] P2 second point
     pub fn new_pnt2(P1: &crate::gp::Pnt, P2: &crate::gp::Pnt) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -2730,15 +2831,11 @@ impl MakePln {
         }
     }
 
-    /// **Source:** `gce_MakePln.hxx`:106 - `gce_MakePln::gce_MakePln()`
-    /// Make a pln  passing through the location of <Axis>and
+    /// **Source:** `gce_MakePln.hxx`:101 - `gce_MakePln::gce_MakePln()`
+    /// Make a pln passing through the location of <Axis>and
     /// normal to the Direction of <Axis>.
-    /// Warning -  If an error occurs (that is, when IsDone returns
-    /// false), the Status function returns:
-    /// -   gce_BadEquation if Sqrt(A*A + B*B +
-    /// C*C) is less than or equal to gp::Resolution(),
-    /// -   gce_ConfusedPoints if P1 and P2 are coincident, or
-    /// -   gce_ColinearPoints if P1, P2 and P3 are collinear.
+    /// @note This constructor always succeeds for valid `Axis`.
+    /// @param[in] Axis axis definition
     pub fn new_ax1(Axis: &crate::gp::Ax1) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -2747,9 +2844,10 @@ impl MakePln {
         }
     }
 
-    /// **Source:** `gce_MakePln.hxx`:110 - `gce_MakePln::Value()`
+    /// **Source:** `gce_MakePln.hxx`:106 - `gce_MakePln::Value()`
     /// Returns the constructed plane.
     /// Exceptions StdFail_NotDone if no plane is constructed.
+    /// @return resulting plane
     pub fn value(&self) -> &crate::gp::Pln {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKGeomBase::gce_MakePln_value(
@@ -2758,12 +2856,14 @@ impl MakePln {
         }
     }
 
-    /// **Source:** `gce_MakePln.hxx`:112 - `gce_MakePln::Operator()`
-    pub fn operator(&self) -> &crate::gp::Pln {
+    /// **Source:** `gce_MakePln.hxx`:110 - `gce_MakePln::Operator()`
+    /// Alias for Value() returning a copy.
+    /// @return resulting object
+    pub fn operator(&self) -> crate::OwnedPtr<crate::gp::Pln> {
         unsafe {
-            &*(crate::check_result(crate::ffi_extern_TKGeomBase::gce_MakePln_operator(
-                self as *const Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomBase::gce_MakePln_operator(self as *const Self),
+            ))
         }
     }
 
@@ -2785,14 +2885,21 @@ impl MakePln {
         }
     }
 
-    /// Inherited: **Source:** `gce_Root.hxx`:40 - `gce_Root::IsDone()`
+    /// Inherited: **Source:** `gce_Root.hxx`:39 - `gce_Root::IsDone()`
     pub fn is_done(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomBase::gce_MakePln_inherited_IsDone(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `gce_Root.hxx`:46 - `gce_Root::Status()`
+    /// Inherited: **Source:** `gce_Root.hxx`:43 - `gce_Root::IsError()`
+    pub fn is_error(&self) -> bool {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKGeomBase::gce_MakePln_inherited_IsError(self as *const Self)
+        })
+    }
+
+    /// Inherited: **Source:** `gce_Root.hxx`:50 - `gce_Root::Status()`
     pub fn status(&self) -> crate::gce::ErrorType {
         crate::gce::ErrorType::try_from(crate::check_result(unsafe {
             crate::ffi_extern_TKGeomBase::gce_MakePln_inherited_Status(self as *const Self)
@@ -2823,8 +2930,10 @@ unsafe impl crate::CppDeletable for MakeRotation {
 }
 
 impl MakeRotation {
-    /// **Source:** `gce_MakeRotation.hxx`:42 - `gce_MakeRotation::gce_MakeRotation()`
-    /// Constructs a rotation through angle Angle about the axis defined by the line Line.
+    /// **Source:** `gce_MakeRotation.hxx`:44 - `gce_MakeRotation::gce_MakeRotation()`
+    /// Constructs a rotation around the axis defined by a line.
+    /// @param[in] Line rotation axis
+    /// @param[in] Angle rotation angle in radians
     pub fn new_lin_real(Line: &crate::gp::Lin, Angle: f64) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -2833,8 +2942,10 @@ impl MakeRotation {
         }
     }
 
-    /// **Source:** `gce_MakeRotation.hxx`:45 - `gce_MakeRotation::gce_MakeRotation()`
-    /// Constructs a rotation through angle Angle about the axis defined by the axis Axis.
+    /// **Source:** `gce_MakeRotation.hxx`:49 - `gce_MakeRotation::gce_MakeRotation()`
+    /// Constructs a rotation around an axis.
+    /// @param[in] Axis rotation axis
+    /// @param[in] Angle rotation angle in radians
     pub fn new_ax1_real(Axis: &crate::gp::Ax1, Angle: f64) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -2843,9 +2954,11 @@ impl MakeRotation {
         }
     }
 
-    /// **Source:** `gce_MakeRotation.hxx`:49 - `gce_MakeRotation::gce_MakeRotation()`
-    /// Constructs a rotation through angle Angle about the axis defined by:
-    /// the point Point and the unit vector Direc.
+    /// **Source:** `gce_MakeRotation.hxx`:55 - `gce_MakeRotation::gce_MakeRotation()`
+    /// Constructs a rotation around an axis defined by point and direction.
+    /// @param[in] Point point on the axis
+    /// @param[in] Direc axis direction
+    /// @param[in] Angle rotation angle in radians
     pub fn new_pnt_dir_real(
         Point: &crate::gp::Pnt,
         Direc: &crate::gp::Dir,
@@ -2860,8 +2973,9 @@ impl MakeRotation {
         }
     }
 
-    /// **Source:** `gce_MakeRotation.hxx`:54 - `gce_MakeRotation::Value()`
+    /// **Source:** `gce_MakeRotation.hxx`:59 - `gce_MakeRotation::Value()`
     /// Returns the constructed transformation.
+    /// @return resulting transformation
     pub fn value(&self) -> &crate::gp::Trsf {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKGeomBase::gce_MakeRotation_value(
@@ -2870,12 +2984,14 @@ impl MakeRotation {
         }
     }
 
-    /// **Source:** `gce_MakeRotation.hxx`:56 - `gce_MakeRotation::Operator()`
-    pub fn operator(&self) -> &crate::gp::Trsf {
+    /// **Source:** `gce_MakeRotation.hxx`:63 - `gce_MakeRotation::Operator()`
+    /// Alias for Value() returning a copy.
+    /// @return resulting transformation
+    pub fn operator(&self) -> crate::OwnedPtr<crate::gp::Trsf> {
         unsafe {
-            &*(crate::check_result(crate::ffi_extern_TKGeomBase::gce_MakeRotation_operator(
-                self as *const Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomBase::gce_MakeRotation_operator(self as *const Self),
+            ))
         }
     }
 }
@@ -2902,8 +3018,10 @@ unsafe impl crate::CppDeletable for MakeRotation2d {
 }
 
 impl MakeRotation2d {
-    /// **Source:** `gce_MakeRotation2d.hxx`:39 - `gce_MakeRotation2d::gce_MakeRotation2d()`
-    /// Constructs a rotation through angle Angle about the center Point.
+    /// **Source:** `gce_MakeRotation2d.hxx`:41 - `gce_MakeRotation2d::gce_MakeRotation2d()`
+    /// Constructs a rotation around a point in 2D.
+    /// @param[in] Point rotation center
+    /// @param[in] Angle rotation angle in radians
     pub fn new_pnt2d_real(Point: &crate::gp::Pnt2d, Angle: f64) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -2912,8 +3030,9 @@ impl MakeRotation2d {
         }
     }
 
-    /// **Source:** `gce_MakeRotation2d.hxx`:42 - `gce_MakeRotation2d::Value()`
+    /// **Source:** `gce_MakeRotation2d.hxx`:45 - `gce_MakeRotation2d::Value()`
     /// Returns the constructed transformation.
+    /// @return resulting transformation
     pub fn value(&self) -> &crate::gp::Trsf2d {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKGeomBase::gce_MakeRotation2d_value(
@@ -2922,12 +3041,14 @@ impl MakeRotation2d {
         }
     }
 
-    /// **Source:** `gce_MakeRotation2d.hxx`:44 - `gce_MakeRotation2d::Operator()`
-    pub fn operator(&self) -> &crate::gp::Trsf2d {
+    /// **Source:** `gce_MakeRotation2d.hxx`:49 - `gce_MakeRotation2d::Operator()`
+    /// Alias for Value() returning a copy.
+    /// @return resulting transformation
+    pub fn operator(&self) -> crate::OwnedPtr<crate::gp::Trsf2d> {
         unsafe {
-            &*(crate::check_result(crate::ffi_extern_TKGeomBase::gce_MakeRotation2d_operator(
-                self as *const Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomBase::gce_MakeRotation2d_operator(self as *const Self),
+            ))
         }
     }
 }
@@ -2955,9 +3076,9 @@ unsafe impl crate::CppDeletable for MakeScale {
 
 impl MakeScale {
     /// **Source:** `gce_MakeScale.hxx`:41 - `gce_MakeScale::gce_MakeScale()`
-    /// Constructs a scaling transformation with
-    /// -   Point as the center of the transformation, and
-    /// -   Scale as the scale factor.
+    /// Constructs a scaling transformation.
+    /// @param[in] Point center of scaling
+    /// @param[in] Scale scale factor
     pub fn new_pnt_real(Point: &crate::gp::Pnt, Scale: f64) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -2966,8 +3087,9 @@ impl MakeScale {
         }
     }
 
-    /// **Source:** `gce_MakeScale.hxx`:44 - `gce_MakeScale::Value()`
+    /// **Source:** `gce_MakeScale.hxx`:45 - `gce_MakeScale::Value()`
     /// Returns the constructed transformation.
+    /// @return resulting transformation
     pub fn value(&self) -> &crate::gp::Trsf {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKGeomBase::gce_MakeScale_value(
@@ -2976,12 +3098,14 @@ impl MakeScale {
         }
     }
 
-    /// **Source:** `gce_MakeScale.hxx`:46 - `gce_MakeScale::Operator()`
-    pub fn operator(&self) -> &crate::gp::Trsf {
+    /// **Source:** `gce_MakeScale.hxx`:49 - `gce_MakeScale::Operator()`
+    /// Alias for Value() returning a copy.
+    /// @return resulting transformation
+    pub fn operator(&self) -> crate::OwnedPtr<crate::gp::Trsf> {
         unsafe {
-            &*(crate::check_result(crate::ffi_extern_TKGeomBase::gce_MakeScale_operator(
-                self as *const Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomBase::gce_MakeScale_operator(self as *const Self),
+            ))
         }
     }
 }
@@ -3009,9 +3133,9 @@ unsafe impl crate::CppDeletable for MakeScale2d {
 
 impl MakeScale2d {
     /// **Source:** `gce_MakeScale2d.hxx`:41 - `gce_MakeScale2d::gce_MakeScale2d()`
-    /// Constructs a scaling transformation with:
-    /// -   Point as the center of the transformation, and
-    /// -   Scale as the scale factor.
+    /// Constructs a scaling transformation.
+    /// @param[in] Point center of scaling
+    /// @param[in] Scale scale factor
     pub fn new_pnt2d_real(Point: &crate::gp::Pnt2d, Scale: f64) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -3020,8 +3144,9 @@ impl MakeScale2d {
         }
     }
 
-    /// **Source:** `gce_MakeScale2d.hxx`:44 - `gce_MakeScale2d::Value()`
+    /// **Source:** `gce_MakeScale2d.hxx`:45 - `gce_MakeScale2d::Value()`
     /// Returns the constructed transformation.
+    /// @return resulting transformation
     pub fn value(&self) -> &crate::gp::Trsf2d {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKGeomBase::gce_MakeScale2d_value(
@@ -3030,12 +3155,14 @@ impl MakeScale2d {
         }
     }
 
-    /// **Source:** `gce_MakeScale2d.hxx`:46 - `gce_MakeScale2d::Operator()`
-    pub fn operator(&self) -> &crate::gp::Trsf2d {
+    /// **Source:** `gce_MakeScale2d.hxx`:49 - `gce_MakeScale2d::Operator()`
+    /// Alias for Value() returning a copy.
+    /// @return resulting transformation
+    pub fn operator(&self) -> crate::OwnedPtr<crate::gp::Trsf2d> {
         unsafe {
-            &*(crate::check_result(crate::ffi_extern_TKGeomBase::gce_MakeScale2d_operator(
-                self as *const Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomBase::gce_MakeScale2d_operator(self as *const Self),
+            ))
         }
     }
 }
@@ -3062,8 +3189,9 @@ unsafe impl crate::CppDeletable for MakeTranslation {
 }
 
 impl MakeTranslation {
-    /// **Source:** `gce_MakeTranslation.hxx`:40 - `gce_MakeTranslation::gce_MakeTranslation()`
-    /// Constructs a translation along the vector " Vect"
+    /// **Source:** `gce_MakeTranslation.hxx`:41 - `gce_MakeTranslation::gce_MakeTranslation()`
+    /// Constructs a translation from a vector.
+    /// @param[in] Vect translation vector
     pub fn new_vec(Vect: &crate::gp::Vec) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -3072,9 +3200,10 @@ impl MakeTranslation {
         }
     }
 
-    /// **Source:** `gce_MakeTranslation.hxx`:44 - `gce_MakeTranslation::gce_MakeTranslation()`
-    /// Constructs a translation along the vector
-    /// (Point1,Point2) defined from the point Point1 to the point Point2.
+    /// **Source:** `gce_MakeTranslation.hxx`:46 - `gce_MakeTranslation::gce_MakeTranslation()`
+    /// Constructs a translation from two points.
+    /// @param[in] Point1 start point
+    /// @param[in] Point2 end point
     pub fn new_pnt2(Point1: &crate::gp::Pnt, Point2: &crate::gp::Pnt) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -3083,8 +3212,9 @@ impl MakeTranslation {
         }
     }
 
-    /// **Source:** `gce_MakeTranslation.hxx`:47 - `gce_MakeTranslation::Value()`
+    /// **Source:** `gce_MakeTranslation.hxx`:50 - `gce_MakeTranslation::Value()`
     /// Returns the constructed transformation.
+    /// @return resulting transformation
     pub fn value(&self) -> &crate::gp::Trsf {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKGeomBase::gce_MakeTranslation_value(
@@ -3093,12 +3223,14 @@ impl MakeTranslation {
         }
     }
 
-    /// **Source:** `gce_MakeTranslation.hxx`:49 - `gce_MakeTranslation::Operator()`
-    pub fn operator(&self) -> &crate::gp::Trsf {
+    /// **Source:** `gce_MakeTranslation.hxx`:54 - `gce_MakeTranslation::Operator()`
+    /// Alias for Value() returning a copy.
+    /// @return resulting transformation
+    pub fn operator(&self) -> crate::OwnedPtr<crate::gp::Trsf> {
         unsafe {
-            &*(crate::check_result(crate::ffi_extern_TKGeomBase::gce_MakeTranslation_operator(
-                self as *const Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomBase::gce_MakeTranslation_operator(self as *const Self),
+            ))
         }
     }
 }
@@ -3125,8 +3257,9 @@ unsafe impl crate::CppDeletable for MakeTranslation2d {
 }
 
 impl MakeTranslation2d {
-    /// **Source:** `gce_MakeTranslation2d.hxx`:40 - `gce_MakeTranslation2d::gce_MakeTranslation2d()`
-    /// Constructs a translation along the vector Vect.
+    /// **Source:** `gce_MakeTranslation2d.hxx`:41 - `gce_MakeTranslation2d::gce_MakeTranslation2d()`
+    /// Constructs a translation from a vector.
+    /// @param[in] Vect translation vector
     pub fn new_vec2d(Vect: &crate::gp::Vec2d) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -3135,9 +3268,10 @@ impl MakeTranslation2d {
         }
     }
 
-    /// **Source:** `gce_MakeTranslation2d.hxx`:44 - `gce_MakeTranslation2d::gce_MakeTranslation2d()`
-    /// Constructs a translation along the vector
-    /// (Point1,Point2) defined from the point Point1 to the point Point2.
+    /// **Source:** `gce_MakeTranslation2d.hxx`:46 - `gce_MakeTranslation2d::gce_MakeTranslation2d()`
+    /// Constructs a translation from two points.
+    /// @param[in] Point1 start point
+    /// @param[in] Point2 end point
     pub fn new_pnt2d2(
         Point1: &crate::gp::Pnt2d,
         Point2: &crate::gp::Pnt2d,
@@ -3149,8 +3283,9 @@ impl MakeTranslation2d {
         }
     }
 
-    /// **Source:** `gce_MakeTranslation2d.hxx`:47 - `gce_MakeTranslation2d::Value()`
+    /// **Source:** `gce_MakeTranslation2d.hxx`:50 - `gce_MakeTranslation2d::Value()`
     /// Returns the constructed transformation.
+    /// @return resulting transformation
     pub fn value(&self) -> &crate::gp::Trsf2d {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKGeomBase::gce_MakeTranslation2d_value(
@@ -3159,12 +3294,14 @@ impl MakeTranslation2d {
         }
     }
 
-    /// **Source:** `gce_MakeTranslation2d.hxx`:49 - `gce_MakeTranslation2d::Operator()`
-    pub fn operator(&self) -> &crate::gp::Trsf2d {
+    /// **Source:** `gce_MakeTranslation2d.hxx`:54 - `gce_MakeTranslation2d::Operator()`
+    /// Alias for Value() returning a copy.
+    /// @return resulting transformation
+    pub fn operator(&self) -> crate::OwnedPtr<crate::gp::Trsf2d> {
         unsafe {
-            &*(crate::check_result(crate::ffi_extern_TKGeomBase::gce_MakeTranslation2d_operator(
-                self as *const Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomBase::gce_MakeTranslation2d_operator(self as *const Self),
+            ))
         }
     }
 }
@@ -3173,9 +3310,8 @@ impl MakeTranslation2d {
 // From gce_Root.hxx
 // ========================
 
-/// **Source:** `gce_Root.hxx`:34 - `gce_Root`
-/// This class implements the common services for
-/// all classes of gce which report error.
+/// **Source:** `gce_Root.hxx`:32 - `gce_Root`
+/// Provides common status services for all `gce` construction classes.
 pub use crate::ffi_types::gce_Root as Root;
 
 unsafe impl crate::CppDeletable for Root {
@@ -3197,19 +3333,30 @@ impl Root {
         }
     }
 
-    /// **Source:** `gce_Root.hxx`:40 - `gce_Root::IsDone()`
+    /// **Source:** `gce_Root.hxx`:39 - `gce_Root::IsDone()`
     /// Returns true if the construction is successful.
+    /// @return true if status is `gce_Done`
     pub fn is_done(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomBase::gce_Root_is_done(self as *const Self)
         })
     }
 
-    /// **Source:** `gce_Root.hxx`:46 - `gce_Root::Status()`
+    /// **Source:** `gce_Root.hxx`:43 - `gce_Root::IsError()`
+    /// Returns true if the construction has failed.
+    /// @return true if status is not `gce_Done`
+    pub fn is_error(&self) -> bool {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKGeomBase::gce_Root_is_error(self as *const Self)
+        })
+    }
+
+    /// **Source:** `gce_Root.hxx`:50 - `gce_Root::Status()`
     /// Returns the status of the construction:
     /// -   gce_Done, if the construction is successful, or
     /// -   another value of the gce_ErrorType enumeration
     /// indicating why the construction failed.
+    /// @return construction status
     pub fn status(&self) -> crate::gce::ErrorType {
         crate::gce::ErrorType::try_from(crate::check_result(unsafe {
             crate::ffi_extern_TKGeomBase::gce_Root_status(self as *const Self)

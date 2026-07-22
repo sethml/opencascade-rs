@@ -34,17 +34,12 @@ impl TryFrom<i32> for SupportType {
     }
 }
 
-// Handle type re-exports (targets of handle upcasts/downcasts)
-pub use crate::ffi_types::{
-    HandleStandardDomainError, HandleStandardFailure, HandleStandardTransient,
-};
-
 // ========================
 // From BRepExtrema_DistShapeShape.hxx
 // ========================
 
-/// **Source:** `BRepExtrema_DistShapeShape.hxx`:31 - `BRepExtrema_DistShapeShape`
-/// This class  provides tools to compute minimum distance
+/// **Source:** `BRepExtrema_DistShapeShape.hxx`:33 - `BRepExtrema_DistShapeShape`
+/// This class provides tools to compute minimum distance
 /// between two Shapes (Compound,CompSolid, Solid, Shell, Face, Wire, Edge, Vertex).
 pub use crate::ffi_types::BRepExtrema_DistShapeShape as DistShapeShape;
 
@@ -57,7 +52,7 @@ unsafe impl crate::CppDeletable for DistShapeShape {
 }
 
 impl DistShapeShape {
-    /// **Source:** `BRepExtrema_DistShapeShape.hxx`:37 - `BRepExtrema_DistShapeShape::BRepExtrema_DistShapeShape()`
+    /// **Source:** `BRepExtrema_DistShapeShape.hxx`:39 - `BRepExtrema_DistShapeShape::BRepExtrema_DistShapeShape()`
     /// create empty tool
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
@@ -67,10 +62,10 @@ impl DistShapeShape {
         }
     }
 
-    /// **Source:** `BRepExtrema_DistShapeShape.hxx`:46 - `BRepExtrema_DistShapeShape::BRepExtrema_DistShapeShape()`
+    /// **Source:** `BRepExtrema_DistShapeShape.hxx`:48 - `BRepExtrema_DistShapeShape::BRepExtrema_DistShapeShape()`
     /// create tool and computation of the minimum distance (value and pair of points)
-    /// using default deflection in single thread mode. <br>
-    /// Default deflection value is Precision::Confusion(). <br>
+    /// using default deflection in single thread mode.
+    /// Default deflection value is Precision::Confusion().
     /// @param Shape1 - the first shape for distance computation
     /// @param Shape2 - the second shape for distance computation
     /// @param F and @param A are not used in computation and are obsolete.
@@ -87,10 +82,10 @@ impl DistShapeShape {
         }
     }
 
-    /// **Source:** `BRepExtrema_DistShapeShape.hxx`:60 - `BRepExtrema_DistShapeShape::BRepExtrema_DistShapeShape()`
+    /// **Source:** `BRepExtrema_DistShapeShape.hxx`:62 - `BRepExtrema_DistShapeShape::BRepExtrema_DistShapeShape()`
     /// create tool and computation of the minimum distance
-    /// (value and pair of points) in single thread mode. <br>
-    /// Default deflection value is Precision::Confusion(). <br>
+    /// (value and pair of points) in single thread mode.
+    /// Default deflection value is Precision::Confusion().
     /// @param Shape1 - the first shape for distance computation
     /// @param Shape2 - the second shape for distance computation
     /// @param theDeflection - the presition of distance computation
@@ -109,8 +104,8 @@ impl DistShapeShape {
         }
     }
 
-    /// **Source:** `BRepExtrema_DistShapeShape.hxx`:69 - `BRepExtrema_DistShapeShape::SetDeflection()`
-    /// Sets deflection to computation of the minimum distance <br>
+    /// **Source:** `BRepExtrema_DistShapeShape.hxx`:71 - `BRepExtrema_DistShapeShape::SetDeflection()`
+    /// Sets deflection to computation of the minimum distance
     pub fn set_deflection(&mut self, theDeflection: f64) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKTopAlgo::BRepExtrema_DistShapeShape_set_deflection(
@@ -120,8 +115,8 @@ impl DistShapeShape {
         })
     }
 
-    /// **Source:** `BRepExtrema_DistShapeShape.hxx`:72 - `BRepExtrema_DistShapeShape::LoadS1()`
-    /// load first shape into extrema <br>
+    /// **Source:** `BRepExtrema_DistShapeShape.hxx`:74 - `BRepExtrema_DistShapeShape::LoadS1()`
+    /// load first shape into extrema
     pub fn load_s1(&mut self, Shape1: &crate::topo_ds::Shape) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKTopAlgo::BRepExtrema_DistShapeShape_load_s1(
@@ -131,8 +126,8 @@ impl DistShapeShape {
         })
     }
 
-    /// **Source:** `BRepExtrema_DistShapeShape.hxx`:75 - `BRepExtrema_DistShapeShape::LoadS2()`
-    /// load second shape into extrema <br>
+    /// **Source:** `BRepExtrema_DistShapeShape.hxx`:77 - `BRepExtrema_DistShapeShape::LoadS2()`
+    /// load second shape into extrema
     pub fn load_s2(&mut self, Shape1: &crate::topo_ds::Shape) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKTopAlgo::BRepExtrema_DistShapeShape_load_s2(
@@ -142,12 +137,12 @@ impl DistShapeShape {
         })
     }
 
-    /// **Source:** `BRepExtrema_DistShapeShape.hxx`:84 - `BRepExtrema_DistShapeShape::Perform()`
-    /// computation of  the minimum  distance  (value  and <br>
-    /// couple  of points). Parameter theDeflection is used <br>
-    /// to specify a maximum deviation of extreme distances <br>
-    /// from the minimum one. <br>
-    /// Returns IsDone status. <br>
+    /// **Source:** `BRepExtrema_DistShapeShape.hxx`:85 - `BRepExtrema_DistShapeShape::Perform()`
+    /// computation of the minimum distance (value and
+    /// couple of points). Parameter theDeflection is used
+    /// to specify a maximum deviation of extreme distances
+    /// from the minimum one.
+    /// Returns IsDone status.
     /// theRange - the progress indicator of algorithm
     pub fn perform(&mut self, theRange: &crate::message::ProgressRange) -> bool {
         crate::check_result(unsafe {
@@ -158,33 +153,33 @@ impl DistShapeShape {
         })
     }
 
-    /// **Source:** `BRepExtrema_DistShapeShape.hxx`:87 - `BRepExtrema_DistShapeShape::IsDone()`
-    /// True if the minimum distance is found. <br>
+    /// **Source:** `BRepExtrema_DistShapeShape.hxx`:88 - `BRepExtrema_DistShapeShape::IsDone()`
+    /// True if the minimum distance is found.
     pub fn is_done(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKTopAlgo::BRepExtrema_DistShapeShape_is_done(self as *const Self)
         })
     }
 
-    /// **Source:** `BRepExtrema_DistShapeShape.hxx`:90 - `BRepExtrema_DistShapeShape::NbSolution()`
-    /// Returns the number of solutions satisfying the minimum distance. <br>
+    /// **Source:** `BRepExtrema_DistShapeShape.hxx`:91 - `BRepExtrema_DistShapeShape::NbSolution()`
+    /// Returns the number of solutions satisfying the minimum distance.
     pub fn nb_solution(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKTopAlgo::BRepExtrema_DistShapeShape_nb_solution(self as *const Self)
         })
     }
 
-    /// **Source:** `BRepExtrema_DistShapeShape.hxx`:93 - `BRepExtrema_DistShapeShape::Value()`
-    /// Returns the value of the minimum distance. <br>
+    /// **Source:** `BRepExtrema_DistShapeShape.hxx`:94 - `BRepExtrema_DistShapeShape::Value()`
+    /// Returns the value of the minimum distance.
     pub fn value(&self) -> f64 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKTopAlgo::BRepExtrema_DistShapeShape_value(self as *const Self)
         })
     }
 
-    /// **Source:** `BRepExtrema_DistShapeShape.hxx`:97 - `BRepExtrema_DistShapeShape::InnerSolution()`
-    /// True if one of the shapes is a solid and the other shape <br>
-    /// is completely or partially inside the solid. <br>
+    /// **Source:** `BRepExtrema_DistShapeShape.hxx`:98 - `BRepExtrema_DistShapeShape::InnerSolution()`
+    /// True if one of the shapes is a solid and the other shape
+    /// is completely or partially inside the solid.
     pub fn inner_solution(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKTopAlgo::BRepExtrema_DistShapeShape_inner_solution(
@@ -193,8 +188,8 @@ impl DistShapeShape {
         })
     }
 
-    /// **Source:** `BRepExtrema_DistShapeShape.hxx`:100 - `BRepExtrema_DistShapeShape::PointOnShape1()`
-    /// Returns the Point corresponding to the <N>th solution on the first Shape <br>
+    /// **Source:** `BRepExtrema_DistShapeShape.hxx`:101 - `BRepExtrema_DistShapeShape::PointOnShape1()`
+    /// Returns the Point corresponding to the <N>th solution on the first Shape
     pub fn point_on_shape1(&self, N: i32) -> &crate::gp::Pnt {
         unsafe {
             &*(crate::check_result(
@@ -206,8 +201,8 @@ impl DistShapeShape {
         }
     }
 
-    /// **Source:** `BRepExtrema_DistShapeShape.hxx`:106 - `BRepExtrema_DistShapeShape::PointOnShape2()`
-    /// Returns the Point corresponding to the <N>th solution on the second Shape <br>
+    /// **Source:** `BRepExtrema_DistShapeShape.hxx`:104 - `BRepExtrema_DistShapeShape::PointOnShape2()`
+    /// Returns the Point corresponding to the <N>th solution on the second Shape
     pub fn point_on_shape2(&self, N: i32) -> &crate::gp::Pnt {
         unsafe {
             &*(crate::check_result(
@@ -219,12 +214,12 @@ impl DistShapeShape {
         }
     }
 
-    /// **Source:** `BRepExtrema_DistShapeShape.hxx`:116 - `BRepExtrema_DistShapeShape::SupportTypeShape1()`
-    /// gives the type of the support where the Nth solution on the first shape is situated: <br>
-    /// IsVertex => the Nth solution on the first shape is a Vertex <br>
-    /// IsOnEdge => the Nth soluion on the first shape is on a Edge <br>
-    /// IsInFace => the Nth solution on the first shape is inside a face <br>
-    /// the corresponding support is obtained by the method SupportOnShape1 <br>
+    /// **Source:** `BRepExtrema_DistShapeShape.hxx`:111 - `BRepExtrema_DistShapeShape::SupportTypeShape1()`
+    /// gives the type of the support where the Nth solution on the first shape is situated:
+    /// IsVertex => the Nth solution on the first shape is a Vertex
+    /// IsOnEdge => the Nth soluion on the first shape is on a Edge
+    /// IsInFace => the Nth solution on the first shape is inside a face
+    /// the corresponding support is obtained by the method SupportOnShape1
     pub fn support_type_shape1(&self, N: i32) -> crate::b_rep_extrema::SupportType {
         crate::b_rep_extrema::SupportType::try_from(crate::check_result(unsafe {
             crate::ffi_extern_TKTopAlgo::BRepExtrema_DistShapeShape_support_type_shape1(
@@ -235,12 +230,12 @@ impl DistShapeShape {
         .unwrap()
     }
 
-    /// **Source:** `BRepExtrema_DistShapeShape.hxx`:126 - `BRepExtrema_DistShapeShape::SupportTypeShape2()`
-    /// gives the type of the support where the Nth solution on the second shape is situated: <br>
-    /// IsVertex => the Nth solution on the second shape is a Vertex <br>
-    /// IsOnEdge => the Nth soluion on the secondt shape is on a Edge <br>
-    /// IsInFace => the Nth solution on the second shape is inside a face <br>
-    /// the corresponding support is obtained by the method SupportOnShape2 <br>
+    /// **Source:** `BRepExtrema_DistShapeShape.hxx`:121 - `BRepExtrema_DistShapeShape::SupportTypeShape2()`
+    /// gives the type of the support where the Nth solution on the second shape is situated:
+    /// IsVertex => the Nth solution on the second shape is a Vertex
+    /// IsOnEdge => the Nth soluion on the secondt shape is on a Edge
+    /// IsInFace => the Nth solution on the second shape is inside a face
+    /// the corresponding support is obtained by the method SupportOnShape2
     pub fn support_type_shape2(&self, N: i32) -> crate::b_rep_extrema::SupportType {
         crate::b_rep_extrema::SupportType::try_from(crate::check_result(unsafe {
             crate::ffi_extern_TKTopAlgo::BRepExtrema_DistShapeShape_support_type_shape2(
@@ -251,9 +246,9 @@ impl DistShapeShape {
         .unwrap()
     }
 
-    /// **Source:** `BRepExtrema_DistShapeShape.hxx`:133 - `BRepExtrema_DistShapeShape::SupportOnShape1()`
-    /// gives the support where the Nth solution on the first shape is situated. <br>
-    /// This support can be a Vertex, an Edge or a Face. <br>
+    /// **Source:** `BRepExtrema_DistShapeShape.hxx`:128 - `BRepExtrema_DistShapeShape::SupportOnShape1()`
+    /// gives the support where the Nth solution on the first shape is situated.
+    /// This support can be a Vertex, an Edge or a Face.
     pub fn support_on_shape1(&self, N: i32) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -265,9 +260,9 @@ impl DistShapeShape {
         }
     }
 
-    /// **Source:** `BRepExtrema_DistShapeShape.hxx`:137 - `BRepExtrema_DistShapeShape::SupportOnShape2()`
-    /// gives the support where the Nth solution on the second shape is situated. <br>
-    /// This support can be a Vertex, an Edge or a Face. <br>
+    /// **Source:** `BRepExtrema_DistShapeShape.hxx`:132 - `BRepExtrema_DistShapeShape::SupportOnShape2()`
+    /// gives the support where the Nth solution on the second shape is situated.
+    /// This support can be a Vertex, an Edge or a Face.
     pub fn support_on_shape2(&self, N: i32) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -279,9 +274,9 @@ impl DistShapeShape {
         }
     }
 
-    /// **Source:** `BRepExtrema_DistShapeShape.hxx`:141 - `BRepExtrema_DistShapeShape::ParOnEdgeS1()`
-    /// gives the corresponding parameter t if the Nth solution <br>
-    /// is situated on an Edge of the first shape <br>
+    /// **Source:** `BRepExtrema_DistShapeShape.hxx`:136 - `BRepExtrema_DistShapeShape::ParOnEdgeS1()`
+    /// gives the corresponding parameter t if the Nth solution
+    /// is situated on an Edge of the first shape
     pub fn par_on_edge_s1(&self, N: i32, t: &mut f64) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKTopAlgo::BRepExtrema_DistShapeShape_par_on_edge_s1(
@@ -292,9 +287,9 @@ impl DistShapeShape {
         })
     }
 
-    /// **Source:** `BRepExtrema_DistShapeShape.hxx`:145 - `BRepExtrema_DistShapeShape::ParOnEdgeS2()`
-    /// gives the corresponding parameter t if the Nth solution <br>
-    /// is situated on an Edge of the first shape <br>
+    /// **Source:** `BRepExtrema_DistShapeShape.hxx`:140 - `BRepExtrema_DistShapeShape::ParOnEdgeS2()`
+    /// gives the corresponding parameter t if the Nth solution
+    /// is situated on an Edge of the first shape
     pub fn par_on_edge_s2(&self, N: i32, t: &mut f64) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKTopAlgo::BRepExtrema_DistShapeShape_par_on_edge_s2(
@@ -305,9 +300,9 @@ impl DistShapeShape {
         })
     }
 
-    /// **Source:** `BRepExtrema_DistShapeShape.hxx`:149 - `BRepExtrema_DistShapeShape::ParOnFaceS1()`
-    /// gives the corresponding parameters (U,V) if the Nth solution <br>
-    /// is situated on an face of the first shape <br>
+    /// **Source:** `BRepExtrema_DistShapeShape.hxx`:144 - `BRepExtrema_DistShapeShape::ParOnFaceS1()`
+    /// gives the corresponding parameters (U,V) if the Nth solution
+    /// is situated on an face of the first shape
     pub fn par_on_face_s1(&self, N: i32, u: &mut f64, v: &mut f64) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKTopAlgo::BRepExtrema_DistShapeShape_par_on_face_s1(
@@ -319,9 +314,9 @@ impl DistShapeShape {
         })
     }
 
-    /// **Source:** `BRepExtrema_DistShapeShape.hxx`:155 - `BRepExtrema_DistShapeShape::ParOnFaceS2()`
-    /// gives the corresponding parameters (U,V) if the Nth solution <br>
-    /// is situated on an Face of the second shape <br>
+    /// **Source:** `BRepExtrema_DistShapeShape.hxx`:148 - `BRepExtrema_DistShapeShape::ParOnFaceS2()`
+    /// gives the corresponding parameters (U,V) if the Nth solution
+    /// is situated on an Face of the second shape
     pub fn par_on_face_s2(&self, N: i32, u: &mut f64, v: &mut f64) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKTopAlgo::BRepExtrema_DistShapeShape_par_on_face_s2(
@@ -333,15 +328,15 @@ impl DistShapeShape {
         })
     }
 
-    /// **Source:** `BRepExtrema_DistShapeShape.hxx`:160 - `BRepExtrema_DistShapeShape::Dump()`
-    /// Prints on the stream o information on the current state of the object. <br>
+    /// **Source:** `BRepExtrema_DistShapeShape.hxx`:151 - `BRepExtrema_DistShapeShape::Dump()`
+    /// Prints on the stream o information on the current state of the object.
     pub fn dump(&self, o: &mut crate::ffi_types::Standard_OStream) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKTopAlgo::BRepExtrema_DistShapeShape_dump(self as *const Self, o)
         })
     }
 
-    /// **Source:** `BRepExtrema_DistShapeShape.hxx`:164 - `BRepExtrema_DistShapeShape::SetFlag()`
+    /// **Source:** `BRepExtrema_DistShapeShape.hxx`:155 - `BRepExtrema_DistShapeShape::SetFlag()`
     /// Sets unused parameter
     /// Obsolete
     pub fn set_flag(&mut self, F: i32) {
@@ -350,7 +345,7 @@ impl DistShapeShape {
         })
     }
 
-    /// **Source:** `BRepExtrema_DistShapeShape.hxx`:168 - `BRepExtrema_DistShapeShape::SetAlgo()`
+    /// **Source:** `BRepExtrema_DistShapeShape.hxx`:159 - `BRepExtrema_DistShapeShape::SetAlgo()`
     /// Sets unused parameter
     /// Obsolete
     pub fn set_algo(&mut self, A: crate::extrema::ExtAlgo) {
@@ -362,8 +357,8 @@ impl DistShapeShape {
         })
     }
 
-    /// **Source:** `BRepExtrema_DistShapeShape.hxx`:171 - `BRepExtrema_DistShapeShape::SetMultiThread()`
-    /// If isMultiThread == Standard_True then computation will be performed in parallel.
+    /// **Source:** `BRepExtrema_DistShapeShape.hxx`:162 - `BRepExtrema_DistShapeShape::SetMultiThread()`
+    /// If isMultiThread == true then computation will be performed in parallel.
     pub fn set_multi_thread(&mut self, theIsMultiThread: bool) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKTopAlgo::BRepExtrema_DistShapeShape_set_multi_thread(
@@ -373,9 +368,9 @@ impl DistShapeShape {
         })
     }
 
-    /// **Source:** `BRepExtrema_DistShapeShape.hxx`:175 - `BRepExtrema_DistShapeShape::IsMultiThread()`
-    /// Returns Standard_True then computation will be performed in parallel
-    /// Default value is Standard_False
+    /// **Source:** `BRepExtrema_DistShapeShape.hxx`:166 - `BRepExtrema_DistShapeShape::IsMultiThread()`
+    /// Returns true then computation will be performed in parallel
+    /// Default value is false
     pub fn is_multi_thread(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKTopAlgo::BRepExtrema_DistShapeShape_is_multi_thread(
@@ -389,7 +384,7 @@ impl DistShapeShape {
 // From BRepExtrema_DistanceSS.hxx
 // ========================
 
-/// **Source:** `BRepExtrema_DistanceSS.hxx`:31 - `BRepExtrema_DistanceSS`
+/// **Source:** `BRepExtrema_DistanceSS.hxx`:32 - `BRepExtrema_DistanceSS`
 /// This class allows to compute minimum distance between two brep shapes
 /// (face edge vertex) and is used in DistShapeShape class.
 pub use crate::ffi_types::BRepExtrema_DistanceSS as DistanceSS;
@@ -403,7 +398,7 @@ unsafe impl crate::CppDeletable for DistanceSS {
 }
 
 impl DistanceSS {
-    /// **Source:** `BRepExtrema_DistanceSS.hxx`:49 - `BRepExtrema_DistanceSS::BRepExtrema_DistanceSS()`
+    /// **Source:** `BRepExtrema_DistanceSS.hxx`:50 - `BRepExtrema_DistanceSS::BRepExtrema_DistanceSS()`
     /// @name Constructor from two shapes
     /// Computes the distance between two Shapes (face edge vertex).
     /// @param theS1 - First shape
@@ -432,7 +427,7 @@ impl DistanceSS {
         }
     }
 
-    /// **Source:** `BRepExtrema_DistanceSS.hxx`:68 - `BRepExtrema_DistanceSS::IsDone()`
+    /// **Source:** `BRepExtrema_DistanceSS.hxx`:69 - `BRepExtrema_DistanceSS::IsDone()`
     /// @name Results
     /// Returns true if the distance has been computed, false otherwise.
     pub fn is_done(&self) -> bool {
@@ -441,7 +436,7 @@ impl DistanceSS {
         })
     }
 
-    /// **Source:** `BRepExtrema_DistanceSS.hxx`:71 - `BRepExtrema_DistanceSS::DistValue()`
+    /// **Source:** `BRepExtrema_DistanceSS.hxx`:72 - `BRepExtrema_DistanceSS::DistValue()`
     /// Returns the distance value.
     pub fn dist_value(&self) -> f64 {
         crate::check_result(unsafe {
@@ -449,9 +444,9 @@ impl DistanceSS {
         })
     }
 
-    /// **Source:** `BRepExtrema_DistanceSS.hxx`:74 - `BRepExtrema_DistanceSS::Seq1Value()`
+    /// **Source:** `BRepExtrema_DistanceSS.hxx`:75 - `BRepExtrema_DistanceSS::Seq1Value()`
     /// Returns the list of solutions on the first shape.
-    pub fn seq1_value(&self) -> &crate::ffi_types::BRepExtrema_SeqOfSolution {
+    pub fn seq1_value(&self) -> &crate::ffi_types::NCollection_Sequence_BRepExtrema_SolutionElem {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKTopAlgo::BRepExtrema_DistanceSS_seq1_value(
                 self as *const Self,
@@ -459,9 +454,9 @@ impl DistanceSS {
         }
     }
 
-    /// **Source:** `BRepExtrema_DistanceSS.hxx`:77 - `BRepExtrema_DistanceSS::Seq2Value()`
+    /// **Source:** `BRepExtrema_DistanceSS.hxx`:78 - `BRepExtrema_DistanceSS::Seq2Value()`
     /// Returns the list of solutions on the second shape.
-    pub fn seq2_value(&self) -> &crate::ffi_types::BRepExtrema_SeqOfSolution {
+    pub fn seq2_value(&self) -> &crate::ffi_types::NCollection_Sequence_BRepExtrema_SolutionElem {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKTopAlgo::BRepExtrema_DistanceSS_seq2_value(
                 self as *const Self,
@@ -498,7 +493,7 @@ impl ElementFilter {
         }
     }
 
-    /// **Source:** `BRepExtrema_ElementFilter.hxx`:41 - `BRepExtrema_ElementFilter::PreCheckElements()`
+    /// **Source:** `BRepExtrema_ElementFilter.hxx`:38 - `BRepExtrema_ElementFilter::PreCheckElements()`
     /// Checks if two mesh elements should be tested for overlapping/intersection
     /// (used for detection correct/incorrect cases of shared edges and vertices).
     pub fn pre_check_elements(
@@ -544,7 +539,7 @@ impl ExtCC {
     }
 
     /// **Source:** `BRepExtrema_ExtCC.hxx`:32 - `BRepExtrema_ExtCC::BRepExtrema_ExtCC()`
-    /// It calculates all the distances. <br>
+    /// It calculates all the distances.
     pub fn new_edge2(
         E1: &crate::topo_ds::Edge,
         E2: &crate::topo_ds::Edge,
@@ -564,7 +559,7 @@ impl ExtCC {
     }
 
     /// **Source:** `BRepExtrema_ExtCC.hxx`:36 - `BRepExtrema_ExtCC::Perform()`
-    /// An exception is raised if the fields have not been initialized. <br>
+    /// An exception is raised if the fields have not been initialized.
     pub fn perform(&mut self, E1: &crate::topo_ds::Edge) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKTopAlgo::BRepExtrema_ExtCC_perform(self as *mut Self, E1)
@@ -572,7 +567,7 @@ impl ExtCC {
     }
 
     /// **Source:** `BRepExtrema_ExtCC.hxx`:39 - `BRepExtrema_ExtCC::IsDone()`
-    /// True if the distances are found. <br>
+    /// True if the distances are found.
     pub fn is_done(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKTopAlgo::BRepExtrema_ExtCC_is_done(self as *const Self)
@@ -580,7 +575,7 @@ impl ExtCC {
     }
 
     /// **Source:** `BRepExtrema_ExtCC.hxx`:42 - `BRepExtrema_ExtCC::NbExt()`
-    /// Returns the number of extremum distances. <br>
+    /// Returns the number of extremum distances.
     pub fn nb_ext(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKTopAlgo::BRepExtrema_ExtCC_nb_ext(self as *const Self)
@@ -588,7 +583,7 @@ impl ExtCC {
     }
 
     /// **Source:** `BRepExtrema_ExtCC.hxx`:45 - `BRepExtrema_ExtCC::IsParallel()`
-    /// Returns True if E1 and E2 are parallel. <br>
+    /// Returns True if E1 and E2 are parallel.
     pub fn is_parallel(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKTopAlgo::BRepExtrema_ExtCC_is_parallel(self as *const Self)
@@ -596,7 +591,7 @@ impl ExtCC {
     }
 
     /// **Source:** `BRepExtrema_ExtCC.hxx`:48 - `BRepExtrema_ExtCC::SquareDistance()`
-    /// Returns the value of the <N>th extremum square distance. <br>
+    /// Returns the value of the <N>th extremum square distance.
     pub fn square_distance(&self, N: i32) -> f64 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKTopAlgo::BRepExtrema_ExtCC_square_distance(self as *const Self, N)
@@ -604,7 +599,7 @@ impl ExtCC {
     }
 
     /// **Source:** `BRepExtrema_ExtCC.hxx`:51 - `BRepExtrema_ExtCC::ParameterOnE1()`
-    /// Returns the parameter on the first edge of the <N>th extremum distance. <br>
+    /// Returns the parameter on the first edge of the <N>th extremum distance.
     pub fn parameter_on_e1(&self, N: i32) -> f64 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKTopAlgo::BRepExtrema_ExtCC_parameter_on_e1(self as *const Self, N)
@@ -612,7 +607,7 @@ impl ExtCC {
     }
 
     /// **Source:** `BRepExtrema_ExtCC.hxx`:53 - `BRepExtrema_ExtCC::PointOnE1()`
-    /// Returns the Point of the <N>th extremum distance on the edge E1. <br>
+    /// Returns the Point of the <N>th extremum distance on the edge E1.
     pub fn point_on_e1(&self, N: i32) -> crate::OwnedPtr<crate::gp::Pnt> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -622,7 +617,7 @@ impl ExtCC {
     }
 
     /// **Source:** `BRepExtrema_ExtCC.hxx`:55 - `BRepExtrema_ExtCC::ParameterOnE2()`
-    /// Returns the parameter on the second edge of the <N>th extremum distance. <br>
+    /// Returns the parameter on the second edge of the <N>th extremum distance.
     pub fn parameter_on_e2(&self, N: i32) -> f64 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKTopAlgo::BRepExtrema_ExtCC_parameter_on_e2(self as *const Self, N)
@@ -630,7 +625,7 @@ impl ExtCC {
     }
 
     /// **Source:** `BRepExtrema_ExtCC.hxx`:57 - `BRepExtrema_ExtCC::PointOnE2()`
-    /// Returns the Point of the <N>th extremum distance on the edge E2. <br>
+    /// Returns the Point of the <N>th extremum distance on the edge E2.
     pub fn point_on_e2(&self, N: i32) -> crate::OwnedPtr<crate::gp::Pnt> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -640,10 +635,10 @@ impl ExtCC {
     }
 
     /// **Source:** `BRepExtrema_ExtCC.hxx`:62 - `BRepExtrema_ExtCC::TrimmedSquareDistances()`
-    /// if the edges is a trimmed curve, <br>
-    /// dist11 is a square distance between the point on E1 <br>
-    /// of parameter FirstParameter and the point of <br>
-    /// parameter FirstParameter on E2. <br>
+    /// if the edges is a trimmed curve,
+    /// dist11 is a square distance between the point on E1
+    /// of parameter FirstParameter and the point of
+    /// parameter FirstParameter on E2.
     pub fn trimmed_square_distances(
         &self,
         dist11: &mut f64,
@@ -675,7 +670,7 @@ impl ExtCC {
 // From BRepExtrema_ExtCF.hxx
 // ========================
 
-/// **Source:** `BRepExtrema_ExtCF.hxx`:29 - `BRepExtrema_ExtCF`
+/// **Source:** `BRepExtrema_ExtCF.hxx`:27 - `BRepExtrema_ExtCF`
 pub use crate::ffi_types::BRepExtrema_ExtCF as ExtCF;
 
 unsafe impl crate::CppDeletable for ExtCF {
@@ -687,7 +682,7 @@ unsafe impl crate::CppDeletable for ExtCF {
 }
 
 impl ExtCF {
-    /// **Source:** `BRepExtrema_ExtCF.hxx`:34 - `BRepExtrema_ExtCF::BRepExtrema_ExtCF()`
+    /// **Source:** `BRepExtrema_ExtCF.hxx`:32 - `BRepExtrema_ExtCF::BRepExtrema_ExtCF()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -696,8 +691,8 @@ impl ExtCF {
         }
     }
 
-    /// **Source:** `BRepExtrema_ExtCF.hxx`:37 - `BRepExtrema_ExtCF::BRepExtrema_ExtCF()`
-    /// It calculates all the distances. <br>
+    /// **Source:** `BRepExtrema_ExtCF.hxx`:35 - `BRepExtrema_ExtCF::BRepExtrema_ExtCF()`
+    /// It calculates all the distances.
     pub fn new_edge_face(
         E: &crate::topo_ds::Edge,
         F: &crate::topo_ds::Face,
@@ -709,64 +704,64 @@ impl ExtCF {
         }
     }
 
-    /// **Source:** `BRepExtrema_ExtCF.hxx`:39 - `BRepExtrema_ExtCF::Initialize()`
+    /// **Source:** `BRepExtrema_ExtCF.hxx`:37 - `BRepExtrema_ExtCF::Initialize()`
     pub fn initialize(&mut self, E: &crate::topo_ds::Edge, F: &crate::topo_ds::Face) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKTopAlgo::BRepExtrema_ExtCF_initialize(self as *mut Self, E, F)
         })
     }
 
-    /// **Source:** `BRepExtrema_ExtCF.hxx`:42 - `BRepExtrema_ExtCF::Perform()`
-    /// An exception is raised if the fields have not been initialized. <br>
-    /// Be careful: this method uses the Face only for classify not for the fields. <br>
+    /// **Source:** `BRepExtrema_ExtCF.hxx`:40 - `BRepExtrema_ExtCF::Perform()`
+    /// An exception is raised if the fields have not been initialized.
+    /// Be careful: this method uses the Face only for classify not for the fields.
     pub fn perform(&mut self, E: &crate::topo_ds::Edge, F: &crate::topo_ds::Face) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKTopAlgo::BRepExtrema_ExtCF_perform(self as *mut Self, E, F)
         })
     }
 
-    /// **Source:** `BRepExtrema_ExtCF.hxx`:45 - `BRepExtrema_ExtCF::IsDone()`
-    /// True if the distances are found. <br>
+    /// **Source:** `BRepExtrema_ExtCF.hxx`:43 - `BRepExtrema_ExtCF::IsDone()`
+    /// True if the distances are found.
     pub fn is_done(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKTopAlgo::BRepExtrema_ExtCF_is_done(self as *const Self)
         })
     }
 
-    /// **Source:** `BRepExtrema_ExtCF.hxx`:48 - `BRepExtrema_ExtCF::NbExt()`
-    /// Returns the number of extremum distances. <br>
+    /// **Source:** `BRepExtrema_ExtCF.hxx`:46 - `BRepExtrema_ExtCF::NbExt()`
+    /// Returns the number of extremum distances.
     pub fn nb_ext(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKTopAlgo::BRepExtrema_ExtCF_nb_ext(self as *const Self)
         })
     }
 
-    /// **Source:** `BRepExtrema_ExtCF.hxx`:51 - `BRepExtrema_ExtCF::SquareDistance()`
-    /// Returns the value of the <N>th extremum square distance. <br>
+    /// **Source:** `BRepExtrema_ExtCF.hxx`:49 - `BRepExtrema_ExtCF::SquareDistance()`
+    /// Returns the value of the <N>th extremum square distance.
     pub fn square_distance(&self, N: i32) -> f64 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKTopAlgo::BRepExtrema_ExtCF_square_distance(self as *const Self, N)
         })
     }
 
-    /// **Source:** `BRepExtrema_ExtCF.hxx`:54 - `BRepExtrema_ExtCF::IsParallel()`
-    /// Returns True if the curve is on a parallel surface. <br>
+    /// **Source:** `BRepExtrema_ExtCF.hxx`:52 - `BRepExtrema_ExtCF::IsParallel()`
+    /// Returns True if the curve is on a parallel surface.
     pub fn is_parallel(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKTopAlgo::BRepExtrema_ExtCF_is_parallel(self as *const Self)
         })
     }
 
-    /// **Source:** `BRepExtrema_ExtCF.hxx`:57 - `BRepExtrema_ExtCF::ParameterOnEdge()`
-    /// Returns the parameters on the Edge of the <N>th extremum distance. <br>
+    /// **Source:** `BRepExtrema_ExtCF.hxx`:55 - `BRepExtrema_ExtCF::ParameterOnEdge()`
+    /// Returns the parameters on the Edge of the <N>th extremum distance.
     pub fn parameter_on_edge(&self, N: i32) -> f64 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKTopAlgo::BRepExtrema_ExtCF_parameter_on_edge(self as *const Self, N)
         })
     }
 
-    /// **Source:** `BRepExtrema_ExtCF.hxx`:63 - `BRepExtrema_ExtCF::ParameterOnFace()`
-    /// Returns the parameters on the Face of the <N>th extremum distance. <br>
+    /// **Source:** `BRepExtrema_ExtCF.hxx`:58 - `BRepExtrema_ExtCF::ParameterOnFace()`
+    /// Returns the parameters on the Face of the <N>th extremum distance.
     pub fn parameter_on_face(&self, N: i32, U: &mut f64, V: &mut f64) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKTopAlgo::BRepExtrema_ExtCF_parameter_on_face(
@@ -778,8 +773,8 @@ impl ExtCF {
         })
     }
 
-    /// **Source:** `BRepExtrema_ExtCF.hxx`:69 - `BRepExtrema_ExtCF::PointOnEdge()`
-    /// Returns the Point of the <N>th extremum distance. <br>
+    /// **Source:** `BRepExtrema_ExtCF.hxx`:64 - `BRepExtrema_ExtCF::PointOnEdge()`
+    /// Returns the Point of the <N>th extremum distance.
     pub fn point_on_edge(&self, N: i32) -> crate::OwnedPtr<crate::gp::Pnt> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -791,8 +786,8 @@ impl ExtCF {
         }
     }
 
-    /// **Source:** `BRepExtrema_ExtCF.hxx`:72 - `BRepExtrema_ExtCF::PointOnFace()`
-    /// Returns the Point of the <N>th extremum distance. <br>
+    /// **Source:** `BRepExtrema_ExtCF.hxx`:67 - `BRepExtrema_ExtCF::PointOnFace()`
+    /// Returns the Point of the <N>th extremum distance.
     pub fn point_on_face(&self, N: i32) -> crate::OwnedPtr<crate::gp::Pnt> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -809,7 +804,7 @@ impl ExtCF {
 // From BRepExtrema_ExtFF.hxx
 // ========================
 
-/// **Source:** `BRepExtrema_ExtFF.hxx`:26 - `BRepExtrema_ExtFF`
+/// **Source:** `BRepExtrema_ExtFF.hxx`:25 - `BRepExtrema_ExtFF`
 pub use crate::ffi_types::BRepExtrema_ExtFF as ExtFF;
 
 unsafe impl crate::CppDeletable for ExtFF {
@@ -821,7 +816,7 @@ unsafe impl crate::CppDeletable for ExtFF {
 }
 
 impl ExtFF {
-    /// **Source:** `BRepExtrema_ExtFF.hxx`:31 - `BRepExtrema_ExtFF::BRepExtrema_ExtFF()`
+    /// **Source:** `BRepExtrema_ExtFF.hxx`:30 - `BRepExtrema_ExtFF::BRepExtrema_ExtFF()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -830,8 +825,8 @@ impl ExtFF {
         }
     }
 
-    /// **Source:** `BRepExtrema_ExtFF.hxx`:34 - `BRepExtrema_ExtFF::BRepExtrema_ExtFF()`
-    /// It calculates all the distances. <br>
+    /// **Source:** `BRepExtrema_ExtFF.hxx`:33 - `BRepExtrema_ExtFF::BRepExtrema_ExtFF()`
+    /// It calculates all the distances.
     pub fn new_face2(
         F1: &crate::topo_ds::Face,
         F2: &crate::topo_ds::Face,
@@ -843,56 +838,56 @@ impl ExtFF {
         }
     }
 
-    /// **Source:** `BRepExtrema_ExtFF.hxx`:36 - `BRepExtrema_ExtFF::Initialize()`
+    /// **Source:** `BRepExtrema_ExtFF.hxx`:35 - `BRepExtrema_ExtFF::Initialize()`
     pub fn initialize(&mut self, F2: &crate::topo_ds::Face) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKTopAlgo::BRepExtrema_ExtFF_initialize(self as *mut Self, F2)
         })
     }
 
-    /// **Source:** `BRepExtrema_ExtFF.hxx`:39 - `BRepExtrema_ExtFF::Perform()`
-    /// An exception is raised if the fields have not been initialized. <br>
-    /// Be careful: this method uses the Face F2 only for classify, not for the fields. <br>
+    /// **Source:** `BRepExtrema_ExtFF.hxx`:38 - `BRepExtrema_ExtFF::Perform()`
+    /// An exception is raised if the fields have not been initialized.
+    /// Be careful: this method uses the Face F2 only for classify, not for the fields.
     pub fn perform(&mut self, F1: &crate::topo_ds::Face, F2: &crate::topo_ds::Face) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKTopAlgo::BRepExtrema_ExtFF_perform(self as *mut Self, F1, F2)
         })
     }
 
-    /// **Source:** `BRepExtrema_ExtFF.hxx`:42 - `BRepExtrema_ExtFF::IsDone()`
-    /// True if the distances are found. <br>
+    /// **Source:** `BRepExtrema_ExtFF.hxx`:41 - `BRepExtrema_ExtFF::IsDone()`
+    /// True if the distances are found.
     pub fn is_done(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKTopAlgo::BRepExtrema_ExtFF_is_done(self as *const Self)
         })
     }
 
-    /// **Source:** `BRepExtrema_ExtFF.hxx`:45 - `BRepExtrema_ExtFF::IsParallel()`
-    /// Returns True if the surfaces are parallel. <br>
+    /// **Source:** `BRepExtrema_ExtFF.hxx`:44 - `BRepExtrema_ExtFF::IsParallel()`
+    /// Returns True if the surfaces are parallel.
     pub fn is_parallel(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKTopAlgo::BRepExtrema_ExtFF_is_parallel(self as *const Self)
         })
     }
 
-    /// **Source:** `BRepExtrema_ExtFF.hxx`:48 - `BRepExtrema_ExtFF::NbExt()`
-    /// Returns the number of extremum distances. <br>
+    /// **Source:** `BRepExtrema_ExtFF.hxx`:47 - `BRepExtrema_ExtFF::NbExt()`
+    /// Returns the number of extremum distances.
     pub fn nb_ext(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKTopAlgo::BRepExtrema_ExtFF_nb_ext(self as *const Self)
         })
     }
 
-    /// **Source:** `BRepExtrema_ExtFF.hxx`:51 - `BRepExtrema_ExtFF::SquareDistance()`
-    /// Returns the value of the <N>th extremum square distance. <br>
+    /// **Source:** `BRepExtrema_ExtFF.hxx`:50 - `BRepExtrema_ExtFF::SquareDistance()`
+    /// Returns the value of the <N>th extremum square distance.
     pub fn square_distance(&self, N: i32) -> f64 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKTopAlgo::BRepExtrema_ExtFF_square_distance(self as *const Self, N)
         })
     }
 
-    /// **Source:** `BRepExtrema_ExtFF.hxx`:54 - `BRepExtrema_ExtFF::ParameterOnFace1()`
-    /// Returns the parameters on the Face F1 of the <N>th extremum distance. <br>
+    /// **Source:** `BRepExtrema_ExtFF.hxx`:53 - `BRepExtrema_ExtFF::ParameterOnFace1()`
+    /// Returns the parameters on the Face F1 of the <N>th extremum distance.
     pub fn parameter_on_face1(&self, N: i32, U: &mut f64, V: &mut f64) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKTopAlgo::BRepExtrema_ExtFF_parameter_on_face1(
@@ -904,8 +899,8 @@ impl ExtFF {
         })
     }
 
-    /// **Source:** `BRepExtrema_ExtFF.hxx`:60 - `BRepExtrema_ExtFF::ParameterOnFace2()`
-    /// Returns the parameters on the Face F2 of the <N>th extremum distance. <br>
+    /// **Source:** `BRepExtrema_ExtFF.hxx`:59 - `BRepExtrema_ExtFF::ParameterOnFace2()`
+    /// Returns the parameters on the Face F2 of the <N>th extremum distance.
     pub fn parameter_on_face2(&self, N: i32, U: &mut f64, V: &mut f64) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKTopAlgo::BRepExtrema_ExtFF_parameter_on_face2(
@@ -917,8 +912,8 @@ impl ExtFF {
         })
     }
 
-    /// **Source:** `BRepExtrema_ExtFF.hxx`:66 - `BRepExtrema_ExtFF::PointOnFace1()`
-    /// Returns the Point of the <N>th extremum distance. <br>
+    /// **Source:** `BRepExtrema_ExtFF.hxx`:65 - `BRepExtrema_ExtFF::PointOnFace1()`
+    /// Returns the Point of the <N>th extremum distance.
     pub fn point_on_face1(&self, N: i32) -> crate::OwnedPtr<crate::gp::Pnt> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -930,8 +925,8 @@ impl ExtFF {
         }
     }
 
-    /// **Source:** `BRepExtrema_ExtFF.hxx`:69 - `BRepExtrema_ExtFF::PointOnFace2()`
-    /// Returns the Point of the <N>th extremum distance. <br>
+    /// **Source:** `BRepExtrema_ExtFF.hxx`:68 - `BRepExtrema_ExtFF::PointOnFace2()`
+    /// Returns the Point of the <N>th extremum distance.
     pub fn point_on_face2(&self, N: i32) -> crate::OwnedPtr<crate::gp::Pnt> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -970,7 +965,7 @@ impl ExtPC {
     }
 
     /// **Source:** `BRepExtrema_ExtPC.hxx`:32 - `BRepExtrema_ExtPC::BRepExtrema_ExtPC()`
-    /// It calculates all the distances. <br>
+    /// It calculates all the distances.
     pub fn new_vertex_edge(
         V: &crate::topo_ds::Vertex,
         E: &crate::topo_ds::Edge,
@@ -990,7 +985,7 @@ impl ExtPC {
     }
 
     /// **Source:** `BRepExtrema_ExtPC.hxx`:36 - `BRepExtrema_ExtPC::Perform()`
-    /// An exception is raised if the fields have not been initialized. <br>
+    /// An exception is raised if the fields have not been initialized.
     pub fn perform(&mut self, V: &crate::topo_ds::Vertex) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKTopAlgo::BRepExtrema_ExtPC_perform(self as *mut Self, V)
@@ -998,7 +993,7 @@ impl ExtPC {
     }
 
     /// **Source:** `BRepExtrema_ExtPC.hxx`:39 - `BRepExtrema_ExtPC::IsDone()`
-    /// True if the distances are found. <br>
+    /// True if the distances are found.
     pub fn is_done(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKTopAlgo::BRepExtrema_ExtPC_is_done(self as *const Self)
@@ -1006,7 +1001,7 @@ impl ExtPC {
     }
 
     /// **Source:** `BRepExtrema_ExtPC.hxx`:42 - `BRepExtrema_ExtPC::NbExt()`
-    /// Returns the number of extremum distances. <br>
+    /// Returns the number of extremum distances.
     pub fn nb_ext(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKTopAlgo::BRepExtrema_ExtPC_nb_ext(self as *const Self)
@@ -1014,7 +1009,7 @@ impl ExtPC {
     }
 
     /// **Source:** `BRepExtrema_ExtPC.hxx`:45 - `BRepExtrema_ExtPC::IsMin()`
-    /// Returns True if the <N>th extremum distance is a minimum. <br>
+    /// Returns True if the <N>th extremum distance is a minimum.
     pub fn is_min(&self, N: i32) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKTopAlgo::BRepExtrema_ExtPC_is_min(self as *const Self, N)
@@ -1022,7 +1017,7 @@ impl ExtPC {
     }
 
     /// **Source:** `BRepExtrema_ExtPC.hxx`:48 - `BRepExtrema_ExtPC::SquareDistance()`
-    /// Returns the value of the <N>th extremum square distance. <br>
+    /// Returns the value of the <N>th extremum square distance.
     pub fn square_distance(&self, N: i32) -> f64 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKTopAlgo::BRepExtrema_ExtPC_square_distance(self as *const Self, N)
@@ -1030,7 +1025,7 @@ impl ExtPC {
     }
 
     /// **Source:** `BRepExtrema_ExtPC.hxx`:51 - `BRepExtrema_ExtPC::Parameter()`
-    /// Returns the parameter on the edge of the <N>th extremum distance. <br>
+    /// Returns the parameter on the edge of the <N>th extremum distance.
     pub fn parameter(&self, N: i32) -> f64 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKTopAlgo::BRepExtrema_ExtPC_parameter(self as *const Self, N)
@@ -1038,7 +1033,7 @@ impl ExtPC {
     }
 
     /// **Source:** `BRepExtrema_ExtPC.hxx`:54 - `BRepExtrema_ExtPC::Point()`
-    /// Returns the Point of the <N>th extremum distance. <br>
+    /// Returns the Point of the <N>th extremum distance.
     pub fn point(&self, N: i32) -> crate::OwnedPtr<crate::gp::Pnt> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -1048,11 +1043,11 @@ impl ExtPC {
     }
 
     /// **Source:** `BRepExtrema_ExtPC.hxx`:61 - `BRepExtrema_ExtPC::TrimmedSquareDistances()`
-    /// if the curve is a trimmed curve, <br>
-    /// dist1 is a square distance between <P> and the point <br>
-    /// of parameter FirstParameter <pnt1> and <br>
-    /// dist2 is a square distance between <P> and the point <br>
-    /// of parameter LastParameter <pnt2>. <br>
+    /// if the curve is a trimmed curve,
+    /// dist1 is a square distance between <P> and the point
+    /// of parameter FirstParameter <pnt1> and
+    /// dist2 is a square distance between <P> and the point
+    /// of parameter LastParameter <pnt2>.
     pub fn trimmed_square_distances(
         &self,
         dist1: &mut f64,
@@ -1098,7 +1093,7 @@ impl ExtPF {
     }
 
     /// **Source:** `BRepExtrema_ExtPF.hxx`:35 - `BRepExtrema_ExtPF::BRepExtrema_ExtPF()`
-    /// It calculates all the distances. <br>
+    /// It calculates all the distances.
     pub fn new_vertex_face_extflag_extalgo(
         TheVertex: &crate::topo_ds::Vertex,
         TheFace: &crate::topo_ds::Face,
@@ -1135,8 +1130,8 @@ impl ExtPF {
     }
 
     /// **Source:** `BRepExtrema_ExtPF.hxx`:46 - `BRepExtrema_ExtPF::Perform()`
-    /// An exception is raised if the fields have not been initialized. <br>
-    /// Be careful: this method uses the Face only for classify not for the fields. <br>
+    /// An exception is raised if the fields have not been initialized.
+    /// Be careful: this method uses the Face only for classify not for the fields.
     pub fn perform(&mut self, TheVertex: &crate::topo_ds::Vertex, TheFace: &crate::topo_ds::Face) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKTopAlgo::BRepExtrema_ExtPF_perform(
@@ -1148,7 +1143,7 @@ impl ExtPF {
     }
 
     /// **Source:** `BRepExtrema_ExtPF.hxx`:49 - `BRepExtrema_ExtPF::IsDone()`
-    /// True if the distances are found. <br>
+    /// True if the distances are found.
     pub fn is_done(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKTopAlgo::BRepExtrema_ExtPF_is_done(self as *const Self)
@@ -1156,7 +1151,7 @@ impl ExtPF {
     }
 
     /// **Source:** `BRepExtrema_ExtPF.hxx`:52 - `BRepExtrema_ExtPF::NbExt()`
-    /// Returns the number of extremum distances. <br>
+    /// Returns the number of extremum distances.
     pub fn nb_ext(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKTopAlgo::BRepExtrema_ExtPF_nb_ext(self as *const Self)
@@ -1164,7 +1159,7 @@ impl ExtPF {
     }
 
     /// **Source:** `BRepExtrema_ExtPF.hxx`:55 - `BRepExtrema_ExtPF::SquareDistance()`
-    /// Returns the value of the <N>th extremum square distance. <br>
+    /// Returns the value of the <N>th extremum square distance.
     pub fn square_distance(&self, N: i32) -> f64 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKTopAlgo::BRepExtrema_ExtPF_square_distance(self as *const Self, N)
@@ -1172,15 +1167,15 @@ impl ExtPF {
     }
 
     /// **Source:** `BRepExtrema_ExtPF.hxx`:58 - `BRepExtrema_ExtPF::Parameter()`
-    /// Returns the parameters on the Face of the <N>th extremum distance. <br>
+    /// Returns the parameters on the Face of the <N>th extremum distance.
     pub fn parameter(&self, N: i32, U: &mut f64, V: &mut f64) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKTopAlgo::BRepExtrema_ExtPF_parameter(self as *const Self, N, U, V)
         })
     }
 
-    /// **Source:** `BRepExtrema_ExtPF.hxx`:64 - `BRepExtrema_ExtPF::Point()`
-    /// Returns the Point of the <N>th extremum distance. <br>
+    /// **Source:** `BRepExtrema_ExtPF.hxx`:61 - `BRepExtrema_ExtPF::Point()`
+    /// Returns the Point of the <N>th extremum distance.
     pub fn point(&self, N: i32) -> crate::OwnedPtr<crate::gp::Pnt> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -1189,14 +1184,14 @@ impl ExtPF {
         }
     }
 
-    /// **Source:** `BRepExtrema_ExtPF.hxx`:66 - `BRepExtrema_ExtPF::SetFlag()`
+    /// **Source:** `BRepExtrema_ExtPF.hxx`:63 - `BRepExtrema_ExtPF::SetFlag()`
     pub fn set_flag(&mut self, F: i32) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKTopAlgo::BRepExtrema_ExtPF_set_flag(self as *mut Self, F)
         })
     }
 
-    /// **Source:** `BRepExtrema_ExtPF.hxx`:68 - `BRepExtrema_ExtPF::SetAlgo()`
+    /// **Source:** `BRepExtrema_ExtPF.hxx`:65 - `BRepExtrema_ExtPF::SetAlgo()`
     pub fn set_algo(&mut self, A: crate::extrema::ExtAlgo) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKTopAlgo::BRepExtrema_ExtPF_set_algo(self as *mut Self, A.into())
@@ -1208,7 +1203,7 @@ impl ExtPF {
 // From BRepExtrema_OverlapTool.hxx
 // ========================
 
-/// **Source:** `BRepExtrema_OverlapTool.hxx`:38 - `BRepExtrema_OverlapTool`
+/// **Source:** `BRepExtrema_OverlapTool.hxx`:39 - `BRepExtrema_OverlapTool`
 /// Tool class for for detection of overlapping of two BVH primitive sets.
 /// This tool is not intended to be used independently, and is integrated
 /// in other classes, implementing algorithms based on shape tessellation
@@ -1231,7 +1226,7 @@ unsafe impl crate::CppDeletable for OverlapTool {
 }
 
 impl OverlapTool {
-    /// **Source:** `BRepExtrema_OverlapTool.hxx`:42 - `BRepExtrema_OverlapTool::BRepExtrema_OverlapTool()`
+    /// **Source:** `BRepExtrema_OverlapTool.hxx`:43 - `BRepExtrema_OverlapTool::BRepExtrema_OverlapTool()`
     /// Creates new uninitialized overlap tool.
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
@@ -1241,23 +1236,23 @@ impl OverlapTool {
         }
     }
 
-    /// **Source:** `BRepExtrema_OverlapTool.hxx`:45 - `BRepExtrema_OverlapTool::BRepExtrema_OverlapTool()`
+    /// **Source:** `BRepExtrema_OverlapTool.hxx`:46 - `BRepExtrema_OverlapTool::BRepExtrema_OverlapTool()`
     /// Creates new overlap tool for the given element sets.
     pub fn new_handlebrepextrematriangleset2(
-        theSet1: &crate::ffi_types::HandleBRepExtremaTriangleSet,
-        theSet2: &crate::ffi_types::HandleBRepExtremaTriangleSet,
+        theSet1: &crate::ffi_types::Handle_BRepExtrema_TriangleSet,
+        theSet2: &crate::ffi_types::Handle_BRepExtrema_TriangleSet,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKTopAlgo::BRepExtrema_OverlapTool_ctor_handlebrepextrematriangleset2(theSet1, theSet2)))
         }
     }
 
-    /// **Source:** `BRepExtrema_OverlapTool.hxx`:50 - `BRepExtrema_OverlapTool::LoadTriangleSets()`
+    /// **Source:** `BRepExtrema_OverlapTool.hxx`:51 - `BRepExtrema_OverlapTool::LoadTriangleSets()`
     /// Loads the given element sets into the overlap tool.
     pub fn load_triangle_sets(
         &mut self,
-        theSet1: &crate::ffi_types::HandleBRepExtremaTriangleSet,
-        theSet2: &crate::ffi_types::HandleBRepExtremaTriangleSet,
+        theSet1: &crate::ffi_types::Handle_BRepExtrema_TriangleSet,
+        theSet2: &crate::ffi_types::Handle_BRepExtrema_TriangleSet,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKTopAlgo::BRepExtrema_OverlapTool_load_triangle_sets(
@@ -1268,7 +1263,7 @@ impl OverlapTool {
         })
     }
 
-    /// **Source:** `BRepExtrema_OverlapTool.hxx`:54 - `BRepExtrema_OverlapTool::Perform()`
+    /// **Source:** `BRepExtrema_OverlapTool.hxx`:55 - `BRepExtrema_OverlapTool::Perform()`
     /// Performs searching of overlapped mesh elements.
     pub fn perform(&mut self, theTolerance: f64) {
         crate::check_void_result(unsafe {
@@ -1279,7 +1274,7 @@ impl OverlapTool {
         })
     }
 
-    /// **Source:** `BRepExtrema_OverlapTool.hxx`:57 - `BRepExtrema_OverlapTool::IsDone()`
+    /// **Source:** `BRepExtrema_OverlapTool.hxx`:58 - `BRepExtrema_OverlapTool::IsDone()`
     /// Is overlap test completed?
     pub fn is_done(&self) -> bool {
         crate::check_result(unsafe {
@@ -1287,7 +1282,7 @@ impl OverlapTool {
         })
     }
 
-    /// **Source:** `BRepExtrema_OverlapTool.hxx`:60 - `BRepExtrema_OverlapTool::MarkDirty()`
+    /// **Source:** `BRepExtrema_OverlapTool.hxx`:61 - `BRepExtrema_OverlapTool::MarkDirty()`
     /// Marks test results as outdated.
     pub fn mark_dirty(&mut self) {
         crate::check_void_result(unsafe {
@@ -1295,11 +1290,11 @@ impl OverlapTool {
         })
     }
 
-    /// **Source:** `BRepExtrema_OverlapTool.hxx`:63 - `BRepExtrema_OverlapTool::OverlapSubShapes1()`
+    /// **Source:** `BRepExtrema_OverlapTool.hxx`:64 - `BRepExtrema_OverlapTool::OverlapSubShapes1()`
     /// Returns set of overlapped sub-shapes of 1st shape (currently only faces are detected).
     pub fn overlap_sub_shapes1(
         &self,
-    ) -> &crate::ffi_types::BRepExtrema_MapOfIntegerPackedMapOfInteger {
+    ) -> &crate::ffi_types::NCollection_DataMap_int_TColStd_PackedMapOfInteger {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKTopAlgo::BRepExtrema_OverlapTool_overlap_sub_shapes1(
@@ -1309,11 +1304,11 @@ impl OverlapTool {
         }
     }
 
-    /// **Source:** `BRepExtrema_OverlapTool.hxx`:69 - `BRepExtrema_OverlapTool::OverlapSubShapes2()`
+    /// **Source:** `BRepExtrema_OverlapTool.hxx`:70 - `BRepExtrema_OverlapTool::OverlapSubShapes2()`
     /// Returns set of overlapped sub-shapes of 2nd shape (currently only faces are detected).
     pub fn overlap_sub_shapes2(
         &self,
-    ) -> &crate::ffi_types::BRepExtrema_MapOfIntegerPackedMapOfInteger {
+    ) -> &crate::ffi_types::NCollection_DataMap_int_TColStd_PackedMapOfInteger {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKTopAlgo::BRepExtrema_OverlapTool_overlap_sub_shapes2(
@@ -1323,7 +1318,7 @@ impl OverlapTool {
         }
     }
 
-    /// **Source:** `BRepExtrema_OverlapTool.hxx`:83 - `BRepExtrema_OverlapTool::SetElementFilter()`
+    /// **Source:** `BRepExtrema_OverlapTool.hxx`:84 - `BRepExtrema_OverlapTool::SetElementFilter()`
     /// Sets filtering tool for preliminary checking pairs of mesh elements.
     pub fn set_element_filter(&mut self, theFilter: &mut ElementFilter) {
         crate::check_void_result(unsafe {
@@ -1334,7 +1329,7 @@ impl OverlapTool {
         })
     }
 
-    /// **Source:** `BRepExtrema_OverlapTool.hxx`:87 - `BRepExtrema_OverlapTool::RejectNode()`
+    /// **Source:** `BRepExtrema_OverlapTool.hxx`:88 - `BRepExtrema_OverlapTool::RejectNode()`
     /// @name Reject/Accept implementations
     /// Defines the rules for node rejection by bounding box
     pub fn reject_node(
@@ -1357,7 +1352,7 @@ impl OverlapTool {
         })
     }
 
-    /// **Source:** `BRepExtrema_OverlapTool.hxx`:93 - `BRepExtrema_OverlapTool::Accept()`
+    /// **Source:** `BRepExtrema_OverlapTool.hxx`:94 - `BRepExtrema_OverlapTool::Accept()`
     /// Defines the rules for leaf acceptance
     pub fn accept(&mut self, theLeaf1: i32, theLeaf2: i32) -> bool {
         crate::check_result(unsafe {
@@ -1397,7 +1392,7 @@ impl Poly {
     }
 
     /// **Source:** `BRepExtrema_Poly.hxx`:26 - `BRepExtrema_Poly::Distance()`
-    /// returns Standard_True if OK.
+    /// returns true if OK.
     pub fn distance(
         S1: &crate::topo_ds::Shape,
         S2: &crate::topo_ds::Shape,
@@ -1415,7 +1410,7 @@ impl Poly {
 // From BRepExtrema_ProximityDistTool.hxx
 // ========================
 
-/// **Source:** `BRepExtrema_ProximityDistTool.hxx`:36 - `BRepExtrema_ProximityDistTool`
+/// **Source:** `BRepExtrema_ProximityDistTool.hxx`:37 - `BRepExtrema_ProximityDistTool`
 /// Tool class for computation the proximity distance from first
 /// primitive set to second one that is the maximal from minimum
 /// perpendicular distances. If no perpendicular distance is found, the
@@ -1437,7 +1432,7 @@ unsafe impl crate::CppDeletable for ProximityDistTool {
 }
 
 impl ProximityDistTool {
-    /// **Source:** `BRepExtrema_ProximityDistTool.hxx`:92 - `BRepExtrema_ProximityDistTool::BRepExtrema_ProximityDistTool()`
+    /// **Source:** `BRepExtrema_ProximityDistTool.hxx`:93 - `BRepExtrema_ProximityDistTool::BRepExtrema_ProximityDistTool()`
     /// Creates new uninitialized tool.
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
@@ -1447,28 +1442,28 @@ impl ProximityDistTool {
         }
     }
 
-    /// **Source:** `BRepExtrema_ProximityDistTool.hxx`:95 - `BRepExtrema_ProximityDistTool::BRepExtrema_ProximityDistTool()`
+    /// **Source:** `BRepExtrema_ProximityDistTool.hxx`:96 - `BRepExtrema_ProximityDistTool::BRepExtrema_ProximityDistTool()`
     /// Creates new tool for the given element sets.
-    pub fn new_handlebrepextrematriangleset_int_array3d_vector_proxpnt_status_handlebrepextrematriangleset_shapelist2(
-        theSet1: &crate::ffi_types::HandleBRepExtremaTriangleSet,
+    pub fn new_handlebrepextrematriangleset_int_array3d_dynamicarray_proxpnt_status_handlebrepextrematriangleset_dynamicarray_topods_shape2(
+        theSet1: &crate::ffi_types::Handle_BRepExtrema_TriangleSet,
         theNbSamples1: i32,
         theAddVertices1: &crate::ffi_types::BVH_Array3d,
-        theAddStatus1: &crate::ffi_types::NCollection_Vector_ProxPnt_Status,
-        theSet2: &crate::ffi_types::HandleBRepExtremaTriangleSet,
-        theShapeList1: &crate::ffi_types::BRepExtrema_ShapeList,
-        theShapeList2: &crate::ffi_types::BRepExtrema_ShapeList,
+        theAddStatus1: &crate::ffi_types::NCollection_DynamicArray_ProxPnt_Status,
+        theSet2: &crate::ffi_types::Handle_BRepExtrema_TriangleSet,
+        theShapeList1: &crate::ffi_types::NCollection_DynamicArray_TopoDS_Shape,
+        theShapeList2: &crate::ffi_types::NCollection_DynamicArray_TopoDS_Shape,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKTopAlgo::BRepExtrema_ProximityDistTool_ctor_handlebrepextrematriangleset_int_array3d_vector_proxpnt_status_handlebrepextrematriangleset_shapelist2(theSet1, theNbSamples1, theAddVertices1, theAddStatus1, theSet2, theShapeList1, theShapeList2)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKTopAlgo::BRepExtrema_ProximityDistTool_ctor_handlebrepextrematriangleset_int_array3d_dynamicarray_proxpnt_status_handlebrepextrematriangleset_dynamicarray_topods_shape2(theSet1, theNbSamples1, theAddVertices1, theAddStatus1, theSet2, theShapeList1, theShapeList2)))
         }
     }
 
-    /// **Source:** `BRepExtrema_ProximityDistTool.hxx`:106 - `BRepExtrema_ProximityDistTool::LoadTriangleSets()`
+    /// **Source:** `BRepExtrema_ProximityDistTool.hxx`:107 - `BRepExtrema_ProximityDistTool::LoadTriangleSets()`
     /// Loads the given element sets into the tool.
     pub fn load_triangle_sets(
         &mut self,
-        theSet1: &crate::ffi_types::HandleBRepExtremaTriangleSet,
-        theSet2: &crate::ffi_types::HandleBRepExtremaTriangleSet,
+        theSet1: &crate::ffi_types::Handle_BRepExtrema_TriangleSet,
+        theSet2: &crate::ffi_types::Handle_BRepExtrema_TriangleSet,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKTopAlgo::BRepExtrema_ProximityDistTool_load_triangle_sets(
@@ -1479,12 +1474,12 @@ impl ProximityDistTool {
         })
     }
 
-    /// **Source:** `BRepExtrema_ProximityDistTool.hxx`:110 - `BRepExtrema_ProximityDistTool::LoadShapeLists()`
+    /// **Source:** `BRepExtrema_ProximityDistTool.hxx`:111 - `BRepExtrema_ProximityDistTool::LoadShapeLists()`
     /// Loads the given list of subshapes into the tool.
     pub fn load_shape_lists(
         &mut self,
-        theShapeList1: &crate::ffi_types::BRepExtrema_ShapeList,
-        theShapeList2: &crate::ffi_types::BRepExtrema_ShapeList,
+        theShapeList1: &crate::ffi_types::NCollection_DynamicArray_TopoDS_Shape,
+        theShapeList2: &crate::ffi_types::NCollection_DynamicArray_TopoDS_Shape,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKTopAlgo::BRepExtrema_ProximityDistTool_load_shape_lists(
@@ -1495,19 +1490,19 @@ impl ProximityDistTool {
         })
     }
 
-    /// **Source:** `BRepExtrema_ProximityDistTool.hxx`:114 - `BRepExtrema_ProximityDistTool::LoadAdditionalPointsFirstSet()`
+    /// **Source:** `BRepExtrema_ProximityDistTool.hxx`:115 - `BRepExtrema_ProximityDistTool::LoadAdditionalPointsFirstSet()`
     /// Loads given additional vertices and their statuses.
     pub fn load_additional_points_first_set(
         &mut self,
         theAddVertices1: &crate::ffi_types::BVH_Array3d,
-        theAddStatus1: &crate::ffi_types::NCollection_Vector_ProxPnt_Status,
+        theAddStatus1: &crate::ffi_types::NCollection_DynamicArray_ProxPnt_Status,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKTopAlgo::BRepExtrema_ProximityDistTool_load_additional_points_first_set(self as *mut Self, theAddVertices1, theAddStatus1)
         })
     }
 
-    /// **Source:** `BRepExtrema_ProximityDistTool.hxx`:118 - `BRepExtrema_ProximityDistTool::Perform()`
+    /// **Source:** `BRepExtrema_ProximityDistTool.hxx`:119 - `BRepExtrema_ProximityDistTool::Perform()`
     /// Performs searching of the proximity distance.
     pub fn perform(&mut self) {
         crate::check_void_result(unsafe {
@@ -1515,7 +1510,7 @@ impl ProximityDistTool {
         })
     }
 
-    /// **Source:** `BRepExtrema_ProximityDistTool.hxx`:122 - `BRepExtrema_ProximityDistTool::RejectNode()`
+    /// **Source:** `BRepExtrema_ProximityDistTool.hxx`:123 - `BRepExtrema_ProximityDistTool::RejectNode()`
     /// @name Reject/Accept implementations
     /// Defines the rules for node rejection by bounding box.
     pub fn reject_node(
@@ -1546,7 +1541,7 @@ impl ProximityDistTool {
         })
     }
 
-    /// **Source:** `BRepExtrema_ProximityDistTool.hxx`:145 - `BRepExtrema_ProximityDistTool::ProximityPoints()`
+    /// **Source:** `BRepExtrema_ProximityDistTool.hxx`:143 - `BRepExtrema_ProximityDistTool::ProximityPoints()`
     /// Returns points on triangles sets, which provide the proximity distance.
     pub fn proximity_points(
         &self,
@@ -1562,7 +1557,7 @@ impl ProximityDistTool {
         })
     }
 
-    /// **Source:** `BRepExtrema_ProximityDistTool.hxx`:152 - `BRepExtrema_ProximityDistTool::ProximityPointsStatus()`
+    /// **Source:** `BRepExtrema_ProximityDistTool.hxx`:150 - `BRepExtrema_ProximityDistTool::ProximityPointsStatus()`
     /// Returns status of points on triangles sets, which provide the proximity distance.
     pub fn proximity_points_status(
         &self,
@@ -1578,7 +1573,7 @@ impl ProximityDistTool {
         })
     }
 
-    /// **Source:** `BRepExtrema_ProximityDistTool.hxx`:159 - `BRepExtrema_ProximityDistTool::ProximityDistance()`
+    /// **Source:** `BRepExtrema_ProximityDistTool.hxx`:157 - `BRepExtrema_ProximityDistTool::ProximityDistance()`
     /// Returns the computed distance
     pub fn proximity_distance(&self) -> f64 {
         crate::check_result(unsafe {
@@ -1588,11 +1583,11 @@ impl ProximityDistTool {
         })
     }
 
-    /// **Source:** `BRepExtrema_ProximityDistTool.hxx`:133 - `BRepExtrema_ProximityDistTool::IsNodeOnBorder()`
+    /// **Source:** `BRepExtrema_ProximityDistTool.hxx`:132 - `BRepExtrema_ProximityDistTool::IsNodeOnBorder()`
     /// Returns true if the node is on the boarder.
     pub fn is_node_on_border(
         theNodeIdx: i32,
-        theTr: &crate::ffi_types::HandlePolyTriangulation,
+        theTr: &crate::ffi_types::Handle_Poly_Triangulation,
     ) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKTopAlgo::BRepExtrema_ProximityDistTool_is_node_on_border(
@@ -1601,13 +1596,13 @@ impl ProximityDistTool {
         })
     }
 
-    /// **Source:** `BRepExtrema_ProximityDistTool.hxx`:137 - `BRepExtrema_ProximityDistTool::IsEdgeOnBorder()`
+    /// **Source:** `BRepExtrema_ProximityDistTool.hxx`:136 - `BRepExtrema_ProximityDistTool::IsEdgeOnBorder()`
     /// Returns true if the edge is on the boarder.
     pub fn is_edge_on_border(
         theTrgIdx: i32,
         theFirstEdgeNodeIdx: i32,
         theSecondEdgeNodeIdx: i32,
-        theTr: &crate::ffi_types::HandlePolyTriangulation,
+        theTr: &crate::ffi_types::Handle_Poly_Triangulation,
     ) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKTopAlgo::BRepExtrema_ProximityDistTool_is_edge_on_border(
@@ -1620,7 +1615,7 @@ impl ProximityDistTool {
     }
 }
 
-/// **Source:** `BRepExtrema_ProximityDistTool.hxx`:52 - `BRepExtrema_ProximityDistTool_PrjState`
+/// **Source:** `BRepExtrema_ProximityDistTool.hxx`:53 - `BRepExtrema_ProximityDistTool_PrjState`
 /// Struct with information about projection point state from 2nd BVH,
 /// providing proximity point of 2nd shape
 pub use crate::ffi_types::BRepExtrema_ProximityDistTool_PrjState as ProximityDistTool_PrjState;
@@ -1634,7 +1629,7 @@ unsafe impl crate::CppDeletable for ProximityDistTool_PrjState {
 }
 
 impl ProximityDistTool_PrjState {
-    /// **Source:** `BRepExtrema_ProximityDistTool.hxx`:54 - `BRepExtrema_ProximityDistTool_PrjState::BRepExtrema_ProximityDistTool_PrjState()`
+    /// **Source:** `BRepExtrema_ProximityDistTool.hxx`:55 - `BRepExtrema_ProximityDistTool_PrjState::BRepExtrema_ProximityDistTool_PrjState()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -1643,7 +1638,7 @@ impl ProximityDistTool_PrjState {
         }
     }
 
-    /// **Source:** `BRepExtrema_ProximityDistTool.hxx`:62 - `BRepExtrema_ProximityDistTool_PrjState::BRepExtrema_ProximityDistTool_PrjState()`
+    /// **Source:** `BRepExtrema_ProximityDistTool.hxx`:63 - `BRepExtrema_ProximityDistTool_PrjState::BRepExtrema_ProximityDistTool_PrjState()`
     pub fn new_int_prjstate_int2(
         theTrgIdx: i32,
         thePrjState: &crate::ffi_types::BRepExtrema_ProximityDistTool_BVH_PrjState,
@@ -1655,7 +1650,7 @@ impl ProximityDistTool_PrjState {
         }
     }
 
-    /// **Source:** `BRepExtrema_ProximityDistTool.hxx`:73 - `BRepExtrema_ProximityDistTool_PrjState::GetTrgIdx()`
+    /// **Source:** `BRepExtrema_ProximityDistTool.hxx`:74 - `BRepExtrema_ProximityDistTool_PrjState::GetTrgIdx()`
     pub fn get_trg_idx(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKTopAlgo::BRepExtrema_ProximityDistTool_PrjState_get_trg_idx(
@@ -1664,7 +1659,7 @@ impl ProximityDistTool_PrjState {
         })
     }
 
-    /// **Source:** `BRepExtrema_ProximityDistTool.hxx`:75 - `BRepExtrema_ProximityDistTool_PrjState::GetPrjState()`
+    /// **Source:** `BRepExtrema_ProximityDistTool.hxx`:76 - `BRepExtrema_ProximityDistTool_PrjState::GetPrjState()`
     pub fn get_prj_state(
         &self,
     ) -> crate::OwnedPtr<crate::ffi_types::BRepExtrema_ProximityDistTool_BVH_PrjState> {
@@ -1677,14 +1672,14 @@ impl ProximityDistTool_PrjState {
         }
     }
 
-    /// **Source:** `BRepExtrema_ProximityDistTool.hxx`:77 - `BRepExtrema_ProximityDistTool_PrjState::GetNumberOfFirstNode()`
+    /// **Source:** `BRepExtrema_ProximityDistTool.hxx`:78 - `BRepExtrema_ProximityDistTool_PrjState::GetNumberOfFirstNode()`
     pub fn get_number_of_first_node(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKTopAlgo::BRepExtrema_ProximityDistTool_PrjState_get_number_of_first_node(self as *const Self)
         })
     }
 
-    /// **Source:** `BRepExtrema_ProximityDistTool.hxx`:79 - `BRepExtrema_ProximityDistTool_PrjState::GetNumberOfLastNode()`
+    /// **Source:** `BRepExtrema_ProximityDistTool.hxx`:80 - `BRepExtrema_ProximityDistTool_PrjState::GetNumberOfLastNode()`
     pub fn get_number_of_last_node(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKTopAlgo::BRepExtrema_ProximityDistTool_PrjState_get_number_of_last_node(self as *const Self)
@@ -1696,7 +1691,7 @@ impl ProximityDistTool_PrjState {
 // From BRepExtrema_ProximityValueTool.hxx
 // ========================
 
-/// **Source:** `BRepExtrema_ProximityValueTool.hxx`:80 - `BRepExtrema_ProximityValueTool`
+/// **Source:** `BRepExtrema_ProximityValueTool.hxx`:86 - `BRepExtrema_ProximityValueTool`
 /// Tool class for computation of the proximity value from one BVH
 /// primitive set to another, solving max(min) problem.
 /// Handles only edge/edge or face/face cases.
@@ -1717,7 +1712,7 @@ unsafe impl crate::CppDeletable for ProximityValueTool {
 }
 
 impl ProximityValueTool {
-    /// **Source:** `BRepExtrema_ProximityValueTool.hxx`:85 - `BRepExtrema_ProximityValueTool::BRepExtrema_ProximityValueTool()`
+    /// **Source:** `BRepExtrema_ProximityValueTool.hxx`:91 - `BRepExtrema_ProximityValueTool::BRepExtrema_ProximityValueTool()`
     /// Creates new uninitialized proximity tool.
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
@@ -1727,25 +1722,25 @@ impl ProximityValueTool {
         }
     }
 
-    /// **Source:** `BRepExtrema_ProximityValueTool.hxx`:88 - `BRepExtrema_ProximityValueTool::BRepExtrema_ProximityValueTool()`
+    /// **Source:** `BRepExtrema_ProximityValueTool.hxx`:94 - `BRepExtrema_ProximityValueTool::BRepExtrema_ProximityValueTool()`
     /// Creates new proximity tool for the given element sets.
-    pub fn new_handlebrepextrematriangleset2_shapelist2(
-        theSet1: &crate::ffi_types::HandleBRepExtremaTriangleSet,
-        theSet2: &crate::ffi_types::HandleBRepExtremaTriangleSet,
-        theShapeList1: &crate::ffi_types::BRepExtrema_ShapeList,
-        theShapeList2: &crate::ffi_types::BRepExtrema_ShapeList,
+    pub fn new_handlebrepextrematriangleset2_dynamicarray_topods_shape2(
+        theSet1: &crate::ffi_types::Handle_BRepExtrema_TriangleSet,
+        theSet2: &crate::ffi_types::Handle_BRepExtrema_TriangleSet,
+        theShapeList1: &crate::ffi_types::NCollection_DynamicArray_TopoDS_Shape,
+        theShapeList2: &crate::ffi_types::NCollection_DynamicArray_TopoDS_Shape,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKTopAlgo::BRepExtrema_ProximityValueTool_ctor_handlebrepextrematriangleset2_shapelist2(theSet1, theSet2, theShapeList1, theShapeList2)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKTopAlgo::BRepExtrema_ProximityValueTool_ctor_handlebrepextrematriangleset2_dynamicarray_topods_shape2(theSet1, theSet2, theShapeList1, theShapeList2)))
         }
     }
 
-    /// **Source:** `BRepExtrema_ProximityValueTool.hxx`:95 - `BRepExtrema_ProximityValueTool::LoadTriangleSets()`
+    /// **Source:** `BRepExtrema_ProximityValueTool.hxx`:102 - `BRepExtrema_ProximityValueTool::LoadTriangleSets()`
     /// Loads the given element sets into the proximity tool.
     pub fn load_triangle_sets(
         &mut self,
-        theSet1: &crate::ffi_types::HandleBRepExtremaTriangleSet,
-        theSet2: &crate::ffi_types::HandleBRepExtremaTriangleSet,
+        theSet1: &crate::ffi_types::Handle_BRepExtrema_TriangleSet,
+        theSet2: &crate::ffi_types::Handle_BRepExtrema_TriangleSet,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKTopAlgo::BRepExtrema_ProximityValueTool_load_triangle_sets(
@@ -1756,12 +1751,12 @@ impl ProximityValueTool {
         })
     }
 
-    /// **Source:** `BRepExtrema_ProximityValueTool.hxx`:99 - `BRepExtrema_ProximityValueTool::LoadShapeLists()`
+    /// **Source:** `BRepExtrema_ProximityValueTool.hxx`:106 - `BRepExtrema_ProximityValueTool::LoadShapeLists()`
     /// Loads the given list of subshapes into the proximity tool.
     pub fn load_shape_lists(
         &mut self,
-        theShapeList1: &crate::ffi_types::BRepExtrema_ShapeList,
-        theShapeList2: &crate::ffi_types::BRepExtrema_ShapeList,
+        theShapeList1: &crate::ffi_types::NCollection_DynamicArray_TopoDS_Shape,
+        theShapeList2: &crate::ffi_types::NCollection_DynamicArray_TopoDS_Shape,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKTopAlgo::BRepExtrema_ProximityValueTool_load_shape_lists(
@@ -1772,7 +1767,7 @@ impl ProximityValueTool {
         })
     }
 
-    /// **Source:** `BRepExtrema_ProximityValueTool.hxx`:104 - `BRepExtrema_ProximityValueTool::SetNbSamplePoints()`
+    /// **Source:** `BRepExtrema_ProximityValueTool.hxx`:111 - `BRepExtrema_ProximityValueTool::SetNbSamplePoints()`
     /// Sets number of sample points used for proximity calculation for each shape.
     /// If number is less or equal zero, all triangulation nodes are used.
     pub fn set_nb_sample_points(&mut self, theSamples1: i32, theSamples2: i32) {
@@ -1785,7 +1780,7 @@ impl ProximityValueTool {
         })
     }
 
-    /// **Source:** `BRepExtrema_ProximityValueTool.hxx`:108 - `BRepExtrema_ProximityValueTool::Perform()`
+    /// **Source:** `BRepExtrema_ProximityValueTool.hxx`:114 - `BRepExtrema_ProximityValueTool::Perform()`
     /// Performs the computation of the proximity value.
     pub fn perform(&mut self, theTolerance: &mut f64) {
         crate::check_void_result(unsafe {
@@ -1796,7 +1791,7 @@ impl ProximityValueTool {
         })
     }
 
-    /// **Source:** `BRepExtrema_ProximityValueTool.hxx`:111 - `BRepExtrema_ProximityValueTool::IsDone()`
+    /// **Source:** `BRepExtrema_ProximityValueTool.hxx`:117 - `BRepExtrema_ProximityValueTool::IsDone()`
     /// Is proximity test completed?
     pub fn is_done(&self) -> bool {
         crate::check_result(unsafe {
@@ -1804,7 +1799,7 @@ impl ProximityValueTool {
         })
     }
 
-    /// **Source:** `BRepExtrema_ProximityValueTool.hxx`:114 - `BRepExtrema_ProximityValueTool::MarkDirty()`
+    /// **Source:** `BRepExtrema_ProximityValueTool.hxx`:120 - `BRepExtrema_ProximityValueTool::MarkDirty()`
     /// Marks test results as outdated.
     pub fn mark_dirty(&mut self) {
         crate::check_void_result(unsafe {
@@ -1814,7 +1809,7 @@ impl ProximityValueTool {
         })
     }
 
-    /// **Source:** `BRepExtrema_ProximityValueTool.hxx`:117 - `BRepExtrema_ProximityValueTool::Distance()`
+    /// **Source:** `BRepExtrema_ProximityValueTool.hxx`:123 - `BRepExtrema_ProximityValueTool::Distance()`
     /// Returns the computed distance.
     pub fn distance(&self) -> f64 {
         crate::check_result(unsafe {
@@ -1824,7 +1819,7 @@ impl ProximityValueTool {
         })
     }
 
-    /// **Source:** `BRepExtrema_ProximityValueTool.hxx`:120 - `BRepExtrema_ProximityValueTool::ProximityPoints()`
+    /// **Source:** `BRepExtrema_ProximityValueTool.hxx`:126 - `BRepExtrema_ProximityValueTool::ProximityPoints()`
     /// Returns points on triangles sets, which provide the proximity distance.
     pub fn proximity_points(&self, thePoint1: &mut crate::gp::Pnt, thePoint2: &mut crate::gp::Pnt) {
         crate::check_void_result(unsafe {
@@ -1838,7 +1833,7 @@ impl ProximityValueTool {
 }
 
 // ── Skipped symbols for ProximityValueTool (1 total) ──
-// SKIPPED: **Source:** `BRepExtrema_ProximityValueTool.hxx`:127 - `BRepExtrema_ProximityValueTool::ProximityPointsStatus`
+// SKIPPED: **Source:** `BRepExtrema_ProximityValueTool.hxx`:133 - `BRepExtrema_ProximityValueTool::ProximityPointsStatus`
 //   method: Returns status of points on triangles sets, which provide the proximity distance.
 //   Reason: param 'thePointStatus1' uses unknown type 'ProxPnt_Status&'
 //   // pub fn proximity_points_status(&self, thePointStatus1: &mut Status, thePointStatus2: &mut Status);
@@ -1959,7 +1954,7 @@ impl SelfIntersection {
     /// Returns set of IDs of overlapped sub-shapes (started from 0).
     pub fn overlap_elements(
         &self,
-    ) -> &crate::ffi_types::BRepExtrema_MapOfIntegerPackedMapOfInteger {
+    ) -> &crate::ffi_types::NCollection_DataMap_int_TColStd_PackedMapOfInteger {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKTopAlgo::BRepExtrema_SelfIntersection_overlap_elements(
@@ -1984,7 +1979,7 @@ impl SelfIntersection {
 
     /// **Source:** `BRepExtrema_SelfIntersection.hxx`:75 - `BRepExtrema_SelfIntersection::ElementSet()`
     /// Returns set of all the face triangles of the shape.
-    pub fn element_set(&self) -> &crate::ffi_types::HandleBRepExtremaTriangleSet {
+    pub fn element_set(&self) -> &crate::ffi_types::Handle_BRepExtrema_TriangleSet {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKTopAlgo::BRepExtrema_SelfIntersection_element_set(
@@ -2056,7 +2051,7 @@ impl ShapeProximity {
         }
     }
 
-    /// **Source:** `BRepExtrema_ShapeProximity.hxx`:57 - `BRepExtrema_ShapeProximity::BRepExtrema_ShapeProximity()`
+    /// **Source:** `BRepExtrema_ShapeProximity.hxx`:56 - `BRepExtrema_ShapeProximity::BRepExtrema_ShapeProximity()`
     /// Creates proximity tool for the given two shapes.
     pub fn new_shape2_real(
         theShape1: &crate::topo_ds::Shape,
@@ -2074,7 +2069,7 @@ impl ShapeProximity {
         }
     }
 
-    /// **Source:** `BRepExtrema_ShapeProximity.hxx`:64 - `BRepExtrema_ShapeProximity::Tolerance()`
+    /// **Source:** `BRepExtrema_ShapeProximity.hxx`:62 - `BRepExtrema_ShapeProximity::Tolerance()`
     /// Returns tolerance value for overlap test (distance between shapes).
     pub fn tolerance(&self) -> f64 {
         crate::check_result(unsafe {
@@ -2082,7 +2077,7 @@ impl ShapeProximity {
         })
     }
 
-    /// **Source:** `BRepExtrema_ShapeProximity.hxx`:67 - `BRepExtrema_ShapeProximity::SetTolerance()`
+    /// **Source:** `BRepExtrema_ShapeProximity.hxx`:65 - `BRepExtrema_ShapeProximity::SetTolerance()`
     /// Sets tolerance value for overlap test (distance between shapes).
     pub fn set_tolerance(&mut self, theTolerance: f64) {
         crate::check_void_result(unsafe {
@@ -2093,7 +2088,7 @@ impl ShapeProximity {
         })
     }
 
-    /// **Source:** `BRepExtrema_ShapeProximity.hxx`:70 - `BRepExtrema_ShapeProximity::Proximity()`
+    /// **Source:** `BRepExtrema_ShapeProximity.hxx`:68 - `BRepExtrema_ShapeProximity::Proximity()`
     /// Returns proximity value calculated for the whole input shapes.
     pub fn proximity(&self) -> f64 {
         crate::check_result(unsafe {
@@ -2101,7 +2096,7 @@ impl ShapeProximity {
         })
     }
 
-    /// **Source:** `BRepExtrema_ShapeProximity.hxx`:73 - `BRepExtrema_ShapeProximity::LoadShape1()`
+    /// **Source:** `BRepExtrema_ShapeProximity.hxx`:71 - `BRepExtrema_ShapeProximity::LoadShape1()`
     /// Loads 1st shape into proximity tool.
     pub fn load_shape1(&mut self, theShape1: &crate::topo_ds::Shape) -> bool {
         crate::check_result(unsafe {
@@ -2112,7 +2107,7 @@ impl ShapeProximity {
         })
     }
 
-    /// **Source:** `BRepExtrema_ShapeProximity.hxx`:76 - `BRepExtrema_ShapeProximity::LoadShape2()`
+    /// **Source:** `BRepExtrema_ShapeProximity.hxx`:74 - `BRepExtrema_ShapeProximity::LoadShape2()`
     /// Loads 2nd shape into proximity tool.
     pub fn load_shape2(&mut self, theShape2: &crate::topo_ds::Shape) -> bool {
         crate::check_result(unsafe {
@@ -2123,7 +2118,7 @@ impl ShapeProximity {
         })
     }
 
-    /// **Source:** `BRepExtrema_ShapeProximity.hxx`:80 - `BRepExtrema_ShapeProximity::SetNbSamples1()`
+    /// **Source:** `BRepExtrema_ShapeProximity.hxx`:78 - `BRepExtrema_ShapeProximity::SetNbSamples1()`
     /// Set number of sample points on the 1st shape used to compute the proximity value.
     /// In case of 0, all triangulation nodes will be used.
     pub fn set_nb_samples1(&mut self, theNbSamples: i32) {
@@ -2135,7 +2130,7 @@ impl ShapeProximity {
         })
     }
 
-    /// **Source:** `BRepExtrema_ShapeProximity.hxx`:84 - `BRepExtrema_ShapeProximity::SetNbSamples2()`
+    /// **Source:** `BRepExtrema_ShapeProximity.hxx`:82 - `BRepExtrema_ShapeProximity::SetNbSamples2()`
     /// Set number of sample points on the 2nd shape used to compute the proximity value.
     /// In case of 0, all triangulation nodes will be used.
     pub fn set_nb_samples2(&mut self, theNbSamples: i32) {
@@ -2147,7 +2142,7 @@ impl ShapeProximity {
         })
     }
 
-    /// **Source:** `BRepExtrema_ShapeProximity.hxx`:87 - `BRepExtrema_ShapeProximity::Perform()`
+    /// **Source:** `BRepExtrema_ShapeProximity.hxx`:85 - `BRepExtrema_ShapeProximity::Perform()`
     /// Performs search of overlapped faces.
     pub fn perform(&mut self) {
         crate::check_void_result(unsafe {
@@ -2155,7 +2150,7 @@ impl ShapeProximity {
         })
     }
 
-    /// **Source:** `BRepExtrema_ShapeProximity.hxx`:90 - `BRepExtrema_ShapeProximity::IsDone()`
+    /// **Source:** `BRepExtrema_ShapeProximity.hxx`:88 - `BRepExtrema_ShapeProximity::IsDone()`
     /// True if the search is completed.
     pub fn is_done(&self) -> bool {
         crate::check_result(unsafe {
@@ -2163,11 +2158,11 @@ impl ShapeProximity {
         })
     }
 
-    /// **Source:** `BRepExtrema_ShapeProximity.hxx`:93 - `BRepExtrema_ShapeProximity::OverlapSubShapes1()`
+    /// **Source:** `BRepExtrema_ShapeProximity.hxx`:91 - `BRepExtrema_ShapeProximity::OverlapSubShapes1()`
     /// Returns set of IDs of overlapped faces of 1st shape (started from 0).
     pub fn overlap_sub_shapes1(
         &self,
-    ) -> &crate::ffi_types::BRepExtrema_MapOfIntegerPackedMapOfInteger {
+    ) -> &crate::ffi_types::NCollection_DataMap_int_TColStd_PackedMapOfInteger {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKTopAlgo::BRepExtrema_ShapeProximity_overlap_sub_shapes1(
@@ -2177,11 +2172,11 @@ impl ShapeProximity {
         }
     }
 
-    /// **Source:** `BRepExtrema_ShapeProximity.hxx`:99 - `BRepExtrema_ShapeProximity::OverlapSubShapes2()`
+    /// **Source:** `BRepExtrema_ShapeProximity.hxx`:97 - `BRepExtrema_ShapeProximity::OverlapSubShapes2()`
     /// Returns set of IDs of overlapped faces of 2nd shape (started from 0).
     pub fn overlap_sub_shapes2(
         &self,
-    ) -> &crate::ffi_types::BRepExtrema_MapOfIntegerPackedMapOfInteger {
+    ) -> &crate::ffi_types::NCollection_DataMap_int_TColStd_PackedMapOfInteger {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKTopAlgo::BRepExtrema_ShapeProximity_overlap_sub_shapes2(
@@ -2191,7 +2186,7 @@ impl ShapeProximity {
         }
     }
 
-    /// **Source:** `BRepExtrema_ShapeProximity.hxx`:105 - `BRepExtrema_ShapeProximity::GetSubShape1()`
+    /// **Source:** `BRepExtrema_ShapeProximity.hxx`:103 - `BRepExtrema_ShapeProximity::GetSubShape1()`
     /// Returns sub-shape from 1st shape with the given index (started from 0).
     pub fn get_sub_shape1(&self, theID: i32) -> &crate::topo_ds::Shape {
         unsafe {
@@ -2204,7 +2199,7 @@ impl ShapeProximity {
         }
     }
 
-    /// **Source:** `BRepExtrema_ShapeProximity.hxx`:111 - `BRepExtrema_ShapeProximity::GetSubShape2()`
+    /// **Source:** `BRepExtrema_ShapeProximity.hxx`:106 - `BRepExtrema_ShapeProximity::GetSubShape2()`
     /// Returns sub-shape from 1st shape with the given index (started from 0).
     pub fn get_sub_shape2(&self, theID: i32) -> &crate::topo_ds::Shape {
         unsafe {
@@ -2217,9 +2212,9 @@ impl ShapeProximity {
         }
     }
 
-    /// **Source:** `BRepExtrema_ShapeProximity.hxx`:117 - `BRepExtrema_ShapeProximity::ElementSet1()`
+    /// **Source:** `BRepExtrema_ShapeProximity.hxx`:109 - `BRepExtrema_ShapeProximity::ElementSet1()`
     /// Returns set of all the face triangles of the 1st shape.
-    pub fn element_set1(&self) -> &crate::ffi_types::HandleBRepExtremaTriangleSet {
+    pub fn element_set1(&self) -> &crate::ffi_types::Handle_BRepExtrema_TriangleSet {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKTopAlgo::BRepExtrema_ShapeProximity_element_set1(
@@ -2229,9 +2224,9 @@ impl ShapeProximity {
         }
     }
 
-    /// **Source:** `BRepExtrema_ShapeProximity.hxx`:120 - `BRepExtrema_ShapeProximity::ElementSet2()`
+    /// **Source:** `BRepExtrema_ShapeProximity.hxx`:112 - `BRepExtrema_ShapeProximity::ElementSet2()`
     /// Returns set of all the face triangles of the 2nd shape.
-    pub fn element_set2(&self) -> &crate::ffi_types::HandleBRepExtremaTriangleSet {
+    pub fn element_set2(&self) -> &crate::ffi_types::Handle_BRepExtrema_TriangleSet {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKTopAlgo::BRepExtrema_ShapeProximity_element_set2(
@@ -2241,7 +2236,7 @@ impl ShapeProximity {
         }
     }
 
-    /// **Source:** `BRepExtrema_ShapeProximity.hxx`:124 - `BRepExtrema_ShapeProximity::ProximityPoint1()`
+    /// **Source:** `BRepExtrema_ShapeProximity.hxx`:116 - `BRepExtrema_ShapeProximity::ProximityPoint1()`
     /// Returns the point on the 1st shape, which could be used as a reference point
     /// for the value of the proximity.
     pub fn proximity_point1(&self) -> &crate::gp::Pnt {
@@ -2254,7 +2249,7 @@ impl ShapeProximity {
         }
     }
 
-    /// **Source:** `BRepExtrema_ShapeProximity.hxx`:128 - `BRepExtrema_ShapeProximity::ProximityPoint2()`
+    /// **Source:** `BRepExtrema_ShapeProximity.hxx`:120 - `BRepExtrema_ShapeProximity::ProximityPoint2()`
     /// Returns the point on the 2nd shape, which could be used as a reference point
     /// for the value of the proximity.
     pub fn proximity_point2(&self) -> &crate::gp::Pnt {
@@ -2269,13 +2264,13 @@ impl ShapeProximity {
 }
 
 // ── Skipped symbols for ShapeProximity (2 total) ──
-// SKIPPED: **Source:** `BRepExtrema_ShapeProximity.hxx`:132 - `BRepExtrema_ShapeProximity::ProxPntStatus1`
+// SKIPPED: **Source:** `BRepExtrema_ShapeProximity.hxx`:124 - `BRepExtrema_ShapeProximity::ProxPntStatus1`
 //   method: Returns the status of point on the 1st shape, which could be used as a reference point
 //   method: for the value of the proximity.
 //   Reason: return type 'ProxPnt_Status const&' is unknown
 //   // pub fn prox_pnt_status1(&self) -> &Status;
 //
-// SKIPPED: **Source:** `BRepExtrema_ShapeProximity.hxx`:136 - `BRepExtrema_ShapeProximity::ProxPntStatus2`
+// SKIPPED: **Source:** `BRepExtrema_ShapeProximity.hxx`:128 - `BRepExtrema_ShapeProximity::ProxPntStatus2`
 //   method: Returns the status of point on the 2nd shape, which could be used as a reference point
 //   method: for the value of the proximity.
 //   Reason: return type 'ProxPnt_Status const&' is unknown
@@ -2328,7 +2323,7 @@ impl SolutionElem {
     }
 
     /// **Source:** `BRepExtrema_SolutionElem.hxx`:65 - `BRepExtrema_SolutionElem::BRepExtrema_SolutionElem()`
-    /// This constructor is used when the  solution of distance is on an Edge.
+    /// This constructor is used when the solution of distance is on an Edge.
     /// The different initialized fields are:
     /// @param theDist    the distance
     /// @param thePoint   the solution point
@@ -2348,7 +2343,7 @@ impl SolutionElem {
     }
 
     /// **Source:** `BRepExtrema_SolutionElem.hxx`:87 - `BRepExtrema_SolutionElem::BRepExtrema_SolutionElem()`
-    /// This constructor is used when the  solution of distance is in a Face.
+    /// This constructor is used when the solution of distance is in a Face.
     /// The different initialized fields are:
     /// @param theDist    the distance
     /// @param thePoint   the solution point
@@ -2457,7 +2452,7 @@ impl SolutionElem {
 // From BRepExtrema_TriangleSet.hxx
 // ========================
 
-/// **Source:** `BRepExtrema_TriangleSet.hxx`:29 - `BRepExtrema_TriangleSet`
+/// **Source:** `BRepExtrema_TriangleSet.hxx`:30 - `BRepExtrema_TriangleSet`
 /// Triangle set corresponding to specific face.
 pub use crate::ffi_types::BRepExtrema_TriangleSet as TriangleSet;
 
@@ -2470,7 +2465,7 @@ unsafe impl crate::CppDeletable for TriangleSet {
 }
 
 impl TriangleSet {
-    /// **Source:** `BRepExtrema_TriangleSet.hxx`:33 - `BRepExtrema_TriangleSet::BRepExtrema_TriangleSet()`
+    /// **Source:** `BRepExtrema_TriangleSet.hxx`:34 - `BRepExtrema_TriangleSet::BRepExtrema_TriangleSet()`
     /// Creates empty triangle set.
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
@@ -2480,19 +2475,21 @@ impl TriangleSet {
         }
     }
 
-    /// **Source:** `BRepExtrema_TriangleSet.hxx`:36 - `BRepExtrema_TriangleSet::BRepExtrema_TriangleSet()`
+    /// **Source:** `BRepExtrema_TriangleSet.hxx`:37 - `BRepExtrema_TriangleSet::BRepExtrema_TriangleSet()`
     /// Creates triangle set from the given face.
-    pub fn new_shapelist(
-        theFaces: &crate::ffi_types::BRepExtrema_ShapeList,
+    pub fn new_dynamicarray_topods_shape(
+        theFaces: &crate::ffi_types::NCollection_DynamicArray_TopoDS_Shape,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKTopAlgo::BRepExtrema_TriangleSet_ctor_shapelist(theFaces),
+                crate::ffi_extern_TKTopAlgo::BRepExtrema_TriangleSet_ctor_dynamicarray_topods_shape(
+                    theFaces,
+                ),
             ))
         }
     }
 
-    /// **Source:** `BRepExtrema_TriangleSet.hxx`:43 - `BRepExtrema_TriangleSet::Size()`
+    /// **Source:** `BRepExtrema_TriangleSet.hxx`:44 - `BRepExtrema_TriangleSet::Size()`
     /// @name methods implementing BVH set interface
     /// Returns total number of triangles.
     pub fn size(&self) -> i32 {
@@ -2501,7 +2498,7 @@ impl TriangleSet {
         })
     }
 
-    /// **Source:** `BRepExtrema_TriangleSet.hxx`:46 - `BRepExtrema_TriangleSet::Box()`
+    /// **Source:** `BRepExtrema_TriangleSet.hxx`:47 - `BRepExtrema_TriangleSet::Box()`
     /// Returns AABB of the given triangle.
     pub fn box_(&self, theIndex: i32) -> crate::OwnedPtr<crate::ffi_types::Select3D_BndBox3d> {
         unsafe {
@@ -2526,7 +2523,7 @@ impl TriangleSet {
         })
     }
 
-    /// **Source:** `BRepExtrema_TriangleSet.hxx`:57 - `BRepExtrema_TriangleSet::Swap()`
+    /// **Source:** `BRepExtrema_TriangleSet.hxx`:56 - `BRepExtrema_TriangleSet::Swap()`
     /// Swaps indices of two specified triangles.
     pub fn swap(&mut self, theIndex1: i32, theIndex2: i32) {
         crate::check_void_result(unsafe {
@@ -2538,7 +2535,7 @@ impl TriangleSet {
         })
     }
 
-    /// **Source:** `BRepExtrema_TriangleSet.hxx`:62 - `BRepExtrema_TriangleSet::Clear()`
+    /// **Source:** `BRepExtrema_TriangleSet.hxx`:60 - `BRepExtrema_TriangleSet::Clear()`
     /// Clears triangle set data.
     pub fn clear(&mut self) {
         crate::check_void_result(unsafe {
@@ -2546,15 +2543,18 @@ impl TriangleSet {
         })
     }
 
-    /// **Source:** `BRepExtrema_TriangleSet.hxx`:65 - `BRepExtrema_TriangleSet::Init()`
+    /// **Source:** `BRepExtrema_TriangleSet.hxx`:63 - `BRepExtrema_TriangleSet::Init()`
     /// Initializes triangle set.
-    pub fn init(&mut self, theShapes: &crate::ffi_types::BRepExtrema_ShapeList) -> bool {
+    pub fn init(
+        &mut self,
+        theShapes: &crate::ffi_types::NCollection_DynamicArray_TopoDS_Shape,
+    ) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKTopAlgo::BRepExtrema_TriangleSet_init(self as *mut Self, theShapes)
         })
     }
 
-    /// **Source:** `BRepExtrema_TriangleSet.hxx`:68 - `BRepExtrema_TriangleSet::GetVertices()`
+    /// **Source:** `BRepExtrema_TriangleSet.hxx`:66 - `BRepExtrema_TriangleSet::GetVertices()`
     /// Returns all vertices.
     pub fn get_vertices(&self) -> &crate::ffi_types::BVH_Array3d {
         unsafe {
@@ -2566,7 +2566,7 @@ impl TriangleSet {
         }
     }
 
-    /// **Source:** `BRepExtrema_TriangleSet.hxx`:71 - `BRepExtrema_TriangleSet::GetVertices()`
+    /// **Source:** `BRepExtrema_TriangleSet.hxx`:69 - `BRepExtrema_TriangleSet::GetVertices()`
     /// Returns vertices of the given triangle.
     pub fn get_vertices_int_vec3d3(
         &self,
@@ -2586,12 +2586,12 @@ impl TriangleSet {
         })
     }
 
-    /// **Source:** `BRepExtrema_TriangleSet.hxx`:77 - `BRepExtrema_TriangleSet::GetVtxIndices()`
+    /// **Source:** `BRepExtrema_TriangleSet.hxx`:75 - `BRepExtrema_TriangleSet::GetVtxIndices()`
     /// Returns vertex indices of the given triangle.
     pub fn get_vtx_indices(
         &self,
         theIndex: i32,
-        theVtxIndices: &mut crate::ffi_types::TColStd_Array1OfInteger,
+        theVtxIndices: &mut crate::ffi_types::NCollection_Array1_int,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKTopAlgo::BRepExtrema_TriangleSet_get_vtx_indices(
@@ -2602,7 +2602,7 @@ impl TriangleSet {
         })
     }
 
-    /// **Source:** `BRepExtrema_TriangleSet.hxx`:81 - `BRepExtrema_TriangleSet::GetFaceID()`
+    /// **Source:** `BRepExtrema_TriangleSet.hxx`:79 - `BRepExtrema_TriangleSet::GetFaceID()`
     /// Returns face ID of the given triangle.
     pub fn get_face_id(&self, theIndex: i32) -> i32 {
         crate::check_result(unsafe {
@@ -2613,7 +2613,7 @@ impl TriangleSet {
         })
     }
 
-    /// **Source:** `BRepExtrema_TriangleSet.hxx`:84 - `BRepExtrema_TriangleSet::GetShapeIDOfVtx()`
+    /// **Source:** `BRepExtrema_TriangleSet.hxx`:82 - `BRepExtrema_TriangleSet::GetShapeIDOfVtx()`
     /// Returns shape ID of the given vertex index.
     pub fn get_shape_id_of_vtx(&self, theIndex: i32) -> i32 {
         crate::check_result(unsafe {
@@ -2624,7 +2624,7 @@ impl TriangleSet {
         })
     }
 
-    /// **Source:** `BRepExtrema_TriangleSet.hxx`:88 - `BRepExtrema_TriangleSet::GetVtxIdxInShape()`
+    /// **Source:** `BRepExtrema_TriangleSet.hxx`:86 - `BRepExtrema_TriangleSet::GetVtxIdxInShape()`
     /// Returns vertex index in tringulation of the shape, which vertex belongs,
     /// with the given vtx ID in whole set.
     pub fn get_vtx_idx_in_shape(&self, theIndex: i32) -> i32 {
@@ -2636,7 +2636,7 @@ impl TriangleSet {
         })
     }
 
-    /// **Source:** `BRepExtrema_TriangleSet.hxx`:92 - `BRepExtrema_TriangleSet::GetTrgIdxInShape()`
+    /// **Source:** `BRepExtrema_TriangleSet.hxx`:90 - `BRepExtrema_TriangleSet::GetTrgIdxInShape()`
     /// Returns triangle index (before swapping) in tringulation of the shape, which triangle belongs,
     /// with the given trg ID in whole set (after swapping).
     pub fn get_trg_idx_in_shape(&self, theIndex: i32) -> i32 {
@@ -2648,8 +2648,8 @@ impl TriangleSet {
         })
     }
 
-    /// **Source:** `BRepExtrema_TriangleSet.hxx`:127 - `BRepExtrema_TriangleSet::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `BRepExtrema_TriangleSet.hxx`:125 - `BRepExtrema_TriangleSet::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKTopAlgo::BRepExtrema_TriangleSet_dynamic_type(
@@ -2659,7 +2659,7 @@ impl TriangleSet {
         }
     }
 
-    /// **Source:** `BRepExtrema_TriangleSet.hxx`:127 - `BRepExtrema_TriangleSet::get_type_name()`
+    /// **Source:** `BRepExtrema_TriangleSet.hxx`:125 - `BRepExtrema_TriangleSet::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -2670,8 +2670,8 @@ impl TriangleSet {
         .into_owned()
     }
 
-    /// **Source:** `BRepExtrema_TriangleSet.hxx`:127 - `BRepExtrema_TriangleSet::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    /// **Source:** `BRepExtrema_TriangleSet.hxx`:125 - `BRepExtrema_TriangleSet::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKTopAlgo::BRepExtrema_TriangleSet_get_type_descriptor(),
@@ -2682,7 +2682,7 @@ impl TriangleSet {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleBRepExtremaTriangleSet> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_BRepExtrema_TriangleSet> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKTopAlgo::BRepExtrema_TriangleSet_to_handle(obj.into_raw()),
@@ -2691,38 +2691,38 @@ impl TriangleSet {
     }
 }
 
-pub use crate::ffi_types::HandleBRepExtremaTriangleSet;
+pub use crate::ffi_types::Handle_BRepExtrema_TriangleSet;
 
-unsafe impl crate::CppDeletable for HandleBRepExtremaTriangleSet {
+unsafe impl crate::CppDeletable for Handle_BRepExtrema_TriangleSet {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKTopAlgo::HandleBRepExtremaTriangleSet_destructor(ptr);
+            crate::ffi_extern_TKTopAlgo::Handle_BRepExtrema_TriangleSet_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleBRepExtremaTriangleSet {
+unsafe impl crate::CppCopyable for Handle_BRepExtrema_TriangleSet {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
         unsafe {
-            crate::check_result(crate::ffi_extern_TKTopAlgo::HandleBRepExtremaTriangleSet_clone(
+            crate::check_result(crate::ffi_extern_TKTopAlgo::Handle_BRepExtrema_TriangleSet_clone(
                 ptr,
             ))
         }
     }
 }
 
-impl HandleBRepExtremaTriangleSet {
+impl Handle_BRepExtrema_TriangleSet {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
         unsafe {
-            crate::ffi_extern_TKTopAlgo::HandleBRepExtremaTriangleSet_is_null(self as *const Self)
+            crate::ffi_extern_TKTopAlgo::Handle_BRepExtrema_TriangleSet_is_null(self as *const Self)
         }
     }
 
     /// Dereference this Handle to access the underlying BRepExtrema_TriangleSet
     pub fn get(&self) -> &crate::ffi_types::BRepExtrema_TriangleSet {
         unsafe {
-            &*crate::check_result(crate::ffi_extern_TKTopAlgo::HandleBRepExtremaTriangleSet_get(
+            &*crate::check_result(crate::ffi_extern_TKTopAlgo::Handle_BRepExtrema_TriangleSet_get(
                 self as *const Self,
             ))
         }
@@ -2732,7 +2732,7 @@ impl HandleBRepExtremaTriangleSet {
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::BRepExtrema_TriangleSet {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi_extern_TKTopAlgo::HandleBRepExtremaTriangleSet_get_mut(
+                crate::ffi_extern_TKTopAlgo::Handle_BRepExtrema_TriangleSet_get_mut(
                     self as *mut Self,
                 ),
             )
@@ -2744,7 +2744,7 @@ impl HandleBRepExtremaTriangleSet {
 // From BRepExtrema_UnCompatibleShape.hxx
 // ========================
 
-/// **Source:** `BRepExtrema_UnCompatibleShape.hxx`:36 - `BRepExtrema_UnCompatibleShape`
+/// **Source:** `BRepExtrema_UnCompatibleShape.hxx`:32 - `BRepExtrema_UnCompatibleShape`
 pub use crate::ffi_types::BRepExtrema_UnCompatibleShape as UnCompatibleShape;
 
 unsafe impl crate::CppDeletable for UnCompatibleShape {
@@ -2756,16 +2756,7 @@ unsafe impl crate::CppDeletable for UnCompatibleShape {
 }
 
 impl UnCompatibleShape {
-    /// **Source:** `BRepExtrema_UnCompatibleShape.hxx`:36 - `BRepExtrema_UnCompatibleShape::BRepExtrema_UnCompatibleShape()`
-    pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKTopAlgo::BRepExtrema_UnCompatibleShape_ctor(),
-            ))
-        }
-    }
-
-    /// **Source:** `BRepExtrema_UnCompatibleShape.hxx`:36 - `BRepExtrema_UnCompatibleShape::BRepExtrema_UnCompatibleShape()`
+    /// **Source:** `BRepExtrema_UnCompatibleShape.hxx`:32 - `BRepExtrema_UnCompatibleShape::BRepExtrema_UnCompatibleShape()`
     pub fn new_charptr(theMessage: &str) -> crate::OwnedPtr<Self> {
         let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
         unsafe {
@@ -2777,7 +2768,7 @@ impl UnCompatibleShape {
         }
     }
 
-    /// **Source:** `BRepExtrema_UnCompatibleShape.hxx`:36 - `BRepExtrema_UnCompatibleShape::BRepExtrema_UnCompatibleShape()`
+    /// **Source:** `BRepExtrema_UnCompatibleShape.hxx`:32 - `BRepExtrema_UnCompatibleShape::BRepExtrema_UnCompatibleShape()`
     pub fn new_charptr2(theMessage: &str, theStackTrace: &str) -> crate::OwnedPtr<Self> {
         let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
         let c_theStackTrace = std::ffi::CString::new(theStackTrace).unwrap();
@@ -2791,83 +2782,17 @@ impl UnCompatibleShape {
         }
     }
 
-    /// **Source:** `BRepExtrema_UnCompatibleShape.hxx`:36 - `BRepExtrema_UnCompatibleShape::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `BRepExtrema_UnCompatibleShape.hxx`:32 - `BRepExtrema_UnCompatibleShape::ExceptionType()`
+    pub fn exception_type(&self) -> std::string::String {
         unsafe {
-            &*(crate::check_result(
-                crate::ffi_extern_TKTopAlgo::BRepExtrema_UnCompatibleShape_dynamic_type(
+            std::ffi::CStr::from_ptr(crate::check_result(
+                crate::ffi_extern_TKTopAlgo::BRepExtrema_UnCompatibleShape_exception_type(
                     self as *const Self,
                 ),
             ))
         }
-    }
-
-    /// **Source:** `BRepExtrema_UnCompatibleShape.hxx`:36 - `BRepExtrema_UnCompatibleShape::Raise()`
-    pub fn raise_charptr(theMessage: &str) {
-        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKTopAlgo::BRepExtrema_UnCompatibleShape_raise_charptr(
-                c_theMessage.as_ptr(),
-            )
-        })
-    }
-
-    /// **Source:** `BRepExtrema_UnCompatibleShape.hxx`:36 - `BRepExtrema_UnCompatibleShape::Raise()`
-    pub fn raise_sstream(theMessage: &mut crate::ffi_types::Standard_SStream) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKTopAlgo::BRepExtrema_UnCompatibleShape_raise_sstream(theMessage)
-        })
-    }
-
-    /// **Source:** `BRepExtrema_UnCompatibleShape.hxx`:36 - `BRepExtrema_UnCompatibleShape::NewInstance()`
-    pub fn new_instance_charptr(
-        theMessage: &str,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleBRepExtremaUnCompatibleShape> {
-        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKTopAlgo::BRepExtrema_UnCompatibleShape_new_instance_charptr(
-                    c_theMessage.as_ptr(),
-                ),
-            ))
-        }
-    }
-
-    /// **Source:** `BRepExtrema_UnCompatibleShape.hxx`:36 - `BRepExtrema_UnCompatibleShape::NewInstance()`
-    pub fn new_instance_charptr2(
-        theMessage: &str,
-        theStackTrace: &str,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleBRepExtremaUnCompatibleShape> {
-        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
-        let c_theStackTrace = std::ffi::CString::new(theStackTrace).unwrap();
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKTopAlgo::BRepExtrema_UnCompatibleShape_new_instance_charptr2(
-                    c_theMessage.as_ptr(),
-                    c_theStackTrace.as_ptr(),
-                ),
-            ))
-        }
-    }
-
-    /// **Source:** `BRepExtrema_UnCompatibleShape.hxx`:36 - `BRepExtrema_UnCompatibleShape::get_type_name()`
-    pub fn get_type_name() -> std::string::String {
-        unsafe {
-            std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi_extern_TKTopAlgo::BRepExtrema_UnCompatibleShape_get_type_name(),
-            ))
-        }
         .to_string_lossy()
         .into_owned()
-    }
-
-    /// **Source:** `BRepExtrema_UnCompatibleShape.hxx`:36 - `BRepExtrema_UnCompatibleShape::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
-        unsafe {
-            &*(crate::check_result(
-                crate::ffi_extern_TKTopAlgo::BRepExtrema_UnCompatibleShape_get_type_descriptor(),
-            ))
-        }
     }
 
     /// Upcast to Standard_DomainError
@@ -2910,38 +2835,7 @@ impl UnCompatibleShape {
         }
     }
 
-    /// Upcast to Standard_Transient
-    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        unsafe {
-            &*crate::check_result(
-                crate::ffi_extern_TKTopAlgo::BRepExtrema_UnCompatibleShape_as_Standard_Transient(
-                    self as *const Self,
-                ),
-            )
-        }
-    }
-
-    /// Upcast to Standard_Transient (mutable)
-    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        unsafe {
-            &mut *crate::check_result(crate::ffi_extern_TKTopAlgo::BRepExtrema_UnCompatibleShape_as_Standard_Transient_mut(self as *mut Self))
-        }
-    }
-
-    /// Wrap in a Handle (reference-counted smart pointer)
-    pub fn to_handle(
-        obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleBRepExtremaUnCompatibleShape> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKTopAlgo::BRepExtrema_UnCompatibleShape_to_handle(
-                    obj.into_raw(),
-                ),
-            ))
-        }
-    }
-
-    /// Inherited: **Source:** `Standard_Failure.hxx`:58 - `Standard_Failure::Print()`
+    /// Inherited: **Source:** `Standard_Failure.hxx`:73 - `Standard_Failure::Print()`
     pub fn print(&self, theStream: &mut crate::ffi_types::Standard_OStream) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKTopAlgo::BRepExtrema_UnCompatibleShape_inherited_Print(
@@ -2950,181 +2844,4 @@ impl UnCompatibleShape {
             )
         })
     }
-
-    /// Inherited: **Source:** `Standard_Failure.hxx`:72 - `Standard_Failure::Reraise()`
-    pub fn reraise(&mut self) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKTopAlgo::BRepExtrema_UnCompatibleShape_inherited_Reraise(
-                self as *mut Self,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Failure.hxx`:112 - `Standard_Failure::Jump()`
-    pub fn jump(&mut self) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKTopAlgo::BRepExtrema_UnCompatibleShape_inherited_Jump(
-                self as *mut Self,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKTopAlgo::BRepExtrema_UnCompatibleShape_inherited_IsInstance(
-                self as *const Self,
-                theType,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKTopAlgo::BRepExtrema_UnCompatibleShape_inherited_IsKind(
-                self as *const Self,
-                theType,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
-    pub fn this(&self) -> Option<&crate::standard::Transient> {
-        {
-            let __val = crate::check_result(unsafe {
-                crate::ffi_extern_TKTopAlgo::BRepExtrema_UnCompatibleShape_inherited_This(
-                    self as *const Self,
-                )
-            });
-            if __val.is_null() {
-                None
-            } else {
-                Some(unsafe { &*__val })
-            }
-        }
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
-    pub fn get_ref_count(&self) -> i32 {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKTopAlgo::BRepExtrema_UnCompatibleShape_inherited_GetRefCount(
-                self as *const Self,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
-    pub fn increment_ref_counter(&mut self) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKTopAlgo::BRepExtrema_UnCompatibleShape_inherited_IncrementRefCounter(
-                self as *mut Self,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
-    pub fn decrement_ref_counter(&mut self) -> i32 {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKTopAlgo::BRepExtrema_UnCompatibleShape_inherited_DecrementRefCounter(
-                self as *mut Self,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
-    pub fn delete(&self) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKTopAlgo::BRepExtrema_UnCompatibleShape_inherited_Delete(
-                self as *const Self,
-            )
-        })
-    }
 }
-
-pub use crate::ffi_types::HandleBRepExtremaUnCompatibleShape;
-
-unsafe impl crate::CppDeletable for HandleBRepExtremaUnCompatibleShape {
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            crate::ffi_extern_TKTopAlgo::HandleBRepExtremaUnCompatibleShape_destructor(ptr);
-        }
-    }
-}
-
-unsafe impl crate::CppCopyable for HandleBRepExtremaUnCompatibleShape {
-    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        unsafe {
-            crate::check_result(
-                crate::ffi_extern_TKTopAlgo::HandleBRepExtremaUnCompatibleShape_clone(ptr),
-            )
-        }
-    }
-}
-
-impl HandleBRepExtremaUnCompatibleShape {
-    /// Returns `true` if this Handle is null (doesn't point to any object).
-    pub fn is_null(&self) -> bool {
-        unsafe {
-            crate::ffi_extern_TKTopAlgo::HandleBRepExtremaUnCompatibleShape_is_null(
-                self as *const Self,
-            )
-        }
-    }
-
-    /// Dereference this Handle to access the underlying BRepExtrema_UnCompatibleShape
-    pub fn get(&self) -> &crate::ffi_types::BRepExtrema_UnCompatibleShape {
-        unsafe {
-            &*crate::check_result(
-                crate::ffi_extern_TKTopAlgo::HandleBRepExtremaUnCompatibleShape_get(
-                    self as *const Self,
-                ),
-            )
-        }
-    }
-
-    /// Dereference this Handle to mutably access the underlying BRepExtrema_UnCompatibleShape
-    pub fn get_mut(&mut self) -> &mut crate::ffi_types::BRepExtrema_UnCompatibleShape {
-        unsafe {
-            &mut *crate::check_result(
-                crate::ffi_extern_TKTopAlgo::HandleBRepExtremaUnCompatibleShape_get_mut(
-                    self as *mut Self,
-                ),
-            )
-        }
-    }
-
-    /// Upcast Handle<BRepExtrema_UnCompatibleShape> to Handle<Standard_DomainError>
-    pub fn to_handle_domain_error(
-        &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardDomainError> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKTopAlgo::HandleBRepExtremaUnCompatibleShape_to_HandleStandardDomainError(self as *const Self)))
-        }
-    }
-
-    /// Upcast Handle<BRepExtrema_UnCompatibleShape> to Handle<Standard_Failure>
-    pub fn to_handle_failure(&self) -> crate::OwnedPtr<crate::ffi_types::HandleStandardFailure> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKTopAlgo::HandleBRepExtremaUnCompatibleShape_to_HandleStandardFailure(self as *const Self)))
-        }
-    }
-
-    /// Upcast Handle<BRepExtrema_UnCompatibleShape> to Handle<Standard_Transient>
-    pub fn to_handle_transient(
-        &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKTopAlgo::HandleBRepExtremaUnCompatibleShape_to_HandleStandardTransient(self as *const Self)))
-        }
-    }
-}
-
-// ========================
-// Additional type re-exports
-// ========================
-
-pub use crate::ffi_types::{
-    BRepExtrema_MapOfIntegerPackedMapOfInteger as MapOfIntegerPackedMapOfInteger,
-    BRepExtrema_SeqOfSolution as SeqOfSolution, BRepExtrema_ShapeList as ShapeList,
-};

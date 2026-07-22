@@ -19,31 +19,31 @@ unsafe extern "C" {
     pub fn StdLDrivers_DocumentRetrievalDriver_read_extendedstring_handlecdmdocument_handlecdmapplication_handlepcdmreaderfilter_progressrange(
         self_: *mut StdLDrivers_DocumentRetrievalDriver,
         theFileName: *const TCollection_ExtendedString,
-        theNewDocument: *const HandleCDMDocument,
-        theApplication: *const HandleCDMApplication,
-        theFilter: *const HandlePCDMReaderFilter,
+        theNewDocument: *const Handle_CDM_Document,
+        theApplication: *const Handle_CDM_Application,
+        theFilter: *const Handle_PCDM_ReaderFilter,
         theRange: *const Message_ProgressRange,
     ) -> *const std::ffi::c_char;
     /// **Source:** `StdLDrivers_DocumentRetrievalDriver.hxx`:36 - `StdLDrivers_DocumentRetrievalDriver::Read()`
     pub fn StdLDrivers_DocumentRetrievalDriver_read_istream_handlestoragedata_handlecdmdocument_handlecdmapplication_handlepcdmreaderfilter_progressrange(
         self_: *mut StdLDrivers_DocumentRetrievalDriver,
         theIStream: *mut Standard_IStream,
-        theStorageData: *const HandleStorageData,
-        theDoc: *const HandleCDMDocument,
-        theApplication: *const HandleCDMApplication,
-        theFilter: *const HandlePCDMReaderFilter,
+        theStorageData: *const Handle_Storage_Data,
+        theDoc: *const Handle_CDM_Document,
+        theApplication: *const Handle_CDM_Application,
+        theFilter: *const Handle_PCDM_ReaderFilter,
         theRange: *const Message_ProgressRange,
     ) -> *const std::ffi::c_char;
     /// **Source:** `StdLDrivers_DocumentRetrievalDriver.hxx`:44 - `StdLDrivers_DocumentRetrievalDriver::DynamicType()`
     pub fn StdLDrivers_DocumentRetrievalDriver_dynamic_type(
         self_: *const StdLDrivers_DocumentRetrievalDriver,
-    ) -> crate::OcctResult<*const HandleStandardType>;
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// **Source:** `StdLDrivers_DocumentRetrievalDriver.hxx`:44 - `StdLDrivers_DocumentRetrievalDriver::get_type_name()`
     pub fn StdLDrivers_DocumentRetrievalDriver_get_type_name(
     ) -> crate::OcctResult<*const std::ffi::c_char>;
     /// **Source:** `StdLDrivers_DocumentRetrievalDriver.hxx`:44 - `StdLDrivers_DocumentRetrievalDriver::get_type_descriptor()`
     pub fn StdLDrivers_DocumentRetrievalDriver_get_type_descriptor(
-    ) -> crate::OcctResult<*const HandleStandardType>;
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast StdLDrivers_DocumentRetrievalDriver to PCDM_RetrievalDriver
     pub fn StdLDrivers_DocumentRetrievalDriver_as_PCDM_RetrievalDriver(
         self_: *const StdLDrivers_DocumentRetrievalDriver,
@@ -71,83 +71,83 @@ unsafe extern "C" {
     /// Wrap StdLDrivers_DocumentRetrievalDriver in a Handle
     pub fn StdLDrivers_DocumentRetrievalDriver_to_handle(
         obj: *mut StdLDrivers_DocumentRetrievalDriver,
-    ) -> crate::OcctResult<*mut HandleStdLDriversDocumentRetrievalDriver>;
+    ) -> crate::OcctResult<*mut Handle_StdLDrivers_DocumentRetrievalDriver>;
     /// Destroy Handle<StdLDrivers_DocumentRetrievalDriver>
-    pub fn HandleStdLDriversDocumentRetrievalDriver_destructor(
-        self_: *mut HandleStdLDriversDocumentRetrievalDriver,
+    pub fn Handle_StdLDrivers_DocumentRetrievalDriver_destructor(
+        self_: *mut Handle_StdLDrivers_DocumentRetrievalDriver,
     );
     /// Clone Handle<StdLDrivers_DocumentRetrievalDriver> (increments reference count)
-    pub fn HandleStdLDriversDocumentRetrievalDriver_clone(
-        self_: *const HandleStdLDriversDocumentRetrievalDriver,
-    ) -> crate::OcctResult<*mut HandleStdLDriversDocumentRetrievalDriver>;
+    pub fn Handle_StdLDrivers_DocumentRetrievalDriver_clone(
+        self_: *const Handle_StdLDrivers_DocumentRetrievalDriver,
+    ) -> crate::OcctResult<*mut Handle_StdLDrivers_DocumentRetrievalDriver>;
     /// Check if Handle<StdLDrivers_DocumentRetrievalDriver> is null
-    pub fn HandleStdLDriversDocumentRetrievalDriver_is_null(
-        self_: *const HandleStdLDriversDocumentRetrievalDriver,
+    pub fn Handle_StdLDrivers_DocumentRetrievalDriver_is_null(
+        self_: *const Handle_StdLDrivers_DocumentRetrievalDriver,
     ) -> bool;
     /// Dereference Handle to get *const StdLDrivers_DocumentRetrievalDriver
-    pub fn HandleStdLDriversDocumentRetrievalDriver_get(
-        handle: *const HandleStdLDriversDocumentRetrievalDriver,
+    pub fn Handle_StdLDrivers_DocumentRetrievalDriver_get(
+        handle: *const Handle_StdLDrivers_DocumentRetrievalDriver,
     ) -> crate::OcctResult<*const StdLDrivers_DocumentRetrievalDriver>;
     /// Dereference Handle to get *mut StdLDrivers_DocumentRetrievalDriver
-    pub fn HandleStdLDriversDocumentRetrievalDriver_get_mut(
-        handle: *mut HandleStdLDriversDocumentRetrievalDriver,
+    pub fn Handle_StdLDrivers_DocumentRetrievalDriver_get_mut(
+        handle: *mut Handle_StdLDrivers_DocumentRetrievalDriver,
     ) -> crate::OcctResult<*mut StdLDrivers_DocumentRetrievalDriver>;
     /// Upcast Handle<StdLDrivers_DocumentRetrievalDriver> to Handle<PCDM_RetrievalDriver>
-    pub fn HandleStdLDriversDocumentRetrievalDriver_to_HandlePCDMRetrievalDriver(
-        self_: *const HandleStdLDriversDocumentRetrievalDriver,
-    ) -> crate::OcctResult<*mut HandlePCDMRetrievalDriver>;
+    pub fn Handle_StdLDrivers_DocumentRetrievalDriver_to_Handle_PCDM_RetrievalDriver(
+        self_: *const Handle_StdLDrivers_DocumentRetrievalDriver,
+    ) -> crate::OcctResult<*mut Handle_PCDM_RetrievalDriver>;
     /// Upcast Handle<StdLDrivers_DocumentRetrievalDriver> to Handle<PCDM_Reader>
-    pub fn HandleStdLDriversDocumentRetrievalDriver_to_HandlePCDMReader(
-        self_: *const HandleStdLDriversDocumentRetrievalDriver,
-    ) -> crate::OcctResult<*mut HandlePCDMReader>;
+    pub fn Handle_StdLDrivers_DocumentRetrievalDriver_to_Handle_PCDM_Reader(
+        self_: *const Handle_StdLDrivers_DocumentRetrievalDriver,
+    ) -> crate::OcctResult<*mut Handle_PCDM_Reader>;
     /// Upcast Handle<StdLDrivers_DocumentRetrievalDriver> to Handle<Standard_Transient>
-    pub fn HandleStdLDriversDocumentRetrievalDriver_to_HandleStandardTransient(
-        self_: *const HandleStdLDriversDocumentRetrievalDriver,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
+    pub fn Handle_StdLDrivers_DocumentRetrievalDriver_to_Handle_Standard_Transient(
+        self_: *const Handle_StdLDrivers_DocumentRetrievalDriver,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
     /// Downcast Handle<StdLDrivers_DocumentRetrievalDriver> to Handle<StdDrivers_DocumentRetrievalDriver> (returns null on failure)
-    pub fn HandleStdLDriversDocumentRetrievalDriver_downcast_to_HandleStdDriversDocumentRetrievalDriver(
-        self_: *const HandleStdLDriversDocumentRetrievalDriver,
-    ) -> crate::OcctResult<*mut HandleStdDriversDocumentRetrievalDriver>;
-    /// Inherited: **Source:** `PCDM_RetrievalDriver.hxx`:46 - `PCDM_RetrievalDriver::SetFormat()`
+    pub fn Handle_StdLDrivers_DocumentRetrievalDriver_downcast_to_Handle_StdDrivers_DocumentRetrievalDriver(
+        self_: *const Handle_StdLDrivers_DocumentRetrievalDriver,
+    ) -> crate::OcctResult<*mut Handle_StdDrivers_DocumentRetrievalDriver>;
+    /// Inherited: **Source:** `PCDM_RetrievalDriver.hxx`:43 - `PCDM_RetrievalDriver::SetFormat()`
     pub fn StdLDrivers_DocumentRetrievalDriver_inherited_SetFormat(
         self_: *mut StdLDrivers_DocumentRetrievalDriver,
         aformat: *const TCollection_ExtendedString,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `PCDM_RetrievalDriver.hxx`:48 - `PCDM_RetrievalDriver::GetFormat()`
+    /// Inherited: **Source:** `PCDM_RetrievalDriver.hxx`:45 - `PCDM_RetrievalDriver::GetFormat()`
     pub fn StdLDrivers_DocumentRetrievalDriver_inherited_GetFormat(
         self_: *const StdLDrivers_DocumentRetrievalDriver,
     ) -> crate::OcctResult<*mut TCollection_ExtendedString>;
-    /// Inherited: **Source:** `PCDM_Reader.hxx`:57 - `PCDM_Reader::GetStatus()`
+    /// Inherited: **Source:** `PCDM_Reader.hxx`:54 - `PCDM_Reader::GetStatus()`
     pub fn StdLDrivers_DocumentRetrievalDriver_inherited_GetStatus(
         self_: *const StdLDrivers_DocumentRetrievalDriver,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn StdLDrivers_DocumentRetrievalDriver_inherited_IsInstance(
         self_: *const StdLDrivers_DocumentRetrievalDriver,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn StdLDrivers_DocumentRetrievalDriver_inherited_IsKind(
         self_: *const StdLDrivers_DocumentRetrievalDriver,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn StdLDrivers_DocumentRetrievalDriver_inherited_This(
         self_: *const StdLDrivers_DocumentRetrievalDriver,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn StdLDrivers_DocumentRetrievalDriver_inherited_GetRefCount(
         self_: *const StdLDrivers_DocumentRetrievalDriver,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn StdLDrivers_DocumentRetrievalDriver_inherited_IncrementRefCounter(
         self_: *mut StdLDrivers_DocumentRetrievalDriver,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn StdLDrivers_DocumentRetrievalDriver_inherited_DecrementRefCounter(
         self_: *mut StdLDrivers_DocumentRetrievalDriver,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn StdLDrivers_DocumentRetrievalDriver_inherited_Delete(
         self_: *const StdLDrivers_DocumentRetrievalDriver,
     ) -> *const std::ffi::c_char;
@@ -177,7 +177,7 @@ unsafe extern "C" {
     /// **Source:** `StdLPersistent_Data.hxx`:46 - `StdLPersistent_Data::Import()`
     pub fn StdLPersistent_Data_import(
         self_: *const StdLPersistent_Data,
-    ) -> crate::OcctResult<*mut HandleTDFData>;
+    ) -> crate::OcctResult<*mut Handle_TDF_Data>;
     /// Upcast StdLPersistent_Data to StdObjMgt_Persistent
     pub fn StdLPersistent_Data_as_StdObjMgt_Persistent(
         self_: *const StdLPersistent_Data,
@@ -197,100 +197,100 @@ unsafe extern "C" {
     /// Wrap StdLPersistent_Data in a Handle
     pub fn StdLPersistent_Data_to_handle(
         obj: *mut StdLPersistent_Data,
-    ) -> crate::OcctResult<*mut HandleStdLPersistentData>;
+    ) -> crate::OcctResult<*mut Handle_StdLPersistent_Data>;
     /// Destroy Handle<StdLPersistent_Data>
-    pub fn HandleStdLPersistentData_destructor(self_: *mut HandleStdLPersistentData);
+    pub fn Handle_StdLPersistent_Data_destructor(self_: *mut Handle_StdLPersistent_Data);
     /// Clone Handle<StdLPersistent_Data> (increments reference count)
-    pub fn HandleStdLPersistentData_clone(
-        self_: *const HandleStdLPersistentData,
-    ) -> crate::OcctResult<*mut HandleStdLPersistentData>;
+    pub fn Handle_StdLPersistent_Data_clone(
+        self_: *const Handle_StdLPersistent_Data,
+    ) -> crate::OcctResult<*mut Handle_StdLPersistent_Data>;
     /// Check if Handle<StdLPersistent_Data> is null
-    pub fn HandleStdLPersistentData_is_null(self_: *const HandleStdLPersistentData) -> bool;
+    pub fn Handle_StdLPersistent_Data_is_null(self_: *const Handle_StdLPersistent_Data) -> bool;
     /// Dereference Handle to get *const StdLPersistent_Data
-    pub fn HandleStdLPersistentData_get(
-        handle: *const HandleStdLPersistentData,
+    pub fn Handle_StdLPersistent_Data_get(
+        handle: *const Handle_StdLPersistent_Data,
     ) -> crate::OcctResult<*const StdLPersistent_Data>;
     /// Dereference Handle to get *mut StdLPersistent_Data
-    pub fn HandleStdLPersistentData_get_mut(
-        handle: *mut HandleStdLPersistentData,
+    pub fn Handle_StdLPersistent_Data_get_mut(
+        handle: *mut Handle_StdLPersistent_Data,
     ) -> crate::OcctResult<*mut StdLPersistent_Data>;
     /// Upcast Handle<StdLPersistent_Data> to Handle<StdObjMgt_Persistent>
-    pub fn HandleStdLPersistentData_to_HandleStdObjMgtPersistent(
-        self_: *const HandleStdLPersistentData,
-    ) -> crate::OcctResult<*mut HandleStdObjMgtPersistent>;
+    pub fn Handle_StdLPersistent_Data_to_Handle_StdObjMgt_Persistent(
+        self_: *const Handle_StdLPersistent_Data,
+    ) -> crate::OcctResult<*mut Handle_StdObjMgt_Persistent>;
     /// Upcast Handle<StdLPersistent_Data> to Handle<Standard_Transient>
-    pub fn HandleStdLPersistentData_to_HandleStandardTransient(
-        self_: *const HandleStdLPersistentData,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
+    pub fn Handle_StdLPersistent_Data_to_Handle_Standard_Transient(
+        self_: *const Handle_StdLPersistent_Data,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
     /// Inherited: **Source:** `StdObjMgt_Persistent.hxx`:66 - `StdObjMgt_Persistent::ImportDocument()`
     pub fn StdLPersistent_Data_inherited_ImportDocument(
         self_: *const StdLPersistent_Data,
-        theDocument: *const HandleTDocStdDocument,
+        theDocument: *const Handle_TDocStd_Document,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `StdObjMgt_Persistent.hxx`:71 - `StdObjMgt_Persistent::CreateAttribute()`
+    /// Inherited: **Source:** `StdObjMgt_Persistent.hxx`:72 - `StdObjMgt_Persistent::CreateAttribute()`
     pub fn StdLPersistent_Data_inherited_CreateAttribute(
         self_: *mut StdLPersistent_Data,
-    ) -> crate::OcctResult<*mut HandleTDFAttribute>;
-    /// Inherited: **Source:** `StdObjMgt_Persistent.hxx`:76 - `StdObjMgt_Persistent::GetAttribute()`
+    ) -> crate::OcctResult<*mut Handle_TDF_Attribute>;
+    /// Inherited: **Source:** `StdObjMgt_Persistent.hxx`:77 - `StdObjMgt_Persistent::GetAttribute()`
     pub fn StdLPersistent_Data_inherited_GetAttribute(
         self_: *const StdLPersistent_Data,
-    ) -> crate::OcctResult<*mut HandleTDFAttribute>;
-    /// Inherited: **Source:** `StdObjMgt_Persistent.hxx`:81 - `StdObjMgt_Persistent::ImportAttribute()`
+    ) -> crate::OcctResult<*mut Handle_TDF_Attribute>;
+    /// Inherited: **Source:** `StdObjMgt_Persistent.hxx`:82 - `StdObjMgt_Persistent::ImportAttribute()`
     pub fn StdLPersistent_Data_inherited_ImportAttribute(
         self_: *mut StdLPersistent_Data,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `StdObjMgt_Persistent.hxx`:86 - `StdObjMgt_Persistent::AsciiString()`
+    /// Inherited: **Source:** `StdObjMgt_Persistent.hxx`:87 - `StdObjMgt_Persistent::AsciiString()`
     pub fn StdLPersistent_Data_inherited_AsciiString(
         self_: *const StdLPersistent_Data,
-    ) -> crate::OcctResult<*mut HandleTCollectionHAsciiString>;
-    /// Inherited: **Source:** `StdObjMgt_Persistent.hxx`:91 - `StdObjMgt_Persistent::ExtString()`
+    ) -> crate::OcctResult<*mut Handle_TCollection_HAsciiString>;
+    /// Inherited: **Source:** `StdObjMgt_Persistent.hxx`:92 - `StdObjMgt_Persistent::ExtString()`
     pub fn StdLPersistent_Data_inherited_ExtString(
         self_: *const StdLPersistent_Data,
-    ) -> crate::OcctResult<*mut HandleTCollectionHExtendedString>;
-    /// Inherited: **Source:** `StdObjMgt_Persistent.hxx`:96 - `StdObjMgt_Persistent::Label()`
+    ) -> crate::OcctResult<*mut Handle_TCollection_HExtendedString>;
+    /// Inherited: **Source:** `StdObjMgt_Persistent.hxx`:97 - `StdObjMgt_Persistent::Label()`
     pub fn StdLPersistent_Data_inherited_Label(
         self_: *const StdLPersistent_Data,
-        theDF: *const HandleTDFData,
+        theDF: *const Handle_TDF_Data,
     ) -> crate::OcctResult<*mut TDF_Label>;
-    /// Inherited: **Source:** `StdObjMgt_Persistent.hxx`:99 - `StdObjMgt_Persistent::TypeNum()`
+    /// Inherited: **Source:** `StdObjMgt_Persistent.hxx`:100 - `StdObjMgt_Persistent::TypeNum()`
     pub fn StdLPersistent_Data_inherited_TypeNum(
         self_: *const StdLPersistent_Data,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `StdObjMgt_Persistent.hxx`:105 - `StdObjMgt_Persistent::RefNum()`
+    /// Inherited: **Source:** `StdObjMgt_Persistent.hxx`:106 - `StdObjMgt_Persistent::RefNum()`
     pub fn StdLPersistent_Data_inherited_RefNum(
         self_: *const StdLPersistent_Data,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:71 - `Standard_Transient::DynamicType()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:79 - `Standard_Transient::DynamicType()`
     pub fn StdLPersistent_Data_inherited_DynamicType(
         self_: *const StdLPersistent_Data,
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn StdLPersistent_Data_inherited_IsInstance(
         self_: *const StdLPersistent_Data,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn StdLPersistent_Data_inherited_IsKind(
         self_: *const StdLPersistent_Data,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn StdLPersistent_Data_inherited_This(
         self_: *const StdLPersistent_Data,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn StdLPersistent_Data_inherited_GetRefCount(
         self_: *const StdLPersistent_Data,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn StdLPersistent_Data_inherited_IncrementRefCounter(
         self_: *mut StdLPersistent_Data,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn StdLPersistent_Data_inherited_DecrementRefCounter(
         self_: *mut StdLPersistent_Data,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn StdLPersistent_Data_inherited_Delete(
         self_: *const StdLPersistent_Data,
     ) -> *const std::ffi::c_char;
@@ -320,7 +320,7 @@ unsafe extern "C" {
     /// **Source:** `StdLPersistent_Document.hxx`:36 - `StdLPersistent_Document::ImportDocument()`
     pub fn StdLPersistent_Document_import_document(
         self_: *const StdLPersistent_Document,
-        theDocument: *const HandleTDocStdDocument,
+        theDocument: *const Handle_TDocStd_Document,
     ) -> *const std::ffi::c_char;
     /// Upcast StdLPersistent_Document to StdObjMgt_Persistent
     pub fn StdLPersistent_Document_as_StdObjMgt_Persistent(
@@ -341,96 +341,97 @@ unsafe extern "C" {
     /// Wrap StdLPersistent_Document in a Handle
     pub fn StdLPersistent_Document_to_handle(
         obj: *mut StdLPersistent_Document,
-    ) -> crate::OcctResult<*mut HandleStdLPersistentDocument>;
+    ) -> crate::OcctResult<*mut Handle_StdLPersistent_Document>;
     /// Destroy Handle<StdLPersistent_Document>
-    pub fn HandleStdLPersistentDocument_destructor(self_: *mut HandleStdLPersistentDocument);
+    pub fn Handle_StdLPersistent_Document_destructor(self_: *mut Handle_StdLPersistent_Document);
     /// Clone Handle<StdLPersistent_Document> (increments reference count)
-    pub fn HandleStdLPersistentDocument_clone(
-        self_: *const HandleStdLPersistentDocument,
-    ) -> crate::OcctResult<*mut HandleStdLPersistentDocument>;
+    pub fn Handle_StdLPersistent_Document_clone(
+        self_: *const Handle_StdLPersistent_Document,
+    ) -> crate::OcctResult<*mut Handle_StdLPersistent_Document>;
     /// Check if Handle<StdLPersistent_Document> is null
-    pub fn HandleStdLPersistentDocument_is_null(self_: *const HandleStdLPersistentDocument)
-        -> bool;
+    pub fn Handle_StdLPersistent_Document_is_null(
+        self_: *const Handle_StdLPersistent_Document,
+    ) -> bool;
     /// Dereference Handle to get *const StdLPersistent_Document
-    pub fn HandleStdLPersistentDocument_get(
-        handle: *const HandleStdLPersistentDocument,
+    pub fn Handle_StdLPersistent_Document_get(
+        handle: *const Handle_StdLPersistent_Document,
     ) -> crate::OcctResult<*const StdLPersistent_Document>;
     /// Dereference Handle to get *mut StdLPersistent_Document
-    pub fn HandleStdLPersistentDocument_get_mut(
-        handle: *mut HandleStdLPersistentDocument,
+    pub fn Handle_StdLPersistent_Document_get_mut(
+        handle: *mut Handle_StdLPersistent_Document,
     ) -> crate::OcctResult<*mut StdLPersistent_Document>;
     /// Upcast Handle<StdLPersistent_Document> to Handle<StdObjMgt_Persistent>
-    pub fn HandleStdLPersistentDocument_to_HandleStdObjMgtPersistent(
-        self_: *const HandleStdLPersistentDocument,
-    ) -> crate::OcctResult<*mut HandleStdObjMgtPersistent>;
+    pub fn Handle_StdLPersistent_Document_to_Handle_StdObjMgt_Persistent(
+        self_: *const Handle_StdLPersistent_Document,
+    ) -> crate::OcctResult<*mut Handle_StdObjMgt_Persistent>;
     /// Upcast Handle<StdLPersistent_Document> to Handle<Standard_Transient>
-    pub fn HandleStdLPersistentDocument_to_HandleStandardTransient(
-        self_: *const HandleStdLPersistentDocument,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
-    /// Inherited: **Source:** `StdObjMgt_Persistent.hxx`:71 - `StdObjMgt_Persistent::CreateAttribute()`
+    pub fn Handle_StdLPersistent_Document_to_Handle_Standard_Transient(
+        self_: *const Handle_StdLPersistent_Document,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
+    /// Inherited: **Source:** `StdObjMgt_Persistent.hxx`:72 - `StdObjMgt_Persistent::CreateAttribute()`
     pub fn StdLPersistent_Document_inherited_CreateAttribute(
         self_: *mut StdLPersistent_Document,
-    ) -> crate::OcctResult<*mut HandleTDFAttribute>;
-    /// Inherited: **Source:** `StdObjMgt_Persistent.hxx`:76 - `StdObjMgt_Persistent::GetAttribute()`
+    ) -> crate::OcctResult<*mut Handle_TDF_Attribute>;
+    /// Inherited: **Source:** `StdObjMgt_Persistent.hxx`:77 - `StdObjMgt_Persistent::GetAttribute()`
     pub fn StdLPersistent_Document_inherited_GetAttribute(
         self_: *const StdLPersistent_Document,
-    ) -> crate::OcctResult<*mut HandleTDFAttribute>;
-    /// Inherited: **Source:** `StdObjMgt_Persistent.hxx`:81 - `StdObjMgt_Persistent::ImportAttribute()`
+    ) -> crate::OcctResult<*mut Handle_TDF_Attribute>;
+    /// Inherited: **Source:** `StdObjMgt_Persistent.hxx`:82 - `StdObjMgt_Persistent::ImportAttribute()`
     pub fn StdLPersistent_Document_inherited_ImportAttribute(
         self_: *mut StdLPersistent_Document,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `StdObjMgt_Persistent.hxx`:86 - `StdObjMgt_Persistent::AsciiString()`
+    /// Inherited: **Source:** `StdObjMgt_Persistent.hxx`:87 - `StdObjMgt_Persistent::AsciiString()`
     pub fn StdLPersistent_Document_inherited_AsciiString(
         self_: *const StdLPersistent_Document,
-    ) -> crate::OcctResult<*mut HandleTCollectionHAsciiString>;
-    /// Inherited: **Source:** `StdObjMgt_Persistent.hxx`:91 - `StdObjMgt_Persistent::ExtString()`
+    ) -> crate::OcctResult<*mut Handle_TCollection_HAsciiString>;
+    /// Inherited: **Source:** `StdObjMgt_Persistent.hxx`:92 - `StdObjMgt_Persistent::ExtString()`
     pub fn StdLPersistent_Document_inherited_ExtString(
         self_: *const StdLPersistent_Document,
-    ) -> crate::OcctResult<*mut HandleTCollectionHExtendedString>;
-    /// Inherited: **Source:** `StdObjMgt_Persistent.hxx`:96 - `StdObjMgt_Persistent::Label()`
+    ) -> crate::OcctResult<*mut Handle_TCollection_HExtendedString>;
+    /// Inherited: **Source:** `StdObjMgt_Persistent.hxx`:97 - `StdObjMgt_Persistent::Label()`
     pub fn StdLPersistent_Document_inherited_Label(
         self_: *const StdLPersistent_Document,
-        theDF: *const HandleTDFData,
+        theDF: *const Handle_TDF_Data,
     ) -> crate::OcctResult<*mut TDF_Label>;
-    /// Inherited: **Source:** `StdObjMgt_Persistent.hxx`:99 - `StdObjMgt_Persistent::TypeNum()`
+    /// Inherited: **Source:** `StdObjMgt_Persistent.hxx`:100 - `StdObjMgt_Persistent::TypeNum()`
     pub fn StdLPersistent_Document_inherited_TypeNum(
         self_: *const StdLPersistent_Document,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `StdObjMgt_Persistent.hxx`:105 - `StdObjMgt_Persistent::RefNum()`
+    /// Inherited: **Source:** `StdObjMgt_Persistent.hxx`:106 - `StdObjMgt_Persistent::RefNum()`
     pub fn StdLPersistent_Document_inherited_RefNum(
         self_: *const StdLPersistent_Document,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:71 - `Standard_Transient::DynamicType()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:79 - `Standard_Transient::DynamicType()`
     pub fn StdLPersistent_Document_inherited_DynamicType(
         self_: *const StdLPersistent_Document,
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn StdLPersistent_Document_inherited_IsInstance(
         self_: *const StdLPersistent_Document,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn StdLPersistent_Document_inherited_IsKind(
         self_: *const StdLPersistent_Document,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn StdLPersistent_Document_inherited_This(
         self_: *const StdLPersistent_Document,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn StdLPersistent_Document_inherited_GetRefCount(
         self_: *const StdLPersistent_Document,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn StdLPersistent_Document_inherited_IncrementRefCounter(
         self_: *mut StdLPersistent_Document,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn StdLPersistent_Document_inherited_DecrementRefCounter(
         self_: *mut StdLPersistent_Document,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn StdLPersistent_Document_inherited_Delete(
         self_: *const StdLPersistent_Document,
     ) -> *const std::ffi::c_char;
@@ -460,227 +461,7 @@ unsafe extern "C" {
     /// **Source:** `StdLPersistent_Function.hxx`:47 - `StdLPersistent_Function::Import()`
     pub fn StdLPersistent_Function_import(
         self_: *const StdLPersistent_Function,
-        theAttribute: *const HandleTFunctionFunction,
-    ) -> *const std::ffi::c_char;
-    // ======================== StdLPersistent_HArray1OfPersistent ========================
-    pub fn StdLPersistent_HArray1OfPersistent_destructor(
-        self_: *mut StdLPersistent_HArray1OfPersistent,
-    );
-    /// **Source:** `StdLPersistent_HArray1.hxx`:28 - `StdLPersistent_HArray1OfPersistent::StdLPersistent_HArray1OfPersistent()`
-    pub fn StdLPersistent_HArray1OfPersistent_ctor(
-    ) -> crate::OcctResult<*mut StdLPersistent_HArray1OfPersistent>;
-    /// **Source:** `StdLPersistent_HArray1.hxx`:28 - `StdLPersistent_HArray1OfPersistent::StdLPersistent_HArray1OfPersistent()`
-    pub fn StdLPersistent_HArray1OfPersistent_ctor_int2(
-        theLower: i32,
-        theUpper: i32,
-    ) -> crate::OcctResult<*mut StdLPersistent_HArray1OfPersistent>;
-    /// **Source:** `StdLPersistent_HArray1.hxx`:28 - `StdLPersistent_HArray1OfPersistent::StdLPersistent_HArray1OfPersistent()`
-    pub fn StdLPersistent_HArray1OfPersistent_ctor_int2_handlestdobjmgtpersistent(
-        theLower: i32,
-        theUpper: i32,
-        theValue: *const HandleStdObjMgtPersistent,
-    ) -> crate::OcctResult<*mut StdLPersistent_HArray1OfPersistent>;
-    /// **Source:** `StdLPersistent_HArray1.hxx`:28 - `StdLPersistent_HArray1OfPersistent::StdLPersistent_HArray1OfPersistent()`
-    pub fn StdLPersistent_HArray1OfPersistent_ctor_handlestdobjmgtpersistent_int2_bool(
-        theBegin: *const HandleStdObjMgtPersistent,
-        theLower: i32,
-        theUpper: i32,
-        arg3: bool,
-    ) -> crate::OcctResult<*mut StdLPersistent_HArray1OfPersistent>;
-    /// **Source:** `StdLPersistent_HArray1.hxx`:28 - `StdLPersistent_HArray1OfPersistent::StdLPersistent_HArray1OfPersistent()`
-    pub fn StdLPersistent_HArray1OfPersistent_ctor_array1_opencascade_handle_stdobjmgt_persistent(
-        theOther: *const NCollection_Array1_opencascade_handle_StdObjMgt_Persistent,
-    ) -> crate::OcctResult<*mut StdLPersistent_HArray1OfPersistent>;
-    /// **Source:** `StdLPersistent_HArray1.hxx`:28 - `StdLPersistent_HArray1OfPersistent::Array1()`
-    pub fn StdLPersistent_HArray1OfPersistent_array1(
-        self_: *const StdLPersistent_HArray1OfPersistent,
-    ) -> crate::OcctResult<*const NCollection_Array1_opencascade_handle_StdObjMgt_Persistent>;
-    /// **Source:** `StdLPersistent_HArray1.hxx`:28 - `StdLPersistent_HArray1OfPersistent::ChangeArray1()`
-    pub fn StdLPersistent_HArray1OfPersistent_change_array1(
-        self_: *mut StdLPersistent_HArray1OfPersistent,
-    ) -> crate::OcctResult<*mut NCollection_Array1_opencascade_handle_StdObjMgt_Persistent>;
-    /// **Source:** `StdLPersistent_HArray1.hxx`:28 - `StdLPersistent_HArray1OfPersistent::DynamicType()`
-    pub fn StdLPersistent_HArray1OfPersistent_dynamic_type(
-        self_: *const StdLPersistent_HArray1OfPersistent,
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// **Source:** `StdLPersistent_HArray1.hxx`:28 - `StdLPersistent_HArray1OfPersistent::get_type_name()`
-    pub fn StdLPersistent_HArray1OfPersistent_get_type_name(
-    ) -> crate::OcctResult<*const std::ffi::c_char>;
-    /// **Source:** `StdLPersistent_HArray1.hxx`:28 - `StdLPersistent_HArray1OfPersistent::get_type_descriptor()`
-    pub fn StdLPersistent_HArray1OfPersistent_get_type_descriptor(
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// Upcast StdLPersistent_HArray1OfPersistent to Standard_Transient
-    pub fn StdLPersistent_HArray1OfPersistent_as_Standard_Transient(
-        self_: *const StdLPersistent_HArray1OfPersistent,
-    ) -> crate::OcctResult<*const Standard_Transient>;
-    /// Upcast StdLPersistent_HArray1OfPersistent to Standard_Transient (mutable)
-    pub fn StdLPersistent_HArray1OfPersistent_as_Standard_Transient_mut(
-        self_: *mut StdLPersistent_HArray1OfPersistent,
-    ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Wrap StdLPersistent_HArray1OfPersistent in a Handle
-    pub fn StdLPersistent_HArray1OfPersistent_to_handle(
-        obj: *mut StdLPersistent_HArray1OfPersistent,
-    ) -> crate::OcctResult<*mut HandleStdLPersistentHArray1OfPersistent>;
-    /// Destroy Handle<StdLPersistent_HArray1OfPersistent>
-    pub fn HandleStdLPersistentHArray1OfPersistent_destructor(
-        self_: *mut HandleStdLPersistentHArray1OfPersistent,
-    );
-    /// Clone Handle<StdLPersistent_HArray1OfPersistent> (increments reference count)
-    pub fn HandleStdLPersistentHArray1OfPersistent_clone(
-        self_: *const HandleStdLPersistentHArray1OfPersistent,
-    ) -> crate::OcctResult<*mut HandleStdLPersistentHArray1OfPersistent>;
-    /// Check if Handle<StdLPersistent_HArray1OfPersistent> is null
-    pub fn HandleStdLPersistentHArray1OfPersistent_is_null(
-        self_: *const HandleStdLPersistentHArray1OfPersistent,
-    ) -> bool;
-    /// Dereference Handle to get *const StdLPersistent_HArray1OfPersistent
-    pub fn HandleStdLPersistentHArray1OfPersistent_get(
-        handle: *const HandleStdLPersistentHArray1OfPersistent,
-    ) -> crate::OcctResult<*const StdLPersistent_HArray1OfPersistent>;
-    /// Dereference Handle to get *mut StdLPersistent_HArray1OfPersistent
-    pub fn HandleStdLPersistentHArray1OfPersistent_get_mut(
-        handle: *mut HandleStdLPersistentHArray1OfPersistent,
-    ) -> crate::OcctResult<*mut StdLPersistent_HArray1OfPersistent>;
-    /// Upcast Handle<StdLPersistent_HArray1OfPersistent> to Handle<Standard_Transient>
-    pub fn HandleStdLPersistentHArray1OfPersistent_to_HandleStandardTransient(
-        self_: *const HandleStdLPersistentHArray1OfPersistent,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn StdLPersistent_HArray1OfPersistent_inherited_IsInstance(
-        self_: *const StdLPersistent_HArray1OfPersistent,
-        theType: *const HandleStandardType,
-    ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn StdLPersistent_HArray1OfPersistent_inherited_IsKind(
-        self_: *const StdLPersistent_HArray1OfPersistent,
-        theType: *const HandleStandardType,
-    ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
-    pub fn StdLPersistent_HArray1OfPersistent_inherited_This(
-        self_: *const StdLPersistent_HArray1OfPersistent,
-    ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
-    pub fn StdLPersistent_HArray1OfPersistent_inherited_GetRefCount(
-        self_: *const StdLPersistent_HArray1OfPersistent,
-    ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
-    pub fn StdLPersistent_HArray1OfPersistent_inherited_IncrementRefCounter(
-        self_: *mut StdLPersistent_HArray1OfPersistent,
-    ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
-    pub fn StdLPersistent_HArray1OfPersistent_inherited_DecrementRefCounter(
-        self_: *mut StdLPersistent_HArray1OfPersistent,
-    ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
-    pub fn StdLPersistent_HArray1OfPersistent_inherited_Delete(
-        self_: *const StdLPersistent_HArray1OfPersistent,
-    ) -> *const std::ffi::c_char;
-    // ======================== StdLPersistent_HArray2OfPersistent ========================
-    pub fn StdLPersistent_HArray2OfPersistent_destructor(
-        self_: *mut StdLPersistent_HArray2OfPersistent,
-    );
-    /// **Source:** `StdLPersistent_HArray2.hxx`:27 - `StdLPersistent_HArray2OfPersistent::StdLPersistent_HArray2OfPersistent()`
-    pub fn StdLPersistent_HArray2OfPersistent_ctor_int4(
-        theRowLow: i32,
-        theRowUpp: i32,
-        theColLow: i32,
-        theColUpp: i32,
-    ) -> crate::OcctResult<*mut StdLPersistent_HArray2OfPersistent>;
-    /// **Source:** `StdLPersistent_HArray2.hxx`:27 - `StdLPersistent_HArray2OfPersistent::StdLPersistent_HArray2OfPersistent()`
-    pub fn StdLPersistent_HArray2OfPersistent_ctor_int4_handlestdobjmgtpersistent(
-        theRowLow: i32,
-        theRowUpp: i32,
-        theColLow: i32,
-        theColUpp: i32,
-        theValue: *const HandleStdObjMgtPersistent,
-    ) -> crate::OcctResult<*mut StdLPersistent_HArray2OfPersistent>;
-    /// **Source:** `StdLPersistent_HArray2.hxx`:27 - `StdLPersistent_HArray2OfPersistent::StdLPersistent_HArray2OfPersistent()`
-    pub fn StdLPersistent_HArray2OfPersistent_ctor_array2_opencascade_handle_stdobjmgt_persistent(
-        theOther: *const NCollection_Array2_opencascade_handle_StdObjMgt_Persistent,
-    ) -> crate::OcctResult<*mut StdLPersistent_HArray2OfPersistent>;
-    /// **Source:** `StdLPersistent_HArray2.hxx`:27 - `StdLPersistent_HArray2OfPersistent::Array2()`
-    pub fn StdLPersistent_HArray2OfPersistent_array2(
-        self_: *const StdLPersistent_HArray2OfPersistent,
-    ) -> crate::OcctResult<*const NCollection_Array2_opencascade_handle_StdObjMgt_Persistent>;
-    /// **Source:** `StdLPersistent_HArray2.hxx`:27 - `StdLPersistent_HArray2OfPersistent::ChangeArray2()`
-    pub fn StdLPersistent_HArray2OfPersistent_change_array2(
-        self_: *mut StdLPersistent_HArray2OfPersistent,
-    ) -> crate::OcctResult<*mut NCollection_Array2_opencascade_handle_StdObjMgt_Persistent>;
-    /// **Source:** `StdLPersistent_HArray2.hxx`:27 - `StdLPersistent_HArray2OfPersistent::DynamicType()`
-    pub fn StdLPersistent_HArray2OfPersistent_dynamic_type(
-        self_: *const StdLPersistent_HArray2OfPersistent,
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// **Source:** `StdLPersistent_HArray2.hxx`:27 - `StdLPersistent_HArray2OfPersistent::get_type_name()`
-    pub fn StdLPersistent_HArray2OfPersistent_get_type_name(
-    ) -> crate::OcctResult<*const std::ffi::c_char>;
-    /// **Source:** `StdLPersistent_HArray2.hxx`:27 - `StdLPersistent_HArray2OfPersistent::get_type_descriptor()`
-    pub fn StdLPersistent_HArray2OfPersistent_get_type_descriptor(
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// Upcast StdLPersistent_HArray2OfPersistent to Standard_Transient
-    pub fn StdLPersistent_HArray2OfPersistent_as_Standard_Transient(
-        self_: *const StdLPersistent_HArray2OfPersistent,
-    ) -> crate::OcctResult<*const Standard_Transient>;
-    /// Upcast StdLPersistent_HArray2OfPersistent to Standard_Transient (mutable)
-    pub fn StdLPersistent_HArray2OfPersistent_as_Standard_Transient_mut(
-        self_: *mut StdLPersistent_HArray2OfPersistent,
-    ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Wrap StdLPersistent_HArray2OfPersistent in a Handle
-    pub fn StdLPersistent_HArray2OfPersistent_to_handle(
-        obj: *mut StdLPersistent_HArray2OfPersistent,
-    ) -> crate::OcctResult<*mut HandleStdLPersistentHArray2OfPersistent>;
-    /// Destroy Handle<StdLPersistent_HArray2OfPersistent>
-    pub fn HandleStdLPersistentHArray2OfPersistent_destructor(
-        self_: *mut HandleStdLPersistentHArray2OfPersistent,
-    );
-    /// Clone Handle<StdLPersistent_HArray2OfPersistent> (increments reference count)
-    pub fn HandleStdLPersistentHArray2OfPersistent_clone(
-        self_: *const HandleStdLPersistentHArray2OfPersistent,
-    ) -> crate::OcctResult<*mut HandleStdLPersistentHArray2OfPersistent>;
-    /// Check if Handle<StdLPersistent_HArray2OfPersistent> is null
-    pub fn HandleStdLPersistentHArray2OfPersistent_is_null(
-        self_: *const HandleStdLPersistentHArray2OfPersistent,
-    ) -> bool;
-    /// Dereference Handle to get *const StdLPersistent_HArray2OfPersistent
-    pub fn HandleStdLPersistentHArray2OfPersistent_get(
-        handle: *const HandleStdLPersistentHArray2OfPersistent,
-    ) -> crate::OcctResult<*const StdLPersistent_HArray2OfPersistent>;
-    /// Dereference Handle to get *mut StdLPersistent_HArray2OfPersistent
-    pub fn HandleStdLPersistentHArray2OfPersistent_get_mut(
-        handle: *mut HandleStdLPersistentHArray2OfPersistent,
-    ) -> crate::OcctResult<*mut StdLPersistent_HArray2OfPersistent>;
-    /// Upcast Handle<StdLPersistent_HArray2OfPersistent> to Handle<Standard_Transient>
-    pub fn HandleStdLPersistentHArray2OfPersistent_to_HandleStandardTransient(
-        self_: *const HandleStdLPersistentHArray2OfPersistent,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn StdLPersistent_HArray2OfPersistent_inherited_IsInstance(
-        self_: *const StdLPersistent_HArray2OfPersistent,
-        theType: *const HandleStandardType,
-    ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn StdLPersistent_HArray2OfPersistent_inherited_IsKind(
-        self_: *const StdLPersistent_HArray2OfPersistent,
-        theType: *const HandleStandardType,
-    ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
-    pub fn StdLPersistent_HArray2OfPersistent_inherited_This(
-        self_: *const StdLPersistent_HArray2OfPersistent,
-    ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
-    pub fn StdLPersistent_HArray2OfPersistent_inherited_GetRefCount(
-        self_: *const StdLPersistent_HArray2OfPersistent,
-    ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
-    pub fn StdLPersistent_HArray2OfPersistent_inherited_IncrementRefCounter(
-        self_: *mut StdLPersistent_HArray2OfPersistent,
-    ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
-    pub fn StdLPersistent_HArray2OfPersistent_inherited_DecrementRefCounter(
-        self_: *mut StdLPersistent_HArray2OfPersistent,
-    ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
-    pub fn StdLPersistent_HArray2OfPersistent_inherited_Delete(
-        self_: *const StdLPersistent_HArray2OfPersistent,
+        theAttribute: *const Handle_TFunction_Function,
     ) -> *const std::ffi::c_char;
     // ======================== StdLPersistent_HString ========================
     pub fn StdLPersistent_HString_destructor(self_: *mut StdLPersistent_HString);
@@ -694,7 +475,7 @@ unsafe extern "C" {
     /// **Source:** `StdLPersistent_HString.hxx`:51 - `StdLPersistent_HString_Ascii::AsciiString()`
     pub fn StdLPersistent_HString_Ascii_ascii_string(
         self_: *const StdLPersistent_HString_Ascii,
-    ) -> crate::OcctResult<*mut HandleTCollectionHAsciiString>;
+    ) -> crate::OcctResult<*mut Handle_TCollection_HAsciiString>;
     /// **Source:** `StdLPersistent_HString.hxx`:53 - `StdLPersistent_HString_Ascii::PName()`
     pub fn StdLPersistent_HString_Ascii_p_name(
         self_: *const StdLPersistent_HString_Ascii,
@@ -707,7 +488,7 @@ unsafe extern "C" {
     /// **Source:** `StdLPersistent_HString.hxx`:60 - `StdLPersistent_HString_Extended::ExtString()`
     pub fn StdLPersistent_HString_Extended_ext_string(
         self_: *const StdLPersistent_HString_Extended,
-    ) -> crate::OcctResult<*mut HandleTCollectionHExtendedString>;
+    ) -> crate::OcctResult<*mut Handle_TCollection_HExtendedString>;
     /// **Source:** `StdLPersistent_HString.hxx`:62 - `StdLPersistent_HString_Extended::PName()`
     pub fn StdLPersistent_HString_Extended_p_name(
         self_: *const StdLPersistent_HString_Extended,
@@ -738,7 +519,7 @@ unsafe extern "C" {
     /// **Source:** `StdLPersistent_NamedData.hxx`:88 - `StdLPersistent_NamedData::Import()`
     pub fn StdLPersistent_NamedData_import(
         self_: *const StdLPersistent_NamedData,
-        theAttribute: *const HandleTDataStdNamedData,
+        theAttribute: *const Handle_TDataStd_NamedData,
     ) -> *const std::ffi::c_char;
     // ======================== StdLPersistent_Real ========================
     pub fn StdLPersistent_Real_destructor(self_: *mut StdLPersistent_Real);
@@ -766,7 +547,7 @@ unsafe extern "C" {
     /// **Source:** `StdLPersistent_Real.hxx`:47 - `StdLPersistent_Real::Import()`
     pub fn StdLPersistent_Real_import(
         self_: *const StdLPersistent_Real,
-        theAttribute: *const HandleTDataStdReal,
+        theAttribute: *const Handle_TDataStd_Real,
     ) -> *const std::ffi::c_char;
     // ======================== StdLPersistent_TreeNode ========================
     pub fn StdLPersistent_TreeNode_destructor(self_: *mut StdLPersistent_TreeNode);
@@ -794,7 +575,7 @@ unsafe extern "C" {
     /// **Source:** `StdLPersistent_TreeNode.hxx`:38 - `StdLPersistent_TreeNode::CreateAttribute()`
     pub fn StdLPersistent_TreeNode_create_attribute(
         self_: *mut StdLPersistent_TreeNode,
-    ) -> crate::OcctResult<*mut HandleTDFAttribute>;
+    ) -> crate::OcctResult<*mut Handle_TDF_Attribute>;
     /// **Source:** `StdLPersistent_TreeNode.hxx`:41 - `StdLPersistent_TreeNode::ImportAttribute()`
     pub fn StdLPersistent_TreeNode_import_attribute(
         self_: *mut StdLPersistent_TreeNode,
@@ -838,7 +619,7 @@ unsafe extern "C" {
     /// **Source:** `StdLPersistent_Value.hxx`:69 - `StdLPersistent_Value_UAttribute::CreateAttribute()`
     pub fn StdLPersistent_Value_UAttribute_create_attribute(
         self_: *mut StdLPersistent_Value_UAttribute,
-    ) -> crate::OcctResult<*mut HandleTDFAttribute>;
+    ) -> crate::OcctResult<*mut Handle_TDF_Attribute>;
     /// **Source:** `StdLPersistent_Value.hxx`:71 - `StdLPersistent_Value_UAttribute::PName()`
     pub fn StdLPersistent_Value_UAttribute_p_name(
         self_: *const StdLPersistent_Value_UAttribute,
@@ -851,7 +632,7 @@ unsafe extern "C" {
     /// **Source:** `StdLPersistent_Value.hxx`:78 - `StdLPersistent_Value_Integer::CreateAttribute()`
     pub fn StdLPersistent_Value_Integer_create_attribute(
         self_: *mut StdLPersistent_Value_Integer,
-    ) -> crate::OcctResult<*mut HandleTDFAttribute>;
+    ) -> crate::OcctResult<*mut Handle_TDF_Attribute>;
     /// **Source:** `StdLPersistent_Value.hxx`:80 - `StdLPersistent_Value_Integer::PName()`
     pub fn StdLPersistent_Value_Integer_p_name(
         self_: *const StdLPersistent_Value_Integer,
@@ -863,7 +644,7 @@ unsafe extern "C" {
     /// **Source:** `StdLPersistent_Value.hxx`:87 - `StdLPersistent_Value_Name::CreateAttribute()`
     pub fn StdLPersistent_Value_Name_create_attribute(
         self_: *mut StdLPersistent_Value_Name,
-    ) -> crate::OcctResult<*mut HandleTDFAttribute>;
+    ) -> crate::OcctResult<*mut Handle_TDF_Attribute>;
     /// **Source:** `StdLPersistent_Value.hxx`:89 - `StdLPersistent_Value_Name::PName()`
     pub fn StdLPersistent_Value_Name_p_name(
         self_: *const StdLPersistent_Value_Name,
@@ -878,7 +659,7 @@ unsafe extern "C" {
     /// **Source:** `StdLPersistent_Value.hxx`:96 - `StdLPersistent_Value_AsciiString::CreateAttribute()`
     pub fn StdLPersistent_Value_AsciiString_create_attribute(
         self_: *mut StdLPersistent_Value_AsciiString,
-    ) -> crate::OcctResult<*mut HandleTDFAttribute>;
+    ) -> crate::OcctResult<*mut Handle_TDF_Attribute>;
     /// **Source:** `StdLPersistent_Value.hxx`:98 - `StdLPersistent_Value_AsciiString::PName()`
     pub fn StdLPersistent_Value_AsciiString_p_name(
         self_: *const StdLPersistent_Value_AsciiString,
@@ -909,7 +690,7 @@ unsafe extern "C" {
     /// **Source:** `StdLPersistent_Variable.hxx`:50 - `StdLPersistent_Variable::Import()`
     pub fn StdLPersistent_Variable_import(
         self_: *const StdLPersistent_Variable,
-        theAttribute: *const HandleTDataStdVariable,
+        theAttribute: *const Handle_TDataStd_Variable,
     ) -> *const std::ffi::c_char;
     // ======================== StdLPersistent_XLink ========================
     pub fn StdLPersistent_XLink_destructor(self_: *mut StdLPersistent_XLink);
@@ -937,7 +718,7 @@ unsafe extern "C" {
     /// **Source:** `StdLPersistent_XLink.hxx`:45 - `StdLPersistent_XLink::Import()`
     pub fn StdLPersistent_XLink_import(
         self_: *const StdLPersistent_XLink,
-        theAttribute: *const HandleTDocStdXLink,
+        theAttribute: *const Handle_TDocStd_XLink,
     ) -> *const std::ffi::c_char;
     // ======================== StdObjMgt_Persistent ========================
     pub fn StdObjMgt_Persistent_destructor(self_: *mut StdObjMgt_Persistent);
@@ -963,47 +744,47 @@ unsafe extern "C" {
     /// **Source:** `StdObjMgt_Persistent.hxx`:66 - `StdObjMgt_Persistent::ImportDocument()`
     pub fn StdObjMgt_Persistent_import_document(
         self_: *const StdObjMgt_Persistent,
-        theDocument: *const HandleTDocStdDocument,
+        theDocument: *const Handle_TDocStd_Document,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `StdObjMgt_Persistent.hxx`:71 - `StdObjMgt_Persistent::CreateAttribute()`
+    /// **Source:** `StdObjMgt_Persistent.hxx`:72 - `StdObjMgt_Persistent::CreateAttribute()`
     pub fn StdObjMgt_Persistent_create_attribute(
         self_: *mut StdObjMgt_Persistent,
-    ) -> crate::OcctResult<*mut HandleTDFAttribute>;
-    /// **Source:** `StdObjMgt_Persistent.hxx`:76 - `StdObjMgt_Persistent::GetAttribute()`
+    ) -> crate::OcctResult<*mut Handle_TDF_Attribute>;
+    /// **Source:** `StdObjMgt_Persistent.hxx`:77 - `StdObjMgt_Persistent::GetAttribute()`
     pub fn StdObjMgt_Persistent_get_attribute(
         self_: *const StdObjMgt_Persistent,
-    ) -> crate::OcctResult<*mut HandleTDFAttribute>;
-    /// **Source:** `StdObjMgt_Persistent.hxx`:81 - `StdObjMgt_Persistent::ImportAttribute()`
+    ) -> crate::OcctResult<*mut Handle_TDF_Attribute>;
+    /// **Source:** `StdObjMgt_Persistent.hxx`:82 - `StdObjMgt_Persistent::ImportAttribute()`
     pub fn StdObjMgt_Persistent_import_attribute(
         self_: *mut StdObjMgt_Persistent,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `StdObjMgt_Persistent.hxx`:86 - `StdObjMgt_Persistent::AsciiString()`
+    /// **Source:** `StdObjMgt_Persistent.hxx`:87 - `StdObjMgt_Persistent::AsciiString()`
     pub fn StdObjMgt_Persistent_ascii_string(
         self_: *const StdObjMgt_Persistent,
-    ) -> crate::OcctResult<*mut HandleTCollectionHAsciiString>;
-    /// **Source:** `StdObjMgt_Persistent.hxx`:91 - `StdObjMgt_Persistent::ExtString()`
+    ) -> crate::OcctResult<*mut Handle_TCollection_HAsciiString>;
+    /// **Source:** `StdObjMgt_Persistent.hxx`:92 - `StdObjMgt_Persistent::ExtString()`
     pub fn StdObjMgt_Persistent_ext_string(
         self_: *const StdObjMgt_Persistent,
-    ) -> crate::OcctResult<*mut HandleTCollectionHExtendedString>;
-    /// **Source:** `StdObjMgt_Persistent.hxx`:96 - `StdObjMgt_Persistent::Label()`
+    ) -> crate::OcctResult<*mut Handle_TCollection_HExtendedString>;
+    /// **Source:** `StdObjMgt_Persistent.hxx`:97 - `StdObjMgt_Persistent::Label()`
     pub fn StdObjMgt_Persistent_label(
         self_: *const StdObjMgt_Persistent,
-        theDF: *const HandleTDFData,
+        theDF: *const Handle_TDF_Data,
     ) -> crate::OcctResult<*mut TDF_Label>;
-    /// **Source:** `StdObjMgt_Persistent.hxx`:99 - `StdObjMgt_Persistent::TypeNum()`
+    /// **Source:** `StdObjMgt_Persistent.hxx`:100 - `StdObjMgt_Persistent::TypeNum()`
     pub fn StdObjMgt_Persistent_type_num(
         self_: *const StdObjMgt_Persistent,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `StdObjMgt_Persistent.hxx`:102 - `StdObjMgt_Persistent::TypeNum()`
+    /// **Source:** `StdObjMgt_Persistent.hxx`:103 - `StdObjMgt_Persistent::TypeNum()`
     pub fn StdObjMgt_Persistent_type_num_int(
         self_: *mut StdObjMgt_Persistent,
         theTypeNum: i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `StdObjMgt_Persistent.hxx`:105 - `StdObjMgt_Persistent::RefNum()`
+    /// **Source:** `StdObjMgt_Persistent.hxx`:106 - `StdObjMgt_Persistent::RefNum()`
     pub fn StdObjMgt_Persistent_ref_num(
         self_: *const StdObjMgt_Persistent,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `StdObjMgt_Persistent.hxx`:108 - `StdObjMgt_Persistent::RefNum()`
+    /// **Source:** `StdObjMgt_Persistent.hxx`:109 - `StdObjMgt_Persistent::RefNum()`
     pub fn StdObjMgt_Persistent_ref_num_int(
         self_: *mut StdObjMgt_Persistent,
         theRefNum: i32,
@@ -1017,88 +798,88 @@ unsafe extern "C" {
         self_: *mut StdObjMgt_Persistent,
     ) -> crate::OcctResult<*mut Standard_Transient>;
     /// Destroy Handle<StdObjMgt_Persistent>
-    pub fn HandleStdObjMgtPersistent_destructor(self_: *mut HandleStdObjMgtPersistent);
+    pub fn Handle_StdObjMgt_Persistent_destructor(self_: *mut Handle_StdObjMgt_Persistent);
     /// Clone Handle<StdObjMgt_Persistent> (increments reference count)
-    pub fn HandleStdObjMgtPersistent_clone(
-        self_: *const HandleStdObjMgtPersistent,
-    ) -> crate::OcctResult<*mut HandleStdObjMgtPersistent>;
+    pub fn Handle_StdObjMgt_Persistent_clone(
+        self_: *const Handle_StdObjMgt_Persistent,
+    ) -> crate::OcctResult<*mut Handle_StdObjMgt_Persistent>;
     /// Check if Handle<StdObjMgt_Persistent> is null
-    pub fn HandleStdObjMgtPersistent_is_null(self_: *const HandleStdObjMgtPersistent) -> bool;
+    pub fn Handle_StdObjMgt_Persistent_is_null(self_: *const Handle_StdObjMgt_Persistent) -> bool;
     /// Dereference Handle to get *const StdObjMgt_Persistent
-    pub fn HandleStdObjMgtPersistent_get(
-        handle: *const HandleStdObjMgtPersistent,
+    pub fn Handle_StdObjMgt_Persistent_get(
+        handle: *const Handle_StdObjMgt_Persistent,
     ) -> crate::OcctResult<*const StdObjMgt_Persistent>;
     /// Dereference Handle to get *mut StdObjMgt_Persistent
-    pub fn HandleStdObjMgtPersistent_get_mut(
-        handle: *mut HandleStdObjMgtPersistent,
+    pub fn Handle_StdObjMgt_Persistent_get_mut(
+        handle: *mut Handle_StdObjMgt_Persistent,
     ) -> crate::OcctResult<*mut StdObjMgt_Persistent>;
     /// Upcast Handle<StdObjMgt_Persistent> to Handle<Standard_Transient>
-    pub fn HandleStdObjMgtPersistent_to_HandleStandardTransient(
-        self_: *const HandleStdObjMgtPersistent,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
+    pub fn Handle_StdObjMgt_Persistent_to_Handle_Standard_Transient(
+        self_: *const Handle_StdObjMgt_Persistent,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
     /// Downcast Handle<StdObjMgt_Persistent> to Handle<ShapePersistent_BRep::CurveRepresentation> (returns null on failure)
-    pub fn HandleStdObjMgtPersistent_downcast_to_HandleShapePersistentBRepCurveRepresentation(
-        self_: *const HandleStdObjMgtPersistent,
-    ) -> crate::OcctResult<*mut HandleShapePersistentBRepCurveRepresentation>;
+    pub fn Handle_StdObjMgt_Persistent_downcast_to_Handle_ShapePersistent_BRep_CurveRepresentation(
+        self_: *const Handle_StdObjMgt_Persistent,
+    ) -> crate::OcctResult<*mut Handle_ShapePersistent_BRep_CurveRepresentation>;
     /// Downcast Handle<StdObjMgt_Persistent> to Handle<ShapePersistent_BRep::PointRepresentation> (returns null on failure)
-    pub fn HandleStdObjMgtPersistent_downcast_to_HandleShapePersistentBRepPointRepresentation(
-        self_: *const HandleStdObjMgtPersistent,
-    ) -> crate::OcctResult<*mut HandleShapePersistentBRepPointRepresentation>;
+    pub fn Handle_StdObjMgt_Persistent_downcast_to_Handle_ShapePersistent_BRep_PointRepresentation(
+        self_: *const Handle_StdObjMgt_Persistent,
+    ) -> crate::OcctResult<*mut Handle_ShapePersistent_BRep_PointRepresentation>;
     /// Downcast Handle<StdObjMgt_Persistent> to Handle<ShapePersistent_Geom::Geometry> (returns null on failure)
-    pub fn HandleStdObjMgtPersistent_downcast_to_HandleShapePersistentGeomGeometry(
-        self_: *const HandleStdObjMgtPersistent,
-    ) -> crate::OcctResult<*mut HandleShapePersistentGeomGeometry>;
+    pub fn Handle_StdObjMgt_Persistent_downcast_to_Handle_ShapePersistent_Geom_Geometry(
+        self_: *const Handle_StdObjMgt_Persistent,
+    ) -> crate::OcctResult<*mut Handle_ShapePersistent_Geom_Geometry>;
     /// Downcast Handle<StdObjMgt_Persistent> to Handle<ShapePersistent_TopoDS::HShape> (returns null on failure)
-    pub fn HandleStdObjMgtPersistent_downcast_to_HandleShapePersistentTopoDSHShape(
-        self_: *const HandleStdObjMgtPersistent,
-    ) -> crate::OcctResult<*mut HandleShapePersistentTopoDSHShape>;
+    pub fn Handle_StdObjMgt_Persistent_downcast_to_Handle_ShapePersistent_TopoDS_HShape(
+        self_: *const Handle_StdObjMgt_Persistent,
+    ) -> crate::OcctResult<*mut Handle_ShapePersistent_TopoDS_HShape>;
     /// Downcast Handle<StdObjMgt_Persistent> to Handle<StdLPersistent_Data> (returns null on failure)
-    pub fn HandleStdObjMgtPersistent_downcast_to_HandleStdLPersistentData(
-        self_: *const HandleStdObjMgtPersistent,
-    ) -> crate::OcctResult<*mut HandleStdLPersistentData>;
+    pub fn Handle_StdObjMgt_Persistent_downcast_to_Handle_StdLPersistent_Data(
+        self_: *const Handle_StdObjMgt_Persistent,
+    ) -> crate::OcctResult<*mut Handle_StdLPersistent_Data>;
     /// Downcast Handle<StdObjMgt_Persistent> to Handle<StdLPersistent_Document> (returns null on failure)
-    pub fn HandleStdObjMgtPersistent_downcast_to_HandleStdLPersistentDocument(
-        self_: *const HandleStdObjMgtPersistent,
-    ) -> crate::OcctResult<*mut HandleStdLPersistentDocument>;
+    pub fn Handle_StdObjMgt_Persistent_downcast_to_Handle_StdLPersistent_Document(
+        self_: *const Handle_StdObjMgt_Persistent,
+    ) -> crate::OcctResult<*mut Handle_StdLPersistent_Document>;
     /// Downcast Handle<StdObjMgt_Persistent> to Handle<StdPersistent_Naming::Name> (returns null on failure)
-    pub fn HandleStdObjMgtPersistent_downcast_to_HandleStdPersistentNamingName(
-        self_: *const HandleStdObjMgtPersistent,
-    ) -> crate::OcctResult<*mut HandleStdPersistentNamingName>;
+    pub fn Handle_StdObjMgt_Persistent_downcast_to_Handle_StdPersistent_Naming_Name(
+        self_: *const Handle_StdObjMgt_Persistent,
+    ) -> crate::OcctResult<*mut Handle_StdPersistent_Naming_Name>;
     /// Downcast Handle<StdObjMgt_Persistent> to Handle<StdPersistent_TopLoc::ItemLocation> (returns null on failure)
-    pub fn HandleStdObjMgtPersistent_downcast_to_HandleStdPersistentTopLocItemLocation(
-        self_: *const HandleStdObjMgtPersistent,
-    ) -> crate::OcctResult<*mut HandleStdPersistentTopLocItemLocation>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:71 - `Standard_Transient::DynamicType()`
+    pub fn Handle_StdObjMgt_Persistent_downcast_to_Handle_StdPersistent_TopLoc_ItemLocation(
+        self_: *const Handle_StdObjMgt_Persistent,
+    ) -> crate::OcctResult<*mut Handle_StdPersistent_TopLoc_ItemLocation>;
+    /// Inherited: **Source:** `Standard_Transient.hxx`:79 - `Standard_Transient::DynamicType()`
     pub fn StdObjMgt_Persistent_inherited_DynamicType(
         self_: *const StdObjMgt_Persistent,
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn StdObjMgt_Persistent_inherited_IsInstance(
         self_: *const StdObjMgt_Persistent,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn StdObjMgt_Persistent_inherited_IsKind(
         self_: *const StdObjMgt_Persistent,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn StdObjMgt_Persistent_inherited_This(
         self_: *const StdObjMgt_Persistent,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn StdObjMgt_Persistent_inherited_GetRefCount(
         self_: *const StdObjMgt_Persistent,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn StdObjMgt_Persistent_inherited_IncrementRefCounter(
         self_: *mut StdObjMgt_Persistent,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn StdObjMgt_Persistent_inherited_DecrementRefCounter(
         self_: *mut StdObjMgt_Persistent,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn StdObjMgt_Persistent_inherited_Delete(
         self_: *const StdObjMgt_Persistent,
     ) -> *const std::ffi::c_char;
@@ -1106,7 +887,7 @@ unsafe extern "C" {
     pub fn StdObjMgt_ReadData_destructor(self_: *mut StdObjMgt_ReadData);
     /// **Source:** `StdObjMgt_ReadData.hxx`:49 - `StdObjMgt_ReadData::StdObjMgt_ReadData()`
     pub fn StdObjMgt_ReadData_ctor_handlestoragebasedriver_int(
-        theDriver: *const HandleStorageBaseDriver,
+        theDriver: *const Handle_Storage_BaseDriver,
         theNumberOfObjects: i32,
     ) -> crate::OcctResult<*mut StdObjMgt_ReadData>;
     /// **Source:** `StdObjMgt_ReadData.hxx`:58 - `StdObjMgt_ReadData::ReadPersistentObject()`
@@ -1118,11 +899,11 @@ unsafe extern "C" {
     pub fn StdObjMgt_ReadData_persistent_object(
         self_: *const StdObjMgt_ReadData,
         theRef: i32,
-    ) -> crate::OcctResult<*mut HandleStdObjMgtPersistent>;
+    ) -> crate::OcctResult<*mut Handle_StdObjMgt_Persistent>;
     /// **Source:** `StdObjMgt_ReadData.hxx`:65 - `StdObjMgt_ReadData::ReadReference()`
     pub fn StdObjMgt_ReadData_read_reference(
         self_: *mut StdObjMgt_ReadData,
-    ) -> crate::OcctResult<*mut HandleStdObjMgtPersistent>;
+    ) -> crate::OcctResult<*mut Handle_StdObjMgt_Persistent>;
     // ======================== StdObjMgt_ReadData_ObjectSentry ========================
     pub fn StdObjMgt_ReadData_ObjectSentry_destructor(self_: *mut StdObjMgt_ReadData_ObjectSentry);
     /// **Source:** `StdObjMgt_ReadData.hxx`:34 - `StdObjMgt_ReadData_ObjectSentry::StdObjMgt_ReadData_ObjectSentry()`
@@ -1133,12 +914,12 @@ unsafe extern "C" {
     pub fn StdObjMgt_WriteData_destructor(self_: *mut StdObjMgt_WriteData);
     /// **Source:** `StdObjMgt_WriteData.hxx`:48 - `StdObjMgt_WriteData::StdObjMgt_WriteData()`
     pub fn StdObjMgt_WriteData_ctor_handlestoragebasedriver(
-        theDriver: *const HandleStorageBaseDriver,
+        theDriver: *const Handle_Storage_BaseDriver,
     ) -> crate::OcctResult<*mut StdObjMgt_WriteData>;
     /// **Source:** `StdObjMgt_WriteData.hxx`:50 - `StdObjMgt_WriteData::WritePersistentObject()`
     pub fn StdObjMgt_WriteData_write_persistent_object(
         self_: *mut StdObjMgt_WriteData,
-        thePersistent: *const HandleStdObjMgtPersistent,
+        thePersistent: *const Handle_StdObjMgt_Persistent,
     ) -> *const std::ffi::c_char;
     // ======================== StdObjMgt_WriteData_ObjectSentry ========================
     pub fn StdObjMgt_WriteData_ObjectSentry_destructor(
@@ -1153,10 +934,10 @@ unsafe extern "C" {
     /// **Source:** `StdLDrivers.hxx`:29 - `StdLDrivers::Factory`
     pub fn StdLDrivers_factory(
         aGUID: *const Standard_GUID,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
     /// **Source:** `StdLDrivers.hxx`:33 - `StdLDrivers::DefineFormat`
     pub fn StdLDrivers_define_format(
-        theApp: *const HandleTDocStdApplication,
+        theApp: *const Handle_TDocStd_Application,
     ) -> *const std::ffi::c_char;
 
     // Nested type & typedef type destructors
@@ -1165,8 +946,5 @@ unsafe extern "C" {
     );
     pub fn StdObjMgt_Persistent_SequenceOfPersistent_destructor(
         self_: *mut StdObjMgt_Persistent_SequenceOfPersistent,
-    );
-    pub fn StdObjMgt_TransientPersistentMap_destructor(
-        self_: *mut StdObjMgt_TransientPersistentMap,
     );
 }

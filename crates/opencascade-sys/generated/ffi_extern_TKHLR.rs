@@ -15,7 +15,7 @@ unsafe extern "C" {
     /// **Source:** `Contap_ArcFunction.hxx`:36 - `Contap_ArcFunction::Set()`
     pub fn Contap_ArcFunction_set_handleadaptor3dsurface(
         self_: *mut Contap_ArcFunction,
-        S: *const HandleAdaptor3dSurface,
+        S: *const Handle_Adaptor3d_Surface,
     ) -> *const std::ffi::c_char;
     /// **Source:** `Contap_ArcFunction.hxx`:38 - `Contap_ArcFunction::Set()`
     pub fn Contap_ArcFunction_set_dir(
@@ -42,7 +42,7 @@ unsafe extern "C" {
     /// **Source:** `Contap_ArcFunction.hxx`:46 - `Contap_ArcFunction::Set()`
     pub fn Contap_ArcFunction_set_handleadaptor2dcurve2d(
         self_: *mut Contap_ArcFunction,
-        A: *const HandleAdaptor2dCurve2d,
+        A: *const Handle_Adaptor2d_Curve2d,
     ) -> *const std::ffi::c_char;
     /// **Source:** `Contap_ArcFunction.hxx`:48 - `Contap_ArcFunction::Value()`
     pub fn Contap_ArcFunction_value(
@@ -56,35 +56,35 @@ unsafe extern "C" {
         X: f64,
         D: *mut f64,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `Contap_ArcFunction.hxx`:53 - `Contap_ArcFunction::Values()`
+    /// **Source:** `Contap_ArcFunction.hxx`:52 - `Contap_ArcFunction::Values()`
     pub fn Contap_ArcFunction_values(
         self_: *mut Contap_ArcFunction,
         X: f64,
         F: *mut f64,
         D: *mut f64,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `Contap_ArcFunction.hxx`:57 - `Contap_ArcFunction::NbSamples()`
+    /// **Source:** `Contap_ArcFunction.hxx`:54 - `Contap_ArcFunction::NbSamples()`
     pub fn Contap_ArcFunction_nb_samples(
         self_: *const Contap_ArcFunction,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `Contap_ArcFunction.hxx`:59 - `Contap_ArcFunction::GetStateNumber()`
+    /// **Source:** `Contap_ArcFunction.hxx`:56 - `Contap_ArcFunction::GetStateNumber()`
     pub fn Contap_ArcFunction_get_state_number(
         self_: *mut Contap_ArcFunction,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `Contap_ArcFunction.hxx`:61 - `Contap_ArcFunction::Valpoint()`
+    /// **Source:** `Contap_ArcFunction.hxx`:58 - `Contap_ArcFunction::Valpoint()`
     pub fn Contap_ArcFunction_valpoint(
         self_: *const Contap_ArcFunction,
         Index: i32,
     ) -> crate::OcctResult<*const gp_Pnt>;
-    /// **Source:** `Contap_ArcFunction.hxx`:63 - `Contap_ArcFunction::Quadric()`
+    /// **Source:** `Contap_ArcFunction.hxx`:60 - `Contap_ArcFunction::Quadric()`
     pub fn Contap_ArcFunction_quadric(
         self_: *const Contap_ArcFunction,
     ) -> crate::OcctResult<*const IntSurf_Quadric>;
-    /// **Source:** `Contap_ArcFunction.hxx`:66 - `Contap_ArcFunction::Surface()`
+    /// **Source:** `Contap_ArcFunction.hxx`:63 - `Contap_ArcFunction::Surface()`
     pub fn Contap_ArcFunction_surface(
         self_: *const Contap_ArcFunction,
-    ) -> crate::OcctResult<*const HandleAdaptor3dSurface>;
-    /// **Source:** `Contap_ArcFunction.hxx`:70 - `Contap_ArcFunction::LastComputedPoint()`
+    ) -> crate::OcctResult<*const Handle_Adaptor3d_Surface>;
+    /// **Source:** `Contap_ArcFunction.hxx`:67 - `Contap_ArcFunction::LastComputedPoint()`
     pub fn Contap_ArcFunction_last_computed_point(
         self_: *const Contap_ArcFunction,
     ) -> crate::OcctResult<*const gp_Pnt>;
@@ -180,89 +180,89 @@ unsafe extern "C" {
     ) -> crate::OcctResult<*mut gp_Lin>;
     // ======================== Contap_Contour ========================
     pub fn Contap_Contour_destructor(self_: *mut Contap_Contour);
-    /// **Source:** `Contap_Contour.hxx`:36 - `Contap_Contour::Contap_Contour()`
+    /// **Source:** `Contap_Contour.hxx`:37 - `Contap_Contour::Contap_Contour()`
     pub fn Contap_Contour_ctor() -> crate::OcctResult<*mut Contap_Contour>;
-    /// **Source:** `Contap_Contour.hxx`:38 - `Contap_Contour::Contap_Contour()`
+    /// **Source:** `Contap_Contour.hxx`:39 - `Contap_Contour::Contap_Contour()`
     pub fn Contap_Contour_ctor_vec(
         Direction: *const gp_Vec,
     ) -> crate::OcctResult<*mut Contap_Contour>;
-    /// **Source:** `Contap_Contour.hxx`:40 - `Contap_Contour::Contap_Contour()`
+    /// **Source:** `Contap_Contour.hxx`:41 - `Contap_Contour::Contap_Contour()`
     pub fn Contap_Contour_ctor_vec_real(
         Direction: *const gp_Vec,
         Angle: f64,
     ) -> crate::OcctResult<*mut Contap_Contour>;
-    /// **Source:** `Contap_Contour.hxx`:42 - `Contap_Contour::Contap_Contour()`
+    /// **Source:** `Contap_Contour.hxx`:43 - `Contap_Contour::Contap_Contour()`
     pub fn Contap_Contour_ctor_pnt(Eye: *const gp_Pnt) -> crate::OcctResult<*mut Contap_Contour>;
-    /// **Source:** `Contap_Contour.hxx`:45 - `Contap_Contour::Contap_Contour()`
+    /// **Source:** `Contap_Contour.hxx`:46 - `Contap_Contour::Contap_Contour()`
     pub fn Contap_Contour_ctor_handleadaptor3dsurface_handleadaptor3dtopoltool_vec(
-        Surf: *const HandleAdaptor3dSurface,
-        Domain: *const HandleAdaptor3dTopolTool,
+        Surf: *const Handle_Adaptor3d_Surface,
+        Domain: *const Handle_Adaptor3d_TopolTool,
         Direction: *const gp_Vec,
     ) -> crate::OcctResult<*mut Contap_Contour>;
-    /// **Source:** `Contap_Contour.hxx`:50 - `Contap_Contour::Contap_Contour()`
+    /// **Source:** `Contap_Contour.hxx`:51 - `Contap_Contour::Contap_Contour()`
     pub fn Contap_Contour_ctor_handleadaptor3dsurface_handleadaptor3dtopoltool_vec_real(
-        Surf: *const HandleAdaptor3dSurface,
-        Domain: *const HandleAdaptor3dTopolTool,
+        Surf: *const Handle_Adaptor3d_Surface,
+        Domain: *const Handle_Adaptor3d_TopolTool,
         Direction: *const gp_Vec,
         Angle: f64,
     ) -> crate::OcctResult<*mut Contap_Contour>;
-    /// **Source:** `Contap_Contour.hxx`:56 - `Contap_Contour::Contap_Contour()`
+    /// **Source:** `Contap_Contour.hxx`:57 - `Contap_Contour::Contap_Contour()`
     pub fn Contap_Contour_ctor_handleadaptor3dsurface_handleadaptor3dtopoltool_pnt(
-        Surf: *const HandleAdaptor3dSurface,
-        Domain: *const HandleAdaptor3dTopolTool,
+        Surf: *const Handle_Adaptor3d_Surface,
+        Domain: *const Handle_Adaptor3d_TopolTool,
         Eye: *const gp_Pnt,
     ) -> crate::OcctResult<*mut Contap_Contour>;
-    /// **Source:** `Contap_Contour.hxx`:61 - `Contap_Contour::Perform()`
+    /// **Source:** `Contap_Contour.hxx`:62 - `Contap_Contour::Perform()`
     pub fn Contap_Contour_perform_handleadaptor3dsurface_handleadaptor3dtopoltool(
         self_: *mut Contap_Contour,
-        Surf: *const HandleAdaptor3dSurface,
-        Domain: *const HandleAdaptor3dTopolTool,
+        Surf: *const Handle_Adaptor3d_Surface,
+        Domain: *const Handle_Adaptor3d_TopolTool,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `Contap_Contour.hxx`:65 - `Contap_Contour::Perform()`
+    /// **Source:** `Contap_Contour.hxx`:66 - `Contap_Contour::Perform()`
     pub fn Contap_Contour_perform_handleadaptor3dsurface_handleadaptor3dtopoltool_vec(
         self_: *mut Contap_Contour,
-        Surf: *const HandleAdaptor3dSurface,
-        Domain: *const HandleAdaptor3dTopolTool,
+        Surf: *const Handle_Adaptor3d_Surface,
+        Domain: *const Handle_Adaptor3d_TopolTool,
         Direction: *const gp_Vec,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `Contap_Contour.hxx`:70 - `Contap_Contour::Perform()`
+    /// **Source:** `Contap_Contour.hxx`:71 - `Contap_Contour::Perform()`
     pub fn Contap_Contour_perform_handleadaptor3dsurface_handleadaptor3dtopoltool_vec_real(
         self_: *mut Contap_Contour,
-        Surf: *const HandleAdaptor3dSurface,
-        Domain: *const HandleAdaptor3dTopolTool,
+        Surf: *const Handle_Adaptor3d_Surface,
+        Domain: *const Handle_Adaptor3d_TopolTool,
         Direction: *const gp_Vec,
         Angle: f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `Contap_Contour.hxx`:76 - `Contap_Contour::Perform()`
+    /// **Source:** `Contap_Contour.hxx`:77 - `Contap_Contour::Perform()`
     pub fn Contap_Contour_perform_handleadaptor3dsurface_handleadaptor3dtopoltool_pnt(
         self_: *mut Contap_Contour,
-        Surf: *const HandleAdaptor3dSurface,
-        Domain: *const HandleAdaptor3dTopolTool,
+        Surf: *const Handle_Adaptor3d_Surface,
+        Domain: *const Handle_Adaptor3d_TopolTool,
         Eye: *const gp_Pnt,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `Contap_Contour.hxx`:80 - `Contap_Contour::Init()`
+    /// **Source:** `Contap_Contour.hxx`:81 - `Contap_Contour::Init()`
     pub fn Contap_Contour_init_vec(
         self_: *mut Contap_Contour,
         Direction: *const gp_Vec,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `Contap_Contour.hxx`:82 - `Contap_Contour::Init()`
+    /// **Source:** `Contap_Contour.hxx`:83 - `Contap_Contour::Init()`
     pub fn Contap_Contour_init_vec_real(
         self_: *mut Contap_Contour,
         Direction: *const gp_Vec,
         Angle: f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `Contap_Contour.hxx`:84 - `Contap_Contour::Init()`
+    /// **Source:** `Contap_Contour.hxx`:85 - `Contap_Contour::Init()`
     pub fn Contap_Contour_init_pnt(
         self_: *mut Contap_Contour,
         Eye: *const gp_Pnt,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `Contap_Contour.hxx`:86 - `Contap_Contour::IsDone()`
+    /// **Source:** `Contap_Contour.hxx`:87 - `Contap_Contour::IsDone()`
     pub fn Contap_Contour_is_done(self_: *const Contap_Contour) -> crate::OcctResult<bool>;
-    /// **Source:** `Contap_Contour.hxx`:89 - `Contap_Contour::IsEmpty()`
+    /// **Source:** `Contap_Contour.hxx`:90 - `Contap_Contour::IsEmpty()`
     pub fn Contap_Contour_is_empty(self_: *const Contap_Contour) -> crate::OcctResult<bool>;
-    /// **Source:** `Contap_Contour.hxx`:91 - `Contap_Contour::NbLines()`
+    /// **Source:** `Contap_Contour.hxx`:92 - `Contap_Contour::NbLines()`
     pub fn Contap_Contour_nb_lines(self_: *const Contap_Contour) -> crate::OcctResult<i32>;
-    /// **Source:** `Contap_Contour.hxx`:93 - `Contap_Contour::Line()`
+    /// **Source:** `Contap_Contour.hxx`:94 - `Contap_Contour::Line()`
     pub fn Contap_Contour_line(
         self_: *const Contap_Contour,
         Index: i32,
@@ -277,63 +277,64 @@ unsafe extern "C" {
     pub fn Contap_HContTool_ctor() -> crate::OcctResult<*mut Contap_HContTool>;
     /// **Source:** `Contap_HContTool.hxx`:34 - `Contap_HContTool::NbSamplesU()`
     pub fn Contap_HContTool_nb_samples_u(
-        S: *const HandleAdaptor3dSurface,
+        S: *const Handle_Adaptor3d_Surface,
         u1: f64,
         u2: f64,
     ) -> crate::OcctResult<i32>;
     /// **Source:** `Contap_HContTool.hxx`:38 - `Contap_HContTool::NbSamplesV()`
     pub fn Contap_HContTool_nb_samples_v(
-        S: *const HandleAdaptor3dSurface,
+        S: *const Handle_Adaptor3d_Surface,
         v1: f64,
         v2: f64,
     ) -> crate::OcctResult<i32>;
     /// **Source:** `Contap_HContTool.hxx`:42 - `Contap_HContTool::NbSamplePoints()`
     pub fn Contap_HContTool_nb_sample_points(
-        S: *const HandleAdaptor3dSurface,
+        S: *const Handle_Adaptor3d_Surface,
     ) -> crate::OcctResult<i32>;
     /// **Source:** `Contap_HContTool.hxx`:44 - `Contap_HContTool::SamplePoint()`
     pub fn Contap_HContTool_sample_point(
-        S: *const HandleAdaptor3dSurface,
+        S: *const Handle_Adaptor3d_Surface,
         Index: i32,
         U: *mut f64,
         V: *mut f64,
     ) -> *const std::ffi::c_char;
     /// **Source:** `Contap_HContTool.hxx`:54 - `Contap_HContTool::HasBeenSeen()`
     pub fn Contap_HContTool_has_been_seen(
-        C: *const HandleAdaptor2dCurve2d,
+        C: *const Handle_Adaptor2d_Curve2d,
     ) -> crate::OcctResult<bool>;
     /// **Source:** `Contap_HContTool.hxx`:59 - `Contap_HContTool::NbSamplesOnArc()`
     pub fn Contap_HContTool_nb_samples_on_arc(
-        A: *const HandleAdaptor2dCurve2d,
+        A: *const Handle_Adaptor2d_Curve2d,
     ) -> crate::OcctResult<i32>;
     /// **Source:** `Contap_HContTool.hxx`:65 - `Contap_HContTool::Bounds()`
     pub fn Contap_HContTool_bounds(
-        C: *const HandleAdaptor2dCurve2d,
+        C: *const Handle_Adaptor2d_Curve2d,
         Ufirst: *mut f64,
         Ulast: *mut f64,
     ) -> *const std::ffi::c_char;
     /// **Source:** `Contap_HContTool.hxx`:75 - `Contap_HContTool::Project()`
     pub fn Contap_HContTool_project(
-        C: *const HandleAdaptor2dCurve2d,
+        C: *const Handle_Adaptor2d_Curve2d,
         P: *const gp_Pnt2d,
         Paramproj: *mut f64,
         Ptproj: *mut gp_Pnt2d,
     ) -> crate::OcctResult<bool>;
     /// **Source:** `Contap_HContTool.hxx`:84 - `Contap_HContTool::Tolerance()`
     pub fn Contap_HContTool_tolerance(
-        V: *const HandleAdaptor3dHVertex,
-        C: *const HandleAdaptor2dCurve2d,
+        V: *const Handle_Adaptor3d_HVertex,
+        C: *const Handle_Adaptor2d_Curve2d,
     ) -> crate::OcctResult<f64>;
     /// **Source:** `Contap_HContTool.hxx`:88 - `Contap_HContTool::Parameter()`
     pub fn Contap_HContTool_parameter(
-        V: *const HandleAdaptor3dHVertex,
-        C: *const HandleAdaptor2dCurve2d,
+        V: *const Handle_Adaptor3d_HVertex,
+        C: *const Handle_Adaptor2d_Curve2d,
     ) -> crate::OcctResult<f64>;
     /// **Source:** `Contap_HContTool.hxx`:92 - `Contap_HContTool::NbPoints()`
-    pub fn Contap_HContTool_nb_points(C: *const HandleAdaptor2dCurve2d) -> crate::OcctResult<i32>;
+    pub fn Contap_HContTool_nb_points(C: *const Handle_Adaptor2d_Curve2d)
+        -> crate::OcctResult<i32>;
     /// **Source:** `Contap_HContTool.hxx`:97 - `Contap_HContTool::Value()`
     pub fn Contap_HContTool_value(
-        C: *const HandleAdaptor2dCurve2d,
+        C: *const Handle_Adaptor2d_Curve2d,
         Index: i32,
         Pt: *mut gp_Pnt,
         Tol: *mut f64,
@@ -341,33 +342,34 @@ unsafe extern "C" {
     ) -> *const std::ffi::c_char;
     /// **Source:** `Contap_HContTool.hxx`:105 - `Contap_HContTool::IsVertex()`
     pub fn Contap_HContTool_is_vertex(
-        C: *const HandleAdaptor2dCurve2d,
+        C: *const Handle_Adaptor2d_Curve2d,
         Index: i32,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `Contap_HContTool.hxx`:110 - `Contap_HContTool::Vertex()`
+    /// **Source:** `Contap_HContTool.hxx`:109 - `Contap_HContTool::Vertex()`
     pub fn Contap_HContTool_vertex(
-        C: *const HandleAdaptor2dCurve2d,
+        C: *const Handle_Adaptor2d_Curve2d,
         Index: i32,
-        V: *mut HandleAdaptor3dHVertex,
+        V: *mut Handle_Adaptor3d_HVertex,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `Contap_HContTool.hxx`:116 - `Contap_HContTool::NbSegments()`
-    pub fn Contap_HContTool_nb_segments(C: *const HandleAdaptor2dCurve2d)
-        -> crate::OcctResult<i32>;
-    /// **Source:** `Contap_HContTool.hxx`:124 - `Contap_HContTool::HasFirstPoint()`
+    /// **Source:** `Contap_HContTool.hxx`:115 - `Contap_HContTool::NbSegments()`
+    pub fn Contap_HContTool_nb_segments(
+        C: *const Handle_Adaptor2d_Curve2d,
+    ) -> crate::OcctResult<i32>;
+    /// **Source:** `Contap_HContTool.hxx`:123 - `Contap_HContTool::HasFirstPoint()`
     pub fn Contap_HContTool_has_first_point(
-        C: *const HandleAdaptor2dCurve2d,
+        C: *const Handle_Adaptor2d_Curve2d,
         Index: i32,
         IndFirst: *mut i32,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `Contap_HContTool.hxx`:134 - `Contap_HContTool::HasLastPoint()`
+    /// **Source:** `Contap_HContTool.hxx`:133 - `Contap_HContTool::HasLastPoint()`
     pub fn Contap_HContTool_has_last_point(
-        C: *const HandleAdaptor2dCurve2d,
+        C: *const Handle_Adaptor2d_Curve2d,
         Index: i32,
         IndLast: *mut i32,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `Contap_HContTool.hxx`:140 - `Contap_HContTool::IsAllSolution()`
+    /// **Source:** `Contap_HContTool.hxx`:139 - `Contap_HContTool::IsAllSolution()`
     pub fn Contap_HContTool_is_all_solution(
-        C: *const HandleAdaptor2dCurve2d,
+        C: *const Handle_Adaptor2d_Curve2d,
     ) -> crate::OcctResult<bool>;
     // ======================== Contap_HCurve2dTool ========================
     pub fn Contap_HCurve2dTool_destructor(self_: *mut Contap_HCurve2dTool);
@@ -375,192 +377,194 @@ unsafe extern "C" {
     pub fn Contap_HCurve2dTool_ctor() -> crate::OcctResult<*mut Contap_HCurve2dTool>;
     /// **Source:** `Contap_HCurve2dTool.hxx`:40 - `Contap_HCurve2dTool::FirstParameter()`
     pub fn Contap_HCurve2dTool_first_parameter(
-        C: *const HandleAdaptor2dCurve2d,
+        C: *const Handle_Adaptor2d_Curve2d,
     ) -> crate::OcctResult<f64>;
     /// **Source:** `Contap_HCurve2dTool.hxx`:42 - `Contap_HCurve2dTool::LastParameter()`
     pub fn Contap_HCurve2dTool_last_parameter(
-        C: *const HandleAdaptor2dCurve2d,
+        C: *const Handle_Adaptor2d_Curve2d,
     ) -> crate::OcctResult<f64>;
     /// **Source:** `Contap_HCurve2dTool.hxx`:44 - `Contap_HCurve2dTool::Continuity()`
     pub fn Contap_HCurve2dTool_continuity(
-        C: *const HandleAdaptor2dCurve2d,
+        C: *const Handle_Adaptor2d_Curve2d,
     ) -> crate::OcctResult<i32>;
     /// **Source:** `Contap_HCurve2dTool.hxx`:48 - `Contap_HCurve2dTool::NbIntervals()`
     pub fn Contap_HCurve2dTool_nb_intervals(
-        C: *const HandleAdaptor2dCurve2d,
+        C: *const Handle_Adaptor2d_Curve2d,
         S: i32,
     ) -> crate::OcctResult<i32>;
     /// **Source:** `Contap_HCurve2dTool.hxx`:55 - `Contap_HCurve2dTool::Intervals()`
     pub fn Contap_HCurve2dTool_intervals(
-        C: *const HandleAdaptor2dCurve2d,
-        T: *mut TColStd_Array1OfReal,
+        C: *const Handle_Adaptor2d_Curve2d,
+        T: *mut NCollection_Array1_double,
         S: i32,
     ) -> *const std::ffi::c_char;
     /// **Source:** `Contap_HCurve2dTool.hxx`:59 - `Contap_HCurve2dTool::IsClosed()`
     pub fn Contap_HCurve2dTool_is_closed(
-        C: *const HandleAdaptor2dCurve2d,
+        C: *const Handle_Adaptor2d_Curve2d,
     ) -> crate::OcctResult<bool>;
     /// **Source:** `Contap_HCurve2dTool.hxx`:61 - `Contap_HCurve2dTool::IsPeriodic()`
     pub fn Contap_HCurve2dTool_is_periodic(
-        C: *const HandleAdaptor2dCurve2d,
+        C: *const Handle_Adaptor2d_Curve2d,
     ) -> crate::OcctResult<bool>;
     /// **Source:** `Contap_HCurve2dTool.hxx`:63 - `Contap_HCurve2dTool::Period()`
-    pub fn Contap_HCurve2dTool_period(C: *const HandleAdaptor2dCurve2d) -> crate::OcctResult<f64>;
+    pub fn Contap_HCurve2dTool_period(C: *const Handle_Adaptor2d_Curve2d)
+        -> crate::OcctResult<f64>;
     /// **Source:** `Contap_HCurve2dTool.hxx`:66 - `Contap_HCurve2dTool::Value()`
     pub fn Contap_HCurve2dTool_value(
-        C: *const HandleAdaptor2dCurve2d,
+        C: *const Handle_Adaptor2d_Curve2d,
         U: f64,
     ) -> crate::OcctResult<*mut gp_Pnt2d>;
     /// **Source:** `Contap_HCurve2dTool.hxx`:69 - `Contap_HCurve2dTool::D0()`
     pub fn Contap_HCurve2dTool_d0(
-        C: *const HandleAdaptor2dCurve2d,
+        C: *const Handle_Adaptor2d_Curve2d,
         U: f64,
         P: *mut gp_Pnt2d,
     ) -> *const std::ffi::c_char;
     /// **Source:** `Contap_HCurve2dTool.hxx`:75 - `Contap_HCurve2dTool::D1()`
     pub fn Contap_HCurve2dTool_d1(
-        C: *const HandleAdaptor2dCurve2d,
+        C: *const Handle_Adaptor2d_Curve2d,
         U: f64,
         P: *mut gp_Pnt2d,
         V: *mut gp_Vec2d,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `Contap_HCurve2dTool.hxx`:84 - `Contap_HCurve2dTool::D2()`
+    /// **Source:** `Contap_HCurve2dTool.hxx`:81 - `Contap_HCurve2dTool::D2()`
     pub fn Contap_HCurve2dTool_d2(
-        C: *const HandleAdaptor2dCurve2d,
+        C: *const Handle_Adaptor2d_Curve2d,
         U: f64,
         P: *mut gp_Pnt2d,
         V1: *mut gp_Vec2d,
         V2: *mut gp_Vec2d,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `Contap_HCurve2dTool.hxx`:94 - `Contap_HCurve2dTool::D3()`
+    /// **Source:** `Contap_HCurve2dTool.hxx`:91 - `Contap_HCurve2dTool::D3()`
     pub fn Contap_HCurve2dTool_d3(
-        C: *const HandleAdaptor2dCurve2d,
+        C: *const Handle_Adaptor2d_Curve2d,
         U: f64,
         P: *mut gp_Pnt2d,
         V1: *mut gp_Vec2d,
         V2: *mut gp_Vec2d,
         V3: *mut gp_Vec2d,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `Contap_HCurve2dTool.hxx`:106 - `Contap_HCurve2dTool::DN()`
+    /// **Source:** `Contap_HCurve2dTool.hxx`:103 - `Contap_HCurve2dTool::DN()`
     pub fn Contap_HCurve2dTool_dn(
-        C: *const HandleAdaptor2dCurve2d,
+        C: *const Handle_Adaptor2d_Curve2d,
         U: f64,
         N: i32,
     ) -> crate::OcctResult<*mut gp_Vec2d>;
-    /// **Source:** `Contap_HCurve2dTool.hxx`:112 - `Contap_HCurve2dTool::Resolution()`
+    /// **Source:** `Contap_HCurve2dTool.hxx`:107 - `Contap_HCurve2dTool::Resolution()`
     pub fn Contap_HCurve2dTool_resolution(
-        C: *const HandleAdaptor2dCurve2d,
+        C: *const Handle_Adaptor2d_Curve2d,
         R3d: f64,
     ) -> crate::OcctResult<f64>;
-    /// **Source:** `Contap_HCurve2dTool.hxx`:117 - `Contap_HCurve2dTool::GetType()`
-    pub fn Contap_HCurve2dTool_get_type(C: *const HandleAdaptor2dCurve2d)
-        -> crate::OcctResult<i32>;
-    /// **Source:** `Contap_HCurve2dTool.hxx`:119 - `Contap_HCurve2dTool::Line()`
+    /// **Source:** `Contap_HCurve2dTool.hxx`:112 - `Contap_HCurve2dTool::GetType()`
+    pub fn Contap_HCurve2dTool_get_type(
+        C: *const Handle_Adaptor2d_Curve2d,
+    ) -> crate::OcctResult<i32>;
+    /// **Source:** `Contap_HCurve2dTool.hxx`:114 - `Contap_HCurve2dTool::Line()`
     pub fn Contap_HCurve2dTool_line(
-        C: *const HandleAdaptor2dCurve2d,
+        C: *const Handle_Adaptor2d_Curve2d,
     ) -> crate::OcctResult<*mut gp_Lin2d>;
-    /// **Source:** `Contap_HCurve2dTool.hxx`:121 - `Contap_HCurve2dTool::Circle()`
+    /// **Source:** `Contap_HCurve2dTool.hxx`:116 - `Contap_HCurve2dTool::Circle()`
     pub fn Contap_HCurve2dTool_circle(
-        C: *const HandleAdaptor2dCurve2d,
+        C: *const Handle_Adaptor2d_Curve2d,
     ) -> crate::OcctResult<*mut gp_Circ2d>;
-    /// **Source:** `Contap_HCurve2dTool.hxx`:123 - `Contap_HCurve2dTool::Ellipse()`
+    /// **Source:** `Contap_HCurve2dTool.hxx`:118 - `Contap_HCurve2dTool::Ellipse()`
     pub fn Contap_HCurve2dTool_ellipse(
-        C: *const HandleAdaptor2dCurve2d,
+        C: *const Handle_Adaptor2d_Curve2d,
     ) -> crate::OcctResult<*mut gp_Elips2d>;
-    /// **Source:** `Contap_HCurve2dTool.hxx`:125 - `Contap_HCurve2dTool::Hyperbola()`
+    /// **Source:** `Contap_HCurve2dTool.hxx`:120 - `Contap_HCurve2dTool::Hyperbola()`
     pub fn Contap_HCurve2dTool_hyperbola(
-        C: *const HandleAdaptor2dCurve2d,
+        C: *const Handle_Adaptor2d_Curve2d,
     ) -> crate::OcctResult<*mut gp_Hypr2d>;
-    /// **Source:** `Contap_HCurve2dTool.hxx`:127 - `Contap_HCurve2dTool::Parabola()`
+    /// **Source:** `Contap_HCurve2dTool.hxx`:122 - `Contap_HCurve2dTool::Parabola()`
     pub fn Contap_HCurve2dTool_parabola(
-        C: *const HandleAdaptor2dCurve2d,
+        C: *const Handle_Adaptor2d_Curve2d,
     ) -> crate::OcctResult<*mut gp_Parab2d>;
-    /// **Source:** `Contap_HCurve2dTool.hxx`:129 - `Contap_HCurve2dTool::Bezier()`
+    /// **Source:** `Contap_HCurve2dTool.hxx`:124 - `Contap_HCurve2dTool::Bezier()`
     pub fn Contap_HCurve2dTool_bezier(
-        C: *const HandleAdaptor2dCurve2d,
-    ) -> crate::OcctResult<*mut HandleGeom2dBezierCurve>;
-    /// **Source:** `Contap_HCurve2dTool.hxx`:131 - `Contap_HCurve2dTool::BSpline()`
+        C: *const Handle_Adaptor2d_Curve2d,
+    ) -> crate::OcctResult<*mut Handle_Geom2d_BezierCurve>;
+    /// **Source:** `Contap_HCurve2dTool.hxx`:126 - `Contap_HCurve2dTool::BSpline()`
     pub fn Contap_HCurve2dTool_b_spline(
-        C: *const HandleAdaptor2dCurve2d,
-    ) -> crate::OcctResult<*mut HandleGeom2dBSplineCurve>;
-    /// **Source:** `Contap_HCurve2dTool.hxx`:133 - `Contap_HCurve2dTool::NbSamples()`
+        C: *const Handle_Adaptor2d_Curve2d,
+    ) -> crate::OcctResult<*mut Handle_Geom2d_BSplineCurve>;
+    /// **Source:** `Contap_HCurve2dTool.hxx`:128 - `Contap_HCurve2dTool::NbSamples()`
     pub fn Contap_HCurve2dTool_nb_samples(
-        C: *const HandleAdaptor2dCurve2d,
+        C: *const Handle_Adaptor2d_Curve2d,
         U0: f64,
         U1: f64,
     ) -> crate::OcctResult<i32>;
     // ======================== Contap_Line ========================
     pub fn Contap_Line_destructor(self_: *mut Contap_Line);
-    /// **Source:** `Contap_Line.hxx`:41 - `Contap_Line::Contap_Line()`
+    /// **Source:** `Contap_Line.hxx`:43 - `Contap_Line::Contap_Line()`
     pub fn Contap_Line_ctor() -> crate::OcctResult<*mut Contap_Line>;
-    /// **Source:** `Contap_Line.hxx`:43 - `Contap_Line::SetLineOn2S()`
+    /// **Source:** `Contap_Line.hxx`:45 - `Contap_Line::SetLineOn2S()`
     pub fn Contap_Line_set_line_on2_s(
         self_: *mut Contap_Line,
-        L: *const HandleIntSurfLineOn2S,
+        L: *const Handle_IntSurf_LineOn2S,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `Contap_Line.hxx`:45 - `Contap_Line::Clear()`
+    /// **Source:** `Contap_Line.hxx`:47 - `Contap_Line::Clear()`
     pub fn Contap_Line_clear(self_: *mut Contap_Line) -> *const std::ffi::c_char;
-    /// **Source:** `Contap_Line.hxx`:47 - `Contap_Line::LineOn2S()`
+    /// **Source:** `Contap_Line.hxx`:49 - `Contap_Line::LineOn2S()`
     pub fn Contap_Line_line_on2_s(
         self_: *const Contap_Line,
-    ) -> crate::OcctResult<*const HandleIntSurfLineOn2S>;
-    /// **Source:** `Contap_Line.hxx`:49 - `Contap_Line::ResetSeqOfVertex()`
+    ) -> crate::OcctResult<*const Handle_IntSurf_LineOn2S>;
+    /// **Source:** `Contap_Line.hxx`:51 - `Contap_Line::ResetSeqOfVertex()`
     pub fn Contap_Line_reset_seq_of_vertex(self_: *mut Contap_Line) -> *const std::ffi::c_char;
-    /// **Source:** `Contap_Line.hxx`:51 - `Contap_Line::Add()`
+    /// **Source:** `Contap_Line.hxx`:53 - `Contap_Line::Add()`
     pub fn Contap_Line_add_pnton2s(
         self_: *mut Contap_Line,
         P: *const IntSurf_PntOn2S,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `Contap_Line.hxx`:53 - `Contap_Line::SetValue()`
+    /// **Source:** `Contap_Line.hxx`:55 - `Contap_Line::SetValue()`
     pub fn Contap_Line_set_value_lin(
         self_: *mut Contap_Line,
         L: *const gp_Lin,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `Contap_Line.hxx`:55 - `Contap_Line::SetValue()`
+    /// **Source:** `Contap_Line.hxx`:57 - `Contap_Line::SetValue()`
     pub fn Contap_Line_set_value_circ(
         self_: *mut Contap_Line,
         C: *const gp_Circ,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `Contap_Line.hxx`:57 - `Contap_Line::SetValue()`
+    /// **Source:** `Contap_Line.hxx`:59 - `Contap_Line::SetValue()`
     pub fn Contap_Line_set_value_handleadaptor2dcurve2d(
         self_: *mut Contap_Line,
-        A: *const HandleAdaptor2dCurve2d,
+        A: *const Handle_Adaptor2d_Curve2d,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `Contap_Line.hxx`:59 - `Contap_Line::Add()`
+    /// **Source:** `Contap_Line.hxx`:61 - `Contap_Line::Add()`
     pub fn Contap_Line_add_point(
         self_: *mut Contap_Line,
         P: *const Contap_Point,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `Contap_Line.hxx`:61 - `Contap_Line::NbVertex()`
+    /// **Source:** `Contap_Line.hxx`:63 - `Contap_Line::NbVertex()`
     pub fn Contap_Line_nb_vertex(self_: *const Contap_Line) -> crate::OcctResult<i32>;
-    /// **Source:** `Contap_Line.hxx`:63 - `Contap_Line::Vertex()`
+    /// **Source:** `Contap_Line.hxx`:65 - `Contap_Line::Vertex()`
     pub fn Contap_Line_vertex(
         self_: *mut Contap_Line,
         Index: i32,
     ) -> crate::OcctResult<*mut Contap_Point>;
-    /// **Source:** `Contap_Line.hxx`:68 - `Contap_Line::TypeContour()`
+    /// **Source:** `Contap_Line.hxx`:70 - `Contap_Line::TypeContour()`
     pub fn Contap_Line_type_contour(self_: *const Contap_Line) -> crate::OcctResult<i32>;
-    /// **Source:** `Contap_Line.hxx`:70 - `Contap_Line::NbPnts()`
+    /// **Source:** `Contap_Line.hxx`:72 - `Contap_Line::NbPnts()`
     pub fn Contap_Line_nb_pnts(self_: *const Contap_Line) -> crate::OcctResult<i32>;
-    /// **Source:** `Contap_Line.hxx`:72 - `Contap_Line::Point()`
+    /// **Source:** `Contap_Line.hxx`:74 - `Contap_Line::Point()`
     pub fn Contap_Line_point(
         self_: *const Contap_Line,
         Index: i32,
     ) -> crate::OcctResult<*const IntSurf_PntOn2S>;
-    /// **Source:** `Contap_Line.hxx`:74 - `Contap_Line::Line()`
+    /// **Source:** `Contap_Line.hxx`:76 - `Contap_Line::Line()`
     pub fn Contap_Line_line(self_: *const Contap_Line) -> crate::OcctResult<*mut gp_Lin>;
-    /// **Source:** `Contap_Line.hxx`:76 - `Contap_Line::Circle()`
+    /// **Source:** `Contap_Line.hxx`:78 - `Contap_Line::Circle()`
     pub fn Contap_Line_circle(self_: *const Contap_Line) -> crate::OcctResult<*mut gp_Circ>;
-    /// **Source:** `Contap_Line.hxx`:78 - `Contap_Line::Arc()`
+    /// **Source:** `Contap_Line.hxx`:80 - `Contap_Line::Arc()`
     pub fn Contap_Line_arc(
         self_: *const Contap_Line,
-    ) -> crate::OcctResult<*const HandleAdaptor2dCurve2d>;
-    /// **Source:** `Contap_Line.hxx`:81 - `Contap_Line::SetTransitionOnS()`
+    ) -> crate::OcctResult<*const Handle_Adaptor2d_Curve2d>;
+    /// **Source:** `Contap_Line.hxx`:83 - `Contap_Line::SetTransitionOnS()`
     pub fn Contap_Line_set_transition_on_s(
         self_: *mut Contap_Line,
         T: i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `Contap_Line.hxx`:85 - `Contap_Line::TransitionOnS()`
+    /// **Source:** `Contap_Line.hxx`:87 - `Contap_Line::TransitionOnS()`
     pub fn Contap_Line_transition_on_s(self_: *const Contap_Line) -> crate::OcctResult<i32>;
     // ======================== Contap_Point ========================
     pub fn Contap_Point_destructor(self_: *mut Contap_Point);
@@ -587,12 +591,12 @@ unsafe extern "C" {
     /// **Source:** `Contap_Point.hxx`:55 - `Contap_Point::SetVertex()`
     pub fn Contap_Point_set_vertex(
         self_: *mut Contap_Point,
-        V: *const HandleAdaptor3dHVertex,
+        V: *const Handle_Adaptor3d_HVertex,
     ) -> *const std::ffi::c_char;
     /// **Source:** `Contap_Point.hxx`:59 - `Contap_Point::SetArc()`
     pub fn Contap_Point_set_arc(
         self_: *mut Contap_Point,
-        A: *const HandleAdaptor2dCurve2d,
+        A: *const Handle_Adaptor2d_Curve2d,
         Param: f64,
         TLine: *const IntSurf_Transition,
         TArc: *const IntSurf_Transition,
@@ -616,7 +620,7 @@ unsafe extern "C" {
     /// **Source:** `Contap_Point.hxx`:86 - `Contap_Point::Arc()`
     pub fn Contap_Point_arc(
         self_: *const Contap_Point,
-    ) -> crate::OcctResult<*const HandleAdaptor2dCurve2d>;
+    ) -> crate::OcctResult<*const Handle_Adaptor2d_Curve2d>;
     /// **Source:** `Contap_Point.hxx`:90 - `Contap_Point::ParameterOnArc()`
     pub fn Contap_Point_parameter_on_arc(self_: *const Contap_Point) -> crate::OcctResult<f64>;
     /// **Source:** `Contap_Point.hxx`:93 - `Contap_Point::TransitionOnLine()`
@@ -632,7 +636,7 @@ unsafe extern "C" {
     /// **Source:** `Contap_Point.hxx`:106 - `Contap_Point::Vertex()`
     pub fn Contap_Point_vertex(
         self_: *const Contap_Point,
-    ) -> crate::OcctResult<*const HandleAdaptor3dHVertex>;
+    ) -> crate::OcctResult<*const Handle_Adaptor3d_HVertex>;
     /// **Source:** `Contap_Point.hxx`:110 - `Contap_Point::IsMultiple()`
     pub fn Contap_Point_is_multiple(self_: *const Contap_Point) -> crate::OcctResult<bool>;
     /// **Source:** `Contap_Point.hxx`:115 - `Contap_Point::IsInternal()`
@@ -644,7 +648,7 @@ unsafe extern "C" {
     /// **Source:** `Contap_SurfFunction.hxx`:42 - `Contap_SurfFunction::Set()`
     pub fn Contap_SurfFunction_set_handleadaptor3dsurface(
         self_: *mut Contap_SurfFunction,
-        S: *const HandleAdaptor3dSurface,
+        S: *const Handle_Adaptor3d_Surface,
     ) -> *const std::ffi::c_char;
     /// **Source:** `Contap_SurfFunction.hxx`:44 - `Contap_SurfFunction::Set()`
     pub fn Contap_SurfFunction_set_pnt(
@@ -739,11 +743,11 @@ unsafe extern "C" {
     /// **Source:** `Contap_SurfFunction.hxx`:93 - `Contap_SurfFunction::Surface()`
     pub fn Contap_SurfFunction_surface(
         self_: *const Contap_SurfFunction,
-    ) -> crate::OcctResult<*const HandleAdaptor3dSurface>;
+    ) -> crate::OcctResult<*const Handle_Adaptor3d_Surface>;
     /// **Source:** `Contap_SurfFunction.hxx`:96 - `Contap_SurfFunction::PSurface()`
     pub fn Contap_SurfFunction_p_surface(
         self_: *const Contap_SurfFunction,
-    ) -> crate::OcctResult<*const HandleAdaptor3dSurface>;
+    ) -> crate::OcctResult<*const Handle_Adaptor3d_Surface>;
     /// Upcast Contap_SurfFunction to math_FunctionSetWithDerivatives
     pub fn Contap_SurfFunction_as_math_FunctionSetWithDerivatives(
         self_: *const Contap_SurfFunction,
@@ -770,7 +774,7 @@ unsafe extern "C" {
     pub fn Contap_SurfProps_ctor() -> crate::OcctResult<*mut Contap_SurfProps>;
     /// **Source:** `Contap_SurfProps.hxx`:34 - `Contap_SurfProps::Normale()`
     pub fn Contap_SurfProps_normale(
-        S: *const HandleAdaptor3dSurface,
+        S: *const Handle_Adaptor3d_Surface,
         U: f64,
         V: f64,
         P: *mut gp_Pnt,
@@ -778,7 +782,7 @@ unsafe extern "C" {
     ) -> *const std::ffi::c_char;
     /// **Source:** `Contap_SurfProps.hxx`:42 - `Contap_SurfProps::DerivAndNorm()`
     pub fn Contap_SurfProps_deriv_and_norm(
-        S: *const HandleAdaptor3dSurface,
+        S: *const Handle_Adaptor3d_Surface,
         U: f64,
         V: f64,
         P: *mut gp_Pnt,
@@ -788,7 +792,7 @@ unsafe extern "C" {
     ) -> *const std::ffi::c_char;
     /// **Source:** `Contap_SurfProps.hxx`:52 - `Contap_SurfProps::NormAndDn()`
     pub fn Contap_SurfProps_norm_and_dn(
-        S: *const HandleAdaptor3dSurface,
+        S: *const Handle_Adaptor3d_Surface,
         U: f64,
         V: f64,
         P: *mut gp_Pnt,
@@ -796,132 +800,33 @@ unsafe extern "C" {
         Dnu: *mut gp_Vec,
         Dnv: *mut gp_Vec,
     ) -> *const std::ffi::c_char;
-    // ======================== Contap_TheHSequenceOfPoint ========================
-    pub fn Contap_TheHSequenceOfPoint_destructor(self_: *mut Contap_TheHSequenceOfPoint);
-    /// **Source:** `Contap_TheHSequenceOfPoint.hxx`:24 - `Contap_TheHSequenceOfPoint::Contap_TheHSequenceOfPoint()`
-    pub fn Contap_TheHSequenceOfPoint_ctor() -> crate::OcctResult<*mut Contap_TheHSequenceOfPoint>;
-    /// **Source:** `Contap_TheHSequenceOfPoint.hxx`:24 - `Contap_TheHSequenceOfPoint::Contap_TheHSequenceOfPoint()`
-    pub fn Contap_TheHSequenceOfPoint_ctor_thesequenceofpoint(
-        theOther: *const Contap_TheSequenceOfPoint,
-    ) -> crate::OcctResult<*mut Contap_TheHSequenceOfPoint>;
-    /// **Source:** `Contap_TheHSequenceOfPoint.hxx`:24 - `Contap_TheHSequenceOfPoint::Sequence()`
-    pub fn Contap_TheHSequenceOfPoint_sequence(
-        self_: *const Contap_TheHSequenceOfPoint,
-    ) -> crate::OcctResult<*const Contap_TheSequenceOfPoint>;
-    /// **Source:** `Contap_TheHSequenceOfPoint.hxx`:24 - `Contap_TheHSequenceOfPoint::Append()`
-    pub fn Contap_TheHSequenceOfPoint_append_point(
-        self_: *mut Contap_TheHSequenceOfPoint,
-        theItem: *const Contap_Point,
-    ) -> *const std::ffi::c_char;
-    /// **Source:** `Contap_TheHSequenceOfPoint.hxx`:24 - `Contap_TheHSequenceOfPoint::Append()`
-    pub fn Contap_TheHSequenceOfPoint_append_thesequenceofpoint(
-        self_: *mut Contap_TheHSequenceOfPoint,
-        theSequence: *mut Contap_TheSequenceOfPoint,
-    ) -> *const std::ffi::c_char;
-    /// **Source:** `Contap_TheHSequenceOfPoint.hxx`:24 - `Contap_TheHSequenceOfPoint::ChangeSequence()`
-    pub fn Contap_TheHSequenceOfPoint_change_sequence(
-        self_: *mut Contap_TheHSequenceOfPoint,
-    ) -> crate::OcctResult<*mut Contap_TheSequenceOfPoint>;
-    /// **Source:** `Contap_TheHSequenceOfPoint.hxx`:24 - `Contap_TheHSequenceOfPoint::DynamicType()`
-    pub fn Contap_TheHSequenceOfPoint_dynamic_type(
-        self_: *const Contap_TheHSequenceOfPoint,
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// **Source:** `Contap_TheHSequenceOfPoint.hxx`:24 - `Contap_TheHSequenceOfPoint::get_type_name()`
-    pub fn Contap_TheHSequenceOfPoint_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
-    /// **Source:** `Contap_TheHSequenceOfPoint.hxx`:24 - `Contap_TheHSequenceOfPoint::get_type_descriptor()`
-    pub fn Contap_TheHSequenceOfPoint_get_type_descriptor(
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// Upcast Contap_TheHSequenceOfPoint to Standard_Transient
-    pub fn Contap_TheHSequenceOfPoint_as_Standard_Transient(
-        self_: *const Contap_TheHSequenceOfPoint,
-    ) -> crate::OcctResult<*const Standard_Transient>;
-    /// Upcast Contap_TheHSequenceOfPoint to Standard_Transient (mutable)
-    pub fn Contap_TheHSequenceOfPoint_as_Standard_Transient_mut(
-        self_: *mut Contap_TheHSequenceOfPoint,
-    ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Wrap Contap_TheHSequenceOfPoint in a Handle
-    pub fn Contap_TheHSequenceOfPoint_to_handle(
-        obj: *mut Contap_TheHSequenceOfPoint,
-    ) -> crate::OcctResult<*mut HandleContapTheHSequenceOfPoint>;
-    /// Destroy Handle<Contap_TheHSequenceOfPoint>
-    pub fn HandleContapTheHSequenceOfPoint_destructor(self_: *mut HandleContapTheHSequenceOfPoint);
-    /// Clone Handle<Contap_TheHSequenceOfPoint> (increments reference count)
-    pub fn HandleContapTheHSequenceOfPoint_clone(
-        self_: *const HandleContapTheHSequenceOfPoint,
-    ) -> crate::OcctResult<*mut HandleContapTheHSequenceOfPoint>;
-    /// Check if Handle<Contap_TheHSequenceOfPoint> is null
-    pub fn HandleContapTheHSequenceOfPoint_is_null(
-        self_: *const HandleContapTheHSequenceOfPoint,
-    ) -> bool;
-    /// Dereference Handle to get *const Contap_TheHSequenceOfPoint
-    pub fn HandleContapTheHSequenceOfPoint_get(
-        handle: *const HandleContapTheHSequenceOfPoint,
-    ) -> crate::OcctResult<*const Contap_TheHSequenceOfPoint>;
-    /// Dereference Handle to get *mut Contap_TheHSequenceOfPoint
-    pub fn HandleContapTheHSequenceOfPoint_get_mut(
-        handle: *mut HandleContapTheHSequenceOfPoint,
-    ) -> crate::OcctResult<*mut Contap_TheHSequenceOfPoint>;
-    /// Upcast Handle<Contap_TheHSequenceOfPoint> to Handle<Standard_Transient>
-    pub fn HandleContapTheHSequenceOfPoint_to_HandleStandardTransient(
-        self_: *const HandleContapTheHSequenceOfPoint,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn Contap_TheHSequenceOfPoint_inherited_IsInstance(
-        self_: *const Contap_TheHSequenceOfPoint,
-        theType: *const HandleStandardType,
-    ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn Contap_TheHSequenceOfPoint_inherited_IsKind(
-        self_: *const Contap_TheHSequenceOfPoint,
-        theType: *const HandleStandardType,
-    ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
-    pub fn Contap_TheHSequenceOfPoint_inherited_This(
-        self_: *const Contap_TheHSequenceOfPoint,
-    ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
-    pub fn Contap_TheHSequenceOfPoint_inherited_GetRefCount(
-        self_: *const Contap_TheHSequenceOfPoint,
-    ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
-    pub fn Contap_TheHSequenceOfPoint_inherited_IncrementRefCounter(
-        self_: *mut Contap_TheHSequenceOfPoint,
-    ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
-    pub fn Contap_TheHSequenceOfPoint_inherited_DecrementRefCounter(
-        self_: *mut Contap_TheHSequenceOfPoint,
-    ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
-    pub fn Contap_TheHSequenceOfPoint_inherited_Delete(
-        self_: *const Contap_TheHSequenceOfPoint,
-    ) -> *const std::ffi::c_char;
     // ======================== Contap_TheIWLineOfTheIWalking ========================
     pub fn Contap_TheIWLineOfTheIWalking_destructor(self_: *mut Contap_TheIWLineOfTheIWalking);
-    /// **Source:** `Contap_TheIWLineOfTheIWalking.hxx`:44 - `Contap_TheIWLineOfTheIWalking::Contap_TheIWLineOfTheIWalking()`
+    /// **Source:** `Contap_TheIWLineOfTheIWalking.hxx`:42 - `Contap_TheIWLineOfTheIWalking::Contap_TheIWLineOfTheIWalking()`
     pub fn Contap_TheIWLineOfTheIWalking_ctor_handlencollectionbaseallocator(
-        theAllocator: *const HandleNCollectionBaseAllocator,
+        theAllocator: *const Handle_NCollection_BaseAllocator,
     ) -> crate::OcctResult<*mut Contap_TheIWLineOfTheIWalking>;
-    /// **Source:** `Contap_TheIWLineOfTheIWalking.hxx`:47 - `Contap_TheIWLineOfTheIWalking::Reverse()`
+    /// **Source:** `Contap_TheIWLineOfTheIWalking.hxx`:45 - `Contap_TheIWLineOfTheIWalking::Reverse()`
     pub fn Contap_TheIWLineOfTheIWalking_reverse(
         self_: *mut Contap_TheIWLineOfTheIWalking,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `Contap_TheIWLineOfTheIWalking.hxx`:50 - `Contap_TheIWLineOfTheIWalking::Cut()`
+    /// **Source:** `Contap_TheIWLineOfTheIWalking.hxx`:48 - `Contap_TheIWLineOfTheIWalking::Cut()`
     pub fn Contap_TheIWLineOfTheIWalking_cut(
         self_: *mut Contap_TheIWLineOfTheIWalking,
         Index: i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `Contap_TheIWLineOfTheIWalking.hxx`:53 - `Contap_TheIWLineOfTheIWalking::AddPoint()`
+    /// **Source:** `Contap_TheIWLineOfTheIWalking.hxx`:51 - `Contap_TheIWLineOfTheIWalking::AddPoint()`
     pub fn Contap_TheIWLineOfTheIWalking_add_point(
         self_: *mut Contap_TheIWLineOfTheIWalking,
         P: *const IntSurf_PntOn2S,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `Contap_TheIWLineOfTheIWalking.hxx`:55 - `Contap_TheIWLineOfTheIWalking::AddStatusFirst()`
+    /// **Source:** `Contap_TheIWLineOfTheIWalking.hxx`:53 - `Contap_TheIWLineOfTheIWalking::AddStatusFirst()`
     pub fn Contap_TheIWLineOfTheIWalking_add_status_first_bool2(
         self_: *mut Contap_TheIWLineOfTheIWalking,
         Closed: bool,
         HasFirst: bool,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `Contap_TheIWLineOfTheIWalking.hxx`:57 - `Contap_TheIWLineOfTheIWalking::AddStatusFirst()`
+    /// **Source:** `Contap_TheIWLineOfTheIWalking.hxx`:55 - `Contap_TheIWLineOfTheIWalking::AddStatusFirst()`
     pub fn Contap_TheIWLineOfTheIWalking_add_status_first_bool2_int_pathpoint(
         self_: *mut Contap_TheIWLineOfTheIWalking,
         Closed: bool,
@@ -929,121 +834,121 @@ unsafe extern "C" {
         Index: i32,
         P: *const IntSurf_PathPoint,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `Contap_TheIWLineOfTheIWalking.hxx`:62 - `Contap_TheIWLineOfTheIWalking::AddStatusFirstLast()`
+    /// **Source:** `Contap_TheIWLineOfTheIWalking.hxx`:60 - `Contap_TheIWLineOfTheIWalking::AddStatusFirstLast()`
     pub fn Contap_TheIWLineOfTheIWalking_add_status_first_last(
         self_: *mut Contap_TheIWLineOfTheIWalking,
         Closed: bool,
         HasFirst: bool,
         HasLast: bool,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `Contap_TheIWLineOfTheIWalking.hxx`:66 - `Contap_TheIWLineOfTheIWalking::AddStatusLast()`
+    /// **Source:** `Contap_TheIWLineOfTheIWalking.hxx`:62 - `Contap_TheIWLineOfTheIWalking::AddStatusLast()`
     pub fn Contap_TheIWLineOfTheIWalking_add_status_last_bool(
         self_: *mut Contap_TheIWLineOfTheIWalking,
         HasLast: bool,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `Contap_TheIWLineOfTheIWalking.hxx`:68 - `Contap_TheIWLineOfTheIWalking::AddStatusLast()`
+    /// **Source:** `Contap_TheIWLineOfTheIWalking.hxx`:64 - `Contap_TheIWLineOfTheIWalking::AddStatusLast()`
     pub fn Contap_TheIWLineOfTheIWalking_add_status_last_bool_int_pathpoint(
         self_: *mut Contap_TheIWLineOfTheIWalking,
         HasLast: bool,
         Index: i32,
         P: *const IntSurf_PathPoint,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `Contap_TheIWLineOfTheIWalking.hxx`:74 - `Contap_TheIWLineOfTheIWalking::AddIndexPassing()`
+    /// **Source:** `Contap_TheIWLineOfTheIWalking.hxx`:68 - `Contap_TheIWLineOfTheIWalking::AddIndexPassing()`
     pub fn Contap_TheIWLineOfTheIWalking_add_index_passing(
         self_: *mut Contap_TheIWLineOfTheIWalking,
         Index: i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `Contap_TheIWLineOfTheIWalking.hxx`:76 - `Contap_TheIWLineOfTheIWalking::SetTangentVector()`
+    /// **Source:** `Contap_TheIWLineOfTheIWalking.hxx`:70 - `Contap_TheIWLineOfTheIWalking::SetTangentVector()`
     pub fn Contap_TheIWLineOfTheIWalking_set_tangent_vector(
         self_: *mut Contap_TheIWLineOfTheIWalking,
         V: *const gp_Vec,
         Index: i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `Contap_TheIWLineOfTheIWalking.hxx`:78 - `Contap_TheIWLineOfTheIWalking::SetTangencyAtBegining()`
+    /// **Source:** `Contap_TheIWLineOfTheIWalking.hxx`:72 - `Contap_TheIWLineOfTheIWalking::SetTangencyAtBegining()`
     pub fn Contap_TheIWLineOfTheIWalking_set_tangency_at_begining(
         self_: *mut Contap_TheIWLineOfTheIWalking,
         IsTangent: bool,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `Contap_TheIWLineOfTheIWalking.hxx`:80 - `Contap_TheIWLineOfTheIWalking::SetTangencyAtEnd()`
+    /// **Source:** `Contap_TheIWLineOfTheIWalking.hxx`:74 - `Contap_TheIWLineOfTheIWalking::SetTangencyAtEnd()`
     pub fn Contap_TheIWLineOfTheIWalking_set_tangency_at_end(
         self_: *mut Contap_TheIWLineOfTheIWalking,
         IsTangent: bool,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `Contap_TheIWLineOfTheIWalking.hxx`:84 - `Contap_TheIWLineOfTheIWalking::NbPoints()`
+    /// **Source:** `Contap_TheIWLineOfTheIWalking.hxx`:78 - `Contap_TheIWLineOfTheIWalking::NbPoints()`
     pub fn Contap_TheIWLineOfTheIWalking_nb_points(
         self_: *const Contap_TheIWLineOfTheIWalking,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `Contap_TheIWLineOfTheIWalking.hxx`:88 - `Contap_TheIWLineOfTheIWalking::Value()`
+    /// **Source:** `Contap_TheIWLineOfTheIWalking.hxx`:82 - `Contap_TheIWLineOfTheIWalking::Value()`
     pub fn Contap_TheIWLineOfTheIWalking_value(
         self_: *const Contap_TheIWLineOfTheIWalking,
         Index: i32,
     ) -> crate::OcctResult<*const IntSurf_PntOn2S>;
-    /// **Source:** `Contap_TheIWLineOfTheIWalking.hxx`:91 - `Contap_TheIWLineOfTheIWalking::Line()`
+    /// **Source:** `Contap_TheIWLineOfTheIWalking.hxx`:85 - `Contap_TheIWLineOfTheIWalking::Line()`
     pub fn Contap_TheIWLineOfTheIWalking_line(
         self_: *const Contap_TheIWLineOfTheIWalking,
-    ) -> crate::OcctResult<*const HandleIntSurfLineOn2S>;
-    /// **Source:** `Contap_TheIWLineOfTheIWalking.hxx`:94 - `Contap_TheIWLineOfTheIWalking::IsClosed()`
+    ) -> crate::OcctResult<*const Handle_IntSurf_LineOn2S>;
+    /// **Source:** `Contap_TheIWLineOfTheIWalking.hxx`:88 - `Contap_TheIWLineOfTheIWalking::IsClosed()`
     pub fn Contap_TheIWLineOfTheIWalking_is_closed(
         self_: *const Contap_TheIWLineOfTheIWalking,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `Contap_TheIWLineOfTheIWalking.hxx`:100 - `Contap_TheIWLineOfTheIWalking::HasFirstPoint()`
+    /// **Source:** `Contap_TheIWLineOfTheIWalking.hxx`:94 - `Contap_TheIWLineOfTheIWalking::HasFirstPoint()`
     pub fn Contap_TheIWLineOfTheIWalking_has_first_point(
         self_: *const Contap_TheIWLineOfTheIWalking,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `Contap_TheIWLineOfTheIWalking.hxx`:107 - `Contap_TheIWLineOfTheIWalking::HasLastPoint()`
+    /// **Source:** `Contap_TheIWLineOfTheIWalking.hxx`:101 - `Contap_TheIWLineOfTheIWalking::HasLastPoint()`
     pub fn Contap_TheIWLineOfTheIWalking_has_last_point(
         self_: *const Contap_TheIWLineOfTheIWalking,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `Contap_TheIWLineOfTheIWalking.hxx`:112 - `Contap_TheIWLineOfTheIWalking::FirstPoint()`
+    /// **Source:** `Contap_TheIWLineOfTheIWalking.hxx`:106 - `Contap_TheIWLineOfTheIWalking::FirstPoint()`
     pub fn Contap_TheIWLineOfTheIWalking_first_point(
         self_: *const Contap_TheIWLineOfTheIWalking,
     ) -> crate::OcctResult<*const IntSurf_PathPoint>;
-    /// **Source:** `Contap_TheIWLineOfTheIWalking.hxx`:118 - `Contap_TheIWLineOfTheIWalking::FirstPointIndex()`
+    /// **Source:** `Contap_TheIWLineOfTheIWalking.hxx`:112 - `Contap_TheIWLineOfTheIWalking::FirstPointIndex()`
     pub fn Contap_TheIWLineOfTheIWalking_first_point_index(
         self_: *const Contap_TheIWLineOfTheIWalking,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `Contap_TheIWLineOfTheIWalking.hxx`:123 - `Contap_TheIWLineOfTheIWalking::LastPoint()`
+    /// **Source:** `Contap_TheIWLineOfTheIWalking.hxx`:117 - `Contap_TheIWLineOfTheIWalking::LastPoint()`
     pub fn Contap_TheIWLineOfTheIWalking_last_point(
         self_: *const Contap_TheIWLineOfTheIWalking,
     ) -> crate::OcctResult<*const IntSurf_PathPoint>;
-    /// **Source:** `Contap_TheIWLineOfTheIWalking.hxx`:129 - `Contap_TheIWLineOfTheIWalking::LastPointIndex()`
+    /// **Source:** `Contap_TheIWLineOfTheIWalking.hxx`:123 - `Contap_TheIWLineOfTheIWalking::LastPointIndex()`
     pub fn Contap_TheIWLineOfTheIWalking_last_point_index(
         self_: *const Contap_TheIWLineOfTheIWalking,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `Contap_TheIWLineOfTheIWalking.hxx`:133 - `Contap_TheIWLineOfTheIWalking::NbPassingPoint()`
+    /// **Source:** `Contap_TheIWLineOfTheIWalking.hxx`:127 - `Contap_TheIWLineOfTheIWalking::NbPassingPoint()`
     pub fn Contap_TheIWLineOfTheIWalking_nb_passing_point(
         self_: *const Contap_TheIWLineOfTheIWalking,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `Contap_TheIWLineOfTheIWalking.hxx`:138 - `Contap_TheIWLineOfTheIWalking::PassingPoint()`
+    /// **Source:** `Contap_TheIWLineOfTheIWalking.hxx`:132 - `Contap_TheIWLineOfTheIWalking::PassingPoint()`
     pub fn Contap_TheIWLineOfTheIWalking_passing_point(
         self_: *const Contap_TheIWLineOfTheIWalking,
         Index: i32,
         IndexLine: *mut i32,
         IndexPnts: *mut i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `Contap_TheIWLineOfTheIWalking.hxx`:142 - `Contap_TheIWLineOfTheIWalking::TangentVector()`
+    /// **Source:** `Contap_TheIWLineOfTheIWalking.hxx`:134 - `Contap_TheIWLineOfTheIWalking::TangentVector()`
     pub fn Contap_TheIWLineOfTheIWalking_tangent_vector(
         self_: *const Contap_TheIWLineOfTheIWalking,
         Index: *mut i32,
     ) -> crate::OcctResult<*const gp_Vec>;
-    /// **Source:** `Contap_TheIWLineOfTheIWalking.hxx`:144 - `Contap_TheIWLineOfTheIWalking::IsTangentAtBegining()`
+    /// **Source:** `Contap_TheIWLineOfTheIWalking.hxx`:136 - `Contap_TheIWLineOfTheIWalking::IsTangentAtBegining()`
     pub fn Contap_TheIWLineOfTheIWalking_is_tangent_at_begining(
         self_: *const Contap_TheIWLineOfTheIWalking,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `Contap_TheIWLineOfTheIWalking.hxx`:146 - `Contap_TheIWLineOfTheIWalking::IsTangentAtEnd()`
+    /// **Source:** `Contap_TheIWLineOfTheIWalking.hxx`:138 - `Contap_TheIWLineOfTheIWalking::IsTangentAtEnd()`
     pub fn Contap_TheIWLineOfTheIWalking_is_tangent_at_end(
         self_: *const Contap_TheIWLineOfTheIWalking,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `Contap_TheIWLineOfTheIWalking.hxx`:148 - `Contap_TheIWLineOfTheIWalking::DynamicType()`
+    /// **Source:** `Contap_TheIWLineOfTheIWalking.hxx`:140 - `Contap_TheIWLineOfTheIWalking::DynamicType()`
     pub fn Contap_TheIWLineOfTheIWalking_dynamic_type(
         self_: *const Contap_TheIWLineOfTheIWalking,
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// **Source:** `Contap_TheIWLineOfTheIWalking.hxx`:148 - `Contap_TheIWLineOfTheIWalking::get_type_name()`
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
+    /// **Source:** `Contap_TheIWLineOfTheIWalking.hxx`:140 - `Contap_TheIWLineOfTheIWalking::get_type_name()`
     pub fn Contap_TheIWLineOfTheIWalking_get_type_name(
     ) -> crate::OcctResult<*const std::ffi::c_char>;
-    /// **Source:** `Contap_TheIWLineOfTheIWalking.hxx`:148 - `Contap_TheIWLineOfTheIWalking::get_type_descriptor()`
+    /// **Source:** `Contap_TheIWLineOfTheIWalking.hxx`:140 - `Contap_TheIWLineOfTheIWalking::get_type_descriptor()`
     pub fn Contap_TheIWLineOfTheIWalking_get_type_descriptor(
-    ) -> crate::OcctResult<*const HandleStandardType>;
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast Contap_TheIWLineOfTheIWalking to Standard_Transient
     pub fn Contap_TheIWLineOfTheIWalking_as_Standard_Transient(
         self_: *const Contap_TheIWLineOfTheIWalking,
@@ -1055,108 +960,108 @@ unsafe extern "C" {
     /// Wrap Contap_TheIWLineOfTheIWalking in a Handle
     pub fn Contap_TheIWLineOfTheIWalking_to_handle(
         obj: *mut Contap_TheIWLineOfTheIWalking,
-    ) -> crate::OcctResult<*mut HandleContapTheIWLineOfTheIWalking>;
+    ) -> crate::OcctResult<*mut Handle_Contap_TheIWLineOfTheIWalking>;
     /// Destroy Handle<Contap_TheIWLineOfTheIWalking>
-    pub fn HandleContapTheIWLineOfTheIWalking_destructor(
-        self_: *mut HandleContapTheIWLineOfTheIWalking,
+    pub fn Handle_Contap_TheIWLineOfTheIWalking_destructor(
+        self_: *mut Handle_Contap_TheIWLineOfTheIWalking,
     );
     /// Clone Handle<Contap_TheIWLineOfTheIWalking> (increments reference count)
-    pub fn HandleContapTheIWLineOfTheIWalking_clone(
-        self_: *const HandleContapTheIWLineOfTheIWalking,
-    ) -> crate::OcctResult<*mut HandleContapTheIWLineOfTheIWalking>;
+    pub fn Handle_Contap_TheIWLineOfTheIWalking_clone(
+        self_: *const Handle_Contap_TheIWLineOfTheIWalking,
+    ) -> crate::OcctResult<*mut Handle_Contap_TheIWLineOfTheIWalking>;
     /// Check if Handle<Contap_TheIWLineOfTheIWalking> is null
-    pub fn HandleContapTheIWLineOfTheIWalking_is_null(
-        self_: *const HandleContapTheIWLineOfTheIWalking,
+    pub fn Handle_Contap_TheIWLineOfTheIWalking_is_null(
+        self_: *const Handle_Contap_TheIWLineOfTheIWalking,
     ) -> bool;
     /// Dereference Handle to get *const Contap_TheIWLineOfTheIWalking
-    pub fn HandleContapTheIWLineOfTheIWalking_get(
-        handle: *const HandleContapTheIWLineOfTheIWalking,
+    pub fn Handle_Contap_TheIWLineOfTheIWalking_get(
+        handle: *const Handle_Contap_TheIWLineOfTheIWalking,
     ) -> crate::OcctResult<*const Contap_TheIWLineOfTheIWalking>;
     /// Dereference Handle to get *mut Contap_TheIWLineOfTheIWalking
-    pub fn HandleContapTheIWLineOfTheIWalking_get_mut(
-        handle: *mut HandleContapTheIWLineOfTheIWalking,
+    pub fn Handle_Contap_TheIWLineOfTheIWalking_get_mut(
+        handle: *mut Handle_Contap_TheIWLineOfTheIWalking,
     ) -> crate::OcctResult<*mut Contap_TheIWLineOfTheIWalking>;
     /// Upcast Handle<Contap_TheIWLineOfTheIWalking> to Handle<Standard_Transient>
-    pub fn HandleContapTheIWLineOfTheIWalking_to_HandleStandardTransient(
-        self_: *const HandleContapTheIWLineOfTheIWalking,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn Handle_Contap_TheIWLineOfTheIWalking_to_Handle_Standard_Transient(
+        self_: *const Handle_Contap_TheIWLineOfTheIWalking,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn Contap_TheIWLineOfTheIWalking_inherited_IsInstance(
         self_: *const Contap_TheIWLineOfTheIWalking,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn Contap_TheIWLineOfTheIWalking_inherited_IsKind(
         self_: *const Contap_TheIWLineOfTheIWalking,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn Contap_TheIWLineOfTheIWalking_inherited_This(
         self_: *const Contap_TheIWLineOfTheIWalking,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn Contap_TheIWLineOfTheIWalking_inherited_GetRefCount(
         self_: *const Contap_TheIWLineOfTheIWalking,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn Contap_TheIWLineOfTheIWalking_inherited_IncrementRefCounter(
         self_: *mut Contap_TheIWLineOfTheIWalking,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn Contap_TheIWLineOfTheIWalking_inherited_DecrementRefCounter(
         self_: *mut Contap_TheIWLineOfTheIWalking,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn Contap_TheIWLineOfTheIWalking_inherited_Delete(
         self_: *const Contap_TheIWLineOfTheIWalking,
     ) -> *const std::ffi::c_char;
     // ======================== Contap_TheIWalking ========================
     pub fn Contap_TheIWalking_destructor(self_: *mut Contap_TheIWalking);
-    /// **Source:** `Contap_TheIWalking.hxx`:59 - `Contap_TheIWalking::Contap_TheIWalking()`
+    /// **Source:** `Contap_TheIWalking.hxx`:60 - `Contap_TheIWalking::Contap_TheIWalking()`
     pub fn Contap_TheIWalking_ctor_real3_bool(
         Epsilon: f64,
         Deflection: f64,
         Step: f64,
         theToFillHoles: bool,
     ) -> crate::OcctResult<*mut Contap_TheIWalking>;
-    /// **Source:** `Contap_TheIWalking.hxx`:70 - `Contap_TheIWalking::SetTolerance()`
+    /// **Source:** `Contap_TheIWalking.hxx`:71 - `Contap_TheIWalking::SetTolerance()`
     pub fn Contap_TheIWalking_set_tolerance(
         self_: *mut Contap_TheIWalking,
         Epsilon: f64,
         Deflection: f64,
         Step: f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `Contap_TheIWalking.hxx`:77 - `Contap_TheIWalking::Perform()`
-    pub fn Contap_TheIWalking_perform_sequenceofpathpoint_sequenceofinteriorpoint_surffunction_handleadaptor3dsurface_bool(
+    /// **Source:** `Contap_TheIWalking.hxx`:76 - `Contap_TheIWalking::Perform()`
+    pub fn Contap_TheIWalking_perform_seq_pathpoint_seq_interiorpoint_surffunction_handleadaptor3dsurface_bool(
         self_: *mut Contap_TheIWalking,
-        Pnts1: *const IntSurf_SequenceOfPathPoint,
-        Pnts2: *const IntSurf_SequenceOfInteriorPoint,
+        Pnts1: *const NCollection_Sequence_IntSurf_PathPoint,
+        Pnts2: *const NCollection_Sequence_IntSurf_InteriorPoint,
         Func: *mut Contap_SurfFunction,
-        S: *const HandleAdaptor3dSurface,
+        S: *const Handle_Adaptor3d_Surface,
         Reversed: bool,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `Contap_TheIWalking.hxx`:85 - `Contap_TheIWalking::Perform()`
-    pub fn Contap_TheIWalking_perform_sequenceofpathpoint_surffunction_handleadaptor3dsurface_bool(
+    /// **Source:** `Contap_TheIWalking.hxx`:84 - `Contap_TheIWalking::Perform()`
+    pub fn Contap_TheIWalking_perform_seq_pathpoint_surffunction_handleadaptor3dsurface_bool(
         self_: *mut Contap_TheIWalking,
-        Pnts1: *const IntSurf_SequenceOfPathPoint,
+        Pnts1: *const NCollection_Sequence_IntSurf_PathPoint,
         Func: *mut Contap_SurfFunction,
-        S: *const HandleAdaptor3dSurface,
+        S: *const Handle_Adaptor3d_Surface,
         Reversed: bool,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `Contap_TheIWalking.hxx`:91 - `Contap_TheIWalking::IsDone()`
+    /// **Source:** `Contap_TheIWalking.hxx`:90 - `Contap_TheIWalking::IsDone()`
     pub fn Contap_TheIWalking_is_done(self_: *const Contap_TheIWalking) -> crate::OcctResult<bool>;
-    /// **Source:** `Contap_TheIWalking.hxx`:95 - `Contap_TheIWalking::NbLines()`
+    /// **Source:** `Contap_TheIWalking.hxx`:94 - `Contap_TheIWalking::NbLines()`
     pub fn Contap_TheIWalking_nb_lines(self_: *const Contap_TheIWalking) -> crate::OcctResult<i32>;
-    /// **Source:** `Contap_TheIWalking.hxx`:100 - `Contap_TheIWalking::Value()`
+    /// **Source:** `Contap_TheIWalking.hxx`:99 - `Contap_TheIWalking::Value()`
     pub fn Contap_TheIWalking_value(
         self_: *const Contap_TheIWalking,
         Index: i32,
-    ) -> crate::OcctResult<*const HandleContapTheIWLineOfTheIWalking>;
-    /// **Source:** `Contap_TheIWalking.hxx`:105 - `Contap_TheIWalking::NbSinglePnts()`
+    ) -> crate::OcctResult<*const Handle_Contap_TheIWLineOfTheIWalking>;
+    /// **Source:** `Contap_TheIWalking.hxx`:104 - `Contap_TheIWalking::NbSinglePnts()`
     pub fn Contap_TheIWalking_nb_single_pnts(
         self_: *const Contap_TheIWalking,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `Contap_TheIWalking.hxx`:111 - `Contap_TheIWalking::SinglePnt()`
+    /// **Source:** `Contap_TheIWalking.hxx`:110 - `Contap_TheIWalking::SinglePnt()`
     pub fn Contap_TheIWalking_single_pnt(
         self_: *const Contap_TheIWalking,
         Index: i32,
@@ -1170,15 +1075,15 @@ unsafe extern "C" {
     pub fn Contap_ThePathPointOfTheSearch_ctor_pnt_real_handleadaptor3dhvertex_handleadaptor2dcurve2d_real(
         P: *const gp_Pnt,
         Tol: f64,
-        V: *const HandleAdaptor3dHVertex,
-        A: *const HandleAdaptor2dCurve2d,
+        V: *const Handle_Adaptor3d_HVertex,
+        A: *const Handle_Adaptor2d_Curve2d,
         Parameter: f64,
     ) -> crate::OcctResult<*mut Contap_ThePathPointOfTheSearch>;
     /// **Source:** `Contap_ThePathPointOfTheSearch.hxx`:40 - `Contap_ThePathPointOfTheSearch::Contap_ThePathPointOfTheSearch()`
     pub fn Contap_ThePathPointOfTheSearch_ctor_pnt_real_handleadaptor2dcurve2d_real(
         P: *const gp_Pnt,
         Tol: f64,
-        A: *const HandleAdaptor2dCurve2d,
+        A: *const Handle_Adaptor2d_Curve2d,
         Parameter: f64,
     ) -> crate::OcctResult<*mut Contap_ThePathPointOfTheSearch>;
     /// **Source:** `Contap_ThePathPointOfTheSearch.hxx`:45 - `Contap_ThePathPointOfTheSearch::SetValue()`
@@ -1186,8 +1091,8 @@ unsafe extern "C" {
         self_: *mut Contap_ThePathPointOfTheSearch,
         P: *const gp_Pnt,
         Tol: f64,
-        V: *const HandleAdaptor3dHVertex,
-        A: *const HandleAdaptor2dCurve2d,
+        V: *const Handle_Adaptor3d_HVertex,
+        A: *const Handle_Adaptor2d_Curve2d,
         Parameter: f64,
     ) -> *const std::ffi::c_char;
     /// **Source:** `Contap_ThePathPointOfTheSearch.hxx`:51 - `Contap_ThePathPointOfTheSearch::SetValue()`
@@ -1195,7 +1100,7 @@ unsafe extern "C" {
         self_: *mut Contap_ThePathPointOfTheSearch,
         P: *const gp_Pnt,
         Tol: f64,
-        A: *const HandleAdaptor2dCurve2d,
+        A: *const Handle_Adaptor2d_Curve2d,
         Parameter: f64,
     ) -> *const std::ffi::c_char;
     /// **Source:** `Contap_ThePathPointOfTheSearch.hxx`:56 - `Contap_ThePathPointOfTheSearch::Value()`
@@ -1213,84 +1118,84 @@ unsafe extern "C" {
     /// **Source:** `Contap_ThePathPointOfTheSearch.hxx`:62 - `Contap_ThePathPointOfTheSearch::Vertex()`
     pub fn Contap_ThePathPointOfTheSearch_vertex(
         self_: *const Contap_ThePathPointOfTheSearch,
-    ) -> crate::OcctResult<*const HandleAdaptor3dHVertex>;
+    ) -> crate::OcctResult<*const Handle_Adaptor3d_HVertex>;
     /// **Source:** `Contap_ThePathPointOfTheSearch.hxx`:64 - `Contap_ThePathPointOfTheSearch::Arc()`
     pub fn Contap_ThePathPointOfTheSearch_arc(
         self_: *const Contap_ThePathPointOfTheSearch,
-    ) -> crate::OcctResult<*const HandleAdaptor2dCurve2d>;
+    ) -> crate::OcctResult<*const Handle_Adaptor2d_Curve2d>;
     /// **Source:** `Contap_ThePathPointOfTheSearch.hxx`:66 - `Contap_ThePathPointOfTheSearch::Parameter()`
     pub fn Contap_ThePathPointOfTheSearch_parameter(
         self_: *const Contap_ThePathPointOfTheSearch,
     ) -> crate::OcctResult<f64>;
     // ======================== Contap_TheSearch ========================
     pub fn Contap_TheSearch_destructor(self_: *mut Contap_TheSearch);
-    /// **Source:** `Contap_TheSearch.hxx`:46 - `Contap_TheSearch::Contap_TheSearch()`
+    /// **Source:** `Contap_TheSearch.hxx`:47 - `Contap_TheSearch::Contap_TheSearch()`
     pub fn Contap_TheSearch_ctor() -> crate::OcctResult<*mut Contap_TheSearch>;
-    /// **Source:** `Contap_TheSearch.hxx`:53 - `Contap_TheSearch::Perform()`
+    /// **Source:** `Contap_TheSearch.hxx`:54 - `Contap_TheSearch::Perform()`
     pub fn Contap_TheSearch_perform(
         self_: *mut Contap_TheSearch,
         F: *mut Contap_ArcFunction,
-        Domain: *const HandleAdaptor3dTopolTool,
+        Domain: *const Handle_Adaptor3d_TopolTool,
         TolBoundary: f64,
         TolTangency: f64,
         RecheckOnRegularity: bool,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `Contap_TheSearch.hxx`:60 - `Contap_TheSearch::IsDone()`
+    /// **Source:** `Contap_TheSearch.hxx`:61 - `Contap_TheSearch::IsDone()`
     pub fn Contap_TheSearch_is_done(self_: *const Contap_TheSearch) -> crate::OcctResult<bool>;
-    /// **Source:** `Contap_TheSearch.hxx`:65 - `Contap_TheSearch::AllArcSolution()`
+    /// **Source:** `Contap_TheSearch.hxx`:66 - `Contap_TheSearch::AllArcSolution()`
     pub fn Contap_TheSearch_all_arc_solution(
         self_: *const Contap_TheSearch,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `Contap_TheSearch.hxx`:69 - `Contap_TheSearch::NbPoints()`
+    /// **Source:** `Contap_TheSearch.hxx`:70 - `Contap_TheSearch::NbPoints()`
     pub fn Contap_TheSearch_nb_points(self_: *const Contap_TheSearch) -> crate::OcctResult<i32>;
-    /// **Source:** `Contap_TheSearch.hxx`:76 - `Contap_TheSearch::Point()`
+    /// **Source:** `Contap_TheSearch.hxx`:77 - `Contap_TheSearch::Point()`
     pub fn Contap_TheSearch_point(
         self_: *const Contap_TheSearch,
         Index: i32,
     ) -> crate::OcctResult<*const Contap_ThePathPointOfTheSearch>;
-    /// **Source:** `Contap_TheSearch.hxx`:80 - `Contap_TheSearch::NbSegments()`
+    /// **Source:** `Contap_TheSearch.hxx`:81 - `Contap_TheSearch::NbSegments()`
     pub fn Contap_TheSearch_nb_segments(self_: *const Contap_TheSearch) -> crate::OcctResult<i32>;
-    /// **Source:** `Contap_TheSearch.hxx`:87 - `Contap_TheSearch::Segment()`
+    /// **Source:** `Contap_TheSearch.hxx`:88 - `Contap_TheSearch::Segment()`
     pub fn Contap_TheSearch_segment(
         self_: *const Contap_TheSearch,
         Index: i32,
     ) -> crate::OcctResult<*const Contap_TheSegmentOfTheSearch>;
     // ======================== Contap_TheSearchInside ========================
     pub fn Contap_TheSearchInside_destructor(self_: *mut Contap_TheSearchInside);
-    /// **Source:** `Contap_TheSearchInside.hxx`:34 - `Contap_TheSearchInside::Contap_TheSearchInside()`
+    /// **Source:** `Contap_TheSearchInside.hxx`:35 - `Contap_TheSearchInside::Contap_TheSearchInside()`
     pub fn Contap_TheSearchInside_ctor() -> crate::OcctResult<*mut Contap_TheSearchInside>;
-    /// **Source:** `Contap_TheSearchInside.hxx`:36 - `Contap_TheSearchInside::Contap_TheSearchInside()`
+    /// **Source:** `Contap_TheSearchInside.hxx`:37 - `Contap_TheSearchInside::Contap_TheSearchInside()`
     pub fn Contap_TheSearchInside_ctor_surffunction_handleadaptor3dsurface_handleadaptor3dtopoltool_real(
         F: *mut Contap_SurfFunction,
-        Surf: *const HandleAdaptor3dSurface,
-        T: *const HandleAdaptor3dTopolTool,
+        Surf: *const Handle_Adaptor3d_Surface,
+        T: *const Handle_Adaptor3d_TopolTool,
         Epsilon: f64,
     ) -> crate::OcctResult<*mut Contap_TheSearchInside>;
-    /// **Source:** `Contap_TheSearchInside.hxx`:41 - `Contap_TheSearchInside::Perform()`
+    /// **Source:** `Contap_TheSearchInside.hxx`:42 - `Contap_TheSearchInside::Perform()`
     pub fn Contap_TheSearchInside_perform_surffunction_handleadaptor3dsurface_handleadaptor3dtopoltool_real(
         self_: *mut Contap_TheSearchInside,
         F: *mut Contap_SurfFunction,
-        Surf: *const HandleAdaptor3dSurface,
-        T: *const HandleAdaptor3dTopolTool,
+        Surf: *const Handle_Adaptor3d_Surface,
+        T: *const Handle_Adaptor3d_TopolTool,
         Epsilon: f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `Contap_TheSearchInside.hxx`:46 - `Contap_TheSearchInside::Perform()`
+    /// **Source:** `Contap_TheSearchInside.hxx`:47 - `Contap_TheSearchInside::Perform()`
     pub fn Contap_TheSearchInside_perform_surffunction_handleadaptor3dsurface_real2(
         self_: *mut Contap_TheSearchInside,
         F: *mut Contap_SurfFunction,
-        Surf: *const HandleAdaptor3dSurface,
+        Surf: *const Handle_Adaptor3d_Surface,
         UStart: f64,
         VStart: f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `Contap_TheSearchInside.hxx`:51 - `Contap_TheSearchInside::IsDone()`
+    /// **Source:** `Contap_TheSearchInside.hxx`:52 - `Contap_TheSearchInside::IsDone()`
     pub fn Contap_TheSearchInside_is_done(
         self_: *const Contap_TheSearchInside,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `Contap_TheSearchInside.hxx`:56 - `Contap_TheSearchInside::NbPoints()`
+    /// **Source:** `Contap_TheSearchInside.hxx`:57 - `Contap_TheSearchInside::NbPoints()`
     pub fn Contap_TheSearchInside_nb_points(
         self_: *const Contap_TheSearchInside,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `Contap_TheSearchInside.hxx`:63 - `Contap_TheSearchInside::Value()`
+    /// **Source:** `Contap_TheSearchInside.hxx`:64 - `Contap_TheSearchInside::Value()`
     pub fn Contap_TheSearchInside_value(
         self_: *const Contap_TheSearchInside,
         Index: i32,
@@ -1303,7 +1208,7 @@ unsafe extern "C" {
     /// **Source:** `Contap_TheSegmentOfTheSearch.hxx`:36 - `Contap_TheSegmentOfTheSearch::SetValue()`
     pub fn Contap_TheSegmentOfTheSearch_set_value(
         self_: *mut Contap_TheSegmentOfTheSearch,
-        A: *const HandleAdaptor2dCurve2d,
+        A: *const Handle_Adaptor2d_Curve2d,
     ) -> *const std::ffi::c_char;
     /// **Source:** `Contap_TheSegmentOfTheSearch.hxx`:40 - `Contap_TheSegmentOfTheSearch::SetLimitPoint()`
     pub fn Contap_TheSegmentOfTheSearch_set_limit_point(
@@ -1311,23 +1216,23 @@ unsafe extern "C" {
         V: *const Contap_ThePathPointOfTheSearch,
         First: bool,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `Contap_TheSegmentOfTheSearch.hxx`:45 - `Contap_TheSegmentOfTheSearch::Curve()`
+    /// **Source:** `Contap_TheSegmentOfTheSearch.hxx`:44 - `Contap_TheSegmentOfTheSearch::Curve()`
     pub fn Contap_TheSegmentOfTheSearch_curve(
         self_: *const Contap_TheSegmentOfTheSearch,
-    ) -> crate::OcctResult<*const HandleAdaptor2dCurve2d>;
-    /// **Source:** `Contap_TheSegmentOfTheSearch.hxx`:49 - `Contap_TheSegmentOfTheSearch::HasFirstPoint()`
+    ) -> crate::OcctResult<*const Handle_Adaptor2d_Curve2d>;
+    /// **Source:** `Contap_TheSegmentOfTheSearch.hxx`:48 - `Contap_TheSegmentOfTheSearch::HasFirstPoint()`
     pub fn Contap_TheSegmentOfTheSearch_has_first_point(
         self_: *const Contap_TheSegmentOfTheSearch,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `Contap_TheSegmentOfTheSearch.hxx`:52 - `Contap_TheSegmentOfTheSearch::FirstPoint()`
+    /// **Source:** `Contap_TheSegmentOfTheSearch.hxx`:51 - `Contap_TheSegmentOfTheSearch::FirstPoint()`
     pub fn Contap_TheSegmentOfTheSearch_first_point(
         self_: *const Contap_TheSegmentOfTheSearch,
     ) -> crate::OcctResult<*const Contap_ThePathPointOfTheSearch>;
-    /// **Source:** `Contap_TheSegmentOfTheSearch.hxx`:56 - `Contap_TheSegmentOfTheSearch::HasLastPoint()`
+    /// **Source:** `Contap_TheSegmentOfTheSearch.hxx`:55 - `Contap_TheSegmentOfTheSearch::HasLastPoint()`
     pub fn Contap_TheSegmentOfTheSearch_has_last_point(
         self_: *const Contap_TheSegmentOfTheSearch,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `Contap_TheSegmentOfTheSearch.hxx`:59 - `Contap_TheSegmentOfTheSearch::LastPoint()`
+    /// **Source:** `Contap_TheSegmentOfTheSearch.hxx`:58 - `Contap_TheSegmentOfTheSearch::LastPoint()`
     pub fn Contap_TheSegmentOfTheSearch_last_point(
         self_: *const Contap_TheSegmentOfTheSearch,
     ) -> crate::OcctResult<*const Contap_ThePathPointOfTheSearch>;
@@ -1552,22 +1457,22 @@ unsafe extern "C" {
     ) -> *const std::ffi::c_char;
     // ======================== HLRAlgo_EdgeIterator ========================
     pub fn HLRAlgo_EdgeIterator_destructor(self_: *mut HLRAlgo_EdgeIterator);
-    /// **Source:** `HLRAlgo_EdgeIterator.hxx`:33 - `HLRAlgo_EdgeIterator::HLRAlgo_EdgeIterator()`
+    /// **Source:** `HLRAlgo_EdgeIterator.hxx`:32 - `HLRAlgo_EdgeIterator::HLRAlgo_EdgeIterator()`
     pub fn HLRAlgo_EdgeIterator_ctor() -> crate::OcctResult<*mut HLRAlgo_EdgeIterator>;
-    /// **Source:** `HLRAlgo_EdgeIterator.hxx`:35 - `HLRAlgo_EdgeIterator::InitHidden()`
+    /// **Source:** `HLRAlgo_EdgeIterator.hxx`:34 - `HLRAlgo_EdgeIterator::InitHidden()`
     pub fn HLRAlgo_EdgeIterator_init_hidden(
         self_: *mut HLRAlgo_EdgeIterator,
         status: *mut HLRAlgo_EdgeStatus,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `HLRAlgo_EdgeIterator.hxx`:37 - `HLRAlgo_EdgeIterator::MoreHidden()`
+    /// **Source:** `HLRAlgo_EdgeIterator.hxx`:36 - `HLRAlgo_EdgeIterator::MoreHidden()`
     pub fn HLRAlgo_EdgeIterator_more_hidden(
         self_: *const HLRAlgo_EdgeIterator,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `HLRAlgo_EdgeIterator.hxx`:39 - `HLRAlgo_EdgeIterator::NextHidden()`
+    /// **Source:** `HLRAlgo_EdgeIterator.hxx`:38 - `HLRAlgo_EdgeIterator::NextHidden()`
     pub fn HLRAlgo_EdgeIterator_next_hidden(
         self_: *mut HLRAlgo_EdgeIterator,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `HLRAlgo_EdgeIterator.hxx`:43 - `HLRAlgo_EdgeIterator::Hidden()`
+    /// **Source:** `HLRAlgo_EdgeIterator.hxx`:42 - `HLRAlgo_EdgeIterator::Hidden()`
     pub fn HLRAlgo_EdgeIterator_hidden(
         self_: *const HLRAlgo_EdgeIterator,
         Start: *mut f64,
@@ -1575,20 +1480,20 @@ unsafe extern "C" {
         End: *mut f64,
         TolEnd: *mut f32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `HLRAlgo_EdgeIterator.hxx`:48 - `HLRAlgo_EdgeIterator::InitVisible()`
+    /// **Source:** `HLRAlgo_EdgeIterator.hxx`:44 - `HLRAlgo_EdgeIterator::InitVisible()`
     pub fn HLRAlgo_EdgeIterator_init_visible(
         self_: *mut HLRAlgo_EdgeIterator,
         status: *mut HLRAlgo_EdgeStatus,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `HLRAlgo_EdgeIterator.hxx`:50 - `HLRAlgo_EdgeIterator::MoreVisible()`
+    /// **Source:** `HLRAlgo_EdgeIterator.hxx`:46 - `HLRAlgo_EdgeIterator::MoreVisible()`
     pub fn HLRAlgo_EdgeIterator_more_visible(
         self_: *const HLRAlgo_EdgeIterator,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `HLRAlgo_EdgeIterator.hxx`:52 - `HLRAlgo_EdgeIterator::NextVisible()`
+    /// **Source:** `HLRAlgo_EdgeIterator.hxx`:48 - `HLRAlgo_EdgeIterator::NextVisible()`
     pub fn HLRAlgo_EdgeIterator_next_visible(
         self_: *mut HLRAlgo_EdgeIterator,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `HLRAlgo_EdgeIterator.hxx`:56 - `HLRAlgo_EdgeIterator::Visible()`
+    /// **Source:** `HLRAlgo_EdgeIterator.hxx`:52 - `HLRAlgo_EdgeIterator::Visible()`
     pub fn HLRAlgo_EdgeIterator_visible(
         self_: *mut HLRAlgo_EdgeIterator,
         Start: *mut f64,
@@ -1598,16 +1503,16 @@ unsafe extern "C" {
     ) -> *const std::ffi::c_char;
     // ======================== HLRAlgo_EdgeStatus ========================
     pub fn HLRAlgo_EdgeStatus_destructor(self_: *mut HLRAlgo_EdgeStatus);
-    /// **Source:** `HLRAlgo_EdgeStatus.hxx`:40 - `HLRAlgo_EdgeStatus::HLRAlgo_EdgeStatus()`
+    /// **Source:** `HLRAlgo_EdgeStatus.hxx`:39 - `HLRAlgo_EdgeStatus::HLRAlgo_EdgeStatus()`
     pub fn HLRAlgo_EdgeStatus_ctor() -> crate::OcctResult<*mut HLRAlgo_EdgeStatus>;
-    /// **Source:** `HLRAlgo_EdgeStatus.hxx`:45 - `HLRAlgo_EdgeStatus::HLRAlgo_EdgeStatus()`
+    /// **Source:** `HLRAlgo_EdgeStatus.hxx`:44 - `HLRAlgo_EdgeStatus::HLRAlgo_EdgeStatus()`
     pub fn HLRAlgo_EdgeStatus_ctor_real_float_real_float(
         Start: f64,
         TolStart: f32,
         End: f64,
         TolEnd: f32,
     ) -> crate::OcctResult<*mut HLRAlgo_EdgeStatus>;
-    /// **Source:** `HLRAlgo_EdgeStatus.hxx`:53 - `HLRAlgo_EdgeStatus::Initialize()`
+    /// **Source:** `HLRAlgo_EdgeStatus.hxx`:52 - `HLRAlgo_EdgeStatus::Initialize()`
     pub fn HLRAlgo_EdgeStatus_initialize(
         self_: *mut HLRAlgo_EdgeStatus,
         Start: f64,
@@ -1615,7 +1520,7 @@ unsafe extern "C" {
         End: f64,
         TolEnd: f32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `HLRAlgo_EdgeStatus.hxx`:58 - `HLRAlgo_EdgeStatus::Bounds()`
+    /// **Source:** `HLRAlgo_EdgeStatus.hxx`:57 - `HLRAlgo_EdgeStatus::Bounds()`
     pub fn HLRAlgo_EdgeStatus_bounds(
         self_: *const HLRAlgo_EdgeStatus,
         theStart: *mut f64,
@@ -1623,11 +1528,11 @@ unsafe extern "C" {
         theEnd: *mut f64,
         theTolEnd: *mut f32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `HLRAlgo_EdgeStatus.hxx`:69 - `HLRAlgo_EdgeStatus::NbVisiblePart()`
+    /// **Source:** `HLRAlgo_EdgeStatus.hxx`:65 - `HLRAlgo_EdgeStatus::NbVisiblePart()`
     pub fn HLRAlgo_EdgeStatus_nb_visible_part(
         self_: *const HLRAlgo_EdgeStatus,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `HLRAlgo_EdgeStatus.hxx`:71 - `HLRAlgo_EdgeStatus::VisiblePart()`
+    /// **Source:** `HLRAlgo_EdgeStatus.hxx`:67 - `HLRAlgo_EdgeStatus::VisiblePart()`
     pub fn HLRAlgo_EdgeStatus_visible_part(
         self_: *const HLRAlgo_EdgeStatus,
         Index: i32,
@@ -1636,7 +1541,7 @@ unsafe extern "C" {
         End: *mut f64,
         TolEnd: *mut f32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `HLRAlgo_EdgeStatus.hxx`:84 - `HLRAlgo_EdgeStatus::Hide()`
+    /// **Source:** `HLRAlgo_EdgeStatus.hxx`:80 - `HLRAlgo_EdgeStatus::Hide()`
     pub fn HLRAlgo_EdgeStatus_hide(
         self_: *mut HLRAlgo_EdgeStatus,
         Start: f64,
@@ -1646,117 +1551,117 @@ unsafe extern "C" {
         OnFace: bool,
         OnBoundary: bool,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `HLRAlgo_EdgeStatus.hxx`:92 - `HLRAlgo_EdgeStatus::HideAll()`
+    /// **Source:** `HLRAlgo_EdgeStatus.hxx`:88 - `HLRAlgo_EdgeStatus::HideAll()`
     pub fn HLRAlgo_EdgeStatus_hide_all(self_: *mut HLRAlgo_EdgeStatus) -> *const std::ffi::c_char;
-    /// **Source:** `HLRAlgo_EdgeStatus.hxx`:99 - `HLRAlgo_EdgeStatus::ShowAll()`
+    /// **Source:** `HLRAlgo_EdgeStatus.hxx`:95 - `HLRAlgo_EdgeStatus::ShowAll()`
     pub fn HLRAlgo_EdgeStatus_show_all(self_: *mut HLRAlgo_EdgeStatus) -> *const std::ffi::c_char;
-    /// **Source:** `HLRAlgo_EdgeStatus.hxx`:105 - `HLRAlgo_EdgeStatus::AllHidden()`
+    /// **Source:** `HLRAlgo_EdgeStatus.hxx`:101 - `HLRAlgo_EdgeStatus::AllHidden()`
     pub fn HLRAlgo_EdgeStatus_all_hidden(
         self_: *const HLRAlgo_EdgeStatus,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `HLRAlgo_EdgeStatus.hxx`:107 - `HLRAlgo_EdgeStatus::AllHidden()`
+    /// **Source:** `HLRAlgo_EdgeStatus.hxx`:103 - `HLRAlgo_EdgeStatus::AllHidden()`
     pub fn HLRAlgo_EdgeStatus_all_hidden_bool(
         self_: *mut HLRAlgo_EdgeStatus,
         B: bool,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `HLRAlgo_EdgeStatus.hxx`:109 - `HLRAlgo_EdgeStatus::AllVisible()`
+    /// **Source:** `HLRAlgo_EdgeStatus.hxx`:105 - `HLRAlgo_EdgeStatus::AllVisible()`
     pub fn HLRAlgo_EdgeStatus_all_visible(
         self_: *const HLRAlgo_EdgeStatus,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `HLRAlgo_EdgeStatus.hxx`:111 - `HLRAlgo_EdgeStatus::AllVisible()`
+    /// **Source:** `HLRAlgo_EdgeStatus.hxx`:107 - `HLRAlgo_EdgeStatus::AllVisible()`
     pub fn HLRAlgo_EdgeStatus_all_visible_bool(
         self_: *mut HLRAlgo_EdgeStatus,
         B: bool,
     ) -> *const std::ffi::c_char;
     // ======================== HLRAlgo_EdgesBlock ========================
     pub fn HLRAlgo_EdgesBlock_destructor(self_: *mut HLRAlgo_EdgesBlock);
-    /// **Source:** `HLRAlgo_EdgesBlock.hxx`:86 - `HLRAlgo_EdgesBlock::HLRAlgo_EdgesBlock()`
+    /// **Source:** `HLRAlgo_EdgesBlock.hxx`:83 - `HLRAlgo_EdgesBlock::HLRAlgo_EdgesBlock()`
     pub fn HLRAlgo_EdgesBlock_ctor_int(NbEdges: i32) -> crate::OcctResult<*mut HLRAlgo_EdgesBlock>;
-    /// **Source:** `HLRAlgo_EdgesBlock.hxx`:88 - `HLRAlgo_EdgesBlock::NbEdges()`
+    /// **Source:** `HLRAlgo_EdgesBlock.hxx`:85 - `HLRAlgo_EdgesBlock::NbEdges()`
     pub fn HLRAlgo_EdgesBlock_nb_edges(self_: *const HLRAlgo_EdgesBlock) -> crate::OcctResult<i32>;
-    /// **Source:** `HLRAlgo_EdgesBlock.hxx`:90 - `HLRAlgo_EdgesBlock::Edge()`
+    /// **Source:** `HLRAlgo_EdgesBlock.hxx`:87 - `HLRAlgo_EdgesBlock::Edge()`
     pub fn HLRAlgo_EdgesBlock_edge_int2(
         self_: *mut HLRAlgo_EdgesBlock,
         I: i32,
         EI: i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `HLRAlgo_EdgesBlock.hxx`:92 - `HLRAlgo_EdgesBlock::Edge()`
+    /// **Source:** `HLRAlgo_EdgesBlock.hxx`:89 - `HLRAlgo_EdgesBlock::Edge()`
     pub fn HLRAlgo_EdgesBlock_edge_int(
         self_: *const HLRAlgo_EdgesBlock,
         I: i32,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `HLRAlgo_EdgesBlock.hxx`:94 - `HLRAlgo_EdgesBlock::Orientation()`
+    /// **Source:** `HLRAlgo_EdgesBlock.hxx`:91 - `HLRAlgo_EdgesBlock::Orientation()`
     pub fn HLRAlgo_EdgesBlock_orientation_int_orientation(
         self_: *mut HLRAlgo_EdgesBlock,
         I: i32,
         Or: i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `HLRAlgo_EdgesBlock.hxx`:100 - `HLRAlgo_EdgesBlock::Orientation()`
+    /// **Source:** `HLRAlgo_EdgesBlock.hxx`:97 - `HLRAlgo_EdgesBlock::Orientation()`
     pub fn HLRAlgo_EdgesBlock_orientation_int(
         self_: *const HLRAlgo_EdgesBlock,
         I: i32,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `HLRAlgo_EdgesBlock.hxx`:105 - `HLRAlgo_EdgesBlock::OutLine()`
+    /// **Source:** `HLRAlgo_EdgesBlock.hxx`:102 - `HLRAlgo_EdgesBlock::OutLine()`
     pub fn HLRAlgo_EdgesBlock_out_line_int(
         self_: *const HLRAlgo_EdgesBlock,
         I: i32,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `HLRAlgo_EdgesBlock.hxx`:110 - `HLRAlgo_EdgesBlock::OutLine()`
+    /// **Source:** `HLRAlgo_EdgesBlock.hxx`:104 - `HLRAlgo_EdgesBlock::OutLine()`
     pub fn HLRAlgo_EdgesBlock_out_line_int_bool(
         self_: *mut HLRAlgo_EdgesBlock,
         I: i32,
         B: bool,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `HLRAlgo_EdgesBlock.hxx`:118 - `HLRAlgo_EdgesBlock::Internal()`
+    /// **Source:** `HLRAlgo_EdgesBlock.hxx`:112 - `HLRAlgo_EdgesBlock::Internal()`
     pub fn HLRAlgo_EdgesBlock_internal_int(
         self_: *const HLRAlgo_EdgesBlock,
         I: i32,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `HLRAlgo_EdgesBlock.hxx`:123 - `HLRAlgo_EdgesBlock::Internal()`
+    /// **Source:** `HLRAlgo_EdgesBlock.hxx`:114 - `HLRAlgo_EdgesBlock::Internal()`
     pub fn HLRAlgo_EdgesBlock_internal_int_bool(
         self_: *mut HLRAlgo_EdgesBlock,
         I: i32,
         B: bool,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `HLRAlgo_EdgesBlock.hxx`:131 - `HLRAlgo_EdgesBlock::Double()`
+    /// **Source:** `HLRAlgo_EdgesBlock.hxx`:122 - `HLRAlgo_EdgesBlock::Double()`
     pub fn HLRAlgo_EdgesBlock_double_int(
         self_: *const HLRAlgo_EdgesBlock,
         I: i32,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `HLRAlgo_EdgesBlock.hxx`:136 - `HLRAlgo_EdgesBlock::Double()`
+    /// **Source:** `HLRAlgo_EdgesBlock.hxx`:124 - `HLRAlgo_EdgesBlock::Double()`
     pub fn HLRAlgo_EdgesBlock_double_int_bool(
         self_: *mut HLRAlgo_EdgesBlock,
         I: i32,
         B: bool,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `HLRAlgo_EdgesBlock.hxx`:144 - `HLRAlgo_EdgesBlock::IsoLine()`
+    /// **Source:** `HLRAlgo_EdgesBlock.hxx`:132 - `HLRAlgo_EdgesBlock::IsoLine()`
     pub fn HLRAlgo_EdgesBlock_iso_line_int(
         self_: *const HLRAlgo_EdgesBlock,
         I: i32,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `HLRAlgo_EdgesBlock.hxx`:149 - `HLRAlgo_EdgesBlock::IsoLine()`
+    /// **Source:** `HLRAlgo_EdgesBlock.hxx`:134 - `HLRAlgo_EdgesBlock::IsoLine()`
     pub fn HLRAlgo_EdgesBlock_iso_line_int_bool(
         self_: *mut HLRAlgo_EdgesBlock,
         I: i32,
         B: bool,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `HLRAlgo_EdgesBlock.hxx`:157 - `HLRAlgo_EdgesBlock::UpdateMinMax()`
+    /// **Source:** `HLRAlgo_EdgesBlock.hxx`:142 - `HLRAlgo_EdgesBlock::UpdateMinMax()`
     pub fn HLRAlgo_EdgesBlock_update_min_max(
         self_: *mut HLRAlgo_EdgesBlock,
         TotMinMax: *const HLRAlgo_EdgesBlock_MinMaxIndices,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `HLRAlgo_EdgesBlock.hxx`:159 - `HLRAlgo_EdgesBlock::MinMax()`
+    /// **Source:** `HLRAlgo_EdgesBlock.hxx`:144 - `HLRAlgo_EdgesBlock::MinMax()`
     pub fn HLRAlgo_EdgesBlock_min_max(
         self_: *mut HLRAlgo_EdgesBlock,
     ) -> crate::OcctResult<*mut HLRAlgo_EdgesBlock_MinMaxIndices>;
-    /// **Source:** `HLRAlgo_EdgesBlock.hxx`:161 - `HLRAlgo_EdgesBlock::DynamicType()`
+    /// **Source:** `HLRAlgo_EdgesBlock.hxx`:146 - `HLRAlgo_EdgesBlock::DynamicType()`
     pub fn HLRAlgo_EdgesBlock_dynamic_type(
         self_: *const HLRAlgo_EdgesBlock,
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// **Source:** `HLRAlgo_EdgesBlock.hxx`:161 - `HLRAlgo_EdgesBlock::get_type_name()`
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
+    /// **Source:** `HLRAlgo_EdgesBlock.hxx`:146 - `HLRAlgo_EdgesBlock::get_type_name()`
     pub fn HLRAlgo_EdgesBlock_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
-    /// **Source:** `HLRAlgo_EdgesBlock.hxx`:161 - `HLRAlgo_EdgesBlock::get_type_descriptor()`
-    pub fn HLRAlgo_EdgesBlock_get_type_descriptor() -> crate::OcctResult<*const HandleStandardType>;
+    /// **Source:** `HLRAlgo_EdgesBlock.hxx`:146 - `HLRAlgo_EdgesBlock::get_type_descriptor()`
+    pub fn HLRAlgo_EdgesBlock_get_type_descriptor() -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast HLRAlgo_EdgesBlock to Standard_Transient
     pub fn HLRAlgo_EdgesBlock_as_Standard_Transient(
         self_: *const HLRAlgo_EdgesBlock,
@@ -1768,54 +1673,54 @@ unsafe extern "C" {
     /// Wrap HLRAlgo_EdgesBlock in a Handle
     pub fn HLRAlgo_EdgesBlock_to_handle(
         obj: *mut HLRAlgo_EdgesBlock,
-    ) -> crate::OcctResult<*mut HandleHLRAlgoEdgesBlock>;
+    ) -> crate::OcctResult<*mut Handle_HLRAlgo_EdgesBlock>;
     /// Destroy Handle<HLRAlgo_EdgesBlock>
-    pub fn HandleHLRAlgoEdgesBlock_destructor(self_: *mut HandleHLRAlgoEdgesBlock);
+    pub fn Handle_HLRAlgo_EdgesBlock_destructor(self_: *mut Handle_HLRAlgo_EdgesBlock);
     /// Clone Handle<HLRAlgo_EdgesBlock> (increments reference count)
-    pub fn HandleHLRAlgoEdgesBlock_clone(
-        self_: *const HandleHLRAlgoEdgesBlock,
-    ) -> crate::OcctResult<*mut HandleHLRAlgoEdgesBlock>;
+    pub fn Handle_HLRAlgo_EdgesBlock_clone(
+        self_: *const Handle_HLRAlgo_EdgesBlock,
+    ) -> crate::OcctResult<*mut Handle_HLRAlgo_EdgesBlock>;
     /// Check if Handle<HLRAlgo_EdgesBlock> is null
-    pub fn HandleHLRAlgoEdgesBlock_is_null(self_: *const HandleHLRAlgoEdgesBlock) -> bool;
+    pub fn Handle_HLRAlgo_EdgesBlock_is_null(self_: *const Handle_HLRAlgo_EdgesBlock) -> bool;
     /// Dereference Handle to get *const HLRAlgo_EdgesBlock
-    pub fn HandleHLRAlgoEdgesBlock_get(
-        handle: *const HandleHLRAlgoEdgesBlock,
+    pub fn Handle_HLRAlgo_EdgesBlock_get(
+        handle: *const Handle_HLRAlgo_EdgesBlock,
     ) -> crate::OcctResult<*const HLRAlgo_EdgesBlock>;
     /// Dereference Handle to get *mut HLRAlgo_EdgesBlock
-    pub fn HandleHLRAlgoEdgesBlock_get_mut(
-        handle: *mut HandleHLRAlgoEdgesBlock,
+    pub fn Handle_HLRAlgo_EdgesBlock_get_mut(
+        handle: *mut Handle_HLRAlgo_EdgesBlock,
     ) -> crate::OcctResult<*mut HLRAlgo_EdgesBlock>;
     /// Upcast Handle<HLRAlgo_EdgesBlock> to Handle<Standard_Transient>
-    pub fn HandleHLRAlgoEdgesBlock_to_HandleStandardTransient(
-        self_: *const HandleHLRAlgoEdgesBlock,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn Handle_HLRAlgo_EdgesBlock_to_Handle_Standard_Transient(
+        self_: *const Handle_HLRAlgo_EdgesBlock,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn HLRAlgo_EdgesBlock_inherited_IsInstance(
         self_: *const HLRAlgo_EdgesBlock,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn HLRAlgo_EdgesBlock_inherited_IsKind(
         self_: *const HLRAlgo_EdgesBlock,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn HLRAlgo_EdgesBlock_inherited_This(
         self_: *const HLRAlgo_EdgesBlock,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn HLRAlgo_EdgesBlock_inherited_GetRefCount(
         self_: *const HLRAlgo_EdgesBlock,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn HLRAlgo_EdgesBlock_inherited_IncrementRefCounter(
         self_: *mut HLRAlgo_EdgesBlock,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn HLRAlgo_EdgesBlock_inherited_DecrementRefCounter(
         self_: *mut HLRAlgo_EdgesBlock,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn HLRAlgo_EdgesBlock_inherited_Delete(
         self_: *const HLRAlgo_EdgesBlock,
     ) -> *const std::ffi::c_char;
@@ -1824,426 +1729,6 @@ unsafe extern "C" {
         self_: *mut HLRAlgo_EdgesBlock_MinMaxIndices,
     );
     pub fn HLRAlgo_EdgesBlock_MinMaxIndices_sizeof() -> usize;
-    // ======================== HLRAlgo_HArray1OfPHDat ========================
-    pub fn HLRAlgo_HArray1OfPHDat_destructor(self_: *mut HLRAlgo_HArray1OfPHDat);
-    /// **Source:** `HLRAlgo_HArray1OfPHDat.hxx`:23 - `HLRAlgo_HArray1OfPHDat::HLRAlgo_HArray1OfPHDat()`
-    pub fn HLRAlgo_HArray1OfPHDat_ctor() -> crate::OcctResult<*mut HLRAlgo_HArray1OfPHDat>;
-    /// **Source:** `HLRAlgo_HArray1OfPHDat.hxx`:23 - `HLRAlgo_HArray1OfPHDat::HLRAlgo_HArray1OfPHDat()`
-    pub fn HLRAlgo_HArray1OfPHDat_ctor_int2(
-        theLower: i32,
-        theUpper: i32,
-    ) -> crate::OcctResult<*mut HLRAlgo_HArray1OfPHDat>;
-    /// **Source:** `HLRAlgo_HArray1OfPHDat.hxx`:23 - `HLRAlgo_HArray1OfPHDat::HLRAlgo_HArray1OfPHDat()`
-    pub fn HLRAlgo_HArray1OfPHDat_ctor_int2_polyhidingdata(
-        theLower: i32,
-        theUpper: i32,
-        theValue: *const HLRAlgo_PolyHidingData,
-    ) -> crate::OcctResult<*mut HLRAlgo_HArray1OfPHDat>;
-    /// **Source:** `HLRAlgo_HArray1OfPHDat.hxx`:23 - `HLRAlgo_HArray1OfPHDat::HLRAlgo_HArray1OfPHDat()`
-    pub fn HLRAlgo_HArray1OfPHDat_ctor_polyhidingdata_int2_bool(
-        theBegin: *const HLRAlgo_PolyHidingData,
-        theLower: i32,
-        theUpper: i32,
-        arg3: bool,
-    ) -> crate::OcctResult<*mut HLRAlgo_HArray1OfPHDat>;
-    /// **Source:** `HLRAlgo_HArray1OfPHDat.hxx`:23 - `HLRAlgo_HArray1OfPHDat::HLRAlgo_HArray1OfPHDat()`
-    pub fn HLRAlgo_HArray1OfPHDat_ctor_array1ofphdat(
-        theOther: *const HLRAlgo_Array1OfPHDat,
-    ) -> crate::OcctResult<*mut HLRAlgo_HArray1OfPHDat>;
-    /// **Source:** `HLRAlgo_HArray1OfPHDat.hxx`:23 - `HLRAlgo_HArray1OfPHDat::Array1()`
-    pub fn HLRAlgo_HArray1OfPHDat_array1(
-        self_: *const HLRAlgo_HArray1OfPHDat,
-    ) -> crate::OcctResult<*const HLRAlgo_Array1OfPHDat>;
-    /// **Source:** `HLRAlgo_HArray1OfPHDat.hxx`:23 - `HLRAlgo_HArray1OfPHDat::ChangeArray1()`
-    pub fn HLRAlgo_HArray1OfPHDat_change_array1(
-        self_: *mut HLRAlgo_HArray1OfPHDat,
-    ) -> crate::OcctResult<*mut HLRAlgo_Array1OfPHDat>;
-    /// **Source:** `HLRAlgo_HArray1OfPHDat.hxx`:23 - `HLRAlgo_HArray1OfPHDat::DynamicType()`
-    pub fn HLRAlgo_HArray1OfPHDat_dynamic_type(
-        self_: *const HLRAlgo_HArray1OfPHDat,
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// **Source:** `HLRAlgo_HArray1OfPHDat.hxx`:23 - `HLRAlgo_HArray1OfPHDat::get_type_name()`
-    pub fn HLRAlgo_HArray1OfPHDat_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
-    /// **Source:** `HLRAlgo_HArray1OfPHDat.hxx`:23 - `HLRAlgo_HArray1OfPHDat::get_type_descriptor()`
-    pub fn HLRAlgo_HArray1OfPHDat_get_type_descriptor(
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// Upcast HLRAlgo_HArray1OfPHDat to Standard_Transient
-    pub fn HLRAlgo_HArray1OfPHDat_as_Standard_Transient(
-        self_: *const HLRAlgo_HArray1OfPHDat,
-    ) -> crate::OcctResult<*const Standard_Transient>;
-    /// Upcast HLRAlgo_HArray1OfPHDat to Standard_Transient (mutable)
-    pub fn HLRAlgo_HArray1OfPHDat_as_Standard_Transient_mut(
-        self_: *mut HLRAlgo_HArray1OfPHDat,
-    ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Wrap HLRAlgo_HArray1OfPHDat in a Handle
-    pub fn HLRAlgo_HArray1OfPHDat_to_handle(
-        obj: *mut HLRAlgo_HArray1OfPHDat,
-    ) -> crate::OcctResult<*mut HandleHLRAlgoHArray1OfPHDat>;
-    /// Destroy Handle<HLRAlgo_HArray1OfPHDat>
-    pub fn HandleHLRAlgoHArray1OfPHDat_destructor(self_: *mut HandleHLRAlgoHArray1OfPHDat);
-    /// Clone Handle<HLRAlgo_HArray1OfPHDat> (increments reference count)
-    pub fn HandleHLRAlgoHArray1OfPHDat_clone(
-        self_: *const HandleHLRAlgoHArray1OfPHDat,
-    ) -> crate::OcctResult<*mut HandleHLRAlgoHArray1OfPHDat>;
-    /// Check if Handle<HLRAlgo_HArray1OfPHDat> is null
-    pub fn HandleHLRAlgoHArray1OfPHDat_is_null(self_: *const HandleHLRAlgoHArray1OfPHDat) -> bool;
-    /// Dereference Handle to get *const HLRAlgo_HArray1OfPHDat
-    pub fn HandleHLRAlgoHArray1OfPHDat_get(
-        handle: *const HandleHLRAlgoHArray1OfPHDat,
-    ) -> crate::OcctResult<*const HLRAlgo_HArray1OfPHDat>;
-    /// Dereference Handle to get *mut HLRAlgo_HArray1OfPHDat
-    pub fn HandleHLRAlgoHArray1OfPHDat_get_mut(
-        handle: *mut HandleHLRAlgoHArray1OfPHDat,
-    ) -> crate::OcctResult<*mut HLRAlgo_HArray1OfPHDat>;
-    /// Upcast Handle<HLRAlgo_HArray1OfPHDat> to Handle<Standard_Transient>
-    pub fn HandleHLRAlgoHArray1OfPHDat_to_HandleStandardTransient(
-        self_: *const HandleHLRAlgoHArray1OfPHDat,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn HLRAlgo_HArray1OfPHDat_inherited_IsInstance(
-        self_: *const HLRAlgo_HArray1OfPHDat,
-        theType: *const HandleStandardType,
-    ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn HLRAlgo_HArray1OfPHDat_inherited_IsKind(
-        self_: *const HLRAlgo_HArray1OfPHDat,
-        theType: *const HandleStandardType,
-    ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
-    pub fn HLRAlgo_HArray1OfPHDat_inherited_This(
-        self_: *const HLRAlgo_HArray1OfPHDat,
-    ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
-    pub fn HLRAlgo_HArray1OfPHDat_inherited_GetRefCount(
-        self_: *const HLRAlgo_HArray1OfPHDat,
-    ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
-    pub fn HLRAlgo_HArray1OfPHDat_inherited_IncrementRefCounter(
-        self_: *mut HLRAlgo_HArray1OfPHDat,
-    ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
-    pub fn HLRAlgo_HArray1OfPHDat_inherited_DecrementRefCounter(
-        self_: *mut HLRAlgo_HArray1OfPHDat,
-    ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
-    pub fn HLRAlgo_HArray1OfPHDat_inherited_Delete(
-        self_: *const HLRAlgo_HArray1OfPHDat,
-    ) -> *const std::ffi::c_char;
-    // ======================== HLRAlgo_HArray1OfPINod ========================
-    pub fn HLRAlgo_HArray1OfPINod_destructor(self_: *mut HLRAlgo_HArray1OfPINod);
-    /// **Source:** `HLRAlgo_HArray1OfPINod.hxx`:23 - `HLRAlgo_HArray1OfPINod::HLRAlgo_HArray1OfPINod()`
-    pub fn HLRAlgo_HArray1OfPINod_ctor() -> crate::OcctResult<*mut HLRAlgo_HArray1OfPINod>;
-    /// **Source:** `HLRAlgo_HArray1OfPINod.hxx`:23 - `HLRAlgo_HArray1OfPINod::HLRAlgo_HArray1OfPINod()`
-    pub fn HLRAlgo_HArray1OfPINod_ctor_int2(
-        theLower: i32,
-        theUpper: i32,
-    ) -> crate::OcctResult<*mut HLRAlgo_HArray1OfPINod>;
-    /// **Source:** `HLRAlgo_HArray1OfPINod.hxx`:23 - `HLRAlgo_HArray1OfPINod::HLRAlgo_HArray1OfPINod()`
-    pub fn HLRAlgo_HArray1OfPINod_ctor_int2_handlehlralgopolyinternalnode(
-        theLower: i32,
-        theUpper: i32,
-        theValue: *const HandleHLRAlgoPolyInternalNode,
-    ) -> crate::OcctResult<*mut HLRAlgo_HArray1OfPINod>;
-    /// **Source:** `HLRAlgo_HArray1OfPINod.hxx`:23 - `HLRAlgo_HArray1OfPINod::HLRAlgo_HArray1OfPINod()`
-    pub fn HLRAlgo_HArray1OfPINod_ctor_handlehlralgopolyinternalnode_int2_bool(
-        theBegin: *const HandleHLRAlgoPolyInternalNode,
-        theLower: i32,
-        theUpper: i32,
-        arg3: bool,
-    ) -> crate::OcctResult<*mut HLRAlgo_HArray1OfPINod>;
-    /// **Source:** `HLRAlgo_HArray1OfPINod.hxx`:23 - `HLRAlgo_HArray1OfPINod::HLRAlgo_HArray1OfPINod()`
-    pub fn HLRAlgo_HArray1OfPINod_ctor_array1ofpinod(
-        theOther: *const HLRAlgo_Array1OfPINod,
-    ) -> crate::OcctResult<*mut HLRAlgo_HArray1OfPINod>;
-    /// **Source:** `HLRAlgo_HArray1OfPINod.hxx`:23 - `HLRAlgo_HArray1OfPINod::Array1()`
-    pub fn HLRAlgo_HArray1OfPINod_array1(
-        self_: *const HLRAlgo_HArray1OfPINod,
-    ) -> crate::OcctResult<*const HLRAlgo_Array1OfPINod>;
-    /// **Source:** `HLRAlgo_HArray1OfPINod.hxx`:23 - `HLRAlgo_HArray1OfPINod::ChangeArray1()`
-    pub fn HLRAlgo_HArray1OfPINod_change_array1(
-        self_: *mut HLRAlgo_HArray1OfPINod,
-    ) -> crate::OcctResult<*mut HLRAlgo_Array1OfPINod>;
-    /// **Source:** `HLRAlgo_HArray1OfPINod.hxx`:23 - `HLRAlgo_HArray1OfPINod::DynamicType()`
-    pub fn HLRAlgo_HArray1OfPINod_dynamic_type(
-        self_: *const HLRAlgo_HArray1OfPINod,
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// **Source:** `HLRAlgo_HArray1OfPINod.hxx`:23 - `HLRAlgo_HArray1OfPINod::get_type_name()`
-    pub fn HLRAlgo_HArray1OfPINod_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
-    /// **Source:** `HLRAlgo_HArray1OfPINod.hxx`:23 - `HLRAlgo_HArray1OfPINod::get_type_descriptor()`
-    pub fn HLRAlgo_HArray1OfPINod_get_type_descriptor(
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// Upcast HLRAlgo_HArray1OfPINod to Standard_Transient
-    pub fn HLRAlgo_HArray1OfPINod_as_Standard_Transient(
-        self_: *const HLRAlgo_HArray1OfPINod,
-    ) -> crate::OcctResult<*const Standard_Transient>;
-    /// Upcast HLRAlgo_HArray1OfPINod to Standard_Transient (mutable)
-    pub fn HLRAlgo_HArray1OfPINod_as_Standard_Transient_mut(
-        self_: *mut HLRAlgo_HArray1OfPINod,
-    ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Wrap HLRAlgo_HArray1OfPINod in a Handle
-    pub fn HLRAlgo_HArray1OfPINod_to_handle(
-        obj: *mut HLRAlgo_HArray1OfPINod,
-    ) -> crate::OcctResult<*mut HandleHLRAlgoHArray1OfPINod>;
-    /// Destroy Handle<HLRAlgo_HArray1OfPINod>
-    pub fn HandleHLRAlgoHArray1OfPINod_destructor(self_: *mut HandleHLRAlgoHArray1OfPINod);
-    /// Clone Handle<HLRAlgo_HArray1OfPINod> (increments reference count)
-    pub fn HandleHLRAlgoHArray1OfPINod_clone(
-        self_: *const HandleHLRAlgoHArray1OfPINod,
-    ) -> crate::OcctResult<*mut HandleHLRAlgoHArray1OfPINod>;
-    /// Check if Handle<HLRAlgo_HArray1OfPINod> is null
-    pub fn HandleHLRAlgoHArray1OfPINod_is_null(self_: *const HandleHLRAlgoHArray1OfPINod) -> bool;
-    /// Dereference Handle to get *const HLRAlgo_HArray1OfPINod
-    pub fn HandleHLRAlgoHArray1OfPINod_get(
-        handle: *const HandleHLRAlgoHArray1OfPINod,
-    ) -> crate::OcctResult<*const HLRAlgo_HArray1OfPINod>;
-    /// Dereference Handle to get *mut HLRAlgo_HArray1OfPINod
-    pub fn HandleHLRAlgoHArray1OfPINod_get_mut(
-        handle: *mut HandleHLRAlgoHArray1OfPINod,
-    ) -> crate::OcctResult<*mut HLRAlgo_HArray1OfPINod>;
-    /// Upcast Handle<HLRAlgo_HArray1OfPINod> to Handle<Standard_Transient>
-    pub fn HandleHLRAlgoHArray1OfPINod_to_HandleStandardTransient(
-        self_: *const HandleHLRAlgoHArray1OfPINod,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn HLRAlgo_HArray1OfPINod_inherited_IsInstance(
-        self_: *const HLRAlgo_HArray1OfPINod,
-        theType: *const HandleStandardType,
-    ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn HLRAlgo_HArray1OfPINod_inherited_IsKind(
-        self_: *const HLRAlgo_HArray1OfPINod,
-        theType: *const HandleStandardType,
-    ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
-    pub fn HLRAlgo_HArray1OfPINod_inherited_This(
-        self_: *const HLRAlgo_HArray1OfPINod,
-    ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
-    pub fn HLRAlgo_HArray1OfPINod_inherited_GetRefCount(
-        self_: *const HLRAlgo_HArray1OfPINod,
-    ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
-    pub fn HLRAlgo_HArray1OfPINod_inherited_IncrementRefCounter(
-        self_: *mut HLRAlgo_HArray1OfPINod,
-    ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
-    pub fn HLRAlgo_HArray1OfPINod_inherited_DecrementRefCounter(
-        self_: *mut HLRAlgo_HArray1OfPINod,
-    ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
-    pub fn HLRAlgo_HArray1OfPINod_inherited_Delete(
-        self_: *const HLRAlgo_HArray1OfPINod,
-    ) -> *const std::ffi::c_char;
-    // ======================== HLRAlgo_HArray1OfPISeg ========================
-    pub fn HLRAlgo_HArray1OfPISeg_destructor(self_: *mut HLRAlgo_HArray1OfPISeg);
-    /// **Source:** `HLRAlgo_HArray1OfPISeg.hxx`:23 - `HLRAlgo_HArray1OfPISeg::HLRAlgo_HArray1OfPISeg()`
-    pub fn HLRAlgo_HArray1OfPISeg_ctor() -> crate::OcctResult<*mut HLRAlgo_HArray1OfPISeg>;
-    /// **Source:** `HLRAlgo_HArray1OfPISeg.hxx`:23 - `HLRAlgo_HArray1OfPISeg::HLRAlgo_HArray1OfPISeg()`
-    pub fn HLRAlgo_HArray1OfPISeg_ctor_int2(
-        theLower: i32,
-        theUpper: i32,
-    ) -> crate::OcctResult<*mut HLRAlgo_HArray1OfPISeg>;
-    /// **Source:** `HLRAlgo_HArray1OfPISeg.hxx`:23 - `HLRAlgo_HArray1OfPISeg::HLRAlgo_HArray1OfPISeg()`
-    pub fn HLRAlgo_HArray1OfPISeg_ctor_int2_polyinternalsegment(
-        theLower: i32,
-        theUpper: i32,
-        theValue: *const HLRAlgo_PolyInternalSegment,
-    ) -> crate::OcctResult<*mut HLRAlgo_HArray1OfPISeg>;
-    /// **Source:** `HLRAlgo_HArray1OfPISeg.hxx`:23 - `HLRAlgo_HArray1OfPISeg::HLRAlgo_HArray1OfPISeg()`
-    pub fn HLRAlgo_HArray1OfPISeg_ctor_polyinternalsegment_int2_bool(
-        theBegin: *const HLRAlgo_PolyInternalSegment,
-        theLower: i32,
-        theUpper: i32,
-        arg3: bool,
-    ) -> crate::OcctResult<*mut HLRAlgo_HArray1OfPISeg>;
-    /// **Source:** `HLRAlgo_HArray1OfPISeg.hxx`:23 - `HLRAlgo_HArray1OfPISeg::HLRAlgo_HArray1OfPISeg()`
-    pub fn HLRAlgo_HArray1OfPISeg_ctor_array1ofpiseg(
-        theOther: *const HLRAlgo_Array1OfPISeg,
-    ) -> crate::OcctResult<*mut HLRAlgo_HArray1OfPISeg>;
-    /// **Source:** `HLRAlgo_HArray1OfPISeg.hxx`:23 - `HLRAlgo_HArray1OfPISeg::Array1()`
-    pub fn HLRAlgo_HArray1OfPISeg_array1(
-        self_: *const HLRAlgo_HArray1OfPISeg,
-    ) -> crate::OcctResult<*const HLRAlgo_Array1OfPISeg>;
-    /// **Source:** `HLRAlgo_HArray1OfPISeg.hxx`:23 - `HLRAlgo_HArray1OfPISeg::ChangeArray1()`
-    pub fn HLRAlgo_HArray1OfPISeg_change_array1(
-        self_: *mut HLRAlgo_HArray1OfPISeg,
-    ) -> crate::OcctResult<*mut HLRAlgo_Array1OfPISeg>;
-    /// **Source:** `HLRAlgo_HArray1OfPISeg.hxx`:23 - `HLRAlgo_HArray1OfPISeg::DynamicType()`
-    pub fn HLRAlgo_HArray1OfPISeg_dynamic_type(
-        self_: *const HLRAlgo_HArray1OfPISeg,
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// **Source:** `HLRAlgo_HArray1OfPISeg.hxx`:23 - `HLRAlgo_HArray1OfPISeg::get_type_name()`
-    pub fn HLRAlgo_HArray1OfPISeg_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
-    /// **Source:** `HLRAlgo_HArray1OfPISeg.hxx`:23 - `HLRAlgo_HArray1OfPISeg::get_type_descriptor()`
-    pub fn HLRAlgo_HArray1OfPISeg_get_type_descriptor(
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// Upcast HLRAlgo_HArray1OfPISeg to Standard_Transient
-    pub fn HLRAlgo_HArray1OfPISeg_as_Standard_Transient(
-        self_: *const HLRAlgo_HArray1OfPISeg,
-    ) -> crate::OcctResult<*const Standard_Transient>;
-    /// Upcast HLRAlgo_HArray1OfPISeg to Standard_Transient (mutable)
-    pub fn HLRAlgo_HArray1OfPISeg_as_Standard_Transient_mut(
-        self_: *mut HLRAlgo_HArray1OfPISeg,
-    ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Wrap HLRAlgo_HArray1OfPISeg in a Handle
-    pub fn HLRAlgo_HArray1OfPISeg_to_handle(
-        obj: *mut HLRAlgo_HArray1OfPISeg,
-    ) -> crate::OcctResult<*mut HandleHLRAlgoHArray1OfPISeg>;
-    /// Destroy Handle<HLRAlgo_HArray1OfPISeg>
-    pub fn HandleHLRAlgoHArray1OfPISeg_destructor(self_: *mut HandleHLRAlgoHArray1OfPISeg);
-    /// Clone Handle<HLRAlgo_HArray1OfPISeg> (increments reference count)
-    pub fn HandleHLRAlgoHArray1OfPISeg_clone(
-        self_: *const HandleHLRAlgoHArray1OfPISeg,
-    ) -> crate::OcctResult<*mut HandleHLRAlgoHArray1OfPISeg>;
-    /// Check if Handle<HLRAlgo_HArray1OfPISeg> is null
-    pub fn HandleHLRAlgoHArray1OfPISeg_is_null(self_: *const HandleHLRAlgoHArray1OfPISeg) -> bool;
-    /// Dereference Handle to get *const HLRAlgo_HArray1OfPISeg
-    pub fn HandleHLRAlgoHArray1OfPISeg_get(
-        handle: *const HandleHLRAlgoHArray1OfPISeg,
-    ) -> crate::OcctResult<*const HLRAlgo_HArray1OfPISeg>;
-    /// Dereference Handle to get *mut HLRAlgo_HArray1OfPISeg
-    pub fn HandleHLRAlgoHArray1OfPISeg_get_mut(
-        handle: *mut HandleHLRAlgoHArray1OfPISeg,
-    ) -> crate::OcctResult<*mut HLRAlgo_HArray1OfPISeg>;
-    /// Upcast Handle<HLRAlgo_HArray1OfPISeg> to Handle<Standard_Transient>
-    pub fn HandleHLRAlgoHArray1OfPISeg_to_HandleStandardTransient(
-        self_: *const HandleHLRAlgoHArray1OfPISeg,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn HLRAlgo_HArray1OfPISeg_inherited_IsInstance(
-        self_: *const HLRAlgo_HArray1OfPISeg,
-        theType: *const HandleStandardType,
-    ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn HLRAlgo_HArray1OfPISeg_inherited_IsKind(
-        self_: *const HLRAlgo_HArray1OfPISeg,
-        theType: *const HandleStandardType,
-    ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
-    pub fn HLRAlgo_HArray1OfPISeg_inherited_This(
-        self_: *const HLRAlgo_HArray1OfPISeg,
-    ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
-    pub fn HLRAlgo_HArray1OfPISeg_inherited_GetRefCount(
-        self_: *const HLRAlgo_HArray1OfPISeg,
-    ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
-    pub fn HLRAlgo_HArray1OfPISeg_inherited_IncrementRefCounter(
-        self_: *mut HLRAlgo_HArray1OfPISeg,
-    ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
-    pub fn HLRAlgo_HArray1OfPISeg_inherited_DecrementRefCounter(
-        self_: *mut HLRAlgo_HArray1OfPISeg,
-    ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
-    pub fn HLRAlgo_HArray1OfPISeg_inherited_Delete(
-        self_: *const HLRAlgo_HArray1OfPISeg,
-    ) -> *const std::ffi::c_char;
-    // ======================== HLRAlgo_HArray1OfTData ========================
-    pub fn HLRAlgo_HArray1OfTData_destructor(self_: *mut HLRAlgo_HArray1OfTData);
-    /// **Source:** `HLRAlgo_HArray1OfTData.hxx`:23 - `HLRAlgo_HArray1OfTData::HLRAlgo_HArray1OfTData()`
-    pub fn HLRAlgo_HArray1OfTData_ctor() -> crate::OcctResult<*mut HLRAlgo_HArray1OfTData>;
-    /// **Source:** `HLRAlgo_HArray1OfTData.hxx`:23 - `HLRAlgo_HArray1OfTData::HLRAlgo_HArray1OfTData()`
-    pub fn HLRAlgo_HArray1OfTData_ctor_int2(
-        theLower: i32,
-        theUpper: i32,
-    ) -> crate::OcctResult<*mut HLRAlgo_HArray1OfTData>;
-    /// **Source:** `HLRAlgo_HArray1OfTData.hxx`:23 - `HLRAlgo_HArray1OfTData::HLRAlgo_HArray1OfTData()`
-    pub fn HLRAlgo_HArray1OfTData_ctor_int2_triangledata(
-        theLower: i32,
-        theUpper: i32,
-        theValue: *const HLRAlgo_TriangleData,
-    ) -> crate::OcctResult<*mut HLRAlgo_HArray1OfTData>;
-    /// **Source:** `HLRAlgo_HArray1OfTData.hxx`:23 - `HLRAlgo_HArray1OfTData::HLRAlgo_HArray1OfTData()`
-    pub fn HLRAlgo_HArray1OfTData_ctor_triangledata_int2_bool(
-        theBegin: *const HLRAlgo_TriangleData,
-        theLower: i32,
-        theUpper: i32,
-        arg3: bool,
-    ) -> crate::OcctResult<*mut HLRAlgo_HArray1OfTData>;
-    /// **Source:** `HLRAlgo_HArray1OfTData.hxx`:23 - `HLRAlgo_HArray1OfTData::HLRAlgo_HArray1OfTData()`
-    pub fn HLRAlgo_HArray1OfTData_ctor_array1oftdata(
-        theOther: *const HLRAlgo_Array1OfTData,
-    ) -> crate::OcctResult<*mut HLRAlgo_HArray1OfTData>;
-    /// **Source:** `HLRAlgo_HArray1OfTData.hxx`:23 - `HLRAlgo_HArray1OfTData::Array1()`
-    pub fn HLRAlgo_HArray1OfTData_array1(
-        self_: *const HLRAlgo_HArray1OfTData,
-    ) -> crate::OcctResult<*const HLRAlgo_Array1OfTData>;
-    /// **Source:** `HLRAlgo_HArray1OfTData.hxx`:23 - `HLRAlgo_HArray1OfTData::ChangeArray1()`
-    pub fn HLRAlgo_HArray1OfTData_change_array1(
-        self_: *mut HLRAlgo_HArray1OfTData,
-    ) -> crate::OcctResult<*mut HLRAlgo_Array1OfTData>;
-    /// **Source:** `HLRAlgo_HArray1OfTData.hxx`:23 - `HLRAlgo_HArray1OfTData::DynamicType()`
-    pub fn HLRAlgo_HArray1OfTData_dynamic_type(
-        self_: *const HLRAlgo_HArray1OfTData,
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// **Source:** `HLRAlgo_HArray1OfTData.hxx`:23 - `HLRAlgo_HArray1OfTData::get_type_name()`
-    pub fn HLRAlgo_HArray1OfTData_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
-    /// **Source:** `HLRAlgo_HArray1OfTData.hxx`:23 - `HLRAlgo_HArray1OfTData::get_type_descriptor()`
-    pub fn HLRAlgo_HArray1OfTData_get_type_descriptor(
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// Upcast HLRAlgo_HArray1OfTData to Standard_Transient
-    pub fn HLRAlgo_HArray1OfTData_as_Standard_Transient(
-        self_: *const HLRAlgo_HArray1OfTData,
-    ) -> crate::OcctResult<*const Standard_Transient>;
-    /// Upcast HLRAlgo_HArray1OfTData to Standard_Transient (mutable)
-    pub fn HLRAlgo_HArray1OfTData_as_Standard_Transient_mut(
-        self_: *mut HLRAlgo_HArray1OfTData,
-    ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Wrap HLRAlgo_HArray1OfTData in a Handle
-    pub fn HLRAlgo_HArray1OfTData_to_handle(
-        obj: *mut HLRAlgo_HArray1OfTData,
-    ) -> crate::OcctResult<*mut HandleHLRAlgoHArray1OfTData>;
-    /// Destroy Handle<HLRAlgo_HArray1OfTData>
-    pub fn HandleHLRAlgoHArray1OfTData_destructor(self_: *mut HandleHLRAlgoHArray1OfTData);
-    /// Clone Handle<HLRAlgo_HArray1OfTData> (increments reference count)
-    pub fn HandleHLRAlgoHArray1OfTData_clone(
-        self_: *const HandleHLRAlgoHArray1OfTData,
-    ) -> crate::OcctResult<*mut HandleHLRAlgoHArray1OfTData>;
-    /// Check if Handle<HLRAlgo_HArray1OfTData> is null
-    pub fn HandleHLRAlgoHArray1OfTData_is_null(self_: *const HandleHLRAlgoHArray1OfTData) -> bool;
-    /// Dereference Handle to get *const HLRAlgo_HArray1OfTData
-    pub fn HandleHLRAlgoHArray1OfTData_get(
-        handle: *const HandleHLRAlgoHArray1OfTData,
-    ) -> crate::OcctResult<*const HLRAlgo_HArray1OfTData>;
-    /// Dereference Handle to get *mut HLRAlgo_HArray1OfTData
-    pub fn HandleHLRAlgoHArray1OfTData_get_mut(
-        handle: *mut HandleHLRAlgoHArray1OfTData,
-    ) -> crate::OcctResult<*mut HLRAlgo_HArray1OfTData>;
-    /// Upcast Handle<HLRAlgo_HArray1OfTData> to Handle<Standard_Transient>
-    pub fn HandleHLRAlgoHArray1OfTData_to_HandleStandardTransient(
-        self_: *const HandleHLRAlgoHArray1OfTData,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn HLRAlgo_HArray1OfTData_inherited_IsInstance(
-        self_: *const HLRAlgo_HArray1OfTData,
-        theType: *const HandleStandardType,
-    ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn HLRAlgo_HArray1OfTData_inherited_IsKind(
-        self_: *const HLRAlgo_HArray1OfTData,
-        theType: *const HandleStandardType,
-    ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
-    pub fn HLRAlgo_HArray1OfTData_inherited_This(
-        self_: *const HLRAlgo_HArray1OfTData,
-    ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
-    pub fn HLRAlgo_HArray1OfTData_inherited_GetRefCount(
-        self_: *const HLRAlgo_HArray1OfTData,
-    ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
-    pub fn HLRAlgo_HArray1OfTData_inherited_IncrementRefCounter(
-        self_: *mut HLRAlgo_HArray1OfTData,
-    ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
-    pub fn HLRAlgo_HArray1OfTData_inherited_DecrementRefCounter(
-        self_: *mut HLRAlgo_HArray1OfTData,
-    ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
-    pub fn HLRAlgo_HArray1OfTData_inherited_Delete(
-        self_: *const HLRAlgo_HArray1OfTData,
-    ) -> *const std::ffi::c_char;
     // ======================== HLRAlgo_Interference ========================
     pub fn HLRAlgo_Interference_destructor(self_: *mut HLRAlgo_Interference);
     /// **Source:** `HLRAlgo_Interference.hxx`:34 - `HLRAlgo_Interference::HLRAlgo_Interference()`
@@ -2385,32 +1870,24 @@ unsafe extern "C" {
         -> crate::OcctResult<i32>;
     // ======================== HLRAlgo_PolyAlgo ========================
     pub fn HLRAlgo_PolyAlgo_destructor(self_: *mut HLRAlgo_PolyAlgo);
-    /// **Source:** `HLRAlgo_PolyAlgo.hxx`:34 - `HLRAlgo_PolyAlgo::HLRAlgo_PolyAlgo()`
+    /// **Source:** `HLRAlgo_PolyAlgo.hxx`:32 - `HLRAlgo_PolyAlgo::HLRAlgo_PolyAlgo()`
     pub fn HLRAlgo_PolyAlgo_ctor() -> crate::OcctResult<*mut HLRAlgo_PolyAlgo>;
-    /// **Source:** `HLRAlgo_PolyAlgo.hxx`:36 - `HLRAlgo_PolyAlgo::Init()`
+    /// **Source:** `HLRAlgo_PolyAlgo.hxx`:34 - `HLRAlgo_PolyAlgo::Init()`
     pub fn HLRAlgo_PolyAlgo_init(
         self_: *mut HLRAlgo_PolyAlgo,
         theNbShells: i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `HLRAlgo_PolyAlgo.hxx`:38 - `HLRAlgo_PolyAlgo::PolyShell()`
-    pub fn HLRAlgo_PolyAlgo_poly_shell(
-        self_: *const HLRAlgo_PolyAlgo,
-    ) -> crate::OcctResult<*const NCollection_Array1_opencascade_handle_HLRAlgo_PolyShellData>;
-    /// **Source:** `HLRAlgo_PolyAlgo.hxx`:40 - `HLRAlgo_PolyAlgo::ChangePolyShell()`
-    pub fn HLRAlgo_PolyAlgo_change_poly_shell(
-        self_: *mut HLRAlgo_PolyAlgo,
-    ) -> crate::OcctResult<*mut NCollection_Array1_opencascade_handle_HLRAlgo_PolyShellData>;
-    /// **Source:** `HLRAlgo_PolyAlgo.hxx`:42 - `HLRAlgo_PolyAlgo::Clear()`
+    /// **Source:** `HLRAlgo_PolyAlgo.hxx`:43 - `HLRAlgo_PolyAlgo::Clear()`
     pub fn HLRAlgo_PolyAlgo_clear(self_: *mut HLRAlgo_PolyAlgo) -> *const std::ffi::c_char;
-    /// **Source:** `HLRAlgo_PolyAlgo.hxx`:45 - `HLRAlgo_PolyAlgo::Update()`
+    /// **Source:** `HLRAlgo_PolyAlgo.hxx`:46 - `HLRAlgo_PolyAlgo::Update()`
     pub fn HLRAlgo_PolyAlgo_update(self_: *mut HLRAlgo_PolyAlgo) -> *const std::ffi::c_char;
-    /// **Source:** `HLRAlgo_PolyAlgo.hxx`:47 - `HLRAlgo_PolyAlgo::InitHide()`
+    /// **Source:** `HLRAlgo_PolyAlgo.hxx`:48 - `HLRAlgo_PolyAlgo::InitHide()`
     pub fn HLRAlgo_PolyAlgo_init_hide(self_: *mut HLRAlgo_PolyAlgo) -> *const std::ffi::c_char;
-    /// **Source:** `HLRAlgo_PolyAlgo.hxx`:53 - `HLRAlgo_PolyAlgo::MoreHide()`
+    /// **Source:** `HLRAlgo_PolyAlgo.hxx`:54 - `HLRAlgo_PolyAlgo::MoreHide()`
     pub fn HLRAlgo_PolyAlgo_more_hide(self_: *const HLRAlgo_PolyAlgo) -> crate::OcctResult<bool>;
-    /// **Source:** `HLRAlgo_PolyAlgo.hxx`:55 - `HLRAlgo_PolyAlgo::NextHide()`
+    /// **Source:** `HLRAlgo_PolyAlgo.hxx`:56 - `HLRAlgo_PolyAlgo::NextHide()`
     pub fn HLRAlgo_PolyAlgo_next_hide(self_: *mut HLRAlgo_PolyAlgo) -> *const std::ffi::c_char;
-    /// **Source:** `HLRAlgo_PolyAlgo.hxx`:58 - `HLRAlgo_PolyAlgo::Hide()`
+    /// **Source:** `HLRAlgo_PolyAlgo.hxx`:59 - `HLRAlgo_PolyAlgo::Hide()`
     pub fn HLRAlgo_PolyAlgo_hide(
         self_: *mut HLRAlgo_PolyAlgo,
         status: *mut HLRAlgo_EdgeStatus,
@@ -2420,13 +1897,13 @@ unsafe extern "C" {
         outl: *mut bool,
         intl: *mut bool,
     ) -> crate::OcctResult<*mut HLRAlgo_BiPoint_PointsT>;
-    /// **Source:** `HLRAlgo_PolyAlgo.hxx`:65 - `HLRAlgo_PolyAlgo::InitShow()`
+    /// **Source:** `HLRAlgo_PolyAlgo.hxx`:66 - `HLRAlgo_PolyAlgo::InitShow()`
     pub fn HLRAlgo_PolyAlgo_init_show(self_: *mut HLRAlgo_PolyAlgo) -> *const std::ffi::c_char;
-    /// **Source:** `HLRAlgo_PolyAlgo.hxx`:71 - `HLRAlgo_PolyAlgo::MoreShow()`
+    /// **Source:** `HLRAlgo_PolyAlgo.hxx`:72 - `HLRAlgo_PolyAlgo::MoreShow()`
     pub fn HLRAlgo_PolyAlgo_more_show(self_: *const HLRAlgo_PolyAlgo) -> crate::OcctResult<bool>;
-    /// **Source:** `HLRAlgo_PolyAlgo.hxx`:73 - `HLRAlgo_PolyAlgo::NextShow()`
+    /// **Source:** `HLRAlgo_PolyAlgo.hxx`:74 - `HLRAlgo_PolyAlgo::NextShow()`
     pub fn HLRAlgo_PolyAlgo_next_show(self_: *mut HLRAlgo_PolyAlgo) -> *const std::ffi::c_char;
-    /// **Source:** `HLRAlgo_PolyAlgo.hxx`:76 - `HLRAlgo_PolyAlgo::Show()`
+    /// **Source:** `HLRAlgo_PolyAlgo.hxx`:77 - `HLRAlgo_PolyAlgo::Show()`
     pub fn HLRAlgo_PolyAlgo_show(
         self_: *mut HLRAlgo_PolyAlgo,
         Index: *mut i32,
@@ -2435,14 +1912,14 @@ unsafe extern "C" {
         outl: *mut bool,
         intl: *mut bool,
     ) -> crate::OcctResult<*mut HLRAlgo_BiPoint_PointsT>;
-    /// **Source:** `HLRAlgo_PolyAlgo.hxx`:82 - `HLRAlgo_PolyAlgo::DynamicType()`
+    /// **Source:** `HLRAlgo_PolyAlgo.hxx`:83 - `HLRAlgo_PolyAlgo::DynamicType()`
     pub fn HLRAlgo_PolyAlgo_dynamic_type(
         self_: *const HLRAlgo_PolyAlgo,
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// **Source:** `HLRAlgo_PolyAlgo.hxx`:82 - `HLRAlgo_PolyAlgo::get_type_name()`
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
+    /// **Source:** `HLRAlgo_PolyAlgo.hxx`:83 - `HLRAlgo_PolyAlgo::get_type_name()`
     pub fn HLRAlgo_PolyAlgo_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
-    /// **Source:** `HLRAlgo_PolyAlgo.hxx`:82 - `HLRAlgo_PolyAlgo::get_type_descriptor()`
-    pub fn HLRAlgo_PolyAlgo_get_type_descriptor() -> crate::OcctResult<*const HandleStandardType>;
+    /// **Source:** `HLRAlgo_PolyAlgo.hxx`:83 - `HLRAlgo_PolyAlgo::get_type_descriptor()`
+    pub fn HLRAlgo_PolyAlgo_get_type_descriptor() -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast HLRAlgo_PolyAlgo to Standard_Transient
     pub fn HLRAlgo_PolyAlgo_as_Standard_Transient(
         self_: *const HLRAlgo_PolyAlgo,
@@ -2454,103 +1931,103 @@ unsafe extern "C" {
     /// Wrap HLRAlgo_PolyAlgo in a Handle
     pub fn HLRAlgo_PolyAlgo_to_handle(
         obj: *mut HLRAlgo_PolyAlgo,
-    ) -> crate::OcctResult<*mut HandleHLRAlgoPolyAlgo>;
+    ) -> crate::OcctResult<*mut Handle_HLRAlgo_PolyAlgo>;
     /// Destroy Handle<HLRAlgo_PolyAlgo>
-    pub fn HandleHLRAlgoPolyAlgo_destructor(self_: *mut HandleHLRAlgoPolyAlgo);
+    pub fn Handle_HLRAlgo_PolyAlgo_destructor(self_: *mut Handle_HLRAlgo_PolyAlgo);
     /// Clone Handle<HLRAlgo_PolyAlgo> (increments reference count)
-    pub fn HandleHLRAlgoPolyAlgo_clone(
-        self_: *const HandleHLRAlgoPolyAlgo,
-    ) -> crate::OcctResult<*mut HandleHLRAlgoPolyAlgo>;
+    pub fn Handle_HLRAlgo_PolyAlgo_clone(
+        self_: *const Handle_HLRAlgo_PolyAlgo,
+    ) -> crate::OcctResult<*mut Handle_HLRAlgo_PolyAlgo>;
     /// Check if Handle<HLRAlgo_PolyAlgo> is null
-    pub fn HandleHLRAlgoPolyAlgo_is_null(self_: *const HandleHLRAlgoPolyAlgo) -> bool;
+    pub fn Handle_HLRAlgo_PolyAlgo_is_null(self_: *const Handle_HLRAlgo_PolyAlgo) -> bool;
     /// Dereference Handle to get *const HLRAlgo_PolyAlgo
-    pub fn HandleHLRAlgoPolyAlgo_get(
-        handle: *const HandleHLRAlgoPolyAlgo,
+    pub fn Handle_HLRAlgo_PolyAlgo_get(
+        handle: *const Handle_HLRAlgo_PolyAlgo,
     ) -> crate::OcctResult<*const HLRAlgo_PolyAlgo>;
     /// Dereference Handle to get *mut HLRAlgo_PolyAlgo
-    pub fn HandleHLRAlgoPolyAlgo_get_mut(
-        handle: *mut HandleHLRAlgoPolyAlgo,
+    pub fn Handle_HLRAlgo_PolyAlgo_get_mut(
+        handle: *mut Handle_HLRAlgo_PolyAlgo,
     ) -> crate::OcctResult<*mut HLRAlgo_PolyAlgo>;
     /// Upcast Handle<HLRAlgo_PolyAlgo> to Handle<Standard_Transient>
-    pub fn HandleHLRAlgoPolyAlgo_to_HandleStandardTransient(
-        self_: *const HandleHLRAlgoPolyAlgo,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn Handle_HLRAlgo_PolyAlgo_to_Handle_Standard_Transient(
+        self_: *const Handle_HLRAlgo_PolyAlgo,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn HLRAlgo_PolyAlgo_inherited_IsInstance(
         self_: *const HLRAlgo_PolyAlgo,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn HLRAlgo_PolyAlgo_inherited_IsKind(
         self_: *const HLRAlgo_PolyAlgo,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn HLRAlgo_PolyAlgo_inherited_This(
         self_: *const HLRAlgo_PolyAlgo,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn HLRAlgo_PolyAlgo_inherited_GetRefCount(
         self_: *const HLRAlgo_PolyAlgo,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn HLRAlgo_PolyAlgo_inherited_IncrementRefCounter(
         self_: *mut HLRAlgo_PolyAlgo,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn HLRAlgo_PolyAlgo_inherited_DecrementRefCounter(
         self_: *mut HLRAlgo_PolyAlgo,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn HLRAlgo_PolyAlgo_inherited_Delete(
         self_: *const HLRAlgo_PolyAlgo,
     ) -> *const std::ffi::c_char;
     // ======================== HLRAlgo_PolyData ========================
     pub fn HLRAlgo_PolyData_destructor(self_: *mut HLRAlgo_PolyData);
-    /// **Source:** `HLRAlgo_PolyData.hxx`:92 - `HLRAlgo_PolyData::HLRAlgo_PolyData()`
+    /// **Source:** `HLRAlgo_PolyData.hxx`:59 - `HLRAlgo_PolyData::HLRAlgo_PolyData()`
     pub fn HLRAlgo_PolyData_ctor() -> crate::OcctResult<*mut HLRAlgo_PolyData>;
-    /// **Source:** `HLRAlgo_PolyData.hxx`:94 - `HLRAlgo_PolyData::HNodes()`
+    /// **Source:** `HLRAlgo_PolyData.hxx`:61 - `HLRAlgo_PolyData::HNodes()`
     pub fn HLRAlgo_PolyData_h_nodes(
         self_: *mut HLRAlgo_PolyData,
-        HNodes: *const HandleTColgpHArray1OfXYZ,
+        HNodes: *const Handle_NCollection_HArray1_gp_XYZ,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `HLRAlgo_PolyData.hxx`:96 - `HLRAlgo_PolyData::HTData()`
+    /// **Source:** `HLRAlgo_PolyData.hxx`:63 - `HLRAlgo_PolyData::HTData()`
     pub fn HLRAlgo_PolyData_ht_data(
         self_: *mut HLRAlgo_PolyData,
-        HTData: *const HandleHLRAlgoHArray1OfTData,
+        HTData: *const Handle_NCollection_HArray1_HLRAlgo_TriangleData,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `HLRAlgo_PolyData.hxx`:98 - `HLRAlgo_PolyData::HPHDat()`
+    /// **Source:** `HLRAlgo_PolyData.hxx`:65 - `HLRAlgo_PolyData::HPHDat()`
     pub fn HLRAlgo_PolyData_hph_dat(
         self_: *mut HLRAlgo_PolyData,
-        HPHDat: *const HandleHLRAlgoHArray1OfPHDat,
+        HPHDat: *const Handle_NCollection_HArray1_HLRAlgo_PolyHidingData,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `HLRAlgo_PolyData.hxx`:100 - `HLRAlgo_PolyData::FaceIndex()`
+    /// **Source:** `HLRAlgo_PolyData.hxx`:68 - `HLRAlgo_PolyData::FaceIndex()`
     pub fn HLRAlgo_PolyData_face_index_int(
         self_: *mut HLRAlgo_PolyData,
         I: i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `HLRAlgo_PolyData.hxx`:102 - `HLRAlgo_PolyData::FaceIndex()`
+    /// **Source:** `HLRAlgo_PolyData.hxx`:70 - `HLRAlgo_PolyData::FaceIndex()`
     pub fn HLRAlgo_PolyData_face_index(self_: *const HLRAlgo_PolyData) -> crate::OcctResult<i32>;
-    /// **Source:** `HLRAlgo_PolyData.hxx`:104 - `HLRAlgo_PolyData::Nodes()`
+    /// **Source:** `HLRAlgo_PolyData.hxx`:72 - `HLRAlgo_PolyData::Nodes()`
     pub fn HLRAlgo_PolyData_nodes(
         self_: *mut HLRAlgo_PolyData,
-    ) -> crate::OcctResult<*mut TColgp_Array1OfXYZ>;
-    /// **Source:** `HLRAlgo_PolyData.hxx`:106 - `HLRAlgo_PolyData::TData()`
+    ) -> crate::OcctResult<*mut NCollection_Array1_gp_XYZ>;
+    /// **Source:** `HLRAlgo_PolyData.hxx`:74 - `HLRAlgo_PolyData::TData()`
     pub fn HLRAlgo_PolyData_t_data(
         self_: *mut HLRAlgo_PolyData,
-    ) -> crate::OcctResult<*mut HLRAlgo_Array1OfTData>;
-    /// **Source:** `HLRAlgo_PolyData.hxx`:108 - `HLRAlgo_PolyData::PHDat()`
+    ) -> crate::OcctResult<*mut NCollection_Array1_HLRAlgo_TriangleData>;
+    /// **Source:** `HLRAlgo_PolyData.hxx`:76 - `HLRAlgo_PolyData::PHDat()`
     pub fn HLRAlgo_PolyData_ph_dat(
         self_: *mut HLRAlgo_PolyData,
-    ) -> crate::OcctResult<*mut HLRAlgo_Array1OfPHDat>;
-    /// **Source:** `HLRAlgo_PolyData.hxx`:110 - `HLRAlgo_PolyData::UpdateGlobalMinMax()`
+    ) -> crate::OcctResult<*mut NCollection_Array1_HLRAlgo_PolyHidingData>;
+    /// **Source:** `HLRAlgo_PolyData.hxx`:78 - `HLRAlgo_PolyData::UpdateGlobalMinMax()`
     pub fn HLRAlgo_PolyData_update_global_min_max(
         self_: *mut HLRAlgo_PolyData,
-        theBox: *mut HLRAlgo_PolyData_Box,
+        theBox: *mut Bnd_Box,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `HLRAlgo_PolyData.hxx`:112 - `HLRAlgo_PolyData::Hiding()`
+    /// **Source:** `HLRAlgo_PolyData.hxx`:80 - `HLRAlgo_PolyData::Hiding()`
     pub fn HLRAlgo_PolyData_hiding(self_: *const HLRAlgo_PolyData) -> crate::OcctResult<bool>;
-    /// **Source:** `HLRAlgo_PolyData.hxx`:115 - `HLRAlgo_PolyData::HideByPolyData()`
+    /// **Source:** `HLRAlgo_PolyData.hxx`:83 - `HLRAlgo_PolyData::HideByPolyData()`
     pub fn HLRAlgo_PolyData_hide_by_poly_data(
         self_: *mut HLRAlgo_PolyData,
         thePoints: *const HLRAlgo_BiPoint_PointsT,
@@ -2559,18 +2036,18 @@ unsafe extern "C" {
         HidingShell: bool,
         status: *mut HLRAlgo_EdgeStatus,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `HLRAlgo_PolyData.hxx`:121 - `HLRAlgo_PolyData::Indices()`
+    /// **Source:** `HLRAlgo_PolyData.hxx`:89 - `HLRAlgo_PolyData::Indices()`
     pub fn HLRAlgo_PolyData_indices(
         self_: *mut HLRAlgo_PolyData,
     ) -> crate::OcctResult<*mut HLRAlgo_PolyData_FaceIndices>;
-    /// **Source:** `HLRAlgo_PolyData.hxx`:123 - `HLRAlgo_PolyData::DynamicType()`
+    /// **Source:** `HLRAlgo_PolyData.hxx`:91 - `HLRAlgo_PolyData::DynamicType()`
     pub fn HLRAlgo_PolyData_dynamic_type(
         self_: *const HLRAlgo_PolyData,
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// **Source:** `HLRAlgo_PolyData.hxx`:123 - `HLRAlgo_PolyData::get_type_name()`
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
+    /// **Source:** `HLRAlgo_PolyData.hxx`:91 - `HLRAlgo_PolyData::get_type_name()`
     pub fn HLRAlgo_PolyData_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
-    /// **Source:** `HLRAlgo_PolyData.hxx`:123 - `HLRAlgo_PolyData::get_type_descriptor()`
-    pub fn HLRAlgo_PolyData_get_type_descriptor() -> crate::OcctResult<*const HandleStandardType>;
+    /// **Source:** `HLRAlgo_PolyData.hxx`:91 - `HLRAlgo_PolyData::get_type_descriptor()`
+    pub fn HLRAlgo_PolyData_get_type_descriptor() -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast HLRAlgo_PolyData to Standard_Transient
     pub fn HLRAlgo_PolyData_as_Standard_Transient(
         self_: *const HLRAlgo_PolyData,
@@ -2582,54 +2059,54 @@ unsafe extern "C" {
     /// Wrap HLRAlgo_PolyData in a Handle
     pub fn HLRAlgo_PolyData_to_handle(
         obj: *mut HLRAlgo_PolyData,
-    ) -> crate::OcctResult<*mut HandleHLRAlgoPolyData>;
+    ) -> crate::OcctResult<*mut Handle_HLRAlgo_PolyData>;
     /// Destroy Handle<HLRAlgo_PolyData>
-    pub fn HandleHLRAlgoPolyData_destructor(self_: *mut HandleHLRAlgoPolyData);
+    pub fn Handle_HLRAlgo_PolyData_destructor(self_: *mut Handle_HLRAlgo_PolyData);
     /// Clone Handle<HLRAlgo_PolyData> (increments reference count)
-    pub fn HandleHLRAlgoPolyData_clone(
-        self_: *const HandleHLRAlgoPolyData,
-    ) -> crate::OcctResult<*mut HandleHLRAlgoPolyData>;
+    pub fn Handle_HLRAlgo_PolyData_clone(
+        self_: *const Handle_HLRAlgo_PolyData,
+    ) -> crate::OcctResult<*mut Handle_HLRAlgo_PolyData>;
     /// Check if Handle<HLRAlgo_PolyData> is null
-    pub fn HandleHLRAlgoPolyData_is_null(self_: *const HandleHLRAlgoPolyData) -> bool;
+    pub fn Handle_HLRAlgo_PolyData_is_null(self_: *const Handle_HLRAlgo_PolyData) -> bool;
     /// Dereference Handle to get *const HLRAlgo_PolyData
-    pub fn HandleHLRAlgoPolyData_get(
-        handle: *const HandleHLRAlgoPolyData,
+    pub fn Handle_HLRAlgo_PolyData_get(
+        handle: *const Handle_HLRAlgo_PolyData,
     ) -> crate::OcctResult<*const HLRAlgo_PolyData>;
     /// Dereference Handle to get *mut HLRAlgo_PolyData
-    pub fn HandleHLRAlgoPolyData_get_mut(
-        handle: *mut HandleHLRAlgoPolyData,
+    pub fn Handle_HLRAlgo_PolyData_get_mut(
+        handle: *mut Handle_HLRAlgo_PolyData,
     ) -> crate::OcctResult<*mut HLRAlgo_PolyData>;
     /// Upcast Handle<HLRAlgo_PolyData> to Handle<Standard_Transient>
-    pub fn HandleHLRAlgoPolyData_to_HandleStandardTransient(
-        self_: *const HandleHLRAlgoPolyData,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn Handle_HLRAlgo_PolyData_to_Handle_Standard_Transient(
+        self_: *const Handle_HLRAlgo_PolyData,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn HLRAlgo_PolyData_inherited_IsInstance(
         self_: *const HLRAlgo_PolyData,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn HLRAlgo_PolyData_inherited_IsKind(
         self_: *const HLRAlgo_PolyData,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn HLRAlgo_PolyData_inherited_This(
         self_: *const HLRAlgo_PolyData,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn HLRAlgo_PolyData_inherited_GetRefCount(
         self_: *const HLRAlgo_PolyData,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn HLRAlgo_PolyData_inherited_IncrementRefCounter(
         self_: *mut HLRAlgo_PolyData,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn HLRAlgo_PolyData_inherited_DecrementRefCounter(
         self_: *mut HLRAlgo_PolyData,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn HLRAlgo_PolyData_inherited_Delete(
         self_: *const HLRAlgo_PolyData,
     ) -> *const std::ffi::c_char;
@@ -2640,9 +2117,6 @@ unsafe extern "C" {
     pub fn HLRAlgo_PolyData_Triangle_destructor(self_: *mut HLRAlgo_PolyData_Triangle);
     /// **Source:** `HLRAlgo_PolyData.hxx` - `HLRAlgo_PolyData_Triangle::HLRAlgo_PolyData_Triangle()`
     pub fn HLRAlgo_PolyData_Triangle_ctor() -> crate::OcctResult<*mut HLRAlgo_PolyData_Triangle>;
-    // ======================== HLRAlgo_PolyData_Box (POD) ========================
-    pub fn HLRAlgo_PolyData_Box_destructor(self_: *mut HLRAlgo_PolyData_Box);
-    pub fn HLRAlgo_PolyData_Box_sizeof() -> usize;
     // ======================== HLRAlgo_PolyHidingData ========================
     pub fn HLRAlgo_PolyHidingData_destructor(self_: *mut HLRAlgo_PolyHidingData);
     /// **Source:** `HLRAlgo_PolyHidingData.hxx`:47 - `HLRAlgo_PolyHidingData::HLRAlgo_PolyHidingData()`
@@ -2678,43 +2152,11 @@ unsafe extern "C" {
     ) -> crate::OcctResult<*mut HLRAlgo_PolyHidingData_PlaneT>;
     // ======================== HLRAlgo_PolyInternalData ========================
     pub fn HLRAlgo_PolyInternalData_destructor(self_: *mut HLRAlgo_PolyInternalData);
-    /// **Source:** `HLRAlgo_PolyInternalData.hxx`:36 - `HLRAlgo_PolyInternalData::HLRAlgo_PolyInternalData()`
+    /// **Source:** `HLRAlgo_PolyInternalData.hxx`:35 - `HLRAlgo_PolyInternalData::HLRAlgo_PolyInternalData()`
     pub fn HLRAlgo_PolyInternalData_ctor_int2(
         nbNod: i32,
         nbTri: i32,
     ) -> crate::OcctResult<*mut HLRAlgo_PolyInternalData>;
-    /// **Source:** `HLRAlgo_PolyInternalData.hxx`:39 - `HLRAlgo_PolyInternalData::UpdateLinks()`
-    pub fn HLRAlgo_PolyInternalData_update_links_array1oftdata_array1ofpiseg_array1ofpinod(
-        self_: *mut HLRAlgo_PolyInternalData,
-        theTData: *mut HLRAlgo_Array1OfTData,
-        thePISeg: *mut HLRAlgo_Array1OfPISeg,
-        thePINod: *mut HLRAlgo_Array1OfPINod,
-    ) -> *const std::ffi::c_char;
-    /// **Source:** `HLRAlgo_PolyInternalData.hxx`:43 - `HLRAlgo_PolyInternalData::AddNode()`
-    pub fn HLRAlgo_PolyInternalData_add_node(
-        self_: *mut HLRAlgo_PolyInternalData,
-        theNod1RValues: *mut HLRAlgo_PolyInternalNode_NodeData,
-        theNod2RValues: *mut HLRAlgo_PolyInternalNode_NodeData,
-        thePINod1: *mut *mut HLRAlgo_Array1OfPINod,
-        thePINod2: *mut *mut HLRAlgo_Array1OfPINod,
-        theCoef1: f64,
-        theX3: f64,
-        theY3: f64,
-        theZ3: f64,
-    ) -> crate::OcctResult<i32>;
-    /// **Source:** `HLRAlgo_PolyInternalData.hxx`:52 - `HLRAlgo_PolyInternalData::UpdateLinks()`
-    pub fn HLRAlgo_PolyInternalData_update_links_int3_array1oftdataptr2_array1ofpisegptr2_array1ofpinodptr2(
-        self_: *mut HLRAlgo_PolyInternalData,
-        theIp1: i32,
-        theIp2: i32,
-        theIp3: i32,
-        theTData1: *mut *mut HLRAlgo_Array1OfTData,
-        theTData2: *mut *mut HLRAlgo_Array1OfTData,
-        thePISeg1: *mut *mut HLRAlgo_Array1OfPISeg,
-        thePISeg2: *mut *mut HLRAlgo_Array1OfPISeg,
-        thePINod1: *mut *mut HLRAlgo_Array1OfPINod,
-        thePINod2: *mut *mut HLRAlgo_Array1OfPINod,
-    ) -> *const std::ffi::c_char;
     /// **Source:** `HLRAlgo_PolyInternalData.hxx`:62 - `HLRAlgo_PolyInternalData::Dump()`
     pub fn HLRAlgo_PolyInternalData_dump(
         self_: *const HLRAlgo_PolyInternalData,
@@ -2722,84 +2164,74 @@ unsafe extern "C" {
     /// **Source:** `HLRAlgo_PolyInternalData.hxx`:64 - `HLRAlgo_PolyInternalData::IncTData()`
     pub fn HLRAlgo_PolyInternalData_inc_t_data(
         self_: *mut HLRAlgo_PolyInternalData,
-        TData1: *mut *mut HLRAlgo_Array1OfTData,
-        TData2: *mut *mut HLRAlgo_Array1OfTData,
+        TData1: *mut *mut NCollection_Array1_HLRAlgo_TriangleData,
+        TData2: *mut *mut NCollection_Array1_HLRAlgo_TriangleData,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `HLRAlgo_PolyInternalData.hxx`:66 - `HLRAlgo_PolyInternalData::IncPISeg()`
+    /// **Source:** `HLRAlgo_PolyInternalData.hxx`:67 - `HLRAlgo_PolyInternalData::IncPISeg()`
     pub fn HLRAlgo_PolyInternalData_inc_pi_seg(
         self_: *mut HLRAlgo_PolyInternalData,
-        PISeg1: *mut *mut HLRAlgo_Array1OfPISeg,
-        PISeg2: *mut *mut HLRAlgo_Array1OfPISeg,
+        PISeg1: *mut *mut NCollection_Array1_HLRAlgo_PolyInternalSegment,
+        PISeg2: *mut *mut NCollection_Array1_HLRAlgo_PolyInternalSegment,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `HLRAlgo_PolyInternalData.hxx`:68 - `HLRAlgo_PolyInternalData::IncPINod()`
-    pub fn HLRAlgo_PolyInternalData_inc_pi_nod(
-        self_: *mut HLRAlgo_PolyInternalData,
-        thePINod1: *mut *mut HLRAlgo_Array1OfPINod,
-        thePINod2: *mut *mut HLRAlgo_Array1OfPINod,
-    ) -> *const std::ffi::c_char;
-    /// **Source:** `HLRAlgo_PolyInternalData.hxx`:71 - `HLRAlgo_PolyInternalData::DecTData()`
+    /// **Source:** `HLRAlgo_PolyInternalData.hxx`:74 - `HLRAlgo_PolyInternalData::DecTData()`
     pub fn HLRAlgo_PolyInternalData_dec_t_data(
         self_: *mut HLRAlgo_PolyInternalData,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `HLRAlgo_PolyInternalData.hxx`:73 - `HLRAlgo_PolyInternalData::DecPISeg()`
+    /// **Source:** `HLRAlgo_PolyInternalData.hxx`:76 - `HLRAlgo_PolyInternalData::DecPISeg()`
     pub fn HLRAlgo_PolyInternalData_dec_pi_seg(
         self_: *mut HLRAlgo_PolyInternalData,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `HLRAlgo_PolyInternalData.hxx`:75 - `HLRAlgo_PolyInternalData::DecPINod()`
+    /// **Source:** `HLRAlgo_PolyInternalData.hxx`:78 - `HLRAlgo_PolyInternalData::DecPINod()`
     pub fn HLRAlgo_PolyInternalData_dec_pi_nod(
         self_: *mut HLRAlgo_PolyInternalData,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `HLRAlgo_PolyInternalData.hxx`:77 - `HLRAlgo_PolyInternalData::NbTData()`
+    /// **Source:** `HLRAlgo_PolyInternalData.hxx`:80 - `HLRAlgo_PolyInternalData::NbTData()`
     pub fn HLRAlgo_PolyInternalData_nb_t_data(
         self_: *const HLRAlgo_PolyInternalData,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `HLRAlgo_PolyInternalData.hxx`:79 - `HLRAlgo_PolyInternalData::NbPISeg()`
+    /// **Source:** `HLRAlgo_PolyInternalData.hxx`:82 - `HLRAlgo_PolyInternalData::NbPISeg()`
     pub fn HLRAlgo_PolyInternalData_nb_pi_seg(
         self_: *const HLRAlgo_PolyInternalData,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `HLRAlgo_PolyInternalData.hxx`:81 - `HLRAlgo_PolyInternalData::NbPINod()`
+    /// **Source:** `HLRAlgo_PolyInternalData.hxx`:84 - `HLRAlgo_PolyInternalData::NbPINod()`
     pub fn HLRAlgo_PolyInternalData_nb_pi_nod(
         self_: *const HLRAlgo_PolyInternalData,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `HLRAlgo_PolyInternalData.hxx`:83 - `HLRAlgo_PolyInternalData::Planar()`
+    /// **Source:** `HLRAlgo_PolyInternalData.hxx`:86 - `HLRAlgo_PolyInternalData::Planar()`
     pub fn HLRAlgo_PolyInternalData_planar(
         self_: *const HLRAlgo_PolyInternalData,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `HLRAlgo_PolyInternalData.hxx`:85 - `HLRAlgo_PolyInternalData::Planar()`
+    /// **Source:** `HLRAlgo_PolyInternalData.hxx`:88 - `HLRAlgo_PolyInternalData::Planar()`
     pub fn HLRAlgo_PolyInternalData_planar_bool(
         self_: *mut HLRAlgo_PolyInternalData,
         B: bool,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `HLRAlgo_PolyInternalData.hxx`:87 - `HLRAlgo_PolyInternalData::IntOutL()`
+    /// **Source:** `HLRAlgo_PolyInternalData.hxx`:90 - `HLRAlgo_PolyInternalData::IntOutL()`
     pub fn HLRAlgo_PolyInternalData_int_out_l(
         self_: *const HLRAlgo_PolyInternalData,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `HLRAlgo_PolyInternalData.hxx`:89 - `HLRAlgo_PolyInternalData::IntOutL()`
+    /// **Source:** `HLRAlgo_PolyInternalData.hxx`:92 - `HLRAlgo_PolyInternalData::IntOutL()`
     pub fn HLRAlgo_PolyInternalData_int_out_l_bool(
         self_: *mut HLRAlgo_PolyInternalData,
         B: bool,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `HLRAlgo_PolyInternalData.hxx`:91 - `HLRAlgo_PolyInternalData::TData()`
+    /// **Source:** `HLRAlgo_PolyInternalData.hxx`:94 - `HLRAlgo_PolyInternalData::TData()`
     pub fn HLRAlgo_PolyInternalData_t_data(
         self_: *mut HLRAlgo_PolyInternalData,
-    ) -> crate::OcctResult<*mut HLRAlgo_Array1OfTData>;
-    /// **Source:** `HLRAlgo_PolyInternalData.hxx`:93 - `HLRAlgo_PolyInternalData::PISeg()`
+    ) -> crate::OcctResult<*mut NCollection_Array1_HLRAlgo_TriangleData>;
+    /// **Source:** `HLRAlgo_PolyInternalData.hxx`:96 - `HLRAlgo_PolyInternalData::PISeg()`
     pub fn HLRAlgo_PolyInternalData_pi_seg(
         self_: *mut HLRAlgo_PolyInternalData,
-    ) -> crate::OcctResult<*mut HLRAlgo_Array1OfPISeg>;
-    /// **Source:** `HLRAlgo_PolyInternalData.hxx`:95 - `HLRAlgo_PolyInternalData::PINod()`
-    pub fn HLRAlgo_PolyInternalData_pi_nod(
-        self_: *mut HLRAlgo_PolyInternalData,
-    ) -> crate::OcctResult<*mut HLRAlgo_Array1OfPINod>;
-    /// **Source:** `HLRAlgo_PolyInternalData.hxx`:97 - `HLRAlgo_PolyInternalData::DynamicType()`
+    ) -> crate::OcctResult<*mut NCollection_Array1_HLRAlgo_PolyInternalSegment>;
+    /// **Source:** `HLRAlgo_PolyInternalData.hxx`:100 - `HLRAlgo_PolyInternalData::DynamicType()`
     pub fn HLRAlgo_PolyInternalData_dynamic_type(
         self_: *const HLRAlgo_PolyInternalData,
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// **Source:** `HLRAlgo_PolyInternalData.hxx`:97 - `HLRAlgo_PolyInternalData::get_type_name()`
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
+    /// **Source:** `HLRAlgo_PolyInternalData.hxx`:100 - `HLRAlgo_PolyInternalData::get_type_name()`
     pub fn HLRAlgo_PolyInternalData_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
-    /// **Source:** `HLRAlgo_PolyInternalData.hxx`:97 - `HLRAlgo_PolyInternalData::get_type_descriptor()`
+    /// **Source:** `HLRAlgo_PolyInternalData.hxx`:100 - `HLRAlgo_PolyInternalData::get_type_descriptor()`
     pub fn HLRAlgo_PolyInternalData_get_type_descriptor(
-    ) -> crate::OcctResult<*const HandleStandardType>;
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast HLRAlgo_PolyInternalData to Standard_Transient
     pub fn HLRAlgo_PolyInternalData_as_Standard_Transient(
         self_: *const HLRAlgo_PolyInternalData,
@@ -2811,80 +2243,80 @@ unsafe extern "C" {
     /// Wrap HLRAlgo_PolyInternalData in a Handle
     pub fn HLRAlgo_PolyInternalData_to_handle(
         obj: *mut HLRAlgo_PolyInternalData,
-    ) -> crate::OcctResult<*mut HandleHLRAlgoPolyInternalData>;
+    ) -> crate::OcctResult<*mut Handle_HLRAlgo_PolyInternalData>;
     /// Destroy Handle<HLRAlgo_PolyInternalData>
-    pub fn HandleHLRAlgoPolyInternalData_destructor(self_: *mut HandleHLRAlgoPolyInternalData);
+    pub fn Handle_HLRAlgo_PolyInternalData_destructor(self_: *mut Handle_HLRAlgo_PolyInternalData);
     /// Clone Handle<HLRAlgo_PolyInternalData> (increments reference count)
-    pub fn HandleHLRAlgoPolyInternalData_clone(
-        self_: *const HandleHLRAlgoPolyInternalData,
-    ) -> crate::OcctResult<*mut HandleHLRAlgoPolyInternalData>;
+    pub fn Handle_HLRAlgo_PolyInternalData_clone(
+        self_: *const Handle_HLRAlgo_PolyInternalData,
+    ) -> crate::OcctResult<*mut Handle_HLRAlgo_PolyInternalData>;
     /// Check if Handle<HLRAlgo_PolyInternalData> is null
-    pub fn HandleHLRAlgoPolyInternalData_is_null(
-        self_: *const HandleHLRAlgoPolyInternalData,
+    pub fn Handle_HLRAlgo_PolyInternalData_is_null(
+        self_: *const Handle_HLRAlgo_PolyInternalData,
     ) -> bool;
     /// Dereference Handle to get *const HLRAlgo_PolyInternalData
-    pub fn HandleHLRAlgoPolyInternalData_get(
-        handle: *const HandleHLRAlgoPolyInternalData,
+    pub fn Handle_HLRAlgo_PolyInternalData_get(
+        handle: *const Handle_HLRAlgo_PolyInternalData,
     ) -> crate::OcctResult<*const HLRAlgo_PolyInternalData>;
     /// Dereference Handle to get *mut HLRAlgo_PolyInternalData
-    pub fn HandleHLRAlgoPolyInternalData_get_mut(
-        handle: *mut HandleHLRAlgoPolyInternalData,
+    pub fn Handle_HLRAlgo_PolyInternalData_get_mut(
+        handle: *mut Handle_HLRAlgo_PolyInternalData,
     ) -> crate::OcctResult<*mut HLRAlgo_PolyInternalData>;
     /// Upcast Handle<HLRAlgo_PolyInternalData> to Handle<Standard_Transient>
-    pub fn HandleHLRAlgoPolyInternalData_to_HandleStandardTransient(
-        self_: *const HandleHLRAlgoPolyInternalData,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn Handle_HLRAlgo_PolyInternalData_to_Handle_Standard_Transient(
+        self_: *const Handle_HLRAlgo_PolyInternalData,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn HLRAlgo_PolyInternalData_inherited_IsInstance(
         self_: *const HLRAlgo_PolyInternalData,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn HLRAlgo_PolyInternalData_inherited_IsKind(
         self_: *const HLRAlgo_PolyInternalData,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn HLRAlgo_PolyInternalData_inherited_This(
         self_: *const HLRAlgo_PolyInternalData,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn HLRAlgo_PolyInternalData_inherited_GetRefCount(
         self_: *const HLRAlgo_PolyInternalData,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn HLRAlgo_PolyInternalData_inherited_IncrementRefCounter(
         self_: *mut HLRAlgo_PolyInternalData,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn HLRAlgo_PolyInternalData_inherited_DecrementRefCounter(
         self_: *mut HLRAlgo_PolyInternalData,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn HLRAlgo_PolyInternalData_inherited_Delete(
         self_: *const HLRAlgo_PolyInternalData,
     ) -> *const std::ffi::c_char;
     // ======================== HLRAlgo_PolyInternalNode ========================
     pub fn HLRAlgo_PolyInternalNode_destructor(self_: *mut HLRAlgo_PolyInternalNode);
-    /// **Source:** `HLRAlgo_PolyInternalNode.hxx`:54 - `HLRAlgo_PolyInternalNode::HLRAlgo_PolyInternalNode()`
+    /// **Source:** `HLRAlgo_PolyInternalNode.hxx`:52 - `HLRAlgo_PolyInternalNode::HLRAlgo_PolyInternalNode()`
     pub fn HLRAlgo_PolyInternalNode_ctor() -> crate::OcctResult<*mut HLRAlgo_PolyInternalNode>;
-    /// **Source:** `HLRAlgo_PolyInternalNode.hxx`:62 - `HLRAlgo_PolyInternalNode::Indices()`
+    /// **Source:** `HLRAlgo_PolyInternalNode.hxx`:60 - `HLRAlgo_PolyInternalNode::Indices()`
     pub fn HLRAlgo_PolyInternalNode_indices(
         self_: *mut HLRAlgo_PolyInternalNode,
     ) -> crate::OcctResult<*mut HLRAlgo_PolyInternalNode_NodeIndices>;
-    /// **Source:** `HLRAlgo_PolyInternalNode.hxx`:64 - `HLRAlgo_PolyInternalNode::Data()`
+    /// **Source:** `HLRAlgo_PolyInternalNode.hxx`:62 - `HLRAlgo_PolyInternalNode::Data()`
     pub fn HLRAlgo_PolyInternalNode_data(
         self_: *mut HLRAlgo_PolyInternalNode,
     ) -> crate::OcctResult<*mut HLRAlgo_PolyInternalNode_NodeData>;
-    /// **Source:** `HLRAlgo_PolyInternalNode.hxx`:66 - `HLRAlgo_PolyInternalNode::DynamicType()`
+    /// **Source:** `HLRAlgo_PolyInternalNode.hxx`:64 - `HLRAlgo_PolyInternalNode::DynamicType()`
     pub fn HLRAlgo_PolyInternalNode_dynamic_type(
         self_: *const HLRAlgo_PolyInternalNode,
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// **Source:** `HLRAlgo_PolyInternalNode.hxx`:66 - `HLRAlgo_PolyInternalNode::get_type_name()`
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
+    /// **Source:** `HLRAlgo_PolyInternalNode.hxx`:64 - `HLRAlgo_PolyInternalNode::get_type_name()`
     pub fn HLRAlgo_PolyInternalNode_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
-    /// **Source:** `HLRAlgo_PolyInternalNode.hxx`:66 - `HLRAlgo_PolyInternalNode::get_type_descriptor()`
+    /// **Source:** `HLRAlgo_PolyInternalNode.hxx`:64 - `HLRAlgo_PolyInternalNode::get_type_descriptor()`
     pub fn HLRAlgo_PolyInternalNode_get_type_descriptor(
-    ) -> crate::OcctResult<*const HandleStandardType>;
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast HLRAlgo_PolyInternalNode to Standard_Transient
     pub fn HLRAlgo_PolyInternalNode_as_Standard_Transient(
         self_: *const HLRAlgo_PolyInternalNode,
@@ -2896,56 +2328,56 @@ unsafe extern "C" {
     /// Wrap HLRAlgo_PolyInternalNode in a Handle
     pub fn HLRAlgo_PolyInternalNode_to_handle(
         obj: *mut HLRAlgo_PolyInternalNode,
-    ) -> crate::OcctResult<*mut HandleHLRAlgoPolyInternalNode>;
+    ) -> crate::OcctResult<*mut Handle_HLRAlgo_PolyInternalNode>;
     /// Destroy Handle<HLRAlgo_PolyInternalNode>
-    pub fn HandleHLRAlgoPolyInternalNode_destructor(self_: *mut HandleHLRAlgoPolyInternalNode);
+    pub fn Handle_HLRAlgo_PolyInternalNode_destructor(self_: *mut Handle_HLRAlgo_PolyInternalNode);
     /// Clone Handle<HLRAlgo_PolyInternalNode> (increments reference count)
-    pub fn HandleHLRAlgoPolyInternalNode_clone(
-        self_: *const HandleHLRAlgoPolyInternalNode,
-    ) -> crate::OcctResult<*mut HandleHLRAlgoPolyInternalNode>;
+    pub fn Handle_HLRAlgo_PolyInternalNode_clone(
+        self_: *const Handle_HLRAlgo_PolyInternalNode,
+    ) -> crate::OcctResult<*mut Handle_HLRAlgo_PolyInternalNode>;
     /// Check if Handle<HLRAlgo_PolyInternalNode> is null
-    pub fn HandleHLRAlgoPolyInternalNode_is_null(
-        self_: *const HandleHLRAlgoPolyInternalNode,
+    pub fn Handle_HLRAlgo_PolyInternalNode_is_null(
+        self_: *const Handle_HLRAlgo_PolyInternalNode,
     ) -> bool;
     /// Dereference Handle to get *const HLRAlgo_PolyInternalNode
-    pub fn HandleHLRAlgoPolyInternalNode_get(
-        handle: *const HandleHLRAlgoPolyInternalNode,
+    pub fn Handle_HLRAlgo_PolyInternalNode_get(
+        handle: *const Handle_HLRAlgo_PolyInternalNode,
     ) -> crate::OcctResult<*const HLRAlgo_PolyInternalNode>;
     /// Dereference Handle to get *mut HLRAlgo_PolyInternalNode
-    pub fn HandleHLRAlgoPolyInternalNode_get_mut(
-        handle: *mut HandleHLRAlgoPolyInternalNode,
+    pub fn Handle_HLRAlgo_PolyInternalNode_get_mut(
+        handle: *mut Handle_HLRAlgo_PolyInternalNode,
     ) -> crate::OcctResult<*mut HLRAlgo_PolyInternalNode>;
     /// Upcast Handle<HLRAlgo_PolyInternalNode> to Handle<Standard_Transient>
-    pub fn HandleHLRAlgoPolyInternalNode_to_HandleStandardTransient(
-        self_: *const HandleHLRAlgoPolyInternalNode,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn Handle_HLRAlgo_PolyInternalNode_to_Handle_Standard_Transient(
+        self_: *const Handle_HLRAlgo_PolyInternalNode,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn HLRAlgo_PolyInternalNode_inherited_IsInstance(
         self_: *const HLRAlgo_PolyInternalNode,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn HLRAlgo_PolyInternalNode_inherited_IsKind(
         self_: *const HLRAlgo_PolyInternalNode,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn HLRAlgo_PolyInternalNode_inherited_This(
         self_: *const HLRAlgo_PolyInternalNode,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn HLRAlgo_PolyInternalNode_inherited_GetRefCount(
         self_: *const HLRAlgo_PolyInternalNode,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn HLRAlgo_PolyInternalNode_inherited_IncrementRefCounter(
         self_: *mut HLRAlgo_PolyInternalNode,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn HLRAlgo_PolyInternalNode_inherited_DecrementRefCounter(
         self_: *mut HLRAlgo_PolyInternalNode,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn HLRAlgo_PolyInternalNode_inherited_Delete(
         self_: *const HLRAlgo_PolyInternalNode,
     ) -> *const std::ffi::c_char;
@@ -2958,7 +2390,7 @@ unsafe extern "C" {
     pub fn HLRAlgo_PolyInternalNode_NodeData_destructor(
         self_: *mut HLRAlgo_PolyInternalNode_NodeData,
     );
-    /// **Source:** `HLRAlgo_PolyInternalNode.hxx`:42 - `HLRAlgo_PolyInternalNode_NodeData::HLRAlgo_PolyInternalNode_NodeData()`
+    /// **Source:** `HLRAlgo_PolyInternalNode.hxx`:40 - `HLRAlgo_PolyInternalNode_NodeData::HLRAlgo_PolyInternalNode_NodeData()`
     pub fn HLRAlgo_PolyInternalNode_NodeData_ctor(
     ) -> crate::OcctResult<*mut HLRAlgo_PolyInternalNode_NodeData>;
     // ======================== HLRAlgo_PolyInternalSegment (POD) ========================
@@ -2966,49 +2398,41 @@ unsafe extern "C" {
     pub fn HLRAlgo_PolyInternalSegment_sizeof() -> usize;
     // ======================== HLRAlgo_PolyShellData ========================
     pub fn HLRAlgo_PolyShellData_destructor(self_: *mut HLRAlgo_PolyShellData);
-    /// **Source:** `HLRAlgo_PolyShellData.hxx`:38 - `HLRAlgo_PolyShellData::HLRAlgo_PolyShellData()`
+    /// **Source:** `HLRAlgo_PolyShellData.hxx`:37 - `HLRAlgo_PolyShellData::HLRAlgo_PolyShellData()`
     pub fn HLRAlgo_PolyShellData_ctor_int(
         nbFace: i32,
     ) -> crate::OcctResult<*mut HLRAlgo_PolyShellData>;
-    /// **Source:** `HLRAlgo_PolyShellData.hxx`:40 - `HLRAlgo_PolyShellData::UpdateGlobalMinMax()`
+    /// **Source:** `HLRAlgo_PolyShellData.hxx`:39 - `HLRAlgo_PolyShellData::UpdateGlobalMinMax()`
     pub fn HLRAlgo_PolyShellData_update_global_min_max(
         self_: *mut HLRAlgo_PolyShellData,
-        theBox: *mut HLRAlgo_PolyData_Box,
+        theBox: *mut Bnd_Box,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `HLRAlgo_PolyShellData.hxx`:42 - `HLRAlgo_PolyShellData::UpdateHiding()`
+    /// **Source:** `HLRAlgo_PolyShellData.hxx`:41 - `HLRAlgo_PolyShellData::UpdateHiding()`
     pub fn HLRAlgo_PolyShellData_update_hiding(
         self_: *mut HLRAlgo_PolyShellData,
         nbHiding: i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `HLRAlgo_PolyShellData.hxx`:44 - `HLRAlgo_PolyShellData::Hiding()`
+    /// **Source:** `HLRAlgo_PolyShellData.hxx`:43 - `HLRAlgo_PolyShellData::Hiding()`
     pub fn HLRAlgo_PolyShellData_hiding(
         self_: *const HLRAlgo_PolyShellData,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `HLRAlgo_PolyShellData.hxx`:46 - `HLRAlgo_PolyShellData::PolyData()`
-    pub fn HLRAlgo_PolyShellData_poly_data(
-        self_: *mut HLRAlgo_PolyShellData,
-    ) -> crate::OcctResult<*mut NCollection_Array1_opencascade_handle_HLRAlgo_PolyData>;
-    /// **Source:** `HLRAlgo_PolyShellData.hxx`:48 - `HLRAlgo_PolyShellData::HidingPolyData()`
-    pub fn HLRAlgo_PolyShellData_hiding_poly_data(
-        self_: *mut HLRAlgo_PolyShellData,
-    ) -> crate::OcctResult<*mut NCollection_Array1_opencascade_handle_HLRAlgo_PolyData>;
-    /// **Source:** `HLRAlgo_PolyShellData.hxx`:50 - `HLRAlgo_PolyShellData::Edges()`
+    /// **Source:** `HLRAlgo_PolyShellData.hxx`:49 - `HLRAlgo_PolyShellData::Edges()`
     pub fn HLRAlgo_PolyShellData_edges(
         self_: *mut HLRAlgo_PolyShellData,
-    ) -> crate::OcctResult<*mut HLRAlgo_ListOfBPoint>;
-    /// **Source:** `HLRAlgo_PolyShellData.hxx`:52 - `HLRAlgo_PolyShellData::Indices()`
+    ) -> crate::OcctResult<*mut NCollection_List_HLRAlgo_BiPoint>;
+    /// **Source:** `HLRAlgo_PolyShellData.hxx`:51 - `HLRAlgo_PolyShellData::Indices()`
     pub fn HLRAlgo_PolyShellData_indices(
         self_: *mut HLRAlgo_PolyShellData,
     ) -> crate::OcctResult<*mut HLRAlgo_PolyShellData_ShellIndices>;
-    /// **Source:** `HLRAlgo_PolyShellData.hxx`:54 - `HLRAlgo_PolyShellData::DynamicType()`
+    /// **Source:** `HLRAlgo_PolyShellData.hxx`:53 - `HLRAlgo_PolyShellData::DynamicType()`
     pub fn HLRAlgo_PolyShellData_dynamic_type(
         self_: *const HLRAlgo_PolyShellData,
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// **Source:** `HLRAlgo_PolyShellData.hxx`:54 - `HLRAlgo_PolyShellData::get_type_name()`
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
+    /// **Source:** `HLRAlgo_PolyShellData.hxx`:53 - `HLRAlgo_PolyShellData::get_type_name()`
     pub fn HLRAlgo_PolyShellData_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
-    /// **Source:** `HLRAlgo_PolyShellData.hxx`:54 - `HLRAlgo_PolyShellData::get_type_descriptor()`
+    /// **Source:** `HLRAlgo_PolyShellData.hxx`:53 - `HLRAlgo_PolyShellData::get_type_descriptor()`
     pub fn HLRAlgo_PolyShellData_get_type_descriptor(
-    ) -> crate::OcctResult<*const HandleStandardType>;
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast HLRAlgo_PolyShellData to Standard_Transient
     pub fn HLRAlgo_PolyShellData_as_Standard_Transient(
         self_: *const HLRAlgo_PolyShellData,
@@ -3020,54 +2444,55 @@ unsafe extern "C" {
     /// Wrap HLRAlgo_PolyShellData in a Handle
     pub fn HLRAlgo_PolyShellData_to_handle(
         obj: *mut HLRAlgo_PolyShellData,
-    ) -> crate::OcctResult<*mut HandleHLRAlgoPolyShellData>;
+    ) -> crate::OcctResult<*mut Handle_HLRAlgo_PolyShellData>;
     /// Destroy Handle<HLRAlgo_PolyShellData>
-    pub fn HandleHLRAlgoPolyShellData_destructor(self_: *mut HandleHLRAlgoPolyShellData);
+    pub fn Handle_HLRAlgo_PolyShellData_destructor(self_: *mut Handle_HLRAlgo_PolyShellData);
     /// Clone Handle<HLRAlgo_PolyShellData> (increments reference count)
-    pub fn HandleHLRAlgoPolyShellData_clone(
-        self_: *const HandleHLRAlgoPolyShellData,
-    ) -> crate::OcctResult<*mut HandleHLRAlgoPolyShellData>;
+    pub fn Handle_HLRAlgo_PolyShellData_clone(
+        self_: *const Handle_HLRAlgo_PolyShellData,
+    ) -> crate::OcctResult<*mut Handle_HLRAlgo_PolyShellData>;
     /// Check if Handle<HLRAlgo_PolyShellData> is null
-    pub fn HandleHLRAlgoPolyShellData_is_null(self_: *const HandleHLRAlgoPolyShellData) -> bool;
+    pub fn Handle_HLRAlgo_PolyShellData_is_null(self_: *const Handle_HLRAlgo_PolyShellData)
+        -> bool;
     /// Dereference Handle to get *const HLRAlgo_PolyShellData
-    pub fn HandleHLRAlgoPolyShellData_get(
-        handle: *const HandleHLRAlgoPolyShellData,
+    pub fn Handle_HLRAlgo_PolyShellData_get(
+        handle: *const Handle_HLRAlgo_PolyShellData,
     ) -> crate::OcctResult<*const HLRAlgo_PolyShellData>;
     /// Dereference Handle to get *mut HLRAlgo_PolyShellData
-    pub fn HandleHLRAlgoPolyShellData_get_mut(
-        handle: *mut HandleHLRAlgoPolyShellData,
+    pub fn Handle_HLRAlgo_PolyShellData_get_mut(
+        handle: *mut Handle_HLRAlgo_PolyShellData,
     ) -> crate::OcctResult<*mut HLRAlgo_PolyShellData>;
     /// Upcast Handle<HLRAlgo_PolyShellData> to Handle<Standard_Transient>
-    pub fn HandleHLRAlgoPolyShellData_to_HandleStandardTransient(
-        self_: *const HandleHLRAlgoPolyShellData,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn Handle_HLRAlgo_PolyShellData_to_Handle_Standard_Transient(
+        self_: *const Handle_HLRAlgo_PolyShellData,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn HLRAlgo_PolyShellData_inherited_IsInstance(
         self_: *const HLRAlgo_PolyShellData,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn HLRAlgo_PolyShellData_inherited_IsKind(
         self_: *const HLRAlgo_PolyShellData,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn HLRAlgo_PolyShellData_inherited_This(
         self_: *const HLRAlgo_PolyShellData,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn HLRAlgo_PolyShellData_inherited_GetRefCount(
         self_: *const HLRAlgo_PolyShellData,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn HLRAlgo_PolyShellData_inherited_IncrementRefCounter(
         self_: *mut HLRAlgo_PolyShellData,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn HLRAlgo_PolyShellData_inherited_DecrementRefCounter(
         self_: *mut HLRAlgo_PolyShellData,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn HLRAlgo_PolyShellData_inherited_Delete(
         self_: *const HLRAlgo_PolyShellData,
     ) -> *const std::ffi::c_char;
@@ -3095,7 +2520,7 @@ unsafe extern "C" {
         Persp: bool,
         Focus: f64,
     ) -> crate::OcctResult<*mut HLRAlgo_Projector>;
-    /// **Source:** `HLRAlgo_Projector.hxx`:65 - `HLRAlgo_Projector::HLRAlgo_Projector()`
+    /// **Source:** `HLRAlgo_Projector.hxx`:63 - `HLRAlgo_Projector::HLRAlgo_Projector()`
     pub fn HLRAlgo_Projector_ctor_trsf_bool_real_vec2d3(
         T: *const gp_Trsf,
         Persp: bool,
@@ -3104,60 +2529,60 @@ unsafe extern "C" {
         v2: *const gp_Vec2d,
         v3: *const gp_Vec2d,
     ) -> crate::OcctResult<*mut HLRAlgo_Projector>;
-    /// **Source:** `HLRAlgo_Projector.hxx`:72 - `HLRAlgo_Projector::Set()`
+    /// **Source:** `HLRAlgo_Projector.hxx`:70 - `HLRAlgo_Projector::Set()`
     pub fn HLRAlgo_Projector_set(
         self_: *mut HLRAlgo_Projector,
         T: *const gp_Trsf,
         Persp: bool,
         Focus: f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `HLRAlgo_Projector.hxx`:76 - `HLRAlgo_Projector::Directions()`
+    /// **Source:** `HLRAlgo_Projector.hxx`:72 - `HLRAlgo_Projector::Directions()`
     pub fn HLRAlgo_Projector_directions(
         self_: *const HLRAlgo_Projector,
         D1: *mut gp_Vec2d,
         D2: *mut gp_Vec2d,
         D3: *mut gp_Vec2d,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `HLRAlgo_Projector.hxx`:79 - `HLRAlgo_Projector::Scaled()`
+    /// **Source:** `HLRAlgo_Projector.hxx`:75 - `HLRAlgo_Projector::Scaled()`
     pub fn HLRAlgo_Projector_scaled(
         self_: *mut HLRAlgo_Projector,
         On: bool,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `HLRAlgo_Projector.hxx`:82 - `HLRAlgo_Projector::Perspective()`
+    /// **Source:** `HLRAlgo_Projector.hxx`:78 - `HLRAlgo_Projector::Perspective()`
     pub fn HLRAlgo_Projector_perspective(
         self_: *const HLRAlgo_Projector,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `HLRAlgo_Projector.hxx`:85 - `HLRAlgo_Projector::Transformation()`
+    /// **Source:** `HLRAlgo_Projector.hxx`:81 - `HLRAlgo_Projector::Transformation()`
     pub fn HLRAlgo_Projector_transformation(
         self_: *const HLRAlgo_Projector,
     ) -> crate::OcctResult<*const gp_Trsf>;
-    /// **Source:** `HLRAlgo_Projector.hxx`:88 - `HLRAlgo_Projector::InvertedTransformation()`
+    /// **Source:** `HLRAlgo_Projector.hxx`:84 - `HLRAlgo_Projector::InvertedTransformation()`
     pub fn HLRAlgo_Projector_inverted_transformation(
         self_: *const HLRAlgo_Projector,
     ) -> crate::OcctResult<*const gp_Trsf>;
-    /// **Source:** `HLRAlgo_Projector.hxx`:91 - `HLRAlgo_Projector::FullTransformation()`
+    /// **Source:** `HLRAlgo_Projector.hxx`:87 - `HLRAlgo_Projector::FullTransformation()`
     pub fn HLRAlgo_Projector_full_transformation(
         self_: *const HLRAlgo_Projector,
     ) -> crate::OcctResult<*const gp_Trsf>;
-    /// **Source:** `HLRAlgo_Projector.hxx`:94 - `HLRAlgo_Projector::Focus()`
+    /// **Source:** `HLRAlgo_Projector.hxx`:90 - `HLRAlgo_Projector::Focus()`
     pub fn HLRAlgo_Projector_focus(self_: *const HLRAlgo_Projector) -> crate::OcctResult<f64>;
-    /// **Source:** `HLRAlgo_Projector.hxx`:96 - `HLRAlgo_Projector::Transform()`
+    /// **Source:** `HLRAlgo_Projector.hxx`:92 - `HLRAlgo_Projector::Transform()`
     pub fn HLRAlgo_Projector_transform_vec(
         self_: *const HLRAlgo_Projector,
         D: *mut gp_Vec,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `HLRAlgo_Projector.hxx`:98 - `HLRAlgo_Projector::Transform()`
+    /// **Source:** `HLRAlgo_Projector.hxx`:94 - `HLRAlgo_Projector::Transform()`
     pub fn HLRAlgo_Projector_transform_pnt(
         self_: *const HLRAlgo_Projector,
         Pnt: *mut gp_Pnt,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `HLRAlgo_Projector.hxx`:101 - `HLRAlgo_Projector::Project()`
+    /// **Source:** `HLRAlgo_Projector.hxx`:97 - `HLRAlgo_Projector::Project()`
     pub fn HLRAlgo_Projector_project_pnt_pnt2d(
         self_: *const HLRAlgo_Projector,
         P: *const gp_Pnt,
         Pout: *mut gp_Pnt2d,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `HLRAlgo_Projector.hxx`:104 - `HLRAlgo_Projector::Project()`
+    /// **Source:** `HLRAlgo_Projector.hxx`:100 - `HLRAlgo_Projector::Project()`
     pub fn HLRAlgo_Projector_project_pnt_real3(
         self_: *const HLRAlgo_Projector,
         P: *const gp_Pnt,
@@ -3165,7 +2590,7 @@ unsafe extern "C" {
         Y: *mut f64,
         Z: *mut f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `HLRAlgo_Projector.hxx`:110 - `HLRAlgo_Projector::Project()`
+    /// **Source:** `HLRAlgo_Projector.hxx`:103 - `HLRAlgo_Projector::Project()`
     pub fn HLRAlgo_Projector_project_pnt_vec_pnt2d_vec2d(
         self_: *const HLRAlgo_Projector,
         P: *const gp_Pnt,
@@ -3173,7 +2598,7 @@ unsafe extern "C" {
         Pout: *mut gp_Pnt2d,
         D1out: *mut gp_Vec2d,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `HLRAlgo_Projector.hxx`:117 - `HLRAlgo_Projector::Shoot()`
+    /// **Source:** `HLRAlgo_Projector.hxx`:110 - `HLRAlgo_Projector::Shoot()`
     pub fn HLRAlgo_Projector_shoot(
         self_: *const HLRAlgo_Projector,
         X: f64,
@@ -3184,38 +2609,38 @@ unsafe extern "C" {
     pub fn HLRAlgo_TriangleData_sizeof() -> usize;
     // ======================== HLRAlgo_WiresBlock ========================
     pub fn HLRAlgo_WiresBlock_destructor(self_: *mut HLRAlgo_WiresBlock);
-    /// **Source:** `HLRAlgo_WiresBlock.hxx`:42 - `HLRAlgo_WiresBlock::HLRAlgo_WiresBlock()`
+    /// **Source:** `HLRAlgo_WiresBlock.hxx`:39 - `HLRAlgo_WiresBlock::HLRAlgo_WiresBlock()`
     pub fn HLRAlgo_WiresBlock_ctor_int(NbWires: i32) -> crate::OcctResult<*mut HLRAlgo_WiresBlock>;
-    /// **Source:** `HLRAlgo_WiresBlock.hxx`:47 - `HLRAlgo_WiresBlock::NbWires()`
+    /// **Source:** `HLRAlgo_WiresBlock.hxx`:44 - `HLRAlgo_WiresBlock::NbWires()`
     pub fn HLRAlgo_WiresBlock_nb_wires(self_: *const HLRAlgo_WiresBlock) -> crate::OcctResult<i32>;
-    /// **Source:** `HLRAlgo_WiresBlock.hxx`:49 - `HLRAlgo_WiresBlock::Set()`
+    /// **Source:** `HLRAlgo_WiresBlock.hxx`:46 - `HLRAlgo_WiresBlock::Set()`
     pub fn HLRAlgo_WiresBlock_set(
         self_: *mut HLRAlgo_WiresBlock,
         I: i32,
-        W: *const HandleHLRAlgoEdgesBlock,
+        W: *const Handle_HLRAlgo_EdgesBlock,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `HLRAlgo_WiresBlock.hxx`:51 - `HLRAlgo_WiresBlock::Wire()`
+    /// **Source:** `HLRAlgo_WiresBlock.hxx`:48 - `HLRAlgo_WiresBlock::Wire()`
     pub fn HLRAlgo_WiresBlock_wire(
         self_: *mut HLRAlgo_WiresBlock,
         I: i32,
-    ) -> crate::OcctResult<*mut HandleHLRAlgoEdgesBlock>;
-    /// **Source:** `HLRAlgo_WiresBlock.hxx`:56 - `HLRAlgo_WiresBlock::UpdateMinMax()`
+    ) -> crate::OcctResult<*mut Handle_HLRAlgo_EdgesBlock>;
+    /// **Source:** `HLRAlgo_WiresBlock.hxx`:53 - `HLRAlgo_WiresBlock::UpdateMinMax()`
     pub fn HLRAlgo_WiresBlock_update_min_max(
         self_: *mut HLRAlgo_WiresBlock,
         theMinMaxes: *const HLRAlgo_EdgesBlock_MinMaxIndices,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `HLRAlgo_WiresBlock.hxx`:61 - `HLRAlgo_WiresBlock::MinMax()`
+    /// **Source:** `HLRAlgo_WiresBlock.hxx`:58 - `HLRAlgo_WiresBlock::MinMax()`
     pub fn HLRAlgo_WiresBlock_min_max(
         self_: *mut HLRAlgo_WiresBlock,
     ) -> crate::OcctResult<*mut HLRAlgo_EdgesBlock_MinMaxIndices>;
-    /// **Source:** `HLRAlgo_WiresBlock.hxx`:63 - `HLRAlgo_WiresBlock::DynamicType()`
+    /// **Source:** `HLRAlgo_WiresBlock.hxx`:60 - `HLRAlgo_WiresBlock::DynamicType()`
     pub fn HLRAlgo_WiresBlock_dynamic_type(
         self_: *const HLRAlgo_WiresBlock,
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// **Source:** `HLRAlgo_WiresBlock.hxx`:63 - `HLRAlgo_WiresBlock::get_type_name()`
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
+    /// **Source:** `HLRAlgo_WiresBlock.hxx`:60 - `HLRAlgo_WiresBlock::get_type_name()`
     pub fn HLRAlgo_WiresBlock_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
-    /// **Source:** `HLRAlgo_WiresBlock.hxx`:63 - `HLRAlgo_WiresBlock::get_type_descriptor()`
-    pub fn HLRAlgo_WiresBlock_get_type_descriptor() -> crate::OcctResult<*const HandleStandardType>;
+    /// **Source:** `HLRAlgo_WiresBlock.hxx`:60 - `HLRAlgo_WiresBlock::get_type_descriptor()`
+    pub fn HLRAlgo_WiresBlock_get_type_descriptor() -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast HLRAlgo_WiresBlock to Standard_Transient
     pub fn HLRAlgo_WiresBlock_as_Standard_Transient(
         self_: *const HLRAlgo_WiresBlock,
@@ -3227,54 +2652,54 @@ unsafe extern "C" {
     /// Wrap HLRAlgo_WiresBlock in a Handle
     pub fn HLRAlgo_WiresBlock_to_handle(
         obj: *mut HLRAlgo_WiresBlock,
-    ) -> crate::OcctResult<*mut HandleHLRAlgoWiresBlock>;
+    ) -> crate::OcctResult<*mut Handle_HLRAlgo_WiresBlock>;
     /// Destroy Handle<HLRAlgo_WiresBlock>
-    pub fn HandleHLRAlgoWiresBlock_destructor(self_: *mut HandleHLRAlgoWiresBlock);
+    pub fn Handle_HLRAlgo_WiresBlock_destructor(self_: *mut Handle_HLRAlgo_WiresBlock);
     /// Clone Handle<HLRAlgo_WiresBlock> (increments reference count)
-    pub fn HandleHLRAlgoWiresBlock_clone(
-        self_: *const HandleHLRAlgoWiresBlock,
-    ) -> crate::OcctResult<*mut HandleHLRAlgoWiresBlock>;
+    pub fn Handle_HLRAlgo_WiresBlock_clone(
+        self_: *const Handle_HLRAlgo_WiresBlock,
+    ) -> crate::OcctResult<*mut Handle_HLRAlgo_WiresBlock>;
     /// Check if Handle<HLRAlgo_WiresBlock> is null
-    pub fn HandleHLRAlgoWiresBlock_is_null(self_: *const HandleHLRAlgoWiresBlock) -> bool;
+    pub fn Handle_HLRAlgo_WiresBlock_is_null(self_: *const Handle_HLRAlgo_WiresBlock) -> bool;
     /// Dereference Handle to get *const HLRAlgo_WiresBlock
-    pub fn HandleHLRAlgoWiresBlock_get(
-        handle: *const HandleHLRAlgoWiresBlock,
+    pub fn Handle_HLRAlgo_WiresBlock_get(
+        handle: *const Handle_HLRAlgo_WiresBlock,
     ) -> crate::OcctResult<*const HLRAlgo_WiresBlock>;
     /// Dereference Handle to get *mut HLRAlgo_WiresBlock
-    pub fn HandleHLRAlgoWiresBlock_get_mut(
-        handle: *mut HandleHLRAlgoWiresBlock,
+    pub fn Handle_HLRAlgo_WiresBlock_get_mut(
+        handle: *mut Handle_HLRAlgo_WiresBlock,
     ) -> crate::OcctResult<*mut HLRAlgo_WiresBlock>;
     /// Upcast Handle<HLRAlgo_WiresBlock> to Handle<Standard_Transient>
-    pub fn HandleHLRAlgoWiresBlock_to_HandleStandardTransient(
-        self_: *const HandleHLRAlgoWiresBlock,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn Handle_HLRAlgo_WiresBlock_to_Handle_Standard_Transient(
+        self_: *const Handle_HLRAlgo_WiresBlock,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn HLRAlgo_WiresBlock_inherited_IsInstance(
         self_: *const HLRAlgo_WiresBlock,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn HLRAlgo_WiresBlock_inherited_IsKind(
         self_: *const HLRAlgo_WiresBlock,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn HLRAlgo_WiresBlock_inherited_This(
         self_: *const HLRAlgo_WiresBlock,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn HLRAlgo_WiresBlock_inherited_GetRefCount(
         self_: *const HLRAlgo_WiresBlock,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn HLRAlgo_WiresBlock_inherited_IncrementRefCounter(
         self_: *mut HLRAlgo_WiresBlock,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn HLRAlgo_WiresBlock_inherited_DecrementRefCounter(
         self_: *mut HLRAlgo_WiresBlock,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn HLRAlgo_WiresBlock_inherited_Delete(
         self_: *const HLRAlgo_WiresBlock,
     ) -> *const std::ffi::c_char;
@@ -3314,42 +2739,42 @@ unsafe extern "C" {
     ) -> crate::OcctResult<*mut TopoDS_Shape>;
     // ======================== HLRBRep_Algo ========================
     pub fn HLRBRep_Algo_destructor(self_: *mut HLRBRep_Algo);
-    /// **Source:** `HLRBRep_Algo.hxx`:73 - `HLRBRep_Algo::HLRBRep_Algo()`
+    /// **Source:** `HLRBRep_Algo.hxx`:70 - `HLRBRep_Algo::HLRBRep_Algo()`
     pub fn HLRBRep_Algo_ctor() -> crate::OcctResult<*mut HLRBRep_Algo>;
-    /// **Source:** `HLRBRep_Algo.hxx`:75 - `HLRBRep_Algo::HLRBRep_Algo()`
+    /// **Source:** `HLRBRep_Algo.hxx`:72 - `HLRBRep_Algo::HLRBRep_Algo()`
     pub fn HLRBRep_Algo_ctor_handlehlrbrepalgo(
-        A: *const HandleHLRBRepAlgo,
+        A: *const Handle_HLRBRep_Algo,
     ) -> crate::OcctResult<*mut HLRBRep_Algo>;
-    /// **Source:** `HLRBRep_Algo.hxx`:78 - `HLRBRep_Algo::Add()`
+    /// **Source:** `HLRBRep_Algo.hxx`:75 - `HLRBRep_Algo::Add()`
     pub fn HLRBRep_Algo_add_shape_handlestandardtransient_int(
         self_: *mut HLRBRep_Algo,
         S: *const TopoDS_Shape,
-        SData: *const HandleStandardTransient,
+        SData: *const Handle_Standard_Transient,
         nbIso: i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `HLRBRep_Algo.hxx`:85 - `HLRBRep_Algo::Add()`
+    /// **Source:** `HLRBRep_Algo.hxx`:82 - `HLRBRep_Algo::Add()`
     pub fn HLRBRep_Algo_add_shape_int(
         self_: *mut HLRBRep_Algo,
         S: *const TopoDS_Shape,
         nbIso: i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `HLRBRep_Algo.hxx`:89 - `HLRBRep_Algo::Index()`
+    /// **Source:** `HLRBRep_Algo.hxx`:86 - `HLRBRep_Algo::Index()`
     pub fn HLRBRep_Algo_index(
         self_: *mut HLRBRep_Algo,
         S: *const TopoDS_Shape,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `HLRBRep_Algo.hxx`:92 - `HLRBRep_Algo::OutLinedShapeNullify()`
+    /// **Source:** `HLRBRep_Algo.hxx`:89 - `HLRBRep_Algo::OutLinedShapeNullify()`
     pub fn HLRBRep_Algo_out_lined_shape_nullify(
         self_: *mut HLRBRep_Algo,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `HLRBRep_Algo.hxx`:94 - `HLRBRep_Algo::DynamicType()`
+    /// **Source:** `HLRBRep_Algo.hxx`:91 - `HLRBRep_Algo::DynamicType()`
     pub fn HLRBRep_Algo_dynamic_type(
         self_: *const HLRBRep_Algo,
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// **Source:** `HLRBRep_Algo.hxx`:94 - `HLRBRep_Algo::get_type_name()`
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
+    /// **Source:** `HLRBRep_Algo.hxx`:91 - `HLRBRep_Algo::get_type_name()`
     pub fn HLRBRep_Algo_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
-    /// **Source:** `HLRBRep_Algo.hxx`:94 - `HLRBRep_Algo::get_type_descriptor()`
-    pub fn HLRBRep_Algo_get_type_descriptor() -> crate::OcctResult<*const HandleStandardType>;
+    /// **Source:** `HLRBRep_Algo.hxx`:91 - `HLRBRep_Algo::get_type_descriptor()`
+    pub fn HLRBRep_Algo_get_type_descriptor() -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast HLRBRep_Algo to HLRBRep_InternalAlgo
     pub fn HLRBRep_Algo_as_HLRBRep_InternalAlgo(
         self_: *const HLRBRep_Algo,
@@ -3369,43 +2794,43 @@ unsafe extern "C" {
     /// Wrap HLRBRep_Algo in a Handle
     pub fn HLRBRep_Algo_to_handle(
         obj: *mut HLRBRep_Algo,
-    ) -> crate::OcctResult<*mut HandleHLRBRepAlgo>;
+    ) -> crate::OcctResult<*mut Handle_HLRBRep_Algo>;
     /// Destroy Handle<HLRBRep_Algo>
-    pub fn HandleHLRBRepAlgo_destructor(self_: *mut HandleHLRBRepAlgo);
+    pub fn Handle_HLRBRep_Algo_destructor(self_: *mut Handle_HLRBRep_Algo);
     /// Clone Handle<HLRBRep_Algo> (increments reference count)
-    pub fn HandleHLRBRepAlgo_clone(
-        self_: *const HandleHLRBRepAlgo,
-    ) -> crate::OcctResult<*mut HandleHLRBRepAlgo>;
+    pub fn Handle_HLRBRep_Algo_clone(
+        self_: *const Handle_HLRBRep_Algo,
+    ) -> crate::OcctResult<*mut Handle_HLRBRep_Algo>;
     /// Check if Handle<HLRBRep_Algo> is null
-    pub fn HandleHLRBRepAlgo_is_null(self_: *const HandleHLRBRepAlgo) -> bool;
+    pub fn Handle_HLRBRep_Algo_is_null(self_: *const Handle_HLRBRep_Algo) -> bool;
     /// Dereference Handle to get *const HLRBRep_Algo
-    pub fn HandleHLRBRepAlgo_get(
-        handle: *const HandleHLRBRepAlgo,
+    pub fn Handle_HLRBRep_Algo_get(
+        handle: *const Handle_HLRBRep_Algo,
     ) -> crate::OcctResult<*const HLRBRep_Algo>;
     /// Dereference Handle to get *mut HLRBRep_Algo
-    pub fn HandleHLRBRepAlgo_get_mut(
-        handle: *mut HandleHLRBRepAlgo,
+    pub fn Handle_HLRBRep_Algo_get_mut(
+        handle: *mut Handle_HLRBRep_Algo,
     ) -> crate::OcctResult<*mut HLRBRep_Algo>;
     /// Upcast Handle<HLRBRep_Algo> to Handle<HLRBRep_InternalAlgo>
-    pub fn HandleHLRBRepAlgo_to_HandleHLRBRepInternalAlgo(
-        self_: *const HandleHLRBRepAlgo,
-    ) -> crate::OcctResult<*mut HandleHLRBRepInternalAlgo>;
+    pub fn Handle_HLRBRep_Algo_to_Handle_HLRBRep_InternalAlgo(
+        self_: *const Handle_HLRBRep_Algo,
+    ) -> crate::OcctResult<*mut Handle_HLRBRep_InternalAlgo>;
     /// Upcast Handle<HLRBRep_Algo> to Handle<Standard_Transient>
-    pub fn HandleHLRBRepAlgo_to_HandleStandardTransient(
-        self_: *const HandleHLRBRepAlgo,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
-    /// Inherited: **Source:** `HLRBRep_InternalAlgo.hxx`:44 - `HLRBRep_InternalAlgo::Projector()`
+    pub fn Handle_HLRBRep_Algo_to_Handle_Standard_Transient(
+        self_: *const Handle_HLRBRep_Algo,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
+    /// Inherited: **Source:** `HLRBRep_InternalAlgo.hxx`:45 - `HLRBRep_InternalAlgo::Projector()`
     pub fn HLRBRep_Algo_inherited_Projector(
         self_: *mut HLRBRep_Algo,
         P: *const HLRAlgo_Projector,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `HLRBRep_InternalAlgo.hxx`:50 - `HLRBRep_InternalAlgo::Update()`
+    /// Inherited: **Source:** `HLRBRep_InternalAlgo.hxx`:51 - `HLRBRep_InternalAlgo::Update()`
     pub fn HLRBRep_Algo_inherited_Update(self_: *mut HLRBRep_Algo) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `HLRBRep_InternalAlgo.hxx`:53 - `HLRBRep_InternalAlgo::Load()`
+    /// Inherited: **Source:** `HLRBRep_InternalAlgo.hxx`:54 - `HLRBRep_InternalAlgo::Load()`
     pub fn HLRBRep_Algo_inherited_Load(
         self_: *mut HLRBRep_Algo,
-        S: *const HandleHLRTopoBRepOutLiner,
-        SData: *const HandleStandardTransient,
+        S: *const Handle_HLRTopoBRep_OutLiner,
+        SData: *const Handle_Standard_Transient,
         nbIso: i32,
     ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `HLRBRep_InternalAlgo.hxx`:66 - `HLRBRep_InternalAlgo::Remove()`
@@ -3417,12 +2842,12 @@ unsafe extern "C" {
     pub fn HLRBRep_Algo_inherited_ShapeData(
         self_: *mut HLRBRep_Algo,
         I: i32,
-        SData: *const HandleStandardTransient,
+        SData: *const Handle_Standard_Transient,
     ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `HLRBRep_InternalAlgo.hxx`:71 - `HLRBRep_InternalAlgo::SeqOfShapeBounds()`
     pub fn HLRBRep_Algo_inherited_SeqOfShapeBounds(
         self_: *mut HLRBRep_Algo,
-    ) -> crate::OcctResult<*mut HLRBRep_SeqOfShapeBounds>;
+    ) -> crate::OcctResult<*mut NCollection_Sequence_HLRBRep_ShapeBounds>;
     /// Inherited: **Source:** `HLRBRep_InternalAlgo.hxx`:73 - `HLRBRep_InternalAlgo::NbShapes()`
     pub fn HLRBRep_Algo_inherited_NbShapes(self_: *const HLRBRep_Algo) -> crate::OcctResult<i32>;
     /// Inherited: **Source:** `HLRBRep_InternalAlgo.hxx`:75 - `HLRBRep_InternalAlgo::ShapeBounds()`
@@ -3462,37 +2887,37 @@ unsafe extern "C" {
     /// Inherited: **Source:** `HLRBRep_InternalAlgo.hxx`:122 - `HLRBRep_InternalAlgo::DataStructure()`
     pub fn HLRBRep_Algo_inherited_DataStructure(
         self_: *const HLRBRep_Algo,
-    ) -> crate::OcctResult<*mut HandleHLRBRepData>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    ) -> crate::OcctResult<*mut Handle_HLRBRep_Data>;
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn HLRBRep_Algo_inherited_IsInstance(
         self_: *const HLRBRep_Algo,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn HLRBRep_Algo_inherited_IsKind(
         self_: *const HLRBRep_Algo,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn HLRBRep_Algo_inherited_This(
         self_: *const HLRBRep_Algo,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn HLRBRep_Algo_inherited_GetRefCount(self_: *const HLRBRep_Algo)
         -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn HLRBRep_Algo_inherited_IncrementRefCounter(
         self_: *mut HLRBRep_Algo,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn HLRBRep_Algo_inherited_DecrementRefCounter(
         self_: *mut HLRBRep_Algo,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn HLRBRep_Algo_inherited_Delete(self_: *const HLRBRep_Algo) -> *const std::ffi::c_char;
     // ======================== HLRBRep_AreaLimit ========================
     pub fn HLRBRep_AreaLimit_destructor(self_: *mut HLRBRep_AreaLimit);
-    /// **Source:** `HLRBRep_AreaLimit.hxx`:38 - `HLRBRep_AreaLimit::HLRBRep_AreaLimit()`
+    /// **Source:** `HLRBRep_AreaLimit.hxx`:35 - `HLRBRep_AreaLimit::HLRBRep_AreaLimit()`
     pub fn HLRBRep_AreaLimit_ctor_intersection_bool2_state4(
         V: *const HLRAlgo_Intersection,
         Boundary: bool,
@@ -3502,78 +2927,78 @@ unsafe extern "C" {
         EdgeBefore: i32,
         EdgeAfter: i32,
     ) -> crate::OcctResult<*mut HLRBRep_AreaLimit>;
-    /// **Source:** `HLRBRep_AreaLimit.hxx`:46 - `HLRBRep_AreaLimit::StateBefore()`
+    /// **Source:** `HLRBRep_AreaLimit.hxx`:43 - `HLRBRep_AreaLimit::StateBefore()`
     pub fn HLRBRep_AreaLimit_state_before_state(
         self_: *mut HLRBRep_AreaLimit,
         St: i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `HLRBRep_AreaLimit.hxx`:48 - `HLRBRep_AreaLimit::StateAfter()`
+    /// **Source:** `HLRBRep_AreaLimit.hxx`:45 - `HLRBRep_AreaLimit::StateAfter()`
     pub fn HLRBRep_AreaLimit_state_after_state(
         self_: *mut HLRBRep_AreaLimit,
         St: i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `HLRBRep_AreaLimit.hxx`:50 - `HLRBRep_AreaLimit::EdgeBefore()`
+    /// **Source:** `HLRBRep_AreaLimit.hxx`:47 - `HLRBRep_AreaLimit::EdgeBefore()`
     pub fn HLRBRep_AreaLimit_edge_before_state(
         self_: *mut HLRBRep_AreaLimit,
         St: i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `HLRBRep_AreaLimit.hxx`:52 - `HLRBRep_AreaLimit::EdgeAfter()`
+    /// **Source:** `HLRBRep_AreaLimit.hxx`:49 - `HLRBRep_AreaLimit::EdgeAfter()`
     pub fn HLRBRep_AreaLimit_edge_after_state(
         self_: *mut HLRBRep_AreaLimit,
         St: i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `HLRBRep_AreaLimit.hxx`:54 - `HLRBRep_AreaLimit::Previous()`
+    /// **Source:** `HLRBRep_AreaLimit.hxx`:51 - `HLRBRep_AreaLimit::Previous()`
     pub fn HLRBRep_AreaLimit_previous_handlehlrbreparealimit(
         self_: *mut HLRBRep_AreaLimit,
-        P: *const HandleHLRBRepAreaLimit,
+        P: *const Handle_HLRBRep_AreaLimit,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `HLRBRep_AreaLimit.hxx`:56 - `HLRBRep_AreaLimit::Next()`
+    /// **Source:** `HLRBRep_AreaLimit.hxx`:53 - `HLRBRep_AreaLimit::Next()`
     pub fn HLRBRep_AreaLimit_next_handlehlrbreparealimit(
         self_: *mut HLRBRep_AreaLimit,
-        N: *const HandleHLRBRepAreaLimit,
+        N: *const Handle_HLRBRep_AreaLimit,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `HLRBRep_AreaLimit.hxx`:58 - `HLRBRep_AreaLimit::Vertex()`
+    /// **Source:** `HLRBRep_AreaLimit.hxx`:55 - `HLRBRep_AreaLimit::Vertex()`
     pub fn HLRBRep_AreaLimit_vertex(
         self_: *const HLRBRep_AreaLimit,
     ) -> crate::OcctResult<*const HLRAlgo_Intersection>;
-    /// **Source:** `HLRBRep_AreaLimit.hxx`:60 - `HLRBRep_AreaLimit::IsBoundary()`
+    /// **Source:** `HLRBRep_AreaLimit.hxx`:57 - `HLRBRep_AreaLimit::IsBoundary()`
     pub fn HLRBRep_AreaLimit_is_boundary(
         self_: *const HLRBRep_AreaLimit,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `HLRBRep_AreaLimit.hxx`:62 - `HLRBRep_AreaLimit::IsInterference()`
+    /// **Source:** `HLRBRep_AreaLimit.hxx`:59 - `HLRBRep_AreaLimit::IsInterference()`
     pub fn HLRBRep_AreaLimit_is_interference(
         self_: *const HLRBRep_AreaLimit,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `HLRBRep_AreaLimit.hxx`:64 - `HLRBRep_AreaLimit::StateBefore()`
+    /// **Source:** `HLRBRep_AreaLimit.hxx`:61 - `HLRBRep_AreaLimit::StateBefore()`
     pub fn HLRBRep_AreaLimit_state_before(
         self_: *const HLRBRep_AreaLimit,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `HLRBRep_AreaLimit.hxx`:66 - `HLRBRep_AreaLimit::StateAfter()`
+    /// **Source:** `HLRBRep_AreaLimit.hxx`:63 - `HLRBRep_AreaLimit::StateAfter()`
     pub fn HLRBRep_AreaLimit_state_after(self_: *const HLRBRep_AreaLimit)
         -> crate::OcctResult<i32>;
-    /// **Source:** `HLRBRep_AreaLimit.hxx`:68 - `HLRBRep_AreaLimit::EdgeBefore()`
+    /// **Source:** `HLRBRep_AreaLimit.hxx`:65 - `HLRBRep_AreaLimit::EdgeBefore()`
     pub fn HLRBRep_AreaLimit_edge_before(self_: *const HLRBRep_AreaLimit)
         -> crate::OcctResult<i32>;
-    /// **Source:** `HLRBRep_AreaLimit.hxx`:70 - `HLRBRep_AreaLimit::EdgeAfter()`
+    /// **Source:** `HLRBRep_AreaLimit.hxx`:67 - `HLRBRep_AreaLimit::EdgeAfter()`
     pub fn HLRBRep_AreaLimit_edge_after(self_: *const HLRBRep_AreaLimit) -> crate::OcctResult<i32>;
-    /// **Source:** `HLRBRep_AreaLimit.hxx`:72 - `HLRBRep_AreaLimit::Previous()`
+    /// **Source:** `HLRBRep_AreaLimit.hxx`:69 - `HLRBRep_AreaLimit::Previous()`
     pub fn HLRBRep_AreaLimit_previous(
         self_: *const HLRBRep_AreaLimit,
-    ) -> crate::OcctResult<*mut HandleHLRBRepAreaLimit>;
-    /// **Source:** `HLRBRep_AreaLimit.hxx`:74 - `HLRBRep_AreaLimit::Next()`
+    ) -> crate::OcctResult<*mut Handle_HLRBRep_AreaLimit>;
+    /// **Source:** `HLRBRep_AreaLimit.hxx`:71 - `HLRBRep_AreaLimit::Next()`
     pub fn HLRBRep_AreaLimit_next(
         self_: *const HLRBRep_AreaLimit,
-    ) -> crate::OcctResult<*mut HandleHLRBRepAreaLimit>;
-    /// **Source:** `HLRBRep_AreaLimit.hxx`:76 - `HLRBRep_AreaLimit::Clear()`
+    ) -> crate::OcctResult<*mut Handle_HLRBRep_AreaLimit>;
+    /// **Source:** `HLRBRep_AreaLimit.hxx`:73 - `HLRBRep_AreaLimit::Clear()`
     pub fn HLRBRep_AreaLimit_clear(self_: *mut HLRBRep_AreaLimit) -> *const std::ffi::c_char;
-    /// **Source:** `HLRBRep_AreaLimit.hxx`:78 - `HLRBRep_AreaLimit::DynamicType()`
+    /// **Source:** `HLRBRep_AreaLimit.hxx`:75 - `HLRBRep_AreaLimit::DynamicType()`
     pub fn HLRBRep_AreaLimit_dynamic_type(
         self_: *const HLRBRep_AreaLimit,
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// **Source:** `HLRBRep_AreaLimit.hxx`:78 - `HLRBRep_AreaLimit::get_type_name()`
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
+    /// **Source:** `HLRBRep_AreaLimit.hxx`:75 - `HLRBRep_AreaLimit::get_type_name()`
     pub fn HLRBRep_AreaLimit_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
-    /// **Source:** `HLRBRep_AreaLimit.hxx`:78 - `HLRBRep_AreaLimit::get_type_descriptor()`
-    pub fn HLRBRep_AreaLimit_get_type_descriptor() -> crate::OcctResult<*const HandleStandardType>;
+    /// **Source:** `HLRBRep_AreaLimit.hxx`:75 - `HLRBRep_AreaLimit::get_type_descriptor()`
+    pub fn HLRBRep_AreaLimit_get_type_descriptor() -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast HLRBRep_AreaLimit to Standard_Transient
     pub fn HLRBRep_AreaLimit_as_Standard_Transient(
         self_: *const HLRBRep_AreaLimit,
@@ -3585,54 +3010,54 @@ unsafe extern "C" {
     /// Wrap HLRBRep_AreaLimit in a Handle
     pub fn HLRBRep_AreaLimit_to_handle(
         obj: *mut HLRBRep_AreaLimit,
-    ) -> crate::OcctResult<*mut HandleHLRBRepAreaLimit>;
+    ) -> crate::OcctResult<*mut Handle_HLRBRep_AreaLimit>;
     /// Destroy Handle<HLRBRep_AreaLimit>
-    pub fn HandleHLRBRepAreaLimit_destructor(self_: *mut HandleHLRBRepAreaLimit);
+    pub fn Handle_HLRBRep_AreaLimit_destructor(self_: *mut Handle_HLRBRep_AreaLimit);
     /// Clone Handle<HLRBRep_AreaLimit> (increments reference count)
-    pub fn HandleHLRBRepAreaLimit_clone(
-        self_: *const HandleHLRBRepAreaLimit,
-    ) -> crate::OcctResult<*mut HandleHLRBRepAreaLimit>;
+    pub fn Handle_HLRBRep_AreaLimit_clone(
+        self_: *const Handle_HLRBRep_AreaLimit,
+    ) -> crate::OcctResult<*mut Handle_HLRBRep_AreaLimit>;
     /// Check if Handle<HLRBRep_AreaLimit> is null
-    pub fn HandleHLRBRepAreaLimit_is_null(self_: *const HandleHLRBRepAreaLimit) -> bool;
+    pub fn Handle_HLRBRep_AreaLimit_is_null(self_: *const Handle_HLRBRep_AreaLimit) -> bool;
     /// Dereference Handle to get *const HLRBRep_AreaLimit
-    pub fn HandleHLRBRepAreaLimit_get(
-        handle: *const HandleHLRBRepAreaLimit,
+    pub fn Handle_HLRBRep_AreaLimit_get(
+        handle: *const Handle_HLRBRep_AreaLimit,
     ) -> crate::OcctResult<*const HLRBRep_AreaLimit>;
     /// Dereference Handle to get *mut HLRBRep_AreaLimit
-    pub fn HandleHLRBRepAreaLimit_get_mut(
-        handle: *mut HandleHLRBRepAreaLimit,
+    pub fn Handle_HLRBRep_AreaLimit_get_mut(
+        handle: *mut Handle_HLRBRep_AreaLimit,
     ) -> crate::OcctResult<*mut HLRBRep_AreaLimit>;
     /// Upcast Handle<HLRBRep_AreaLimit> to Handle<Standard_Transient>
-    pub fn HandleHLRBRepAreaLimit_to_HandleStandardTransient(
-        self_: *const HandleHLRBRepAreaLimit,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn Handle_HLRBRep_AreaLimit_to_Handle_Standard_Transient(
+        self_: *const Handle_HLRBRep_AreaLimit,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn HLRBRep_AreaLimit_inherited_IsInstance(
         self_: *const HLRBRep_AreaLimit,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn HLRBRep_AreaLimit_inherited_IsKind(
         self_: *const HLRBRep_AreaLimit,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn HLRBRep_AreaLimit_inherited_This(
         self_: *const HLRBRep_AreaLimit,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn HLRBRep_AreaLimit_inherited_GetRefCount(
         self_: *const HLRBRep_AreaLimit,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn HLRBRep_AreaLimit_inherited_IncrementRefCounter(
         self_: *mut HLRBRep_AreaLimit,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn HLRBRep_AreaLimit_inherited_DecrementRefCounter(
         self_: *mut HLRBRep_AreaLimit,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn HLRBRep_AreaLimit_inherited_Delete(
         self_: *const HLRBRep_AreaLimit,
     ) -> *const std::ffi::c_char;
@@ -3640,51 +3065,51 @@ unsafe extern "C" {
     pub fn HLRBRep_BCurveTool_destructor(self_: *mut HLRBRep_BCurveTool);
     /// **Source:** `HLRBRep_BCurveTool.hxx` - `HLRBRep_BCurveTool::HLRBRep_BCurveTool()`
     pub fn HLRBRep_BCurveTool_ctor() -> crate::OcctResult<*mut HLRBRep_BCurveTool>;
-    /// **Source:** `HLRBRep_BCurveTool.hxx`:47 - `HLRBRep_BCurveTool::FirstParameter()`
+    /// **Source:** `HLRBRep_BCurveTool.hxx`:46 - `HLRBRep_BCurveTool::FirstParameter()`
     pub fn HLRBRep_BCurveTool_first_parameter(
         C: *const BRepAdaptor_Curve,
     ) -> crate::OcctResult<f64>;
-    /// **Source:** `HLRBRep_BCurveTool.hxx`:49 - `HLRBRep_BCurveTool::LastParameter()`
+    /// **Source:** `HLRBRep_BCurveTool.hxx`:48 - `HLRBRep_BCurveTool::LastParameter()`
     pub fn HLRBRep_BCurveTool_last_parameter(C: *const BRepAdaptor_Curve)
         -> crate::OcctResult<f64>;
-    /// **Source:** `HLRBRep_BCurveTool.hxx`:51 - `HLRBRep_BCurveTool::Continuity()`
+    /// **Source:** `HLRBRep_BCurveTool.hxx`:50 - `HLRBRep_BCurveTool::Continuity()`
     pub fn HLRBRep_BCurveTool_continuity(C: *const BRepAdaptor_Curve) -> crate::OcctResult<i32>;
-    /// **Source:** `HLRBRep_BCurveTool.hxx`:55 - `HLRBRep_BCurveTool::NbIntervals()`
+    /// **Source:** `HLRBRep_BCurveTool.hxx`:54 - `HLRBRep_BCurveTool::NbIntervals()`
     pub fn HLRBRep_BCurveTool_nb_intervals(
         C: *const BRepAdaptor_Curve,
         S: i32,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `HLRBRep_BCurveTool.hxx`:62 - `HLRBRep_BCurveTool::Intervals()`
+    /// **Source:** `HLRBRep_BCurveTool.hxx`:61 - `HLRBRep_BCurveTool::Intervals()`
     pub fn HLRBRep_BCurveTool_intervals(
         C: *const BRepAdaptor_Curve,
-        T: *mut TColStd_Array1OfReal,
+        T: *mut NCollection_Array1_double,
         S: i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `HLRBRep_BCurveTool.hxx`:64 - `HLRBRep_BCurveTool::IsClosed()`
+    /// **Source:** `HLRBRep_BCurveTool.hxx`:65 - `HLRBRep_BCurveTool::IsClosed()`
     pub fn HLRBRep_BCurveTool_is_closed(C: *const BRepAdaptor_Curve) -> crate::OcctResult<bool>;
-    /// **Source:** `HLRBRep_BCurveTool.hxx`:66 - `HLRBRep_BCurveTool::IsPeriodic()`
+    /// **Source:** `HLRBRep_BCurveTool.hxx`:67 - `HLRBRep_BCurveTool::IsPeriodic()`
     pub fn HLRBRep_BCurveTool_is_periodic(C: *const BRepAdaptor_Curve) -> crate::OcctResult<bool>;
-    /// **Source:** `HLRBRep_BCurveTool.hxx`:68 - `HLRBRep_BCurveTool::Period()`
+    /// **Source:** `HLRBRep_BCurveTool.hxx`:69 - `HLRBRep_BCurveTool::Period()`
     pub fn HLRBRep_BCurveTool_period(C: *const BRepAdaptor_Curve) -> crate::OcctResult<f64>;
-    /// **Source:** `HLRBRep_BCurveTool.hxx`:71 - `HLRBRep_BCurveTool::Value()`
+    /// **Source:** `HLRBRep_BCurveTool.hxx`:72 - `HLRBRep_BCurveTool::Value()`
     pub fn HLRBRep_BCurveTool_value(
         C: *const BRepAdaptor_Curve,
         U: f64,
     ) -> crate::OcctResult<*mut gp_Pnt>;
-    /// **Source:** `HLRBRep_BCurveTool.hxx`:74 - `HLRBRep_BCurveTool::D0()`
+    /// **Source:** `HLRBRep_BCurveTool.hxx`:75 - `HLRBRep_BCurveTool::D0()`
     pub fn HLRBRep_BCurveTool_d0(
         C: *const BRepAdaptor_Curve,
         U: f64,
         P: *mut gp_Pnt,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `HLRBRep_BCurveTool.hxx`:80 - `HLRBRep_BCurveTool::D1()`
+    /// **Source:** `HLRBRep_BCurveTool.hxx`:81 - `HLRBRep_BCurveTool::D1()`
     pub fn HLRBRep_BCurveTool_d1(
         C: *const BRepAdaptor_Curve,
         U: f64,
         P: *mut gp_Pnt,
         V: *mut gp_Vec,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `HLRBRep_BCurveTool.hxx`:86 - `HLRBRep_BCurveTool::D2()`
+    /// **Source:** `HLRBRep_BCurveTool.hxx`:87 - `HLRBRep_BCurveTool::D2()`
     pub fn HLRBRep_BCurveTool_d2(
         C: *const BRepAdaptor_Curve,
         U: f64,
@@ -3692,7 +3117,7 @@ unsafe extern "C" {
         V1: *mut gp_Vec,
         V2: *mut gp_Vec,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `HLRBRep_BCurveTool.hxx`:96 - `HLRBRep_BCurveTool::D3()`
+    /// **Source:** `HLRBRep_BCurveTool.hxx`:93 - `HLRBRep_BCurveTool::D3()`
     pub fn HLRBRep_BCurveTool_d3(
         C: *const BRepAdaptor_Curve,
         U: f64,
@@ -3701,65 +3126,65 @@ unsafe extern "C" {
         V2: *mut gp_Vec,
         V3: *mut gp_Vec,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `HLRBRep_BCurveTool.hxx`:108 - `HLRBRep_BCurveTool::DN()`
+    /// **Source:** `HLRBRep_BCurveTool.hxx`:105 - `HLRBRep_BCurveTool::DN()`
     pub fn HLRBRep_BCurveTool_dn(
         C: *const BRepAdaptor_Curve,
         U: f64,
         N: i32,
     ) -> crate::OcctResult<*mut gp_Vec>;
-    /// **Source:** `HLRBRep_BCurveTool.hxx`:112 - `HLRBRep_BCurveTool::Resolution()`
+    /// **Source:** `HLRBRep_BCurveTool.hxx`:109 - `HLRBRep_BCurveTool::Resolution()`
     pub fn HLRBRep_BCurveTool_resolution(
         C: *const BRepAdaptor_Curve,
         R3d: f64,
     ) -> crate::OcctResult<f64>;
-    /// **Source:** `HLRBRep_BCurveTool.hxx`:117 - `HLRBRep_BCurveTool::GetType()`
+    /// **Source:** `HLRBRep_BCurveTool.hxx`:114 - `HLRBRep_BCurveTool::GetType()`
     pub fn HLRBRep_BCurveTool_get_type(C: *const BRepAdaptor_Curve) -> crate::OcctResult<i32>;
-    /// **Source:** `HLRBRep_BCurveTool.hxx`:119 - `HLRBRep_BCurveTool::Line()`
+    /// **Source:** `HLRBRep_BCurveTool.hxx`:116 - `HLRBRep_BCurveTool::Line()`
     pub fn HLRBRep_BCurveTool_line(C: *const BRepAdaptor_Curve) -> crate::OcctResult<*mut gp_Lin>;
-    /// **Source:** `HLRBRep_BCurveTool.hxx`:121 - `HLRBRep_BCurveTool::Circle()`
+    /// **Source:** `HLRBRep_BCurveTool.hxx`:118 - `HLRBRep_BCurveTool::Circle()`
     pub fn HLRBRep_BCurveTool_circle(
         C: *const BRepAdaptor_Curve,
     ) -> crate::OcctResult<*mut gp_Circ>;
-    /// **Source:** `HLRBRep_BCurveTool.hxx`:123 - `HLRBRep_BCurveTool::Ellipse()`
+    /// **Source:** `HLRBRep_BCurveTool.hxx`:120 - `HLRBRep_BCurveTool::Ellipse()`
     pub fn HLRBRep_BCurveTool_ellipse(
         C: *const BRepAdaptor_Curve,
     ) -> crate::OcctResult<*mut gp_Elips>;
-    /// **Source:** `HLRBRep_BCurveTool.hxx`:125 - `HLRBRep_BCurveTool::Hyperbola()`
+    /// **Source:** `HLRBRep_BCurveTool.hxx`:122 - `HLRBRep_BCurveTool::Hyperbola()`
     pub fn HLRBRep_BCurveTool_hyperbola(
         C: *const BRepAdaptor_Curve,
     ) -> crate::OcctResult<*mut gp_Hypr>;
-    /// **Source:** `HLRBRep_BCurveTool.hxx`:127 - `HLRBRep_BCurveTool::Parabola()`
+    /// **Source:** `HLRBRep_BCurveTool.hxx`:124 - `HLRBRep_BCurveTool::Parabola()`
     pub fn HLRBRep_BCurveTool_parabola(
         C: *const BRepAdaptor_Curve,
     ) -> crate::OcctResult<*mut gp_Parab>;
-    /// **Source:** `HLRBRep_BCurveTool.hxx`:129 - `HLRBRep_BCurveTool::Bezier()`
+    /// **Source:** `HLRBRep_BCurveTool.hxx`:126 - `HLRBRep_BCurveTool::Bezier()`
     pub fn HLRBRep_BCurveTool_bezier(
         C: *const BRepAdaptor_Curve,
-    ) -> crate::OcctResult<*mut HandleGeomBezierCurve>;
-    /// **Source:** `HLRBRep_BCurveTool.hxx`:131 - `HLRBRep_BCurveTool::BSpline()`
+    ) -> crate::OcctResult<*mut Handle_Geom_BezierCurve>;
+    /// **Source:** `HLRBRep_BCurveTool.hxx`:128 - `HLRBRep_BCurveTool::BSpline()`
     pub fn HLRBRep_BCurveTool_b_spline(
         C: *const BRepAdaptor_Curve,
-    ) -> crate::OcctResult<*mut HandleGeomBSplineCurve>;
-    /// **Source:** `HLRBRep_BCurveTool.hxx`:133 - `HLRBRep_BCurveTool::Degree()`
+    ) -> crate::OcctResult<*mut Handle_Geom_BSplineCurve>;
+    /// **Source:** `HLRBRep_BCurveTool.hxx`:130 - `HLRBRep_BCurveTool::Degree()`
     pub fn HLRBRep_BCurveTool_degree(C: *const BRepAdaptor_Curve) -> crate::OcctResult<i32>;
-    /// **Source:** `HLRBRep_BCurveTool.hxx`:135 - `HLRBRep_BCurveTool::IsRational()`
+    /// **Source:** `HLRBRep_BCurveTool.hxx`:132 - `HLRBRep_BCurveTool::IsRational()`
     pub fn HLRBRep_BCurveTool_is_rational(C: *const BRepAdaptor_Curve) -> crate::OcctResult<bool>;
-    /// **Source:** `HLRBRep_BCurveTool.hxx`:137 - `HLRBRep_BCurveTool::NbPoles()`
+    /// **Source:** `HLRBRep_BCurveTool.hxx`:134 - `HLRBRep_BCurveTool::NbPoles()`
     pub fn HLRBRep_BCurveTool_nb_poles(C: *const BRepAdaptor_Curve) -> crate::OcctResult<i32>;
-    /// **Source:** `HLRBRep_BCurveTool.hxx`:139 - `HLRBRep_BCurveTool::NbKnots()`
+    /// **Source:** `HLRBRep_BCurveTool.hxx`:136 - `HLRBRep_BCurveTool::NbKnots()`
     pub fn HLRBRep_BCurveTool_nb_knots(C: *const BRepAdaptor_Curve) -> crate::OcctResult<i32>;
-    /// **Source:** `HLRBRep_BCurveTool.hxx`:141 - `HLRBRep_BCurveTool::Poles()`
+    /// **Source:** `HLRBRep_BCurveTool.hxx`:138 - `HLRBRep_BCurveTool::Poles()`
     pub fn HLRBRep_BCurveTool_poles(
         C: *const BRepAdaptor_Curve,
-        T: *mut TColgp_Array1OfPnt,
+        T: *mut NCollection_Array1_gp_Pnt,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `HLRBRep_BCurveTool.hxx`:143 - `HLRBRep_BCurveTool::PolesAndWeights()`
+    /// **Source:** `HLRBRep_BCurveTool.hxx`:140 - `HLRBRep_BCurveTool::PolesAndWeights()`
     pub fn HLRBRep_BCurveTool_poles_and_weights(
         C: *const BRepAdaptor_Curve,
-        T: *mut TColgp_Array1OfPnt,
-        W: *mut TColStd_Array1OfReal,
+        T: *mut NCollection_Array1_gp_Pnt,
+        W: *mut NCollection_Array1_double,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `HLRBRep_BCurveTool.hxx`:147 - `HLRBRep_BCurveTool::NbSamples()`
+    /// **Source:** `HLRBRep_BCurveTool.hxx`:144 - `HLRBRep_BCurveTool::NbSamples()`
     pub fn HLRBRep_BCurveTool_nb_samples(
         C: *const BRepAdaptor_Curve,
         U0: f64,
@@ -3798,13 +3223,13 @@ unsafe extern "C" {
     /// **Source:** `HLRBRep_BSurfaceTool.hxx`:57 - `HLRBRep_BSurfaceTool::UIntervals()`
     pub fn HLRBRep_BSurfaceTool_u_intervals(
         S: *const BRepAdaptor_Surface,
-        T: *mut TColStd_Array1OfReal,
+        T: *mut NCollection_Array1_double,
         Sh: i32,
     ) -> *const std::ffi::c_char;
     /// **Source:** `HLRBRep_BSurfaceTool.hxx`:61 - `HLRBRep_BSurfaceTool::VIntervals()`
     pub fn HLRBRep_BSurfaceTool_v_intervals(
         S: *const BRepAdaptor_Surface,
-        T: *mut TColStd_Array1OfReal,
+        T: *mut NCollection_Array1_double,
         Sh: i32,
     ) -> *const std::ffi::c_char;
     /// **Source:** `HLRBRep_BSurfaceTool.hxx`:66 - `HLRBRep_BSurfaceTool::UTrim()`
@@ -3813,14 +3238,14 @@ unsafe extern "C" {
         First: f64,
         Last: f64,
         Tol: f64,
-    ) -> crate::OcctResult<*mut HandleAdaptor3dSurface>;
+    ) -> crate::OcctResult<*mut Handle_Adaptor3d_Surface>;
     /// **Source:** `HLRBRep_BSurfaceTool.hxx`:72 - `HLRBRep_BSurfaceTool::VTrim()`
     pub fn HLRBRep_BSurfaceTool_v_trim(
         S: *const BRepAdaptor_Surface,
         First: f64,
         Last: f64,
         Tol: f64,
-    ) -> crate::OcctResult<*mut HandleAdaptor3dSurface>;
+    ) -> crate::OcctResult<*mut Handle_Adaptor3d_Surface>;
     /// **Source:** `HLRBRep_BSurfaceTool.hxx`:77 - `HLRBRep_BSurfaceTool::IsUClosed()`
     pub fn HLRBRep_BSurfaceTool_is_u_closed(
         S: *const BRepAdaptor_Surface,
@@ -3854,7 +3279,7 @@ unsafe extern "C" {
         v: f64,
         P: *mut gp_Pnt,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `HLRBRep_BSurfaceTool.hxx`:96 - `HLRBRep_BSurfaceTool::D1()`
+    /// **Source:** `HLRBRep_BSurfaceTool.hxx`:93 - `HLRBRep_BSurfaceTool::D1()`
     pub fn HLRBRep_BSurfaceTool_d1(
         S: *const BRepAdaptor_Surface,
         u: f64,
@@ -3863,7 +3288,7 @@ unsafe extern "C" {
         D1u: *mut gp_Vec,
         D1v: *mut gp_Vec,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `HLRBRep_BSurfaceTool.hxx`:103 - `HLRBRep_BSurfaceTool::D2()`
+    /// **Source:** `HLRBRep_BSurfaceTool.hxx`:100 - `HLRBRep_BSurfaceTool::D2()`
     pub fn HLRBRep_BSurfaceTool_d2(
         S: *const BRepAdaptor_Surface,
         u: f64,
@@ -3875,7 +3300,7 @@ unsafe extern "C" {
         D2V: *mut gp_Vec,
         D2UV: *mut gp_Vec,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `HLRBRep_BSurfaceTool.hxx`:113 - `HLRBRep_BSurfaceTool::D3()`
+    /// **Source:** `HLRBRep_BSurfaceTool.hxx`:110 - `HLRBRep_BSurfaceTool::D3()`
     pub fn HLRBRep_BSurfaceTool_d3(
         S: *const BRepAdaptor_Surface,
         u: f64,
@@ -3891,7 +3316,7 @@ unsafe extern "C" {
         D3UUV: *mut gp_Vec,
         D3UVV: *mut gp_Vec,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `HLRBRep_BSurfaceTool.hxx`:127 - `HLRBRep_BSurfaceTool::DN()`
+    /// **Source:** `HLRBRep_BSurfaceTool.hxx`:124 - `HLRBRep_BSurfaceTool::DN()`
     pub fn HLRBRep_BSurfaceTool_dn(
         S: *const BRepAdaptor_Surface,
         u: f64,
@@ -3899,109 +3324,109 @@ unsafe extern "C" {
         Nu: i32,
         Nv: i32,
     ) -> crate::OcctResult<*mut gp_Vec>;
-    /// **Source:** `HLRBRep_BSurfaceTool.hxx`:133 - `HLRBRep_BSurfaceTool::UContinuity()`
+    /// **Source:** `HLRBRep_BSurfaceTool.hxx`:130 - `HLRBRep_BSurfaceTool::UContinuity()`
     pub fn HLRBRep_BSurfaceTool_u_continuity(
         S: *const BRepAdaptor_Surface,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `HLRBRep_BSurfaceTool.hxx`:135 - `HLRBRep_BSurfaceTool::VContinuity()`
+    /// **Source:** `HLRBRep_BSurfaceTool.hxx`:132 - `HLRBRep_BSurfaceTool::VContinuity()`
     pub fn HLRBRep_BSurfaceTool_v_continuity(
         S: *const BRepAdaptor_Surface,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `HLRBRep_BSurfaceTool.hxx`:137 - `HLRBRep_BSurfaceTool::UDegree()`
+    /// **Source:** `HLRBRep_BSurfaceTool.hxx`:134 - `HLRBRep_BSurfaceTool::UDegree()`
     pub fn HLRBRep_BSurfaceTool_u_degree(S: *const BRepAdaptor_Surface) -> crate::OcctResult<i32>;
-    /// **Source:** `HLRBRep_BSurfaceTool.hxx`:139 - `HLRBRep_BSurfaceTool::NbUPoles()`
+    /// **Source:** `HLRBRep_BSurfaceTool.hxx`:136 - `HLRBRep_BSurfaceTool::NbUPoles()`
     pub fn HLRBRep_BSurfaceTool_nb_u_poles(S: *const BRepAdaptor_Surface)
         -> crate::OcctResult<i32>;
-    /// **Source:** `HLRBRep_BSurfaceTool.hxx`:141 - `HLRBRep_BSurfaceTool::NbUKnots()`
+    /// **Source:** `HLRBRep_BSurfaceTool.hxx`:138 - `HLRBRep_BSurfaceTool::NbUKnots()`
     pub fn HLRBRep_BSurfaceTool_nb_u_knots(S: *const BRepAdaptor_Surface)
         -> crate::OcctResult<i32>;
-    /// **Source:** `HLRBRep_BSurfaceTool.hxx`:143 - `HLRBRep_BSurfaceTool::IsURational()`
+    /// **Source:** `HLRBRep_BSurfaceTool.hxx`:140 - `HLRBRep_BSurfaceTool::IsURational()`
     pub fn HLRBRep_BSurfaceTool_is_u_rational(
         S: *const BRepAdaptor_Surface,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `HLRBRep_BSurfaceTool.hxx`:145 - `HLRBRep_BSurfaceTool::VDegree()`
+    /// **Source:** `HLRBRep_BSurfaceTool.hxx`:142 - `HLRBRep_BSurfaceTool::VDegree()`
     pub fn HLRBRep_BSurfaceTool_v_degree(S: *const BRepAdaptor_Surface) -> crate::OcctResult<i32>;
-    /// **Source:** `HLRBRep_BSurfaceTool.hxx`:147 - `HLRBRep_BSurfaceTool::NbVPoles()`
+    /// **Source:** `HLRBRep_BSurfaceTool.hxx`:144 - `HLRBRep_BSurfaceTool::NbVPoles()`
     pub fn HLRBRep_BSurfaceTool_nb_v_poles(S: *const BRepAdaptor_Surface)
         -> crate::OcctResult<i32>;
-    /// **Source:** `HLRBRep_BSurfaceTool.hxx`:149 - `HLRBRep_BSurfaceTool::NbVKnots()`
+    /// **Source:** `HLRBRep_BSurfaceTool.hxx`:146 - `HLRBRep_BSurfaceTool::NbVKnots()`
     pub fn HLRBRep_BSurfaceTool_nb_v_knots(S: *const BRepAdaptor_Surface)
         -> crate::OcctResult<i32>;
-    /// **Source:** `HLRBRep_BSurfaceTool.hxx`:151 - `HLRBRep_BSurfaceTool::IsVRational()`
+    /// **Source:** `HLRBRep_BSurfaceTool.hxx`:148 - `HLRBRep_BSurfaceTool::IsVRational()`
     pub fn HLRBRep_BSurfaceTool_is_v_rational(
         S: *const BRepAdaptor_Surface,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `HLRBRep_BSurfaceTool.hxx`:153 - `HLRBRep_BSurfaceTool::UResolution()`
+    /// **Source:** `HLRBRep_BSurfaceTool.hxx`:150 - `HLRBRep_BSurfaceTool::UResolution()`
     pub fn HLRBRep_BSurfaceTool_u_resolution(
         S: *const BRepAdaptor_Surface,
         R3d: f64,
     ) -> crate::OcctResult<f64>;
-    /// **Source:** `HLRBRep_BSurfaceTool.hxx`:155 - `HLRBRep_BSurfaceTool::VResolution()`
+    /// **Source:** `HLRBRep_BSurfaceTool.hxx`:152 - `HLRBRep_BSurfaceTool::VResolution()`
     pub fn HLRBRep_BSurfaceTool_v_resolution(
         S: *const BRepAdaptor_Surface,
         R3d: f64,
     ) -> crate::OcctResult<f64>;
-    /// **Source:** `HLRBRep_BSurfaceTool.hxx`:157 - `HLRBRep_BSurfaceTool::GetType()`
+    /// **Source:** `HLRBRep_BSurfaceTool.hxx`:154 - `HLRBRep_BSurfaceTool::GetType()`
     pub fn HLRBRep_BSurfaceTool_get_type(S: *const BRepAdaptor_Surface) -> crate::OcctResult<i32>;
-    /// **Source:** `HLRBRep_BSurfaceTool.hxx`:159 - `HLRBRep_BSurfaceTool::Plane()`
+    /// **Source:** `HLRBRep_BSurfaceTool.hxx`:156 - `HLRBRep_BSurfaceTool::Plane()`
     pub fn HLRBRep_BSurfaceTool_plane(
         S: *const BRepAdaptor_Surface,
     ) -> crate::OcctResult<*mut gp_Pln>;
-    /// **Source:** `HLRBRep_BSurfaceTool.hxx`:161 - `HLRBRep_BSurfaceTool::Cylinder()`
+    /// **Source:** `HLRBRep_BSurfaceTool.hxx`:158 - `HLRBRep_BSurfaceTool::Cylinder()`
     pub fn HLRBRep_BSurfaceTool_cylinder(
         S: *const BRepAdaptor_Surface,
     ) -> crate::OcctResult<*mut gp_Cylinder>;
-    /// **Source:** `HLRBRep_BSurfaceTool.hxx`:163 - `HLRBRep_BSurfaceTool::Cone()`
+    /// **Source:** `HLRBRep_BSurfaceTool.hxx`:160 - `HLRBRep_BSurfaceTool::Cone()`
     pub fn HLRBRep_BSurfaceTool_cone(
         S: *const BRepAdaptor_Surface,
     ) -> crate::OcctResult<*mut gp_Cone>;
-    /// **Source:** `HLRBRep_BSurfaceTool.hxx`:165 - `HLRBRep_BSurfaceTool::Torus()`
+    /// **Source:** `HLRBRep_BSurfaceTool.hxx`:162 - `HLRBRep_BSurfaceTool::Torus()`
     pub fn HLRBRep_BSurfaceTool_torus(
         S: *const BRepAdaptor_Surface,
     ) -> crate::OcctResult<*mut gp_Torus>;
-    /// **Source:** `HLRBRep_BSurfaceTool.hxx`:167 - `HLRBRep_BSurfaceTool::Sphere()`
+    /// **Source:** `HLRBRep_BSurfaceTool.hxx`:164 - `HLRBRep_BSurfaceTool::Sphere()`
     pub fn HLRBRep_BSurfaceTool_sphere(
         S: *const BRepAdaptor_Surface,
     ) -> crate::OcctResult<*mut gp_Sphere>;
-    /// **Source:** `HLRBRep_BSurfaceTool.hxx`:169 - `HLRBRep_BSurfaceTool::Bezier()`
+    /// **Source:** `HLRBRep_BSurfaceTool.hxx`:166 - `HLRBRep_BSurfaceTool::Bezier()`
     pub fn HLRBRep_BSurfaceTool_bezier(
         S: *const BRepAdaptor_Surface,
-    ) -> crate::OcctResult<*mut HandleGeomBezierSurface>;
-    /// **Source:** `HLRBRep_BSurfaceTool.hxx`:171 - `HLRBRep_BSurfaceTool::BSpline()`
+    ) -> crate::OcctResult<*mut Handle_Geom_BezierSurface>;
+    /// **Source:** `HLRBRep_BSurfaceTool.hxx`:168 - `HLRBRep_BSurfaceTool::BSpline()`
     pub fn HLRBRep_BSurfaceTool_b_spline(
         S: *const BRepAdaptor_Surface,
-    ) -> crate::OcctResult<*mut HandleGeomBSplineSurface>;
-    /// **Source:** `HLRBRep_BSurfaceTool.hxx`:173 - `HLRBRep_BSurfaceTool::AxeOfRevolution()`
+    ) -> crate::OcctResult<*mut Handle_Geom_BSplineSurface>;
+    /// **Source:** `HLRBRep_BSurfaceTool.hxx`:170 - `HLRBRep_BSurfaceTool::AxeOfRevolution()`
     pub fn HLRBRep_BSurfaceTool_axe_of_revolution(
         S: *const BRepAdaptor_Surface,
     ) -> crate::OcctResult<*mut gp_Ax1>;
-    /// **Source:** `HLRBRep_BSurfaceTool.hxx`:175 - `HLRBRep_BSurfaceTool::Direction()`
+    /// **Source:** `HLRBRep_BSurfaceTool.hxx`:172 - `HLRBRep_BSurfaceTool::Direction()`
     pub fn HLRBRep_BSurfaceTool_direction(
         S: *const BRepAdaptor_Surface,
     ) -> crate::OcctResult<*mut gp_Dir>;
-    /// **Source:** `HLRBRep_BSurfaceTool.hxx`:177 - `HLRBRep_BSurfaceTool::BasisCurve()`
+    /// **Source:** `HLRBRep_BSurfaceTool.hxx`:174 - `HLRBRep_BSurfaceTool::BasisCurve()`
     pub fn HLRBRep_BSurfaceTool_basis_curve(
         S: *const BRepAdaptor_Surface,
-    ) -> crate::OcctResult<*mut HandleAdaptor3dCurve>;
-    /// **Source:** `HLRBRep_BSurfaceTool.hxx`:179 - `HLRBRep_BSurfaceTool::Axis()`
+    ) -> crate::OcctResult<*mut Handle_Adaptor3d_Curve>;
+    /// **Source:** `HLRBRep_BSurfaceTool.hxx`:176 - `HLRBRep_BSurfaceTool::Axis()`
     pub fn HLRBRep_BSurfaceTool_axis(
         S: *const BRepAdaptor_Surface,
     ) -> crate::OcctResult<*mut gp_Ax1>;
-    /// **Source:** `HLRBRep_BSurfaceTool.hxx`:181 - `HLRBRep_BSurfaceTool::NbSamplesU()`
+    /// **Source:** `HLRBRep_BSurfaceTool.hxx`:178 - `HLRBRep_BSurfaceTool::NbSamplesU()`
     pub fn HLRBRep_BSurfaceTool_nb_samples_u_surface(
         S: *const BRepAdaptor_Surface,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `HLRBRep_BSurfaceTool.hxx`:183 - `HLRBRep_BSurfaceTool::NbSamplesV()`
+    /// **Source:** `HLRBRep_BSurfaceTool.hxx`:180 - `HLRBRep_BSurfaceTool::NbSamplesV()`
     pub fn HLRBRep_BSurfaceTool_nb_samples_v_surface(
         S: *const BRepAdaptor_Surface,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `HLRBRep_BSurfaceTool.hxx`:185 - `HLRBRep_BSurfaceTool::NbSamplesU()`
+    /// **Source:** `HLRBRep_BSurfaceTool.hxx`:182 - `HLRBRep_BSurfaceTool::NbSamplesU()`
     pub fn HLRBRep_BSurfaceTool_nb_samples_u_surface_real2(
         S: *const BRepAdaptor_Surface,
         u1: f64,
         u2: f64,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `HLRBRep_BSurfaceTool.hxx`:189 - `HLRBRep_BSurfaceTool::NbSamplesV()`
+    /// **Source:** `HLRBRep_BSurfaceTool.hxx`:186 - `HLRBRep_BSurfaceTool::NbSamplesV()`
     pub fn HLRBRep_BSurfaceTool_nb_samples_v_surface_real2(
         S: *const BRepAdaptor_Surface,
         v1: f64,
@@ -4138,27 +3563,27 @@ unsafe extern "C" {
     /// **Source:** `HLRBRep_CInter.hxx`:49 - `HLRBRep_CInter::HLRBRep_CInter()`
     pub fn HLRBRep_CInter_ctor() -> crate::OcctResult<*mut HLRBRep_CInter>;
     /// **Source:** `HLRBRep_CInter.hxx`:52 - `HLRBRep_CInter::HLRBRep_CInter()`
-    pub fn HLRBRep_CInter_ctor_address_real2(
+    pub fn HLRBRep_CInter_ctor_voidptr_real2(
         C: *const *mut std::ffi::c_void,
         TolConf: f64,
         Tol: f64,
     ) -> crate::OcctResult<*mut HLRBRep_CInter>;
     /// **Source:** `HLRBRep_CInter.hxx`:55 - `HLRBRep_CInter::HLRBRep_CInter()`
-    pub fn HLRBRep_CInter_ctor_address_domain_real2(
+    pub fn HLRBRep_CInter_ctor_voidptr_domain_real2(
         C: *const *mut std::ffi::c_void,
         D: *const IntRes2d_Domain,
         TolConf: f64,
         Tol: f64,
     ) -> crate::OcctResult<*mut HLRBRep_CInter>;
     /// **Source:** `HLRBRep_CInter.hxx`:61 - `HLRBRep_CInter::HLRBRep_CInter()`
-    pub fn HLRBRep_CInter_ctor_address2_real2(
+    pub fn HLRBRep_CInter_ctor_voidptr2_real2(
         C1: *const *mut std::ffi::c_void,
         C2: *const *mut std::ffi::c_void,
         TolConf: f64,
         Tol: f64,
     ) -> crate::OcctResult<*mut HLRBRep_CInter>;
     /// **Source:** `HLRBRep_CInter.hxx`:67 - `HLRBRep_CInter::HLRBRep_CInter()`
-    pub fn HLRBRep_CInter_ctor_address_domain_address_real2(
+    pub fn HLRBRep_CInter_ctor_voidptr_domain_voidptr_real2(
         C1: *const *mut std::ffi::c_void,
         D1: *const IntRes2d_Domain,
         C2: *const *mut std::ffi::c_void,
@@ -4166,7 +3591,7 @@ unsafe extern "C" {
         Tol: f64,
     ) -> crate::OcctResult<*mut HLRBRep_CInter>;
     /// **Source:** `HLRBRep_CInter.hxx`:74 - `HLRBRep_CInter::HLRBRep_CInter()`
-    pub fn HLRBRep_CInter_ctor_address2_domain_real2(
+    pub fn HLRBRep_CInter_ctor_voidptr2_domain_real2(
         C1: *const *mut std::ffi::c_void,
         C2: *const *mut std::ffi::c_void,
         D2: *const IntRes2d_Domain,
@@ -4174,7 +3599,7 @@ unsafe extern "C" {
         Tol: f64,
     ) -> crate::OcctResult<*mut HLRBRep_CInter>;
     /// **Source:** `HLRBRep_CInter.hxx`:81 - `HLRBRep_CInter::HLRBRep_CInter()`
-    pub fn HLRBRep_CInter_ctor_address_domain_address_domain_real2(
+    pub fn HLRBRep_CInter_ctor_voidptr_domain_voidptr_domain_real2(
         C1: *const *mut std::ffi::c_void,
         D1: *const IntRes2d_Domain,
         C2: *const *mut std::ffi::c_void,
@@ -4183,7 +3608,7 @@ unsafe extern "C" {
         Tol: f64,
     ) -> crate::OcctResult<*mut HLRBRep_CInter>;
     /// **Source:** `HLRBRep_CInter.hxx`:89 - `HLRBRep_CInter::Perform()`
-    pub fn HLRBRep_CInter_perform_address_domain_address_domain_real2(
+    pub fn HLRBRep_CInter_perform_voidptr_domain_voidptr_domain_real2(
         self_: *mut HLRBRep_CInter,
         C1: *const *mut std::ffi::c_void,
         D1: *const IntRes2d_Domain,
@@ -4193,7 +3618,7 @@ unsafe extern "C" {
         Tol: f64,
     ) -> *const std::ffi::c_char;
     /// **Source:** `HLRBRep_CInter.hxx`:97 - `HLRBRep_CInter::Perform()`
-    pub fn HLRBRep_CInter_perform_address2_real2(
+    pub fn HLRBRep_CInter_perform_voidptr2_real2(
         self_: *mut HLRBRep_CInter,
         C1: *const *mut std::ffi::c_void,
         C2: *const *mut std::ffi::c_void,
@@ -4201,7 +3626,7 @@ unsafe extern "C" {
         Tol: f64,
     ) -> *const std::ffi::c_char;
     /// **Source:** `HLRBRep_CInter.hxx`:103 - `HLRBRep_CInter::Perform()`
-    pub fn HLRBRep_CInter_perform_address_domain_real2(
+    pub fn HLRBRep_CInter_perform_voidptr_domain_real2(
         self_: *mut HLRBRep_CInter,
         C1: *const *mut std::ffi::c_void,
         D1: *const IntRes2d_Domain,
@@ -4209,14 +3634,14 @@ unsafe extern "C" {
         Tol: f64,
     ) -> *const std::ffi::c_char;
     /// **Source:** `HLRBRep_CInter.hxx`:109 - `HLRBRep_CInter::Perform()`
-    pub fn HLRBRep_CInter_perform_address_real2(
+    pub fn HLRBRep_CInter_perform_voidptr_real2(
         self_: *mut HLRBRep_CInter,
         C1: *const *mut std::ffi::c_void,
         TolConf: f64,
         Tol: f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `HLRBRep_CInter.hxx`:114 - `HLRBRep_CInter::Perform()`
-    pub fn HLRBRep_CInter_perform_address_domain_address_real2(
+    /// **Source:** `HLRBRep_CInter.hxx`:112 - `HLRBRep_CInter::Perform()`
+    pub fn HLRBRep_CInter_perform_voidptr_domain_voidptr_real2(
         self_: *mut HLRBRep_CInter,
         C1: *const *mut std::ffi::c_void,
         D1: *const IntRes2d_Domain,
@@ -4224,8 +3649,8 @@ unsafe extern "C" {
         TolConf: f64,
         Tol: f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `HLRBRep_CInter.hxx`:121 - `HLRBRep_CInter::Perform()`
-    pub fn HLRBRep_CInter_perform_address2_domain_real2(
+    /// **Source:** `HLRBRep_CInter.hxx`:119 - `HLRBRep_CInter::Perform()`
+    pub fn HLRBRep_CInter_perform_voidptr2_domain_real2(
         self_: *mut HLRBRep_CInter,
         C1: *const *mut std::ffi::c_void,
         C2: *const *mut std::ffi::c_void,
@@ -4233,18 +3658,18 @@ unsafe extern "C" {
         TolConf: f64,
         Tol: f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `HLRBRep_CInter.hxx`:128 - `HLRBRep_CInter::ComputeDomain()`
+    /// **Source:** `HLRBRep_CInter.hxx`:126 - `HLRBRep_CInter::ComputeDomain()`
     pub fn HLRBRep_CInter_compute_domain(
         self_: *const HLRBRep_CInter,
         C1: *const *mut std::ffi::c_void,
         TolDomain: f64,
     ) -> crate::OcctResult<*mut IntRes2d_Domain>;
-    /// **Source:** `HLRBRep_CInter.hxx`:132 - `HLRBRep_CInter::SetMinNbSamples()`
+    /// **Source:** `HLRBRep_CInter.hxx`:130 - `HLRBRep_CInter::SetMinNbSamples()`
     pub fn HLRBRep_CInter_set_min_nb_samples(
         self_: *mut HLRBRep_CInter,
         theMinNbSamples: i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `HLRBRep_CInter.hxx`:133 - `HLRBRep_CInter::GetMinNbSamples()`
+    /// **Source:** `HLRBRep_CInter.hxx`:131 - `HLRBRep_CInter::GetMinNbSamples()`
     pub fn HLRBRep_CInter_get_min_nb_samples(
         self_: *const HLRBRep_CInter,
     ) -> crate::OcctResult<i32>;
@@ -4256,115 +3681,54 @@ unsafe extern "C" {
     pub fn HLRBRep_CInter_as_IntRes2d_Intersection_mut(
         self_: *mut HLRBRep_CInter,
     ) -> crate::OcctResult<*mut IntRes2d_Intersection>;
-    /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:39 - `IntRes2d_Intersection::IsDone()`
+    /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:40 - `IntRes2d_Intersection::IsDone()`
     pub fn HLRBRep_CInter_inherited_IsDone(self_: *const HLRBRep_CInter)
         -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:44 - `IntRes2d_Intersection::IsEmpty()`
+    /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:45 - `IntRes2d_Intersection::IsEmpty()`
     pub fn HLRBRep_CInter_inherited_IsEmpty(
         self_: *const HLRBRep_CInter,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:49 - `IntRes2d_Intersection::NbPoints()`
+    /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:50 - `IntRes2d_Intersection::NbPoints()`
     pub fn HLRBRep_CInter_inherited_NbPoints(
         self_: *const HLRBRep_CInter,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:56 - `IntRes2d_Intersection::Point()`
+    /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:57 - `IntRes2d_Intersection::Point()`
     pub fn HLRBRep_CInter_inherited_Point(
         self_: *const HLRBRep_CInter,
         N: i32,
     ) -> crate::OcctResult<*const IntRes2d_IntersectionPoint>;
-    /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:61 - `IntRes2d_Intersection::NbSegments()`
+    /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:62 - `IntRes2d_Intersection::NbSegments()`
     pub fn HLRBRep_CInter_inherited_NbSegments(
         self_: *const HLRBRep_CInter,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:68 - `IntRes2d_Intersection::Segment()`
+    /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:69 - `IntRes2d_Intersection::Segment()`
     pub fn HLRBRep_CInter_inherited_Segment(
         self_: *const HLRBRep_CInter,
         N: i32,
     ) -> crate::OcctResult<*const IntRes2d_IntersectionSegment>;
-    /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:70 - `IntRes2d_Intersection::SetReversedParameters()`
+    /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:71 - `IntRes2d_Intersection::SetReversedParameters()`
     pub fn HLRBRep_CInter_inherited_SetReversedParameters(
         self_: *mut HLRBRep_CInter,
         Reverseflag: bool,
-    ) -> *const std::ffi::c_char;
-    // ======================== HLRBRep_CLProps ========================
-    pub fn HLRBRep_CLProps_destructor(self_: *mut HLRBRep_CLProps);
-    /// **Source:** `HLRBRep_CLProps.hxx`:52 - `HLRBRep_CLProps::HLRBRep_CLProps()`
-    pub fn HLRBRep_CLProps_ctor_curveptr_int_real(
-        C: *mut *const HLRBRep_Curve,
-        N: i32,
-        Resolution: f64,
-    ) -> crate::OcctResult<*mut HLRBRep_CLProps>;
-    /// **Source:** `HLRBRep_CLProps.hxx`:59 - `HLRBRep_CLProps::HLRBRep_CLProps()`
-    pub fn HLRBRep_CLProps_ctor_curveptr_real_int_real(
-        C: *mut *const HLRBRep_Curve,
-        U: f64,
-        N: i32,
-        Resolution: f64,
-    ) -> crate::OcctResult<*mut HLRBRep_CLProps>;
-    /// **Source:** `HLRBRep_CLProps.hxx`:70 - `HLRBRep_CLProps::HLRBRep_CLProps()`
-    pub fn HLRBRep_CLProps_ctor_int_real(
-        N: i32,
-        Resolution: f64,
-    ) -> crate::OcctResult<*mut HLRBRep_CLProps>;
-    /// **Source:** `HLRBRep_CLProps.hxx`:74 - `HLRBRep_CLProps::SetParameter()`
-    pub fn HLRBRep_CLProps_set_parameter(
-        self_: *mut HLRBRep_CLProps,
-        U: f64,
-    ) -> *const std::ffi::c_char;
-    /// **Source:** `HLRBRep_CLProps.hxx`:78 - `HLRBRep_CLProps::SetCurve()`
-    pub fn HLRBRep_CLProps_set_curve(
-        self_: *mut HLRBRep_CLProps,
-        C: *mut *const HLRBRep_Curve,
-    ) -> *const std::ffi::c_char;
-    /// **Source:** `HLRBRep_CLProps.hxx`:81 - `HLRBRep_CLProps::Value()`
-    pub fn HLRBRep_CLProps_value(
-        self_: *const HLRBRep_CLProps,
-    ) -> crate::OcctResult<*const gp_Pnt2d>;
-    /// **Source:** `HLRBRep_CLProps.hxx`:85 - `HLRBRep_CLProps::D1()`
-    pub fn HLRBRep_CLProps_d1(self_: *mut HLRBRep_CLProps) -> crate::OcctResult<*const gp_Vec2d>;
-    /// **Source:** `HLRBRep_CLProps.hxx`:89 - `HLRBRep_CLProps::D2()`
-    pub fn HLRBRep_CLProps_d2(self_: *mut HLRBRep_CLProps) -> crate::OcctResult<*const gp_Vec2d>;
-    /// **Source:** `HLRBRep_CLProps.hxx`:93 - `HLRBRep_CLProps::D3()`
-    pub fn HLRBRep_CLProps_d3(self_: *mut HLRBRep_CLProps) -> crate::OcctResult<*const gp_Vec2d>;
-    /// **Source:** `HLRBRep_CLProps.hxx`:98 - `HLRBRep_CLProps::IsTangentDefined()`
-    pub fn HLRBRep_CLProps_is_tangent_defined(
-        self_: *mut HLRBRep_CLProps,
-    ) -> crate::OcctResult<bool>;
-    /// **Source:** `HLRBRep_CLProps.hxx`:101 - `HLRBRep_CLProps::Tangent()`
-    pub fn HLRBRep_CLProps_tangent(
-        self_: *mut HLRBRep_CLProps,
-        D: *mut gp_Dir2d,
-    ) -> *const std::ffi::c_char;
-    /// **Source:** `HLRBRep_CLProps.hxx`:104 - `HLRBRep_CLProps::Curvature()`
-    pub fn HLRBRep_CLProps_curvature(self_: *mut HLRBRep_CLProps) -> crate::OcctResult<f64>;
-    /// **Source:** `HLRBRep_CLProps.hxx`:107 - `HLRBRep_CLProps::Normal()`
-    pub fn HLRBRep_CLProps_normal(
-        self_: *mut HLRBRep_CLProps,
-        N: *mut gp_Dir2d,
-    ) -> *const std::ffi::c_char;
-    /// **Source:** `HLRBRep_CLProps.hxx`:110 - `HLRBRep_CLProps::CentreOfCurvature()`
-    pub fn HLRBRep_CLProps_centre_of_curvature(
-        self_: *mut HLRBRep_CLProps,
-        P: *mut gp_Pnt2d,
     ) -> *const std::ffi::c_char;
     // ======================== HLRBRep_CLPropsATool ========================
     pub fn HLRBRep_CLPropsATool_destructor(self_: *mut HLRBRep_CLPropsATool);
     /// **Source:** `HLRBRep_CLPropsATool.hxx` - `HLRBRep_CLPropsATool::HLRBRep_CLPropsATool()`
     pub fn HLRBRep_CLPropsATool_ctor() -> crate::OcctResult<*mut HLRBRep_CLPropsATool>;
-    /// **Source:** `HLRBRep_CLPropsATool.hxx`:35 - `HLRBRep_CLPropsATool::Value()`
+    /// **Source:** `HLRBRep_CLPropsATool.hxx`:36 - `HLRBRep_CLPropsATool::Value()`
     pub fn HLRBRep_CLPropsATool_value(
         A: *const HLRBRep_Curve,
         U: f64,
         P: *mut gp_Pnt2d,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `HLRBRep_CLPropsATool.hxx`:39 - `HLRBRep_CLPropsATool::D1()`
+    /// **Source:** `HLRBRep_CLPropsATool.hxx`:40 - `HLRBRep_CLPropsATool::D1()`
     pub fn HLRBRep_CLPropsATool_d1(
         A: *const HLRBRep_Curve,
         U: f64,
         P: *mut gp_Pnt2d,
         V1: *mut gp_Vec2d,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `HLRBRep_CLPropsATool.hxx`:44 - `HLRBRep_CLPropsATool::D2()`
+    /// **Source:** `HLRBRep_CLPropsATool.hxx`:45 - `HLRBRep_CLPropsATool::D2()`
     pub fn HLRBRep_CLPropsATool_d2(
         A: *const HLRBRep_Curve,
         U: f64,
@@ -4372,7 +3736,7 @@ unsafe extern "C" {
         V1: *mut gp_Vec2d,
         V2: *mut gp_Vec2d,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `HLRBRep_CLPropsATool.hxx`:53 - `HLRBRep_CLPropsATool::D3()`
+    /// **Source:** `HLRBRep_CLPropsATool.hxx`:50 - `HLRBRep_CLPropsATool::D3()`
     pub fn HLRBRep_CLPropsATool_d3(
         A: *const HLRBRep_Curve,
         U: f64,
@@ -4381,125 +3745,125 @@ unsafe extern "C" {
         V2: *mut gp_Vec2d,
         V3: *mut gp_Vec2d,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `HLRBRep_CLPropsATool.hxx`:65 - `HLRBRep_CLPropsATool::Continuity()`
+    /// **Source:** `HLRBRep_CLPropsATool.hxx`:61 - `HLRBRep_CLPropsATool::Continuity()`
     pub fn HLRBRep_CLPropsATool_continuity(A: *const HLRBRep_Curve) -> crate::OcctResult<i32>;
-    /// **Source:** `HLRBRep_CLPropsATool.hxx`:68 - `HLRBRep_CLPropsATool::FirstParameter()`
+    /// **Source:** `HLRBRep_CLPropsATool.hxx`:64 - `HLRBRep_CLPropsATool::FirstParameter()`
     pub fn HLRBRep_CLPropsATool_first_parameter(A: *const HLRBRep_Curve) -> crate::OcctResult<f64>;
-    /// **Source:** `HLRBRep_CLPropsATool.hxx`:72 - `HLRBRep_CLPropsATool::LastParameter()`
+    /// **Source:** `HLRBRep_CLPropsATool.hxx`:68 - `HLRBRep_CLPropsATool::LastParameter()`
     pub fn HLRBRep_CLPropsATool_last_parameter(A: *const HLRBRep_Curve) -> crate::OcctResult<f64>;
     // ======================== HLRBRep_Curve ========================
     pub fn HLRBRep_Curve_destructor(self_: *mut HLRBRep_Curve);
-    /// **Source:** `HLRBRep_Curve.hxx`:55 - `HLRBRep_Curve::HLRBRep_Curve()`
+    /// **Source:** `HLRBRep_Curve.hxx`:53 - `HLRBRep_Curve::HLRBRep_Curve()`
     pub fn HLRBRep_Curve_ctor() -> crate::OcctResult<*mut HLRBRep_Curve>;
-    /// **Source:** `HLRBRep_Curve.hxx`:57 - `HLRBRep_Curve::Projector()`
+    /// **Source:** `HLRBRep_Curve.hxx`:55 - `HLRBRep_Curve::Projector()`
     pub fn HLRBRep_Curve_projector(
         self_: *mut HLRBRep_Curve,
         Proj: *const HLRAlgo_Projector,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `HLRBRep_Curve.hxx`:60 - `HLRBRep_Curve::Curve()`
+    /// **Source:** `HLRBRep_Curve.hxx`:58 - `HLRBRep_Curve::Curve()`
     pub fn HLRBRep_Curve_curve(
         self_: *mut HLRBRep_Curve,
     ) -> crate::OcctResult<*mut BRepAdaptor_Curve>;
-    /// **Source:** `HLRBRep_Curve.hxx`:63 - `HLRBRep_Curve::Curve()`
+    /// **Source:** `HLRBRep_Curve.hxx`:61 - `HLRBRep_Curve::Curve()`
     pub fn HLRBRep_Curve_curve_edge(
         self_: *mut HLRBRep_Curve,
         E: *const TopoDS_Edge,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `HLRBRep_Curve.hxx`:66 - `HLRBRep_Curve::GetCurve()`
+    /// **Source:** `HLRBRep_Curve.hxx`:64 - `HLRBRep_Curve::GetCurve()`
     pub fn HLRBRep_Curve_get_curve(
         self_: *const HLRBRep_Curve,
     ) -> crate::OcctResult<*const BRepAdaptor_Curve>;
-    /// **Source:** `HLRBRep_Curve.hxx`:70 - `HLRBRep_Curve::Parameter2d()`
+    /// **Source:** `HLRBRep_Curve.hxx`:68 - `HLRBRep_Curve::Parameter2d()`
     pub fn HLRBRep_Curve_parameter2d(
         self_: *const HLRBRep_Curve,
         P3d: f64,
     ) -> crate::OcctResult<f64>;
-    /// **Source:** `HLRBRep_Curve.hxx`:74 - `HLRBRep_Curve::Parameter3d()`
+    /// **Source:** `HLRBRep_Curve.hxx`:72 - `HLRBRep_Curve::Parameter3d()`
     pub fn HLRBRep_Curve_parameter3d(
         self_: *const HLRBRep_Curve,
         P2d: f64,
     ) -> crate::OcctResult<f64>;
-    /// **Source:** `HLRBRep_Curve.hxx`:77 - `HLRBRep_Curve::Update()`
+    /// **Source:** `HLRBRep_Curve.hxx`:75 - `HLRBRep_Curve::Update()`
     pub fn HLRBRep_Curve_update(
         self_: *mut HLRBRep_Curve,
         TotMin: *mut f64,
         TotMax: *mut f64,
     ) -> crate::OcctResult<f64>;
-    /// **Source:** `HLRBRep_Curve.hxx`:80 - `HLRBRep_Curve::UpdateMinMax()`
+    /// **Source:** `HLRBRep_Curve.hxx`:78 - `HLRBRep_Curve::UpdateMinMax()`
     pub fn HLRBRep_Curve_update_min_max(
         self_: *mut HLRBRep_Curve,
         TotMin: *mut f64,
         TotMax: *mut f64,
     ) -> crate::OcctResult<f64>;
-    /// **Source:** `HLRBRep_Curve.hxx`:84 - `HLRBRep_Curve::Z()`
+    /// **Source:** `HLRBRep_Curve.hxx`:82 - `HLRBRep_Curve::Z()`
     pub fn HLRBRep_Curve_z(self_: *const HLRBRep_Curve, U: f64) -> crate::OcctResult<f64>;
-    /// **Source:** `HLRBRep_Curve.hxx`:88 - `HLRBRep_Curve::Value3D()`
+    /// **Source:** `HLRBRep_Curve.hxx`:86 - `HLRBRep_Curve::Value3D()`
     pub fn HLRBRep_Curve_value3_d(
         self_: *const HLRBRep_Curve,
         U: f64,
     ) -> crate::OcctResult<*mut gp_Pnt>;
-    /// **Source:** `HLRBRep_Curve.hxx`:92 - `HLRBRep_Curve::D0()`
+    /// **Source:** `HLRBRep_Curve.hxx`:90 - `HLRBRep_Curve::D0()`
     pub fn HLRBRep_Curve_d0_real_pnt(
         self_: *const HLRBRep_Curve,
         U: f64,
         P: *mut gp_Pnt,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `HLRBRep_Curve.hxx`:96 - `HLRBRep_Curve::D1()`
+    /// **Source:** `HLRBRep_Curve.hxx`:94 - `HLRBRep_Curve::D1()`
     pub fn HLRBRep_Curve_d1_real_pnt_vec(
         self_: *const HLRBRep_Curve,
         U: f64,
         P: *mut gp_Pnt,
         V: *mut gp_Vec,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `HLRBRep_Curve.hxx`:102 - `HLRBRep_Curve::Tangent()`
+    /// **Source:** `HLRBRep_Curve.hxx`:100 - `HLRBRep_Curve::Tangent()`
     pub fn HLRBRep_Curve_tangent(
         self_: *const HLRBRep_Curve,
         AtStart: bool,
         P: *mut gp_Pnt2d,
         D: *mut gp_Dir2d,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `HLRBRep_Curve.hxx`:104 - `HLRBRep_Curve::FirstParameter()`
+    /// **Source:** `HLRBRep_Curve.hxx`:102 - `HLRBRep_Curve::FirstParameter()`
     pub fn HLRBRep_Curve_first_parameter(self_: *const HLRBRep_Curve) -> crate::OcctResult<f64>;
-    /// **Source:** `HLRBRep_Curve.hxx`:106 - `HLRBRep_Curve::LastParameter()`
+    /// **Source:** `HLRBRep_Curve.hxx`:104 - `HLRBRep_Curve::LastParameter()`
     pub fn HLRBRep_Curve_last_parameter(self_: *const HLRBRep_Curve) -> crate::OcctResult<f64>;
-    /// **Source:** `HLRBRep_Curve.hxx`:108 - `HLRBRep_Curve::Continuity()`
+    /// **Source:** `HLRBRep_Curve.hxx`:106 - `HLRBRep_Curve::Continuity()`
     pub fn HLRBRep_Curve_continuity(self_: *const HLRBRep_Curve) -> crate::OcctResult<i32>;
-    /// **Source:** `HLRBRep_Curve.hxx`:113 - `HLRBRep_Curve::NbIntervals()`
+    /// **Source:** `HLRBRep_Curve.hxx`:111 - `HLRBRep_Curve::NbIntervals()`
     pub fn HLRBRep_Curve_nb_intervals(
         self_: *const HLRBRep_Curve,
         S: i32,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `HLRBRep_Curve.hxx`:120 - `HLRBRep_Curve::Intervals()`
+    /// **Source:** `HLRBRep_Curve.hxx`:118 - `HLRBRep_Curve::Intervals()`
     pub fn HLRBRep_Curve_intervals(
         self_: *const HLRBRep_Curve,
-        T: *mut TColStd_Array1OfReal,
+        T: *mut NCollection_Array1_double,
         S: i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `HLRBRep_Curve.hxx`:122 - `HLRBRep_Curve::IsClosed()`
+    /// **Source:** `HLRBRep_Curve.hxx`:120 - `HLRBRep_Curve::IsClosed()`
     pub fn HLRBRep_Curve_is_closed(self_: *const HLRBRep_Curve) -> crate::OcctResult<bool>;
-    /// **Source:** `HLRBRep_Curve.hxx`:124 - `HLRBRep_Curve::IsPeriodic()`
+    /// **Source:** `HLRBRep_Curve.hxx`:122 - `HLRBRep_Curve::IsPeriodic()`
     pub fn HLRBRep_Curve_is_periodic(self_: *const HLRBRep_Curve) -> crate::OcctResult<bool>;
-    /// **Source:** `HLRBRep_Curve.hxx`:126 - `HLRBRep_Curve::Period()`
+    /// **Source:** `HLRBRep_Curve.hxx`:124 - `HLRBRep_Curve::Period()`
     pub fn HLRBRep_Curve_period(self_: *const HLRBRep_Curve) -> crate::OcctResult<f64>;
-    /// **Source:** `HLRBRep_Curve.hxx`:129 - `HLRBRep_Curve::Value()`
+    /// **Source:** `HLRBRep_Curve.hxx`:127 - `HLRBRep_Curve::Value()`
     pub fn HLRBRep_Curve_value(
         self_: *const HLRBRep_Curve,
         U: f64,
     ) -> crate::OcctResult<*mut gp_Pnt2d>;
-    /// **Source:** `HLRBRep_Curve.hxx`:132 - `HLRBRep_Curve::D0()`
+    /// **Source:** `HLRBRep_Curve.hxx`:130 - `HLRBRep_Curve::D0()`
     pub fn HLRBRep_Curve_d0_real_pnt2d(
         self_: *const HLRBRep_Curve,
         U: f64,
         P: *mut gp_Pnt2d,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `HLRBRep_Curve.hxx`:138 - `HLRBRep_Curve::D1()`
+    /// **Source:** `HLRBRep_Curve.hxx`:136 - `HLRBRep_Curve::D1()`
     pub fn HLRBRep_Curve_d1_real_pnt2d_vec2d(
         self_: *const HLRBRep_Curve,
         U: f64,
         P: *mut gp_Pnt2d,
         V: *mut gp_Vec2d,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `HLRBRep_Curve.hxx`:142 - `HLRBRep_Curve::D2()`
+    /// **Source:** `HLRBRep_Curve.hxx`:140 - `HLRBRep_Curve::D2()`
     pub fn HLRBRep_Curve_d2(
         self_: *const HLRBRep_Curve,
         U: f64,
@@ -4507,7 +3871,7 @@ unsafe extern "C" {
         V1: *mut gp_Vec2d,
         V2: *mut gp_Vec2d,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `HLRBRep_Curve.hxx`:148 - `HLRBRep_Curve::D3()`
+    /// **Source:** `HLRBRep_Curve.hxx`:146 - `HLRBRep_Curve::D3()`
     pub fn HLRBRep_Curve_d3(
         self_: *const HLRBRep_Curve,
         U: f64,
@@ -4516,126 +3880,126 @@ unsafe extern "C" {
         V2: *mut gp_Vec2d,
         V3: *mut gp_Vec2d,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `HLRBRep_Curve.hxx`:159 - `HLRBRep_Curve::DN()`
+    /// **Source:** `HLRBRep_Curve.hxx`:157 - `HLRBRep_Curve::DN()`
     pub fn HLRBRep_Curve_dn(
         self_: *const HLRBRep_Curve,
         U: f64,
         N: i32,
     ) -> crate::OcctResult<*mut gp_Vec2d>;
-    /// **Source:** `HLRBRep_Curve.hxx`:163 - `HLRBRep_Curve::Resolution()`
+    /// **Source:** `HLRBRep_Curve.hxx`:161 - `HLRBRep_Curve::Resolution()`
     pub fn HLRBRep_Curve_resolution(
         self_: *const HLRBRep_Curve,
         R3d: f64,
     ) -> crate::OcctResult<f64>;
-    /// **Source:** `HLRBRep_Curve.hxx`:168 - `HLRBRep_Curve::GetType()`
+    /// **Source:** `HLRBRep_Curve.hxx`:166 - `HLRBRep_Curve::GetType()`
     pub fn HLRBRep_Curve_get_type(self_: *const HLRBRep_Curve) -> crate::OcctResult<i32>;
-    /// **Source:** `HLRBRep_Curve.hxx`:170 - `HLRBRep_Curve::Line()`
+    /// **Source:** `HLRBRep_Curve.hxx`:168 - `HLRBRep_Curve::Line()`
     pub fn HLRBRep_Curve_line(self_: *const HLRBRep_Curve) -> crate::OcctResult<*mut gp_Lin2d>;
-    /// **Source:** `HLRBRep_Curve.hxx`:172 - `HLRBRep_Curve::Circle()`
+    /// **Source:** `HLRBRep_Curve.hxx`:170 - `HLRBRep_Curve::Circle()`
     pub fn HLRBRep_Curve_circle(self_: *const HLRBRep_Curve) -> crate::OcctResult<*mut gp_Circ2d>;
-    /// **Source:** `HLRBRep_Curve.hxx`:174 - `HLRBRep_Curve::Ellipse()`
+    /// **Source:** `HLRBRep_Curve.hxx`:172 - `HLRBRep_Curve::Ellipse()`
     pub fn HLRBRep_Curve_ellipse(self_: *const HLRBRep_Curve)
         -> crate::OcctResult<*mut gp_Elips2d>;
-    /// **Source:** `HLRBRep_Curve.hxx`:176 - `HLRBRep_Curve::Hyperbola()`
+    /// **Source:** `HLRBRep_Curve.hxx`:174 - `HLRBRep_Curve::Hyperbola()`
     pub fn HLRBRep_Curve_hyperbola(
         self_: *const HLRBRep_Curve,
     ) -> crate::OcctResult<*mut gp_Hypr2d>;
-    /// **Source:** `HLRBRep_Curve.hxx`:178 - `HLRBRep_Curve::Parabola()`
+    /// **Source:** `HLRBRep_Curve.hxx`:176 - `HLRBRep_Curve::Parabola()`
     pub fn HLRBRep_Curve_parabola(
         self_: *const HLRBRep_Curve,
     ) -> crate::OcctResult<*mut gp_Parab2d>;
-    /// **Source:** `HLRBRep_Curve.hxx`:180 - `HLRBRep_Curve::IsRational()`
+    /// **Source:** `HLRBRep_Curve.hxx`:178 - `HLRBRep_Curve::IsRational()`
     pub fn HLRBRep_Curve_is_rational(self_: *const HLRBRep_Curve) -> crate::OcctResult<bool>;
-    /// **Source:** `HLRBRep_Curve.hxx`:182 - `HLRBRep_Curve::Degree()`
+    /// **Source:** `HLRBRep_Curve.hxx`:180 - `HLRBRep_Curve::Degree()`
     pub fn HLRBRep_Curve_degree(self_: *const HLRBRep_Curve) -> crate::OcctResult<i32>;
-    /// **Source:** `HLRBRep_Curve.hxx`:184 - `HLRBRep_Curve::NbPoles()`
+    /// **Source:** `HLRBRep_Curve.hxx`:182 - `HLRBRep_Curve::NbPoles()`
     pub fn HLRBRep_Curve_nb_poles(self_: *const HLRBRep_Curve) -> crate::OcctResult<i32>;
+    /// **Source:** `HLRBRep_Curve.hxx`:184 - `HLRBRep_Curve::Poles()`
+    pub fn HLRBRep_Curve_poles_arr1_pnt2d(
+        self_: *const HLRBRep_Curve,
+        TP: *mut NCollection_Array1_gp_Pnt2d,
+    ) -> *const std::ffi::c_char;
     /// **Source:** `HLRBRep_Curve.hxx`:186 - `HLRBRep_Curve::Poles()`
-    pub fn HLRBRep_Curve_poles_array1ofpnt2d(
+    pub fn HLRBRep_Curve_poles_handlegeombsplinecurve_arr1_pnt2d(
         self_: *const HLRBRep_Curve,
-        TP: *mut TColgp_Array1OfPnt2d,
+        aCurve: *const Handle_Geom_BSplineCurve,
+        TP: *mut NCollection_Array1_gp_Pnt2d,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `HLRBRep_Curve.hxx`:188 - `HLRBRep_Curve::Poles()`
-    pub fn HLRBRep_Curve_poles_handlegeombsplinecurve_array1ofpnt2d(
+    /// **Source:** `HLRBRep_Curve.hxx`:189 - `HLRBRep_Curve::PolesAndWeights()`
+    pub fn HLRBRep_Curve_poles_and_weights_arr1_pnt2d_arr1_double(
         self_: *const HLRBRep_Curve,
-        aCurve: *const HandleGeomBSplineCurve,
-        TP: *mut TColgp_Array1OfPnt2d,
+        TP: *mut NCollection_Array1_gp_Pnt2d,
+        TW: *mut NCollection_Array1_double,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `HLRBRep_Curve.hxx`:191 - `HLRBRep_Curve::PolesAndWeights()`
-    pub fn HLRBRep_Curve_poles_and_weights_array1ofpnt2d_array1ofreal(
+    /// **Source:** `HLRBRep_Curve.hxx`:192 - `HLRBRep_Curve::PolesAndWeights()`
+    pub fn HLRBRep_Curve_poles_and_weights_handlegeombsplinecurve_arr1_pnt2d_arr1_double(
         self_: *const HLRBRep_Curve,
-        TP: *mut TColgp_Array1OfPnt2d,
-        TW: *mut TColStd_Array1OfReal,
+        aCurve: *const Handle_Geom_BSplineCurve,
+        TP: *mut NCollection_Array1_gp_Pnt2d,
+        TW: *mut NCollection_Array1_double,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `HLRBRep_Curve.hxx`:193 - `HLRBRep_Curve::PolesAndWeights()`
-    pub fn HLRBRep_Curve_poles_and_weights_handlegeombsplinecurve_array1ofpnt2d_array1ofreal(
-        self_: *const HLRBRep_Curve,
-        aCurve: *const HandleGeomBSplineCurve,
-        TP: *mut TColgp_Array1OfPnt2d,
-        TW: *mut TColStd_Array1OfReal,
-    ) -> *const std::ffi::c_char;
-    /// **Source:** `HLRBRep_Curve.hxx`:197 - `HLRBRep_Curve::NbKnots()`
+    /// **Source:** `HLRBRep_Curve.hxx`:196 - `HLRBRep_Curve::NbKnots()`
     pub fn HLRBRep_Curve_nb_knots(self_: *const HLRBRep_Curve) -> crate::OcctResult<i32>;
-    /// **Source:** `HLRBRep_Curve.hxx`:199 - `HLRBRep_Curve::Knots()`
+    /// **Source:** `HLRBRep_Curve.hxx`:198 - `HLRBRep_Curve::Knots()`
     pub fn HLRBRep_Curve_knots(
         self_: *const HLRBRep_Curve,
-        kn: *mut TColStd_Array1OfReal,
+        kn: *mut NCollection_Array1_double,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `HLRBRep_Curve.hxx`:201 - `HLRBRep_Curve::Multiplicities()`
+    /// **Source:** `HLRBRep_Curve.hxx`:200 - `HLRBRep_Curve::Multiplicities()`
     pub fn HLRBRep_Curve_multiplicities(
         self_: *const HLRBRep_Curve,
-        mu: *mut TColStd_Array1OfInteger,
+        mu: *mut NCollection_Array1_int,
     ) -> *const std::ffi::c_char;
     // ======================== HLRBRep_CurveTool ========================
     pub fn HLRBRep_CurveTool_destructor(self_: *mut HLRBRep_CurveTool);
     /// **Source:** `HLRBRep_CurveTool.hxx` - `HLRBRep_CurveTool::HLRBRep_CurveTool()`
     pub fn HLRBRep_CurveTool_ctor() -> crate::OcctResult<*mut HLRBRep_CurveTool>;
-    /// **Source:** `HLRBRep_CurveTool.hxx`:45 - `HLRBRep_CurveTool::FirstParameter()`
+    /// **Source:** `HLRBRep_CurveTool.hxx`:46 - `HLRBRep_CurveTool::FirstParameter()`
     pub fn HLRBRep_CurveTool_first_parameter(C: *mut std::ffi::c_void) -> crate::OcctResult<f64>;
-    /// **Source:** `HLRBRep_CurveTool.hxx`:47 - `HLRBRep_CurveTool::LastParameter()`
+    /// **Source:** `HLRBRep_CurveTool.hxx`:48 - `HLRBRep_CurveTool::LastParameter()`
     pub fn HLRBRep_CurveTool_last_parameter(C: *mut std::ffi::c_void) -> crate::OcctResult<f64>;
-    /// **Source:** `HLRBRep_CurveTool.hxx`:49 - `HLRBRep_CurveTool::Continuity()`
+    /// **Source:** `HLRBRep_CurveTool.hxx`:50 - `HLRBRep_CurveTool::Continuity()`
     pub fn HLRBRep_CurveTool_continuity(C: *mut std::ffi::c_void) -> crate::OcctResult<i32>;
-    /// **Source:** `HLRBRep_CurveTool.hxx`:53 - `HLRBRep_CurveTool::NbIntervals()`
+    /// **Source:** `HLRBRep_CurveTool.hxx`:54 - `HLRBRep_CurveTool::NbIntervals()`
     pub fn HLRBRep_CurveTool_nb_intervals(C: *mut std::ffi::c_void) -> crate::OcctResult<i32>;
-    /// **Source:** `HLRBRep_CurveTool.hxx`:60 - `HLRBRep_CurveTool::Intervals()`
+    /// **Source:** `HLRBRep_CurveTool.hxx`:61 - `HLRBRep_CurveTool::Intervals()`
     pub fn HLRBRep_CurveTool_intervals(
         C: *mut std::ffi::c_void,
-        T: *mut TColStd_Array1OfReal,
+        T: *mut NCollection_Array1_double,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `HLRBRep_CurveTool.hxx`:64 - `HLRBRep_CurveTool::GetInterval()`
+    /// **Source:** `HLRBRep_CurveTool.hxx`:65 - `HLRBRep_CurveTool::GetInterval()`
     pub fn HLRBRep_CurveTool_get_interval(
         C: *mut std::ffi::c_void,
         Index: i32,
-        Tab: *const TColStd_Array1OfReal,
+        Tab: *const NCollection_Array1_double,
         U1: *mut f64,
         U2: *mut f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `HLRBRep_CurveTool.hxx`:70 - `HLRBRep_CurveTool::IsClosed()`
+    /// **Source:** `HLRBRep_CurveTool.hxx`:71 - `HLRBRep_CurveTool::IsClosed()`
     pub fn HLRBRep_CurveTool_is_closed(C: *mut std::ffi::c_void) -> crate::OcctResult<bool>;
-    /// **Source:** `HLRBRep_CurveTool.hxx`:72 - `HLRBRep_CurveTool::IsPeriodic()`
+    /// **Source:** `HLRBRep_CurveTool.hxx`:73 - `HLRBRep_CurveTool::IsPeriodic()`
     pub fn HLRBRep_CurveTool_is_periodic(C: *mut std::ffi::c_void) -> crate::OcctResult<bool>;
-    /// **Source:** `HLRBRep_CurveTool.hxx`:74 - `HLRBRep_CurveTool::Period()`
+    /// **Source:** `HLRBRep_CurveTool.hxx`:75 - `HLRBRep_CurveTool::Period()`
     pub fn HLRBRep_CurveTool_period(C: *mut std::ffi::c_void) -> crate::OcctResult<f64>;
-    /// **Source:** `HLRBRep_CurveTool.hxx`:77 - `HLRBRep_CurveTool::Value()`
+    /// **Source:** `HLRBRep_CurveTool.hxx`:78 - `HLRBRep_CurveTool::Value()`
     pub fn HLRBRep_CurveTool_value(
         C: *mut std::ffi::c_void,
         U: f64,
     ) -> crate::OcctResult<*mut gp_Pnt2d>;
-    /// **Source:** `HLRBRep_CurveTool.hxx`:80 - `HLRBRep_CurveTool::D0()`
+    /// **Source:** `HLRBRep_CurveTool.hxx`:81 - `HLRBRep_CurveTool::D0()`
     pub fn HLRBRep_CurveTool_d0(
         C: *mut std::ffi::c_void,
         U: f64,
         P: *mut gp_Pnt2d,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `HLRBRep_CurveTool.hxx`:86 - `HLRBRep_CurveTool::D1()`
+    /// **Source:** `HLRBRep_CurveTool.hxx`:87 - `HLRBRep_CurveTool::D1()`
     pub fn HLRBRep_CurveTool_d1(
         C: *mut std::ffi::c_void,
         U: f64,
         P: *mut gp_Pnt2d,
         V: *mut gp_Vec2d,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `HLRBRep_CurveTool.hxx`:92 - `HLRBRep_CurveTool::D2()`
+    /// **Source:** `HLRBRep_CurveTool.hxx`:93 - `HLRBRep_CurveTool::D2()`
     pub fn HLRBRep_CurveTool_d2(
         C: *mut std::ffi::c_void,
         U: f64,
@@ -4643,7 +4007,7 @@ unsafe extern "C" {
         V1: *mut gp_Vec2d,
         V2: *mut gp_Vec2d,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `HLRBRep_CurveTool.hxx`:102 - `HLRBRep_CurveTool::D3()`
+    /// **Source:** `HLRBRep_CurveTool.hxx`:99 - `HLRBRep_CurveTool::D3()`
     pub fn HLRBRep_CurveTool_d3(
         C: *mut std::ffi::c_void,
         U: f64,
@@ -4652,150 +4016,150 @@ unsafe extern "C" {
         V2: *mut gp_Vec2d,
         V3: *mut gp_Vec2d,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `HLRBRep_CurveTool.hxx`:114 - `HLRBRep_CurveTool::DN()`
+    /// **Source:** `HLRBRep_CurveTool.hxx`:111 - `HLRBRep_CurveTool::DN()`
     pub fn HLRBRep_CurveTool_dn(
         C: *mut std::ffi::c_void,
         U: f64,
         N: i32,
     ) -> crate::OcctResult<*mut gp_Vec2d>;
-    /// **Source:** `HLRBRep_CurveTool.hxx`:118 - `HLRBRep_CurveTool::Resolution()`
+    /// **Source:** `HLRBRep_CurveTool.hxx`:115 - `HLRBRep_CurveTool::Resolution()`
     pub fn HLRBRep_CurveTool_resolution(
         C: *mut std::ffi::c_void,
         R3d: f64,
     ) -> crate::OcctResult<f64>;
-    /// **Source:** `HLRBRep_CurveTool.hxx`:123 - `HLRBRep_CurveTool::GetType()`
+    /// **Source:** `HLRBRep_CurveTool.hxx`:120 - `HLRBRep_CurveTool::GetType()`
     pub fn HLRBRep_CurveTool_get_type(C: *mut std::ffi::c_void) -> crate::OcctResult<i32>;
-    /// **Source:** `HLRBRep_CurveTool.hxx`:128 - `HLRBRep_CurveTool::TheType()`
+    /// **Source:** `HLRBRep_CurveTool.hxx`:125 - `HLRBRep_CurveTool::TheType()`
     pub fn HLRBRep_CurveTool_the_type(C: *mut std::ffi::c_void) -> crate::OcctResult<i32>;
-    /// **Source:** `HLRBRep_CurveTool.hxx`:130 - `HLRBRep_CurveTool::Line()`
+    /// **Source:** `HLRBRep_CurveTool.hxx`:127 - `HLRBRep_CurveTool::Line()`
     pub fn HLRBRep_CurveTool_line(C: *mut std::ffi::c_void) -> crate::OcctResult<*mut gp_Lin2d>;
-    /// **Source:** `HLRBRep_CurveTool.hxx`:132 - `HLRBRep_CurveTool::Circle()`
+    /// **Source:** `HLRBRep_CurveTool.hxx`:129 - `HLRBRep_CurveTool::Circle()`
     pub fn HLRBRep_CurveTool_circle(C: *mut std::ffi::c_void) -> crate::OcctResult<*mut gp_Circ2d>;
-    /// **Source:** `HLRBRep_CurveTool.hxx`:134 - `HLRBRep_CurveTool::Ellipse()`
+    /// **Source:** `HLRBRep_CurveTool.hxx`:131 - `HLRBRep_CurveTool::Ellipse()`
     pub fn HLRBRep_CurveTool_ellipse(
         C: *mut std::ffi::c_void,
     ) -> crate::OcctResult<*mut gp_Elips2d>;
-    /// **Source:** `HLRBRep_CurveTool.hxx`:136 - `HLRBRep_CurveTool::Hyperbola()`
+    /// **Source:** `HLRBRep_CurveTool.hxx`:133 - `HLRBRep_CurveTool::Hyperbola()`
     pub fn HLRBRep_CurveTool_hyperbola(
         C: *mut std::ffi::c_void,
     ) -> crate::OcctResult<*mut gp_Hypr2d>;
-    /// **Source:** `HLRBRep_CurveTool.hxx`:138 - `HLRBRep_CurveTool::Parabola()`
+    /// **Source:** `HLRBRep_CurveTool.hxx`:135 - `HLRBRep_CurveTool::Parabola()`
     pub fn HLRBRep_CurveTool_parabola(
         C: *mut std::ffi::c_void,
     ) -> crate::OcctResult<*mut gp_Parab2d>;
-    /// **Source:** `HLRBRep_CurveTool.hxx`:140 - `HLRBRep_CurveTool::Bezier()`
+    /// **Source:** `HLRBRep_CurveTool.hxx`:137 - `HLRBRep_CurveTool::Bezier()`
     pub fn HLRBRep_CurveTool_bezier(
         C: *mut std::ffi::c_void,
-    ) -> crate::OcctResult<*mut HandleGeom2dBezierCurve>;
-    /// **Source:** `HLRBRep_CurveTool.hxx`:142 - `HLRBRep_CurveTool::BSpline()`
+    ) -> crate::OcctResult<*mut Handle_Geom2d_BezierCurve>;
+    /// **Source:** `HLRBRep_CurveTool.hxx`:139 - `HLRBRep_CurveTool::BSpline()`
     pub fn HLRBRep_CurveTool_b_spline(
         C: *mut std::ffi::c_void,
-    ) -> crate::OcctResult<*mut HandleGeom2dBSplineCurve>;
-    /// **Source:** `HLRBRep_CurveTool.hxx`:144 - `HLRBRep_CurveTool::EpsX()`
+    ) -> crate::OcctResult<*mut Handle_Geom2d_BSplineCurve>;
+    /// **Source:** `HLRBRep_CurveTool.hxx`:141 - `HLRBRep_CurveTool::EpsX()`
     pub fn HLRBRep_CurveTool_eps_x(C: *mut std::ffi::c_void) -> crate::OcctResult<f64>;
-    /// **Source:** `HLRBRep_CurveTool.hxx`:146 - `HLRBRep_CurveTool::NbSamples()`
-    pub fn HLRBRep_CurveTool_nb_samples_address_real2(
+    /// **Source:** `HLRBRep_CurveTool.hxx`:143 - `HLRBRep_CurveTool::NbSamples()`
+    pub fn HLRBRep_CurveTool_nb_samples_voidptr_real2(
         C: *mut std::ffi::c_void,
         U0: f64,
         U1: f64,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `HLRBRep_CurveTool.hxx`:150 - `HLRBRep_CurveTool::NbSamples()`
-    pub fn HLRBRep_CurveTool_nb_samples_address(C: *mut std::ffi::c_void)
+    /// **Source:** `HLRBRep_CurveTool.hxx`:145 - `HLRBRep_CurveTool::NbSamples()`
+    pub fn HLRBRep_CurveTool_nb_samples_voidptr(C: *mut std::ffi::c_void)
         -> crate::OcctResult<i32>;
-    /// **Source:** `HLRBRep_CurveTool.hxx`:152 - `HLRBRep_CurveTool::Degree()`
+    /// **Source:** `HLRBRep_CurveTool.hxx`:147 - `HLRBRep_CurveTool::Degree()`
     pub fn HLRBRep_CurveTool_degree(C: *mut std::ffi::c_void) -> crate::OcctResult<i32>;
     // ======================== HLRBRep_Data ========================
     pub fn HLRBRep_Data_destructor(self_: *mut HLRBRep_Data);
-    /// **Source:** `HLRBRep_Data.hxx`:60 - `HLRBRep_Data::HLRBRep_Data()`
+    /// **Source:** `HLRBRep_Data.hxx`:61 - `HLRBRep_Data::HLRBRep_Data()`
     pub fn HLRBRep_Data_ctor_int3(
         NV: i32,
         NE: i32,
         NF: i32,
     ) -> crate::OcctResult<*mut HLRBRep_Data>;
-    /// **Source:** `HLRBRep_Data.hxx`:66 - `HLRBRep_Data::Write()`
+    /// **Source:** `HLRBRep_Data.hxx`:65 - `HLRBRep_Data::Write()`
     pub fn HLRBRep_Data_write(
         self_: *mut HLRBRep_Data,
-        DS: *const HandleHLRBRepData,
+        DS: *const Handle_HLRBRep_Data,
         dv: i32,
         de: i32,
         df: i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `HLRBRep_Data.hxx`:71 - `HLRBRep_Data::EDataArray()`
+    /// **Source:** `HLRBRep_Data.hxx`:70 - `HLRBRep_Data::EDataArray()`
     pub fn HLRBRep_Data_e_data_array(
         self_: *mut HLRBRep_Data,
-    ) -> crate::OcctResult<*mut HLRBRep_Array1OfEData>;
-    /// **Source:** `HLRBRep_Data.hxx`:73 - `HLRBRep_Data::FDataArray()`
+    ) -> crate::OcctResult<*mut NCollection_Array1_HLRBRep_EdgeData>;
+    /// **Source:** `HLRBRep_Data.hxx`:72 - `HLRBRep_Data::FDataArray()`
     pub fn HLRBRep_Data_f_data_array(
         self_: *mut HLRBRep_Data,
-    ) -> crate::OcctResult<*mut HLRBRep_Array1OfFData>;
-    /// **Source:** `HLRBRep_Data.hxx`:77 - `HLRBRep_Data::Tolerance()`
+    ) -> crate::OcctResult<*mut NCollection_Array1_HLRBRep_FaceData>;
+    /// **Source:** `HLRBRep_Data.hxx`:76 - `HLRBRep_Data::Tolerance()`
     pub fn HLRBRep_Data_tolerance_float(
         self_: *mut HLRBRep_Data,
         tol: f32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `HLRBRep_Data.hxx`:81 - `HLRBRep_Data::Tolerance()`
+    /// **Source:** `HLRBRep_Data.hxx`:80 - `HLRBRep_Data::Tolerance()`
     pub fn HLRBRep_Data_tolerance(self_: *const HLRBRep_Data) -> crate::OcctResult<f32>;
-    /// **Source:** `HLRBRep_Data.hxx`:85 - `HLRBRep_Data::Update()`
+    /// **Source:** `HLRBRep_Data.hxx`:84 - `HLRBRep_Data::Update()`
     pub fn HLRBRep_Data_update(
         self_: *mut HLRBRep_Data,
         P: *const HLRAlgo_Projector,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `HLRBRep_Data.hxx`:87 - `HLRBRep_Data::Projector()`
+    /// **Source:** `HLRBRep_Data.hxx`:86 - `HLRBRep_Data::Projector()`
     pub fn HLRBRep_Data_projector(
         self_: *mut HLRBRep_Data,
     ) -> crate::OcctResult<*mut HLRAlgo_Projector>;
-    /// **Source:** `HLRBRep_Data.hxx`:89 - `HLRBRep_Data::NbVertices()`
+    /// **Source:** `HLRBRep_Data.hxx`:88 - `HLRBRep_Data::NbVertices()`
     pub fn HLRBRep_Data_nb_vertices(self_: *const HLRBRep_Data) -> crate::OcctResult<i32>;
-    /// **Source:** `HLRBRep_Data.hxx`:91 - `HLRBRep_Data::NbEdges()`
+    /// **Source:** `HLRBRep_Data.hxx`:90 - `HLRBRep_Data::NbEdges()`
     pub fn HLRBRep_Data_nb_edges(self_: *const HLRBRep_Data) -> crate::OcctResult<i32>;
-    /// **Source:** `HLRBRep_Data.hxx`:93 - `HLRBRep_Data::NbFaces()`
+    /// **Source:** `HLRBRep_Data.hxx`:92 - `HLRBRep_Data::NbFaces()`
     pub fn HLRBRep_Data_nb_faces(self_: *const HLRBRep_Data) -> crate::OcctResult<i32>;
-    /// **Source:** `HLRBRep_Data.hxx`:95 - `HLRBRep_Data::EdgeMap()`
+    /// **Source:** `HLRBRep_Data.hxx`:94 - `HLRBRep_Data::EdgeMap()`
     pub fn HLRBRep_Data_edge_map(
         self_: *mut HLRBRep_Data,
-    ) -> crate::OcctResult<*mut TopTools_IndexedMapOfShape>;
-    /// **Source:** `HLRBRep_Data.hxx`:97 - `HLRBRep_Data::FaceMap()`
+    ) -> crate::OcctResult<*mut NCollection_IndexedMap_TopoDS_Shape_TopTools_ShapeMapHasher>;
+    /// **Source:** `HLRBRep_Data.hxx`:96 - `HLRBRep_Data::FaceMap()`
     pub fn HLRBRep_Data_face_map(
         self_: *mut HLRBRep_Data,
-    ) -> crate::OcctResult<*mut TopTools_IndexedMapOfShape>;
-    /// **Source:** `HLRBRep_Data.hxx`:100 - `HLRBRep_Data::InitBoundSort()`
+    ) -> crate::OcctResult<*mut NCollection_IndexedMap_TopoDS_Shape_TopTools_ShapeMapHasher>;
+    /// **Source:** `HLRBRep_Data.hxx`:99 - `HLRBRep_Data::InitBoundSort()`
     pub fn HLRBRep_Data_init_bound_sort(
         self_: *mut HLRBRep_Data,
         MinMaxTot: *const HLRAlgo_EdgesBlock_MinMaxIndices,
         e1: i32,
         e2: i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `HLRBRep_Data.hxx`:106 - `HLRBRep_Data::InitEdge()`
+    /// **Source:** `HLRBRep_Data.hxx`:105 - `HLRBRep_Data::InitEdge()`
     pub fn HLRBRep_Data_init_edge(
         self_: *mut HLRBRep_Data,
         FI: i32,
-        MST: *mut BRepTopAdaptor_MapOfShapeTool,
+        MST: *mut NCollection_DataMap_TopoDS_Shape_BRepTopAdaptor_Tool_TopTools_ShapeMapHasher,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `HLRBRep_Data.hxx`:108 - `HLRBRep_Data::MoreEdge()`
+    /// **Source:** `HLRBRep_Data.hxx`:109 - `HLRBRep_Data::MoreEdge()`
     pub fn HLRBRep_Data_more_edge(self_: *mut HLRBRep_Data) -> crate::OcctResult<bool>;
-    /// **Source:** `HLRBRep_Data.hxx`:110 - `HLRBRep_Data::NextEdge()`
+    /// **Source:** `HLRBRep_Data.hxx`:111 - `HLRBRep_Data::NextEdge()`
     pub fn HLRBRep_Data_next_edge(self_: *mut HLRBRep_Data, skip: bool) -> *const std::ffi::c_char;
-    /// **Source:** `HLRBRep_Data.hxx`:113 - `HLRBRep_Data::Edge()`
+    /// **Source:** `HLRBRep_Data.hxx`:114 - `HLRBRep_Data::Edge()`
     pub fn HLRBRep_Data_edge(self_: *const HLRBRep_Data) -> crate::OcctResult<i32>;
-    /// **Source:** `HLRBRep_Data.hxx`:117 - `HLRBRep_Data::HidingTheFace()`
+    /// **Source:** `HLRBRep_Data.hxx`:118 - `HLRBRep_Data::HidingTheFace()`
     pub fn HLRBRep_Data_hiding_the_face(self_: *const HLRBRep_Data) -> crate::OcctResult<bool>;
-    /// **Source:** `HLRBRep_Data.hxx`:121 - `HLRBRep_Data::SimpleHidingFace()`
+    /// **Source:** `HLRBRep_Data.hxx`:122 - `HLRBRep_Data::SimpleHidingFace()`
     pub fn HLRBRep_Data_simple_hiding_face(self_: *const HLRBRep_Data) -> crate::OcctResult<bool>;
-    /// **Source:** `HLRBRep_Data.hxx`:126 - `HLRBRep_Data::InitInterference()`
+    /// **Source:** `HLRBRep_Data.hxx`:127 - `HLRBRep_Data::InitInterference()`
     pub fn HLRBRep_Data_init_interference(self_: *mut HLRBRep_Data) -> *const std::ffi::c_char;
-    /// **Source:** `HLRBRep_Data.hxx`:128 - `HLRBRep_Data::MoreInterference()`
+    /// **Source:** `HLRBRep_Data.hxx`:129 - `HLRBRep_Data::MoreInterference()`
     pub fn HLRBRep_Data_more_interference(self_: *const HLRBRep_Data) -> crate::OcctResult<bool>;
-    /// **Source:** `HLRBRep_Data.hxx`:130 - `HLRBRep_Data::NextInterference()`
+    /// **Source:** `HLRBRep_Data.hxx`:131 - `HLRBRep_Data::NextInterference()`
     pub fn HLRBRep_Data_next_interference(self_: *mut HLRBRep_Data) -> *const std::ffi::c_char;
-    /// **Source:** `HLRBRep_Data.hxx`:133 - `HLRBRep_Data::RejectedInterference()`
+    /// **Source:** `HLRBRep_Data.hxx`:134 - `HLRBRep_Data::RejectedInterference()`
     pub fn HLRBRep_Data_rejected_interference(self_: *mut HLRBRep_Data) -> crate::OcctResult<bool>;
-    /// **Source:** `HLRBRep_Data.hxx`:137 - `HLRBRep_Data::AboveInterference()`
+    /// **Source:** `HLRBRep_Data.hxx`:138 - `HLRBRep_Data::AboveInterference()`
     pub fn HLRBRep_Data_above_interference(self_: *mut HLRBRep_Data) -> crate::OcctResult<bool>;
-    /// **Source:** `HLRBRep_Data.hxx`:139 - `HLRBRep_Data::Interference()`
+    /// **Source:** `HLRBRep_Data.hxx`:140 - `HLRBRep_Data::Interference()`
     pub fn HLRBRep_Data_interference(
         self_: *mut HLRBRep_Data,
     ) -> crate::OcctResult<*mut HLRAlgo_Interference>;
-    /// **Source:** `HLRBRep_Data.hxx`:143 - `HLRBRep_Data::LocalLEGeometry2D()`
+    /// **Source:** `HLRBRep_Data.hxx`:144 - `HLRBRep_Data::LocalLEGeometry2D()`
     pub fn HLRBRep_Data_local_le_geometry2_d(
         self_: *mut HLRBRep_Data,
         Param: f64,
@@ -4803,7 +4167,7 @@ unsafe extern "C" {
         Nm: *mut gp_Dir2d,
         Cu: *mut f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `HLRBRep_Data.hxx`:150 - `HLRBRep_Data::LocalFEGeometry2D()`
+    /// **Source:** `HLRBRep_Data.hxx`:151 - `HLRBRep_Data::LocalFEGeometry2D()`
     pub fn HLRBRep_Data_local_fe_geometry2_d(
         self_: *mut HLRBRep_Data,
         FE: i32,
@@ -4812,7 +4176,7 @@ unsafe extern "C" {
         Nm: *mut gp_Dir2d,
         Cu: *mut f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `HLRBRep_Data.hxx`:159 - `HLRBRep_Data::EdgeState()`
+    /// **Source:** `HLRBRep_Data.hxx`:160 - `HLRBRep_Data::EdgeState()`
     pub fn HLRBRep_Data_edge_state(
         self_: *mut HLRBRep_Data,
         p1: f64,
@@ -4820,26 +4184,26 @@ unsafe extern "C" {
         stbef: &mut i32,
         staf: &mut i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `HLRBRep_Data.hxx`:166 - `HLRBRep_Data::EdgeOfTheHidingFace()`
+    /// **Source:** `HLRBRep_Data.hxx`:167 - `HLRBRep_Data::EdgeOfTheHidingFace()`
     pub fn HLRBRep_Data_edge_of_the_hiding_face(
         self_: *const HLRBRep_Data,
         E: i32,
         ED: *const HLRBRep_EdgeData,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `HLRBRep_Data.hxx`:172 - `HLRBRep_Data::HidingStartLevel()`
+    /// **Source:** `HLRBRep_Data.hxx`:173 - `HLRBRep_Data::HidingStartLevel()`
     pub fn HLRBRep_Data_hiding_start_level(
         self_: *mut HLRBRep_Data,
         E: i32,
         ED: *const HLRBRep_EdgeData,
-        IL: *const HLRAlgo_InterferenceList,
+        IL: *const NCollection_List_HLRAlgo_Interference,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `HLRBRep_Data.hxx`:178 - `HLRBRep_Data::Compare()`
+    /// **Source:** `HLRBRep_Data.hxx`:179 - `HLRBRep_Data::Compare()`
     pub fn HLRBRep_Data_compare(
         self_: *mut HLRBRep_Data,
         E: i32,
         ED: *const HLRBRep_EdgeData,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `HLRBRep_Data.hxx`:183 - `HLRBRep_Data::SimplClassify()`
+    /// **Source:** `HLRBRep_Data.hxx`:184 - `HLRBRep_Data::SimplClassify()`
     pub fn HLRBRep_Data_simpl_classify(
         self_: *mut HLRBRep_Data,
         E: i32,
@@ -4848,7 +4212,7 @@ unsafe extern "C" {
         p1: f64,
         p2: f64,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `HLRBRep_Data.hxx`:190 - `HLRBRep_Data::Classify()`
+    /// **Source:** `HLRBRep_Data.hxx`:191 - `HLRBRep_Data::Classify()`
     pub fn HLRBRep_Data_classify(
         self_: *mut HLRBRep_Data,
         E: i32,
@@ -4857,18 +4221,18 @@ unsafe extern "C" {
         Level: *mut i32,
         param: f64,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `HLRBRep_Data.hxx`:197 - `HLRBRep_Data::IsBadFace()`
+    /// **Source:** `HLRBRep_Data.hxx`:198 - `HLRBRep_Data::IsBadFace()`
     pub fn HLRBRep_Data_is_bad_face(self_: *const HLRBRep_Data) -> crate::OcctResult<bool>;
-    /// **Source:** `HLRBRep_Data.hxx`:199 - `HLRBRep_Data::Destroy()`
+    /// **Source:** `HLRBRep_Data.hxx`:200 - `HLRBRep_Data::Destroy()`
     pub fn HLRBRep_Data_destroy(self_: *mut HLRBRep_Data) -> *const std::ffi::c_char;
-    /// **Source:** `HLRBRep_Data.hxx`:203 - `HLRBRep_Data::DynamicType()`
+    /// **Source:** `HLRBRep_Data.hxx`:204 - `HLRBRep_Data::DynamicType()`
     pub fn HLRBRep_Data_dynamic_type(
         self_: *const HLRBRep_Data,
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// **Source:** `HLRBRep_Data.hxx`:203 - `HLRBRep_Data::get_type_name()`
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
+    /// **Source:** `HLRBRep_Data.hxx`:204 - `HLRBRep_Data::get_type_name()`
     pub fn HLRBRep_Data_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
-    /// **Source:** `HLRBRep_Data.hxx`:203 - `HLRBRep_Data::get_type_descriptor()`
-    pub fn HLRBRep_Data_get_type_descriptor() -> crate::OcctResult<*const HandleStandardType>;
+    /// **Source:** `HLRBRep_Data.hxx`:204 - `HLRBRep_Data::get_type_descriptor()`
+    pub fn HLRBRep_Data_get_type_descriptor() -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast HLRBRep_Data to Standard_Transient
     pub fn HLRBRep_Data_as_Standard_Transient(
         self_: *const HLRBRep_Data,
@@ -4880,53 +4244,53 @@ unsafe extern "C" {
     /// Wrap HLRBRep_Data in a Handle
     pub fn HLRBRep_Data_to_handle(
         obj: *mut HLRBRep_Data,
-    ) -> crate::OcctResult<*mut HandleHLRBRepData>;
+    ) -> crate::OcctResult<*mut Handle_HLRBRep_Data>;
     /// Destroy Handle<HLRBRep_Data>
-    pub fn HandleHLRBRepData_destructor(self_: *mut HandleHLRBRepData);
+    pub fn Handle_HLRBRep_Data_destructor(self_: *mut Handle_HLRBRep_Data);
     /// Clone Handle<HLRBRep_Data> (increments reference count)
-    pub fn HandleHLRBRepData_clone(
-        self_: *const HandleHLRBRepData,
-    ) -> crate::OcctResult<*mut HandleHLRBRepData>;
+    pub fn Handle_HLRBRep_Data_clone(
+        self_: *const Handle_HLRBRep_Data,
+    ) -> crate::OcctResult<*mut Handle_HLRBRep_Data>;
     /// Check if Handle<HLRBRep_Data> is null
-    pub fn HandleHLRBRepData_is_null(self_: *const HandleHLRBRepData) -> bool;
+    pub fn Handle_HLRBRep_Data_is_null(self_: *const Handle_HLRBRep_Data) -> bool;
     /// Dereference Handle to get *const HLRBRep_Data
-    pub fn HandleHLRBRepData_get(
-        handle: *const HandleHLRBRepData,
+    pub fn Handle_HLRBRep_Data_get(
+        handle: *const Handle_HLRBRep_Data,
     ) -> crate::OcctResult<*const HLRBRep_Data>;
     /// Dereference Handle to get *mut HLRBRep_Data
-    pub fn HandleHLRBRepData_get_mut(
-        handle: *mut HandleHLRBRepData,
+    pub fn Handle_HLRBRep_Data_get_mut(
+        handle: *mut Handle_HLRBRep_Data,
     ) -> crate::OcctResult<*mut HLRBRep_Data>;
     /// Upcast Handle<HLRBRep_Data> to Handle<Standard_Transient>
-    pub fn HandleHLRBRepData_to_HandleStandardTransient(
-        self_: *const HandleHLRBRepData,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn Handle_HLRBRep_Data_to_Handle_Standard_Transient(
+        self_: *const Handle_HLRBRep_Data,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn HLRBRep_Data_inherited_IsInstance(
         self_: *const HLRBRep_Data,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn HLRBRep_Data_inherited_IsKind(
         self_: *const HLRBRep_Data,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn HLRBRep_Data_inherited_This(
         self_: *const HLRBRep_Data,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn HLRBRep_Data_inherited_GetRefCount(self_: *const HLRBRep_Data)
         -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn HLRBRep_Data_inherited_IncrementRefCounter(
         self_: *mut HLRBRep_Data,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn HLRBRep_Data_inherited_DecrementRefCounter(
         self_: *mut HLRBRep_Data,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn HLRBRep_Data_inherited_Delete(self_: *const HLRBRep_Data) -> *const std::ffi::c_char;
     // ======================== HLRBRep_EdgeBuilder ========================
     pub fn HLRBRep_EdgeBuilder_destructor(self_: *mut HLRBRep_EdgeBuilder);
@@ -4961,11 +4325,11 @@ unsafe extern "C" {
     /// **Source:** `HLRBRep_EdgeBuilder.hxx`:63 - `HLRBRep_EdgeBuilder::LeftLimit()`
     pub fn HLRBRep_EdgeBuilder_left_limit(
         self_: *const HLRBRep_EdgeBuilder,
-    ) -> crate::OcctResult<*mut HandleHLRBRepAreaLimit>;
+    ) -> crate::OcctResult<*mut Handle_HLRBRep_AreaLimit>;
     /// **Source:** `HLRBRep_EdgeBuilder.hxx`:68 - `HLRBRep_EdgeBuilder::RightLimit()`
     pub fn HLRBRep_EdgeBuilder_right_limit(
         self_: *const HLRBRep_EdgeBuilder,
-    ) -> crate::OcctResult<*mut HandleHLRBRepAreaLimit>;
+    ) -> crate::OcctResult<*mut Handle_HLRBRep_AreaLimit>;
     /// **Source:** `HLRBRep_EdgeBuilder.hxx`:73 - `HLRBRep_EdgeBuilder::Builds()`
     pub fn HLRBRep_EdgeBuilder_builds(
         self_: *mut HLRBRep_EdgeBuilder,
@@ -5171,14 +4535,14 @@ unsafe extern "C" {
     pub fn HLRBRep_EdgeFaceTool_destructor(self_: *mut HLRBRep_EdgeFaceTool);
     /// **Source:** `HLRBRep_EdgeFaceTool.hxx` - `HLRBRep_EdgeFaceTool::HLRBRep_EdgeFaceTool()`
     pub fn HLRBRep_EdgeFaceTool_ctor() -> crate::OcctResult<*mut HLRBRep_EdgeFaceTool>;
-    /// **Source:** `HLRBRep_EdgeFaceTool.hxx`:34 - `HLRBRep_EdgeFaceTool::CurvatureValue()`
+    /// **Source:** `HLRBRep_EdgeFaceTool.hxx`:36 - `HLRBRep_EdgeFaceTool::CurvatureValue()`
     pub fn HLRBRep_EdgeFaceTool_curvature_value(
         F: *mut std::ffi::c_void,
         U: f64,
         V: f64,
         Tg: *const gp_Dir,
     ) -> crate::OcctResult<f64>;
-    /// **Source:** `HLRBRep_EdgeFaceTool.hxx`:40 - `HLRBRep_EdgeFaceTool::UVPoint()`
+    /// **Source:** `HLRBRep_EdgeFaceTool.hxx`:42 - `HLRBRep_EdgeFaceTool::UVPoint()`
     pub fn HLRBRep_EdgeFaceTool_uv_point(
         Par: f64,
         E: *mut std::ffi::c_void,
@@ -5190,22 +4554,22 @@ unsafe extern "C" {
     pub fn HLRBRep_EdgeIList_destructor(self_: *mut HLRBRep_EdgeIList);
     /// **Source:** `HLRBRep_EdgeIList.hxx` - `HLRBRep_EdgeIList::HLRBRep_EdgeIList()`
     pub fn HLRBRep_EdgeIList_ctor() -> crate::OcctResult<*mut HLRBRep_EdgeIList>;
-    /// **Source:** `HLRBRep_EdgeIList.hxx`:34 - `HLRBRep_EdgeIList::AddInterference()`
+    /// **Source:** `HLRBRep_EdgeIList.hxx`:35 - `HLRBRep_EdgeIList::AddInterference()`
     pub fn HLRBRep_EdgeIList_add_interference(
-        IL: *mut HLRAlgo_InterferenceList,
+        IL: *mut NCollection_List_HLRAlgo_Interference,
         I: *const HLRAlgo_Interference,
         T: *const HLRBRep_EdgeInterferenceTool,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `HLRBRep_EdgeIList.hxx`:39 - `HLRBRep_EdgeIList::ProcessComplex()`
+    /// **Source:** `HLRBRep_EdgeIList.hxx`:40 - `HLRBRep_EdgeIList::ProcessComplex()`
     pub fn HLRBRep_EdgeIList_process_complex(
-        IL: *mut HLRAlgo_InterferenceList,
+        IL: *mut NCollection_List_HLRAlgo_Interference,
         T: *const HLRBRep_EdgeInterferenceTool,
     ) -> *const std::ffi::c_char;
     // ======================== HLRBRep_EdgeInterferenceTool ========================
     pub fn HLRBRep_EdgeInterferenceTool_destructor(self_: *mut HLRBRep_EdgeInterferenceTool);
     /// **Source:** `HLRBRep_EdgeInterferenceTool.hxx`:38 - `HLRBRep_EdgeInterferenceTool::HLRBRep_EdgeInterferenceTool()`
     pub fn HLRBRep_EdgeInterferenceTool_ctor_handlehlrbrepdata(
-        DS: *const HandleHLRBRepData,
+        DS: *const Handle_HLRBRep_Data,
     ) -> crate::OcctResult<*mut HLRBRep_EdgeInterferenceTool>;
     /// **Source:** `HLRBRep_EdgeInterferenceTool.hxx`:40 - `HLRBRep_EdgeInterferenceTool::LoadEdge()`
     pub fn HLRBRep_EdgeInterferenceTool_load_edge(
@@ -5275,13 +4639,13 @@ unsafe extern "C" {
     pub fn HLRBRep_ExactIntersectionPointOfTheIntPCurvePCurveOfCInter_destructor(
         self_: *mut HLRBRep_ExactIntersectionPointOfTheIntPCurvePCurveOfCInter,
     );
-    /// **Source:** `HLRBRep_ExactIntersectionPointOfTheIntPCurvePCurveOfCInter.hxx`:38 - `HLRBRep_ExactIntersectionPointOfTheIntPCurvePCurveOfCInter::HLRBRep_ExactIntersectionPointOfTheIntPCurvePCurveOfCInter()`
-    pub fn HLRBRep_ExactIntersectionPointOfTheIntPCurvePCurveOfCInter_ctor_address2_real(
+    /// **Source:** `HLRBRep_ExactIntersectionPointOfTheIntPCurvePCurveOfCInter.hxx`:39 - `HLRBRep_ExactIntersectionPointOfTheIntPCurvePCurveOfCInter::HLRBRep_ExactIntersectionPointOfTheIntPCurvePCurveOfCInter()`
+    pub fn HLRBRep_ExactIntersectionPointOfTheIntPCurvePCurveOfCInter_ctor_voidptr2_real(
         C1: *const *mut std::ffi::c_void,
         C2: *const *mut std::ffi::c_void,
         Tol: f64,
     ) -> crate::OcctResult<*mut HLRBRep_ExactIntersectionPointOfTheIntPCurvePCurveOfCInter>;
-    /// **Source:** `HLRBRep_ExactIntersectionPointOfTheIntPCurvePCurveOfCInter.hxx`:43 - `HLRBRep_ExactIntersectionPointOfTheIntPCurvePCurveOfCInter::Perform()`
+    /// **Source:** `HLRBRep_ExactIntersectionPointOfTheIntPCurvePCurveOfCInter.hxx`:44 - `HLRBRep_ExactIntersectionPointOfTheIntPCurvePCurveOfCInter::Perform()`
     pub fn HLRBRep_ExactIntersectionPointOfTheIntPCurvePCurveOfCInter_perform_thepolygon2doftheintpcurvepcurveofcinter2_int2_real2(
         self_: *mut HLRBRep_ExactIntersectionPointOfTheIntPCurvePCurveOfCInter,
         Poly1: *const HLRBRep_ThePolygon2dOfTheIntPCurvePCurveOfCInter,
@@ -5291,7 +4655,7 @@ unsafe extern "C" {
         ParamOnSeg1: *mut f64,
         ParamOnSeg2: *mut f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `HLRBRep_ExactIntersectionPointOfTheIntPCurvePCurveOfCInter.hxx`:50 - `HLRBRep_ExactIntersectionPointOfTheIntPCurvePCurveOfCInter::Perform()`
+    /// **Source:** `HLRBRep_ExactIntersectionPointOfTheIntPCurvePCurveOfCInter.hxx`:51 - `HLRBRep_ExactIntersectionPointOfTheIntPCurvePCurveOfCInter::Perform()`
     pub fn HLRBRep_ExactIntersectionPointOfTheIntPCurvePCurveOfCInter_perform_real6(
         self_: *mut HLRBRep_ExactIntersectionPointOfTheIntPCurvePCurveOfCInter,
         Uo: f64,
@@ -5301,17 +4665,17 @@ unsafe extern "C" {
         USup: f64,
         VSup: f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `HLRBRep_ExactIntersectionPointOfTheIntPCurvePCurveOfCInter.hxx`:57 - `HLRBRep_ExactIntersectionPointOfTheIntPCurvePCurveOfCInter::NbRoots()`
+    /// **Source:** `HLRBRep_ExactIntersectionPointOfTheIntPCurvePCurveOfCInter.hxx`:58 - `HLRBRep_ExactIntersectionPointOfTheIntPCurvePCurveOfCInter::NbRoots()`
     pub fn HLRBRep_ExactIntersectionPointOfTheIntPCurvePCurveOfCInter_nb_roots(
         self_: *const HLRBRep_ExactIntersectionPointOfTheIntPCurvePCurveOfCInter,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `HLRBRep_ExactIntersectionPointOfTheIntPCurvePCurveOfCInter.hxx`:59 - `HLRBRep_ExactIntersectionPointOfTheIntPCurvePCurveOfCInter::Roots()`
+    /// **Source:** `HLRBRep_ExactIntersectionPointOfTheIntPCurvePCurveOfCInter.hxx`:60 - `HLRBRep_ExactIntersectionPointOfTheIntPCurvePCurveOfCInter::Roots()`
     pub fn HLRBRep_ExactIntersectionPointOfTheIntPCurvePCurveOfCInter_roots(
         self_: *mut HLRBRep_ExactIntersectionPointOfTheIntPCurvePCurveOfCInter,
         U: *mut f64,
         V: *mut f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `HLRBRep_ExactIntersectionPointOfTheIntPCurvePCurveOfCInter.hxx`:61 - `HLRBRep_ExactIntersectionPointOfTheIntPCurvePCurveOfCInter::AnErrorOccurred()`
+    /// **Source:** `HLRBRep_ExactIntersectionPointOfTheIntPCurvePCurveOfCInter.hxx`:62 - `HLRBRep_ExactIntersectionPointOfTheIntPCurvePCurveOfCInter::AnErrorOccurred()`
     pub fn HLRBRep_ExactIntersectionPointOfTheIntPCurvePCurveOfCInter_an_error_occurred(
         self_: *const HLRBRep_ExactIntersectionPointOfTheIntPCurvePCurveOfCInter,
     ) -> crate::OcctResult<bool>;
@@ -5453,7 +4817,7 @@ unsafe extern "C" {
     /// **Source:** `HLRBRep_FaceData.hxx`:120 - `HLRBRep_FaceData::Wires()`
     pub fn HLRBRep_FaceData_wires(
         self_: *mut HLRBRep_FaceData,
-    ) -> crate::OcctResult<*mut HandleHLRAlgoWiresBlock>;
+    ) -> crate::OcctResult<*mut Handle_HLRAlgo_WiresBlock>;
     /// **Source:** `HLRBRep_FaceData.hxx`:122 - `HLRBRep_FaceData::Geometry()`
     pub fn HLRBRep_FaceData_geometry(
         self_: *mut HLRBRep_FaceData,
@@ -5492,7 +4856,7 @@ unsafe extern "C" {
     /// **Source:** `HLRBRep_FaceIterator.hxx`:56 - `HLRBRep_FaceIterator::Wire()`
     pub fn HLRBRep_FaceIterator_wire(
         self_: *const HLRBRep_FaceIterator,
-    ) -> crate::OcctResult<*mut HandleHLRAlgoEdgesBlock>;
+    ) -> crate::OcctResult<*mut Handle_HLRAlgo_EdgesBlock>;
     /// **Source:** `HLRBRep_FaceIterator.hxx`:58 - `HLRBRep_FaceIterator::Edge()`
     pub fn HLRBRep_FaceIterator_edge(self_: *const HLRBRep_FaceIterator) -> crate::OcctResult<i32>;
     /// **Source:** `HLRBRep_FaceIterator.hxx`:60 - `HLRBRep_FaceIterator::Orientation()`
@@ -5519,110 +4883,110 @@ unsafe extern "C" {
     pub fn HLRBRep_HLRToShape_destructor(self_: *mut HLRBRep_HLRToShape);
     /// **Source:** `HLRBRep_HLRToShape.hxx`:68 - `HLRBRep_HLRToShape::HLRBRep_HLRToShape()`
     pub fn HLRBRep_HLRToShape_ctor_handlehlrbrepalgo(
-        A: *const HandleHLRBRepAlgo,
+        A: *const Handle_HLRBRep_Algo,
     ) -> crate::OcctResult<*mut HLRBRep_HLRToShape>;
-    /// **Source:** `HLRBRep_HLRToShape.hxx`:70 - `HLRBRep_HLRToShape::VCompound()`
+    /// **Source:** `HLRBRep_HLRToShape.hxx`:71 - `HLRBRep_HLRToShape::VCompound()`
     pub fn HLRBRep_HLRToShape_v_compound(
         self_: *mut HLRBRep_HLRToShape,
     ) -> crate::OcctResult<*mut TopoDS_Shape>;
-    /// **Source:** `HLRBRep_HLRToShape.hxx`:72 - `HLRBRep_HLRToShape::VCompound()`
+    /// **Source:** `HLRBRep_HLRToShape.hxx`:74 - `HLRBRep_HLRToShape::VCompound()`
     pub fn HLRBRep_HLRToShape_v_compound_shape(
         self_: *mut HLRBRep_HLRToShape,
         S: *const TopoDS_Shape,
     ) -> crate::OcctResult<*mut TopoDS_Shape>;
-    /// **Source:** `HLRBRep_HLRToShape.hxx`:74 - `HLRBRep_HLRToShape::Rg1LineVCompound()`
+    /// **Source:** `HLRBRep_HLRToShape.hxx`:77 - `HLRBRep_HLRToShape::Rg1LineVCompound()`
     pub fn HLRBRep_HLRToShape_rg1_line_v_compound(
         self_: *mut HLRBRep_HLRToShape,
     ) -> crate::OcctResult<*mut TopoDS_Shape>;
-    /// **Source:** `HLRBRep_HLRToShape.hxx`:76 - `HLRBRep_HLRToShape::Rg1LineVCompound()`
+    /// **Source:** `HLRBRep_HLRToShape.hxx`:80 - `HLRBRep_HLRToShape::Rg1LineVCompound()`
     pub fn HLRBRep_HLRToShape_rg1_line_v_compound_shape(
         self_: *mut HLRBRep_HLRToShape,
         S: *const TopoDS_Shape,
     ) -> crate::OcctResult<*mut TopoDS_Shape>;
-    /// **Source:** `HLRBRep_HLRToShape.hxx`:78 - `HLRBRep_HLRToShape::RgNLineVCompound()`
+    /// **Source:** `HLRBRep_HLRToShape.hxx`:83 - `HLRBRep_HLRToShape::RgNLineVCompound()`
     pub fn HLRBRep_HLRToShape_rg_n_line_v_compound(
         self_: *mut HLRBRep_HLRToShape,
     ) -> crate::OcctResult<*mut TopoDS_Shape>;
-    /// **Source:** `HLRBRep_HLRToShape.hxx`:80 - `HLRBRep_HLRToShape::RgNLineVCompound()`
+    /// **Source:** `HLRBRep_HLRToShape.hxx`:86 - `HLRBRep_HLRToShape::RgNLineVCompound()`
     pub fn HLRBRep_HLRToShape_rg_n_line_v_compound_shape(
         self_: *mut HLRBRep_HLRToShape,
         S: *const TopoDS_Shape,
     ) -> crate::OcctResult<*mut TopoDS_Shape>;
-    /// **Source:** `HLRBRep_HLRToShape.hxx`:82 - `HLRBRep_HLRToShape::OutLineVCompound()`
+    /// **Source:** `HLRBRep_HLRToShape.hxx`:89 - `HLRBRep_HLRToShape::OutLineVCompound()`
     pub fn HLRBRep_HLRToShape_out_line_v_compound(
         self_: *mut HLRBRep_HLRToShape,
     ) -> crate::OcctResult<*mut TopoDS_Shape>;
-    /// **Source:** `HLRBRep_HLRToShape.hxx`:84 - `HLRBRep_HLRToShape::OutLineVCompound3d()`
+    /// **Source:** `HLRBRep_HLRToShape.hxx`:92 - `HLRBRep_HLRToShape::OutLineVCompound3d()`
     pub fn HLRBRep_HLRToShape_out_line_v_compound3d(
         self_: *mut HLRBRep_HLRToShape,
     ) -> crate::OcctResult<*mut TopoDS_Shape>;
-    /// **Source:** `HLRBRep_HLRToShape.hxx`:86 - `HLRBRep_HLRToShape::OutLineVCompound()`
+    /// **Source:** `HLRBRep_HLRToShape.hxx`:95 - `HLRBRep_HLRToShape::OutLineVCompound()`
     pub fn HLRBRep_HLRToShape_out_line_v_compound_shape(
         self_: *mut HLRBRep_HLRToShape,
         S: *const TopoDS_Shape,
     ) -> crate::OcctResult<*mut TopoDS_Shape>;
-    /// **Source:** `HLRBRep_HLRToShape.hxx`:88 - `HLRBRep_HLRToShape::IsoLineVCompound()`
+    /// **Source:** `HLRBRep_HLRToShape.hxx`:98 - `HLRBRep_HLRToShape::IsoLineVCompound()`
     pub fn HLRBRep_HLRToShape_iso_line_v_compound(
         self_: *mut HLRBRep_HLRToShape,
     ) -> crate::OcctResult<*mut TopoDS_Shape>;
-    /// **Source:** `HLRBRep_HLRToShape.hxx`:90 - `HLRBRep_HLRToShape::IsoLineVCompound()`
+    /// **Source:** `HLRBRep_HLRToShape.hxx`:101 - `HLRBRep_HLRToShape::IsoLineVCompound()`
     pub fn HLRBRep_HLRToShape_iso_line_v_compound_shape(
         self_: *mut HLRBRep_HLRToShape,
         S: *const TopoDS_Shape,
     ) -> crate::OcctResult<*mut TopoDS_Shape>;
-    /// **Source:** `HLRBRep_HLRToShape.hxx`:92 - `HLRBRep_HLRToShape::HCompound()`
+    /// **Source:** `HLRBRep_HLRToShape.hxx`:104 - `HLRBRep_HLRToShape::HCompound()`
     pub fn HLRBRep_HLRToShape_h_compound(
         self_: *mut HLRBRep_HLRToShape,
     ) -> crate::OcctResult<*mut TopoDS_Shape>;
-    /// **Source:** `HLRBRep_HLRToShape.hxx`:94 - `HLRBRep_HLRToShape::HCompound()`
+    /// **Source:** `HLRBRep_HLRToShape.hxx`:107 - `HLRBRep_HLRToShape::HCompound()`
     pub fn HLRBRep_HLRToShape_h_compound_shape(
         self_: *mut HLRBRep_HLRToShape,
         S: *const TopoDS_Shape,
     ) -> crate::OcctResult<*mut TopoDS_Shape>;
-    /// **Source:** `HLRBRep_HLRToShape.hxx`:96 - `HLRBRep_HLRToShape::Rg1LineHCompound()`
+    /// **Source:** `HLRBRep_HLRToShape.hxx`:110 - `HLRBRep_HLRToShape::Rg1LineHCompound()`
     pub fn HLRBRep_HLRToShape_rg1_line_h_compound(
         self_: *mut HLRBRep_HLRToShape,
     ) -> crate::OcctResult<*mut TopoDS_Shape>;
-    /// **Source:** `HLRBRep_HLRToShape.hxx`:98 - `HLRBRep_HLRToShape::Rg1LineHCompound()`
+    /// **Source:** `HLRBRep_HLRToShape.hxx`:113 - `HLRBRep_HLRToShape::Rg1LineHCompound()`
     pub fn HLRBRep_HLRToShape_rg1_line_h_compound_shape(
         self_: *mut HLRBRep_HLRToShape,
         S: *const TopoDS_Shape,
     ) -> crate::OcctResult<*mut TopoDS_Shape>;
-    /// **Source:** `HLRBRep_HLRToShape.hxx`:100 - `HLRBRep_HLRToShape::RgNLineHCompound()`
+    /// **Source:** `HLRBRep_HLRToShape.hxx`:116 - `HLRBRep_HLRToShape::RgNLineHCompound()`
     pub fn HLRBRep_HLRToShape_rg_n_line_h_compound(
         self_: *mut HLRBRep_HLRToShape,
     ) -> crate::OcctResult<*mut TopoDS_Shape>;
-    /// **Source:** `HLRBRep_HLRToShape.hxx`:102 - `HLRBRep_HLRToShape::RgNLineHCompound()`
+    /// **Source:** `HLRBRep_HLRToShape.hxx`:119 - `HLRBRep_HLRToShape::RgNLineHCompound()`
     pub fn HLRBRep_HLRToShape_rg_n_line_h_compound_shape(
         self_: *mut HLRBRep_HLRToShape,
         S: *const TopoDS_Shape,
     ) -> crate::OcctResult<*mut TopoDS_Shape>;
-    /// **Source:** `HLRBRep_HLRToShape.hxx`:104 - `HLRBRep_HLRToShape::OutLineHCompound()`
+    /// **Source:** `HLRBRep_HLRToShape.hxx`:122 - `HLRBRep_HLRToShape::OutLineHCompound()`
     pub fn HLRBRep_HLRToShape_out_line_h_compound(
         self_: *mut HLRBRep_HLRToShape,
     ) -> crate::OcctResult<*mut TopoDS_Shape>;
-    /// **Source:** `HLRBRep_HLRToShape.hxx`:106 - `HLRBRep_HLRToShape::OutLineHCompound()`
+    /// **Source:** `HLRBRep_HLRToShape.hxx`:125 - `HLRBRep_HLRToShape::OutLineHCompound()`
     pub fn HLRBRep_HLRToShape_out_line_h_compound_shape(
         self_: *mut HLRBRep_HLRToShape,
         S: *const TopoDS_Shape,
     ) -> crate::OcctResult<*mut TopoDS_Shape>;
-    /// **Source:** `HLRBRep_HLRToShape.hxx`:108 - `HLRBRep_HLRToShape::IsoLineHCompound()`
+    /// **Source:** `HLRBRep_HLRToShape.hxx`:128 - `HLRBRep_HLRToShape::IsoLineHCompound()`
     pub fn HLRBRep_HLRToShape_iso_line_h_compound(
         self_: *mut HLRBRep_HLRToShape,
     ) -> crate::OcctResult<*mut TopoDS_Shape>;
-    /// **Source:** `HLRBRep_HLRToShape.hxx`:110 - `HLRBRep_HLRToShape::IsoLineHCompound()`
+    /// **Source:** `HLRBRep_HLRToShape.hxx`:131 - `HLRBRep_HLRToShape::IsoLineHCompound()`
     pub fn HLRBRep_HLRToShape_iso_line_h_compound_shape(
         self_: *mut HLRBRep_HLRToShape,
         S: *const TopoDS_Shape,
     ) -> crate::OcctResult<*mut TopoDS_Shape>;
-    /// **Source:** `HLRBRep_HLRToShape.hxx`:116 - `HLRBRep_HLRToShape::CompoundOfEdges()`
+    /// **Source:** `HLRBRep_HLRToShape.hxx`:137 - `HLRBRep_HLRToShape::CompoundOfEdges()`
     pub fn HLRBRep_HLRToShape_compound_of_edges_typeofresultingedge_bool2(
         self_: *mut HLRBRep_HLRToShape,
         type_: i32,
         visible: bool,
         In3d: bool,
     ) -> crate::OcctResult<*mut TopoDS_Shape>;
-    /// **Source:** `HLRBRep_HLRToShape.hxx`:125 - `HLRBRep_HLRToShape::CompoundOfEdges()`
+    /// **Source:** `HLRBRep_HLRToShape.hxx`:146 - `HLRBRep_HLRToShape::CompoundOfEdges()`
     pub fn HLRBRep_HLRToShape_compound_of_edges_shape_typeofresultingedge_bool2(
         self_: *mut HLRBRep_HLRToShape,
         S: *const TopoDS_Shape,
@@ -5632,25 +4996,25 @@ unsafe extern "C" {
     ) -> crate::OcctResult<*mut TopoDS_Shape>;
     // ======================== HLRBRep_Hider ========================
     pub fn HLRBRep_Hider_destructor(self_: *mut HLRBRep_Hider);
-    /// **Source:** `HLRBRep_Hider.hxx`:36 - `HLRBRep_Hider::HLRBRep_Hider()`
+    /// **Source:** `HLRBRep_Hider.hxx`:39 - `HLRBRep_Hider::HLRBRep_Hider()`
     pub fn HLRBRep_Hider_ctor_handlehlrbrepdata(
-        DS: *const HandleHLRBRepData,
+        DS: *const Handle_HLRBRep_Data,
     ) -> crate::OcctResult<*mut HLRBRep_Hider>;
-    /// **Source:** `HLRBRep_Hider.hxx`:39 - `HLRBRep_Hider::OwnHiding()`
+    /// **Source:** `HLRBRep_Hider.hxx`:42 - `HLRBRep_Hider::OwnHiding()`
     pub fn HLRBRep_Hider_own_hiding(self_: *mut HLRBRep_Hider, FI: i32) -> *const std::ffi::c_char;
-    /// **Source:** `HLRBRep_Hider.hxx`:43 - `HLRBRep_Hider::Hide()`
+    /// **Source:** `HLRBRep_Hider.hxx`:46 - `HLRBRep_Hider::Hide()`
     pub fn HLRBRep_Hider_hide(
         self_: *mut HLRBRep_Hider,
         FI: i32,
-        MST: *mut BRepTopAdaptor_MapOfShapeTool,
+        MST: *mut NCollection_DataMap_TopoDS_Shape_BRepTopAdaptor_Tool_TopTools_ShapeMapHasher,
     ) -> *const std::ffi::c_char;
     // ======================== HLRBRep_IntConicCurveOfCInter ========================
     pub fn HLRBRep_IntConicCurveOfCInter_destructor(self_: *mut HLRBRep_IntConicCurveOfCInter);
-    /// **Source:** `HLRBRep_IntConicCurveOfCInter.hxx`:45 - `HLRBRep_IntConicCurveOfCInter::HLRBRep_IntConicCurveOfCInter()`
+    /// **Source:** `HLRBRep_IntConicCurveOfCInter.hxx`:46 - `HLRBRep_IntConicCurveOfCInter::HLRBRep_IntConicCurveOfCInter()`
     pub fn HLRBRep_IntConicCurveOfCInter_ctor(
     ) -> crate::OcctResult<*mut HLRBRep_IntConicCurveOfCInter>;
-    /// **Source:** `HLRBRep_IntConicCurveOfCInter.hxx`:48 - `HLRBRep_IntConicCurveOfCInter::HLRBRep_IntConicCurveOfCInter()`
-    pub fn HLRBRep_IntConicCurveOfCInter_ctor_lin2d_domain_address_domain_real2(
+    /// **Source:** `HLRBRep_IntConicCurveOfCInter.hxx`:49 - `HLRBRep_IntConicCurveOfCInter::HLRBRep_IntConicCurveOfCInter()`
+    pub fn HLRBRep_IntConicCurveOfCInter_ctor_lin2d_domain_voidptr_domain_real2(
         L: *const gp_Lin2d,
         D1: *const IntRes2d_Domain,
         PCurve: *const *mut std::ffi::c_void,
@@ -5658,8 +5022,8 @@ unsafe extern "C" {
         TolConf: f64,
         Tol: f64,
     ) -> crate::OcctResult<*mut HLRBRep_IntConicCurveOfCInter>;
-    /// **Source:** `HLRBRep_IntConicCurveOfCInter.hxx`:56 - `HLRBRep_IntConicCurveOfCInter::HLRBRep_IntConicCurveOfCInter()`
-    pub fn HLRBRep_IntConicCurveOfCInter_ctor_circ2d_domain_address_domain_real2(
+    /// **Source:** `HLRBRep_IntConicCurveOfCInter.hxx`:57 - `HLRBRep_IntConicCurveOfCInter::HLRBRep_IntConicCurveOfCInter()`
+    pub fn HLRBRep_IntConicCurveOfCInter_ctor_circ2d_domain_voidptr_domain_real2(
         C: *const gp_Circ2d,
         D1: *const IntRes2d_Domain,
         PCurve: *const *mut std::ffi::c_void,
@@ -5667,8 +5031,8 @@ unsafe extern "C" {
         TolConf: f64,
         Tol: f64,
     ) -> crate::OcctResult<*mut HLRBRep_IntConicCurveOfCInter>;
-    /// **Source:** `HLRBRep_IntConicCurveOfCInter.hxx`:64 - `HLRBRep_IntConicCurveOfCInter::HLRBRep_IntConicCurveOfCInter()`
-    pub fn HLRBRep_IntConicCurveOfCInter_ctor_elips2d_domain_address_domain_real2(
+    /// **Source:** `HLRBRep_IntConicCurveOfCInter.hxx`:65 - `HLRBRep_IntConicCurveOfCInter::HLRBRep_IntConicCurveOfCInter()`
+    pub fn HLRBRep_IntConicCurveOfCInter_ctor_elips2d_domain_voidptr_domain_real2(
         E: *const gp_Elips2d,
         D1: *const IntRes2d_Domain,
         PCurve: *const *mut std::ffi::c_void,
@@ -5676,8 +5040,8 @@ unsafe extern "C" {
         TolConf: f64,
         Tol: f64,
     ) -> crate::OcctResult<*mut HLRBRep_IntConicCurveOfCInter>;
-    /// **Source:** `HLRBRep_IntConicCurveOfCInter.hxx`:72 - `HLRBRep_IntConicCurveOfCInter::HLRBRep_IntConicCurveOfCInter()`
-    pub fn HLRBRep_IntConicCurveOfCInter_ctor_parab2d_domain_address_domain_real2(
+    /// **Source:** `HLRBRep_IntConicCurveOfCInter.hxx`:73 - `HLRBRep_IntConicCurveOfCInter::HLRBRep_IntConicCurveOfCInter()`
+    pub fn HLRBRep_IntConicCurveOfCInter_ctor_parab2d_domain_voidptr_domain_real2(
         Prb: *const gp_Parab2d,
         D1: *const IntRes2d_Domain,
         PCurve: *const *mut std::ffi::c_void,
@@ -5685,8 +5049,8 @@ unsafe extern "C" {
         TolConf: f64,
         Tol: f64,
     ) -> crate::OcctResult<*mut HLRBRep_IntConicCurveOfCInter>;
-    /// **Source:** `HLRBRep_IntConicCurveOfCInter.hxx`:81 - `HLRBRep_IntConicCurveOfCInter::HLRBRep_IntConicCurveOfCInter()`
-    pub fn HLRBRep_IntConicCurveOfCInter_ctor_hypr2d_domain_address_domain_real2(
+    /// **Source:** `HLRBRep_IntConicCurveOfCInter.hxx`:82 - `HLRBRep_IntConicCurveOfCInter::HLRBRep_IntConicCurveOfCInter()`
+    pub fn HLRBRep_IntConicCurveOfCInter_ctor_hypr2d_domain_voidptr_domain_real2(
         H: *const gp_Hypr2d,
         D1: *const IntRes2d_Domain,
         PCurve: *const *mut std::ffi::c_void,
@@ -5694,8 +5058,8 @@ unsafe extern "C" {
         TolConf: f64,
         Tol: f64,
     ) -> crate::OcctResult<*mut HLRBRep_IntConicCurveOfCInter>;
-    /// **Source:** `HLRBRep_IntConicCurveOfCInter.hxx`:89 - `HLRBRep_IntConicCurveOfCInter::Perform()`
-    pub fn HLRBRep_IntConicCurveOfCInter_perform_lin2d_domain_address_domain_real2(
+    /// **Source:** `HLRBRep_IntConicCurveOfCInter.hxx`:90 - `HLRBRep_IntConicCurveOfCInter::Perform()`
+    pub fn HLRBRep_IntConicCurveOfCInter_perform_lin2d_domain_voidptr_domain_real2(
         self_: *mut HLRBRep_IntConicCurveOfCInter,
         L: *const gp_Lin2d,
         D1: *const IntRes2d_Domain,
@@ -5704,8 +5068,8 @@ unsafe extern "C" {
         TolConf: f64,
         Tol: f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `HLRBRep_IntConicCurveOfCInter.hxx`:97 - `HLRBRep_IntConicCurveOfCInter::Perform()`
-    pub fn HLRBRep_IntConicCurveOfCInter_perform_circ2d_domain_address_domain_real2(
+    /// **Source:** `HLRBRep_IntConicCurveOfCInter.hxx`:98 - `HLRBRep_IntConicCurveOfCInter::Perform()`
+    pub fn HLRBRep_IntConicCurveOfCInter_perform_circ2d_domain_voidptr_domain_real2(
         self_: *mut HLRBRep_IntConicCurveOfCInter,
         C: *const gp_Circ2d,
         D1: *const IntRes2d_Domain,
@@ -5714,8 +5078,8 @@ unsafe extern "C" {
         TolConf: f64,
         Tol: f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `HLRBRep_IntConicCurveOfCInter.hxx`:105 - `HLRBRep_IntConicCurveOfCInter::Perform()`
-    pub fn HLRBRep_IntConicCurveOfCInter_perform_elips2d_domain_address_domain_real2(
+    /// **Source:** `HLRBRep_IntConicCurveOfCInter.hxx`:106 - `HLRBRep_IntConicCurveOfCInter::Perform()`
+    pub fn HLRBRep_IntConicCurveOfCInter_perform_elips2d_domain_voidptr_domain_real2(
         self_: *mut HLRBRep_IntConicCurveOfCInter,
         E: *const gp_Elips2d,
         D1: *const IntRes2d_Domain,
@@ -5724,8 +5088,8 @@ unsafe extern "C" {
         TolConf: f64,
         Tol: f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `HLRBRep_IntConicCurveOfCInter.hxx`:113 - `HLRBRep_IntConicCurveOfCInter::Perform()`
-    pub fn HLRBRep_IntConicCurveOfCInter_perform_parab2d_domain_address_domain_real2(
+    /// **Source:** `HLRBRep_IntConicCurveOfCInter.hxx`:114 - `HLRBRep_IntConicCurveOfCInter::Perform()`
+    pub fn HLRBRep_IntConicCurveOfCInter_perform_parab2d_domain_voidptr_domain_real2(
         self_: *mut HLRBRep_IntConicCurveOfCInter,
         Prb: *const gp_Parab2d,
         D1: *const IntRes2d_Domain,
@@ -5734,8 +5098,8 @@ unsafe extern "C" {
         TolConf: f64,
         Tol: f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `HLRBRep_IntConicCurveOfCInter.hxx`:122 - `HLRBRep_IntConicCurveOfCInter::Perform()`
-    pub fn HLRBRep_IntConicCurveOfCInter_perform_hypr2d_domain_address_domain_real2(
+    /// **Source:** `HLRBRep_IntConicCurveOfCInter.hxx`:123 - `HLRBRep_IntConicCurveOfCInter::Perform()`
+    pub fn HLRBRep_IntConicCurveOfCInter_perform_hypr2d_domain_voidptr_domain_real2(
         self_: *mut HLRBRep_IntConicCurveOfCInter,
         H: *const gp_Hypr2d,
         D1: *const IntRes2d_Domain,
@@ -5752,77 +5116,77 @@ unsafe extern "C" {
     pub fn HLRBRep_IntConicCurveOfCInter_as_IntRes2d_Intersection_mut(
         self_: *mut HLRBRep_IntConicCurveOfCInter,
     ) -> crate::OcctResult<*mut IntRes2d_Intersection>;
-    /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:39 - `IntRes2d_Intersection::IsDone()`
+    /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:40 - `IntRes2d_Intersection::IsDone()`
     pub fn HLRBRep_IntConicCurveOfCInter_inherited_IsDone(
         self_: *const HLRBRep_IntConicCurveOfCInter,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:44 - `IntRes2d_Intersection::IsEmpty()`
+    /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:45 - `IntRes2d_Intersection::IsEmpty()`
     pub fn HLRBRep_IntConicCurveOfCInter_inherited_IsEmpty(
         self_: *const HLRBRep_IntConicCurveOfCInter,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:49 - `IntRes2d_Intersection::NbPoints()`
+    /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:50 - `IntRes2d_Intersection::NbPoints()`
     pub fn HLRBRep_IntConicCurveOfCInter_inherited_NbPoints(
         self_: *const HLRBRep_IntConicCurveOfCInter,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:56 - `IntRes2d_Intersection::Point()`
+    /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:57 - `IntRes2d_Intersection::Point()`
     pub fn HLRBRep_IntConicCurveOfCInter_inherited_Point(
         self_: *const HLRBRep_IntConicCurveOfCInter,
         N: i32,
     ) -> crate::OcctResult<*const IntRes2d_IntersectionPoint>;
-    /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:61 - `IntRes2d_Intersection::NbSegments()`
+    /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:62 - `IntRes2d_Intersection::NbSegments()`
     pub fn HLRBRep_IntConicCurveOfCInter_inherited_NbSegments(
         self_: *const HLRBRep_IntConicCurveOfCInter,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:68 - `IntRes2d_Intersection::Segment()`
+    /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:69 - `IntRes2d_Intersection::Segment()`
     pub fn HLRBRep_IntConicCurveOfCInter_inherited_Segment(
         self_: *const HLRBRep_IntConicCurveOfCInter,
         N: i32,
     ) -> crate::OcctResult<*const IntRes2d_IntersectionSegment>;
-    /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:70 - `IntRes2d_Intersection::SetReversedParameters()`
+    /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:71 - `IntRes2d_Intersection::SetReversedParameters()`
     pub fn HLRBRep_IntConicCurveOfCInter_inherited_SetReversedParameters(
         self_: *mut HLRBRep_IntConicCurveOfCInter,
         Reverseflag: bool,
     ) -> *const std::ffi::c_char;
     // ======================== HLRBRep_InterCSurf ========================
     pub fn HLRBRep_InterCSurf_destructor(self_: *mut HLRBRep_InterCSurf);
-    /// **Source:** `HLRBRep_InterCSurf.hxx`:52 - `HLRBRep_InterCSurf::HLRBRep_InterCSurf()`
+    /// **Source:** `HLRBRep_InterCSurf.hxx`:55 - `HLRBRep_InterCSurf::HLRBRep_InterCSurf()`
     pub fn HLRBRep_InterCSurf_ctor() -> crate::OcctResult<*mut HLRBRep_InterCSurf>;
-    /// **Source:** `HLRBRep_InterCSurf.hxx`:56 - `HLRBRep_InterCSurf::Perform()`
-    pub fn HLRBRep_InterCSurf_perform_lin_address(
+    /// **Source:** `HLRBRep_InterCSurf.hxx`:59 - `HLRBRep_InterCSurf::Perform()`
+    pub fn HLRBRep_InterCSurf_perform_lin_surfaceptr(
         self_: *mut HLRBRep_InterCSurf,
-        Curve: *const gp_Lin,
-        Surface: *const *mut std::ffi::c_void,
+        theCurve: *const gp_Lin,
+        theSurface: *mut HLRBRep_Surface,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `HLRBRep_InterCSurf.hxx`:61 - `HLRBRep_InterCSurf::Perform()`
-    pub fn HLRBRep_InterCSurf_perform_lin_thepolygonofintercsurf_address(
+    /// **Source:** `HLRBRep_InterCSurf.hxx`:64 - `HLRBRep_InterCSurf::Perform()`
+    pub fn HLRBRep_InterCSurf_perform_lin_thepolygonofintercsurf_surfaceptr(
         self_: *mut HLRBRep_InterCSurf,
-        Curve: *const gp_Lin,
-        Polygon: *const HLRBRep_ThePolygonOfInterCSurf,
-        Surface: *const *mut std::ffi::c_void,
+        theCurve: *const gp_Lin,
+        thePolygon: *const HLRBRep_ThePolygonOfInterCSurf,
+        theSurface: *mut HLRBRep_Surface,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `HLRBRep_InterCSurf.hxx`:69 - `HLRBRep_InterCSurf::Perform()`
-    pub fn HLRBRep_InterCSurf_perform_lin_thepolygonofintercsurf_address_thepolyhedronofintercsurf(
+    /// **Source:** `HLRBRep_InterCSurf.hxx`:72 - `HLRBRep_InterCSurf::Perform()`
+    pub fn HLRBRep_InterCSurf_perform_lin_thepolygonofintercsurf_surfaceptr_thepolyhedronofintercsurf(
         self_: *mut HLRBRep_InterCSurf,
-        Curve: *const gp_Lin,
-        ThePolygon: *const HLRBRep_ThePolygonOfInterCSurf,
-        Surface: *const *mut std::ffi::c_void,
-        Polyhedron: *const HLRBRep_ThePolyhedronOfInterCSurf,
+        theCurve: *const gp_Lin,
+        thePolygon: *const HLRBRep_ThePolygonOfInterCSurf,
+        theSurface: *mut HLRBRep_Surface,
+        thePolyhedron: *const HLRBRep_ThePolyhedronOfInterCSurf,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `HLRBRep_InterCSurf.hxx`:78 - `HLRBRep_InterCSurf::Perform()`
-    pub fn HLRBRep_InterCSurf_perform_lin_thepolygonofintercsurf_address_thepolyhedronofintercsurf_boundsortbox(
+    /// **Source:** `HLRBRep_InterCSurf.hxx`:81 - `HLRBRep_InterCSurf::Perform()`
+    pub fn HLRBRep_InterCSurf_perform_lin_thepolygonofintercsurf_surfaceptr_thepolyhedronofintercsurf_boundsortbox(
         self_: *mut HLRBRep_InterCSurf,
-        Curve: *const gp_Lin,
-        ThePolygon: *const HLRBRep_ThePolygonOfInterCSurf,
-        Surface: *const *mut std::ffi::c_void,
-        Polyhedron: *const HLRBRep_ThePolyhedronOfInterCSurf,
-        BndBSB: *mut Bnd_BoundSortBox,
+        theCurve: *const gp_Lin,
+        thePolygon: *const HLRBRep_ThePolygonOfInterCSurf,
+        theSurface: *mut HLRBRep_Surface,
+        thePolyhedron: *const HLRBRep_ThePolyhedronOfInterCSurf,
+        theBndBSB: *mut Bnd_BoundSortBox,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `HLRBRep_InterCSurf.hxx`:87 - `HLRBRep_InterCSurf::Perform()`
-    pub fn HLRBRep_InterCSurf_perform_lin_address_thepolyhedronofintercsurf(
+    /// **Source:** `HLRBRep_InterCSurf.hxx`:90 - `HLRBRep_InterCSurf::Perform()`
+    pub fn HLRBRep_InterCSurf_perform_lin_surfaceptr_thepolyhedronofintercsurf(
         self_: *mut HLRBRep_InterCSurf,
-        Curve: *const gp_Lin,
-        Surface: *const *mut std::ffi::c_void,
-        Polyhedron: *const HLRBRep_ThePolyhedronOfInterCSurf,
+        theCurve: *const gp_Lin,
+        theSurface: *mut HLRBRep_Surface,
+        thePolyhedron: *const HLRBRep_ThePolyhedronOfInterCSurf,
     ) -> *const std::ffi::c_char;
     /// Upcast HLRBRep_InterCSurf to IntCurveSurface_Intersection
     pub fn HLRBRep_InterCSurf_as_IntCurveSurface_Intersection(
@@ -5832,15 +5196,15 @@ unsafe extern "C" {
     pub fn HLRBRep_InterCSurf_as_IntCurveSurface_Intersection_mut(
         self_: *mut HLRBRep_InterCSurf,
     ) -> crate::OcctResult<*mut IntCurveSurface_Intersection>;
-    /// Inherited: **Source:** `IntCurveSurface_Intersection.hxx`:36 - `IntCurveSurface_Intersection::IsDone()`
+    /// Inherited: **Source:** `IntCurveSurface_Intersection.hxx`:37 - `IntCurveSurface_Intersection::IsDone()`
     pub fn HLRBRep_InterCSurf_inherited_IsDone(
         self_: *const HLRBRep_InterCSurf,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `IntCurveSurface_Intersection.hxx`:41 - `IntCurveSurface_Intersection::NbPoints()`
+    /// Inherited: **Source:** `IntCurveSurface_Intersection.hxx`:42 - `IntCurveSurface_Intersection::NbPoints()`
     pub fn HLRBRep_InterCSurf_inherited_NbPoints(
         self_: *const HLRBRep_InterCSurf,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `IntCurveSurface_Intersection.hxx`:47 - `IntCurveSurface_Intersection::Point()`
+    /// Inherited: **Source:** `IntCurveSurface_Intersection.hxx`:48 - `IntCurveSurface_Intersection::Point()`
     pub fn HLRBRep_InterCSurf_inherited_Point(
         self_: *const HLRBRep_InterCSurf,
         Index: i32,
@@ -5854,51 +5218,51 @@ unsafe extern "C" {
         self_: *const HLRBRep_InterCSurf,
         Index: i32,
     ) -> crate::OcctResult<*const IntCurveSurface_IntersectionSegment>;
-    /// Inherited: **Source:** `IntCurveSurface_Intersection.hxx`:65 - `IntCurveSurface_Intersection::IsParallel()`
+    /// Inherited: **Source:** `IntCurveSurface_Intersection.hxx`:64 - `IntCurveSurface_Intersection::IsParallel()`
     pub fn HLRBRep_InterCSurf_inherited_IsParallel(
         self_: *const HLRBRep_InterCSurf,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `IntCurveSurface_Intersection.hxx`:68 - `IntCurveSurface_Intersection::Dump()`
+    /// Inherited: **Source:** `IntCurveSurface_Intersection.hxx`:67 - `IntCurveSurface_Intersection::Dump()`
     pub fn HLRBRep_InterCSurf_inherited_Dump(
         self_: *const HLRBRep_InterCSurf,
     ) -> *const std::ffi::c_char;
     // ======================== HLRBRep_InternalAlgo ========================
     pub fn HLRBRep_InternalAlgo_destructor(self_: *mut HLRBRep_InternalAlgo);
-    /// **Source:** `HLRBRep_InternalAlgo.hxx`:39 - `HLRBRep_InternalAlgo::HLRBRep_InternalAlgo()`
+    /// **Source:** `HLRBRep_InternalAlgo.hxx`:40 - `HLRBRep_InternalAlgo::HLRBRep_InternalAlgo()`
     pub fn HLRBRep_InternalAlgo_ctor() -> crate::OcctResult<*mut HLRBRep_InternalAlgo>;
-    /// **Source:** `HLRBRep_InternalAlgo.hxx`:41 - `HLRBRep_InternalAlgo::HLRBRep_InternalAlgo()`
+    /// **Source:** `HLRBRep_InternalAlgo.hxx`:42 - `HLRBRep_InternalAlgo::HLRBRep_InternalAlgo()`
     pub fn HLRBRep_InternalAlgo_ctor_handlehlrbrepinternalalgo(
-        A: *const HandleHLRBRepInternalAlgo,
+        A: *const Handle_HLRBRep_InternalAlgo,
     ) -> crate::OcctResult<*mut HLRBRep_InternalAlgo>;
-    /// **Source:** `HLRBRep_InternalAlgo.hxx`:44 - `HLRBRep_InternalAlgo::Projector()`
+    /// **Source:** `HLRBRep_InternalAlgo.hxx`:45 - `HLRBRep_InternalAlgo::Projector()`
     pub fn HLRBRep_InternalAlgo_projector_projector(
         self_: *mut HLRBRep_InternalAlgo,
         P: *const HLRAlgo_Projector,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `HLRBRep_InternalAlgo.hxx`:47 - `HLRBRep_InternalAlgo::Projector()`
+    /// **Source:** `HLRBRep_InternalAlgo.hxx`:48 - `HLRBRep_InternalAlgo::Projector()`
     pub fn HLRBRep_InternalAlgo_projector(
         self_: *mut HLRBRep_InternalAlgo,
     ) -> crate::OcctResult<*mut HLRAlgo_Projector>;
-    /// **Source:** `HLRBRep_InternalAlgo.hxx`:50 - `HLRBRep_InternalAlgo::Update()`
+    /// **Source:** `HLRBRep_InternalAlgo.hxx`:51 - `HLRBRep_InternalAlgo::Update()`
     pub fn HLRBRep_InternalAlgo_update(self_: *mut HLRBRep_InternalAlgo)
         -> *const std::ffi::c_char;
-    /// **Source:** `HLRBRep_InternalAlgo.hxx`:53 - `HLRBRep_InternalAlgo::Load()`
+    /// **Source:** `HLRBRep_InternalAlgo.hxx`:54 - `HLRBRep_InternalAlgo::Load()`
     pub fn HLRBRep_InternalAlgo_load_handlehlrtopobrepoutliner_handlestandardtransient_int(
         self_: *mut HLRBRep_InternalAlgo,
-        S: *const HandleHLRTopoBRepOutLiner,
-        SData: *const HandleStandardTransient,
+        S: *const Handle_HLRTopoBRep_OutLiner,
+        SData: *const Handle_Standard_Transient,
         nbIso: i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `HLRBRep_InternalAlgo.hxx`:58 - `HLRBRep_InternalAlgo::Load()`
+    /// **Source:** `HLRBRep_InternalAlgo.hxx`:59 - `HLRBRep_InternalAlgo::Load()`
     pub fn HLRBRep_InternalAlgo_load_handlehlrtopobrepoutliner_int(
         self_: *mut HLRBRep_InternalAlgo,
-        S: *const HandleHLRTopoBRepOutLiner,
+        S: *const Handle_HLRTopoBRep_OutLiner,
         nbIso: i32,
     ) -> *const std::ffi::c_char;
     /// **Source:** `HLRBRep_InternalAlgo.hxx`:63 - `HLRBRep_InternalAlgo::Index()`
     pub fn HLRBRep_InternalAlgo_index(
         self_: *const HLRBRep_InternalAlgo,
-        S: *const HandleHLRTopoBRepOutLiner,
+        S: *const Handle_HLRTopoBRep_OutLiner,
     ) -> crate::OcctResult<i32>;
     /// **Source:** `HLRBRep_InternalAlgo.hxx`:66 - `HLRBRep_InternalAlgo::Remove()`
     pub fn HLRBRep_InternalAlgo_remove(
@@ -5909,12 +5273,12 @@ unsafe extern "C" {
     pub fn HLRBRep_InternalAlgo_shape_data(
         self_: *mut HLRBRep_InternalAlgo,
         I: i32,
-        SData: *const HandleStandardTransient,
+        SData: *const Handle_Standard_Transient,
     ) -> *const std::ffi::c_char;
     /// **Source:** `HLRBRep_InternalAlgo.hxx`:71 - `HLRBRep_InternalAlgo::SeqOfShapeBounds()`
     pub fn HLRBRep_InternalAlgo_seq_of_shape_bounds(
         self_: *mut HLRBRep_InternalAlgo,
-    ) -> crate::OcctResult<*mut HLRBRep_SeqOfShapeBounds>;
+    ) -> crate::OcctResult<*mut NCollection_Sequence_HLRBRep_ShapeBounds>;
     /// **Source:** `HLRBRep_InternalAlgo.hxx`:73 - `HLRBRep_InternalAlgo::NbShapes()`
     pub fn HLRBRep_InternalAlgo_nb_shapes(
         self_: *const HLRBRep_InternalAlgo,
@@ -5993,15 +5357,16 @@ unsafe extern "C" {
     /// **Source:** `HLRBRep_InternalAlgo.hxx`:122 - `HLRBRep_InternalAlgo::DataStructure()`
     pub fn HLRBRep_InternalAlgo_data_structure(
         self_: *const HLRBRep_InternalAlgo,
-    ) -> crate::OcctResult<*mut HandleHLRBRepData>;
+    ) -> crate::OcctResult<*mut Handle_HLRBRep_Data>;
     /// **Source:** `HLRBRep_InternalAlgo.hxx`:124 - `HLRBRep_InternalAlgo::DynamicType()`
     pub fn HLRBRep_InternalAlgo_dynamic_type(
         self_: *const HLRBRep_InternalAlgo,
-    ) -> crate::OcctResult<*const HandleStandardType>;
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// **Source:** `HLRBRep_InternalAlgo.hxx`:124 - `HLRBRep_InternalAlgo::get_type_name()`
     pub fn HLRBRep_InternalAlgo_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
     /// **Source:** `HLRBRep_InternalAlgo.hxx`:124 - `HLRBRep_InternalAlgo::get_type_descriptor()`
-    pub fn HLRBRep_InternalAlgo_get_type_descriptor() -> crate::OcctResult<*const HandleStandardType>;
+    pub fn HLRBRep_InternalAlgo_get_type_descriptor(
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast HLRBRep_InternalAlgo to Standard_Transient
     pub fn HLRBRep_InternalAlgo_as_Standard_Transient(
         self_: *const HLRBRep_InternalAlgo,
@@ -6013,181 +5378,181 @@ unsafe extern "C" {
     /// Wrap HLRBRep_InternalAlgo in a Handle
     pub fn HLRBRep_InternalAlgo_to_handle(
         obj: *mut HLRBRep_InternalAlgo,
-    ) -> crate::OcctResult<*mut HandleHLRBRepInternalAlgo>;
+    ) -> crate::OcctResult<*mut Handle_HLRBRep_InternalAlgo>;
     /// Destroy Handle<HLRBRep_InternalAlgo>
-    pub fn HandleHLRBRepInternalAlgo_destructor(self_: *mut HandleHLRBRepInternalAlgo);
+    pub fn Handle_HLRBRep_InternalAlgo_destructor(self_: *mut Handle_HLRBRep_InternalAlgo);
     /// Clone Handle<HLRBRep_InternalAlgo> (increments reference count)
-    pub fn HandleHLRBRepInternalAlgo_clone(
-        self_: *const HandleHLRBRepInternalAlgo,
-    ) -> crate::OcctResult<*mut HandleHLRBRepInternalAlgo>;
+    pub fn Handle_HLRBRep_InternalAlgo_clone(
+        self_: *const Handle_HLRBRep_InternalAlgo,
+    ) -> crate::OcctResult<*mut Handle_HLRBRep_InternalAlgo>;
     /// Check if Handle<HLRBRep_InternalAlgo> is null
-    pub fn HandleHLRBRepInternalAlgo_is_null(self_: *const HandleHLRBRepInternalAlgo) -> bool;
+    pub fn Handle_HLRBRep_InternalAlgo_is_null(self_: *const Handle_HLRBRep_InternalAlgo) -> bool;
     /// Dereference Handle to get *const HLRBRep_InternalAlgo
-    pub fn HandleHLRBRepInternalAlgo_get(
-        handle: *const HandleHLRBRepInternalAlgo,
+    pub fn Handle_HLRBRep_InternalAlgo_get(
+        handle: *const Handle_HLRBRep_InternalAlgo,
     ) -> crate::OcctResult<*const HLRBRep_InternalAlgo>;
     /// Dereference Handle to get *mut HLRBRep_InternalAlgo
-    pub fn HandleHLRBRepInternalAlgo_get_mut(
-        handle: *mut HandleHLRBRepInternalAlgo,
+    pub fn Handle_HLRBRep_InternalAlgo_get_mut(
+        handle: *mut Handle_HLRBRep_InternalAlgo,
     ) -> crate::OcctResult<*mut HLRBRep_InternalAlgo>;
     /// Upcast Handle<HLRBRep_InternalAlgo> to Handle<Standard_Transient>
-    pub fn HandleHLRBRepInternalAlgo_to_HandleStandardTransient(
-        self_: *const HandleHLRBRepInternalAlgo,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
+    pub fn Handle_HLRBRep_InternalAlgo_to_Handle_Standard_Transient(
+        self_: *const Handle_HLRBRep_InternalAlgo,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
     /// Downcast Handle<HLRBRep_InternalAlgo> to Handle<HLRBRep_Algo> (returns null on failure)
-    pub fn HandleHLRBRepInternalAlgo_downcast_to_HandleHLRBRepAlgo(
-        self_: *const HandleHLRBRepInternalAlgo,
-    ) -> crate::OcctResult<*mut HandleHLRBRepAlgo>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn Handle_HLRBRep_InternalAlgo_downcast_to_Handle_HLRBRep_Algo(
+        self_: *const Handle_HLRBRep_InternalAlgo,
+    ) -> crate::OcctResult<*mut Handle_HLRBRep_Algo>;
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn HLRBRep_InternalAlgo_inherited_IsInstance(
         self_: *const HLRBRep_InternalAlgo,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn HLRBRep_InternalAlgo_inherited_IsKind(
         self_: *const HLRBRep_InternalAlgo,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn HLRBRep_InternalAlgo_inherited_This(
         self_: *const HLRBRep_InternalAlgo,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn HLRBRep_InternalAlgo_inherited_GetRefCount(
         self_: *const HLRBRep_InternalAlgo,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn HLRBRep_InternalAlgo_inherited_IncrementRefCounter(
         self_: *mut HLRBRep_InternalAlgo,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn HLRBRep_InternalAlgo_inherited_DecrementRefCounter(
         self_: *mut HLRBRep_InternalAlgo,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn HLRBRep_InternalAlgo_inherited_Delete(
         self_: *const HLRBRep_InternalAlgo,
     ) -> *const std::ffi::c_char;
     // ======================== HLRBRep_Intersector ========================
     pub fn HLRBRep_Intersector_destructor(self_: *mut HLRBRep_Intersector);
-    /// **Source:** `HLRBRep_Intersector.hxx`:38 - `HLRBRep_Intersector::HLRBRep_Intersector()`
+    /// **Source:** `HLRBRep_Intersector.hxx`:41 - `HLRBRep_Intersector::HLRBRep_Intersector()`
     pub fn HLRBRep_Intersector_ctor() -> crate::OcctResult<*mut HLRBRep_Intersector>;
-    /// **Source:** `HLRBRep_Intersector.hxx`:42 - `HLRBRep_Intersector::Perform()`
-    pub fn HLRBRep_Intersector_perform_address_real2(
+    /// **Source:** `HLRBRep_Intersector.hxx`:45 - `HLRBRep_Intersector::Perform()`
+    pub fn HLRBRep_Intersector_perform_edgedataptr_real2(
         self_: *mut HLRBRep_Intersector,
-        A1: *mut std::ffi::c_void,
-        da1: f64,
-        db1: f64,
+        theEdge1: *mut HLRBRep_EdgeData,
+        theDa1: f64,
+        theDb1: f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `HLRBRep_Intersector.hxx`:48 - `HLRBRep_Intersector::Perform()`
-    pub fn HLRBRep_Intersector_perform_int_address_real2_int_address_real2_bool(
+    /// **Source:** `HLRBRep_Intersector.hxx`:51 - `HLRBRep_Intersector::Perform()`
+    pub fn HLRBRep_Intersector_perform_int_edgedataptr_real2_int_edgedataptr_real2_bool(
         self_: *mut HLRBRep_Intersector,
-        nA: i32,
-        A1: *mut std::ffi::c_void,
-        da1: f64,
-        db1: f64,
-        nB: i32,
-        A2: *mut std::ffi::c_void,
-        da2: f64,
-        db2: f64,
-        NoBound: bool,
+        theNA: i32,
+        theEdge1: *mut HLRBRep_EdgeData,
+        theDa1: f64,
+        theDb1: f64,
+        theNB: i32,
+        theEdge2: *mut HLRBRep_EdgeData,
+        theDa2: f64,
+        theDb2: f64,
+        theNoBound: bool,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `HLRBRep_Intersector.hxx`:60 - `HLRBRep_Intersector::SimulateOnePoint()`
+    /// **Source:** `HLRBRep_Intersector.hxx`:63 - `HLRBRep_Intersector::SimulateOnePoint()`
     pub fn HLRBRep_Intersector_simulate_one_point(
         self_: *mut HLRBRep_Intersector,
-        A1: *mut std::ffi::c_void,
-        U: f64,
-        A2: *mut std::ffi::c_void,
-        V: f64,
+        theEdge1: *mut HLRBRep_EdgeData,
+        theU: f64,
+        theEdge2: *mut HLRBRep_EdgeData,
+        theV: f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `HLRBRep_Intersector.hxx`:65 - `HLRBRep_Intersector::Load()`
+    /// **Source:** `HLRBRep_Intersector.hxx`:68 - `HLRBRep_Intersector::Load()`
     pub fn HLRBRep_Intersector_load(
         self_: *mut HLRBRep_Intersector,
-        A: *mut *mut std::ffi::c_void,
+        theSurface: *mut HLRBRep_Surface,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `HLRBRep_Intersector.hxx`:67 - `HLRBRep_Intersector::Perform()`
+    /// **Source:** `HLRBRep_Intersector.hxx`:70 - `HLRBRep_Intersector::Perform()`
     pub fn HLRBRep_Intersector_perform_lin_real(
         self_: *mut HLRBRep_Intersector,
-        L: *const gp_Lin,
-        P: f64,
+        theL: *const gp_Lin,
+        theP: f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `HLRBRep_Intersector.hxx`:69 - `HLRBRep_Intersector::IsDone()`
+    /// **Source:** `HLRBRep_Intersector.hxx`:72 - `HLRBRep_Intersector::IsDone()`
     pub fn HLRBRep_Intersector_is_done(
         self_: *const HLRBRep_Intersector,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `HLRBRep_Intersector.hxx`:71 - `HLRBRep_Intersector::NbPoints()`
+    /// **Source:** `HLRBRep_Intersector.hxx`:74 - `HLRBRep_Intersector::NbPoints()`
     pub fn HLRBRep_Intersector_nb_points(
         self_: *const HLRBRep_Intersector,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `HLRBRep_Intersector.hxx`:73 - `HLRBRep_Intersector::Point()`
+    /// **Source:** `HLRBRep_Intersector.hxx`:76 - `HLRBRep_Intersector::Point()`
     pub fn HLRBRep_Intersector_point(
         self_: *const HLRBRep_Intersector,
         N: i32,
     ) -> crate::OcctResult<*const IntRes2d_IntersectionPoint>;
-    /// **Source:** `HLRBRep_Intersector.hxx`:75 - `HLRBRep_Intersector::CSPoint()`
+    /// **Source:** `HLRBRep_Intersector.hxx`:78 - `HLRBRep_Intersector::CSPoint()`
     pub fn HLRBRep_Intersector_cs_point(
         self_: *const HLRBRep_Intersector,
         N: i32,
     ) -> crate::OcctResult<*const IntCurveSurface_IntersectionPoint>;
-    /// **Source:** `HLRBRep_Intersector.hxx`:77 - `HLRBRep_Intersector::NbSegments()`
+    /// **Source:** `HLRBRep_Intersector.hxx`:80 - `HLRBRep_Intersector::NbSegments()`
     pub fn HLRBRep_Intersector_nb_segments(
         self_: *const HLRBRep_Intersector,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `HLRBRep_Intersector.hxx`:79 - `HLRBRep_Intersector::Segment()`
+    /// **Source:** `HLRBRep_Intersector.hxx`:82 - `HLRBRep_Intersector::Segment()`
     pub fn HLRBRep_Intersector_segment(
         self_: *const HLRBRep_Intersector,
         N: i32,
     ) -> crate::OcctResult<*const IntRes2d_IntersectionSegment>;
-    /// **Source:** `HLRBRep_Intersector.hxx`:81 - `HLRBRep_Intersector::CSSegment()`
+    /// **Source:** `HLRBRep_Intersector.hxx`:84 - `HLRBRep_Intersector::CSSegment()`
     pub fn HLRBRep_Intersector_cs_segment(
         self_: *const HLRBRep_Intersector,
         N: i32,
     ) -> crate::OcctResult<*const IntCurveSurface_IntersectionSegment>;
-    /// **Source:** `HLRBRep_Intersector.hxx`:84 - `HLRBRep_Intersector::Destroy()`
+    /// **Source:** `HLRBRep_Intersector.hxx`:86 - `HLRBRep_Intersector::Destroy()`
     pub fn HLRBRep_Intersector_destroy(self_: *mut HLRBRep_Intersector) -> *const std::ffi::c_char;
     // ======================== HLRBRep_LineTool ========================
     pub fn HLRBRep_LineTool_destructor(self_: *mut HLRBRep_LineTool);
     /// **Source:** `HLRBRep_LineTool.hxx` - `HLRBRep_LineTool::HLRBRep_LineTool()`
     pub fn HLRBRep_LineTool_ctor() -> crate::OcctResult<*mut HLRBRep_LineTool>;
-    /// **Source:** `HLRBRep_LineTool.hxx`:53 - `HLRBRep_LineTool::FirstParameter()`
+    /// **Source:** `HLRBRep_LineTool.hxx`:52 - `HLRBRep_LineTool::FirstParameter()`
     pub fn HLRBRep_LineTool_first_parameter(C: *const gp_Lin) -> crate::OcctResult<f64>;
-    /// **Source:** `HLRBRep_LineTool.hxx`:55 - `HLRBRep_LineTool::LastParameter()`
+    /// **Source:** `HLRBRep_LineTool.hxx`:54 - `HLRBRep_LineTool::LastParameter()`
     pub fn HLRBRep_LineTool_last_parameter(C: *const gp_Lin) -> crate::OcctResult<f64>;
-    /// **Source:** `HLRBRep_LineTool.hxx`:57 - `HLRBRep_LineTool::Continuity()`
+    /// **Source:** `HLRBRep_LineTool.hxx`:56 - `HLRBRep_LineTool::Continuity()`
     pub fn HLRBRep_LineTool_continuity(C: *const gp_Lin) -> crate::OcctResult<i32>;
-    /// **Source:** `HLRBRep_LineTool.hxx`:62 - `HLRBRep_LineTool::NbIntervals()`
+    /// **Source:** `HLRBRep_LineTool.hxx`:61 - `HLRBRep_LineTool::NbIntervals()`
     pub fn HLRBRep_LineTool_nb_intervals(C: *const gp_Lin, S: i32) -> crate::OcctResult<i32>;
-    /// **Source:** `HLRBRep_LineTool.hxx`:65 - `HLRBRep_LineTool::Intervals()`
+    /// **Source:** `HLRBRep_LineTool.hxx`:64 - `HLRBRep_LineTool::Intervals()`
     pub fn HLRBRep_LineTool_intervals(
         C: *const gp_Lin,
-        T: *mut TColStd_Array1OfReal,
+        T: *mut NCollection_Array1_double,
         Sh: i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `HLRBRep_LineTool.hxx`:69 - `HLRBRep_LineTool::IntervalFirst()`
+    /// **Source:** `HLRBRep_LineTool.hxx`:68 - `HLRBRep_LineTool::IntervalFirst()`
     pub fn HLRBRep_LineTool_interval_first(C: *const gp_Lin) -> crate::OcctResult<f64>;
-    /// **Source:** `HLRBRep_LineTool.hxx`:73 - `HLRBRep_LineTool::IntervalLast()`
+    /// **Source:** `HLRBRep_LineTool.hxx`:72 - `HLRBRep_LineTool::IntervalLast()`
     pub fn HLRBRep_LineTool_interval_last(C: *const gp_Lin) -> crate::OcctResult<f64>;
-    /// **Source:** `HLRBRep_LineTool.hxx`:75 - `HLRBRep_LineTool::IntervalContinuity()`
+    /// **Source:** `HLRBRep_LineTool.hxx`:74 - `HLRBRep_LineTool::IntervalContinuity()`
     pub fn HLRBRep_LineTool_interval_continuity(C: *const gp_Lin) -> crate::OcctResult<i32>;
-    /// **Source:** `HLRBRep_LineTool.hxx`:77 - `HLRBRep_LineTool::IsClosed()`
+    /// **Source:** `HLRBRep_LineTool.hxx`:76 - `HLRBRep_LineTool::IsClosed()`
     pub fn HLRBRep_LineTool_is_closed(C: *const gp_Lin) -> crate::OcctResult<bool>;
-    /// **Source:** `HLRBRep_LineTool.hxx`:79 - `HLRBRep_LineTool::IsPeriodic()`
+    /// **Source:** `HLRBRep_LineTool.hxx`:78 - `HLRBRep_LineTool::IsPeriodic()`
     pub fn HLRBRep_LineTool_is_periodic(C: *const gp_Lin) -> crate::OcctResult<bool>;
-    /// **Source:** `HLRBRep_LineTool.hxx`:81 - `HLRBRep_LineTool::Period()`
+    /// **Source:** `HLRBRep_LineTool.hxx`:80 - `HLRBRep_LineTool::Period()`
     pub fn HLRBRep_LineTool_period(C: *const gp_Lin) -> crate::OcctResult<f64>;
-    /// **Source:** `HLRBRep_LineTool.hxx`:84 - `HLRBRep_LineTool::Value()`
+    /// **Source:** `HLRBRep_LineTool.hxx`:83 - `HLRBRep_LineTool::Value()`
     pub fn HLRBRep_LineTool_value(C: *const gp_Lin, U: f64) -> crate::OcctResult<*mut gp_Pnt>;
-    /// **Source:** `HLRBRep_LineTool.hxx`:87 - `HLRBRep_LineTool::D0()`
+    /// **Source:** `HLRBRep_LineTool.hxx`:86 - `HLRBRep_LineTool::D0()`
     pub fn HLRBRep_LineTool_d0(C: *const gp_Lin, U: f64, P: *mut gp_Pnt)
         -> *const std::ffi::c_char;
-    /// **Source:** `HLRBRep_LineTool.hxx`:93 - `HLRBRep_LineTool::D1()`
+    /// **Source:** `HLRBRep_LineTool.hxx`:92 - `HLRBRep_LineTool::D1()`
     pub fn HLRBRep_LineTool_d1(
         C: *const gp_Lin,
         U: f64,
         P: *mut gp_Pnt,
         V: *mut gp_Vec,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `HLRBRep_LineTool.hxx`:99 - `HLRBRep_LineTool::D2()`
+    /// **Source:** `HLRBRep_LineTool.hxx`:98 - `HLRBRep_LineTool::D2()`
     pub fn HLRBRep_LineTool_d2(
         C: *const gp_Lin,
         U: f64,
@@ -6195,7 +5560,7 @@ unsafe extern "C" {
         V1: *mut gp_Vec,
         V2: *mut gp_Vec,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `HLRBRep_LineTool.hxx`:105 - `HLRBRep_LineTool::D3()`
+    /// **Source:** `HLRBRep_LineTool.hxx`:104 - `HLRBRep_LineTool::D3()`
     pub fn HLRBRep_LineTool_d3(
         C: *const gp_Lin,
         U: f64,
@@ -6204,80 +5569,79 @@ unsafe extern "C" {
         V2: *mut gp_Vec,
         V3: *mut gp_Vec,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `HLRBRep_LineTool.hxx`:117 - `HLRBRep_LineTool::DN()`
+    /// **Source:** `HLRBRep_LineTool.hxx`:111 - `HLRBRep_LineTool::DN()`
     pub fn HLRBRep_LineTool_dn(C: *const gp_Lin, U: f64, N: i32) -> crate::OcctResult<*mut gp_Vec>;
-    /// **Source:** `HLRBRep_LineTool.hxx`:121 - `HLRBRep_LineTool::Resolution()`
+    /// **Source:** `HLRBRep_LineTool.hxx`:115 - `HLRBRep_LineTool::Resolution()`
     pub fn HLRBRep_LineTool_resolution(C: *const gp_Lin, R3d: f64) -> crate::OcctResult<f64>;
-    /// **Source:** `HLRBRep_LineTool.hxx`:126 - `HLRBRep_LineTool::GetType()`
+    /// **Source:** `HLRBRep_LineTool.hxx`:120 - `HLRBRep_LineTool::GetType()`
     pub fn HLRBRep_LineTool_get_type(C: *const gp_Lin) -> crate::OcctResult<i32>;
-    /// **Source:** `HLRBRep_LineTool.hxx`:128 - `HLRBRep_LineTool::Line()`
+    /// **Source:** `HLRBRep_LineTool.hxx`:122 - `HLRBRep_LineTool::Line()`
     pub fn HLRBRep_LineTool_line(C: *const gp_Lin) -> crate::OcctResult<*mut gp_Lin>;
-    /// **Source:** `HLRBRep_LineTool.hxx`:130 - `HLRBRep_LineTool::Circle()`
+    /// **Source:** `HLRBRep_LineTool.hxx`:124 - `HLRBRep_LineTool::Circle()`
     pub fn HLRBRep_LineTool_circle(C: *const gp_Lin) -> crate::OcctResult<*mut gp_Circ>;
-    /// **Source:** `HLRBRep_LineTool.hxx`:132 - `HLRBRep_LineTool::Ellipse()`
+    /// **Source:** `HLRBRep_LineTool.hxx`:126 - `HLRBRep_LineTool::Ellipse()`
     pub fn HLRBRep_LineTool_ellipse(C: *const gp_Lin) -> crate::OcctResult<*mut gp_Elips>;
-    /// **Source:** `HLRBRep_LineTool.hxx`:134 - `HLRBRep_LineTool::Hyperbola()`
+    /// **Source:** `HLRBRep_LineTool.hxx`:128 - `HLRBRep_LineTool::Hyperbola()`
     pub fn HLRBRep_LineTool_hyperbola(C: *const gp_Lin) -> crate::OcctResult<*mut gp_Hypr>;
-    /// **Source:** `HLRBRep_LineTool.hxx`:136 - `HLRBRep_LineTool::Parabola()`
+    /// **Source:** `HLRBRep_LineTool.hxx`:130 - `HLRBRep_LineTool::Parabola()`
     pub fn HLRBRep_LineTool_parabola(C: *const gp_Lin) -> crate::OcctResult<*mut gp_Parab>;
-    /// **Source:** `HLRBRep_LineTool.hxx`:138 - `HLRBRep_LineTool::Bezier()`
+    /// **Source:** `HLRBRep_LineTool.hxx`:132 - `HLRBRep_LineTool::Bezier()`
     pub fn HLRBRep_LineTool_bezier(
         C: *const gp_Lin,
-    ) -> crate::OcctResult<*mut HandleGeomBezierCurve>;
-    /// **Source:** `HLRBRep_LineTool.hxx`:140 - `HLRBRep_LineTool::BSpline()`
+    ) -> crate::OcctResult<*mut Handle_Geom_BezierCurve>;
+    /// **Source:** `HLRBRep_LineTool.hxx`:134 - `HLRBRep_LineTool::BSpline()`
     pub fn HLRBRep_LineTool_b_spline(
         C: *const gp_Lin,
-    ) -> crate::OcctResult<*mut HandleGeomBSplineCurve>;
-    /// **Source:** `HLRBRep_LineTool.hxx`:142 - `HLRBRep_LineTool::Degree()`
+    ) -> crate::OcctResult<*mut Handle_Geom_BSplineCurve>;
+    /// **Source:** `HLRBRep_LineTool.hxx`:136 - `HLRBRep_LineTool::Degree()`
     pub fn HLRBRep_LineTool_degree(C: *const gp_Lin) -> crate::OcctResult<i32>;
-    /// **Source:** `HLRBRep_LineTool.hxx`:144 - `HLRBRep_LineTool::NbPoles()`
+    /// **Source:** `HLRBRep_LineTool.hxx`:138 - `HLRBRep_LineTool::NbPoles()`
     pub fn HLRBRep_LineTool_nb_poles(C: *const gp_Lin) -> crate::OcctResult<i32>;
-    /// **Source:** `HLRBRep_LineTool.hxx`:146 - `HLRBRep_LineTool::Poles()`
+    /// **Source:** `HLRBRep_LineTool.hxx`:140 - `HLRBRep_LineTool::Poles()`
     pub fn HLRBRep_LineTool_poles(
         C: *const gp_Lin,
-        TP: *mut TColgp_Array1OfPnt,
+        TP: *mut NCollection_Array1_gp_Pnt,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `HLRBRep_LineTool.hxx`:148 - `HLRBRep_LineTool::IsRational()`
+    /// **Source:** `HLRBRep_LineTool.hxx`:142 - `HLRBRep_LineTool::IsRational()`
     pub fn HLRBRep_LineTool_is_rational(C: *const gp_Lin) -> crate::OcctResult<bool>;
-    /// **Source:** `HLRBRep_LineTool.hxx`:150 - `HLRBRep_LineTool::PolesAndWeights()`
+    /// **Source:** `HLRBRep_LineTool.hxx`:144 - `HLRBRep_LineTool::PolesAndWeights()`
     pub fn HLRBRep_LineTool_poles_and_weights(
         C: *const gp_Lin,
-        TP: *mut TColgp_Array1OfPnt,
-        TW: *mut TColStd_Array1OfReal,
+        TP: *mut NCollection_Array1_gp_Pnt,
+        TW: *mut NCollection_Array1_double,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `HLRBRep_LineTool.hxx`:152 - `HLRBRep_LineTool::NbKnots()`
+    /// **Source:** `HLRBRep_LineTool.hxx`:148 - `HLRBRep_LineTool::NbKnots()`
     pub fn HLRBRep_LineTool_nb_knots(C: *const gp_Lin) -> crate::OcctResult<i32>;
-    /// **Source:** `HLRBRep_LineTool.hxx`:154 - `HLRBRep_LineTool::KnotsAndMultiplicities()`
+    /// **Source:** `HLRBRep_LineTool.hxx`:150 - `HLRBRep_LineTool::KnotsAndMultiplicities()`
     pub fn HLRBRep_LineTool_knots_and_multiplicities(
         C: *const gp_Lin,
-        TK: *mut TColStd_Array1OfReal,
-        TM: *mut TColStd_Array1OfInteger,
+        TK: *mut NCollection_Array1_double,
+        TM: *mut NCollection_Array1_int,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `HLRBRep_LineTool.hxx`:158 - `HLRBRep_LineTool::NbSamples()`
+    /// **Source:** `HLRBRep_LineTool.hxx`:154 - `HLRBRep_LineTool::NbSamples()`
     pub fn HLRBRep_LineTool_nb_samples(
         C: *const gp_Lin,
         U0: f64,
         U1: f64,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `HLRBRep_LineTool.hxx`:162 - `HLRBRep_LineTool::SamplePars()`
+    /// **Source:** `HLRBRep_LineTool.hxx`:163 - `HLRBRep_LineTool::SamplePars()`
     pub fn HLRBRep_LineTool_sample_pars(
         C: *const gp_Lin,
         U0: f64,
         U1: f64,
         Defl: f64,
         NbMin: i32,
-        Pars: *mut HandleTColStdHArray1OfReal,
-    ) -> *const std::ffi::c_char;
+    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_double>;
     // ======================== HLRBRep_MyImpParToolOfTheIntersectorOfTheIntConicCurveOfCInter ========================
     pub fn HLRBRep_MyImpParToolOfTheIntersectorOfTheIntConicCurveOfCInter_destructor(
         self_: *mut HLRBRep_MyImpParToolOfTheIntersectorOfTheIntConicCurveOfCInter,
     );
-    /// **Source:** `HLRBRep_MyImpParToolOfTheIntersectorOfTheIntConicCurveOfCInter.hxx`:37 - `HLRBRep_MyImpParToolOfTheIntersectorOfTheIntConicCurveOfCInter::HLRBRep_MyImpParToolOfTheIntersectorOfTheIntConicCurveOfCInter()`
-    pub fn HLRBRep_MyImpParToolOfTheIntersectorOfTheIntConicCurveOfCInter_ctor_iconictool_address(
+    /// **Source:** `HLRBRep_MyImpParToolOfTheIntersectorOfTheIntConicCurveOfCInter.hxx`:38 - `HLRBRep_MyImpParToolOfTheIntersectorOfTheIntConicCurveOfCInter::HLRBRep_MyImpParToolOfTheIntersectorOfTheIntConicCurveOfCInter()`
+    pub fn HLRBRep_MyImpParToolOfTheIntersectorOfTheIntConicCurveOfCInter_ctor_iconictool_voidptr(
         IT: *const IntCurve_IConicTool,
         PC: *const *mut std::ffi::c_void,
     ) -> crate::OcctResult<*mut HLRBRep_MyImpParToolOfTheIntersectorOfTheIntConicCurveOfCInter>;
-    /// **Source:** `HLRBRep_MyImpParToolOfTheIntersectorOfTheIntConicCurveOfCInter.hxx`:44 - `HLRBRep_MyImpParToolOfTheIntersectorOfTheIntConicCurveOfCInter::Value()`
+    /// **Source:** `HLRBRep_MyImpParToolOfTheIntersectorOfTheIntConicCurveOfCInter.hxx`:45 - `HLRBRep_MyImpParToolOfTheIntersectorOfTheIntConicCurveOfCInter::Value()`
     pub fn HLRBRep_MyImpParToolOfTheIntersectorOfTheIntConicCurveOfCInter_value(
         self_: *mut HLRBRep_MyImpParToolOfTheIntersectorOfTheIntConicCurveOfCInter,
         Param: f64,
@@ -6289,7 +5653,7 @@ unsafe extern "C" {
         Param: f64,
         D: *mut f64,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `HLRBRep_MyImpParToolOfTheIntersectorOfTheIntConicCurveOfCInter.hxx`:53 - `HLRBRep_MyImpParToolOfTheIntersectorOfTheIntConicCurveOfCInter::Values()`
+    /// **Source:** `HLRBRep_MyImpParToolOfTheIntersectorOfTheIntConicCurveOfCInter.hxx`:52 - `HLRBRep_MyImpParToolOfTheIntersectorOfTheIntConicCurveOfCInter::Values()`
     pub fn HLRBRep_MyImpParToolOfTheIntersectorOfTheIntConicCurveOfCInter_values(
         self_: *mut HLRBRep_MyImpParToolOfTheIntersectorOfTheIntConicCurveOfCInter,
         Param: f64,
@@ -6316,164 +5680,74 @@ unsafe extern "C" {
     pub fn HLRBRep_MyImpParToolOfTheIntersectorOfTheIntConicCurveOfCInter_inherited_GetStateNumber(
         self_: *mut HLRBRep_MyImpParToolOfTheIntersectorOfTheIntConicCurveOfCInter,
     ) -> crate::OcctResult<i32>;
-    // ======================== HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter ========================
-    pub fn HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter_destructor(
-        self_: *mut HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter,
-    );
-    /// **Source:** `HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter.hxx`:42 - `HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter::HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter()`
-    pub fn HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter_ctor(
-    ) -> crate::OcctResult<*mut HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter>;
-    /// **Source:** `HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter.hxx`:44 - `HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter::HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter()`
-    pub fn HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter_ctor_pnt2d_address(
-        P: *const gp_Pnt2d,
-        C: *const *mut std::ffi::c_void,
-    ) -> crate::OcctResult<*mut HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter>;
-    /// **Source:** `HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter.hxx`:48 - `HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter::Initialize()`
-    pub fn HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter_initialize(
-        self_: *mut HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter,
-        C: *const *mut std::ffi::c_void,
-    ) -> *const std::ffi::c_char;
-    /// **Source:** `HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter.hxx`:51 - `HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter::SetPoint()`
-    pub fn HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter_set_point(
-        self_: *mut HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter,
-        P: *const gp_Pnt2d,
-    ) -> *const std::ffi::c_char;
-    /// **Source:** `HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter.hxx`:54 - `HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter::Value()`
-    pub fn HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter_value(
-        self_: *mut HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter,
-        U: f64,
-        F: *mut f64,
-    ) -> crate::OcctResult<bool>;
-    /// **Source:** `HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter.hxx`:57 - `HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter::Derivative()`
-    pub fn HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter_derivative(
-        self_: *mut HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter,
-        U: f64,
-        DF: *mut f64,
-    ) -> crate::OcctResult<bool>;
-    /// **Source:** `HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter.hxx`:61 - `HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter::Values()`
-    pub fn HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter_values(
-        self_: *mut HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter,
-        U: f64,
-        F: *mut f64,
-        DF: *mut f64,
-    ) -> crate::OcctResult<bool>;
-    /// **Source:** `HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter.hxx`:66 - `HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter::GetStateNumber()`
-    pub fn HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter_get_state_number(
-        self_: *mut HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter,
-    ) -> crate::OcctResult<i32>;
-    /// **Source:** `HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter.hxx`:69 - `HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter::NbExt()`
-    pub fn HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter_nb_ext(
-        self_: *const HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter,
-    ) -> crate::OcctResult<i32>;
-    /// **Source:** `HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter.hxx`:72 - `HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter::SquareDistance()`
-    pub fn HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter_square_distance(
-        self_: *const HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter,
-        N: i32,
-    ) -> crate::OcctResult<f64>;
-    /// **Source:** `HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter.hxx`:75 - `HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter::IsMin()`
-    pub fn HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter_is_min(
-        self_: *const HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter,
-        N: i32,
-    ) -> crate::OcctResult<bool>;
-    /// **Source:** `HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter.hxx`:78 - `HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter::Point()`
-    pub fn HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter_point(
-        self_: *const HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter,
-        N: i32,
-    ) -> crate::OcctResult<*const Extrema_POnCurv2d>;
-    /// **Source:** `HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter.hxx`:81 - `HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter::SubIntervalInitialize()`
-    pub fn HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter_sub_interval_initialize(
-        self_: *mut HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter,
-        theUfirst: f64,
-        theUlast: f64,
-    ) -> *const std::ffi::c_char;
-    /// **Source:** `HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter.hxx`:86 - `HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter::SearchOfTolerance()`
-    pub fn HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter_search_of_tolerance(
-        self_: *mut HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter,
-    ) -> crate::OcctResult<f64>;
-    /// Upcast HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter to math_FunctionWithDerivative
-    pub fn HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter_as_math_FunctionWithDerivative(
-        self_: *const HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter,
-    ) -> crate::OcctResult<*const math_FunctionWithDerivative>;
-    /// Upcast HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter to math_FunctionWithDerivative (mutable)
-    pub fn HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter_as_math_FunctionWithDerivative_mut(
-        self_: *mut HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter,
-    ) -> crate::OcctResult<*mut math_FunctionWithDerivative>;
-    /// Upcast HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter to math_Function
-    pub fn HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter_as_math_Function(
-        self_: *const HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter,
-    ) -> crate::OcctResult<*const math_Function>;
-    /// Upcast HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter to math_Function (mutable)
-    pub fn HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter_as_math_Function_mut(
-        self_: *mut HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter,
-    ) -> crate::OcctResult<*mut math_Function>;
     // ======================== HLRBRep_PolyAlgo ========================
     pub fn HLRBRep_PolyAlgo_destructor(self_: *mut HLRBRep_PolyAlgo);
-    /// **Source:** `HLRBRep_PolyAlgo.hxx`:104 - `HLRBRep_PolyAlgo::HLRBRep_PolyAlgo()`
+    /// **Source:** `HLRBRep_PolyAlgo.hxx`:103 - `HLRBRep_PolyAlgo::HLRBRep_PolyAlgo()`
     pub fn HLRBRep_PolyAlgo_ctor() -> crate::OcctResult<*mut HLRBRep_PolyAlgo>;
-    /// **Source:** `HLRBRep_PolyAlgo.hxx`:106 - `HLRBRep_PolyAlgo::HLRBRep_PolyAlgo()`
+    /// **Source:** `HLRBRep_PolyAlgo.hxx`:105 - `HLRBRep_PolyAlgo::HLRBRep_PolyAlgo()`
     pub fn HLRBRep_PolyAlgo_ctor_handlehlrbreppolyalgo(
-        A: *const HandleHLRBRepPolyAlgo,
+        A: *const Handle_HLRBRep_PolyAlgo,
     ) -> crate::OcctResult<*mut HLRBRep_PolyAlgo>;
-    /// **Source:** `HLRBRep_PolyAlgo.hxx`:108 - `HLRBRep_PolyAlgo::HLRBRep_PolyAlgo()`
+    /// **Source:** `HLRBRep_PolyAlgo.hxx`:107 - `HLRBRep_PolyAlgo::HLRBRep_PolyAlgo()`
     pub fn HLRBRep_PolyAlgo_ctor_shape(
         S: *const TopoDS_Shape,
     ) -> crate::OcctResult<*mut HLRBRep_PolyAlgo>;
-    /// **Source:** `HLRBRep_PolyAlgo.hxx`:110 - `HLRBRep_PolyAlgo::NbShapes()`
+    /// **Source:** `HLRBRep_PolyAlgo.hxx`:109 - `HLRBRep_PolyAlgo::NbShapes()`
     pub fn HLRBRep_PolyAlgo_nb_shapes(self_: *const HLRBRep_PolyAlgo) -> crate::OcctResult<i32>;
-    /// **Source:** `HLRBRep_PolyAlgo.hxx`:112 - `HLRBRep_PolyAlgo::Shape()`
+    /// **Source:** `HLRBRep_PolyAlgo.hxx`:111 - `HLRBRep_PolyAlgo::Shape()`
     pub fn HLRBRep_PolyAlgo_shape(
         self_: *mut HLRBRep_PolyAlgo,
         I: i32,
     ) -> crate::OcctResult<*mut TopoDS_Shape>;
-    /// **Source:** `HLRBRep_PolyAlgo.hxx`:115 - `HLRBRep_PolyAlgo::Remove()`
+    /// **Source:** `HLRBRep_PolyAlgo.hxx`:114 - `HLRBRep_PolyAlgo::Remove()`
     pub fn HLRBRep_PolyAlgo_remove(self_: *mut HLRBRep_PolyAlgo, I: i32)
         -> *const std::ffi::c_char;
-    /// **Source:** `HLRBRep_PolyAlgo.hxx`:119 - `HLRBRep_PolyAlgo::Index()`
+    /// **Source:** `HLRBRep_PolyAlgo.hxx`:118 - `HLRBRep_PolyAlgo::Index()`
     pub fn HLRBRep_PolyAlgo_index(
         self_: *const HLRBRep_PolyAlgo,
         S: *const TopoDS_Shape,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `HLRBRep_PolyAlgo.hxx`:123 - `HLRBRep_PolyAlgo::Load()`
+    /// **Source:** `HLRBRep_PolyAlgo.hxx`:122 - `HLRBRep_PolyAlgo::Load()`
     pub fn HLRBRep_PolyAlgo_load(
         self_: *mut HLRBRep_PolyAlgo,
         theShape: *const TopoDS_Shape,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `HLRBRep_PolyAlgo.hxx`:125 - `HLRBRep_PolyAlgo::Algo()`
+    /// **Source:** `HLRBRep_PolyAlgo.hxx`:124 - `HLRBRep_PolyAlgo::Algo()`
     pub fn HLRBRep_PolyAlgo_algo(
         self_: *const HLRBRep_PolyAlgo,
-    ) -> crate::OcctResult<*const HandleHLRAlgoPolyAlgo>;
-    /// **Source:** `HLRBRep_PolyAlgo.hxx`:130 - `HLRBRep_PolyAlgo::Projector()`
+    ) -> crate::OcctResult<*const Handle_HLRAlgo_PolyAlgo>;
+    /// **Source:** `HLRBRep_PolyAlgo.hxx`:129 - `HLRBRep_PolyAlgo::Projector()`
     pub fn HLRBRep_PolyAlgo_projector(
         self_: *const HLRBRep_PolyAlgo,
     ) -> crate::OcctResult<*const HLRAlgo_Projector>;
-    /// **Source:** `HLRBRep_PolyAlgo.hxx`:132 - `HLRBRep_PolyAlgo::Projector()`
+    /// **Source:** `HLRBRep_PolyAlgo.hxx`:131 - `HLRBRep_PolyAlgo::Projector()`
     pub fn HLRBRep_PolyAlgo_projector_projector(
         self_: *mut HLRBRep_PolyAlgo,
         theProj: *const HLRAlgo_Projector,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `HLRBRep_PolyAlgo.hxx`:134 - `HLRBRep_PolyAlgo::TolAngular()`
+    /// **Source:** `HLRBRep_PolyAlgo.hxx`:133 - `HLRBRep_PolyAlgo::TolAngular()`
     pub fn HLRBRep_PolyAlgo_tol_angular(self_: *const HLRBRep_PolyAlgo) -> crate::OcctResult<f64>;
-    /// **Source:** `HLRBRep_PolyAlgo.hxx`:136 - `HLRBRep_PolyAlgo::TolAngular()`
+    /// **Source:** `HLRBRep_PolyAlgo.hxx`:135 - `HLRBRep_PolyAlgo::TolAngular()`
     pub fn HLRBRep_PolyAlgo_tol_angular_real(
         self_: *mut HLRBRep_PolyAlgo,
         theTol: f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `HLRBRep_PolyAlgo.hxx`:138 - `HLRBRep_PolyAlgo::TolCoef()`
+    /// **Source:** `HLRBRep_PolyAlgo.hxx`:137 - `HLRBRep_PolyAlgo::TolCoef()`
     pub fn HLRBRep_PolyAlgo_tol_coef(self_: *const HLRBRep_PolyAlgo) -> crate::OcctResult<f64>;
-    /// **Source:** `HLRBRep_PolyAlgo.hxx`:140 - `HLRBRep_PolyAlgo::TolCoef()`
+    /// **Source:** `HLRBRep_PolyAlgo.hxx`:139 - `HLRBRep_PolyAlgo::TolCoef()`
     pub fn HLRBRep_PolyAlgo_tol_coef_real(
         self_: *mut HLRBRep_PolyAlgo,
         theTol: f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `HLRBRep_PolyAlgo.hxx`:149 - `HLRBRep_PolyAlgo::Update()`
+    /// **Source:** `HLRBRep_PolyAlgo.hxx`:148 - `HLRBRep_PolyAlgo::Update()`
     pub fn HLRBRep_PolyAlgo_update(self_: *mut HLRBRep_PolyAlgo) -> *const std::ffi::c_char;
-    /// **Source:** `HLRBRep_PolyAlgo.hxx`:151 - `HLRBRep_PolyAlgo::InitHide()`
+    /// **Source:** `HLRBRep_PolyAlgo.hxx`:150 - `HLRBRep_PolyAlgo::InitHide()`
     pub fn HLRBRep_PolyAlgo_init_hide(self_: *mut HLRBRep_PolyAlgo) -> *const std::ffi::c_char;
-    /// **Source:** `HLRBRep_PolyAlgo.hxx`:153 - `HLRBRep_PolyAlgo::MoreHide()`
+    /// **Source:** `HLRBRep_PolyAlgo.hxx`:152 - `HLRBRep_PolyAlgo::MoreHide()`
     pub fn HLRBRep_PolyAlgo_more_hide(self_: *const HLRBRep_PolyAlgo) -> crate::OcctResult<bool>;
-    /// **Source:** `HLRBRep_PolyAlgo.hxx`:155 - `HLRBRep_PolyAlgo::NextHide()`
+    /// **Source:** `HLRBRep_PolyAlgo.hxx`:154 - `HLRBRep_PolyAlgo::NextHide()`
     pub fn HLRBRep_PolyAlgo_next_hide(self_: *mut HLRBRep_PolyAlgo) -> *const std::ffi::c_char;
-    /// **Source:** `HLRBRep_PolyAlgo.hxx`:157 - `HLRBRep_PolyAlgo::Hide()`
+    /// **Source:** `HLRBRep_PolyAlgo.hxx`:156 - `HLRBRep_PolyAlgo::Hide()`
     pub fn HLRBRep_PolyAlgo_hide(
         self_: *mut HLRBRep_PolyAlgo,
         status: *mut HLRAlgo_EdgeStatus,
@@ -6483,13 +5757,13 @@ unsafe extern "C" {
         outl: *mut bool,
         intl: *mut bool,
     ) -> crate::OcctResult<*mut HLRAlgo_BiPoint_PointsT>;
-    /// **Source:** `HLRBRep_PolyAlgo.hxx`:164 - `HLRBRep_PolyAlgo::InitShow()`
+    /// **Source:** `HLRBRep_PolyAlgo.hxx`:163 - `HLRBRep_PolyAlgo::InitShow()`
     pub fn HLRBRep_PolyAlgo_init_show(self_: *mut HLRBRep_PolyAlgo) -> *const std::ffi::c_char;
-    /// **Source:** `HLRBRep_PolyAlgo.hxx`:166 - `HLRBRep_PolyAlgo::MoreShow()`
+    /// **Source:** `HLRBRep_PolyAlgo.hxx`:165 - `HLRBRep_PolyAlgo::MoreShow()`
     pub fn HLRBRep_PolyAlgo_more_show(self_: *const HLRBRep_PolyAlgo) -> crate::OcctResult<bool>;
-    /// **Source:** `HLRBRep_PolyAlgo.hxx`:168 - `HLRBRep_PolyAlgo::NextShow()`
+    /// **Source:** `HLRBRep_PolyAlgo.hxx`:167 - `HLRBRep_PolyAlgo::NextShow()`
     pub fn HLRBRep_PolyAlgo_next_show(self_: *mut HLRBRep_PolyAlgo) -> *const std::ffi::c_char;
-    /// **Source:** `HLRBRep_PolyAlgo.hxx`:170 - `HLRBRep_PolyAlgo::Show()`
+    /// **Source:** `HLRBRep_PolyAlgo.hxx`:169 - `HLRBRep_PolyAlgo::Show()`
     pub fn HLRBRep_PolyAlgo_show(
         self_: *mut HLRBRep_PolyAlgo,
         S: *mut TopoDS_Shape,
@@ -6498,26 +5772,26 @@ unsafe extern "C" {
         outl: *mut bool,
         intl: *mut bool,
     ) -> crate::OcctResult<*mut HLRAlgo_BiPoint_PointsT>;
-    /// **Source:** `HLRBRep_PolyAlgo.hxx`:178 - `HLRBRep_PolyAlgo::OutLinedShape()`
+    /// **Source:** `HLRBRep_PolyAlgo.hxx`:177 - `HLRBRep_PolyAlgo::OutLinedShape()`
     pub fn HLRBRep_PolyAlgo_out_lined_shape(
         self_: *const HLRBRep_PolyAlgo,
         S: *const TopoDS_Shape,
     ) -> crate::OcctResult<*mut TopoDS_Shape>;
-    /// **Source:** `HLRBRep_PolyAlgo.hxx`:180 - `HLRBRep_PolyAlgo::Debug()`
+    /// **Source:** `HLRBRep_PolyAlgo.hxx`:179 - `HLRBRep_PolyAlgo::Debug()`
     pub fn HLRBRep_PolyAlgo_debug(self_: *const HLRBRep_PolyAlgo) -> crate::OcctResult<bool>;
-    /// **Source:** `HLRBRep_PolyAlgo.hxx`:182 - `HLRBRep_PolyAlgo::Debug()`
+    /// **Source:** `HLRBRep_PolyAlgo.hxx`:181 - `HLRBRep_PolyAlgo::Debug()`
     pub fn HLRBRep_PolyAlgo_debug_bool(
         self_: *mut HLRBRep_PolyAlgo,
         theDebug: bool,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `HLRBRep_PolyAlgo.hxx`:184 - `HLRBRep_PolyAlgo::DynamicType()`
+    /// **Source:** `HLRBRep_PolyAlgo.hxx`:183 - `HLRBRep_PolyAlgo::DynamicType()`
     pub fn HLRBRep_PolyAlgo_dynamic_type(
         self_: *const HLRBRep_PolyAlgo,
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// **Source:** `HLRBRep_PolyAlgo.hxx`:184 - `HLRBRep_PolyAlgo::get_type_name()`
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
+    /// **Source:** `HLRBRep_PolyAlgo.hxx`:183 - `HLRBRep_PolyAlgo::get_type_name()`
     pub fn HLRBRep_PolyAlgo_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
-    /// **Source:** `HLRBRep_PolyAlgo.hxx`:184 - `HLRBRep_PolyAlgo::get_type_descriptor()`
-    pub fn HLRBRep_PolyAlgo_get_type_descriptor() -> crate::OcctResult<*const HandleStandardType>;
+    /// **Source:** `HLRBRep_PolyAlgo.hxx`:183 - `HLRBRep_PolyAlgo::get_type_descriptor()`
+    pub fn HLRBRep_PolyAlgo_get_type_descriptor() -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast HLRBRep_PolyAlgo to Standard_Transient
     pub fn HLRBRep_PolyAlgo_as_Standard_Transient(
         self_: *const HLRBRep_PolyAlgo,
@@ -6529,249 +5803,158 @@ unsafe extern "C" {
     /// Wrap HLRBRep_PolyAlgo in a Handle
     pub fn HLRBRep_PolyAlgo_to_handle(
         obj: *mut HLRBRep_PolyAlgo,
-    ) -> crate::OcctResult<*mut HandleHLRBRepPolyAlgo>;
+    ) -> crate::OcctResult<*mut Handle_HLRBRep_PolyAlgo>;
     /// Destroy Handle<HLRBRep_PolyAlgo>
-    pub fn HandleHLRBRepPolyAlgo_destructor(self_: *mut HandleHLRBRepPolyAlgo);
+    pub fn Handle_HLRBRep_PolyAlgo_destructor(self_: *mut Handle_HLRBRep_PolyAlgo);
     /// Clone Handle<HLRBRep_PolyAlgo> (increments reference count)
-    pub fn HandleHLRBRepPolyAlgo_clone(
-        self_: *const HandleHLRBRepPolyAlgo,
-    ) -> crate::OcctResult<*mut HandleHLRBRepPolyAlgo>;
+    pub fn Handle_HLRBRep_PolyAlgo_clone(
+        self_: *const Handle_HLRBRep_PolyAlgo,
+    ) -> crate::OcctResult<*mut Handle_HLRBRep_PolyAlgo>;
     /// Check if Handle<HLRBRep_PolyAlgo> is null
-    pub fn HandleHLRBRepPolyAlgo_is_null(self_: *const HandleHLRBRepPolyAlgo) -> bool;
+    pub fn Handle_HLRBRep_PolyAlgo_is_null(self_: *const Handle_HLRBRep_PolyAlgo) -> bool;
     /// Dereference Handle to get *const HLRBRep_PolyAlgo
-    pub fn HandleHLRBRepPolyAlgo_get(
-        handle: *const HandleHLRBRepPolyAlgo,
+    pub fn Handle_HLRBRep_PolyAlgo_get(
+        handle: *const Handle_HLRBRep_PolyAlgo,
     ) -> crate::OcctResult<*const HLRBRep_PolyAlgo>;
     /// Dereference Handle to get *mut HLRBRep_PolyAlgo
-    pub fn HandleHLRBRepPolyAlgo_get_mut(
-        handle: *mut HandleHLRBRepPolyAlgo,
+    pub fn Handle_HLRBRep_PolyAlgo_get_mut(
+        handle: *mut Handle_HLRBRep_PolyAlgo,
     ) -> crate::OcctResult<*mut HLRBRep_PolyAlgo>;
     /// Upcast Handle<HLRBRep_PolyAlgo> to Handle<Standard_Transient>
-    pub fn HandleHLRBRepPolyAlgo_to_HandleStandardTransient(
-        self_: *const HandleHLRBRepPolyAlgo,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn Handle_HLRBRep_PolyAlgo_to_Handle_Standard_Transient(
+        self_: *const Handle_HLRBRep_PolyAlgo,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn HLRBRep_PolyAlgo_inherited_IsInstance(
         self_: *const HLRBRep_PolyAlgo,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn HLRBRep_PolyAlgo_inherited_IsKind(
         self_: *const HLRBRep_PolyAlgo,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn HLRBRep_PolyAlgo_inherited_This(
         self_: *const HLRBRep_PolyAlgo,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn HLRBRep_PolyAlgo_inherited_GetRefCount(
         self_: *const HLRBRep_PolyAlgo,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn HLRBRep_PolyAlgo_inherited_IncrementRefCounter(
         self_: *mut HLRBRep_PolyAlgo,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn HLRBRep_PolyAlgo_inherited_DecrementRefCounter(
         self_: *mut HLRBRep_PolyAlgo,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn HLRBRep_PolyAlgo_inherited_Delete(
         self_: *const HLRBRep_PolyAlgo,
     ) -> *const std::ffi::c_char;
     // ======================== HLRBRep_PolyHLRToShape ========================
     pub fn HLRBRep_PolyHLRToShape_destructor(self_: *mut HLRBRep_PolyHLRToShape);
-    /// **Source:** `HLRBRep_PolyHLRToShape.hxx`:65 - `HLRBRep_PolyHLRToShape::HLRBRep_PolyHLRToShape()`
+    /// **Source:** `HLRBRep_PolyHLRToShape.hxx`:66 - `HLRBRep_PolyHLRToShape::HLRBRep_PolyHLRToShape()`
     pub fn HLRBRep_PolyHLRToShape_ctor() -> crate::OcctResult<*mut HLRBRep_PolyHLRToShape>;
-    /// **Source:** `HLRBRep_PolyHLRToShape.hxx`:67 - `HLRBRep_PolyHLRToShape::Update()`
+    /// **Source:** `HLRBRep_PolyHLRToShape.hxx`:68 - `HLRBRep_PolyHLRToShape::Update()`
     pub fn HLRBRep_PolyHLRToShape_update(
         self_: *mut HLRBRep_PolyHLRToShape,
-        A: *const HandleHLRBRepPolyAlgo,
+        A: *const Handle_HLRBRep_PolyAlgo,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `HLRBRep_PolyHLRToShape.hxx`:69 - `HLRBRep_PolyHLRToShape::Show()`
+    /// **Source:** `HLRBRep_PolyHLRToShape.hxx`:70 - `HLRBRep_PolyHLRToShape::Show()`
     pub fn HLRBRep_PolyHLRToShape_show(
         self_: *mut HLRBRep_PolyHLRToShape,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `HLRBRep_PolyHLRToShape.hxx`:71 - `HLRBRep_PolyHLRToShape::Hide()`
+    /// **Source:** `HLRBRep_PolyHLRToShape.hxx`:72 - `HLRBRep_PolyHLRToShape::Hide()`
     pub fn HLRBRep_PolyHLRToShape_hide(
         self_: *mut HLRBRep_PolyHLRToShape,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `HLRBRep_PolyHLRToShape.hxx`:73 - `HLRBRep_PolyHLRToShape::VCompound()`
+    /// **Source:** `HLRBRep_PolyHLRToShape.hxx`:74 - `HLRBRep_PolyHLRToShape::VCompound()`
     pub fn HLRBRep_PolyHLRToShape_v_compound(
         self_: *mut HLRBRep_PolyHLRToShape,
     ) -> crate::OcctResult<*mut TopoDS_Shape>;
-    /// **Source:** `HLRBRep_PolyHLRToShape.hxx`:75 - `HLRBRep_PolyHLRToShape::VCompound()`
+    /// **Source:** `HLRBRep_PolyHLRToShape.hxx`:76 - `HLRBRep_PolyHLRToShape::VCompound()`
     pub fn HLRBRep_PolyHLRToShape_v_compound_shape(
         self_: *mut HLRBRep_PolyHLRToShape,
         S: *const TopoDS_Shape,
     ) -> crate::OcctResult<*mut TopoDS_Shape>;
-    /// **Source:** `HLRBRep_PolyHLRToShape.hxx`:78 - `HLRBRep_PolyHLRToShape::Rg1LineVCompound()`
+    /// **Source:** `HLRBRep_PolyHLRToShape.hxx`:79 - `HLRBRep_PolyHLRToShape::Rg1LineVCompound()`
     pub fn HLRBRep_PolyHLRToShape_rg1_line_v_compound(
         self_: *mut HLRBRep_PolyHLRToShape,
     ) -> crate::OcctResult<*mut TopoDS_Shape>;
-    /// **Source:** `HLRBRep_PolyHLRToShape.hxx`:80 - `HLRBRep_PolyHLRToShape::Rg1LineVCompound()`
+    /// **Source:** `HLRBRep_PolyHLRToShape.hxx`:81 - `HLRBRep_PolyHLRToShape::Rg1LineVCompound()`
     pub fn HLRBRep_PolyHLRToShape_rg1_line_v_compound_shape(
         self_: *mut HLRBRep_PolyHLRToShape,
         S: *const TopoDS_Shape,
     ) -> crate::OcctResult<*mut TopoDS_Shape>;
-    /// **Source:** `HLRBRep_PolyHLRToShape.hxx`:83 - `HLRBRep_PolyHLRToShape::RgNLineVCompound()`
+    /// **Source:** `HLRBRep_PolyHLRToShape.hxx`:84 - `HLRBRep_PolyHLRToShape::RgNLineVCompound()`
     pub fn HLRBRep_PolyHLRToShape_rg_n_line_v_compound(
         self_: *mut HLRBRep_PolyHLRToShape,
     ) -> crate::OcctResult<*mut TopoDS_Shape>;
-    /// **Source:** `HLRBRep_PolyHLRToShape.hxx`:85 - `HLRBRep_PolyHLRToShape::RgNLineVCompound()`
+    /// **Source:** `HLRBRep_PolyHLRToShape.hxx`:86 - `HLRBRep_PolyHLRToShape::RgNLineVCompound()`
     pub fn HLRBRep_PolyHLRToShape_rg_n_line_v_compound_shape(
         self_: *mut HLRBRep_PolyHLRToShape,
         S: *const TopoDS_Shape,
     ) -> crate::OcctResult<*mut TopoDS_Shape>;
-    /// **Source:** `HLRBRep_PolyHLRToShape.hxx`:87 - `HLRBRep_PolyHLRToShape::OutLineVCompound()`
+    /// **Source:** `HLRBRep_PolyHLRToShape.hxx`:88 - `HLRBRep_PolyHLRToShape::OutLineVCompound()`
     pub fn HLRBRep_PolyHLRToShape_out_line_v_compound(
         self_: *mut HLRBRep_PolyHLRToShape,
     ) -> crate::OcctResult<*mut TopoDS_Shape>;
-    /// **Source:** `HLRBRep_PolyHLRToShape.hxx`:90 - `HLRBRep_PolyHLRToShape::OutLineVCompound()`
+    /// **Source:** `HLRBRep_PolyHLRToShape.hxx`:91 - `HLRBRep_PolyHLRToShape::OutLineVCompound()`
     pub fn HLRBRep_PolyHLRToShape_out_line_v_compound_shape(
         self_: *mut HLRBRep_PolyHLRToShape,
         S: *const TopoDS_Shape,
     ) -> crate::OcctResult<*mut TopoDS_Shape>;
-    /// **Source:** `HLRBRep_PolyHLRToShape.hxx`:92 - `HLRBRep_PolyHLRToShape::HCompound()`
+    /// **Source:** `HLRBRep_PolyHLRToShape.hxx`:93 - `HLRBRep_PolyHLRToShape::HCompound()`
     pub fn HLRBRep_PolyHLRToShape_h_compound(
         self_: *mut HLRBRep_PolyHLRToShape,
     ) -> crate::OcctResult<*mut TopoDS_Shape>;
-    /// **Source:** `HLRBRep_PolyHLRToShape.hxx`:94 - `HLRBRep_PolyHLRToShape::HCompound()`
+    /// **Source:** `HLRBRep_PolyHLRToShape.hxx`:95 - `HLRBRep_PolyHLRToShape::HCompound()`
     pub fn HLRBRep_PolyHLRToShape_h_compound_shape(
         self_: *mut HLRBRep_PolyHLRToShape,
         S: *const TopoDS_Shape,
     ) -> crate::OcctResult<*mut TopoDS_Shape>;
-    /// **Source:** `HLRBRep_PolyHLRToShape.hxx`:96 - `HLRBRep_PolyHLRToShape::Rg1LineHCompound()`
+    /// **Source:** `HLRBRep_PolyHLRToShape.hxx`:97 - `HLRBRep_PolyHLRToShape::Rg1LineHCompound()`
     pub fn HLRBRep_PolyHLRToShape_rg1_line_h_compound(
         self_: *mut HLRBRep_PolyHLRToShape,
     ) -> crate::OcctResult<*mut TopoDS_Shape>;
-    /// **Source:** `HLRBRep_PolyHLRToShape.hxx`:99 - `HLRBRep_PolyHLRToShape::Rg1LineHCompound()`
+    /// **Source:** `HLRBRep_PolyHLRToShape.hxx`:100 - `HLRBRep_PolyHLRToShape::Rg1LineHCompound()`
     pub fn HLRBRep_PolyHLRToShape_rg1_line_h_compound_shape(
         self_: *mut HLRBRep_PolyHLRToShape,
         S: *const TopoDS_Shape,
     ) -> crate::OcctResult<*mut TopoDS_Shape>;
-    /// **Source:** `HLRBRep_PolyHLRToShape.hxx`:101 - `HLRBRep_PolyHLRToShape::RgNLineHCompound()`
+    /// **Source:** `HLRBRep_PolyHLRToShape.hxx`:102 - `HLRBRep_PolyHLRToShape::RgNLineHCompound()`
     pub fn HLRBRep_PolyHLRToShape_rg_n_line_h_compound(
         self_: *mut HLRBRep_PolyHLRToShape,
     ) -> crate::OcctResult<*mut TopoDS_Shape>;
-    /// **Source:** `HLRBRep_PolyHLRToShape.hxx`:104 - `HLRBRep_PolyHLRToShape::RgNLineHCompound()`
+    /// **Source:** `HLRBRep_PolyHLRToShape.hxx`:105 - `HLRBRep_PolyHLRToShape::RgNLineHCompound()`
     pub fn HLRBRep_PolyHLRToShape_rg_n_line_h_compound_shape(
         self_: *mut HLRBRep_PolyHLRToShape,
         S: *const TopoDS_Shape,
     ) -> crate::OcctResult<*mut TopoDS_Shape>;
-    /// **Source:** `HLRBRep_PolyHLRToShape.hxx`:106 - `HLRBRep_PolyHLRToShape::OutLineHCompound()`
+    /// **Source:** `HLRBRep_PolyHLRToShape.hxx`:107 - `HLRBRep_PolyHLRToShape::OutLineHCompound()`
     pub fn HLRBRep_PolyHLRToShape_out_line_h_compound(
         self_: *mut HLRBRep_PolyHLRToShape,
     ) -> crate::OcctResult<*mut TopoDS_Shape>;
-    /// **Source:** `HLRBRep_PolyHLRToShape.hxx`:111 - `HLRBRep_PolyHLRToShape::OutLineHCompound()`
+    /// **Source:** `HLRBRep_PolyHLRToShape.hxx`:112 - `HLRBRep_PolyHLRToShape::OutLineHCompound()`
     pub fn HLRBRep_PolyHLRToShape_out_line_h_compound_shape(
         self_: *mut HLRBRep_PolyHLRToShape,
         S: *const TopoDS_Shape,
     ) -> crate::OcctResult<*mut TopoDS_Shape>;
-    // ======================== HLRBRep_SLProps ========================
-    pub fn HLRBRep_SLProps_destructor(self_: *mut HLRBRep_SLProps);
-    /// **Source:** `HLRBRep_SLProps.hxx`:52 - `HLRBRep_SLProps::HLRBRep_SLProps()`
-    pub fn HLRBRep_SLProps_ctor_address_real2_int_real(
-        S: *const *mut std::ffi::c_void,
-        U: f64,
-        V: f64,
-        N: i32,
-        Resolution: f64,
-    ) -> crate::OcctResult<*mut HLRBRep_SLProps>;
-    /// **Source:** `HLRBRep_SLProps.hxx`:60 - `HLRBRep_SLProps::HLRBRep_SLProps()`
-    pub fn HLRBRep_SLProps_ctor_address_int_real(
-        S: *const *mut std::ffi::c_void,
-        N: i32,
-        Resolution: f64,
-    ) -> crate::OcctResult<*mut HLRBRep_SLProps>;
-    /// **Source:** `HLRBRep_SLProps.hxx`:67 - `HLRBRep_SLProps::HLRBRep_SLProps()`
-    pub fn HLRBRep_SLProps_ctor_int_real(
-        N: i32,
-        Resolution: f64,
-    ) -> crate::OcctResult<*mut HLRBRep_SLProps>;
-    /// **Source:** `HLRBRep_SLProps.hxx`:71 - `HLRBRep_SLProps::SetSurface()`
-    pub fn HLRBRep_SLProps_set_surface(
-        self_: *mut HLRBRep_SLProps,
-        S: *const *mut std::ffi::c_void,
-    ) -> *const std::ffi::c_char;
-    /// **Source:** `HLRBRep_SLProps.hxx`:75 - `HLRBRep_SLProps::SetParameters()`
-    pub fn HLRBRep_SLProps_set_parameters(
-        self_: *mut HLRBRep_SLProps,
-        U: f64,
-        V: f64,
-    ) -> *const std::ffi::c_char;
-    /// **Source:** `HLRBRep_SLProps.hxx`:78 - `HLRBRep_SLProps::Value()`
-    pub fn HLRBRep_SLProps_value(self_: *const HLRBRep_SLProps)
-        -> crate::OcctResult<*const gp_Pnt>;
-    /// **Source:** `HLRBRep_SLProps.hxx`:82 - `HLRBRep_SLProps::D1U()`
-    pub fn HLRBRep_SLProps_d1u(self_: *mut HLRBRep_SLProps) -> crate::OcctResult<*const gp_Vec>;
-    /// **Source:** `HLRBRep_SLProps.hxx`:86 - `HLRBRep_SLProps::D1V()`
-    pub fn HLRBRep_SLProps_d1v(self_: *mut HLRBRep_SLProps) -> crate::OcctResult<*const gp_Vec>;
-    /// **Source:** `HLRBRep_SLProps.hxx`:90 - `HLRBRep_SLProps::D2U()`
-    pub fn HLRBRep_SLProps_d2u(self_: *mut HLRBRep_SLProps) -> crate::OcctResult<*const gp_Vec>;
-    /// **Source:** `HLRBRep_SLProps.hxx`:94 - `HLRBRep_SLProps::D2V()`
-    pub fn HLRBRep_SLProps_d2v(self_: *mut HLRBRep_SLProps) -> crate::OcctResult<*const gp_Vec>;
-    /// **Source:** `HLRBRep_SLProps.hxx`:98 - `HLRBRep_SLProps::DUV()`
-    pub fn HLRBRep_SLProps_duv(self_: *mut HLRBRep_SLProps) -> crate::OcctResult<*const gp_Vec>;
-    /// **Source:** `HLRBRep_SLProps.hxx`:103 - `HLRBRep_SLProps::IsTangentUDefined()`
-    pub fn HLRBRep_SLProps_is_tangent_u_defined(
-        self_: *mut HLRBRep_SLProps,
-    ) -> crate::OcctResult<bool>;
-    /// **Source:** `HLRBRep_SLProps.hxx`:106 - `HLRBRep_SLProps::TangentU()`
-    pub fn HLRBRep_SLProps_tangent_u(
-        self_: *mut HLRBRep_SLProps,
-        D: *mut gp_Dir,
-    ) -> *const std::ffi::c_char;
-    /// **Source:** `HLRBRep_SLProps.hxx`:111 - `HLRBRep_SLProps::IsTangentVDefined()`
-    pub fn HLRBRep_SLProps_is_tangent_v_defined(
-        self_: *mut HLRBRep_SLProps,
-    ) -> crate::OcctResult<bool>;
-    /// **Source:** `HLRBRep_SLProps.hxx`:114 - `HLRBRep_SLProps::TangentV()`
-    pub fn HLRBRep_SLProps_tangent_v(
-        self_: *mut HLRBRep_SLProps,
-        D: *mut gp_Dir,
-    ) -> *const std::ffi::c_char;
-    /// **Source:** `HLRBRep_SLProps.hxx`:117 - `HLRBRep_SLProps::IsNormalDefined()`
-    pub fn HLRBRep_SLProps_is_normal_defined(
-        self_: *mut HLRBRep_SLProps,
-    ) -> crate::OcctResult<bool>;
-    /// **Source:** `HLRBRep_SLProps.hxx`:120 - `HLRBRep_SLProps::Normal()`
-    pub fn HLRBRep_SLProps_normal(self_: *mut HLRBRep_SLProps) -> crate::OcctResult<*const gp_Dir>;
-    /// **Source:** `HLRBRep_SLProps.hxx`:123 - `HLRBRep_SLProps::IsCurvatureDefined()`
-    pub fn HLRBRep_SLProps_is_curvature_defined(
-        self_: *mut HLRBRep_SLProps,
-    ) -> crate::OcctResult<bool>;
-    /// **Source:** `HLRBRep_SLProps.hxx`:127 - `HLRBRep_SLProps::IsUmbilic()`
-    pub fn HLRBRep_SLProps_is_umbilic(self_: *mut HLRBRep_SLProps) -> crate::OcctResult<bool>;
-    /// **Source:** `HLRBRep_SLProps.hxx`:130 - `HLRBRep_SLProps::MaxCurvature()`
-    pub fn HLRBRep_SLProps_max_curvature(self_: *mut HLRBRep_SLProps) -> crate::OcctResult<f64>;
-    /// **Source:** `HLRBRep_SLProps.hxx`:133 - `HLRBRep_SLProps::MinCurvature()`
-    pub fn HLRBRep_SLProps_min_curvature(self_: *mut HLRBRep_SLProps) -> crate::OcctResult<f64>;
-    /// **Source:** `HLRBRep_SLProps.hxx`:137 - `HLRBRep_SLProps::CurvatureDirections()`
-    pub fn HLRBRep_SLProps_curvature_directions(
-        self_: *mut HLRBRep_SLProps,
-        MaxD: *mut gp_Dir,
-        MinD: *mut gp_Dir,
-    ) -> *const std::ffi::c_char;
-    /// **Source:** `HLRBRep_SLProps.hxx`:140 - `HLRBRep_SLProps::MeanCurvature()`
-    pub fn HLRBRep_SLProps_mean_curvature(self_: *mut HLRBRep_SLProps) -> crate::OcctResult<f64>;
-    /// **Source:** `HLRBRep_SLProps.hxx`:143 - `HLRBRep_SLProps::GaussianCurvature()`
-    pub fn HLRBRep_SLProps_gaussian_curvature(
-        self_: *mut HLRBRep_SLProps,
-    ) -> crate::OcctResult<f64>;
     // ======================== HLRBRep_SLPropsATool ========================
     pub fn HLRBRep_SLPropsATool_destructor(self_: *mut HLRBRep_SLPropsATool);
     /// **Source:** `HLRBRep_SLPropsATool.hxx` - `HLRBRep_SLPropsATool::HLRBRep_SLPropsATool()`
     pub fn HLRBRep_SLPropsATool_ctor() -> crate::OcctResult<*mut HLRBRep_SLPropsATool>;
-    /// **Source:** `HLRBRep_SLPropsATool.hxx`:35 - `HLRBRep_SLPropsATool::Value()`
+    /// **Source:** `HLRBRep_SLPropsATool.hxx`:36 - `HLRBRep_SLPropsATool::Value()`
     pub fn HLRBRep_SLPropsATool_value(
         A: *mut std::ffi::c_void,
         U: f64,
         V: f64,
         P: *mut gp_Pnt,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `HLRBRep_SLPropsATool.hxx`:42 - `HLRBRep_SLPropsATool::D1()`
+    /// **Source:** `HLRBRep_SLPropsATool.hxx`:40 - `HLRBRep_SLPropsATool::D1()`
     pub fn HLRBRep_SLPropsATool_d1(
         A: *mut std::ffi::c_void,
         U: f64,
@@ -6780,7 +5963,7 @@ unsafe extern "C" {
         D1U: *mut gp_Vec,
         D1V: *mut gp_Vec,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `HLRBRep_SLPropsATool.hxx`:52 - `HLRBRep_SLPropsATool::D2()`
+    /// **Source:** `HLRBRep_SLPropsATool.hxx`:50 - `HLRBRep_SLPropsATool::D2()`
     pub fn HLRBRep_SLPropsATool_d2(
         A: *mut std::ffi::c_void,
         U: f64,
@@ -6792,7 +5975,7 @@ unsafe extern "C" {
         D2V: *mut gp_Vec,
         DUV: *mut gp_Vec,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `HLRBRep_SLPropsATool.hxx`:62 - `HLRBRep_SLPropsATool::DN()`
+    /// **Source:** `HLRBRep_SLPropsATool.hxx`:60 - `HLRBRep_SLPropsATool::DN()`
     pub fn HLRBRep_SLPropsATool_dn(
         A: *mut std::ffi::c_void,
         U: f64,
@@ -6800,9 +5983,9 @@ unsafe extern "C" {
         Nu: i32,
         Nv: i32,
     ) -> crate::OcctResult<*mut gp_Vec>;
-    /// **Source:** `HLRBRep_SLPropsATool.hxx`:72 - `HLRBRep_SLPropsATool::Continuity()`
+    /// **Source:** `HLRBRep_SLPropsATool.hxx`:70 - `HLRBRep_SLPropsATool::Continuity()`
     pub fn HLRBRep_SLPropsATool_continuity(A: *mut std::ffi::c_void) -> crate::OcctResult<i32>;
-    /// **Source:** `HLRBRep_SLPropsATool.hxx`:75 - `HLRBRep_SLPropsATool::Bounds()`
+    /// **Source:** `HLRBRep_SLPropsATool.hxx`:73 - `HLRBRep_SLPropsATool::Bounds()`
     pub fn HLRBRep_SLPropsATool_bounds(
         A: *mut std::ffi::c_void,
         U1: *mut f64,
@@ -6816,8 +5999,8 @@ unsafe extern "C" {
     pub fn HLRBRep_ShapeBounds_ctor() -> crate::OcctResult<*mut HLRBRep_ShapeBounds>;
     /// **Source:** `HLRBRep_ShapeBounds.hxx`:38 - `HLRBRep_ShapeBounds::HLRBRep_ShapeBounds()`
     pub fn HLRBRep_ShapeBounds_ctor_handlehlrtopobrepoutliner_handlestandardtransient_int7(
-        S: *const HandleHLRTopoBRepOutLiner,
-        SData: *const HandleStandardTransient,
+        S: *const Handle_HLRTopoBRep_OutLiner,
+        SData: *const Handle_Standard_Transient,
         nbIso: i32,
         V1: i32,
         V2: i32,
@@ -6828,7 +6011,7 @@ unsafe extern "C" {
     ) -> crate::OcctResult<*mut HLRBRep_ShapeBounds>;
     /// **Source:** `HLRBRep_ShapeBounds.hxx`:48 - `HLRBRep_ShapeBounds::HLRBRep_ShapeBounds()`
     pub fn HLRBRep_ShapeBounds_ctor_handlehlrtopobrepoutliner_int7(
-        S: *const HandleHLRTopoBRepOutLiner,
+        S: *const Handle_HLRTopoBRep_OutLiner,
         nbIso: i32,
         V1: i32,
         V2: i32,
@@ -6844,41 +6027,41 @@ unsafe extern "C" {
         NE: i32,
         NF: i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `HLRBRep_ShapeBounds.hxx`:61 - `HLRBRep_ShapeBounds::Shape()`
+    /// **Source:** `HLRBRep_ShapeBounds.hxx`:59 - `HLRBRep_ShapeBounds::Shape()`
     pub fn HLRBRep_ShapeBounds_shape_handlehlrtopobrepoutliner(
         self_: *mut HLRBRep_ShapeBounds,
-        S: *const HandleHLRTopoBRepOutLiner,
+        S: *const Handle_HLRTopoBRep_OutLiner,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `HLRBRep_ShapeBounds.hxx`:63 - `HLRBRep_ShapeBounds::Shape()`
+    /// **Source:** `HLRBRep_ShapeBounds.hxx`:61 - `HLRBRep_ShapeBounds::Shape()`
     pub fn HLRBRep_ShapeBounds_shape(
         self_: *const HLRBRep_ShapeBounds,
-    ) -> crate::OcctResult<*const HandleHLRTopoBRepOutLiner>;
-    /// **Source:** `HLRBRep_ShapeBounds.hxx`:65 - `HLRBRep_ShapeBounds::ShapeData()`
+    ) -> crate::OcctResult<*const Handle_HLRTopoBRep_OutLiner>;
+    /// **Source:** `HLRBRep_ShapeBounds.hxx`:63 - `HLRBRep_ShapeBounds::ShapeData()`
     pub fn HLRBRep_ShapeBounds_shape_data_handlestandardtransient(
         self_: *mut HLRBRep_ShapeBounds,
-        SD: *const HandleStandardTransient,
+        SD: *const Handle_Standard_Transient,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `HLRBRep_ShapeBounds.hxx`:67 - `HLRBRep_ShapeBounds::ShapeData()`
+    /// **Source:** `HLRBRep_ShapeBounds.hxx`:65 - `HLRBRep_ShapeBounds::ShapeData()`
     pub fn HLRBRep_ShapeBounds_shape_data(
         self_: *const HLRBRep_ShapeBounds,
-    ) -> crate::OcctResult<*const HandleStandardTransient>;
-    /// **Source:** `HLRBRep_ShapeBounds.hxx`:69 - `HLRBRep_ShapeBounds::NbOfIso()`
+    ) -> crate::OcctResult<*const Handle_Standard_Transient>;
+    /// **Source:** `HLRBRep_ShapeBounds.hxx`:67 - `HLRBRep_ShapeBounds::NbOfIso()`
     pub fn HLRBRep_ShapeBounds_nb_of_iso_int(
         self_: *mut HLRBRep_ShapeBounds,
         nbIso: i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `HLRBRep_ShapeBounds.hxx`:71 - `HLRBRep_ShapeBounds::NbOfIso()`
+    /// **Source:** `HLRBRep_ShapeBounds.hxx`:69 - `HLRBRep_ShapeBounds::NbOfIso()`
     pub fn HLRBRep_ShapeBounds_nb_of_iso(
         self_: *const HLRBRep_ShapeBounds,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `HLRBRep_ShapeBounds.hxx`:73 - `HLRBRep_ShapeBounds::Sizes()`
+    /// **Source:** `HLRBRep_ShapeBounds.hxx`:71 - `HLRBRep_ShapeBounds::Sizes()`
     pub fn HLRBRep_ShapeBounds_sizes(
         self_: *const HLRBRep_ShapeBounds,
         NV: *mut i32,
         NE: *mut i32,
         NF: *mut i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `HLRBRep_ShapeBounds.hxx`:77 - `HLRBRep_ShapeBounds::Bounds()`
+    /// **Source:** `HLRBRep_ShapeBounds.hxx`:73 - `HLRBRep_ShapeBounds::Bounds()`
     pub fn HLRBRep_ShapeBounds_bounds(
         self_: *const HLRBRep_ShapeBounds,
         V1: *mut i32,
@@ -6888,12 +6071,12 @@ unsafe extern "C" {
         F1: *mut i32,
         F2: *mut i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `HLRBRep_ShapeBounds.hxx`:84 - `HLRBRep_ShapeBounds::UpdateMinMax()`
+    /// **Source:** `HLRBRep_ShapeBounds.hxx`:75 - `HLRBRep_ShapeBounds::UpdateMinMax()`
     pub fn HLRBRep_ShapeBounds_update_min_max(
         self_: *mut HLRBRep_ShapeBounds,
         theTotMinMax: *const HLRAlgo_EdgesBlock_MinMaxIndices,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `HLRBRep_ShapeBounds.hxx`:89 - `HLRBRep_ShapeBounds::MinMax()`
+    /// **Source:** `HLRBRep_ShapeBounds.hxx`:80 - `HLRBRep_ShapeBounds::MinMax()`
     pub fn HLRBRep_ShapeBounds_min_max(
         self_: *mut HLRBRep_ShapeBounds,
     ) -> crate::OcctResult<*mut HLRAlgo_EdgesBlock_MinMaxIndices>;
@@ -6901,108 +6084,112 @@ unsafe extern "C" {
     pub fn HLRBRep_ShapeToHLR_destructor(self_: *mut HLRBRep_ShapeToHLR);
     /// **Source:** `HLRBRep_ShapeToHLR.hxx` - `HLRBRep_ShapeToHLR::HLRBRep_ShapeToHLR()`
     pub fn HLRBRep_ShapeToHLR_ctor() -> crate::OcctResult<*mut HLRBRep_ShapeToHLR>;
-    /// **Source:** `HLRBRep_ShapeToHLR.hxx`:42 - `HLRBRep_ShapeToHLR::Load()`
+    /// **Source:** `HLRBRep_ShapeToHLR.hxx`:45 - `HLRBRep_ShapeToHLR::Load()`
     pub fn HLRBRep_ShapeToHLR_load(
-        S: *const HandleHLRTopoBRepOutLiner,
+        S: *const Handle_HLRTopoBRep_OutLiner,
         P: *const HLRAlgo_Projector,
-        MST: *mut BRepTopAdaptor_MapOfShapeTool,
+        MST: *mut NCollection_DataMap_TopoDS_Shape_BRepTopAdaptor_Tool_TopTools_ShapeMapHasher,
         nbIso: i32,
-    ) -> crate::OcctResult<*mut HandleHLRBRepData>;
+    ) -> crate::OcctResult<*mut Handle_HLRBRep_Data>;
     // ======================== HLRBRep_Surface ========================
     pub fn HLRBRep_Surface_destructor(self_: *mut HLRBRep_Surface);
-    /// **Source:** `HLRBRep_Surface.hxx`:46 - `HLRBRep_Surface::HLRBRep_Surface()`
+    /// **Source:** `HLRBRep_Surface.hxx`:47 - `HLRBRep_Surface::HLRBRep_Surface()`
     pub fn HLRBRep_Surface_ctor() -> crate::OcctResult<*mut HLRBRep_Surface>;
-    /// **Source:** `HLRBRep_Surface.hxx`:48 - `HLRBRep_Surface::Projector()`
+    /// **Source:** `HLRBRep_Surface.hxx`:49 - `HLRBRep_Surface::Projector()`
     pub fn HLRBRep_Surface_projector(
         self_: *mut HLRBRep_Surface,
         Proj: *const HLRAlgo_Projector,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `HLRBRep_Surface.hxx`:51 - `HLRBRep_Surface::Surface()`
-    pub fn HLRBRep_Surface_surface(
+    /// **Source:** `HLRBRep_Surface.hxx`:52 - `HLRBRep_Surface::Surface()`
+    pub fn HLRBRep_Surface_surface_mut(
         self_: *mut HLRBRep_Surface,
     ) -> crate::OcctResult<*mut BRepAdaptor_Surface>;
-    /// **Source:** `HLRBRep_Surface.hxx`:54 - `HLRBRep_Surface::Surface()`
+    /// **Source:** `HLRBRep_Surface.hxx`:55 - `HLRBRep_Surface::Surface()`
+    pub fn HLRBRep_Surface_surface(
+        self_: *const HLRBRep_Surface,
+    ) -> crate::OcctResult<*const BRepAdaptor_Surface>;
+    /// **Source:** `HLRBRep_Surface.hxx`:58 - `HLRBRep_Surface::Surface()`
     pub fn HLRBRep_Surface_surface_face(
         self_: *mut HLRBRep_Surface,
         F: *const TopoDS_Face,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `HLRBRep_Surface.hxx`:57 - `HLRBRep_Surface::IsSide()`
+    /// **Source:** `HLRBRep_Surface.hxx`:61 - `HLRBRep_Surface::IsSide()`
     pub fn HLRBRep_Surface_is_side(
         self_: *const HLRBRep_Surface,
         tolf: f64,
         toler: f64,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `HLRBRep_Surface.hxx`:60 - `HLRBRep_Surface::IsAbove()`
+    /// **Source:** `HLRBRep_Surface.hxx`:63 - `HLRBRep_Surface::IsAbove()`
     pub fn HLRBRep_Surface_is_above(
         self_: *const HLRBRep_Surface,
         back: bool,
         A: *const HLRBRep_Curve,
         tolC: f64,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `HLRBRep_Surface.hxx`:64 - `HLRBRep_Surface::FirstUParameter()`
+    /// **Source:** `HLRBRep_Surface.hxx`:65 - `HLRBRep_Surface::FirstUParameter()`
     pub fn HLRBRep_Surface_first_u_parameter(
         self_: *const HLRBRep_Surface,
     ) -> crate::OcctResult<f64>;
-    /// **Source:** `HLRBRep_Surface.hxx`:66 - `HLRBRep_Surface::LastUParameter()`
+    /// **Source:** `HLRBRep_Surface.hxx`:67 - `HLRBRep_Surface::LastUParameter()`
     pub fn HLRBRep_Surface_last_u_parameter(
         self_: *const HLRBRep_Surface,
     ) -> crate::OcctResult<f64>;
-    /// **Source:** `HLRBRep_Surface.hxx`:68 - `HLRBRep_Surface::FirstVParameter()`
+    /// **Source:** `HLRBRep_Surface.hxx`:69 - `HLRBRep_Surface::FirstVParameter()`
     pub fn HLRBRep_Surface_first_v_parameter(
         self_: *const HLRBRep_Surface,
     ) -> crate::OcctResult<f64>;
-    /// **Source:** `HLRBRep_Surface.hxx`:70 - `HLRBRep_Surface::LastVParameter()`
+    /// **Source:** `HLRBRep_Surface.hxx`:71 - `HLRBRep_Surface::LastVParameter()`
     pub fn HLRBRep_Surface_last_v_parameter(
         self_: *const HLRBRep_Surface,
     ) -> crate::OcctResult<f64>;
-    /// **Source:** `HLRBRep_Surface.hxx`:72 - `HLRBRep_Surface::UContinuity()`
+    /// **Source:** `HLRBRep_Surface.hxx`:73 - `HLRBRep_Surface::UContinuity()`
     pub fn HLRBRep_Surface_u_continuity(self_: *const HLRBRep_Surface) -> crate::OcctResult<i32>;
-    /// **Source:** `HLRBRep_Surface.hxx`:74 - `HLRBRep_Surface::VContinuity()`
+    /// **Source:** `HLRBRep_Surface.hxx`:75 - `HLRBRep_Surface::VContinuity()`
     pub fn HLRBRep_Surface_v_continuity(self_: *const HLRBRep_Surface) -> crate::OcctResult<i32>;
-    /// **Source:** `HLRBRep_Surface.hxx`:79 - `HLRBRep_Surface::NbUIntervals()`
+    /// **Source:** `HLRBRep_Surface.hxx`:80 - `HLRBRep_Surface::NbUIntervals()`
     pub fn HLRBRep_Surface_nb_u_intervals(
-        self_: *mut HLRBRep_Surface,
+        self_: *const HLRBRep_Surface,
         S: i32,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `HLRBRep_Surface.hxx`:84 - `HLRBRep_Surface::NbVIntervals()`
+    /// **Source:** `HLRBRep_Surface.hxx`:85 - `HLRBRep_Surface::NbVIntervals()`
     pub fn HLRBRep_Surface_nb_v_intervals(
-        self_: *mut HLRBRep_Surface,
+        self_: *const HLRBRep_Surface,
         S: i32,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `HLRBRep_Surface.hxx`:86 - `HLRBRep_Surface::UIntervalContinuity()`
+    /// **Source:** `HLRBRep_Surface.hxx`:87 - `HLRBRep_Surface::UIntervalContinuity()`
     pub fn HLRBRep_Surface_u_interval_continuity(
         self_: *const HLRBRep_Surface,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `HLRBRep_Surface.hxx`:88 - `HLRBRep_Surface::VIntervalContinuity()`
+    /// **Source:** `HLRBRep_Surface.hxx`:89 - `HLRBRep_Surface::VIntervalContinuity()`
     pub fn HLRBRep_Surface_v_interval_continuity(
         self_: *const HLRBRep_Surface,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `HLRBRep_Surface.hxx`:90 - `HLRBRep_Surface::IsUClosed()`
+    /// **Source:** `HLRBRep_Surface.hxx`:91 - `HLRBRep_Surface::IsUClosed()`
     pub fn HLRBRep_Surface_is_u_closed(self_: *const HLRBRep_Surface) -> crate::OcctResult<bool>;
-    /// **Source:** `HLRBRep_Surface.hxx`:92 - `HLRBRep_Surface::IsVClosed()`
+    /// **Source:** `HLRBRep_Surface.hxx`:93 - `HLRBRep_Surface::IsVClosed()`
     pub fn HLRBRep_Surface_is_v_closed(self_: *const HLRBRep_Surface) -> crate::OcctResult<bool>;
-    /// **Source:** `HLRBRep_Surface.hxx`:94 - `HLRBRep_Surface::IsUPeriodic()`
+    /// **Source:** `HLRBRep_Surface.hxx`:95 - `HLRBRep_Surface::IsUPeriodic()`
     pub fn HLRBRep_Surface_is_u_periodic(self_: *const HLRBRep_Surface) -> crate::OcctResult<bool>;
-    /// **Source:** `HLRBRep_Surface.hxx`:96 - `HLRBRep_Surface::UPeriod()`
+    /// **Source:** `HLRBRep_Surface.hxx`:97 - `HLRBRep_Surface::UPeriod()`
     pub fn HLRBRep_Surface_u_period(self_: *const HLRBRep_Surface) -> crate::OcctResult<f64>;
-    /// **Source:** `HLRBRep_Surface.hxx`:98 - `HLRBRep_Surface::IsVPeriodic()`
+    /// **Source:** `HLRBRep_Surface.hxx`:99 - `HLRBRep_Surface::IsVPeriodic()`
     pub fn HLRBRep_Surface_is_v_periodic(self_: *const HLRBRep_Surface) -> crate::OcctResult<bool>;
-    /// **Source:** `HLRBRep_Surface.hxx`:100 - `HLRBRep_Surface::VPeriod()`
+    /// **Source:** `HLRBRep_Surface.hxx`:101 - `HLRBRep_Surface::VPeriod()`
     pub fn HLRBRep_Surface_v_period(self_: *const HLRBRep_Surface) -> crate::OcctResult<f64>;
-    /// **Source:** `HLRBRep_Surface.hxx`:103 - `HLRBRep_Surface::Value()`
+    /// **Source:** `HLRBRep_Surface.hxx`:104 - `HLRBRep_Surface::Value()`
     pub fn HLRBRep_Surface_value(
         self_: *const HLRBRep_Surface,
         U: f64,
         V: f64,
     ) -> crate::OcctResult<*mut gp_Pnt>;
-    /// **Source:** `HLRBRep_Surface.hxx`:106 - `HLRBRep_Surface::D0()`
+    /// **Source:** `HLRBRep_Surface.hxx`:107 - `HLRBRep_Surface::D0()`
     pub fn HLRBRep_Surface_d0(
         self_: *const HLRBRep_Surface,
         U: f64,
         V: f64,
         P: *mut gp_Pnt,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `HLRBRep_Surface.hxx`:112 - `HLRBRep_Surface::D1()`
+    /// **Source:** `HLRBRep_Surface.hxx`:113 - `HLRBRep_Surface::D1()`
     pub fn HLRBRep_Surface_d1(
         self_: *const HLRBRep_Surface,
         U: f64,
@@ -7011,7 +6198,7 @@ unsafe extern "C" {
         D1U: *mut gp_Vec,
         D1V: *mut gp_Vec,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `HLRBRep_Surface.hxx`:118 - `HLRBRep_Surface::D2()`
+    /// **Source:** `HLRBRep_Surface.hxx`:119 - `HLRBRep_Surface::D2()`
     pub fn HLRBRep_Surface_d2(
         self_: *const HLRBRep_Surface,
         U: f64,
@@ -7023,7 +6210,7 @@ unsafe extern "C" {
         D2V: *mut gp_Vec,
         D2UV: *mut gp_Vec,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `HLRBRep_Surface.hxx`:131 - `HLRBRep_Surface::D3()`
+    /// **Source:** `HLRBRep_Surface.hxx`:132 - `HLRBRep_Surface::D3()`
     pub fn HLRBRep_Surface_d3(
         self_: *const HLRBRep_Surface,
         U: f64,
@@ -7039,7 +6226,7 @@ unsafe extern "C" {
         D3UUV: *mut gp_Vec,
         D3UVV: *mut gp_Vec,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `HLRBRep_Surface.hxx`:150 - `HLRBRep_Surface::DN()`
+    /// **Source:** `HLRBRep_Surface.hxx`:151 - `HLRBRep_Surface::DN()`
     pub fn HLRBRep_Surface_dn(
         self_: *const HLRBRep_Surface,
         U: f64,
@@ -7047,282 +6234,300 @@ unsafe extern "C" {
         Nu: i32,
         Nv: i32,
     ) -> crate::OcctResult<*mut gp_Vec>;
-    /// **Source:** `HLRBRep_Surface.hxx`:159 - `HLRBRep_Surface::GetType()`
+    /// **Source:** `HLRBRep_Surface.hxx`:157 - `HLRBRep_Surface::GetType()`
     pub fn HLRBRep_Surface_get_type(self_: *const HLRBRep_Surface) -> crate::OcctResult<i32>;
-    /// **Source:** `HLRBRep_Surface.hxx`:161 - `HLRBRep_Surface::Plane()`
+    /// **Source:** `HLRBRep_Surface.hxx`:159 - `HLRBRep_Surface::Plane()`
     pub fn HLRBRep_Surface_plane(self_: *const HLRBRep_Surface) -> crate::OcctResult<*mut gp_Pln>;
-    /// **Source:** `HLRBRep_Surface.hxx`:163 - `HLRBRep_Surface::Cylinder()`
+    /// **Source:** `HLRBRep_Surface.hxx`:161 - `HLRBRep_Surface::Cylinder()`
     pub fn HLRBRep_Surface_cylinder(
         self_: *const HLRBRep_Surface,
     ) -> crate::OcctResult<*mut gp_Cylinder>;
-    /// **Source:** `HLRBRep_Surface.hxx`:165 - `HLRBRep_Surface::Cone()`
+    /// **Source:** `HLRBRep_Surface.hxx`:163 - `HLRBRep_Surface::Cone()`
     pub fn HLRBRep_Surface_cone(self_: *const HLRBRep_Surface) -> crate::OcctResult<*mut gp_Cone>;
-    /// **Source:** `HLRBRep_Surface.hxx`:167 - `HLRBRep_Surface::Sphere()`
+    /// **Source:** `HLRBRep_Surface.hxx`:165 - `HLRBRep_Surface::Sphere()`
     pub fn HLRBRep_Surface_sphere(
         self_: *const HLRBRep_Surface,
     ) -> crate::OcctResult<*mut gp_Sphere>;
-    /// **Source:** `HLRBRep_Surface.hxx`:169 - `HLRBRep_Surface::Torus()`
+    /// **Source:** `HLRBRep_Surface.hxx`:167 - `HLRBRep_Surface::Torus()`
     pub fn HLRBRep_Surface_torus(self_: *const HLRBRep_Surface)
         -> crate::OcctResult<*mut gp_Torus>;
-    /// **Source:** `HLRBRep_Surface.hxx`:171 - `HLRBRep_Surface::UDegree()`
+    /// **Source:** `HLRBRep_Surface.hxx`:169 - `HLRBRep_Surface::UDegree()`
     pub fn HLRBRep_Surface_u_degree(self_: *const HLRBRep_Surface) -> crate::OcctResult<i32>;
-    /// **Source:** `HLRBRep_Surface.hxx`:173 - `HLRBRep_Surface::NbUPoles()`
+    /// **Source:** `HLRBRep_Surface.hxx`:171 - `HLRBRep_Surface::NbUPoles()`
     pub fn HLRBRep_Surface_nb_u_poles(self_: *const HLRBRep_Surface) -> crate::OcctResult<i32>;
-    /// **Source:** `HLRBRep_Surface.hxx`:175 - `HLRBRep_Surface::VDegree()`
+    /// **Source:** `HLRBRep_Surface.hxx`:173 - `HLRBRep_Surface::VDegree()`
     pub fn HLRBRep_Surface_v_degree(self_: *const HLRBRep_Surface) -> crate::OcctResult<i32>;
-    /// **Source:** `HLRBRep_Surface.hxx`:177 - `HLRBRep_Surface::NbVPoles()`
+    /// **Source:** `HLRBRep_Surface.hxx`:175 - `HLRBRep_Surface::NbVPoles()`
     pub fn HLRBRep_Surface_nb_v_poles(self_: *const HLRBRep_Surface) -> crate::OcctResult<i32>;
-    /// **Source:** `HLRBRep_Surface.hxx`:179 - `HLRBRep_Surface::NbUKnots()`
+    /// **Source:** `HLRBRep_Surface.hxx`:177 - `HLRBRep_Surface::NbUKnots()`
     pub fn HLRBRep_Surface_nb_u_knots(self_: *const HLRBRep_Surface) -> crate::OcctResult<i32>;
-    /// **Source:** `HLRBRep_Surface.hxx`:181 - `HLRBRep_Surface::NbVKnots()`
+    /// **Source:** `HLRBRep_Surface.hxx`:179 - `HLRBRep_Surface::NbVKnots()`
     pub fn HLRBRep_Surface_nb_v_knots(self_: *const HLRBRep_Surface) -> crate::OcctResult<i32>;
-    /// **Source:** `HLRBRep_Surface.hxx`:183 - `HLRBRep_Surface::Axis()`
+    /// **Source:** `HLRBRep_Surface.hxx`:181 - `HLRBRep_Surface::Axis()`
     pub fn HLRBRep_Surface_axis(self_: *const HLRBRep_Surface) -> crate::OcctResult<*mut gp_Ax1>;
     // ======================== HLRBRep_SurfaceTool ========================
     pub fn HLRBRep_SurfaceTool_destructor(self_: *mut HLRBRep_SurfaceTool);
     /// **Source:** `HLRBRep_SurfaceTool.hxx` - `HLRBRep_SurfaceTool::HLRBRep_SurfaceTool()`
     pub fn HLRBRep_SurfaceTool_ctor() -> crate::OcctResult<*mut HLRBRep_SurfaceTool>;
-    /// **Source:** `HLRBRep_SurfaceTool.hxx`:45 - `HLRBRep_SurfaceTool::FirstUParameter()`
+    /// **Source:** `HLRBRep_SurfaceTool.hxx`:46 - `HLRBRep_SurfaceTool::FirstUParameter()`
     pub fn HLRBRep_SurfaceTool_first_u_parameter(
-        S: *mut std::ffi::c_void,
+        theSurf: *const HLRBRep_Surface,
     ) -> crate::OcctResult<f64>;
-    /// **Source:** `HLRBRep_SurfaceTool.hxx`:47 - `HLRBRep_SurfaceTool::FirstVParameter()`
+    /// **Source:** `HLRBRep_SurfaceTool.hxx`:48 - `HLRBRep_SurfaceTool::FirstVParameter()`
     pub fn HLRBRep_SurfaceTool_first_v_parameter(
-        S: *mut std::ffi::c_void,
+        theSurf: *const HLRBRep_Surface,
     ) -> crate::OcctResult<f64>;
-    /// **Source:** `HLRBRep_SurfaceTool.hxx`:49 - `HLRBRep_SurfaceTool::LastUParameter()`
-    pub fn HLRBRep_SurfaceTool_last_u_parameter(S: *mut std::ffi::c_void)
-        -> crate::OcctResult<f64>;
-    /// **Source:** `HLRBRep_SurfaceTool.hxx`:51 - `HLRBRep_SurfaceTool::LastVParameter()`
-    pub fn HLRBRep_SurfaceTool_last_v_parameter(S: *mut std::ffi::c_void)
-        -> crate::OcctResult<f64>;
-    /// **Source:** `HLRBRep_SurfaceTool.hxx`:53 - `HLRBRep_SurfaceTool::NbUIntervals()`
+    /// **Source:** `HLRBRep_SurfaceTool.hxx`:50 - `HLRBRep_SurfaceTool::LastUParameter()`
+    pub fn HLRBRep_SurfaceTool_last_u_parameter(
+        theSurf: *const HLRBRep_Surface,
+    ) -> crate::OcctResult<f64>;
+    /// **Source:** `HLRBRep_SurfaceTool.hxx`:52 - `HLRBRep_SurfaceTool::LastVParameter()`
+    pub fn HLRBRep_SurfaceTool_last_v_parameter(
+        theSurf: *const HLRBRep_Surface,
+    ) -> crate::OcctResult<f64>;
+    /// **Source:** `HLRBRep_SurfaceTool.hxx`:54 - `HLRBRep_SurfaceTool::NbUIntervals()`
     pub fn HLRBRep_SurfaceTool_nb_u_intervals(
-        S: *mut std::ffi::c_void,
-        Sh: i32,
+        theSurf: *const HLRBRep_Surface,
+        theSh: i32,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `HLRBRep_SurfaceTool.hxx`:55 - `HLRBRep_SurfaceTool::NbVIntervals()`
+    /// **Source:** `HLRBRep_SurfaceTool.hxx`:56 - `HLRBRep_SurfaceTool::NbVIntervals()`
     pub fn HLRBRep_SurfaceTool_nb_v_intervals(
-        S: *mut std::ffi::c_void,
-        Sh: i32,
+        theSurf: *const HLRBRep_Surface,
+        theSh: i32,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `HLRBRep_SurfaceTool.hxx`:57 - `HLRBRep_SurfaceTool::UIntervals()`
+    /// **Source:** `HLRBRep_SurfaceTool.hxx`:58 - `HLRBRep_SurfaceTool::UIntervals()`
     pub fn HLRBRep_SurfaceTool_u_intervals(
-        S: *mut std::ffi::c_void,
-        T: *mut TColStd_Array1OfReal,
-        Sh: i32,
+        theSurf: *const HLRBRep_Surface,
+        theT: *mut NCollection_Array1_double,
+        theSh: i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `HLRBRep_SurfaceTool.hxx`:59 - `HLRBRep_SurfaceTool::VIntervals()`
+    /// **Source:** `HLRBRep_SurfaceTool.hxx`:62 - `HLRBRep_SurfaceTool::VIntervals()`
     pub fn HLRBRep_SurfaceTool_v_intervals(
-        S: *mut std::ffi::c_void,
-        T: *mut TColStd_Array1OfReal,
-        Sh: i32,
+        theSurf: *const HLRBRep_Surface,
+        theT: *mut NCollection_Array1_double,
+        theSh: i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `HLRBRep_SurfaceTool.hxx`:62 - `HLRBRep_SurfaceTool::UTrim()`
+    /// **Source:** `HLRBRep_SurfaceTool.hxx`:67 - `HLRBRep_SurfaceTool::UTrim()`
     pub fn HLRBRep_SurfaceTool_u_trim(
-        S: *mut std::ffi::c_void,
-        First: f64,
-        Last: f64,
-        Tol: f64,
-    ) -> crate::OcctResult<*mut HandleAdaptor3dSurface>;
-    /// **Source:** `HLRBRep_SurfaceTool.hxx`:68 - `HLRBRep_SurfaceTool::VTrim()`
+        theSurf: *const HLRBRep_Surface,
+        theFirst: f64,
+        theLast: f64,
+        theTol: f64,
+    ) -> crate::OcctResult<*mut Handle_Adaptor3d_Surface>;
+    /// **Source:** `HLRBRep_SurfaceTool.hxx`:73 - `HLRBRep_SurfaceTool::VTrim()`
     pub fn HLRBRep_SurfaceTool_v_trim(
-        S: *mut std::ffi::c_void,
-        First: f64,
-        Last: f64,
-        Tol: f64,
-    ) -> crate::OcctResult<*mut HandleAdaptor3dSurface>;
-    /// **Source:** `HLRBRep_SurfaceTool.hxx`:73 - `HLRBRep_SurfaceTool::IsUClosed()`
-    pub fn HLRBRep_SurfaceTool_is_u_closed(S: *mut std::ffi::c_void) -> crate::OcctResult<bool>;
-    /// **Source:** `HLRBRep_SurfaceTool.hxx`:75 - `HLRBRep_SurfaceTool::IsVClosed()`
-    pub fn HLRBRep_SurfaceTool_is_v_closed(S: *mut std::ffi::c_void) -> crate::OcctResult<bool>;
-    /// **Source:** `HLRBRep_SurfaceTool.hxx`:77 - `HLRBRep_SurfaceTool::IsUPeriodic()`
-    pub fn HLRBRep_SurfaceTool_is_u_periodic(S: *mut std::ffi::c_void) -> crate::OcctResult<bool>;
-    /// **Source:** `HLRBRep_SurfaceTool.hxx`:79 - `HLRBRep_SurfaceTool::UPeriod()`
-    pub fn HLRBRep_SurfaceTool_u_period(S: *mut std::ffi::c_void) -> crate::OcctResult<f64>;
-    /// **Source:** `HLRBRep_SurfaceTool.hxx`:81 - `HLRBRep_SurfaceTool::IsVPeriodic()`
-    pub fn HLRBRep_SurfaceTool_is_v_periodic(S: *mut std::ffi::c_void) -> crate::OcctResult<bool>;
-    /// **Source:** `HLRBRep_SurfaceTool.hxx`:83 - `HLRBRep_SurfaceTool::VPeriod()`
-    pub fn HLRBRep_SurfaceTool_v_period(S: *mut std::ffi::c_void) -> crate::OcctResult<f64>;
-    /// **Source:** `HLRBRep_SurfaceTool.hxx`:85 - `HLRBRep_SurfaceTool::Value()`
+        theSurf: *const HLRBRep_Surface,
+        theFirst: f64,
+        theLast: f64,
+        theTol: f64,
+    ) -> crate::OcctResult<*mut Handle_Adaptor3d_Surface>;
+    /// **Source:** `HLRBRep_SurfaceTool.hxx`:78 - `HLRBRep_SurfaceTool::IsUClosed()`
+    pub fn HLRBRep_SurfaceTool_is_u_closed(
+        theSurf: *const HLRBRep_Surface,
+    ) -> crate::OcctResult<bool>;
+    /// **Source:** `HLRBRep_SurfaceTool.hxx`:80 - `HLRBRep_SurfaceTool::IsVClosed()`
+    pub fn HLRBRep_SurfaceTool_is_v_closed(
+        theSurf: *const HLRBRep_Surface,
+    ) -> crate::OcctResult<bool>;
+    /// **Source:** `HLRBRep_SurfaceTool.hxx`:82 - `HLRBRep_SurfaceTool::IsUPeriodic()`
+    pub fn HLRBRep_SurfaceTool_is_u_periodic(
+        theSurf: *const HLRBRep_Surface,
+    ) -> crate::OcctResult<bool>;
+    /// **Source:** `HLRBRep_SurfaceTool.hxx`:84 - `HLRBRep_SurfaceTool::UPeriod()`
+    pub fn HLRBRep_SurfaceTool_u_period(theSurf: *const HLRBRep_Surface) -> crate::OcctResult<f64>;
+    /// **Source:** `HLRBRep_SurfaceTool.hxx`:86 - `HLRBRep_SurfaceTool::IsVPeriodic()`
+    pub fn HLRBRep_SurfaceTool_is_v_periodic(
+        theSurf: *const HLRBRep_Surface,
+    ) -> crate::OcctResult<bool>;
+    /// **Source:** `HLRBRep_SurfaceTool.hxx`:88 - `HLRBRep_SurfaceTool::VPeriod()`
+    pub fn HLRBRep_SurfaceTool_v_period(theSurf: *const HLRBRep_Surface) -> crate::OcctResult<f64>;
+    /// **Source:** `HLRBRep_SurfaceTool.hxx`:90 - `HLRBRep_SurfaceTool::Value()`
     pub fn HLRBRep_SurfaceTool_value(
-        S: *mut std::ffi::c_void,
-        u: f64,
-        v: f64,
+        theSurf: *const HLRBRep_Surface,
+        theU: f64,
+        theV: f64,
     ) -> crate::OcctResult<*mut gp_Pnt>;
-    /// **Source:** `HLRBRep_SurfaceTool.hxx`:87 - `HLRBRep_SurfaceTool::D0()`
+    /// **Source:** `HLRBRep_SurfaceTool.hxx`:92 - `HLRBRep_SurfaceTool::D0()`
     pub fn HLRBRep_SurfaceTool_d0(
-        S: *mut std::ffi::c_void,
-        u: f64,
-        v: f64,
-        P: *mut gp_Pnt,
+        theSurf: *const HLRBRep_Surface,
+        theU: f64,
+        theV: f64,
+        theP: *mut gp_Pnt,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `HLRBRep_SurfaceTool.hxx`:89 - `HLRBRep_SurfaceTool::D1()`
+    /// **Source:** `HLRBRep_SurfaceTool.hxx`:97 - `HLRBRep_SurfaceTool::D1()`
     pub fn HLRBRep_SurfaceTool_d1(
-        S: *mut std::ffi::c_void,
-        u: f64,
-        v: f64,
-        P: *mut gp_Pnt,
-        D1u: *mut gp_Vec,
-        D1v: *mut gp_Vec,
+        theSurf: *const HLRBRep_Surface,
+        theU: f64,
+        theV: f64,
+        theP: *mut gp_Pnt,
+        theD1U: *mut gp_Vec,
+        theD1V: *mut gp_Vec,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `HLRBRep_SurfaceTool.hxx`:96 - `HLRBRep_SurfaceTool::D2()`
+    /// **Source:** `HLRBRep_SurfaceTool.hxx`:104 - `HLRBRep_SurfaceTool::D2()`
     pub fn HLRBRep_SurfaceTool_d2(
-        S: *mut std::ffi::c_void,
-        u: f64,
-        v: f64,
-        P: *mut gp_Pnt,
-        D1U: *mut gp_Vec,
-        D1V: *mut gp_Vec,
-        D2U: *mut gp_Vec,
-        D2V: *mut gp_Vec,
-        D2UV: *mut gp_Vec,
+        theSurf: *const HLRBRep_Surface,
+        theU: f64,
+        theV: f64,
+        theP: *mut gp_Pnt,
+        theD1U: *mut gp_Vec,
+        theD1V: *mut gp_Vec,
+        theD2U: *mut gp_Vec,
+        theD2V: *mut gp_Vec,
+        theD2UV: *mut gp_Vec,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `HLRBRep_SurfaceTool.hxx`:106 - `HLRBRep_SurfaceTool::D3()`
+    /// **Source:** `HLRBRep_SurfaceTool.hxx`:114 - `HLRBRep_SurfaceTool::D3()`
     pub fn HLRBRep_SurfaceTool_d3(
-        S: *mut std::ffi::c_void,
-        u: f64,
-        v: f64,
-        P: *mut gp_Pnt,
-        D1U: *mut gp_Vec,
-        D1V: *mut gp_Vec,
-        D2U: *mut gp_Vec,
-        D2V: *mut gp_Vec,
-        D2UV: *mut gp_Vec,
-        D3U: *mut gp_Vec,
-        D3V: *mut gp_Vec,
-        D3UUV: *mut gp_Vec,
-        D3UVV: *mut gp_Vec,
+        theSurf: *const HLRBRep_Surface,
+        theU: f64,
+        theV: f64,
+        theP: *mut gp_Pnt,
+        theD1U: *mut gp_Vec,
+        theD1V: *mut gp_Vec,
+        theD2U: *mut gp_Vec,
+        theD2V: *mut gp_Vec,
+        theD2UV: *mut gp_Vec,
+        theD3U: *mut gp_Vec,
+        theD3V: *mut gp_Vec,
+        theD3UUV: *mut gp_Vec,
+        theD3UVV: *mut gp_Vec,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `HLRBRep_SurfaceTool.hxx`:120 - `HLRBRep_SurfaceTool::DN()`
+    /// **Source:** `HLRBRep_SurfaceTool.hxx`:128 - `HLRBRep_SurfaceTool::DN()`
     pub fn HLRBRep_SurfaceTool_dn(
-        S: *mut std::ffi::c_void,
-        u: f64,
-        v: f64,
-        Nu: i32,
-        Nv: i32,
+        theSurf: *const HLRBRep_Surface,
+        theU: f64,
+        theV: f64,
+        theNu: i32,
+        theNv: i32,
     ) -> crate::OcctResult<*mut gp_Vec>;
-    /// **Source:** `HLRBRep_SurfaceTool.hxx`:126 - `HLRBRep_SurfaceTool::UResolution()`
+    /// **Source:** `HLRBRep_SurfaceTool.hxx`:134 - `HLRBRep_SurfaceTool::UResolution()`
     pub fn HLRBRep_SurfaceTool_u_resolution(
-        S: *mut std::ffi::c_void,
-        R3d: f64,
+        theSurf: *const HLRBRep_Surface,
+        theR3d: f64,
     ) -> crate::OcctResult<f64>;
-    /// **Source:** `HLRBRep_SurfaceTool.hxx`:128 - `HLRBRep_SurfaceTool::VResolution()`
+    /// **Source:** `HLRBRep_SurfaceTool.hxx`:136 - `HLRBRep_SurfaceTool::VResolution()`
     pub fn HLRBRep_SurfaceTool_v_resolution(
-        S: *mut std::ffi::c_void,
-        R3d: f64,
+        theSurf: *const HLRBRep_Surface,
+        theR3d: f64,
     ) -> crate::OcctResult<f64>;
-    /// **Source:** `HLRBRep_SurfaceTool.hxx`:130 - `HLRBRep_SurfaceTool::GetType()`
-    pub fn HLRBRep_SurfaceTool_get_type(S: *mut std::ffi::c_void) -> crate::OcctResult<i32>;
-    /// **Source:** `HLRBRep_SurfaceTool.hxx`:132 - `HLRBRep_SurfaceTool::Plane()`
-    pub fn HLRBRep_SurfaceTool_plane(S: *mut std::ffi::c_void) -> crate::OcctResult<*mut gp_Pln>;
-    /// **Source:** `HLRBRep_SurfaceTool.hxx`:134 - `HLRBRep_SurfaceTool::Cylinder()`
+    /// **Source:** `HLRBRep_SurfaceTool.hxx`:138 - `HLRBRep_SurfaceTool::GetType()`
+    pub fn HLRBRep_SurfaceTool_get_type(theSurf: *const HLRBRep_Surface) -> crate::OcctResult<i32>;
+    /// **Source:** `HLRBRep_SurfaceTool.hxx`:140 - `HLRBRep_SurfaceTool::Plane()`
+    pub fn HLRBRep_SurfaceTool_plane(
+        theSurf: *const HLRBRep_Surface,
+    ) -> crate::OcctResult<*mut gp_Pln>;
+    /// **Source:** `HLRBRep_SurfaceTool.hxx`:142 - `HLRBRep_SurfaceTool::Cylinder()`
     pub fn HLRBRep_SurfaceTool_cylinder(
-        S: *mut std::ffi::c_void,
+        theSurf: *const HLRBRep_Surface,
     ) -> crate::OcctResult<*mut gp_Cylinder>;
-    /// **Source:** `HLRBRep_SurfaceTool.hxx`:136 - `HLRBRep_SurfaceTool::Cone()`
-    pub fn HLRBRep_SurfaceTool_cone(S: *mut std::ffi::c_void) -> crate::OcctResult<*mut gp_Cone>;
-    /// **Source:** `HLRBRep_SurfaceTool.hxx`:138 - `HLRBRep_SurfaceTool::Torus()`
-    pub fn HLRBRep_SurfaceTool_torus(S: *mut std::ffi::c_void) -> crate::OcctResult<*mut gp_Torus>;
-    /// **Source:** `HLRBRep_SurfaceTool.hxx`:140 - `HLRBRep_SurfaceTool::Sphere()`
+    /// **Source:** `HLRBRep_SurfaceTool.hxx`:144 - `HLRBRep_SurfaceTool::Cone()`
+    pub fn HLRBRep_SurfaceTool_cone(
+        theSurf: *const HLRBRep_Surface,
+    ) -> crate::OcctResult<*mut gp_Cone>;
+    /// **Source:** `HLRBRep_SurfaceTool.hxx`:146 - `HLRBRep_SurfaceTool::Torus()`
+    pub fn HLRBRep_SurfaceTool_torus(
+        theSurf: *const HLRBRep_Surface,
+    ) -> crate::OcctResult<*mut gp_Torus>;
+    /// **Source:** `HLRBRep_SurfaceTool.hxx`:148 - `HLRBRep_SurfaceTool::Sphere()`
     pub fn HLRBRep_SurfaceTool_sphere(
-        S: *mut std::ffi::c_void,
+        theSurf: *const HLRBRep_Surface,
     ) -> crate::OcctResult<*mut gp_Sphere>;
-    /// **Source:** `HLRBRep_SurfaceTool.hxx`:142 - `HLRBRep_SurfaceTool::Bezier()`
+    /// **Source:** `HLRBRep_SurfaceTool.hxx`:150 - `HLRBRep_SurfaceTool::Bezier()`
     pub fn HLRBRep_SurfaceTool_bezier(
-        S: *mut std::ffi::c_void,
-    ) -> crate::OcctResult<*mut HandleGeomBezierSurface>;
-    /// **Source:** `HLRBRep_SurfaceTool.hxx`:144 - `HLRBRep_SurfaceTool::BSpline()`
+        theSurf: *const HLRBRep_Surface,
+    ) -> crate::OcctResult<*mut Handle_Geom_BezierSurface>;
+    /// **Source:** `HLRBRep_SurfaceTool.hxx`:152 - `HLRBRep_SurfaceTool::BSpline()`
     pub fn HLRBRep_SurfaceTool_b_spline(
-        S: *mut std::ffi::c_void,
-    ) -> crate::OcctResult<*mut HandleGeomBSplineSurface>;
-    /// **Source:** `HLRBRep_SurfaceTool.hxx`:146 - `HLRBRep_SurfaceTool::AxeOfRevolution()`
+        theSurf: *const HLRBRep_Surface,
+    ) -> crate::OcctResult<*mut Handle_Geom_BSplineSurface>;
+    /// **Source:** `HLRBRep_SurfaceTool.hxx`:154 - `HLRBRep_SurfaceTool::AxeOfRevolution()`
     pub fn HLRBRep_SurfaceTool_axe_of_revolution(
-        S: *mut std::ffi::c_void,
+        theSurf: *const HLRBRep_Surface,
     ) -> crate::OcctResult<*mut gp_Ax1>;
-    /// **Source:** `HLRBRep_SurfaceTool.hxx`:148 - `HLRBRep_SurfaceTool::Direction()`
+    /// **Source:** `HLRBRep_SurfaceTool.hxx`:156 - `HLRBRep_SurfaceTool::Direction()`
     pub fn HLRBRep_SurfaceTool_direction(
-        S: *mut std::ffi::c_void,
+        theSurf: *const HLRBRep_Surface,
     ) -> crate::OcctResult<*mut gp_Dir>;
-    /// **Source:** `HLRBRep_SurfaceTool.hxx`:150 - `HLRBRep_SurfaceTool::BasisCurve()`
+    /// **Source:** `HLRBRep_SurfaceTool.hxx`:158 - `HLRBRep_SurfaceTool::BasisCurve()`
     pub fn HLRBRep_SurfaceTool_basis_curve(
-        S: *mut std::ffi::c_void,
-    ) -> crate::OcctResult<*mut HandleAdaptor3dCurve>;
-    /// **Source:** `HLRBRep_SurfaceTool.hxx`:152 - `HLRBRep_SurfaceTool::BasisSurface()`
+        theSurf: *const HLRBRep_Surface,
+    ) -> crate::OcctResult<*mut Handle_Adaptor3d_Curve>;
+    /// **Source:** `HLRBRep_SurfaceTool.hxx`:160 - `HLRBRep_SurfaceTool::BasisSurface()`
     pub fn HLRBRep_SurfaceTool_basis_surface(
-        S: *mut std::ffi::c_void,
-    ) -> crate::OcctResult<*mut HandleAdaptor3dSurface>;
-    /// **Source:** `HLRBRep_SurfaceTool.hxx`:154 - `HLRBRep_SurfaceTool::OffsetValue()`
-    pub fn HLRBRep_SurfaceTool_offset_value(S: *mut std::ffi::c_void) -> crate::OcctResult<f64>;
-    /// **Source:** `HLRBRep_SurfaceTool.hxx`:156 - `HLRBRep_SurfaceTool::NbSamplesU()`
-    pub fn HLRBRep_SurfaceTool_nb_samples_u_address(
-        S: *mut std::ffi::c_void,
+        theSurf: *const HLRBRep_Surface,
+    ) -> crate::OcctResult<*mut Handle_Adaptor3d_Surface>;
+    /// **Source:** `HLRBRep_SurfaceTool.hxx`:162 - `HLRBRep_SurfaceTool::OffsetValue()`
+    pub fn HLRBRep_SurfaceTool_offset_value(
+        theSurf: *const HLRBRep_Surface,
+    ) -> crate::OcctResult<f64>;
+    /// **Source:** `HLRBRep_SurfaceTool.hxx`:164 - `HLRBRep_SurfaceTool::NbSamplesU()`
+    pub fn HLRBRep_SurfaceTool_nb_samples_u_surfaceptr(
+        theSurf: *const HLRBRep_Surface,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `HLRBRep_SurfaceTool.hxx`:158 - `HLRBRep_SurfaceTool::NbSamplesV()`
-    pub fn HLRBRep_SurfaceTool_nb_samples_v_address(
-        S: *mut std::ffi::c_void,
+    /// **Source:** `HLRBRep_SurfaceTool.hxx`:166 - `HLRBRep_SurfaceTool::NbSamplesV()`
+    pub fn HLRBRep_SurfaceTool_nb_samples_v_surfaceptr(
+        theSurf: *const HLRBRep_Surface,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `HLRBRep_SurfaceTool.hxx`:160 - `HLRBRep_SurfaceTool::NbSamplesU()`
-    pub fn HLRBRep_SurfaceTool_nb_samples_u_address_real2(
-        S: *mut std::ffi::c_void,
-        u1: f64,
-        u2: f64,
+    /// **Source:** `HLRBRep_SurfaceTool.hxx`:168 - `HLRBRep_SurfaceTool::NbSamplesU()`
+    pub fn HLRBRep_SurfaceTool_nb_samples_u_surfaceptr_real2(
+        theSurf: *const HLRBRep_Surface,
+        theU1: f64,
+        theU2: f64,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `HLRBRep_SurfaceTool.hxx`:164 - `HLRBRep_SurfaceTool::NbSamplesV()`
-    pub fn HLRBRep_SurfaceTool_nb_samples_v_address_real2(
-        S: *mut std::ffi::c_void,
-        v1: f64,
-        v2: f64,
+    /// **Source:** `HLRBRep_SurfaceTool.hxx`:172 - `HLRBRep_SurfaceTool::NbSamplesV()`
+    pub fn HLRBRep_SurfaceTool_nb_samples_v_surfaceptr_real2(
+        theSurf: *const HLRBRep_Surface,
+        theV1: f64,
+        theV2: f64,
     ) -> crate::OcctResult<i32>;
     // ======================== HLRBRep_TheCSFunctionOfInterCSurf ========================
     pub fn HLRBRep_TheCSFunctionOfInterCSurf_destructor(
         self_: *mut HLRBRep_TheCSFunctionOfInterCSurf,
     );
-    /// **Source:** `HLRBRep_TheCSFunctionOfInterCSurf.hxx`:40 - `HLRBRep_TheCSFunctionOfInterCSurf::HLRBRep_TheCSFunctionOfInterCSurf()`
-    pub fn HLRBRep_TheCSFunctionOfInterCSurf_ctor_address_lin(
-        S: *const *mut std::ffi::c_void,
+    /// **Source:** `HLRBRep_TheCSFunctionOfInterCSurf.hxx`:41 - `HLRBRep_TheCSFunctionOfInterCSurf::HLRBRep_TheCSFunctionOfInterCSurf()`
+    pub fn HLRBRep_TheCSFunctionOfInterCSurf_ctor_surfaceptr_lin(
+        S: *const *mut HLRBRep_Surface,
         C: *const gp_Lin,
     ) -> crate::OcctResult<*mut HLRBRep_TheCSFunctionOfInterCSurf>;
-    /// **Source:** `HLRBRep_TheCSFunctionOfInterCSurf.hxx`:42 - `HLRBRep_TheCSFunctionOfInterCSurf::NbVariables()`
+    /// **Source:** `HLRBRep_TheCSFunctionOfInterCSurf.hxx`:43 - `HLRBRep_TheCSFunctionOfInterCSurf::NbVariables()`
     pub fn HLRBRep_TheCSFunctionOfInterCSurf_nb_variables(
         self_: *const HLRBRep_TheCSFunctionOfInterCSurf,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `HLRBRep_TheCSFunctionOfInterCSurf.hxx`:44 - `HLRBRep_TheCSFunctionOfInterCSurf::NbEquations()`
+    /// **Source:** `HLRBRep_TheCSFunctionOfInterCSurf.hxx`:45 - `HLRBRep_TheCSFunctionOfInterCSurf::NbEquations()`
     pub fn HLRBRep_TheCSFunctionOfInterCSurf_nb_equations(
         self_: *const HLRBRep_TheCSFunctionOfInterCSurf,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `HLRBRep_TheCSFunctionOfInterCSurf.hxx`:46 - `HLRBRep_TheCSFunctionOfInterCSurf::Value()`
+    /// **Source:** `HLRBRep_TheCSFunctionOfInterCSurf.hxx`:47 - `HLRBRep_TheCSFunctionOfInterCSurf::Value()`
     pub fn HLRBRep_TheCSFunctionOfInterCSurf_value(
         self_: *mut HLRBRep_TheCSFunctionOfInterCSurf,
         X: *const math_Vector,
         F: *mut math_Vector,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `HLRBRep_TheCSFunctionOfInterCSurf.hxx`:48 - `HLRBRep_TheCSFunctionOfInterCSurf::Derivatives()`
+    /// **Source:** `HLRBRep_TheCSFunctionOfInterCSurf.hxx`:49 - `HLRBRep_TheCSFunctionOfInterCSurf::Derivatives()`
     pub fn HLRBRep_TheCSFunctionOfInterCSurf_derivatives(
         self_: *mut HLRBRep_TheCSFunctionOfInterCSurf,
         X: *const math_Vector,
         D: *mut math_Matrix,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `HLRBRep_TheCSFunctionOfInterCSurf.hxx`:50 - `HLRBRep_TheCSFunctionOfInterCSurf::Values()`
+    /// **Source:** `HLRBRep_TheCSFunctionOfInterCSurf.hxx`:51 - `HLRBRep_TheCSFunctionOfInterCSurf::Values()`
     pub fn HLRBRep_TheCSFunctionOfInterCSurf_values(
         self_: *mut HLRBRep_TheCSFunctionOfInterCSurf,
         X: *const math_Vector,
         F: *mut math_Vector,
         D: *mut math_Matrix,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `HLRBRep_TheCSFunctionOfInterCSurf.hxx`:52 - `HLRBRep_TheCSFunctionOfInterCSurf::Point()`
+    /// **Source:** `HLRBRep_TheCSFunctionOfInterCSurf.hxx`:53 - `HLRBRep_TheCSFunctionOfInterCSurf::Point()`
     pub fn HLRBRep_TheCSFunctionOfInterCSurf_point(
         self_: *const HLRBRep_TheCSFunctionOfInterCSurf,
     ) -> crate::OcctResult<*const gp_Pnt>;
-    /// **Source:** `HLRBRep_TheCSFunctionOfInterCSurf.hxx`:54 - `HLRBRep_TheCSFunctionOfInterCSurf::Root()`
+    /// **Source:** `HLRBRep_TheCSFunctionOfInterCSurf.hxx`:55 - `HLRBRep_TheCSFunctionOfInterCSurf::Root()`
     pub fn HLRBRep_TheCSFunctionOfInterCSurf_root(
         self_: *const HLRBRep_TheCSFunctionOfInterCSurf,
     ) -> crate::OcctResult<f64>;
-    /// **Source:** `HLRBRep_TheCSFunctionOfInterCSurf.hxx`:56 - `HLRBRep_TheCSFunctionOfInterCSurf::AuxillarSurface()`
+    /// **Source:** `HLRBRep_TheCSFunctionOfInterCSurf.hxx`:57 - `HLRBRep_TheCSFunctionOfInterCSurf::AuxillarSurface()`
     pub fn HLRBRep_TheCSFunctionOfInterCSurf_auxillar_surface(
         self_: *const HLRBRep_TheCSFunctionOfInterCSurf,
-    ) -> crate::OcctResult<*const *mut std::ffi::c_void>;
-    /// **Source:** `HLRBRep_TheCSFunctionOfInterCSurf.hxx`:58 - `HLRBRep_TheCSFunctionOfInterCSurf::AuxillarCurve()`
+    ) -> crate::OcctResult<*const *mut HLRBRep_Surface>;
+    /// **Source:** `HLRBRep_TheCSFunctionOfInterCSurf.hxx`:59 - `HLRBRep_TheCSFunctionOfInterCSurf::AuxillarCurve()`
     pub fn HLRBRep_TheCSFunctionOfInterCSurf_auxillar_curve(
         self_: *const HLRBRep_TheCSFunctionOfInterCSurf,
     ) -> crate::OcctResult<*const gp_Lin>;
@@ -7346,68 +6551,36 @@ unsafe extern "C" {
     pub fn HLRBRep_TheCSFunctionOfInterCSurf_inherited_GetStateNumber(
         self_: *mut HLRBRep_TheCSFunctionOfInterCSurf,
     ) -> crate::OcctResult<i32>;
-    // ======================== HLRBRep_TheCurveLocatorOfTheProjPCurOfCInter ========================
-    pub fn HLRBRep_TheCurveLocatorOfTheProjPCurOfCInter_destructor(
-        self_: *mut HLRBRep_TheCurveLocatorOfTheProjPCurOfCInter,
-    );
-    /// **Source:** `HLRBRep_TheCurveLocatorOfTheProjPCurOfCInter.hxx` - `HLRBRep_TheCurveLocatorOfTheProjPCurOfCInter::HLRBRep_TheCurveLocatorOfTheProjPCurOfCInter()`
-    pub fn HLRBRep_TheCurveLocatorOfTheProjPCurOfCInter_ctor(
-    ) -> crate::OcctResult<*mut HLRBRep_TheCurveLocatorOfTheProjPCurOfCInter>;
-    /// **Source:** `HLRBRep_TheCurveLocatorOfTheProjPCurOfCInter.hxx`:37 - `HLRBRep_TheCurveLocatorOfTheProjPCurOfCInter::Locate()`
-    pub fn HLRBRep_TheCurveLocatorOfTheProjPCurOfCInter_locate_pnt2d_address_int_poncurv2d(
-        P: *const gp_Pnt2d,
-        C: *const *mut std::ffi::c_void,
-        NbU: i32,
-        Papp: *mut Extrema_POnCurv2d,
-    ) -> *const std::ffi::c_char;
-    /// **Source:** `HLRBRep_TheCurveLocatorOfTheProjPCurOfCInter.hxx`:46 - `HLRBRep_TheCurveLocatorOfTheProjPCurOfCInter::Locate()`
-    pub fn HLRBRep_TheCurveLocatorOfTheProjPCurOfCInter_locate_pnt2d_address_int_real2_poncurv2d(
-        P: *const gp_Pnt2d,
-        C: *const *mut std::ffi::c_void,
-        NbU: i32,
-        Umin: f64,
-        Usup: f64,
-        Papp: *mut Extrema_POnCurv2d,
-    ) -> *const std::ffi::c_char;
-    /// **Source:** `HLRBRep_TheCurveLocatorOfTheProjPCurOfCInter.hxx`:57 - `HLRBRep_TheCurveLocatorOfTheProjPCurOfCInter::Locate()`
-    pub fn HLRBRep_TheCurveLocatorOfTheProjPCurOfCInter_locate_address2_int2_poncurv2d2(
-        C1: *const *mut std::ffi::c_void,
-        C2: *const *mut std::ffi::c_void,
-        NbU: i32,
-        NbV: i32,
-        Papp1: *mut Extrema_POnCurv2d,
-        Papp2: *mut Extrema_POnCurv2d,
-    ) -> *const std::ffi::c_char;
     // ======================== HLRBRep_TheDistBetweenPCurvesOfTheIntPCurvePCurveOfCInter ========================
     pub fn HLRBRep_TheDistBetweenPCurvesOfTheIntPCurvePCurveOfCInter_destructor(
         self_: *mut HLRBRep_TheDistBetweenPCurvesOfTheIntPCurvePCurveOfCInter,
     );
-    /// **Source:** `HLRBRep_TheDistBetweenPCurvesOfTheIntPCurvePCurveOfCInter.hxx`:36 - `HLRBRep_TheDistBetweenPCurvesOfTheIntPCurvePCurveOfCInter::HLRBRep_TheDistBetweenPCurvesOfTheIntPCurvePCurveOfCInter()`
-    pub fn HLRBRep_TheDistBetweenPCurvesOfTheIntPCurvePCurveOfCInter_ctor_address2(
+    /// **Source:** `HLRBRep_TheDistBetweenPCurvesOfTheIntPCurvePCurveOfCInter.hxx`:37 - `HLRBRep_TheDistBetweenPCurvesOfTheIntPCurvePCurveOfCInter::HLRBRep_TheDistBetweenPCurvesOfTheIntPCurvePCurveOfCInter()`
+    pub fn HLRBRep_TheDistBetweenPCurvesOfTheIntPCurvePCurveOfCInter_ctor_voidptr2(
         curve1: *const *mut std::ffi::c_void,
         curve2: *const *mut std::ffi::c_void,
     ) -> crate::OcctResult<*mut HLRBRep_TheDistBetweenPCurvesOfTheIntPCurvePCurveOfCInter>;
-    /// **Source:** `HLRBRep_TheDistBetweenPCurvesOfTheIntPCurvePCurveOfCInter.hxx`:41 - `HLRBRep_TheDistBetweenPCurvesOfTheIntPCurvePCurveOfCInter::NbVariables()`
+    /// **Source:** `HLRBRep_TheDistBetweenPCurvesOfTheIntPCurvePCurveOfCInter.hxx`:42 - `HLRBRep_TheDistBetweenPCurvesOfTheIntPCurvePCurveOfCInter::NbVariables()`
     pub fn HLRBRep_TheDistBetweenPCurvesOfTheIntPCurvePCurveOfCInter_nb_variables(
         self_: *const HLRBRep_TheDistBetweenPCurvesOfTheIntPCurvePCurveOfCInter,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `HLRBRep_TheDistBetweenPCurvesOfTheIntPCurvePCurveOfCInter.hxx`:44 - `HLRBRep_TheDistBetweenPCurvesOfTheIntPCurvePCurveOfCInter::NbEquations()`
+    /// **Source:** `HLRBRep_TheDistBetweenPCurvesOfTheIntPCurvePCurveOfCInter.hxx`:45 - `HLRBRep_TheDistBetweenPCurvesOfTheIntPCurvePCurveOfCInter::NbEquations()`
     pub fn HLRBRep_TheDistBetweenPCurvesOfTheIntPCurvePCurveOfCInter_nb_equations(
         self_: *const HLRBRep_TheDistBetweenPCurvesOfTheIntPCurvePCurveOfCInter,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `HLRBRep_TheDistBetweenPCurvesOfTheIntPCurvePCurveOfCInter.hxx`:50 - `HLRBRep_TheDistBetweenPCurvesOfTheIntPCurvePCurveOfCInter::Value()`
+    /// **Source:** `HLRBRep_TheDistBetweenPCurvesOfTheIntPCurvePCurveOfCInter.hxx`:51 - `HLRBRep_TheDistBetweenPCurvesOfTheIntPCurvePCurveOfCInter::Value()`
     pub fn HLRBRep_TheDistBetweenPCurvesOfTheIntPCurvePCurveOfCInter_value(
         self_: *mut HLRBRep_TheDistBetweenPCurvesOfTheIntPCurvePCurveOfCInter,
         X: *const math_Vector,
         F: *mut math_Vector,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `HLRBRep_TheDistBetweenPCurvesOfTheIntPCurvePCurveOfCInter.hxx`:56 - `HLRBRep_TheDistBetweenPCurvesOfTheIntPCurvePCurveOfCInter::Derivatives()`
+    /// **Source:** `HLRBRep_TheDistBetweenPCurvesOfTheIntPCurvePCurveOfCInter.hxx`:57 - `HLRBRep_TheDistBetweenPCurvesOfTheIntPCurvePCurveOfCInter::Derivatives()`
     pub fn HLRBRep_TheDistBetweenPCurvesOfTheIntPCurvePCurveOfCInter_derivatives(
         self_: *mut HLRBRep_TheDistBetweenPCurvesOfTheIntPCurvePCurveOfCInter,
         X: *const math_Vector,
         D: *mut math_Matrix,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `HLRBRep_TheDistBetweenPCurvesOfTheIntPCurvePCurveOfCInter.hxx`:62 - `HLRBRep_TheDistBetweenPCurvesOfTheIntPCurvePCurveOfCInter::Values()`
+    /// **Source:** `HLRBRep_TheDistBetweenPCurvesOfTheIntPCurvePCurveOfCInter.hxx`:63 - `HLRBRep_TheDistBetweenPCurvesOfTheIntPCurvePCurveOfCInter::Values()`
     pub fn HLRBRep_TheDistBetweenPCurvesOfTheIntPCurvePCurveOfCInter_values(
         self_: *mut HLRBRep_TheDistBetweenPCurvesOfTheIntPCurvePCurveOfCInter,
         X: *const math_Vector,
@@ -7494,11 +6667,11 @@ unsafe extern "C" {
     pub fn HLRBRep_TheIntConicCurveOfCInter_destructor(
         self_: *mut HLRBRep_TheIntConicCurveOfCInter,
     );
-    /// **Source:** `HLRBRep_TheIntConicCurveOfCInter.hxx`:42 - `HLRBRep_TheIntConicCurveOfCInter::HLRBRep_TheIntConicCurveOfCInter()`
+    /// **Source:** `HLRBRep_TheIntConicCurveOfCInter.hxx`:43 - `HLRBRep_TheIntConicCurveOfCInter::HLRBRep_TheIntConicCurveOfCInter()`
     pub fn HLRBRep_TheIntConicCurveOfCInter_ctor(
     ) -> crate::OcctResult<*mut HLRBRep_TheIntConicCurveOfCInter>;
-    /// **Source:** `HLRBRep_TheIntConicCurveOfCInter.hxx`:45 - `HLRBRep_TheIntConicCurveOfCInter::HLRBRep_TheIntConicCurveOfCInter()`
-    pub fn HLRBRep_TheIntConicCurveOfCInter_ctor_lin2d_domain_address_domain_real2(
+    /// **Source:** `HLRBRep_TheIntConicCurveOfCInter.hxx`:46 - `HLRBRep_TheIntConicCurveOfCInter::HLRBRep_TheIntConicCurveOfCInter()`
+    pub fn HLRBRep_TheIntConicCurveOfCInter_ctor_lin2d_domain_voidptr_domain_real2(
         L: *const gp_Lin2d,
         D1: *const IntRes2d_Domain,
         PCurve: *const *mut std::ffi::c_void,
@@ -7506,8 +6679,8 @@ unsafe extern "C" {
         TolConf: f64,
         Tol: f64,
     ) -> crate::OcctResult<*mut HLRBRep_TheIntConicCurveOfCInter>;
-    /// **Source:** `HLRBRep_TheIntConicCurveOfCInter.hxx`:53 - `HLRBRep_TheIntConicCurveOfCInter::HLRBRep_TheIntConicCurveOfCInter()`
-    pub fn HLRBRep_TheIntConicCurveOfCInter_ctor_circ2d_domain_address_domain_real2(
+    /// **Source:** `HLRBRep_TheIntConicCurveOfCInter.hxx`:54 - `HLRBRep_TheIntConicCurveOfCInter::HLRBRep_TheIntConicCurveOfCInter()`
+    pub fn HLRBRep_TheIntConicCurveOfCInter_ctor_circ2d_domain_voidptr_domain_real2(
         C: *const gp_Circ2d,
         D1: *const IntRes2d_Domain,
         PCurve: *const *mut std::ffi::c_void,
@@ -7515,8 +6688,8 @@ unsafe extern "C" {
         TolConf: f64,
         Tol: f64,
     ) -> crate::OcctResult<*mut HLRBRep_TheIntConicCurveOfCInter>;
-    /// **Source:** `HLRBRep_TheIntConicCurveOfCInter.hxx`:61 - `HLRBRep_TheIntConicCurveOfCInter::HLRBRep_TheIntConicCurveOfCInter()`
-    pub fn HLRBRep_TheIntConicCurveOfCInter_ctor_elips2d_domain_address_domain_real2(
+    /// **Source:** `HLRBRep_TheIntConicCurveOfCInter.hxx`:62 - `HLRBRep_TheIntConicCurveOfCInter::HLRBRep_TheIntConicCurveOfCInter()`
+    pub fn HLRBRep_TheIntConicCurveOfCInter_ctor_elips2d_domain_voidptr_domain_real2(
         E: *const gp_Elips2d,
         D1: *const IntRes2d_Domain,
         PCurve: *const *mut std::ffi::c_void,
@@ -7524,8 +6697,8 @@ unsafe extern "C" {
         TolConf: f64,
         Tol: f64,
     ) -> crate::OcctResult<*mut HLRBRep_TheIntConicCurveOfCInter>;
-    /// **Source:** `HLRBRep_TheIntConicCurveOfCInter.hxx`:69 - `HLRBRep_TheIntConicCurveOfCInter::HLRBRep_TheIntConicCurveOfCInter()`
-    pub fn HLRBRep_TheIntConicCurveOfCInter_ctor_parab2d_domain_address_domain_real2(
+    /// **Source:** `HLRBRep_TheIntConicCurveOfCInter.hxx`:70 - `HLRBRep_TheIntConicCurveOfCInter::HLRBRep_TheIntConicCurveOfCInter()`
+    pub fn HLRBRep_TheIntConicCurveOfCInter_ctor_parab2d_domain_voidptr_domain_real2(
         Prb: *const gp_Parab2d,
         D1: *const IntRes2d_Domain,
         PCurve: *const *mut std::ffi::c_void,
@@ -7533,8 +6706,8 @@ unsafe extern "C" {
         TolConf: f64,
         Tol: f64,
     ) -> crate::OcctResult<*mut HLRBRep_TheIntConicCurveOfCInter>;
-    /// **Source:** `HLRBRep_TheIntConicCurveOfCInter.hxx`:78 - `HLRBRep_TheIntConicCurveOfCInter::HLRBRep_TheIntConicCurveOfCInter()`
-    pub fn HLRBRep_TheIntConicCurveOfCInter_ctor_hypr2d_domain_address_domain_real2(
+    /// **Source:** `HLRBRep_TheIntConicCurveOfCInter.hxx`:79 - `HLRBRep_TheIntConicCurveOfCInter::HLRBRep_TheIntConicCurveOfCInter()`
+    pub fn HLRBRep_TheIntConicCurveOfCInter_ctor_hypr2d_domain_voidptr_domain_real2(
         H: *const gp_Hypr2d,
         D1: *const IntRes2d_Domain,
         PCurve: *const *mut std::ffi::c_void,
@@ -7542,8 +6715,8 @@ unsafe extern "C" {
         TolConf: f64,
         Tol: f64,
     ) -> crate::OcctResult<*mut HLRBRep_TheIntConicCurveOfCInter>;
-    /// **Source:** `HLRBRep_TheIntConicCurveOfCInter.hxx`:86 - `HLRBRep_TheIntConicCurveOfCInter::Perform()`
-    pub fn HLRBRep_TheIntConicCurveOfCInter_perform_lin2d_domain_address_domain_real2(
+    /// **Source:** `HLRBRep_TheIntConicCurveOfCInter.hxx`:87 - `HLRBRep_TheIntConicCurveOfCInter::Perform()`
+    pub fn HLRBRep_TheIntConicCurveOfCInter_perform_lin2d_domain_voidptr_domain_real2(
         self_: *mut HLRBRep_TheIntConicCurveOfCInter,
         L: *const gp_Lin2d,
         D1: *const IntRes2d_Domain,
@@ -7552,8 +6725,8 @@ unsafe extern "C" {
         TolConf: f64,
         Tol: f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `HLRBRep_TheIntConicCurveOfCInter.hxx`:94 - `HLRBRep_TheIntConicCurveOfCInter::Perform()`
-    pub fn HLRBRep_TheIntConicCurveOfCInter_perform_circ2d_domain_address_domain_real2(
+    /// **Source:** `HLRBRep_TheIntConicCurveOfCInter.hxx`:95 - `HLRBRep_TheIntConicCurveOfCInter::Perform()`
+    pub fn HLRBRep_TheIntConicCurveOfCInter_perform_circ2d_domain_voidptr_domain_real2(
         self_: *mut HLRBRep_TheIntConicCurveOfCInter,
         C: *const gp_Circ2d,
         D1: *const IntRes2d_Domain,
@@ -7562,8 +6735,8 @@ unsafe extern "C" {
         TolConf: f64,
         Tol: f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `HLRBRep_TheIntConicCurveOfCInter.hxx`:102 - `HLRBRep_TheIntConicCurveOfCInter::Perform()`
-    pub fn HLRBRep_TheIntConicCurveOfCInter_perform_elips2d_domain_address_domain_real2(
+    /// **Source:** `HLRBRep_TheIntConicCurveOfCInter.hxx`:103 - `HLRBRep_TheIntConicCurveOfCInter::Perform()`
+    pub fn HLRBRep_TheIntConicCurveOfCInter_perform_elips2d_domain_voidptr_domain_real2(
         self_: *mut HLRBRep_TheIntConicCurveOfCInter,
         E: *const gp_Elips2d,
         D1: *const IntRes2d_Domain,
@@ -7572,8 +6745,8 @@ unsafe extern "C" {
         TolConf: f64,
         Tol: f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `HLRBRep_TheIntConicCurveOfCInter.hxx`:110 - `HLRBRep_TheIntConicCurveOfCInter::Perform()`
-    pub fn HLRBRep_TheIntConicCurveOfCInter_perform_parab2d_domain_address_domain_real2(
+    /// **Source:** `HLRBRep_TheIntConicCurveOfCInter.hxx`:111 - `HLRBRep_TheIntConicCurveOfCInter::Perform()`
+    pub fn HLRBRep_TheIntConicCurveOfCInter_perform_parab2d_domain_voidptr_domain_real2(
         self_: *mut HLRBRep_TheIntConicCurveOfCInter,
         Prb: *const gp_Parab2d,
         D1: *const IntRes2d_Domain,
@@ -7582,8 +6755,8 @@ unsafe extern "C" {
         TolConf: f64,
         Tol: f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `HLRBRep_TheIntConicCurveOfCInter.hxx`:119 - `HLRBRep_TheIntConicCurveOfCInter::Perform()`
-    pub fn HLRBRep_TheIntConicCurveOfCInter_perform_hypr2d_domain_address_domain_real2(
+    /// **Source:** `HLRBRep_TheIntConicCurveOfCInter.hxx`:120 - `HLRBRep_TheIntConicCurveOfCInter::Perform()`
+    pub fn HLRBRep_TheIntConicCurveOfCInter_perform_hypr2d_domain_voidptr_domain_real2(
         self_: *mut HLRBRep_TheIntConicCurveOfCInter,
         H: *const gp_Hypr2d,
         D1: *const IntRes2d_Domain,
@@ -7600,33 +6773,33 @@ unsafe extern "C" {
     pub fn HLRBRep_TheIntConicCurveOfCInter_as_IntRes2d_Intersection_mut(
         self_: *mut HLRBRep_TheIntConicCurveOfCInter,
     ) -> crate::OcctResult<*mut IntRes2d_Intersection>;
-    /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:39 - `IntRes2d_Intersection::IsDone()`
+    /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:40 - `IntRes2d_Intersection::IsDone()`
     pub fn HLRBRep_TheIntConicCurveOfCInter_inherited_IsDone(
         self_: *const HLRBRep_TheIntConicCurveOfCInter,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:44 - `IntRes2d_Intersection::IsEmpty()`
+    /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:45 - `IntRes2d_Intersection::IsEmpty()`
     pub fn HLRBRep_TheIntConicCurveOfCInter_inherited_IsEmpty(
         self_: *const HLRBRep_TheIntConicCurveOfCInter,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:49 - `IntRes2d_Intersection::NbPoints()`
+    /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:50 - `IntRes2d_Intersection::NbPoints()`
     pub fn HLRBRep_TheIntConicCurveOfCInter_inherited_NbPoints(
         self_: *const HLRBRep_TheIntConicCurveOfCInter,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:56 - `IntRes2d_Intersection::Point()`
+    /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:57 - `IntRes2d_Intersection::Point()`
     pub fn HLRBRep_TheIntConicCurveOfCInter_inherited_Point(
         self_: *const HLRBRep_TheIntConicCurveOfCInter,
         N: i32,
     ) -> crate::OcctResult<*const IntRes2d_IntersectionPoint>;
-    /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:61 - `IntRes2d_Intersection::NbSegments()`
+    /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:62 - `IntRes2d_Intersection::NbSegments()`
     pub fn HLRBRep_TheIntConicCurveOfCInter_inherited_NbSegments(
         self_: *const HLRBRep_TheIntConicCurveOfCInter,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:68 - `IntRes2d_Intersection::Segment()`
+    /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:69 - `IntRes2d_Intersection::Segment()`
     pub fn HLRBRep_TheIntConicCurveOfCInter_inherited_Segment(
         self_: *const HLRBRep_TheIntConicCurveOfCInter,
         N: i32,
     ) -> crate::OcctResult<*const IntRes2d_IntersectionSegment>;
-    /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:70 - `IntRes2d_Intersection::SetReversedParameters()`
+    /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:71 - `IntRes2d_Intersection::SetReversedParameters()`
     pub fn HLRBRep_TheIntConicCurveOfCInter_inherited_SetReversedParameters(
         self_: *mut HLRBRep_TheIntConicCurveOfCInter,
         Reverseflag: bool,
@@ -7635,11 +6808,11 @@ unsafe extern "C" {
     pub fn HLRBRep_TheIntPCurvePCurveOfCInter_destructor(
         self_: *mut HLRBRep_TheIntPCurvePCurveOfCInter,
     );
-    /// **Source:** `HLRBRep_TheIntPCurvePCurveOfCInter.hxx`:38 - `HLRBRep_TheIntPCurvePCurveOfCInter::HLRBRep_TheIntPCurvePCurveOfCInter()`
+    /// **Source:** `HLRBRep_TheIntPCurvePCurveOfCInter.hxx`:39 - `HLRBRep_TheIntPCurvePCurveOfCInter::HLRBRep_TheIntPCurvePCurveOfCInter()`
     pub fn HLRBRep_TheIntPCurvePCurveOfCInter_ctor(
     ) -> crate::OcctResult<*mut HLRBRep_TheIntPCurvePCurveOfCInter>;
-    /// **Source:** `HLRBRep_TheIntPCurvePCurveOfCInter.hxx`:40 - `HLRBRep_TheIntPCurvePCurveOfCInter::Perform()`
-    pub fn HLRBRep_TheIntPCurvePCurveOfCInter_perform_address_domain_address_domain_real2(
+    /// **Source:** `HLRBRep_TheIntPCurvePCurveOfCInter.hxx`:41 - `HLRBRep_TheIntPCurvePCurveOfCInter::Perform()`
+    pub fn HLRBRep_TheIntPCurvePCurveOfCInter_perform_voidptr_domain_voidptr_domain_real2(
         self_: *mut HLRBRep_TheIntPCurvePCurveOfCInter,
         Curve1: *const *mut std::ffi::c_void,
         Domain1: *const IntRes2d_Domain,
@@ -7648,20 +6821,20 @@ unsafe extern "C" {
         TolConf: f64,
         Tol: f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `HLRBRep_TheIntPCurvePCurveOfCInter.hxx`:47 - `HLRBRep_TheIntPCurvePCurveOfCInter::Perform()`
-    pub fn HLRBRep_TheIntPCurvePCurveOfCInter_perform_address_domain_real2(
+    /// **Source:** `HLRBRep_TheIntPCurvePCurveOfCInter.hxx`:48 - `HLRBRep_TheIntPCurvePCurveOfCInter::Perform()`
+    pub fn HLRBRep_TheIntPCurvePCurveOfCInter_perform_voidptr_domain_real2(
         self_: *mut HLRBRep_TheIntPCurvePCurveOfCInter,
         Curve1: *const *mut std::ffi::c_void,
         Domain1: *const IntRes2d_Domain,
         TolConf: f64,
         Tol: f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `HLRBRep_TheIntPCurvePCurveOfCInter.hxx`:53 - `HLRBRep_TheIntPCurvePCurveOfCInter::SetMinNbSamples()`
+    /// **Source:** `HLRBRep_TheIntPCurvePCurveOfCInter.hxx`:54 - `HLRBRep_TheIntPCurvePCurveOfCInter::SetMinNbSamples()`
     pub fn HLRBRep_TheIntPCurvePCurveOfCInter_set_min_nb_samples(
         self_: *mut HLRBRep_TheIntPCurvePCurveOfCInter,
         theMinNbSamples: i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `HLRBRep_TheIntPCurvePCurveOfCInter.hxx`:54 - `HLRBRep_TheIntPCurvePCurveOfCInter::GetMinNbSamples()`
+    /// **Source:** `HLRBRep_TheIntPCurvePCurveOfCInter.hxx`:55 - `HLRBRep_TheIntPCurvePCurveOfCInter::GetMinNbSamples()`
     pub fn HLRBRep_TheIntPCurvePCurveOfCInter_get_min_nb_samples(
         self_: *const HLRBRep_TheIntPCurvePCurveOfCInter,
     ) -> crate::OcctResult<i32>;
@@ -7673,33 +6846,33 @@ unsafe extern "C" {
     pub fn HLRBRep_TheIntPCurvePCurveOfCInter_as_IntRes2d_Intersection_mut(
         self_: *mut HLRBRep_TheIntPCurvePCurveOfCInter,
     ) -> crate::OcctResult<*mut IntRes2d_Intersection>;
-    /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:39 - `IntRes2d_Intersection::IsDone()`
+    /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:40 - `IntRes2d_Intersection::IsDone()`
     pub fn HLRBRep_TheIntPCurvePCurveOfCInter_inherited_IsDone(
         self_: *const HLRBRep_TheIntPCurvePCurveOfCInter,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:44 - `IntRes2d_Intersection::IsEmpty()`
+    /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:45 - `IntRes2d_Intersection::IsEmpty()`
     pub fn HLRBRep_TheIntPCurvePCurveOfCInter_inherited_IsEmpty(
         self_: *const HLRBRep_TheIntPCurvePCurveOfCInter,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:49 - `IntRes2d_Intersection::NbPoints()`
+    /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:50 - `IntRes2d_Intersection::NbPoints()`
     pub fn HLRBRep_TheIntPCurvePCurveOfCInter_inherited_NbPoints(
         self_: *const HLRBRep_TheIntPCurvePCurveOfCInter,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:56 - `IntRes2d_Intersection::Point()`
+    /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:57 - `IntRes2d_Intersection::Point()`
     pub fn HLRBRep_TheIntPCurvePCurveOfCInter_inherited_Point(
         self_: *const HLRBRep_TheIntPCurvePCurveOfCInter,
         N: i32,
     ) -> crate::OcctResult<*const IntRes2d_IntersectionPoint>;
-    /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:61 - `IntRes2d_Intersection::NbSegments()`
+    /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:62 - `IntRes2d_Intersection::NbSegments()`
     pub fn HLRBRep_TheIntPCurvePCurveOfCInter_inherited_NbSegments(
         self_: *const HLRBRep_TheIntPCurvePCurveOfCInter,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:68 - `IntRes2d_Intersection::Segment()`
+    /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:69 - `IntRes2d_Intersection::Segment()`
     pub fn HLRBRep_TheIntPCurvePCurveOfCInter_inherited_Segment(
         self_: *const HLRBRep_TheIntPCurvePCurveOfCInter,
         N: i32,
     ) -> crate::OcctResult<*const IntRes2d_IntersectionSegment>;
-    /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:70 - `IntRes2d_Intersection::SetReversedParameters()`
+    /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:71 - `IntRes2d_Intersection::SetReversedParameters()`
     pub fn HLRBRep_TheIntPCurvePCurveOfCInter_inherited_SetReversedParameters(
         self_: *mut HLRBRep_TheIntPCurvePCurveOfCInter,
         Reverseflag: bool,
@@ -7708,89 +6881,89 @@ unsafe extern "C" {
     pub fn HLRBRep_TheInterferenceOfInterCSurf_destructor(
         self_: *mut HLRBRep_TheInterferenceOfInterCSurf,
     );
-    /// **Source:** `HLRBRep_TheInterferenceOfInterCSurf.hxx`:43 - `HLRBRep_TheInterferenceOfInterCSurf::HLRBRep_TheInterferenceOfInterCSurf()`
+    /// **Source:** `HLRBRep_TheInterferenceOfInterCSurf.hxx`:44 - `HLRBRep_TheInterferenceOfInterCSurf::HLRBRep_TheInterferenceOfInterCSurf()`
     pub fn HLRBRep_TheInterferenceOfInterCSurf_ctor(
     ) -> crate::OcctResult<*mut HLRBRep_TheInterferenceOfInterCSurf>;
-    /// **Source:** `HLRBRep_TheInterferenceOfInterCSurf.hxx`:47 - `HLRBRep_TheInterferenceOfInterCSurf::HLRBRep_TheInterferenceOfInterCSurf()`
+    /// **Source:** `HLRBRep_TheInterferenceOfInterCSurf.hxx`:48 - `HLRBRep_TheInterferenceOfInterCSurf::HLRBRep_TheInterferenceOfInterCSurf()`
     pub fn HLRBRep_TheInterferenceOfInterCSurf_ctor_thepolygonofintercsurf_thepolyhedronofintercsurf(
         thePolyg: *const HLRBRep_ThePolygonOfInterCSurf,
         thePolyh: *const HLRBRep_ThePolyhedronOfInterCSurf,
     ) -> crate::OcctResult<*mut HLRBRep_TheInterferenceOfInterCSurf>;
-    /// **Source:** `HLRBRep_TheInterferenceOfInterCSurf.hxx`:53 - `HLRBRep_TheInterferenceOfInterCSurf::HLRBRep_TheInterferenceOfInterCSurf()`
+    /// **Source:** `HLRBRep_TheInterferenceOfInterCSurf.hxx`:54 - `HLRBRep_TheInterferenceOfInterCSurf::HLRBRep_TheInterferenceOfInterCSurf()`
     pub fn HLRBRep_TheInterferenceOfInterCSurf_ctor_lin_thepolyhedronofintercsurf(
         theLin: *const gp_Lin,
         thePolyh: *const HLRBRep_ThePolyhedronOfInterCSurf,
     ) -> crate::OcctResult<*mut HLRBRep_TheInterferenceOfInterCSurf>;
-    /// **Source:** `HLRBRep_TheInterferenceOfInterCSurf.hxx`:59 - `HLRBRep_TheInterferenceOfInterCSurf::HLRBRep_TheInterferenceOfInterCSurf()`
-    pub fn HLRBRep_TheInterferenceOfInterCSurf_ctor_array1oflin_thepolyhedronofintercsurf(
-        theLins: *const Intf_Array1OfLin,
+    /// **Source:** `HLRBRep_TheInterferenceOfInterCSurf.hxx`:60 - `HLRBRep_TheInterferenceOfInterCSurf::HLRBRep_TheInterferenceOfInterCSurf()`
+    pub fn HLRBRep_TheInterferenceOfInterCSurf_ctor_arr1_lin_thepolyhedronofintercsurf(
+        theLins: *const NCollection_Array1_gp_Lin,
         thePolyh: *const HLRBRep_ThePolyhedronOfInterCSurf,
     ) -> crate::OcctResult<*mut HLRBRep_TheInterferenceOfInterCSurf>;
-    /// **Source:** `HLRBRep_TheInterferenceOfInterCSurf.hxx`:80 - `HLRBRep_TheInterferenceOfInterCSurf::HLRBRep_TheInterferenceOfInterCSurf()`
+    /// **Source:** `HLRBRep_TheInterferenceOfInterCSurf.hxx`:81 - `HLRBRep_TheInterferenceOfInterCSurf::HLRBRep_TheInterferenceOfInterCSurf()`
     pub fn HLRBRep_TheInterferenceOfInterCSurf_ctor_thepolygonofintercsurf_thepolyhedronofintercsurf_boundsortbox(
         thePolyg: *const HLRBRep_ThePolygonOfInterCSurf,
         thePolyh: *const HLRBRep_ThePolyhedronOfInterCSurf,
         theBoundSB: *mut Bnd_BoundSortBox,
     ) -> crate::OcctResult<*mut HLRBRep_TheInterferenceOfInterCSurf>;
-    /// **Source:** `HLRBRep_TheInterferenceOfInterCSurf.hxx`:87 - `HLRBRep_TheInterferenceOfInterCSurf::HLRBRep_TheInterferenceOfInterCSurf()`
+    /// **Source:** `HLRBRep_TheInterferenceOfInterCSurf.hxx`:88 - `HLRBRep_TheInterferenceOfInterCSurf::HLRBRep_TheInterferenceOfInterCSurf()`
     pub fn HLRBRep_TheInterferenceOfInterCSurf_ctor_lin_thepolyhedronofintercsurf_boundsortbox(
         theLin: *const gp_Lin,
         thePolyh: *const HLRBRep_ThePolyhedronOfInterCSurf,
         theBoundSB: *mut Bnd_BoundSortBox,
     ) -> crate::OcctResult<*mut HLRBRep_TheInterferenceOfInterCSurf>;
-    /// **Source:** `HLRBRep_TheInterferenceOfInterCSurf.hxx`:94 - `HLRBRep_TheInterferenceOfInterCSurf::HLRBRep_TheInterferenceOfInterCSurf()`
-    pub fn HLRBRep_TheInterferenceOfInterCSurf_ctor_array1oflin_thepolyhedronofintercsurf_boundsortbox(
-        theLins: *const Intf_Array1OfLin,
+    /// **Source:** `HLRBRep_TheInterferenceOfInterCSurf.hxx`:95 - `HLRBRep_TheInterferenceOfInterCSurf::HLRBRep_TheInterferenceOfInterCSurf()`
+    pub fn HLRBRep_TheInterferenceOfInterCSurf_ctor_arr1_lin_thepolyhedronofintercsurf_boundsortbox(
+        theLins: *const NCollection_Array1_gp_Lin,
         thePolyh: *const HLRBRep_ThePolyhedronOfInterCSurf,
         theBoundSB: *mut Bnd_BoundSortBox,
     ) -> crate::OcctResult<*mut HLRBRep_TheInterferenceOfInterCSurf>;
-    /// **Source:** `HLRBRep_TheInterferenceOfInterCSurf.hxx`:65 - `HLRBRep_TheInterferenceOfInterCSurf::Perform()`
+    /// **Source:** `HLRBRep_TheInterferenceOfInterCSurf.hxx`:66 - `HLRBRep_TheInterferenceOfInterCSurf::Perform()`
     pub fn HLRBRep_TheInterferenceOfInterCSurf_perform_thepolygonofintercsurf_thepolyhedronofintercsurf(
         self_: *mut HLRBRep_TheInterferenceOfInterCSurf,
         thePolyg: *const HLRBRep_ThePolygonOfInterCSurf,
         thePolyh: *const HLRBRep_ThePolyhedronOfInterCSurf,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `HLRBRep_TheInterferenceOfInterCSurf.hxx`:70 - `HLRBRep_TheInterferenceOfInterCSurf::Perform()`
+    /// **Source:** `HLRBRep_TheInterferenceOfInterCSurf.hxx`:71 - `HLRBRep_TheInterferenceOfInterCSurf::Perform()`
     pub fn HLRBRep_TheInterferenceOfInterCSurf_perform_lin_thepolyhedronofintercsurf(
         self_: *mut HLRBRep_TheInterferenceOfInterCSurf,
         theLin: *const gp_Lin,
         thePolyh: *const HLRBRep_ThePolyhedronOfInterCSurf,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `HLRBRep_TheInterferenceOfInterCSurf.hxx`:75 - `HLRBRep_TheInterferenceOfInterCSurf::Perform()`
-    pub fn HLRBRep_TheInterferenceOfInterCSurf_perform_array1oflin_thepolyhedronofintercsurf(
+    /// **Source:** `HLRBRep_TheInterferenceOfInterCSurf.hxx`:76 - `HLRBRep_TheInterferenceOfInterCSurf::Perform()`
+    pub fn HLRBRep_TheInterferenceOfInterCSurf_perform_arr1_lin_thepolyhedronofintercsurf(
         self_: *mut HLRBRep_TheInterferenceOfInterCSurf,
-        theLins: *const Intf_Array1OfLin,
+        theLins: *const NCollection_Array1_gp_Lin,
         thePolyh: *const HLRBRep_ThePolyhedronOfInterCSurf,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `HLRBRep_TheInterferenceOfInterCSurf.hxx`:101 - `HLRBRep_TheInterferenceOfInterCSurf::Perform()`
+    /// **Source:** `HLRBRep_TheInterferenceOfInterCSurf.hxx`:102 - `HLRBRep_TheInterferenceOfInterCSurf::Perform()`
     pub fn HLRBRep_TheInterferenceOfInterCSurf_perform_thepolygonofintercsurf_thepolyhedronofintercsurf_boundsortbox(
         self_: *mut HLRBRep_TheInterferenceOfInterCSurf,
         thePolyg: *const HLRBRep_ThePolygonOfInterCSurf,
         thePolyh: *const HLRBRep_ThePolyhedronOfInterCSurf,
         theBoundSB: *mut Bnd_BoundSortBox,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `HLRBRep_TheInterferenceOfInterCSurf.hxx`:107 - `HLRBRep_TheInterferenceOfInterCSurf::Perform()`
+    /// **Source:** `HLRBRep_TheInterferenceOfInterCSurf.hxx`:108 - `HLRBRep_TheInterferenceOfInterCSurf::Perform()`
     pub fn HLRBRep_TheInterferenceOfInterCSurf_perform_lin_thepolyhedronofintercsurf_boundsortbox(
         self_: *mut HLRBRep_TheInterferenceOfInterCSurf,
         theLin: *const gp_Lin,
         thePolyh: *const HLRBRep_ThePolyhedronOfInterCSurf,
         theBoundSB: *mut Bnd_BoundSortBox,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `HLRBRep_TheInterferenceOfInterCSurf.hxx`:113 - `HLRBRep_TheInterferenceOfInterCSurf::Perform()`
-    pub fn HLRBRep_TheInterferenceOfInterCSurf_perform_array1oflin_thepolyhedronofintercsurf_boundsortbox(
+    /// **Source:** `HLRBRep_TheInterferenceOfInterCSurf.hxx`:114 - `HLRBRep_TheInterferenceOfInterCSurf::Perform()`
+    pub fn HLRBRep_TheInterferenceOfInterCSurf_perform_arr1_lin_thepolyhedronofintercsurf_boundsortbox(
         self_: *mut HLRBRep_TheInterferenceOfInterCSurf,
-        theLins: *const Intf_Array1OfLin,
+        theLins: *const NCollection_Array1_gp_Lin,
         thePolyh: *const HLRBRep_ThePolyhedronOfInterCSurf,
         theBoundSB: *mut Bnd_BoundSortBox,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `HLRBRep_TheInterferenceOfInterCSurf.hxx`:119 - `HLRBRep_TheInterferenceOfInterCSurf::Interference()`
+    /// **Source:** `HLRBRep_TheInterferenceOfInterCSurf.hxx`:120 - `HLRBRep_TheInterferenceOfInterCSurf::Interference()`
     pub fn HLRBRep_TheInterferenceOfInterCSurf_interference_thepolygonofintercsurf_thepolyhedronofintercsurf_boundsortbox(
         self_: *mut HLRBRep_TheInterferenceOfInterCSurf,
         thePolyg: *const HLRBRep_ThePolygonOfInterCSurf,
         thePolyh: *const HLRBRep_ThePolyhedronOfInterCSurf,
         theBoundSB: *mut Bnd_BoundSortBox,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `HLRBRep_TheInterferenceOfInterCSurf.hxx`:125 - `HLRBRep_TheInterferenceOfInterCSurf::Interference()`
+    /// **Source:** `HLRBRep_TheInterferenceOfInterCSurf.hxx`:126 - `HLRBRep_TheInterferenceOfInterCSurf::Interference()`
     pub fn HLRBRep_TheInterferenceOfInterCSurf_interference_thepolygonofintercsurf_thepolyhedronofintercsurf(
         self_: *mut HLRBRep_TheInterferenceOfInterCSurf,
         thePolyg: *const HLRBRep_ThePolygonOfInterCSurf,
@@ -7804,48 +6977,48 @@ unsafe extern "C" {
     pub fn HLRBRep_TheInterferenceOfInterCSurf_as_Intf_Interference_mut(
         self_: *mut HLRBRep_TheInterferenceOfInterCSurf,
     ) -> crate::OcctResult<*mut Intf_Interference>;
-    /// Inherited: **Source:** `Intf_Interference.hxx`:43 - `Intf_Interference::NbSectionPoints()`
+    /// Inherited: **Source:** `Intf_Interference.hxx`:44 - `Intf_Interference::NbSectionPoints()`
     pub fn HLRBRep_TheInterferenceOfInterCSurf_inherited_NbSectionPoints(
         self_: *const HLRBRep_TheInterferenceOfInterCSurf,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Intf_Interference.hxx`:47 - `Intf_Interference::PntValue()`
+    /// Inherited: **Source:** `Intf_Interference.hxx`:48 - `Intf_Interference::PntValue()`
     pub fn HLRBRep_TheInterferenceOfInterCSurf_inherited_PntValue(
         self_: *const HLRBRep_TheInterferenceOfInterCSurf,
         Index: i32,
     ) -> crate::OcctResult<*const Intf_SectionPoint>;
-    /// Inherited: **Source:** `Intf_Interference.hxx`:51 - `Intf_Interference::NbSectionLines()`
+    /// Inherited: **Source:** `Intf_Interference.hxx`:52 - `Intf_Interference::NbSectionLines()`
     pub fn HLRBRep_TheInterferenceOfInterCSurf_inherited_NbSectionLines(
         self_: *const HLRBRep_TheInterferenceOfInterCSurf,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Intf_Interference.hxx`:55 - `Intf_Interference::LineValue()`
+    /// Inherited: **Source:** `Intf_Interference.hxx`:56 - `Intf_Interference::LineValue()`
     pub fn HLRBRep_TheInterferenceOfInterCSurf_inherited_LineValue(
         self_: *const HLRBRep_TheInterferenceOfInterCSurf,
         Index: i32,
     ) -> crate::OcctResult<*const Intf_SectionLine>;
-    /// Inherited: **Source:** `Intf_Interference.hxx`:58 - `Intf_Interference::NbTangentZones()`
+    /// Inherited: **Source:** `Intf_Interference.hxx`:59 - `Intf_Interference::NbTangentZones()`
     pub fn HLRBRep_TheInterferenceOfInterCSurf_inherited_NbTangentZones(
         self_: *const HLRBRep_TheInterferenceOfInterCSurf,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Intf_Interference.hxx`:62 - `Intf_Interference::ZoneValue()`
+    /// Inherited: **Source:** `Intf_Interference.hxx`:63 - `Intf_Interference::ZoneValue()`
     pub fn HLRBRep_TheInterferenceOfInterCSurf_inherited_ZoneValue(
         self_: *const HLRBRep_TheInterferenceOfInterCSurf,
         Index: i32,
     ) -> crate::OcctResult<*const Intf_TangentZone>;
-    /// Inherited: **Source:** `Intf_Interference.hxx`:65 - `Intf_Interference::GetTolerance()`
+    /// Inherited: **Source:** `Intf_Interference.hxx`:66 - `Intf_Interference::GetTolerance()`
     pub fn HLRBRep_TheInterferenceOfInterCSurf_inherited_GetTolerance(
         self_: *const HLRBRep_TheInterferenceOfInterCSurf,
     ) -> crate::OcctResult<f64>;
-    /// Inherited: **Source:** `Intf_Interference.hxx`:69 - `Intf_Interference::Contains()`
+    /// Inherited: **Source:** `Intf_Interference.hxx`:70 - `Intf_Interference::Contains()`
     pub fn HLRBRep_TheInterferenceOfInterCSurf_inherited_Contains(
         self_: *const HLRBRep_TheInterferenceOfInterCSurf,
         ThePnt: *const Intf_SectionPoint,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Intf_Interference.hxx`:74 - `Intf_Interference::Insert()`
+    /// Inherited: **Source:** `Intf_Interference.hxx`:75 - `Intf_Interference::Insert()`
     pub fn HLRBRep_TheInterferenceOfInterCSurf_inherited_Insert(
         self_: *mut HLRBRep_TheInterferenceOfInterCSurf,
         TheZone: *const Intf_TangentZone,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Intf_Interference.hxx`:80 - `Intf_Interference::Dump()`
+    /// Inherited: **Source:** `Intf_Interference.hxx`:81 - `Intf_Interference::Dump()`
     pub fn HLRBRep_TheInterferenceOfInterCSurf_inherited_Dump(
         self_: *const HLRBRep_TheInterferenceOfInterCSurf,
     ) -> *const std::ffi::c_char;
@@ -7853,11 +7026,11 @@ unsafe extern "C" {
     pub fn HLRBRep_TheIntersectorOfTheIntConicCurveOfCInter_destructor(
         self_: *mut HLRBRep_TheIntersectorOfTheIntConicCurveOfCInter,
     );
-    /// **Source:** `HLRBRep_TheIntersectorOfTheIntConicCurveOfCInter.hxx`:40 - `HLRBRep_TheIntersectorOfTheIntConicCurveOfCInter::HLRBRep_TheIntersectorOfTheIntConicCurveOfCInter()`
+    /// **Source:** `HLRBRep_TheIntersectorOfTheIntConicCurveOfCInter.hxx`:41 - `HLRBRep_TheIntersectorOfTheIntConicCurveOfCInter::HLRBRep_TheIntersectorOfTheIntConicCurveOfCInter()`
     pub fn HLRBRep_TheIntersectorOfTheIntConicCurveOfCInter_ctor(
     ) -> crate::OcctResult<*mut HLRBRep_TheIntersectorOfTheIntConicCurveOfCInter>;
-    /// **Source:** `HLRBRep_TheIntersectorOfTheIntConicCurveOfCInter.hxx`:47 - `HLRBRep_TheIntersectorOfTheIntConicCurveOfCInter::HLRBRep_TheIntersectorOfTheIntConicCurveOfCInter()`
-    pub fn HLRBRep_TheIntersectorOfTheIntConicCurveOfCInter_ctor_iconictool_domain_address_domain_real2(
+    /// **Source:** `HLRBRep_TheIntersectorOfTheIntConicCurveOfCInter.hxx`:48 - `HLRBRep_TheIntersectorOfTheIntConicCurveOfCInter::HLRBRep_TheIntersectorOfTheIntConicCurveOfCInter()`
+    pub fn HLRBRep_TheIntersectorOfTheIntConicCurveOfCInter_ctor_iconictool_domain_voidptr_domain_real2(
         ITool: *const IntCurve_IConicTool,
         Dom1: *const IntRes2d_Domain,
         PCurve: *const *mut std::ffi::c_void,
@@ -7865,7 +7038,7 @@ unsafe extern "C" {
         TolConf: f64,
         Tol: f64,
     ) -> crate::OcctResult<*mut HLRBRep_TheIntersectorOfTheIntConicCurveOfCInter>;
-    /// **Source:** `HLRBRep_TheIntersectorOfTheIntConicCurveOfCInter.hxx`:59 - `HLRBRep_TheIntersectorOfTheIntConicCurveOfCInter::Perform()`
+    /// **Source:** `HLRBRep_TheIntersectorOfTheIntConicCurveOfCInter.hxx`:60 - `HLRBRep_TheIntersectorOfTheIntConicCurveOfCInter::Perform()`
     pub fn HLRBRep_TheIntersectorOfTheIntConicCurveOfCInter_perform(
         self_: *mut HLRBRep_TheIntersectorOfTheIntConicCurveOfCInter,
         ITool: *const IntCurve_IConicTool,
@@ -7875,7 +7048,7 @@ unsafe extern "C" {
         TolConf: f64,
         Tol: f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `HLRBRep_TheIntersectorOfTheIntConicCurveOfCInter.hxx`:66 - `HLRBRep_TheIntersectorOfTheIntConicCurveOfCInter::FindU()`
+    /// **Source:** `HLRBRep_TheIntersectorOfTheIntConicCurveOfCInter.hxx`:67 - `HLRBRep_TheIntersectorOfTheIntConicCurveOfCInter::FindU()`
     pub fn HLRBRep_TheIntersectorOfTheIntConicCurveOfCInter_find_u(
         self_: *const HLRBRep_TheIntersectorOfTheIntConicCurveOfCInter,
         parameter: f64,
@@ -7883,7 +7056,7 @@ unsafe extern "C" {
         TheParCurev: *const *mut std::ffi::c_void,
         IntCurve_IConicTool: *const IntCurve_IConicTool,
     ) -> crate::OcctResult<f64>;
-    /// **Source:** `HLRBRep_TheIntersectorOfTheIntConicCurveOfCInter.hxx`:71 - `HLRBRep_TheIntersectorOfTheIntConicCurveOfCInter::FindV()`
+    /// **Source:** `HLRBRep_TheIntersectorOfTheIntConicCurveOfCInter.hxx`:72 - `HLRBRep_TheIntersectorOfTheIntConicCurveOfCInter::FindV()`
     pub fn HLRBRep_TheIntersectorOfTheIntConicCurveOfCInter_find_v(
         self_: *const HLRBRep_TheIntersectorOfTheIntConicCurveOfCInter,
         parameter: f64,
@@ -7895,7 +7068,7 @@ unsafe extern "C" {
         V1: f64,
         Tolerance: f64,
     ) -> crate::OcctResult<f64>;
-    /// **Source:** `HLRBRep_TheIntersectorOfTheIntConicCurveOfCInter.hxx`:80 - `HLRBRep_TheIntersectorOfTheIntConicCurveOfCInter::And_Domaine_Objet1_Intersections()`
+    /// **Source:** `HLRBRep_TheIntersectorOfTheIntConicCurveOfCInter.hxx`:81 - `HLRBRep_TheIntersectorOfTheIntConicCurveOfCInter::And_Domaine_Objet1_Intersections()`
     pub fn HLRBRep_TheIntersectorOfTheIntConicCurveOfCInter_and_domaine_objet1_intersections(
         self_: *const HLRBRep_TheIntersectorOfTheIntConicCurveOfCInter,
         IntCurve_IConicTool: *const IntCurve_IConicTool,
@@ -7903,10 +7076,10 @@ unsafe extern "C" {
         TheImpCurveDomain: *const IntRes2d_Domain,
         TheParCurveDomain: *const IntRes2d_Domain,
         NbResultats: *mut i32,
-        Inter2_And_Domain2: *mut TColStd_Array1OfReal,
-        Inter1: *mut TColStd_Array1OfReal,
-        Resultat1: *mut TColStd_Array1OfReal,
-        Resultat2: *mut TColStd_Array1OfReal,
+        Inter2_And_Domain2: *mut NCollection_Array1_double,
+        Inter1: *mut NCollection_Array1_double,
+        Resultat1: *mut NCollection_Array1_double,
+        Resultat2: *mut NCollection_Array1_double,
         EpsNul: f64,
     ) -> *const std::ffi::c_char;
     /// Upcast HLRBRep_TheIntersectorOfTheIntConicCurveOfCInter to IntRes2d_Intersection
@@ -7917,149 +7090,96 @@ unsafe extern "C" {
     pub fn HLRBRep_TheIntersectorOfTheIntConicCurveOfCInter_as_IntRes2d_Intersection_mut(
         self_: *mut HLRBRep_TheIntersectorOfTheIntConicCurveOfCInter,
     ) -> crate::OcctResult<*mut IntRes2d_Intersection>;
-    /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:39 - `IntRes2d_Intersection::IsDone()`
+    /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:40 - `IntRes2d_Intersection::IsDone()`
     pub fn HLRBRep_TheIntersectorOfTheIntConicCurveOfCInter_inherited_IsDone(
         self_: *const HLRBRep_TheIntersectorOfTheIntConicCurveOfCInter,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:44 - `IntRes2d_Intersection::IsEmpty()`
+    /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:45 - `IntRes2d_Intersection::IsEmpty()`
     pub fn HLRBRep_TheIntersectorOfTheIntConicCurveOfCInter_inherited_IsEmpty(
         self_: *const HLRBRep_TheIntersectorOfTheIntConicCurveOfCInter,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:49 - `IntRes2d_Intersection::NbPoints()`
+    /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:50 - `IntRes2d_Intersection::NbPoints()`
     pub fn HLRBRep_TheIntersectorOfTheIntConicCurveOfCInter_inherited_NbPoints(
         self_: *const HLRBRep_TheIntersectorOfTheIntConicCurveOfCInter,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:56 - `IntRes2d_Intersection::Point()`
+    /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:57 - `IntRes2d_Intersection::Point()`
     pub fn HLRBRep_TheIntersectorOfTheIntConicCurveOfCInter_inherited_Point(
         self_: *const HLRBRep_TheIntersectorOfTheIntConicCurveOfCInter,
         N: i32,
     ) -> crate::OcctResult<*const IntRes2d_IntersectionPoint>;
-    /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:61 - `IntRes2d_Intersection::NbSegments()`
+    /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:62 - `IntRes2d_Intersection::NbSegments()`
     pub fn HLRBRep_TheIntersectorOfTheIntConicCurveOfCInter_inherited_NbSegments(
         self_: *const HLRBRep_TheIntersectorOfTheIntConicCurveOfCInter,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:68 - `IntRes2d_Intersection::Segment()`
+    /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:69 - `IntRes2d_Intersection::Segment()`
     pub fn HLRBRep_TheIntersectorOfTheIntConicCurveOfCInter_inherited_Segment(
         self_: *const HLRBRep_TheIntersectorOfTheIntConicCurveOfCInter,
         N: i32,
     ) -> crate::OcctResult<*const IntRes2d_IntersectionSegment>;
-    /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:70 - `IntRes2d_Intersection::SetReversedParameters()`
+    /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:71 - `IntRes2d_Intersection::SetReversedParameters()`
     pub fn HLRBRep_TheIntersectorOfTheIntConicCurveOfCInter_inherited_SetReversedParameters(
         self_: *mut HLRBRep_TheIntersectorOfTheIntConicCurveOfCInter,
         Reverseflag: bool,
     ) -> *const std::ffi::c_char;
-    // ======================== HLRBRep_TheLocateExtPCOfTheProjPCurOfCInter ========================
-    pub fn HLRBRep_TheLocateExtPCOfTheProjPCurOfCInter_destructor(
-        self_: *mut HLRBRep_TheLocateExtPCOfTheProjPCurOfCInter,
-    );
-    /// **Source:** `HLRBRep_TheLocateExtPCOfTheProjPCurOfCInter.hxx`:40 - `HLRBRep_TheLocateExtPCOfTheProjPCurOfCInter::HLRBRep_TheLocateExtPCOfTheProjPCurOfCInter()`
-    pub fn HLRBRep_TheLocateExtPCOfTheProjPCurOfCInter_ctor(
-    ) -> crate::OcctResult<*mut HLRBRep_TheLocateExtPCOfTheProjPCurOfCInter>;
-    /// **Source:** `HLRBRep_TheLocateExtPCOfTheProjPCurOfCInter.hxx`:49 - `HLRBRep_TheLocateExtPCOfTheProjPCurOfCInter::HLRBRep_TheLocateExtPCOfTheProjPCurOfCInter()`
-    pub fn HLRBRep_TheLocateExtPCOfTheProjPCurOfCInter_ctor_pnt2d_address_real2(
-        P: *const gp_Pnt2d,
-        C: *const *mut std::ffi::c_void,
-        U0: f64,
-        TolU: f64,
-    ) -> crate::OcctResult<*mut HLRBRep_TheLocateExtPCOfTheProjPCurOfCInter>;
-    /// **Source:** `HLRBRep_TheLocateExtPCOfTheProjPCurOfCInter.hxx`:62 - `HLRBRep_TheLocateExtPCOfTheProjPCurOfCInter::HLRBRep_TheLocateExtPCOfTheProjPCurOfCInter()`
-    pub fn HLRBRep_TheLocateExtPCOfTheProjPCurOfCInter_ctor_pnt2d_address_real4(
-        P: *const gp_Pnt2d,
-        C: *const *mut std::ffi::c_void,
-        U0: f64,
-        Umin: f64,
-        Usup: f64,
-        TolU: f64,
-    ) -> crate::OcctResult<*mut HLRBRep_TheLocateExtPCOfTheProjPCurOfCInter>;
-    /// **Source:** `HLRBRep_TheLocateExtPCOfTheProjPCurOfCInter.hxx`:70 - `HLRBRep_TheLocateExtPCOfTheProjPCurOfCInter::Initialize()`
-    pub fn HLRBRep_TheLocateExtPCOfTheProjPCurOfCInter_initialize(
-        self_: *mut HLRBRep_TheLocateExtPCOfTheProjPCurOfCInter,
-        C: *const *mut std::ffi::c_void,
-        Umin: f64,
-        Usup: f64,
-        TolU: f64,
-    ) -> *const std::ffi::c_char;
-    /// **Source:** `HLRBRep_TheLocateExtPCOfTheProjPCurOfCInter.hxx`:78 - `HLRBRep_TheLocateExtPCOfTheProjPCurOfCInter::Perform()`
-    pub fn HLRBRep_TheLocateExtPCOfTheProjPCurOfCInter_perform(
-        self_: *mut HLRBRep_TheLocateExtPCOfTheProjPCurOfCInter,
-        P: *const gp_Pnt2d,
-        U0: f64,
-    ) -> *const std::ffi::c_char;
-    /// **Source:** `HLRBRep_TheLocateExtPCOfTheProjPCurOfCInter.hxx`:81 - `HLRBRep_TheLocateExtPCOfTheProjPCurOfCInter::IsDone()`
-    pub fn HLRBRep_TheLocateExtPCOfTheProjPCurOfCInter_is_done(
-        self_: *const HLRBRep_TheLocateExtPCOfTheProjPCurOfCInter,
-    ) -> crate::OcctResult<bool>;
-    /// **Source:** `HLRBRep_TheLocateExtPCOfTheProjPCurOfCInter.hxx`:84 - `HLRBRep_TheLocateExtPCOfTheProjPCurOfCInter::SquareDistance()`
-    pub fn HLRBRep_TheLocateExtPCOfTheProjPCurOfCInter_square_distance(
-        self_: *const HLRBRep_TheLocateExtPCOfTheProjPCurOfCInter,
-    ) -> crate::OcctResult<f64>;
-    /// **Source:** `HLRBRep_TheLocateExtPCOfTheProjPCurOfCInter.hxx`:87 - `HLRBRep_TheLocateExtPCOfTheProjPCurOfCInter::IsMin()`
-    pub fn HLRBRep_TheLocateExtPCOfTheProjPCurOfCInter_is_min(
-        self_: *const HLRBRep_TheLocateExtPCOfTheProjPCurOfCInter,
-    ) -> crate::OcctResult<bool>;
-    /// **Source:** `HLRBRep_TheLocateExtPCOfTheProjPCurOfCInter.hxx`:90 - `HLRBRep_TheLocateExtPCOfTheProjPCurOfCInter::Point()`
-    pub fn HLRBRep_TheLocateExtPCOfTheProjPCurOfCInter_point(
-        self_: *const HLRBRep_TheLocateExtPCOfTheProjPCurOfCInter,
-    ) -> crate::OcctResult<*const Extrema_POnCurv2d>;
     // ======================== HLRBRep_ThePolygon2dOfTheIntPCurvePCurveOfCInter ========================
     pub fn HLRBRep_ThePolygon2dOfTheIntPCurvePCurveOfCInter_destructor(
         self_: *mut HLRBRep_ThePolygon2dOfTheIntPCurvePCurveOfCInter,
     );
-    /// **Source:** `HLRBRep_ThePolygon2dOfTheIntPCurvePCurveOfCInter.hxx`:41 - `HLRBRep_ThePolygon2dOfTheIntPCurvePCurveOfCInter::HLRBRep_ThePolygon2dOfTheIntPCurvePCurveOfCInter()`
-    pub fn HLRBRep_ThePolygon2dOfTheIntPCurvePCurveOfCInter_ctor_address_int_domain_real(
+    /// **Source:** `HLRBRep_ThePolygon2dOfTheIntPCurvePCurveOfCInter.hxx`:42 - `HLRBRep_ThePolygon2dOfTheIntPCurvePCurveOfCInter::HLRBRep_ThePolygon2dOfTheIntPCurvePCurveOfCInter()`
+    pub fn HLRBRep_ThePolygon2dOfTheIntPCurvePCurveOfCInter_ctor_voidptr_int_domain_real(
         Curve: *const *mut std::ffi::c_void,
         NbPnt: i32,
         Domain: *const IntRes2d_Domain,
         Tol: f64,
     ) -> crate::OcctResult<*mut HLRBRep_ThePolygon2dOfTheIntPCurvePCurveOfCInter>;
-    /// **Source:** `HLRBRep_ThePolygon2dOfTheIntPCurvePCurveOfCInter.hxx`:51 - `HLRBRep_ThePolygon2dOfTheIntPCurvePCurveOfCInter::ComputeWithBox()`
+    /// **Source:** `HLRBRep_ThePolygon2dOfTheIntPCurvePCurveOfCInter.hxx`:52 - `HLRBRep_ThePolygon2dOfTheIntPCurvePCurveOfCInter::ComputeWithBox()`
     pub fn HLRBRep_ThePolygon2dOfTheIntPCurvePCurveOfCInter_compute_with_box(
         self_: *mut HLRBRep_ThePolygon2dOfTheIntPCurvePCurveOfCInter,
         Curve: *const *mut std::ffi::c_void,
         OtherBox: *const Bnd_Box2d,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `HLRBRep_ThePolygon2dOfTheIntPCurvePCurveOfCInter.hxx`:53 - `HLRBRep_ThePolygon2dOfTheIntPCurvePCurveOfCInter::DeflectionOverEstimation()`
+    /// **Source:** `HLRBRep_ThePolygon2dOfTheIntPCurvePCurveOfCInter.hxx`:54 - `HLRBRep_ThePolygon2dOfTheIntPCurvePCurveOfCInter::DeflectionOverEstimation()`
     pub fn HLRBRep_ThePolygon2dOfTheIntPCurvePCurveOfCInter_deflection_over_estimation(
         self_: *const HLRBRep_ThePolygon2dOfTheIntPCurvePCurveOfCInter,
     ) -> crate::OcctResult<f64>;
-    /// **Source:** `HLRBRep_ThePolygon2dOfTheIntPCurvePCurveOfCInter.hxx`:55 - `HLRBRep_ThePolygon2dOfTheIntPCurvePCurveOfCInter::SetDeflectionOverEstimation()`
+    /// **Source:** `HLRBRep_ThePolygon2dOfTheIntPCurvePCurveOfCInter.hxx`:56 - `HLRBRep_ThePolygon2dOfTheIntPCurvePCurveOfCInter::SetDeflectionOverEstimation()`
     pub fn HLRBRep_ThePolygon2dOfTheIntPCurvePCurveOfCInter_set_deflection_over_estimation(
         self_: *mut HLRBRep_ThePolygon2dOfTheIntPCurvePCurveOfCInter,
         x: f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `HLRBRep_ThePolygon2dOfTheIntPCurvePCurveOfCInter.hxx`:57 - `HLRBRep_ThePolygon2dOfTheIntPCurvePCurveOfCInter::Closed()`
+    /// **Source:** `HLRBRep_ThePolygon2dOfTheIntPCurvePCurveOfCInter.hxx`:58 - `HLRBRep_ThePolygon2dOfTheIntPCurvePCurveOfCInter::Closed()`
     pub fn HLRBRep_ThePolygon2dOfTheIntPCurvePCurveOfCInter_closed_bool(
         self_: *mut HLRBRep_ThePolygon2dOfTheIntPCurvePCurveOfCInter,
         clos: bool,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `HLRBRep_ThePolygon2dOfTheIntPCurvePCurveOfCInter.hxx`:60 - `HLRBRep_ThePolygon2dOfTheIntPCurvePCurveOfCInter::Closed()`
+    /// **Source:** `HLRBRep_ThePolygon2dOfTheIntPCurvePCurveOfCInter.hxx`:61 - `HLRBRep_ThePolygon2dOfTheIntPCurvePCurveOfCInter::Closed()`
     pub fn HLRBRep_ThePolygon2dOfTheIntPCurvePCurveOfCInter_closed(
         self_: *const HLRBRep_ThePolygon2dOfTheIntPCurvePCurveOfCInter,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `HLRBRep_ThePolygon2dOfTheIntPCurvePCurveOfCInter.hxx`:63 - `HLRBRep_ThePolygon2dOfTheIntPCurvePCurveOfCInter::NbSegments()`
+    /// **Source:** `HLRBRep_ThePolygon2dOfTheIntPCurvePCurveOfCInter.hxx`:64 - `HLRBRep_ThePolygon2dOfTheIntPCurvePCurveOfCInter::NbSegments()`
     pub fn HLRBRep_ThePolygon2dOfTheIntPCurvePCurveOfCInter_nb_segments(
         self_: *const HLRBRep_ThePolygon2dOfTheIntPCurvePCurveOfCInter,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `HLRBRep_ThePolygon2dOfTheIntPCurvePCurveOfCInter.hxx`:66 - `HLRBRep_ThePolygon2dOfTheIntPCurvePCurveOfCInter::Segment()`
+    /// **Source:** `HLRBRep_ThePolygon2dOfTheIntPCurvePCurveOfCInter.hxx`:67 - `HLRBRep_ThePolygon2dOfTheIntPCurvePCurveOfCInter::Segment()`
     pub fn HLRBRep_ThePolygon2dOfTheIntPCurvePCurveOfCInter_segment(
         self_: *const HLRBRep_ThePolygon2dOfTheIntPCurvePCurveOfCInter,
         theIndex: i32,
         theBegin: *mut gp_Pnt2d,
         theEnd: *mut gp_Pnt2d,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `HLRBRep_ThePolygon2dOfTheIntPCurvePCurveOfCInter.hxx`:72 - `HLRBRep_ThePolygon2dOfTheIntPCurvePCurveOfCInter::InfParameter()`
+    /// **Source:** `HLRBRep_ThePolygon2dOfTheIntPCurvePCurveOfCInter.hxx`:73 - `HLRBRep_ThePolygon2dOfTheIntPCurvePCurveOfCInter::InfParameter()`
     pub fn HLRBRep_ThePolygon2dOfTheIntPCurvePCurveOfCInter_inf_parameter(
         self_: *const HLRBRep_ThePolygon2dOfTheIntPCurvePCurveOfCInter,
     ) -> crate::OcctResult<f64>;
-    /// **Source:** `HLRBRep_ThePolygon2dOfTheIntPCurvePCurveOfCInter.hxx`:76 - `HLRBRep_ThePolygon2dOfTheIntPCurvePCurveOfCInter::SupParameter()`
+    /// **Source:** `HLRBRep_ThePolygon2dOfTheIntPCurvePCurveOfCInter.hxx`:77 - `HLRBRep_ThePolygon2dOfTheIntPCurvePCurveOfCInter::SupParameter()`
     pub fn HLRBRep_ThePolygon2dOfTheIntPCurvePCurveOfCInter_sup_parameter(
         self_: *const HLRBRep_ThePolygon2dOfTheIntPCurvePCurveOfCInter,
     ) -> crate::OcctResult<f64>;
-    /// **Source:** `HLRBRep_ThePolygon2dOfTheIntPCurvePCurveOfCInter.hxx`:78 - `HLRBRep_ThePolygon2dOfTheIntPCurvePCurveOfCInter::AutoIntersectionIsPossible()`
+    /// **Source:** `HLRBRep_ThePolygon2dOfTheIntPCurvePCurveOfCInter.hxx`:79 - `HLRBRep_ThePolygon2dOfTheIntPCurvePCurveOfCInter::AutoIntersectionIsPossible()`
     pub fn HLRBRep_ThePolygon2dOfTheIntPCurvePCurveOfCInter_auto_intersection_is_possible(
         self_: *const HLRBRep_ThePolygon2dOfTheIntPCurvePCurveOfCInter,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `HLRBRep_ThePolygon2dOfTheIntPCurvePCurveOfCInter.hxx`:82 - `HLRBRep_ThePolygon2dOfTheIntPCurvePCurveOfCInter::ApproxParamOnCurve()`
+    /// **Source:** `HLRBRep_ThePolygon2dOfTheIntPCurvePCurveOfCInter.hxx`:83 - `HLRBRep_ThePolygon2dOfTheIntPCurvePCurveOfCInter::ApproxParamOnCurve()`
     pub fn HLRBRep_ThePolygon2dOfTheIntPCurvePCurveOfCInter_approx_param_on_curve(
         self_: *const HLRBRep_ThePolygon2dOfTheIntPCurvePCurveOfCInter,
         Index: i32,
@@ -8106,9 +7226,9 @@ unsafe extern "C" {
         NbPnt: i32,
     ) -> crate::OcctResult<*mut HLRBRep_ThePolygonOfInterCSurf>;
     /// **Source:** `HLRBRep_ThePolygonOfInterCSurf.hxx`:47 - `HLRBRep_ThePolygonOfInterCSurf::HLRBRep_ThePolygonOfInterCSurf()`
-    pub fn HLRBRep_ThePolygonOfInterCSurf_ctor_lin_array1ofreal(
+    pub fn HLRBRep_ThePolygonOfInterCSurf_ctor_lin_arr1_double(
         Curve: *const gp_Lin,
-        Upars: *const TColStd_Array1OfReal,
+        Upars: *const NCollection_Array1_double,
     ) -> crate::OcctResult<*mut HLRBRep_ThePolygonOfInterCSurf>;
     /// **Source:** `HLRBRep_ThePolygonOfInterCSurf.hxx`:51 - `HLRBRep_ThePolygonOfInterCSurf::Bounding()`
     pub fn HLRBRep_ThePolygonOfInterCSurf_bounding(
@@ -8160,7 +7280,7 @@ unsafe extern "C" {
         Index: i32,
         ParamOnLine: f64,
     ) -> crate::OcctResult<f64>;
-    /// **Source:** `HLRBRep_ThePolygonOfInterCSurf.hxx`:90 - `HLRBRep_ThePolygonOfInterCSurf::Dump()`
+    /// **Source:** `HLRBRep_ThePolygonOfInterCSurf.hxx`:89 - `HLRBRep_ThePolygonOfInterCSurf::Dump()`
     pub fn HLRBRep_ThePolygonOfInterCSurf_dump(
         self_: *const HLRBRep_ThePolygonOfInterCSurf,
     ) -> *const std::ffi::c_char;
@@ -8171,33 +7291,33 @@ unsafe extern "C" {
     /// **Source:** `HLRBRep_ThePolygonToolOfInterCSurf.hxx` - `HLRBRep_ThePolygonToolOfInterCSurf::HLRBRep_ThePolygonToolOfInterCSurf()`
     pub fn HLRBRep_ThePolygonToolOfInterCSurf_ctor(
     ) -> crate::OcctResult<*mut HLRBRep_ThePolygonToolOfInterCSurf>;
-    /// **Source:** `HLRBRep_ThePolygonToolOfInterCSurf.hxx`:37 - `HLRBRep_ThePolygonToolOfInterCSurf::Bounding()`
+    /// **Source:** `HLRBRep_ThePolygonToolOfInterCSurf.hxx`:33 - `HLRBRep_ThePolygonToolOfInterCSurf::Bounding()`
     pub fn HLRBRep_ThePolygonToolOfInterCSurf_bounding(
         thePolygon: *const HLRBRep_ThePolygonOfInterCSurf,
     ) -> crate::OcctResult<*const Bnd_Box>;
-    /// **Source:** `HLRBRep_ThePolygonToolOfInterCSurf.hxx`:39 - `HLRBRep_ThePolygonToolOfInterCSurf::DeflectionOverEstimation()`
+    /// **Source:** `HLRBRep_ThePolygonToolOfInterCSurf.hxx`:38 - `HLRBRep_ThePolygonToolOfInterCSurf::DeflectionOverEstimation()`
     pub fn HLRBRep_ThePolygonToolOfInterCSurf_deflection_over_estimation(
         thePolygon: *const HLRBRep_ThePolygonOfInterCSurf,
     ) -> crate::OcctResult<f64>;
-    /// **Source:** `HLRBRep_ThePolygonToolOfInterCSurf.hxx`:41 - `HLRBRep_ThePolygonToolOfInterCSurf::Closed()`
+    /// **Source:** `HLRBRep_ThePolygonToolOfInterCSurf.hxx`:43 - `HLRBRep_ThePolygonToolOfInterCSurf::Closed()`
     pub fn HLRBRep_ThePolygonToolOfInterCSurf_closed(
         thePolygon: *const HLRBRep_ThePolygonOfInterCSurf,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `HLRBRep_ThePolygonToolOfInterCSurf.hxx`:43 - `HLRBRep_ThePolygonToolOfInterCSurf::NbSegments()`
+    /// **Source:** `HLRBRep_ThePolygonToolOfInterCSurf.hxx`:48 - `HLRBRep_ThePolygonToolOfInterCSurf::NbSegments()`
     pub fn HLRBRep_ThePolygonToolOfInterCSurf_nb_segments(
         thePolygon: *const HLRBRep_ThePolygonOfInterCSurf,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `HLRBRep_ThePolygonToolOfInterCSurf.hxx`:46 - `HLRBRep_ThePolygonToolOfInterCSurf::BeginOfSeg()`
+    /// **Source:** `HLRBRep_ThePolygonToolOfInterCSurf.hxx`:54 - `HLRBRep_ThePolygonToolOfInterCSurf::BeginOfSeg()`
     pub fn HLRBRep_ThePolygonToolOfInterCSurf_begin_of_seg(
         thePolygon: *const HLRBRep_ThePolygonOfInterCSurf,
         Index: i32,
     ) -> crate::OcctResult<*const gp_Pnt>;
-    /// **Source:** `HLRBRep_ThePolygonToolOfInterCSurf.hxx`:50 - `HLRBRep_ThePolygonToolOfInterCSurf::EndOfSeg()`
+    /// **Source:** `HLRBRep_ThePolygonToolOfInterCSurf.hxx`:60 - `HLRBRep_ThePolygonToolOfInterCSurf::EndOfSeg()`
     pub fn HLRBRep_ThePolygonToolOfInterCSurf_end_of_seg(
         thePolygon: *const HLRBRep_ThePolygonOfInterCSurf,
         Index: i32,
     ) -> crate::OcctResult<*const gp_Pnt>;
-    /// **Source:** `HLRBRep_ThePolygonToolOfInterCSurf.hxx`:53 - `HLRBRep_ThePolygonToolOfInterCSurf::Dump()`
+    /// **Source:** `HLRBRep_ThePolygonToolOfInterCSurf.hxx`:65 - `HLRBRep_ThePolygonToolOfInterCSurf::Dump()`
     pub fn HLRBRep_ThePolygonToolOfInterCSurf_dump(
         thePolygon: *const HLRBRep_ThePolygonOfInterCSurf,
     ) -> *const std::ffi::c_char;
@@ -8205,9 +7325,9 @@ unsafe extern "C" {
     pub fn HLRBRep_ThePolyhedronOfInterCSurf_destructor(
         self_: *mut HLRBRep_ThePolyhedronOfInterCSurf,
     );
-    /// **Source:** `HLRBRep_ThePolyhedronOfInterCSurf.hxx`:39 - `HLRBRep_ThePolyhedronOfInterCSurf::HLRBRep_ThePolyhedronOfInterCSurf()`
-    pub fn HLRBRep_ThePolyhedronOfInterCSurf_ctor_address_int2_real4(
-        Surface: *const *mut std::ffi::c_void,
+    /// **Source:** `HLRBRep_ThePolyhedronOfInterCSurf.hxx`:40 - `HLRBRep_ThePolyhedronOfInterCSurf::HLRBRep_ThePolyhedronOfInterCSurf()`
+    pub fn HLRBRep_ThePolyhedronOfInterCSurf_ctor_surfaceptr_int2_real4(
+        Surface: *mut HLRBRep_Surface,
         nbdU: i32,
         nbdV: i32,
         U1: f64,
@@ -8215,58 +7335,52 @@ unsafe extern "C" {
         U2: f64,
         V2: f64,
     ) -> crate::OcctResult<*mut HLRBRep_ThePolyhedronOfInterCSurf>;
-    /// **Source:** `HLRBRep_ThePolyhedronOfInterCSurf.hxx`:47 - `HLRBRep_ThePolyhedronOfInterCSurf::HLRBRep_ThePolyhedronOfInterCSurf()`
-    pub fn HLRBRep_ThePolyhedronOfInterCSurf_ctor_address_array1ofreal2(
-        Surface: *const *mut std::ffi::c_void,
-        Upars: *const TColStd_Array1OfReal,
-        Vpars: *const TColStd_Array1OfReal,
+    /// **Source:** `HLRBRep_ThePolyhedronOfInterCSurf.hxx`:48 - `HLRBRep_ThePolyhedronOfInterCSurf::HLRBRep_ThePolyhedronOfInterCSurf()`
+    pub fn HLRBRep_ThePolyhedronOfInterCSurf_ctor_surfaceptr_arr1_double2(
+        Surface: *mut HLRBRep_Surface,
+        Upars: *const NCollection_Array1_double,
+        Vpars: *const NCollection_Array1_double,
     ) -> crate::OcctResult<*mut HLRBRep_ThePolyhedronOfInterCSurf>;
-    /// **Source:** `HLRBRep_ThePolyhedronOfInterCSurf.hxx`:51 - `HLRBRep_ThePolyhedronOfInterCSurf::Destroy()`
+    /// **Source:** `HLRBRep_ThePolyhedronOfInterCSurf.hxx`:52 - `HLRBRep_ThePolyhedronOfInterCSurf::Destroy()`
     pub fn HLRBRep_ThePolyhedronOfInterCSurf_destroy(
         self_: *mut HLRBRep_ThePolyhedronOfInterCSurf,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `HLRBRep_ThePolyhedronOfInterCSurf.hxx`:55 - `HLRBRep_ThePolyhedronOfInterCSurf::DeflectionOverEstimation()`
+    /// **Source:** `HLRBRep_ThePolyhedronOfInterCSurf.hxx`:56 - `HLRBRep_ThePolyhedronOfInterCSurf::DeflectionOverEstimation()`
     pub fn HLRBRep_ThePolyhedronOfInterCSurf_deflection_over_estimation_real(
         self_: *mut HLRBRep_ThePolyhedronOfInterCSurf,
         flec: f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `HLRBRep_ThePolyhedronOfInterCSurf.hxx`:57 - `HLRBRep_ThePolyhedronOfInterCSurf::DeflectionOnTriangle()`
-    pub fn HLRBRep_ThePolyhedronOfInterCSurf_deflection_on_triangle(
-        self_: *const HLRBRep_ThePolyhedronOfInterCSurf,
-        Surface: *const *mut std::ffi::c_void,
-        Index: i32,
-    ) -> crate::OcctResult<f64>;
-    /// **Source:** `HLRBRep_ThePolyhedronOfInterCSurf.hxx`:60 - `HLRBRep_ThePolyhedronOfInterCSurf::UMinSingularity()`
+    /// **Source:** `HLRBRep_ThePolyhedronOfInterCSurf.hxx`:58 - `HLRBRep_ThePolyhedronOfInterCSurf::UMinSingularity()`
     pub fn HLRBRep_ThePolyhedronOfInterCSurf_u_min_singularity(
         self_: *mut HLRBRep_ThePolyhedronOfInterCSurf,
         Sing: bool,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `HLRBRep_ThePolyhedronOfInterCSurf.hxx`:62 - `HLRBRep_ThePolyhedronOfInterCSurf::UMaxSingularity()`
+    /// **Source:** `HLRBRep_ThePolyhedronOfInterCSurf.hxx`:60 - `HLRBRep_ThePolyhedronOfInterCSurf::UMaxSingularity()`
     pub fn HLRBRep_ThePolyhedronOfInterCSurf_u_max_singularity(
         self_: *mut HLRBRep_ThePolyhedronOfInterCSurf,
         Sing: bool,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `HLRBRep_ThePolyhedronOfInterCSurf.hxx`:64 - `HLRBRep_ThePolyhedronOfInterCSurf::VMinSingularity()`
+    /// **Source:** `HLRBRep_ThePolyhedronOfInterCSurf.hxx`:62 - `HLRBRep_ThePolyhedronOfInterCSurf::VMinSingularity()`
     pub fn HLRBRep_ThePolyhedronOfInterCSurf_v_min_singularity(
         self_: *mut HLRBRep_ThePolyhedronOfInterCSurf,
         Sing: bool,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `HLRBRep_ThePolyhedronOfInterCSurf.hxx`:66 - `HLRBRep_ThePolyhedronOfInterCSurf::VMaxSingularity()`
+    /// **Source:** `HLRBRep_ThePolyhedronOfInterCSurf.hxx`:64 - `HLRBRep_ThePolyhedronOfInterCSurf::VMaxSingularity()`
     pub fn HLRBRep_ThePolyhedronOfInterCSurf_v_max_singularity(
         self_: *mut HLRBRep_ThePolyhedronOfInterCSurf,
         Sing: bool,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `HLRBRep_ThePolyhedronOfInterCSurf.hxx`:69 - `HLRBRep_ThePolyhedronOfInterCSurf::Size()`
+    /// **Source:** `HLRBRep_ThePolyhedronOfInterCSurf.hxx`:67 - `HLRBRep_ThePolyhedronOfInterCSurf::Size()`
     pub fn HLRBRep_ThePolyhedronOfInterCSurf_size(
         self_: *const HLRBRep_ThePolyhedronOfInterCSurf,
         nbdu: *mut i32,
         nbdv: *mut i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `HLRBRep_ThePolyhedronOfInterCSurf.hxx`:72 - `HLRBRep_ThePolyhedronOfInterCSurf::NbTriangles()`
+    /// **Source:** `HLRBRep_ThePolyhedronOfInterCSurf.hxx`:70 - `HLRBRep_ThePolyhedronOfInterCSurf::NbTriangles()`
     pub fn HLRBRep_ThePolyhedronOfInterCSurf_nb_triangles(
         self_: *const HLRBRep_ThePolyhedronOfInterCSurf,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `HLRBRep_ThePolyhedronOfInterCSurf.hxx`:76 - `HLRBRep_ThePolyhedronOfInterCSurf::Triangle()`
+    /// **Source:** `HLRBRep_ThePolyhedronOfInterCSurf.hxx`:74 - `HLRBRep_ThePolyhedronOfInterCSurf::Triangle()`
     pub fn HLRBRep_ThePolyhedronOfInterCSurf_triangle(
         self_: *const HLRBRep_ThePolyhedronOfInterCSurf,
         Index: i32,
@@ -8274,7 +7388,7 @@ unsafe extern "C" {
         P2: *mut i32,
         P3: *mut i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `HLRBRep_ThePolyhedronOfInterCSurf.hxx`:87 - `HLRBRep_ThePolyhedronOfInterCSurf::TriConnex()`
+    /// **Source:** `HLRBRep_ThePolyhedronOfInterCSurf.hxx`:82 - `HLRBRep_ThePolyhedronOfInterCSurf::TriConnex()`
     pub fn HLRBRep_ThePolyhedronOfInterCSurf_tri_connex(
         self_: *const HLRBRep_ThePolyhedronOfInterCSurf,
         Triang: i32,
@@ -8283,11 +7397,11 @@ unsafe extern "C" {
         TriCon: *mut i32,
         OtherP: *mut i32,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `HLRBRep_ThePolyhedronOfInterCSurf.hxx`:95 - `HLRBRep_ThePolyhedronOfInterCSurf::NbPoints()`
+    /// **Source:** `HLRBRep_ThePolyhedronOfInterCSurf.hxx`:90 - `HLRBRep_ThePolyhedronOfInterCSurf::NbPoints()`
     pub fn HLRBRep_ThePolyhedronOfInterCSurf_nb_points(
         self_: *const HLRBRep_ThePolyhedronOfInterCSurf,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `HLRBRep_ThePolyhedronOfInterCSurf.hxx`:99 - `HLRBRep_ThePolyhedronOfInterCSurf::Point()`
+    /// **Source:** `HLRBRep_ThePolyhedronOfInterCSurf.hxx`:94 - `HLRBRep_ThePolyhedronOfInterCSurf::Point()`
     pub fn HLRBRep_ThePolyhedronOfInterCSurf_point_pnt_int2_real2(
         self_: *mut HLRBRep_ThePolyhedronOfInterCSurf,
         thePnt: *const gp_Pnt,
@@ -8296,87 +7410,87 @@ unsafe extern "C" {
         U: f64,
         V: f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `HLRBRep_ThePolyhedronOfInterCSurf.hxx`:106 - `HLRBRep_ThePolyhedronOfInterCSurf::Point()`
+    /// **Source:** `HLRBRep_ThePolyhedronOfInterCSurf.hxx`:101 - `HLRBRep_ThePolyhedronOfInterCSurf::Point()`
     pub fn HLRBRep_ThePolyhedronOfInterCSurf_point_int_real2(
         self_: *const HLRBRep_ThePolyhedronOfInterCSurf,
         Index: i32,
         U: *mut f64,
         V: *mut f64,
     ) -> crate::OcctResult<*const gp_Pnt>;
-    /// **Source:** `HLRBRep_ThePolyhedronOfInterCSurf.hxx`:111 - `HLRBRep_ThePolyhedronOfInterCSurf::Point()`
+    /// **Source:** `HLRBRep_ThePolyhedronOfInterCSurf.hxx`:104 - `HLRBRep_ThePolyhedronOfInterCSurf::Point()`
     pub fn HLRBRep_ThePolyhedronOfInterCSurf_point_int(
         self_: *const HLRBRep_ThePolyhedronOfInterCSurf,
         Index: i32,
     ) -> crate::OcctResult<*const gp_Pnt>;
-    /// **Source:** `HLRBRep_ThePolyhedronOfInterCSurf.hxx`:114 - `HLRBRep_ThePolyhedronOfInterCSurf::Point()`
+    /// **Source:** `HLRBRep_ThePolyhedronOfInterCSurf.hxx`:107 - `HLRBRep_ThePolyhedronOfInterCSurf::Point()`
     pub fn HLRBRep_ThePolyhedronOfInterCSurf_point_int_pnt(
         self_: *const HLRBRep_ThePolyhedronOfInterCSurf,
         Index: i32,
         P: *mut gp_Pnt,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `HLRBRep_ThePolyhedronOfInterCSurf.hxx`:117 - `HLRBRep_ThePolyhedronOfInterCSurf::Bounding()`
+    /// **Source:** `HLRBRep_ThePolyhedronOfInterCSurf.hxx`:110 - `HLRBRep_ThePolyhedronOfInterCSurf::Bounding()`
     pub fn HLRBRep_ThePolyhedronOfInterCSurf_bounding(
         self_: *const HLRBRep_ThePolyhedronOfInterCSurf,
     ) -> crate::OcctResult<*const Bnd_Box>;
-    /// **Source:** `HLRBRep_ThePolyhedronOfInterCSurf.hxx`:121 - `HLRBRep_ThePolyhedronOfInterCSurf::FillBounding()`
+    /// **Source:** `HLRBRep_ThePolyhedronOfInterCSurf.hxx`:114 - `HLRBRep_ThePolyhedronOfInterCSurf::FillBounding()`
     pub fn HLRBRep_ThePolyhedronOfInterCSurf_fill_bounding(
         self_: *mut HLRBRep_ThePolyhedronOfInterCSurf,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `HLRBRep_ThePolyhedronOfInterCSurf.hxx`:125 - `HLRBRep_ThePolyhedronOfInterCSurf::ComponentsBounding()`
+    /// **Source:** `HLRBRep_ThePolyhedronOfInterCSurf.hxx`:118 - `HLRBRep_ThePolyhedronOfInterCSurf::ComponentsBounding()`
     pub fn HLRBRep_ThePolyhedronOfInterCSurf_components_bounding(
         self_: *const HLRBRep_ThePolyhedronOfInterCSurf,
-    ) -> crate::OcctResult<*const HandleBndHArray1OfBox>;
-    /// **Source:** `HLRBRep_ThePolyhedronOfInterCSurf.hxx`:127 - `HLRBRep_ThePolyhedronOfInterCSurf::DeflectionOverEstimation()`
+    ) -> crate::OcctResult<*const Handle_NCollection_HArray1_Bnd_Box>;
+    /// **Source:** `HLRBRep_ThePolyhedronOfInterCSurf.hxx`:120 - `HLRBRep_ThePolyhedronOfInterCSurf::DeflectionOverEstimation()`
     pub fn HLRBRep_ThePolyhedronOfInterCSurf_deflection_over_estimation(
         self_: *const HLRBRep_ThePolyhedronOfInterCSurf,
     ) -> crate::OcctResult<f64>;
-    /// **Source:** `HLRBRep_ThePolyhedronOfInterCSurf.hxx`:129 - `HLRBRep_ThePolyhedronOfInterCSurf::HasUMinSingularity()`
+    /// **Source:** `HLRBRep_ThePolyhedronOfInterCSurf.hxx`:122 - `HLRBRep_ThePolyhedronOfInterCSurf::HasUMinSingularity()`
     pub fn HLRBRep_ThePolyhedronOfInterCSurf_has_u_min_singularity(
         self_: *const HLRBRep_ThePolyhedronOfInterCSurf,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `HLRBRep_ThePolyhedronOfInterCSurf.hxx`:131 - `HLRBRep_ThePolyhedronOfInterCSurf::HasUMaxSingularity()`
+    /// **Source:** `HLRBRep_ThePolyhedronOfInterCSurf.hxx`:124 - `HLRBRep_ThePolyhedronOfInterCSurf::HasUMaxSingularity()`
     pub fn HLRBRep_ThePolyhedronOfInterCSurf_has_u_max_singularity(
         self_: *const HLRBRep_ThePolyhedronOfInterCSurf,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `HLRBRep_ThePolyhedronOfInterCSurf.hxx`:133 - `HLRBRep_ThePolyhedronOfInterCSurf::HasVMinSingularity()`
+    /// **Source:** `HLRBRep_ThePolyhedronOfInterCSurf.hxx`:126 - `HLRBRep_ThePolyhedronOfInterCSurf::HasVMinSingularity()`
     pub fn HLRBRep_ThePolyhedronOfInterCSurf_has_v_min_singularity(
         self_: *const HLRBRep_ThePolyhedronOfInterCSurf,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `HLRBRep_ThePolyhedronOfInterCSurf.hxx`:135 - `HLRBRep_ThePolyhedronOfInterCSurf::HasVMaxSingularity()`
+    /// **Source:** `HLRBRep_ThePolyhedronOfInterCSurf.hxx`:128 - `HLRBRep_ThePolyhedronOfInterCSurf::HasVMaxSingularity()`
     pub fn HLRBRep_ThePolyhedronOfInterCSurf_has_v_max_singularity(
         self_: *const HLRBRep_ThePolyhedronOfInterCSurf,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `HLRBRep_ThePolyhedronOfInterCSurf.hxx`:138 - `HLRBRep_ThePolyhedronOfInterCSurf::PlaneEquation()`
+    /// **Source:** `HLRBRep_ThePolyhedronOfInterCSurf.hxx`:131 - `HLRBRep_ThePolyhedronOfInterCSurf::PlaneEquation()`
     pub fn HLRBRep_ThePolyhedronOfInterCSurf_plane_equation(
         self_: *const HLRBRep_ThePolyhedronOfInterCSurf,
         Triang: i32,
         NormalVector: *mut gp_XYZ,
         PolarDistance: *mut f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `HLRBRep_ThePolyhedronOfInterCSurf.hxx`:143 - `HLRBRep_ThePolyhedronOfInterCSurf::Contain()`
+    /// **Source:** `HLRBRep_ThePolyhedronOfInterCSurf.hxx`:136 - `HLRBRep_ThePolyhedronOfInterCSurf::Contain()`
     pub fn HLRBRep_ThePolyhedronOfInterCSurf_contain(
         self_: *const HLRBRep_ThePolyhedronOfInterCSurf,
         Triang: i32,
         ThePnt: *const gp_Pnt,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `HLRBRep_ThePolyhedronOfInterCSurf.hxx`:146 - `HLRBRep_ThePolyhedronOfInterCSurf::Parameters()`
+    /// **Source:** `HLRBRep_ThePolyhedronOfInterCSurf.hxx`:138 - `HLRBRep_ThePolyhedronOfInterCSurf::Parameters()`
     pub fn HLRBRep_ThePolyhedronOfInterCSurf_parameters(
         self_: *const HLRBRep_ThePolyhedronOfInterCSurf,
         Index: i32,
         U: *mut f64,
         V: *mut f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `HLRBRep_ThePolyhedronOfInterCSurf.hxx`:154 - `HLRBRep_ThePolyhedronOfInterCSurf::IsOnBound()`
+    /// **Source:** `HLRBRep_ThePolyhedronOfInterCSurf.hxx`:144 - `HLRBRep_ThePolyhedronOfInterCSurf::IsOnBound()`
     pub fn HLRBRep_ThePolyhedronOfInterCSurf_is_on_bound(
         self_: *const HLRBRep_ThePolyhedronOfInterCSurf,
         Index1: i32,
         Index2: i32,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `HLRBRep_ThePolyhedronOfInterCSurf.hxx`:158 - `HLRBRep_ThePolyhedronOfInterCSurf::GetBorderDeflection()`
+    /// **Source:** `HLRBRep_ThePolyhedronOfInterCSurf.hxx`:147 - `HLRBRep_ThePolyhedronOfInterCSurf::GetBorderDeflection()`
     pub fn HLRBRep_ThePolyhedronOfInterCSurf_get_border_deflection(
         self_: *const HLRBRep_ThePolyhedronOfInterCSurf,
     ) -> crate::OcctResult<f64>;
-    /// **Source:** `HLRBRep_ThePolyhedronOfInterCSurf.hxx`:160 - `HLRBRep_ThePolyhedronOfInterCSurf::Dump()`
+    /// **Source:** `HLRBRep_ThePolyhedronOfInterCSurf.hxx`:149 - `HLRBRep_ThePolyhedronOfInterCSurf::Dump()`
     pub fn HLRBRep_ThePolyhedronOfInterCSurf_dump(
         self_: *const HLRBRep_ThePolyhedronOfInterCSurf,
     ) -> *const std::ffi::c_char;
@@ -8387,23 +7501,23 @@ unsafe extern "C" {
     /// **Source:** `HLRBRep_ThePolyhedronToolOfInterCSurf.hxx` - `HLRBRep_ThePolyhedronToolOfInterCSurf::HLRBRep_ThePolyhedronToolOfInterCSurf()`
     pub fn HLRBRep_ThePolyhedronToolOfInterCSurf_ctor(
     ) -> crate::OcctResult<*mut HLRBRep_ThePolyhedronToolOfInterCSurf>;
-    /// **Source:** `HLRBRep_ThePolyhedronToolOfInterCSurf.hxx`:39 - `HLRBRep_ThePolyhedronToolOfInterCSurf::Bounding()`
+    /// **Source:** `HLRBRep_ThePolyhedronToolOfInterCSurf.hxx`:36 - `HLRBRep_ThePolyhedronToolOfInterCSurf::Bounding()`
     pub fn HLRBRep_ThePolyhedronToolOfInterCSurf_bounding(
         thePolyh: *const HLRBRep_ThePolyhedronOfInterCSurf,
     ) -> crate::OcctResult<*const Bnd_Box>;
     /// **Source:** `HLRBRep_ThePolyhedronToolOfInterCSurf.hxx`:43 - `HLRBRep_ThePolyhedronToolOfInterCSurf::ComponentsBounding()`
     pub fn HLRBRep_ThePolyhedronToolOfInterCSurf_components_bounding(
         thePolyh: *const HLRBRep_ThePolyhedronOfInterCSurf,
-    ) -> crate::OcctResult<*const HandleBndHArray1OfBox>;
-    /// **Source:** `HLRBRep_ThePolyhedronToolOfInterCSurf.hxx`:47 - `HLRBRep_ThePolyhedronToolOfInterCSurf::DeflectionOverEstimation()`
+    ) -> crate::OcctResult<*const Handle_NCollection_HArray1_Bnd_Box>;
+    /// **Source:** `HLRBRep_ThePolyhedronToolOfInterCSurf.hxx`:50 - `HLRBRep_ThePolyhedronToolOfInterCSurf::DeflectionOverEstimation()`
     pub fn HLRBRep_ThePolyhedronToolOfInterCSurf_deflection_over_estimation(
         thePolyh: *const HLRBRep_ThePolyhedronOfInterCSurf,
     ) -> crate::OcctResult<f64>;
-    /// **Source:** `HLRBRep_ThePolyhedronToolOfInterCSurf.hxx`:50 - `HLRBRep_ThePolyhedronToolOfInterCSurf::NbTriangles()`
+    /// **Source:** `HLRBRep_ThePolyhedronToolOfInterCSurf.hxx`:56 - `HLRBRep_ThePolyhedronToolOfInterCSurf::NbTriangles()`
     pub fn HLRBRep_ThePolyhedronToolOfInterCSurf_nb_triangles(
         thePolyh: *const HLRBRep_ThePolyhedronOfInterCSurf,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `HLRBRep_ThePolyhedronToolOfInterCSurf.hxx`:54 - `HLRBRep_ThePolyhedronToolOfInterCSurf::Triangle()`
+    /// **Source:** `HLRBRep_ThePolyhedronToolOfInterCSurf.hxx`:63 - `HLRBRep_ThePolyhedronToolOfInterCSurf::Triangle()`
     pub fn HLRBRep_ThePolyhedronToolOfInterCSurf_triangle(
         thePolyh: *const HLRBRep_ThePolyhedronOfInterCSurf,
         Index: i32,
@@ -8411,12 +7525,12 @@ unsafe extern "C" {
         P2: *mut i32,
         P3: *mut i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `HLRBRep_ThePolyhedronToolOfInterCSurf.hxx`:61 - `HLRBRep_ThePolyhedronToolOfInterCSurf::Point()`
+    /// **Source:** `HLRBRep_ThePolyhedronToolOfInterCSurf.hxx`:73 - `HLRBRep_ThePolyhedronToolOfInterCSurf::Point()`
     pub fn HLRBRep_ThePolyhedronToolOfInterCSurf_point(
         thePolyh: *const HLRBRep_ThePolyhedronOfInterCSurf,
         Index: i32,
     ) -> crate::OcctResult<*const gp_Pnt>;
-    /// **Source:** `HLRBRep_ThePolyhedronToolOfInterCSurf.hxx`:70 - `HLRBRep_ThePolyhedronToolOfInterCSurf::TriConnex()`
+    /// **Source:** `HLRBRep_ThePolyhedronToolOfInterCSurf.hxx`:84 - `HLRBRep_ThePolyhedronToolOfInterCSurf::TriConnex()`
     pub fn HLRBRep_ThePolyhedronToolOfInterCSurf_tri_connex(
         thePolyh: *const HLRBRep_ThePolyhedronOfInterCSurf,
         Triang: i32,
@@ -8425,17 +7539,17 @@ unsafe extern "C" {
         TriCon: *mut i32,
         OtherP: *mut i32,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `HLRBRep_ThePolyhedronToolOfInterCSurf.hxx`:80 - `HLRBRep_ThePolyhedronToolOfInterCSurf::IsOnBound()`
+    /// **Source:** `HLRBRep_ThePolyhedronToolOfInterCSurf.hxx`:97 - `HLRBRep_ThePolyhedronToolOfInterCSurf::IsOnBound()`
     pub fn HLRBRep_ThePolyhedronToolOfInterCSurf_is_on_bound(
         thePolyh: *const HLRBRep_ThePolyhedronOfInterCSurf,
         Index1: i32,
         Index2: i32,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `HLRBRep_ThePolyhedronToolOfInterCSurf.hxx`:85 - `HLRBRep_ThePolyhedronToolOfInterCSurf::GetBorderDeflection()`
+    /// **Source:** `HLRBRep_ThePolyhedronToolOfInterCSurf.hxx`:105 - `HLRBRep_ThePolyhedronToolOfInterCSurf::GetBorderDeflection()`
     pub fn HLRBRep_ThePolyhedronToolOfInterCSurf_get_border_deflection(
         thePolyh: *const HLRBRep_ThePolyhedronOfInterCSurf,
     ) -> crate::OcctResult<f64>;
-    /// **Source:** `HLRBRep_ThePolyhedronToolOfInterCSurf.hxx`:87 - `HLRBRep_ThePolyhedronToolOfInterCSurf::Dump()`
+    /// **Source:** `HLRBRep_ThePolyhedronToolOfInterCSurf.hxx`:110 - `HLRBRep_ThePolyhedronToolOfInterCSurf::Dump()`
     pub fn HLRBRep_ThePolyhedronToolOfInterCSurf_dump(
         thePolyh: *const HLRBRep_ThePolyhedronOfInterCSurf,
     ) -> *const std::ffi::c_char;
@@ -8443,14 +7557,14 @@ unsafe extern "C" {
     pub fn HLRBRep_TheProjPCurOfCInter_destructor(self_: *mut HLRBRep_TheProjPCurOfCInter);
     /// **Source:** `HLRBRep_TheProjPCurOfCInter.hxx` - `HLRBRep_TheProjPCurOfCInter::HLRBRep_TheProjPCurOfCInter()`
     pub fn HLRBRep_TheProjPCurOfCInter_ctor() -> crate::OcctResult<*mut HLRBRep_TheProjPCurOfCInter>;
-    /// **Source:** `HLRBRep_TheProjPCurOfCInter.hxx`:47 - `HLRBRep_TheProjPCurOfCInter::FindParameter()`
-    pub fn HLRBRep_TheProjPCurOfCInter_find_parameter_address_pnt2d_real(
+    /// **Source:** `HLRBRep_TheProjPCurOfCInter.hxx`:46 - `HLRBRep_TheProjPCurOfCInter::FindParameter()`
+    pub fn HLRBRep_TheProjPCurOfCInter_find_parameter_voidptr_pnt2d_real(
         C: *const *mut std::ffi::c_void,
         Pnt: *const gp_Pnt2d,
         Tol: f64,
     ) -> crate::OcctResult<f64>;
-    /// **Source:** `HLRBRep_TheProjPCurOfCInter.hxx`:65 - `HLRBRep_TheProjPCurOfCInter::FindParameter()`
-    pub fn HLRBRep_TheProjPCurOfCInter_find_parameter_address_pnt2d_real3(
+    /// **Source:** `HLRBRep_TheProjPCurOfCInter.hxx`:64 - `HLRBRep_TheProjPCurOfCInter::FindParameter()`
+    pub fn HLRBRep_TheProjPCurOfCInter_find_parameter_voidptr_pnt2d_real3(
         C: *const *mut std::ffi::c_void,
         Pnt: *const gp_Pnt2d,
         LowParameter: f64,
@@ -8461,29 +7575,29 @@ unsafe extern "C" {
     pub fn HLRBRep_TheQuadCurvExactInterCSurf_destructor(
         self_: *mut HLRBRep_TheQuadCurvExactInterCSurf,
     );
-    /// **Source:** `HLRBRep_TheQuadCurvExactInterCSurf.hxx`:38 - `HLRBRep_TheQuadCurvExactInterCSurf::HLRBRep_TheQuadCurvExactInterCSurf()`
-    pub fn HLRBRep_TheQuadCurvExactInterCSurf_ctor_address_lin(
-        S: *const *mut std::ffi::c_void,
+    /// **Source:** `HLRBRep_TheQuadCurvExactInterCSurf.hxx`:39 - `HLRBRep_TheQuadCurvExactInterCSurf::HLRBRep_TheQuadCurvExactInterCSurf()`
+    pub fn HLRBRep_TheQuadCurvExactInterCSurf_ctor_surfaceptr_lin(
+        S: *mut HLRBRep_Surface,
         C: *const gp_Lin,
     ) -> crate::OcctResult<*mut HLRBRep_TheQuadCurvExactInterCSurf>;
-    /// **Source:** `HLRBRep_TheQuadCurvExactInterCSurf.hxx`:40 - `HLRBRep_TheQuadCurvExactInterCSurf::IsDone()`
+    /// **Source:** `HLRBRep_TheQuadCurvExactInterCSurf.hxx`:41 - `HLRBRep_TheQuadCurvExactInterCSurf::IsDone()`
     pub fn HLRBRep_TheQuadCurvExactInterCSurf_is_done(
         self_: *const HLRBRep_TheQuadCurvExactInterCSurf,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `HLRBRep_TheQuadCurvExactInterCSurf.hxx`:42 - `HLRBRep_TheQuadCurvExactInterCSurf::NbRoots()`
+    /// **Source:** `HLRBRep_TheQuadCurvExactInterCSurf.hxx`:43 - `HLRBRep_TheQuadCurvExactInterCSurf::NbRoots()`
     pub fn HLRBRep_TheQuadCurvExactInterCSurf_nb_roots(
         self_: *const HLRBRep_TheQuadCurvExactInterCSurf,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `HLRBRep_TheQuadCurvExactInterCSurf.hxx`:44 - `HLRBRep_TheQuadCurvExactInterCSurf::Root()`
+    /// **Source:** `HLRBRep_TheQuadCurvExactInterCSurf.hxx`:45 - `HLRBRep_TheQuadCurvExactInterCSurf::Root()`
     pub fn HLRBRep_TheQuadCurvExactInterCSurf_root(
         self_: *const HLRBRep_TheQuadCurvExactInterCSurf,
         Index: i32,
     ) -> crate::OcctResult<f64>;
-    /// **Source:** `HLRBRep_TheQuadCurvExactInterCSurf.hxx`:46 - `HLRBRep_TheQuadCurvExactInterCSurf::NbIntervals()`
+    /// **Source:** `HLRBRep_TheQuadCurvExactInterCSurf.hxx`:47 - `HLRBRep_TheQuadCurvExactInterCSurf::NbIntervals()`
     pub fn HLRBRep_TheQuadCurvExactInterCSurf_nb_intervals(
         self_: *const HLRBRep_TheQuadCurvExactInterCSurf,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `HLRBRep_TheQuadCurvExactInterCSurf.hxx`:50 - `HLRBRep_TheQuadCurvExactInterCSurf::Intervals()`
+    /// **Source:** `HLRBRep_TheQuadCurvExactInterCSurf.hxx`:51 - `HLRBRep_TheQuadCurvExactInterCSurf::Intervals()`
     pub fn HLRBRep_TheQuadCurvExactInterCSurf_intervals(
         self_: *const HLRBRep_TheQuadCurvExactInterCSurf,
         Index: i32,
@@ -8505,13 +7619,13 @@ unsafe extern "C" {
         Param: f64,
         F: *mut f64,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `HLRBRep_TheQuadCurvFuncOfTheQuadCurvExactInterCSurf.hxx`:51 - `HLRBRep_TheQuadCurvFuncOfTheQuadCurvExactInterCSurf::Derivative()`
+    /// **Source:** `HLRBRep_TheQuadCurvFuncOfTheQuadCurvExactInterCSurf.hxx`:50 - `HLRBRep_TheQuadCurvFuncOfTheQuadCurvExactInterCSurf::Derivative()`
     pub fn HLRBRep_TheQuadCurvFuncOfTheQuadCurvExactInterCSurf_derivative(
         self_: *mut HLRBRep_TheQuadCurvFuncOfTheQuadCurvExactInterCSurf,
         Param: f64,
         D: *mut f64,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `HLRBRep_TheQuadCurvFuncOfTheQuadCurvExactInterCSurf.hxx`:56 - `HLRBRep_TheQuadCurvFuncOfTheQuadCurvExactInterCSurf::Values()`
+    /// **Source:** `HLRBRep_TheQuadCurvFuncOfTheQuadCurvExactInterCSurf.hxx`:54 - `HLRBRep_TheQuadCurvFuncOfTheQuadCurvExactInterCSurf::Values()`
     pub fn HLRBRep_TheQuadCurvFuncOfTheQuadCurvExactInterCSurf_values(
         self_: *mut HLRBRep_TheQuadCurvFuncOfTheQuadCurvExactInterCSurf,
         Param: f64,
@@ -8540,40 +7654,35 @@ unsafe extern "C" {
     ) -> crate::OcctResult<i32>;
     // ======================== HLRBRep_VertexList ========================
     pub fn HLRBRep_VertexList_destructor(self_: *mut HLRBRep_VertexList);
-    /// **Source:** `HLRBRep_VertexList.hxx`:35 - `HLRBRep_VertexList::HLRBRep_VertexList()`
-    pub fn HLRBRep_VertexList_ctor_edgeinterferencetool_listiteratorofinterferencelist(
-        T: *const HLRBRep_EdgeInterferenceTool,
-        I: *const HLRAlgo_ListIteratorOfInterferenceList,
-    ) -> crate::OcctResult<*mut HLRBRep_VertexList>;
-    /// **Source:** `HLRBRep_VertexList.hxx`:39 - `HLRBRep_VertexList::IsPeriodic()`
+    /// **Source:** `HLRBRep_VertexList.hxx`:41 - `HLRBRep_VertexList::IsPeriodic()`
     pub fn HLRBRep_VertexList_is_periodic(
         self_: *const HLRBRep_VertexList,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `HLRBRep_VertexList.hxx`:42 - `HLRBRep_VertexList::More()`
+    /// **Source:** `HLRBRep_VertexList.hxx`:44 - `HLRBRep_VertexList::More()`
     pub fn HLRBRep_VertexList_more(self_: *const HLRBRep_VertexList) -> crate::OcctResult<bool>;
-    /// **Source:** `HLRBRep_VertexList.hxx`:45 - `HLRBRep_VertexList::Next()`
+    /// **Source:** `HLRBRep_VertexList.hxx`:47 - `HLRBRep_VertexList::Next()`
     pub fn HLRBRep_VertexList_next(self_: *mut HLRBRep_VertexList) -> *const std::ffi::c_char;
-    /// **Source:** `HLRBRep_VertexList.hxx`:48 - `HLRBRep_VertexList::Current()`
+    /// **Source:** `HLRBRep_VertexList.hxx`:50 - `HLRBRep_VertexList::Current()`
     pub fn HLRBRep_VertexList_current(
         self_: *const HLRBRep_VertexList,
     ) -> crate::OcctResult<*const HLRAlgo_Intersection>;
-    /// **Source:** `HLRBRep_VertexList.hxx`:51 - `HLRBRep_VertexList::IsBoundary()`
+    /// **Source:** `HLRBRep_VertexList.hxx`:53 - `HLRBRep_VertexList::IsBoundary()`
     pub fn HLRBRep_VertexList_is_boundary(
         self_: *const HLRBRep_VertexList,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `HLRBRep_VertexList.hxx`:55 - `HLRBRep_VertexList::IsInterference()`
+    /// **Source:** `HLRBRep_VertexList.hxx`:57 - `HLRBRep_VertexList::IsInterference()`
     pub fn HLRBRep_VertexList_is_interference(
         self_: *const HLRBRep_VertexList,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `HLRBRep_VertexList.hxx`:59 - `HLRBRep_VertexList::Orientation()`
+    /// **Source:** `HLRBRep_VertexList.hxx`:61 - `HLRBRep_VertexList::Orientation()`
     pub fn HLRBRep_VertexList_orientation(
         self_: *const HLRBRep_VertexList,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `HLRBRep_VertexList.hxx`:63 - `HLRBRep_VertexList::Transition()`
+    /// **Source:** `HLRBRep_VertexList.hxx`:65 - `HLRBRep_VertexList::Transition()`
     pub fn HLRBRep_VertexList_transition(
         self_: *const HLRBRep_VertexList,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `HLRBRep_VertexList.hxx`:67 - `HLRBRep_VertexList::BoundaryTransition()`
+    /// **Source:** `HLRBRep_VertexList.hxx`:69 - `HLRBRep_VertexList::BoundaryTransition()`
     pub fn HLRBRep_VertexList_boundary_transition(
         self_: *const HLRBRep_VertexList,
     ) -> crate::OcctResult<i32>;
@@ -8581,12 +7690,12 @@ unsafe extern "C" {
     pub fn HLRTopoBRep_DSFiller_destructor(self_: *mut HLRTopoBRep_DSFiller);
     /// **Source:** `HLRTopoBRep_DSFiller.hxx` - `HLRTopoBRep_DSFiller::HLRTopoBRep_DSFiller()`
     pub fn HLRTopoBRep_DSFiller_ctor() -> crate::OcctResult<*mut HLRTopoBRep_DSFiller>;
-    /// **Source:** `HLRTopoBRep_DSFiller.hxx`:41 - `HLRTopoBRep_DSFiller::Insert()`
+    /// **Source:** `HLRTopoBRep_DSFiller.hxx`:44 - `HLRTopoBRep_DSFiller::Insert()`
     pub fn HLRTopoBRep_DSFiller_insert(
         S: *const TopoDS_Shape,
         FO: *mut Contap_Contour,
         DS: *mut HLRTopoBRep_Data,
-        MST: *mut BRepTopAdaptor_MapOfShapeTool,
+        MST: *mut NCollection_DataMap_TopoDS_Shape_BRepTopAdaptor_Tool_TopTools_ShapeMapHasher,
         nbIso: i32,
     ) -> *const std::ffi::c_char;
     // ======================== HLRTopoBRep_Data ========================
@@ -8623,127 +7732,127 @@ unsafe extern "C" {
         E1: *const TopoDS_Edge,
         E2: *const TopoDS_Edge,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `HLRTopoBRep_Data.hxx`:68 - `HLRTopoBRep_Data::IsIntLFaceEdge()`
+    /// **Source:** `HLRTopoBRep_Data.hxx`:67 - `HLRTopoBRep_Data::IsIntLFaceEdge()`
     pub fn HLRTopoBRep_Data_is_int_l_face_edge(
         self_: *const HLRTopoBRep_Data,
         F: *const TopoDS_Face,
         E: *const TopoDS_Edge,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `HLRTopoBRep_Data.hxx`:70 - `HLRTopoBRep_Data::IsOutLFaceEdge()`
+    /// **Source:** `HLRTopoBRep_Data.hxx`:69 - `HLRTopoBRep_Data::IsOutLFaceEdge()`
     pub fn HLRTopoBRep_Data_is_out_l_face_edge(
         self_: *const HLRTopoBRep_Data,
         F: *const TopoDS_Face,
         E: *const TopoDS_Edge,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `HLRTopoBRep_Data.hxx`:72 - `HLRTopoBRep_Data::IsIsoLFaceEdge()`
+    /// **Source:** `HLRTopoBRep_Data.hxx`:71 - `HLRTopoBRep_Data::IsIsoLFaceEdge()`
     pub fn HLRTopoBRep_Data_is_iso_l_face_edge(
         self_: *const HLRTopoBRep_Data,
         F: *const TopoDS_Face,
         E: *const TopoDS_Edge,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `HLRTopoBRep_Data.hxx`:74 - `HLRTopoBRep_Data::NewSOldS()`
+    /// **Source:** `HLRTopoBRep_Data.hxx`:73 - `HLRTopoBRep_Data::NewSOldS()`
     pub fn HLRTopoBRep_Data_new_s_old_s(
         self_: *const HLRTopoBRep_Data,
         New: *const TopoDS_Shape,
     ) -> crate::OcctResult<*mut TopoDS_Shape>;
-    /// **Source:** `HLRTopoBRep_Data.hxx`:77 - `HLRTopoBRep_Data::EdgeSplE()`
+    /// **Source:** `HLRTopoBRep_Data.hxx`:76 - `HLRTopoBRep_Data::EdgeSplE()`
     pub fn HLRTopoBRep_Data_edge_spl_e(
         self_: *const HLRTopoBRep_Data,
         E: *const TopoDS_Edge,
-    ) -> crate::OcctResult<*const TopTools_ListOfShape>;
-    /// **Source:** `HLRTopoBRep_Data.hxx`:80 - `HLRTopoBRep_Data::FaceIntL()`
+    ) -> crate::OcctResult<*const NCollection_List_TopoDS_Shape>;
+    /// **Source:** `HLRTopoBRep_Data.hxx`:79 - `HLRTopoBRep_Data::FaceIntL()`
     pub fn HLRTopoBRep_Data_face_int_l(
         self_: *const HLRTopoBRep_Data,
         F: *const TopoDS_Face,
-    ) -> crate::OcctResult<*const TopTools_ListOfShape>;
-    /// **Source:** `HLRTopoBRep_Data.hxx`:83 - `HLRTopoBRep_Data::FaceOutL()`
+    ) -> crate::OcctResult<*const NCollection_List_TopoDS_Shape>;
+    /// **Source:** `HLRTopoBRep_Data.hxx`:82 - `HLRTopoBRep_Data::FaceOutL()`
     pub fn HLRTopoBRep_Data_face_out_l(
         self_: *const HLRTopoBRep_Data,
         F: *const TopoDS_Face,
-    ) -> crate::OcctResult<*const TopTools_ListOfShape>;
-    /// **Source:** `HLRTopoBRep_Data.hxx`:86 - `HLRTopoBRep_Data::FaceIsoL()`
+    ) -> crate::OcctResult<*const NCollection_List_TopoDS_Shape>;
+    /// **Source:** `HLRTopoBRep_Data.hxx`:85 - `HLRTopoBRep_Data::FaceIsoL()`
     pub fn HLRTopoBRep_Data_face_iso_l(
         self_: *const HLRTopoBRep_Data,
         F: *const TopoDS_Face,
-    ) -> crate::OcctResult<*const TopTools_ListOfShape>;
-    /// **Source:** `HLRTopoBRep_Data.hxx`:90 - `HLRTopoBRep_Data::IsOutV()`
+    ) -> crate::OcctResult<*const NCollection_List_TopoDS_Shape>;
+    /// **Source:** `HLRTopoBRep_Data.hxx`:89 - `HLRTopoBRep_Data::IsOutV()`
     pub fn HLRTopoBRep_Data_is_out_v(
         self_: *const HLRTopoBRep_Data,
         V: *const TopoDS_Vertex,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `HLRTopoBRep_Data.hxx`:93 - `HLRTopoBRep_Data::IsIntV()`
+    /// **Source:** `HLRTopoBRep_Data.hxx`:92 - `HLRTopoBRep_Data::IsIntV()`
     pub fn HLRTopoBRep_Data_is_int_v(
         self_: *const HLRTopoBRep_Data,
         V: *const TopoDS_Vertex,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `HLRTopoBRep_Data.hxx`:95 - `HLRTopoBRep_Data::AddOldS()`
+    /// **Source:** `HLRTopoBRep_Data.hxx`:94 - `HLRTopoBRep_Data::AddOldS()`
     pub fn HLRTopoBRep_Data_add_old_s(
         self_: *mut HLRTopoBRep_Data,
         NewS: *const TopoDS_Shape,
         OldS: *const TopoDS_Shape,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `HLRTopoBRep_Data.hxx`:97 - `HLRTopoBRep_Data::AddSplE()`
+    /// **Source:** `HLRTopoBRep_Data.hxx`:96 - `HLRTopoBRep_Data::AddSplE()`
     pub fn HLRTopoBRep_Data_add_spl_e(
         self_: *mut HLRTopoBRep_Data,
         E: *const TopoDS_Edge,
-    ) -> crate::OcctResult<*mut TopTools_ListOfShape>;
-    /// **Source:** `HLRTopoBRep_Data.hxx`:99 - `HLRTopoBRep_Data::AddIntL()`
+    ) -> crate::OcctResult<*mut NCollection_List_TopoDS_Shape>;
+    /// **Source:** `HLRTopoBRep_Data.hxx`:98 - `HLRTopoBRep_Data::AddIntL()`
     pub fn HLRTopoBRep_Data_add_int_l(
         self_: *mut HLRTopoBRep_Data,
         F: *const TopoDS_Face,
-    ) -> crate::OcctResult<*mut TopTools_ListOfShape>;
-    /// **Source:** `HLRTopoBRep_Data.hxx`:101 - `HLRTopoBRep_Data::AddOutL()`
+    ) -> crate::OcctResult<*mut NCollection_List_TopoDS_Shape>;
+    /// **Source:** `HLRTopoBRep_Data.hxx`:100 - `HLRTopoBRep_Data::AddOutL()`
     pub fn HLRTopoBRep_Data_add_out_l(
         self_: *mut HLRTopoBRep_Data,
         F: *const TopoDS_Face,
-    ) -> crate::OcctResult<*mut TopTools_ListOfShape>;
-    /// **Source:** `HLRTopoBRep_Data.hxx`:103 - `HLRTopoBRep_Data::AddIsoL()`
+    ) -> crate::OcctResult<*mut NCollection_List_TopoDS_Shape>;
+    /// **Source:** `HLRTopoBRep_Data.hxx`:102 - `HLRTopoBRep_Data::AddIsoL()`
     pub fn HLRTopoBRep_Data_add_iso_l(
         self_: *mut HLRTopoBRep_Data,
         F: *const TopoDS_Face,
-    ) -> crate::OcctResult<*mut TopTools_ListOfShape>;
-    /// **Source:** `HLRTopoBRep_Data.hxx`:105 - `HLRTopoBRep_Data::AddOutV()`
+    ) -> crate::OcctResult<*mut NCollection_List_TopoDS_Shape>;
+    /// **Source:** `HLRTopoBRep_Data.hxx`:104 - `HLRTopoBRep_Data::AddOutV()`
     pub fn HLRTopoBRep_Data_add_out_v(
         self_: *mut HLRTopoBRep_Data,
         V: *const TopoDS_Vertex,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `HLRTopoBRep_Data.hxx`:107 - `HLRTopoBRep_Data::AddIntV()`
+    /// **Source:** `HLRTopoBRep_Data.hxx`:106 - `HLRTopoBRep_Data::AddIntV()`
     pub fn HLRTopoBRep_Data_add_int_v(
         self_: *mut HLRTopoBRep_Data,
         V: *const TopoDS_Vertex,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `HLRTopoBRep_Data.hxx`:109 - `HLRTopoBRep_Data::InitEdge()`
+    /// **Source:** `HLRTopoBRep_Data.hxx`:108 - `HLRTopoBRep_Data::InitEdge()`
     pub fn HLRTopoBRep_Data_init_edge(self_: *mut HLRTopoBRep_Data) -> *const std::ffi::c_char;
-    /// **Source:** `HLRTopoBRep_Data.hxx`:111 - `HLRTopoBRep_Data::MoreEdge()`
+    /// **Source:** `HLRTopoBRep_Data.hxx`:110 - `HLRTopoBRep_Data::MoreEdge()`
     pub fn HLRTopoBRep_Data_more_edge(self_: *const HLRTopoBRep_Data) -> crate::OcctResult<bool>;
-    /// **Source:** `HLRTopoBRep_Data.hxx`:113 - `HLRTopoBRep_Data::NextEdge()`
+    /// **Source:** `HLRTopoBRep_Data.hxx`:112 - `HLRTopoBRep_Data::NextEdge()`
     pub fn HLRTopoBRep_Data_next_edge(self_: *mut HLRTopoBRep_Data) -> *const std::ffi::c_char;
-    /// **Source:** `HLRTopoBRep_Data.hxx`:115 - `HLRTopoBRep_Data::Edge()`
+    /// **Source:** `HLRTopoBRep_Data.hxx`:114 - `HLRTopoBRep_Data::Edge()`
     pub fn HLRTopoBRep_Data_edge(
         self_: *const HLRTopoBRep_Data,
     ) -> crate::OcctResult<*const TopoDS_Edge>;
-    /// **Source:** `HLRTopoBRep_Data.hxx`:118 - `HLRTopoBRep_Data::InitVertex()`
+    /// **Source:** `HLRTopoBRep_Data.hxx`:117 - `HLRTopoBRep_Data::InitVertex()`
     pub fn HLRTopoBRep_Data_init_vertex(
         self_: *mut HLRTopoBRep_Data,
         E: *const TopoDS_Edge,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `HLRTopoBRep_Data.hxx`:120 - `HLRTopoBRep_Data::MoreVertex()`
+    /// **Source:** `HLRTopoBRep_Data.hxx`:119 - `HLRTopoBRep_Data::MoreVertex()`
     pub fn HLRTopoBRep_Data_more_vertex(self_: *const HLRTopoBRep_Data) -> crate::OcctResult<bool>;
-    /// **Source:** `HLRTopoBRep_Data.hxx`:122 - `HLRTopoBRep_Data::NextVertex()`
+    /// **Source:** `HLRTopoBRep_Data.hxx`:121 - `HLRTopoBRep_Data::NextVertex()`
     pub fn HLRTopoBRep_Data_next_vertex(self_: *mut HLRTopoBRep_Data) -> *const std::ffi::c_char;
-    /// **Source:** `HLRTopoBRep_Data.hxx`:124 - `HLRTopoBRep_Data::Vertex()`
+    /// **Source:** `HLRTopoBRep_Data.hxx`:123 - `HLRTopoBRep_Data::Vertex()`
     pub fn HLRTopoBRep_Data_vertex(
         self_: *const HLRTopoBRep_Data,
     ) -> crate::OcctResult<*const TopoDS_Vertex>;
-    /// **Source:** `HLRTopoBRep_Data.hxx`:126 - `HLRTopoBRep_Data::Parameter()`
+    /// **Source:** `HLRTopoBRep_Data.hxx`:125 - `HLRTopoBRep_Data::Parameter()`
     pub fn HLRTopoBRep_Data_parameter(self_: *const HLRTopoBRep_Data) -> crate::OcctResult<f64>;
-    /// **Source:** `HLRTopoBRep_Data.hxx`:129 - `HLRTopoBRep_Data::InsertBefore()`
+    /// **Source:** `HLRTopoBRep_Data.hxx`:128 - `HLRTopoBRep_Data::InsertBefore()`
     pub fn HLRTopoBRep_Data_insert_before(
         self_: *mut HLRTopoBRep_Data,
         V: *const TopoDS_Vertex,
         P: f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `HLRTopoBRep_Data.hxx`:131 - `HLRTopoBRep_Data::Append()`
+    /// **Source:** `HLRTopoBRep_Data.hxx`:130 - `HLRTopoBRep_Data::Append()`
     pub fn HLRTopoBRep_Data_append(
         self_: *mut HLRTopoBRep_Data,
         V: *const TopoDS_Vertex,
@@ -8751,32 +7860,32 @@ unsafe extern "C" {
     ) -> *const std::ffi::c_char;
     // ======================== HLRTopoBRep_FaceData ========================
     pub fn HLRTopoBRep_FaceData_destructor(self_: *mut HLRTopoBRep_FaceData);
-    /// **Source:** `HLRTopoBRep_FaceData.hxx`:33 - `HLRTopoBRep_FaceData::HLRTopoBRep_FaceData()`
+    /// **Source:** `HLRTopoBRep_FaceData.hxx`:34 - `HLRTopoBRep_FaceData::HLRTopoBRep_FaceData()`
     pub fn HLRTopoBRep_FaceData_ctor() -> crate::OcctResult<*mut HLRTopoBRep_FaceData>;
-    /// **Source:** `HLRTopoBRep_FaceData.hxx`:35 - `HLRTopoBRep_FaceData::FaceIntL()`
+    /// **Source:** `HLRTopoBRep_FaceData.hxx`:36 - `HLRTopoBRep_FaceData::FaceIntL()`
     pub fn HLRTopoBRep_FaceData_face_int_l(
         self_: *const HLRTopoBRep_FaceData,
-    ) -> crate::OcctResult<*const TopTools_ListOfShape>;
-    /// **Source:** `HLRTopoBRep_FaceData.hxx`:37 - `HLRTopoBRep_FaceData::FaceOutL()`
+    ) -> crate::OcctResult<*const NCollection_List_TopoDS_Shape>;
+    /// **Source:** `HLRTopoBRep_FaceData.hxx`:38 - `HLRTopoBRep_FaceData::FaceOutL()`
     pub fn HLRTopoBRep_FaceData_face_out_l(
         self_: *const HLRTopoBRep_FaceData,
-    ) -> crate::OcctResult<*const TopTools_ListOfShape>;
-    /// **Source:** `HLRTopoBRep_FaceData.hxx`:39 - `HLRTopoBRep_FaceData::FaceIsoL()`
+    ) -> crate::OcctResult<*const NCollection_List_TopoDS_Shape>;
+    /// **Source:** `HLRTopoBRep_FaceData.hxx`:40 - `HLRTopoBRep_FaceData::FaceIsoL()`
     pub fn HLRTopoBRep_FaceData_face_iso_l(
         self_: *const HLRTopoBRep_FaceData,
-    ) -> crate::OcctResult<*const TopTools_ListOfShape>;
-    /// **Source:** `HLRTopoBRep_FaceData.hxx`:41 - `HLRTopoBRep_FaceData::AddIntL()`
+    ) -> crate::OcctResult<*const NCollection_List_TopoDS_Shape>;
+    /// **Source:** `HLRTopoBRep_FaceData.hxx`:42 - `HLRTopoBRep_FaceData::AddIntL()`
     pub fn HLRTopoBRep_FaceData_add_int_l(
         self_: *mut HLRTopoBRep_FaceData,
-    ) -> crate::OcctResult<*mut TopTools_ListOfShape>;
-    /// **Source:** `HLRTopoBRep_FaceData.hxx`:43 - `HLRTopoBRep_FaceData::AddOutL()`
+    ) -> crate::OcctResult<*mut NCollection_List_TopoDS_Shape>;
+    /// **Source:** `HLRTopoBRep_FaceData.hxx`:44 - `HLRTopoBRep_FaceData::AddOutL()`
     pub fn HLRTopoBRep_FaceData_add_out_l(
         self_: *mut HLRTopoBRep_FaceData,
-    ) -> crate::OcctResult<*mut TopTools_ListOfShape>;
-    /// **Source:** `HLRTopoBRep_FaceData.hxx`:45 - `HLRTopoBRep_FaceData::AddIsoL()`
+    ) -> crate::OcctResult<*mut NCollection_List_TopoDS_Shape>;
+    /// **Source:** `HLRTopoBRep_FaceData.hxx`:46 - `HLRTopoBRep_FaceData::AddIsoL()`
     pub fn HLRTopoBRep_FaceData_add_iso_l(
         self_: *mut HLRTopoBRep_FaceData,
-    ) -> crate::OcctResult<*mut TopTools_ListOfShape>;
+    ) -> crate::OcctResult<*mut NCollection_List_TopoDS_Shape>;
     // ======================== HLRTopoBRep_FaceIsoLiner ========================
     pub fn HLRTopoBRep_FaceIsoLiner_destructor(self_: *mut HLRTopoBRep_FaceIsoLiner);
     /// **Source:** `HLRTopoBRep_FaceIsoLiner.hxx` - `HLRTopoBRep_FaceIsoLiner::HLRTopoBRep_FaceIsoLiner()`
@@ -8799,7 +7908,7 @@ unsafe extern "C" {
     /// **Source:** `HLRTopoBRep_FaceIsoLiner.hxx`:48 - `HLRTopoBRep_FaceIsoLiner::MakeIsoLine()`
     pub fn HLRTopoBRep_FaceIsoLiner_make_iso_line(
         F: *const TopoDS_Face,
-        Iso: *const HandleGeom2dLine,
+        Iso: *const Handle_Geom2d_Line,
         V1: *mut TopoDS_Vertex,
         V2: *mut TopoDS_Vertex,
         U1: f64,
@@ -8809,54 +7918,55 @@ unsafe extern "C" {
     ) -> *const std::ffi::c_char;
     // ======================== HLRTopoBRep_OutLiner ========================
     pub fn HLRTopoBRep_OutLiner_destructor(self_: *mut HLRTopoBRep_OutLiner);
-    /// **Source:** `HLRTopoBRep_OutLiner.hxx`:38 - `HLRTopoBRep_OutLiner::HLRTopoBRep_OutLiner()`
+    /// **Source:** `HLRTopoBRep_OutLiner.hxx`:37 - `HLRTopoBRep_OutLiner::HLRTopoBRep_OutLiner()`
     pub fn HLRTopoBRep_OutLiner_ctor() -> crate::OcctResult<*mut HLRTopoBRep_OutLiner>;
-    /// **Source:** `HLRTopoBRep_OutLiner.hxx`:40 - `HLRTopoBRep_OutLiner::HLRTopoBRep_OutLiner()`
+    /// **Source:** `HLRTopoBRep_OutLiner.hxx`:39 - `HLRTopoBRep_OutLiner::HLRTopoBRep_OutLiner()`
     pub fn HLRTopoBRep_OutLiner_ctor_shape(
         OriSh: *const TopoDS_Shape,
     ) -> crate::OcctResult<*mut HLRTopoBRep_OutLiner>;
-    /// **Source:** `HLRTopoBRep_OutLiner.hxx`:42 - `HLRTopoBRep_OutLiner::HLRTopoBRep_OutLiner()`
+    /// **Source:** `HLRTopoBRep_OutLiner.hxx`:41 - `HLRTopoBRep_OutLiner::HLRTopoBRep_OutLiner()`
     pub fn HLRTopoBRep_OutLiner_ctor_shape2(
         OriS: *const TopoDS_Shape,
         OutS: *const TopoDS_Shape,
     ) -> crate::OcctResult<*mut HLRTopoBRep_OutLiner>;
-    /// **Source:** `HLRTopoBRep_OutLiner.hxx`:44 - `HLRTopoBRep_OutLiner::OriginalShape()`
+    /// **Source:** `HLRTopoBRep_OutLiner.hxx`:43 - `HLRTopoBRep_OutLiner::OriginalShape()`
     pub fn HLRTopoBRep_OutLiner_original_shape_shape(
         self_: *mut HLRTopoBRep_OutLiner,
         OriS: *const TopoDS_Shape,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `HLRTopoBRep_OutLiner.hxx`:46 - `HLRTopoBRep_OutLiner::OriginalShape()`
+    /// **Source:** `HLRTopoBRep_OutLiner.hxx`:45 - `HLRTopoBRep_OutLiner::OriginalShape()`
     pub fn HLRTopoBRep_OutLiner_original_shape(
         self_: *mut HLRTopoBRep_OutLiner,
     ) -> crate::OcctResult<*mut TopoDS_Shape>;
-    /// **Source:** `HLRTopoBRep_OutLiner.hxx`:48 - `HLRTopoBRep_OutLiner::OutLinedShape()`
+    /// **Source:** `HLRTopoBRep_OutLiner.hxx`:47 - `HLRTopoBRep_OutLiner::OutLinedShape()`
     pub fn HLRTopoBRep_OutLiner_out_lined_shape_shape(
         self_: *mut HLRTopoBRep_OutLiner,
         OutS: *const TopoDS_Shape,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `HLRTopoBRep_OutLiner.hxx`:50 - `HLRTopoBRep_OutLiner::OutLinedShape()`
+    /// **Source:** `HLRTopoBRep_OutLiner.hxx`:49 - `HLRTopoBRep_OutLiner::OutLinedShape()`
     pub fn HLRTopoBRep_OutLiner_out_lined_shape(
         self_: *mut HLRTopoBRep_OutLiner,
     ) -> crate::OcctResult<*mut TopoDS_Shape>;
-    /// **Source:** `HLRTopoBRep_OutLiner.hxx`:52 - `HLRTopoBRep_OutLiner::DataStructure()`
+    /// **Source:** `HLRTopoBRep_OutLiner.hxx`:51 - `HLRTopoBRep_OutLiner::DataStructure()`
     pub fn HLRTopoBRep_OutLiner_data_structure(
         self_: *mut HLRTopoBRep_OutLiner,
     ) -> crate::OcctResult<*mut HLRTopoBRep_Data>;
-    /// **Source:** `HLRTopoBRep_OutLiner.hxx`:54 - `HLRTopoBRep_OutLiner::Fill()`
+    /// **Source:** `HLRTopoBRep_OutLiner.hxx`:53 - `HLRTopoBRep_OutLiner::Fill()`
     pub fn HLRTopoBRep_OutLiner_fill(
         self_: *mut HLRTopoBRep_OutLiner,
         P: *const HLRAlgo_Projector,
-        MST: *mut BRepTopAdaptor_MapOfShapeTool,
+        MST: *mut NCollection_DataMap_TopoDS_Shape_BRepTopAdaptor_Tool_TopTools_ShapeMapHasher,
         nbIso: i32,
     ) -> *const std::ffi::c_char;
     /// **Source:** `HLRTopoBRep_OutLiner.hxx`:58 - `HLRTopoBRep_OutLiner::DynamicType()`
     pub fn HLRTopoBRep_OutLiner_dynamic_type(
         self_: *const HLRTopoBRep_OutLiner,
-    ) -> crate::OcctResult<*const HandleStandardType>;
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// **Source:** `HLRTopoBRep_OutLiner.hxx`:58 - `HLRTopoBRep_OutLiner::get_type_name()`
     pub fn HLRTopoBRep_OutLiner_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
     /// **Source:** `HLRTopoBRep_OutLiner.hxx`:58 - `HLRTopoBRep_OutLiner::get_type_descriptor()`
-    pub fn HLRTopoBRep_OutLiner_get_type_descriptor() -> crate::OcctResult<*const HandleStandardType>;
+    pub fn HLRTopoBRep_OutLiner_get_type_descriptor(
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast HLRTopoBRep_OutLiner to Standard_Transient
     pub fn HLRTopoBRep_OutLiner_as_Standard_Transient(
         self_: *const HLRTopoBRep_OutLiner,
@@ -8868,54 +7978,54 @@ unsafe extern "C" {
     /// Wrap HLRTopoBRep_OutLiner in a Handle
     pub fn HLRTopoBRep_OutLiner_to_handle(
         obj: *mut HLRTopoBRep_OutLiner,
-    ) -> crate::OcctResult<*mut HandleHLRTopoBRepOutLiner>;
+    ) -> crate::OcctResult<*mut Handle_HLRTopoBRep_OutLiner>;
     /// Destroy Handle<HLRTopoBRep_OutLiner>
-    pub fn HandleHLRTopoBRepOutLiner_destructor(self_: *mut HandleHLRTopoBRepOutLiner);
+    pub fn Handle_HLRTopoBRep_OutLiner_destructor(self_: *mut Handle_HLRTopoBRep_OutLiner);
     /// Clone Handle<HLRTopoBRep_OutLiner> (increments reference count)
-    pub fn HandleHLRTopoBRepOutLiner_clone(
-        self_: *const HandleHLRTopoBRepOutLiner,
-    ) -> crate::OcctResult<*mut HandleHLRTopoBRepOutLiner>;
+    pub fn Handle_HLRTopoBRep_OutLiner_clone(
+        self_: *const Handle_HLRTopoBRep_OutLiner,
+    ) -> crate::OcctResult<*mut Handle_HLRTopoBRep_OutLiner>;
     /// Check if Handle<HLRTopoBRep_OutLiner> is null
-    pub fn HandleHLRTopoBRepOutLiner_is_null(self_: *const HandleHLRTopoBRepOutLiner) -> bool;
+    pub fn Handle_HLRTopoBRep_OutLiner_is_null(self_: *const Handle_HLRTopoBRep_OutLiner) -> bool;
     /// Dereference Handle to get *const HLRTopoBRep_OutLiner
-    pub fn HandleHLRTopoBRepOutLiner_get(
-        handle: *const HandleHLRTopoBRepOutLiner,
+    pub fn Handle_HLRTopoBRep_OutLiner_get(
+        handle: *const Handle_HLRTopoBRep_OutLiner,
     ) -> crate::OcctResult<*const HLRTopoBRep_OutLiner>;
     /// Dereference Handle to get *mut HLRTopoBRep_OutLiner
-    pub fn HandleHLRTopoBRepOutLiner_get_mut(
-        handle: *mut HandleHLRTopoBRepOutLiner,
+    pub fn Handle_HLRTopoBRep_OutLiner_get_mut(
+        handle: *mut Handle_HLRTopoBRep_OutLiner,
     ) -> crate::OcctResult<*mut HLRTopoBRep_OutLiner>;
     /// Upcast Handle<HLRTopoBRep_OutLiner> to Handle<Standard_Transient>
-    pub fn HandleHLRTopoBRepOutLiner_to_HandleStandardTransient(
-        self_: *const HandleHLRTopoBRepOutLiner,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn Handle_HLRTopoBRep_OutLiner_to_Handle_Standard_Transient(
+        self_: *const Handle_HLRTopoBRep_OutLiner,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn HLRTopoBRep_OutLiner_inherited_IsInstance(
         self_: *const HLRTopoBRep_OutLiner,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn HLRTopoBRep_OutLiner_inherited_IsKind(
         self_: *const HLRTopoBRep_OutLiner,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn HLRTopoBRep_OutLiner_inherited_This(
         self_: *const HLRTopoBRep_OutLiner,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn HLRTopoBRep_OutLiner_inherited_GetRefCount(
         self_: *const HLRTopoBRep_OutLiner,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn HLRTopoBRep_OutLiner_inherited_IncrementRefCounter(
         self_: *mut HLRTopoBRep_OutLiner,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn HLRTopoBRep_OutLiner_inherited_DecrementRefCounter(
         self_: *mut HLRTopoBRep_OutLiner,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn HLRTopoBRep_OutLiner_inherited_Delete(
         self_: *const HLRTopoBRep_OutLiner,
     ) -> *const std::ffi::c_char;
@@ -8966,167 +8076,167 @@ unsafe extern "C" {
         End: *mut f64,
         TolEnd: *mut f32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `Intrv_Interval.hxx`:68 - `Intrv_Interval::SetStart()`
+    /// **Source:** `Intrv_Interval.hxx`:65 - `Intrv_Interval::SetStart()`
     pub fn Intrv_Interval_set_start(
         self_: *mut Intrv_Interval,
         Start: f64,
         TolStart: f32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `Intrv_Interval.hxx`:74 - `Intrv_Interval::FuseAtStart()`
+    /// **Source:** `Intrv_Interval.hxx`:71 - `Intrv_Interval::FuseAtStart()`
     pub fn Intrv_Interval_fuse_at_start(
         self_: *mut Intrv_Interval,
         Start: f64,
         TolStart: f32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `Intrv_Interval.hxx`:80 - `Intrv_Interval::CutAtStart()`
+    /// **Source:** `Intrv_Interval.hxx`:77 - `Intrv_Interval::CutAtStart()`
     pub fn Intrv_Interval_cut_at_start(
         self_: *mut Intrv_Interval,
         Start: f64,
         TolStart: f32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `Intrv_Interval.hxx`:82 - `Intrv_Interval::SetEnd()`
+    /// **Source:** `Intrv_Interval.hxx`:79 - `Intrv_Interval::SetEnd()`
     pub fn Intrv_Interval_set_end(
         self_: *mut Intrv_Interval,
         End: f64,
         TolEnd: f32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `Intrv_Interval.hxx`:88 - `Intrv_Interval::FuseAtEnd()`
+    /// **Source:** `Intrv_Interval.hxx`:85 - `Intrv_Interval::FuseAtEnd()`
     pub fn Intrv_Interval_fuse_at_end(
         self_: *mut Intrv_Interval,
         End: f64,
         TolEnd: f32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `Intrv_Interval.hxx`:94 - `Intrv_Interval::CutAtEnd()`
+    /// **Source:** `Intrv_Interval.hxx`:91 - `Intrv_Interval::CutAtEnd()`
     pub fn Intrv_Interval_cut_at_end(
         self_: *mut Intrv_Interval,
         End: f64,
         TolEnd: f32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `Intrv_Interval.hxx`:98 - `Intrv_Interval::IsProbablyEmpty()`
+    /// **Source:** `Intrv_Interval.hxx`:95 - `Intrv_Interval::IsProbablyEmpty()`
     pub fn Intrv_Interval_is_probably_empty(
         self_: *const Intrv_Interval,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `Intrv_Interval.hxx`:115 - `Intrv_Interval::Position()`
+    /// **Source:** `Intrv_Interval.hxx`:112 - `Intrv_Interval::Position()`
     pub fn Intrv_Interval_position(
         self_: *const Intrv_Interval,
         Other: *const Intrv_Interval,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `Intrv_Interval.hxx`:120 - `Intrv_Interval::IsBefore()`
+    /// **Source:** `Intrv_Interval.hxx`:117 - `Intrv_Interval::IsBefore()`
     pub fn Intrv_Interval_is_before(
         self_: *const Intrv_Interval,
         Other: *const Intrv_Interval,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `Intrv_Interval.hxx`:125 - `Intrv_Interval::IsAfter()`
+    /// **Source:** `Intrv_Interval.hxx`:122 - `Intrv_Interval::IsAfter()`
     pub fn Intrv_Interval_is_after(
         self_: *const Intrv_Interval,
         Other: *const Intrv_Interval,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `Intrv_Interval.hxx`:130 - `Intrv_Interval::IsInside()`
+    /// **Source:** `Intrv_Interval.hxx`:127 - `Intrv_Interval::IsInside()`
     pub fn Intrv_Interval_is_inside(
         self_: *const Intrv_Interval,
         Other: *const Intrv_Interval,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `Intrv_Interval.hxx`:135 - `Intrv_Interval::IsEnclosing()`
+    /// **Source:** `Intrv_Interval.hxx`:132 - `Intrv_Interval::IsEnclosing()`
     pub fn Intrv_Interval_is_enclosing(
         self_: *const Intrv_Interval,
         Other: *const Intrv_Interval,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `Intrv_Interval.hxx`:140 - `Intrv_Interval::IsJustEnclosingAtStart()`
+    /// **Source:** `Intrv_Interval.hxx`:137 - `Intrv_Interval::IsJustEnclosingAtStart()`
     pub fn Intrv_Interval_is_just_enclosing_at_start(
         self_: *const Intrv_Interval,
         Other: *const Intrv_Interval,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `Intrv_Interval.hxx`:145 - `Intrv_Interval::IsJustEnclosingAtEnd()`
+    /// **Source:** `Intrv_Interval.hxx`:142 - `Intrv_Interval::IsJustEnclosingAtEnd()`
     pub fn Intrv_Interval_is_just_enclosing_at_end(
         self_: *const Intrv_Interval,
         Other: *const Intrv_Interval,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `Intrv_Interval.hxx`:150 - `Intrv_Interval::IsJustBefore()`
+    /// **Source:** `Intrv_Interval.hxx`:147 - `Intrv_Interval::IsJustBefore()`
     pub fn Intrv_Interval_is_just_before(
         self_: *const Intrv_Interval,
         Other: *const Intrv_Interval,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `Intrv_Interval.hxx`:155 - `Intrv_Interval::IsJustAfter()`
+    /// **Source:** `Intrv_Interval.hxx`:152 - `Intrv_Interval::IsJustAfter()`
     pub fn Intrv_Interval_is_just_after(
         self_: *const Intrv_Interval,
         Other: *const Intrv_Interval,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `Intrv_Interval.hxx`:160 - `Intrv_Interval::IsOverlappingAtStart()`
+    /// **Source:** `Intrv_Interval.hxx`:157 - `Intrv_Interval::IsOverlappingAtStart()`
     pub fn Intrv_Interval_is_overlapping_at_start(
         self_: *const Intrv_Interval,
         Other: *const Intrv_Interval,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `Intrv_Interval.hxx`:165 - `Intrv_Interval::IsOverlappingAtEnd()`
+    /// **Source:** `Intrv_Interval.hxx`:162 - `Intrv_Interval::IsOverlappingAtEnd()`
     pub fn Intrv_Interval_is_overlapping_at_end(
         self_: *const Intrv_Interval,
         Other: *const Intrv_Interval,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `Intrv_Interval.hxx`:170 - `Intrv_Interval::IsJustOverlappingAtStart()`
+    /// **Source:** `Intrv_Interval.hxx`:167 - `Intrv_Interval::IsJustOverlappingAtStart()`
     pub fn Intrv_Interval_is_just_overlapping_at_start(
         self_: *const Intrv_Interval,
         Other: *const Intrv_Interval,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `Intrv_Interval.hxx`:175 - `Intrv_Interval::IsJustOverlappingAtEnd()`
+    /// **Source:** `Intrv_Interval.hxx`:172 - `Intrv_Interval::IsJustOverlappingAtEnd()`
     pub fn Intrv_Interval_is_just_overlapping_at_end(
         self_: *const Intrv_Interval,
         Other: *const Intrv_Interval,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `Intrv_Interval.hxx`:180 - `Intrv_Interval::IsSimilar()`
+    /// **Source:** `Intrv_Interval.hxx`:177 - `Intrv_Interval::IsSimilar()`
     pub fn Intrv_Interval_is_similar(
         self_: *const Intrv_Interval,
         Other: *const Intrv_Interval,
     ) -> crate::OcctResult<bool>;
     // ======================== Intrv_Intervals ========================
     pub fn Intrv_Intervals_destructor(self_: *mut Intrv_Intervals);
-    /// **Source:** `Intrv_Intervals.hxx`:35 - `Intrv_Intervals::Intrv_Intervals()`
+    /// **Source:** `Intrv_Intervals.hxx`:36 - `Intrv_Intervals::Intrv_Intervals()`
     pub fn Intrv_Intervals_ctor() -> crate::OcctResult<*mut Intrv_Intervals>;
-    /// **Source:** `Intrv_Intervals.hxx`:38 - `Intrv_Intervals::Intrv_Intervals()`
+    /// **Source:** `Intrv_Intervals.hxx`:39 - `Intrv_Intervals::Intrv_Intervals()`
     pub fn Intrv_Intervals_ctor_interval(
         Int: *const Intrv_Interval,
     ) -> crate::OcctResult<*mut Intrv_Intervals>;
-    /// **Source:** `Intrv_Intervals.hxx`:41 - `Intrv_Intervals::Intersect()`
+    /// **Source:** `Intrv_Intervals.hxx`:42 - `Intrv_Intervals::Intersect()`
     pub fn Intrv_Intervals_intersect_interval(
         self_: *mut Intrv_Intervals,
         Tool: *const Intrv_Interval,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `Intrv_Intervals.hxx`:45 - `Intrv_Intervals::Intersect()`
+    /// **Source:** `Intrv_Intervals.hxx`:46 - `Intrv_Intervals::Intersect()`
     pub fn Intrv_Intervals_intersect_intervals(
         self_: *mut Intrv_Intervals,
         Tool: *const Intrv_Intervals,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `Intrv_Intervals.hxx`:47 - `Intrv_Intervals::Subtract()`
+    /// **Source:** `Intrv_Intervals.hxx`:48 - `Intrv_Intervals::Subtract()`
     pub fn Intrv_Intervals_subtract_interval(
         self_: *mut Intrv_Intervals,
         Tool: *const Intrv_Interval,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `Intrv_Intervals.hxx`:49 - `Intrv_Intervals::Subtract()`
+    /// **Source:** `Intrv_Intervals.hxx`:50 - `Intrv_Intervals::Subtract()`
     pub fn Intrv_Intervals_subtract_intervals(
         self_: *mut Intrv_Intervals,
         Tool: *const Intrv_Intervals,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `Intrv_Intervals.hxx`:51 - `Intrv_Intervals::Unite()`
+    /// **Source:** `Intrv_Intervals.hxx`:52 - `Intrv_Intervals::Unite()`
     pub fn Intrv_Intervals_unite_interval(
         self_: *mut Intrv_Intervals,
         Tool: *const Intrv_Interval,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `Intrv_Intervals.hxx`:53 - `Intrv_Intervals::Unite()`
+    /// **Source:** `Intrv_Intervals.hxx`:54 - `Intrv_Intervals::Unite()`
     pub fn Intrv_Intervals_unite_intervals(
         self_: *mut Intrv_Intervals,
         Tool: *const Intrv_Intervals,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `Intrv_Intervals.hxx`:55 - `Intrv_Intervals::XUnite()`
+    /// **Source:** `Intrv_Intervals.hxx`:56 - `Intrv_Intervals::XUnite()`
     pub fn Intrv_Intervals_x_unite_interval(
         self_: *mut Intrv_Intervals,
         Tool: *const Intrv_Interval,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `Intrv_Intervals.hxx`:57 - `Intrv_Intervals::XUnite()`
+    /// **Source:** `Intrv_Intervals.hxx`:58 - `Intrv_Intervals::XUnite()`
     pub fn Intrv_Intervals_x_unite_intervals(
         self_: *mut Intrv_Intervals,
         Tool: *const Intrv_Intervals,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `Intrv_Intervals.hxx`:59 - `Intrv_Intervals::NbIntervals()`
+    /// **Source:** `Intrv_Intervals.hxx`:60 - `Intrv_Intervals::NbIntervals()`
     pub fn Intrv_Intervals_nb_intervals(self_: *const Intrv_Intervals) -> crate::OcctResult<i32>;
-    /// **Source:** `Intrv_Intervals.hxx`:61 - `Intrv_Intervals::Value()`
+    /// **Source:** `Intrv_Intervals.hxx`:62 - `Intrv_Intervals::Value()`
     pub fn Intrv_Intervals_value(
         self_: *const Intrv_Intervals,
         Index: i32,
@@ -9247,33 +8357,33 @@ unsafe extern "C" {
         Min: *mut f64,
         Max: *mut f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `HLRAlgo.hxx`:61 - `HLRAlgo::InitMinMax`
+    /// **Source:** `HLRAlgo.hxx`:59 - `HLRAlgo::InitMinMax`
     pub fn HLRAlgo_init_min_max(Big: f64, Min: *mut f64, Max: *mut f64) -> *const std::ffi::c_char;
-    /// **Source:** `HLRAlgo.hxx`:65 - `HLRAlgo::EncodeMinMax`
+    /// **Source:** `HLRAlgo.hxx`:61 - `HLRAlgo::EncodeMinMax`
     pub fn HLRAlgo_encode_min_max(
         Min: *mut HLRAlgo_EdgesBlock_MinMaxIndices,
         Max: *mut HLRAlgo_EdgesBlock_MinMaxIndices,
         MinMax: *mut HLRAlgo_EdgesBlock_MinMaxIndices,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `HLRAlgo.hxx`:69 - `HLRAlgo::SizeBox`
+    /// **Source:** `HLRAlgo.hxx`:65 - `HLRAlgo::SizeBox`
     pub fn HLRAlgo_size_box(
         Min: *mut HLRAlgo_EdgesBlock_MinMaxIndices,
         Max: *mut HLRAlgo_EdgesBlock_MinMaxIndices,
     ) -> crate::OcctResult<f64>;
-    /// **Source:** `HLRAlgo.hxx`:72 - `HLRAlgo::DecodeMinMax`
+    /// **Source:** `HLRAlgo.hxx`:68 - `HLRAlgo::DecodeMinMax`
     pub fn HLRAlgo_decode_min_max(
         MinMax: *const HLRAlgo_EdgesBlock_MinMaxIndices,
         Min: *mut HLRAlgo_EdgesBlock_MinMaxIndices,
         Max: *mut HLRAlgo_EdgesBlock_MinMaxIndices,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `HLRAlgo.hxx`:76 - `HLRAlgo::CopyMinMax`
+    /// **Source:** `HLRAlgo.hxx`:72 - `HLRAlgo::CopyMinMax`
     pub fn HLRAlgo_copy_min_max(
         IMin: *mut HLRAlgo_EdgesBlock_MinMaxIndices,
         IMax: *mut HLRAlgo_EdgesBlock_MinMaxIndices,
         OMin: *mut HLRAlgo_EdgesBlock_MinMaxIndices,
         OMax: *mut HLRAlgo_EdgesBlock_MinMaxIndices,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `HLRAlgo.hxx`:85 - `HLRAlgo::AddMinMax`
+    /// **Source:** `HLRAlgo.hxx`:81 - `HLRAlgo::AddMinMax`
     pub fn HLRAlgo_add_min_max(
         IMin: *mut HLRAlgo_EdgesBlock_MinMaxIndices,
         IMax: *mut HLRAlgo_EdgesBlock_MinMaxIndices,
@@ -9298,19 +8408,4 @@ unsafe extern "C" {
         OutAngl: *mut f64,
         OutDefl: *mut f64,
     ) -> *const std::ffi::c_char;
-
-    // Nested type & typedef type destructors
-    pub fn Contap_TheSequenceOfPoint_destructor(self_: *mut Contap_TheSequenceOfPoint);
-    pub fn HLRAlgo_Array1OfPHDat_destructor(self_: *mut HLRAlgo_Array1OfPHDat);
-    pub fn HLRAlgo_Array1OfPINod_destructor(self_: *mut HLRAlgo_Array1OfPINod);
-    pub fn HLRAlgo_Array1OfPISeg_destructor(self_: *mut HLRAlgo_Array1OfPISeg);
-    pub fn HLRAlgo_Array1OfTData_destructor(self_: *mut HLRAlgo_Array1OfTData);
-    pub fn HLRAlgo_InterferenceList_destructor(self_: *mut HLRAlgo_InterferenceList);
-    pub fn HLRAlgo_ListIteratorOfInterferenceList_destructor(
-        self_: *mut HLRAlgo_ListIteratorOfInterferenceList,
-    );
-    pub fn HLRAlgo_ListOfBPoint_destructor(self_: *mut HLRAlgo_ListOfBPoint);
-    pub fn HLRBRep_Array1OfEData_destructor(self_: *mut HLRBRep_Array1OfEData);
-    pub fn HLRBRep_Array1OfFData_destructor(self_: *mut HLRBRep_Array1OfFData);
-    pub fn HLRBRep_SeqOfShapeBounds_destructor(self_: *mut HLRBRep_SeqOfShapeBounds);
 }

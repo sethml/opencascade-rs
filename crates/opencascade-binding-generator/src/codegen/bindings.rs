@@ -20,6 +20,8 @@ const RUST_KEYWORDS: &[&str] = &[
     "self", "Self", "static", "struct", "super", "trait", "true", "type", "unsafe", "use",
     "where", "while", "async", "await", "dyn", "abstract", "become", "box", "do", "final",
     "macro", "override", "priv", "typeof", "unsized", "virtual", "yield", "try",
+    // Rust 2024 edition reserved keyword (generator functions)
+    "gen",
 ];
 
 // ── IR Structs ──────────────────────────────────────────────────────────────
@@ -574,7 +576,14 @@ fn classify_wrapper_kind(method: &Method, all_enums: &HashSet<String>) -> Wrappe
             Type::Class(name) => all_enums.contains(name),
             _ => false,
         };
-        is_class_or_handle && !is_enum
+        // Pointer typedefs (e.g., TopOpeBRepTool_Plos = NCollection_List<TopoDS_Shape>*)
+        // resolve to Type::Class but are actually pointers. Treat them as simple
+        // returns (pass-through), not ByValueReturn which would generate `new T(expr)`.
+        let is_pointer_typedef = match ty {
+            Type::Class(name) => crate::parser::is_pointer_typedef(name),
+            _ => false,
+        };
+        is_class_or_handle && !is_enum && !is_pointer_typedef
     });
 
     if has_mut_ref_enum_params(&method.params, all_enums) {
@@ -1444,7 +1453,18 @@ fn build_return_type_binding(ty: &Type, ffi_ctx: &TypeContext, reexport_ctx: Opt
     let rust_ffi_type = mapped.rust_type;
     let rust_reexport_type = return_type_to_rust_string(ty, reexport_ctx);
     let cpp_type = ty.to_cpp_string();
-    let needs_unique_ptr = (ty.is_class() && !ty.is_void_ptr() && !ty.is_primitive_class()) || ty.is_handle();
+    // needs_unique_ptr means "wrap the return in `new` to take ownership".
+    // Set for class value returns and Handle returns.
+    // Do NOT set for:
+    //   - Reference returns (& → use address-of `&expr` instead)
+    //   - Pointer returns (* → already a pointer, no new needed)
+    //   - Pointer typedefs like TopOpeBRepTool_Plos whose C++ definition
+    //     already contains `*` — resolved to Type::Class("TopOpeBRepTool_Plos")
+    //     but is actually a pointer, so `new` can't construct it.
+    let needs_unique_ptr = ((ty.is_class() && !ty.is_void_ptr() && !ty.is_primitive_class()) || ty.is_handle())
+        && !ty.is_reference()
+        && !cpp_type.contains('*')
+        && !crate::parser::is_pointer_typedef(cpp_type.trim_end_matches(" const").trim_end_matches('*'));
 
     ReturnTypeBinding {
         rust_ffi_type,
@@ -2155,7 +2175,7 @@ pub fn compute_class_bindings(
 
     ClassBindings {
         cpp_name: cpp_name.clone(),
-        cpp_qualified_name: class.name.clone(),
+        cpp_qualified_name: class.display_name.clone(),
         short_name: crate::type_mapping::safe_short_name(&crate::type_mapping::short_name_for_module(cpp_name, &class.module)),
         module: class.module.clone(),
         is_abstract: effectively_abstract,
@@ -2348,7 +2368,7 @@ fn overload_suffix_for_types(types: &[Type]) -> String {
 
     let type_names: Vec<String> = types
         .iter()
-        .map(|t| t.short_name().to_lowercase())
+        .map(|t| t.suffix_token().to_lowercase())
         .collect();
 
     let mut parts: Vec<String> = Vec::new();
@@ -3764,7 +3784,16 @@ pub fn compute_all_function_bindings(
 
         // Collect C++ headers needed for this function's types
         let mut headers: HashSet<String> = HashSet::new();
-        headers.insert(format!("{}.hxx", func.namespace));
+        // Only emit `<Namespace>.hxx` when the namespace has an umbrella header
+        // on disk (e.g. `Standard.hxx`, `Precision.hxx`), not for bare
+        // namespaces like `BVH` that only have individual class headers.
+        // Empty-namespace in global/anonymous scope is never emitted.
+        if !func.namespace.is_empty() {
+            let ns_header = format!("{}.hxx", func.namespace);
+            if known_headers.is_empty() || known_headers.contains(&ns_header) {
+                headers.insert(ns_header);
+            }
+        }
         for p in &func.params {
             collect_headers_for_type(&p.ty.original, &mut headers, known_headers);
         }
@@ -3816,11 +3845,15 @@ pub fn emit_cpp_class(bindings: &ClassBindings) -> String {
     // POD structs don't need C++ wrappers, but we generate a sizeof helper
     // so Rust tests can verify layout compatibility at runtime,
     // and a destructor so CppDeletable can be implemented (needed when returned by pointer).
+    // Skip both for non-allocatable classes (e.g., BRepGraphInc_BitFlags::BlockType
+    // has a private destructor, so emitting one would be a compile error).
     if bindings.is_pod_struct {
-        writeln!(output, "// sizeof helper for POD struct {}", cn).unwrap();
-        writeln!(output, "extern \"C\" size_t {}_sizeof() {{ return sizeof({}); }}", ffi_cn, cn).unwrap();
-        writeln!(output, "extern \"C\" void {}_destructor({}* self_) {{ delete self_; }}", ffi_cn, cn).unwrap();
-        writeln!(output).unwrap();
+        if !bindings.has_protected_destructor {
+            writeln!(output, "// sizeof helper for POD struct {}", cn).unwrap();
+            writeln!(output, "extern \"C\" size_t {}_sizeof() {{ return sizeof({}); }}", ffi_cn, cn).unwrap();
+            writeln!(output, "extern \"C\" void {}_destructor({}* self_) {{ delete self_; }}", ffi_cn, cn).unwrap();
+            writeln!(output).unwrap();
+        }
         return output;
     }
 
@@ -5411,6 +5444,7 @@ mod tests {
     fn test_compute_bindings_empty_class() {
         let class = ParsedClass {
             name: "gp_Pnt".to_string(),
+            display_name: "gp_Pnt".to_string(),
             module: "gp".to_string(),
             comment: None,
             source_header: "gp_Pnt.hxx".to_string(),
@@ -5497,6 +5531,7 @@ mod tests {
     fn test_abstract_class_no_constructors() {
         let class = ParsedClass {
             name: "Geom_Curve".to_string(),
+            display_name: "Geom_Curve".to_string(),
             module: "Geom".to_string(),
             comment: None,
             source_header: "Geom_Curve.hxx".to_string(),

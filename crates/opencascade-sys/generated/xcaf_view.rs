@@ -36,13 +36,13 @@ impl TryFrom<i32> for ProjectionType {
 }
 
 // Handle type re-exports (targets of handle upcasts/downcasts)
-pub use crate::ffi_types::HandleStandardTransient;
+pub use crate::ffi_types::Handle_Standard_Transient;
 
 // ========================
 // From XCAFView_Object.hxx
 // ========================
 
-/// **Source:** `XCAFView_Object.hxx`:32 - `XCAFView_Object`
+/// **Source:** `XCAFView_Object.hxx`:30 - `XCAFView_Object`
 /// Access object for saved view
 pub use crate::ffi_types::XCAFView_Object as Object;
 
@@ -55,7 +55,7 @@ unsafe impl crate::CppDeletable for Object {
 }
 
 impl Object {
-    /// **Source:** `XCAFView_Object.hxx`:36 - `XCAFView_Object::XCAFView_Object()`
+    /// **Source:** `XCAFView_Object.hxx`:34 - `XCAFView_Object::XCAFView_Object()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -64,9 +64,9 @@ impl Object {
         }
     }
 
-    /// **Source:** `XCAFView_Object.hxx`:38 - `XCAFView_Object::XCAFView_Object()`
+    /// **Source:** `XCAFView_Object.hxx`:36 - `XCAFView_Object::XCAFView_Object()`
     pub fn new_handlexcafviewobject(
-        theObj: &crate::ffi_types::HandleXCAFViewObject,
+        theObj: &crate::ffi_types::Handle_XCAFView_Object,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -75,15 +75,15 @@ impl Object {
         }
     }
 
-    /// **Source:** `XCAFView_Object.hxx`:40 - `XCAFView_Object::SetName()`
-    pub fn set_name(&mut self, theName: &crate::ffi_types::HandleTCollectionHAsciiString) {
+    /// **Source:** `XCAFView_Object.hxx`:38 - `XCAFView_Object::SetName()`
+    pub fn set_name(&mut self, theName: &crate::ffi_types::Handle_TCollection_HAsciiString) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKXCAF::XCAFView_Object_set_name(self as *mut Self, theName)
         })
     }
 
-    /// **Source:** `XCAFView_Object.hxx`:42 - `XCAFView_Object::Name()`
-    pub fn name(&mut self) -> crate::OwnedPtr<crate::ffi_types::HandleTCollectionHAsciiString> {
+    /// **Source:** `XCAFView_Object.hxx`:40 - `XCAFView_Object::Name()`
+    pub fn name(&mut self) -> crate::OwnedPtr<crate::ffi_types::Handle_TCollection_HAsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKXCAF::XCAFView_Object_name(self as *mut Self),
@@ -91,14 +91,14 @@ impl Object {
         }
     }
 
-    /// **Source:** `XCAFView_Object.hxx`:44 - `XCAFView_Object::SetType()`
+    /// **Source:** `XCAFView_Object.hxx`:42 - `XCAFView_Object::SetType()`
     pub fn set_type(&mut self, theType: crate::xcaf_view::ProjectionType) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKXCAF::XCAFView_Object_set_type(self as *mut Self, theType.into())
         })
     }
 
-    /// **Source:** `XCAFView_Object.hxx`:46 - `XCAFView_Object::Type()`
+    /// **Source:** `XCAFView_Object.hxx`:44 - `XCAFView_Object::Type()`
     pub fn type_(&mut self) -> crate::xcaf_view::ProjectionType {
         crate::xcaf_view::ProjectionType::try_from(crate::check_result(unsafe {
             crate::ffi_extern_TKXCAF::XCAFView_Object_type_(self as *mut Self)
@@ -106,7 +106,7 @@ impl Object {
         .unwrap()
     }
 
-    /// **Source:** `XCAFView_Object.hxx`:48 - `XCAFView_Object::SetProjectionPoint()`
+    /// **Source:** `XCAFView_Object.hxx`:46 - `XCAFView_Object::SetProjectionPoint()`
     pub fn set_projection_point(&mut self, thePoint: &crate::gp::Pnt) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKXCAF::XCAFView_Object_set_projection_point(
@@ -116,7 +116,7 @@ impl Object {
         })
     }
 
-    /// **Source:** `XCAFView_Object.hxx`:50 - `XCAFView_Object::ProjectionPoint()`
+    /// **Source:** `XCAFView_Object.hxx`:48 - `XCAFView_Object::ProjectionPoint()`
     pub fn projection_point(&mut self) -> crate::OwnedPtr<crate::gp::Pnt> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -125,7 +125,7 @@ impl Object {
         }
     }
 
-    /// **Source:** `XCAFView_Object.hxx`:52 - `XCAFView_Object::SetViewDirection()`
+    /// **Source:** `XCAFView_Object.hxx`:50 - `XCAFView_Object::SetViewDirection()`
     pub fn set_view_direction(&mut self, theDirection: &crate::gp::Dir) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKXCAF::XCAFView_Object_set_view_direction(
@@ -135,7 +135,7 @@ impl Object {
         })
     }
 
-    /// **Source:** `XCAFView_Object.hxx`:54 - `XCAFView_Object::ViewDirection()`
+    /// **Source:** `XCAFView_Object.hxx`:52 - `XCAFView_Object::ViewDirection()`
     pub fn view_direction(&mut self) -> crate::OwnedPtr<crate::gp::Dir> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -144,7 +144,7 @@ impl Object {
         }
     }
 
-    /// **Source:** `XCAFView_Object.hxx`:56 - `XCAFView_Object::SetUpDirection()`
+    /// **Source:** `XCAFView_Object.hxx`:54 - `XCAFView_Object::SetUpDirection()`
     pub fn set_up_direction(&mut self, theDirection: &crate::gp::Dir) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKXCAF::XCAFView_Object_set_up_direction(
@@ -154,7 +154,7 @@ impl Object {
         })
     }
 
-    /// **Source:** `XCAFView_Object.hxx`:58 - `XCAFView_Object::UpDirection()`
+    /// **Source:** `XCAFView_Object.hxx`:56 - `XCAFView_Object::UpDirection()`
     pub fn up_direction(&mut self) -> crate::OwnedPtr<crate::gp::Dir> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -163,7 +163,7 @@ impl Object {
         }
     }
 
-    /// **Source:** `XCAFView_Object.hxx`:60 - `XCAFView_Object::SetZoomFactor()`
+    /// **Source:** `XCAFView_Object.hxx`:58 - `XCAFView_Object::SetZoomFactor()`
     pub fn set_zoom_factor(&mut self, theZoomFactor: f64) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKXCAF::XCAFView_Object_set_zoom_factor(
@@ -173,14 +173,14 @@ impl Object {
         })
     }
 
-    /// **Source:** `XCAFView_Object.hxx`:62 - `XCAFView_Object::ZoomFactor()`
+    /// **Source:** `XCAFView_Object.hxx`:60 - `XCAFView_Object::ZoomFactor()`
     pub fn zoom_factor(&mut self) -> f64 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKXCAF::XCAFView_Object_zoom_factor(self as *mut Self)
         })
     }
 
-    /// **Source:** `XCAFView_Object.hxx`:64 - `XCAFView_Object::SetWindowHorizontalSize()`
+    /// **Source:** `XCAFView_Object.hxx`:62 - `XCAFView_Object::SetWindowHorizontalSize()`
     pub fn set_window_horizontal_size(&mut self, theSize: f64) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKXCAF::XCAFView_Object_set_window_horizontal_size(
@@ -190,14 +190,14 @@ impl Object {
         })
     }
 
-    /// **Source:** `XCAFView_Object.hxx`:66 - `XCAFView_Object::WindowHorizontalSize()`
+    /// **Source:** `XCAFView_Object.hxx`:64 - `XCAFView_Object::WindowHorizontalSize()`
     pub fn window_horizontal_size(&mut self) -> f64 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKXCAF::XCAFView_Object_window_horizontal_size(self as *mut Self)
         })
     }
 
-    /// **Source:** `XCAFView_Object.hxx`:68 - `XCAFView_Object::SetWindowVerticalSize()`
+    /// **Source:** `XCAFView_Object.hxx`:66 - `XCAFView_Object::SetWindowVerticalSize()`
     pub fn set_window_vertical_size(&mut self, theSize: f64) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKXCAF::XCAFView_Object_set_window_vertical_size(
@@ -207,17 +207,17 @@ impl Object {
         })
     }
 
-    /// **Source:** `XCAFView_Object.hxx`:70 - `XCAFView_Object::WindowVerticalSize()`
+    /// **Source:** `XCAFView_Object.hxx`:68 - `XCAFView_Object::WindowVerticalSize()`
     pub fn window_vertical_size(&mut self) -> f64 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKXCAF::XCAFView_Object_window_vertical_size(self as *mut Self)
         })
     }
 
-    /// **Source:** `XCAFView_Object.hxx`:72 - `XCAFView_Object::SetClippingExpression()`
+    /// **Source:** `XCAFView_Object.hxx`:70 - `XCAFView_Object::SetClippingExpression()`
     pub fn set_clipping_expression(
         &mut self,
-        theExpression: &crate::ffi_types::HandleTCollectionHAsciiString,
+        theExpression: &crate::ffi_types::Handle_TCollection_HAsciiString,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKXCAF::XCAFView_Object_set_clipping_expression(
@@ -227,10 +227,10 @@ impl Object {
         })
     }
 
-    /// **Source:** `XCAFView_Object.hxx`:77 - `XCAFView_Object::ClippingExpression()`
+    /// **Source:** `XCAFView_Object.hxx`:75 - `XCAFView_Object::ClippingExpression()`
     pub fn clipping_expression(
         &mut self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleTCollectionHAsciiString> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_TCollection_HAsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKXCAF::XCAFView_Object_clipping_expression(self as *mut Self),
@@ -238,21 +238,21 @@ impl Object {
         }
     }
 
-    /// **Source:** `XCAFView_Object.hxx`:79 - `XCAFView_Object::UnsetFrontPlaneClipping()`
+    /// **Source:** `XCAFView_Object.hxx`:77 - `XCAFView_Object::UnsetFrontPlaneClipping()`
     pub fn unset_front_plane_clipping(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKXCAF::XCAFView_Object_unset_front_plane_clipping(self as *mut Self)
         })
     }
 
-    /// **Source:** `XCAFView_Object.hxx`:81 - `XCAFView_Object::HasFrontPlaneClipping()`
+    /// **Source:** `XCAFView_Object.hxx`:79 - `XCAFView_Object::HasFrontPlaneClipping()`
     pub fn has_front_plane_clipping(&mut self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKXCAF::XCAFView_Object_has_front_plane_clipping(self as *mut Self)
         })
     }
 
-    /// **Source:** `XCAFView_Object.hxx`:83 - `XCAFView_Object::SetFrontPlaneDistance()`
+    /// **Source:** `XCAFView_Object.hxx`:81 - `XCAFView_Object::SetFrontPlaneDistance()`
     pub fn set_front_plane_distance(&mut self, theDistance: f64) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKXCAF::XCAFView_Object_set_front_plane_distance(
@@ -262,28 +262,28 @@ impl Object {
         })
     }
 
-    /// **Source:** `XCAFView_Object.hxx`:89 - `XCAFView_Object::FrontPlaneDistance()`
+    /// **Source:** `XCAFView_Object.hxx`:87 - `XCAFView_Object::FrontPlaneDistance()`
     pub fn front_plane_distance(&mut self) -> f64 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKXCAF::XCAFView_Object_front_plane_distance(self as *mut Self)
         })
     }
 
-    /// **Source:** `XCAFView_Object.hxx`:91 - `XCAFView_Object::UnsetBackPlaneClipping()`
+    /// **Source:** `XCAFView_Object.hxx`:89 - `XCAFView_Object::UnsetBackPlaneClipping()`
     pub fn unset_back_plane_clipping(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKXCAF::XCAFView_Object_unset_back_plane_clipping(self as *mut Self)
         })
     }
 
-    /// **Source:** `XCAFView_Object.hxx`:93 - `XCAFView_Object::HasBackPlaneClipping()`
+    /// **Source:** `XCAFView_Object.hxx`:91 - `XCAFView_Object::HasBackPlaneClipping()`
     pub fn has_back_plane_clipping(&mut self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKXCAF::XCAFView_Object_has_back_plane_clipping(self as *mut Self)
         })
     }
 
-    /// **Source:** `XCAFView_Object.hxx`:95 - `XCAFView_Object::SetBackPlaneDistance()`
+    /// **Source:** `XCAFView_Object.hxx`:93 - `XCAFView_Object::SetBackPlaneDistance()`
     pub fn set_back_plane_distance(&mut self, theDistance: f64) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKXCAF::XCAFView_Object_set_back_plane_distance(
@@ -293,14 +293,14 @@ impl Object {
         })
     }
 
-    /// **Source:** `XCAFView_Object.hxx`:101 - `XCAFView_Object::BackPlaneDistance()`
+    /// **Source:** `XCAFView_Object.hxx`:99 - `XCAFView_Object::BackPlaneDistance()`
     pub fn back_plane_distance(&mut self) -> f64 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKXCAF::XCAFView_Object_back_plane_distance(self as *mut Self)
         })
     }
 
-    /// **Source:** `XCAFView_Object.hxx`:103 - `XCAFView_Object::SetViewVolumeSidesClipping()`
+    /// **Source:** `XCAFView_Object.hxx`:101 - `XCAFView_Object::SetViewVolumeSidesClipping()`
     pub fn set_view_volume_sides_clipping(&mut self, theViewVolumeSidesClipping: bool) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKXCAF::XCAFView_Object_set_view_volume_sides_clipping(
@@ -310,7 +310,7 @@ impl Object {
         })
     }
 
-    /// **Source:** `XCAFView_Object.hxx`:108 - `XCAFView_Object::HasViewVolumeSidesClipping()`
+    /// **Source:** `XCAFView_Object.hxx`:106 - `XCAFView_Object::HasViewVolumeSidesClipping()`
     pub fn has_view_volume_sides_clipping(&mut self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKXCAF::XCAFView_Object_has_view_volume_sides_clipping(
@@ -319,7 +319,7 @@ impl Object {
         })
     }
 
-    /// **Source:** `XCAFView_Object.hxx`:110 - `XCAFView_Object::CreateGDTPoints()`
+    /// **Source:** `XCAFView_Object.hxx`:108 - `XCAFView_Object::CreateGDTPoints()`
     pub fn create_gdt_points(&mut self, theLenght: i32) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKXCAF::XCAFView_Object_create_gdt_points(
@@ -329,21 +329,21 @@ impl Object {
         })
     }
 
-    /// **Source:** `XCAFView_Object.hxx`:116 - `XCAFView_Object::HasGDTPoints()`
+    /// **Source:** `XCAFView_Object.hxx`:114 - `XCAFView_Object::HasGDTPoints()`
     pub fn has_gdt_points(&mut self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKXCAF::XCAFView_Object_has_gdt_points(self as *mut Self)
         })
     }
 
-    /// **Source:** `XCAFView_Object.hxx`:118 - `XCAFView_Object::NbGDTPoints()`
+    /// **Source:** `XCAFView_Object.hxx`:116 - `XCAFView_Object::NbGDTPoints()`
     pub fn nb_gdt_points(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKXCAF::XCAFView_Object_nb_gdt_points(self as *mut Self)
         })
     }
 
-    /// **Source:** `XCAFView_Object.hxx`:125 - `XCAFView_Object::SetGDTPoint()`
+    /// **Source:** `XCAFView_Object.hxx`:123 - `XCAFView_Object::SetGDTPoint()`
     pub fn set_gdt_point(&mut self, theIndex: i32, thePoint: &crate::gp::Pnt) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKXCAF::XCAFView_Object_set_gdt_point(
@@ -354,7 +354,7 @@ impl Object {
         })
     }
 
-    /// **Source:** `XCAFView_Object.hxx`:133 - `XCAFView_Object::GDTPoint()`
+    /// **Source:** `XCAFView_Object.hxx`:131 - `XCAFView_Object::GDTPoint()`
     pub fn gdt_point(&mut self, theIndex: i32) -> crate::OwnedPtr<crate::gp::Pnt> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -363,8 +363,8 @@ impl Object {
         }
     }
 
-    /// **Source:** `XCAFView_Object.hxx`:143 - `XCAFView_Object::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `XCAFView_Object.hxx`:141 - `XCAFView_Object::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKXCAF::XCAFView_Object_dynamic_type(
                 self as *const Self,
@@ -372,7 +372,7 @@ impl Object {
         }
     }
 
-    /// **Source:** `XCAFView_Object.hxx`:143 - `XCAFView_Object::get_type_name()`
+    /// **Source:** `XCAFView_Object.hxx`:141 - `XCAFView_Object::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -383,8 +383,8 @@ impl Object {
         .into_owned()
     }
 
-    /// **Source:** `XCAFView_Object.hxx`:143 - `XCAFView_Object::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    /// **Source:** `XCAFView_Object.hxx`:141 - `XCAFView_Object::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKXCAF::XCAFView_Object_get_type_descriptor()))
         }
@@ -413,7 +413,7 @@ impl Object {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleXCAFViewObject> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_XCAFView_Object> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKXCAF::XCAFView_Object_to_handle(obj.into_raw()),
@@ -421,8 +421,8 @@ impl Object {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKXCAF::XCAFView_Object_inherited_IsInstance(
                 self as *const Self,
@@ -431,14 +431,14 @@ impl Object {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKXCAF::XCAFView_Object_inherited_IsKind(self as *const Self, theType)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -452,14 +452,14 @@ impl Object {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKXCAF::XCAFView_Object_inherited_GetRefCount(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKXCAF::XCAFView_Object_inherited_IncrementRefCounter(
@@ -468,7 +468,7 @@ impl Object {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKXCAF::XCAFView_Object_inherited_DecrementRefCounter(
@@ -477,7 +477,7 @@ impl Object {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKXCAF::XCAFView_Object_inherited_Delete(self as *const Self)
@@ -485,32 +485,32 @@ impl Object {
     }
 }
 
-pub use crate::ffi_types::HandleXCAFViewObject;
+pub use crate::ffi_types::Handle_XCAFView_Object;
 
-unsafe impl crate::CppDeletable for HandleXCAFViewObject {
+unsafe impl crate::CppDeletable for Handle_XCAFView_Object {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKXCAF::HandleXCAFViewObject_destructor(ptr);
+            crate::ffi_extern_TKXCAF::Handle_XCAFView_Object_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleXCAFViewObject {
+unsafe impl crate::CppCopyable for Handle_XCAFView_Object {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        unsafe { crate::check_result(crate::ffi_extern_TKXCAF::HandleXCAFViewObject_clone(ptr)) }
+        unsafe { crate::check_result(crate::ffi_extern_TKXCAF::Handle_XCAFView_Object_clone(ptr)) }
     }
 }
 
-impl HandleXCAFViewObject {
+impl Handle_XCAFView_Object {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
-        unsafe { crate::ffi_extern_TKXCAF::HandleXCAFViewObject_is_null(self as *const Self) }
+        unsafe { crate::ffi_extern_TKXCAF::Handle_XCAFView_Object_is_null(self as *const Self) }
     }
 
     /// Dereference this Handle to access the underlying XCAFView_Object
     pub fn get(&self) -> &crate::ffi_types::XCAFView_Object {
         unsafe {
-            &*crate::check_result(crate::ffi_extern_TKXCAF::HandleXCAFViewObject_get(
+            &*crate::check_result(crate::ffi_extern_TKXCAF::Handle_XCAFView_Object_get(
                 self as *const Self,
             ))
         }
@@ -519,7 +519,7 @@ impl HandleXCAFViewObject {
     /// Dereference this Handle to mutably access the underlying XCAFView_Object
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::XCAFView_Object {
         unsafe {
-            &mut *crate::check_result(crate::ffi_extern_TKXCAF::HandleXCAFViewObject_get_mut(
+            &mut *crate::check_result(crate::ffi_extern_TKXCAF::Handle_XCAFView_Object_get_mut(
                 self as *mut Self,
             ))
         }
@@ -528,10 +528,10 @@ impl HandleXCAFViewObject {
     /// Upcast Handle<XCAFView_Object> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKXCAF::HandleXCAFViewObject_to_HandleStandardTransient(
+                crate::ffi_extern_TKXCAF::Handle_XCAFView_Object_to_Handle_Standard_Transient(
                     self as *const Self,
                 ),
             ))

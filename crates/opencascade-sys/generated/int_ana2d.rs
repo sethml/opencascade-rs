@@ -379,7 +379,7 @@ impl Conic {
         })
     }
 
-    /// **Source:** `IntAna2d_Conic.hxx`:64 - `IntAna2d_Conic::Coefficients()`
+    /// **Source:** `IntAna2d_Conic.hxx`:61 - `IntAna2d_Conic::Coefficients()`
     /// returns the coefficients of the polynomial equation
     /// which defines the conic:
     /// A.X**2 + B.Y**2 + 2.C.X*Y + 2.D.X + 2.E.Y + F = 0.
@@ -405,7 +405,7 @@ impl Conic {
         })
     }
 
-    /// **Source:** `IntAna2d_Conic.hxx`:75 - `IntAna2d_Conic::NewCoefficients()`
+    /// **Source:** `IntAna2d_Conic.hxx`:72 - `IntAna2d_Conic::NewCoefficients()`
     /// Returns the coefficients of the polynomial equation
     /// ( written in the natural coordinates system )
     /// A x x + B y y + 2 C x y + 2 D x + 2 E y + F
@@ -479,7 +479,7 @@ impl IntPoint {
         }
     }
 
-    /// **Source:** `IntAna2d_IntPoint.hxx`:51 - `IntAna2d_IntPoint::IntAna2d_IntPoint()`
+    /// **Source:** `IntAna2d_IntPoint.hxx`:49 - `IntAna2d_IntPoint::IntAna2d_IntPoint()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -488,7 +488,7 @@ impl IntPoint {
         }
     }
 
-    /// **Source:** `IntAna2d_IntPoint.hxx`:54 - `IntAna2d_IntPoint::SetValue()`
+    /// **Source:** `IntAna2d_IntPoint.hxx`:52 - `IntAna2d_IntPoint::SetValue()`
     /// Set the values for a "non-implicit" point.
     pub fn set_value_real4(&mut self, X: f64, Y: f64, U1: f64, U2: f64) {
         crate::check_void_result(unsafe {
@@ -502,7 +502,7 @@ impl IntPoint {
         })
     }
 
-    /// **Source:** `IntAna2d_IntPoint.hxx`:60 - `IntAna2d_IntPoint::SetValue()`
+    /// **Source:** `IntAna2d_IntPoint.hxx`:58 - `IntAna2d_IntPoint::SetValue()`
     /// Set the values for an "implicit" point.
     pub fn set_value_real3(&mut self, X: f64, Y: f64, U1: f64) {
         crate::check_void_result(unsafe {
@@ -515,7 +515,7 @@ impl IntPoint {
         })
     }
 
-    /// **Source:** `IntAna2d_IntPoint.hxx`:65 - `IntAna2d_IntPoint::Value()`
+    /// **Source:** `IntAna2d_IntPoint.hxx`:61 - `IntAna2d_IntPoint::Value()`
     /// Returns the geometric point.
     pub fn value(&self) -> &crate::gp::Pnt2d {
         unsafe {
@@ -525,7 +525,7 @@ impl IntPoint {
         }
     }
 
-    /// **Source:** `IntAna2d_IntPoint.hxx`:68 - `IntAna2d_IntPoint::SecondIsImplicit()`
+    /// **Source:** `IntAna2d_IntPoint.hxx`:64 - `IntAna2d_IntPoint::SecondIsImplicit()`
     /// Returns True if the second curve is implicit.
     pub fn second_is_implicit(&self) -> bool {
         crate::check_result(unsafe {
@@ -533,7 +533,7 @@ impl IntPoint {
         })
     }
 
-    /// **Source:** `IntAna2d_IntPoint.hxx`:71 - `IntAna2d_IntPoint::ParamOnFirst()`
+    /// **Source:** `IntAna2d_IntPoint.hxx`:67 - `IntAna2d_IntPoint::ParamOnFirst()`
     /// Returns the parameter on the first element.
     pub fn param_on_first(&self) -> f64 {
         crate::check_result(unsafe {
@@ -541,7 +541,7 @@ impl IntPoint {
         })
     }
 
-    /// **Source:** `IntAna2d_IntPoint.hxx`:76 - `IntAna2d_IntPoint::ParamOnSecond()`
+    /// **Source:** `IntAna2d_IntPoint.hxx`:72 - `IntAna2d_IntPoint::ParamOnSecond()`
     /// Returns the parameter on the second element.
     /// If the second element is an implicit curve, an exception
     /// is raised.

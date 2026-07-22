@@ -7,7 +7,7 @@
 #![allow(non_snake_case)]
 
 /// **Source:** `XmlXCAFDrivers.hxx`:41 - `XmlXCAFDrivers::Factory`
-/// Depending from the  ID, returns a list of  storage
+/// Depending from the ID, returns a list of storage
 /// or retrieval attribute drivers. Used for plugin.
 ///
 /// Standard data model drivers
@@ -20,13 +20,13 @@
 /// ed8793f8-3142-11d4-b9b5-0060b0ee281b Transient-Persistent
 /// ed8793f9-3142-11d4-b9b5-0060b0ee281b Persistent-Transient
 /// ed8793fa-3142-11d4-b9b5-0060b0ee281b XCAFSchema
-pub fn factory(aGUID: &crate::standard::GUID) -> &crate::ffi_types::HandleStandardTransient {
+pub fn factory(aGUID: &crate::standard::GUID) -> &crate::ffi_types::Handle_Standard_Transient {
     unsafe { &*(crate::check_result(crate::ffi_extern_TKXmlXCAF::XmlXCAFDrivers_factory(aGUID))) }
 }
 /// **Source:** `XmlXCAFDrivers.hxx`:45 - `XmlXCAFDrivers::DefineFormat`
 /// Defines format "XmlXCAF" and registers its read and write drivers
 /// in the specified application
-pub fn define_format(theApp: &crate::ffi_types::HandleTDocStdApplication) {
+pub fn define_format(theApp: &crate::ffi_types::Handle_TDocStd_Application) {
     crate::check_void_result(unsafe {
         crate::ffi_extern_TKXmlXCAF::XmlXCAFDrivers_define_format(theApp)
     })
@@ -34,17 +34,17 @@ pub fn define_format(theApp: &crate::ffi_types::HandleTDocStdApplication) {
 
 // Handle type re-exports (targets of handle upcasts/downcasts)
 pub use crate::ffi_types::{
-    HandlePCDMReader, HandlePCDMRetrievalDriver, HandlePCDMStorageDriver, HandlePCDMWriter,
-    HandleStandardTransient, HandleXmlDriversDocumentRetrievalDriver,
-    HandleXmlDriversDocumentStorageDriver, HandleXmlLDriversDocumentRetrievalDriver,
-    HandleXmlLDriversDocumentStorageDriver,
+    Handle_PCDM_Reader, Handle_PCDM_RetrievalDriver, Handle_PCDM_StorageDriver, Handle_PCDM_Writer,
+    Handle_Standard_Transient, Handle_XmlDrivers_DocumentRetrievalDriver,
+    Handle_XmlDrivers_DocumentStorageDriver, Handle_XmlLDrivers_DocumentRetrievalDriver,
+    Handle_XmlLDrivers_DocumentStorageDriver,
 };
 
 // ========================
 // From XmlXCAFDrivers_DocumentRetrievalDriver.hxx
 // ========================
 
-/// **Source:** `XmlXCAFDrivers_DocumentRetrievalDriver.hxx`:30 - `XmlXCAFDrivers_DocumentRetrievalDriver`
+/// **Source:** `XmlXCAFDrivers_DocumentRetrievalDriver.hxx`:27 - `XmlXCAFDrivers_DocumentRetrievalDriver`
 /// retrieval driver of a XS document
 pub use crate::ffi_types::XmlXCAFDrivers_DocumentRetrievalDriver as DocumentRetrievalDriver;
 
@@ -57,7 +57,7 @@ unsafe impl crate::CppDeletable for DocumentRetrievalDriver {
 }
 
 impl DocumentRetrievalDriver {
-    /// **Source:** `XmlXCAFDrivers_DocumentRetrievalDriver.hxx`:34 - `XmlXCAFDrivers_DocumentRetrievalDriver::XmlXCAFDrivers_DocumentRetrievalDriver()`
+    /// **Source:** `XmlXCAFDrivers_DocumentRetrievalDriver.hxx`:31 - `XmlXCAFDrivers_DocumentRetrievalDriver::XmlXCAFDrivers_DocumentRetrievalDriver()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -66,18 +66,18 @@ impl DocumentRetrievalDriver {
         }
     }
 
-    /// **Source:** `XmlXCAFDrivers_DocumentRetrievalDriver.hxx`:36 - `XmlXCAFDrivers_DocumentRetrievalDriver::AttributeDrivers()`
+    /// **Source:** `XmlXCAFDrivers_DocumentRetrievalDriver.hxx`:33 - `XmlXCAFDrivers_DocumentRetrievalDriver::AttributeDrivers()`
     pub fn attribute_drivers(
         &mut self,
-        theMsgDriver: &crate::ffi_types::HandleMessageMessenger,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleXmlMDFADriverTable> {
+        theMsgDriver: &crate::ffi_types::Handle_Message_Messenger,
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_XmlMDF_ADriverTable> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKXmlXCAF::XmlXCAFDrivers_DocumentRetrievalDriver_attribute_drivers(self as *mut Self, theMsgDriver)))
         }
     }
 
-    /// **Source:** `XmlXCAFDrivers_DocumentRetrievalDriver.hxx`:39 - `XmlXCAFDrivers_DocumentRetrievalDriver::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `XmlXCAFDrivers_DocumentRetrievalDriver.hxx`:36 - `XmlXCAFDrivers_DocumentRetrievalDriver::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKXmlXCAF::XmlXCAFDrivers_DocumentRetrievalDriver_dynamic_type(
@@ -87,7 +87,7 @@ impl DocumentRetrievalDriver {
         }
     }
 
-    /// **Source:** `XmlXCAFDrivers_DocumentRetrievalDriver.hxx`:39 - `XmlXCAFDrivers_DocumentRetrievalDriver::get_type_name()`
+    /// **Source:** `XmlXCAFDrivers_DocumentRetrievalDriver.hxx`:36 - `XmlXCAFDrivers_DocumentRetrievalDriver::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -98,8 +98,8 @@ impl DocumentRetrievalDriver {
         .into_owned()
     }
 
-    /// **Source:** `XmlXCAFDrivers_DocumentRetrievalDriver.hxx`:39 - `XmlXCAFDrivers_DocumentRetrievalDriver::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    /// **Source:** `XmlXCAFDrivers_DocumentRetrievalDriver.hxx`:36 - `XmlXCAFDrivers_DocumentRetrievalDriver::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKXmlXCAF::XmlXCAFDrivers_DocumentRetrievalDriver_get_type_descriptor()))
         }
@@ -190,7 +190,7 @@ impl DocumentRetrievalDriver {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleXmlXCAFDriversDocumentRetrievalDriver> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_XmlXCAFDrivers_DocumentRetrievalDriver> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKXmlXCAF::XmlXCAFDrivers_DocumentRetrievalDriver_to_handle(
@@ -200,32 +200,32 @@ impl DocumentRetrievalDriver {
         }
     }
 
-    /// Inherited: **Source:** `XmlDrivers_DocumentRetrievalDriver.hxx`:40 - `XmlDrivers_DocumentRetrievalDriver::ReadShapeSection()`
+    /// Inherited: **Source:** `XmlDrivers_DocumentRetrievalDriver.hxx`:37 - `XmlDrivers_DocumentRetrievalDriver::ReadShapeSection()`
     pub fn read_shape_section(
         &mut self,
         thePDoc: &crate::ldom::Element,
-        theMsgDriver: &crate::ffi_types::HandleMessageMessenger,
+        theMsgDriver: &crate::ffi_types::Handle_Message_Messenger,
         theRange: &crate::message::ProgressRange,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleXmlMDFADriver> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_XmlMDF_ADriver> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKXmlXCAF::XmlXCAFDrivers_DocumentRetrievalDriver_inherited_ReadShapeSection(self as *mut Self, thePDoc, theMsgDriver, theRange)))
         }
     }
 
-    /// Inherited: **Source:** `XmlDrivers_DocumentRetrievalDriver.hxx`:45 - `XmlDrivers_DocumentRetrievalDriver::ShapeSetCleaning()`
-    pub fn shape_set_cleaning(&mut self, theDriver: &crate::ffi_types::HandleXmlMDFADriver) {
+    /// Inherited: **Source:** `XmlDrivers_DocumentRetrievalDriver.hxx`:42 - `XmlDrivers_DocumentRetrievalDriver::ShapeSetCleaning()`
+    pub fn shape_set_cleaning(&mut self, theDriver: &crate::ffi_types::Handle_XmlMDF_ADriver) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKXmlXCAF::XmlXCAFDrivers_DocumentRetrievalDriver_inherited_ShapeSetCleaning(self as *mut Self, theDriver)
         })
     }
 
-    /// Inherited: **Source:** `XmlLDrivers_DocumentRetrievalDriver.hxx`:43 - `XmlLDrivers_DocumentRetrievalDriver::Read()`
+    /// Inherited: **Source:** `XmlLDrivers_DocumentRetrievalDriver.hxx`:40 - `XmlLDrivers_DocumentRetrievalDriver::Read()`
     pub fn read(
         &mut self,
         theFileName: &crate::t_collection::ExtendedString,
-        theNewDocument: &crate::ffi_types::HandleCDMDocument,
-        theApplication: &crate::ffi_types::HandleCDMApplication,
-        theFilter: &crate::ffi_types::HandlePCDMReaderFilter,
+        theNewDocument: &crate::ffi_types::Handle_CDM_Document,
+        theApplication: &crate::ffi_types::Handle_CDM_Application,
+        theFilter: &crate::ffi_types::Handle_PCDM_ReaderFilter,
         theRange: &crate::message::ProgressRange,
     ) {
         crate::check_void_result(unsafe {
@@ -240,7 +240,7 @@ impl DocumentRetrievalDriver {
         })
     }
 
-    /// Inherited: **Source:** `PCDM_RetrievalDriver.hxx`:46 - `PCDM_RetrievalDriver::SetFormat()`
+    /// Inherited: **Source:** `PCDM_RetrievalDriver.hxx`:43 - `PCDM_RetrievalDriver::SetFormat()`
     pub fn set_format(&mut self, aformat: &crate::t_collection::ExtendedString) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKXmlXCAF::XmlXCAFDrivers_DocumentRetrievalDriver_inherited_SetFormat(
@@ -250,14 +250,14 @@ impl DocumentRetrievalDriver {
         })
     }
 
-    /// Inherited: **Source:** `PCDM_RetrievalDriver.hxx`:48 - `PCDM_RetrievalDriver::GetFormat()`
+    /// Inherited: **Source:** `PCDM_RetrievalDriver.hxx`:45 - `PCDM_RetrievalDriver::GetFormat()`
     pub fn get_format(&self) -> crate::OwnedPtr<crate::t_collection::ExtendedString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKXmlXCAF::XmlXCAFDrivers_DocumentRetrievalDriver_inherited_GetFormat(self as *const Self)))
         }
     }
 
-    /// Inherited: **Source:** `PCDM_Reader.hxx`:57 - `PCDM_Reader::GetStatus()`
+    /// Inherited: **Source:** `PCDM_Reader.hxx`:54 - `PCDM_Reader::GetStatus()`
     pub fn get_status(&self) -> crate::pcdm::ReaderStatus {
         crate::pcdm::ReaderStatus::try_from(crate::check_result(unsafe {
             crate::ffi_extern_TKXmlXCAF::XmlXCAFDrivers_DocumentRetrievalDriver_inherited_GetStatus(
@@ -267,8 +267,8 @@ impl DocumentRetrievalDriver {
         .unwrap()
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKXmlXCAF::XmlXCAFDrivers_DocumentRetrievalDriver_inherited_IsInstance(
                 self as *const Self,
@@ -277,8 +277,8 @@ impl DocumentRetrievalDriver {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKXmlXCAF::XmlXCAFDrivers_DocumentRetrievalDriver_inherited_IsKind(
                 self as *const Self,
@@ -287,7 +287,7 @@ impl DocumentRetrievalDriver {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -303,28 +303,28 @@ impl DocumentRetrievalDriver {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKXmlXCAF::XmlXCAFDrivers_DocumentRetrievalDriver_inherited_GetRefCount(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKXmlXCAF::XmlXCAFDrivers_DocumentRetrievalDriver_inherited_IncrementRefCounter(self as *mut Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKXmlXCAF::XmlXCAFDrivers_DocumentRetrievalDriver_inherited_DecrementRefCounter(self as *mut Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKXmlXCAF::XmlXCAFDrivers_DocumentRetrievalDriver_inherited_Delete(
@@ -334,33 +334,35 @@ impl DocumentRetrievalDriver {
     }
 }
 
-pub use crate::ffi_types::HandleXmlXCAFDriversDocumentRetrievalDriver;
+pub use crate::ffi_types::Handle_XmlXCAFDrivers_DocumentRetrievalDriver;
 
-unsafe impl crate::CppDeletable for HandleXmlXCAFDriversDocumentRetrievalDriver {
+unsafe impl crate::CppDeletable for Handle_XmlXCAFDrivers_DocumentRetrievalDriver {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKXmlXCAF::HandleXmlXCAFDriversDocumentRetrievalDriver_destructor(
+            crate::ffi_extern_TKXmlXCAF::Handle_XmlXCAFDrivers_DocumentRetrievalDriver_destructor(
                 ptr,
             );
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleXmlXCAFDriversDocumentRetrievalDriver {
+unsafe impl crate::CppCopyable for Handle_XmlXCAFDrivers_DocumentRetrievalDriver {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
         unsafe {
             crate::check_result(
-                crate::ffi_extern_TKXmlXCAF::HandleXmlXCAFDriversDocumentRetrievalDriver_clone(ptr),
+                crate::ffi_extern_TKXmlXCAF::Handle_XmlXCAFDrivers_DocumentRetrievalDriver_clone(
+                    ptr,
+                ),
             )
         }
     }
 }
 
-impl HandleXmlXCAFDriversDocumentRetrievalDriver {
+impl Handle_XmlXCAFDrivers_DocumentRetrievalDriver {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
         unsafe {
-            crate::ffi_extern_TKXmlXCAF::HandleXmlXCAFDriversDocumentRetrievalDriver_is_null(
+            crate::ffi_extern_TKXmlXCAF::Handle_XmlXCAFDrivers_DocumentRetrievalDriver_is_null(
                 self as *const Self,
             )
         }
@@ -370,7 +372,7 @@ impl HandleXmlXCAFDriversDocumentRetrievalDriver {
     pub fn get(&self) -> &crate::ffi_types::XmlXCAFDrivers_DocumentRetrievalDriver {
         unsafe {
             &*crate::check_result(
-                crate::ffi_extern_TKXmlXCAF::HandleXmlXCAFDriversDocumentRetrievalDriver_get(
+                crate::ffi_extern_TKXmlXCAF::Handle_XmlXCAFDrivers_DocumentRetrievalDriver_get(
                     self as *const Self,
                 ),
             )
@@ -381,7 +383,7 @@ impl HandleXmlXCAFDriversDocumentRetrievalDriver {
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::XmlXCAFDrivers_DocumentRetrievalDriver {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi_extern_TKXmlXCAF::HandleXmlXCAFDriversDocumentRetrievalDriver_get_mut(
+                crate::ffi_extern_TKXmlXCAF::Handle_XmlXCAFDrivers_DocumentRetrievalDriver_get_mut(
                     self as *mut Self,
                 ),
             )
@@ -391,43 +393,43 @@ impl HandleXmlXCAFDriversDocumentRetrievalDriver {
     /// Upcast Handle<XmlXCAFDrivers_DocumentRetrievalDriver> to Handle<XmlDrivers_DocumentRetrievalDriver>
     pub fn to_handle_xml_drivers_document_retrieval_driver(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleXmlDriversDocumentRetrievalDriver> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_XmlDrivers_DocumentRetrievalDriver> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKXmlXCAF::HandleXmlXCAFDriversDocumentRetrievalDriver_to_HandleXmlDriversDocumentRetrievalDriver(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKXmlXCAF::Handle_XmlXCAFDrivers_DocumentRetrievalDriver_to_Handle_XmlDrivers_DocumentRetrievalDriver(self as *const Self)))
         }
     }
 
     /// Upcast Handle<XmlXCAFDrivers_DocumentRetrievalDriver> to Handle<XmlLDrivers_DocumentRetrievalDriver>
     pub fn to_handle_xml_l_drivers_document_retrieval_driver(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleXmlLDriversDocumentRetrievalDriver> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_XmlLDrivers_DocumentRetrievalDriver> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKXmlXCAF::HandleXmlXCAFDriversDocumentRetrievalDriver_to_HandleXmlLDriversDocumentRetrievalDriver(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKXmlXCAF::Handle_XmlXCAFDrivers_DocumentRetrievalDriver_to_Handle_XmlLDrivers_DocumentRetrievalDriver(self as *const Self)))
         }
     }
 
     /// Upcast Handle<XmlXCAFDrivers_DocumentRetrievalDriver> to Handle<PCDM_RetrievalDriver>
     pub fn to_handle_retrieval_driver(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandlePCDMRetrievalDriver> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_PCDM_RetrievalDriver> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKXmlXCAF::HandleXmlXCAFDriversDocumentRetrievalDriver_to_HandlePCDMRetrievalDriver(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKXmlXCAF::Handle_XmlXCAFDrivers_DocumentRetrievalDriver_to_Handle_PCDM_RetrievalDriver(self as *const Self)))
         }
     }
 
     /// Upcast Handle<XmlXCAFDrivers_DocumentRetrievalDriver> to Handle<PCDM_Reader>
-    pub fn to_handle_reader(&self) -> crate::OwnedPtr<crate::ffi_types::HandlePCDMReader> {
+    pub fn to_handle_reader(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_PCDM_Reader> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKXmlXCAF::HandleXmlXCAFDriversDocumentRetrievalDriver_to_HandlePCDMReader(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKXmlXCAF::Handle_XmlXCAFDrivers_DocumentRetrievalDriver_to_Handle_PCDM_Reader(self as *const Self)))
         }
     }
 
     /// Upcast Handle<XmlXCAFDrivers_DocumentRetrievalDriver> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKXmlXCAF::HandleXmlXCAFDriversDocumentRetrievalDriver_to_HandleStandardTransient(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKXmlXCAF::Handle_XmlXCAFDrivers_DocumentRetrievalDriver_to_Handle_Standard_Transient(self as *const Self)))
         }
     }
 }
@@ -436,8 +438,8 @@ impl HandleXmlXCAFDriversDocumentRetrievalDriver {
 // From XmlXCAFDrivers_DocumentStorageDriver.hxx
 // ========================
 
-/// **Source:** `XmlXCAFDrivers_DocumentStorageDriver.hxx`:31 - `XmlXCAFDrivers_DocumentStorageDriver`
-/// storage driver of a  XS document
+/// **Source:** `XmlXCAFDrivers_DocumentStorageDriver.hxx`:28 - `XmlXCAFDrivers_DocumentStorageDriver`
+/// storage driver of a XS document
 pub use crate::ffi_types::XmlXCAFDrivers_DocumentStorageDriver as DocumentStorageDriver;
 
 unsafe impl crate::CppDeletable for DocumentStorageDriver {
@@ -449,7 +451,7 @@ unsafe impl crate::CppDeletable for DocumentStorageDriver {
 }
 
 impl DocumentStorageDriver {
-    /// **Source:** `XmlXCAFDrivers_DocumentStorageDriver.hxx`:35 - `XmlXCAFDrivers_DocumentStorageDriver::XmlXCAFDrivers_DocumentStorageDriver()`
+    /// **Source:** `XmlXCAFDrivers_DocumentStorageDriver.hxx`:32 - `XmlXCAFDrivers_DocumentStorageDriver::XmlXCAFDrivers_DocumentStorageDriver()`
     pub fn new_extendedstring(
         theCopyright: &crate::t_collection::ExtendedString,
     ) -> crate::OwnedPtr<Self> {
@@ -458,11 +460,11 @@ impl DocumentStorageDriver {
         }
     }
 
-    /// **Source:** `XmlXCAFDrivers_DocumentStorageDriver.hxx`:38 - `XmlXCAFDrivers_DocumentStorageDriver::AttributeDrivers()`
+    /// **Source:** `XmlXCAFDrivers_DocumentStorageDriver.hxx`:35 - `XmlXCAFDrivers_DocumentStorageDriver::AttributeDrivers()`
     pub fn attribute_drivers(
         &mut self,
-        theMsgDriver: &crate::ffi_types::HandleMessageMessenger,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleXmlMDFADriverTable> {
+        theMsgDriver: &crate::ffi_types::Handle_Message_Messenger,
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_XmlMDF_ADriverTable> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKXmlXCAF::XmlXCAFDrivers_DocumentStorageDriver_attribute_drivers(
@@ -473,8 +475,8 @@ impl DocumentStorageDriver {
         }
     }
 
-    /// **Source:** `XmlXCAFDrivers_DocumentStorageDriver.hxx`:41 - `XmlXCAFDrivers_DocumentStorageDriver::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `XmlXCAFDrivers_DocumentStorageDriver.hxx`:38 - `XmlXCAFDrivers_DocumentStorageDriver::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKXmlXCAF::XmlXCAFDrivers_DocumentStorageDriver_dynamic_type(
@@ -484,7 +486,7 @@ impl DocumentStorageDriver {
         }
     }
 
-    /// **Source:** `XmlXCAFDrivers_DocumentStorageDriver.hxx`:41 - `XmlXCAFDrivers_DocumentStorageDriver::get_type_name()`
+    /// **Source:** `XmlXCAFDrivers_DocumentStorageDriver.hxx`:38 - `XmlXCAFDrivers_DocumentStorageDriver::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -495,8 +497,8 @@ impl DocumentStorageDriver {
         .into_owned()
     }
 
-    /// **Source:** `XmlXCAFDrivers_DocumentStorageDriver.hxx`:41 - `XmlXCAFDrivers_DocumentStorageDriver::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    /// **Source:** `XmlXCAFDrivers_DocumentStorageDriver.hxx`:38 - `XmlXCAFDrivers_DocumentStorageDriver::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKXmlXCAF::XmlXCAFDrivers_DocumentStorageDriver_get_type_descriptor()))
         }
@@ -587,7 +589,7 @@ impl DocumentStorageDriver {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleXmlXCAFDriversDocumentStorageDriver> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_XmlXCAFDrivers_DocumentStorageDriver> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKXmlXCAF::XmlXCAFDrivers_DocumentStorageDriver_to_handle(
@@ -597,7 +599,7 @@ impl DocumentStorageDriver {
         }
     }
 
-    /// Inherited: **Source:** `XmlDrivers_DocumentStorageDriver.hxx`:39 - `XmlDrivers_DocumentStorageDriver::WriteShapeSection()`
+    /// Inherited: **Source:** `XmlDrivers_DocumentStorageDriver.hxx`:36 - `XmlDrivers_DocumentStorageDriver::WriteShapeSection()`
     pub fn write_shape_section(
         &mut self,
         thePDoc: &mut crate::ldom::Element,
@@ -609,10 +611,10 @@ impl DocumentStorageDriver {
         })
     }
 
-    /// Inherited: **Source:** `XmlLDrivers_DocumentStorageDriver.hxx`:44 - `XmlLDrivers_DocumentStorageDriver::Write()`
+    /// Inherited: **Source:** `XmlLDrivers_DocumentStorageDriver.hxx`:42 - `XmlLDrivers_DocumentStorageDriver::Write()`
     pub fn write(
         &mut self,
-        theDocument: &crate::ffi_types::HandleCDMDocument,
+        theDocument: &crate::ffi_types::Handle_CDM_Document,
         theFileName: &crate::t_collection::ExtendedString,
         theRange: &crate::message::ProgressRange,
     ) {
@@ -626,11 +628,11 @@ impl DocumentStorageDriver {
         })
     }
 
-    /// Inherited: **Source:** `PCDM_StorageDriver.hxx`:52 - `PCDM_StorageDriver::Make()`
+    /// Inherited: **Source:** `PCDM_StorageDriver.hxx`:50 - `PCDM_StorageDriver::Make()`
     pub fn make(
         &mut self,
-        aDocument: &crate::ffi_types::HandleCDMDocument,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandlePCDMDocument> {
+        aDocument: &crate::ffi_types::Handle_CDM_Document,
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_PCDM_Document> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKXmlXCAF::XmlXCAFDrivers_DocumentStorageDriver_inherited_Make(
@@ -641,7 +643,7 @@ impl DocumentStorageDriver {
         }
     }
 
-    /// Inherited: **Source:** `PCDM_StorageDriver.hxx`:76 - `PCDM_StorageDriver::SetFormat()`
+    /// Inherited: **Source:** `PCDM_StorageDriver.hxx`:75 - `PCDM_StorageDriver::SetFormat()`
     pub fn set_format(&mut self, aformat: &crate::t_collection::ExtendedString) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKXmlXCAF::XmlXCAFDrivers_DocumentStorageDriver_inherited_SetFormat(
@@ -651,14 +653,14 @@ impl DocumentStorageDriver {
         })
     }
 
-    /// Inherited: **Source:** `PCDM_StorageDriver.hxx`:78 - `PCDM_StorageDriver::GetFormat()`
+    /// Inherited: **Source:** `PCDM_StorageDriver.hxx`:77 - `PCDM_StorageDriver::GetFormat()`
     pub fn get_format(&self) -> crate::OwnedPtr<crate::t_collection::ExtendedString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKXmlXCAF::XmlXCAFDrivers_DocumentStorageDriver_inherited_GetFormat(self as *const Self)))
         }
     }
 
-    /// Inherited: **Source:** `PCDM_StorageDriver.hxx`:80 - `PCDM_StorageDriver::IsError()`
+    /// Inherited: **Source:** `PCDM_StorageDriver.hxx`:79 - `PCDM_StorageDriver::IsError()`
     pub fn is_error(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKXmlXCAF::XmlXCAFDrivers_DocumentStorageDriver_inherited_IsError(
@@ -667,7 +669,7 @@ impl DocumentStorageDriver {
         })
     }
 
-    /// Inherited: **Source:** `PCDM_StorageDriver.hxx`:82 - `PCDM_StorageDriver::SetIsError()`
+    /// Inherited: **Source:** `PCDM_StorageDriver.hxx`:81 - `PCDM_StorageDriver::SetIsError()`
     pub fn set_is_error(&mut self, theIsError: bool) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKXmlXCAF::XmlXCAFDrivers_DocumentStorageDriver_inherited_SetIsError(
@@ -677,20 +679,20 @@ impl DocumentStorageDriver {
         })
     }
 
-    /// Inherited: **Source:** `PCDM_StorageDriver.hxx`:84 - `PCDM_StorageDriver::GetStoreStatus()`
+    /// Inherited: **Source:** `PCDM_StorageDriver.hxx`:83 - `PCDM_StorageDriver::GetStoreStatus()`
     pub fn get_store_status(&self) -> crate::pcdm::StoreStatus {
         crate::pcdm::StoreStatus::try_from(crate::check_result(unsafe { crate::ffi_extern_TKXmlXCAF::XmlXCAFDrivers_DocumentStorageDriver_inherited_GetStoreStatus(self as *const Self) })).unwrap()
     }
 
-    /// Inherited: **Source:** `PCDM_StorageDriver.hxx`:86 - `PCDM_StorageDriver::SetStoreStatus()`
+    /// Inherited: **Source:** `PCDM_StorageDriver.hxx`:85 - `PCDM_StorageDriver::SetStoreStatus()`
     pub fn set_store_status(&mut self, theStoreStatus: crate::pcdm::StoreStatus) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKXmlXCAF::XmlXCAFDrivers_DocumentStorageDriver_inherited_SetStoreStatus(self as *mut Self, theStoreStatus.into())
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKXmlXCAF::XmlXCAFDrivers_DocumentStorageDriver_inherited_IsInstance(
                 self as *const Self,
@@ -699,8 +701,8 @@ impl DocumentStorageDriver {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKXmlXCAF::XmlXCAFDrivers_DocumentStorageDriver_inherited_IsKind(
                 self as *const Self,
@@ -709,7 +711,7 @@ impl DocumentStorageDriver {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -725,7 +727,7 @@ impl DocumentStorageDriver {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKXmlXCAF::XmlXCAFDrivers_DocumentStorageDriver_inherited_GetRefCount(
@@ -734,21 +736,21 @@ impl DocumentStorageDriver {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKXmlXCAF::XmlXCAFDrivers_DocumentStorageDriver_inherited_IncrementRefCounter(self as *mut Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKXmlXCAF::XmlXCAFDrivers_DocumentStorageDriver_inherited_DecrementRefCounter(self as *mut Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKXmlXCAF::XmlXCAFDrivers_DocumentStorageDriver_inherited_Delete(
@@ -758,31 +760,33 @@ impl DocumentStorageDriver {
     }
 }
 
-pub use crate::ffi_types::HandleXmlXCAFDriversDocumentStorageDriver;
+pub use crate::ffi_types::Handle_XmlXCAFDrivers_DocumentStorageDriver;
 
-unsafe impl crate::CppDeletable for HandleXmlXCAFDriversDocumentStorageDriver {
+unsafe impl crate::CppDeletable for Handle_XmlXCAFDrivers_DocumentStorageDriver {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKXmlXCAF::HandleXmlXCAFDriversDocumentStorageDriver_destructor(ptr);
+            crate::ffi_extern_TKXmlXCAF::Handle_XmlXCAFDrivers_DocumentStorageDriver_destructor(
+                ptr,
+            );
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleXmlXCAFDriversDocumentStorageDriver {
+unsafe impl crate::CppCopyable for Handle_XmlXCAFDrivers_DocumentStorageDriver {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
         unsafe {
             crate::check_result(
-                crate::ffi_extern_TKXmlXCAF::HandleXmlXCAFDriversDocumentStorageDriver_clone(ptr),
+                crate::ffi_extern_TKXmlXCAF::Handle_XmlXCAFDrivers_DocumentStorageDriver_clone(ptr),
             )
         }
     }
 }
 
-impl HandleXmlXCAFDriversDocumentStorageDriver {
+impl Handle_XmlXCAFDrivers_DocumentStorageDriver {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
         unsafe {
-            crate::ffi_extern_TKXmlXCAF::HandleXmlXCAFDriversDocumentStorageDriver_is_null(
+            crate::ffi_extern_TKXmlXCAF::Handle_XmlXCAFDrivers_DocumentStorageDriver_is_null(
                 self as *const Self,
             )
         }
@@ -792,7 +796,7 @@ impl HandleXmlXCAFDriversDocumentStorageDriver {
     pub fn get(&self) -> &crate::ffi_types::XmlXCAFDrivers_DocumentStorageDriver {
         unsafe {
             &*crate::check_result(
-                crate::ffi_extern_TKXmlXCAF::HandleXmlXCAFDriversDocumentStorageDriver_get(
+                crate::ffi_extern_TKXmlXCAF::Handle_XmlXCAFDrivers_DocumentStorageDriver_get(
                     self as *const Self,
                 ),
             )
@@ -803,7 +807,7 @@ impl HandleXmlXCAFDriversDocumentStorageDriver {
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::XmlXCAFDrivers_DocumentStorageDriver {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi_extern_TKXmlXCAF::HandleXmlXCAFDriversDocumentStorageDriver_get_mut(
+                crate::ffi_extern_TKXmlXCAF::Handle_XmlXCAFDrivers_DocumentStorageDriver_get_mut(
                     self as *mut Self,
                 ),
             )
@@ -813,43 +817,43 @@ impl HandleXmlXCAFDriversDocumentStorageDriver {
     /// Upcast Handle<XmlXCAFDrivers_DocumentStorageDriver> to Handle<XmlDrivers_DocumentStorageDriver>
     pub fn to_handle_xml_drivers_document_storage_driver(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleXmlDriversDocumentStorageDriver> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_XmlDrivers_DocumentStorageDriver> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKXmlXCAF::HandleXmlXCAFDriversDocumentStorageDriver_to_HandleXmlDriversDocumentStorageDriver(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKXmlXCAF::Handle_XmlXCAFDrivers_DocumentStorageDriver_to_Handle_XmlDrivers_DocumentStorageDriver(self as *const Self)))
         }
     }
 
     /// Upcast Handle<XmlXCAFDrivers_DocumentStorageDriver> to Handle<XmlLDrivers_DocumentStorageDriver>
     pub fn to_handle_xml_l_drivers_document_storage_driver(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleXmlLDriversDocumentStorageDriver> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_XmlLDrivers_DocumentStorageDriver> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKXmlXCAF::HandleXmlXCAFDriversDocumentStorageDriver_to_HandleXmlLDriversDocumentStorageDriver(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKXmlXCAF::Handle_XmlXCAFDrivers_DocumentStorageDriver_to_Handle_XmlLDrivers_DocumentStorageDriver(self as *const Self)))
         }
     }
 
     /// Upcast Handle<XmlXCAFDrivers_DocumentStorageDriver> to Handle<PCDM_StorageDriver>
     pub fn to_handle_storage_driver(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandlePCDMStorageDriver> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_PCDM_StorageDriver> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKXmlXCAF::HandleXmlXCAFDriversDocumentStorageDriver_to_HandlePCDMStorageDriver(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKXmlXCAF::Handle_XmlXCAFDrivers_DocumentStorageDriver_to_Handle_PCDM_StorageDriver(self as *const Self)))
         }
     }
 
     /// Upcast Handle<XmlXCAFDrivers_DocumentStorageDriver> to Handle<PCDM_Writer>
-    pub fn to_handle_writer(&self) -> crate::OwnedPtr<crate::ffi_types::HandlePCDMWriter> {
+    pub fn to_handle_writer(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_PCDM_Writer> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKXmlXCAF::HandleXmlXCAFDriversDocumentStorageDriver_to_HandlePCDMWriter(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKXmlXCAF::Handle_XmlXCAFDrivers_DocumentStorageDriver_to_Handle_PCDM_Writer(self as *const Self)))
         }
     }
 
     /// Upcast Handle<XmlXCAFDrivers_DocumentStorageDriver> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKXmlXCAF::HandleXmlXCAFDriversDocumentStorageDriver_to_HandleStandardTransient(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKXmlXCAF::Handle_XmlXCAFDrivers_DocumentStorageDriver_to_Handle_Standard_Transient(self as *const Self)))
         }
     }
 }

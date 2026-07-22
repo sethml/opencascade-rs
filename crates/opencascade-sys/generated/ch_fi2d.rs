@@ -36,7 +36,7 @@ pub enum ConstructionError {
     Notplanar = 0,
     /// < the face is null
     Noface = 1,
-    /// < the two  faces used for the initialisation are uncompatible
+    /// < the two faces used for the initialisation are uncompatible
     Initialisationerror = 2,
     /// < the parameters as distances or angle for chamfer are less or equal to
     /// < zero
@@ -58,6 +58,7 @@ pub enum ConstructionError {
     /// < the two edges are degenerated
     Bothedgesdegenerated = 11,
     /// < One or the two edges connected to the vertex is a fillet or a chamfer;
+    /// < One or the two edges connected to the vertex is not a line or a circle
     Notauthorized = 12,
 }
 
@@ -219,8 +220,8 @@ impl AnaFilletAlgo {
 // From ChFi2d_Builder.hxx
 // ========================
 
-/// **Source:** `ChFi2d_Builder.hxx`:39 - `ChFi2d_Builder`
-/// This  class contains  the algorithm  used to build
+/// **Source:** `ChFi2d_Builder.hxx`:41 - `ChFi2d_Builder`
+/// This class contains the algorithm used to build
 /// fillet on planar wire.
 pub use crate::ffi_types::ChFi2d_Builder as Builder;
 
@@ -233,7 +234,7 @@ unsafe impl crate::CppDeletable for Builder {
 }
 
 impl Builder {
-    /// **Source:** `ChFi2d_Builder.hxx`:44 - `ChFi2d_Builder::ChFi2d_Builder()`
+    /// **Source:** `ChFi2d_Builder.hxx`:46 - `ChFi2d_Builder::ChFi2d_Builder()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -242,8 +243,8 @@ impl Builder {
         }
     }
 
-    /// **Source:** `ChFi2d_Builder.hxx`:48 - `ChFi2d_Builder::ChFi2d_Builder()`
-    /// The face  <F> can be build  on a closed or an open
+    /// **Source:** `ChFi2d_Builder.hxx`:50 - `ChFi2d_Builder::ChFi2d_Builder()`
+    /// The face <F> can be build on a closed or an open
     /// wire.
     pub fn new_face(F: &crate::topo_ds::Face) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -253,14 +254,14 @@ impl Builder {
         }
     }
 
-    /// **Source:** `ChFi2d_Builder.hxx`:50 - `ChFi2d_Builder::Init()`
+    /// **Source:** `ChFi2d_Builder.hxx`:52 - `ChFi2d_Builder::Init()`
     pub fn init_face(&mut self, F: &crate::topo_ds::Face) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKFillet::ChFi2d_Builder_init_face(self as *mut Self, F)
         })
     }
 
-    /// **Source:** `ChFi2d_Builder.hxx`:52 - `ChFi2d_Builder::Init()`
+    /// **Source:** `ChFi2d_Builder.hxx`:54 - `ChFi2d_Builder::Init()`
     pub fn init_face2(&mut self, RefFace: &crate::topo_ds::Face, ModFace: &crate::topo_ds::Face) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKFillet::ChFi2d_Builder_init_face2(
@@ -271,11 +272,11 @@ impl Builder {
         })
     }
 
-    /// **Source:** `ChFi2d_Builder.hxx`:59 - `ChFi2d_Builder::AddFillet()`
-    /// Add  a fillet  of   radius  <Radius> on  the  wire
+    /// **Source:** `ChFi2d_Builder.hxx`:61 - `ChFi2d_Builder::AddFillet()`
+    /// Add a fillet of radius <Radius> on the wire
     /// between the two edges connected to the vertex <V>.
-    /// <AddFillet> returns the  fillet edge. The returned
-    /// edge has  sense only   if the status   <status> is
+    /// <AddFillet> returns the fillet edge. The returned
+    /// edge has sense only if the status <status> is
     /// <IsDone>
     pub fn add_fillet(
         &mut self,
@@ -289,9 +290,9 @@ impl Builder {
         }
     }
 
-    /// **Source:** `ChFi2d_Builder.hxx`:64 - `ChFi2d_Builder::ModifyFillet()`
+    /// **Source:** `ChFi2d_Builder.hxx`:66 - `ChFi2d_Builder::ModifyFillet()`
     /// modify the fillet radius and return the new fillet
-    /// edge. this    edge has sense  only if   the status
+    /// edge. this edge has sense only if the status
     /// <status> is <IsDone>.
     pub fn modify_fillet(
         &mut self,
@@ -309,9 +310,9 @@ impl Builder {
         }
     }
 
-    /// **Source:** `ChFi2d_Builder.hxx`:68 - `ChFi2d_Builder::RemoveFillet()`
+    /// **Source:** `ChFi2d_Builder.hxx`:70 - `ChFi2d_Builder::RemoveFillet()`
     /// removes the fillet <Fillet> and returns the vertex
-    /// connecting the two adjacent edges to  this fillet.
+    /// connecting the two adjacent edges to this fillet.
     pub fn remove_fillet(
         &mut self,
         Fillet: &crate::topo_ds::Edge,
@@ -323,10 +324,10 @@ impl Builder {
         }
     }
 
-    /// **Source:** `ChFi2d_Builder.hxx`:74 - `ChFi2d_Builder::AddChamfer()`
-    /// Add a chamfer on  the  wire between the two  edges
-    /// connected <E1> and  <E2>. <AddChamfer> returns the
-    /// chamfer  edge. This  edge  has  sense only if  the
+    /// **Source:** `ChFi2d_Builder.hxx`:76 - `ChFi2d_Builder::AddChamfer()`
+    /// Add a chamfer on the wire between the two edges
+    /// connected <E1> and <E2>. <AddChamfer> returns the
+    /// chamfer edge. This edge has sense only if the
     /// status <status> is <IsDone>.
     pub fn add_chamfer_edge2_real2(
         &mut self,
@@ -348,12 +349,12 @@ impl Builder {
         }
     }
 
-    /// **Source:** `ChFi2d_Builder.hxx`:86 - `ChFi2d_Builder::AddChamfer()`
-    /// Add  a chamfer on the   wire between the two edges
+    /// **Source:** `ChFi2d_Builder.hxx`:88 - `ChFi2d_Builder::AddChamfer()`
+    /// Add a chamfer on the wire between the two edges
     /// connected to the vertex <V>. The chamfer will make
-    /// an  angle <Ang> with the edge  <E>, and one of its
-    /// extremities  will be on  <E>  at distance <D>. The
-    /// returned   edge has sense   only   if the   status
+    /// an angle <Ang> with the edge <E>, and one of its
+    /// extremities will be on <E> at distance <D>. The
+    /// returned edge has sense only if the status
     /// <status> is <IsDone>.
     /// Warning: The value of <Ang> must be expressed in Radian.
     pub fn add_chamfer_edge_vertex_real2(
@@ -376,10 +377,10 @@ impl Builder {
         }
     }
 
-    /// **Source:** `ChFi2d_Builder.hxx`:95 - `ChFi2d_Builder::ModifyChamfer()`
-    /// modify the chamfer <Chamfer>  and returns  the new
+    /// **Source:** `ChFi2d_Builder.hxx`:97 - `ChFi2d_Builder::ModifyChamfer()`
+    /// modify the chamfer <Chamfer> and returns the new
     /// chamfer edge.
-    /// This edge as sense only  if the status <status> is
+    /// This edge as sense only if the status <status> is
     /// <IsDone>.
     pub fn modify_chamfer_edge3_real2(
         &mut self,
@@ -403,10 +404,10 @@ impl Builder {
         }
     }
 
-    /// **Source:** `ChFi2d_Builder.hxx`:105 - `ChFi2d_Builder::ModifyChamfer()`
-    /// modify the  chamfer <Chamfer>  and returns the new
-    /// chamfer edge. This    edge as sense  only   if the
-    /// status <status>   is  <IsDone>.
+    /// **Source:** `ChFi2d_Builder.hxx`:107 - `ChFi2d_Builder::ModifyChamfer()`
+    /// modify the chamfer <Chamfer> and returns the new
+    /// chamfer edge. This edge as sense only if the
+    /// status <status> is <IsDone>.
     /// Warning: The value of <Ang> must be expressed in Radian.
     pub fn modify_chamfer_edge2_real2(
         &mut self,
@@ -428,9 +429,9 @@ impl Builder {
         }
     }
 
-    /// **Source:** `ChFi2d_Builder.hxx`:113 - `ChFi2d_Builder::RemoveChamfer()`
-    /// removes   the chamfer  <Chamfer>   and returns the
-    /// vertex connecting  the two adjacent  edges to this
+    /// **Source:** `ChFi2d_Builder.hxx`:115 - `ChFi2d_Builder::RemoveChamfer()`
+    /// removes the chamfer <Chamfer> and returns the
+    /// vertex connecting the two adjacent edges to this
     /// chamfer.
     pub fn remove_chamfer(
         &mut self,
@@ -446,7 +447,7 @@ impl Builder {
         }
     }
 
-    /// **Source:** `ChFi2d_Builder.hxx`:116 - `ChFi2d_Builder::Result()`
+    /// **Source:** `ChFi2d_Builder.hxx`:118 - `ChFi2d_Builder::Result()`
     /// returns the modified face
     pub fn result(&self) -> crate::OwnedPtr<crate::topo_ds::Face> {
         unsafe {
@@ -456,16 +457,16 @@ impl Builder {
         }
     }
 
-    /// **Source:** `ChFi2d_Builder.hxx`:118 - `ChFi2d_Builder::IsModified()`
+    /// **Source:** `ChFi2d_Builder.hxx`:120 - `ChFi2d_Builder::IsModified()`
     pub fn is_modified(&self, E: &crate::topo_ds::Edge) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKFillet::ChFi2d_Builder_is_modified(self as *const Self, E)
         })
     }
 
-    /// **Source:** `ChFi2d_Builder.hxx`:121 - `ChFi2d_Builder::FilletEdges()`
+    /// **Source:** `ChFi2d_Builder.hxx`:123 - `ChFi2d_Builder::FilletEdges()`
     /// returns the list of new edges
-    pub fn fillet_edges(&self) -> &crate::ffi_types::TopTools_SequenceOfShape {
+    pub fn fillet_edges(&self) -> &crate::ffi_types::NCollection_Sequence_TopoDS_Shape {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKFillet::ChFi2d_Builder_fillet_edges(
                 self as *const Self,
@@ -473,16 +474,16 @@ impl Builder {
         }
     }
 
-    /// **Source:** `ChFi2d_Builder.hxx`:123 - `ChFi2d_Builder::NbFillet()`
+    /// **Source:** `ChFi2d_Builder.hxx`:125 - `ChFi2d_Builder::NbFillet()`
     pub fn nb_fillet(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKFillet::ChFi2d_Builder_nb_fillet(self as *const Self)
         })
     }
 
-    /// **Source:** `ChFi2d_Builder.hxx`:126 - `ChFi2d_Builder::ChamferEdges()`
+    /// **Source:** `ChFi2d_Builder.hxx`:128 - `ChFi2d_Builder::ChamferEdges()`
     /// returns the list of new edges
-    pub fn chamfer_edges(&self) -> &crate::ffi_types::TopTools_SequenceOfShape {
+    pub fn chamfer_edges(&self) -> &crate::ffi_types::NCollection_Sequence_TopoDS_Shape {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKFillet::ChFi2d_Builder_chamfer_edges(
                 self as *const Self,
@@ -490,21 +491,21 @@ impl Builder {
         }
     }
 
-    /// **Source:** `ChFi2d_Builder.hxx`:128 - `ChFi2d_Builder::NbChamfer()`
+    /// **Source:** `ChFi2d_Builder.hxx`:130 - `ChFi2d_Builder::NbChamfer()`
     pub fn nb_chamfer(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKFillet::ChFi2d_Builder_nb_chamfer(self as *const Self)
         })
     }
 
-    /// **Source:** `ChFi2d_Builder.hxx`:130 - `ChFi2d_Builder::HasDescendant()`
+    /// **Source:** `ChFi2d_Builder.hxx`:132 - `ChFi2d_Builder::HasDescendant()`
     pub fn has_descendant(&self, E: &crate::topo_ds::Edge) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKFillet::ChFi2d_Builder_has_descendant(self as *const Self, E)
         })
     }
 
-    /// **Source:** `ChFi2d_Builder.hxx`:134 - `ChFi2d_Builder::DescendantEdge()`
+    /// **Source:** `ChFi2d_Builder.hxx`:136 - `ChFi2d_Builder::DescendantEdge()`
     /// returns the modified edge if <E> has descendant or
     /// <E> in the other case.
     ///
@@ -522,9 +523,9 @@ impl Builder {
         }
     }
 
-    /// **Source:** `ChFi2d_Builder.hxx`:139 - `ChFi2d_Builder::BasisEdge()`
-    /// Returns the parent edge of  <E>
-    /// Warning: If <E>is a basis edge,  the returned edge would be
+    /// **Source:** `ChFi2d_Builder.hxx`:141 - `ChFi2d_Builder::BasisEdge()`
+    /// Returns the parent edge of <E>
+    /// Warning: If <E>is a basis edge, the returned edge would be
     /// equal to <E>
     ///
     /// # Safety
@@ -541,7 +542,7 @@ impl Builder {
         }
     }
 
-    /// **Source:** `ChFi2d_Builder.hxx`:141 - `ChFi2d_Builder::Status()`
+    /// **Source:** `ChFi2d_Builder.hxx`:143 - `ChFi2d_Builder::Status()`
     pub fn status(&self) -> crate::ch_fi2d::ConstructionError {
         crate::ch_fi2d::ConstructionError::try_from(crate::check_result(unsafe {
             crate::ffi_extern_TKFillet::ChFi2d_Builder_status(self as *const Self)
@@ -805,7 +806,7 @@ impl FilletAPI {
 // From ChFi2d_FilletAlgo.hxx
 // ========================
 
-/// **Source:** `ChFi2d_FilletAlgo.hxx`:56 - `ChFi2d_FilletAlgo`
+/// **Source:** `ChFi2d_FilletAlgo.hxx`:55 - `ChFi2d_FilletAlgo`
 /// Algorithm that creates fillet edge: arc tangent to two edges in the start
 /// and in the end vertices. Initial edges must be located on the plane and
 /// must be connected by the end or start points (shared vertices are not
@@ -843,7 +844,7 @@ unsafe impl crate::CppDeletable for FilletAlgo {
 }
 
 impl FilletAlgo {
-    /// **Source:** `ChFi2d_FilletAlgo.hxx`:62 - `ChFi2d_FilletAlgo::ChFi2d_FilletAlgo()`
+    /// **Source:** `ChFi2d_FilletAlgo.hxx`:61 - `ChFi2d_FilletAlgo::ChFi2d_FilletAlgo()`
     /// An empty constructor of the fillet algorithm.
     /// Call a method Init() to initialize the algorithm
     /// before calling of a Perform() method.
@@ -855,7 +856,7 @@ impl FilletAlgo {
         }
     }
 
-    /// **Source:** `ChFi2d_FilletAlgo.hxx`:65 - `ChFi2d_FilletAlgo::ChFi2d_FilletAlgo()`
+    /// **Source:** `ChFi2d_FilletAlgo.hxx`:64 - `ChFi2d_FilletAlgo::ChFi2d_FilletAlgo()`
     /// A constructor of a fillet algorithm: accepts a wire consisting of two edges in a plane.
     pub fn new_wire_pln(
         theWire: &crate::topo_ds::Wire,
@@ -868,7 +869,7 @@ impl FilletAlgo {
         }
     }
 
-    /// **Source:** `ChFi2d_FilletAlgo.hxx`:68 - `ChFi2d_FilletAlgo::ChFi2d_FilletAlgo()`
+    /// **Source:** `ChFi2d_FilletAlgo.hxx`:67 - `ChFi2d_FilletAlgo::ChFi2d_FilletAlgo()`
     /// A constructor of a fillet algorithm: accepts two edges in a plane.
     pub fn new_edge2_pln(
         theEdge1: &crate::topo_ds::Edge,
@@ -884,7 +885,7 @@ impl FilletAlgo {
         }
     }
 
-    /// **Source:** `ChFi2d_FilletAlgo.hxx`:73 - `ChFi2d_FilletAlgo::Init()`
+    /// **Source:** `ChFi2d_FilletAlgo.hxx`:72 - `ChFi2d_FilletAlgo::Init()`
     /// Initializes a fillet algorithm: accepts a wire consisting of two edges in a plane.
     pub fn init_wire_pln(&mut self, theWire: &crate::topo_ds::Wire, thePlane: &crate::gp::Pln) {
         crate::check_void_result(unsafe {
@@ -896,7 +897,7 @@ impl FilletAlgo {
         })
     }
 
-    /// **Source:** `ChFi2d_FilletAlgo.hxx`:76 - `ChFi2d_FilletAlgo::Init()`
+    /// **Source:** `ChFi2d_FilletAlgo.hxx`:75 - `ChFi2d_FilletAlgo::Init()`
     /// Initializes a fillet algorithm: accepts two edges in a plane.
     pub fn init_edge2_pln(
         &mut self,
@@ -914,7 +915,7 @@ impl FilletAlgo {
         })
     }
 
-    /// **Source:** `ChFi2d_FilletAlgo.hxx`:82 - `ChFi2d_FilletAlgo::Perform()`
+    /// **Source:** `ChFi2d_FilletAlgo.hxx`:81 - `ChFi2d_FilletAlgo::Perform()`
     /// Constructs a fillet edge.
     /// Returns true, if at least one result was found
     pub fn perform(&mut self, theRadius: f64) -> bool {
@@ -923,7 +924,7 @@ impl FilletAlgo {
         })
     }
 
-    /// **Source:** `ChFi2d_FilletAlgo.hxx`:88 - `ChFi2d_FilletAlgo::NbResults()`
+    /// **Source:** `ChFi2d_FilletAlgo.hxx`:87 - `ChFi2d_FilletAlgo::NbResults()`
     /// Returns number of possible solutions.
     /// <thePoint> chooses a particular fillet in case of several fillets
     /// may be constructed (for example, a circle intersecting a segment in 2 points).
@@ -934,7 +935,7 @@ impl FilletAlgo {
         })
     }
 
-    /// **Source:** `ChFi2d_FilletAlgo.hxx`:95 - `ChFi2d_FilletAlgo::Result()`
+    /// **Source:** `ChFi2d_FilletAlgo.hxx`:94 - `ChFi2d_FilletAlgo::Result()`
     /// Returns result (fillet edge, modified edge1, modified edge2),
     /// nearest to the given point <thePoint> if iSolution == -1.
     /// <thePoint> chooses a particular fillet in case of several fillets
@@ -961,7 +962,7 @@ impl FilletAlgo {
     }
 }
 
-/// **Source:** `ChFi2d_FilletAlgo.hxx`:141 - `FilletPoint`
+/// **Source:** `ChFi2d_FilletAlgo.hxx`:140 - `FilletPoint`
 /// Private class. Corresponds to the point on the first curve, computed
 /// fillet function and derivative on it.
 pub use crate::ffi_types::FilletPoint;
@@ -975,7 +976,7 @@ unsafe impl crate::CppDeletable for FilletPoint {
 }
 
 impl FilletPoint {
-    /// **Source:** `ChFi2d_FilletAlgo.hxx`:145 - `FilletPoint::FilletPoint()`
+    /// **Source:** `ChFi2d_FilletAlgo.hxx`:144 - `FilletPoint::FilletPoint()`
     /// Creates a point on a first curve by parameter on this curve.
     pub fn new_real(theParam: f64) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -985,7 +986,7 @@ impl FilletPoint {
         }
     }
 
-    /// **Source:** `ChFi2d_FilletAlgo.hxx`:148 - `FilletPoint::setParam()`
+    /// **Source:** `ChFi2d_FilletAlgo.hxx`:147 - `FilletPoint::setParam()`
     /// Changes the point position by changing point parameter on the first curve.
     pub fn set_param(&mut self, theParam: f64) {
         crate::check_void_result(unsafe {
@@ -993,7 +994,7 @@ impl FilletPoint {
         })
     }
 
-    /// **Source:** `ChFi2d_FilletAlgo.hxx`:151 - `FilletPoint::getParam()`
+    /// **Source:** `ChFi2d_FilletAlgo.hxx`:150 - `FilletPoint::getParam()`
     /// Returns the point parameter on the first curve.
     pub fn get_param(&self) -> f64 {
         crate::check_result(unsafe {
@@ -1001,7 +1002,7 @@ impl FilletPoint {
         })
     }
 
-    /// **Source:** `ChFi2d_FilletAlgo.hxx`:154 - `FilletPoint::getNBValues()`
+    /// **Source:** `ChFi2d_FilletAlgo.hxx`:153 - `FilletPoint::getNBValues()`
     /// Returns number of found values of function in this point.
     pub fn get_nb_values(&mut self) -> i32 {
         crate::check_result(unsafe {
@@ -1009,7 +1010,7 @@ impl FilletPoint {
         })
     }
 
-    /// **Source:** `ChFi2d_FilletAlgo.hxx`:157 - `FilletPoint::getValue()`
+    /// **Source:** `ChFi2d_FilletAlgo.hxx`:156 - `FilletPoint::getValue()`
     /// Returns value of function in this point.
     pub fn get_value(&mut self, theIndex: i32) -> f64 {
         crate::check_result(unsafe {
@@ -1017,7 +1018,7 @@ impl FilletPoint {
         })
     }
 
-    /// **Source:** `ChFi2d_FilletAlgo.hxx`:160 - `FilletPoint::getDiff()`
+    /// **Source:** `ChFi2d_FilletAlgo.hxx`:159 - `FilletPoint::getDiff()`
     /// Returns derivatives of function in this point.
     pub fn get_diff(&mut self, theIndex: i32) -> f64 {
         crate::check_result(unsafe {
@@ -1025,7 +1026,7 @@ impl FilletPoint {
         })
     }
 
-    /// **Source:** `ChFi2d_FilletAlgo.hxx`:163 - `FilletPoint::isValid()`
+    /// **Source:** `ChFi2d_FilletAlgo.hxx`:162 - `FilletPoint::isValid()`
     /// Returns true if function is valid (rediuses vectors of fillet do not intersect any curve).
     pub fn is_valid(&mut self, theIndex: i32) -> bool {
         crate::check_result(unsafe {
@@ -1033,7 +1034,7 @@ impl FilletPoint {
         })
     }
 
-    /// **Source:** `ChFi2d_FilletAlgo.hxx`:166 - `FilletPoint::getNear()`
+    /// **Source:** `ChFi2d_FilletAlgo.hxx`:165 - `FilletPoint::getNear()`
     /// Returns the index of the nearest value
     pub fn get_near(&mut self, theIndex: i32) -> i32 {
         crate::check_result(unsafe {
@@ -1041,7 +1042,7 @@ impl FilletPoint {
         })
     }
 
-    /// **Source:** `ChFi2d_FilletAlgo.hxx`:169 - `FilletPoint::setParam2()`
+    /// **Source:** `ChFi2d_FilletAlgo.hxx`:168 - `FilletPoint::setParam2()`
     /// Defines the parameter of the projected point on the second curve.
     pub fn set_param2(&mut self, theParam2: f64) {
         crate::check_void_result(unsafe {
@@ -1049,7 +1050,7 @@ impl FilletPoint {
         })
     }
 
-    /// **Source:** `ChFi2d_FilletAlgo.hxx`:172 - `FilletPoint::getParam2()`
+    /// **Source:** `ChFi2d_FilletAlgo.hxx`:171 - `FilletPoint::getParam2()`
     /// Returns the parameter of the projected point on the second curve.
     pub fn get_param2(&mut self) -> f64 {
         crate::check_result(unsafe {
@@ -1057,7 +1058,7 @@ impl FilletPoint {
         })
     }
 
-    /// **Source:** `ChFi2d_FilletAlgo.hxx`:175 - `FilletPoint::setCenter()`
+    /// **Source:** `ChFi2d_FilletAlgo.hxx`:174 - `FilletPoint::setCenter()`
     /// Center of the fillet.
     pub fn set_center(&mut self, thePoint: &crate::gp::Pnt2d) {
         crate::check_void_result(unsafe {
@@ -1065,7 +1066,7 @@ impl FilletPoint {
         })
     }
 
-    /// **Source:** `ChFi2d_FilletAlgo.hxx`:178 - `FilletPoint::getCenter()`
+    /// **Source:** `ChFi2d_FilletAlgo.hxx`:177 - `FilletPoint::getCenter()`
     /// Center of the fillet.
     pub fn get_center(&mut self) -> crate::OwnedPtr<crate::gp::Pnt2d> {
         unsafe {
@@ -1075,7 +1076,7 @@ impl FilletPoint {
         }
     }
 
-    /// **Source:** `ChFi2d_FilletAlgo.hxx`:181 - `FilletPoint::appendValue()`
+    /// **Source:** `ChFi2d_FilletAlgo.hxx`:180 - `FilletPoint::appendValue()`
     /// Appends value of the function.
     pub fn append_value(&mut self, theValue: f64, theValid: bool) {
         crate::check_void_result(unsafe {
@@ -1087,7 +1088,7 @@ impl FilletPoint {
         })
     }
 
-    /// **Source:** `ChFi2d_FilletAlgo.hxx`:184 - `FilletPoint::calculateDiff()`
+    /// **Source:** `ChFi2d_FilletAlgo.hxx`:183 - `FilletPoint::calculateDiff()`
     /// Computes difference between this point and the given. Stores difference in myD.
     pub fn calculate_diff(&mut self, arg0: &mut FilletPoint) -> bool {
         crate::check_result(unsafe {
@@ -1098,7 +1099,7 @@ impl FilletPoint {
         })
     }
 
-    /// **Source:** `ChFi2d_FilletAlgo.hxx`:187 - `FilletPoint::FilterPoints()`
+    /// **Source:** `ChFi2d_FilletAlgo.hxx`:186 - `FilletPoint::FilterPoints()`
     /// Filters out the values and leaves the most optimal one.
     pub fn filter_points(&mut self, arg0: &mut FilletPoint) {
         crate::check_void_result(unsafe {
@@ -1106,7 +1107,7 @@ impl FilletPoint {
         })
     }
 
-    /// **Source:** `ChFi2d_FilletAlgo.hxx`:191 - `FilletPoint::Copy()`
+    /// **Source:** `ChFi2d_FilletAlgo.hxx`:190 - `FilletPoint::Copy()`
     /// Returns a pointer to created copy of the point
     /// warning: this is not the full copy! Copies only: myParam, myV, myD, myValid
     pub fn copy(&mut self) -> Option<&mut FilletPoint> {
@@ -1122,7 +1123,7 @@ impl FilletPoint {
         }
     }
 
-    /// **Source:** `ChFi2d_FilletAlgo.hxx`:194 - `FilletPoint::hasSolution()`
+    /// **Source:** `ChFi2d_FilletAlgo.hxx`:193 - `FilletPoint::hasSolution()`
     /// Returns the index of the solution or zero if there is no solution
     pub fn has_solution(&mut self, theRadius: f64) -> i32 {
         crate::check_result(unsafe {
@@ -1130,7 +1131,7 @@ impl FilletPoint {
         })
     }
 
-    /// **Source:** `ChFi2d_FilletAlgo.hxx`:197 - `FilletPoint::LowerValue()`
+    /// **Source:** `ChFi2d_FilletAlgo.hxx`:196 - `FilletPoint::LowerValue()`
     /// For debug only
     pub fn lower_value(&mut self) -> f64 {
         crate::check_result(unsafe {
@@ -1138,7 +1139,7 @@ impl FilletPoint {
         })
     }
 
-    /// **Source:** `ChFi2d_FilletAlgo.hxx`:213 - `FilletPoint::remove()`
+    /// **Source:** `ChFi2d_FilletAlgo.hxx`:212 - `FilletPoint::remove()`
     /// Removes the found value by the given index.
     pub fn remove(&mut self, theIndex: i32) {
         crate::check_void_result(unsafe {

@@ -10,7 +10,7 @@
 // From ShapeProcessAPI_ApplySequence.hxx
 // ========================
 
-/// **Source:** `ShapeProcessAPI_ApplySequence.hxx`:34 - `ShapeProcessAPI_ApplySequence`
+/// **Source:** `ShapeProcessAPI_ApplySequence.hxx`:36 - `ShapeProcessAPI_ApplySequence`
 /// Applies one of the sequence read from resource file.
 pub use crate::ffi_types::ShapeProcessAPI_ApplySequence as ApplySequence;
 
@@ -23,7 +23,7 @@ unsafe impl crate::CppDeletable for ApplySequence {
 }
 
 impl ApplySequence {
-    /// **Source:** `ShapeProcessAPI_ApplySequence.hxx`:41 - `ShapeProcessAPI_ApplySequence::ShapeProcessAPI_ApplySequence()`
+    /// **Source:** `ShapeProcessAPI_ApplySequence.hxx`:43 - `ShapeProcessAPI_ApplySequence::ShapeProcessAPI_ApplySequence()`
     /// Creates an object and loads resource file and sequence of
     /// operators given by their names.
     pub fn new_charptr2(rscName: &str, seqName: &str) -> crate::OwnedPtr<Self> {
@@ -39,10 +39,10 @@ impl ApplySequence {
         }
     }
 
-    /// **Source:** `ShapeProcessAPI_ApplySequence.hxx`:46 - `ShapeProcessAPI_ApplySequence::Context()`
+    /// **Source:** `ShapeProcessAPI_ApplySequence.hxx`:48 - `ShapeProcessAPI_ApplySequence::Context()`
     /// Returns object for managing resource file and sequence of
     /// operators.
-    pub fn context(&mut self) -> &mut crate::ffi_types::HandleShapeProcessShapeContext {
+    pub fn context(&mut self) -> &mut crate::ffi_types::Handle_ShapeProcess_ShapeContext {
         unsafe {
             &mut *(crate::check_result(
                 crate::ffi_extern_TKShHealing::ShapeProcessAPI_ApplySequence_context(
@@ -52,11 +52,11 @@ impl ApplySequence {
         }
     }
 
-    /// **Source:** `ShapeProcessAPI_ApplySequence.hxx`:53 - `ShapeProcessAPI_ApplySequence::PrepareShape()`
+    /// **Source:** `ShapeProcessAPI_ApplySequence.hxx`:55 - `ShapeProcessAPI_ApplySequence::PrepareShape()`
     /// Performs sequence of operators stored in myRsc.
     /// If <fillmap> is True adds history "shape-shape" into myMap
     /// for shape and its subshapes until level <until> (included).
-    /// If <until> is TopAbs_SHAPE,  all the subshapes are considered.
+    /// If <until> is TopAbs_SHAPE, all the subshapes are considered.
     pub fn prepare_shape(
         &mut self,
         shape: &crate::topo_ds::Shape,
@@ -77,7 +77,7 @@ impl ApplySequence {
         }
     }
 
-    /// **Source:** `ShapeProcessAPI_ApplySequence.hxx`:59 - `ShapeProcessAPI_ApplySequence::ClearMap()`
+    /// **Source:** `ShapeProcessAPI_ApplySequence.hxx`:61 - `ShapeProcessAPI_ApplySequence::ClearMap()`
     /// Clears myMap with accumulated history.
     pub fn clear_map(&mut self) {
         crate::check_void_result(unsafe {
@@ -87,9 +87,12 @@ impl ApplySequence {
         })
     }
 
-    /// **Source:** `ShapeProcessAPI_ApplySequence.hxx`:62 - `ShapeProcessAPI_ApplySequence::Map()`
+    /// **Source:** `ShapeProcessAPI_ApplySequence.hxx`:65 - `ShapeProcessAPI_ApplySequence::Map()`
     /// Returns myMap with accumulated history.
-    pub fn map(&self) -> &crate::ffi_types::TopTools_DataMapOfShapeShape {
+    pub fn map(
+        &self,
+    ) -> &crate::ffi_types::NCollection_DataMap_TopoDS_Shape_TopoDS_Shape_TopTools_ShapeMapHasher
+    {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKShHealing::ShapeProcessAPI_ApplySequence_map(
@@ -99,7 +102,7 @@ impl ApplySequence {
         }
     }
 
-    /// **Source:** `ShapeProcessAPI_ApplySequence.hxx`:67 - `ShapeProcessAPI_ApplySequence::PrintPreparationResult()`
+    /// **Source:** `ShapeProcessAPI_ApplySequence.hxx`:70 - `ShapeProcessAPI_ApplySequence::PrintPreparationResult()`
     /// Prints result of preparation onto the messenger of the context.
     /// Note that results can be accumulated from previous preparations
     /// it method ClearMap was not called before PrepareShape.

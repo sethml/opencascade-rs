@@ -49,6 +49,11 @@ thread_local! {
     /// Only contains typedefs where the underlying type is another OCCT class/typedef
     /// (not template specializations, primitives, or pointers).
     static SIMPLE_TYPEDEF_MAP: RefCell<HashMap<String, String>> = RefCell::new(HashMap::new());
+    /// Set of typedef names whose underlying type is a pointer (e.g.,
+    /// `TopOpeBRepTool_Plos = NCollection_List<TopoDS_Shape>*`). When these
+    /// typedefs are resolved to Type::Class names, they must NOT be wrapped in
+    /// an additional pointer level, since they already represent a pointer.
+    static POINTER_TYPEDEF_NAMES: RefCell<HashSet<String>> = RefCell::new(HashSet::new());
 
     /// Namespace-scoped typedef aliases collected from OCCT namespaces.
     /// Examples: IMeshData::MapOfInteger, IMeshData::VectorOfInteger.
@@ -59,6 +64,13 @@ thread_local! {
     /// Map of canonical OCCT type spellings to public alias names loaded from config.
     /// Keys are whitespace-normalized to match `normalize_template_spelling()` lookups.
     static OCCT_ALIAS_TYPE_OVERRIDES: RefCell<HashMap<String, String>> = RefCell::new(HashMap::new());
+}
+
+/// Check if a type name is a known pointer typedef (e.g., `TopOpeBRepTool_Plos`).
+/// Pointer typedefs should not get an extra `new` wrapper or `*` from needs_unique_ptr,
+/// since they already represent a pointer type.
+pub fn is_pointer_typedef(name: &str) -> bool {
+    POINTER_TYPEDEF_NAMES.with(|p| p.borrow().contains(name))
 }
 
 /// Strip whitespace from a C++ type spelling for typedef map key/lookup.
@@ -83,6 +95,33 @@ fn normalize_occt_alias_type_name(type_name: &str) -> String {
 
 fn class_type(type_name: &str) -> Type {
     Type::Class(normalize_occt_alias_type_name(type_name))
+}
+
+/// Build a fully-qualified C++ display name for a nested class/struct by walking
+/// the semantic-parent chain. Returns `None` if the entity is top-level.
+fn build_nested_display_name(entity: &clang::Entity) -> Option<String> {
+    let name = entity.get_name()?;
+    let mut qual_names: Vec<String> = Vec::new();
+    let mut current = entity.get_semantic_parent();
+    while let Some(parent) = current {
+        let parent_kind = parent.get_kind();
+        if parent_kind == clang::EntityKind::ClassDecl || parent_kind == clang::EntityKind::StructDecl {
+            if let Some(parent_name) = parent.get_name() {
+                if !parent_name.is_empty() {
+                    qual_names.push(parent_name);
+                }
+            }
+            current = parent.get_semantic_parent();
+        } else {
+            break;
+        }
+    }
+    if qual_names.is_empty() {
+        None
+    } else {
+        qual_names.reverse();
+        Some(format!("{}::{}", qual_names.join("::"), name))
+    }
 }
 
 /// Strip C++ type qualifier prefixes (const, volatile, struct, class, typename, enum)
@@ -195,6 +234,14 @@ fn collect_ncollection_typedefs(root: &Entity, included_modules: &HashSet<String
 
                 if let Some(underlying) = entity.get_typedef_underlying_type() {
                     let display = underlying.get_display_name();
+                    // Track pointer typedefs (e.g., T* where T is a template type).
+                    // When these are resolved to Type::Class, they should not get
+                    // an extra pointer wrapper from ConstPtr/MutPtr handling.
+                    if display.contains('*') {
+                        for typedef_name in &typedef_names {
+                            POINTER_TYPEDEF_NAMES.with(|p| p.borrow_mut().insert(typedef_name.clone()));
+                        }
+                    }
                     // Record typedefs that resolve to template specializations,
                     // but skip typedefs to std:: types (e.g. std::pair, std::vector)
                     // since those are STL types that can't be wrapped as opaque OCCT classes.
@@ -259,6 +306,14 @@ fn collect_ncollection_typedefs(root: &Entity, included_modules: &HashSet<String
 fn lookup_typedef(display_name: &str) -> Option<String> {
     let key = normalize_template_spelling(display_name);
     TYPEDEF_MAP.with(|m| m.borrow().get(&key).and_then(|v| v.first()).cloned())
+}
+
+/// Look up a typedef but skip pointer typedefs (e.g., `TopOpeBRepTool_Plos`).
+/// Pointer typedefs should not be resolved to their typedef name because the
+/// typedef name itself already represents a pointer type. Resolving them would
+/// add an unwanted extra pointer level in the wrapper code.
+fn lookup_typedef_no_pointer(display_name: &str) -> Option<String> {
+    lookup_typedef(display_name).filter(|name| !is_pointer_typedef(name))
 }
 /// Get all typedef names collected during the last `parse_headers` call.
 /// Returns the set of OCCT typedef names that resolve to template specializations.
@@ -436,7 +491,7 @@ pub fn parse_headers(
     let mut args: Vec<String> = vec![
         "-x".to_string(),
         "c++".to_string(),
-        "-std=c++14".to_string(),
+        "-std=c++17".to_string(),
         "-Wno-pragma-once-outside-header".to_string(),
     ];
     add_system_include_paths(&mut args);
@@ -590,8 +645,12 @@ fn visit_top_level_batch(
         Some(resolved) => resolved,
         None => {
             // Not from our target headers - but might need to recurse into namespaces
-            // because namespace declarations span multiple files
-            if entity.get_kind() == EntityKind::Namespace && entity.get_name().as_deref() != Some("std") {
+            // because namespace declarations span multiple files. Skip anonymous
+            // namespaces (no name) - their functions are file-local, not FFI-linkable.
+            if entity.get_kind() == EntityKind::Namespace
+                && entity.get_name().as_deref() != Some("std")
+                && entity.get_name().is_some()
+            {
                 let namespace_name = entity.get_name().unwrap_or_default();
                 entity.visit_children(|child, _| {
                     visit_namespace_member_batch(&child, filename_to_index, &namespace_name, results, verbose)
@@ -612,8 +671,10 @@ fn visit_top_level_batch(
             }
         }
         EntityKind::Namespace => {
-            // Don't recurse into std namespace
-            if entity.get_name().as_deref() != Some("std") {
+            // Don't recurse into std namespace, and skip anonymous namespaces
+            // (their functions are file-local and not linkable from FFI).
+            // Anonymous namespaces have no name (entity.get_name() is None).
+            if entity.get_name().as_deref() != Some("std") && entity.get_name().is_some() {
                 let namespace_name = entity.get_name().unwrap_or_default();
                 entity.visit_children(|child, _| {
                     visit_namespace_member_batch(&child, filename_to_index, &namespace_name, results, verbose)
@@ -968,6 +1029,9 @@ fn parse_class(entity: &Entity, source_header: &str, verbose: bool) -> Vec<Parse
     let mut result = vec![
         ParsedClass {
             name: name.clone(),
+            display_name: build_nested_display_name(entity)
+                .or_else(|| entity.get_display_name().filter(|d| !d.is_empty() && !d.contains('<')))
+                .unwrap_or_else(|| name.clone()),
             module: module.clone(),
             comment,
             source_header: source_header.to_string(),
@@ -1197,6 +1261,14 @@ fn parse_function(entity: &Entity, namespace: &str, source_header: &str, verbose
     let comment = extract_doxygen_comment(entity);
     let full_name = format!("{}::{}", namespace, name);
     let module = namespace.to_string();
+
+    // Skip functions in anonymous or global namespace: they have no module
+    // prefix to namespace them into a Rust module, and anonymous-namespace
+    // functions are file-local (not linkable from FFI). Returns `None` so the
+    // caller's `if let Some(parsed) = parse_function(...)` simply drops them.
+    if namespace.is_empty() {
+        return None;
+    }
 
     if verbose {
         println!("  Parsing function: {}", full_name);
@@ -1675,7 +1747,7 @@ fn parse_type(clang_type: &clang::Type) -> Type {
     // instead of "TDF_LabelMap". Look up the typedef name from our pre-scanned map.
     let clean_for_lookup = strip_type_qualifiers(trimmed_spelling);
     if clean_for_lookup.contains('<') && !clean_for_lookup.starts_with("opencascade::handle<") && !clean_for_lookup.starts_with("Handle(") {
-        if let Some(typedef_name) = lookup_typedef(clean_for_lookup) {
+        if let Some(typedef_name) = lookup_typedef_no_pointer(clean_for_lookup) {
             return class_type(&typedef_name);
         }
     }
@@ -1922,9 +1994,13 @@ fn parse_type(clang_type: &clang::Type) -> Type {
     // If the spelling contains :: or < (nested/template type), try typedef map first,
     // then try to use canonical
     if clean_name.contains("::") || clean_name.contains('<') {
-        // For template types, check if this is a known typedef
+        // For template types, check if this is a known typedef.
+        // Skip pointer typedefs (e.g., TopOpeBRepTool_Plos) - resolving them
+        // would add an extra pointer level since the typedef name itself is
+        // already a pointer type. Keep the template spelling instead so the
+        // ConstPtr/MutPtr wrapping produces the correct C++ type.
         if clean_name.contains('<') {
-            if let Some(typedef_name) = lookup_typedef(clean_name) {
+            if let Some(typedef_name) = lookup_typedef_no_pointer(clean_name) {
                 return class_type(&typedef_name);
             }
         }
@@ -1941,21 +2017,32 @@ fn parse_type(clang_type: &clang::Type) -> Type {
         }
     }
     
-    // Check if this type's declaration is nested inside a class
-    // This catches types like DESTEP_Parameters::ReadMode_ProductContext that
-    // appear as "ReadMode_ProductContext" in method signatures but are actually nested
-    // Only apply if clean_name is NOT already qualified (doesn't contain ::)
+    // Check if this type's declaration is nested inside a class hierarchy.
+    // Walks the full semantic-parent chain to build a fully-qualified name
+    // (e.g., EditorView::VertexOps, or BRepGraph::EditorView for top-level
+    // nested classes). Without full qualification, extern "C" wrappers
+    // reference an unqualified type name that the compiler can't resolve.
     if !clean_name.contains("::") {
         if let Some(decl) = clang_type.get_declaration() {
-            if let Some(parent) = decl.get_semantic_parent() {
+            let mut qual_names: Vec<String> = Vec::new();
+            let mut current = decl.get_semantic_parent();
+            while let Some(parent) = current {
                 let parent_kind = parent.get_kind();
                 if parent_kind == EntityKind::ClassDecl || parent_kind == EntityKind::StructDecl {
-                    // This is a nested type - include the parent class name to mark it as nested
                     if let Some(parent_name) = parent.get_name() {
-                        let nested_name = format!("{}::{}", parent_name, clean_name);
-                        return class_type(&nested_name);
+                        if !parent_name.is_empty() {
+                            qual_names.push(parent_name);
+                        }
                     }
+                    current = parent.get_semantic_parent();
+                } else {
+                    break;
                 }
+            }
+            if !qual_names.is_empty() {
+                qual_names.reverse();
+                let nested_name = format!("{}::{}", qual_names.join("::"), clean_name);
+                return class_type(&nested_name);
             }
         }
     }

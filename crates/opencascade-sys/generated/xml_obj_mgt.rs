@@ -25,7 +25,7 @@ pub fn set_extended_string(
         crate::ffi_extern_TKXmlL::XmlObjMgt_set_extended_string(theElement, theString)
     })
 }
-/// **Source:** `XmlObjMgt.hxx`:48 - `XmlObjMgt::GetExtendedString`
+/// **Source:** `XmlObjMgt.hxx`:47 - `XmlObjMgt::GetExtendedString`
 /// Get attribute <theElement extstring="theString" ...>
 pub fn get_extended_string(
     theElement: &crate::ldom::Element,
@@ -35,7 +35,7 @@ pub fn get_extended_string(
         crate::ffi_extern_TKXmlL::XmlObjMgt_get_extended_string(theElement, theString)
     })
 }
-/// **Source:** `XmlObjMgt.hxx`:52 - `XmlObjMgt::GetStringValue`
+/// **Source:** `XmlObjMgt.hxx`:51 - `XmlObjMgt::GetStringValue`
 /// Returns the first child text node
 pub fn get_string_value(
     theElement: &crate::ldom::Element,
@@ -46,7 +46,7 @@ pub fn get_string_value(
         ))
     }
 }
-/// **Source:** `XmlObjMgt.hxx`:58 - `XmlObjMgt::SetStringValue`
+/// **Source:** `XmlObjMgt.hxx`:57 - `XmlObjMgt::SetStringValue`
 /// Add theData as the last child text node to theElement
 /// isClearText(True) avoids analysis of the string and replacement
 /// of characters like '<' and '&' during XML file storage.
@@ -60,7 +60,7 @@ pub fn set_string_value(
         crate::ffi_extern_TKXmlL::XmlObjMgt_set_string_value(theElement, theData, isClearText)
     })
 }
-/// **Source:** `XmlObjMgt.hxx`:64 - `XmlObjMgt::GetTagEntryString`
+/// **Source:** `XmlObjMgt.hxx`:63 - `XmlObjMgt::GetTagEntryString`
 /// Convert XPath expression (DOMString) into TagEntry string
 /// returns False on Error
 pub fn get_tag_entry_string(
@@ -71,7 +71,7 @@ pub fn get_tag_entry_string(
         crate::ffi_extern_TKXmlL::XmlObjMgt_get_tag_entry_string(theTarget, theTagEntry)
     })
 }
-/// **Source:** `XmlObjMgt.hxx`:69 - `XmlObjMgt::SetTagEntryString`
+/// **Source:** `XmlObjMgt.hxx`:68 - `XmlObjMgt::SetTagEntryString`
 /// Convert XPath expression (DOMString) into TagEntry string
 /// returns False on Error
 pub fn set_tag_entry_string(
@@ -82,7 +82,7 @@ pub fn set_tag_entry_string(
         crate::ffi_extern_TKXmlL::XmlObjMgt_set_tag_entry_string(theSource, theTagEntry)
     })
 }
-/// **Source:** `XmlObjMgt.hxx`:72 - `XmlObjMgt::FindChildElement`
+/// **Source:** `XmlObjMgt.hxx`:71 - `XmlObjMgt::FindChildElement`
 pub fn find_child_element(
     theSource: &crate::ldom::Element,
     theObjId: i32,
@@ -93,7 +93,7 @@ pub fn find_child_element(
         ))
     }
 }
-/// **Source:** `XmlObjMgt.hxx`:75 - `XmlObjMgt::FindChildByRef`
+/// **Source:** `XmlObjMgt.hxx`:74 - `XmlObjMgt::FindChildByRef`
 pub fn find_child_by_ref(
     theSource: &crate::ldom::Element,
     theRefName: &crate::ldom_string::LDOMString,
@@ -104,7 +104,7 @@ pub fn find_child_by_ref(
         ))
     }
 }
-/// **Source:** `XmlObjMgt.hxx`:78 - `XmlObjMgt::FindChildByName`
+/// **Source:** `XmlObjMgt.hxx`:77 - `XmlObjMgt::FindChildByName`
 pub fn find_child_by_name(
     theSource: &crate::ldom::Element,
     theName: &crate::ldom_string::LDOMString,
@@ -436,9 +436,9 @@ impl Persistent {
 // From XmlObjMgt_RRelocationTable.hxx
 // ========================
 
-/// **Source:** `XmlObjMgt_RRelocationTable.hxx`:27 - `XmlObjMgt_RRelocationTable`
+/// **Source:** `XmlObjMgt_RRelocationTable.hxx`:29 - `XmlObjMgt_RRelocationTable`
 /// Retrieval relocation table is modeled as a child class of
-/// TColStd_DataMapOfIntegerTransient that stores a handle to the file
+/// NCollection_DataMap<int, occ::handle<Standard_Transient>> that stores a handle to the file
 /// header section. With that attribute drivers have access to the file header
 /// section.
 pub use crate::ffi_types::XmlObjMgt_RRelocationTable as RRelocationTable;
@@ -462,9 +462,9 @@ impl RRelocationTable {
         }
     }
 
-    /// **Source:** `XmlObjMgt_RRelocationTable.hxx`:31 - `XmlObjMgt_RRelocationTable::GetHeaderData()`
+    /// **Source:** `XmlObjMgt_RRelocationTable.hxx`:33 - `XmlObjMgt_RRelocationTable::GetHeaderData()`
     /// Returns a handle to the header data of the file that is begin read
-    pub fn get_header_data(&self) -> &crate::ffi_types::HandleStorageHeaderData {
+    pub fn get_header_data(&self) -> &crate::ffi_types::Handle_Storage_HeaderData {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKXmlL::XmlObjMgt_RRelocationTable_get_header_data(
@@ -474,11 +474,11 @@ impl RRelocationTable {
         }
     }
 
-    /// **Source:** `XmlObjMgt_RRelocationTable.hxx`:36 - `XmlObjMgt_RRelocationTable::SetHeaderData()`
+    /// **Source:** `XmlObjMgt_RRelocationTable.hxx`:38 - `XmlObjMgt_RRelocationTable::SetHeaderData()`
     /// Sets the storage header data.
     ///
     /// @param theHeaderData header data of the file that is begin read
-    pub fn set_header_data(&mut self, theHeaderData: &crate::ffi_types::HandleStorageHeaderData) {
+    pub fn set_header_data(&mut self, theHeaderData: &crate::ffi_types::Handle_Storage_HeaderData) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKXmlL::XmlObjMgt_RRelocationTable_set_header_data(
                 self as *mut Self,
@@ -487,7 +487,7 @@ impl RRelocationTable {
         })
     }
 
-    /// **Source:** `XmlObjMgt_RRelocationTable.hxx`:38 - `XmlObjMgt_RRelocationTable::Clear()`
+    /// **Source:** `XmlObjMgt_RRelocationTable.hxx`:40 - `XmlObjMgt_RRelocationTable::Clear()`
     pub fn clear(&mut self, doReleaseMemory: bool) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKXmlL::XmlObjMgt_RRelocationTable_clear(
@@ -502,9 +502,9 @@ impl RRelocationTable {
 // From XmlObjMgt_SRelocationTable.hxx
 // ========================
 
-/// **Source:** `XmlObjMgt_SRelocationTable.hxx`:26 - `XmlObjMgt_SRelocationTable`
+/// **Source:** `XmlObjMgt_SRelocationTable.hxx`:27 - `XmlObjMgt_SRelocationTable`
 /// Stored relocation table is modeled as a child class of
-/// TColStd_DataMapOfIntegerTransient that stores a handle to the file
+/// NCollection_DataMap<int, occ::handle<Standard_Transient>> that stores a handle to the file
 /// header section. With that attribute drivers have access to the file header
 /// section.
 pub use crate::ffi_types::XmlObjMgt_SRelocationTable as SRelocationTable;
@@ -528,9 +528,9 @@ impl SRelocationTable {
         }
     }
 
-    /// **Source:** `XmlObjMgt_SRelocationTable.hxx`:30 - `XmlObjMgt_SRelocationTable::GetHeaderData()`
+    /// **Source:** `XmlObjMgt_SRelocationTable.hxx`:31 - `XmlObjMgt_SRelocationTable::GetHeaderData()`
     /// Returns a handle to the header data of the file that is begin read
-    pub fn get_header_data(&self) -> &crate::ffi_types::HandleStorageHeaderData {
+    pub fn get_header_data(&self) -> &crate::ffi_types::Handle_Storage_HeaderData {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKXmlL::XmlObjMgt_SRelocationTable_get_header_data(
@@ -540,11 +540,11 @@ impl SRelocationTable {
         }
     }
 
-    /// **Source:** `XmlObjMgt_SRelocationTable.hxx`:35 - `XmlObjMgt_SRelocationTable::SetHeaderData()`
+    /// **Source:** `XmlObjMgt_SRelocationTable.hxx`:36 - `XmlObjMgt_SRelocationTable::SetHeaderData()`
     /// Sets the storage header data.
     ///
     /// @param theHeaderData header data of the file that is begin read
-    pub fn set_header_data(&mut self, theHeaderData: &crate::ffi_types::HandleStorageHeaderData) {
+    pub fn set_header_data(&mut self, theHeaderData: &crate::ffi_types::Handle_Storage_HeaderData) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKXmlL::XmlObjMgt_SRelocationTable_set_header_data(
                 self as *mut Self,
@@ -553,7 +553,7 @@ impl SRelocationTable {
         })
     }
 
-    /// **Source:** `XmlObjMgt_SRelocationTable.hxx`:37 - `XmlObjMgt_SRelocationTable::Clear()`
+    /// **Source:** `XmlObjMgt_SRelocationTable.hxx`:38 - `XmlObjMgt_SRelocationTable::Clear()`
     pub fn clear(&mut self, doReleaseMemory: bool) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKXmlL::XmlObjMgt_SRelocationTable_clear(

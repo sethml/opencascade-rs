@@ -11,51 +11,52 @@
 #include <Message_ProgressRange.hxx>
 #include <NCollection_Buffer.hxx>
 #include <OSD_Path.hxx>
+#include <Poly_Triangulation.hxx>
 #include <RWStl.hxx>
 #include <RWStl_Reader.hxx>
 #include <Standard_Handle.hxx>
 #include <Standard_IStream.hxx>
+#include <Standard_OStream.hxx>
 #include <Standard_ReadLineBuffer.hxx>
 #include <Standard_Type.hxx>
 #include <StlAPI.hxx>
 #include <StlAPI_Reader.hxx>
 #include <StlAPI_Writer.hxx>
-#include <TColStd_ListOfAsciiString.hxx>
 #include <TDocStd_Document.hxx>
 #include <XSControl_WorkSession.hxx>
 
 // Handle type aliases
-typedef opencascade::handle<DESTL_ConfigurationNode> HandleDESTLConfigurationNode;
-typedef opencascade::handle<DESTL_Provider> HandleDESTLProvider;
-typedef opencascade::handle<DE_ConfigurationContext> HandleDEConfigurationContext;
-typedef opencascade::handle<DE_ConfigurationNode> HandleDEConfigurationNode;
-typedef opencascade::handle<DE_Provider> HandleDEProvider;
-typedef opencascade::handle<NCollection_Buffer> HandleNCollectionBuffer;
-typedef opencascade::handle<RWStl_Reader> HandleRWStlReader;
-typedef opencascade::handle<Standard_Transient> HandleStandardTransient;
-typedef opencascade::handle<Standard_Type> HandleStandardType;
-typedef opencascade::handle<TDocStd_Document> HandleTDocStdDocument;
-typedef opencascade::handle<XSControl_WorkSession> HandleXSControlWorkSession;
+typedef opencascade::handle<DESTL_ConfigurationNode> Handle_DESTL_ConfigurationNode;
+typedef opencascade::handle<DESTL_Provider> Handle_DESTL_Provider;
+typedef opencascade::handle<DE_ConfigurationContext> Handle_DE_ConfigurationContext;
+typedef opencascade::handle<DE_ConfigurationNode> Handle_DE_ConfigurationNode;
+typedef opencascade::handle<DE_Provider> Handle_DE_Provider;
+typedef opencascade::handle<NCollection_Buffer> Handle_NCollection_Buffer;
+typedef opencascade::handle<RWStl_Reader> Handle_RWStl_Reader;
+typedef opencascade::handle<Standard_Transient> Handle_Standard_Transient;
+typedef opencascade::handle<Standard_Type> Handle_Standard_Type;
+typedef opencascade::handle<TDocStd_Document> Handle_TDocStd_Document;
+typedef opencascade::handle<XSControl_WorkSession> Handle_XSControl_WorkSession;
 
 // Handle type destructors, clone, and is_null functions
-extern "C" void HandleDESTLConfigurationNode_destructor(HandleDESTLConfigurationNode* self_) { delete self_; }
-extern "C" OcctResult<HandleDESTLConfigurationNode*> HandleDESTLConfigurationNode_clone(const HandleDESTLConfigurationNode* self_) {
-    try { return {new HandleDESTLConfigurationNode(*self_), nullptr}; }
+extern "C" void Handle_DESTL_ConfigurationNode_destructor(Handle_DESTL_ConfigurationNode* self_) { delete self_; }
+extern "C" OcctResult<Handle_DESTL_ConfigurationNode*> Handle_DESTL_ConfigurationNode_clone(const Handle_DESTL_ConfigurationNode* self_) {
+    try { return {new Handle_DESTL_ConfigurationNode(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleDESTLConfigurationNode_is_null(const HandleDESTLConfigurationNode* self_) { return self_->IsNull(); }
-extern "C" void HandleDESTLProvider_destructor(HandleDESTLProvider* self_) { delete self_; }
-extern "C" OcctResult<HandleDESTLProvider*> HandleDESTLProvider_clone(const HandleDESTLProvider* self_) {
-    try { return {new HandleDESTLProvider(*self_), nullptr}; }
+extern "C" bool Handle_DESTL_ConfigurationNode_is_null(const Handle_DESTL_ConfigurationNode* self_) { return self_->IsNull(); }
+extern "C" void Handle_DESTL_Provider_destructor(Handle_DESTL_Provider* self_) { delete self_; }
+extern "C" OcctResult<Handle_DESTL_Provider*> Handle_DESTL_Provider_clone(const Handle_DESTL_Provider* self_) {
+    try { return {new Handle_DESTL_Provider(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleDESTLProvider_is_null(const HandleDESTLProvider* self_) { return self_->IsNull(); }
-extern "C" void HandleRWStlReader_destructor(HandleRWStlReader* self_) { delete self_; }
-extern "C" OcctResult<HandleRWStlReader*> HandleRWStlReader_clone(const HandleRWStlReader* self_) {
-    try { return {new HandleRWStlReader(*self_), nullptr}; }
+extern "C" bool Handle_DESTL_Provider_is_null(const Handle_DESTL_Provider* self_) { return self_->IsNull(); }
+extern "C" void Handle_RWStl_Reader_destructor(Handle_RWStl_Reader* self_) { delete self_; }
+extern "C" OcctResult<Handle_RWStl_Reader*> Handle_RWStl_Reader_clone(const Handle_RWStl_Reader* self_) {
+    try { return {new Handle_RWStl_Reader(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleRWStlReader_is_null(const HandleRWStlReader* self_) { return self_->IsNull(); }
+extern "C" bool Handle_RWStl_Reader_is_null(const Handle_RWStl_Reader* self_) { return self_->IsNull(); }
 
 // ========================
 // DESTL_ConfigurationNode wrappers
@@ -89,8 +90,8 @@ extern "C" OcctResult<TCollection_AsciiString*> DESTL_ConfigurationNode_get_vend
     try { return {new TCollection_AsciiString(self_->GetVendor()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TColStd_ListOfAsciiString*> DESTL_ConfigurationNode_get_extensions(const DESTL_ConfigurationNode* self_) {
-    try { return {new TColStd_ListOfAsciiString(self_->GetExtensions()), nullptr}; }
+extern "C" OcctResult<NCollection_List_TCollection_AsciiString*> DESTL_ConfigurationNode_get_extensions(const DESTL_ConfigurationNode* self_) {
+    try { return {new NCollection_List_TCollection_AsciiString(self_->GetExtensions()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(Standard_Type) const*> DESTL_ConfigurationNode_dynamic_type(const DESTL_ConfigurationNode* self_) {
@@ -109,6 +110,10 @@ extern "C" OcctResult<bool> DESTL_ConfigurationNode_is_export_supported(const DE
     try { return {self_->IsExportSupported(), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" OcctResult<bool> DESTL_ConfigurationNode_is_stream_supported(const DESTL_ConfigurationNode* self_) {
+    try { return {self_->IsStreamSupported(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" OcctResult<bool> DESTL_ConfigurationNode_check_content(const DESTL_ConfigurationNode* self_, Handle(NCollection_Buffer) const* theBuffer) {
     try { return {self_->CheckContent(*theBuffer), nullptr}; }
     OCCT_CATCH_RETURN
@@ -125,24 +130,24 @@ extern "C" OcctResult<const DE_ConfigurationNode*> DESTL_ConfigurationNode_as_DE
 extern "C" OcctResult<DE_ConfigurationNode*> DESTL_ConfigurationNode_as_DE_ConfigurationNode_mut(DESTL_ConfigurationNode* self_) { return {static_cast<DE_ConfigurationNode*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> DESTL_ConfigurationNode_as_Standard_Transient(const DESTL_ConfigurationNode* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> DESTL_ConfigurationNode_as_Standard_Transient_mut(DESTL_ConfigurationNode* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleDESTLConfigurationNode*> DESTL_ConfigurationNode_to_handle(DESTL_ConfigurationNode* obj) {
-    try { return {new HandleDESTLConfigurationNode(obj), nullptr}; }
+extern "C" OcctResult<Handle_DESTL_ConfigurationNode*> DESTL_ConfigurationNode_to_handle(DESTL_ConfigurationNode* obj) {
+    try { return {new Handle_DESTL_ConfigurationNode(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const DESTL_ConfigurationNode*> HandleDESTLConfigurationNode_get(const HandleDESTLConfigurationNode* handle) {
+extern "C" OcctResult<const DESTL_ConfigurationNode*> Handle_DESTL_ConfigurationNode_get(const Handle_DESTL_ConfigurationNode* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<DESTL_ConfigurationNode*> HandleDESTLConfigurationNode_get_mut(HandleDESTLConfigurationNode* handle) {
+extern "C" OcctResult<DESTL_ConfigurationNode*> Handle_DESTL_ConfigurationNode_get_mut(Handle_DESTL_ConfigurationNode* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleDEConfigurationNode*> HandleDESTLConfigurationNode_to_HandleDEConfigurationNode(const HandleDESTLConfigurationNode* self_) {
-    try { return {new HandleDEConfigurationNode(*self_), nullptr}; }
+extern "C" OcctResult<Handle_DE_ConfigurationNode*> Handle_DESTL_ConfigurationNode_to_Handle_DE_ConfigurationNode(const Handle_DESTL_ConfigurationNode* self_) {
+    try { return {new Handle_DE_ConfigurationNode(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleDESTLConfigurationNode_to_HandleStandardTransient(const HandleDESTLConfigurationNode* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_DESTL_ConfigurationNode_to_Handle_Standard_Transient(const Handle_DESTL_ConfigurationNode* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> DESTL_ConfigurationNode_inherited_UpdateLoad(DESTL_ConfigurationNode* self, bool theToImport, bool theToKeep) {
@@ -161,8 +166,16 @@ extern "C" const char* DESTL_ConfigurationNode_inherited_SetEnabled(DESTL_Config
     try { self->SetEnabled(theIsLoaded); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* DESTL_ConfigurationNode_inherited_CustomActivation(DESTL_ConfigurationNode* self, TColStd_ListOfAsciiString const& arg0) {
+extern "C" const char* DESTL_ConfigurationNode_inherited_CustomActivation(DESTL_ConfigurationNode* self, NCollection_List_TCollection_AsciiString const& arg0) {
     try { self->CustomActivation(arg0); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* DESTL_ConfigurationNode_inherited_Register(const DESTL_ConfigurationNode* self, Handle(DE_Wrapper) const& theWrapper) {
+    try { self->Register(theWrapper); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* DESTL_ConfigurationNode_inherited_UnRegister(const DESTL_ConfigurationNode* self, Handle(DE_Wrapper) const& theWrapper) {
+    try { self->UnRegister(theWrapper); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
 extern "C" OcctResult<bool> DESTL_ConfigurationNode_inherited_IsInstance(const DESTL_ConfigurationNode* self, Handle(Standard_Type) const& theType) {
@@ -247,12 +260,44 @@ extern "C" OcctResult<bool> DESTL_Provider_write_asciistring_shape_handlexscontr
     try { return {self_->Write(*thePath, *theShape, *theWS, *theProgress), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" OcctResult<bool> DESTL_Provider_read_readstreamlist_handletdocstddocument_handlexscontrolworksession_progressrange(DESTL_Provider* self_, DE_Provider::ReadStreamList* theStreams, Handle(TDocStd_Document) const* theDocument, Handle(XSControl_WorkSession)* theWS, Message_ProgressRange const* theProgress) {
+    try { return {self_->Read(*theStreams, *theDocument, *theWS, *theProgress), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<bool> DESTL_Provider_write_writestreamlist_handletdocstddocument_handlexscontrolworksession_progressrange(DESTL_Provider* self_, DE_Provider::WriteStreamList* theStreams, Handle(TDocStd_Document) const* theDocument, Handle(XSControl_WorkSession)* theWS, Message_ProgressRange const* theProgress) {
+    try { return {self_->Write(*theStreams, *theDocument, *theWS, *theProgress), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<bool> DESTL_Provider_read_readstreamlist_shape_handlexscontrolworksession_progressrange(DESTL_Provider* self_, DE_Provider::ReadStreamList* theStreams, TopoDS_Shape* theShape, Handle(XSControl_WorkSession)* theWS, Message_ProgressRange const* theProgress) {
+    try { return {self_->Read(*theStreams, *theShape, *theWS, *theProgress), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<bool> DESTL_Provider_write_writestreamlist_shape_handlexscontrolworksession_progressrange(DESTL_Provider* self_, DE_Provider::WriteStreamList* theStreams, TopoDS_Shape const* theShape, Handle(XSControl_WorkSession)* theWS, Message_ProgressRange const* theProgress) {
+    try { return {self_->Write(*theStreams, *theShape, *theWS, *theProgress), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" OcctResult<bool> DESTL_Provider_read_asciistring_shape_progressrange(DESTL_Provider* self_, TCollection_AsciiString const* thePath, TopoDS_Shape* theShape, Message_ProgressRange const* theProgress) {
     try { return {self_->Read(*thePath, *theShape, *theProgress), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> DESTL_Provider_write_asciistring_shape_progressrange(DESTL_Provider* self_, TCollection_AsciiString const* thePath, TopoDS_Shape const* theShape, Message_ProgressRange const* theProgress) {
     try { return {self_->Write(*thePath, *theShape, *theProgress), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<bool> DESTL_Provider_read_readstreamlist_handletdocstddocument_progressrange(DESTL_Provider* self_, DE_Provider::ReadStreamList* theStreams, Handle(TDocStd_Document) const* theDocument, Message_ProgressRange const* theProgress) {
+    try { return {self_->Read(*theStreams, *theDocument, *theProgress), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<bool> DESTL_Provider_write_writestreamlist_handletdocstddocument_progressrange(DESTL_Provider* self_, DE_Provider::WriteStreamList* theStreams, Handle(TDocStd_Document) const* theDocument, Message_ProgressRange const* theProgress) {
+    try { return {self_->Write(*theStreams, *theDocument, *theProgress), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<bool> DESTL_Provider_read_readstreamlist_shape_progressrange(DESTL_Provider* self_, DE_Provider::ReadStreamList* theStreams, TopoDS_Shape* theShape, Message_ProgressRange const* theProgress) {
+    try { return {self_->Read(*theStreams, *theShape, *theProgress), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<bool> DESTL_Provider_write_writestreamlist_shape_progressrange(DESTL_Provider* self_, DE_Provider::WriteStreamList* theStreams, TopoDS_Shape const* theShape, Message_ProgressRange const* theProgress) {
+    try { return {self_->Write(*theStreams, *theShape, *theProgress), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<char const*> DESTL_Provider_get_type_name() {
@@ -267,24 +312,24 @@ extern "C" OcctResult<const DE_Provider*> DESTL_Provider_as_DE_Provider(const DE
 extern "C" OcctResult<DE_Provider*> DESTL_Provider_as_DE_Provider_mut(DESTL_Provider* self_) { return {static_cast<DE_Provider*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> DESTL_Provider_as_Standard_Transient(const DESTL_Provider* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> DESTL_Provider_as_Standard_Transient_mut(DESTL_Provider* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleDESTLProvider*> DESTL_Provider_to_handle(DESTL_Provider* obj) {
-    try { return {new HandleDESTLProvider(obj), nullptr}; }
+extern "C" OcctResult<Handle_DESTL_Provider*> DESTL_Provider_to_handle(DESTL_Provider* obj) {
+    try { return {new Handle_DESTL_Provider(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const DESTL_Provider*> HandleDESTLProvider_get(const HandleDESTLProvider* handle) {
+extern "C" OcctResult<const DESTL_Provider*> Handle_DESTL_Provider_get(const Handle_DESTL_Provider* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<DESTL_Provider*> HandleDESTLProvider_get_mut(HandleDESTLProvider* handle) {
+extern "C" OcctResult<DESTL_Provider*> Handle_DESTL_Provider_get_mut(Handle_DESTL_Provider* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleDEProvider*> HandleDESTLProvider_to_HandleDEProvider(const HandleDESTLProvider* self_) {
-    try { return {new HandleDEProvider(*self_), nullptr}; }
+extern "C" OcctResult<Handle_DE_Provider*> Handle_DESTL_Provider_to_Handle_DE_Provider(const Handle_DESTL_Provider* self_) {
+    try { return {new Handle_DE_Provider(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleDESTLProvider_to_HandleStandardTransient(const HandleDESTLProvider* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_DESTL_Provider_to_Handle_Standard_Transient(const Handle_DESTL_Provider* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(DE_ConfigurationNode)*> DESTL_Provider_inherited_GetNode(const DESTL_Provider* self) {
@@ -383,16 +428,16 @@ extern "C" OcctResult<Handle(Standard_Type) const*> RWStl_Reader_get_type_descri
 }
 extern "C" OcctResult<const Standard_Transient*> RWStl_Reader_as_Standard_Transient(const RWStl_Reader* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> RWStl_Reader_as_Standard_Transient_mut(RWStl_Reader* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<const RWStl_Reader*> HandleRWStlReader_get(const HandleRWStlReader* handle) {
+extern "C" OcctResult<const RWStl_Reader*> Handle_RWStl_Reader_get(const Handle_RWStl_Reader* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<RWStl_Reader*> HandleRWStlReader_get_mut(HandleRWStlReader* handle) {
+extern "C" OcctResult<RWStl_Reader*> Handle_RWStl_Reader_get_mut(Handle_RWStl_Reader* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleRWStlReader_to_HandleStandardTransient(const HandleRWStlReader* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_RWStl_Reader_to_Handle_Standard_Transient(const Handle_RWStl_Reader* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> RWStl_Reader_inherited_IsInstance(const RWStl_Reader* self, Handle(Standard_Type) const& theType) {
@@ -433,8 +478,12 @@ extern "C" OcctResult<StlAPI_Reader*> StlAPI_Reader_ctor() {
     try { return {new StlAPI_Reader(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<bool> StlAPI_Reader_read(StlAPI_Reader* self_, TopoDS_Shape* theShape, const char* theFileName) {
+extern "C" OcctResult<bool> StlAPI_Reader_read_shape_charptr(StlAPI_Reader* self_, TopoDS_Shape* theShape, const char* theFileName) {
     try { return {self_->Read(*theShape, theFileName), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<bool> StlAPI_Reader_read_shape_istream(StlAPI_Reader* self_, TopoDS_Shape* theShape, Standard_IStream* theStream) {
+    try { return {self_->Read(*theShape, *theStream), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" void StlAPI_Reader_destructor(StlAPI_Reader* self_) { delete self_; }
@@ -451,8 +500,12 @@ extern "C" OcctResult<bool*> StlAPI_Writer_ascii_mode(StlAPI_Writer* self_) {
     try { return {&(self_->ASCIIMode()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<bool> StlAPI_Writer_write(StlAPI_Writer* self_, TopoDS_Shape const* theShape, const char* theFileName, Message_ProgressRange const* theProgress) {
+extern "C" OcctResult<bool> StlAPI_Writer_write_shape_charptr_progressrange(StlAPI_Writer* self_, TopoDS_Shape const* theShape, const char* theFileName, Message_ProgressRange const* theProgress) {
     try { return {self_->Write(*theShape, theFileName, *theProgress), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<bool> StlAPI_Writer_write_shape_ostream_progressrange(StlAPI_Writer* self_, TopoDS_Shape const* theShape, Standard_OStream* theStream, Message_ProgressRange const* theProgress) {
+    try { return {self_->Write(*theShape, *theStream, *theProgress), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" void StlAPI_Writer_destructor(StlAPI_Writer* self_) { delete self_; }
@@ -460,12 +513,20 @@ extern "C" void StlAPI_Writer_destructor(StlAPI_Writer* self_) { delete self_; }
 // ========================
 // RWStl namespace functions
 // ========================
-extern "C" OcctResult<bool> RWStl_write_binary(Handle(Poly_Triangulation) const* theMesh, OSD_Path const* thePath, Message_ProgressRange const* theProgress) {
+extern "C" OcctResult<bool> RWStl_write_binary_handlepolytriangulation_path_progressrange(Handle(Poly_Triangulation) const* theMesh, OSD_Path const* thePath, Message_ProgressRange const* theProgress) {
     try { return {RWStl::WriteBinary(*theMesh, *thePath, *theProgress), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<bool> RWStl_write_ascii(Handle(Poly_Triangulation) const* theMesh, OSD_Path const* thePath, Message_ProgressRange const* theProgress) {
+extern "C" OcctResult<bool> RWStl_write_binary_handlepolytriangulation_ostream_progressrange(Handle(Poly_Triangulation) const* theMesh, Standard_OStream* theStream, Message_ProgressRange const* theProgress) {
+    try { return {RWStl::WriteBinary(*theMesh, *theStream, *theProgress), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<bool> RWStl_write_ascii_handlepolytriangulation_path_progressrange(Handle(Poly_Triangulation) const* theMesh, OSD_Path const* thePath, Message_ProgressRange const* theProgress) {
     try { return {RWStl::WriteAscii(*theMesh, *thePath, *theProgress), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<bool> RWStl_write_ascii_handlepolytriangulation_ostream_progressrange(Handle(Poly_Triangulation) const* theMesh, Standard_OStream* theStream, Message_ProgressRange const* theProgress) {
+    try { return {RWStl::WriteAscii(*theMesh, *theStream, *theProgress), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(Poly_Triangulation)*> RWStl_read_file_path_progressrange(OSD_Path const* theFile, Message_ProgressRange const* theProgress) {
@@ -480,16 +541,24 @@ extern "C" OcctResult<Handle(Poly_Triangulation)*> RWStl_read_file_charptr_real_
     try { return {new Handle(Poly_Triangulation)(RWStl::ReadFile(theFile, theMergeAngle, *theProgress)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* RWStl_read_file_charptr_real_sequence_opencascade_handle_poly_triangulation_progressrange(const char* theFile, double theMergeAngle, NCollection_Sequence_opencascade_handle_Poly_Triangulation* theTriangList, Message_ProgressRange const* theProgress) {
-    try { RWStl::ReadFile(theFile, theMergeAngle, *theTriangList, *theProgress); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
 extern "C" OcctResult<Handle(Poly_Triangulation)*> RWStl_read_binary(OSD_Path const* thePath, Message_ProgressRange const* theProgress) {
     try { return {new Handle(Poly_Triangulation)(RWStl::ReadBinary(*thePath, *theProgress)), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(Poly_Triangulation)*> RWStl_read_ascii(OSD_Path const* thePath, Message_ProgressRange const* theProgress) {
     try { return {new Handle(Poly_Triangulation)(RWStl::ReadAscii(*thePath, *theProgress)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Handle(Poly_Triangulation)*> RWStl_read_binary_stream(Standard_IStream* theStream, double theMergeAngle, Message_ProgressRange const* theProgress) {
+    try { return {new Handle(Poly_Triangulation)(RWStl::ReadBinaryStream(*theStream, theMergeAngle, *theProgress)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Handle(Poly_Triangulation)*> RWStl_read_ascii_stream(Standard_IStream* theStream, double theMergeAngle, Message_ProgressRange const* theProgress) {
+    try { return {new Handle(Poly_Triangulation)(RWStl::ReadAsciiStream(*theStream, theMergeAngle, *theProgress)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Handle(Poly_Triangulation)*> RWStl_read_stream(Standard_IStream* theStream, double theMergeAngle, Message_ProgressRange const* theProgress) {
+    try { return {new Handle(Poly_Triangulation)(RWStl::ReadStream(*theStream, theMergeAngle, *theProgress)), nullptr}; }
     OCCT_CATCH_RETURN
 }
 

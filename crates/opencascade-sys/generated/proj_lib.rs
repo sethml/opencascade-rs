@@ -183,8 +183,8 @@ pub fn project_torus_circ(
     }
 }
 /// **Source:** `ProjLib.hxx`:101 - `ProjLib::MakePCurveOfType`
-/// Make empty  P-Curve <aC> of relevant to <PC> type
-pub fn make_p_curve_of_type(PC: &ProjectedCurve, aC: &mut crate::ffi_types::HandleGeom2dCurve) {
+/// Make empty P-Curve <aC> of relevant to <PC> type
+pub fn make_p_curve_of_type(PC: &ProjectedCurve, aC: &mut crate::ffi_types::Handle_Geom2d_Curve) {
     crate::check_void_result(unsafe {
         crate::ffi_extern_TKGeomBase::ProjLib_make_p_curve_of_type(PC, aC)
     })
@@ -193,18 +193,20 @@ pub fn make_p_curve_of_type(PC: &ProjectedCurve, aC: &mut crate::ffi_types::Hand
 /// Returns "true" if surface is analytical, that is it can be
 /// Plane, Cylinder, Cone, Sphere, Torus.
 /// For all other types of surface method returns "false".
-pub fn is_ana_surf(theAS: &crate::ffi_types::HandleAdaptor3dSurface) -> bool {
+pub fn is_ana_surf(theAS: &crate::ffi_types::Handle_Adaptor3d_Surface) -> bool {
     crate::check_result(unsafe { crate::ffi_extern_TKGeomBase::ProjLib_is_ana_surf(theAS) })
 }
 
 // Handle type re-exports (targets of handle upcasts/downcasts)
-pub use crate::ffi_types::{HandleAdaptor2dCurve2d, HandleAdaptor3dCurve, HandleStandardTransient};
+pub use crate::ffi_types::{
+    Handle_Adaptor2d_Curve2d, Handle_Adaptor3d_Curve, Handle_Standard_Transient,
+};
 
 // ========================
 // From ProjLib_CompProjectedCurve.hxx
 // ========================
 
-/// **Source:** `ProjLib_CompProjectedCurve.hxx`:39 - `ProjLib_CompProjectedCurve`
+/// **Source:** `ProjLib_CompProjectedCurve.hxx`:37 - `ProjLib_CompProjectedCurve`
 pub use crate::ffi_types::ProjLib_CompProjectedCurve as CompProjectedCurve;
 
 unsafe impl crate::CppDeletable for CompProjectedCurve {
@@ -216,7 +218,7 @@ unsafe impl crate::CppDeletable for CompProjectedCurve {
 }
 
 impl CompProjectedCurve {
-    /// **Source:** `ProjLib_CompProjectedCurve.hxx`:43 - `ProjLib_CompProjectedCurve::ProjLib_CompProjectedCurve()`
+    /// **Source:** `ProjLib_CompProjectedCurve.hxx`:41 - `ProjLib_CompProjectedCurve::ProjLib_CompProjectedCurve()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -225,11 +227,11 @@ impl CompProjectedCurve {
         }
     }
 
-    /// **Source:** `ProjLib_CompProjectedCurve.hxx`:46 - `ProjLib_CompProjectedCurve::ProjLib_CompProjectedCurve()`
+    /// **Source:** `ProjLib_CompProjectedCurve.hxx`:44 - `ProjLib_CompProjectedCurve::ProjLib_CompProjectedCurve()`
     /// try to find all solutions
     pub fn new_handleadaptor3dsurface_handleadaptor3dcurve_real2(
-        S: &crate::ffi_types::HandleAdaptor3dSurface,
-        C: &crate::ffi_types::HandleAdaptor3dCurve,
+        S: &crate::ffi_types::Handle_Adaptor3d_Surface,
+        C: &crate::ffi_types::Handle_Adaptor3d_Curve,
         TolU: f64,
         TolV: f64,
     ) -> crate::OwnedPtr<Self> {
@@ -238,14 +240,14 @@ impl CompProjectedCurve {
         }
     }
 
-    /// **Source:** `ProjLib_CompProjectedCurve.hxx`:55 - `ProjLib_CompProjectedCurve::ProjLib_CompProjectedCurve()`
+    /// **Source:** `ProjLib_CompProjectedCurve.hxx`:53 - `ProjLib_CompProjectedCurve::ProjLib_CompProjectedCurve()`
     /// this constructor tries to optimize the search using the
     /// assumption that maximum distance between surface and curve less or
     /// equal then MaxDist.
     /// if MaxDist < 0 then algorithm works as above.
     pub fn new_handleadaptor3dsurface_handleadaptor3dcurve_real3(
-        S: &crate::ffi_types::HandleAdaptor3dSurface,
-        C: &crate::ffi_types::HandleAdaptor3dCurve,
+        S: &crate::ffi_types::Handle_Adaptor3d_Surface,
+        C: &crate::ffi_types::Handle_Adaptor3d_Curve,
         TolU: f64,
         TolV: f64,
         MaxDist: f64,
@@ -255,7 +257,7 @@ impl CompProjectedCurve {
         }
     }
 
-    /// **Source:** `ProjLib_CompProjectedCurve.hxx`:66 - `ProjLib_CompProjectedCurve::ProjLib_CompProjectedCurve()`
+    /// **Source:** `ProjLib_CompProjectedCurve.hxx`:64 - `ProjLib_CompProjectedCurve::ProjLib_CompProjectedCurve()`
     /// this constructor tries to optimize the search using the
     /// assumption that maximum distance between surface and curve less or
     /// equal then MaxDist.
@@ -263,8 +265,8 @@ impl CompProjectedCurve {
     /// Tolerances of parameters are calculated automatically.
     pub fn new_real_handleadaptor3dsurface_handleadaptor3dcurve_real(
         Tol3d: f64,
-        S: &crate::ffi_types::HandleAdaptor3dSurface,
-        C: &crate::ffi_types::HandleAdaptor3dCurve,
+        S: &crate::ffi_types::Handle_Adaptor3d_Surface,
+        C: &crate::ffi_types::Handle_Adaptor3d_Curve,
         MaxDist: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -272,7 +274,7 @@ impl CompProjectedCurve {
         }
     }
 
-    /// **Source:** `ProjLib_CompProjectedCurve.hxx`:66 - `ProjLib_CompProjectedCurve::ProjLib_CompProjectedCurve()`
+    /// **Source:** `ProjLib_CompProjectedCurve.hxx`:64 - `ProjLib_CompProjectedCurve::ProjLib_CompProjectedCurve()`
     /// this constructor tries to optimize the search using the
     /// assumption that maximum distance between surface and curve less or
     /// equal then MaxDist.
@@ -280,14 +282,14 @@ impl CompProjectedCurve {
     /// Tolerances of parameters are calculated automatically.
     pub fn new_real_handleadaptor3dsurface_handleadaptor3dcurve(
         Tol3d: f64,
-        S: &crate::ffi_types::HandleAdaptor3dSurface,
-        C: &crate::ffi_types::HandleAdaptor3dCurve,
+        S: &crate::ffi_types::Handle_Adaptor3d_Surface,
+        C: &crate::ffi_types::Handle_Adaptor3d_Curve,
     ) -> crate::OwnedPtr<Self> {
         Self::new_real_handleadaptor3dsurface_handleadaptor3dcurve_real(Tol3d, S, C, -1.0)
     }
 
-    /// **Source:** `ProjLib_CompProjectedCurve.hxx`:41 - `ProjLib_CompProjectedCurve::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `ProjLib_CompProjectedCurve.hxx`:39 - `ProjLib_CompProjectedCurve::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKGeomBase::ProjLib_CompProjectedCurve_dynamic_type(
@@ -297,9 +299,9 @@ impl CompProjectedCurve {
         }
     }
 
-    /// **Source:** `ProjLib_CompProjectedCurve.hxx`:72 - `ProjLib_CompProjectedCurve::ShallowCopy()`
+    /// **Source:** `ProjLib_CompProjectedCurve.hxx`:70 - `ProjLib_CompProjectedCurve::ShallowCopy()`
     /// Shallow copy of adaptor
-    pub fn shallow_copy(&self) -> crate::OwnedPtr<crate::ffi_types::HandleAdaptor2dCurve2d> {
+    pub fn shallow_copy(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_Adaptor2d_Curve2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKGeomBase::ProjLib_CompProjectedCurve_shallow_copy(
@@ -309,18 +311,18 @@ impl CompProjectedCurve {
         }
     }
 
-    /// **Source:** `ProjLib_CompProjectedCurve.hxx`:78 - `ProjLib_CompProjectedCurve::Init()`
+    /// **Source:** `ProjLib_CompProjectedCurve.hxx`:76 - `ProjLib_CompProjectedCurve::Init()`
     /// computes a set of projected point and determine the
-    /// continuous parts of the projected  curves. The  points
+    /// continuous parts of the projected curves. The points
     /// corresponding to a projection on the bounds of the surface are
-    /// included  in this set of points.
+    /// included in this set of points.
     pub fn init(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomBase::ProjLib_CompProjectedCurve_init(self as *mut Self)
         })
     }
 
-    /// **Source:** `ProjLib_CompProjectedCurve.hxx`:84 - `ProjLib_CompProjectedCurve::Perform()`
+    /// **Source:** `ProjLib_CompProjectedCurve.hxx`:82 - `ProjLib_CompProjectedCurve::Perform()`
     /// Performs projecting for given curve.
     /// If projecting uses approximation,
     /// approximation parameters can be set before by corresponding methods
@@ -331,7 +333,7 @@ impl CompProjectedCurve {
         })
     }
 
-    /// **Source:** `ProjLib_CompProjectedCurve.hxx`:87 - `ProjLib_CompProjectedCurve::SetTol3d()`
+    /// **Source:** `ProjLib_CompProjectedCurve.hxx`:85 - `ProjLib_CompProjectedCurve::SetTol3d()`
     /// Set the parameter, which defines 3d tolerance of approximation.
     pub fn set_tol3d(&mut self, theTol3d: f64) {
         crate::check_void_result(unsafe {
@@ -342,7 +344,7 @@ impl CompProjectedCurve {
         })
     }
 
-    /// **Source:** `ProjLib_CompProjectedCurve.hxx`:91 - `ProjLib_CompProjectedCurve::SetContinuity()`
+    /// **Source:** `ProjLib_CompProjectedCurve.hxx`:89 - `ProjLib_CompProjectedCurve::SetContinuity()`
     /// Set the parameter, which defines curve continuity.
     /// Default value is GeomAbs_C2;
     pub fn set_continuity(&mut self, theContinuity: crate::geom_abs::Shape) {
@@ -354,7 +356,7 @@ impl CompProjectedCurve {
         })
     }
 
-    /// **Source:** `ProjLib_CompProjectedCurve.hxx`:96 - `ProjLib_CompProjectedCurve::SetMaxDegree()`
+    /// **Source:** `ProjLib_CompProjectedCurve.hxx`:94 - `ProjLib_CompProjectedCurve::SetMaxDegree()`
     /// Set max possible degree of result BSpline curve2d, which is got by approximation.
     /// If MaxDegree < 0, algorithm uses values that are chosen depending of types curve 3d
     /// and surface.
@@ -367,7 +369,7 @@ impl CompProjectedCurve {
         })
     }
 
-    /// **Source:** `ProjLib_CompProjectedCurve.hxx`:101 - `ProjLib_CompProjectedCurve::SetMaxSeg()`
+    /// **Source:** `ProjLib_CompProjectedCurve.hxx`:99 - `ProjLib_CompProjectedCurve::SetMaxSeg()`
     /// Set the parameter, which defines maximal value of parametric intervals the projected
     /// curve can be cut for approximation. If MaxSeg < 0, algorithm uses default
     /// value = 16.
@@ -380,7 +382,7 @@ impl CompProjectedCurve {
         })
     }
 
-    /// **Source:** `ProjLib_CompProjectedCurve.hxx`:104 - `ProjLib_CompProjectedCurve::SetProj2d()`
+    /// **Source:** `ProjLib_CompProjectedCurve.hxx`:102 - `ProjLib_CompProjectedCurve::SetProj2d()`
     /// Set the parameter, which defines necessity of 2d results.
     pub fn set_proj2d(&mut self, theProj2d: bool) {
         crate::check_void_result(unsafe {
@@ -391,7 +393,7 @@ impl CompProjectedCurve {
         })
     }
 
-    /// **Source:** `ProjLib_CompProjectedCurve.hxx`:107 - `ProjLib_CompProjectedCurve::SetProj3d()`
+    /// **Source:** `ProjLib_CompProjectedCurve.hxx`:105 - `ProjLib_CompProjectedCurve::SetProj3d()`
     /// Set the parameter, which defines necessity of 3d results.
     pub fn set_proj3d(&mut self, theProj3d: bool) {
         crate::check_void_result(unsafe {
@@ -402,9 +404,9 @@ impl CompProjectedCurve {
         })
     }
 
-    /// **Source:** `ProjLib_CompProjectedCurve.hxx`:110 - `ProjLib_CompProjectedCurve::Load()`
+    /// **Source:** `ProjLib_CompProjectedCurve.hxx`:108 - `ProjLib_CompProjectedCurve::Load()`
     /// Changes the surface.
-    pub fn load_handleadaptor3dsurface(&mut self, S: &crate::ffi_types::HandleAdaptor3dSurface) {
+    pub fn load_handleadaptor3dsurface(&mut self, S: &crate::ffi_types::Handle_Adaptor3d_Surface) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomBase::ProjLib_CompProjectedCurve_load_handleadaptor3dsurface(
                 self as *mut Self,
@@ -413,9 +415,9 @@ impl CompProjectedCurve {
         })
     }
 
-    /// **Source:** `ProjLib_CompProjectedCurve.hxx`:113 - `ProjLib_CompProjectedCurve::Load()`
-    /// Changes the  curve.
-    pub fn load_handleadaptor3dcurve(&mut self, C: &crate::ffi_types::HandleAdaptor3dCurve) {
+    /// **Source:** `ProjLib_CompProjectedCurve.hxx`:111 - `ProjLib_CompProjectedCurve::Load()`
+    /// Changes the curve.
+    pub fn load_handleadaptor3dcurve(&mut self, C: &crate::ffi_types::Handle_Adaptor3d_Curve) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomBase::ProjLib_CompProjectedCurve_load_handleadaptor3dcurve(
                 self as *mut Self,
@@ -424,8 +426,8 @@ impl CompProjectedCurve {
         })
     }
 
-    /// **Source:** `ProjLib_CompProjectedCurve.hxx`:115 - `ProjLib_CompProjectedCurve::GetSurface()`
-    pub fn get_surface(&self) -> &crate::ffi_types::HandleAdaptor3dSurface {
+    /// **Source:** `ProjLib_CompProjectedCurve.hxx`:113 - `ProjLib_CompProjectedCurve::GetSurface()`
+    pub fn get_surface(&self) -> &crate::ffi_types::Handle_Adaptor3d_Surface {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKGeomBase::ProjLib_CompProjectedCurve_get_surface(
@@ -435,8 +437,8 @@ impl CompProjectedCurve {
         }
     }
 
-    /// **Source:** `ProjLib_CompProjectedCurve.hxx`:117 - `ProjLib_CompProjectedCurve::GetCurve()`
-    pub fn get_curve(&self) -> &crate::ffi_types::HandleAdaptor3dCurve {
+    /// **Source:** `ProjLib_CompProjectedCurve.hxx`:115 - `ProjLib_CompProjectedCurve::GetCurve()`
+    pub fn get_curve(&self) -> &crate::ffi_types::Handle_Adaptor3d_Curve {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKGeomBase::ProjLib_CompProjectedCurve_get_curve(
@@ -446,7 +448,7 @@ impl CompProjectedCurve {
         }
     }
 
-    /// **Source:** `ProjLib_CompProjectedCurve.hxx`:119 - `ProjLib_CompProjectedCurve::GetTolerance()`
+    /// **Source:** `ProjLib_CompProjectedCurve.hxx`:117 - `ProjLib_CompProjectedCurve::GetTolerance()`
     pub fn get_tolerance(&self, TolU: &mut f64, TolV: &mut f64) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomBase::ProjLib_CompProjectedCurve_get_tolerance(
@@ -457,7 +459,7 @@ impl CompProjectedCurve {
         })
     }
 
-    /// **Source:** `ProjLib_CompProjectedCurve.hxx`:122 - `ProjLib_CompProjectedCurve::NbCurves()`
+    /// **Source:** `ProjLib_CompProjectedCurve.hxx`:120 - `ProjLib_CompProjectedCurve::NbCurves()`
     /// returns the number of continuous part of the projected curve
     pub fn nb_curves(&self) -> i32 {
         crate::check_result(unsafe {
@@ -465,7 +467,7 @@ impl CompProjectedCurve {
         })
     }
 
-    /// **Source:** `ProjLib_CompProjectedCurve.hxx`:125 - `ProjLib_CompProjectedCurve::Bounds()`
+    /// **Source:** `ProjLib_CompProjectedCurve.hxx`:123 - `ProjLib_CompProjectedCurve::Bounds()`
     /// returns the bounds of the continuous part corresponding to Index
     pub fn bounds(&self, Index: i32, Udeb: &mut f64, Ufin: &mut f64) {
         crate::check_void_result(unsafe {
@@ -478,9 +480,9 @@ impl CompProjectedCurve {
         })
     }
 
-    /// **Source:** `ProjLib_CompProjectedCurve.hxx`:131 - `ProjLib_CompProjectedCurve::IsSinglePnt()`
-    /// returns  True  if  part  of  projection with  number  Index is  a  single  point  and  writes
-    /// its  coordinates in  P
+    /// **Source:** `ProjLib_CompProjectedCurve.hxx`:127 - `ProjLib_CompProjectedCurve::IsSinglePnt()`
+    /// returns True if part of projection with number Index is a single point and writes
+    /// its coordinates in P
     pub fn is_single_pnt(&self, Index: i32, P: &mut crate::gp::Pnt2d) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomBase::ProjLib_CompProjectedCurve_is_single_pnt(
@@ -491,9 +493,9 @@ impl CompProjectedCurve {
         })
     }
 
-    /// **Source:** `ProjLib_CompProjectedCurve.hxx`:135 - `ProjLib_CompProjectedCurve::IsUIso()`
-    /// returns  True  if  part  of  projection with  number  Index is  an  u-isoparametric curve  of
-    /// input  surface
+    /// **Source:** `ProjLib_CompProjectedCurve.hxx`:131 - `ProjLib_CompProjectedCurve::IsUIso()`
+    /// returns True if part of projection with number Index is an u-isoparametric curve of
+    /// input surface
     pub fn is_u_iso(&self, Index: i32, U: &mut f64) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomBase::ProjLib_CompProjectedCurve_is_u_iso(
@@ -504,9 +506,9 @@ impl CompProjectedCurve {
         })
     }
 
-    /// **Source:** `ProjLib_CompProjectedCurve.hxx`:139 - `ProjLib_CompProjectedCurve::IsVIso()`
-    /// returns  True  if  part  of  projection with  number  Index is  an  v-isoparametric curve  of
-    /// input  surface
+    /// **Source:** `ProjLib_CompProjectedCurve.hxx`:135 - `ProjLib_CompProjectedCurve::IsVIso()`
+    /// returns True if part of projection with number Index is an v-isoparametric curve of
+    /// input surface
     pub fn is_v_iso(&self, Index: i32, V: &mut f64) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomBase::ProjLib_CompProjectedCurve_is_v_iso(
@@ -517,7 +519,7 @@ impl CompProjectedCurve {
         })
     }
 
-    /// **Source:** `ProjLib_CompProjectedCurve.hxx`:142 - `ProjLib_CompProjectedCurve::Value()`
+    /// **Source:** `ProjLib_CompProjectedCurve.hxx`:138 - `ProjLib_CompProjectedCurve::Value()`
     /// Computes the point of parameter U on the curve.
     pub fn value(&self, U: f64) -> crate::OwnedPtr<crate::gp::Pnt2d> {
         unsafe {
@@ -530,7 +532,7 @@ impl CompProjectedCurve {
         }
     }
 
-    /// **Source:** `ProjLib_CompProjectedCurve.hxx`:145 - `ProjLib_CompProjectedCurve::D0()`
+    /// **Source:** `ProjLib_CompProjectedCurve.hxx`:141 - `ProjLib_CompProjectedCurve::D0()`
     /// Computes the point of parameter U on the curve.
     pub fn d0(&self, U: f64, P: &mut crate::gp::Pnt2d) {
         crate::check_void_result(unsafe {
@@ -538,7 +540,7 @@ impl CompProjectedCurve {
         })
     }
 
-    /// **Source:** `ProjLib_CompProjectedCurve.hxx`:151 - `ProjLib_CompProjectedCurve::D1()`
+    /// **Source:** `ProjLib_CompProjectedCurve.hxx`:147 - `ProjLib_CompProjectedCurve::D1()`
     /// Computes the point of parameter U on the curve with its
     /// first derivative.
     /// Raised if the continuity of the current interval
@@ -554,7 +556,7 @@ impl CompProjectedCurve {
         })
     }
 
-    /// **Source:** `ProjLib_CompProjectedCurve.hxx`:157 - `ProjLib_CompProjectedCurve::D2()`
+    /// **Source:** `ProjLib_CompProjectedCurve.hxx`:153 - `ProjLib_CompProjectedCurve::D2()`
     /// Returns the point P of parameter U, the first and second
     /// derivatives V1 and V2.
     /// Raised if the continuity of the current interval
@@ -577,7 +579,7 @@ impl CompProjectedCurve {
         })
     }
 
-    /// **Source:** `ProjLib_CompProjectedCurve.hxx`:166 - `ProjLib_CompProjectedCurve::DN()`
+    /// **Source:** `ProjLib_CompProjectedCurve.hxx`:159 - `ProjLib_CompProjectedCurve::DN()`
     /// The returned vector gives the value of the derivative for the
     /// order of derivation N.
     /// Raised if N < 1.
@@ -594,9 +596,9 @@ impl CompProjectedCurve {
         }
     }
 
-    /// **Source:** `ProjLib_CompProjectedCurve.hxx`:171 - `ProjLib_CompProjectedCurve::FirstParameter()`
-    /// Returns  the  first  parameter of  the  curve  C
-    /// which  has  a  projection  on  S.
+    /// **Source:** `ProjLib_CompProjectedCurve.hxx`:163 - `ProjLib_CompProjectedCurve::FirstParameter()`
+    /// Returns the first parameter of the curve C
+    /// which has a projection on S.
     pub fn first_parameter(&self) -> f64 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomBase::ProjLib_CompProjectedCurve_first_parameter(
@@ -605,9 +607,9 @@ impl CompProjectedCurve {
         })
     }
 
-    /// **Source:** `ProjLib_CompProjectedCurve.hxx`:175 - `ProjLib_CompProjectedCurve::LastParameter()`
-    /// Returns  the  last  parameter of  the  curve  C
-    /// which  has  a  projection  on  S.
+    /// **Source:** `ProjLib_CompProjectedCurve.hxx`:167 - `ProjLib_CompProjectedCurve::LastParameter()`
+    /// Returns the last parameter of the curve C
+    /// which has a projection on S.
     pub fn last_parameter(&self) -> f64 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomBase::ProjLib_CompProjectedCurve_last_parameter(
@@ -616,7 +618,7 @@ impl CompProjectedCurve {
         })
     }
 
-    /// **Source:** `ProjLib_CompProjectedCurve.hxx`:178 - `ProjLib_CompProjectedCurve::Continuity()`
+    /// **Source:** `ProjLib_CompProjectedCurve.hxx`:170 - `ProjLib_CompProjectedCurve::Continuity()`
     /// Returns the Continuity used in the approximation.
     pub fn continuity(&self) -> crate::geom_abs::Shape {
         crate::geom_abs::Shape::try_from(crate::check_result(unsafe {
@@ -625,9 +627,9 @@ impl CompProjectedCurve {
         .unwrap()
     }
 
-    /// **Source:** `ProjLib_CompProjectedCurve.hxx`:182 - `ProjLib_CompProjectedCurve::NbIntervals()`
-    /// Returns  the number  of  intervals which  define
-    /// an  S  continuous  part  of  the  projected  curve
+    /// **Source:** `ProjLib_CompProjectedCurve.hxx`:174 - `ProjLib_CompProjectedCurve::NbIntervals()`
+    /// Returns the number of intervals which define
+    /// an S continuous part of the projected curve
     pub fn nb_intervals(&self, S: crate::geom_abs::Shape) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomBase::ProjLib_CompProjectedCurve_nb_intervals(
@@ -637,9 +639,9 @@ impl CompProjectedCurve {
         })
     }
 
-    /// **Source:** `ProjLib_CompProjectedCurve.hxx`:188 - `ProjLib_CompProjectedCurve::Trim()`
-    /// Returns    a  curve equivalent   of  <me>  between
-    /// parameters <First>  and <Last>. <Tol>  is used  to
+    /// **Source:** `ProjLib_CompProjectedCurve.hxx`:180 - `ProjLib_CompProjectedCurve::Trim()`
+    /// Returns a curve equivalent of <me> between
+    /// parameters <First> and <Last>. <Tol> is used to
     /// test for 2d points confusion.
     /// If <First> >= <Last>
     pub fn trim(
@@ -647,7 +649,7 @@ impl CompProjectedCurve {
         FirstParam: f64,
         LastParam: f64,
         Tol: f64,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleAdaptor2dCurve2d> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Adaptor2d_Curve2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKGeomBase::ProjLib_CompProjectedCurve_trim(
@@ -660,15 +662,15 @@ impl CompProjectedCurve {
         }
     }
 
-    /// **Source:** `ProjLib_CompProjectedCurve.hxx`:197 - `ProjLib_CompProjectedCurve::Intervals()`
-    /// Returns  the  parameters  corresponding  to
-    /// S  discontinuities.
+    /// **Source:** `ProjLib_CompProjectedCurve.hxx`:189 - `ProjLib_CompProjectedCurve::Intervals()`
+    /// Returns the parameters corresponding to
+    /// S discontinuities.
     ///
-    /// The array must provide  enough room to  accommodate
+    /// The array must provide enough room to accommodate
     /// for the parameters. i.e. T.Length() > NbIntervals()
     pub fn intervals(
         &self,
-        T: &mut crate::ffi_types::TColStd_Array1OfReal,
+        T: &mut crate::ffi_types::NCollection_Array1_double,
         S: crate::geom_abs::Shape,
     ) {
         crate::check_void_result(unsafe {
@@ -680,9 +682,9 @@ impl CompProjectedCurve {
         })
     }
 
-    /// **Source:** `ProjLib_CompProjectedCurve.hxx`:202 - `ProjLib_CompProjectedCurve::MaxDistance()`
-    /// returns  the  maximum  distance  between
-    /// curve  to  project  and  surface
+    /// **Source:** `ProjLib_CompProjectedCurve.hxx`:194 - `ProjLib_CompProjectedCurve::MaxDistance()`
+    /// returns the maximum distance between
+    /// curve to project and surface
     pub fn max_distance(&self, Index: i32) -> f64 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomBase::ProjLib_CompProjectedCurve_max_distance(
@@ -692,8 +694,8 @@ impl CompProjectedCurve {
         })
     }
 
-    /// **Source:** `ProjLib_CompProjectedCurve.hxx`:204 - `ProjLib_CompProjectedCurve::GetSequence()`
-    pub fn get_sequence(&self) -> &crate::ffi_types::HandleProjLibHSequenceOfHSequenceOfPnt {
+    /// **Source:** `ProjLib_CompProjectedCurve.hxx`:198 - `ProjLib_CompProjectedCurve::GetSequence()`
+    pub fn get_sequence(&self) -> &crate::ffi_types::Handle_NCollection_HSequence_opencascade_handle_NCollection_HSequence_gp_Pnt{
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKGeomBase::ProjLib_CompProjectedCurve_get_sequence(
@@ -703,9 +705,9 @@ impl CompProjectedCurve {
         }
     }
 
-    /// **Source:** `ProjLib_CompProjectedCurve.hxx`:209 - `ProjLib_CompProjectedCurve::GetType()`
-    /// Returns  the  type of the   curve  in the  current
-    /// interval :   Line,   Circle,   Ellipse, Hyperbola,
+    /// **Source:** `ProjLib_CompProjectedCurve.hxx`:203 - `ProjLib_CompProjectedCurve::GetType()`
+    /// Returns the type of the curve in the current
+    /// interval: Line, Circle, Ellipse, Hyperbola,
     /// Parabola, BezierCurve, BSplineCurve, OtherCurve.
     pub fn get_type(&self) -> crate::geom_abs::CurveType {
         crate::geom_abs::CurveType::try_from(crate::check_result(unsafe {
@@ -714,7 +716,7 @@ impl CompProjectedCurve {
         .unwrap()
     }
 
-    /// **Source:** `ProjLib_CompProjectedCurve.hxx`:213 - `ProjLib_CompProjectedCurve::ResultIsPoint()`
+    /// **Source:** `ProjLib_CompProjectedCurve.hxx`:207 - `ProjLib_CompProjectedCurve::ResultIsPoint()`
     /// Returns true if result of projecting of the curve interval
     /// with number Index is point.
     pub fn result_is_point(&self, theIndex: i32) -> bool {
@@ -726,7 +728,7 @@ impl CompProjectedCurve {
         })
     }
 
-    /// **Source:** `ProjLib_CompProjectedCurve.hxx`:217 - `ProjLib_CompProjectedCurve::GetResult2dUApproxError()`
+    /// **Source:** `ProjLib_CompProjectedCurve.hxx`:211 - `ProjLib_CompProjectedCurve::GetResult2dUApproxError()`
     /// Returns the error of approximation of U parameter 2d-curve as a result
     /// projecting of the curve interval with number Index.
     pub fn get_result2d_u_approx_error(&self, theIndex: i32) -> f64 {
@@ -738,7 +740,7 @@ impl CompProjectedCurve {
         })
     }
 
-    /// **Source:** `ProjLib_CompProjectedCurve.hxx`:221 - `ProjLib_CompProjectedCurve::GetResult2dVApproxError()`
+    /// **Source:** `ProjLib_CompProjectedCurve.hxx`:215 - `ProjLib_CompProjectedCurve::GetResult2dVApproxError()`
     /// Returns the error of approximation of V parameter 2d-curve as a result
     /// projecting of the curve interval with number Index.
     pub fn get_result2d_v_approx_error(&self, theIndex: i32) -> f64 {
@@ -750,7 +752,7 @@ impl CompProjectedCurve {
         })
     }
 
-    /// **Source:** `ProjLib_CompProjectedCurve.hxx`:225 - `ProjLib_CompProjectedCurve::GetResult3dApproxError()`
+    /// **Source:** `ProjLib_CompProjectedCurve.hxx`:219 - `ProjLib_CompProjectedCurve::GetResult3dApproxError()`
     /// Returns the error of approximation of 3d-curve as a result
     /// projecting of the curve interval with number Index.
     pub fn get_result3d_approx_error(&self, theIndex: i32) -> f64 {
@@ -762,13 +764,13 @@ impl CompProjectedCurve {
         })
     }
 
-    /// **Source:** `ProjLib_CompProjectedCurve.hxx`:229 - `ProjLib_CompProjectedCurve::GetResult2dC()`
+    /// **Source:** `ProjLib_CompProjectedCurve.hxx`:223 - `ProjLib_CompProjectedCurve::GetResult2dC()`
     /// Returns the resulting 2d-curve of projecting
     /// of the curve interval with number Index.
     pub fn get_result2d_c(
         &self,
         theIndex: i32,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleGeom2dCurve> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Geom2d_Curve> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKGeomBase::ProjLib_CompProjectedCurve_get_result2d_c(
@@ -779,13 +781,13 @@ impl CompProjectedCurve {
         }
     }
 
-    /// **Source:** `ProjLib_CompProjectedCurve.hxx`:233 - `ProjLib_CompProjectedCurve::GetResult3dC()`
+    /// **Source:** `ProjLib_CompProjectedCurve.hxx`:227 - `ProjLib_CompProjectedCurve::GetResult3dC()`
     /// Returns the resulting 3d-curve of projecting
     /// of the curve interval with number Index.
     pub fn get_result3d_c(
         &self,
         theIndex: i32,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleGeomCurve> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Geom_Curve> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKGeomBase::ProjLib_CompProjectedCurve_get_result3d_c(
@@ -796,7 +798,7 @@ impl CompProjectedCurve {
         }
     }
 
-    /// **Source:** `ProjLib_CompProjectedCurve.hxx`:237 - `ProjLib_CompProjectedCurve::GetResult2dP()`
+    /// **Source:** `ProjLib_CompProjectedCurve.hxx`:231 - `ProjLib_CompProjectedCurve::GetResult2dP()`
     /// Returns the resulting 2d-point of projecting
     /// of the curve interval with number Index.
     pub fn get_result2d_p(&self, theIndex: i32) -> crate::OwnedPtr<crate::gp::Pnt2d> {
@@ -810,7 +812,7 @@ impl CompProjectedCurve {
         }
     }
 
-    /// **Source:** `ProjLib_CompProjectedCurve.hxx`:241 - `ProjLib_CompProjectedCurve::GetResult3dP()`
+    /// **Source:** `ProjLib_CompProjectedCurve.hxx`:235 - `ProjLib_CompProjectedCurve::GetResult3dP()`
     /// Returns the resulting 3d-point of projecting
     /// of the curve interval with number Index.
     pub fn get_result3d_p(&self, theIndex: i32) -> crate::OwnedPtr<crate::gp::Pnt> {
@@ -824,7 +826,7 @@ impl CompProjectedCurve {
         }
     }
 
-    /// **Source:** `ProjLib_CompProjectedCurve.hxx`:244 - `ProjLib_CompProjectedCurve::GetProj2d()`
+    /// **Source:** `ProjLib_CompProjectedCurve.hxx`:238 - `ProjLib_CompProjectedCurve::GetProj2d()`
     /// Returns the parameter, which defines necessity of only 2d results.
     pub fn get_proj2d(&self) -> bool {
         crate::check_result(unsafe {
@@ -832,7 +834,7 @@ impl CompProjectedCurve {
         })
     }
 
-    /// **Source:** `ProjLib_CompProjectedCurve.hxx`:247 - `ProjLib_CompProjectedCurve::GetProj3d()`
+    /// **Source:** `ProjLib_CompProjectedCurve.hxx`:241 - `ProjLib_CompProjectedCurve::GetProj3d()`
     /// Returns the parameter, which defines necessity of only 3d results.
     pub fn get_proj3d(&self) -> bool {
         crate::check_result(unsafe {
@@ -840,7 +842,7 @@ impl CompProjectedCurve {
         })
     }
 
-    /// **Source:** `ProjLib_CompProjectedCurve.hxx`:41 - `ProjLib_CompProjectedCurve::get_type_name()`
+    /// **Source:** `ProjLib_CompProjectedCurve.hxx`:39 - `ProjLib_CompProjectedCurve::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -851,8 +853,8 @@ impl CompProjectedCurve {
         .into_owned()
     }
 
-    /// **Source:** `ProjLib_CompProjectedCurve.hxx`:41 - `ProjLib_CompProjectedCurve::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    /// **Source:** `ProjLib_CompProjectedCurve.hxx`:39 - `ProjLib_CompProjectedCurve::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKGeomBase::ProjLib_CompProjectedCurve_get_type_descriptor(),
@@ -907,7 +909,7 @@ impl CompProjectedCurve {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleProjLibCompProjectedCurve> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_ProjLib_CompProjectedCurve> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKGeomBase::ProjLib_CompProjectedCurve_to_handle(obj.into_raw()),
@@ -915,7 +917,7 @@ impl CompProjectedCurve {
         }
     }
 
-    /// Inherited: **Source:** `Adaptor2d_Curve2d.hxx`:83 - `Adaptor2d_Curve2d::IsClosed()`
+    /// Inherited: **Source:** `Adaptor2d_Curve2d.hxx`:81 - `Adaptor2d_Curve2d::IsClosed()`
     pub fn is_closed(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomBase::ProjLib_CompProjectedCurve_inherited_IsClosed(
@@ -924,7 +926,7 @@ impl CompProjectedCurve {
         })
     }
 
-    /// Inherited: **Source:** `Adaptor2d_Curve2d.hxx`:85 - `Adaptor2d_Curve2d::IsPeriodic()`
+    /// Inherited: **Source:** `Adaptor2d_Curve2d.hxx`:83 - `Adaptor2d_Curve2d::IsPeriodic()`
     pub fn is_periodic(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomBase::ProjLib_CompProjectedCurve_inherited_IsPeriodic(
@@ -933,7 +935,7 @@ impl CompProjectedCurve {
         })
     }
 
-    /// Inherited: **Source:** `Adaptor2d_Curve2d.hxx`:87 - `Adaptor2d_Curve2d::Period()`
+    /// Inherited: **Source:** `Adaptor2d_Curve2d.hxx`:85 - `Adaptor2d_Curve2d::Period()`
     pub fn period(&self) -> f64 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomBase::ProjLib_CompProjectedCurve_inherited_Period(
@@ -942,7 +944,7 @@ impl CompProjectedCurve {
         })
     }
 
-    /// Inherited: **Source:** `Adaptor2d_Curve2d.hxx`:114 - `Adaptor2d_Curve2d::D3()`
+    /// Inherited: **Source:** `Adaptor2d_Curve2d.hxx`:109 - `Adaptor2d_Curve2d::D3()`
     pub fn d3(
         &self,
         U: f64,
@@ -963,7 +965,7 @@ impl CompProjectedCurve {
         })
     }
 
-    /// Inherited: **Source:** `Adaptor2d_Curve2d.hxx`:129 - `Adaptor2d_Curve2d::Resolution()`
+    /// Inherited: **Source:** `Adaptor2d_Curve2d.hxx`:124 - `Adaptor2d_Curve2d::Resolution()`
     pub fn resolution(&self, R3d: f64) -> f64 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomBase::ProjLib_CompProjectedCurve_inherited_Resolution(
@@ -973,7 +975,7 @@ impl CompProjectedCurve {
         })
     }
 
-    /// Inherited: **Source:** `Adaptor2d_Curve2d.hxx`:136 - `Adaptor2d_Curve2d::Line()`
+    /// Inherited: **Source:** `Adaptor2d_Curve2d.hxx`:131 - `Adaptor2d_Curve2d::Line()`
     pub fn line(&self) -> crate::OwnedPtr<crate::gp::Lin2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -984,7 +986,7 @@ impl CompProjectedCurve {
         }
     }
 
-    /// Inherited: **Source:** `Adaptor2d_Curve2d.hxx`:138 - `Adaptor2d_Curve2d::Circle()`
+    /// Inherited: **Source:** `Adaptor2d_Curve2d.hxx`:133 - `Adaptor2d_Curve2d::Circle()`
     pub fn circle(&self) -> crate::OwnedPtr<crate::gp::Circ2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -995,7 +997,7 @@ impl CompProjectedCurve {
         }
     }
 
-    /// Inherited: **Source:** `Adaptor2d_Curve2d.hxx`:140 - `Adaptor2d_Curve2d::Ellipse()`
+    /// Inherited: **Source:** `Adaptor2d_Curve2d.hxx`:135 - `Adaptor2d_Curve2d::Ellipse()`
     pub fn ellipse(&self) -> crate::OwnedPtr<crate::gp::Elips2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -1006,7 +1008,7 @@ impl CompProjectedCurve {
         }
     }
 
-    /// Inherited: **Source:** `Adaptor2d_Curve2d.hxx`:142 - `Adaptor2d_Curve2d::Hyperbola()`
+    /// Inherited: **Source:** `Adaptor2d_Curve2d.hxx`:137 - `Adaptor2d_Curve2d::Hyperbola()`
     pub fn hyperbola(&self) -> crate::OwnedPtr<crate::gp::Hypr2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -1017,7 +1019,7 @@ impl CompProjectedCurve {
         }
     }
 
-    /// Inherited: **Source:** `Adaptor2d_Curve2d.hxx`:144 - `Adaptor2d_Curve2d::Parabola()`
+    /// Inherited: **Source:** `Adaptor2d_Curve2d.hxx`:139 - `Adaptor2d_Curve2d::Parabola()`
     pub fn parabola(&self) -> crate::OwnedPtr<crate::gp::Parab2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -1028,7 +1030,7 @@ impl CompProjectedCurve {
         }
     }
 
-    /// Inherited: **Source:** `Adaptor2d_Curve2d.hxx`:146 - `Adaptor2d_Curve2d::Degree()`
+    /// Inherited: **Source:** `Adaptor2d_Curve2d.hxx`:141 - `Adaptor2d_Curve2d::Degree()`
     pub fn degree(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomBase::ProjLib_CompProjectedCurve_inherited_Degree(
@@ -1037,7 +1039,7 @@ impl CompProjectedCurve {
         })
     }
 
-    /// Inherited: **Source:** `Adaptor2d_Curve2d.hxx`:148 - `Adaptor2d_Curve2d::IsRational()`
+    /// Inherited: **Source:** `Adaptor2d_Curve2d.hxx`:143 - `Adaptor2d_Curve2d::IsRational()`
     pub fn is_rational(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomBase::ProjLib_CompProjectedCurve_inherited_IsRational(
@@ -1046,7 +1048,7 @@ impl CompProjectedCurve {
         })
     }
 
-    /// Inherited: **Source:** `Adaptor2d_Curve2d.hxx`:150 - `Adaptor2d_Curve2d::NbPoles()`
+    /// Inherited: **Source:** `Adaptor2d_Curve2d.hxx`:145 - `Adaptor2d_Curve2d::NbPoles()`
     pub fn nb_poles(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomBase::ProjLib_CompProjectedCurve_inherited_NbPoles(
@@ -1055,7 +1057,7 @@ impl CompProjectedCurve {
         })
     }
 
-    /// Inherited: **Source:** `Adaptor2d_Curve2d.hxx`:152 - `Adaptor2d_Curve2d::NbKnots()`
+    /// Inherited: **Source:** `Adaptor2d_Curve2d.hxx`:147 - `Adaptor2d_Curve2d::NbKnots()`
     pub fn nb_knots(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomBase::ProjLib_CompProjectedCurve_inherited_NbKnots(
@@ -1064,7 +1066,7 @@ impl CompProjectedCurve {
         })
     }
 
-    /// Inherited: **Source:** `Adaptor2d_Curve2d.hxx`:154 - `Adaptor2d_Curve2d::NbSamples()`
+    /// Inherited: **Source:** `Adaptor2d_Curve2d.hxx`:149 - `Adaptor2d_Curve2d::NbSamples()`
     pub fn nb_samples(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomBase::ProjLib_CompProjectedCurve_inherited_NbSamples(
@@ -1073,8 +1075,8 @@ impl CompProjectedCurve {
         })
     }
 
-    /// Inherited: **Source:** `Adaptor2d_Curve2d.hxx`:156 - `Adaptor2d_Curve2d::Bezier()`
-    pub fn bezier(&self) -> crate::OwnedPtr<crate::ffi_types::HandleGeom2dBezierCurve> {
+    /// Inherited: **Source:** `Adaptor2d_Curve2d.hxx`:151 - `Adaptor2d_Curve2d::Bezier()`
+    pub fn bezier(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_Geom2d_BezierCurve> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKGeomBase::ProjLib_CompProjectedCurve_inherited_Bezier(
@@ -1084,8 +1086,8 @@ impl CompProjectedCurve {
         }
     }
 
-    /// Inherited: **Source:** `Adaptor2d_Curve2d.hxx`:158 - `Adaptor2d_Curve2d::BSpline()`
-    pub fn b_spline(&self) -> crate::OwnedPtr<crate::ffi_types::HandleGeom2dBSplineCurve> {
+    /// Inherited: **Source:** `Adaptor2d_Curve2d.hxx`:153 - `Adaptor2d_Curve2d::BSpline()`
+    pub fn b_spline(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_Geom2d_BSplineCurve> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKGeomBase::ProjLib_CompProjectedCurve_inherited_BSpline(
@@ -1095,8 +1097,69 @@ impl CompProjectedCurve {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Adaptor2d_Curve2d.hxx`:157 - `Adaptor2d_Curve2d::EvalD0()`
+    pub fn eval_d0(&self, theU: f64) -> crate::OwnedPtr<crate::gp::Pnt2d> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomBase::ProjLib_CompProjectedCurve_inherited_EvalD0(
+                    self as *const Self,
+                    theU,
+                ),
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `Adaptor2d_Curve2d.hxx`:161 - `Adaptor2d_Curve2d::EvalD1()`
+    pub fn eval_d1(&self, theU: f64) -> crate::OwnedPtr<crate::geom2d::Curve_ResD1> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomBase::ProjLib_CompProjectedCurve_inherited_EvalD1(
+                    self as *const Self,
+                    theU,
+                ),
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `Adaptor2d_Curve2d.hxx`:165 - `Adaptor2d_Curve2d::EvalD2()`
+    pub fn eval_d2(&self, theU: f64) -> crate::OwnedPtr<crate::geom2d::Curve_ResD2> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomBase::ProjLib_CompProjectedCurve_inherited_EvalD2(
+                    self as *const Self,
+                    theU,
+                ),
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `Adaptor2d_Curve2d.hxx`:169 - `Adaptor2d_Curve2d::EvalD3()`
+    pub fn eval_d3(&self, theU: f64) -> crate::OwnedPtr<crate::geom2d::Curve_ResD3> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomBase::ProjLib_CompProjectedCurve_inherited_EvalD3(
+                    self as *const Self,
+                    theU,
+                ),
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `Adaptor2d_Curve2d.hxx`:173 - `Adaptor2d_Curve2d::EvalDN()`
+    pub fn eval_dn(&self, theU: f64, theN: i32) -> crate::OwnedPtr<crate::gp::Vec2d> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomBase::ProjLib_CompProjectedCurve_inherited_EvalDN(
+                    self as *const Self,
+                    theU,
+                    theN,
+                ),
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomBase::ProjLib_CompProjectedCurve_inherited_IsInstance(
                 self as *const Self,
@@ -1105,8 +1168,8 @@ impl CompProjectedCurve {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomBase::ProjLib_CompProjectedCurve_inherited_IsKind(
                 self as *const Self,
@@ -1115,7 +1178,7 @@ impl CompProjectedCurve {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -1131,7 +1194,7 @@ impl CompProjectedCurve {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomBase::ProjLib_CompProjectedCurve_inherited_GetRefCount(
@@ -1140,7 +1203,7 @@ impl CompProjectedCurve {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomBase::ProjLib_CompProjectedCurve_inherited_IncrementRefCounter(
@@ -1149,7 +1212,7 @@ impl CompProjectedCurve {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomBase::ProjLib_CompProjectedCurve_inherited_DecrementRefCounter(
@@ -1158,7 +1221,7 @@ impl CompProjectedCurve {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomBase::ProjLib_CompProjectedCurve_inherited_Delete(
@@ -1168,31 +1231,31 @@ impl CompProjectedCurve {
     }
 }
 
-pub use crate::ffi_types::HandleProjLibCompProjectedCurve;
+pub use crate::ffi_types::Handle_ProjLib_CompProjectedCurve;
 
-unsafe impl crate::CppDeletable for HandleProjLibCompProjectedCurve {
+unsafe impl crate::CppDeletable for Handle_ProjLib_CompProjectedCurve {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKGeomBase::HandleProjLibCompProjectedCurve_destructor(ptr);
+            crate::ffi_extern_TKGeomBase::Handle_ProjLib_CompProjectedCurve_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleProjLibCompProjectedCurve {
+unsafe impl crate::CppCopyable for Handle_ProjLib_CompProjectedCurve {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
         unsafe {
             crate::check_result(
-                crate::ffi_extern_TKGeomBase::HandleProjLibCompProjectedCurve_clone(ptr),
+                crate::ffi_extern_TKGeomBase::Handle_ProjLib_CompProjectedCurve_clone(ptr),
             )
         }
     }
 }
 
-impl HandleProjLibCompProjectedCurve {
+impl Handle_ProjLib_CompProjectedCurve {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
         unsafe {
-            crate::ffi_extern_TKGeomBase::HandleProjLibCompProjectedCurve_is_null(
+            crate::ffi_extern_TKGeomBase::Handle_ProjLib_CompProjectedCurve_is_null(
                 self as *const Self,
             )
         }
@@ -1202,7 +1265,7 @@ impl HandleProjLibCompProjectedCurve {
     pub fn get(&self) -> &crate::ffi_types::ProjLib_CompProjectedCurve {
         unsafe {
             &*crate::check_result(
-                crate::ffi_extern_TKGeomBase::HandleProjLibCompProjectedCurve_get(
+                crate::ffi_extern_TKGeomBase::Handle_ProjLib_CompProjectedCurve_get(
                     self as *const Self,
                 ),
             )
@@ -1213,7 +1276,7 @@ impl HandleProjLibCompProjectedCurve {
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::ProjLib_CompProjectedCurve {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi_extern_TKGeomBase::HandleProjLibCompProjectedCurve_get_mut(
+                crate::ffi_extern_TKGeomBase::Handle_ProjLib_CompProjectedCurve_get_mut(
                     self as *mut Self,
                 ),
             )
@@ -1221,18 +1284,18 @@ impl HandleProjLibCompProjectedCurve {
     }
 
     /// Upcast Handle<ProjLib_CompProjectedCurve> to Handle<Adaptor2d_Curve2d>
-    pub fn to_handle_curve2d(&self) -> crate::OwnedPtr<crate::ffi_types::HandleAdaptor2dCurve2d> {
+    pub fn to_handle_curve2d(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_Adaptor2d_Curve2d> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomBase::HandleProjLibCompProjectedCurve_to_HandleAdaptor2dCurve2d(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomBase::Handle_ProjLib_CompProjectedCurve_to_Handle_Adaptor2d_Curve2d(self as *const Self)))
         }
     }
 
     /// Upcast Handle<ProjLib_CompProjectedCurve> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomBase::HandleProjLibCompProjectedCurve_to_HandleStandardTransient(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomBase::Handle_ProjLib_CompProjectedCurve_to_Handle_Standard_Transient(self as *const Self)))
         }
     }
 }
@@ -1242,7 +1305,7 @@ impl HandleProjLibCompProjectedCurve {
 // ========================
 
 /// **Source:** `ProjLib_ComputeApprox.hxx`:37 - `ProjLib_ComputeApprox`
-/// Approximate the  projection of  a 3d curve   on an
+/// Approximate the projection of a 3d curve on an
 /// analytic surface and stores the result in Approx.
 /// The result is a 2d curve.
 /// For approximation some parameters are used, including
@@ -1273,13 +1336,12 @@ impl ComputeApprox {
         }
     }
 
-    /// **Source:** `ProjLib_ComputeApprox.hxx`:48 - `ProjLib_ComputeApprox::ProjLib_ComputeApprox()`
-    /// <Tol>    is   the   tolerance   with  which    the
-    /// approximation is performed.
+    /// **Source:** `ProjLib_ComputeApprox.hxx`:47 - `ProjLib_ComputeApprox::ProjLib_ComputeApprox()`
+    /// <Tol> is the tolerance with which the approximation is performed.
     /// Other parameters for approximation have default values.
     pub fn new_handleadaptor3dcurve_handleadaptor3dsurface_real(
-        C: &crate::ffi_types::HandleAdaptor3dCurve,
-        S: &crate::ffi_types::HandleAdaptor3dSurface,
+        C: &crate::ffi_types::Handle_Adaptor3d_Curve,
+        S: &crate::ffi_types::Handle_Adaptor3d_Surface,
         Tol: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -1287,21 +1349,21 @@ impl ComputeApprox {
         }
     }
 
-    /// **Source:** `ProjLib_ComputeApprox.hxx`:55 - `ProjLib_ComputeApprox::Perform()`
+    /// **Source:** `ProjLib_ComputeApprox.hxx`:54 - `ProjLib_ComputeApprox::Perform()`
     /// Performs projecting.
     /// In case of approximation current values of parameters are used:
     /// default values or set by corresponding methods Set...
     pub fn perform(
         &mut self,
-        C: &crate::ffi_types::HandleAdaptor3dCurve,
-        S: &crate::ffi_types::HandleAdaptor3dSurface,
+        C: &crate::ffi_types::Handle_Adaptor3d_Curve,
+        S: &crate::ffi_types::Handle_Adaptor3d_Surface,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomBase::ProjLib_ComputeApprox_perform(self as *mut Self, C, S)
         })
     }
 
-    /// **Source:** `ProjLib_ComputeApprox.hxx`:60 - `ProjLib_ComputeApprox::SetTolerance()`
+    /// **Source:** `ProjLib_ComputeApprox.hxx`:59 - `ProjLib_ComputeApprox::SetTolerance()`
     /// Set tolerance of approximation.
     /// Default value is Precision::Confusion().
     pub fn set_tolerance(&mut self, theTolerance: f64) {
@@ -1313,7 +1375,7 @@ impl ComputeApprox {
         })
     }
 
-    /// **Source:** `ProjLib_ComputeApprox.hxx`:65 - `ProjLib_ComputeApprox::SetDegree()`
+    /// **Source:** `ProjLib_ComputeApprox.hxx`:64 - `ProjLib_ComputeApprox::SetDegree()`
     /// Set min and max possible degree of result BSpline curve2d, which is got by approximation.
     /// If theDegMin/Max < 0, algorithm uses values that are chosen depending of types curve 3d
     /// and surface.
@@ -1327,7 +1389,7 @@ impl ComputeApprox {
         })
     }
 
-    /// **Source:** `ProjLib_ComputeApprox.hxx`:71 - `ProjLib_ComputeApprox::SetMaxSegments()`
+    /// **Source:** `ProjLib_ComputeApprox.hxx`:69 - `ProjLib_ComputeApprox::SetMaxSegments()`
     /// Set the parameter, which defines maximal value of parametric intervals the projected
     /// curve can be cut for approximation. If theMaxSegments < 0, algorithm uses default
     /// value = 1000.
@@ -1340,7 +1402,7 @@ impl ComputeApprox {
         })
     }
 
-    /// **Source:** `ProjLib_ComputeApprox.hxx`:76 - `ProjLib_ComputeApprox::SetBndPnt()`
+    /// **Source:** `ProjLib_ComputeApprox.hxx`:74 - `ProjLib_ComputeApprox::SetBndPnt()`
     /// Set the parameter, which defines type of boundary condition between segments during
     /// approximation. It can be AppParCurves_PassPoint or AppParCurves_TangencyPoint. Default value
     /// is AppParCurves_TangencyPoint;
@@ -1353,8 +1415,8 @@ impl ComputeApprox {
         })
     }
 
-    /// **Source:** `ProjLib_ComputeApprox.hxx`:78 - `ProjLib_ComputeApprox::BSpline()`
-    pub fn b_spline(&self) -> crate::OwnedPtr<crate::ffi_types::HandleGeom2dBSplineCurve> {
+    /// **Source:** `ProjLib_ComputeApprox.hxx`:76 - `ProjLib_ComputeApprox::BSpline()`
+    pub fn b_spline(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_Geom2d_BSplineCurve> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKGeomBase::ProjLib_ComputeApprox_b_spline(self as *const Self),
@@ -1362,8 +1424,8 @@ impl ComputeApprox {
         }
     }
 
-    /// **Source:** `ProjLib_ComputeApprox.hxx`:80 - `ProjLib_ComputeApprox::Bezier()`
-    pub fn bezier(&self) -> crate::OwnedPtr<crate::ffi_types::HandleGeom2dBezierCurve> {
+    /// **Source:** `ProjLib_ComputeApprox.hxx`:78 - `ProjLib_ComputeApprox::Bezier()`
+    pub fn bezier(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_Geom2d_BezierCurve> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKGeomBase::ProjLib_ComputeApprox_bezier(self as *const Self),
@@ -1371,7 +1433,7 @@ impl ComputeApprox {
         }
     }
 
-    /// **Source:** `ProjLib_ComputeApprox.hxx`:83 - `ProjLib_ComputeApprox::Tolerance()`
+    /// **Source:** `ProjLib_ComputeApprox.hxx`:81 - `ProjLib_ComputeApprox::Tolerance()`
     /// returns the reached Tolerance.
     pub fn tolerance(&self) -> f64 {
         crate::check_result(unsafe {
@@ -1385,11 +1447,11 @@ impl ComputeApprox {
 // ========================
 
 /// **Source:** `ProjLib_ComputeApproxOnPolarSurface.hxx`:39 - `ProjLib_ComputeApproxOnPolarSurface`
-/// Approximate the  projection  of a  3d curve  on an
-/// polar  surface  and  stores the result  in  Approx.
-/// The result is a  2d curve.  The evaluation of  the
-/// current  point of the  2d  curve is done with  the
-/// evaluation of the extrema  P3d - Surface.
+/// Approximate the projection of a 3d curve on an
+/// polar surface and stores the result in Approx.
+/// The result is a 2d curve. The evaluation of the
+/// current point of the 2d curve is done with the
+/// evaluation of the extrema P3d - Surface.
 /// For approximation some parameters are used, including
 /// required tolerance of approximation.
 /// Tolerance is maximal possible value of 3d deviation of 3d projection of projected curve from
@@ -1421,8 +1483,8 @@ impl ComputeApproxOnPolarSurface {
     /// **Source:** `ProjLib_ComputeApproxOnPolarSurface.hxx`:48 - `ProjLib_ComputeApproxOnPolarSurface::ProjLib_ComputeApproxOnPolarSurface()`
     /// Constructor, which performs projecting.
     pub fn new_handleadaptor3dcurve_handleadaptor3dsurface_real(
-        C: &crate::ffi_types::HandleAdaptor3dCurve,
-        S: &crate::ffi_types::HandleAdaptor3dSurface,
+        C: &crate::ffi_types::Handle_Adaptor3d_Curve,
+        S: &crate::ffi_types::Handle_Adaptor3d_Surface,
         Tol: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -1434,9 +1496,9 @@ impl ComputeApproxOnPolarSurface {
     /// Constructor, which performs projecting, using initial curve 2d InitCurve2d, which is any rough
     /// approximation of result curve. Parameter Tol is 3d tolerance of approximation.
     pub fn new_handleadaptor2dcurve2d_handleadaptor3dcurve_handleadaptor3dsurface_real(
-        InitCurve2d: &crate::ffi_types::HandleAdaptor2dCurve2d,
-        C: &crate::ffi_types::HandleAdaptor3dCurve,
-        S: &crate::ffi_types::HandleAdaptor3dSurface,
+        InitCurve2d: &crate::ffi_types::Handle_Adaptor2d_Curve2d,
+        C: &crate::ffi_types::Handle_Adaptor3d_Curve,
+        S: &crate::ffi_types::Handle_Adaptor3d_Surface,
         Tol: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -1444,15 +1506,15 @@ impl ComputeApproxOnPolarSurface {
         }
     }
 
-    /// **Source:** `ProjLib_ComputeApproxOnPolarSurface.hxx`:62 - `ProjLib_ComputeApproxOnPolarSurface::ProjLib_ComputeApproxOnPolarSurface()`
+    /// **Source:** `ProjLib_ComputeApproxOnPolarSurface.hxx`:63 - `ProjLib_ComputeApproxOnPolarSurface::ProjLib_ComputeApproxOnPolarSurface()`
     /// Constructor, which performs projecting, using two initial curves 2d: InitCurve2d and
     /// InitCurve2dBis that are any rough approximations of result curves. This constructor is used to
     /// get two pcurves for seem edge. Parameter Tol is 3d tolerance of approximation.
     pub fn new_handleadaptor2dcurve2d2_handleadaptor3dcurve_handleadaptor3dsurface_real(
-        InitCurve2d: &crate::ffi_types::HandleAdaptor2dCurve2d,
-        InitCurve2dBis: &crate::ffi_types::HandleAdaptor2dCurve2d,
-        C: &crate::ffi_types::HandleAdaptor3dCurve,
-        S: &crate::ffi_types::HandleAdaptor3dSurface,
+        InitCurve2d: &crate::ffi_types::Handle_Adaptor2d_Curve2d,
+        InitCurve2dBis: &crate::ffi_types::Handle_Adaptor2d_Curve2d,
+        C: &crate::ffi_types::Handle_Adaptor3d_Curve,
+        S: &crate::ffi_types::Handle_Adaptor3d_Surface,
         Tol: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -1463,13 +1525,13 @@ impl ComputeApproxOnPolarSurface {
     /// **Source:** `ProjLib_ComputeApproxOnPolarSurface.hxx`:48 - `ProjLib_ComputeApproxOnPolarSurface::ProjLib_ComputeApproxOnPolarSurface()`
     /// Constructor, which performs projecting.
     pub fn new_handleadaptor3dcurve_handleadaptor3dsurface(
-        C: &crate::ffi_types::HandleAdaptor3dCurve,
-        S: &crate::ffi_types::HandleAdaptor3dSurface,
+        C: &crate::ffi_types::Handle_Adaptor3d_Curve,
+        S: &crate::ffi_types::Handle_Adaptor3d_Surface,
     ) -> crate::OwnedPtr<Self> {
         Self::new_handleadaptor3dcurve_handleadaptor3dsurface_real(C, S, 1.0e-4)
     }
 
-    /// **Source:** `ProjLib_ComputeApproxOnPolarSurface.hxx`:71 - `ProjLib_ComputeApproxOnPolarSurface::SetDegree()`
+    /// **Source:** `ProjLib_ComputeApproxOnPolarSurface.hxx`:72 - `ProjLib_ComputeApproxOnPolarSurface::SetDegree()`
     /// Set min and max possible degree of result BSpline curve2d, which is got by approximation.
     /// If theDegMin/Max < 0, algorithm uses values min = 2, max = 8.
     pub fn set_degree(&mut self, theDegMin: i32, theDegMax: i32) {
@@ -1540,8 +1602,8 @@ impl ComputeApproxOnPolarSurface {
     /// they must be set by corresponding methods before using.
     pub fn perform_handleadaptor3dcurve_handleadaptor3dsurface(
         &mut self,
-        C: &crate::ffi_types::HandleAdaptor3dCurve,
-        S: &crate::ffi_types::HandleAdaptor3dSurface,
+        C: &crate::ffi_types::Handle_Adaptor3d_Curve,
+        S: &crate::ffi_types::Handle_Adaptor3d_Surface,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomBase::ProjLib_ComputeApproxOnPolarSurface_perform_handleadaptor3dcurve_handleadaptor3dsurface(self as *mut Self, C, S)
@@ -1554,45 +1616,45 @@ impl ComputeApproxOnPolarSurface {
     /// Parameter InitCurve2d is any rough estimation of 2d result curve.
     pub fn perform_handleadaptor2dcurve2d_handleadaptor3dcurve_handleadaptor3dsurface(
         &mut self,
-        InitCurve2d: &crate::ffi_types::HandleAdaptor2dCurve2d,
-        C: &crate::ffi_types::HandleAdaptor3dCurve,
-        S: &crate::ffi_types::HandleAdaptor3dSurface,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleGeom2dBSplineCurve> {
+        InitCurve2d: &crate::ffi_types::Handle_Adaptor2d_Curve2d,
+        C: &crate::ffi_types::Handle_Adaptor3d_Curve,
+        S: &crate::ffi_types::Handle_Adaptor3d_Surface,
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Geom2d_BSplineCurve> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomBase::ProjLib_ComputeApproxOnPolarSurface_perform_handleadaptor2dcurve2d_handleadaptor3dcurve_handleadaptor3dsurface(self as *mut Self, InitCurve2d, C, S)))
         }
     }
 
-    /// **Source:** `ProjLib_ComputeApproxOnPolarSurface.hxx`:109 - `ProjLib_ComputeApproxOnPolarSurface::BuildInitialCurve2d()`
+    /// **Source:** `ProjLib_ComputeApproxOnPolarSurface.hxx`:110 - `ProjLib_ComputeApproxOnPolarSurface::BuildInitialCurve2d()`
     /// Builds initial 2d curve as BSpline with degree = 1 using Extrema algorithm.
     /// Method is used in method Perform(...).
     pub fn build_initial_curve2d(
         &mut self,
-        Curve: &crate::ffi_types::HandleAdaptor3dCurve,
-        S: &crate::ffi_types::HandleAdaptor3dSurface,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleAdaptor2dCurve2d> {
+        Curve: &crate::ffi_types::Handle_Adaptor3d_Curve,
+        S: &crate::ffi_types::Handle_Adaptor3d_Surface,
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Adaptor2d_Curve2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomBase::ProjLib_ComputeApproxOnPolarSurface_build_initial_curve2d(self as *mut Self, Curve, S)))
         }
     }
 
-    /// **Source:** `ProjLib_ComputeApproxOnPolarSurface.hxx`:115 - `ProjLib_ComputeApproxOnPolarSurface::ProjectUsingInitialCurve2d()`
+    /// **Source:** `ProjLib_ComputeApproxOnPolarSurface.hxx`:116 - `ProjLib_ComputeApproxOnPolarSurface::ProjectUsingInitialCurve2d()`
     /// Method, which performs projecting.
     /// Method is used in method Perform(...).
     pub fn project_using_initial_curve2d(
         &mut self,
-        Curve: &crate::ffi_types::HandleAdaptor3dCurve,
-        S: &crate::ffi_types::HandleAdaptor3dSurface,
-        InitCurve2d: &crate::ffi_types::HandleAdaptor2dCurve2d,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleGeom2dBSplineCurve> {
+        Curve: &crate::ffi_types::Handle_Adaptor3d_Curve,
+        S: &crate::ffi_types::Handle_Adaptor3d_Surface,
+        InitCurve2d: &crate::ffi_types::Handle_Adaptor2d_Curve2d,
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Geom2d_BSplineCurve> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomBase::ProjLib_ComputeApproxOnPolarSurface_project_using_initial_curve2d(self as *mut Self, Curve, S, InitCurve2d)))
         }
     }
 
-    /// **Source:** `ProjLib_ComputeApproxOnPolarSurface.hxx`:121 - `ProjLib_ComputeApproxOnPolarSurface::BSpline()`
+    /// **Source:** `ProjLib_ComputeApproxOnPolarSurface.hxx`:122 - `ProjLib_ComputeApproxOnPolarSurface::BSpline()`
     /// Returns result curve 2d.
-    pub fn b_spline(&self) -> crate::OwnedPtr<crate::ffi_types::HandleGeom2dBSplineCurve> {
+    pub fn b_spline(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_Geom2d_BSplineCurve> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKGeomBase::ProjLib_ComputeApproxOnPolarSurface_b_spline(
@@ -1602,9 +1664,9 @@ impl ComputeApproxOnPolarSurface {
         }
     }
 
-    /// **Source:** `ProjLib_ComputeApproxOnPolarSurface.hxx`:123 - `ProjLib_ComputeApproxOnPolarSurface::Curve2d()`
+    /// **Source:** `ProjLib_ComputeApproxOnPolarSurface.hxx`:124 - `ProjLib_ComputeApproxOnPolarSurface::Curve2d()`
     /// Returns second 2d curve.
-    pub fn curve2d(&self) -> crate::OwnedPtr<crate::ffi_types::HandleGeom2dCurve> {
+    pub fn curve2d(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_Geom2d_Curve> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKGeomBase::ProjLib_ComputeApproxOnPolarSurface_curve2d(
@@ -1614,7 +1676,7 @@ impl ComputeApproxOnPolarSurface {
         }
     }
 
-    /// **Source:** `ProjLib_ComputeApproxOnPolarSurface.hxx`:125 - `ProjLib_ComputeApproxOnPolarSurface::IsDone()`
+    /// **Source:** `ProjLib_ComputeApproxOnPolarSurface.hxx`:126 - `ProjLib_ComputeApproxOnPolarSurface::IsDone()`
     pub fn is_done(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomBase::ProjLib_ComputeApproxOnPolarSurface_is_done(
@@ -1623,7 +1685,7 @@ impl ComputeApproxOnPolarSurface {
         })
     }
 
-    /// **Source:** `ProjLib_ComputeApproxOnPolarSurface.hxx`:128 - `ProjLib_ComputeApproxOnPolarSurface::Tolerance()`
+    /// **Source:** `ProjLib_ComputeApproxOnPolarSurface.hxx`:129 - `ProjLib_ComputeApproxOnPolarSurface::Tolerance()`
     /// returns the reached Tolerance.
     pub fn tolerance(&self) -> f64 {
         crate::check_result(unsafe {
@@ -1776,14 +1838,14 @@ impl Cone {
     }
 
     /// Inherited: **Source:** `ProjLib_Projector.hxx`:55 - `ProjLib_Projector::SetBSpline()`
-    pub fn set_b_spline(&mut self, C: &crate::ffi_types::HandleGeom2dBSplineCurve) {
+    pub fn set_b_spline(&mut self, C: &crate::ffi_types::Handle_Geom2d_BSplineCurve) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomBase::ProjLib_Cone_inherited_SetBSpline(self as *mut Self, C)
         })
     }
 
     /// Inherited: **Source:** `ProjLib_Projector.hxx`:57 - `ProjLib_Projector::SetBezier()`
-    pub fn set_bezier(&mut self, C: &crate::ffi_types::HandleGeom2dBezierCurve) {
+    pub fn set_bezier(&mut self, C: &crate::ffi_types::Handle_Geom2d_BezierCurve) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomBase::ProjLib_Cone_inherited_SetBezier(self as *mut Self, C)
         })
@@ -1859,7 +1921,7 @@ impl Cone {
     }
 
     /// Inherited: **Source:** `ProjLib_Projector.hxx`:75 - `ProjLib_Projector::Bezier()`
-    pub fn bezier(&self) -> crate::OwnedPtr<crate::ffi_types::HandleGeom2dBezierCurve> {
+    pub fn bezier(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_Geom2d_BezierCurve> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKGeomBase::ProjLib_Cone_inherited_Bezier(self as *const Self),
@@ -1868,7 +1930,7 @@ impl Cone {
     }
 
     /// Inherited: **Source:** `ProjLib_Projector.hxx`:77 - `ProjLib_Projector::BSpline()`
-    pub fn b_spline(&self) -> crate::OwnedPtr<crate::ffi_types::HandleGeom2dBSplineCurve> {
+    pub fn b_spline(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_Geom2d_BSplineCurve> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKGeomBase::ProjLib_Cone_inherited_BSpline(self as *const Self),
@@ -2066,7 +2128,7 @@ impl Cylinder {
     }
 
     /// Inherited: **Source:** `ProjLib_Projector.hxx`:55 - `ProjLib_Projector::SetBSpline()`
-    pub fn set_b_spline(&mut self, C: &crate::ffi_types::HandleGeom2dBSplineCurve) {
+    pub fn set_b_spline(&mut self, C: &crate::ffi_types::Handle_Geom2d_BSplineCurve) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomBase::ProjLib_Cylinder_inherited_SetBSpline(
                 self as *mut Self,
@@ -2076,7 +2138,7 @@ impl Cylinder {
     }
 
     /// Inherited: **Source:** `ProjLib_Projector.hxx`:57 - `ProjLib_Projector::SetBezier()`
-    pub fn set_bezier(&mut self, C: &crate::ffi_types::HandleGeom2dBezierCurve) {
+    pub fn set_bezier(&mut self, C: &crate::ffi_types::Handle_Geom2d_BezierCurve) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomBase::ProjLib_Cylinder_inherited_SetBezier(self as *mut Self, C)
         })
@@ -2160,7 +2222,7 @@ impl Cylinder {
     }
 
     /// Inherited: **Source:** `ProjLib_Projector.hxx`:75 - `ProjLib_Projector::Bezier()`
-    pub fn bezier(&self) -> crate::OwnedPtr<crate::ffi_types::HandleGeom2dBezierCurve> {
+    pub fn bezier(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_Geom2d_BezierCurve> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKGeomBase::ProjLib_Cylinder_inherited_Bezier(
@@ -2171,7 +2233,7 @@ impl Cylinder {
     }
 
     /// Inherited: **Source:** `ProjLib_Projector.hxx`:77 - `ProjLib_Projector::BSpline()`
-    pub fn b_spline(&self) -> crate::OwnedPtr<crate::ffi_types::HandleGeom2dBSplineCurve> {
+    pub fn b_spline(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_Geom2d_BSplineCurve> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKGeomBase::ProjLib_Cylinder_inherited_BSpline(
@@ -2205,272 +2267,6 @@ impl Cylinder {
                 Period,
             )
         })
-    }
-}
-
-// ========================
-// From ProjLib_HSequenceOfHSequenceOfPnt.hxx
-// ========================
-
-/// **Source:** `ProjLib_HSequenceOfHSequenceOfPnt.hxx`:23 - `ProjLib_HSequenceOfHSequenceOfPnt`
-pub use crate::ffi_types::ProjLib_HSequenceOfHSequenceOfPnt as HSequenceOfHSequenceOfPnt;
-
-unsafe impl crate::CppDeletable for HSequenceOfHSequenceOfPnt {
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            crate::ffi_extern_TKGeomBase::ProjLib_HSequenceOfHSequenceOfPnt_destructor(ptr);
-        }
-    }
-}
-
-impl HSequenceOfHSequenceOfPnt {
-    /// **Source:** `ProjLib_HSequenceOfHSequenceOfPnt.hxx`:23 - `ProjLib_HSequenceOfHSequenceOfPnt::ProjLib_HSequenceOfHSequenceOfPnt()`
-    pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKGeomBase::ProjLib_HSequenceOfHSequenceOfPnt_ctor(),
-            ))
-        }
-    }
-
-    /// **Source:** `ProjLib_HSequenceOfHSequenceOfPnt.hxx`:23 - `ProjLib_HSequenceOfHSequenceOfPnt::ProjLib_HSequenceOfHSequenceOfPnt()`
-    pub fn new_sequenceofhsequenceofpnt(
-        theOther: &crate::ffi_types::ProjLib_SequenceOfHSequenceOfPnt,
-    ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomBase::ProjLib_HSequenceOfHSequenceOfPnt_ctor_sequenceofhsequenceofpnt(theOther)))
-        }
-    }
-
-    /// **Source:** `ProjLib_HSequenceOfHSequenceOfPnt.hxx`:23 - `ProjLib_HSequenceOfHSequenceOfPnt::Sequence()`
-    pub fn sequence(&self) -> &crate::ffi_types::ProjLib_SequenceOfHSequenceOfPnt {
-        unsafe {
-            &*(crate::check_result(
-                crate::ffi_extern_TKGeomBase::ProjLib_HSequenceOfHSequenceOfPnt_sequence(
-                    self as *const Self,
-                ),
-            ))
-        }
-    }
-
-    /// **Source:** `ProjLib_HSequenceOfHSequenceOfPnt.hxx`:23 - `ProjLib_HSequenceOfHSequenceOfPnt::Append()`
-    pub fn append_handletcolgphsequenceofpnt(
-        &mut self,
-        theItem: &crate::ffi_types::HandleTColgpHSequenceOfPnt,
-    ) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKGeomBase::ProjLib_HSequenceOfHSequenceOfPnt_append_handletcolgphsequenceofpnt(self as *mut Self, theItem)
-        })
-    }
-
-    /// **Source:** `ProjLib_HSequenceOfHSequenceOfPnt.hxx`:23 - `ProjLib_HSequenceOfHSequenceOfPnt::Append()`
-    pub fn append_sequenceofhsequenceofpnt(
-        &mut self,
-        theSequence: &mut crate::ffi_types::ProjLib_SequenceOfHSequenceOfPnt,
-    ) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKGeomBase::ProjLib_HSequenceOfHSequenceOfPnt_append_sequenceofhsequenceofpnt(self as *mut Self, theSequence)
-        })
-    }
-
-    /// **Source:** `ProjLib_HSequenceOfHSequenceOfPnt.hxx`:23 - `ProjLib_HSequenceOfHSequenceOfPnt::ChangeSequence()`
-    pub fn change_sequence(&mut self) -> &mut crate::ffi_types::ProjLib_SequenceOfHSequenceOfPnt {
-        unsafe {
-            &mut *(crate::check_result(
-                crate::ffi_extern_TKGeomBase::ProjLib_HSequenceOfHSequenceOfPnt_change_sequence(
-                    self as *mut Self,
-                ),
-            ))
-        }
-    }
-
-    /// **Source:** `ProjLib_HSequenceOfHSequenceOfPnt.hxx`:23 - `ProjLib_HSequenceOfHSequenceOfPnt::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
-        unsafe {
-            &*(crate::check_result(
-                crate::ffi_extern_TKGeomBase::ProjLib_HSequenceOfHSequenceOfPnt_dynamic_type(
-                    self as *const Self,
-                ),
-            ))
-        }
-    }
-
-    /// **Source:** `ProjLib_HSequenceOfHSequenceOfPnt.hxx`:23 - `ProjLib_HSequenceOfHSequenceOfPnt::get_type_name()`
-    pub fn get_type_name() -> std::string::String {
-        unsafe {
-            std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi_extern_TKGeomBase::ProjLib_HSequenceOfHSequenceOfPnt_get_type_name(),
-            ))
-        }
-        .to_string_lossy()
-        .into_owned()
-    }
-
-    /// **Source:** `ProjLib_HSequenceOfHSequenceOfPnt.hxx`:23 - `ProjLib_HSequenceOfHSequenceOfPnt::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
-        unsafe {
-            &*(crate::check_result(
-                crate::ffi_extern_TKGeomBase::ProjLib_HSequenceOfHSequenceOfPnt_get_type_descriptor(
-                ),
-            ))
-        }
-    }
-
-    /// Upcast to Standard_Transient
-    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        unsafe {
-            &*crate::check_result(crate::ffi_extern_TKGeomBase::ProjLib_HSequenceOfHSequenceOfPnt_as_Standard_Transient(self as *const Self))
-        }
-    }
-
-    /// Upcast to Standard_Transient (mutable)
-    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        unsafe {
-            &mut *crate::check_result(crate::ffi_extern_TKGeomBase::ProjLib_HSequenceOfHSequenceOfPnt_as_Standard_Transient_mut(self as *mut Self))
-        }
-    }
-
-    /// Wrap in a Handle (reference-counted smart pointer)
-    pub fn to_handle(
-        obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleProjLibHSequenceOfHSequenceOfPnt> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKGeomBase::ProjLib_HSequenceOfHSequenceOfPnt_to_handle(
-                    obj.into_raw(),
-                ),
-            ))
-        }
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKGeomBase::ProjLib_HSequenceOfHSequenceOfPnt_inherited_IsInstance(
-                self as *const Self,
-                theType,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKGeomBase::ProjLib_HSequenceOfHSequenceOfPnt_inherited_IsKind(
-                self as *const Self,
-                theType,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
-    pub fn this(&self) -> Option<&crate::standard::Transient> {
-        {
-            let __val = crate::check_result(unsafe {
-                crate::ffi_extern_TKGeomBase::ProjLib_HSequenceOfHSequenceOfPnt_inherited_This(
-                    self as *const Self,
-                )
-            });
-            if __val.is_null() {
-                None
-            } else {
-                Some(unsafe { &*__val })
-            }
-        }
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
-    pub fn get_ref_count(&self) -> i32 {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKGeomBase::ProjLib_HSequenceOfHSequenceOfPnt_inherited_GetRefCount(
-                self as *const Self,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
-    pub fn increment_ref_counter(&mut self) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKGeomBase::ProjLib_HSequenceOfHSequenceOfPnt_inherited_IncrementRefCounter(self as *mut Self)
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
-    pub fn decrement_ref_counter(&mut self) -> i32 {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKGeomBase::ProjLib_HSequenceOfHSequenceOfPnt_inherited_DecrementRefCounter(self as *mut Self)
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
-    pub fn delete(&self) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKGeomBase::ProjLib_HSequenceOfHSequenceOfPnt_inherited_Delete(
-                self as *const Self,
-            )
-        })
-    }
-}
-
-pub use crate::ffi_types::HandleProjLibHSequenceOfHSequenceOfPnt;
-
-unsafe impl crate::CppDeletable for HandleProjLibHSequenceOfHSequenceOfPnt {
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            crate::ffi_extern_TKGeomBase::HandleProjLibHSequenceOfHSequenceOfPnt_destructor(ptr);
-        }
-    }
-}
-
-unsafe impl crate::CppCopyable for HandleProjLibHSequenceOfHSequenceOfPnt {
-    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        unsafe {
-            crate::check_result(
-                crate::ffi_extern_TKGeomBase::HandleProjLibHSequenceOfHSequenceOfPnt_clone(ptr),
-            )
-        }
-    }
-}
-
-impl HandleProjLibHSequenceOfHSequenceOfPnt {
-    /// Returns `true` if this Handle is null (doesn't point to any object).
-    pub fn is_null(&self) -> bool {
-        unsafe {
-            crate::ffi_extern_TKGeomBase::HandleProjLibHSequenceOfHSequenceOfPnt_is_null(
-                self as *const Self,
-            )
-        }
-    }
-
-    /// Dereference this Handle to access the underlying ProjLib_HSequenceOfHSequenceOfPnt
-    pub fn get(&self) -> &crate::ffi_types::ProjLib_HSequenceOfHSequenceOfPnt {
-        unsafe {
-            &*crate::check_result(
-                crate::ffi_extern_TKGeomBase::HandleProjLibHSequenceOfHSequenceOfPnt_get(
-                    self as *const Self,
-                ),
-            )
-        }
-    }
-
-    /// Dereference this Handle to mutably access the underlying ProjLib_HSequenceOfHSequenceOfPnt
-    pub fn get_mut(&mut self) -> &mut crate::ffi_types::ProjLib_HSequenceOfHSequenceOfPnt {
-        unsafe {
-            &mut *crate::check_result(
-                crate::ffi_extern_TKGeomBase::HandleProjLibHSequenceOfHSequenceOfPnt_get_mut(
-                    self as *mut Self,
-                ),
-            )
-        }
-    }
-
-    /// Upcast Handle<ProjLib_HSequenceOfHSequenceOfPnt> to Handle<Standard_Transient>
-    pub fn to_handle_transient(
-        &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomBase::HandleProjLibHSequenceOfHSequenceOfPnt_to_HandleStandardTransient(self as *const Self)))
-        }
     }
 }
 
@@ -2646,14 +2442,14 @@ impl Plane {
     }
 
     /// Inherited: **Source:** `ProjLib_Projector.hxx`:55 - `ProjLib_Projector::SetBSpline()`
-    pub fn set_b_spline(&mut self, C: &crate::ffi_types::HandleGeom2dBSplineCurve) {
+    pub fn set_b_spline(&mut self, C: &crate::ffi_types::Handle_Geom2d_BSplineCurve) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomBase::ProjLib_Plane_inherited_SetBSpline(self as *mut Self, C)
         })
     }
 
     /// Inherited: **Source:** `ProjLib_Projector.hxx`:57 - `ProjLib_Projector::SetBezier()`
-    pub fn set_bezier(&mut self, C: &crate::ffi_types::HandleGeom2dBezierCurve) {
+    pub fn set_bezier(&mut self, C: &crate::ffi_types::Handle_Geom2d_BezierCurve) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomBase::ProjLib_Plane_inherited_SetBezier(self as *mut Self, C)
         })
@@ -2731,7 +2527,7 @@ impl Plane {
     }
 
     /// Inherited: **Source:** `ProjLib_Projector.hxx`:75 - `ProjLib_Projector::Bezier()`
-    pub fn bezier(&self) -> crate::OwnedPtr<crate::ffi_types::HandleGeom2dBezierCurve> {
+    pub fn bezier(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_Geom2d_BezierCurve> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKGeomBase::ProjLib_Plane_inherited_Bezier(self as *const Self),
@@ -2740,7 +2536,7 @@ impl Plane {
     }
 
     /// Inherited: **Source:** `ProjLib_Projector.hxx`:77 - `ProjLib_Projector::BSpline()`
-    pub fn b_spline(&self) -> crate::OwnedPtr<crate::ffi_types::HandleGeom2dBSplineCurve> {
+    pub fn b_spline(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_Geom2d_BSplineCurve> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKGeomBase::ProjLib_Plane_inherited_BSpline(self as *const Self),
@@ -2873,7 +2669,7 @@ impl PrjFunc {
     }
 
     /// **Source:** `ProjLib_PrjFunc.hxx`:64 - `ProjLib_PrjFunc::Solution()`
-    /// returns  point  on  surface
+    /// returns point on surface
     pub fn solution(&self) -> crate::OwnedPtr<crate::gp::Pnt2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -2966,7 +2762,7 @@ impl PrjResolve {
     }
 
     /// **Source:** `ProjLib_PrjResolve.hxx`:41 - `ProjLib_PrjResolve::Perform()`
-    /// Calculates the ort from  C(t)  to  S  with a close point.
+    /// Calculates the ort from C(t) to S with a close point.
     /// The close point is defined by the parameter values U0 and V0.
     /// The function F(u,v)=distance(S(u,v),C(t)) has an extremum when gradient(F)=0.
     /// The algorithm searches a zero near the close point.
@@ -3019,14 +2815,14 @@ impl PrjResolve {
 // From ProjLib_ProjectOnPlane.hxx
 // ========================
 
-/// **Source:** `ProjLib_ProjectOnPlane.hxx`:47 - `ProjLib_ProjectOnPlane`
-/// Class  used  to project  a 3d curve   on a plane.  The
+/// **Source:** `ProjLib_ProjectOnPlane.hxx`:46 - `ProjLib_ProjectOnPlane`
+/// Class used to project a 3d curve on a plane. The
 /// result will be a 3d curve.
 ///
-/// You  can ask   the projected curve  to  have  the same
+/// You can ask the projected curve to have the same
 /// parametrization as the original curve.
 ///
-/// The projection can be done  along every direction  not
+/// The projection can be done along every direction not
 /// parallel to the plane.
 pub use crate::ffi_types::ProjLib_ProjectOnPlane as ProjectOnPlane;
 
@@ -3039,7 +2835,7 @@ unsafe impl crate::CppDeletable for ProjectOnPlane {
 }
 
 impl ProjectOnPlane {
-    /// **Source:** `ProjLib_ProjectOnPlane.hxx`:53 - `ProjLib_ProjectOnPlane::ProjLib_ProjectOnPlane()`
+    /// **Source:** `ProjLib_ProjectOnPlane.hxx`:52 - `ProjLib_ProjectOnPlane::ProjLib_ProjectOnPlane()`
     /// Empty constructor.
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
@@ -3049,7 +2845,7 @@ impl ProjectOnPlane {
         }
     }
 
-    /// **Source:** `ProjLib_ProjectOnPlane.hxx`:57 - `ProjLib_ProjectOnPlane::ProjLib_ProjectOnPlane()`
+    /// **Source:** `ProjLib_ProjectOnPlane.hxx`:56 - `ProjLib_ProjectOnPlane::ProjLib_ProjectOnPlane()`
     /// The projection will be normal to the Plane defined
     /// by the Ax3 <Pl>.
     pub fn new_ax3(Pl: &crate::gp::Ax3) -> crate::OwnedPtr<Self> {
@@ -3060,10 +2856,10 @@ impl ProjectOnPlane {
         }
     }
 
-    /// **Source:** `ProjLib_ProjectOnPlane.hxx`:63 - `ProjLib_ProjectOnPlane::ProjLib_ProjectOnPlane()`
-    /// The projection will be  along the direction <D> on
+    /// **Source:** `ProjLib_ProjectOnPlane.hxx`:62 - `ProjLib_ProjectOnPlane::ProjLib_ProjectOnPlane()`
+    /// The projection will be along the direction <D> on
     /// the plane defined by the Ax3 <Pl>.
-    /// raises  if the direction  <D>  is parallel  to the
+    /// raises if the direction <D> is parallel to the
     /// plane <Pl>.
     pub fn new_ax3_dir(Pl: &crate::gp::Ax3, D: &crate::gp::Dir) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -3073,9 +2869,9 @@ impl ProjectOnPlane {
         }
     }
 
-    /// **Source:** `ProjLib_ProjectOnPlane.hxx`:66 - `ProjLib_ProjectOnPlane::ShallowCopy()`
+    /// **Source:** `ProjLib_ProjectOnPlane.hxx`:65 - `ProjLib_ProjectOnPlane::ShallowCopy()`
     /// Shallow copy of adaptor
-    pub fn shallow_copy(&self) -> crate::OwnedPtr<crate::ffi_types::HandleAdaptor3dCurve> {
+    pub fn shallow_copy(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_Adaptor3d_Curve> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKGeomBase::ProjLib_ProjectOnPlane_shallow_copy(
@@ -3085,16 +2881,16 @@ impl ProjectOnPlane {
         }
     }
 
-    /// **Source:** `ProjLib_ProjectOnPlane.hxx`:74 - `ProjLib_ProjectOnPlane::Load()`
-    /// Sets the  Curve  and perform  the projection.
+    /// **Source:** `ProjLib_ProjectOnPlane.hxx`:73 - `ProjLib_ProjectOnPlane::Load()`
+    /// Sets the Curve and perform the projection.
     /// if <KeepParametrization> is true, the parametrization
-    /// of the Projected Curve <PC>  will  be the same  as
-    /// the parametrization of the initial  curve <C>.
+    /// of the Projected Curve <PC> will be the same as
+    /// the parametrization of the initial curve <C>.
     /// It means: proj(C(u)) = PC(u) for each u.
     /// Otherwise, the parametrization may change.
     pub fn load(
         &mut self,
-        C: &crate::ffi_types::HandleAdaptor3dCurve,
+        C: &crate::ffi_types::Handle_Adaptor3d_Curve,
         Tolerance: f64,
         KeepParametrization: bool,
     ) {
@@ -3108,7 +2904,7 @@ impl ProjectOnPlane {
         })
     }
 
-    /// **Source:** `ProjLib_ProjectOnPlane.hxx`:78 - `ProjLib_ProjectOnPlane::GetPlane()`
+    /// **Source:** `ProjLib_ProjectOnPlane.hxx`:77 - `ProjLib_ProjectOnPlane::GetPlane()`
     pub fn get_plane(&self) -> &crate::gp::Ax3 {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKGeomBase::ProjLib_ProjectOnPlane_get_plane(
@@ -3117,7 +2913,7 @@ impl ProjectOnPlane {
         }
     }
 
-    /// **Source:** `ProjLib_ProjectOnPlane.hxx`:80 - `ProjLib_ProjectOnPlane::GetDirection()`
+    /// **Source:** `ProjLib_ProjectOnPlane.hxx`:79 - `ProjLib_ProjectOnPlane::GetDirection()`
     pub fn get_direction(&self) -> &crate::gp::Dir {
         unsafe {
             &*(crate::check_result(
@@ -3128,8 +2924,8 @@ impl ProjectOnPlane {
         }
     }
 
-    /// **Source:** `ProjLib_ProjectOnPlane.hxx`:82 - `ProjLib_ProjectOnPlane::GetCurve()`
-    pub fn get_curve(&self) -> &crate::ffi_types::HandleAdaptor3dCurve {
+    /// **Source:** `ProjLib_ProjectOnPlane.hxx`:81 - `ProjLib_ProjectOnPlane::GetCurve()`
+    pub fn get_curve(&self) -> &crate::ffi_types::Handle_Adaptor3d_Curve {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKGeomBase::ProjLib_ProjectOnPlane_get_curve(
                 self as *const Self,
@@ -3137,8 +2933,8 @@ impl ProjectOnPlane {
         }
     }
 
-    /// **Source:** `ProjLib_ProjectOnPlane.hxx`:84 - `ProjLib_ProjectOnPlane::GetResult()`
-    pub fn get_result(&self) -> &crate::ffi_types::HandleGeomAdaptorCurve {
+    /// **Source:** `ProjLib_ProjectOnPlane.hxx`:83 - `ProjLib_ProjectOnPlane::GetResult()`
+    pub fn get_result(&self) -> &crate::ffi_types::Handle_GeomAdaptor_Curve {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKGeomBase::ProjLib_ProjectOnPlane_get_result(
@@ -3148,7 +2944,7 @@ impl ProjectOnPlane {
         }
     }
 
-    /// **Source:** `ProjLib_ProjectOnPlane.hxx`:86 - `ProjLib_ProjectOnPlane::FirstParameter()`
+    /// **Source:** `ProjLib_ProjectOnPlane.hxx`:85 - `ProjLib_ProjectOnPlane::FirstParameter()`
     pub fn first_parameter(&self) -> f64 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomBase::ProjLib_ProjectOnPlane_first_parameter(
@@ -3157,14 +2953,14 @@ impl ProjectOnPlane {
         })
     }
 
-    /// **Source:** `ProjLib_ProjectOnPlane.hxx`:88 - `ProjLib_ProjectOnPlane::LastParameter()`
+    /// **Source:** `ProjLib_ProjectOnPlane.hxx`:87 - `ProjLib_ProjectOnPlane::LastParameter()`
     pub fn last_parameter(&self) -> f64 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomBase::ProjLib_ProjectOnPlane_last_parameter(self as *const Self)
         })
     }
 
-    /// **Source:** `ProjLib_ProjectOnPlane.hxx`:90 - `ProjLib_ProjectOnPlane::Continuity()`
+    /// **Source:** `ProjLib_ProjectOnPlane.hxx`:89 - `ProjLib_ProjectOnPlane::Continuity()`
     pub fn continuity(&self) -> crate::geom_abs::Shape {
         crate::geom_abs::Shape::try_from(crate::check_result(unsafe {
             crate::ffi_extern_TKGeomBase::ProjLib_ProjectOnPlane_continuity(self as *const Self)
@@ -3172,9 +2968,9 @@ impl ProjectOnPlane {
         .unwrap()
     }
 
-    /// **Source:** `ProjLib_ProjectOnPlane.hxx`:95 - `ProjLib_ProjectOnPlane::NbIntervals()`
-    /// If necessary,  breaks the  curve in  intervals  of
-    /// continuity  <S>.    And  returns   the number   of
+    /// **Source:** `ProjLib_ProjectOnPlane.hxx`:94 - `ProjLib_ProjectOnPlane::NbIntervals()`
+    /// If necessary, breaks the curve in intervals of
+    /// continuity <S>. And returns the number of
     /// intervals.
     pub fn nb_intervals(&self, S: crate::geom_abs::Shape) -> i32 {
         crate::check_result(unsafe {
@@ -3185,14 +2981,14 @@ impl ProjectOnPlane {
         })
     }
 
-    /// **Source:** `ProjLib_ProjectOnPlane.hxx`:101 - `ProjLib_ProjectOnPlane::Intervals()`
-    /// Stores in <T> the  parameters bounding the intervals of continuity <S>.
+    /// **Source:** `ProjLib_ProjectOnPlane.hxx`:100 - `ProjLib_ProjectOnPlane::Intervals()`
+    /// Stores in <T> the parameters bounding the intervals of continuity <S>.
     ///
     /// The array must provide enough room to accommodate
     /// for the parameters. i.e. T.Length() > NbIntervals()
     pub fn intervals(
         &self,
-        T: &mut crate::ffi_types::TColStd_Array1OfReal,
+        T: &mut crate::ffi_types::NCollection_Array1_double,
         S: crate::geom_abs::Shape,
     ) {
         crate::check_void_result(unsafe {
@@ -3204,9 +3000,9 @@ impl ProjectOnPlane {
         })
     }
 
-    /// **Source:** `ProjLib_ProjectOnPlane.hxx`:108 - `ProjLib_ProjectOnPlane::Trim()`
-    /// Returns    a  curve equivalent   of  <me>  between
-    /// parameters <First>  and <Last>. <Tol>  is used  to
+    /// **Source:** `ProjLib_ProjectOnPlane.hxx`:107 - `ProjLib_ProjectOnPlane::Trim()`
+    /// Returns a curve equivalent of <me> between
+    /// parameters <First> and <Last>. <Tol> is used to
     /// test for 3d points confusion.
     /// If <First> >= <Last>
     pub fn trim(
@@ -3214,7 +3010,7 @@ impl ProjectOnPlane {
         First: f64,
         Last: f64,
         Tol: f64,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleAdaptor3dCurve> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Adaptor3d_Curve> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKGeomBase::ProjLib_ProjectOnPlane_trim(
@@ -3227,120 +3023,100 @@ impl ProjectOnPlane {
         }
     }
 
-    /// **Source:** `ProjLib_ProjectOnPlane.hxx`:112 - `ProjLib_ProjectOnPlane::IsClosed()`
+    /// **Source:** `ProjLib_ProjectOnPlane.hxx`:111 - `ProjLib_ProjectOnPlane::IsClosed()`
     pub fn is_closed(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomBase::ProjLib_ProjectOnPlane_is_closed(self as *const Self)
         })
     }
 
-    /// **Source:** `ProjLib_ProjectOnPlane.hxx`:114 - `ProjLib_ProjectOnPlane::IsPeriodic()`
+    /// **Source:** `ProjLib_ProjectOnPlane.hxx`:113 - `ProjLib_ProjectOnPlane::IsPeriodic()`
     pub fn is_periodic(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomBase::ProjLib_ProjectOnPlane_is_periodic(self as *const Self)
         })
     }
 
-    /// **Source:** `ProjLib_ProjectOnPlane.hxx`:116 - `ProjLib_ProjectOnPlane::Period()`
+    /// **Source:** `ProjLib_ProjectOnPlane.hxx`:115 - `ProjLib_ProjectOnPlane::Period()`
     pub fn period(&self) -> f64 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomBase::ProjLib_ProjectOnPlane_period(self as *const Self)
         })
     }
 
-    /// **Source:** `ProjLib_ProjectOnPlane.hxx`:119 - `ProjLib_ProjectOnPlane::Value()`
-    /// Computes the point of parameter U on the curve.
-    pub fn value(&self, U: f64) -> crate::OwnedPtr<crate::gp::Pnt> {
+    /// **Source:** `ProjLib_ProjectOnPlane.hxx`:118 - `ProjLib_ProjectOnPlane::EvalD0()`
+    /// Computes the point of parameter theU on the curve.
+    pub fn eval_d0(&self, theU: f64) -> crate::OwnedPtr<crate::gp::Pnt> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKGeomBase::ProjLib_ProjectOnPlane_value(self as *const Self, U),
+                crate::ffi_extern_TKGeomBase::ProjLib_ProjectOnPlane_eval_d0(
+                    self as *const Self,
+                    theU,
+                ),
             ))
         }
     }
 
-    /// **Source:** `ProjLib_ProjectOnPlane.hxx`:122 - `ProjLib_ProjectOnPlane::D0()`
-    /// Computes the point of parameter U on the curve.
-    pub fn d0(&self, U: f64, P: &mut crate::gp::Pnt) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKGeomBase::ProjLib_ProjectOnPlane_d0(self as *const Self, U, P)
-        })
-    }
-
-    /// **Source:** `ProjLib_ProjectOnPlane.hxx`:128 - `ProjLib_ProjectOnPlane::D1()`
-    /// Computes the point of parameter U on the curve with its
-    /// first derivative.
-    /// Raised if the continuity of the current interval
-    /// is not C1.
-    pub fn d1(&self, U: f64, P: &mut crate::gp::Pnt, V: &mut crate::gp::Vec) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKGeomBase::ProjLib_ProjectOnPlane_d1(self as *const Self, U, P, V)
-        })
-    }
-
-    /// **Source:** `ProjLib_ProjectOnPlane.hxx`:134 - `ProjLib_ProjectOnPlane::D2()`
-    /// Returns the point P of parameter U, the first and second
-    /// derivatives V1 and V2.
-    /// Raised if the continuity of the current interval
-    /// is not C2.
-    pub fn d2(
-        &self,
-        U: f64,
-        P: &mut crate::gp::Pnt,
-        V1: &mut crate::gp::Vec,
-        V2: &mut crate::gp::Vec,
-    ) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKGeomBase::ProjLib_ProjectOnPlane_d2(
-                self as *const Self,
-                U,
-                P,
-                V1,
-                V2,
-            )
-        })
-    }
-
-    /// **Source:** `ProjLib_ProjectOnPlane.hxx`:143 - `ProjLib_ProjectOnPlane::D3()`
-    /// Returns the point P of parameter U, the first, the second
-    /// and the third derivative.
-    /// Raised if the continuity of the current interval
-    /// is not C3.
-    pub fn d3(
-        &self,
-        U: f64,
-        P: &mut crate::gp::Pnt,
-        V1: &mut crate::gp::Vec,
-        V2: &mut crate::gp::Vec,
-        V3: &mut crate::gp::Vec,
-    ) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKGeomBase::ProjLib_ProjectOnPlane_d3(
-                self as *const Self,
-                U,
-                P,
-                V1,
-                V2,
-                V3,
-            )
-        })
-    }
-
-    /// **Source:** `ProjLib_ProjectOnPlane.hxx`:154 - `ProjLib_ProjectOnPlane::DN()`
-    /// The returned vector gives the value of the derivative for the
-    /// order of derivation N.
-    /// Raised if the continuity of the current interval
-    /// is not CN.
-    /// Raised if N < 1.
-    pub fn dn(&self, U: f64, N: i32) -> crate::OwnedPtr<crate::gp::Vec> {
+    /// **Source:** `ProjLib_ProjectOnPlane.hxx`:122 - `ProjLib_ProjectOnPlane::EvalD1()`
+    /// Computes the point of parameter theU on the curve with its first derivative.
+    /// Raised if the continuity of the current interval is not C1.
+    pub fn eval_d1(&self, theU: f64) -> crate::OwnedPtr<crate::geom::Curve_ResD1> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKGeomBase::ProjLib_ProjectOnPlane_dn(self as *const Self, U, N),
+                crate::ffi_extern_TKGeomBase::ProjLib_ProjectOnPlane_eval_d1(
+                    self as *const Self,
+                    theU,
+                ),
             ))
         }
     }
 
-    /// **Source:** `ProjLib_ProjectOnPlane.hxx`:159 - `ProjLib_ProjectOnPlane::Resolution()`
-    /// Returns the parametric  resolution corresponding
+    /// **Source:** `ProjLib_ProjectOnPlane.hxx`:126 - `ProjLib_ProjectOnPlane::EvalD2()`
+    /// Returns the point and the first and second derivatives at parameter theU.
+    /// Raised if the continuity of the current interval is not C2.
+    pub fn eval_d2(&self, theU: f64) -> crate::OwnedPtr<crate::geom::Curve_ResD2> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomBase::ProjLib_ProjectOnPlane_eval_d2(
+                    self as *const Self,
+                    theU,
+                ),
+            ))
+        }
+    }
+
+    /// **Source:** `ProjLib_ProjectOnPlane.hxx`:130 - `ProjLib_ProjectOnPlane::EvalD3()`
+    /// Returns the point and the first, second and third derivatives at parameter theU.
+    /// Raised if the continuity of the current interval is not C3.
+    pub fn eval_d3(&self, theU: f64) -> crate::OwnedPtr<crate::geom::Curve_ResD3> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomBase::ProjLib_ProjectOnPlane_eval_d3(
+                    self as *const Self,
+                    theU,
+                ),
+            ))
+        }
+    }
+
+    /// **Source:** `ProjLib_ProjectOnPlane.hxx`:135 - `ProjLib_ProjectOnPlane::EvalDN()`
+    /// Returns the derivative of order theN at parameter theU.
+    /// Raised if the continuity of the current interval is not CN.
+    /// Raised if theN < 1.
+    pub fn eval_dn(&self, theU: f64, theN: i32) -> crate::OwnedPtr<crate::gp::Vec> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomBase::ProjLib_ProjectOnPlane_eval_dn(
+                    self as *const Self,
+                    theU,
+                    theN,
+                ),
+            ))
+        }
+    }
+
+    /// **Source:** `ProjLib_ProjectOnPlane.hxx`:139 - `ProjLib_ProjectOnPlane::Resolution()`
+    /// Returns the parametric resolution corresponding
     /// to the real space resolution <R3d>.
     pub fn resolution(&self, R3d: f64) -> f64 {
         crate::check_result(unsafe {
@@ -3351,9 +3127,9 @@ impl ProjectOnPlane {
         })
     }
 
-    /// **Source:** `ProjLib_ProjectOnPlane.hxx`:164 - `ProjLib_ProjectOnPlane::GetType()`
-    /// Returns  the  type of the   curve  in the  current
-    /// interval :   Line,   Circle,   Ellipse, Hyperbola,
+    /// **Source:** `ProjLib_ProjectOnPlane.hxx`:144 - `ProjLib_ProjectOnPlane::GetType()`
+    /// Returns the type of the curve in the current
+    /// interval: Line, Circle, Ellipse, Hyperbola,
     /// Parabola, BezierCurve, BSplineCurve, OtherCurve.
     pub fn get_type(&self) -> crate::geom_abs::CurveType {
         crate::geom_abs::CurveType::try_from(crate::check_result(unsafe {
@@ -3362,7 +3138,7 @@ impl ProjectOnPlane {
         .unwrap()
     }
 
-    /// **Source:** `ProjLib_ProjectOnPlane.hxx`:166 - `ProjLib_ProjectOnPlane::Line()`
+    /// **Source:** `ProjLib_ProjectOnPlane.hxx`:146 - `ProjLib_ProjectOnPlane::Line()`
     pub fn line(&self) -> crate::OwnedPtr<crate::gp::Lin> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -3371,7 +3147,7 @@ impl ProjectOnPlane {
         }
     }
 
-    /// **Source:** `ProjLib_ProjectOnPlane.hxx`:168 - `ProjLib_ProjectOnPlane::Circle()`
+    /// **Source:** `ProjLib_ProjectOnPlane.hxx`:148 - `ProjLib_ProjectOnPlane::Circle()`
     pub fn circle(&self) -> crate::OwnedPtr<crate::gp::Circ> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -3380,7 +3156,7 @@ impl ProjectOnPlane {
         }
     }
 
-    /// **Source:** `ProjLib_ProjectOnPlane.hxx`:170 - `ProjLib_ProjectOnPlane::Ellipse()`
+    /// **Source:** `ProjLib_ProjectOnPlane.hxx`:150 - `ProjLib_ProjectOnPlane::Ellipse()`
     pub fn ellipse(&self) -> crate::OwnedPtr<crate::gp::Elips> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -3389,7 +3165,7 @@ impl ProjectOnPlane {
         }
     }
 
-    /// **Source:** `ProjLib_ProjectOnPlane.hxx`:172 - `ProjLib_ProjectOnPlane::Hyperbola()`
+    /// **Source:** `ProjLib_ProjectOnPlane.hxx`:152 - `ProjLib_ProjectOnPlane::Hyperbola()`
     pub fn hyperbola(&self) -> crate::OwnedPtr<crate::gp::Hypr> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -3398,7 +3174,7 @@ impl ProjectOnPlane {
         }
     }
 
-    /// **Source:** `ProjLib_ProjectOnPlane.hxx`:174 - `ProjLib_ProjectOnPlane::Parabola()`
+    /// **Source:** `ProjLib_ProjectOnPlane.hxx`:154 - `ProjLib_ProjectOnPlane::Parabola()`
     pub fn parabola(&self) -> crate::OwnedPtr<crate::gp::Parab> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -3407,41 +3183,41 @@ impl ProjectOnPlane {
         }
     }
 
-    /// **Source:** `ProjLib_ProjectOnPlane.hxx`:176 - `ProjLib_ProjectOnPlane::Degree()`
+    /// **Source:** `ProjLib_ProjectOnPlane.hxx`:156 - `ProjLib_ProjectOnPlane::Degree()`
     pub fn degree(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomBase::ProjLib_ProjectOnPlane_degree(self as *const Self)
         })
     }
 
-    /// **Source:** `ProjLib_ProjectOnPlane.hxx`:178 - `ProjLib_ProjectOnPlane::IsRational()`
+    /// **Source:** `ProjLib_ProjectOnPlane.hxx`:158 - `ProjLib_ProjectOnPlane::IsRational()`
     pub fn is_rational(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomBase::ProjLib_ProjectOnPlane_is_rational(self as *const Self)
         })
     }
 
-    /// **Source:** `ProjLib_ProjectOnPlane.hxx`:180 - `ProjLib_ProjectOnPlane::NbPoles()`
+    /// **Source:** `ProjLib_ProjectOnPlane.hxx`:160 - `ProjLib_ProjectOnPlane::NbPoles()`
     pub fn nb_poles(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomBase::ProjLib_ProjectOnPlane_nb_poles(self as *const Self)
         })
     }
 
-    /// **Source:** `ProjLib_ProjectOnPlane.hxx`:182 - `ProjLib_ProjectOnPlane::NbKnots()`
+    /// **Source:** `ProjLib_ProjectOnPlane.hxx`:162 - `ProjLib_ProjectOnPlane::NbKnots()`
     pub fn nb_knots(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomBase::ProjLib_ProjectOnPlane_nb_knots(self as *const Self)
         })
     }
 
-    /// **Source:** `ProjLib_ProjectOnPlane.hxx`:189 - `ProjLib_ProjectOnPlane::Bezier()`
+    /// **Source:** `ProjLib_ProjectOnPlane.hxx`:169 - `ProjLib_ProjectOnPlane::Bezier()`
     /// Warning ! this will NOT make a copy of the
     /// Bezier Curve : If you want to modify
     /// the Curve please make a copy yourself
     /// Also it will NOT trim the surface to
     /// myFirst/Last.
-    pub fn bezier(&self) -> crate::OwnedPtr<crate::ffi_types::HandleGeomBezierCurve> {
+    pub fn bezier(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_Geom_BezierCurve> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKGeomBase::ProjLib_ProjectOnPlane_bezier(self as *const Self),
@@ -3449,13 +3225,13 @@ impl ProjectOnPlane {
         }
     }
 
-    /// **Source:** `ProjLib_ProjectOnPlane.hxx`:196 - `ProjLib_ProjectOnPlane::BSpline()`
+    /// **Source:** `ProjLib_ProjectOnPlane.hxx`:176 - `ProjLib_ProjectOnPlane::BSpline()`
     /// Warning ! this will NOT make a copy of the
     /// BSpline Curve : If you want to modify
     /// the Curve please make a copy yourself
     /// Also it will NOT trim the surface to
     /// myFirst/Last.
-    pub fn b_spline(&self) -> crate::OwnedPtr<crate::ffi_types::HandleGeomBSplineCurve> {
+    pub fn b_spline(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_Geom_BSplineCurve> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKGeomBase::ProjLib_ProjectOnPlane_b_spline(self as *const Self),
@@ -3510,7 +3286,7 @@ impl ProjectOnPlane {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleProjLibProjectOnPlane> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_ProjLib_ProjectOnPlane> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKGeomBase::ProjLib_ProjectOnPlane_to_handle(obj.into_raw()),
@@ -3518,8 +3294,8 @@ impl ProjectOnPlane {
         }
     }
 
-    /// Inherited: **Source:** `Adaptor3d_Curve.hxx`:54 - `Adaptor3d_Curve::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// Inherited: **Source:** `Adaptor3d_Curve.hxx`:51 - `Adaptor3d_Curve::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKGeomBase::ProjLib_ProjectOnPlane_inherited_DynamicType(
@@ -3529,8 +3305,96 @@ impl ProjectOnPlane {
         }
     }
 
-    /// Inherited: **Source:** `Adaptor3d_Curve.hxx`:156 - `Adaptor3d_Curve::OffsetCurve()`
-    pub fn offset_curve(&self) -> crate::OwnedPtr<crate::ffi_types::HandleGeomOffsetCurve> {
+    /// Inherited: **Source:** `Adaptor3d_Curve.hxx`:89 - `Adaptor3d_Curve::Value()`
+    pub fn value(&self, theU: f64) -> crate::OwnedPtr<crate::gp::Pnt> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomBase::ProjLib_ProjectOnPlane_inherited_Value(
+                    self as *const Self,
+                    theU,
+                ),
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `Adaptor3d_Curve.hxx`:92 - `Adaptor3d_Curve::D0()`
+    pub fn d0(&self, theU: f64, theP: &mut crate::gp::Pnt) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKGeomBase::ProjLib_ProjectOnPlane_inherited_D0(
+                self as *const Self,
+                theU,
+                theP,
+            )
+        })
+    }
+
+    /// Inherited: **Source:** `Adaptor3d_Curve.hxx`:98 - `Adaptor3d_Curve::D1()`
+    pub fn d1(&self, theU: f64, theP: &mut crate::gp::Pnt, theV: &mut crate::gp::Vec) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKGeomBase::ProjLib_ProjectOnPlane_inherited_D1(
+                self as *const Self,
+                theU,
+                theP,
+                theV,
+            )
+        })
+    }
+
+    /// Inherited: **Source:** `Adaptor3d_Curve.hxx`:109 - `Adaptor3d_Curve::D2()`
+    pub fn d2(
+        &self,
+        theU: f64,
+        theP: &mut crate::gp::Pnt,
+        theV1: &mut crate::gp::Vec,
+        theV2: &mut crate::gp::Vec,
+    ) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKGeomBase::ProjLib_ProjectOnPlane_inherited_D2(
+                self as *const Self,
+                theU,
+                theP,
+                theV1,
+                theV2,
+            )
+        })
+    }
+
+    /// Inherited: **Source:** `Adaptor3d_Curve.hxx`:121 - `Adaptor3d_Curve::D3()`
+    pub fn d3(
+        &self,
+        theU: f64,
+        theP: &mut crate::gp::Pnt,
+        theV1: &mut crate::gp::Vec,
+        theV2: &mut crate::gp::Vec,
+        theV3: &mut crate::gp::Vec,
+    ) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKGeomBase::ProjLib_ProjectOnPlane_inherited_D3(
+                self as *const Self,
+                theU,
+                theP,
+                theV1,
+                theV2,
+                theV3,
+            )
+        })
+    }
+
+    /// Inherited: **Source:** `Adaptor3d_Curve.hxx`:135 - `Adaptor3d_Curve::DN()`
+    pub fn dn(&self, theU: f64, theN: i32) -> crate::OwnedPtr<crate::gp::Vec> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomBase::ProjLib_ProjectOnPlane_inherited_DN(
+                    self as *const Self,
+                    theU,
+                    theN,
+                ),
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `Adaptor3d_Curve.hxx`:168 - `Adaptor3d_Curve::OffsetCurve()`
+    pub fn offset_curve(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_Geom_OffsetCurve> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKGeomBase::ProjLib_ProjectOnPlane_inherited_OffsetCurve(
@@ -3540,8 +3404,8 @@ impl ProjectOnPlane {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomBase::ProjLib_ProjectOnPlane_inherited_IsInstance(
                 self as *const Self,
@@ -3550,8 +3414,8 @@ impl ProjectOnPlane {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomBase::ProjLib_ProjectOnPlane_inherited_IsKind(
                 self as *const Self,
@@ -3560,7 +3424,7 @@ impl ProjectOnPlane {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -3576,7 +3440,7 @@ impl ProjectOnPlane {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomBase::ProjLib_ProjectOnPlane_inherited_GetRefCount(
@@ -3585,7 +3449,7 @@ impl ProjectOnPlane {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomBase::ProjLib_ProjectOnPlane_inherited_IncrementRefCounter(
@@ -3594,7 +3458,7 @@ impl ProjectOnPlane {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomBase::ProjLib_ProjectOnPlane_inherited_DecrementRefCounter(
@@ -3603,7 +3467,7 @@ impl ProjectOnPlane {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomBase::ProjLib_ProjectOnPlane_inherited_Delete(
@@ -3613,38 +3477,38 @@ impl ProjectOnPlane {
     }
 }
 
-pub use crate::ffi_types::HandleProjLibProjectOnPlane;
+pub use crate::ffi_types::Handle_ProjLib_ProjectOnPlane;
 
-unsafe impl crate::CppDeletable for HandleProjLibProjectOnPlane {
+unsafe impl crate::CppDeletable for Handle_ProjLib_ProjectOnPlane {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKGeomBase::HandleProjLibProjectOnPlane_destructor(ptr);
+            crate::ffi_extern_TKGeomBase::Handle_ProjLib_ProjectOnPlane_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleProjLibProjectOnPlane {
+unsafe impl crate::CppCopyable for Handle_ProjLib_ProjectOnPlane {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
         unsafe {
-            crate::check_result(crate::ffi_extern_TKGeomBase::HandleProjLibProjectOnPlane_clone(
+            crate::check_result(crate::ffi_extern_TKGeomBase::Handle_ProjLib_ProjectOnPlane_clone(
                 ptr,
             ))
         }
     }
 }
 
-impl HandleProjLibProjectOnPlane {
+impl Handle_ProjLib_ProjectOnPlane {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
         unsafe {
-            crate::ffi_extern_TKGeomBase::HandleProjLibProjectOnPlane_is_null(self as *const Self)
+            crate::ffi_extern_TKGeomBase::Handle_ProjLib_ProjectOnPlane_is_null(self as *const Self)
         }
     }
 
     /// Dereference this Handle to access the underlying ProjLib_ProjectOnPlane
     pub fn get(&self) -> &crate::ffi_types::ProjLib_ProjectOnPlane {
         unsafe {
-            &*crate::check_result(crate::ffi_extern_TKGeomBase::HandleProjLibProjectOnPlane_get(
+            &*crate::check_result(crate::ffi_extern_TKGeomBase::Handle_ProjLib_ProjectOnPlane_get(
                 self as *const Self,
             ))
         }
@@ -3654,7 +3518,7 @@ impl HandleProjLibProjectOnPlane {
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::ProjLib_ProjectOnPlane {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi_extern_TKGeomBase::HandleProjLibProjectOnPlane_get_mut(
+                crate::ffi_extern_TKGeomBase::Handle_ProjLib_ProjectOnPlane_get_mut(
                     self as *mut Self,
                 ),
             )
@@ -3662,22 +3526,18 @@ impl HandleProjLibProjectOnPlane {
     }
 
     /// Upcast Handle<ProjLib_ProjectOnPlane> to Handle<Adaptor3d_Curve>
-    pub fn to_handle_curve(&self) -> crate::OwnedPtr<crate::ffi_types::HandleAdaptor3dCurve> {
+    pub fn to_handle_curve(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_Adaptor3d_Curve> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKGeomBase::HandleProjLibProjectOnPlane_to_HandleAdaptor3dCurve(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomBase::Handle_ProjLib_ProjectOnPlane_to_Handle_Adaptor3d_Curve(self as *const Self)))
         }
     }
 
     /// Upcast Handle<ProjLib_ProjectOnPlane> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomBase::HandleProjLibProjectOnPlane_to_HandleStandardTransient(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomBase::Handle_ProjLib_ProjectOnPlane_to_Handle_Standard_Transient(self as *const Self)))
         }
     }
 }
@@ -3687,8 +3547,8 @@ impl HandleProjLibProjectOnPlane {
 // ========================
 
 /// **Source:** `ProjLib_ProjectOnSurface.hxx`:26 - `ProjLib_ProjectOnSurface`
-/// Project a curve on a  surface.  The result ( a  3D
-/// Curve)  will be an approximation
+/// Project a curve on a surface. The result
+/// (a 3D Curve) will be an approximation
 pub use crate::ffi_types::ProjLib_ProjectOnSurface as ProjectOnSurface;
 
 unsafe impl crate::CppDeletable for ProjectOnSurface {
@@ -3713,7 +3573,7 @@ impl ProjectOnSurface {
     /// **Source:** `ProjLib_ProjectOnSurface.hxx`:35 - `ProjLib_ProjectOnSurface::ProjLib_ProjectOnSurface()`
     /// Create a projector normally to the surface <S>.
     pub fn new_handleadaptor3dsurface(
-        S: &crate::ffi_types::HandleAdaptor3dSurface,
+        S: &crate::ffi_types::Handle_Adaptor3d_Surface,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -3727,7 +3587,7 @@ impl ProjectOnSurface {
     /// **Source:** `ProjLib_ProjectOnSurface.hxx`:41 - `ProjLib_ProjectOnSurface::Load()`
     /// Set the Surface to <S>.
     /// To compute the projection, you have to Load the Curve.
-    pub fn load_handleadaptor3dsurface(&mut self, S: &crate::ffi_types::HandleAdaptor3dSurface) {
+    pub fn load_handleadaptor3dsurface(&mut self, S: &crate::ffi_types::Handle_Adaptor3d_Surface) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomBase::ProjLib_ProjectOnSurface_load_handleadaptor3dsurface(
                 self as *mut Self,
@@ -3740,7 +3600,7 @@ impl ProjectOnSurface {
     /// Compute the projection of the curve <C> on the Surface.
     pub fn load_handleadaptor3dcurve_real(
         &mut self,
-        C: &crate::ffi_types::HandleAdaptor3dCurve,
+        C: &crate::ffi_types::Handle_Adaptor3d_Curve,
         Tolerance: f64,
     ) {
         crate::check_void_result(unsafe {
@@ -3760,7 +3620,7 @@ impl ProjectOnSurface {
     }
 
     /// **Source:** `ProjLib_ProjectOnSurface.hxx`:48 - `ProjLib_ProjectOnSurface::BSpline()`
-    pub fn b_spline(&self) -> crate::OwnedPtr<crate::ffi_types::HandleGeomBSplineCurve> {
+    pub fn b_spline(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_Geom_BSplineCurve> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKGeomBase::ProjLib_ProjectOnSurface_b_spline(
@@ -3775,9 +3635,9 @@ impl ProjectOnSurface {
 // From ProjLib_ProjectedCurve.hxx
 // ========================
 
-/// **Source:** `ProjLib_ProjectedCurve.hxx`:49 - `ProjLib_ProjectedCurve`
-/// Compute the 2d-curve.  Try to solve the particular
-/// case if possible.  Otherwise, an approximation  is
+/// **Source:** `ProjLib_ProjectedCurve.hxx`:47 - `ProjLib_ProjectedCurve`
+/// Compute the 2d-curve. Try to solve the particular
+/// case if possible. Otherwise, an approximation is
 /// done. For approximation some parameters are used, including
 /// required tolerance of approximation.
 /// Tolerance is maximal possible value of 3d deviation of 3d projection of projected curve from
@@ -3796,7 +3656,7 @@ unsafe impl crate::CppDeletable for ProjectedCurve {
 }
 
 impl ProjectedCurve {
-    /// **Source:** `ProjLib_ProjectedCurve.hxx`:54 - `ProjLib_ProjectedCurve::ProjLib_ProjectedCurve()`
+    /// **Source:** `ProjLib_ProjectedCurve.hxx`:52 - `ProjLib_ProjectedCurve::ProjLib_ProjectedCurve()`
     /// Empty constructor, it only sets some initial values for class fields.
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
@@ -3806,10 +3666,10 @@ impl ProjectedCurve {
         }
     }
 
-    /// **Source:** `ProjLib_ProjectedCurve.hxx`:57 - `ProjLib_ProjectedCurve::ProjLib_ProjectedCurve()`
+    /// **Source:** `ProjLib_ProjectedCurve.hxx`:55 - `ProjLib_ProjectedCurve::ProjLib_ProjectedCurve()`
     /// Constructor with initialisation field mySurface
     pub fn new_handleadaptor3dsurface(
-        S: &crate::ffi_types::HandleAdaptor3dSurface,
+        S: &crate::ffi_types::Handle_Adaptor3d_Surface,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -3818,25 +3678,25 @@ impl ProjectedCurve {
         }
     }
 
-    /// **Source:** `ProjLib_ProjectedCurve.hxx`:62 - `ProjLib_ProjectedCurve::ProjLib_ProjectedCurve()`
+    /// **Source:** `ProjLib_ProjectedCurve.hxx`:60 - `ProjLib_ProjectedCurve::ProjLib_ProjectedCurve()`
     /// Constructor, which performs projecting.
     /// If projecting uses approximation, default parameters are used, in particular, 3d tolerance of
     /// approximation is Precision::Confusion()
     pub fn new_handleadaptor3dsurface_handleadaptor3dcurve(
-        S: &crate::ffi_types::HandleAdaptor3dSurface,
-        C: &crate::ffi_types::HandleAdaptor3dCurve,
+        S: &crate::ffi_types::Handle_Adaptor3d_Surface,
+        C: &crate::ffi_types::Handle_Adaptor3d_Curve,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomBase::ProjLib_ProjectedCurve_ctor_handleadaptor3dsurface_handleadaptor3dcurve(S, C)))
         }
     }
 
-    /// **Source:** `ProjLib_ProjectedCurve.hxx`:67 - `ProjLib_ProjectedCurve::ProjLib_ProjectedCurve()`
+    /// **Source:** `ProjLib_ProjectedCurve.hxx`:65 - `ProjLib_ProjectedCurve::ProjLib_ProjectedCurve()`
     /// Constructor, which performs projecting.
     /// If projecting uses approximation, 3d tolerance is Tol, default parameters are used,
     pub fn new_handleadaptor3dsurface_handleadaptor3dcurve_real(
-        S: &crate::ffi_types::HandleAdaptor3dSurface,
-        C: &crate::ffi_types::HandleAdaptor3dCurve,
+        S: &crate::ffi_types::Handle_Adaptor3d_Surface,
+        C: &crate::ffi_types::Handle_Adaptor3d_Curve,
         Tol: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -3844,8 +3704,8 @@ impl ProjectedCurve {
         }
     }
 
-    /// **Source:** `ProjLib_ProjectedCurve.hxx`:51 - `ProjLib_ProjectedCurve::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `ProjLib_ProjectedCurve.hxx`:49 - `ProjLib_ProjectedCurve::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKGeomBase::ProjLib_ProjectedCurve_dynamic_type(
@@ -3855,9 +3715,9 @@ impl ProjectedCurve {
         }
     }
 
-    /// **Source:** `ProjLib_ProjectedCurve.hxx`:72 - `ProjLib_ProjectedCurve::ShallowCopy()`
+    /// **Source:** `ProjLib_ProjectedCurve.hxx`:70 - `ProjLib_ProjectedCurve::ShallowCopy()`
     /// Shallow copy of adaptor
-    pub fn shallow_copy(&self) -> crate::OwnedPtr<crate::ffi_types::HandleAdaptor2dCurve2d> {
+    pub fn shallow_copy(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_Adaptor2d_Curve2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKGeomBase::ProjLib_ProjectedCurve_shallow_copy(
@@ -3867,7 +3727,7 @@ impl ProjectedCurve {
         }
     }
 
-    /// **Source:** `ProjLib_ProjectedCurve.hxx`:76 - `ProjLib_ProjectedCurve::Load()`
+    /// **Source:** `ProjLib_ProjectedCurve.hxx`:74 - `ProjLib_ProjectedCurve::Load()`
     /// Changes the tolerance used to project
     /// the curve on the surface
     pub fn load_real(&mut self, Tolerance: f64) {
@@ -3879,9 +3739,9 @@ impl ProjectedCurve {
         })
     }
 
-    /// **Source:** `ProjLib_ProjectedCurve.hxx`:79 - `ProjLib_ProjectedCurve::Load()`
+    /// **Source:** `ProjLib_ProjectedCurve.hxx`:77 - `ProjLib_ProjectedCurve::Load()`
     /// Changes the Surface.
-    pub fn load_handleadaptor3dsurface(&mut self, S: &crate::ffi_types::HandleAdaptor3dSurface) {
+    pub fn load_handleadaptor3dsurface(&mut self, S: &crate::ffi_types::Handle_Adaptor3d_Surface) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomBase::ProjLib_ProjectedCurve_load_handleadaptor3dsurface(
                 self as *mut Self,
@@ -3890,18 +3750,18 @@ impl ProjectedCurve {
         })
     }
 
-    /// **Source:** `ProjLib_ProjectedCurve.hxx`:85 - `ProjLib_ProjectedCurve::Perform()`
+    /// **Source:** `ProjLib_ProjectedCurve.hxx`:83 - `ProjLib_ProjectedCurve::Perform()`
     /// Performs projecting for given curve.
     /// If projecting uses approximation,
     /// approximation parameters can be set before by corresponding methods
     /// SetDegree(...), SetMaxSegmets(...), SetBndPnt(...), SetMaxDist(...)
-    pub fn perform(&mut self, C: &crate::ffi_types::HandleAdaptor3dCurve) {
+    pub fn perform(&mut self, C: &crate::ffi_types::Handle_Adaptor3d_Curve) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomBase::ProjLib_ProjectedCurve_perform(self as *mut Self, C)
         })
     }
 
-    /// **Source:** `ProjLib_ProjectedCurve.hxx`:90 - `ProjLib_ProjectedCurve::SetDegree()`
+    /// **Source:** `ProjLib_ProjectedCurve.hxx`:88 - `ProjLib_ProjectedCurve::SetDegree()`
     /// Set min and max possible degree of result BSpline curve2d, which is got by approximation.
     /// If theDegMin/Max < 0, algorithm uses values that are chosen depending of types curve 3d
     /// and surface.
@@ -3915,7 +3775,7 @@ impl ProjectedCurve {
         })
     }
 
-    /// **Source:** `ProjLib_ProjectedCurve.hxx`:96 - `ProjLib_ProjectedCurve::SetMaxSegments()`
+    /// **Source:** `ProjLib_ProjectedCurve.hxx`:93 - `ProjLib_ProjectedCurve::SetMaxSegments()`
     /// Set the parameter, which defines maximal value of parametric intervals the projected
     /// curve can be cut for approximation. If theMaxSegments < 0, algorithm uses default
     /// value = 1000.
@@ -3928,7 +3788,7 @@ impl ProjectedCurve {
         })
     }
 
-    /// **Source:** `ProjLib_ProjectedCurve.hxx`:101 - `ProjLib_ProjectedCurve::SetBndPnt()`
+    /// **Source:** `ProjLib_ProjectedCurve.hxx`:98 - `ProjLib_ProjectedCurve::SetBndPnt()`
     /// Set the parameter, which defines type of boundary condition between segments during
     /// approximation. It can be AppParCurves_PassPoint or AppParCurves_TangencyPoint. Default value
     /// is AppParCurves_TangencyPoint;
@@ -3941,7 +3801,7 @@ impl ProjectedCurve {
         })
     }
 
-    /// **Source:** `ProjLib_ProjectedCurve.hxx`:107 - `ProjLib_ProjectedCurve::SetMaxDist()`
+    /// **Source:** `ProjLib_ProjectedCurve.hxx`:104 - `ProjLib_ProjectedCurve::SetMaxDist()`
     /// Set the parameter, which degines maximal possible distance between projected curve and
     /// surface. It uses only for projecting on not analytical surfaces. If theMaxDist < 0, algorithm
     /// uses default value 100.*Tolerance. If real distance between curve and surface more then
@@ -3955,8 +3815,8 @@ impl ProjectedCurve {
         })
     }
 
-    /// **Source:** `ProjLib_ProjectedCurve.hxx`:109 - `ProjLib_ProjectedCurve::GetSurface()`
-    pub fn get_surface(&self) -> &crate::ffi_types::HandleAdaptor3dSurface {
+    /// **Source:** `ProjLib_ProjectedCurve.hxx`:106 - `ProjLib_ProjectedCurve::GetSurface()`
+    pub fn get_surface(&self) -> &crate::ffi_types::Handle_Adaptor3d_Surface {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKGeomBase::ProjLib_ProjectedCurve_get_surface(
@@ -3966,8 +3826,8 @@ impl ProjectedCurve {
         }
     }
 
-    /// **Source:** `ProjLib_ProjectedCurve.hxx`:111 - `ProjLib_ProjectedCurve::GetCurve()`
-    pub fn get_curve(&self) -> &crate::ffi_types::HandleAdaptor3dCurve {
+    /// **Source:** `ProjLib_ProjectedCurve.hxx`:108 - `ProjLib_ProjectedCurve::GetCurve()`
+    pub fn get_curve(&self) -> &crate::ffi_types::Handle_Adaptor3d_Curve {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKGeomBase::ProjLib_ProjectedCurve_get_curve(
                 self as *const Self,
@@ -3975,7 +3835,7 @@ impl ProjectedCurve {
         }
     }
 
-    /// **Source:** `ProjLib_ProjectedCurve.hxx`:115 - `ProjLib_ProjectedCurve::GetTolerance()`
+    /// **Source:** `ProjLib_ProjectedCurve.hxx`:112 - `ProjLib_ProjectedCurve::GetTolerance()`
     /// returns the tolerance reached if an approximation
     /// is Done.
     pub fn get_tolerance(&self) -> f64 {
@@ -3984,7 +3844,7 @@ impl ProjectedCurve {
         })
     }
 
-    /// **Source:** `ProjLib_ProjectedCurve.hxx`:117 - `ProjLib_ProjectedCurve::FirstParameter()`
+    /// **Source:** `ProjLib_ProjectedCurve.hxx`:114 - `ProjLib_ProjectedCurve::FirstParameter()`
     pub fn first_parameter(&self) -> f64 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomBase::ProjLib_ProjectedCurve_first_parameter(
@@ -3993,14 +3853,14 @@ impl ProjectedCurve {
         })
     }
 
-    /// **Source:** `ProjLib_ProjectedCurve.hxx`:119 - `ProjLib_ProjectedCurve::LastParameter()`
+    /// **Source:** `ProjLib_ProjectedCurve.hxx`:116 - `ProjLib_ProjectedCurve::LastParameter()`
     pub fn last_parameter(&self) -> f64 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomBase::ProjLib_ProjectedCurve_last_parameter(self as *const Self)
         })
     }
 
-    /// **Source:** `ProjLib_ProjectedCurve.hxx`:121 - `ProjLib_ProjectedCurve::Continuity()`
+    /// **Source:** `ProjLib_ProjectedCurve.hxx`:118 - `ProjLib_ProjectedCurve::Continuity()`
     pub fn continuity(&self) -> crate::geom_abs::Shape {
         crate::geom_abs::Shape::try_from(crate::check_result(unsafe {
             crate::ffi_extern_TKGeomBase::ProjLib_ProjectedCurve_continuity(self as *const Self)
@@ -4008,9 +3868,9 @@ impl ProjectedCurve {
         .unwrap()
     }
 
-    /// **Source:** `ProjLib_ProjectedCurve.hxx`:126 - `ProjLib_ProjectedCurve::NbIntervals()`
-    /// If necessary,  breaks the  curve in  intervals  of
-    /// continuity  <S>.    And  returns   the number   of
+    /// **Source:** `ProjLib_ProjectedCurve.hxx`:123 - `ProjLib_ProjectedCurve::NbIntervals()`
+    /// If necessary, breaks the curve in intervals of
+    /// continuity <S>. And returns the number of
     /// intervals.
     pub fn nb_intervals(&self, S: crate::geom_abs::Shape) -> i32 {
         crate::check_result(unsafe {
@@ -4021,15 +3881,15 @@ impl ProjectedCurve {
         })
     }
 
-    /// **Source:** `ProjLib_ProjectedCurve.hxx`:133 - `ProjLib_ProjectedCurve::Intervals()`
-    /// Stores in <T> the  parameters bounding the intervals
+    /// **Source:** `ProjLib_ProjectedCurve.hxx`:130 - `ProjLib_ProjectedCurve::Intervals()`
+    /// Stores in <T> the parameters bounding the intervals
     /// of continuity <S>.
     ///
     /// The array must provide enough room to accommodate
     /// for the parameters. i.e. T.Length() > NbIntervals()
     pub fn intervals(
         &self,
-        T: &mut crate::ffi_types::TColStd_Array1OfReal,
+        T: &mut crate::ffi_types::NCollection_Array1_double,
         S: crate::geom_abs::Shape,
     ) {
         crate::check_void_result(unsafe {
@@ -4041,9 +3901,9 @@ impl ProjectedCurve {
         })
     }
 
-    /// **Source:** `ProjLib_ProjectedCurve.hxx`:140 - `ProjLib_ProjectedCurve::Trim()`
-    /// Returns    a  curve equivalent   of  <me>  between
-    /// parameters <First>  and <Last>. <Tol>  is used  to
+    /// **Source:** `ProjLib_ProjectedCurve.hxx`:137 - `ProjLib_ProjectedCurve::Trim()`
+    /// Returns a curve equivalent of <me> between
+    /// parameters <First> and <Last>. <Tol> is used to
     /// test for 3d points confusion.
     /// If <First> >= <Last>
     pub fn trim(
@@ -4051,7 +3911,7 @@ impl ProjectedCurve {
         First: f64,
         Last: f64,
         Tol: f64,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleAdaptor2dCurve2d> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Adaptor2d_Curve2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKGeomBase::ProjLib_ProjectedCurve_trim(
@@ -4064,28 +3924,28 @@ impl ProjectedCurve {
         }
     }
 
-    /// **Source:** `ProjLib_ProjectedCurve.hxx`:144 - `ProjLib_ProjectedCurve::IsClosed()`
+    /// **Source:** `ProjLib_ProjectedCurve.hxx`:141 - `ProjLib_ProjectedCurve::IsClosed()`
     pub fn is_closed(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomBase::ProjLib_ProjectedCurve_is_closed(self as *const Self)
         })
     }
 
-    /// **Source:** `ProjLib_ProjectedCurve.hxx`:146 - `ProjLib_ProjectedCurve::IsPeriodic()`
+    /// **Source:** `ProjLib_ProjectedCurve.hxx`:143 - `ProjLib_ProjectedCurve::IsPeriodic()`
     pub fn is_periodic(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomBase::ProjLib_ProjectedCurve_is_periodic(self as *const Self)
         })
     }
 
-    /// **Source:** `ProjLib_ProjectedCurve.hxx`:148 - `ProjLib_ProjectedCurve::Period()`
+    /// **Source:** `ProjLib_ProjectedCurve.hxx`:145 - `ProjLib_ProjectedCurve::Period()`
     pub fn period(&self) -> f64 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomBase::ProjLib_ProjectedCurve_period(self as *const Self)
         })
     }
 
-    /// **Source:** `ProjLib_ProjectedCurve.hxx`:151 - `ProjLib_ProjectedCurve::Value()`
+    /// **Source:** `ProjLib_ProjectedCurve.hxx`:148 - `ProjLib_ProjectedCurve::Value()`
     /// Computes the point of parameter U on the curve.
     pub fn value(&self, U: f64) -> crate::OwnedPtr<crate::gp::Pnt2d> {
         unsafe {
@@ -4095,7 +3955,7 @@ impl ProjectedCurve {
         }
     }
 
-    /// **Source:** `ProjLib_ProjectedCurve.hxx`:154 - `ProjLib_ProjectedCurve::D0()`
+    /// **Source:** `ProjLib_ProjectedCurve.hxx`:151 - `ProjLib_ProjectedCurve::D0()`
     /// Computes the point of parameter U on the curve.
     pub fn d0(&self, U: f64, P: &mut crate::gp::Pnt2d) {
         crate::check_void_result(unsafe {
@@ -4103,7 +3963,7 @@ impl ProjectedCurve {
         })
     }
 
-    /// **Source:** `ProjLib_ProjectedCurve.hxx`:160 - `ProjLib_ProjectedCurve::D1()`
+    /// **Source:** `ProjLib_ProjectedCurve.hxx`:157 - `ProjLib_ProjectedCurve::D1()`
     /// Computes the point of parameter U on the curve with its
     /// first derivative.
     /// Raised if the continuity of the current interval
@@ -4114,7 +3974,7 @@ impl ProjectedCurve {
         })
     }
 
-    /// **Source:** `ProjLib_ProjectedCurve.hxx`:166 - `ProjLib_ProjectedCurve::D2()`
+    /// **Source:** `ProjLib_ProjectedCurve.hxx`:163 - `ProjLib_ProjectedCurve::D2()`
     /// Returns the point P of parameter U, the first and second
     /// derivatives V1 and V2.
     /// Raised if the continuity of the current interval
@@ -4137,7 +3997,7 @@ impl ProjectedCurve {
         })
     }
 
-    /// **Source:** `ProjLib_ProjectedCurve.hxx`:175 - `ProjLib_ProjectedCurve::D3()`
+    /// **Source:** `ProjLib_ProjectedCurve.hxx`:169 - `ProjLib_ProjectedCurve::D3()`
     /// Returns the point P of parameter U, the first, the second
     /// and the third derivative.
     /// Raised if the continuity of the current interval
@@ -4162,7 +4022,7 @@ impl ProjectedCurve {
         })
     }
 
-    /// **Source:** `ProjLib_ProjectedCurve.hxx`:186 - `ProjLib_ProjectedCurve::DN()`
+    /// **Source:** `ProjLib_ProjectedCurve.hxx`:180 - `ProjLib_ProjectedCurve::DN()`
     /// The returned vector gives the value of the derivative for the
     /// order of derivation N.
     /// Raised if the continuity of the current interval
@@ -4176,8 +4036,8 @@ impl ProjectedCurve {
         }
     }
 
-    /// **Source:** `ProjLib_ProjectedCurve.hxx`:191 - `ProjLib_ProjectedCurve::Resolution()`
-    /// Returns the parametric  resolution corresponding
+    /// **Source:** `ProjLib_ProjectedCurve.hxx`:184 - `ProjLib_ProjectedCurve::Resolution()`
+    /// Returns the parametric resolution corresponding
     /// to the real space resolution <R3d>.
     pub fn resolution(&self, R3d: f64) -> f64 {
         crate::check_result(unsafe {
@@ -4188,9 +4048,9 @@ impl ProjectedCurve {
         })
     }
 
-    /// **Source:** `ProjLib_ProjectedCurve.hxx`:196 - `ProjLib_ProjectedCurve::GetType()`
-    /// Returns  the  type of the   curve  in the  current
-    /// interval :   Line,   Circle,   Ellipse, Hyperbola,
+    /// **Source:** `ProjLib_ProjectedCurve.hxx`:189 - `ProjLib_ProjectedCurve::GetType()`
+    /// Returns the type of the curve in the current
+    /// interval: Line, Circle, Ellipse, Hyperbola,
     /// Parabola, BezierCurve, BSplineCurve, OtherCurve.
     pub fn get_type(&self) -> crate::geom_abs::CurveType {
         crate::geom_abs::CurveType::try_from(crate::check_result(unsafe {
@@ -4199,7 +4059,7 @@ impl ProjectedCurve {
         .unwrap()
     }
 
-    /// **Source:** `ProjLib_ProjectedCurve.hxx`:198 - `ProjLib_ProjectedCurve::Line()`
+    /// **Source:** `ProjLib_ProjectedCurve.hxx`:191 - `ProjLib_ProjectedCurve::Line()`
     pub fn line(&self) -> crate::OwnedPtr<crate::gp::Lin2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -4208,7 +4068,7 @@ impl ProjectedCurve {
         }
     }
 
-    /// **Source:** `ProjLib_ProjectedCurve.hxx`:200 - `ProjLib_ProjectedCurve::Circle()`
+    /// **Source:** `ProjLib_ProjectedCurve.hxx`:193 - `ProjLib_ProjectedCurve::Circle()`
     pub fn circle(&self) -> crate::OwnedPtr<crate::gp::Circ2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -4217,7 +4077,7 @@ impl ProjectedCurve {
         }
     }
 
-    /// **Source:** `ProjLib_ProjectedCurve.hxx`:202 - `ProjLib_ProjectedCurve::Ellipse()`
+    /// **Source:** `ProjLib_ProjectedCurve.hxx`:195 - `ProjLib_ProjectedCurve::Ellipse()`
     pub fn ellipse(&self) -> crate::OwnedPtr<crate::gp::Elips2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -4226,7 +4086,7 @@ impl ProjectedCurve {
         }
     }
 
-    /// **Source:** `ProjLib_ProjectedCurve.hxx`:204 - `ProjLib_ProjectedCurve::Hyperbola()`
+    /// **Source:** `ProjLib_ProjectedCurve.hxx`:197 - `ProjLib_ProjectedCurve::Hyperbola()`
     pub fn hyperbola(&self) -> crate::OwnedPtr<crate::gp::Hypr2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -4235,7 +4095,7 @@ impl ProjectedCurve {
         }
     }
 
-    /// **Source:** `ProjLib_ProjectedCurve.hxx`:206 - `ProjLib_ProjectedCurve::Parabola()`
+    /// **Source:** `ProjLib_ProjectedCurve.hxx`:199 - `ProjLib_ProjectedCurve::Parabola()`
     pub fn parabola(&self) -> crate::OwnedPtr<crate::gp::Parab2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -4244,40 +4104,39 @@ impl ProjectedCurve {
         }
     }
 
-    /// **Source:** `ProjLib_ProjectedCurve.hxx`:208 - `ProjLib_ProjectedCurve::Degree()`
+    /// **Source:** `ProjLib_ProjectedCurve.hxx`:201 - `ProjLib_ProjectedCurve::Degree()`
     pub fn degree(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomBase::ProjLib_ProjectedCurve_degree(self as *const Self)
         })
     }
 
-    /// **Source:** `ProjLib_ProjectedCurve.hxx`:210 - `ProjLib_ProjectedCurve::IsRational()`
+    /// **Source:** `ProjLib_ProjectedCurve.hxx`:203 - `ProjLib_ProjectedCurve::IsRational()`
     pub fn is_rational(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomBase::ProjLib_ProjectedCurve_is_rational(self as *const Self)
         })
     }
 
-    /// **Source:** `ProjLib_ProjectedCurve.hxx`:212 - `ProjLib_ProjectedCurve::NbPoles()`
+    /// **Source:** `ProjLib_ProjectedCurve.hxx`:205 - `ProjLib_ProjectedCurve::NbPoles()`
     pub fn nb_poles(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomBase::ProjLib_ProjectedCurve_nb_poles(self as *const Self)
         })
     }
 
-    /// **Source:** `ProjLib_ProjectedCurve.hxx`:214 - `ProjLib_ProjectedCurve::NbKnots()`
+    /// **Source:** `ProjLib_ProjectedCurve.hxx`:207 - `ProjLib_ProjectedCurve::NbKnots()`
     pub fn nb_knots(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomBase::ProjLib_ProjectedCurve_nb_knots(self as *const Self)
         })
     }
 
-    /// **Source:** `ProjLib_ProjectedCurve.hxx`:220 - `ProjLib_ProjectedCurve::Bezier()`
-    /// Warning ! This will  NOT make a copy  of the -- Bezier Curve -
-    /// If you want to modify -- the Curve  please make a copy
-    /// yourself --  Also it will  NOT trim the surface  to --
-    /// myFirst/Last.
-    pub fn bezier(&self) -> crate::OwnedPtr<crate::ffi_types::HandleGeom2dBezierCurve> {
+    /// **Source:** `ProjLib_ProjectedCurve.hxx`:212 - `ProjLib_ProjectedCurve::Bezier()`
+    /// Warning! This will NOT make a copy of the Bezier Curve
+    /// If you want to modify the Curve please make a copy
+    /// yourself. Also it will NOT trim the surface to myFirst/Last.
+    pub fn bezier(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_Geom2d_BezierCurve> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKGeomBase::ProjLib_ProjectedCurve_bezier(self as *const Self),
@@ -4285,12 +4144,11 @@ impl ProjectedCurve {
         }
     }
 
-    /// **Source:** `ProjLib_ProjectedCurve.hxx`:226 - `ProjLib_ProjectedCurve::BSpline()`
-    /// Warning ! This will NOT make a copy of the BSpline Curve - If
-    /// you want to  modify the   Curve  please make a   copy
-    /// yourself Also it   will  NOT  trim   the surface   to
-    /// myFirst/Last.
-    pub fn b_spline(&self) -> crate::OwnedPtr<crate::ffi_types::HandleGeom2dBSplineCurve> {
+    /// **Source:** `ProjLib_ProjectedCurve.hxx`:217 - `ProjLib_ProjectedCurve::BSpline()`
+    /// Warning! This will NOT make a copy of the BSpline Curve
+    /// If you want to modify the Curve please make a copy
+    /// yourself. Also it will NOT trim the surface to myFirst/Last.
+    pub fn b_spline(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_Geom2d_BSplineCurve> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKGeomBase::ProjLib_ProjectedCurve_b_spline(self as *const Self),
@@ -4298,7 +4156,7 @@ impl ProjectedCurve {
         }
     }
 
-    /// **Source:** `ProjLib_ProjectedCurve.hxx`:51 - `ProjLib_ProjectedCurve::get_type_name()`
+    /// **Source:** `ProjLib_ProjectedCurve.hxx`:49 - `ProjLib_ProjectedCurve::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -4309,8 +4167,8 @@ impl ProjectedCurve {
         .into_owned()
     }
 
-    /// **Source:** `ProjLib_ProjectedCurve.hxx`:51 - `ProjLib_ProjectedCurve::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    /// **Source:** `ProjLib_ProjectedCurve.hxx`:49 - `ProjLib_ProjectedCurve::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKGeomBase::ProjLib_ProjectedCurve_get_type_descriptor(),
@@ -4365,7 +4223,7 @@ impl ProjectedCurve {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleProjLibProjectedCurve> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_ProjLib_ProjectedCurve> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKGeomBase::ProjLib_ProjectedCurve_to_handle(obj.into_raw()),
@@ -4373,7 +4231,7 @@ impl ProjectedCurve {
         }
     }
 
-    /// Inherited: **Source:** `Adaptor2d_Curve2d.hxx`:154 - `Adaptor2d_Curve2d::NbSamples()`
+    /// Inherited: **Source:** `Adaptor2d_Curve2d.hxx`:149 - `Adaptor2d_Curve2d::NbSamples()`
     pub fn nb_samples(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomBase::ProjLib_ProjectedCurve_inherited_NbSamples(
@@ -4382,8 +4240,69 @@ impl ProjectedCurve {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Adaptor2d_Curve2d.hxx`:157 - `Adaptor2d_Curve2d::EvalD0()`
+    pub fn eval_d0(&self, theU: f64) -> crate::OwnedPtr<crate::gp::Pnt2d> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomBase::ProjLib_ProjectedCurve_inherited_EvalD0(
+                    self as *const Self,
+                    theU,
+                ),
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `Adaptor2d_Curve2d.hxx`:161 - `Adaptor2d_Curve2d::EvalD1()`
+    pub fn eval_d1(&self, theU: f64) -> crate::OwnedPtr<crate::geom2d::Curve_ResD1> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomBase::ProjLib_ProjectedCurve_inherited_EvalD1(
+                    self as *const Self,
+                    theU,
+                ),
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `Adaptor2d_Curve2d.hxx`:165 - `Adaptor2d_Curve2d::EvalD2()`
+    pub fn eval_d2(&self, theU: f64) -> crate::OwnedPtr<crate::geom2d::Curve_ResD2> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomBase::ProjLib_ProjectedCurve_inherited_EvalD2(
+                    self as *const Self,
+                    theU,
+                ),
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `Adaptor2d_Curve2d.hxx`:169 - `Adaptor2d_Curve2d::EvalD3()`
+    pub fn eval_d3(&self, theU: f64) -> crate::OwnedPtr<crate::geom2d::Curve_ResD3> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomBase::ProjLib_ProjectedCurve_inherited_EvalD3(
+                    self as *const Self,
+                    theU,
+                ),
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `Adaptor2d_Curve2d.hxx`:173 - `Adaptor2d_Curve2d::EvalDN()`
+    pub fn eval_dn(&self, theU: f64, theN: i32) -> crate::OwnedPtr<crate::gp::Vec2d> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomBase::ProjLib_ProjectedCurve_inherited_EvalDN(
+                    self as *const Self,
+                    theU,
+                    theN,
+                ),
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomBase::ProjLib_ProjectedCurve_inherited_IsInstance(
                 self as *const Self,
@@ -4392,8 +4311,8 @@ impl ProjectedCurve {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomBase::ProjLib_ProjectedCurve_inherited_IsKind(
                 self as *const Self,
@@ -4402,7 +4321,7 @@ impl ProjectedCurve {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -4418,7 +4337,7 @@ impl ProjectedCurve {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomBase::ProjLib_ProjectedCurve_inherited_GetRefCount(
@@ -4427,7 +4346,7 @@ impl ProjectedCurve {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomBase::ProjLib_ProjectedCurve_inherited_IncrementRefCounter(
@@ -4436,7 +4355,7 @@ impl ProjectedCurve {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomBase::ProjLib_ProjectedCurve_inherited_DecrementRefCounter(
@@ -4445,7 +4364,7 @@ impl ProjectedCurve {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomBase::ProjLib_ProjectedCurve_inherited_Delete(
@@ -4455,38 +4374,38 @@ impl ProjectedCurve {
     }
 }
 
-pub use crate::ffi_types::HandleProjLibProjectedCurve;
+pub use crate::ffi_types::Handle_ProjLib_ProjectedCurve;
 
-unsafe impl crate::CppDeletable for HandleProjLibProjectedCurve {
+unsafe impl crate::CppDeletable for Handle_ProjLib_ProjectedCurve {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKGeomBase::HandleProjLibProjectedCurve_destructor(ptr);
+            crate::ffi_extern_TKGeomBase::Handle_ProjLib_ProjectedCurve_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleProjLibProjectedCurve {
+unsafe impl crate::CppCopyable for Handle_ProjLib_ProjectedCurve {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
         unsafe {
-            crate::check_result(crate::ffi_extern_TKGeomBase::HandleProjLibProjectedCurve_clone(
+            crate::check_result(crate::ffi_extern_TKGeomBase::Handle_ProjLib_ProjectedCurve_clone(
                 ptr,
             ))
         }
     }
 }
 
-impl HandleProjLibProjectedCurve {
+impl Handle_ProjLib_ProjectedCurve {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
         unsafe {
-            crate::ffi_extern_TKGeomBase::HandleProjLibProjectedCurve_is_null(self as *const Self)
+            crate::ffi_extern_TKGeomBase::Handle_ProjLib_ProjectedCurve_is_null(self as *const Self)
         }
     }
 
     /// Dereference this Handle to access the underlying ProjLib_ProjectedCurve
     pub fn get(&self) -> &crate::ffi_types::ProjLib_ProjectedCurve {
         unsafe {
-            &*crate::check_result(crate::ffi_extern_TKGeomBase::HandleProjLibProjectedCurve_get(
+            &*crate::check_result(crate::ffi_extern_TKGeomBase::Handle_ProjLib_ProjectedCurve_get(
                 self as *const Self,
             ))
         }
@@ -4496,7 +4415,7 @@ impl HandleProjLibProjectedCurve {
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::ProjLib_ProjectedCurve {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi_extern_TKGeomBase::HandleProjLibProjectedCurve_get_mut(
+                crate::ffi_extern_TKGeomBase::Handle_ProjLib_ProjectedCurve_get_mut(
                     self as *mut Self,
                 ),
             )
@@ -4504,22 +4423,18 @@ impl HandleProjLibProjectedCurve {
     }
 
     /// Upcast Handle<ProjLib_ProjectedCurve> to Handle<Adaptor2d_Curve2d>
-    pub fn to_handle_curve2d(&self) -> crate::OwnedPtr<crate::ffi_types::HandleAdaptor2dCurve2d> {
+    pub fn to_handle_curve2d(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_Adaptor2d_Curve2d> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKGeomBase::HandleProjLibProjectedCurve_to_HandleAdaptor2dCurve2d(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomBase::Handle_ProjLib_ProjectedCurve_to_Handle_Adaptor2d_Curve2d(self as *const Self)))
         }
     }
 
     /// Upcast Handle<ProjLib_ProjectedCurve> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomBase::HandleProjLibProjectedCurve_to_HandleStandardTransient(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomBase::Handle_ProjLib_ProjectedCurve_to_Handle_Standard_Transient(self as *const Self)))
         }
     }
 }
@@ -4559,7 +4474,7 @@ impl Projector {
     }
 
     /// **Source:** `ProjLib_Projector.hxx`:51 - `ProjLib_Projector::Done()`
-    /// Set isDone = Standard_True;
+    /// Set isDone = true;
     pub fn done(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomBase::ProjLib_Projector_done(self as *mut Self)
@@ -4575,14 +4490,14 @@ impl Projector {
     }
 
     /// **Source:** `ProjLib_Projector.hxx`:55 - `ProjLib_Projector::SetBSpline()`
-    pub fn set_b_spline(&mut self, C: &crate::ffi_types::HandleGeom2dBSplineCurve) {
+    pub fn set_b_spline(&mut self, C: &crate::ffi_types::Handle_Geom2d_BSplineCurve) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomBase::ProjLib_Projector_set_b_spline(self as *mut Self, C)
         })
     }
 
     /// **Source:** `ProjLib_Projector.hxx`:57 - `ProjLib_Projector::SetBezier()`
-    pub fn set_bezier(&mut self, C: &crate::ffi_types::HandleGeom2dBezierCurve) {
+    pub fn set_bezier(&mut self, C: &crate::ffi_types::Handle_Geom2d_BezierCurve) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomBase::ProjLib_Projector_set_bezier(self as *mut Self, C)
         })
@@ -4655,7 +4570,7 @@ impl Projector {
     }
 
     /// **Source:** `ProjLib_Projector.hxx`:75 - `ProjLib_Projector::Bezier()`
-    pub fn bezier(&self) -> crate::OwnedPtr<crate::ffi_types::HandleGeom2dBezierCurve> {
+    pub fn bezier(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_Geom2d_BezierCurve> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKGeomBase::ProjLib_Projector_bezier(self as *const Self),
@@ -4664,7 +4579,7 @@ impl Projector {
     }
 
     /// **Source:** `ProjLib_Projector.hxx`:77 - `ProjLib_Projector::BSpline()`
-    pub fn b_spline(&self) -> crate::OwnedPtr<crate::ffi_types::HandleGeom2dBSplineCurve> {
+    pub fn b_spline(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_Geom2d_BSplineCurve> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKGeomBase::ProjLib_Projector_b_spline(self as *const Self),
@@ -4883,14 +4798,14 @@ impl Sphere {
     }
 
     /// Inherited: **Source:** `ProjLib_Projector.hxx`:55 - `ProjLib_Projector::SetBSpline()`
-    pub fn set_b_spline(&mut self, C: &crate::ffi_types::HandleGeom2dBSplineCurve) {
+    pub fn set_b_spline(&mut self, C: &crate::ffi_types::Handle_Geom2d_BSplineCurve) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomBase::ProjLib_Sphere_inherited_SetBSpline(self as *mut Self, C)
         })
     }
 
     /// Inherited: **Source:** `ProjLib_Projector.hxx`:57 - `ProjLib_Projector::SetBezier()`
-    pub fn set_bezier(&mut self, C: &crate::ffi_types::HandleGeom2dBezierCurve) {
+    pub fn set_bezier(&mut self, C: &crate::ffi_types::Handle_Geom2d_BezierCurve) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomBase::ProjLib_Sphere_inherited_SetBezier(self as *mut Self, C)
         })
@@ -4970,7 +4885,7 @@ impl Sphere {
     }
 
     /// Inherited: **Source:** `ProjLib_Projector.hxx`:75 - `ProjLib_Projector::Bezier()`
-    pub fn bezier(&self) -> crate::OwnedPtr<crate::ffi_types::HandleGeom2dBezierCurve> {
+    pub fn bezier(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_Geom2d_BezierCurve> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKGeomBase::ProjLib_Sphere_inherited_Bezier(self as *const Self),
@@ -4979,7 +4894,7 @@ impl Sphere {
     }
 
     /// Inherited: **Source:** `ProjLib_Projector.hxx`:77 - `ProjLib_Projector::BSpline()`
-    pub fn b_spline(&self) -> crate::OwnedPtr<crate::ffi_types::HandleGeom2dBSplineCurve> {
+    pub fn b_spline(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_Geom2d_BSplineCurve> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKGeomBase::ProjLib_Sphere_inherited_BSpline(self as *const Self),
@@ -5146,14 +5061,14 @@ impl Torus {
     }
 
     /// Inherited: **Source:** `ProjLib_Projector.hxx`:55 - `ProjLib_Projector::SetBSpline()`
-    pub fn set_b_spline(&mut self, C: &crate::ffi_types::HandleGeom2dBSplineCurve) {
+    pub fn set_b_spline(&mut self, C: &crate::ffi_types::Handle_Geom2d_BSplineCurve) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomBase::ProjLib_Torus_inherited_SetBSpline(self as *mut Self, C)
         })
     }
 
     /// Inherited: **Source:** `ProjLib_Projector.hxx`:57 - `ProjLib_Projector::SetBezier()`
-    pub fn set_bezier(&mut self, C: &crate::ffi_types::HandleGeom2dBezierCurve) {
+    pub fn set_bezier(&mut self, C: &crate::ffi_types::Handle_Geom2d_BezierCurve) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomBase::ProjLib_Torus_inherited_SetBezier(self as *mut Self, C)
         })
@@ -5231,7 +5146,7 @@ impl Torus {
     }
 
     /// Inherited: **Source:** `ProjLib_Projector.hxx`:75 - `ProjLib_Projector::Bezier()`
-    pub fn bezier(&self) -> crate::OwnedPtr<crate::ffi_types::HandleGeom2dBezierCurve> {
+    pub fn bezier(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_Geom2d_BezierCurve> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKGeomBase::ProjLib_Torus_inherited_Bezier(self as *const Self),
@@ -5240,7 +5155,7 @@ impl Torus {
     }
 
     /// Inherited: **Source:** `ProjLib_Projector.hxx`:77 - `ProjLib_Projector::BSpline()`
-    pub fn b_spline(&self) -> crate::OwnedPtr<crate::ffi_types::HandleGeom2dBSplineCurve> {
+    pub fn b_spline(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_Geom2d_BSplineCurve> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKGeomBase::ProjLib_Torus_inherited_BSpline(self as *const Self),
@@ -5274,9 +5189,3 @@ impl Torus {
         })
     }
 }
-
-// ========================
-// Additional type re-exports
-// ========================
-
-pub use crate::ffi_types::ProjLib_SequenceOfHSequenceOfPnt as SequenceOfHSequenceOfPnt;

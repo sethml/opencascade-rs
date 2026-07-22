@@ -32,8 +32,8 @@ pub fn shell_wire2(
     }
 }
 /// **Source:** `BRepFill.hxx`:53 - `BRepFill::Axe`
-/// Computes  <AxeProf>  as Follow. <Location> is
-/// the Position of the nearest vertex V  of <Profile>
+/// Computes <AxeProf> as Follow. <Location> is
+/// the Position of the nearest vertex V of <Profile>
 /// to <Spine>.<XDirection> is confused with the tangent
 /// to <Spine> at the projected point of V on the Spine.
 /// <Direction> is normal to <Spine>.
@@ -50,15 +50,18 @@ pub fn axe(
     })
 }
 /// **Source:** `BRepFill.hxx`:60 - `BRepFill::ComputeACR`
-/// Compute ACR on a  wire
-pub fn compute_acr(wire: &crate::topo_ds::Wire, ACR: &mut crate::ffi_types::TColStd_Array1OfReal) {
+/// Compute ACR on a wire
+pub fn compute_acr(
+    wire: &crate::topo_ds::Wire,
+    ACR: &mut crate::ffi_types::NCollection_Array1_double,
+) {
     crate::check_void_result(unsafe { crate::ffi_extern_TKBool::BRepFill_compute_acr(wire, ACR) })
 }
 /// **Source:** `BRepFill.hxx`:63 - `BRepFill::InsertACR`
-/// Insert ACR on a  wire
+/// Insert ACR on a wire
 pub fn insert_acr(
     wire: &crate::topo_ds::Wire,
-    ACRcuts: &crate::ffi_types::TColStd_Array1OfReal,
+    ACRcuts: &crate::ffi_types::NCollection_Array1_double,
     prec: f64,
 ) -> crate::OwnedPtr<crate::topo_ds::Wire> {
     unsafe {
@@ -171,14 +174,14 @@ impl TryFrom<i32> for TypeOfContact {
 }
 
 // Handle type re-exports (targets of handle upcasts/downcasts)
-pub use crate::ffi_types::{HandleGeomPlateCurveConstraint, HandleStandardTransient};
+pub use crate::ffi_types::{Handle_GeomPlate_CurveConstraint, Handle_Standard_Transient};
 
 // ========================
 // From BRepFill_ACRLaw.hxx
 // ========================
 
-/// **Source:** `BRepFill_ACRLaw.hxx`:34 - `BRepFill_ACRLaw`
-/// Build Location Law,  with a Wire.   In the case
+/// **Source:** `BRepFill_ACRLaw.hxx`:32 - `BRepFill_ACRLaw`
+/// Build Location Law, with a Wire. In the case
 /// of guided contour and trihedron by reduced
 /// curvilinear abscissa
 pub use crate::ffi_types::BRepFill_ACRLaw as ACRLaw;
@@ -192,10 +195,10 @@ unsafe impl crate::CppDeletable for ACRLaw {
 }
 
 impl ACRLaw {
-    /// **Source:** `BRepFill_ACRLaw.hxx`:38 - `BRepFill_ACRLaw::BRepFill_ACRLaw()`
+    /// **Source:** `BRepFill_ACRLaw.hxx`:36 - `BRepFill_ACRLaw::BRepFill_ACRLaw()`
     pub fn new_wire_handlegeomfilllocationguide(
         Path: &crate::topo_ds::Wire,
-        Law: &crate::ffi_types::HandleGeomFillLocationGuide,
+        Law: &crate::ffi_types::Handle_GeomFill_LocationGuide,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -206,8 +209,8 @@ impl ACRLaw {
         }
     }
 
-    /// **Source:** `BRepFill_ACRLaw.hxx`:41 - `BRepFill_ACRLaw::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `BRepFill_ACRLaw.hxx`:39 - `BRepFill_ACRLaw::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKBool::BRepFill_ACRLaw_dynamic_type(
                 self as *const Self,
@@ -215,7 +218,7 @@ impl ACRLaw {
         }
     }
 
-    /// **Source:** `BRepFill_ACRLaw.hxx`:41 - `BRepFill_ACRLaw::get_type_name()`
+    /// **Source:** `BRepFill_ACRLaw.hxx`:39 - `BRepFill_ACRLaw::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -226,8 +229,8 @@ impl ACRLaw {
         .into_owned()
     }
 
-    /// **Source:** `BRepFill_ACRLaw.hxx`:41 - `BRepFill_ACRLaw::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    /// **Source:** `BRepFill_ACRLaw.hxx`:39 - `BRepFill_ACRLaw::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKBool::BRepFill_ACRLaw_get_type_descriptor()))
         }
@@ -278,7 +281,7 @@ impl ACRLaw {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleBRepFillACRLaw> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_BRepFill_ACRLaw> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKBool::BRepFill_ACRLaw_to_handle(obj.into_raw()),
@@ -286,7 +289,7 @@ impl ACRLaw {
         }
     }
 
-    /// Inherited: **Source:** `BRepFill_LocationLaw.hxx`:47 - `BRepFill_LocationLaw::GetStatus()`
+    /// Inherited: **Source:** `BRepFill_LocationLaw.hxx`:43 - `BRepFill_LocationLaw::GetStatus()`
     pub fn get_status(&self) -> crate::geom_fill::PipeError {
         crate::geom_fill::PipeError::try_from(crate::check_result(unsafe {
             crate::ffi_extern_TKBool::BRepFill_ACRLaw_inherited_GetStatus(self as *const Self)
@@ -294,14 +297,14 @@ impl ACRLaw {
         .unwrap()
     }
 
-    /// Inherited: **Source:** `BRepFill_LocationLaw.hxx`:51 - `BRepFill_LocationLaw::TransformInG0Law()`
+    /// Inherited: **Source:** `BRepFill_LocationLaw.hxx`:47 - `BRepFill_LocationLaw::TransformInG0Law()`
     pub fn transform_in_g0_law(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::BRepFill_ACRLaw_inherited_TransformInG0Law(self as *mut Self)
         })
     }
 
-    /// Inherited: **Source:** `BRepFill_LocationLaw.hxx`:55 - `BRepFill_LocationLaw::TransformInCompatibleLaw()`
+    /// Inherited: **Source:** `BRepFill_LocationLaw.hxx`:51 - `BRepFill_LocationLaw::TransformInCompatibleLaw()`
     pub fn transform_in_compatible_law(&mut self, AngularTolerance: f64) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::BRepFill_ACRLaw_inherited_TransformInCompatibleLaw(
@@ -311,36 +314,36 @@ impl ACRLaw {
         })
     }
 
-    /// Inherited: **Source:** `BRepFill_LocationLaw.hxx`:57 - `BRepFill_LocationLaw::DeleteTransform()`
+    /// Inherited: **Source:** `BRepFill_LocationLaw.hxx`:53 - `BRepFill_LocationLaw::DeleteTransform()`
     pub fn delete_transform(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::BRepFill_ACRLaw_inherited_DeleteTransform(self as *mut Self)
         })
     }
 
-    /// Inherited: **Source:** `BRepFill_LocationLaw.hxx`:59 - `BRepFill_LocationLaw::NbHoles()`
+    /// Inherited: **Source:** `BRepFill_LocationLaw.hxx`:55 - `BRepFill_LocationLaw::NbHoles()`
     pub fn nb_holes(&mut self, Tol: f64) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::BRepFill_ACRLaw_inherited_NbHoles(self as *mut Self, Tol)
         })
     }
 
-    /// Inherited: **Source:** `BRepFill_LocationLaw.hxx`:61 - `BRepFill_LocationLaw::Holes()`
-    pub fn holes(&self, Interval: &mut crate::ffi_types::TColStd_Array1OfInteger) {
+    /// Inherited: **Source:** `BRepFill_LocationLaw.hxx`:57 - `BRepFill_LocationLaw::Holes()`
+    pub fn holes(&self, Interval: &mut crate::ffi_types::NCollection_Array1_int) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::BRepFill_ACRLaw_inherited_Holes(self as *const Self, Interval)
         })
     }
 
-    /// Inherited: **Source:** `BRepFill_LocationLaw.hxx`:64 - `BRepFill_LocationLaw::NbLaw()`
+    /// Inherited: **Source:** `BRepFill_LocationLaw.hxx`:60 - `BRepFill_LocationLaw::NbLaw()`
     pub fn nb_law(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::BRepFill_ACRLaw_inherited_NbLaw(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `BRepFill_LocationLaw.hxx`:68 - `BRepFill_LocationLaw::Law()`
-    pub fn law(&self, Index: i32) -> &crate::ffi_types::HandleGeomFillLocationLaw {
+    /// Inherited: **Source:** `BRepFill_LocationLaw.hxx`:64 - `BRepFill_LocationLaw::Law()`
+    pub fn law(&self, Index: i32) -> &crate::ffi_types::Handle_GeomFill_LocationLaw {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKBool::BRepFill_ACRLaw_inherited_Law(
                 self as *const Self,
@@ -349,7 +352,7 @@ impl ACRLaw {
         }
     }
 
-    /// Inherited: **Source:** `BRepFill_LocationLaw.hxx`:71 - `BRepFill_LocationLaw::Wire()`
+    /// Inherited: **Source:** `BRepFill_LocationLaw.hxx`:67 - `BRepFill_LocationLaw::Wire()`
     pub fn wire(&self) -> &crate::topo_ds::Wire {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKBool::BRepFill_ACRLaw_inherited_Wire(
@@ -358,7 +361,7 @@ impl ACRLaw {
         }
     }
 
-    /// Inherited: **Source:** `BRepFill_LocationLaw.hxx`:75 - `BRepFill_LocationLaw::Edge()`
+    /// Inherited: **Source:** `BRepFill_LocationLaw.hxx`:71 - `BRepFill_LocationLaw::Edge()`
     pub fn edge(&self, Index: i32) -> &crate::topo_ds::Edge {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKBool::BRepFill_ACRLaw_inherited_Edge(
@@ -368,7 +371,7 @@ impl ACRLaw {
         }
     }
 
-    /// Inherited: **Source:** `BRepFill_LocationLaw.hxx`:79 - `BRepFill_LocationLaw::Vertex()`
+    /// Inherited: **Source:** `BRepFill_LocationLaw.hxx`:75 - `BRepFill_LocationLaw::Vertex()`
     pub fn vertex(&self, Index: i32) -> crate::OwnedPtr<crate::topo_ds::Vertex> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -380,7 +383,7 @@ impl ACRLaw {
         }
     }
 
-    /// Inherited: **Source:** `BRepFill_LocationLaw.hxx`:89 - `BRepFill_LocationLaw::PerformVertex()`
+    /// Inherited: **Source:** `BRepFill_LocationLaw.hxx`:85 - `BRepFill_LocationLaw::PerformVertex()`
     pub fn perform_vertex(
         &self,
         Index: i32,
@@ -401,7 +404,7 @@ impl ACRLaw {
         })
     }
 
-    /// Inherited: **Source:** `BRepFill_LocationLaw.hxx`:96 - `BRepFill_LocationLaw::CurvilinearBounds()`
+    /// Inherited: **Source:** `BRepFill_LocationLaw.hxx`:92 - `BRepFill_LocationLaw::CurvilinearBounds()`
     pub fn curvilinear_bounds(&self, Index: i32, First: &mut f64, Last: &mut f64) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::BRepFill_ACRLaw_inherited_CurvilinearBounds(
@@ -413,14 +416,14 @@ impl ACRLaw {
         })
     }
 
-    /// Inherited: **Source:** `BRepFill_LocationLaw.hxx`:100 - `BRepFill_LocationLaw::IsClosed()`
+    /// Inherited: **Source:** `BRepFill_LocationLaw.hxx`:94 - `BRepFill_LocationLaw::IsClosed()`
     pub fn is_closed(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::BRepFill_ACRLaw_inherited_IsClosed(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `BRepFill_LocationLaw.hxx`:107 - `BRepFill_LocationLaw::IsG1()`
+    /// Inherited: **Source:** `BRepFill_LocationLaw.hxx`:101 - `BRepFill_LocationLaw::IsG1()`
     pub fn is_g1(&self, Index: i32, SpatialTolerance: f64, AngularTolerance: f64) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::BRepFill_ACRLaw_inherited_IsG1(
@@ -432,7 +435,7 @@ impl ACRLaw {
         })
     }
 
-    /// Inherited: **Source:** `BRepFill_LocationLaw.hxx`:112 - `BRepFill_LocationLaw::D0()`
+    /// Inherited: **Source:** `BRepFill_LocationLaw.hxx`:106 - `BRepFill_LocationLaw::D0()`
     pub fn d0(&mut self, Abscissa: f64, Section: &mut crate::topo_ds::Shape) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::BRepFill_ACRLaw_inherited_D0(
@@ -443,7 +446,7 @@ impl ACRLaw {
         })
     }
 
-    /// Inherited: **Source:** `BRepFill_LocationLaw.hxx`:115 - `BRepFill_LocationLaw::Parameter()`
+    /// Inherited: **Source:** `BRepFill_LocationLaw.hxx`:109 - `BRepFill_LocationLaw::Parameter()`
     pub fn parameter(&mut self, Abscissa: f64, Index: &mut i32, Param: &mut f64) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::BRepFill_ACRLaw_inherited_Parameter(
@@ -455,7 +458,7 @@ impl ACRLaw {
         })
     }
 
-    /// Inherited: **Source:** `BRepFill_LocationLaw.hxx`:122 - `BRepFill_LocationLaw::Abscissa()`
+    /// Inherited: **Source:** `BRepFill_LocationLaw.hxx`:114 - `BRepFill_LocationLaw::Abscissa()`
     pub fn abscissa(&mut self, Index: i32, Param: f64) -> f64 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::BRepFill_ACRLaw_inherited_Abscissa(
@@ -466,8 +469,8 @@ impl ACRLaw {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::BRepFill_ACRLaw_inherited_IsInstance(
                 self as *const Self,
@@ -476,14 +479,14 @@ impl ACRLaw {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::BRepFill_ACRLaw_inherited_IsKind(self as *const Self, theType)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -497,14 +500,14 @@ impl ACRLaw {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::BRepFill_ACRLaw_inherited_GetRefCount(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::BRepFill_ACRLaw_inherited_IncrementRefCounter(
@@ -513,7 +516,7 @@ impl ACRLaw {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::BRepFill_ACRLaw_inherited_DecrementRefCounter(
@@ -522,7 +525,7 @@ impl ACRLaw {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::BRepFill_ACRLaw_inherited_Delete(self as *const Self)
@@ -530,32 +533,32 @@ impl ACRLaw {
     }
 }
 
-pub use crate::ffi_types::HandleBRepFillACRLaw;
+pub use crate::ffi_types::Handle_BRepFill_ACRLaw;
 
-unsafe impl crate::CppDeletable for HandleBRepFillACRLaw {
+unsafe impl crate::CppDeletable for Handle_BRepFill_ACRLaw {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKBool::HandleBRepFillACRLaw_destructor(ptr);
+            crate::ffi_extern_TKBool::Handle_BRepFill_ACRLaw_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleBRepFillACRLaw {
+unsafe impl crate::CppCopyable for Handle_BRepFill_ACRLaw {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        unsafe { crate::check_result(crate::ffi_extern_TKBool::HandleBRepFillACRLaw_clone(ptr)) }
+        unsafe { crate::check_result(crate::ffi_extern_TKBool::Handle_BRepFill_ACRLaw_clone(ptr)) }
     }
 }
 
-impl HandleBRepFillACRLaw {
+impl Handle_BRepFill_ACRLaw {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
-        unsafe { crate::ffi_extern_TKBool::HandleBRepFillACRLaw_is_null(self as *const Self) }
+        unsafe { crate::ffi_extern_TKBool::Handle_BRepFill_ACRLaw_is_null(self as *const Self) }
     }
 
     /// Dereference this Handle to access the underlying BRepFill_ACRLaw
     pub fn get(&self) -> &crate::ffi_types::BRepFill_ACRLaw {
         unsafe {
-            &*crate::check_result(crate::ffi_extern_TKBool::HandleBRepFillACRLaw_get(
+            &*crate::check_result(crate::ffi_extern_TKBool::Handle_BRepFill_ACRLaw_get(
                 self as *const Self,
             ))
         }
@@ -564,7 +567,7 @@ impl HandleBRepFillACRLaw {
     /// Dereference this Handle to mutably access the underlying BRepFill_ACRLaw
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::BRepFill_ACRLaw {
         unsafe {
-            &mut *crate::check_result(crate::ffi_extern_TKBool::HandleBRepFillACRLaw_get_mut(
+            &mut *crate::check_result(crate::ffi_extern_TKBool::Handle_BRepFill_ACRLaw_get_mut(
                 self as *mut Self,
             ))
         }
@@ -573,10 +576,10 @@ impl HandleBRepFillACRLaw {
     /// Upcast Handle<BRepFill_ACRLaw> to Handle<BRepFill_LocationLaw>
     pub fn to_handle_location_law(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleBRepFillLocationLaw> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_BRepFill_LocationLaw> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKBool::HandleBRepFillACRLaw_to_HandleBRepFillLocationLaw(
+                crate::ffi_extern_TKBool::Handle_BRepFill_ACRLaw_to_Handle_BRepFill_LocationLaw(
                     self as *const Self,
                 ),
             ))
@@ -586,10 +589,10 @@ impl HandleBRepFillACRLaw {
     /// Upcast Handle<BRepFill_ACRLaw> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKBool::HandleBRepFillACRLaw_to_HandleStandardTransient(
+                crate::ffi_extern_TKBool::Handle_BRepFill_ACRLaw_to_Handle_Standard_Transient(
                     self as *const Self,
                 ),
             ))
@@ -601,9 +604,9 @@ impl HandleBRepFillACRLaw {
 // From BRepFill_AdvancedEvolved.hxx
 // ========================
 
-/// **Source:** `BRepFill_AdvancedEvolved.hxx`:33 - `BRepFill_AdvancedEvolved`
+/// **Source:** `BRepFill_AdvancedEvolved.hxx`:35 - `BRepFill_AdvancedEvolved`
 /// Constructs an evolved volume from a spine (wire or face)
-/// and  a profile ( wire).
+/// and a profile (wire).
 pub use crate::ffi_types::BRepFill_AdvancedEvolved as AdvancedEvolved;
 
 unsafe impl crate::CppDeletable for AdvancedEvolved {
@@ -615,7 +618,7 @@ unsafe impl crate::CppDeletable for AdvancedEvolved {
 }
 
 impl AdvancedEvolved {
-    /// **Source:** `BRepFill_AdvancedEvolved.hxx`:39 - `BRepFill_AdvancedEvolved::BRepFill_AdvancedEvolved()`
+    /// **Source:** `BRepFill_AdvancedEvolved.hxx`:41 - `BRepFill_AdvancedEvolved::BRepFill_AdvancedEvolved()`
     /// Constructor
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
@@ -625,7 +628,7 @@ impl AdvancedEvolved {
         }
     }
 
-    /// **Source:** `BRepFill_AdvancedEvolved.hxx`:47 - `BRepFill_AdvancedEvolved::Perform()`
+    /// **Source:** `BRepFill_AdvancedEvolved.hxx`:49 - `BRepFill_AdvancedEvolved::Perform()`
     pub fn perform(
         &mut self,
         theSpine: &crate::topo_ds::Wire,
@@ -644,7 +647,7 @@ impl AdvancedEvolved {
         })
     }
 
-    /// **Source:** `BRepFill_AdvancedEvolved.hxx`:52 - `BRepFill_AdvancedEvolved::IsDone()`
+    /// **Source:** `BRepFill_AdvancedEvolved.hxx`:54 - `BRepFill_AdvancedEvolved::IsDone()`
     pub fn is_done(&self, theErrorCode: Option<&mut u32>) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::BRepFill_AdvancedEvolved_is_done(
@@ -654,7 +657,7 @@ impl AdvancedEvolved {
         })
     }
 
-    /// **Source:** `BRepFill_AdvancedEvolved.hxx`:61 - `BRepFill_AdvancedEvolved::Shape()`
+    /// **Source:** `BRepFill_AdvancedEvolved.hxx`:63 - `BRepFill_AdvancedEvolved::Shape()`
     /// returns the resulting shape.
     pub fn shape(&self) -> &crate::topo_ds::Shape {
         unsafe {
@@ -664,7 +667,7 @@ impl AdvancedEvolved {
         }
     }
 
-    /// **Source:** `BRepFill_AdvancedEvolved.hxx`:64 - `BRepFill_AdvancedEvolved::SetTemporaryDirectory()`
+    /// **Source:** `BRepFill_AdvancedEvolved.hxx`:66 - `BRepFill_AdvancedEvolved::SetTemporaryDirectory()`
     /// Sets directory where the debug shapes will be saved
     pub fn set_temporary_directory(&mut self, thePath: &str) {
         let c_thePath = std::ffi::CString::new(thePath).unwrap();
@@ -676,7 +679,7 @@ impl AdvancedEvolved {
         })
     }
 
-    /// **Source:** `BRepFill_AdvancedEvolved.hxx`:67 - `BRepFill_AdvancedEvolved::SetParallelMode()`
+    /// **Source:** `BRepFill_AdvancedEvolved.hxx`:69 - `BRepFill_AdvancedEvolved::SetParallelMode()`
     /// Sets/Unsets computation in parallel mode
     pub fn set_parallel_mode(&mut self, theVal: bool) {
         crate::check_void_result(unsafe {
@@ -741,7 +744,7 @@ impl ApproxSeewing {
 
     /// **Source:** `BRepFill_ApproxSeewing.hxx`:45 - `BRepFill_ApproxSeewing::Curve()`
     /// returns the approximation of the 3d Curve
-    pub fn curve(&self) -> &crate::ffi_types::HandleGeomCurve {
+    pub fn curve(&self) -> &crate::ffi_types::Handle_Geom_Curve {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKBool::BRepFill_ApproxSeewing_curve(
                 self as *const Self,
@@ -750,9 +753,9 @@ impl ApproxSeewing {
     }
 
     /// **Source:** `BRepFill_ApproxSeewing.hxx`:49 - `BRepFill_ApproxSeewing::CurveOnF1()`
-    /// returns the  approximation  of the  PCurve  on the
+    /// returns the approximation of the PCurve on the
     /// first face of the MultiLine
-    pub fn curve_on_f1(&self) -> &crate::ffi_types::HandleGeom2dCurve {
+    pub fn curve_on_f1(&self) -> &crate::ffi_types::Handle_Geom2d_Curve {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKBool::BRepFill_ApproxSeewing_curve_on_f1(
                 self as *const Self,
@@ -761,9 +764,9 @@ impl ApproxSeewing {
     }
 
     /// **Source:** `BRepFill_ApproxSeewing.hxx`:53 - `BRepFill_ApproxSeewing::CurveOnF2()`
-    /// returns the  approximation  of the  PCurve  on the
+    /// returns the approximation of the PCurve on the
     /// first face of the MultiLine
-    pub fn curve_on_f2(&self) -> &crate::ffi_types::HandleGeom2dCurve {
+    pub fn curve_on_f2(&self) -> &crate::ffi_types::Handle_Geom2d_Curve {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKBool::BRepFill_ApproxSeewing_curve_on_f2(
                 self as *const Self,
@@ -776,7 +779,7 @@ impl ApproxSeewing {
 // From BRepFill_CompatibleWires.hxx
 // ========================
 
-/// **Source:** `BRepFill_CompatibleWires.hxx`:32 - `BRepFill_CompatibleWires`
+/// **Source:** `BRepFill_CompatibleWires.hxx`:34 - `BRepFill_CompatibleWires`
 /// Constructs a sequence of Wires (with good orientation
 /// and origin) agreed each other so that the surface passing
 /// through these sections is not twisted
@@ -791,7 +794,7 @@ unsafe impl crate::CppDeletable for CompatibleWires {
 }
 
 impl CompatibleWires {
-    /// **Source:** `BRepFill_CompatibleWires.hxx`:37 - `BRepFill_CompatibleWires::BRepFill_CompatibleWires()`
+    /// **Source:** `BRepFill_CompatibleWires.hxx`:39 - `BRepFill_CompatibleWires::BRepFill_CompatibleWires()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -800,25 +803,25 @@ impl CompatibleWires {
         }
     }
 
-    /// **Source:** `BRepFill_CompatibleWires.hxx`:39 - `BRepFill_CompatibleWires::BRepFill_CompatibleWires()`
-    pub fn new_sequenceofshape(
-        Sections: &crate::ffi_types::TopTools_SequenceOfShape,
+    /// **Source:** `BRepFill_CompatibleWires.hxx`:41 - `BRepFill_CompatibleWires::BRepFill_CompatibleWires()`
+    pub fn new_seq_shape(
+        Sections: &crate::ffi_types::NCollection_Sequence_TopoDS_Shape,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKBool::BRepFill_CompatibleWires_ctor_sequenceofshape(Sections),
+                crate::ffi_extern_TKBool::BRepFill_CompatibleWires_ctor_seq_shape(Sections),
             ))
         }
     }
 
-    /// **Source:** `BRepFill_CompatibleWires.hxx`:41 - `BRepFill_CompatibleWires::Init()`
-    pub fn init(&mut self, Sections: &crate::ffi_types::TopTools_SequenceOfShape) {
+    /// **Source:** `BRepFill_CompatibleWires.hxx`:43 - `BRepFill_CompatibleWires::Init()`
+    pub fn init(&mut self, Sections: &crate::ffi_types::NCollection_Sequence_TopoDS_Shape) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::BRepFill_CompatibleWires_init(self as *mut Self, Sections)
         })
     }
 
-    /// **Source:** `BRepFill_CompatibleWires.hxx`:43 - `BRepFill_CompatibleWires::SetPercent()`
+    /// **Source:** `BRepFill_CompatibleWires.hxx`:45 - `BRepFill_CompatibleWires::SetPercent()`
     pub fn set_percent(&mut self, percent: f64) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::BRepFill_CompatibleWires_set_percent(
@@ -828,9 +831,9 @@ impl CompatibleWires {
         })
     }
 
-    /// **Source:** `BRepFill_CompatibleWires.hxx`:47 - `BRepFill_CompatibleWires::Perform()`
-    /// Performs  CompatibleWires According  to  the orientation
-    /// and the origin of  each other
+    /// **Source:** `BRepFill_CompatibleWires.hxx`:49 - `BRepFill_CompatibleWires::Perform()`
+    /// Performs CompatibleWires According to the orientation
+    /// and the origin of each other
     pub fn perform(&mut self, WithRotation: bool) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::BRepFill_CompatibleWires_perform(
@@ -840,14 +843,14 @@ impl CompatibleWires {
         })
     }
 
-    /// **Source:** `BRepFill_CompatibleWires.hxx`:49 - `BRepFill_CompatibleWires::IsDone()`
+    /// **Source:** `BRepFill_CompatibleWires.hxx`:51 - `BRepFill_CompatibleWires::IsDone()`
     pub fn is_done(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::BRepFill_CompatibleWires_is_done(self as *const Self)
         })
     }
 
-    /// **Source:** `BRepFill_CompatibleWires.hxx`:51 - `BRepFill_CompatibleWires::GetStatus()`
+    /// **Source:** `BRepFill_CompatibleWires.hxx`:53 - `BRepFill_CompatibleWires::GetStatus()`
     pub fn get_status(&self) -> crate::b_rep_fill::ThruSectionErrorStatus {
         crate::b_rep_fill::ThruSectionErrorStatus::try_from(crate::check_result(unsafe {
             crate::ffi_extern_TKBool::BRepFill_CompatibleWires_get_status(self as *const Self)
@@ -855,9 +858,9 @@ impl CompatibleWires {
         .unwrap()
     }
 
-    /// **Source:** `BRepFill_CompatibleWires.hxx`:54 - `BRepFill_CompatibleWires::Shape()`
+    /// **Source:** `BRepFill_CompatibleWires.hxx`:56 - `BRepFill_CompatibleWires::Shape()`
     /// returns the generated sequence.
-    pub fn shape(&self) -> &crate::ffi_types::TopTools_SequenceOfShape {
+    pub fn shape(&self) -> &crate::ffi_types::NCollection_Sequence_TopoDS_Shape {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKBool::BRepFill_CompatibleWires_shape(
                 self as *const Self,
@@ -865,8 +868,8 @@ impl CompatibleWires {
         }
     }
 
-    /// **Source:** `BRepFill_CompatibleWires.hxx`:58 - `BRepFill_CompatibleWires::GeneratedShapes()`
-    /// Returns   the  shapes  created  from   a  subshape
+    /// **Source:** `BRepFill_CompatibleWires.hxx`:60 - `BRepFill_CompatibleWires::GeneratedShapes()`
+    /// Returns the shapes created from a subshape
     /// <SubSection> of a section.
     ///
     /// # Safety
@@ -877,7 +880,7 @@ impl CompatibleWires {
     pub unsafe fn generated_shapes(
         &self,
         SubSection: &crate::topo_ds::Edge,
-    ) -> &crate::ffi_types::TopTools_ListOfShape {
+    ) -> &crate::ffi_types::NCollection_List_TopoDS_Shape {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKBool::BRepFill_CompatibleWires_generated_shapes(
@@ -888,8 +891,8 @@ impl CompatibleWires {
         }
     }
 
-    /// **Source:** `BRepFill_CompatibleWires.hxx`:60 - `BRepFill_CompatibleWires::Generated()`
-    pub fn generated(&self) -> &crate::ffi_types::TopTools_DataMapOfShapeListOfShape {
+    /// **Source:** `BRepFill_CompatibleWires.hxx`:66 - `BRepFill_CompatibleWires::Generated()`
+    pub fn generated(&self) -> &crate::ffi_types::NCollection_DataMap_TopoDS_Shape_NCollection_List_TopoDS_Shape_TopTools_ShapeMapHasher{
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKBool::BRepFill_CompatibleWires_generated(
                 self as *const Self,
@@ -897,7 +900,7 @@ impl CompatibleWires {
         }
     }
 
-    /// **Source:** `BRepFill_CompatibleWires.hxx`:62 - `BRepFill_CompatibleWires::IsDegeneratedFirstSection()`
+    /// **Source:** `BRepFill_CompatibleWires.hxx`:68 - `BRepFill_CompatibleWires::IsDegeneratedFirstSection()`
     pub fn is_degenerated_first_section(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::BRepFill_CompatibleWires_is_degenerated_first_section(
@@ -906,7 +909,7 @@ impl CompatibleWires {
         })
     }
 
-    /// **Source:** `BRepFill_CompatibleWires.hxx`:64 - `BRepFill_CompatibleWires::IsDegeneratedLastSection()`
+    /// **Source:** `BRepFill_CompatibleWires.hxx`:70 - `BRepFill_CompatibleWires::IsDegeneratedLastSection()`
     pub fn is_degenerated_last_section(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::BRepFill_CompatibleWires_is_degenerated_last_section(
@@ -920,7 +923,7 @@ impl CompatibleWires {
 // From BRepFill_ComputeCLine.hxx
 // ========================
 
-/// **Source:** `BRepFill_ComputeCLine.hxx`:31 - `BRepFill_ComputeCLine`
+/// **Source:** `BRepFill_ComputeCLine.hxx`:30 - `BRepFill_ComputeCLine`
 pub use crate::ffi_types::BRepFill_ComputeCLine as ComputeCLine;
 
 unsafe impl crate::CppDeletable for ComputeCLine {
@@ -932,7 +935,7 @@ unsafe impl crate::CppDeletable for ComputeCLine {
 }
 
 impl ComputeCLine {
-    /// **Source:** `BRepFill_ComputeCLine.hxx`:40 - `BRepFill_ComputeCLine::BRepFill_ComputeCLine()`
+    /// **Source:** `BRepFill_ComputeCLine.hxx`:39 - `BRepFill_ComputeCLine::BRepFill_ComputeCLine()`
     /// The MultiLine <Line> will be approximated until tolerances
     /// will be reached.
     /// The approximation will be done from degreemin to degreemax
@@ -952,7 +955,7 @@ impl ComputeCLine {
         }
     }
 
-    /// **Source:** `BRepFill_ComputeCLine.hxx`:51 - `BRepFill_ComputeCLine::BRepFill_ComputeCLine()`
+    /// **Source:** `BRepFill_ComputeCLine.hxx`:50 - `BRepFill_ComputeCLine::BRepFill_ComputeCLine()`
     /// Initializes the fields of the algorithm.
     pub fn new_int2_real2_bool_constraint2(
         degreemin: i32,
@@ -978,7 +981,7 @@ impl ComputeCLine {
         }
     }
 
-    /// **Source:** `BRepFill_ComputeCLine.hxx`:61 - `BRepFill_ComputeCLine::Perform()`
+    /// **Source:** `BRepFill_ComputeCLine.hxx`:60 - `BRepFill_ComputeCLine::Perform()`
     /// runs the algorithm after having initialized the fields.
     pub fn perform(&mut self, Line: &MultiLine) {
         crate::check_void_result(unsafe {
@@ -986,7 +989,7 @@ impl ComputeCLine {
         })
     }
 
-    /// **Source:** `BRepFill_ComputeCLine.hxx`:64 - `BRepFill_ComputeCLine::SetDegrees()`
+    /// **Source:** `BRepFill_ComputeCLine.hxx`:63 - `BRepFill_ComputeCLine::SetDegrees()`
     /// changes the degrees of the approximation.
     pub fn set_degrees(&mut self, degreemin: i32, degreemax: i32) {
         crate::check_void_result(unsafe {
@@ -998,7 +1001,7 @@ impl ComputeCLine {
         })
     }
 
-    /// **Source:** `BRepFill_ComputeCLine.hxx`:68 - `BRepFill_ComputeCLine::SetTolerances()`
+    /// **Source:** `BRepFill_ComputeCLine.hxx`:66 - `BRepFill_ComputeCLine::SetTolerances()`
     /// Changes the tolerances of the approximation.
     pub fn set_tolerances(&mut self, Tolerance3d: f64, Tolerance2d: f64) {
         crate::check_void_result(unsafe {
@@ -1010,7 +1013,7 @@ impl ComputeCLine {
         })
     }
 
-    /// **Source:** `BRepFill_ComputeCLine.hxx`:72 - `BRepFill_ComputeCLine::SetConstraints()`
+    /// **Source:** `BRepFill_ComputeCLine.hxx`:69 - `BRepFill_ComputeCLine::SetConstraints()`
     /// Changes the constraints of the approximation.
     pub fn set_constraints(
         &mut self,
@@ -1026,7 +1029,7 @@ impl ComputeCLine {
         })
     }
 
-    /// **Source:** `BRepFill_ComputeCLine.hxx`:76 - `BRepFill_ComputeCLine::SetMaxSegments()`
+    /// **Source:** `BRepFill_ComputeCLine.hxx`:73 - `BRepFill_ComputeCLine::SetMaxSegments()`
     /// Changes the max number of segments, which is allowed for cutting.
     pub fn set_max_segments(&mut self, theMaxSegments: i32) {
         crate::check_void_result(unsafe {
@@ -1037,7 +1040,7 @@ impl ComputeCLine {
         })
     }
 
-    /// **Source:** `BRepFill_ComputeCLine.hxx`:82 - `BRepFill_ComputeCLine::SetInvOrder()`
+    /// **Source:** `BRepFill_ComputeCLine.hxx`:79 - `BRepFill_ComputeCLine::SetInvOrder()`
     /// Set inverse order of degree selection:
     /// if theInvOrdr = true, current degree is chosen by inverse order -
     /// from maxdegree to mindegree.
@@ -1051,7 +1054,7 @@ impl ComputeCLine {
         })
     }
 
-    /// **Source:** `BRepFill_ComputeCLine.hxx`:88 - `BRepFill_ComputeCLine::SetHangChecking()`
+    /// **Source:** `BRepFill_ComputeCLine.hxx`:85 - `BRepFill_ComputeCLine::SetHangChecking()`
     /// Set value of hang checking flag
     /// if this flag = true, possible hang of algorithm is checked
     /// and algorithm is forced to stop.
@@ -1065,7 +1068,7 @@ impl ComputeCLine {
         })
     }
 
-    /// **Source:** `BRepFill_ComputeCLine.hxx`:93 - `BRepFill_ComputeCLine::IsAllApproximated()`
+    /// **Source:** `BRepFill_ComputeCLine.hxx`:90 - `BRepFill_ComputeCLine::IsAllApproximated()`
     /// returns False if at a moment of the approximation,
     /// the status NoApproximation has been sent by the user
     /// when more points were needed.
@@ -1075,7 +1078,7 @@ impl ComputeCLine {
         })
     }
 
-    /// **Source:** `BRepFill_ComputeCLine.hxx`:96 - `BRepFill_ComputeCLine::IsToleranceReached()`
+    /// **Source:** `BRepFill_ComputeCLine.hxx`:93 - `BRepFill_ComputeCLine::IsToleranceReached()`
     /// returns False if the status NoPointsAdded has been sent.
     pub fn is_tolerance_reached(&self) -> bool {
         crate::check_result(unsafe {
@@ -1085,7 +1088,7 @@ impl ComputeCLine {
         })
     }
 
-    /// **Source:** `BRepFill_ComputeCLine.hxx`:99 - `BRepFill_ComputeCLine::Error()`
+    /// **Source:** `BRepFill_ComputeCLine.hxx`:96 - `BRepFill_ComputeCLine::Error()`
     /// returns the tolerances 2d and 3d of the <Index> MultiCurve.
     pub fn error(&self, Index: i32, tol3d: &mut f64, tol2d: &mut f64) {
         crate::check_void_result(unsafe {
@@ -1098,7 +1101,7 @@ impl ComputeCLine {
         })
     }
 
-    /// **Source:** `BRepFill_ComputeCLine.hxx`:105 - `BRepFill_ComputeCLine::NbMultiCurves()`
+    /// **Source:** `BRepFill_ComputeCLine.hxx`:100 - `BRepFill_ComputeCLine::NbMultiCurves()`
     /// Returns the number of MultiCurve doing the approximation
     /// of the MultiLine.
     pub fn nb_multi_curves(&self) -> i32 {
@@ -1107,7 +1110,7 @@ impl ComputeCLine {
         })
     }
 
-    /// **Source:** `BRepFill_ComputeCLine.hxx`:108 - `BRepFill_ComputeCLine::Value()`
+    /// **Source:** `BRepFill_ComputeCLine.hxx`:103 - `BRepFill_ComputeCLine::Value()`
     /// returns the approximation MultiCurve of range <Index>.
     pub fn value(&self, Index: i32) -> crate::OwnedPtr<crate::app_par_curves::MultiCurve> {
         unsafe {
@@ -1117,7 +1120,7 @@ impl ComputeCLine {
         }
     }
 
-    /// **Source:** `BRepFill_ComputeCLine.hxx`:110 - `BRepFill_ComputeCLine::Parameters()`
+    /// **Source:** `BRepFill_ComputeCLine.hxx`:105 - `BRepFill_ComputeCLine::Parameters()`
     pub fn parameters(&self, Index: i32, firstp: &mut f64, lastp: &mut f64) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::BRepFill_ComputeCLine_parameters(
@@ -1134,7 +1137,7 @@ impl ComputeCLine {
 // From BRepFill_CurveConstraint.hxx
 // ========================
 
-/// **Source:** `BRepFill_CurveConstraint.hxx`:32 - `BRepFill_CurveConstraint`
+/// **Source:** `BRepFill_CurveConstraint.hxx`:29 - `BRepFill_CurveConstraint`
 /// same as CurveConstraint from GeomPlate
 /// with BRepAdaptor_Surface instead of
 /// GeomAdaptor_Surface
@@ -1149,7 +1152,7 @@ unsafe impl crate::CppDeletable for CurveConstraint {
 }
 
 impl CurveConstraint {
-    /// **Source:** `BRepFill_CurveConstraint.hxx`:44 - `BRepFill_CurveConstraint::BRepFill_CurveConstraint()`
+    /// **Source:** `BRepFill_CurveConstraint.hxx`:41 - `BRepFill_CurveConstraint::BRepFill_CurveConstraint()`
     /// Create a constraint
     /// Order is the order of the constraint. The possible values for order are -1,0,1,2.
     /// Order i means constraints Gi
@@ -1159,7 +1162,7 @@ impl CurveConstraint {
     /// TolCurv is the maximum error to satisfy for G2 constraints
     /// These errors can be replaced by laws of criterion.
     pub fn new_handleadaptor3dcurveonsurface_int2_real3(
-        Boundary: &crate::ffi_types::HandleAdaptor3dCurveOnSurface,
+        Boundary: &crate::ffi_types::Handle_Adaptor3d_CurveOnSurface,
         Order: i32,
         NPt: i32,
         TolDist: f64,
@@ -1171,9 +1174,9 @@ impl CurveConstraint {
         }
     }
 
-    /// **Source:** `BRepFill_CurveConstraint.hxx`:51 - `BRepFill_CurveConstraint::BRepFill_CurveConstraint()`
+    /// **Source:** `BRepFill_CurveConstraint.hxx`:48 - `BRepFill_CurveConstraint::BRepFill_CurveConstraint()`
     pub fn new_handleadaptor3dcurve_int2_real(
-        Boundary: &crate::ffi_types::HandleAdaptor3dCurve,
+        Boundary: &crate::ffi_types::Handle_Adaptor3d_Curve,
         Tang: i32,
         NPt: i32,
         TolDist: f64,
@@ -1183,7 +1186,7 @@ impl CurveConstraint {
         }
     }
 
-    /// **Source:** `BRepFill_CurveConstraint.hxx`:44 - `BRepFill_CurveConstraint::BRepFill_CurveConstraint()`
+    /// **Source:** `BRepFill_CurveConstraint.hxx`:41 - `BRepFill_CurveConstraint::BRepFill_CurveConstraint()`
     /// Create a constraint
     /// Order is the order of the constraint. The possible values for order are -1,0,1,2.
     /// Order i means constraints Gi
@@ -1193,7 +1196,7 @@ impl CurveConstraint {
     /// TolCurv is the maximum error to satisfy for G2 constraints
     /// These errors can be replaced by laws of criterion.
     pub fn new_handleadaptor3dcurveonsurface_int2_real2(
-        Boundary: &crate::ffi_types::HandleAdaptor3dCurveOnSurface,
+        Boundary: &crate::ffi_types::Handle_Adaptor3d_CurveOnSurface,
         Order: i32,
         NPt: i32,
         TolDist: f64,
@@ -1204,7 +1207,7 @@ impl CurveConstraint {
         )
     }
 
-    /// **Source:** `BRepFill_CurveConstraint.hxx`:44 - `BRepFill_CurveConstraint::BRepFill_CurveConstraint()`
+    /// **Source:** `BRepFill_CurveConstraint.hxx`:41 - `BRepFill_CurveConstraint::BRepFill_CurveConstraint()`
     /// Create a constraint
     /// Order is the order of the constraint. The possible values for order are -1,0,1,2.
     /// Order i means constraints Gi
@@ -1214,7 +1217,7 @@ impl CurveConstraint {
     /// TolCurv is the maximum error to satisfy for G2 constraints
     /// These errors can be replaced by laws of criterion.
     pub fn new_handleadaptor3dcurveonsurface_int2_real(
-        Boundary: &crate::ffi_types::HandleAdaptor3dCurveOnSurface,
+        Boundary: &crate::ffi_types::Handle_Adaptor3d_CurveOnSurface,
         Order: i32,
         NPt: i32,
         TolDist: f64,
@@ -1222,7 +1225,7 @@ impl CurveConstraint {
         Self::new_handleadaptor3dcurveonsurface_int2_real3(Boundary, Order, NPt, TolDist, 0.01, 0.1)
     }
 
-    /// **Source:** `BRepFill_CurveConstraint.hxx`:44 - `BRepFill_CurveConstraint::BRepFill_CurveConstraint()`
+    /// **Source:** `BRepFill_CurveConstraint.hxx`:41 - `BRepFill_CurveConstraint::BRepFill_CurveConstraint()`
     /// Create a constraint
     /// Order is the order of the constraint. The possible values for order are -1,0,1,2.
     /// Order i means constraints Gi
@@ -1232,14 +1235,14 @@ impl CurveConstraint {
     /// TolCurv is the maximum error to satisfy for G2 constraints
     /// These errors can be replaced by laws of criterion.
     pub fn new_handleadaptor3dcurveonsurface_int2(
-        Boundary: &crate::ffi_types::HandleAdaptor3dCurveOnSurface,
+        Boundary: &crate::ffi_types::Handle_Adaptor3d_CurveOnSurface,
         Order: i32,
         NPt: i32,
     ) -> crate::OwnedPtr<Self> {
         Self::new_handleadaptor3dcurveonsurface_int2_real3(Boundary, Order, NPt, 0.0001, 0.01, 0.1)
     }
 
-    /// **Source:** `BRepFill_CurveConstraint.hxx`:44 - `BRepFill_CurveConstraint::BRepFill_CurveConstraint()`
+    /// **Source:** `BRepFill_CurveConstraint.hxx`:41 - `BRepFill_CurveConstraint::BRepFill_CurveConstraint()`
     /// Create a constraint
     /// Order is the order of the constraint. The possible values for order are -1,0,1,2.
     /// Order i means constraints Gi
@@ -1249,31 +1252,31 @@ impl CurveConstraint {
     /// TolCurv is the maximum error to satisfy for G2 constraints
     /// These errors can be replaced by laws of criterion.
     pub fn new_handleadaptor3dcurveonsurface_int(
-        Boundary: &crate::ffi_types::HandleAdaptor3dCurveOnSurface,
+        Boundary: &crate::ffi_types::Handle_Adaptor3d_CurveOnSurface,
         Order: i32,
     ) -> crate::OwnedPtr<Self> {
         Self::new_handleadaptor3dcurveonsurface_int2_real3(Boundary, Order, 10, 0.0001, 0.01, 0.1)
     }
 
-    /// **Source:** `BRepFill_CurveConstraint.hxx`:51 - `BRepFill_CurveConstraint::BRepFill_CurveConstraint()`
+    /// **Source:** `BRepFill_CurveConstraint.hxx`:48 - `BRepFill_CurveConstraint::BRepFill_CurveConstraint()`
     pub fn new_handleadaptor3dcurve_int2(
-        Boundary: &crate::ffi_types::HandleAdaptor3dCurve,
+        Boundary: &crate::ffi_types::Handle_Adaptor3d_Curve,
         Tang: i32,
         NPt: i32,
     ) -> crate::OwnedPtr<Self> {
         Self::new_handleadaptor3dcurve_int2_real(Boundary, Tang, NPt, 0.0001)
     }
 
-    /// **Source:** `BRepFill_CurveConstraint.hxx`:51 - `BRepFill_CurveConstraint::BRepFill_CurveConstraint()`
+    /// **Source:** `BRepFill_CurveConstraint.hxx`:48 - `BRepFill_CurveConstraint::BRepFill_CurveConstraint()`
     pub fn new_handleadaptor3dcurve_int(
-        Boundary: &crate::ffi_types::HandleAdaptor3dCurve,
+        Boundary: &crate::ffi_types::Handle_Adaptor3d_Curve,
         Tang: i32,
     ) -> crate::OwnedPtr<Self> {
         Self::new_handleadaptor3dcurve_int2_real(Boundary, Tang, 10, 0.0001)
     }
 
-    /// **Source:** `BRepFill_CurveConstraint.hxx`:56 - `BRepFill_CurveConstraint::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `BRepFill_CurveConstraint.hxx`:53 - `BRepFill_CurveConstraint::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKBool::BRepFill_CurveConstraint_dynamic_type(
@@ -1283,7 +1286,7 @@ impl CurveConstraint {
         }
     }
 
-    /// **Source:** `BRepFill_CurveConstraint.hxx`:56 - `BRepFill_CurveConstraint::get_type_name()`
+    /// **Source:** `BRepFill_CurveConstraint.hxx`:53 - `BRepFill_CurveConstraint::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -1294,8 +1297,8 @@ impl CurveConstraint {
         .into_owned()
     }
 
-    /// **Source:** `BRepFill_CurveConstraint.hxx`:56 - `BRepFill_CurveConstraint::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    /// **Source:** `BRepFill_CurveConstraint.hxx`:53 - `BRepFill_CurveConstraint::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKBool::BRepFill_CurveConstraint_get_type_descriptor(),
@@ -1352,7 +1355,7 @@ impl CurveConstraint {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleBRepFillCurveConstraint> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_BRepFill_CurveConstraint> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKBool::BRepFill_CurveConstraint_to_handle(obj.into_raw()),
@@ -1360,7 +1363,7 @@ impl CurveConstraint {
         }
     }
 
-    /// Inherited: **Source:** `GeomPlate_CurveConstraint.hxx`:58 - `GeomPlate_CurveConstraint::SetOrder()`
+    /// Inherited: **Source:** `GeomPlate_CurveConstraint.hxx`:55 - `GeomPlate_CurveConstraint::SetOrder()`
     pub fn set_order(&mut self, Order: i32) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::BRepFill_CurveConstraint_inherited_SetOrder(
@@ -1370,14 +1373,14 @@ impl CurveConstraint {
         })
     }
 
-    /// Inherited: **Source:** `GeomPlate_CurveConstraint.hxx`:61 - `GeomPlate_CurveConstraint::Order()`
+    /// Inherited: **Source:** `GeomPlate_CurveConstraint.hxx`:58 - `GeomPlate_CurveConstraint::Order()`
     pub fn order(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::BRepFill_CurveConstraint_inherited_Order(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `GeomPlate_CurveConstraint.hxx`:67 - `GeomPlate_CurveConstraint::NbPoints()`
+    /// Inherited: **Source:** `GeomPlate_CurveConstraint.hxx`:64 - `GeomPlate_CurveConstraint::NbPoints()`
     pub fn nb_points(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::BRepFill_CurveConstraint_inherited_NbPoints(
@@ -1386,7 +1389,7 @@ impl CurveConstraint {
         })
     }
 
-    /// Inherited: **Source:** `GeomPlate_CurveConstraint.hxx`:73 - `GeomPlate_CurveConstraint::SetNbPoints()`
+    /// Inherited: **Source:** `GeomPlate_CurveConstraint.hxx`:70 - `GeomPlate_CurveConstraint::SetNbPoints()`
     pub fn set_nb_points(&mut self, NewNb: i32) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::BRepFill_CurveConstraint_inherited_SetNbPoints(
@@ -1396,8 +1399,8 @@ impl CurveConstraint {
         })
     }
 
-    /// Inherited: **Source:** `GeomPlate_CurveConstraint.hxx`:80 - `GeomPlate_CurveConstraint::SetG0Criterion()`
-    pub fn set_g0_criterion(&mut self, G0Crit: &crate::ffi_types::HandleLawFunction) {
+    /// Inherited: **Source:** `GeomPlate_CurveConstraint.hxx`:77 - `GeomPlate_CurveConstraint::SetG0Criterion()`
+    pub fn set_g0_criterion(&mut self, G0Crit: &crate::ffi_types::Handle_Law_Function) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::BRepFill_CurveConstraint_inherited_SetG0Criterion(
                 self as *mut Self,
@@ -1406,8 +1409,8 @@ impl CurveConstraint {
         })
     }
 
-    /// Inherited: **Source:** `GeomPlate_CurveConstraint.hxx`:87 - `GeomPlate_CurveConstraint::SetG1Criterion()`
-    pub fn set_g1_criterion(&mut self, G1Crit: &crate::ffi_types::HandleLawFunction) {
+    /// Inherited: **Source:** `GeomPlate_CurveConstraint.hxx`:84 - `GeomPlate_CurveConstraint::SetG1Criterion()`
+    pub fn set_g1_criterion(&mut self, G1Crit: &crate::ffi_types::Handle_Law_Function) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::BRepFill_CurveConstraint_inherited_SetG1Criterion(
                 self as *mut Self,
@@ -1416,8 +1419,8 @@ impl CurveConstraint {
         })
     }
 
-    /// Inherited: **Source:** `GeomPlate_CurveConstraint.hxx`:89 - `GeomPlate_CurveConstraint::SetG2Criterion()`
-    pub fn set_g2_criterion(&mut self, G2Crit: &crate::ffi_types::HandleLawFunction) {
+    /// Inherited: **Source:** `GeomPlate_CurveConstraint.hxx`:86 - `GeomPlate_CurveConstraint::SetG2Criterion()`
+    pub fn set_g2_criterion(&mut self, G2Crit: &crate::ffi_types::Handle_Law_Function) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::BRepFill_CurveConstraint_inherited_SetG2Criterion(
                 self as *mut Self,
@@ -1426,7 +1429,7 @@ impl CurveConstraint {
         })
     }
 
-    /// Inherited: **Source:** `GeomPlate_CurveConstraint.hxx`:94 - `GeomPlate_CurveConstraint::G0Criterion()`
+    /// Inherited: **Source:** `GeomPlate_CurveConstraint.hxx`:91 - `GeomPlate_CurveConstraint::G0Criterion()`
     pub fn g0_criterion(&self, U: f64) -> f64 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::BRepFill_CurveConstraint_inherited_G0Criterion(
@@ -1436,7 +1439,7 @@ impl CurveConstraint {
         })
     }
 
-    /// Inherited: **Source:** `GeomPlate_CurveConstraint.hxx`:100 - `GeomPlate_CurveConstraint::G1Criterion()`
+    /// Inherited: **Source:** `GeomPlate_CurveConstraint.hxx`:97 - `GeomPlate_CurveConstraint::G1Criterion()`
     pub fn g1_criterion(&self, U: f64) -> f64 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::BRepFill_CurveConstraint_inherited_G1Criterion(
@@ -1446,7 +1449,7 @@ impl CurveConstraint {
         })
     }
 
-    /// Inherited: **Source:** `GeomPlate_CurveConstraint.hxx`:106 - `GeomPlate_CurveConstraint::G2Criterion()`
+    /// Inherited: **Source:** `GeomPlate_CurveConstraint.hxx`:103 - `GeomPlate_CurveConstraint::G2Criterion()`
     pub fn g2_criterion(&self, U: f64) -> f64 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::BRepFill_CurveConstraint_inherited_G2Criterion(
@@ -1456,7 +1459,7 @@ impl CurveConstraint {
         })
     }
 
-    /// Inherited: **Source:** `GeomPlate_CurveConstraint.hxx`:108 - `GeomPlate_CurveConstraint::FirstParameter()`
+    /// Inherited: **Source:** `GeomPlate_CurveConstraint.hxx`:105 - `GeomPlate_CurveConstraint::FirstParameter()`
     pub fn first_parameter(&self) -> f64 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::BRepFill_CurveConstraint_inherited_FirstParameter(
@@ -1465,7 +1468,7 @@ impl CurveConstraint {
         })
     }
 
-    /// Inherited: **Source:** `GeomPlate_CurveConstraint.hxx`:110 - `GeomPlate_CurveConstraint::LastParameter()`
+    /// Inherited: **Source:** `GeomPlate_CurveConstraint.hxx`:107 - `GeomPlate_CurveConstraint::LastParameter()`
     pub fn last_parameter(&self) -> f64 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::BRepFill_CurveConstraint_inherited_LastParameter(
@@ -1474,15 +1477,15 @@ impl CurveConstraint {
         })
     }
 
-    /// Inherited: **Source:** `GeomPlate_CurveConstraint.hxx`:112 - `GeomPlate_CurveConstraint::Length()`
+    /// Inherited: **Source:** `GeomPlate_CurveConstraint.hxx`:109 - `GeomPlate_CurveConstraint::Length()`
     pub fn length(&self) -> f64 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::BRepFill_CurveConstraint_inherited_Length(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `GeomPlate_CurveConstraint.hxx`:114 - `GeomPlate_CurveConstraint::LPropSurf()`
-    pub fn l_prop_surf(&mut self, U: f64) -> &mut crate::geom_l_prop::SLProps {
+    /// Inherited: **Source:** `GeomPlate_CurveConstraint.hxx`:111 - `GeomPlate_CurveConstraint::LPropSurf()`
+    pub fn l_prop_surf(&mut self, U: f64) -> &mut crate::ffi_types::GeomLProp_SLProps {
         unsafe {
             &mut *(crate::check_result(
                 crate::ffi_extern_TKBool::BRepFill_CurveConstraint_inherited_LPropSurf(
@@ -1493,7 +1496,7 @@ impl CurveConstraint {
         }
     }
 
-    /// Inherited: **Source:** `GeomPlate_CurveConstraint.hxx`:116 - `GeomPlate_CurveConstraint::D0()`
+    /// Inherited: **Source:** `GeomPlate_CurveConstraint.hxx`:113 - `GeomPlate_CurveConstraint::D0()`
     pub fn d0(&self, U: f64, P: &mut crate::gp::Pnt) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::BRepFill_CurveConstraint_inherited_D0(
@@ -1504,7 +1507,7 @@ impl CurveConstraint {
         })
     }
 
-    /// Inherited: **Source:** `GeomPlate_CurveConstraint.hxx`:118 - `GeomPlate_CurveConstraint::D1()`
+    /// Inherited: **Source:** `GeomPlate_CurveConstraint.hxx`:115 - `GeomPlate_CurveConstraint::D1()`
     pub fn d1(
         &self,
         U: f64,
@@ -1523,7 +1526,7 @@ impl CurveConstraint {
         })
     }
 
-    /// Inherited: **Source:** `GeomPlate_CurveConstraint.hxx`:120 - `GeomPlate_CurveConstraint::D2()`
+    /// Inherited: **Source:** `GeomPlate_CurveConstraint.hxx`:117 - `GeomPlate_CurveConstraint::D2()`
     pub fn d2(
         &self,
         U: f64,
@@ -1548,8 +1551,8 @@ impl CurveConstraint {
         })
     }
 
-    /// Inherited: **Source:** `GeomPlate_CurveConstraint.hxx`:128 - `GeomPlate_CurveConstraint::Curve3d()`
-    pub fn curve3d(&self) -> crate::OwnedPtr<crate::ffi_types::HandleAdaptor3dCurve> {
+    /// Inherited: **Source:** `GeomPlate_CurveConstraint.hxx`:125 - `GeomPlate_CurveConstraint::Curve3d()`
+    pub fn curve3d(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_Adaptor3d_Curve> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKBool::BRepFill_CurveConstraint_inherited_Curve3d(
@@ -1559,8 +1562,8 @@ impl CurveConstraint {
         }
     }
 
-    /// Inherited: **Source:** `GeomPlate_CurveConstraint.hxx`:131 - `GeomPlate_CurveConstraint::SetCurve2dOnSurf()`
-    pub fn set_curve2d_on_surf(&mut self, Curve2d: &crate::ffi_types::HandleGeom2dCurve) {
+    /// Inherited: **Source:** `GeomPlate_CurveConstraint.hxx`:128 - `GeomPlate_CurveConstraint::SetCurve2dOnSurf()`
+    pub fn set_curve2d_on_surf(&mut self, Curve2d: &crate::ffi_types::Handle_Geom2d_Curve) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::BRepFill_CurveConstraint_inherited_SetCurve2dOnSurf(
                 self as *mut Self,
@@ -1569,8 +1572,8 @@ impl CurveConstraint {
         })
     }
 
-    /// Inherited: **Source:** `GeomPlate_CurveConstraint.hxx`:134 - `GeomPlate_CurveConstraint::Curve2dOnSurf()`
-    pub fn curve2d_on_surf(&self) -> crate::OwnedPtr<crate::ffi_types::HandleGeom2dCurve> {
+    /// Inherited: **Source:** `GeomPlate_CurveConstraint.hxx`:131 - `GeomPlate_CurveConstraint::Curve2dOnSurf()`
+    pub fn curve2d_on_surf(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_Geom2d_Curve> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKBool::BRepFill_CurveConstraint_inherited_Curve2dOnSurf(
@@ -1580,10 +1583,10 @@ impl CurveConstraint {
         }
     }
 
-    /// Inherited: **Source:** `GeomPlate_CurveConstraint.hxx`:138 - `GeomPlate_CurveConstraint::SetProjectedCurve()`
+    /// Inherited: **Source:** `GeomPlate_CurveConstraint.hxx`:135 - `GeomPlate_CurveConstraint::SetProjectedCurve()`
     pub fn set_projected_curve(
         &mut self,
-        Curve2d: &crate::ffi_types::HandleAdaptor2dCurve2d,
+        Curve2d: &crate::ffi_types::Handle_Adaptor2d_Curve2d,
         TolU: f64,
         TolV: f64,
     ) {
@@ -1597,8 +1600,8 @@ impl CurveConstraint {
         })
     }
 
-    /// Inherited: **Source:** `GeomPlate_CurveConstraint.hxx`:144 - `GeomPlate_CurveConstraint::ProjectedCurve()`
-    pub fn projected_curve(&self) -> crate::OwnedPtr<crate::ffi_types::HandleAdaptor2dCurve2d> {
+    /// Inherited: **Source:** `GeomPlate_CurveConstraint.hxx`:141 - `GeomPlate_CurveConstraint::ProjectedCurve()`
+    pub fn projected_curve(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_Adaptor2d_Curve2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKBool::BRepFill_CurveConstraint_inherited_ProjectedCurve(
@@ -1608,8 +1611,8 @@ impl CurveConstraint {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::BRepFill_CurveConstraint_inherited_IsInstance(
                 self as *const Self,
@@ -1618,8 +1621,8 @@ impl CurveConstraint {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::BRepFill_CurveConstraint_inherited_IsKind(
                 self as *const Self,
@@ -1628,7 +1631,7 @@ impl CurveConstraint {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -1644,7 +1647,7 @@ impl CurveConstraint {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::BRepFill_CurveConstraint_inherited_GetRefCount(
@@ -1653,7 +1656,7 @@ impl CurveConstraint {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::BRepFill_CurveConstraint_inherited_IncrementRefCounter(
@@ -1662,7 +1665,7 @@ impl CurveConstraint {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::BRepFill_CurveConstraint_inherited_DecrementRefCounter(
@@ -1671,7 +1674,7 @@ impl CurveConstraint {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::BRepFill_CurveConstraint_inherited_Delete(self as *const Self)
@@ -1679,36 +1682,38 @@ impl CurveConstraint {
     }
 }
 
-pub use crate::ffi_types::HandleBRepFillCurveConstraint;
+pub use crate::ffi_types::Handle_BRepFill_CurveConstraint;
 
-unsafe impl crate::CppDeletable for HandleBRepFillCurveConstraint {
+unsafe impl crate::CppDeletable for Handle_BRepFill_CurveConstraint {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKBool::HandleBRepFillCurveConstraint_destructor(ptr);
+            crate::ffi_extern_TKBool::Handle_BRepFill_CurveConstraint_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleBRepFillCurveConstraint {
+unsafe impl crate::CppCopyable for Handle_BRepFill_CurveConstraint {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
         unsafe {
-            crate::check_result(crate::ffi_extern_TKBool::HandleBRepFillCurveConstraint_clone(ptr))
+            crate::check_result(crate::ffi_extern_TKBool::Handle_BRepFill_CurveConstraint_clone(
+                ptr,
+            ))
         }
     }
 }
 
-impl HandleBRepFillCurveConstraint {
+impl Handle_BRepFill_CurveConstraint {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
         unsafe {
-            crate::ffi_extern_TKBool::HandleBRepFillCurveConstraint_is_null(self as *const Self)
+            crate::ffi_extern_TKBool::Handle_BRepFill_CurveConstraint_is_null(self as *const Self)
         }
     }
 
     /// Dereference this Handle to access the underlying BRepFill_CurveConstraint
     pub fn get(&self) -> &crate::ffi_types::BRepFill_CurveConstraint {
         unsafe {
-            &*crate::check_result(crate::ffi_extern_TKBool::HandleBRepFillCurveConstraint_get(
+            &*crate::check_result(crate::ffi_extern_TKBool::Handle_BRepFill_CurveConstraint_get(
                 self as *const Self,
             ))
         }
@@ -1718,7 +1723,9 @@ impl HandleBRepFillCurveConstraint {
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::BRepFill_CurveConstraint {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi_extern_TKBool::HandleBRepFillCurveConstraint_get_mut(self as *mut Self),
+                crate::ffi_extern_TKBool::Handle_BRepFill_CurveConstraint_get_mut(
+                    self as *mut Self,
+                ),
             )
         }
     }
@@ -1726,22 +1733,18 @@ impl HandleBRepFillCurveConstraint {
     /// Upcast Handle<BRepFill_CurveConstraint> to Handle<GeomPlate_CurveConstraint>
     pub fn to_handle_curve_constraint(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleGeomPlateCurveConstraint> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_GeomPlate_CurveConstraint> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKBool::HandleBRepFillCurveConstraint_to_HandleGeomPlateCurveConstraint(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKBool::Handle_BRepFill_CurveConstraint_to_Handle_GeomPlate_CurveConstraint(self as *const Self)))
         }
     }
 
     /// Upcast Handle<BRepFill_CurveConstraint> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKBool::HandleBRepFillCurveConstraint_to_HandleStandardTransient(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKBool::Handle_BRepFill_CurveConstraint_to_Handle_Standard_Transient(self as *const Self)))
         }
     }
 }
@@ -1750,7 +1753,7 @@ impl HandleBRepFillCurveConstraint {
 // From BRepFill_Draft.hxx
 // ========================
 
-/// **Source:** `BRepFill_Draft.hxx`:36 - `BRepFill_Draft`
+/// **Source:** `BRepFill_Draft.hxx`:37 - `BRepFill_Draft`
 pub use crate::ffi_types::BRepFill_Draft as Draft;
 
 unsafe impl crate::CppDeletable for Draft {
@@ -1762,7 +1765,7 @@ unsafe impl crate::CppDeletable for Draft {
 }
 
 impl Draft {
-    /// **Source:** `BRepFill_Draft.hxx`:41 - `BRepFill_Draft::BRepFill_Draft()`
+    /// **Source:** `BRepFill_Draft.hxx`:42 - `BRepFill_Draft::BRepFill_Draft()`
     pub fn new_shape_dir_real(
         Shape: &crate::topo_ds::Shape,
         Dir: &crate::gp::Dir,
@@ -1775,7 +1778,7 @@ impl Draft {
         }
     }
 
-    /// **Source:** `BRepFill_Draft.hxx`:45 - `BRepFill_Draft::SetOptions()`
+    /// **Source:** `BRepFill_Draft.hxx`:44 - `BRepFill_Draft::SetOptions()`
     pub fn set_options(
         &mut self,
         Style: crate::b_rep_fill::TransitionStyle,
@@ -1792,24 +1795,24 @@ impl Draft {
         })
     }
 
-    /// **Source:** `BRepFill_Draft.hxx`:49 - `BRepFill_Draft::SetDraft()`
+    /// **Source:** `BRepFill_Draft.hxx`:48 - `BRepFill_Draft::SetDraft()`
     pub fn set_draft(&mut self, IsInternal: bool) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::BRepFill_Draft_set_draft(self as *mut Self, IsInternal)
         })
     }
 
-    /// **Source:** `BRepFill_Draft.hxx`:51 - `BRepFill_Draft::Perform()`
+    /// **Source:** `BRepFill_Draft.hxx`:50 - `BRepFill_Draft::Perform()`
     pub fn perform_real(&mut self, LengthMax: f64) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::BRepFill_Draft_perform_real(self as *mut Self, LengthMax)
         })
     }
 
-    /// **Source:** `BRepFill_Draft.hxx`:53 - `BRepFill_Draft::Perform()`
+    /// **Source:** `BRepFill_Draft.hxx`:52 - `BRepFill_Draft::Perform()`
     pub fn perform_handlegeomsurface_bool(
         &mut self,
-        Surface: &crate::ffi_types::HandleGeomSurface,
+        Surface: &crate::ffi_types::Handle_Geom_Surface,
         KeepInsideSurface: bool,
     ) {
         crate::check_void_result(unsafe {
@@ -1821,7 +1824,7 @@ impl Draft {
         })
     }
 
-    /// **Source:** `BRepFill_Draft.hxx`:56 - `BRepFill_Draft::Perform()`
+    /// **Source:** `BRepFill_Draft.hxx`:55 - `BRepFill_Draft::Perform()`
     pub fn perform_shape_bool(&mut self, StopShape: &crate::topo_ds::Shape, KeepOutSide: bool) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::BRepFill_Draft_perform_shape_bool(
@@ -1832,14 +1835,14 @@ impl Draft {
         })
     }
 
-    /// **Source:** `BRepFill_Draft.hxx`:59 - `BRepFill_Draft::IsDone()`
+    /// **Source:** `BRepFill_Draft.hxx`:57 - `BRepFill_Draft::IsDone()`
     pub fn is_done(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::BRepFill_Draft_is_done(self as *const Self)
         })
     }
 
-    /// **Source:** `BRepFill_Draft.hxx`:64 - `BRepFill_Draft::Shell()`
+    /// **Source:** `BRepFill_Draft.hxx`:62 - `BRepFill_Draft::Shell()`
     /// Returns the draft surface
     /// To have the complete shape
     /// you have to use the Shape() methode.
@@ -1851,8 +1854,8 @@ impl Draft {
         }
     }
 
-    /// **Source:** `BRepFill_Draft.hxx`:68 - `BRepFill_Draft::Generated()`
-    /// Returns the  list   of shapes generated   from the
+    /// **Source:** `BRepFill_Draft.hxx`:66 - `BRepFill_Draft::Generated()`
+    /// Returns the list of shapes generated from the
     /// shape <S>.
     ///
     /// # Safety
@@ -1863,7 +1866,7 @@ impl Draft {
     pub unsafe fn generated(
         &mut self,
         S: &crate::topo_ds::Shape,
-    ) -> &crate::ffi_types::TopTools_ListOfShape {
+    ) -> &crate::ffi_types::NCollection_List_TopoDS_Shape {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKBool::BRepFill_Draft_generated(
                 self as *mut Self,
@@ -1872,7 +1875,7 @@ impl Draft {
         }
     }
 
-    /// **Source:** `BRepFill_Draft.hxx`:70 - `BRepFill_Draft::Shape()`
+    /// **Source:** `BRepFill_Draft.hxx`:68 - `BRepFill_Draft::Shape()`
     pub fn shape(&self) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -1886,8 +1889,8 @@ impl Draft {
 // From BRepFill_DraftLaw.hxx
 // ========================
 
-/// **Source:** `BRepFill_DraftLaw.hxx`:31 - `BRepFill_DraftLaw`
-/// Build Location Law, with a  Wire.
+/// **Source:** `BRepFill_DraftLaw.hxx`:28 - `BRepFill_DraftLaw`
+/// Build Location Law, with a Wire.
 pub use crate::ffi_types::BRepFill_DraftLaw as DraftLaw;
 
 unsafe impl crate::CppDeletable for DraftLaw {
@@ -1899,10 +1902,10 @@ unsafe impl crate::CppDeletable for DraftLaw {
 }
 
 impl DraftLaw {
-    /// **Source:** `BRepFill_DraftLaw.hxx`:35 - `BRepFill_DraftLaw::BRepFill_DraftLaw()`
+    /// **Source:** `BRepFill_DraftLaw.hxx`:32 - `BRepFill_DraftLaw::BRepFill_DraftLaw()`
     pub fn new_wire_handlegeomfilllocationdraft(
         Path: &crate::topo_ds::Wire,
-        Law: &crate::ffi_types::HandleGeomFillLocationDraft,
+        Law: &crate::ffi_types::Handle_GeomFill_LocationDraft,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -1913,7 +1916,7 @@ impl DraftLaw {
         }
     }
 
-    /// **Source:** `BRepFill_DraftLaw.hxx`:39 - `BRepFill_DraftLaw::CleanLaw()`
+    /// **Source:** `BRepFill_DraftLaw.hxx`:36 - `BRepFill_DraftLaw::CleanLaw()`
     /// To clean the little discontinuities.
     pub fn clean_law(&mut self, TolAngular: f64) {
         crate::check_void_result(unsafe {
@@ -1921,8 +1924,8 @@ impl DraftLaw {
         })
     }
 
-    /// **Source:** `BRepFill_DraftLaw.hxx`:41 - `BRepFill_DraftLaw::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `BRepFill_DraftLaw.hxx`:38 - `BRepFill_DraftLaw::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKBool::BRepFill_DraftLaw_dynamic_type(
                 self as *const Self,
@@ -1930,7 +1933,7 @@ impl DraftLaw {
         }
     }
 
-    /// **Source:** `BRepFill_DraftLaw.hxx`:41 - `BRepFill_DraftLaw::get_type_name()`
+    /// **Source:** `BRepFill_DraftLaw.hxx`:38 - `BRepFill_DraftLaw::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -1941,8 +1944,8 @@ impl DraftLaw {
         .into_owned()
     }
 
-    /// **Source:** `BRepFill_DraftLaw.hxx`:41 - `BRepFill_DraftLaw::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    /// **Source:** `BRepFill_DraftLaw.hxx`:38 - `BRepFill_DraftLaw::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKBool::BRepFill_DraftLaw_get_type_descriptor(),
@@ -2019,7 +2022,7 @@ impl DraftLaw {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleBRepFillDraftLaw> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_BRepFill_DraftLaw> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKBool::BRepFill_DraftLaw_to_handle(obj.into_raw()),
@@ -2027,7 +2030,7 @@ impl DraftLaw {
         }
     }
 
-    /// Inherited: **Source:** `BRepFill_LocationLaw.hxx`:47 - `BRepFill_LocationLaw::GetStatus()`
+    /// Inherited: **Source:** `BRepFill_LocationLaw.hxx`:43 - `BRepFill_LocationLaw::GetStatus()`
     pub fn get_status(&self) -> crate::geom_fill::PipeError {
         crate::geom_fill::PipeError::try_from(crate::check_result(unsafe {
             crate::ffi_extern_TKBool::BRepFill_DraftLaw_inherited_GetStatus(self as *const Self)
@@ -2035,7 +2038,7 @@ impl DraftLaw {
         .unwrap()
     }
 
-    /// Inherited: **Source:** `BRepFill_LocationLaw.hxx`:51 - `BRepFill_LocationLaw::TransformInG0Law()`
+    /// Inherited: **Source:** `BRepFill_LocationLaw.hxx`:47 - `BRepFill_LocationLaw::TransformInG0Law()`
     pub fn transform_in_g0_law(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::BRepFill_DraftLaw_inherited_TransformInG0Law(
@@ -2044,7 +2047,7 @@ impl DraftLaw {
         })
     }
 
-    /// Inherited: **Source:** `BRepFill_LocationLaw.hxx`:55 - `BRepFill_LocationLaw::TransformInCompatibleLaw()`
+    /// Inherited: **Source:** `BRepFill_LocationLaw.hxx`:51 - `BRepFill_LocationLaw::TransformInCompatibleLaw()`
     pub fn transform_in_compatible_law(&mut self, AngularTolerance: f64) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::BRepFill_DraftLaw_inherited_TransformInCompatibleLaw(
@@ -2054,22 +2057,22 @@ impl DraftLaw {
         })
     }
 
-    /// Inherited: **Source:** `BRepFill_LocationLaw.hxx`:57 - `BRepFill_LocationLaw::DeleteTransform()`
+    /// Inherited: **Source:** `BRepFill_LocationLaw.hxx`:53 - `BRepFill_LocationLaw::DeleteTransform()`
     pub fn delete_transform(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::BRepFill_DraftLaw_inherited_DeleteTransform(self as *mut Self)
         })
     }
 
-    /// Inherited: **Source:** `BRepFill_LocationLaw.hxx`:59 - `BRepFill_LocationLaw::NbHoles()`
+    /// Inherited: **Source:** `BRepFill_LocationLaw.hxx`:55 - `BRepFill_LocationLaw::NbHoles()`
     pub fn nb_holes(&mut self, Tol: f64) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::BRepFill_DraftLaw_inherited_NbHoles(self as *mut Self, Tol)
         })
     }
 
-    /// Inherited: **Source:** `BRepFill_LocationLaw.hxx`:61 - `BRepFill_LocationLaw::Holes()`
-    pub fn holes(&self, Interval: &mut crate::ffi_types::TColStd_Array1OfInteger) {
+    /// Inherited: **Source:** `BRepFill_LocationLaw.hxx`:57 - `BRepFill_LocationLaw::Holes()`
+    pub fn holes(&self, Interval: &mut crate::ffi_types::NCollection_Array1_int) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::BRepFill_DraftLaw_inherited_Holes(
                 self as *const Self,
@@ -2078,15 +2081,15 @@ impl DraftLaw {
         })
     }
 
-    /// Inherited: **Source:** `BRepFill_LocationLaw.hxx`:64 - `BRepFill_LocationLaw::NbLaw()`
+    /// Inherited: **Source:** `BRepFill_LocationLaw.hxx`:60 - `BRepFill_LocationLaw::NbLaw()`
     pub fn nb_law(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::BRepFill_DraftLaw_inherited_NbLaw(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `BRepFill_LocationLaw.hxx`:68 - `BRepFill_LocationLaw::Law()`
-    pub fn law(&self, Index: i32) -> &crate::ffi_types::HandleGeomFillLocationLaw {
+    /// Inherited: **Source:** `BRepFill_LocationLaw.hxx`:64 - `BRepFill_LocationLaw::Law()`
+    pub fn law(&self, Index: i32) -> &crate::ffi_types::Handle_GeomFill_LocationLaw {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKBool::BRepFill_DraftLaw_inherited_Law(
                 self as *const Self,
@@ -2095,7 +2098,7 @@ impl DraftLaw {
         }
     }
 
-    /// Inherited: **Source:** `BRepFill_LocationLaw.hxx`:71 - `BRepFill_LocationLaw::Wire()`
+    /// Inherited: **Source:** `BRepFill_LocationLaw.hxx`:67 - `BRepFill_LocationLaw::Wire()`
     pub fn wire(&self) -> &crate::topo_ds::Wire {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKBool::BRepFill_DraftLaw_inherited_Wire(
@@ -2104,7 +2107,7 @@ impl DraftLaw {
         }
     }
 
-    /// Inherited: **Source:** `BRepFill_LocationLaw.hxx`:75 - `BRepFill_LocationLaw::Edge()`
+    /// Inherited: **Source:** `BRepFill_LocationLaw.hxx`:71 - `BRepFill_LocationLaw::Edge()`
     pub fn edge(&self, Index: i32) -> &crate::topo_ds::Edge {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKBool::BRepFill_DraftLaw_inherited_Edge(
@@ -2114,7 +2117,7 @@ impl DraftLaw {
         }
     }
 
-    /// Inherited: **Source:** `BRepFill_LocationLaw.hxx`:79 - `BRepFill_LocationLaw::Vertex()`
+    /// Inherited: **Source:** `BRepFill_LocationLaw.hxx`:75 - `BRepFill_LocationLaw::Vertex()`
     pub fn vertex(&self, Index: i32) -> crate::OwnedPtr<crate::topo_ds::Vertex> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -2126,7 +2129,7 @@ impl DraftLaw {
         }
     }
 
-    /// Inherited: **Source:** `BRepFill_LocationLaw.hxx`:89 - `BRepFill_LocationLaw::PerformVertex()`
+    /// Inherited: **Source:** `BRepFill_LocationLaw.hxx`:85 - `BRepFill_LocationLaw::PerformVertex()`
     pub fn perform_vertex(
         &self,
         Index: i32,
@@ -2147,7 +2150,7 @@ impl DraftLaw {
         })
     }
 
-    /// Inherited: **Source:** `BRepFill_LocationLaw.hxx`:96 - `BRepFill_LocationLaw::CurvilinearBounds()`
+    /// Inherited: **Source:** `BRepFill_LocationLaw.hxx`:92 - `BRepFill_LocationLaw::CurvilinearBounds()`
     pub fn curvilinear_bounds(&self, Index: i32, First: &mut f64, Last: &mut f64) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::BRepFill_DraftLaw_inherited_CurvilinearBounds(
@@ -2159,14 +2162,14 @@ impl DraftLaw {
         })
     }
 
-    /// Inherited: **Source:** `BRepFill_LocationLaw.hxx`:100 - `BRepFill_LocationLaw::IsClosed()`
+    /// Inherited: **Source:** `BRepFill_LocationLaw.hxx`:94 - `BRepFill_LocationLaw::IsClosed()`
     pub fn is_closed(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::BRepFill_DraftLaw_inherited_IsClosed(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `BRepFill_LocationLaw.hxx`:107 - `BRepFill_LocationLaw::IsG1()`
+    /// Inherited: **Source:** `BRepFill_LocationLaw.hxx`:101 - `BRepFill_LocationLaw::IsG1()`
     pub fn is_g1(&self, Index: i32, SpatialTolerance: f64, AngularTolerance: f64) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::BRepFill_DraftLaw_inherited_IsG1(
@@ -2178,7 +2181,7 @@ impl DraftLaw {
         })
     }
 
-    /// Inherited: **Source:** `BRepFill_LocationLaw.hxx`:112 - `BRepFill_LocationLaw::D0()`
+    /// Inherited: **Source:** `BRepFill_LocationLaw.hxx`:106 - `BRepFill_LocationLaw::D0()`
     pub fn d0(&mut self, Abscissa: f64, Section: &mut crate::topo_ds::Shape) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::BRepFill_DraftLaw_inherited_D0(
@@ -2189,7 +2192,7 @@ impl DraftLaw {
         })
     }
 
-    /// Inherited: **Source:** `BRepFill_LocationLaw.hxx`:115 - `BRepFill_LocationLaw::Parameter()`
+    /// Inherited: **Source:** `BRepFill_LocationLaw.hxx`:109 - `BRepFill_LocationLaw::Parameter()`
     pub fn parameter(&mut self, Abscissa: f64, Index: &mut i32, Param: &mut f64) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::BRepFill_DraftLaw_inherited_Parameter(
@@ -2201,7 +2204,7 @@ impl DraftLaw {
         })
     }
 
-    /// Inherited: **Source:** `BRepFill_LocationLaw.hxx`:122 - `BRepFill_LocationLaw::Abscissa()`
+    /// Inherited: **Source:** `BRepFill_LocationLaw.hxx`:114 - `BRepFill_LocationLaw::Abscissa()`
     pub fn abscissa(&mut self, Index: i32, Param: f64) -> f64 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::BRepFill_DraftLaw_inherited_Abscissa(
@@ -2212,8 +2215,8 @@ impl DraftLaw {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::BRepFill_DraftLaw_inherited_IsInstance(
                 self as *const Self,
@@ -2222,8 +2225,8 @@ impl DraftLaw {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::BRepFill_DraftLaw_inherited_IsKind(
                 self as *const Self,
@@ -2232,7 +2235,7 @@ impl DraftLaw {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -2246,14 +2249,14 @@ impl DraftLaw {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::BRepFill_DraftLaw_inherited_GetRefCount(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::BRepFill_DraftLaw_inherited_IncrementRefCounter(
@@ -2262,7 +2265,7 @@ impl DraftLaw {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::BRepFill_DraftLaw_inherited_DecrementRefCounter(
@@ -2271,7 +2274,7 @@ impl DraftLaw {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::BRepFill_DraftLaw_inherited_Delete(self as *const Self)
@@ -2279,32 +2282,34 @@ impl DraftLaw {
     }
 }
 
-pub use crate::ffi_types::HandleBRepFillDraftLaw;
+pub use crate::ffi_types::Handle_BRepFill_DraftLaw;
 
-unsafe impl crate::CppDeletable for HandleBRepFillDraftLaw {
+unsafe impl crate::CppDeletable for Handle_BRepFill_DraftLaw {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKBool::HandleBRepFillDraftLaw_destructor(ptr);
+            crate::ffi_extern_TKBool::Handle_BRepFill_DraftLaw_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleBRepFillDraftLaw {
+unsafe impl crate::CppCopyable for Handle_BRepFill_DraftLaw {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        unsafe { crate::check_result(crate::ffi_extern_TKBool::HandleBRepFillDraftLaw_clone(ptr)) }
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKBool::Handle_BRepFill_DraftLaw_clone(ptr))
+        }
     }
 }
 
-impl HandleBRepFillDraftLaw {
+impl Handle_BRepFill_DraftLaw {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
-        unsafe { crate::ffi_extern_TKBool::HandleBRepFillDraftLaw_is_null(self as *const Self) }
+        unsafe { crate::ffi_extern_TKBool::Handle_BRepFill_DraftLaw_is_null(self as *const Self) }
     }
 
     /// Dereference this Handle to access the underlying BRepFill_DraftLaw
     pub fn get(&self) -> &crate::ffi_types::BRepFill_DraftLaw {
         unsafe {
-            &*crate::check_result(crate::ffi_extern_TKBool::HandleBRepFillDraftLaw_get(
+            &*crate::check_result(crate::ffi_extern_TKBool::Handle_BRepFill_DraftLaw_get(
                 self as *const Self,
             ))
         }
@@ -2313,7 +2318,7 @@ impl HandleBRepFillDraftLaw {
     /// Dereference this Handle to mutably access the underlying BRepFill_DraftLaw
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::BRepFill_DraftLaw {
         unsafe {
-            &mut *crate::check_result(crate::ffi_extern_TKBool::HandleBRepFillDraftLaw_get_mut(
+            &mut *crate::check_result(crate::ffi_extern_TKBool::Handle_BRepFill_DraftLaw_get_mut(
                 self as *mut Self,
             ))
         }
@@ -2322,10 +2327,10 @@ impl HandleBRepFillDraftLaw {
     /// Upcast Handle<BRepFill_DraftLaw> to Handle<BRepFill_Edge3DLaw>
     pub fn to_handle_edge3_d_law(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleBRepFillEdge3DLaw> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_BRepFill_Edge3DLaw> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKBool::HandleBRepFillDraftLaw_to_HandleBRepFillEdge3DLaw(
+                crate::ffi_extern_TKBool::Handle_BRepFill_DraftLaw_to_Handle_BRepFill_Edge3DLaw(
                     self as *const Self,
                 ),
             ))
@@ -2335,10 +2340,10 @@ impl HandleBRepFillDraftLaw {
     /// Upcast Handle<BRepFill_DraftLaw> to Handle<BRepFill_LocationLaw>
     pub fn to_handle_location_law(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleBRepFillLocationLaw> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_BRepFill_LocationLaw> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKBool::HandleBRepFillDraftLaw_to_HandleBRepFillLocationLaw(
+                crate::ffi_extern_TKBool::Handle_BRepFill_DraftLaw_to_Handle_BRepFill_LocationLaw(
                     self as *const Self,
                 ),
             ))
@@ -2348,10 +2353,10 @@ impl HandleBRepFillDraftLaw {
     /// Upcast Handle<BRepFill_DraftLaw> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKBool::HandleBRepFillDraftLaw_to_HandleStandardTransient(
+                crate::ffi_extern_TKBool::Handle_BRepFill_DraftLaw_to_Handle_Standard_Transient(
                     self as *const Self,
                 ),
             ))
@@ -2363,8 +2368,8 @@ impl HandleBRepFillDraftLaw {
 // From BRepFill_Edge3DLaw.hxx
 // ========================
 
-/// **Source:** `BRepFill_Edge3DLaw.hxx`:31 - `BRepFill_Edge3DLaw`
-/// Build Location Law, with a  Wire.
+/// **Source:** `BRepFill_Edge3DLaw.hxx`:28 - `BRepFill_Edge3DLaw`
+/// Build Location Law, with a Wire.
 pub use crate::ffi_types::BRepFill_Edge3DLaw as Edge3DLaw;
 
 unsafe impl crate::CppDeletable for Edge3DLaw {
@@ -2376,10 +2381,10 @@ unsafe impl crate::CppDeletable for Edge3DLaw {
 }
 
 impl Edge3DLaw {
-    /// **Source:** `BRepFill_Edge3DLaw.hxx`:35 - `BRepFill_Edge3DLaw::BRepFill_Edge3DLaw()`
+    /// **Source:** `BRepFill_Edge3DLaw.hxx`:32 - `BRepFill_Edge3DLaw::BRepFill_Edge3DLaw()`
     pub fn new_wire_handlegeomfilllocationlaw(
         Path: &crate::topo_ds::Wire,
-        Law: &crate::ffi_types::HandleGeomFillLocationLaw,
+        Law: &crate::ffi_types::Handle_GeomFill_LocationLaw,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -2390,8 +2395,8 @@ impl Edge3DLaw {
         }
     }
 
-    /// **Source:** `BRepFill_Edge3DLaw.hxx`:38 - `BRepFill_Edge3DLaw::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `BRepFill_Edge3DLaw.hxx`:35 - `BRepFill_Edge3DLaw::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKBool::BRepFill_Edge3DLaw_dynamic_type(
                 self as *const Self,
@@ -2399,7 +2404,7 @@ impl Edge3DLaw {
         }
     }
 
-    /// **Source:** `BRepFill_Edge3DLaw.hxx`:38 - `BRepFill_Edge3DLaw::get_type_name()`
+    /// **Source:** `BRepFill_Edge3DLaw.hxx`:35 - `BRepFill_Edge3DLaw::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -2410,8 +2415,8 @@ impl Edge3DLaw {
         .into_owned()
     }
 
-    /// **Source:** `BRepFill_Edge3DLaw.hxx`:38 - `BRepFill_Edge3DLaw::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    /// **Source:** `BRepFill_Edge3DLaw.hxx`:35 - `BRepFill_Edge3DLaw::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKBool::BRepFill_Edge3DLaw_get_type_descriptor(),
@@ -2466,7 +2471,7 @@ impl Edge3DLaw {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleBRepFillEdge3DLaw> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_BRepFill_Edge3DLaw> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKBool::BRepFill_Edge3DLaw_to_handle(obj.into_raw()),
@@ -2474,7 +2479,7 @@ impl Edge3DLaw {
         }
     }
 
-    /// Inherited: **Source:** `BRepFill_LocationLaw.hxx`:47 - `BRepFill_LocationLaw::GetStatus()`
+    /// Inherited: **Source:** `BRepFill_LocationLaw.hxx`:43 - `BRepFill_LocationLaw::GetStatus()`
     pub fn get_status(&self) -> crate::geom_fill::PipeError {
         crate::geom_fill::PipeError::try_from(crate::check_result(unsafe {
             crate::ffi_extern_TKBool::BRepFill_Edge3DLaw_inherited_GetStatus(self as *const Self)
@@ -2482,7 +2487,7 @@ impl Edge3DLaw {
         .unwrap()
     }
 
-    /// Inherited: **Source:** `BRepFill_LocationLaw.hxx`:51 - `BRepFill_LocationLaw::TransformInG0Law()`
+    /// Inherited: **Source:** `BRepFill_LocationLaw.hxx`:47 - `BRepFill_LocationLaw::TransformInG0Law()`
     pub fn transform_in_g0_law(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::BRepFill_Edge3DLaw_inherited_TransformInG0Law(
@@ -2491,7 +2496,7 @@ impl Edge3DLaw {
         })
     }
 
-    /// Inherited: **Source:** `BRepFill_LocationLaw.hxx`:55 - `BRepFill_LocationLaw::TransformInCompatibleLaw()`
+    /// Inherited: **Source:** `BRepFill_LocationLaw.hxx`:51 - `BRepFill_LocationLaw::TransformInCompatibleLaw()`
     pub fn transform_in_compatible_law(&mut self, AngularTolerance: f64) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::BRepFill_Edge3DLaw_inherited_TransformInCompatibleLaw(
@@ -2501,7 +2506,7 @@ impl Edge3DLaw {
         })
     }
 
-    /// Inherited: **Source:** `BRepFill_LocationLaw.hxx`:57 - `BRepFill_LocationLaw::DeleteTransform()`
+    /// Inherited: **Source:** `BRepFill_LocationLaw.hxx`:53 - `BRepFill_LocationLaw::DeleteTransform()`
     pub fn delete_transform(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::BRepFill_Edge3DLaw_inherited_DeleteTransform(
@@ -2510,15 +2515,15 @@ impl Edge3DLaw {
         })
     }
 
-    /// Inherited: **Source:** `BRepFill_LocationLaw.hxx`:59 - `BRepFill_LocationLaw::NbHoles()`
+    /// Inherited: **Source:** `BRepFill_LocationLaw.hxx`:55 - `BRepFill_LocationLaw::NbHoles()`
     pub fn nb_holes(&mut self, Tol: f64) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::BRepFill_Edge3DLaw_inherited_NbHoles(self as *mut Self, Tol)
         })
     }
 
-    /// Inherited: **Source:** `BRepFill_LocationLaw.hxx`:61 - `BRepFill_LocationLaw::Holes()`
-    pub fn holes(&self, Interval: &mut crate::ffi_types::TColStd_Array1OfInteger) {
+    /// Inherited: **Source:** `BRepFill_LocationLaw.hxx`:57 - `BRepFill_LocationLaw::Holes()`
+    pub fn holes(&self, Interval: &mut crate::ffi_types::NCollection_Array1_int) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::BRepFill_Edge3DLaw_inherited_Holes(
                 self as *const Self,
@@ -2527,15 +2532,15 @@ impl Edge3DLaw {
         })
     }
 
-    /// Inherited: **Source:** `BRepFill_LocationLaw.hxx`:64 - `BRepFill_LocationLaw::NbLaw()`
+    /// Inherited: **Source:** `BRepFill_LocationLaw.hxx`:60 - `BRepFill_LocationLaw::NbLaw()`
     pub fn nb_law(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::BRepFill_Edge3DLaw_inherited_NbLaw(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `BRepFill_LocationLaw.hxx`:68 - `BRepFill_LocationLaw::Law()`
-    pub fn law(&self, Index: i32) -> &crate::ffi_types::HandleGeomFillLocationLaw {
+    /// Inherited: **Source:** `BRepFill_LocationLaw.hxx`:64 - `BRepFill_LocationLaw::Law()`
+    pub fn law(&self, Index: i32) -> &crate::ffi_types::Handle_GeomFill_LocationLaw {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKBool::BRepFill_Edge3DLaw_inherited_Law(
                 self as *const Self,
@@ -2544,7 +2549,7 @@ impl Edge3DLaw {
         }
     }
 
-    /// Inherited: **Source:** `BRepFill_LocationLaw.hxx`:71 - `BRepFill_LocationLaw::Wire()`
+    /// Inherited: **Source:** `BRepFill_LocationLaw.hxx`:67 - `BRepFill_LocationLaw::Wire()`
     pub fn wire(&self) -> &crate::topo_ds::Wire {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKBool::BRepFill_Edge3DLaw_inherited_Wire(
@@ -2553,7 +2558,7 @@ impl Edge3DLaw {
         }
     }
 
-    /// Inherited: **Source:** `BRepFill_LocationLaw.hxx`:75 - `BRepFill_LocationLaw::Edge()`
+    /// Inherited: **Source:** `BRepFill_LocationLaw.hxx`:71 - `BRepFill_LocationLaw::Edge()`
     pub fn edge(&self, Index: i32) -> &crate::topo_ds::Edge {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKBool::BRepFill_Edge3DLaw_inherited_Edge(
@@ -2563,7 +2568,7 @@ impl Edge3DLaw {
         }
     }
 
-    /// Inherited: **Source:** `BRepFill_LocationLaw.hxx`:79 - `BRepFill_LocationLaw::Vertex()`
+    /// Inherited: **Source:** `BRepFill_LocationLaw.hxx`:75 - `BRepFill_LocationLaw::Vertex()`
     pub fn vertex(&self, Index: i32) -> crate::OwnedPtr<crate::topo_ds::Vertex> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -2575,7 +2580,7 @@ impl Edge3DLaw {
         }
     }
 
-    /// Inherited: **Source:** `BRepFill_LocationLaw.hxx`:89 - `BRepFill_LocationLaw::PerformVertex()`
+    /// Inherited: **Source:** `BRepFill_LocationLaw.hxx`:85 - `BRepFill_LocationLaw::PerformVertex()`
     pub fn perform_vertex(
         &self,
         Index: i32,
@@ -2596,7 +2601,7 @@ impl Edge3DLaw {
         })
     }
 
-    /// Inherited: **Source:** `BRepFill_LocationLaw.hxx`:96 - `BRepFill_LocationLaw::CurvilinearBounds()`
+    /// Inherited: **Source:** `BRepFill_LocationLaw.hxx`:92 - `BRepFill_LocationLaw::CurvilinearBounds()`
     pub fn curvilinear_bounds(&self, Index: i32, First: &mut f64, Last: &mut f64) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::BRepFill_Edge3DLaw_inherited_CurvilinearBounds(
@@ -2608,14 +2613,14 @@ impl Edge3DLaw {
         })
     }
 
-    /// Inherited: **Source:** `BRepFill_LocationLaw.hxx`:100 - `BRepFill_LocationLaw::IsClosed()`
+    /// Inherited: **Source:** `BRepFill_LocationLaw.hxx`:94 - `BRepFill_LocationLaw::IsClosed()`
     pub fn is_closed(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::BRepFill_Edge3DLaw_inherited_IsClosed(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `BRepFill_LocationLaw.hxx`:107 - `BRepFill_LocationLaw::IsG1()`
+    /// Inherited: **Source:** `BRepFill_LocationLaw.hxx`:101 - `BRepFill_LocationLaw::IsG1()`
     pub fn is_g1(&self, Index: i32, SpatialTolerance: f64, AngularTolerance: f64) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::BRepFill_Edge3DLaw_inherited_IsG1(
@@ -2627,7 +2632,7 @@ impl Edge3DLaw {
         })
     }
 
-    /// Inherited: **Source:** `BRepFill_LocationLaw.hxx`:112 - `BRepFill_LocationLaw::D0()`
+    /// Inherited: **Source:** `BRepFill_LocationLaw.hxx`:106 - `BRepFill_LocationLaw::D0()`
     pub fn d0(&mut self, Abscissa: f64, Section: &mut crate::topo_ds::Shape) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::BRepFill_Edge3DLaw_inherited_D0(
@@ -2638,7 +2643,7 @@ impl Edge3DLaw {
         })
     }
 
-    /// Inherited: **Source:** `BRepFill_LocationLaw.hxx`:115 - `BRepFill_LocationLaw::Parameter()`
+    /// Inherited: **Source:** `BRepFill_LocationLaw.hxx`:109 - `BRepFill_LocationLaw::Parameter()`
     pub fn parameter(&mut self, Abscissa: f64, Index: &mut i32, Param: &mut f64) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::BRepFill_Edge3DLaw_inherited_Parameter(
@@ -2650,7 +2655,7 @@ impl Edge3DLaw {
         })
     }
 
-    /// Inherited: **Source:** `BRepFill_LocationLaw.hxx`:122 - `BRepFill_LocationLaw::Abscissa()`
+    /// Inherited: **Source:** `BRepFill_LocationLaw.hxx`:114 - `BRepFill_LocationLaw::Abscissa()`
     pub fn abscissa(&mut self, Index: i32, Param: f64) -> f64 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::BRepFill_Edge3DLaw_inherited_Abscissa(
@@ -2661,8 +2666,8 @@ impl Edge3DLaw {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::BRepFill_Edge3DLaw_inherited_IsInstance(
                 self as *const Self,
@@ -2671,8 +2676,8 @@ impl Edge3DLaw {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::BRepFill_Edge3DLaw_inherited_IsKind(
                 self as *const Self,
@@ -2681,7 +2686,7 @@ impl Edge3DLaw {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -2695,14 +2700,14 @@ impl Edge3DLaw {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::BRepFill_Edge3DLaw_inherited_GetRefCount(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::BRepFill_Edge3DLaw_inherited_IncrementRefCounter(
@@ -2711,7 +2716,7 @@ impl Edge3DLaw {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::BRepFill_Edge3DLaw_inherited_DecrementRefCounter(
@@ -2720,7 +2725,7 @@ impl Edge3DLaw {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::BRepFill_Edge3DLaw_inherited_Delete(self as *const Self)
@@ -2728,32 +2733,34 @@ impl Edge3DLaw {
     }
 }
 
-pub use crate::ffi_types::HandleBRepFillEdge3DLaw;
+pub use crate::ffi_types::Handle_BRepFill_Edge3DLaw;
 
-unsafe impl crate::CppDeletable for HandleBRepFillEdge3DLaw {
+unsafe impl crate::CppDeletable for Handle_BRepFill_Edge3DLaw {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKBool::HandleBRepFillEdge3DLaw_destructor(ptr);
+            crate::ffi_extern_TKBool::Handle_BRepFill_Edge3DLaw_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleBRepFillEdge3DLaw {
+unsafe impl crate::CppCopyable for Handle_BRepFill_Edge3DLaw {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        unsafe { crate::check_result(crate::ffi_extern_TKBool::HandleBRepFillEdge3DLaw_clone(ptr)) }
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKBool::Handle_BRepFill_Edge3DLaw_clone(ptr))
+        }
     }
 }
 
-impl HandleBRepFillEdge3DLaw {
+impl Handle_BRepFill_Edge3DLaw {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
-        unsafe { crate::ffi_extern_TKBool::HandleBRepFillEdge3DLaw_is_null(self as *const Self) }
+        unsafe { crate::ffi_extern_TKBool::Handle_BRepFill_Edge3DLaw_is_null(self as *const Self) }
     }
 
     /// Dereference this Handle to access the underlying BRepFill_Edge3DLaw
     pub fn get(&self) -> &crate::ffi_types::BRepFill_Edge3DLaw {
         unsafe {
-            &*crate::check_result(crate::ffi_extern_TKBool::HandleBRepFillEdge3DLaw_get(
+            &*crate::check_result(crate::ffi_extern_TKBool::Handle_BRepFill_Edge3DLaw_get(
                 self as *const Self,
             ))
         }
@@ -2762,7 +2769,7 @@ impl HandleBRepFillEdge3DLaw {
     /// Dereference this Handle to mutably access the underlying BRepFill_Edge3DLaw
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::BRepFill_Edge3DLaw {
         unsafe {
-            &mut *crate::check_result(crate::ffi_extern_TKBool::HandleBRepFillEdge3DLaw_get_mut(
+            &mut *crate::check_result(crate::ffi_extern_TKBool::Handle_BRepFill_Edge3DLaw_get_mut(
                 self as *mut Self,
             ))
         }
@@ -2771,10 +2778,10 @@ impl HandleBRepFillEdge3DLaw {
     /// Upcast Handle<BRepFill_Edge3DLaw> to Handle<BRepFill_LocationLaw>
     pub fn to_handle_location_law(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleBRepFillLocationLaw> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_BRepFill_LocationLaw> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKBool::HandleBRepFillEdge3DLaw_to_HandleBRepFillLocationLaw(
+                crate::ffi_extern_TKBool::Handle_BRepFill_Edge3DLaw_to_Handle_BRepFill_LocationLaw(
                     self as *const Self,
                 ),
             ))
@@ -2784,10 +2791,10 @@ impl HandleBRepFillEdge3DLaw {
     /// Upcast Handle<BRepFill_Edge3DLaw> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKBool::HandleBRepFillEdge3DLaw_to_HandleStandardTransient(
+                crate::ffi_extern_TKBool::Handle_BRepFill_Edge3DLaw_to_Handle_Standard_Transient(
                     self as *const Self,
                 ),
             ))
@@ -2799,9 +2806,9 @@ impl HandleBRepFillEdge3DLaw {
     /// Returns `None` if the handle does not point to a `BRepFill_DraftLaw` (or subclass).
     pub fn downcast_to_draft_law(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleBRepFillDraftLaw>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_BRepFill_DraftLaw>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKBool::HandleBRepFillEdge3DLaw_downcast_to_HandleBRepFillDraftLaw(
+            crate::ffi_extern_TKBool::Handle_BRepFill_Edge3DLaw_downcast_to_Handle_BRepFill_DraftLaw(
                 self as *const Self,
             )
         });
@@ -2860,8 +2867,8 @@ impl EdgeFaceAndOrder {
 // From BRepFill_EdgeOnSurfLaw.hxx
 // ========================
 
-/// **Source:** `BRepFill_EdgeOnSurfLaw.hxx`:30 - `BRepFill_EdgeOnSurfLaw`
-/// Build Location Law, with a Wire and a  Surface.
+/// **Source:** `BRepFill_EdgeOnSurfLaw.hxx`:27 - `BRepFill_EdgeOnSurfLaw`
+/// Build Location Law, with a Wire and a Surface.
 pub use crate::ffi_types::BRepFill_EdgeOnSurfLaw as EdgeOnSurfLaw;
 
 unsafe impl crate::CppDeletable for EdgeOnSurfLaw {
@@ -2873,7 +2880,7 @@ unsafe impl crate::CppDeletable for EdgeOnSurfLaw {
 }
 
 impl EdgeOnSurfLaw {
-    /// **Source:** `BRepFill_EdgeOnSurfLaw.hxx`:34 - `BRepFill_EdgeOnSurfLaw::BRepFill_EdgeOnSurfLaw()`
+    /// **Source:** `BRepFill_EdgeOnSurfLaw.hxx`:31 - `BRepFill_EdgeOnSurfLaw::BRepFill_EdgeOnSurfLaw()`
     pub fn new_wire_shape(
         Path: &crate::topo_ds::Wire,
         Surf: &crate::topo_ds::Shape,
@@ -2885,9 +2892,9 @@ impl EdgeOnSurfLaw {
         }
     }
 
-    /// **Source:** `BRepFill_EdgeOnSurfLaw.hxx`:39 - `BRepFill_EdgeOnSurfLaw::HasResult()`
-    /// returns <False> if one  Edge of <Path> do not have
-    /// representation on  <Surf>.   In this  case  it is
+    /// **Source:** `BRepFill_EdgeOnSurfLaw.hxx`:36 - `BRepFill_EdgeOnSurfLaw::HasResult()`
+    /// returns <False> if one Edge of <Path> do not have
+    /// representation on <Surf>. In this case it is
     /// impossible to use this object.
     pub fn has_result(&self) -> bool {
         crate::check_result(unsafe {
@@ -2895,8 +2902,8 @@ impl EdgeOnSurfLaw {
         })
     }
 
-    /// **Source:** `BRepFill_EdgeOnSurfLaw.hxx`:41 - `BRepFill_EdgeOnSurfLaw::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `BRepFill_EdgeOnSurfLaw.hxx`:38 - `BRepFill_EdgeOnSurfLaw::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKBool::BRepFill_EdgeOnSurfLaw_dynamic_type(
                 self as *const Self,
@@ -2904,7 +2911,7 @@ impl EdgeOnSurfLaw {
         }
     }
 
-    /// **Source:** `BRepFill_EdgeOnSurfLaw.hxx`:41 - `BRepFill_EdgeOnSurfLaw::get_type_name()`
+    /// **Source:** `BRepFill_EdgeOnSurfLaw.hxx`:38 - `BRepFill_EdgeOnSurfLaw::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -2915,8 +2922,8 @@ impl EdgeOnSurfLaw {
         .into_owned()
     }
 
-    /// **Source:** `BRepFill_EdgeOnSurfLaw.hxx`:41 - `BRepFill_EdgeOnSurfLaw::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    /// **Source:** `BRepFill_EdgeOnSurfLaw.hxx`:38 - `BRepFill_EdgeOnSurfLaw::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKBool::BRepFill_EdgeOnSurfLaw_get_type_descriptor(),
@@ -2971,7 +2978,7 @@ impl EdgeOnSurfLaw {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleBRepFillEdgeOnSurfLaw> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_BRepFill_EdgeOnSurfLaw> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKBool::BRepFill_EdgeOnSurfLaw_to_handle(obj.into_raw()),
@@ -2979,7 +2986,7 @@ impl EdgeOnSurfLaw {
         }
     }
 
-    /// Inherited: **Source:** `BRepFill_LocationLaw.hxx`:47 - `BRepFill_LocationLaw::GetStatus()`
+    /// Inherited: **Source:** `BRepFill_LocationLaw.hxx`:43 - `BRepFill_LocationLaw::GetStatus()`
     pub fn get_status(&self) -> crate::geom_fill::PipeError {
         crate::geom_fill::PipeError::try_from(crate::check_result(unsafe {
             crate::ffi_extern_TKBool::BRepFill_EdgeOnSurfLaw_inherited_GetStatus(
@@ -2989,7 +2996,7 @@ impl EdgeOnSurfLaw {
         .unwrap()
     }
 
-    /// Inherited: **Source:** `BRepFill_LocationLaw.hxx`:51 - `BRepFill_LocationLaw::TransformInG0Law()`
+    /// Inherited: **Source:** `BRepFill_LocationLaw.hxx`:47 - `BRepFill_LocationLaw::TransformInG0Law()`
     pub fn transform_in_g0_law(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::BRepFill_EdgeOnSurfLaw_inherited_TransformInG0Law(
@@ -2998,7 +3005,7 @@ impl EdgeOnSurfLaw {
         })
     }
 
-    /// Inherited: **Source:** `BRepFill_LocationLaw.hxx`:55 - `BRepFill_LocationLaw::TransformInCompatibleLaw()`
+    /// Inherited: **Source:** `BRepFill_LocationLaw.hxx`:51 - `BRepFill_LocationLaw::TransformInCompatibleLaw()`
     pub fn transform_in_compatible_law(&mut self, AngularTolerance: f64) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::BRepFill_EdgeOnSurfLaw_inherited_TransformInCompatibleLaw(
@@ -3008,7 +3015,7 @@ impl EdgeOnSurfLaw {
         })
     }
 
-    /// Inherited: **Source:** `BRepFill_LocationLaw.hxx`:57 - `BRepFill_LocationLaw::DeleteTransform()`
+    /// Inherited: **Source:** `BRepFill_LocationLaw.hxx`:53 - `BRepFill_LocationLaw::DeleteTransform()`
     pub fn delete_transform(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::BRepFill_EdgeOnSurfLaw_inherited_DeleteTransform(
@@ -3017,7 +3024,7 @@ impl EdgeOnSurfLaw {
         })
     }
 
-    /// Inherited: **Source:** `BRepFill_LocationLaw.hxx`:59 - `BRepFill_LocationLaw::NbHoles()`
+    /// Inherited: **Source:** `BRepFill_LocationLaw.hxx`:55 - `BRepFill_LocationLaw::NbHoles()`
     pub fn nb_holes(&mut self, Tol: f64) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::BRepFill_EdgeOnSurfLaw_inherited_NbHoles(
@@ -3027,8 +3034,8 @@ impl EdgeOnSurfLaw {
         })
     }
 
-    /// Inherited: **Source:** `BRepFill_LocationLaw.hxx`:61 - `BRepFill_LocationLaw::Holes()`
-    pub fn holes(&self, Interval: &mut crate::ffi_types::TColStd_Array1OfInteger) {
+    /// Inherited: **Source:** `BRepFill_LocationLaw.hxx`:57 - `BRepFill_LocationLaw::Holes()`
+    pub fn holes(&self, Interval: &mut crate::ffi_types::NCollection_Array1_int) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::BRepFill_EdgeOnSurfLaw_inherited_Holes(
                 self as *const Self,
@@ -3037,15 +3044,15 @@ impl EdgeOnSurfLaw {
         })
     }
 
-    /// Inherited: **Source:** `BRepFill_LocationLaw.hxx`:64 - `BRepFill_LocationLaw::NbLaw()`
+    /// Inherited: **Source:** `BRepFill_LocationLaw.hxx`:60 - `BRepFill_LocationLaw::NbLaw()`
     pub fn nb_law(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::BRepFill_EdgeOnSurfLaw_inherited_NbLaw(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `BRepFill_LocationLaw.hxx`:68 - `BRepFill_LocationLaw::Law()`
-    pub fn law(&self, Index: i32) -> &crate::ffi_types::HandleGeomFillLocationLaw {
+    /// Inherited: **Source:** `BRepFill_LocationLaw.hxx`:64 - `BRepFill_LocationLaw::Law()`
+    pub fn law(&self, Index: i32) -> &crate::ffi_types::Handle_GeomFill_LocationLaw {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKBool::BRepFill_EdgeOnSurfLaw_inherited_Law(
                 self as *const Self,
@@ -3054,7 +3061,7 @@ impl EdgeOnSurfLaw {
         }
     }
 
-    /// Inherited: **Source:** `BRepFill_LocationLaw.hxx`:71 - `BRepFill_LocationLaw::Wire()`
+    /// Inherited: **Source:** `BRepFill_LocationLaw.hxx`:67 - `BRepFill_LocationLaw::Wire()`
     pub fn wire(&self) -> &crate::topo_ds::Wire {
         unsafe {
             &*(crate::check_result(
@@ -3065,7 +3072,7 @@ impl EdgeOnSurfLaw {
         }
     }
 
-    /// Inherited: **Source:** `BRepFill_LocationLaw.hxx`:75 - `BRepFill_LocationLaw::Edge()`
+    /// Inherited: **Source:** `BRepFill_LocationLaw.hxx`:71 - `BRepFill_LocationLaw::Edge()`
     pub fn edge(&self, Index: i32) -> &crate::topo_ds::Edge {
         unsafe {
             &*(crate::check_result(
@@ -3077,7 +3084,7 @@ impl EdgeOnSurfLaw {
         }
     }
 
-    /// Inherited: **Source:** `BRepFill_LocationLaw.hxx`:79 - `BRepFill_LocationLaw::Vertex()`
+    /// Inherited: **Source:** `BRepFill_LocationLaw.hxx`:75 - `BRepFill_LocationLaw::Vertex()`
     pub fn vertex(&self, Index: i32) -> crate::OwnedPtr<crate::topo_ds::Vertex> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -3089,7 +3096,7 @@ impl EdgeOnSurfLaw {
         }
     }
 
-    /// Inherited: **Source:** `BRepFill_LocationLaw.hxx`:89 - `BRepFill_LocationLaw::PerformVertex()`
+    /// Inherited: **Source:** `BRepFill_LocationLaw.hxx`:85 - `BRepFill_LocationLaw::PerformVertex()`
     pub fn perform_vertex(
         &self,
         Index: i32,
@@ -3110,7 +3117,7 @@ impl EdgeOnSurfLaw {
         })
     }
 
-    /// Inherited: **Source:** `BRepFill_LocationLaw.hxx`:96 - `BRepFill_LocationLaw::CurvilinearBounds()`
+    /// Inherited: **Source:** `BRepFill_LocationLaw.hxx`:92 - `BRepFill_LocationLaw::CurvilinearBounds()`
     pub fn curvilinear_bounds(&self, Index: i32, First: &mut f64, Last: &mut f64) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::BRepFill_EdgeOnSurfLaw_inherited_CurvilinearBounds(
@@ -3122,14 +3129,14 @@ impl EdgeOnSurfLaw {
         })
     }
 
-    /// Inherited: **Source:** `BRepFill_LocationLaw.hxx`:100 - `BRepFill_LocationLaw::IsClosed()`
+    /// Inherited: **Source:** `BRepFill_LocationLaw.hxx`:94 - `BRepFill_LocationLaw::IsClosed()`
     pub fn is_closed(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::BRepFill_EdgeOnSurfLaw_inherited_IsClosed(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `BRepFill_LocationLaw.hxx`:107 - `BRepFill_LocationLaw::IsG1()`
+    /// Inherited: **Source:** `BRepFill_LocationLaw.hxx`:101 - `BRepFill_LocationLaw::IsG1()`
     pub fn is_g1(&self, Index: i32, SpatialTolerance: f64, AngularTolerance: f64) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::BRepFill_EdgeOnSurfLaw_inherited_IsG1(
@@ -3141,7 +3148,7 @@ impl EdgeOnSurfLaw {
         })
     }
 
-    /// Inherited: **Source:** `BRepFill_LocationLaw.hxx`:112 - `BRepFill_LocationLaw::D0()`
+    /// Inherited: **Source:** `BRepFill_LocationLaw.hxx`:106 - `BRepFill_LocationLaw::D0()`
     pub fn d0(&mut self, Abscissa: f64, Section: &mut crate::topo_ds::Shape) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::BRepFill_EdgeOnSurfLaw_inherited_D0(
@@ -3152,7 +3159,7 @@ impl EdgeOnSurfLaw {
         })
     }
 
-    /// Inherited: **Source:** `BRepFill_LocationLaw.hxx`:115 - `BRepFill_LocationLaw::Parameter()`
+    /// Inherited: **Source:** `BRepFill_LocationLaw.hxx`:109 - `BRepFill_LocationLaw::Parameter()`
     pub fn parameter(&mut self, Abscissa: f64, Index: &mut i32, Param: &mut f64) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::BRepFill_EdgeOnSurfLaw_inherited_Parameter(
@@ -3164,7 +3171,7 @@ impl EdgeOnSurfLaw {
         })
     }
 
-    /// Inherited: **Source:** `BRepFill_LocationLaw.hxx`:122 - `BRepFill_LocationLaw::Abscissa()`
+    /// Inherited: **Source:** `BRepFill_LocationLaw.hxx`:114 - `BRepFill_LocationLaw::Abscissa()`
     pub fn abscissa(&mut self, Index: i32, Param: f64) -> f64 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::BRepFill_EdgeOnSurfLaw_inherited_Abscissa(
@@ -3175,8 +3182,8 @@ impl EdgeOnSurfLaw {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::BRepFill_EdgeOnSurfLaw_inherited_IsInstance(
                 self as *const Self,
@@ -3185,8 +3192,8 @@ impl EdgeOnSurfLaw {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::BRepFill_EdgeOnSurfLaw_inherited_IsKind(
                 self as *const Self,
@@ -3195,7 +3202,7 @@ impl EdgeOnSurfLaw {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -3209,7 +3216,7 @@ impl EdgeOnSurfLaw {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::BRepFill_EdgeOnSurfLaw_inherited_GetRefCount(
@@ -3218,7 +3225,7 @@ impl EdgeOnSurfLaw {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::BRepFill_EdgeOnSurfLaw_inherited_IncrementRefCounter(
@@ -3227,7 +3234,7 @@ impl EdgeOnSurfLaw {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::BRepFill_EdgeOnSurfLaw_inherited_DecrementRefCounter(
@@ -3236,7 +3243,7 @@ impl EdgeOnSurfLaw {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::BRepFill_EdgeOnSurfLaw_inherited_Delete(self as *const Self)
@@ -3244,36 +3251,36 @@ impl EdgeOnSurfLaw {
     }
 }
 
-pub use crate::ffi_types::HandleBRepFillEdgeOnSurfLaw;
+pub use crate::ffi_types::Handle_BRepFill_EdgeOnSurfLaw;
 
-unsafe impl crate::CppDeletable for HandleBRepFillEdgeOnSurfLaw {
+unsafe impl crate::CppDeletable for Handle_BRepFill_EdgeOnSurfLaw {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKBool::HandleBRepFillEdgeOnSurfLaw_destructor(ptr);
+            crate::ffi_extern_TKBool::Handle_BRepFill_EdgeOnSurfLaw_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleBRepFillEdgeOnSurfLaw {
+unsafe impl crate::CppCopyable for Handle_BRepFill_EdgeOnSurfLaw {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
         unsafe {
-            crate::check_result(crate::ffi_extern_TKBool::HandleBRepFillEdgeOnSurfLaw_clone(ptr))
+            crate::check_result(crate::ffi_extern_TKBool::Handle_BRepFill_EdgeOnSurfLaw_clone(ptr))
         }
     }
 }
 
-impl HandleBRepFillEdgeOnSurfLaw {
+impl Handle_BRepFill_EdgeOnSurfLaw {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
         unsafe {
-            crate::ffi_extern_TKBool::HandleBRepFillEdgeOnSurfLaw_is_null(self as *const Self)
+            crate::ffi_extern_TKBool::Handle_BRepFill_EdgeOnSurfLaw_is_null(self as *const Self)
         }
     }
 
     /// Dereference this Handle to access the underlying BRepFill_EdgeOnSurfLaw
     pub fn get(&self) -> &crate::ffi_types::BRepFill_EdgeOnSurfLaw {
         unsafe {
-            &*crate::check_result(crate::ffi_extern_TKBool::HandleBRepFillEdgeOnSurfLaw_get(
+            &*crate::check_result(crate::ffi_extern_TKBool::Handle_BRepFill_EdgeOnSurfLaw_get(
                 self as *const Self,
             ))
         }
@@ -3283,7 +3290,7 @@ impl HandleBRepFillEdgeOnSurfLaw {
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::BRepFill_EdgeOnSurfLaw {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi_extern_TKBool::HandleBRepFillEdgeOnSurfLaw_get_mut(self as *mut Self),
+                crate::ffi_extern_TKBool::Handle_BRepFill_EdgeOnSurfLaw_get_mut(self as *mut Self),
             )
         }
     }
@@ -3291,26 +3298,18 @@ impl HandleBRepFillEdgeOnSurfLaw {
     /// Upcast Handle<BRepFill_EdgeOnSurfLaw> to Handle<BRepFill_LocationLaw>
     pub fn to_handle_location_law(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleBRepFillLocationLaw> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_BRepFill_LocationLaw> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKBool::HandleBRepFillEdgeOnSurfLaw_to_HandleBRepFillLocationLaw(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKBool::Handle_BRepFill_EdgeOnSurfLaw_to_Handle_BRepFill_LocationLaw(self as *const Self)))
         }
     }
 
     /// Upcast Handle<BRepFill_EdgeOnSurfLaw> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKBool::HandleBRepFillEdgeOnSurfLaw_to_HandleStandardTransient(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKBool::Handle_BRepFill_EdgeOnSurfLaw_to_Handle_Standard_Transient(self as *const Self)))
         }
     }
 }
@@ -3321,7 +3320,7 @@ impl HandleBRepFillEdgeOnSurfLaw {
 
 /// **Source:** `BRepFill_Evolved.hxx`:40 - `BRepFill_Evolved`
 /// Constructs an evolved volume from a spine (wire or face)
-/// and  a profile ( wire).
+/// and a profile ( wire).
 pub use crate::ffi_types::BRepFill_Evolved as Evolved;
 
 unsafe impl crate::CppDeletable for Evolved {
@@ -3344,8 +3343,8 @@ impl Evolved {
 
     /// **Source:** `BRepFill_Evolved.hxx`:53 - `BRepFill_Evolved::BRepFill_Evolved()`
     /// Creates an evolved shape by sweeping the <Profile>
-    /// along the  <Spine>.  <AxeProf> is  used to set the
-    /// position of <Profile> along  <Spine> as  follows:
+    /// along the <Spine>. <AxeProf> is used to set the
+    /// position of <Profile> along <Spine> as follows:
     /// <AxeProf> slides on the profile with direction
     /// colinear to the normal to <Spine>, and its
     /// <XDirection> mixed with the tangent to <Spine>.
@@ -3370,7 +3369,7 @@ impl Evolved {
     }
 
     /// **Source:** `BRepFill_Evolved.hxx`:61 - `BRepFill_Evolved::BRepFill_Evolved()`
-    /// Creates an  evolved shape  by sweeping the <Profile>
+    /// Creates an evolved shape by sweeping the <Profile>
     /// along the <Spine>
     pub fn new_face_wire_ax3_jointype_bool(
         Spine: &crate::topo_ds::Face,
@@ -3394,8 +3393,8 @@ impl Evolved {
 
     /// **Source:** `BRepFill_Evolved.hxx`:53 - `BRepFill_Evolved::BRepFill_Evolved()`
     /// Creates an evolved shape by sweeping the <Profile>
-    /// along the  <Spine>.  <AxeProf> is  used to set the
-    /// position of <Profile> along  <Spine> as  follows:
+    /// along the <Spine>. <AxeProf> is used to set the
+    /// position of <Profile> along <Spine> as follows:
     /// <AxeProf> slides on the profile with direction
     /// colinear to the normal to <Spine>, and its
     /// <XDirection> mixed with the tangent to <Spine>.
@@ -3409,7 +3408,7 @@ impl Evolved {
     }
 
     /// **Source:** `BRepFill_Evolved.hxx`:61 - `BRepFill_Evolved::BRepFill_Evolved()`
-    /// Creates an  evolved shape  by sweeping the <Profile>
+    /// Creates an evolved shape by sweeping the <Profile>
     /// along the <Spine>
     pub fn new_face_wire_ax3_jointype(
         Spine: &crate::topo_ds::Face,
@@ -3421,7 +3420,7 @@ impl Evolved {
     }
 
     /// **Source:** `BRepFill_Evolved.hxx`:69 - `BRepFill_Evolved::Perform()`
-    /// Performs an  evolved shape  by sweeping the <Profile>
+    /// Performs an evolved shape by sweeping the <Profile>
     /// along the <Spine>
     pub fn perform_wire2_ax3_jointype_bool(
         &mut self,
@@ -3444,7 +3443,7 @@ impl Evolved {
     }
 
     /// **Source:** `BRepFill_Evolved.hxx`:77 - `BRepFill_Evolved::Perform()`
-    /// Performs an  evolved shape  by sweeping the <Profile>
+    /// Performs an evolved shape by sweeping the <Profile>
     /// along the <Spine>
     pub fn perform_face_wire_ax3_jointype_bool(
         &mut self,
@@ -3484,8 +3483,8 @@ impl Evolved {
     }
 
     /// **Source:** `BRepFill_Evolved.hxx`:91 - `BRepFill_Evolved::GeneratedShapes()`
-    /// Returns   the  shapes  created  from   a  subshape
-    /// <SpineShape>  of     the  spine   and   a subshape
+    /// Returns the shapes created from a subshape
+    /// <SpineShape> of the spine and a subshape
     /// <ProfShape> on the profile.
     ///
     /// # Safety
@@ -3497,7 +3496,7 @@ impl Evolved {
         &self,
         SpineShape: &crate::topo_ds::Shape,
         ProfShape: &crate::topo_ds::Shape,
-    ) -> &crate::ffi_types::TopTools_ListOfShape {
+    ) -> &crate::ffi_types::NCollection_List_TopoDS_Shape {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKBool::BRepFill_Evolved_generated_shapes(
                 self as *const Self,
@@ -3507,7 +3506,7 @@ impl Evolved {
         }
     }
 
-    /// **Source:** `BRepFill_Evolved.hxx`:94 - `BRepFill_Evolved::JoinType()`
+    /// **Source:** `BRepFill_Evolved.hxx`:95 - `BRepFill_Evolved::JoinType()`
     pub fn join_type(&self) -> crate::geom_abs::JoinType {
         crate::geom_abs::JoinType::try_from(crate::check_result(unsafe {
             crate::ffi_extern_TKBool::BRepFill_Evolved_join_type(self as *const Self)
@@ -3515,7 +3514,7 @@ impl Evolved {
         .unwrap()
     }
 
-    /// **Source:** `BRepFill_Evolved.hxx`:97 - `BRepFill_Evolved::Top()`
+    /// **Source:** `BRepFill_Evolved.hxx`:98 - `BRepFill_Evolved::Top()`
     /// Return the face Top if <Solid> is True in the constructor.
     pub fn top(&self) -> &crate::topo_ds::Shape {
         unsafe {
@@ -3525,8 +3524,8 @@ impl Evolved {
         }
     }
 
-    /// **Source:** `BRepFill_Evolved.hxx`:100 - `BRepFill_Evolved::Bottom()`
-    /// Return the face Bottom  if <Solid> is True in the constructor.
+    /// **Source:** `BRepFill_Evolved.hxx`:101 - `BRepFill_Evolved::Bottom()`
+    /// Return the face Bottom if <Solid> is True in the constructor.
     pub fn bottom(&self) -> &crate::topo_ds::Shape {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKBool::BRepFill_Evolved_bottom(
@@ -3582,7 +3581,7 @@ impl FaceAndOrder {
 // From BRepFill_Filling.hxx
 // ========================
 
-/// **Source:** `BRepFill_Filling.hxx`:65 - `BRepFill_Filling`
+/// **Source:** `BRepFill_Filling.hxx`:67 - `BRepFill_Filling`
 /// N-Side Filling
 /// This algorithm avoids to build a face from:
 /// * a set of edges defining the bounds of the face and some
@@ -3624,7 +3623,7 @@ unsafe impl crate::CppDeletable for Filling {
 }
 
 impl Filling {
-    /// **Source:** `BRepFill_Filling.hxx`:71 - `BRepFill_Filling::BRepFill_Filling()`
+    /// **Source:** `BRepFill_Filling.hxx`:73 - `BRepFill_Filling::BRepFill_Filling()`
     /// Constructor
     pub fn new_int3_bool_real4_int2(
         Degree: i32,
@@ -3656,7 +3655,7 @@ impl Filling {
         }
     }
 
-    /// **Source:** `BRepFill_Filling.hxx`:71 - `BRepFill_Filling::BRepFill_Filling()`
+    /// **Source:** `BRepFill_Filling.hxx`:73 - `BRepFill_Filling::BRepFill_Filling()`
     /// Constructor
     pub fn new_int3_bool_real4_int(
         Degree: i32,
@@ -3683,7 +3682,7 @@ impl Filling {
         )
     }
 
-    /// **Source:** `BRepFill_Filling.hxx`:71 - `BRepFill_Filling::BRepFill_Filling()`
+    /// **Source:** `BRepFill_Filling.hxx`:73 - `BRepFill_Filling::BRepFill_Filling()`
     /// Constructor
     pub fn new_int3_bool_real4(
         Degree: i32,
@@ -3709,7 +3708,7 @@ impl Filling {
         )
     }
 
-    /// **Source:** `BRepFill_Filling.hxx`:71 - `BRepFill_Filling::BRepFill_Filling()`
+    /// **Source:** `BRepFill_Filling.hxx`:73 - `BRepFill_Filling::BRepFill_Filling()`
     /// Constructor
     pub fn new_int3_bool_real3(
         Degree: i32,
@@ -3734,7 +3733,7 @@ impl Filling {
         )
     }
 
-    /// **Source:** `BRepFill_Filling.hxx`:71 - `BRepFill_Filling::BRepFill_Filling()`
+    /// **Source:** `BRepFill_Filling.hxx`:73 - `BRepFill_Filling::BRepFill_Filling()`
     /// Constructor
     pub fn new_int3_bool_real2(
         Degree: i32,
@@ -3758,7 +3757,7 @@ impl Filling {
         )
     }
 
-    /// **Source:** `BRepFill_Filling.hxx`:71 - `BRepFill_Filling::BRepFill_Filling()`
+    /// **Source:** `BRepFill_Filling.hxx`:73 - `BRepFill_Filling::BRepFill_Filling()`
     /// Constructor
     pub fn new_int3_bool_real(
         Degree: i32,
@@ -3781,7 +3780,7 @@ impl Filling {
         )
     }
 
-    /// **Source:** `BRepFill_Filling.hxx`:71 - `BRepFill_Filling::BRepFill_Filling()`
+    /// **Source:** `BRepFill_Filling.hxx`:73 - `BRepFill_Filling::BRepFill_Filling()`
     /// Constructor
     pub fn new_int3_bool(
         Degree: i32,
@@ -3803,7 +3802,7 @@ impl Filling {
         )
     }
 
-    /// **Source:** `BRepFill_Filling.hxx`:71 - `BRepFill_Filling::BRepFill_Filling()`
+    /// **Source:** `BRepFill_Filling.hxx`:73 - `BRepFill_Filling::BRepFill_Filling()`
     /// Constructor
     pub fn new_int3(Degree: i32, NbPtsOnCur: i32, NbIter: i32) -> crate::OwnedPtr<Self> {
         Self::new_int3_bool_real4_int2(
@@ -3811,7 +3810,7 @@ impl Filling {
         )
     }
 
-    /// **Source:** `BRepFill_Filling.hxx`:71 - `BRepFill_Filling::BRepFill_Filling()`
+    /// **Source:** `BRepFill_Filling.hxx`:73 - `BRepFill_Filling::BRepFill_Filling()`
     /// Constructor
     pub fn new_int2(Degree: i32, NbPtsOnCur: i32) -> crate::OwnedPtr<Self> {
         Self::new_int3_bool_real4_int2(
@@ -3819,19 +3818,19 @@ impl Filling {
         )
     }
 
-    /// **Source:** `BRepFill_Filling.hxx`:71 - `BRepFill_Filling::BRepFill_Filling()`
+    /// **Source:** `BRepFill_Filling.hxx`:73 - `BRepFill_Filling::BRepFill_Filling()`
     /// Constructor
     pub fn new_int(Degree: i32) -> crate::OwnedPtr<Self> {
         Self::new_int3_bool_real4_int2(Degree, 15, 2, false, 0.00001, 0.0001, 0.01, 0.1, 8, 9)
     }
 
-    /// **Source:** `BRepFill_Filling.hxx`:71 - `BRepFill_Filling::BRepFill_Filling()`
+    /// **Source:** `BRepFill_Filling.hxx`:73 - `BRepFill_Filling::BRepFill_Filling()`
     /// Constructor
     pub fn new() -> crate::OwnedPtr<Self> {
         Self::new_int3_bool_real4_int2(3, 15, 2, false, 0.00001, 0.0001, 0.01, 0.1, 8, 9)
     }
 
-    /// **Source:** `BRepFill_Filling.hxx`:90 - `BRepFill_Filling::SetConstrParam()`
+    /// **Source:** `BRepFill_Filling.hxx`:92 - `BRepFill_Filling::SetConstrParam()`
     /// Sets the values of Tolerances used to control the constraint.
     /// Tol2d:
     /// Tol3d:   it is the maximum distance allowed between the support surface
@@ -3852,7 +3851,7 @@ impl Filling {
         })
     }
 
-    /// **Source:** `BRepFill_Filling.hxx`:109 - `BRepFill_Filling::SetResolParam()`
+    /// **Source:** `BRepFill_Filling.hxx`:111 - `BRepFill_Filling::SetResolParam()`
     /// Sets the parameters used for resolution.
     /// The default values of these parameters have been chosen for a good
     /// ratio quality/performance.
@@ -3885,7 +3884,7 @@ impl Filling {
         })
     }
 
-    /// **Source:** `BRepFill_Filling.hxx`:115 - `BRepFill_Filling::SetApproxParam()`
+    /// **Source:** `BRepFill_Filling.hxx`:117 - `BRepFill_Filling::SetApproxParam()`
     /// Sets the parameters used for approximation of the surface
     pub fn set_approx_param(&mut self, MaxDeg: i32, MaxSegments: i32) {
         crate::check_void_result(unsafe {
@@ -3897,7 +3896,7 @@ impl Filling {
         })
     }
 
-    /// **Source:** `BRepFill_Filling.hxx`:124 - `BRepFill_Filling::LoadInitSurface()`
+    /// **Source:** `BRepFill_Filling.hxx`:125 - `BRepFill_Filling::LoadInitSurface()`
     /// Loads the initial Surface
     /// The initial surface must have orthogonal local coordinates,
     /// i.e. partial derivatives dS/du and dS/dv must be orthogonal
@@ -3910,7 +3909,7 @@ impl Filling {
         })
     }
 
-    /// **Source:** `BRepFill_Filling.hxx`:137 - `BRepFill_Filling::Add()`
+    /// **Source:** `BRepFill_Filling.hxx`:138 - `BRepFill_Filling::Add()`
     /// Adds a new constraint which also defines an edge of the wire
     /// of the face
     /// Order: Order of the constraint:
@@ -3938,7 +3937,7 @@ impl Filling {
         })
     }
 
-    /// **Source:** `BRepFill_Filling.hxx`:152 - `BRepFill_Filling::Add()`
+    /// **Source:** `BRepFill_Filling.hxx`:153 - `BRepFill_Filling::Add()`
     /// Adds a new constraint which also defines an edge of the wire
     /// of the face
     /// Order: Order of the constraint:
@@ -3968,7 +3967,7 @@ impl Filling {
         })
     }
 
-    /// **Source:** `BRepFill_Filling.hxx`:160 - `BRepFill_Filling::Add()`
+    /// **Source:** `BRepFill_Filling.hxx`:161 - `BRepFill_Filling::Add()`
     /// Adds a free constraint on a face. The corresponding edge has to
     /// be automatically recomputed.
     /// It is always a bound.
@@ -3986,7 +3985,7 @@ impl Filling {
         })
     }
 
-    /// **Source:** `BRepFill_Filling.hxx`:163 - `BRepFill_Filling::Add()`
+    /// **Source:** `BRepFill_Filling.hxx`:164 - `BRepFill_Filling::Add()`
     /// Adds a punctual constraint
     pub fn add_pnt(&mut self, Point: &crate::gp::Pnt) -> i32 {
         crate::check_result(unsafe {
@@ -3994,7 +3993,7 @@ impl Filling {
         })
     }
 
-    /// **Source:** `BRepFill_Filling.hxx`:166 - `BRepFill_Filling::Add()`
+    /// **Source:** `BRepFill_Filling.hxx`:167 - `BRepFill_Filling::Add()`
     /// Adds a punctual constraint.
     pub fn add_real2_face_shape(
         &mut self,
@@ -4014,7 +4013,7 @@ impl Filling {
         })
     }
 
-    /// **Source:** `BRepFill_Filling.hxx`:172 - `BRepFill_Filling::Build()`
+    /// **Source:** `BRepFill_Filling.hxx`:173 - `BRepFill_Filling::Build()`
     /// Builds the resulting faces
     pub fn build(&mut self) {
         crate::check_void_result(unsafe {
@@ -4022,14 +4021,14 @@ impl Filling {
         })
     }
 
-    /// **Source:** `BRepFill_Filling.hxx`:174 - `BRepFill_Filling::IsDone()`
+    /// **Source:** `BRepFill_Filling.hxx`:175 - `BRepFill_Filling::IsDone()`
     pub fn is_done(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::BRepFill_Filling_is_done(self as *const Self)
         })
     }
 
-    /// **Source:** `BRepFill_Filling.hxx`:176 - `BRepFill_Filling::Face()`
+    /// **Source:** `BRepFill_Filling.hxx`:177 - `BRepFill_Filling::Face()`
     pub fn face(&self) -> crate::OwnedPtr<crate::topo_ds::Face> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -4038,7 +4037,7 @@ impl Filling {
         }
     }
 
-    /// **Source:** `BRepFill_Filling.hxx`:180 - `BRepFill_Filling::Generated()`
+    /// **Source:** `BRepFill_Filling.hxx`:181 - `BRepFill_Filling::Generated()`
     /// Returns the list of shapes generated from the
     /// shape <S>.
     ///
@@ -4050,7 +4049,7 @@ impl Filling {
     pub unsafe fn generated(
         &mut self,
         S: &crate::topo_ds::Shape,
-    ) -> &crate::ffi_types::TopTools_ListOfShape {
+    ) -> &crate::ffi_types::NCollection_List_TopoDS_Shape {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKBool::BRepFill_Filling_generated(
                 self as *mut Self,
@@ -4059,42 +4058,42 @@ impl Filling {
         }
     }
 
-    /// **Source:** `BRepFill_Filling.hxx`:182 - `BRepFill_Filling::G0Error()`
+    /// **Source:** `BRepFill_Filling.hxx`:183 - `BRepFill_Filling::G0Error()`
     pub fn g0_error(&self) -> f64 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::BRepFill_Filling_g0_error(self as *const Self)
         })
     }
 
-    /// **Source:** `BRepFill_Filling.hxx`:184 - `BRepFill_Filling::G1Error()`
+    /// **Source:** `BRepFill_Filling.hxx`:185 - `BRepFill_Filling::G1Error()`
     pub fn g1_error(&self) -> f64 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::BRepFill_Filling_g1_error(self as *const Self)
         })
     }
 
-    /// **Source:** `BRepFill_Filling.hxx`:186 - `BRepFill_Filling::G2Error()`
+    /// **Source:** `BRepFill_Filling.hxx`:187 - `BRepFill_Filling::G2Error()`
     pub fn g2_error(&self) -> f64 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::BRepFill_Filling_g2_error(self as *const Self)
         })
     }
 
-    /// **Source:** `BRepFill_Filling.hxx`:188 - `BRepFill_Filling::G0Error()`
+    /// **Source:** `BRepFill_Filling.hxx`:189 - `BRepFill_Filling::G0Error()`
     pub fn g0_error_int(&mut self, Index: i32) -> f64 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::BRepFill_Filling_g0_error_int(self as *mut Self, Index)
         })
     }
 
-    /// **Source:** `BRepFill_Filling.hxx`:190 - `BRepFill_Filling::G1Error()`
+    /// **Source:** `BRepFill_Filling.hxx`:191 - `BRepFill_Filling::G1Error()`
     pub fn g1_error_int(&mut self, Index: i32) -> f64 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::BRepFill_Filling_g1_error_int(self as *mut Self, Index)
         })
     }
 
-    /// **Source:** `BRepFill_Filling.hxx`:192 - `BRepFill_Filling::G2Error()`
+    /// **Source:** `BRepFill_Filling.hxx`:193 - `BRepFill_Filling::G2Error()`
     pub fn g2_error_int(&mut self, Index: i32) -> f64 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::BRepFill_Filling_g2_error_int(self as *mut Self, Index)
@@ -4106,8 +4105,8 @@ impl Filling {
 // From BRepFill_Generator.hxx
 // ========================
 
-/// **Source:** `BRepFill_Generator.hxx`:37 - `BRepFill_Generator`
-/// Compute a topological surface ( a  shell) using
+/// **Source:** `BRepFill_Generator.hxx`:38 - `BRepFill_Generator`
+/// Compute a topological surface (a shell) using
 /// generating wires. The face of the shell will be
 /// ruled surfaces passing by the wires.
 /// The wires must have the same number of edges.
@@ -4122,7 +4121,7 @@ unsafe impl crate::CppDeletable for Generator {
 }
 
 impl Generator {
-    /// **Source:** `BRepFill_Generator.hxx`:42 - `BRepFill_Generator::BRepFill_Generator()`
+    /// **Source:** `BRepFill_Generator.hxx`:43 - `BRepFill_Generator::BRepFill_Generator()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -4131,22 +4130,22 @@ impl Generator {
         }
     }
 
-    /// **Source:** `BRepFill_Generator.hxx`:44 - `BRepFill_Generator::AddWire()`
+    /// **Source:** `BRepFill_Generator.hxx`:45 - `BRepFill_Generator::AddWire()`
     pub fn add_wire(&mut self, Wire: &crate::topo_ds::Wire) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::BRepFill_Generator_add_wire(self as *mut Self, Wire)
         })
     }
 
-    /// **Source:** `BRepFill_Generator.hxx`:47 - `BRepFill_Generator::Perform()`
-    /// Compute the  shell.
+    /// **Source:** `BRepFill_Generator.hxx`:48 - `BRepFill_Generator::Perform()`
+    /// Compute the shell.
     pub fn perform(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::BRepFill_Generator_perform(self as *mut Self)
         })
     }
 
-    /// **Source:** `BRepFill_Generator.hxx`:49 - `BRepFill_Generator::Shell()`
+    /// **Source:** `BRepFill_Generator.hxx`:50 - `BRepFill_Generator::Shell()`
     pub fn shell(&self) -> &crate::topo_ds::Shell {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKBool::BRepFill_Generator_shell(
@@ -4155,9 +4154,9 @@ impl Generator {
         }
     }
 
-    /// **Source:** `BRepFill_Generator.hxx`:52 - `BRepFill_Generator::Generated()`
-    /// Returns  all   the shapes created
-    pub fn generated(&self) -> &crate::ffi_types::TopTools_DataMapOfShapeListOfShape {
+    /// **Source:** `BRepFill_Generator.hxx`:56 - `BRepFill_Generator::Generated()`
+    /// Returns all the shapes created
+    pub fn generated(&self) -> &crate::ffi_types::NCollection_DataMap_TopoDS_Shape_NCollection_List_TopoDS_Shape_TopTools_ShapeMapHasher{
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKBool::BRepFill_Generator_generated(
                 self as *const Self,
@@ -4165,9 +4164,9 @@ impl Generator {
         }
     }
 
-    /// **Source:** `BRepFill_Generator.hxx`:56 - `BRepFill_Generator::GeneratedShapes()`
-    /// Returns   the  shapes  created  from   a  subshape
-    /// <SSection>  of a  section.
+    /// **Source:** `BRepFill_Generator.hxx`:60 - `BRepFill_Generator::GeneratedShapes()`
+    /// Returns the shapes created from a subshape
+    /// <SSection> of a section.
     ///
     /// # Safety
     ///
@@ -4177,7 +4176,7 @@ impl Generator {
     pub unsafe fn generated_shapes(
         &self,
         SSection: &crate::topo_ds::Shape,
-    ) -> &crate::ffi_types::TopTools_ListOfShape {
+    ) -> &crate::ffi_types::NCollection_List_TopoDS_Shape {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKBool::BRepFill_Generator_generated_shapes(
                 self as *const Self,
@@ -4186,7 +4185,7 @@ impl Generator {
         }
     }
 
-    /// **Source:** `BRepFill_Generator.hxx`:60 - `BRepFill_Generator::ResultShape()`
+    /// **Source:** `BRepFill_Generator.hxx`:65 - `BRepFill_Generator::ResultShape()`
     /// Returns a modified shape in the constructed shell,
     /// If shape is not changed (replaced) during operation => returns the same shape
     pub fn result_shape(
@@ -4203,7 +4202,7 @@ impl Generator {
         }
     }
 
-    /// **Source:** `BRepFill_Generator.hxx`:65 - `BRepFill_Generator::SetMutableInput()`
+    /// **Source:** `BRepFill_Generator.hxx`:70 - `BRepFill_Generator::SetMutableInput()`
     /// Sets the mutable input state
     /// If true then the input profile can be modified
     /// inside the operation. Default value is true.
@@ -4216,7 +4215,7 @@ impl Generator {
         })
     }
 
-    /// **Source:** `BRepFill_Generator.hxx`:68 - `BRepFill_Generator::IsMutableInput()`
+    /// **Source:** `BRepFill_Generator.hxx`:73 - `BRepFill_Generator::IsMutableInput()`
     /// Returns the current mutable input state
     pub fn is_mutable_input(&self) -> bool {
         crate::check_result(unsafe {
@@ -4224,7 +4223,7 @@ impl Generator {
         })
     }
 
-    /// **Source:** `BRepFill_Generator.hxx`:71 - `BRepFill_Generator::GetStatus()`
+    /// **Source:** `BRepFill_Generator.hxx`:76 - `BRepFill_Generator::GetStatus()`
     /// Returns status of the operation
     pub fn get_status(&self) -> crate::b_rep_fill::ThruSectionErrorStatus {
         crate::b_rep_fill::ThruSectionErrorStatus::try_from(crate::check_result(unsafe {
@@ -4238,8 +4237,8 @@ impl Generator {
 // From BRepFill_LocationLaw.hxx
 // ========================
 
-/// **Source:** `BRepFill_LocationLaw.hxx`:41 - `BRepFill_LocationLaw`
-/// Location Law on a  Wire.
+/// **Source:** `BRepFill_LocationLaw.hxx`:37 - `BRepFill_LocationLaw`
+/// Location Law on a Wire.
 pub use crate::ffi_types::BRepFill_LocationLaw as LocationLaw;
 
 unsafe impl crate::CppDeletable for LocationLaw {
@@ -4261,8 +4260,8 @@ impl LocationLaw {
         }
     }
 
-    /// **Source:** `BRepFill_LocationLaw.hxx`:47 - `BRepFill_LocationLaw::GetStatus()`
-    /// Return a error status, if the  status is not PipeOk then
+    /// **Source:** `BRepFill_LocationLaw.hxx`:43 - `BRepFill_LocationLaw::GetStatus()`
+    /// Return a error status, if the status is not PipeOk then
     /// it exist a parameter tlike the law is not valuable for t.
     pub fn get_status(&self) -> crate::geom_fill::PipeError {
         crate::geom_fill::PipeError::try_from(crate::check_result(unsafe {
@@ -4271,8 +4270,8 @@ impl LocationLaw {
         .unwrap()
     }
 
-    /// **Source:** `BRepFill_LocationLaw.hxx`:51 - `BRepFill_LocationLaw::TransformInG0Law()`
-    /// Apply a linear   transformation  on each law, to  have
+    /// **Source:** `BRepFill_LocationLaw.hxx`:47 - `BRepFill_LocationLaw::TransformInG0Law()`
+    /// Apply a linear transformation on each law, to have
     /// continuity of the global law between the edges.
     pub fn transform_in_g0_law(&mut self) {
         crate::check_void_result(unsafe {
@@ -4280,9 +4279,9 @@ impl LocationLaw {
         })
     }
 
-    /// **Source:** `BRepFill_LocationLaw.hxx`:55 - `BRepFill_LocationLaw::TransformInCompatibleLaw()`
+    /// **Source:** `BRepFill_LocationLaw.hxx`:51 - `BRepFill_LocationLaw::TransformInCompatibleLaw()`
     /// Apply a linear transformation on each law, to reduce
-    /// the   dicontinuities  of law at one  rotation.
+    /// the dicontinuities of law at one rotation.
     pub fn transform_in_compatible_law(&mut self, AngularTolerance: f64) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::BRepFill_LocationLaw_transform_in_compatible_law(
@@ -4292,28 +4291,28 @@ impl LocationLaw {
         })
     }
 
-    /// **Source:** `BRepFill_LocationLaw.hxx`:57 - `BRepFill_LocationLaw::DeleteTransform()`
+    /// **Source:** `BRepFill_LocationLaw.hxx`:53 - `BRepFill_LocationLaw::DeleteTransform()`
     pub fn delete_transform(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::BRepFill_LocationLaw_delete_transform(self as *mut Self)
         })
     }
 
-    /// **Source:** `BRepFill_LocationLaw.hxx`:59 - `BRepFill_LocationLaw::NbHoles()`
+    /// **Source:** `BRepFill_LocationLaw.hxx`:55 - `BRepFill_LocationLaw::NbHoles()`
     pub fn nb_holes(&mut self, Tol: f64) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::BRepFill_LocationLaw_nb_holes(self as *mut Self, Tol)
         })
     }
 
-    /// **Source:** `BRepFill_LocationLaw.hxx`:61 - `BRepFill_LocationLaw::Holes()`
-    pub fn holes(&self, Interval: &mut crate::ffi_types::TColStd_Array1OfInteger) {
+    /// **Source:** `BRepFill_LocationLaw.hxx`:57 - `BRepFill_LocationLaw::Holes()`
+    pub fn holes(&self, Interval: &mut crate::ffi_types::NCollection_Array1_int) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::BRepFill_LocationLaw_holes(self as *const Self, Interval)
         })
     }
 
-    /// **Source:** `BRepFill_LocationLaw.hxx`:64 - `BRepFill_LocationLaw::NbLaw()`
+    /// **Source:** `BRepFill_LocationLaw.hxx`:60 - `BRepFill_LocationLaw::NbLaw()`
     /// Return the number of elementary Law
     pub fn nb_law(&self) -> i32 {
         crate::check_result(unsafe {
@@ -4321,10 +4320,10 @@ impl LocationLaw {
         })
     }
 
-    /// **Source:** `BRepFill_LocationLaw.hxx`:68 - `BRepFill_LocationLaw::Law()`
+    /// **Source:** `BRepFill_LocationLaw.hxx`:64 - `BRepFill_LocationLaw::Law()`
     /// Return the elementary Law of rank <Index>
     /// <Index> have to be in [1, NbLaw()]
-    pub fn law(&self, Index: i32) -> &crate::ffi_types::HandleGeomFillLocationLaw {
+    pub fn law(&self, Index: i32) -> &crate::ffi_types::Handle_GeomFill_LocationLaw {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKBool::BRepFill_LocationLaw_law(
                 self as *const Self,
@@ -4333,7 +4332,7 @@ impl LocationLaw {
         }
     }
 
-    /// **Source:** `BRepFill_LocationLaw.hxx`:71 - `BRepFill_LocationLaw::Wire()`
+    /// **Source:** `BRepFill_LocationLaw.hxx`:67 - `BRepFill_LocationLaw::Wire()`
     /// return the path
     pub fn wire(&self) -> &crate::topo_ds::Wire {
         unsafe {
@@ -4343,7 +4342,7 @@ impl LocationLaw {
         }
     }
 
-    /// **Source:** `BRepFill_LocationLaw.hxx`:75 - `BRepFill_LocationLaw::Edge()`
+    /// **Source:** `BRepFill_LocationLaw.hxx`:71 - `BRepFill_LocationLaw::Edge()`
     /// Return the Edge of rank <Index> in the path
     /// <Index> have to be in [1, NbLaw()]
     pub fn edge(&self, Index: i32) -> &crate::topo_ds::Edge {
@@ -4355,7 +4354,7 @@ impl LocationLaw {
         }
     }
 
-    /// **Source:** `BRepFill_LocationLaw.hxx`:79 - `BRepFill_LocationLaw::Vertex()`
+    /// **Source:** `BRepFill_LocationLaw.hxx`:75 - `BRepFill_LocationLaw::Vertex()`
     /// Return the vertex of rank <Index> in the path
     /// <Index> have to be in [0, NbLaw()]
     pub fn vertex(&self, Index: i32) -> crate::OwnedPtr<crate::topo_ds::Vertex> {
@@ -4366,12 +4365,12 @@ impl LocationLaw {
         }
     }
 
-    /// **Source:** `BRepFill_LocationLaw.hxx`:89 - `BRepFill_LocationLaw::PerformVertex()`
+    /// **Source:** `BRepFill_LocationLaw.hxx`:85 - `BRepFill_LocationLaw::PerformVertex()`
     /// Compute <OutputVertex> like a transformation of
-    /// <InputVertex>  the  transformation   is given by
-    /// evaluation of the location law   in the vertex of
-    /// rank   <Index>.
-    /// <Location> is used to manage discontinuities :
+    /// <InputVertex> the transformation is given by
+    /// evaluation of the location law in the vertex of
+    /// rank <Index>.
+    /// <Location> is used to manage discontinuities:
     /// - -1 : The law before the vertex is used.
     /// -  1 : The law after the vertex is used.
     /// -  0 : Average of the both laws is used.
@@ -4395,7 +4394,7 @@ impl LocationLaw {
         })
     }
 
-    /// **Source:** `BRepFill_LocationLaw.hxx`:96 - `BRepFill_LocationLaw::CurvilinearBounds()`
+    /// **Source:** `BRepFill_LocationLaw.hxx`:92 - `BRepFill_LocationLaw::CurvilinearBounds()`
     /// Return the Curvilinear Bounds of the <Index> Law
     pub fn curvilinear_bounds(&self, Index: i32, First: &mut f64, Last: &mut f64) {
         crate::check_void_result(unsafe {
@@ -4408,14 +4407,14 @@ impl LocationLaw {
         })
     }
 
-    /// **Source:** `BRepFill_LocationLaw.hxx`:100 - `BRepFill_LocationLaw::IsClosed()`
+    /// **Source:** `BRepFill_LocationLaw.hxx`:94 - `BRepFill_LocationLaw::IsClosed()`
     pub fn is_closed(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::BRepFill_LocationLaw_is_closed(self as *const Self)
         })
     }
 
-    /// **Source:** `BRepFill_LocationLaw.hxx`:107 - `BRepFill_LocationLaw::IsG1()`
+    /// **Source:** `BRepFill_LocationLaw.hxx`:101 - `BRepFill_LocationLaw::IsG1()`
     /// Compute the Law's continuity between 2 edges of the path
     /// The result can be :
     /// -1 : Case Not connex
@@ -4432,7 +4431,7 @@ impl LocationLaw {
         })
     }
 
-    /// **Source:** `BRepFill_LocationLaw.hxx`:112 - `BRepFill_LocationLaw::D0()`
+    /// **Source:** `BRepFill_LocationLaw.hxx`:106 - `BRepFill_LocationLaw::D0()`
     /// Apply the Law to a shape, for a given Curvilinear abscissa
     pub fn d0(&mut self, Abscissa: f64, Section: &mut crate::topo_ds::Shape) {
         crate::check_void_result(unsafe {
@@ -4440,7 +4439,7 @@ impl LocationLaw {
         })
     }
 
-    /// **Source:** `BRepFill_LocationLaw.hxx`:115 - `BRepFill_LocationLaw::Parameter()`
+    /// **Source:** `BRepFill_LocationLaw.hxx`:109 - `BRepFill_LocationLaw::Parameter()`
     /// Find the index Law and the parameter, for a given Curvilinear abscissa
     pub fn parameter(&mut self, Abscissa: f64, Index: &mut i32, Param: &mut f64) {
         crate::check_void_result(unsafe {
@@ -4453,18 +4452,18 @@ impl LocationLaw {
         })
     }
 
-    /// **Source:** `BRepFill_LocationLaw.hxx`:122 - `BRepFill_LocationLaw::Abscissa()`
-    /// Return the curvilinear abscissa  corresponding to a point
-    /// of  the path, defined by  <Index>  of  Edge and a
-    /// parameter on the edge.
+    /// **Source:** `BRepFill_LocationLaw.hxx`:114 - `BRepFill_LocationLaw::Abscissa()`
+    /// Return the curvilinear abscissa corresponding to a point
+    /// of the path, defined by <Index> of Edge and a parameter
+    /// on the edge.
     pub fn abscissa(&mut self, Index: i32, Param: f64) -> f64 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::BRepFill_LocationLaw_abscissa(self as *mut Self, Index, Param)
         })
     }
 
-    /// **Source:** `BRepFill_LocationLaw.hxx`:124 - `BRepFill_LocationLaw::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `BRepFill_LocationLaw.hxx`:116 - `BRepFill_LocationLaw::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKBool::BRepFill_LocationLaw_dynamic_type(
                 self as *const Self,
@@ -4472,7 +4471,7 @@ impl LocationLaw {
         }
     }
 
-    /// **Source:** `BRepFill_LocationLaw.hxx`:124 - `BRepFill_LocationLaw::get_type_name()`
+    /// **Source:** `BRepFill_LocationLaw.hxx`:116 - `BRepFill_LocationLaw::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -4483,8 +4482,8 @@ impl LocationLaw {
         .into_owned()
     }
 
-    /// **Source:** `BRepFill_LocationLaw.hxx`:124 - `BRepFill_LocationLaw::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    /// **Source:** `BRepFill_LocationLaw.hxx`:116 - `BRepFill_LocationLaw::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKBool::BRepFill_LocationLaw_get_type_descriptor(),
@@ -4517,7 +4516,7 @@ impl LocationLaw {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleBRepFillLocationLaw> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_BRepFill_LocationLaw> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKBool::BRepFill_LocationLaw_to_handle(obj.into_raw()),
@@ -4525,8 +4524,8 @@ impl LocationLaw {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::BRepFill_LocationLaw_inherited_IsInstance(
                 self as *const Self,
@@ -4535,8 +4534,8 @@ impl LocationLaw {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::BRepFill_LocationLaw_inherited_IsKind(
                 self as *const Self,
@@ -4545,7 +4544,7 @@ impl LocationLaw {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -4559,7 +4558,7 @@ impl LocationLaw {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::BRepFill_LocationLaw_inherited_GetRefCount(
@@ -4568,7 +4567,7 @@ impl LocationLaw {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::BRepFill_LocationLaw_inherited_IncrementRefCounter(
@@ -4577,7 +4576,7 @@ impl LocationLaw {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::BRepFill_LocationLaw_inherited_DecrementRefCounter(
@@ -4586,7 +4585,7 @@ impl LocationLaw {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::BRepFill_LocationLaw_inherited_Delete(self as *const Self)
@@ -4594,34 +4593,36 @@ impl LocationLaw {
     }
 }
 
-pub use crate::ffi_types::HandleBRepFillLocationLaw;
+pub use crate::ffi_types::Handle_BRepFill_LocationLaw;
 
-unsafe impl crate::CppDeletable for HandleBRepFillLocationLaw {
+unsafe impl crate::CppDeletable for Handle_BRepFill_LocationLaw {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKBool::HandleBRepFillLocationLaw_destructor(ptr);
+            crate::ffi_extern_TKBool::Handle_BRepFill_LocationLaw_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleBRepFillLocationLaw {
+unsafe impl crate::CppCopyable for Handle_BRepFill_LocationLaw {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
         unsafe {
-            crate::check_result(crate::ffi_extern_TKBool::HandleBRepFillLocationLaw_clone(ptr))
+            crate::check_result(crate::ffi_extern_TKBool::Handle_BRepFill_LocationLaw_clone(ptr))
         }
     }
 }
 
-impl HandleBRepFillLocationLaw {
+impl Handle_BRepFill_LocationLaw {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
-        unsafe { crate::ffi_extern_TKBool::HandleBRepFillLocationLaw_is_null(self as *const Self) }
+        unsafe {
+            crate::ffi_extern_TKBool::Handle_BRepFill_LocationLaw_is_null(self as *const Self)
+        }
     }
 
     /// Dereference this Handle to access the underlying BRepFill_LocationLaw
     pub fn get(&self) -> &crate::ffi_types::BRepFill_LocationLaw {
         unsafe {
-            &*crate::check_result(crate::ffi_extern_TKBool::HandleBRepFillLocationLaw_get(
+            &*crate::check_result(crate::ffi_extern_TKBool::Handle_BRepFill_LocationLaw_get(
                 self as *const Self,
             ))
         }
@@ -4630,19 +4631,19 @@ impl HandleBRepFillLocationLaw {
     /// Dereference this Handle to mutably access the underlying BRepFill_LocationLaw
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::BRepFill_LocationLaw {
         unsafe {
-            &mut *crate::check_result(crate::ffi_extern_TKBool::HandleBRepFillLocationLaw_get_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKBool::Handle_BRepFill_LocationLaw_get_mut(self as *mut Self),
+            )
         }
     }
 
     /// Upcast Handle<BRepFill_LocationLaw> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKBool::HandleBRepFillLocationLaw_to_HandleStandardTransient(
+                crate::ffi_extern_TKBool::Handle_BRepFill_LocationLaw_to_Handle_Standard_Transient(
                     self as *const Self,
                 ),
             ))
@@ -4654,9 +4655,9 @@ impl HandleBRepFillLocationLaw {
     /// Returns `None` if the handle does not point to a `BRepFill_ACRLaw` (or subclass).
     pub fn downcast_to_acr_law(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleBRepFillACRLaw>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_BRepFill_ACRLaw>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKBool::HandleBRepFillLocationLaw_downcast_to_HandleBRepFillACRLaw(
+            crate::ffi_extern_TKBool::Handle_BRepFill_LocationLaw_downcast_to_Handle_BRepFill_ACRLaw(
                 self as *const Self,
             )
         });
@@ -4672,11 +4673,9 @@ impl HandleBRepFillLocationLaw {
     /// Returns `None` if the handle does not point to a `BRepFill_DraftLaw` (or subclass).
     pub fn downcast_to_draft_law(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleBRepFillDraftLaw>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_BRepFill_DraftLaw>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKBool::HandleBRepFillLocationLaw_downcast_to_HandleBRepFillDraftLaw(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKBool::Handle_BRepFill_LocationLaw_downcast_to_Handle_BRepFill_DraftLaw(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -4690,11 +4689,9 @@ impl HandleBRepFillLocationLaw {
     /// Returns `None` if the handle does not point to a `BRepFill_Edge3DLaw` (or subclass).
     pub fn downcast_to_edge3_d_law(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleBRepFillEdge3DLaw>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_BRepFill_Edge3DLaw>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKBool::HandleBRepFillLocationLaw_downcast_to_HandleBRepFillEdge3DLaw(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKBool::Handle_BRepFill_LocationLaw_downcast_to_Handle_BRepFill_Edge3DLaw(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -4708,9 +4705,9 @@ impl HandleBRepFillLocationLaw {
     /// Returns `None` if the handle does not point to a `BRepFill_EdgeOnSurfLaw` (or subclass).
     pub fn downcast_to_edge_on_surf_law(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleBRepFillEdgeOnSurfLaw>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_BRepFill_EdgeOnSurfLaw>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKBool::HandleBRepFillLocationLaw_downcast_to_HandleBRepFillEdgeOnSurfLaw(self as *const Self)
+            crate::ffi_extern_TKBool::Handle_BRepFill_LocationLaw_downcast_to_Handle_BRepFill_EdgeOnSurfLaw(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -4729,9 +4726,9 @@ impl HandleBRepFillLocationLaw {
 /// two 2d curves resulting from the intersection of a
 /// surface of linear extrusion( Bissec, Dz) and the 2
 /// faces.
-/// This 3 curves will  have  the same parametrization
+/// These 3 curves will have the same parametrization
 /// as the Bissectrice.
-/// This  class  is  to  be  send  to an approximation
+/// This class is to be sent to an approximation
 /// routine.
 pub use crate::ffi_types::BRepFill_MultiLine as MultiLine;
 
@@ -4761,7 +4758,7 @@ impl MultiLine {
         Edge2: &crate::topo_ds::Edge,
         Inv1: bool,
         Inv2: bool,
-        Bissec: &crate::ffi_types::HandleGeom2dCurve,
+        Bissec: &crate::ffi_types::Handle_Geom2d_Curve,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKBool::BRepFill_MultiLine_ctor_face2_edge2_bool2_handlegeom2dcurve(Face1, Face2, Edge1, Edge2, Inv1, Inv2, Bissec)))
@@ -4779,8 +4776,8 @@ impl MultiLine {
     }
 
     /// **Source:** `BRepFill_MultiLine.hxx`:69 - `BRepFill_MultiLine::Continuity()`
-    /// Returns   the continuity  between  the two  faces
-    /// seShape         from GeomAbsparated by myBis.
+    /// Returns the continuity between the two faces
+    /// seShape from GeomAbsparated by myBis.
     pub fn continuity(&self) -> crate::geom_abs::Shape {
         crate::geom_abs::Shape::try_from(crate::check_result(unsafe {
             crate::ffi_extern_TKBool::BRepFill_MultiLine_continuity(self as *const Self)
@@ -4792,9 +4789,9 @@ impl MultiLine {
     /// raises if IsParticularCase is <False>.
     pub fn curves(
         &self,
-        Curve: &mut crate::ffi_types::HandleGeomCurve,
-        PCurve1: &mut crate::ffi_types::HandleGeom2dCurve,
-        PCurve2: &mut crate::ffi_types::HandleGeom2dCurve,
+        Curve: &mut crate::ffi_types::Handle_Geom_Curve,
+        PCurve1: &mut crate::ffi_types::Handle_Geom2d_Curve,
+        PCurve2: &mut crate::ffi_types::Handle_Geom2d_Curve,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::BRepFill_MultiLine_curves(
@@ -4875,14 +4872,14 @@ impl MultiLine {
 
     /// **Source:** `BRepFill_MultiLine.hxx`:99 - `BRepFill_MultiLine::Value()`
     /// Returns the point at parameter <theU>.
-    pub fn value_real_array1ofpnt2d_array1ofpnt(
+    pub fn value_real_arr1_pnt2d_arr1_pnt(
         &self,
         theU: f64,
-        thePnt2d: &mut crate::ffi_types::TColgp_Array1OfPnt2d,
-        thePnt: &mut crate::ffi_types::TColgp_Array1OfPnt,
+        thePnt2d: &mut crate::ffi_types::NCollection_Array1_gp_Pnt2d,
+        thePnt: &mut crate::ffi_types::NCollection_Array1_gp_Pnt,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi_extern_TKBool::BRepFill_MultiLine_value_real_array1ofpnt2d_array1ofpnt(
+            crate::ffi_extern_TKBool::BRepFill_MultiLine_value_real_arr1_pnt2d_arr1_pnt(
                 self as *const Self,
                 theU,
                 thePnt2d,
@@ -4896,8 +4893,8 @@ impl MultiLine {
     pub fn d1(
         &self,
         theU: f64,
-        theVec2d: &mut crate::ffi_types::TColgp_Array1OfVec2d,
-        theVec: &mut crate::ffi_types::TColgp_Array1OfVec,
+        theVec2d: &mut crate::ffi_types::NCollection_Array1_gp_Vec2d,
+        theVec: &mut crate::ffi_types::NCollection_Array1_gp_Vec,
     ) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::BRepFill_MultiLine_d1(
@@ -4975,7 +4972,7 @@ impl MultiLine {
 // From BRepFill_NSections.hxx
 // ========================
 
-/// **Source:** `BRepFill_NSections.hxx`:39 - `BRepFill_NSections`
+/// **Source:** `BRepFill_NSections.hxx`:37 - `BRepFill_NSections`
 /// Build Section Law, with N Sections
 pub use crate::ffi_types::BRepFill_NSections as NSections;
 
@@ -4988,75 +4985,73 @@ unsafe impl crate::CppDeletable for NSections {
 }
 
 impl NSections {
-    /// **Source:** `BRepFill_NSections.hxx`:44 - `BRepFill_NSections::BRepFill_NSections()`
+    /// **Source:** `BRepFill_NSections.hxx`:42 - `BRepFill_NSections::BRepFill_NSections()`
     /// Construct
-    pub fn new_sequenceofshape_bool(
-        S: &crate::ffi_types::TopTools_SequenceOfShape,
+    pub fn new_seq_shape_bool(
+        S: &crate::ffi_types::NCollection_Sequence_TopoDS_Shape,
         Build: bool,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKBool::BRepFill_NSections_ctor_sequenceofshape_bool(S, Build),
+                crate::ffi_extern_TKBool::BRepFill_NSections_ctor_seq_shape_bool(S, Build),
             ))
         }
     }
 
-    /// **Source:** `BRepFill_NSections.hxx`:48 - `BRepFill_NSections::BRepFill_NSections()`
+    /// **Source:** `BRepFill_NSections.hxx`:46 - `BRepFill_NSections::BRepFill_NSections()`
     /// Construct
-    pub fn new_sequenceofshape_sequenceoftrsf_sequenceofreal_real2_bool(
-        S: &crate::ffi_types::TopTools_SequenceOfShape,
-        Trsfs: &crate::ffi_types::GeomFill_SequenceOfTrsf,
-        P: &crate::ffi_types::TColStd_SequenceOfReal,
+    pub fn new_seq_shape_seq_trsf_seq_double_real2_bool(
+        S: &crate::ffi_types::NCollection_Sequence_TopoDS_Shape,
+        Trsfs: &crate::ffi_types::NCollection_Sequence_gp_Trsf,
+        P: &crate::ffi_types::NCollection_Sequence_double,
         VF: f64,
         VL: f64,
         Build: bool,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKBool::BRepFill_NSections_ctor_sequenceofshape_sequenceoftrsf_sequenceofreal_real2_bool(S, Trsfs, P, VF, VL, Build)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKBool::BRepFill_NSections_ctor_seq_shape_seq_trsf_seq_double_real2_bool(S, Trsfs, P, VF, VL, Build)))
         }
     }
 
-    /// **Source:** `BRepFill_NSections.hxx`:44 - `BRepFill_NSections::BRepFill_NSections()`
+    /// **Source:** `BRepFill_NSections.hxx`:42 - `BRepFill_NSections::BRepFill_NSections()`
     /// Construct
-    pub fn new_sequenceofshape(
-        S: &crate::ffi_types::TopTools_SequenceOfShape,
+    pub fn new_seq_shape(
+        S: &crate::ffi_types::NCollection_Sequence_TopoDS_Shape,
     ) -> crate::OwnedPtr<Self> {
-        Self::new_sequenceofshape_bool(S, true)
+        Self::new_seq_shape_bool(S, true)
     }
 
-    /// **Source:** `BRepFill_NSections.hxx`:48 - `BRepFill_NSections::BRepFill_NSections()`
+    /// **Source:** `BRepFill_NSections.hxx`:46 - `BRepFill_NSections::BRepFill_NSections()`
     /// Construct
-    pub fn new_sequenceofshape_sequenceoftrsf_sequenceofreal_real2(
-        S: &crate::ffi_types::TopTools_SequenceOfShape,
-        Trsfs: &crate::ffi_types::GeomFill_SequenceOfTrsf,
-        P: &crate::ffi_types::TColStd_SequenceOfReal,
+    pub fn new_seq_shape_seq_trsf_seq_double_real2(
+        S: &crate::ffi_types::NCollection_Sequence_TopoDS_Shape,
+        Trsfs: &crate::ffi_types::NCollection_Sequence_gp_Trsf,
+        P: &crate::ffi_types::NCollection_Sequence_double,
         VF: f64,
         VL: f64,
     ) -> crate::OwnedPtr<Self> {
-        Self::new_sequenceofshape_sequenceoftrsf_sequenceofreal_real2_bool(
-            S, Trsfs, P, VF, VL, true,
-        )
+        Self::new_seq_shape_seq_trsf_seq_double_real2_bool(S, Trsfs, P, VF, VL, true)
     }
 
-    /// **Source:** `BRepFill_NSections.hxx`:56 - `BRepFill_NSections::IsVertex()`
-    /// Say if the input shape is a  vertex.
+    /// **Source:** `BRepFill_NSections.hxx`:54 - `BRepFill_NSections::IsVertex()`
+    /// Say if the input shape is a vertex.
     pub fn is_vertex(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::BRepFill_NSections_is_vertex(self as *const Self)
         })
     }
 
-    /// **Source:** `BRepFill_NSections.hxx`:59 - `BRepFill_NSections::IsConstant()`
-    /// Say if the Law is  Constant.
+    /// **Source:** `BRepFill_NSections.hxx`:57 - `BRepFill_NSections::IsConstant()`
+    /// Say if the Law is Constant.
     pub fn is_constant(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::BRepFill_NSections_is_constant(self as *const Self)
         })
     }
 
-    /// **Source:** `BRepFill_NSections.hxx`:62 - `BRepFill_NSections::ConcatenedLaw()`
+    /// **Source:** `BRepFill_NSections.hxx`:60 - `BRepFill_NSections::ConcatenedLaw()`
     /// Give the law build on a concatenated section
-    pub fn concatened_law(&self) -> crate::OwnedPtr<crate::ffi_types::HandleGeomFillSectionLaw> {
+    pub fn concatened_law(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_GeomFill_SectionLaw> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKBool::BRepFill_NSections_concatened_law(self as *const Self),
@@ -5064,7 +5059,7 @@ impl NSections {
         }
     }
 
-    /// **Source:** `BRepFill_NSections.hxx`:64 - `BRepFill_NSections::Continuity()`
+    /// **Source:** `BRepFill_NSections.hxx`:62 - `BRepFill_NSections::Continuity()`
     pub fn continuity(&self, Index: i32, TolAngular: f64) -> crate::geom_abs::Shape {
         crate::geom_abs::Shape::try_from(crate::check_result(unsafe {
             crate::ffi_extern_TKBool::BRepFill_NSections_continuity(
@@ -5076,7 +5071,7 @@ impl NSections {
         .unwrap()
     }
 
-    /// **Source:** `BRepFill_NSections.hxx`:68 - `BRepFill_NSections::VertexTol()`
+    /// **Source:** `BRepFill_NSections.hxx`:64 - `BRepFill_NSections::VertexTol()`
     pub fn vertex_tol(&self, Index: i32, Param: f64) -> f64 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::BRepFill_NSections_vertex_tol(
@@ -5087,7 +5082,7 @@ impl NSections {
         })
     }
 
-    /// **Source:** `BRepFill_NSections.hxx`:72 - `BRepFill_NSections::Vertex()`
+    /// **Source:** `BRepFill_NSections.hxx`:66 - `BRepFill_NSections::Vertex()`
     pub fn vertex(&self, Index: i32, Param: f64) -> crate::OwnedPtr<crate::topo_ds::Vertex> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -5100,15 +5095,15 @@ impl NSections {
         }
     }
 
-    /// **Source:** `BRepFill_NSections.hxx`:75 - `BRepFill_NSections::D0()`
+    /// **Source:** `BRepFill_NSections.hxx`:68 - `BRepFill_NSections::D0()`
     pub fn d0(&mut self, Param: f64, S: &mut crate::topo_ds::Shape) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::BRepFill_NSections_d0(self as *mut Self, Param, S)
         })
     }
 
-    /// **Source:** `BRepFill_NSections.hxx`:77 - `BRepFill_NSections::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `BRepFill_NSections.hxx`:70 - `BRepFill_NSections::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKBool::BRepFill_NSections_dynamic_type(
                 self as *const Self,
@@ -5116,7 +5111,7 @@ impl NSections {
         }
     }
 
-    /// **Source:** `BRepFill_NSections.hxx`:77 - `BRepFill_NSections::get_type_name()`
+    /// **Source:** `BRepFill_NSections.hxx`:70 - `BRepFill_NSections::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -5127,8 +5122,8 @@ impl NSections {
         .into_owned()
     }
 
-    /// **Source:** `BRepFill_NSections.hxx`:77 - `BRepFill_NSections::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    /// **Source:** `BRepFill_NSections.hxx`:70 - `BRepFill_NSections::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKBool::BRepFill_NSections_get_type_descriptor(),
@@ -5183,7 +5178,7 @@ impl NSections {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleBRepFillNSections> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_BRepFill_NSections> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKBool::BRepFill_NSections_to_handle(obj.into_raw()),
@@ -5191,15 +5186,15 @@ impl NSections {
         }
     }
 
-    /// Inherited: **Source:** `BRepFill_SectionLaw.hxx`:43 - `BRepFill_SectionLaw::NbLaw()`
+    /// Inherited: **Source:** `BRepFill_SectionLaw.hxx`:44 - `BRepFill_SectionLaw::NbLaw()`
     pub fn nb_law(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::BRepFill_NSections_inherited_NbLaw(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `BRepFill_SectionLaw.hxx`:45 - `BRepFill_SectionLaw::Law()`
-    pub fn law(&self, Index: i32) -> &crate::ffi_types::HandleGeomFillSectionLaw {
+    /// Inherited: **Source:** `BRepFill_SectionLaw.hxx`:46 - `BRepFill_SectionLaw::Law()`
+    pub fn law(&self, Index: i32) -> &crate::ffi_types::Handle_GeomFill_SectionLaw {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKBool::BRepFill_NSections_inherited_Law(
                 self as *const Self,
@@ -5208,7 +5203,7 @@ impl NSections {
         }
     }
 
-    /// Inherited: **Source:** `BRepFill_SectionLaw.hxx`:47 - `BRepFill_SectionLaw::IndexOfEdge()`
+    /// Inherited: **Source:** `BRepFill_SectionLaw.hxx`:48 - `BRepFill_SectionLaw::IndexOfEdge()`
     pub fn index_of_edge(&self, anEdge: &crate::topo_ds::Shape) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::BRepFill_NSections_inherited_IndexOfEdge(
@@ -5218,28 +5213,28 @@ impl NSections {
         })
     }
 
-    /// Inherited: **Source:** `BRepFill_SectionLaw.hxx`:51 - `BRepFill_SectionLaw::IsUClosed()`
+    /// Inherited: **Source:** `BRepFill_SectionLaw.hxx`:52 - `BRepFill_SectionLaw::IsUClosed()`
     pub fn is_u_closed(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::BRepFill_NSections_inherited_IsUClosed(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `BRepFill_SectionLaw.hxx`:53 - `BRepFill_SectionLaw::IsVClosed()`
+    /// Inherited: **Source:** `BRepFill_SectionLaw.hxx`:54 - `BRepFill_SectionLaw::IsVClosed()`
     pub fn is_v_closed(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::BRepFill_NSections_inherited_IsVClosed(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `BRepFill_SectionLaw.hxx`:55 - `BRepFill_SectionLaw::IsDone()`
+    /// Inherited: **Source:** `BRepFill_SectionLaw.hxx`:56 - `BRepFill_SectionLaw::IsDone()`
     pub fn is_done(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::BRepFill_NSections_inherited_IsDone(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `BRepFill_SectionLaw.hxx`:75 - `BRepFill_SectionLaw::CurrentEdge()`
+    /// Inherited: **Source:** `BRepFill_SectionLaw.hxx`:74 - `BRepFill_SectionLaw::CurrentEdge()`
     pub fn current_edge(&mut self) -> crate::OwnedPtr<crate::topo_ds::Edge> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -5250,8 +5245,8 @@ impl NSections {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::BRepFill_NSections_inherited_IsInstance(
                 self as *const Self,
@@ -5260,8 +5255,8 @@ impl NSections {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::BRepFill_NSections_inherited_IsKind(
                 self as *const Self,
@@ -5270,7 +5265,7 @@ impl NSections {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -5284,14 +5279,14 @@ impl NSections {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::BRepFill_NSections_inherited_GetRefCount(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::BRepFill_NSections_inherited_IncrementRefCounter(
@@ -5300,7 +5295,7 @@ impl NSections {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::BRepFill_NSections_inherited_DecrementRefCounter(
@@ -5309,7 +5304,7 @@ impl NSections {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::BRepFill_NSections_inherited_Delete(self as *const Self)
@@ -5317,32 +5312,34 @@ impl NSections {
     }
 }
 
-pub use crate::ffi_types::HandleBRepFillNSections;
+pub use crate::ffi_types::Handle_BRepFill_NSections;
 
-unsafe impl crate::CppDeletable for HandleBRepFillNSections {
+unsafe impl crate::CppDeletable for Handle_BRepFill_NSections {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKBool::HandleBRepFillNSections_destructor(ptr);
+            crate::ffi_extern_TKBool::Handle_BRepFill_NSections_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleBRepFillNSections {
+unsafe impl crate::CppCopyable for Handle_BRepFill_NSections {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        unsafe { crate::check_result(crate::ffi_extern_TKBool::HandleBRepFillNSections_clone(ptr)) }
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKBool::Handle_BRepFill_NSections_clone(ptr))
+        }
     }
 }
 
-impl HandleBRepFillNSections {
+impl Handle_BRepFill_NSections {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
-        unsafe { crate::ffi_extern_TKBool::HandleBRepFillNSections_is_null(self as *const Self) }
+        unsafe { crate::ffi_extern_TKBool::Handle_BRepFill_NSections_is_null(self as *const Self) }
     }
 
     /// Dereference this Handle to access the underlying BRepFill_NSections
     pub fn get(&self) -> &crate::ffi_types::BRepFill_NSections {
         unsafe {
-            &*crate::check_result(crate::ffi_extern_TKBool::HandleBRepFillNSections_get(
+            &*crate::check_result(crate::ffi_extern_TKBool::Handle_BRepFill_NSections_get(
                 self as *const Self,
             ))
         }
@@ -5351,7 +5348,7 @@ impl HandleBRepFillNSections {
     /// Dereference this Handle to mutably access the underlying BRepFill_NSections
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::BRepFill_NSections {
         unsafe {
-            &mut *crate::check_result(crate::ffi_extern_TKBool::HandleBRepFillNSections_get_mut(
+            &mut *crate::check_result(crate::ffi_extern_TKBool::Handle_BRepFill_NSections_get_mut(
                 self as *mut Self,
             ))
         }
@@ -5360,10 +5357,10 @@ impl HandleBRepFillNSections {
     /// Upcast Handle<BRepFill_NSections> to Handle<BRepFill_SectionLaw>
     pub fn to_handle_section_law(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleBRepFillSectionLaw> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_BRepFill_SectionLaw> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKBool::HandleBRepFillNSections_to_HandleBRepFillSectionLaw(
+                crate::ffi_extern_TKBool::Handle_BRepFill_NSections_to_Handle_BRepFill_SectionLaw(
                     self as *const Self,
                 ),
             ))
@@ -5373,10 +5370,10 @@ impl HandleBRepFillNSections {
     /// Upcast Handle<BRepFill_NSections> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKBool::HandleBRepFillNSections_to_HandleStandardTransient(
+                crate::ffi_extern_TKBool::Handle_BRepFill_NSections_to_Handle_Standard_Transient(
                     self as *const Self,
                 ),
             ))
@@ -5388,7 +5385,7 @@ impl HandleBRepFillNSections {
 // From BRepFill_OffsetAncestors.hxx
 // ========================
 
-/// **Source:** `BRepFill_OffsetAncestors.hxx`:32 - `BRepFill_OffsetAncestors`
+/// **Source:** `BRepFill_OffsetAncestors.hxx`:34 - `BRepFill_OffsetAncestors`
 /// this class is used to find the generating shapes
 /// of an OffsetWire.
 pub use crate::ffi_types::BRepFill_OffsetAncestors as OffsetAncestors;
@@ -5402,7 +5399,7 @@ unsafe impl crate::CppDeletable for OffsetAncestors {
 }
 
 impl OffsetAncestors {
-    /// **Source:** `BRepFill_OffsetAncestors.hxx`:37 - `BRepFill_OffsetAncestors::BRepFill_OffsetAncestors()`
+    /// **Source:** `BRepFill_OffsetAncestors.hxx`:39 - `BRepFill_OffsetAncestors::BRepFill_OffsetAncestors()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -5411,7 +5408,7 @@ impl OffsetAncestors {
         }
     }
 
-    /// **Source:** `BRepFill_OffsetAncestors.hxx`:39 - `BRepFill_OffsetAncestors::BRepFill_OffsetAncestors()`
+    /// **Source:** `BRepFill_OffsetAncestors.hxx`:41 - `BRepFill_OffsetAncestors::BRepFill_OffsetAncestors()`
     pub fn new_offsetwire(Paral: &mut OffsetWire) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -5420,28 +5417,28 @@ impl OffsetAncestors {
         }
     }
 
-    /// **Source:** `BRepFill_OffsetAncestors.hxx`:41 - `BRepFill_OffsetAncestors::Perform()`
+    /// **Source:** `BRepFill_OffsetAncestors.hxx`:43 - `BRepFill_OffsetAncestors::Perform()`
     pub fn perform(&mut self, Paral: &mut OffsetWire) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::BRepFill_OffsetAncestors_perform(self as *mut Self, Paral)
         })
     }
 
-    /// **Source:** `BRepFill_OffsetAncestors.hxx`:43 - `BRepFill_OffsetAncestors::IsDone()`
+    /// **Source:** `BRepFill_OffsetAncestors.hxx`:45 - `BRepFill_OffsetAncestors::IsDone()`
     pub fn is_done(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::BRepFill_OffsetAncestors_is_done(self as *const Self)
         })
     }
 
-    /// **Source:** `BRepFill_OffsetAncestors.hxx`:45 - `BRepFill_OffsetAncestors::HasAncestor()`
+    /// **Source:** `BRepFill_OffsetAncestors.hxx`:47 - `BRepFill_OffsetAncestors::HasAncestor()`
     pub fn has_ancestor(&self, S1: &crate::topo_ds::Edge) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::BRepFill_OffsetAncestors_has_ancestor(self as *const Self, S1)
         })
     }
 
-    /// **Source:** `BRepFill_OffsetAncestors.hxx`:50 - `BRepFill_OffsetAncestors::Ancestor()`
+    /// **Source:** `BRepFill_OffsetAncestors.hxx`:52 - `BRepFill_OffsetAncestors::Ancestor()`
     /// may return a Null Shape if S1 is not a subShape
     /// of <Paral>;
     /// if Perform is not done.
@@ -5542,8 +5539,8 @@ impl OffsetWire {
     }
 
     /// **Source:** `BRepFill_OffsetWire.hxx`:67 - `BRepFill_OffsetWire::Perform()`
-    /// Performs  an OffsetWire at  an altitude <Alt> from
-    /// the  face ( According  to  the orientation of  the
+    /// Performs an OffsetWire at an altitude <Alt> from
+    /// the face (According to the orientation of the
     /// face)
     pub fn perform(&mut self, Offset: f64, Alt: f64) {
         crate::check_void_result(unsafe {
@@ -5552,7 +5549,7 @@ impl OffsetWire {
     }
 
     /// **Source:** `BRepFill_OffsetWire.hxx`:70 - `BRepFill_OffsetWire::PerformWithBiLo()`
-    /// Performs an  OffsetWire
+    /// Performs an OffsetWire
     pub fn perform_with_bi_lo(
         &mut self,
         WSP: &crate::topo_ds::Face,
@@ -5602,7 +5599,7 @@ impl OffsetWire {
     }
 
     /// **Source:** `BRepFill_OffsetWire.hxx`:87 - `BRepFill_OffsetWire::GeneratedShapes()`
-    /// Returns   the  shapes  created  from   a  subshape
+    /// Returns the shapes created from a subshape
     /// <SpineShape> of the spine.
     /// Returns the last computed Offset.
     ///
@@ -5614,7 +5611,7 @@ impl OffsetWire {
     pub unsafe fn generated_shapes(
         &mut self,
         SpineShape: &crate::topo_ds::Shape,
-    ) -> &crate::ffi_types::TopTools_ListOfShape {
+    ) -> &crate::ffi_types::NCollection_List_TopoDS_Shape {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKBool::BRepFill_OffsetWire_generated_shapes(
                 self as *mut Self,
@@ -5623,7 +5620,7 @@ impl OffsetWire {
         }
     }
 
-    /// **Source:** `BRepFill_OffsetWire.hxx`:89 - `BRepFill_OffsetWire::JoinType()`
+    /// **Source:** `BRepFill_OffsetWire.hxx`:90 - `BRepFill_OffsetWire::JoinType()`
     pub fn join_type(&self) -> crate::geom_abs::JoinType {
         crate::geom_abs::JoinType::try_from(crate::check_result(unsafe {
             crate::ffi_extern_TKBool::BRepFill_OffsetWire_join_type(self as *const Self)
@@ -5636,11 +5633,11 @@ impl OffsetWire {
 // From BRepFill_Pipe.hxx
 // ========================
 
-/// **Source:** `BRepFill_Pipe.hxx`:46 - `BRepFill_Pipe`
-/// Create a  shape by sweeping a shape  (the profile)
+/// **Source:** `BRepFill_Pipe.hxx`:49 - `BRepFill_Pipe`
+/// Create a shape by sweeping a shape (the profile)
 /// along a wire (the spine).
 ///
-/// For each edge  or vertex from the spine  the  user
+/// For each edge or vertex from the spine the user
 /// may ask for the shape generated from each subshape
 /// of the profile.
 pub use crate::ffi_types::BRepFill_Pipe as Pipe;
@@ -5654,7 +5651,7 @@ unsafe impl crate::CppDeletable for Pipe {
 }
 
 impl Pipe {
-    /// **Source:** `BRepFill_Pipe.hxx`:51 - `BRepFill_Pipe::BRepFill_Pipe()`
+    /// **Source:** `BRepFill_Pipe.hxx`:54 - `BRepFill_Pipe::BRepFill_Pipe()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -5663,7 +5660,7 @@ impl Pipe {
         }
     }
 
-    /// **Source:** `BRepFill_Pipe.hxx`:53 - `BRepFill_Pipe::BRepFill_Pipe()`
+    /// **Source:** `BRepFill_Pipe.hxx`:56 - `BRepFill_Pipe::BRepFill_Pipe()`
     pub fn new_wire_shape_trihedron_bool2(
         Spine: &crate::topo_ds::Wire,
         Profile: &crate::topo_ds::Shape,
@@ -5684,7 +5681,7 @@ impl Pipe {
         }
     }
 
-    /// **Source:** `BRepFill_Pipe.hxx`:53 - `BRepFill_Pipe::BRepFill_Pipe()`
+    /// **Source:** `BRepFill_Pipe.hxx`:56 - `BRepFill_Pipe::BRepFill_Pipe()`
     pub fn new_wire_shape_trihedron_bool(
         Spine: &crate::topo_ds::Wire,
         Profile: &crate::topo_ds::Shape,
@@ -5694,7 +5691,7 @@ impl Pipe {
         Self::new_wire_shape_trihedron_bool2(Spine, Profile, aMode, ForceApproxC1, false)
     }
 
-    /// **Source:** `BRepFill_Pipe.hxx`:53 - `BRepFill_Pipe::BRepFill_Pipe()`
+    /// **Source:** `BRepFill_Pipe.hxx`:56 - `BRepFill_Pipe::BRepFill_Pipe()`
     pub fn new_wire_shape_trihedron(
         Spine: &crate::topo_ds::Wire,
         Profile: &crate::topo_ds::Shape,
@@ -5703,7 +5700,7 @@ impl Pipe {
         Self::new_wire_shape_trihedron_bool2(Spine, Profile, aMode, false, false)
     }
 
-    /// **Source:** `BRepFill_Pipe.hxx`:59 - `BRepFill_Pipe::Perform()`
+    /// **Source:** `BRepFill_Pipe.hxx`:62 - `BRepFill_Pipe::Perform()`
     pub fn perform(
         &mut self,
         Spine: &crate::topo_ds::Wire,
@@ -5720,7 +5717,7 @@ impl Pipe {
         })
     }
 
-    /// **Source:** `BRepFill_Pipe.hxx`:63 - `BRepFill_Pipe::Spine()`
+    /// **Source:** `BRepFill_Pipe.hxx`:66 - `BRepFill_Pipe::Spine()`
     pub fn spine(&self) -> &crate::topo_ds::Shape {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKBool::BRepFill_Pipe_spine(
@@ -5729,7 +5726,7 @@ impl Pipe {
         }
     }
 
-    /// **Source:** `BRepFill_Pipe.hxx`:65 - `BRepFill_Pipe::Profile()`
+    /// **Source:** `BRepFill_Pipe.hxx`:68 - `BRepFill_Pipe::Profile()`
     pub fn profile(&self) -> &crate::topo_ds::Shape {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKBool::BRepFill_Pipe_profile(
@@ -5738,7 +5735,7 @@ impl Pipe {
         }
     }
 
-    /// **Source:** `BRepFill_Pipe.hxx`:67 - `BRepFill_Pipe::Shape()`
+    /// **Source:** `BRepFill_Pipe.hxx`:70 - `BRepFill_Pipe::Shape()`
     pub fn shape(&self) -> &crate::topo_ds::Shape {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKBool::BRepFill_Pipe_shape(
@@ -5747,14 +5744,14 @@ impl Pipe {
         }
     }
 
-    /// **Source:** `BRepFill_Pipe.hxx`:69 - `BRepFill_Pipe::ErrorOnSurface()`
+    /// **Source:** `BRepFill_Pipe.hxx`:72 - `BRepFill_Pipe::ErrorOnSurface()`
     pub fn error_on_surface(&self) -> f64 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::BRepFill_Pipe_error_on_surface(self as *const Self)
         })
     }
 
-    /// **Source:** `BRepFill_Pipe.hxx`:71 - `BRepFill_Pipe::FirstShape()`
+    /// **Source:** `BRepFill_Pipe.hxx`:74 - `BRepFill_Pipe::FirstShape()`
     pub fn first_shape(&self) -> &crate::topo_ds::Shape {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKBool::BRepFill_Pipe_first_shape(
@@ -5763,7 +5760,7 @@ impl Pipe {
         }
     }
 
-    /// **Source:** `BRepFill_Pipe.hxx`:73 - `BRepFill_Pipe::LastShape()`
+    /// **Source:** `BRepFill_Pipe.hxx`:76 - `BRepFill_Pipe::LastShape()`
     pub fn last_shape(&self) -> &crate::topo_ds::Shape {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKBool::BRepFill_Pipe_last_shape(
@@ -5772,20 +5769,20 @@ impl Pipe {
         }
     }
 
-    /// **Source:** `BRepFill_Pipe.hxx`:77 - `BRepFill_Pipe::Generated()`
-    /// Returns the  list   of shapes generated   from the
+    /// **Source:** `BRepFill_Pipe.hxx`:80 - `BRepFill_Pipe::Generated()`
+    /// Returns the list of shapes generated from the
     /// shape <S>.
     pub fn generated(
         &mut self,
         S: &crate::topo_ds::Shape,
-        L: &mut crate::ffi_types::TopTools_ListOfShape,
+        L: &mut crate::ffi_types::NCollection_List_TopoDS_Shape,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::BRepFill_Pipe_generated(self as *mut Self, S, L)
         })
     }
 
-    /// **Source:** `BRepFill_Pipe.hxx`:82 - `BRepFill_Pipe::Face()`
+    /// **Source:** `BRepFill_Pipe.hxx`:85 - `BRepFill_Pipe::Face()`
     /// Returns the face created from an edge of the spine
     /// and an edge of the profile.
     /// if the edges are not in the spine or the profile
@@ -5801,10 +5798,10 @@ impl Pipe {
         }
     }
 
-    /// **Source:** `BRepFill_Pipe.hxx`:88 - `BRepFill_Pipe::Edge()`
+    /// **Source:** `BRepFill_Pipe.hxx`:91 - `BRepFill_Pipe::Edge()`
     /// Returns the edge created from an edge of the spine
     /// and a vertex of the profile.
-    /// if the edge or the vertex are not in  the spine or
+    /// if the edge or the vertex are not in the spine or
     /// the profile.
     pub fn edge(
         &mut self,
@@ -5818,8 +5815,8 @@ impl Pipe {
         }
     }
 
-    /// **Source:** `BRepFill_Pipe.hxx`:93 - `BRepFill_Pipe::Section()`
-    /// Returns  the shape created from the profile at the
+    /// **Source:** `BRepFill_Pipe.hxx`:96 - `BRepFill_Pipe::Section()`
+    /// Returns the shape created from the profile at the
     /// position of the vertex VSpine.
     /// if the vertex is not in the Spine
     pub fn section(
@@ -5833,7 +5830,7 @@ impl Pipe {
         }
     }
 
-    /// **Source:** `BRepFill_Pipe.hxx`:97 - `BRepFill_Pipe::PipeLine()`
+    /// **Source:** `BRepFill_Pipe.hxx`:100 - `BRepFill_Pipe::PipeLine()`
     /// Create a Wire by sweeping the Point along the <spine>
     /// if the <Spine> is undefined
     pub fn pipe_line(&mut self, Point: &crate::gp::Pnt) -> crate::OwnedPtr<crate::topo_ds::Wire> {
@@ -5849,7 +5846,7 @@ impl Pipe {
 // From BRepFill_PipeShell.hxx
 // ========================
 
-/// **Source:** `BRepFill_PipeShell.hxx`:52 - `BRepFill_PipeShell`
+/// **Source:** `BRepFill_PipeShell.hxx`:50 - `BRepFill_PipeShell`
 /// Computes a topological shell using some wires
 /// (spines and profiles) and displacement option
 /// Perform general sweeping construction
@@ -5864,7 +5861,7 @@ unsafe impl crate::CppDeletable for PipeShell {
 }
 
 impl PipeShell {
-    /// **Source:** `BRepFill_PipeShell.hxx`:58 - `BRepFill_PipeShell::BRepFill_PipeShell()`
+    /// **Source:** `BRepFill_PipeShell.hxx`:56 - `BRepFill_PipeShell::BRepFill_PipeShell()`
     /// Set an sweep's mode
     /// If no mode are set, the mode used in MakePipe is used
     pub fn new_wire(Spine: &crate::topo_ds::Wire) -> crate::OwnedPtr<Self> {
@@ -5875,26 +5872,25 @@ impl PipeShell {
         }
     }
 
-    /// **Source:** `BRepFill_PipeShell.hxx`:62 - `BRepFill_PipeShell::Set()`
+    /// **Source:** `BRepFill_PipeShell.hxx`:60 - `BRepFill_PipeShell::Set()`
     /// Set an Frenet or an CorrectedFrenet trihedron
-    /// to  perform  the  sweeping
+    /// to perform the sweeping
     pub fn set_bool(&mut self, Frenet: bool) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::BRepFill_PipeShell_set_bool(self as *mut Self, Frenet)
         })
     }
 
-    /// **Source:** `BRepFill_PipeShell.hxx`:66 - `BRepFill_PipeShell::SetDiscrete()`
-    /// Set a Discrete trihedron
-    /// to  perform  the  sweeping
+    /// **Source:** `BRepFill_PipeShell.hxx`:63 - `BRepFill_PipeShell::SetDiscrete()`
+    /// Set a Discrete trihedron to perform the sweeping
     pub fn set_discrete(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::BRepFill_PipeShell_set_discrete(self as *mut Self)
         })
     }
 
-    /// **Source:** `BRepFill_PipeShell.hxx`:70 - `BRepFill_PipeShell::Set()`
-    /// Set  an  fixed  trihedron  to  perform  the  sweeping
+    /// **Source:** `BRepFill_PipeShell.hxx`:67 - `BRepFill_PipeShell::Set()`
+    /// Set an fixed trihedron to perform the sweeping
     /// all sections will be parallel.
     pub fn set_ax2(&mut self, Axe: &crate::gp::Ax2) {
         crate::check_void_result(unsafe {
@@ -5902,8 +5898,8 @@ impl PipeShell {
         })
     }
 
-    /// **Source:** `BRepFill_PipeShell.hxx`:74 - `BRepFill_PipeShell::Set()`
-    /// Set an fixed  BiNormal  direction to  perform
+    /// **Source:** `BRepFill_PipeShell.hxx`:71 - `BRepFill_PipeShell::Set()`
+    /// Set an fixed BiNormal direction to perform
     /// the sweeping
     pub fn set_dir(&mut self, BiNormal: &crate::gp::Dir) {
         crate::check_void_result(unsafe {
@@ -5911,25 +5907,25 @@ impl PipeShell {
         })
     }
 
-    /// **Source:** `BRepFill_PipeShell.hxx`:80 - `BRepFill_PipeShell::Set()`
+    /// **Source:** `BRepFill_PipeShell.hxx`:77 - `BRepFill_PipeShell::Set()`
     /// Set support to the spine to define the BiNormal
-    /// at   the spine, like    the  normal the surfaces.
-    /// Warning: To  be  effective,  Each  edge  of  the  <spine>  must
-    /// have an  representation  on   one   face  of<SpineSupport>
+    /// at the spine, like the normal the surfaces.
+    /// Warning: To be effective, Each edge of the <spine> must
+    /// have an representation on one face of<SpineSupport>
     pub fn set_shape(&mut self, SpineSupport: &crate::topo_ds::Shape) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::BRepFill_PipeShell_set_shape(self as *mut Self, SpineSupport)
         })
     }
 
-    /// **Source:** `BRepFill_PipeShell.hxx`:102 - `BRepFill_PipeShell::Set()`
-    /// Set  an  auxiliary  spine  to  define  the Normal
-    /// For  each  Point  of  the  Spine  P,  an  Point  Q  is  evalued
-    /// on  <AuxiliarySpine>
+    /// **Source:** `BRepFill_PipeShell.hxx`:99 - `BRepFill_PipeShell::Set()`
+    /// Set an auxiliary spine to define the Normal
+    /// For each Point of the Spine P, an Point Q is evaluated
+    /// on <AuxiliarySpine>
     /// If <CurvilinearEquivalence>
-    /// Q split <AuxiliarySpine> with  the  same  length ratio
-    /// than P split  <Spline>.
-    /// Else  the  plan  define  by  P  and  the  tangent  to  the  <Spine>
+    /// Q split <AuxiliarySpine> with the same length ratio
+    /// than P split <Spline>.
+    /// Else the plan define by P and the tangent to the <Spine>
     /// intersect <AuxiliarySpine> in Q.
     /// If <KeepContact> equals BRepFill_NoContact: The Normal is defined
     /// by the vector PQ.
@@ -5959,7 +5955,7 @@ impl PipeShell {
         })
     }
 
-    /// **Source:** `BRepFill_PipeShell.hxx`:107 - `BRepFill_PipeShell::SetMaxDegree()`
+    /// **Source:** `BRepFill_PipeShell.hxx`:104 - `BRepFill_PipeShell::SetMaxDegree()`
     /// Define the maximum V degree of resulting surface
     pub fn set_max_degree(&mut self, NewMaxDegree: i32) {
         crate::check_void_result(unsafe {
@@ -5970,7 +5966,7 @@ impl PipeShell {
         })
     }
 
-    /// **Source:** `BRepFill_PipeShell.hxx`:111 - `BRepFill_PipeShell::SetMaxSegments()`
+    /// **Source:** `BRepFill_PipeShell.hxx`:108 - `BRepFill_PipeShell::SetMaxSegments()`
     /// Define the maximum number of spans in V-direction
     /// on resulting surface
     pub fn set_max_segments(&mut self, NewMaxSegments: i32) {
@@ -5982,12 +5978,12 @@ impl PipeShell {
         })
     }
 
-    /// **Source:** `BRepFill_PipeShell.hxx`:123 - `BRepFill_PipeShell::SetForceApproxC1()`
+    /// **Source:** `BRepFill_PipeShell.hxx`:120 - `BRepFill_PipeShell::SetForceApproxC1()`
     /// Set the flag that indicates attempt to approximate
     /// a C1-continuous surface if a swept surface proved
     /// to be C0.
     /// Give section to sweep.
-    /// Possibilities are :
+    /// Possibilities are:
     /// - Give one or several profile
     /// - Give one profile and an homotetic law.
     /// - Automatic compute of correspondence between profile, and section on the sweeped shape
@@ -6002,7 +5998,29 @@ impl PipeShell {
         })
     }
 
-    /// **Source:** `BRepFill_PipeShell.hxx`:126 - `BRepFill_PipeShell::Add()`
+    /// **Source:** `BRepFill_PipeShell.hxx`:125 - `BRepFill_PipeShell::SetIsBuildHistory()`
+    /// Sets the build history flag.
+    /// If set to True, the pipe shell will store the history of the sections
+    /// and the spine, which can be used for further modifications or analysis.
+    pub fn set_is_build_history(&mut self, theIsBuildHistory: bool) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKBool::BRepFill_PipeShell_set_is_build_history(
+                self as *mut Self,
+                theIsBuildHistory,
+            )
+        })
+    }
+
+    /// **Source:** `BRepFill_PipeShell.hxx`:132 - `BRepFill_PipeShell::IsBuildHistory()`
+    /// Returns the build history flag.
+    /// If True, the pipe shell stores the history of the sections and the spine.
+    pub fn is_build_history(&self) -> bool {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKBool::BRepFill_PipeShell_is_build_history(self as *const Self)
+        })
+    }
+
+    /// **Source:** `BRepFill_PipeShell.hxx`:135 - `BRepFill_PipeShell::Add()`
     /// Set an section. The correspondence with the spine, will be automatically performed.
     pub fn add_shape_bool2(
         &mut self,
@@ -6020,7 +6038,7 @@ impl PipeShell {
         })
     }
 
-    /// **Source:** `BRepFill_PipeShell.hxx`:131 - `BRepFill_PipeShell::Add()`
+    /// **Source:** `BRepFill_PipeShell.hxx`:140 - `BRepFill_PipeShell::Add()`
     /// Set an section. The correspondence with the spine, is given by Location.
     pub fn add_shape_vertex_bool2(
         &mut self,
@@ -6040,13 +6058,13 @@ impl PipeShell {
         })
     }
 
-    /// **Source:** `BRepFill_PipeShell.hxx`:138 - `BRepFill_PipeShell::SetLaw()`
-    /// Set  an    section  and  an   homotetic    law.
-    /// The  homotetie's  centers  is  given  by  point  on  the  <Spine>.
+    /// **Source:** `BRepFill_PipeShell.hxx`:147 - `BRepFill_PipeShell::SetLaw()`
+    /// Set an section and an homotetic law.
+    /// The homotetie's centers is given by point on the <Spine>.
     pub fn set_law_shape_handlelawfunction_bool2(
         &mut self,
         Profile: &crate::topo_ds::Shape,
-        L: &crate::ffi_types::HandleLawFunction,
+        L: &crate::ffi_types::Handle_Law_Function,
         WithContact: bool,
         WithCorrection: bool,
     ) {
@@ -6061,13 +6079,13 @@ impl PipeShell {
         })
     }
 
-    /// **Source:** `BRepFill_PipeShell.hxx`:145 - `BRepFill_PipeShell::SetLaw()`
-    /// Set  an    section  and  an   homotetic    law.
-    /// The  homotetie  center  is  given  by  point  on  the  <Spine>
+    /// **Source:** `BRepFill_PipeShell.hxx`:154 - `BRepFill_PipeShell::SetLaw()`
+    /// Set an section and an homotetic law.
+    /// The homotetie center is given by point on the <Spine>
     pub fn set_law_shape_handlelawfunction_vertex_bool2(
         &mut self,
         Profile: &crate::topo_ds::Shape,
-        L: &crate::ffi_types::HandleLawFunction,
+        L: &crate::ffi_types::Handle_Law_Function,
         Location: &crate::topo_ds::Vertex,
         WithContact: bool,
         WithCorrection: bool,
@@ -6077,7 +6095,7 @@ impl PipeShell {
         })
     }
 
-    /// **Source:** `BRepFill_PipeShell.hxx`:152 - `BRepFill_PipeShell::DeleteProfile()`
+    /// **Source:** `BRepFill_PipeShell.hxx`:161 - `BRepFill_PipeShell::DeleteProfile()`
     /// Delete an section.
     pub fn delete_profile(&mut self, Profile: &crate::topo_ds::Shape) {
         crate::check_void_result(unsafe {
@@ -6085,7 +6103,7 @@ impl PipeShell {
         })
     }
 
-    /// **Source:** `BRepFill_PipeShell.hxx`:156 - `BRepFill_PipeShell::IsReady()`
+    /// **Source:** `BRepFill_PipeShell.hxx`:165 - `BRepFill_PipeShell::IsReady()`
     /// Say if <me> is ready to build the shape
     /// return False if <me> do not have section definition
     pub fn is_ready(&self) -> bool {
@@ -6094,7 +6112,7 @@ impl PipeShell {
         })
     }
 
-    /// **Source:** `BRepFill_PipeShell.hxx`:159 - `BRepFill_PipeShell::GetStatus()`
+    /// **Source:** `BRepFill_PipeShell.hxx`:168 - `BRepFill_PipeShell::GetStatus()`
     /// Get a status, when Simulate or Build failed.
     pub fn get_status(&self) -> crate::geom_fill::PipeError {
         crate::geom_fill::PipeError::try_from(crate::check_result(unsafe {
@@ -6103,7 +6121,7 @@ impl PipeShell {
         .unwrap()
     }
 
-    /// **Source:** `BRepFill_PipeShell.hxx`:161 - `BRepFill_PipeShell::SetTolerance()`
+    /// **Source:** `BRepFill_PipeShell.hxx`:170 - `BRepFill_PipeShell::SetTolerance()`
     pub fn set_tolerance(&mut self, Tol3d: f64, BoundTol: f64, TolAngular: f64) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::BRepFill_PipeShell_set_tolerance(
@@ -6115,8 +6133,8 @@ impl PipeShell {
         })
     }
 
-    /// **Source:** `BRepFill_PipeShell.hxx`:167 - `BRepFill_PipeShell::SetTransition()`
-    /// Set the  Transition Mode to manage discontinuities
+    /// **Source:** `BRepFill_PipeShell.hxx`:176 - `BRepFill_PipeShell::SetTransition()`
+    /// Set the Transition Mode to manage discontinuities
     /// on the sweep.
     pub fn set_transition(
         &mut self,
@@ -6134,13 +6152,13 @@ impl PipeShell {
         })
     }
 
-    /// **Source:** `BRepFill_PipeShell.hxx`:173 - `BRepFill_PipeShell::Simulate()`
-    /// Perform simulation of the sweep :
+    /// **Source:** `BRepFill_PipeShell.hxx`:182 - `BRepFill_PipeShell::Simulate()`
+    /// Perform simulation of the sweep:
     /// Some Section are returned.
     pub fn simulate(
         &mut self,
         NumberOfSection: i32,
-        Sections: &mut crate::ffi_types::TopTools_ListOfShape,
+        Sections: &mut crate::ffi_types::NCollection_List_TopoDS_Shape,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::BRepFill_PipeShell_simulate(
@@ -6151,7 +6169,7 @@ impl PipeShell {
         })
     }
 
-    /// **Source:** `BRepFill_PipeShell.hxx`:177 - `BRepFill_PipeShell::Build()`
+    /// **Source:** `BRepFill_PipeShell.hxx`:186 - `BRepFill_PipeShell::Build()`
     /// Builds the resulting shape (redefined from MakeShape).
     pub fn build(&mut self) -> bool {
         crate::check_result(unsafe {
@@ -6159,7 +6177,7 @@ impl PipeShell {
         })
     }
 
-    /// **Source:** `BRepFill_PipeShell.hxx`:181 - `BRepFill_PipeShell::MakeSolid()`
+    /// **Source:** `BRepFill_PipeShell.hxx`:190 - `BRepFill_PipeShell::MakeSolid()`
     /// Transform the sweeping Shell in Solid.
     /// If the section are not closed returns False
     pub fn make_solid(&mut self) -> bool {
@@ -6168,7 +6186,7 @@ impl PipeShell {
         })
     }
 
-    /// **Source:** `BRepFill_PipeShell.hxx`:184 - `BRepFill_PipeShell::Shape()`
+    /// **Source:** `BRepFill_PipeShell.hxx`:193 - `BRepFill_PipeShell::Shape()`
     /// Returns the result Shape.
     pub fn shape(&self) -> &crate::topo_ds::Shape {
         unsafe {
@@ -6178,15 +6196,15 @@ impl PipeShell {
         }
     }
 
-    /// **Source:** `BRepFill_PipeShell.hxx`:186 - `BRepFill_PipeShell::ErrorOnSurface()`
+    /// **Source:** `BRepFill_PipeShell.hxx`:195 - `BRepFill_PipeShell::ErrorOnSurface()`
     pub fn error_on_surface(&self) -> f64 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::BRepFill_PipeShell_error_on_surface(self as *const Self)
         })
     }
 
-    /// **Source:** `BRepFill_PipeShell.hxx`:189 - `BRepFill_PipeShell::FirstShape()`
-    /// Returns the  TopoDS  Shape of the bottom of the sweep.
+    /// **Source:** `BRepFill_PipeShell.hxx`:198 - `BRepFill_PipeShell::FirstShape()`
+    /// Returns the TopoDS Shape of the bottom of the sweep.
     pub fn first_shape(&self) -> &crate::topo_ds::Shape {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKBool::BRepFill_PipeShell_first_shape(
@@ -6195,7 +6213,7 @@ impl PipeShell {
         }
     }
 
-    /// **Source:** `BRepFill_PipeShell.hxx`:192 - `BRepFill_PipeShell::LastShape()`
+    /// **Source:** `BRepFill_PipeShell.hxx`:201 - `BRepFill_PipeShell::LastShape()`
     /// Returns the TopoDS Shape of the top of the sweep.
     pub fn last_shape(&self) -> &crate::topo_ds::Shape {
         unsafe {
@@ -6205,15 +6223,15 @@ impl PipeShell {
         }
     }
 
-    /// **Source:** `BRepFill_PipeShell.hxx`:195 - `BRepFill_PipeShell::Profiles()`
+    /// **Source:** `BRepFill_PipeShell.hxx`:204 - `BRepFill_PipeShell::Profiles()`
     /// Returns the list of original profiles
-    pub fn profiles(&mut self, theProfiles: &mut crate::ffi_types::TopTools_ListOfShape) {
+    pub fn profiles(&mut self, theProfiles: &mut crate::ffi_types::NCollection_List_TopoDS_Shape) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::BRepFill_PipeShell_profiles(self as *mut Self, theProfiles)
         })
     }
 
-    /// **Source:** `BRepFill_PipeShell.hxx`:202 - `BRepFill_PipeShell::Spine()`
+    /// **Source:** `BRepFill_PipeShell.hxx`:211 - `BRepFill_PipeShell::Spine()`
     /// Returns the spine
     pub fn spine(&mut self) -> &crate::topo_ds::Wire {
         unsafe {
@@ -6223,21 +6241,21 @@ impl PipeShell {
         }
     }
 
-    /// **Source:** `BRepFill_PipeShell.hxx`:206 - `BRepFill_PipeShell::Generated()`
-    /// Returns the  list   of shapes generated   from the
+    /// **Source:** `BRepFill_PipeShell.hxx`:215 - `BRepFill_PipeShell::Generated()`
+    /// Returns the list of shapes generated from the
     /// shape <S>.
     pub fn generated(
         &mut self,
         S: &crate::topo_ds::Shape,
-        L: &mut crate::ffi_types::TopTools_ListOfShape,
+        L: &mut crate::ffi_types::NCollection_List_TopoDS_Shape,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::BRepFill_PipeShell_generated(self as *mut Self, S, L)
         })
     }
 
-    /// **Source:** `BRepFill_PipeShell.hxx`:208 - `BRepFill_PipeShell::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `BRepFill_PipeShell.hxx`:217 - `BRepFill_PipeShell::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKBool::BRepFill_PipeShell_dynamic_type(
                 self as *const Self,
@@ -6245,7 +6263,7 @@ impl PipeShell {
         }
     }
 
-    /// **Source:** `BRepFill_PipeShell.hxx`:208 - `BRepFill_PipeShell::get_type_name()`
+    /// **Source:** `BRepFill_PipeShell.hxx`:217 - `BRepFill_PipeShell::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -6256,8 +6274,8 @@ impl PipeShell {
         .into_owned()
     }
 
-    /// **Source:** `BRepFill_PipeShell.hxx`:208 - `BRepFill_PipeShell::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    /// **Source:** `BRepFill_PipeShell.hxx`:217 - `BRepFill_PipeShell::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKBool::BRepFill_PipeShell_get_type_descriptor(),
@@ -6290,7 +6308,7 @@ impl PipeShell {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleBRepFillPipeShell> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_BRepFill_PipeShell> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKBool::BRepFill_PipeShell_to_handle(obj.into_raw()),
@@ -6298,8 +6316,8 @@ impl PipeShell {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::BRepFill_PipeShell_inherited_IsInstance(
                 self as *const Self,
@@ -6308,8 +6326,8 @@ impl PipeShell {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::BRepFill_PipeShell_inherited_IsKind(
                 self as *const Self,
@@ -6318,7 +6336,7 @@ impl PipeShell {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -6332,14 +6350,14 @@ impl PipeShell {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::BRepFill_PipeShell_inherited_GetRefCount(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::BRepFill_PipeShell_inherited_IncrementRefCounter(
@@ -6348,7 +6366,7 @@ impl PipeShell {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::BRepFill_PipeShell_inherited_DecrementRefCounter(
@@ -6357,7 +6375,7 @@ impl PipeShell {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::BRepFill_PipeShell_inherited_Delete(self as *const Self)
@@ -6365,32 +6383,34 @@ impl PipeShell {
     }
 }
 
-pub use crate::ffi_types::HandleBRepFillPipeShell;
+pub use crate::ffi_types::Handle_BRepFill_PipeShell;
 
-unsafe impl crate::CppDeletable for HandleBRepFillPipeShell {
+unsafe impl crate::CppDeletable for Handle_BRepFill_PipeShell {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKBool::HandleBRepFillPipeShell_destructor(ptr);
+            crate::ffi_extern_TKBool::Handle_BRepFill_PipeShell_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleBRepFillPipeShell {
+unsafe impl crate::CppCopyable for Handle_BRepFill_PipeShell {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        unsafe { crate::check_result(crate::ffi_extern_TKBool::HandleBRepFillPipeShell_clone(ptr)) }
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKBool::Handle_BRepFill_PipeShell_clone(ptr))
+        }
     }
 }
 
-impl HandleBRepFillPipeShell {
+impl Handle_BRepFill_PipeShell {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
-        unsafe { crate::ffi_extern_TKBool::HandleBRepFillPipeShell_is_null(self as *const Self) }
+        unsafe { crate::ffi_extern_TKBool::Handle_BRepFill_PipeShell_is_null(self as *const Self) }
     }
 
     /// Dereference this Handle to access the underlying BRepFill_PipeShell
     pub fn get(&self) -> &crate::ffi_types::BRepFill_PipeShell {
         unsafe {
-            &*crate::check_result(crate::ffi_extern_TKBool::HandleBRepFillPipeShell_get(
+            &*crate::check_result(crate::ffi_extern_TKBool::Handle_BRepFill_PipeShell_get(
                 self as *const Self,
             ))
         }
@@ -6399,7 +6419,7 @@ impl HandleBRepFillPipeShell {
     /// Dereference this Handle to mutably access the underlying BRepFill_PipeShell
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::BRepFill_PipeShell {
         unsafe {
-            &mut *crate::check_result(crate::ffi_extern_TKBool::HandleBRepFillPipeShell_get_mut(
+            &mut *crate::check_result(crate::ffi_extern_TKBool::Handle_BRepFill_PipeShell_get_mut(
                 self as *mut Self,
             ))
         }
@@ -6408,10 +6428,10 @@ impl HandleBRepFillPipeShell {
     /// Upcast Handle<BRepFill_PipeShell> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKBool::HandleBRepFillPipeShell_to_HandleStandardTransient(
+                crate::ffi_extern_TKBool::Handle_BRepFill_PipeShell_to_Handle_Standard_Transient(
                     self as *const Self,
                 ),
             ))
@@ -6546,7 +6566,7 @@ impl Section {
 // From BRepFill_SectionLaw.hxx
 // ========================
 
-/// **Source:** `BRepFill_SectionLaw.hxx`:39 - `BRepFill_SectionLaw`
+/// **Source:** `BRepFill_SectionLaw.hxx`:40 - `BRepFill_SectionLaw`
 /// Build Section Law, with an Vertex, or an Wire
 pub use crate::ffi_types::BRepFill_SectionLaw as SectionLaw;
 
@@ -6559,15 +6579,15 @@ unsafe impl crate::CppDeletable for SectionLaw {
 }
 
 impl SectionLaw {
-    /// **Source:** `BRepFill_SectionLaw.hxx`:43 - `BRepFill_SectionLaw::NbLaw()`
+    /// **Source:** `BRepFill_SectionLaw.hxx`:44 - `BRepFill_SectionLaw::NbLaw()`
     pub fn nb_law(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::BRepFill_SectionLaw_nb_law(self as *const Self)
         })
     }
 
-    /// **Source:** `BRepFill_SectionLaw.hxx`:45 - `BRepFill_SectionLaw::Law()`
-    pub fn law(&self, Index: i32) -> &crate::ffi_types::HandleGeomFillSectionLaw {
+    /// **Source:** `BRepFill_SectionLaw.hxx`:46 - `BRepFill_SectionLaw::Law()`
+    pub fn law(&self, Index: i32) -> &crate::ffi_types::Handle_GeomFill_SectionLaw {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKBool::BRepFill_SectionLaw_law(
                 self as *const Self,
@@ -6576,51 +6596,51 @@ impl SectionLaw {
         }
     }
 
-    /// **Source:** `BRepFill_SectionLaw.hxx`:47 - `BRepFill_SectionLaw::IndexOfEdge()`
+    /// **Source:** `BRepFill_SectionLaw.hxx`:48 - `BRepFill_SectionLaw::IndexOfEdge()`
     pub fn index_of_edge(&self, anEdge: &crate::topo_ds::Shape) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::BRepFill_SectionLaw_index_of_edge(self as *const Self, anEdge)
         })
     }
 
-    /// **Source:** `BRepFill_SectionLaw.hxx`:49 - `BRepFill_SectionLaw::IsConstant()`
+    /// **Source:** `BRepFill_SectionLaw.hxx`:50 - `BRepFill_SectionLaw::IsConstant()`
     pub fn is_constant(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::BRepFill_SectionLaw_is_constant(self as *const Self)
         })
     }
 
-    /// **Source:** `BRepFill_SectionLaw.hxx`:51 - `BRepFill_SectionLaw::IsUClosed()`
+    /// **Source:** `BRepFill_SectionLaw.hxx`:52 - `BRepFill_SectionLaw::IsUClosed()`
     pub fn is_u_closed(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::BRepFill_SectionLaw_is_u_closed(self as *const Self)
         })
     }
 
-    /// **Source:** `BRepFill_SectionLaw.hxx`:53 - `BRepFill_SectionLaw::IsVClosed()`
+    /// **Source:** `BRepFill_SectionLaw.hxx`:54 - `BRepFill_SectionLaw::IsVClosed()`
     pub fn is_v_closed(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::BRepFill_SectionLaw_is_v_closed(self as *const Self)
         })
     }
 
-    /// **Source:** `BRepFill_SectionLaw.hxx`:55 - `BRepFill_SectionLaw::IsDone()`
+    /// **Source:** `BRepFill_SectionLaw.hxx`:56 - `BRepFill_SectionLaw::IsDone()`
     pub fn is_done(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::BRepFill_SectionLaw_is_done(self as *const Self)
         })
     }
 
-    /// **Source:** `BRepFill_SectionLaw.hxx`:58 - `BRepFill_SectionLaw::IsVertex()`
-    /// Say if the input shape is a  vertex.
+    /// **Source:** `BRepFill_SectionLaw.hxx`:59 - `BRepFill_SectionLaw::IsVertex()`
+    /// Say if the input shape is a vertex.
     pub fn is_vertex(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::BRepFill_SectionLaw_is_vertex(self as *const Self)
         })
     }
 
-    /// **Source:** `BRepFill_SectionLaw.hxx`:60 - `BRepFill_SectionLaw::ConcatenedLaw()`
-    pub fn concatened_law(&self) -> crate::OwnedPtr<crate::ffi_types::HandleGeomFillSectionLaw> {
+    /// **Source:** `BRepFill_SectionLaw.hxx`:61 - `BRepFill_SectionLaw::ConcatenedLaw()`
+    pub fn concatened_law(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_GeomFill_SectionLaw> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKBool::BRepFill_SectionLaw_concatened_law(self as *const Self),
@@ -6628,7 +6648,7 @@ impl SectionLaw {
         }
     }
 
-    /// **Source:** `BRepFill_SectionLaw.hxx`:62 - `BRepFill_SectionLaw::Continuity()`
+    /// **Source:** `BRepFill_SectionLaw.hxx`:63 - `BRepFill_SectionLaw::Continuity()`
     pub fn continuity(&self, Index: i32, TolAngular: f64) -> crate::geom_abs::Shape {
         crate::geom_abs::Shape::try_from(crate::check_result(unsafe {
             crate::ffi_extern_TKBool::BRepFill_SectionLaw_continuity(
@@ -6640,7 +6660,7 @@ impl SectionLaw {
         .unwrap()
     }
 
-    /// **Source:** `BRepFill_SectionLaw.hxx`:65 - `BRepFill_SectionLaw::VertexTol()`
+    /// **Source:** `BRepFill_SectionLaw.hxx`:66 - `BRepFill_SectionLaw::VertexTol()`
     pub fn vertex_tol(&self, Index: i32, Param: f64) -> f64 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::BRepFill_SectionLaw_vertex_tol(
@@ -6664,21 +6684,21 @@ impl SectionLaw {
         }
     }
 
-    /// **Source:** `BRepFill_SectionLaw.hxx`:71 - `BRepFill_SectionLaw::D0()`
+    /// **Source:** `BRepFill_SectionLaw.hxx`:70 - `BRepFill_SectionLaw::D0()`
     pub fn d0(&mut self, U: f64, S: &mut crate::topo_ds::Shape) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::BRepFill_SectionLaw_d0(self as *mut Self, U, S)
         })
     }
 
-    /// **Source:** `BRepFill_SectionLaw.hxx`:73 - `BRepFill_SectionLaw::Init()`
+    /// **Source:** `BRepFill_SectionLaw.hxx`:72 - `BRepFill_SectionLaw::Init()`
     pub fn init(&mut self, W: &crate::topo_ds::Wire) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::BRepFill_SectionLaw_init(self as *mut Self, W)
         })
     }
 
-    /// **Source:** `BRepFill_SectionLaw.hxx`:75 - `BRepFill_SectionLaw::CurrentEdge()`
+    /// **Source:** `BRepFill_SectionLaw.hxx`:74 - `BRepFill_SectionLaw::CurrentEdge()`
     pub fn current_edge(&mut self) -> crate::OwnedPtr<crate::topo_ds::Edge> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -6687,8 +6707,8 @@ impl SectionLaw {
         }
     }
 
-    /// **Source:** `BRepFill_SectionLaw.hxx`:77 - `BRepFill_SectionLaw::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `BRepFill_SectionLaw.hxx`:76 - `BRepFill_SectionLaw::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKBool::BRepFill_SectionLaw_dynamic_type(
                 self as *const Self,
@@ -6696,7 +6716,7 @@ impl SectionLaw {
         }
     }
 
-    /// **Source:** `BRepFill_SectionLaw.hxx`:77 - `BRepFill_SectionLaw::get_type_name()`
+    /// **Source:** `BRepFill_SectionLaw.hxx`:76 - `BRepFill_SectionLaw::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -6707,8 +6727,8 @@ impl SectionLaw {
         .into_owned()
     }
 
-    /// **Source:** `BRepFill_SectionLaw.hxx`:77 - `BRepFill_SectionLaw::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    /// **Source:** `BRepFill_SectionLaw.hxx`:76 - `BRepFill_SectionLaw::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKBool::BRepFill_SectionLaw_get_type_descriptor(),
@@ -6738,8 +6758,8 @@ impl SectionLaw {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::BRepFill_SectionLaw_inherited_IsInstance(
                 self as *const Self,
@@ -6748,8 +6768,8 @@ impl SectionLaw {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::BRepFill_SectionLaw_inherited_IsKind(
                 self as *const Self,
@@ -6758,7 +6778,7 @@ impl SectionLaw {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -6772,14 +6792,14 @@ impl SectionLaw {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::BRepFill_SectionLaw_inherited_GetRefCount(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::BRepFill_SectionLaw_inherited_IncrementRefCounter(
@@ -6788,7 +6808,7 @@ impl SectionLaw {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::BRepFill_SectionLaw_inherited_DecrementRefCounter(
@@ -6797,7 +6817,7 @@ impl SectionLaw {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::BRepFill_SectionLaw_inherited_Delete(self as *const Self)
@@ -6805,34 +6825,34 @@ impl SectionLaw {
     }
 }
 
-pub use crate::ffi_types::HandleBRepFillSectionLaw;
+pub use crate::ffi_types::Handle_BRepFill_SectionLaw;
 
-unsafe impl crate::CppDeletable for HandleBRepFillSectionLaw {
+unsafe impl crate::CppDeletable for Handle_BRepFill_SectionLaw {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKBool::HandleBRepFillSectionLaw_destructor(ptr);
+            crate::ffi_extern_TKBool::Handle_BRepFill_SectionLaw_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleBRepFillSectionLaw {
+unsafe impl crate::CppCopyable for Handle_BRepFill_SectionLaw {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
         unsafe {
-            crate::check_result(crate::ffi_extern_TKBool::HandleBRepFillSectionLaw_clone(ptr))
+            crate::check_result(crate::ffi_extern_TKBool::Handle_BRepFill_SectionLaw_clone(ptr))
         }
     }
 }
 
-impl HandleBRepFillSectionLaw {
+impl Handle_BRepFill_SectionLaw {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
-        unsafe { crate::ffi_extern_TKBool::HandleBRepFillSectionLaw_is_null(self as *const Self) }
+        unsafe { crate::ffi_extern_TKBool::Handle_BRepFill_SectionLaw_is_null(self as *const Self) }
     }
 
     /// Dereference this Handle to access the underlying BRepFill_SectionLaw
     pub fn get(&self) -> &crate::ffi_types::BRepFill_SectionLaw {
         unsafe {
-            &*crate::check_result(crate::ffi_extern_TKBool::HandleBRepFillSectionLaw_get(
+            &*crate::check_result(crate::ffi_extern_TKBool::Handle_BRepFill_SectionLaw_get(
                 self as *const Self,
             ))
         }
@@ -6841,7 +6861,7 @@ impl HandleBRepFillSectionLaw {
     /// Dereference this Handle to mutably access the underlying BRepFill_SectionLaw
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::BRepFill_SectionLaw {
         unsafe {
-            &mut *crate::check_result(crate::ffi_extern_TKBool::HandleBRepFillSectionLaw_get_mut(
+            &mut *crate::check_result(crate::ffi_extern_TKBool::Handle_BRepFill_SectionLaw_get_mut(
                 self as *mut Self,
             ))
         }
@@ -6850,10 +6870,10 @@ impl HandleBRepFillSectionLaw {
     /// Upcast Handle<BRepFill_SectionLaw> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKBool::HandleBRepFillSectionLaw_to_HandleStandardTransient(
+                crate::ffi_extern_TKBool::Handle_BRepFill_SectionLaw_to_Handle_Standard_Transient(
                     self as *const Self,
                 ),
             ))
@@ -6865,11 +6885,9 @@ impl HandleBRepFillSectionLaw {
     /// Returns `None` if the handle does not point to a `BRepFill_NSections` (or subclass).
     pub fn downcast_to_n_sections(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleBRepFillNSections>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_BRepFill_NSections>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKBool::HandleBRepFillSectionLaw_downcast_to_HandleBRepFillNSections(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKBool::Handle_BRepFill_SectionLaw_downcast_to_Handle_BRepFill_NSections(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -6883,11 +6901,9 @@ impl HandleBRepFillSectionLaw {
     /// Returns `None` if the handle does not point to a `BRepFill_ShapeLaw` (or subclass).
     pub fn downcast_to_shape_law(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleBRepFillShapeLaw>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_BRepFill_ShapeLaw>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKBool::HandleBRepFillSectionLaw_downcast_to_HandleBRepFillShapeLaw(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKBool::Handle_BRepFill_SectionLaw_downcast_to_Handle_BRepFill_ShapeLaw(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -6917,7 +6933,7 @@ impl SectionPlacement {
     /// **Source:** `BRepFill_SectionPlacement.hxx`:36 - `BRepFill_SectionPlacement::BRepFill_SectionPlacement()`
     /// Automatic placement
     pub fn new_handlebrepfilllocationlaw_shape_bool2(
-        Law: &crate::ffi_types::HandleBRepFillLocationLaw,
+        Law: &crate::ffi_types::Handle_BRepFill_LocationLaw,
         Section: &crate::topo_ds::Shape,
         WithContact: bool,
         WithCorrection: bool,
@@ -6930,7 +6946,7 @@ impl SectionPlacement {
     /// **Source:** `BRepFill_SectionPlacement.hxx`:42 - `BRepFill_SectionPlacement::BRepFill_SectionPlacement()`
     /// Placement on vertex
     pub fn new_handlebrepfilllocationlaw_shape2_bool2(
-        Law: &crate::ffi_types::HandleBRepFillLocationLaw,
+        Law: &crate::ffi_types::Handle_BRepFill_LocationLaw,
         Section: &crate::topo_ds::Shape,
         Vertex: &crate::topo_ds::Shape,
         WithContact: bool,
@@ -6944,7 +6960,7 @@ impl SectionPlacement {
     /// **Source:** `BRepFill_SectionPlacement.hxx`:36 - `BRepFill_SectionPlacement::BRepFill_SectionPlacement()`
     /// Automatic placement
     pub fn new_handlebrepfilllocationlaw_shape_bool(
-        Law: &crate::ffi_types::HandleBRepFillLocationLaw,
+        Law: &crate::ffi_types::Handle_BRepFill_LocationLaw,
         Section: &crate::topo_ds::Shape,
         WithContact: bool,
     ) -> crate::OwnedPtr<Self> {
@@ -6954,7 +6970,7 @@ impl SectionPlacement {
     /// **Source:** `BRepFill_SectionPlacement.hxx`:36 - `BRepFill_SectionPlacement::BRepFill_SectionPlacement()`
     /// Automatic placement
     pub fn new_handlebrepfilllocationlaw_shape(
-        Law: &crate::ffi_types::HandleBRepFillLocationLaw,
+        Law: &crate::ffi_types::Handle_BRepFill_LocationLaw,
         Section: &crate::topo_ds::Shape,
     ) -> crate::OwnedPtr<Self> {
         Self::new_handlebrepfilllocationlaw_shape_bool2(Law, Section, false, false)
@@ -6963,7 +6979,7 @@ impl SectionPlacement {
     /// **Source:** `BRepFill_SectionPlacement.hxx`:42 - `BRepFill_SectionPlacement::BRepFill_SectionPlacement()`
     /// Placement on vertex
     pub fn new_handlebrepfilllocationlaw_shape2_bool(
-        Law: &crate::ffi_types::HandleBRepFillLocationLaw,
+        Law: &crate::ffi_types::Handle_BRepFill_LocationLaw,
         Section: &crate::topo_ds::Shape,
         Vertex: &crate::topo_ds::Shape,
         WithContact: bool,
@@ -6974,7 +6990,7 @@ impl SectionPlacement {
     /// **Source:** `BRepFill_SectionPlacement.hxx`:42 - `BRepFill_SectionPlacement::BRepFill_SectionPlacement()`
     /// Placement on vertex
     pub fn new_handlebrepfilllocationlaw_shape2(
-        Law: &crate::ffi_types::HandleBRepFillLocationLaw,
+        Law: &crate::ffi_types::Handle_BRepFill_LocationLaw,
         Section: &crate::topo_ds::Shape,
         Vertex: &crate::topo_ds::Shape,
     ) -> crate::OwnedPtr<Self> {
@@ -7004,7 +7020,7 @@ impl SectionPlacement {
 // From BRepFill_ShapeLaw.hxx
 // ========================
 
-/// **Source:** `BRepFill_ShapeLaw.hxx`:38 - `BRepFill_ShapeLaw`
+/// **Source:** `BRepFill_ShapeLaw.hxx`:36 - `BRepFill_ShapeLaw`
 /// Build Section Law, with an Vertex, or an Wire
 pub use crate::ffi_types::BRepFill_ShapeLaw as ShapeLaw;
 
@@ -7017,7 +7033,7 @@ unsafe impl crate::CppDeletable for ShapeLaw {
 }
 
 impl ShapeLaw {
-    /// **Source:** `BRepFill_ShapeLaw.hxx`:43 - `BRepFill_ShapeLaw::BRepFill_ShapeLaw()`
+    /// **Source:** `BRepFill_ShapeLaw.hxx`:41 - `BRepFill_ShapeLaw::BRepFill_ShapeLaw()`
     /// Construct an constant Law
     pub fn new_vertex_bool(V: &crate::topo_ds::Vertex, Build: bool) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -7027,7 +7043,7 @@ impl ShapeLaw {
         }
     }
 
-    /// **Source:** `BRepFill_ShapeLaw.hxx`:47 - `BRepFill_ShapeLaw::BRepFill_ShapeLaw()`
+    /// **Source:** `BRepFill_ShapeLaw.hxx`:44 - `BRepFill_ShapeLaw::BRepFill_ShapeLaw()`
     /// Construct an constant Law
     pub fn new_wire_bool(W: &crate::topo_ds::Wire, Build: bool) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -7037,11 +7053,11 @@ impl ShapeLaw {
         }
     }
 
-    /// **Source:** `BRepFill_ShapeLaw.hxx`:51 - `BRepFill_ShapeLaw::BRepFill_ShapeLaw()`
+    /// **Source:** `BRepFill_ShapeLaw.hxx`:47 - `BRepFill_ShapeLaw::BRepFill_ShapeLaw()`
     /// Construct an evolutive Law
     pub fn new_wire_handlelawfunction_bool(
         W: &crate::topo_ds::Wire,
-        L: &crate::ffi_types::HandleLawFunction,
+        L: &crate::ffi_types::Handle_Law_Function,
         Build: bool,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -7053,46 +7069,46 @@ impl ShapeLaw {
         }
     }
 
-    /// **Source:** `BRepFill_ShapeLaw.hxx`:43 - `BRepFill_ShapeLaw::BRepFill_ShapeLaw()`
+    /// **Source:** `BRepFill_ShapeLaw.hxx`:41 - `BRepFill_ShapeLaw::BRepFill_ShapeLaw()`
     /// Construct an constant Law
     pub fn new_vertex(V: &crate::topo_ds::Vertex) -> crate::OwnedPtr<Self> {
         Self::new_vertex_bool(V, true)
     }
 
-    /// **Source:** `BRepFill_ShapeLaw.hxx`:47 - `BRepFill_ShapeLaw::BRepFill_ShapeLaw()`
+    /// **Source:** `BRepFill_ShapeLaw.hxx`:44 - `BRepFill_ShapeLaw::BRepFill_ShapeLaw()`
     /// Construct an constant Law
     pub fn new_wire(W: &crate::topo_ds::Wire) -> crate::OwnedPtr<Self> {
         Self::new_wire_bool(W, true)
     }
 
-    /// **Source:** `BRepFill_ShapeLaw.hxx`:51 - `BRepFill_ShapeLaw::BRepFill_ShapeLaw()`
+    /// **Source:** `BRepFill_ShapeLaw.hxx`:47 - `BRepFill_ShapeLaw::BRepFill_ShapeLaw()`
     /// Construct an evolutive Law
     pub fn new_wire_handlelawfunction(
         W: &crate::topo_ds::Wire,
-        L: &crate::ffi_types::HandleLawFunction,
+        L: &crate::ffi_types::Handle_Law_Function,
     ) -> crate::OwnedPtr<Self> {
         Self::new_wire_handlelawfunction_bool(W, L, true)
     }
 
-    /// **Source:** `BRepFill_ShapeLaw.hxx`:56 - `BRepFill_ShapeLaw::IsVertex()`
-    /// Say if the input shape is a  vertex.
+    /// **Source:** `BRepFill_ShapeLaw.hxx`:52 - `BRepFill_ShapeLaw::IsVertex()`
+    /// Say if the input shape is a vertex.
     pub fn is_vertex(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::BRepFill_ShapeLaw_is_vertex(self as *const Self)
         })
     }
 
-    /// **Source:** `BRepFill_ShapeLaw.hxx`:59 - `BRepFill_ShapeLaw::IsConstant()`
-    /// Say if the Law is  Constant.
+    /// **Source:** `BRepFill_ShapeLaw.hxx`:55 - `BRepFill_ShapeLaw::IsConstant()`
+    /// Say if the Law is Constant.
     pub fn is_constant(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::BRepFill_ShapeLaw_is_constant(self as *const Self)
         })
     }
 
-    /// **Source:** `BRepFill_ShapeLaw.hxx`:62 - `BRepFill_ShapeLaw::ConcatenedLaw()`
+    /// **Source:** `BRepFill_ShapeLaw.hxx`:58 - `BRepFill_ShapeLaw::ConcatenedLaw()`
     /// Give the law build on a concatenated section
-    pub fn concatened_law(&self) -> crate::OwnedPtr<crate::ffi_types::HandleGeomFillSectionLaw> {
+    pub fn concatened_law(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_GeomFill_SectionLaw> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKBool::BRepFill_ShapeLaw_concatened_law(self as *const Self),
@@ -7100,7 +7116,7 @@ impl ShapeLaw {
         }
     }
 
-    /// **Source:** `BRepFill_ShapeLaw.hxx`:64 - `BRepFill_ShapeLaw::Continuity()`
+    /// **Source:** `BRepFill_ShapeLaw.hxx`:60 - `BRepFill_ShapeLaw::Continuity()`
     pub fn continuity(&self, Index: i32, TolAngular: f64) -> crate::geom_abs::Shape {
         crate::geom_abs::Shape::try_from(crate::check_result(unsafe {
             crate::ffi_extern_TKBool::BRepFill_ShapeLaw_continuity(
@@ -7112,7 +7128,7 @@ impl ShapeLaw {
         .unwrap()
     }
 
-    /// **Source:** `BRepFill_ShapeLaw.hxx`:68 - `BRepFill_ShapeLaw::VertexTol()`
+    /// **Source:** `BRepFill_ShapeLaw.hxx`:62 - `BRepFill_ShapeLaw::VertexTol()`
     pub fn vertex_tol(&self, Index: i32, Param: f64) -> f64 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::BRepFill_ShapeLaw_vertex_tol(
@@ -7123,7 +7139,7 @@ impl ShapeLaw {
         })
     }
 
-    /// **Source:** `BRepFill_ShapeLaw.hxx`:72 - `BRepFill_ShapeLaw::Vertex()`
+    /// **Source:** `BRepFill_ShapeLaw.hxx`:64 - `BRepFill_ShapeLaw::Vertex()`
     pub fn vertex(&self, Index: i32, Param: f64) -> crate::OwnedPtr<crate::topo_ds::Vertex> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -7136,14 +7152,14 @@ impl ShapeLaw {
         }
     }
 
-    /// **Source:** `BRepFill_ShapeLaw.hxx`:75 - `BRepFill_ShapeLaw::D0()`
+    /// **Source:** `BRepFill_ShapeLaw.hxx`:66 - `BRepFill_ShapeLaw::D0()`
     pub fn d0(&mut self, Param: f64, S: &mut crate::topo_ds::Shape) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::BRepFill_ShapeLaw_d0(self as *mut Self, Param, S)
         })
     }
 
-    /// **Source:** `BRepFill_ShapeLaw.hxx`:77 - `BRepFill_ShapeLaw::Edge()`
+    /// **Source:** `BRepFill_ShapeLaw.hxx`:68 - `BRepFill_ShapeLaw::Edge()`
     pub fn edge(&self, Index: i32) -> &crate::topo_ds::Edge {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKBool::BRepFill_ShapeLaw_edge(
@@ -7153,8 +7169,8 @@ impl ShapeLaw {
         }
     }
 
-    /// **Source:** `BRepFill_ShapeLaw.hxx`:79 - `BRepFill_ShapeLaw::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `BRepFill_ShapeLaw.hxx`:70 - `BRepFill_ShapeLaw::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKBool::BRepFill_ShapeLaw_dynamic_type(
                 self as *const Self,
@@ -7162,7 +7178,7 @@ impl ShapeLaw {
         }
     }
 
-    /// **Source:** `BRepFill_ShapeLaw.hxx`:79 - `BRepFill_ShapeLaw::get_type_name()`
+    /// **Source:** `BRepFill_ShapeLaw.hxx`:70 - `BRepFill_ShapeLaw::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -7173,8 +7189,8 @@ impl ShapeLaw {
         .into_owned()
     }
 
-    /// **Source:** `BRepFill_ShapeLaw.hxx`:79 - `BRepFill_ShapeLaw::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    /// **Source:** `BRepFill_ShapeLaw.hxx`:70 - `BRepFill_ShapeLaw::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKBool::BRepFill_ShapeLaw_get_type_descriptor(),
@@ -7229,7 +7245,7 @@ impl ShapeLaw {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleBRepFillShapeLaw> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_BRepFill_ShapeLaw> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKBool::BRepFill_ShapeLaw_to_handle(obj.into_raw()),
@@ -7237,15 +7253,15 @@ impl ShapeLaw {
         }
     }
 
-    /// Inherited: **Source:** `BRepFill_SectionLaw.hxx`:43 - `BRepFill_SectionLaw::NbLaw()`
+    /// Inherited: **Source:** `BRepFill_SectionLaw.hxx`:44 - `BRepFill_SectionLaw::NbLaw()`
     pub fn nb_law(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::BRepFill_ShapeLaw_inherited_NbLaw(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `BRepFill_SectionLaw.hxx`:45 - `BRepFill_SectionLaw::Law()`
-    pub fn law(&self, Index: i32) -> &crate::ffi_types::HandleGeomFillSectionLaw {
+    /// Inherited: **Source:** `BRepFill_SectionLaw.hxx`:46 - `BRepFill_SectionLaw::Law()`
+    pub fn law(&self, Index: i32) -> &crate::ffi_types::Handle_GeomFill_SectionLaw {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKBool::BRepFill_ShapeLaw_inherited_Law(
                 self as *const Self,
@@ -7254,7 +7270,7 @@ impl ShapeLaw {
         }
     }
 
-    /// Inherited: **Source:** `BRepFill_SectionLaw.hxx`:47 - `BRepFill_SectionLaw::IndexOfEdge()`
+    /// Inherited: **Source:** `BRepFill_SectionLaw.hxx`:48 - `BRepFill_SectionLaw::IndexOfEdge()`
     pub fn index_of_edge(&self, anEdge: &crate::topo_ds::Shape) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::BRepFill_ShapeLaw_inherited_IndexOfEdge(
@@ -7264,28 +7280,28 @@ impl ShapeLaw {
         })
     }
 
-    /// Inherited: **Source:** `BRepFill_SectionLaw.hxx`:51 - `BRepFill_SectionLaw::IsUClosed()`
+    /// Inherited: **Source:** `BRepFill_SectionLaw.hxx`:52 - `BRepFill_SectionLaw::IsUClosed()`
     pub fn is_u_closed(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::BRepFill_ShapeLaw_inherited_IsUClosed(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `BRepFill_SectionLaw.hxx`:53 - `BRepFill_SectionLaw::IsVClosed()`
+    /// Inherited: **Source:** `BRepFill_SectionLaw.hxx`:54 - `BRepFill_SectionLaw::IsVClosed()`
     pub fn is_v_closed(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::BRepFill_ShapeLaw_inherited_IsVClosed(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `BRepFill_SectionLaw.hxx`:55 - `BRepFill_SectionLaw::IsDone()`
+    /// Inherited: **Source:** `BRepFill_SectionLaw.hxx`:56 - `BRepFill_SectionLaw::IsDone()`
     pub fn is_done(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::BRepFill_ShapeLaw_inherited_IsDone(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `BRepFill_SectionLaw.hxx`:75 - `BRepFill_SectionLaw::CurrentEdge()`
+    /// Inherited: **Source:** `BRepFill_SectionLaw.hxx`:74 - `BRepFill_SectionLaw::CurrentEdge()`
     pub fn current_edge(&mut self) -> crate::OwnedPtr<crate::topo_ds::Edge> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -7296,8 +7312,8 @@ impl ShapeLaw {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::BRepFill_ShapeLaw_inherited_IsInstance(
                 self as *const Self,
@@ -7306,8 +7322,8 @@ impl ShapeLaw {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::BRepFill_ShapeLaw_inherited_IsKind(
                 self as *const Self,
@@ -7316,7 +7332,7 @@ impl ShapeLaw {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -7330,14 +7346,14 @@ impl ShapeLaw {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::BRepFill_ShapeLaw_inherited_GetRefCount(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::BRepFill_ShapeLaw_inherited_IncrementRefCounter(
@@ -7346,7 +7362,7 @@ impl ShapeLaw {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::BRepFill_ShapeLaw_inherited_DecrementRefCounter(
@@ -7355,7 +7371,7 @@ impl ShapeLaw {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::BRepFill_ShapeLaw_inherited_Delete(self as *const Self)
@@ -7363,32 +7379,34 @@ impl ShapeLaw {
     }
 }
 
-pub use crate::ffi_types::HandleBRepFillShapeLaw;
+pub use crate::ffi_types::Handle_BRepFill_ShapeLaw;
 
-unsafe impl crate::CppDeletable for HandleBRepFillShapeLaw {
+unsafe impl crate::CppDeletable for Handle_BRepFill_ShapeLaw {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKBool::HandleBRepFillShapeLaw_destructor(ptr);
+            crate::ffi_extern_TKBool::Handle_BRepFill_ShapeLaw_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleBRepFillShapeLaw {
+unsafe impl crate::CppCopyable for Handle_BRepFill_ShapeLaw {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        unsafe { crate::check_result(crate::ffi_extern_TKBool::HandleBRepFillShapeLaw_clone(ptr)) }
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKBool::Handle_BRepFill_ShapeLaw_clone(ptr))
+        }
     }
 }
 
-impl HandleBRepFillShapeLaw {
+impl Handle_BRepFill_ShapeLaw {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
-        unsafe { crate::ffi_extern_TKBool::HandleBRepFillShapeLaw_is_null(self as *const Self) }
+        unsafe { crate::ffi_extern_TKBool::Handle_BRepFill_ShapeLaw_is_null(self as *const Self) }
     }
 
     /// Dereference this Handle to access the underlying BRepFill_ShapeLaw
     pub fn get(&self) -> &crate::ffi_types::BRepFill_ShapeLaw {
         unsafe {
-            &*crate::check_result(crate::ffi_extern_TKBool::HandleBRepFillShapeLaw_get(
+            &*crate::check_result(crate::ffi_extern_TKBool::Handle_BRepFill_ShapeLaw_get(
                 self as *const Self,
             ))
         }
@@ -7397,7 +7415,7 @@ impl HandleBRepFillShapeLaw {
     /// Dereference this Handle to mutably access the underlying BRepFill_ShapeLaw
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::BRepFill_ShapeLaw {
         unsafe {
-            &mut *crate::check_result(crate::ffi_extern_TKBool::HandleBRepFillShapeLaw_get_mut(
+            &mut *crate::check_result(crate::ffi_extern_TKBool::Handle_BRepFill_ShapeLaw_get_mut(
                 self as *mut Self,
             ))
         }
@@ -7406,10 +7424,10 @@ impl HandleBRepFillShapeLaw {
     /// Upcast Handle<BRepFill_ShapeLaw> to Handle<BRepFill_SectionLaw>
     pub fn to_handle_section_law(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleBRepFillSectionLaw> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_BRepFill_SectionLaw> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKBool::HandleBRepFillShapeLaw_to_HandleBRepFillSectionLaw(
+                crate::ffi_extern_TKBool::Handle_BRepFill_ShapeLaw_to_Handle_BRepFill_SectionLaw(
                     self as *const Self,
                 ),
             ))
@@ -7419,10 +7437,10 @@ impl HandleBRepFillShapeLaw {
     /// Upcast Handle<BRepFill_ShapeLaw> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKBool::HandleBRepFillShapeLaw_to_HandleStandardTransient(
+                crate::ffi_extern_TKBool::Handle_BRepFill_ShapeLaw_to_Handle_Standard_Transient(
                     self as *const Self,
                 ),
             ))
@@ -7434,9 +7452,9 @@ impl HandleBRepFillShapeLaw {
 // From BRepFill_Sweep.hxx
 // ========================
 
-/// **Source:** `BRepFill_Sweep.hxx`:41 - `BRepFill_Sweep`
+/// **Source:** `BRepFill_Sweep.hxx`:43 - `BRepFill_Sweep`
 /// Topological Sweep Algorithm
-/// Computes an  Sweep  shell using a  generating
+/// Computes an Sweep shell using a generating
 /// wire, an SectionLaw and an LocationLaw.
 pub use crate::ffi_types::BRepFill_Sweep as Sweep;
 
@@ -7449,10 +7467,10 @@ unsafe impl crate::CppDeletable for Sweep {
 }
 
 impl Sweep {
-    /// **Source:** `BRepFill_Sweep.hxx`:46 - `BRepFill_Sweep::BRepFill_Sweep()`
+    /// **Source:** `BRepFill_Sweep.hxx`:48 - `BRepFill_Sweep::BRepFill_Sweep()`
     pub fn new_handlebrepfillsectionlaw_handlebrepfilllocationlaw_bool(
-        Section: &crate::ffi_types::HandleBRepFillSectionLaw,
-        Location: &crate::ffi_types::HandleBRepFillLocationLaw,
+        Section: &crate::ffi_types::Handle_BRepFill_SectionLaw,
+        Location: &crate::ffi_types::Handle_BRepFill_LocationLaw,
         WithKPart: bool,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -7460,7 +7478,7 @@ impl Sweep {
         }
     }
 
-    /// **Source:** `BRepFill_Sweep.hxx`:50 - `BRepFill_Sweep::SetBounds()`
+    /// **Source:** `BRepFill_Sweep.hxx`:52 - `BRepFill_Sweep::SetBounds()`
     pub fn set_bounds(
         &mut self,
         FirstShape: &crate::topo_ds::Wire,
@@ -7475,7 +7493,7 @@ impl Sweep {
         })
     }
 
-    /// **Source:** `BRepFill_Sweep.hxx`:61 - `BRepFill_Sweep::SetTolerance()`
+    /// **Source:** `BRepFill_Sweep.hxx`:63 - `BRepFill_Sweep::SetTolerance()`
     /// Set Approximation Tolerance
     /// Tol3d : Tolerance to surface approximation
     /// Tol2d : Tolerance used to perform curve approximation
@@ -7497,7 +7515,7 @@ impl Sweep {
         })
     }
 
-    /// **Source:** `BRepFill_Sweep.hxx`:70 - `BRepFill_Sweep::SetAngularControl()`
+    /// **Source:** `BRepFill_Sweep.hxx`:72 - `BRepFill_Sweep::SetAngularControl()`
     /// Tolerance  To controle Corner management.
     ///
     /// If the discontinuity is lesser than <AngleMin> in radian The
@@ -7512,7 +7530,7 @@ impl Sweep {
         })
     }
 
-    /// **Source:** `BRepFill_Sweep.hxx`:76 - `BRepFill_Sweep::SetForceApproxC1()`
+    /// **Source:** `BRepFill_Sweep.hxx`:77 - `BRepFill_Sweep::SetForceApproxC1()`
     /// Set the flag that indicates attempt to approximate
     /// a C1-continuous surface if a swept surface proved
     /// to be C0.
@@ -7525,48 +7543,7 @@ impl Sweep {
         })
     }
 
-    /// **Source:** `BRepFill_Sweep.hxx`:92 - `BRepFill_Sweep::Build()`
-    /// Build the Sweep Surface
-    /// Transition define Transition strategy
-    /// Approx define Approximation Strategy
-    /// - GeomFill_Section : The composed Function Location X Section
-    /// is directly approximated.
-    /// - GeomFill_Location : The location law is approximated, and the
-    /// SweepSurface builds an algebraic composition
-    /// of approximated location law and section law
-    /// This option is Ok, if Section.Surface() methode
-    /// is effective.
-    /// Continuity : The continuity in v waiting on the surface
-    /// Degmax     : The maximum degree in v required on the surface
-    /// Segmax     : The maximum number of span in v required on
-    /// the surface.
-    pub fn build(
-        &mut self,
-        ReversedEdges: &mut crate::ffi_types::TopTools_MapOfShape,
-        Tapes: &mut crate::ffi_types::BRepFill_DataMapOfShapeHArray2OfShape,
-        Rails: &mut crate::ffi_types::BRepFill_DataMapOfShapeHArray2OfShape,
-        Transition: crate::b_rep_fill::TransitionStyle,
-        Continuity: crate::geom_abs::Shape,
-        Approx: crate::geom_fill::ApproxStyle,
-        Degmax: i32,
-        Segmax: i32,
-    ) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKBool::BRepFill_Sweep_build(
-                self as *mut Self,
-                ReversedEdges,
-                Tapes,
-                Rails,
-                Transition.into(),
-                Continuity.into(),
-                Approx.into(),
-                Degmax,
-                Segmax,
-            )
-        })
-    }
-
-    /// **Source:** `BRepFill_Sweep.hxx`:102 - `BRepFill_Sweep::IsDone()`
+    /// **Source:** `BRepFill_Sweep.hxx`:107 - `BRepFill_Sweep::IsDone()`
     /// Say if the Shape is Build.
     pub fn is_done(&self) -> bool {
         crate::check_result(unsafe {
@@ -7574,8 +7551,8 @@ impl Sweep {
         })
     }
 
-    /// **Source:** `BRepFill_Sweep.hxx`:105 - `BRepFill_Sweep::Shape()`
-    /// returns the Sweeping Shape
+    /// **Source:** `BRepFill_Sweep.hxx`:110 - `BRepFill_Sweep::Shape()`
+    /// Returns the Sweeping Shape
     pub fn shape(&self) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -7584,16 +7561,18 @@ impl Sweep {
         }
     }
 
-    /// **Source:** `BRepFill_Sweep.hxx`:108 - `BRepFill_Sweep::ErrorOnSurface()`
-    /// Get the Approximation  error.
+    /// **Source:** `BRepFill_Sweep.hxx`:113 - `BRepFill_Sweep::ErrorOnSurface()`
+    /// Get the Approximation error.
     pub fn error_on_surface(&self) -> f64 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::BRepFill_Sweep_error_on_surface(self as *const Self)
         })
     }
 
-    /// **Source:** `BRepFill_Sweep.hxx`:110 - `BRepFill_Sweep::SubShape()`
-    pub fn sub_shape(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTopToolsHArray2OfShape> {
+    /// **Source:** `BRepFill_Sweep.hxx`:115 - `BRepFill_Sweep::SubShape()`
+    pub fn sub_shape(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HArray2_TopoDS_Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKBool::BRepFill_Sweep_sub_shape(self as *const Self),
@@ -7601,8 +7580,10 @@ impl Sweep {
         }
     }
 
-    /// **Source:** `BRepFill_Sweep.hxx`:112 - `BRepFill_Sweep::InterFaces()`
-    pub fn inter_faces(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTopToolsHArray2OfShape> {
+    /// **Source:** `BRepFill_Sweep.hxx`:117 - `BRepFill_Sweep::InterFaces()`
+    pub fn inter_faces(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HArray2_TopoDS_Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKBool::BRepFill_Sweep_inter_faces(self as *const Self),
@@ -7610,8 +7591,10 @@ impl Sweep {
         }
     }
 
-    /// **Source:** `BRepFill_Sweep.hxx`:114 - `BRepFill_Sweep::Sections()`
-    pub fn sections(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTopToolsHArray2OfShape> {
+    /// **Source:** `BRepFill_Sweep.hxx`:119 - `BRepFill_Sweep::Sections()`
+    pub fn sections(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HArray2_TopoDS_Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKBool::BRepFill_Sweep_sections(self as *const Self),
@@ -7619,8 +7602,8 @@ impl Sweep {
         }
     }
 
-    /// **Source:** `BRepFill_Sweep.hxx`:117 - `BRepFill_Sweep::Tape()`
-    /// returns the Tape corresponding to Index-th edge of section
+    /// **Source:** `BRepFill_Sweep.hxx`:122 - `BRepFill_Sweep::Tape()`
+    /// Returns the Tape corresponding to Index-th edge of section
     pub fn tape(&self, Index: i32) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -7630,11 +7613,20 @@ impl Sweep {
     }
 }
 
+// ── Skipped symbols for Sweep (1 total) ──
+// SKIPPED: **Source:** `BRepFill_Sweep.hxx`:93 - `BRepFill_Sweep::Build`
+//   method: Build the Sweep Surface
+//   method: Transition define Transition strategy
+//   method: Approx define Approximation Strategy
+//   Reason: has unbindable types: param 'Tapes': unresolved template type (NCollection_DataMap<TopoDS_Shape, occ::handle<NCollection_HArray2<TopoDS_Shape>>, TopTools_ShapeMapHasher>&); param 'Rails': unresolved template type (NCollection_DataMap<TopoDS_Shape, occ::handle<NCollection_HArray2<TopoDS_Shape>>, TopTools_ShapeMapHasher>&)
+//   // pub fn build(&mut self, ReversedEdges: &mut Map_TopoDS_Shape_TopTools_ShapeMapHasher, Tapes: /* NCollection_DataMap<TopoDS_Shape, occ::handle<NCollection_HArray2<TopoDS_Shape>>, TopTools_ShapeMapHasher>& */, Rails: /* NCollection_DataMap<TopoDS_Shape, occ::handle<NCollection_HArray2<TopoDS_Shape>>, TopTools_ShapeMapHasher>& */, Transition: TransitionStyle, Continuity: Shape, Approx: ApproxStyle, Degmax: i32, Segmax: i32);
+//
+
 // ========================
 // From BRepFill_TrimEdgeTool.hxx
 // ========================
 
-/// **Source:** `BRepFill_TrimEdgeTool.hxx`:36 - `BRepFill_TrimEdgeTool`
+/// **Source:** `BRepFill_TrimEdgeTool.hxx`:37 - `BRepFill_TrimEdgeTool`
 /// Geometric Tool using to construct Offset Wires.
 pub use crate::ffi_types::BRepFill_TrimEdgeTool as TrimEdgeTool;
 
@@ -7647,7 +7639,7 @@ unsafe impl crate::CppDeletable for TrimEdgeTool {
 }
 
 impl TrimEdgeTool {
-    /// **Source:** `BRepFill_TrimEdgeTool.hxx`:41 - `BRepFill_TrimEdgeTool::BRepFill_TrimEdgeTool()`
+    /// **Source:** `BRepFill_TrimEdgeTool.hxx`:42 - `BRepFill_TrimEdgeTool::BRepFill_TrimEdgeTool()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -7656,11 +7648,11 @@ impl TrimEdgeTool {
         }
     }
 
-    /// **Source:** `BRepFill_TrimEdgeTool.hxx`:43 - `BRepFill_TrimEdgeTool::BRepFill_TrimEdgeTool()`
+    /// **Source:** `BRepFill_TrimEdgeTool.hxx`:44 - `BRepFill_TrimEdgeTool::BRepFill_TrimEdgeTool()`
     pub fn new_bisec_handlegeom2dgeometry2_real(
         Bisec: &crate::bisector::Bisec,
-        S1: &crate::ffi_types::HandleGeom2dGeometry,
-        S2: &crate::ffi_types::HandleGeom2dGeometry,
+        S1: &crate::ffi_types::Handle_Geom2d_Geometry,
+        S2: &crate::ffi_types::Handle_Geom2d_Geometry,
         Offset: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -7668,7 +7660,7 @@ impl TrimEdgeTool {
         }
     }
 
-    /// **Source:** `BRepFill_TrimEdgeTool.hxx`:48 - `BRepFill_TrimEdgeTool::IntersectWith()`
+    /// **Source:** `BRepFill_TrimEdgeTool.hxx`:49 - `BRepFill_TrimEdgeTool::IntersectWith()`
     pub fn intersect_with(
         &mut self,
         Edge1: &crate::topo_ds::Edge,
@@ -7679,7 +7671,7 @@ impl TrimEdgeTool {
         End2: &crate::topo_ds::Vertex,
         theJoinType: crate::geom_abs::JoinType,
         IsOpenResult: bool,
-        Params: &mut crate::ffi_types::TColgp_SequenceOfPnt,
+        Params: &mut crate::ffi_types::NCollection_Sequence_gp_Pnt,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::BRepFill_TrimEdgeTool_intersect_with(
@@ -7697,13 +7689,13 @@ impl TrimEdgeTool {
         })
     }
 
-    /// **Source:** `BRepFill_TrimEdgeTool.hxx`:58 - `BRepFill_TrimEdgeTool::AddOrConfuse()`
+    /// **Source:** `BRepFill_TrimEdgeTool.hxx`:59 - `BRepFill_TrimEdgeTool::AddOrConfuse()`
     pub fn add_or_confuse(
         &self,
         Start: bool,
         Edge1: &crate::topo_ds::Edge,
         Edge2: &crate::topo_ds::Edge,
-        Params: &mut crate::ffi_types::TColgp_SequenceOfPnt,
+        Params: &mut crate::ffi_types::NCollection_Sequence_gp_Pnt,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::BRepFill_TrimEdgeTool_add_or_confuse(
@@ -7716,7 +7708,7 @@ impl TrimEdgeTool {
         })
     }
 
-    /// **Source:** `BRepFill_TrimEdgeTool.hxx`:63 - `BRepFill_TrimEdgeTool::IsInside()`
+    /// **Source:** `BRepFill_TrimEdgeTool.hxx`:64 - `BRepFill_TrimEdgeTool::IsInside()`
     pub fn is_inside(&self, P: &crate::gp::Pnt2d) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::BRepFill_TrimEdgeTool_is_inside(self as *const Self, P)
@@ -7728,7 +7720,7 @@ impl TrimEdgeTool {
 // From BRepFill_TrimShellCorner.hxx
 // ========================
 
-/// **Source:** `BRepFill_TrimShellCorner.hxx`:33 - `BRepFill_TrimShellCorner`
+/// **Source:** `BRepFill_TrimShellCorner.hxx`:36 - `BRepFill_TrimShellCorner`
 /// Trims sets of faces in the corner to make proper parts of pipe
 pub use crate::ffi_types::BRepFill_TrimShellCorner as TrimShellCorner;
 
@@ -7741,33 +7733,39 @@ unsafe impl crate::CppDeletable for TrimShellCorner {
 }
 
 impl TrimShellCorner {
-    /// **Source:** `BRepFill_TrimShellCorner.hxx`:44 - `BRepFill_TrimShellCorner::BRepFill_TrimShellCorner()`
+    /// **Source:** `BRepFill_TrimShellCorner.hxx`:47 - `BRepFill_TrimShellCorner::BRepFill_TrimShellCorner()`
     /// Constructor: takes faces to intersect,
     /// type of transition (it can be RightCorner or RoundCorner)
     /// and axis of bisector plane
     /// theIntersectPointCrossDirection : prev path direction at the origin point of theAxeOfBisPlane
     /// cross next path direction at the origin point of theAxeOfBisPlane. used when EE has more than
     /// one vertices
-    pub fn new_handletoptoolsharray2ofshape_transitionstyle_ax2_vec(
-        theFaces: &crate::ffi_types::HandleTopToolsHArray2OfShape,
+    pub fn new_handlencollectionharray2topodsshape_transitionstyle_ax2_vec(
+        theFaces: &crate::ffi_types::Handle_NCollection_HArray2_TopoDS_Shape,
         theTransition: crate::b_rep_fill::TransitionStyle,
         theAxeOfBisPlane: &crate::gp::Ax2,
         theIntPointCrossDir: &crate::gp::Vec,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKBool::BRepFill_TrimShellCorner_ctor_handletoptoolsharray2ofshape_transitionstyle_ax2_vec(theFaces, theTransition.into(), theAxeOfBisPlane, theIntPointCrossDir)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKBool::BRepFill_TrimShellCorner_ctor_handlencollectionharray2topodsshape_transitionstyle_ax2_vec(theFaces, theTransition.into(), theAxeOfBisPlane, theIntPointCrossDir)))
         }
     }
 
-    /// **Source:** `BRepFill_TrimShellCorner.hxx`:49 - `BRepFill_TrimShellCorner::AddBounds()`
-    pub fn add_bounds(&mut self, Bounds: &crate::ffi_types::HandleTopToolsHArray2OfShape) {
+    /// **Source:** `BRepFill_TrimShellCorner.hxx`:53 - `BRepFill_TrimShellCorner::AddBounds()`
+    pub fn add_bounds(
+        &mut self,
+        Bounds: &crate::ffi_types::Handle_NCollection_HArray2_TopoDS_Shape,
+    ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::BRepFill_TrimShellCorner_add_bounds(self as *mut Self, Bounds)
         })
     }
 
-    /// **Source:** `BRepFill_TrimShellCorner.hxx`:51 - `BRepFill_TrimShellCorner::AddUEdges()`
-    pub fn add_u_edges(&mut self, theUEdges: &crate::ffi_types::HandleTopToolsHArray2OfShape) {
+    /// **Source:** `BRepFill_TrimShellCorner.hxx`:55 - `BRepFill_TrimShellCorner::AddUEdges()`
+    pub fn add_u_edges(
+        &mut self,
+        theUEdges: &crate::ffi_types::Handle_NCollection_HArray2_TopoDS_Shape,
+    ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::BRepFill_TrimShellCorner_add_u_edges(
                 self as *mut Self,
@@ -7776,10 +7774,10 @@ impl TrimShellCorner {
         })
     }
 
-    /// **Source:** `BRepFill_TrimShellCorner.hxx`:53 - `BRepFill_TrimShellCorner::AddVEdges()`
+    /// **Source:** `BRepFill_TrimShellCorner.hxx`:57 - `BRepFill_TrimShellCorner::AddVEdges()`
     pub fn add_v_edges(
         &mut self,
-        theVEdges: &crate::ffi_types::HandleTopToolsHArray2OfShape,
+        theVEdges: &crate::ffi_types::Handle_NCollection_HArray2_TopoDS_Shape,
         theIndex: i32,
     ) {
         crate::check_void_result(unsafe {
@@ -7791,32 +7789,32 @@ impl TrimShellCorner {
         })
     }
 
-    /// **Source:** `BRepFill_TrimShellCorner.hxx`:56 - `BRepFill_TrimShellCorner::Perform()`
+    /// **Source:** `BRepFill_TrimShellCorner.hxx`:60 - `BRepFill_TrimShellCorner::Perform()`
     pub fn perform(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::BRepFill_TrimShellCorner_perform(self as *mut Self)
         })
     }
 
-    /// **Source:** `BRepFill_TrimShellCorner.hxx`:58 - `BRepFill_TrimShellCorner::IsDone()`
+    /// **Source:** `BRepFill_TrimShellCorner.hxx`:62 - `BRepFill_TrimShellCorner::IsDone()`
     pub fn is_done(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::BRepFill_TrimShellCorner_is_done(self as *const Self)
         })
     }
 
-    /// **Source:** `BRepFill_TrimShellCorner.hxx`:60 - `BRepFill_TrimShellCorner::HasSection()`
+    /// **Source:** `BRepFill_TrimShellCorner.hxx`:64 - `BRepFill_TrimShellCorner::HasSection()`
     pub fn has_section(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::BRepFill_TrimShellCorner_has_section(self as *const Self)
         })
     }
 
-    /// **Source:** `BRepFill_TrimShellCorner.hxx`:62 - `BRepFill_TrimShellCorner::Modified()`
+    /// **Source:** `BRepFill_TrimShellCorner.hxx`:66 - `BRepFill_TrimShellCorner::Modified()`
     pub fn modified(
         &mut self,
         S: &crate::topo_ds::Shape,
-        theModified: &mut crate::ffi_types::TopTools_ListOfShape,
+        theModified: &mut crate::ffi_types::NCollection_List_TopoDS_Shape,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::BRepFill_TrimShellCorner_modified(
@@ -7832,8 +7830,8 @@ impl TrimShellCorner {
 // From BRepFill_TrimSurfaceTool.hxx
 // ========================
 
-/// **Source:** `BRepFill_TrimSurfaceTool.hxx`:34 - `BRepFill_TrimSurfaceTool`
-/// Compute the Pcurves and  the 3d curves resulting
+/// **Source:** `BRepFill_TrimSurfaceTool.hxx`:35 - `BRepFill_TrimSurfaceTool`
+/// Compute the Pcurves and the 3d curves resulting
 /// of the trimming of a face by an extruded surface.
 pub use crate::ffi_types::BRepFill_TrimSurfaceTool as TrimSurfaceTool;
 
@@ -7846,9 +7844,9 @@ unsafe impl crate::CppDeletable for TrimSurfaceTool {
 }
 
 impl TrimSurfaceTool {
-    /// **Source:** `BRepFill_TrimSurfaceTool.hxx`:39 - `BRepFill_TrimSurfaceTool::BRepFill_TrimSurfaceTool()`
+    /// **Source:** `BRepFill_TrimSurfaceTool.hxx`:40 - `BRepFill_TrimSurfaceTool::BRepFill_TrimSurfaceTool()`
     pub fn new_handlegeom2dcurve_face2_edge2_bool2(
-        Bis: &crate::ffi_types::HandleGeom2dCurve,
+        Bis: &crate::ffi_types::Handle_Geom2d_Curve,
         Face1: &crate::topo_ds::Face,
         Face2: &crate::topo_ds::Face,
         Edge1: &crate::topo_ds::Edge,
@@ -7861,8 +7859,8 @@ impl TrimSurfaceTool {
         }
     }
 
-    /// **Source:** `BRepFill_TrimSurfaceTool.hxx`:54 - `BRepFill_TrimSurfaceTool::IntersectWith()`
-    /// Intersect <Bis>  with the  projection of the edges
+    /// **Source:** `BRepFill_TrimSurfaceTool.hxx`:55 - `BRepFill_TrimSurfaceTool::IntersectWith()`
+    /// Intersect <Bis> with the projection of the edges
     /// <EdgeOnFi> and returns the intersecting parameters
     /// on Bis and on the edges
     /// P.X() : Parameter on Bis
@@ -7873,7 +7871,7 @@ impl TrimSurfaceTool {
         &self,
         EdgeOnF1: &crate::topo_ds::Edge,
         EdgeOnF2: &crate::topo_ds::Edge,
-        Points: &mut crate::ffi_types::TColgp_SequenceOfPnt,
+        Points: &mut crate::ffi_types::NCollection_Sequence_gp_Pnt,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::BRepFill_TrimSurfaceTool_intersect_with(
@@ -7885,7 +7883,7 @@ impl TrimSurfaceTool {
         })
     }
 
-    /// **Source:** `BRepFill_TrimSurfaceTool.hxx`:59 - `BRepFill_TrimSurfaceTool::IsOnFace()`
+    /// **Source:** `BRepFill_TrimSurfaceTool.hxx`:60 - `BRepFill_TrimSurfaceTool::IsOnFace()`
     /// returns True if the Line (P, DZ) intersect the Faces
     pub fn is_on_face(&self, Point: &crate::gp::Pnt2d) -> bool {
         crate::check_result(unsafe {
@@ -7896,8 +7894,8 @@ impl TrimSurfaceTool {
         })
     }
 
-    /// **Source:** `BRepFill_TrimSurfaceTool.hxx`:63 - `BRepFill_TrimSurfaceTool::ProjOn()`
-    /// returns the parameter of the  point <Point> on the
+    /// **Source:** `BRepFill_TrimSurfaceTool.hxx`:64 - `BRepFill_TrimSurfaceTool::ProjOn()`
+    /// returns the parameter of the point <Point> on the
     /// Edge <Edge>, assuming that the point is on the edge.
     pub fn proj_on(&self, Point: &crate::gp::Pnt2d, Edge: &crate::topo_ds::Edge) -> f64 {
         crate::check_result(unsafe {
@@ -7909,14 +7907,14 @@ impl TrimSurfaceTool {
         })
     }
 
-    /// **Source:** `BRepFill_TrimSurfaceTool.hxx`:65 - `BRepFill_TrimSurfaceTool::Project()`
+    /// **Source:** `BRepFill_TrimSurfaceTool.hxx`:66 - `BRepFill_TrimSurfaceTool::Project()`
     pub fn project(
         &self,
         U1: f64,
         U2: f64,
-        Curve: &mut crate::ffi_types::HandleGeomCurve,
-        PCurve1: &mut crate::ffi_types::HandleGeom2dCurve,
-        PCurve2: &mut crate::ffi_types::HandleGeom2dCurve,
+        Curve: &mut crate::ffi_types::Handle_Geom_Curve,
+        PCurve1: &mut crate::ffi_types::Handle_Geom2d_Curve,
+        PCurve2: &mut crate::ffi_types::Handle_Geom2d_Curve,
         myCont: &mut crate::geom_abs::Shape,
     ) {
         let mut myCont_i32_: i32 = (*myCont).into();
@@ -7934,9 +7932,3 @@ impl TrimSurfaceTool {
         *myCont = crate::geom_abs::Shape::try_from(myCont_i32_).unwrap();
     }
 }
-
-// ========================
-// Additional type re-exports
-// ========================
-
-pub use crate::ffi_types::BRepFill_DataMapOfShapeHArray2OfShape as DataMapOfShapeHArray2OfShape;

@@ -4,8 +4,8 @@
 #include "occt_preamble.hxx"
 
 #include <Adaptor2d_Curve2d.hxx>
-#include <Adaptor3d_Curve.hxx>
 #include <Adaptor3d_HVertex.hxx>
+#include <Adaptor3d_Surface.hxx>
 #include <Adaptor3d_TopolTool.hxx>
 #include <Approx_ParametrizationType.hxx>
 #include <Approx_SweepFunction.hxx>
@@ -90,25 +90,17 @@
 #include <ChFiDS_ChamfMethod.hxx>
 #include <ChFiDS_ChamfMode.hxx>
 #include <ChFiDS_ChamfSpine.hxx>
-#include <ChFiDS_CircSection.hxx>
 #include <ChFiDS_CommonPoint.hxx>
 #include <ChFiDS_ElSpine.hxx>
 #include <ChFiDS_ErrorStatus.hxx>
 #include <ChFiDS_FaceInterference.hxx>
 #include <ChFiDS_FilSpine.hxx>
-#include <ChFiDS_HData.hxx>
-#include <ChFiDS_ListOfHElSpine.hxx>
-#include <ChFiDS_ListOfStripe.hxx>
 #include <ChFiDS_Map.hxx>
 #include <ChFiDS_Regul.hxx>
-#include <ChFiDS_SecArray1.hxx>
-#include <ChFiDS_SecHArray1.hxx>
-#include <ChFiDS_SequenceOfSurfData.hxx>
 #include <ChFiDS_Spine.hxx>
 #include <ChFiDS_State.hxx>
 #include <ChFiDS_Stripe.hxx>
 #include <ChFiDS_StripeMap.hxx>
-#include <ChFiDS_SurfData.hxx>
 #include <ChFiDS_TypeOfConcavity.hxx>
 #include <ChFiKPart_ComputeData.hxx>
 #include <Convert_ParameterisationType.hxx>
@@ -117,15 +109,10 @@
 #include <FilletSurf_InternalBuilder.hxx>
 #include <FilletSurf_StatusDone.hxx>
 #include <FilletSurf_StatusType.hxx>
-#include <Geom2d_BSplineCurve.hxx>
 #include <Geom2d_BezierCurve.hxx>
-#include <Geom2d_Curve.hxx>
 #include <GeomAbs_CurveType.hxx>
 #include <GeomAbs_Shape.hxx>
-#include <Geom_BSplineCurve.hxx>
 #include <Geom_BezierCurve.hxx>
-#include <Geom_Curve.hxx>
-#include <Geom_Surface.hxx>
 #include <Geom_TrimmedCurve.hxx>
 #include <IntSurf_Transition.hxx>
 #include <IntSurf_TypeTrans.hxx>
@@ -135,158 +122,130 @@
 #include <Standard_Handle.hxx>
 #include <Standard_OStream.hxx>
 #include <Standard_Type.hxx>
-#include <TColStd_Array1OfInteger.hxx>
-#include <TColStd_Array1OfReal.hxx>
-#include <TColStd_Array2OfReal.hxx>
-#include <TColgp_Array1OfPnt.hxx>
-#include <TColgp_Array1OfPnt2d.hxx>
-#include <TColgp_Array1OfVec.hxx>
-#include <TColgp_Array1OfVec2d.hxx>
-#include <TColgp_Array2OfPnt.hxx>
 #include <TopAbs_Orientation.hxx>
 #include <TopAbs_ShapeEnum.hxx>
-#include <TopAbs_State.hxx>
 #include <TopOpeBRepBuild_HBuilder.hxx>
 #include <TopOpeBRepDS_DataStructure.hxx>
-#include <TopTools_ListOfShape.hxx>
-#include <TopTools_SequenceOfShape.hxx>
 #include <TopoDS_Edge.hxx>
 #include <TopoDS_Face.hxx>
 #include <TopoDS_Vertex.hxx>
 #include <TopoDS_Wire.hxx>
 #include <gp_Ax1.hxx>
-#include <gp_Circ.hxx>
 #include <gp_Circ2d.hxx>
 #include <gp_Elips.hxx>
 #include <gp_Elips2d.hxx>
 #include <gp_Hypr.hxx>
 #include <gp_Hypr2d.hxx>
-#include <gp_Lin.hxx>
 #include <gp_Lin2d.hxx>
 #include <gp_Parab.hxx>
 #include <gp_Parab2d.hxx>
 #include <gp_Pln.hxx>
-#include <gp_Vec.hxx>
-#include <gp_Vec2d.hxx>
-#include <gp_XY.hxx>
 #include <math_Matrix.hxx>
 #include <math_Vector.hxx>
 
 // Handle type aliases
-typedef opencascade::handle<Adaptor2d_Curve2d> HandleAdaptor2dCurve2d;
-typedef opencascade::handle<Adaptor3d_Curve> HandleAdaptor3dCurve;
-typedef opencascade::handle<Adaptor3d_HVertex> HandleAdaptor3dHVertex;
-typedef opencascade::handle<Adaptor3d_Surface> HandleAdaptor3dSurface;
-typedef opencascade::handle<Adaptor3d_TopolTool> HandleAdaptor3dTopolTool;
-typedef opencascade::handle<Approx_SweepFunction> HandleApproxSweepFunction;
-typedef opencascade::handle<BRepAdaptor_Curve2d> HandleBRepAdaptorCurve2d;
-typedef opencascade::handle<BRepAdaptor_Surface> HandleBRepAdaptorSurface;
-typedef opencascade::handle<BRepBlend_AppFunc> HandleBRepBlendAppFunc;
-typedef opencascade::handle<BRepBlend_AppFuncRoot> HandleBRepBlendAppFuncRoot;
-typedef opencascade::handle<BRepBlend_AppFuncRst> HandleBRepBlendAppFuncRst;
-typedef opencascade::handle<BRepBlend_AppFuncRstRst> HandleBRepBlendAppFuncRstRst;
-typedef opencascade::handle<BRepBlend_Line> HandleBRepBlendLine;
-typedef opencascade::handle<ChFiDS_ChamfSpine> HandleChFiDSChamfSpine;
-typedef opencascade::handle<ChFiDS_ElSpine> HandleChFiDSElSpine;
-typedef opencascade::handle<ChFiDS_FilSpine> HandleChFiDSFilSpine;
-typedef opencascade::handle<ChFiDS_HData> HandleChFiDSHData;
-typedef opencascade::handle<ChFiDS_SecHArray1> HandleChFiDSSecHArray1;
-typedef opencascade::handle<ChFiDS_Spine> HandleChFiDSSpine;
-typedef opencascade::handle<ChFiDS_Stripe> HandleChFiDSStripe;
-typedef opencascade::handle<ChFiDS_SurfData> HandleChFiDSSurfData;
-typedef opencascade::handle<Geom2d_BSplineCurve> HandleGeom2dBSplineCurve;
-typedef opencascade::handle<Geom2d_BezierCurve> HandleGeom2dBezierCurve;
-typedef opencascade::handle<Geom2d_Curve> HandleGeom2dCurve;
-typedef opencascade::handle<Geom_BSplineCurve> HandleGeomBSplineCurve;
-typedef opencascade::handle<Geom_BezierCurve> HandleGeomBezierCurve;
-typedef opencascade::handle<Geom_Curve> HandleGeomCurve;
-typedef opencascade::handle<Geom_Surface> HandleGeomSurface;
-typedef opencascade::handle<Geom_TrimmedCurve> HandleGeomTrimmedCurve;
-typedef opencascade::handle<Law_Composite> HandleLawComposite;
-typedef opencascade::handle<Law_Function> HandleLawFunction;
-typedef opencascade::handle<Standard_Transient> HandleStandardTransient;
-typedef opencascade::handle<Standard_Type> HandleStandardType;
-typedef opencascade::handle<TopOpeBRepBuild_HBuilder> HandleTopOpeBRepBuildHBuilder;
+typedef opencascade::handle<Adaptor2d_Curve2d> Handle_Adaptor2d_Curve2d;
+typedef opencascade::handle<Adaptor3d_Curve> Handle_Adaptor3d_Curve;
+typedef opencascade::handle<Adaptor3d_HVertex> Handle_Adaptor3d_HVertex;
+typedef opencascade::handle<Adaptor3d_Surface> Handle_Adaptor3d_Surface;
+typedef opencascade::handle<Adaptor3d_TopolTool> Handle_Adaptor3d_TopolTool;
+typedef opencascade::handle<Approx_SweepFunction> Handle_Approx_SweepFunction;
+typedef opencascade::handle<BRepAdaptor_Curve2d> Handle_BRepAdaptor_Curve2d;
+typedef opencascade::handle<BRepAdaptor_Surface> Handle_BRepAdaptor_Surface;
+typedef opencascade::handle<BRepBlend_AppFunc> Handle_BRepBlend_AppFunc;
+typedef opencascade::handle<BRepBlend_AppFuncRoot> Handle_BRepBlend_AppFuncRoot;
+typedef opencascade::handle<BRepBlend_AppFuncRst> Handle_BRepBlend_AppFuncRst;
+typedef opencascade::handle<BRepBlend_AppFuncRstRst> Handle_BRepBlend_AppFuncRstRst;
+typedef opencascade::handle<BRepBlend_Line> Handle_BRepBlend_Line;
+typedef opencascade::handle<ChFiDS_ChamfSpine> Handle_ChFiDS_ChamfSpine;
+typedef opencascade::handle<ChFiDS_ElSpine> Handle_ChFiDS_ElSpine;
+typedef opencascade::handle<ChFiDS_FilSpine> Handle_ChFiDS_FilSpine;
+typedef opencascade::handle<ChFiDS_Spine> Handle_ChFiDS_Spine;
+typedef opencascade::handle<ChFiDS_Stripe> Handle_ChFiDS_Stripe;
+typedef opencascade::handle<ChFiDS_SurfData> Handle_ChFiDS_SurfData;
+typedef opencascade::handle<Geom2d_BSplineCurve> Handle_Geom2d_BSplineCurve;
+typedef opencascade::handle<Geom2d_BezierCurve> Handle_Geom2d_BezierCurve;
+typedef opencascade::handle<Geom2d_Curve> Handle_Geom2d_Curve;
+typedef opencascade::handle<Geom_BSplineCurve> Handle_Geom_BSplineCurve;
+typedef opencascade::handle<Geom_BezierCurve> Handle_Geom_BezierCurve;
+typedef opencascade::handle<Geom_Curve> Handle_Geom_Curve;
+typedef opencascade::handle<Geom_Surface> Handle_Geom_Surface;
+typedef opencascade::handle<Geom_TrimmedCurve> Handle_Geom_TrimmedCurve;
+typedef opencascade::handle<Law_Composite> Handle_Law_Composite;
+typedef opencascade::handle<Law_Function> Handle_Law_Function;
+typedef opencascade::handle<NCollection_HArray1_ChFiDS_CircSection> Handle_NCollection_HArray1_ChFiDS_CircSection;
+typedef opencascade::handle<NCollection_HSequence_opencascade_handle_ChFiDS_SurfData> Handle_NCollection_HSequence_opencascade_handle_ChFiDS_SurfData;
+typedef opencascade::handle<Standard_Transient> Handle_Standard_Transient;
+typedef opencascade::handle<Standard_Type> Handle_Standard_Type;
+typedef opencascade::handle<TopOpeBRepBuild_HBuilder> Handle_TopOpeBRepBuild_HBuilder;
 
 // Handle type destructors, clone, and is_null functions
-extern "C" void HandleBRepBlendAppFunc_destructor(HandleBRepBlendAppFunc* self_) { delete self_; }
-extern "C" OcctResult<HandleBRepBlendAppFunc*> HandleBRepBlendAppFunc_clone(const HandleBRepBlendAppFunc* self_) {
-    try { return {new HandleBRepBlendAppFunc(*self_), nullptr}; }
+extern "C" void Handle_BRepBlend_AppFunc_destructor(Handle_BRepBlend_AppFunc* self_) { delete self_; }
+extern "C" OcctResult<Handle_BRepBlend_AppFunc*> Handle_BRepBlend_AppFunc_clone(const Handle_BRepBlend_AppFunc* self_) {
+    try { return {new Handle_BRepBlend_AppFunc(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleBRepBlendAppFunc_is_null(const HandleBRepBlendAppFunc* self_) { return self_->IsNull(); }
-extern "C" void HandleBRepBlendAppFuncRoot_destructor(HandleBRepBlendAppFuncRoot* self_) { delete self_; }
-extern "C" OcctResult<HandleBRepBlendAppFuncRoot*> HandleBRepBlendAppFuncRoot_clone(const HandleBRepBlendAppFuncRoot* self_) {
-    try { return {new HandleBRepBlendAppFuncRoot(*self_), nullptr}; }
+extern "C" bool Handle_BRepBlend_AppFunc_is_null(const Handle_BRepBlend_AppFunc* self_) { return self_->IsNull(); }
+extern "C" void Handle_BRepBlend_AppFuncRoot_destructor(Handle_BRepBlend_AppFuncRoot* self_) { delete self_; }
+extern "C" OcctResult<Handle_BRepBlend_AppFuncRoot*> Handle_BRepBlend_AppFuncRoot_clone(const Handle_BRepBlend_AppFuncRoot* self_) {
+    try { return {new Handle_BRepBlend_AppFuncRoot(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleBRepBlendAppFuncRoot_is_null(const HandleBRepBlendAppFuncRoot* self_) { return self_->IsNull(); }
-extern "C" void HandleBRepBlendAppFuncRst_destructor(HandleBRepBlendAppFuncRst* self_) { delete self_; }
-extern "C" OcctResult<HandleBRepBlendAppFuncRst*> HandleBRepBlendAppFuncRst_clone(const HandleBRepBlendAppFuncRst* self_) {
-    try { return {new HandleBRepBlendAppFuncRst(*self_), nullptr}; }
+extern "C" bool Handle_BRepBlend_AppFuncRoot_is_null(const Handle_BRepBlend_AppFuncRoot* self_) { return self_->IsNull(); }
+extern "C" void Handle_BRepBlend_AppFuncRst_destructor(Handle_BRepBlend_AppFuncRst* self_) { delete self_; }
+extern "C" OcctResult<Handle_BRepBlend_AppFuncRst*> Handle_BRepBlend_AppFuncRst_clone(const Handle_BRepBlend_AppFuncRst* self_) {
+    try { return {new Handle_BRepBlend_AppFuncRst(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleBRepBlendAppFuncRst_is_null(const HandleBRepBlendAppFuncRst* self_) { return self_->IsNull(); }
-extern "C" void HandleBRepBlendAppFuncRstRst_destructor(HandleBRepBlendAppFuncRstRst* self_) { delete self_; }
-extern "C" OcctResult<HandleBRepBlendAppFuncRstRst*> HandleBRepBlendAppFuncRstRst_clone(const HandleBRepBlendAppFuncRstRst* self_) {
-    try { return {new HandleBRepBlendAppFuncRstRst(*self_), nullptr}; }
+extern "C" bool Handle_BRepBlend_AppFuncRst_is_null(const Handle_BRepBlend_AppFuncRst* self_) { return self_->IsNull(); }
+extern "C" void Handle_BRepBlend_AppFuncRstRst_destructor(Handle_BRepBlend_AppFuncRstRst* self_) { delete self_; }
+extern "C" OcctResult<Handle_BRepBlend_AppFuncRstRst*> Handle_BRepBlend_AppFuncRstRst_clone(const Handle_BRepBlend_AppFuncRstRst* self_) {
+    try { return {new Handle_BRepBlend_AppFuncRstRst(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleBRepBlendAppFuncRstRst_is_null(const HandleBRepBlendAppFuncRstRst* self_) { return self_->IsNull(); }
-extern "C" void HandleBRepBlendLine_destructor(HandleBRepBlendLine* self_) { delete self_; }
-extern "C" OcctResult<HandleBRepBlendLine*> HandleBRepBlendLine_clone(const HandleBRepBlendLine* self_) {
-    try { return {new HandleBRepBlendLine(*self_), nullptr}; }
+extern "C" bool Handle_BRepBlend_AppFuncRstRst_is_null(const Handle_BRepBlend_AppFuncRstRst* self_) { return self_->IsNull(); }
+extern "C" void Handle_BRepBlend_Line_destructor(Handle_BRepBlend_Line* self_) { delete self_; }
+extern "C" OcctResult<Handle_BRepBlend_Line*> Handle_BRepBlend_Line_clone(const Handle_BRepBlend_Line* self_) {
+    try { return {new Handle_BRepBlend_Line(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleBRepBlendLine_is_null(const HandleBRepBlendLine* self_) { return self_->IsNull(); }
-extern "C" void HandleChFiDSChamfSpine_destructor(HandleChFiDSChamfSpine* self_) { delete self_; }
-extern "C" OcctResult<HandleChFiDSChamfSpine*> HandleChFiDSChamfSpine_clone(const HandleChFiDSChamfSpine* self_) {
-    try { return {new HandleChFiDSChamfSpine(*self_), nullptr}; }
+extern "C" bool Handle_BRepBlend_Line_is_null(const Handle_BRepBlend_Line* self_) { return self_->IsNull(); }
+extern "C" void Handle_ChFiDS_ChamfSpine_destructor(Handle_ChFiDS_ChamfSpine* self_) { delete self_; }
+extern "C" OcctResult<Handle_ChFiDS_ChamfSpine*> Handle_ChFiDS_ChamfSpine_clone(const Handle_ChFiDS_ChamfSpine* self_) {
+    try { return {new Handle_ChFiDS_ChamfSpine(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleChFiDSChamfSpine_is_null(const HandleChFiDSChamfSpine* self_) { return self_->IsNull(); }
-extern "C" void HandleChFiDSElSpine_destructor(HandleChFiDSElSpine* self_) { delete self_; }
-extern "C" OcctResult<HandleChFiDSElSpine*> HandleChFiDSElSpine_clone(const HandleChFiDSElSpine* self_) {
-    try { return {new HandleChFiDSElSpine(*self_), nullptr}; }
+extern "C" bool Handle_ChFiDS_ChamfSpine_is_null(const Handle_ChFiDS_ChamfSpine* self_) { return self_->IsNull(); }
+extern "C" void Handle_ChFiDS_ElSpine_destructor(Handle_ChFiDS_ElSpine* self_) { delete self_; }
+extern "C" OcctResult<Handle_ChFiDS_ElSpine*> Handle_ChFiDS_ElSpine_clone(const Handle_ChFiDS_ElSpine* self_) {
+    try { return {new Handle_ChFiDS_ElSpine(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleChFiDSElSpine_is_null(const HandleChFiDSElSpine* self_) { return self_->IsNull(); }
-extern "C" void HandleChFiDSFilSpine_destructor(HandleChFiDSFilSpine* self_) { delete self_; }
-extern "C" OcctResult<HandleChFiDSFilSpine*> HandleChFiDSFilSpine_clone(const HandleChFiDSFilSpine* self_) {
-    try { return {new HandleChFiDSFilSpine(*self_), nullptr}; }
+extern "C" bool Handle_ChFiDS_ElSpine_is_null(const Handle_ChFiDS_ElSpine* self_) { return self_->IsNull(); }
+extern "C" void Handle_ChFiDS_FilSpine_destructor(Handle_ChFiDS_FilSpine* self_) { delete self_; }
+extern "C" OcctResult<Handle_ChFiDS_FilSpine*> Handle_ChFiDS_FilSpine_clone(const Handle_ChFiDS_FilSpine* self_) {
+    try { return {new Handle_ChFiDS_FilSpine(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleChFiDSFilSpine_is_null(const HandleChFiDSFilSpine* self_) { return self_->IsNull(); }
-extern "C" void HandleChFiDSHData_destructor(HandleChFiDSHData* self_) { delete self_; }
-extern "C" OcctResult<HandleChFiDSHData*> HandleChFiDSHData_clone(const HandleChFiDSHData* self_) {
-    try { return {new HandleChFiDSHData(*self_), nullptr}; }
+extern "C" bool Handle_ChFiDS_FilSpine_is_null(const Handle_ChFiDS_FilSpine* self_) { return self_->IsNull(); }
+extern "C" void Handle_ChFiDS_Spine_destructor(Handle_ChFiDS_Spine* self_) { delete self_; }
+extern "C" OcctResult<Handle_ChFiDS_Spine*> Handle_ChFiDS_Spine_clone(const Handle_ChFiDS_Spine* self_) {
+    try { return {new Handle_ChFiDS_Spine(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleChFiDSHData_is_null(const HandleChFiDSHData* self_) { return self_->IsNull(); }
-extern "C" void HandleChFiDSSecHArray1_destructor(HandleChFiDSSecHArray1* self_) { delete self_; }
-extern "C" OcctResult<HandleChFiDSSecHArray1*> HandleChFiDSSecHArray1_clone(const HandleChFiDSSecHArray1* self_) {
-    try { return {new HandleChFiDSSecHArray1(*self_), nullptr}; }
+extern "C" bool Handle_ChFiDS_Spine_is_null(const Handle_ChFiDS_Spine* self_) { return self_->IsNull(); }
+extern "C" void Handle_ChFiDS_Stripe_destructor(Handle_ChFiDS_Stripe* self_) { delete self_; }
+extern "C" OcctResult<Handle_ChFiDS_Stripe*> Handle_ChFiDS_Stripe_clone(const Handle_ChFiDS_Stripe* self_) {
+    try { return {new Handle_ChFiDS_Stripe(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleChFiDSSecHArray1_is_null(const HandleChFiDSSecHArray1* self_) { return self_->IsNull(); }
-extern "C" void HandleChFiDSSpine_destructor(HandleChFiDSSpine* self_) { delete self_; }
-extern "C" OcctResult<HandleChFiDSSpine*> HandleChFiDSSpine_clone(const HandleChFiDSSpine* self_) {
-    try { return {new HandleChFiDSSpine(*self_), nullptr}; }
+extern "C" bool Handle_ChFiDS_Stripe_is_null(const Handle_ChFiDS_Stripe* self_) { return self_->IsNull(); }
+extern "C" void Handle_ChFiDS_SurfData_destructor(Handle_ChFiDS_SurfData* self_) { delete self_; }
+extern "C" OcctResult<Handle_ChFiDS_SurfData*> Handle_ChFiDS_SurfData_clone(const Handle_ChFiDS_SurfData* self_) {
+    try { return {new Handle_ChFiDS_SurfData(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleChFiDSSpine_is_null(const HandleChFiDSSpine* self_) { return self_->IsNull(); }
-extern "C" void HandleChFiDSStripe_destructor(HandleChFiDSStripe* self_) { delete self_; }
-extern "C" OcctResult<HandleChFiDSStripe*> HandleChFiDSStripe_clone(const HandleChFiDSStripe* self_) {
-    try { return {new HandleChFiDSStripe(*self_), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" bool HandleChFiDSStripe_is_null(const HandleChFiDSStripe* self_) { return self_->IsNull(); }
-extern "C" void HandleChFiDSSurfData_destructor(HandleChFiDSSurfData* self_) { delete self_; }
-extern "C" OcctResult<HandleChFiDSSurfData*> HandleChFiDSSurfData_clone(const HandleChFiDSSurfData* self_) {
-    try { return {new HandleChFiDSSurfData(*self_), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" bool HandleChFiDSSurfData_is_null(const HandleChFiDSSurfData* self_) { return self_->IsNull(); }
+extern "C" bool Handle_ChFiDS_SurfData_is_null(const Handle_ChFiDS_SurfData* self_) { return self_->IsNull(); }
 
 // ========================
 // BRepBlend_AppFunc wrappers
@@ -322,39 +281,39 @@ extern "C" OcctResult<const Approx_SweepFunction*> BRepBlend_AppFunc_as_Approx_S
 extern "C" OcctResult<Approx_SweepFunction*> BRepBlend_AppFunc_as_Approx_SweepFunction_mut(BRepBlend_AppFunc* self_) { return {static_cast<Approx_SweepFunction*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> BRepBlend_AppFunc_as_Standard_Transient(const BRepBlend_AppFunc* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> BRepBlend_AppFunc_as_Standard_Transient_mut(BRepBlend_AppFunc* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleBRepBlendAppFunc*> BRepBlend_AppFunc_to_handle(BRepBlend_AppFunc* obj) {
-    try { return {new HandleBRepBlendAppFunc(obj), nullptr}; }
+extern "C" OcctResult<Handle_BRepBlend_AppFunc*> BRepBlend_AppFunc_to_handle(BRepBlend_AppFunc* obj) {
+    try { return {new Handle_BRepBlend_AppFunc(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const BRepBlend_AppFunc*> HandleBRepBlendAppFunc_get(const HandleBRepBlendAppFunc* handle) {
+extern "C" OcctResult<const BRepBlend_AppFunc*> Handle_BRepBlend_AppFunc_get(const Handle_BRepBlend_AppFunc* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<BRepBlend_AppFunc*> HandleBRepBlendAppFunc_get_mut(HandleBRepBlendAppFunc* handle) {
+extern "C" OcctResult<BRepBlend_AppFunc*> Handle_BRepBlend_AppFunc_get_mut(Handle_BRepBlend_AppFunc* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleBRepBlendAppFuncRoot*> HandleBRepBlendAppFunc_to_HandleBRepBlendAppFuncRoot(const HandleBRepBlendAppFunc* self_) {
-    try { return {new HandleBRepBlendAppFuncRoot(*self_), nullptr}; }
+extern "C" OcctResult<Handle_BRepBlend_AppFuncRoot*> Handle_BRepBlend_AppFunc_to_Handle_BRepBlend_AppFuncRoot(const Handle_BRepBlend_AppFunc* self_) {
+    try { return {new Handle_BRepBlend_AppFuncRoot(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleApproxSweepFunction*> HandleBRepBlendAppFunc_to_HandleApproxSweepFunction(const HandleBRepBlendAppFunc* self_) {
-    try { return {new HandleApproxSweepFunction(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Approx_SweepFunction*> Handle_BRepBlend_AppFunc_to_Handle_Approx_SweepFunction(const Handle_BRepBlend_AppFunc* self_) {
+    try { return {new Handle_Approx_SweepFunction(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleBRepBlendAppFunc_to_HandleStandardTransient(const HandleBRepBlendAppFunc* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_BRepBlend_AppFunc_to_Handle_Standard_Transient(const Handle_BRepBlend_AppFunc* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<bool> BRepBlend_AppFunc_inherited_D0(BRepBlend_AppFunc* self, double Param, double First, double Last, TColgp_Array1OfPnt& Poles, TColgp_Array1OfPnt2d& Poles2d, TColStd_Array1OfReal& Weigths) {
+extern "C" OcctResult<bool> BRepBlend_AppFunc_inherited_D0(BRepBlend_AppFunc* self, double Param, double First, double Last, NCollection_Array1_gp_Pnt& Poles, NCollection_Array1_gp_Pnt2d& Poles2d, NCollection_Array1_double& Weigths) {
     try { return {self->D0(Param, First, Last, Poles, Poles2d, Weigths), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<bool> BRepBlend_AppFunc_inherited_D1(BRepBlend_AppFunc* self, double Param, double First, double Last, TColgp_Array1OfPnt& Poles, TColgp_Array1OfVec& DPoles, TColgp_Array1OfPnt2d& Poles2d, TColgp_Array1OfVec2d& DPoles2d, TColStd_Array1OfReal& Weigths, TColStd_Array1OfReal& DWeigths) {
+extern "C" OcctResult<bool> BRepBlend_AppFunc_inherited_D1(BRepBlend_AppFunc* self, double Param, double First, double Last, NCollection_Array1_gp_Pnt& Poles, NCollection_Array1_gp_Vec& DPoles, NCollection_Array1_gp_Pnt2d& Poles2d, NCollection_Array1_gp_Vec2d& DPoles2d, NCollection_Array1_double& Weigths, NCollection_Array1_double& DWeigths) {
     try { return {self->D1(Param, First, Last, Poles, DPoles, Poles2d, DPoles2d, Weigths, DWeigths), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<bool> BRepBlend_AppFunc_inherited_D2(BRepBlend_AppFunc* self, double Param, double First, double Last, TColgp_Array1OfPnt& Poles, TColgp_Array1OfVec& DPoles, TColgp_Array1OfVec& D2Poles, TColgp_Array1OfPnt2d& Poles2d, TColgp_Array1OfVec2d& DPoles2d, TColgp_Array1OfVec2d& D2Poles2d, TColStd_Array1OfReal& Weigths, TColStd_Array1OfReal& DWeigths, TColStd_Array1OfReal& D2Weigths) {
+extern "C" OcctResult<bool> BRepBlend_AppFunc_inherited_D2(BRepBlend_AppFunc* self, double Param, double First, double Last, NCollection_Array1_gp_Pnt& Poles, NCollection_Array1_gp_Vec& DPoles, NCollection_Array1_gp_Vec& D2Poles, NCollection_Array1_gp_Pnt2d& Poles2d, NCollection_Array1_gp_Vec2d& DPoles2d, NCollection_Array1_gp_Vec2d& D2Poles2d, NCollection_Array1_double& Weigths, NCollection_Array1_double& DWeigths, NCollection_Array1_double& D2Weigths) {
     try { return {self->D2(Param, First, Last, Poles, DPoles, D2Poles, Poles2d, DPoles2d, D2Poles2d, Weigths, DWeigths, D2Weigths), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -366,11 +325,11 @@ extern "C" const char* BRepBlend_AppFunc_inherited_SectionShape(const BRepBlend_
     try { self->SectionShape(NbPoles, NbKnots, Degree); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* BRepBlend_AppFunc_inherited_Knots(const BRepBlend_AppFunc* self, TColStd_Array1OfReal& TKnots) {
+extern "C" const char* BRepBlend_AppFunc_inherited_Knots(const BRepBlend_AppFunc* self, NCollection_Array1_double& TKnots) {
     try { self->Knots(TKnots); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* BRepBlend_AppFunc_inherited_Mults(const BRepBlend_AppFunc* self, TColStd_Array1OfInteger& TMults) {
+extern "C" const char* BRepBlend_AppFunc_inherited_Mults(const BRepBlend_AppFunc* self, NCollection_Array1_int& TMults) {
     try { self->Mults(TMults); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -382,7 +341,7 @@ extern "C" OcctResult<int32_t> BRepBlend_AppFunc_inherited_NbIntervals(const BRe
     try { return {self->NbIntervals(static_cast<GeomAbs_Shape>(S)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* BRepBlend_AppFunc_inherited_Intervals(const BRepBlend_AppFunc* self, TColStd_Array1OfReal& T, int32_t S) {
+extern "C" const char* BRepBlend_AppFunc_inherited_Intervals(const BRepBlend_AppFunc* self, NCollection_Array1_double& T, int32_t S) {
     try { self->Intervals(T, static_cast<GeomAbs_Shape>(S)); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -394,7 +353,7 @@ extern "C" const char* BRepBlend_AppFunc_inherited_Resolution(const BRepBlend_Ap
     try { self->Resolution(Index, Tol, TolU, TolV); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* BRepBlend_AppFunc_inherited_GetTolerance(const BRepBlend_AppFunc* self, double BoundTol, double SurfTol, double AngleTol, TColStd_Array1OfReal& Tol3d) {
+extern "C" const char* BRepBlend_AppFunc_inherited_GetTolerance(const BRepBlend_AppFunc* self, double BoundTol, double SurfTol, double AngleTol, NCollection_Array1_double& Tol3d) {
     try { self->GetTolerance(BoundTol, SurfTol, AngleTol, Tol3d); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -410,7 +369,7 @@ extern "C" OcctResult<double> BRepBlend_AppFunc_inherited_MaximalSection(const B
     try { return {self->MaximalSection(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* BRepBlend_AppFunc_inherited_GetMinimalWeight(const BRepBlend_AppFunc* self, TColStd_Array1OfReal& Weigths) {
+extern "C" const char* BRepBlend_AppFunc_inherited_GetMinimalWeight(const BRepBlend_AppFunc* self, NCollection_Array1_double& Weigths) {
     try { self->GetMinimalWeight(Weigths); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -452,15 +411,15 @@ extern "C" OcctResult<gp_Pnt*> BRepBlend_AppFuncRoot_barycentre_of_surf(const BR
     try { return {new gp_Pnt(self_->BarycentreOfSurf()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<bool> BRepBlend_AppFuncRoot_d0(BRepBlend_AppFuncRoot* self_, double Param, double First, double Last, TColgp_Array1OfPnt* Poles, TColgp_Array1OfPnt2d* Poles2d, TColStd_Array1OfReal* Weigths) {
+extern "C" OcctResult<bool> BRepBlend_AppFuncRoot_d0(BRepBlend_AppFuncRoot* self_, double Param, double First, double Last, NCollection_Array1_gp_Pnt* Poles, NCollection_Array1_gp_Pnt2d* Poles2d, NCollection_Array1_double* Weigths) {
     try { return {self_->D0(Param, First, Last, *Poles, *Poles2d, *Weigths), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<bool> BRepBlend_AppFuncRoot_d1(BRepBlend_AppFuncRoot* self_, double Param, double First, double Last, TColgp_Array1OfPnt* Poles, TColgp_Array1OfVec* DPoles, TColgp_Array1OfPnt2d* Poles2d, TColgp_Array1OfVec2d* DPoles2d, TColStd_Array1OfReal* Weigths, TColStd_Array1OfReal* DWeigths) {
+extern "C" OcctResult<bool> BRepBlend_AppFuncRoot_d1(BRepBlend_AppFuncRoot* self_, double Param, double First, double Last, NCollection_Array1_gp_Pnt* Poles, NCollection_Array1_gp_Vec* DPoles, NCollection_Array1_gp_Pnt2d* Poles2d, NCollection_Array1_gp_Vec2d* DPoles2d, NCollection_Array1_double* Weigths, NCollection_Array1_double* DWeigths) {
     try { return {self_->D1(Param, First, Last, *Poles, *DPoles, *Poles2d, *DPoles2d, *Weigths, *DWeigths), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<bool> BRepBlend_AppFuncRoot_d2(BRepBlend_AppFuncRoot* self_, double Param, double First, double Last, TColgp_Array1OfPnt* Poles, TColgp_Array1OfVec* DPoles, TColgp_Array1OfVec* D2Poles, TColgp_Array1OfPnt2d* Poles2d, TColgp_Array1OfVec2d* DPoles2d, TColgp_Array1OfVec2d* D2Poles2d, TColStd_Array1OfReal* Weigths, TColStd_Array1OfReal* DWeigths, TColStd_Array1OfReal* D2Weigths) {
+extern "C" OcctResult<bool> BRepBlend_AppFuncRoot_d2(BRepBlend_AppFuncRoot* self_, double Param, double First, double Last, NCollection_Array1_gp_Pnt* Poles, NCollection_Array1_gp_Vec* DPoles, NCollection_Array1_gp_Vec* D2Poles, NCollection_Array1_gp_Pnt2d* Poles2d, NCollection_Array1_gp_Vec2d* DPoles2d, NCollection_Array1_gp_Vec2d* D2Poles2d, NCollection_Array1_double* Weigths, NCollection_Array1_double* DWeigths, NCollection_Array1_double* D2Weigths) {
     try { return {self_->D2(Param, First, Last, *Poles, *DPoles, *D2Poles, *Poles2d, *DPoles2d, *D2Poles2d, *Weigths, *DWeigths, *D2Weigths), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -472,11 +431,11 @@ extern "C" const char* BRepBlend_AppFuncRoot_section_shape(const BRepBlend_AppFu
     try { self_->SectionShape(*NbPoles, *NbKnots, *Degree); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* BRepBlend_AppFuncRoot_knots(const BRepBlend_AppFuncRoot* self_, TColStd_Array1OfReal* TKnots) {
+extern "C" const char* BRepBlend_AppFuncRoot_knots(const BRepBlend_AppFuncRoot* self_, NCollection_Array1_double* TKnots) {
     try { self_->Knots(*TKnots); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* BRepBlend_AppFuncRoot_mults(const BRepBlend_AppFuncRoot* self_, TColStd_Array1OfInteger* TMults) {
+extern "C" const char* BRepBlend_AppFuncRoot_mults(const BRepBlend_AppFuncRoot* self_, NCollection_Array1_int* TMults) {
     try { self_->Mults(*TMults); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -488,7 +447,7 @@ extern "C" OcctResult<int32_t> BRepBlend_AppFuncRoot_nb_intervals(const BRepBlen
     try { return {self_->NbIntervals(static_cast<GeomAbs_Shape>(S)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* BRepBlend_AppFuncRoot_intervals(const BRepBlend_AppFuncRoot* self_, TColStd_Array1OfReal* T, int32_t S) {
+extern "C" const char* BRepBlend_AppFuncRoot_intervals(const BRepBlend_AppFuncRoot* self_, NCollection_Array1_double* T, int32_t S) {
     try { self_->Intervals(*T, static_cast<GeomAbs_Shape>(S)); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -500,7 +459,7 @@ extern "C" const char* BRepBlend_AppFuncRoot_resolution(const BRepBlend_AppFuncR
     try { self_->Resolution(Index, Tol, *TolU, *TolV); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* BRepBlend_AppFuncRoot_get_tolerance(const BRepBlend_AppFuncRoot* self_, double BoundTol, double SurfTol, double AngleTol, TColStd_Array1OfReal* Tol3d) {
+extern "C" const char* BRepBlend_AppFuncRoot_get_tolerance(const BRepBlend_AppFuncRoot* self_, double BoundTol, double SurfTol, double AngleTol, NCollection_Array1_double* Tol3d) {
     try { self_->GetTolerance(BoundTol, SurfTol, AngleTol, *Tol3d); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -512,7 +471,7 @@ extern "C" OcctResult<double> BRepBlend_AppFuncRoot_maximal_section(const BRepBl
     try { return {self_->MaximalSection(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* BRepBlend_AppFuncRoot_get_minimal_weight(const BRepBlend_AppFuncRoot* self_, TColStd_Array1OfReal* Weigths) {
+extern "C" const char* BRepBlend_AppFuncRoot_get_minimal_weight(const BRepBlend_AppFuncRoot* self_, NCollection_Array1_double* Weigths) {
     try { self_->GetMinimalWeight(*Weigths); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -540,43 +499,43 @@ extern "C" OcctResult<const Approx_SweepFunction*> BRepBlend_AppFuncRoot_as_Appr
 extern "C" OcctResult<Approx_SweepFunction*> BRepBlend_AppFuncRoot_as_Approx_SweepFunction_mut(BRepBlend_AppFuncRoot* self_) { return {static_cast<Approx_SweepFunction*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> BRepBlend_AppFuncRoot_as_Standard_Transient(const BRepBlend_AppFuncRoot* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> BRepBlend_AppFuncRoot_as_Standard_Transient_mut(BRepBlend_AppFuncRoot* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<const BRepBlend_AppFuncRoot*> HandleBRepBlendAppFuncRoot_get(const HandleBRepBlendAppFuncRoot* handle) {
+extern "C" OcctResult<const BRepBlend_AppFuncRoot*> Handle_BRepBlend_AppFuncRoot_get(const Handle_BRepBlend_AppFuncRoot* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<BRepBlend_AppFuncRoot*> HandleBRepBlendAppFuncRoot_get_mut(HandleBRepBlendAppFuncRoot* handle) {
+extern "C" OcctResult<BRepBlend_AppFuncRoot*> Handle_BRepBlend_AppFuncRoot_get_mut(Handle_BRepBlend_AppFuncRoot* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleApproxSweepFunction*> HandleBRepBlendAppFuncRoot_to_HandleApproxSweepFunction(const HandleBRepBlendAppFuncRoot* self_) {
-    try { return {new HandleApproxSweepFunction(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Approx_SweepFunction*> Handle_BRepBlend_AppFuncRoot_to_Handle_Approx_SweepFunction(const Handle_BRepBlend_AppFuncRoot* self_) {
+    try { return {new Handle_Approx_SweepFunction(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleBRepBlendAppFuncRoot_to_HandleStandardTransient(const HandleBRepBlendAppFuncRoot* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_BRepBlend_AppFuncRoot_to_Handle_Standard_Transient(const Handle_BRepBlend_AppFuncRoot* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleBRepBlendAppFunc*> HandleBRepBlendAppFuncRoot_downcast_to_HandleBRepBlendAppFunc(const HandleBRepBlendAppFuncRoot* self_) {
+extern "C" OcctResult<Handle_BRepBlend_AppFunc*> Handle_BRepBlend_AppFuncRoot_downcast_to_Handle_BRepBlend_AppFunc(const Handle_BRepBlend_AppFuncRoot* self_) {
     try {
     opencascade::handle<BRepBlend_AppFunc> result = opencascade::handle<BRepBlend_AppFunc>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleBRepBlendAppFunc(result), nullptr};
+    return {new Handle_BRepBlend_AppFunc(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleBRepBlendAppFuncRst*> HandleBRepBlendAppFuncRoot_downcast_to_HandleBRepBlendAppFuncRst(const HandleBRepBlendAppFuncRoot* self_) {
+extern "C" OcctResult<Handle_BRepBlend_AppFuncRst*> Handle_BRepBlend_AppFuncRoot_downcast_to_Handle_BRepBlend_AppFuncRst(const Handle_BRepBlend_AppFuncRoot* self_) {
     try {
     opencascade::handle<BRepBlend_AppFuncRst> result = opencascade::handle<BRepBlend_AppFuncRst>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleBRepBlendAppFuncRst(result), nullptr};
+    return {new Handle_BRepBlend_AppFuncRst(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleBRepBlendAppFuncRstRst*> HandleBRepBlendAppFuncRoot_downcast_to_HandleBRepBlendAppFuncRstRst(const HandleBRepBlendAppFuncRoot* self_) {
+extern "C" OcctResult<Handle_BRepBlend_AppFuncRstRst*> Handle_BRepBlend_AppFuncRoot_downcast_to_Handle_BRepBlend_AppFuncRstRst(const Handle_BRepBlend_AppFuncRoot* self_) {
     try {
     opencascade::handle<BRepBlend_AppFuncRstRst> result = opencascade::handle<BRepBlend_AppFuncRstRst>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleBRepBlendAppFuncRstRst(result), nullptr};
+    return {new Handle_BRepBlend_AppFuncRstRst(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
@@ -644,39 +603,39 @@ extern "C" OcctResult<const Approx_SweepFunction*> BRepBlend_AppFuncRst_as_Appro
 extern "C" OcctResult<Approx_SweepFunction*> BRepBlend_AppFuncRst_as_Approx_SweepFunction_mut(BRepBlend_AppFuncRst* self_) { return {static_cast<Approx_SweepFunction*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> BRepBlend_AppFuncRst_as_Standard_Transient(const BRepBlend_AppFuncRst* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> BRepBlend_AppFuncRst_as_Standard_Transient_mut(BRepBlend_AppFuncRst* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleBRepBlendAppFuncRst*> BRepBlend_AppFuncRst_to_handle(BRepBlend_AppFuncRst* obj) {
-    try { return {new HandleBRepBlendAppFuncRst(obj), nullptr}; }
+extern "C" OcctResult<Handle_BRepBlend_AppFuncRst*> BRepBlend_AppFuncRst_to_handle(BRepBlend_AppFuncRst* obj) {
+    try { return {new Handle_BRepBlend_AppFuncRst(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const BRepBlend_AppFuncRst*> HandleBRepBlendAppFuncRst_get(const HandleBRepBlendAppFuncRst* handle) {
+extern "C" OcctResult<const BRepBlend_AppFuncRst*> Handle_BRepBlend_AppFuncRst_get(const Handle_BRepBlend_AppFuncRst* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<BRepBlend_AppFuncRst*> HandleBRepBlendAppFuncRst_get_mut(HandleBRepBlendAppFuncRst* handle) {
+extern "C" OcctResult<BRepBlend_AppFuncRst*> Handle_BRepBlend_AppFuncRst_get_mut(Handle_BRepBlend_AppFuncRst* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleBRepBlendAppFuncRoot*> HandleBRepBlendAppFuncRst_to_HandleBRepBlendAppFuncRoot(const HandleBRepBlendAppFuncRst* self_) {
-    try { return {new HandleBRepBlendAppFuncRoot(*self_), nullptr}; }
+extern "C" OcctResult<Handle_BRepBlend_AppFuncRoot*> Handle_BRepBlend_AppFuncRst_to_Handle_BRepBlend_AppFuncRoot(const Handle_BRepBlend_AppFuncRst* self_) {
+    try { return {new Handle_BRepBlend_AppFuncRoot(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleApproxSweepFunction*> HandleBRepBlendAppFuncRst_to_HandleApproxSweepFunction(const HandleBRepBlendAppFuncRst* self_) {
-    try { return {new HandleApproxSweepFunction(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Approx_SweepFunction*> Handle_BRepBlend_AppFuncRst_to_Handle_Approx_SweepFunction(const Handle_BRepBlend_AppFuncRst* self_) {
+    try { return {new Handle_Approx_SweepFunction(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleBRepBlendAppFuncRst_to_HandleStandardTransient(const HandleBRepBlendAppFuncRst* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_BRepBlend_AppFuncRst_to_Handle_Standard_Transient(const Handle_BRepBlend_AppFuncRst* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<bool> BRepBlend_AppFuncRst_inherited_D0(BRepBlend_AppFuncRst* self, double Param, double First, double Last, TColgp_Array1OfPnt& Poles, TColgp_Array1OfPnt2d& Poles2d, TColStd_Array1OfReal& Weigths) {
+extern "C" OcctResult<bool> BRepBlend_AppFuncRst_inherited_D0(BRepBlend_AppFuncRst* self, double Param, double First, double Last, NCollection_Array1_gp_Pnt& Poles, NCollection_Array1_gp_Pnt2d& Poles2d, NCollection_Array1_double& Weigths) {
     try { return {self->D0(Param, First, Last, Poles, Poles2d, Weigths), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<bool> BRepBlend_AppFuncRst_inherited_D1(BRepBlend_AppFuncRst* self, double Param, double First, double Last, TColgp_Array1OfPnt& Poles, TColgp_Array1OfVec& DPoles, TColgp_Array1OfPnt2d& Poles2d, TColgp_Array1OfVec2d& DPoles2d, TColStd_Array1OfReal& Weigths, TColStd_Array1OfReal& DWeigths) {
+extern "C" OcctResult<bool> BRepBlend_AppFuncRst_inherited_D1(BRepBlend_AppFuncRst* self, double Param, double First, double Last, NCollection_Array1_gp_Pnt& Poles, NCollection_Array1_gp_Vec& DPoles, NCollection_Array1_gp_Pnt2d& Poles2d, NCollection_Array1_gp_Vec2d& DPoles2d, NCollection_Array1_double& Weigths, NCollection_Array1_double& DWeigths) {
     try { return {self->D1(Param, First, Last, Poles, DPoles, Poles2d, DPoles2d, Weigths, DWeigths), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<bool> BRepBlend_AppFuncRst_inherited_D2(BRepBlend_AppFuncRst* self, double Param, double First, double Last, TColgp_Array1OfPnt& Poles, TColgp_Array1OfVec& DPoles, TColgp_Array1OfVec& D2Poles, TColgp_Array1OfPnt2d& Poles2d, TColgp_Array1OfVec2d& DPoles2d, TColgp_Array1OfVec2d& D2Poles2d, TColStd_Array1OfReal& Weigths, TColStd_Array1OfReal& DWeigths, TColStd_Array1OfReal& D2Weigths) {
+extern "C" OcctResult<bool> BRepBlend_AppFuncRst_inherited_D2(BRepBlend_AppFuncRst* self, double Param, double First, double Last, NCollection_Array1_gp_Pnt& Poles, NCollection_Array1_gp_Vec& DPoles, NCollection_Array1_gp_Vec& D2Poles, NCollection_Array1_gp_Pnt2d& Poles2d, NCollection_Array1_gp_Vec2d& DPoles2d, NCollection_Array1_gp_Vec2d& D2Poles2d, NCollection_Array1_double& Weigths, NCollection_Array1_double& DWeigths, NCollection_Array1_double& D2Weigths) {
     try { return {self->D2(Param, First, Last, Poles, DPoles, D2Poles, Poles2d, DPoles2d, D2Poles2d, Weigths, DWeigths, D2Weigths), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -688,11 +647,11 @@ extern "C" const char* BRepBlend_AppFuncRst_inherited_SectionShape(const BRepBle
     try { self->SectionShape(NbPoles, NbKnots, Degree); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* BRepBlend_AppFuncRst_inherited_Knots(const BRepBlend_AppFuncRst* self, TColStd_Array1OfReal& TKnots) {
+extern "C" const char* BRepBlend_AppFuncRst_inherited_Knots(const BRepBlend_AppFuncRst* self, NCollection_Array1_double& TKnots) {
     try { self->Knots(TKnots); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* BRepBlend_AppFuncRst_inherited_Mults(const BRepBlend_AppFuncRst* self, TColStd_Array1OfInteger& TMults) {
+extern "C" const char* BRepBlend_AppFuncRst_inherited_Mults(const BRepBlend_AppFuncRst* self, NCollection_Array1_int& TMults) {
     try { self->Mults(TMults); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -704,7 +663,7 @@ extern "C" OcctResult<int32_t> BRepBlend_AppFuncRst_inherited_NbIntervals(const 
     try { return {self->NbIntervals(static_cast<GeomAbs_Shape>(S)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* BRepBlend_AppFuncRst_inherited_Intervals(const BRepBlend_AppFuncRst* self, TColStd_Array1OfReal& T, int32_t S) {
+extern "C" const char* BRepBlend_AppFuncRst_inherited_Intervals(const BRepBlend_AppFuncRst* self, NCollection_Array1_double& T, int32_t S) {
     try { self->Intervals(T, static_cast<GeomAbs_Shape>(S)); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -716,7 +675,7 @@ extern "C" const char* BRepBlend_AppFuncRst_inherited_Resolution(const BRepBlend
     try { self->Resolution(Index, Tol, TolU, TolV); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* BRepBlend_AppFuncRst_inherited_GetTolerance(const BRepBlend_AppFuncRst* self, double BoundTol, double SurfTol, double AngleTol, TColStd_Array1OfReal& Tol3d) {
+extern "C" const char* BRepBlend_AppFuncRst_inherited_GetTolerance(const BRepBlend_AppFuncRst* self, double BoundTol, double SurfTol, double AngleTol, NCollection_Array1_double& Tol3d) {
     try { self->GetTolerance(BoundTol, SurfTol, AngleTol, Tol3d); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -732,7 +691,7 @@ extern "C" OcctResult<double> BRepBlend_AppFuncRst_inherited_MaximalSection(cons
     try { return {self->MaximalSection(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* BRepBlend_AppFuncRst_inherited_GetMinimalWeight(const BRepBlend_AppFuncRst* self, TColStd_Array1OfReal& Weigths) {
+extern "C" const char* BRepBlend_AppFuncRst_inherited_GetMinimalWeight(const BRepBlend_AppFuncRst* self, NCollection_Array1_double& Weigths) {
     try { self->GetMinimalWeight(Weigths); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -800,39 +759,39 @@ extern "C" OcctResult<const Approx_SweepFunction*> BRepBlend_AppFuncRstRst_as_Ap
 extern "C" OcctResult<Approx_SweepFunction*> BRepBlend_AppFuncRstRst_as_Approx_SweepFunction_mut(BRepBlend_AppFuncRstRst* self_) { return {static_cast<Approx_SweepFunction*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> BRepBlend_AppFuncRstRst_as_Standard_Transient(const BRepBlend_AppFuncRstRst* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> BRepBlend_AppFuncRstRst_as_Standard_Transient_mut(BRepBlend_AppFuncRstRst* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleBRepBlendAppFuncRstRst*> BRepBlend_AppFuncRstRst_to_handle(BRepBlend_AppFuncRstRst* obj) {
-    try { return {new HandleBRepBlendAppFuncRstRst(obj), nullptr}; }
+extern "C" OcctResult<Handle_BRepBlend_AppFuncRstRst*> BRepBlend_AppFuncRstRst_to_handle(BRepBlend_AppFuncRstRst* obj) {
+    try { return {new Handle_BRepBlend_AppFuncRstRst(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const BRepBlend_AppFuncRstRst*> HandleBRepBlendAppFuncRstRst_get(const HandleBRepBlendAppFuncRstRst* handle) {
+extern "C" OcctResult<const BRepBlend_AppFuncRstRst*> Handle_BRepBlend_AppFuncRstRst_get(const Handle_BRepBlend_AppFuncRstRst* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<BRepBlend_AppFuncRstRst*> HandleBRepBlendAppFuncRstRst_get_mut(HandleBRepBlendAppFuncRstRst* handle) {
+extern "C" OcctResult<BRepBlend_AppFuncRstRst*> Handle_BRepBlend_AppFuncRstRst_get_mut(Handle_BRepBlend_AppFuncRstRst* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleBRepBlendAppFuncRoot*> HandleBRepBlendAppFuncRstRst_to_HandleBRepBlendAppFuncRoot(const HandleBRepBlendAppFuncRstRst* self_) {
-    try { return {new HandleBRepBlendAppFuncRoot(*self_), nullptr}; }
+extern "C" OcctResult<Handle_BRepBlend_AppFuncRoot*> Handle_BRepBlend_AppFuncRstRst_to_Handle_BRepBlend_AppFuncRoot(const Handle_BRepBlend_AppFuncRstRst* self_) {
+    try { return {new Handle_BRepBlend_AppFuncRoot(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleApproxSweepFunction*> HandleBRepBlendAppFuncRstRst_to_HandleApproxSweepFunction(const HandleBRepBlendAppFuncRstRst* self_) {
-    try { return {new HandleApproxSweepFunction(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Approx_SweepFunction*> Handle_BRepBlend_AppFuncRstRst_to_Handle_Approx_SweepFunction(const Handle_BRepBlend_AppFuncRstRst* self_) {
+    try { return {new Handle_Approx_SweepFunction(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleBRepBlendAppFuncRstRst_to_HandleStandardTransient(const HandleBRepBlendAppFuncRstRst* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_BRepBlend_AppFuncRstRst_to_Handle_Standard_Transient(const Handle_BRepBlend_AppFuncRstRst* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<bool> BRepBlend_AppFuncRstRst_inherited_D0(BRepBlend_AppFuncRstRst* self, double Param, double First, double Last, TColgp_Array1OfPnt& Poles, TColgp_Array1OfPnt2d& Poles2d, TColStd_Array1OfReal& Weigths) {
+extern "C" OcctResult<bool> BRepBlend_AppFuncRstRst_inherited_D0(BRepBlend_AppFuncRstRst* self, double Param, double First, double Last, NCollection_Array1_gp_Pnt& Poles, NCollection_Array1_gp_Pnt2d& Poles2d, NCollection_Array1_double& Weigths) {
     try { return {self->D0(Param, First, Last, Poles, Poles2d, Weigths), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<bool> BRepBlend_AppFuncRstRst_inherited_D1(BRepBlend_AppFuncRstRst* self, double Param, double First, double Last, TColgp_Array1OfPnt& Poles, TColgp_Array1OfVec& DPoles, TColgp_Array1OfPnt2d& Poles2d, TColgp_Array1OfVec2d& DPoles2d, TColStd_Array1OfReal& Weigths, TColStd_Array1OfReal& DWeigths) {
+extern "C" OcctResult<bool> BRepBlend_AppFuncRstRst_inherited_D1(BRepBlend_AppFuncRstRst* self, double Param, double First, double Last, NCollection_Array1_gp_Pnt& Poles, NCollection_Array1_gp_Vec& DPoles, NCollection_Array1_gp_Pnt2d& Poles2d, NCollection_Array1_gp_Vec2d& DPoles2d, NCollection_Array1_double& Weigths, NCollection_Array1_double& DWeigths) {
     try { return {self->D1(Param, First, Last, Poles, DPoles, Poles2d, DPoles2d, Weigths, DWeigths), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<bool> BRepBlend_AppFuncRstRst_inherited_D2(BRepBlend_AppFuncRstRst* self, double Param, double First, double Last, TColgp_Array1OfPnt& Poles, TColgp_Array1OfVec& DPoles, TColgp_Array1OfVec& D2Poles, TColgp_Array1OfPnt2d& Poles2d, TColgp_Array1OfVec2d& DPoles2d, TColgp_Array1OfVec2d& D2Poles2d, TColStd_Array1OfReal& Weigths, TColStd_Array1OfReal& DWeigths, TColStd_Array1OfReal& D2Weigths) {
+extern "C" OcctResult<bool> BRepBlend_AppFuncRstRst_inherited_D2(BRepBlend_AppFuncRstRst* self, double Param, double First, double Last, NCollection_Array1_gp_Pnt& Poles, NCollection_Array1_gp_Vec& DPoles, NCollection_Array1_gp_Vec& D2Poles, NCollection_Array1_gp_Pnt2d& Poles2d, NCollection_Array1_gp_Vec2d& DPoles2d, NCollection_Array1_gp_Vec2d& D2Poles2d, NCollection_Array1_double& Weigths, NCollection_Array1_double& DWeigths, NCollection_Array1_double& D2Weigths) {
     try { return {self->D2(Param, First, Last, Poles, DPoles, D2Poles, Poles2d, DPoles2d, D2Poles2d, Weigths, DWeigths, D2Weigths), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -844,11 +803,11 @@ extern "C" const char* BRepBlend_AppFuncRstRst_inherited_SectionShape(const BRep
     try { self->SectionShape(NbPoles, NbKnots, Degree); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* BRepBlend_AppFuncRstRst_inherited_Knots(const BRepBlend_AppFuncRstRst* self, TColStd_Array1OfReal& TKnots) {
+extern "C" const char* BRepBlend_AppFuncRstRst_inherited_Knots(const BRepBlend_AppFuncRstRst* self, NCollection_Array1_double& TKnots) {
     try { self->Knots(TKnots); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* BRepBlend_AppFuncRstRst_inherited_Mults(const BRepBlend_AppFuncRstRst* self, TColStd_Array1OfInteger& TMults) {
+extern "C" const char* BRepBlend_AppFuncRstRst_inherited_Mults(const BRepBlend_AppFuncRstRst* self, NCollection_Array1_int& TMults) {
     try { self->Mults(TMults); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -860,7 +819,7 @@ extern "C" OcctResult<int32_t> BRepBlend_AppFuncRstRst_inherited_NbIntervals(con
     try { return {self->NbIntervals(static_cast<GeomAbs_Shape>(S)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* BRepBlend_AppFuncRstRst_inherited_Intervals(const BRepBlend_AppFuncRstRst* self, TColStd_Array1OfReal& T, int32_t S) {
+extern "C" const char* BRepBlend_AppFuncRstRst_inherited_Intervals(const BRepBlend_AppFuncRstRst* self, NCollection_Array1_double& T, int32_t S) {
     try { self->Intervals(T, static_cast<GeomAbs_Shape>(S)); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -872,7 +831,7 @@ extern "C" const char* BRepBlend_AppFuncRstRst_inherited_Resolution(const BRepBl
     try { self->Resolution(Index, Tol, TolU, TolV); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* BRepBlend_AppFuncRstRst_inherited_GetTolerance(const BRepBlend_AppFuncRstRst* self, double BoundTol, double SurfTol, double AngleTol, TColStd_Array1OfReal& Tol3d) {
+extern "C" const char* BRepBlend_AppFuncRstRst_inherited_GetTolerance(const BRepBlend_AppFuncRstRst* self, double BoundTol, double SurfTol, double AngleTol, NCollection_Array1_double& Tol3d) {
     try { self->GetTolerance(BoundTol, SurfTol, AngleTol, Tol3d); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -888,7 +847,7 @@ extern "C" OcctResult<double> BRepBlend_AppFuncRstRst_inherited_MaximalSection(c
     try { return {self->MaximalSection(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* BRepBlend_AppFuncRstRst_inherited_GetMinimalWeight(const BRepBlend_AppFuncRstRst* self, TColStd_Array1OfReal& Weigths) {
+extern "C" const char* BRepBlend_AppFuncRstRst_inherited_GetMinimalWeight(const BRepBlend_AppFuncRstRst* self, NCollection_Array1_double& Weigths) {
     try { self->GetMinimalWeight(Weigths); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -982,7 +941,7 @@ extern "C" const char* BRepBlend_AppSurf_surf_shape(const BRepBlend_AppSurf* sel
     try { self_->SurfShape(*UDegree, *VDegree, *NbUPoles, *NbVPoles, *NbUKnots, *NbVKnots); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* BRepBlend_AppSurf_surface(const BRepBlend_AppSurf* self_, TColgp_Array2OfPnt* TPoles, TColStd_Array2OfReal* TWeights, TColStd_Array1OfReal* TUKnots, TColStd_Array1OfReal* TVKnots, TColStd_Array1OfInteger* TUMults, TColStd_Array1OfInteger* TVMults) {
+extern "C" const char* BRepBlend_AppSurf_surface(const BRepBlend_AppSurf* self_, NCollection_Array2_gp_Pnt* TPoles, NCollection_Array2_double* TWeights, NCollection_Array1_double* TUKnots, NCollection_Array1_double* TVKnots, NCollection_Array1_int* TUMults, NCollection_Array1_int* TVMults) {
     try { self_->Surface(*TPoles, *TWeights, *TUKnots, *TVKnots, *TUMults, *TVMults); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -994,27 +953,27 @@ extern "C" OcctResult<int32_t> BRepBlend_AppSurf_v_degree(const BRepBlend_AppSur
     try { return {self_->VDegree(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TColgp_Array2OfPnt const*> BRepBlend_AppSurf_surf_poles(const BRepBlend_AppSurf* self_) {
+extern "C" OcctResult<NCollection_Array2_gp_Pnt const*> BRepBlend_AppSurf_surf_poles(const BRepBlend_AppSurf* self_) {
     try { return {&(self_->SurfPoles()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TColStd_Array2OfReal const*> BRepBlend_AppSurf_surf_weights(const BRepBlend_AppSurf* self_) {
+extern "C" OcctResult<NCollection_Array2_double const*> BRepBlend_AppSurf_surf_weights(const BRepBlend_AppSurf* self_) {
     try { return {&(self_->SurfWeights()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TColStd_Array1OfReal const*> BRepBlend_AppSurf_surf_u_knots(const BRepBlend_AppSurf* self_) {
+extern "C" OcctResult<NCollection_Array1_double const*> BRepBlend_AppSurf_surf_u_knots(const BRepBlend_AppSurf* self_) {
     try { return {&(self_->SurfUKnots()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TColStd_Array1OfReal const*> BRepBlend_AppSurf_surf_v_knots(const BRepBlend_AppSurf* self_) {
+extern "C" OcctResult<NCollection_Array1_double const*> BRepBlend_AppSurf_surf_v_knots(const BRepBlend_AppSurf* self_) {
     try { return {&(self_->SurfVKnots()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TColStd_Array1OfInteger const*> BRepBlend_AppSurf_surf_u_mults(const BRepBlend_AppSurf* self_) {
+extern "C" OcctResult<NCollection_Array1_int const*> BRepBlend_AppSurf_surf_u_mults(const BRepBlend_AppSurf* self_) {
     try { return {&(self_->SurfUMults()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TColStd_Array1OfInteger const*> BRepBlend_AppSurf_surf_v_mults(const BRepBlend_AppSurf* self_) {
+extern "C" OcctResult<NCollection_Array1_int const*> BRepBlend_AppSurf_surf_v_mults(const BRepBlend_AppSurf* self_) {
     try { return {&(self_->SurfVMults()), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -1026,7 +985,7 @@ extern "C" const char* BRepBlend_AppSurf_curves2d_shape(const BRepBlend_AppSurf*
     try { self_->Curves2dShape(*Degree, *NbPoles, *NbKnots); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* BRepBlend_AppSurf_curve2d(const BRepBlend_AppSurf* self_, int32_t Index, TColgp_Array1OfPnt2d* TPoles, TColStd_Array1OfReal* TKnots, TColStd_Array1OfInteger* TMults) {
+extern "C" const char* BRepBlend_AppSurf_curve2d(const BRepBlend_AppSurf* self_, int32_t Index, NCollection_Array1_gp_Pnt2d* TPoles, NCollection_Array1_double* TKnots, NCollection_Array1_int* TMults) {
     try { self_->Curve2d(Index, *TPoles, *TKnots, *TMults); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -1034,15 +993,15 @@ extern "C" OcctResult<int32_t> BRepBlend_AppSurf_curves2d_degree(const BRepBlend
     try { return {self_->Curves2dDegree(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TColgp_Array1OfPnt2d const*> BRepBlend_AppSurf_curve2d_poles(const BRepBlend_AppSurf* self_, int32_t Index) {
+extern "C" OcctResult<NCollection_Array1_gp_Pnt2d const*> BRepBlend_AppSurf_curve2d_poles(const BRepBlend_AppSurf* self_, int32_t Index) {
     try { return {&(self_->Curve2dPoles(Index)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TColStd_Array1OfReal const*> BRepBlend_AppSurf_curves2d_knots(const BRepBlend_AppSurf* self_) {
+extern "C" OcctResult<NCollection_Array1_double const*> BRepBlend_AppSurf_curves2d_knots(const BRepBlend_AppSurf* self_) {
     try { return {&(self_->Curves2dKnots()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TColStd_Array1OfInteger const*> BRepBlend_AppSurf_curves2d_mults(const BRepBlend_AppSurf* self_) {
+extern "C" OcctResult<NCollection_Array1_int const*> BRepBlend_AppSurf_curves2d_mults(const BRepBlend_AppSurf* self_) {
     try { return {&(self_->Curves2dMults()), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -1074,7 +1033,7 @@ extern "C" const char* BRepBlend_AppSurface_surf_shape(const BRepBlend_AppSurfac
     try { self_->SurfShape(*UDegree, *VDegree, *NbUPoles, *NbVPoles, *NbUKnots, *NbVKnots); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* BRepBlend_AppSurface_surface(const BRepBlend_AppSurface* self_, TColgp_Array2OfPnt* TPoles, TColStd_Array2OfReal* TWeights, TColStd_Array1OfReal* TUKnots, TColStd_Array1OfReal* TVKnots, TColStd_Array1OfInteger* TUMults, TColStd_Array1OfInteger* TVMults) {
+extern "C" const char* BRepBlend_AppSurface_surface(const BRepBlend_AppSurface* self_, NCollection_Array2_gp_Pnt* TPoles, NCollection_Array2_double* TWeights, NCollection_Array1_double* TUKnots, NCollection_Array1_double* TVKnots, NCollection_Array1_int* TUMults, NCollection_Array1_int* TVMults) {
     try { self_->Surface(*TPoles, *TWeights, *TUKnots, *TVKnots, *TUMults, *TVMults); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -1086,27 +1045,27 @@ extern "C" OcctResult<int32_t> BRepBlend_AppSurface_v_degree(const BRepBlend_App
     try { return {self_->VDegree(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TColgp_Array2OfPnt const*> BRepBlend_AppSurface_surf_poles(const BRepBlend_AppSurface* self_) {
+extern "C" OcctResult<NCollection_Array2_gp_Pnt const*> BRepBlend_AppSurface_surf_poles(const BRepBlend_AppSurface* self_) {
     try { return {&(self_->SurfPoles()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TColStd_Array2OfReal const*> BRepBlend_AppSurface_surf_weights(const BRepBlend_AppSurface* self_) {
+extern "C" OcctResult<NCollection_Array2_double const*> BRepBlend_AppSurface_surf_weights(const BRepBlend_AppSurface* self_) {
     try { return {&(self_->SurfWeights()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TColStd_Array1OfReal const*> BRepBlend_AppSurface_surf_u_knots(const BRepBlend_AppSurface* self_) {
+extern "C" OcctResult<NCollection_Array1_double const*> BRepBlend_AppSurface_surf_u_knots(const BRepBlend_AppSurface* self_) {
     try { return {&(self_->SurfUKnots()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TColStd_Array1OfReal const*> BRepBlend_AppSurface_surf_v_knots(const BRepBlend_AppSurface* self_) {
+extern "C" OcctResult<NCollection_Array1_double const*> BRepBlend_AppSurface_surf_v_knots(const BRepBlend_AppSurface* self_) {
     try { return {&(self_->SurfVKnots()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TColStd_Array1OfInteger const*> BRepBlend_AppSurface_surf_u_mults(const BRepBlend_AppSurface* self_) {
+extern "C" OcctResult<NCollection_Array1_int const*> BRepBlend_AppSurface_surf_u_mults(const BRepBlend_AppSurface* self_) {
     try { return {&(self_->SurfUMults()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TColStd_Array1OfInteger const*> BRepBlend_AppSurface_surf_v_mults(const BRepBlend_AppSurface* self_) {
+extern "C" OcctResult<NCollection_Array1_int const*> BRepBlend_AppSurface_surf_v_mults(const BRepBlend_AppSurface* self_) {
     try { return {&(self_->SurfVMults()), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -1122,7 +1081,7 @@ extern "C" const char* BRepBlend_AppSurface_curves2d_shape(const BRepBlend_AppSu
     try { self_->Curves2dShape(*Degree, *NbPoles, *NbKnots); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* BRepBlend_AppSurface_curve2d(const BRepBlend_AppSurface* self_, int32_t Index, TColgp_Array1OfPnt2d* TPoles, TColStd_Array1OfReal* TKnots, TColStd_Array1OfInteger* TMults) {
+extern "C" const char* BRepBlend_AppSurface_curve2d(const BRepBlend_AppSurface* self_, int32_t Index, NCollection_Array1_gp_Pnt2d* TPoles, NCollection_Array1_double* TKnots, NCollection_Array1_int* TMults) {
     try { self_->Curve2d(Index, *TPoles, *TKnots, *TMults); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -1130,15 +1089,15 @@ extern "C" OcctResult<int32_t> BRepBlend_AppSurface_curves2d_degree(const BRepBl
     try { return {self_->Curves2dDegree(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TColgp_Array1OfPnt2d const*> BRepBlend_AppSurface_curve2d_poles(const BRepBlend_AppSurface* self_, int32_t Index) {
+extern "C" OcctResult<NCollection_Array1_gp_Pnt2d const*> BRepBlend_AppSurface_curve2d_poles(const BRepBlend_AppSurface* self_, int32_t Index) {
     try { return {&(self_->Curve2dPoles(Index)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TColStd_Array1OfReal const*> BRepBlend_AppSurface_curves2d_knots(const BRepBlend_AppSurface* self_) {
+extern "C" OcctResult<NCollection_Array1_double const*> BRepBlend_AppSurface_curves2d_knots(const BRepBlend_AppSurface* self_) {
     try { return {&(self_->Curves2dKnots()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TColStd_Array1OfInteger const*> BRepBlend_AppSurface_curves2d_mults(const BRepBlend_AppSurface* self_) {
+extern "C" OcctResult<NCollection_Array1_int const*> BRepBlend_AppSurface_curves2d_mults(const BRepBlend_AppSurface* self_) {
     try { return {&(self_->Curves2dMults()), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -1420,7 +1379,7 @@ extern "C" OcctResult<int32_t> BRepBlend_HCurve2dTool_nb_intervals(Handle(Adapto
     try { return {BRepBlend_HCurve2dTool::NbIntervals(*C, static_cast<GeomAbs_Shape>(S)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* BRepBlend_HCurve2dTool_intervals(Handle(Adaptor2d_Curve2d) const* C, TColStd_Array1OfReal* T, int32_t S) {
+extern "C" const char* BRepBlend_HCurve2dTool_intervals(Handle(Adaptor2d_Curve2d) const* C, NCollection_Array1_double* T, int32_t S) {
     try { BRepBlend_HCurve2dTool::Intervals(*C, *T, static_cast<GeomAbs_Shape>(S)); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -1526,7 +1485,7 @@ extern "C" OcctResult<int32_t> BRepBlend_HCurveTool_nb_intervals(Handle(Adaptor3
     try { return {BRepBlend_HCurveTool::NbIntervals(*C, static_cast<GeomAbs_Shape>(S)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* BRepBlend_HCurveTool_intervals(Handle(Adaptor3d_Curve) const* C, TColStd_Array1OfReal* T, int32_t S) {
+extern "C" const char* BRepBlend_HCurveTool_intervals(Handle(Adaptor3d_Curve) const* C, NCollection_Array1_double* T, int32_t S) {
     try { BRepBlend_HCurveTool::Intervals(*C, *T, static_cast<GeomAbs_Shape>(S)); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -1702,20 +1661,20 @@ extern "C" OcctResult<Handle(Standard_Type) const*> BRepBlend_Line_get_type_desc
 }
 extern "C" OcctResult<const Standard_Transient*> BRepBlend_Line_as_Standard_Transient(const BRepBlend_Line* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> BRepBlend_Line_as_Standard_Transient_mut(BRepBlend_Line* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleBRepBlendLine*> BRepBlend_Line_to_handle(BRepBlend_Line* obj) {
-    try { return {new HandleBRepBlendLine(obj), nullptr}; }
+extern "C" OcctResult<Handle_BRepBlend_Line*> BRepBlend_Line_to_handle(BRepBlend_Line* obj) {
+    try { return {new Handle_BRepBlend_Line(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const BRepBlend_Line*> HandleBRepBlendLine_get(const HandleBRepBlendLine* handle) {
+extern "C" OcctResult<const BRepBlend_Line*> Handle_BRepBlend_Line_get(const Handle_BRepBlend_Line* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<BRepBlend_Line*> HandleBRepBlendLine_get_mut(HandleBRepBlendLine* handle) {
+extern "C" OcctResult<BRepBlend_Line*> Handle_BRepBlend_Line_get_mut(Handle_BRepBlend_Line* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleBRepBlendLine_to_HandleStandardTransient(const HandleBRepBlendLine* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_BRepBlend_Line_to_Handle_Standard_Transient(const Handle_BRepBlend_Line* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> BRepBlend_Line_inherited_IsInstance(const BRepBlend_Line* self, Handle(Standard_Type) const& theType) {
@@ -1910,7 +1869,7 @@ extern "C" OcctResult<double> BRepBlend_RstRstConstRad_get_section_size(const BR
     try { return {self_->GetSectionSize(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* BRepBlend_RstRstConstRad_get_minimal_weight(const BRepBlend_RstRstConstRad* self_, TColStd_Array1OfReal* Weigths) {
+extern "C" const char* BRepBlend_RstRstConstRad_get_minimal_weight(const BRepBlend_RstRstConstRad* self_, NCollection_Array1_double* Weigths) {
     try { self_->GetMinimalWeight(*Weigths); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -1918,7 +1877,7 @@ extern "C" OcctResult<int32_t> BRepBlend_RstRstConstRad_nb_intervals(const BRepB
     try { return {self_->NbIntervals(static_cast<GeomAbs_Shape>(S)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* BRepBlend_RstRstConstRad_intervals(const BRepBlend_RstRstConstRad* self_, TColStd_Array1OfReal* T, int32_t S) {
+extern "C" const char* BRepBlend_RstRstConstRad_intervals(const BRepBlend_RstRstConstRad* self_, NCollection_Array1_double* T, int32_t S) {
     try { self_->Intervals(*T, static_cast<GeomAbs_Shape>(S)); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -1930,23 +1889,23 @@ extern "C" const char* BRepBlend_RstRstConstRad_get_tolerance_real3_vector2(cons
     try { self_->GetTolerance(BoundTol, SurfTol, AngleTol, *Tol3d, *Tol1D); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* BRepBlend_RstRstConstRad_knots(BRepBlend_RstRstConstRad* self_, TColStd_Array1OfReal* TKnots) {
+extern "C" const char* BRepBlend_RstRstConstRad_knots(BRepBlend_RstRstConstRad* self_, NCollection_Array1_double* TKnots) {
     try { self_->Knots(*TKnots); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* BRepBlend_RstRstConstRad_mults(BRepBlend_RstRstConstRad* self_, TColStd_Array1OfInteger* TMults) {
+extern "C" const char* BRepBlend_RstRstConstRad_mults(BRepBlend_RstRstConstRad* self_, NCollection_Array1_int* TMults) {
     try { self_->Mults(*TMults); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<bool> BRepBlend_RstRstConstRad_section_point_array1ofpnt_array1ofvec_array1ofpnt2d_array1ofvec2d_array1ofreal2(BRepBlend_RstRstConstRad* self_, Blend_Point const* P, TColgp_Array1OfPnt* Poles, TColgp_Array1OfVec* DPoles, TColgp_Array1OfPnt2d* Poles2d, TColgp_Array1OfVec2d* DPoles2d, TColStd_Array1OfReal* Weigths, TColStd_Array1OfReal* DWeigths) {
+extern "C" OcctResult<bool> BRepBlend_RstRstConstRad_section_point_arr1_pnt_arr1_vec_arr1_pnt2d_arr1_vec2d_arr1_double2(BRepBlend_RstRstConstRad* self_, Blend_Point const* P, NCollection_Array1_gp_Pnt* Poles, NCollection_Array1_gp_Vec* DPoles, NCollection_Array1_gp_Pnt2d* Poles2d, NCollection_Array1_gp_Vec2d* DPoles2d, NCollection_Array1_double* Weigths, NCollection_Array1_double* DWeigths) {
     try { return {self_->Section(*P, *Poles, *DPoles, *Poles2d, *DPoles2d, *Weigths, *DWeigths), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* BRepBlend_RstRstConstRad_section_point_array1ofpnt_array1ofpnt2d_array1ofreal(BRepBlend_RstRstConstRad* self_, Blend_Point const* P, TColgp_Array1OfPnt* Poles, TColgp_Array1OfPnt2d* Poles2d, TColStd_Array1OfReal* Weigths) {
+extern "C" const char* BRepBlend_RstRstConstRad_section_point_arr1_pnt_arr1_pnt2d_arr1_double(BRepBlend_RstRstConstRad* self_, Blend_Point const* P, NCollection_Array1_gp_Pnt* Poles, NCollection_Array1_gp_Pnt2d* Poles2d, NCollection_Array1_double* Weigths) {
     try { self_->Section(*P, *Poles, *Poles2d, *Weigths); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<bool> BRepBlend_RstRstConstRad_section_point_array1ofpnt_array1ofvec2_array1ofpnt2d_array1ofvec2d2_array1ofreal3(BRepBlend_RstRstConstRad* self_, Blend_Point const* P, TColgp_Array1OfPnt* Poles, TColgp_Array1OfVec* DPoles, TColgp_Array1OfVec* D2Poles, TColgp_Array1OfPnt2d* Poles2d, TColgp_Array1OfVec2d* DPoles2d, TColgp_Array1OfVec2d* D2Poles2d, TColStd_Array1OfReal* Weigths, TColStd_Array1OfReal* DWeigths, TColStd_Array1OfReal* D2Weigths) {
+extern "C" OcctResult<bool> BRepBlend_RstRstConstRad_section_point_arr1_pnt_arr1_vec2_arr1_pnt2d_arr1_vec2d2_arr1_double3(BRepBlend_RstRstConstRad* self_, Blend_Point const* P, NCollection_Array1_gp_Pnt* Poles, NCollection_Array1_gp_Vec* DPoles, NCollection_Array1_gp_Vec* D2Poles, NCollection_Array1_gp_Pnt2d* Poles2d, NCollection_Array1_gp_Vec2d* DPoles2d, NCollection_Array1_gp_Vec2d* D2Poles2d, NCollection_Array1_double* Weigths, NCollection_Array1_double* DWeigths, NCollection_Array1_double* D2Weigths) {
     try { return {self_->Section(*P, *Poles, *DPoles, *D2Poles, *Poles2d, *DPoles2d, *D2Poles2d, *Weigths, *DWeigths, *D2Weigths), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -2108,7 +2067,7 @@ extern "C" OcctResult<double> BRepBlend_RstRstEvolRad_get_section_size(const BRe
     try { return {self_->GetSectionSize(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* BRepBlend_RstRstEvolRad_get_minimal_weight(const BRepBlend_RstRstEvolRad* self_, TColStd_Array1OfReal* Weigths) {
+extern "C" const char* BRepBlend_RstRstEvolRad_get_minimal_weight(const BRepBlend_RstRstEvolRad* self_, NCollection_Array1_double* Weigths) {
     try { self_->GetMinimalWeight(*Weigths); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -2116,7 +2075,7 @@ extern "C" OcctResult<int32_t> BRepBlend_RstRstEvolRad_nb_intervals(const BRepBl
     try { return {self_->NbIntervals(static_cast<GeomAbs_Shape>(S)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* BRepBlend_RstRstEvolRad_intervals(const BRepBlend_RstRstEvolRad* self_, TColStd_Array1OfReal* T, int32_t S) {
+extern "C" const char* BRepBlend_RstRstEvolRad_intervals(const BRepBlend_RstRstEvolRad* self_, NCollection_Array1_double* T, int32_t S) {
     try { self_->Intervals(*T, static_cast<GeomAbs_Shape>(S)); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -2128,23 +2087,23 @@ extern "C" const char* BRepBlend_RstRstEvolRad_get_tolerance_real3_vector2(const
     try { self_->GetTolerance(BoundTol, SurfTol, AngleTol, *Tol3d, *Tol1D); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* BRepBlend_RstRstEvolRad_knots(BRepBlend_RstRstEvolRad* self_, TColStd_Array1OfReal* TKnots) {
+extern "C" const char* BRepBlend_RstRstEvolRad_knots(BRepBlend_RstRstEvolRad* self_, NCollection_Array1_double* TKnots) {
     try { self_->Knots(*TKnots); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* BRepBlend_RstRstEvolRad_mults(BRepBlend_RstRstEvolRad* self_, TColStd_Array1OfInteger* TMults) {
+extern "C" const char* BRepBlend_RstRstEvolRad_mults(BRepBlend_RstRstEvolRad* self_, NCollection_Array1_int* TMults) {
     try { self_->Mults(*TMults); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<bool> BRepBlend_RstRstEvolRad_section_point_array1ofpnt_array1ofvec_array1ofpnt2d_array1ofvec2d_array1ofreal2(BRepBlend_RstRstEvolRad* self_, Blend_Point const* P, TColgp_Array1OfPnt* Poles, TColgp_Array1OfVec* DPoles, TColgp_Array1OfPnt2d* Poles2d, TColgp_Array1OfVec2d* DPoles2d, TColStd_Array1OfReal* Weigths, TColStd_Array1OfReal* DWeigths) {
+extern "C" OcctResult<bool> BRepBlend_RstRstEvolRad_section_point_arr1_pnt_arr1_vec_arr1_pnt2d_arr1_vec2d_arr1_double2(BRepBlend_RstRstEvolRad* self_, Blend_Point const* P, NCollection_Array1_gp_Pnt* Poles, NCollection_Array1_gp_Vec* DPoles, NCollection_Array1_gp_Pnt2d* Poles2d, NCollection_Array1_gp_Vec2d* DPoles2d, NCollection_Array1_double* Weigths, NCollection_Array1_double* DWeigths) {
     try { return {self_->Section(*P, *Poles, *DPoles, *Poles2d, *DPoles2d, *Weigths, *DWeigths), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* BRepBlend_RstRstEvolRad_section_point_array1ofpnt_array1ofpnt2d_array1ofreal(BRepBlend_RstRstEvolRad* self_, Blend_Point const* P, TColgp_Array1OfPnt* Poles, TColgp_Array1OfPnt2d* Poles2d, TColStd_Array1OfReal* Weigths) {
+extern "C" const char* BRepBlend_RstRstEvolRad_section_point_arr1_pnt_arr1_pnt2d_arr1_double(BRepBlend_RstRstEvolRad* self_, Blend_Point const* P, NCollection_Array1_gp_Pnt* Poles, NCollection_Array1_gp_Pnt2d* Poles2d, NCollection_Array1_double* Weigths) {
     try { self_->Section(*P, *Poles, *Poles2d, *Weigths); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<bool> BRepBlend_RstRstEvolRad_section_point_array1ofpnt_array1ofvec2_array1ofpnt2d_array1ofvec2d2_array1ofreal3(BRepBlend_RstRstEvolRad* self_, Blend_Point const* P, TColgp_Array1OfPnt* Poles, TColgp_Array1OfVec* DPoles, TColgp_Array1OfVec* D2Poles, TColgp_Array1OfPnt2d* Poles2d, TColgp_Array1OfVec2d* DPoles2d, TColgp_Array1OfVec2d* D2Poles2d, TColStd_Array1OfReal* Weigths, TColStd_Array1OfReal* DWeigths, TColStd_Array1OfReal* D2Weigths) {
+extern "C" OcctResult<bool> BRepBlend_RstRstEvolRad_section_point_arr1_pnt_arr1_vec2_arr1_pnt2d_arr1_vec2d2_arr1_double3(BRepBlend_RstRstEvolRad* self_, Blend_Point const* P, NCollection_Array1_gp_Pnt* Poles, NCollection_Array1_gp_Vec* DPoles, NCollection_Array1_gp_Vec* D2Poles, NCollection_Array1_gp_Pnt2d* Poles2d, NCollection_Array1_gp_Vec2d* DPoles2d, NCollection_Array1_gp_Vec2d* D2Poles2d, NCollection_Array1_double* Weigths, NCollection_Array1_double* DWeigths, NCollection_Array1_double* D2Weigths) {
     try { return {self_->Section(*P, *Poles, *DPoles, *D2Poles, *Poles2d, *DPoles2d, *D2Poles2d, *Weigths, *DWeigths, *D2Weigths), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -2584,7 +2543,7 @@ extern "C" OcctResult<double> BRepBlend_SurfRstConstRad_get_section_size(const B
     try { return {self_->GetSectionSize(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* BRepBlend_SurfRstConstRad_get_minimal_weight(const BRepBlend_SurfRstConstRad* self_, TColStd_Array1OfReal* Weigths) {
+extern "C" const char* BRepBlend_SurfRstConstRad_get_minimal_weight(const BRepBlend_SurfRstConstRad* self_, NCollection_Array1_double* Weigths) {
     try { self_->GetMinimalWeight(*Weigths); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -2592,7 +2551,7 @@ extern "C" OcctResult<int32_t> BRepBlend_SurfRstConstRad_nb_intervals(const BRep
     try { return {self_->NbIntervals(static_cast<GeomAbs_Shape>(S)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* BRepBlend_SurfRstConstRad_intervals(const BRepBlend_SurfRstConstRad* self_, TColStd_Array1OfReal* T, int32_t S) {
+extern "C" const char* BRepBlend_SurfRstConstRad_intervals(const BRepBlend_SurfRstConstRad* self_, NCollection_Array1_double* T, int32_t S) {
     try { self_->Intervals(*T, static_cast<GeomAbs_Shape>(S)); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -2604,23 +2563,23 @@ extern "C" const char* BRepBlend_SurfRstConstRad_get_tolerance_real3_vector2(con
     try { self_->GetTolerance(BoundTol, SurfTol, AngleTol, *Tol3d, *Tol1D); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* BRepBlend_SurfRstConstRad_knots(BRepBlend_SurfRstConstRad* self_, TColStd_Array1OfReal* TKnots) {
+extern "C" const char* BRepBlend_SurfRstConstRad_knots(BRepBlend_SurfRstConstRad* self_, NCollection_Array1_double* TKnots) {
     try { self_->Knots(*TKnots); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* BRepBlend_SurfRstConstRad_mults(BRepBlend_SurfRstConstRad* self_, TColStd_Array1OfInteger* TMults) {
+extern "C" const char* BRepBlend_SurfRstConstRad_mults(BRepBlend_SurfRstConstRad* self_, NCollection_Array1_int* TMults) {
     try { self_->Mults(*TMults); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<bool> BRepBlend_SurfRstConstRad_section_point_array1ofpnt_array1ofvec_array1ofpnt2d_array1ofvec2d_array1ofreal2(BRepBlend_SurfRstConstRad* self_, Blend_Point const* P, TColgp_Array1OfPnt* Poles, TColgp_Array1OfVec* DPoles, TColgp_Array1OfPnt2d* Poles2d, TColgp_Array1OfVec2d* DPoles2d, TColStd_Array1OfReal* Weigths, TColStd_Array1OfReal* DWeigths) {
+extern "C" OcctResult<bool> BRepBlend_SurfRstConstRad_section_point_arr1_pnt_arr1_vec_arr1_pnt2d_arr1_vec2d_arr1_double2(BRepBlend_SurfRstConstRad* self_, Blend_Point const* P, NCollection_Array1_gp_Pnt* Poles, NCollection_Array1_gp_Vec* DPoles, NCollection_Array1_gp_Pnt2d* Poles2d, NCollection_Array1_gp_Vec2d* DPoles2d, NCollection_Array1_double* Weigths, NCollection_Array1_double* DWeigths) {
     try { return {self_->Section(*P, *Poles, *DPoles, *Poles2d, *DPoles2d, *Weigths, *DWeigths), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<bool> BRepBlend_SurfRstConstRad_section_point_array1ofpnt_array1ofvec2_array1ofpnt2d_array1ofvec2d2_array1ofreal3(BRepBlend_SurfRstConstRad* self_, Blend_Point const* P, TColgp_Array1OfPnt* Poles, TColgp_Array1OfVec* DPoles, TColgp_Array1OfVec* D2Poles, TColgp_Array1OfPnt2d* Poles2d, TColgp_Array1OfVec2d* DPoles2d, TColgp_Array1OfVec2d* D2Poles2d, TColStd_Array1OfReal* Weigths, TColStd_Array1OfReal* DWeigths, TColStd_Array1OfReal* D2Weigths) {
+extern "C" OcctResult<bool> BRepBlend_SurfRstConstRad_section_point_arr1_pnt_arr1_vec2_arr1_pnt2d_arr1_vec2d2_arr1_double3(BRepBlend_SurfRstConstRad* self_, Blend_Point const* P, NCollection_Array1_gp_Pnt* Poles, NCollection_Array1_gp_Vec* DPoles, NCollection_Array1_gp_Vec* D2Poles, NCollection_Array1_gp_Pnt2d* Poles2d, NCollection_Array1_gp_Vec2d* DPoles2d, NCollection_Array1_gp_Vec2d* D2Poles2d, NCollection_Array1_double* Weigths, NCollection_Array1_double* DWeigths, NCollection_Array1_double* D2Weigths) {
     try { return {self_->Section(*P, *Poles, *DPoles, *D2Poles, *Poles2d, *DPoles2d, *D2Poles2d, *Weigths, *DWeigths, *D2Weigths), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* BRepBlend_SurfRstConstRad_section_point_array1ofpnt_array1ofpnt2d_array1ofreal(BRepBlend_SurfRstConstRad* self_, Blend_Point const* P, TColgp_Array1OfPnt* Poles, TColgp_Array1OfPnt2d* Poles2d, TColStd_Array1OfReal* Weigths) {
+extern "C" const char* BRepBlend_SurfRstConstRad_section_point_arr1_pnt_arr1_pnt2d_arr1_double(BRepBlend_SurfRstConstRad* self_, Blend_Point const* P, NCollection_Array1_gp_Pnt* Poles, NCollection_Array1_gp_Pnt2d* Poles2d, NCollection_Array1_double* Weigths) {
     try { self_->Section(*P, *Poles, *Poles2d, *Weigths); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -2774,7 +2733,7 @@ extern "C" OcctResult<double> BRepBlend_SurfRstEvolRad_get_section_size(const BR
     try { return {self_->GetSectionSize(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* BRepBlend_SurfRstEvolRad_get_minimal_weight(const BRepBlend_SurfRstEvolRad* self_, TColStd_Array1OfReal* Weigths) {
+extern "C" const char* BRepBlend_SurfRstEvolRad_get_minimal_weight(const BRepBlend_SurfRstEvolRad* self_, NCollection_Array1_double* Weigths) {
     try { self_->GetMinimalWeight(*Weigths); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -2782,7 +2741,7 @@ extern "C" OcctResult<int32_t> BRepBlend_SurfRstEvolRad_nb_intervals(const BRepB
     try { return {self_->NbIntervals(static_cast<GeomAbs_Shape>(S)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* BRepBlend_SurfRstEvolRad_intervals(const BRepBlend_SurfRstEvolRad* self_, TColStd_Array1OfReal* T, int32_t S) {
+extern "C" const char* BRepBlend_SurfRstEvolRad_intervals(const BRepBlend_SurfRstEvolRad* self_, NCollection_Array1_double* T, int32_t S) {
     try { self_->Intervals(*T, static_cast<GeomAbs_Shape>(S)); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -2794,23 +2753,23 @@ extern "C" const char* BRepBlend_SurfRstEvolRad_get_tolerance_real3_vector2(cons
     try { self_->GetTolerance(BoundTol, SurfTol, AngleTol, *Tol3d, *Tol1D); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* BRepBlend_SurfRstEvolRad_knots(BRepBlend_SurfRstEvolRad* self_, TColStd_Array1OfReal* TKnots) {
+extern "C" const char* BRepBlend_SurfRstEvolRad_knots(BRepBlend_SurfRstEvolRad* self_, NCollection_Array1_double* TKnots) {
     try { self_->Knots(*TKnots); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* BRepBlend_SurfRstEvolRad_mults(BRepBlend_SurfRstEvolRad* self_, TColStd_Array1OfInteger* TMults) {
+extern "C" const char* BRepBlend_SurfRstEvolRad_mults(BRepBlend_SurfRstEvolRad* self_, NCollection_Array1_int* TMults) {
     try { self_->Mults(*TMults); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<bool> BRepBlend_SurfRstEvolRad_section_point_array1ofpnt_array1ofvec_array1ofpnt2d_array1ofvec2d_array1ofreal2(BRepBlend_SurfRstEvolRad* self_, Blend_Point const* P, TColgp_Array1OfPnt* Poles, TColgp_Array1OfVec* DPoles, TColgp_Array1OfPnt2d* Poles2d, TColgp_Array1OfVec2d* DPoles2d, TColStd_Array1OfReal* Weigths, TColStd_Array1OfReal* DWeigths) {
+extern "C" OcctResult<bool> BRepBlend_SurfRstEvolRad_section_point_arr1_pnt_arr1_vec_arr1_pnt2d_arr1_vec2d_arr1_double2(BRepBlend_SurfRstEvolRad* self_, Blend_Point const* P, NCollection_Array1_gp_Pnt* Poles, NCollection_Array1_gp_Vec* DPoles, NCollection_Array1_gp_Pnt2d* Poles2d, NCollection_Array1_gp_Vec2d* DPoles2d, NCollection_Array1_double* Weigths, NCollection_Array1_double* DWeigths) {
     try { return {self_->Section(*P, *Poles, *DPoles, *Poles2d, *DPoles2d, *Weigths, *DWeigths), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<bool> BRepBlend_SurfRstEvolRad_section_point_array1ofpnt_array1ofvec2_array1ofpnt2d_array1ofvec2d2_array1ofreal3(BRepBlend_SurfRstEvolRad* self_, Blend_Point const* P, TColgp_Array1OfPnt* Poles, TColgp_Array1OfVec* DPoles, TColgp_Array1OfVec* D2Poles, TColgp_Array1OfPnt2d* Poles2d, TColgp_Array1OfVec2d* DPoles2d, TColgp_Array1OfVec2d* D2Poles2d, TColStd_Array1OfReal* Weigths, TColStd_Array1OfReal* DWeigths, TColStd_Array1OfReal* D2Weigths) {
+extern "C" OcctResult<bool> BRepBlend_SurfRstEvolRad_section_point_arr1_pnt_arr1_vec2_arr1_pnt2d_arr1_vec2d2_arr1_double3(BRepBlend_SurfRstEvolRad* self_, Blend_Point const* P, NCollection_Array1_gp_Pnt* Poles, NCollection_Array1_gp_Vec* DPoles, NCollection_Array1_gp_Vec* D2Poles, NCollection_Array1_gp_Pnt2d* Poles2d, NCollection_Array1_gp_Vec2d* DPoles2d, NCollection_Array1_gp_Vec2d* D2Poles2d, NCollection_Array1_double* Weigths, NCollection_Array1_double* DWeigths, NCollection_Array1_double* D2Weigths) {
     try { return {self_->Section(*P, *Poles, *DPoles, *D2Poles, *Poles2d, *DPoles2d, *D2Poles2d, *Weigths, *DWeigths, *D2Weigths), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* BRepBlend_SurfRstEvolRad_section_point_array1ofpnt_array1ofpnt2d_array1ofreal(BRepBlend_SurfRstEvolRad* self_, Blend_Point const* P, TColgp_Array1OfPnt* Poles, TColgp_Array1OfPnt2d* Poles2d, TColStd_Array1OfReal* Weigths) {
+extern "C" const char* BRepBlend_SurfRstEvolRad_section_point_arr1_pnt_arr1_pnt2d_arr1_double(BRepBlend_SurfRstEvolRad* self_, Blend_Point const* P, NCollection_Array1_gp_Pnt* Poles, NCollection_Array1_gp_Pnt2d* Poles2d, NCollection_Array1_double* Weigths) {
     try { self_->Section(*P, *Poles, *Poles2d, *Weigths); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -2979,8 +2938,8 @@ extern "C" OcctResult<TopoDS_Vertex*> BRepFilletAPI_LocalOperation_last_vertex(c
     try { return {new TopoDS_Vertex(self_->LastVertex(IC)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(ChFiDS_SecHArray1)*> BRepFilletAPI_LocalOperation_sect(const BRepFilletAPI_LocalOperation* self_, int32_t IC, int32_t IS) {
-    try { return {new Handle(ChFiDS_SecHArray1)(self_->Sect(IC, IS)), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HArray1_ChFiDS_CircSection)*> BRepFilletAPI_LocalOperation_sect(const BRepFilletAPI_LocalOperation* self_, int32_t IC, int32_t IS) {
+    try { return {new Handle(NCollection_HArray1_ChFiDS_CircSection)(self_->Sect(IC, IS)), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" const char* BRepFilletAPI_LocalOperation_add(BRepFilletAPI_LocalOperation* self_, TopoDS_Edge const* E) {
@@ -3089,8 +3048,8 @@ extern "C" OcctResult<Handle(TopOpeBRepBuild_HBuilder)*> BRepFilletAPI_MakeChamf
     try { return {new Handle(TopOpeBRepBuild_HBuilder)(self_->Builder()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(ChFiDS_SecHArray1)*> BRepFilletAPI_MakeChamfer_sect(const BRepFilletAPI_MakeChamfer* self_, int32_t IC, int32_t IS) {
-    try { return {new Handle(ChFiDS_SecHArray1)(self_->Sect(IC, IS)), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HArray1_ChFiDS_CircSection)*> BRepFilletAPI_MakeChamfer_sect(const BRepFilletAPI_MakeChamfer* self_, int32_t IC, int32_t IS) {
+    try { return {new Handle(NCollection_HArray1_ChFiDS_CircSection)(self_->Sect(IC, IS)), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" const char* BRepFilletAPI_MakeChamfer_add_edge(BRepFilletAPI_MakeChamfer* self_, TopoDS_Edge const* E) {
@@ -3201,11 +3160,11 @@ extern "C" const char* BRepFilletAPI_MakeChamfer_reset(BRepFilletAPI_MakeChamfer
     try { self_->Reset(); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<TopTools_ListOfShape const*> BRepFilletAPI_MakeChamfer_generated(BRepFilletAPI_MakeChamfer* self_, TopoDS_Shape const* EorV) {
+extern "C" OcctResult<NCollection_List_TopoDS_Shape const*> BRepFilletAPI_MakeChamfer_generated(BRepFilletAPI_MakeChamfer* self_, TopoDS_Shape const* EorV) {
     try { return {&(self_->Generated(*EorV)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TopTools_ListOfShape const*> BRepFilletAPI_MakeChamfer_modified(BRepFilletAPI_MakeChamfer* self_, TopoDS_Shape const* F) {
+extern "C" OcctResult<NCollection_List_TopoDS_Shape const*> BRepFilletAPI_MakeChamfer_modified(BRepFilletAPI_MakeChamfer* self_, TopoDS_Shape const* F) {
     try { return {&(self_->Modified(*F)), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -3265,8 +3224,8 @@ extern "C" OcctResult<Handle(TopOpeBRepBuild_HBuilder)*> BRepFilletAPI_MakeFille
     try { return {new Handle(TopOpeBRepBuild_HBuilder)(self_->Builder()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(ChFiDS_SecHArray1)*> BRepFilletAPI_MakeFillet_sect(const BRepFilletAPI_MakeFillet* self_, int32_t IC, int32_t IS) {
-    try { return {new Handle(ChFiDS_SecHArray1)(self_->Sect(IC, IS)), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HArray1_ChFiDS_CircSection)*> BRepFilletAPI_MakeFillet_sect(const BRepFilletAPI_MakeFillet* self_, int32_t IC, int32_t IS) {
+    try { return {new Handle(NCollection_HArray1_ChFiDS_CircSection)(self_->Sect(IC, IS)), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(Geom_Surface)*> BRepFilletAPI_MakeFillet_computed_surface(const BRepFilletAPI_MakeFillet* self_, int32_t IC, int32_t IS) {
@@ -3305,7 +3264,7 @@ extern "C" const char* BRepFilletAPI_MakeFillet_add_handlelawfunction_edge(BRepF
     try { self_->Add(*L, *E); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* BRepFilletAPI_MakeFillet_add_array1ofpnt2d_edge(BRepFilletAPI_MakeFillet* self_, TColgp_Array1OfPnt2d const* UandR, TopoDS_Edge const* E) {
+extern "C" const char* BRepFilletAPI_MakeFillet_add_arr1_pnt2d_edge(BRepFilletAPI_MakeFillet* self_, NCollection_Array1_gp_Pnt2d const* UandR, TopoDS_Edge const* E) {
     try { self_->Add(*UandR, *E); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -3321,7 +3280,7 @@ extern "C" const char* BRepFilletAPI_MakeFillet_set_radius_handlelawfunction_int
     try { self_->SetRadius(*L, IC, IinC); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* BRepFilletAPI_MakeFillet_set_radius_array1ofpnt2d_int2(BRepFilletAPI_MakeFillet* self_, TColgp_Array1OfPnt2d const* UandR, int32_t IC, int32_t IinC) {
+extern "C" const char* BRepFilletAPI_MakeFillet_set_radius_arr1_pnt2d_int2(BRepFilletAPI_MakeFillet* self_, NCollection_Array1_gp_Pnt2d const* UandR, int32_t IC, int32_t IinC) {
     try { self_->SetRadius(*UandR, IC, IinC); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -3417,11 +3376,11 @@ extern "C" const char* BRepFilletAPI_MakeFillet_reset(BRepFilletAPI_MakeFillet* 
     try { self_->Reset(); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<TopTools_ListOfShape const*> BRepFilletAPI_MakeFillet_generated(BRepFilletAPI_MakeFillet* self_, TopoDS_Shape const* EorV) {
+extern "C" OcctResult<NCollection_List_TopoDS_Shape const*> BRepFilletAPI_MakeFillet_generated(BRepFilletAPI_MakeFillet* self_, TopoDS_Shape const* EorV) {
     try { return {&(self_->Generated(*EorV)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TopTools_ListOfShape const*> BRepFilletAPI_MakeFillet_modified(BRepFilletAPI_MakeFillet* self_, TopoDS_Shape const* F) {
+extern "C" OcctResult<NCollection_List_TopoDS_Shape const*> BRepFilletAPI_MakeFillet_modified(BRepFilletAPI_MakeFillet* self_, TopoDS_Shape const* F) {
     try { return {&(self_->Modified(*F)), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -3433,7 +3392,7 @@ extern "C" OcctResult<int32_t> BRepFilletAPI_MakeFillet_nb_surfaces(const BRepFi
     try { return {self_->NbSurfaces(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TopTools_ListOfShape const*> BRepFilletAPI_MakeFillet_new_faces(BRepFilletAPI_MakeFillet* self_, int32_t I) {
+extern "C" OcctResult<NCollection_List_TopoDS_Shape const*> BRepFilletAPI_MakeFillet_new_faces(BRepFilletAPI_MakeFillet* self_, int32_t I) {
     try { return {&(self_->NewFaces(I)), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -3545,7 +3504,7 @@ extern "C" OcctResult<bool> BRepFilletAPI_MakeFillet2d_is_modified(const BRepFil
     try { return {self_->IsModified(*E), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TopTools_SequenceOfShape const*> BRepFilletAPI_MakeFillet2d_fillet_edges(const BRepFilletAPI_MakeFillet2d* self_) {
+extern "C" OcctResult<NCollection_Sequence_TopoDS_Shape const*> BRepFilletAPI_MakeFillet2d_fillet_edges(const BRepFilletAPI_MakeFillet2d* self_) {
     try { return {&(self_->FilletEdges()), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -3553,7 +3512,7 @@ extern "C" OcctResult<int32_t> BRepFilletAPI_MakeFillet2d_nb_fillet(const BRepFi
     try { return {self_->NbFillet(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TopTools_SequenceOfShape const*> BRepFilletAPI_MakeFillet2d_chamfer_edges(const BRepFilletAPI_MakeFillet2d* self_) {
+extern "C" OcctResult<NCollection_Sequence_TopoDS_Shape const*> BRepFilletAPI_MakeFillet2d_chamfer_edges(const BRepFilletAPI_MakeFillet2d* self_) {
     try { return {&(self_->ChamferEdges()), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -3561,7 +3520,7 @@ extern "C" OcctResult<int32_t> BRepFilletAPI_MakeFillet2d_nb_chamfer(const BRepF
     try { return {self_->NbChamfer(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TopTools_ListOfShape const*> BRepFilletAPI_MakeFillet2d_modified(BRepFilletAPI_MakeFillet2d* self_, TopoDS_Shape const* S) {
+extern "C" OcctResult<NCollection_List_TopoDS_Shape const*> BRepFilletAPI_MakeFillet2d_modified(BRepFilletAPI_MakeFillet2d* self_, TopoDS_Shape const* S) {
     try { return {&(self_->Modified(*S)), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -3569,7 +3528,7 @@ extern "C" OcctResult<int32_t> BRepFilletAPI_MakeFillet2d_nb_curves(const BRepFi
     try { return {self_->NbCurves(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TopTools_ListOfShape const*> BRepFilletAPI_MakeFillet2d_new_edges(BRepFilletAPI_MakeFillet2d* self_, int32_t I) {
+extern "C" OcctResult<NCollection_List_TopoDS_Shape const*> BRepFilletAPI_MakeFillet2d_new_edges(BRepFilletAPI_MakeFillet2d* self_, int32_t I) {
     try { return {&(self_->NewEdges(I)), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -3679,7 +3638,7 @@ extern "C" OcctResult<double> Blend_AppFunction_get_section_size(const Blend_App
     try { return {self_->GetSectionSize(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* Blend_AppFunction_get_minimal_weight(const Blend_AppFunction* self_, TColStd_Array1OfReal* Weigths) {
+extern "C" const char* Blend_AppFunction_get_minimal_weight(const Blend_AppFunction* self_, NCollection_Array1_double* Weigths) {
     try { self_->GetMinimalWeight(*Weigths); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -3687,7 +3646,7 @@ extern "C" OcctResult<int32_t> Blend_AppFunction_nb_intervals(const Blend_AppFun
     try { return {self_->NbIntervals(static_cast<GeomAbs_Shape>(S)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* Blend_AppFunction_intervals(const Blend_AppFunction* self_, TColStd_Array1OfReal* T, int32_t S) {
+extern "C" const char* Blend_AppFunction_intervals(const Blend_AppFunction* self_, NCollection_Array1_double* T, int32_t S) {
     try { self_->Intervals(*T, static_cast<GeomAbs_Shape>(S)); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -3699,23 +3658,23 @@ extern "C" const char* Blend_AppFunction_get_tolerance_real3_vector2(const Blend
     try { self_->GetTolerance(BoundTol, SurfTol, AngleTol, *Tol3d, *Tol1D); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* Blend_AppFunction_knots(Blend_AppFunction* self_, TColStd_Array1OfReal* TKnots) {
+extern "C" const char* Blend_AppFunction_knots(Blend_AppFunction* self_, NCollection_Array1_double* TKnots) {
     try { self_->Knots(*TKnots); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* Blend_AppFunction_mults(Blend_AppFunction* self_, TColStd_Array1OfInteger* TMults) {
+extern "C" const char* Blend_AppFunction_mults(Blend_AppFunction* self_, NCollection_Array1_int* TMults) {
     try { self_->Mults(*TMults); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<bool> Blend_AppFunction_section_point_array1ofpnt_array1ofvec_array1ofpnt2d_array1ofvec2d_array1ofreal2(Blend_AppFunction* self_, Blend_Point const* P, TColgp_Array1OfPnt* Poles, TColgp_Array1OfVec* DPoles, TColgp_Array1OfPnt2d* Poles2d, TColgp_Array1OfVec2d* DPoles2d, TColStd_Array1OfReal* Weigths, TColStd_Array1OfReal* DWeigths) {
+extern "C" OcctResult<bool> Blend_AppFunction_section_point_arr1_pnt_arr1_vec_arr1_pnt2d_arr1_vec2d_arr1_double2(Blend_AppFunction* self_, Blend_Point const* P, NCollection_Array1_gp_Pnt* Poles, NCollection_Array1_gp_Vec* DPoles, NCollection_Array1_gp_Pnt2d* Poles2d, NCollection_Array1_gp_Vec2d* DPoles2d, NCollection_Array1_double* Weigths, NCollection_Array1_double* DWeigths) {
     try { return {self_->Section(*P, *Poles, *DPoles, *Poles2d, *DPoles2d, *Weigths, *DWeigths), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* Blend_AppFunction_section_point_array1ofpnt_array1ofpnt2d_array1ofreal(Blend_AppFunction* self_, Blend_Point const* P, TColgp_Array1OfPnt* Poles, TColgp_Array1OfPnt2d* Poles2d, TColStd_Array1OfReal* Weigths) {
+extern "C" const char* Blend_AppFunction_section_point_arr1_pnt_arr1_pnt2d_arr1_double(Blend_AppFunction* self_, Blend_Point const* P, NCollection_Array1_gp_Pnt* Poles, NCollection_Array1_gp_Pnt2d* Poles2d, NCollection_Array1_double* Weigths) {
     try { self_->Section(*P, *Poles, *Poles2d, *Weigths); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<bool> Blend_AppFunction_section_point_array1ofpnt_array1ofvec2_array1ofpnt2d_array1ofvec2d2_array1ofreal3(Blend_AppFunction* self_, Blend_Point const* P, TColgp_Array1OfPnt* Poles, TColgp_Array1OfVec* DPoles, TColgp_Array1OfVec* D2Poles, TColgp_Array1OfPnt2d* Poles2d, TColgp_Array1OfVec2d* DPoles2d, TColgp_Array1OfVec2d* D2Poles2d, TColStd_Array1OfReal* Weigths, TColStd_Array1OfReal* DWeigths, TColStd_Array1OfReal* D2Weigths) {
+extern "C" OcctResult<bool> Blend_AppFunction_section_point_arr1_pnt_arr1_vec2_arr1_pnt2d_arr1_vec2d2_arr1_double3(Blend_AppFunction* self_, Blend_Point const* P, NCollection_Array1_gp_Pnt* Poles, NCollection_Array1_gp_Vec* DPoles, NCollection_Array1_gp_Vec* D2Poles, NCollection_Array1_gp_Pnt2d* Poles2d, NCollection_Array1_gp_Vec2d* DPoles2d, NCollection_Array1_gp_Vec2d* D2Poles2d, NCollection_Array1_double* Weigths, NCollection_Array1_double* DWeigths, NCollection_Array1_double* D2Weigths) {
     try { return {self_->Section(*P, *Poles, *DPoles, *D2Poles, *Poles2d, *DPoles2d, *D2Poles2d, *Weigths, *DWeigths, *D2Weigths), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -3837,23 +3796,23 @@ extern "C" const char* Blend_CSFunction_get_tolerance_real3_vector2(const Blend_
     try { self_->GetTolerance(BoundTol, SurfTol, AngleTol, *Tol3d, *Tol1D); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* Blend_CSFunction_knots(Blend_CSFunction* self_, TColStd_Array1OfReal* TKnots) {
+extern "C" const char* Blend_CSFunction_knots(Blend_CSFunction* self_, NCollection_Array1_double* TKnots) {
     try { self_->Knots(*TKnots); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* Blend_CSFunction_mults(Blend_CSFunction* self_, TColStd_Array1OfInteger* TMults) {
+extern "C" const char* Blend_CSFunction_mults(Blend_CSFunction* self_, NCollection_Array1_int* TMults) {
     try { self_->Mults(*TMults); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<bool> Blend_CSFunction_section_point_array1ofpnt_array1ofvec_array1ofpnt2d_array1ofvec2d_array1ofreal2(Blend_CSFunction* self_, Blend_Point const* P, TColgp_Array1OfPnt* Poles, TColgp_Array1OfVec* DPoles, TColgp_Array1OfPnt2d* Poles2d, TColgp_Array1OfVec2d* DPoles2d, TColStd_Array1OfReal* Weigths, TColStd_Array1OfReal* DWeigths) {
+extern "C" OcctResult<bool> Blend_CSFunction_section_point_arr1_pnt_arr1_vec_arr1_pnt2d_arr1_vec2d_arr1_double2(Blend_CSFunction* self_, Blend_Point const* P, NCollection_Array1_gp_Pnt* Poles, NCollection_Array1_gp_Vec* DPoles, NCollection_Array1_gp_Pnt2d* Poles2d, NCollection_Array1_gp_Vec2d* DPoles2d, NCollection_Array1_double* Weigths, NCollection_Array1_double* DWeigths) {
     try { return {self_->Section(*P, *Poles, *DPoles, *Poles2d, *DPoles2d, *Weigths, *DWeigths), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* Blend_CSFunction_section_point_array1ofpnt_array1ofpnt2d_array1ofreal(Blend_CSFunction* self_, Blend_Point const* P, TColgp_Array1OfPnt* Poles, TColgp_Array1OfPnt2d* Poles2d, TColStd_Array1OfReal* Weigths) {
+extern "C" const char* Blend_CSFunction_section_point_arr1_pnt_arr1_pnt2d_arr1_double(Blend_CSFunction* self_, Blend_Point const* P, NCollection_Array1_gp_Pnt* Poles, NCollection_Array1_gp_Pnt2d* Poles2d, NCollection_Array1_double* Weigths) {
     try { self_->Section(*P, *Poles, *Poles2d, *Weigths); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<bool> Blend_CSFunction_section_point_array1ofpnt_array1ofvec2_array1ofpnt2d_array1ofvec2d2_array1ofreal3(Blend_CSFunction* self_, Blend_Point const* P, TColgp_Array1OfPnt* Poles, TColgp_Array1OfVec* DPoles, TColgp_Array1OfVec* D2Poles, TColgp_Array1OfPnt2d* Poles2d, TColgp_Array1OfVec2d* DPoles2d, TColgp_Array1OfVec2d* D2Poles2d, TColStd_Array1OfReal* Weigths, TColStd_Array1OfReal* DWeigths, TColStd_Array1OfReal* D2Weigths) {
+extern "C" OcctResult<bool> Blend_CSFunction_section_point_arr1_pnt_arr1_vec2_arr1_pnt2d_arr1_vec2d2_arr1_double3(Blend_CSFunction* self_, Blend_Point const* P, NCollection_Array1_gp_Pnt* Poles, NCollection_Array1_gp_Vec* DPoles, NCollection_Array1_gp_Vec* D2Poles, NCollection_Array1_gp_Pnt2d* Poles2d, NCollection_Array1_gp_Vec2d* DPoles2d, NCollection_Array1_gp_Vec2d* D2Poles2d, NCollection_Array1_double* Weigths, NCollection_Array1_double* DWeigths, NCollection_Array1_double* D2Weigths) {
     try { return {self_->Section(*P, *Poles, *DPoles, *D2Poles, *Poles2d, *DPoles2d, *D2Poles2d, *Weigths, *DWeigths, *D2Weigths), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -3871,7 +3830,7 @@ extern "C" OcctResult<double> Blend_CSFunction_inherited_GetSectionSize(const Bl
     try { return {self->GetSectionSize(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* Blend_CSFunction_inherited_GetMinimalWeight(const Blend_CSFunction* self, TColStd_Array1OfReal& Weigths) {
+extern "C" const char* Blend_CSFunction_inherited_GetMinimalWeight(const Blend_CSFunction* self, NCollection_Array1_double& Weigths) {
     try { self->GetMinimalWeight(Weigths); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -3879,7 +3838,7 @@ extern "C" OcctResult<int32_t> Blend_CSFunction_inherited_NbIntervals(const Blen
     try { return {self->NbIntervals(static_cast<GeomAbs_Shape>(S)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* Blend_CSFunction_inherited_Intervals(const Blend_CSFunction* self, TColStd_Array1OfReal& T, int32_t S) {
+extern "C" const char* Blend_CSFunction_inherited_Intervals(const Blend_CSFunction* self, NCollection_Array1_double& T, int32_t S) {
     try { self->Intervals(T, static_cast<GeomAbs_Shape>(S)); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -4053,11 +4012,11 @@ extern "C" OcctResult<bool> Blend_Function_twist_on_s2(const Blend_Function* sel
     try { return {self_->TwistOnS2(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* Blend_Function_section_point_array1ofpnt_array1ofpnt2d_array1ofreal(Blend_Function* self_, Blend_Point const* P, TColgp_Array1OfPnt* Poles, TColgp_Array1OfPnt2d* Poles2d, TColStd_Array1OfReal* Weigths) {
+extern "C" const char* Blend_Function_section_point_arr1_pnt_arr1_pnt2d_arr1_double(Blend_Function* self_, Blend_Point const* P, NCollection_Array1_gp_Pnt* Poles, NCollection_Array1_gp_Pnt2d* Poles2d, NCollection_Array1_double* Weigths) {
     try { self_->Section(*P, *Poles, *Poles2d, *Weigths); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<bool> Blend_Function_section_point_array1ofpnt_array1ofvec2_array1ofpnt2d_array1ofvec2d2_array1ofreal3(Blend_Function* self_, Blend_Point const* P, TColgp_Array1OfPnt* Poles, TColgp_Array1OfVec* DPoles, TColgp_Array1OfVec* D2Poles, TColgp_Array1OfPnt2d* Poles2d, TColgp_Array1OfVec2d* DPoles2d, TColgp_Array1OfVec2d* D2Poles2d, TColStd_Array1OfReal* Weigths, TColStd_Array1OfReal* DWeigths, TColStd_Array1OfReal* D2Weigths) {
+extern "C" OcctResult<bool> Blend_Function_section_point_arr1_pnt_arr1_vec2_arr1_pnt2d_arr1_vec2d2_arr1_double3(Blend_Function* self_, Blend_Point const* P, NCollection_Array1_gp_Pnt* Poles, NCollection_Array1_gp_Vec* DPoles, NCollection_Array1_gp_Vec* D2Poles, NCollection_Array1_gp_Pnt2d* Poles2d, NCollection_Array1_gp_Vec2d* DPoles2d, NCollection_Array1_gp_Vec2d* D2Poles2d, NCollection_Array1_double* Weigths, NCollection_Array1_double* DWeigths, NCollection_Array1_double* D2Weigths) {
     try { return {self_->Section(*P, *Poles, *DPoles, *D2Poles, *Poles2d, *DPoles2d, *D2Poles2d, *Weigths, *DWeigths, *D2Weigths), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -4111,7 +4070,7 @@ extern "C" OcctResult<double> Blend_Function_inherited_GetSectionSize(const Blen
     try { return {self->GetSectionSize(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* Blend_Function_inherited_GetMinimalWeight(const Blend_Function* self, TColStd_Array1OfReal& Weigths) {
+extern "C" const char* Blend_Function_inherited_GetMinimalWeight(const Blend_Function* self, NCollection_Array1_double& Weigths) {
     try { self->GetMinimalWeight(Weigths); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -4119,7 +4078,7 @@ extern "C" OcctResult<int32_t> Blend_Function_inherited_NbIntervals(const Blend_
     try { return {self->NbIntervals(static_cast<GeomAbs_Shape>(S)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* Blend_Function_inherited_Intervals(const Blend_Function* self, TColStd_Array1OfReal& T, int32_t S) {
+extern "C" const char* Blend_Function_inherited_Intervals(const Blend_Function* self, NCollection_Array1_double& T, int32_t S) {
     try { self->Intervals(T, static_cast<GeomAbs_Shape>(S)); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -4127,11 +4086,11 @@ extern "C" const char* Blend_Function_inherited_GetShape(Blend_Function* self, i
     try { self->GetShape(NbPoles, NbKnots, Degree, NbPoles2d); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* Blend_Function_inherited_Knots(Blend_Function* self, TColStd_Array1OfReal& TKnots) {
+extern "C" const char* Blend_Function_inherited_Knots(Blend_Function* self, NCollection_Array1_double& TKnots) {
     try { self->Knots(TKnots); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* Blend_Function_inherited_Mults(Blend_Function* self, TColStd_Array1OfInteger& TMults) {
+extern "C" const char* Blend_Function_inherited_Mults(Blend_Function* self, NCollection_Array1_int& TMults) {
     try { self->Mults(TMults); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -4435,7 +4394,7 @@ extern "C" OcctResult<double> Blend_RstRstFunction_get_section_size(const Blend_
     try { return {self_->GetSectionSize(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* Blend_RstRstFunction_get_minimal_weight(const Blend_RstRstFunction* self_, TColStd_Array1OfReal* Weigths) {
+extern "C" const char* Blend_RstRstFunction_get_minimal_weight(const Blend_RstRstFunction* self_, NCollection_Array1_double* Weigths) {
     try { self_->GetMinimalWeight(*Weigths); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -4443,7 +4402,7 @@ extern "C" OcctResult<int32_t> Blend_RstRstFunction_nb_intervals(const Blend_Rst
     try { return {self_->NbIntervals(static_cast<GeomAbs_Shape>(S)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* Blend_RstRstFunction_intervals(const Blend_RstRstFunction* self_, TColStd_Array1OfReal* T, int32_t S) {
+extern "C" const char* Blend_RstRstFunction_intervals(const Blend_RstRstFunction* self_, NCollection_Array1_double* T, int32_t S) {
     try { self_->Intervals(*T, static_cast<GeomAbs_Shape>(S)); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -4455,23 +4414,23 @@ extern "C" const char* Blend_RstRstFunction_get_tolerance_real3_vector2(const Bl
     try { self_->GetTolerance(BoundTol, SurfTol, AngleTol, *Tol3d, *Tol1D); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* Blend_RstRstFunction_knots(Blend_RstRstFunction* self_, TColStd_Array1OfReal* TKnots) {
+extern "C" const char* Blend_RstRstFunction_knots(Blend_RstRstFunction* self_, NCollection_Array1_double* TKnots) {
     try { self_->Knots(*TKnots); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* Blend_RstRstFunction_mults(Blend_RstRstFunction* self_, TColStd_Array1OfInteger* TMults) {
+extern "C" const char* Blend_RstRstFunction_mults(Blend_RstRstFunction* self_, NCollection_Array1_int* TMults) {
     try { self_->Mults(*TMults); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* Blend_RstRstFunction_section_point_array1ofpnt_array1ofpnt2d_array1ofreal(Blend_RstRstFunction* self_, Blend_Point const* P, TColgp_Array1OfPnt* Poles, TColgp_Array1OfPnt2d* Poles2d, TColStd_Array1OfReal* Weigths) {
+extern "C" const char* Blend_RstRstFunction_section_point_arr1_pnt_arr1_pnt2d_arr1_double(Blend_RstRstFunction* self_, Blend_Point const* P, NCollection_Array1_gp_Pnt* Poles, NCollection_Array1_gp_Pnt2d* Poles2d, NCollection_Array1_double* Weigths) {
     try { self_->Section(*P, *Poles, *Poles2d, *Weigths); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<bool> Blend_RstRstFunction_section_point_array1ofpnt_array1ofvec_array1ofpnt2d_array1ofvec2d_array1ofreal2(Blend_RstRstFunction* self_, Blend_Point const* P, TColgp_Array1OfPnt* Poles, TColgp_Array1OfVec* DPoles, TColgp_Array1OfPnt2d* Poles2d, TColgp_Array1OfVec2d* DPoles2d, TColStd_Array1OfReal* Weigths, TColStd_Array1OfReal* DWeigths) {
+extern "C" OcctResult<bool> Blend_RstRstFunction_section_point_arr1_pnt_arr1_vec_arr1_pnt2d_arr1_vec2d_arr1_double2(Blend_RstRstFunction* self_, Blend_Point const* P, NCollection_Array1_gp_Pnt* Poles, NCollection_Array1_gp_Vec* DPoles, NCollection_Array1_gp_Pnt2d* Poles2d, NCollection_Array1_gp_Vec2d* DPoles2d, NCollection_Array1_double* Weigths, NCollection_Array1_double* DWeigths) {
     try { return {self_->Section(*P, *Poles, *DPoles, *Poles2d, *DPoles2d, *Weigths, *DWeigths), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<bool> Blend_RstRstFunction_section_point_array1ofpnt_array1ofvec2_array1ofpnt2d_array1ofvec2d2_array1ofreal3(Blend_RstRstFunction* self_, Blend_Point const* P, TColgp_Array1OfPnt* Poles, TColgp_Array1OfVec* DPoles, TColgp_Array1OfVec* D2Poles, TColgp_Array1OfPnt2d* Poles2d, TColgp_Array1OfVec2d* DPoles2d, TColgp_Array1OfVec2d* D2Poles2d, TColStd_Array1OfReal* Weigths, TColStd_Array1OfReal* DWeigths, TColStd_Array1OfReal* D2Weigths) {
+extern "C" OcctResult<bool> Blend_RstRstFunction_section_point_arr1_pnt_arr1_vec2_arr1_pnt2d_arr1_vec2d2_arr1_double3(Blend_RstRstFunction* self_, Blend_Point const* P, NCollection_Array1_gp_Pnt* Poles, NCollection_Array1_gp_Vec* DPoles, NCollection_Array1_gp_Vec* D2Poles, NCollection_Array1_gp_Pnt2d* Poles2d, NCollection_Array1_gp_Vec2d* DPoles2d, NCollection_Array1_gp_Vec2d* D2Poles2d, NCollection_Array1_double* Weigths, NCollection_Array1_double* DWeigths, NCollection_Array1_double* D2Weigths) {
     try { return {self_->Section(*P, *Poles, *DPoles, *D2Poles, *Poles2d, *DPoles2d, *D2Poles2d, *Weigths, *DWeigths, *D2Weigths), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -4703,7 +4662,7 @@ extern "C" OcctResult<double> Blend_SurfRstFunction_get_section_size(const Blend
     try { return {self_->GetSectionSize(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* Blend_SurfRstFunction_get_minimal_weight(const Blend_SurfRstFunction* self_, TColStd_Array1OfReal* Weigths) {
+extern "C" const char* Blend_SurfRstFunction_get_minimal_weight(const Blend_SurfRstFunction* self_, NCollection_Array1_double* Weigths) {
     try { self_->GetMinimalWeight(*Weigths); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -4711,7 +4670,7 @@ extern "C" OcctResult<int32_t> Blend_SurfRstFunction_nb_intervals(const Blend_Su
     try { return {self_->NbIntervals(static_cast<GeomAbs_Shape>(S)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* Blend_SurfRstFunction_intervals(const Blend_SurfRstFunction* self_, TColStd_Array1OfReal* T, int32_t S) {
+extern "C" const char* Blend_SurfRstFunction_intervals(const Blend_SurfRstFunction* self_, NCollection_Array1_double* T, int32_t S) {
     try { self_->Intervals(*T, static_cast<GeomAbs_Shape>(S)); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -4723,23 +4682,23 @@ extern "C" const char* Blend_SurfRstFunction_get_tolerance_real3_vector2(const B
     try { self_->GetTolerance(BoundTol, SurfTol, AngleTol, *Tol3d, *Tol1D); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* Blend_SurfRstFunction_knots(Blend_SurfRstFunction* self_, TColStd_Array1OfReal* TKnots) {
+extern "C" const char* Blend_SurfRstFunction_knots(Blend_SurfRstFunction* self_, NCollection_Array1_double* TKnots) {
     try { self_->Knots(*TKnots); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* Blend_SurfRstFunction_mults(Blend_SurfRstFunction* self_, TColStd_Array1OfInteger* TMults) {
+extern "C" const char* Blend_SurfRstFunction_mults(Blend_SurfRstFunction* self_, NCollection_Array1_int* TMults) {
     try { self_->Mults(*TMults); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<bool> Blend_SurfRstFunction_section_point_array1ofpnt_array1ofvec_array1ofpnt2d_array1ofvec2d_array1ofreal2(Blend_SurfRstFunction* self_, Blend_Point const* P, TColgp_Array1OfPnt* Poles, TColgp_Array1OfVec* DPoles, TColgp_Array1OfPnt2d* Poles2d, TColgp_Array1OfVec2d* DPoles2d, TColStd_Array1OfReal* Weigths, TColStd_Array1OfReal* DWeigths) {
+extern "C" OcctResult<bool> Blend_SurfRstFunction_section_point_arr1_pnt_arr1_vec_arr1_pnt2d_arr1_vec2d_arr1_double2(Blend_SurfRstFunction* self_, Blend_Point const* P, NCollection_Array1_gp_Pnt* Poles, NCollection_Array1_gp_Vec* DPoles, NCollection_Array1_gp_Pnt2d* Poles2d, NCollection_Array1_gp_Vec2d* DPoles2d, NCollection_Array1_double* Weigths, NCollection_Array1_double* DWeigths) {
     try { return {self_->Section(*P, *Poles, *DPoles, *Poles2d, *DPoles2d, *Weigths, *DWeigths), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<bool> Blend_SurfRstFunction_section_point_array1ofpnt_array1ofvec2_array1ofpnt2d_array1ofvec2d2_array1ofreal3(Blend_SurfRstFunction* self_, Blend_Point const* P, TColgp_Array1OfPnt* Poles, TColgp_Array1OfVec* DPoles, TColgp_Array1OfVec* D2Poles, TColgp_Array1OfPnt2d* Poles2d, TColgp_Array1OfVec2d* DPoles2d, TColgp_Array1OfVec2d* D2Poles2d, TColStd_Array1OfReal* Weigths, TColStd_Array1OfReal* DWeigths, TColStd_Array1OfReal* D2Weigths) {
+extern "C" OcctResult<bool> Blend_SurfRstFunction_section_point_arr1_pnt_arr1_vec2_arr1_pnt2d_arr1_vec2d2_arr1_double3(Blend_SurfRstFunction* self_, Blend_Point const* P, NCollection_Array1_gp_Pnt* Poles, NCollection_Array1_gp_Vec* DPoles, NCollection_Array1_gp_Vec* D2Poles, NCollection_Array1_gp_Pnt2d* Poles2d, NCollection_Array1_gp_Vec2d* DPoles2d, NCollection_Array1_gp_Vec2d* D2Poles2d, NCollection_Array1_double* Weigths, NCollection_Array1_double* DWeigths, NCollection_Array1_double* D2Weigths) {
     try { return {self_->Section(*P, *Poles, *DPoles, *D2Poles, *Poles2d, *DPoles2d, *D2Poles2d, *Weigths, *DWeigths, *D2Weigths), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* Blend_SurfRstFunction_section_point_array1ofpnt_array1ofpnt2d_array1ofreal(Blend_SurfRstFunction* self_, Blend_Point const* P, TColgp_Array1OfPnt* Poles, TColgp_Array1OfPnt2d* Poles2d, TColStd_Array1OfReal* Weigths) {
+extern "C" const char* Blend_SurfRstFunction_section_point_arr1_pnt_arr1_pnt2d_arr1_double(Blend_SurfRstFunction* self_, Blend_Point const* P, NCollection_Array1_gp_Pnt* Poles, NCollection_Array1_gp_Pnt2d* Poles2d, NCollection_Array1_double* Weigths) {
     try { self_->Section(*P, *Poles, *Poles2d, *Weigths); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -4859,11 +4818,11 @@ extern "C" const char* BlendFunc_CSCircular_section_real6_circ(BlendFunc_CSCircu
     try { self_->Section(Param, U, V, W, *Pdeb, *Pfin, *C); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<bool> BlendFunc_CSCircular_section_point_array1ofpnt_array1ofvec2_array1ofpnt2d_array1ofvec2d2_array1ofreal3(BlendFunc_CSCircular* self_, Blend_Point const* P, TColgp_Array1OfPnt* Poles, TColgp_Array1OfVec* DPoles, TColgp_Array1OfVec* D2Poles, TColgp_Array1OfPnt2d* Poles2d, TColgp_Array1OfVec2d* DPoles2d, TColgp_Array1OfVec2d* D2Poles2d, TColStd_Array1OfReal* Weigths, TColStd_Array1OfReal* DWeigths, TColStd_Array1OfReal* D2Weigths) {
+extern "C" OcctResult<bool> BlendFunc_CSCircular_section_point_arr1_pnt_arr1_vec2_arr1_pnt2d_arr1_vec2d2_arr1_double3(BlendFunc_CSCircular* self_, Blend_Point const* P, NCollection_Array1_gp_Pnt* Poles, NCollection_Array1_gp_Vec* DPoles, NCollection_Array1_gp_Vec* D2Poles, NCollection_Array1_gp_Pnt2d* Poles2d, NCollection_Array1_gp_Vec2d* DPoles2d, NCollection_Array1_gp_Vec2d* D2Poles2d, NCollection_Array1_double* Weigths, NCollection_Array1_double* DWeigths, NCollection_Array1_double* D2Weigths) {
     try { return {self_->Section(*P, *Poles, *DPoles, *D2Poles, *Poles2d, *DPoles2d, *D2Poles2d, *Weigths, *DWeigths, *D2Weigths), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<bool> BlendFunc_CSCircular_get_section(BlendFunc_CSCircular* self_, double Param, double U, double V, double W, TColgp_Array1OfPnt* tabP, TColgp_Array1OfVec* tabV) {
+extern "C" OcctResult<bool> BlendFunc_CSCircular_get_section(BlendFunc_CSCircular* self_, double Param, double U, double V, double W, NCollection_Array1_gp_Pnt* tabP, NCollection_Array1_gp_Vec* tabV) {
     try { return {self_->GetSection(Param, U, V, W, *tabP, *tabV), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -4875,7 +4834,7 @@ extern "C" OcctResult<double> BlendFunc_CSCircular_get_section_size(const BlendF
     try { return {self_->GetSectionSize(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* BlendFunc_CSCircular_get_minimal_weight(const BlendFunc_CSCircular* self_, TColStd_Array1OfReal* Weigths) {
+extern "C" const char* BlendFunc_CSCircular_get_minimal_weight(const BlendFunc_CSCircular* self_, NCollection_Array1_double* Weigths) {
     try { self_->GetMinimalWeight(*Weigths); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -4883,7 +4842,7 @@ extern "C" OcctResult<int32_t> BlendFunc_CSCircular_nb_intervals(const BlendFunc
     try { return {self_->NbIntervals(static_cast<GeomAbs_Shape>(S)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* BlendFunc_CSCircular_intervals(const BlendFunc_CSCircular* self_, TColStd_Array1OfReal* T, int32_t S) {
+extern "C" const char* BlendFunc_CSCircular_intervals(const BlendFunc_CSCircular* self_, NCollection_Array1_double* T, int32_t S) {
     try { self_->Intervals(*T, static_cast<GeomAbs_Shape>(S)); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -4895,19 +4854,19 @@ extern "C" const char* BlendFunc_CSCircular_get_tolerance_real3_vector2(const Bl
     try { self_->GetTolerance(BoundTol, SurfTol, AngleTol, *Tol3d, *Tol1D); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* BlendFunc_CSCircular_knots(BlendFunc_CSCircular* self_, TColStd_Array1OfReal* TKnots) {
+extern "C" const char* BlendFunc_CSCircular_knots(BlendFunc_CSCircular* self_, NCollection_Array1_double* TKnots) {
     try { self_->Knots(*TKnots); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* BlendFunc_CSCircular_mults(BlendFunc_CSCircular* self_, TColStd_Array1OfInteger* TMults) {
+extern "C" const char* BlendFunc_CSCircular_mults(BlendFunc_CSCircular* self_, NCollection_Array1_int* TMults) {
     try { self_->Mults(*TMults); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<bool> BlendFunc_CSCircular_section_point_array1ofpnt_array1ofvec_array1ofpnt2d_array1ofvec2d_array1ofreal2(BlendFunc_CSCircular* self_, Blend_Point const* P, TColgp_Array1OfPnt* Poles, TColgp_Array1OfVec* DPoles, TColgp_Array1OfPnt2d* Poles2d, TColgp_Array1OfVec2d* DPoles2d, TColStd_Array1OfReal* Weigths, TColStd_Array1OfReal* DWeigths) {
+extern "C" OcctResult<bool> BlendFunc_CSCircular_section_point_arr1_pnt_arr1_vec_arr1_pnt2d_arr1_vec2d_arr1_double2(BlendFunc_CSCircular* self_, Blend_Point const* P, NCollection_Array1_gp_Pnt* Poles, NCollection_Array1_gp_Vec* DPoles, NCollection_Array1_gp_Pnt2d* Poles2d, NCollection_Array1_gp_Vec2d* DPoles2d, NCollection_Array1_double* Weigths, NCollection_Array1_double* DWeigths) {
     try { return {self_->Section(*P, *Poles, *DPoles, *Poles2d, *DPoles2d, *Weigths, *DWeigths), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* BlendFunc_CSCircular_section_point_array1ofpnt_array1ofpnt2d_array1ofreal(BlendFunc_CSCircular* self_, Blend_Point const* P, TColgp_Array1OfPnt* Poles, TColgp_Array1OfPnt2d* Poles2d, TColStd_Array1OfReal* Weigths) {
+extern "C" const char* BlendFunc_CSCircular_section_point_arr1_pnt_arr1_pnt2d_arr1_double(BlendFunc_CSCircular* self_, Blend_Point const* P, NCollection_Array1_gp_Pnt* Poles, NCollection_Array1_gp_Pnt2d* Poles2d, NCollection_Array1_double* Weigths) {
     try { self_->Section(*P, *Poles, *Poles2d, *Weigths); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -5037,11 +4996,11 @@ extern "C" const char* BlendFunc_CSConstRad_section_real6_circ(BlendFunc_CSConst
     try { self_->Section(Param, U, V, W, *Pdeb, *Pfin, *C); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<bool> BlendFunc_CSConstRad_section_point_array1ofpnt_array1ofvec2_array1ofpnt2d_array1ofvec2d2_array1ofreal3(BlendFunc_CSConstRad* self_, Blend_Point const* P, TColgp_Array1OfPnt* Poles, TColgp_Array1OfVec* DPoles, TColgp_Array1OfVec* D2Poles, TColgp_Array1OfPnt2d* Poles2d, TColgp_Array1OfVec2d* DPoles2d, TColgp_Array1OfVec2d* D2Poles2d, TColStd_Array1OfReal* Weigths, TColStd_Array1OfReal* DWeigths, TColStd_Array1OfReal* D2Weigths) {
+extern "C" OcctResult<bool> BlendFunc_CSConstRad_section_point_arr1_pnt_arr1_vec2_arr1_pnt2d_arr1_vec2d2_arr1_double3(BlendFunc_CSConstRad* self_, Blend_Point const* P, NCollection_Array1_gp_Pnt* Poles, NCollection_Array1_gp_Vec* DPoles, NCollection_Array1_gp_Vec* D2Poles, NCollection_Array1_gp_Pnt2d* Poles2d, NCollection_Array1_gp_Vec2d* DPoles2d, NCollection_Array1_gp_Vec2d* D2Poles2d, NCollection_Array1_double* Weigths, NCollection_Array1_double* DWeigths, NCollection_Array1_double* D2Weigths) {
     try { return {self_->Section(*P, *Poles, *DPoles, *D2Poles, *Poles2d, *DPoles2d, *D2Poles2d, *Weigths, *DWeigths, *D2Weigths), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<bool> BlendFunc_CSConstRad_get_section(BlendFunc_CSConstRad* self_, double Param, double U, double V, double W, TColgp_Array1OfPnt* tabP, TColgp_Array1OfVec* tabV) {
+extern "C" OcctResult<bool> BlendFunc_CSConstRad_get_section(BlendFunc_CSConstRad* self_, double Param, double U, double V, double W, NCollection_Array1_gp_Pnt* tabP, NCollection_Array1_gp_Vec* tabV) {
     try { return {self_->GetSection(Param, U, V, W, *tabP, *tabV), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -5053,7 +5012,7 @@ extern "C" OcctResult<double> BlendFunc_CSConstRad_get_section_size(const BlendF
     try { return {self_->GetSectionSize(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* BlendFunc_CSConstRad_get_minimal_weight(const BlendFunc_CSConstRad* self_, TColStd_Array1OfReal* Weigths) {
+extern "C" const char* BlendFunc_CSConstRad_get_minimal_weight(const BlendFunc_CSConstRad* self_, NCollection_Array1_double* Weigths) {
     try { self_->GetMinimalWeight(*Weigths); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -5061,7 +5020,7 @@ extern "C" OcctResult<int32_t> BlendFunc_CSConstRad_nb_intervals(const BlendFunc
     try { return {self_->NbIntervals(static_cast<GeomAbs_Shape>(S)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* BlendFunc_CSConstRad_intervals(const BlendFunc_CSConstRad* self_, TColStd_Array1OfReal* T, int32_t S) {
+extern "C" const char* BlendFunc_CSConstRad_intervals(const BlendFunc_CSConstRad* self_, NCollection_Array1_double* T, int32_t S) {
     try { self_->Intervals(*T, static_cast<GeomAbs_Shape>(S)); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -5073,19 +5032,19 @@ extern "C" const char* BlendFunc_CSConstRad_get_tolerance_real3_vector2(const Bl
     try { self_->GetTolerance(BoundTol, SurfTol, AngleTol, *Tol3d, *Tol1D); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* BlendFunc_CSConstRad_knots(BlendFunc_CSConstRad* self_, TColStd_Array1OfReal* TKnots) {
+extern "C" const char* BlendFunc_CSConstRad_knots(BlendFunc_CSConstRad* self_, NCollection_Array1_double* TKnots) {
     try { self_->Knots(*TKnots); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* BlendFunc_CSConstRad_mults(BlendFunc_CSConstRad* self_, TColStd_Array1OfInteger* TMults) {
+extern "C" const char* BlendFunc_CSConstRad_mults(BlendFunc_CSConstRad* self_, NCollection_Array1_int* TMults) {
     try { self_->Mults(*TMults); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<bool> BlendFunc_CSConstRad_section_point_array1ofpnt_array1ofvec_array1ofpnt2d_array1ofvec2d_array1ofreal2(BlendFunc_CSConstRad* self_, Blend_Point const* P, TColgp_Array1OfPnt* Poles, TColgp_Array1OfVec* DPoles, TColgp_Array1OfPnt2d* Poles2d, TColgp_Array1OfVec2d* DPoles2d, TColStd_Array1OfReal* Weigths, TColStd_Array1OfReal* DWeigths) {
+extern "C" OcctResult<bool> BlendFunc_CSConstRad_section_point_arr1_pnt_arr1_vec_arr1_pnt2d_arr1_vec2d_arr1_double2(BlendFunc_CSConstRad* self_, Blend_Point const* P, NCollection_Array1_gp_Pnt* Poles, NCollection_Array1_gp_Vec* DPoles, NCollection_Array1_gp_Pnt2d* Poles2d, NCollection_Array1_gp_Vec2d* DPoles2d, NCollection_Array1_double* Weigths, NCollection_Array1_double* DWeigths) {
     try { return {self_->Section(*P, *Poles, *DPoles, *Poles2d, *DPoles2d, *Weigths, *DWeigths), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* BlendFunc_CSConstRad_section_point_array1ofpnt_array1ofpnt2d_array1ofreal(BlendFunc_CSConstRad* self_, Blend_Point const* P, TColgp_Array1OfPnt* Poles, TColgp_Array1OfPnt2d* Poles2d, TColStd_Array1OfReal* Weigths) {
+extern "C" const char* BlendFunc_CSConstRad_section_point_arr1_pnt_arr1_pnt2d_arr1_double(BlendFunc_CSConstRad* self_, Blend_Point const* P, NCollection_Array1_gp_Pnt* Poles, NCollection_Array1_gp_Pnt2d* Poles2d, NCollection_Array1_double* Weigths) {
     try { self_->Section(*P, *Poles, *Poles2d, *Weigths); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -5231,7 +5190,7 @@ extern "C" OcctResult<double> BlendFunc_ChAsym_get_section_size(const BlendFunc_
     try { return {self_->GetSectionSize(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* BlendFunc_ChAsym_get_minimal_weight(const BlendFunc_ChAsym* self_, TColStd_Array1OfReal* Weigths) {
+extern "C" const char* BlendFunc_ChAsym_get_minimal_weight(const BlendFunc_ChAsym* self_, NCollection_Array1_double* Weigths) {
     try { self_->GetMinimalWeight(*Weigths); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -5239,7 +5198,7 @@ extern "C" OcctResult<int32_t> BlendFunc_ChAsym_nb_intervals(const BlendFunc_ChA
     try { return {self_->NbIntervals(static_cast<GeomAbs_Shape>(S)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* BlendFunc_ChAsym_intervals(const BlendFunc_ChAsym* self_, TColStd_Array1OfReal* T, int32_t S) {
+extern "C" const char* BlendFunc_ChAsym_intervals(const BlendFunc_ChAsym* self_, NCollection_Array1_double* T, int32_t S) {
     try { self_->Intervals(*T, static_cast<GeomAbs_Shape>(S)); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -5251,23 +5210,23 @@ extern "C" const char* BlendFunc_ChAsym_get_tolerance_real3_vector2(const BlendF
     try { self_->GetTolerance(BoundTol, SurfTol, AngleTol, *Tol3d, *Tol1D); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* BlendFunc_ChAsym_knots(BlendFunc_ChAsym* self_, TColStd_Array1OfReal* TKnots) {
+extern "C" const char* BlendFunc_ChAsym_knots(BlendFunc_ChAsym* self_, NCollection_Array1_double* TKnots) {
     try { self_->Knots(*TKnots); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* BlendFunc_ChAsym_mults(BlendFunc_ChAsym* self_, TColStd_Array1OfInteger* TMults) {
+extern "C" const char* BlendFunc_ChAsym_mults(BlendFunc_ChAsym* self_, NCollection_Array1_int* TMults) {
     try { self_->Mults(*TMults); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* BlendFunc_ChAsym_section_point_array1ofpnt_array1ofpnt2d_array1ofreal(BlendFunc_ChAsym* self_, Blend_Point const* P, TColgp_Array1OfPnt* Poles, TColgp_Array1OfPnt2d* Poles2d, TColStd_Array1OfReal* Weigths) {
+extern "C" const char* BlendFunc_ChAsym_section_point_arr1_pnt_arr1_pnt2d_arr1_double(BlendFunc_ChAsym* self_, Blend_Point const* P, NCollection_Array1_gp_Pnt* Poles, NCollection_Array1_gp_Pnt2d* Poles2d, NCollection_Array1_double* Weigths) {
     try { self_->Section(*P, *Poles, *Poles2d, *Weigths); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<bool> BlendFunc_ChAsym_section_point_array1ofpnt_array1ofvec_array1ofpnt2d_array1ofvec2d_array1ofreal2(BlendFunc_ChAsym* self_, Blend_Point const* P, TColgp_Array1OfPnt* Poles, TColgp_Array1OfVec* DPoles, TColgp_Array1OfPnt2d* Poles2d, TColgp_Array1OfVec2d* DPoles2d, TColStd_Array1OfReal* Weigths, TColStd_Array1OfReal* DWeigths) {
+extern "C" OcctResult<bool> BlendFunc_ChAsym_section_point_arr1_pnt_arr1_vec_arr1_pnt2d_arr1_vec2d_arr1_double2(BlendFunc_ChAsym* self_, Blend_Point const* P, NCollection_Array1_gp_Pnt* Poles, NCollection_Array1_gp_Vec* DPoles, NCollection_Array1_gp_Pnt2d* Poles2d, NCollection_Array1_gp_Vec2d* DPoles2d, NCollection_Array1_double* Weigths, NCollection_Array1_double* DWeigths) {
     try { return {self_->Section(*P, *Poles, *DPoles, *Poles2d, *DPoles2d, *Weigths, *DWeigths), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<bool> BlendFunc_ChAsym_section_point_array1ofpnt_array1ofvec2_array1ofpnt2d_array1ofvec2d2_array1ofreal3(BlendFunc_ChAsym* self_, Blend_Point const* P, TColgp_Array1OfPnt* Poles, TColgp_Array1OfVec* DPoles, TColgp_Array1OfVec* D2Poles, TColgp_Array1OfPnt2d* Poles2d, TColgp_Array1OfVec2d* DPoles2d, TColgp_Array1OfVec2d* D2Poles2d, TColStd_Array1OfReal* Weigths, TColStd_Array1OfReal* DWeigths, TColStd_Array1OfReal* D2Weigths) {
+extern "C" OcctResult<bool> BlendFunc_ChAsym_section_point_arr1_pnt_arr1_vec2_arr1_pnt2d_arr1_vec2d2_arr1_double3(BlendFunc_ChAsym* self_, Blend_Point const* P, NCollection_Array1_gp_Pnt* Poles, NCollection_Array1_gp_Vec* DPoles, NCollection_Array1_gp_Vec* D2Poles, NCollection_Array1_gp_Pnt2d* Poles2d, NCollection_Array1_gp_Vec2d* DPoles2d, NCollection_Array1_gp_Vec2d* D2Poles2d, NCollection_Array1_double* Weigths, NCollection_Array1_double* DWeigths, NCollection_Array1_double* D2Weigths) {
     try { return {self_->Section(*P, *Poles, *DPoles, *D2Poles, *Poles2d, *DPoles2d, *D2Poles2d, *Weigths, *DWeigths, *D2Weigths), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -5529,7 +5488,7 @@ extern "C" OcctResult<bool> BlendFunc_Chamfer_inherited_IsRational(const BlendFu
     try { return {self->IsRational(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* BlendFunc_Chamfer_inherited_GetMinimalWeight(const BlendFunc_Chamfer* self, TColStd_Array1OfReal& Weigths) {
+extern "C" const char* BlendFunc_Chamfer_inherited_GetMinimalWeight(const BlendFunc_Chamfer* self, NCollection_Array1_double& Weigths) {
     try { self->GetMinimalWeight(Weigths); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -5537,7 +5496,7 @@ extern "C" OcctResult<int32_t> BlendFunc_Chamfer_inherited_NbIntervals(const Ble
     try { return {self->NbIntervals(static_cast<GeomAbs_Shape>(S)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* BlendFunc_Chamfer_inherited_Intervals(const BlendFunc_Chamfer* self, TColStd_Array1OfReal& T, int32_t S) {
+extern "C" const char* BlendFunc_Chamfer_inherited_Intervals(const BlendFunc_Chamfer* self, NCollection_Array1_double& T, int32_t S) {
     try { self->Intervals(T, static_cast<GeomAbs_Shape>(S)); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -5545,11 +5504,11 @@ extern "C" const char* BlendFunc_Chamfer_inherited_GetShape(BlendFunc_Chamfer* s
     try { self->GetShape(NbPoles, NbKnots, Degree, NbPoles2d); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* BlendFunc_Chamfer_inherited_Knots(BlendFunc_Chamfer* self, TColStd_Array1OfReal& TKnots) {
+extern "C" const char* BlendFunc_Chamfer_inherited_Knots(BlendFunc_Chamfer* self, NCollection_Array1_double& TKnots) {
     try { self->Knots(TKnots); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* BlendFunc_Chamfer_inherited_Mults(BlendFunc_Chamfer* self, TColStd_Array1OfInteger& TMults) {
+extern "C" const char* BlendFunc_Chamfer_inherited_Mults(BlendFunc_Chamfer* self, NCollection_Array1_int& TMults) {
     try { self->Mults(TMults); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -5703,7 +5662,7 @@ extern "C" OcctResult<double> BlendFunc_ConstRad_get_section_size(const BlendFun
     try { return {self_->GetSectionSize(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* BlendFunc_ConstRad_get_minimal_weight(const BlendFunc_ConstRad* self_, TColStd_Array1OfReal* Weigths) {
+extern "C" const char* BlendFunc_ConstRad_get_minimal_weight(const BlendFunc_ConstRad* self_, NCollection_Array1_double* Weigths) {
     try { self_->GetMinimalWeight(*Weigths); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -5711,7 +5670,7 @@ extern "C" OcctResult<int32_t> BlendFunc_ConstRad_nb_intervals(const BlendFunc_C
     try { return {self_->NbIntervals(static_cast<GeomAbs_Shape>(S)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* BlendFunc_ConstRad_intervals(const BlendFunc_ConstRad* self_, TColStd_Array1OfReal* T, int32_t S) {
+extern "C" const char* BlendFunc_ConstRad_intervals(const BlendFunc_ConstRad* self_, NCollection_Array1_double* T, int32_t S) {
     try { self_->Intervals(*T, static_cast<GeomAbs_Shape>(S)); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -5723,23 +5682,23 @@ extern "C" const char* BlendFunc_ConstRad_get_tolerance_real3_vector2(const Blen
     try { self_->GetTolerance(BoundTol, SurfTol, AngleTol, *Tol3d, *Tol1D); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* BlendFunc_ConstRad_knots(BlendFunc_ConstRad* self_, TColStd_Array1OfReal* TKnots) {
+extern "C" const char* BlendFunc_ConstRad_knots(BlendFunc_ConstRad* self_, NCollection_Array1_double* TKnots) {
     try { self_->Knots(*TKnots); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* BlendFunc_ConstRad_mults(BlendFunc_ConstRad* self_, TColStd_Array1OfInteger* TMults) {
+extern "C" const char* BlendFunc_ConstRad_mults(BlendFunc_ConstRad* self_, NCollection_Array1_int* TMults) {
     try { self_->Mults(*TMults); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<bool> BlendFunc_ConstRad_section_point_array1ofpnt_array1ofvec2_array1ofpnt2d_array1ofvec2d2_array1ofreal3(BlendFunc_ConstRad* self_, Blend_Point const* P, TColgp_Array1OfPnt* Poles, TColgp_Array1OfVec* DPoles, TColgp_Array1OfVec* D2Poles, TColgp_Array1OfPnt2d* Poles2d, TColgp_Array1OfVec2d* DPoles2d, TColgp_Array1OfVec2d* D2Poles2d, TColStd_Array1OfReal* Weigths, TColStd_Array1OfReal* DWeigths, TColStd_Array1OfReal* D2Weigths) {
+extern "C" OcctResult<bool> BlendFunc_ConstRad_section_point_arr1_pnt_arr1_vec2_arr1_pnt2d_arr1_vec2d2_arr1_double3(BlendFunc_ConstRad* self_, Blend_Point const* P, NCollection_Array1_gp_Pnt* Poles, NCollection_Array1_gp_Vec* DPoles, NCollection_Array1_gp_Vec* D2Poles, NCollection_Array1_gp_Pnt2d* Poles2d, NCollection_Array1_gp_Vec2d* DPoles2d, NCollection_Array1_gp_Vec2d* D2Poles2d, NCollection_Array1_double* Weigths, NCollection_Array1_double* DWeigths, NCollection_Array1_double* D2Weigths) {
     try { return {self_->Section(*P, *Poles, *DPoles, *D2Poles, *Poles2d, *DPoles2d, *D2Poles2d, *Weigths, *DWeigths, *D2Weigths), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<bool> BlendFunc_ConstRad_section_point_array1ofpnt_array1ofvec_array1ofpnt2d_array1ofvec2d_array1ofreal2(BlendFunc_ConstRad* self_, Blend_Point const* P, TColgp_Array1OfPnt* Poles, TColgp_Array1OfVec* DPoles, TColgp_Array1OfPnt2d* Poles2d, TColgp_Array1OfVec2d* DPoles2d, TColStd_Array1OfReal* Weigths, TColStd_Array1OfReal* DWeigths) {
+extern "C" OcctResult<bool> BlendFunc_ConstRad_section_point_arr1_pnt_arr1_vec_arr1_pnt2d_arr1_vec2d_arr1_double2(BlendFunc_ConstRad* self_, Blend_Point const* P, NCollection_Array1_gp_Pnt* Poles, NCollection_Array1_gp_Vec* DPoles, NCollection_Array1_gp_Pnt2d* Poles2d, NCollection_Array1_gp_Vec2d* DPoles2d, NCollection_Array1_double* Weigths, NCollection_Array1_double* DWeigths) {
     try { return {self_->Section(*P, *Poles, *DPoles, *Poles2d, *DPoles2d, *Weigths, *DWeigths), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* BlendFunc_ConstRad_section_point_array1ofpnt_array1ofpnt2d_array1ofreal(BlendFunc_ConstRad* self_, Blend_Point const* P, TColgp_Array1OfPnt* Poles, TColgp_Array1OfPnt2d* Poles2d, TColStd_Array1OfReal* Weigths) {
+extern "C" const char* BlendFunc_ConstRad_section_point_arr1_pnt_arr1_pnt2d_arr1_double(BlendFunc_ConstRad* self_, Blend_Point const* P, NCollection_Array1_gp_Pnt* Poles, NCollection_Array1_gp_Pnt2d* Poles2d, NCollection_Array1_double* Weigths) {
     try { self_->Section(*P, *Poles, *Poles2d, *Weigths); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -5935,7 +5894,7 @@ extern "C" OcctResult<bool> BlendFunc_ConstThroat_inherited_IsRational(const Ble
     try { return {self->IsRational(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* BlendFunc_ConstThroat_inherited_GetMinimalWeight(const BlendFunc_ConstThroat* self, TColStd_Array1OfReal& Weigths) {
+extern "C" const char* BlendFunc_ConstThroat_inherited_GetMinimalWeight(const BlendFunc_ConstThroat* self, NCollection_Array1_double& Weigths) {
     try { self->GetMinimalWeight(Weigths); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -5943,7 +5902,7 @@ extern "C" OcctResult<int32_t> BlendFunc_ConstThroat_inherited_NbIntervals(const
     try { return {self->NbIntervals(static_cast<GeomAbs_Shape>(S)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* BlendFunc_ConstThroat_inherited_Intervals(const BlendFunc_ConstThroat* self, TColStd_Array1OfReal& T, int32_t S) {
+extern "C" const char* BlendFunc_ConstThroat_inherited_Intervals(const BlendFunc_ConstThroat* self, NCollection_Array1_double& T, int32_t S) {
     try { self->Intervals(T, static_cast<GeomAbs_Shape>(S)); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -5951,11 +5910,11 @@ extern "C" const char* BlendFunc_ConstThroat_inherited_GetShape(BlendFunc_ConstT
     try { self->GetShape(NbPoles, NbKnots, Degree, NbPoles2d); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* BlendFunc_ConstThroat_inherited_Knots(BlendFunc_ConstThroat* self, TColStd_Array1OfReal& TKnots) {
+extern "C" const char* BlendFunc_ConstThroat_inherited_Knots(BlendFunc_ConstThroat* self, NCollection_Array1_double& TKnots) {
     try { self->Knots(TKnots); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* BlendFunc_ConstThroat_inherited_Mults(BlendFunc_ConstThroat* self, TColStd_Array1OfInteger& TMults) {
+extern "C" const char* BlendFunc_ConstThroat_inherited_Mults(BlendFunc_ConstThroat* self, NCollection_Array1_int& TMults) {
     try { self->Mults(TMults); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -6151,7 +6110,7 @@ extern "C" OcctResult<bool> BlendFunc_ConstThroatWithPenetration_inherited_IsRat
     try { return {self->IsRational(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* BlendFunc_ConstThroatWithPenetration_inherited_GetMinimalWeight(const BlendFunc_ConstThroatWithPenetration* self, TColStd_Array1OfReal& Weigths) {
+extern "C" const char* BlendFunc_ConstThroatWithPenetration_inherited_GetMinimalWeight(const BlendFunc_ConstThroatWithPenetration* self, NCollection_Array1_double& Weigths) {
     try { self->GetMinimalWeight(Weigths); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -6159,7 +6118,7 @@ extern "C" OcctResult<int32_t> BlendFunc_ConstThroatWithPenetration_inherited_Nb
     try { return {self->NbIntervals(static_cast<GeomAbs_Shape>(S)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* BlendFunc_ConstThroatWithPenetration_inherited_Intervals(const BlendFunc_ConstThroatWithPenetration* self, TColStd_Array1OfReal& T, int32_t S) {
+extern "C" const char* BlendFunc_ConstThroatWithPenetration_inherited_Intervals(const BlendFunc_ConstThroatWithPenetration* self, NCollection_Array1_double& T, int32_t S) {
     try { self->Intervals(T, static_cast<GeomAbs_Shape>(S)); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -6167,11 +6126,11 @@ extern "C" const char* BlendFunc_ConstThroatWithPenetration_inherited_GetShape(B
     try { self->GetShape(NbPoles, NbKnots, Degree, NbPoles2d); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* BlendFunc_ConstThroatWithPenetration_inherited_Knots(BlendFunc_ConstThroatWithPenetration* self, TColStd_Array1OfReal& TKnots) {
+extern "C" const char* BlendFunc_ConstThroatWithPenetration_inherited_Knots(BlendFunc_ConstThroatWithPenetration* self, NCollection_Array1_double& TKnots) {
     try { self->Knots(TKnots); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* BlendFunc_ConstThroatWithPenetration_inherited_Mults(BlendFunc_ConstThroatWithPenetration* self, TColStd_Array1OfInteger& TMults) {
+extern "C" const char* BlendFunc_ConstThroatWithPenetration_inherited_Mults(BlendFunc_ConstThroatWithPenetration* self, NCollection_Array1_int& TMults) {
     try { self->Mults(TMults); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -6439,7 +6398,7 @@ extern "C" OcctResult<double> BlendFunc_EvolRad_get_section_size(const BlendFunc
     try { return {self_->GetSectionSize(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* BlendFunc_EvolRad_get_minimal_weight(const BlendFunc_EvolRad* self_, TColStd_Array1OfReal* Weigths) {
+extern "C" const char* BlendFunc_EvolRad_get_minimal_weight(const BlendFunc_EvolRad* self_, NCollection_Array1_double* Weigths) {
     try { self_->GetMinimalWeight(*Weigths); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -6447,7 +6406,7 @@ extern "C" OcctResult<int32_t> BlendFunc_EvolRad_nb_intervals(const BlendFunc_Ev
     try { return {self_->NbIntervals(static_cast<GeomAbs_Shape>(S)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* BlendFunc_EvolRad_intervals(const BlendFunc_EvolRad* self_, TColStd_Array1OfReal* T, int32_t S) {
+extern "C" const char* BlendFunc_EvolRad_intervals(const BlendFunc_EvolRad* self_, NCollection_Array1_double* T, int32_t S) {
     try { self_->Intervals(*T, static_cast<GeomAbs_Shape>(S)); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -6459,23 +6418,23 @@ extern "C" const char* BlendFunc_EvolRad_get_tolerance_real3_vector2(const Blend
     try { self_->GetTolerance(BoundTol, SurfTol, AngleTol, *Tol3d, *Tol1D); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* BlendFunc_EvolRad_knots(BlendFunc_EvolRad* self_, TColStd_Array1OfReal* TKnots) {
+extern "C" const char* BlendFunc_EvolRad_knots(BlendFunc_EvolRad* self_, NCollection_Array1_double* TKnots) {
     try { self_->Knots(*TKnots); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* BlendFunc_EvolRad_mults(BlendFunc_EvolRad* self_, TColStd_Array1OfInteger* TMults) {
+extern "C" const char* BlendFunc_EvolRad_mults(BlendFunc_EvolRad* self_, NCollection_Array1_int* TMults) {
     try { self_->Mults(*TMults); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<bool> BlendFunc_EvolRad_section_point_array1ofpnt_array1ofvec2_array1ofpnt2d_array1ofvec2d2_array1ofreal3(BlendFunc_EvolRad* self_, Blend_Point const* P, TColgp_Array1OfPnt* Poles, TColgp_Array1OfVec* DPoles, TColgp_Array1OfVec* D2Poles, TColgp_Array1OfPnt2d* Poles2d, TColgp_Array1OfVec2d* DPoles2d, TColgp_Array1OfVec2d* D2Poles2d, TColStd_Array1OfReal* Weigths, TColStd_Array1OfReal* DWeigths, TColStd_Array1OfReal* D2Weigths) {
+extern "C" OcctResult<bool> BlendFunc_EvolRad_section_point_arr1_pnt_arr1_vec2_arr1_pnt2d_arr1_vec2d2_arr1_double3(BlendFunc_EvolRad* self_, Blend_Point const* P, NCollection_Array1_gp_Pnt* Poles, NCollection_Array1_gp_Vec* DPoles, NCollection_Array1_gp_Vec* D2Poles, NCollection_Array1_gp_Pnt2d* Poles2d, NCollection_Array1_gp_Vec2d* DPoles2d, NCollection_Array1_gp_Vec2d* D2Poles2d, NCollection_Array1_double* Weigths, NCollection_Array1_double* DWeigths, NCollection_Array1_double* D2Weigths) {
     try { return {self_->Section(*P, *Poles, *DPoles, *D2Poles, *Poles2d, *DPoles2d, *D2Poles2d, *Weigths, *DWeigths, *D2Weigths), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<bool> BlendFunc_EvolRad_section_point_array1ofpnt_array1ofvec_array1ofpnt2d_array1ofvec2d_array1ofreal2(BlendFunc_EvolRad* self_, Blend_Point const* P, TColgp_Array1OfPnt* Poles, TColgp_Array1OfVec* DPoles, TColgp_Array1OfPnt2d* Poles2d, TColgp_Array1OfVec2d* DPoles2d, TColStd_Array1OfReal* Weigths, TColStd_Array1OfReal* DWeigths) {
+extern "C" OcctResult<bool> BlendFunc_EvolRad_section_point_arr1_pnt_arr1_vec_arr1_pnt2d_arr1_vec2d_arr1_double2(BlendFunc_EvolRad* self_, Blend_Point const* P, NCollection_Array1_gp_Pnt* Poles, NCollection_Array1_gp_Vec* DPoles, NCollection_Array1_gp_Pnt2d* Poles2d, NCollection_Array1_gp_Vec2d* DPoles2d, NCollection_Array1_double* Weigths, NCollection_Array1_double* DWeigths) {
     try { return {self_->Section(*P, *Poles, *DPoles, *Poles2d, *DPoles2d, *Weigths, *DWeigths), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* BlendFunc_EvolRad_section_point_array1ofpnt_array1ofpnt2d_array1ofreal(BlendFunc_EvolRad* self_, Blend_Point const* P, TColgp_Array1OfPnt* Poles, TColgp_Array1OfPnt2d* Poles2d, TColStd_Array1OfReal* Weigths) {
+extern "C" const char* BlendFunc_EvolRad_section_point_arr1_pnt_arr1_pnt2d_arr1_double(BlendFunc_EvolRad* self_, Blend_Point const* P, NCollection_Array1_gp_Pnt* Poles, NCollection_Array1_gp_Pnt2d* Poles2d, NCollection_Array1_double* Weigths) {
     try { self_->Section(*P, *Poles, *Poles2d, *Weigths); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -6669,7 +6628,7 @@ extern "C" OcctResult<bool> BlendFunc_GenChamfer_is_rational(const BlendFunc_Gen
     try { return {self_->IsRational(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* BlendFunc_GenChamfer_get_minimal_weight(const BlendFunc_GenChamfer* self_, TColStd_Array1OfReal* Weigths) {
+extern "C" const char* BlendFunc_GenChamfer_get_minimal_weight(const BlendFunc_GenChamfer* self_, NCollection_Array1_double* Weigths) {
     try { self_->GetMinimalWeight(*Weigths); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -6677,7 +6636,7 @@ extern "C" OcctResult<int32_t> BlendFunc_GenChamfer_nb_intervals(const BlendFunc
     try { return {self_->NbIntervals(static_cast<GeomAbs_Shape>(S)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* BlendFunc_GenChamfer_intervals(const BlendFunc_GenChamfer* self_, TColStd_Array1OfReal* T, int32_t S) {
+extern "C" const char* BlendFunc_GenChamfer_intervals(const BlendFunc_GenChamfer* self_, NCollection_Array1_double* T, int32_t S) {
     try { self_->Intervals(*T, static_cast<GeomAbs_Shape>(S)); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -6689,11 +6648,11 @@ extern "C" const char* BlendFunc_GenChamfer_get_tolerance_real3_vector2(const Bl
     try { self_->GetTolerance(BoundTol, SurfTol, AngleTol, *Tol3d, *Tol1D); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* BlendFunc_GenChamfer_knots(BlendFunc_GenChamfer* self_, TColStd_Array1OfReal* TKnots) {
+extern "C" const char* BlendFunc_GenChamfer_knots(BlendFunc_GenChamfer* self_, NCollection_Array1_double* TKnots) {
     try { self_->Knots(*TKnots); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* BlendFunc_GenChamfer_mults(BlendFunc_GenChamfer* self_, TColStd_Array1OfInteger* TMults) {
+extern "C" const char* BlendFunc_GenChamfer_mults(BlendFunc_GenChamfer* self_, NCollection_Array1_int* TMults) {
     try { self_->Mults(*TMults); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -6701,15 +6660,15 @@ extern "C" const char* BlendFunc_GenChamfer_section_real7_lin(BlendFunc_GenChamf
     try { self_->Section(Param, U1, V1, U2, V2, *Pdeb, *Pfin, *C); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<bool> BlendFunc_GenChamfer_section_point_array1ofpnt_array1ofvec2_array1ofpnt2d_array1ofvec2d2_array1ofreal3(BlendFunc_GenChamfer* self_, Blend_Point const* P, TColgp_Array1OfPnt* Poles, TColgp_Array1OfVec* DPoles, TColgp_Array1OfVec* D2Poles, TColgp_Array1OfPnt2d* Poles2d, TColgp_Array1OfVec2d* DPoles2d, TColgp_Array1OfVec2d* D2Poles2d, TColStd_Array1OfReal* Weigths, TColStd_Array1OfReal* DWeigths, TColStd_Array1OfReal* D2Weigths) {
+extern "C" OcctResult<bool> BlendFunc_GenChamfer_section_point_arr1_pnt_arr1_vec2_arr1_pnt2d_arr1_vec2d2_arr1_double3(BlendFunc_GenChamfer* self_, Blend_Point const* P, NCollection_Array1_gp_Pnt* Poles, NCollection_Array1_gp_Vec* DPoles, NCollection_Array1_gp_Vec* D2Poles, NCollection_Array1_gp_Pnt2d* Poles2d, NCollection_Array1_gp_Vec2d* DPoles2d, NCollection_Array1_gp_Vec2d* D2Poles2d, NCollection_Array1_double* Weigths, NCollection_Array1_double* DWeigths, NCollection_Array1_double* D2Weigths) {
     try { return {self_->Section(*P, *Poles, *DPoles, *D2Poles, *Poles2d, *DPoles2d, *D2Poles2d, *Weigths, *DWeigths, *D2Weigths), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<bool> BlendFunc_GenChamfer_section_point_array1ofpnt_array1ofvec_array1ofpnt2d_array1ofvec2d_array1ofreal2(BlendFunc_GenChamfer* self_, Blend_Point const* P, TColgp_Array1OfPnt* Poles, TColgp_Array1OfVec* DPoles, TColgp_Array1OfPnt2d* Poles2d, TColgp_Array1OfVec2d* DPoles2d, TColStd_Array1OfReal* Weigths, TColStd_Array1OfReal* DWeigths) {
+extern "C" OcctResult<bool> BlendFunc_GenChamfer_section_point_arr1_pnt_arr1_vec_arr1_pnt2d_arr1_vec2d_arr1_double2(BlendFunc_GenChamfer* self_, Blend_Point const* P, NCollection_Array1_gp_Pnt* Poles, NCollection_Array1_gp_Vec* DPoles, NCollection_Array1_gp_Pnt2d* Poles2d, NCollection_Array1_gp_Vec2d* DPoles2d, NCollection_Array1_double* Weigths, NCollection_Array1_double* DWeigths) {
     try { return {self_->Section(*P, *Poles, *DPoles, *Poles2d, *DPoles2d, *Weigths, *DWeigths), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* BlendFunc_GenChamfer_section_point_array1ofpnt_array1ofpnt2d_array1ofreal(BlendFunc_GenChamfer* self_, Blend_Point const* P, TColgp_Array1OfPnt* Poles, TColgp_Array1OfPnt2d* Poles2d, TColStd_Array1OfReal* Weigths) {
+extern "C" const char* BlendFunc_GenChamfer_section_point_arr1_pnt_arr1_pnt2d_arr1_double(BlendFunc_GenChamfer* self_, Blend_Point const* P, NCollection_Array1_gp_Pnt* Poles, NCollection_Array1_gp_Pnt2d* Poles2d, NCollection_Array1_double* Weigths) {
     try { self_->Section(*P, *Poles, *Poles2d, *Weigths); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -6887,7 +6846,7 @@ extern "C" const char* BlendFunc_Ruled_tangent(const BlendFunc_Ruled* self_, dou
     try { self_->Tangent(U1, V1, U2, V2, *TgFirst, *TgLast, *NormFirst, *NormLast); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<bool> BlendFunc_Ruled_get_section(BlendFunc_Ruled* self_, double Param, double U1, double V1, double U2, double V2, TColgp_Array1OfPnt* tabP, TColgp_Array1OfVec* tabV) {
+extern "C" OcctResult<bool> BlendFunc_Ruled_get_section(BlendFunc_Ruled* self_, double Param, double U1, double V1, double U2, double V2, NCollection_Array1_gp_Pnt* tabP, NCollection_Array1_gp_Vec* tabV) {
     try { return {self_->GetSection(Param, U1, V1, U2, V2, *tabP, *tabV), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -6899,7 +6858,7 @@ extern "C" OcctResult<double> BlendFunc_Ruled_get_section_size(const BlendFunc_R
     try { return {self_->GetSectionSize(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* BlendFunc_Ruled_get_minimal_weight(const BlendFunc_Ruled* self_, TColStd_Array1OfReal* Weigths) {
+extern "C" const char* BlendFunc_Ruled_get_minimal_weight(const BlendFunc_Ruled* self_, NCollection_Array1_double* Weigths) {
     try { self_->GetMinimalWeight(*Weigths); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -6907,7 +6866,7 @@ extern "C" OcctResult<int32_t> BlendFunc_Ruled_nb_intervals(const BlendFunc_Rule
     try { return {self_->NbIntervals(static_cast<GeomAbs_Shape>(S)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* BlendFunc_Ruled_intervals(const BlendFunc_Ruled* self_, TColStd_Array1OfReal* T, int32_t S) {
+extern "C" const char* BlendFunc_Ruled_intervals(const BlendFunc_Ruled* self_, NCollection_Array1_double* T, int32_t S) {
     try { self_->Intervals(*T, static_cast<GeomAbs_Shape>(S)); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -6919,23 +6878,23 @@ extern "C" const char* BlendFunc_Ruled_get_tolerance_real3_vector2(const BlendFu
     try { self_->GetTolerance(BoundTol, SurfTol, AngleTol, *Tol3d, *Tol1D); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* BlendFunc_Ruled_knots(BlendFunc_Ruled* self_, TColStd_Array1OfReal* TKnots) {
+extern "C" const char* BlendFunc_Ruled_knots(BlendFunc_Ruled* self_, NCollection_Array1_double* TKnots) {
     try { self_->Knots(*TKnots); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* BlendFunc_Ruled_mults(BlendFunc_Ruled* self_, TColStd_Array1OfInteger* TMults) {
+extern "C" const char* BlendFunc_Ruled_mults(BlendFunc_Ruled* self_, NCollection_Array1_int* TMults) {
     try { self_->Mults(*TMults); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<bool> BlendFunc_Ruled_section_point_array1ofpnt_array1ofvec2_array1ofpnt2d_array1ofvec2d2_array1ofreal3(BlendFunc_Ruled* self_, Blend_Point const* P, TColgp_Array1OfPnt* Poles, TColgp_Array1OfVec* DPoles, TColgp_Array1OfVec* D2Poles, TColgp_Array1OfPnt2d* Poles2d, TColgp_Array1OfVec2d* DPoles2d, TColgp_Array1OfVec2d* D2Poles2d, TColStd_Array1OfReal* Weigths, TColStd_Array1OfReal* DWeigths, TColStd_Array1OfReal* D2Weigths) {
+extern "C" OcctResult<bool> BlendFunc_Ruled_section_point_arr1_pnt_arr1_vec2_arr1_pnt2d_arr1_vec2d2_arr1_double3(BlendFunc_Ruled* self_, Blend_Point const* P, NCollection_Array1_gp_Pnt* Poles, NCollection_Array1_gp_Vec* DPoles, NCollection_Array1_gp_Vec* D2Poles, NCollection_Array1_gp_Pnt2d* Poles2d, NCollection_Array1_gp_Vec2d* DPoles2d, NCollection_Array1_gp_Vec2d* D2Poles2d, NCollection_Array1_double* Weigths, NCollection_Array1_double* DWeigths, NCollection_Array1_double* D2Weigths) {
     try { return {self_->Section(*P, *Poles, *DPoles, *D2Poles, *Poles2d, *DPoles2d, *D2Poles2d, *Weigths, *DWeigths, *D2Weigths), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<bool> BlendFunc_Ruled_section_point_array1ofpnt_array1ofvec_array1ofpnt2d_array1ofvec2d_array1ofreal2(BlendFunc_Ruled* self_, Blend_Point const* P, TColgp_Array1OfPnt* Poles, TColgp_Array1OfVec* DPoles, TColgp_Array1OfPnt2d* Poles2d, TColgp_Array1OfVec2d* DPoles2d, TColStd_Array1OfReal* Weigths, TColStd_Array1OfReal* DWeigths) {
+extern "C" OcctResult<bool> BlendFunc_Ruled_section_point_arr1_pnt_arr1_vec_arr1_pnt2d_arr1_vec2d_arr1_double2(BlendFunc_Ruled* self_, Blend_Point const* P, NCollection_Array1_gp_Pnt* Poles, NCollection_Array1_gp_Vec* DPoles, NCollection_Array1_gp_Pnt2d* Poles2d, NCollection_Array1_gp_Vec2d* DPoles2d, NCollection_Array1_double* Weigths, NCollection_Array1_double* DWeigths) {
     try { return {self_->Section(*P, *Poles, *DPoles, *Poles2d, *DPoles2d, *Weigths, *DWeigths), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* BlendFunc_Ruled_section_point_array1ofpnt_array1ofpnt2d_array1ofreal(BlendFunc_Ruled* self_, Blend_Point const* P, TColgp_Array1OfPnt* Poles, TColgp_Array1OfPnt2d* Poles2d, TColStd_Array1OfReal* Weigths) {
+extern "C" const char* BlendFunc_Ruled_section_point_arr1_pnt_arr1_pnt2d_arr1_double(BlendFunc_Ruled* self_, Blend_Point const* P, NCollection_Array1_gp_Pnt* Poles, NCollection_Array1_gp_Pnt2d* Poles2d, NCollection_Array1_double* Weigths) {
     try { self_->Section(*P, *Poles, *Poles2d, *Weigths); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -7157,7 +7116,7 @@ extern "C" OcctResult<bool> ChFi2d_Builder_is_modified(const ChFi2d_Builder* sel
     try { return {self_->IsModified(*E), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TopTools_SequenceOfShape const*> ChFi2d_Builder_fillet_edges(const ChFi2d_Builder* self_) {
+extern "C" OcctResult<NCollection_Sequence_TopoDS_Shape const*> ChFi2d_Builder_fillet_edges(const ChFi2d_Builder* self_) {
     try { return {&(self_->FilletEdges()), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -7165,7 +7124,7 @@ extern "C" OcctResult<int32_t> ChFi2d_Builder_nb_fillet(const ChFi2d_Builder* se
     try { return {self_->NbFillet(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TopTools_SequenceOfShape const*> ChFi2d_Builder_chamfer_edges(const ChFi2d_Builder* self_) {
+extern "C" OcctResult<NCollection_Sequence_TopoDS_Shape const*> ChFi2d_Builder_chamfer_edges(const ChFi2d_Builder* self_) {
     try { return {&(self_->ChamferEdges()), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -7471,7 +7430,7 @@ extern "C" OcctResult<bool> ChFi3d_Builder_is_done(const ChFi3d_Builder* self_) 
     try { return {self_->IsDone(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TopTools_ListOfShape const*> ChFi3d_Builder_generated(ChFi3d_Builder* self_, TopoDS_Shape const* EouV) {
+extern "C" OcctResult<NCollection_List_TopoDS_Shape const*> ChFi3d_Builder_generated(ChFi3d_Builder* self_, TopoDS_Shape const* EouV) {
     try { return {&(self_->Generated(*EouV)), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -7503,10 +7462,6 @@ extern "C" const char* ChFi3d_Builder_reset(ChFi3d_Builder* self_) {
     try { self_->Reset(); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<bool> ChFi3d_Builder_split_k_part(ChFi3d_Builder* self_, Handle(ChFiDS_SurfData) const* Data, ChFiDS_SequenceOfSurfData* SetData, Handle(ChFiDS_Spine) const* Spine, int32_t Iedge, Handle(Adaptor3d_Surface) const* S1, Handle(Adaptor3d_TopolTool) const* I1, Handle(Adaptor3d_Surface) const* S2, Handle(Adaptor3d_TopolTool) const* I2, bool* Intf, bool* Intl) {
-    try { return {self_->SplitKPart(*Data, *SetData, *Spine, Iedge, *S1, *I1, *S2, *I2, *Intf, *Intl), nullptr}; }
-    OCCT_CATCH_RETURN
-}
 extern "C" OcctResult<bool> ChFi3d_Builder_perform_two_cornerby_inter(ChFi3d_Builder* self_, int32_t Index) {
     try { return {self_->PerformTwoCornerbyInter(Index), nullptr}; }
     OCCT_CATCH_RETURN
@@ -7521,8 +7476,8 @@ extern "C" OcctResult<ChFi3d_ChBuilder*> ChFi3d_ChBuilder_ctor_shape_real(TopoDS
     try { return {new ChFi3d_ChBuilder(*S, Ta), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(ChFiDS_SecHArray1)*> ChFi3d_ChBuilder_sect(const ChFi3d_ChBuilder* self_, int32_t IC, int32_t IS) {
-    try { return {new Handle(ChFiDS_SecHArray1)(self_->Sect(IC, IS)), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HArray1_ChFiDS_CircSection)*> ChFi3d_ChBuilder_sect(const ChFi3d_ChBuilder* self_, int32_t IC, int32_t IS) {
+    try { return {new Handle(NCollection_HArray1_ChFiDS_CircSection)(self_->Sect(IC, IS)), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" const char* ChFi3d_ChBuilder_add_edge(ChFi3d_ChBuilder* self_, TopoDS_Edge const* E) {
@@ -7599,22 +7554,6 @@ extern "C" const char* ChFi3d_ChBuilder_simul_surf_handlechfidssurfdata_handlech
 }
 extern "C" const char* ChFi3d_ChBuilder_simul_surf_handlechfidssurfdata_handlechfidselspine_handlechfidsspine_int_handlebrepadaptorsurface_handleadaptor3dtopoltool_handlebrepadaptorcurve2d_handlebrepadaptorsurface_handlebrepadaptorcurve2d_bool_orientation_handlebrepadaptorsurface_handleadaptor3dtopoltool_handlebrepadaptorcurve2d_handlebrepadaptorsurface_handlebrepadaptorcurve2d_bool_orientation_real4_bool7_vector(ChFi3d_ChBuilder* self_, Handle(ChFiDS_SurfData)* Data, Handle(ChFiDS_ElSpine) const* Guide, Handle(ChFiDS_Spine) const* Spine, int32_t Choix, Handle(BRepAdaptor_Surface) const* S1, Handle(Adaptor3d_TopolTool) const* I1, Handle(BRepAdaptor_Curve2d) const* PC1, Handle(BRepAdaptor_Surface) const* Sref1, Handle(BRepAdaptor_Curve2d) const* PCref1, bool* Decroch1, int32_t Or1, Handle(BRepAdaptor_Surface) const* S2, Handle(Adaptor3d_TopolTool) const* I2, Handle(BRepAdaptor_Curve2d) const* PC2, Handle(BRepAdaptor_Surface) const* Sref2, Handle(BRepAdaptor_Curve2d) const* PCref2, bool* Decroch2, int32_t Or2, double Fleche, double TolGuide, double* First, double* Last, bool Inside, bool Appro, bool Forward, bool RecP1, bool RecRst1, bool RecP2, bool RecRst2, math_Vector const* Soldep) {
     try { self_->SimulSurf(*Data, *Guide, *Spine, Choix, *S1, *I1, *PC1, *Sref1, *PCref1, *Decroch1, static_cast<TopAbs_Orientation>(Or1), *S2, *I2, *PC2, *Sref2, *PCref2, *Decroch2, static_cast<TopAbs_Orientation>(Or2), Fleche, TolGuide, *First, *Last, Inside, Appro, Forward, RecP1, RecRst1, RecP2, RecRst2, *Soldep); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<bool> ChFi3d_ChBuilder_perform_surf_sequenceofsurfdata_handlechfidselspine_handlechfidsspine_int_handlebrepadaptorsurface_handleadaptor3dtopoltool_handlebrepadaptorsurface_handleadaptor3dtopoltool_real5_bool5_vector_int2(ChFi3d_ChBuilder* self_, ChFiDS_SequenceOfSurfData* Data, Handle(ChFiDS_ElSpine) const* Guide, Handle(ChFiDS_Spine) const* Spine, int32_t Choix, Handle(BRepAdaptor_Surface) const* S1, Handle(Adaptor3d_TopolTool) const* I1, Handle(BRepAdaptor_Surface) const* S2, Handle(Adaptor3d_TopolTool) const* I2, double MaxStep, double Fleche, double TolGuide, double* First, double* Last, bool Inside, bool Appro, bool Forward, bool RecOnS1, bool RecOnS2, math_Vector const* Soldep, int32_t* Intf, int32_t* Intl) {
-    try { return {self_->PerformSurf(*Data, *Guide, *Spine, Choix, *S1, *I1, *S2, *I2, MaxStep, Fleche, TolGuide, *First, *Last, Inside, Appro, Forward, RecOnS1, RecOnS2, *Soldep, *Intf, *Intl), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* ChFi3d_ChBuilder_perform_surf_sequenceofsurfdata_handlechfidselspine_handlechfidsspine_int_handlebrepadaptorsurface_handleadaptor3dtopoltool_handlebrepadaptorcurve2d_handlebrepadaptorsurface_handlebrepadaptorcurve2d_bool_handlebrepadaptorsurface_handleadaptor3dtopoltool_orientation_real5_bool6_vector(ChFi3d_ChBuilder* self_, ChFiDS_SequenceOfSurfData* Data, Handle(ChFiDS_ElSpine) const* Guide, Handle(ChFiDS_Spine) const* Spine, int32_t Choix, Handle(BRepAdaptor_Surface) const* S1, Handle(Adaptor3d_TopolTool) const* I1, Handle(BRepAdaptor_Curve2d) const* PC1, Handle(BRepAdaptor_Surface) const* Sref1, Handle(BRepAdaptor_Curve2d) const* PCref1, bool* Decroch1, Handle(BRepAdaptor_Surface) const* S2, Handle(Adaptor3d_TopolTool) const* I2, int32_t Or2, double MaxStep, double Fleche, double TolGuide, double* First, double* Last, bool Inside, bool Appro, bool Forward, bool RecP, bool RecS, bool RecRst, math_Vector const* Soldep) {
-    try { self_->PerformSurf(*Data, *Guide, *Spine, Choix, *S1, *I1, *PC1, *Sref1, *PCref1, *Decroch1, *S2, *I2, static_cast<TopAbs_Orientation>(Or2), MaxStep, Fleche, TolGuide, *First, *Last, Inside, Appro, Forward, RecP, RecS, RecRst, *Soldep); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* ChFi3d_ChBuilder_perform_surf_sequenceofsurfdata_handlechfidselspine_handlechfidsspine_int_handlebrepadaptorsurface_handleadaptor3dtopoltool_orientation_handlebrepadaptorsurface_handleadaptor3dtopoltool_handlebrepadaptorcurve2d_handlebrepadaptorsurface_handlebrepadaptorcurve2d_bool_real5_bool6_vector(ChFi3d_ChBuilder* self_, ChFiDS_SequenceOfSurfData* Data, Handle(ChFiDS_ElSpine) const* Guide, Handle(ChFiDS_Spine) const* Spine, int32_t Choix, Handle(BRepAdaptor_Surface) const* S1, Handle(Adaptor3d_TopolTool) const* I1, int32_t Or1, Handle(BRepAdaptor_Surface) const* S2, Handle(Adaptor3d_TopolTool) const* I2, Handle(BRepAdaptor_Curve2d) const* PC2, Handle(BRepAdaptor_Surface) const* Sref2, Handle(BRepAdaptor_Curve2d) const* PCref2, bool* Decroch2, double MaxStep, double Fleche, double TolGuide, double* First, double* Last, bool Inside, bool Appro, bool Forward, bool RecP, bool RecS, bool RecRst, math_Vector const* Soldep) {
-    try { self_->PerformSurf(*Data, *Guide, *Spine, Choix, *S1, *I1, static_cast<TopAbs_Orientation>(Or1), *S2, *I2, *PC2, *Sref2, *PCref2, *Decroch2, MaxStep, Fleche, TolGuide, *First, *Last, Inside, Appro, Forward, RecP, RecS, RecRst, *Soldep); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* ChFi3d_ChBuilder_perform_surf_sequenceofsurfdata_handlechfidselspine_handlechfidsspine_int_handlebrepadaptorsurface_handleadaptor3dtopoltool_handlebrepadaptorcurve2d_handlebrepadaptorsurface_handlebrepadaptorcurve2d_bool_orientation_handlebrepadaptorsurface_handleadaptor3dtopoltool_handlebrepadaptorcurve2d_handlebrepadaptorsurface_handlebrepadaptorcurve2d_bool_orientation_real5_bool7_vector(ChFi3d_ChBuilder* self_, ChFiDS_SequenceOfSurfData* Data, Handle(ChFiDS_ElSpine) const* Guide, Handle(ChFiDS_Spine) const* Spine, int32_t Choix, Handle(BRepAdaptor_Surface) const* S1, Handle(Adaptor3d_TopolTool) const* I1, Handle(BRepAdaptor_Curve2d) const* PC1, Handle(BRepAdaptor_Surface) const* Sref1, Handle(BRepAdaptor_Curve2d) const* PCref1, bool* Decroch1, int32_t Or1, Handle(BRepAdaptor_Surface) const* S2, Handle(Adaptor3d_TopolTool) const* I2, Handle(BRepAdaptor_Curve2d) const* PC2, Handle(BRepAdaptor_Surface) const* Sref2, Handle(BRepAdaptor_Curve2d) const* PCref2, bool* Decroch2, int32_t Or2, double MaxStep, double Fleche, double TolGuide, double* First, double* Last, bool Inside, bool Appro, bool Forward, bool RecP1, bool RecRst1, bool RecP2, bool RecRst2, math_Vector const* Soldep) {
-    try { self_->PerformSurf(*Data, *Guide, *Spine, Choix, *S1, *I1, *PC1, *Sref1, *PCref1, *Decroch1, static_cast<TopAbs_Orientation>(Or1), *S2, *I2, *PC2, *Sref2, *PCref2, *Decroch2, static_cast<TopAbs_Orientation>(Or2), MaxStep, Fleche, TolGuide, *First, *Last, Inside, Appro, Forward, RecP1, RecRst1, RecP2, RecRst2, *Soldep); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
 extern "C" OcctResult<const ChFi3d_Builder*> ChFi3d_ChBuilder_as_ChFi3d_Builder(const ChFi3d_ChBuilder* self_) { return {static_cast<const ChFi3d_Builder*>(self_), nullptr}; }
@@ -7727,10 +7666,6 @@ extern "C" OcctResult<Handle(TopOpeBRepBuild_HBuilder)*> ChFi3d_ChBuilder_inheri
     try { return {new Handle(TopOpeBRepBuild_HBuilder)(self->Builder()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<bool> ChFi3d_ChBuilder_inherited_SplitKPart(ChFi3d_ChBuilder* self, Handle(ChFiDS_SurfData) const& Data, ChFiDS_SequenceOfSurfData& SetData, Handle(ChFiDS_Spine) const& Spine, int32_t Iedge, Handle(Adaptor3d_Surface) const& S1, Handle(Adaptor3d_TopolTool) const& I1, Handle(Adaptor3d_Surface) const& S2, Handle(Adaptor3d_TopolTool) const& I2, bool& Intf, bool& Intl) {
-    try { return {self->SplitKPart(Data, SetData, Spine, Iedge, S1, I1, S2, I2, Intf, Intl), nullptr}; }
-    OCCT_CATCH_RETURN
-}
 extern "C" OcctResult<bool> ChFi3d_ChBuilder_inherited_PerformTwoCornerbyInter(ChFi3d_ChBuilder* self, int32_t Index) {
     try { return {self->PerformTwoCornerbyInter(Index), nullptr}; }
     OCCT_CATCH_RETURN
@@ -7749,8 +7684,8 @@ extern "C" OcctResult<Handle(Law_Function)*> ChFi3d_FilBuilder_get_law(ChFi3d_Fi
     try { return {new Handle(Law_Function)(self_->GetLaw(IC, *E)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(ChFiDS_SecHArray1)*> ChFi3d_FilBuilder_sect(const ChFi3d_FilBuilder* self_, int32_t IC, int32_t IS) {
-    try { return {new Handle(ChFiDS_SecHArray1)(self_->Sect(IC, IS)), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HArray1_ChFiDS_CircSection)*> ChFi3d_FilBuilder_sect(const ChFi3d_FilBuilder* self_, int32_t IC, int32_t IS) {
+    try { return {new Handle(NCollection_HArray1_ChFiDS_CircSection)(self_->Sect(IC, IS)), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" const char* ChFi3d_FilBuilder_set_fillet_shape(ChFi3d_FilBuilder* self_, int32_t FShape) {
@@ -7939,10 +7874,6 @@ extern "C" OcctResult<Handle(TopOpeBRepBuild_HBuilder)*> ChFi3d_FilBuilder_inher
     try { return {new Handle(TopOpeBRepBuild_HBuilder)(self->Builder()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<bool> ChFi3d_FilBuilder_inherited_SplitKPart(ChFi3d_FilBuilder* self, Handle(ChFiDS_SurfData) const& Data, ChFiDS_SequenceOfSurfData& SetData, Handle(ChFiDS_Spine) const& Spine, int32_t Iedge, Handle(Adaptor3d_Surface) const& S1, Handle(Adaptor3d_TopolTool) const& I1, Handle(Adaptor3d_Surface) const& S2, Handle(Adaptor3d_TopolTool) const& I2, bool& Intf, bool& Intl) {
-    try { return {self->SplitKPart(Data, SetData, Spine, Iedge, S1, I1, S2, I2, Intf, Intl), nullptr}; }
-    OCCT_CATCH_RETURN
-}
 extern "C" OcctResult<bool> ChFi3d_FilBuilder_inherited_PerformTwoCornerbyInter(ChFi3d_FilBuilder* self, int32_t Index) {
     try { return {self->PerformTwoCornerbyInter(Index), nullptr}; }
     OCCT_CATCH_RETURN
@@ -8039,24 +7970,24 @@ extern "C" OcctResult<const ChFiDS_Spine*> ChFiDS_ChamfSpine_as_ChFiDS_Spine(con
 extern "C" OcctResult<ChFiDS_Spine*> ChFiDS_ChamfSpine_as_ChFiDS_Spine_mut(ChFiDS_ChamfSpine* self_) { return {static_cast<ChFiDS_Spine*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> ChFiDS_ChamfSpine_as_Standard_Transient(const ChFiDS_ChamfSpine* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> ChFiDS_ChamfSpine_as_Standard_Transient_mut(ChFiDS_ChamfSpine* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleChFiDSChamfSpine*> ChFiDS_ChamfSpine_to_handle(ChFiDS_ChamfSpine* obj) {
-    try { return {new HandleChFiDSChamfSpine(obj), nullptr}; }
+extern "C" OcctResult<Handle_ChFiDS_ChamfSpine*> ChFiDS_ChamfSpine_to_handle(ChFiDS_ChamfSpine* obj) {
+    try { return {new Handle_ChFiDS_ChamfSpine(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const ChFiDS_ChamfSpine*> HandleChFiDSChamfSpine_get(const HandleChFiDSChamfSpine* handle) {
+extern "C" OcctResult<const ChFiDS_ChamfSpine*> Handle_ChFiDS_ChamfSpine_get(const Handle_ChFiDS_ChamfSpine* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<ChFiDS_ChamfSpine*> HandleChFiDSChamfSpine_get_mut(HandleChFiDSChamfSpine* handle) {
+extern "C" OcctResult<ChFiDS_ChamfSpine*> Handle_ChFiDS_ChamfSpine_get_mut(Handle_ChFiDS_ChamfSpine* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleChFiDSSpine*> HandleChFiDSChamfSpine_to_HandleChFiDSSpine(const HandleChFiDSChamfSpine* self_) {
-    try { return {new HandleChFiDSSpine(*self_), nullptr}; }
+extern "C" OcctResult<Handle_ChFiDS_Spine*> Handle_ChFiDS_ChamfSpine_to_Handle_ChFiDS_Spine(const Handle_ChFiDS_ChamfSpine* self_) {
+    try { return {new Handle_ChFiDS_Spine(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleChFiDSChamfSpine_to_HandleStandardTransient(const HandleChFiDSChamfSpine* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_ChFiDS_ChamfSpine_to_Handle_Standard_Transient(const Handle_ChFiDS_ChamfSpine* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" const char* ChFiDS_ChamfSpine_inherited_SetEdges(ChFiDS_ChamfSpine* self, TopoDS_Edge const& E) {
@@ -8105,14 +8036,6 @@ extern "C" const char* ChFiDS_ChamfSpine_inherited_AppendOffsetElSpine(ChFiDS_Ch
 }
 extern "C" OcctResult<Handle(ChFiDS_ElSpine)*> ChFiDS_ChamfSpine_inherited_ElSpine(const ChFiDS_ChamfSpine* self, int32_t IE) {
     try { return {new Handle(ChFiDS_ElSpine)(self->ElSpine(IE)), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<ChFiDS_ListOfHElSpine*> ChFiDS_ChamfSpine_inherited_ChangeElSpines(ChFiDS_ChamfSpine* self) {
-    try { return {&(self->ChangeElSpines()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<ChFiDS_ListOfHElSpine*> ChFiDS_ChamfSpine_inherited_ChangeOffsetElSpines(ChFiDS_ChamfSpine* self) {
-    try { return {&(self->ChangeOffsetElSpines()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" const char* ChFiDS_ChamfSpine_inherited_Reset(ChFiDS_ChamfSpine* self, bool AllData) {
@@ -8449,8 +8372,20 @@ extern "C" OcctResult<Handle(Adaptor3d_Curve)*> ChFiDS_ElSpine_trim(const ChFiDS
     try { return {new Handle(Adaptor3d_Curve)(self_->Trim(First, Last, Tol)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<gp_Pnt*> ChFiDS_ElSpine_value(const ChFiDS_ElSpine* self_, double AbsC) {
-    try { return {new gp_Pnt(self_->Value(AbsC)), nullptr}; }
+extern "C" OcctResult<gp_Pnt*> ChFiDS_ElSpine_eval_d0(const ChFiDS_ElSpine* self_, double theAbsC) {
+    try { return {new gp_Pnt(self_->EvalD0(theAbsC)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Geom_Curve::ResD1*> ChFiDS_ElSpine_eval_d1(const ChFiDS_ElSpine* self_, double theAbsC) {
+    try { return {new Geom_Curve::ResD1(self_->EvalD1(theAbsC)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Geom_Curve::ResD2*> ChFiDS_ElSpine_eval_d2(const ChFiDS_ElSpine* self_, double theAbsC) {
+    try { return {new Geom_Curve::ResD2(self_->EvalD2(theAbsC)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Geom_Curve::ResD3*> ChFiDS_ElSpine_eval_d3(const ChFiDS_ElSpine* self_, double theAbsC) {
+    try { return {new Geom_Curve::ResD3(self_->EvalD3(theAbsC)), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<gp_Lin*> ChFiDS_ElSpine_line(const ChFiDS_ElSpine* self_) {
@@ -8509,7 +8444,7 @@ extern "C" OcctResult<int32_t> ChFiDS_ElSpine_nb_intervals(const ChFiDS_ElSpine*
     try { return {self_->NbIntervals(static_cast<GeomAbs_Shape>(S)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* ChFiDS_ElSpine_intervals(const ChFiDS_ElSpine* self_, TColStd_Array1OfReal* T, int32_t S) {
+extern "C" const char* ChFiDS_ElSpine_intervals(const ChFiDS_ElSpine* self_, NCollection_Array1_double* T, int32_t S) {
     try { self_->Intervals(*T, static_cast<GeomAbs_Shape>(S)); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -8532,22 +8467,6 @@ extern "C" const char* ChFiDS_ElSpine_set_periodic(ChFiDS_ElSpine* self_, bool I
 extern "C" OcctResult<double> ChFiDS_ElSpine_period(const ChFiDS_ElSpine* self_) {
     try { return {self_->Period(), nullptr}; }
     OCCT_CATCH_RETURN
-}
-extern "C" const char* ChFiDS_ElSpine_d0(const ChFiDS_ElSpine* self_, double AbsC, gp_Pnt* P) {
-    try { self_->D0(AbsC, *P); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* ChFiDS_ElSpine_d1(const ChFiDS_ElSpine* self_, double AbsC, gp_Pnt* P, gp_Vec* V1) {
-    try { self_->D1(AbsC, *P, *V1); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* ChFiDS_ElSpine_d2(const ChFiDS_ElSpine* self_, double AbsC, gp_Pnt* P, gp_Vec* V1, gp_Vec* V2) {
-    try { self_->D2(AbsC, *P, *V1, *V2); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* ChFiDS_ElSpine_d3(const ChFiDS_ElSpine* self_, double AbsC, gp_Pnt* P, gp_Vec* V1, gp_Vec* V2, gp_Vec* V3) {
-    try { self_->D3(AbsC, *P, *V1, *V2, *V3); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
 }
 extern "C" const char* ChFiDS_ElSpine_first_parameter_real(ChFiDS_ElSpine* self_, double P) {
     try { self_->FirstParameter(P); return nullptr; }
@@ -8629,32 +8548,52 @@ extern "C" OcctResult<const Adaptor3d_Curve*> ChFiDS_ElSpine_as_Adaptor3d_Curve(
 extern "C" OcctResult<Adaptor3d_Curve*> ChFiDS_ElSpine_as_Adaptor3d_Curve_mut(ChFiDS_ElSpine* self_) { return {static_cast<Adaptor3d_Curve*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> ChFiDS_ElSpine_as_Standard_Transient(const ChFiDS_ElSpine* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> ChFiDS_ElSpine_as_Standard_Transient_mut(ChFiDS_ElSpine* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleChFiDSElSpine*> ChFiDS_ElSpine_to_handle(ChFiDS_ElSpine* obj) {
-    try { return {new HandleChFiDSElSpine(obj), nullptr}; }
+extern "C" OcctResult<Handle_ChFiDS_ElSpine*> ChFiDS_ElSpine_to_handle(ChFiDS_ElSpine* obj) {
+    try { return {new Handle_ChFiDS_ElSpine(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const ChFiDS_ElSpine*> HandleChFiDSElSpine_get(const HandleChFiDSElSpine* handle) {
+extern "C" OcctResult<const ChFiDS_ElSpine*> Handle_ChFiDS_ElSpine_get(const Handle_ChFiDS_ElSpine* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<ChFiDS_ElSpine*> HandleChFiDSElSpine_get_mut(HandleChFiDSElSpine* handle) {
+extern "C" OcctResult<ChFiDS_ElSpine*> Handle_ChFiDS_ElSpine_get_mut(Handle_ChFiDS_ElSpine* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleAdaptor3dCurve*> HandleChFiDSElSpine_to_HandleAdaptor3dCurve(const HandleChFiDSElSpine* self_) {
-    try { return {new HandleAdaptor3dCurve(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Adaptor3d_Curve*> Handle_ChFiDS_ElSpine_to_Handle_Adaptor3d_Curve(const Handle_ChFiDS_ElSpine* self_) {
+    try { return {new Handle_Adaptor3d_Curve(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleChFiDSElSpine_to_HandleStandardTransient(const HandleChFiDSElSpine* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_ChFiDS_ElSpine_to_Handle_Standard_Transient(const Handle_ChFiDS_ElSpine* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> ChFiDS_ElSpine_inherited_IsClosed(const ChFiDS_ElSpine* self) {
     try { return {self->IsClosed(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<gp_Vec*> ChFiDS_ElSpine_inherited_DN(const ChFiDS_ElSpine* self, double U, int32_t N) {
-    try { return {new gp_Vec(self->DN(U, N)), nullptr}; }
+extern "C" OcctResult<gp_Pnt*> ChFiDS_ElSpine_inherited_Value(const ChFiDS_ElSpine* self, double theU) {
+    try { return {new gp_Pnt(self->Value(theU)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" const char* ChFiDS_ElSpine_inherited_D0(const ChFiDS_ElSpine* self, double theU, gp_Pnt& theP) {
+    try { self->D0(theU, theP); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* ChFiDS_ElSpine_inherited_D1(const ChFiDS_ElSpine* self, double theU, gp_Pnt& theP, gp_Vec& theV) {
+    try { self->D1(theU, theP, theV); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* ChFiDS_ElSpine_inherited_D2(const ChFiDS_ElSpine* self, double theU, gp_Pnt& theP, gp_Vec& theV1, gp_Vec& theV2) {
+    try { self->D2(theU, theP, theV1, theV2); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* ChFiDS_ElSpine_inherited_D3(const ChFiDS_ElSpine* self, double theU, gp_Pnt& theP, gp_Vec& theV1, gp_Vec& theV2, gp_Vec& theV3) {
+    try { self->D3(theU, theP, theV1, theV2, theV3); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" OcctResult<gp_Vec*> ChFiDS_ElSpine_inherited_DN(const ChFiDS_ElSpine* self, double theU, int32_t theN) {
+    try { return {new gp_Vec(self->DN(theU, theN)), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<int32_t> ChFiDS_ElSpine_inherited_Degree(const ChFiDS_ElSpine* self) {
@@ -8675,6 +8614,10 @@ extern "C" OcctResult<int32_t> ChFiDS_ElSpine_inherited_NbKnots(const ChFiDS_ElS
 }
 extern "C" OcctResult<Handle(Geom_OffsetCurve)*> ChFiDS_ElSpine_inherited_OffsetCurve(const ChFiDS_ElSpine* self) {
     try { return {new Handle(Geom_OffsetCurve)(self->OffsetCurve()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<gp_Vec*> ChFiDS_ElSpine_inherited_EvalDN(const ChFiDS_ElSpine* self, double theU, int32_t theN) {
+    try { return {new gp_Vec(self->EvalDN(theU, theN)), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> ChFiDS_ElSpine_inherited_IsInstance(const ChFiDS_ElSpine* self, Handle(Standard_Type) const& theType) {
@@ -8873,24 +8816,24 @@ extern "C" OcctResult<const ChFiDS_Spine*> ChFiDS_FilSpine_as_ChFiDS_Spine(const
 extern "C" OcctResult<ChFiDS_Spine*> ChFiDS_FilSpine_as_ChFiDS_Spine_mut(ChFiDS_FilSpine* self_) { return {static_cast<ChFiDS_Spine*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> ChFiDS_FilSpine_as_Standard_Transient(const ChFiDS_FilSpine* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> ChFiDS_FilSpine_as_Standard_Transient_mut(ChFiDS_FilSpine* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleChFiDSFilSpine*> ChFiDS_FilSpine_to_handle(ChFiDS_FilSpine* obj) {
-    try { return {new HandleChFiDSFilSpine(obj), nullptr}; }
+extern "C" OcctResult<Handle_ChFiDS_FilSpine*> ChFiDS_FilSpine_to_handle(ChFiDS_FilSpine* obj) {
+    try { return {new Handle_ChFiDS_FilSpine(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const ChFiDS_FilSpine*> HandleChFiDSFilSpine_get(const HandleChFiDSFilSpine* handle) {
+extern "C" OcctResult<const ChFiDS_FilSpine*> Handle_ChFiDS_FilSpine_get(const Handle_ChFiDS_FilSpine* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<ChFiDS_FilSpine*> HandleChFiDSFilSpine_get_mut(HandleChFiDSFilSpine* handle) {
+extern "C" OcctResult<ChFiDS_FilSpine*> Handle_ChFiDS_FilSpine_get_mut(Handle_ChFiDS_FilSpine* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleChFiDSSpine*> HandleChFiDSFilSpine_to_HandleChFiDSSpine(const HandleChFiDSFilSpine* self_) {
-    try { return {new HandleChFiDSSpine(*self_), nullptr}; }
+extern "C" OcctResult<Handle_ChFiDS_Spine*> Handle_ChFiDS_FilSpine_to_Handle_ChFiDS_Spine(const Handle_ChFiDS_FilSpine* self_) {
+    try { return {new Handle_ChFiDS_Spine(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleChFiDSFilSpine_to_HandleStandardTransient(const HandleChFiDSFilSpine* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_ChFiDS_FilSpine_to_Handle_Standard_Transient(const Handle_ChFiDS_FilSpine* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" const char* ChFiDS_FilSpine_inherited_SetEdges(ChFiDS_FilSpine* self, TopoDS_Edge const& E) {
@@ -8935,14 +8878,6 @@ extern "C" const char* ChFiDS_FilSpine_inherited_AppendOffsetElSpine(ChFiDS_FilS
 }
 extern "C" OcctResult<Handle(ChFiDS_ElSpine)*> ChFiDS_FilSpine_inherited_ElSpine(const ChFiDS_FilSpine* self, int32_t IE) {
     try { return {new Handle(ChFiDS_ElSpine)(self->ElSpine(IE)), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<ChFiDS_ListOfHElSpine*> ChFiDS_FilSpine_inherited_ChangeElSpines(ChFiDS_FilSpine* self) {
-    try { return {&(self->ChangeElSpines()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<ChFiDS_ListOfHElSpine*> ChFiDS_FilSpine_inherited_ChangeOffsetElSpines(ChFiDS_FilSpine* self) {
-    try { return {&(self->ChangeOffsetElSpines()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> ChFiDS_FilSpine_inherited_SplitDone(const ChFiDS_FilSpine* self) {
@@ -9152,94 +9087,6 @@ extern "C" const char* ChFiDS_FilSpine_inherited_Delete(const ChFiDS_FilSpine* s
 extern "C" void ChFiDS_FilSpine_destructor(ChFiDS_FilSpine* self_) { delete self_; }
 
 // ========================
-// ChFiDS_HData wrappers
-// ========================
-
-extern "C" OcctResult<ChFiDS_HData*> ChFiDS_HData_ctor() {
-    try { return {new ChFiDS_HData(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<ChFiDS_HData*> ChFiDS_HData_ctor_sequenceofsurfdata(ChFiDS_SequenceOfSurfData const* theOther) {
-    try { return {new ChFiDS_HData(*theOther), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<ChFiDS_SequenceOfSurfData const*> ChFiDS_HData_sequence(const ChFiDS_HData* self_) {
-    try { return {&(self_->Sequence()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* ChFiDS_HData_append_handlechfidssurfdata(ChFiDS_HData* self_, Handle(ChFiDS_SurfData) const* theItem) {
-    try { self_->Append(*theItem); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* ChFiDS_HData_append_sequenceofsurfdata(ChFiDS_HData* self_, ChFiDS_SequenceOfSurfData* theSequence) {
-    try { self_->Append(*theSequence); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<ChFiDS_SequenceOfSurfData*> ChFiDS_HData_change_sequence(ChFiDS_HData* self_) {
-    try { return {&(self_->ChangeSequence()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Handle(Standard_Type) const*> ChFiDS_HData_dynamic_type(const ChFiDS_HData* self_) {
-    try { return {&(self_->DynamicType()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<char const*> ChFiDS_HData_get_type_name() {
-    try { return {ChFiDS_HData::get_type_name(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Handle(Standard_Type) const*> ChFiDS_HData_get_type_descriptor() {
-    try { return {&(ChFiDS_HData::get_type_descriptor()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<const Standard_Transient*> ChFiDS_HData_as_Standard_Transient(const ChFiDS_HData* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<Standard_Transient*> ChFiDS_HData_as_Standard_Transient_mut(ChFiDS_HData* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleChFiDSHData*> ChFiDS_HData_to_handle(ChFiDS_HData* obj) {
-    try { return {new HandleChFiDSHData(obj), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<const ChFiDS_HData*> HandleChFiDSHData_get(const HandleChFiDSHData* handle) {
-    try { return {(*handle).get(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<ChFiDS_HData*> HandleChFiDSHData_get_mut(HandleChFiDSHData* handle) {
-    try { return {(*handle).get(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<HandleStandardTransient*> HandleChFiDSHData_to_HandleStandardTransient(const HandleChFiDSHData* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<bool> ChFiDS_HData_inherited_IsInstance(const ChFiDS_HData* self, Handle(Standard_Type) const& theType) {
-    try { return {self->IsInstance(theType), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<bool> ChFiDS_HData_inherited_IsKind(const ChFiDS_HData* self, Handle(Standard_Type) const& theType) {
-    try { return {self->IsKind(theType), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Standard_Transient*> ChFiDS_HData_inherited_This(const ChFiDS_HData* self) {
-    try { return {self->This(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<int32_t> ChFiDS_HData_inherited_GetRefCount(const ChFiDS_HData* self) {
-    try { return {self->GetRefCount(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* ChFiDS_HData_inherited_IncrementRefCounter(ChFiDS_HData* self) {
-    try { self->IncrementRefCounter(); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<int32_t> ChFiDS_HData_inherited_DecrementRefCounter(ChFiDS_HData* self) {
-    try { return {self->DecrementRefCounter(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* ChFiDS_HData_inherited_Delete(const ChFiDS_HData* self) {
-    try { self->Delete(); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" void ChFiDS_HData_destructor(ChFiDS_HData* self_) { delete self_; }
-
-// ========================
 // ChFiDS_Map wrappers
 // ========================
 
@@ -9255,11 +9102,11 @@ extern "C" OcctResult<bool> ChFiDS_Map_contains(const ChFiDS_Map* self_, TopoDS_
     try { return {self_->Contains(*S), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TopTools_ListOfShape const*> ChFiDS_Map_find_from_key(const ChFiDS_Map* self_, TopoDS_Shape const* S) {
+extern "C" OcctResult<NCollection_List_TopoDS_Shape const*> ChFiDS_Map_find_from_key(const ChFiDS_Map* self_, TopoDS_Shape const* S) {
     try { return {&(self_->FindFromKey(*S)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TopTools_ListOfShape const*> ChFiDS_Map_find_from_index(const ChFiDS_Map* self_, int32_t I) {
+extern "C" OcctResult<NCollection_List_TopoDS_Shape const*> ChFiDS_Map_find_from_index(const ChFiDS_Map* self_, int32_t I) {
     try { return {&(self_->FindFromIndex(I)), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -9306,98 +9153,6 @@ extern "C" OcctResult<int32_t> ChFiDS_Regul_s2(const ChFiDS_Regul* self_) {
     OCCT_CATCH_RETURN
 }
 extern "C" void ChFiDS_Regul_destructor(ChFiDS_Regul* self_) { delete self_; }
-
-// ========================
-// ChFiDS_SecHArray1 wrappers
-// ========================
-
-extern "C" OcctResult<ChFiDS_SecHArray1*> ChFiDS_SecHArray1_ctor() {
-    try { return {new ChFiDS_SecHArray1(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<ChFiDS_SecHArray1*> ChFiDS_SecHArray1_ctor_int2(int32_t theLower, int32_t theUpper) {
-    try { return {new ChFiDS_SecHArray1(theLower, theUpper), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<ChFiDS_SecHArray1*> ChFiDS_SecHArray1_ctor_int2_circsection(int32_t theLower, int32_t theUpper, ChFiDS_CircSection const* theValue) {
-    try { return {new ChFiDS_SecHArray1(theLower, theUpper, *theValue), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<ChFiDS_SecHArray1*> ChFiDS_SecHArray1_ctor_circsection_int2_bool(ChFiDS_CircSection const* theBegin, int32_t theLower, int32_t theUpper, bool arg3) {
-    try { return {new ChFiDS_SecHArray1(*theBegin, theLower, theUpper, arg3), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<ChFiDS_SecHArray1*> ChFiDS_SecHArray1_ctor_secarray1(ChFiDS_SecArray1 const* theOther) {
-    try { return {new ChFiDS_SecHArray1(*theOther), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<ChFiDS_SecArray1 const*> ChFiDS_SecHArray1_array1(const ChFiDS_SecHArray1* self_) {
-    try { return {&(self_->Array1()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<ChFiDS_SecArray1*> ChFiDS_SecHArray1_change_array1(ChFiDS_SecHArray1* self_) {
-    try { return {&(self_->ChangeArray1()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Handle(Standard_Type) const*> ChFiDS_SecHArray1_dynamic_type(const ChFiDS_SecHArray1* self_) {
-    try { return {&(self_->DynamicType()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<char const*> ChFiDS_SecHArray1_get_type_name() {
-    try { return {ChFiDS_SecHArray1::get_type_name(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Handle(Standard_Type) const*> ChFiDS_SecHArray1_get_type_descriptor() {
-    try { return {&(ChFiDS_SecHArray1::get_type_descriptor()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<const Standard_Transient*> ChFiDS_SecHArray1_as_Standard_Transient(const ChFiDS_SecHArray1* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<Standard_Transient*> ChFiDS_SecHArray1_as_Standard_Transient_mut(ChFiDS_SecHArray1* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleChFiDSSecHArray1*> ChFiDS_SecHArray1_to_handle(ChFiDS_SecHArray1* obj) {
-    try { return {new HandleChFiDSSecHArray1(obj), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<const ChFiDS_SecHArray1*> HandleChFiDSSecHArray1_get(const HandleChFiDSSecHArray1* handle) {
-    try { return {(*handle).get(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<ChFiDS_SecHArray1*> HandleChFiDSSecHArray1_get_mut(HandleChFiDSSecHArray1* handle) {
-    try { return {(*handle).get(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<HandleStandardTransient*> HandleChFiDSSecHArray1_to_HandleStandardTransient(const HandleChFiDSSecHArray1* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<bool> ChFiDS_SecHArray1_inherited_IsInstance(const ChFiDS_SecHArray1* self, Handle(Standard_Type) const& theType) {
-    try { return {self->IsInstance(theType), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<bool> ChFiDS_SecHArray1_inherited_IsKind(const ChFiDS_SecHArray1* self, Handle(Standard_Type) const& theType) {
-    try { return {self->IsKind(theType), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Standard_Transient*> ChFiDS_SecHArray1_inherited_This(const ChFiDS_SecHArray1* self) {
-    try { return {self->This(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<int32_t> ChFiDS_SecHArray1_inherited_GetRefCount(const ChFiDS_SecHArray1* self) {
-    try { return {self->GetRefCount(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* ChFiDS_SecHArray1_inherited_IncrementRefCounter(ChFiDS_SecHArray1* self) {
-    try { self->IncrementRefCounter(); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<int32_t> ChFiDS_SecHArray1_inherited_DecrementRefCounter(ChFiDS_SecHArray1* self) {
-    try { return {self->DecrementRefCounter(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* ChFiDS_SecHArray1_inherited_Delete(const ChFiDS_SecHArray1* self) {
-    try { self->Delete(); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" void ChFiDS_SecHArray1_destructor(ChFiDS_SecHArray1* self_) { delete self_; }
 
 // ========================
 // ChFiDS_Spine wrappers
@@ -9486,14 +9241,6 @@ extern "C" const char* ChFiDS_Spine_append_el_spine(ChFiDS_Spine* self_, Handle(
 extern "C" const char* ChFiDS_Spine_append_offset_el_spine(ChFiDS_Spine* self_, Handle(ChFiDS_ElSpine) const* Els) {
     try { self_->AppendOffsetElSpine(*Els); return nullptr; }
     OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<ChFiDS_ListOfHElSpine*> ChFiDS_Spine_change_el_spines(ChFiDS_Spine* self_) {
-    try { return {&(self_->ChangeElSpines()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<ChFiDS_ListOfHElSpine*> ChFiDS_Spine_change_offset_el_spines(ChFiDS_Spine* self_) {
-    try { return {&(self_->ChangeOffsetElSpines()), nullptr}; }
-    OCCT_CATCH_RETURN
 }
 extern "C" const char* ChFiDS_Spine_reset(ChFiDS_Spine* self_, bool AllData) {
     try { self_->Reset(AllData); return nullptr; }
@@ -9701,35 +9448,35 @@ extern "C" OcctResult<Handle(Standard_Type) const*> ChFiDS_Spine_get_type_descri
 }
 extern "C" OcctResult<const Standard_Transient*> ChFiDS_Spine_as_Standard_Transient(const ChFiDS_Spine* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> ChFiDS_Spine_as_Standard_Transient_mut(ChFiDS_Spine* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleChFiDSSpine*> ChFiDS_Spine_to_handle(ChFiDS_Spine* obj) {
-    try { return {new HandleChFiDSSpine(obj), nullptr}; }
+extern "C" OcctResult<Handle_ChFiDS_Spine*> ChFiDS_Spine_to_handle(ChFiDS_Spine* obj) {
+    try { return {new Handle_ChFiDS_Spine(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const ChFiDS_Spine*> HandleChFiDSSpine_get(const HandleChFiDSSpine* handle) {
+extern "C" OcctResult<const ChFiDS_Spine*> Handle_ChFiDS_Spine_get(const Handle_ChFiDS_Spine* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<ChFiDS_Spine*> HandleChFiDSSpine_get_mut(HandleChFiDSSpine* handle) {
+extern "C" OcctResult<ChFiDS_Spine*> Handle_ChFiDS_Spine_get_mut(Handle_ChFiDS_Spine* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleChFiDSSpine_to_HandleStandardTransient(const HandleChFiDSSpine* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_ChFiDS_Spine_to_Handle_Standard_Transient(const Handle_ChFiDS_Spine* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleChFiDSChamfSpine*> HandleChFiDSSpine_downcast_to_HandleChFiDSChamfSpine(const HandleChFiDSSpine* self_) {
+extern "C" OcctResult<Handle_ChFiDS_ChamfSpine*> Handle_ChFiDS_Spine_downcast_to_Handle_ChFiDS_ChamfSpine(const Handle_ChFiDS_Spine* self_) {
     try {
     opencascade::handle<ChFiDS_ChamfSpine> result = opencascade::handle<ChFiDS_ChamfSpine>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleChFiDSChamfSpine(result), nullptr};
+    return {new Handle_ChFiDS_ChamfSpine(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleChFiDSFilSpine*> HandleChFiDSSpine_downcast_to_HandleChFiDSFilSpine(const HandleChFiDSSpine* self_) {
+extern "C" OcctResult<Handle_ChFiDS_FilSpine*> Handle_ChFiDS_Spine_downcast_to_Handle_ChFiDS_FilSpine(const Handle_ChFiDS_Spine* self_) {
     try {
     opencascade::handle<ChFiDS_FilSpine> result = opencascade::handle<ChFiDS_FilSpine>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleChFiDSFilSpine(result), nullptr};
+    return {new Handle_ChFiDS_FilSpine(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
@@ -9775,7 +9522,7 @@ extern "C" const char* ChFiDS_Stripe_reset(ChFiDS_Stripe* self_) {
     try { self_->Reset(); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<Handle(ChFiDS_HData) const*> ChFiDS_Stripe_set_of_surf_data(const ChFiDS_Stripe* self_) {
+extern "C" OcctResult<Handle(NCollection_HSequence_opencascade_handle_ChFiDS_SurfData) const*> ChFiDS_Stripe_set_of_surf_data(const ChFiDS_Stripe* self_) {
     try { return {&(self_->SetOfSurfData()), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -9795,7 +9542,7 @@ extern "C" OcctResult<int32_t> ChFiDS_Stripe_choix(const ChFiDS_Stripe* self_) {
     try { return {self_->Choix(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(ChFiDS_HData)*> ChFiDS_Stripe_change_set_of_surf_data(ChFiDS_Stripe* self_) {
+extern "C" OcctResult<Handle(NCollection_HSequence_opencascade_handle_ChFiDS_SurfData)*> ChFiDS_Stripe_change_set_of_surf_data(ChFiDS_Stripe* self_) {
     try { return {&(self_->ChangeSetOfSurfData()), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -9989,20 +9736,20 @@ extern "C" OcctResult<Handle(Standard_Type) const*> ChFiDS_Stripe_get_type_descr
 }
 extern "C" OcctResult<const Standard_Transient*> ChFiDS_Stripe_as_Standard_Transient(const ChFiDS_Stripe* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> ChFiDS_Stripe_as_Standard_Transient_mut(ChFiDS_Stripe* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleChFiDSStripe*> ChFiDS_Stripe_to_handle(ChFiDS_Stripe* obj) {
-    try { return {new HandleChFiDSStripe(obj), nullptr}; }
+extern "C" OcctResult<Handle_ChFiDS_Stripe*> ChFiDS_Stripe_to_handle(ChFiDS_Stripe* obj) {
+    try { return {new Handle_ChFiDS_Stripe(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const ChFiDS_Stripe*> HandleChFiDSStripe_get(const HandleChFiDSStripe* handle) {
+extern "C" OcctResult<const ChFiDS_Stripe*> Handle_ChFiDS_Stripe_get(const Handle_ChFiDS_Stripe* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<ChFiDS_Stripe*> HandleChFiDSStripe_get_mut(HandleChFiDSStripe* handle) {
+extern "C" OcctResult<ChFiDS_Stripe*> Handle_ChFiDS_Stripe_get_mut(Handle_ChFiDS_Stripe* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleChFiDSStripe_to_HandleStandardTransient(const HandleChFiDSStripe* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_ChFiDS_Stripe_to_Handle_Standard_Transient(const Handle_ChFiDS_Stripe* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> ChFiDS_Stripe_inherited_IsInstance(const ChFiDS_Stripe* self, Handle(Standard_Type) const& theType) {
@@ -10049,14 +9796,6 @@ extern "C" const char* ChFiDS_StripeMap_add(ChFiDS_StripeMap* self_, TopoDS_Vert
 }
 extern "C" OcctResult<int32_t> ChFiDS_StripeMap_extent(const ChFiDS_StripeMap* self_) {
     try { return {self_->Extent(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<ChFiDS_ListOfStripe const*> ChFiDS_StripeMap_find_from_key(const ChFiDS_StripeMap* self_, TopoDS_Vertex const* V) {
-    try { return {&(self_->FindFromKey(*V)), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<ChFiDS_ListOfStripe const*> ChFiDS_StripeMap_find_from_index(const ChFiDS_StripeMap* self_, int32_t I) {
-    try { return {&(self_->FindFromIndex(I)), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<TopoDS_Vertex const*> ChFiDS_StripeMap_find_key(const ChFiDS_StripeMap* self_, int32_t I) {
@@ -10299,20 +10038,20 @@ extern "C" OcctResult<Handle(Standard_Type) const*> ChFiDS_SurfData_get_type_des
 }
 extern "C" OcctResult<const Standard_Transient*> ChFiDS_SurfData_as_Standard_Transient(const ChFiDS_SurfData* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> ChFiDS_SurfData_as_Standard_Transient_mut(ChFiDS_SurfData* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleChFiDSSurfData*> ChFiDS_SurfData_to_handle(ChFiDS_SurfData* obj) {
-    try { return {new HandleChFiDSSurfData(obj), nullptr}; }
+extern "C" OcctResult<Handle_ChFiDS_SurfData*> ChFiDS_SurfData_to_handle(ChFiDS_SurfData* obj) {
+    try { return {new Handle_ChFiDS_SurfData(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const ChFiDS_SurfData*> HandleChFiDSSurfData_get(const HandleChFiDSSurfData* handle) {
+extern "C" OcctResult<const ChFiDS_SurfData*> Handle_ChFiDS_SurfData_get(const Handle_ChFiDS_SurfData* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<ChFiDS_SurfData*> HandleChFiDSSurfData_get_mut(HandleChFiDSSurfData* handle) {
+extern "C" OcctResult<ChFiDS_SurfData*> Handle_ChFiDS_SurfData_get_mut(Handle_ChFiDS_SurfData* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleChFiDSSurfData_to_HandleStandardTransient(const HandleChFiDSSurfData* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_ChFiDS_SurfData_to_Handle_Standard_Transient(const Handle_ChFiDS_SurfData* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> ChFiDS_SurfData_inherited_IsInstance(const ChFiDS_SurfData* self, Handle(Standard_Type) const& theType) {
@@ -10375,8 +10114,12 @@ extern "C" void ChFiKPart_ComputeData_destructor(ChFiKPart_ComputeData* self_) {
 // FilletSurf_Builder wrappers
 // ========================
 
-extern "C" OcctResult<FilletSurf_Builder*> FilletSurf_Builder_ctor_shape_listofshape_real4(TopoDS_Shape const* S, TopTools_ListOfShape const* E, double R, double Ta, double Tapp3d, double Tapp2d) {
+extern "C" OcctResult<FilletSurf_Builder*> FilletSurf_Builder_ctor_shape_list_shape_real4(TopoDS_Shape const* S, NCollection_List_TopoDS_Shape const* E, double R, double Ta, double Tapp3d, double Tapp2d) {
     try { return {new FilletSurf_Builder(*S, *E, R, Ta, Tapp3d, Tapp2d), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Handle(Geom_TrimmedCurve)*> FilletSurf_Builder_section(const FilletSurf_Builder* self_, int32_t IndexSurf, int32_t IndexSec) {
+    try { return {new Handle(Geom_TrimmedCurve)(self_->Section(IndexSurf, IndexSec)), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" const char* FilletSurf_Builder_perform(FilletSurf_Builder* self_) {
@@ -10459,10 +10202,6 @@ extern "C" OcctResult<int32_t> FilletSurf_Builder_nb_section(const FilletSurf_Bu
     try { return {self_->NbSection(IndexSurf), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* FilletSurf_Builder_section(const FilletSurf_Builder* self_, int32_t IndexSurf, int32_t IndexSec, Handle(Geom_TrimmedCurve)* Circ) {
-    try { self_->Section(IndexSurf, IndexSec, *Circ); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
 extern "C" void FilletSurf_Builder_destructor(FilletSurf_Builder* self_) { delete self_; }
 
 // ========================
@@ -10473,7 +10212,11 @@ extern "C" OcctResult<FilletSurf_InternalBuilder*> FilletSurf_InternalBuilder_ct
     try { return {new FilletSurf_InternalBuilder(*S, static_cast<ChFi3d_FilletShape>(FShape), Ta, Tapp3d, Tapp2d), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<int32_t> FilletSurf_InternalBuilder_add(FilletSurf_InternalBuilder* self_, TopTools_ListOfShape const* E, double R) {
+extern "C" OcctResult<Handle(Geom_TrimmedCurve)*> FilletSurf_InternalBuilder_section(const FilletSurf_InternalBuilder* self_, int32_t IndexSurf, int32_t IndexSec) {
+    try { return {new Handle(Geom_TrimmedCurve)(self_->Section(IndexSurf, IndexSec)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<int32_t> FilletSurf_InternalBuilder_add(FilletSurf_InternalBuilder* self_, NCollection_List_TopoDS_Shape const* E, double R) {
     try { return {self_->Add(*E, R), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -10553,10 +10296,6 @@ extern "C" OcctResult<int32_t> FilletSurf_InternalBuilder_nb_section(const Fille
     try { return {self_->NbSection(IndexSurf), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* FilletSurf_InternalBuilder_section(const FilletSurf_InternalBuilder* self_, int32_t IndexSurf, int32_t IndexSec, Handle(Geom_TrimmedCurve)* Circ) {
-    try { self_->Section(IndexSurf, IndexSec, *Circ); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
 extern "C" OcctResult<const ChFi3d_FilBuilder*> FilletSurf_InternalBuilder_as_ChFi3d_FilBuilder(const FilletSurf_InternalBuilder* self_) { return {static_cast<const ChFi3d_FilBuilder*>(self_), nullptr}; }
 extern "C" OcctResult<ChFi3d_FilBuilder*> FilletSurf_InternalBuilder_as_ChFi3d_FilBuilder_mut(FilletSurf_InternalBuilder* self_) { return {static_cast<ChFi3d_FilBuilder*>(self_), nullptr}; }
 extern "C" OcctResult<const ChFi3d_Builder*> FilletSurf_InternalBuilder_as_ChFi3d_Builder(const FilletSurf_InternalBuilder* self_) { return {static_cast<const ChFi3d_Builder*>(self_), nullptr}; }
@@ -10605,8 +10344,8 @@ extern "C" OcctResult<int32_t> FilletSurf_InternalBuilder_inherited_NbSurf(const
     try { return {self->NbSurf(IC), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(ChFiDS_SecHArray1)*> FilletSurf_InternalBuilder_inherited_Sect(const FilletSurf_InternalBuilder* self, int32_t IC, int32_t IS) {
-    try { return {new Handle(ChFiDS_SecHArray1)(self->Sect(IC, IS)), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HArray1_ChFiDS_CircSection)*> FilletSurf_InternalBuilder_inherited_Sect(const FilletSurf_InternalBuilder* self, int32_t IC, int32_t IS) {
+    try { return {new Handle(NCollection_HArray1_ChFiDS_CircSection)(self->Sect(IC, IS)), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" const char* FilletSurf_InternalBuilder_inherited_SetParams(FilletSurf_InternalBuilder* self, double Tang, double Tesp, double T2d, double TApp3d, double TolApp2d, double Fleche) {
@@ -10717,10 +10456,6 @@ extern "C" OcctResult<Handle(TopOpeBRepBuild_HBuilder)*> FilletSurf_InternalBuil
     try { return {new Handle(TopOpeBRepBuild_HBuilder)(self->Builder()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<bool> FilletSurf_InternalBuilder_inherited_SplitKPart(FilletSurf_InternalBuilder* self, Handle(ChFiDS_SurfData) const& Data, ChFiDS_SequenceOfSurfData& SetData, Handle(ChFiDS_Spine) const& Spine, int32_t Iedge, Handle(Adaptor3d_Surface) const& S1, Handle(Adaptor3d_TopolTool) const& I1, Handle(Adaptor3d_Surface) const& S2, Handle(Adaptor3d_TopolTool) const& I2, bool& Intf, bool& Intl) {
-    try { return {self->SplitKPart(Data, SetData, Spine, Iedge, S1, I1, S2, I2, Intf, Intl), nullptr}; }
-    OCCT_CATCH_RETURN
-}
 extern "C" OcctResult<bool> FilletSurf_InternalBuilder_inherited_PerformTwoCornerbyInter(FilletSurf_InternalBuilder* self, int32_t Index) {
     try { return {self->PerformTwoCornerbyInter(Index), nullptr}; }
     OCCT_CATCH_RETURN
@@ -10730,15 +10465,15 @@ extern "C" void FilletSurf_InternalBuilder_destructor(FilletSurf_InternalBuilder
 // ========================
 // BlendFunc namespace functions
 // ========================
-extern "C" const char* BlendFunc_knots_sectionshape_array1ofreal(int32_t SectShape, TColStd_Array1OfReal* TKnots) {
+extern "C" const char* BlendFunc_knots_sectionshape_arr1_double(int32_t SectShape, NCollection_Array1_double* TKnots) {
     try { BlendFunc::Knots(static_cast<BlendFunc_SectionShape>(SectShape), *TKnots); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* BlendFunc_mults_sectionshape_array1ofinteger(int32_t SectShape, TColStd_Array1OfInteger* TMults) {
+extern "C" const char* BlendFunc_mults_sectionshape_arr1_int(int32_t SectShape, NCollection_Array1_int* TMults) {
     try { BlendFunc::Mults(static_cast<BlendFunc_SectionShape>(SectShape), *TMults); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* BlendFunc_get_minimal_weights_sectionshape_parameterisationtype_real2_array1ofreal(int32_t SectShape, int32_t TConv, double AngleMin, double AngleMax, TColStd_Array1OfReal* Weigths) {
+extern "C" const char* BlendFunc_get_minimal_weights_sectionshape_parameterisationtype_real2_arr1_double(int32_t SectShape, int32_t TConv, double AngleMin, double AngleMax, NCollection_Array1_double* Weigths) {
     try { BlendFunc::GetMinimalWeights(static_cast<BlendFunc_SectionShape>(SectShape), static_cast<Convert_ParameterisationType>(TConv), AngleMin, AngleMax, *Weigths); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -10783,9 +10518,3 @@ extern "C" OcctResult<bool> ChFi3d_same_side(int32_t Or, int32_t OrSave1, int32_
     OCCT_CATCH_RETURN
 }
 
-
-// Nested type and typedef type destructors
-extern "C" void ChFiDS_ListOfHElSpine_destructor(ChFiDS_ListOfHElSpine* self_) { delete self_; }
-extern "C" void ChFiDS_ListOfStripe_destructor(ChFiDS_ListOfStripe* self_) { delete self_; }
-extern "C" void ChFiDS_SecArray1_destructor(ChFiDS_SecArray1* self_) { delete self_; }
-extern "C" void ChFiDS_SequenceOfSurfData_destructor(ChFiDS_SequenceOfSurfData* self_) { delete self_; }

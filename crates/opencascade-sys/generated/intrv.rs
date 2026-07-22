@@ -159,14 +159,14 @@ impl Interval {
         })
     }
 
-    /// **Source:** `Intrv_Interval.hxx`:68 - `Intrv_Interval::SetStart()`
+    /// **Source:** `Intrv_Interval.hxx`:65 - `Intrv_Interval::SetStart()`
     pub fn set_start(&mut self, Start: f64, TolStart: f32) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKHLR::Intrv_Interval_set_start(self as *mut Self, Start, TolStart)
         })
     }
 
-    /// **Source:** `Intrv_Interval.hxx`:74 - `Intrv_Interval::FuseAtStart()`
+    /// **Source:** `Intrv_Interval.hxx`:71 - `Intrv_Interval::FuseAtStart()`
     /// ****+****-------------------->      Old one
     /// ****+****------------------------>      New one to fuse
     /// <<<     <<<
@@ -181,7 +181,7 @@ impl Interval {
         })
     }
 
-    /// **Source:** `Intrv_Interval.hxx`:80 - `Intrv_Interval::CutAtStart()`
+    /// **Source:** `Intrv_Interval.hxx`:77 - `Intrv_Interval::CutAtStart()`
     /// ****+****----------->      Old one
     /// <----------**+**                        Tool for cutting
     /// >>>     >>>
@@ -192,14 +192,14 @@ impl Interval {
         })
     }
 
-    /// **Source:** `Intrv_Interval.hxx`:82 - `Intrv_Interval::SetEnd()`
+    /// **Source:** `Intrv_Interval.hxx`:79 - `Intrv_Interval::SetEnd()`
     pub fn set_end(&mut self, End: f64, TolEnd: f32) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKHLR::Intrv_Interval_set_end(self as *mut Self, End, TolEnd)
         })
     }
 
-    /// **Source:** `Intrv_Interval.hxx`:88 - `Intrv_Interval::FuseAtEnd()`
+    /// **Source:** `Intrv_Interval.hxx`:85 - `Intrv_Interval::FuseAtEnd()`
     /// <---------------------****+****      Old one
     /// <-----------------**+**              New one to fuse
     /// >>>     >>>
@@ -210,7 +210,7 @@ impl Interval {
         })
     }
 
-    /// **Source:** `Intrv_Interval.hxx`:94 - `Intrv_Interval::CutAtEnd()`
+    /// **Source:** `Intrv_Interval.hxx`:91 - `Intrv_Interval::CutAtEnd()`
     /// <-----****+****                      Old one
     /// **+**------>             Tool for cutting
     /// <<<     <<<
@@ -221,7 +221,7 @@ impl Interval {
         })
     }
 
-    /// **Source:** `Intrv_Interval.hxx`:98 - `Intrv_Interval::IsProbablyEmpty()`
+    /// **Source:** `Intrv_Interval.hxx`:95 - `Intrv_Interval::IsProbablyEmpty()`
     /// True if myStart+myTolStart > myEnd-myTolEnd
     /// or if myEnd+myTolEnd > myStart-myTolStart
     pub fn is_probably_empty(&self) -> bool {
@@ -230,7 +230,7 @@ impl Interval {
         })
     }
 
-    /// **Source:** `Intrv_Interval.hxx`:115 - `Intrv_Interval::Position()`
+    /// **Source:** `Intrv_Interval.hxx`:112 - `Intrv_Interval::Position()`
     /// True if me is Before Other
     /// **-----------****             Other
     /// ***-----*                                   Before
@@ -253,7 +253,7 @@ impl Interval {
         .unwrap()
     }
 
-    /// **Source:** `Intrv_Interval.hxx`:120 - `Intrv_Interval::IsBefore()`
+    /// **Source:** `Intrv_Interval.hxx`:117 - `Intrv_Interval::IsBefore()`
     /// True if me is Before Other
     /// ***----------------**                              me
     /// **-----------****          Other
@@ -263,7 +263,7 @@ impl Interval {
         })
     }
 
-    /// **Source:** `Intrv_Interval.hxx`:125 - `Intrv_Interval::IsAfter()`
+    /// **Source:** `Intrv_Interval.hxx`:122 - `Intrv_Interval::IsAfter()`
     /// True if me is After Other
     /// **-----------****          me
     /// ***----------------**                              Other
@@ -273,7 +273,7 @@ impl Interval {
         })
     }
 
-    /// **Source:** `Intrv_Interval.hxx`:130 - `Intrv_Interval::IsInside()`
+    /// **Source:** `Intrv_Interval.hxx`:127 - `Intrv_Interval::IsInside()`
     /// True if me is Inside Other
     /// **-----------****                          me
     /// ***--------------------------**                    Other
@@ -283,7 +283,7 @@ impl Interval {
         })
     }
 
-    /// **Source:** `Intrv_Interval.hxx`:135 - `Intrv_Interval::IsEnclosing()`
+    /// **Source:** `Intrv_Interval.hxx`:132 - `Intrv_Interval::IsEnclosing()`
     /// True if me is Enclosing Other
     /// ***----------------------------****                  me
     /// ***------------------**                        Other
@@ -293,7 +293,7 @@ impl Interval {
         })
     }
 
-    /// **Source:** `Intrv_Interval.hxx`:140 - `Intrv_Interval::IsJustEnclosingAtStart()`
+    /// **Source:** `Intrv_Interval.hxx`:137 - `Intrv_Interval::IsJustEnclosingAtStart()`
     /// True if me is just Enclosing Other at start
     /// ***---------------------------****            me
     /// ***------------------**                        Other
@@ -306,7 +306,7 @@ impl Interval {
         })
     }
 
-    /// **Source:** `Intrv_Interval.hxx`:145 - `Intrv_Interval::IsJustEnclosingAtEnd()`
+    /// **Source:** `Intrv_Interval.hxx`:142 - `Intrv_Interval::IsJustEnclosingAtEnd()`
     /// True if me is just Enclosing Other at End
     /// ***----------------------------****                  me
     /// ***-----------------****                   Other
@@ -319,7 +319,7 @@ impl Interval {
         })
     }
 
-    /// **Source:** `Intrv_Interval.hxx`:150 - `Intrv_Interval::IsJustBefore()`
+    /// **Source:** `Intrv_Interval.hxx`:147 - `Intrv_Interval::IsJustBefore()`
     /// True if me is just before Other
     /// ***--------****                                      me
     /// ***-----------**                        Other
@@ -329,7 +329,7 @@ impl Interval {
         })
     }
 
-    /// **Source:** `Intrv_Interval.hxx`:155 - `Intrv_Interval::IsJustAfter()`
+    /// **Source:** `Intrv_Interval.hxx`:152 - `Intrv_Interval::IsJustAfter()`
     /// True if me is just after Other
     /// ****-------****                         me
     /// ***-----------**                                     Other
@@ -339,7 +339,7 @@ impl Interval {
         })
     }
 
-    /// **Source:** `Intrv_Interval.hxx`:160 - `Intrv_Interval::IsOverlappingAtStart()`
+    /// **Source:** `Intrv_Interval.hxx`:157 - `Intrv_Interval::IsOverlappingAtStart()`
     /// True if me is overlapping Other at start
     /// ***---------------***                                me
     /// ***-----------**                        Other
@@ -352,7 +352,7 @@ impl Interval {
         })
     }
 
-    /// **Source:** `Intrv_Interval.hxx`:165 - `Intrv_Interval::IsOverlappingAtEnd()`
+    /// **Source:** `Intrv_Interval.hxx`:162 - `Intrv_Interval::IsOverlappingAtEnd()`
     /// True if me is overlapping Other at end
     /// ***-----------**                        me
     /// ***---------------***                                Other
@@ -365,7 +365,7 @@ impl Interval {
         })
     }
 
-    /// **Source:** `Intrv_Interval.hxx`:170 - `Intrv_Interval::IsJustOverlappingAtStart()`
+    /// **Source:** `Intrv_Interval.hxx`:167 - `Intrv_Interval::IsJustOverlappingAtStart()`
     /// True if me is just overlapping Other at start
     /// ***-----------***                                    me
     /// ***------------------------**                        Other
@@ -378,7 +378,7 @@ impl Interval {
         })
     }
 
-    /// **Source:** `Intrv_Interval.hxx`:175 - `Intrv_Interval::IsJustOverlappingAtEnd()`
+    /// **Source:** `Intrv_Interval.hxx`:172 - `Intrv_Interval::IsJustOverlappingAtEnd()`
     /// True if me is just overlapping Other at end
     /// ***-----------*                         me
     /// ***------------------------**                        Other
@@ -391,7 +391,7 @@ impl Interval {
         })
     }
 
-    /// **Source:** `Intrv_Interval.hxx`:180 - `Intrv_Interval::IsSimilar()`
+    /// **Source:** `Intrv_Interval.hxx`:177 - `Intrv_Interval::IsSimilar()`
     /// True if me and Other have the same bounds
     /// *----------------***                                me
     /// ***-----------------**                               Other
@@ -406,9 +406,9 @@ impl Interval {
 // From Intrv_Intervals.hxx
 // ========================
 
-/// **Source:** `Intrv_Intervals.hxx`:29 - `Intrv_Intervals`
-/// The class  Intervals is a  sorted  sequence of non
-/// overlapping  Real Intervals.
+/// **Source:** `Intrv_Intervals.hxx`:30 - `Intrv_Intervals`
+/// The class Intervals is a sorted sequence of non
+/// overlapping Real Intervals.
 pub use crate::ffi_types::Intrv_Intervals as Intervals;
 
 unsafe impl crate::CppDeletable for Intervals {
@@ -420,7 +420,7 @@ unsafe impl crate::CppDeletable for Intervals {
 }
 
 impl Intervals {
-    /// **Source:** `Intrv_Intervals.hxx`:35 - `Intrv_Intervals::Intrv_Intervals()`
+    /// **Source:** `Intrv_Intervals.hxx`:36 - `Intrv_Intervals::Intrv_Intervals()`
     /// Creates a void sequence of intervals.
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
@@ -430,7 +430,7 @@ impl Intervals {
         }
     }
 
-    /// **Source:** `Intrv_Intervals.hxx`:38 - `Intrv_Intervals::Intrv_Intervals()`
+    /// **Source:** `Intrv_Intervals.hxx`:39 - `Intrv_Intervals::Intrv_Intervals()`
     /// Creates a sequence of one interval.
     pub fn new_interval(Int: &Interval) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -440,7 +440,7 @@ impl Intervals {
         }
     }
 
-    /// **Source:** `Intrv_Intervals.hxx`:41 - `Intrv_Intervals::Intersect()`
+    /// **Source:** `Intrv_Intervals.hxx`:42 - `Intrv_Intervals::Intersect()`
     /// Intersects the intervals with the interval <Tool>.
     pub fn intersect_interval(&mut self, Tool: &Interval) {
         crate::check_void_result(unsafe {
@@ -448,65 +448,65 @@ impl Intervals {
         })
     }
 
-    /// **Source:** `Intrv_Intervals.hxx`:45 - `Intrv_Intervals::Intersect()`
+    /// **Source:** `Intrv_Intervals.hxx`:46 - `Intrv_Intervals::Intersect()`
     /// Intersects the intervals with the intervals in the
-    /// sequence  <Tool>.
+    /// sequence <Tool>.
     pub fn intersect_intervals(&mut self, Tool: &Intervals) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKHLR::Intrv_Intervals_intersect_intervals(self as *mut Self, Tool)
         })
     }
 
-    /// **Source:** `Intrv_Intervals.hxx`:47 - `Intrv_Intervals::Subtract()`
+    /// **Source:** `Intrv_Intervals.hxx`:48 - `Intrv_Intervals::Subtract()`
     pub fn subtract_interval(&mut self, Tool: &Interval) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKHLR::Intrv_Intervals_subtract_interval(self as *mut Self, Tool)
         })
     }
 
-    /// **Source:** `Intrv_Intervals.hxx`:49 - `Intrv_Intervals::Subtract()`
+    /// **Source:** `Intrv_Intervals.hxx`:50 - `Intrv_Intervals::Subtract()`
     pub fn subtract_intervals(&mut self, Tool: &Intervals) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKHLR::Intrv_Intervals_subtract_intervals(self as *mut Self, Tool)
         })
     }
 
-    /// **Source:** `Intrv_Intervals.hxx`:51 - `Intrv_Intervals::Unite()`
+    /// **Source:** `Intrv_Intervals.hxx`:52 - `Intrv_Intervals::Unite()`
     pub fn unite_interval(&mut self, Tool: &Interval) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKHLR::Intrv_Intervals_unite_interval(self as *mut Self, Tool)
         })
     }
 
-    /// **Source:** `Intrv_Intervals.hxx`:53 - `Intrv_Intervals::Unite()`
+    /// **Source:** `Intrv_Intervals.hxx`:54 - `Intrv_Intervals::Unite()`
     pub fn unite_intervals(&mut self, Tool: &Intervals) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKHLR::Intrv_Intervals_unite_intervals(self as *mut Self, Tool)
         })
     }
 
-    /// **Source:** `Intrv_Intervals.hxx`:55 - `Intrv_Intervals::XUnite()`
+    /// **Source:** `Intrv_Intervals.hxx`:56 - `Intrv_Intervals::XUnite()`
     pub fn x_unite_interval(&mut self, Tool: &Interval) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKHLR::Intrv_Intervals_x_unite_interval(self as *mut Self, Tool)
         })
     }
 
-    /// **Source:** `Intrv_Intervals.hxx`:57 - `Intrv_Intervals::XUnite()`
+    /// **Source:** `Intrv_Intervals.hxx`:58 - `Intrv_Intervals::XUnite()`
     pub fn x_unite_intervals(&mut self, Tool: &Intervals) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKHLR::Intrv_Intervals_x_unite_intervals(self as *mut Self, Tool)
         })
     }
 
-    /// **Source:** `Intrv_Intervals.hxx`:59 - `Intrv_Intervals::NbIntervals()`
+    /// **Source:** `Intrv_Intervals.hxx`:60 - `Intrv_Intervals::NbIntervals()`
     pub fn nb_intervals(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKHLR::Intrv_Intervals_nb_intervals(self as *const Self)
         })
     }
 
-    /// **Source:** `Intrv_Intervals.hxx`:61 - `Intrv_Intervals::Value()`
+    /// **Source:** `Intrv_Intervals.hxx`:62 - `Intrv_Intervals::Value()`
     pub fn value(&self, Index: i32) -> &Interval {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKHLR::Intrv_Intervals_value(

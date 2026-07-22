@@ -9,16 +9,15 @@ use opencascade_sys::b_rep_offset_api;
 use opencascade_sys::b_rep_prim_api;
 use opencascade_sys::ch_fi3d;
 use opencascade_sys::gc;
-use opencascade_sys::gce2d;
 use opencascade_sys::geom;
 use opencascade_sys::geom2d;
 use opencascade_sys::geom_abs;
 use opencascade_sys::gp;
 use opencascade_sys::message;
+use opencascade_sys::n_collection;
 use opencascade_sys::stl_api;
 use opencascade_sys::top_abs;
 use opencascade_sys::top_exp;
-use opencascade_sys::top_tools;
 use opencascade_sys::topo_ds;
 use opencascade_sys::OwnedPtr;
 
@@ -146,7 +145,7 @@ pub fn main() {
 
     let top_face = top_face.unwrap();
 
-    let mut faces_to_remove = top_tools::ListOfShape::new();
+    let mut faces_to_remove = n_collection::List_TopoDS_Shape::new();
     faces_to_remove.append(top_face.as_shape());
 
     let mut solid_maker = b_rep_offset_api::MakeThickSolid::new();
@@ -205,7 +204,7 @@ pub fn main() {
     let ellipse_pnt_1 = handle_ellipse_1.get().value(0.0);
     let ellipse_pnt_2 = handle_ellipse_1.get().value(std::f64::consts::PI);
 
-    let segment = gce2d::MakeSegment::new_pnt2d2(&ellipse_pnt_1, &ellipse_pnt_2);
+    let segment = gc::MakeSegment2d::new_pnt2d2(&ellipse_pnt_1, &ellipse_pnt_2);
     let segment_handle = segment.value().to_handle_curve();
 
     // Threading : Build Edges and Wires
@@ -257,7 +256,7 @@ pub fn main() {
     );
     let mut stl_writer = stl_api::Writer::new();
     let success = stl_writer
-        .write(compound.as_shape(), "bottle.stl", &progress);
+        .write_shape_charptr_progressrange(compound.as_shape(), "bottle.stl", &progress);
 
     println!("Done! Success = {success}");
 }

@@ -3,6 +3,15 @@
 
 #include "occt_preamble.hxx"
 
+#include <Adaptor3d_Surface.hxx>
+#include <GeomAbs_Shape.hxx>
+#include <HelixBRep_BuilderHelix.hxx>
+#include <HelixGeom_BuilderApproxCurve.hxx>
+#include <HelixGeom_BuilderHelix.hxx>
+#include <HelixGeom_BuilderHelixCoil.hxx>
+#include <HelixGeom_BuilderHelixGen.hxx>
+#include <HelixGeom_HelixCurve.hxx>
+#include <HelixGeom_Tools.hxx>
 #include <LDOMBasicString.hxx>
 #include <LDOMParser.hxx>
 #include <LDOMString.hxx>
@@ -13,11 +22,491 @@
 #include <RWObj_Tools.hxx>
 #include <Standard_Handle.hxx>
 #include <Standard_IStream.hxx>
+#include <Standard_Type.hxx>
+#include <gp_Ax2.hxx>
+#include <gp_Ax3.hxx>
+#include <gp_Elips.hxx>
+#include <gp_Hypr.hxx>
+#include <gp_Parab.hxx>
 
 // Handle type aliases
-typedef opencascade::handle<LDOM_MemManager> HandleLDOMMemManager;
+typedef opencascade::handle<Adaptor3d_Curve> Handle_Adaptor3d_Curve;
+typedef opencascade::handle<Geom_BSplineCurve> Handle_Geom_BSplineCurve;
+typedef opencascade::handle<HelixGeom_HelixCurve> Handle_HelixGeom_HelixCurve;
+typedef opencascade::handle<LDOM_MemManager> Handle_LDOM_MemManager;
+typedef opencascade::handle<Standard_Transient> Handle_Standard_Transient;
+typedef opencascade::handle<Standard_Type> Handle_Standard_Type;
 
 // Handle type destructors, clone, and is_null functions
+extern "C" void Handle_HelixGeom_HelixCurve_destructor(Handle_HelixGeom_HelixCurve* self_) { delete self_; }
+extern "C" OcctResult<Handle_HelixGeom_HelixCurve*> Handle_HelixGeom_HelixCurve_clone(const Handle_HelixGeom_HelixCurve* self_) {
+    try { return {new Handle_HelixGeom_HelixCurve(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" bool Handle_HelixGeom_HelixCurve_is_null(const Handle_HelixGeom_HelixCurve* self_) { return self_->IsNull(); }
+
+// ========================
+// HelixBRep_BuilderHelix wrappers
+// ========================
+
+extern "C" OcctResult<HelixBRep_BuilderHelix*> HelixBRep_BuilderHelix_ctor() {
+    try { return {new HelixBRep_BuilderHelix(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" const char* HelixBRep_BuilderHelix_set_parameters_ax3_arr1_double3_arr1_bool(HelixBRep_BuilderHelix* self_, gp_Ax3 const* theAxis, NCollection_Array1_double const* theDiams, NCollection_Array1_double const* theHeights, NCollection_Array1_double const* thePitches, NCollection_Array1_bool const* theIsPitches) {
+    try { self_->SetParameters(*theAxis, *theDiams, *theHeights, *thePitches, *theIsPitches); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* HelixBRep_BuilderHelix_set_parameters_ax3_real_arr1_double2_arr1_bool(HelixBRep_BuilderHelix* self_, gp_Ax3 const* theAxis, double theDiam, NCollection_Array1_double const* theHeights, NCollection_Array1_double const* thePitches, NCollection_Array1_bool const* theIsPitches) {
+    try { self_->SetParameters(*theAxis, theDiam, *theHeights, *thePitches, *theIsPitches); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* HelixBRep_BuilderHelix_set_parameters_ax3_real2_arr1_double2_arr1_bool(HelixBRep_BuilderHelix* self_, gp_Ax3 const* theAxis, double theDiam1, double theDiam2, NCollection_Array1_double const* theHeights, NCollection_Array1_double const* thePitches, NCollection_Array1_bool const* theIsPitches) {
+    try { self_->SetParameters(*theAxis, theDiam1, theDiam2, *theHeights, *thePitches, *theIsPitches); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* HelixBRep_BuilderHelix_set_parameters_ax3_arr1_double3(HelixBRep_BuilderHelix* self_, gp_Ax3 const* theAxis, NCollection_Array1_double const* theDiams, NCollection_Array1_double const* thePitches, NCollection_Array1_double const* theNbTurns) {
+    try { self_->SetParameters(*theAxis, *theDiams, *thePitches, *theNbTurns); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* HelixBRep_BuilderHelix_set_parameters_ax3_real_arr1_double2(HelixBRep_BuilderHelix* self_, gp_Ax3 const* theAxis, double theDiam, NCollection_Array1_double const* thePitches, NCollection_Array1_double const* theNbTurns) {
+    try { self_->SetParameters(*theAxis, theDiam, *thePitches, *theNbTurns); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* HelixBRep_BuilderHelix_set_parameters_ax3_real2_arr1_double2(HelixBRep_BuilderHelix* self_, gp_Ax3 const* theAxis, double theDiam1, double theDiam2, NCollection_Array1_double const* thePitches, NCollection_Array1_double const* theNbTurns) {
+    try { self_->SetParameters(*theAxis, theDiam1, theDiam2, *thePitches, *theNbTurns); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* HelixBRep_BuilderHelix_set_approx_parameters(HelixBRep_BuilderHelix* self_, double theTolerance, int32_t theMaxDegree, int32_t theContinuity) {
+    try { self_->SetApproxParameters(theTolerance, theMaxDegree, static_cast<GeomAbs_Shape>(theContinuity)); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* HelixBRep_BuilderHelix_perform(HelixBRep_BuilderHelix* self_) {
+    try { self_->Perform(); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" OcctResult<double> HelixBRep_BuilderHelix_tolerance_reached(const HelixBRep_BuilderHelix* self_) {
+    try { return {self_->ToleranceReached(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<int32_t> HelixBRep_BuilderHelix_error_status(const HelixBRep_BuilderHelix* self_) {
+    try { return {self_->ErrorStatus(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<int32_t> HelixBRep_BuilderHelix_warning_status(const HelixBRep_BuilderHelix* self_) {
+    try { return {self_->WarningStatus(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<TopoDS_Shape const*> HelixBRep_BuilderHelix_shape(const HelixBRep_BuilderHelix* self_) {
+    try { return {&(self_->Shape()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" void HelixBRep_BuilderHelix_destructor(HelixBRep_BuilderHelix* self_) { delete self_; }
+
+// ========================
+// HelixGeom_BuilderApproxCurve wrappers
+// ========================
+
+extern "C" const char* HelixGeom_BuilderApproxCurve_set_approx_parameters(HelixGeom_BuilderApproxCurve* self_, int32_t aCont, int32_t aMaxDegree, int32_t aMaxSeg) {
+    try { self_->SetApproxParameters(static_cast<GeomAbs_Shape>(aCont), aMaxDegree, aMaxSeg); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* HelixGeom_BuilderApproxCurve_approx_parameters(const HelixGeom_BuilderApproxCurve* self_, int32_t& aCont, int32_t* aMaxDegree, int32_t* aMaxSeg) {
+    try {
+    auto aCont_enum_ = static_cast<GeomAbs_Shape>(aCont);
+    self_->ApproxParameters(aCont_enum_, *aMaxDegree, *aMaxSeg);
+    aCont = static_cast<int32_t>(aCont_enum_);
+    return nullptr;
+    }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* HelixGeom_BuilderApproxCurve_set_tolerance(HelixGeom_BuilderApproxCurve* self_, double aTolerance) {
+    try { self_->SetTolerance(aTolerance); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" OcctResult<double> HelixGeom_BuilderApproxCurve_tolerance(const HelixGeom_BuilderApproxCurve* self_) {
+    try { return {self_->Tolerance(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<double> HelixGeom_BuilderApproxCurve_tolerance_reached(const HelixGeom_BuilderApproxCurve* self_) {
+    try { return {self_->ToleranceReached(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<int32_t> HelixGeom_BuilderApproxCurve_error_status(const HelixGeom_BuilderApproxCurve* self_) {
+    try { return {self_->ErrorStatus(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<int32_t> HelixGeom_BuilderApproxCurve_warning_status(const HelixGeom_BuilderApproxCurve* self_) {
+    try { return {self_->WarningStatus(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" const char* HelixGeom_BuilderApproxCurve_perform(HelixGeom_BuilderApproxCurve* self_) {
+    try { self_->Perform(); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+
+// ========================
+// HelixGeom_BuilderHelix wrappers
+// ========================
+
+extern "C" OcctResult<HelixGeom_BuilderHelix*> HelixGeom_BuilderHelix_ctor() {
+    try { return {new HelixGeom_BuilderHelix(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" const char* HelixGeom_BuilderHelix_set_position(HelixGeom_BuilderHelix* self_, gp_Ax2 const* aAx2) {
+    try { self_->SetPosition(*aAx2); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" OcctResult<gp_Ax2 const*> HelixGeom_BuilderHelix_position(const HelixGeom_BuilderHelix* self_) {
+    try { return {&(self_->Position()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" const char* HelixGeom_BuilderHelix_perform(HelixGeom_BuilderHelix* self_) {
+    try { self_->Perform(); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" OcctResult<const HelixGeom_BuilderHelixGen*> HelixGeom_BuilderHelix_as_HelixGeom_BuilderHelixGen(const HelixGeom_BuilderHelix* self_) { return {static_cast<const HelixGeom_BuilderHelixGen*>(self_), nullptr}; }
+extern "C" OcctResult<HelixGeom_BuilderHelixGen*> HelixGeom_BuilderHelix_as_HelixGeom_BuilderHelixGen_mut(HelixGeom_BuilderHelix* self_) { return {static_cast<HelixGeom_BuilderHelixGen*>(self_), nullptr}; }
+extern "C" OcctResult<const HelixGeom_BuilderApproxCurve*> HelixGeom_BuilderHelix_as_HelixGeom_BuilderApproxCurve(const HelixGeom_BuilderHelix* self_) { return {static_cast<const HelixGeom_BuilderApproxCurve*>(self_), nullptr}; }
+extern "C" OcctResult<HelixGeom_BuilderApproxCurve*> HelixGeom_BuilderHelix_as_HelixGeom_BuilderApproxCurve_mut(HelixGeom_BuilderHelix* self_) { return {static_cast<HelixGeom_BuilderApproxCurve*>(self_), nullptr}; }
+extern "C" const char* HelixGeom_BuilderHelix_inherited_SetCurveParameters(HelixGeom_BuilderHelix* self, double aT1, double aT2, double aPitch, double aRStart, double aTaperAngle, bool bIsClockwise) {
+    try { self->SetCurveParameters(aT1, aT2, aPitch, aRStart, aTaperAngle, bIsClockwise); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* HelixGeom_BuilderHelix_inherited_CurveParameters(const HelixGeom_BuilderHelix* self, double& aT1, double& aT2, double& aPitch, double& aRStart, double& aTaperAngle, bool& bIsClockwise) {
+    try { self->CurveParameters(aT1, aT2, aPitch, aRStart, aTaperAngle, bIsClockwise); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* HelixGeom_BuilderHelix_inherited_SetApproxParameters(HelixGeom_BuilderHelix* self, int32_t aCont, int32_t aMaxDegree, int32_t aMaxSeg) {
+    try { self->SetApproxParameters(static_cast<GeomAbs_Shape>(aCont), aMaxDegree, aMaxSeg); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* HelixGeom_BuilderHelix_inherited_SetTolerance(HelixGeom_BuilderHelix* self, double aTolerance) {
+    try { self->SetTolerance(aTolerance); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" OcctResult<double> HelixGeom_BuilderHelix_inherited_Tolerance(const HelixGeom_BuilderHelix* self) {
+    try { return {self->Tolerance(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<double> HelixGeom_BuilderHelix_inherited_ToleranceReached(const HelixGeom_BuilderHelix* self) {
+    try { return {self->ToleranceReached(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<int32_t> HelixGeom_BuilderHelix_inherited_ErrorStatus(const HelixGeom_BuilderHelix* self) {
+    try { return {self->ErrorStatus(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<int32_t> HelixGeom_BuilderHelix_inherited_WarningStatus(const HelixGeom_BuilderHelix* self) {
+    try { return {self->WarningStatus(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" void HelixGeom_BuilderHelix_destructor(HelixGeom_BuilderHelix* self_) { delete self_; }
+
+// ========================
+// HelixGeom_BuilderHelixCoil wrappers
+// ========================
+
+extern "C" OcctResult<HelixGeom_BuilderHelixCoil*> HelixGeom_BuilderHelixCoil_ctor() {
+    try { return {new HelixGeom_BuilderHelixCoil(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" const char* HelixGeom_BuilderHelixCoil_perform(HelixGeom_BuilderHelixCoil* self_) {
+    try { self_->Perform(); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" OcctResult<const HelixGeom_BuilderHelixGen*> HelixGeom_BuilderHelixCoil_as_HelixGeom_BuilderHelixGen(const HelixGeom_BuilderHelixCoil* self_) { return {static_cast<const HelixGeom_BuilderHelixGen*>(self_), nullptr}; }
+extern "C" OcctResult<HelixGeom_BuilderHelixGen*> HelixGeom_BuilderHelixCoil_as_HelixGeom_BuilderHelixGen_mut(HelixGeom_BuilderHelixCoil* self_) { return {static_cast<HelixGeom_BuilderHelixGen*>(self_), nullptr}; }
+extern "C" OcctResult<const HelixGeom_BuilderApproxCurve*> HelixGeom_BuilderHelixCoil_as_HelixGeom_BuilderApproxCurve(const HelixGeom_BuilderHelixCoil* self_) { return {static_cast<const HelixGeom_BuilderApproxCurve*>(self_), nullptr}; }
+extern "C" OcctResult<HelixGeom_BuilderApproxCurve*> HelixGeom_BuilderHelixCoil_as_HelixGeom_BuilderApproxCurve_mut(HelixGeom_BuilderHelixCoil* self_) { return {static_cast<HelixGeom_BuilderApproxCurve*>(self_), nullptr}; }
+extern "C" const char* HelixGeom_BuilderHelixCoil_inherited_SetCurveParameters(HelixGeom_BuilderHelixCoil* self, double aT1, double aT2, double aPitch, double aRStart, double aTaperAngle, bool bIsClockwise) {
+    try { self->SetCurveParameters(aT1, aT2, aPitch, aRStart, aTaperAngle, bIsClockwise); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* HelixGeom_BuilderHelixCoil_inherited_CurveParameters(const HelixGeom_BuilderHelixCoil* self, double& aT1, double& aT2, double& aPitch, double& aRStart, double& aTaperAngle, bool& bIsClockwise) {
+    try { self->CurveParameters(aT1, aT2, aPitch, aRStart, aTaperAngle, bIsClockwise); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* HelixGeom_BuilderHelixCoil_inherited_SetApproxParameters(HelixGeom_BuilderHelixCoil* self, int32_t aCont, int32_t aMaxDegree, int32_t aMaxSeg) {
+    try { self->SetApproxParameters(static_cast<GeomAbs_Shape>(aCont), aMaxDegree, aMaxSeg); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* HelixGeom_BuilderHelixCoil_inherited_SetTolerance(HelixGeom_BuilderHelixCoil* self, double aTolerance) {
+    try { self->SetTolerance(aTolerance); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" OcctResult<double> HelixGeom_BuilderHelixCoil_inherited_Tolerance(const HelixGeom_BuilderHelixCoil* self) {
+    try { return {self->Tolerance(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<double> HelixGeom_BuilderHelixCoil_inherited_ToleranceReached(const HelixGeom_BuilderHelixCoil* self) {
+    try { return {self->ToleranceReached(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<int32_t> HelixGeom_BuilderHelixCoil_inherited_ErrorStatus(const HelixGeom_BuilderHelixCoil* self) {
+    try { return {self->ErrorStatus(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<int32_t> HelixGeom_BuilderHelixCoil_inherited_WarningStatus(const HelixGeom_BuilderHelixCoil* self) {
+    try { return {self->WarningStatus(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" void HelixGeom_BuilderHelixCoil_destructor(HelixGeom_BuilderHelixCoil* self_) { delete self_; }
+
+// ========================
+// HelixGeom_BuilderHelixGen wrappers
+// ========================
+
+extern "C" const char* HelixGeom_BuilderHelixGen_set_curve_parameters(HelixGeom_BuilderHelixGen* self_, double aT1, double aT2, double aPitch, double aRStart, double aTaperAngle, bool bIsClockwise) {
+    try { self_->SetCurveParameters(aT1, aT2, aPitch, aRStart, aTaperAngle, bIsClockwise); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* HelixGeom_BuilderHelixGen_curve_parameters(const HelixGeom_BuilderHelixGen* self_, double* aT1, double* aT2, double* aPitch, double* aRStart, double* aTaperAngle, bool* bIsClockwise) {
+    try { self_->CurveParameters(*aT1, *aT2, *aPitch, *aRStart, *aTaperAngle, *bIsClockwise); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" OcctResult<const HelixGeom_BuilderApproxCurve*> HelixGeom_BuilderHelixGen_as_HelixGeom_BuilderApproxCurve(const HelixGeom_BuilderHelixGen* self_) { return {static_cast<const HelixGeom_BuilderApproxCurve*>(self_), nullptr}; }
+extern "C" OcctResult<HelixGeom_BuilderApproxCurve*> HelixGeom_BuilderHelixGen_as_HelixGeom_BuilderApproxCurve_mut(HelixGeom_BuilderHelixGen* self_) { return {static_cast<HelixGeom_BuilderApproxCurve*>(self_), nullptr}; }
+
+// ========================
+// HelixGeom_HelixCurve wrappers
+// ========================
+
+extern "C" OcctResult<HelixGeom_HelixCurve*> HelixGeom_HelixCurve_ctor() {
+    try { return {new HelixGeom_HelixCurve(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<gp_Pnt*> HelixGeom_HelixCurve_eval_d0(const HelixGeom_HelixCurve* self_, double theU) {
+    try { return {new gp_Pnt(self_->EvalD0(theU)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Geom_Curve::ResD1*> HelixGeom_HelixCurve_eval_d1(const HelixGeom_HelixCurve* self_, double theU) {
+    try { return {new Geom_Curve::ResD1(self_->EvalD1(theU)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Geom_Curve::ResD2*> HelixGeom_HelixCurve_eval_d2(const HelixGeom_HelixCurve* self_, double theU) {
+    try { return {new Geom_Curve::ResD2(self_->EvalD2(theU)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<gp_Vec*> HelixGeom_HelixCurve_eval_dn(const HelixGeom_HelixCurve* self_, double theU, int32_t theN) {
+    try { return {new gp_Vec(self_->EvalDN(theU, theN)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Handle(Standard_Type) const*> HelixGeom_HelixCurve_dynamic_type(const HelixGeom_HelixCurve* self_) {
+    try { return {&(self_->DynamicType()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" const char* HelixGeom_HelixCurve_load(HelixGeom_HelixCurve* self_) {
+    try { self_->Load(); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* HelixGeom_HelixCurve_load_real5_bool(HelixGeom_HelixCurve* self_, double aT1, double aT2, double aPitch, double aRStart, double aTaperAngle, bool aIsCW) {
+    try { self_->Load(aT1, aT2, aPitch, aRStart, aTaperAngle, aIsCW); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" OcctResult<double> HelixGeom_HelixCurve_first_parameter(const HelixGeom_HelixCurve* self_) {
+    try { return {self_->FirstParameter(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<double> HelixGeom_HelixCurve_last_parameter(const HelixGeom_HelixCurve* self_) {
+    try { return {self_->LastParameter(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<int32_t> HelixGeom_HelixCurve_continuity(const HelixGeom_HelixCurve* self_) {
+    try { return {static_cast<int32_t>(self_->Continuity()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<int32_t> HelixGeom_HelixCurve_nb_intervals(const HelixGeom_HelixCurve* self_, int32_t S) {
+    try { return {self_->NbIntervals(static_cast<GeomAbs_Shape>(S)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" const char* HelixGeom_HelixCurve_intervals(const HelixGeom_HelixCurve* self_, NCollection_Array1_double* T, int32_t S) {
+    try { self_->Intervals(*T, static_cast<GeomAbs_Shape>(S)); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" OcctResult<double> HelixGeom_HelixCurve_resolution(const HelixGeom_HelixCurve* self_, double R3d) {
+    try { return {self_->Resolution(R3d), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<bool> HelixGeom_HelixCurve_is_closed(const HelixGeom_HelixCurve* self_) {
+    try { return {self_->IsClosed(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<bool> HelixGeom_HelixCurve_is_periodic(const HelixGeom_HelixCurve* self_) {
+    try { return {self_->IsPeriodic(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<double> HelixGeom_HelixCurve_period(const HelixGeom_HelixCurve* self_) {
+    try { return {self_->Period(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<char const*> HelixGeom_HelixCurve_get_type_name() {
+    try { return {HelixGeom_HelixCurve::get_type_name(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Handle(Standard_Type) const*> HelixGeom_HelixCurve_get_type_descriptor() {
+    try { return {&(HelixGeom_HelixCurve::get_type_descriptor()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<const Adaptor3d_Curve*> HelixGeom_HelixCurve_as_Adaptor3d_Curve(const HelixGeom_HelixCurve* self_) { return {static_cast<const Adaptor3d_Curve*>(self_), nullptr}; }
+extern "C" OcctResult<Adaptor3d_Curve*> HelixGeom_HelixCurve_as_Adaptor3d_Curve_mut(HelixGeom_HelixCurve* self_) { return {static_cast<Adaptor3d_Curve*>(self_), nullptr}; }
+extern "C" OcctResult<const Standard_Transient*> HelixGeom_HelixCurve_as_Standard_Transient(const HelixGeom_HelixCurve* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
+extern "C" OcctResult<Standard_Transient*> HelixGeom_HelixCurve_as_Standard_Transient_mut(HelixGeom_HelixCurve* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
+extern "C" OcctResult<Handle_HelixGeom_HelixCurve*> HelixGeom_HelixCurve_to_handle(HelixGeom_HelixCurve* obj) {
+    try { return {new Handle_HelixGeom_HelixCurve(obj), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<const HelixGeom_HelixCurve*> Handle_HelixGeom_HelixCurve_get(const Handle_HelixGeom_HelixCurve* handle) {
+    try { return {(*handle).get(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<HelixGeom_HelixCurve*> Handle_HelixGeom_HelixCurve_get_mut(Handle_HelixGeom_HelixCurve* handle) {
+    try { return {(*handle).get(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Handle_Adaptor3d_Curve*> Handle_HelixGeom_HelixCurve_to_Handle_Adaptor3d_Curve(const Handle_HelixGeom_HelixCurve* self_) {
+    try { return {new Handle_Adaptor3d_Curve(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_HelixGeom_HelixCurve_to_Handle_Standard_Transient(const Handle_HelixGeom_HelixCurve* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Handle(Adaptor3d_Curve)*> HelixGeom_HelixCurve_inherited_ShallowCopy(const HelixGeom_HelixCurve* self) {
+    try { return {new Handle(Adaptor3d_Curve)(self->ShallowCopy()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Handle(Adaptor3d_Curve)*> HelixGeom_HelixCurve_inherited_Trim(const HelixGeom_HelixCurve* self, double First, double Last, double Tol) {
+    try { return {new Handle(Adaptor3d_Curve)(self->Trim(First, Last, Tol)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<gp_Pnt*> HelixGeom_HelixCurve_inherited_Value(const HelixGeom_HelixCurve* self, double theU) {
+    try { return {new gp_Pnt(self->Value(theU)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" const char* HelixGeom_HelixCurve_inherited_D0(const HelixGeom_HelixCurve* self, double theU, gp_Pnt& theP) {
+    try { self->D0(theU, theP); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* HelixGeom_HelixCurve_inherited_D1(const HelixGeom_HelixCurve* self, double theU, gp_Pnt& theP, gp_Vec& theV) {
+    try { self->D1(theU, theP, theV); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* HelixGeom_HelixCurve_inherited_D2(const HelixGeom_HelixCurve* self, double theU, gp_Pnt& theP, gp_Vec& theV1, gp_Vec& theV2) {
+    try { self->D2(theU, theP, theV1, theV2); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* HelixGeom_HelixCurve_inherited_D3(const HelixGeom_HelixCurve* self, double theU, gp_Pnt& theP, gp_Vec& theV1, gp_Vec& theV2, gp_Vec& theV3) {
+    try { self->D3(theU, theP, theV1, theV2, theV3); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" OcctResult<gp_Vec*> HelixGeom_HelixCurve_inherited_DN(const HelixGeom_HelixCurve* self, double theU, int32_t theN) {
+    try { return {new gp_Vec(self->DN(theU, theN)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<int32_t> HelixGeom_HelixCurve_inherited_GetType(const HelixGeom_HelixCurve* self) {
+    try { return {static_cast<int32_t>(self->GetType()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<gp_Lin*> HelixGeom_HelixCurve_inherited_Line(const HelixGeom_HelixCurve* self) {
+    try { return {new gp_Lin(self->Line()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<gp_Circ*> HelixGeom_HelixCurve_inherited_Circle(const HelixGeom_HelixCurve* self) {
+    try { return {new gp_Circ(self->Circle()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<gp_Elips*> HelixGeom_HelixCurve_inherited_Ellipse(const HelixGeom_HelixCurve* self) {
+    try { return {new gp_Elips(self->Ellipse()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<gp_Hypr*> HelixGeom_HelixCurve_inherited_Hyperbola(const HelixGeom_HelixCurve* self) {
+    try { return {new gp_Hypr(self->Hyperbola()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<gp_Parab*> HelixGeom_HelixCurve_inherited_Parabola(const HelixGeom_HelixCurve* self) {
+    try { return {new gp_Parab(self->Parabola()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<int32_t> HelixGeom_HelixCurve_inherited_Degree(const HelixGeom_HelixCurve* self) {
+    try { return {self->Degree(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<bool> HelixGeom_HelixCurve_inherited_IsRational(const HelixGeom_HelixCurve* self) {
+    try { return {self->IsRational(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<int32_t> HelixGeom_HelixCurve_inherited_NbPoles(const HelixGeom_HelixCurve* self) {
+    try { return {self->NbPoles(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<int32_t> HelixGeom_HelixCurve_inherited_NbKnots(const HelixGeom_HelixCurve* self) {
+    try { return {self->NbKnots(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Handle(Geom_BezierCurve)*> HelixGeom_HelixCurve_inherited_Bezier(const HelixGeom_HelixCurve* self) {
+    try { return {new Handle(Geom_BezierCurve)(self->Bezier()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Handle(Geom_BSplineCurve)*> HelixGeom_HelixCurve_inherited_BSpline(const HelixGeom_HelixCurve* self) {
+    try { return {new Handle(Geom_BSplineCurve)(self->BSpline()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Handle(Geom_OffsetCurve)*> HelixGeom_HelixCurve_inherited_OffsetCurve(const HelixGeom_HelixCurve* self) {
+    try { return {new Handle(Geom_OffsetCurve)(self->OffsetCurve()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Geom_Curve::ResD3*> HelixGeom_HelixCurve_inherited_EvalD3(const HelixGeom_HelixCurve* self, double theU) {
+    try { return {new Geom_Curve::ResD3(self->EvalD3(theU)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<bool> HelixGeom_HelixCurve_inherited_IsInstance(const HelixGeom_HelixCurve* self, Handle(Standard_Type) const& theType) {
+    try { return {self->IsInstance(theType), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<bool> HelixGeom_HelixCurve_inherited_IsKind(const HelixGeom_HelixCurve* self, Handle(Standard_Type) const& theType) {
+    try { return {self->IsKind(theType), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Standard_Transient*> HelixGeom_HelixCurve_inherited_This(const HelixGeom_HelixCurve* self) {
+    try { return {self->This(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<int32_t> HelixGeom_HelixCurve_inherited_GetRefCount(const HelixGeom_HelixCurve* self) {
+    try { return {self->GetRefCount(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" const char* HelixGeom_HelixCurve_inherited_IncrementRefCounter(HelixGeom_HelixCurve* self) {
+    try { self->IncrementRefCounter(); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" OcctResult<int32_t> HelixGeom_HelixCurve_inherited_DecrementRefCounter(HelixGeom_HelixCurve* self) {
+    try { return {self->DecrementRefCounter(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" const char* HelixGeom_HelixCurve_inherited_Delete(const HelixGeom_HelixCurve* self) {
+    try { self->Delete(); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" void HelixGeom_HelixCurve_destructor(HelixGeom_HelixCurve* self_) { delete self_; }
+
+// ========================
+// HelixGeom_Tools wrappers
+// ========================
+
+extern "C" OcctResult<HelixGeom_Tools*> HelixGeom_Tools_ctor() {
+    try { return {new HelixGeom_Tools(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<int32_t> HelixGeom_Tools_appr_helix(double aT1, double aT2, double aPitch, double aRStart, double aTaperAngle, bool aIsCW, double aTol, Handle(Geom_BSplineCurve)* theBSpl, double* theMaxError) {
+    try { return {HelixGeom_Tools::ApprHelix(aT1, aT2, aPitch, aRStart, aTaperAngle, aIsCW, aTol, *theBSpl, *theMaxError), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<int32_t> HelixGeom_Tools_appr_curve3_d(Handle(Adaptor3d_Curve) const* theHC, double theTol, int32_t theCont, int32_t theMaxSeg, int32_t theMaxDeg, Handle(Geom_BSplineCurve)* theBSpl, double* theMaxError) {
+    try { return {HelixGeom_Tools::ApprCurve3D(*theHC, theTol, static_cast<GeomAbs_Shape>(theCont), theMaxSeg, theMaxDeg, *theBSpl, *theMaxError), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" void HelixGeom_Tools_destructor(HelixGeom_Tools* self_) { delete self_; }
 
 // ========================
 // LDOMBasicString wrappers
@@ -122,9 +611,29 @@ extern "C" OcctResult<LDOMString*> LDOMString_clone(const LDOMString* self_) {
 extern "C" void LDOMString_destructor(LDOMString* self_) { delete self_; }
 
 // ========================
+// LProp_SurfaceUtils namespace functions
+// ========================
+extern "C" const char* LProp_SurfaceUtils_get_surf_bounds_surface_real4(Geom_Surface const* theSurf, double* theU1, double* theV1, double* theU2, double* theV2) {
+    try { LProp_SurfaceUtils::GetSurfBounds(*theSurf, *theU1, *theV1, *theU2, *theV2); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* LProp_SurfaceUtils_get_surf_bounds_mut(Adaptor3d_Surface const* theSurf, double* theU1, double* theV1, double* theU2, double* theV2) {
+    try { LProp_SurfaceUtils::GetSurfBounds(*theSurf, *theU1, *theV1, *theU2, *theV2); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" OcctResult<bool> LProp_SurfaceUtils_compute_surf_normal(gp_Vec const* theD1u, gp_Vec const* theD1v, double theLinTol, gp_Dir* theNormal) {
+    try { return {LProp_SurfaceUtils::ComputeSurfNormal(*theD1u, *theD1v, theLinTol, *theNormal), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<bool> LProp_SurfaceUtils_compute_surf_curvatures(gp_Vec const* theD1u, gp_Vec const* theD1v, gp_Vec const* theD2u, gp_Vec const* theD2v, gp_Vec const* theDuv, gp_Dir const* theNormal, double* theMinCurv, double* theMaxCurv, gp_Dir* theDirMin, gp_Dir* theDirMax, double* theMeanCurv, double* theGausCurv) {
+    try { return {LProp_SurfaceUtils::ComputeSurfCurvatures(*theD1u, *theD1v, *theD2u, *theD2v, *theDuv, *theNormal, *theMinCurv, *theMaxCurv, *theDirMin, *theDirMax, *theMeanCurv, *theGausCurv), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+
+// ========================
 // NCollection_Primes namespace functions
 // ========================
-extern "C" OcctResult<int32_t> NCollection_Primes_next_prime_for_map(int32_t theN) {
+extern "C" OcctResult<size_t> NCollection_Primes_next_prime_for_map(size_t theN) {
     try { return {NCollection_Primes::NextPrimeForMap(theN), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -149,11 +658,16 @@ extern "C" OcctResult<bool> RWObj_Tools_is_space_char(char theChar) {
 // Nested type and typedef type destructors
 extern "C" void LDOMBasicString_StringType_destructor(LDOMBasicString::StringType* self_) { delete self_; }
 extern "C" void std_ios_base_openmode_destructor(std::ios_base::openmode* self_) { delete self_; }
+extern "C" void std_mutex_destructor(std::mutex* self_) { delete self_; }
+extern "C" void std_shared_mutex_destructor(std::shared_mutex* self_) { delete self_; }
 extern "C" void std_streampos_destructor(std::streampos* self_) { delete self_; }
 extern "C" void std_streamsize_destructor(std::streamsize* self_) { delete self_; }
+extern "C" void std_string_view_destructor(std::string_view* self_) { delete self_; }
 extern "C" void std_type_info_destructor(std::type_info* self_) { delete self_; }
-extern "C" void std_pair_Standard_Integer_Standard_Integer_destructor(std_pair_Standard_Integer_Standard_Integer* self_) { delete self_; }
-extern "C" void std_pair_Standard_Real_Standard_Real_destructor(std_pair_Standard_Real_Standard_Real* self_) { delete self_; }
+extern "C" void std_u16string_view_destructor(std::u16string_view* self_) { delete self_; }
+extern "C" void std_pair_double_double_destructor(std_pair_double_double* self_) { delete self_; }
+extern "C" void std_pair_gp_Pnt2d_gp_Pnt2d_destructor(std_pair_gp_Pnt2d_gp_Pnt2d* self_) { delete self_; }
+extern "C" void std_pair_int_int_destructor(std_pair_int_int* self_) { delete self_; }
 extern "C" void std_shared_ptr_std_istream_destructor(std_shared_ptr_std_istream* self_) { delete self_; }
 extern "C" void std_shared_ptr_std_ostream_destructor(std_shared_ptr_std_ostream* self_) { delete self_; }
 extern "C" void std_shared_ptr_std_streambuf_destructor(std_shared_ptr_std_streambuf* self_) { delete self_; }

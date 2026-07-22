@@ -3,16 +3,14 @@
 
 #include "occt_preamble.hxx"
 
+#include <BVH_Types.hxx>
 #include <DEOBJ_ConfigurationNode.hxx>
 #include <DEOBJ_Provider.hxx>
 #include <DE_ConfigurationContext.hxx>
 #include <DE_ConfigurationNode.hxx>
 #include <DE_Provider.hxx>
-#include <Graphic3d_ShaderVariable.hxx>
-#include <Graphic3d_Vec2.hxx>
-#include <Graphic3d_Vec3.hxx>
-#include <Interface_IndexedMapOfAsciiString.hxx>
 #include <Message_ProgressRange.hxx>
+#include <Poly_Triangulation.hxx>
 #include <RWMesh_CafReader.hxx>
 #include <RWMesh_CoordinateSystemConverter.hxx>
 #include <RWMesh_MaterialMap.hxx>
@@ -28,77 +26,72 @@
 #include <Standard_Handle.hxx>
 #include <Standard_IStream.hxx>
 #include <Standard_Type.hxx>
-#include <TColStd_IndexedDataMapOfStringString.hxx>
-#include <TColStd_ListOfAsciiString.hxx>
-#include <TColStd_MapOfAsciiString.hxx>
-#include <TDF_LabelSequence.hxx>
 #include <TDocStd_Document.hxx>
-#include <XCAFPrs_Style.hxx>
 #include <XSControl_WorkSession.hxx>
 #include <gp_Ax3.hxx>
 
 // Handle type aliases
-typedef opencascade::handle<DEOBJ_ConfigurationNode> HandleDEOBJConfigurationNode;
-typedef opencascade::handle<DEOBJ_Provider> HandleDEOBJProvider;
-typedef opencascade::handle<DE_ConfigurationContext> HandleDEConfigurationContext;
-typedef opencascade::handle<DE_ConfigurationNode> HandleDEConfigurationNode;
-typedef opencascade::handle<DE_Provider> HandleDEProvider;
-typedef opencascade::handle<Poly_Triangulation> HandlePolyTriangulation;
-typedef opencascade::handle<RWMesh_CafReader> HandleRWMeshCafReader;
-typedef opencascade::handle<RWMesh_MaterialMap> HandleRWMeshMaterialMap;
-typedef opencascade::handle<RWObj_CafReader> HandleRWObjCafReader;
-typedef opencascade::handle<RWObj_CafWriter> HandleRWObjCafWriter;
-typedef opencascade::handle<RWObj_ObjMaterialMap> HandleRWObjObjMaterialMap;
-typedef opencascade::handle<RWObj_Reader> HandleRWObjReader;
-typedef opencascade::handle<RWObj_TriangulationReader> HandleRWObjTriangulationReader;
-typedef opencascade::handle<Standard_Transient> HandleStandardTransient;
-typedef opencascade::handle<Standard_Type> HandleStandardType;
-typedef opencascade::handle<TDocStd_Document> HandleTDocStdDocument;
-typedef opencascade::handle<XSControl_WorkSession> HandleXSControlWorkSession;
+typedef opencascade::handle<DEOBJ_ConfigurationNode> Handle_DEOBJ_ConfigurationNode;
+typedef opencascade::handle<DEOBJ_Provider> Handle_DEOBJ_Provider;
+typedef opencascade::handle<DE_ConfigurationContext> Handle_DE_ConfigurationContext;
+typedef opencascade::handle<DE_ConfigurationNode> Handle_DE_ConfigurationNode;
+typedef opencascade::handle<DE_Provider> Handle_DE_Provider;
+typedef opencascade::handle<Poly_Triangulation> Handle_Poly_Triangulation;
+typedef opencascade::handle<RWMesh_CafReader> Handle_RWMesh_CafReader;
+typedef opencascade::handle<RWMesh_MaterialMap> Handle_RWMesh_MaterialMap;
+typedef opencascade::handle<RWObj_CafReader> Handle_RWObj_CafReader;
+typedef opencascade::handle<RWObj_CafWriter> Handle_RWObj_CafWriter;
+typedef opencascade::handle<RWObj_ObjMaterialMap> Handle_RWObj_ObjMaterialMap;
+typedef opencascade::handle<RWObj_Reader> Handle_RWObj_Reader;
+typedef opencascade::handle<RWObj_TriangulationReader> Handle_RWObj_TriangulationReader;
+typedef opencascade::handle<Standard_Transient> Handle_Standard_Transient;
+typedef opencascade::handle<Standard_Type> Handle_Standard_Type;
+typedef opencascade::handle<TDocStd_Document> Handle_TDocStd_Document;
+typedef opencascade::handle<XSControl_WorkSession> Handle_XSControl_WorkSession;
 
 // Handle type destructors, clone, and is_null functions
-extern "C" void HandleDEOBJConfigurationNode_destructor(HandleDEOBJConfigurationNode* self_) { delete self_; }
-extern "C" OcctResult<HandleDEOBJConfigurationNode*> HandleDEOBJConfigurationNode_clone(const HandleDEOBJConfigurationNode* self_) {
-    try { return {new HandleDEOBJConfigurationNode(*self_), nullptr}; }
+extern "C" void Handle_DEOBJ_ConfigurationNode_destructor(Handle_DEOBJ_ConfigurationNode* self_) { delete self_; }
+extern "C" OcctResult<Handle_DEOBJ_ConfigurationNode*> Handle_DEOBJ_ConfigurationNode_clone(const Handle_DEOBJ_ConfigurationNode* self_) {
+    try { return {new Handle_DEOBJ_ConfigurationNode(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleDEOBJConfigurationNode_is_null(const HandleDEOBJConfigurationNode* self_) { return self_->IsNull(); }
-extern "C" void HandleDEOBJProvider_destructor(HandleDEOBJProvider* self_) { delete self_; }
-extern "C" OcctResult<HandleDEOBJProvider*> HandleDEOBJProvider_clone(const HandleDEOBJProvider* self_) {
-    try { return {new HandleDEOBJProvider(*self_), nullptr}; }
+extern "C" bool Handle_DEOBJ_ConfigurationNode_is_null(const Handle_DEOBJ_ConfigurationNode* self_) { return self_->IsNull(); }
+extern "C" void Handle_DEOBJ_Provider_destructor(Handle_DEOBJ_Provider* self_) { delete self_; }
+extern "C" OcctResult<Handle_DEOBJ_Provider*> Handle_DEOBJ_Provider_clone(const Handle_DEOBJ_Provider* self_) {
+    try { return {new Handle_DEOBJ_Provider(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleDEOBJProvider_is_null(const HandleDEOBJProvider* self_) { return self_->IsNull(); }
-extern "C" void HandleRWObjCafReader_destructor(HandleRWObjCafReader* self_) { delete self_; }
-extern "C" OcctResult<HandleRWObjCafReader*> HandleRWObjCafReader_clone(const HandleRWObjCafReader* self_) {
-    try { return {new HandleRWObjCafReader(*self_), nullptr}; }
+extern "C" bool Handle_DEOBJ_Provider_is_null(const Handle_DEOBJ_Provider* self_) { return self_->IsNull(); }
+extern "C" void Handle_RWObj_CafReader_destructor(Handle_RWObj_CafReader* self_) { delete self_; }
+extern "C" OcctResult<Handle_RWObj_CafReader*> Handle_RWObj_CafReader_clone(const Handle_RWObj_CafReader* self_) {
+    try { return {new Handle_RWObj_CafReader(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleRWObjCafReader_is_null(const HandleRWObjCafReader* self_) { return self_->IsNull(); }
-extern "C" void HandleRWObjCafWriter_destructor(HandleRWObjCafWriter* self_) { delete self_; }
-extern "C" OcctResult<HandleRWObjCafWriter*> HandleRWObjCafWriter_clone(const HandleRWObjCafWriter* self_) {
-    try { return {new HandleRWObjCafWriter(*self_), nullptr}; }
+extern "C" bool Handle_RWObj_CafReader_is_null(const Handle_RWObj_CafReader* self_) { return self_->IsNull(); }
+extern "C" void Handle_RWObj_CafWriter_destructor(Handle_RWObj_CafWriter* self_) { delete self_; }
+extern "C" OcctResult<Handle_RWObj_CafWriter*> Handle_RWObj_CafWriter_clone(const Handle_RWObj_CafWriter* self_) {
+    try { return {new Handle_RWObj_CafWriter(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleRWObjCafWriter_is_null(const HandleRWObjCafWriter* self_) { return self_->IsNull(); }
-extern "C" void HandleRWObjObjMaterialMap_destructor(HandleRWObjObjMaterialMap* self_) { delete self_; }
-extern "C" OcctResult<HandleRWObjObjMaterialMap*> HandleRWObjObjMaterialMap_clone(const HandleRWObjObjMaterialMap* self_) {
-    try { return {new HandleRWObjObjMaterialMap(*self_), nullptr}; }
+extern "C" bool Handle_RWObj_CafWriter_is_null(const Handle_RWObj_CafWriter* self_) { return self_->IsNull(); }
+extern "C" void Handle_RWObj_ObjMaterialMap_destructor(Handle_RWObj_ObjMaterialMap* self_) { delete self_; }
+extern "C" OcctResult<Handle_RWObj_ObjMaterialMap*> Handle_RWObj_ObjMaterialMap_clone(const Handle_RWObj_ObjMaterialMap* self_) {
+    try { return {new Handle_RWObj_ObjMaterialMap(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleRWObjObjMaterialMap_is_null(const HandleRWObjObjMaterialMap* self_) { return self_->IsNull(); }
-extern "C" void HandleRWObjReader_destructor(HandleRWObjReader* self_) { delete self_; }
-extern "C" OcctResult<HandleRWObjReader*> HandleRWObjReader_clone(const HandleRWObjReader* self_) {
-    try { return {new HandleRWObjReader(*self_), nullptr}; }
+extern "C" bool Handle_RWObj_ObjMaterialMap_is_null(const Handle_RWObj_ObjMaterialMap* self_) { return self_->IsNull(); }
+extern "C" void Handle_RWObj_Reader_destructor(Handle_RWObj_Reader* self_) { delete self_; }
+extern "C" OcctResult<Handle_RWObj_Reader*> Handle_RWObj_Reader_clone(const Handle_RWObj_Reader* self_) {
+    try { return {new Handle_RWObj_Reader(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleRWObjReader_is_null(const HandleRWObjReader* self_) { return self_->IsNull(); }
-extern "C" void HandleRWObjTriangulationReader_destructor(HandleRWObjTriangulationReader* self_) { delete self_; }
-extern "C" OcctResult<HandleRWObjTriangulationReader*> HandleRWObjTriangulationReader_clone(const HandleRWObjTriangulationReader* self_) {
-    try { return {new HandleRWObjTriangulationReader(*self_), nullptr}; }
+extern "C" bool Handle_RWObj_Reader_is_null(const Handle_RWObj_Reader* self_) { return self_->IsNull(); }
+extern "C" void Handle_RWObj_TriangulationReader_destructor(Handle_RWObj_TriangulationReader* self_) { delete self_; }
+extern "C" OcctResult<Handle_RWObj_TriangulationReader*> Handle_RWObj_TriangulationReader_clone(const Handle_RWObj_TriangulationReader* self_) {
+    try { return {new Handle_RWObj_TriangulationReader(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleRWObjTriangulationReader_is_null(const HandleRWObjTriangulationReader* self_) { return self_->IsNull(); }
+extern "C" bool Handle_RWObj_TriangulationReader_is_null(const Handle_RWObj_TriangulationReader* self_) { return self_->IsNull(); }
 
 // ========================
 // DEOBJ_ConfigurationNode wrappers
@@ -132,8 +125,8 @@ extern "C" OcctResult<TCollection_AsciiString*> DEOBJ_ConfigurationNode_get_vend
     try { return {new TCollection_AsciiString(self_->GetVendor()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TColStd_ListOfAsciiString*> DEOBJ_ConfigurationNode_get_extensions(const DEOBJ_ConfigurationNode* self_) {
-    try { return {new TColStd_ListOfAsciiString(self_->GetExtensions()), nullptr}; }
+extern "C" OcctResult<NCollection_List_TCollection_AsciiString*> DEOBJ_ConfigurationNode_get_extensions(const DEOBJ_ConfigurationNode* self_) {
+    try { return {new NCollection_List_TCollection_AsciiString(self_->GetExtensions()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(Standard_Type) const*> DEOBJ_ConfigurationNode_dynamic_type(const DEOBJ_ConfigurationNode* self_) {
@@ -164,28 +157,32 @@ extern "C" OcctResult<const DE_ConfigurationNode*> DEOBJ_ConfigurationNode_as_DE
 extern "C" OcctResult<DE_ConfigurationNode*> DEOBJ_ConfigurationNode_as_DE_ConfigurationNode_mut(DEOBJ_ConfigurationNode* self_) { return {static_cast<DE_ConfigurationNode*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> DEOBJ_ConfigurationNode_as_Standard_Transient(const DEOBJ_ConfigurationNode* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> DEOBJ_ConfigurationNode_as_Standard_Transient_mut(DEOBJ_ConfigurationNode* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleDEOBJConfigurationNode*> DEOBJ_ConfigurationNode_to_handle(DEOBJ_ConfigurationNode* obj) {
-    try { return {new HandleDEOBJConfigurationNode(obj), nullptr}; }
+extern "C" OcctResult<Handle_DEOBJ_ConfigurationNode*> DEOBJ_ConfigurationNode_to_handle(DEOBJ_ConfigurationNode* obj) {
+    try { return {new Handle_DEOBJ_ConfigurationNode(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const DEOBJ_ConfigurationNode*> HandleDEOBJConfigurationNode_get(const HandleDEOBJConfigurationNode* handle) {
+extern "C" OcctResult<const DEOBJ_ConfigurationNode*> Handle_DEOBJ_ConfigurationNode_get(const Handle_DEOBJ_ConfigurationNode* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<DEOBJ_ConfigurationNode*> HandleDEOBJConfigurationNode_get_mut(HandleDEOBJConfigurationNode* handle) {
+extern "C" OcctResult<DEOBJ_ConfigurationNode*> Handle_DEOBJ_ConfigurationNode_get_mut(Handle_DEOBJ_ConfigurationNode* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleDEConfigurationNode*> HandleDEOBJConfigurationNode_to_HandleDEConfigurationNode(const HandleDEOBJConfigurationNode* self_) {
-    try { return {new HandleDEConfigurationNode(*self_), nullptr}; }
+extern "C" OcctResult<Handle_DE_ConfigurationNode*> Handle_DEOBJ_ConfigurationNode_to_Handle_DE_ConfigurationNode(const Handle_DEOBJ_ConfigurationNode* self_) {
+    try { return {new Handle_DE_ConfigurationNode(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleDEOBJConfigurationNode_to_HandleStandardTransient(const HandleDEOBJConfigurationNode* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_DEOBJ_ConfigurationNode_to_Handle_Standard_Transient(const Handle_DEOBJ_ConfigurationNode* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> DEOBJ_ConfigurationNode_inherited_UpdateLoad(DEOBJ_ConfigurationNode* self, bool theToImport, bool theToKeep) {
     try { return {self->UpdateLoad(theToImport, theToKeep), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<bool> DEOBJ_ConfigurationNode_inherited_IsStreamSupported(const DEOBJ_ConfigurationNode* self) {
+    try { return {self->IsStreamSupported(), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> DEOBJ_ConfigurationNode_inherited_CheckExtension(const DEOBJ_ConfigurationNode* self, TCollection_AsciiString const& theExtension) {
@@ -204,8 +201,16 @@ extern "C" const char* DEOBJ_ConfigurationNode_inherited_SetEnabled(DEOBJ_Config
     try { self->SetEnabled(theIsLoaded); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* DEOBJ_ConfigurationNode_inherited_CustomActivation(DEOBJ_ConfigurationNode* self, TColStd_ListOfAsciiString const& arg0) {
+extern "C" const char* DEOBJ_ConfigurationNode_inherited_CustomActivation(DEOBJ_ConfigurationNode* self, NCollection_List_TCollection_AsciiString const& arg0) {
     try { self->CustomActivation(arg0); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* DEOBJ_ConfigurationNode_inherited_Register(const DEOBJ_ConfigurationNode* self, Handle(DE_Wrapper) const& theWrapper) {
+    try { self->Register(theWrapper); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* DEOBJ_ConfigurationNode_inherited_UnRegister(const DEOBJ_ConfigurationNode* self, Handle(DE_Wrapper) const& theWrapper) {
+    try { self->UnRegister(theWrapper); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
 extern "C" OcctResult<bool> DEOBJ_ConfigurationNode_inherited_IsInstance(const DEOBJ_ConfigurationNode* self, Handle(Standard_Type) const& theType) {
@@ -316,24 +321,24 @@ extern "C" OcctResult<const DE_Provider*> DEOBJ_Provider_as_DE_Provider(const DE
 extern "C" OcctResult<DE_Provider*> DEOBJ_Provider_as_DE_Provider_mut(DEOBJ_Provider* self_) { return {static_cast<DE_Provider*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> DEOBJ_Provider_as_Standard_Transient(const DEOBJ_Provider* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> DEOBJ_Provider_as_Standard_Transient_mut(DEOBJ_Provider* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleDEOBJProvider*> DEOBJ_Provider_to_handle(DEOBJ_Provider* obj) {
-    try { return {new HandleDEOBJProvider(obj), nullptr}; }
+extern "C" OcctResult<Handle_DEOBJ_Provider*> DEOBJ_Provider_to_handle(DEOBJ_Provider* obj) {
+    try { return {new Handle_DEOBJ_Provider(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const DEOBJ_Provider*> HandleDEOBJProvider_get(const HandleDEOBJProvider* handle) {
+extern "C" OcctResult<const DEOBJ_Provider*> Handle_DEOBJ_Provider_get(const Handle_DEOBJ_Provider* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<DEOBJ_Provider*> HandleDEOBJProvider_get_mut(HandleDEOBJProvider* handle) {
+extern "C" OcctResult<DEOBJ_Provider*> Handle_DEOBJ_Provider_get_mut(Handle_DEOBJ_Provider* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleDEProvider*> HandleDEOBJProvider_to_HandleDEProvider(const HandleDEOBJProvider* self_) {
-    try { return {new HandleDEProvider(*self_), nullptr}; }
+extern "C" OcctResult<Handle_DE_Provider*> Handle_DEOBJ_Provider_to_Handle_DE_Provider(const Handle_DEOBJ_Provider* self_) {
+    try { return {new Handle_DE_Provider(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleDEOBJProvider_to_HandleStandardTransient(const HandleDEOBJProvider* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_DEOBJ_Provider_to_Handle_Standard_Transient(const Handle_DEOBJ_Provider* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(DE_ConfigurationNode)*> DEOBJ_Provider_inherited_GetNode(const DEOBJ_Provider* self) {
@@ -406,24 +411,24 @@ extern "C" OcctResult<const RWMesh_CafReader*> RWObj_CafReader_as_RWMesh_CafRead
 extern "C" OcctResult<RWMesh_CafReader*> RWObj_CafReader_as_RWMesh_CafReader_mut(RWObj_CafReader* self_) { return {static_cast<RWMesh_CafReader*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> RWObj_CafReader_as_Standard_Transient(const RWObj_CafReader* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> RWObj_CafReader_as_Standard_Transient_mut(RWObj_CafReader* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleRWObjCafReader*> RWObj_CafReader_to_handle(RWObj_CafReader* obj) {
-    try { return {new HandleRWObjCafReader(obj), nullptr}; }
+extern "C" OcctResult<Handle_RWObj_CafReader*> RWObj_CafReader_to_handle(RWObj_CafReader* obj) {
+    try { return {new Handle_RWObj_CafReader(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const RWObj_CafReader*> HandleRWObjCafReader_get(const HandleRWObjCafReader* handle) {
+extern "C" OcctResult<const RWObj_CafReader*> Handle_RWObj_CafReader_get(const Handle_RWObj_CafReader* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<RWObj_CafReader*> HandleRWObjCafReader_get_mut(HandleRWObjCafReader* handle) {
+extern "C" OcctResult<RWObj_CafReader*> Handle_RWObj_CafReader_get_mut(Handle_RWObj_CafReader* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleRWMeshCafReader*> HandleRWObjCafReader_to_HandleRWMeshCafReader(const HandleRWObjCafReader* self_) {
-    try { return {new HandleRWMeshCafReader(*self_), nullptr}; }
+extern "C" OcctResult<Handle_RWMesh_CafReader*> Handle_RWObj_CafReader_to_Handle_RWMesh_CafReader(const Handle_RWObj_CafReader* self_) {
+    try { return {new Handle_RWMesh_CafReader(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleRWObjCafReader_to_HandleStandardTransient(const HandleRWObjCafReader* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_RWObj_CafReader_to_Handle_Standard_Transient(const Handle_RWObj_CafReader* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(TDocStd_Document) const*> RWObj_CafReader_inherited_Document(const RWObj_CafReader* self) {
@@ -518,11 +523,11 @@ extern "C" OcctResult<TopoDS_Shape*> RWObj_CafReader_inherited_SingleShape(const
     try { return {new TopoDS_Shape(self->SingleShape()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Interface_IndexedMapOfAsciiString const*> RWObj_CafReader_inherited_ExternalFiles(const RWObj_CafReader* self) {
+extern "C" OcctResult<NCollection_IndexedMap_TCollection_AsciiString const*> RWObj_CafReader_inherited_ExternalFiles(const RWObj_CafReader* self) {
     try { return {&(self->ExternalFiles()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TColStd_IndexedDataMapOfStringString const*> RWObj_CafReader_inherited_Metadata(const RWObj_CafReader* self) {
+extern "C" OcctResult<NCollection_IndexedDataMap_TCollection_AsciiString_TCollection_AsciiString const*> RWObj_CafReader_inherited_Metadata(const RWObj_CafReader* self) {
     try { return {&(self->Metadata()), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -592,11 +597,11 @@ extern "C" const char* RWObj_CafWriter_set_default_style(RWObj_CafWriter* self_,
     try { self_->SetDefaultStyle(*theStyle); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<bool> RWObj_CafWriter_perform_handletdocstddocument_labelsequence_mapofasciistringptr_indexeddatamapofstringstring_progressrange(RWObj_CafWriter* self_, Handle(TDocStd_Document) const* theDocument, TDF_LabelSequence const* theRootLabels, const TColStd_MapOfAsciiString* theLabelFilter, TColStd_IndexedDataMapOfStringString const* theFileInfo, Message_ProgressRange const* theProgress) {
+extern "C" OcctResult<bool> RWObj_CafWriter_perform_handletdocstddocument_seq_label_map_asciistringptr_idmap_asciistring_asciistring_progressrange(RWObj_CafWriter* self_, Handle(TDocStd_Document) const* theDocument, NCollection_Sequence_TDF_Label const* theRootLabels, const NCollection_Map_TCollection_AsciiString* theLabelFilter, NCollection_IndexedDataMap_TCollection_AsciiString_TCollection_AsciiString const* theFileInfo, Message_ProgressRange const* theProgress) {
     try { return {self_->Perform(*theDocument, *theRootLabels, theLabelFilter, *theFileInfo, *theProgress), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<bool> RWObj_CafWriter_perform_handletdocstddocument_indexeddatamapofstringstring_progressrange(RWObj_CafWriter* self_, Handle(TDocStd_Document) const* theDocument, TColStd_IndexedDataMapOfStringString const* theFileInfo, Message_ProgressRange const* theProgress) {
+extern "C" OcctResult<bool> RWObj_CafWriter_perform_handletdocstddocument_idmap_asciistring_asciistring_progressrange(RWObj_CafWriter* self_, Handle(TDocStd_Document) const* theDocument, NCollection_IndexedDataMap_TCollection_AsciiString_TCollection_AsciiString const* theFileInfo, Message_ProgressRange const* theProgress) {
     try { return {self_->Perform(*theDocument, *theFileInfo, *theProgress), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -610,20 +615,20 @@ extern "C" OcctResult<Handle(Standard_Type) const*> RWObj_CafWriter_get_type_des
 }
 extern "C" OcctResult<const Standard_Transient*> RWObj_CafWriter_as_Standard_Transient(const RWObj_CafWriter* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> RWObj_CafWriter_as_Standard_Transient_mut(RWObj_CafWriter* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleRWObjCafWriter*> RWObj_CafWriter_to_handle(RWObj_CafWriter* obj) {
-    try { return {new HandleRWObjCafWriter(obj), nullptr}; }
+extern "C" OcctResult<Handle_RWObj_CafWriter*> RWObj_CafWriter_to_handle(RWObj_CafWriter* obj) {
+    try { return {new Handle_RWObj_CafWriter(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const RWObj_CafWriter*> HandleRWObjCafWriter_get(const HandleRWObjCafWriter* handle) {
+extern "C" OcctResult<const RWObj_CafWriter*> Handle_RWObj_CafWriter_get(const Handle_RWObj_CafWriter* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<RWObj_CafWriter*> HandleRWObjCafWriter_get_mut(HandleRWObjCafWriter* handle) {
+extern "C" OcctResult<RWObj_CafWriter*> Handle_RWObj_CafWriter_get_mut(Handle_RWObj_CafWriter* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleRWObjCafWriter_to_HandleStandardTransient(const HandleRWObjCafWriter* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_RWObj_CafWriter_to_Handle_Standard_Transient(const Handle_RWObj_CafWriter* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> RWObj_CafWriter_inherited_IsInstance(const RWObj_CafWriter* self, Handle(Standard_Type) const& theType) {
@@ -670,7 +675,7 @@ extern "C" void RWObj_Material_destructor(RWObj_Material* self_) { delete self_;
 // RWObj_MtlReader wrappers
 // ========================
 
-extern "C" OcctResult<RWObj_MtlReader*> RWObj_MtlReader_ctor_datamap_tcollection_asciistring_rwobj_material(NCollection_DataMap_TCollection_AsciiString_RWObj_Material* theMaterials) {
+extern "C" OcctResult<RWObj_MtlReader*> RWObj_MtlReader_ctor_dmap_asciistring_material(NCollection_DataMap_TCollection_AsciiString_RWObj_Material* theMaterials) {
     try { return {new RWObj_MtlReader(*theMaterials), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -712,24 +717,24 @@ extern "C" OcctResult<const RWMesh_MaterialMap*> RWObj_ObjMaterialMap_as_RWMesh_
 extern "C" OcctResult<RWMesh_MaterialMap*> RWObj_ObjMaterialMap_as_RWMesh_MaterialMap_mut(RWObj_ObjMaterialMap* self_) { return {static_cast<RWMesh_MaterialMap*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> RWObj_ObjMaterialMap_as_Standard_Transient(const RWObj_ObjMaterialMap* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> RWObj_ObjMaterialMap_as_Standard_Transient_mut(RWObj_ObjMaterialMap* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleRWObjObjMaterialMap*> RWObj_ObjMaterialMap_to_handle(RWObj_ObjMaterialMap* obj) {
-    try { return {new HandleRWObjObjMaterialMap(obj), nullptr}; }
+extern "C" OcctResult<Handle_RWObj_ObjMaterialMap*> RWObj_ObjMaterialMap_to_handle(RWObj_ObjMaterialMap* obj) {
+    try { return {new Handle_RWObj_ObjMaterialMap(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const RWObj_ObjMaterialMap*> HandleRWObjObjMaterialMap_get(const HandleRWObjObjMaterialMap* handle) {
+extern "C" OcctResult<const RWObj_ObjMaterialMap*> Handle_RWObj_ObjMaterialMap_get(const Handle_RWObj_ObjMaterialMap* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<RWObj_ObjMaterialMap*> HandleRWObjObjMaterialMap_get_mut(HandleRWObjObjMaterialMap* handle) {
+extern "C" OcctResult<RWObj_ObjMaterialMap*> Handle_RWObj_ObjMaterialMap_get_mut(Handle_RWObj_ObjMaterialMap* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleRWMeshMaterialMap*> HandleRWObjObjMaterialMap_to_HandleRWMeshMaterialMap(const HandleRWObjObjMaterialMap* self_) {
-    try { return {new HandleRWMeshMaterialMap(*self_), nullptr}; }
+extern "C" OcctResult<Handle_RWMesh_MaterialMap*> Handle_RWObj_ObjMaterialMap_to_Handle_RWMesh_MaterialMap(const Handle_RWObj_ObjMaterialMap* self_) {
+    try { return {new Handle_RWMesh_MaterialMap(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleRWObjObjMaterialMap_to_HandleStandardTransient(const HandleRWObjObjMaterialMap* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_RWObj_ObjMaterialMap_to_Handle_Standard_Transient(const Handle_RWObj_ObjMaterialMap* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<XCAFPrs_Style const*> RWObj_ObjMaterialMap_inherited_DefaultStyle(const RWObj_ObjMaterialMap* self) {
@@ -818,7 +823,7 @@ extern "C" const char* RWObj_ObjWriterContext_set_tex_coords(RWObj_ObjWriterCont
     try { self_->SetTexCoords(theHasTexCoords); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<bool> RWObj_ObjWriterContext_write_header(RWObj_ObjWriterContext* self_, int32_t theNbNodes, int32_t theNbElems, TCollection_AsciiString const* theMatLib, TColStd_IndexedDataMapOfStringString const* theFileInfo) {
+extern "C" OcctResult<bool> RWObj_ObjWriterContext_write_header(RWObj_ObjWriterContext* self_, int32_t theNbNodes, int32_t theNbElems, TCollection_AsciiString const* theMatLib, NCollection_IndexedDataMap_TCollection_AsciiString_TCollection_AsciiString const* theFileInfo) {
     try { return {self_->WriteHeader(theNbNodes, theNbElems, *theMatLib, *theFileInfo), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -830,23 +835,23 @@ extern "C" OcctResult<bool> RWObj_ObjWriterContext_write_active_material(RWObj_O
     try { return {self_->WriteActiveMaterial(*theMaterial), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<bool> RWObj_ObjWriterContext_write_triangle(RWObj_ObjWriterContext* self_, Graphic3d_Vec3i const* theTri) {
+extern "C" OcctResult<bool> RWObj_ObjWriterContext_write_triangle(RWObj_ObjWriterContext* self_, BVH_Vec3i const* theTri) {
     try { return {self_->WriteTriangle(*theTri), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<bool> RWObj_ObjWriterContext_write_quad(RWObj_ObjWriterContext* self_, Graphic3d_Vec4i const* theQuad) {
+extern "C" OcctResult<bool> RWObj_ObjWriterContext_write_quad(RWObj_ObjWriterContext* self_, BVH_Vec4i const* theQuad) {
     try { return {self_->WriteQuad(*theQuad), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<bool> RWObj_ObjWriterContext_write_vertex(RWObj_ObjWriterContext* self_, Graphic3d_Vec3 const* theValue) {
+extern "C" OcctResult<bool> RWObj_ObjWriterContext_write_vertex(RWObj_ObjWriterContext* self_, BVH_Vec3f const* theValue) {
     try { return {self_->WriteVertex(*theValue), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<bool> RWObj_ObjWriterContext_write_normal(RWObj_ObjWriterContext* self_, Graphic3d_Vec3 const* theValue) {
+extern "C" OcctResult<bool> RWObj_ObjWriterContext_write_normal(RWObj_ObjWriterContext* self_, BVH_Vec3f const* theValue) {
     try { return {self_->WriteNormal(*theValue), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<bool> RWObj_ObjWriterContext_write_tex_coord(RWObj_ObjWriterContext* self_, Graphic3d_Vec2 const* theValue) {
+extern "C" OcctResult<bool> RWObj_ObjWriterContext_write_tex_coord(RWObj_ObjWriterContext* self_, BVH_Vec2f const* theValue) {
     try { return {self_->WriteTexCoord(*theValue), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -888,7 +893,7 @@ extern "C" OcctResult<TCollection_AsciiString const*> RWObj_Reader_file_comments
     try { return {&(self_->FileComments()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Interface_IndexedMapOfAsciiString const*> RWObj_Reader_external_files(const RWObj_Reader* self_) {
+extern "C" OcctResult<NCollection_IndexedMap_TCollection_AsciiString const*> RWObj_Reader_external_files(const RWObj_Reader* self_) {
     try { return {&(self_->ExternalFiles()), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -934,23 +939,23 @@ extern "C" OcctResult<Handle(Standard_Type) const*> RWObj_Reader_get_type_descri
 }
 extern "C" OcctResult<const Standard_Transient*> RWObj_Reader_as_Standard_Transient(const RWObj_Reader* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> RWObj_Reader_as_Standard_Transient_mut(RWObj_Reader* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<const RWObj_Reader*> HandleRWObjReader_get(const HandleRWObjReader* handle) {
+extern "C" OcctResult<const RWObj_Reader*> Handle_RWObj_Reader_get(const Handle_RWObj_Reader* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<RWObj_Reader*> HandleRWObjReader_get_mut(HandleRWObjReader* handle) {
+extern "C" OcctResult<RWObj_Reader*> Handle_RWObj_Reader_get_mut(Handle_RWObj_Reader* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleRWObjReader_to_HandleStandardTransient(const HandleRWObjReader* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_RWObj_Reader_to_Handle_Standard_Transient(const Handle_RWObj_Reader* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleRWObjTriangulationReader*> HandleRWObjReader_downcast_to_HandleRWObjTriangulationReader(const HandleRWObjReader* self_) {
+extern "C" OcctResult<Handle_RWObj_TriangulationReader*> Handle_RWObj_Reader_downcast_to_Handle_RWObj_TriangulationReader(const Handle_RWObj_Reader* self_) {
     try {
     opencascade::handle<RWObj_TriangulationReader> result = opencascade::handle<RWObj_TriangulationReader>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleRWObjTriangulationReader(result), nullptr};
+    return {new Handle_RWObj_TriangulationReader(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
@@ -1044,24 +1049,24 @@ extern "C" OcctResult<const RWObj_Reader*> RWObj_TriangulationReader_as_RWObj_Re
 extern "C" OcctResult<RWObj_Reader*> RWObj_TriangulationReader_as_RWObj_Reader_mut(RWObj_TriangulationReader* self_) { return {static_cast<RWObj_Reader*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> RWObj_TriangulationReader_as_Standard_Transient(const RWObj_TriangulationReader* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> RWObj_TriangulationReader_as_Standard_Transient_mut(RWObj_TriangulationReader* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleRWObjTriangulationReader*> RWObj_TriangulationReader_to_handle(RWObj_TriangulationReader* obj) {
-    try { return {new HandleRWObjTriangulationReader(obj), nullptr}; }
+extern "C" OcctResult<Handle_RWObj_TriangulationReader*> RWObj_TriangulationReader_to_handle(RWObj_TriangulationReader* obj) {
+    try { return {new Handle_RWObj_TriangulationReader(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const RWObj_TriangulationReader*> HandleRWObjTriangulationReader_get(const HandleRWObjTriangulationReader* handle) {
+extern "C" OcctResult<const RWObj_TriangulationReader*> Handle_RWObj_TriangulationReader_get(const Handle_RWObj_TriangulationReader* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<RWObj_TriangulationReader*> HandleRWObjTriangulationReader_get_mut(HandleRWObjTriangulationReader* handle) {
+extern "C" OcctResult<RWObj_TriangulationReader*> Handle_RWObj_TriangulationReader_get_mut(Handle_RWObj_TriangulationReader* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleRWObjReader*> HandleRWObjTriangulationReader_to_HandleRWObjReader(const HandleRWObjTriangulationReader* self_) {
-    try { return {new HandleRWObjReader(*self_), nullptr}; }
+extern "C" OcctResult<Handle_RWObj_Reader*> Handle_RWObj_TriangulationReader_to_Handle_RWObj_Reader(const Handle_RWObj_TriangulationReader* self_) {
+    try { return {new Handle_RWObj_Reader(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleRWObjTriangulationReader_to_HandleStandardTransient(const HandleRWObjTriangulationReader* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_RWObj_TriangulationReader_to_Handle_Standard_Transient(const Handle_RWObj_TriangulationReader* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> RWObj_TriangulationReader_inherited_Read(RWObj_TriangulationReader* self, TCollection_AsciiString const& theFile, Message_ProgressRange const& theProgress) {
@@ -1076,7 +1081,7 @@ extern "C" OcctResult<TCollection_AsciiString const*> RWObj_TriangulationReader_
     try { return {&(self->FileComments()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Interface_IndexedMapOfAsciiString const*> RWObj_TriangulationReader_inherited_ExternalFiles(const RWObj_TriangulationReader* self) {
+extern "C" OcctResult<NCollection_IndexedMap_TCollection_AsciiString const*> RWObj_TriangulationReader_inherited_ExternalFiles(const RWObj_TriangulationReader* self) {
     try { return {&(self->ExternalFiles()), nullptr}; }
     OCCT_CATCH_RETURN
 }

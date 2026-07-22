@@ -48,7 +48,7 @@ impl TryFrom<i32> for StatusDeflection {
 /// This class implements an algorithm to determine the
 /// intersection between 2 parametrized surfaces, marching from
 /// a starting point. The intersection line
-/// starts and ends on the natural surface's  boundaries .
+/// starts and ends on the natural surface's boundaries.
 pub use crate::ffi_types::IntWalk_PWalking as PWalking;
 
 unsafe impl crate::CppDeletable for PWalking {
@@ -77,8 +77,8 @@ impl PWalking {
     /// stops at the middle of a domain, one stops at the tangent point.
     /// Epsilon is SquareTolerance of points confusion.
     pub fn new_handleadaptor3dsurface2_real4(
-        Caro1: &crate::ffi_types::HandleAdaptor3dSurface,
-        Caro2: &crate::ffi_types::HandleAdaptor3dSurface,
+        Caro1: &crate::ffi_types::Handle_Adaptor3d_Surface,
+        Caro2: &crate::ffi_types::Handle_Adaptor3d_Surface,
         TolTangency: f64,
         Epsilon: f64,
         Deflection: f64,
@@ -113,8 +113,8 @@ impl PWalking {
     /// stops at the middle of a domain, one stops at the tangent point.
     /// Epsilon is SquareTolerance of points confusion.
     pub fn new_handleadaptor3dsurface2_real8(
-        Caro1: &crate::ffi_types::HandleAdaptor3dSurface,
-        Caro2: &crate::ffi_types::HandleAdaptor3dSurface,
+        Caro1: &crate::ffi_types::Handle_Adaptor3d_Surface,
+        Caro2: &crate::ffi_types::Handle_Adaptor3d_Surface,
         TolTangency: f64,
         Epsilon: f64,
         Deflection: f64,
@@ -144,9 +144,9 @@ impl PWalking {
 
     /// **Source:** `IntWalk_PWalking.hxx`:87 - `IntWalk_PWalking::Perform()`
     /// calculate the line of intersection
-    pub fn perform_array1ofreal(&mut self, ParDep: &crate::ffi_types::TColStd_Array1OfReal) {
+    pub fn perform_arr1_double(&mut self, ParDep: &crate::ffi_types::NCollection_Array1_double) {
         crate::check_void_result(unsafe {
-            crate::ffi_extern_TKGeomAlgo::IntWalk_PWalking_perform_array1ofreal(
+            crate::ffi_extern_TKGeomAlgo::IntWalk_PWalking_perform_arr1_double(
                 self as *mut Self,
                 ParDep,
             )
@@ -156,12 +156,12 @@ impl PWalking {
     /// **Source:** `IntWalk_PWalking.hxx`:94 - `IntWalk_PWalking::Perform()`
     /// calculate the line of intersection. The regulation
     /// of steps is done using min and max values on u and
-    /// v.  (if this data is not presented as in the
+    /// v. (if this data is not presented as in the
     /// previous method, the initial steps are calculated
     /// starting from min and max uv of faces).
-    pub fn perform_array1ofreal_real8(
+    pub fn perform_arr1_double_real8(
         &mut self,
-        ParDep: &crate::ffi_types::TColStd_Array1OfReal,
+        ParDep: &crate::ffi_types::NCollection_Array1_double,
         u1min: f64,
         v1min: f64,
         u2min: f64,
@@ -172,7 +172,7 @@ impl PWalking {
         v2max: f64,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi_extern_TKGeomAlgo::IntWalk_PWalking_perform_array1ofreal_real8(
+            crate::ffi_extern_TKGeomAlgo::IntWalk_PWalking_perform_arr1_double_real8(
                 self as *mut Self,
                 ParDep,
                 u1min,
@@ -191,7 +191,7 @@ impl PWalking {
     /// calculate the first point of a line of intersection
     pub fn perform_first_point(
         &mut self,
-        ParDep: &crate::ffi_types::TColStd_Array1OfReal,
+        ParDep: &crate::ffi_types::NCollection_Array1_double,
         FirstPoint: &mut crate::int_surf::PntOn2S,
     ) -> bool {
         crate::check_result(unsafe {
@@ -234,7 +234,7 @@ impl PWalking {
     }
 
     /// **Source:** `IntWalk_PWalking.hxx`:120 - `IntWalk_PWalking::Line()`
-    pub fn line(&self) -> &crate::ffi_types::HandleIntSurfLineOn2S {
+    pub fn line(&self) -> &crate::ffi_types::Handle_IntSurf_LineOn2S {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKGeomAlgo::IntWalk_PWalking_line(
                 self as *const Self,
@@ -307,7 +307,7 @@ impl PWalking {
     pub fn test_arret(
         &mut self,
         DejaReparti: bool,
-        Param: &mut crate::ffi_types::TColStd_Array1OfReal,
+        Param: &mut crate::ffi_types::NCollection_Array1_double,
         ChoixIso: &mut crate::int_imp::ConstIsoparametric,
     ) -> bool {
         let mut ChoixIso_i32_: i32 = (*ChoixIso).into();
@@ -367,8 +367,8 @@ impl PWalking {
     /// **Source:** `IntWalk_PWalking.hxx`:174 - `IntWalk_PWalking::PutToBoundary()`
     pub fn put_to_boundary(
         &mut self,
-        theASurf1: &crate::ffi_types::HandleAdaptor3dSurface,
-        theASurf2: &crate::ffi_types::HandleAdaptor3dSurface,
+        theASurf1: &crate::ffi_types::Handle_Adaptor3d_Surface,
+        theASurf2: &crate::ffi_types::Handle_Adaptor3d_Surface,
     ) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::IntWalk_PWalking_put_to_boundary(
@@ -382,8 +382,8 @@ impl PWalking {
     /// **Source:** `IntWalk_PWalking.hxx`:177 - `IntWalk_PWalking::SeekAdditionalPoints()`
     pub fn seek_additional_points(
         &mut self,
-        theASurf1: &crate::ffi_types::HandleAdaptor3dSurface,
-        theASurf2: &crate::ffi_types::HandleAdaptor3dSurface,
+        theASurf1: &crate::ffi_types::Handle_Adaptor3d_Surface,
+        theASurf2: &crate::ffi_types::Handle_Adaptor3d_Surface,
         theMinNbPoints: i32,
     ) -> bool {
         crate::check_result(unsafe {
@@ -422,8 +422,8 @@ unsafe impl crate::CppDeletable for TheFunctionOfTheInt2S {
 impl TheFunctionOfTheInt2S {
     /// **Source:** `IntWalk_TheFunctionOfTheInt2S.hxx`:38 - `IntWalk_TheFunctionOfTheInt2S::IntWalk_TheFunctionOfTheInt2S()`
     pub fn new_handleadaptor3dsurface2(
-        S1: &crate::ffi_types::HandleAdaptor3dSurface,
-        S2: &crate::ffi_types::HandleAdaptor3dSurface,
+        S1: &crate::ffi_types::Handle_Adaptor3d_Surface,
+        S2: &crate::ffi_types::Handle_Adaptor3d_Surface,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomAlgo::IntWalk_TheFunctionOfTheInt2S_ctor_handleadaptor3dsurface2(S1, S2)))
@@ -499,7 +499,7 @@ impl TheFunctionOfTheInt2S {
     pub fn compute_parameters(
         &mut self,
         ChoixIso: crate::int_imp::ConstIsoparametric,
-        Param: &crate::ffi_types::TColStd_Array1OfReal,
+        Param: &crate::ffi_types::NCollection_Array1_double,
         UVap: &mut crate::ffi_types::math_Vector,
         BornInf: &mut crate::ffi_types::math_Vector,
         BornSup: &mut crate::ffi_types::math_Vector,
@@ -541,7 +541,7 @@ impl TheFunctionOfTheInt2S {
     pub fn is_tangent(
         &mut self,
         UVap: &crate::ffi_types::math_Vector,
-        Param: &mut crate::ffi_types::TColStd_Array1OfReal,
+        Param: &mut crate::ffi_types::NCollection_Array1_double,
         BestChoix: &mut crate::int_imp::ConstIsoparametric,
     ) -> bool {
         let mut BestChoix_i32_: i32 = (*BestChoix).into();
@@ -591,7 +591,7 @@ impl TheFunctionOfTheInt2S {
     }
 
     /// **Source:** `IntWalk_TheFunctionOfTheInt2S.hxx`:73 - `IntWalk_TheFunctionOfTheInt2S::AuxillarSurface1()`
-    pub fn auxillar_surface1(&self) -> &crate::ffi_types::HandleAdaptor3dSurface {
+    pub fn auxillar_surface1(&self) -> &crate::ffi_types::Handle_Adaptor3d_Surface {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKGeomAlgo::IntWalk_TheFunctionOfTheInt2S_auxillar_surface1(
@@ -602,7 +602,7 @@ impl TheFunctionOfTheInt2S {
     }
 
     /// **Source:** `IntWalk_TheFunctionOfTheInt2S.hxx`:75 - `IntWalk_TheFunctionOfTheInt2S::AuxillarSurface2()`
-    pub fn auxillar_surface2(&self) -> &crate::ffi_types::HandleAdaptor3dSurface {
+    pub fn auxillar_surface2(&self) -> &crate::ffi_types::Handle_Adaptor3d_Surface {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKGeomAlgo::IntWalk_TheFunctionOfTheInt2S_auxillar_surface2(
@@ -680,14 +680,14 @@ unsafe impl crate::CppDeletable for TheInt2S {
 impl TheInt2S {
     /// **Source:** `IntWalk_TheInt2S.hxx`:38 - `IntWalk_TheInt2S::IntWalk_TheInt2S()`
     /// compute the solution point with the close point
-    pub fn new_array1ofreal_handleadaptor3dsurface2_real(
-        Param: &crate::ffi_types::TColStd_Array1OfReal,
-        S1: &crate::ffi_types::HandleAdaptor3dSurface,
-        S2: &crate::ffi_types::HandleAdaptor3dSurface,
+    pub fn new_arr1_double_handleadaptor3dsurface2_real(
+        Param: &crate::ffi_types::NCollection_Array1_double,
+        S1: &crate::ffi_types::Handle_Adaptor3d_Surface,
+        S2: &crate::ffi_types::Handle_Adaptor3d_Surface,
         TolTangency: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomAlgo::IntWalk_TheInt2S_ctor_array1ofreal_handleadaptor3dsurface2_real(Param, S1, S2, TolTangency)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomAlgo::IntWalk_TheInt2S_ctor_arr1_double_handleadaptor3dsurface2_real(Param, S1, S2, TolTangency)))
         }
     }
 
@@ -703,8 +703,8 @@ impl TheInt2S {
     /// inter.Perform(Param,rsnld);
     /// }
     pub fn new_handleadaptor3dsurface2_real(
-        S1: &crate::ffi_types::HandleAdaptor3dSurface,
-        S2: &crate::ffi_types::HandleAdaptor3dSurface,
+        S1: &crate::ffi_types::Handle_Adaptor3d_Surface,
+        S2: &crate::ffi_types::Handle_Adaptor3d_Surface,
         TolTangency: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -724,13 +724,13 @@ impl TheInt2S {
     /// point (the solution point is found with the close point
     /// to intersect the isoparametric with the other patch;
     /// the choice of the isoparametic is calculated)
-    pub fn perform_array1ofreal_functionsetroot(
+    pub fn perform_arr1_double_functionsetroot(
         &mut self,
-        Param: &crate::ffi_types::TColStd_Array1OfReal,
+        Param: &crate::ffi_types::NCollection_Array1_double,
         Rsnld: &mut crate::math::FunctionSetRoot,
     ) -> crate::int_imp::ConstIsoparametric {
         crate::int_imp::ConstIsoparametric::try_from(crate::check_result(unsafe {
-            crate::ffi_extern_TKGeomAlgo::IntWalk_TheInt2S_perform_array1ofreal_functionsetroot(
+            crate::ffi_extern_TKGeomAlgo::IntWalk_TheInt2S_perform_arr1_double_functionsetroot(
                 self as *mut Self,
                 Param,
                 Rsnld,
@@ -745,13 +745,13 @@ impl TheInt2S {
     /// point (the solution point is found with the close point
     /// to intersect the isoparametric with the other patch;
     /// the choice of the isoparametic is given by ChoixIso)
-    pub fn perform_array1ofreal_functionsetroot_constisoparametric(
+    pub fn perform_arr1_double_functionsetroot_constisoparametric(
         &mut self,
-        Param: &crate::ffi_types::TColStd_Array1OfReal,
+        Param: &crate::ffi_types::NCollection_Array1_double,
         Rsnld: &mut crate::math::FunctionSetRoot,
         ChoixIso: crate::int_imp::ConstIsoparametric,
     ) -> crate::int_imp::ConstIsoparametric {
-        crate::int_imp::ConstIsoparametric::try_from(crate::check_result(unsafe { crate::ffi_extern_TKGeomAlgo::IntWalk_TheInt2S_perform_array1ofreal_functionsetroot_constisoparametric(self as *mut Self, Param, Rsnld, ChoixIso.into()) })).unwrap()
+        crate::int_imp::ConstIsoparametric::try_from(crate::check_result(unsafe { crate::ffi_extern_TKGeomAlgo::IntWalk_TheInt2S_perform_arr1_double_functionsetroot_constisoparametric(self as *mut Self, Param, Rsnld, ChoixIso.into()) })).unwrap()
     }
 
     /// **Source:** `IntWalk_TheInt2S.hxx`:75 - `IntWalk_TheInt2S::IsDone()`
@@ -848,7 +848,7 @@ impl TheInt2S {
 // From IntWalk_VectorOfWalkingData.hxx
 // ========================
 
-/// **Source:** `IntWalk_VectorOfWalkingData.hxx`:24 - `IntWalk_WalkingData`
+/// **Source:** `IntWalk_VectorOfWalkingData.hxx`:23 - `IntWalk_WalkingData`
 pub use crate::ffi_types::IntWalk_WalkingData as WalkingData;
 
 unsafe impl crate::CppDeletable for WalkingData {

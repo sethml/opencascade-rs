@@ -13,7 +13,10 @@ use crate::module_graph::module_to_rust_name;
 /// Rust identifier.  e.g. `ShapePersistent_BRep::CurveRepresentation`
 /// → `HandleShapePersistentBRepCurveRepresentation`.
 pub fn handle_type_name(cpp_name: &str) -> String {
-    format!("Handle{}", cpp_name.replace("::", "").replace('_', ""))
+    // Underscore-preserving handle names (e.g. Handle_Geom_Curve,
+    // Handle_NCollection_HArray1_gp_Pnt) — this mirrors OCCT's own classic
+    // `Handle_X` typedef spelling and keeps the underlying class name readable.
+    format!("Handle_{}", cpp_name.replace("::", "_"))
 }
 
 /// Lowercase variant used for parameter names.

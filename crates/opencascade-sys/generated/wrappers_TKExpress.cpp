@@ -9,8 +9,6 @@
 #include <ExprIntrp_GenFct.hxx>
 #include <ExprIntrp_GenRel.hxx>
 #include <ExprIntrp_Generator.hxx>
-#include <ExprIntrp_SequenceOfNamedExpression.hxx>
-#include <ExprIntrp_SequenceOfNamedFunction.hxx>
 #include <ExprIntrp_SyntaxError.hxx>
 #include <Expr_Absolute.hxx>
 #include <Expr_ArcCosine.hxx>
@@ -19,8 +17,6 @@
 #include <Expr_ArgCosh.hxx>
 #include <Expr_ArgSinh.hxx>
 #include <Expr_ArgTanh.hxx>
-#include <Expr_Array1OfGeneralExpression.hxx>
-#include <Expr_Array1OfNamedUnknown.hxx>
 #include <Expr_BinaryExpression.hxx>
 #include <Expr_BinaryFunction.hxx>
 #include <Expr_Cosh.hxx>
@@ -57,7 +53,6 @@
 #include <Expr_Product.hxx>
 #include <Expr_RUIterator.hxx>
 #include <Expr_RelationIterator.hxx>
-#include <Expr_SequenceOfGeneralExpression.hxx>
 #include <Expr_Sign.hxx>
 #include <Expr_Sine.hxx>
 #include <Expr_SingleRelation.hxx>
@@ -72,432 +67,379 @@
 #include <Expr_UnaryFunction.hxx>
 #include <Expr_UnaryMinus.hxx>
 #include <Expr_UnknownIterator.hxx>
-#include <Standard_Failure.hxx>
 #include <Standard_Handle.hxx>
 #include <Standard_OStream.hxx>
-#include <Standard_SStream.hxx>
 #include <Standard_Type.hxx>
-#include <TColStd_Array1OfReal.hxx>
 
 // Handle type aliases
-typedef opencascade::handle<ExprIntrp_GenExp> HandleExprIntrpGenExp;
-typedef opencascade::handle<ExprIntrp_GenFct> HandleExprIntrpGenFct;
-typedef opencascade::handle<ExprIntrp_GenRel> HandleExprIntrpGenRel;
-typedef opencascade::handle<ExprIntrp_Generator> HandleExprIntrpGenerator;
-typedef opencascade::handle<ExprIntrp_SyntaxError> HandleExprIntrpSyntaxError;
-typedef opencascade::handle<Expr_Absolute> HandleExprAbsolute;
-typedef opencascade::handle<Expr_ArcCosine> HandleExprArcCosine;
-typedef opencascade::handle<Expr_ArcSine> HandleExprArcSine;
-typedef opencascade::handle<Expr_ArcTangent> HandleExprArcTangent;
-typedef opencascade::handle<Expr_ArgCosh> HandleExprArgCosh;
-typedef opencascade::handle<Expr_ArgSinh> HandleExprArgSinh;
-typedef opencascade::handle<Expr_ArgTanh> HandleExprArgTanh;
-typedef opencascade::handle<Expr_BinaryExpression> HandleExprBinaryExpression;
-typedef opencascade::handle<Expr_BinaryFunction> HandleExprBinaryFunction;
-typedef opencascade::handle<Expr_Cosh> HandleExprCosh;
-typedef opencascade::handle<Expr_Cosine> HandleExprCosine;
-typedef opencascade::handle<Expr_Difference> HandleExprDifference;
-typedef opencascade::handle<Expr_Different> HandleExprDifferent;
-typedef opencascade::handle<Expr_Division> HandleExprDivision;
-typedef opencascade::handle<Expr_Equal> HandleExprEqual;
-typedef opencascade::handle<Expr_Exponential> HandleExprExponential;
-typedef opencascade::handle<Expr_Exponentiate> HandleExprExponentiate;
-typedef opencascade::handle<Expr_ExprFailure> HandleExprExprFailure;
-typedef opencascade::handle<Expr_FunctionDerivative> HandleExprFunctionDerivative;
-typedef opencascade::handle<Expr_GeneralExpression> HandleExprGeneralExpression;
-typedef opencascade::handle<Expr_GeneralFunction> HandleExprGeneralFunction;
-typedef opencascade::handle<Expr_GeneralRelation> HandleExprGeneralRelation;
-typedef opencascade::handle<Expr_GreaterThan> HandleExprGreaterThan;
-typedef opencascade::handle<Expr_GreaterThanOrEqual> HandleExprGreaterThanOrEqual;
-typedef opencascade::handle<Expr_InvalidAssignment> HandleExprInvalidAssignment;
-typedef opencascade::handle<Expr_InvalidFunction> HandleExprInvalidFunction;
-typedef opencascade::handle<Expr_InvalidOperand> HandleExprInvalidOperand;
-typedef opencascade::handle<Expr_LessThan> HandleExprLessThan;
-typedef opencascade::handle<Expr_LessThanOrEqual> HandleExprLessThanOrEqual;
-typedef opencascade::handle<Expr_LogOf10> HandleExprLogOf10;
-typedef opencascade::handle<Expr_LogOfe> HandleExprLogOfe;
-typedef opencascade::handle<Expr_NamedConstant> HandleExprNamedConstant;
-typedef opencascade::handle<Expr_NamedExpression> HandleExprNamedExpression;
-typedef opencascade::handle<Expr_NamedFunction> HandleExprNamedFunction;
-typedef opencascade::handle<Expr_NamedUnknown> HandleExprNamedUnknown;
-typedef opencascade::handle<Expr_NotAssigned> HandleExprNotAssigned;
-typedef opencascade::handle<Expr_NotEvaluable> HandleExprNotEvaluable;
-typedef opencascade::handle<Expr_NumericValue> HandleExprNumericValue;
-typedef opencascade::handle<Expr_PolyExpression> HandleExprPolyExpression;
-typedef opencascade::handle<Expr_PolyFunction> HandleExprPolyFunction;
-typedef opencascade::handle<Expr_Product> HandleExprProduct;
-typedef opencascade::handle<Expr_Sign> HandleExprSign;
-typedef opencascade::handle<Expr_Sine> HandleExprSine;
-typedef opencascade::handle<Expr_SingleRelation> HandleExprSingleRelation;
-typedef opencascade::handle<Expr_Sinh> HandleExprSinh;
-typedef opencascade::handle<Expr_Square> HandleExprSquare;
-typedef opencascade::handle<Expr_SquareRoot> HandleExprSquareRoot;
-typedef opencascade::handle<Expr_Sum> HandleExprSum;
-typedef opencascade::handle<Expr_SystemRelation> HandleExprSystemRelation;
-typedef opencascade::handle<Expr_Tangent> HandleExprTangent;
-typedef opencascade::handle<Expr_Tanh> HandleExprTanh;
-typedef opencascade::handle<Expr_UnaryExpression> HandleExprUnaryExpression;
-typedef opencascade::handle<Expr_UnaryFunction> HandleExprUnaryFunction;
-typedef opencascade::handle<Expr_UnaryMinus> HandleExprUnaryMinus;
-typedef opencascade::handle<Standard_Failure> HandleStandardFailure;
-typedef opencascade::handle<Standard_Transient> HandleStandardTransient;
-typedef opencascade::handle<Standard_Type> HandleStandardType;
+typedef opencascade::handle<ExprIntrp_GenExp> Handle_ExprIntrp_GenExp;
+typedef opencascade::handle<ExprIntrp_GenFct> Handle_ExprIntrp_GenFct;
+typedef opencascade::handle<ExprIntrp_GenRel> Handle_ExprIntrp_GenRel;
+typedef opencascade::handle<ExprIntrp_Generator> Handle_ExprIntrp_Generator;
+typedef opencascade::handle<Expr_Absolute> Handle_Expr_Absolute;
+typedef opencascade::handle<Expr_ArcCosine> Handle_Expr_ArcCosine;
+typedef opencascade::handle<Expr_ArcSine> Handle_Expr_ArcSine;
+typedef opencascade::handle<Expr_ArcTangent> Handle_Expr_ArcTangent;
+typedef opencascade::handle<Expr_ArgCosh> Handle_Expr_ArgCosh;
+typedef opencascade::handle<Expr_ArgSinh> Handle_Expr_ArgSinh;
+typedef opencascade::handle<Expr_ArgTanh> Handle_Expr_ArgTanh;
+typedef opencascade::handle<Expr_BinaryExpression> Handle_Expr_BinaryExpression;
+typedef opencascade::handle<Expr_BinaryFunction> Handle_Expr_BinaryFunction;
+typedef opencascade::handle<Expr_Cosh> Handle_Expr_Cosh;
+typedef opencascade::handle<Expr_Cosine> Handle_Expr_Cosine;
+typedef opencascade::handle<Expr_Difference> Handle_Expr_Difference;
+typedef opencascade::handle<Expr_Different> Handle_Expr_Different;
+typedef opencascade::handle<Expr_Division> Handle_Expr_Division;
+typedef opencascade::handle<Expr_Equal> Handle_Expr_Equal;
+typedef opencascade::handle<Expr_Exponential> Handle_Expr_Exponential;
+typedef opencascade::handle<Expr_Exponentiate> Handle_Expr_Exponentiate;
+typedef opencascade::handle<Expr_FunctionDerivative> Handle_Expr_FunctionDerivative;
+typedef opencascade::handle<Expr_GeneralExpression> Handle_Expr_GeneralExpression;
+typedef opencascade::handle<Expr_GeneralFunction> Handle_Expr_GeneralFunction;
+typedef opencascade::handle<Expr_GeneralRelation> Handle_Expr_GeneralRelation;
+typedef opencascade::handle<Expr_GreaterThan> Handle_Expr_GreaterThan;
+typedef opencascade::handle<Expr_GreaterThanOrEqual> Handle_Expr_GreaterThanOrEqual;
+typedef opencascade::handle<Expr_LessThan> Handle_Expr_LessThan;
+typedef opencascade::handle<Expr_LessThanOrEqual> Handle_Expr_LessThanOrEqual;
+typedef opencascade::handle<Expr_LogOf10> Handle_Expr_LogOf10;
+typedef opencascade::handle<Expr_LogOfe> Handle_Expr_LogOfe;
+typedef opencascade::handle<Expr_NamedConstant> Handle_Expr_NamedConstant;
+typedef opencascade::handle<Expr_NamedExpression> Handle_Expr_NamedExpression;
+typedef opencascade::handle<Expr_NamedFunction> Handle_Expr_NamedFunction;
+typedef opencascade::handle<Expr_NamedUnknown> Handle_Expr_NamedUnknown;
+typedef opencascade::handle<Expr_NumericValue> Handle_Expr_NumericValue;
+typedef opencascade::handle<Expr_PolyExpression> Handle_Expr_PolyExpression;
+typedef opencascade::handle<Expr_PolyFunction> Handle_Expr_PolyFunction;
+typedef opencascade::handle<Expr_Product> Handle_Expr_Product;
+typedef opencascade::handle<Expr_Sign> Handle_Expr_Sign;
+typedef opencascade::handle<Expr_Sine> Handle_Expr_Sine;
+typedef opencascade::handle<Expr_SingleRelation> Handle_Expr_SingleRelation;
+typedef opencascade::handle<Expr_Sinh> Handle_Expr_Sinh;
+typedef opencascade::handle<Expr_Square> Handle_Expr_Square;
+typedef opencascade::handle<Expr_SquareRoot> Handle_Expr_SquareRoot;
+typedef opencascade::handle<Expr_Sum> Handle_Expr_Sum;
+typedef opencascade::handle<Expr_SystemRelation> Handle_Expr_SystemRelation;
+typedef opencascade::handle<Expr_Tangent> Handle_Expr_Tangent;
+typedef opencascade::handle<Expr_Tanh> Handle_Expr_Tanh;
+typedef opencascade::handle<Expr_UnaryExpression> Handle_Expr_UnaryExpression;
+typedef opencascade::handle<Expr_UnaryFunction> Handle_Expr_UnaryFunction;
+typedef opencascade::handle<Expr_UnaryMinus> Handle_Expr_UnaryMinus;
+typedef opencascade::handle<Standard_Transient> Handle_Standard_Transient;
+typedef opencascade::handle<Standard_Type> Handle_Standard_Type;
 
 // Handle type destructors, clone, and is_null functions
-extern "C" void HandleExprIntrpGenExp_destructor(HandleExprIntrpGenExp* self_) { delete self_; }
-extern "C" OcctResult<HandleExprIntrpGenExp*> HandleExprIntrpGenExp_clone(const HandleExprIntrpGenExp* self_) {
-    try { return {new HandleExprIntrpGenExp(*self_), nullptr}; }
+extern "C" void Handle_ExprIntrp_GenExp_destructor(Handle_ExprIntrp_GenExp* self_) { delete self_; }
+extern "C" OcctResult<Handle_ExprIntrp_GenExp*> Handle_ExprIntrp_GenExp_clone(const Handle_ExprIntrp_GenExp* self_) {
+    try { return {new Handle_ExprIntrp_GenExp(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleExprIntrpGenExp_is_null(const HandleExprIntrpGenExp* self_) { return self_->IsNull(); }
-extern "C" void HandleExprIntrpGenFct_destructor(HandleExprIntrpGenFct* self_) { delete self_; }
-extern "C" OcctResult<HandleExprIntrpGenFct*> HandleExprIntrpGenFct_clone(const HandleExprIntrpGenFct* self_) {
-    try { return {new HandleExprIntrpGenFct(*self_), nullptr}; }
+extern "C" bool Handle_ExprIntrp_GenExp_is_null(const Handle_ExprIntrp_GenExp* self_) { return self_->IsNull(); }
+extern "C" void Handle_ExprIntrp_GenFct_destructor(Handle_ExprIntrp_GenFct* self_) { delete self_; }
+extern "C" OcctResult<Handle_ExprIntrp_GenFct*> Handle_ExprIntrp_GenFct_clone(const Handle_ExprIntrp_GenFct* self_) {
+    try { return {new Handle_ExprIntrp_GenFct(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleExprIntrpGenFct_is_null(const HandleExprIntrpGenFct* self_) { return self_->IsNull(); }
-extern "C" void HandleExprIntrpGenRel_destructor(HandleExprIntrpGenRel* self_) { delete self_; }
-extern "C" OcctResult<HandleExprIntrpGenRel*> HandleExprIntrpGenRel_clone(const HandleExprIntrpGenRel* self_) {
-    try { return {new HandleExprIntrpGenRel(*self_), nullptr}; }
+extern "C" bool Handle_ExprIntrp_GenFct_is_null(const Handle_ExprIntrp_GenFct* self_) { return self_->IsNull(); }
+extern "C" void Handle_ExprIntrp_GenRel_destructor(Handle_ExprIntrp_GenRel* self_) { delete self_; }
+extern "C" OcctResult<Handle_ExprIntrp_GenRel*> Handle_ExprIntrp_GenRel_clone(const Handle_ExprIntrp_GenRel* self_) {
+    try { return {new Handle_ExprIntrp_GenRel(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleExprIntrpGenRel_is_null(const HandleExprIntrpGenRel* self_) { return self_->IsNull(); }
-extern "C" void HandleExprIntrpGenerator_destructor(HandleExprIntrpGenerator* self_) { delete self_; }
-extern "C" OcctResult<HandleExprIntrpGenerator*> HandleExprIntrpGenerator_clone(const HandleExprIntrpGenerator* self_) {
-    try { return {new HandleExprIntrpGenerator(*self_), nullptr}; }
+extern "C" bool Handle_ExprIntrp_GenRel_is_null(const Handle_ExprIntrp_GenRel* self_) { return self_->IsNull(); }
+extern "C" void Handle_ExprIntrp_Generator_destructor(Handle_ExprIntrp_Generator* self_) { delete self_; }
+extern "C" OcctResult<Handle_ExprIntrp_Generator*> Handle_ExprIntrp_Generator_clone(const Handle_ExprIntrp_Generator* self_) {
+    try { return {new Handle_ExprIntrp_Generator(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleExprIntrpGenerator_is_null(const HandleExprIntrpGenerator* self_) { return self_->IsNull(); }
-extern "C" void HandleExprIntrpSyntaxError_destructor(HandleExprIntrpSyntaxError* self_) { delete self_; }
-extern "C" OcctResult<HandleExprIntrpSyntaxError*> HandleExprIntrpSyntaxError_clone(const HandleExprIntrpSyntaxError* self_) {
-    try { return {new HandleExprIntrpSyntaxError(*self_), nullptr}; }
+extern "C" bool Handle_ExprIntrp_Generator_is_null(const Handle_ExprIntrp_Generator* self_) { return self_->IsNull(); }
+extern "C" void Handle_Expr_Absolute_destructor(Handle_Expr_Absolute* self_) { delete self_; }
+extern "C" OcctResult<Handle_Expr_Absolute*> Handle_Expr_Absolute_clone(const Handle_Expr_Absolute* self_) {
+    try { return {new Handle_Expr_Absolute(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleExprIntrpSyntaxError_is_null(const HandleExprIntrpSyntaxError* self_) { return self_->IsNull(); }
-extern "C" void HandleExprAbsolute_destructor(HandleExprAbsolute* self_) { delete self_; }
-extern "C" OcctResult<HandleExprAbsolute*> HandleExprAbsolute_clone(const HandleExprAbsolute* self_) {
-    try { return {new HandleExprAbsolute(*self_), nullptr}; }
+extern "C" bool Handle_Expr_Absolute_is_null(const Handle_Expr_Absolute* self_) { return self_->IsNull(); }
+extern "C" void Handle_Expr_ArcCosine_destructor(Handle_Expr_ArcCosine* self_) { delete self_; }
+extern "C" OcctResult<Handle_Expr_ArcCosine*> Handle_Expr_ArcCosine_clone(const Handle_Expr_ArcCosine* self_) {
+    try { return {new Handle_Expr_ArcCosine(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleExprAbsolute_is_null(const HandleExprAbsolute* self_) { return self_->IsNull(); }
-extern "C" void HandleExprArcCosine_destructor(HandleExprArcCosine* self_) { delete self_; }
-extern "C" OcctResult<HandleExprArcCosine*> HandleExprArcCosine_clone(const HandleExprArcCosine* self_) {
-    try { return {new HandleExprArcCosine(*self_), nullptr}; }
+extern "C" bool Handle_Expr_ArcCosine_is_null(const Handle_Expr_ArcCosine* self_) { return self_->IsNull(); }
+extern "C" void Handle_Expr_ArcSine_destructor(Handle_Expr_ArcSine* self_) { delete self_; }
+extern "C" OcctResult<Handle_Expr_ArcSine*> Handle_Expr_ArcSine_clone(const Handle_Expr_ArcSine* self_) {
+    try { return {new Handle_Expr_ArcSine(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleExprArcCosine_is_null(const HandleExprArcCosine* self_) { return self_->IsNull(); }
-extern "C" void HandleExprArcSine_destructor(HandleExprArcSine* self_) { delete self_; }
-extern "C" OcctResult<HandleExprArcSine*> HandleExprArcSine_clone(const HandleExprArcSine* self_) {
-    try { return {new HandleExprArcSine(*self_), nullptr}; }
+extern "C" bool Handle_Expr_ArcSine_is_null(const Handle_Expr_ArcSine* self_) { return self_->IsNull(); }
+extern "C" void Handle_Expr_ArcTangent_destructor(Handle_Expr_ArcTangent* self_) { delete self_; }
+extern "C" OcctResult<Handle_Expr_ArcTangent*> Handle_Expr_ArcTangent_clone(const Handle_Expr_ArcTangent* self_) {
+    try { return {new Handle_Expr_ArcTangent(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleExprArcSine_is_null(const HandleExprArcSine* self_) { return self_->IsNull(); }
-extern "C" void HandleExprArcTangent_destructor(HandleExprArcTangent* self_) { delete self_; }
-extern "C" OcctResult<HandleExprArcTangent*> HandleExprArcTangent_clone(const HandleExprArcTangent* self_) {
-    try { return {new HandleExprArcTangent(*self_), nullptr}; }
+extern "C" bool Handle_Expr_ArcTangent_is_null(const Handle_Expr_ArcTangent* self_) { return self_->IsNull(); }
+extern "C" void Handle_Expr_ArgCosh_destructor(Handle_Expr_ArgCosh* self_) { delete self_; }
+extern "C" OcctResult<Handle_Expr_ArgCosh*> Handle_Expr_ArgCosh_clone(const Handle_Expr_ArgCosh* self_) {
+    try { return {new Handle_Expr_ArgCosh(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleExprArcTangent_is_null(const HandleExprArcTangent* self_) { return self_->IsNull(); }
-extern "C" void HandleExprArgCosh_destructor(HandleExprArgCosh* self_) { delete self_; }
-extern "C" OcctResult<HandleExprArgCosh*> HandleExprArgCosh_clone(const HandleExprArgCosh* self_) {
-    try { return {new HandleExprArgCosh(*self_), nullptr}; }
+extern "C" bool Handle_Expr_ArgCosh_is_null(const Handle_Expr_ArgCosh* self_) { return self_->IsNull(); }
+extern "C" void Handle_Expr_ArgSinh_destructor(Handle_Expr_ArgSinh* self_) { delete self_; }
+extern "C" OcctResult<Handle_Expr_ArgSinh*> Handle_Expr_ArgSinh_clone(const Handle_Expr_ArgSinh* self_) {
+    try { return {new Handle_Expr_ArgSinh(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleExprArgCosh_is_null(const HandleExprArgCosh* self_) { return self_->IsNull(); }
-extern "C" void HandleExprArgSinh_destructor(HandleExprArgSinh* self_) { delete self_; }
-extern "C" OcctResult<HandleExprArgSinh*> HandleExprArgSinh_clone(const HandleExprArgSinh* self_) {
-    try { return {new HandleExprArgSinh(*self_), nullptr}; }
+extern "C" bool Handle_Expr_ArgSinh_is_null(const Handle_Expr_ArgSinh* self_) { return self_->IsNull(); }
+extern "C" void Handle_Expr_ArgTanh_destructor(Handle_Expr_ArgTanh* self_) { delete self_; }
+extern "C" OcctResult<Handle_Expr_ArgTanh*> Handle_Expr_ArgTanh_clone(const Handle_Expr_ArgTanh* self_) {
+    try { return {new Handle_Expr_ArgTanh(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleExprArgSinh_is_null(const HandleExprArgSinh* self_) { return self_->IsNull(); }
-extern "C" void HandleExprArgTanh_destructor(HandleExprArgTanh* self_) { delete self_; }
-extern "C" OcctResult<HandleExprArgTanh*> HandleExprArgTanh_clone(const HandleExprArgTanh* self_) {
-    try { return {new HandleExprArgTanh(*self_), nullptr}; }
+extern "C" bool Handle_Expr_ArgTanh_is_null(const Handle_Expr_ArgTanh* self_) { return self_->IsNull(); }
+extern "C" void Handle_Expr_BinaryExpression_destructor(Handle_Expr_BinaryExpression* self_) { delete self_; }
+extern "C" OcctResult<Handle_Expr_BinaryExpression*> Handle_Expr_BinaryExpression_clone(const Handle_Expr_BinaryExpression* self_) {
+    try { return {new Handle_Expr_BinaryExpression(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleExprArgTanh_is_null(const HandleExprArgTanh* self_) { return self_->IsNull(); }
-extern "C" void HandleExprBinaryExpression_destructor(HandleExprBinaryExpression* self_) { delete self_; }
-extern "C" OcctResult<HandleExprBinaryExpression*> HandleExprBinaryExpression_clone(const HandleExprBinaryExpression* self_) {
-    try { return {new HandleExprBinaryExpression(*self_), nullptr}; }
+extern "C" bool Handle_Expr_BinaryExpression_is_null(const Handle_Expr_BinaryExpression* self_) { return self_->IsNull(); }
+extern "C" void Handle_Expr_BinaryFunction_destructor(Handle_Expr_BinaryFunction* self_) { delete self_; }
+extern "C" OcctResult<Handle_Expr_BinaryFunction*> Handle_Expr_BinaryFunction_clone(const Handle_Expr_BinaryFunction* self_) {
+    try { return {new Handle_Expr_BinaryFunction(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleExprBinaryExpression_is_null(const HandleExprBinaryExpression* self_) { return self_->IsNull(); }
-extern "C" void HandleExprBinaryFunction_destructor(HandleExprBinaryFunction* self_) { delete self_; }
-extern "C" OcctResult<HandleExprBinaryFunction*> HandleExprBinaryFunction_clone(const HandleExprBinaryFunction* self_) {
-    try { return {new HandleExprBinaryFunction(*self_), nullptr}; }
+extern "C" bool Handle_Expr_BinaryFunction_is_null(const Handle_Expr_BinaryFunction* self_) { return self_->IsNull(); }
+extern "C" void Handle_Expr_Cosh_destructor(Handle_Expr_Cosh* self_) { delete self_; }
+extern "C" OcctResult<Handle_Expr_Cosh*> Handle_Expr_Cosh_clone(const Handle_Expr_Cosh* self_) {
+    try { return {new Handle_Expr_Cosh(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleExprBinaryFunction_is_null(const HandleExprBinaryFunction* self_) { return self_->IsNull(); }
-extern "C" void HandleExprCosh_destructor(HandleExprCosh* self_) { delete self_; }
-extern "C" OcctResult<HandleExprCosh*> HandleExprCosh_clone(const HandleExprCosh* self_) {
-    try { return {new HandleExprCosh(*self_), nullptr}; }
+extern "C" bool Handle_Expr_Cosh_is_null(const Handle_Expr_Cosh* self_) { return self_->IsNull(); }
+extern "C" void Handle_Expr_Cosine_destructor(Handle_Expr_Cosine* self_) { delete self_; }
+extern "C" OcctResult<Handle_Expr_Cosine*> Handle_Expr_Cosine_clone(const Handle_Expr_Cosine* self_) {
+    try { return {new Handle_Expr_Cosine(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleExprCosh_is_null(const HandleExprCosh* self_) { return self_->IsNull(); }
-extern "C" void HandleExprCosine_destructor(HandleExprCosine* self_) { delete self_; }
-extern "C" OcctResult<HandleExprCosine*> HandleExprCosine_clone(const HandleExprCosine* self_) {
-    try { return {new HandleExprCosine(*self_), nullptr}; }
+extern "C" bool Handle_Expr_Cosine_is_null(const Handle_Expr_Cosine* self_) { return self_->IsNull(); }
+extern "C" void Handle_Expr_Difference_destructor(Handle_Expr_Difference* self_) { delete self_; }
+extern "C" OcctResult<Handle_Expr_Difference*> Handle_Expr_Difference_clone(const Handle_Expr_Difference* self_) {
+    try { return {new Handle_Expr_Difference(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleExprCosine_is_null(const HandleExprCosine* self_) { return self_->IsNull(); }
-extern "C" void HandleExprDifference_destructor(HandleExprDifference* self_) { delete self_; }
-extern "C" OcctResult<HandleExprDifference*> HandleExprDifference_clone(const HandleExprDifference* self_) {
-    try { return {new HandleExprDifference(*self_), nullptr}; }
+extern "C" bool Handle_Expr_Difference_is_null(const Handle_Expr_Difference* self_) { return self_->IsNull(); }
+extern "C" void Handle_Expr_Different_destructor(Handle_Expr_Different* self_) { delete self_; }
+extern "C" OcctResult<Handle_Expr_Different*> Handle_Expr_Different_clone(const Handle_Expr_Different* self_) {
+    try { return {new Handle_Expr_Different(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleExprDifference_is_null(const HandleExprDifference* self_) { return self_->IsNull(); }
-extern "C" void HandleExprDifferent_destructor(HandleExprDifferent* self_) { delete self_; }
-extern "C" OcctResult<HandleExprDifferent*> HandleExprDifferent_clone(const HandleExprDifferent* self_) {
-    try { return {new HandleExprDifferent(*self_), nullptr}; }
+extern "C" bool Handle_Expr_Different_is_null(const Handle_Expr_Different* self_) { return self_->IsNull(); }
+extern "C" void Handle_Expr_Division_destructor(Handle_Expr_Division* self_) { delete self_; }
+extern "C" OcctResult<Handle_Expr_Division*> Handle_Expr_Division_clone(const Handle_Expr_Division* self_) {
+    try { return {new Handle_Expr_Division(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleExprDifferent_is_null(const HandleExprDifferent* self_) { return self_->IsNull(); }
-extern "C" void HandleExprDivision_destructor(HandleExprDivision* self_) { delete self_; }
-extern "C" OcctResult<HandleExprDivision*> HandleExprDivision_clone(const HandleExprDivision* self_) {
-    try { return {new HandleExprDivision(*self_), nullptr}; }
+extern "C" bool Handle_Expr_Division_is_null(const Handle_Expr_Division* self_) { return self_->IsNull(); }
+extern "C" void Handle_Expr_Equal_destructor(Handle_Expr_Equal* self_) { delete self_; }
+extern "C" OcctResult<Handle_Expr_Equal*> Handle_Expr_Equal_clone(const Handle_Expr_Equal* self_) {
+    try { return {new Handle_Expr_Equal(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleExprDivision_is_null(const HandleExprDivision* self_) { return self_->IsNull(); }
-extern "C" void HandleExprEqual_destructor(HandleExprEqual* self_) { delete self_; }
-extern "C" OcctResult<HandleExprEqual*> HandleExprEqual_clone(const HandleExprEqual* self_) {
-    try { return {new HandleExprEqual(*self_), nullptr}; }
+extern "C" bool Handle_Expr_Equal_is_null(const Handle_Expr_Equal* self_) { return self_->IsNull(); }
+extern "C" void Handle_Expr_Exponential_destructor(Handle_Expr_Exponential* self_) { delete self_; }
+extern "C" OcctResult<Handle_Expr_Exponential*> Handle_Expr_Exponential_clone(const Handle_Expr_Exponential* self_) {
+    try { return {new Handle_Expr_Exponential(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleExprEqual_is_null(const HandleExprEqual* self_) { return self_->IsNull(); }
-extern "C" void HandleExprExponential_destructor(HandleExprExponential* self_) { delete self_; }
-extern "C" OcctResult<HandleExprExponential*> HandleExprExponential_clone(const HandleExprExponential* self_) {
-    try { return {new HandleExprExponential(*self_), nullptr}; }
+extern "C" bool Handle_Expr_Exponential_is_null(const Handle_Expr_Exponential* self_) { return self_->IsNull(); }
+extern "C" void Handle_Expr_Exponentiate_destructor(Handle_Expr_Exponentiate* self_) { delete self_; }
+extern "C" OcctResult<Handle_Expr_Exponentiate*> Handle_Expr_Exponentiate_clone(const Handle_Expr_Exponentiate* self_) {
+    try { return {new Handle_Expr_Exponentiate(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleExprExponential_is_null(const HandleExprExponential* self_) { return self_->IsNull(); }
-extern "C" void HandleExprExponentiate_destructor(HandleExprExponentiate* self_) { delete self_; }
-extern "C" OcctResult<HandleExprExponentiate*> HandleExprExponentiate_clone(const HandleExprExponentiate* self_) {
-    try { return {new HandleExprExponentiate(*self_), nullptr}; }
+extern "C" bool Handle_Expr_Exponentiate_is_null(const Handle_Expr_Exponentiate* self_) { return self_->IsNull(); }
+extern "C" void Handle_Expr_FunctionDerivative_destructor(Handle_Expr_FunctionDerivative* self_) { delete self_; }
+extern "C" OcctResult<Handle_Expr_FunctionDerivative*> Handle_Expr_FunctionDerivative_clone(const Handle_Expr_FunctionDerivative* self_) {
+    try { return {new Handle_Expr_FunctionDerivative(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleExprExponentiate_is_null(const HandleExprExponentiate* self_) { return self_->IsNull(); }
-extern "C" void HandleExprExprFailure_destructor(HandleExprExprFailure* self_) { delete self_; }
-extern "C" OcctResult<HandleExprExprFailure*> HandleExprExprFailure_clone(const HandleExprExprFailure* self_) {
-    try { return {new HandleExprExprFailure(*self_), nullptr}; }
+extern "C" bool Handle_Expr_FunctionDerivative_is_null(const Handle_Expr_FunctionDerivative* self_) { return self_->IsNull(); }
+extern "C" void Handle_Expr_GeneralExpression_destructor(Handle_Expr_GeneralExpression* self_) { delete self_; }
+extern "C" OcctResult<Handle_Expr_GeneralExpression*> Handle_Expr_GeneralExpression_clone(const Handle_Expr_GeneralExpression* self_) {
+    try { return {new Handle_Expr_GeneralExpression(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleExprExprFailure_is_null(const HandleExprExprFailure* self_) { return self_->IsNull(); }
-extern "C" void HandleExprFunctionDerivative_destructor(HandleExprFunctionDerivative* self_) { delete self_; }
-extern "C" OcctResult<HandleExprFunctionDerivative*> HandleExprFunctionDerivative_clone(const HandleExprFunctionDerivative* self_) {
-    try { return {new HandleExprFunctionDerivative(*self_), nullptr}; }
+extern "C" bool Handle_Expr_GeneralExpression_is_null(const Handle_Expr_GeneralExpression* self_) { return self_->IsNull(); }
+extern "C" void Handle_Expr_GeneralFunction_destructor(Handle_Expr_GeneralFunction* self_) { delete self_; }
+extern "C" OcctResult<Handle_Expr_GeneralFunction*> Handle_Expr_GeneralFunction_clone(const Handle_Expr_GeneralFunction* self_) {
+    try { return {new Handle_Expr_GeneralFunction(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleExprFunctionDerivative_is_null(const HandleExprFunctionDerivative* self_) { return self_->IsNull(); }
-extern "C" void HandleExprGeneralExpression_destructor(HandleExprGeneralExpression* self_) { delete self_; }
-extern "C" OcctResult<HandleExprGeneralExpression*> HandleExprGeneralExpression_clone(const HandleExprGeneralExpression* self_) {
-    try { return {new HandleExprGeneralExpression(*self_), nullptr}; }
+extern "C" bool Handle_Expr_GeneralFunction_is_null(const Handle_Expr_GeneralFunction* self_) { return self_->IsNull(); }
+extern "C" void Handle_Expr_GeneralRelation_destructor(Handle_Expr_GeneralRelation* self_) { delete self_; }
+extern "C" OcctResult<Handle_Expr_GeneralRelation*> Handle_Expr_GeneralRelation_clone(const Handle_Expr_GeneralRelation* self_) {
+    try { return {new Handle_Expr_GeneralRelation(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleExprGeneralExpression_is_null(const HandleExprGeneralExpression* self_) { return self_->IsNull(); }
-extern "C" void HandleExprGeneralFunction_destructor(HandleExprGeneralFunction* self_) { delete self_; }
-extern "C" OcctResult<HandleExprGeneralFunction*> HandleExprGeneralFunction_clone(const HandleExprGeneralFunction* self_) {
-    try { return {new HandleExprGeneralFunction(*self_), nullptr}; }
+extern "C" bool Handle_Expr_GeneralRelation_is_null(const Handle_Expr_GeneralRelation* self_) { return self_->IsNull(); }
+extern "C" void Handle_Expr_GreaterThan_destructor(Handle_Expr_GreaterThan* self_) { delete self_; }
+extern "C" OcctResult<Handle_Expr_GreaterThan*> Handle_Expr_GreaterThan_clone(const Handle_Expr_GreaterThan* self_) {
+    try { return {new Handle_Expr_GreaterThan(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleExprGeneralFunction_is_null(const HandleExprGeneralFunction* self_) { return self_->IsNull(); }
-extern "C" void HandleExprGeneralRelation_destructor(HandleExprGeneralRelation* self_) { delete self_; }
-extern "C" OcctResult<HandleExprGeneralRelation*> HandleExprGeneralRelation_clone(const HandleExprGeneralRelation* self_) {
-    try { return {new HandleExprGeneralRelation(*self_), nullptr}; }
+extern "C" bool Handle_Expr_GreaterThan_is_null(const Handle_Expr_GreaterThan* self_) { return self_->IsNull(); }
+extern "C" void Handle_Expr_GreaterThanOrEqual_destructor(Handle_Expr_GreaterThanOrEqual* self_) { delete self_; }
+extern "C" OcctResult<Handle_Expr_GreaterThanOrEqual*> Handle_Expr_GreaterThanOrEqual_clone(const Handle_Expr_GreaterThanOrEqual* self_) {
+    try { return {new Handle_Expr_GreaterThanOrEqual(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleExprGeneralRelation_is_null(const HandleExprGeneralRelation* self_) { return self_->IsNull(); }
-extern "C" void HandleExprGreaterThan_destructor(HandleExprGreaterThan* self_) { delete self_; }
-extern "C" OcctResult<HandleExprGreaterThan*> HandleExprGreaterThan_clone(const HandleExprGreaterThan* self_) {
-    try { return {new HandleExprGreaterThan(*self_), nullptr}; }
+extern "C" bool Handle_Expr_GreaterThanOrEqual_is_null(const Handle_Expr_GreaterThanOrEqual* self_) { return self_->IsNull(); }
+extern "C" void Handle_Expr_LessThan_destructor(Handle_Expr_LessThan* self_) { delete self_; }
+extern "C" OcctResult<Handle_Expr_LessThan*> Handle_Expr_LessThan_clone(const Handle_Expr_LessThan* self_) {
+    try { return {new Handle_Expr_LessThan(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleExprGreaterThan_is_null(const HandleExprGreaterThan* self_) { return self_->IsNull(); }
-extern "C" void HandleExprGreaterThanOrEqual_destructor(HandleExprGreaterThanOrEqual* self_) { delete self_; }
-extern "C" OcctResult<HandleExprGreaterThanOrEqual*> HandleExprGreaterThanOrEqual_clone(const HandleExprGreaterThanOrEqual* self_) {
-    try { return {new HandleExprGreaterThanOrEqual(*self_), nullptr}; }
+extern "C" bool Handle_Expr_LessThan_is_null(const Handle_Expr_LessThan* self_) { return self_->IsNull(); }
+extern "C" void Handle_Expr_LessThanOrEqual_destructor(Handle_Expr_LessThanOrEqual* self_) { delete self_; }
+extern "C" OcctResult<Handle_Expr_LessThanOrEqual*> Handle_Expr_LessThanOrEqual_clone(const Handle_Expr_LessThanOrEqual* self_) {
+    try { return {new Handle_Expr_LessThanOrEqual(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleExprGreaterThanOrEqual_is_null(const HandleExprGreaterThanOrEqual* self_) { return self_->IsNull(); }
-extern "C" void HandleExprInvalidAssignment_destructor(HandleExprInvalidAssignment* self_) { delete self_; }
-extern "C" OcctResult<HandleExprInvalidAssignment*> HandleExprInvalidAssignment_clone(const HandleExprInvalidAssignment* self_) {
-    try { return {new HandleExprInvalidAssignment(*self_), nullptr}; }
+extern "C" bool Handle_Expr_LessThanOrEqual_is_null(const Handle_Expr_LessThanOrEqual* self_) { return self_->IsNull(); }
+extern "C" void Handle_Expr_LogOf10_destructor(Handle_Expr_LogOf10* self_) { delete self_; }
+extern "C" OcctResult<Handle_Expr_LogOf10*> Handle_Expr_LogOf10_clone(const Handle_Expr_LogOf10* self_) {
+    try { return {new Handle_Expr_LogOf10(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleExprInvalidAssignment_is_null(const HandleExprInvalidAssignment* self_) { return self_->IsNull(); }
-extern "C" void HandleExprInvalidFunction_destructor(HandleExprInvalidFunction* self_) { delete self_; }
-extern "C" OcctResult<HandleExprInvalidFunction*> HandleExprInvalidFunction_clone(const HandleExprInvalidFunction* self_) {
-    try { return {new HandleExprInvalidFunction(*self_), nullptr}; }
+extern "C" bool Handle_Expr_LogOf10_is_null(const Handle_Expr_LogOf10* self_) { return self_->IsNull(); }
+extern "C" void Handle_Expr_LogOfe_destructor(Handle_Expr_LogOfe* self_) { delete self_; }
+extern "C" OcctResult<Handle_Expr_LogOfe*> Handle_Expr_LogOfe_clone(const Handle_Expr_LogOfe* self_) {
+    try { return {new Handle_Expr_LogOfe(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleExprInvalidFunction_is_null(const HandleExprInvalidFunction* self_) { return self_->IsNull(); }
-extern "C" void HandleExprInvalidOperand_destructor(HandleExprInvalidOperand* self_) { delete self_; }
-extern "C" OcctResult<HandleExprInvalidOperand*> HandleExprInvalidOperand_clone(const HandleExprInvalidOperand* self_) {
-    try { return {new HandleExprInvalidOperand(*self_), nullptr}; }
+extern "C" bool Handle_Expr_LogOfe_is_null(const Handle_Expr_LogOfe* self_) { return self_->IsNull(); }
+extern "C" void Handle_Expr_NamedConstant_destructor(Handle_Expr_NamedConstant* self_) { delete self_; }
+extern "C" OcctResult<Handle_Expr_NamedConstant*> Handle_Expr_NamedConstant_clone(const Handle_Expr_NamedConstant* self_) {
+    try { return {new Handle_Expr_NamedConstant(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleExprInvalidOperand_is_null(const HandleExprInvalidOperand* self_) { return self_->IsNull(); }
-extern "C" void HandleExprLessThan_destructor(HandleExprLessThan* self_) { delete self_; }
-extern "C" OcctResult<HandleExprLessThan*> HandleExprLessThan_clone(const HandleExprLessThan* self_) {
-    try { return {new HandleExprLessThan(*self_), nullptr}; }
+extern "C" bool Handle_Expr_NamedConstant_is_null(const Handle_Expr_NamedConstant* self_) { return self_->IsNull(); }
+extern "C" void Handle_Expr_NamedExpression_destructor(Handle_Expr_NamedExpression* self_) { delete self_; }
+extern "C" OcctResult<Handle_Expr_NamedExpression*> Handle_Expr_NamedExpression_clone(const Handle_Expr_NamedExpression* self_) {
+    try { return {new Handle_Expr_NamedExpression(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleExprLessThan_is_null(const HandleExprLessThan* self_) { return self_->IsNull(); }
-extern "C" void HandleExprLessThanOrEqual_destructor(HandleExprLessThanOrEqual* self_) { delete self_; }
-extern "C" OcctResult<HandleExprLessThanOrEqual*> HandleExprLessThanOrEqual_clone(const HandleExprLessThanOrEqual* self_) {
-    try { return {new HandleExprLessThanOrEqual(*self_), nullptr}; }
+extern "C" bool Handle_Expr_NamedExpression_is_null(const Handle_Expr_NamedExpression* self_) { return self_->IsNull(); }
+extern "C" void Handle_Expr_NamedFunction_destructor(Handle_Expr_NamedFunction* self_) { delete self_; }
+extern "C" OcctResult<Handle_Expr_NamedFunction*> Handle_Expr_NamedFunction_clone(const Handle_Expr_NamedFunction* self_) {
+    try { return {new Handle_Expr_NamedFunction(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleExprLessThanOrEqual_is_null(const HandleExprLessThanOrEqual* self_) { return self_->IsNull(); }
-extern "C" void HandleExprLogOf10_destructor(HandleExprLogOf10* self_) { delete self_; }
-extern "C" OcctResult<HandleExprLogOf10*> HandleExprLogOf10_clone(const HandleExprLogOf10* self_) {
-    try { return {new HandleExprLogOf10(*self_), nullptr}; }
+extern "C" bool Handle_Expr_NamedFunction_is_null(const Handle_Expr_NamedFunction* self_) { return self_->IsNull(); }
+extern "C" void Handle_Expr_NamedUnknown_destructor(Handle_Expr_NamedUnknown* self_) { delete self_; }
+extern "C" OcctResult<Handle_Expr_NamedUnknown*> Handle_Expr_NamedUnknown_clone(const Handle_Expr_NamedUnknown* self_) {
+    try { return {new Handle_Expr_NamedUnknown(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleExprLogOf10_is_null(const HandleExprLogOf10* self_) { return self_->IsNull(); }
-extern "C" void HandleExprLogOfe_destructor(HandleExprLogOfe* self_) { delete self_; }
-extern "C" OcctResult<HandleExprLogOfe*> HandleExprLogOfe_clone(const HandleExprLogOfe* self_) {
-    try { return {new HandleExprLogOfe(*self_), nullptr}; }
+extern "C" bool Handle_Expr_NamedUnknown_is_null(const Handle_Expr_NamedUnknown* self_) { return self_->IsNull(); }
+extern "C" void Handle_Expr_NumericValue_destructor(Handle_Expr_NumericValue* self_) { delete self_; }
+extern "C" OcctResult<Handle_Expr_NumericValue*> Handle_Expr_NumericValue_clone(const Handle_Expr_NumericValue* self_) {
+    try { return {new Handle_Expr_NumericValue(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleExprLogOfe_is_null(const HandleExprLogOfe* self_) { return self_->IsNull(); }
-extern "C" void HandleExprNamedConstant_destructor(HandleExprNamedConstant* self_) { delete self_; }
-extern "C" OcctResult<HandleExprNamedConstant*> HandleExprNamedConstant_clone(const HandleExprNamedConstant* self_) {
-    try { return {new HandleExprNamedConstant(*self_), nullptr}; }
+extern "C" bool Handle_Expr_NumericValue_is_null(const Handle_Expr_NumericValue* self_) { return self_->IsNull(); }
+extern "C" void Handle_Expr_PolyExpression_destructor(Handle_Expr_PolyExpression* self_) { delete self_; }
+extern "C" OcctResult<Handle_Expr_PolyExpression*> Handle_Expr_PolyExpression_clone(const Handle_Expr_PolyExpression* self_) {
+    try { return {new Handle_Expr_PolyExpression(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleExprNamedConstant_is_null(const HandleExprNamedConstant* self_) { return self_->IsNull(); }
-extern "C" void HandleExprNamedExpression_destructor(HandleExprNamedExpression* self_) { delete self_; }
-extern "C" OcctResult<HandleExprNamedExpression*> HandleExprNamedExpression_clone(const HandleExprNamedExpression* self_) {
-    try { return {new HandleExprNamedExpression(*self_), nullptr}; }
+extern "C" bool Handle_Expr_PolyExpression_is_null(const Handle_Expr_PolyExpression* self_) { return self_->IsNull(); }
+extern "C" void Handle_Expr_PolyFunction_destructor(Handle_Expr_PolyFunction* self_) { delete self_; }
+extern "C" OcctResult<Handle_Expr_PolyFunction*> Handle_Expr_PolyFunction_clone(const Handle_Expr_PolyFunction* self_) {
+    try { return {new Handle_Expr_PolyFunction(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleExprNamedExpression_is_null(const HandleExprNamedExpression* self_) { return self_->IsNull(); }
-extern "C" void HandleExprNamedFunction_destructor(HandleExprNamedFunction* self_) { delete self_; }
-extern "C" OcctResult<HandleExprNamedFunction*> HandleExprNamedFunction_clone(const HandleExprNamedFunction* self_) {
-    try { return {new HandleExprNamedFunction(*self_), nullptr}; }
+extern "C" bool Handle_Expr_PolyFunction_is_null(const Handle_Expr_PolyFunction* self_) { return self_->IsNull(); }
+extern "C" void Handle_Expr_Product_destructor(Handle_Expr_Product* self_) { delete self_; }
+extern "C" OcctResult<Handle_Expr_Product*> Handle_Expr_Product_clone(const Handle_Expr_Product* self_) {
+    try { return {new Handle_Expr_Product(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleExprNamedFunction_is_null(const HandleExprNamedFunction* self_) { return self_->IsNull(); }
-extern "C" void HandleExprNamedUnknown_destructor(HandleExprNamedUnknown* self_) { delete self_; }
-extern "C" OcctResult<HandleExprNamedUnknown*> HandleExprNamedUnknown_clone(const HandleExprNamedUnknown* self_) {
-    try { return {new HandleExprNamedUnknown(*self_), nullptr}; }
+extern "C" bool Handle_Expr_Product_is_null(const Handle_Expr_Product* self_) { return self_->IsNull(); }
+extern "C" void Handle_Expr_Sign_destructor(Handle_Expr_Sign* self_) { delete self_; }
+extern "C" OcctResult<Handle_Expr_Sign*> Handle_Expr_Sign_clone(const Handle_Expr_Sign* self_) {
+    try { return {new Handle_Expr_Sign(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleExprNamedUnknown_is_null(const HandleExprNamedUnknown* self_) { return self_->IsNull(); }
-extern "C" void HandleExprNotAssigned_destructor(HandleExprNotAssigned* self_) { delete self_; }
-extern "C" OcctResult<HandleExprNotAssigned*> HandleExprNotAssigned_clone(const HandleExprNotAssigned* self_) {
-    try { return {new HandleExprNotAssigned(*self_), nullptr}; }
+extern "C" bool Handle_Expr_Sign_is_null(const Handle_Expr_Sign* self_) { return self_->IsNull(); }
+extern "C" void Handle_Expr_Sine_destructor(Handle_Expr_Sine* self_) { delete self_; }
+extern "C" OcctResult<Handle_Expr_Sine*> Handle_Expr_Sine_clone(const Handle_Expr_Sine* self_) {
+    try { return {new Handle_Expr_Sine(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleExprNotAssigned_is_null(const HandleExprNotAssigned* self_) { return self_->IsNull(); }
-extern "C" void HandleExprNotEvaluable_destructor(HandleExprNotEvaluable* self_) { delete self_; }
-extern "C" OcctResult<HandleExprNotEvaluable*> HandleExprNotEvaluable_clone(const HandleExprNotEvaluable* self_) {
-    try { return {new HandleExprNotEvaluable(*self_), nullptr}; }
+extern "C" bool Handle_Expr_Sine_is_null(const Handle_Expr_Sine* self_) { return self_->IsNull(); }
+extern "C" void Handle_Expr_SingleRelation_destructor(Handle_Expr_SingleRelation* self_) { delete self_; }
+extern "C" OcctResult<Handle_Expr_SingleRelation*> Handle_Expr_SingleRelation_clone(const Handle_Expr_SingleRelation* self_) {
+    try { return {new Handle_Expr_SingleRelation(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleExprNotEvaluable_is_null(const HandleExprNotEvaluable* self_) { return self_->IsNull(); }
-extern "C" void HandleExprNumericValue_destructor(HandleExprNumericValue* self_) { delete self_; }
-extern "C" OcctResult<HandleExprNumericValue*> HandleExprNumericValue_clone(const HandleExprNumericValue* self_) {
-    try { return {new HandleExprNumericValue(*self_), nullptr}; }
+extern "C" bool Handle_Expr_SingleRelation_is_null(const Handle_Expr_SingleRelation* self_) { return self_->IsNull(); }
+extern "C" void Handle_Expr_Sinh_destructor(Handle_Expr_Sinh* self_) { delete self_; }
+extern "C" OcctResult<Handle_Expr_Sinh*> Handle_Expr_Sinh_clone(const Handle_Expr_Sinh* self_) {
+    try { return {new Handle_Expr_Sinh(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleExprNumericValue_is_null(const HandleExprNumericValue* self_) { return self_->IsNull(); }
-extern "C" void HandleExprPolyExpression_destructor(HandleExprPolyExpression* self_) { delete self_; }
-extern "C" OcctResult<HandleExprPolyExpression*> HandleExprPolyExpression_clone(const HandleExprPolyExpression* self_) {
-    try { return {new HandleExprPolyExpression(*self_), nullptr}; }
+extern "C" bool Handle_Expr_Sinh_is_null(const Handle_Expr_Sinh* self_) { return self_->IsNull(); }
+extern "C" void Handle_Expr_Square_destructor(Handle_Expr_Square* self_) { delete self_; }
+extern "C" OcctResult<Handle_Expr_Square*> Handle_Expr_Square_clone(const Handle_Expr_Square* self_) {
+    try { return {new Handle_Expr_Square(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleExprPolyExpression_is_null(const HandleExprPolyExpression* self_) { return self_->IsNull(); }
-extern "C" void HandleExprPolyFunction_destructor(HandleExprPolyFunction* self_) { delete self_; }
-extern "C" OcctResult<HandleExprPolyFunction*> HandleExprPolyFunction_clone(const HandleExprPolyFunction* self_) {
-    try { return {new HandleExprPolyFunction(*self_), nullptr}; }
+extern "C" bool Handle_Expr_Square_is_null(const Handle_Expr_Square* self_) { return self_->IsNull(); }
+extern "C" void Handle_Expr_SquareRoot_destructor(Handle_Expr_SquareRoot* self_) { delete self_; }
+extern "C" OcctResult<Handle_Expr_SquareRoot*> Handle_Expr_SquareRoot_clone(const Handle_Expr_SquareRoot* self_) {
+    try { return {new Handle_Expr_SquareRoot(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleExprPolyFunction_is_null(const HandleExprPolyFunction* self_) { return self_->IsNull(); }
-extern "C" void HandleExprProduct_destructor(HandleExprProduct* self_) { delete self_; }
-extern "C" OcctResult<HandleExprProduct*> HandleExprProduct_clone(const HandleExprProduct* self_) {
-    try { return {new HandleExprProduct(*self_), nullptr}; }
+extern "C" bool Handle_Expr_SquareRoot_is_null(const Handle_Expr_SquareRoot* self_) { return self_->IsNull(); }
+extern "C" void Handle_Expr_Sum_destructor(Handle_Expr_Sum* self_) { delete self_; }
+extern "C" OcctResult<Handle_Expr_Sum*> Handle_Expr_Sum_clone(const Handle_Expr_Sum* self_) {
+    try { return {new Handle_Expr_Sum(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleExprProduct_is_null(const HandleExprProduct* self_) { return self_->IsNull(); }
-extern "C" void HandleExprSign_destructor(HandleExprSign* self_) { delete self_; }
-extern "C" OcctResult<HandleExprSign*> HandleExprSign_clone(const HandleExprSign* self_) {
-    try { return {new HandleExprSign(*self_), nullptr}; }
+extern "C" bool Handle_Expr_Sum_is_null(const Handle_Expr_Sum* self_) { return self_->IsNull(); }
+extern "C" void Handle_Expr_SystemRelation_destructor(Handle_Expr_SystemRelation* self_) { delete self_; }
+extern "C" OcctResult<Handle_Expr_SystemRelation*> Handle_Expr_SystemRelation_clone(const Handle_Expr_SystemRelation* self_) {
+    try { return {new Handle_Expr_SystemRelation(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleExprSign_is_null(const HandleExprSign* self_) { return self_->IsNull(); }
-extern "C" void HandleExprSine_destructor(HandleExprSine* self_) { delete self_; }
-extern "C" OcctResult<HandleExprSine*> HandleExprSine_clone(const HandleExprSine* self_) {
-    try { return {new HandleExprSine(*self_), nullptr}; }
+extern "C" bool Handle_Expr_SystemRelation_is_null(const Handle_Expr_SystemRelation* self_) { return self_->IsNull(); }
+extern "C" void Handle_Expr_Tangent_destructor(Handle_Expr_Tangent* self_) { delete self_; }
+extern "C" OcctResult<Handle_Expr_Tangent*> Handle_Expr_Tangent_clone(const Handle_Expr_Tangent* self_) {
+    try { return {new Handle_Expr_Tangent(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleExprSine_is_null(const HandleExprSine* self_) { return self_->IsNull(); }
-extern "C" void HandleExprSingleRelation_destructor(HandleExprSingleRelation* self_) { delete self_; }
-extern "C" OcctResult<HandleExprSingleRelation*> HandleExprSingleRelation_clone(const HandleExprSingleRelation* self_) {
-    try { return {new HandleExprSingleRelation(*self_), nullptr}; }
+extern "C" bool Handle_Expr_Tangent_is_null(const Handle_Expr_Tangent* self_) { return self_->IsNull(); }
+extern "C" void Handle_Expr_Tanh_destructor(Handle_Expr_Tanh* self_) { delete self_; }
+extern "C" OcctResult<Handle_Expr_Tanh*> Handle_Expr_Tanh_clone(const Handle_Expr_Tanh* self_) {
+    try { return {new Handle_Expr_Tanh(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleExprSingleRelation_is_null(const HandleExprSingleRelation* self_) { return self_->IsNull(); }
-extern "C" void HandleExprSinh_destructor(HandleExprSinh* self_) { delete self_; }
-extern "C" OcctResult<HandleExprSinh*> HandleExprSinh_clone(const HandleExprSinh* self_) {
-    try { return {new HandleExprSinh(*self_), nullptr}; }
+extern "C" bool Handle_Expr_Tanh_is_null(const Handle_Expr_Tanh* self_) { return self_->IsNull(); }
+extern "C" void Handle_Expr_UnaryExpression_destructor(Handle_Expr_UnaryExpression* self_) { delete self_; }
+extern "C" OcctResult<Handle_Expr_UnaryExpression*> Handle_Expr_UnaryExpression_clone(const Handle_Expr_UnaryExpression* self_) {
+    try { return {new Handle_Expr_UnaryExpression(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleExprSinh_is_null(const HandleExprSinh* self_) { return self_->IsNull(); }
-extern "C" void HandleExprSquare_destructor(HandleExprSquare* self_) { delete self_; }
-extern "C" OcctResult<HandleExprSquare*> HandleExprSquare_clone(const HandleExprSquare* self_) {
-    try { return {new HandleExprSquare(*self_), nullptr}; }
+extern "C" bool Handle_Expr_UnaryExpression_is_null(const Handle_Expr_UnaryExpression* self_) { return self_->IsNull(); }
+extern "C" void Handle_Expr_UnaryFunction_destructor(Handle_Expr_UnaryFunction* self_) { delete self_; }
+extern "C" OcctResult<Handle_Expr_UnaryFunction*> Handle_Expr_UnaryFunction_clone(const Handle_Expr_UnaryFunction* self_) {
+    try { return {new Handle_Expr_UnaryFunction(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleExprSquare_is_null(const HandleExprSquare* self_) { return self_->IsNull(); }
-extern "C" void HandleExprSquareRoot_destructor(HandleExprSquareRoot* self_) { delete self_; }
-extern "C" OcctResult<HandleExprSquareRoot*> HandleExprSquareRoot_clone(const HandleExprSquareRoot* self_) {
-    try { return {new HandleExprSquareRoot(*self_), nullptr}; }
+extern "C" bool Handle_Expr_UnaryFunction_is_null(const Handle_Expr_UnaryFunction* self_) { return self_->IsNull(); }
+extern "C" void Handle_Expr_UnaryMinus_destructor(Handle_Expr_UnaryMinus* self_) { delete self_; }
+extern "C" OcctResult<Handle_Expr_UnaryMinus*> Handle_Expr_UnaryMinus_clone(const Handle_Expr_UnaryMinus* self_) {
+    try { return {new Handle_Expr_UnaryMinus(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleExprSquareRoot_is_null(const HandleExprSquareRoot* self_) { return self_->IsNull(); }
-extern "C" void HandleExprSum_destructor(HandleExprSum* self_) { delete self_; }
-extern "C" OcctResult<HandleExprSum*> HandleExprSum_clone(const HandleExprSum* self_) {
-    try { return {new HandleExprSum(*self_), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" bool HandleExprSum_is_null(const HandleExprSum* self_) { return self_->IsNull(); }
-extern "C" void HandleExprSystemRelation_destructor(HandleExprSystemRelation* self_) { delete self_; }
-extern "C" OcctResult<HandleExprSystemRelation*> HandleExprSystemRelation_clone(const HandleExprSystemRelation* self_) {
-    try { return {new HandleExprSystemRelation(*self_), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" bool HandleExprSystemRelation_is_null(const HandleExprSystemRelation* self_) { return self_->IsNull(); }
-extern "C" void HandleExprTangent_destructor(HandleExprTangent* self_) { delete self_; }
-extern "C" OcctResult<HandleExprTangent*> HandleExprTangent_clone(const HandleExprTangent* self_) {
-    try { return {new HandleExprTangent(*self_), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" bool HandleExprTangent_is_null(const HandleExprTangent* self_) { return self_->IsNull(); }
-extern "C" void HandleExprTanh_destructor(HandleExprTanh* self_) { delete self_; }
-extern "C" OcctResult<HandleExprTanh*> HandleExprTanh_clone(const HandleExprTanh* self_) {
-    try { return {new HandleExprTanh(*self_), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" bool HandleExprTanh_is_null(const HandleExprTanh* self_) { return self_->IsNull(); }
-extern "C" void HandleExprUnaryExpression_destructor(HandleExprUnaryExpression* self_) { delete self_; }
-extern "C" OcctResult<HandleExprUnaryExpression*> HandleExprUnaryExpression_clone(const HandleExprUnaryExpression* self_) {
-    try { return {new HandleExprUnaryExpression(*self_), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" bool HandleExprUnaryExpression_is_null(const HandleExprUnaryExpression* self_) { return self_->IsNull(); }
-extern "C" void HandleExprUnaryFunction_destructor(HandleExprUnaryFunction* self_) { delete self_; }
-extern "C" OcctResult<HandleExprUnaryFunction*> HandleExprUnaryFunction_clone(const HandleExprUnaryFunction* self_) {
-    try { return {new HandleExprUnaryFunction(*self_), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" bool HandleExprUnaryFunction_is_null(const HandleExprUnaryFunction* self_) { return self_->IsNull(); }
-extern "C" void HandleExprUnaryMinus_destructor(HandleExprUnaryMinus* self_) { delete self_; }
-extern "C" OcctResult<HandleExprUnaryMinus*> HandleExprUnaryMinus_clone(const HandleExprUnaryMinus* self_) {
-    try { return {new HandleExprUnaryMinus(*self_), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" bool HandleExprUnaryMinus_is_null(const HandleExprUnaryMinus* self_) { return self_->IsNull(); }
+extern "C" bool Handle_Expr_UnaryMinus_is_null(const Handle_Expr_UnaryMinus* self_) { return self_->IsNull(); }
 
 // ========================
 // Expr_Absolute wrappers
@@ -531,10 +473,6 @@ extern "C" OcctResult<bool> Expr_Absolute_is_linear(const Expr_Absolute* self_) 
     try { return {self_->IsLinear(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<double> Expr_Absolute_evaluate(const Expr_Absolute* self_, Expr_Array1OfNamedUnknown const* vars, TColStd_Array1OfReal const* vals) {
-    try { return {self_->Evaluate(*vars, *vals), nullptr}; }
-    OCCT_CATCH_RETURN
-}
 extern "C" OcctResult<Handle(Standard_Type) const*> Expr_Absolute_dynamic_type(const Expr_Absolute* self_) {
     try { return {&(self_->DynamicType()), nullptr}; }
     OCCT_CATCH_RETURN
@@ -553,28 +491,28 @@ extern "C" OcctResult<const Expr_GeneralExpression*> Expr_Absolute_as_Expr_Gener
 extern "C" OcctResult<Expr_GeneralExpression*> Expr_Absolute_as_Expr_GeneralExpression_mut(Expr_Absolute* self_) { return {static_cast<Expr_GeneralExpression*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> Expr_Absolute_as_Standard_Transient(const Expr_Absolute* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> Expr_Absolute_as_Standard_Transient_mut(Expr_Absolute* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleExprAbsolute*> Expr_Absolute_to_handle(Expr_Absolute* obj) {
-    try { return {new HandleExprAbsolute(obj), nullptr}; }
+extern "C" OcctResult<Handle_Expr_Absolute*> Expr_Absolute_to_handle(Expr_Absolute* obj) {
+    try { return {new Handle_Expr_Absolute(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const Expr_Absolute*> HandleExprAbsolute_get(const HandleExprAbsolute* handle) {
+extern "C" OcctResult<const Expr_Absolute*> Handle_Expr_Absolute_get(const Handle_Expr_Absolute* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Expr_Absolute*> HandleExprAbsolute_get_mut(HandleExprAbsolute* handle) {
+extern "C" OcctResult<Expr_Absolute*> Handle_Expr_Absolute_get_mut(Handle_Expr_Absolute* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleExprUnaryExpression*> HandleExprAbsolute_to_HandleExprUnaryExpression(const HandleExprAbsolute* self_) {
-    try { return {new HandleExprUnaryExpression(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Expr_UnaryExpression*> Handle_Expr_Absolute_to_Handle_Expr_UnaryExpression(const Handle_Expr_Absolute* self_) {
+    try { return {new Handle_Expr_UnaryExpression(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleExprGeneralExpression*> HandleExprAbsolute_to_HandleExprGeneralExpression(const HandleExprAbsolute* self_) {
-    try { return {new HandleExprGeneralExpression(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Expr_GeneralExpression*> Handle_Expr_Absolute_to_Handle_Expr_GeneralExpression(const Handle_Expr_Absolute* self_) {
+    try { return {new Handle_Expr_GeneralExpression(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleExprAbsolute_to_HandleStandardTransient(const HandleExprAbsolute* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_Expr_Absolute_to_Handle_Standard_Transient(const Handle_Expr_Absolute* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(Expr_GeneralExpression) const*> Expr_Absolute_inherited_Operand(const Expr_Absolute* self) {
@@ -683,10 +621,6 @@ extern "C" OcctResult<bool> Expr_ArcCosine_is_linear(const Expr_ArcCosine* self_
     try { return {self_->IsLinear(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<double> Expr_ArcCosine_evaluate(const Expr_ArcCosine* self_, Expr_Array1OfNamedUnknown const* vars, TColStd_Array1OfReal const* vals) {
-    try { return {self_->Evaluate(*vars, *vals), nullptr}; }
-    OCCT_CATCH_RETURN
-}
 extern "C" OcctResult<Handle(Standard_Type) const*> Expr_ArcCosine_dynamic_type(const Expr_ArcCosine* self_) {
     try { return {&(self_->DynamicType()), nullptr}; }
     OCCT_CATCH_RETURN
@@ -705,28 +639,28 @@ extern "C" OcctResult<const Expr_GeneralExpression*> Expr_ArcCosine_as_Expr_Gene
 extern "C" OcctResult<Expr_GeneralExpression*> Expr_ArcCosine_as_Expr_GeneralExpression_mut(Expr_ArcCosine* self_) { return {static_cast<Expr_GeneralExpression*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> Expr_ArcCosine_as_Standard_Transient(const Expr_ArcCosine* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> Expr_ArcCosine_as_Standard_Transient_mut(Expr_ArcCosine* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleExprArcCosine*> Expr_ArcCosine_to_handle(Expr_ArcCosine* obj) {
-    try { return {new HandleExprArcCosine(obj), nullptr}; }
+extern "C" OcctResult<Handle_Expr_ArcCosine*> Expr_ArcCosine_to_handle(Expr_ArcCosine* obj) {
+    try { return {new Handle_Expr_ArcCosine(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const Expr_ArcCosine*> HandleExprArcCosine_get(const HandleExprArcCosine* handle) {
+extern "C" OcctResult<const Expr_ArcCosine*> Handle_Expr_ArcCosine_get(const Handle_Expr_ArcCosine* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Expr_ArcCosine*> HandleExprArcCosine_get_mut(HandleExprArcCosine* handle) {
+extern "C" OcctResult<Expr_ArcCosine*> Handle_Expr_ArcCosine_get_mut(Handle_Expr_ArcCosine* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleExprUnaryExpression*> HandleExprArcCosine_to_HandleExprUnaryExpression(const HandleExprArcCosine* self_) {
-    try { return {new HandleExprUnaryExpression(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Expr_UnaryExpression*> Handle_Expr_ArcCosine_to_Handle_Expr_UnaryExpression(const Handle_Expr_ArcCosine* self_) {
+    try { return {new Handle_Expr_UnaryExpression(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleExprGeneralExpression*> HandleExprArcCosine_to_HandleExprGeneralExpression(const HandleExprArcCosine* self_) {
-    try { return {new HandleExprGeneralExpression(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Expr_GeneralExpression*> Handle_Expr_ArcCosine_to_Handle_Expr_GeneralExpression(const Handle_Expr_ArcCosine* self_) {
+    try { return {new Handle_Expr_GeneralExpression(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleExprArcCosine_to_HandleStandardTransient(const HandleExprArcCosine* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_Expr_ArcCosine_to_Handle_Standard_Transient(const Handle_Expr_ArcCosine* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(Expr_GeneralExpression) const*> Expr_ArcCosine_inherited_Operand(const Expr_ArcCosine* self) {
@@ -835,10 +769,6 @@ extern "C" OcctResult<bool> Expr_ArcSine_is_linear(const Expr_ArcSine* self_) {
     try { return {self_->IsLinear(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<double> Expr_ArcSine_evaluate(const Expr_ArcSine* self_, Expr_Array1OfNamedUnknown const* vars, TColStd_Array1OfReal const* vals) {
-    try { return {self_->Evaluate(*vars, *vals), nullptr}; }
-    OCCT_CATCH_RETURN
-}
 extern "C" OcctResult<Handle(Standard_Type) const*> Expr_ArcSine_dynamic_type(const Expr_ArcSine* self_) {
     try { return {&(self_->DynamicType()), nullptr}; }
     OCCT_CATCH_RETURN
@@ -857,28 +787,28 @@ extern "C" OcctResult<const Expr_GeneralExpression*> Expr_ArcSine_as_Expr_Genera
 extern "C" OcctResult<Expr_GeneralExpression*> Expr_ArcSine_as_Expr_GeneralExpression_mut(Expr_ArcSine* self_) { return {static_cast<Expr_GeneralExpression*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> Expr_ArcSine_as_Standard_Transient(const Expr_ArcSine* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> Expr_ArcSine_as_Standard_Transient_mut(Expr_ArcSine* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleExprArcSine*> Expr_ArcSine_to_handle(Expr_ArcSine* obj) {
-    try { return {new HandleExprArcSine(obj), nullptr}; }
+extern "C" OcctResult<Handle_Expr_ArcSine*> Expr_ArcSine_to_handle(Expr_ArcSine* obj) {
+    try { return {new Handle_Expr_ArcSine(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const Expr_ArcSine*> HandleExprArcSine_get(const HandleExprArcSine* handle) {
+extern "C" OcctResult<const Expr_ArcSine*> Handle_Expr_ArcSine_get(const Handle_Expr_ArcSine* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Expr_ArcSine*> HandleExprArcSine_get_mut(HandleExprArcSine* handle) {
+extern "C" OcctResult<Expr_ArcSine*> Handle_Expr_ArcSine_get_mut(Handle_Expr_ArcSine* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleExprUnaryExpression*> HandleExprArcSine_to_HandleExprUnaryExpression(const HandleExprArcSine* self_) {
-    try { return {new HandleExprUnaryExpression(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Expr_UnaryExpression*> Handle_Expr_ArcSine_to_Handle_Expr_UnaryExpression(const Handle_Expr_ArcSine* self_) {
+    try { return {new Handle_Expr_UnaryExpression(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleExprGeneralExpression*> HandleExprArcSine_to_HandleExprGeneralExpression(const HandleExprArcSine* self_) {
-    try { return {new HandleExprGeneralExpression(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Expr_GeneralExpression*> Handle_Expr_ArcSine_to_Handle_Expr_GeneralExpression(const Handle_Expr_ArcSine* self_) {
+    try { return {new Handle_Expr_GeneralExpression(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleExprArcSine_to_HandleStandardTransient(const HandleExprArcSine* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_Expr_ArcSine_to_Handle_Standard_Transient(const Handle_Expr_ArcSine* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(Expr_GeneralExpression) const*> Expr_ArcSine_inherited_Operand(const Expr_ArcSine* self) {
@@ -987,10 +917,6 @@ extern "C" OcctResult<bool> Expr_ArcTangent_is_linear(const Expr_ArcTangent* sel
     try { return {self_->IsLinear(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<double> Expr_ArcTangent_evaluate(const Expr_ArcTangent* self_, Expr_Array1OfNamedUnknown const* vars, TColStd_Array1OfReal const* vals) {
-    try { return {self_->Evaluate(*vars, *vals), nullptr}; }
-    OCCT_CATCH_RETURN
-}
 extern "C" OcctResult<Handle(Standard_Type) const*> Expr_ArcTangent_dynamic_type(const Expr_ArcTangent* self_) {
     try { return {&(self_->DynamicType()), nullptr}; }
     OCCT_CATCH_RETURN
@@ -1009,28 +935,28 @@ extern "C" OcctResult<const Expr_GeneralExpression*> Expr_ArcTangent_as_Expr_Gen
 extern "C" OcctResult<Expr_GeneralExpression*> Expr_ArcTangent_as_Expr_GeneralExpression_mut(Expr_ArcTangent* self_) { return {static_cast<Expr_GeneralExpression*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> Expr_ArcTangent_as_Standard_Transient(const Expr_ArcTangent* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> Expr_ArcTangent_as_Standard_Transient_mut(Expr_ArcTangent* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleExprArcTangent*> Expr_ArcTangent_to_handle(Expr_ArcTangent* obj) {
-    try { return {new HandleExprArcTangent(obj), nullptr}; }
+extern "C" OcctResult<Handle_Expr_ArcTangent*> Expr_ArcTangent_to_handle(Expr_ArcTangent* obj) {
+    try { return {new Handle_Expr_ArcTangent(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const Expr_ArcTangent*> HandleExprArcTangent_get(const HandleExprArcTangent* handle) {
+extern "C" OcctResult<const Expr_ArcTangent*> Handle_Expr_ArcTangent_get(const Handle_Expr_ArcTangent* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Expr_ArcTangent*> HandleExprArcTangent_get_mut(HandleExprArcTangent* handle) {
+extern "C" OcctResult<Expr_ArcTangent*> Handle_Expr_ArcTangent_get_mut(Handle_Expr_ArcTangent* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleExprUnaryExpression*> HandleExprArcTangent_to_HandleExprUnaryExpression(const HandleExprArcTangent* self_) {
-    try { return {new HandleExprUnaryExpression(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Expr_UnaryExpression*> Handle_Expr_ArcTangent_to_Handle_Expr_UnaryExpression(const Handle_Expr_ArcTangent* self_) {
+    try { return {new Handle_Expr_UnaryExpression(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleExprGeneralExpression*> HandleExprArcTangent_to_HandleExprGeneralExpression(const HandleExprArcTangent* self_) {
-    try { return {new HandleExprGeneralExpression(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Expr_GeneralExpression*> Handle_Expr_ArcTangent_to_Handle_Expr_GeneralExpression(const Handle_Expr_ArcTangent* self_) {
+    try { return {new Handle_Expr_GeneralExpression(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleExprArcTangent_to_HandleStandardTransient(const HandleExprArcTangent* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_Expr_ArcTangent_to_Handle_Standard_Transient(const Handle_Expr_ArcTangent* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(Expr_GeneralExpression) const*> Expr_ArcTangent_inherited_Operand(const Expr_ArcTangent* self) {
@@ -1139,10 +1065,6 @@ extern "C" OcctResult<bool> Expr_ArgCosh_is_linear(const Expr_ArgCosh* self_) {
     try { return {self_->IsLinear(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<double> Expr_ArgCosh_evaluate(const Expr_ArgCosh* self_, Expr_Array1OfNamedUnknown const* vars, TColStd_Array1OfReal const* vals) {
-    try { return {self_->Evaluate(*vars, *vals), nullptr}; }
-    OCCT_CATCH_RETURN
-}
 extern "C" OcctResult<Handle(Standard_Type) const*> Expr_ArgCosh_dynamic_type(const Expr_ArgCosh* self_) {
     try { return {&(self_->DynamicType()), nullptr}; }
     OCCT_CATCH_RETURN
@@ -1161,28 +1083,28 @@ extern "C" OcctResult<const Expr_GeneralExpression*> Expr_ArgCosh_as_Expr_Genera
 extern "C" OcctResult<Expr_GeneralExpression*> Expr_ArgCosh_as_Expr_GeneralExpression_mut(Expr_ArgCosh* self_) { return {static_cast<Expr_GeneralExpression*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> Expr_ArgCosh_as_Standard_Transient(const Expr_ArgCosh* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> Expr_ArgCosh_as_Standard_Transient_mut(Expr_ArgCosh* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleExprArgCosh*> Expr_ArgCosh_to_handle(Expr_ArgCosh* obj) {
-    try { return {new HandleExprArgCosh(obj), nullptr}; }
+extern "C" OcctResult<Handle_Expr_ArgCosh*> Expr_ArgCosh_to_handle(Expr_ArgCosh* obj) {
+    try { return {new Handle_Expr_ArgCosh(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const Expr_ArgCosh*> HandleExprArgCosh_get(const HandleExprArgCosh* handle) {
+extern "C" OcctResult<const Expr_ArgCosh*> Handle_Expr_ArgCosh_get(const Handle_Expr_ArgCosh* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Expr_ArgCosh*> HandleExprArgCosh_get_mut(HandleExprArgCosh* handle) {
+extern "C" OcctResult<Expr_ArgCosh*> Handle_Expr_ArgCosh_get_mut(Handle_Expr_ArgCosh* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleExprUnaryExpression*> HandleExprArgCosh_to_HandleExprUnaryExpression(const HandleExprArgCosh* self_) {
-    try { return {new HandleExprUnaryExpression(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Expr_UnaryExpression*> Handle_Expr_ArgCosh_to_Handle_Expr_UnaryExpression(const Handle_Expr_ArgCosh* self_) {
+    try { return {new Handle_Expr_UnaryExpression(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleExprGeneralExpression*> HandleExprArgCosh_to_HandleExprGeneralExpression(const HandleExprArgCosh* self_) {
-    try { return {new HandleExprGeneralExpression(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Expr_GeneralExpression*> Handle_Expr_ArgCosh_to_Handle_Expr_GeneralExpression(const Handle_Expr_ArgCosh* self_) {
+    try { return {new Handle_Expr_GeneralExpression(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleExprArgCosh_to_HandleStandardTransient(const HandleExprArgCosh* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_Expr_ArgCosh_to_Handle_Standard_Transient(const Handle_Expr_ArgCosh* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(Expr_GeneralExpression) const*> Expr_ArgCosh_inherited_Operand(const Expr_ArgCosh* self) {
@@ -1291,10 +1213,6 @@ extern "C" OcctResult<bool> Expr_ArgSinh_is_linear(const Expr_ArgSinh* self_) {
     try { return {self_->IsLinear(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<double> Expr_ArgSinh_evaluate(const Expr_ArgSinh* self_, Expr_Array1OfNamedUnknown const* vars, TColStd_Array1OfReal const* vals) {
-    try { return {self_->Evaluate(*vars, *vals), nullptr}; }
-    OCCT_CATCH_RETURN
-}
 extern "C" OcctResult<Handle(Standard_Type) const*> Expr_ArgSinh_dynamic_type(const Expr_ArgSinh* self_) {
     try { return {&(self_->DynamicType()), nullptr}; }
     OCCT_CATCH_RETURN
@@ -1313,28 +1231,28 @@ extern "C" OcctResult<const Expr_GeneralExpression*> Expr_ArgSinh_as_Expr_Genera
 extern "C" OcctResult<Expr_GeneralExpression*> Expr_ArgSinh_as_Expr_GeneralExpression_mut(Expr_ArgSinh* self_) { return {static_cast<Expr_GeneralExpression*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> Expr_ArgSinh_as_Standard_Transient(const Expr_ArgSinh* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> Expr_ArgSinh_as_Standard_Transient_mut(Expr_ArgSinh* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleExprArgSinh*> Expr_ArgSinh_to_handle(Expr_ArgSinh* obj) {
-    try { return {new HandleExprArgSinh(obj), nullptr}; }
+extern "C" OcctResult<Handle_Expr_ArgSinh*> Expr_ArgSinh_to_handle(Expr_ArgSinh* obj) {
+    try { return {new Handle_Expr_ArgSinh(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const Expr_ArgSinh*> HandleExprArgSinh_get(const HandleExprArgSinh* handle) {
+extern "C" OcctResult<const Expr_ArgSinh*> Handle_Expr_ArgSinh_get(const Handle_Expr_ArgSinh* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Expr_ArgSinh*> HandleExprArgSinh_get_mut(HandleExprArgSinh* handle) {
+extern "C" OcctResult<Expr_ArgSinh*> Handle_Expr_ArgSinh_get_mut(Handle_Expr_ArgSinh* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleExprUnaryExpression*> HandleExprArgSinh_to_HandleExprUnaryExpression(const HandleExprArgSinh* self_) {
-    try { return {new HandleExprUnaryExpression(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Expr_UnaryExpression*> Handle_Expr_ArgSinh_to_Handle_Expr_UnaryExpression(const Handle_Expr_ArgSinh* self_) {
+    try { return {new Handle_Expr_UnaryExpression(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleExprGeneralExpression*> HandleExprArgSinh_to_HandleExprGeneralExpression(const HandleExprArgSinh* self_) {
-    try { return {new HandleExprGeneralExpression(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Expr_GeneralExpression*> Handle_Expr_ArgSinh_to_Handle_Expr_GeneralExpression(const Handle_Expr_ArgSinh* self_) {
+    try { return {new Handle_Expr_GeneralExpression(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleExprArgSinh_to_HandleStandardTransient(const HandleExprArgSinh* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_Expr_ArgSinh_to_Handle_Standard_Transient(const Handle_Expr_ArgSinh* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(Expr_GeneralExpression) const*> Expr_ArgSinh_inherited_Operand(const Expr_ArgSinh* self) {
@@ -1443,10 +1361,6 @@ extern "C" OcctResult<bool> Expr_ArgTanh_is_linear(const Expr_ArgTanh* self_) {
     try { return {self_->IsLinear(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<double> Expr_ArgTanh_evaluate(const Expr_ArgTanh* self_, Expr_Array1OfNamedUnknown const* vars, TColStd_Array1OfReal const* vals) {
-    try { return {self_->Evaluate(*vars, *vals), nullptr}; }
-    OCCT_CATCH_RETURN
-}
 extern "C" OcctResult<Handle(Standard_Type) const*> Expr_ArgTanh_dynamic_type(const Expr_ArgTanh* self_) {
     try { return {&(self_->DynamicType()), nullptr}; }
     OCCT_CATCH_RETURN
@@ -1465,28 +1379,28 @@ extern "C" OcctResult<const Expr_GeneralExpression*> Expr_ArgTanh_as_Expr_Genera
 extern "C" OcctResult<Expr_GeneralExpression*> Expr_ArgTanh_as_Expr_GeneralExpression_mut(Expr_ArgTanh* self_) { return {static_cast<Expr_GeneralExpression*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> Expr_ArgTanh_as_Standard_Transient(const Expr_ArgTanh* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> Expr_ArgTanh_as_Standard_Transient_mut(Expr_ArgTanh* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleExprArgTanh*> Expr_ArgTanh_to_handle(Expr_ArgTanh* obj) {
-    try { return {new HandleExprArgTanh(obj), nullptr}; }
+extern "C" OcctResult<Handle_Expr_ArgTanh*> Expr_ArgTanh_to_handle(Expr_ArgTanh* obj) {
+    try { return {new Handle_Expr_ArgTanh(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const Expr_ArgTanh*> HandleExprArgTanh_get(const HandleExprArgTanh* handle) {
+extern "C" OcctResult<const Expr_ArgTanh*> Handle_Expr_ArgTanh_get(const Handle_Expr_ArgTanh* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Expr_ArgTanh*> HandleExprArgTanh_get_mut(HandleExprArgTanh* handle) {
+extern "C" OcctResult<Expr_ArgTanh*> Handle_Expr_ArgTanh_get_mut(Handle_Expr_ArgTanh* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleExprUnaryExpression*> HandleExprArgTanh_to_HandleExprUnaryExpression(const HandleExprArgTanh* self_) {
-    try { return {new HandleExprUnaryExpression(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Expr_UnaryExpression*> Handle_Expr_ArgTanh_to_Handle_Expr_UnaryExpression(const Handle_Expr_ArgTanh* self_) {
+    try { return {new Handle_Expr_UnaryExpression(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleExprGeneralExpression*> HandleExprArgTanh_to_HandleExprGeneralExpression(const HandleExprArgTanh* self_) {
-    try { return {new HandleExprGeneralExpression(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Expr_GeneralExpression*> Handle_Expr_ArgTanh_to_Handle_Expr_GeneralExpression(const Handle_Expr_ArgTanh* self_) {
+    try { return {new Handle_Expr_GeneralExpression(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleExprArgTanh_to_HandleStandardTransient(const HandleExprArgTanh* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_Expr_ArgTanh_to_Handle_Standard_Transient(const Handle_Expr_ArgTanh* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(Expr_GeneralExpression) const*> Expr_ArgTanh_inherited_Operand(const Expr_ArgTanh* self) {
@@ -1623,51 +1537,51 @@ extern "C" OcctResult<const Expr_GeneralExpression*> Expr_BinaryExpression_as_Ex
 extern "C" OcctResult<Expr_GeneralExpression*> Expr_BinaryExpression_as_Expr_GeneralExpression_mut(Expr_BinaryExpression* self_) { return {static_cast<Expr_GeneralExpression*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> Expr_BinaryExpression_as_Standard_Transient(const Expr_BinaryExpression* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> Expr_BinaryExpression_as_Standard_Transient_mut(Expr_BinaryExpression* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<const Expr_BinaryExpression*> HandleExprBinaryExpression_get(const HandleExprBinaryExpression* handle) {
+extern "C" OcctResult<const Expr_BinaryExpression*> Handle_Expr_BinaryExpression_get(const Handle_Expr_BinaryExpression* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Expr_BinaryExpression*> HandleExprBinaryExpression_get_mut(HandleExprBinaryExpression* handle) {
+extern "C" OcctResult<Expr_BinaryExpression*> Handle_Expr_BinaryExpression_get_mut(Handle_Expr_BinaryExpression* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleExprGeneralExpression*> HandleExprBinaryExpression_to_HandleExprGeneralExpression(const HandleExprBinaryExpression* self_) {
-    try { return {new HandleExprGeneralExpression(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Expr_GeneralExpression*> Handle_Expr_BinaryExpression_to_Handle_Expr_GeneralExpression(const Handle_Expr_BinaryExpression* self_) {
+    try { return {new Handle_Expr_GeneralExpression(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleExprBinaryExpression_to_HandleStandardTransient(const HandleExprBinaryExpression* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_Expr_BinaryExpression_to_Handle_Standard_Transient(const Handle_Expr_BinaryExpression* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleExprBinaryFunction*> HandleExprBinaryExpression_downcast_to_HandleExprBinaryFunction(const HandleExprBinaryExpression* self_) {
+extern "C" OcctResult<Handle_Expr_BinaryFunction*> Handle_Expr_BinaryExpression_downcast_to_Handle_Expr_BinaryFunction(const Handle_Expr_BinaryExpression* self_) {
     try {
     opencascade::handle<Expr_BinaryFunction> result = opencascade::handle<Expr_BinaryFunction>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleExprBinaryFunction(result), nullptr};
+    return {new Handle_Expr_BinaryFunction(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleExprDifference*> HandleExprBinaryExpression_downcast_to_HandleExprDifference(const HandleExprBinaryExpression* self_) {
+extern "C" OcctResult<Handle_Expr_Difference*> Handle_Expr_BinaryExpression_downcast_to_Handle_Expr_Difference(const Handle_Expr_BinaryExpression* self_) {
     try {
     opencascade::handle<Expr_Difference> result = opencascade::handle<Expr_Difference>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleExprDifference(result), nullptr};
+    return {new Handle_Expr_Difference(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleExprDivision*> HandleExprBinaryExpression_downcast_to_HandleExprDivision(const HandleExprBinaryExpression* self_) {
+extern "C" OcctResult<Handle_Expr_Division*> Handle_Expr_BinaryExpression_downcast_to_Handle_Expr_Division(const Handle_Expr_BinaryExpression* self_) {
     try {
     opencascade::handle<Expr_Division> result = opencascade::handle<Expr_Division>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleExprDivision(result), nullptr};
+    return {new Handle_Expr_Division(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleExprExponentiate*> HandleExprBinaryExpression_downcast_to_HandleExprExponentiate(const HandleExprBinaryExpression* self_) {
+extern "C" OcctResult<Handle_Expr_Exponentiate*> Handle_Expr_BinaryExpression_downcast_to_Handle_Expr_Exponentiate(const Handle_Expr_BinaryExpression* self_) {
     try {
     opencascade::handle<Expr_Exponentiate> result = opencascade::handle<Expr_Exponentiate>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleExprExponentiate(result), nullptr};
+    return {new Handle_Expr_Exponentiate(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
@@ -1697,10 +1611,6 @@ extern "C" OcctResult<Handle(Expr_GeneralExpression)*> Expr_BinaryExpression_inh
 }
 extern "C" OcctResult<Handle(Expr_GeneralExpression)*> Expr_BinaryExpression_inherited_NDerivative(const Expr_BinaryExpression* self, Handle(Expr_NamedUnknown) const& X, int32_t N) {
     try { return {new Handle(Expr_GeneralExpression)(self->NDerivative(X, N)), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<double> Expr_BinaryExpression_inherited_Evaluate(const Expr_BinaryExpression* self, Expr_Array1OfNamedUnknown const& vars, TColStd_Array1OfReal const& vals) {
-    try { return {self->Evaluate(vars, vals), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<double> Expr_BinaryExpression_inherited_EvaluateNumeric(const Expr_BinaryExpression* self) {
@@ -1777,10 +1687,6 @@ extern "C" OcctResult<bool> Expr_BinaryFunction_is_linear(const Expr_BinaryFunct
     try { return {self_->IsLinear(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<double> Expr_BinaryFunction_evaluate(const Expr_BinaryFunction* self_, Expr_Array1OfNamedUnknown const* vars, TColStd_Array1OfReal const* vals) {
-    try { return {self_->Evaluate(*vars, *vals), nullptr}; }
-    OCCT_CATCH_RETURN
-}
 extern "C" OcctResult<Handle(Standard_Type) const*> Expr_BinaryFunction_dynamic_type(const Expr_BinaryFunction* self_) {
     try { return {&(self_->DynamicType()), nullptr}; }
     OCCT_CATCH_RETURN
@@ -1799,28 +1705,28 @@ extern "C" OcctResult<const Expr_GeneralExpression*> Expr_BinaryFunction_as_Expr
 extern "C" OcctResult<Expr_GeneralExpression*> Expr_BinaryFunction_as_Expr_GeneralExpression_mut(Expr_BinaryFunction* self_) { return {static_cast<Expr_GeneralExpression*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> Expr_BinaryFunction_as_Standard_Transient(const Expr_BinaryFunction* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> Expr_BinaryFunction_as_Standard_Transient_mut(Expr_BinaryFunction* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleExprBinaryFunction*> Expr_BinaryFunction_to_handle(Expr_BinaryFunction* obj) {
-    try { return {new HandleExprBinaryFunction(obj), nullptr}; }
+extern "C" OcctResult<Handle_Expr_BinaryFunction*> Expr_BinaryFunction_to_handle(Expr_BinaryFunction* obj) {
+    try { return {new Handle_Expr_BinaryFunction(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const Expr_BinaryFunction*> HandleExprBinaryFunction_get(const HandleExprBinaryFunction* handle) {
+extern "C" OcctResult<const Expr_BinaryFunction*> Handle_Expr_BinaryFunction_get(const Handle_Expr_BinaryFunction* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Expr_BinaryFunction*> HandleExprBinaryFunction_get_mut(HandleExprBinaryFunction* handle) {
+extern "C" OcctResult<Expr_BinaryFunction*> Handle_Expr_BinaryFunction_get_mut(Handle_Expr_BinaryFunction* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleExprBinaryExpression*> HandleExprBinaryFunction_to_HandleExprBinaryExpression(const HandleExprBinaryFunction* self_) {
-    try { return {new HandleExprBinaryExpression(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Expr_BinaryExpression*> Handle_Expr_BinaryFunction_to_Handle_Expr_BinaryExpression(const Handle_Expr_BinaryFunction* self_) {
+    try { return {new Handle_Expr_BinaryExpression(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleExprGeneralExpression*> HandleExprBinaryFunction_to_HandleExprGeneralExpression(const HandleExprBinaryFunction* self_) {
-    try { return {new HandleExprGeneralExpression(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Expr_GeneralExpression*> Handle_Expr_BinaryFunction_to_Handle_Expr_GeneralExpression(const Handle_Expr_BinaryFunction* self_) {
+    try { return {new Handle_Expr_GeneralExpression(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleExprBinaryFunction_to_HandleStandardTransient(const HandleExprBinaryFunction* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_Expr_BinaryFunction_to_Handle_Standard_Transient(const Handle_Expr_BinaryFunction* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(Expr_GeneralExpression) const*> Expr_BinaryFunction_inherited_FirstOperand(const Expr_BinaryFunction* self) {
@@ -1937,10 +1843,6 @@ extern "C" OcctResult<bool> Expr_Cosh_is_linear(const Expr_Cosh* self_) {
     try { return {self_->IsLinear(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<double> Expr_Cosh_evaluate(const Expr_Cosh* self_, Expr_Array1OfNamedUnknown const* vars, TColStd_Array1OfReal const* vals) {
-    try { return {self_->Evaluate(*vars, *vals), nullptr}; }
-    OCCT_CATCH_RETURN
-}
 extern "C" OcctResult<Handle(Standard_Type) const*> Expr_Cosh_dynamic_type(const Expr_Cosh* self_) {
     try { return {&(self_->DynamicType()), nullptr}; }
     OCCT_CATCH_RETURN
@@ -1959,28 +1861,28 @@ extern "C" OcctResult<const Expr_GeneralExpression*> Expr_Cosh_as_Expr_GeneralEx
 extern "C" OcctResult<Expr_GeneralExpression*> Expr_Cosh_as_Expr_GeneralExpression_mut(Expr_Cosh* self_) { return {static_cast<Expr_GeneralExpression*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> Expr_Cosh_as_Standard_Transient(const Expr_Cosh* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> Expr_Cosh_as_Standard_Transient_mut(Expr_Cosh* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleExprCosh*> Expr_Cosh_to_handle(Expr_Cosh* obj) {
-    try { return {new HandleExprCosh(obj), nullptr}; }
+extern "C" OcctResult<Handle_Expr_Cosh*> Expr_Cosh_to_handle(Expr_Cosh* obj) {
+    try { return {new Handle_Expr_Cosh(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const Expr_Cosh*> HandleExprCosh_get(const HandleExprCosh* handle) {
+extern "C" OcctResult<const Expr_Cosh*> Handle_Expr_Cosh_get(const Handle_Expr_Cosh* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Expr_Cosh*> HandleExprCosh_get_mut(HandleExprCosh* handle) {
+extern "C" OcctResult<Expr_Cosh*> Handle_Expr_Cosh_get_mut(Handle_Expr_Cosh* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleExprUnaryExpression*> HandleExprCosh_to_HandleExprUnaryExpression(const HandleExprCosh* self_) {
-    try { return {new HandleExprUnaryExpression(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Expr_UnaryExpression*> Handle_Expr_Cosh_to_Handle_Expr_UnaryExpression(const Handle_Expr_Cosh* self_) {
+    try { return {new Handle_Expr_UnaryExpression(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleExprGeneralExpression*> HandleExprCosh_to_HandleExprGeneralExpression(const HandleExprCosh* self_) {
-    try { return {new HandleExprGeneralExpression(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Expr_GeneralExpression*> Handle_Expr_Cosh_to_Handle_Expr_GeneralExpression(const Handle_Expr_Cosh* self_) {
+    try { return {new Handle_Expr_GeneralExpression(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleExprCosh_to_HandleStandardTransient(const HandleExprCosh* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_Expr_Cosh_to_Handle_Standard_Transient(const Handle_Expr_Cosh* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(Expr_GeneralExpression) const*> Expr_Cosh_inherited_Operand(const Expr_Cosh* self) {
@@ -2089,10 +1991,6 @@ extern "C" OcctResult<bool> Expr_Cosine_is_linear(const Expr_Cosine* self_) {
     try { return {self_->IsLinear(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<double> Expr_Cosine_evaluate(const Expr_Cosine* self_, Expr_Array1OfNamedUnknown const* vars, TColStd_Array1OfReal const* vals) {
-    try { return {self_->Evaluate(*vars, *vals), nullptr}; }
-    OCCT_CATCH_RETURN
-}
 extern "C" OcctResult<Handle(Standard_Type) const*> Expr_Cosine_dynamic_type(const Expr_Cosine* self_) {
     try { return {&(self_->DynamicType()), nullptr}; }
     OCCT_CATCH_RETURN
@@ -2111,28 +2009,28 @@ extern "C" OcctResult<const Expr_GeneralExpression*> Expr_Cosine_as_Expr_General
 extern "C" OcctResult<Expr_GeneralExpression*> Expr_Cosine_as_Expr_GeneralExpression_mut(Expr_Cosine* self_) { return {static_cast<Expr_GeneralExpression*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> Expr_Cosine_as_Standard_Transient(const Expr_Cosine* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> Expr_Cosine_as_Standard_Transient_mut(Expr_Cosine* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleExprCosine*> Expr_Cosine_to_handle(Expr_Cosine* obj) {
-    try { return {new HandleExprCosine(obj), nullptr}; }
+extern "C" OcctResult<Handle_Expr_Cosine*> Expr_Cosine_to_handle(Expr_Cosine* obj) {
+    try { return {new Handle_Expr_Cosine(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const Expr_Cosine*> HandleExprCosine_get(const HandleExprCosine* handle) {
+extern "C" OcctResult<const Expr_Cosine*> Handle_Expr_Cosine_get(const Handle_Expr_Cosine* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Expr_Cosine*> HandleExprCosine_get_mut(HandleExprCosine* handle) {
+extern "C" OcctResult<Expr_Cosine*> Handle_Expr_Cosine_get_mut(Handle_Expr_Cosine* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleExprUnaryExpression*> HandleExprCosine_to_HandleExprUnaryExpression(const HandleExprCosine* self_) {
-    try { return {new HandleExprUnaryExpression(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Expr_UnaryExpression*> Handle_Expr_Cosine_to_Handle_Expr_UnaryExpression(const Handle_Expr_Cosine* self_) {
+    try { return {new Handle_Expr_UnaryExpression(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleExprGeneralExpression*> HandleExprCosine_to_HandleExprGeneralExpression(const HandleExprCosine* self_) {
-    try { return {new HandleExprGeneralExpression(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Expr_GeneralExpression*> Handle_Expr_Cosine_to_Handle_Expr_GeneralExpression(const Handle_Expr_Cosine* self_) {
+    try { return {new Handle_Expr_GeneralExpression(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleExprCosine_to_HandleStandardTransient(const HandleExprCosine* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_Expr_Cosine_to_Handle_Standard_Transient(const Handle_Expr_Cosine* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(Expr_GeneralExpression) const*> Expr_Cosine_inherited_Operand(const Expr_Cosine* self) {
@@ -2245,10 +2143,6 @@ extern "C" OcctResult<bool> Expr_Difference_is_linear(const Expr_Difference* sel
     try { return {self_->IsLinear(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<double> Expr_Difference_evaluate(const Expr_Difference* self_, Expr_Array1OfNamedUnknown const* vars, TColStd_Array1OfReal const* vals) {
-    try { return {self_->Evaluate(*vars, *vals), nullptr}; }
-    OCCT_CATCH_RETURN
-}
 extern "C" OcctResult<Handle(Standard_Type) const*> Expr_Difference_dynamic_type(const Expr_Difference* self_) {
     try { return {&(self_->DynamicType()), nullptr}; }
     OCCT_CATCH_RETURN
@@ -2267,28 +2161,28 @@ extern "C" OcctResult<const Expr_GeneralExpression*> Expr_Difference_as_Expr_Gen
 extern "C" OcctResult<Expr_GeneralExpression*> Expr_Difference_as_Expr_GeneralExpression_mut(Expr_Difference* self_) { return {static_cast<Expr_GeneralExpression*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> Expr_Difference_as_Standard_Transient(const Expr_Difference* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> Expr_Difference_as_Standard_Transient_mut(Expr_Difference* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleExprDifference*> Expr_Difference_to_handle(Expr_Difference* obj) {
-    try { return {new HandleExprDifference(obj), nullptr}; }
+extern "C" OcctResult<Handle_Expr_Difference*> Expr_Difference_to_handle(Expr_Difference* obj) {
+    try { return {new Handle_Expr_Difference(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const Expr_Difference*> HandleExprDifference_get(const HandleExprDifference* handle) {
+extern "C" OcctResult<const Expr_Difference*> Handle_Expr_Difference_get(const Handle_Expr_Difference* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Expr_Difference*> HandleExprDifference_get_mut(HandleExprDifference* handle) {
+extern "C" OcctResult<Expr_Difference*> Handle_Expr_Difference_get_mut(Handle_Expr_Difference* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleExprBinaryExpression*> HandleExprDifference_to_HandleExprBinaryExpression(const HandleExprDifference* self_) {
-    try { return {new HandleExprBinaryExpression(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Expr_BinaryExpression*> Handle_Expr_Difference_to_Handle_Expr_BinaryExpression(const Handle_Expr_Difference* self_) {
+    try { return {new Handle_Expr_BinaryExpression(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleExprGeneralExpression*> HandleExprDifference_to_HandleExprGeneralExpression(const HandleExprDifference* self_) {
-    try { return {new HandleExprGeneralExpression(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Expr_GeneralExpression*> Handle_Expr_Difference_to_Handle_Expr_GeneralExpression(const Handle_Expr_Difference* self_) {
+    try { return {new Handle_Expr_GeneralExpression(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleExprDifference_to_HandleStandardTransient(const HandleExprDifference* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_Expr_Difference_to_Handle_Standard_Transient(const Handle_Expr_Difference* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(Expr_GeneralExpression) const*> Expr_Difference_inherited_FirstOperand(const Expr_Difference* self) {
@@ -2415,28 +2309,28 @@ extern "C" OcctResult<const Expr_GeneralRelation*> Expr_Different_as_Expr_Genera
 extern "C" OcctResult<Expr_GeneralRelation*> Expr_Different_as_Expr_GeneralRelation_mut(Expr_Different* self_) { return {static_cast<Expr_GeneralRelation*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> Expr_Different_as_Standard_Transient(const Expr_Different* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> Expr_Different_as_Standard_Transient_mut(Expr_Different* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleExprDifferent*> Expr_Different_to_handle(Expr_Different* obj) {
-    try { return {new HandleExprDifferent(obj), nullptr}; }
+extern "C" OcctResult<Handle_Expr_Different*> Expr_Different_to_handle(Expr_Different* obj) {
+    try { return {new Handle_Expr_Different(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const Expr_Different*> HandleExprDifferent_get(const HandleExprDifferent* handle) {
+extern "C" OcctResult<const Expr_Different*> Handle_Expr_Different_get(const Handle_Expr_Different* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Expr_Different*> HandleExprDifferent_get_mut(HandleExprDifferent* handle) {
+extern "C" OcctResult<Expr_Different*> Handle_Expr_Different_get_mut(Handle_Expr_Different* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleExprSingleRelation*> HandleExprDifferent_to_HandleExprSingleRelation(const HandleExprDifferent* self_) {
-    try { return {new HandleExprSingleRelation(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Expr_SingleRelation*> Handle_Expr_Different_to_Handle_Expr_SingleRelation(const Handle_Expr_Different* self_) {
+    try { return {new Handle_Expr_SingleRelation(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleExprGeneralRelation*> HandleExprDifferent_to_HandleExprGeneralRelation(const HandleExprDifferent* self_) {
-    try { return {new HandleExprGeneralRelation(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Expr_GeneralRelation*> Handle_Expr_Different_to_Handle_Expr_GeneralRelation(const Handle_Expr_Different* self_) {
+    try { return {new Handle_Expr_GeneralRelation(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleExprDifferent_to_HandleStandardTransient(const HandleExprDifferent* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_Expr_Different_to_Handle_Standard_Transient(const Handle_Expr_Different* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" const char* Expr_Different_inherited_SetFirstMember(Expr_Different* self, Handle(Expr_GeneralExpression) const& exp) {
@@ -2541,10 +2435,6 @@ extern "C" OcctResult<bool> Expr_Division_is_linear(const Expr_Division* self_) 
     try { return {self_->IsLinear(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<double> Expr_Division_evaluate(const Expr_Division* self_, Expr_Array1OfNamedUnknown const* vars, TColStd_Array1OfReal const* vals) {
-    try { return {self_->Evaluate(*vars, *vals), nullptr}; }
-    OCCT_CATCH_RETURN
-}
 extern "C" OcctResult<Handle(Standard_Type) const*> Expr_Division_dynamic_type(const Expr_Division* self_) {
     try { return {&(self_->DynamicType()), nullptr}; }
     OCCT_CATCH_RETURN
@@ -2563,28 +2453,28 @@ extern "C" OcctResult<const Expr_GeneralExpression*> Expr_Division_as_Expr_Gener
 extern "C" OcctResult<Expr_GeneralExpression*> Expr_Division_as_Expr_GeneralExpression_mut(Expr_Division* self_) { return {static_cast<Expr_GeneralExpression*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> Expr_Division_as_Standard_Transient(const Expr_Division* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> Expr_Division_as_Standard_Transient_mut(Expr_Division* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleExprDivision*> Expr_Division_to_handle(Expr_Division* obj) {
-    try { return {new HandleExprDivision(obj), nullptr}; }
+extern "C" OcctResult<Handle_Expr_Division*> Expr_Division_to_handle(Expr_Division* obj) {
+    try { return {new Handle_Expr_Division(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const Expr_Division*> HandleExprDivision_get(const HandleExprDivision* handle) {
+extern "C" OcctResult<const Expr_Division*> Handle_Expr_Division_get(const Handle_Expr_Division* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Expr_Division*> HandleExprDivision_get_mut(HandleExprDivision* handle) {
+extern "C" OcctResult<Expr_Division*> Handle_Expr_Division_get_mut(Handle_Expr_Division* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleExprBinaryExpression*> HandleExprDivision_to_HandleExprBinaryExpression(const HandleExprDivision* self_) {
-    try { return {new HandleExprBinaryExpression(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Expr_BinaryExpression*> Handle_Expr_Division_to_Handle_Expr_BinaryExpression(const Handle_Expr_Division* self_) {
+    try { return {new Handle_Expr_BinaryExpression(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleExprGeneralExpression*> HandleExprDivision_to_HandleExprGeneralExpression(const HandleExprDivision* self_) {
-    try { return {new HandleExprGeneralExpression(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Expr_GeneralExpression*> Handle_Expr_Division_to_Handle_Expr_GeneralExpression(const Handle_Expr_Division* self_) {
+    try { return {new Handle_Expr_GeneralExpression(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleExprDivision_to_HandleStandardTransient(const HandleExprDivision* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_Expr_Division_to_Handle_Standard_Transient(const Handle_Expr_Division* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(Expr_GeneralExpression) const*> Expr_Division_inherited_FirstOperand(const Expr_Division* self) {
@@ -2715,28 +2605,28 @@ extern "C" OcctResult<const Expr_GeneralRelation*> Expr_Equal_as_Expr_GeneralRel
 extern "C" OcctResult<Expr_GeneralRelation*> Expr_Equal_as_Expr_GeneralRelation_mut(Expr_Equal* self_) { return {static_cast<Expr_GeneralRelation*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> Expr_Equal_as_Standard_Transient(const Expr_Equal* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> Expr_Equal_as_Standard_Transient_mut(Expr_Equal* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleExprEqual*> Expr_Equal_to_handle(Expr_Equal* obj) {
-    try { return {new HandleExprEqual(obj), nullptr}; }
+extern "C" OcctResult<Handle_Expr_Equal*> Expr_Equal_to_handle(Expr_Equal* obj) {
+    try { return {new Handle_Expr_Equal(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const Expr_Equal*> HandleExprEqual_get(const HandleExprEqual* handle) {
+extern "C" OcctResult<const Expr_Equal*> Handle_Expr_Equal_get(const Handle_Expr_Equal* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Expr_Equal*> HandleExprEqual_get_mut(HandleExprEqual* handle) {
+extern "C" OcctResult<Expr_Equal*> Handle_Expr_Equal_get_mut(Handle_Expr_Equal* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleExprSingleRelation*> HandleExprEqual_to_HandleExprSingleRelation(const HandleExprEqual* self_) {
-    try { return {new HandleExprSingleRelation(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Expr_SingleRelation*> Handle_Expr_Equal_to_Handle_Expr_SingleRelation(const Handle_Expr_Equal* self_) {
+    try { return {new Handle_Expr_SingleRelation(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleExprGeneralRelation*> HandleExprEqual_to_HandleExprGeneralRelation(const HandleExprEqual* self_) {
-    try { return {new HandleExprGeneralRelation(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Expr_GeneralRelation*> Handle_Expr_Equal_to_Handle_Expr_GeneralRelation(const Handle_Expr_Equal* self_) {
+    try { return {new Handle_Expr_GeneralRelation(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleExprEqual_to_HandleStandardTransient(const HandleExprEqual* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_Expr_Equal_to_Handle_Standard_Transient(const Handle_Expr_Equal* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" const char* Expr_Equal_inherited_SetFirstMember(Expr_Equal* self, Handle(Expr_GeneralExpression) const& exp) {
@@ -2841,10 +2731,6 @@ extern "C" OcctResult<bool> Expr_Exponential_is_linear(const Expr_Exponential* s
     try { return {self_->IsLinear(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<double> Expr_Exponential_evaluate(const Expr_Exponential* self_, Expr_Array1OfNamedUnknown const* vars, TColStd_Array1OfReal const* vals) {
-    try { return {self_->Evaluate(*vars, *vals), nullptr}; }
-    OCCT_CATCH_RETURN
-}
 extern "C" OcctResult<Handle(Standard_Type) const*> Expr_Exponential_dynamic_type(const Expr_Exponential* self_) {
     try { return {&(self_->DynamicType()), nullptr}; }
     OCCT_CATCH_RETURN
@@ -2863,28 +2749,28 @@ extern "C" OcctResult<const Expr_GeneralExpression*> Expr_Exponential_as_Expr_Ge
 extern "C" OcctResult<Expr_GeneralExpression*> Expr_Exponential_as_Expr_GeneralExpression_mut(Expr_Exponential* self_) { return {static_cast<Expr_GeneralExpression*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> Expr_Exponential_as_Standard_Transient(const Expr_Exponential* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> Expr_Exponential_as_Standard_Transient_mut(Expr_Exponential* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleExprExponential*> Expr_Exponential_to_handle(Expr_Exponential* obj) {
-    try { return {new HandleExprExponential(obj), nullptr}; }
+extern "C" OcctResult<Handle_Expr_Exponential*> Expr_Exponential_to_handle(Expr_Exponential* obj) {
+    try { return {new Handle_Expr_Exponential(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const Expr_Exponential*> HandleExprExponential_get(const HandleExprExponential* handle) {
+extern "C" OcctResult<const Expr_Exponential*> Handle_Expr_Exponential_get(const Handle_Expr_Exponential* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Expr_Exponential*> HandleExprExponential_get_mut(HandleExprExponential* handle) {
+extern "C" OcctResult<Expr_Exponential*> Handle_Expr_Exponential_get_mut(Handle_Expr_Exponential* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleExprUnaryExpression*> HandleExprExponential_to_HandleExprUnaryExpression(const HandleExprExponential* self_) {
-    try { return {new HandleExprUnaryExpression(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Expr_UnaryExpression*> Handle_Expr_Exponential_to_Handle_Expr_UnaryExpression(const Handle_Expr_Exponential* self_) {
+    try { return {new Handle_Expr_UnaryExpression(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleExprGeneralExpression*> HandleExprExponential_to_HandleExprGeneralExpression(const HandleExprExponential* self_) {
-    try { return {new HandleExprGeneralExpression(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Expr_GeneralExpression*> Handle_Expr_Exponential_to_Handle_Expr_GeneralExpression(const Handle_Expr_Exponential* self_) {
+    try { return {new Handle_Expr_GeneralExpression(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleExprExponential_to_HandleStandardTransient(const HandleExprExponential* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_Expr_Exponential_to_Handle_Standard_Transient(const Handle_Expr_Exponential* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(Expr_GeneralExpression) const*> Expr_Exponential_inherited_Operand(const Expr_Exponential* self) {
@@ -2993,10 +2879,6 @@ extern "C" OcctResult<bool> Expr_Exponentiate_is_linear(const Expr_Exponentiate*
     try { return {self_->IsLinear(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<double> Expr_Exponentiate_evaluate(const Expr_Exponentiate* self_, Expr_Array1OfNamedUnknown const* vars, TColStd_Array1OfReal const* vals) {
-    try { return {self_->Evaluate(*vars, *vals), nullptr}; }
-    OCCT_CATCH_RETURN
-}
 extern "C" OcctResult<Handle(Standard_Type) const*> Expr_Exponentiate_dynamic_type(const Expr_Exponentiate* self_) {
     try { return {&(self_->DynamicType()), nullptr}; }
     OCCT_CATCH_RETURN
@@ -3015,28 +2897,28 @@ extern "C" OcctResult<const Expr_GeneralExpression*> Expr_Exponentiate_as_Expr_G
 extern "C" OcctResult<Expr_GeneralExpression*> Expr_Exponentiate_as_Expr_GeneralExpression_mut(Expr_Exponentiate* self_) { return {static_cast<Expr_GeneralExpression*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> Expr_Exponentiate_as_Standard_Transient(const Expr_Exponentiate* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> Expr_Exponentiate_as_Standard_Transient_mut(Expr_Exponentiate* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleExprExponentiate*> Expr_Exponentiate_to_handle(Expr_Exponentiate* obj) {
-    try { return {new HandleExprExponentiate(obj), nullptr}; }
+extern "C" OcctResult<Handle_Expr_Exponentiate*> Expr_Exponentiate_to_handle(Expr_Exponentiate* obj) {
+    try { return {new Handle_Expr_Exponentiate(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const Expr_Exponentiate*> HandleExprExponentiate_get(const HandleExprExponentiate* handle) {
+extern "C" OcctResult<const Expr_Exponentiate*> Handle_Expr_Exponentiate_get(const Handle_Expr_Exponentiate* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Expr_Exponentiate*> HandleExprExponentiate_get_mut(HandleExprExponentiate* handle) {
+extern "C" OcctResult<Expr_Exponentiate*> Handle_Expr_Exponentiate_get_mut(Handle_Expr_Exponentiate* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleExprBinaryExpression*> HandleExprExponentiate_to_HandleExprBinaryExpression(const HandleExprExponentiate* self_) {
-    try { return {new HandleExprBinaryExpression(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Expr_BinaryExpression*> Handle_Expr_Exponentiate_to_Handle_Expr_BinaryExpression(const Handle_Expr_Exponentiate* self_) {
+    try { return {new Handle_Expr_BinaryExpression(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleExprGeneralExpression*> HandleExprExponentiate_to_HandleExprGeneralExpression(const HandleExprExponentiate* self_) {
-    try { return {new HandleExprGeneralExpression(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Expr_GeneralExpression*> Handle_Expr_Exponentiate_to_Handle_Expr_GeneralExpression(const Handle_Expr_Exponentiate* self_) {
+    try { return {new Handle_Expr_GeneralExpression(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleExprExponentiate_to_HandleStandardTransient(const HandleExprExponentiate* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_Expr_Exponentiate_to_Handle_Standard_Transient(const Handle_Expr_Exponentiate* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(Expr_GeneralExpression) const*> Expr_Exponentiate_inherited_FirstOperand(const Expr_Exponentiate* self) {
@@ -3125,10 +3007,6 @@ extern "C" void Expr_Exponentiate_destructor(Expr_Exponentiate* self_) { delete 
 // Expr_ExprFailure wrappers
 // ========================
 
-extern "C" OcctResult<Expr_ExprFailure*> Expr_ExprFailure_ctor() {
-    try { return {new Expr_ExprFailure(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
 extern "C" OcctResult<Expr_ExprFailure*> Expr_ExprFailure_ctor_charptr(const char* theMessage) {
     try { return {new Expr_ExprFailure(theMessage), nullptr}; }
     OCCT_CATCH_RETURN
@@ -3137,136 +3015,14 @@ extern "C" OcctResult<Expr_ExprFailure*> Expr_ExprFailure_ctor_charptr2(const ch
     try { return {new Expr_ExprFailure(theMessage, theStackTrace), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(Standard_Type) const*> Expr_ExprFailure_dynamic_type(const Expr_ExprFailure* self_) {
-    try { return {&(self_->DynamicType()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* Expr_ExprFailure_raise_charptr(const char* theMessage) {
-    try { Expr_ExprFailure::Raise(theMessage); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* Expr_ExprFailure_raise_sstream(Standard_SStream* theMessage) {
-    try { Expr_ExprFailure::Raise(*theMessage); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<Handle(Expr_ExprFailure)*> Expr_ExprFailure_new_instance_charptr(const char* theMessage) {
-    try { return {new Handle(Expr_ExprFailure)(Expr_ExprFailure::NewInstance(theMessage)), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Handle(Expr_ExprFailure)*> Expr_ExprFailure_new_instance_charptr2(const char* theMessage, const char* theStackTrace) {
-    try { return {new Handle(Expr_ExprFailure)(Expr_ExprFailure::NewInstance(theMessage, theStackTrace)), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<char const*> Expr_ExprFailure_get_type_name() {
-    try { return {Expr_ExprFailure::get_type_name(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Handle(Standard_Type) const*> Expr_ExprFailure_get_type_descriptor() {
-    try { return {&(Expr_ExprFailure::get_type_descriptor()), nullptr}; }
+extern "C" OcctResult<char const*> Expr_ExprFailure_exception_type(const Expr_ExprFailure* self_) {
+    try { return {self_->ExceptionType(), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<const Standard_Failure*> Expr_ExprFailure_as_Standard_Failure(const Expr_ExprFailure* self_) { return {static_cast<const Standard_Failure*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Failure*> Expr_ExprFailure_as_Standard_Failure_mut(Expr_ExprFailure* self_) { return {static_cast<Standard_Failure*>(self_), nullptr}; }
-extern "C" OcctResult<const Standard_Transient*> Expr_ExprFailure_as_Standard_Transient(const Expr_ExprFailure* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<Standard_Transient*> Expr_ExprFailure_as_Standard_Transient_mut(Expr_ExprFailure* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleExprExprFailure*> Expr_ExprFailure_to_handle(Expr_ExprFailure* obj) {
-    try { return {new HandleExprExprFailure(obj), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<const Expr_ExprFailure*> HandleExprExprFailure_get(const HandleExprExprFailure* handle) {
-    try { return {(*handle).get(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Expr_ExprFailure*> HandleExprExprFailure_get_mut(HandleExprExprFailure* handle) {
-    try { return {(*handle).get(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<HandleStandardFailure*> HandleExprExprFailure_to_HandleStandardFailure(const HandleExprExprFailure* self_) {
-    try { return {new HandleStandardFailure(*self_), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<HandleStandardTransient*> HandleExprExprFailure_to_HandleStandardTransient(const HandleExprExprFailure* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<HandleExprInvalidAssignment*> HandleExprExprFailure_downcast_to_HandleExprInvalidAssignment(const HandleExprExprFailure* self_) {
-    try {
-    opencascade::handle<Expr_InvalidAssignment> result = opencascade::handle<Expr_InvalidAssignment>::DownCast(*self_);
-    if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleExprInvalidAssignment(result), nullptr};
-    }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<HandleExprInvalidFunction*> HandleExprExprFailure_downcast_to_HandleExprInvalidFunction(const HandleExprExprFailure* self_) {
-    try {
-    opencascade::handle<Expr_InvalidFunction> result = opencascade::handle<Expr_InvalidFunction>::DownCast(*self_);
-    if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleExprInvalidFunction(result), nullptr};
-    }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<HandleExprInvalidOperand*> HandleExprExprFailure_downcast_to_HandleExprInvalidOperand(const HandleExprExprFailure* self_) {
-    try {
-    opencascade::handle<Expr_InvalidOperand> result = opencascade::handle<Expr_InvalidOperand>::DownCast(*self_);
-    if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleExprInvalidOperand(result), nullptr};
-    }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<HandleExprNotAssigned*> HandleExprExprFailure_downcast_to_HandleExprNotAssigned(const HandleExprExprFailure* self_) {
-    try {
-    opencascade::handle<Expr_NotAssigned> result = opencascade::handle<Expr_NotAssigned>::DownCast(*self_);
-    if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleExprNotAssigned(result), nullptr};
-    }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<HandleExprNotEvaluable*> HandleExprExprFailure_downcast_to_HandleExprNotEvaluable(const HandleExprExprFailure* self_) {
-    try {
-    opencascade::handle<Expr_NotEvaluable> result = opencascade::handle<Expr_NotEvaluable>::DownCast(*self_);
-    if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleExprNotEvaluable(result), nullptr};
-    }
-    OCCT_CATCH_RETURN
-}
 extern "C" const char* Expr_ExprFailure_inherited_Print(const Expr_ExprFailure* self, Standard_OStream& theStream) {
     try { self->Print(theStream); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* Expr_ExprFailure_inherited_Reraise(Expr_ExprFailure* self) {
-    try { self->Reraise(); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* Expr_ExprFailure_inherited_Jump(Expr_ExprFailure* self) {
-    try { self->Jump(); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<bool> Expr_ExprFailure_inherited_IsInstance(const Expr_ExprFailure* self, Handle(Standard_Type) const& theType) {
-    try { return {self->IsInstance(theType), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<bool> Expr_ExprFailure_inherited_IsKind(const Expr_ExprFailure* self, Handle(Standard_Type) const& theType) {
-    try { return {self->IsKind(theType), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Standard_Transient*> Expr_ExprFailure_inherited_This(const Expr_ExprFailure* self) {
-    try { return {self->This(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<int32_t> Expr_ExprFailure_inherited_GetRefCount(const Expr_ExprFailure* self) {
-    try { return {self->GetRefCount(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* Expr_ExprFailure_inherited_IncrementRefCounter(Expr_ExprFailure* self) {
-    try { self->IncrementRefCounter(); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<int32_t> Expr_ExprFailure_inherited_DecrementRefCounter(Expr_ExprFailure* self) {
-    try { return {self->DecrementRefCounter(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* Expr_ExprFailure_inherited_Delete(const Expr_ExprFailure* self) {
-    try { self->Delete(); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
 extern "C" void Expr_ExprFailure_destructor(Expr_ExprFailure* self_) { delete self_; }
@@ -3315,10 +3071,6 @@ extern "C" OcctResult<int32_t> Expr_FunctionDerivative_nb_of_variables(const Exp
     try { return {self_->NbOfVariables(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<double> Expr_FunctionDerivative_evaluate(const Expr_FunctionDerivative* self_, Expr_Array1OfNamedUnknown const* vars, TColStd_Array1OfReal const* values) {
-    try { return {self_->Evaluate(*vars, *values), nullptr}; }
-    OCCT_CATCH_RETURN
-}
 extern "C" OcctResult<bool> Expr_FunctionDerivative_is_identical(const Expr_FunctionDerivative* self_, Handle(Expr_GeneralFunction) const* func) {
     try { return {self_->IsIdentical(*func), nullptr}; }
     OCCT_CATCH_RETURN
@@ -3351,24 +3103,24 @@ extern "C" OcctResult<const Expr_GeneralFunction*> Expr_FunctionDerivative_as_Ex
 extern "C" OcctResult<Expr_GeneralFunction*> Expr_FunctionDerivative_as_Expr_GeneralFunction_mut(Expr_FunctionDerivative* self_) { return {static_cast<Expr_GeneralFunction*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> Expr_FunctionDerivative_as_Standard_Transient(const Expr_FunctionDerivative* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> Expr_FunctionDerivative_as_Standard_Transient_mut(Expr_FunctionDerivative* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleExprFunctionDerivative*> Expr_FunctionDerivative_to_handle(Expr_FunctionDerivative* obj) {
-    try { return {new HandleExprFunctionDerivative(obj), nullptr}; }
+extern "C" OcctResult<Handle_Expr_FunctionDerivative*> Expr_FunctionDerivative_to_handle(Expr_FunctionDerivative* obj) {
+    try { return {new Handle_Expr_FunctionDerivative(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const Expr_FunctionDerivative*> HandleExprFunctionDerivative_get(const HandleExprFunctionDerivative* handle) {
+extern "C" OcctResult<const Expr_FunctionDerivative*> Handle_Expr_FunctionDerivative_get(const Handle_Expr_FunctionDerivative* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Expr_FunctionDerivative*> HandleExprFunctionDerivative_get_mut(HandleExprFunctionDerivative* handle) {
+extern "C" OcctResult<Expr_FunctionDerivative*> Handle_Expr_FunctionDerivative_get_mut(Handle_Expr_FunctionDerivative* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleExprGeneralFunction*> HandleExprFunctionDerivative_to_HandleExprGeneralFunction(const HandleExprFunctionDerivative* self_) {
-    try { return {new HandleExprGeneralFunction(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Expr_GeneralFunction*> Handle_Expr_FunctionDerivative_to_Handle_Expr_GeneralFunction(const Handle_Expr_FunctionDerivative* self_) {
+    try { return {new Handle_Expr_GeneralFunction(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleExprFunctionDerivative_to_HandleStandardTransient(const HandleExprFunctionDerivative* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_Expr_FunctionDerivative_to_Handle_Standard_Transient(const Handle_Expr_FunctionDerivative* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> Expr_FunctionDerivative_inherited_IsInstance(const Expr_FunctionDerivative* self, Handle(Standard_Type) const& theType) {
@@ -3461,10 +3213,6 @@ extern "C" const char* Expr_GeneralExpression_replace(Expr_GeneralExpression* se
     try { self_->Replace(*var, *with); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<double> Expr_GeneralExpression_evaluate(const Expr_GeneralExpression* self_, Expr_Array1OfNamedUnknown const* vars, TColStd_Array1OfReal const* vals) {
-    try { return {self_->Evaluate(*vars, *vals), nullptr}; }
-    OCCT_CATCH_RETURN
-}
 extern "C" OcctResult<double> Expr_GeneralExpression_evaluate_numeric(const Expr_GeneralExpression* self_) {
     try { return {self_->EvaluateNumeric(), nullptr}; }
     OCCT_CATCH_RETURN
@@ -3483,295 +3231,295 @@ extern "C" OcctResult<Handle(Standard_Type) const*> Expr_GeneralExpression_get_t
 }
 extern "C" OcctResult<const Standard_Transient*> Expr_GeneralExpression_as_Standard_Transient(const Expr_GeneralExpression* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> Expr_GeneralExpression_as_Standard_Transient_mut(Expr_GeneralExpression* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<const Expr_GeneralExpression*> HandleExprGeneralExpression_get(const HandleExprGeneralExpression* handle) {
+extern "C" OcctResult<const Expr_GeneralExpression*> Handle_Expr_GeneralExpression_get(const Handle_Expr_GeneralExpression* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Expr_GeneralExpression*> HandleExprGeneralExpression_get_mut(HandleExprGeneralExpression* handle) {
+extern "C" OcctResult<Expr_GeneralExpression*> Handle_Expr_GeneralExpression_get_mut(Handle_Expr_GeneralExpression* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleExprGeneralExpression_to_HandleStandardTransient(const HandleExprGeneralExpression* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_Expr_GeneralExpression_to_Handle_Standard_Transient(const Handle_Expr_GeneralExpression* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleExprAbsolute*> HandleExprGeneralExpression_downcast_to_HandleExprAbsolute(const HandleExprGeneralExpression* self_) {
+extern "C" OcctResult<Handle_Expr_Absolute*> Handle_Expr_GeneralExpression_downcast_to_Handle_Expr_Absolute(const Handle_Expr_GeneralExpression* self_) {
     try {
     opencascade::handle<Expr_Absolute> result = opencascade::handle<Expr_Absolute>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleExprAbsolute(result), nullptr};
+    return {new Handle_Expr_Absolute(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleExprArcCosine*> HandleExprGeneralExpression_downcast_to_HandleExprArcCosine(const HandleExprGeneralExpression* self_) {
+extern "C" OcctResult<Handle_Expr_ArcCosine*> Handle_Expr_GeneralExpression_downcast_to_Handle_Expr_ArcCosine(const Handle_Expr_GeneralExpression* self_) {
     try {
     opencascade::handle<Expr_ArcCosine> result = opencascade::handle<Expr_ArcCosine>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleExprArcCosine(result), nullptr};
+    return {new Handle_Expr_ArcCosine(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleExprArcSine*> HandleExprGeneralExpression_downcast_to_HandleExprArcSine(const HandleExprGeneralExpression* self_) {
+extern "C" OcctResult<Handle_Expr_ArcSine*> Handle_Expr_GeneralExpression_downcast_to_Handle_Expr_ArcSine(const Handle_Expr_GeneralExpression* self_) {
     try {
     opencascade::handle<Expr_ArcSine> result = opencascade::handle<Expr_ArcSine>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleExprArcSine(result), nullptr};
+    return {new Handle_Expr_ArcSine(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleExprArcTangent*> HandleExprGeneralExpression_downcast_to_HandleExprArcTangent(const HandleExprGeneralExpression* self_) {
+extern "C" OcctResult<Handle_Expr_ArcTangent*> Handle_Expr_GeneralExpression_downcast_to_Handle_Expr_ArcTangent(const Handle_Expr_GeneralExpression* self_) {
     try {
     opencascade::handle<Expr_ArcTangent> result = opencascade::handle<Expr_ArcTangent>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleExprArcTangent(result), nullptr};
+    return {new Handle_Expr_ArcTangent(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleExprArgCosh*> HandleExprGeneralExpression_downcast_to_HandleExprArgCosh(const HandleExprGeneralExpression* self_) {
+extern "C" OcctResult<Handle_Expr_ArgCosh*> Handle_Expr_GeneralExpression_downcast_to_Handle_Expr_ArgCosh(const Handle_Expr_GeneralExpression* self_) {
     try {
     opencascade::handle<Expr_ArgCosh> result = opencascade::handle<Expr_ArgCosh>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleExprArgCosh(result), nullptr};
+    return {new Handle_Expr_ArgCosh(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleExprArgSinh*> HandleExprGeneralExpression_downcast_to_HandleExprArgSinh(const HandleExprGeneralExpression* self_) {
+extern "C" OcctResult<Handle_Expr_ArgSinh*> Handle_Expr_GeneralExpression_downcast_to_Handle_Expr_ArgSinh(const Handle_Expr_GeneralExpression* self_) {
     try {
     opencascade::handle<Expr_ArgSinh> result = opencascade::handle<Expr_ArgSinh>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleExprArgSinh(result), nullptr};
+    return {new Handle_Expr_ArgSinh(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleExprArgTanh*> HandleExprGeneralExpression_downcast_to_HandleExprArgTanh(const HandleExprGeneralExpression* self_) {
+extern "C" OcctResult<Handle_Expr_ArgTanh*> Handle_Expr_GeneralExpression_downcast_to_Handle_Expr_ArgTanh(const Handle_Expr_GeneralExpression* self_) {
     try {
     opencascade::handle<Expr_ArgTanh> result = opencascade::handle<Expr_ArgTanh>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleExprArgTanh(result), nullptr};
+    return {new Handle_Expr_ArgTanh(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleExprBinaryExpression*> HandleExprGeneralExpression_downcast_to_HandleExprBinaryExpression(const HandleExprGeneralExpression* self_) {
+extern "C" OcctResult<Handle_Expr_BinaryExpression*> Handle_Expr_GeneralExpression_downcast_to_Handle_Expr_BinaryExpression(const Handle_Expr_GeneralExpression* self_) {
     try {
     opencascade::handle<Expr_BinaryExpression> result = opencascade::handle<Expr_BinaryExpression>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleExprBinaryExpression(result), nullptr};
+    return {new Handle_Expr_BinaryExpression(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleExprBinaryFunction*> HandleExprGeneralExpression_downcast_to_HandleExprBinaryFunction(const HandleExprGeneralExpression* self_) {
+extern "C" OcctResult<Handle_Expr_BinaryFunction*> Handle_Expr_GeneralExpression_downcast_to_Handle_Expr_BinaryFunction(const Handle_Expr_GeneralExpression* self_) {
     try {
     opencascade::handle<Expr_BinaryFunction> result = opencascade::handle<Expr_BinaryFunction>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleExprBinaryFunction(result), nullptr};
+    return {new Handle_Expr_BinaryFunction(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleExprCosh*> HandleExprGeneralExpression_downcast_to_HandleExprCosh(const HandleExprGeneralExpression* self_) {
+extern "C" OcctResult<Handle_Expr_Cosh*> Handle_Expr_GeneralExpression_downcast_to_Handle_Expr_Cosh(const Handle_Expr_GeneralExpression* self_) {
     try {
     opencascade::handle<Expr_Cosh> result = opencascade::handle<Expr_Cosh>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleExprCosh(result), nullptr};
+    return {new Handle_Expr_Cosh(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleExprCosine*> HandleExprGeneralExpression_downcast_to_HandleExprCosine(const HandleExprGeneralExpression* self_) {
+extern "C" OcctResult<Handle_Expr_Cosine*> Handle_Expr_GeneralExpression_downcast_to_Handle_Expr_Cosine(const Handle_Expr_GeneralExpression* self_) {
     try {
     opencascade::handle<Expr_Cosine> result = opencascade::handle<Expr_Cosine>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleExprCosine(result), nullptr};
+    return {new Handle_Expr_Cosine(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleExprDifference*> HandleExprGeneralExpression_downcast_to_HandleExprDifference(const HandleExprGeneralExpression* self_) {
+extern "C" OcctResult<Handle_Expr_Difference*> Handle_Expr_GeneralExpression_downcast_to_Handle_Expr_Difference(const Handle_Expr_GeneralExpression* self_) {
     try {
     opencascade::handle<Expr_Difference> result = opencascade::handle<Expr_Difference>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleExprDifference(result), nullptr};
+    return {new Handle_Expr_Difference(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleExprDivision*> HandleExprGeneralExpression_downcast_to_HandleExprDivision(const HandleExprGeneralExpression* self_) {
+extern "C" OcctResult<Handle_Expr_Division*> Handle_Expr_GeneralExpression_downcast_to_Handle_Expr_Division(const Handle_Expr_GeneralExpression* self_) {
     try {
     opencascade::handle<Expr_Division> result = opencascade::handle<Expr_Division>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleExprDivision(result), nullptr};
+    return {new Handle_Expr_Division(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleExprExponential*> HandleExprGeneralExpression_downcast_to_HandleExprExponential(const HandleExprGeneralExpression* self_) {
+extern "C" OcctResult<Handle_Expr_Exponential*> Handle_Expr_GeneralExpression_downcast_to_Handle_Expr_Exponential(const Handle_Expr_GeneralExpression* self_) {
     try {
     opencascade::handle<Expr_Exponential> result = opencascade::handle<Expr_Exponential>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleExprExponential(result), nullptr};
+    return {new Handle_Expr_Exponential(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleExprExponentiate*> HandleExprGeneralExpression_downcast_to_HandleExprExponentiate(const HandleExprGeneralExpression* self_) {
+extern "C" OcctResult<Handle_Expr_Exponentiate*> Handle_Expr_GeneralExpression_downcast_to_Handle_Expr_Exponentiate(const Handle_Expr_GeneralExpression* self_) {
     try {
     opencascade::handle<Expr_Exponentiate> result = opencascade::handle<Expr_Exponentiate>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleExprExponentiate(result), nullptr};
+    return {new Handle_Expr_Exponentiate(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleExprLogOf10*> HandleExprGeneralExpression_downcast_to_HandleExprLogOf10(const HandleExprGeneralExpression* self_) {
+extern "C" OcctResult<Handle_Expr_LogOf10*> Handle_Expr_GeneralExpression_downcast_to_Handle_Expr_LogOf10(const Handle_Expr_GeneralExpression* self_) {
     try {
     opencascade::handle<Expr_LogOf10> result = opencascade::handle<Expr_LogOf10>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleExprLogOf10(result), nullptr};
+    return {new Handle_Expr_LogOf10(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleExprLogOfe*> HandleExprGeneralExpression_downcast_to_HandleExprLogOfe(const HandleExprGeneralExpression* self_) {
+extern "C" OcctResult<Handle_Expr_LogOfe*> Handle_Expr_GeneralExpression_downcast_to_Handle_Expr_LogOfe(const Handle_Expr_GeneralExpression* self_) {
     try {
     opencascade::handle<Expr_LogOfe> result = opencascade::handle<Expr_LogOfe>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleExprLogOfe(result), nullptr};
+    return {new Handle_Expr_LogOfe(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleExprNamedConstant*> HandleExprGeneralExpression_downcast_to_HandleExprNamedConstant(const HandleExprGeneralExpression* self_) {
+extern "C" OcctResult<Handle_Expr_NamedConstant*> Handle_Expr_GeneralExpression_downcast_to_Handle_Expr_NamedConstant(const Handle_Expr_GeneralExpression* self_) {
     try {
     opencascade::handle<Expr_NamedConstant> result = opencascade::handle<Expr_NamedConstant>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleExprNamedConstant(result), nullptr};
+    return {new Handle_Expr_NamedConstant(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleExprNamedExpression*> HandleExprGeneralExpression_downcast_to_HandleExprNamedExpression(const HandleExprGeneralExpression* self_) {
+extern "C" OcctResult<Handle_Expr_NamedExpression*> Handle_Expr_GeneralExpression_downcast_to_Handle_Expr_NamedExpression(const Handle_Expr_GeneralExpression* self_) {
     try {
     opencascade::handle<Expr_NamedExpression> result = opencascade::handle<Expr_NamedExpression>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleExprNamedExpression(result), nullptr};
+    return {new Handle_Expr_NamedExpression(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleExprNamedUnknown*> HandleExprGeneralExpression_downcast_to_HandleExprNamedUnknown(const HandleExprGeneralExpression* self_) {
+extern "C" OcctResult<Handle_Expr_NamedUnknown*> Handle_Expr_GeneralExpression_downcast_to_Handle_Expr_NamedUnknown(const Handle_Expr_GeneralExpression* self_) {
     try {
     opencascade::handle<Expr_NamedUnknown> result = opencascade::handle<Expr_NamedUnknown>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleExprNamedUnknown(result), nullptr};
+    return {new Handle_Expr_NamedUnknown(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleExprNumericValue*> HandleExprGeneralExpression_downcast_to_HandleExprNumericValue(const HandleExprGeneralExpression* self_) {
+extern "C" OcctResult<Handle_Expr_NumericValue*> Handle_Expr_GeneralExpression_downcast_to_Handle_Expr_NumericValue(const Handle_Expr_GeneralExpression* self_) {
     try {
     opencascade::handle<Expr_NumericValue> result = opencascade::handle<Expr_NumericValue>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleExprNumericValue(result), nullptr};
+    return {new Handle_Expr_NumericValue(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleExprPolyExpression*> HandleExprGeneralExpression_downcast_to_HandleExprPolyExpression(const HandleExprGeneralExpression* self_) {
+extern "C" OcctResult<Handle_Expr_PolyExpression*> Handle_Expr_GeneralExpression_downcast_to_Handle_Expr_PolyExpression(const Handle_Expr_GeneralExpression* self_) {
     try {
     opencascade::handle<Expr_PolyExpression> result = opencascade::handle<Expr_PolyExpression>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleExprPolyExpression(result), nullptr};
+    return {new Handle_Expr_PolyExpression(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleExprPolyFunction*> HandleExprGeneralExpression_downcast_to_HandleExprPolyFunction(const HandleExprGeneralExpression* self_) {
+extern "C" OcctResult<Handle_Expr_PolyFunction*> Handle_Expr_GeneralExpression_downcast_to_Handle_Expr_PolyFunction(const Handle_Expr_GeneralExpression* self_) {
     try {
     opencascade::handle<Expr_PolyFunction> result = opencascade::handle<Expr_PolyFunction>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleExprPolyFunction(result), nullptr};
+    return {new Handle_Expr_PolyFunction(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleExprProduct*> HandleExprGeneralExpression_downcast_to_HandleExprProduct(const HandleExprGeneralExpression* self_) {
+extern "C" OcctResult<Handle_Expr_Product*> Handle_Expr_GeneralExpression_downcast_to_Handle_Expr_Product(const Handle_Expr_GeneralExpression* self_) {
     try {
     opencascade::handle<Expr_Product> result = opencascade::handle<Expr_Product>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleExprProduct(result), nullptr};
+    return {new Handle_Expr_Product(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleExprSign*> HandleExprGeneralExpression_downcast_to_HandleExprSign(const HandleExprGeneralExpression* self_) {
+extern "C" OcctResult<Handle_Expr_Sign*> Handle_Expr_GeneralExpression_downcast_to_Handle_Expr_Sign(const Handle_Expr_GeneralExpression* self_) {
     try {
     opencascade::handle<Expr_Sign> result = opencascade::handle<Expr_Sign>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleExprSign(result), nullptr};
+    return {new Handle_Expr_Sign(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleExprSine*> HandleExprGeneralExpression_downcast_to_HandleExprSine(const HandleExprGeneralExpression* self_) {
+extern "C" OcctResult<Handle_Expr_Sine*> Handle_Expr_GeneralExpression_downcast_to_Handle_Expr_Sine(const Handle_Expr_GeneralExpression* self_) {
     try {
     opencascade::handle<Expr_Sine> result = opencascade::handle<Expr_Sine>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleExprSine(result), nullptr};
+    return {new Handle_Expr_Sine(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleExprSinh*> HandleExprGeneralExpression_downcast_to_HandleExprSinh(const HandleExprGeneralExpression* self_) {
+extern "C" OcctResult<Handle_Expr_Sinh*> Handle_Expr_GeneralExpression_downcast_to_Handle_Expr_Sinh(const Handle_Expr_GeneralExpression* self_) {
     try {
     opencascade::handle<Expr_Sinh> result = opencascade::handle<Expr_Sinh>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleExprSinh(result), nullptr};
+    return {new Handle_Expr_Sinh(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleExprSquare*> HandleExprGeneralExpression_downcast_to_HandleExprSquare(const HandleExprGeneralExpression* self_) {
+extern "C" OcctResult<Handle_Expr_Square*> Handle_Expr_GeneralExpression_downcast_to_Handle_Expr_Square(const Handle_Expr_GeneralExpression* self_) {
     try {
     opencascade::handle<Expr_Square> result = opencascade::handle<Expr_Square>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleExprSquare(result), nullptr};
+    return {new Handle_Expr_Square(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleExprSquareRoot*> HandleExprGeneralExpression_downcast_to_HandleExprSquareRoot(const HandleExprGeneralExpression* self_) {
+extern "C" OcctResult<Handle_Expr_SquareRoot*> Handle_Expr_GeneralExpression_downcast_to_Handle_Expr_SquareRoot(const Handle_Expr_GeneralExpression* self_) {
     try {
     opencascade::handle<Expr_SquareRoot> result = opencascade::handle<Expr_SquareRoot>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleExprSquareRoot(result), nullptr};
+    return {new Handle_Expr_SquareRoot(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleExprSum*> HandleExprGeneralExpression_downcast_to_HandleExprSum(const HandleExprGeneralExpression* self_) {
+extern "C" OcctResult<Handle_Expr_Sum*> Handle_Expr_GeneralExpression_downcast_to_Handle_Expr_Sum(const Handle_Expr_GeneralExpression* self_) {
     try {
     opencascade::handle<Expr_Sum> result = opencascade::handle<Expr_Sum>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleExprSum(result), nullptr};
+    return {new Handle_Expr_Sum(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleExprTangent*> HandleExprGeneralExpression_downcast_to_HandleExprTangent(const HandleExprGeneralExpression* self_) {
+extern "C" OcctResult<Handle_Expr_Tangent*> Handle_Expr_GeneralExpression_downcast_to_Handle_Expr_Tangent(const Handle_Expr_GeneralExpression* self_) {
     try {
     opencascade::handle<Expr_Tangent> result = opencascade::handle<Expr_Tangent>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleExprTangent(result), nullptr};
+    return {new Handle_Expr_Tangent(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleExprTanh*> HandleExprGeneralExpression_downcast_to_HandleExprTanh(const HandleExprGeneralExpression* self_) {
+extern "C" OcctResult<Handle_Expr_Tanh*> Handle_Expr_GeneralExpression_downcast_to_Handle_Expr_Tanh(const Handle_Expr_GeneralExpression* self_) {
     try {
     opencascade::handle<Expr_Tanh> result = opencascade::handle<Expr_Tanh>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleExprTanh(result), nullptr};
+    return {new Handle_Expr_Tanh(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleExprUnaryExpression*> HandleExprGeneralExpression_downcast_to_HandleExprUnaryExpression(const HandleExprGeneralExpression* self_) {
+extern "C" OcctResult<Handle_Expr_UnaryExpression*> Handle_Expr_GeneralExpression_downcast_to_Handle_Expr_UnaryExpression(const Handle_Expr_GeneralExpression* self_) {
     try {
     opencascade::handle<Expr_UnaryExpression> result = opencascade::handle<Expr_UnaryExpression>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleExprUnaryExpression(result), nullptr};
+    return {new Handle_Expr_UnaryExpression(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleExprUnaryFunction*> HandleExprGeneralExpression_downcast_to_HandleExprUnaryFunction(const HandleExprGeneralExpression* self_) {
+extern "C" OcctResult<Handle_Expr_UnaryFunction*> Handle_Expr_GeneralExpression_downcast_to_Handle_Expr_UnaryFunction(const Handle_Expr_GeneralExpression* self_) {
     try {
     opencascade::handle<Expr_UnaryFunction> result = opencascade::handle<Expr_UnaryFunction>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleExprUnaryFunction(result), nullptr};
+    return {new Handle_Expr_UnaryFunction(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleExprUnaryMinus*> HandleExprGeneralExpression_downcast_to_HandleExprUnaryMinus(const HandleExprGeneralExpression* self_) {
+extern "C" OcctResult<Handle_Expr_UnaryMinus*> Handle_Expr_GeneralExpression_downcast_to_Handle_Expr_UnaryMinus(const Handle_Expr_GeneralExpression* self_) {
     try {
     opencascade::handle<Expr_UnaryMinus> result = opencascade::handle<Expr_UnaryMinus>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleExprUnaryMinus(result), nullptr};
+    return {new Handle_Expr_UnaryMinus(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
@@ -3833,10 +3581,6 @@ extern "C" OcctResult<int32_t> Expr_GeneralFunction_nb_of_variables(const Expr_G
     try { return {self_->NbOfVariables(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<double> Expr_GeneralFunction_evaluate(const Expr_GeneralFunction* self_, Expr_Array1OfNamedUnknown const* vars, TColStd_Array1OfReal const* vals) {
-    try { return {self_->Evaluate(*vars, *vals), nullptr}; }
-    OCCT_CATCH_RETURN
-}
 extern "C" OcctResult<bool> Expr_GeneralFunction_is_identical(const Expr_GeneralFunction* self_, Handle(Expr_GeneralFunction) const* func) {
     try { return {self_->IsIdentical(*func), nullptr}; }
     OCCT_CATCH_RETURN
@@ -3859,31 +3603,31 @@ extern "C" OcctResult<Handle(Standard_Type) const*> Expr_GeneralFunction_get_typ
 }
 extern "C" OcctResult<const Standard_Transient*> Expr_GeneralFunction_as_Standard_Transient(const Expr_GeneralFunction* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> Expr_GeneralFunction_as_Standard_Transient_mut(Expr_GeneralFunction* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<const Expr_GeneralFunction*> HandleExprGeneralFunction_get(const HandleExprGeneralFunction* handle) {
+extern "C" OcctResult<const Expr_GeneralFunction*> Handle_Expr_GeneralFunction_get(const Handle_Expr_GeneralFunction* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Expr_GeneralFunction*> HandleExprGeneralFunction_get_mut(HandleExprGeneralFunction* handle) {
+extern "C" OcctResult<Expr_GeneralFunction*> Handle_Expr_GeneralFunction_get_mut(Handle_Expr_GeneralFunction* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleExprGeneralFunction_to_HandleStandardTransient(const HandleExprGeneralFunction* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_Expr_GeneralFunction_to_Handle_Standard_Transient(const Handle_Expr_GeneralFunction* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleExprFunctionDerivative*> HandleExprGeneralFunction_downcast_to_HandleExprFunctionDerivative(const HandleExprGeneralFunction* self_) {
+extern "C" OcctResult<Handle_Expr_FunctionDerivative*> Handle_Expr_GeneralFunction_downcast_to_Handle_Expr_FunctionDerivative(const Handle_Expr_GeneralFunction* self_) {
     try {
     opencascade::handle<Expr_FunctionDerivative> result = opencascade::handle<Expr_FunctionDerivative>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleExprFunctionDerivative(result), nullptr};
+    return {new Handle_Expr_FunctionDerivative(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleExprNamedFunction*> HandleExprGeneralFunction_downcast_to_HandleExprNamedFunction(const HandleExprGeneralFunction* self_) {
+extern "C" OcctResult<Handle_Expr_NamedFunction*> Handle_Expr_GeneralFunction_downcast_to_Handle_Expr_NamedFunction(const Handle_Expr_GeneralFunction* self_) {
     try {
     opencascade::handle<Expr_NamedFunction> result = opencascade::handle<Expr_NamedFunction>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleExprNamedFunction(result), nullptr};
+    return {new Handle_Expr_NamedFunction(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
@@ -3979,79 +3723,79 @@ extern "C" OcctResult<Handle(Standard_Type) const*> Expr_GeneralRelation_get_typ
 }
 extern "C" OcctResult<const Standard_Transient*> Expr_GeneralRelation_as_Standard_Transient(const Expr_GeneralRelation* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> Expr_GeneralRelation_as_Standard_Transient_mut(Expr_GeneralRelation* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<const Expr_GeneralRelation*> HandleExprGeneralRelation_get(const HandleExprGeneralRelation* handle) {
+extern "C" OcctResult<const Expr_GeneralRelation*> Handle_Expr_GeneralRelation_get(const Handle_Expr_GeneralRelation* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Expr_GeneralRelation*> HandleExprGeneralRelation_get_mut(HandleExprGeneralRelation* handle) {
+extern "C" OcctResult<Expr_GeneralRelation*> Handle_Expr_GeneralRelation_get_mut(Handle_Expr_GeneralRelation* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleExprGeneralRelation_to_HandleStandardTransient(const HandleExprGeneralRelation* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_Expr_GeneralRelation_to_Handle_Standard_Transient(const Handle_Expr_GeneralRelation* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleExprDifferent*> HandleExprGeneralRelation_downcast_to_HandleExprDifferent(const HandleExprGeneralRelation* self_) {
+extern "C" OcctResult<Handle_Expr_Different*> Handle_Expr_GeneralRelation_downcast_to_Handle_Expr_Different(const Handle_Expr_GeneralRelation* self_) {
     try {
     opencascade::handle<Expr_Different> result = opencascade::handle<Expr_Different>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleExprDifferent(result), nullptr};
+    return {new Handle_Expr_Different(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleExprEqual*> HandleExprGeneralRelation_downcast_to_HandleExprEqual(const HandleExprGeneralRelation* self_) {
+extern "C" OcctResult<Handle_Expr_Equal*> Handle_Expr_GeneralRelation_downcast_to_Handle_Expr_Equal(const Handle_Expr_GeneralRelation* self_) {
     try {
     opencascade::handle<Expr_Equal> result = opencascade::handle<Expr_Equal>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleExprEqual(result), nullptr};
+    return {new Handle_Expr_Equal(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleExprGreaterThan*> HandleExprGeneralRelation_downcast_to_HandleExprGreaterThan(const HandleExprGeneralRelation* self_) {
+extern "C" OcctResult<Handle_Expr_GreaterThan*> Handle_Expr_GeneralRelation_downcast_to_Handle_Expr_GreaterThan(const Handle_Expr_GeneralRelation* self_) {
     try {
     opencascade::handle<Expr_GreaterThan> result = opencascade::handle<Expr_GreaterThan>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleExprGreaterThan(result), nullptr};
+    return {new Handle_Expr_GreaterThan(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleExprGreaterThanOrEqual*> HandleExprGeneralRelation_downcast_to_HandleExprGreaterThanOrEqual(const HandleExprGeneralRelation* self_) {
+extern "C" OcctResult<Handle_Expr_GreaterThanOrEqual*> Handle_Expr_GeneralRelation_downcast_to_Handle_Expr_GreaterThanOrEqual(const Handle_Expr_GeneralRelation* self_) {
     try {
     opencascade::handle<Expr_GreaterThanOrEqual> result = opencascade::handle<Expr_GreaterThanOrEqual>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleExprGreaterThanOrEqual(result), nullptr};
+    return {new Handle_Expr_GreaterThanOrEqual(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleExprLessThan*> HandleExprGeneralRelation_downcast_to_HandleExprLessThan(const HandleExprGeneralRelation* self_) {
+extern "C" OcctResult<Handle_Expr_LessThan*> Handle_Expr_GeneralRelation_downcast_to_Handle_Expr_LessThan(const Handle_Expr_GeneralRelation* self_) {
     try {
     opencascade::handle<Expr_LessThan> result = opencascade::handle<Expr_LessThan>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleExprLessThan(result), nullptr};
+    return {new Handle_Expr_LessThan(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleExprLessThanOrEqual*> HandleExprGeneralRelation_downcast_to_HandleExprLessThanOrEqual(const HandleExprGeneralRelation* self_) {
+extern "C" OcctResult<Handle_Expr_LessThanOrEqual*> Handle_Expr_GeneralRelation_downcast_to_Handle_Expr_LessThanOrEqual(const Handle_Expr_GeneralRelation* self_) {
     try {
     opencascade::handle<Expr_LessThanOrEqual> result = opencascade::handle<Expr_LessThanOrEqual>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleExprLessThanOrEqual(result), nullptr};
+    return {new Handle_Expr_LessThanOrEqual(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleExprSingleRelation*> HandleExprGeneralRelation_downcast_to_HandleExprSingleRelation(const HandleExprGeneralRelation* self_) {
+extern "C" OcctResult<Handle_Expr_SingleRelation*> Handle_Expr_GeneralRelation_downcast_to_Handle_Expr_SingleRelation(const Handle_Expr_GeneralRelation* self_) {
     try {
     opencascade::handle<Expr_SingleRelation> result = opencascade::handle<Expr_SingleRelation>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleExprSingleRelation(result), nullptr};
+    return {new Handle_Expr_SingleRelation(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleExprSystemRelation*> HandleExprGeneralRelation_downcast_to_HandleExprSystemRelation(const HandleExprGeneralRelation* self_) {
+extern "C" OcctResult<Handle_Expr_SystemRelation*> Handle_Expr_GeneralRelation_downcast_to_Handle_Expr_SystemRelation(const Handle_Expr_GeneralRelation* self_) {
     try {
     opencascade::handle<Expr_SystemRelation> result = opencascade::handle<Expr_SystemRelation>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleExprSystemRelation(result), nullptr};
+    return {new Handle_Expr_SystemRelation(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
@@ -4131,28 +3875,28 @@ extern "C" OcctResult<const Expr_GeneralRelation*> Expr_GreaterThan_as_Expr_Gene
 extern "C" OcctResult<Expr_GeneralRelation*> Expr_GreaterThan_as_Expr_GeneralRelation_mut(Expr_GreaterThan* self_) { return {static_cast<Expr_GeneralRelation*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> Expr_GreaterThan_as_Standard_Transient(const Expr_GreaterThan* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> Expr_GreaterThan_as_Standard_Transient_mut(Expr_GreaterThan* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleExprGreaterThan*> Expr_GreaterThan_to_handle(Expr_GreaterThan* obj) {
-    try { return {new HandleExprGreaterThan(obj), nullptr}; }
+extern "C" OcctResult<Handle_Expr_GreaterThan*> Expr_GreaterThan_to_handle(Expr_GreaterThan* obj) {
+    try { return {new Handle_Expr_GreaterThan(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const Expr_GreaterThan*> HandleExprGreaterThan_get(const HandleExprGreaterThan* handle) {
+extern "C" OcctResult<const Expr_GreaterThan*> Handle_Expr_GreaterThan_get(const Handle_Expr_GreaterThan* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Expr_GreaterThan*> HandleExprGreaterThan_get_mut(HandleExprGreaterThan* handle) {
+extern "C" OcctResult<Expr_GreaterThan*> Handle_Expr_GreaterThan_get_mut(Handle_Expr_GreaterThan* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleExprSingleRelation*> HandleExprGreaterThan_to_HandleExprSingleRelation(const HandleExprGreaterThan* self_) {
-    try { return {new HandleExprSingleRelation(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Expr_SingleRelation*> Handle_Expr_GreaterThan_to_Handle_Expr_SingleRelation(const Handle_Expr_GreaterThan* self_) {
+    try { return {new Handle_Expr_SingleRelation(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleExprGeneralRelation*> HandleExprGreaterThan_to_HandleExprGeneralRelation(const HandleExprGreaterThan* self_) {
-    try { return {new HandleExprGeneralRelation(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Expr_GeneralRelation*> Handle_Expr_GreaterThan_to_Handle_Expr_GeneralRelation(const Handle_Expr_GreaterThan* self_) {
+    try { return {new Handle_Expr_GeneralRelation(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleExprGreaterThan_to_HandleStandardTransient(const HandleExprGreaterThan* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_Expr_GreaterThan_to_Handle_Standard_Transient(const Handle_Expr_GreaterThan* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" const char* Expr_GreaterThan_inherited_SetFirstMember(Expr_GreaterThan* self, Handle(Expr_GeneralExpression) const& exp) {
@@ -4271,28 +4015,28 @@ extern "C" OcctResult<const Expr_GeneralRelation*> Expr_GreaterThanOrEqual_as_Ex
 extern "C" OcctResult<Expr_GeneralRelation*> Expr_GreaterThanOrEqual_as_Expr_GeneralRelation_mut(Expr_GreaterThanOrEqual* self_) { return {static_cast<Expr_GeneralRelation*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> Expr_GreaterThanOrEqual_as_Standard_Transient(const Expr_GreaterThanOrEqual* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> Expr_GreaterThanOrEqual_as_Standard_Transient_mut(Expr_GreaterThanOrEqual* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleExprGreaterThanOrEqual*> Expr_GreaterThanOrEqual_to_handle(Expr_GreaterThanOrEqual* obj) {
-    try { return {new HandleExprGreaterThanOrEqual(obj), nullptr}; }
+extern "C" OcctResult<Handle_Expr_GreaterThanOrEqual*> Expr_GreaterThanOrEqual_to_handle(Expr_GreaterThanOrEqual* obj) {
+    try { return {new Handle_Expr_GreaterThanOrEqual(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const Expr_GreaterThanOrEqual*> HandleExprGreaterThanOrEqual_get(const HandleExprGreaterThanOrEqual* handle) {
+extern "C" OcctResult<const Expr_GreaterThanOrEqual*> Handle_Expr_GreaterThanOrEqual_get(const Handle_Expr_GreaterThanOrEqual* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Expr_GreaterThanOrEqual*> HandleExprGreaterThanOrEqual_get_mut(HandleExprGreaterThanOrEqual* handle) {
+extern "C" OcctResult<Expr_GreaterThanOrEqual*> Handle_Expr_GreaterThanOrEqual_get_mut(Handle_Expr_GreaterThanOrEqual* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleExprSingleRelation*> HandleExprGreaterThanOrEqual_to_HandleExprSingleRelation(const HandleExprGreaterThanOrEqual* self_) {
-    try { return {new HandleExprSingleRelation(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Expr_SingleRelation*> Handle_Expr_GreaterThanOrEqual_to_Handle_Expr_SingleRelation(const Handle_Expr_GreaterThanOrEqual* self_) {
+    try { return {new Handle_Expr_SingleRelation(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleExprGeneralRelation*> HandleExprGreaterThanOrEqual_to_HandleExprGeneralRelation(const HandleExprGreaterThanOrEqual* self_) {
-    try { return {new HandleExprGeneralRelation(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Expr_GeneralRelation*> Handle_Expr_GreaterThanOrEqual_to_Handle_Expr_GeneralRelation(const Handle_Expr_GreaterThanOrEqual* self_) {
+    try { return {new Handle_Expr_GeneralRelation(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleExprGreaterThanOrEqual_to_HandleStandardTransient(const HandleExprGreaterThanOrEqual* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_Expr_GreaterThanOrEqual_to_Handle_Standard_Transient(const Handle_Expr_GreaterThanOrEqual* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" const char* Expr_GreaterThanOrEqual_inherited_SetFirstMember(Expr_GreaterThanOrEqual* self, Handle(Expr_GeneralExpression) const& exp) {
@@ -4369,10 +4113,6 @@ extern "C" void Expr_GreaterThanOrEqual_destructor(Expr_GreaterThanOrEqual* self
 // Expr_InvalidAssignment wrappers
 // ========================
 
-extern "C" OcctResult<Expr_InvalidAssignment*> Expr_InvalidAssignment_ctor() {
-    try { return {new Expr_InvalidAssignment(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
 extern "C" OcctResult<Expr_InvalidAssignment*> Expr_InvalidAssignment_ctor_charptr(const char* theMessage) {
     try { return {new Expr_InvalidAssignment(theMessage), nullptr}; }
     OCCT_CATCH_RETURN
@@ -4381,102 +4121,16 @@ extern "C" OcctResult<Expr_InvalidAssignment*> Expr_InvalidAssignment_ctor_charp
     try { return {new Expr_InvalidAssignment(theMessage, theStackTrace), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(Standard_Type) const*> Expr_InvalidAssignment_dynamic_type(const Expr_InvalidAssignment* self_) {
-    try { return {&(self_->DynamicType()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* Expr_InvalidAssignment_raise_charptr(const char* theMessage) {
-    try { Expr_InvalidAssignment::Raise(theMessage); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* Expr_InvalidAssignment_raise_sstream(Standard_SStream* theMessage) {
-    try { Expr_InvalidAssignment::Raise(*theMessage); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<Handle(Expr_InvalidAssignment)*> Expr_InvalidAssignment_new_instance_charptr(const char* theMessage) {
-    try { return {new Handle(Expr_InvalidAssignment)(Expr_InvalidAssignment::NewInstance(theMessage)), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Handle(Expr_InvalidAssignment)*> Expr_InvalidAssignment_new_instance_charptr2(const char* theMessage, const char* theStackTrace) {
-    try { return {new Handle(Expr_InvalidAssignment)(Expr_InvalidAssignment::NewInstance(theMessage, theStackTrace)), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<char const*> Expr_InvalidAssignment_get_type_name() {
-    try { return {Expr_InvalidAssignment::get_type_name(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Handle(Standard_Type) const*> Expr_InvalidAssignment_get_type_descriptor() {
-    try { return {&(Expr_InvalidAssignment::get_type_descriptor()), nullptr}; }
+extern "C" OcctResult<char const*> Expr_InvalidAssignment_exception_type(const Expr_InvalidAssignment* self_) {
+    try { return {self_->ExceptionType(), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<const Expr_ExprFailure*> Expr_InvalidAssignment_as_Expr_ExprFailure(const Expr_InvalidAssignment* self_) { return {static_cast<const Expr_ExprFailure*>(self_), nullptr}; }
 extern "C" OcctResult<Expr_ExprFailure*> Expr_InvalidAssignment_as_Expr_ExprFailure_mut(Expr_InvalidAssignment* self_) { return {static_cast<Expr_ExprFailure*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Failure*> Expr_InvalidAssignment_as_Standard_Failure(const Expr_InvalidAssignment* self_) { return {static_cast<const Standard_Failure*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Failure*> Expr_InvalidAssignment_as_Standard_Failure_mut(Expr_InvalidAssignment* self_) { return {static_cast<Standard_Failure*>(self_), nullptr}; }
-extern "C" OcctResult<const Standard_Transient*> Expr_InvalidAssignment_as_Standard_Transient(const Expr_InvalidAssignment* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<Standard_Transient*> Expr_InvalidAssignment_as_Standard_Transient_mut(Expr_InvalidAssignment* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleExprInvalidAssignment*> Expr_InvalidAssignment_to_handle(Expr_InvalidAssignment* obj) {
-    try { return {new HandleExprInvalidAssignment(obj), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<const Expr_InvalidAssignment*> HandleExprInvalidAssignment_get(const HandleExprInvalidAssignment* handle) {
-    try { return {(*handle).get(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Expr_InvalidAssignment*> HandleExprInvalidAssignment_get_mut(HandleExprInvalidAssignment* handle) {
-    try { return {(*handle).get(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<HandleExprExprFailure*> HandleExprInvalidAssignment_to_HandleExprExprFailure(const HandleExprInvalidAssignment* self_) {
-    try { return {new HandleExprExprFailure(*self_), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<HandleStandardFailure*> HandleExprInvalidAssignment_to_HandleStandardFailure(const HandleExprInvalidAssignment* self_) {
-    try { return {new HandleStandardFailure(*self_), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<HandleStandardTransient*> HandleExprInvalidAssignment_to_HandleStandardTransient(const HandleExprInvalidAssignment* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
-    OCCT_CATCH_RETURN
-}
 extern "C" const char* Expr_InvalidAssignment_inherited_Print(const Expr_InvalidAssignment* self, Standard_OStream& theStream) {
     try { self->Print(theStream); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* Expr_InvalidAssignment_inherited_Reraise(Expr_InvalidAssignment* self) {
-    try { self->Reraise(); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* Expr_InvalidAssignment_inherited_Jump(Expr_InvalidAssignment* self) {
-    try { self->Jump(); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<bool> Expr_InvalidAssignment_inherited_IsInstance(const Expr_InvalidAssignment* self, Handle(Standard_Type) const& theType) {
-    try { return {self->IsInstance(theType), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<bool> Expr_InvalidAssignment_inherited_IsKind(const Expr_InvalidAssignment* self, Handle(Standard_Type) const& theType) {
-    try { return {self->IsKind(theType), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Standard_Transient*> Expr_InvalidAssignment_inherited_This(const Expr_InvalidAssignment* self) {
-    try { return {self->This(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<int32_t> Expr_InvalidAssignment_inherited_GetRefCount(const Expr_InvalidAssignment* self) {
-    try { return {self->GetRefCount(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* Expr_InvalidAssignment_inherited_IncrementRefCounter(Expr_InvalidAssignment* self) {
-    try { self->IncrementRefCounter(); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<int32_t> Expr_InvalidAssignment_inherited_DecrementRefCounter(Expr_InvalidAssignment* self) {
-    try { return {self->DecrementRefCounter(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* Expr_InvalidAssignment_inherited_Delete(const Expr_InvalidAssignment* self) {
-    try { self->Delete(); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
 extern "C" void Expr_InvalidAssignment_destructor(Expr_InvalidAssignment* self_) { delete self_; }
@@ -4485,10 +4139,6 @@ extern "C" void Expr_InvalidAssignment_destructor(Expr_InvalidAssignment* self_)
 // Expr_InvalidFunction wrappers
 // ========================
 
-extern "C" OcctResult<Expr_InvalidFunction*> Expr_InvalidFunction_ctor() {
-    try { return {new Expr_InvalidFunction(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
 extern "C" OcctResult<Expr_InvalidFunction*> Expr_InvalidFunction_ctor_charptr(const char* theMessage) {
     try { return {new Expr_InvalidFunction(theMessage), nullptr}; }
     OCCT_CATCH_RETURN
@@ -4497,102 +4147,16 @@ extern "C" OcctResult<Expr_InvalidFunction*> Expr_InvalidFunction_ctor_charptr2(
     try { return {new Expr_InvalidFunction(theMessage, theStackTrace), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(Standard_Type) const*> Expr_InvalidFunction_dynamic_type(const Expr_InvalidFunction* self_) {
-    try { return {&(self_->DynamicType()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* Expr_InvalidFunction_raise_charptr(const char* theMessage) {
-    try { Expr_InvalidFunction::Raise(theMessage); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* Expr_InvalidFunction_raise_sstream(Standard_SStream* theMessage) {
-    try { Expr_InvalidFunction::Raise(*theMessage); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<Handle(Expr_InvalidFunction)*> Expr_InvalidFunction_new_instance_charptr(const char* theMessage) {
-    try { return {new Handle(Expr_InvalidFunction)(Expr_InvalidFunction::NewInstance(theMessage)), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Handle(Expr_InvalidFunction)*> Expr_InvalidFunction_new_instance_charptr2(const char* theMessage, const char* theStackTrace) {
-    try { return {new Handle(Expr_InvalidFunction)(Expr_InvalidFunction::NewInstance(theMessage, theStackTrace)), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<char const*> Expr_InvalidFunction_get_type_name() {
-    try { return {Expr_InvalidFunction::get_type_name(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Handle(Standard_Type) const*> Expr_InvalidFunction_get_type_descriptor() {
-    try { return {&(Expr_InvalidFunction::get_type_descriptor()), nullptr}; }
+extern "C" OcctResult<char const*> Expr_InvalidFunction_exception_type(const Expr_InvalidFunction* self_) {
+    try { return {self_->ExceptionType(), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<const Expr_ExprFailure*> Expr_InvalidFunction_as_Expr_ExprFailure(const Expr_InvalidFunction* self_) { return {static_cast<const Expr_ExprFailure*>(self_), nullptr}; }
 extern "C" OcctResult<Expr_ExprFailure*> Expr_InvalidFunction_as_Expr_ExprFailure_mut(Expr_InvalidFunction* self_) { return {static_cast<Expr_ExprFailure*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Failure*> Expr_InvalidFunction_as_Standard_Failure(const Expr_InvalidFunction* self_) { return {static_cast<const Standard_Failure*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Failure*> Expr_InvalidFunction_as_Standard_Failure_mut(Expr_InvalidFunction* self_) { return {static_cast<Standard_Failure*>(self_), nullptr}; }
-extern "C" OcctResult<const Standard_Transient*> Expr_InvalidFunction_as_Standard_Transient(const Expr_InvalidFunction* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<Standard_Transient*> Expr_InvalidFunction_as_Standard_Transient_mut(Expr_InvalidFunction* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleExprInvalidFunction*> Expr_InvalidFunction_to_handle(Expr_InvalidFunction* obj) {
-    try { return {new HandleExprInvalidFunction(obj), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<const Expr_InvalidFunction*> HandleExprInvalidFunction_get(const HandleExprInvalidFunction* handle) {
-    try { return {(*handle).get(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Expr_InvalidFunction*> HandleExprInvalidFunction_get_mut(HandleExprInvalidFunction* handle) {
-    try { return {(*handle).get(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<HandleExprExprFailure*> HandleExprInvalidFunction_to_HandleExprExprFailure(const HandleExprInvalidFunction* self_) {
-    try { return {new HandleExprExprFailure(*self_), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<HandleStandardFailure*> HandleExprInvalidFunction_to_HandleStandardFailure(const HandleExprInvalidFunction* self_) {
-    try { return {new HandleStandardFailure(*self_), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<HandleStandardTransient*> HandleExprInvalidFunction_to_HandleStandardTransient(const HandleExprInvalidFunction* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
-    OCCT_CATCH_RETURN
-}
 extern "C" const char* Expr_InvalidFunction_inherited_Print(const Expr_InvalidFunction* self, Standard_OStream& theStream) {
     try { self->Print(theStream); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* Expr_InvalidFunction_inherited_Reraise(Expr_InvalidFunction* self) {
-    try { self->Reraise(); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* Expr_InvalidFunction_inherited_Jump(Expr_InvalidFunction* self) {
-    try { self->Jump(); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<bool> Expr_InvalidFunction_inherited_IsInstance(const Expr_InvalidFunction* self, Handle(Standard_Type) const& theType) {
-    try { return {self->IsInstance(theType), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<bool> Expr_InvalidFunction_inherited_IsKind(const Expr_InvalidFunction* self, Handle(Standard_Type) const& theType) {
-    try { return {self->IsKind(theType), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Standard_Transient*> Expr_InvalidFunction_inherited_This(const Expr_InvalidFunction* self) {
-    try { return {self->This(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<int32_t> Expr_InvalidFunction_inherited_GetRefCount(const Expr_InvalidFunction* self) {
-    try { return {self->GetRefCount(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* Expr_InvalidFunction_inherited_IncrementRefCounter(Expr_InvalidFunction* self) {
-    try { self->IncrementRefCounter(); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<int32_t> Expr_InvalidFunction_inherited_DecrementRefCounter(Expr_InvalidFunction* self) {
-    try { return {self->DecrementRefCounter(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* Expr_InvalidFunction_inherited_Delete(const Expr_InvalidFunction* self) {
-    try { self->Delete(); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
 extern "C" void Expr_InvalidFunction_destructor(Expr_InvalidFunction* self_) { delete self_; }
@@ -4601,10 +4165,6 @@ extern "C" void Expr_InvalidFunction_destructor(Expr_InvalidFunction* self_) { d
 // Expr_InvalidOperand wrappers
 // ========================
 
-extern "C" OcctResult<Expr_InvalidOperand*> Expr_InvalidOperand_ctor() {
-    try { return {new Expr_InvalidOperand(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
 extern "C" OcctResult<Expr_InvalidOperand*> Expr_InvalidOperand_ctor_charptr(const char* theMessage) {
     try { return {new Expr_InvalidOperand(theMessage), nullptr}; }
     OCCT_CATCH_RETURN
@@ -4613,102 +4173,16 @@ extern "C" OcctResult<Expr_InvalidOperand*> Expr_InvalidOperand_ctor_charptr2(co
     try { return {new Expr_InvalidOperand(theMessage, theStackTrace), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(Standard_Type) const*> Expr_InvalidOperand_dynamic_type(const Expr_InvalidOperand* self_) {
-    try { return {&(self_->DynamicType()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* Expr_InvalidOperand_raise_charptr(const char* theMessage) {
-    try { Expr_InvalidOperand::Raise(theMessage); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* Expr_InvalidOperand_raise_sstream(Standard_SStream* theMessage) {
-    try { Expr_InvalidOperand::Raise(*theMessage); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<Handle(Expr_InvalidOperand)*> Expr_InvalidOperand_new_instance_charptr(const char* theMessage) {
-    try { return {new Handle(Expr_InvalidOperand)(Expr_InvalidOperand::NewInstance(theMessage)), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Handle(Expr_InvalidOperand)*> Expr_InvalidOperand_new_instance_charptr2(const char* theMessage, const char* theStackTrace) {
-    try { return {new Handle(Expr_InvalidOperand)(Expr_InvalidOperand::NewInstance(theMessage, theStackTrace)), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<char const*> Expr_InvalidOperand_get_type_name() {
-    try { return {Expr_InvalidOperand::get_type_name(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Handle(Standard_Type) const*> Expr_InvalidOperand_get_type_descriptor() {
-    try { return {&(Expr_InvalidOperand::get_type_descriptor()), nullptr}; }
+extern "C" OcctResult<char const*> Expr_InvalidOperand_exception_type(const Expr_InvalidOperand* self_) {
+    try { return {self_->ExceptionType(), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<const Expr_ExprFailure*> Expr_InvalidOperand_as_Expr_ExprFailure(const Expr_InvalidOperand* self_) { return {static_cast<const Expr_ExprFailure*>(self_), nullptr}; }
 extern "C" OcctResult<Expr_ExprFailure*> Expr_InvalidOperand_as_Expr_ExprFailure_mut(Expr_InvalidOperand* self_) { return {static_cast<Expr_ExprFailure*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Failure*> Expr_InvalidOperand_as_Standard_Failure(const Expr_InvalidOperand* self_) { return {static_cast<const Standard_Failure*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Failure*> Expr_InvalidOperand_as_Standard_Failure_mut(Expr_InvalidOperand* self_) { return {static_cast<Standard_Failure*>(self_), nullptr}; }
-extern "C" OcctResult<const Standard_Transient*> Expr_InvalidOperand_as_Standard_Transient(const Expr_InvalidOperand* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<Standard_Transient*> Expr_InvalidOperand_as_Standard_Transient_mut(Expr_InvalidOperand* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleExprInvalidOperand*> Expr_InvalidOperand_to_handle(Expr_InvalidOperand* obj) {
-    try { return {new HandleExprInvalidOperand(obj), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<const Expr_InvalidOperand*> HandleExprInvalidOperand_get(const HandleExprInvalidOperand* handle) {
-    try { return {(*handle).get(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Expr_InvalidOperand*> HandleExprInvalidOperand_get_mut(HandleExprInvalidOperand* handle) {
-    try { return {(*handle).get(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<HandleExprExprFailure*> HandleExprInvalidOperand_to_HandleExprExprFailure(const HandleExprInvalidOperand* self_) {
-    try { return {new HandleExprExprFailure(*self_), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<HandleStandardFailure*> HandleExprInvalidOperand_to_HandleStandardFailure(const HandleExprInvalidOperand* self_) {
-    try { return {new HandleStandardFailure(*self_), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<HandleStandardTransient*> HandleExprInvalidOperand_to_HandleStandardTransient(const HandleExprInvalidOperand* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
-    OCCT_CATCH_RETURN
-}
 extern "C" const char* Expr_InvalidOperand_inherited_Print(const Expr_InvalidOperand* self, Standard_OStream& theStream) {
     try { self->Print(theStream); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* Expr_InvalidOperand_inherited_Reraise(Expr_InvalidOperand* self) {
-    try { self->Reraise(); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* Expr_InvalidOperand_inherited_Jump(Expr_InvalidOperand* self) {
-    try { self->Jump(); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<bool> Expr_InvalidOperand_inherited_IsInstance(const Expr_InvalidOperand* self, Handle(Standard_Type) const& theType) {
-    try { return {self->IsInstance(theType), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<bool> Expr_InvalidOperand_inherited_IsKind(const Expr_InvalidOperand* self, Handle(Standard_Type) const& theType) {
-    try { return {self->IsKind(theType), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Standard_Transient*> Expr_InvalidOperand_inherited_This(const Expr_InvalidOperand* self) {
-    try { return {self->This(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<int32_t> Expr_InvalidOperand_inherited_GetRefCount(const Expr_InvalidOperand* self) {
-    try { return {self->GetRefCount(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* Expr_InvalidOperand_inherited_IncrementRefCounter(Expr_InvalidOperand* self) {
-    try { self->IncrementRefCounter(); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<int32_t> Expr_InvalidOperand_inherited_DecrementRefCounter(Expr_InvalidOperand* self) {
-    try { return {self->DecrementRefCounter(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* Expr_InvalidOperand_inherited_Delete(const Expr_InvalidOperand* self) {
-    try { self->Delete(); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
 extern "C" void Expr_InvalidOperand_destructor(Expr_InvalidOperand* self_) { delete self_; }
@@ -4759,28 +4233,28 @@ extern "C" OcctResult<const Expr_GeneralRelation*> Expr_LessThan_as_Expr_General
 extern "C" OcctResult<Expr_GeneralRelation*> Expr_LessThan_as_Expr_GeneralRelation_mut(Expr_LessThan* self_) { return {static_cast<Expr_GeneralRelation*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> Expr_LessThan_as_Standard_Transient(const Expr_LessThan* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> Expr_LessThan_as_Standard_Transient_mut(Expr_LessThan* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleExprLessThan*> Expr_LessThan_to_handle(Expr_LessThan* obj) {
-    try { return {new HandleExprLessThan(obj), nullptr}; }
+extern "C" OcctResult<Handle_Expr_LessThan*> Expr_LessThan_to_handle(Expr_LessThan* obj) {
+    try { return {new Handle_Expr_LessThan(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const Expr_LessThan*> HandleExprLessThan_get(const HandleExprLessThan* handle) {
+extern "C" OcctResult<const Expr_LessThan*> Handle_Expr_LessThan_get(const Handle_Expr_LessThan* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Expr_LessThan*> HandleExprLessThan_get_mut(HandleExprLessThan* handle) {
+extern "C" OcctResult<Expr_LessThan*> Handle_Expr_LessThan_get_mut(Handle_Expr_LessThan* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleExprSingleRelation*> HandleExprLessThan_to_HandleExprSingleRelation(const HandleExprLessThan* self_) {
-    try { return {new HandleExprSingleRelation(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Expr_SingleRelation*> Handle_Expr_LessThan_to_Handle_Expr_SingleRelation(const Handle_Expr_LessThan* self_) {
+    try { return {new Handle_Expr_SingleRelation(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleExprGeneralRelation*> HandleExprLessThan_to_HandleExprGeneralRelation(const HandleExprLessThan* self_) {
-    try { return {new HandleExprGeneralRelation(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Expr_GeneralRelation*> Handle_Expr_LessThan_to_Handle_Expr_GeneralRelation(const Handle_Expr_LessThan* self_) {
+    try { return {new Handle_Expr_GeneralRelation(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleExprLessThan_to_HandleStandardTransient(const HandleExprLessThan* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_Expr_LessThan_to_Handle_Standard_Transient(const Handle_Expr_LessThan* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" const char* Expr_LessThan_inherited_SetFirstMember(Expr_LessThan* self, Handle(Expr_GeneralExpression) const& exp) {
@@ -4899,28 +4373,28 @@ extern "C" OcctResult<const Expr_GeneralRelation*> Expr_LessThanOrEqual_as_Expr_
 extern "C" OcctResult<Expr_GeneralRelation*> Expr_LessThanOrEqual_as_Expr_GeneralRelation_mut(Expr_LessThanOrEqual* self_) { return {static_cast<Expr_GeneralRelation*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> Expr_LessThanOrEqual_as_Standard_Transient(const Expr_LessThanOrEqual* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> Expr_LessThanOrEqual_as_Standard_Transient_mut(Expr_LessThanOrEqual* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleExprLessThanOrEqual*> Expr_LessThanOrEqual_to_handle(Expr_LessThanOrEqual* obj) {
-    try { return {new HandleExprLessThanOrEqual(obj), nullptr}; }
+extern "C" OcctResult<Handle_Expr_LessThanOrEqual*> Expr_LessThanOrEqual_to_handle(Expr_LessThanOrEqual* obj) {
+    try { return {new Handle_Expr_LessThanOrEqual(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const Expr_LessThanOrEqual*> HandleExprLessThanOrEqual_get(const HandleExprLessThanOrEqual* handle) {
+extern "C" OcctResult<const Expr_LessThanOrEqual*> Handle_Expr_LessThanOrEqual_get(const Handle_Expr_LessThanOrEqual* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Expr_LessThanOrEqual*> HandleExprLessThanOrEqual_get_mut(HandleExprLessThanOrEqual* handle) {
+extern "C" OcctResult<Expr_LessThanOrEqual*> Handle_Expr_LessThanOrEqual_get_mut(Handle_Expr_LessThanOrEqual* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleExprSingleRelation*> HandleExprLessThanOrEqual_to_HandleExprSingleRelation(const HandleExprLessThanOrEqual* self_) {
-    try { return {new HandleExprSingleRelation(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Expr_SingleRelation*> Handle_Expr_LessThanOrEqual_to_Handle_Expr_SingleRelation(const Handle_Expr_LessThanOrEqual* self_) {
+    try { return {new Handle_Expr_SingleRelation(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleExprGeneralRelation*> HandleExprLessThanOrEqual_to_HandleExprGeneralRelation(const HandleExprLessThanOrEqual* self_) {
-    try { return {new HandleExprGeneralRelation(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Expr_GeneralRelation*> Handle_Expr_LessThanOrEqual_to_Handle_Expr_GeneralRelation(const Handle_Expr_LessThanOrEqual* self_) {
+    try { return {new Handle_Expr_GeneralRelation(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleExprLessThanOrEqual_to_HandleStandardTransient(const HandleExprLessThanOrEqual* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_Expr_LessThanOrEqual_to_Handle_Standard_Transient(const Handle_Expr_LessThanOrEqual* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" const char* Expr_LessThanOrEqual_inherited_SetFirstMember(Expr_LessThanOrEqual* self, Handle(Expr_GeneralExpression) const& exp) {
@@ -5025,10 +4499,6 @@ extern "C" OcctResult<bool> Expr_LogOf10_is_linear(const Expr_LogOf10* self_) {
     try { return {self_->IsLinear(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<double> Expr_LogOf10_evaluate(const Expr_LogOf10* self_, Expr_Array1OfNamedUnknown const* vars, TColStd_Array1OfReal const* vals) {
-    try { return {self_->Evaluate(*vars, *vals), nullptr}; }
-    OCCT_CATCH_RETURN
-}
 extern "C" OcctResult<Handle(Standard_Type) const*> Expr_LogOf10_dynamic_type(const Expr_LogOf10* self_) {
     try { return {&(self_->DynamicType()), nullptr}; }
     OCCT_CATCH_RETURN
@@ -5047,28 +4517,28 @@ extern "C" OcctResult<const Expr_GeneralExpression*> Expr_LogOf10_as_Expr_Genera
 extern "C" OcctResult<Expr_GeneralExpression*> Expr_LogOf10_as_Expr_GeneralExpression_mut(Expr_LogOf10* self_) { return {static_cast<Expr_GeneralExpression*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> Expr_LogOf10_as_Standard_Transient(const Expr_LogOf10* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> Expr_LogOf10_as_Standard_Transient_mut(Expr_LogOf10* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleExprLogOf10*> Expr_LogOf10_to_handle(Expr_LogOf10* obj) {
-    try { return {new HandleExprLogOf10(obj), nullptr}; }
+extern "C" OcctResult<Handle_Expr_LogOf10*> Expr_LogOf10_to_handle(Expr_LogOf10* obj) {
+    try { return {new Handle_Expr_LogOf10(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const Expr_LogOf10*> HandleExprLogOf10_get(const HandleExprLogOf10* handle) {
+extern "C" OcctResult<const Expr_LogOf10*> Handle_Expr_LogOf10_get(const Handle_Expr_LogOf10* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Expr_LogOf10*> HandleExprLogOf10_get_mut(HandleExprLogOf10* handle) {
+extern "C" OcctResult<Expr_LogOf10*> Handle_Expr_LogOf10_get_mut(Handle_Expr_LogOf10* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleExprUnaryExpression*> HandleExprLogOf10_to_HandleExprUnaryExpression(const HandleExprLogOf10* self_) {
-    try { return {new HandleExprUnaryExpression(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Expr_UnaryExpression*> Handle_Expr_LogOf10_to_Handle_Expr_UnaryExpression(const Handle_Expr_LogOf10* self_) {
+    try { return {new Handle_Expr_UnaryExpression(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleExprGeneralExpression*> HandleExprLogOf10_to_HandleExprGeneralExpression(const HandleExprLogOf10* self_) {
-    try { return {new HandleExprGeneralExpression(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Expr_GeneralExpression*> Handle_Expr_LogOf10_to_Handle_Expr_GeneralExpression(const Handle_Expr_LogOf10* self_) {
+    try { return {new Handle_Expr_GeneralExpression(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleExprLogOf10_to_HandleStandardTransient(const HandleExprLogOf10* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_Expr_LogOf10_to_Handle_Standard_Transient(const Handle_Expr_LogOf10* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(Expr_GeneralExpression) const*> Expr_LogOf10_inherited_Operand(const Expr_LogOf10* self) {
@@ -5177,10 +4647,6 @@ extern "C" OcctResult<bool> Expr_LogOfe_is_linear(const Expr_LogOfe* self_) {
     try { return {self_->IsLinear(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<double> Expr_LogOfe_evaluate(const Expr_LogOfe* self_, Expr_Array1OfNamedUnknown const* vars, TColStd_Array1OfReal const* vals) {
-    try { return {self_->Evaluate(*vars, *vals), nullptr}; }
-    OCCT_CATCH_RETURN
-}
 extern "C" OcctResult<Handle(Standard_Type) const*> Expr_LogOfe_dynamic_type(const Expr_LogOfe* self_) {
     try { return {&(self_->DynamicType()), nullptr}; }
     OCCT_CATCH_RETURN
@@ -5199,28 +4665,28 @@ extern "C" OcctResult<const Expr_GeneralExpression*> Expr_LogOfe_as_Expr_General
 extern "C" OcctResult<Expr_GeneralExpression*> Expr_LogOfe_as_Expr_GeneralExpression_mut(Expr_LogOfe* self_) { return {static_cast<Expr_GeneralExpression*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> Expr_LogOfe_as_Standard_Transient(const Expr_LogOfe* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> Expr_LogOfe_as_Standard_Transient_mut(Expr_LogOfe* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleExprLogOfe*> Expr_LogOfe_to_handle(Expr_LogOfe* obj) {
-    try { return {new HandleExprLogOfe(obj), nullptr}; }
+extern "C" OcctResult<Handle_Expr_LogOfe*> Expr_LogOfe_to_handle(Expr_LogOfe* obj) {
+    try { return {new Handle_Expr_LogOfe(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const Expr_LogOfe*> HandleExprLogOfe_get(const HandleExprLogOfe* handle) {
+extern "C" OcctResult<const Expr_LogOfe*> Handle_Expr_LogOfe_get(const Handle_Expr_LogOfe* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Expr_LogOfe*> HandleExprLogOfe_get_mut(HandleExprLogOfe* handle) {
+extern "C" OcctResult<Expr_LogOfe*> Handle_Expr_LogOfe_get_mut(Handle_Expr_LogOfe* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleExprUnaryExpression*> HandleExprLogOfe_to_HandleExprUnaryExpression(const HandleExprLogOfe* self_) {
-    try { return {new HandleExprUnaryExpression(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Expr_UnaryExpression*> Handle_Expr_LogOfe_to_Handle_Expr_UnaryExpression(const Handle_Expr_LogOfe* self_) {
+    try { return {new Handle_Expr_UnaryExpression(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleExprGeneralExpression*> HandleExprLogOfe_to_HandleExprGeneralExpression(const HandleExprLogOfe* self_) {
-    try { return {new HandleExprGeneralExpression(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Expr_GeneralExpression*> Handle_Expr_LogOfe_to_Handle_Expr_GeneralExpression(const Handle_Expr_LogOfe* self_) {
+    try { return {new Handle_Expr_GeneralExpression(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleExprLogOfe_to_HandleStandardTransient(const HandleExprLogOfe* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_Expr_LogOfe_to_Handle_Standard_Transient(const Handle_Expr_LogOfe* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(Expr_GeneralExpression) const*> Expr_LogOfe_inherited_Operand(const Expr_LogOfe* self) {
@@ -5353,10 +4819,6 @@ extern "C" const char* Expr_NamedConstant_replace(Expr_NamedConstant* self_, Han
     try { self_->Replace(*var, *with); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<double> Expr_NamedConstant_evaluate(const Expr_NamedConstant* self_, Expr_Array1OfNamedUnknown const* vars, TColStd_Array1OfReal const* vals) {
-    try { return {self_->Evaluate(*vars, *vals), nullptr}; }
-    OCCT_CATCH_RETURN
-}
 extern "C" OcctResult<Handle(Standard_Type) const*> Expr_NamedConstant_dynamic_type(const Expr_NamedConstant* self_) {
     try { return {&(self_->DynamicType()), nullptr}; }
     OCCT_CATCH_RETURN
@@ -5375,28 +4837,28 @@ extern "C" OcctResult<const Expr_GeneralExpression*> Expr_NamedConstant_as_Expr_
 extern "C" OcctResult<Expr_GeneralExpression*> Expr_NamedConstant_as_Expr_GeneralExpression_mut(Expr_NamedConstant* self_) { return {static_cast<Expr_GeneralExpression*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> Expr_NamedConstant_as_Standard_Transient(const Expr_NamedConstant* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> Expr_NamedConstant_as_Standard_Transient_mut(Expr_NamedConstant* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleExprNamedConstant*> Expr_NamedConstant_to_handle(Expr_NamedConstant* obj) {
-    try { return {new HandleExprNamedConstant(obj), nullptr}; }
+extern "C" OcctResult<Handle_Expr_NamedConstant*> Expr_NamedConstant_to_handle(Expr_NamedConstant* obj) {
+    try { return {new Handle_Expr_NamedConstant(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const Expr_NamedConstant*> HandleExprNamedConstant_get(const HandleExprNamedConstant* handle) {
+extern "C" OcctResult<const Expr_NamedConstant*> Handle_Expr_NamedConstant_get(const Handle_Expr_NamedConstant* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Expr_NamedConstant*> HandleExprNamedConstant_get_mut(HandleExprNamedConstant* handle) {
+extern "C" OcctResult<Expr_NamedConstant*> Handle_Expr_NamedConstant_get_mut(Handle_Expr_NamedConstant* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleExprNamedExpression*> HandleExprNamedConstant_to_HandleExprNamedExpression(const HandleExprNamedConstant* self_) {
-    try { return {new HandleExprNamedExpression(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Expr_NamedExpression*> Handle_Expr_NamedConstant_to_Handle_Expr_NamedExpression(const Handle_Expr_NamedConstant* self_) {
+    try { return {new Handle_Expr_NamedExpression(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleExprGeneralExpression*> HandleExprNamedConstant_to_HandleExprGeneralExpression(const HandleExprNamedConstant* self_) {
-    try { return {new HandleExprGeneralExpression(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Expr_GeneralExpression*> Handle_Expr_NamedConstant_to_Handle_Expr_GeneralExpression(const Handle_Expr_NamedConstant* self_) {
+    try { return {new Handle_Expr_GeneralExpression(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleExprNamedConstant_to_HandleStandardTransient(const HandleExprNamedConstant* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_Expr_NamedConstant_to_Handle_Standard_Transient(const Handle_Expr_NamedConstant* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<TCollection_AsciiString const*> Expr_NamedConstant_inherited_GetName(const Expr_NamedConstant* self) {
@@ -5493,35 +4955,35 @@ extern "C" OcctResult<const Expr_GeneralExpression*> Expr_NamedExpression_as_Exp
 extern "C" OcctResult<Expr_GeneralExpression*> Expr_NamedExpression_as_Expr_GeneralExpression_mut(Expr_NamedExpression* self_) { return {static_cast<Expr_GeneralExpression*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> Expr_NamedExpression_as_Standard_Transient(const Expr_NamedExpression* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> Expr_NamedExpression_as_Standard_Transient_mut(Expr_NamedExpression* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<const Expr_NamedExpression*> HandleExprNamedExpression_get(const HandleExprNamedExpression* handle) {
+extern "C" OcctResult<const Expr_NamedExpression*> Handle_Expr_NamedExpression_get(const Handle_Expr_NamedExpression* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Expr_NamedExpression*> HandleExprNamedExpression_get_mut(HandleExprNamedExpression* handle) {
+extern "C" OcctResult<Expr_NamedExpression*> Handle_Expr_NamedExpression_get_mut(Handle_Expr_NamedExpression* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleExprGeneralExpression*> HandleExprNamedExpression_to_HandleExprGeneralExpression(const HandleExprNamedExpression* self_) {
-    try { return {new HandleExprGeneralExpression(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Expr_GeneralExpression*> Handle_Expr_NamedExpression_to_Handle_Expr_GeneralExpression(const Handle_Expr_NamedExpression* self_) {
+    try { return {new Handle_Expr_GeneralExpression(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleExprNamedExpression_to_HandleStandardTransient(const HandleExprNamedExpression* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_Expr_NamedExpression_to_Handle_Standard_Transient(const Handle_Expr_NamedExpression* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleExprNamedConstant*> HandleExprNamedExpression_downcast_to_HandleExprNamedConstant(const HandleExprNamedExpression* self_) {
+extern "C" OcctResult<Handle_Expr_NamedConstant*> Handle_Expr_NamedExpression_downcast_to_Handle_Expr_NamedConstant(const Handle_Expr_NamedExpression* self_) {
     try {
     opencascade::handle<Expr_NamedConstant> result = opencascade::handle<Expr_NamedConstant>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleExprNamedConstant(result), nullptr};
+    return {new Handle_Expr_NamedConstant(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleExprNamedUnknown*> HandleExprNamedExpression_downcast_to_HandleExprNamedUnknown(const HandleExprNamedExpression* self_) {
+extern "C" OcctResult<Handle_Expr_NamedUnknown*> Handle_Expr_NamedExpression_downcast_to_Handle_Expr_NamedUnknown(const Handle_Expr_NamedExpression* self_) {
     try {
     opencascade::handle<Expr_NamedUnknown> result = opencascade::handle<Expr_NamedUnknown>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleExprNamedUnknown(result), nullptr};
+    return {new Handle_Expr_NamedUnknown(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
@@ -5569,10 +5031,6 @@ extern "C" const char* Expr_NamedExpression_inherited_Replace(Expr_NamedExpressi
     try { self->Replace(var, with); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<double> Expr_NamedExpression_inherited_Evaluate(const Expr_NamedExpression* self, Expr_Array1OfNamedUnknown const& vars, TColStd_Array1OfReal const& vals) {
-    try { return {self->Evaluate(vars, vals), nullptr}; }
-    OCCT_CATCH_RETURN
-}
 extern "C" OcctResult<double> Expr_NamedExpression_inherited_EvaluateNumeric(const Expr_NamedExpression* self) {
     try { return {self->EvaluateNumeric(), nullptr}; }
     OCCT_CATCH_RETURN
@@ -5611,10 +5069,6 @@ extern "C" void Expr_NamedExpression_destructor(Expr_NamedExpression* self_) { d
 // Expr_NamedFunction wrappers
 // ========================
 
-extern "C" OcctResult<Expr_NamedFunction*> Expr_NamedFunction_ctor_asciistring_handleexprgeneralexpression_array1ofnamedunknown(TCollection_AsciiString const* name, Handle(Expr_GeneralExpression) const* exp, Expr_Array1OfNamedUnknown const* vars) {
-    try { return {new Expr_NamedFunction(*name, *exp, *vars), nullptr}; }
-    OCCT_CATCH_RETURN
-}
 extern "C" OcctResult<TCollection_AsciiString*> Expr_NamedFunction_get_name(const Expr_NamedFunction* self_) {
     try { return {new TCollection_AsciiString(self_->GetName()), nullptr}; }
     OCCT_CATCH_RETURN
@@ -5651,10 +5105,6 @@ extern "C" OcctResult<int32_t> Expr_NamedFunction_nb_of_variables(const Expr_Nam
     try { return {self_->NbOfVariables(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<double> Expr_NamedFunction_evaluate(const Expr_NamedFunction* self_, Expr_Array1OfNamedUnknown const* vars, TColStd_Array1OfReal const* values) {
-    try { return {self_->Evaluate(*vars, *values), nullptr}; }
-    OCCT_CATCH_RETURN
-}
 extern "C" OcctResult<bool> Expr_NamedFunction_is_identical(const Expr_NamedFunction* self_, Handle(Expr_GeneralFunction) const* func) {
     try { return {self_->IsIdentical(*func), nullptr}; }
     OCCT_CATCH_RETURN
@@ -5683,24 +5133,24 @@ extern "C" OcctResult<const Expr_GeneralFunction*> Expr_NamedFunction_as_Expr_Ge
 extern "C" OcctResult<Expr_GeneralFunction*> Expr_NamedFunction_as_Expr_GeneralFunction_mut(Expr_NamedFunction* self_) { return {static_cast<Expr_GeneralFunction*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> Expr_NamedFunction_as_Standard_Transient(const Expr_NamedFunction* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> Expr_NamedFunction_as_Standard_Transient_mut(Expr_NamedFunction* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleExprNamedFunction*> Expr_NamedFunction_to_handle(Expr_NamedFunction* obj) {
-    try { return {new HandleExprNamedFunction(obj), nullptr}; }
+extern "C" OcctResult<Handle_Expr_NamedFunction*> Expr_NamedFunction_to_handle(Expr_NamedFunction* obj) {
+    try { return {new Handle_Expr_NamedFunction(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const Expr_NamedFunction*> HandleExprNamedFunction_get(const HandleExprNamedFunction* handle) {
+extern "C" OcctResult<const Expr_NamedFunction*> Handle_Expr_NamedFunction_get(const Handle_Expr_NamedFunction* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Expr_NamedFunction*> HandleExprNamedFunction_get_mut(HandleExprNamedFunction* handle) {
+extern "C" OcctResult<Expr_NamedFunction*> Handle_Expr_NamedFunction_get_mut(Handle_Expr_NamedFunction* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleExprGeneralFunction*> HandleExprNamedFunction_to_HandleExprGeneralFunction(const HandleExprNamedFunction* self_) {
-    try { return {new HandleExprGeneralFunction(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Expr_GeneralFunction*> Handle_Expr_NamedFunction_to_Handle_Expr_GeneralFunction(const Handle_Expr_NamedFunction* self_) {
+    try { return {new Handle_Expr_GeneralFunction(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleExprNamedFunction_to_HandleStandardTransient(const HandleExprNamedFunction* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_Expr_NamedFunction_to_Handle_Standard_Transient(const Handle_Expr_NamedFunction* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> Expr_NamedFunction_inherited_IsInstance(const Expr_NamedFunction* self, Handle(Standard_Type) const& theType) {
@@ -5797,10 +5247,6 @@ extern "C" const char* Expr_NamedUnknown_replace(Expr_NamedUnknown* self_, Handl
     try { self_->Replace(*var, *with); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<double> Expr_NamedUnknown_evaluate(const Expr_NamedUnknown* self_, Expr_Array1OfNamedUnknown const* vars, TColStd_Array1OfReal const* vals) {
-    try { return {self_->Evaluate(*vars, *vals), nullptr}; }
-    OCCT_CATCH_RETURN
-}
 extern "C" OcctResult<Handle(Standard_Type) const*> Expr_NamedUnknown_dynamic_type(const Expr_NamedUnknown* self_) {
     try { return {&(self_->DynamicType()), nullptr}; }
     OCCT_CATCH_RETURN
@@ -5819,28 +5265,28 @@ extern "C" OcctResult<const Expr_GeneralExpression*> Expr_NamedUnknown_as_Expr_G
 extern "C" OcctResult<Expr_GeneralExpression*> Expr_NamedUnknown_as_Expr_GeneralExpression_mut(Expr_NamedUnknown* self_) { return {static_cast<Expr_GeneralExpression*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> Expr_NamedUnknown_as_Standard_Transient(const Expr_NamedUnknown* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> Expr_NamedUnknown_as_Standard_Transient_mut(Expr_NamedUnknown* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleExprNamedUnknown*> Expr_NamedUnknown_to_handle(Expr_NamedUnknown* obj) {
-    try { return {new HandleExprNamedUnknown(obj), nullptr}; }
+extern "C" OcctResult<Handle_Expr_NamedUnknown*> Expr_NamedUnknown_to_handle(Expr_NamedUnknown* obj) {
+    try { return {new Handle_Expr_NamedUnknown(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const Expr_NamedUnknown*> HandleExprNamedUnknown_get(const HandleExprNamedUnknown* handle) {
+extern "C" OcctResult<const Expr_NamedUnknown*> Handle_Expr_NamedUnknown_get(const Handle_Expr_NamedUnknown* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Expr_NamedUnknown*> HandleExprNamedUnknown_get_mut(HandleExprNamedUnknown* handle) {
+extern "C" OcctResult<Expr_NamedUnknown*> Handle_Expr_NamedUnknown_get_mut(Handle_Expr_NamedUnknown* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleExprNamedExpression*> HandleExprNamedUnknown_to_HandleExprNamedExpression(const HandleExprNamedUnknown* self_) {
-    try { return {new HandleExprNamedExpression(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Expr_NamedExpression*> Handle_Expr_NamedUnknown_to_Handle_Expr_NamedExpression(const Handle_Expr_NamedUnknown* self_) {
+    try { return {new Handle_Expr_NamedExpression(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleExprGeneralExpression*> HandleExprNamedUnknown_to_HandleExprGeneralExpression(const HandleExprNamedUnknown* self_) {
-    try { return {new HandleExprGeneralExpression(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Expr_GeneralExpression*> Handle_Expr_NamedUnknown_to_Handle_Expr_GeneralExpression(const Handle_Expr_NamedUnknown* self_) {
+    try { return {new Handle_Expr_GeneralExpression(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleExprNamedUnknown_to_HandleStandardTransient(const HandleExprNamedUnknown* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_Expr_NamedUnknown_to_Handle_Standard_Transient(const Handle_Expr_NamedUnknown* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<TCollection_AsciiString const*> Expr_NamedUnknown_inherited_GetName(const Expr_NamedUnknown* self) {
@@ -5905,10 +5351,6 @@ extern "C" void Expr_NamedUnknown_destructor(Expr_NamedUnknown* self_) { delete 
 // Expr_NotAssigned wrappers
 // ========================
 
-extern "C" OcctResult<Expr_NotAssigned*> Expr_NotAssigned_ctor() {
-    try { return {new Expr_NotAssigned(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
 extern "C" OcctResult<Expr_NotAssigned*> Expr_NotAssigned_ctor_charptr(const char* theMessage) {
     try { return {new Expr_NotAssigned(theMessage), nullptr}; }
     OCCT_CATCH_RETURN
@@ -5917,102 +5359,16 @@ extern "C" OcctResult<Expr_NotAssigned*> Expr_NotAssigned_ctor_charptr2(const ch
     try { return {new Expr_NotAssigned(theMessage, theStackTrace), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(Standard_Type) const*> Expr_NotAssigned_dynamic_type(const Expr_NotAssigned* self_) {
-    try { return {&(self_->DynamicType()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* Expr_NotAssigned_raise_charptr(const char* theMessage) {
-    try { Expr_NotAssigned::Raise(theMessage); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* Expr_NotAssigned_raise_sstream(Standard_SStream* theMessage) {
-    try { Expr_NotAssigned::Raise(*theMessage); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<Handle(Expr_NotAssigned)*> Expr_NotAssigned_new_instance_charptr(const char* theMessage) {
-    try { return {new Handle(Expr_NotAssigned)(Expr_NotAssigned::NewInstance(theMessage)), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Handle(Expr_NotAssigned)*> Expr_NotAssigned_new_instance_charptr2(const char* theMessage, const char* theStackTrace) {
-    try { return {new Handle(Expr_NotAssigned)(Expr_NotAssigned::NewInstance(theMessage, theStackTrace)), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<char const*> Expr_NotAssigned_get_type_name() {
-    try { return {Expr_NotAssigned::get_type_name(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Handle(Standard_Type) const*> Expr_NotAssigned_get_type_descriptor() {
-    try { return {&(Expr_NotAssigned::get_type_descriptor()), nullptr}; }
+extern "C" OcctResult<char const*> Expr_NotAssigned_exception_type(const Expr_NotAssigned* self_) {
+    try { return {self_->ExceptionType(), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<const Expr_ExprFailure*> Expr_NotAssigned_as_Expr_ExprFailure(const Expr_NotAssigned* self_) { return {static_cast<const Expr_ExprFailure*>(self_), nullptr}; }
 extern "C" OcctResult<Expr_ExprFailure*> Expr_NotAssigned_as_Expr_ExprFailure_mut(Expr_NotAssigned* self_) { return {static_cast<Expr_ExprFailure*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Failure*> Expr_NotAssigned_as_Standard_Failure(const Expr_NotAssigned* self_) { return {static_cast<const Standard_Failure*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Failure*> Expr_NotAssigned_as_Standard_Failure_mut(Expr_NotAssigned* self_) { return {static_cast<Standard_Failure*>(self_), nullptr}; }
-extern "C" OcctResult<const Standard_Transient*> Expr_NotAssigned_as_Standard_Transient(const Expr_NotAssigned* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<Standard_Transient*> Expr_NotAssigned_as_Standard_Transient_mut(Expr_NotAssigned* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleExprNotAssigned*> Expr_NotAssigned_to_handle(Expr_NotAssigned* obj) {
-    try { return {new HandleExprNotAssigned(obj), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<const Expr_NotAssigned*> HandleExprNotAssigned_get(const HandleExprNotAssigned* handle) {
-    try { return {(*handle).get(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Expr_NotAssigned*> HandleExprNotAssigned_get_mut(HandleExprNotAssigned* handle) {
-    try { return {(*handle).get(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<HandleExprExprFailure*> HandleExprNotAssigned_to_HandleExprExprFailure(const HandleExprNotAssigned* self_) {
-    try { return {new HandleExprExprFailure(*self_), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<HandleStandardFailure*> HandleExprNotAssigned_to_HandleStandardFailure(const HandleExprNotAssigned* self_) {
-    try { return {new HandleStandardFailure(*self_), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<HandleStandardTransient*> HandleExprNotAssigned_to_HandleStandardTransient(const HandleExprNotAssigned* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
-    OCCT_CATCH_RETURN
-}
 extern "C" const char* Expr_NotAssigned_inherited_Print(const Expr_NotAssigned* self, Standard_OStream& theStream) {
     try { self->Print(theStream); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* Expr_NotAssigned_inherited_Reraise(Expr_NotAssigned* self) {
-    try { self->Reraise(); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* Expr_NotAssigned_inherited_Jump(Expr_NotAssigned* self) {
-    try { self->Jump(); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<bool> Expr_NotAssigned_inherited_IsInstance(const Expr_NotAssigned* self, Handle(Standard_Type) const& theType) {
-    try { return {self->IsInstance(theType), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<bool> Expr_NotAssigned_inherited_IsKind(const Expr_NotAssigned* self, Handle(Standard_Type) const& theType) {
-    try { return {self->IsKind(theType), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Standard_Transient*> Expr_NotAssigned_inherited_This(const Expr_NotAssigned* self) {
-    try { return {self->This(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<int32_t> Expr_NotAssigned_inherited_GetRefCount(const Expr_NotAssigned* self) {
-    try { return {self->GetRefCount(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* Expr_NotAssigned_inherited_IncrementRefCounter(Expr_NotAssigned* self) {
-    try { self->IncrementRefCounter(); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<int32_t> Expr_NotAssigned_inherited_DecrementRefCounter(Expr_NotAssigned* self) {
-    try { return {self->DecrementRefCounter(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* Expr_NotAssigned_inherited_Delete(const Expr_NotAssigned* self) {
-    try { self->Delete(); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
 extern "C" void Expr_NotAssigned_destructor(Expr_NotAssigned* self_) { delete self_; }
@@ -6021,10 +5377,6 @@ extern "C" void Expr_NotAssigned_destructor(Expr_NotAssigned* self_) { delete se
 // Expr_NotEvaluable wrappers
 // ========================
 
-extern "C" OcctResult<Expr_NotEvaluable*> Expr_NotEvaluable_ctor() {
-    try { return {new Expr_NotEvaluable(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
 extern "C" OcctResult<Expr_NotEvaluable*> Expr_NotEvaluable_ctor_charptr(const char* theMessage) {
     try { return {new Expr_NotEvaluable(theMessage), nullptr}; }
     OCCT_CATCH_RETURN
@@ -6033,102 +5385,16 @@ extern "C" OcctResult<Expr_NotEvaluable*> Expr_NotEvaluable_ctor_charptr2(const 
     try { return {new Expr_NotEvaluable(theMessage, theStackTrace), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(Standard_Type) const*> Expr_NotEvaluable_dynamic_type(const Expr_NotEvaluable* self_) {
-    try { return {&(self_->DynamicType()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* Expr_NotEvaluable_raise_charptr(const char* theMessage) {
-    try { Expr_NotEvaluable::Raise(theMessage); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* Expr_NotEvaluable_raise_sstream(Standard_SStream* theMessage) {
-    try { Expr_NotEvaluable::Raise(*theMessage); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<Handle(Expr_NotEvaluable)*> Expr_NotEvaluable_new_instance_charptr(const char* theMessage) {
-    try { return {new Handle(Expr_NotEvaluable)(Expr_NotEvaluable::NewInstance(theMessage)), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Handle(Expr_NotEvaluable)*> Expr_NotEvaluable_new_instance_charptr2(const char* theMessage, const char* theStackTrace) {
-    try { return {new Handle(Expr_NotEvaluable)(Expr_NotEvaluable::NewInstance(theMessage, theStackTrace)), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<char const*> Expr_NotEvaluable_get_type_name() {
-    try { return {Expr_NotEvaluable::get_type_name(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Handle(Standard_Type) const*> Expr_NotEvaluable_get_type_descriptor() {
-    try { return {&(Expr_NotEvaluable::get_type_descriptor()), nullptr}; }
+extern "C" OcctResult<char const*> Expr_NotEvaluable_exception_type(const Expr_NotEvaluable* self_) {
+    try { return {self_->ExceptionType(), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<const Expr_ExprFailure*> Expr_NotEvaluable_as_Expr_ExprFailure(const Expr_NotEvaluable* self_) { return {static_cast<const Expr_ExprFailure*>(self_), nullptr}; }
 extern "C" OcctResult<Expr_ExprFailure*> Expr_NotEvaluable_as_Expr_ExprFailure_mut(Expr_NotEvaluable* self_) { return {static_cast<Expr_ExprFailure*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Failure*> Expr_NotEvaluable_as_Standard_Failure(const Expr_NotEvaluable* self_) { return {static_cast<const Standard_Failure*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Failure*> Expr_NotEvaluable_as_Standard_Failure_mut(Expr_NotEvaluable* self_) { return {static_cast<Standard_Failure*>(self_), nullptr}; }
-extern "C" OcctResult<const Standard_Transient*> Expr_NotEvaluable_as_Standard_Transient(const Expr_NotEvaluable* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<Standard_Transient*> Expr_NotEvaluable_as_Standard_Transient_mut(Expr_NotEvaluable* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleExprNotEvaluable*> Expr_NotEvaluable_to_handle(Expr_NotEvaluable* obj) {
-    try { return {new HandleExprNotEvaluable(obj), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<const Expr_NotEvaluable*> HandleExprNotEvaluable_get(const HandleExprNotEvaluable* handle) {
-    try { return {(*handle).get(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Expr_NotEvaluable*> HandleExprNotEvaluable_get_mut(HandleExprNotEvaluable* handle) {
-    try { return {(*handle).get(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<HandleExprExprFailure*> HandleExprNotEvaluable_to_HandleExprExprFailure(const HandleExprNotEvaluable* self_) {
-    try { return {new HandleExprExprFailure(*self_), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<HandleStandardFailure*> HandleExprNotEvaluable_to_HandleStandardFailure(const HandleExprNotEvaluable* self_) {
-    try { return {new HandleStandardFailure(*self_), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<HandleStandardTransient*> HandleExprNotEvaluable_to_HandleStandardTransient(const HandleExprNotEvaluable* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
-    OCCT_CATCH_RETURN
-}
 extern "C" const char* Expr_NotEvaluable_inherited_Print(const Expr_NotEvaluable* self, Standard_OStream& theStream) {
     try { self->Print(theStream); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* Expr_NotEvaluable_inherited_Reraise(Expr_NotEvaluable* self) {
-    try { self->Reraise(); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* Expr_NotEvaluable_inherited_Jump(Expr_NotEvaluable* self) {
-    try { self->Jump(); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<bool> Expr_NotEvaluable_inherited_IsInstance(const Expr_NotEvaluable* self, Handle(Standard_Type) const& theType) {
-    try { return {self->IsInstance(theType), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<bool> Expr_NotEvaluable_inherited_IsKind(const Expr_NotEvaluable* self, Handle(Standard_Type) const& theType) {
-    try { return {self->IsKind(theType), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Standard_Transient*> Expr_NotEvaluable_inherited_This(const Expr_NotEvaluable* self) {
-    try { return {self->This(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<int32_t> Expr_NotEvaluable_inherited_GetRefCount(const Expr_NotEvaluable* self) {
-    try { return {self->GetRefCount(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* Expr_NotEvaluable_inherited_IncrementRefCounter(Expr_NotEvaluable* self) {
-    try { self->IncrementRefCounter(); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<int32_t> Expr_NotEvaluable_inherited_DecrementRefCounter(Expr_NotEvaluable* self) {
-    try { return {self->DecrementRefCounter(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* Expr_NotEvaluable_inherited_Delete(const Expr_NotEvaluable* self) {
-    try { self->Delete(); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
 extern "C" void Expr_NotEvaluable_destructor(Expr_NotEvaluable* self_) { delete self_; }
@@ -6201,10 +5467,6 @@ extern "C" const char* Expr_NumericValue_replace(Expr_NumericValue* self_, Handl
     try { self_->Replace(*var, *with); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<double> Expr_NumericValue_evaluate(const Expr_NumericValue* self_, Expr_Array1OfNamedUnknown const* vars, TColStd_Array1OfReal const* vals) {
-    try { return {self_->Evaluate(*vars, *vals), nullptr}; }
-    OCCT_CATCH_RETURN
-}
 extern "C" OcctResult<Handle(Standard_Type) const*> Expr_NumericValue_dynamic_type(const Expr_NumericValue* self_) {
     try { return {&(self_->DynamicType()), nullptr}; }
     OCCT_CATCH_RETURN
@@ -6221,24 +5483,24 @@ extern "C" OcctResult<const Expr_GeneralExpression*> Expr_NumericValue_as_Expr_G
 extern "C" OcctResult<Expr_GeneralExpression*> Expr_NumericValue_as_Expr_GeneralExpression_mut(Expr_NumericValue* self_) { return {static_cast<Expr_GeneralExpression*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> Expr_NumericValue_as_Standard_Transient(const Expr_NumericValue* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> Expr_NumericValue_as_Standard_Transient_mut(Expr_NumericValue* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleExprNumericValue*> Expr_NumericValue_to_handle(Expr_NumericValue* obj) {
-    try { return {new HandleExprNumericValue(obj), nullptr}; }
+extern "C" OcctResult<Handle_Expr_NumericValue*> Expr_NumericValue_to_handle(Expr_NumericValue* obj) {
+    try { return {new Handle_Expr_NumericValue(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const Expr_NumericValue*> HandleExprNumericValue_get(const HandleExprNumericValue* handle) {
+extern "C" OcctResult<const Expr_NumericValue*> Handle_Expr_NumericValue_get(const Handle_Expr_NumericValue* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Expr_NumericValue*> HandleExprNumericValue_get_mut(HandleExprNumericValue* handle) {
+extern "C" OcctResult<Expr_NumericValue*> Handle_Expr_NumericValue_get_mut(Handle_Expr_NumericValue* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleExprGeneralExpression*> HandleExprNumericValue_to_HandleExprGeneralExpression(const HandleExprNumericValue* self_) {
-    try { return {new HandleExprGeneralExpression(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Expr_GeneralExpression*> Handle_Expr_NumericValue_to_Handle_Expr_GeneralExpression(const Handle_Expr_NumericValue* self_) {
+    try { return {new Handle_Expr_GeneralExpression(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleExprNumericValue_to_HandleStandardTransient(const HandleExprNumericValue* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_Expr_NumericValue_to_Handle_Standard_Transient(const Handle_Expr_NumericValue* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> Expr_NumericValue_inherited_IsShareable(const Expr_NumericValue* self) {
@@ -6335,43 +5597,43 @@ extern "C" OcctResult<const Expr_GeneralExpression*> Expr_PolyExpression_as_Expr
 extern "C" OcctResult<Expr_GeneralExpression*> Expr_PolyExpression_as_Expr_GeneralExpression_mut(Expr_PolyExpression* self_) { return {static_cast<Expr_GeneralExpression*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> Expr_PolyExpression_as_Standard_Transient(const Expr_PolyExpression* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> Expr_PolyExpression_as_Standard_Transient_mut(Expr_PolyExpression* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<const Expr_PolyExpression*> HandleExprPolyExpression_get(const HandleExprPolyExpression* handle) {
+extern "C" OcctResult<const Expr_PolyExpression*> Handle_Expr_PolyExpression_get(const Handle_Expr_PolyExpression* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Expr_PolyExpression*> HandleExprPolyExpression_get_mut(HandleExprPolyExpression* handle) {
+extern "C" OcctResult<Expr_PolyExpression*> Handle_Expr_PolyExpression_get_mut(Handle_Expr_PolyExpression* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleExprGeneralExpression*> HandleExprPolyExpression_to_HandleExprGeneralExpression(const HandleExprPolyExpression* self_) {
-    try { return {new HandleExprGeneralExpression(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Expr_GeneralExpression*> Handle_Expr_PolyExpression_to_Handle_Expr_GeneralExpression(const Handle_Expr_PolyExpression* self_) {
+    try { return {new Handle_Expr_GeneralExpression(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleExprPolyExpression_to_HandleStandardTransient(const HandleExprPolyExpression* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_Expr_PolyExpression_to_Handle_Standard_Transient(const Handle_Expr_PolyExpression* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleExprPolyFunction*> HandleExprPolyExpression_downcast_to_HandleExprPolyFunction(const HandleExprPolyExpression* self_) {
+extern "C" OcctResult<Handle_Expr_PolyFunction*> Handle_Expr_PolyExpression_downcast_to_Handle_Expr_PolyFunction(const Handle_Expr_PolyExpression* self_) {
     try {
     opencascade::handle<Expr_PolyFunction> result = opencascade::handle<Expr_PolyFunction>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleExprPolyFunction(result), nullptr};
+    return {new Handle_Expr_PolyFunction(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleExprProduct*> HandleExprPolyExpression_downcast_to_HandleExprProduct(const HandleExprPolyExpression* self_) {
+extern "C" OcctResult<Handle_Expr_Product*> Handle_Expr_PolyExpression_downcast_to_Handle_Expr_Product(const Handle_Expr_PolyExpression* self_) {
     try {
     opencascade::handle<Expr_Product> result = opencascade::handle<Expr_Product>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleExprProduct(result), nullptr};
+    return {new Handle_Expr_Product(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleExprSum*> HandleExprPolyExpression_downcast_to_HandleExprSum(const HandleExprPolyExpression* self_) {
+extern "C" OcctResult<Handle_Expr_Sum*> Handle_Expr_PolyExpression_downcast_to_Handle_Expr_Sum(const Handle_Expr_PolyExpression* self_) {
     try {
     opencascade::handle<Expr_Sum> result = opencascade::handle<Expr_Sum>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleExprSum(result), nullptr};
+    return {new Handle_Expr_Sum(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
@@ -6401,10 +5663,6 @@ extern "C" OcctResult<Handle(Expr_GeneralExpression)*> Expr_PolyExpression_inher
 }
 extern "C" OcctResult<Handle(Expr_GeneralExpression)*> Expr_PolyExpression_inherited_NDerivative(const Expr_PolyExpression* self, Handle(Expr_NamedUnknown) const& X, int32_t N) {
     try { return {new Handle(Expr_GeneralExpression)(self->NDerivative(X, N)), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<double> Expr_PolyExpression_inherited_Evaluate(const Expr_PolyExpression* self, Expr_Array1OfNamedUnknown const& vars, TColStd_Array1OfReal const& vals) {
-    try { return {self->Evaluate(vars, vals), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<double> Expr_PolyExpression_inherited_EvaluateNumeric(const Expr_PolyExpression* self) {
@@ -6449,10 +5707,6 @@ extern "C" void Expr_PolyExpression_destructor(Expr_PolyExpression* self_) { del
 // Expr_PolyFunction wrappers
 // ========================
 
-extern "C" OcctResult<Expr_PolyFunction*> Expr_PolyFunction_ctor_handleexprgeneralfunction_array1ofgeneralexpression(Handle(Expr_GeneralFunction) const* func, Expr_Array1OfGeneralExpression const* exps) {
-    try { return {new Expr_PolyFunction(*func, *exps), nullptr}; }
-    OCCT_CATCH_RETURN
-}
 extern "C" OcctResult<Handle(Expr_GeneralFunction)*> Expr_PolyFunction_function(const Expr_PolyFunction* self_) {
     try { return {new Handle(Expr_GeneralFunction)(self_->Function()), nullptr}; }
     OCCT_CATCH_RETURN
@@ -6481,10 +5735,6 @@ extern "C" OcctResult<bool> Expr_PolyFunction_is_linear(const Expr_PolyFunction*
     try { return {self_->IsLinear(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<double> Expr_PolyFunction_evaluate(const Expr_PolyFunction* self_, Expr_Array1OfNamedUnknown const* vars, TColStd_Array1OfReal const* vals) {
-    try { return {self_->Evaluate(*vars, *vals), nullptr}; }
-    OCCT_CATCH_RETURN
-}
 extern "C" OcctResult<Handle(Standard_Type) const*> Expr_PolyFunction_dynamic_type(const Expr_PolyFunction* self_) {
     try { return {&(self_->DynamicType()), nullptr}; }
     OCCT_CATCH_RETURN
@@ -6503,28 +5753,28 @@ extern "C" OcctResult<const Expr_GeneralExpression*> Expr_PolyFunction_as_Expr_G
 extern "C" OcctResult<Expr_GeneralExpression*> Expr_PolyFunction_as_Expr_GeneralExpression_mut(Expr_PolyFunction* self_) { return {static_cast<Expr_GeneralExpression*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> Expr_PolyFunction_as_Standard_Transient(const Expr_PolyFunction* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> Expr_PolyFunction_as_Standard_Transient_mut(Expr_PolyFunction* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleExprPolyFunction*> Expr_PolyFunction_to_handle(Expr_PolyFunction* obj) {
-    try { return {new HandleExprPolyFunction(obj), nullptr}; }
+extern "C" OcctResult<Handle_Expr_PolyFunction*> Expr_PolyFunction_to_handle(Expr_PolyFunction* obj) {
+    try { return {new Handle_Expr_PolyFunction(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const Expr_PolyFunction*> HandleExprPolyFunction_get(const HandleExprPolyFunction* handle) {
+extern "C" OcctResult<const Expr_PolyFunction*> Handle_Expr_PolyFunction_get(const Handle_Expr_PolyFunction* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Expr_PolyFunction*> HandleExprPolyFunction_get_mut(HandleExprPolyFunction* handle) {
+extern "C" OcctResult<Expr_PolyFunction*> Handle_Expr_PolyFunction_get_mut(Handle_Expr_PolyFunction* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleExprPolyExpression*> HandleExprPolyFunction_to_HandleExprPolyExpression(const HandleExprPolyFunction* self_) {
-    try { return {new HandleExprPolyExpression(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Expr_PolyExpression*> Handle_Expr_PolyFunction_to_Handle_Expr_PolyExpression(const Handle_Expr_PolyFunction* self_) {
+    try { return {new Handle_Expr_PolyExpression(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleExprGeneralExpression*> HandleExprPolyFunction_to_HandleExprGeneralExpression(const HandleExprPolyFunction* self_) {
-    try { return {new HandleExprGeneralExpression(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Expr_GeneralExpression*> Handle_Expr_PolyFunction_to_Handle_Expr_GeneralExpression(const Handle_Expr_PolyFunction* self_) {
+    try { return {new Handle_Expr_GeneralExpression(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleExprPolyFunction_to_HandleStandardTransient(const HandleExprPolyFunction* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_Expr_PolyFunction_to_Handle_Standard_Transient(const Handle_Expr_PolyFunction* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<int32_t> Expr_PolyFunction_inherited_NbOperands(const Expr_PolyFunction* self) {
@@ -6609,10 +5859,6 @@ extern "C" void Expr_PolyFunction_destructor(Expr_PolyFunction* self_) { delete 
 // Expr_Product wrappers
 // ========================
 
-extern "C" OcctResult<Expr_Product*> Expr_Product_ctor_sequenceofgeneralexpression(Expr_SequenceOfGeneralExpression const* exps) {
-    try { return {new Expr_Product(*exps), nullptr}; }
-    OCCT_CATCH_RETURN
-}
 extern "C" OcctResult<Expr_Product*> Expr_Product_ctor_handleexprgeneralexpression2(Handle(Expr_GeneralExpression) const* exp1, Handle(Expr_GeneralExpression) const* exp2) {
     try { return {new Expr_Product(*exp1, *exp2), nullptr}; }
     OCCT_CATCH_RETURN
@@ -6641,10 +5887,6 @@ extern "C" OcctResult<bool> Expr_Product_is_linear(const Expr_Product* self_) {
     try { return {self_->IsLinear(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<double> Expr_Product_evaluate(const Expr_Product* self_, Expr_Array1OfNamedUnknown const* vars, TColStd_Array1OfReal const* vals) {
-    try { return {self_->Evaluate(*vars, *vals), nullptr}; }
-    OCCT_CATCH_RETURN
-}
 extern "C" OcctResult<Handle(Standard_Type) const*> Expr_Product_dynamic_type(const Expr_Product* self_) {
     try { return {&(self_->DynamicType()), nullptr}; }
     OCCT_CATCH_RETURN
@@ -6663,28 +5905,28 @@ extern "C" OcctResult<const Expr_GeneralExpression*> Expr_Product_as_Expr_Genera
 extern "C" OcctResult<Expr_GeneralExpression*> Expr_Product_as_Expr_GeneralExpression_mut(Expr_Product* self_) { return {static_cast<Expr_GeneralExpression*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> Expr_Product_as_Standard_Transient(const Expr_Product* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> Expr_Product_as_Standard_Transient_mut(Expr_Product* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleExprProduct*> Expr_Product_to_handle(Expr_Product* obj) {
-    try { return {new HandleExprProduct(obj), nullptr}; }
+extern "C" OcctResult<Handle_Expr_Product*> Expr_Product_to_handle(Expr_Product* obj) {
+    try { return {new Handle_Expr_Product(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const Expr_Product*> HandleExprProduct_get(const HandleExprProduct* handle) {
+extern "C" OcctResult<const Expr_Product*> Handle_Expr_Product_get(const Handle_Expr_Product* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Expr_Product*> HandleExprProduct_get_mut(HandleExprProduct* handle) {
+extern "C" OcctResult<Expr_Product*> Handle_Expr_Product_get_mut(Handle_Expr_Product* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleExprPolyExpression*> HandleExprProduct_to_HandleExprPolyExpression(const HandleExprProduct* self_) {
-    try { return {new HandleExprPolyExpression(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Expr_PolyExpression*> Handle_Expr_Product_to_Handle_Expr_PolyExpression(const Handle_Expr_Product* self_) {
+    try { return {new Handle_Expr_PolyExpression(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleExprGeneralExpression*> HandleExprProduct_to_HandleExprGeneralExpression(const HandleExprProduct* self_) {
-    try { return {new HandleExprGeneralExpression(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Expr_GeneralExpression*> Handle_Expr_Product_to_Handle_Expr_GeneralExpression(const Handle_Expr_Product* self_) {
+    try { return {new Handle_Expr_GeneralExpression(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleExprProduct_to_HandleStandardTransient(const HandleExprProduct* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_Expr_Product_to_Handle_Standard_Transient(const Handle_Expr_Product* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<int32_t> Expr_Product_inherited_NbOperands(const Expr_Product* self) {
@@ -6841,10 +6083,6 @@ extern "C" OcctResult<bool> Expr_Sign_is_linear(const Expr_Sign* self_) {
     try { return {self_->IsLinear(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<double> Expr_Sign_evaluate(const Expr_Sign* self_, Expr_Array1OfNamedUnknown const* vars, TColStd_Array1OfReal const* vals) {
-    try { return {self_->Evaluate(*vars, *vals), nullptr}; }
-    OCCT_CATCH_RETURN
-}
 extern "C" OcctResult<Handle(Standard_Type) const*> Expr_Sign_dynamic_type(const Expr_Sign* self_) {
     try { return {&(self_->DynamicType()), nullptr}; }
     OCCT_CATCH_RETURN
@@ -6863,28 +6101,28 @@ extern "C" OcctResult<const Expr_GeneralExpression*> Expr_Sign_as_Expr_GeneralEx
 extern "C" OcctResult<Expr_GeneralExpression*> Expr_Sign_as_Expr_GeneralExpression_mut(Expr_Sign* self_) { return {static_cast<Expr_GeneralExpression*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> Expr_Sign_as_Standard_Transient(const Expr_Sign* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> Expr_Sign_as_Standard_Transient_mut(Expr_Sign* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleExprSign*> Expr_Sign_to_handle(Expr_Sign* obj) {
-    try { return {new HandleExprSign(obj), nullptr}; }
+extern "C" OcctResult<Handle_Expr_Sign*> Expr_Sign_to_handle(Expr_Sign* obj) {
+    try { return {new Handle_Expr_Sign(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const Expr_Sign*> HandleExprSign_get(const HandleExprSign* handle) {
+extern "C" OcctResult<const Expr_Sign*> Handle_Expr_Sign_get(const Handle_Expr_Sign* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Expr_Sign*> HandleExprSign_get_mut(HandleExprSign* handle) {
+extern "C" OcctResult<Expr_Sign*> Handle_Expr_Sign_get_mut(Handle_Expr_Sign* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleExprUnaryExpression*> HandleExprSign_to_HandleExprUnaryExpression(const HandleExprSign* self_) {
-    try { return {new HandleExprUnaryExpression(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Expr_UnaryExpression*> Handle_Expr_Sign_to_Handle_Expr_UnaryExpression(const Handle_Expr_Sign* self_) {
+    try { return {new Handle_Expr_UnaryExpression(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleExprGeneralExpression*> HandleExprSign_to_HandleExprGeneralExpression(const HandleExprSign* self_) {
-    try { return {new HandleExprGeneralExpression(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Expr_GeneralExpression*> Handle_Expr_Sign_to_Handle_Expr_GeneralExpression(const Handle_Expr_Sign* self_) {
+    try { return {new Handle_Expr_GeneralExpression(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleExprSign_to_HandleStandardTransient(const HandleExprSign* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_Expr_Sign_to_Handle_Standard_Transient(const Handle_Expr_Sign* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(Expr_GeneralExpression) const*> Expr_Sign_inherited_Operand(const Expr_Sign* self) {
@@ -6993,10 +6231,6 @@ extern "C" OcctResult<bool> Expr_Sine_is_linear(const Expr_Sine* self_) {
     try { return {self_->IsLinear(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<double> Expr_Sine_evaluate(const Expr_Sine* self_, Expr_Array1OfNamedUnknown const* vars, TColStd_Array1OfReal const* vals) {
-    try { return {self_->Evaluate(*vars, *vals), nullptr}; }
-    OCCT_CATCH_RETURN
-}
 extern "C" OcctResult<Handle(Standard_Type) const*> Expr_Sine_dynamic_type(const Expr_Sine* self_) {
     try { return {&(self_->DynamicType()), nullptr}; }
     OCCT_CATCH_RETURN
@@ -7015,28 +6249,28 @@ extern "C" OcctResult<const Expr_GeneralExpression*> Expr_Sine_as_Expr_GeneralEx
 extern "C" OcctResult<Expr_GeneralExpression*> Expr_Sine_as_Expr_GeneralExpression_mut(Expr_Sine* self_) { return {static_cast<Expr_GeneralExpression*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> Expr_Sine_as_Standard_Transient(const Expr_Sine* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> Expr_Sine_as_Standard_Transient_mut(Expr_Sine* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleExprSine*> Expr_Sine_to_handle(Expr_Sine* obj) {
-    try { return {new HandleExprSine(obj), nullptr}; }
+extern "C" OcctResult<Handle_Expr_Sine*> Expr_Sine_to_handle(Expr_Sine* obj) {
+    try { return {new Handle_Expr_Sine(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const Expr_Sine*> HandleExprSine_get(const HandleExprSine* handle) {
+extern "C" OcctResult<const Expr_Sine*> Handle_Expr_Sine_get(const Handle_Expr_Sine* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Expr_Sine*> HandleExprSine_get_mut(HandleExprSine* handle) {
+extern "C" OcctResult<Expr_Sine*> Handle_Expr_Sine_get_mut(Handle_Expr_Sine* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleExprUnaryExpression*> HandleExprSine_to_HandleExprUnaryExpression(const HandleExprSine* self_) {
-    try { return {new HandleExprUnaryExpression(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Expr_UnaryExpression*> Handle_Expr_Sine_to_Handle_Expr_UnaryExpression(const Handle_Expr_Sine* self_) {
+    try { return {new Handle_Expr_UnaryExpression(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleExprGeneralExpression*> HandleExprSine_to_HandleExprGeneralExpression(const HandleExprSine* self_) {
-    try { return {new HandleExprGeneralExpression(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Expr_GeneralExpression*> Handle_Expr_Sine_to_Handle_Expr_GeneralExpression(const Handle_Expr_Sine* self_) {
+    try { return {new Handle_Expr_GeneralExpression(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleExprSine_to_HandleStandardTransient(const HandleExprSine* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_Expr_Sine_to_Handle_Standard_Transient(const Handle_Expr_Sine* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(Expr_GeneralExpression) const*> Expr_Sine_inherited_Operand(const Expr_Sine* self) {
@@ -7173,67 +6407,67 @@ extern "C" OcctResult<const Expr_GeneralRelation*> Expr_SingleRelation_as_Expr_G
 extern "C" OcctResult<Expr_GeneralRelation*> Expr_SingleRelation_as_Expr_GeneralRelation_mut(Expr_SingleRelation* self_) { return {static_cast<Expr_GeneralRelation*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> Expr_SingleRelation_as_Standard_Transient(const Expr_SingleRelation* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> Expr_SingleRelation_as_Standard_Transient_mut(Expr_SingleRelation* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<const Expr_SingleRelation*> HandleExprSingleRelation_get(const HandleExprSingleRelation* handle) {
+extern "C" OcctResult<const Expr_SingleRelation*> Handle_Expr_SingleRelation_get(const Handle_Expr_SingleRelation* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Expr_SingleRelation*> HandleExprSingleRelation_get_mut(HandleExprSingleRelation* handle) {
+extern "C" OcctResult<Expr_SingleRelation*> Handle_Expr_SingleRelation_get_mut(Handle_Expr_SingleRelation* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleExprGeneralRelation*> HandleExprSingleRelation_to_HandleExprGeneralRelation(const HandleExprSingleRelation* self_) {
-    try { return {new HandleExprGeneralRelation(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Expr_GeneralRelation*> Handle_Expr_SingleRelation_to_Handle_Expr_GeneralRelation(const Handle_Expr_SingleRelation* self_) {
+    try { return {new Handle_Expr_GeneralRelation(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleExprSingleRelation_to_HandleStandardTransient(const HandleExprSingleRelation* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_Expr_SingleRelation_to_Handle_Standard_Transient(const Handle_Expr_SingleRelation* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleExprDifferent*> HandleExprSingleRelation_downcast_to_HandleExprDifferent(const HandleExprSingleRelation* self_) {
+extern "C" OcctResult<Handle_Expr_Different*> Handle_Expr_SingleRelation_downcast_to_Handle_Expr_Different(const Handle_Expr_SingleRelation* self_) {
     try {
     opencascade::handle<Expr_Different> result = opencascade::handle<Expr_Different>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleExprDifferent(result), nullptr};
+    return {new Handle_Expr_Different(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleExprEqual*> HandleExprSingleRelation_downcast_to_HandleExprEqual(const HandleExprSingleRelation* self_) {
+extern "C" OcctResult<Handle_Expr_Equal*> Handle_Expr_SingleRelation_downcast_to_Handle_Expr_Equal(const Handle_Expr_SingleRelation* self_) {
     try {
     opencascade::handle<Expr_Equal> result = opencascade::handle<Expr_Equal>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleExprEqual(result), nullptr};
+    return {new Handle_Expr_Equal(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleExprGreaterThan*> HandleExprSingleRelation_downcast_to_HandleExprGreaterThan(const HandleExprSingleRelation* self_) {
+extern "C" OcctResult<Handle_Expr_GreaterThan*> Handle_Expr_SingleRelation_downcast_to_Handle_Expr_GreaterThan(const Handle_Expr_SingleRelation* self_) {
     try {
     opencascade::handle<Expr_GreaterThan> result = opencascade::handle<Expr_GreaterThan>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleExprGreaterThan(result), nullptr};
+    return {new Handle_Expr_GreaterThan(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleExprGreaterThanOrEqual*> HandleExprSingleRelation_downcast_to_HandleExprGreaterThanOrEqual(const HandleExprSingleRelation* self_) {
+extern "C" OcctResult<Handle_Expr_GreaterThanOrEqual*> Handle_Expr_SingleRelation_downcast_to_Handle_Expr_GreaterThanOrEqual(const Handle_Expr_SingleRelation* self_) {
     try {
     opencascade::handle<Expr_GreaterThanOrEqual> result = opencascade::handle<Expr_GreaterThanOrEqual>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleExprGreaterThanOrEqual(result), nullptr};
+    return {new Handle_Expr_GreaterThanOrEqual(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleExprLessThan*> HandleExprSingleRelation_downcast_to_HandleExprLessThan(const HandleExprSingleRelation* self_) {
+extern "C" OcctResult<Handle_Expr_LessThan*> Handle_Expr_SingleRelation_downcast_to_Handle_Expr_LessThan(const Handle_Expr_SingleRelation* self_) {
     try {
     opencascade::handle<Expr_LessThan> result = opencascade::handle<Expr_LessThan>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleExprLessThan(result), nullptr};
+    return {new Handle_Expr_LessThan(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleExprLessThanOrEqual*> HandleExprSingleRelation_downcast_to_HandleExprLessThanOrEqual(const HandleExprSingleRelation* self_) {
+extern "C" OcctResult<Handle_Expr_LessThanOrEqual*> Handle_Expr_SingleRelation_downcast_to_Handle_Expr_LessThanOrEqual(const Handle_Expr_SingleRelation* self_) {
     try {
     opencascade::handle<Expr_LessThanOrEqual> result = opencascade::handle<Expr_LessThanOrEqual>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleExprLessThanOrEqual(result), nullptr};
+    return {new Handle_Expr_LessThanOrEqual(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
@@ -7319,10 +6553,6 @@ extern "C" OcctResult<bool> Expr_Sinh_is_linear(const Expr_Sinh* self_) {
     try { return {self_->IsLinear(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<double> Expr_Sinh_evaluate(const Expr_Sinh* self_, Expr_Array1OfNamedUnknown const* vars, TColStd_Array1OfReal const* vals) {
-    try { return {self_->Evaluate(*vars, *vals), nullptr}; }
-    OCCT_CATCH_RETURN
-}
 extern "C" OcctResult<Handle(Standard_Type) const*> Expr_Sinh_dynamic_type(const Expr_Sinh* self_) {
     try { return {&(self_->DynamicType()), nullptr}; }
     OCCT_CATCH_RETURN
@@ -7341,28 +6571,28 @@ extern "C" OcctResult<const Expr_GeneralExpression*> Expr_Sinh_as_Expr_GeneralEx
 extern "C" OcctResult<Expr_GeneralExpression*> Expr_Sinh_as_Expr_GeneralExpression_mut(Expr_Sinh* self_) { return {static_cast<Expr_GeneralExpression*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> Expr_Sinh_as_Standard_Transient(const Expr_Sinh* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> Expr_Sinh_as_Standard_Transient_mut(Expr_Sinh* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleExprSinh*> Expr_Sinh_to_handle(Expr_Sinh* obj) {
-    try { return {new HandleExprSinh(obj), nullptr}; }
+extern "C" OcctResult<Handle_Expr_Sinh*> Expr_Sinh_to_handle(Expr_Sinh* obj) {
+    try { return {new Handle_Expr_Sinh(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const Expr_Sinh*> HandleExprSinh_get(const HandleExprSinh* handle) {
+extern "C" OcctResult<const Expr_Sinh*> Handle_Expr_Sinh_get(const Handle_Expr_Sinh* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Expr_Sinh*> HandleExprSinh_get_mut(HandleExprSinh* handle) {
+extern "C" OcctResult<Expr_Sinh*> Handle_Expr_Sinh_get_mut(Handle_Expr_Sinh* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleExprUnaryExpression*> HandleExprSinh_to_HandleExprUnaryExpression(const HandleExprSinh* self_) {
-    try { return {new HandleExprUnaryExpression(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Expr_UnaryExpression*> Handle_Expr_Sinh_to_Handle_Expr_UnaryExpression(const Handle_Expr_Sinh* self_) {
+    try { return {new Handle_Expr_UnaryExpression(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleExprGeneralExpression*> HandleExprSinh_to_HandleExprGeneralExpression(const HandleExprSinh* self_) {
-    try { return {new HandleExprGeneralExpression(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Expr_GeneralExpression*> Handle_Expr_Sinh_to_Handle_Expr_GeneralExpression(const Handle_Expr_Sinh* self_) {
+    try { return {new Handle_Expr_GeneralExpression(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleExprSinh_to_HandleStandardTransient(const HandleExprSinh* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_Expr_Sinh_to_Handle_Standard_Transient(const Handle_Expr_Sinh* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(Expr_GeneralExpression) const*> Expr_Sinh_inherited_Operand(const Expr_Sinh* self) {
@@ -7471,10 +6701,6 @@ extern "C" OcctResult<bool> Expr_Square_is_linear(const Expr_Square* self_) {
     try { return {self_->IsLinear(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<double> Expr_Square_evaluate(const Expr_Square* self_, Expr_Array1OfNamedUnknown const* vars, TColStd_Array1OfReal const* vals) {
-    try { return {self_->Evaluate(*vars, *vals), nullptr}; }
-    OCCT_CATCH_RETURN
-}
 extern "C" OcctResult<Handle(Standard_Type) const*> Expr_Square_dynamic_type(const Expr_Square* self_) {
     try { return {&(self_->DynamicType()), nullptr}; }
     OCCT_CATCH_RETURN
@@ -7493,28 +6719,28 @@ extern "C" OcctResult<const Expr_GeneralExpression*> Expr_Square_as_Expr_General
 extern "C" OcctResult<Expr_GeneralExpression*> Expr_Square_as_Expr_GeneralExpression_mut(Expr_Square* self_) { return {static_cast<Expr_GeneralExpression*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> Expr_Square_as_Standard_Transient(const Expr_Square* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> Expr_Square_as_Standard_Transient_mut(Expr_Square* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleExprSquare*> Expr_Square_to_handle(Expr_Square* obj) {
-    try { return {new HandleExprSquare(obj), nullptr}; }
+extern "C" OcctResult<Handle_Expr_Square*> Expr_Square_to_handle(Expr_Square* obj) {
+    try { return {new Handle_Expr_Square(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const Expr_Square*> HandleExprSquare_get(const HandleExprSquare* handle) {
+extern "C" OcctResult<const Expr_Square*> Handle_Expr_Square_get(const Handle_Expr_Square* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Expr_Square*> HandleExprSquare_get_mut(HandleExprSquare* handle) {
+extern "C" OcctResult<Expr_Square*> Handle_Expr_Square_get_mut(Handle_Expr_Square* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleExprUnaryExpression*> HandleExprSquare_to_HandleExprUnaryExpression(const HandleExprSquare* self_) {
-    try { return {new HandleExprUnaryExpression(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Expr_UnaryExpression*> Handle_Expr_Square_to_Handle_Expr_UnaryExpression(const Handle_Expr_Square* self_) {
+    try { return {new Handle_Expr_UnaryExpression(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleExprGeneralExpression*> HandleExprSquare_to_HandleExprGeneralExpression(const HandleExprSquare* self_) {
-    try { return {new HandleExprGeneralExpression(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Expr_GeneralExpression*> Handle_Expr_Square_to_Handle_Expr_GeneralExpression(const Handle_Expr_Square* self_) {
+    try { return {new Handle_Expr_GeneralExpression(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleExprSquare_to_HandleStandardTransient(const HandleExprSquare* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_Expr_Square_to_Handle_Standard_Transient(const Handle_Expr_Square* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(Expr_GeneralExpression) const*> Expr_Square_inherited_Operand(const Expr_Square* self) {
@@ -7623,10 +6849,6 @@ extern "C" OcctResult<bool> Expr_SquareRoot_is_linear(const Expr_SquareRoot* sel
     try { return {self_->IsLinear(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<double> Expr_SquareRoot_evaluate(const Expr_SquareRoot* self_, Expr_Array1OfNamedUnknown const* vars, TColStd_Array1OfReal const* vals) {
-    try { return {self_->Evaluate(*vars, *vals), nullptr}; }
-    OCCT_CATCH_RETURN
-}
 extern "C" OcctResult<Handle(Standard_Type) const*> Expr_SquareRoot_dynamic_type(const Expr_SquareRoot* self_) {
     try { return {&(self_->DynamicType()), nullptr}; }
     OCCT_CATCH_RETURN
@@ -7645,28 +6867,28 @@ extern "C" OcctResult<const Expr_GeneralExpression*> Expr_SquareRoot_as_Expr_Gen
 extern "C" OcctResult<Expr_GeneralExpression*> Expr_SquareRoot_as_Expr_GeneralExpression_mut(Expr_SquareRoot* self_) { return {static_cast<Expr_GeneralExpression*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> Expr_SquareRoot_as_Standard_Transient(const Expr_SquareRoot* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> Expr_SquareRoot_as_Standard_Transient_mut(Expr_SquareRoot* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleExprSquareRoot*> Expr_SquareRoot_to_handle(Expr_SquareRoot* obj) {
-    try { return {new HandleExprSquareRoot(obj), nullptr}; }
+extern "C" OcctResult<Handle_Expr_SquareRoot*> Expr_SquareRoot_to_handle(Expr_SquareRoot* obj) {
+    try { return {new Handle_Expr_SquareRoot(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const Expr_SquareRoot*> HandleExprSquareRoot_get(const HandleExprSquareRoot* handle) {
+extern "C" OcctResult<const Expr_SquareRoot*> Handle_Expr_SquareRoot_get(const Handle_Expr_SquareRoot* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Expr_SquareRoot*> HandleExprSquareRoot_get_mut(HandleExprSquareRoot* handle) {
+extern "C" OcctResult<Expr_SquareRoot*> Handle_Expr_SquareRoot_get_mut(Handle_Expr_SquareRoot* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleExprUnaryExpression*> HandleExprSquareRoot_to_HandleExprUnaryExpression(const HandleExprSquareRoot* self_) {
-    try { return {new HandleExprUnaryExpression(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Expr_UnaryExpression*> Handle_Expr_SquareRoot_to_Handle_Expr_UnaryExpression(const Handle_Expr_SquareRoot* self_) {
+    try { return {new Handle_Expr_UnaryExpression(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleExprGeneralExpression*> HandleExprSquareRoot_to_HandleExprGeneralExpression(const HandleExprSquareRoot* self_) {
-    try { return {new HandleExprGeneralExpression(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Expr_GeneralExpression*> Handle_Expr_SquareRoot_to_Handle_Expr_GeneralExpression(const Handle_Expr_SquareRoot* self_) {
+    try { return {new Handle_Expr_GeneralExpression(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleExprSquareRoot_to_HandleStandardTransient(const HandleExprSquareRoot* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_Expr_SquareRoot_to_Handle_Standard_Transient(const Handle_Expr_SquareRoot* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(Expr_GeneralExpression) const*> Expr_SquareRoot_inherited_Operand(const Expr_SquareRoot* self) {
@@ -7747,10 +6969,6 @@ extern "C" void Expr_SquareRoot_destructor(Expr_SquareRoot* self_) { delete self
 // Expr_Sum wrappers
 // ========================
 
-extern "C" OcctResult<Expr_Sum*> Expr_Sum_ctor_sequenceofgeneralexpression(Expr_SequenceOfGeneralExpression const* exps) {
-    try { return {new Expr_Sum(*exps), nullptr}; }
-    OCCT_CATCH_RETURN
-}
 extern "C" OcctResult<Expr_Sum*> Expr_Sum_ctor_handleexprgeneralexpression2(Handle(Expr_GeneralExpression) const* exp1, Handle(Expr_GeneralExpression) const* exp2) {
     try { return {new Expr_Sum(*exp1, *exp2), nullptr}; }
     OCCT_CATCH_RETURN
@@ -7783,10 +7001,6 @@ extern "C" OcctResult<bool> Expr_Sum_is_linear(const Expr_Sum* self_) {
     try { return {self_->IsLinear(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<double> Expr_Sum_evaluate(const Expr_Sum* self_, Expr_Array1OfNamedUnknown const* vars, TColStd_Array1OfReal const* vals) {
-    try { return {self_->Evaluate(*vars, *vals), nullptr}; }
-    OCCT_CATCH_RETURN
-}
 extern "C" OcctResult<Handle(Standard_Type) const*> Expr_Sum_dynamic_type(const Expr_Sum* self_) {
     try { return {&(self_->DynamicType()), nullptr}; }
     OCCT_CATCH_RETURN
@@ -7805,28 +7019,28 @@ extern "C" OcctResult<const Expr_GeneralExpression*> Expr_Sum_as_Expr_GeneralExp
 extern "C" OcctResult<Expr_GeneralExpression*> Expr_Sum_as_Expr_GeneralExpression_mut(Expr_Sum* self_) { return {static_cast<Expr_GeneralExpression*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> Expr_Sum_as_Standard_Transient(const Expr_Sum* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> Expr_Sum_as_Standard_Transient_mut(Expr_Sum* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleExprSum*> Expr_Sum_to_handle(Expr_Sum* obj) {
-    try { return {new HandleExprSum(obj), nullptr}; }
+extern "C" OcctResult<Handle_Expr_Sum*> Expr_Sum_to_handle(Expr_Sum* obj) {
+    try { return {new Handle_Expr_Sum(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const Expr_Sum*> HandleExprSum_get(const HandleExprSum* handle) {
+extern "C" OcctResult<const Expr_Sum*> Handle_Expr_Sum_get(const Handle_Expr_Sum* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Expr_Sum*> HandleExprSum_get_mut(HandleExprSum* handle) {
+extern "C" OcctResult<Expr_Sum*> Handle_Expr_Sum_get_mut(Handle_Expr_Sum* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleExprPolyExpression*> HandleExprSum_to_HandleExprPolyExpression(const HandleExprSum* self_) {
-    try { return {new HandleExprPolyExpression(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Expr_PolyExpression*> Handle_Expr_Sum_to_Handle_Expr_PolyExpression(const Handle_Expr_Sum* self_) {
+    try { return {new Handle_Expr_PolyExpression(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleExprGeneralExpression*> HandleExprSum_to_HandleExprGeneralExpression(const HandleExprSum* self_) {
-    try { return {new HandleExprGeneralExpression(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Expr_GeneralExpression*> Handle_Expr_Sum_to_Handle_Expr_GeneralExpression(const Handle_Expr_Sum* self_) {
+    try { return {new Handle_Expr_GeneralExpression(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleExprSum_to_HandleStandardTransient(const HandleExprSum* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_Expr_Sum_to_Handle_Standard_Transient(const Handle_Expr_Sum* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<int32_t> Expr_Sum_inherited_NbOperands(const Expr_Sum* self) {
@@ -7979,24 +7193,24 @@ extern "C" OcctResult<const Expr_GeneralRelation*> Expr_SystemRelation_as_Expr_G
 extern "C" OcctResult<Expr_GeneralRelation*> Expr_SystemRelation_as_Expr_GeneralRelation_mut(Expr_SystemRelation* self_) { return {static_cast<Expr_GeneralRelation*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> Expr_SystemRelation_as_Standard_Transient(const Expr_SystemRelation* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> Expr_SystemRelation_as_Standard_Transient_mut(Expr_SystemRelation* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleExprSystemRelation*> Expr_SystemRelation_to_handle(Expr_SystemRelation* obj) {
-    try { return {new HandleExprSystemRelation(obj), nullptr}; }
+extern "C" OcctResult<Handle_Expr_SystemRelation*> Expr_SystemRelation_to_handle(Expr_SystemRelation* obj) {
+    try { return {new Handle_Expr_SystemRelation(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const Expr_SystemRelation*> HandleExprSystemRelation_get(const HandleExprSystemRelation* handle) {
+extern "C" OcctResult<const Expr_SystemRelation*> Handle_Expr_SystemRelation_get(const Handle_Expr_SystemRelation* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Expr_SystemRelation*> HandleExprSystemRelation_get_mut(HandleExprSystemRelation* handle) {
+extern "C" OcctResult<Expr_SystemRelation*> Handle_Expr_SystemRelation_get_mut(Handle_Expr_SystemRelation* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleExprGeneralRelation*> HandleExprSystemRelation_to_HandleExprGeneralRelation(const HandleExprSystemRelation* self_) {
-    try { return {new HandleExprGeneralRelation(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Expr_GeneralRelation*> Handle_Expr_SystemRelation_to_Handle_Expr_GeneralRelation(const Handle_Expr_SystemRelation* self_) {
+    try { return {new Handle_Expr_GeneralRelation(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleExprSystemRelation_to_HandleStandardTransient(const HandleExprSystemRelation* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_Expr_SystemRelation_to_Handle_Standard_Transient(const Handle_Expr_SystemRelation* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> Expr_SystemRelation_inherited_IsInstance(const Expr_SystemRelation* self, Handle(Standard_Type) const& theType) {
@@ -8061,10 +7275,6 @@ extern "C" OcctResult<bool> Expr_Tangent_is_linear(const Expr_Tangent* self_) {
     try { return {self_->IsLinear(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<double> Expr_Tangent_evaluate(const Expr_Tangent* self_, Expr_Array1OfNamedUnknown const* vars, TColStd_Array1OfReal const* vals) {
-    try { return {self_->Evaluate(*vars, *vals), nullptr}; }
-    OCCT_CATCH_RETURN
-}
 extern "C" OcctResult<Handle(Standard_Type) const*> Expr_Tangent_dynamic_type(const Expr_Tangent* self_) {
     try { return {&(self_->DynamicType()), nullptr}; }
     OCCT_CATCH_RETURN
@@ -8083,28 +7293,28 @@ extern "C" OcctResult<const Expr_GeneralExpression*> Expr_Tangent_as_Expr_Genera
 extern "C" OcctResult<Expr_GeneralExpression*> Expr_Tangent_as_Expr_GeneralExpression_mut(Expr_Tangent* self_) { return {static_cast<Expr_GeneralExpression*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> Expr_Tangent_as_Standard_Transient(const Expr_Tangent* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> Expr_Tangent_as_Standard_Transient_mut(Expr_Tangent* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleExprTangent*> Expr_Tangent_to_handle(Expr_Tangent* obj) {
-    try { return {new HandleExprTangent(obj), nullptr}; }
+extern "C" OcctResult<Handle_Expr_Tangent*> Expr_Tangent_to_handle(Expr_Tangent* obj) {
+    try { return {new Handle_Expr_Tangent(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const Expr_Tangent*> HandleExprTangent_get(const HandleExprTangent* handle) {
+extern "C" OcctResult<const Expr_Tangent*> Handle_Expr_Tangent_get(const Handle_Expr_Tangent* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Expr_Tangent*> HandleExprTangent_get_mut(HandleExprTangent* handle) {
+extern "C" OcctResult<Expr_Tangent*> Handle_Expr_Tangent_get_mut(Handle_Expr_Tangent* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleExprUnaryExpression*> HandleExprTangent_to_HandleExprUnaryExpression(const HandleExprTangent* self_) {
-    try { return {new HandleExprUnaryExpression(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Expr_UnaryExpression*> Handle_Expr_Tangent_to_Handle_Expr_UnaryExpression(const Handle_Expr_Tangent* self_) {
+    try { return {new Handle_Expr_UnaryExpression(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleExprGeneralExpression*> HandleExprTangent_to_HandleExprGeneralExpression(const HandleExprTangent* self_) {
-    try { return {new HandleExprGeneralExpression(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Expr_GeneralExpression*> Handle_Expr_Tangent_to_Handle_Expr_GeneralExpression(const Handle_Expr_Tangent* self_) {
+    try { return {new Handle_Expr_GeneralExpression(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleExprTangent_to_HandleStandardTransient(const HandleExprTangent* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_Expr_Tangent_to_Handle_Standard_Transient(const Handle_Expr_Tangent* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(Expr_GeneralExpression) const*> Expr_Tangent_inherited_Operand(const Expr_Tangent* self) {
@@ -8213,10 +7423,6 @@ extern "C" OcctResult<bool> Expr_Tanh_is_linear(const Expr_Tanh* self_) {
     try { return {self_->IsLinear(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<double> Expr_Tanh_evaluate(const Expr_Tanh* self_, Expr_Array1OfNamedUnknown const* vars, TColStd_Array1OfReal const* vals) {
-    try { return {self_->Evaluate(*vars, *vals), nullptr}; }
-    OCCT_CATCH_RETURN
-}
 extern "C" OcctResult<Handle(Standard_Type) const*> Expr_Tanh_dynamic_type(const Expr_Tanh* self_) {
     try { return {&(self_->DynamicType()), nullptr}; }
     OCCT_CATCH_RETURN
@@ -8235,28 +7441,28 @@ extern "C" OcctResult<const Expr_GeneralExpression*> Expr_Tanh_as_Expr_GeneralEx
 extern "C" OcctResult<Expr_GeneralExpression*> Expr_Tanh_as_Expr_GeneralExpression_mut(Expr_Tanh* self_) { return {static_cast<Expr_GeneralExpression*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> Expr_Tanh_as_Standard_Transient(const Expr_Tanh* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> Expr_Tanh_as_Standard_Transient_mut(Expr_Tanh* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleExprTanh*> Expr_Tanh_to_handle(Expr_Tanh* obj) {
-    try { return {new HandleExprTanh(obj), nullptr}; }
+extern "C" OcctResult<Handle_Expr_Tanh*> Expr_Tanh_to_handle(Expr_Tanh* obj) {
+    try { return {new Handle_Expr_Tanh(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const Expr_Tanh*> HandleExprTanh_get(const HandleExprTanh* handle) {
+extern "C" OcctResult<const Expr_Tanh*> Handle_Expr_Tanh_get(const Handle_Expr_Tanh* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Expr_Tanh*> HandleExprTanh_get_mut(HandleExprTanh* handle) {
+extern "C" OcctResult<Expr_Tanh*> Handle_Expr_Tanh_get_mut(Handle_Expr_Tanh* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleExprUnaryExpression*> HandleExprTanh_to_HandleExprUnaryExpression(const HandleExprTanh* self_) {
-    try { return {new HandleExprUnaryExpression(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Expr_UnaryExpression*> Handle_Expr_Tanh_to_Handle_Expr_UnaryExpression(const Handle_Expr_Tanh* self_) {
+    try { return {new Handle_Expr_UnaryExpression(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleExprGeneralExpression*> HandleExprTanh_to_HandleExprGeneralExpression(const HandleExprTanh* self_) {
-    try { return {new HandleExprGeneralExpression(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Expr_GeneralExpression*> Handle_Expr_Tanh_to_Handle_Expr_GeneralExpression(const Handle_Expr_Tanh* self_) {
+    try { return {new Handle_Expr_GeneralExpression(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleExprTanh_to_HandleStandardTransient(const HandleExprTanh* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_Expr_Tanh_to_Handle_Standard_Transient(const Handle_Expr_Tanh* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(Expr_GeneralExpression) const*> Expr_Tanh_inherited_Operand(const Expr_Tanh* self) {
@@ -8385,187 +7591,187 @@ extern "C" OcctResult<const Expr_GeneralExpression*> Expr_UnaryExpression_as_Exp
 extern "C" OcctResult<Expr_GeneralExpression*> Expr_UnaryExpression_as_Expr_GeneralExpression_mut(Expr_UnaryExpression* self_) { return {static_cast<Expr_GeneralExpression*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> Expr_UnaryExpression_as_Standard_Transient(const Expr_UnaryExpression* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> Expr_UnaryExpression_as_Standard_Transient_mut(Expr_UnaryExpression* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<const Expr_UnaryExpression*> HandleExprUnaryExpression_get(const HandleExprUnaryExpression* handle) {
+extern "C" OcctResult<const Expr_UnaryExpression*> Handle_Expr_UnaryExpression_get(const Handle_Expr_UnaryExpression* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Expr_UnaryExpression*> HandleExprUnaryExpression_get_mut(HandleExprUnaryExpression* handle) {
+extern "C" OcctResult<Expr_UnaryExpression*> Handle_Expr_UnaryExpression_get_mut(Handle_Expr_UnaryExpression* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleExprGeneralExpression*> HandleExprUnaryExpression_to_HandleExprGeneralExpression(const HandleExprUnaryExpression* self_) {
-    try { return {new HandleExprGeneralExpression(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Expr_GeneralExpression*> Handle_Expr_UnaryExpression_to_Handle_Expr_GeneralExpression(const Handle_Expr_UnaryExpression* self_) {
+    try { return {new Handle_Expr_GeneralExpression(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleExprUnaryExpression_to_HandleStandardTransient(const HandleExprUnaryExpression* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_Expr_UnaryExpression_to_Handle_Standard_Transient(const Handle_Expr_UnaryExpression* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleExprAbsolute*> HandleExprUnaryExpression_downcast_to_HandleExprAbsolute(const HandleExprUnaryExpression* self_) {
+extern "C" OcctResult<Handle_Expr_Absolute*> Handle_Expr_UnaryExpression_downcast_to_Handle_Expr_Absolute(const Handle_Expr_UnaryExpression* self_) {
     try {
     opencascade::handle<Expr_Absolute> result = opencascade::handle<Expr_Absolute>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleExprAbsolute(result), nullptr};
+    return {new Handle_Expr_Absolute(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleExprArcCosine*> HandleExprUnaryExpression_downcast_to_HandleExprArcCosine(const HandleExprUnaryExpression* self_) {
+extern "C" OcctResult<Handle_Expr_ArcCosine*> Handle_Expr_UnaryExpression_downcast_to_Handle_Expr_ArcCosine(const Handle_Expr_UnaryExpression* self_) {
     try {
     opencascade::handle<Expr_ArcCosine> result = opencascade::handle<Expr_ArcCosine>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleExprArcCosine(result), nullptr};
+    return {new Handle_Expr_ArcCosine(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleExprArcSine*> HandleExprUnaryExpression_downcast_to_HandleExprArcSine(const HandleExprUnaryExpression* self_) {
+extern "C" OcctResult<Handle_Expr_ArcSine*> Handle_Expr_UnaryExpression_downcast_to_Handle_Expr_ArcSine(const Handle_Expr_UnaryExpression* self_) {
     try {
     opencascade::handle<Expr_ArcSine> result = opencascade::handle<Expr_ArcSine>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleExprArcSine(result), nullptr};
+    return {new Handle_Expr_ArcSine(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleExprArcTangent*> HandleExprUnaryExpression_downcast_to_HandleExprArcTangent(const HandleExprUnaryExpression* self_) {
+extern "C" OcctResult<Handle_Expr_ArcTangent*> Handle_Expr_UnaryExpression_downcast_to_Handle_Expr_ArcTangent(const Handle_Expr_UnaryExpression* self_) {
     try {
     opencascade::handle<Expr_ArcTangent> result = opencascade::handle<Expr_ArcTangent>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleExprArcTangent(result), nullptr};
+    return {new Handle_Expr_ArcTangent(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleExprArgCosh*> HandleExprUnaryExpression_downcast_to_HandleExprArgCosh(const HandleExprUnaryExpression* self_) {
+extern "C" OcctResult<Handle_Expr_ArgCosh*> Handle_Expr_UnaryExpression_downcast_to_Handle_Expr_ArgCosh(const Handle_Expr_UnaryExpression* self_) {
     try {
     opencascade::handle<Expr_ArgCosh> result = opencascade::handle<Expr_ArgCosh>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleExprArgCosh(result), nullptr};
+    return {new Handle_Expr_ArgCosh(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleExprArgSinh*> HandleExprUnaryExpression_downcast_to_HandleExprArgSinh(const HandleExprUnaryExpression* self_) {
+extern "C" OcctResult<Handle_Expr_ArgSinh*> Handle_Expr_UnaryExpression_downcast_to_Handle_Expr_ArgSinh(const Handle_Expr_UnaryExpression* self_) {
     try {
     opencascade::handle<Expr_ArgSinh> result = opencascade::handle<Expr_ArgSinh>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleExprArgSinh(result), nullptr};
+    return {new Handle_Expr_ArgSinh(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleExprArgTanh*> HandleExprUnaryExpression_downcast_to_HandleExprArgTanh(const HandleExprUnaryExpression* self_) {
+extern "C" OcctResult<Handle_Expr_ArgTanh*> Handle_Expr_UnaryExpression_downcast_to_Handle_Expr_ArgTanh(const Handle_Expr_UnaryExpression* self_) {
     try {
     opencascade::handle<Expr_ArgTanh> result = opencascade::handle<Expr_ArgTanh>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleExprArgTanh(result), nullptr};
+    return {new Handle_Expr_ArgTanh(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleExprCosh*> HandleExprUnaryExpression_downcast_to_HandleExprCosh(const HandleExprUnaryExpression* self_) {
+extern "C" OcctResult<Handle_Expr_Cosh*> Handle_Expr_UnaryExpression_downcast_to_Handle_Expr_Cosh(const Handle_Expr_UnaryExpression* self_) {
     try {
     opencascade::handle<Expr_Cosh> result = opencascade::handle<Expr_Cosh>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleExprCosh(result), nullptr};
+    return {new Handle_Expr_Cosh(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleExprCosine*> HandleExprUnaryExpression_downcast_to_HandleExprCosine(const HandleExprUnaryExpression* self_) {
+extern "C" OcctResult<Handle_Expr_Cosine*> Handle_Expr_UnaryExpression_downcast_to_Handle_Expr_Cosine(const Handle_Expr_UnaryExpression* self_) {
     try {
     opencascade::handle<Expr_Cosine> result = opencascade::handle<Expr_Cosine>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleExprCosine(result), nullptr};
+    return {new Handle_Expr_Cosine(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleExprExponential*> HandleExprUnaryExpression_downcast_to_HandleExprExponential(const HandleExprUnaryExpression* self_) {
+extern "C" OcctResult<Handle_Expr_Exponential*> Handle_Expr_UnaryExpression_downcast_to_Handle_Expr_Exponential(const Handle_Expr_UnaryExpression* self_) {
     try {
     opencascade::handle<Expr_Exponential> result = opencascade::handle<Expr_Exponential>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleExprExponential(result), nullptr};
+    return {new Handle_Expr_Exponential(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleExprLogOf10*> HandleExprUnaryExpression_downcast_to_HandleExprLogOf10(const HandleExprUnaryExpression* self_) {
+extern "C" OcctResult<Handle_Expr_LogOf10*> Handle_Expr_UnaryExpression_downcast_to_Handle_Expr_LogOf10(const Handle_Expr_UnaryExpression* self_) {
     try {
     opencascade::handle<Expr_LogOf10> result = opencascade::handle<Expr_LogOf10>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleExprLogOf10(result), nullptr};
+    return {new Handle_Expr_LogOf10(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleExprLogOfe*> HandleExprUnaryExpression_downcast_to_HandleExprLogOfe(const HandleExprUnaryExpression* self_) {
+extern "C" OcctResult<Handle_Expr_LogOfe*> Handle_Expr_UnaryExpression_downcast_to_Handle_Expr_LogOfe(const Handle_Expr_UnaryExpression* self_) {
     try {
     opencascade::handle<Expr_LogOfe> result = opencascade::handle<Expr_LogOfe>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleExprLogOfe(result), nullptr};
+    return {new Handle_Expr_LogOfe(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleExprSign*> HandleExprUnaryExpression_downcast_to_HandleExprSign(const HandleExprUnaryExpression* self_) {
+extern "C" OcctResult<Handle_Expr_Sign*> Handle_Expr_UnaryExpression_downcast_to_Handle_Expr_Sign(const Handle_Expr_UnaryExpression* self_) {
     try {
     opencascade::handle<Expr_Sign> result = opencascade::handle<Expr_Sign>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleExprSign(result), nullptr};
+    return {new Handle_Expr_Sign(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleExprSine*> HandleExprUnaryExpression_downcast_to_HandleExprSine(const HandleExprUnaryExpression* self_) {
+extern "C" OcctResult<Handle_Expr_Sine*> Handle_Expr_UnaryExpression_downcast_to_Handle_Expr_Sine(const Handle_Expr_UnaryExpression* self_) {
     try {
     opencascade::handle<Expr_Sine> result = opencascade::handle<Expr_Sine>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleExprSine(result), nullptr};
+    return {new Handle_Expr_Sine(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleExprSinh*> HandleExprUnaryExpression_downcast_to_HandleExprSinh(const HandleExprUnaryExpression* self_) {
+extern "C" OcctResult<Handle_Expr_Sinh*> Handle_Expr_UnaryExpression_downcast_to_Handle_Expr_Sinh(const Handle_Expr_UnaryExpression* self_) {
     try {
     opencascade::handle<Expr_Sinh> result = opencascade::handle<Expr_Sinh>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleExprSinh(result), nullptr};
+    return {new Handle_Expr_Sinh(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleExprSquare*> HandleExprUnaryExpression_downcast_to_HandleExprSquare(const HandleExprUnaryExpression* self_) {
+extern "C" OcctResult<Handle_Expr_Square*> Handle_Expr_UnaryExpression_downcast_to_Handle_Expr_Square(const Handle_Expr_UnaryExpression* self_) {
     try {
     opencascade::handle<Expr_Square> result = opencascade::handle<Expr_Square>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleExprSquare(result), nullptr};
+    return {new Handle_Expr_Square(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleExprSquareRoot*> HandleExprUnaryExpression_downcast_to_HandleExprSquareRoot(const HandleExprUnaryExpression* self_) {
+extern "C" OcctResult<Handle_Expr_SquareRoot*> Handle_Expr_UnaryExpression_downcast_to_Handle_Expr_SquareRoot(const Handle_Expr_UnaryExpression* self_) {
     try {
     opencascade::handle<Expr_SquareRoot> result = opencascade::handle<Expr_SquareRoot>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleExprSquareRoot(result), nullptr};
+    return {new Handle_Expr_SquareRoot(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleExprTangent*> HandleExprUnaryExpression_downcast_to_HandleExprTangent(const HandleExprUnaryExpression* self_) {
+extern "C" OcctResult<Handle_Expr_Tangent*> Handle_Expr_UnaryExpression_downcast_to_Handle_Expr_Tangent(const Handle_Expr_UnaryExpression* self_) {
     try {
     opencascade::handle<Expr_Tangent> result = opencascade::handle<Expr_Tangent>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleExprTangent(result), nullptr};
+    return {new Handle_Expr_Tangent(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleExprTanh*> HandleExprUnaryExpression_downcast_to_HandleExprTanh(const HandleExprUnaryExpression* self_) {
+extern "C" OcctResult<Handle_Expr_Tanh*> Handle_Expr_UnaryExpression_downcast_to_Handle_Expr_Tanh(const Handle_Expr_UnaryExpression* self_) {
     try {
     opencascade::handle<Expr_Tanh> result = opencascade::handle<Expr_Tanh>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleExprTanh(result), nullptr};
+    return {new Handle_Expr_Tanh(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleExprUnaryFunction*> HandleExprUnaryExpression_downcast_to_HandleExprUnaryFunction(const HandleExprUnaryExpression* self_) {
+extern "C" OcctResult<Handle_Expr_UnaryFunction*> Handle_Expr_UnaryExpression_downcast_to_Handle_Expr_UnaryFunction(const Handle_Expr_UnaryExpression* self_) {
     try {
     opencascade::handle<Expr_UnaryFunction> result = opencascade::handle<Expr_UnaryFunction>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleExprUnaryFunction(result), nullptr};
+    return {new Handle_Expr_UnaryFunction(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleExprUnaryMinus*> HandleExprUnaryExpression_downcast_to_HandleExprUnaryMinus(const HandleExprUnaryExpression* self_) {
+extern "C" OcctResult<Handle_Expr_UnaryMinus*> Handle_Expr_UnaryExpression_downcast_to_Handle_Expr_UnaryMinus(const Handle_Expr_UnaryExpression* self_) {
     try {
     opencascade::handle<Expr_UnaryMinus> result = opencascade::handle<Expr_UnaryMinus>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleExprUnaryMinus(result), nullptr};
+    return {new Handle_Expr_UnaryMinus(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
@@ -8595,10 +7801,6 @@ extern "C" OcctResult<Handle(Expr_GeneralExpression)*> Expr_UnaryExpression_inhe
 }
 extern "C" OcctResult<Handle(Expr_GeneralExpression)*> Expr_UnaryExpression_inherited_NDerivative(const Expr_UnaryExpression* self, Handle(Expr_NamedUnknown) const& X, int32_t N) {
     try { return {new Handle(Expr_GeneralExpression)(self->NDerivative(X, N)), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<double> Expr_UnaryExpression_inherited_Evaluate(const Expr_UnaryExpression* self, Expr_Array1OfNamedUnknown const& vars, TColStd_Array1OfReal const& vals) {
-    try { return {self->Evaluate(vars, vals), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<double> Expr_UnaryExpression_inherited_EvaluateNumeric(const Expr_UnaryExpression* self) {
@@ -8675,10 +7877,6 @@ extern "C" OcctResult<bool> Expr_UnaryFunction_is_linear(const Expr_UnaryFunctio
     try { return {self_->IsLinear(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<double> Expr_UnaryFunction_evaluate(const Expr_UnaryFunction* self_, Expr_Array1OfNamedUnknown const* vars, TColStd_Array1OfReal const* vals) {
-    try { return {self_->Evaluate(*vars, *vals), nullptr}; }
-    OCCT_CATCH_RETURN
-}
 extern "C" OcctResult<Handle(Standard_Type) const*> Expr_UnaryFunction_dynamic_type(const Expr_UnaryFunction* self_) {
     try { return {&(self_->DynamicType()), nullptr}; }
     OCCT_CATCH_RETURN
@@ -8697,28 +7895,28 @@ extern "C" OcctResult<const Expr_GeneralExpression*> Expr_UnaryFunction_as_Expr_
 extern "C" OcctResult<Expr_GeneralExpression*> Expr_UnaryFunction_as_Expr_GeneralExpression_mut(Expr_UnaryFunction* self_) { return {static_cast<Expr_GeneralExpression*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> Expr_UnaryFunction_as_Standard_Transient(const Expr_UnaryFunction* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> Expr_UnaryFunction_as_Standard_Transient_mut(Expr_UnaryFunction* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleExprUnaryFunction*> Expr_UnaryFunction_to_handle(Expr_UnaryFunction* obj) {
-    try { return {new HandleExprUnaryFunction(obj), nullptr}; }
+extern "C" OcctResult<Handle_Expr_UnaryFunction*> Expr_UnaryFunction_to_handle(Expr_UnaryFunction* obj) {
+    try { return {new Handle_Expr_UnaryFunction(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const Expr_UnaryFunction*> HandleExprUnaryFunction_get(const HandleExprUnaryFunction* handle) {
+extern "C" OcctResult<const Expr_UnaryFunction*> Handle_Expr_UnaryFunction_get(const Handle_Expr_UnaryFunction* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Expr_UnaryFunction*> HandleExprUnaryFunction_get_mut(HandleExprUnaryFunction* handle) {
+extern "C" OcctResult<Expr_UnaryFunction*> Handle_Expr_UnaryFunction_get_mut(Handle_Expr_UnaryFunction* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleExprUnaryExpression*> HandleExprUnaryFunction_to_HandleExprUnaryExpression(const HandleExprUnaryFunction* self_) {
-    try { return {new HandleExprUnaryExpression(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Expr_UnaryExpression*> Handle_Expr_UnaryFunction_to_Handle_Expr_UnaryExpression(const Handle_Expr_UnaryFunction* self_) {
+    try { return {new Handle_Expr_UnaryExpression(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleExprGeneralExpression*> HandleExprUnaryFunction_to_HandleExprGeneralExpression(const HandleExprUnaryFunction* self_) {
-    try { return {new HandleExprGeneralExpression(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Expr_GeneralExpression*> Handle_Expr_UnaryFunction_to_Handle_Expr_GeneralExpression(const Handle_Expr_UnaryFunction* self_) {
+    try { return {new Handle_Expr_GeneralExpression(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleExprUnaryFunction_to_HandleStandardTransient(const HandleExprUnaryFunction* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_Expr_UnaryFunction_to_Handle_Standard_Transient(const Handle_Expr_UnaryFunction* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(Expr_GeneralExpression) const*> Expr_UnaryFunction_inherited_Operand(const Expr_UnaryFunction* self) {
@@ -8831,10 +8029,6 @@ extern "C" OcctResult<bool> Expr_UnaryMinus_is_linear(const Expr_UnaryMinus* sel
     try { return {self_->IsLinear(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<double> Expr_UnaryMinus_evaluate(const Expr_UnaryMinus* self_, Expr_Array1OfNamedUnknown const* vars, TColStd_Array1OfReal const* vals) {
-    try { return {self_->Evaluate(*vars, *vals), nullptr}; }
-    OCCT_CATCH_RETURN
-}
 extern "C" OcctResult<Handle(Standard_Type) const*> Expr_UnaryMinus_dynamic_type(const Expr_UnaryMinus* self_) {
     try { return {&(self_->DynamicType()), nullptr}; }
     OCCT_CATCH_RETURN
@@ -8853,28 +8047,28 @@ extern "C" OcctResult<const Expr_GeneralExpression*> Expr_UnaryMinus_as_Expr_Gen
 extern "C" OcctResult<Expr_GeneralExpression*> Expr_UnaryMinus_as_Expr_GeneralExpression_mut(Expr_UnaryMinus* self_) { return {static_cast<Expr_GeneralExpression*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> Expr_UnaryMinus_as_Standard_Transient(const Expr_UnaryMinus* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> Expr_UnaryMinus_as_Standard_Transient_mut(Expr_UnaryMinus* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleExprUnaryMinus*> Expr_UnaryMinus_to_handle(Expr_UnaryMinus* obj) {
-    try { return {new HandleExprUnaryMinus(obj), nullptr}; }
+extern "C" OcctResult<Handle_Expr_UnaryMinus*> Expr_UnaryMinus_to_handle(Expr_UnaryMinus* obj) {
+    try { return {new Handle_Expr_UnaryMinus(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const Expr_UnaryMinus*> HandleExprUnaryMinus_get(const HandleExprUnaryMinus* handle) {
+extern "C" OcctResult<const Expr_UnaryMinus*> Handle_Expr_UnaryMinus_get(const Handle_Expr_UnaryMinus* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Expr_UnaryMinus*> HandleExprUnaryMinus_get_mut(HandleExprUnaryMinus* handle) {
+extern "C" OcctResult<Expr_UnaryMinus*> Handle_Expr_UnaryMinus_get_mut(Handle_Expr_UnaryMinus* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleExprUnaryExpression*> HandleExprUnaryMinus_to_HandleExprUnaryExpression(const HandleExprUnaryMinus* self_) {
-    try { return {new HandleExprUnaryExpression(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Expr_UnaryExpression*> Handle_Expr_UnaryMinus_to_Handle_Expr_UnaryExpression(const Handle_Expr_UnaryMinus* self_) {
+    try { return {new Handle_Expr_UnaryExpression(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleExprGeneralExpression*> HandleExprUnaryMinus_to_HandleExprGeneralExpression(const HandleExprUnaryMinus* self_) {
-    try { return {new HandleExprGeneralExpression(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Expr_GeneralExpression*> Handle_Expr_UnaryMinus_to_Handle_Expr_GeneralExpression(const Handle_Expr_UnaryMinus* self_) {
+    try { return {new Handle_Expr_GeneralExpression(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleExprUnaryMinus_to_HandleStandardTransient(const HandleExprUnaryMinus* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_Expr_UnaryMinus_to_Handle_Standard_Transient(const Handle_Expr_UnaryMinus* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(Expr_GeneralExpression) const*> Expr_UnaryMinus_inherited_Operand(const Expr_UnaryMinus* self) {
@@ -9087,36 +8281,32 @@ extern "C" OcctResult<const ExprIntrp_Generator*> ExprIntrp_GenExp_as_ExprIntrp_
 extern "C" OcctResult<ExprIntrp_Generator*> ExprIntrp_GenExp_as_ExprIntrp_Generator_mut(ExprIntrp_GenExp* self_) { return {static_cast<ExprIntrp_Generator*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> ExprIntrp_GenExp_as_Standard_Transient(const ExprIntrp_GenExp* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> ExprIntrp_GenExp_as_Standard_Transient_mut(ExprIntrp_GenExp* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleExprIntrpGenExp*> ExprIntrp_GenExp_to_handle(ExprIntrp_GenExp* obj) {
-    try { return {new HandleExprIntrpGenExp(obj), nullptr}; }
+extern "C" OcctResult<Handle_ExprIntrp_GenExp*> ExprIntrp_GenExp_to_handle(ExprIntrp_GenExp* obj) {
+    try { return {new Handle_ExprIntrp_GenExp(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const ExprIntrp_GenExp*> HandleExprIntrpGenExp_get(const HandleExprIntrpGenExp* handle) {
+extern "C" OcctResult<const ExprIntrp_GenExp*> Handle_ExprIntrp_GenExp_get(const Handle_ExprIntrp_GenExp* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<ExprIntrp_GenExp*> HandleExprIntrpGenExp_get_mut(HandleExprIntrpGenExp* handle) {
+extern "C" OcctResult<ExprIntrp_GenExp*> Handle_ExprIntrp_GenExp_get_mut(Handle_ExprIntrp_GenExp* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleExprIntrpGenerator*> HandleExprIntrpGenExp_to_HandleExprIntrpGenerator(const HandleExprIntrpGenExp* self_) {
-    try { return {new HandleExprIntrpGenerator(*self_), nullptr}; }
+extern "C" OcctResult<Handle_ExprIntrp_Generator*> Handle_ExprIntrp_GenExp_to_Handle_ExprIntrp_Generator(const Handle_ExprIntrp_GenExp* self_) {
+    try { return {new Handle_ExprIntrp_Generator(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleExprIntrpGenExp_to_HandleStandardTransient(const HandleExprIntrpGenExp* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_ExprIntrp_GenExp_to_Handle_Standard_Transient(const Handle_ExprIntrp_GenExp* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" const char* ExprIntrp_GenExp_inherited_Use(ExprIntrp_GenExp* self, Handle(Expr_NamedFunction) const& func) {
     try { self->Use(func); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<ExprIntrp_SequenceOfNamedExpression const*> ExprIntrp_GenExp_inherited_GetNamed(const ExprIntrp_GenExp* self) {
-    try { return {&(self->GetNamed()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<ExprIntrp_SequenceOfNamedFunction const*> ExprIntrp_GenExp_inherited_GetFunctions(const ExprIntrp_GenExp* self) {
-    try { return {&(self->GetFunctions()), nullptr}; }
+extern "C" OcctResult<Handle(Expr_NamedExpression)*> ExprIntrp_GenExp_inherited_GetNamed(const ExprIntrp_GenExp* self, TCollection_AsciiString const& name) {
+    try { return {new Handle(Expr_NamedExpression)(self->GetNamed(name)), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(Expr_NamedFunction)*> ExprIntrp_GenExp_inherited_GetFunction(const ExprIntrp_GenExp* self, TCollection_AsciiString const& name) {
@@ -9185,36 +8375,32 @@ extern "C" OcctResult<const ExprIntrp_Generator*> ExprIntrp_GenFct_as_ExprIntrp_
 extern "C" OcctResult<ExprIntrp_Generator*> ExprIntrp_GenFct_as_ExprIntrp_Generator_mut(ExprIntrp_GenFct* self_) { return {static_cast<ExprIntrp_Generator*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> ExprIntrp_GenFct_as_Standard_Transient(const ExprIntrp_GenFct* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> ExprIntrp_GenFct_as_Standard_Transient_mut(ExprIntrp_GenFct* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleExprIntrpGenFct*> ExprIntrp_GenFct_to_handle(ExprIntrp_GenFct* obj) {
-    try { return {new HandleExprIntrpGenFct(obj), nullptr}; }
+extern "C" OcctResult<Handle_ExprIntrp_GenFct*> ExprIntrp_GenFct_to_handle(ExprIntrp_GenFct* obj) {
+    try { return {new Handle_ExprIntrp_GenFct(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const ExprIntrp_GenFct*> HandleExprIntrpGenFct_get(const HandleExprIntrpGenFct* handle) {
+extern "C" OcctResult<const ExprIntrp_GenFct*> Handle_ExprIntrp_GenFct_get(const Handle_ExprIntrp_GenFct* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<ExprIntrp_GenFct*> HandleExprIntrpGenFct_get_mut(HandleExprIntrpGenFct* handle) {
+extern "C" OcctResult<ExprIntrp_GenFct*> Handle_ExprIntrp_GenFct_get_mut(Handle_ExprIntrp_GenFct* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleExprIntrpGenerator*> HandleExprIntrpGenFct_to_HandleExprIntrpGenerator(const HandleExprIntrpGenFct* self_) {
-    try { return {new HandleExprIntrpGenerator(*self_), nullptr}; }
+extern "C" OcctResult<Handle_ExprIntrp_Generator*> Handle_ExprIntrp_GenFct_to_Handle_ExprIntrp_Generator(const Handle_ExprIntrp_GenFct* self_) {
+    try { return {new Handle_ExprIntrp_Generator(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleExprIntrpGenFct_to_HandleStandardTransient(const HandleExprIntrpGenFct* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_ExprIntrp_GenFct_to_Handle_Standard_Transient(const Handle_ExprIntrp_GenFct* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" const char* ExprIntrp_GenFct_inherited_Use(ExprIntrp_GenFct* self, Handle(Expr_NamedFunction) const& func) {
     try { self->Use(func); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<ExprIntrp_SequenceOfNamedExpression const*> ExprIntrp_GenFct_inherited_GetNamed(const ExprIntrp_GenFct* self) {
-    try { return {&(self->GetNamed()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<ExprIntrp_SequenceOfNamedFunction const*> ExprIntrp_GenFct_inherited_GetFunctions(const ExprIntrp_GenFct* self) {
-    try { return {&(self->GetFunctions()), nullptr}; }
+extern "C" OcctResult<Handle(Expr_NamedExpression)*> ExprIntrp_GenFct_inherited_GetNamed(const ExprIntrp_GenFct* self, TCollection_AsciiString const& name) {
+    try { return {new Handle(Expr_NamedExpression)(self->GetNamed(name)), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(Expr_NamedFunction)*> ExprIntrp_GenFct_inherited_GetFunction(const ExprIntrp_GenFct* self, TCollection_AsciiString const& name) {
@@ -9287,36 +8473,32 @@ extern "C" OcctResult<const ExprIntrp_Generator*> ExprIntrp_GenRel_as_ExprIntrp_
 extern "C" OcctResult<ExprIntrp_Generator*> ExprIntrp_GenRel_as_ExprIntrp_Generator_mut(ExprIntrp_GenRel* self_) { return {static_cast<ExprIntrp_Generator*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> ExprIntrp_GenRel_as_Standard_Transient(const ExprIntrp_GenRel* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> ExprIntrp_GenRel_as_Standard_Transient_mut(ExprIntrp_GenRel* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleExprIntrpGenRel*> ExprIntrp_GenRel_to_handle(ExprIntrp_GenRel* obj) {
-    try { return {new HandleExprIntrpGenRel(obj), nullptr}; }
+extern "C" OcctResult<Handle_ExprIntrp_GenRel*> ExprIntrp_GenRel_to_handle(ExprIntrp_GenRel* obj) {
+    try { return {new Handle_ExprIntrp_GenRel(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const ExprIntrp_GenRel*> HandleExprIntrpGenRel_get(const HandleExprIntrpGenRel* handle) {
+extern "C" OcctResult<const ExprIntrp_GenRel*> Handle_ExprIntrp_GenRel_get(const Handle_ExprIntrp_GenRel* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<ExprIntrp_GenRel*> HandleExprIntrpGenRel_get_mut(HandleExprIntrpGenRel* handle) {
+extern "C" OcctResult<ExprIntrp_GenRel*> Handle_ExprIntrp_GenRel_get_mut(Handle_ExprIntrp_GenRel* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleExprIntrpGenerator*> HandleExprIntrpGenRel_to_HandleExprIntrpGenerator(const HandleExprIntrpGenRel* self_) {
-    try { return {new HandleExprIntrpGenerator(*self_), nullptr}; }
+extern "C" OcctResult<Handle_ExprIntrp_Generator*> Handle_ExprIntrp_GenRel_to_Handle_ExprIntrp_Generator(const Handle_ExprIntrp_GenRel* self_) {
+    try { return {new Handle_ExprIntrp_Generator(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleExprIntrpGenRel_to_HandleStandardTransient(const HandleExprIntrpGenRel* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_ExprIntrp_GenRel_to_Handle_Standard_Transient(const Handle_ExprIntrp_GenRel* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" const char* ExprIntrp_GenRel_inherited_Use(ExprIntrp_GenRel* self, Handle(Expr_NamedFunction) const& func) {
     try { self->Use(func); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<ExprIntrp_SequenceOfNamedExpression const*> ExprIntrp_GenRel_inherited_GetNamed(const ExprIntrp_GenRel* self) {
-    try { return {&(self->GetNamed()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<ExprIntrp_SequenceOfNamedFunction const*> ExprIntrp_GenRel_inherited_GetFunctions(const ExprIntrp_GenRel* self) {
-    try { return {&(self->GetFunctions()), nullptr}; }
+extern "C" OcctResult<Handle(Expr_NamedExpression)*> ExprIntrp_GenRel_inherited_GetNamed(const ExprIntrp_GenRel* self, TCollection_AsciiString const& name) {
+    try { return {new Handle(Expr_NamedExpression)(self->GetNamed(name)), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(Expr_NamedFunction)*> ExprIntrp_GenRel_inherited_GetFunction(const ExprIntrp_GenRel* self, TCollection_AsciiString const& name) {
@@ -9357,7 +8539,7 @@ extern "C" void ExprIntrp_GenRel_destructor(ExprIntrp_GenRel* self_) { delete se
 // ExprIntrp_Generator wrappers
 // ========================
 
-extern "C" OcctResult<Handle(Expr_NamedExpression)*> ExprIntrp_Generator_get_named_asciistring(const ExprIntrp_Generator* self_, TCollection_AsciiString const* name) {
+extern "C" OcctResult<Handle(Expr_NamedExpression)*> ExprIntrp_Generator_get_named(const ExprIntrp_Generator* self_, TCollection_AsciiString const* name) {
     try { return {new Handle(Expr_NamedExpression)(self_->GetNamed(*name)), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -9373,14 +8555,6 @@ extern "C" const char* ExprIntrp_Generator_use_handleexprnamedexpression(ExprInt
     try { self_->Use(*named); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<ExprIntrp_SequenceOfNamedExpression const*> ExprIntrp_Generator_get_named(const ExprIntrp_Generator* self_) {
-    try { return {&(self_->GetNamed()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<ExprIntrp_SequenceOfNamedFunction const*> ExprIntrp_Generator_get_functions(const ExprIntrp_Generator* self_) {
-    try { return {&(self_->GetFunctions()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
 extern "C" OcctResult<Handle(Standard_Type) const*> ExprIntrp_Generator_dynamic_type(const ExprIntrp_Generator* self_) {
     try { return {&(self_->DynamicType()), nullptr}; }
     OCCT_CATCH_RETURN
@@ -9395,43 +8569,43 @@ extern "C" OcctResult<Handle(Standard_Type) const*> ExprIntrp_Generator_get_type
 }
 extern "C" OcctResult<const Standard_Transient*> ExprIntrp_Generator_as_Standard_Transient(const ExprIntrp_Generator* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> ExprIntrp_Generator_as_Standard_Transient_mut(ExprIntrp_Generator* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleExprIntrpGenerator*> ExprIntrp_Generator_to_handle(ExprIntrp_Generator* obj) {
-    try { return {new HandleExprIntrpGenerator(obj), nullptr}; }
+extern "C" OcctResult<Handle_ExprIntrp_Generator*> ExprIntrp_Generator_to_handle(ExprIntrp_Generator* obj) {
+    try { return {new Handle_ExprIntrp_Generator(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const ExprIntrp_Generator*> HandleExprIntrpGenerator_get(const HandleExprIntrpGenerator* handle) {
+extern "C" OcctResult<const ExprIntrp_Generator*> Handle_ExprIntrp_Generator_get(const Handle_ExprIntrp_Generator* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<ExprIntrp_Generator*> HandleExprIntrpGenerator_get_mut(HandleExprIntrpGenerator* handle) {
+extern "C" OcctResult<ExprIntrp_Generator*> Handle_ExprIntrp_Generator_get_mut(Handle_ExprIntrp_Generator* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleExprIntrpGenerator_to_HandleStandardTransient(const HandleExprIntrpGenerator* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_ExprIntrp_Generator_to_Handle_Standard_Transient(const Handle_ExprIntrp_Generator* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleExprIntrpGenExp*> HandleExprIntrpGenerator_downcast_to_HandleExprIntrpGenExp(const HandleExprIntrpGenerator* self_) {
+extern "C" OcctResult<Handle_ExprIntrp_GenExp*> Handle_ExprIntrp_Generator_downcast_to_Handle_ExprIntrp_GenExp(const Handle_ExprIntrp_Generator* self_) {
     try {
     opencascade::handle<ExprIntrp_GenExp> result = opencascade::handle<ExprIntrp_GenExp>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleExprIntrpGenExp(result), nullptr};
+    return {new Handle_ExprIntrp_GenExp(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleExprIntrpGenFct*> HandleExprIntrpGenerator_downcast_to_HandleExprIntrpGenFct(const HandleExprIntrpGenerator* self_) {
+extern "C" OcctResult<Handle_ExprIntrp_GenFct*> Handle_ExprIntrp_Generator_downcast_to_Handle_ExprIntrp_GenFct(const Handle_ExprIntrp_Generator* self_) {
     try {
     opencascade::handle<ExprIntrp_GenFct> result = opencascade::handle<ExprIntrp_GenFct>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleExprIntrpGenFct(result), nullptr};
+    return {new Handle_ExprIntrp_GenFct(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleExprIntrpGenRel*> HandleExprIntrpGenerator_downcast_to_HandleExprIntrpGenRel(const HandleExprIntrpGenerator* self_) {
+extern "C" OcctResult<Handle_ExprIntrp_GenRel*> Handle_ExprIntrp_Generator_downcast_to_Handle_ExprIntrp_GenRel(const Handle_ExprIntrp_Generator* self_) {
     try {
     opencascade::handle<ExprIntrp_GenRel> result = opencascade::handle<ExprIntrp_GenRel>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleExprIntrpGenRel(result), nullptr};
+    return {new Handle_ExprIntrp_GenRel(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
@@ -9469,10 +8643,6 @@ extern "C" void ExprIntrp_Generator_destructor(ExprIntrp_Generator* self_) { del
 // ExprIntrp_SyntaxError wrappers
 // ========================
 
-extern "C" OcctResult<ExprIntrp_SyntaxError*> ExprIntrp_SyntaxError_ctor() {
-    try { return {new ExprIntrp_SyntaxError(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
 extern "C" OcctResult<ExprIntrp_SyntaxError*> ExprIntrp_SyntaxError_ctor_charptr(const char* theMessage) {
     try { return {new ExprIntrp_SyntaxError(theMessage), nullptr}; }
     OCCT_CATCH_RETURN
@@ -9481,96 +8651,14 @@ extern "C" OcctResult<ExprIntrp_SyntaxError*> ExprIntrp_SyntaxError_ctor_charptr
     try { return {new ExprIntrp_SyntaxError(theMessage, theStackTrace), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(Standard_Type) const*> ExprIntrp_SyntaxError_dynamic_type(const ExprIntrp_SyntaxError* self_) {
-    try { return {&(self_->DynamicType()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* ExprIntrp_SyntaxError_raise_charptr(const char* theMessage) {
-    try { ExprIntrp_SyntaxError::Raise(theMessage); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* ExprIntrp_SyntaxError_raise_sstream(Standard_SStream* theMessage) {
-    try { ExprIntrp_SyntaxError::Raise(*theMessage); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<Handle(ExprIntrp_SyntaxError)*> ExprIntrp_SyntaxError_new_instance_charptr(const char* theMessage) {
-    try { return {new Handle(ExprIntrp_SyntaxError)(ExprIntrp_SyntaxError::NewInstance(theMessage)), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Handle(ExprIntrp_SyntaxError)*> ExprIntrp_SyntaxError_new_instance_charptr2(const char* theMessage, const char* theStackTrace) {
-    try { return {new Handle(ExprIntrp_SyntaxError)(ExprIntrp_SyntaxError::NewInstance(theMessage, theStackTrace)), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<char const*> ExprIntrp_SyntaxError_get_type_name() {
-    try { return {ExprIntrp_SyntaxError::get_type_name(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Handle(Standard_Type) const*> ExprIntrp_SyntaxError_get_type_descriptor() {
-    try { return {&(ExprIntrp_SyntaxError::get_type_descriptor()), nullptr}; }
+extern "C" OcctResult<char const*> ExprIntrp_SyntaxError_exception_type(const ExprIntrp_SyntaxError* self_) {
+    try { return {self_->ExceptionType(), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<const Standard_Failure*> ExprIntrp_SyntaxError_as_Standard_Failure(const ExprIntrp_SyntaxError* self_) { return {static_cast<const Standard_Failure*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Failure*> ExprIntrp_SyntaxError_as_Standard_Failure_mut(ExprIntrp_SyntaxError* self_) { return {static_cast<Standard_Failure*>(self_), nullptr}; }
-extern "C" OcctResult<const Standard_Transient*> ExprIntrp_SyntaxError_as_Standard_Transient(const ExprIntrp_SyntaxError* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<Standard_Transient*> ExprIntrp_SyntaxError_as_Standard_Transient_mut(ExprIntrp_SyntaxError* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleExprIntrpSyntaxError*> ExprIntrp_SyntaxError_to_handle(ExprIntrp_SyntaxError* obj) {
-    try { return {new HandleExprIntrpSyntaxError(obj), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<const ExprIntrp_SyntaxError*> HandleExprIntrpSyntaxError_get(const HandleExprIntrpSyntaxError* handle) {
-    try { return {(*handle).get(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<ExprIntrp_SyntaxError*> HandleExprIntrpSyntaxError_get_mut(HandleExprIntrpSyntaxError* handle) {
-    try { return {(*handle).get(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<HandleStandardFailure*> HandleExprIntrpSyntaxError_to_HandleStandardFailure(const HandleExprIntrpSyntaxError* self_) {
-    try { return {new HandleStandardFailure(*self_), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<HandleStandardTransient*> HandleExprIntrpSyntaxError_to_HandleStandardTransient(const HandleExprIntrpSyntaxError* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
-    OCCT_CATCH_RETURN
-}
 extern "C" const char* ExprIntrp_SyntaxError_inherited_Print(const ExprIntrp_SyntaxError* self, Standard_OStream& theStream) {
     try { self->Print(theStream); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* ExprIntrp_SyntaxError_inherited_Reraise(ExprIntrp_SyntaxError* self) {
-    try { self->Reraise(); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* ExprIntrp_SyntaxError_inherited_Jump(ExprIntrp_SyntaxError* self) {
-    try { self->Jump(); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<bool> ExprIntrp_SyntaxError_inherited_IsInstance(const ExprIntrp_SyntaxError* self, Handle(Standard_Type) const& theType) {
-    try { return {self->IsInstance(theType), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<bool> ExprIntrp_SyntaxError_inherited_IsKind(const ExprIntrp_SyntaxError* self, Handle(Standard_Type) const& theType) {
-    try { return {self->IsKind(theType), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Standard_Transient*> ExprIntrp_SyntaxError_inherited_This(const ExprIntrp_SyntaxError* self) {
-    try { return {self->This(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<int32_t> ExprIntrp_SyntaxError_inherited_GetRefCount(const ExprIntrp_SyntaxError* self) {
-    try { return {self->GetRefCount(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* ExprIntrp_SyntaxError_inherited_IncrementRefCounter(ExprIntrp_SyntaxError* self) {
-    try { self->IncrementRefCounter(); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<int32_t> ExprIntrp_SyntaxError_inherited_DecrementRefCounter(ExprIntrp_SyntaxError* self) {
-    try { return {self->DecrementRefCounter(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* ExprIntrp_SyntaxError_inherited_Delete(const ExprIntrp_SyntaxError* self) {
-    try { self->Delete(); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
 extern "C" void ExprIntrp_SyntaxError_destructor(ExprIntrp_SyntaxError* self_) { delete self_; }
@@ -9595,10 +8683,3 @@ extern "C" OcctResult<double> Expr_sign(double val) {
     OCCT_CATCH_RETURN
 }
 
-
-// Nested type and typedef type destructors
-extern "C" void ExprIntrp_SequenceOfNamedExpression_destructor(ExprIntrp_SequenceOfNamedExpression* self_) { delete self_; }
-extern "C" void ExprIntrp_SequenceOfNamedFunction_destructor(ExprIntrp_SequenceOfNamedFunction* self_) { delete self_; }
-extern "C" void Expr_Array1OfGeneralExpression_destructor(Expr_Array1OfGeneralExpression* self_) { delete self_; }
-extern "C" void Expr_Array1OfNamedUnknown_destructor(Expr_Array1OfNamedUnknown* self_) { delete self_; }
-extern "C" void Expr_SequenceOfGeneralExpression_destructor(Expr_SequenceOfGeneralExpression* self_) { delete self_; }

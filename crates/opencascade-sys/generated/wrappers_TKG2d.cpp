@@ -12,23 +12,28 @@
 #include <Bisector_BisecPC.hxx>
 #include <Geom2dAdaptor.hxx>
 #include <Geom2dAdaptor_Curve.hxx>
-#include <Geom2dEvaluator.hxx>
-#include <Geom2dEvaluator_Curve.hxx>
-#include <Geom2dEvaluator_OffsetCurve.hxx>
-#include <Geom2dLProp_CLProps2d.hxx>
-#include <Geom2dLProp_CurAndInf2d.hxx>
-#include <Geom2dLProp_Curve2dTool.hxx>
-#include <Geom2dLProp_FuncCurExt.hxx>
-#include <Geom2dLProp_FuncCurNul.hxx>
-#include <Geom2dLProp_NumericCurInf2d.hxx>
+#include <Geom2dEval_AHTBezierCurve.hxx>
+#include <Geom2dEval_ArchimedeanSpiralCurve.hxx>
+#include <Geom2dEval_CircleInvoluteCurve.hxx>
+#include <Geom2dEval_LogarithmicSpiralCurve.hxx>
+#include <Geom2dEval_SineWaveCurve.hxx>
+#include <Geom2dEval_TBezierCurve.hxx>
+#include <Geom2dGridEval_BSplineCurve.hxx>
+#include <Geom2dGridEval_BezierCurve.hxx>
+#include <Geom2dGridEval_Circle.hxx>
+#include <Geom2dGridEval_Curve.hxx>
+#include <Geom2dGridEval_Ellipse.hxx>
+#include <Geom2dGridEval_Hyperbola.hxx>
+#include <Geom2dGridEval_Line.hxx>
+#include <Geom2dGridEval_OffsetCurve.hxx>
+#include <Geom2dGridEval_OtherCurve.hxx>
+#include <Geom2dGridEval_Parabola.hxx>
+#include <Geom2dHash_CurveHasher.hxx>
 #include <Geom2d_AxisPlacement.hxx>
-#include <Geom2d_BSplineCurve.hxx>
 #include <Geom2d_BezierCurve.hxx>
-#include <Geom2d_BoundedCurve.hxx>
 #include <Geom2d_CartesianPoint.hxx>
 #include <Geom2d_Circle.hxx>
 #include <Geom2d_Conic.hxx>
-#include <Geom2d_Curve.hxx>
 #include <Geom2d_Direction.hxx>
 #include <Geom2d_Ellipse.hxx>
 #include <Geom2d_Geometry.hxx>
@@ -46,32 +51,11 @@
 #include <GeomAbs_BSplKnotDistribution.hxx>
 #include <GeomAbs_CurveType.hxx>
 #include <GeomAbs_Shape.hxx>
-#include <LProp_AnalyticCurInf.hxx>
-#include <LProp_BadContinuity.hxx>
-#include <LProp_CIType.hxx>
-#include <LProp_CurAndInf.hxx>
-#include <LProp_NotDefined.hxx>
 #include <ProjLib_CompProjectedCurve.hxx>
 #include <ProjLib_ProjectedCurve.hxx>
-#include <Standard_DomainError.hxx>
-#include <Standard_Failure.hxx>
 #include <Standard_Handle.hxx>
 #include <Standard_OStream.hxx>
-#include <Standard_SStream.hxx>
 #include <Standard_Type.hxx>
-#include <TColGeom2d_Array1OfBSplineCurve.hxx>
-#include <TColGeom2d_Array1OfBezierCurve.hxx>
-#include <TColGeom2d_Array1OfCurve.hxx>
-#include <TColGeom2d_HArray1OfBSplineCurve.hxx>
-#include <TColGeom2d_HArray1OfBezierCurve.hxx>
-#include <TColGeom2d_HArray1OfCurve.hxx>
-#include <TColGeom2d_HSequenceOfBoundedCurve.hxx>
-#include <TColGeom2d_HSequenceOfCurve.hxx>
-#include <TColGeom2d_SequenceOfBoundedCurve.hxx>
-#include <TColGeom2d_SequenceOfCurve.hxx>
-#include <TColStd_Array1OfInteger.hxx>
-#include <TColStd_Array1OfReal.hxx>
-#include <TColgp_Array1OfPnt2d.hxx>
 #include <gp_Ax22d.hxx>
 #include <gp_Ax2d.hxx>
 #include <gp_Circ2d.hxx>
@@ -82,266 +66,229 @@
 #include <gp_Parab2d.hxx>
 #include <gp_Trsf2d.hxx>
 #include <gp_TrsfForm.hxx>
-#include <gp_Vec2d.hxx>
 
 // Handle type aliases
-typedef opencascade::handle<Adaptor2d_Curve2d> HandleAdaptor2dCurve2d;
-typedef opencascade::handle<Adaptor2d_Line2d> HandleAdaptor2dLine2d;
-typedef opencascade::handle<Adaptor2d_OffsetCurve> HandleAdaptor2dOffsetCurve;
-typedef opencascade::handle<BRepAdaptor_Curve2d> HandleBRepAdaptorCurve2d;
-typedef opencascade::handle<Bisector_BisecAna> HandleBisectorBisecAna;
-typedef opencascade::handle<Bisector_BisecCC> HandleBisectorBisecCC;
-typedef opencascade::handle<Bisector_BisecPC> HandleBisectorBisecPC;
-typedef opencascade::handle<Geom2dAdaptor_Curve> HandleGeom2dAdaptorCurve;
-typedef opencascade::handle<Geom2dEvaluator_Curve> HandleGeom2dEvaluatorCurve;
-typedef opencascade::handle<Geom2dEvaluator_OffsetCurve> HandleGeom2dEvaluatorOffsetCurve;
-typedef opencascade::handle<Geom2d_AxisPlacement> HandleGeom2dAxisPlacement;
-typedef opencascade::handle<Geom2d_BSplineCurve> HandleGeom2dBSplineCurve;
-typedef opencascade::handle<Geom2d_BezierCurve> HandleGeom2dBezierCurve;
-typedef opencascade::handle<Geom2d_BoundedCurve> HandleGeom2dBoundedCurve;
-typedef opencascade::handle<Geom2d_CartesianPoint> HandleGeom2dCartesianPoint;
-typedef opencascade::handle<Geom2d_Circle> HandleGeom2dCircle;
-typedef opencascade::handle<Geom2d_Conic> HandleGeom2dConic;
-typedef opencascade::handle<Geom2d_Curve> HandleGeom2dCurve;
-typedef opencascade::handle<Geom2d_Direction> HandleGeom2dDirection;
-typedef opencascade::handle<Geom2d_Ellipse> HandleGeom2dEllipse;
-typedef opencascade::handle<Geom2d_Geometry> HandleGeom2dGeometry;
-typedef opencascade::handle<Geom2d_Hyperbola> HandleGeom2dHyperbola;
-typedef opencascade::handle<Geom2d_Line> HandleGeom2dLine;
-typedef opencascade::handle<Geom2d_OffsetCurve> HandleGeom2dOffsetCurve;
-typedef opencascade::handle<Geom2d_Parabola> HandleGeom2dParabola;
-typedef opencascade::handle<Geom2d_Point> HandleGeom2dPoint;
-typedef opencascade::handle<Geom2d_Transformation> HandleGeom2dTransformation;
-typedef opencascade::handle<Geom2d_TrimmedCurve> HandleGeom2dTrimmedCurve;
-typedef opencascade::handle<Geom2d_UndefinedDerivative> HandleGeom2dUndefinedDerivative;
-typedef opencascade::handle<Geom2d_UndefinedValue> HandleGeom2dUndefinedValue;
-typedef opencascade::handle<Geom2d_Vector> HandleGeom2dVector;
-typedef opencascade::handle<Geom2d_VectorWithMagnitude> HandleGeom2dVectorWithMagnitude;
-typedef opencascade::handle<LProp_BadContinuity> HandleLPropBadContinuity;
-typedef opencascade::handle<LProp_NotDefined> HandleLPropNotDefined;
-typedef opencascade::handle<ProjLib_CompProjectedCurve> HandleProjLibCompProjectedCurve;
-typedef opencascade::handle<ProjLib_ProjectedCurve> HandleProjLibProjectedCurve;
-typedef opencascade::handle<Standard_DomainError> HandleStandardDomainError;
-typedef opencascade::handle<Standard_Failure> HandleStandardFailure;
-typedef opencascade::handle<Standard_Transient> HandleStandardTransient;
-typedef opencascade::handle<Standard_Type> HandleStandardType;
-typedef opencascade::handle<TColGeom2d_HArray1OfBSplineCurve> HandleTColGeom2dHArray1OfBSplineCurve;
-typedef opencascade::handle<TColGeom2d_HArray1OfBezierCurve> HandleTColGeom2dHArray1OfBezierCurve;
-typedef opencascade::handle<TColGeom2d_HArray1OfCurve> HandleTColGeom2dHArray1OfCurve;
-typedef opencascade::handle<TColGeom2d_HSequenceOfBoundedCurve> HandleTColGeom2dHSequenceOfBoundedCurve;
-typedef opencascade::handle<TColGeom2d_HSequenceOfCurve> HandleTColGeom2dHSequenceOfCurve;
+typedef opencascade::handle<Adaptor2d_Curve2d> Handle_Adaptor2d_Curve2d;
+typedef opencascade::handle<Adaptor2d_Line2d> Handle_Adaptor2d_Line2d;
+typedef opencascade::handle<Adaptor2d_OffsetCurve> Handle_Adaptor2d_OffsetCurve;
+typedef opencascade::handle<BRepAdaptor_Curve2d> Handle_BRepAdaptor_Curve2d;
+typedef opencascade::handle<Bisector_BisecAna> Handle_Bisector_BisecAna;
+typedef opencascade::handle<Bisector_BisecCC> Handle_Bisector_BisecCC;
+typedef opencascade::handle<Bisector_BisecPC> Handle_Bisector_BisecPC;
+typedef opencascade::handle<Geom2dAdaptor_Curve> Handle_Geom2dAdaptor_Curve;
+typedef opencascade::handle<Geom2dEval_AHTBezierCurve> Handle_Geom2dEval_AHTBezierCurve;
+typedef opencascade::handle<Geom2dEval_ArchimedeanSpiralCurve> Handle_Geom2dEval_ArchimedeanSpiralCurve;
+typedef opencascade::handle<Geom2dEval_CircleInvoluteCurve> Handle_Geom2dEval_CircleInvoluteCurve;
+typedef opencascade::handle<Geom2dEval_LogarithmicSpiralCurve> Handle_Geom2dEval_LogarithmicSpiralCurve;
+typedef opencascade::handle<Geom2dEval_RepCurveDesc::Base> Handle_Geom2dEval_RepCurveDesc_Base;
+typedef opencascade::handle<Geom2dEval_SineWaveCurve> Handle_Geom2dEval_SineWaveCurve;
+typedef opencascade::handle<Geom2dEval_TBezierCurve> Handle_Geom2dEval_TBezierCurve;
+typedef opencascade::handle<Geom2d_AxisPlacement> Handle_Geom2d_AxisPlacement;
+typedef opencascade::handle<Geom2d_BSplineCurve> Handle_Geom2d_BSplineCurve;
+typedef opencascade::handle<Geom2d_BezierCurve> Handle_Geom2d_BezierCurve;
+typedef opencascade::handle<Geom2d_BoundedCurve> Handle_Geom2d_BoundedCurve;
+typedef opencascade::handle<Geom2d_CartesianPoint> Handle_Geom2d_CartesianPoint;
+typedef opencascade::handle<Geom2d_Circle> Handle_Geom2d_Circle;
+typedef opencascade::handle<Geom2d_Conic> Handle_Geom2d_Conic;
+typedef opencascade::handle<Geom2d_Curve> Handle_Geom2d_Curve;
+typedef opencascade::handle<Geom2d_Direction> Handle_Geom2d_Direction;
+typedef opencascade::handle<Geom2d_Ellipse> Handle_Geom2d_Ellipse;
+typedef opencascade::handle<Geom2d_Geometry> Handle_Geom2d_Geometry;
+typedef opencascade::handle<Geom2d_Hyperbola> Handle_Geom2d_Hyperbola;
+typedef opencascade::handle<Geom2d_Line> Handle_Geom2d_Line;
+typedef opencascade::handle<Geom2d_OffsetCurve> Handle_Geom2d_OffsetCurve;
+typedef opencascade::handle<Geom2d_Parabola> Handle_Geom2d_Parabola;
+typedef opencascade::handle<Geom2d_Point> Handle_Geom2d_Point;
+typedef opencascade::handle<Geom2d_Transformation> Handle_Geom2d_Transformation;
+typedef opencascade::handle<Geom2d_TrimmedCurve> Handle_Geom2d_TrimmedCurve;
+typedef opencascade::handle<Geom2d_Vector> Handle_Geom2d_Vector;
+typedef opencascade::handle<Geom2d_VectorWithMagnitude> Handle_Geom2d_VectorWithMagnitude;
+typedef opencascade::handle<ProjLib_CompProjectedCurve> Handle_ProjLib_CompProjectedCurve;
+typedef opencascade::handle<ProjLib_ProjectedCurve> Handle_ProjLib_ProjectedCurve;
+typedef opencascade::handle<Standard_Transient> Handle_Standard_Transient;
+typedef opencascade::handle<Standard_Type> Handle_Standard_Type;
 
 // Handle type destructors, clone, and is_null functions
-extern "C" void HandleAdaptor2dCurve2d_destructor(HandleAdaptor2dCurve2d* self_) { delete self_; }
-extern "C" OcctResult<HandleAdaptor2dCurve2d*> HandleAdaptor2dCurve2d_clone(const HandleAdaptor2dCurve2d* self_) {
-    try { return {new HandleAdaptor2dCurve2d(*self_), nullptr}; }
+extern "C" void Handle_Adaptor2d_Curve2d_destructor(Handle_Adaptor2d_Curve2d* self_) { delete self_; }
+extern "C" OcctResult<Handle_Adaptor2d_Curve2d*> Handle_Adaptor2d_Curve2d_clone(const Handle_Adaptor2d_Curve2d* self_) {
+    try { return {new Handle_Adaptor2d_Curve2d(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleAdaptor2dCurve2d_is_null(const HandleAdaptor2dCurve2d* self_) { return self_->IsNull(); }
-extern "C" void HandleAdaptor2dLine2d_destructor(HandleAdaptor2dLine2d* self_) { delete self_; }
-extern "C" OcctResult<HandleAdaptor2dLine2d*> HandleAdaptor2dLine2d_clone(const HandleAdaptor2dLine2d* self_) {
-    try { return {new HandleAdaptor2dLine2d(*self_), nullptr}; }
+extern "C" bool Handle_Adaptor2d_Curve2d_is_null(const Handle_Adaptor2d_Curve2d* self_) { return self_->IsNull(); }
+extern "C" void Handle_Adaptor2d_Line2d_destructor(Handle_Adaptor2d_Line2d* self_) { delete self_; }
+extern "C" OcctResult<Handle_Adaptor2d_Line2d*> Handle_Adaptor2d_Line2d_clone(const Handle_Adaptor2d_Line2d* self_) {
+    try { return {new Handle_Adaptor2d_Line2d(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleAdaptor2dLine2d_is_null(const HandleAdaptor2dLine2d* self_) { return self_->IsNull(); }
-extern "C" void HandleAdaptor2dOffsetCurve_destructor(HandleAdaptor2dOffsetCurve* self_) { delete self_; }
-extern "C" OcctResult<HandleAdaptor2dOffsetCurve*> HandleAdaptor2dOffsetCurve_clone(const HandleAdaptor2dOffsetCurve* self_) {
-    try { return {new HandleAdaptor2dOffsetCurve(*self_), nullptr}; }
+extern "C" bool Handle_Adaptor2d_Line2d_is_null(const Handle_Adaptor2d_Line2d* self_) { return self_->IsNull(); }
+extern "C" void Handle_Adaptor2d_OffsetCurve_destructor(Handle_Adaptor2d_OffsetCurve* self_) { delete self_; }
+extern "C" OcctResult<Handle_Adaptor2d_OffsetCurve*> Handle_Adaptor2d_OffsetCurve_clone(const Handle_Adaptor2d_OffsetCurve* self_) {
+    try { return {new Handle_Adaptor2d_OffsetCurve(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleAdaptor2dOffsetCurve_is_null(const HandleAdaptor2dOffsetCurve* self_) { return self_->IsNull(); }
-extern "C" void HandleGeom2dAdaptorCurve_destructor(HandleGeom2dAdaptorCurve* self_) { delete self_; }
-extern "C" OcctResult<HandleGeom2dAdaptorCurve*> HandleGeom2dAdaptorCurve_clone(const HandleGeom2dAdaptorCurve* self_) {
-    try { return {new HandleGeom2dAdaptorCurve(*self_), nullptr}; }
+extern "C" bool Handle_Adaptor2d_OffsetCurve_is_null(const Handle_Adaptor2d_OffsetCurve* self_) { return self_->IsNull(); }
+extern "C" void Handle_Geom2dAdaptor_Curve_destructor(Handle_Geom2dAdaptor_Curve* self_) { delete self_; }
+extern "C" OcctResult<Handle_Geom2dAdaptor_Curve*> Handle_Geom2dAdaptor_Curve_clone(const Handle_Geom2dAdaptor_Curve* self_) {
+    try { return {new Handle_Geom2dAdaptor_Curve(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleGeom2dAdaptorCurve_is_null(const HandleGeom2dAdaptorCurve* self_) { return self_->IsNull(); }
-extern "C" void HandleGeom2dEvaluatorCurve_destructor(HandleGeom2dEvaluatorCurve* self_) { delete self_; }
-extern "C" OcctResult<HandleGeom2dEvaluatorCurve*> HandleGeom2dEvaluatorCurve_clone(const HandleGeom2dEvaluatorCurve* self_) {
-    try { return {new HandleGeom2dEvaluatorCurve(*self_), nullptr}; }
+extern "C" bool Handle_Geom2dAdaptor_Curve_is_null(const Handle_Geom2dAdaptor_Curve* self_) { return self_->IsNull(); }
+extern "C" void Handle_Geom2dEval_AHTBezierCurve_destructor(Handle_Geom2dEval_AHTBezierCurve* self_) { delete self_; }
+extern "C" OcctResult<Handle_Geom2dEval_AHTBezierCurve*> Handle_Geom2dEval_AHTBezierCurve_clone(const Handle_Geom2dEval_AHTBezierCurve* self_) {
+    try { return {new Handle_Geom2dEval_AHTBezierCurve(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleGeom2dEvaluatorCurve_is_null(const HandleGeom2dEvaluatorCurve* self_) { return self_->IsNull(); }
-extern "C" void HandleGeom2dEvaluatorOffsetCurve_destructor(HandleGeom2dEvaluatorOffsetCurve* self_) { delete self_; }
-extern "C" OcctResult<HandleGeom2dEvaluatorOffsetCurve*> HandleGeom2dEvaluatorOffsetCurve_clone(const HandleGeom2dEvaluatorOffsetCurve* self_) {
-    try { return {new HandleGeom2dEvaluatorOffsetCurve(*self_), nullptr}; }
+extern "C" bool Handle_Geom2dEval_AHTBezierCurve_is_null(const Handle_Geom2dEval_AHTBezierCurve* self_) { return self_->IsNull(); }
+extern "C" void Handle_Geom2dEval_ArchimedeanSpiralCurve_destructor(Handle_Geom2dEval_ArchimedeanSpiralCurve* self_) { delete self_; }
+extern "C" OcctResult<Handle_Geom2dEval_ArchimedeanSpiralCurve*> Handle_Geom2dEval_ArchimedeanSpiralCurve_clone(const Handle_Geom2dEval_ArchimedeanSpiralCurve* self_) {
+    try { return {new Handle_Geom2dEval_ArchimedeanSpiralCurve(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleGeom2dEvaluatorOffsetCurve_is_null(const HandleGeom2dEvaluatorOffsetCurve* self_) { return self_->IsNull(); }
-extern "C" void HandleGeom2dAxisPlacement_destructor(HandleGeom2dAxisPlacement* self_) { delete self_; }
-extern "C" OcctResult<HandleGeom2dAxisPlacement*> HandleGeom2dAxisPlacement_clone(const HandleGeom2dAxisPlacement* self_) {
-    try { return {new HandleGeom2dAxisPlacement(*self_), nullptr}; }
+extern "C" bool Handle_Geom2dEval_ArchimedeanSpiralCurve_is_null(const Handle_Geom2dEval_ArchimedeanSpiralCurve* self_) { return self_->IsNull(); }
+extern "C" void Handle_Geom2dEval_CircleInvoluteCurve_destructor(Handle_Geom2dEval_CircleInvoluteCurve* self_) { delete self_; }
+extern "C" OcctResult<Handle_Geom2dEval_CircleInvoluteCurve*> Handle_Geom2dEval_CircleInvoluteCurve_clone(const Handle_Geom2dEval_CircleInvoluteCurve* self_) {
+    try { return {new Handle_Geom2dEval_CircleInvoluteCurve(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleGeom2dAxisPlacement_is_null(const HandleGeom2dAxisPlacement* self_) { return self_->IsNull(); }
-extern "C" void HandleGeom2dBSplineCurve_destructor(HandleGeom2dBSplineCurve* self_) { delete self_; }
-extern "C" OcctResult<HandleGeom2dBSplineCurve*> HandleGeom2dBSplineCurve_clone(const HandleGeom2dBSplineCurve* self_) {
-    try { return {new HandleGeom2dBSplineCurve(*self_), nullptr}; }
+extern "C" bool Handle_Geom2dEval_CircleInvoluteCurve_is_null(const Handle_Geom2dEval_CircleInvoluteCurve* self_) { return self_->IsNull(); }
+extern "C" void Handle_Geom2dEval_LogarithmicSpiralCurve_destructor(Handle_Geom2dEval_LogarithmicSpiralCurve* self_) { delete self_; }
+extern "C" OcctResult<Handle_Geom2dEval_LogarithmicSpiralCurve*> Handle_Geom2dEval_LogarithmicSpiralCurve_clone(const Handle_Geom2dEval_LogarithmicSpiralCurve* self_) {
+    try { return {new Handle_Geom2dEval_LogarithmicSpiralCurve(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleGeom2dBSplineCurve_is_null(const HandleGeom2dBSplineCurve* self_) { return self_->IsNull(); }
-extern "C" void HandleGeom2dBezierCurve_destructor(HandleGeom2dBezierCurve* self_) { delete self_; }
-extern "C" OcctResult<HandleGeom2dBezierCurve*> HandleGeom2dBezierCurve_clone(const HandleGeom2dBezierCurve* self_) {
-    try { return {new HandleGeom2dBezierCurve(*self_), nullptr}; }
+extern "C" bool Handle_Geom2dEval_LogarithmicSpiralCurve_is_null(const Handle_Geom2dEval_LogarithmicSpiralCurve* self_) { return self_->IsNull(); }
+extern "C" void Handle_Geom2dEval_SineWaveCurve_destructor(Handle_Geom2dEval_SineWaveCurve* self_) { delete self_; }
+extern "C" OcctResult<Handle_Geom2dEval_SineWaveCurve*> Handle_Geom2dEval_SineWaveCurve_clone(const Handle_Geom2dEval_SineWaveCurve* self_) {
+    try { return {new Handle_Geom2dEval_SineWaveCurve(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleGeom2dBezierCurve_is_null(const HandleGeom2dBezierCurve* self_) { return self_->IsNull(); }
-extern "C" void HandleGeom2dBoundedCurve_destructor(HandleGeom2dBoundedCurve* self_) { delete self_; }
-extern "C" OcctResult<HandleGeom2dBoundedCurve*> HandleGeom2dBoundedCurve_clone(const HandleGeom2dBoundedCurve* self_) {
-    try { return {new HandleGeom2dBoundedCurve(*self_), nullptr}; }
+extern "C" bool Handle_Geom2dEval_SineWaveCurve_is_null(const Handle_Geom2dEval_SineWaveCurve* self_) { return self_->IsNull(); }
+extern "C" void Handle_Geom2dEval_TBezierCurve_destructor(Handle_Geom2dEval_TBezierCurve* self_) { delete self_; }
+extern "C" OcctResult<Handle_Geom2dEval_TBezierCurve*> Handle_Geom2dEval_TBezierCurve_clone(const Handle_Geom2dEval_TBezierCurve* self_) {
+    try { return {new Handle_Geom2dEval_TBezierCurve(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleGeom2dBoundedCurve_is_null(const HandleGeom2dBoundedCurve* self_) { return self_->IsNull(); }
-extern "C" void HandleGeom2dCartesianPoint_destructor(HandleGeom2dCartesianPoint* self_) { delete self_; }
-extern "C" OcctResult<HandleGeom2dCartesianPoint*> HandleGeom2dCartesianPoint_clone(const HandleGeom2dCartesianPoint* self_) {
-    try { return {new HandleGeom2dCartesianPoint(*self_), nullptr}; }
+extern "C" bool Handle_Geom2dEval_TBezierCurve_is_null(const Handle_Geom2dEval_TBezierCurve* self_) { return self_->IsNull(); }
+extern "C" void Handle_Geom2d_AxisPlacement_destructor(Handle_Geom2d_AxisPlacement* self_) { delete self_; }
+extern "C" OcctResult<Handle_Geom2d_AxisPlacement*> Handle_Geom2d_AxisPlacement_clone(const Handle_Geom2d_AxisPlacement* self_) {
+    try { return {new Handle_Geom2d_AxisPlacement(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleGeom2dCartesianPoint_is_null(const HandleGeom2dCartesianPoint* self_) { return self_->IsNull(); }
-extern "C" void HandleGeom2dCircle_destructor(HandleGeom2dCircle* self_) { delete self_; }
-extern "C" OcctResult<HandleGeom2dCircle*> HandleGeom2dCircle_clone(const HandleGeom2dCircle* self_) {
-    try { return {new HandleGeom2dCircle(*self_), nullptr}; }
+extern "C" bool Handle_Geom2d_AxisPlacement_is_null(const Handle_Geom2d_AxisPlacement* self_) { return self_->IsNull(); }
+extern "C" void Handle_Geom2d_BSplineCurve_destructor(Handle_Geom2d_BSplineCurve* self_) { delete self_; }
+extern "C" OcctResult<Handle_Geom2d_BSplineCurve*> Handle_Geom2d_BSplineCurve_clone(const Handle_Geom2d_BSplineCurve* self_) {
+    try { return {new Handle_Geom2d_BSplineCurve(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleGeom2dCircle_is_null(const HandleGeom2dCircle* self_) { return self_->IsNull(); }
-extern "C" void HandleGeom2dConic_destructor(HandleGeom2dConic* self_) { delete self_; }
-extern "C" OcctResult<HandleGeom2dConic*> HandleGeom2dConic_clone(const HandleGeom2dConic* self_) {
-    try { return {new HandleGeom2dConic(*self_), nullptr}; }
+extern "C" bool Handle_Geom2d_BSplineCurve_is_null(const Handle_Geom2d_BSplineCurve* self_) { return self_->IsNull(); }
+extern "C" void Handle_Geom2d_BezierCurve_destructor(Handle_Geom2d_BezierCurve* self_) { delete self_; }
+extern "C" OcctResult<Handle_Geom2d_BezierCurve*> Handle_Geom2d_BezierCurve_clone(const Handle_Geom2d_BezierCurve* self_) {
+    try { return {new Handle_Geom2d_BezierCurve(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleGeom2dConic_is_null(const HandleGeom2dConic* self_) { return self_->IsNull(); }
-extern "C" void HandleGeom2dCurve_destructor(HandleGeom2dCurve* self_) { delete self_; }
-extern "C" OcctResult<HandleGeom2dCurve*> HandleGeom2dCurve_clone(const HandleGeom2dCurve* self_) {
-    try { return {new HandleGeom2dCurve(*self_), nullptr}; }
+extern "C" bool Handle_Geom2d_BezierCurve_is_null(const Handle_Geom2d_BezierCurve* self_) { return self_->IsNull(); }
+extern "C" void Handle_Geom2d_BoundedCurve_destructor(Handle_Geom2d_BoundedCurve* self_) { delete self_; }
+extern "C" OcctResult<Handle_Geom2d_BoundedCurve*> Handle_Geom2d_BoundedCurve_clone(const Handle_Geom2d_BoundedCurve* self_) {
+    try { return {new Handle_Geom2d_BoundedCurve(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleGeom2dCurve_is_null(const HandleGeom2dCurve* self_) { return self_->IsNull(); }
-extern "C" void HandleGeom2dDirection_destructor(HandleGeom2dDirection* self_) { delete self_; }
-extern "C" OcctResult<HandleGeom2dDirection*> HandleGeom2dDirection_clone(const HandleGeom2dDirection* self_) {
-    try { return {new HandleGeom2dDirection(*self_), nullptr}; }
+extern "C" bool Handle_Geom2d_BoundedCurve_is_null(const Handle_Geom2d_BoundedCurve* self_) { return self_->IsNull(); }
+extern "C" void Handle_Geom2d_CartesianPoint_destructor(Handle_Geom2d_CartesianPoint* self_) { delete self_; }
+extern "C" OcctResult<Handle_Geom2d_CartesianPoint*> Handle_Geom2d_CartesianPoint_clone(const Handle_Geom2d_CartesianPoint* self_) {
+    try { return {new Handle_Geom2d_CartesianPoint(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleGeom2dDirection_is_null(const HandleGeom2dDirection* self_) { return self_->IsNull(); }
-extern "C" void HandleGeom2dEllipse_destructor(HandleGeom2dEllipse* self_) { delete self_; }
-extern "C" OcctResult<HandleGeom2dEllipse*> HandleGeom2dEllipse_clone(const HandleGeom2dEllipse* self_) {
-    try { return {new HandleGeom2dEllipse(*self_), nullptr}; }
+extern "C" bool Handle_Geom2d_CartesianPoint_is_null(const Handle_Geom2d_CartesianPoint* self_) { return self_->IsNull(); }
+extern "C" void Handle_Geom2d_Circle_destructor(Handle_Geom2d_Circle* self_) { delete self_; }
+extern "C" OcctResult<Handle_Geom2d_Circle*> Handle_Geom2d_Circle_clone(const Handle_Geom2d_Circle* self_) {
+    try { return {new Handle_Geom2d_Circle(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleGeom2dEllipse_is_null(const HandleGeom2dEllipse* self_) { return self_->IsNull(); }
-extern "C" void HandleGeom2dGeometry_destructor(HandleGeom2dGeometry* self_) { delete self_; }
-extern "C" OcctResult<HandleGeom2dGeometry*> HandleGeom2dGeometry_clone(const HandleGeom2dGeometry* self_) {
-    try { return {new HandleGeom2dGeometry(*self_), nullptr}; }
+extern "C" bool Handle_Geom2d_Circle_is_null(const Handle_Geom2d_Circle* self_) { return self_->IsNull(); }
+extern "C" void Handle_Geom2d_Conic_destructor(Handle_Geom2d_Conic* self_) { delete self_; }
+extern "C" OcctResult<Handle_Geom2d_Conic*> Handle_Geom2d_Conic_clone(const Handle_Geom2d_Conic* self_) {
+    try { return {new Handle_Geom2d_Conic(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleGeom2dGeometry_is_null(const HandleGeom2dGeometry* self_) { return self_->IsNull(); }
-extern "C" void HandleGeom2dHyperbola_destructor(HandleGeom2dHyperbola* self_) { delete self_; }
-extern "C" OcctResult<HandleGeom2dHyperbola*> HandleGeom2dHyperbola_clone(const HandleGeom2dHyperbola* self_) {
-    try { return {new HandleGeom2dHyperbola(*self_), nullptr}; }
+extern "C" bool Handle_Geom2d_Conic_is_null(const Handle_Geom2d_Conic* self_) { return self_->IsNull(); }
+extern "C" void Handle_Geom2d_Curve_destructor(Handle_Geom2d_Curve* self_) { delete self_; }
+extern "C" OcctResult<Handle_Geom2d_Curve*> Handle_Geom2d_Curve_clone(const Handle_Geom2d_Curve* self_) {
+    try { return {new Handle_Geom2d_Curve(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleGeom2dHyperbola_is_null(const HandleGeom2dHyperbola* self_) { return self_->IsNull(); }
-extern "C" void HandleGeom2dLine_destructor(HandleGeom2dLine* self_) { delete self_; }
-extern "C" OcctResult<HandleGeom2dLine*> HandleGeom2dLine_clone(const HandleGeom2dLine* self_) {
-    try { return {new HandleGeom2dLine(*self_), nullptr}; }
+extern "C" bool Handle_Geom2d_Curve_is_null(const Handle_Geom2d_Curve* self_) { return self_->IsNull(); }
+extern "C" void Handle_Geom2d_Direction_destructor(Handle_Geom2d_Direction* self_) { delete self_; }
+extern "C" OcctResult<Handle_Geom2d_Direction*> Handle_Geom2d_Direction_clone(const Handle_Geom2d_Direction* self_) {
+    try { return {new Handle_Geom2d_Direction(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleGeom2dLine_is_null(const HandleGeom2dLine* self_) { return self_->IsNull(); }
-extern "C" void HandleGeom2dOffsetCurve_destructor(HandleGeom2dOffsetCurve* self_) { delete self_; }
-extern "C" OcctResult<HandleGeom2dOffsetCurve*> HandleGeom2dOffsetCurve_clone(const HandleGeom2dOffsetCurve* self_) {
-    try { return {new HandleGeom2dOffsetCurve(*self_), nullptr}; }
+extern "C" bool Handle_Geom2d_Direction_is_null(const Handle_Geom2d_Direction* self_) { return self_->IsNull(); }
+extern "C" void Handle_Geom2d_Ellipse_destructor(Handle_Geom2d_Ellipse* self_) { delete self_; }
+extern "C" OcctResult<Handle_Geom2d_Ellipse*> Handle_Geom2d_Ellipse_clone(const Handle_Geom2d_Ellipse* self_) {
+    try { return {new Handle_Geom2d_Ellipse(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleGeom2dOffsetCurve_is_null(const HandleGeom2dOffsetCurve* self_) { return self_->IsNull(); }
-extern "C" void HandleGeom2dParabola_destructor(HandleGeom2dParabola* self_) { delete self_; }
-extern "C" OcctResult<HandleGeom2dParabola*> HandleGeom2dParabola_clone(const HandleGeom2dParabola* self_) {
-    try { return {new HandleGeom2dParabola(*self_), nullptr}; }
+extern "C" bool Handle_Geom2d_Ellipse_is_null(const Handle_Geom2d_Ellipse* self_) { return self_->IsNull(); }
+extern "C" void Handle_Geom2d_Geometry_destructor(Handle_Geom2d_Geometry* self_) { delete self_; }
+extern "C" OcctResult<Handle_Geom2d_Geometry*> Handle_Geom2d_Geometry_clone(const Handle_Geom2d_Geometry* self_) {
+    try { return {new Handle_Geom2d_Geometry(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleGeom2dParabola_is_null(const HandleGeom2dParabola* self_) { return self_->IsNull(); }
-extern "C" void HandleGeom2dPoint_destructor(HandleGeom2dPoint* self_) { delete self_; }
-extern "C" OcctResult<HandleGeom2dPoint*> HandleGeom2dPoint_clone(const HandleGeom2dPoint* self_) {
-    try { return {new HandleGeom2dPoint(*self_), nullptr}; }
+extern "C" bool Handle_Geom2d_Geometry_is_null(const Handle_Geom2d_Geometry* self_) { return self_->IsNull(); }
+extern "C" void Handle_Geom2d_Hyperbola_destructor(Handle_Geom2d_Hyperbola* self_) { delete self_; }
+extern "C" OcctResult<Handle_Geom2d_Hyperbola*> Handle_Geom2d_Hyperbola_clone(const Handle_Geom2d_Hyperbola* self_) {
+    try { return {new Handle_Geom2d_Hyperbola(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleGeom2dPoint_is_null(const HandleGeom2dPoint* self_) { return self_->IsNull(); }
-extern "C" void HandleGeom2dTransformation_destructor(HandleGeom2dTransformation* self_) { delete self_; }
-extern "C" OcctResult<HandleGeom2dTransformation*> HandleGeom2dTransformation_clone(const HandleGeom2dTransformation* self_) {
-    try { return {new HandleGeom2dTransformation(*self_), nullptr}; }
+extern "C" bool Handle_Geom2d_Hyperbola_is_null(const Handle_Geom2d_Hyperbola* self_) { return self_->IsNull(); }
+extern "C" void Handle_Geom2d_Line_destructor(Handle_Geom2d_Line* self_) { delete self_; }
+extern "C" OcctResult<Handle_Geom2d_Line*> Handle_Geom2d_Line_clone(const Handle_Geom2d_Line* self_) {
+    try { return {new Handle_Geom2d_Line(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleGeom2dTransformation_is_null(const HandleGeom2dTransformation* self_) { return self_->IsNull(); }
-extern "C" void HandleGeom2dTrimmedCurve_destructor(HandleGeom2dTrimmedCurve* self_) { delete self_; }
-extern "C" OcctResult<HandleGeom2dTrimmedCurve*> HandleGeom2dTrimmedCurve_clone(const HandleGeom2dTrimmedCurve* self_) {
-    try { return {new HandleGeom2dTrimmedCurve(*self_), nullptr}; }
+extern "C" bool Handle_Geom2d_Line_is_null(const Handle_Geom2d_Line* self_) { return self_->IsNull(); }
+extern "C" void Handle_Geom2d_OffsetCurve_destructor(Handle_Geom2d_OffsetCurve* self_) { delete self_; }
+extern "C" OcctResult<Handle_Geom2d_OffsetCurve*> Handle_Geom2d_OffsetCurve_clone(const Handle_Geom2d_OffsetCurve* self_) {
+    try { return {new Handle_Geom2d_OffsetCurve(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleGeom2dTrimmedCurve_is_null(const HandleGeom2dTrimmedCurve* self_) { return self_->IsNull(); }
-extern "C" void HandleGeom2dUndefinedDerivative_destructor(HandleGeom2dUndefinedDerivative* self_) { delete self_; }
-extern "C" OcctResult<HandleGeom2dUndefinedDerivative*> HandleGeom2dUndefinedDerivative_clone(const HandleGeom2dUndefinedDerivative* self_) {
-    try { return {new HandleGeom2dUndefinedDerivative(*self_), nullptr}; }
+extern "C" bool Handle_Geom2d_OffsetCurve_is_null(const Handle_Geom2d_OffsetCurve* self_) { return self_->IsNull(); }
+extern "C" void Handle_Geom2d_Parabola_destructor(Handle_Geom2d_Parabola* self_) { delete self_; }
+extern "C" OcctResult<Handle_Geom2d_Parabola*> Handle_Geom2d_Parabola_clone(const Handle_Geom2d_Parabola* self_) {
+    try { return {new Handle_Geom2d_Parabola(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleGeom2dUndefinedDerivative_is_null(const HandleGeom2dUndefinedDerivative* self_) { return self_->IsNull(); }
-extern "C" void HandleGeom2dUndefinedValue_destructor(HandleGeom2dUndefinedValue* self_) { delete self_; }
-extern "C" OcctResult<HandleGeom2dUndefinedValue*> HandleGeom2dUndefinedValue_clone(const HandleGeom2dUndefinedValue* self_) {
-    try { return {new HandleGeom2dUndefinedValue(*self_), nullptr}; }
+extern "C" bool Handle_Geom2d_Parabola_is_null(const Handle_Geom2d_Parabola* self_) { return self_->IsNull(); }
+extern "C" void Handle_Geom2d_Point_destructor(Handle_Geom2d_Point* self_) { delete self_; }
+extern "C" OcctResult<Handle_Geom2d_Point*> Handle_Geom2d_Point_clone(const Handle_Geom2d_Point* self_) {
+    try { return {new Handle_Geom2d_Point(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleGeom2dUndefinedValue_is_null(const HandleGeom2dUndefinedValue* self_) { return self_->IsNull(); }
-extern "C" void HandleGeom2dVector_destructor(HandleGeom2dVector* self_) { delete self_; }
-extern "C" OcctResult<HandleGeom2dVector*> HandleGeom2dVector_clone(const HandleGeom2dVector* self_) {
-    try { return {new HandleGeom2dVector(*self_), nullptr}; }
+extern "C" bool Handle_Geom2d_Point_is_null(const Handle_Geom2d_Point* self_) { return self_->IsNull(); }
+extern "C" void Handle_Geom2d_Transformation_destructor(Handle_Geom2d_Transformation* self_) { delete self_; }
+extern "C" OcctResult<Handle_Geom2d_Transformation*> Handle_Geom2d_Transformation_clone(const Handle_Geom2d_Transformation* self_) {
+    try { return {new Handle_Geom2d_Transformation(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleGeom2dVector_is_null(const HandleGeom2dVector* self_) { return self_->IsNull(); }
-extern "C" void HandleGeom2dVectorWithMagnitude_destructor(HandleGeom2dVectorWithMagnitude* self_) { delete self_; }
-extern "C" OcctResult<HandleGeom2dVectorWithMagnitude*> HandleGeom2dVectorWithMagnitude_clone(const HandleGeom2dVectorWithMagnitude* self_) {
-    try { return {new HandleGeom2dVectorWithMagnitude(*self_), nullptr}; }
+extern "C" bool Handle_Geom2d_Transformation_is_null(const Handle_Geom2d_Transformation* self_) { return self_->IsNull(); }
+extern "C" void Handle_Geom2d_TrimmedCurve_destructor(Handle_Geom2d_TrimmedCurve* self_) { delete self_; }
+extern "C" OcctResult<Handle_Geom2d_TrimmedCurve*> Handle_Geom2d_TrimmedCurve_clone(const Handle_Geom2d_TrimmedCurve* self_) {
+    try { return {new Handle_Geom2d_TrimmedCurve(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleGeom2dVectorWithMagnitude_is_null(const HandleGeom2dVectorWithMagnitude* self_) { return self_->IsNull(); }
-extern "C" void HandleLPropBadContinuity_destructor(HandleLPropBadContinuity* self_) { delete self_; }
-extern "C" OcctResult<HandleLPropBadContinuity*> HandleLPropBadContinuity_clone(const HandleLPropBadContinuity* self_) {
-    try { return {new HandleLPropBadContinuity(*self_), nullptr}; }
+extern "C" bool Handle_Geom2d_TrimmedCurve_is_null(const Handle_Geom2d_TrimmedCurve* self_) { return self_->IsNull(); }
+extern "C" void Handle_Geom2d_Vector_destructor(Handle_Geom2d_Vector* self_) { delete self_; }
+extern "C" OcctResult<Handle_Geom2d_Vector*> Handle_Geom2d_Vector_clone(const Handle_Geom2d_Vector* self_) {
+    try { return {new Handle_Geom2d_Vector(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleLPropBadContinuity_is_null(const HandleLPropBadContinuity* self_) { return self_->IsNull(); }
-extern "C" void HandleLPropNotDefined_destructor(HandleLPropNotDefined* self_) { delete self_; }
-extern "C" OcctResult<HandleLPropNotDefined*> HandleLPropNotDefined_clone(const HandleLPropNotDefined* self_) {
-    try { return {new HandleLPropNotDefined(*self_), nullptr}; }
+extern "C" bool Handle_Geom2d_Vector_is_null(const Handle_Geom2d_Vector* self_) { return self_->IsNull(); }
+extern "C" void Handle_Geom2d_VectorWithMagnitude_destructor(Handle_Geom2d_VectorWithMagnitude* self_) { delete self_; }
+extern "C" OcctResult<Handle_Geom2d_VectorWithMagnitude*> Handle_Geom2d_VectorWithMagnitude_clone(const Handle_Geom2d_VectorWithMagnitude* self_) {
+    try { return {new Handle_Geom2d_VectorWithMagnitude(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleLPropNotDefined_is_null(const HandleLPropNotDefined* self_) { return self_->IsNull(); }
-extern "C" void HandleTColGeom2dHArray1OfBSplineCurve_destructor(HandleTColGeom2dHArray1OfBSplineCurve* self_) { delete self_; }
-extern "C" OcctResult<HandleTColGeom2dHArray1OfBSplineCurve*> HandleTColGeom2dHArray1OfBSplineCurve_clone(const HandleTColGeom2dHArray1OfBSplineCurve* self_) {
-    try { return {new HandleTColGeom2dHArray1OfBSplineCurve(*self_), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" bool HandleTColGeom2dHArray1OfBSplineCurve_is_null(const HandleTColGeom2dHArray1OfBSplineCurve* self_) { return self_->IsNull(); }
-extern "C" void HandleTColGeom2dHArray1OfBezierCurve_destructor(HandleTColGeom2dHArray1OfBezierCurve* self_) { delete self_; }
-extern "C" OcctResult<HandleTColGeom2dHArray1OfBezierCurve*> HandleTColGeom2dHArray1OfBezierCurve_clone(const HandleTColGeom2dHArray1OfBezierCurve* self_) {
-    try { return {new HandleTColGeom2dHArray1OfBezierCurve(*self_), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" bool HandleTColGeom2dHArray1OfBezierCurve_is_null(const HandleTColGeom2dHArray1OfBezierCurve* self_) { return self_->IsNull(); }
-extern "C" void HandleTColGeom2dHArray1OfCurve_destructor(HandleTColGeom2dHArray1OfCurve* self_) { delete self_; }
-extern "C" OcctResult<HandleTColGeom2dHArray1OfCurve*> HandleTColGeom2dHArray1OfCurve_clone(const HandleTColGeom2dHArray1OfCurve* self_) {
-    try { return {new HandleTColGeom2dHArray1OfCurve(*self_), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" bool HandleTColGeom2dHArray1OfCurve_is_null(const HandleTColGeom2dHArray1OfCurve* self_) { return self_->IsNull(); }
-extern "C" void HandleTColGeom2dHSequenceOfBoundedCurve_destructor(HandleTColGeom2dHSequenceOfBoundedCurve* self_) { delete self_; }
-extern "C" OcctResult<HandleTColGeom2dHSequenceOfBoundedCurve*> HandleTColGeom2dHSequenceOfBoundedCurve_clone(const HandleTColGeom2dHSequenceOfBoundedCurve* self_) {
-    try { return {new HandleTColGeom2dHSequenceOfBoundedCurve(*self_), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" bool HandleTColGeom2dHSequenceOfBoundedCurve_is_null(const HandleTColGeom2dHSequenceOfBoundedCurve* self_) { return self_->IsNull(); }
-extern "C" void HandleTColGeom2dHSequenceOfCurve_destructor(HandleTColGeom2dHSequenceOfCurve* self_) { delete self_; }
-extern "C" OcctResult<HandleTColGeom2dHSequenceOfCurve*> HandleTColGeom2dHSequenceOfCurve_clone(const HandleTColGeom2dHSequenceOfCurve* self_) {
-    try { return {new HandleTColGeom2dHSequenceOfCurve(*self_), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" bool HandleTColGeom2dHSequenceOfCurve_is_null(const HandleTColGeom2dHSequenceOfCurve* self_) { return self_->IsNull(); }
+extern "C" bool Handle_Geom2d_VectorWithMagnitude_is_null(const Handle_Geom2d_VectorWithMagnitude* self_) { return self_->IsNull(); }
 
 // ========================
 // Adaptor2d_Curve2d wrappers
@@ -395,6 +342,26 @@ extern "C" OcctResult<Handle(Geom2d_BSplineCurve)*> Adaptor2d_Curve2d_b_spline(c
     try { return {new Handle(Geom2d_BSplineCurve)(self_->BSpline()), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" OcctResult<gp_Pnt2d*> Adaptor2d_Curve2d_eval_d0(const Adaptor2d_Curve2d* self_, double theU) {
+    try { return {new gp_Pnt2d(self_->EvalD0(theU)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Geom2d_Curve::ResD1*> Adaptor2d_Curve2d_eval_d1(const Adaptor2d_Curve2d* self_, double theU) {
+    try { return {new Geom2d_Curve::ResD1(self_->EvalD1(theU)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Geom2d_Curve::ResD2*> Adaptor2d_Curve2d_eval_d2(const Adaptor2d_Curve2d* self_, double theU) {
+    try { return {new Geom2d_Curve::ResD2(self_->EvalD2(theU)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Geom2d_Curve::ResD3*> Adaptor2d_Curve2d_eval_d3(const Adaptor2d_Curve2d* self_, double theU) {
+    try { return {new Geom2d_Curve::ResD3(self_->EvalD3(theU)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<gp_Vec2d*> Adaptor2d_Curve2d_eval_dn(const Adaptor2d_Curve2d* self_, double theU, int32_t theN) {
+    try { return {new gp_Vec2d(self_->EvalDN(theU, theN)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" OcctResult<Handle(Standard_Type) const*> Adaptor2d_Curve2d_dynamic_type(const Adaptor2d_Curve2d* self_) {
     try { return {&(self_->DynamicType()), nullptr}; }
     OCCT_CATCH_RETURN
@@ -415,7 +382,7 @@ extern "C" OcctResult<int32_t> Adaptor2d_Curve2d_nb_intervals(const Adaptor2d_Cu
     try { return {self_->NbIntervals(static_cast<GeomAbs_Shape>(S)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* Adaptor2d_Curve2d_intervals(const Adaptor2d_Curve2d* self_, TColStd_Array1OfReal* T, int32_t S) {
+extern "C" const char* Adaptor2d_Curve2d_intervals(const Adaptor2d_Curve2d* self_, NCollection_Array1_double* T, int32_t S) {
     try { self_->Intervals(*T, static_cast<GeomAbs_Shape>(S)); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -485,67 +452,67 @@ extern "C" OcctResult<Handle(Standard_Type) const*> Adaptor2d_Curve2d_get_type_d
 }
 extern "C" OcctResult<const Standard_Transient*> Adaptor2d_Curve2d_as_Standard_Transient(const Adaptor2d_Curve2d* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> Adaptor2d_Curve2d_as_Standard_Transient_mut(Adaptor2d_Curve2d* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleAdaptor2dCurve2d*> Adaptor2d_Curve2d_to_handle(Adaptor2d_Curve2d* obj) {
-    try { return {new HandleAdaptor2dCurve2d(obj), nullptr}; }
+extern "C" OcctResult<Handle_Adaptor2d_Curve2d*> Adaptor2d_Curve2d_to_handle(Adaptor2d_Curve2d* obj) {
+    try { return {new Handle_Adaptor2d_Curve2d(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const Adaptor2d_Curve2d*> HandleAdaptor2dCurve2d_get(const HandleAdaptor2dCurve2d* handle) {
+extern "C" OcctResult<const Adaptor2d_Curve2d*> Handle_Adaptor2d_Curve2d_get(const Handle_Adaptor2d_Curve2d* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Adaptor2d_Curve2d*> HandleAdaptor2dCurve2d_get_mut(HandleAdaptor2dCurve2d* handle) {
+extern "C" OcctResult<Adaptor2d_Curve2d*> Handle_Adaptor2d_Curve2d_get_mut(Handle_Adaptor2d_Curve2d* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleAdaptor2dCurve2d_to_HandleStandardTransient(const HandleAdaptor2dCurve2d* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_Adaptor2d_Curve2d_to_Handle_Standard_Transient(const Handle_Adaptor2d_Curve2d* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleAdaptor2dLine2d*> HandleAdaptor2dCurve2d_downcast_to_HandleAdaptor2dLine2d(const HandleAdaptor2dCurve2d* self_) {
+extern "C" OcctResult<Handle_Adaptor2d_Line2d*> Handle_Adaptor2d_Curve2d_downcast_to_Handle_Adaptor2d_Line2d(const Handle_Adaptor2d_Curve2d* self_) {
     try {
     opencascade::handle<Adaptor2d_Line2d> result = opencascade::handle<Adaptor2d_Line2d>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleAdaptor2dLine2d(result), nullptr};
+    return {new Handle_Adaptor2d_Line2d(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleAdaptor2dOffsetCurve*> HandleAdaptor2dCurve2d_downcast_to_HandleAdaptor2dOffsetCurve(const HandleAdaptor2dCurve2d* self_) {
+extern "C" OcctResult<Handle_Adaptor2d_OffsetCurve*> Handle_Adaptor2d_Curve2d_downcast_to_Handle_Adaptor2d_OffsetCurve(const Handle_Adaptor2d_Curve2d* self_) {
     try {
     opencascade::handle<Adaptor2d_OffsetCurve> result = opencascade::handle<Adaptor2d_OffsetCurve>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleAdaptor2dOffsetCurve(result), nullptr};
+    return {new Handle_Adaptor2d_OffsetCurve(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleBRepAdaptorCurve2d*> HandleAdaptor2dCurve2d_downcast_to_HandleBRepAdaptorCurve2d(const HandleAdaptor2dCurve2d* self_) {
+extern "C" OcctResult<Handle_BRepAdaptor_Curve2d*> Handle_Adaptor2d_Curve2d_downcast_to_Handle_BRepAdaptor_Curve2d(const Handle_Adaptor2d_Curve2d* self_) {
     try {
     opencascade::handle<BRepAdaptor_Curve2d> result = opencascade::handle<BRepAdaptor_Curve2d>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleBRepAdaptorCurve2d(result), nullptr};
+    return {new Handle_BRepAdaptor_Curve2d(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleGeom2dAdaptorCurve*> HandleAdaptor2dCurve2d_downcast_to_HandleGeom2dAdaptorCurve(const HandleAdaptor2dCurve2d* self_) {
+extern "C" OcctResult<Handle_Geom2dAdaptor_Curve*> Handle_Adaptor2d_Curve2d_downcast_to_Handle_Geom2dAdaptor_Curve(const Handle_Adaptor2d_Curve2d* self_) {
     try {
     opencascade::handle<Geom2dAdaptor_Curve> result = opencascade::handle<Geom2dAdaptor_Curve>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleGeom2dAdaptorCurve(result), nullptr};
+    return {new Handle_Geom2dAdaptor_Curve(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleProjLibCompProjectedCurve*> HandleAdaptor2dCurve2d_downcast_to_HandleProjLibCompProjectedCurve(const HandleAdaptor2dCurve2d* self_) {
+extern "C" OcctResult<Handle_ProjLib_CompProjectedCurve*> Handle_Adaptor2d_Curve2d_downcast_to_Handle_ProjLib_CompProjectedCurve(const Handle_Adaptor2d_Curve2d* self_) {
     try {
     opencascade::handle<ProjLib_CompProjectedCurve> result = opencascade::handle<ProjLib_CompProjectedCurve>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleProjLibCompProjectedCurve(result), nullptr};
+    return {new Handle_ProjLib_CompProjectedCurve(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleProjLibProjectedCurve*> HandleAdaptor2dCurve2d_downcast_to_HandleProjLibProjectedCurve(const HandleAdaptor2dCurve2d* self_) {
+extern "C" OcctResult<Handle_ProjLib_ProjectedCurve*> Handle_Adaptor2d_Curve2d_downcast_to_Handle_ProjLib_ProjectedCurve(const Handle_Adaptor2d_Curve2d* self_) {
     try {
     opencascade::handle<ProjLib_ProjectedCurve> result = opencascade::handle<ProjLib_ProjectedCurve>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleProjLibProjectedCurve(result), nullptr};
+    return {new Handle_ProjLib_ProjectedCurve(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
@@ -663,7 +630,7 @@ extern "C" OcctResult<int32_t> Adaptor2d_Line2d_nb_intervals(const Adaptor2d_Lin
     try { return {self_->NbIntervals(static_cast<GeomAbs_Shape>(S)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* Adaptor2d_Line2d_intervals(const Adaptor2d_Line2d* self_, TColStd_Array1OfReal* T, int32_t S) {
+extern "C" const char* Adaptor2d_Line2d_intervals(const Adaptor2d_Line2d* self_, NCollection_Array1_double* T, int32_t S) {
     try { self_->Intervals(*T, static_cast<GeomAbs_Shape>(S)); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -731,28 +698,48 @@ extern "C" OcctResult<const Adaptor2d_Curve2d*> Adaptor2d_Line2d_as_Adaptor2d_Cu
 extern "C" OcctResult<Adaptor2d_Curve2d*> Adaptor2d_Line2d_as_Adaptor2d_Curve2d_mut(Adaptor2d_Line2d* self_) { return {static_cast<Adaptor2d_Curve2d*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> Adaptor2d_Line2d_as_Standard_Transient(const Adaptor2d_Line2d* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> Adaptor2d_Line2d_as_Standard_Transient_mut(Adaptor2d_Line2d* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleAdaptor2dLine2d*> Adaptor2d_Line2d_to_handle(Adaptor2d_Line2d* obj) {
-    try { return {new HandleAdaptor2dLine2d(obj), nullptr}; }
+extern "C" OcctResult<Handle_Adaptor2d_Line2d*> Adaptor2d_Line2d_to_handle(Adaptor2d_Line2d* obj) {
+    try { return {new Handle_Adaptor2d_Line2d(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const Adaptor2d_Line2d*> HandleAdaptor2dLine2d_get(const HandleAdaptor2dLine2d* handle) {
+extern "C" OcctResult<const Adaptor2d_Line2d*> Handle_Adaptor2d_Line2d_get(const Handle_Adaptor2d_Line2d* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Adaptor2d_Line2d*> HandleAdaptor2dLine2d_get_mut(HandleAdaptor2dLine2d* handle) {
+extern "C" OcctResult<Adaptor2d_Line2d*> Handle_Adaptor2d_Line2d_get_mut(Handle_Adaptor2d_Line2d* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleAdaptor2dCurve2d*> HandleAdaptor2dLine2d_to_HandleAdaptor2dCurve2d(const HandleAdaptor2dLine2d* self_) {
-    try { return {new HandleAdaptor2dCurve2d(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Adaptor2d_Curve2d*> Handle_Adaptor2d_Line2d_to_Handle_Adaptor2d_Curve2d(const Handle_Adaptor2d_Line2d* self_) {
+    try { return {new Handle_Adaptor2d_Curve2d(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleAdaptor2dLine2d_to_HandleStandardTransient(const HandleAdaptor2dLine2d* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_Adaptor2d_Line2d_to_Handle_Standard_Transient(const Handle_Adaptor2d_Line2d* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<int32_t> Adaptor2d_Line2d_inherited_NbSamples(const Adaptor2d_Line2d* self) {
     try { return {self->NbSamples(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<gp_Pnt2d*> Adaptor2d_Line2d_inherited_EvalD0(const Adaptor2d_Line2d* self, double theU) {
+    try { return {new gp_Pnt2d(self->EvalD0(theU)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Geom2d_Curve::ResD1*> Adaptor2d_Line2d_inherited_EvalD1(const Adaptor2d_Line2d* self, double theU) {
+    try { return {new Geom2d_Curve::ResD1(self->EvalD1(theU)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Geom2d_Curve::ResD2*> Adaptor2d_Line2d_inherited_EvalD2(const Adaptor2d_Line2d* self, double theU) {
+    try { return {new Geom2d_Curve::ResD2(self->EvalD2(theU)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Geom2d_Curve::ResD3*> Adaptor2d_Line2d_inherited_EvalD3(const Adaptor2d_Line2d* self, double theU) {
+    try { return {new Geom2d_Curve::ResD3(self->EvalD3(theU)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<gp_Vec2d*> Adaptor2d_Line2d_inherited_EvalDN(const Adaptor2d_Line2d* self, double theU, int32_t theN) {
+    try { return {new gp_Vec2d(self->EvalDN(theU, theN)), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> Adaptor2d_Line2d_inherited_IsInstance(const Adaptor2d_Line2d* self, Handle(Standard_Type) const& theType) {
@@ -889,7 +876,7 @@ extern "C" OcctResult<int32_t> Adaptor2d_OffsetCurve_nb_intervals(const Adaptor2
     try { return {self_->NbIntervals(static_cast<GeomAbs_Shape>(S)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* Adaptor2d_OffsetCurve_intervals(const Adaptor2d_OffsetCurve* self_, TColStd_Array1OfReal* T, int32_t S) {
+extern "C" const char* Adaptor2d_OffsetCurve_intervals(const Adaptor2d_OffsetCurve* self_, NCollection_Array1_double* T, int32_t S) {
     try { self_->Intervals(*T, static_cast<GeomAbs_Shape>(S)); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -961,24 +948,44 @@ extern "C" OcctResult<const Adaptor2d_Curve2d*> Adaptor2d_OffsetCurve_as_Adaptor
 extern "C" OcctResult<Adaptor2d_Curve2d*> Adaptor2d_OffsetCurve_as_Adaptor2d_Curve2d_mut(Adaptor2d_OffsetCurve* self_) { return {static_cast<Adaptor2d_Curve2d*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> Adaptor2d_OffsetCurve_as_Standard_Transient(const Adaptor2d_OffsetCurve* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> Adaptor2d_OffsetCurve_as_Standard_Transient_mut(Adaptor2d_OffsetCurve* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleAdaptor2dOffsetCurve*> Adaptor2d_OffsetCurve_to_handle(Adaptor2d_OffsetCurve* obj) {
-    try { return {new HandleAdaptor2dOffsetCurve(obj), nullptr}; }
+extern "C" OcctResult<Handle_Adaptor2d_OffsetCurve*> Adaptor2d_OffsetCurve_to_handle(Adaptor2d_OffsetCurve* obj) {
+    try { return {new Handle_Adaptor2d_OffsetCurve(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const Adaptor2d_OffsetCurve*> HandleAdaptor2dOffsetCurve_get(const HandleAdaptor2dOffsetCurve* handle) {
+extern "C" OcctResult<const Adaptor2d_OffsetCurve*> Handle_Adaptor2d_OffsetCurve_get(const Handle_Adaptor2d_OffsetCurve* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Adaptor2d_OffsetCurve*> HandleAdaptor2dOffsetCurve_get_mut(HandleAdaptor2dOffsetCurve* handle) {
+extern "C" OcctResult<Adaptor2d_OffsetCurve*> Handle_Adaptor2d_OffsetCurve_get_mut(Handle_Adaptor2d_OffsetCurve* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleAdaptor2dCurve2d*> HandleAdaptor2dOffsetCurve_to_HandleAdaptor2dCurve2d(const HandleAdaptor2dOffsetCurve* self_) {
-    try { return {new HandleAdaptor2dCurve2d(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Adaptor2d_Curve2d*> Handle_Adaptor2d_OffsetCurve_to_Handle_Adaptor2d_Curve2d(const Handle_Adaptor2d_OffsetCurve* self_) {
+    try { return {new Handle_Adaptor2d_Curve2d(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleAdaptor2dOffsetCurve_to_HandleStandardTransient(const HandleAdaptor2dOffsetCurve* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_Adaptor2d_OffsetCurve_to_Handle_Standard_Transient(const Handle_Adaptor2d_OffsetCurve* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<gp_Pnt2d*> Adaptor2d_OffsetCurve_inherited_EvalD0(const Adaptor2d_OffsetCurve* self, double theU) {
+    try { return {new gp_Pnt2d(self->EvalD0(theU)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Geom2d_Curve::ResD1*> Adaptor2d_OffsetCurve_inherited_EvalD1(const Adaptor2d_OffsetCurve* self, double theU) {
+    try { return {new Geom2d_Curve::ResD1(self->EvalD1(theU)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Geom2d_Curve::ResD2*> Adaptor2d_OffsetCurve_inherited_EvalD2(const Adaptor2d_OffsetCurve* self, double theU) {
+    try { return {new Geom2d_Curve::ResD2(self->EvalD2(theU)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Geom2d_Curve::ResD3*> Adaptor2d_OffsetCurve_inherited_EvalD3(const Adaptor2d_OffsetCurve* self, double theU) {
+    try { return {new Geom2d_Curve::ResD3(self->EvalD3(theU)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<gp_Vec2d*> Adaptor2d_OffsetCurve_inherited_EvalDN(const Adaptor2d_OffsetCurve* self, double theU, int32_t theN) {
+    try { return {new gp_Vec2d(self->EvalDN(theU, theN)), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> Adaptor2d_OffsetCurve_inherited_IsInstance(const Adaptor2d_OffsetCurve* self, Handle(Standard_Type) const& theType) {
@@ -1083,24 +1090,24 @@ extern "C" OcctResult<const Geom2d_Geometry*> Geom2d_AxisPlacement_as_Geom2d_Geo
 extern "C" OcctResult<Geom2d_Geometry*> Geom2d_AxisPlacement_as_Geom2d_Geometry_mut(Geom2d_AxisPlacement* self_) { return {static_cast<Geom2d_Geometry*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> Geom2d_AxisPlacement_as_Standard_Transient(const Geom2d_AxisPlacement* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> Geom2d_AxisPlacement_as_Standard_Transient_mut(Geom2d_AxisPlacement* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleGeom2dAxisPlacement*> Geom2d_AxisPlacement_to_handle(Geom2d_AxisPlacement* obj) {
-    try { return {new HandleGeom2dAxisPlacement(obj), nullptr}; }
+extern "C" OcctResult<Handle_Geom2d_AxisPlacement*> Geom2d_AxisPlacement_to_handle(Geom2d_AxisPlacement* obj) {
+    try { return {new Handle_Geom2d_AxisPlacement(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const Geom2d_AxisPlacement*> HandleGeom2dAxisPlacement_get(const HandleGeom2dAxisPlacement* handle) {
+extern "C" OcctResult<const Geom2d_AxisPlacement*> Handle_Geom2d_AxisPlacement_get(const Handle_Geom2d_AxisPlacement* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Geom2d_AxisPlacement*> HandleGeom2dAxisPlacement_get_mut(HandleGeom2dAxisPlacement* handle) {
+extern "C" OcctResult<Geom2d_AxisPlacement*> Handle_Geom2d_AxisPlacement_get_mut(Handle_Geom2d_AxisPlacement* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleGeom2dGeometry*> HandleGeom2dAxisPlacement_to_HandleGeom2dGeometry(const HandleGeom2dAxisPlacement* self_) {
-    try { return {new HandleGeom2dGeometry(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Geom2d_Geometry*> Handle_Geom2d_AxisPlacement_to_Handle_Geom2d_Geometry(const Handle_Geom2d_AxisPlacement* self_) {
+    try { return {new Handle_Geom2d_Geometry(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleGeom2dAxisPlacement_to_HandleStandardTransient(const HandleGeom2dAxisPlacement* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_Geom2d_AxisPlacement_to_Handle_Standard_Transient(const Handle_Geom2d_AxisPlacement* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" const char* Geom2d_AxisPlacement_inherited_Mirror(Geom2d_AxisPlacement* self, gp_Pnt2d const& P) {
@@ -1173,16 +1180,32 @@ extern "C" void Geom2d_AxisPlacement_destructor(Geom2d_AxisPlacement* self_) { d
 // Geom2d_BSplineCurve wrappers
 // ========================
 
-extern "C" OcctResult<Geom2d_BSplineCurve*> Geom2d_BSplineCurve_ctor_array1ofpnt2d_array1ofreal_array1ofinteger_int_bool(TColgp_Array1OfPnt2d const* Poles, TColStd_Array1OfReal const* Knots, TColStd_Array1OfInteger const* Multiplicities, int32_t Degree, bool Periodic) {
+extern "C" OcctResult<Geom2d_BSplineCurve*> Geom2d_BSplineCurve_ctor_arr1_pnt2d_arr1_double_arr1_int_int_bool(NCollection_Array1_gp_Pnt2d const* Poles, NCollection_Array1_double const* Knots, NCollection_Array1_int const* Multiplicities, int32_t Degree, bool Periodic) {
     try { return {new Geom2d_BSplineCurve(*Poles, *Knots, *Multiplicities, Degree, Periodic), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Geom2d_BSplineCurve*> Geom2d_BSplineCurve_ctor_array1ofpnt2d_array1ofreal2_array1ofinteger_int_bool(TColgp_Array1OfPnt2d const* Poles, TColStd_Array1OfReal const* Weights, TColStd_Array1OfReal const* Knots, TColStd_Array1OfInteger const* Multiplicities, int32_t Degree, bool Periodic) {
+extern "C" OcctResult<Geom2d_BSplineCurve*> Geom2d_BSplineCurve_ctor_arr1_pnt2d_arr1_double2_arr1_int_int_bool(NCollection_Array1_gp_Pnt2d const* Poles, NCollection_Array1_double const* Weights, NCollection_Array1_double const* Knots, NCollection_Array1_int const* Multiplicities, int32_t Degree, bool Periodic) {
     try { return {new Geom2d_BSplineCurve(*Poles, *Weights, *Knots, *Multiplicities, Degree, Periodic), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<gp_Vec2d*> Geom2d_BSplineCurve_dn(const Geom2d_BSplineCurve* self_, double U, int32_t N) {
-    try { return {new gp_Vec2d(self_->DN(U, N)), nullptr}; }
+extern "C" OcctResult<gp_Pnt2d*> Geom2d_BSplineCurve_eval_d0(const Geom2d_BSplineCurve* self_, double U) {
+    try { return {new gp_Pnt2d(self_->EvalD0(U)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Geom2d_Curve::ResD1*> Geom2d_BSplineCurve_eval_d1(const Geom2d_BSplineCurve* self_, double U) {
+    try { return {new Geom2d_Curve::ResD1(self_->EvalD1(U)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Geom2d_Curve::ResD2*> Geom2d_BSplineCurve_eval_d2(const Geom2d_BSplineCurve* self_, double U) {
+    try { return {new Geom2d_Curve::ResD2(self_->EvalD2(U)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Geom2d_Curve::ResD3*> Geom2d_BSplineCurve_eval_d3(const Geom2d_BSplineCurve* self_, double U) {
+    try { return {new Geom2d_Curve::ResD3(self_->EvalD3(U)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<gp_Vec2d*> Geom2d_BSplineCurve_eval_dn(const Geom2d_BSplineCurve* self_, double U, int32_t N) {
+    try { return {new gp_Vec2d(self_->EvalDN(U, N)), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<gp_Pnt2d*> Geom2d_BSplineCurve_local_value(const Geom2d_BSplineCurve* self_, double U, int32_t FromK1, int32_t ToK2) {
@@ -1205,6 +1228,22 @@ extern "C" OcctResult<Handle(Geom2d_Geometry)*> Geom2d_BSplineCurve_copy(const G
     try { return {new Handle(Geom2d_Geometry)(self_->Copy()), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" OcctResult<bool> Geom2d_BSplineCurve_has_eval_representation(const Geom2d_BSplineCurve* self_) {
+    try { return {self_->HasEvalRepresentation(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Handle(Geom2dEval_RepCurveDesc::Base) const*> Geom2d_BSplineCurve_eval_representation(const Geom2d_BSplineCurve* self_) {
+    try { return {&(self_->EvalRepresentation()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" const char* Geom2d_BSplineCurve_set_eval_representation(Geom2d_BSplineCurve* self_, Handle(Geom2dEval_RepCurveDesc::Base) const* theDesc) {
+    try { self_->SetEvalRepresentation(*theDesc); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* Geom2d_BSplineCurve_clear_eval_representation(Geom2d_BSplineCurve* self_) {
+    try { self_->ClearEvalRepresentation(); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
 extern "C" const char* Geom2d_BSplineCurve_increase_degree(Geom2d_BSplineCurve* self_, int32_t Degree) {
     try { self_->IncreaseDegree(Degree); return nullptr; }
     OCCT_CATCH_RETURN_VOID
@@ -1225,7 +1264,7 @@ extern "C" const char* Geom2d_BSplineCurve_insert_knot(Geom2d_BSplineCurve* self
     try { self_->InsertKnot(U, M, ParametricTolerance); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* Geom2d_BSplineCurve_insert_knots(Geom2d_BSplineCurve* self_, TColStd_Array1OfReal const* Knots, TColStd_Array1OfInteger const* Mults, double ParametricTolerance, bool Add) {
+extern "C" const char* Geom2d_BSplineCurve_insert_knots(Geom2d_BSplineCurve* self_, NCollection_Array1_double const* Knots, NCollection_Array1_int const* Mults, double ParametricTolerance, bool Add) {
     try { self_->InsertKnots(*Knots, *Mults, ParametricTolerance, Add); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -1261,7 +1300,7 @@ extern "C" const char* Geom2d_BSplineCurve_set_knot_int_real(Geom2d_BSplineCurve
     try { self_->SetKnot(Index, K); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* Geom2d_BSplineCurve_set_knots(Geom2d_BSplineCurve* self_, TColStd_Array1OfReal const* K) {
+extern "C" const char* Geom2d_BSplineCurve_set_knots(Geom2d_BSplineCurve* self_, NCollection_Array1_double const* K) {
     try { self_->SetKnots(*K); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -1333,22 +1372,6 @@ extern "C" OcctResult<int32_t> Geom2d_BSplineCurve_degree(const Geom2d_BSplineCu
     try { return {self_->Degree(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* Geom2d_BSplineCurve_d0(const Geom2d_BSplineCurve* self_, double U, gp_Pnt2d* P) {
-    try { self_->D0(U, *P); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* Geom2d_BSplineCurve_d1(const Geom2d_BSplineCurve* self_, double U, gp_Pnt2d* P, gp_Vec2d* V1) {
-    try { self_->D1(U, *P, *V1); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* Geom2d_BSplineCurve_d2(const Geom2d_BSplineCurve* self_, double U, gp_Pnt2d* P, gp_Vec2d* V1, gp_Vec2d* V2) {
-    try { self_->D2(U, *P, *V1, *V2); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* Geom2d_BSplineCurve_d3(const Geom2d_BSplineCurve* self_, double U, gp_Pnt2d* P, gp_Vec2d* V1, gp_Vec2d* V2, gp_Vec2d* V3) {
-    try { self_->D3(U, *P, *V1, *V2, *V3); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
 extern "C" const char* Geom2d_BSplineCurve_local_d0(const Geom2d_BSplineCurve* self_, double U, int32_t FromK1, int32_t ToK2, gp_Pnt2d* P) {
     try { self_->LocalD0(U, FromK1, ToK2, *P); return nullptr; }
     OCCT_CATCH_RETURN_VOID
@@ -1377,19 +1400,11 @@ extern "C" OcctResult<double> Geom2d_BSplineCurve_knot(const Geom2d_BSplineCurve
     try { return {self_->Knot(Index), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* Geom2d_BSplineCurve_knots_array1ofreal(const Geom2d_BSplineCurve* self_, TColStd_Array1OfReal* K) {
-    try { self_->Knots(*K); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<TColStd_Array1OfReal const*> Geom2d_BSplineCurve_knots(const Geom2d_BSplineCurve* self_) {
+extern "C" OcctResult<NCollection_Array1_double const*> Geom2d_BSplineCurve_knots(const Geom2d_BSplineCurve* self_) {
     try { return {&(self_->Knots()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* Geom2d_BSplineCurve_knot_sequence_array1ofreal(const Geom2d_BSplineCurve* self_, TColStd_Array1OfReal* K) {
-    try { self_->KnotSequence(*K); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<TColStd_Array1OfReal const*> Geom2d_BSplineCurve_knot_sequence(const Geom2d_BSplineCurve* self_) {
+extern "C" OcctResult<NCollection_Array1_double const*> Geom2d_BSplineCurve_knot_sequence(const Geom2d_BSplineCurve* self_) {
     try { return {&(self_->KnotSequence()), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -1413,11 +1428,7 @@ extern "C" OcctResult<int32_t> Geom2d_BSplineCurve_multiplicity(const Geom2d_BSp
     try { return {self_->Multiplicity(Index), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* Geom2d_BSplineCurve_multiplicities_array1ofinteger(const Geom2d_BSplineCurve* self_, TColStd_Array1OfInteger* M) {
-    try { self_->Multiplicities(*M); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<TColStd_Array1OfInteger const*> Geom2d_BSplineCurve_multiplicities(const Geom2d_BSplineCurve* self_) {
+extern "C" OcctResult<NCollection_Array1_int const*> Geom2d_BSplineCurve_multiplicities(const Geom2d_BSplineCurve* self_) {
     try { return {&(self_->Multiplicities()), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -1433,11 +1444,7 @@ extern "C" OcctResult<gp_Pnt2d const*> Geom2d_BSplineCurve_pole(const Geom2d_BSp
     try { return {&(self_->Pole(Index)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* Geom2d_BSplineCurve_poles_array1ofpnt2d(const Geom2d_BSplineCurve* self_, TColgp_Array1OfPnt2d* P) {
-    try { self_->Poles(*P); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<TColgp_Array1OfPnt2d const*> Geom2d_BSplineCurve_poles(const Geom2d_BSplineCurve* self_) {
+extern "C" OcctResult<NCollection_Array1_gp_Pnt2d const*> Geom2d_BSplineCurve_poles(const Geom2d_BSplineCurve* self_) {
     try { return {&(self_->Poles()), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -1445,12 +1452,12 @@ extern "C" OcctResult<double> Geom2d_BSplineCurve_weight(const Geom2d_BSplineCur
     try { return {self_->Weight(Index), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* Geom2d_BSplineCurve_weights_array1ofreal(const Geom2d_BSplineCurve* self_, TColStd_Array1OfReal* W) {
-    try { self_->Weights(*W); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<TColStd_Array1OfReal const*> Geom2d_BSplineCurve_weights(const Geom2d_BSplineCurve* self_) {
+extern "C" OcctResult<NCollection_Array1_double const*> Geom2d_BSplineCurve_weights(const Geom2d_BSplineCurve* self_) {
     try { return {self_->Weights(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<NCollection_Array1_double const*> Geom2d_BSplineCurve_weights_array(const Geom2d_BSplineCurve* self_) {
+    try { return {&(self_->WeightsArray()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" const char* Geom2d_BSplineCurve_transform(Geom2d_BSplineCurve* self_, gp_Trsf2d const* T) {
@@ -1485,32 +1492,32 @@ extern "C" OcctResult<const Geom2d_Geometry*> Geom2d_BSplineCurve_as_Geom2d_Geom
 extern "C" OcctResult<Geom2d_Geometry*> Geom2d_BSplineCurve_as_Geom2d_Geometry_mut(Geom2d_BSplineCurve* self_) { return {static_cast<Geom2d_Geometry*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> Geom2d_BSplineCurve_as_Standard_Transient(const Geom2d_BSplineCurve* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> Geom2d_BSplineCurve_as_Standard_Transient_mut(Geom2d_BSplineCurve* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleGeom2dBSplineCurve*> Geom2d_BSplineCurve_to_handle(Geom2d_BSplineCurve* obj) {
-    try { return {new HandleGeom2dBSplineCurve(obj), nullptr}; }
+extern "C" OcctResult<Handle_Geom2d_BSplineCurve*> Geom2d_BSplineCurve_to_handle(Geom2d_BSplineCurve* obj) {
+    try { return {new Handle_Geom2d_BSplineCurve(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const Geom2d_BSplineCurve*> HandleGeom2dBSplineCurve_get(const HandleGeom2dBSplineCurve* handle) {
+extern "C" OcctResult<const Geom2d_BSplineCurve*> Handle_Geom2d_BSplineCurve_get(const Handle_Geom2d_BSplineCurve* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Geom2d_BSplineCurve*> HandleGeom2dBSplineCurve_get_mut(HandleGeom2dBSplineCurve* handle) {
+extern "C" OcctResult<Geom2d_BSplineCurve*> Handle_Geom2d_BSplineCurve_get_mut(Handle_Geom2d_BSplineCurve* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleGeom2dBoundedCurve*> HandleGeom2dBSplineCurve_to_HandleGeom2dBoundedCurve(const HandleGeom2dBSplineCurve* self_) {
-    try { return {new HandleGeom2dBoundedCurve(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Geom2d_BoundedCurve*> Handle_Geom2d_BSplineCurve_to_Handle_Geom2d_BoundedCurve(const Handle_Geom2d_BSplineCurve* self_) {
+    try { return {new Handle_Geom2d_BoundedCurve(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleGeom2dCurve*> HandleGeom2dBSplineCurve_to_HandleGeom2dCurve(const HandleGeom2dBSplineCurve* self_) {
-    try { return {new HandleGeom2dCurve(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Geom2d_Curve*> Handle_Geom2d_BSplineCurve_to_Handle_Geom2d_Curve(const Handle_Geom2d_BSplineCurve* self_) {
+    try { return {new Handle_Geom2d_Curve(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleGeom2dGeometry*> HandleGeom2dBSplineCurve_to_HandleGeom2dGeometry(const HandleGeom2dBSplineCurve* self_) {
-    try { return {new HandleGeom2dGeometry(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Geom2d_Geometry*> Handle_Geom2d_BSplineCurve_to_Handle_Geom2d_Geometry(const Handle_Geom2d_BSplineCurve* self_) {
+    try { return {new Handle_Geom2d_Geometry(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleGeom2dBSplineCurve_to_HandleStandardTransient(const HandleGeom2dBSplineCurve* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_Geom2d_BSplineCurve_to_Handle_Standard_Transient(const Handle_Geom2d_BSplineCurve* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<double> Geom2d_BSplineCurve_inherited_TransformedParameter(const Geom2d_BSplineCurve* self, double U, gp_Trsf2d const& T) {
@@ -1527,6 +1534,26 @@ extern "C" OcctResult<Handle(Geom2d_Curve)*> Geom2d_BSplineCurve_inherited_Rever
 }
 extern "C" OcctResult<double> Geom2d_BSplineCurve_inherited_Period(const Geom2d_BSplineCurve* self) {
     try { return {self->Period(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" const char* Geom2d_BSplineCurve_inherited_D0(const Geom2d_BSplineCurve* self, double U, gp_Pnt2d& P) {
+    try { self->D0(U, P); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* Geom2d_BSplineCurve_inherited_D1(const Geom2d_BSplineCurve* self, double U, gp_Pnt2d& P, gp_Vec2d& V1) {
+    try { self->D1(U, P, V1); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* Geom2d_BSplineCurve_inherited_D2(const Geom2d_BSplineCurve* self, double U, gp_Pnt2d& P, gp_Vec2d& V1, gp_Vec2d& V2) {
+    try { self->D2(U, P, V1, V2); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* Geom2d_BSplineCurve_inherited_D3(const Geom2d_BSplineCurve* self, double U, gp_Pnt2d& P, gp_Vec2d& V1, gp_Vec2d& V2, gp_Vec2d& V3) {
+    try { self->D3(U, P, V1, V2, V3); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" OcctResult<gp_Vec2d*> Geom2d_BSplineCurve_inherited_DN(const Geom2d_BSplineCurve* self, double U, int32_t N) {
+    try { return {new gp_Vec2d(self->DN(U, N)), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<gp_Pnt2d*> Geom2d_BSplineCurve_inherited_Value(const Geom2d_BSplineCurve* self, double U) {
@@ -1603,16 +1630,32 @@ extern "C" void Geom2d_BSplineCurve_destructor(Geom2d_BSplineCurve* self_) { del
 // Geom2d_BezierCurve wrappers
 // ========================
 
-extern "C" OcctResult<Geom2d_BezierCurve*> Geom2d_BezierCurve_ctor_array1ofpnt2d(TColgp_Array1OfPnt2d const* CurvePoles) {
+extern "C" OcctResult<Geom2d_BezierCurve*> Geom2d_BezierCurve_ctor_arr1_pnt2d(NCollection_Array1_gp_Pnt2d const* CurvePoles) {
     try { return {new Geom2d_BezierCurve(*CurvePoles), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Geom2d_BezierCurve*> Geom2d_BezierCurve_ctor_array1ofpnt2d_array1ofreal(TColgp_Array1OfPnt2d const* CurvePoles, TColStd_Array1OfReal const* PoleWeights) {
+extern "C" OcctResult<Geom2d_BezierCurve*> Geom2d_BezierCurve_ctor_arr1_pnt2d_arr1_double(NCollection_Array1_gp_Pnt2d const* CurvePoles, NCollection_Array1_double const* PoleWeights) {
     try { return {new Geom2d_BezierCurve(*CurvePoles, *PoleWeights), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<gp_Vec2d*> Geom2d_BezierCurve_dn(const Geom2d_BezierCurve* self_, double U, int32_t N) {
-    try { return {new gp_Vec2d(self_->DN(U, N)), nullptr}; }
+extern "C" OcctResult<gp_Pnt2d*> Geom2d_BezierCurve_eval_d0(const Geom2d_BezierCurve* self_, double U) {
+    try { return {new gp_Pnt2d(self_->EvalD0(U)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Geom2d_Curve::ResD1*> Geom2d_BezierCurve_eval_d1(const Geom2d_BezierCurve* self_, double U) {
+    try { return {new Geom2d_Curve::ResD1(self_->EvalD1(U)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Geom2d_Curve::ResD2*> Geom2d_BezierCurve_eval_d2(const Geom2d_BezierCurve* self_, double U) {
+    try { return {new Geom2d_Curve::ResD2(self_->EvalD2(U)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Geom2d_Curve::ResD3*> Geom2d_BezierCurve_eval_d3(const Geom2d_BezierCurve* self_, double U) {
+    try { return {new Geom2d_Curve::ResD3(self_->EvalD3(U)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<gp_Vec2d*> Geom2d_BezierCurve_eval_dn(const Geom2d_BezierCurve* self_, double U, int32_t N) {
+    try { return {new gp_Vec2d(self_->EvalDN(U, N)), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<gp_Pnt2d*> Geom2d_BezierCurve_end_point(const Geom2d_BezierCurve* self_) {
@@ -1626,6 +1669,22 @@ extern "C" OcctResult<gp_Pnt2d*> Geom2d_BezierCurve_start_point(const Geom2d_Bez
 extern "C" OcctResult<Handle(Geom2d_Geometry)*> Geom2d_BezierCurve_copy(const Geom2d_BezierCurve* self_) {
     try { return {new Handle(Geom2d_Geometry)(self_->Copy()), nullptr}; }
     OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<bool> Geom2d_BezierCurve_has_eval_representation(const Geom2d_BezierCurve* self_) {
+    try { return {self_->HasEvalRepresentation(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Handle(Geom2dEval_RepCurveDesc::Base) const*> Geom2d_BezierCurve_eval_representation(const Geom2d_BezierCurve* self_) {
+    try { return {&(self_->EvalRepresentation()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" const char* Geom2d_BezierCurve_set_eval_representation(Geom2d_BezierCurve* self_, Handle(Geom2dEval_RepCurveDesc::Base) const* theDesc) {
+    try { self_->SetEvalRepresentation(*theDesc); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* Geom2d_BezierCurve_clear_eval_representation(Geom2d_BezierCurve* self_) {
+    try { self_->ClearEvalRepresentation(); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
 }
 extern "C" const char* Geom2d_BezierCurve_increase(Geom2d_BezierCurve* self_, int32_t Degree) {
     try { self_->Increase(Degree); return nullptr; }
@@ -1691,22 +1750,6 @@ extern "C" OcctResult<int32_t> Geom2d_BezierCurve_degree(const Geom2d_BezierCurv
     try { return {self_->Degree(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* Geom2d_BezierCurve_d0(const Geom2d_BezierCurve* self_, double U, gp_Pnt2d* P) {
-    try { self_->D0(U, *P); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* Geom2d_BezierCurve_d1(const Geom2d_BezierCurve* self_, double U, gp_Pnt2d* P, gp_Vec2d* V1) {
-    try { self_->D1(U, *P, *V1); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* Geom2d_BezierCurve_d2(const Geom2d_BezierCurve* self_, double U, gp_Pnt2d* P, gp_Vec2d* V1, gp_Vec2d* V2) {
-    try { self_->D2(U, *P, *V1, *V2); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* Geom2d_BezierCurve_d3(const Geom2d_BezierCurve* self_, double U, gp_Pnt2d* P, gp_Vec2d* V1, gp_Vec2d* V2, gp_Vec2d* V3) {
-    try { self_->D3(U, *P, *V1, *V2, *V3); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
 extern "C" OcctResult<double> Geom2d_BezierCurve_first_parameter(const Geom2d_BezierCurve* self_) {
     try { return {self_->FirstParameter(), nullptr}; }
     OCCT_CATCH_RETURN
@@ -1723,11 +1766,7 @@ extern "C" OcctResult<gp_Pnt2d const*> Geom2d_BezierCurve_pole(const Geom2d_Bezi
     try { return {&(self_->Pole(Index)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* Geom2d_BezierCurve_poles_array1ofpnt2d(const Geom2d_BezierCurve* self_, TColgp_Array1OfPnt2d* P) {
-    try { self_->Poles(*P); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<TColgp_Array1OfPnt2d const*> Geom2d_BezierCurve_poles(const Geom2d_BezierCurve* self_) {
+extern "C" OcctResult<NCollection_Array1_gp_Pnt2d const*> Geom2d_BezierCurve_poles(const Geom2d_BezierCurve* self_) {
     try { return {&(self_->Poles()), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -1735,12 +1774,12 @@ extern "C" OcctResult<double> Geom2d_BezierCurve_weight(const Geom2d_BezierCurve
     try { return {self_->Weight(Index), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* Geom2d_BezierCurve_weights_array1ofreal(const Geom2d_BezierCurve* self_, TColStd_Array1OfReal* W) {
-    try { self_->Weights(*W); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<TColStd_Array1OfReal const*> Geom2d_BezierCurve_weights(const Geom2d_BezierCurve* self_) {
+extern "C" OcctResult<NCollection_Array1_double const*> Geom2d_BezierCurve_weights(const Geom2d_BezierCurve* self_) {
     try { return {self_->Weights(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<NCollection_Array1_double const*> Geom2d_BezierCurve_weights_array(const Geom2d_BezierCurve* self_) {
+    try { return {&(self_->WeightsArray()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" const char* Geom2d_BezierCurve_transform(Geom2d_BezierCurve* self_, gp_Trsf2d const* T) {
@@ -1750,6 +1789,18 @@ extern "C" const char* Geom2d_BezierCurve_transform(Geom2d_BezierCurve* self_, g
 extern "C" const char* Geom2d_BezierCurve_resolution(Geom2d_BezierCurve* self_, double ToleranceUV, double* UTolerance) {
     try { self_->Resolution(ToleranceUV, *UTolerance); return nullptr; }
     OCCT_CATCH_RETURN_VOID
+}
+extern "C" OcctResult<NCollection_Array1_double const*> Geom2d_BezierCurve_knots(const Geom2d_BezierCurve* self_) {
+    try { return {&(self_->Knots()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<NCollection_Array1_int const*> Geom2d_BezierCurve_multiplicities(const Geom2d_BezierCurve* self_) {
+    try { return {&(self_->Multiplicities()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<NCollection_Array1_double const*> Geom2d_BezierCurve_knot_sequence(const Geom2d_BezierCurve* self_) {
+    try { return {&(self_->KnotSequence()), nullptr}; }
+    OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(Standard_Type) const*> Geom2d_BezierCurve_dynamic_type(const Geom2d_BezierCurve* self_) {
     try { return {&(self_->DynamicType()), nullptr}; }
@@ -1775,32 +1826,32 @@ extern "C" OcctResult<const Geom2d_Geometry*> Geom2d_BezierCurve_as_Geom2d_Geome
 extern "C" OcctResult<Geom2d_Geometry*> Geom2d_BezierCurve_as_Geom2d_Geometry_mut(Geom2d_BezierCurve* self_) { return {static_cast<Geom2d_Geometry*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> Geom2d_BezierCurve_as_Standard_Transient(const Geom2d_BezierCurve* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> Geom2d_BezierCurve_as_Standard_Transient_mut(Geom2d_BezierCurve* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleGeom2dBezierCurve*> Geom2d_BezierCurve_to_handle(Geom2d_BezierCurve* obj) {
-    try { return {new HandleGeom2dBezierCurve(obj), nullptr}; }
+extern "C" OcctResult<Handle_Geom2d_BezierCurve*> Geom2d_BezierCurve_to_handle(Geom2d_BezierCurve* obj) {
+    try { return {new Handle_Geom2d_BezierCurve(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const Geom2d_BezierCurve*> HandleGeom2dBezierCurve_get(const HandleGeom2dBezierCurve* handle) {
+extern "C" OcctResult<const Geom2d_BezierCurve*> Handle_Geom2d_BezierCurve_get(const Handle_Geom2d_BezierCurve* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Geom2d_BezierCurve*> HandleGeom2dBezierCurve_get_mut(HandleGeom2dBezierCurve* handle) {
+extern "C" OcctResult<Geom2d_BezierCurve*> Handle_Geom2d_BezierCurve_get_mut(Handle_Geom2d_BezierCurve* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleGeom2dBoundedCurve*> HandleGeom2dBezierCurve_to_HandleGeom2dBoundedCurve(const HandleGeom2dBezierCurve* self_) {
-    try { return {new HandleGeom2dBoundedCurve(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Geom2d_BoundedCurve*> Handle_Geom2d_BezierCurve_to_Handle_Geom2d_BoundedCurve(const Handle_Geom2d_BezierCurve* self_) {
+    try { return {new Handle_Geom2d_BoundedCurve(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleGeom2dCurve*> HandleGeom2dBezierCurve_to_HandleGeom2dCurve(const HandleGeom2dBezierCurve* self_) {
-    try { return {new HandleGeom2dCurve(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Geom2d_Curve*> Handle_Geom2d_BezierCurve_to_Handle_Geom2d_Curve(const Handle_Geom2d_BezierCurve* self_) {
+    try { return {new Handle_Geom2d_Curve(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleGeom2dGeometry*> HandleGeom2dBezierCurve_to_HandleGeom2dGeometry(const HandleGeom2dBezierCurve* self_) {
-    try { return {new HandleGeom2dGeometry(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Geom2d_Geometry*> Handle_Geom2d_BezierCurve_to_Handle_Geom2d_Geometry(const Handle_Geom2d_BezierCurve* self_) {
+    try { return {new Handle_Geom2d_Geometry(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleGeom2dBezierCurve_to_HandleStandardTransient(const HandleGeom2dBezierCurve* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_Geom2d_BezierCurve_to_Handle_Standard_Transient(const Handle_Geom2d_BezierCurve* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<double> Geom2d_BezierCurve_inherited_TransformedParameter(const Geom2d_BezierCurve* self, double U, gp_Trsf2d const& T) {
@@ -1817,6 +1868,26 @@ extern "C" OcctResult<Handle(Geom2d_Curve)*> Geom2d_BezierCurve_inherited_Revers
 }
 extern "C" OcctResult<double> Geom2d_BezierCurve_inherited_Period(const Geom2d_BezierCurve* self) {
     try { return {self->Period(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" const char* Geom2d_BezierCurve_inherited_D0(const Geom2d_BezierCurve* self, double U, gp_Pnt2d& P) {
+    try { self->D0(U, P); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* Geom2d_BezierCurve_inherited_D1(const Geom2d_BezierCurve* self, double U, gp_Pnt2d& P, gp_Vec2d& V1) {
+    try { self->D1(U, P, V1); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* Geom2d_BezierCurve_inherited_D2(const Geom2d_BezierCurve* self, double U, gp_Pnt2d& P, gp_Vec2d& V1, gp_Vec2d& V2) {
+    try { self->D2(U, P, V1, V2); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* Geom2d_BezierCurve_inherited_D3(const Geom2d_BezierCurve* self, double U, gp_Pnt2d& P, gp_Vec2d& V1, gp_Vec2d& V2, gp_Vec2d& V3) {
+    try { self->D3(U, P, V1, V2, V3); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" OcctResult<gp_Vec2d*> Geom2d_BezierCurve_inherited_DN(const Geom2d_BezierCurve* self, double U, int32_t N) {
+    try { return {new gp_Vec2d(self->DN(U, N)), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<gp_Pnt2d*> Geom2d_BezierCurve_inherited_Value(const Geom2d_BezierCurve* self, double U) {
@@ -1919,47 +1990,63 @@ extern "C" OcctResult<const Geom2d_Geometry*> Geom2d_BoundedCurve_as_Geom2d_Geom
 extern "C" OcctResult<Geom2d_Geometry*> Geom2d_BoundedCurve_as_Geom2d_Geometry_mut(Geom2d_BoundedCurve* self_) { return {static_cast<Geom2d_Geometry*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> Geom2d_BoundedCurve_as_Standard_Transient(const Geom2d_BoundedCurve* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> Geom2d_BoundedCurve_as_Standard_Transient_mut(Geom2d_BoundedCurve* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<const Geom2d_BoundedCurve*> HandleGeom2dBoundedCurve_get(const HandleGeom2dBoundedCurve* handle) {
+extern "C" OcctResult<const Geom2d_BoundedCurve*> Handle_Geom2d_BoundedCurve_get(const Handle_Geom2d_BoundedCurve* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Geom2d_BoundedCurve*> HandleGeom2dBoundedCurve_get_mut(HandleGeom2dBoundedCurve* handle) {
+extern "C" OcctResult<Geom2d_BoundedCurve*> Handle_Geom2d_BoundedCurve_get_mut(Handle_Geom2d_BoundedCurve* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleGeom2dCurve*> HandleGeom2dBoundedCurve_to_HandleGeom2dCurve(const HandleGeom2dBoundedCurve* self_) {
-    try { return {new HandleGeom2dCurve(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Geom2d_Curve*> Handle_Geom2d_BoundedCurve_to_Handle_Geom2d_Curve(const Handle_Geom2d_BoundedCurve* self_) {
+    try { return {new Handle_Geom2d_Curve(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleGeom2dGeometry*> HandleGeom2dBoundedCurve_to_HandleGeom2dGeometry(const HandleGeom2dBoundedCurve* self_) {
-    try { return {new HandleGeom2dGeometry(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Geom2d_Geometry*> Handle_Geom2d_BoundedCurve_to_Handle_Geom2d_Geometry(const Handle_Geom2d_BoundedCurve* self_) {
+    try { return {new Handle_Geom2d_Geometry(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleGeom2dBoundedCurve_to_HandleStandardTransient(const HandleGeom2dBoundedCurve* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_Geom2d_BoundedCurve_to_Handle_Standard_Transient(const Handle_Geom2d_BoundedCurve* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleGeom2dBSplineCurve*> HandleGeom2dBoundedCurve_downcast_to_HandleGeom2dBSplineCurve(const HandleGeom2dBoundedCurve* self_) {
+extern "C" OcctResult<Handle_Geom2dEval_AHTBezierCurve*> Handle_Geom2d_BoundedCurve_downcast_to_Handle_Geom2dEval_AHTBezierCurve(const Handle_Geom2d_BoundedCurve* self_) {
+    try {
+    opencascade::handle<Geom2dEval_AHTBezierCurve> result = opencascade::handle<Geom2dEval_AHTBezierCurve>::DownCast(*self_);
+    if (result.IsNull()) { return {nullptr, nullptr}; }
+    return {new Handle_Geom2dEval_AHTBezierCurve(result), nullptr};
+    }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Handle_Geom2dEval_TBezierCurve*> Handle_Geom2d_BoundedCurve_downcast_to_Handle_Geom2dEval_TBezierCurve(const Handle_Geom2d_BoundedCurve* self_) {
+    try {
+    opencascade::handle<Geom2dEval_TBezierCurve> result = opencascade::handle<Geom2dEval_TBezierCurve>::DownCast(*self_);
+    if (result.IsNull()) { return {nullptr, nullptr}; }
+    return {new Handle_Geom2dEval_TBezierCurve(result), nullptr};
+    }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Handle_Geom2d_BSplineCurve*> Handle_Geom2d_BoundedCurve_downcast_to_Handle_Geom2d_BSplineCurve(const Handle_Geom2d_BoundedCurve* self_) {
     try {
     opencascade::handle<Geom2d_BSplineCurve> result = opencascade::handle<Geom2d_BSplineCurve>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleGeom2dBSplineCurve(result), nullptr};
+    return {new Handle_Geom2d_BSplineCurve(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleGeom2dBezierCurve*> HandleGeom2dBoundedCurve_downcast_to_HandleGeom2dBezierCurve(const HandleGeom2dBoundedCurve* self_) {
+extern "C" OcctResult<Handle_Geom2d_BezierCurve*> Handle_Geom2d_BoundedCurve_downcast_to_Handle_Geom2d_BezierCurve(const Handle_Geom2d_BoundedCurve* self_) {
     try {
     opencascade::handle<Geom2d_BezierCurve> result = opencascade::handle<Geom2d_BezierCurve>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleGeom2dBezierCurve(result), nullptr};
+    return {new Handle_Geom2d_BezierCurve(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleGeom2dTrimmedCurve*> HandleGeom2dBoundedCurve_downcast_to_HandleGeom2dTrimmedCurve(const HandleGeom2dBoundedCurve* self_) {
+extern "C" OcctResult<Handle_Geom2d_TrimmedCurve*> Handle_Geom2d_BoundedCurve_downcast_to_Handle_Geom2d_TrimmedCurve(const Handle_Geom2d_BoundedCurve* self_) {
     try {
     opencascade::handle<Geom2d_TrimmedCurve> result = opencascade::handle<Geom2d_TrimmedCurve>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleGeom2dTrimmedCurve(result), nullptr};
+    return {new Handle_Geom2d_TrimmedCurve(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
@@ -2009,6 +2096,26 @@ extern "C" OcctResult<int32_t> Geom2d_BoundedCurve_inherited_Continuity(const Ge
 }
 extern "C" OcctResult<bool> Geom2d_BoundedCurve_inherited_IsCN(const Geom2d_BoundedCurve* self, int32_t N) {
     try { return {self->IsCN(N), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<gp_Pnt2d*> Geom2d_BoundedCurve_inherited_EvalD0(const Geom2d_BoundedCurve* self, double U) {
+    try { return {new gp_Pnt2d(self->EvalD0(U)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Geom2d_Curve::ResD1*> Geom2d_BoundedCurve_inherited_EvalD1(const Geom2d_BoundedCurve* self, double U) {
+    try { return {new Geom2d_Curve::ResD1(self->EvalD1(U)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Geom2d_Curve::ResD2*> Geom2d_BoundedCurve_inherited_EvalD2(const Geom2d_BoundedCurve* self, double U) {
+    try { return {new Geom2d_Curve::ResD2(self->EvalD2(U)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Geom2d_Curve::ResD3*> Geom2d_BoundedCurve_inherited_EvalD3(const Geom2d_BoundedCurve* self, double U) {
+    try { return {new Geom2d_Curve::ResD3(self->EvalD3(U)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<gp_Vec2d*> Geom2d_BoundedCurve_inherited_EvalDN(const Geom2d_BoundedCurve* self, double U, int32_t N) {
+    try { return {new gp_Vec2d(self->EvalDN(U, N)), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" const char* Geom2d_BoundedCurve_inherited_D0(const Geom2d_BoundedCurve* self, double U, gp_Pnt2d& P) {
@@ -2179,28 +2286,28 @@ extern "C" OcctResult<const Geom2d_Geometry*> Geom2d_CartesianPoint_as_Geom2d_Ge
 extern "C" OcctResult<Geom2d_Geometry*> Geom2d_CartesianPoint_as_Geom2d_Geometry_mut(Geom2d_CartesianPoint* self_) { return {static_cast<Geom2d_Geometry*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> Geom2d_CartesianPoint_as_Standard_Transient(const Geom2d_CartesianPoint* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> Geom2d_CartesianPoint_as_Standard_Transient_mut(Geom2d_CartesianPoint* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleGeom2dCartesianPoint*> Geom2d_CartesianPoint_to_handle(Geom2d_CartesianPoint* obj) {
-    try { return {new HandleGeom2dCartesianPoint(obj), nullptr}; }
+extern "C" OcctResult<Handle_Geom2d_CartesianPoint*> Geom2d_CartesianPoint_to_handle(Geom2d_CartesianPoint* obj) {
+    try { return {new Handle_Geom2d_CartesianPoint(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const Geom2d_CartesianPoint*> HandleGeom2dCartesianPoint_get(const HandleGeom2dCartesianPoint* handle) {
+extern "C" OcctResult<const Geom2d_CartesianPoint*> Handle_Geom2d_CartesianPoint_get(const Handle_Geom2d_CartesianPoint* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Geom2d_CartesianPoint*> HandleGeom2dCartesianPoint_get_mut(HandleGeom2dCartesianPoint* handle) {
+extern "C" OcctResult<Geom2d_CartesianPoint*> Handle_Geom2d_CartesianPoint_get_mut(Handle_Geom2d_CartesianPoint* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleGeom2dPoint*> HandleGeom2dCartesianPoint_to_HandleGeom2dPoint(const HandleGeom2dCartesianPoint* self_) {
-    try { return {new HandleGeom2dPoint(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Geom2d_Point*> Handle_Geom2d_CartesianPoint_to_Handle_Geom2d_Point(const Handle_Geom2d_CartesianPoint* self_) {
+    try { return {new Handle_Geom2d_Point(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleGeom2dGeometry*> HandleGeom2dCartesianPoint_to_HandleGeom2dGeometry(const HandleGeom2dCartesianPoint* self_) {
-    try { return {new HandleGeom2dGeometry(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Geom2d_Geometry*> Handle_Geom2d_CartesianPoint_to_Handle_Geom2d_Geometry(const Handle_Geom2d_CartesianPoint* self_) {
+    try { return {new Handle_Geom2d_Geometry(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleGeom2dCartesianPoint_to_HandleStandardTransient(const HandleGeom2dCartesianPoint* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_Geom2d_CartesianPoint_to_Handle_Standard_Transient(const Handle_Geom2d_CartesianPoint* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<double> Geom2d_CartesianPoint_inherited_Distance(const Geom2d_CartesianPoint* self, Handle(Geom2d_Point) const& Other) {
@@ -2297,8 +2404,24 @@ extern "C" OcctResult<gp_Circ2d*> Geom2d_Circle_circ2d(const Geom2d_Circle* self
     try { return {new gp_Circ2d(self_->Circ2d()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<gp_Vec2d*> Geom2d_Circle_dn(const Geom2d_Circle* self_, double U, int32_t N) {
-    try { return {new gp_Vec2d(self_->DN(U, N)), nullptr}; }
+extern "C" OcctResult<gp_Pnt2d*> Geom2d_Circle_eval_d0(const Geom2d_Circle* self_, double U) {
+    try { return {new gp_Pnt2d(self_->EvalD0(U)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Geom2d_Curve::ResD1*> Geom2d_Circle_eval_d1(const Geom2d_Circle* self_, double U) {
+    try { return {new Geom2d_Curve::ResD1(self_->EvalD1(U)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Geom2d_Curve::ResD2*> Geom2d_Circle_eval_d2(const Geom2d_Circle* self_, double U) {
+    try { return {new Geom2d_Curve::ResD2(self_->EvalD2(U)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Geom2d_Curve::ResD3*> Geom2d_Circle_eval_d3(const Geom2d_Circle* self_, double U) {
+    try { return {new Geom2d_Curve::ResD3(self_->EvalD3(U)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<gp_Vec2d*> Geom2d_Circle_eval_dn(const Geom2d_Circle* self_, double U, int32_t N) {
+    try { return {new gp_Vec2d(self_->EvalDN(U, N)), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(Geom2d_Geometry)*> Geom2d_Circle_copy(const Geom2d_Circle* self_) {
@@ -2341,22 +2464,6 @@ extern "C" OcctResult<bool> Geom2d_Circle_is_periodic(const Geom2d_Circle* self_
     try { return {self_->IsPeriodic(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* Geom2d_Circle_d0(const Geom2d_Circle* self_, double U, gp_Pnt2d* P) {
-    try { self_->D0(U, *P); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* Geom2d_Circle_d1(const Geom2d_Circle* self_, double U, gp_Pnt2d* P, gp_Vec2d* V1) {
-    try { self_->D1(U, *P, *V1); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* Geom2d_Circle_d2(const Geom2d_Circle* self_, double U, gp_Pnt2d* P, gp_Vec2d* V1, gp_Vec2d* V2) {
-    try { self_->D2(U, *P, *V1, *V2); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* Geom2d_Circle_d3(const Geom2d_Circle* self_, double U, gp_Pnt2d* P, gp_Vec2d* V1, gp_Vec2d* V2, gp_Vec2d* V3) {
-    try { self_->D3(U, *P, *V1, *V2, *V3); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
 extern "C" const char* Geom2d_Circle_transform(Geom2d_Circle* self_, gp_Trsf2d const* T) {
     try { self_->Transform(*T); return nullptr; }
     OCCT_CATCH_RETURN_VOID
@@ -2381,32 +2488,32 @@ extern "C" OcctResult<const Geom2d_Geometry*> Geom2d_Circle_as_Geom2d_Geometry(c
 extern "C" OcctResult<Geom2d_Geometry*> Geom2d_Circle_as_Geom2d_Geometry_mut(Geom2d_Circle* self_) { return {static_cast<Geom2d_Geometry*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> Geom2d_Circle_as_Standard_Transient(const Geom2d_Circle* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> Geom2d_Circle_as_Standard_Transient_mut(Geom2d_Circle* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleGeom2dCircle*> Geom2d_Circle_to_handle(Geom2d_Circle* obj) {
-    try { return {new HandleGeom2dCircle(obj), nullptr}; }
+extern "C" OcctResult<Handle_Geom2d_Circle*> Geom2d_Circle_to_handle(Geom2d_Circle* obj) {
+    try { return {new Handle_Geom2d_Circle(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const Geom2d_Circle*> HandleGeom2dCircle_get(const HandleGeom2dCircle* handle) {
+extern "C" OcctResult<const Geom2d_Circle*> Handle_Geom2d_Circle_get(const Handle_Geom2d_Circle* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Geom2d_Circle*> HandleGeom2dCircle_get_mut(HandleGeom2dCircle* handle) {
+extern "C" OcctResult<Geom2d_Circle*> Handle_Geom2d_Circle_get_mut(Handle_Geom2d_Circle* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleGeom2dConic*> HandleGeom2dCircle_to_HandleGeom2dConic(const HandleGeom2dCircle* self_) {
-    try { return {new HandleGeom2dConic(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Geom2d_Conic*> Handle_Geom2d_Circle_to_Handle_Geom2d_Conic(const Handle_Geom2d_Circle* self_) {
+    try { return {new Handle_Geom2d_Conic(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleGeom2dCurve*> HandleGeom2dCircle_to_HandleGeom2dCurve(const HandleGeom2dCircle* self_) {
-    try { return {new HandleGeom2dCurve(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Geom2d_Curve*> Handle_Geom2d_Circle_to_Handle_Geom2d_Curve(const Handle_Geom2d_Circle* self_) {
+    try { return {new Handle_Geom2d_Curve(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleGeom2dGeometry*> HandleGeom2dCircle_to_HandleGeom2dGeometry(const HandleGeom2dCircle* self_) {
-    try { return {new HandleGeom2dGeometry(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Geom2d_Geometry*> Handle_Geom2d_Circle_to_Handle_Geom2d_Geometry(const Handle_Geom2d_Circle* self_) {
+    try { return {new Handle_Geom2d_Geometry(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleGeom2dCircle_to_HandleStandardTransient(const HandleGeom2dCircle* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_Geom2d_Circle_to_Handle_Standard_Transient(const Handle_Geom2d_Circle* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" const char* Geom2d_Circle_inherited_SetAxis(Geom2d_Circle* self, gp_Ax22d const& theA) {
@@ -2467,6 +2574,26 @@ extern "C" OcctResult<Handle(Geom2d_Curve)*> Geom2d_Circle_inherited_Reversed(co
 }
 extern "C" OcctResult<double> Geom2d_Circle_inherited_Period(const Geom2d_Circle* self) {
     try { return {self->Period(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" const char* Geom2d_Circle_inherited_D0(const Geom2d_Circle* self, double U, gp_Pnt2d& P) {
+    try { self->D0(U, P); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* Geom2d_Circle_inherited_D1(const Geom2d_Circle* self, double U, gp_Pnt2d& P, gp_Vec2d& V1) {
+    try { self->D1(U, P, V1); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* Geom2d_Circle_inherited_D2(const Geom2d_Circle* self, double U, gp_Pnt2d& P, gp_Vec2d& V1, gp_Vec2d& V2) {
+    try { self->D2(U, P, V1, V2); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* Geom2d_Circle_inherited_D3(const Geom2d_Circle* self, double U, gp_Pnt2d& P, gp_Vec2d& V1, gp_Vec2d& V2, gp_Vec2d& V3) {
+    try { self->D3(U, P, V1, V2, V3); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" OcctResult<gp_Vec2d*> Geom2d_Circle_inherited_DN(const Geom2d_Circle* self, double U, int32_t N) {
+    try { return {new gp_Vec2d(self->DN(U, N)), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<gp_Pnt2d*> Geom2d_Circle_inherited_Value(const Geom2d_Circle* self, double U) {
@@ -2613,55 +2740,55 @@ extern "C" OcctResult<const Geom2d_Geometry*> Geom2d_Conic_as_Geom2d_Geometry(co
 extern "C" OcctResult<Geom2d_Geometry*> Geom2d_Conic_as_Geom2d_Geometry_mut(Geom2d_Conic* self_) { return {static_cast<Geom2d_Geometry*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> Geom2d_Conic_as_Standard_Transient(const Geom2d_Conic* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> Geom2d_Conic_as_Standard_Transient_mut(Geom2d_Conic* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<const Geom2d_Conic*> HandleGeom2dConic_get(const HandleGeom2dConic* handle) {
+extern "C" OcctResult<const Geom2d_Conic*> Handle_Geom2d_Conic_get(const Handle_Geom2d_Conic* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Geom2d_Conic*> HandleGeom2dConic_get_mut(HandleGeom2dConic* handle) {
+extern "C" OcctResult<Geom2d_Conic*> Handle_Geom2d_Conic_get_mut(Handle_Geom2d_Conic* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleGeom2dCurve*> HandleGeom2dConic_to_HandleGeom2dCurve(const HandleGeom2dConic* self_) {
-    try { return {new HandleGeom2dCurve(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Geom2d_Curve*> Handle_Geom2d_Conic_to_Handle_Geom2d_Curve(const Handle_Geom2d_Conic* self_) {
+    try { return {new Handle_Geom2d_Curve(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleGeom2dGeometry*> HandleGeom2dConic_to_HandleGeom2dGeometry(const HandleGeom2dConic* self_) {
-    try { return {new HandleGeom2dGeometry(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Geom2d_Geometry*> Handle_Geom2d_Conic_to_Handle_Geom2d_Geometry(const Handle_Geom2d_Conic* self_) {
+    try { return {new Handle_Geom2d_Geometry(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleGeom2dConic_to_HandleStandardTransient(const HandleGeom2dConic* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_Geom2d_Conic_to_Handle_Standard_Transient(const Handle_Geom2d_Conic* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleGeom2dCircle*> HandleGeom2dConic_downcast_to_HandleGeom2dCircle(const HandleGeom2dConic* self_) {
+extern "C" OcctResult<Handle_Geom2d_Circle*> Handle_Geom2d_Conic_downcast_to_Handle_Geom2d_Circle(const Handle_Geom2d_Conic* self_) {
     try {
     opencascade::handle<Geom2d_Circle> result = opencascade::handle<Geom2d_Circle>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleGeom2dCircle(result), nullptr};
+    return {new Handle_Geom2d_Circle(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleGeom2dEllipse*> HandleGeom2dConic_downcast_to_HandleGeom2dEllipse(const HandleGeom2dConic* self_) {
+extern "C" OcctResult<Handle_Geom2d_Ellipse*> Handle_Geom2d_Conic_downcast_to_Handle_Geom2d_Ellipse(const Handle_Geom2d_Conic* self_) {
     try {
     opencascade::handle<Geom2d_Ellipse> result = opencascade::handle<Geom2d_Ellipse>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleGeom2dEllipse(result), nullptr};
+    return {new Handle_Geom2d_Ellipse(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleGeom2dHyperbola*> HandleGeom2dConic_downcast_to_HandleGeom2dHyperbola(const HandleGeom2dConic* self_) {
+extern "C" OcctResult<Handle_Geom2d_Hyperbola*> Handle_Geom2d_Conic_downcast_to_Handle_Geom2d_Hyperbola(const Handle_Geom2d_Conic* self_) {
     try {
     opencascade::handle<Geom2d_Hyperbola> result = opencascade::handle<Geom2d_Hyperbola>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleGeom2dHyperbola(result), nullptr};
+    return {new Handle_Geom2d_Hyperbola(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleGeom2dParabola*> HandleGeom2dConic_downcast_to_HandleGeom2dParabola(const HandleGeom2dConic* self_) {
+extern "C" OcctResult<Handle_Geom2d_Parabola*> Handle_Geom2d_Conic_downcast_to_Handle_Geom2d_Parabola(const Handle_Geom2d_Conic* self_) {
     try {
     opencascade::handle<Geom2d_Parabola> result = opencascade::handle<Geom2d_Parabola>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleGeom2dParabola(result), nullptr};
+    return {new Handle_Geom2d_Parabola(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
@@ -2695,6 +2822,26 @@ extern "C" OcctResult<bool> Geom2d_Conic_inherited_IsPeriodic(const Geom2d_Conic
 }
 extern "C" OcctResult<double> Geom2d_Conic_inherited_Period(const Geom2d_Conic* self) {
     try { return {self->Period(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<gp_Pnt2d*> Geom2d_Conic_inherited_EvalD0(const Geom2d_Conic* self, double U) {
+    try { return {new gp_Pnt2d(self->EvalD0(U)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Geom2d_Curve::ResD1*> Geom2d_Conic_inherited_EvalD1(const Geom2d_Conic* self, double U) {
+    try { return {new Geom2d_Curve::ResD1(self->EvalD1(U)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Geom2d_Curve::ResD2*> Geom2d_Conic_inherited_EvalD2(const Geom2d_Conic* self, double U) {
+    try { return {new Geom2d_Curve::ResD2(self->EvalD2(U)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Geom2d_Curve::ResD3*> Geom2d_Conic_inherited_EvalD3(const Geom2d_Conic* self, double U) {
+    try { return {new Geom2d_Curve::ResD3(self->EvalD3(U)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<gp_Vec2d*> Geom2d_Conic_inherited_EvalDN(const Geom2d_Conic* self, double U, int32_t N) {
+    try { return {new gp_Vec2d(self->EvalDN(U, N)), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" const char* Geom2d_Conic_inherited_D0(const Geom2d_Conic* self, double U, gp_Pnt2d& P) {
@@ -2803,6 +2950,26 @@ extern "C" OcctResult<Handle(Geom2d_Curve)*> Geom2d_Curve_reversed(const Geom2d_
     try { return {new Handle(Geom2d_Curve)(self_->Reversed()), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" OcctResult<gp_Pnt2d*> Geom2d_Curve_eval_d0(const Geom2d_Curve* self_, double U) {
+    try { return {new gp_Pnt2d(self_->EvalD0(U)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Geom2d_Curve::ResD1*> Geom2d_Curve_eval_d1(const Geom2d_Curve* self_, double U) {
+    try { return {new Geom2d_Curve::ResD1(self_->EvalD1(U)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Geom2d_Curve::ResD2*> Geom2d_Curve_eval_d2(const Geom2d_Curve* self_, double U) {
+    try { return {new Geom2d_Curve::ResD2(self_->EvalD2(U)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Geom2d_Curve::ResD3*> Geom2d_Curve_eval_d3(const Geom2d_Curve* self_, double U) {
+    try { return {new Geom2d_Curve::ResD3(self_->EvalD3(U)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<gp_Vec2d*> Geom2d_Curve_eval_dn(const Geom2d_Curve* self_, double U, int32_t N) {
+    try { return {new gp_Vec2d(self_->EvalDN(U, N)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" OcctResult<gp_Vec2d*> Geom2d_Curve_dn(const Geom2d_Curve* self_, double U, int32_t N) {
     try { return {new gp_Vec2d(self_->DN(U, N)), nullptr}; }
     OCCT_CATCH_RETURN
@@ -2887,115 +3054,163 @@ extern "C" OcctResult<const Geom2d_Geometry*> Geom2d_Curve_as_Geom2d_Geometry(co
 extern "C" OcctResult<Geom2d_Geometry*> Geom2d_Curve_as_Geom2d_Geometry_mut(Geom2d_Curve* self_) { return {static_cast<Geom2d_Geometry*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> Geom2d_Curve_as_Standard_Transient(const Geom2d_Curve* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> Geom2d_Curve_as_Standard_Transient_mut(Geom2d_Curve* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<const Geom2d_Curve*> HandleGeom2dCurve_get(const HandleGeom2dCurve* handle) {
+extern "C" OcctResult<const Geom2d_Curve*> Handle_Geom2d_Curve_get(const Handle_Geom2d_Curve* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Geom2d_Curve*> HandleGeom2dCurve_get_mut(HandleGeom2dCurve* handle) {
+extern "C" OcctResult<Geom2d_Curve*> Handle_Geom2d_Curve_get_mut(Handle_Geom2d_Curve* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleGeom2dGeometry*> HandleGeom2dCurve_to_HandleGeom2dGeometry(const HandleGeom2dCurve* self_) {
-    try { return {new HandleGeom2dGeometry(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Geom2d_Geometry*> Handle_Geom2d_Curve_to_Handle_Geom2d_Geometry(const Handle_Geom2d_Curve* self_) {
+    try { return {new Handle_Geom2d_Geometry(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleGeom2dCurve_to_HandleStandardTransient(const HandleGeom2dCurve* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_Geom2d_Curve_to_Handle_Standard_Transient(const Handle_Geom2d_Curve* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleBisectorBisecAna*> HandleGeom2dCurve_downcast_to_HandleBisectorBisecAna(const HandleGeom2dCurve* self_) {
+extern "C" OcctResult<Handle_Bisector_BisecAna*> Handle_Geom2d_Curve_downcast_to_Handle_Bisector_BisecAna(const Handle_Geom2d_Curve* self_) {
     try {
     opencascade::handle<Bisector_BisecAna> result = opencascade::handle<Bisector_BisecAna>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleBisectorBisecAna(result), nullptr};
+    return {new Handle_Bisector_BisecAna(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleBisectorBisecCC*> HandleGeom2dCurve_downcast_to_HandleBisectorBisecCC(const HandleGeom2dCurve* self_) {
+extern "C" OcctResult<Handle_Bisector_BisecCC*> Handle_Geom2d_Curve_downcast_to_Handle_Bisector_BisecCC(const Handle_Geom2d_Curve* self_) {
     try {
     opencascade::handle<Bisector_BisecCC> result = opencascade::handle<Bisector_BisecCC>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleBisectorBisecCC(result), nullptr};
+    return {new Handle_Bisector_BisecCC(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleBisectorBisecPC*> HandleGeom2dCurve_downcast_to_HandleBisectorBisecPC(const HandleGeom2dCurve* self_) {
+extern "C" OcctResult<Handle_Bisector_BisecPC*> Handle_Geom2d_Curve_downcast_to_Handle_Bisector_BisecPC(const Handle_Geom2d_Curve* self_) {
     try {
     opencascade::handle<Bisector_BisecPC> result = opencascade::handle<Bisector_BisecPC>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleBisectorBisecPC(result), nullptr};
+    return {new Handle_Bisector_BisecPC(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleGeom2dBSplineCurve*> HandleGeom2dCurve_downcast_to_HandleGeom2dBSplineCurve(const HandleGeom2dCurve* self_) {
+extern "C" OcctResult<Handle_Geom2dEval_AHTBezierCurve*> Handle_Geom2d_Curve_downcast_to_Handle_Geom2dEval_AHTBezierCurve(const Handle_Geom2d_Curve* self_) {
+    try {
+    opencascade::handle<Geom2dEval_AHTBezierCurve> result = opencascade::handle<Geom2dEval_AHTBezierCurve>::DownCast(*self_);
+    if (result.IsNull()) { return {nullptr, nullptr}; }
+    return {new Handle_Geom2dEval_AHTBezierCurve(result), nullptr};
+    }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Handle_Geom2dEval_ArchimedeanSpiralCurve*> Handle_Geom2d_Curve_downcast_to_Handle_Geom2dEval_ArchimedeanSpiralCurve(const Handle_Geom2d_Curve* self_) {
+    try {
+    opencascade::handle<Geom2dEval_ArchimedeanSpiralCurve> result = opencascade::handle<Geom2dEval_ArchimedeanSpiralCurve>::DownCast(*self_);
+    if (result.IsNull()) { return {nullptr, nullptr}; }
+    return {new Handle_Geom2dEval_ArchimedeanSpiralCurve(result), nullptr};
+    }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Handle_Geom2dEval_CircleInvoluteCurve*> Handle_Geom2d_Curve_downcast_to_Handle_Geom2dEval_CircleInvoluteCurve(const Handle_Geom2d_Curve* self_) {
+    try {
+    opencascade::handle<Geom2dEval_CircleInvoluteCurve> result = opencascade::handle<Geom2dEval_CircleInvoluteCurve>::DownCast(*self_);
+    if (result.IsNull()) { return {nullptr, nullptr}; }
+    return {new Handle_Geom2dEval_CircleInvoluteCurve(result), nullptr};
+    }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Handle_Geom2dEval_LogarithmicSpiralCurve*> Handle_Geom2d_Curve_downcast_to_Handle_Geom2dEval_LogarithmicSpiralCurve(const Handle_Geom2d_Curve* self_) {
+    try {
+    opencascade::handle<Geom2dEval_LogarithmicSpiralCurve> result = opencascade::handle<Geom2dEval_LogarithmicSpiralCurve>::DownCast(*self_);
+    if (result.IsNull()) { return {nullptr, nullptr}; }
+    return {new Handle_Geom2dEval_LogarithmicSpiralCurve(result), nullptr};
+    }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Handle_Geom2dEval_SineWaveCurve*> Handle_Geom2d_Curve_downcast_to_Handle_Geom2dEval_SineWaveCurve(const Handle_Geom2d_Curve* self_) {
+    try {
+    opencascade::handle<Geom2dEval_SineWaveCurve> result = opencascade::handle<Geom2dEval_SineWaveCurve>::DownCast(*self_);
+    if (result.IsNull()) { return {nullptr, nullptr}; }
+    return {new Handle_Geom2dEval_SineWaveCurve(result), nullptr};
+    }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Handle_Geom2dEval_TBezierCurve*> Handle_Geom2d_Curve_downcast_to_Handle_Geom2dEval_TBezierCurve(const Handle_Geom2d_Curve* self_) {
+    try {
+    opencascade::handle<Geom2dEval_TBezierCurve> result = opencascade::handle<Geom2dEval_TBezierCurve>::DownCast(*self_);
+    if (result.IsNull()) { return {nullptr, nullptr}; }
+    return {new Handle_Geom2dEval_TBezierCurve(result), nullptr};
+    }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Handle_Geom2d_BSplineCurve*> Handle_Geom2d_Curve_downcast_to_Handle_Geom2d_BSplineCurve(const Handle_Geom2d_Curve* self_) {
     try {
     opencascade::handle<Geom2d_BSplineCurve> result = opencascade::handle<Geom2d_BSplineCurve>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleGeom2dBSplineCurve(result), nullptr};
+    return {new Handle_Geom2d_BSplineCurve(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleGeom2dBezierCurve*> HandleGeom2dCurve_downcast_to_HandleGeom2dBezierCurve(const HandleGeom2dCurve* self_) {
+extern "C" OcctResult<Handle_Geom2d_BezierCurve*> Handle_Geom2d_Curve_downcast_to_Handle_Geom2d_BezierCurve(const Handle_Geom2d_Curve* self_) {
     try {
     opencascade::handle<Geom2d_BezierCurve> result = opencascade::handle<Geom2d_BezierCurve>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleGeom2dBezierCurve(result), nullptr};
+    return {new Handle_Geom2d_BezierCurve(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleGeom2dCircle*> HandleGeom2dCurve_downcast_to_HandleGeom2dCircle(const HandleGeom2dCurve* self_) {
+extern "C" OcctResult<Handle_Geom2d_Circle*> Handle_Geom2d_Curve_downcast_to_Handle_Geom2d_Circle(const Handle_Geom2d_Curve* self_) {
     try {
     opencascade::handle<Geom2d_Circle> result = opencascade::handle<Geom2d_Circle>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleGeom2dCircle(result), nullptr};
+    return {new Handle_Geom2d_Circle(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleGeom2dEllipse*> HandleGeom2dCurve_downcast_to_HandleGeom2dEllipse(const HandleGeom2dCurve* self_) {
+extern "C" OcctResult<Handle_Geom2d_Ellipse*> Handle_Geom2d_Curve_downcast_to_Handle_Geom2d_Ellipse(const Handle_Geom2d_Curve* self_) {
     try {
     opencascade::handle<Geom2d_Ellipse> result = opencascade::handle<Geom2d_Ellipse>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleGeom2dEllipse(result), nullptr};
+    return {new Handle_Geom2d_Ellipse(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleGeom2dHyperbola*> HandleGeom2dCurve_downcast_to_HandleGeom2dHyperbola(const HandleGeom2dCurve* self_) {
+extern "C" OcctResult<Handle_Geom2d_Hyperbola*> Handle_Geom2d_Curve_downcast_to_Handle_Geom2d_Hyperbola(const Handle_Geom2d_Curve* self_) {
     try {
     opencascade::handle<Geom2d_Hyperbola> result = opencascade::handle<Geom2d_Hyperbola>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleGeom2dHyperbola(result), nullptr};
+    return {new Handle_Geom2d_Hyperbola(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleGeom2dLine*> HandleGeom2dCurve_downcast_to_HandleGeom2dLine(const HandleGeom2dCurve* self_) {
+extern "C" OcctResult<Handle_Geom2d_Line*> Handle_Geom2d_Curve_downcast_to_Handle_Geom2d_Line(const Handle_Geom2d_Curve* self_) {
     try {
     opencascade::handle<Geom2d_Line> result = opencascade::handle<Geom2d_Line>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleGeom2dLine(result), nullptr};
+    return {new Handle_Geom2d_Line(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleGeom2dOffsetCurve*> HandleGeom2dCurve_downcast_to_HandleGeom2dOffsetCurve(const HandleGeom2dCurve* self_) {
+extern "C" OcctResult<Handle_Geom2d_OffsetCurve*> Handle_Geom2d_Curve_downcast_to_Handle_Geom2d_OffsetCurve(const Handle_Geom2d_Curve* self_) {
     try {
     opencascade::handle<Geom2d_OffsetCurve> result = opencascade::handle<Geom2d_OffsetCurve>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleGeom2dOffsetCurve(result), nullptr};
+    return {new Handle_Geom2d_OffsetCurve(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleGeom2dParabola*> HandleGeom2dCurve_downcast_to_HandleGeom2dParabola(const HandleGeom2dCurve* self_) {
+extern "C" OcctResult<Handle_Geom2d_Parabola*> Handle_Geom2d_Curve_downcast_to_Handle_Geom2d_Parabola(const Handle_Geom2d_Curve* self_) {
     try {
     opencascade::handle<Geom2d_Parabola> result = opencascade::handle<Geom2d_Parabola>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleGeom2dParabola(result), nullptr};
+    return {new Handle_Geom2d_Parabola(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleGeom2dTrimmedCurve*> HandleGeom2dCurve_downcast_to_HandleGeom2dTrimmedCurve(const HandleGeom2dCurve* self_) {
+extern "C" OcctResult<Handle_Geom2d_TrimmedCurve*> Handle_Geom2d_Curve_downcast_to_Handle_Geom2d_TrimmedCurve(const Handle_Geom2d_Curve* self_) {
     try {
     opencascade::handle<Geom2d_TrimmedCurve> result = opencascade::handle<Geom2d_TrimmedCurve>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleGeom2dTrimmedCurve(result), nullptr};
+    return {new Handle_Geom2d_TrimmedCurve(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
@@ -3074,6 +3289,36 @@ extern "C" const char* Geom2d_Curve_inherited_Delete(const Geom2d_Curve* self) {
 extern "C" void Geom2d_Curve_destructor(Geom2d_Curve* self_) { delete self_; }
 
 // ========================
+// Geom2d_Curve::ResD1 wrappers
+// ========================
+
+extern "C" OcctResult<Geom2d_Curve::ResD1*> Geom2d_Curve_ResD1_ctor() {
+    try { return {new Geom2d_Curve::ResD1(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" void Geom2d_Curve_ResD1_destructor(Geom2d_Curve::ResD1* self_) { delete self_; }
+
+// ========================
+// Geom2d_Curve::ResD2 wrappers
+// ========================
+
+extern "C" OcctResult<Geom2d_Curve::ResD2*> Geom2d_Curve_ResD2_ctor() {
+    try { return {new Geom2d_Curve::ResD2(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" void Geom2d_Curve_ResD2_destructor(Geom2d_Curve::ResD2* self_) { delete self_; }
+
+// ========================
+// Geom2d_Curve::ResD3 wrappers
+// ========================
+
+extern "C" OcctResult<Geom2d_Curve::ResD3*> Geom2d_Curve_ResD3_ctor() {
+    try { return {new Geom2d_Curve::ResD3(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" void Geom2d_Curve_ResD3_destructor(Geom2d_Curve::ResD3* self_) { delete self_; }
+
+// ========================
 // Geom2d_Direction wrappers
 // ========================
 
@@ -3143,28 +3388,28 @@ extern "C" OcctResult<const Geom2d_Geometry*> Geom2d_Direction_as_Geom2d_Geometr
 extern "C" OcctResult<Geom2d_Geometry*> Geom2d_Direction_as_Geom2d_Geometry_mut(Geom2d_Direction* self_) { return {static_cast<Geom2d_Geometry*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> Geom2d_Direction_as_Standard_Transient(const Geom2d_Direction* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> Geom2d_Direction_as_Standard_Transient_mut(Geom2d_Direction* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleGeom2dDirection*> Geom2d_Direction_to_handle(Geom2d_Direction* obj) {
-    try { return {new HandleGeom2dDirection(obj), nullptr}; }
+extern "C" OcctResult<Handle_Geom2d_Direction*> Geom2d_Direction_to_handle(Geom2d_Direction* obj) {
+    try { return {new Handle_Geom2d_Direction(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const Geom2d_Direction*> HandleGeom2dDirection_get(const HandleGeom2dDirection* handle) {
+extern "C" OcctResult<const Geom2d_Direction*> Handle_Geom2d_Direction_get(const Handle_Geom2d_Direction* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Geom2d_Direction*> HandleGeom2dDirection_get_mut(HandleGeom2dDirection* handle) {
+extern "C" OcctResult<Geom2d_Direction*> Handle_Geom2d_Direction_get_mut(Handle_Geom2d_Direction* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleGeom2dVector*> HandleGeom2dDirection_to_HandleGeom2dVector(const HandleGeom2dDirection* self_) {
-    try { return {new HandleGeom2dVector(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Geom2d_Vector*> Handle_Geom2d_Direction_to_Handle_Geom2d_Vector(const Handle_Geom2d_Direction* self_) {
+    try { return {new Handle_Geom2d_Vector(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleGeom2dGeometry*> HandleGeom2dDirection_to_HandleGeom2dGeometry(const HandleGeom2dDirection* self_) {
-    try { return {new HandleGeom2dGeometry(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Geom2d_Geometry*> Handle_Geom2d_Direction_to_Handle_Geom2d_Geometry(const Handle_Geom2d_Direction* self_) {
+    try { return {new Handle_Geom2d_Geometry(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleGeom2dDirection_to_HandleStandardTransient(const HandleGeom2dDirection* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_Geom2d_Direction_to_Handle_Standard_Transient(const Handle_Geom2d_Direction* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" const char* Geom2d_Direction_inherited_Reverse(Geom2d_Direction* self) {
@@ -3301,8 +3546,24 @@ extern "C" OcctResult<gp_Pnt2d*> Geom2d_Ellipse_focus2(const Geom2d_Ellipse* sel
     try { return {new gp_Pnt2d(self_->Focus2()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<gp_Vec2d*> Geom2d_Ellipse_dn(const Geom2d_Ellipse* self_, double U, int32_t N) {
-    try { return {new gp_Vec2d(self_->DN(U, N)), nullptr}; }
+extern "C" OcctResult<gp_Pnt2d*> Geom2d_Ellipse_eval_d0(const Geom2d_Ellipse* self_, double U) {
+    try { return {new gp_Pnt2d(self_->EvalD0(U)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Geom2d_Curve::ResD1*> Geom2d_Ellipse_eval_d1(const Geom2d_Ellipse* self_, double U) {
+    try { return {new Geom2d_Curve::ResD1(self_->EvalD1(U)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Geom2d_Curve::ResD2*> Geom2d_Ellipse_eval_d2(const Geom2d_Ellipse* self_, double U) {
+    try { return {new Geom2d_Curve::ResD2(self_->EvalD2(U)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Geom2d_Curve::ResD3*> Geom2d_Ellipse_eval_d3(const Geom2d_Ellipse* self_, double U) {
+    try { return {new Geom2d_Curve::ResD3(self_->EvalD3(U)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<gp_Vec2d*> Geom2d_Ellipse_eval_dn(const Geom2d_Ellipse* self_, double U, int32_t N) {
+    try { return {new gp_Vec2d(self_->EvalDN(U, N)), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(Geom2d_Geometry)*> Geom2d_Ellipse_copy(const Geom2d_Ellipse* self_) {
@@ -3361,22 +3622,6 @@ extern "C" OcctResult<bool> Geom2d_Ellipse_is_periodic(const Geom2d_Ellipse* sel
     try { return {self_->IsPeriodic(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* Geom2d_Ellipse_d0(const Geom2d_Ellipse* self_, double U, gp_Pnt2d* P) {
-    try { self_->D0(U, *P); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* Geom2d_Ellipse_d1(const Geom2d_Ellipse* self_, double U, gp_Pnt2d* P, gp_Vec2d* V1) {
-    try { self_->D1(U, *P, *V1); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* Geom2d_Ellipse_d2(const Geom2d_Ellipse* self_, double U, gp_Pnt2d* P, gp_Vec2d* V1, gp_Vec2d* V2) {
-    try { self_->D2(U, *P, *V1, *V2); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* Geom2d_Ellipse_d3(const Geom2d_Ellipse* self_, double U, gp_Pnt2d* P, gp_Vec2d* V1, gp_Vec2d* V2, gp_Vec2d* V3) {
-    try { self_->D3(U, *P, *V1, *V2, *V3); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
 extern "C" const char* Geom2d_Ellipse_transform(Geom2d_Ellipse* self_, gp_Trsf2d const* T) {
     try { self_->Transform(*T); return nullptr; }
     OCCT_CATCH_RETURN_VOID
@@ -3401,32 +3646,32 @@ extern "C" OcctResult<const Geom2d_Geometry*> Geom2d_Ellipse_as_Geom2d_Geometry(
 extern "C" OcctResult<Geom2d_Geometry*> Geom2d_Ellipse_as_Geom2d_Geometry_mut(Geom2d_Ellipse* self_) { return {static_cast<Geom2d_Geometry*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> Geom2d_Ellipse_as_Standard_Transient(const Geom2d_Ellipse* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> Geom2d_Ellipse_as_Standard_Transient_mut(Geom2d_Ellipse* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleGeom2dEllipse*> Geom2d_Ellipse_to_handle(Geom2d_Ellipse* obj) {
-    try { return {new HandleGeom2dEllipse(obj), nullptr}; }
+extern "C" OcctResult<Handle_Geom2d_Ellipse*> Geom2d_Ellipse_to_handle(Geom2d_Ellipse* obj) {
+    try { return {new Handle_Geom2d_Ellipse(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const Geom2d_Ellipse*> HandleGeom2dEllipse_get(const HandleGeom2dEllipse* handle) {
+extern "C" OcctResult<const Geom2d_Ellipse*> Handle_Geom2d_Ellipse_get(const Handle_Geom2d_Ellipse* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Geom2d_Ellipse*> HandleGeom2dEllipse_get_mut(HandleGeom2dEllipse* handle) {
+extern "C" OcctResult<Geom2d_Ellipse*> Handle_Geom2d_Ellipse_get_mut(Handle_Geom2d_Ellipse* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleGeom2dConic*> HandleGeom2dEllipse_to_HandleGeom2dConic(const HandleGeom2dEllipse* self_) {
-    try { return {new HandleGeom2dConic(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Geom2d_Conic*> Handle_Geom2d_Ellipse_to_Handle_Geom2d_Conic(const Handle_Geom2d_Ellipse* self_) {
+    try { return {new Handle_Geom2d_Conic(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleGeom2dCurve*> HandleGeom2dEllipse_to_HandleGeom2dCurve(const HandleGeom2dEllipse* self_) {
-    try { return {new HandleGeom2dCurve(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Geom2d_Curve*> Handle_Geom2d_Ellipse_to_Handle_Geom2d_Curve(const Handle_Geom2d_Ellipse* self_) {
+    try { return {new Handle_Geom2d_Curve(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleGeom2dGeometry*> HandleGeom2dEllipse_to_HandleGeom2dGeometry(const HandleGeom2dEllipse* self_) {
-    try { return {new HandleGeom2dGeometry(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Geom2d_Geometry*> Handle_Geom2d_Ellipse_to_Handle_Geom2d_Geometry(const Handle_Geom2d_Ellipse* self_) {
+    try { return {new Handle_Geom2d_Geometry(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleGeom2dEllipse_to_HandleStandardTransient(const HandleGeom2dEllipse* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_Geom2d_Ellipse_to_Handle_Standard_Transient(const Handle_Geom2d_Ellipse* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" const char* Geom2d_Ellipse_inherited_SetAxis(Geom2d_Ellipse* self, gp_Ax22d const& theA) {
@@ -3487,6 +3732,26 @@ extern "C" OcctResult<Handle(Geom2d_Curve)*> Geom2d_Ellipse_inherited_Reversed(c
 }
 extern "C" OcctResult<double> Geom2d_Ellipse_inherited_Period(const Geom2d_Ellipse* self) {
     try { return {self->Period(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" const char* Geom2d_Ellipse_inherited_D0(const Geom2d_Ellipse* self, double U, gp_Pnt2d& P) {
+    try { self->D0(U, P); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* Geom2d_Ellipse_inherited_D1(const Geom2d_Ellipse* self, double U, gp_Pnt2d& P, gp_Vec2d& V1) {
+    try { self->D1(U, P, V1); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* Geom2d_Ellipse_inherited_D2(const Geom2d_Ellipse* self, double U, gp_Pnt2d& P, gp_Vec2d& V1, gp_Vec2d& V2) {
+    try { self->D2(U, P, V1, V2); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* Geom2d_Ellipse_inherited_D3(const Geom2d_Ellipse* self, double U, gp_Pnt2d& P, gp_Vec2d& V1, gp_Vec2d& V2, gp_Vec2d& V3) {
+    try { self->D3(U, P, V1, V2, V3); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" OcctResult<gp_Vec2d*> Geom2d_Ellipse_inherited_DN(const Geom2d_Ellipse* self, double U, int32_t N) {
+    try { return {new gp_Vec2d(self->DN(U, N)), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<gp_Pnt2d*> Geom2d_Ellipse_inherited_Value(const Geom2d_Ellipse* self, double U) {
@@ -3637,143 +3902,191 @@ extern "C" OcctResult<Handle(Standard_Type) const*> Geom2d_Geometry_get_type_des
 }
 extern "C" OcctResult<const Standard_Transient*> Geom2d_Geometry_as_Standard_Transient(const Geom2d_Geometry* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> Geom2d_Geometry_as_Standard_Transient_mut(Geom2d_Geometry* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<const Geom2d_Geometry*> HandleGeom2dGeometry_get(const HandleGeom2dGeometry* handle) {
+extern "C" OcctResult<const Geom2d_Geometry*> Handle_Geom2d_Geometry_get(const Handle_Geom2d_Geometry* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Geom2d_Geometry*> HandleGeom2dGeometry_get_mut(HandleGeom2dGeometry* handle) {
+extern "C" OcctResult<Geom2d_Geometry*> Handle_Geom2d_Geometry_get_mut(Handle_Geom2d_Geometry* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleGeom2dGeometry_to_HandleStandardTransient(const HandleGeom2dGeometry* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_Geom2d_Geometry_to_Handle_Standard_Transient(const Handle_Geom2d_Geometry* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleBisectorBisecAna*> HandleGeom2dGeometry_downcast_to_HandleBisectorBisecAna(const HandleGeom2dGeometry* self_) {
+extern "C" OcctResult<Handle_Bisector_BisecAna*> Handle_Geom2d_Geometry_downcast_to_Handle_Bisector_BisecAna(const Handle_Geom2d_Geometry* self_) {
     try {
     opencascade::handle<Bisector_BisecAna> result = opencascade::handle<Bisector_BisecAna>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleBisectorBisecAna(result), nullptr};
+    return {new Handle_Bisector_BisecAna(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleBisectorBisecCC*> HandleGeom2dGeometry_downcast_to_HandleBisectorBisecCC(const HandleGeom2dGeometry* self_) {
+extern "C" OcctResult<Handle_Bisector_BisecCC*> Handle_Geom2d_Geometry_downcast_to_Handle_Bisector_BisecCC(const Handle_Geom2d_Geometry* self_) {
     try {
     opencascade::handle<Bisector_BisecCC> result = opencascade::handle<Bisector_BisecCC>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleBisectorBisecCC(result), nullptr};
+    return {new Handle_Bisector_BisecCC(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleBisectorBisecPC*> HandleGeom2dGeometry_downcast_to_HandleBisectorBisecPC(const HandleGeom2dGeometry* self_) {
+extern "C" OcctResult<Handle_Bisector_BisecPC*> Handle_Geom2d_Geometry_downcast_to_Handle_Bisector_BisecPC(const Handle_Geom2d_Geometry* self_) {
     try {
     opencascade::handle<Bisector_BisecPC> result = opencascade::handle<Bisector_BisecPC>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleBisectorBisecPC(result), nullptr};
+    return {new Handle_Bisector_BisecPC(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleGeom2dAxisPlacement*> HandleGeom2dGeometry_downcast_to_HandleGeom2dAxisPlacement(const HandleGeom2dGeometry* self_) {
+extern "C" OcctResult<Handle_Geom2dEval_AHTBezierCurve*> Handle_Geom2d_Geometry_downcast_to_Handle_Geom2dEval_AHTBezierCurve(const Handle_Geom2d_Geometry* self_) {
+    try {
+    opencascade::handle<Geom2dEval_AHTBezierCurve> result = opencascade::handle<Geom2dEval_AHTBezierCurve>::DownCast(*self_);
+    if (result.IsNull()) { return {nullptr, nullptr}; }
+    return {new Handle_Geom2dEval_AHTBezierCurve(result), nullptr};
+    }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Handle_Geom2dEval_ArchimedeanSpiralCurve*> Handle_Geom2d_Geometry_downcast_to_Handle_Geom2dEval_ArchimedeanSpiralCurve(const Handle_Geom2d_Geometry* self_) {
+    try {
+    opencascade::handle<Geom2dEval_ArchimedeanSpiralCurve> result = opencascade::handle<Geom2dEval_ArchimedeanSpiralCurve>::DownCast(*self_);
+    if (result.IsNull()) { return {nullptr, nullptr}; }
+    return {new Handle_Geom2dEval_ArchimedeanSpiralCurve(result), nullptr};
+    }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Handle_Geom2dEval_CircleInvoluteCurve*> Handle_Geom2d_Geometry_downcast_to_Handle_Geom2dEval_CircleInvoluteCurve(const Handle_Geom2d_Geometry* self_) {
+    try {
+    opencascade::handle<Geom2dEval_CircleInvoluteCurve> result = opencascade::handle<Geom2dEval_CircleInvoluteCurve>::DownCast(*self_);
+    if (result.IsNull()) { return {nullptr, nullptr}; }
+    return {new Handle_Geom2dEval_CircleInvoluteCurve(result), nullptr};
+    }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Handle_Geom2dEval_LogarithmicSpiralCurve*> Handle_Geom2d_Geometry_downcast_to_Handle_Geom2dEval_LogarithmicSpiralCurve(const Handle_Geom2d_Geometry* self_) {
+    try {
+    opencascade::handle<Geom2dEval_LogarithmicSpiralCurve> result = opencascade::handle<Geom2dEval_LogarithmicSpiralCurve>::DownCast(*self_);
+    if (result.IsNull()) { return {nullptr, nullptr}; }
+    return {new Handle_Geom2dEval_LogarithmicSpiralCurve(result), nullptr};
+    }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Handle_Geom2dEval_SineWaveCurve*> Handle_Geom2d_Geometry_downcast_to_Handle_Geom2dEval_SineWaveCurve(const Handle_Geom2d_Geometry* self_) {
+    try {
+    opencascade::handle<Geom2dEval_SineWaveCurve> result = opencascade::handle<Geom2dEval_SineWaveCurve>::DownCast(*self_);
+    if (result.IsNull()) { return {nullptr, nullptr}; }
+    return {new Handle_Geom2dEval_SineWaveCurve(result), nullptr};
+    }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Handle_Geom2dEval_TBezierCurve*> Handle_Geom2d_Geometry_downcast_to_Handle_Geom2dEval_TBezierCurve(const Handle_Geom2d_Geometry* self_) {
+    try {
+    opencascade::handle<Geom2dEval_TBezierCurve> result = opencascade::handle<Geom2dEval_TBezierCurve>::DownCast(*self_);
+    if (result.IsNull()) { return {nullptr, nullptr}; }
+    return {new Handle_Geom2dEval_TBezierCurve(result), nullptr};
+    }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Handle_Geom2d_AxisPlacement*> Handle_Geom2d_Geometry_downcast_to_Handle_Geom2d_AxisPlacement(const Handle_Geom2d_Geometry* self_) {
     try {
     opencascade::handle<Geom2d_AxisPlacement> result = opencascade::handle<Geom2d_AxisPlacement>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleGeom2dAxisPlacement(result), nullptr};
+    return {new Handle_Geom2d_AxisPlacement(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleGeom2dBSplineCurve*> HandleGeom2dGeometry_downcast_to_HandleGeom2dBSplineCurve(const HandleGeom2dGeometry* self_) {
+extern "C" OcctResult<Handle_Geom2d_BSplineCurve*> Handle_Geom2d_Geometry_downcast_to_Handle_Geom2d_BSplineCurve(const Handle_Geom2d_Geometry* self_) {
     try {
     opencascade::handle<Geom2d_BSplineCurve> result = opencascade::handle<Geom2d_BSplineCurve>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleGeom2dBSplineCurve(result), nullptr};
+    return {new Handle_Geom2d_BSplineCurve(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleGeom2dBezierCurve*> HandleGeom2dGeometry_downcast_to_HandleGeom2dBezierCurve(const HandleGeom2dGeometry* self_) {
+extern "C" OcctResult<Handle_Geom2d_BezierCurve*> Handle_Geom2d_Geometry_downcast_to_Handle_Geom2d_BezierCurve(const Handle_Geom2d_Geometry* self_) {
     try {
     opencascade::handle<Geom2d_BezierCurve> result = opencascade::handle<Geom2d_BezierCurve>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleGeom2dBezierCurve(result), nullptr};
+    return {new Handle_Geom2d_BezierCurve(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleGeom2dCartesianPoint*> HandleGeom2dGeometry_downcast_to_HandleGeom2dCartesianPoint(const HandleGeom2dGeometry* self_) {
+extern "C" OcctResult<Handle_Geom2d_CartesianPoint*> Handle_Geom2d_Geometry_downcast_to_Handle_Geom2d_CartesianPoint(const Handle_Geom2d_Geometry* self_) {
     try {
     opencascade::handle<Geom2d_CartesianPoint> result = opencascade::handle<Geom2d_CartesianPoint>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleGeom2dCartesianPoint(result), nullptr};
+    return {new Handle_Geom2d_CartesianPoint(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleGeom2dCircle*> HandleGeom2dGeometry_downcast_to_HandleGeom2dCircle(const HandleGeom2dGeometry* self_) {
+extern "C" OcctResult<Handle_Geom2d_Circle*> Handle_Geom2d_Geometry_downcast_to_Handle_Geom2d_Circle(const Handle_Geom2d_Geometry* self_) {
     try {
     opencascade::handle<Geom2d_Circle> result = opencascade::handle<Geom2d_Circle>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleGeom2dCircle(result), nullptr};
+    return {new Handle_Geom2d_Circle(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleGeom2dDirection*> HandleGeom2dGeometry_downcast_to_HandleGeom2dDirection(const HandleGeom2dGeometry* self_) {
+extern "C" OcctResult<Handle_Geom2d_Direction*> Handle_Geom2d_Geometry_downcast_to_Handle_Geom2d_Direction(const Handle_Geom2d_Geometry* self_) {
     try {
     opencascade::handle<Geom2d_Direction> result = opencascade::handle<Geom2d_Direction>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleGeom2dDirection(result), nullptr};
+    return {new Handle_Geom2d_Direction(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleGeom2dEllipse*> HandleGeom2dGeometry_downcast_to_HandleGeom2dEllipse(const HandleGeom2dGeometry* self_) {
+extern "C" OcctResult<Handle_Geom2d_Ellipse*> Handle_Geom2d_Geometry_downcast_to_Handle_Geom2d_Ellipse(const Handle_Geom2d_Geometry* self_) {
     try {
     opencascade::handle<Geom2d_Ellipse> result = opencascade::handle<Geom2d_Ellipse>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleGeom2dEllipse(result), nullptr};
+    return {new Handle_Geom2d_Ellipse(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleGeom2dHyperbola*> HandleGeom2dGeometry_downcast_to_HandleGeom2dHyperbola(const HandleGeom2dGeometry* self_) {
+extern "C" OcctResult<Handle_Geom2d_Hyperbola*> Handle_Geom2d_Geometry_downcast_to_Handle_Geom2d_Hyperbola(const Handle_Geom2d_Geometry* self_) {
     try {
     opencascade::handle<Geom2d_Hyperbola> result = opencascade::handle<Geom2d_Hyperbola>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleGeom2dHyperbola(result), nullptr};
+    return {new Handle_Geom2d_Hyperbola(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleGeom2dLine*> HandleGeom2dGeometry_downcast_to_HandleGeom2dLine(const HandleGeom2dGeometry* self_) {
+extern "C" OcctResult<Handle_Geom2d_Line*> Handle_Geom2d_Geometry_downcast_to_Handle_Geom2d_Line(const Handle_Geom2d_Geometry* self_) {
     try {
     opencascade::handle<Geom2d_Line> result = opencascade::handle<Geom2d_Line>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleGeom2dLine(result), nullptr};
+    return {new Handle_Geom2d_Line(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleGeom2dOffsetCurve*> HandleGeom2dGeometry_downcast_to_HandleGeom2dOffsetCurve(const HandleGeom2dGeometry* self_) {
+extern "C" OcctResult<Handle_Geom2d_OffsetCurve*> Handle_Geom2d_Geometry_downcast_to_Handle_Geom2d_OffsetCurve(const Handle_Geom2d_Geometry* self_) {
     try {
     opencascade::handle<Geom2d_OffsetCurve> result = opencascade::handle<Geom2d_OffsetCurve>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleGeom2dOffsetCurve(result), nullptr};
+    return {new Handle_Geom2d_OffsetCurve(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleGeom2dParabola*> HandleGeom2dGeometry_downcast_to_HandleGeom2dParabola(const HandleGeom2dGeometry* self_) {
+extern "C" OcctResult<Handle_Geom2d_Parabola*> Handle_Geom2d_Geometry_downcast_to_Handle_Geom2d_Parabola(const Handle_Geom2d_Geometry* self_) {
     try {
     opencascade::handle<Geom2d_Parabola> result = opencascade::handle<Geom2d_Parabola>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleGeom2dParabola(result), nullptr};
+    return {new Handle_Geom2d_Parabola(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleGeom2dTrimmedCurve*> HandleGeom2dGeometry_downcast_to_HandleGeom2dTrimmedCurve(const HandleGeom2dGeometry* self_) {
+extern "C" OcctResult<Handle_Geom2d_TrimmedCurve*> Handle_Geom2d_Geometry_downcast_to_Handle_Geom2d_TrimmedCurve(const Handle_Geom2d_Geometry* self_) {
     try {
     opencascade::handle<Geom2d_TrimmedCurve> result = opencascade::handle<Geom2d_TrimmedCurve>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleGeom2dTrimmedCurve(result), nullptr};
+    return {new Handle_Geom2d_TrimmedCurve(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleGeom2dVectorWithMagnitude*> HandleGeom2dGeometry_downcast_to_HandleGeom2dVectorWithMagnitude(const HandleGeom2dGeometry* self_) {
+extern "C" OcctResult<Handle_Geom2d_VectorWithMagnitude*> Handle_Geom2d_Geometry_downcast_to_Handle_Geom2d_VectorWithMagnitude(const Handle_Geom2d_Geometry* self_) {
     try {
     opencascade::handle<Geom2d_VectorWithMagnitude> result = opencascade::handle<Geom2d_VectorWithMagnitude>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleGeom2dVectorWithMagnitude(result), nullptr};
+    return {new Handle_Geom2d_VectorWithMagnitude(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
@@ -3863,8 +4176,24 @@ extern "C" OcctResult<gp_Hypr2d*> Geom2d_Hyperbola_other_branch(const Geom2d_Hyp
     try { return {new gp_Hypr2d(self_->OtherBranch()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<gp_Vec2d*> Geom2d_Hyperbola_dn(const Geom2d_Hyperbola* self_, double U, int32_t N) {
-    try { return {new gp_Vec2d(self_->DN(U, N)), nullptr}; }
+extern "C" OcctResult<gp_Pnt2d*> Geom2d_Hyperbola_eval_d0(const Geom2d_Hyperbola* self_, double U) {
+    try { return {new gp_Pnt2d(self_->EvalD0(U)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Geom2d_Curve::ResD1*> Geom2d_Hyperbola_eval_d1(const Geom2d_Hyperbola* self_, double U) {
+    try { return {new Geom2d_Curve::ResD1(self_->EvalD1(U)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Geom2d_Curve::ResD2*> Geom2d_Hyperbola_eval_d2(const Geom2d_Hyperbola* self_, double U) {
+    try { return {new Geom2d_Curve::ResD2(self_->EvalD2(U)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Geom2d_Curve::ResD3*> Geom2d_Hyperbola_eval_d3(const Geom2d_Hyperbola* self_, double U) {
+    try { return {new Geom2d_Curve::ResD3(self_->EvalD3(U)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<gp_Vec2d*> Geom2d_Hyperbola_eval_dn(const Geom2d_Hyperbola* self_, double U, int32_t N) {
+    try { return {new gp_Vec2d(self_->EvalDN(U, N)), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(Geom2d_Geometry)*> Geom2d_Hyperbola_copy(const Geom2d_Hyperbola* self_) {
@@ -3923,22 +4252,6 @@ extern "C" OcctResult<double> Geom2d_Hyperbola_parameter(const Geom2d_Hyperbola*
     try { return {self_->Parameter(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* Geom2d_Hyperbola_d0(const Geom2d_Hyperbola* self_, double U, gp_Pnt2d* P) {
-    try { self_->D0(U, *P); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* Geom2d_Hyperbola_d1(const Geom2d_Hyperbola* self_, double U, gp_Pnt2d* P, gp_Vec2d* V1) {
-    try { self_->D1(U, *P, *V1); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* Geom2d_Hyperbola_d2(const Geom2d_Hyperbola* self_, double U, gp_Pnt2d* P, gp_Vec2d* V1, gp_Vec2d* V2) {
-    try { self_->D2(U, *P, *V1, *V2); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* Geom2d_Hyperbola_d3(const Geom2d_Hyperbola* self_, double U, gp_Pnt2d* P, gp_Vec2d* V1, gp_Vec2d* V2, gp_Vec2d* V3) {
-    try { self_->D3(U, *P, *V1, *V2, *V3); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
 extern "C" const char* Geom2d_Hyperbola_transform(Geom2d_Hyperbola* self_, gp_Trsf2d const* T) {
     try { self_->Transform(*T); return nullptr; }
     OCCT_CATCH_RETURN_VOID
@@ -3963,32 +4276,32 @@ extern "C" OcctResult<const Geom2d_Geometry*> Geom2d_Hyperbola_as_Geom2d_Geometr
 extern "C" OcctResult<Geom2d_Geometry*> Geom2d_Hyperbola_as_Geom2d_Geometry_mut(Geom2d_Hyperbola* self_) { return {static_cast<Geom2d_Geometry*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> Geom2d_Hyperbola_as_Standard_Transient(const Geom2d_Hyperbola* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> Geom2d_Hyperbola_as_Standard_Transient_mut(Geom2d_Hyperbola* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleGeom2dHyperbola*> Geom2d_Hyperbola_to_handle(Geom2d_Hyperbola* obj) {
-    try { return {new HandleGeom2dHyperbola(obj), nullptr}; }
+extern "C" OcctResult<Handle_Geom2d_Hyperbola*> Geom2d_Hyperbola_to_handle(Geom2d_Hyperbola* obj) {
+    try { return {new Handle_Geom2d_Hyperbola(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const Geom2d_Hyperbola*> HandleGeom2dHyperbola_get(const HandleGeom2dHyperbola* handle) {
+extern "C" OcctResult<const Geom2d_Hyperbola*> Handle_Geom2d_Hyperbola_get(const Handle_Geom2d_Hyperbola* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Geom2d_Hyperbola*> HandleGeom2dHyperbola_get_mut(HandleGeom2dHyperbola* handle) {
+extern "C" OcctResult<Geom2d_Hyperbola*> Handle_Geom2d_Hyperbola_get_mut(Handle_Geom2d_Hyperbola* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleGeom2dConic*> HandleGeom2dHyperbola_to_HandleGeom2dConic(const HandleGeom2dHyperbola* self_) {
-    try { return {new HandleGeom2dConic(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Geom2d_Conic*> Handle_Geom2d_Hyperbola_to_Handle_Geom2d_Conic(const Handle_Geom2d_Hyperbola* self_) {
+    try { return {new Handle_Geom2d_Conic(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleGeom2dCurve*> HandleGeom2dHyperbola_to_HandleGeom2dCurve(const HandleGeom2dHyperbola* self_) {
-    try { return {new HandleGeom2dCurve(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Geom2d_Curve*> Handle_Geom2d_Hyperbola_to_Handle_Geom2d_Curve(const Handle_Geom2d_Hyperbola* self_) {
+    try { return {new Handle_Geom2d_Curve(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleGeom2dGeometry*> HandleGeom2dHyperbola_to_HandleGeom2dGeometry(const HandleGeom2dHyperbola* self_) {
-    try { return {new HandleGeom2dGeometry(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Geom2d_Geometry*> Handle_Geom2d_Hyperbola_to_Handle_Geom2d_Geometry(const Handle_Geom2d_Hyperbola* self_) {
+    try { return {new Handle_Geom2d_Geometry(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleGeom2dHyperbola_to_HandleStandardTransient(const HandleGeom2dHyperbola* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_Geom2d_Hyperbola_to_Handle_Standard_Transient(const Handle_Geom2d_Hyperbola* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" const char* Geom2d_Hyperbola_inherited_SetAxis(Geom2d_Hyperbola* self, gp_Ax22d const& theA) {
@@ -4049,6 +4362,26 @@ extern "C" OcctResult<Handle(Geom2d_Curve)*> Geom2d_Hyperbola_inherited_Reversed
 }
 extern "C" OcctResult<double> Geom2d_Hyperbola_inherited_Period(const Geom2d_Hyperbola* self) {
     try { return {self->Period(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" const char* Geom2d_Hyperbola_inherited_D0(const Geom2d_Hyperbola* self, double U, gp_Pnt2d& P) {
+    try { self->D0(U, P); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* Geom2d_Hyperbola_inherited_D1(const Geom2d_Hyperbola* self, double U, gp_Pnt2d& P, gp_Vec2d& V1) {
+    try { self->D1(U, P, V1); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* Geom2d_Hyperbola_inherited_D2(const Geom2d_Hyperbola* self, double U, gp_Pnt2d& P, gp_Vec2d& V1, gp_Vec2d& V2) {
+    try { self->D2(U, P, V1, V2); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* Geom2d_Hyperbola_inherited_D3(const Geom2d_Hyperbola* self, double U, gp_Pnt2d& P, gp_Vec2d& V1, gp_Vec2d& V2, gp_Vec2d& V3) {
+    try { self->D3(U, P, V1, V2, V3); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" OcctResult<gp_Vec2d*> Geom2d_Hyperbola_inherited_DN(const Geom2d_Hyperbola* self, double U, int32_t N) {
+    try { return {new gp_Vec2d(self->DN(U, N)), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<gp_Pnt2d*> Geom2d_Hyperbola_inherited_Value(const Geom2d_Hyperbola* self, double U) {
@@ -4141,8 +4474,24 @@ extern "C" OcctResult<gp_Lin2d*> Geom2d_Line_lin2d(const Geom2d_Line* self_) {
     try { return {new gp_Lin2d(self_->Lin2d()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<gp_Vec2d*> Geom2d_Line_dn(const Geom2d_Line* self_, double U, int32_t N) {
-    try { return {new gp_Vec2d(self_->DN(U, N)), nullptr}; }
+extern "C" OcctResult<gp_Pnt2d*> Geom2d_Line_eval_d0(const Geom2d_Line* self_, double U) {
+    try { return {new gp_Pnt2d(self_->EvalD0(U)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Geom2d_Curve::ResD1*> Geom2d_Line_eval_d1(const Geom2d_Line* self_, double U) {
+    try { return {new Geom2d_Curve::ResD1(self_->EvalD1(U)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Geom2d_Curve::ResD2*> Geom2d_Line_eval_d2(const Geom2d_Line* self_, double U) {
+    try { return {new Geom2d_Curve::ResD2(self_->EvalD2(U)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Geom2d_Curve::ResD3*> Geom2d_Line_eval_d3(const Geom2d_Line* self_, double U) {
+    try { return {new Geom2d_Curve::ResD3(self_->EvalD3(U)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<gp_Vec2d*> Geom2d_Line_eval_dn(const Geom2d_Line* self_, double U, int32_t N) {
+    try { return {new gp_Vec2d(self_->EvalDN(U, N)), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(Geom2d_Geometry)*> Geom2d_Line_copy(const Geom2d_Line* self_) {
@@ -4213,22 +4562,6 @@ extern "C" OcctResult<bool> Geom2d_Line_is_cn(const Geom2d_Line* self_, int32_t 
     try { return {self_->IsCN(N), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* Geom2d_Line_d0(const Geom2d_Line* self_, double U, gp_Pnt2d* P) {
-    try { self_->D0(U, *P); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* Geom2d_Line_d1(const Geom2d_Line* self_, double U, gp_Pnt2d* P, gp_Vec2d* V1) {
-    try { self_->D1(U, *P, *V1); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* Geom2d_Line_d2(const Geom2d_Line* self_, double U, gp_Pnt2d* P, gp_Vec2d* V1, gp_Vec2d* V2) {
-    try { self_->D2(U, *P, *V1, *V2); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* Geom2d_Line_d3(const Geom2d_Line* self_, double U, gp_Pnt2d* P, gp_Vec2d* V1, gp_Vec2d* V2, gp_Vec2d* V3) {
-    try { self_->D3(U, *P, *V1, *V2, *V3); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
 extern "C" const char* Geom2d_Line_transform(Geom2d_Line* self_, gp_Trsf2d const* T) {
     try { self_->Transform(*T); return nullptr; }
     OCCT_CATCH_RETURN_VOID
@@ -4259,28 +4592,28 @@ extern "C" OcctResult<const Geom2d_Geometry*> Geom2d_Line_as_Geom2d_Geometry(con
 extern "C" OcctResult<Geom2d_Geometry*> Geom2d_Line_as_Geom2d_Geometry_mut(Geom2d_Line* self_) { return {static_cast<Geom2d_Geometry*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> Geom2d_Line_as_Standard_Transient(const Geom2d_Line* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> Geom2d_Line_as_Standard_Transient_mut(Geom2d_Line* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleGeom2dLine*> Geom2d_Line_to_handle(Geom2d_Line* obj) {
-    try { return {new HandleGeom2dLine(obj), nullptr}; }
+extern "C" OcctResult<Handle_Geom2d_Line*> Geom2d_Line_to_handle(Geom2d_Line* obj) {
+    try { return {new Handle_Geom2d_Line(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const Geom2d_Line*> HandleGeom2dLine_get(const HandleGeom2dLine* handle) {
+extern "C" OcctResult<const Geom2d_Line*> Handle_Geom2d_Line_get(const Handle_Geom2d_Line* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Geom2d_Line*> HandleGeom2dLine_get_mut(HandleGeom2dLine* handle) {
+extern "C" OcctResult<Geom2d_Line*> Handle_Geom2d_Line_get_mut(Handle_Geom2d_Line* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleGeom2dCurve*> HandleGeom2dLine_to_HandleGeom2dCurve(const HandleGeom2dLine* self_) {
-    try { return {new HandleGeom2dCurve(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Geom2d_Curve*> Handle_Geom2d_Line_to_Handle_Geom2d_Curve(const Handle_Geom2d_Line* self_) {
+    try { return {new Handle_Geom2d_Curve(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleGeom2dGeometry*> HandleGeom2dLine_to_HandleGeom2dGeometry(const HandleGeom2dLine* self_) {
-    try { return {new HandleGeom2dGeometry(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Geom2d_Geometry*> Handle_Geom2d_Line_to_Handle_Geom2d_Geometry(const Handle_Geom2d_Line* self_) {
+    try { return {new Handle_Geom2d_Geometry(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleGeom2dLine_to_HandleStandardTransient(const HandleGeom2dLine* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_Geom2d_Line_to_Handle_Standard_Transient(const Handle_Geom2d_Line* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(Geom2d_Curve)*> Geom2d_Line_inherited_Reversed(const Geom2d_Line* self) {
@@ -4289,6 +4622,26 @@ extern "C" OcctResult<Handle(Geom2d_Curve)*> Geom2d_Line_inherited_Reversed(cons
 }
 extern "C" OcctResult<double> Geom2d_Line_inherited_Period(const Geom2d_Line* self) {
     try { return {self->Period(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" const char* Geom2d_Line_inherited_D0(const Geom2d_Line* self, double U, gp_Pnt2d& P) {
+    try { self->D0(U, P); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* Geom2d_Line_inherited_D1(const Geom2d_Line* self, double U, gp_Pnt2d& P, gp_Vec2d& V1) {
+    try { self->D1(U, P, V1); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* Geom2d_Line_inherited_D2(const Geom2d_Line* self, double U, gp_Pnt2d& P, gp_Vec2d& V1, gp_Vec2d& V2) {
+    try { self->D2(U, P, V1, V2); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* Geom2d_Line_inherited_D3(const Geom2d_Line* self, double U, gp_Pnt2d& P, gp_Vec2d& V1, gp_Vec2d& V2, gp_Vec2d& V3) {
+    try { self->D3(U, P, V1, V2, V3); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" OcctResult<gp_Vec2d*> Geom2d_Line_inherited_DN(const Geom2d_Line* self, double U, int32_t N) {
+    try { return {new gp_Vec2d(self->DN(U, N)), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<gp_Pnt2d*> Geom2d_Line_inherited_Value(const Geom2d_Line* self, double U) {
@@ -4373,13 +4726,45 @@ extern "C" OcctResult<Handle(Geom2d_Curve)*> Geom2d_OffsetCurve_basis_curve(cons
     try { return {new Handle(Geom2d_Curve)(self_->BasisCurve()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<gp_Vec2d*> Geom2d_OffsetCurve_dn(const Geom2d_OffsetCurve* self_, double U, int32_t N) {
-    try { return {new gp_Vec2d(self_->DN(U, N)), nullptr}; }
+extern "C" OcctResult<gp_Pnt2d*> Geom2d_OffsetCurve_eval_d0(const Geom2d_OffsetCurve* self_, double U) {
+    try { return {new gp_Pnt2d(self_->EvalD0(U)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Geom2d_Curve::ResD1*> Geom2d_OffsetCurve_eval_d1(const Geom2d_OffsetCurve* self_, double U) {
+    try { return {new Geom2d_Curve::ResD1(self_->EvalD1(U)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Geom2d_Curve::ResD2*> Geom2d_OffsetCurve_eval_d2(const Geom2d_OffsetCurve* self_, double U) {
+    try { return {new Geom2d_Curve::ResD2(self_->EvalD2(U)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Geom2d_Curve::ResD3*> Geom2d_OffsetCurve_eval_d3(const Geom2d_OffsetCurve* self_, double U) {
+    try { return {new Geom2d_Curve::ResD3(self_->EvalD3(U)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<gp_Vec2d*> Geom2d_OffsetCurve_eval_dn(const Geom2d_OffsetCurve* self_, double U, int32_t N) {
+    try { return {new gp_Vec2d(self_->EvalDN(U, N)), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(Geom2d_Geometry)*> Geom2d_OffsetCurve_copy(const Geom2d_OffsetCurve* self_) {
     try { return {new Handle(Geom2d_Geometry)(self_->Copy()), nullptr}; }
     OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<bool> Geom2d_OffsetCurve_has_eval_representation(const Geom2d_OffsetCurve* self_) {
+    try { return {self_->HasEvalRepresentation(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Handle(Geom2dEval_RepCurveDesc::Base) const*> Geom2d_OffsetCurve_eval_representation(const Geom2d_OffsetCurve* self_) {
+    try { return {&(self_->EvalRepresentation()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" const char* Geom2d_OffsetCurve_set_eval_representation(Geom2d_OffsetCurve* self_, Handle(Geom2dEval_RepCurveDesc::Base) const* theDesc) {
+    try { self_->SetEvalRepresentation(*theDesc); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* Geom2d_OffsetCurve_clear_eval_representation(Geom2d_OffsetCurve* self_) {
+    try { self_->ClearEvalRepresentation(); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
 }
 extern "C" const char* Geom2d_OffsetCurve_reverse(Geom2d_OffsetCurve* self_) {
     try { self_->Reverse(); return nullptr; }
@@ -4400,22 +4785,6 @@ extern "C" const char* Geom2d_OffsetCurve_set_offset_value(Geom2d_OffsetCurve* s
 extern "C" OcctResult<int32_t> Geom2d_OffsetCurve_continuity(const Geom2d_OffsetCurve* self_) {
     try { return {static_cast<int32_t>(self_->Continuity()), nullptr}; }
     OCCT_CATCH_RETURN
-}
-extern "C" const char* Geom2d_OffsetCurve_d0(const Geom2d_OffsetCurve* self_, double U, gp_Pnt2d* P) {
-    try { self_->D0(U, *P); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* Geom2d_OffsetCurve_d1(const Geom2d_OffsetCurve* self_, double U, gp_Pnt2d* P, gp_Vec2d* V1) {
-    try { self_->D1(U, *P, *V1); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* Geom2d_OffsetCurve_d2(const Geom2d_OffsetCurve* self_, double U, gp_Pnt2d* P, gp_Vec2d* V1, gp_Vec2d* V2) {
-    try { self_->D2(U, *P, *V1, *V2); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* Geom2d_OffsetCurve_d3(const Geom2d_OffsetCurve* self_, double U, gp_Pnt2d* P, gp_Vec2d* V1, gp_Vec2d* V2, gp_Vec2d* V3) {
-    try { self_->D3(U, *P, *V1, *V2, *V3); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
 }
 extern "C" OcctResult<double> Geom2d_OffsetCurve_first_parameter(const Geom2d_OffsetCurve* self_) {
     try { return {self_->FirstParameter(), nullptr}; }
@@ -4479,32 +4848,52 @@ extern "C" OcctResult<const Geom2d_Geometry*> Geom2d_OffsetCurve_as_Geom2d_Geome
 extern "C" OcctResult<Geom2d_Geometry*> Geom2d_OffsetCurve_as_Geom2d_Geometry_mut(Geom2d_OffsetCurve* self_) { return {static_cast<Geom2d_Geometry*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> Geom2d_OffsetCurve_as_Standard_Transient(const Geom2d_OffsetCurve* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> Geom2d_OffsetCurve_as_Standard_Transient_mut(Geom2d_OffsetCurve* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleGeom2dOffsetCurve*> Geom2d_OffsetCurve_to_handle(Geom2d_OffsetCurve* obj) {
-    try { return {new HandleGeom2dOffsetCurve(obj), nullptr}; }
+extern "C" OcctResult<Handle_Geom2d_OffsetCurve*> Geom2d_OffsetCurve_to_handle(Geom2d_OffsetCurve* obj) {
+    try { return {new Handle_Geom2d_OffsetCurve(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const Geom2d_OffsetCurve*> HandleGeom2dOffsetCurve_get(const HandleGeom2dOffsetCurve* handle) {
+extern "C" OcctResult<const Geom2d_OffsetCurve*> Handle_Geom2d_OffsetCurve_get(const Handle_Geom2d_OffsetCurve* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Geom2d_OffsetCurve*> HandleGeom2dOffsetCurve_get_mut(HandleGeom2dOffsetCurve* handle) {
+extern "C" OcctResult<Geom2d_OffsetCurve*> Handle_Geom2d_OffsetCurve_get_mut(Handle_Geom2d_OffsetCurve* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleGeom2dCurve*> HandleGeom2dOffsetCurve_to_HandleGeom2dCurve(const HandleGeom2dOffsetCurve* self_) {
-    try { return {new HandleGeom2dCurve(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Geom2d_Curve*> Handle_Geom2d_OffsetCurve_to_Handle_Geom2d_Curve(const Handle_Geom2d_OffsetCurve* self_) {
+    try { return {new Handle_Geom2d_Curve(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleGeom2dGeometry*> HandleGeom2dOffsetCurve_to_HandleGeom2dGeometry(const HandleGeom2dOffsetCurve* self_) {
-    try { return {new HandleGeom2dGeometry(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Geom2d_Geometry*> Handle_Geom2d_OffsetCurve_to_Handle_Geom2d_Geometry(const Handle_Geom2d_OffsetCurve* self_) {
+    try { return {new Handle_Geom2d_Geometry(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleGeom2dOffsetCurve_to_HandleStandardTransient(const HandleGeom2dOffsetCurve* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_Geom2d_OffsetCurve_to_Handle_Standard_Transient(const Handle_Geom2d_OffsetCurve* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(Geom2d_Curve)*> Geom2d_OffsetCurve_inherited_Reversed(const Geom2d_OffsetCurve* self) {
     try { return {new Handle(Geom2d_Curve)(self->Reversed()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" const char* Geom2d_OffsetCurve_inherited_D0(const Geom2d_OffsetCurve* self, double U, gp_Pnt2d& P) {
+    try { self->D0(U, P); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* Geom2d_OffsetCurve_inherited_D1(const Geom2d_OffsetCurve* self, double U, gp_Pnt2d& P, gp_Vec2d& V1) {
+    try { self->D1(U, P, V1); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* Geom2d_OffsetCurve_inherited_D2(const Geom2d_OffsetCurve* self, double U, gp_Pnt2d& P, gp_Vec2d& V1, gp_Vec2d& V2) {
+    try { self->D2(U, P, V1, V2); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* Geom2d_OffsetCurve_inherited_D3(const Geom2d_OffsetCurve* self, double U, gp_Pnt2d& P, gp_Vec2d& V1, gp_Vec2d& V2, gp_Vec2d& V3) {
+    try { self->D3(U, P, V1, V2, V3); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" OcctResult<gp_Vec2d*> Geom2d_OffsetCurve_inherited_DN(const Geom2d_OffsetCurve* self, double U, int32_t N) {
+    try { return {new gp_Vec2d(self->DN(U, N)), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<gp_Pnt2d*> Geom2d_OffsetCurve_inherited_Value(const Geom2d_OffsetCurve* self, double U) {
@@ -4609,8 +4998,24 @@ extern "C" OcctResult<gp_Pnt2d*> Geom2d_Parabola_focus(const Geom2d_Parabola* se
     try { return {new gp_Pnt2d(self_->Focus()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<gp_Vec2d*> Geom2d_Parabola_dn(const Geom2d_Parabola* self_, double U, int32_t N) {
-    try { return {new gp_Vec2d(self_->DN(U, N)), nullptr}; }
+extern "C" OcctResult<gp_Pnt2d*> Geom2d_Parabola_eval_d0(const Geom2d_Parabola* self_, double U) {
+    try { return {new gp_Pnt2d(self_->EvalD0(U)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Geom2d_Curve::ResD1*> Geom2d_Parabola_eval_d1(const Geom2d_Parabola* self_, double U) {
+    try { return {new Geom2d_Curve::ResD1(self_->EvalD1(U)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Geom2d_Curve::ResD2*> Geom2d_Parabola_eval_d2(const Geom2d_Parabola* self_, double U) {
+    try { return {new Geom2d_Curve::ResD2(self_->EvalD2(U)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Geom2d_Curve::ResD3*> Geom2d_Parabola_eval_d3(const Geom2d_Parabola* self_, double U) {
+    try { return {new Geom2d_Curve::ResD3(self_->EvalD3(U)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<gp_Vec2d*> Geom2d_Parabola_eval_dn(const Geom2d_Parabola* self_, double U, int32_t N) {
+    try { return {new gp_Vec2d(self_->EvalDN(U, N)), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(Geom2d_Geometry)*> Geom2d_Parabola_copy(const Geom2d_Parabola* self_) {
@@ -4657,22 +5062,6 @@ extern "C" OcctResult<double> Geom2d_Parabola_parameter(const Geom2d_Parabola* s
     try { return {self_->Parameter(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* Geom2d_Parabola_d0(const Geom2d_Parabola* self_, double U, gp_Pnt2d* P) {
-    try { self_->D0(U, *P); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* Geom2d_Parabola_d1(const Geom2d_Parabola* self_, double U, gp_Pnt2d* P, gp_Vec2d* V1) {
-    try { self_->D1(U, *P, *V1); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* Geom2d_Parabola_d2(const Geom2d_Parabola* self_, double U, gp_Pnt2d* P, gp_Vec2d* V1, gp_Vec2d* V2) {
-    try { self_->D2(U, *P, *V1, *V2); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* Geom2d_Parabola_d3(const Geom2d_Parabola* self_, double U, gp_Pnt2d* P, gp_Vec2d* V1, gp_Vec2d* V2, gp_Vec2d* V3) {
-    try { self_->D3(U, *P, *V1, *V2, *V3); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
 extern "C" const char* Geom2d_Parabola_transform(Geom2d_Parabola* self_, gp_Trsf2d const* T) {
     try { self_->Transform(*T); return nullptr; }
     OCCT_CATCH_RETURN_VOID
@@ -4705,32 +5094,32 @@ extern "C" OcctResult<const Geom2d_Geometry*> Geom2d_Parabola_as_Geom2d_Geometry
 extern "C" OcctResult<Geom2d_Geometry*> Geom2d_Parabola_as_Geom2d_Geometry_mut(Geom2d_Parabola* self_) { return {static_cast<Geom2d_Geometry*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> Geom2d_Parabola_as_Standard_Transient(const Geom2d_Parabola* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> Geom2d_Parabola_as_Standard_Transient_mut(Geom2d_Parabola* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleGeom2dParabola*> Geom2d_Parabola_to_handle(Geom2d_Parabola* obj) {
-    try { return {new HandleGeom2dParabola(obj), nullptr}; }
+extern "C" OcctResult<Handle_Geom2d_Parabola*> Geom2d_Parabola_to_handle(Geom2d_Parabola* obj) {
+    try { return {new Handle_Geom2d_Parabola(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const Geom2d_Parabola*> HandleGeom2dParabola_get(const HandleGeom2dParabola* handle) {
+extern "C" OcctResult<const Geom2d_Parabola*> Handle_Geom2d_Parabola_get(const Handle_Geom2d_Parabola* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Geom2d_Parabola*> HandleGeom2dParabola_get_mut(HandleGeom2dParabola* handle) {
+extern "C" OcctResult<Geom2d_Parabola*> Handle_Geom2d_Parabola_get_mut(Handle_Geom2d_Parabola* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleGeom2dConic*> HandleGeom2dParabola_to_HandleGeom2dConic(const HandleGeom2dParabola* self_) {
-    try { return {new HandleGeom2dConic(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Geom2d_Conic*> Handle_Geom2d_Parabola_to_Handle_Geom2d_Conic(const Handle_Geom2d_Parabola* self_) {
+    try { return {new Handle_Geom2d_Conic(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleGeom2dCurve*> HandleGeom2dParabola_to_HandleGeom2dCurve(const HandleGeom2dParabola* self_) {
-    try { return {new HandleGeom2dCurve(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Geom2d_Curve*> Handle_Geom2d_Parabola_to_Handle_Geom2d_Curve(const Handle_Geom2d_Parabola* self_) {
+    try { return {new Handle_Geom2d_Curve(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleGeom2dGeometry*> HandleGeom2dParabola_to_HandleGeom2dGeometry(const HandleGeom2dParabola* self_) {
-    try { return {new HandleGeom2dGeometry(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Geom2d_Geometry*> Handle_Geom2d_Parabola_to_Handle_Geom2d_Geometry(const Handle_Geom2d_Parabola* self_) {
+    try { return {new Handle_Geom2d_Geometry(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleGeom2dParabola_to_HandleStandardTransient(const HandleGeom2dParabola* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_Geom2d_Parabola_to_Handle_Standard_Transient(const Handle_Geom2d_Parabola* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" const char* Geom2d_Parabola_inherited_SetAxis(Geom2d_Parabola* self, gp_Ax22d const& theA) {
@@ -4783,6 +5172,26 @@ extern "C" OcctResult<Handle(Geom2d_Curve)*> Geom2d_Parabola_inherited_Reversed(
 }
 extern "C" OcctResult<double> Geom2d_Parabola_inherited_Period(const Geom2d_Parabola* self) {
     try { return {self->Period(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" const char* Geom2d_Parabola_inherited_D0(const Geom2d_Parabola* self, double U, gp_Pnt2d& P) {
+    try { self->D0(U, P); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* Geom2d_Parabola_inherited_D1(const Geom2d_Parabola* self, double U, gp_Pnt2d& P, gp_Vec2d& V1) {
+    try { self->D1(U, P, V1); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* Geom2d_Parabola_inherited_D2(const Geom2d_Parabola* self, double U, gp_Pnt2d& P, gp_Vec2d& V1, gp_Vec2d& V2) {
+    try { self->D2(U, P, V1, V2); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* Geom2d_Parabola_inherited_D3(const Geom2d_Parabola* self, double U, gp_Pnt2d& P, gp_Vec2d& V1, gp_Vec2d& V2, gp_Vec2d& V3) {
+    try { self->D3(U, P, V1, V2, V3); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" OcctResult<gp_Vec2d*> Geom2d_Parabola_inherited_DN(const Geom2d_Parabola* self, double U, int32_t N) {
+    try { return {new gp_Vec2d(self->DN(U, N)), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<gp_Pnt2d*> Geom2d_Parabola_inherited_Value(const Geom2d_Parabola* self, double U) {
@@ -4899,27 +5308,27 @@ extern "C" OcctResult<const Geom2d_Geometry*> Geom2d_Point_as_Geom2d_Geometry(co
 extern "C" OcctResult<Geom2d_Geometry*> Geom2d_Point_as_Geom2d_Geometry_mut(Geom2d_Point* self_) { return {static_cast<Geom2d_Geometry*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> Geom2d_Point_as_Standard_Transient(const Geom2d_Point* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> Geom2d_Point_as_Standard_Transient_mut(Geom2d_Point* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<const Geom2d_Point*> HandleGeom2dPoint_get(const HandleGeom2dPoint* handle) {
+extern "C" OcctResult<const Geom2d_Point*> Handle_Geom2d_Point_get(const Handle_Geom2d_Point* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Geom2d_Point*> HandleGeom2dPoint_get_mut(HandleGeom2dPoint* handle) {
+extern "C" OcctResult<Geom2d_Point*> Handle_Geom2d_Point_get_mut(Handle_Geom2d_Point* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleGeom2dGeometry*> HandleGeom2dPoint_to_HandleGeom2dGeometry(const HandleGeom2dPoint* self_) {
-    try { return {new HandleGeom2dGeometry(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Geom2d_Geometry*> Handle_Geom2d_Point_to_Handle_Geom2d_Geometry(const Handle_Geom2d_Point* self_) {
+    try { return {new Handle_Geom2d_Geometry(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleGeom2dPoint_to_HandleStandardTransient(const HandleGeom2dPoint* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_Geom2d_Point_to_Handle_Standard_Transient(const Handle_Geom2d_Point* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleGeom2dCartesianPoint*> HandleGeom2dPoint_downcast_to_HandleGeom2dCartesianPoint(const HandleGeom2dPoint* self_) {
+extern "C" OcctResult<Handle_Geom2d_CartesianPoint*> Handle_Geom2d_Point_downcast_to_Handle_Geom2d_CartesianPoint(const Handle_Geom2d_Point* self_) {
     try {
     opencascade::handle<Geom2d_CartesianPoint> result = opencascade::handle<Geom2d_CartesianPoint>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleGeom2dCartesianPoint(result), nullptr};
+    return {new Handle_Geom2d_CartesianPoint(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
@@ -5115,20 +5524,20 @@ extern "C" OcctResult<Handle(Standard_Type) const*> Geom2d_Transformation_get_ty
 }
 extern "C" OcctResult<const Standard_Transient*> Geom2d_Transformation_as_Standard_Transient(const Geom2d_Transformation* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> Geom2d_Transformation_as_Standard_Transient_mut(Geom2d_Transformation* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleGeom2dTransformation*> Geom2d_Transformation_to_handle(Geom2d_Transformation* obj) {
-    try { return {new HandleGeom2dTransformation(obj), nullptr}; }
+extern "C" OcctResult<Handle_Geom2d_Transformation*> Geom2d_Transformation_to_handle(Geom2d_Transformation* obj) {
+    try { return {new Handle_Geom2d_Transformation(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const Geom2d_Transformation*> HandleGeom2dTransformation_get(const HandleGeom2dTransformation* handle) {
+extern "C" OcctResult<const Geom2d_Transformation*> Handle_Geom2d_Transformation_get(const Handle_Geom2d_Transformation* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Geom2d_Transformation*> HandleGeom2dTransformation_get_mut(HandleGeom2dTransformation* handle) {
+extern "C" OcctResult<Geom2d_Transformation*> Handle_Geom2d_Transformation_get_mut(Handle_Geom2d_Transformation* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleGeom2dTransformation_to_HandleStandardTransient(const HandleGeom2dTransformation* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_Geom2d_Transformation_to_Handle_Standard_Transient(const Handle_Geom2d_Transformation* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> Geom2d_Transformation_inherited_IsInstance(const Geom2d_Transformation* self, Handle(Standard_Type) const& theType) {
@@ -5181,8 +5590,24 @@ extern "C" OcctResult<gp_Pnt2d*> Geom2d_TrimmedCurve_start_point(const Geom2d_Tr
     try { return {new gp_Pnt2d(self_->StartPoint()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<gp_Vec2d*> Geom2d_TrimmedCurve_dn(const Geom2d_TrimmedCurve* self_, double U, int32_t N) {
-    try { return {new gp_Vec2d(self_->DN(U, N)), nullptr}; }
+extern "C" OcctResult<gp_Pnt2d*> Geom2d_TrimmedCurve_eval_d0(const Geom2d_TrimmedCurve* self_, double U) {
+    try { return {new gp_Pnt2d(self_->EvalD0(U)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Geom2d_Curve::ResD1*> Geom2d_TrimmedCurve_eval_d1(const Geom2d_TrimmedCurve* self_, double U) {
+    try { return {new Geom2d_Curve::ResD1(self_->EvalD1(U)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Geom2d_Curve::ResD2*> Geom2d_TrimmedCurve_eval_d2(const Geom2d_TrimmedCurve* self_, double U) {
+    try { return {new Geom2d_Curve::ResD2(self_->EvalD2(U)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Geom2d_Curve::ResD3*> Geom2d_TrimmedCurve_eval_d3(const Geom2d_TrimmedCurve* self_, double U) {
+    try { return {new Geom2d_Curve::ResD3(self_->EvalD3(U)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<gp_Vec2d*> Geom2d_TrimmedCurve_eval_dn(const Geom2d_TrimmedCurve* self_, double U, int32_t N) {
+    try { return {new gp_Vec2d(self_->EvalDN(U, N)), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(Geom2d_Geometry)*> Geom2d_TrimmedCurve_copy(const Geom2d_TrimmedCurve* self_) {
@@ -5229,22 +5654,6 @@ extern "C" OcctResult<double> Geom2d_TrimmedCurve_last_parameter(const Geom2d_Tr
     try { return {self_->LastParameter(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* Geom2d_TrimmedCurve_d0(const Geom2d_TrimmedCurve* self_, double U, gp_Pnt2d* P) {
-    try { self_->D0(U, *P); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* Geom2d_TrimmedCurve_d1(const Geom2d_TrimmedCurve* self_, double U, gp_Pnt2d* P, gp_Vec2d* V1) {
-    try { self_->D1(U, *P, *V1); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* Geom2d_TrimmedCurve_d2(const Geom2d_TrimmedCurve* self_, double U, gp_Pnt2d* P, gp_Vec2d* V1, gp_Vec2d* V2) {
-    try { self_->D2(U, *P, *V1, *V2); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* Geom2d_TrimmedCurve_d3(const Geom2d_TrimmedCurve* self_, double U, gp_Pnt2d* P, gp_Vec2d* V1, gp_Vec2d* V2, gp_Vec2d* V3) {
-    try { self_->D3(U, *P, *V1, *V2, *V3); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
 extern "C" const char* Geom2d_TrimmedCurve_transform(Geom2d_TrimmedCurve* self_, gp_Trsf2d const* T) {
     try { self_->Transform(*T); return nullptr; }
     OCCT_CATCH_RETURN_VOID
@@ -5277,36 +5686,56 @@ extern "C" OcctResult<const Geom2d_Geometry*> Geom2d_TrimmedCurve_as_Geom2d_Geom
 extern "C" OcctResult<Geom2d_Geometry*> Geom2d_TrimmedCurve_as_Geom2d_Geometry_mut(Geom2d_TrimmedCurve* self_) { return {static_cast<Geom2d_Geometry*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> Geom2d_TrimmedCurve_as_Standard_Transient(const Geom2d_TrimmedCurve* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> Geom2d_TrimmedCurve_as_Standard_Transient_mut(Geom2d_TrimmedCurve* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleGeom2dTrimmedCurve*> Geom2d_TrimmedCurve_to_handle(Geom2d_TrimmedCurve* obj) {
-    try { return {new HandleGeom2dTrimmedCurve(obj), nullptr}; }
+extern "C" OcctResult<Handle_Geom2d_TrimmedCurve*> Geom2d_TrimmedCurve_to_handle(Geom2d_TrimmedCurve* obj) {
+    try { return {new Handle_Geom2d_TrimmedCurve(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const Geom2d_TrimmedCurve*> HandleGeom2dTrimmedCurve_get(const HandleGeom2dTrimmedCurve* handle) {
+extern "C" OcctResult<const Geom2d_TrimmedCurve*> Handle_Geom2d_TrimmedCurve_get(const Handle_Geom2d_TrimmedCurve* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Geom2d_TrimmedCurve*> HandleGeom2dTrimmedCurve_get_mut(HandleGeom2dTrimmedCurve* handle) {
+extern "C" OcctResult<Geom2d_TrimmedCurve*> Handle_Geom2d_TrimmedCurve_get_mut(Handle_Geom2d_TrimmedCurve* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleGeom2dBoundedCurve*> HandleGeom2dTrimmedCurve_to_HandleGeom2dBoundedCurve(const HandleGeom2dTrimmedCurve* self_) {
-    try { return {new HandleGeom2dBoundedCurve(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Geom2d_BoundedCurve*> Handle_Geom2d_TrimmedCurve_to_Handle_Geom2d_BoundedCurve(const Handle_Geom2d_TrimmedCurve* self_) {
+    try { return {new Handle_Geom2d_BoundedCurve(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleGeom2dCurve*> HandleGeom2dTrimmedCurve_to_HandleGeom2dCurve(const HandleGeom2dTrimmedCurve* self_) {
-    try { return {new HandleGeom2dCurve(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Geom2d_Curve*> Handle_Geom2d_TrimmedCurve_to_Handle_Geom2d_Curve(const Handle_Geom2d_TrimmedCurve* self_) {
+    try { return {new Handle_Geom2d_Curve(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleGeom2dGeometry*> HandleGeom2dTrimmedCurve_to_HandleGeom2dGeometry(const HandleGeom2dTrimmedCurve* self_) {
-    try { return {new HandleGeom2dGeometry(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Geom2d_Geometry*> Handle_Geom2d_TrimmedCurve_to_Handle_Geom2d_Geometry(const Handle_Geom2d_TrimmedCurve* self_) {
+    try { return {new Handle_Geom2d_Geometry(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleGeom2dTrimmedCurve_to_HandleStandardTransient(const HandleGeom2dTrimmedCurve* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_Geom2d_TrimmedCurve_to_Handle_Standard_Transient(const Handle_Geom2d_TrimmedCurve* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(Geom2d_Curve)*> Geom2d_TrimmedCurve_inherited_Reversed(const Geom2d_TrimmedCurve* self) {
     try { return {new Handle(Geom2d_Curve)(self->Reversed()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" const char* Geom2d_TrimmedCurve_inherited_D0(const Geom2d_TrimmedCurve* self, double U, gp_Pnt2d& P) {
+    try { self->D0(U, P); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* Geom2d_TrimmedCurve_inherited_D1(const Geom2d_TrimmedCurve* self, double U, gp_Pnt2d& P, gp_Vec2d& V1) {
+    try { self->D1(U, P, V1); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* Geom2d_TrimmedCurve_inherited_D2(const Geom2d_TrimmedCurve* self, double U, gp_Pnt2d& P, gp_Vec2d& V1, gp_Vec2d& V2) {
+    try { self->D2(U, P, V1, V2); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* Geom2d_TrimmedCurve_inherited_D3(const Geom2d_TrimmedCurve* self, double U, gp_Pnt2d& P, gp_Vec2d& V1, gp_Vec2d& V2, gp_Vec2d& V3) {
+    try { self->D3(U, P, V1, V2, V3); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" OcctResult<gp_Vec2d*> Geom2d_TrimmedCurve_inherited_DN(const Geom2d_TrimmedCurve* self, double U, int32_t N) {
+    try { return {new gp_Vec2d(self->DN(U, N)), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<gp_Pnt2d*> Geom2d_TrimmedCurve_inherited_Value(const Geom2d_TrimmedCurve* self, double U) {
@@ -5383,10 +5812,6 @@ extern "C" void Geom2d_TrimmedCurve_destructor(Geom2d_TrimmedCurve* self_) { del
 // Geom2d_UndefinedDerivative wrappers
 // ========================
 
-extern "C" OcctResult<Geom2d_UndefinedDerivative*> Geom2d_UndefinedDerivative_ctor() {
-    try { return {new Geom2d_UndefinedDerivative(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
 extern "C" OcctResult<Geom2d_UndefinedDerivative*> Geom2d_UndefinedDerivative_ctor_charptr(const char* theMessage) {
     try { return {new Geom2d_UndefinedDerivative(theMessage), nullptr}; }
     OCCT_CATCH_RETURN
@@ -5395,102 +5820,16 @@ extern "C" OcctResult<Geom2d_UndefinedDerivative*> Geom2d_UndefinedDerivative_ct
     try { return {new Geom2d_UndefinedDerivative(theMessage, theStackTrace), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(Standard_Type) const*> Geom2d_UndefinedDerivative_dynamic_type(const Geom2d_UndefinedDerivative* self_) {
-    try { return {&(self_->DynamicType()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* Geom2d_UndefinedDerivative_raise_charptr(const char* theMessage) {
-    try { Geom2d_UndefinedDerivative::Raise(theMessage); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* Geom2d_UndefinedDerivative_raise_sstream(Standard_SStream* theMessage) {
-    try { Geom2d_UndefinedDerivative::Raise(*theMessage); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<Handle(Geom2d_UndefinedDerivative)*> Geom2d_UndefinedDerivative_new_instance_charptr(const char* theMessage) {
-    try { return {new Handle(Geom2d_UndefinedDerivative)(Geom2d_UndefinedDerivative::NewInstance(theMessage)), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Handle(Geom2d_UndefinedDerivative)*> Geom2d_UndefinedDerivative_new_instance_charptr2(const char* theMessage, const char* theStackTrace) {
-    try { return {new Handle(Geom2d_UndefinedDerivative)(Geom2d_UndefinedDerivative::NewInstance(theMessage, theStackTrace)), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<char const*> Geom2d_UndefinedDerivative_get_type_name() {
-    try { return {Geom2d_UndefinedDerivative::get_type_name(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Handle(Standard_Type) const*> Geom2d_UndefinedDerivative_get_type_descriptor() {
-    try { return {&(Geom2d_UndefinedDerivative::get_type_descriptor()), nullptr}; }
+extern "C" OcctResult<char const*> Geom2d_UndefinedDerivative_exception_type(const Geom2d_UndefinedDerivative* self_) {
+    try { return {self_->ExceptionType(), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<const Standard_DomainError*> Geom2d_UndefinedDerivative_as_Standard_DomainError(const Geom2d_UndefinedDerivative* self_) { return {static_cast<const Standard_DomainError*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_DomainError*> Geom2d_UndefinedDerivative_as_Standard_DomainError_mut(Geom2d_UndefinedDerivative* self_) { return {static_cast<Standard_DomainError*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Failure*> Geom2d_UndefinedDerivative_as_Standard_Failure(const Geom2d_UndefinedDerivative* self_) { return {static_cast<const Standard_Failure*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Failure*> Geom2d_UndefinedDerivative_as_Standard_Failure_mut(Geom2d_UndefinedDerivative* self_) { return {static_cast<Standard_Failure*>(self_), nullptr}; }
-extern "C" OcctResult<const Standard_Transient*> Geom2d_UndefinedDerivative_as_Standard_Transient(const Geom2d_UndefinedDerivative* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<Standard_Transient*> Geom2d_UndefinedDerivative_as_Standard_Transient_mut(Geom2d_UndefinedDerivative* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleGeom2dUndefinedDerivative*> Geom2d_UndefinedDerivative_to_handle(Geom2d_UndefinedDerivative* obj) {
-    try { return {new HandleGeom2dUndefinedDerivative(obj), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<const Geom2d_UndefinedDerivative*> HandleGeom2dUndefinedDerivative_get(const HandleGeom2dUndefinedDerivative* handle) {
-    try { return {(*handle).get(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Geom2d_UndefinedDerivative*> HandleGeom2dUndefinedDerivative_get_mut(HandleGeom2dUndefinedDerivative* handle) {
-    try { return {(*handle).get(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<HandleStandardDomainError*> HandleGeom2dUndefinedDerivative_to_HandleStandardDomainError(const HandleGeom2dUndefinedDerivative* self_) {
-    try { return {new HandleStandardDomainError(*self_), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<HandleStandardFailure*> HandleGeom2dUndefinedDerivative_to_HandleStandardFailure(const HandleGeom2dUndefinedDerivative* self_) {
-    try { return {new HandleStandardFailure(*self_), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<HandleStandardTransient*> HandleGeom2dUndefinedDerivative_to_HandleStandardTransient(const HandleGeom2dUndefinedDerivative* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
-    OCCT_CATCH_RETURN
-}
 extern "C" const char* Geom2d_UndefinedDerivative_inherited_Print(const Geom2d_UndefinedDerivative* self, Standard_OStream& theStream) {
     try { self->Print(theStream); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* Geom2d_UndefinedDerivative_inherited_Reraise(Geom2d_UndefinedDerivative* self) {
-    try { self->Reraise(); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* Geom2d_UndefinedDerivative_inherited_Jump(Geom2d_UndefinedDerivative* self) {
-    try { self->Jump(); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<bool> Geom2d_UndefinedDerivative_inherited_IsInstance(const Geom2d_UndefinedDerivative* self, Handle(Standard_Type) const& theType) {
-    try { return {self->IsInstance(theType), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<bool> Geom2d_UndefinedDerivative_inherited_IsKind(const Geom2d_UndefinedDerivative* self, Handle(Standard_Type) const& theType) {
-    try { return {self->IsKind(theType), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Standard_Transient*> Geom2d_UndefinedDerivative_inherited_This(const Geom2d_UndefinedDerivative* self) {
-    try { return {self->This(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<int32_t> Geom2d_UndefinedDerivative_inherited_GetRefCount(const Geom2d_UndefinedDerivative* self) {
-    try { return {self->GetRefCount(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* Geom2d_UndefinedDerivative_inherited_IncrementRefCounter(Geom2d_UndefinedDerivative* self) {
-    try { self->IncrementRefCounter(); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<int32_t> Geom2d_UndefinedDerivative_inherited_DecrementRefCounter(Geom2d_UndefinedDerivative* self) {
-    try { return {self->DecrementRefCounter(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* Geom2d_UndefinedDerivative_inherited_Delete(const Geom2d_UndefinedDerivative* self) {
-    try { self->Delete(); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
 extern "C" void Geom2d_UndefinedDerivative_destructor(Geom2d_UndefinedDerivative* self_) { delete self_; }
@@ -5499,10 +5838,6 @@ extern "C" void Geom2d_UndefinedDerivative_destructor(Geom2d_UndefinedDerivative
 // Geom2d_UndefinedValue wrappers
 // ========================
 
-extern "C" OcctResult<Geom2d_UndefinedValue*> Geom2d_UndefinedValue_ctor() {
-    try { return {new Geom2d_UndefinedValue(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
 extern "C" OcctResult<Geom2d_UndefinedValue*> Geom2d_UndefinedValue_ctor_charptr(const char* theMessage) {
     try { return {new Geom2d_UndefinedValue(theMessage), nullptr}; }
     OCCT_CATCH_RETURN
@@ -5511,102 +5846,16 @@ extern "C" OcctResult<Geom2d_UndefinedValue*> Geom2d_UndefinedValue_ctor_charptr
     try { return {new Geom2d_UndefinedValue(theMessage, theStackTrace), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(Standard_Type) const*> Geom2d_UndefinedValue_dynamic_type(const Geom2d_UndefinedValue* self_) {
-    try { return {&(self_->DynamicType()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* Geom2d_UndefinedValue_raise_charptr(const char* theMessage) {
-    try { Geom2d_UndefinedValue::Raise(theMessage); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* Geom2d_UndefinedValue_raise_sstream(Standard_SStream* theMessage) {
-    try { Geom2d_UndefinedValue::Raise(*theMessage); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<Handle(Geom2d_UndefinedValue)*> Geom2d_UndefinedValue_new_instance_charptr(const char* theMessage) {
-    try { return {new Handle(Geom2d_UndefinedValue)(Geom2d_UndefinedValue::NewInstance(theMessage)), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Handle(Geom2d_UndefinedValue)*> Geom2d_UndefinedValue_new_instance_charptr2(const char* theMessage, const char* theStackTrace) {
-    try { return {new Handle(Geom2d_UndefinedValue)(Geom2d_UndefinedValue::NewInstance(theMessage, theStackTrace)), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<char const*> Geom2d_UndefinedValue_get_type_name() {
-    try { return {Geom2d_UndefinedValue::get_type_name(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Handle(Standard_Type) const*> Geom2d_UndefinedValue_get_type_descriptor() {
-    try { return {&(Geom2d_UndefinedValue::get_type_descriptor()), nullptr}; }
+extern "C" OcctResult<char const*> Geom2d_UndefinedValue_exception_type(const Geom2d_UndefinedValue* self_) {
+    try { return {self_->ExceptionType(), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<const Standard_DomainError*> Geom2d_UndefinedValue_as_Standard_DomainError(const Geom2d_UndefinedValue* self_) { return {static_cast<const Standard_DomainError*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_DomainError*> Geom2d_UndefinedValue_as_Standard_DomainError_mut(Geom2d_UndefinedValue* self_) { return {static_cast<Standard_DomainError*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Failure*> Geom2d_UndefinedValue_as_Standard_Failure(const Geom2d_UndefinedValue* self_) { return {static_cast<const Standard_Failure*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Failure*> Geom2d_UndefinedValue_as_Standard_Failure_mut(Geom2d_UndefinedValue* self_) { return {static_cast<Standard_Failure*>(self_), nullptr}; }
-extern "C" OcctResult<const Standard_Transient*> Geom2d_UndefinedValue_as_Standard_Transient(const Geom2d_UndefinedValue* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<Standard_Transient*> Geom2d_UndefinedValue_as_Standard_Transient_mut(Geom2d_UndefinedValue* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleGeom2dUndefinedValue*> Geom2d_UndefinedValue_to_handle(Geom2d_UndefinedValue* obj) {
-    try { return {new HandleGeom2dUndefinedValue(obj), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<const Geom2d_UndefinedValue*> HandleGeom2dUndefinedValue_get(const HandleGeom2dUndefinedValue* handle) {
-    try { return {(*handle).get(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Geom2d_UndefinedValue*> HandleGeom2dUndefinedValue_get_mut(HandleGeom2dUndefinedValue* handle) {
-    try { return {(*handle).get(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<HandleStandardDomainError*> HandleGeom2dUndefinedValue_to_HandleStandardDomainError(const HandleGeom2dUndefinedValue* self_) {
-    try { return {new HandleStandardDomainError(*self_), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<HandleStandardFailure*> HandleGeom2dUndefinedValue_to_HandleStandardFailure(const HandleGeom2dUndefinedValue* self_) {
-    try { return {new HandleStandardFailure(*self_), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<HandleStandardTransient*> HandleGeom2dUndefinedValue_to_HandleStandardTransient(const HandleGeom2dUndefinedValue* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
-    OCCT_CATCH_RETURN
-}
 extern "C" const char* Geom2d_UndefinedValue_inherited_Print(const Geom2d_UndefinedValue* self, Standard_OStream& theStream) {
     try { self->Print(theStream); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* Geom2d_UndefinedValue_inherited_Reraise(Geom2d_UndefinedValue* self) {
-    try { self->Reraise(); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* Geom2d_UndefinedValue_inherited_Jump(Geom2d_UndefinedValue* self) {
-    try { self->Jump(); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<bool> Geom2d_UndefinedValue_inherited_IsInstance(const Geom2d_UndefinedValue* self, Handle(Standard_Type) const& theType) {
-    try { return {self->IsInstance(theType), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<bool> Geom2d_UndefinedValue_inherited_IsKind(const Geom2d_UndefinedValue* self, Handle(Standard_Type) const& theType) {
-    try { return {self->IsKind(theType), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Standard_Transient*> Geom2d_UndefinedValue_inherited_This(const Geom2d_UndefinedValue* self) {
-    try { return {self->This(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<int32_t> Geom2d_UndefinedValue_inherited_GetRefCount(const Geom2d_UndefinedValue* self) {
-    try { return {self->GetRefCount(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* Geom2d_UndefinedValue_inherited_IncrementRefCounter(Geom2d_UndefinedValue* self) {
-    try { self->IncrementRefCounter(); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<int32_t> Geom2d_UndefinedValue_inherited_DecrementRefCounter(Geom2d_UndefinedValue* self) {
-    try { return {self->DecrementRefCounter(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* Geom2d_UndefinedValue_inherited_Delete(const Geom2d_UndefinedValue* self) {
-    try { self->Delete(); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
 extern "C" void Geom2d_UndefinedValue_destructor(Geom2d_UndefinedValue* self_) { delete self_; }
@@ -5675,35 +5924,35 @@ extern "C" OcctResult<const Geom2d_Geometry*> Geom2d_Vector_as_Geom2d_Geometry(c
 extern "C" OcctResult<Geom2d_Geometry*> Geom2d_Vector_as_Geom2d_Geometry_mut(Geom2d_Vector* self_) { return {static_cast<Geom2d_Geometry*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> Geom2d_Vector_as_Standard_Transient(const Geom2d_Vector* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> Geom2d_Vector_as_Standard_Transient_mut(Geom2d_Vector* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<const Geom2d_Vector*> HandleGeom2dVector_get(const HandleGeom2dVector* handle) {
+extern "C" OcctResult<const Geom2d_Vector*> Handle_Geom2d_Vector_get(const Handle_Geom2d_Vector* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Geom2d_Vector*> HandleGeom2dVector_get_mut(HandleGeom2dVector* handle) {
+extern "C" OcctResult<Geom2d_Vector*> Handle_Geom2d_Vector_get_mut(Handle_Geom2d_Vector* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleGeom2dGeometry*> HandleGeom2dVector_to_HandleGeom2dGeometry(const HandleGeom2dVector* self_) {
-    try { return {new HandleGeom2dGeometry(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Geom2d_Geometry*> Handle_Geom2d_Vector_to_Handle_Geom2d_Geometry(const Handle_Geom2d_Vector* self_) {
+    try { return {new Handle_Geom2d_Geometry(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleGeom2dVector_to_HandleStandardTransient(const HandleGeom2dVector* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_Geom2d_Vector_to_Handle_Standard_Transient(const Handle_Geom2d_Vector* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleGeom2dDirection*> HandleGeom2dVector_downcast_to_HandleGeom2dDirection(const HandleGeom2dVector* self_) {
+extern "C" OcctResult<Handle_Geom2d_Direction*> Handle_Geom2d_Vector_downcast_to_Handle_Geom2d_Direction(const Handle_Geom2d_Vector* self_) {
     try {
     opencascade::handle<Geom2d_Direction> result = opencascade::handle<Geom2d_Direction>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleGeom2dDirection(result), nullptr};
+    return {new Handle_Geom2d_Direction(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleGeom2dVectorWithMagnitude*> HandleGeom2dVector_downcast_to_HandleGeom2dVectorWithMagnitude(const HandleGeom2dVector* self_) {
+extern "C" OcctResult<Handle_Geom2d_VectorWithMagnitude*> Handle_Geom2d_Vector_downcast_to_Handle_Geom2d_VectorWithMagnitude(const Handle_Geom2d_Vector* self_) {
     try {
     opencascade::handle<Geom2d_VectorWithMagnitude> result = opencascade::handle<Geom2d_VectorWithMagnitude>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleGeom2dVectorWithMagnitude(result), nullptr};
+    return {new Handle_Geom2d_VectorWithMagnitude(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
@@ -5891,28 +6140,28 @@ extern "C" OcctResult<const Geom2d_Geometry*> Geom2d_VectorWithMagnitude_as_Geom
 extern "C" OcctResult<Geom2d_Geometry*> Geom2d_VectorWithMagnitude_as_Geom2d_Geometry_mut(Geom2d_VectorWithMagnitude* self_) { return {static_cast<Geom2d_Geometry*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> Geom2d_VectorWithMagnitude_as_Standard_Transient(const Geom2d_VectorWithMagnitude* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> Geom2d_VectorWithMagnitude_as_Standard_Transient_mut(Geom2d_VectorWithMagnitude* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleGeom2dVectorWithMagnitude*> Geom2d_VectorWithMagnitude_to_handle(Geom2d_VectorWithMagnitude* obj) {
-    try { return {new HandleGeom2dVectorWithMagnitude(obj), nullptr}; }
+extern "C" OcctResult<Handle_Geom2d_VectorWithMagnitude*> Geom2d_VectorWithMagnitude_to_handle(Geom2d_VectorWithMagnitude* obj) {
+    try { return {new Handle_Geom2d_VectorWithMagnitude(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const Geom2d_VectorWithMagnitude*> HandleGeom2dVectorWithMagnitude_get(const HandleGeom2dVectorWithMagnitude* handle) {
+extern "C" OcctResult<const Geom2d_VectorWithMagnitude*> Handle_Geom2d_VectorWithMagnitude_get(const Handle_Geom2d_VectorWithMagnitude* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Geom2d_VectorWithMagnitude*> HandleGeom2dVectorWithMagnitude_get_mut(HandleGeom2dVectorWithMagnitude* handle) {
+extern "C" OcctResult<Geom2d_VectorWithMagnitude*> Handle_Geom2d_VectorWithMagnitude_get_mut(Handle_Geom2d_VectorWithMagnitude* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleGeom2dVector*> HandleGeom2dVectorWithMagnitude_to_HandleGeom2dVector(const HandleGeom2dVectorWithMagnitude* self_) {
-    try { return {new HandleGeom2dVector(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Geom2d_Vector*> Handle_Geom2d_VectorWithMagnitude_to_Handle_Geom2d_Vector(const Handle_Geom2d_VectorWithMagnitude* self_) {
+    try { return {new Handle_Geom2d_Vector(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleGeom2dGeometry*> HandleGeom2dVectorWithMagnitude_to_HandleGeom2dGeometry(const HandleGeom2dVectorWithMagnitude* self_) {
-    try { return {new HandleGeom2dGeometry(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Geom2d_Geometry*> Handle_Geom2d_VectorWithMagnitude_to_Handle_Geom2d_Geometry(const Handle_Geom2d_VectorWithMagnitude* self_) {
+    try { return {new Handle_Geom2d_Geometry(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleGeom2dVectorWithMagnitude_to_HandleStandardTransient(const HandleGeom2dVectorWithMagnitude* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_Geom2d_VectorWithMagnitude_to_Handle_Standard_Transient(const Handle_Geom2d_VectorWithMagnitude* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" const char* Geom2d_VectorWithMagnitude_inherited_Reverse(Geom2d_VectorWithMagnitude* self) {
@@ -6073,6 +6322,26 @@ extern "C" OcctResult<Handle(Geom2d_BSplineCurve)*> Geom2dAdaptor_Curve_b_spline
     try { return {new Handle(Geom2d_BSplineCurve)(self_->BSpline()), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" OcctResult<gp_Pnt2d*> Geom2dAdaptor_Curve_eval_d0(const Geom2dAdaptor_Curve* self_, double theU) {
+    try { return {new gp_Pnt2d(self_->EvalD0(theU)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Geom2d_Curve::ResD1*> Geom2dAdaptor_Curve_eval_d1(const Geom2dAdaptor_Curve* self_, double theU) {
+    try { return {new Geom2d_Curve::ResD1(self_->EvalD1(theU)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Geom2d_Curve::ResD2*> Geom2dAdaptor_Curve_eval_d2(const Geom2dAdaptor_Curve* self_, double theU) {
+    try { return {new Geom2d_Curve::ResD2(self_->EvalD2(theU)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Geom2d_Curve::ResD3*> Geom2dAdaptor_Curve_eval_d3(const Geom2dAdaptor_Curve* self_, double theU) {
+    try { return {new Geom2d_Curve::ResD3(self_->EvalD3(theU)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<gp_Vec2d*> Geom2dAdaptor_Curve_eval_dn(const Geom2dAdaptor_Curve* self_, double theU, int32_t theN) {
+    try { return {new gp_Vec2d(self_->EvalDN(theU, theN)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" OcctResult<Handle(Standard_Type) const*> Geom2dAdaptor_Curve_dynamic_type(const Geom2dAdaptor_Curve* self_) {
     try { return {&(self_->DynamicType()), nullptr}; }
     OCCT_CATCH_RETURN
@@ -6088,6 +6357,10 @@ extern "C" const char* Geom2dAdaptor_Curve_load_handlegeom2dcurve(Geom2dAdaptor_
 extern "C" const char* Geom2dAdaptor_Curve_load_handlegeom2dcurve_real2(Geom2dAdaptor_Curve* self_, Handle(Geom2d_Curve) const* theCurve, double theUFirst, double theULast) {
     try { self_->Load(*theCurve, theUFirst, theULast); return nullptr; }
     OCCT_CATCH_RETURN_VOID
+}
+extern "C" OcctResult<bool> Geom2dAdaptor_Curve_is_initialized(const Geom2dAdaptor_Curve* self_) {
+    try { return {self_->IsInitialized(), nullptr}; }
+    OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(Geom2d_Curve) const*> Geom2dAdaptor_Curve_curve(const Geom2dAdaptor_Curve* self_) {
     try { return {&(self_->Curve()), nullptr}; }
@@ -6109,7 +6382,7 @@ extern "C" OcctResult<int32_t> Geom2dAdaptor_Curve_nb_intervals(const Geom2dAdap
     try { return {self_->NbIntervals(static_cast<GeomAbs_Shape>(S)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* Geom2dAdaptor_Curve_intervals(const Geom2dAdaptor_Curve* self_, TColStd_Array1OfReal* T, int32_t S) {
+extern "C" const char* Geom2dAdaptor_Curve_intervals(const Geom2dAdaptor_Curve* self_, NCollection_Array1_double* T, int32_t S) {
     try { self_->Intervals(*T, static_cast<GeomAbs_Shape>(S)); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -6181,31 +6454,31 @@ extern "C" OcctResult<const Adaptor2d_Curve2d*> Geom2dAdaptor_Curve_as_Adaptor2d
 extern "C" OcctResult<Adaptor2d_Curve2d*> Geom2dAdaptor_Curve_as_Adaptor2d_Curve2d_mut(Geom2dAdaptor_Curve* self_) { return {static_cast<Adaptor2d_Curve2d*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> Geom2dAdaptor_Curve_as_Standard_Transient(const Geom2dAdaptor_Curve* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> Geom2dAdaptor_Curve_as_Standard_Transient_mut(Geom2dAdaptor_Curve* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleGeom2dAdaptorCurve*> Geom2dAdaptor_Curve_to_handle(Geom2dAdaptor_Curve* obj) {
-    try { return {new HandleGeom2dAdaptorCurve(obj), nullptr}; }
+extern "C" OcctResult<Handle_Geom2dAdaptor_Curve*> Geom2dAdaptor_Curve_to_handle(Geom2dAdaptor_Curve* obj) {
+    try { return {new Handle_Geom2dAdaptor_Curve(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const Geom2dAdaptor_Curve*> HandleGeom2dAdaptorCurve_get(const HandleGeom2dAdaptorCurve* handle) {
+extern "C" OcctResult<const Geom2dAdaptor_Curve*> Handle_Geom2dAdaptor_Curve_get(const Handle_Geom2dAdaptor_Curve* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Geom2dAdaptor_Curve*> HandleGeom2dAdaptorCurve_get_mut(HandleGeom2dAdaptorCurve* handle) {
+extern "C" OcctResult<Geom2dAdaptor_Curve*> Handle_Geom2dAdaptor_Curve_get_mut(Handle_Geom2dAdaptor_Curve* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleAdaptor2dCurve2d*> HandleGeom2dAdaptorCurve_to_HandleAdaptor2dCurve2d(const HandleGeom2dAdaptorCurve* self_) {
-    try { return {new HandleAdaptor2dCurve2d(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Adaptor2d_Curve2d*> Handle_Geom2dAdaptor_Curve_to_Handle_Adaptor2d_Curve2d(const Handle_Geom2dAdaptor_Curve* self_) {
+    try { return {new Handle_Adaptor2d_Curve2d(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleGeom2dAdaptorCurve_to_HandleStandardTransient(const HandleGeom2dAdaptorCurve* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_Geom2dAdaptor_Curve_to_Handle_Standard_Transient(const Handle_Geom2dAdaptor_Curve* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleBRepAdaptorCurve2d*> HandleGeom2dAdaptorCurve_downcast_to_HandleBRepAdaptorCurve2d(const HandleGeom2dAdaptorCurve* self_) {
+extern "C" OcctResult<Handle_BRepAdaptor_Curve2d*> Handle_Geom2dAdaptor_Curve_downcast_to_Handle_BRepAdaptor_Curve2d(const Handle_Geom2dAdaptor_Curve* self_) {
     try {
     opencascade::handle<BRepAdaptor_Curve2d> result = opencascade::handle<BRepAdaptor_Curve2d>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleBRepAdaptorCurve2d(result), nullptr};
+    return {new Handle_BRepAdaptor_Curve2d(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
@@ -6240,1176 +6513,1810 @@ extern "C" const char* Geom2dAdaptor_Curve_inherited_Delete(const Geom2dAdaptor_
 extern "C" void Geom2dAdaptor_Curve_destructor(Geom2dAdaptor_Curve* self_) { delete self_; }
 
 // ========================
-// Geom2dEvaluator_Curve wrappers
+// Geom2dAdaptor_Curve::OffsetData wrappers
 // ========================
 
-extern "C" OcctResult<gp_Vec2d*> Geom2dEvaluator_Curve_dn(const Geom2dEvaluator_Curve* self_, double theU, int32_t theDerU) {
-    try { return {new gp_Vec2d(self_->DN(theU, theDerU)), nullptr}; }
+extern "C" OcctResult<Geom2dAdaptor_Curve::OffsetData*> Geom2dAdaptor_Curve_OffsetData_ctor() {
+    try { return {new Geom2dAdaptor_Curve::OffsetData(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(Geom2dEvaluator_Curve)*> Geom2dEvaluator_Curve_shallow_copy(const Geom2dEvaluator_Curve* self_) {
-    try { return {new Handle(Geom2dEvaluator_Curve)(self_->ShallowCopy()), nullptr}; }
+extern "C" void Geom2dAdaptor_Curve_OffsetData_destructor(Geom2dAdaptor_Curve::OffsetData* self_) { delete self_; }
+
+// ========================
+// Geom2dAdaptor_Curve::BezierData wrappers
+// ========================
+
+extern "C" OcctResult<Geom2dAdaptor_Curve::BezierData*> Geom2dAdaptor_Curve_BezierData_ctor() {
+    try { return {new Geom2dAdaptor_Curve::BezierData(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* Geom2dEvaluator_Curve_d0(const Geom2dEvaluator_Curve* self_, double theU, gp_Pnt2d* theValue) {
-    try { self_->D0(theU, *theValue); return nullptr; }
+extern "C" void Geom2dAdaptor_Curve_BezierData_destructor(Geom2dAdaptor_Curve::BezierData* self_) { delete self_; }
+
+// ========================
+// Geom2dAdaptor_Curve::BSplineData wrappers
+// ========================
+
+extern "C" OcctResult<Geom2dAdaptor_Curve::BSplineData*> Geom2dAdaptor_Curve_BSplineData_ctor() {
+    try { return {new Geom2dAdaptor_Curve::BSplineData(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" void Geom2dAdaptor_Curve_BSplineData_destructor(Geom2dAdaptor_Curve::BSplineData* self_) { delete self_; }
+
+// ========================
+// Geom2dEval_AHTBezierCurve wrappers
+// ========================
+
+extern "C" OcctResult<Geom2dEval_AHTBezierCurve*> Geom2dEval_AHTBezierCurve_ctor_arr1_pnt2d_int_real2(NCollection_Array1_gp_Pnt2d const* thePoles, int32_t theAlgDegree, double theAlpha, double theBeta) {
+    try { return {new Geom2dEval_AHTBezierCurve(*thePoles, theAlgDegree, theAlpha, theBeta), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Geom2dEval_AHTBezierCurve*> Geom2dEval_AHTBezierCurve_ctor_arr1_pnt2d_arr1_double_int_real2(NCollection_Array1_gp_Pnt2d const* thePoles, NCollection_Array1_double const* theWeights, int32_t theAlgDegree, double theAlpha, double theBeta) {
+    try { return {new Geom2dEval_AHTBezierCurve(*thePoles, *theWeights, theAlgDegree, theAlpha, theBeta), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<gp_Pnt2d*> Geom2dEval_AHTBezierCurve_start_point(const Geom2dEval_AHTBezierCurve* self_) {
+    try { return {new gp_Pnt2d(self_->StartPoint()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<gp_Pnt2d*> Geom2dEval_AHTBezierCurve_end_point(const Geom2dEval_AHTBezierCurve* self_) {
+    try { return {new gp_Pnt2d(self_->EndPoint()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<gp_Pnt2d*> Geom2dEval_AHTBezierCurve_eval_d0(const Geom2dEval_AHTBezierCurve* self_, double U) {
+    try { return {new gp_Pnt2d(self_->EvalD0(U)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Geom2d_Curve::ResD1*> Geom2dEval_AHTBezierCurve_eval_d1(const Geom2dEval_AHTBezierCurve* self_, double U) {
+    try { return {new Geom2d_Curve::ResD1(self_->EvalD1(U)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Geom2d_Curve::ResD2*> Geom2dEval_AHTBezierCurve_eval_d2(const Geom2dEval_AHTBezierCurve* self_, double U) {
+    try { return {new Geom2d_Curve::ResD2(self_->EvalD2(U)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Geom2d_Curve::ResD3*> Geom2dEval_AHTBezierCurve_eval_d3(const Geom2dEval_AHTBezierCurve* self_, double U) {
+    try { return {new Geom2d_Curve::ResD3(self_->EvalD3(U)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<gp_Vec2d*> Geom2dEval_AHTBezierCurve_eval_dn(const Geom2dEval_AHTBezierCurve* self_, double U, int32_t N) {
+    try { return {new gp_Vec2d(self_->EvalDN(U, N)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Handle(Geom2d_Geometry)*> Geom2dEval_AHTBezierCurve_copy(const Geom2dEval_AHTBezierCurve* self_) {
+    try { return {new Handle(Geom2d_Geometry)(self_->Copy()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<NCollection_Array1_gp_Pnt2d const*> Geom2dEval_AHTBezierCurve_poles(const Geom2dEval_AHTBezierCurve* self_) {
+    try { return {&(self_->Poles()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<NCollection_Array1_double const*> Geom2dEval_AHTBezierCurve_weights(const Geom2dEval_AHTBezierCurve* self_) {
+    try { return {&(self_->Weights()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<int32_t> Geom2dEval_AHTBezierCurve_alg_degree(const Geom2dEval_AHTBezierCurve* self_) {
+    try { return {self_->AlgDegree(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<double> Geom2dEval_AHTBezierCurve_alpha(const Geom2dEval_AHTBezierCurve* self_) {
+    try { return {self_->Alpha(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<double> Geom2dEval_AHTBezierCurve_beta(const Geom2dEval_AHTBezierCurve* self_) {
+    try { return {self_->Beta(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<int32_t> Geom2dEval_AHTBezierCurve_nb_poles(const Geom2dEval_AHTBezierCurve* self_) {
+    try { return {self_->NbPoles(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<bool> Geom2dEval_AHTBezierCurve_is_rational(const Geom2dEval_AHTBezierCurve* self_) {
+    try { return {self_->IsRational(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" const char* Geom2dEval_AHTBezierCurve_reverse(Geom2dEval_AHTBezierCurve* self_) {
+    try { self_->Reverse(); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* Geom2dEvaluator_Curve_d1(const Geom2dEvaluator_Curve* self_, double theU, gp_Pnt2d* theValue, gp_Vec2d* theD1) {
-    try { self_->D1(theU, *theValue, *theD1); return nullptr; }
+extern "C" OcctResult<double> Geom2dEval_AHTBezierCurve_reversed_parameter(const Geom2dEval_AHTBezierCurve* self_, double U) {
+    try { return {self_->ReversedParameter(U), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<double> Geom2dEval_AHTBezierCurve_first_parameter(const Geom2dEval_AHTBezierCurve* self_) {
+    try { return {self_->FirstParameter(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<double> Geom2dEval_AHTBezierCurve_last_parameter(const Geom2dEval_AHTBezierCurve* self_) {
+    try { return {self_->LastParameter(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<bool> Geom2dEval_AHTBezierCurve_is_closed(const Geom2dEval_AHTBezierCurve* self_) {
+    try { return {self_->IsClosed(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<bool> Geom2dEval_AHTBezierCurve_is_periodic(const Geom2dEval_AHTBezierCurve* self_) {
+    try { return {self_->IsPeriodic(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<int32_t> Geom2dEval_AHTBezierCurve_continuity(const Geom2dEval_AHTBezierCurve* self_) {
+    try { return {static_cast<int32_t>(self_->Continuity()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<bool> Geom2dEval_AHTBezierCurve_is_cn(const Geom2dEval_AHTBezierCurve* self_, int32_t N) {
+    try { return {self_->IsCN(N), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" const char* Geom2dEval_AHTBezierCurve_transform(Geom2dEval_AHTBezierCurve* self_, gp_Trsf2d const* T) {
+    try { self_->Transform(*T); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* Geom2dEvaluator_Curve_d2(const Geom2dEvaluator_Curve* self_, double theU, gp_Pnt2d* theValue, gp_Vec2d* theD1, gp_Vec2d* theD2) {
-    try { self_->D2(theU, *theValue, *theD1, *theD2); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* Geom2dEvaluator_Curve_d3(const Geom2dEvaluator_Curve* self_, double theU, gp_Pnt2d* theValue, gp_Vec2d* theD1, gp_Vec2d* theD2, gp_Vec2d* theD3) {
-    try { self_->D3(theU, *theValue, *theD1, *theD2, *theD3); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<Handle(Standard_Type) const*> Geom2dEvaluator_Curve_dynamic_type(const Geom2dEvaluator_Curve* self_) {
+extern "C" OcctResult<Handle(Standard_Type) const*> Geom2dEval_AHTBezierCurve_dynamic_type(const Geom2dEval_AHTBezierCurve* self_) {
     try { return {&(self_->DynamicType()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<char const*> Geom2dEvaluator_Curve_get_type_name() {
-    try { return {Geom2dEvaluator_Curve::get_type_name(), nullptr}; }
+extern "C" OcctResult<char const*> Geom2dEval_AHTBezierCurve_get_type_name() {
+    try { return {Geom2dEval_AHTBezierCurve::get_type_name(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(Standard_Type) const*> Geom2dEvaluator_Curve_get_type_descriptor() {
-    try { return {&(Geom2dEvaluator_Curve::get_type_descriptor()), nullptr}; }
+extern "C" OcctResult<Handle(Standard_Type) const*> Geom2dEval_AHTBezierCurve_get_type_descriptor() {
+    try { return {&(Geom2dEval_AHTBezierCurve::get_type_descriptor()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const Standard_Transient*> Geom2dEvaluator_Curve_as_Standard_Transient(const Geom2dEvaluator_Curve* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<Standard_Transient*> Geom2dEvaluator_Curve_as_Standard_Transient_mut(Geom2dEvaluator_Curve* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<const Geom2dEvaluator_Curve*> HandleGeom2dEvaluatorCurve_get(const HandleGeom2dEvaluatorCurve* handle) {
+extern "C" OcctResult<const Geom2d_BoundedCurve*> Geom2dEval_AHTBezierCurve_as_Geom2d_BoundedCurve(const Geom2dEval_AHTBezierCurve* self_) { return {static_cast<const Geom2d_BoundedCurve*>(self_), nullptr}; }
+extern "C" OcctResult<Geom2d_BoundedCurve*> Geom2dEval_AHTBezierCurve_as_Geom2d_BoundedCurve_mut(Geom2dEval_AHTBezierCurve* self_) { return {static_cast<Geom2d_BoundedCurve*>(self_), nullptr}; }
+extern "C" OcctResult<const Geom2d_Curve*> Geom2dEval_AHTBezierCurve_as_Geom2d_Curve(const Geom2dEval_AHTBezierCurve* self_) { return {static_cast<const Geom2d_Curve*>(self_), nullptr}; }
+extern "C" OcctResult<Geom2d_Curve*> Geom2dEval_AHTBezierCurve_as_Geom2d_Curve_mut(Geom2dEval_AHTBezierCurve* self_) { return {static_cast<Geom2d_Curve*>(self_), nullptr}; }
+extern "C" OcctResult<const Geom2d_Geometry*> Geom2dEval_AHTBezierCurve_as_Geom2d_Geometry(const Geom2dEval_AHTBezierCurve* self_) { return {static_cast<const Geom2d_Geometry*>(self_), nullptr}; }
+extern "C" OcctResult<Geom2d_Geometry*> Geom2dEval_AHTBezierCurve_as_Geom2d_Geometry_mut(Geom2dEval_AHTBezierCurve* self_) { return {static_cast<Geom2d_Geometry*>(self_), nullptr}; }
+extern "C" OcctResult<const Standard_Transient*> Geom2dEval_AHTBezierCurve_as_Standard_Transient(const Geom2dEval_AHTBezierCurve* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
+extern "C" OcctResult<Standard_Transient*> Geom2dEval_AHTBezierCurve_as_Standard_Transient_mut(Geom2dEval_AHTBezierCurve* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
+extern "C" OcctResult<Handle_Geom2dEval_AHTBezierCurve*> Geom2dEval_AHTBezierCurve_to_handle(Geom2dEval_AHTBezierCurve* obj) {
+    try { return {new Handle_Geom2dEval_AHTBezierCurve(obj), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<const Geom2dEval_AHTBezierCurve*> Handle_Geom2dEval_AHTBezierCurve_get(const Handle_Geom2dEval_AHTBezierCurve* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Geom2dEvaluator_Curve*> HandleGeom2dEvaluatorCurve_get_mut(HandleGeom2dEvaluatorCurve* handle) {
+extern "C" OcctResult<Geom2dEval_AHTBezierCurve*> Handle_Geom2dEval_AHTBezierCurve_get_mut(Handle_Geom2dEval_AHTBezierCurve* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleGeom2dEvaluatorCurve_to_HandleStandardTransient(const HandleGeom2dEvaluatorCurve* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Geom2d_BoundedCurve*> Handle_Geom2dEval_AHTBezierCurve_to_Handle_Geom2d_BoundedCurve(const Handle_Geom2dEval_AHTBezierCurve* self_) {
+    try { return {new Handle_Geom2d_BoundedCurve(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleGeom2dEvaluatorOffsetCurve*> HandleGeom2dEvaluatorCurve_downcast_to_HandleGeom2dEvaluatorOffsetCurve(const HandleGeom2dEvaluatorCurve* self_) {
-    try {
-    opencascade::handle<Geom2dEvaluator_OffsetCurve> result = opencascade::handle<Geom2dEvaluator_OffsetCurve>::DownCast(*self_);
-    if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleGeom2dEvaluatorOffsetCurve(result), nullptr};
-    }
+extern "C" OcctResult<Handle_Geom2d_Curve*> Handle_Geom2dEval_AHTBezierCurve_to_Handle_Geom2d_Curve(const Handle_Geom2dEval_AHTBezierCurve* self_) {
+    try { return {new Handle_Geom2d_Curve(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<bool> Geom2dEvaluator_Curve_inherited_IsInstance(const Geom2dEvaluator_Curve* self, Handle(Standard_Type) const& theType) {
+extern "C" OcctResult<Handle_Geom2d_Geometry*> Handle_Geom2dEval_AHTBezierCurve_to_Handle_Geom2d_Geometry(const Handle_Geom2dEval_AHTBezierCurve* self_) {
+    try { return {new Handle_Geom2d_Geometry(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_Geom2dEval_AHTBezierCurve_to_Handle_Standard_Transient(const Handle_Geom2dEval_AHTBezierCurve* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<double> Geom2dEval_AHTBezierCurve_inherited_TransformedParameter(const Geom2dEval_AHTBezierCurve* self, double U, gp_Trsf2d const& T) {
+    try { return {self->TransformedParameter(U, T), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<double> Geom2dEval_AHTBezierCurve_inherited_ParametricTransformation(const Geom2dEval_AHTBezierCurve* self, gp_Trsf2d const& T) {
+    try { return {self->ParametricTransformation(T), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Handle(Geom2d_Curve)*> Geom2dEval_AHTBezierCurve_inherited_Reversed(const Geom2dEval_AHTBezierCurve* self) {
+    try { return {new Handle(Geom2d_Curve)(self->Reversed()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<double> Geom2dEval_AHTBezierCurve_inherited_Period(const Geom2dEval_AHTBezierCurve* self) {
+    try { return {self->Period(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" const char* Geom2dEval_AHTBezierCurve_inherited_D0(const Geom2dEval_AHTBezierCurve* self, double U, gp_Pnt2d& P) {
+    try { self->D0(U, P); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* Geom2dEval_AHTBezierCurve_inherited_D1(const Geom2dEval_AHTBezierCurve* self, double U, gp_Pnt2d& P, gp_Vec2d& V1) {
+    try { self->D1(U, P, V1); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* Geom2dEval_AHTBezierCurve_inherited_D2(const Geom2dEval_AHTBezierCurve* self, double U, gp_Pnt2d& P, gp_Vec2d& V1, gp_Vec2d& V2) {
+    try { self->D2(U, P, V1, V2); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* Geom2dEval_AHTBezierCurve_inherited_D3(const Geom2dEval_AHTBezierCurve* self, double U, gp_Pnt2d& P, gp_Vec2d& V1, gp_Vec2d& V2, gp_Vec2d& V3) {
+    try { self->D3(U, P, V1, V2, V3); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" OcctResult<gp_Vec2d*> Geom2dEval_AHTBezierCurve_inherited_DN(const Geom2dEval_AHTBezierCurve* self, double U, int32_t N) {
+    try { return {new gp_Vec2d(self->DN(U, N)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<gp_Pnt2d*> Geom2dEval_AHTBezierCurve_inherited_Value(const Geom2dEval_AHTBezierCurve* self, double U) {
+    try { return {new gp_Pnt2d(self->Value(U)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" const char* Geom2dEval_AHTBezierCurve_inherited_Mirror(Geom2dEval_AHTBezierCurve* self, gp_Pnt2d const& P) {
+    try { self->Mirror(P); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* Geom2dEval_AHTBezierCurve_inherited_Rotate(Geom2dEval_AHTBezierCurve* self, gp_Pnt2d const& P, double Ang) {
+    try { self->Rotate(P, Ang); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* Geom2dEval_AHTBezierCurve_inherited_Scale(Geom2dEval_AHTBezierCurve* self, gp_Pnt2d const& P, double S) {
+    try { self->Scale(P, S); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* Geom2dEval_AHTBezierCurve_inherited_Translate(Geom2dEval_AHTBezierCurve* self, gp_Vec2d const& V) {
+    try { self->Translate(V); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" OcctResult<Handle(Geom2d_Geometry)*> Geom2dEval_AHTBezierCurve_inherited_Mirrored(const Geom2dEval_AHTBezierCurve* self, gp_Pnt2d const& P) {
+    try { return {new Handle(Geom2d_Geometry)(self->Mirrored(P)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Handle(Geom2d_Geometry)*> Geom2dEval_AHTBezierCurve_inherited_Rotated(const Geom2dEval_AHTBezierCurve* self, gp_Pnt2d const& P, double Ang) {
+    try { return {new Handle(Geom2d_Geometry)(self->Rotated(P, Ang)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Handle(Geom2d_Geometry)*> Geom2dEval_AHTBezierCurve_inherited_Scaled(const Geom2dEval_AHTBezierCurve* self, gp_Pnt2d const& P, double S) {
+    try { return {new Handle(Geom2d_Geometry)(self->Scaled(P, S)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Handle(Geom2d_Geometry)*> Geom2dEval_AHTBezierCurve_inherited_Transformed(const Geom2dEval_AHTBezierCurve* self, gp_Trsf2d const& T) {
+    try { return {new Handle(Geom2d_Geometry)(self->Transformed(T)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Handle(Geom2d_Geometry)*> Geom2dEval_AHTBezierCurve_inherited_Translated(const Geom2dEval_AHTBezierCurve* self, gp_Vec2d const& V) {
+    try { return {new Handle(Geom2d_Geometry)(self->Translated(V)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<bool> Geom2dEval_AHTBezierCurve_inherited_IsInstance(const Geom2dEval_AHTBezierCurve* self, Handle(Standard_Type) const& theType) {
     try { return {self->IsInstance(theType), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<bool> Geom2dEvaluator_Curve_inherited_IsKind(const Geom2dEvaluator_Curve* self, Handle(Standard_Type) const& theType) {
+extern "C" OcctResult<bool> Geom2dEval_AHTBezierCurve_inherited_IsKind(const Geom2dEval_AHTBezierCurve* self, Handle(Standard_Type) const& theType) {
     try { return {self->IsKind(theType), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Standard_Transient*> Geom2dEvaluator_Curve_inherited_This(const Geom2dEvaluator_Curve* self) {
+extern "C" OcctResult<Standard_Transient*> Geom2dEval_AHTBezierCurve_inherited_This(const Geom2dEval_AHTBezierCurve* self) {
     try { return {self->This(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<int32_t> Geom2dEvaluator_Curve_inherited_GetRefCount(const Geom2dEvaluator_Curve* self) {
+extern "C" OcctResult<int32_t> Geom2dEval_AHTBezierCurve_inherited_GetRefCount(const Geom2dEval_AHTBezierCurve* self) {
     try { return {self->GetRefCount(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* Geom2dEvaluator_Curve_inherited_IncrementRefCounter(Geom2dEvaluator_Curve* self) {
+extern "C" const char* Geom2dEval_AHTBezierCurve_inherited_IncrementRefCounter(Geom2dEval_AHTBezierCurve* self) {
     try { self->IncrementRefCounter(); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<int32_t> Geom2dEvaluator_Curve_inherited_DecrementRefCounter(Geom2dEvaluator_Curve* self) {
+extern "C" OcctResult<int32_t> Geom2dEval_AHTBezierCurve_inherited_DecrementRefCounter(Geom2dEval_AHTBezierCurve* self) {
     try { return {self->DecrementRefCounter(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* Geom2dEvaluator_Curve_inherited_Delete(const Geom2dEvaluator_Curve* self) {
+extern "C" const char* Geom2dEval_AHTBezierCurve_inherited_Delete(const Geom2dEval_AHTBezierCurve* self) {
     try { self->Delete(); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" void Geom2dEvaluator_Curve_destructor(Geom2dEvaluator_Curve* self_) { delete self_; }
+extern "C" void Geom2dEval_AHTBezierCurve_destructor(Geom2dEval_AHTBezierCurve* self_) { delete self_; }
 
 // ========================
-// Geom2dEvaluator_OffsetCurve wrappers
+// Geom2dEval_ArchimedeanSpiralCurve wrappers
 // ========================
 
-extern "C" OcctResult<Geom2dEvaluator_OffsetCurve*> Geom2dEvaluator_OffsetCurve_ctor_handlegeom2dcurve_real(Handle(Geom2d_Curve) const* theBase, double theOffset) {
-    try { return {new Geom2dEvaluator_OffsetCurve(*theBase, theOffset), nullptr}; }
+extern "C" OcctResult<Geom2dEval_ArchimedeanSpiralCurve*> Geom2dEval_ArchimedeanSpiralCurve_ctor_ax2d_real2(gp_Ax2d const* thePosition, double theInitialRadius, double theGrowthRate) {
+    try { return {new Geom2dEval_ArchimedeanSpiralCurve(*thePosition, theInitialRadius, theGrowthRate), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Geom2dEvaluator_OffsetCurve*> Geom2dEvaluator_OffsetCurve_ctor_handlegeom2dadaptorcurve_real(Handle(Geom2dAdaptor_Curve) const* theBase, double theOffset) {
-    try { return {new Geom2dEvaluator_OffsetCurve(*theBase, theOffset), nullptr}; }
+extern "C" OcctResult<gp_Pnt2d*> Geom2dEval_ArchimedeanSpiralCurve_eval_d0(const Geom2dEval_ArchimedeanSpiralCurve* self_, double U) {
+    try { return {new gp_Pnt2d(self_->EvalD0(U)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<gp_Vec2d*> Geom2dEvaluator_OffsetCurve_dn(const Geom2dEvaluator_OffsetCurve* self_, double theU, int32_t theDeriv) {
-    try { return {new gp_Vec2d(self_->DN(theU, theDeriv)), nullptr}; }
+extern "C" OcctResult<Geom2d_Curve::ResD1*> Geom2dEval_ArchimedeanSpiralCurve_eval_d1(const Geom2dEval_ArchimedeanSpiralCurve* self_, double U) {
+    try { return {new Geom2d_Curve::ResD1(self_->EvalD1(U)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(Geom2dEvaluator_Curve)*> Geom2dEvaluator_OffsetCurve_shallow_copy(const Geom2dEvaluator_OffsetCurve* self_) {
-    try { return {new Handle(Geom2dEvaluator_Curve)(self_->ShallowCopy()), nullptr}; }
+extern "C" OcctResult<Geom2d_Curve::ResD2*> Geom2dEval_ArchimedeanSpiralCurve_eval_d2(const Geom2dEval_ArchimedeanSpiralCurve* self_, double U) {
+    try { return {new Geom2d_Curve::ResD2(self_->EvalD2(U)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* Geom2dEvaluator_OffsetCurve_set_offset_value(Geom2dEvaluator_OffsetCurve* self_, double theOffset) {
-    try { self_->SetOffsetValue(theOffset); return nullptr; }
+extern "C" OcctResult<Geom2d_Curve::ResD3*> Geom2dEval_ArchimedeanSpiralCurve_eval_d3(const Geom2dEval_ArchimedeanSpiralCurve* self_, double U) {
+    try { return {new Geom2d_Curve::ResD3(self_->EvalD3(U)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<gp_Vec2d*> Geom2dEval_ArchimedeanSpiralCurve_eval_dn(const Geom2dEval_ArchimedeanSpiralCurve* self_, double U, int32_t N) {
+    try { return {new gp_Vec2d(self_->EvalDN(U, N)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Handle(Geom2d_Geometry)*> Geom2dEval_ArchimedeanSpiralCurve_copy(const Geom2dEval_ArchimedeanSpiralCurve* self_) {
+    try { return {new Handle(Geom2d_Geometry)(self_->Copy()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<gp_Ax2d const*> Geom2dEval_ArchimedeanSpiralCurve_position(const Geom2dEval_ArchimedeanSpiralCurve* self_) {
+    try { return {&(self_->Position()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<double> Geom2dEval_ArchimedeanSpiralCurve_initial_radius(const Geom2dEval_ArchimedeanSpiralCurve* self_) {
+    try { return {self_->InitialRadius(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<double> Geom2dEval_ArchimedeanSpiralCurve_growth_rate(const Geom2dEval_ArchimedeanSpiralCurve* self_) {
+    try { return {self_->GrowthRate(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" const char* Geom2dEval_ArchimedeanSpiralCurve_reverse(Geom2dEval_ArchimedeanSpiralCurve* self_) {
+    try { self_->Reverse(); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* Geom2dEvaluator_OffsetCurve_d0(const Geom2dEvaluator_OffsetCurve* self_, double theU, gp_Pnt2d* theValue) {
-    try { self_->D0(theU, *theValue); return nullptr; }
+extern "C" OcctResult<double> Geom2dEval_ArchimedeanSpiralCurve_reversed_parameter(const Geom2dEval_ArchimedeanSpiralCurve* self_, double U) {
+    try { return {self_->ReversedParameter(U), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<double> Geom2dEval_ArchimedeanSpiralCurve_first_parameter(const Geom2dEval_ArchimedeanSpiralCurve* self_) {
+    try { return {self_->FirstParameter(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<double> Geom2dEval_ArchimedeanSpiralCurve_last_parameter(const Geom2dEval_ArchimedeanSpiralCurve* self_) {
+    try { return {self_->LastParameter(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<bool> Geom2dEval_ArchimedeanSpiralCurve_is_closed(const Geom2dEval_ArchimedeanSpiralCurve* self_) {
+    try { return {self_->IsClosed(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<bool> Geom2dEval_ArchimedeanSpiralCurve_is_periodic(const Geom2dEval_ArchimedeanSpiralCurve* self_) {
+    try { return {self_->IsPeriodic(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<int32_t> Geom2dEval_ArchimedeanSpiralCurve_continuity(const Geom2dEval_ArchimedeanSpiralCurve* self_) {
+    try { return {static_cast<int32_t>(self_->Continuity()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<bool> Geom2dEval_ArchimedeanSpiralCurve_is_cn(const Geom2dEval_ArchimedeanSpiralCurve* self_, int32_t N) {
+    try { return {self_->IsCN(N), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" const char* Geom2dEval_ArchimedeanSpiralCurve_transform(Geom2dEval_ArchimedeanSpiralCurve* self_, gp_Trsf2d const* T) {
+    try { self_->Transform(*T); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* Geom2dEvaluator_OffsetCurve_d1(const Geom2dEvaluator_OffsetCurve* self_, double theU, gp_Pnt2d* theValue, gp_Vec2d* theD1) {
-    try { self_->D1(theU, *theValue, *theD1); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* Geom2dEvaluator_OffsetCurve_d2(const Geom2dEvaluator_OffsetCurve* self_, double theU, gp_Pnt2d* theValue, gp_Vec2d* theD1, gp_Vec2d* theD2) {
-    try { self_->D2(theU, *theValue, *theD1, *theD2); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* Geom2dEvaluator_OffsetCurve_d3(const Geom2dEvaluator_OffsetCurve* self_, double theU, gp_Pnt2d* theValue, gp_Vec2d* theD1, gp_Vec2d* theD2, gp_Vec2d* theD3) {
-    try { self_->D3(theU, *theValue, *theD1, *theD2, *theD3); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<Handle(Standard_Type) const*> Geom2dEvaluator_OffsetCurve_dynamic_type(const Geom2dEvaluator_OffsetCurve* self_) {
+extern "C" OcctResult<Handle(Standard_Type) const*> Geom2dEval_ArchimedeanSpiralCurve_dynamic_type(const Geom2dEval_ArchimedeanSpiralCurve* self_) {
     try { return {&(self_->DynamicType()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<char const*> Geom2dEvaluator_OffsetCurve_get_type_name() {
-    try { return {Geom2dEvaluator_OffsetCurve::get_type_name(), nullptr}; }
+extern "C" OcctResult<char const*> Geom2dEval_ArchimedeanSpiralCurve_get_type_name() {
+    try { return {Geom2dEval_ArchimedeanSpiralCurve::get_type_name(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(Standard_Type) const*> Geom2dEvaluator_OffsetCurve_get_type_descriptor() {
-    try { return {&(Geom2dEvaluator_OffsetCurve::get_type_descriptor()), nullptr}; }
+extern "C" OcctResult<Handle(Standard_Type) const*> Geom2dEval_ArchimedeanSpiralCurve_get_type_descriptor() {
+    try { return {&(Geom2dEval_ArchimedeanSpiralCurve::get_type_descriptor()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const Geom2dEvaluator_Curve*> Geom2dEvaluator_OffsetCurve_as_Geom2dEvaluator_Curve(const Geom2dEvaluator_OffsetCurve* self_) { return {static_cast<const Geom2dEvaluator_Curve*>(self_), nullptr}; }
-extern "C" OcctResult<Geom2dEvaluator_Curve*> Geom2dEvaluator_OffsetCurve_as_Geom2dEvaluator_Curve_mut(Geom2dEvaluator_OffsetCurve* self_) { return {static_cast<Geom2dEvaluator_Curve*>(self_), nullptr}; }
-extern "C" OcctResult<const Standard_Transient*> Geom2dEvaluator_OffsetCurve_as_Standard_Transient(const Geom2dEvaluator_OffsetCurve* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<Standard_Transient*> Geom2dEvaluator_OffsetCurve_as_Standard_Transient_mut(Geom2dEvaluator_OffsetCurve* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleGeom2dEvaluatorOffsetCurve*> Geom2dEvaluator_OffsetCurve_to_handle(Geom2dEvaluator_OffsetCurve* obj) {
-    try { return {new HandleGeom2dEvaluatorOffsetCurve(obj), nullptr}; }
+extern "C" OcctResult<const Geom2d_Curve*> Geom2dEval_ArchimedeanSpiralCurve_as_Geom2d_Curve(const Geom2dEval_ArchimedeanSpiralCurve* self_) { return {static_cast<const Geom2d_Curve*>(self_), nullptr}; }
+extern "C" OcctResult<Geom2d_Curve*> Geom2dEval_ArchimedeanSpiralCurve_as_Geom2d_Curve_mut(Geom2dEval_ArchimedeanSpiralCurve* self_) { return {static_cast<Geom2d_Curve*>(self_), nullptr}; }
+extern "C" OcctResult<const Geom2d_Geometry*> Geom2dEval_ArchimedeanSpiralCurve_as_Geom2d_Geometry(const Geom2dEval_ArchimedeanSpiralCurve* self_) { return {static_cast<const Geom2d_Geometry*>(self_), nullptr}; }
+extern "C" OcctResult<Geom2d_Geometry*> Geom2dEval_ArchimedeanSpiralCurve_as_Geom2d_Geometry_mut(Geom2dEval_ArchimedeanSpiralCurve* self_) { return {static_cast<Geom2d_Geometry*>(self_), nullptr}; }
+extern "C" OcctResult<const Standard_Transient*> Geom2dEval_ArchimedeanSpiralCurve_as_Standard_Transient(const Geom2dEval_ArchimedeanSpiralCurve* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
+extern "C" OcctResult<Standard_Transient*> Geom2dEval_ArchimedeanSpiralCurve_as_Standard_Transient_mut(Geom2dEval_ArchimedeanSpiralCurve* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
+extern "C" OcctResult<Handle_Geom2dEval_ArchimedeanSpiralCurve*> Geom2dEval_ArchimedeanSpiralCurve_to_handle(Geom2dEval_ArchimedeanSpiralCurve* obj) {
+    try { return {new Handle_Geom2dEval_ArchimedeanSpiralCurve(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const Geom2dEvaluator_OffsetCurve*> HandleGeom2dEvaluatorOffsetCurve_get(const HandleGeom2dEvaluatorOffsetCurve* handle) {
+extern "C" OcctResult<const Geom2dEval_ArchimedeanSpiralCurve*> Handle_Geom2dEval_ArchimedeanSpiralCurve_get(const Handle_Geom2dEval_ArchimedeanSpiralCurve* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Geom2dEvaluator_OffsetCurve*> HandleGeom2dEvaluatorOffsetCurve_get_mut(HandleGeom2dEvaluatorOffsetCurve* handle) {
+extern "C" OcctResult<Geom2dEval_ArchimedeanSpiralCurve*> Handle_Geom2dEval_ArchimedeanSpiralCurve_get_mut(Handle_Geom2dEval_ArchimedeanSpiralCurve* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleGeom2dEvaluatorCurve*> HandleGeom2dEvaluatorOffsetCurve_to_HandleGeom2dEvaluatorCurve(const HandleGeom2dEvaluatorOffsetCurve* self_) {
-    try { return {new HandleGeom2dEvaluatorCurve(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Geom2d_Curve*> Handle_Geom2dEval_ArchimedeanSpiralCurve_to_Handle_Geom2d_Curve(const Handle_Geom2dEval_ArchimedeanSpiralCurve* self_) {
+    try { return {new Handle_Geom2d_Curve(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleGeom2dEvaluatorOffsetCurve_to_HandleStandardTransient(const HandleGeom2dEvaluatorOffsetCurve* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Geom2d_Geometry*> Handle_Geom2dEval_ArchimedeanSpiralCurve_to_Handle_Geom2d_Geometry(const Handle_Geom2dEval_ArchimedeanSpiralCurve* self_) {
+    try { return {new Handle_Geom2d_Geometry(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<bool> Geom2dEvaluator_OffsetCurve_inherited_IsInstance(const Geom2dEvaluator_OffsetCurve* self, Handle(Standard_Type) const& theType) {
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_Geom2dEval_ArchimedeanSpiralCurve_to_Handle_Standard_Transient(const Handle_Geom2dEval_ArchimedeanSpiralCurve* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<double> Geom2dEval_ArchimedeanSpiralCurve_inherited_TransformedParameter(const Geom2dEval_ArchimedeanSpiralCurve* self, double U, gp_Trsf2d const& T) {
+    try { return {self->TransformedParameter(U, T), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<double> Geom2dEval_ArchimedeanSpiralCurve_inherited_ParametricTransformation(const Geom2dEval_ArchimedeanSpiralCurve* self, gp_Trsf2d const& T) {
+    try { return {self->ParametricTransformation(T), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Handle(Geom2d_Curve)*> Geom2dEval_ArchimedeanSpiralCurve_inherited_Reversed(const Geom2dEval_ArchimedeanSpiralCurve* self) {
+    try { return {new Handle(Geom2d_Curve)(self->Reversed()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<double> Geom2dEval_ArchimedeanSpiralCurve_inherited_Period(const Geom2dEval_ArchimedeanSpiralCurve* self) {
+    try { return {self->Period(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" const char* Geom2dEval_ArchimedeanSpiralCurve_inherited_D0(const Geom2dEval_ArchimedeanSpiralCurve* self, double U, gp_Pnt2d& P) {
+    try { self->D0(U, P); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* Geom2dEval_ArchimedeanSpiralCurve_inherited_D1(const Geom2dEval_ArchimedeanSpiralCurve* self, double U, gp_Pnt2d& P, gp_Vec2d& V1) {
+    try { self->D1(U, P, V1); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* Geom2dEval_ArchimedeanSpiralCurve_inherited_D2(const Geom2dEval_ArchimedeanSpiralCurve* self, double U, gp_Pnt2d& P, gp_Vec2d& V1, gp_Vec2d& V2) {
+    try { self->D2(U, P, V1, V2); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* Geom2dEval_ArchimedeanSpiralCurve_inherited_D3(const Geom2dEval_ArchimedeanSpiralCurve* self, double U, gp_Pnt2d& P, gp_Vec2d& V1, gp_Vec2d& V2, gp_Vec2d& V3) {
+    try { self->D3(U, P, V1, V2, V3); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" OcctResult<gp_Vec2d*> Geom2dEval_ArchimedeanSpiralCurve_inherited_DN(const Geom2dEval_ArchimedeanSpiralCurve* self, double U, int32_t N) {
+    try { return {new gp_Vec2d(self->DN(U, N)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<gp_Pnt2d*> Geom2dEval_ArchimedeanSpiralCurve_inherited_Value(const Geom2dEval_ArchimedeanSpiralCurve* self, double U) {
+    try { return {new gp_Pnt2d(self->Value(U)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" const char* Geom2dEval_ArchimedeanSpiralCurve_inherited_Mirror(Geom2dEval_ArchimedeanSpiralCurve* self, gp_Pnt2d const& P) {
+    try { self->Mirror(P); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* Geom2dEval_ArchimedeanSpiralCurve_inherited_Rotate(Geom2dEval_ArchimedeanSpiralCurve* self, gp_Pnt2d const& P, double Ang) {
+    try { self->Rotate(P, Ang); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* Geom2dEval_ArchimedeanSpiralCurve_inherited_Scale(Geom2dEval_ArchimedeanSpiralCurve* self, gp_Pnt2d const& P, double S) {
+    try { self->Scale(P, S); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* Geom2dEval_ArchimedeanSpiralCurve_inherited_Translate(Geom2dEval_ArchimedeanSpiralCurve* self, gp_Vec2d const& V) {
+    try { self->Translate(V); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" OcctResult<Handle(Geom2d_Geometry)*> Geom2dEval_ArchimedeanSpiralCurve_inherited_Mirrored(const Geom2dEval_ArchimedeanSpiralCurve* self, gp_Pnt2d const& P) {
+    try { return {new Handle(Geom2d_Geometry)(self->Mirrored(P)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Handle(Geom2d_Geometry)*> Geom2dEval_ArchimedeanSpiralCurve_inherited_Rotated(const Geom2dEval_ArchimedeanSpiralCurve* self, gp_Pnt2d const& P, double Ang) {
+    try { return {new Handle(Geom2d_Geometry)(self->Rotated(P, Ang)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Handle(Geom2d_Geometry)*> Geom2dEval_ArchimedeanSpiralCurve_inherited_Scaled(const Geom2dEval_ArchimedeanSpiralCurve* self, gp_Pnt2d const& P, double S) {
+    try { return {new Handle(Geom2d_Geometry)(self->Scaled(P, S)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Handle(Geom2d_Geometry)*> Geom2dEval_ArchimedeanSpiralCurve_inherited_Transformed(const Geom2dEval_ArchimedeanSpiralCurve* self, gp_Trsf2d const& T) {
+    try { return {new Handle(Geom2d_Geometry)(self->Transformed(T)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Handle(Geom2d_Geometry)*> Geom2dEval_ArchimedeanSpiralCurve_inherited_Translated(const Geom2dEval_ArchimedeanSpiralCurve* self, gp_Vec2d const& V) {
+    try { return {new Handle(Geom2d_Geometry)(self->Translated(V)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<bool> Geom2dEval_ArchimedeanSpiralCurve_inherited_IsInstance(const Geom2dEval_ArchimedeanSpiralCurve* self, Handle(Standard_Type) const& theType) {
     try { return {self->IsInstance(theType), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<bool> Geom2dEvaluator_OffsetCurve_inherited_IsKind(const Geom2dEvaluator_OffsetCurve* self, Handle(Standard_Type) const& theType) {
+extern "C" OcctResult<bool> Geom2dEval_ArchimedeanSpiralCurve_inherited_IsKind(const Geom2dEval_ArchimedeanSpiralCurve* self, Handle(Standard_Type) const& theType) {
     try { return {self->IsKind(theType), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Standard_Transient*> Geom2dEvaluator_OffsetCurve_inherited_This(const Geom2dEvaluator_OffsetCurve* self) {
+extern "C" OcctResult<Standard_Transient*> Geom2dEval_ArchimedeanSpiralCurve_inherited_This(const Geom2dEval_ArchimedeanSpiralCurve* self) {
     try { return {self->This(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<int32_t> Geom2dEvaluator_OffsetCurve_inherited_GetRefCount(const Geom2dEvaluator_OffsetCurve* self) {
+extern "C" OcctResult<int32_t> Geom2dEval_ArchimedeanSpiralCurve_inherited_GetRefCount(const Geom2dEval_ArchimedeanSpiralCurve* self) {
     try { return {self->GetRefCount(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* Geom2dEvaluator_OffsetCurve_inherited_IncrementRefCounter(Geom2dEvaluator_OffsetCurve* self) {
+extern "C" const char* Geom2dEval_ArchimedeanSpiralCurve_inherited_IncrementRefCounter(Geom2dEval_ArchimedeanSpiralCurve* self) {
     try { self->IncrementRefCounter(); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<int32_t> Geom2dEvaluator_OffsetCurve_inherited_DecrementRefCounter(Geom2dEvaluator_OffsetCurve* self) {
+extern "C" OcctResult<int32_t> Geom2dEval_ArchimedeanSpiralCurve_inherited_DecrementRefCounter(Geom2dEval_ArchimedeanSpiralCurve* self) {
     try { return {self->DecrementRefCounter(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* Geom2dEvaluator_OffsetCurve_inherited_Delete(const Geom2dEvaluator_OffsetCurve* self) {
+extern "C" const char* Geom2dEval_ArchimedeanSpiralCurve_inherited_Delete(const Geom2dEval_ArchimedeanSpiralCurve* self) {
     try { self->Delete(); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" void Geom2dEvaluator_OffsetCurve_destructor(Geom2dEvaluator_OffsetCurve* self_) { delete self_; }
+extern "C" void Geom2dEval_ArchimedeanSpiralCurve_destructor(Geom2dEval_ArchimedeanSpiralCurve* self_) { delete self_; }
 
 // ========================
-// Geom2dLProp_CLProps2d wrappers
+// Geom2dEval_CircleInvoluteCurve wrappers
 // ========================
 
-extern "C" OcctResult<Geom2dLProp_CLProps2d*> Geom2dLProp_CLProps2d_ctor_handlegeom2dcurve_int_real(Handle(Geom2d_Curve) const* C, int32_t N, double Resolution) {
-    try { return {new Geom2dLProp_CLProps2d(*C, N, Resolution), nullptr}; }
+extern "C" OcctResult<Geom2dEval_CircleInvoluteCurve*> Geom2dEval_CircleInvoluteCurve_ctor_ax2d_real(gp_Ax2d const* thePosition, double theRadius) {
+    try { return {new Geom2dEval_CircleInvoluteCurve(*thePosition, theRadius), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Geom2dLProp_CLProps2d*> Geom2dLProp_CLProps2d_ctor_handlegeom2dcurve_real_int_real(Handle(Geom2d_Curve) const* C, double U, int32_t N, double Resolution) {
-    try { return {new Geom2dLProp_CLProps2d(*C, U, N, Resolution), nullptr}; }
+extern "C" OcctResult<gp_Pnt2d*> Geom2dEval_CircleInvoluteCurve_eval_d0(const Geom2dEval_CircleInvoluteCurve* self_, double U) {
+    try { return {new gp_Pnt2d(self_->EvalD0(U)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Geom2dLProp_CLProps2d*> Geom2dLProp_CLProps2d_ctor_int_real(int32_t N, double Resolution) {
-    try { return {new Geom2dLProp_CLProps2d(N, Resolution), nullptr}; }
+extern "C" OcctResult<Geom2d_Curve::ResD1*> Geom2dEval_CircleInvoluteCurve_eval_d1(const Geom2dEval_CircleInvoluteCurve* self_, double U) {
+    try { return {new Geom2d_Curve::ResD1(self_->EvalD1(U)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* Geom2dLProp_CLProps2d_set_parameter(Geom2dLProp_CLProps2d* self_, double U) {
-    try { self_->SetParameter(U); return nullptr; }
+extern "C" OcctResult<Geom2d_Curve::ResD2*> Geom2dEval_CircleInvoluteCurve_eval_d2(const Geom2dEval_CircleInvoluteCurve* self_, double U) {
+    try { return {new Geom2d_Curve::ResD2(self_->EvalD2(U)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Geom2d_Curve::ResD3*> Geom2dEval_CircleInvoluteCurve_eval_d3(const Geom2dEval_CircleInvoluteCurve* self_, double U) {
+    try { return {new Geom2d_Curve::ResD3(self_->EvalD3(U)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<gp_Vec2d*> Geom2dEval_CircleInvoluteCurve_eval_dn(const Geom2dEval_CircleInvoluteCurve* self_, double U, int32_t N) {
+    try { return {new gp_Vec2d(self_->EvalDN(U, N)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Handle(Geom2d_Geometry)*> Geom2dEval_CircleInvoluteCurve_copy(const Geom2dEval_CircleInvoluteCurve* self_) {
+    try { return {new Handle(Geom2d_Geometry)(self_->Copy()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<gp_Ax2d const*> Geom2dEval_CircleInvoluteCurve_position(const Geom2dEval_CircleInvoluteCurve* self_) {
+    try { return {&(self_->Position()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<double> Geom2dEval_CircleInvoluteCurve_radius(const Geom2dEval_CircleInvoluteCurve* self_) {
+    try { return {self_->Radius(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" const char* Geom2dEval_CircleInvoluteCurve_reverse(Geom2dEval_CircleInvoluteCurve* self_) {
+    try { self_->Reverse(); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* Geom2dLProp_CLProps2d_set_curve(Geom2dLProp_CLProps2d* self_, Handle(Geom2d_Curve) const* C) {
-    try { self_->SetCurve(*C); return nullptr; }
+extern "C" OcctResult<double> Geom2dEval_CircleInvoluteCurve_reversed_parameter(const Geom2dEval_CircleInvoluteCurve* self_, double U) {
+    try { return {self_->ReversedParameter(U), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<double> Geom2dEval_CircleInvoluteCurve_first_parameter(const Geom2dEval_CircleInvoluteCurve* self_) {
+    try { return {self_->FirstParameter(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<double> Geom2dEval_CircleInvoluteCurve_last_parameter(const Geom2dEval_CircleInvoluteCurve* self_) {
+    try { return {self_->LastParameter(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<bool> Geom2dEval_CircleInvoluteCurve_is_closed(const Geom2dEval_CircleInvoluteCurve* self_) {
+    try { return {self_->IsClosed(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<bool> Geom2dEval_CircleInvoluteCurve_is_periodic(const Geom2dEval_CircleInvoluteCurve* self_) {
+    try { return {self_->IsPeriodic(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<int32_t> Geom2dEval_CircleInvoluteCurve_continuity(const Geom2dEval_CircleInvoluteCurve* self_) {
+    try { return {static_cast<int32_t>(self_->Continuity()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<bool> Geom2dEval_CircleInvoluteCurve_is_cn(const Geom2dEval_CircleInvoluteCurve* self_, int32_t N) {
+    try { return {self_->IsCN(N), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" const char* Geom2dEval_CircleInvoluteCurve_transform(Geom2dEval_CircleInvoluteCurve* self_, gp_Trsf2d const* T) {
+    try { self_->Transform(*T); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<gp_Pnt2d const*> Geom2dLProp_CLProps2d_value(const Geom2dLProp_CLProps2d* self_) {
-    try { return {&(self_->Value()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<gp_Vec2d const*> Geom2dLProp_CLProps2d_d1(Geom2dLProp_CLProps2d* self_) {
-    try { return {&(self_->D1()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<gp_Vec2d const*> Geom2dLProp_CLProps2d_d2(Geom2dLProp_CLProps2d* self_) {
-    try { return {&(self_->D2()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<gp_Vec2d const*> Geom2dLProp_CLProps2d_d3(Geom2dLProp_CLProps2d* self_) {
-    try { return {&(self_->D3()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<bool> Geom2dLProp_CLProps2d_is_tangent_defined(Geom2dLProp_CLProps2d* self_) {
-    try { return {self_->IsTangentDefined(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* Geom2dLProp_CLProps2d_tangent(Geom2dLProp_CLProps2d* self_, gp_Dir2d* D) {
-    try { self_->Tangent(*D); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<double> Geom2dLProp_CLProps2d_curvature(Geom2dLProp_CLProps2d* self_) {
-    try { return {self_->Curvature(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* Geom2dLProp_CLProps2d_normal(Geom2dLProp_CLProps2d* self_, gp_Dir2d* N) {
-    try { self_->Normal(*N); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* Geom2dLProp_CLProps2d_centre_of_curvature(Geom2dLProp_CLProps2d* self_, gp_Pnt2d* P) {
-    try { self_->CentreOfCurvature(*P); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" void Geom2dLProp_CLProps2d_destructor(Geom2dLProp_CLProps2d* self_) { delete self_; }
-
-// ========================
-// Geom2dLProp_CurAndInf2d wrappers
-// ========================
-
-extern "C" OcctResult<Geom2dLProp_CurAndInf2d*> Geom2dLProp_CurAndInf2d_ctor() {
-    try { return {new Geom2dLProp_CurAndInf2d(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* Geom2dLProp_CurAndInf2d_perform(Geom2dLProp_CurAndInf2d* self_, Handle(Geom2d_Curve) const* C) {
-    try { self_->Perform(*C); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* Geom2dLProp_CurAndInf2d_perform_cur_ext(Geom2dLProp_CurAndInf2d* self_, Handle(Geom2d_Curve) const* C) {
-    try { self_->PerformCurExt(*C); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* Geom2dLProp_CurAndInf2d_perform_inf(Geom2dLProp_CurAndInf2d* self_, Handle(Geom2d_Curve) const* C) {
-    try { self_->PerformInf(*C); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<bool> Geom2dLProp_CurAndInf2d_is_done(const Geom2dLProp_CurAndInf2d* self_) {
-    try { return {self_->IsDone(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<const LProp_CurAndInf*> Geom2dLProp_CurAndInf2d_as_LProp_CurAndInf(const Geom2dLProp_CurAndInf2d* self_) { return {static_cast<const LProp_CurAndInf*>(self_), nullptr}; }
-extern "C" OcctResult<LProp_CurAndInf*> Geom2dLProp_CurAndInf2d_as_LProp_CurAndInf_mut(Geom2dLProp_CurAndInf2d* self_) { return {static_cast<LProp_CurAndInf*>(self_), nullptr}; }
-extern "C" const char* Geom2dLProp_CurAndInf2d_inherited_AddInflection(Geom2dLProp_CurAndInf2d* self, double Param) {
-    try { self->AddInflection(Param); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* Geom2dLProp_CurAndInf2d_inherited_AddExtCur(Geom2dLProp_CurAndInf2d* self, double Param, bool IsMin) {
-    try { self->AddExtCur(Param, IsMin); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* Geom2dLProp_CurAndInf2d_inherited_Clear(Geom2dLProp_CurAndInf2d* self) {
-    try { self->Clear(); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<bool> Geom2dLProp_CurAndInf2d_inherited_IsEmpty(const Geom2dLProp_CurAndInf2d* self) {
-    try { return {self->IsEmpty(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<int32_t> Geom2dLProp_CurAndInf2d_inherited_NbPoints(const Geom2dLProp_CurAndInf2d* self) {
-    try { return {self->NbPoints(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<double> Geom2dLProp_CurAndInf2d_inherited_Parameter(const Geom2dLProp_CurAndInf2d* self, int32_t N) {
-    try { return {self->Parameter(N), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<int32_t> Geom2dLProp_CurAndInf2d_inherited_Type(const Geom2dLProp_CurAndInf2d* self, int32_t N) {
-    try { return {static_cast<int32_t>(self->Type(N)), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" void Geom2dLProp_CurAndInf2d_destructor(Geom2dLProp_CurAndInf2d* self_) { delete self_; }
-
-// ========================
-// Geom2dLProp_Curve2dTool wrappers
-// ========================
-
-extern "C" OcctResult<Geom2dLProp_Curve2dTool*> Geom2dLProp_Curve2dTool_ctor() {
-    try { return {new Geom2dLProp_Curve2dTool(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* Geom2dLProp_Curve2dTool_value(Handle(Geom2d_Curve) const* C, double U, gp_Pnt2d* P) {
-    try { Geom2dLProp_Curve2dTool::Value(*C, U, *P); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* Geom2dLProp_Curve2dTool_d1(Handle(Geom2d_Curve) const* C, double U, gp_Pnt2d* P, gp_Vec2d* V1) {
-    try { Geom2dLProp_Curve2dTool::D1(*C, U, *P, *V1); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* Geom2dLProp_Curve2dTool_d2(Handle(Geom2d_Curve) const* C, double U, gp_Pnt2d* P, gp_Vec2d* V1, gp_Vec2d* V2) {
-    try { Geom2dLProp_Curve2dTool::D2(*C, U, *P, *V1, *V2); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* Geom2dLProp_Curve2dTool_d3(Handle(Geom2d_Curve) const* C, double U, gp_Pnt2d* P, gp_Vec2d* V1, gp_Vec2d* V2, gp_Vec2d* V3) {
-    try { Geom2dLProp_Curve2dTool::D3(*C, U, *P, *V1, *V2, *V3); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<int32_t> Geom2dLProp_Curve2dTool_continuity(Handle(Geom2d_Curve) const* C) {
-    try { return {Geom2dLProp_Curve2dTool::Continuity(*C), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<double> Geom2dLProp_Curve2dTool_first_parameter(Handle(Geom2d_Curve) const* C) {
-    try { return {Geom2dLProp_Curve2dTool::FirstParameter(*C), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<double> Geom2dLProp_Curve2dTool_last_parameter(Handle(Geom2d_Curve) const* C) {
-    try { return {Geom2dLProp_Curve2dTool::LastParameter(*C), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" void Geom2dLProp_Curve2dTool_destructor(Geom2dLProp_Curve2dTool* self_) { delete self_; }
-
-// ========================
-// Geom2dLProp_FuncCurExt wrappers
-// ========================
-
-extern "C" OcctResult<Geom2dLProp_FuncCurExt*> Geom2dLProp_FuncCurExt_ctor_handlegeom2dcurve_real(Handle(Geom2d_Curve) const* C, double Tol) {
-    try { return {new Geom2dLProp_FuncCurExt(*C, Tol), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<bool> Geom2dLProp_FuncCurExt_value(Geom2dLProp_FuncCurExt* self_, double X, double* F) {
-    try { return {self_->Value(X, *F), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<bool> Geom2dLProp_FuncCurExt_derivative(Geom2dLProp_FuncCurExt* self_, double X, double* D) {
-    try { return {self_->Derivative(X, *D), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<bool> Geom2dLProp_FuncCurExt_values(Geom2dLProp_FuncCurExt* self_, double X, double* F, double* D) {
-    try { return {self_->Values(X, *F, *D), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<bool> Geom2dLProp_FuncCurExt_is_min_kc(const Geom2dLProp_FuncCurExt* self_, double Param) {
-    try { return {self_->IsMinKC(Param), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<const math_FunctionWithDerivative*> Geom2dLProp_FuncCurExt_as_math_FunctionWithDerivative(const Geom2dLProp_FuncCurExt* self_) { return {static_cast<const math_FunctionWithDerivative*>(self_), nullptr}; }
-extern "C" OcctResult<math_FunctionWithDerivative*> Geom2dLProp_FuncCurExt_as_math_FunctionWithDerivative_mut(Geom2dLProp_FuncCurExt* self_) { return {static_cast<math_FunctionWithDerivative*>(self_), nullptr}; }
-extern "C" OcctResult<const math_Function*> Geom2dLProp_FuncCurExt_as_math_Function(const Geom2dLProp_FuncCurExt* self_) { return {static_cast<const math_Function*>(self_), nullptr}; }
-extern "C" OcctResult<math_Function*> Geom2dLProp_FuncCurExt_as_math_Function_mut(Geom2dLProp_FuncCurExt* self_) { return {static_cast<math_Function*>(self_), nullptr}; }
-extern "C" OcctResult<int32_t> Geom2dLProp_FuncCurExt_inherited_GetStateNumber(Geom2dLProp_FuncCurExt* self) {
-    try { return {self->GetStateNumber(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" void Geom2dLProp_FuncCurExt_destructor(Geom2dLProp_FuncCurExt* self_) { delete self_; }
-
-// ========================
-// Geom2dLProp_FuncCurNul wrappers
-// ========================
-
-extern "C" OcctResult<Geom2dLProp_FuncCurNul*> Geom2dLProp_FuncCurNul_ctor_handlegeom2dcurve(Handle(Geom2d_Curve) const* C) {
-    try { return {new Geom2dLProp_FuncCurNul(*C), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<bool> Geom2dLProp_FuncCurNul_value(Geom2dLProp_FuncCurNul* self_, double X, double* F) {
-    try { return {self_->Value(X, *F), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<bool> Geom2dLProp_FuncCurNul_derivative(Geom2dLProp_FuncCurNul* self_, double X, double* D) {
-    try { return {self_->Derivative(X, *D), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<bool> Geom2dLProp_FuncCurNul_values(Geom2dLProp_FuncCurNul* self_, double X, double* F, double* D) {
-    try { return {self_->Values(X, *F, *D), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<const math_FunctionWithDerivative*> Geom2dLProp_FuncCurNul_as_math_FunctionWithDerivative(const Geom2dLProp_FuncCurNul* self_) { return {static_cast<const math_FunctionWithDerivative*>(self_), nullptr}; }
-extern "C" OcctResult<math_FunctionWithDerivative*> Geom2dLProp_FuncCurNul_as_math_FunctionWithDerivative_mut(Geom2dLProp_FuncCurNul* self_) { return {static_cast<math_FunctionWithDerivative*>(self_), nullptr}; }
-extern "C" OcctResult<const math_Function*> Geom2dLProp_FuncCurNul_as_math_Function(const Geom2dLProp_FuncCurNul* self_) { return {static_cast<const math_Function*>(self_), nullptr}; }
-extern "C" OcctResult<math_Function*> Geom2dLProp_FuncCurNul_as_math_Function_mut(Geom2dLProp_FuncCurNul* self_) { return {static_cast<math_Function*>(self_), nullptr}; }
-extern "C" OcctResult<int32_t> Geom2dLProp_FuncCurNul_inherited_GetStateNumber(Geom2dLProp_FuncCurNul* self) {
-    try { return {self->GetStateNumber(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" void Geom2dLProp_FuncCurNul_destructor(Geom2dLProp_FuncCurNul* self_) { delete self_; }
-
-// ========================
-// Geom2dLProp_NumericCurInf2d wrappers
-// ========================
-
-extern "C" OcctResult<Geom2dLProp_NumericCurInf2d*> Geom2dLProp_NumericCurInf2d_ctor() {
-    try { return {new Geom2dLProp_NumericCurInf2d(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* Geom2dLProp_NumericCurInf2d_perform_cur_ext_handlegeom2dcurve_curandinf(Geom2dLProp_NumericCurInf2d* self_, Handle(Geom2d_Curve) const* C, LProp_CurAndInf* Result) {
-    try { self_->PerformCurExt(*C, *Result); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* Geom2dLProp_NumericCurInf2d_perform_inf_handlegeom2dcurve_curandinf(Geom2dLProp_NumericCurInf2d* self_, Handle(Geom2d_Curve) const* C, LProp_CurAndInf* Result) {
-    try { self_->PerformInf(*C, *Result); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* Geom2dLProp_NumericCurInf2d_perform_cur_ext_handlegeom2dcurve_real2_curandinf(Geom2dLProp_NumericCurInf2d* self_, Handle(Geom2d_Curve) const* C, double UMin, double UMax, LProp_CurAndInf* Result) {
-    try { self_->PerformCurExt(*C, UMin, UMax, *Result); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* Geom2dLProp_NumericCurInf2d_perform_inf_handlegeom2dcurve_real2_curandinf(Geom2dLProp_NumericCurInf2d* self_, Handle(Geom2d_Curve) const* C, double UMin, double UMax, LProp_CurAndInf* Result) {
-    try { self_->PerformInf(*C, UMin, UMax, *Result); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<bool> Geom2dLProp_NumericCurInf2d_is_done(const Geom2dLProp_NumericCurInf2d* self_) {
-    try { return {self_->IsDone(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" void Geom2dLProp_NumericCurInf2d_destructor(Geom2dLProp_NumericCurInf2d* self_) { delete self_; }
-
-// ========================
-// LProp_AnalyticCurInf wrappers
-// ========================
-
-extern "C" OcctResult<LProp_AnalyticCurInf*> LProp_AnalyticCurInf_ctor() {
-    try { return {new LProp_AnalyticCurInf(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* LProp_AnalyticCurInf_perform(LProp_AnalyticCurInf* self_, int32_t T, double UFirst, double ULast, LProp_CurAndInf* Result) {
-    try { self_->Perform(static_cast<GeomAbs_CurveType>(T), UFirst, ULast, *Result); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" void LProp_AnalyticCurInf_destructor(LProp_AnalyticCurInf* self_) { delete self_; }
-
-// ========================
-// LProp_BadContinuity wrappers
-// ========================
-
-extern "C" OcctResult<LProp_BadContinuity*> LProp_BadContinuity_ctor() {
-    try { return {new LProp_BadContinuity(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<LProp_BadContinuity*> LProp_BadContinuity_ctor_charptr(const char* theMessage) {
-    try { return {new LProp_BadContinuity(theMessage), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<LProp_BadContinuity*> LProp_BadContinuity_ctor_charptr2(const char* theMessage, const char* theStackTrace) {
-    try { return {new LProp_BadContinuity(theMessage, theStackTrace), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Handle(Standard_Type) const*> LProp_BadContinuity_dynamic_type(const LProp_BadContinuity* self_) {
+extern "C" OcctResult<Handle(Standard_Type) const*> Geom2dEval_CircleInvoluteCurve_dynamic_type(const Geom2dEval_CircleInvoluteCurve* self_) {
     try { return {&(self_->DynamicType()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* LProp_BadContinuity_raise_charptr(const char* theMessage) {
-    try { LProp_BadContinuity::Raise(theMessage); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* LProp_BadContinuity_raise_sstream(Standard_SStream* theMessage) {
-    try { LProp_BadContinuity::Raise(*theMessage); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<Handle(LProp_BadContinuity)*> LProp_BadContinuity_new_instance_charptr(const char* theMessage) {
-    try { return {new Handle(LProp_BadContinuity)(LProp_BadContinuity::NewInstance(theMessage)), nullptr}; }
+extern "C" OcctResult<char const*> Geom2dEval_CircleInvoluteCurve_get_type_name() {
+    try { return {Geom2dEval_CircleInvoluteCurve::get_type_name(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(LProp_BadContinuity)*> LProp_BadContinuity_new_instance_charptr2(const char* theMessage, const char* theStackTrace) {
-    try { return {new Handle(LProp_BadContinuity)(LProp_BadContinuity::NewInstance(theMessage, theStackTrace)), nullptr}; }
+extern "C" OcctResult<Handle(Standard_Type) const*> Geom2dEval_CircleInvoluteCurve_get_type_descriptor() {
+    try { return {&(Geom2dEval_CircleInvoluteCurve::get_type_descriptor()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<char const*> LProp_BadContinuity_get_type_name() {
-    try { return {LProp_BadContinuity::get_type_name(), nullptr}; }
+extern "C" OcctResult<const Geom2d_Curve*> Geom2dEval_CircleInvoluteCurve_as_Geom2d_Curve(const Geom2dEval_CircleInvoluteCurve* self_) { return {static_cast<const Geom2d_Curve*>(self_), nullptr}; }
+extern "C" OcctResult<Geom2d_Curve*> Geom2dEval_CircleInvoluteCurve_as_Geom2d_Curve_mut(Geom2dEval_CircleInvoluteCurve* self_) { return {static_cast<Geom2d_Curve*>(self_), nullptr}; }
+extern "C" OcctResult<const Geom2d_Geometry*> Geom2dEval_CircleInvoluteCurve_as_Geom2d_Geometry(const Geom2dEval_CircleInvoluteCurve* self_) { return {static_cast<const Geom2d_Geometry*>(self_), nullptr}; }
+extern "C" OcctResult<Geom2d_Geometry*> Geom2dEval_CircleInvoluteCurve_as_Geom2d_Geometry_mut(Geom2dEval_CircleInvoluteCurve* self_) { return {static_cast<Geom2d_Geometry*>(self_), nullptr}; }
+extern "C" OcctResult<const Standard_Transient*> Geom2dEval_CircleInvoluteCurve_as_Standard_Transient(const Geom2dEval_CircleInvoluteCurve* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
+extern "C" OcctResult<Standard_Transient*> Geom2dEval_CircleInvoluteCurve_as_Standard_Transient_mut(Geom2dEval_CircleInvoluteCurve* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
+extern "C" OcctResult<Handle_Geom2dEval_CircleInvoluteCurve*> Geom2dEval_CircleInvoluteCurve_to_handle(Geom2dEval_CircleInvoluteCurve* obj) {
+    try { return {new Handle_Geom2dEval_CircleInvoluteCurve(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(Standard_Type) const*> LProp_BadContinuity_get_type_descriptor() {
-    try { return {&(LProp_BadContinuity::get_type_descriptor()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<const Standard_Failure*> LProp_BadContinuity_as_Standard_Failure(const LProp_BadContinuity* self_) { return {static_cast<const Standard_Failure*>(self_), nullptr}; }
-extern "C" OcctResult<Standard_Failure*> LProp_BadContinuity_as_Standard_Failure_mut(LProp_BadContinuity* self_) { return {static_cast<Standard_Failure*>(self_), nullptr}; }
-extern "C" OcctResult<const Standard_Transient*> LProp_BadContinuity_as_Standard_Transient(const LProp_BadContinuity* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<Standard_Transient*> LProp_BadContinuity_as_Standard_Transient_mut(LProp_BadContinuity* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleLPropBadContinuity*> LProp_BadContinuity_to_handle(LProp_BadContinuity* obj) {
-    try { return {new HandleLPropBadContinuity(obj), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<const LProp_BadContinuity*> HandleLPropBadContinuity_get(const HandleLPropBadContinuity* handle) {
+extern "C" OcctResult<const Geom2dEval_CircleInvoluteCurve*> Handle_Geom2dEval_CircleInvoluteCurve_get(const Handle_Geom2dEval_CircleInvoluteCurve* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<LProp_BadContinuity*> HandleLPropBadContinuity_get_mut(HandleLPropBadContinuity* handle) {
+extern "C" OcctResult<Geom2dEval_CircleInvoluteCurve*> Handle_Geom2dEval_CircleInvoluteCurve_get_mut(Handle_Geom2dEval_CircleInvoluteCurve* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardFailure*> HandleLPropBadContinuity_to_HandleStandardFailure(const HandleLPropBadContinuity* self_) {
-    try { return {new HandleStandardFailure(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Geom2d_Curve*> Handle_Geom2dEval_CircleInvoluteCurve_to_Handle_Geom2d_Curve(const Handle_Geom2dEval_CircleInvoluteCurve* self_) {
+    try { return {new Handle_Geom2d_Curve(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleLPropBadContinuity_to_HandleStandardTransient(const HandleLPropBadContinuity* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Geom2d_Geometry*> Handle_Geom2dEval_CircleInvoluteCurve_to_Handle_Geom2d_Geometry(const Handle_Geom2dEval_CircleInvoluteCurve* self_) {
+    try { return {new Handle_Geom2d_Geometry(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* LProp_BadContinuity_inherited_Print(const LProp_BadContinuity* self, Standard_OStream& theStream) {
-    try { self->Print(theStream); return nullptr; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_Geom2dEval_CircleInvoluteCurve_to_Handle_Standard_Transient(const Handle_Geom2dEval_CircleInvoluteCurve* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<double> Geom2dEval_CircleInvoluteCurve_inherited_TransformedParameter(const Geom2dEval_CircleInvoluteCurve* self, double U, gp_Trsf2d const& T) {
+    try { return {self->TransformedParameter(U, T), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<double> Geom2dEval_CircleInvoluteCurve_inherited_ParametricTransformation(const Geom2dEval_CircleInvoluteCurve* self, gp_Trsf2d const& T) {
+    try { return {self->ParametricTransformation(T), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Handle(Geom2d_Curve)*> Geom2dEval_CircleInvoluteCurve_inherited_Reversed(const Geom2dEval_CircleInvoluteCurve* self) {
+    try { return {new Handle(Geom2d_Curve)(self->Reversed()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<double> Geom2dEval_CircleInvoluteCurve_inherited_Period(const Geom2dEval_CircleInvoluteCurve* self) {
+    try { return {self->Period(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" const char* Geom2dEval_CircleInvoluteCurve_inherited_D0(const Geom2dEval_CircleInvoluteCurve* self, double U, gp_Pnt2d& P) {
+    try { self->D0(U, P); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* LProp_BadContinuity_inherited_Reraise(LProp_BadContinuity* self) {
-    try { self->Reraise(); return nullptr; }
+extern "C" const char* Geom2dEval_CircleInvoluteCurve_inherited_D1(const Geom2dEval_CircleInvoluteCurve* self, double U, gp_Pnt2d& P, gp_Vec2d& V1) {
+    try { self->D1(U, P, V1); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* LProp_BadContinuity_inherited_Jump(LProp_BadContinuity* self) {
-    try { self->Jump(); return nullptr; }
+extern "C" const char* Geom2dEval_CircleInvoluteCurve_inherited_D2(const Geom2dEval_CircleInvoluteCurve* self, double U, gp_Pnt2d& P, gp_Vec2d& V1, gp_Vec2d& V2) {
+    try { self->D2(U, P, V1, V2); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<bool> LProp_BadContinuity_inherited_IsInstance(const LProp_BadContinuity* self, Handle(Standard_Type) const& theType) {
+extern "C" const char* Geom2dEval_CircleInvoluteCurve_inherited_D3(const Geom2dEval_CircleInvoluteCurve* self, double U, gp_Pnt2d& P, gp_Vec2d& V1, gp_Vec2d& V2, gp_Vec2d& V3) {
+    try { self->D3(U, P, V1, V2, V3); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" OcctResult<gp_Vec2d*> Geom2dEval_CircleInvoluteCurve_inherited_DN(const Geom2dEval_CircleInvoluteCurve* self, double U, int32_t N) {
+    try { return {new gp_Vec2d(self->DN(U, N)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<gp_Pnt2d*> Geom2dEval_CircleInvoluteCurve_inherited_Value(const Geom2dEval_CircleInvoluteCurve* self, double U) {
+    try { return {new gp_Pnt2d(self->Value(U)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" const char* Geom2dEval_CircleInvoluteCurve_inherited_Mirror(Geom2dEval_CircleInvoluteCurve* self, gp_Pnt2d const& P) {
+    try { self->Mirror(P); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* Geom2dEval_CircleInvoluteCurve_inherited_Rotate(Geom2dEval_CircleInvoluteCurve* self, gp_Pnt2d const& P, double Ang) {
+    try { self->Rotate(P, Ang); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* Geom2dEval_CircleInvoluteCurve_inherited_Scale(Geom2dEval_CircleInvoluteCurve* self, gp_Pnt2d const& P, double S) {
+    try { self->Scale(P, S); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* Geom2dEval_CircleInvoluteCurve_inherited_Translate(Geom2dEval_CircleInvoluteCurve* self, gp_Vec2d const& V) {
+    try { self->Translate(V); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" OcctResult<Handle(Geom2d_Geometry)*> Geom2dEval_CircleInvoluteCurve_inherited_Mirrored(const Geom2dEval_CircleInvoluteCurve* self, gp_Pnt2d const& P) {
+    try { return {new Handle(Geom2d_Geometry)(self->Mirrored(P)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Handle(Geom2d_Geometry)*> Geom2dEval_CircleInvoluteCurve_inherited_Rotated(const Geom2dEval_CircleInvoluteCurve* self, gp_Pnt2d const& P, double Ang) {
+    try { return {new Handle(Geom2d_Geometry)(self->Rotated(P, Ang)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Handle(Geom2d_Geometry)*> Geom2dEval_CircleInvoluteCurve_inherited_Scaled(const Geom2dEval_CircleInvoluteCurve* self, gp_Pnt2d const& P, double S) {
+    try { return {new Handle(Geom2d_Geometry)(self->Scaled(P, S)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Handle(Geom2d_Geometry)*> Geom2dEval_CircleInvoluteCurve_inherited_Transformed(const Geom2dEval_CircleInvoluteCurve* self, gp_Trsf2d const& T) {
+    try { return {new Handle(Geom2d_Geometry)(self->Transformed(T)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Handle(Geom2d_Geometry)*> Geom2dEval_CircleInvoluteCurve_inherited_Translated(const Geom2dEval_CircleInvoluteCurve* self, gp_Vec2d const& V) {
+    try { return {new Handle(Geom2d_Geometry)(self->Translated(V)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<bool> Geom2dEval_CircleInvoluteCurve_inherited_IsInstance(const Geom2dEval_CircleInvoluteCurve* self, Handle(Standard_Type) const& theType) {
     try { return {self->IsInstance(theType), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<bool> LProp_BadContinuity_inherited_IsKind(const LProp_BadContinuity* self, Handle(Standard_Type) const& theType) {
+extern "C" OcctResult<bool> Geom2dEval_CircleInvoluteCurve_inherited_IsKind(const Geom2dEval_CircleInvoluteCurve* self, Handle(Standard_Type) const& theType) {
     try { return {self->IsKind(theType), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Standard_Transient*> LProp_BadContinuity_inherited_This(const LProp_BadContinuity* self) {
+extern "C" OcctResult<Standard_Transient*> Geom2dEval_CircleInvoluteCurve_inherited_This(const Geom2dEval_CircleInvoluteCurve* self) {
     try { return {self->This(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<int32_t> LProp_BadContinuity_inherited_GetRefCount(const LProp_BadContinuity* self) {
+extern "C" OcctResult<int32_t> Geom2dEval_CircleInvoluteCurve_inherited_GetRefCount(const Geom2dEval_CircleInvoluteCurve* self) {
     try { return {self->GetRefCount(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* LProp_BadContinuity_inherited_IncrementRefCounter(LProp_BadContinuity* self) {
+extern "C" const char* Geom2dEval_CircleInvoluteCurve_inherited_IncrementRefCounter(Geom2dEval_CircleInvoluteCurve* self) {
     try { self->IncrementRefCounter(); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<int32_t> LProp_BadContinuity_inherited_DecrementRefCounter(LProp_BadContinuity* self) {
+extern "C" OcctResult<int32_t> Geom2dEval_CircleInvoluteCurve_inherited_DecrementRefCounter(Geom2dEval_CircleInvoluteCurve* self) {
     try { return {self->DecrementRefCounter(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* LProp_BadContinuity_inherited_Delete(const LProp_BadContinuity* self) {
+extern "C" const char* Geom2dEval_CircleInvoluteCurve_inherited_Delete(const Geom2dEval_CircleInvoluteCurve* self) {
     try { self->Delete(); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" void LProp_BadContinuity_destructor(LProp_BadContinuity* self_) { delete self_; }
+extern "C" void Geom2dEval_CircleInvoluteCurve_destructor(Geom2dEval_CircleInvoluteCurve* self_) { delete self_; }
 
 // ========================
-// LProp_CurAndInf wrappers
+// Geom2dEval_LogarithmicSpiralCurve wrappers
 // ========================
 
-extern "C" OcctResult<LProp_CurAndInf*> LProp_CurAndInf_ctor() {
-    try { return {new LProp_CurAndInf(), nullptr}; }
+extern "C" OcctResult<Geom2dEval_LogarithmicSpiralCurve*> Geom2dEval_LogarithmicSpiralCurve_ctor_ax2d_real2(gp_Ax2d const* thePosition, double theScale, double theGrowthExponent) {
+    try { return {new Geom2dEval_LogarithmicSpiralCurve(*thePosition, theScale, theGrowthExponent), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* LProp_CurAndInf_add_inflection(LProp_CurAndInf* self_, double Param) {
-    try { self_->AddInflection(Param); return nullptr; }
+extern "C" OcctResult<gp_Pnt2d*> Geom2dEval_LogarithmicSpiralCurve_eval_d0(const Geom2dEval_LogarithmicSpiralCurve* self_, double U) {
+    try { return {new gp_Pnt2d(self_->EvalD0(U)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Geom2d_Curve::ResD1*> Geom2dEval_LogarithmicSpiralCurve_eval_d1(const Geom2dEval_LogarithmicSpiralCurve* self_, double U) {
+    try { return {new Geom2d_Curve::ResD1(self_->EvalD1(U)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Geom2d_Curve::ResD2*> Geom2dEval_LogarithmicSpiralCurve_eval_d2(const Geom2dEval_LogarithmicSpiralCurve* self_, double U) {
+    try { return {new Geom2d_Curve::ResD2(self_->EvalD2(U)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Geom2d_Curve::ResD3*> Geom2dEval_LogarithmicSpiralCurve_eval_d3(const Geom2dEval_LogarithmicSpiralCurve* self_, double U) {
+    try { return {new Geom2d_Curve::ResD3(self_->EvalD3(U)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<gp_Vec2d*> Geom2dEval_LogarithmicSpiralCurve_eval_dn(const Geom2dEval_LogarithmicSpiralCurve* self_, double U, int32_t N) {
+    try { return {new gp_Vec2d(self_->EvalDN(U, N)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Handle(Geom2d_Geometry)*> Geom2dEval_LogarithmicSpiralCurve_copy(const Geom2dEval_LogarithmicSpiralCurve* self_) {
+    try { return {new Handle(Geom2d_Geometry)(self_->Copy()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<gp_Ax2d const*> Geom2dEval_LogarithmicSpiralCurve_position(const Geom2dEval_LogarithmicSpiralCurve* self_) {
+    try { return {&(self_->Position()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<double> Geom2dEval_LogarithmicSpiralCurve_scale(const Geom2dEval_LogarithmicSpiralCurve* self_) {
+    try { return {self_->Scale(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<double> Geom2dEval_LogarithmicSpiralCurve_growth_exponent(const Geom2dEval_LogarithmicSpiralCurve* self_) {
+    try { return {self_->GrowthExponent(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" const char* Geom2dEval_LogarithmicSpiralCurve_reverse(Geom2dEval_LogarithmicSpiralCurve* self_) {
+    try { self_->Reverse(); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* LProp_CurAndInf_add_ext_cur(LProp_CurAndInf* self_, double Param, bool IsMin) {
-    try { self_->AddExtCur(Param, IsMin); return nullptr; }
+extern "C" OcctResult<double> Geom2dEval_LogarithmicSpiralCurve_reversed_parameter(const Geom2dEval_LogarithmicSpiralCurve* self_, double U) {
+    try { return {self_->ReversedParameter(U), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<double> Geom2dEval_LogarithmicSpiralCurve_first_parameter(const Geom2dEval_LogarithmicSpiralCurve* self_) {
+    try { return {self_->FirstParameter(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<double> Geom2dEval_LogarithmicSpiralCurve_last_parameter(const Geom2dEval_LogarithmicSpiralCurve* self_) {
+    try { return {self_->LastParameter(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<bool> Geom2dEval_LogarithmicSpiralCurve_is_closed(const Geom2dEval_LogarithmicSpiralCurve* self_) {
+    try { return {self_->IsClosed(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<bool> Geom2dEval_LogarithmicSpiralCurve_is_periodic(const Geom2dEval_LogarithmicSpiralCurve* self_) {
+    try { return {self_->IsPeriodic(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<int32_t> Geom2dEval_LogarithmicSpiralCurve_continuity(const Geom2dEval_LogarithmicSpiralCurve* self_) {
+    try { return {static_cast<int32_t>(self_->Continuity()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<bool> Geom2dEval_LogarithmicSpiralCurve_is_cn(const Geom2dEval_LogarithmicSpiralCurve* self_, int32_t N) {
+    try { return {self_->IsCN(N), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" const char* Geom2dEval_LogarithmicSpiralCurve_transform(Geom2dEval_LogarithmicSpiralCurve* self_, gp_Trsf2d const* T) {
+    try { self_->Transform(*T); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* LProp_CurAndInf_clear(LProp_CurAndInf* self_) {
-    try { self_->Clear(); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<bool> LProp_CurAndInf_is_empty(const LProp_CurAndInf* self_) {
-    try { return {self_->IsEmpty(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<int32_t> LProp_CurAndInf_nb_points(const LProp_CurAndInf* self_) {
-    try { return {self_->NbPoints(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<double> LProp_CurAndInf_parameter(const LProp_CurAndInf* self_, int32_t N) {
-    try { return {self_->Parameter(N), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<int32_t> LProp_CurAndInf_type_(const LProp_CurAndInf* self_, int32_t N) {
-    try { return {static_cast<int32_t>(self_->Type(N)), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" void LProp_CurAndInf_destructor(LProp_CurAndInf* self_) { delete self_; }
-
-// ========================
-// LProp_NotDefined wrappers
-// ========================
-
-extern "C" OcctResult<LProp_NotDefined*> LProp_NotDefined_ctor() {
-    try { return {new LProp_NotDefined(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<LProp_NotDefined*> LProp_NotDefined_ctor_charptr(const char* theMessage) {
-    try { return {new LProp_NotDefined(theMessage), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<LProp_NotDefined*> LProp_NotDefined_ctor_charptr2(const char* theMessage, const char* theStackTrace) {
-    try { return {new LProp_NotDefined(theMessage, theStackTrace), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Handle(Standard_Type) const*> LProp_NotDefined_dynamic_type(const LProp_NotDefined* self_) {
+extern "C" OcctResult<Handle(Standard_Type) const*> Geom2dEval_LogarithmicSpiralCurve_dynamic_type(const Geom2dEval_LogarithmicSpiralCurve* self_) {
     try { return {&(self_->DynamicType()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* LProp_NotDefined_raise_charptr(const char* theMessage) {
-    try { LProp_NotDefined::Raise(theMessage); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* LProp_NotDefined_raise_sstream(Standard_SStream* theMessage) {
-    try { LProp_NotDefined::Raise(*theMessage); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<Handle(LProp_NotDefined)*> LProp_NotDefined_new_instance_charptr(const char* theMessage) {
-    try { return {new Handle(LProp_NotDefined)(LProp_NotDefined::NewInstance(theMessage)), nullptr}; }
+extern "C" OcctResult<char const*> Geom2dEval_LogarithmicSpiralCurve_get_type_name() {
+    try { return {Geom2dEval_LogarithmicSpiralCurve::get_type_name(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(LProp_NotDefined)*> LProp_NotDefined_new_instance_charptr2(const char* theMessage, const char* theStackTrace) {
-    try { return {new Handle(LProp_NotDefined)(LProp_NotDefined::NewInstance(theMessage, theStackTrace)), nullptr}; }
+extern "C" OcctResult<Handle(Standard_Type) const*> Geom2dEval_LogarithmicSpiralCurve_get_type_descriptor() {
+    try { return {&(Geom2dEval_LogarithmicSpiralCurve::get_type_descriptor()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<char const*> LProp_NotDefined_get_type_name() {
-    try { return {LProp_NotDefined::get_type_name(), nullptr}; }
+extern "C" OcctResult<const Geom2d_Curve*> Geom2dEval_LogarithmicSpiralCurve_as_Geom2d_Curve(const Geom2dEval_LogarithmicSpiralCurve* self_) { return {static_cast<const Geom2d_Curve*>(self_), nullptr}; }
+extern "C" OcctResult<Geom2d_Curve*> Geom2dEval_LogarithmicSpiralCurve_as_Geom2d_Curve_mut(Geom2dEval_LogarithmicSpiralCurve* self_) { return {static_cast<Geom2d_Curve*>(self_), nullptr}; }
+extern "C" OcctResult<const Geom2d_Geometry*> Geom2dEval_LogarithmicSpiralCurve_as_Geom2d_Geometry(const Geom2dEval_LogarithmicSpiralCurve* self_) { return {static_cast<const Geom2d_Geometry*>(self_), nullptr}; }
+extern "C" OcctResult<Geom2d_Geometry*> Geom2dEval_LogarithmicSpiralCurve_as_Geom2d_Geometry_mut(Geom2dEval_LogarithmicSpiralCurve* self_) { return {static_cast<Geom2d_Geometry*>(self_), nullptr}; }
+extern "C" OcctResult<const Standard_Transient*> Geom2dEval_LogarithmicSpiralCurve_as_Standard_Transient(const Geom2dEval_LogarithmicSpiralCurve* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
+extern "C" OcctResult<Standard_Transient*> Geom2dEval_LogarithmicSpiralCurve_as_Standard_Transient_mut(Geom2dEval_LogarithmicSpiralCurve* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
+extern "C" OcctResult<Handle_Geom2dEval_LogarithmicSpiralCurve*> Geom2dEval_LogarithmicSpiralCurve_to_handle(Geom2dEval_LogarithmicSpiralCurve* obj) {
+    try { return {new Handle_Geom2dEval_LogarithmicSpiralCurve(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(Standard_Type) const*> LProp_NotDefined_get_type_descriptor() {
-    try { return {&(LProp_NotDefined::get_type_descriptor()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<const Standard_Failure*> LProp_NotDefined_as_Standard_Failure(const LProp_NotDefined* self_) { return {static_cast<const Standard_Failure*>(self_), nullptr}; }
-extern "C" OcctResult<Standard_Failure*> LProp_NotDefined_as_Standard_Failure_mut(LProp_NotDefined* self_) { return {static_cast<Standard_Failure*>(self_), nullptr}; }
-extern "C" OcctResult<const Standard_Transient*> LProp_NotDefined_as_Standard_Transient(const LProp_NotDefined* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<Standard_Transient*> LProp_NotDefined_as_Standard_Transient_mut(LProp_NotDefined* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleLPropNotDefined*> LProp_NotDefined_to_handle(LProp_NotDefined* obj) {
-    try { return {new HandleLPropNotDefined(obj), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<const LProp_NotDefined*> HandleLPropNotDefined_get(const HandleLPropNotDefined* handle) {
+extern "C" OcctResult<const Geom2dEval_LogarithmicSpiralCurve*> Handle_Geom2dEval_LogarithmicSpiralCurve_get(const Handle_Geom2dEval_LogarithmicSpiralCurve* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<LProp_NotDefined*> HandleLPropNotDefined_get_mut(HandleLPropNotDefined* handle) {
+extern "C" OcctResult<Geom2dEval_LogarithmicSpiralCurve*> Handle_Geom2dEval_LogarithmicSpiralCurve_get_mut(Handle_Geom2dEval_LogarithmicSpiralCurve* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardFailure*> HandleLPropNotDefined_to_HandleStandardFailure(const HandleLPropNotDefined* self_) {
-    try { return {new HandleStandardFailure(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Geom2d_Curve*> Handle_Geom2dEval_LogarithmicSpiralCurve_to_Handle_Geom2d_Curve(const Handle_Geom2dEval_LogarithmicSpiralCurve* self_) {
+    try { return {new Handle_Geom2d_Curve(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleLPropNotDefined_to_HandleStandardTransient(const HandleLPropNotDefined* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Geom2d_Geometry*> Handle_Geom2dEval_LogarithmicSpiralCurve_to_Handle_Geom2d_Geometry(const Handle_Geom2dEval_LogarithmicSpiralCurve* self_) {
+    try { return {new Handle_Geom2d_Geometry(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* LProp_NotDefined_inherited_Print(const LProp_NotDefined* self, Standard_OStream& theStream) {
-    try { self->Print(theStream); return nullptr; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_Geom2dEval_LogarithmicSpiralCurve_to_Handle_Standard_Transient(const Handle_Geom2dEval_LogarithmicSpiralCurve* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<double> Geom2dEval_LogarithmicSpiralCurve_inherited_TransformedParameter(const Geom2dEval_LogarithmicSpiralCurve* self, double U, gp_Trsf2d const& T) {
+    try { return {self->TransformedParameter(U, T), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<double> Geom2dEval_LogarithmicSpiralCurve_inherited_ParametricTransformation(const Geom2dEval_LogarithmicSpiralCurve* self, gp_Trsf2d const& T) {
+    try { return {self->ParametricTransformation(T), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Handle(Geom2d_Curve)*> Geom2dEval_LogarithmicSpiralCurve_inherited_Reversed(const Geom2dEval_LogarithmicSpiralCurve* self) {
+    try { return {new Handle(Geom2d_Curve)(self->Reversed()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<double> Geom2dEval_LogarithmicSpiralCurve_inherited_Period(const Geom2dEval_LogarithmicSpiralCurve* self) {
+    try { return {self->Period(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" const char* Geom2dEval_LogarithmicSpiralCurve_inherited_D0(const Geom2dEval_LogarithmicSpiralCurve* self, double U, gp_Pnt2d& P) {
+    try { self->D0(U, P); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* LProp_NotDefined_inherited_Reraise(LProp_NotDefined* self) {
-    try { self->Reraise(); return nullptr; }
+extern "C" const char* Geom2dEval_LogarithmicSpiralCurve_inherited_D1(const Geom2dEval_LogarithmicSpiralCurve* self, double U, gp_Pnt2d& P, gp_Vec2d& V1) {
+    try { self->D1(U, P, V1); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* LProp_NotDefined_inherited_Jump(LProp_NotDefined* self) {
-    try { self->Jump(); return nullptr; }
+extern "C" const char* Geom2dEval_LogarithmicSpiralCurve_inherited_D2(const Geom2dEval_LogarithmicSpiralCurve* self, double U, gp_Pnt2d& P, gp_Vec2d& V1, gp_Vec2d& V2) {
+    try { self->D2(U, P, V1, V2); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<bool> LProp_NotDefined_inherited_IsInstance(const LProp_NotDefined* self, Handle(Standard_Type) const& theType) {
+extern "C" const char* Geom2dEval_LogarithmicSpiralCurve_inherited_D3(const Geom2dEval_LogarithmicSpiralCurve* self, double U, gp_Pnt2d& P, gp_Vec2d& V1, gp_Vec2d& V2, gp_Vec2d& V3) {
+    try { self->D3(U, P, V1, V2, V3); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" OcctResult<gp_Vec2d*> Geom2dEval_LogarithmicSpiralCurve_inherited_DN(const Geom2dEval_LogarithmicSpiralCurve* self, double U, int32_t N) {
+    try { return {new gp_Vec2d(self->DN(U, N)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<gp_Pnt2d*> Geom2dEval_LogarithmicSpiralCurve_inherited_Value(const Geom2dEval_LogarithmicSpiralCurve* self, double U) {
+    try { return {new gp_Pnt2d(self->Value(U)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" const char* Geom2dEval_LogarithmicSpiralCurve_inherited_Mirror(Geom2dEval_LogarithmicSpiralCurve* self, gp_Pnt2d const& P) {
+    try { self->Mirror(P); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* Geom2dEval_LogarithmicSpiralCurve_inherited_Rotate(Geom2dEval_LogarithmicSpiralCurve* self, gp_Pnt2d const& P, double Ang) {
+    try { self->Rotate(P, Ang); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* Geom2dEval_LogarithmicSpiralCurve_inherited_Translate(Geom2dEval_LogarithmicSpiralCurve* self, gp_Vec2d const& V) {
+    try { self->Translate(V); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" OcctResult<Handle(Geom2d_Geometry)*> Geom2dEval_LogarithmicSpiralCurve_inherited_Mirrored(const Geom2dEval_LogarithmicSpiralCurve* self, gp_Pnt2d const& P) {
+    try { return {new Handle(Geom2d_Geometry)(self->Mirrored(P)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Handle(Geom2d_Geometry)*> Geom2dEval_LogarithmicSpiralCurve_inherited_Rotated(const Geom2dEval_LogarithmicSpiralCurve* self, gp_Pnt2d const& P, double Ang) {
+    try { return {new Handle(Geom2d_Geometry)(self->Rotated(P, Ang)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Handle(Geom2d_Geometry)*> Geom2dEval_LogarithmicSpiralCurve_inherited_Scaled(const Geom2dEval_LogarithmicSpiralCurve* self, gp_Pnt2d const& P, double S) {
+    try { return {new Handle(Geom2d_Geometry)(self->Scaled(P, S)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Handle(Geom2d_Geometry)*> Geom2dEval_LogarithmicSpiralCurve_inherited_Transformed(const Geom2dEval_LogarithmicSpiralCurve* self, gp_Trsf2d const& T) {
+    try { return {new Handle(Geom2d_Geometry)(self->Transformed(T)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Handle(Geom2d_Geometry)*> Geom2dEval_LogarithmicSpiralCurve_inherited_Translated(const Geom2dEval_LogarithmicSpiralCurve* self, gp_Vec2d const& V) {
+    try { return {new Handle(Geom2d_Geometry)(self->Translated(V)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<bool> Geom2dEval_LogarithmicSpiralCurve_inherited_IsInstance(const Geom2dEval_LogarithmicSpiralCurve* self, Handle(Standard_Type) const& theType) {
     try { return {self->IsInstance(theType), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<bool> LProp_NotDefined_inherited_IsKind(const LProp_NotDefined* self, Handle(Standard_Type) const& theType) {
+extern "C" OcctResult<bool> Geom2dEval_LogarithmicSpiralCurve_inherited_IsKind(const Geom2dEval_LogarithmicSpiralCurve* self, Handle(Standard_Type) const& theType) {
     try { return {self->IsKind(theType), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Standard_Transient*> LProp_NotDefined_inherited_This(const LProp_NotDefined* self) {
+extern "C" OcctResult<Standard_Transient*> Geom2dEval_LogarithmicSpiralCurve_inherited_This(const Geom2dEval_LogarithmicSpiralCurve* self) {
     try { return {self->This(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<int32_t> LProp_NotDefined_inherited_GetRefCount(const LProp_NotDefined* self) {
+extern "C" OcctResult<int32_t> Geom2dEval_LogarithmicSpiralCurve_inherited_GetRefCount(const Geom2dEval_LogarithmicSpiralCurve* self) {
     try { return {self->GetRefCount(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* LProp_NotDefined_inherited_IncrementRefCounter(LProp_NotDefined* self) {
+extern "C" const char* Geom2dEval_LogarithmicSpiralCurve_inherited_IncrementRefCounter(Geom2dEval_LogarithmicSpiralCurve* self) {
     try { self->IncrementRefCounter(); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<int32_t> LProp_NotDefined_inherited_DecrementRefCounter(LProp_NotDefined* self) {
+extern "C" OcctResult<int32_t> Geom2dEval_LogarithmicSpiralCurve_inherited_DecrementRefCounter(Geom2dEval_LogarithmicSpiralCurve* self) {
     try { return {self->DecrementRefCounter(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* LProp_NotDefined_inherited_Delete(const LProp_NotDefined* self) {
+extern "C" const char* Geom2dEval_LogarithmicSpiralCurve_inherited_Delete(const Geom2dEval_LogarithmicSpiralCurve* self) {
     try { self->Delete(); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" void LProp_NotDefined_destructor(LProp_NotDefined* self_) { delete self_; }
+extern "C" void Geom2dEval_LogarithmicSpiralCurve_destructor(Geom2dEval_LogarithmicSpiralCurve* self_) { delete self_; }
 
 // ========================
-// TColGeom2d_HArray1OfBSplineCurve wrappers
+// Geom2dEval_SineWaveCurve wrappers
 // ========================
 
-extern "C" OcctResult<TColGeom2d_HArray1OfBSplineCurve*> TColGeom2d_HArray1OfBSplineCurve_ctor() {
-    try { return {new TColGeom2d_HArray1OfBSplineCurve(), nullptr}; }
+extern "C" OcctResult<Geom2dEval_SineWaveCurve*> Geom2dEval_SineWaveCurve_ctor_ax2d_real3(gp_Ax2d const* thePosition, double theAmplitude, double theOmega, double thePhase) {
+    try { return {new Geom2dEval_SineWaveCurve(*thePosition, theAmplitude, theOmega, thePhase), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TColGeom2d_HArray1OfBSplineCurve*> TColGeom2d_HArray1OfBSplineCurve_ctor_int2(int32_t theLower, int32_t theUpper) {
-    try { return {new TColGeom2d_HArray1OfBSplineCurve(theLower, theUpper), nullptr}; }
+extern "C" OcctResult<gp_Pnt2d*> Geom2dEval_SineWaveCurve_eval_d0(const Geom2dEval_SineWaveCurve* self_, double U) {
+    try { return {new gp_Pnt2d(self_->EvalD0(U)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TColGeom2d_HArray1OfBSplineCurve*> TColGeom2d_HArray1OfBSplineCurve_ctor_int2_handlegeom2dbsplinecurve(int32_t theLower, int32_t theUpper, Handle(Geom2d_BSplineCurve) const* theValue) {
-    try { return {new TColGeom2d_HArray1OfBSplineCurve(theLower, theUpper, *theValue), nullptr}; }
+extern "C" OcctResult<Geom2d_Curve::ResD1*> Geom2dEval_SineWaveCurve_eval_d1(const Geom2dEval_SineWaveCurve* self_, double U) {
+    try { return {new Geom2d_Curve::ResD1(self_->EvalD1(U)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TColGeom2d_HArray1OfBSplineCurve*> TColGeom2d_HArray1OfBSplineCurve_ctor_handlegeom2dbsplinecurve_int2_bool(Handle(Geom2d_BSplineCurve) const* theBegin, int32_t theLower, int32_t theUpper, bool arg3) {
-    try { return {new TColGeom2d_HArray1OfBSplineCurve(*theBegin, theLower, theUpper, arg3), nullptr}; }
+extern "C" OcctResult<Geom2d_Curve::ResD2*> Geom2dEval_SineWaveCurve_eval_d2(const Geom2dEval_SineWaveCurve* self_, double U) {
+    try { return {new Geom2d_Curve::ResD2(self_->EvalD2(U)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TColGeom2d_HArray1OfBSplineCurve*> TColGeom2d_HArray1OfBSplineCurve_ctor_array1ofbsplinecurve(TColGeom2d_Array1OfBSplineCurve const* theOther) {
-    try { return {new TColGeom2d_HArray1OfBSplineCurve(*theOther), nullptr}; }
+extern "C" OcctResult<Geom2d_Curve::ResD3*> Geom2dEval_SineWaveCurve_eval_d3(const Geom2dEval_SineWaveCurve* self_, double U) {
+    try { return {new Geom2d_Curve::ResD3(self_->EvalD3(U)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TColGeom2d_Array1OfBSplineCurve const*> TColGeom2d_HArray1OfBSplineCurve_array1(const TColGeom2d_HArray1OfBSplineCurve* self_) {
-    try { return {&(self_->Array1()), nullptr}; }
+extern "C" OcctResult<gp_Vec2d*> Geom2dEval_SineWaveCurve_eval_dn(const Geom2dEval_SineWaveCurve* self_, double U, int32_t N) {
+    try { return {new gp_Vec2d(self_->EvalDN(U, N)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TColGeom2d_Array1OfBSplineCurve*> TColGeom2d_HArray1OfBSplineCurve_change_array1(TColGeom2d_HArray1OfBSplineCurve* self_) {
-    try { return {&(self_->ChangeArray1()), nullptr}; }
+extern "C" OcctResult<Handle(Geom2d_Geometry)*> Geom2dEval_SineWaveCurve_copy(const Geom2dEval_SineWaveCurve* self_) {
+    try { return {new Handle(Geom2d_Geometry)(self_->Copy()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(Standard_Type) const*> TColGeom2d_HArray1OfBSplineCurve_dynamic_type(const TColGeom2d_HArray1OfBSplineCurve* self_) {
+extern "C" OcctResult<gp_Ax2d const*> Geom2dEval_SineWaveCurve_position(const Geom2dEval_SineWaveCurve* self_) {
+    try { return {&(self_->Position()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<double> Geom2dEval_SineWaveCurve_amplitude(const Geom2dEval_SineWaveCurve* self_) {
+    try { return {self_->Amplitude(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<double> Geom2dEval_SineWaveCurve_omega(const Geom2dEval_SineWaveCurve* self_) {
+    try { return {self_->Omega(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<double> Geom2dEval_SineWaveCurve_phase(const Geom2dEval_SineWaveCurve* self_) {
+    try { return {self_->Phase(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" const char* Geom2dEval_SineWaveCurve_reverse(Geom2dEval_SineWaveCurve* self_) {
+    try { self_->Reverse(); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" OcctResult<double> Geom2dEval_SineWaveCurve_reversed_parameter(const Geom2dEval_SineWaveCurve* self_, double U) {
+    try { return {self_->ReversedParameter(U), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<double> Geom2dEval_SineWaveCurve_first_parameter(const Geom2dEval_SineWaveCurve* self_) {
+    try { return {self_->FirstParameter(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<double> Geom2dEval_SineWaveCurve_last_parameter(const Geom2dEval_SineWaveCurve* self_) {
+    try { return {self_->LastParameter(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<bool> Geom2dEval_SineWaveCurve_is_closed(const Geom2dEval_SineWaveCurve* self_) {
+    try { return {self_->IsClosed(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<bool> Geom2dEval_SineWaveCurve_is_periodic(const Geom2dEval_SineWaveCurve* self_) {
+    try { return {self_->IsPeriodic(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<int32_t> Geom2dEval_SineWaveCurve_continuity(const Geom2dEval_SineWaveCurve* self_) {
+    try { return {static_cast<int32_t>(self_->Continuity()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<bool> Geom2dEval_SineWaveCurve_is_cn(const Geom2dEval_SineWaveCurve* self_, int32_t N) {
+    try { return {self_->IsCN(N), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" const char* Geom2dEval_SineWaveCurve_transform(Geom2dEval_SineWaveCurve* self_, gp_Trsf2d const* T) {
+    try { self_->Transform(*T); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" OcctResult<Handle(Standard_Type) const*> Geom2dEval_SineWaveCurve_dynamic_type(const Geom2dEval_SineWaveCurve* self_) {
     try { return {&(self_->DynamicType()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<char const*> TColGeom2d_HArray1OfBSplineCurve_get_type_name() {
-    try { return {TColGeom2d_HArray1OfBSplineCurve::get_type_name(), nullptr}; }
+extern "C" OcctResult<char const*> Geom2dEval_SineWaveCurve_get_type_name() {
+    try { return {Geom2dEval_SineWaveCurve::get_type_name(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(Standard_Type) const*> TColGeom2d_HArray1OfBSplineCurve_get_type_descriptor() {
-    try { return {&(TColGeom2d_HArray1OfBSplineCurve::get_type_descriptor()), nullptr}; }
+extern "C" OcctResult<Handle(Standard_Type) const*> Geom2dEval_SineWaveCurve_get_type_descriptor() {
+    try { return {&(Geom2dEval_SineWaveCurve::get_type_descriptor()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const Standard_Transient*> TColGeom2d_HArray1OfBSplineCurve_as_Standard_Transient(const TColGeom2d_HArray1OfBSplineCurve* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<Standard_Transient*> TColGeom2d_HArray1OfBSplineCurve_as_Standard_Transient_mut(TColGeom2d_HArray1OfBSplineCurve* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleTColGeom2dHArray1OfBSplineCurve*> TColGeom2d_HArray1OfBSplineCurve_to_handle(TColGeom2d_HArray1OfBSplineCurve* obj) {
-    try { return {new HandleTColGeom2dHArray1OfBSplineCurve(obj), nullptr}; }
+extern "C" OcctResult<const Geom2d_Curve*> Geom2dEval_SineWaveCurve_as_Geom2d_Curve(const Geom2dEval_SineWaveCurve* self_) { return {static_cast<const Geom2d_Curve*>(self_), nullptr}; }
+extern "C" OcctResult<Geom2d_Curve*> Geom2dEval_SineWaveCurve_as_Geom2d_Curve_mut(Geom2dEval_SineWaveCurve* self_) { return {static_cast<Geom2d_Curve*>(self_), nullptr}; }
+extern "C" OcctResult<const Geom2d_Geometry*> Geom2dEval_SineWaveCurve_as_Geom2d_Geometry(const Geom2dEval_SineWaveCurve* self_) { return {static_cast<const Geom2d_Geometry*>(self_), nullptr}; }
+extern "C" OcctResult<Geom2d_Geometry*> Geom2dEval_SineWaveCurve_as_Geom2d_Geometry_mut(Geom2dEval_SineWaveCurve* self_) { return {static_cast<Geom2d_Geometry*>(self_), nullptr}; }
+extern "C" OcctResult<const Standard_Transient*> Geom2dEval_SineWaveCurve_as_Standard_Transient(const Geom2dEval_SineWaveCurve* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
+extern "C" OcctResult<Standard_Transient*> Geom2dEval_SineWaveCurve_as_Standard_Transient_mut(Geom2dEval_SineWaveCurve* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
+extern "C" OcctResult<Handle_Geom2dEval_SineWaveCurve*> Geom2dEval_SineWaveCurve_to_handle(Geom2dEval_SineWaveCurve* obj) {
+    try { return {new Handle_Geom2dEval_SineWaveCurve(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const TColGeom2d_HArray1OfBSplineCurve*> HandleTColGeom2dHArray1OfBSplineCurve_get(const HandleTColGeom2dHArray1OfBSplineCurve* handle) {
+extern "C" OcctResult<const Geom2dEval_SineWaveCurve*> Handle_Geom2dEval_SineWaveCurve_get(const Handle_Geom2dEval_SineWaveCurve* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TColGeom2d_HArray1OfBSplineCurve*> HandleTColGeom2dHArray1OfBSplineCurve_get_mut(HandleTColGeom2dHArray1OfBSplineCurve* handle) {
+extern "C" OcctResult<Geom2dEval_SineWaveCurve*> Handle_Geom2dEval_SineWaveCurve_get_mut(Handle_Geom2dEval_SineWaveCurve* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleTColGeom2dHArray1OfBSplineCurve_to_HandleStandardTransient(const HandleTColGeom2dHArray1OfBSplineCurve* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Geom2d_Curve*> Handle_Geom2dEval_SineWaveCurve_to_Handle_Geom2d_Curve(const Handle_Geom2dEval_SineWaveCurve* self_) {
+    try { return {new Handle_Geom2d_Curve(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<bool> TColGeom2d_HArray1OfBSplineCurve_inherited_IsInstance(const TColGeom2d_HArray1OfBSplineCurve* self, Handle(Standard_Type) const& theType) {
+extern "C" OcctResult<Handle_Geom2d_Geometry*> Handle_Geom2dEval_SineWaveCurve_to_Handle_Geom2d_Geometry(const Handle_Geom2dEval_SineWaveCurve* self_) {
+    try { return {new Handle_Geom2d_Geometry(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_Geom2dEval_SineWaveCurve_to_Handle_Standard_Transient(const Handle_Geom2dEval_SineWaveCurve* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<double> Geom2dEval_SineWaveCurve_inherited_TransformedParameter(const Geom2dEval_SineWaveCurve* self, double U, gp_Trsf2d const& T) {
+    try { return {self->TransformedParameter(U, T), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<double> Geom2dEval_SineWaveCurve_inherited_ParametricTransformation(const Geom2dEval_SineWaveCurve* self, gp_Trsf2d const& T) {
+    try { return {self->ParametricTransformation(T), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Handle(Geom2d_Curve)*> Geom2dEval_SineWaveCurve_inherited_Reversed(const Geom2dEval_SineWaveCurve* self) {
+    try { return {new Handle(Geom2d_Curve)(self->Reversed()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<double> Geom2dEval_SineWaveCurve_inherited_Period(const Geom2dEval_SineWaveCurve* self) {
+    try { return {self->Period(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" const char* Geom2dEval_SineWaveCurve_inherited_D0(const Geom2dEval_SineWaveCurve* self, double U, gp_Pnt2d& P) {
+    try { self->D0(U, P); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* Geom2dEval_SineWaveCurve_inherited_D1(const Geom2dEval_SineWaveCurve* self, double U, gp_Pnt2d& P, gp_Vec2d& V1) {
+    try { self->D1(U, P, V1); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* Geom2dEval_SineWaveCurve_inherited_D2(const Geom2dEval_SineWaveCurve* self, double U, gp_Pnt2d& P, gp_Vec2d& V1, gp_Vec2d& V2) {
+    try { self->D2(U, P, V1, V2); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* Geom2dEval_SineWaveCurve_inherited_D3(const Geom2dEval_SineWaveCurve* self, double U, gp_Pnt2d& P, gp_Vec2d& V1, gp_Vec2d& V2, gp_Vec2d& V3) {
+    try { self->D3(U, P, V1, V2, V3); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" OcctResult<gp_Vec2d*> Geom2dEval_SineWaveCurve_inherited_DN(const Geom2dEval_SineWaveCurve* self, double U, int32_t N) {
+    try { return {new gp_Vec2d(self->DN(U, N)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<gp_Pnt2d*> Geom2dEval_SineWaveCurve_inherited_Value(const Geom2dEval_SineWaveCurve* self, double U) {
+    try { return {new gp_Pnt2d(self->Value(U)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" const char* Geom2dEval_SineWaveCurve_inherited_Mirror(Geom2dEval_SineWaveCurve* self, gp_Pnt2d const& P) {
+    try { self->Mirror(P); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* Geom2dEval_SineWaveCurve_inherited_Rotate(Geom2dEval_SineWaveCurve* self, gp_Pnt2d const& P, double Ang) {
+    try { self->Rotate(P, Ang); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* Geom2dEval_SineWaveCurve_inherited_Scale(Geom2dEval_SineWaveCurve* self, gp_Pnt2d const& P, double S) {
+    try { self->Scale(P, S); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* Geom2dEval_SineWaveCurve_inherited_Translate(Geom2dEval_SineWaveCurve* self, gp_Vec2d const& V) {
+    try { self->Translate(V); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" OcctResult<Handle(Geom2d_Geometry)*> Geom2dEval_SineWaveCurve_inherited_Mirrored(const Geom2dEval_SineWaveCurve* self, gp_Pnt2d const& P) {
+    try { return {new Handle(Geom2d_Geometry)(self->Mirrored(P)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Handle(Geom2d_Geometry)*> Geom2dEval_SineWaveCurve_inherited_Rotated(const Geom2dEval_SineWaveCurve* self, gp_Pnt2d const& P, double Ang) {
+    try { return {new Handle(Geom2d_Geometry)(self->Rotated(P, Ang)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Handle(Geom2d_Geometry)*> Geom2dEval_SineWaveCurve_inherited_Scaled(const Geom2dEval_SineWaveCurve* self, gp_Pnt2d const& P, double S) {
+    try { return {new Handle(Geom2d_Geometry)(self->Scaled(P, S)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Handle(Geom2d_Geometry)*> Geom2dEval_SineWaveCurve_inherited_Transformed(const Geom2dEval_SineWaveCurve* self, gp_Trsf2d const& T) {
+    try { return {new Handle(Geom2d_Geometry)(self->Transformed(T)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Handle(Geom2d_Geometry)*> Geom2dEval_SineWaveCurve_inherited_Translated(const Geom2dEval_SineWaveCurve* self, gp_Vec2d const& V) {
+    try { return {new Handle(Geom2d_Geometry)(self->Translated(V)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<bool> Geom2dEval_SineWaveCurve_inherited_IsInstance(const Geom2dEval_SineWaveCurve* self, Handle(Standard_Type) const& theType) {
     try { return {self->IsInstance(theType), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<bool> TColGeom2d_HArray1OfBSplineCurve_inherited_IsKind(const TColGeom2d_HArray1OfBSplineCurve* self, Handle(Standard_Type) const& theType) {
+extern "C" OcctResult<bool> Geom2dEval_SineWaveCurve_inherited_IsKind(const Geom2dEval_SineWaveCurve* self, Handle(Standard_Type) const& theType) {
     try { return {self->IsKind(theType), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Standard_Transient*> TColGeom2d_HArray1OfBSplineCurve_inherited_This(const TColGeom2d_HArray1OfBSplineCurve* self) {
+extern "C" OcctResult<Standard_Transient*> Geom2dEval_SineWaveCurve_inherited_This(const Geom2dEval_SineWaveCurve* self) {
     try { return {self->This(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<int32_t> TColGeom2d_HArray1OfBSplineCurve_inherited_GetRefCount(const TColGeom2d_HArray1OfBSplineCurve* self) {
+extern "C" OcctResult<int32_t> Geom2dEval_SineWaveCurve_inherited_GetRefCount(const Geom2dEval_SineWaveCurve* self) {
     try { return {self->GetRefCount(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* TColGeom2d_HArray1OfBSplineCurve_inherited_IncrementRefCounter(TColGeom2d_HArray1OfBSplineCurve* self) {
+extern "C" const char* Geom2dEval_SineWaveCurve_inherited_IncrementRefCounter(Geom2dEval_SineWaveCurve* self) {
     try { self->IncrementRefCounter(); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<int32_t> TColGeom2d_HArray1OfBSplineCurve_inherited_DecrementRefCounter(TColGeom2d_HArray1OfBSplineCurve* self) {
+extern "C" OcctResult<int32_t> Geom2dEval_SineWaveCurve_inherited_DecrementRefCounter(Geom2dEval_SineWaveCurve* self) {
     try { return {self->DecrementRefCounter(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* TColGeom2d_HArray1OfBSplineCurve_inherited_Delete(const TColGeom2d_HArray1OfBSplineCurve* self) {
+extern "C" const char* Geom2dEval_SineWaveCurve_inherited_Delete(const Geom2dEval_SineWaveCurve* self) {
     try { self->Delete(); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" void TColGeom2d_HArray1OfBSplineCurve_destructor(TColGeom2d_HArray1OfBSplineCurve* self_) { delete self_; }
+extern "C" void Geom2dEval_SineWaveCurve_destructor(Geom2dEval_SineWaveCurve* self_) { delete self_; }
 
 // ========================
-// TColGeom2d_HArray1OfBezierCurve wrappers
+// Geom2dEval_TBezierCurve wrappers
 // ========================
 
-extern "C" OcctResult<TColGeom2d_HArray1OfBezierCurve*> TColGeom2d_HArray1OfBezierCurve_ctor() {
-    try { return {new TColGeom2d_HArray1OfBezierCurve(), nullptr}; }
+extern "C" OcctResult<Geom2dEval_TBezierCurve*> Geom2dEval_TBezierCurve_ctor_arr1_pnt2d_real(NCollection_Array1_gp_Pnt2d const* thePoles, double theAlpha) {
+    try { return {new Geom2dEval_TBezierCurve(*thePoles, theAlpha), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TColGeom2d_HArray1OfBezierCurve*> TColGeom2d_HArray1OfBezierCurve_ctor_int2(int32_t theLower, int32_t theUpper) {
-    try { return {new TColGeom2d_HArray1OfBezierCurve(theLower, theUpper), nullptr}; }
+extern "C" OcctResult<Geom2dEval_TBezierCurve*> Geom2dEval_TBezierCurve_ctor_arr1_pnt2d_arr1_double_real(NCollection_Array1_gp_Pnt2d const* thePoles, NCollection_Array1_double const* theWeights, double theAlpha) {
+    try { return {new Geom2dEval_TBezierCurve(*thePoles, *theWeights, theAlpha), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TColGeom2d_HArray1OfBezierCurve*> TColGeom2d_HArray1OfBezierCurve_ctor_int2_handlegeom2dbeziercurve(int32_t theLower, int32_t theUpper, Handle(Geom2d_BezierCurve) const* theValue) {
-    try { return {new TColGeom2d_HArray1OfBezierCurve(theLower, theUpper, *theValue), nullptr}; }
+extern "C" OcctResult<gp_Pnt2d*> Geom2dEval_TBezierCurve_start_point(const Geom2dEval_TBezierCurve* self_) {
+    try { return {new gp_Pnt2d(self_->StartPoint()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TColGeom2d_HArray1OfBezierCurve*> TColGeom2d_HArray1OfBezierCurve_ctor_handlegeom2dbeziercurve_int2_bool(Handle(Geom2d_BezierCurve) const* theBegin, int32_t theLower, int32_t theUpper, bool arg3) {
-    try { return {new TColGeom2d_HArray1OfBezierCurve(*theBegin, theLower, theUpper, arg3), nullptr}; }
+extern "C" OcctResult<gp_Pnt2d*> Geom2dEval_TBezierCurve_end_point(const Geom2dEval_TBezierCurve* self_) {
+    try { return {new gp_Pnt2d(self_->EndPoint()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TColGeom2d_HArray1OfBezierCurve*> TColGeom2d_HArray1OfBezierCurve_ctor_array1ofbeziercurve(TColGeom2d_Array1OfBezierCurve const* theOther) {
-    try { return {new TColGeom2d_HArray1OfBezierCurve(*theOther), nullptr}; }
+extern "C" OcctResult<gp_Pnt2d*> Geom2dEval_TBezierCurve_eval_d0(const Geom2dEval_TBezierCurve* self_, double U) {
+    try { return {new gp_Pnt2d(self_->EvalD0(U)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TColGeom2d_Array1OfBezierCurve const*> TColGeom2d_HArray1OfBezierCurve_array1(const TColGeom2d_HArray1OfBezierCurve* self_) {
-    try { return {&(self_->Array1()), nullptr}; }
+extern "C" OcctResult<Geom2d_Curve::ResD1*> Geom2dEval_TBezierCurve_eval_d1(const Geom2dEval_TBezierCurve* self_, double U) {
+    try { return {new Geom2d_Curve::ResD1(self_->EvalD1(U)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TColGeom2d_Array1OfBezierCurve*> TColGeom2d_HArray1OfBezierCurve_change_array1(TColGeom2d_HArray1OfBezierCurve* self_) {
-    try { return {&(self_->ChangeArray1()), nullptr}; }
+extern "C" OcctResult<Geom2d_Curve::ResD2*> Geom2dEval_TBezierCurve_eval_d2(const Geom2dEval_TBezierCurve* self_, double U) {
+    try { return {new Geom2d_Curve::ResD2(self_->EvalD2(U)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(Standard_Type) const*> TColGeom2d_HArray1OfBezierCurve_dynamic_type(const TColGeom2d_HArray1OfBezierCurve* self_) {
+extern "C" OcctResult<Geom2d_Curve::ResD3*> Geom2dEval_TBezierCurve_eval_d3(const Geom2dEval_TBezierCurve* self_, double U) {
+    try { return {new Geom2d_Curve::ResD3(self_->EvalD3(U)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<gp_Vec2d*> Geom2dEval_TBezierCurve_eval_dn(const Geom2dEval_TBezierCurve* self_, double U, int32_t N) {
+    try { return {new gp_Vec2d(self_->EvalDN(U, N)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Handle(Geom2d_Geometry)*> Geom2dEval_TBezierCurve_copy(const Geom2dEval_TBezierCurve* self_) {
+    try { return {new Handle(Geom2d_Geometry)(self_->Copy()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<NCollection_Array1_gp_Pnt2d const*> Geom2dEval_TBezierCurve_poles(const Geom2dEval_TBezierCurve* self_) {
+    try { return {&(self_->Poles()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<NCollection_Array1_double const*> Geom2dEval_TBezierCurve_weights(const Geom2dEval_TBezierCurve* self_) {
+    try { return {&(self_->Weights()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<double> Geom2dEval_TBezierCurve_alpha(const Geom2dEval_TBezierCurve* self_) {
+    try { return {self_->Alpha(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<int32_t> Geom2dEval_TBezierCurve_nb_poles(const Geom2dEval_TBezierCurve* self_) {
+    try { return {self_->NbPoles(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<int32_t> Geom2dEval_TBezierCurve_order(const Geom2dEval_TBezierCurve* self_) {
+    try { return {self_->Order(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<bool> Geom2dEval_TBezierCurve_is_rational(const Geom2dEval_TBezierCurve* self_) {
+    try { return {self_->IsRational(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" const char* Geom2dEval_TBezierCurve_reverse(Geom2dEval_TBezierCurve* self_) {
+    try { self_->Reverse(); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" OcctResult<double> Geom2dEval_TBezierCurve_reversed_parameter(const Geom2dEval_TBezierCurve* self_, double U) {
+    try { return {self_->ReversedParameter(U), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<double> Geom2dEval_TBezierCurve_first_parameter(const Geom2dEval_TBezierCurve* self_) {
+    try { return {self_->FirstParameter(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<double> Geom2dEval_TBezierCurve_last_parameter(const Geom2dEval_TBezierCurve* self_) {
+    try { return {self_->LastParameter(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<bool> Geom2dEval_TBezierCurve_is_closed(const Geom2dEval_TBezierCurve* self_) {
+    try { return {self_->IsClosed(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<bool> Geom2dEval_TBezierCurve_is_periodic(const Geom2dEval_TBezierCurve* self_) {
+    try { return {self_->IsPeriodic(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<int32_t> Geom2dEval_TBezierCurve_continuity(const Geom2dEval_TBezierCurve* self_) {
+    try { return {static_cast<int32_t>(self_->Continuity()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<bool> Geom2dEval_TBezierCurve_is_cn(const Geom2dEval_TBezierCurve* self_, int32_t N) {
+    try { return {self_->IsCN(N), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" const char* Geom2dEval_TBezierCurve_transform(Geom2dEval_TBezierCurve* self_, gp_Trsf2d const* T) {
+    try { self_->Transform(*T); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" OcctResult<Handle(Standard_Type) const*> Geom2dEval_TBezierCurve_dynamic_type(const Geom2dEval_TBezierCurve* self_) {
     try { return {&(self_->DynamicType()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<char const*> TColGeom2d_HArray1OfBezierCurve_get_type_name() {
-    try { return {TColGeom2d_HArray1OfBezierCurve::get_type_name(), nullptr}; }
+extern "C" OcctResult<char const*> Geom2dEval_TBezierCurve_get_type_name() {
+    try { return {Geom2dEval_TBezierCurve::get_type_name(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(Standard_Type) const*> TColGeom2d_HArray1OfBezierCurve_get_type_descriptor() {
-    try { return {&(TColGeom2d_HArray1OfBezierCurve::get_type_descriptor()), nullptr}; }
+extern "C" OcctResult<Handle(Standard_Type) const*> Geom2dEval_TBezierCurve_get_type_descriptor() {
+    try { return {&(Geom2dEval_TBezierCurve::get_type_descriptor()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const Standard_Transient*> TColGeom2d_HArray1OfBezierCurve_as_Standard_Transient(const TColGeom2d_HArray1OfBezierCurve* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<Standard_Transient*> TColGeom2d_HArray1OfBezierCurve_as_Standard_Transient_mut(TColGeom2d_HArray1OfBezierCurve* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleTColGeom2dHArray1OfBezierCurve*> TColGeom2d_HArray1OfBezierCurve_to_handle(TColGeom2d_HArray1OfBezierCurve* obj) {
-    try { return {new HandleTColGeom2dHArray1OfBezierCurve(obj), nullptr}; }
+extern "C" OcctResult<const Geom2d_BoundedCurve*> Geom2dEval_TBezierCurve_as_Geom2d_BoundedCurve(const Geom2dEval_TBezierCurve* self_) { return {static_cast<const Geom2d_BoundedCurve*>(self_), nullptr}; }
+extern "C" OcctResult<Geom2d_BoundedCurve*> Geom2dEval_TBezierCurve_as_Geom2d_BoundedCurve_mut(Geom2dEval_TBezierCurve* self_) { return {static_cast<Geom2d_BoundedCurve*>(self_), nullptr}; }
+extern "C" OcctResult<const Geom2d_Curve*> Geom2dEval_TBezierCurve_as_Geom2d_Curve(const Geom2dEval_TBezierCurve* self_) { return {static_cast<const Geom2d_Curve*>(self_), nullptr}; }
+extern "C" OcctResult<Geom2d_Curve*> Geom2dEval_TBezierCurve_as_Geom2d_Curve_mut(Geom2dEval_TBezierCurve* self_) { return {static_cast<Geom2d_Curve*>(self_), nullptr}; }
+extern "C" OcctResult<const Geom2d_Geometry*> Geom2dEval_TBezierCurve_as_Geom2d_Geometry(const Geom2dEval_TBezierCurve* self_) { return {static_cast<const Geom2d_Geometry*>(self_), nullptr}; }
+extern "C" OcctResult<Geom2d_Geometry*> Geom2dEval_TBezierCurve_as_Geom2d_Geometry_mut(Geom2dEval_TBezierCurve* self_) { return {static_cast<Geom2d_Geometry*>(self_), nullptr}; }
+extern "C" OcctResult<const Standard_Transient*> Geom2dEval_TBezierCurve_as_Standard_Transient(const Geom2dEval_TBezierCurve* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
+extern "C" OcctResult<Standard_Transient*> Geom2dEval_TBezierCurve_as_Standard_Transient_mut(Geom2dEval_TBezierCurve* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
+extern "C" OcctResult<Handle_Geom2dEval_TBezierCurve*> Geom2dEval_TBezierCurve_to_handle(Geom2dEval_TBezierCurve* obj) {
+    try { return {new Handle_Geom2dEval_TBezierCurve(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const TColGeom2d_HArray1OfBezierCurve*> HandleTColGeom2dHArray1OfBezierCurve_get(const HandleTColGeom2dHArray1OfBezierCurve* handle) {
+extern "C" OcctResult<const Geom2dEval_TBezierCurve*> Handle_Geom2dEval_TBezierCurve_get(const Handle_Geom2dEval_TBezierCurve* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TColGeom2d_HArray1OfBezierCurve*> HandleTColGeom2dHArray1OfBezierCurve_get_mut(HandleTColGeom2dHArray1OfBezierCurve* handle) {
+extern "C" OcctResult<Geom2dEval_TBezierCurve*> Handle_Geom2dEval_TBezierCurve_get_mut(Handle_Geom2dEval_TBezierCurve* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleTColGeom2dHArray1OfBezierCurve_to_HandleStandardTransient(const HandleTColGeom2dHArray1OfBezierCurve* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Geom2d_BoundedCurve*> Handle_Geom2dEval_TBezierCurve_to_Handle_Geom2d_BoundedCurve(const Handle_Geom2dEval_TBezierCurve* self_) {
+    try { return {new Handle_Geom2d_BoundedCurve(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<bool> TColGeom2d_HArray1OfBezierCurve_inherited_IsInstance(const TColGeom2d_HArray1OfBezierCurve* self, Handle(Standard_Type) const& theType) {
+extern "C" OcctResult<Handle_Geom2d_Curve*> Handle_Geom2dEval_TBezierCurve_to_Handle_Geom2d_Curve(const Handle_Geom2dEval_TBezierCurve* self_) {
+    try { return {new Handle_Geom2d_Curve(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Handle_Geom2d_Geometry*> Handle_Geom2dEval_TBezierCurve_to_Handle_Geom2d_Geometry(const Handle_Geom2dEval_TBezierCurve* self_) {
+    try { return {new Handle_Geom2d_Geometry(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_Geom2dEval_TBezierCurve_to_Handle_Standard_Transient(const Handle_Geom2dEval_TBezierCurve* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<double> Geom2dEval_TBezierCurve_inherited_TransformedParameter(const Geom2dEval_TBezierCurve* self, double U, gp_Trsf2d const& T) {
+    try { return {self->TransformedParameter(U, T), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<double> Geom2dEval_TBezierCurve_inherited_ParametricTransformation(const Geom2dEval_TBezierCurve* self, gp_Trsf2d const& T) {
+    try { return {self->ParametricTransformation(T), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Handle(Geom2d_Curve)*> Geom2dEval_TBezierCurve_inherited_Reversed(const Geom2dEval_TBezierCurve* self) {
+    try { return {new Handle(Geom2d_Curve)(self->Reversed()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<double> Geom2dEval_TBezierCurve_inherited_Period(const Geom2dEval_TBezierCurve* self) {
+    try { return {self->Period(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" const char* Geom2dEval_TBezierCurve_inherited_D0(const Geom2dEval_TBezierCurve* self, double U, gp_Pnt2d& P) {
+    try { self->D0(U, P); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* Geom2dEval_TBezierCurve_inherited_D1(const Geom2dEval_TBezierCurve* self, double U, gp_Pnt2d& P, gp_Vec2d& V1) {
+    try { self->D1(U, P, V1); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* Geom2dEval_TBezierCurve_inherited_D2(const Geom2dEval_TBezierCurve* self, double U, gp_Pnt2d& P, gp_Vec2d& V1, gp_Vec2d& V2) {
+    try { self->D2(U, P, V1, V2); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* Geom2dEval_TBezierCurve_inherited_D3(const Geom2dEval_TBezierCurve* self, double U, gp_Pnt2d& P, gp_Vec2d& V1, gp_Vec2d& V2, gp_Vec2d& V3) {
+    try { self->D3(U, P, V1, V2, V3); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" OcctResult<gp_Vec2d*> Geom2dEval_TBezierCurve_inherited_DN(const Geom2dEval_TBezierCurve* self, double U, int32_t N) {
+    try { return {new gp_Vec2d(self->DN(U, N)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<gp_Pnt2d*> Geom2dEval_TBezierCurve_inherited_Value(const Geom2dEval_TBezierCurve* self, double U) {
+    try { return {new gp_Pnt2d(self->Value(U)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" const char* Geom2dEval_TBezierCurve_inherited_Mirror(Geom2dEval_TBezierCurve* self, gp_Pnt2d const& P) {
+    try { self->Mirror(P); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* Geom2dEval_TBezierCurve_inherited_Rotate(Geom2dEval_TBezierCurve* self, gp_Pnt2d const& P, double Ang) {
+    try { self->Rotate(P, Ang); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* Geom2dEval_TBezierCurve_inherited_Scale(Geom2dEval_TBezierCurve* self, gp_Pnt2d const& P, double S) {
+    try { self->Scale(P, S); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* Geom2dEval_TBezierCurve_inherited_Translate(Geom2dEval_TBezierCurve* self, gp_Vec2d const& V) {
+    try { self->Translate(V); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" OcctResult<Handle(Geom2d_Geometry)*> Geom2dEval_TBezierCurve_inherited_Mirrored(const Geom2dEval_TBezierCurve* self, gp_Pnt2d const& P) {
+    try { return {new Handle(Geom2d_Geometry)(self->Mirrored(P)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Handle(Geom2d_Geometry)*> Geom2dEval_TBezierCurve_inherited_Rotated(const Geom2dEval_TBezierCurve* self, gp_Pnt2d const& P, double Ang) {
+    try { return {new Handle(Geom2d_Geometry)(self->Rotated(P, Ang)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Handle(Geom2d_Geometry)*> Geom2dEval_TBezierCurve_inherited_Scaled(const Geom2dEval_TBezierCurve* self, gp_Pnt2d const& P, double S) {
+    try { return {new Handle(Geom2d_Geometry)(self->Scaled(P, S)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Handle(Geom2d_Geometry)*> Geom2dEval_TBezierCurve_inherited_Transformed(const Geom2dEval_TBezierCurve* self, gp_Trsf2d const& T) {
+    try { return {new Handle(Geom2d_Geometry)(self->Transformed(T)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Handle(Geom2d_Geometry)*> Geom2dEval_TBezierCurve_inherited_Translated(const Geom2dEval_TBezierCurve* self, gp_Vec2d const& V) {
+    try { return {new Handle(Geom2d_Geometry)(self->Translated(V)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<bool> Geom2dEval_TBezierCurve_inherited_IsInstance(const Geom2dEval_TBezierCurve* self, Handle(Standard_Type) const& theType) {
     try { return {self->IsInstance(theType), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<bool> TColGeom2d_HArray1OfBezierCurve_inherited_IsKind(const TColGeom2d_HArray1OfBezierCurve* self, Handle(Standard_Type) const& theType) {
+extern "C" OcctResult<bool> Geom2dEval_TBezierCurve_inherited_IsKind(const Geom2dEval_TBezierCurve* self, Handle(Standard_Type) const& theType) {
     try { return {self->IsKind(theType), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Standard_Transient*> TColGeom2d_HArray1OfBezierCurve_inherited_This(const TColGeom2d_HArray1OfBezierCurve* self) {
+extern "C" OcctResult<Standard_Transient*> Geom2dEval_TBezierCurve_inherited_This(const Geom2dEval_TBezierCurve* self) {
     try { return {self->This(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<int32_t> TColGeom2d_HArray1OfBezierCurve_inherited_GetRefCount(const TColGeom2d_HArray1OfBezierCurve* self) {
+extern "C" OcctResult<int32_t> Geom2dEval_TBezierCurve_inherited_GetRefCount(const Geom2dEval_TBezierCurve* self) {
     try { return {self->GetRefCount(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* TColGeom2d_HArray1OfBezierCurve_inherited_IncrementRefCounter(TColGeom2d_HArray1OfBezierCurve* self) {
+extern "C" const char* Geom2dEval_TBezierCurve_inherited_IncrementRefCounter(Geom2dEval_TBezierCurve* self) {
     try { self->IncrementRefCounter(); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<int32_t> TColGeom2d_HArray1OfBezierCurve_inherited_DecrementRefCounter(TColGeom2d_HArray1OfBezierCurve* self) {
+extern "C" OcctResult<int32_t> Geom2dEval_TBezierCurve_inherited_DecrementRefCounter(Geom2dEval_TBezierCurve* self) {
     try { return {self->DecrementRefCounter(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* TColGeom2d_HArray1OfBezierCurve_inherited_Delete(const TColGeom2d_HArray1OfBezierCurve* self) {
+extern "C" const char* Geom2dEval_TBezierCurve_inherited_Delete(const Geom2dEval_TBezierCurve* self) {
     try { self->Delete(); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" void TColGeom2d_HArray1OfBezierCurve_destructor(TColGeom2d_HArray1OfBezierCurve* self_) { delete self_; }
+extern "C" void Geom2dEval_TBezierCurve_destructor(Geom2dEval_TBezierCurve* self_) { delete self_; }
 
 // ========================
-// TColGeom2d_HArray1OfCurve wrappers
+// Geom2dGridEval_BSplineCurve wrappers
 // ========================
 
-extern "C" OcctResult<TColGeom2d_HArray1OfCurve*> TColGeom2d_HArray1OfCurve_ctor() {
-    try { return {new TColGeom2d_HArray1OfCurve(), nullptr}; }
+extern "C" OcctResult<Geom2dGridEval_BSplineCurve*> Geom2dGridEval_BSplineCurve_ctor_handlegeom2dbsplinecurve(Handle(Geom2d_BSplineCurve) const* theCurve) {
+    try { return {new Geom2dGridEval_BSplineCurve(*theCurve), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TColGeom2d_HArray1OfCurve*> TColGeom2d_HArray1OfCurve_ctor_int2(int32_t theLower, int32_t theUpper) {
-    try { return {new TColGeom2d_HArray1OfCurve(theLower, theUpper), nullptr}; }
+extern "C" OcctResult<NCollection_Array1_gp_Pnt2d*> Geom2dGridEval_BSplineCurve_evaluate_grid(const Geom2dGridEval_BSplineCurve* self_, NCollection_Array1_double const* theParams) {
+    try { return {new NCollection_Array1_gp_Pnt2d(self_->EvaluateGrid(*theParams)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TColGeom2d_HArray1OfCurve*> TColGeom2d_HArray1OfCurve_ctor_int2_handlegeom2dcurve(int32_t theLower, int32_t theUpper, Handle(Geom2d_Curve) const* theValue) {
-    try { return {new TColGeom2d_HArray1OfCurve(theLower, theUpper, *theValue), nullptr}; }
+extern "C" OcctResult<NCollection_Array1_Geom2dGridEval_CurveD1*> Geom2dGridEval_BSplineCurve_evaluate_grid_d1(const Geom2dGridEval_BSplineCurve* self_, NCollection_Array1_double const* theParams) {
+    try { return {new NCollection_Array1_Geom2dGridEval_CurveD1(self_->EvaluateGridD1(*theParams)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TColGeom2d_HArray1OfCurve*> TColGeom2d_HArray1OfCurve_ctor_handlegeom2dcurve_int2_bool(Handle(Geom2d_Curve) const* theBegin, int32_t theLower, int32_t theUpper, bool arg3) {
-    try { return {new TColGeom2d_HArray1OfCurve(*theBegin, theLower, theUpper, arg3), nullptr}; }
+extern "C" OcctResult<NCollection_Array1_Geom2dGridEval_CurveD2*> Geom2dGridEval_BSplineCurve_evaluate_grid_d2(const Geom2dGridEval_BSplineCurve* self_, NCollection_Array1_double const* theParams) {
+    try { return {new NCollection_Array1_Geom2dGridEval_CurveD2(self_->EvaluateGridD2(*theParams)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TColGeom2d_HArray1OfCurve*> TColGeom2d_HArray1OfCurve_ctor_array1ofcurve(TColGeom2d_Array1OfCurve const* theOther) {
-    try { return {new TColGeom2d_HArray1OfCurve(*theOther), nullptr}; }
+extern "C" OcctResult<NCollection_Array1_Geom2dGridEval_CurveD3*> Geom2dGridEval_BSplineCurve_evaluate_grid_d3(const Geom2dGridEval_BSplineCurve* self_, NCollection_Array1_double const* theParams) {
+    try { return {new NCollection_Array1_Geom2dGridEval_CurveD3(self_->EvaluateGridD3(*theParams)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TColGeom2d_Array1OfCurve const*> TColGeom2d_HArray1OfCurve_array1(const TColGeom2d_HArray1OfCurve* self_) {
-    try { return {&(self_->Array1()), nullptr}; }
+extern "C" OcctResult<NCollection_Array1_gp_Vec2d*> Geom2dGridEval_BSplineCurve_evaluate_grid_dn(const Geom2dGridEval_BSplineCurve* self_, NCollection_Array1_double const* theParams, int32_t theN) {
+    try { return {new NCollection_Array1_gp_Vec2d(self_->EvaluateGridDN(*theParams, theN)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TColGeom2d_Array1OfCurve*> TColGeom2d_HArray1OfCurve_change_array1(TColGeom2d_HArray1OfCurve* self_) {
-    try { return {&(self_->ChangeArray1()), nullptr}; }
+extern "C" OcctResult<Handle(Geom2d_BSplineCurve) const*> Geom2dGridEval_BSplineCurve_geometry(const Geom2dGridEval_BSplineCurve* self_) {
+    try { return {&(self_->Geometry()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(Standard_Type) const*> TColGeom2d_HArray1OfCurve_dynamic_type(const TColGeom2d_HArray1OfCurve* self_) {
-    try { return {&(self_->DynamicType()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<char const*> TColGeom2d_HArray1OfCurve_get_type_name() {
-    try { return {TColGeom2d_HArray1OfCurve::get_type_name(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Handle(Standard_Type) const*> TColGeom2d_HArray1OfCurve_get_type_descriptor() {
-    try { return {&(TColGeom2d_HArray1OfCurve::get_type_descriptor()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<const Standard_Transient*> TColGeom2d_HArray1OfCurve_as_Standard_Transient(const TColGeom2d_HArray1OfCurve* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<Standard_Transient*> TColGeom2d_HArray1OfCurve_as_Standard_Transient_mut(TColGeom2d_HArray1OfCurve* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleTColGeom2dHArray1OfCurve*> TColGeom2d_HArray1OfCurve_to_handle(TColGeom2d_HArray1OfCurve* obj) {
-    try { return {new HandleTColGeom2dHArray1OfCurve(obj), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<const TColGeom2d_HArray1OfCurve*> HandleTColGeom2dHArray1OfCurve_get(const HandleTColGeom2dHArray1OfCurve* handle) {
-    try { return {(*handle).get(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<TColGeom2d_HArray1OfCurve*> HandleTColGeom2dHArray1OfCurve_get_mut(HandleTColGeom2dHArray1OfCurve* handle) {
-    try { return {(*handle).get(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<HandleStandardTransient*> HandleTColGeom2dHArray1OfCurve_to_HandleStandardTransient(const HandleTColGeom2dHArray1OfCurve* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<bool> TColGeom2d_HArray1OfCurve_inherited_IsInstance(const TColGeom2d_HArray1OfCurve* self, Handle(Standard_Type) const& theType) {
-    try { return {self->IsInstance(theType), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<bool> TColGeom2d_HArray1OfCurve_inherited_IsKind(const TColGeom2d_HArray1OfCurve* self, Handle(Standard_Type) const& theType) {
-    try { return {self->IsKind(theType), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Standard_Transient*> TColGeom2d_HArray1OfCurve_inherited_This(const TColGeom2d_HArray1OfCurve* self) {
-    try { return {self->This(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<int32_t> TColGeom2d_HArray1OfCurve_inherited_GetRefCount(const TColGeom2d_HArray1OfCurve* self) {
-    try { return {self->GetRefCount(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* TColGeom2d_HArray1OfCurve_inherited_IncrementRefCounter(TColGeom2d_HArray1OfCurve* self) {
-    try { self->IncrementRefCounter(); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<int32_t> TColGeom2d_HArray1OfCurve_inherited_DecrementRefCounter(TColGeom2d_HArray1OfCurve* self) {
-    try { return {self->DecrementRefCounter(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* TColGeom2d_HArray1OfCurve_inherited_Delete(const TColGeom2d_HArray1OfCurve* self) {
-    try { self->Delete(); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" void TColGeom2d_HArray1OfCurve_destructor(TColGeom2d_HArray1OfCurve* self_) { delete self_; }
+extern "C" void Geom2dGridEval_BSplineCurve_destructor(Geom2dGridEval_BSplineCurve* self_) { delete self_; }
 
 // ========================
-// TColGeom2d_HSequenceOfBoundedCurve wrappers
+// Geom2dGridEval_BezierCurve wrappers
 // ========================
 
-extern "C" OcctResult<TColGeom2d_HSequenceOfBoundedCurve*> TColGeom2d_HSequenceOfBoundedCurve_ctor() {
-    try { return {new TColGeom2d_HSequenceOfBoundedCurve(), nullptr}; }
+extern "C" OcctResult<Geom2dGridEval_BezierCurve*> Geom2dGridEval_BezierCurve_ctor_handlegeom2dbeziercurve(Handle(Geom2d_BezierCurve) const* theBezier) {
+    try { return {new Geom2dGridEval_BezierCurve(*theBezier), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TColGeom2d_HSequenceOfBoundedCurve*> TColGeom2d_HSequenceOfBoundedCurve_ctor_sequenceofboundedcurve(TColGeom2d_SequenceOfBoundedCurve const* theOther) {
-    try { return {new TColGeom2d_HSequenceOfBoundedCurve(*theOther), nullptr}; }
+extern "C" OcctResult<NCollection_Array1_gp_Pnt2d*> Geom2dGridEval_BezierCurve_evaluate_grid(const Geom2dGridEval_BezierCurve* self_, NCollection_Array1_double const* theParams) {
+    try { return {new NCollection_Array1_gp_Pnt2d(self_->EvaluateGrid(*theParams)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TColGeom2d_SequenceOfBoundedCurve const*> TColGeom2d_HSequenceOfBoundedCurve_sequence(const TColGeom2d_HSequenceOfBoundedCurve* self_) {
-    try { return {&(self_->Sequence()), nullptr}; }
+extern "C" OcctResult<NCollection_Array1_Geom2dGridEval_CurveD1*> Geom2dGridEval_BezierCurve_evaluate_grid_d1(const Geom2dGridEval_BezierCurve* self_, NCollection_Array1_double const* theParams) {
+    try { return {new NCollection_Array1_Geom2dGridEval_CurveD1(self_->EvaluateGridD1(*theParams)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* TColGeom2d_HSequenceOfBoundedCurve_append_handlegeom2dboundedcurve(TColGeom2d_HSequenceOfBoundedCurve* self_, Handle(Geom2d_BoundedCurve) const* theItem) {
-    try { self_->Append(*theItem); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* TColGeom2d_HSequenceOfBoundedCurve_append_sequenceofboundedcurve(TColGeom2d_HSequenceOfBoundedCurve* self_, TColGeom2d_SequenceOfBoundedCurve* theSequence) {
-    try { self_->Append(*theSequence); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<TColGeom2d_SequenceOfBoundedCurve*> TColGeom2d_HSequenceOfBoundedCurve_change_sequence(TColGeom2d_HSequenceOfBoundedCurve* self_) {
-    try { return {&(self_->ChangeSequence()), nullptr}; }
+extern "C" OcctResult<NCollection_Array1_Geom2dGridEval_CurveD2*> Geom2dGridEval_BezierCurve_evaluate_grid_d2(const Geom2dGridEval_BezierCurve* self_, NCollection_Array1_double const* theParams) {
+    try { return {new NCollection_Array1_Geom2dGridEval_CurveD2(self_->EvaluateGridD2(*theParams)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(Standard_Type) const*> TColGeom2d_HSequenceOfBoundedCurve_dynamic_type(const TColGeom2d_HSequenceOfBoundedCurve* self_) {
-    try { return {&(self_->DynamicType()), nullptr}; }
+extern "C" OcctResult<NCollection_Array1_Geom2dGridEval_CurveD3*> Geom2dGridEval_BezierCurve_evaluate_grid_d3(const Geom2dGridEval_BezierCurve* self_, NCollection_Array1_double const* theParams) {
+    try { return {new NCollection_Array1_Geom2dGridEval_CurveD3(self_->EvaluateGridD3(*theParams)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<char const*> TColGeom2d_HSequenceOfBoundedCurve_get_type_name() {
-    try { return {TColGeom2d_HSequenceOfBoundedCurve::get_type_name(), nullptr}; }
+extern "C" OcctResult<NCollection_Array1_gp_Vec2d*> Geom2dGridEval_BezierCurve_evaluate_grid_dn(const Geom2dGridEval_BezierCurve* self_, NCollection_Array1_double const* theParams, int32_t theN) {
+    try { return {new NCollection_Array1_gp_Vec2d(self_->EvaluateGridDN(*theParams, theN)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(Standard_Type) const*> TColGeom2d_HSequenceOfBoundedCurve_get_type_descriptor() {
-    try { return {&(TColGeom2d_HSequenceOfBoundedCurve::get_type_descriptor()), nullptr}; }
+extern "C" OcctResult<Handle(Geom2d_BezierCurve) const*> Geom2dGridEval_BezierCurve_geometry(const Geom2dGridEval_BezierCurve* self_) {
+    try { return {&(self_->Geometry()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const Standard_Transient*> TColGeom2d_HSequenceOfBoundedCurve_as_Standard_Transient(const TColGeom2d_HSequenceOfBoundedCurve* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<Standard_Transient*> TColGeom2d_HSequenceOfBoundedCurve_as_Standard_Transient_mut(TColGeom2d_HSequenceOfBoundedCurve* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleTColGeom2dHSequenceOfBoundedCurve*> TColGeom2d_HSequenceOfBoundedCurve_to_handle(TColGeom2d_HSequenceOfBoundedCurve* obj) {
-    try { return {new HandleTColGeom2dHSequenceOfBoundedCurve(obj), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<const TColGeom2d_HSequenceOfBoundedCurve*> HandleTColGeom2dHSequenceOfBoundedCurve_get(const HandleTColGeom2dHSequenceOfBoundedCurve* handle) {
-    try { return {(*handle).get(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<TColGeom2d_HSequenceOfBoundedCurve*> HandleTColGeom2dHSequenceOfBoundedCurve_get_mut(HandleTColGeom2dHSequenceOfBoundedCurve* handle) {
-    try { return {(*handle).get(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<HandleStandardTransient*> HandleTColGeom2dHSequenceOfBoundedCurve_to_HandleStandardTransient(const HandleTColGeom2dHSequenceOfBoundedCurve* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<bool> TColGeom2d_HSequenceOfBoundedCurve_inherited_IsInstance(const TColGeom2d_HSequenceOfBoundedCurve* self, Handle(Standard_Type) const& theType) {
-    try { return {self->IsInstance(theType), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<bool> TColGeom2d_HSequenceOfBoundedCurve_inherited_IsKind(const TColGeom2d_HSequenceOfBoundedCurve* self, Handle(Standard_Type) const& theType) {
-    try { return {self->IsKind(theType), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Standard_Transient*> TColGeom2d_HSequenceOfBoundedCurve_inherited_This(const TColGeom2d_HSequenceOfBoundedCurve* self) {
-    try { return {self->This(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<int32_t> TColGeom2d_HSequenceOfBoundedCurve_inherited_GetRefCount(const TColGeom2d_HSequenceOfBoundedCurve* self) {
-    try { return {self->GetRefCount(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* TColGeom2d_HSequenceOfBoundedCurve_inherited_IncrementRefCounter(TColGeom2d_HSequenceOfBoundedCurve* self) {
-    try { self->IncrementRefCounter(); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<int32_t> TColGeom2d_HSequenceOfBoundedCurve_inherited_DecrementRefCounter(TColGeom2d_HSequenceOfBoundedCurve* self) {
-    try { return {self->DecrementRefCounter(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* TColGeom2d_HSequenceOfBoundedCurve_inherited_Delete(const TColGeom2d_HSequenceOfBoundedCurve* self) {
-    try { self->Delete(); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" void TColGeom2d_HSequenceOfBoundedCurve_destructor(TColGeom2d_HSequenceOfBoundedCurve* self_) { delete self_; }
+extern "C" void Geom2dGridEval_BezierCurve_destructor(Geom2dGridEval_BezierCurve* self_) { delete self_; }
 
 // ========================
-// TColGeom2d_HSequenceOfCurve wrappers
+// Geom2dGridEval_Circle wrappers
 // ========================
 
-extern "C" OcctResult<TColGeom2d_HSequenceOfCurve*> TColGeom2d_HSequenceOfCurve_ctor() {
-    try { return {new TColGeom2d_HSequenceOfCurve(), nullptr}; }
+extern "C" OcctResult<Geom2dGridEval_Circle*> Geom2dGridEval_Circle_ctor_handlegeom2dcircle(Handle(Geom2d_Circle) const* theCircle) {
+    try { return {new Geom2dGridEval_Circle(*theCircle), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TColGeom2d_HSequenceOfCurve*> TColGeom2d_HSequenceOfCurve_ctor_sequenceofcurve(TColGeom2d_SequenceOfCurve const* theOther) {
-    try { return {new TColGeom2d_HSequenceOfCurve(*theOther), nullptr}; }
+extern "C" OcctResult<NCollection_Array1_gp_Pnt2d*> Geom2dGridEval_Circle_evaluate_grid(const Geom2dGridEval_Circle* self_, NCollection_Array1_double const* theParams) {
+    try { return {new NCollection_Array1_gp_Pnt2d(self_->EvaluateGrid(*theParams)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TColGeom2d_SequenceOfCurve const*> TColGeom2d_HSequenceOfCurve_sequence(const TColGeom2d_HSequenceOfCurve* self_) {
-    try { return {&(self_->Sequence()), nullptr}; }
+extern "C" OcctResult<NCollection_Array1_Geom2dGridEval_CurveD1*> Geom2dGridEval_Circle_evaluate_grid_d1(const Geom2dGridEval_Circle* self_, NCollection_Array1_double const* theParams) {
+    try { return {new NCollection_Array1_Geom2dGridEval_CurveD1(self_->EvaluateGridD1(*theParams)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* TColGeom2d_HSequenceOfCurve_append_handlegeom2dcurve(TColGeom2d_HSequenceOfCurve* self_, Handle(Geom2d_Curve) const* theItem) {
-    try { self_->Append(*theItem); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* TColGeom2d_HSequenceOfCurve_append_sequenceofcurve(TColGeom2d_HSequenceOfCurve* self_, TColGeom2d_SequenceOfCurve* theSequence) {
-    try { self_->Append(*theSequence); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<TColGeom2d_SequenceOfCurve*> TColGeom2d_HSequenceOfCurve_change_sequence(TColGeom2d_HSequenceOfCurve* self_) {
-    try { return {&(self_->ChangeSequence()), nullptr}; }
+extern "C" OcctResult<NCollection_Array1_Geom2dGridEval_CurveD2*> Geom2dGridEval_Circle_evaluate_grid_d2(const Geom2dGridEval_Circle* self_, NCollection_Array1_double const* theParams) {
+    try { return {new NCollection_Array1_Geom2dGridEval_CurveD2(self_->EvaluateGridD2(*theParams)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(Standard_Type) const*> TColGeom2d_HSequenceOfCurve_dynamic_type(const TColGeom2d_HSequenceOfCurve* self_) {
-    try { return {&(self_->DynamicType()), nullptr}; }
+extern "C" OcctResult<NCollection_Array1_Geom2dGridEval_CurveD3*> Geom2dGridEval_Circle_evaluate_grid_d3(const Geom2dGridEval_Circle* self_, NCollection_Array1_double const* theParams) {
+    try { return {new NCollection_Array1_Geom2dGridEval_CurveD3(self_->EvaluateGridD3(*theParams)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<char const*> TColGeom2d_HSequenceOfCurve_get_type_name() {
-    try { return {TColGeom2d_HSequenceOfCurve::get_type_name(), nullptr}; }
+extern "C" OcctResult<NCollection_Array1_gp_Vec2d*> Geom2dGridEval_Circle_evaluate_grid_dn(const Geom2dGridEval_Circle* self_, NCollection_Array1_double const* theParams, int32_t theN) {
+    try { return {new NCollection_Array1_gp_Vec2d(self_->EvaluateGridDN(*theParams, theN)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(Standard_Type) const*> TColGeom2d_HSequenceOfCurve_get_type_descriptor() {
-    try { return {&(TColGeom2d_HSequenceOfCurve::get_type_descriptor()), nullptr}; }
+extern "C" OcctResult<Handle(Geom2d_Circle) const*> Geom2dGridEval_Circle_geometry(const Geom2dGridEval_Circle* self_) {
+    try { return {&(self_->Geometry()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const Standard_Transient*> TColGeom2d_HSequenceOfCurve_as_Standard_Transient(const TColGeom2d_HSequenceOfCurve* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<Standard_Transient*> TColGeom2d_HSequenceOfCurve_as_Standard_Transient_mut(TColGeom2d_HSequenceOfCurve* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleTColGeom2dHSequenceOfCurve*> TColGeom2d_HSequenceOfCurve_to_handle(TColGeom2d_HSequenceOfCurve* obj) {
-    try { return {new HandleTColGeom2dHSequenceOfCurve(obj), nullptr}; }
+extern "C" void Geom2dGridEval_Circle_destructor(Geom2dGridEval_Circle* self_) { delete self_; }
+
+// ========================
+// Geom2dGridEval_Curve wrappers
+// ========================
+
+extern "C" OcctResult<Geom2dGridEval_Curve*> Geom2dGridEval_Curve_ctor_curve2d(Adaptor2d_Curve2d const* theCurve) {
+    try { return {new Geom2dGridEval_Curve(*theCurve), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const TColGeom2d_HSequenceOfCurve*> HandleTColGeom2dHSequenceOfCurve_get(const HandleTColGeom2dHSequenceOfCurve* handle) {
-    try { return {(*handle).get(), nullptr}; }
+extern "C" OcctResult<Geom2dGridEval_Curve*> Geom2dGridEval_Curve_ctor_handlegeom2dcurve(Handle(Geom2d_Curve) const* theCurve) {
+    try { return {new Geom2dGridEval_Curve(*theCurve), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TColGeom2d_HSequenceOfCurve*> HandleTColGeom2dHSequenceOfCurve_get_mut(HandleTColGeom2dHSequenceOfCurve* handle) {
-    try { return {(*handle).get(), nullptr}; }
+extern "C" OcctResult<NCollection_Array1_gp_Pnt2d*> Geom2dGridEval_Curve_evaluate_grid(const Geom2dGridEval_Curve* self_, NCollection_Array1_double const* theParams) {
+    try { return {new NCollection_Array1_gp_Pnt2d(self_->EvaluateGrid(*theParams)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleTColGeom2dHSequenceOfCurve_to_HandleStandardTransient(const HandleTColGeom2dHSequenceOfCurve* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<NCollection_Array1_Geom2dGridEval_CurveD1*> Geom2dGridEval_Curve_evaluate_grid_d1(const Geom2dGridEval_Curve* self_, NCollection_Array1_double const* theParams) {
+    try { return {new NCollection_Array1_Geom2dGridEval_CurveD1(self_->EvaluateGridD1(*theParams)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<bool> TColGeom2d_HSequenceOfCurve_inherited_IsInstance(const TColGeom2d_HSequenceOfCurve* self, Handle(Standard_Type) const& theType) {
-    try { return {self->IsInstance(theType), nullptr}; }
+extern "C" OcctResult<NCollection_Array1_Geom2dGridEval_CurveD2*> Geom2dGridEval_Curve_evaluate_grid_d2(const Geom2dGridEval_Curve* self_, NCollection_Array1_double const* theParams) {
+    try { return {new NCollection_Array1_Geom2dGridEval_CurveD2(self_->EvaluateGridD2(*theParams)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<bool> TColGeom2d_HSequenceOfCurve_inherited_IsKind(const TColGeom2d_HSequenceOfCurve* self, Handle(Standard_Type) const& theType) {
-    try { return {self->IsKind(theType), nullptr}; }
+extern "C" OcctResult<NCollection_Array1_Geom2dGridEval_CurveD3*> Geom2dGridEval_Curve_evaluate_grid_d3(const Geom2dGridEval_Curve* self_, NCollection_Array1_double const* theParams) {
+    try { return {new NCollection_Array1_Geom2dGridEval_CurveD3(self_->EvaluateGridD3(*theParams)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Standard_Transient*> TColGeom2d_HSequenceOfCurve_inherited_This(const TColGeom2d_HSequenceOfCurve* self) {
-    try { return {self->This(), nullptr}; }
+extern "C" OcctResult<NCollection_Array1_gp_Vec2d*> Geom2dGridEval_Curve_evaluate_grid_dn(const Geom2dGridEval_Curve* self_, NCollection_Array1_double const* theParams, int32_t theN) {
+    try { return {new NCollection_Array1_gp_Vec2d(self_->EvaluateGridDN(*theParams, theN)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<int32_t> TColGeom2d_HSequenceOfCurve_inherited_GetRefCount(const TColGeom2d_HSequenceOfCurve* self) {
-    try { return {self->GetRefCount(), nullptr}; }
+extern "C" OcctResult<int32_t> Geom2dGridEval_Curve_get_type(const Geom2dGridEval_Curve* self_) {
+    try { return {static_cast<int32_t>(self_->GetType()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* TColGeom2d_HSequenceOfCurve_inherited_IncrementRefCounter(TColGeom2d_HSequenceOfCurve* self) {
-    try { self->IncrementRefCounter(); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<int32_t> TColGeom2d_HSequenceOfCurve_inherited_DecrementRefCounter(TColGeom2d_HSequenceOfCurve* self) {
-    try { return {self->DecrementRefCounter(), nullptr}; }
+extern "C" void Geom2dGridEval_Curve_destructor(Geom2dGridEval_Curve* self_) { delete self_; }
+
+// ========================
+// Geom2dGridEval_Ellipse wrappers
+// ========================
+
+extern "C" OcctResult<Geom2dGridEval_Ellipse*> Geom2dGridEval_Ellipse_ctor_handlegeom2dellipse(Handle(Geom2d_Ellipse) const* theEllipse) {
+    try { return {new Geom2dGridEval_Ellipse(*theEllipse), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* TColGeom2d_HSequenceOfCurve_inherited_Delete(const TColGeom2d_HSequenceOfCurve* self) {
-    try { self->Delete(); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
+extern "C" OcctResult<NCollection_Array1_gp_Pnt2d*> Geom2dGridEval_Ellipse_evaluate_grid(const Geom2dGridEval_Ellipse* self_, NCollection_Array1_double const* theParams) {
+    try { return {new NCollection_Array1_gp_Pnt2d(self_->EvaluateGrid(*theParams)), nullptr}; }
+    OCCT_CATCH_RETURN
 }
-extern "C" void TColGeom2d_HSequenceOfCurve_destructor(TColGeom2d_HSequenceOfCurve* self_) { delete self_; }
+extern "C" OcctResult<NCollection_Array1_Geom2dGridEval_CurveD1*> Geom2dGridEval_Ellipse_evaluate_grid_d1(const Geom2dGridEval_Ellipse* self_, NCollection_Array1_double const* theParams) {
+    try { return {new NCollection_Array1_Geom2dGridEval_CurveD1(self_->EvaluateGridD1(*theParams)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<NCollection_Array1_Geom2dGridEval_CurveD2*> Geom2dGridEval_Ellipse_evaluate_grid_d2(const Geom2dGridEval_Ellipse* self_, NCollection_Array1_double const* theParams) {
+    try { return {new NCollection_Array1_Geom2dGridEval_CurveD2(self_->EvaluateGridD2(*theParams)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<NCollection_Array1_Geom2dGridEval_CurveD3*> Geom2dGridEval_Ellipse_evaluate_grid_d3(const Geom2dGridEval_Ellipse* self_, NCollection_Array1_double const* theParams) {
+    try { return {new NCollection_Array1_Geom2dGridEval_CurveD3(self_->EvaluateGridD3(*theParams)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<NCollection_Array1_gp_Vec2d*> Geom2dGridEval_Ellipse_evaluate_grid_dn(const Geom2dGridEval_Ellipse* self_, NCollection_Array1_double const* theParams, int32_t theN) {
+    try { return {new NCollection_Array1_gp_Vec2d(self_->EvaluateGridDN(*theParams, theN)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Handle(Geom2d_Ellipse) const*> Geom2dGridEval_Ellipse_geometry(const Geom2dGridEval_Ellipse* self_) {
+    try { return {&(self_->Geometry()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" void Geom2dGridEval_Ellipse_destructor(Geom2dGridEval_Ellipse* self_) { delete self_; }
+
+// ========================
+// Geom2dGridEval_Hyperbola wrappers
+// ========================
+
+extern "C" OcctResult<Geom2dGridEval_Hyperbola*> Geom2dGridEval_Hyperbola_ctor_handlegeom2dhyperbola(Handle(Geom2d_Hyperbola) const* theHyperbola) {
+    try { return {new Geom2dGridEval_Hyperbola(*theHyperbola), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<NCollection_Array1_gp_Pnt2d*> Geom2dGridEval_Hyperbola_evaluate_grid(const Geom2dGridEval_Hyperbola* self_, NCollection_Array1_double const* theParams) {
+    try { return {new NCollection_Array1_gp_Pnt2d(self_->EvaluateGrid(*theParams)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<NCollection_Array1_Geom2dGridEval_CurveD1*> Geom2dGridEval_Hyperbola_evaluate_grid_d1(const Geom2dGridEval_Hyperbola* self_, NCollection_Array1_double const* theParams) {
+    try { return {new NCollection_Array1_Geom2dGridEval_CurveD1(self_->EvaluateGridD1(*theParams)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<NCollection_Array1_Geom2dGridEval_CurveD2*> Geom2dGridEval_Hyperbola_evaluate_grid_d2(const Geom2dGridEval_Hyperbola* self_, NCollection_Array1_double const* theParams) {
+    try { return {new NCollection_Array1_Geom2dGridEval_CurveD2(self_->EvaluateGridD2(*theParams)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<NCollection_Array1_Geom2dGridEval_CurveD3*> Geom2dGridEval_Hyperbola_evaluate_grid_d3(const Geom2dGridEval_Hyperbola* self_, NCollection_Array1_double const* theParams) {
+    try { return {new NCollection_Array1_Geom2dGridEval_CurveD3(self_->EvaluateGridD3(*theParams)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<NCollection_Array1_gp_Vec2d*> Geom2dGridEval_Hyperbola_evaluate_grid_dn(const Geom2dGridEval_Hyperbola* self_, NCollection_Array1_double const* theParams, int32_t theN) {
+    try { return {new NCollection_Array1_gp_Vec2d(self_->EvaluateGridDN(*theParams, theN)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Handle(Geom2d_Hyperbola) const*> Geom2dGridEval_Hyperbola_geometry(const Geom2dGridEval_Hyperbola* self_) {
+    try { return {&(self_->Geometry()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" void Geom2dGridEval_Hyperbola_destructor(Geom2dGridEval_Hyperbola* self_) { delete self_; }
+
+// ========================
+// Geom2dGridEval_Line wrappers
+// ========================
+
+extern "C" OcctResult<Geom2dGridEval_Line*> Geom2dGridEval_Line_ctor_handlegeom2dline(Handle(Geom2d_Line) const* theLine) {
+    try { return {new Geom2dGridEval_Line(*theLine), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<NCollection_Array1_gp_Pnt2d*> Geom2dGridEval_Line_evaluate_grid(const Geom2dGridEval_Line* self_, NCollection_Array1_double const* theParams) {
+    try { return {new NCollection_Array1_gp_Pnt2d(self_->EvaluateGrid(*theParams)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<NCollection_Array1_Geom2dGridEval_CurveD1*> Geom2dGridEval_Line_evaluate_grid_d1(const Geom2dGridEval_Line* self_, NCollection_Array1_double const* theParams) {
+    try { return {new NCollection_Array1_Geom2dGridEval_CurveD1(self_->EvaluateGridD1(*theParams)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<NCollection_Array1_Geom2dGridEval_CurveD2*> Geom2dGridEval_Line_evaluate_grid_d2(const Geom2dGridEval_Line* self_, NCollection_Array1_double const* theParams) {
+    try { return {new NCollection_Array1_Geom2dGridEval_CurveD2(self_->EvaluateGridD2(*theParams)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<NCollection_Array1_Geom2dGridEval_CurveD3*> Geom2dGridEval_Line_evaluate_grid_d3(const Geom2dGridEval_Line* self_, NCollection_Array1_double const* theParams) {
+    try { return {new NCollection_Array1_Geom2dGridEval_CurveD3(self_->EvaluateGridD3(*theParams)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<NCollection_Array1_gp_Vec2d*> Geom2dGridEval_Line_evaluate_grid_dn(const Geom2dGridEval_Line* self_, NCollection_Array1_double const* theParams, int32_t theN) {
+    try { return {new NCollection_Array1_gp_Vec2d(self_->EvaluateGridDN(*theParams, theN)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Handle(Geom2d_Line) const*> Geom2dGridEval_Line_geometry(const Geom2dGridEval_Line* self_) {
+    try { return {&(self_->Geometry()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" void Geom2dGridEval_Line_destructor(Geom2dGridEval_Line* self_) { delete self_; }
+
+// ========================
+// Geom2dGridEval_OffsetCurve wrappers
+// ========================
+
+extern "C" OcctResult<Geom2dGridEval_OffsetCurve*> Geom2dGridEval_OffsetCurve_ctor_handlegeom2doffsetcurve(Handle(Geom2d_OffsetCurve) const* theOffset) {
+    try { return {new Geom2dGridEval_OffsetCurve(*theOffset), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<NCollection_Array1_gp_Pnt2d*> Geom2dGridEval_OffsetCurve_evaluate_grid(const Geom2dGridEval_OffsetCurve* self_, NCollection_Array1_double const* theParams) {
+    try { return {new NCollection_Array1_gp_Pnt2d(self_->EvaluateGrid(*theParams)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<NCollection_Array1_Geom2dGridEval_CurveD1*> Geom2dGridEval_OffsetCurve_evaluate_grid_d1(const Geom2dGridEval_OffsetCurve* self_, NCollection_Array1_double const* theParams) {
+    try { return {new NCollection_Array1_Geom2dGridEval_CurveD1(self_->EvaluateGridD1(*theParams)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<NCollection_Array1_Geom2dGridEval_CurveD2*> Geom2dGridEval_OffsetCurve_evaluate_grid_d2(const Geom2dGridEval_OffsetCurve* self_, NCollection_Array1_double const* theParams) {
+    try { return {new NCollection_Array1_Geom2dGridEval_CurveD2(self_->EvaluateGridD2(*theParams)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<NCollection_Array1_Geom2dGridEval_CurveD3*> Geom2dGridEval_OffsetCurve_evaluate_grid_d3(const Geom2dGridEval_OffsetCurve* self_, NCollection_Array1_double const* theParams) {
+    try { return {new NCollection_Array1_Geom2dGridEval_CurveD3(self_->EvaluateGridD3(*theParams)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<NCollection_Array1_gp_Vec2d*> Geom2dGridEval_OffsetCurve_evaluate_grid_dn(const Geom2dGridEval_OffsetCurve* self_, NCollection_Array1_double const* theParams, int32_t theN) {
+    try { return {new NCollection_Array1_gp_Vec2d(self_->EvaluateGridDN(*theParams, theN)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Handle(Geom2d_OffsetCurve) const*> Geom2dGridEval_OffsetCurve_geometry(const Geom2dGridEval_OffsetCurve* self_) {
+    try { return {&(self_->Geometry()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" void Geom2dGridEval_OffsetCurve_destructor(Geom2dGridEval_OffsetCurve* self_) { delete self_; }
+
+// ========================
+// Geom2dGridEval_OtherCurve wrappers
+// ========================
+
+extern "C" OcctResult<Geom2dGridEval_OtherCurve*> Geom2dGridEval_OtherCurve_ctor_curve2d(Adaptor2d_Curve2d const* theCurve) {
+    try { return {new Geom2dGridEval_OtherCurve(*theCurve), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<NCollection_Array1_gp_Pnt2d*> Geom2dGridEval_OtherCurve_evaluate_grid(const Geom2dGridEval_OtherCurve* self_, NCollection_Array1_double const* theParams) {
+    try { return {new NCollection_Array1_gp_Pnt2d(self_->EvaluateGrid(*theParams)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<NCollection_Array1_Geom2dGridEval_CurveD1*> Geom2dGridEval_OtherCurve_evaluate_grid_d1(const Geom2dGridEval_OtherCurve* self_, NCollection_Array1_double const* theParams) {
+    try { return {new NCollection_Array1_Geom2dGridEval_CurveD1(self_->EvaluateGridD1(*theParams)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<NCollection_Array1_Geom2dGridEval_CurveD2*> Geom2dGridEval_OtherCurve_evaluate_grid_d2(const Geom2dGridEval_OtherCurve* self_, NCollection_Array1_double const* theParams) {
+    try { return {new NCollection_Array1_Geom2dGridEval_CurveD2(self_->EvaluateGridD2(*theParams)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<NCollection_Array1_Geom2dGridEval_CurveD3*> Geom2dGridEval_OtherCurve_evaluate_grid_d3(const Geom2dGridEval_OtherCurve* self_, NCollection_Array1_double const* theParams) {
+    try { return {new NCollection_Array1_Geom2dGridEval_CurveD3(self_->EvaluateGridD3(*theParams)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<NCollection_Array1_gp_Vec2d*> Geom2dGridEval_OtherCurve_evaluate_grid_dn(const Geom2dGridEval_OtherCurve* self_, NCollection_Array1_double const* theParams, int32_t theN) {
+    try { return {new NCollection_Array1_gp_Vec2d(self_->EvaluateGridDN(*theParams, theN)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Adaptor2d_Curve2d const*> Geom2dGridEval_OtherCurve_curve(const Geom2dGridEval_OtherCurve* self_) {
+    try { return {&(self_->Curve()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" void Geom2dGridEval_OtherCurve_destructor(Geom2dGridEval_OtherCurve* self_) { delete self_; }
+
+// ========================
+// Geom2dGridEval_Parabola wrappers
+// ========================
+
+extern "C" OcctResult<Geom2dGridEval_Parabola*> Geom2dGridEval_Parabola_ctor_handlegeom2dparabola(Handle(Geom2d_Parabola) const* theParabola) {
+    try { return {new Geom2dGridEval_Parabola(*theParabola), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<NCollection_Array1_gp_Pnt2d*> Geom2dGridEval_Parabola_evaluate_grid(const Geom2dGridEval_Parabola* self_, NCollection_Array1_double const* theParams) {
+    try { return {new NCollection_Array1_gp_Pnt2d(self_->EvaluateGrid(*theParams)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<NCollection_Array1_Geom2dGridEval_CurveD1*> Geom2dGridEval_Parabola_evaluate_grid_d1(const Geom2dGridEval_Parabola* self_, NCollection_Array1_double const* theParams) {
+    try { return {new NCollection_Array1_Geom2dGridEval_CurveD1(self_->EvaluateGridD1(*theParams)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<NCollection_Array1_Geom2dGridEval_CurveD2*> Geom2dGridEval_Parabola_evaluate_grid_d2(const Geom2dGridEval_Parabola* self_, NCollection_Array1_double const* theParams) {
+    try { return {new NCollection_Array1_Geom2dGridEval_CurveD2(self_->EvaluateGridD2(*theParams)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<NCollection_Array1_Geom2dGridEval_CurveD3*> Geom2dGridEval_Parabola_evaluate_grid_d3(const Geom2dGridEval_Parabola* self_, NCollection_Array1_double const* theParams) {
+    try { return {new NCollection_Array1_Geom2dGridEval_CurveD3(self_->EvaluateGridD3(*theParams)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<NCollection_Array1_gp_Vec2d*> Geom2dGridEval_Parabola_evaluate_grid_dn(const Geom2dGridEval_Parabola* self_, NCollection_Array1_double const* theParams, int32_t theN) {
+    try { return {new NCollection_Array1_gp_Vec2d(self_->EvaluateGridDN(*theParams, theN)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Handle(Geom2d_Parabola) const*> Geom2dGridEval_Parabola_geometry(const Geom2dGridEval_Parabola* self_) {
+    try { return {&(self_->Geometry()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" void Geom2dGridEval_Parabola_destructor(Geom2dGridEval_Parabola* self_) { delete self_; }
+
+// sizeof helper for POD struct Geom2dHash_CurveHasher
+extern "C" size_t Geom2dHash_CurveHasher_sizeof() { return sizeof(Geom2dHash_CurveHasher); }
+extern "C" void Geom2dHash_CurveHasher_destructor(Geom2dHash_CurveHasher* self_) { delete self_; }
 
 // ========================
 // Geom2dAdaptor namespace functions
@@ -7419,34 +8326,6 @@ extern "C" OcctResult<Handle(Geom2d_Curve)*> Geom2dAdaptor_make_curve_curve2d(Ad
     OCCT_CATCH_RETURN
 }
 
-// ========================
-// Geom2dEvaluator namespace functions
-// ========================
-extern "C" const char* Geom2dEvaluator_calculate_d0(gp_Pnt2d* theValue, gp_Vec2d const* theD1, double theOffset) {
-    try { Geom2dEvaluator::CalculateD0(*theValue, *theD1, theOffset); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* Geom2dEvaluator_calculate_d1(gp_Pnt2d* theValue, gp_Vec2d* theD1, gp_Vec2d const* theD2, double theOffset) {
-    try { Geom2dEvaluator::CalculateD1(*theValue, *theD1, *theD2, theOffset); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* Geom2dEvaluator_calculate_d2(gp_Pnt2d* theValue, gp_Vec2d* theD1, gp_Vec2d* theD2, gp_Vec2d const* theD3, bool theIsDirChange, double theOffset) {
-    try { Geom2dEvaluator::CalculateD2(*theValue, *theD1, *theD2, *theD3, theIsDirChange, theOffset); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* Geom2dEvaluator_calculate_d3(gp_Pnt2d* theValue, gp_Vec2d* theD1, gp_Vec2d* theD2, gp_Vec2d* theD3, gp_Vec2d const* theD4, bool theIsDirChange, double theOffset) {
-    try { Geom2dEvaluator::CalculateD3(*theValue, *theD1, *theD2, *theD3, *theD4, theIsDirChange, theOffset); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<bool> Geom2dEvaluator_adjust_derivative(int32_t theMaxDerivative, double theU, gp_Vec2d* theD1, gp_Vec2d* theD2, gp_Vec2d* theD3, gp_Vec2d* theD4) {
-    try { return {Geom2dEvaluator::AdjustDerivative(theMaxDerivative, theU, *theD1, *theD2, *theD3, *theD4), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-
 
 // Nested type and typedef type destructors
-extern "C" void TColGeom2d_Array1OfBSplineCurve_destructor(TColGeom2d_Array1OfBSplineCurve* self_) { delete self_; }
-extern "C" void TColGeom2d_Array1OfBezierCurve_destructor(TColGeom2d_Array1OfBezierCurve* self_) { delete self_; }
-extern "C" void TColGeom2d_Array1OfCurve_destructor(TColGeom2d_Array1OfCurve* self_) { delete self_; }
-extern "C" void TColGeom2d_SequenceOfBoundedCurve_destructor(TColGeom2d_SequenceOfBoundedCurve* self_) { delete self_; }
-extern "C" void TColGeom2d_SequenceOfCurve_destructor(TColGeom2d_SequenceOfCurve* self_) { delete self_; }
+extern "C" void Geom2dEval_RepCurveDesc_Base_destructor(Geom2dEval_RepCurveDesc::Base* self_) { delete self_; }

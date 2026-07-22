@@ -56,12 +56,12 @@ impl Approx {
     /// **Source:** `AppBlend_Approx.hxx`:46 - `AppBlend_Approx::Surface()`
     pub fn surface(
         &self,
-        TPoles: &mut crate::ffi_types::TColgp_Array2OfPnt,
-        TWeights: &mut crate::ffi_types::TColStd_Array2OfReal,
-        TUKnots: &mut crate::ffi_types::TColStd_Array1OfReal,
-        TVKnots: &mut crate::ffi_types::TColStd_Array1OfReal,
-        TUMults: &mut crate::ffi_types::TColStd_Array1OfInteger,
-        TVMults: &mut crate::ffi_types::TColStd_Array1OfInteger,
+        TPoles: &mut crate::ffi_types::NCollection_Array2_gp_Pnt,
+        TWeights: &mut crate::ffi_types::NCollection_Array2_double,
+        TUKnots: &mut crate::ffi_types::NCollection_Array1_double,
+        TVKnots: &mut crate::ffi_types::NCollection_Array1_double,
+        TUMults: &mut crate::ffi_types::NCollection_Array1_int,
+        TVMults: &mut crate::ffi_types::NCollection_Array1_int,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::AppBlend_Approx_surface(
@@ -91,7 +91,7 @@ impl Approx {
     }
 
     /// **Source:** `AppBlend_Approx.hxx`:57 - `AppBlend_Approx::SurfPoles()`
-    pub fn surf_poles(&self) -> &crate::ffi_types::TColgp_Array2OfPnt {
+    pub fn surf_poles(&self) -> &crate::ffi_types::NCollection_Array2_gp_Pnt {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKGeomAlgo::AppBlend_Approx_surf_poles(
                 self as *const Self,
@@ -100,7 +100,7 @@ impl Approx {
     }
 
     /// **Source:** `AppBlend_Approx.hxx`:59 - `AppBlend_Approx::SurfWeights()`
-    pub fn surf_weights(&self) -> &crate::ffi_types::TColStd_Array2OfReal {
+    pub fn surf_weights(&self) -> &crate::ffi_types::NCollection_Array2_double {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKGeomAlgo::AppBlend_Approx_surf_weights(
                 self as *const Self,
@@ -109,7 +109,7 @@ impl Approx {
     }
 
     /// **Source:** `AppBlend_Approx.hxx`:61 - `AppBlend_Approx::SurfUKnots()`
-    pub fn surf_u_knots(&self) -> &crate::ffi_types::TColStd_Array1OfReal {
+    pub fn surf_u_knots(&self) -> &crate::ffi_types::NCollection_Array1_double {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKGeomAlgo::AppBlend_Approx_surf_u_knots(
                 self as *const Self,
@@ -118,7 +118,7 @@ impl Approx {
     }
 
     /// **Source:** `AppBlend_Approx.hxx`:63 - `AppBlend_Approx::SurfVKnots()`
-    pub fn surf_v_knots(&self) -> &crate::ffi_types::TColStd_Array1OfReal {
+    pub fn surf_v_knots(&self) -> &crate::ffi_types::NCollection_Array1_double {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKGeomAlgo::AppBlend_Approx_surf_v_knots(
                 self as *const Self,
@@ -127,7 +127,7 @@ impl Approx {
     }
 
     /// **Source:** `AppBlend_Approx.hxx`:65 - `AppBlend_Approx::SurfUMults()`
-    pub fn surf_u_mults(&self) -> &crate::ffi_types::TColStd_Array1OfInteger {
+    pub fn surf_u_mults(&self) -> &crate::ffi_types::NCollection_Array1_int {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKGeomAlgo::AppBlend_Approx_surf_u_mults(
                 self as *const Self,
@@ -136,7 +136,7 @@ impl Approx {
     }
 
     /// **Source:** `AppBlend_Approx.hxx`:67 - `AppBlend_Approx::SurfVMults()`
-    pub fn surf_v_mults(&self) -> &crate::ffi_types::TColStd_Array1OfInteger {
+    pub fn surf_v_mults(&self) -> &crate::ffi_types::NCollection_Array1_int {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKGeomAlgo::AppBlend_Approx_surf_v_mults(
                 self as *const Self,
@@ -163,13 +163,13 @@ impl Approx {
         })
     }
 
-    /// **Source:** `AppBlend_Approx.hxx`:75 - `AppBlend_Approx::Curve2d()`
+    /// **Source:** `AppBlend_Approx.hxx`:73 - `AppBlend_Approx::Curve2d()`
     pub fn curve2d(
         &self,
         Index: i32,
-        TPoles: &mut crate::ffi_types::TColgp_Array1OfPnt2d,
-        TKnots: &mut crate::ffi_types::TColStd_Array1OfReal,
-        TMults: &mut crate::ffi_types::TColStd_Array1OfInteger,
+        TPoles: &mut crate::ffi_types::NCollection_Array1_gp_Pnt2d,
+        TKnots: &mut crate::ffi_types::NCollection_Array1_double,
+        TMults: &mut crate::ffi_types::NCollection_Array1_int,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::AppBlend_Approx_curve2d(
@@ -182,15 +182,15 @@ impl Approx {
         })
     }
 
-    /// **Source:** `AppBlend_Approx.hxx`:80 - `AppBlend_Approx::Curves2dDegree()`
+    /// **Source:** `AppBlend_Approx.hxx`:78 - `AppBlend_Approx::Curves2dDegree()`
     pub fn curves2d_degree(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::AppBlend_Approx_curves2d_degree(self as *const Self)
         })
     }
 
-    /// **Source:** `AppBlend_Approx.hxx`:82 - `AppBlend_Approx::Curve2dPoles()`
-    pub fn curve2d_poles(&self, Index: i32) -> &crate::ffi_types::TColgp_Array1OfPnt2d {
+    /// **Source:** `AppBlend_Approx.hxx`:80 - `AppBlend_Approx::Curve2dPoles()`
+    pub fn curve2d_poles(&self, Index: i32) -> &crate::ffi_types::NCollection_Array1_gp_Pnt2d {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKGeomAlgo::AppBlend_Approx_curve2d_poles(
                 self as *const Self,
@@ -199,8 +199,8 @@ impl Approx {
         }
     }
 
-    /// **Source:** `AppBlend_Approx.hxx`:85 - `AppBlend_Approx::Curves2dKnots()`
-    pub fn curves2d_knots(&self) -> &crate::ffi_types::TColStd_Array1OfReal {
+    /// **Source:** `AppBlend_Approx.hxx`:83 - `AppBlend_Approx::Curves2dKnots()`
+    pub fn curves2d_knots(&self) -> &crate::ffi_types::NCollection_Array1_double {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKGeomAlgo::AppBlend_Approx_curves2d_knots(
                 self as *const Self,
@@ -208,8 +208,8 @@ impl Approx {
         }
     }
 
-    /// **Source:** `AppBlend_Approx.hxx`:87 - `AppBlend_Approx::Curves2dMults()`
-    pub fn curves2d_mults(&self) -> &crate::ffi_types::TColStd_Array1OfInteger {
+    /// **Source:** `AppBlend_Approx.hxx`:85 - `AppBlend_Approx::Curves2dMults()`
+    pub fn curves2d_mults(&self) -> &crate::ffi_types::NCollection_Array1_int {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKGeomAlgo::AppBlend_Approx_curves2d_mults(
                 self as *const Self,
@@ -217,7 +217,7 @@ impl Approx {
         }
     }
 
-    /// **Source:** `AppBlend_Approx.hxx`:89 - `AppBlend_Approx::TolReached()`
+    /// **Source:** `AppBlend_Approx.hxx`:87 - `AppBlend_Approx::TolReached()`
     pub fn tol_reached(&self, Tol3d: &mut f64, Tol2d: &mut f64) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::AppBlend_Approx_tol_reached(
@@ -228,7 +228,7 @@ impl Approx {
         })
     }
 
-    /// **Source:** `AppBlend_Approx.hxx`:91 - `AppBlend_Approx::TolCurveOnSurf()`
+    /// **Source:** `AppBlend_Approx.hxx`:89 - `AppBlend_Approx::TolCurveOnSurf()`
     pub fn tol_curve_on_surf(&self, Index: i32) -> f64 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::AppBlend_Approx_tol_curve_on_surf(

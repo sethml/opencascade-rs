@@ -45,6 +45,11 @@ echo "Generating bindings from $CONFIG_FILE..."
 # Clean generated directory
 echo "Cleaning $OUTPUT_DIR..."
 rm -f "$OUTPUT_DIR"/*.rs "$OUTPUT_DIR"/*.hxx "$OUTPUT_DIR"/*.cpp
+# Also remove hidden generated files with empty basenames (e.g. `.rs`), which
+# the `*.rs` glob doesn't match on most shells.
+find "$OUTPUT_DIR" -maxdepth 1 -name '.rs' -delete 2>/dev/null || true
+find "$OUTPUT_DIR" -maxdepth 1 -name '.hxx' -delete 2>/dev/null || true
+find "$OUTPUT_DIR" -maxdepth 1 -name '.cpp' -delete 2>/dev/null || true
 
 # Set library path for libclang on macOS
 if [[ "$(uname)" == "Darwin" ]]; then
@@ -53,9 +58,18 @@ if [[ "$(uname)" == "Darwin" ]]; then
 fi
 
 # Run the generator
+# Include both installed headers and build headers (needed for .pxx private headers)
+OCCT_BUILD_INCLUDE="$REPO_ROOT/target/OCCT/build/include"
+if [[ -d "$OCCT_BUILD_INCLUDE" ]]; then
+    BUILD_INCLUDE_ARG=(-I "$OCCT_BUILD_INCLUDE")
+else
+    BUILD_INCLUDE_ARG=()
+fi
+
 "$REPO_ROOT/target/release/occt-bindgen" \
     --config "$CONFIG_FILE" \
     -I "$OCCT_INCLUDE" \
+    "${BUILD_INCLUDE_ARG[@]}" \
     -o "$OUTPUT_DIR" \
     "$@"
 

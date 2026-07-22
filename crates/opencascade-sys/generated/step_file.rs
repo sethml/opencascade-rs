@@ -145,7 +145,7 @@ impl ReadData {
         })
     }
 
-    /// **Source:** `StepFile_ReadData.hxx`:177 - `StepFile_ReadData::GetRecordDescription()`
+    /// **Source:** `StepFile_ReadData.hxx`:175 - `StepFile_ReadData::GetRecordDescription()`
     /// Returns a value of fields of current record
     pub unsafe fn get_record_description(
         &mut self,
@@ -163,7 +163,7 @@ impl ReadData {
         })
     }
 
-    /// **Source:** `StepFile_ReadData.hxx`:180 - `StepFile_ReadData::RecordTypeText()`
+    /// **Source:** `StepFile_ReadData.hxx`:178 - `StepFile_ReadData::RecordTypeText()`
     /// Initializes the record type with myResText
     pub fn record_type_text(&mut self) {
         crate::check_void_result(unsafe {
@@ -171,7 +171,7 @@ impl ReadData {
         })
     }
 
-    /// **Source:** `StepFile_ReadData.hxx`:183 - `StepFile_ReadData::NextRecord()`
+    /// **Source:** `StepFile_ReadData.hxx`:181 - `StepFile_ReadData::NextRecord()`
     /// Skips to next record
     pub fn next_record(&mut self) {
         crate::check_void_result(unsafe {
@@ -179,7 +179,7 @@ impl ReadData {
         })
     }
 
-    /// **Source:** `StepFile_ReadData.hxx`:186 - `StepFile_ReadData::PrintCurrentRecord()`
+    /// **Source:** `StepFile_ReadData.hxx`:184 - `StepFile_ReadData::PrintCurrentRecord()`
     /// Prints data of current record according to the modeprint
     pub fn print_current_record(&mut self) {
         crate::check_void_result(unsafe {
@@ -187,7 +187,7 @@ impl ReadData {
         })
     }
 
-    /// **Source:** `StepFile_ReadData.hxx`:190 - `StepFile_ReadData::PrepareNewArg()`
+    /// **Source:** `StepFile_ReadData.hxx`:188 - `StepFile_ReadData::PrepareNewArg()`
     /// Controls the correct argument count for the record.
     /// Resets error argyment mode
     pub fn prepare_new_arg(&mut self) {
@@ -196,7 +196,7 @@ impl ReadData {
         })
     }
 
-    /// **Source:** `StepFile_ReadData.hxx`:193 - `StepFile_ReadData::FinalOfHead()`
+    /// **Source:** `StepFile_ReadData.hxx`:191 - `StepFile_ReadData::FinalOfHead()`
     /// Prepares the end of the head section
     pub fn final_of_head(&mut self) {
         crate::check_void_result(unsafe {
@@ -204,7 +204,7 @@ impl ReadData {
         })
     }
 
-    /// **Source:** `StepFile_ReadData.hxx`:196 - `StepFile_ReadData::SetTypeArg()`
+    /// **Source:** `StepFile_ReadData.hxx`:194 - `StepFile_ReadData::SetTypeArg()`
     /// Sets type of the current argument
     pub fn set_type_arg(&mut self, theArgType: crate::interface::ParamType) {
         crate::check_void_result(unsafe {
@@ -215,10 +215,10 @@ impl ReadData {
         })
     }
 
-    /// **Source:** `StepFile_ReadData.hxx`:202 - `StepFile_ReadData::SetModePrint()`
+    /// **Source:** `StepFile_ReadData.hxx`:200 - `StepFile_ReadData::SetModePrint()`
     /// Initializes the print mode
     /// 0 - don't print descriptions
-    /// 1 - print only descriptions  of record
+    /// 1 - print only descriptions of record
     /// 2 - print descriptions of records and its arguments
     pub fn set_mode_print(&mut self, theMode: i32) {
         crate::check_void_result(unsafe {
@@ -226,7 +226,7 @@ impl ReadData {
         })
     }
 
-    /// **Source:** `StepFile_ReadData.hxx`:205 - `StepFile_ReadData::GetModePrint()`
+    /// **Source:** `StepFile_ReadData.hxx`:203 - `StepFile_ReadData::GetModePrint()`
     /// Returns mode print
     pub fn get_mode_print(&self) -> i32 {
         crate::check_result(unsafe {
@@ -234,7 +234,7 @@ impl ReadData {
         })
     }
 
-    /// **Source:** `StepFile_ReadData.hxx`:208 - `StepFile_ReadData::GetNbRecord()`
+    /// **Source:** `StepFile_ReadData.hxx`:206 - `StepFile_ReadData::GetNbRecord()`
     /// Returns number of records
     pub fn get_nb_record(&self) -> i32 {
         crate::check_result(unsafe {
@@ -242,7 +242,7 @@ impl ReadData {
         })
     }
 
-    /// **Source:** `StepFile_ReadData.hxx`:211 - `StepFile_ReadData::AddError()`
+    /// **Source:** `StepFile_ReadData.hxx`:209 - `StepFile_ReadData::AddError()`
     /// Adds an error message
     pub fn add_error(&mut self, theErrorMessage: &str) {
         let c_theErrorMessage = std::ffi::CString::new(theErrorMessage).unwrap();
@@ -254,9 +254,9 @@ impl ReadData {
         })
     }
 
-    /// **Source:** `StepFile_ReadData.hxx`:214 - `StepFile_ReadData::ErrorHandle()`
+    /// **Source:** `StepFile_ReadData.hxx`:212 - `StepFile_ReadData::ErrorHandle()`
     /// Transfers error messages to checker
-    pub fn error_handle(&self, theCheck: &crate::ffi_types::HandleInterfaceCheck) -> bool {
+    pub fn error_handle(&self, theCheck: &crate::ffi_types::Handle_Interface_Check) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepFile_ReadData_error_handle(
                 self as *const Self,
@@ -265,7 +265,7 @@ impl ReadData {
         })
     }
 
-    /// **Source:** `StepFile_ReadData.hxx`:217 - `StepFile_ReadData::GetLastError()`
+    /// **Source:** `StepFile_ReadData.hxx`:215 - `StepFile_ReadData::GetLastError()`
     /// Returns the message of the last error
     pub fn get_last_error(&self) -> std::string::String {
         unsafe {

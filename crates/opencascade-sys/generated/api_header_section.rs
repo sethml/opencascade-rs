@@ -7,13 +7,13 @@
 #![allow(non_snake_case)]
 
 // Handle type re-exports (targets of handle upcasts/downcasts)
-pub use crate::ffi_types::{HandleIFSelectEditor, HandleStandardTransient};
+pub use crate::ffi_types::{Handle_IFSelect_Editor, Handle_Standard_Transient};
 
 // ========================
 // From APIHeaderSection_EditHeader.hxx
 // ========================
 
-/// **Source:** `APIHeaderSection_EditHeader.hxx`:33 - `APIHeaderSection_EditHeader`
+/// **Source:** `APIHeaderSection_EditHeader.hxx`:30 - `APIHeaderSection_EditHeader`
 pub use crate::ffi_types::APIHeaderSection_EditHeader as EditHeader;
 
 unsafe impl crate::CppDeletable for EditHeader {
@@ -25,7 +25,7 @@ unsafe impl crate::CppDeletable for EditHeader {
 }
 
 impl EditHeader {
-    /// **Source:** `APIHeaderSection_EditHeader.hxx`:37 - `APIHeaderSection_EditHeader::APIHeaderSection_EditHeader()`
+    /// **Source:** `APIHeaderSection_EditHeader.hxx`:34 - `APIHeaderSection_EditHeader::APIHeaderSection_EditHeader()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -34,7 +34,7 @@ impl EditHeader {
         }
     }
 
-    /// **Source:** `APIHeaderSection_EditHeader.hxx`:39 - `APIHeaderSection_EditHeader::Label()`
+    /// **Source:** `APIHeaderSection_EditHeader.hxx`:36 - `APIHeaderSection_EditHeader::Label()`
     pub fn label(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -43,8 +43,8 @@ impl EditHeader {
         }
     }
 
-    /// **Source:** `APIHeaderSection_EditHeader.hxx`:42 - `APIHeaderSection_EditHeader::Recognize()`
-    pub fn recognize(&self, form: &crate::ffi_types::HandleIFSelectEditForm) -> bool {
+    /// **Source:** `APIHeaderSection_EditHeader.hxx`:38 - `APIHeaderSection_EditHeader::Recognize()`
+    pub fn recognize(&self, form: &crate::ffi_types::Handle_IFSelect_EditForm) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDESTEP::APIHeaderSection_EditHeader_recognize(
                 self as *const Self,
@@ -53,12 +53,12 @@ impl EditHeader {
         })
     }
 
-    /// **Source:** `APIHeaderSection_EditHeader.hxx`:44 - `APIHeaderSection_EditHeader::StringValue()`
+    /// **Source:** `APIHeaderSection_EditHeader.hxx`:40 - `APIHeaderSection_EditHeader::StringValue()`
     pub fn string_value(
         &self,
-        form: &crate::ffi_types::HandleIFSelectEditForm,
+        form: &crate::ffi_types::Handle_IFSelect_EditForm,
         num: i32,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleTCollectionHAsciiString> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_TCollection_HAsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDESTEP::APIHeaderSection_EditHeader_string_value(
@@ -70,12 +70,12 @@ impl EditHeader {
         }
     }
 
-    /// **Source:** `APIHeaderSection_EditHeader.hxx`:49 - `APIHeaderSection_EditHeader::Apply()`
+    /// **Source:** `APIHeaderSection_EditHeader.hxx`:44 - `APIHeaderSection_EditHeader::Apply()`
     pub fn apply(
         &self,
-        form: &crate::ffi_types::HandleIFSelectEditForm,
-        ent: &crate::ffi_types::HandleStandardTransient,
-        model: &crate::ffi_types::HandleInterfaceInterfaceModel,
+        form: &crate::ffi_types::Handle_IFSelect_EditForm,
+        ent: &crate::ffi_types::Handle_Standard_Transient,
+        model: &crate::ffi_types::Handle_Interface_InterfaceModel,
     ) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDESTEP::APIHeaderSection_EditHeader_apply(
@@ -87,12 +87,12 @@ impl EditHeader {
         })
     }
 
-    /// **Source:** `APIHeaderSection_EditHeader.hxx`:54 - `APIHeaderSection_EditHeader::Load()`
+    /// **Source:** `APIHeaderSection_EditHeader.hxx`:48 - `APIHeaderSection_EditHeader::Load()`
     pub fn load(
         &self,
-        form: &crate::ffi_types::HandleIFSelectEditForm,
-        ent: &crate::ffi_types::HandleStandardTransient,
-        model: &crate::ffi_types::HandleInterfaceInterfaceModel,
+        form: &crate::ffi_types::Handle_IFSelect_EditForm,
+        ent: &crate::ffi_types::Handle_Standard_Transient,
+        model: &crate::ffi_types::Handle_Interface_InterfaceModel,
     ) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDESTEP::APIHeaderSection_EditHeader_load(
@@ -104,8 +104,8 @@ impl EditHeader {
         })
     }
 
-    /// **Source:** `APIHeaderSection_EditHeader.hxx`:58 - `APIHeaderSection_EditHeader::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `APIHeaderSection_EditHeader.hxx`:52 - `APIHeaderSection_EditHeader::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKDESTEP::APIHeaderSection_EditHeader_dynamic_type(
@@ -115,7 +115,7 @@ impl EditHeader {
         }
     }
 
-    /// **Source:** `APIHeaderSection_EditHeader.hxx`:58 - `APIHeaderSection_EditHeader::get_type_name()`
+    /// **Source:** `APIHeaderSection_EditHeader.hxx`:52 - `APIHeaderSection_EditHeader::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -126,8 +126,8 @@ impl EditHeader {
         .into_owned()
     }
 
-    /// **Source:** `APIHeaderSection_EditHeader.hxx`:58 - `APIHeaderSection_EditHeader::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    /// **Source:** `APIHeaderSection_EditHeader.hxx`:52 - `APIHeaderSection_EditHeader::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKDESTEP::APIHeaderSection_EditHeader_get_type_descriptor(),
@@ -182,7 +182,7 @@ impl EditHeader {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleAPIHeaderSectionEditHeader> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_APIHeaderSection_EditHeader> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDESTEP::APIHeaderSection_EditHeader_to_handle(obj.into_raw()),
@@ -190,7 +190,7 @@ impl EditHeader {
         }
     }
 
-    /// Inherited: **Source:** `IFSelect_Editor.hxx`:62 - `IFSelect_Editor::SetList()`
+    /// Inherited: **Source:** `IFSelect_Editor.hxx`:59 - `IFSelect_Editor::SetList()`
     pub fn set_list(&mut self, num: i32, max: i32) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::APIHeaderSection_EditHeader_inherited_SetList(
@@ -201,7 +201,7 @@ impl EditHeader {
         })
     }
 
-    /// Inherited: **Source:** `IFSelect_Editor.hxx`:65 - `IFSelect_Editor::NbValues()`
+    /// Inherited: **Source:** `IFSelect_Editor.hxx`:62 - `IFSelect_Editor::NbValues()`
     pub fn nb_values(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDESTEP::APIHeaderSection_EditHeader_inherited_NbValues(
@@ -210,11 +210,11 @@ impl EditHeader {
         })
     }
 
-    /// Inherited: **Source:** `IFSelect_Editor.hxx`:68 - `IFSelect_Editor::TypedValue()`
+    /// Inherited: **Source:** `IFSelect_Editor.hxx`:65 - `IFSelect_Editor::TypedValue()`
     pub fn typed_value(
         &self,
         num: i32,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleInterfaceTypedValue> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Interface_TypedValue> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDESTEP::APIHeaderSection_EditHeader_inherited_TypedValue(
@@ -225,7 +225,7 @@ impl EditHeader {
         }
     }
 
-    /// Inherited: **Source:** `IFSelect_Editor.hxx`:71 - `IFSelect_Editor::IsList()`
+    /// Inherited: **Source:** `IFSelect_Editor.hxx`:68 - `IFSelect_Editor::IsList()`
     pub fn is_list(&self, num: i32) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDESTEP::APIHeaderSection_EditHeader_inherited_IsList(
@@ -235,7 +235,7 @@ impl EditHeader {
         })
     }
 
-    /// Inherited: **Source:** `IFSelect_Editor.hxx`:76 - `IFSelect_Editor::MaxList()`
+    /// Inherited: **Source:** `IFSelect_Editor.hxx`:73 - `IFSelect_Editor::MaxList()`
     pub fn max_list(&self, num: i32) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDESTEP::APIHeaderSection_EditHeader_inherited_MaxList(
@@ -245,7 +245,7 @@ impl EditHeader {
         })
     }
 
-    /// Inherited: **Source:** `IFSelect_Editor.hxx`:84 - `IFSelect_Editor::EditMode()`
+    /// Inherited: **Source:** `IFSelect_Editor.hxx`:80 - `IFSelect_Editor::EditMode()`
     pub fn edit_mode(&self, num: i32) -> crate::if_select::EditValue {
         crate::if_select::EditValue::try_from(crate::check_result(unsafe {
             crate::ffi_extern_TKDESTEP::APIHeaderSection_EditHeader_inherited_EditMode(
@@ -256,7 +256,7 @@ impl EditHeader {
         .unwrap()
     }
 
-    /// Inherited: **Source:** `IFSelect_Editor.hxx`:90 - `IFSelect_Editor::PrintNames()`
+    /// Inherited: **Source:** `IFSelect_Editor.hxx`:86 - `IFSelect_Editor::PrintNames()`
     pub fn print_names(&self, S: &mut crate::ffi_types::Standard_OStream) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::APIHeaderSection_EditHeader_inherited_PrintNames(
@@ -266,7 +266,7 @@ impl EditHeader {
         })
     }
 
-    /// Inherited: **Source:** `IFSelect_Editor.hxx`:92 - `IFSelect_Editor::PrintDefs()`
+    /// Inherited: **Source:** `IFSelect_Editor.hxx`:88 - `IFSelect_Editor::PrintDefs()`
     pub fn print_defs(&self, S: &mut crate::ffi_types::Standard_OStream, labels: bool) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::APIHeaderSection_EditHeader_inherited_PrintDefs(
@@ -277,7 +277,7 @@ impl EditHeader {
         })
     }
 
-    /// Inherited: **Source:** `IFSelect_Editor.hxx`:99 - `IFSelect_Editor::MaxNameLength()`
+    /// Inherited: **Source:** `IFSelect_Editor.hxx`:94 - `IFSelect_Editor::MaxNameLength()`
     pub fn max_name_length(&self, what: i32) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDESTEP::APIHeaderSection_EditHeader_inherited_MaxNameLength(
@@ -287,12 +287,12 @@ impl EditHeader {
         })
     }
 
-    /// Inherited: **Source:** `IFSelect_Editor.hxx`:106 - `IFSelect_Editor::Form()`
+    /// Inherited: **Source:** `IFSelect_Editor.hxx`:101 - `IFSelect_Editor::Form()`
     pub fn form(
         &self,
         readonly: bool,
         undoable: bool,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleIFSelectEditForm> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_IFSelect_EditForm> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDESTEP::APIHeaderSection_EditHeader_inherited_Form(
@@ -304,11 +304,11 @@ impl EditHeader {
         }
     }
 
-    /// Inherited: **Source:** `IFSelect_Editor.hxx`:124 - `IFSelect_Editor::ListEditor()`
+    /// Inherited: **Source:** `IFSelect_Editor.hxx`:117 - `IFSelect_Editor::ListEditor()`
     pub fn list_editor(
         &self,
         num: i32,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleIFSelectListEditor> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_IFSelect_ListEditor> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDESTEP::APIHeaderSection_EditHeader_inherited_ListEditor(
@@ -319,12 +319,14 @@ impl EditHeader {
         }
     }
 
-    /// Inherited: **Source:** `IFSelect_Editor.hxx`:130 - `IFSelect_Editor::ListValue()`
+    /// Inherited: **Source:** `IFSelect_Editor.hxx`:124 - `IFSelect_Editor::ListValue()`
     pub fn list_value(
         &self,
-        form: &crate::ffi_types::HandleIFSelectEditForm,
+        form: &crate::ffi_types::Handle_IFSelect_EditForm,
         num: i32,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleTColStdHSequenceOfHAsciiString> {
+    ) -> crate::OwnedPtr<
+        crate::ffi_types::Handle_NCollection_HSequence_opencascade_handle_TCollection_HAsciiString,
+    > {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDESTEP::APIHeaderSection_EditHeader_inherited_ListValue(
@@ -336,12 +338,12 @@ impl EditHeader {
         }
     }
 
-    /// Inherited: **Source:** `IFSelect_Editor.hxx`:153 - `IFSelect_Editor::Update()`
+    /// Inherited: **Source:** `IFSelect_Editor.hxx`:144 - `IFSelect_Editor::Update()`
     pub fn update(
         &self,
-        form: &crate::ffi_types::HandleIFSelectEditForm,
+        form: &crate::ffi_types::Handle_IFSelect_EditForm,
         num: i32,
-        newval: &crate::ffi_types::HandleTCollectionHAsciiString,
+        newval: &crate::ffi_types::Handle_TCollection_HAsciiString,
         enforce: bool,
     ) -> bool {
         crate::check_result(unsafe {
@@ -355,12 +357,12 @@ impl EditHeader {
         })
     }
 
-    /// Inherited: **Source:** `IFSelect_Editor.hxx`:159 - `IFSelect_Editor::UpdateList()`
+    /// Inherited: **Source:** `IFSelect_Editor.hxx`:150 - `IFSelect_Editor::UpdateList()`
     pub fn update_list(
         &self,
-        form: &crate::ffi_types::HandleIFSelectEditForm,
+        form: &crate::ffi_types::Handle_IFSelect_EditForm,
         num: i32,
-        newlist: &crate::ffi_types::HandleTColStdHSequenceOfHAsciiString,
+        newlist: &crate::ffi_types::Handle_NCollection_HSequence_opencascade_handle_TCollection_HAsciiString,
         enforce: bool,
     ) -> bool {
         crate::check_result(unsafe {
@@ -374,8 +376,8 @@ impl EditHeader {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDESTEP::APIHeaderSection_EditHeader_inherited_IsInstance(
                 self as *const Self,
@@ -384,8 +386,8 @@ impl EditHeader {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDESTEP::APIHeaderSection_EditHeader_inherited_IsKind(
                 self as *const Self,
@@ -394,7 +396,7 @@ impl EditHeader {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -410,7 +412,7 @@ impl EditHeader {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDESTEP::APIHeaderSection_EditHeader_inherited_GetRefCount(
@@ -419,7 +421,7 @@ impl EditHeader {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::APIHeaderSection_EditHeader_inherited_IncrementRefCounter(
@@ -428,7 +430,7 @@ impl EditHeader {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDESTEP::APIHeaderSection_EditHeader_inherited_DecrementRefCounter(
@@ -437,7 +439,7 @@ impl EditHeader {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::APIHeaderSection_EditHeader_inherited_Delete(
@@ -447,31 +449,31 @@ impl EditHeader {
     }
 }
 
-pub use crate::ffi_types::HandleAPIHeaderSectionEditHeader;
+pub use crate::ffi_types::Handle_APIHeaderSection_EditHeader;
 
-unsafe impl crate::CppDeletable for HandleAPIHeaderSectionEditHeader {
+unsafe impl crate::CppDeletable for Handle_APIHeaderSection_EditHeader {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKDESTEP::HandleAPIHeaderSectionEditHeader_destructor(ptr);
+            crate::ffi_extern_TKDESTEP::Handle_APIHeaderSection_EditHeader_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleAPIHeaderSectionEditHeader {
+unsafe impl crate::CppCopyable for Handle_APIHeaderSection_EditHeader {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
         unsafe {
-            crate::check_result(crate::ffi_extern_TKDESTEP::HandleAPIHeaderSectionEditHeader_clone(
-                ptr,
-            ))
+            crate::check_result(
+                crate::ffi_extern_TKDESTEP::Handle_APIHeaderSection_EditHeader_clone(ptr),
+            )
         }
     }
 }
 
-impl HandleAPIHeaderSectionEditHeader {
+impl Handle_APIHeaderSection_EditHeader {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
         unsafe {
-            crate::ffi_extern_TKDESTEP::HandleAPIHeaderSectionEditHeader_is_null(
+            crate::ffi_extern_TKDESTEP::Handle_APIHeaderSection_EditHeader_is_null(
                 self as *const Self,
             )
         }
@@ -480,9 +482,11 @@ impl HandleAPIHeaderSectionEditHeader {
     /// Dereference this Handle to access the underlying APIHeaderSection_EditHeader
     pub fn get(&self) -> &crate::ffi_types::APIHeaderSection_EditHeader {
         unsafe {
-            &*crate::check_result(crate::ffi_extern_TKDESTEP::HandleAPIHeaderSectionEditHeader_get(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKDESTEP::Handle_APIHeaderSection_EditHeader_get(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -490,7 +494,7 @@ impl HandleAPIHeaderSectionEditHeader {
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::APIHeaderSection_EditHeader {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi_extern_TKDESTEP::HandleAPIHeaderSectionEditHeader_get_mut(
+                crate::ffi_extern_TKDESTEP::Handle_APIHeaderSection_EditHeader_get_mut(
                     self as *mut Self,
                 ),
             )
@@ -498,18 +502,18 @@ impl HandleAPIHeaderSectionEditHeader {
     }
 
     /// Upcast Handle<APIHeaderSection_EditHeader> to Handle<IFSelect_Editor>
-    pub fn to_handle_editor(&self) -> crate::OwnedPtr<crate::ffi_types::HandleIFSelectEditor> {
+    pub fn to_handle_editor(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_IFSelect_Editor> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::HandleAPIHeaderSectionEditHeader_to_HandleIFSelectEditor(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::Handle_APIHeaderSection_EditHeader_to_Handle_IFSelect_Editor(self as *const Self)))
         }
     }
 
     /// Upcast Handle<APIHeaderSection_EditHeader> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::HandleAPIHeaderSectionEditHeader_to_HandleStandardTransient(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::Handle_APIHeaderSection_EditHeader_to_Handle_Standard_Transient(self as *const Self)))
         }
     }
 }
@@ -518,9 +522,9 @@ impl HandleAPIHeaderSectionEditHeader {
 // From APIHeaderSection_MakeHeader.hxx
 // ========================
 
-/// **Source:** `APIHeaderSection_MakeHeader.hxx`:36 - `APIHeaderSection_MakeHeader`
-/// This class allows to consult and prepare/edit  data stored in
-/// a Step Model  Header
+/// **Source:** `APIHeaderSection_MakeHeader.hxx`:38 - `APIHeaderSection_MakeHeader`
+/// This class allows to consult and prepare/edit data stored in
+/// a Step Model Header
 pub use crate::ffi_types::APIHeaderSection_MakeHeader as MakeHeader;
 
 unsafe impl crate::CppDeletable for MakeHeader {
@@ -532,7 +536,7 @@ unsafe impl crate::CppDeletable for MakeHeader {
 }
 
 impl MakeHeader {
-    /// **Source:** `APIHeaderSection_MakeHeader.hxx`:42 - `APIHeaderSection_MakeHeader::APIHeaderSection_MakeHeader()`
+    /// **Source:** `APIHeaderSection_MakeHeader.hxx`:44 - `APIHeaderSection_MakeHeader::APIHeaderSection_MakeHeader()`
     /// Prepares a new MakeHeader from scratch
     pub fn new_int(shapetype: i32) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -542,24 +546,24 @@ impl MakeHeader {
         }
     }
 
-    /// **Source:** `APIHeaderSection_MakeHeader.hxx`:46 - `APIHeaderSection_MakeHeader::APIHeaderSection_MakeHeader()`
+    /// **Source:** `APIHeaderSection_MakeHeader.hxx`:48 - `APIHeaderSection_MakeHeader::APIHeaderSection_MakeHeader()`
     /// Prepares a MakeHeader from the content of a StepModel
     /// See IsDone to know if the Header is well defined
     pub fn new_handlestepdatastepmodel(
-        model: &crate::ffi_types::HandleStepDataStepModel,
+        model: &crate::ffi_types::Handle_StepData_StepModel,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::APIHeaderSection_MakeHeader_ctor_handlestepdatastepmodel(model)))
         }
     }
 
-    /// **Source:** `APIHeaderSection_MakeHeader.hxx`:42 - `APIHeaderSection_MakeHeader::APIHeaderSection_MakeHeader()`
+    /// **Source:** `APIHeaderSection_MakeHeader.hxx`:44 - `APIHeaderSection_MakeHeader::APIHeaderSection_MakeHeader()`
     /// Prepares a new MakeHeader from scratch
     pub fn new() -> crate::OwnedPtr<Self> {
         Self::new_int(0)
     }
 
-    /// **Source:** `APIHeaderSection_MakeHeader.hxx`:50 - `APIHeaderSection_MakeHeader::Init()`
+    /// **Source:** `APIHeaderSection_MakeHeader.hxx`:52 - `APIHeaderSection_MakeHeader::Init()`
     /// Cancels the former definition and gives a FileName
     /// To be used when a Model has no well defined Header
     pub fn init(&mut self, nameval: &str) {
@@ -572,7 +576,7 @@ impl MakeHeader {
         })
     }
 
-    /// **Source:** `APIHeaderSection_MakeHeader.hxx`:54 - `APIHeaderSection_MakeHeader::IsDone()`
+    /// **Source:** `APIHeaderSection_MakeHeader.hxx`:56 - `APIHeaderSection_MakeHeader::IsDone()`
     /// Returns True if all data have been defined (see also
     /// HasFn, HasFs, HasFd)
     pub fn is_done(&self) -> bool {
@@ -581,10 +585,10 @@ impl MakeHeader {
         })
     }
 
-    /// **Source:** `APIHeaderSection_MakeHeader.hxx`:58 - `APIHeaderSection_MakeHeader::Apply()`
+    /// **Source:** `APIHeaderSection_MakeHeader.hxx`:60 - `APIHeaderSection_MakeHeader::Apply()`
     /// Creates an empty header for a new
     /// STEP model and allows the header fields to be completed.
-    pub fn apply(&self, model: &crate::ffi_types::HandleStepDataStepModel) {
+    pub fn apply(&self, model: &crate::ffi_types::Handle_StepData_StepModel) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::APIHeaderSection_MakeHeader_apply(
                 self as *const Self,
@@ -593,15 +597,15 @@ impl MakeHeader {
         })
     }
 
-    /// **Source:** `APIHeaderSection_MakeHeader.hxx`:64 - `APIHeaderSection_MakeHeader::NewModel()`
+    /// **Source:** `APIHeaderSection_MakeHeader.hxx`:66 - `APIHeaderSection_MakeHeader::NewModel()`
     /// Builds a Header, creates a new StepModel, then applies the
     /// Header to the StepModel
     /// The Schema Name is taken from the Protocol (if it inherits
     /// from StepData, else it is left in blanks)
     pub fn new_model(
         &self,
-        protocol: &crate::ffi_types::HandleInterfaceProtocol,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStepDataStepModel> {
+        protocol: &crate::ffi_types::Handle_Interface_Protocol,
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_StepData_StepModel> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDESTEP::APIHeaderSection_MakeHeader_new_model(
@@ -612,7 +616,7 @@ impl MakeHeader {
         }
     }
 
-    /// **Source:** `APIHeaderSection_MakeHeader.hxx`:69 - `APIHeaderSection_MakeHeader::HasFn()`
+    /// **Source:** `APIHeaderSection_MakeHeader.hxx`:71 - `APIHeaderSection_MakeHeader::HasFn()`
     /// Checks whether there is a
     /// file_name entity. Returns True if there is one.
     pub fn has_fn(&self) -> bool {
@@ -621,10 +625,10 @@ impl MakeHeader {
         })
     }
 
-    /// **Source:** `APIHeaderSection_MakeHeader.hxx`:73 - `APIHeaderSection_MakeHeader::FnValue()`
+    /// **Source:** `APIHeaderSection_MakeHeader.hxx`:75 - `APIHeaderSection_MakeHeader::FnValue()`
     /// Returns the file_name entity.
     /// Returns an empty entity if the file_name entity is not initialized.
-    pub fn fn_value(&self) -> crate::OwnedPtr<crate::ffi_types::HandleHeaderSectionFileName> {
+    pub fn fn_value(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_HeaderSection_FileName> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDESTEP::APIHeaderSection_MakeHeader_fn_value(
@@ -634,8 +638,8 @@ impl MakeHeader {
         }
     }
 
-    /// **Source:** `APIHeaderSection_MakeHeader.hxx`:75 - `APIHeaderSection_MakeHeader::SetName()`
-    pub fn set_name(&mut self, aName: &crate::ffi_types::HandleTCollectionHAsciiString) {
+    /// **Source:** `APIHeaderSection_MakeHeader.hxx`:77 - `APIHeaderSection_MakeHeader::SetName()`
+    pub fn set_name(&mut self, aName: &crate::ffi_types::Handle_TCollection_HAsciiString) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::APIHeaderSection_MakeHeader_set_name(
                 self as *mut Self,
@@ -644,9 +648,9 @@ impl MakeHeader {
         })
     }
 
-    /// **Source:** `APIHeaderSection_MakeHeader.hxx`:78 - `APIHeaderSection_MakeHeader::Name()`
+    /// **Source:** `APIHeaderSection_MakeHeader.hxx`:80 - `APIHeaderSection_MakeHeader::Name()`
     /// Returns the name attribute for the file_name entity.
-    pub fn name(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTCollectionHAsciiString> {
+    pub fn name(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_TCollection_HAsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDESTEP::APIHeaderSection_MakeHeader_name(self as *const Self),
@@ -654,8 +658,11 @@ impl MakeHeader {
         }
     }
 
-    /// **Source:** `APIHeaderSection_MakeHeader.hxx`:80 - `APIHeaderSection_MakeHeader::SetTimeStamp()`
-    pub fn set_time_stamp(&mut self, aTimeStamp: &crate::ffi_types::HandleTCollectionHAsciiString) {
+    /// **Source:** `APIHeaderSection_MakeHeader.hxx`:82 - `APIHeaderSection_MakeHeader::SetTimeStamp()`
+    pub fn set_time_stamp(
+        &mut self,
+        aTimeStamp: &crate::ffi_types::Handle_TCollection_HAsciiString,
+    ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::APIHeaderSection_MakeHeader_set_time_stamp(
                 self as *mut Self,
@@ -664,9 +671,9 @@ impl MakeHeader {
         })
     }
 
-    /// **Source:** `APIHeaderSection_MakeHeader.hxx`:83 - `APIHeaderSection_MakeHeader::TimeStamp()`
+    /// **Source:** `APIHeaderSection_MakeHeader.hxx`:85 - `APIHeaderSection_MakeHeader::TimeStamp()`
     /// Returns the value of the time_stamp attribute for the file_name entity.
-    pub fn time_stamp(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTCollectionHAsciiString> {
+    pub fn time_stamp(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_TCollection_HAsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDESTEP::APIHeaderSection_MakeHeader_time_stamp(
@@ -676,8 +683,11 @@ impl MakeHeader {
         }
     }
 
-    /// **Source:** `APIHeaderSection_MakeHeader.hxx`:85 - `APIHeaderSection_MakeHeader::SetAuthor()`
-    pub fn set_author(&mut self, aAuthor: &crate::ffi_types::HandleInterfaceHArray1OfHAsciiString) {
+    /// **Source:** `APIHeaderSection_MakeHeader.hxx`:87 - `APIHeaderSection_MakeHeader::SetAuthor()`
+    pub fn set_author(
+        &mut self,
+        aAuthor: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_TCollection_HAsciiString,
+    ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::APIHeaderSection_MakeHeader_set_author(
                 self as *mut Self,
@@ -686,11 +696,11 @@ impl MakeHeader {
         })
     }
 
-    /// **Source:** `APIHeaderSection_MakeHeader.hxx`:87 - `APIHeaderSection_MakeHeader::SetAuthorValue()`
+    /// **Source:** `APIHeaderSection_MakeHeader.hxx`:90 - `APIHeaderSection_MakeHeader::SetAuthorValue()`
     pub fn set_author_value(
         &mut self,
         num: i32,
-        aAuthor: &crate::ffi_types::HandleTCollectionHAsciiString,
+        aAuthor: &crate::ffi_types::Handle_TCollection_HAsciiString,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::APIHeaderSection_MakeHeader_set_author_value(
@@ -701,10 +711,12 @@ impl MakeHeader {
         })
     }
 
-    /// **Source:** `APIHeaderSection_MakeHeader.hxx`:90 - `APIHeaderSection_MakeHeader::Author()`
+    /// **Source:** `APIHeaderSection_MakeHeader.hxx`:93 - `APIHeaderSection_MakeHeader::Author()`
     pub fn author(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleInterfaceHArray1OfHAsciiString> {
+    ) -> crate::OwnedPtr<
+        crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_TCollection_HAsciiString,
+    > {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDESTEP::APIHeaderSection_MakeHeader_author(self as *const Self),
@@ -712,12 +724,12 @@ impl MakeHeader {
         }
     }
 
-    /// **Source:** `APIHeaderSection_MakeHeader.hxx`:93 - `APIHeaderSection_MakeHeader::AuthorValue()`
+    /// **Source:** `APIHeaderSection_MakeHeader.hxx`:97 - `APIHeaderSection_MakeHeader::AuthorValue()`
     /// Returns the value of the name attribute for the file_name entity.
     pub fn author_value(
         &self,
         num: i32,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleTCollectionHAsciiString> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_TCollection_HAsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDESTEP::APIHeaderSection_MakeHeader_author_value(
@@ -728,7 +740,7 @@ impl MakeHeader {
         }
     }
 
-    /// **Source:** `APIHeaderSection_MakeHeader.hxx`:96 - `APIHeaderSection_MakeHeader::NbAuthor()`
+    /// **Source:** `APIHeaderSection_MakeHeader.hxx`:100 - `APIHeaderSection_MakeHeader::NbAuthor()`
     /// Returns the number of values for the author attribute in the file_name entity.
     pub fn nb_author(&self) -> i32 {
         crate::check_result(unsafe {
@@ -736,10 +748,10 @@ impl MakeHeader {
         })
     }
 
-    /// **Source:** `APIHeaderSection_MakeHeader.hxx`:98 - `APIHeaderSection_MakeHeader::SetOrganization()`
+    /// **Source:** `APIHeaderSection_MakeHeader.hxx`:102 - `APIHeaderSection_MakeHeader::SetOrganization()`
     pub fn set_organization(
         &mut self,
-        aOrganization: &crate::ffi_types::HandleInterfaceHArray1OfHAsciiString,
+        aOrganization: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_TCollection_HAsciiString,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::APIHeaderSection_MakeHeader_set_organization(
@@ -749,11 +761,11 @@ impl MakeHeader {
         })
     }
 
-    /// **Source:** `APIHeaderSection_MakeHeader.hxx`:101 - `APIHeaderSection_MakeHeader::SetOrganizationValue()`
+    /// **Source:** `APIHeaderSection_MakeHeader.hxx`:105 - `APIHeaderSection_MakeHeader::SetOrganizationValue()`
     pub fn set_organization_value(
         &mut self,
         num: i32,
-        aOrganization: &crate::ffi_types::HandleTCollectionHAsciiString,
+        aOrganization: &crate::ffi_types::Handle_TCollection_HAsciiString,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::APIHeaderSection_MakeHeader_set_organization_value(
@@ -764,10 +776,12 @@ impl MakeHeader {
         })
     }
 
-    /// **Source:** `APIHeaderSection_MakeHeader.hxx`:104 - `APIHeaderSection_MakeHeader::Organization()`
+    /// **Source:** `APIHeaderSection_MakeHeader.hxx`:110 - `APIHeaderSection_MakeHeader::Organization()`
     pub fn organization(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleInterfaceHArray1OfHAsciiString> {
+    ) -> crate::OwnedPtr<
+        crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_TCollection_HAsciiString,
+    > {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDESTEP::APIHeaderSection_MakeHeader_organization(
@@ -777,13 +791,13 @@ impl MakeHeader {
         }
     }
 
-    /// **Source:** `APIHeaderSection_MakeHeader.hxx`:108 - `APIHeaderSection_MakeHeader::OrganizationValue()`
+    /// **Source:** `APIHeaderSection_MakeHeader.hxx`:114 - `APIHeaderSection_MakeHeader::OrganizationValue()`
     /// Returns the value of attribute
     /// organization for the file_name entity.
     pub fn organization_value(
         &self,
         num: i32,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleTCollectionHAsciiString> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_TCollection_HAsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDESTEP::APIHeaderSection_MakeHeader_organization_value(
@@ -794,7 +808,7 @@ impl MakeHeader {
         }
     }
 
-    /// **Source:** `APIHeaderSection_MakeHeader.hxx`:113 - `APIHeaderSection_MakeHeader::NbOrganization()`
+    /// **Source:** `APIHeaderSection_MakeHeader.hxx`:118 - `APIHeaderSection_MakeHeader::NbOrganization()`
     /// Returns the number of values for
     /// the organization attribute in the file_name entity.
     pub fn nb_organization(&self) -> i32 {
@@ -805,10 +819,10 @@ impl MakeHeader {
         })
     }
 
-    /// **Source:** `APIHeaderSection_MakeHeader.hxx`:115 - `APIHeaderSection_MakeHeader::SetPreprocessorVersion()`
+    /// **Source:** `APIHeaderSection_MakeHeader.hxx`:120 - `APIHeaderSection_MakeHeader::SetPreprocessorVersion()`
     pub fn set_preprocessor_version(
         &mut self,
-        aPreprocessorVersion: &crate::ffi_types::HandleTCollectionHAsciiString,
+        aPreprocessorVersion: &crate::ffi_types::Handle_TCollection_HAsciiString,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::APIHeaderSection_MakeHeader_set_preprocessor_version(
@@ -818,11 +832,11 @@ impl MakeHeader {
         })
     }
 
-    /// **Source:** `APIHeaderSection_MakeHeader.hxx`:119 - `APIHeaderSection_MakeHeader::PreprocessorVersion()`
+    /// **Source:** `APIHeaderSection_MakeHeader.hxx`:124 - `APIHeaderSection_MakeHeader::PreprocessorVersion()`
     /// Returns the name of the preprocessor_version for the file_name entity.
     pub fn preprocessor_version(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleTCollectionHAsciiString> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_TCollection_HAsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDESTEP::APIHeaderSection_MakeHeader_preprocessor_version(
@@ -832,10 +846,10 @@ impl MakeHeader {
         }
     }
 
-    /// **Source:** `APIHeaderSection_MakeHeader.hxx`:121 - `APIHeaderSection_MakeHeader::SetOriginatingSystem()`
+    /// **Source:** `APIHeaderSection_MakeHeader.hxx`:126 - `APIHeaderSection_MakeHeader::SetOriginatingSystem()`
     pub fn set_originating_system(
         &mut self,
-        aOriginatingSystem: &crate::ffi_types::HandleTCollectionHAsciiString,
+        aOriginatingSystem: &crate::ffi_types::Handle_TCollection_HAsciiString,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::APIHeaderSection_MakeHeader_set_originating_system(
@@ -845,10 +859,10 @@ impl MakeHeader {
         })
     }
 
-    /// **Source:** `APIHeaderSection_MakeHeader.hxx`:124 - `APIHeaderSection_MakeHeader::OriginatingSystem()`
+    /// **Source:** `APIHeaderSection_MakeHeader.hxx`:129 - `APIHeaderSection_MakeHeader::OriginatingSystem()`
     pub fn originating_system(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleTCollectionHAsciiString> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_TCollection_HAsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDESTEP::APIHeaderSection_MakeHeader_originating_system(
@@ -858,10 +872,10 @@ impl MakeHeader {
         }
     }
 
-    /// **Source:** `APIHeaderSection_MakeHeader.hxx`:126 - `APIHeaderSection_MakeHeader::SetAuthorisation()`
+    /// **Source:** `APIHeaderSection_MakeHeader.hxx`:131 - `APIHeaderSection_MakeHeader::SetAuthorisation()`
     pub fn set_authorisation(
         &mut self,
-        aAuthorisation: &crate::ffi_types::HandleTCollectionHAsciiString,
+        aAuthorisation: &crate::ffi_types::Handle_TCollection_HAsciiString,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::APIHeaderSection_MakeHeader_set_authorisation(
@@ -871,11 +885,11 @@ impl MakeHeader {
         })
     }
 
-    /// **Source:** `APIHeaderSection_MakeHeader.hxx`:129 - `APIHeaderSection_MakeHeader::Authorisation()`
+    /// **Source:** `APIHeaderSection_MakeHeader.hxx`:135 - `APIHeaderSection_MakeHeader::Authorisation()`
     /// Returns the value of the authorization attribute for the file_name entity.
     pub fn authorisation(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleTCollectionHAsciiString> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_TCollection_HAsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDESTEP::APIHeaderSection_MakeHeader_authorisation(
@@ -885,7 +899,7 @@ impl MakeHeader {
         }
     }
 
-    /// **Source:** `APIHeaderSection_MakeHeader.hxx`:132 - `APIHeaderSection_MakeHeader::HasFs()`
+    /// **Source:** `APIHeaderSection_MakeHeader.hxx`:138 - `APIHeaderSection_MakeHeader::HasFs()`
     /// Checks whether there is a file_schema entity. Returns True if there is one.
     pub fn has_fs(&self) -> bool {
         crate::check_result(unsafe {
@@ -893,10 +907,10 @@ impl MakeHeader {
         })
     }
 
-    /// **Source:** `APIHeaderSection_MakeHeader.hxx`:136 - `APIHeaderSection_MakeHeader::FsValue()`
+    /// **Source:** `APIHeaderSection_MakeHeader.hxx`:142 - `APIHeaderSection_MakeHeader::FsValue()`
     /// Returns the file_schema entity. Returns an empty entity if the file_schema entity is not
     /// initialized.
-    pub fn fs_value(&self) -> crate::OwnedPtr<crate::ffi_types::HandleHeaderSectionFileSchema> {
+    pub fn fs_value(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_HeaderSection_FileSchema> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDESTEP::APIHeaderSection_MakeHeader_fs_value(
@@ -906,10 +920,10 @@ impl MakeHeader {
         }
     }
 
-    /// **Source:** `APIHeaderSection_MakeHeader.hxx`:138 - `APIHeaderSection_MakeHeader::SetSchemaIdentifiers()`
+    /// **Source:** `APIHeaderSection_MakeHeader.hxx`:144 - `APIHeaderSection_MakeHeader::SetSchemaIdentifiers()`
     pub fn set_schema_identifiers(
         &mut self,
-        aSchemaIdentifiers: &crate::ffi_types::HandleInterfaceHArray1OfHAsciiString,
+        aSchemaIdentifiers: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_TCollection_HAsciiString,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::APIHeaderSection_MakeHeader_set_schema_identifiers(
@@ -919,11 +933,11 @@ impl MakeHeader {
         })
     }
 
-    /// **Source:** `APIHeaderSection_MakeHeader.hxx`:141 - `APIHeaderSection_MakeHeader::SetSchemaIdentifiersValue()`
+    /// **Source:** `APIHeaderSection_MakeHeader.hxx`:148 - `APIHeaderSection_MakeHeader::SetSchemaIdentifiersValue()`
     pub fn set_schema_identifiers_value(
         &mut self,
         num: i32,
-        aSchemaIdentifier: &crate::ffi_types::HandleTCollectionHAsciiString,
+        aSchemaIdentifier: &crate::ffi_types::Handle_TCollection_HAsciiString,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::APIHeaderSection_MakeHeader_set_schema_identifiers_value(
@@ -934,10 +948,12 @@ impl MakeHeader {
         })
     }
 
-    /// **Source:** `APIHeaderSection_MakeHeader.hxx`:145 - `APIHeaderSection_MakeHeader::SchemaIdentifiers()`
+    /// **Source:** `APIHeaderSection_MakeHeader.hxx`:153 - `APIHeaderSection_MakeHeader::SchemaIdentifiers()`
     pub fn schema_identifiers(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleInterfaceHArray1OfHAsciiString> {
+    ) -> crate::OwnedPtr<
+        crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_TCollection_HAsciiString,
+    > {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDESTEP::APIHeaderSection_MakeHeader_schema_identifiers(
@@ -947,12 +963,12 @@ impl MakeHeader {
         }
     }
 
-    /// **Source:** `APIHeaderSection_MakeHeader.hxx`:148 - `APIHeaderSection_MakeHeader::SchemaIdentifiersValue()`
+    /// **Source:** `APIHeaderSection_MakeHeader.hxx`:156 - `APIHeaderSection_MakeHeader::SchemaIdentifiersValue()`
     /// Returns the value of the schema_identifier attribute for the file_schema entity.
     pub fn schema_identifiers_value(
         &self,
         num: i32,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleTCollectionHAsciiString> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_TCollection_HAsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDESTEP::APIHeaderSection_MakeHeader_schema_identifiers_value(
@@ -963,7 +979,7 @@ impl MakeHeader {
         }
     }
 
-    /// **Source:** `APIHeaderSection_MakeHeader.hxx`:152 - `APIHeaderSection_MakeHeader::NbSchemaIdentifiers()`
+    /// **Source:** `APIHeaderSection_MakeHeader.hxx`:159 - `APIHeaderSection_MakeHeader::NbSchemaIdentifiers()`
     /// Returns the number of values for the schema_identifier attribute in the file_schema entity.
     pub fn nb_schema_identifiers(&self) -> i32 {
         crate::check_result(unsafe {
@@ -973,11 +989,11 @@ impl MakeHeader {
         })
     }
 
-    /// **Source:** `APIHeaderSection_MakeHeader.hxx`:155 - `APIHeaderSection_MakeHeader::AddSchemaIdentifier()`
+    /// **Source:** `APIHeaderSection_MakeHeader.hxx`:162 - `APIHeaderSection_MakeHeader::AddSchemaIdentifier()`
     /// Add a subname of schema (if not yet in the list)
     pub fn add_schema_identifier(
         &mut self,
-        aSchemaIdentifier: &crate::ffi_types::HandleTCollectionHAsciiString,
+        aSchemaIdentifier: &crate::ffi_types::Handle_TCollection_HAsciiString,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::APIHeaderSection_MakeHeader_add_schema_identifier(
@@ -987,7 +1003,7 @@ impl MakeHeader {
         })
     }
 
-    /// **Source:** `APIHeaderSection_MakeHeader.hxx`:159 - `APIHeaderSection_MakeHeader::HasFd()`
+    /// **Source:** `APIHeaderSection_MakeHeader.hxx`:166 - `APIHeaderSection_MakeHeader::HasFd()`
     /// Checks whether there is a file_description entity. Returns True if there is one.
     pub fn has_fd(&self) -> bool {
         crate::check_result(unsafe {
@@ -995,12 +1011,12 @@ impl MakeHeader {
         })
     }
 
-    /// **Source:** `APIHeaderSection_MakeHeader.hxx`:163 - `APIHeaderSection_MakeHeader::FdValue()`
+    /// **Source:** `APIHeaderSection_MakeHeader.hxx`:170 - `APIHeaderSection_MakeHeader::FdValue()`
     /// Returns the file_description
     /// entity. Returns an empty entity if the file_description entity is not initialized.
     pub fn fd_value(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleHeaderSectionFileDescription> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_HeaderSection_FileDescription> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDESTEP::APIHeaderSection_MakeHeader_fd_value(
@@ -1010,10 +1026,10 @@ impl MakeHeader {
         }
     }
 
-    /// **Source:** `APIHeaderSection_MakeHeader.hxx`:165 - `APIHeaderSection_MakeHeader::SetDescription()`
+    /// **Source:** `APIHeaderSection_MakeHeader.hxx`:172 - `APIHeaderSection_MakeHeader::SetDescription()`
     pub fn set_description(
         &mut self,
-        aDescription: &crate::ffi_types::HandleInterfaceHArray1OfHAsciiString,
+        aDescription: &crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_TCollection_HAsciiString,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::APIHeaderSection_MakeHeader_set_description(
@@ -1023,11 +1039,11 @@ impl MakeHeader {
         })
     }
 
-    /// **Source:** `APIHeaderSection_MakeHeader.hxx`:167 - `APIHeaderSection_MakeHeader::SetDescriptionValue()`
+    /// **Source:** `APIHeaderSection_MakeHeader.hxx`:175 - `APIHeaderSection_MakeHeader::SetDescriptionValue()`
     pub fn set_description_value(
         &mut self,
         num: i32,
-        aDescription: &crate::ffi_types::HandleTCollectionHAsciiString,
+        aDescription: &crate::ffi_types::Handle_TCollection_HAsciiString,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::APIHeaderSection_MakeHeader_set_description_value(
@@ -1038,10 +1054,12 @@ impl MakeHeader {
         })
     }
 
-    /// **Source:** `APIHeaderSection_MakeHeader.hxx`:170 - `APIHeaderSection_MakeHeader::Description()`
+    /// **Source:** `APIHeaderSection_MakeHeader.hxx`:180 - `APIHeaderSection_MakeHeader::Description()`
     pub fn description(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleInterfaceHArray1OfHAsciiString> {
+    ) -> crate::OwnedPtr<
+        crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_TCollection_HAsciiString,
+    > {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDESTEP::APIHeaderSection_MakeHeader_description(
@@ -1051,13 +1069,13 @@ impl MakeHeader {
         }
     }
 
-    /// **Source:** `APIHeaderSection_MakeHeader.hxx`:174 - `APIHeaderSection_MakeHeader::DescriptionValue()`
+    /// **Source:** `APIHeaderSection_MakeHeader.hxx`:184 - `APIHeaderSection_MakeHeader::DescriptionValue()`
     /// Returns the value of the
     /// description attribute for the file_description entity.
     pub fn description_value(
         &self,
         num: i32,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleTCollectionHAsciiString> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_TCollection_HAsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDESTEP::APIHeaderSection_MakeHeader_description_value(
@@ -1068,7 +1086,7 @@ impl MakeHeader {
         }
     }
 
-    /// **Source:** `APIHeaderSection_MakeHeader.hxx`:179 - `APIHeaderSection_MakeHeader::NbDescription()`
+    /// **Source:** `APIHeaderSection_MakeHeader.hxx`:188 - `APIHeaderSection_MakeHeader::NbDescription()`
     /// Returns the number of values for
     /// the file_description entity in the STEP file header.
     pub fn nb_description(&self) -> i32 {
@@ -1079,10 +1097,10 @@ impl MakeHeader {
         })
     }
 
-    /// **Source:** `APIHeaderSection_MakeHeader.hxx`:181 - `APIHeaderSection_MakeHeader::SetImplementationLevel()`
+    /// **Source:** `APIHeaderSection_MakeHeader.hxx`:190 - `APIHeaderSection_MakeHeader::SetImplementationLevel()`
     pub fn set_implementation_level(
         &mut self,
-        aImplementationLevel: &crate::ffi_types::HandleTCollectionHAsciiString,
+        aImplementationLevel: &crate::ffi_types::Handle_TCollection_HAsciiString,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::APIHeaderSection_MakeHeader_set_implementation_level(
@@ -1092,12 +1110,12 @@ impl MakeHeader {
         })
     }
 
-    /// **Source:** `APIHeaderSection_MakeHeader.hxx`:186 - `APIHeaderSection_MakeHeader::ImplementationLevel()`
+    /// **Source:** `APIHeaderSection_MakeHeader.hxx`:195 - `APIHeaderSection_MakeHeader::ImplementationLevel()`
     /// Returns the value of the
     /// implementation_level attribute for the file_description entity.
     pub fn implementation_level(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleTCollectionHAsciiString> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_TCollection_HAsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDESTEP::APIHeaderSection_MakeHeader_implementation_level(

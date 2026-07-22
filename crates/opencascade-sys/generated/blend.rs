@@ -158,7 +158,7 @@ impl AppFunction {
         })
     }
 
-    /// **Source:** `Blend_AppFunction.hxx`:78 - `Blend_AppFunction::Set()`
+    /// **Source:** `Blend_AppFunction.hxx`:76 - `Blend_AppFunction::Set()`
     /// Sets the value of the parameter along the guide line.
     /// This determines the plane in which the solution has
     /// to be found.
@@ -168,7 +168,7 @@ impl AppFunction {
         })
     }
 
-    /// **Source:** `Blend_AppFunction.hxx`:84 - `Blend_AppFunction::Set()`
+    /// **Source:** `Blend_AppFunction.hxx`:82 - `Blend_AppFunction::Set()`
     /// Sets the bounds of the parametric interval on
     /// the guide line.
     /// This determines the derivatives in these values if the
@@ -179,7 +179,7 @@ impl AppFunction {
         })
     }
 
-    /// **Source:** `Blend_AppFunction.hxx`:89 - `Blend_AppFunction::GetTolerance()`
+    /// **Source:** `Blend_AppFunction.hxx`:87 - `Blend_AppFunction::GetTolerance()`
     /// Returns in the vector Tolerance the parametric tolerance
     /// for each of the 4 variables;
     /// Tol is the tolerance used in 3d space.
@@ -197,7 +197,7 @@ impl AppFunction {
         })
     }
 
-    /// **Source:** `Blend_AppFunction.hxx`:96 - `Blend_AppFunction::GetBounds()`
+    /// **Source:** `Blend_AppFunction.hxx`:93 - `Blend_AppFunction::GetBounds()`
     /// Returns in the vector InfBound the lowest values allowed
     /// for each of the 4 variables.
     /// Returns in the vector SupBound the greatest values allowed
@@ -216,8 +216,8 @@ impl AppFunction {
         })
     }
 
-    /// **Source:** `Blend_AppFunction.hxx`:102 - `Blend_AppFunction::IsSolution()`
-    /// Returns Standard_True if Sol is a zero of the function.
+    /// **Source:** `Blend_AppFunction.hxx`:99 - `Blend_AppFunction::IsSolution()`
+    /// Returns true if Sol is a zero of the function.
     /// Tol is the tolerance used in 3d space.
     /// The computation is made at the current value of
     /// the parameter on the guide line.
@@ -227,8 +227,8 @@ impl AppFunction {
         })
     }
 
-    /// **Source:** `Blend_AppFunction.hxx`:107 - `Blend_AppFunction::GetMinimalDistance()`
-    /// Returns   the    minimal  Distance  between   two
+    /// **Source:** `Blend_AppFunction.hxx`:103 - `Blend_AppFunction::GetMinimalDistance()`
+    /// Returns the minimal Distance between two
     /// extremities of calculated sections.
     pub fn get_minimal_distance(&self) -> f64 {
         crate::check_result(unsafe {
@@ -236,7 +236,7 @@ impl AppFunction {
         })
     }
 
-    /// **Source:** `Blend_AppFunction.hxx`:110 - `Blend_AppFunction::Pnt1()`
+    /// **Source:** `Blend_AppFunction.hxx`:106 - `Blend_AppFunction::Pnt1()`
     /// Returns the point on the first support.
     pub fn pnt1(&self) -> &crate::gp::Pnt {
         unsafe {
@@ -246,7 +246,7 @@ impl AppFunction {
         }
     }
 
-    /// **Source:** `Blend_AppFunction.hxx`:113 - `Blend_AppFunction::Pnt2()`
+    /// **Source:** `Blend_AppFunction.hxx`:109 - `Blend_AppFunction::Pnt2()`
     /// Returns the point on the first support.
     pub fn pnt2(&self) -> &crate::gp::Pnt {
         unsafe {
@@ -256,15 +256,15 @@ impl AppFunction {
         }
     }
 
-    /// **Source:** `Blend_AppFunction.hxx`:116 - `Blend_AppFunction::IsRational()`
-    /// Returns  if the section is rational
+    /// **Source:** `Blend_AppFunction.hxx`:112 - `Blend_AppFunction::IsRational()`
+    /// Returns if the section is rational
     pub fn is_rational(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKFillet::Blend_AppFunction_is_rational(self as *const Self)
         })
     }
 
-    /// **Source:** `Blend_AppFunction.hxx`:119 - `Blend_AppFunction::GetSectionSize()`
+    /// **Source:** `Blend_AppFunction.hxx`:115 - `Blend_AppFunction::GetSectionSize()`
     /// Returns the length of the maximum section
     pub fn get_section_size(&self) -> f64 {
         crate::check_result(unsafe {
@@ -272,10 +272,10 @@ impl AppFunction {
         })
     }
 
-    /// **Source:** `Blend_AppFunction.hxx`:123 - `Blend_AppFunction::GetMinimalWeight()`
+    /// **Source:** `Blend_AppFunction.hxx`:119 - `Blend_AppFunction::GetMinimalWeight()`
     /// Compute the minimal value of weight for each poles
     /// of all sections.
-    pub fn get_minimal_weight(&self, Weigths: &mut crate::ffi_types::TColStd_Array1OfReal) {
+    pub fn get_minimal_weight(&self, Weigths: &mut crate::ffi_types::NCollection_Array1_double) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKFillet::Blend_AppFunction_get_minimal_weight(
                 self as *const Self,
@@ -284,8 +284,8 @@ impl AppFunction {
         })
     }
 
-    /// **Source:** `Blend_AppFunction.hxx`:127 - `Blend_AppFunction::NbIntervals()`
-    /// Returns  the number  of  intervals for  continuity
+    /// **Source:** `Blend_AppFunction.hxx`:123 - `Blend_AppFunction::NbIntervals()`
+    /// Returns the number of intervals for continuity
     /// <S>. May be one if Continuity(me) >= <S>
     pub fn nb_intervals(&self, S: crate::geom_abs::Shape) -> i32 {
         crate::check_result(unsafe {
@@ -296,17 +296,17 @@ impl AppFunction {
         })
     }
 
-    /// **Source:** `Blend_AppFunction.hxx`:136 - `Blend_AppFunction::Intervals()`
-    /// Stores in <T> the  parameters bounding the intervals
+    /// **Source:** `Blend_AppFunction.hxx`:132 - `Blend_AppFunction::Intervals()`
+    /// Stores in <T> the parameters bounding the intervals
     /// of continuity <S>.
     ///
-    /// The array must provide  enough room to  accommodate
+    /// The array must provide enough room to accommodate
     /// for the parameters. i.e. T.Length() > NbIntervals()
     /// raises
     /// OutOfRange from Standard
     pub fn intervals(
         &self,
-        T: &mut crate::ffi_types::TColStd_Array1OfReal,
+        T: &mut crate::ffi_types::NCollection_Array1_double,
         S: crate::geom_abs::Shape,
     ) {
         crate::check_void_result(unsafe {
@@ -318,7 +318,7 @@ impl AppFunction {
         })
     }
 
-    /// **Source:** `Blend_AppFunction.hxx`:138 - `Blend_AppFunction::GetShape()`
+    /// **Source:** `Blend_AppFunction.hxx`:135 - `Blend_AppFunction::GetShape()`
     pub fn get_shape(
         &mut self,
         NbPoles: &mut i32,
@@ -337,7 +337,7 @@ impl AppFunction {
         })
     }
 
-    /// **Source:** `Blend_AppFunction.hxx`:148 - `Blend_AppFunction::GetTolerance()`
+    /// **Source:** `Blend_AppFunction.hxx`:145 - `Blend_AppFunction::GetTolerance()`
     /// Returns the tolerance to reach in approximation
     /// to respect
     /// BoundTol error at the Boundary
@@ -363,75 +363,75 @@ impl AppFunction {
         })
     }
 
-    /// **Source:** `Blend_AppFunction.hxx`:154 - `Blend_AppFunction::Knots()`
-    pub fn knots(&mut self, TKnots: &mut crate::ffi_types::TColStd_Array1OfReal) {
+    /// **Source:** `Blend_AppFunction.hxx`:151 - `Blend_AppFunction::Knots()`
+    pub fn knots(&mut self, TKnots: &mut crate::ffi_types::NCollection_Array1_double) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKFillet::Blend_AppFunction_knots(self as *mut Self, TKnots)
         })
     }
 
-    /// **Source:** `Blend_AppFunction.hxx`:156 - `Blend_AppFunction::Mults()`
-    pub fn mults(&mut self, TMults: &mut crate::ffi_types::TColStd_Array1OfInteger) {
+    /// **Source:** `Blend_AppFunction.hxx`:153 - `Blend_AppFunction::Mults()`
+    pub fn mults(&mut self, TMults: &mut crate::ffi_types::NCollection_Array1_int) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKFillet::Blend_AppFunction_mults(self as *mut Self, TMults)
         })
     }
 
-    /// **Source:** `Blend_AppFunction.hxx`:161 - `Blend_AppFunction::Section()`
+    /// **Source:** `Blend_AppFunction.hxx`:158 - `Blend_AppFunction::Section()`
     /// Used for the first and last section
-    /// The method returns Standard_True if the derivatives
-    /// are computed, otherwise it returns Standard_False.
-    pub fn section_point_array1ofpnt_array1ofvec_array1ofpnt2d_array1ofvec2d_array1ofreal2(
+    /// The method returns true if the derivatives
+    /// are computed, otherwise it returns false.
+    pub fn section_point_arr1_pnt_arr1_vec_arr1_pnt2d_arr1_vec2d_arr1_double2(
         &mut self,
         P: &Point,
-        Poles: &mut crate::ffi_types::TColgp_Array1OfPnt,
-        DPoles: &mut crate::ffi_types::TColgp_Array1OfVec,
-        Poles2d: &mut crate::ffi_types::TColgp_Array1OfPnt2d,
-        DPoles2d: &mut crate::ffi_types::TColgp_Array1OfVec2d,
-        Weigths: &mut crate::ffi_types::TColStd_Array1OfReal,
-        DWeigths: &mut crate::ffi_types::TColStd_Array1OfReal,
+        Poles: &mut crate::ffi_types::NCollection_Array1_gp_Pnt,
+        DPoles: &mut crate::ffi_types::NCollection_Array1_gp_Vec,
+        Poles2d: &mut crate::ffi_types::NCollection_Array1_gp_Pnt2d,
+        DPoles2d: &mut crate::ffi_types::NCollection_Array1_gp_Vec2d,
+        Weigths: &mut crate::ffi_types::NCollection_Array1_double,
+        DWeigths: &mut crate::ffi_types::NCollection_Array1_double,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi_extern_TKFillet::Blend_AppFunction_section_point_array1ofpnt_array1ofvec_array1ofpnt2d_array1ofvec2d_array1ofreal2(self as *mut Self, P, Poles, DPoles, Poles2d, DPoles2d, Weigths, DWeigths)
+            crate::ffi_extern_TKFillet::Blend_AppFunction_section_point_arr1_pnt_arr1_vec_arr1_pnt2d_arr1_vec2d_arr1_double2(self as *mut Self, P, Poles, DPoles, Poles2d, DPoles2d, Weigths, DWeigths)
         })
     }
 
-    /// **Source:** `Blend_AppFunction.hxx`:169 - `Blend_AppFunction::Section()`
-    pub fn section_point_array1ofpnt_array1ofpnt2d_array1ofreal(
+    /// **Source:** `Blend_AppFunction.hxx`:166 - `Blend_AppFunction::Section()`
+    pub fn section_point_arr1_pnt_arr1_pnt2d_arr1_double(
         &mut self,
         P: &Point,
-        Poles: &mut crate::ffi_types::TColgp_Array1OfPnt,
-        Poles2d: &mut crate::ffi_types::TColgp_Array1OfPnt2d,
-        Weigths: &mut crate::ffi_types::TColStd_Array1OfReal,
+        Poles: &mut crate::ffi_types::NCollection_Array1_gp_Pnt,
+        Poles2d: &mut crate::ffi_types::NCollection_Array1_gp_Pnt2d,
+        Weigths: &mut crate::ffi_types::NCollection_Array1_double,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi_extern_TKFillet::Blend_AppFunction_section_point_array1ofpnt_array1ofpnt2d_array1ofreal(self as *mut Self, P, Poles, Poles2d, Weigths)
+            crate::ffi_extern_TKFillet::Blend_AppFunction_section_point_arr1_pnt_arr1_pnt2d_arr1_double(self as *mut Self, P, Poles, Poles2d, Weigths)
         })
     }
 
-    /// **Source:** `Blend_AppFunction.hxx`:177 - `Blend_AppFunction::Section()`
+    /// **Source:** `Blend_AppFunction.hxx`:174 - `Blend_AppFunction::Section()`
     /// Used for the first and last section
-    /// The method returns Standard_True if the derivatives
-    /// are computed, otherwise it returns Standard_False.
-    pub fn section_point_array1ofpnt_array1ofvec2_array1ofpnt2d_array1ofvec2d2_array1ofreal3(
+    /// The method returns true if the derivatives
+    /// are computed, otherwise it returns false.
+    pub fn section_point_arr1_pnt_arr1_vec2_arr1_pnt2d_arr1_vec2d2_arr1_double3(
         &mut self,
         P: &Point,
-        Poles: &mut crate::ffi_types::TColgp_Array1OfPnt,
-        DPoles: &mut crate::ffi_types::TColgp_Array1OfVec,
-        D2Poles: &mut crate::ffi_types::TColgp_Array1OfVec,
-        Poles2d: &mut crate::ffi_types::TColgp_Array1OfPnt2d,
-        DPoles2d: &mut crate::ffi_types::TColgp_Array1OfVec2d,
-        D2Poles2d: &mut crate::ffi_types::TColgp_Array1OfVec2d,
-        Weigths: &mut crate::ffi_types::TColStd_Array1OfReal,
-        DWeigths: &mut crate::ffi_types::TColStd_Array1OfReal,
-        D2Weigths: &mut crate::ffi_types::TColStd_Array1OfReal,
+        Poles: &mut crate::ffi_types::NCollection_Array1_gp_Pnt,
+        DPoles: &mut crate::ffi_types::NCollection_Array1_gp_Vec,
+        D2Poles: &mut crate::ffi_types::NCollection_Array1_gp_Vec,
+        Poles2d: &mut crate::ffi_types::NCollection_Array1_gp_Pnt2d,
+        DPoles2d: &mut crate::ffi_types::NCollection_Array1_gp_Vec2d,
+        D2Poles2d: &mut crate::ffi_types::NCollection_Array1_gp_Vec2d,
+        Weigths: &mut crate::ffi_types::NCollection_Array1_double,
+        DWeigths: &mut crate::ffi_types::NCollection_Array1_double,
+        D2Weigths: &mut crate::ffi_types::NCollection_Array1_double,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi_extern_TKFillet::Blend_AppFunction_section_point_array1ofpnt_array1ofvec2_array1ofpnt2d_array1ofvec2d2_array1ofreal3(self as *mut Self, P, Poles, DPoles, D2Poles, Poles2d, DPoles2d, D2Poles2d, Weigths, DWeigths, D2Weigths)
+            crate::ffi_extern_TKFillet::Blend_AppFunction_section_point_arr1_pnt_arr1_vec2_arr1_pnt2d_arr1_vec2d2_arr1_double3(self as *mut Self, P, Poles, DPoles, D2Poles, Poles2d, DPoles2d, D2Poles2d, Weigths, DWeigths, D2Weigths)
         })
     }
 
-    /// **Source:** `Blend_AppFunction.hxx`:188 - `Blend_AppFunction::Resolution()`
+    /// **Source:** `Blend_AppFunction.hxx`:185 - `Blend_AppFunction::Resolution()`
     pub fn resolution(&self, IC2d: i32, Tol: f64, TolU: &mut f64, TolV: &mut f64) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKFillet::Blend_AppFunction_resolution(
@@ -444,8 +444,8 @@ impl AppFunction {
         })
     }
 
-    /// **Source:** `Blend_AppFunction.hxx`:195 - `Blend_AppFunction::Parameter()`
-    /// Returns  the parameter  of  the point  P. Used  to
+    /// **Source:** `Blend_AppFunction.hxx`:192 - `Blend_AppFunction::Parameter()`
+    /// Returns the parameter of the point P. Used to
     /// impose the parameters in the approximation.
     pub fn parameter(&self, P: &Point) -> f64 {
         crate::check_result(unsafe {
@@ -516,7 +516,7 @@ impl AppFunction {
 /// surface between a surface and a curve, using a guide line.
 /// The vector <X> used in Value, Values and Derivatives methods
 /// may be the vector of the parametric coordinates U,V,
-/// W of the extremities of a section on the surface  and
+/// W of the extremities of a section on the surface and
 /// the curve.
 pub use crate::ffi_types::Blend_CSFunction as CSFunction;
 
@@ -560,7 +560,7 @@ impl CSFunction {
         })
     }
 
-    /// **Source:** `Blend_CSFunction.hxx`:68 - `Blend_CSFunction::Derivatives()`
+    /// **Source:** `Blend_CSFunction.hxx`:67 - `Blend_CSFunction::Derivatives()`
     /// returns the values <D> of the derivatives for the
     /// variable <X>.
     /// Returns True if the computation was done successfully,
@@ -575,7 +575,7 @@ impl CSFunction {
         })
     }
 
-    /// **Source:** `Blend_CSFunction.hxx`:75 - `Blend_CSFunction::Values()`
+    /// **Source:** `Blend_CSFunction.hxx`:73 - `Blend_CSFunction::Values()`
     /// returns the values <F> of the functions and the derivatives
     /// <D> for the variable <X>.
     /// Returns True if the computation was done successfully,
@@ -591,7 +591,7 @@ impl CSFunction {
         })
     }
 
-    /// **Source:** `Blend_CSFunction.hxx`:82 - `Blend_CSFunction::Set()`
+    /// **Source:** `Blend_CSFunction.hxx`:78 - `Blend_CSFunction::Set()`
     /// Sets the value of the parameter along the guide line.
     /// This determines the plane in which the solution has
     /// to be found.
@@ -601,7 +601,7 @@ impl CSFunction {
         })
     }
 
-    /// **Source:** `Blend_CSFunction.hxx`:88 - `Blend_CSFunction::Set()`
+    /// **Source:** `Blend_CSFunction.hxx`:84 - `Blend_CSFunction::Set()`
     /// Sets the bounds of the parametric interval on
     /// the guide line.
     /// This determines the derivatives in these values if the
@@ -612,7 +612,7 @@ impl CSFunction {
         })
     }
 
-    /// **Source:** `Blend_CSFunction.hxx`:94 - `Blend_CSFunction::GetTolerance()`
+    /// **Source:** `Blend_CSFunction.hxx`:89 - `Blend_CSFunction::GetTolerance()`
     /// Returns in the vector Tolerance the parametric tolerance
     /// for each of the 3 variables;
     /// Tol is the tolerance used in 3d space.
@@ -630,7 +630,7 @@ impl CSFunction {
         })
     }
 
-    /// **Source:** `Blend_CSFunction.hxx`:101 - `Blend_CSFunction::GetBounds()`
+    /// **Source:** `Blend_CSFunction.hxx`:95 - `Blend_CSFunction::GetBounds()`
     /// Returns in the vector InfBound the lowest values allowed
     /// for each of the 3 variables.
     /// Returns in the vector SupBound the greatest values allowed
@@ -649,8 +649,8 @@ impl CSFunction {
         })
     }
 
-    /// **Source:** `Blend_CSFunction.hxx`:108 - `Blend_CSFunction::IsSolution()`
-    /// Returns Standard_True if Sol is a zero of the function.
+    /// **Source:** `Blend_CSFunction.hxx`:101 - `Blend_CSFunction::IsSolution()`
+    /// Returns true if Sol is a zero of the function.
     /// Tol is the tolerance used in 3d space.
     /// The computation is made at the current value of
     /// the parameter on the guide line.
@@ -660,8 +660,8 @@ impl CSFunction {
         })
     }
 
-    /// **Source:** `Blend_CSFunction.hxx`:114 - `Blend_CSFunction::GetMinimalDistance()`
-    /// Returns   the    minimal  Distance  between   two
+    /// **Source:** `Blend_CSFunction.hxx`:105 - `Blend_CSFunction::GetMinimalDistance()`
+    /// Returns the minimal Distance between two
     /// extremities of calculated sections.
     pub fn get_minimal_distance(&self) -> f64 {
         crate::check_result(unsafe {
@@ -669,7 +669,7 @@ impl CSFunction {
         })
     }
 
-    /// **Source:** `Blend_CSFunction.hxx`:117 - `Blend_CSFunction::Pnt1()`
+    /// **Source:** `Blend_CSFunction.hxx`:108 - `Blend_CSFunction::Pnt1()`
     /// Returns the point on the first support.
     pub fn pnt1(&self) -> &crate::gp::Pnt {
         unsafe {
@@ -679,8 +679,8 @@ impl CSFunction {
         }
     }
 
-    /// **Source:** `Blend_CSFunction.hxx`:120 - `Blend_CSFunction::Pnt2()`
-    /// Returns the point on the seconde support.
+    /// **Source:** `Blend_CSFunction.hxx`:111 - `Blend_CSFunction::Pnt2()`
+    /// Returns the point on the second support.
     pub fn pnt2(&self) -> &crate::gp::Pnt {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKFillet::Blend_CSFunction_pnt2(
@@ -689,7 +689,7 @@ impl CSFunction {
         }
     }
 
-    /// **Source:** `Blend_CSFunction.hxx`:123 - `Blend_CSFunction::PointOnS()`
+    /// **Source:** `Blend_CSFunction.hxx`:114 - `Blend_CSFunction::PointOnS()`
     /// Returns the point on the surface.
     pub fn point_on_s(&self) -> &crate::gp::Pnt {
         unsafe {
@@ -699,7 +699,7 @@ impl CSFunction {
         }
     }
 
-    /// **Source:** `Blend_CSFunction.hxx`:126 - `Blend_CSFunction::PointOnC()`
+    /// **Source:** `Blend_CSFunction.hxx`:117 - `Blend_CSFunction::PointOnC()`
     /// Returns the point on the curve.
     pub fn point_on_c(&self) -> &crate::gp::Pnt {
         unsafe {
@@ -709,7 +709,7 @@ impl CSFunction {
         }
     }
 
-    /// **Source:** `Blend_CSFunction.hxx`:129 - `Blend_CSFunction::Pnt2d()`
+    /// **Source:** `Blend_CSFunction.hxx`:120 - `Blend_CSFunction::Pnt2d()`
     /// Returns U,V coordinates of the point on the surface.
     pub fn pnt2d(&self) -> &crate::gp::Pnt2d {
         unsafe {
@@ -719,7 +719,7 @@ impl CSFunction {
         }
     }
 
-    /// **Source:** `Blend_CSFunction.hxx`:132 - `Blend_CSFunction::ParameterOnC()`
+    /// **Source:** `Blend_CSFunction.hxx`:123 - `Blend_CSFunction::ParameterOnC()`
     /// Returns parameter of the point on the curve.
     pub fn parameter_on_c(&self) -> f64 {
         crate::check_result(unsafe {
@@ -727,7 +727,7 @@ impl CSFunction {
         })
     }
 
-    /// **Source:** `Blend_CSFunction.hxx`:136 - `Blend_CSFunction::IsTangencyPoint()`
+    /// **Source:** `Blend_CSFunction.hxx`:127 - `Blend_CSFunction::IsTangencyPoint()`
     /// Returns True when it is not possible to compute
     /// the tangent vectors at PointOnS and/or PointOnC.
     pub fn is_tangency_point(&self) -> bool {
@@ -736,7 +736,7 @@ impl CSFunction {
         })
     }
 
-    /// **Source:** `Blend_CSFunction.hxx`:139 - `Blend_CSFunction::TangentOnS()`
+    /// **Source:** `Blend_CSFunction.hxx`:130 - `Blend_CSFunction::TangentOnS()`
     /// Returns the tangent vector at PointOnS, in 3d space.
     pub fn tangent_on_s(&self) -> &crate::gp::Vec {
         unsafe {
@@ -746,7 +746,7 @@ impl CSFunction {
         }
     }
 
-    /// **Source:** `Blend_CSFunction.hxx`:143 - `Blend_CSFunction::Tangent2d()`
+    /// **Source:** `Blend_CSFunction.hxx`:134 - `Blend_CSFunction::Tangent2d()`
     /// Returns the tangent vector at PointOnS, in the
     /// parametric space of the first surface.
     pub fn tangent2d(&self) -> &crate::gp::Vec2d {
@@ -757,7 +757,7 @@ impl CSFunction {
         }
     }
 
-    /// **Source:** `Blend_CSFunction.hxx`:146 - `Blend_CSFunction::TangentOnC()`
+    /// **Source:** `Blend_CSFunction.hxx`:137 - `Blend_CSFunction::TangentOnC()`
     /// Returns the tangent vector at PointOnC, in 3d space.
     pub fn tangent_on_c(&self) -> &crate::gp::Vec {
         unsafe {
@@ -767,7 +767,7 @@ impl CSFunction {
         }
     }
 
-    /// **Source:** `Blend_CSFunction.hxx`:152 - `Blend_CSFunction::Tangent()`
+    /// **Source:** `Blend_CSFunction.hxx`:143 - `Blend_CSFunction::Tangent()`
     /// Returns the tangent vector at the section,
     /// at the beginning and the end of the section, and
     /// returns the normal (of the surfaces) at
@@ -784,7 +784,7 @@ impl CSFunction {
         })
     }
 
-    /// **Source:** `Blend_CSFunction.hxx`:157 - `Blend_CSFunction::GetShape()`
+    /// **Source:** `Blend_CSFunction.hxx`:148 - `Blend_CSFunction::GetShape()`
     pub fn get_shape(
         &mut self,
         NbPoles: &mut i32,
@@ -803,7 +803,7 @@ impl CSFunction {
         })
     }
 
-    /// **Source:** `Blend_CSFunction.hxx`:167 - `Blend_CSFunction::GetTolerance()`
+    /// **Source:** `Blend_CSFunction.hxx`:158 - `Blend_CSFunction::GetTolerance()`
     /// Returns the tolerance to reach in approximation
     /// to respect
     /// BoundTol error at the Boundary
@@ -829,71 +829,71 @@ impl CSFunction {
         })
     }
 
-    /// **Source:** `Blend_CSFunction.hxx`:173 - `Blend_CSFunction::Knots()`
-    pub fn knots(&mut self, TKnots: &mut crate::ffi_types::TColStd_Array1OfReal) {
+    /// **Source:** `Blend_CSFunction.hxx`:164 - `Blend_CSFunction::Knots()`
+    pub fn knots(&mut self, TKnots: &mut crate::ffi_types::NCollection_Array1_double) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKFillet::Blend_CSFunction_knots(self as *mut Self, TKnots)
         })
     }
 
-    /// **Source:** `Blend_CSFunction.hxx`:175 - `Blend_CSFunction::Mults()`
-    pub fn mults(&mut self, TMults: &mut crate::ffi_types::TColStd_Array1OfInteger) {
+    /// **Source:** `Blend_CSFunction.hxx`:166 - `Blend_CSFunction::Mults()`
+    pub fn mults(&mut self, TMults: &mut crate::ffi_types::NCollection_Array1_int) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKFillet::Blend_CSFunction_mults(self as *mut Self, TMults)
         })
     }
 
-    /// **Source:** `Blend_CSFunction.hxx`:180 - `Blend_CSFunction::Section()`
+    /// **Source:** `Blend_CSFunction.hxx`:171 - `Blend_CSFunction::Section()`
     /// Used for the first and last section
-    /// The method returns Standard_True if the derivatives
-    /// are computed, otherwise it returns Standard_False.
-    pub fn section_point_array1ofpnt_array1ofvec_array1ofpnt2d_array1ofvec2d_array1ofreal2(
+    /// The method returns true if the derivatives
+    /// are computed, otherwise it returns false.
+    pub fn section_point_arr1_pnt_arr1_vec_arr1_pnt2d_arr1_vec2d_arr1_double2(
         &mut self,
         P: &Point,
-        Poles: &mut crate::ffi_types::TColgp_Array1OfPnt,
-        DPoles: &mut crate::ffi_types::TColgp_Array1OfVec,
-        Poles2d: &mut crate::ffi_types::TColgp_Array1OfPnt2d,
-        DPoles2d: &mut crate::ffi_types::TColgp_Array1OfVec2d,
-        Weigths: &mut crate::ffi_types::TColStd_Array1OfReal,
-        DWeigths: &mut crate::ffi_types::TColStd_Array1OfReal,
+        Poles: &mut crate::ffi_types::NCollection_Array1_gp_Pnt,
+        DPoles: &mut crate::ffi_types::NCollection_Array1_gp_Vec,
+        Poles2d: &mut crate::ffi_types::NCollection_Array1_gp_Pnt2d,
+        DPoles2d: &mut crate::ffi_types::NCollection_Array1_gp_Vec2d,
+        Weigths: &mut crate::ffi_types::NCollection_Array1_double,
+        DWeigths: &mut crate::ffi_types::NCollection_Array1_double,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi_extern_TKFillet::Blend_CSFunction_section_point_array1ofpnt_array1ofvec_array1ofpnt2d_array1ofvec2d_array1ofreal2(self as *mut Self, P, Poles, DPoles, Poles2d, DPoles2d, Weigths, DWeigths)
+            crate::ffi_extern_TKFillet::Blend_CSFunction_section_point_arr1_pnt_arr1_vec_arr1_pnt2d_arr1_vec2d_arr1_double2(self as *mut Self, P, Poles, DPoles, Poles2d, DPoles2d, Weigths, DWeigths)
         })
     }
 
-    /// **Source:** `Blend_CSFunction.hxx`:189 - `Blend_CSFunction::Section()`
-    pub fn section_point_array1ofpnt_array1ofpnt2d_array1ofreal(
+    /// **Source:** `Blend_CSFunction.hxx`:179 - `Blend_CSFunction::Section()`
+    pub fn section_point_arr1_pnt_arr1_pnt2d_arr1_double(
         &mut self,
         P: &Point,
-        Poles: &mut crate::ffi_types::TColgp_Array1OfPnt,
-        Poles2d: &mut crate::ffi_types::TColgp_Array1OfPnt2d,
-        Weigths: &mut crate::ffi_types::TColStd_Array1OfReal,
+        Poles: &mut crate::ffi_types::NCollection_Array1_gp_Pnt,
+        Poles2d: &mut crate::ffi_types::NCollection_Array1_gp_Pnt2d,
+        Weigths: &mut crate::ffi_types::NCollection_Array1_double,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi_extern_TKFillet::Blend_CSFunction_section_point_array1ofpnt_array1ofpnt2d_array1ofreal(self as *mut Self, P, Poles, Poles2d, Weigths)
+            crate::ffi_extern_TKFillet::Blend_CSFunction_section_point_arr1_pnt_arr1_pnt2d_arr1_double(self as *mut Self, P, Poles, Poles2d, Weigths)
         })
     }
 
-    /// **Source:** `Blend_CSFunction.hxx`:197 - `Blend_CSFunction::Section()`
+    /// **Source:** `Blend_CSFunction.hxx`:187 - `Blend_CSFunction::Section()`
     /// Used for the first and last section
-    /// The method returns Standard_True if the derivatives
-    /// are computed, otherwise it returns Standard_False.
-    pub fn section_point_array1ofpnt_array1ofvec2_array1ofpnt2d_array1ofvec2d2_array1ofreal3(
+    /// The method returns true if the derivatives
+    /// are computed, otherwise it returns false.
+    pub fn section_point_arr1_pnt_arr1_vec2_arr1_pnt2d_arr1_vec2d2_arr1_double3(
         &mut self,
         P: &Point,
-        Poles: &mut crate::ffi_types::TColgp_Array1OfPnt,
-        DPoles: &mut crate::ffi_types::TColgp_Array1OfVec,
-        D2Poles: &mut crate::ffi_types::TColgp_Array1OfVec,
-        Poles2d: &mut crate::ffi_types::TColgp_Array1OfPnt2d,
-        DPoles2d: &mut crate::ffi_types::TColgp_Array1OfVec2d,
-        D2Poles2d: &mut crate::ffi_types::TColgp_Array1OfVec2d,
-        Weigths: &mut crate::ffi_types::TColStd_Array1OfReal,
-        DWeigths: &mut crate::ffi_types::TColStd_Array1OfReal,
-        D2Weigths: &mut crate::ffi_types::TColStd_Array1OfReal,
+        Poles: &mut crate::ffi_types::NCollection_Array1_gp_Pnt,
+        DPoles: &mut crate::ffi_types::NCollection_Array1_gp_Vec,
+        D2Poles: &mut crate::ffi_types::NCollection_Array1_gp_Vec,
+        Poles2d: &mut crate::ffi_types::NCollection_Array1_gp_Pnt2d,
+        DPoles2d: &mut crate::ffi_types::NCollection_Array1_gp_Vec2d,
+        D2Poles2d: &mut crate::ffi_types::NCollection_Array1_gp_Vec2d,
+        Weigths: &mut crate::ffi_types::NCollection_Array1_double,
+        DWeigths: &mut crate::ffi_types::NCollection_Array1_double,
+        D2Weigths: &mut crate::ffi_types::NCollection_Array1_double,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi_extern_TKFillet::Blend_CSFunction_section_point_array1ofpnt_array1ofvec2_array1ofpnt2d_array1ofvec2d2_array1ofreal3(self as *mut Self, P, Poles, DPoles, D2Poles, Poles2d, DPoles2d, D2Poles2d, Weigths, DWeigths, D2Weigths)
+            crate::ffi_extern_TKFillet::Blend_CSFunction_section_point_arr1_pnt_arr1_vec2_arr1_pnt2d_arr1_vec2d2_arr1_double3(self as *mut Self, P, Poles, DPoles, D2Poles, Poles2d, DPoles2d, D2Poles2d, Weigths, DWeigths, D2Weigths)
         })
     }
 
@@ -965,14 +965,14 @@ impl CSFunction {
         }
     }
 
-    /// Inherited: **Source:** `Blend_AppFunction.hxx`:116 - `Blend_AppFunction::IsRational()`
+    /// Inherited: **Source:** `Blend_AppFunction.hxx`:112 - `Blend_AppFunction::IsRational()`
     pub fn is_rational(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKFillet::Blend_CSFunction_inherited_IsRational(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `Blend_AppFunction.hxx`:119 - `Blend_AppFunction::GetSectionSize()`
+    /// Inherited: **Source:** `Blend_AppFunction.hxx`:115 - `Blend_AppFunction::GetSectionSize()`
     pub fn get_section_size(&self) -> f64 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKFillet::Blend_CSFunction_inherited_GetSectionSize(
@@ -981,8 +981,8 @@ impl CSFunction {
         })
     }
 
-    /// Inherited: **Source:** `Blend_AppFunction.hxx`:123 - `Blend_AppFunction::GetMinimalWeight()`
-    pub fn get_minimal_weight(&self, Weigths: &mut crate::ffi_types::TColStd_Array1OfReal) {
+    /// Inherited: **Source:** `Blend_AppFunction.hxx`:119 - `Blend_AppFunction::GetMinimalWeight()`
+    pub fn get_minimal_weight(&self, Weigths: &mut crate::ffi_types::NCollection_Array1_double) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKFillet::Blend_CSFunction_inherited_GetMinimalWeight(
                 self as *const Self,
@@ -991,7 +991,7 @@ impl CSFunction {
         })
     }
 
-    /// Inherited: **Source:** `Blend_AppFunction.hxx`:127 - `Blend_AppFunction::NbIntervals()`
+    /// Inherited: **Source:** `Blend_AppFunction.hxx`:123 - `Blend_AppFunction::NbIntervals()`
     pub fn nb_intervals(&self, S: crate::geom_abs::Shape) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKFillet::Blend_CSFunction_inherited_NbIntervals(
@@ -1001,10 +1001,10 @@ impl CSFunction {
         })
     }
 
-    /// Inherited: **Source:** `Blend_AppFunction.hxx`:136 - `Blend_AppFunction::Intervals()`
+    /// Inherited: **Source:** `Blend_AppFunction.hxx`:132 - `Blend_AppFunction::Intervals()`
     pub fn intervals(
         &self,
-        T: &mut crate::ffi_types::TColStd_Array1OfReal,
+        T: &mut crate::ffi_types::NCollection_Array1_double,
         S: crate::geom_abs::Shape,
     ) {
         crate::check_void_result(unsafe {
@@ -1016,7 +1016,7 @@ impl CSFunction {
         })
     }
 
-    /// Inherited: **Source:** `Blend_AppFunction.hxx`:188 - `Blend_AppFunction::Resolution()`
+    /// Inherited: **Source:** `Blend_AppFunction.hxx`:185 - `Blend_AppFunction::Resolution()`
     pub fn resolution(&self, IC2d: i32, Tol: f64, TolU: &mut f64, TolV: &mut f64) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKFillet::Blend_CSFunction_inherited_Resolution(
@@ -1029,7 +1029,7 @@ impl CSFunction {
         })
     }
 
-    /// Inherited: **Source:** `Blend_AppFunction.hxx`:195 - `Blend_AppFunction::Parameter()`
+    /// Inherited: **Source:** `Blend_AppFunction.hxx`:192 - `Blend_AppFunction::Parameter()`
     pub fn parameter(&self, P: &Point) -> f64 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKFillet::Blend_CSFunction_inherited_Parameter(self as *const Self, P)
@@ -1049,14 +1049,14 @@ impl CSFunction {
 // ========================
 
 /// **Source:** `Blend_CurvPointFuncInv.hxx`:39 - `Blend_CurvPointFuncInv`
-/// Deferred   class  for a  function  used  to compute  a
-/// blending surface between a  surface and a curve, using
-/// a  guide  line.   This   function is  used  to find  a
+/// Deferred class for a function used to compute a
+/// blending surface between a surface and a curve, using
+/// a guide line. This function is used to find a
 /// solution on a done point of the curve.
-/// The vector <X>  used in Value, Values and  Derivatives
-/// methods  has  to   be the  vector   of the  parametric
-/// coordinates w, U,  V where w is  the parameter  on the
-/// guide line, U,V   are the parametric coordinates of  a
+/// The vector <X> used in Value, Values and Derivatives
+/// methods has to be the vector of the parametric
+/// coordinates w, U, V where w is the parameter on the
+/// guide line, U,V are the parametric coordinates of a
 /// point on the partner surface.
 pub use crate::ffi_types::Blend_CurvPointFuncInv as CurvPointFuncInv;
 
@@ -1131,7 +1131,7 @@ impl CurvPointFuncInv {
         })
     }
 
-    /// **Source:** `Blend_CurvPointFuncInv.hxx`:71 - `Blend_CurvPointFuncInv::Set()`
+    /// **Source:** `Blend_CurvPointFuncInv.hxx`:69 - `Blend_CurvPointFuncInv::Set()`
     /// Set the Point on which a solution has to be found.
     pub fn set(&mut self, P: &crate::gp::Pnt) {
         crate::check_void_result(unsafe {
@@ -1139,7 +1139,7 @@ impl CurvPointFuncInv {
         })
     }
 
-    /// **Source:** `Blend_CurvPointFuncInv.hxx`:76 - `Blend_CurvPointFuncInv::GetTolerance()`
+    /// **Source:** `Blend_CurvPointFuncInv.hxx`:74 - `Blend_CurvPointFuncInv::GetTolerance()`
     /// Returns in the vector Tolerance the parametric tolerance
     /// for each of the 3 variables;
     /// Tol is the tolerance used in 3d space.
@@ -1153,7 +1153,7 @@ impl CurvPointFuncInv {
         })
     }
 
-    /// **Source:** `Blend_CurvPointFuncInv.hxx`:83 - `Blend_CurvPointFuncInv::GetBounds()`
+    /// **Source:** `Blend_CurvPointFuncInv.hxx`:80 - `Blend_CurvPointFuncInv::GetBounds()`
     /// Returns in the vector InfBound the lowest values allowed
     /// for each of the 3 variables.
     /// Returns in the vector SupBound the greatest values allowed
@@ -1172,8 +1172,8 @@ impl CurvPointFuncInv {
         })
     }
 
-    /// **Source:** `Blend_CurvPointFuncInv.hxx`:87 - `Blend_CurvPointFuncInv::IsSolution()`
-    /// Returns Standard_True if Sol is a zero of the function.
+    /// **Source:** `Blend_CurvPointFuncInv.hxx`:84 - `Blend_CurvPointFuncInv::IsSolution()`
+    /// Returns true if Sol is a zero of the function.
     /// Tol is the tolerance used in 3d space.
     pub fn is_solution(&mut self, Sol: &crate::ffi_types::math_Vector, Tol: f64) -> bool {
         crate::check_result(unsafe {
@@ -1323,18 +1323,18 @@ impl FuncInv {
         })
     }
 
-    /// **Source:** `Blend_FuncInv.hxx`:77 - `Blend_FuncInv::Set()`
+    /// **Source:** `Blend_FuncInv.hxx`:75 - `Blend_FuncInv::Set()`
     /// Sets the CurveOnSurface on which a solution has
-    /// to be found. If <OnFirst> is set to Standard_True,
+    /// to be found. If <OnFirst> is set to true,
     /// the curve will be on the first surface, otherwise the
     /// curve is on the second one.
-    pub fn set(&mut self, OnFirst: bool, COnSurf: &crate::ffi_types::HandleAdaptor2dCurve2d) {
+    pub fn set(&mut self, OnFirst: bool, COnSurf: &crate::ffi_types::Handle_Adaptor2d_Curve2d) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKFillet::Blend_FuncInv_set(self as *mut Self, OnFirst, COnSurf)
         })
     }
 
-    /// **Source:** `Blend_FuncInv.hxx`:83 - `Blend_FuncInv::GetTolerance()`
+    /// **Source:** `Blend_FuncInv.hxx`:81 - `Blend_FuncInv::GetTolerance()`
     /// Returns in the vector Tolerance the parametric tolerance
     /// for each of the 4 variables;
     /// Tol is the tolerance used in 3d space.
@@ -1348,7 +1348,7 @@ impl FuncInv {
         })
     }
 
-    /// **Source:** `Blend_FuncInv.hxx`:90 - `Blend_FuncInv::GetBounds()`
+    /// **Source:** `Blend_FuncInv.hxx`:87 - `Blend_FuncInv::GetBounds()`
     /// Returns in the vector InfBound the lowest values allowed
     /// for each of the 4 variables.
     /// Returns in the vector SupBound the greatest values allowed
@@ -1367,8 +1367,8 @@ impl FuncInv {
         })
     }
 
-    /// **Source:** `Blend_FuncInv.hxx`:94 - `Blend_FuncInv::IsSolution()`
-    /// Returns Standard_True if Sol is a zero of the function.
+    /// **Source:** `Blend_FuncInv.hxx`:91 - `Blend_FuncInv::IsSolution()`
+    /// Returns true if Sol is a zero of the function.
     /// Tol is the tolerance used in 3d space.
     pub fn is_solution(&mut self, Sol: &crate::ffi_types::math_Vector, Tol: f64) -> bool {
         crate::check_result(unsafe {
@@ -1471,7 +1471,7 @@ impl Function {
     }
 
     /// **Source:** `Blend_Function.hxx`:54 - `Blend_Function::Pnt2()`
-    /// Returns the point on the seconde support.
+    /// Returns the point on the second support.
     pub fn pnt2(&self) -> &crate::gp::Pnt {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKFillet::Blend_Function_pnt2(
@@ -1601,37 +1601,43 @@ impl Function {
     }
 
     /// **Source:** `Blend_Function.hxx`:101 - `Blend_Function::Section()`
-    pub fn section_point_array1ofpnt_array1ofpnt2d_array1ofreal(
+    pub fn section_point_arr1_pnt_arr1_pnt2d_arr1_double(
         &mut self,
         P: &Point,
-        Poles: &mut crate::ffi_types::TColgp_Array1OfPnt,
-        Poles2d: &mut crate::ffi_types::TColgp_Array1OfPnt2d,
-        Weigths: &mut crate::ffi_types::TColStd_Array1OfReal,
+        Poles: &mut crate::ffi_types::NCollection_Array1_gp_Pnt,
+        Poles2d: &mut crate::ffi_types::NCollection_Array1_gp_Pnt2d,
+        Weigths: &mut crate::ffi_types::NCollection_Array1_double,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi_extern_TKFillet::Blend_Function_section_point_array1ofpnt_array1ofpnt2d_array1ofreal(self as *mut Self, P, Poles, Poles2d, Weigths)
+            crate::ffi_extern_TKFillet::Blend_Function_section_point_arr1_pnt_arr1_pnt2d_arr1_double(
+                self as *mut Self,
+                P,
+                Poles,
+                Poles2d,
+                Weigths,
+            )
         })
     }
 
     /// **Source:** `Blend_Function.hxx`:109 - `Blend_Function::Section()`
     /// Used for the first and last section
-    /// The method returns Standard_True if the derivatives
-    /// are computed, otherwise it returns Standard_False
-    pub fn section_point_array1ofpnt_array1ofvec2_array1ofpnt2d_array1ofvec2d2_array1ofreal3(
+    /// The method returns true if the derivatives
+    /// are computed, otherwise it returns false
+    pub fn section_point_arr1_pnt_arr1_vec2_arr1_pnt2d_arr1_vec2d2_arr1_double3(
         &mut self,
         P: &Point,
-        Poles: &mut crate::ffi_types::TColgp_Array1OfPnt,
-        DPoles: &mut crate::ffi_types::TColgp_Array1OfVec,
-        D2Poles: &mut crate::ffi_types::TColgp_Array1OfVec,
-        Poles2d: &mut crate::ffi_types::TColgp_Array1OfPnt2d,
-        DPoles2d: &mut crate::ffi_types::TColgp_Array1OfVec2d,
-        D2Poles2d: &mut crate::ffi_types::TColgp_Array1OfVec2d,
-        Weigths: &mut crate::ffi_types::TColStd_Array1OfReal,
-        DWeigths: &mut crate::ffi_types::TColStd_Array1OfReal,
-        D2Weigths: &mut crate::ffi_types::TColStd_Array1OfReal,
+        Poles: &mut crate::ffi_types::NCollection_Array1_gp_Pnt,
+        DPoles: &mut crate::ffi_types::NCollection_Array1_gp_Vec,
+        D2Poles: &mut crate::ffi_types::NCollection_Array1_gp_Vec,
+        Poles2d: &mut crate::ffi_types::NCollection_Array1_gp_Pnt2d,
+        DPoles2d: &mut crate::ffi_types::NCollection_Array1_gp_Vec2d,
+        D2Poles2d: &mut crate::ffi_types::NCollection_Array1_gp_Vec2d,
+        Weigths: &mut crate::ffi_types::NCollection_Array1_double,
+        DWeigths: &mut crate::ffi_types::NCollection_Array1_double,
+        D2Weigths: &mut crate::ffi_types::NCollection_Array1_double,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi_extern_TKFillet::Blend_Function_section_point_array1ofpnt_array1ofvec2_array1ofpnt2d_array1ofvec2d2_array1ofreal3(self as *mut Self, P, Poles, DPoles, D2Poles, Poles2d, DPoles2d, D2Poles2d, Weigths, DWeigths, D2Weigths)
+            crate::ffi_extern_TKFillet::Blend_Function_section_point_arr1_pnt_arr1_vec2_arr1_pnt2d_arr1_vec2d2_arr1_double3(self as *mut Self, P, Poles, DPoles, D2Poles, Poles2d, DPoles2d, D2Poles2d, Weigths, DWeigths, D2Weigths)
         })
     }
 
@@ -1746,14 +1752,14 @@ impl Function {
         })
     }
 
-    /// Inherited: **Source:** `Blend_AppFunction.hxx`:78 - `Blend_AppFunction::Set()`
+    /// Inherited: **Source:** `Blend_AppFunction.hxx`:76 - `Blend_AppFunction::Set()`
     pub fn set(&mut self, Param: f64) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKFillet::Blend_Function_inherited_Set(self as *mut Self, Param)
         })
     }
 
-    /// Inherited: **Source:** `Blend_AppFunction.hxx`:89 - `Blend_AppFunction::GetTolerance()`
+    /// Inherited: **Source:** `Blend_AppFunction.hxx`:87 - `Blend_AppFunction::GetTolerance()`
     pub fn get_tolerance(&self, Tolerance: &mut crate::ffi_types::math_Vector, Tol: f64) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKFillet::Blend_Function_inherited_GetTolerance(
@@ -1764,7 +1770,7 @@ impl Function {
         })
     }
 
-    /// Inherited: **Source:** `Blend_AppFunction.hxx`:96 - `Blend_AppFunction::GetBounds()`
+    /// Inherited: **Source:** `Blend_AppFunction.hxx`:93 - `Blend_AppFunction::GetBounds()`
     pub fn get_bounds(
         &self,
         InfBound: &mut crate::ffi_types::math_Vector,
@@ -1779,7 +1785,7 @@ impl Function {
         })
     }
 
-    /// Inherited: **Source:** `Blend_AppFunction.hxx`:102 - `Blend_AppFunction::IsSolution()`
+    /// Inherited: **Source:** `Blend_AppFunction.hxx`:99 - `Blend_AppFunction::IsSolution()`
     pub fn is_solution(&mut self, Sol: &crate::ffi_types::math_Vector, Tol: f64) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKFillet::Blend_Function_inherited_IsSolution(
@@ -1790,7 +1796,7 @@ impl Function {
         })
     }
 
-    /// Inherited: **Source:** `Blend_AppFunction.hxx`:107 - `Blend_AppFunction::GetMinimalDistance()`
+    /// Inherited: **Source:** `Blend_AppFunction.hxx`:103 - `Blend_AppFunction::GetMinimalDistance()`
     pub fn get_minimal_distance(&self) -> f64 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKFillet::Blend_Function_inherited_GetMinimalDistance(
@@ -1799,22 +1805,22 @@ impl Function {
         })
     }
 
-    /// Inherited: **Source:** `Blend_AppFunction.hxx`:116 - `Blend_AppFunction::IsRational()`
+    /// Inherited: **Source:** `Blend_AppFunction.hxx`:112 - `Blend_AppFunction::IsRational()`
     pub fn is_rational(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKFillet::Blend_Function_inherited_IsRational(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `Blend_AppFunction.hxx`:119 - `Blend_AppFunction::GetSectionSize()`
+    /// Inherited: **Source:** `Blend_AppFunction.hxx`:115 - `Blend_AppFunction::GetSectionSize()`
     pub fn get_section_size(&self) -> f64 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKFillet::Blend_Function_inherited_GetSectionSize(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `Blend_AppFunction.hxx`:123 - `Blend_AppFunction::GetMinimalWeight()`
-    pub fn get_minimal_weight(&self, Weigths: &mut crate::ffi_types::TColStd_Array1OfReal) {
+    /// Inherited: **Source:** `Blend_AppFunction.hxx`:119 - `Blend_AppFunction::GetMinimalWeight()`
+    pub fn get_minimal_weight(&self, Weigths: &mut crate::ffi_types::NCollection_Array1_double) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKFillet::Blend_Function_inherited_GetMinimalWeight(
                 self as *const Self,
@@ -1823,7 +1829,7 @@ impl Function {
         })
     }
 
-    /// Inherited: **Source:** `Blend_AppFunction.hxx`:127 - `Blend_AppFunction::NbIntervals()`
+    /// Inherited: **Source:** `Blend_AppFunction.hxx`:123 - `Blend_AppFunction::NbIntervals()`
     pub fn nb_intervals(&self, S: crate::geom_abs::Shape) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKFillet::Blend_Function_inherited_NbIntervals(
@@ -1833,10 +1839,10 @@ impl Function {
         })
     }
 
-    /// Inherited: **Source:** `Blend_AppFunction.hxx`:136 - `Blend_AppFunction::Intervals()`
+    /// Inherited: **Source:** `Blend_AppFunction.hxx`:132 - `Blend_AppFunction::Intervals()`
     pub fn intervals(
         &self,
-        T: &mut crate::ffi_types::TColStd_Array1OfReal,
+        T: &mut crate::ffi_types::NCollection_Array1_double,
         S: crate::geom_abs::Shape,
     ) {
         crate::check_void_result(unsafe {
@@ -1848,7 +1854,7 @@ impl Function {
         })
     }
 
-    /// Inherited: **Source:** `Blend_AppFunction.hxx`:138 - `Blend_AppFunction::GetShape()`
+    /// Inherited: **Source:** `Blend_AppFunction.hxx`:135 - `Blend_AppFunction::GetShape()`
     pub fn get_shape(
         &mut self,
         NbPoles: &mut i32,
@@ -1867,21 +1873,21 @@ impl Function {
         })
     }
 
-    /// Inherited: **Source:** `Blend_AppFunction.hxx`:154 - `Blend_AppFunction::Knots()`
-    pub fn knots(&mut self, TKnots: &mut crate::ffi_types::TColStd_Array1OfReal) {
+    /// Inherited: **Source:** `Blend_AppFunction.hxx`:151 - `Blend_AppFunction::Knots()`
+    pub fn knots(&mut self, TKnots: &mut crate::ffi_types::NCollection_Array1_double) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKFillet::Blend_Function_inherited_Knots(self as *mut Self, TKnots)
         })
     }
 
-    /// Inherited: **Source:** `Blend_AppFunction.hxx`:156 - `Blend_AppFunction::Mults()`
-    pub fn mults(&mut self, TMults: &mut crate::ffi_types::TColStd_Array1OfInteger) {
+    /// Inherited: **Source:** `Blend_AppFunction.hxx`:153 - `Blend_AppFunction::Mults()`
+    pub fn mults(&mut self, TMults: &mut crate::ffi_types::NCollection_Array1_int) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKFillet::Blend_Function_inherited_Mults(self as *mut Self, TMults)
         })
     }
 
-    /// Inherited: **Source:** `Blend_AppFunction.hxx`:188 - `Blend_AppFunction::Resolution()`
+    /// Inherited: **Source:** `Blend_AppFunction.hxx`:185 - `Blend_AppFunction::Resolution()`
     pub fn resolution(&self, IC2d: i32, Tol: f64, TolU: &mut f64, TolV: &mut f64) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKFillet::Blend_Function_inherited_Resolution(
@@ -1894,7 +1900,7 @@ impl Function {
         })
     }
 
-    /// Inherited: **Source:** `Blend_AppFunction.hxx`:195 - `Blend_AppFunction::Parameter()`
+    /// Inherited: **Source:** `Blend_AppFunction.hxx`:192 - `Blend_AppFunction::Parameter()`
     pub fn parameter(&self, P: &Point) -> f64 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKFillet::Blend_Function_inherited_Parameter(self as *const Self, P)
@@ -2401,7 +2407,7 @@ impl Point {
     }
 
     /// **Source:** `Blend_Point.hxx`:239 - `Blend_Point::IsTangencyPoint()`
-    /// Returns Standard_True if it was not possible to compute
+    /// Returns true if it was not possible to compute
     /// the tangent vectors at PointOnS1 and/or PointOnS2.
     pub fn is_tangency_point(&self) -> bool {
         crate::check_result(unsafe {
@@ -2597,7 +2603,7 @@ impl Point {
 /// using a guide line.
 /// The vector <X> used in Value, Values and Derivatives methods
 /// may be the vector of the parametric coordinates U,V,
-/// W of the extremities of a section on the surface  and
+/// W of the extremities of a section on the surface and
 /// the curve.
 pub use crate::ffi_types::Blend_RstRstFunction as RstRstFunction;
 
@@ -2672,7 +2678,7 @@ impl RstRstFunction {
         })
     }
 
-    /// **Source:** `Blend_RstRstFunction.hxx`:80 - `Blend_RstRstFunction::Set()`
+    /// **Source:** `Blend_RstRstFunction.hxx`:78 - `Blend_RstRstFunction::Set()`
     /// Sets the value of the parameter along the guide line.
     /// This determines the plane in which the solution has
     /// to be found.
@@ -2682,7 +2688,7 @@ impl RstRstFunction {
         })
     }
 
-    /// **Source:** `Blend_RstRstFunction.hxx`:86 - `Blend_RstRstFunction::Set()`
+    /// **Source:** `Blend_RstRstFunction.hxx`:84 - `Blend_RstRstFunction::Set()`
     /// Sets the bounds of the parametric interval on
     /// the guide line.
     /// This determines the derivatives in these values if the
@@ -2697,7 +2703,7 @@ impl RstRstFunction {
         })
     }
 
-    /// **Source:** `Blend_RstRstFunction.hxx`:91 - `Blend_RstRstFunction::GetTolerance()`
+    /// **Source:** `Blend_RstRstFunction.hxx`:89 - `Blend_RstRstFunction::GetTolerance()`
     /// Returns in the vector Tolerance the parametric tolerance
     /// for each variable;
     /// Tol is the tolerance used in 3d space.
@@ -2715,7 +2721,7 @@ impl RstRstFunction {
         })
     }
 
-    /// **Source:** `Blend_RstRstFunction.hxx`:98 - `Blend_RstRstFunction::GetBounds()`
+    /// **Source:** `Blend_RstRstFunction.hxx`:95 - `Blend_RstRstFunction::GetBounds()`
     /// Returns in the vector InfBound the lowest values allowed
     /// for each variables.
     /// Returns in the vector SupBound the greatest values allowed
@@ -2734,8 +2740,8 @@ impl RstRstFunction {
         })
     }
 
-    /// **Source:** `Blend_RstRstFunction.hxx`:104 - `Blend_RstRstFunction::IsSolution()`
-    /// Returns Standard_True if Sol is a zero of the function.
+    /// **Source:** `Blend_RstRstFunction.hxx`:101 - `Blend_RstRstFunction::IsSolution()`
+    /// Returns true if Sol is a zero of the function.
     /// Tol is the tolerance used in 3d space.
     /// The computation is made at the current value of
     /// the parameter on the guide line.
@@ -2749,8 +2755,8 @@ impl RstRstFunction {
         })
     }
 
-    /// **Source:** `Blend_RstRstFunction.hxx`:109 - `Blend_RstRstFunction::GetMinimalDistance()`
-    /// Returns   the    minimal  Distance  between   two
+    /// **Source:** `Blend_RstRstFunction.hxx`:105 - `Blend_RstRstFunction::GetMinimalDistance()`
+    /// Returns the minimal Distance between two
     /// extremities of calculated sections.
     pub fn get_minimal_distance(&self) -> f64 {
         crate::check_result(unsafe {
@@ -2760,7 +2766,7 @@ impl RstRstFunction {
         })
     }
 
-    /// **Source:** `Blend_RstRstFunction.hxx`:112 - `Blend_RstRstFunction::Pnt1()`
+    /// **Source:** `Blend_RstRstFunction.hxx`:108 - `Blend_RstRstFunction::Pnt1()`
     /// Returns the point on the first support.
     pub fn pnt1(&self) -> &crate::gp::Pnt {
         unsafe {
@@ -2770,8 +2776,8 @@ impl RstRstFunction {
         }
     }
 
-    /// **Source:** `Blend_RstRstFunction.hxx`:115 - `Blend_RstRstFunction::Pnt2()`
-    /// Returns the point on the seconde support.
+    /// **Source:** `Blend_RstRstFunction.hxx`:111 - `Blend_RstRstFunction::Pnt2()`
+    /// Returns the point on the second support.
     pub fn pnt2(&self) -> &crate::gp::Pnt {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKFillet::Blend_RstRstFunction_pnt2(
@@ -2780,7 +2786,7 @@ impl RstRstFunction {
         }
     }
 
-    /// **Source:** `Blend_RstRstFunction.hxx`:118 - `Blend_RstRstFunction::PointOnRst1()`
+    /// **Source:** `Blend_RstRstFunction.hxx`:114 - `Blend_RstRstFunction::PointOnRst1()`
     /// Returns the point on the surface.
     pub fn point_on_rst1(&self) -> &crate::gp::Pnt {
         unsafe {
@@ -2790,7 +2796,7 @@ impl RstRstFunction {
         }
     }
 
-    /// **Source:** `Blend_RstRstFunction.hxx`:121 - `Blend_RstRstFunction::PointOnRst2()`
+    /// **Source:** `Blend_RstRstFunction.hxx`:117 - `Blend_RstRstFunction::PointOnRst2()`
     /// Returns the point on the curve.
     pub fn point_on_rst2(&self) -> &crate::gp::Pnt {
         unsafe {
@@ -2800,7 +2806,7 @@ impl RstRstFunction {
         }
     }
 
-    /// **Source:** `Blend_RstRstFunction.hxx`:124 - `Blend_RstRstFunction::Pnt2dOnRst1()`
+    /// **Source:** `Blend_RstRstFunction.hxx`:120 - `Blend_RstRstFunction::Pnt2dOnRst1()`
     /// Returns U,V coordinates of the point on the surface.
     pub fn pnt2d_on_rst1(&self) -> &crate::gp::Pnt2d {
         unsafe {
@@ -2810,8 +2816,8 @@ impl RstRstFunction {
         }
     }
 
-    /// **Source:** `Blend_RstRstFunction.hxx`:128 - `Blend_RstRstFunction::Pnt2dOnRst2()`
-    /// Returns  U,V coordinates of the point  on the curve on
+    /// **Source:** `Blend_RstRstFunction.hxx`:124 - `Blend_RstRstFunction::Pnt2dOnRst2()`
+    /// Returns U,V coordinates of the point on the curve on
     /// surface.
     pub fn pnt2d_on_rst2(&self) -> &crate::gp::Pnt2d {
         unsafe {
@@ -2821,7 +2827,7 @@ impl RstRstFunction {
         }
     }
 
-    /// **Source:** `Blend_RstRstFunction.hxx`:131 - `Blend_RstRstFunction::ParameterOnRst1()`
+    /// **Source:** `Blend_RstRstFunction.hxx`:127 - `Blend_RstRstFunction::ParameterOnRst1()`
     /// Returns parameter of the point on the curve.
     pub fn parameter_on_rst1(&self) -> f64 {
         crate::check_result(unsafe {
@@ -2829,7 +2835,7 @@ impl RstRstFunction {
         })
     }
 
-    /// **Source:** `Blend_RstRstFunction.hxx`:134 - `Blend_RstRstFunction::ParameterOnRst2()`
+    /// **Source:** `Blend_RstRstFunction.hxx`:130 - `Blend_RstRstFunction::ParameterOnRst2()`
     /// Returns parameter of the point on the curve.
     pub fn parameter_on_rst2(&self) -> f64 {
         crate::check_result(unsafe {
@@ -2837,7 +2843,7 @@ impl RstRstFunction {
         })
     }
 
-    /// **Source:** `Blend_RstRstFunction.hxx`:138 - `Blend_RstRstFunction::IsTangencyPoint()`
+    /// **Source:** `Blend_RstRstFunction.hxx`:134 - `Blend_RstRstFunction::IsTangencyPoint()`
     /// Returns True when it is not possible to compute
     /// the tangent vectors at PointOnS and/or PointOnRst.
     pub fn is_tangency_point(&self) -> bool {
@@ -2846,7 +2852,7 @@ impl RstRstFunction {
         })
     }
 
-    /// **Source:** `Blend_RstRstFunction.hxx`:141 - `Blend_RstRstFunction::TangentOnRst1()`
+    /// **Source:** `Blend_RstRstFunction.hxx`:137 - `Blend_RstRstFunction::TangentOnRst1()`
     /// Returns the tangent vector at PointOnS, in 3d space.
     pub fn tangent_on_rst1(&self) -> &crate::gp::Vec {
         unsafe {
@@ -2858,7 +2864,7 @@ impl RstRstFunction {
         }
     }
 
-    /// **Source:** `Blend_RstRstFunction.hxx`:145 - `Blend_RstRstFunction::Tangent2dOnRst1()`
+    /// **Source:** `Blend_RstRstFunction.hxx`:141 - `Blend_RstRstFunction::Tangent2dOnRst1()`
     /// Returns the tangent vector at PointOnS, in the
     /// parametric space of the first surface.
     pub fn tangent2d_on_rst1(&self) -> &crate::gp::Vec2d {
@@ -2871,7 +2877,7 @@ impl RstRstFunction {
         }
     }
 
-    /// **Source:** `Blend_RstRstFunction.hxx`:148 - `Blend_RstRstFunction::TangentOnRst2()`
+    /// **Source:** `Blend_RstRstFunction.hxx`:144 - `Blend_RstRstFunction::TangentOnRst2()`
     /// Returns the tangent vector at PointOnC, in 3d space.
     pub fn tangent_on_rst2(&self) -> &crate::gp::Vec {
         unsafe {
@@ -2883,7 +2889,7 @@ impl RstRstFunction {
         }
     }
 
-    /// **Source:** `Blend_RstRstFunction.hxx`:152 - `Blend_RstRstFunction::Tangent2dOnRst2()`
+    /// **Source:** `Blend_RstRstFunction.hxx`:148 - `Blend_RstRstFunction::Tangent2dOnRst2()`
     /// Returns the tangent vector at PointOnRst, in the
     /// parametric space of the second surface.
     pub fn tangent2d_on_rst2(&self) -> &crate::gp::Vec2d {
@@ -2896,11 +2902,11 @@ impl RstRstFunction {
         }
     }
 
-    /// **Source:** `Blend_RstRstFunction.hxx`:158 - `Blend_RstRstFunction::Decroch()`
-    /// Enables to implement a  criterion  of  decrochage
+    /// **Source:** `Blend_RstRstFunction.hxx`:154 - `Blend_RstRstFunction::Decroch()`
+    /// Enables to implement a criterion of decrochage
     /// specific to the function.
-    /// Warning: Can  be  called  without  previous  call  of issolution
-    /// but  the  values  calculated can  be  senseless.
+    /// Warning: Can be called without previous call of IsSolution
+    /// but the values calculated can be senseless.
     pub fn decroch(
         &self,
         Sol: &crate::ffi_types::math_Vector,
@@ -2922,15 +2928,15 @@ impl RstRstFunction {
         .unwrap()
     }
 
-    /// **Source:** `Blend_RstRstFunction.hxx`:165 - `Blend_RstRstFunction::IsRational()`
-    /// Returns  if the section is rational
+    /// **Source:** `Blend_RstRstFunction.hxx`:161 - `Blend_RstRstFunction::IsRational()`
+    /// Returns if the section is rational
     pub fn is_rational(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKFillet::Blend_RstRstFunction_is_rational(self as *const Self)
         })
     }
 
-    /// **Source:** `Blend_RstRstFunction.hxx`:168 - `Blend_RstRstFunction::GetSectionSize()`
+    /// **Source:** `Blend_RstRstFunction.hxx`:164 - `Blend_RstRstFunction::GetSectionSize()`
     /// Returns the length of the maximum section
     pub fn get_section_size(&self) -> f64 {
         crate::check_result(unsafe {
@@ -2938,10 +2944,10 @@ impl RstRstFunction {
         })
     }
 
-    /// **Source:** `Blend_RstRstFunction.hxx`:172 - `Blend_RstRstFunction::GetMinimalWeight()`
+    /// **Source:** `Blend_RstRstFunction.hxx`:168 - `Blend_RstRstFunction::GetMinimalWeight()`
     /// Compute the minimal value of weight for each poles
     /// of all sections.
-    pub fn get_minimal_weight(&self, Weigths: &mut crate::ffi_types::TColStd_Array1OfReal) {
+    pub fn get_minimal_weight(&self, Weigths: &mut crate::ffi_types::NCollection_Array1_double) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKFillet::Blend_RstRstFunction_get_minimal_weight(
                 self as *const Self,
@@ -2950,8 +2956,8 @@ impl RstRstFunction {
         })
     }
 
-    /// **Source:** `Blend_RstRstFunction.hxx`:176 - `Blend_RstRstFunction::NbIntervals()`
-    /// Returns  the number  of  intervals for  continuity
+    /// **Source:** `Blend_RstRstFunction.hxx`:172 - `Blend_RstRstFunction::NbIntervals()`
+    /// Returns the number of intervals for continuity
     /// <S>. May be one if Continuity(me) >= <S>
     pub fn nb_intervals(&self, S: crate::geom_abs::Shape) -> i32 {
         crate::check_result(unsafe {
@@ -2962,15 +2968,15 @@ impl RstRstFunction {
         })
     }
 
-    /// **Source:** `Blend_RstRstFunction.hxx`:183 - `Blend_RstRstFunction::Intervals()`
-    /// Stores in <T> the  parameters bounding the intervals
+    /// **Source:** `Blend_RstRstFunction.hxx`:179 - `Blend_RstRstFunction::Intervals()`
+    /// Stores in <T> the parameters bounding the intervals
     /// of continuity <S>.
     ///
-    /// The array must provide  enough room to  accommodate
+    /// The array must provide enough room to accommodate
     /// for the parameters. i.e. T.Length() > NbIntervals()
     pub fn intervals(
         &self,
-        T: &mut crate::ffi_types::TColStd_Array1OfReal,
+        T: &mut crate::ffi_types::NCollection_Array1_double,
         S: crate::geom_abs::Shape,
     ) {
         crate::check_void_result(unsafe {
@@ -2982,7 +2988,7 @@ impl RstRstFunction {
         })
     }
 
-    /// **Source:** `Blend_RstRstFunction.hxx`:185 - `Blend_RstRstFunction::GetShape()`
+    /// **Source:** `Blend_RstRstFunction.hxx`:182 - `Blend_RstRstFunction::GetShape()`
     pub fn get_shape(
         &mut self,
         NbPoles: &mut i32,
@@ -3001,7 +3007,7 @@ impl RstRstFunction {
         })
     }
 
-    /// **Source:** `Blend_RstRstFunction.hxx`:195 - `Blend_RstRstFunction::GetTolerance()`
+    /// **Source:** `Blend_RstRstFunction.hxx`:192 - `Blend_RstRstFunction::GetTolerance()`
     /// Returns the tolerance to reach in approximation
     /// to respect
     /// BoundTol error at the Boundary
@@ -3027,71 +3033,71 @@ impl RstRstFunction {
         })
     }
 
-    /// **Source:** `Blend_RstRstFunction.hxx`:201 - `Blend_RstRstFunction::Knots()`
-    pub fn knots(&mut self, TKnots: &mut crate::ffi_types::TColStd_Array1OfReal) {
+    /// **Source:** `Blend_RstRstFunction.hxx`:198 - `Blend_RstRstFunction::Knots()`
+    pub fn knots(&mut self, TKnots: &mut crate::ffi_types::NCollection_Array1_double) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKFillet::Blend_RstRstFunction_knots(self as *mut Self, TKnots)
         })
     }
 
-    /// **Source:** `Blend_RstRstFunction.hxx`:203 - `Blend_RstRstFunction::Mults()`
-    pub fn mults(&mut self, TMults: &mut crate::ffi_types::TColStd_Array1OfInteger) {
+    /// **Source:** `Blend_RstRstFunction.hxx`:200 - `Blend_RstRstFunction::Mults()`
+    pub fn mults(&mut self, TMults: &mut crate::ffi_types::NCollection_Array1_int) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKFillet::Blend_RstRstFunction_mults(self as *mut Self, TMults)
         })
     }
 
-    /// **Source:** `Blend_RstRstFunction.hxx`:205 - `Blend_RstRstFunction::Section()`
-    pub fn section_point_array1ofpnt_array1ofpnt2d_array1ofreal(
+    /// **Source:** `Blend_RstRstFunction.hxx`:202 - `Blend_RstRstFunction::Section()`
+    pub fn section_point_arr1_pnt_arr1_pnt2d_arr1_double(
         &mut self,
         P: &Point,
-        Poles: &mut crate::ffi_types::TColgp_Array1OfPnt,
-        Poles2d: &mut crate::ffi_types::TColgp_Array1OfPnt2d,
-        Weigths: &mut crate::ffi_types::TColStd_Array1OfReal,
+        Poles: &mut crate::ffi_types::NCollection_Array1_gp_Pnt,
+        Poles2d: &mut crate::ffi_types::NCollection_Array1_gp_Pnt2d,
+        Weigths: &mut crate::ffi_types::NCollection_Array1_double,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi_extern_TKFillet::Blend_RstRstFunction_section_point_array1ofpnt_array1ofpnt2d_array1ofreal(self as *mut Self, P, Poles, Poles2d, Weigths)
+            crate::ffi_extern_TKFillet::Blend_RstRstFunction_section_point_arr1_pnt_arr1_pnt2d_arr1_double(self as *mut Self, P, Poles, Poles2d, Weigths)
         })
     }
 
-    /// **Source:** `Blend_RstRstFunction.hxx`:213 - `Blend_RstRstFunction::Section()`
+    /// **Source:** `Blend_RstRstFunction.hxx`:210 - `Blend_RstRstFunction::Section()`
     /// Used for the first and last section
-    /// The method returns Standard_True if the derivatives
-    /// are computed, otherwise it returns Standard_False.
-    pub fn section_point_array1ofpnt_array1ofvec_array1ofpnt2d_array1ofvec2d_array1ofreal2(
+    /// The method returns true if the derivatives
+    /// are computed, otherwise it returns false.
+    pub fn section_point_arr1_pnt_arr1_vec_arr1_pnt2d_arr1_vec2d_arr1_double2(
         &mut self,
         P: &Point,
-        Poles: &mut crate::ffi_types::TColgp_Array1OfPnt,
-        DPoles: &mut crate::ffi_types::TColgp_Array1OfVec,
-        Poles2d: &mut crate::ffi_types::TColgp_Array1OfPnt2d,
-        DPoles2d: &mut crate::ffi_types::TColgp_Array1OfVec2d,
-        Weigths: &mut crate::ffi_types::TColStd_Array1OfReal,
-        DWeigths: &mut crate::ffi_types::TColStd_Array1OfReal,
+        Poles: &mut crate::ffi_types::NCollection_Array1_gp_Pnt,
+        DPoles: &mut crate::ffi_types::NCollection_Array1_gp_Vec,
+        Poles2d: &mut crate::ffi_types::NCollection_Array1_gp_Pnt2d,
+        DPoles2d: &mut crate::ffi_types::NCollection_Array1_gp_Vec2d,
+        Weigths: &mut crate::ffi_types::NCollection_Array1_double,
+        DWeigths: &mut crate::ffi_types::NCollection_Array1_double,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi_extern_TKFillet::Blend_RstRstFunction_section_point_array1ofpnt_array1ofvec_array1ofpnt2d_array1ofvec2d_array1ofreal2(self as *mut Self, P, Poles, DPoles, Poles2d, DPoles2d, Weigths, DWeigths)
+            crate::ffi_extern_TKFillet::Blend_RstRstFunction_section_point_arr1_pnt_arr1_vec_arr1_pnt2d_arr1_vec2d_arr1_double2(self as *mut Self, P, Poles, DPoles, Poles2d, DPoles2d, Weigths, DWeigths)
         })
     }
 
-    /// **Source:** `Blend_RstRstFunction.hxx`:224 - `Blend_RstRstFunction::Section()`
+    /// **Source:** `Blend_RstRstFunction.hxx`:221 - `Blend_RstRstFunction::Section()`
     /// Used for the first and last section
-    /// The method returns Standard_True if the derivatives
-    /// are computed, otherwise it returns Standard_False.
-    pub fn section_point_array1ofpnt_array1ofvec2_array1ofpnt2d_array1ofvec2d2_array1ofreal3(
+    /// The method returns true if the derivatives
+    /// are computed, otherwise it returns false.
+    pub fn section_point_arr1_pnt_arr1_vec2_arr1_pnt2d_arr1_vec2d2_arr1_double3(
         &mut self,
         P: &Point,
-        Poles: &mut crate::ffi_types::TColgp_Array1OfPnt,
-        DPoles: &mut crate::ffi_types::TColgp_Array1OfVec,
-        D2Poles: &mut crate::ffi_types::TColgp_Array1OfVec,
-        Poles2d: &mut crate::ffi_types::TColgp_Array1OfPnt2d,
-        DPoles2d: &mut crate::ffi_types::TColgp_Array1OfVec2d,
-        D2Poles2d: &mut crate::ffi_types::TColgp_Array1OfVec2d,
-        Weigths: &mut crate::ffi_types::TColStd_Array1OfReal,
-        DWeigths: &mut crate::ffi_types::TColStd_Array1OfReal,
-        D2Weigths: &mut crate::ffi_types::TColStd_Array1OfReal,
+        Poles: &mut crate::ffi_types::NCollection_Array1_gp_Pnt,
+        DPoles: &mut crate::ffi_types::NCollection_Array1_gp_Vec,
+        D2Poles: &mut crate::ffi_types::NCollection_Array1_gp_Vec,
+        Poles2d: &mut crate::ffi_types::NCollection_Array1_gp_Pnt2d,
+        DPoles2d: &mut crate::ffi_types::NCollection_Array1_gp_Vec2d,
+        D2Poles2d: &mut crate::ffi_types::NCollection_Array1_gp_Vec2d,
+        Weigths: &mut crate::ffi_types::NCollection_Array1_double,
+        DWeigths: &mut crate::ffi_types::NCollection_Array1_double,
+        D2Weigths: &mut crate::ffi_types::NCollection_Array1_double,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi_extern_TKFillet::Blend_RstRstFunction_section_point_array1ofpnt_array1ofvec2_array1ofpnt2d_array1ofvec2d2_array1ofreal3(self as *mut Self, P, Poles, DPoles, D2Poles, Poles2d, DPoles2d, D2Poles2d, Weigths, DWeigths, D2Weigths)
+            crate::ffi_extern_TKFillet::Blend_RstRstFunction_section_point_arr1_pnt_arr1_vec2_arr1_pnt2d_arr1_vec2d2_arr1_double3(self as *mut Self, P, Poles, DPoles, D2Poles, Poles2d, DPoles2d, D2Poles2d, Weigths, DWeigths, D2Weigths)
         })
     }
 
@@ -3161,7 +3167,7 @@ impl RstRstFunction {
         }
     }
 
-    /// Inherited: **Source:** `Blend_AppFunction.hxx`:188 - `Blend_AppFunction::Resolution()`
+    /// Inherited: **Source:** `Blend_AppFunction.hxx`:185 - `Blend_AppFunction::Resolution()`
     pub fn resolution(&self, IC2d: i32, Tol: f64, TolU: &mut f64, TolV: &mut f64) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKFillet::Blend_RstRstFunction_inherited_Resolution(
@@ -3174,7 +3180,7 @@ impl RstRstFunction {
         })
     }
 
-    /// Inherited: **Source:** `Blend_AppFunction.hxx`:195 - `Blend_AppFunction::Parameter()`
+    /// Inherited: **Source:** `Blend_AppFunction.hxx`:192 - `Blend_AppFunction::Parameter()`
     pub fn parameter(&self, P: &Point) -> f64 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKFillet::Blend_RstRstFunction_inherited_Parameter(
@@ -3199,14 +3205,14 @@ impl RstRstFunction {
 // ========================
 
 /// **Source:** `Blend_SurfCurvFuncInv.hxx`:40 - `Blend_SurfCurvFuncInv`
-/// Deferred   class  for a  function  used  to compute  a
-/// blending surface between a  surface and a curve, using
-/// a  guide  line.   This   function is  used  to find  a
+/// Deferred class for a function used to compute a
+/// blending surface between a surface and a curve, using
+/// a guide line. This function is used to find a
 /// solution on a done restriction of the surface.
 ///
-/// The vector  <X> used in  Value, Values and Derivatives
-/// methods  has   to  be the   vector  of  the parametric
-/// coordinates  wguide, wcurv, wrst  where  wguide is the
+/// The vector <X> used in Value, Values and Derivatives
+/// methods has to be the vector of the parametric
+/// coordinates wguide, wcurv, wrst where wguide is the
 /// parameter on the guide line, wcurv is the parameter on
 /// the curve, wrst is the parameter on the restriction on
 /// the surface.
@@ -3283,15 +3289,15 @@ impl SurfCurvFuncInv {
         })
     }
 
-    /// **Source:** `Blend_SurfCurvFuncInv.hxx`:72 - `Blend_SurfCurvFuncInv::Set()`
+    /// **Source:** `Blend_SurfCurvFuncInv.hxx`:70 - `Blend_SurfCurvFuncInv::Set()`
     /// Set the Point on which a solution has to be found.
-    pub fn set(&mut self, Rst: &crate::ffi_types::HandleAdaptor2dCurve2d) {
+    pub fn set(&mut self, Rst: &crate::ffi_types::Handle_Adaptor2d_Curve2d) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKFillet::Blend_SurfCurvFuncInv_set(self as *mut Self, Rst)
         })
     }
 
-    /// **Source:** `Blend_SurfCurvFuncInv.hxx`:77 - `Blend_SurfCurvFuncInv::GetTolerance()`
+    /// **Source:** `Blend_SurfCurvFuncInv.hxx`:75 - `Blend_SurfCurvFuncInv::GetTolerance()`
     /// Returns in the vector Tolerance the parametric tolerance
     /// for each of the 3 variables;
     /// Tol is the tolerance used in 3d space.
@@ -3305,7 +3311,7 @@ impl SurfCurvFuncInv {
         })
     }
 
-    /// **Source:** `Blend_SurfCurvFuncInv.hxx`:84 - `Blend_SurfCurvFuncInv::GetBounds()`
+    /// **Source:** `Blend_SurfCurvFuncInv.hxx`:81 - `Blend_SurfCurvFuncInv::GetBounds()`
     /// Returns in the vector InfBound the lowest values allowed
     /// for each of the 3 variables.
     /// Returns in the vector SupBound the greatest values allowed
@@ -3324,8 +3330,8 @@ impl SurfCurvFuncInv {
         })
     }
 
-    /// **Source:** `Blend_SurfCurvFuncInv.hxx`:88 - `Blend_SurfCurvFuncInv::IsSolution()`
-    /// Returns Standard_True if Sol is a zero of the function.
+    /// **Source:** `Blend_SurfCurvFuncInv.hxx`:85 - `Blend_SurfCurvFuncInv::IsSolution()`
+    /// Returns true if Sol is a zero of the function.
     /// Tol is the tolerance used in 3d space.
     pub fn is_solution(&mut self, Sol: &crate::ffi_types::math_Vector, Tol: f64) -> bool {
         crate::check_result(unsafe {
@@ -3392,15 +3398,15 @@ impl SurfCurvFuncInv {
 // ========================
 
 /// **Source:** `Blend_SurfPointFuncInv.hxx`:40 - `Blend_SurfPointFuncInv`
-/// Deferred   class  for a  function  used  to compute  a
-/// blending surface between a  surface and a curve, using
-/// a  guide  line.   This   function is  used  to find  a
+/// Deferred class for a function used to compute a
+/// blending surface between a surface and a curve, using
+/// a guide line. This function is used to find a
 /// solution on a done point of the curve.
 ///
-/// The vector <X>  used in Value, Values and  Derivatives
-/// methods  has  to   be the  vector   of the  parametric
-/// coordinates w, U,  V where w is  the parameter  on the
-/// guide line, U,V   are the parametric coordinates of  a
+/// The vector <X> used in Value, Values and Derivatives
+/// methods has to be the vector of the parametric
+/// coordinates w, U, V where w is the parameter on the
+/// guide line, U,V are the parametric coordinates of a
 /// point on the partner surface.
 pub use crate::ffi_types::Blend_SurfPointFuncInv as SurfPointFuncInv;
 
@@ -3475,7 +3481,7 @@ impl SurfPointFuncInv {
         })
     }
 
-    /// **Source:** `Blend_SurfPointFuncInv.hxx`:72 - `Blend_SurfPointFuncInv::Set()`
+    /// **Source:** `Blend_SurfPointFuncInv.hxx`:70 - `Blend_SurfPointFuncInv::Set()`
     /// Set the Point on which a solution has to be found.
     pub fn set(&mut self, P: &crate::gp::Pnt) {
         crate::check_void_result(unsafe {
@@ -3483,7 +3489,7 @@ impl SurfPointFuncInv {
         })
     }
 
-    /// **Source:** `Blend_SurfPointFuncInv.hxx`:77 - `Blend_SurfPointFuncInv::GetTolerance()`
+    /// **Source:** `Blend_SurfPointFuncInv.hxx`:75 - `Blend_SurfPointFuncInv::GetTolerance()`
     /// Returns in the vector Tolerance the parametric tolerance
     /// for each of the 3 variables;
     /// Tol is the tolerance used in 3d space.
@@ -3497,7 +3503,7 @@ impl SurfPointFuncInv {
         })
     }
 
-    /// **Source:** `Blend_SurfPointFuncInv.hxx`:84 - `Blend_SurfPointFuncInv::GetBounds()`
+    /// **Source:** `Blend_SurfPointFuncInv.hxx`:81 - `Blend_SurfPointFuncInv::GetBounds()`
     /// Returns in the vector InfBound the lowest values allowed
     /// for each of the 3 variables.
     /// Returns in the vector SupBound the greatest values allowed
@@ -3516,8 +3522,8 @@ impl SurfPointFuncInv {
         })
     }
 
-    /// **Source:** `Blend_SurfPointFuncInv.hxx`:88 - `Blend_SurfPointFuncInv::IsSolution()`
-    /// Returns Standard_True if Sol is a zero of the function.
+    /// **Source:** `Blend_SurfPointFuncInv.hxx`:85 - `Blend_SurfPointFuncInv::IsSolution()`
+    /// Returns true if Sol is a zero of the function.
     /// Tol is the tolerance used in 3d space.
     pub fn is_solution(&mut self, Sol: &crate::ffi_types::math_Vector, Tol: f64) -> bool {
         crate::check_result(unsafe {
@@ -3589,7 +3595,7 @@ impl SurfPointFuncInv {
 /// using a guide line.
 /// The vector <X> used in Value, Values and Derivatives methods
 /// may be the vector of the parametric coordinates U,V,
-/// W of the extremities of a section on the surface  and
+/// W of the extremities of a section on the surface and
 /// the curve.
 pub use crate::ffi_types::Blend_SurfRstFunction as SurfRstFunction;
 
@@ -3664,7 +3670,7 @@ impl SurfRstFunction {
         })
     }
 
-    /// **Source:** `Blend_SurfRstFunction.hxx`:79 - `Blend_SurfRstFunction::Set()`
+    /// **Source:** `Blend_SurfRstFunction.hxx`:77 - `Blend_SurfRstFunction::Set()`
     /// Sets the value of the parameter along the guide line.
     /// This determines the plane in which the solution has
     /// to be found.
@@ -3674,7 +3680,7 @@ impl SurfRstFunction {
         })
     }
 
-    /// **Source:** `Blend_SurfRstFunction.hxx`:85 - `Blend_SurfRstFunction::Set()`
+    /// **Source:** `Blend_SurfRstFunction.hxx`:83 - `Blend_SurfRstFunction::Set()`
     /// Sets the bounds of the parametric interval on
     /// the guide line.
     /// This determines the derivatives in these values if the
@@ -3689,9 +3695,9 @@ impl SurfRstFunction {
         })
     }
 
-    /// **Source:** `Blend_SurfRstFunction.hxx`:90 - `Blend_SurfRstFunction::GetTolerance()`
+    /// **Source:** `Blend_SurfRstFunction.hxx`:88 - `Blend_SurfRstFunction::GetTolerance()`
     /// Returns in the vector Tolerance the parametric tolerance
-    /// for each variable;
+    /// for each variable.
     /// Tol is the tolerance used in 3d space.
     pub fn get_tolerance_vector_real(
         &self,
@@ -3707,9 +3713,9 @@ impl SurfRstFunction {
         })
     }
 
-    /// **Source:** `Blend_SurfRstFunction.hxx`:97 - `Blend_SurfRstFunction::GetBounds()`
+    /// **Source:** `Blend_SurfRstFunction.hxx`:94 - `Blend_SurfRstFunction::GetBounds()`
     /// Returns in the vector InfBound the lowest values allowed
-    /// for each variables.
+    /// for each variable.
     /// Returns in the vector SupBound the greatest values allowed
     /// for each of the 3 variables.
     pub fn get_bounds(
@@ -3726,8 +3732,8 @@ impl SurfRstFunction {
         })
     }
 
-    /// **Source:** `Blend_SurfRstFunction.hxx`:103 - `Blend_SurfRstFunction::IsSolution()`
-    /// Returns Standard_True if Sol is a zero of the function.
+    /// **Source:** `Blend_SurfRstFunction.hxx`:100 - `Blend_SurfRstFunction::IsSolution()`
+    /// Returns true if Sol is a zero of the function.
     /// Tol is the tolerance used in 3d space.
     /// The computation is made at the current value of
     /// the parameter on the guide line.
@@ -3741,8 +3747,8 @@ impl SurfRstFunction {
         })
     }
 
-    /// **Source:** `Blend_SurfRstFunction.hxx`:108 - `Blend_SurfRstFunction::GetMinimalDistance()`
-    /// Returns   the    minimal  Distance  between   two
+    /// **Source:** `Blend_SurfRstFunction.hxx`:104 - `Blend_SurfRstFunction::GetMinimalDistance()`
+    /// Returns the minimal Distance between two
     /// extremities of calculated sections.
     pub fn get_minimal_distance(&self) -> f64 {
         crate::check_result(unsafe {
@@ -3752,7 +3758,7 @@ impl SurfRstFunction {
         })
     }
 
-    /// **Source:** `Blend_SurfRstFunction.hxx`:111 - `Blend_SurfRstFunction::Pnt1()`
+    /// **Source:** `Blend_SurfRstFunction.hxx`:107 - `Blend_SurfRstFunction::Pnt1()`
     /// Returns the point on the first support.
     pub fn pnt1(&self) -> &crate::gp::Pnt {
         unsafe {
@@ -3762,8 +3768,8 @@ impl SurfRstFunction {
         }
     }
 
-    /// **Source:** `Blend_SurfRstFunction.hxx`:114 - `Blend_SurfRstFunction::Pnt2()`
-    /// Returns the point on the seconde support.
+    /// **Source:** `Blend_SurfRstFunction.hxx`:110 - `Blend_SurfRstFunction::Pnt2()`
+    /// Returns the point on the second support.
     pub fn pnt2(&self) -> &crate::gp::Pnt {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKFillet::Blend_SurfRstFunction_pnt2(
@@ -3772,7 +3778,7 @@ impl SurfRstFunction {
         }
     }
 
-    /// **Source:** `Blend_SurfRstFunction.hxx`:117 - `Blend_SurfRstFunction::PointOnS()`
+    /// **Source:** `Blend_SurfRstFunction.hxx`:113 - `Blend_SurfRstFunction::PointOnS()`
     /// Returns the point on the surface.
     pub fn point_on_s(&self) -> &crate::gp::Pnt {
         unsafe {
@@ -3782,7 +3788,7 @@ impl SurfRstFunction {
         }
     }
 
-    /// **Source:** `Blend_SurfRstFunction.hxx`:120 - `Blend_SurfRstFunction::PointOnRst()`
+    /// **Source:** `Blend_SurfRstFunction.hxx`:116 - `Blend_SurfRstFunction::PointOnRst()`
     /// Returns the point on the curve.
     pub fn point_on_rst(&self) -> &crate::gp::Pnt {
         unsafe {
@@ -3792,7 +3798,7 @@ impl SurfRstFunction {
         }
     }
 
-    /// **Source:** `Blend_SurfRstFunction.hxx`:123 - `Blend_SurfRstFunction::Pnt2dOnS()`
+    /// **Source:** `Blend_SurfRstFunction.hxx`:119 - `Blend_SurfRstFunction::Pnt2dOnS()`
     /// Returns U,V coordinates of the point on the surface.
     pub fn pnt2d_on_s(&self) -> &crate::gp::Pnt2d {
         unsafe {
@@ -3802,8 +3808,8 @@ impl SurfRstFunction {
         }
     }
 
-    /// **Source:** `Blend_SurfRstFunction.hxx`:127 - `Blend_SurfRstFunction::Pnt2dOnRst()`
-    /// Returns  U,V coordinates of the point  on the curve on
+    /// **Source:** `Blend_SurfRstFunction.hxx`:123 - `Blend_SurfRstFunction::Pnt2dOnRst()`
+    /// Returns U,V coordinates of the point on the curve on
     /// surface.
     pub fn pnt2d_on_rst(&self) -> &crate::gp::Pnt2d {
         unsafe {
@@ -3813,7 +3819,7 @@ impl SurfRstFunction {
         }
     }
 
-    /// **Source:** `Blend_SurfRstFunction.hxx`:130 - `Blend_SurfRstFunction::ParameterOnRst()`
+    /// **Source:** `Blend_SurfRstFunction.hxx`:126 - `Blend_SurfRstFunction::ParameterOnRst()`
     /// Returns parameter of the point on the curve.
     pub fn parameter_on_rst(&self) -> f64 {
         crate::check_result(unsafe {
@@ -3821,7 +3827,7 @@ impl SurfRstFunction {
         })
     }
 
-    /// **Source:** `Blend_SurfRstFunction.hxx`:134 - `Blend_SurfRstFunction::IsTangencyPoint()`
+    /// **Source:** `Blend_SurfRstFunction.hxx`:130 - `Blend_SurfRstFunction::IsTangencyPoint()`
     /// Returns True when it is not possible to compute
     /// the tangent vectors at PointOnS and/or PointOnRst.
     pub fn is_tangency_point(&self) -> bool {
@@ -3830,7 +3836,7 @@ impl SurfRstFunction {
         })
     }
 
-    /// **Source:** `Blend_SurfRstFunction.hxx`:137 - `Blend_SurfRstFunction::TangentOnS()`
+    /// **Source:** `Blend_SurfRstFunction.hxx`:133 - `Blend_SurfRstFunction::TangentOnS()`
     /// Returns the tangent vector at PointOnS, in 3d space.
     pub fn tangent_on_s(&self) -> &crate::gp::Vec {
         unsafe {
@@ -3840,7 +3846,7 @@ impl SurfRstFunction {
         }
     }
 
-    /// **Source:** `Blend_SurfRstFunction.hxx`:141 - `Blend_SurfRstFunction::Tangent2dOnS()`
+    /// **Source:** `Blend_SurfRstFunction.hxx`:137 - `Blend_SurfRstFunction::Tangent2dOnS()`
     /// Returns the tangent vector at PointOnS, in the
     /// parametric space of the first surface.
     pub fn tangent2d_on_s(&self) -> &crate::gp::Vec2d {
@@ -3853,7 +3859,7 @@ impl SurfRstFunction {
         }
     }
 
-    /// **Source:** `Blend_SurfRstFunction.hxx`:144 - `Blend_SurfRstFunction::TangentOnRst()`
+    /// **Source:** `Blend_SurfRstFunction.hxx`:140 - `Blend_SurfRstFunction::TangentOnRst()`
     /// Returns the tangent vector at PointOnC, in 3d space.
     pub fn tangent_on_rst(&self) -> &crate::gp::Vec {
         unsafe {
@@ -3865,7 +3871,7 @@ impl SurfRstFunction {
         }
     }
 
-    /// **Source:** `Blend_SurfRstFunction.hxx`:148 - `Blend_SurfRstFunction::Tangent2dOnRst()`
+    /// **Source:** `Blend_SurfRstFunction.hxx`:144 - `Blend_SurfRstFunction::Tangent2dOnRst()`
     /// Returns the tangent vector at PointOnRst, in the
     /// parametric space of the second surface.
     pub fn tangent2d_on_rst(&self) -> &crate::gp::Vec2d {
@@ -3878,9 +3884,9 @@ impl SurfRstFunction {
         }
     }
 
-    /// **Source:** `Blend_SurfRstFunction.hxx`:152 - `Blend_SurfRstFunction::Decroch()`
-    /// Enables implementation  of a criterion of decrochage
-    /// specific to  the function.
+    /// **Source:** `Blend_SurfRstFunction.hxx`:148 - `Blend_SurfRstFunction::Decroch()`
+    /// Enables implementation of a criterion of decrochage
+    /// specific to the function.
     pub fn decroch(
         &self,
         Sol: &crate::ffi_types::math_Vector,
@@ -3897,15 +3903,15 @@ impl SurfRstFunction {
         })
     }
 
-    /// **Source:** `Blend_SurfRstFunction.hxx`:157 - `Blend_SurfRstFunction::IsRational()`
-    /// Returns  if the section is rational
+    /// **Source:** `Blend_SurfRstFunction.hxx`:151 - `Blend_SurfRstFunction::IsRational()`
+    /// Returns if the section is rational
     pub fn is_rational(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKFillet::Blend_SurfRstFunction_is_rational(self as *const Self)
         })
     }
 
-    /// **Source:** `Blend_SurfRstFunction.hxx`:160 - `Blend_SurfRstFunction::GetSectionSize()`
+    /// **Source:** `Blend_SurfRstFunction.hxx`:154 - `Blend_SurfRstFunction::GetSectionSize()`
     /// Returns the length of the maximum section
     pub fn get_section_size(&self) -> f64 {
         crate::check_result(unsafe {
@@ -3913,10 +3919,10 @@ impl SurfRstFunction {
         })
     }
 
-    /// **Source:** `Blend_SurfRstFunction.hxx`:164 - `Blend_SurfRstFunction::GetMinimalWeight()`
+    /// **Source:** `Blend_SurfRstFunction.hxx`:158 - `Blend_SurfRstFunction::GetMinimalWeight()`
     /// Compute the minimal value of weight for each poles
     /// of all sections.
-    pub fn get_minimal_weight(&self, Weigths: &mut crate::ffi_types::TColStd_Array1OfReal) {
+    pub fn get_minimal_weight(&self, Weigths: &mut crate::ffi_types::NCollection_Array1_double) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKFillet::Blend_SurfRstFunction_get_minimal_weight(
                 self as *const Self,
@@ -3925,8 +3931,8 @@ impl SurfRstFunction {
         })
     }
 
-    /// **Source:** `Blend_SurfRstFunction.hxx`:168 - `Blend_SurfRstFunction::NbIntervals()`
-    /// Returns  the number  of  intervals for  continuity
+    /// **Source:** `Blend_SurfRstFunction.hxx`:162 - `Blend_SurfRstFunction::NbIntervals()`
+    /// Returns the number of intervals for continuity
     /// <S>. May be one if Continuity(me) >= <S>
     pub fn nb_intervals(&self, S: crate::geom_abs::Shape) -> i32 {
         crate::check_result(unsafe {
@@ -3937,15 +3943,15 @@ impl SurfRstFunction {
         })
     }
 
-    /// **Source:** `Blend_SurfRstFunction.hxx`:175 - `Blend_SurfRstFunction::Intervals()`
-    /// Stores in <T> the  parameters bounding the intervals
+    /// **Source:** `Blend_SurfRstFunction.hxx`:169 - `Blend_SurfRstFunction::Intervals()`
+    /// Stores in <T> the parameters bounding the intervals
     /// of continuity <S>.
     ///
-    /// The array must provide  enough room to  accommodate
+    /// The array must provide enough room to accommodate
     /// for the parameters. i.e. T.Length() > NbIntervals()
     pub fn intervals(
         &self,
-        T: &mut crate::ffi_types::TColStd_Array1OfReal,
+        T: &mut crate::ffi_types::NCollection_Array1_double,
         S: crate::geom_abs::Shape,
     ) {
         crate::check_void_result(unsafe {
@@ -3957,7 +3963,7 @@ impl SurfRstFunction {
         })
     }
 
-    /// **Source:** `Blend_SurfRstFunction.hxx`:177 - `Blend_SurfRstFunction::GetShape()`
+    /// **Source:** `Blend_SurfRstFunction.hxx`:172 - `Blend_SurfRstFunction::GetShape()`
     pub fn get_shape(
         &mut self,
         NbPoles: &mut i32,
@@ -3976,7 +3982,7 @@ impl SurfRstFunction {
         })
     }
 
-    /// **Source:** `Blend_SurfRstFunction.hxx`:187 - `Blend_SurfRstFunction::GetTolerance()`
+    /// **Source:** `Blend_SurfRstFunction.hxx`:182 - `Blend_SurfRstFunction::GetTolerance()`
     /// Returns the tolerance to reach in approximation
     /// to respect
     /// BoundTol error at the Boundary
@@ -4002,71 +4008,71 @@ impl SurfRstFunction {
         })
     }
 
-    /// **Source:** `Blend_SurfRstFunction.hxx`:193 - `Blend_SurfRstFunction::Knots()`
-    pub fn knots(&mut self, TKnots: &mut crate::ffi_types::TColStd_Array1OfReal) {
+    /// **Source:** `Blend_SurfRstFunction.hxx`:188 - `Blend_SurfRstFunction::Knots()`
+    pub fn knots(&mut self, TKnots: &mut crate::ffi_types::NCollection_Array1_double) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKFillet::Blend_SurfRstFunction_knots(self as *mut Self, TKnots)
         })
     }
 
-    /// **Source:** `Blend_SurfRstFunction.hxx`:195 - `Blend_SurfRstFunction::Mults()`
-    pub fn mults(&mut self, TMults: &mut crate::ffi_types::TColStd_Array1OfInteger) {
+    /// **Source:** `Blend_SurfRstFunction.hxx`:190 - `Blend_SurfRstFunction::Mults()`
+    pub fn mults(&mut self, TMults: &mut crate::ffi_types::NCollection_Array1_int) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKFillet::Blend_SurfRstFunction_mults(self as *mut Self, TMults)
         })
     }
 
-    /// **Source:** `Blend_SurfRstFunction.hxx`:200 - `Blend_SurfRstFunction::Section()`
+    /// **Source:** `Blend_SurfRstFunction.hxx`:195 - `Blend_SurfRstFunction::Section()`
     /// Used for the first and last section
-    /// The method returns Standard_True if the derivatives
-    /// are computed, otherwise it returns Standard_False.
-    pub fn section_point_array1ofpnt_array1ofvec_array1ofpnt2d_array1ofvec2d_array1ofreal2(
+    /// The method returns true if the derivatives
+    /// are computed, otherwise it returns false.
+    pub fn section_point_arr1_pnt_arr1_vec_arr1_pnt2d_arr1_vec2d_arr1_double2(
         &mut self,
         P: &Point,
-        Poles: &mut crate::ffi_types::TColgp_Array1OfPnt,
-        DPoles: &mut crate::ffi_types::TColgp_Array1OfVec,
-        Poles2d: &mut crate::ffi_types::TColgp_Array1OfPnt2d,
-        DPoles2d: &mut crate::ffi_types::TColgp_Array1OfVec2d,
-        Weigths: &mut crate::ffi_types::TColStd_Array1OfReal,
-        DWeigths: &mut crate::ffi_types::TColStd_Array1OfReal,
+        Poles: &mut crate::ffi_types::NCollection_Array1_gp_Pnt,
+        DPoles: &mut crate::ffi_types::NCollection_Array1_gp_Vec,
+        Poles2d: &mut crate::ffi_types::NCollection_Array1_gp_Pnt2d,
+        DPoles2d: &mut crate::ffi_types::NCollection_Array1_gp_Vec2d,
+        Weigths: &mut crate::ffi_types::NCollection_Array1_double,
+        DWeigths: &mut crate::ffi_types::NCollection_Array1_double,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi_extern_TKFillet::Blend_SurfRstFunction_section_point_array1ofpnt_array1ofvec_array1ofpnt2d_array1ofvec2d_array1ofreal2(self as *mut Self, P, Poles, DPoles, Poles2d, DPoles2d, Weigths, DWeigths)
+            crate::ffi_extern_TKFillet::Blend_SurfRstFunction_section_point_arr1_pnt_arr1_vec_arr1_pnt2d_arr1_vec2d_arr1_double2(self as *mut Self, P, Poles, DPoles, Poles2d, DPoles2d, Weigths, DWeigths)
         })
     }
 
-    /// **Source:** `Blend_SurfRstFunction.hxx`:211 - `Blend_SurfRstFunction::Section()`
+    /// **Source:** `Blend_SurfRstFunction.hxx`:206 - `Blend_SurfRstFunction::Section()`
     /// Used for the first and last section
-    /// The method returns Standard_True if the derivatives
-    /// are computed, otherwise it returns Standard_False.
-    pub fn section_point_array1ofpnt_array1ofvec2_array1ofpnt2d_array1ofvec2d2_array1ofreal3(
+    /// The method returns true if the derivatives
+    /// are computed, otherwise it returns false.
+    pub fn section_point_arr1_pnt_arr1_vec2_arr1_pnt2d_arr1_vec2d2_arr1_double3(
         &mut self,
         P: &Point,
-        Poles: &mut crate::ffi_types::TColgp_Array1OfPnt,
-        DPoles: &mut crate::ffi_types::TColgp_Array1OfVec,
-        D2Poles: &mut crate::ffi_types::TColgp_Array1OfVec,
-        Poles2d: &mut crate::ffi_types::TColgp_Array1OfPnt2d,
-        DPoles2d: &mut crate::ffi_types::TColgp_Array1OfVec2d,
-        D2Poles2d: &mut crate::ffi_types::TColgp_Array1OfVec2d,
-        Weigths: &mut crate::ffi_types::TColStd_Array1OfReal,
-        DWeigths: &mut crate::ffi_types::TColStd_Array1OfReal,
-        D2Weigths: &mut crate::ffi_types::TColStd_Array1OfReal,
+        Poles: &mut crate::ffi_types::NCollection_Array1_gp_Pnt,
+        DPoles: &mut crate::ffi_types::NCollection_Array1_gp_Vec,
+        D2Poles: &mut crate::ffi_types::NCollection_Array1_gp_Vec,
+        Poles2d: &mut crate::ffi_types::NCollection_Array1_gp_Pnt2d,
+        DPoles2d: &mut crate::ffi_types::NCollection_Array1_gp_Vec2d,
+        D2Poles2d: &mut crate::ffi_types::NCollection_Array1_gp_Vec2d,
+        Weigths: &mut crate::ffi_types::NCollection_Array1_double,
+        DWeigths: &mut crate::ffi_types::NCollection_Array1_double,
+        D2Weigths: &mut crate::ffi_types::NCollection_Array1_double,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi_extern_TKFillet::Blend_SurfRstFunction_section_point_array1ofpnt_array1ofvec2_array1ofpnt2d_array1ofvec2d2_array1ofreal3(self as *mut Self, P, Poles, DPoles, D2Poles, Poles2d, DPoles2d, D2Poles2d, Weigths, DWeigths, D2Weigths)
+            crate::ffi_extern_TKFillet::Blend_SurfRstFunction_section_point_arr1_pnt_arr1_vec2_arr1_pnt2d_arr1_vec2d2_arr1_double3(self as *mut Self, P, Poles, DPoles, D2Poles, Poles2d, DPoles2d, D2Poles2d, Weigths, DWeigths, D2Weigths)
         })
     }
 
-    /// **Source:** `Blend_SurfRstFunction.hxx`:222 - `Blend_SurfRstFunction::Section()`
-    pub fn section_point_array1ofpnt_array1ofpnt2d_array1ofreal(
+    /// **Source:** `Blend_SurfRstFunction.hxx`:217 - `Blend_SurfRstFunction::Section()`
+    pub fn section_point_arr1_pnt_arr1_pnt2d_arr1_double(
         &mut self,
         P: &Point,
-        Poles: &mut crate::ffi_types::TColgp_Array1OfPnt,
-        Poles2d: &mut crate::ffi_types::TColgp_Array1OfPnt2d,
-        Weigths: &mut crate::ffi_types::TColStd_Array1OfReal,
+        Poles: &mut crate::ffi_types::NCollection_Array1_gp_Pnt,
+        Poles2d: &mut crate::ffi_types::NCollection_Array1_gp_Pnt2d,
+        Weigths: &mut crate::ffi_types::NCollection_Array1_double,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi_extern_TKFillet::Blend_SurfRstFunction_section_point_array1ofpnt_array1ofpnt2d_array1ofreal(self as *mut Self, P, Poles, Poles2d, Weigths)
+            crate::ffi_extern_TKFillet::Blend_SurfRstFunction_section_point_arr1_pnt_arr1_pnt2d_arr1_double(self as *mut Self, P, Poles, Poles2d, Weigths)
         })
     }
 
@@ -4132,7 +4138,7 @@ impl SurfRstFunction {
         }
     }
 
-    /// Inherited: **Source:** `Blend_AppFunction.hxx`:188 - `Blend_AppFunction::Resolution()`
+    /// Inherited: **Source:** `Blend_AppFunction.hxx`:185 - `Blend_AppFunction::Resolution()`
     pub fn resolution(&self, IC2d: i32, Tol: f64, TolU: &mut f64, TolV: &mut f64) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKFillet::Blend_SurfRstFunction_inherited_Resolution(
@@ -4145,7 +4151,7 @@ impl SurfRstFunction {
         })
     }
 
-    /// Inherited: **Source:** `Blend_AppFunction.hxx`:195 - `Blend_AppFunction::Parameter()`
+    /// Inherited: **Source:** `Blend_AppFunction.hxx`:192 - `Blend_AppFunction::Parameter()`
     pub fn parameter(&self, P: &Point) -> f64 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKFillet::Blend_SurfRstFunction_inherited_Parameter(

@@ -10,48 +10,42 @@ use crate::ffi_types::*;
 unsafe extern "C" {
     // ======================== Expr_Absolute ========================
     pub fn Expr_Absolute_destructor(self_: *mut Expr_Absolute);
-    /// **Source:** `Expr_Absolute.hxx`:37 - `Expr_Absolute::Expr_Absolute()`
+    /// **Source:** `Expr_Absolute.hxx`:33 - `Expr_Absolute::Expr_Absolute()`
     pub fn Expr_Absolute_ctor_handleexprgeneralexpression(
-        exp: *const HandleExprGeneralExpression,
+        exp: *const Handle_Expr_GeneralExpression,
     ) -> crate::OcctResult<*mut Expr_Absolute>;
-    /// **Source:** `Expr_Absolute.hxx`:41 - `Expr_Absolute::ShallowSimplified()`
+    /// **Source:** `Expr_Absolute.hxx`:37 - `Expr_Absolute::ShallowSimplified()`
     pub fn Expr_Absolute_shallow_simplified(
         self_: *const Expr_Absolute,
-    ) -> crate::OcctResult<*mut HandleExprGeneralExpression>;
-    /// **Source:** `Expr_Absolute.hxx`:44 - `Expr_Absolute::Copy()`
+    ) -> crate::OcctResult<*mut Handle_Expr_GeneralExpression>;
+    /// **Source:** `Expr_Absolute.hxx`:40 - `Expr_Absolute::Copy()`
     pub fn Expr_Absolute_copy(
         self_: *const Expr_Absolute,
-    ) -> crate::OcctResult<*mut HandleExprGeneralExpression>;
-    /// **Source:** `Expr_Absolute.hxx`:50 - `Expr_Absolute::IsIdentical()`
+    ) -> crate::OcctResult<*mut Handle_Expr_GeneralExpression>;
+    /// **Source:** `Expr_Absolute.hxx`:45 - `Expr_Absolute::IsIdentical()`
     pub fn Expr_Absolute_is_identical(
         self_: *const Expr_Absolute,
-        Other: *const HandleExprGeneralExpression,
+        Other: *const Handle_Expr_GeneralExpression,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `Expr_Absolute.hxx`:52 - `Expr_Absolute::IsLinear()`
+    /// **Source:** `Expr_Absolute.hxx`:47 - `Expr_Absolute::IsLinear()`
     pub fn Expr_Absolute_is_linear(self_: *const Expr_Absolute) -> crate::OcctResult<bool>;
-    /// **Source:** `Expr_Absolute.hxx`:55 - `Expr_Absolute::Derivative()`
+    /// **Source:** `Expr_Absolute.hxx`:50 - `Expr_Absolute::Derivative()`
     pub fn Expr_Absolute_derivative(
         self_: *const Expr_Absolute,
-        X: *const HandleExprNamedUnknown,
-    ) -> crate::OcctResult<*mut HandleExprGeneralExpression>;
-    /// **Source:** `Expr_Absolute.hxx`:62 - `Expr_Absolute::Evaluate()`
-    pub fn Expr_Absolute_evaluate(
-        self_: *const Expr_Absolute,
-        vars: *const Expr_Array1OfNamedUnknown,
-        vals: *const TColStd_Array1OfReal,
-    ) -> crate::OcctResult<f64>;
-    /// **Source:** `Expr_Absolute.hxx`:66 - `Expr_Absolute::String()`
+        X: *const Handle_Expr_NamedUnknown,
+    ) -> crate::OcctResult<*mut Handle_Expr_GeneralExpression>;
+    /// **Source:** `Expr_Absolute.hxx`:61 - `Expr_Absolute::String()`
     pub fn Expr_Absolute_string(
         self_: *const Expr_Absolute,
     ) -> crate::OcctResult<*mut TCollection_AsciiString>;
-    /// **Source:** `Expr_Absolute.hxx`:68 - `Expr_Absolute::DynamicType()`
+    /// **Source:** `Expr_Absolute.hxx`:63 - `Expr_Absolute::DynamicType()`
     pub fn Expr_Absolute_dynamic_type(
         self_: *const Expr_Absolute,
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// **Source:** `Expr_Absolute.hxx`:68 - `Expr_Absolute::get_type_name()`
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
+    /// **Source:** `Expr_Absolute.hxx`:63 - `Expr_Absolute::get_type_name()`
     pub fn Expr_Absolute_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
-    /// **Source:** `Expr_Absolute.hxx`:68 - `Expr_Absolute::get_type_descriptor()`
-    pub fn Expr_Absolute_get_type_descriptor() -> crate::OcctResult<*const HandleStandardType>;
+    /// **Source:** `Expr_Absolute.hxx`:63 - `Expr_Absolute::get_type_descriptor()`
+    pub fn Expr_Absolute_get_type_descriptor() -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast Expr_Absolute to Expr_UnaryExpression
     pub fn Expr_Absolute_as_Expr_UnaryExpression(
         self_: *const Expr_Absolute,
@@ -79,158 +73,152 @@ unsafe extern "C" {
     /// Wrap Expr_Absolute in a Handle
     pub fn Expr_Absolute_to_handle(
         obj: *mut Expr_Absolute,
-    ) -> crate::OcctResult<*mut HandleExprAbsolute>;
+    ) -> crate::OcctResult<*mut Handle_Expr_Absolute>;
     /// Destroy Handle<Expr_Absolute>
-    pub fn HandleExprAbsolute_destructor(self_: *mut HandleExprAbsolute);
+    pub fn Handle_Expr_Absolute_destructor(self_: *mut Handle_Expr_Absolute);
     /// Clone Handle<Expr_Absolute> (increments reference count)
-    pub fn HandleExprAbsolute_clone(
-        self_: *const HandleExprAbsolute,
-    ) -> crate::OcctResult<*mut HandleExprAbsolute>;
+    pub fn Handle_Expr_Absolute_clone(
+        self_: *const Handle_Expr_Absolute,
+    ) -> crate::OcctResult<*mut Handle_Expr_Absolute>;
     /// Check if Handle<Expr_Absolute> is null
-    pub fn HandleExprAbsolute_is_null(self_: *const HandleExprAbsolute) -> bool;
+    pub fn Handle_Expr_Absolute_is_null(self_: *const Handle_Expr_Absolute) -> bool;
     /// Dereference Handle to get *const Expr_Absolute
-    pub fn HandleExprAbsolute_get(
-        handle: *const HandleExprAbsolute,
+    pub fn Handle_Expr_Absolute_get(
+        handle: *const Handle_Expr_Absolute,
     ) -> crate::OcctResult<*const Expr_Absolute>;
     /// Dereference Handle to get *mut Expr_Absolute
-    pub fn HandleExprAbsolute_get_mut(
-        handle: *mut HandleExprAbsolute,
+    pub fn Handle_Expr_Absolute_get_mut(
+        handle: *mut Handle_Expr_Absolute,
     ) -> crate::OcctResult<*mut Expr_Absolute>;
     /// Upcast Handle<Expr_Absolute> to Handle<Expr_UnaryExpression>
-    pub fn HandleExprAbsolute_to_HandleExprUnaryExpression(
-        self_: *const HandleExprAbsolute,
-    ) -> crate::OcctResult<*mut HandleExprUnaryExpression>;
+    pub fn Handle_Expr_Absolute_to_Handle_Expr_UnaryExpression(
+        self_: *const Handle_Expr_Absolute,
+    ) -> crate::OcctResult<*mut Handle_Expr_UnaryExpression>;
     /// Upcast Handle<Expr_Absolute> to Handle<Expr_GeneralExpression>
-    pub fn HandleExprAbsolute_to_HandleExprGeneralExpression(
-        self_: *const HandleExprAbsolute,
-    ) -> crate::OcctResult<*mut HandleExprGeneralExpression>;
+    pub fn Handle_Expr_Absolute_to_Handle_Expr_GeneralExpression(
+        self_: *const Handle_Expr_Absolute,
+    ) -> crate::OcctResult<*mut Handle_Expr_GeneralExpression>;
     /// Upcast Handle<Expr_Absolute> to Handle<Standard_Transient>
-    pub fn HandleExprAbsolute_to_HandleStandardTransient(
-        self_: *const HandleExprAbsolute,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
-    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:35 - `Expr_UnaryExpression::Operand()`
+    pub fn Handle_Expr_Absolute_to_Handle_Standard_Transient(
+        self_: *const Handle_Expr_Absolute,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
+    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:32 - `Expr_UnaryExpression::Operand()`
     pub fn Expr_Absolute_inherited_Operand(
         self_: *const Expr_Absolute,
-    ) -> crate::OcctResult<*const HandleExprGeneralExpression>;
-    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:39 - `Expr_UnaryExpression::SetOperand()`
+    ) -> crate::OcctResult<*const Handle_Expr_GeneralExpression>;
+    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:36 - `Expr_UnaryExpression::SetOperand()`
     pub fn Expr_Absolute_inherited_SetOperand(
         self_: *mut Expr_Absolute,
-        exp: *const HandleExprGeneralExpression,
+        exp: *const Handle_Expr_GeneralExpression,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:43 - `Expr_UnaryExpression::NbSubExpressions()`
+    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:40 - `Expr_UnaryExpression::NbSubExpressions()`
     pub fn Expr_Absolute_inherited_NbSubExpressions(
         self_: *const Expr_Absolute,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:47 - `Expr_UnaryExpression::SubExpression()`
+    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:44 - `Expr_UnaryExpression::SubExpression()`
     pub fn Expr_Absolute_inherited_SubExpression(
         self_: *const Expr_Absolute,
         I: i32,
-    ) -> crate::OcctResult<*const HandleExprGeneralExpression>;
-    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:51 - `Expr_UnaryExpression::ContainsUnknowns()`
+    ) -> crate::OcctResult<*const Handle_Expr_GeneralExpression>;
+    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:48 - `Expr_UnaryExpression::ContainsUnknowns()`
     pub fn Expr_Absolute_inherited_ContainsUnknowns(
         self_: *const Expr_Absolute,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:55 - `Expr_UnaryExpression::Contains()`
+    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:51 - `Expr_UnaryExpression::Contains()`
     pub fn Expr_Absolute_inherited_Contains(
         self_: *const Expr_Absolute,
-        exp: *const HandleExprGeneralExpression,
+        exp: *const Handle_Expr_GeneralExpression,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:59 - `Expr_UnaryExpression::Replace()`
+    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:55 - `Expr_UnaryExpression::Replace()`
     pub fn Expr_Absolute_inherited_Replace(
         self_: *mut Expr_Absolute,
-        var: *const HandleExprNamedUnknown,
-        with: *const HandleExprGeneralExpression,
+        var: *const Handle_Expr_NamedUnknown,
+        with: *const Handle_Expr_GeneralExpression,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:65 - `Expr_UnaryExpression::Simplified()`
+    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:61 - `Expr_UnaryExpression::Simplified()`
     pub fn Expr_Absolute_inherited_Simplified(
         self_: *const Expr_Absolute,
-    ) -> crate::OcctResult<*mut HandleExprGeneralExpression>;
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:76 - `Expr_GeneralExpression::IsShareable()`
+    ) -> crate::OcctResult<*mut Handle_Expr_GeneralExpression>;
+    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:71 - `Expr_GeneralExpression::IsShareable()`
     pub fn Expr_Absolute_inherited_IsShareable(
         self_: *const Expr_Absolute,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:91 - `Expr_GeneralExpression::NDerivative()`
+    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:86 - `Expr_GeneralExpression::NDerivative()`
     pub fn Expr_Absolute_inherited_NDerivative(
         self_: *const Expr_Absolute,
-        X: *const HandleExprNamedUnknown,
+        X: *const Handle_Expr_NamedUnknown,
         N: i32,
-    ) -> crate::OcctResult<*mut HandleExprGeneralExpression>;
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:112 - `Expr_GeneralExpression::EvaluateNumeric()`
+    ) -> crate::OcctResult<*mut Handle_Expr_GeneralExpression>;
+    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:108 - `Expr_GeneralExpression::EvaluateNumeric()`
     pub fn Expr_Absolute_inherited_EvaluateNumeric(
         self_: *const Expr_Absolute,
     ) -> crate::OcctResult<f64>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn Expr_Absolute_inherited_IsInstance(
         self_: *const Expr_Absolute,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn Expr_Absolute_inherited_IsKind(
         self_: *const Expr_Absolute,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn Expr_Absolute_inherited_This(
         self_: *const Expr_Absolute,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn Expr_Absolute_inherited_GetRefCount(
         self_: *const Expr_Absolute,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn Expr_Absolute_inherited_IncrementRefCounter(
         self_: *mut Expr_Absolute,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn Expr_Absolute_inherited_DecrementRefCounter(
         self_: *mut Expr_Absolute,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn Expr_Absolute_inherited_Delete(self_: *const Expr_Absolute) -> *const std::ffi::c_char;
     // ======================== Expr_ArcCosine ========================
     pub fn Expr_ArcCosine_destructor(self_: *mut Expr_ArcCosine);
-    /// **Source:** `Expr_ArcCosine.hxx`:37 - `Expr_ArcCosine::Expr_ArcCosine()`
+    /// **Source:** `Expr_ArcCosine.hxx`:33 - `Expr_ArcCosine::Expr_ArcCosine()`
     pub fn Expr_ArcCosine_ctor_handleexprgeneralexpression(
-        exp: *const HandleExprGeneralExpression,
+        exp: *const Handle_Expr_GeneralExpression,
     ) -> crate::OcctResult<*mut Expr_ArcCosine>;
-    /// **Source:** `Expr_ArcCosine.hxx`:41 - `Expr_ArcCosine::ShallowSimplified()`
+    /// **Source:** `Expr_ArcCosine.hxx`:37 - `Expr_ArcCosine::ShallowSimplified()`
     pub fn Expr_ArcCosine_shallow_simplified(
         self_: *const Expr_ArcCosine,
-    ) -> crate::OcctResult<*mut HandleExprGeneralExpression>;
-    /// **Source:** `Expr_ArcCosine.hxx`:44 - `Expr_ArcCosine::Copy()`
+    ) -> crate::OcctResult<*mut Handle_Expr_GeneralExpression>;
+    /// **Source:** `Expr_ArcCosine.hxx`:40 - `Expr_ArcCosine::Copy()`
     pub fn Expr_ArcCosine_copy(
         self_: *const Expr_ArcCosine,
-    ) -> crate::OcctResult<*mut HandleExprGeneralExpression>;
-    /// **Source:** `Expr_ArcCosine.hxx`:50 - `Expr_ArcCosine::IsIdentical()`
+    ) -> crate::OcctResult<*mut Handle_Expr_GeneralExpression>;
+    /// **Source:** `Expr_ArcCosine.hxx`:45 - `Expr_ArcCosine::IsIdentical()`
     pub fn Expr_ArcCosine_is_identical(
         self_: *const Expr_ArcCosine,
-        Other: *const HandleExprGeneralExpression,
+        Other: *const Handle_Expr_GeneralExpression,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `Expr_ArcCosine.hxx`:52 - `Expr_ArcCosine::IsLinear()`
+    /// **Source:** `Expr_ArcCosine.hxx`:47 - `Expr_ArcCosine::IsLinear()`
     pub fn Expr_ArcCosine_is_linear(self_: *const Expr_ArcCosine) -> crate::OcctResult<bool>;
-    /// **Source:** `Expr_ArcCosine.hxx`:55 - `Expr_ArcCosine::Derivative()`
+    /// **Source:** `Expr_ArcCosine.hxx`:50 - `Expr_ArcCosine::Derivative()`
     pub fn Expr_ArcCosine_derivative(
         self_: *const Expr_ArcCosine,
-        X: *const HandleExprNamedUnknown,
-    ) -> crate::OcctResult<*mut HandleExprGeneralExpression>;
-    /// **Source:** `Expr_ArcCosine.hxx`:62 - `Expr_ArcCosine::Evaluate()`
-    pub fn Expr_ArcCosine_evaluate(
-        self_: *const Expr_ArcCosine,
-        vars: *const Expr_Array1OfNamedUnknown,
-        vals: *const TColStd_Array1OfReal,
-    ) -> crate::OcctResult<f64>;
-    /// **Source:** `Expr_ArcCosine.hxx`:66 - `Expr_ArcCosine::String()`
+        X: *const Handle_Expr_NamedUnknown,
+    ) -> crate::OcctResult<*mut Handle_Expr_GeneralExpression>;
+    /// **Source:** `Expr_ArcCosine.hxx`:61 - `Expr_ArcCosine::String()`
     pub fn Expr_ArcCosine_string(
         self_: *const Expr_ArcCosine,
     ) -> crate::OcctResult<*mut TCollection_AsciiString>;
-    /// **Source:** `Expr_ArcCosine.hxx`:68 - `Expr_ArcCosine::DynamicType()`
+    /// **Source:** `Expr_ArcCosine.hxx`:63 - `Expr_ArcCosine::DynamicType()`
     pub fn Expr_ArcCosine_dynamic_type(
         self_: *const Expr_ArcCosine,
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// **Source:** `Expr_ArcCosine.hxx`:68 - `Expr_ArcCosine::get_type_name()`
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
+    /// **Source:** `Expr_ArcCosine.hxx`:63 - `Expr_ArcCosine::get_type_name()`
     pub fn Expr_ArcCosine_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
-    /// **Source:** `Expr_ArcCosine.hxx`:68 - `Expr_ArcCosine::get_type_descriptor()`
-    pub fn Expr_ArcCosine_get_type_descriptor() -> crate::OcctResult<*const HandleStandardType>;
+    /// **Source:** `Expr_ArcCosine.hxx`:63 - `Expr_ArcCosine::get_type_descriptor()`
+    pub fn Expr_ArcCosine_get_type_descriptor() -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast Expr_ArcCosine to Expr_UnaryExpression
     pub fn Expr_ArcCosine_as_Expr_UnaryExpression(
         self_: *const Expr_ArcCosine,
@@ -258,159 +246,153 @@ unsafe extern "C" {
     /// Wrap Expr_ArcCosine in a Handle
     pub fn Expr_ArcCosine_to_handle(
         obj: *mut Expr_ArcCosine,
-    ) -> crate::OcctResult<*mut HandleExprArcCosine>;
+    ) -> crate::OcctResult<*mut Handle_Expr_ArcCosine>;
     /// Destroy Handle<Expr_ArcCosine>
-    pub fn HandleExprArcCosine_destructor(self_: *mut HandleExprArcCosine);
+    pub fn Handle_Expr_ArcCosine_destructor(self_: *mut Handle_Expr_ArcCosine);
     /// Clone Handle<Expr_ArcCosine> (increments reference count)
-    pub fn HandleExprArcCosine_clone(
-        self_: *const HandleExprArcCosine,
-    ) -> crate::OcctResult<*mut HandleExprArcCosine>;
+    pub fn Handle_Expr_ArcCosine_clone(
+        self_: *const Handle_Expr_ArcCosine,
+    ) -> crate::OcctResult<*mut Handle_Expr_ArcCosine>;
     /// Check if Handle<Expr_ArcCosine> is null
-    pub fn HandleExprArcCosine_is_null(self_: *const HandleExprArcCosine) -> bool;
+    pub fn Handle_Expr_ArcCosine_is_null(self_: *const Handle_Expr_ArcCosine) -> bool;
     /// Dereference Handle to get *const Expr_ArcCosine
-    pub fn HandleExprArcCosine_get(
-        handle: *const HandleExprArcCosine,
+    pub fn Handle_Expr_ArcCosine_get(
+        handle: *const Handle_Expr_ArcCosine,
     ) -> crate::OcctResult<*const Expr_ArcCosine>;
     /// Dereference Handle to get *mut Expr_ArcCosine
-    pub fn HandleExprArcCosine_get_mut(
-        handle: *mut HandleExprArcCosine,
+    pub fn Handle_Expr_ArcCosine_get_mut(
+        handle: *mut Handle_Expr_ArcCosine,
     ) -> crate::OcctResult<*mut Expr_ArcCosine>;
     /// Upcast Handle<Expr_ArcCosine> to Handle<Expr_UnaryExpression>
-    pub fn HandleExprArcCosine_to_HandleExprUnaryExpression(
-        self_: *const HandleExprArcCosine,
-    ) -> crate::OcctResult<*mut HandleExprUnaryExpression>;
+    pub fn Handle_Expr_ArcCosine_to_Handle_Expr_UnaryExpression(
+        self_: *const Handle_Expr_ArcCosine,
+    ) -> crate::OcctResult<*mut Handle_Expr_UnaryExpression>;
     /// Upcast Handle<Expr_ArcCosine> to Handle<Expr_GeneralExpression>
-    pub fn HandleExprArcCosine_to_HandleExprGeneralExpression(
-        self_: *const HandleExprArcCosine,
-    ) -> crate::OcctResult<*mut HandleExprGeneralExpression>;
+    pub fn Handle_Expr_ArcCosine_to_Handle_Expr_GeneralExpression(
+        self_: *const Handle_Expr_ArcCosine,
+    ) -> crate::OcctResult<*mut Handle_Expr_GeneralExpression>;
     /// Upcast Handle<Expr_ArcCosine> to Handle<Standard_Transient>
-    pub fn HandleExprArcCosine_to_HandleStandardTransient(
-        self_: *const HandleExprArcCosine,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
-    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:35 - `Expr_UnaryExpression::Operand()`
+    pub fn Handle_Expr_ArcCosine_to_Handle_Standard_Transient(
+        self_: *const Handle_Expr_ArcCosine,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
+    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:32 - `Expr_UnaryExpression::Operand()`
     pub fn Expr_ArcCosine_inherited_Operand(
         self_: *const Expr_ArcCosine,
-    ) -> crate::OcctResult<*const HandleExprGeneralExpression>;
-    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:39 - `Expr_UnaryExpression::SetOperand()`
+    ) -> crate::OcctResult<*const Handle_Expr_GeneralExpression>;
+    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:36 - `Expr_UnaryExpression::SetOperand()`
     pub fn Expr_ArcCosine_inherited_SetOperand(
         self_: *mut Expr_ArcCosine,
-        exp: *const HandleExprGeneralExpression,
+        exp: *const Handle_Expr_GeneralExpression,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:43 - `Expr_UnaryExpression::NbSubExpressions()`
+    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:40 - `Expr_UnaryExpression::NbSubExpressions()`
     pub fn Expr_ArcCosine_inherited_NbSubExpressions(
         self_: *const Expr_ArcCosine,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:47 - `Expr_UnaryExpression::SubExpression()`
+    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:44 - `Expr_UnaryExpression::SubExpression()`
     pub fn Expr_ArcCosine_inherited_SubExpression(
         self_: *const Expr_ArcCosine,
         I: i32,
-    ) -> crate::OcctResult<*const HandleExprGeneralExpression>;
-    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:51 - `Expr_UnaryExpression::ContainsUnknowns()`
+    ) -> crate::OcctResult<*const Handle_Expr_GeneralExpression>;
+    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:48 - `Expr_UnaryExpression::ContainsUnknowns()`
     pub fn Expr_ArcCosine_inherited_ContainsUnknowns(
         self_: *const Expr_ArcCosine,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:55 - `Expr_UnaryExpression::Contains()`
+    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:51 - `Expr_UnaryExpression::Contains()`
     pub fn Expr_ArcCosine_inherited_Contains(
         self_: *const Expr_ArcCosine,
-        exp: *const HandleExprGeneralExpression,
+        exp: *const Handle_Expr_GeneralExpression,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:59 - `Expr_UnaryExpression::Replace()`
+    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:55 - `Expr_UnaryExpression::Replace()`
     pub fn Expr_ArcCosine_inherited_Replace(
         self_: *mut Expr_ArcCosine,
-        var: *const HandleExprNamedUnknown,
-        with: *const HandleExprGeneralExpression,
+        var: *const Handle_Expr_NamedUnknown,
+        with: *const Handle_Expr_GeneralExpression,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:65 - `Expr_UnaryExpression::Simplified()`
+    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:61 - `Expr_UnaryExpression::Simplified()`
     pub fn Expr_ArcCosine_inherited_Simplified(
         self_: *const Expr_ArcCosine,
-    ) -> crate::OcctResult<*mut HandleExprGeneralExpression>;
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:76 - `Expr_GeneralExpression::IsShareable()`
+    ) -> crate::OcctResult<*mut Handle_Expr_GeneralExpression>;
+    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:71 - `Expr_GeneralExpression::IsShareable()`
     pub fn Expr_ArcCosine_inherited_IsShareable(
         self_: *const Expr_ArcCosine,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:91 - `Expr_GeneralExpression::NDerivative()`
+    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:86 - `Expr_GeneralExpression::NDerivative()`
     pub fn Expr_ArcCosine_inherited_NDerivative(
         self_: *const Expr_ArcCosine,
-        X: *const HandleExprNamedUnknown,
+        X: *const Handle_Expr_NamedUnknown,
         N: i32,
-    ) -> crate::OcctResult<*mut HandleExprGeneralExpression>;
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:112 - `Expr_GeneralExpression::EvaluateNumeric()`
+    ) -> crate::OcctResult<*mut Handle_Expr_GeneralExpression>;
+    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:108 - `Expr_GeneralExpression::EvaluateNumeric()`
     pub fn Expr_ArcCosine_inherited_EvaluateNumeric(
         self_: *const Expr_ArcCosine,
     ) -> crate::OcctResult<f64>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn Expr_ArcCosine_inherited_IsInstance(
         self_: *const Expr_ArcCosine,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn Expr_ArcCosine_inherited_IsKind(
         self_: *const Expr_ArcCosine,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn Expr_ArcCosine_inherited_This(
         self_: *const Expr_ArcCosine,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn Expr_ArcCosine_inherited_GetRefCount(
         self_: *const Expr_ArcCosine,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn Expr_ArcCosine_inherited_IncrementRefCounter(
         self_: *mut Expr_ArcCosine,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn Expr_ArcCosine_inherited_DecrementRefCounter(
         self_: *mut Expr_ArcCosine,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn Expr_ArcCosine_inherited_Delete(self_: *const Expr_ArcCosine)
         -> *const std::ffi::c_char;
     // ======================== Expr_ArcSine ========================
     pub fn Expr_ArcSine_destructor(self_: *mut Expr_ArcSine);
-    /// **Source:** `Expr_ArcSine.hxx`:37 - `Expr_ArcSine::Expr_ArcSine()`
+    /// **Source:** `Expr_ArcSine.hxx`:33 - `Expr_ArcSine::Expr_ArcSine()`
     pub fn Expr_ArcSine_ctor_handleexprgeneralexpression(
-        exp: *const HandleExprGeneralExpression,
+        exp: *const Handle_Expr_GeneralExpression,
     ) -> crate::OcctResult<*mut Expr_ArcSine>;
-    /// **Source:** `Expr_ArcSine.hxx`:41 - `Expr_ArcSine::ShallowSimplified()`
+    /// **Source:** `Expr_ArcSine.hxx`:37 - `Expr_ArcSine::ShallowSimplified()`
     pub fn Expr_ArcSine_shallow_simplified(
         self_: *const Expr_ArcSine,
-    ) -> crate::OcctResult<*mut HandleExprGeneralExpression>;
-    /// **Source:** `Expr_ArcSine.hxx`:44 - `Expr_ArcSine::Copy()`
+    ) -> crate::OcctResult<*mut Handle_Expr_GeneralExpression>;
+    /// **Source:** `Expr_ArcSine.hxx`:40 - `Expr_ArcSine::Copy()`
     pub fn Expr_ArcSine_copy(
         self_: *const Expr_ArcSine,
-    ) -> crate::OcctResult<*mut HandleExprGeneralExpression>;
-    /// **Source:** `Expr_ArcSine.hxx`:50 - `Expr_ArcSine::IsIdentical()`
+    ) -> crate::OcctResult<*mut Handle_Expr_GeneralExpression>;
+    /// **Source:** `Expr_ArcSine.hxx`:45 - `Expr_ArcSine::IsIdentical()`
     pub fn Expr_ArcSine_is_identical(
         self_: *const Expr_ArcSine,
-        Other: *const HandleExprGeneralExpression,
+        Other: *const Handle_Expr_GeneralExpression,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `Expr_ArcSine.hxx`:52 - `Expr_ArcSine::IsLinear()`
+    /// **Source:** `Expr_ArcSine.hxx`:47 - `Expr_ArcSine::IsLinear()`
     pub fn Expr_ArcSine_is_linear(self_: *const Expr_ArcSine) -> crate::OcctResult<bool>;
-    /// **Source:** `Expr_ArcSine.hxx`:55 - `Expr_ArcSine::Derivative()`
+    /// **Source:** `Expr_ArcSine.hxx`:50 - `Expr_ArcSine::Derivative()`
     pub fn Expr_ArcSine_derivative(
         self_: *const Expr_ArcSine,
-        X: *const HandleExprNamedUnknown,
-    ) -> crate::OcctResult<*mut HandleExprGeneralExpression>;
-    /// **Source:** `Expr_ArcSine.hxx`:62 - `Expr_ArcSine::Evaluate()`
-    pub fn Expr_ArcSine_evaluate(
-        self_: *const Expr_ArcSine,
-        vars: *const Expr_Array1OfNamedUnknown,
-        vals: *const TColStd_Array1OfReal,
-    ) -> crate::OcctResult<f64>;
-    /// **Source:** `Expr_ArcSine.hxx`:66 - `Expr_ArcSine::String()`
+        X: *const Handle_Expr_NamedUnknown,
+    ) -> crate::OcctResult<*mut Handle_Expr_GeneralExpression>;
+    /// **Source:** `Expr_ArcSine.hxx`:61 - `Expr_ArcSine::String()`
     pub fn Expr_ArcSine_string(
         self_: *const Expr_ArcSine,
     ) -> crate::OcctResult<*mut TCollection_AsciiString>;
-    /// **Source:** `Expr_ArcSine.hxx`:68 - `Expr_ArcSine::DynamicType()`
+    /// **Source:** `Expr_ArcSine.hxx`:63 - `Expr_ArcSine::DynamicType()`
     pub fn Expr_ArcSine_dynamic_type(
         self_: *const Expr_ArcSine,
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// **Source:** `Expr_ArcSine.hxx`:68 - `Expr_ArcSine::get_type_name()`
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
+    /// **Source:** `Expr_ArcSine.hxx`:63 - `Expr_ArcSine::get_type_name()`
     pub fn Expr_ArcSine_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
-    /// **Source:** `Expr_ArcSine.hxx`:68 - `Expr_ArcSine::get_type_descriptor()`
-    pub fn Expr_ArcSine_get_type_descriptor() -> crate::OcctResult<*const HandleStandardType>;
+    /// **Source:** `Expr_ArcSine.hxx`:63 - `Expr_ArcSine::get_type_descriptor()`
+    pub fn Expr_ArcSine_get_type_descriptor() -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast Expr_ArcSine to Expr_UnaryExpression
     pub fn Expr_ArcSine_as_Expr_UnaryExpression(
         self_: *const Expr_ArcSine,
@@ -438,157 +420,151 @@ unsafe extern "C" {
     /// Wrap Expr_ArcSine in a Handle
     pub fn Expr_ArcSine_to_handle(
         obj: *mut Expr_ArcSine,
-    ) -> crate::OcctResult<*mut HandleExprArcSine>;
+    ) -> crate::OcctResult<*mut Handle_Expr_ArcSine>;
     /// Destroy Handle<Expr_ArcSine>
-    pub fn HandleExprArcSine_destructor(self_: *mut HandleExprArcSine);
+    pub fn Handle_Expr_ArcSine_destructor(self_: *mut Handle_Expr_ArcSine);
     /// Clone Handle<Expr_ArcSine> (increments reference count)
-    pub fn HandleExprArcSine_clone(
-        self_: *const HandleExprArcSine,
-    ) -> crate::OcctResult<*mut HandleExprArcSine>;
+    pub fn Handle_Expr_ArcSine_clone(
+        self_: *const Handle_Expr_ArcSine,
+    ) -> crate::OcctResult<*mut Handle_Expr_ArcSine>;
     /// Check if Handle<Expr_ArcSine> is null
-    pub fn HandleExprArcSine_is_null(self_: *const HandleExprArcSine) -> bool;
+    pub fn Handle_Expr_ArcSine_is_null(self_: *const Handle_Expr_ArcSine) -> bool;
     /// Dereference Handle to get *const Expr_ArcSine
-    pub fn HandleExprArcSine_get(
-        handle: *const HandleExprArcSine,
+    pub fn Handle_Expr_ArcSine_get(
+        handle: *const Handle_Expr_ArcSine,
     ) -> crate::OcctResult<*const Expr_ArcSine>;
     /// Dereference Handle to get *mut Expr_ArcSine
-    pub fn HandleExprArcSine_get_mut(
-        handle: *mut HandleExprArcSine,
+    pub fn Handle_Expr_ArcSine_get_mut(
+        handle: *mut Handle_Expr_ArcSine,
     ) -> crate::OcctResult<*mut Expr_ArcSine>;
     /// Upcast Handle<Expr_ArcSine> to Handle<Expr_UnaryExpression>
-    pub fn HandleExprArcSine_to_HandleExprUnaryExpression(
-        self_: *const HandleExprArcSine,
-    ) -> crate::OcctResult<*mut HandleExprUnaryExpression>;
+    pub fn Handle_Expr_ArcSine_to_Handle_Expr_UnaryExpression(
+        self_: *const Handle_Expr_ArcSine,
+    ) -> crate::OcctResult<*mut Handle_Expr_UnaryExpression>;
     /// Upcast Handle<Expr_ArcSine> to Handle<Expr_GeneralExpression>
-    pub fn HandleExprArcSine_to_HandleExprGeneralExpression(
-        self_: *const HandleExprArcSine,
-    ) -> crate::OcctResult<*mut HandleExprGeneralExpression>;
+    pub fn Handle_Expr_ArcSine_to_Handle_Expr_GeneralExpression(
+        self_: *const Handle_Expr_ArcSine,
+    ) -> crate::OcctResult<*mut Handle_Expr_GeneralExpression>;
     /// Upcast Handle<Expr_ArcSine> to Handle<Standard_Transient>
-    pub fn HandleExprArcSine_to_HandleStandardTransient(
-        self_: *const HandleExprArcSine,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
-    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:35 - `Expr_UnaryExpression::Operand()`
+    pub fn Handle_Expr_ArcSine_to_Handle_Standard_Transient(
+        self_: *const Handle_Expr_ArcSine,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
+    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:32 - `Expr_UnaryExpression::Operand()`
     pub fn Expr_ArcSine_inherited_Operand(
         self_: *const Expr_ArcSine,
-    ) -> crate::OcctResult<*const HandleExprGeneralExpression>;
-    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:39 - `Expr_UnaryExpression::SetOperand()`
+    ) -> crate::OcctResult<*const Handle_Expr_GeneralExpression>;
+    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:36 - `Expr_UnaryExpression::SetOperand()`
     pub fn Expr_ArcSine_inherited_SetOperand(
         self_: *mut Expr_ArcSine,
-        exp: *const HandleExprGeneralExpression,
+        exp: *const Handle_Expr_GeneralExpression,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:43 - `Expr_UnaryExpression::NbSubExpressions()`
+    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:40 - `Expr_UnaryExpression::NbSubExpressions()`
     pub fn Expr_ArcSine_inherited_NbSubExpressions(
         self_: *const Expr_ArcSine,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:47 - `Expr_UnaryExpression::SubExpression()`
+    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:44 - `Expr_UnaryExpression::SubExpression()`
     pub fn Expr_ArcSine_inherited_SubExpression(
         self_: *const Expr_ArcSine,
         I: i32,
-    ) -> crate::OcctResult<*const HandleExprGeneralExpression>;
-    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:51 - `Expr_UnaryExpression::ContainsUnknowns()`
+    ) -> crate::OcctResult<*const Handle_Expr_GeneralExpression>;
+    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:48 - `Expr_UnaryExpression::ContainsUnknowns()`
     pub fn Expr_ArcSine_inherited_ContainsUnknowns(
         self_: *const Expr_ArcSine,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:55 - `Expr_UnaryExpression::Contains()`
+    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:51 - `Expr_UnaryExpression::Contains()`
     pub fn Expr_ArcSine_inherited_Contains(
         self_: *const Expr_ArcSine,
-        exp: *const HandleExprGeneralExpression,
+        exp: *const Handle_Expr_GeneralExpression,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:59 - `Expr_UnaryExpression::Replace()`
+    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:55 - `Expr_UnaryExpression::Replace()`
     pub fn Expr_ArcSine_inherited_Replace(
         self_: *mut Expr_ArcSine,
-        var: *const HandleExprNamedUnknown,
-        with: *const HandleExprGeneralExpression,
+        var: *const Handle_Expr_NamedUnknown,
+        with: *const Handle_Expr_GeneralExpression,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:65 - `Expr_UnaryExpression::Simplified()`
+    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:61 - `Expr_UnaryExpression::Simplified()`
     pub fn Expr_ArcSine_inherited_Simplified(
         self_: *const Expr_ArcSine,
-    ) -> crate::OcctResult<*mut HandleExprGeneralExpression>;
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:76 - `Expr_GeneralExpression::IsShareable()`
+    ) -> crate::OcctResult<*mut Handle_Expr_GeneralExpression>;
+    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:71 - `Expr_GeneralExpression::IsShareable()`
     pub fn Expr_ArcSine_inherited_IsShareable(
         self_: *const Expr_ArcSine,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:91 - `Expr_GeneralExpression::NDerivative()`
+    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:86 - `Expr_GeneralExpression::NDerivative()`
     pub fn Expr_ArcSine_inherited_NDerivative(
         self_: *const Expr_ArcSine,
-        X: *const HandleExprNamedUnknown,
+        X: *const Handle_Expr_NamedUnknown,
         N: i32,
-    ) -> crate::OcctResult<*mut HandleExprGeneralExpression>;
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:112 - `Expr_GeneralExpression::EvaluateNumeric()`
+    ) -> crate::OcctResult<*mut Handle_Expr_GeneralExpression>;
+    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:108 - `Expr_GeneralExpression::EvaluateNumeric()`
     pub fn Expr_ArcSine_inherited_EvaluateNumeric(
         self_: *const Expr_ArcSine,
     ) -> crate::OcctResult<f64>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn Expr_ArcSine_inherited_IsInstance(
         self_: *const Expr_ArcSine,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn Expr_ArcSine_inherited_IsKind(
         self_: *const Expr_ArcSine,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn Expr_ArcSine_inherited_This(
         self_: *const Expr_ArcSine,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn Expr_ArcSine_inherited_GetRefCount(self_: *const Expr_ArcSine)
         -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn Expr_ArcSine_inherited_IncrementRefCounter(
         self_: *mut Expr_ArcSine,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn Expr_ArcSine_inherited_DecrementRefCounter(
         self_: *mut Expr_ArcSine,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn Expr_ArcSine_inherited_Delete(self_: *const Expr_ArcSine) -> *const std::ffi::c_char;
     // ======================== Expr_ArcTangent ========================
     pub fn Expr_ArcTangent_destructor(self_: *mut Expr_ArcTangent);
-    /// **Source:** `Expr_ArcTangent.hxx`:37 - `Expr_ArcTangent::Expr_ArcTangent()`
+    /// **Source:** `Expr_ArcTangent.hxx`:33 - `Expr_ArcTangent::Expr_ArcTangent()`
     pub fn Expr_ArcTangent_ctor_handleexprgeneralexpression(
-        exp: *const HandleExprGeneralExpression,
+        exp: *const Handle_Expr_GeneralExpression,
     ) -> crate::OcctResult<*mut Expr_ArcTangent>;
-    /// **Source:** `Expr_ArcTangent.hxx`:41 - `Expr_ArcTangent::ShallowSimplified()`
+    /// **Source:** `Expr_ArcTangent.hxx`:37 - `Expr_ArcTangent::ShallowSimplified()`
     pub fn Expr_ArcTangent_shallow_simplified(
         self_: *const Expr_ArcTangent,
-    ) -> crate::OcctResult<*mut HandleExprGeneralExpression>;
-    /// **Source:** `Expr_ArcTangent.hxx`:44 - `Expr_ArcTangent::Copy()`
+    ) -> crate::OcctResult<*mut Handle_Expr_GeneralExpression>;
+    /// **Source:** `Expr_ArcTangent.hxx`:40 - `Expr_ArcTangent::Copy()`
     pub fn Expr_ArcTangent_copy(
         self_: *const Expr_ArcTangent,
-    ) -> crate::OcctResult<*mut HandleExprGeneralExpression>;
-    /// **Source:** `Expr_ArcTangent.hxx`:50 - `Expr_ArcTangent::IsIdentical()`
+    ) -> crate::OcctResult<*mut Handle_Expr_GeneralExpression>;
+    /// **Source:** `Expr_ArcTangent.hxx`:45 - `Expr_ArcTangent::IsIdentical()`
     pub fn Expr_ArcTangent_is_identical(
         self_: *const Expr_ArcTangent,
-        Other: *const HandleExprGeneralExpression,
+        Other: *const Handle_Expr_GeneralExpression,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `Expr_ArcTangent.hxx`:52 - `Expr_ArcTangent::IsLinear()`
+    /// **Source:** `Expr_ArcTangent.hxx`:47 - `Expr_ArcTangent::IsLinear()`
     pub fn Expr_ArcTangent_is_linear(self_: *const Expr_ArcTangent) -> crate::OcctResult<bool>;
-    /// **Source:** `Expr_ArcTangent.hxx`:55 - `Expr_ArcTangent::Derivative()`
+    /// **Source:** `Expr_ArcTangent.hxx`:50 - `Expr_ArcTangent::Derivative()`
     pub fn Expr_ArcTangent_derivative(
         self_: *const Expr_ArcTangent,
-        X: *const HandleExprNamedUnknown,
-    ) -> crate::OcctResult<*mut HandleExprGeneralExpression>;
-    /// **Source:** `Expr_ArcTangent.hxx`:62 - `Expr_ArcTangent::Evaluate()`
-    pub fn Expr_ArcTangent_evaluate(
-        self_: *const Expr_ArcTangent,
-        vars: *const Expr_Array1OfNamedUnknown,
-        vals: *const TColStd_Array1OfReal,
-    ) -> crate::OcctResult<f64>;
-    /// **Source:** `Expr_ArcTangent.hxx`:66 - `Expr_ArcTangent::String()`
+        X: *const Handle_Expr_NamedUnknown,
+    ) -> crate::OcctResult<*mut Handle_Expr_GeneralExpression>;
+    /// **Source:** `Expr_ArcTangent.hxx`:61 - `Expr_ArcTangent::String()`
     pub fn Expr_ArcTangent_string(
         self_: *const Expr_ArcTangent,
     ) -> crate::OcctResult<*mut TCollection_AsciiString>;
-    /// **Source:** `Expr_ArcTangent.hxx`:68 - `Expr_ArcTangent::DynamicType()`
+    /// **Source:** `Expr_ArcTangent.hxx`:63 - `Expr_ArcTangent::DynamicType()`
     pub fn Expr_ArcTangent_dynamic_type(
         self_: *const Expr_ArcTangent,
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// **Source:** `Expr_ArcTangent.hxx`:68 - `Expr_ArcTangent::get_type_name()`
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
+    /// **Source:** `Expr_ArcTangent.hxx`:63 - `Expr_ArcTangent::get_type_name()`
     pub fn Expr_ArcTangent_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
-    /// **Source:** `Expr_ArcTangent.hxx`:68 - `Expr_ArcTangent::get_type_descriptor()`
-    pub fn Expr_ArcTangent_get_type_descriptor() -> crate::OcctResult<*const HandleStandardType>;
+    /// **Source:** `Expr_ArcTangent.hxx`:63 - `Expr_ArcTangent::get_type_descriptor()`
+    pub fn Expr_ArcTangent_get_type_descriptor() -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast Expr_ArcTangent to Expr_UnaryExpression
     pub fn Expr_ArcTangent_as_Expr_UnaryExpression(
         self_: *const Expr_ArcTangent,
@@ -616,160 +592,154 @@ unsafe extern "C" {
     /// Wrap Expr_ArcTangent in a Handle
     pub fn Expr_ArcTangent_to_handle(
         obj: *mut Expr_ArcTangent,
-    ) -> crate::OcctResult<*mut HandleExprArcTangent>;
+    ) -> crate::OcctResult<*mut Handle_Expr_ArcTangent>;
     /// Destroy Handle<Expr_ArcTangent>
-    pub fn HandleExprArcTangent_destructor(self_: *mut HandleExprArcTangent);
+    pub fn Handle_Expr_ArcTangent_destructor(self_: *mut Handle_Expr_ArcTangent);
     /// Clone Handle<Expr_ArcTangent> (increments reference count)
-    pub fn HandleExprArcTangent_clone(
-        self_: *const HandleExprArcTangent,
-    ) -> crate::OcctResult<*mut HandleExprArcTangent>;
+    pub fn Handle_Expr_ArcTangent_clone(
+        self_: *const Handle_Expr_ArcTangent,
+    ) -> crate::OcctResult<*mut Handle_Expr_ArcTangent>;
     /// Check if Handle<Expr_ArcTangent> is null
-    pub fn HandleExprArcTangent_is_null(self_: *const HandleExprArcTangent) -> bool;
+    pub fn Handle_Expr_ArcTangent_is_null(self_: *const Handle_Expr_ArcTangent) -> bool;
     /// Dereference Handle to get *const Expr_ArcTangent
-    pub fn HandleExprArcTangent_get(
-        handle: *const HandleExprArcTangent,
+    pub fn Handle_Expr_ArcTangent_get(
+        handle: *const Handle_Expr_ArcTangent,
     ) -> crate::OcctResult<*const Expr_ArcTangent>;
     /// Dereference Handle to get *mut Expr_ArcTangent
-    pub fn HandleExprArcTangent_get_mut(
-        handle: *mut HandleExprArcTangent,
+    pub fn Handle_Expr_ArcTangent_get_mut(
+        handle: *mut Handle_Expr_ArcTangent,
     ) -> crate::OcctResult<*mut Expr_ArcTangent>;
     /// Upcast Handle<Expr_ArcTangent> to Handle<Expr_UnaryExpression>
-    pub fn HandleExprArcTangent_to_HandleExprUnaryExpression(
-        self_: *const HandleExprArcTangent,
-    ) -> crate::OcctResult<*mut HandleExprUnaryExpression>;
+    pub fn Handle_Expr_ArcTangent_to_Handle_Expr_UnaryExpression(
+        self_: *const Handle_Expr_ArcTangent,
+    ) -> crate::OcctResult<*mut Handle_Expr_UnaryExpression>;
     /// Upcast Handle<Expr_ArcTangent> to Handle<Expr_GeneralExpression>
-    pub fn HandleExprArcTangent_to_HandleExprGeneralExpression(
-        self_: *const HandleExprArcTangent,
-    ) -> crate::OcctResult<*mut HandleExprGeneralExpression>;
+    pub fn Handle_Expr_ArcTangent_to_Handle_Expr_GeneralExpression(
+        self_: *const Handle_Expr_ArcTangent,
+    ) -> crate::OcctResult<*mut Handle_Expr_GeneralExpression>;
     /// Upcast Handle<Expr_ArcTangent> to Handle<Standard_Transient>
-    pub fn HandleExprArcTangent_to_HandleStandardTransient(
-        self_: *const HandleExprArcTangent,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
-    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:35 - `Expr_UnaryExpression::Operand()`
+    pub fn Handle_Expr_ArcTangent_to_Handle_Standard_Transient(
+        self_: *const Handle_Expr_ArcTangent,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
+    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:32 - `Expr_UnaryExpression::Operand()`
     pub fn Expr_ArcTangent_inherited_Operand(
         self_: *const Expr_ArcTangent,
-    ) -> crate::OcctResult<*const HandleExprGeneralExpression>;
-    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:39 - `Expr_UnaryExpression::SetOperand()`
+    ) -> crate::OcctResult<*const Handle_Expr_GeneralExpression>;
+    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:36 - `Expr_UnaryExpression::SetOperand()`
     pub fn Expr_ArcTangent_inherited_SetOperand(
         self_: *mut Expr_ArcTangent,
-        exp: *const HandleExprGeneralExpression,
+        exp: *const Handle_Expr_GeneralExpression,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:43 - `Expr_UnaryExpression::NbSubExpressions()`
+    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:40 - `Expr_UnaryExpression::NbSubExpressions()`
     pub fn Expr_ArcTangent_inherited_NbSubExpressions(
         self_: *const Expr_ArcTangent,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:47 - `Expr_UnaryExpression::SubExpression()`
+    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:44 - `Expr_UnaryExpression::SubExpression()`
     pub fn Expr_ArcTangent_inherited_SubExpression(
         self_: *const Expr_ArcTangent,
         I: i32,
-    ) -> crate::OcctResult<*const HandleExprGeneralExpression>;
-    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:51 - `Expr_UnaryExpression::ContainsUnknowns()`
+    ) -> crate::OcctResult<*const Handle_Expr_GeneralExpression>;
+    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:48 - `Expr_UnaryExpression::ContainsUnknowns()`
     pub fn Expr_ArcTangent_inherited_ContainsUnknowns(
         self_: *const Expr_ArcTangent,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:55 - `Expr_UnaryExpression::Contains()`
+    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:51 - `Expr_UnaryExpression::Contains()`
     pub fn Expr_ArcTangent_inherited_Contains(
         self_: *const Expr_ArcTangent,
-        exp: *const HandleExprGeneralExpression,
+        exp: *const Handle_Expr_GeneralExpression,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:59 - `Expr_UnaryExpression::Replace()`
+    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:55 - `Expr_UnaryExpression::Replace()`
     pub fn Expr_ArcTangent_inherited_Replace(
         self_: *mut Expr_ArcTangent,
-        var: *const HandleExprNamedUnknown,
-        with: *const HandleExprGeneralExpression,
+        var: *const Handle_Expr_NamedUnknown,
+        with: *const Handle_Expr_GeneralExpression,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:65 - `Expr_UnaryExpression::Simplified()`
+    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:61 - `Expr_UnaryExpression::Simplified()`
     pub fn Expr_ArcTangent_inherited_Simplified(
         self_: *const Expr_ArcTangent,
-    ) -> crate::OcctResult<*mut HandleExprGeneralExpression>;
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:76 - `Expr_GeneralExpression::IsShareable()`
+    ) -> crate::OcctResult<*mut Handle_Expr_GeneralExpression>;
+    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:71 - `Expr_GeneralExpression::IsShareable()`
     pub fn Expr_ArcTangent_inherited_IsShareable(
         self_: *const Expr_ArcTangent,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:91 - `Expr_GeneralExpression::NDerivative()`
+    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:86 - `Expr_GeneralExpression::NDerivative()`
     pub fn Expr_ArcTangent_inherited_NDerivative(
         self_: *const Expr_ArcTangent,
-        X: *const HandleExprNamedUnknown,
+        X: *const Handle_Expr_NamedUnknown,
         N: i32,
-    ) -> crate::OcctResult<*mut HandleExprGeneralExpression>;
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:112 - `Expr_GeneralExpression::EvaluateNumeric()`
+    ) -> crate::OcctResult<*mut Handle_Expr_GeneralExpression>;
+    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:108 - `Expr_GeneralExpression::EvaluateNumeric()`
     pub fn Expr_ArcTangent_inherited_EvaluateNumeric(
         self_: *const Expr_ArcTangent,
     ) -> crate::OcctResult<f64>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn Expr_ArcTangent_inherited_IsInstance(
         self_: *const Expr_ArcTangent,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn Expr_ArcTangent_inherited_IsKind(
         self_: *const Expr_ArcTangent,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn Expr_ArcTangent_inherited_This(
         self_: *const Expr_ArcTangent,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn Expr_ArcTangent_inherited_GetRefCount(
         self_: *const Expr_ArcTangent,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn Expr_ArcTangent_inherited_IncrementRefCounter(
         self_: *mut Expr_ArcTangent,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn Expr_ArcTangent_inherited_DecrementRefCounter(
         self_: *mut Expr_ArcTangent,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn Expr_ArcTangent_inherited_Delete(
         self_: *const Expr_ArcTangent,
     ) -> *const std::ffi::c_char;
     // ======================== Expr_ArgCosh ========================
     pub fn Expr_ArgCosh_destructor(self_: *mut Expr_ArgCosh);
-    /// **Source:** `Expr_ArgCosh.hxx`:37 - `Expr_ArgCosh::Expr_ArgCosh()`
+    /// **Source:** `Expr_ArgCosh.hxx`:33 - `Expr_ArgCosh::Expr_ArgCosh()`
     pub fn Expr_ArgCosh_ctor_handleexprgeneralexpression(
-        exp: *const HandleExprGeneralExpression,
+        exp: *const Handle_Expr_GeneralExpression,
     ) -> crate::OcctResult<*mut Expr_ArgCosh>;
-    /// **Source:** `Expr_ArgCosh.hxx`:41 - `Expr_ArgCosh::ShallowSimplified()`
+    /// **Source:** `Expr_ArgCosh.hxx`:37 - `Expr_ArgCosh::ShallowSimplified()`
     pub fn Expr_ArgCosh_shallow_simplified(
         self_: *const Expr_ArgCosh,
-    ) -> crate::OcctResult<*mut HandleExprGeneralExpression>;
-    /// **Source:** `Expr_ArgCosh.hxx`:44 - `Expr_ArgCosh::Copy()`
+    ) -> crate::OcctResult<*mut Handle_Expr_GeneralExpression>;
+    /// **Source:** `Expr_ArgCosh.hxx`:40 - `Expr_ArgCosh::Copy()`
     pub fn Expr_ArgCosh_copy(
         self_: *const Expr_ArgCosh,
-    ) -> crate::OcctResult<*mut HandleExprGeneralExpression>;
-    /// **Source:** `Expr_ArgCosh.hxx`:50 - `Expr_ArgCosh::IsIdentical()`
+    ) -> crate::OcctResult<*mut Handle_Expr_GeneralExpression>;
+    /// **Source:** `Expr_ArgCosh.hxx`:45 - `Expr_ArgCosh::IsIdentical()`
     pub fn Expr_ArgCosh_is_identical(
         self_: *const Expr_ArgCosh,
-        Other: *const HandleExprGeneralExpression,
+        Other: *const Handle_Expr_GeneralExpression,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `Expr_ArgCosh.hxx`:52 - `Expr_ArgCosh::IsLinear()`
+    /// **Source:** `Expr_ArgCosh.hxx`:47 - `Expr_ArgCosh::IsLinear()`
     pub fn Expr_ArgCosh_is_linear(self_: *const Expr_ArgCosh) -> crate::OcctResult<bool>;
-    /// **Source:** `Expr_ArgCosh.hxx`:55 - `Expr_ArgCosh::Derivative()`
+    /// **Source:** `Expr_ArgCosh.hxx`:50 - `Expr_ArgCosh::Derivative()`
     pub fn Expr_ArgCosh_derivative(
         self_: *const Expr_ArgCosh,
-        X: *const HandleExprNamedUnknown,
-    ) -> crate::OcctResult<*mut HandleExprGeneralExpression>;
-    /// **Source:** `Expr_ArgCosh.hxx`:62 - `Expr_ArgCosh::Evaluate()`
-    pub fn Expr_ArgCosh_evaluate(
-        self_: *const Expr_ArgCosh,
-        vars: *const Expr_Array1OfNamedUnknown,
-        vals: *const TColStd_Array1OfReal,
-    ) -> crate::OcctResult<f64>;
-    /// **Source:** `Expr_ArgCosh.hxx`:66 - `Expr_ArgCosh::String()`
+        X: *const Handle_Expr_NamedUnknown,
+    ) -> crate::OcctResult<*mut Handle_Expr_GeneralExpression>;
+    /// **Source:** `Expr_ArgCosh.hxx`:61 - `Expr_ArgCosh::String()`
     pub fn Expr_ArgCosh_string(
         self_: *const Expr_ArgCosh,
     ) -> crate::OcctResult<*mut TCollection_AsciiString>;
-    /// **Source:** `Expr_ArgCosh.hxx`:68 - `Expr_ArgCosh::DynamicType()`
+    /// **Source:** `Expr_ArgCosh.hxx`:63 - `Expr_ArgCosh::DynamicType()`
     pub fn Expr_ArgCosh_dynamic_type(
         self_: *const Expr_ArgCosh,
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// **Source:** `Expr_ArgCosh.hxx`:68 - `Expr_ArgCosh::get_type_name()`
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
+    /// **Source:** `Expr_ArgCosh.hxx`:63 - `Expr_ArgCosh::get_type_name()`
     pub fn Expr_ArgCosh_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
-    /// **Source:** `Expr_ArgCosh.hxx`:68 - `Expr_ArgCosh::get_type_descriptor()`
-    pub fn Expr_ArgCosh_get_type_descriptor() -> crate::OcctResult<*const HandleStandardType>;
+    /// **Source:** `Expr_ArgCosh.hxx`:63 - `Expr_ArgCosh::get_type_descriptor()`
+    pub fn Expr_ArgCosh_get_type_descriptor() -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast Expr_ArgCosh to Expr_UnaryExpression
     pub fn Expr_ArgCosh_as_Expr_UnaryExpression(
         self_: *const Expr_ArgCosh,
@@ -797,157 +767,151 @@ unsafe extern "C" {
     /// Wrap Expr_ArgCosh in a Handle
     pub fn Expr_ArgCosh_to_handle(
         obj: *mut Expr_ArgCosh,
-    ) -> crate::OcctResult<*mut HandleExprArgCosh>;
+    ) -> crate::OcctResult<*mut Handle_Expr_ArgCosh>;
     /// Destroy Handle<Expr_ArgCosh>
-    pub fn HandleExprArgCosh_destructor(self_: *mut HandleExprArgCosh);
+    pub fn Handle_Expr_ArgCosh_destructor(self_: *mut Handle_Expr_ArgCosh);
     /// Clone Handle<Expr_ArgCosh> (increments reference count)
-    pub fn HandleExprArgCosh_clone(
-        self_: *const HandleExprArgCosh,
-    ) -> crate::OcctResult<*mut HandleExprArgCosh>;
+    pub fn Handle_Expr_ArgCosh_clone(
+        self_: *const Handle_Expr_ArgCosh,
+    ) -> crate::OcctResult<*mut Handle_Expr_ArgCosh>;
     /// Check if Handle<Expr_ArgCosh> is null
-    pub fn HandleExprArgCosh_is_null(self_: *const HandleExprArgCosh) -> bool;
+    pub fn Handle_Expr_ArgCosh_is_null(self_: *const Handle_Expr_ArgCosh) -> bool;
     /// Dereference Handle to get *const Expr_ArgCosh
-    pub fn HandleExprArgCosh_get(
-        handle: *const HandleExprArgCosh,
+    pub fn Handle_Expr_ArgCosh_get(
+        handle: *const Handle_Expr_ArgCosh,
     ) -> crate::OcctResult<*const Expr_ArgCosh>;
     /// Dereference Handle to get *mut Expr_ArgCosh
-    pub fn HandleExprArgCosh_get_mut(
-        handle: *mut HandleExprArgCosh,
+    pub fn Handle_Expr_ArgCosh_get_mut(
+        handle: *mut Handle_Expr_ArgCosh,
     ) -> crate::OcctResult<*mut Expr_ArgCosh>;
     /// Upcast Handle<Expr_ArgCosh> to Handle<Expr_UnaryExpression>
-    pub fn HandleExprArgCosh_to_HandleExprUnaryExpression(
-        self_: *const HandleExprArgCosh,
-    ) -> crate::OcctResult<*mut HandleExprUnaryExpression>;
+    pub fn Handle_Expr_ArgCosh_to_Handle_Expr_UnaryExpression(
+        self_: *const Handle_Expr_ArgCosh,
+    ) -> crate::OcctResult<*mut Handle_Expr_UnaryExpression>;
     /// Upcast Handle<Expr_ArgCosh> to Handle<Expr_GeneralExpression>
-    pub fn HandleExprArgCosh_to_HandleExprGeneralExpression(
-        self_: *const HandleExprArgCosh,
-    ) -> crate::OcctResult<*mut HandleExprGeneralExpression>;
+    pub fn Handle_Expr_ArgCosh_to_Handle_Expr_GeneralExpression(
+        self_: *const Handle_Expr_ArgCosh,
+    ) -> crate::OcctResult<*mut Handle_Expr_GeneralExpression>;
     /// Upcast Handle<Expr_ArgCosh> to Handle<Standard_Transient>
-    pub fn HandleExprArgCosh_to_HandleStandardTransient(
-        self_: *const HandleExprArgCosh,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
-    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:35 - `Expr_UnaryExpression::Operand()`
+    pub fn Handle_Expr_ArgCosh_to_Handle_Standard_Transient(
+        self_: *const Handle_Expr_ArgCosh,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
+    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:32 - `Expr_UnaryExpression::Operand()`
     pub fn Expr_ArgCosh_inherited_Operand(
         self_: *const Expr_ArgCosh,
-    ) -> crate::OcctResult<*const HandleExprGeneralExpression>;
-    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:39 - `Expr_UnaryExpression::SetOperand()`
+    ) -> crate::OcctResult<*const Handle_Expr_GeneralExpression>;
+    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:36 - `Expr_UnaryExpression::SetOperand()`
     pub fn Expr_ArgCosh_inherited_SetOperand(
         self_: *mut Expr_ArgCosh,
-        exp: *const HandleExprGeneralExpression,
+        exp: *const Handle_Expr_GeneralExpression,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:43 - `Expr_UnaryExpression::NbSubExpressions()`
+    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:40 - `Expr_UnaryExpression::NbSubExpressions()`
     pub fn Expr_ArgCosh_inherited_NbSubExpressions(
         self_: *const Expr_ArgCosh,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:47 - `Expr_UnaryExpression::SubExpression()`
+    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:44 - `Expr_UnaryExpression::SubExpression()`
     pub fn Expr_ArgCosh_inherited_SubExpression(
         self_: *const Expr_ArgCosh,
         I: i32,
-    ) -> crate::OcctResult<*const HandleExprGeneralExpression>;
-    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:51 - `Expr_UnaryExpression::ContainsUnknowns()`
+    ) -> crate::OcctResult<*const Handle_Expr_GeneralExpression>;
+    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:48 - `Expr_UnaryExpression::ContainsUnknowns()`
     pub fn Expr_ArgCosh_inherited_ContainsUnknowns(
         self_: *const Expr_ArgCosh,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:55 - `Expr_UnaryExpression::Contains()`
+    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:51 - `Expr_UnaryExpression::Contains()`
     pub fn Expr_ArgCosh_inherited_Contains(
         self_: *const Expr_ArgCosh,
-        exp: *const HandleExprGeneralExpression,
+        exp: *const Handle_Expr_GeneralExpression,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:59 - `Expr_UnaryExpression::Replace()`
+    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:55 - `Expr_UnaryExpression::Replace()`
     pub fn Expr_ArgCosh_inherited_Replace(
         self_: *mut Expr_ArgCosh,
-        var: *const HandleExprNamedUnknown,
-        with: *const HandleExprGeneralExpression,
+        var: *const Handle_Expr_NamedUnknown,
+        with: *const Handle_Expr_GeneralExpression,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:65 - `Expr_UnaryExpression::Simplified()`
+    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:61 - `Expr_UnaryExpression::Simplified()`
     pub fn Expr_ArgCosh_inherited_Simplified(
         self_: *const Expr_ArgCosh,
-    ) -> crate::OcctResult<*mut HandleExprGeneralExpression>;
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:76 - `Expr_GeneralExpression::IsShareable()`
+    ) -> crate::OcctResult<*mut Handle_Expr_GeneralExpression>;
+    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:71 - `Expr_GeneralExpression::IsShareable()`
     pub fn Expr_ArgCosh_inherited_IsShareable(
         self_: *const Expr_ArgCosh,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:91 - `Expr_GeneralExpression::NDerivative()`
+    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:86 - `Expr_GeneralExpression::NDerivative()`
     pub fn Expr_ArgCosh_inherited_NDerivative(
         self_: *const Expr_ArgCosh,
-        X: *const HandleExprNamedUnknown,
+        X: *const Handle_Expr_NamedUnknown,
         N: i32,
-    ) -> crate::OcctResult<*mut HandleExprGeneralExpression>;
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:112 - `Expr_GeneralExpression::EvaluateNumeric()`
+    ) -> crate::OcctResult<*mut Handle_Expr_GeneralExpression>;
+    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:108 - `Expr_GeneralExpression::EvaluateNumeric()`
     pub fn Expr_ArgCosh_inherited_EvaluateNumeric(
         self_: *const Expr_ArgCosh,
     ) -> crate::OcctResult<f64>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn Expr_ArgCosh_inherited_IsInstance(
         self_: *const Expr_ArgCosh,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn Expr_ArgCosh_inherited_IsKind(
         self_: *const Expr_ArgCosh,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn Expr_ArgCosh_inherited_This(
         self_: *const Expr_ArgCosh,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn Expr_ArgCosh_inherited_GetRefCount(self_: *const Expr_ArgCosh)
         -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn Expr_ArgCosh_inherited_IncrementRefCounter(
         self_: *mut Expr_ArgCosh,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn Expr_ArgCosh_inherited_DecrementRefCounter(
         self_: *mut Expr_ArgCosh,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn Expr_ArgCosh_inherited_Delete(self_: *const Expr_ArgCosh) -> *const std::ffi::c_char;
     // ======================== Expr_ArgSinh ========================
     pub fn Expr_ArgSinh_destructor(self_: *mut Expr_ArgSinh);
-    /// **Source:** `Expr_ArgSinh.hxx`:37 - `Expr_ArgSinh::Expr_ArgSinh()`
+    /// **Source:** `Expr_ArgSinh.hxx`:33 - `Expr_ArgSinh::Expr_ArgSinh()`
     pub fn Expr_ArgSinh_ctor_handleexprgeneralexpression(
-        exp: *const HandleExprGeneralExpression,
+        exp: *const Handle_Expr_GeneralExpression,
     ) -> crate::OcctResult<*mut Expr_ArgSinh>;
-    /// **Source:** `Expr_ArgSinh.hxx`:41 - `Expr_ArgSinh::ShallowSimplified()`
+    /// **Source:** `Expr_ArgSinh.hxx`:37 - `Expr_ArgSinh::ShallowSimplified()`
     pub fn Expr_ArgSinh_shallow_simplified(
         self_: *const Expr_ArgSinh,
-    ) -> crate::OcctResult<*mut HandleExprGeneralExpression>;
-    /// **Source:** `Expr_ArgSinh.hxx`:44 - `Expr_ArgSinh::Copy()`
+    ) -> crate::OcctResult<*mut Handle_Expr_GeneralExpression>;
+    /// **Source:** `Expr_ArgSinh.hxx`:40 - `Expr_ArgSinh::Copy()`
     pub fn Expr_ArgSinh_copy(
         self_: *const Expr_ArgSinh,
-    ) -> crate::OcctResult<*mut HandleExprGeneralExpression>;
-    /// **Source:** `Expr_ArgSinh.hxx`:50 - `Expr_ArgSinh::IsIdentical()`
+    ) -> crate::OcctResult<*mut Handle_Expr_GeneralExpression>;
+    /// **Source:** `Expr_ArgSinh.hxx`:45 - `Expr_ArgSinh::IsIdentical()`
     pub fn Expr_ArgSinh_is_identical(
         self_: *const Expr_ArgSinh,
-        Other: *const HandleExprGeneralExpression,
+        Other: *const Handle_Expr_GeneralExpression,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `Expr_ArgSinh.hxx`:52 - `Expr_ArgSinh::IsLinear()`
+    /// **Source:** `Expr_ArgSinh.hxx`:47 - `Expr_ArgSinh::IsLinear()`
     pub fn Expr_ArgSinh_is_linear(self_: *const Expr_ArgSinh) -> crate::OcctResult<bool>;
-    /// **Source:** `Expr_ArgSinh.hxx`:55 - `Expr_ArgSinh::Derivative()`
+    /// **Source:** `Expr_ArgSinh.hxx`:50 - `Expr_ArgSinh::Derivative()`
     pub fn Expr_ArgSinh_derivative(
         self_: *const Expr_ArgSinh,
-        X: *const HandleExprNamedUnknown,
-    ) -> crate::OcctResult<*mut HandleExprGeneralExpression>;
-    /// **Source:** `Expr_ArgSinh.hxx`:62 - `Expr_ArgSinh::Evaluate()`
-    pub fn Expr_ArgSinh_evaluate(
-        self_: *const Expr_ArgSinh,
-        vars: *const Expr_Array1OfNamedUnknown,
-        vals: *const TColStd_Array1OfReal,
-    ) -> crate::OcctResult<f64>;
-    /// **Source:** `Expr_ArgSinh.hxx`:66 - `Expr_ArgSinh::String()`
+        X: *const Handle_Expr_NamedUnknown,
+    ) -> crate::OcctResult<*mut Handle_Expr_GeneralExpression>;
+    /// **Source:** `Expr_ArgSinh.hxx`:61 - `Expr_ArgSinh::String()`
     pub fn Expr_ArgSinh_string(
         self_: *const Expr_ArgSinh,
     ) -> crate::OcctResult<*mut TCollection_AsciiString>;
-    /// **Source:** `Expr_ArgSinh.hxx`:68 - `Expr_ArgSinh::DynamicType()`
+    /// **Source:** `Expr_ArgSinh.hxx`:63 - `Expr_ArgSinh::DynamicType()`
     pub fn Expr_ArgSinh_dynamic_type(
         self_: *const Expr_ArgSinh,
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// **Source:** `Expr_ArgSinh.hxx`:68 - `Expr_ArgSinh::get_type_name()`
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
+    /// **Source:** `Expr_ArgSinh.hxx`:63 - `Expr_ArgSinh::get_type_name()`
     pub fn Expr_ArgSinh_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
-    /// **Source:** `Expr_ArgSinh.hxx`:68 - `Expr_ArgSinh::get_type_descriptor()`
-    pub fn Expr_ArgSinh_get_type_descriptor() -> crate::OcctResult<*const HandleStandardType>;
+    /// **Source:** `Expr_ArgSinh.hxx`:63 - `Expr_ArgSinh::get_type_descriptor()`
+    pub fn Expr_ArgSinh_get_type_descriptor() -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast Expr_ArgSinh to Expr_UnaryExpression
     pub fn Expr_ArgSinh_as_Expr_UnaryExpression(
         self_: *const Expr_ArgSinh,
@@ -975,157 +939,151 @@ unsafe extern "C" {
     /// Wrap Expr_ArgSinh in a Handle
     pub fn Expr_ArgSinh_to_handle(
         obj: *mut Expr_ArgSinh,
-    ) -> crate::OcctResult<*mut HandleExprArgSinh>;
+    ) -> crate::OcctResult<*mut Handle_Expr_ArgSinh>;
     /// Destroy Handle<Expr_ArgSinh>
-    pub fn HandleExprArgSinh_destructor(self_: *mut HandleExprArgSinh);
+    pub fn Handle_Expr_ArgSinh_destructor(self_: *mut Handle_Expr_ArgSinh);
     /// Clone Handle<Expr_ArgSinh> (increments reference count)
-    pub fn HandleExprArgSinh_clone(
-        self_: *const HandleExprArgSinh,
-    ) -> crate::OcctResult<*mut HandleExprArgSinh>;
+    pub fn Handle_Expr_ArgSinh_clone(
+        self_: *const Handle_Expr_ArgSinh,
+    ) -> crate::OcctResult<*mut Handle_Expr_ArgSinh>;
     /// Check if Handle<Expr_ArgSinh> is null
-    pub fn HandleExprArgSinh_is_null(self_: *const HandleExprArgSinh) -> bool;
+    pub fn Handle_Expr_ArgSinh_is_null(self_: *const Handle_Expr_ArgSinh) -> bool;
     /// Dereference Handle to get *const Expr_ArgSinh
-    pub fn HandleExprArgSinh_get(
-        handle: *const HandleExprArgSinh,
+    pub fn Handle_Expr_ArgSinh_get(
+        handle: *const Handle_Expr_ArgSinh,
     ) -> crate::OcctResult<*const Expr_ArgSinh>;
     /// Dereference Handle to get *mut Expr_ArgSinh
-    pub fn HandleExprArgSinh_get_mut(
-        handle: *mut HandleExprArgSinh,
+    pub fn Handle_Expr_ArgSinh_get_mut(
+        handle: *mut Handle_Expr_ArgSinh,
     ) -> crate::OcctResult<*mut Expr_ArgSinh>;
     /// Upcast Handle<Expr_ArgSinh> to Handle<Expr_UnaryExpression>
-    pub fn HandleExprArgSinh_to_HandleExprUnaryExpression(
-        self_: *const HandleExprArgSinh,
-    ) -> crate::OcctResult<*mut HandleExprUnaryExpression>;
+    pub fn Handle_Expr_ArgSinh_to_Handle_Expr_UnaryExpression(
+        self_: *const Handle_Expr_ArgSinh,
+    ) -> crate::OcctResult<*mut Handle_Expr_UnaryExpression>;
     /// Upcast Handle<Expr_ArgSinh> to Handle<Expr_GeneralExpression>
-    pub fn HandleExprArgSinh_to_HandleExprGeneralExpression(
-        self_: *const HandleExprArgSinh,
-    ) -> crate::OcctResult<*mut HandleExprGeneralExpression>;
+    pub fn Handle_Expr_ArgSinh_to_Handle_Expr_GeneralExpression(
+        self_: *const Handle_Expr_ArgSinh,
+    ) -> crate::OcctResult<*mut Handle_Expr_GeneralExpression>;
     /// Upcast Handle<Expr_ArgSinh> to Handle<Standard_Transient>
-    pub fn HandleExprArgSinh_to_HandleStandardTransient(
-        self_: *const HandleExprArgSinh,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
-    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:35 - `Expr_UnaryExpression::Operand()`
+    pub fn Handle_Expr_ArgSinh_to_Handle_Standard_Transient(
+        self_: *const Handle_Expr_ArgSinh,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
+    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:32 - `Expr_UnaryExpression::Operand()`
     pub fn Expr_ArgSinh_inherited_Operand(
         self_: *const Expr_ArgSinh,
-    ) -> crate::OcctResult<*const HandleExprGeneralExpression>;
-    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:39 - `Expr_UnaryExpression::SetOperand()`
+    ) -> crate::OcctResult<*const Handle_Expr_GeneralExpression>;
+    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:36 - `Expr_UnaryExpression::SetOperand()`
     pub fn Expr_ArgSinh_inherited_SetOperand(
         self_: *mut Expr_ArgSinh,
-        exp: *const HandleExprGeneralExpression,
+        exp: *const Handle_Expr_GeneralExpression,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:43 - `Expr_UnaryExpression::NbSubExpressions()`
+    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:40 - `Expr_UnaryExpression::NbSubExpressions()`
     pub fn Expr_ArgSinh_inherited_NbSubExpressions(
         self_: *const Expr_ArgSinh,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:47 - `Expr_UnaryExpression::SubExpression()`
+    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:44 - `Expr_UnaryExpression::SubExpression()`
     pub fn Expr_ArgSinh_inherited_SubExpression(
         self_: *const Expr_ArgSinh,
         I: i32,
-    ) -> crate::OcctResult<*const HandleExprGeneralExpression>;
-    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:51 - `Expr_UnaryExpression::ContainsUnknowns()`
+    ) -> crate::OcctResult<*const Handle_Expr_GeneralExpression>;
+    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:48 - `Expr_UnaryExpression::ContainsUnknowns()`
     pub fn Expr_ArgSinh_inherited_ContainsUnknowns(
         self_: *const Expr_ArgSinh,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:55 - `Expr_UnaryExpression::Contains()`
+    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:51 - `Expr_UnaryExpression::Contains()`
     pub fn Expr_ArgSinh_inherited_Contains(
         self_: *const Expr_ArgSinh,
-        exp: *const HandleExprGeneralExpression,
+        exp: *const Handle_Expr_GeneralExpression,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:59 - `Expr_UnaryExpression::Replace()`
+    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:55 - `Expr_UnaryExpression::Replace()`
     pub fn Expr_ArgSinh_inherited_Replace(
         self_: *mut Expr_ArgSinh,
-        var: *const HandleExprNamedUnknown,
-        with: *const HandleExprGeneralExpression,
+        var: *const Handle_Expr_NamedUnknown,
+        with: *const Handle_Expr_GeneralExpression,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:65 - `Expr_UnaryExpression::Simplified()`
+    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:61 - `Expr_UnaryExpression::Simplified()`
     pub fn Expr_ArgSinh_inherited_Simplified(
         self_: *const Expr_ArgSinh,
-    ) -> crate::OcctResult<*mut HandleExprGeneralExpression>;
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:76 - `Expr_GeneralExpression::IsShareable()`
+    ) -> crate::OcctResult<*mut Handle_Expr_GeneralExpression>;
+    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:71 - `Expr_GeneralExpression::IsShareable()`
     pub fn Expr_ArgSinh_inherited_IsShareable(
         self_: *const Expr_ArgSinh,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:91 - `Expr_GeneralExpression::NDerivative()`
+    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:86 - `Expr_GeneralExpression::NDerivative()`
     pub fn Expr_ArgSinh_inherited_NDerivative(
         self_: *const Expr_ArgSinh,
-        X: *const HandleExprNamedUnknown,
+        X: *const Handle_Expr_NamedUnknown,
         N: i32,
-    ) -> crate::OcctResult<*mut HandleExprGeneralExpression>;
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:112 - `Expr_GeneralExpression::EvaluateNumeric()`
+    ) -> crate::OcctResult<*mut Handle_Expr_GeneralExpression>;
+    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:108 - `Expr_GeneralExpression::EvaluateNumeric()`
     pub fn Expr_ArgSinh_inherited_EvaluateNumeric(
         self_: *const Expr_ArgSinh,
     ) -> crate::OcctResult<f64>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn Expr_ArgSinh_inherited_IsInstance(
         self_: *const Expr_ArgSinh,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn Expr_ArgSinh_inherited_IsKind(
         self_: *const Expr_ArgSinh,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn Expr_ArgSinh_inherited_This(
         self_: *const Expr_ArgSinh,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn Expr_ArgSinh_inherited_GetRefCount(self_: *const Expr_ArgSinh)
         -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn Expr_ArgSinh_inherited_IncrementRefCounter(
         self_: *mut Expr_ArgSinh,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn Expr_ArgSinh_inherited_DecrementRefCounter(
         self_: *mut Expr_ArgSinh,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn Expr_ArgSinh_inherited_Delete(self_: *const Expr_ArgSinh) -> *const std::ffi::c_char;
     // ======================== Expr_ArgTanh ========================
     pub fn Expr_ArgTanh_destructor(self_: *mut Expr_ArgTanh);
-    /// **Source:** `Expr_ArgTanh.hxx`:37 - `Expr_ArgTanh::Expr_ArgTanh()`
+    /// **Source:** `Expr_ArgTanh.hxx`:33 - `Expr_ArgTanh::Expr_ArgTanh()`
     pub fn Expr_ArgTanh_ctor_handleexprgeneralexpression(
-        exp: *const HandleExprGeneralExpression,
+        exp: *const Handle_Expr_GeneralExpression,
     ) -> crate::OcctResult<*mut Expr_ArgTanh>;
-    /// **Source:** `Expr_ArgTanh.hxx`:41 - `Expr_ArgTanh::ShallowSimplified()`
+    /// **Source:** `Expr_ArgTanh.hxx`:37 - `Expr_ArgTanh::ShallowSimplified()`
     pub fn Expr_ArgTanh_shallow_simplified(
         self_: *const Expr_ArgTanh,
-    ) -> crate::OcctResult<*mut HandleExprGeneralExpression>;
-    /// **Source:** `Expr_ArgTanh.hxx`:44 - `Expr_ArgTanh::Copy()`
+    ) -> crate::OcctResult<*mut Handle_Expr_GeneralExpression>;
+    /// **Source:** `Expr_ArgTanh.hxx`:40 - `Expr_ArgTanh::Copy()`
     pub fn Expr_ArgTanh_copy(
         self_: *const Expr_ArgTanh,
-    ) -> crate::OcctResult<*mut HandleExprGeneralExpression>;
-    /// **Source:** `Expr_ArgTanh.hxx`:50 - `Expr_ArgTanh::IsIdentical()`
+    ) -> crate::OcctResult<*mut Handle_Expr_GeneralExpression>;
+    /// **Source:** `Expr_ArgTanh.hxx`:45 - `Expr_ArgTanh::IsIdentical()`
     pub fn Expr_ArgTanh_is_identical(
         self_: *const Expr_ArgTanh,
-        Other: *const HandleExprGeneralExpression,
+        Other: *const Handle_Expr_GeneralExpression,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `Expr_ArgTanh.hxx`:52 - `Expr_ArgTanh::IsLinear()`
+    /// **Source:** `Expr_ArgTanh.hxx`:47 - `Expr_ArgTanh::IsLinear()`
     pub fn Expr_ArgTanh_is_linear(self_: *const Expr_ArgTanh) -> crate::OcctResult<bool>;
-    /// **Source:** `Expr_ArgTanh.hxx`:55 - `Expr_ArgTanh::Derivative()`
+    /// **Source:** `Expr_ArgTanh.hxx`:50 - `Expr_ArgTanh::Derivative()`
     pub fn Expr_ArgTanh_derivative(
         self_: *const Expr_ArgTanh,
-        X: *const HandleExprNamedUnknown,
-    ) -> crate::OcctResult<*mut HandleExprGeneralExpression>;
-    /// **Source:** `Expr_ArgTanh.hxx`:62 - `Expr_ArgTanh::Evaluate()`
-    pub fn Expr_ArgTanh_evaluate(
-        self_: *const Expr_ArgTanh,
-        vars: *const Expr_Array1OfNamedUnknown,
-        vals: *const TColStd_Array1OfReal,
-    ) -> crate::OcctResult<f64>;
-    /// **Source:** `Expr_ArgTanh.hxx`:66 - `Expr_ArgTanh::String()`
+        X: *const Handle_Expr_NamedUnknown,
+    ) -> crate::OcctResult<*mut Handle_Expr_GeneralExpression>;
+    /// **Source:** `Expr_ArgTanh.hxx`:61 - `Expr_ArgTanh::String()`
     pub fn Expr_ArgTanh_string(
         self_: *const Expr_ArgTanh,
     ) -> crate::OcctResult<*mut TCollection_AsciiString>;
-    /// **Source:** `Expr_ArgTanh.hxx`:68 - `Expr_ArgTanh::DynamicType()`
+    /// **Source:** `Expr_ArgTanh.hxx`:63 - `Expr_ArgTanh::DynamicType()`
     pub fn Expr_ArgTanh_dynamic_type(
         self_: *const Expr_ArgTanh,
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// **Source:** `Expr_ArgTanh.hxx`:68 - `Expr_ArgTanh::get_type_name()`
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
+    /// **Source:** `Expr_ArgTanh.hxx`:63 - `Expr_ArgTanh::get_type_name()`
     pub fn Expr_ArgTanh_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
-    /// **Source:** `Expr_ArgTanh.hxx`:68 - `Expr_ArgTanh::get_type_descriptor()`
-    pub fn Expr_ArgTanh_get_type_descriptor() -> crate::OcctResult<*const HandleStandardType>;
+    /// **Source:** `Expr_ArgTanh.hxx`:63 - `Expr_ArgTanh::get_type_descriptor()`
+    pub fn Expr_ArgTanh_get_type_descriptor() -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast Expr_ArgTanh to Expr_UnaryExpression
     pub fn Expr_ArgTanh_as_Expr_UnaryExpression(
         self_: *const Expr_ArgTanh,
@@ -1153,170 +1111,170 @@ unsafe extern "C" {
     /// Wrap Expr_ArgTanh in a Handle
     pub fn Expr_ArgTanh_to_handle(
         obj: *mut Expr_ArgTanh,
-    ) -> crate::OcctResult<*mut HandleExprArgTanh>;
+    ) -> crate::OcctResult<*mut Handle_Expr_ArgTanh>;
     /// Destroy Handle<Expr_ArgTanh>
-    pub fn HandleExprArgTanh_destructor(self_: *mut HandleExprArgTanh);
+    pub fn Handle_Expr_ArgTanh_destructor(self_: *mut Handle_Expr_ArgTanh);
     /// Clone Handle<Expr_ArgTanh> (increments reference count)
-    pub fn HandleExprArgTanh_clone(
-        self_: *const HandleExprArgTanh,
-    ) -> crate::OcctResult<*mut HandleExprArgTanh>;
+    pub fn Handle_Expr_ArgTanh_clone(
+        self_: *const Handle_Expr_ArgTanh,
+    ) -> crate::OcctResult<*mut Handle_Expr_ArgTanh>;
     /// Check if Handle<Expr_ArgTanh> is null
-    pub fn HandleExprArgTanh_is_null(self_: *const HandleExprArgTanh) -> bool;
+    pub fn Handle_Expr_ArgTanh_is_null(self_: *const Handle_Expr_ArgTanh) -> bool;
     /// Dereference Handle to get *const Expr_ArgTanh
-    pub fn HandleExprArgTanh_get(
-        handle: *const HandleExprArgTanh,
+    pub fn Handle_Expr_ArgTanh_get(
+        handle: *const Handle_Expr_ArgTanh,
     ) -> crate::OcctResult<*const Expr_ArgTanh>;
     /// Dereference Handle to get *mut Expr_ArgTanh
-    pub fn HandleExprArgTanh_get_mut(
-        handle: *mut HandleExprArgTanh,
+    pub fn Handle_Expr_ArgTanh_get_mut(
+        handle: *mut Handle_Expr_ArgTanh,
     ) -> crate::OcctResult<*mut Expr_ArgTanh>;
     /// Upcast Handle<Expr_ArgTanh> to Handle<Expr_UnaryExpression>
-    pub fn HandleExprArgTanh_to_HandleExprUnaryExpression(
-        self_: *const HandleExprArgTanh,
-    ) -> crate::OcctResult<*mut HandleExprUnaryExpression>;
+    pub fn Handle_Expr_ArgTanh_to_Handle_Expr_UnaryExpression(
+        self_: *const Handle_Expr_ArgTanh,
+    ) -> crate::OcctResult<*mut Handle_Expr_UnaryExpression>;
     /// Upcast Handle<Expr_ArgTanh> to Handle<Expr_GeneralExpression>
-    pub fn HandleExprArgTanh_to_HandleExprGeneralExpression(
-        self_: *const HandleExprArgTanh,
-    ) -> crate::OcctResult<*mut HandleExprGeneralExpression>;
+    pub fn Handle_Expr_ArgTanh_to_Handle_Expr_GeneralExpression(
+        self_: *const Handle_Expr_ArgTanh,
+    ) -> crate::OcctResult<*mut Handle_Expr_GeneralExpression>;
     /// Upcast Handle<Expr_ArgTanh> to Handle<Standard_Transient>
-    pub fn HandleExprArgTanh_to_HandleStandardTransient(
-        self_: *const HandleExprArgTanh,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
-    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:35 - `Expr_UnaryExpression::Operand()`
+    pub fn Handle_Expr_ArgTanh_to_Handle_Standard_Transient(
+        self_: *const Handle_Expr_ArgTanh,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
+    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:32 - `Expr_UnaryExpression::Operand()`
     pub fn Expr_ArgTanh_inherited_Operand(
         self_: *const Expr_ArgTanh,
-    ) -> crate::OcctResult<*const HandleExprGeneralExpression>;
-    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:39 - `Expr_UnaryExpression::SetOperand()`
+    ) -> crate::OcctResult<*const Handle_Expr_GeneralExpression>;
+    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:36 - `Expr_UnaryExpression::SetOperand()`
     pub fn Expr_ArgTanh_inherited_SetOperand(
         self_: *mut Expr_ArgTanh,
-        exp: *const HandleExprGeneralExpression,
+        exp: *const Handle_Expr_GeneralExpression,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:43 - `Expr_UnaryExpression::NbSubExpressions()`
+    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:40 - `Expr_UnaryExpression::NbSubExpressions()`
     pub fn Expr_ArgTanh_inherited_NbSubExpressions(
         self_: *const Expr_ArgTanh,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:47 - `Expr_UnaryExpression::SubExpression()`
+    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:44 - `Expr_UnaryExpression::SubExpression()`
     pub fn Expr_ArgTanh_inherited_SubExpression(
         self_: *const Expr_ArgTanh,
         I: i32,
-    ) -> crate::OcctResult<*const HandleExprGeneralExpression>;
-    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:51 - `Expr_UnaryExpression::ContainsUnknowns()`
+    ) -> crate::OcctResult<*const Handle_Expr_GeneralExpression>;
+    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:48 - `Expr_UnaryExpression::ContainsUnknowns()`
     pub fn Expr_ArgTanh_inherited_ContainsUnknowns(
         self_: *const Expr_ArgTanh,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:55 - `Expr_UnaryExpression::Contains()`
+    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:51 - `Expr_UnaryExpression::Contains()`
     pub fn Expr_ArgTanh_inherited_Contains(
         self_: *const Expr_ArgTanh,
-        exp: *const HandleExprGeneralExpression,
+        exp: *const Handle_Expr_GeneralExpression,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:59 - `Expr_UnaryExpression::Replace()`
+    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:55 - `Expr_UnaryExpression::Replace()`
     pub fn Expr_ArgTanh_inherited_Replace(
         self_: *mut Expr_ArgTanh,
-        var: *const HandleExprNamedUnknown,
-        with: *const HandleExprGeneralExpression,
+        var: *const Handle_Expr_NamedUnknown,
+        with: *const Handle_Expr_GeneralExpression,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:65 - `Expr_UnaryExpression::Simplified()`
+    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:61 - `Expr_UnaryExpression::Simplified()`
     pub fn Expr_ArgTanh_inherited_Simplified(
         self_: *const Expr_ArgTanh,
-    ) -> crate::OcctResult<*mut HandleExprGeneralExpression>;
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:76 - `Expr_GeneralExpression::IsShareable()`
+    ) -> crate::OcctResult<*mut Handle_Expr_GeneralExpression>;
+    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:71 - `Expr_GeneralExpression::IsShareable()`
     pub fn Expr_ArgTanh_inherited_IsShareable(
         self_: *const Expr_ArgTanh,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:91 - `Expr_GeneralExpression::NDerivative()`
+    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:86 - `Expr_GeneralExpression::NDerivative()`
     pub fn Expr_ArgTanh_inherited_NDerivative(
         self_: *const Expr_ArgTanh,
-        X: *const HandleExprNamedUnknown,
+        X: *const Handle_Expr_NamedUnknown,
         N: i32,
-    ) -> crate::OcctResult<*mut HandleExprGeneralExpression>;
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:112 - `Expr_GeneralExpression::EvaluateNumeric()`
+    ) -> crate::OcctResult<*mut Handle_Expr_GeneralExpression>;
+    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:108 - `Expr_GeneralExpression::EvaluateNumeric()`
     pub fn Expr_ArgTanh_inherited_EvaluateNumeric(
         self_: *const Expr_ArgTanh,
     ) -> crate::OcctResult<f64>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn Expr_ArgTanh_inherited_IsInstance(
         self_: *const Expr_ArgTanh,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn Expr_ArgTanh_inherited_IsKind(
         self_: *const Expr_ArgTanh,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn Expr_ArgTanh_inherited_This(
         self_: *const Expr_ArgTanh,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn Expr_ArgTanh_inherited_GetRefCount(self_: *const Expr_ArgTanh)
         -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn Expr_ArgTanh_inherited_IncrementRefCounter(
         self_: *mut Expr_ArgTanh,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn Expr_ArgTanh_inherited_DecrementRefCounter(
         self_: *mut Expr_ArgTanh,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn Expr_ArgTanh_inherited_Delete(self_: *const Expr_ArgTanh) -> *const std::ffi::c_char;
     // ======================== Expr_BinaryExpression ========================
     pub fn Expr_BinaryExpression_destructor(self_: *mut Expr_BinaryExpression);
-    /// **Source:** `Expr_BinaryExpression.hxx`:36 - `Expr_BinaryExpression::FirstOperand()`
+    /// **Source:** `Expr_BinaryExpression.hxx`:33 - `Expr_BinaryExpression::FirstOperand()`
     pub fn Expr_BinaryExpression_first_operand(
         self_: *const Expr_BinaryExpression,
-    ) -> crate::OcctResult<*const HandleExprGeneralExpression>;
-    /// **Source:** `Expr_BinaryExpression.hxx`:38 - `Expr_BinaryExpression::SecondOperand()`
+    ) -> crate::OcctResult<*const Handle_Expr_GeneralExpression>;
+    /// **Source:** `Expr_BinaryExpression.hxx`:35 - `Expr_BinaryExpression::SecondOperand()`
     pub fn Expr_BinaryExpression_second_operand(
         self_: *const Expr_BinaryExpression,
-    ) -> crate::OcctResult<*const HandleExprGeneralExpression>;
-    /// **Source:** `Expr_BinaryExpression.hxx`:42 - `Expr_BinaryExpression::SetFirstOperand()`
+    ) -> crate::OcctResult<*const Handle_Expr_GeneralExpression>;
+    /// **Source:** `Expr_BinaryExpression.hxx`:39 - `Expr_BinaryExpression::SetFirstOperand()`
     pub fn Expr_BinaryExpression_set_first_operand(
         self_: *mut Expr_BinaryExpression,
-        exp: *const HandleExprGeneralExpression,
+        exp: *const Handle_Expr_GeneralExpression,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `Expr_BinaryExpression.hxx`:46 - `Expr_BinaryExpression::SetSecondOperand()`
+    /// **Source:** `Expr_BinaryExpression.hxx`:43 - `Expr_BinaryExpression::SetSecondOperand()`
     pub fn Expr_BinaryExpression_set_second_operand(
         self_: *mut Expr_BinaryExpression,
-        exp: *const HandleExprGeneralExpression,
+        exp: *const Handle_Expr_GeneralExpression,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `Expr_BinaryExpression.hxx`:50 - `Expr_BinaryExpression::NbSubExpressions()`
+    /// **Source:** `Expr_BinaryExpression.hxx`:47 - `Expr_BinaryExpression::NbSubExpressions()`
     pub fn Expr_BinaryExpression_nb_sub_expressions(
         self_: *const Expr_BinaryExpression,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `Expr_BinaryExpression.hxx`:54 - `Expr_BinaryExpression::SubExpression()`
+    /// **Source:** `Expr_BinaryExpression.hxx`:51 - `Expr_BinaryExpression::SubExpression()`
     pub fn Expr_BinaryExpression_sub_expression(
         self_: *const Expr_BinaryExpression,
         I: i32,
-    ) -> crate::OcctResult<*const HandleExprGeneralExpression>;
-    /// **Source:** `Expr_BinaryExpression.hxx`:58 - `Expr_BinaryExpression::ContainsUnknowns()`
+    ) -> crate::OcctResult<*const Handle_Expr_GeneralExpression>;
+    /// **Source:** `Expr_BinaryExpression.hxx`:55 - `Expr_BinaryExpression::ContainsUnknowns()`
     pub fn Expr_BinaryExpression_contains_unknowns(
         self_: *const Expr_BinaryExpression,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `Expr_BinaryExpression.hxx`:62 - `Expr_BinaryExpression::Contains()`
+    /// **Source:** `Expr_BinaryExpression.hxx`:58 - `Expr_BinaryExpression::Contains()`
     pub fn Expr_BinaryExpression_contains(
         self_: *const Expr_BinaryExpression,
-        exp: *const HandleExprGeneralExpression,
+        exp: *const Handle_Expr_GeneralExpression,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `Expr_BinaryExpression.hxx`:66 - `Expr_BinaryExpression::Replace()`
+    /// **Source:** `Expr_BinaryExpression.hxx`:62 - `Expr_BinaryExpression::Replace()`
     pub fn Expr_BinaryExpression_replace(
         self_: *mut Expr_BinaryExpression,
-        var: *const HandleExprNamedUnknown,
-        with: *const HandleExprGeneralExpression,
+        var: *const Handle_Expr_NamedUnknown,
+        with: *const Handle_Expr_GeneralExpression,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `Expr_BinaryExpression.hxx`:72 - `Expr_BinaryExpression::Simplified()`
+    /// **Source:** `Expr_BinaryExpression.hxx`:68 - `Expr_BinaryExpression::Simplified()`
     pub fn Expr_BinaryExpression_simplified(
         self_: *const Expr_BinaryExpression,
-    ) -> crate::OcctResult<*mut HandleExprGeneralExpression>;
-    /// **Source:** `Expr_BinaryExpression.hxx`:74 - `Expr_BinaryExpression::DynamicType()`
+    ) -> crate::OcctResult<*mut Handle_Expr_GeneralExpression>;
+    /// **Source:** `Expr_BinaryExpression.hxx`:70 - `Expr_BinaryExpression::DynamicType()`
     pub fn Expr_BinaryExpression_dynamic_type(
         self_: *const Expr_BinaryExpression,
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// **Source:** `Expr_BinaryExpression.hxx`:74 - `Expr_BinaryExpression::get_type_name()`
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
+    /// **Source:** `Expr_BinaryExpression.hxx`:70 - `Expr_BinaryExpression::get_type_name()`
     pub fn Expr_BinaryExpression_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
-    /// **Source:** `Expr_BinaryExpression.hxx`:74 - `Expr_BinaryExpression::get_type_descriptor()`
+    /// **Source:** `Expr_BinaryExpression.hxx`:70 - `Expr_BinaryExpression::get_type_descriptor()`
     pub fn Expr_BinaryExpression_get_type_descriptor(
-    ) -> crate::OcctResult<*const HandleStandardType>;
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast Expr_BinaryExpression to Expr_GeneralExpression
     pub fn Expr_BinaryExpression_as_Expr_GeneralExpression(
         self_: *const Expr_BinaryExpression,
@@ -1334,173 +1292,163 @@ unsafe extern "C" {
         self_: *mut Expr_BinaryExpression,
     ) -> crate::OcctResult<*mut Standard_Transient>;
     /// Destroy Handle<Expr_BinaryExpression>
-    pub fn HandleExprBinaryExpression_destructor(self_: *mut HandleExprBinaryExpression);
+    pub fn Handle_Expr_BinaryExpression_destructor(self_: *mut Handle_Expr_BinaryExpression);
     /// Clone Handle<Expr_BinaryExpression> (increments reference count)
-    pub fn HandleExprBinaryExpression_clone(
-        self_: *const HandleExprBinaryExpression,
-    ) -> crate::OcctResult<*mut HandleExprBinaryExpression>;
+    pub fn Handle_Expr_BinaryExpression_clone(
+        self_: *const Handle_Expr_BinaryExpression,
+    ) -> crate::OcctResult<*mut Handle_Expr_BinaryExpression>;
     /// Check if Handle<Expr_BinaryExpression> is null
-    pub fn HandleExprBinaryExpression_is_null(self_: *const HandleExprBinaryExpression) -> bool;
+    pub fn Handle_Expr_BinaryExpression_is_null(self_: *const Handle_Expr_BinaryExpression)
+        -> bool;
     /// Dereference Handle to get *const Expr_BinaryExpression
-    pub fn HandleExprBinaryExpression_get(
-        handle: *const HandleExprBinaryExpression,
+    pub fn Handle_Expr_BinaryExpression_get(
+        handle: *const Handle_Expr_BinaryExpression,
     ) -> crate::OcctResult<*const Expr_BinaryExpression>;
     /// Dereference Handle to get *mut Expr_BinaryExpression
-    pub fn HandleExprBinaryExpression_get_mut(
-        handle: *mut HandleExprBinaryExpression,
+    pub fn Handle_Expr_BinaryExpression_get_mut(
+        handle: *mut Handle_Expr_BinaryExpression,
     ) -> crate::OcctResult<*mut Expr_BinaryExpression>;
     /// Upcast Handle<Expr_BinaryExpression> to Handle<Expr_GeneralExpression>
-    pub fn HandleExprBinaryExpression_to_HandleExprGeneralExpression(
-        self_: *const HandleExprBinaryExpression,
-    ) -> crate::OcctResult<*mut HandleExprGeneralExpression>;
+    pub fn Handle_Expr_BinaryExpression_to_Handle_Expr_GeneralExpression(
+        self_: *const Handle_Expr_BinaryExpression,
+    ) -> crate::OcctResult<*mut Handle_Expr_GeneralExpression>;
     /// Upcast Handle<Expr_BinaryExpression> to Handle<Standard_Transient>
-    pub fn HandleExprBinaryExpression_to_HandleStandardTransient(
-        self_: *const HandleExprBinaryExpression,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
+    pub fn Handle_Expr_BinaryExpression_to_Handle_Standard_Transient(
+        self_: *const Handle_Expr_BinaryExpression,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
     /// Downcast Handle<Expr_BinaryExpression> to Handle<Expr_BinaryFunction> (returns null on failure)
-    pub fn HandleExprBinaryExpression_downcast_to_HandleExprBinaryFunction(
-        self_: *const HandleExprBinaryExpression,
-    ) -> crate::OcctResult<*mut HandleExprBinaryFunction>;
+    pub fn Handle_Expr_BinaryExpression_downcast_to_Handle_Expr_BinaryFunction(
+        self_: *const Handle_Expr_BinaryExpression,
+    ) -> crate::OcctResult<*mut Handle_Expr_BinaryFunction>;
     /// Downcast Handle<Expr_BinaryExpression> to Handle<Expr_Difference> (returns null on failure)
-    pub fn HandleExprBinaryExpression_downcast_to_HandleExprDifference(
-        self_: *const HandleExprBinaryExpression,
-    ) -> crate::OcctResult<*mut HandleExprDifference>;
+    pub fn Handle_Expr_BinaryExpression_downcast_to_Handle_Expr_Difference(
+        self_: *const Handle_Expr_BinaryExpression,
+    ) -> crate::OcctResult<*mut Handle_Expr_Difference>;
     /// Downcast Handle<Expr_BinaryExpression> to Handle<Expr_Division> (returns null on failure)
-    pub fn HandleExprBinaryExpression_downcast_to_HandleExprDivision(
-        self_: *const HandleExprBinaryExpression,
-    ) -> crate::OcctResult<*mut HandleExprDivision>;
+    pub fn Handle_Expr_BinaryExpression_downcast_to_Handle_Expr_Division(
+        self_: *const Handle_Expr_BinaryExpression,
+    ) -> crate::OcctResult<*mut Handle_Expr_Division>;
     /// Downcast Handle<Expr_BinaryExpression> to Handle<Expr_Exponentiate> (returns null on failure)
-    pub fn HandleExprBinaryExpression_downcast_to_HandleExprExponentiate(
-        self_: *const HandleExprBinaryExpression,
-    ) -> crate::OcctResult<*mut HandleExprExponentiate>;
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:55 - `Expr_GeneralExpression::ShallowSimplified()`
+    pub fn Handle_Expr_BinaryExpression_downcast_to_Handle_Expr_Exponentiate(
+        self_: *const Handle_Expr_BinaryExpression,
+    ) -> crate::OcctResult<*mut Handle_Expr_Exponentiate>;
+    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:51 - `Expr_GeneralExpression::ShallowSimplified()`
     pub fn Expr_BinaryExpression_inherited_ShallowSimplified(
         self_: *const Expr_BinaryExpression,
-    ) -> crate::OcctResult<*mut HandleExprGeneralExpression>;
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:59 - `Expr_GeneralExpression::Copy()`
+    ) -> crate::OcctResult<*mut Handle_Expr_GeneralExpression>;
+    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:55 - `Expr_GeneralExpression::Copy()`
     pub fn Expr_BinaryExpression_inherited_Copy(
         self_: *const Expr_BinaryExpression,
-    ) -> crate::OcctResult<*mut HandleExprGeneralExpression>;
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:70 - `Expr_GeneralExpression::IsLinear()`
+    ) -> crate::OcctResult<*mut Handle_Expr_GeneralExpression>;
+    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:65 - `Expr_GeneralExpression::IsLinear()`
     pub fn Expr_BinaryExpression_inherited_IsLinear(
         self_: *const Expr_BinaryExpression,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:76 - `Expr_GeneralExpression::IsShareable()`
+    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:71 - `Expr_GeneralExpression::IsShareable()`
     pub fn Expr_BinaryExpression_inherited_IsShareable(
         self_: *const Expr_BinaryExpression,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:82 - `Expr_GeneralExpression::IsIdentical()`
+    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:77 - `Expr_GeneralExpression::IsIdentical()`
     pub fn Expr_BinaryExpression_inherited_IsIdentical(
         self_: *const Expr_BinaryExpression,
-        Other: *const HandleExprGeneralExpression,
+        Other: *const Handle_Expr_GeneralExpression,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:86 - `Expr_GeneralExpression::Derivative()`
+    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:81 - `Expr_GeneralExpression::Derivative()`
     pub fn Expr_BinaryExpression_inherited_Derivative(
         self_: *const Expr_BinaryExpression,
-        X: *const HandleExprNamedUnknown,
-    ) -> crate::OcctResult<*mut HandleExprGeneralExpression>;
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:91 - `Expr_GeneralExpression::NDerivative()`
+        X: *const Handle_Expr_NamedUnknown,
+    ) -> crate::OcctResult<*mut Handle_Expr_GeneralExpression>;
+    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:86 - `Expr_GeneralExpression::NDerivative()`
     pub fn Expr_BinaryExpression_inherited_NDerivative(
         self_: *const Expr_BinaryExpression,
-        X: *const HandleExprNamedUnknown,
+        X: *const Handle_Expr_NamedUnknown,
         N: i32,
-    ) -> crate::OcctResult<*mut HandleExprGeneralExpression>;
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:105 - `Expr_GeneralExpression::Evaluate()`
-    pub fn Expr_BinaryExpression_inherited_Evaluate(
-        self_: *const Expr_BinaryExpression,
-        vars: *const Expr_Array1OfNamedUnknown,
-        vals: *const TColStd_Array1OfReal,
-    ) -> crate::OcctResult<f64>;
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:112 - `Expr_GeneralExpression::EvaluateNumeric()`
+    ) -> crate::OcctResult<*mut Handle_Expr_GeneralExpression>;
+    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:108 - `Expr_GeneralExpression::EvaluateNumeric()`
     pub fn Expr_BinaryExpression_inherited_EvaluateNumeric(
         self_: *const Expr_BinaryExpression,
     ) -> crate::OcctResult<f64>;
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:115 - `Expr_GeneralExpression::String()`
+    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:111 - `Expr_GeneralExpression::String()`
     pub fn Expr_BinaryExpression_inherited_String(
         self_: *const Expr_BinaryExpression,
     ) -> crate::OcctResult<*mut TCollection_AsciiString>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn Expr_BinaryExpression_inherited_IsInstance(
         self_: *const Expr_BinaryExpression,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn Expr_BinaryExpression_inherited_IsKind(
         self_: *const Expr_BinaryExpression,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn Expr_BinaryExpression_inherited_This(
         self_: *const Expr_BinaryExpression,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn Expr_BinaryExpression_inherited_GetRefCount(
         self_: *const Expr_BinaryExpression,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn Expr_BinaryExpression_inherited_IncrementRefCounter(
         self_: *mut Expr_BinaryExpression,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn Expr_BinaryExpression_inherited_DecrementRefCounter(
         self_: *mut Expr_BinaryExpression,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn Expr_BinaryExpression_inherited_Delete(
         self_: *const Expr_BinaryExpression,
     ) -> *const std::ffi::c_char;
     // ======================== Expr_BinaryFunction ========================
     pub fn Expr_BinaryFunction_destructor(self_: *mut Expr_BinaryFunction);
-    /// **Source:** `Expr_BinaryFunction.hxx`:42 - `Expr_BinaryFunction::Expr_BinaryFunction()`
+    /// **Source:** `Expr_BinaryFunction.hxx`:38 - `Expr_BinaryFunction::Expr_BinaryFunction()`
     pub fn Expr_BinaryFunction_ctor_handleexprgeneralfunction_handleexprgeneralexpression2(
-        func: *const HandleExprGeneralFunction,
-        exp1: *const HandleExprGeneralExpression,
-        exp2: *const HandleExprGeneralExpression,
+        func: *const Handle_Expr_GeneralFunction,
+        exp1: *const Handle_Expr_GeneralExpression,
+        exp2: *const Handle_Expr_GeneralExpression,
     ) -> crate::OcctResult<*mut Expr_BinaryFunction>;
-    /// **Source:** `Expr_BinaryFunction.hxx`:47 - `Expr_BinaryFunction::Function()`
+    /// **Source:** `Expr_BinaryFunction.hxx`:43 - `Expr_BinaryFunction::Function()`
     pub fn Expr_BinaryFunction_function(
         self_: *const Expr_BinaryFunction,
-    ) -> crate::OcctResult<*mut HandleExprGeneralFunction>;
-    /// **Source:** `Expr_BinaryFunction.hxx`:51 - `Expr_BinaryFunction::ShallowSimplified()`
+    ) -> crate::OcctResult<*mut Handle_Expr_GeneralFunction>;
+    /// **Source:** `Expr_BinaryFunction.hxx`:47 - `Expr_BinaryFunction::ShallowSimplified()`
     pub fn Expr_BinaryFunction_shallow_simplified(
         self_: *const Expr_BinaryFunction,
-    ) -> crate::OcctResult<*mut HandleExprGeneralExpression>;
-    /// **Source:** `Expr_BinaryFunction.hxx`:54 - `Expr_BinaryFunction::Copy()`
+    ) -> crate::OcctResult<*mut Handle_Expr_GeneralExpression>;
+    /// **Source:** `Expr_BinaryFunction.hxx`:50 - `Expr_BinaryFunction::Copy()`
     pub fn Expr_BinaryFunction_copy(
         self_: *const Expr_BinaryFunction,
-    ) -> crate::OcctResult<*mut HandleExprGeneralExpression>;
-    /// **Source:** `Expr_BinaryFunction.hxx`:60 - `Expr_BinaryFunction::IsIdentical()`
+    ) -> crate::OcctResult<*mut Handle_Expr_GeneralExpression>;
+    /// **Source:** `Expr_BinaryFunction.hxx`:55 - `Expr_BinaryFunction::IsIdentical()`
     pub fn Expr_BinaryFunction_is_identical(
         self_: *const Expr_BinaryFunction,
-        Other: *const HandleExprGeneralExpression,
+        Other: *const Handle_Expr_GeneralExpression,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `Expr_BinaryFunction.hxx`:62 - `Expr_BinaryFunction::IsLinear()`
+    /// **Source:** `Expr_BinaryFunction.hxx`:57 - `Expr_BinaryFunction::IsLinear()`
     pub fn Expr_BinaryFunction_is_linear(
         self_: *const Expr_BinaryFunction,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `Expr_BinaryFunction.hxx`:65 - `Expr_BinaryFunction::Derivative()`
+    /// **Source:** `Expr_BinaryFunction.hxx`:60 - `Expr_BinaryFunction::Derivative()`
     pub fn Expr_BinaryFunction_derivative(
         self_: *const Expr_BinaryFunction,
-        X: *const HandleExprNamedUnknown,
-    ) -> crate::OcctResult<*mut HandleExprGeneralExpression>;
-    /// **Source:** `Expr_BinaryFunction.hxx`:72 - `Expr_BinaryFunction::Evaluate()`
-    pub fn Expr_BinaryFunction_evaluate(
-        self_: *const Expr_BinaryFunction,
-        vars: *const Expr_Array1OfNamedUnknown,
-        vals: *const TColStd_Array1OfReal,
-    ) -> crate::OcctResult<f64>;
-    /// **Source:** `Expr_BinaryFunction.hxx`:76 - `Expr_BinaryFunction::String()`
+        X: *const Handle_Expr_NamedUnknown,
+    ) -> crate::OcctResult<*mut Handle_Expr_GeneralExpression>;
+    /// **Source:** `Expr_BinaryFunction.hxx`:71 - `Expr_BinaryFunction::String()`
     pub fn Expr_BinaryFunction_string(
         self_: *const Expr_BinaryFunction,
     ) -> crate::OcctResult<*mut TCollection_AsciiString>;
-    /// **Source:** `Expr_BinaryFunction.hxx`:78 - `Expr_BinaryFunction::DynamicType()`
+    /// **Source:** `Expr_BinaryFunction.hxx`:73 - `Expr_BinaryFunction::DynamicType()`
     pub fn Expr_BinaryFunction_dynamic_type(
         self_: *const Expr_BinaryFunction,
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// **Source:** `Expr_BinaryFunction.hxx`:78 - `Expr_BinaryFunction::get_type_name()`
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
+    /// **Source:** `Expr_BinaryFunction.hxx`:73 - `Expr_BinaryFunction::get_type_name()`
     pub fn Expr_BinaryFunction_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
-    /// **Source:** `Expr_BinaryFunction.hxx`:78 - `Expr_BinaryFunction::get_type_descriptor()`
-    pub fn Expr_BinaryFunction_get_type_descriptor() -> crate::OcctResult<*const HandleStandardType>;
+    /// **Source:** `Expr_BinaryFunction.hxx`:73 - `Expr_BinaryFunction::get_type_descriptor()`
+    pub fn Expr_BinaryFunction_get_type_descriptor(
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast Expr_BinaryFunction to Expr_BinaryExpression
     pub fn Expr_BinaryFunction_as_Expr_BinaryExpression(
         self_: *const Expr_BinaryFunction,
@@ -1528,169 +1476,163 @@ unsafe extern "C" {
     /// Wrap Expr_BinaryFunction in a Handle
     pub fn Expr_BinaryFunction_to_handle(
         obj: *mut Expr_BinaryFunction,
-    ) -> crate::OcctResult<*mut HandleExprBinaryFunction>;
+    ) -> crate::OcctResult<*mut Handle_Expr_BinaryFunction>;
     /// Destroy Handle<Expr_BinaryFunction>
-    pub fn HandleExprBinaryFunction_destructor(self_: *mut HandleExprBinaryFunction);
+    pub fn Handle_Expr_BinaryFunction_destructor(self_: *mut Handle_Expr_BinaryFunction);
     /// Clone Handle<Expr_BinaryFunction> (increments reference count)
-    pub fn HandleExprBinaryFunction_clone(
-        self_: *const HandleExprBinaryFunction,
-    ) -> crate::OcctResult<*mut HandleExprBinaryFunction>;
+    pub fn Handle_Expr_BinaryFunction_clone(
+        self_: *const Handle_Expr_BinaryFunction,
+    ) -> crate::OcctResult<*mut Handle_Expr_BinaryFunction>;
     /// Check if Handle<Expr_BinaryFunction> is null
-    pub fn HandleExprBinaryFunction_is_null(self_: *const HandleExprBinaryFunction) -> bool;
+    pub fn Handle_Expr_BinaryFunction_is_null(self_: *const Handle_Expr_BinaryFunction) -> bool;
     /// Dereference Handle to get *const Expr_BinaryFunction
-    pub fn HandleExprBinaryFunction_get(
-        handle: *const HandleExprBinaryFunction,
+    pub fn Handle_Expr_BinaryFunction_get(
+        handle: *const Handle_Expr_BinaryFunction,
     ) -> crate::OcctResult<*const Expr_BinaryFunction>;
     /// Dereference Handle to get *mut Expr_BinaryFunction
-    pub fn HandleExprBinaryFunction_get_mut(
-        handle: *mut HandleExprBinaryFunction,
+    pub fn Handle_Expr_BinaryFunction_get_mut(
+        handle: *mut Handle_Expr_BinaryFunction,
     ) -> crate::OcctResult<*mut Expr_BinaryFunction>;
     /// Upcast Handle<Expr_BinaryFunction> to Handle<Expr_BinaryExpression>
-    pub fn HandleExprBinaryFunction_to_HandleExprBinaryExpression(
-        self_: *const HandleExprBinaryFunction,
-    ) -> crate::OcctResult<*mut HandleExprBinaryExpression>;
+    pub fn Handle_Expr_BinaryFunction_to_Handle_Expr_BinaryExpression(
+        self_: *const Handle_Expr_BinaryFunction,
+    ) -> crate::OcctResult<*mut Handle_Expr_BinaryExpression>;
     /// Upcast Handle<Expr_BinaryFunction> to Handle<Expr_GeneralExpression>
-    pub fn HandleExprBinaryFunction_to_HandleExprGeneralExpression(
-        self_: *const HandleExprBinaryFunction,
-    ) -> crate::OcctResult<*mut HandleExprGeneralExpression>;
+    pub fn Handle_Expr_BinaryFunction_to_Handle_Expr_GeneralExpression(
+        self_: *const Handle_Expr_BinaryFunction,
+    ) -> crate::OcctResult<*mut Handle_Expr_GeneralExpression>;
     /// Upcast Handle<Expr_BinaryFunction> to Handle<Standard_Transient>
-    pub fn HandleExprBinaryFunction_to_HandleStandardTransient(
-        self_: *const HandleExprBinaryFunction,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
-    /// Inherited: **Source:** `Expr_BinaryExpression.hxx`:36 - `Expr_BinaryExpression::FirstOperand()`
+    pub fn Handle_Expr_BinaryFunction_to_Handle_Standard_Transient(
+        self_: *const Handle_Expr_BinaryFunction,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
+    /// Inherited: **Source:** `Expr_BinaryExpression.hxx`:33 - `Expr_BinaryExpression::FirstOperand()`
     pub fn Expr_BinaryFunction_inherited_FirstOperand(
         self_: *const Expr_BinaryFunction,
-    ) -> crate::OcctResult<*const HandleExprGeneralExpression>;
-    /// Inherited: **Source:** `Expr_BinaryExpression.hxx`:38 - `Expr_BinaryExpression::SecondOperand()`
+    ) -> crate::OcctResult<*const Handle_Expr_GeneralExpression>;
+    /// Inherited: **Source:** `Expr_BinaryExpression.hxx`:35 - `Expr_BinaryExpression::SecondOperand()`
     pub fn Expr_BinaryFunction_inherited_SecondOperand(
         self_: *const Expr_BinaryFunction,
-    ) -> crate::OcctResult<*const HandleExprGeneralExpression>;
-    /// Inherited: **Source:** `Expr_BinaryExpression.hxx`:42 - `Expr_BinaryExpression::SetFirstOperand()`
+    ) -> crate::OcctResult<*const Handle_Expr_GeneralExpression>;
+    /// Inherited: **Source:** `Expr_BinaryExpression.hxx`:39 - `Expr_BinaryExpression::SetFirstOperand()`
     pub fn Expr_BinaryFunction_inherited_SetFirstOperand(
         self_: *mut Expr_BinaryFunction,
-        exp: *const HandleExprGeneralExpression,
+        exp: *const Handle_Expr_GeneralExpression,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Expr_BinaryExpression.hxx`:46 - `Expr_BinaryExpression::SetSecondOperand()`
+    /// Inherited: **Source:** `Expr_BinaryExpression.hxx`:43 - `Expr_BinaryExpression::SetSecondOperand()`
     pub fn Expr_BinaryFunction_inherited_SetSecondOperand(
         self_: *mut Expr_BinaryFunction,
-        exp: *const HandleExprGeneralExpression,
+        exp: *const Handle_Expr_GeneralExpression,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Expr_BinaryExpression.hxx`:50 - `Expr_BinaryExpression::NbSubExpressions()`
+    /// Inherited: **Source:** `Expr_BinaryExpression.hxx`:47 - `Expr_BinaryExpression::NbSubExpressions()`
     pub fn Expr_BinaryFunction_inherited_NbSubExpressions(
         self_: *const Expr_BinaryFunction,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Expr_BinaryExpression.hxx`:54 - `Expr_BinaryExpression::SubExpression()`
+    /// Inherited: **Source:** `Expr_BinaryExpression.hxx`:51 - `Expr_BinaryExpression::SubExpression()`
     pub fn Expr_BinaryFunction_inherited_SubExpression(
         self_: *const Expr_BinaryFunction,
         I: i32,
-    ) -> crate::OcctResult<*const HandleExprGeneralExpression>;
-    /// Inherited: **Source:** `Expr_BinaryExpression.hxx`:58 - `Expr_BinaryExpression::ContainsUnknowns()`
+    ) -> crate::OcctResult<*const Handle_Expr_GeneralExpression>;
+    /// Inherited: **Source:** `Expr_BinaryExpression.hxx`:55 - `Expr_BinaryExpression::ContainsUnknowns()`
     pub fn Expr_BinaryFunction_inherited_ContainsUnknowns(
         self_: *const Expr_BinaryFunction,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Expr_BinaryExpression.hxx`:62 - `Expr_BinaryExpression::Contains()`
+    /// Inherited: **Source:** `Expr_BinaryExpression.hxx`:58 - `Expr_BinaryExpression::Contains()`
     pub fn Expr_BinaryFunction_inherited_Contains(
         self_: *const Expr_BinaryFunction,
-        exp: *const HandleExprGeneralExpression,
+        exp: *const Handle_Expr_GeneralExpression,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Expr_BinaryExpression.hxx`:66 - `Expr_BinaryExpression::Replace()`
+    /// Inherited: **Source:** `Expr_BinaryExpression.hxx`:62 - `Expr_BinaryExpression::Replace()`
     pub fn Expr_BinaryFunction_inherited_Replace(
         self_: *mut Expr_BinaryFunction,
-        var: *const HandleExprNamedUnknown,
-        with: *const HandleExprGeneralExpression,
+        var: *const Handle_Expr_NamedUnknown,
+        with: *const Handle_Expr_GeneralExpression,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Expr_BinaryExpression.hxx`:72 - `Expr_BinaryExpression::Simplified()`
+    /// Inherited: **Source:** `Expr_BinaryExpression.hxx`:68 - `Expr_BinaryExpression::Simplified()`
     pub fn Expr_BinaryFunction_inherited_Simplified(
         self_: *const Expr_BinaryFunction,
-    ) -> crate::OcctResult<*mut HandleExprGeneralExpression>;
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:76 - `Expr_GeneralExpression::IsShareable()`
+    ) -> crate::OcctResult<*mut Handle_Expr_GeneralExpression>;
+    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:71 - `Expr_GeneralExpression::IsShareable()`
     pub fn Expr_BinaryFunction_inherited_IsShareable(
         self_: *const Expr_BinaryFunction,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:91 - `Expr_GeneralExpression::NDerivative()`
+    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:86 - `Expr_GeneralExpression::NDerivative()`
     pub fn Expr_BinaryFunction_inherited_NDerivative(
         self_: *const Expr_BinaryFunction,
-        X: *const HandleExprNamedUnknown,
+        X: *const Handle_Expr_NamedUnknown,
         N: i32,
-    ) -> crate::OcctResult<*mut HandleExprGeneralExpression>;
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:112 - `Expr_GeneralExpression::EvaluateNumeric()`
+    ) -> crate::OcctResult<*mut Handle_Expr_GeneralExpression>;
+    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:108 - `Expr_GeneralExpression::EvaluateNumeric()`
     pub fn Expr_BinaryFunction_inherited_EvaluateNumeric(
         self_: *const Expr_BinaryFunction,
     ) -> crate::OcctResult<f64>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn Expr_BinaryFunction_inherited_IsInstance(
         self_: *const Expr_BinaryFunction,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn Expr_BinaryFunction_inherited_IsKind(
         self_: *const Expr_BinaryFunction,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn Expr_BinaryFunction_inherited_This(
         self_: *const Expr_BinaryFunction,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn Expr_BinaryFunction_inherited_GetRefCount(
         self_: *const Expr_BinaryFunction,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn Expr_BinaryFunction_inherited_IncrementRefCounter(
         self_: *mut Expr_BinaryFunction,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn Expr_BinaryFunction_inherited_DecrementRefCounter(
         self_: *mut Expr_BinaryFunction,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn Expr_BinaryFunction_inherited_Delete(
         self_: *const Expr_BinaryFunction,
     ) -> *const std::ffi::c_char;
     // ======================== Expr_Cosh ========================
     pub fn Expr_Cosh_destructor(self_: *mut Expr_Cosh);
-    /// **Source:** `Expr_Cosh.hxx`:38 - `Expr_Cosh::Expr_Cosh()`
+    /// **Source:** `Expr_Cosh.hxx`:34 - `Expr_Cosh::Expr_Cosh()`
     pub fn Expr_Cosh_ctor_handleexprgeneralexpression(
-        exp: *const HandleExprGeneralExpression,
+        exp: *const Handle_Expr_GeneralExpression,
     ) -> crate::OcctResult<*mut Expr_Cosh>;
-    /// **Source:** `Expr_Cosh.hxx`:42 - `Expr_Cosh::ShallowSimplified()`
+    /// **Source:** `Expr_Cosh.hxx`:38 - `Expr_Cosh::ShallowSimplified()`
     pub fn Expr_Cosh_shallow_simplified(
         self_: *const Expr_Cosh,
-    ) -> crate::OcctResult<*mut HandleExprGeneralExpression>;
-    /// **Source:** `Expr_Cosh.hxx`:45 - `Expr_Cosh::Copy()`
+    ) -> crate::OcctResult<*mut Handle_Expr_GeneralExpression>;
+    /// **Source:** `Expr_Cosh.hxx`:41 - `Expr_Cosh::Copy()`
     pub fn Expr_Cosh_copy(
         self_: *const Expr_Cosh,
-    ) -> crate::OcctResult<*mut HandleExprGeneralExpression>;
-    /// **Source:** `Expr_Cosh.hxx`:51 - `Expr_Cosh::IsIdentical()`
+    ) -> crate::OcctResult<*mut Handle_Expr_GeneralExpression>;
+    /// **Source:** `Expr_Cosh.hxx`:46 - `Expr_Cosh::IsIdentical()`
     pub fn Expr_Cosh_is_identical(
         self_: *const Expr_Cosh,
-        Other: *const HandleExprGeneralExpression,
+        Other: *const Handle_Expr_GeneralExpression,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `Expr_Cosh.hxx`:53 - `Expr_Cosh::IsLinear()`
+    /// **Source:** `Expr_Cosh.hxx`:48 - `Expr_Cosh::IsLinear()`
     pub fn Expr_Cosh_is_linear(self_: *const Expr_Cosh) -> crate::OcctResult<bool>;
-    /// **Source:** `Expr_Cosh.hxx`:56 - `Expr_Cosh::Derivative()`
+    /// **Source:** `Expr_Cosh.hxx`:51 - `Expr_Cosh::Derivative()`
     pub fn Expr_Cosh_derivative(
         self_: *const Expr_Cosh,
-        X: *const HandleExprNamedUnknown,
-    ) -> crate::OcctResult<*mut HandleExprGeneralExpression>;
-    /// **Source:** `Expr_Cosh.hxx`:63 - `Expr_Cosh::Evaluate()`
-    pub fn Expr_Cosh_evaluate(
-        self_: *const Expr_Cosh,
-        vars: *const Expr_Array1OfNamedUnknown,
-        vals: *const TColStd_Array1OfReal,
-    ) -> crate::OcctResult<f64>;
-    /// **Source:** `Expr_Cosh.hxx`:67 - `Expr_Cosh::String()`
+        X: *const Handle_Expr_NamedUnknown,
+    ) -> crate::OcctResult<*mut Handle_Expr_GeneralExpression>;
+    /// **Source:** `Expr_Cosh.hxx`:62 - `Expr_Cosh::String()`
     pub fn Expr_Cosh_string(
         self_: *const Expr_Cosh,
     ) -> crate::OcctResult<*mut TCollection_AsciiString>;
-    /// **Source:** `Expr_Cosh.hxx`:69 - `Expr_Cosh::DynamicType()`
+    /// **Source:** `Expr_Cosh.hxx`:64 - `Expr_Cosh::DynamicType()`
     pub fn Expr_Cosh_dynamic_type(
         self_: *const Expr_Cosh,
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// **Source:** `Expr_Cosh.hxx`:69 - `Expr_Cosh::get_type_name()`
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
+    /// **Source:** `Expr_Cosh.hxx`:64 - `Expr_Cosh::get_type_name()`
     pub fn Expr_Cosh_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
-    /// **Source:** `Expr_Cosh.hxx`:69 - `Expr_Cosh::get_type_descriptor()`
-    pub fn Expr_Cosh_get_type_descriptor() -> crate::OcctResult<*const HandleStandardType>;
+    /// **Source:** `Expr_Cosh.hxx`:64 - `Expr_Cosh::get_type_descriptor()`
+    pub fn Expr_Cosh_get_type_descriptor() -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast Expr_Cosh to Expr_UnaryExpression
     pub fn Expr_Cosh_as_Expr_UnaryExpression(
         self_: *const Expr_Cosh,
@@ -1716,146 +1658,142 @@ unsafe extern "C" {
         self_: *mut Expr_Cosh,
     ) -> crate::OcctResult<*mut Standard_Transient>;
     /// Wrap Expr_Cosh in a Handle
-    pub fn Expr_Cosh_to_handle(obj: *mut Expr_Cosh) -> crate::OcctResult<*mut HandleExprCosh>;
+    pub fn Expr_Cosh_to_handle(obj: *mut Expr_Cosh) -> crate::OcctResult<*mut Handle_Expr_Cosh>;
     /// Destroy Handle<Expr_Cosh>
-    pub fn HandleExprCosh_destructor(self_: *mut HandleExprCosh);
+    pub fn Handle_Expr_Cosh_destructor(self_: *mut Handle_Expr_Cosh);
     /// Clone Handle<Expr_Cosh> (increments reference count)
-    pub fn HandleExprCosh_clone(
-        self_: *const HandleExprCosh,
-    ) -> crate::OcctResult<*mut HandleExprCosh>;
+    pub fn Handle_Expr_Cosh_clone(
+        self_: *const Handle_Expr_Cosh,
+    ) -> crate::OcctResult<*mut Handle_Expr_Cosh>;
     /// Check if Handle<Expr_Cosh> is null
-    pub fn HandleExprCosh_is_null(self_: *const HandleExprCosh) -> bool;
+    pub fn Handle_Expr_Cosh_is_null(self_: *const Handle_Expr_Cosh) -> bool;
     /// Dereference Handle to get *const Expr_Cosh
-    pub fn HandleExprCosh_get(handle: *const HandleExprCosh)
-        -> crate::OcctResult<*const Expr_Cosh>;
+    pub fn Handle_Expr_Cosh_get(
+        handle: *const Handle_Expr_Cosh,
+    ) -> crate::OcctResult<*const Expr_Cosh>;
     /// Dereference Handle to get *mut Expr_Cosh
-    pub fn HandleExprCosh_get_mut(handle: *mut HandleExprCosh)
-        -> crate::OcctResult<*mut Expr_Cosh>;
+    pub fn Handle_Expr_Cosh_get_mut(
+        handle: *mut Handle_Expr_Cosh,
+    ) -> crate::OcctResult<*mut Expr_Cosh>;
     /// Upcast Handle<Expr_Cosh> to Handle<Expr_UnaryExpression>
-    pub fn HandleExprCosh_to_HandleExprUnaryExpression(
-        self_: *const HandleExprCosh,
-    ) -> crate::OcctResult<*mut HandleExprUnaryExpression>;
+    pub fn Handle_Expr_Cosh_to_Handle_Expr_UnaryExpression(
+        self_: *const Handle_Expr_Cosh,
+    ) -> crate::OcctResult<*mut Handle_Expr_UnaryExpression>;
     /// Upcast Handle<Expr_Cosh> to Handle<Expr_GeneralExpression>
-    pub fn HandleExprCosh_to_HandleExprGeneralExpression(
-        self_: *const HandleExprCosh,
-    ) -> crate::OcctResult<*mut HandleExprGeneralExpression>;
+    pub fn Handle_Expr_Cosh_to_Handle_Expr_GeneralExpression(
+        self_: *const Handle_Expr_Cosh,
+    ) -> crate::OcctResult<*mut Handle_Expr_GeneralExpression>;
     /// Upcast Handle<Expr_Cosh> to Handle<Standard_Transient>
-    pub fn HandleExprCosh_to_HandleStandardTransient(
-        self_: *const HandleExprCosh,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
-    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:35 - `Expr_UnaryExpression::Operand()`
+    pub fn Handle_Expr_Cosh_to_Handle_Standard_Transient(
+        self_: *const Handle_Expr_Cosh,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
+    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:32 - `Expr_UnaryExpression::Operand()`
     pub fn Expr_Cosh_inherited_Operand(
         self_: *const Expr_Cosh,
-    ) -> crate::OcctResult<*const HandleExprGeneralExpression>;
-    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:39 - `Expr_UnaryExpression::SetOperand()`
+    ) -> crate::OcctResult<*const Handle_Expr_GeneralExpression>;
+    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:36 - `Expr_UnaryExpression::SetOperand()`
     pub fn Expr_Cosh_inherited_SetOperand(
         self_: *mut Expr_Cosh,
-        exp: *const HandleExprGeneralExpression,
+        exp: *const Handle_Expr_GeneralExpression,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:43 - `Expr_UnaryExpression::NbSubExpressions()`
+    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:40 - `Expr_UnaryExpression::NbSubExpressions()`
     pub fn Expr_Cosh_inherited_NbSubExpressions(self_: *const Expr_Cosh) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:47 - `Expr_UnaryExpression::SubExpression()`
+    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:44 - `Expr_UnaryExpression::SubExpression()`
     pub fn Expr_Cosh_inherited_SubExpression(
         self_: *const Expr_Cosh,
         I: i32,
-    ) -> crate::OcctResult<*const HandleExprGeneralExpression>;
-    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:51 - `Expr_UnaryExpression::ContainsUnknowns()`
+    ) -> crate::OcctResult<*const Handle_Expr_GeneralExpression>;
+    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:48 - `Expr_UnaryExpression::ContainsUnknowns()`
     pub fn Expr_Cosh_inherited_ContainsUnknowns(self_: *const Expr_Cosh)
         -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:55 - `Expr_UnaryExpression::Contains()`
+    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:51 - `Expr_UnaryExpression::Contains()`
     pub fn Expr_Cosh_inherited_Contains(
         self_: *const Expr_Cosh,
-        exp: *const HandleExprGeneralExpression,
+        exp: *const Handle_Expr_GeneralExpression,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:59 - `Expr_UnaryExpression::Replace()`
+    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:55 - `Expr_UnaryExpression::Replace()`
     pub fn Expr_Cosh_inherited_Replace(
         self_: *mut Expr_Cosh,
-        var: *const HandleExprNamedUnknown,
-        with: *const HandleExprGeneralExpression,
+        var: *const Handle_Expr_NamedUnknown,
+        with: *const Handle_Expr_GeneralExpression,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:65 - `Expr_UnaryExpression::Simplified()`
+    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:61 - `Expr_UnaryExpression::Simplified()`
     pub fn Expr_Cosh_inherited_Simplified(
         self_: *const Expr_Cosh,
-    ) -> crate::OcctResult<*mut HandleExprGeneralExpression>;
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:76 - `Expr_GeneralExpression::IsShareable()`
+    ) -> crate::OcctResult<*mut Handle_Expr_GeneralExpression>;
+    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:71 - `Expr_GeneralExpression::IsShareable()`
     pub fn Expr_Cosh_inherited_IsShareable(self_: *const Expr_Cosh) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:91 - `Expr_GeneralExpression::NDerivative()`
+    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:86 - `Expr_GeneralExpression::NDerivative()`
     pub fn Expr_Cosh_inherited_NDerivative(
         self_: *const Expr_Cosh,
-        X: *const HandleExprNamedUnknown,
+        X: *const Handle_Expr_NamedUnknown,
         N: i32,
-    ) -> crate::OcctResult<*mut HandleExprGeneralExpression>;
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:112 - `Expr_GeneralExpression::EvaluateNumeric()`
+    ) -> crate::OcctResult<*mut Handle_Expr_GeneralExpression>;
+    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:108 - `Expr_GeneralExpression::EvaluateNumeric()`
     pub fn Expr_Cosh_inherited_EvaluateNumeric(self_: *const Expr_Cosh) -> crate::OcctResult<f64>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn Expr_Cosh_inherited_IsInstance(
         self_: *const Expr_Cosh,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn Expr_Cosh_inherited_IsKind(
         self_: *const Expr_Cosh,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn Expr_Cosh_inherited_This(
         self_: *const Expr_Cosh,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn Expr_Cosh_inherited_GetRefCount(self_: *const Expr_Cosh) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn Expr_Cosh_inherited_IncrementRefCounter(
         self_: *mut Expr_Cosh,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn Expr_Cosh_inherited_DecrementRefCounter(self_: *mut Expr_Cosh)
         -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn Expr_Cosh_inherited_Delete(self_: *const Expr_Cosh) -> *const std::ffi::c_char;
     // ======================== Expr_Cosine ========================
     pub fn Expr_Cosine_destructor(self_: *mut Expr_Cosine);
-    /// **Source:** `Expr_Cosine.hxx`:38 - `Expr_Cosine::Expr_Cosine()`
+    /// **Source:** `Expr_Cosine.hxx`:34 - `Expr_Cosine::Expr_Cosine()`
     pub fn Expr_Cosine_ctor_handleexprgeneralexpression(
-        Exp: *const HandleExprGeneralExpression,
+        Exp: *const Handle_Expr_GeneralExpression,
     ) -> crate::OcctResult<*mut Expr_Cosine>;
-    /// **Source:** `Expr_Cosine.hxx`:42 - `Expr_Cosine::ShallowSimplified()`
+    /// **Source:** `Expr_Cosine.hxx`:38 - `Expr_Cosine::ShallowSimplified()`
     pub fn Expr_Cosine_shallow_simplified(
         self_: *const Expr_Cosine,
-    ) -> crate::OcctResult<*mut HandleExprGeneralExpression>;
-    /// **Source:** `Expr_Cosine.hxx`:45 - `Expr_Cosine::Copy()`
+    ) -> crate::OcctResult<*mut Handle_Expr_GeneralExpression>;
+    /// **Source:** `Expr_Cosine.hxx`:41 - `Expr_Cosine::Copy()`
     pub fn Expr_Cosine_copy(
         self_: *const Expr_Cosine,
-    ) -> crate::OcctResult<*mut HandleExprGeneralExpression>;
-    /// **Source:** `Expr_Cosine.hxx`:51 - `Expr_Cosine::IsIdentical()`
+    ) -> crate::OcctResult<*mut Handle_Expr_GeneralExpression>;
+    /// **Source:** `Expr_Cosine.hxx`:46 - `Expr_Cosine::IsIdentical()`
     pub fn Expr_Cosine_is_identical(
         self_: *const Expr_Cosine,
-        Other: *const HandleExprGeneralExpression,
+        Other: *const Handle_Expr_GeneralExpression,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `Expr_Cosine.hxx`:53 - `Expr_Cosine::IsLinear()`
+    /// **Source:** `Expr_Cosine.hxx`:48 - `Expr_Cosine::IsLinear()`
     pub fn Expr_Cosine_is_linear(self_: *const Expr_Cosine) -> crate::OcctResult<bool>;
-    /// **Source:** `Expr_Cosine.hxx`:56 - `Expr_Cosine::Derivative()`
+    /// **Source:** `Expr_Cosine.hxx`:51 - `Expr_Cosine::Derivative()`
     pub fn Expr_Cosine_derivative(
         self_: *const Expr_Cosine,
-        X: *const HandleExprNamedUnknown,
-    ) -> crate::OcctResult<*mut HandleExprGeneralExpression>;
-    /// **Source:** `Expr_Cosine.hxx`:63 - `Expr_Cosine::Evaluate()`
-    pub fn Expr_Cosine_evaluate(
-        self_: *const Expr_Cosine,
-        vars: *const Expr_Array1OfNamedUnknown,
-        vals: *const TColStd_Array1OfReal,
-    ) -> crate::OcctResult<f64>;
-    /// **Source:** `Expr_Cosine.hxx`:67 - `Expr_Cosine::String()`
+        X: *const Handle_Expr_NamedUnknown,
+    ) -> crate::OcctResult<*mut Handle_Expr_GeneralExpression>;
+    /// **Source:** `Expr_Cosine.hxx`:62 - `Expr_Cosine::String()`
     pub fn Expr_Cosine_string(
         self_: *const Expr_Cosine,
     ) -> crate::OcctResult<*mut TCollection_AsciiString>;
-    /// **Source:** `Expr_Cosine.hxx`:69 - `Expr_Cosine::DynamicType()`
+    /// **Source:** `Expr_Cosine.hxx`:64 - `Expr_Cosine::DynamicType()`
     pub fn Expr_Cosine_dynamic_type(
         self_: *const Expr_Cosine,
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// **Source:** `Expr_Cosine.hxx`:69 - `Expr_Cosine::get_type_name()`
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
+    /// **Source:** `Expr_Cosine.hxx`:64 - `Expr_Cosine::get_type_name()`
     pub fn Expr_Cosine_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
-    /// **Source:** `Expr_Cosine.hxx`:69 - `Expr_Cosine::get_type_descriptor()`
-    pub fn Expr_Cosine_get_type_descriptor() -> crate::OcctResult<*const HandleStandardType>;
+    /// **Source:** `Expr_Cosine.hxx`:64 - `Expr_Cosine::get_type_descriptor()`
+    pub fn Expr_Cosine_get_type_descriptor() -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast Expr_Cosine to Expr_UnaryExpression
     pub fn Expr_Cosine_as_Expr_UnaryExpression(
         self_: *const Expr_Cosine,
@@ -1881,162 +1819,157 @@ unsafe extern "C" {
         self_: *mut Expr_Cosine,
     ) -> crate::OcctResult<*mut Standard_Transient>;
     /// Wrap Expr_Cosine in a Handle
-    pub fn Expr_Cosine_to_handle(obj: *mut Expr_Cosine)
-        -> crate::OcctResult<*mut HandleExprCosine>;
+    pub fn Expr_Cosine_to_handle(
+        obj: *mut Expr_Cosine,
+    ) -> crate::OcctResult<*mut Handle_Expr_Cosine>;
     /// Destroy Handle<Expr_Cosine>
-    pub fn HandleExprCosine_destructor(self_: *mut HandleExprCosine);
+    pub fn Handle_Expr_Cosine_destructor(self_: *mut Handle_Expr_Cosine);
     /// Clone Handle<Expr_Cosine> (increments reference count)
-    pub fn HandleExprCosine_clone(
-        self_: *const HandleExprCosine,
-    ) -> crate::OcctResult<*mut HandleExprCosine>;
+    pub fn Handle_Expr_Cosine_clone(
+        self_: *const Handle_Expr_Cosine,
+    ) -> crate::OcctResult<*mut Handle_Expr_Cosine>;
     /// Check if Handle<Expr_Cosine> is null
-    pub fn HandleExprCosine_is_null(self_: *const HandleExprCosine) -> bool;
+    pub fn Handle_Expr_Cosine_is_null(self_: *const Handle_Expr_Cosine) -> bool;
     /// Dereference Handle to get *const Expr_Cosine
-    pub fn HandleExprCosine_get(
-        handle: *const HandleExprCosine,
+    pub fn Handle_Expr_Cosine_get(
+        handle: *const Handle_Expr_Cosine,
     ) -> crate::OcctResult<*const Expr_Cosine>;
     /// Dereference Handle to get *mut Expr_Cosine
-    pub fn HandleExprCosine_get_mut(
-        handle: *mut HandleExprCosine,
+    pub fn Handle_Expr_Cosine_get_mut(
+        handle: *mut Handle_Expr_Cosine,
     ) -> crate::OcctResult<*mut Expr_Cosine>;
     /// Upcast Handle<Expr_Cosine> to Handle<Expr_UnaryExpression>
-    pub fn HandleExprCosine_to_HandleExprUnaryExpression(
-        self_: *const HandleExprCosine,
-    ) -> crate::OcctResult<*mut HandleExprUnaryExpression>;
+    pub fn Handle_Expr_Cosine_to_Handle_Expr_UnaryExpression(
+        self_: *const Handle_Expr_Cosine,
+    ) -> crate::OcctResult<*mut Handle_Expr_UnaryExpression>;
     /// Upcast Handle<Expr_Cosine> to Handle<Expr_GeneralExpression>
-    pub fn HandleExprCosine_to_HandleExprGeneralExpression(
-        self_: *const HandleExprCosine,
-    ) -> crate::OcctResult<*mut HandleExprGeneralExpression>;
+    pub fn Handle_Expr_Cosine_to_Handle_Expr_GeneralExpression(
+        self_: *const Handle_Expr_Cosine,
+    ) -> crate::OcctResult<*mut Handle_Expr_GeneralExpression>;
     /// Upcast Handle<Expr_Cosine> to Handle<Standard_Transient>
-    pub fn HandleExprCosine_to_HandleStandardTransient(
-        self_: *const HandleExprCosine,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
-    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:35 - `Expr_UnaryExpression::Operand()`
+    pub fn Handle_Expr_Cosine_to_Handle_Standard_Transient(
+        self_: *const Handle_Expr_Cosine,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
+    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:32 - `Expr_UnaryExpression::Operand()`
     pub fn Expr_Cosine_inherited_Operand(
         self_: *const Expr_Cosine,
-    ) -> crate::OcctResult<*const HandleExprGeneralExpression>;
-    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:39 - `Expr_UnaryExpression::SetOperand()`
+    ) -> crate::OcctResult<*const Handle_Expr_GeneralExpression>;
+    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:36 - `Expr_UnaryExpression::SetOperand()`
     pub fn Expr_Cosine_inherited_SetOperand(
         self_: *mut Expr_Cosine,
-        exp: *const HandleExprGeneralExpression,
+        exp: *const Handle_Expr_GeneralExpression,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:43 - `Expr_UnaryExpression::NbSubExpressions()`
+    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:40 - `Expr_UnaryExpression::NbSubExpressions()`
     pub fn Expr_Cosine_inherited_NbSubExpressions(
         self_: *const Expr_Cosine,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:47 - `Expr_UnaryExpression::SubExpression()`
+    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:44 - `Expr_UnaryExpression::SubExpression()`
     pub fn Expr_Cosine_inherited_SubExpression(
         self_: *const Expr_Cosine,
         I: i32,
-    ) -> crate::OcctResult<*const HandleExprGeneralExpression>;
-    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:51 - `Expr_UnaryExpression::ContainsUnknowns()`
+    ) -> crate::OcctResult<*const Handle_Expr_GeneralExpression>;
+    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:48 - `Expr_UnaryExpression::ContainsUnknowns()`
     pub fn Expr_Cosine_inherited_ContainsUnknowns(
         self_: *const Expr_Cosine,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:55 - `Expr_UnaryExpression::Contains()`
+    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:51 - `Expr_UnaryExpression::Contains()`
     pub fn Expr_Cosine_inherited_Contains(
         self_: *const Expr_Cosine,
-        exp: *const HandleExprGeneralExpression,
+        exp: *const Handle_Expr_GeneralExpression,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:59 - `Expr_UnaryExpression::Replace()`
+    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:55 - `Expr_UnaryExpression::Replace()`
     pub fn Expr_Cosine_inherited_Replace(
         self_: *mut Expr_Cosine,
-        var: *const HandleExprNamedUnknown,
-        with: *const HandleExprGeneralExpression,
+        var: *const Handle_Expr_NamedUnknown,
+        with: *const Handle_Expr_GeneralExpression,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:65 - `Expr_UnaryExpression::Simplified()`
+    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:61 - `Expr_UnaryExpression::Simplified()`
     pub fn Expr_Cosine_inherited_Simplified(
         self_: *const Expr_Cosine,
-    ) -> crate::OcctResult<*mut HandleExprGeneralExpression>;
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:76 - `Expr_GeneralExpression::IsShareable()`
+    ) -> crate::OcctResult<*mut Handle_Expr_GeneralExpression>;
+    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:71 - `Expr_GeneralExpression::IsShareable()`
     pub fn Expr_Cosine_inherited_IsShareable(self_: *const Expr_Cosine) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:91 - `Expr_GeneralExpression::NDerivative()`
+    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:86 - `Expr_GeneralExpression::NDerivative()`
     pub fn Expr_Cosine_inherited_NDerivative(
         self_: *const Expr_Cosine,
-        X: *const HandleExprNamedUnknown,
+        X: *const Handle_Expr_NamedUnknown,
         N: i32,
-    ) -> crate::OcctResult<*mut HandleExprGeneralExpression>;
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:112 - `Expr_GeneralExpression::EvaluateNumeric()`
+    ) -> crate::OcctResult<*mut Handle_Expr_GeneralExpression>;
+    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:108 - `Expr_GeneralExpression::EvaluateNumeric()`
     pub fn Expr_Cosine_inherited_EvaluateNumeric(
         self_: *const Expr_Cosine,
     ) -> crate::OcctResult<f64>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn Expr_Cosine_inherited_IsInstance(
         self_: *const Expr_Cosine,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn Expr_Cosine_inherited_IsKind(
         self_: *const Expr_Cosine,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn Expr_Cosine_inherited_This(
         self_: *const Expr_Cosine,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn Expr_Cosine_inherited_GetRefCount(self_: *const Expr_Cosine) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn Expr_Cosine_inherited_IncrementRefCounter(
         self_: *mut Expr_Cosine,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn Expr_Cosine_inherited_DecrementRefCounter(
         self_: *mut Expr_Cosine,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn Expr_Cosine_inherited_Delete(self_: *const Expr_Cosine) -> *const std::ffi::c_char;
     // ======================== Expr_Difference ========================
     pub fn Expr_Difference_destructor(self_: *mut Expr_Difference);
-    /// **Source:** `Expr_Difference.hxx`:38 - `Expr_Difference::Expr_Difference()`
+    /// **Source:** `Expr_Difference.hxx`:34 - `Expr_Difference::Expr_Difference()`
     pub fn Expr_Difference_ctor_handleexprgeneralexpression2(
-        exp1: *const HandleExprGeneralExpression,
-        exp2: *const HandleExprGeneralExpression,
+        exp1: *const Handle_Expr_GeneralExpression,
+        exp2: *const Handle_Expr_GeneralExpression,
     ) -> crate::OcctResult<*mut Expr_Difference>;
-    /// **Source:** `Expr_Difference.hxx`:43 - `Expr_Difference::ShallowSimplified()`
+    /// **Source:** `Expr_Difference.hxx`:39 - `Expr_Difference::ShallowSimplified()`
     pub fn Expr_Difference_shallow_simplified(
         self_: *const Expr_Difference,
-    ) -> crate::OcctResult<*mut HandleExprGeneralExpression>;
-    /// **Source:** `Expr_Difference.hxx`:46 - `Expr_Difference::Copy()`
+    ) -> crate::OcctResult<*mut Handle_Expr_GeneralExpression>;
+    /// **Source:** `Expr_Difference.hxx`:42 - `Expr_Difference::Copy()`
     pub fn Expr_Difference_copy(
         self_: *const Expr_Difference,
-    ) -> crate::OcctResult<*mut HandleExprGeneralExpression>;
-    /// **Source:** `Expr_Difference.hxx`:52 - `Expr_Difference::IsIdentical()`
+    ) -> crate::OcctResult<*mut Handle_Expr_GeneralExpression>;
+    /// **Source:** `Expr_Difference.hxx`:47 - `Expr_Difference::IsIdentical()`
     pub fn Expr_Difference_is_identical(
         self_: *const Expr_Difference,
-        Other: *const HandleExprGeneralExpression,
+        Other: *const Handle_Expr_GeneralExpression,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `Expr_Difference.hxx`:54 - `Expr_Difference::IsLinear()`
+    /// **Source:** `Expr_Difference.hxx`:49 - `Expr_Difference::IsLinear()`
     pub fn Expr_Difference_is_linear(self_: *const Expr_Difference) -> crate::OcctResult<bool>;
-    /// **Source:** `Expr_Difference.hxx`:57 - `Expr_Difference::Derivative()`
+    /// **Source:** `Expr_Difference.hxx`:52 - `Expr_Difference::Derivative()`
     pub fn Expr_Difference_derivative(
         self_: *const Expr_Difference,
-        X: *const HandleExprNamedUnknown,
-    ) -> crate::OcctResult<*mut HandleExprGeneralExpression>;
-    /// **Source:** `Expr_Difference.hxx`:62 - `Expr_Difference::NDerivative()`
+        X: *const Handle_Expr_NamedUnknown,
+    ) -> crate::OcctResult<*mut Handle_Expr_GeneralExpression>;
+    /// **Source:** `Expr_Difference.hxx`:57 - `Expr_Difference::NDerivative()`
     pub fn Expr_Difference_n_derivative(
         self_: *const Expr_Difference,
-        X: *const HandleExprNamedUnknown,
+        X: *const Handle_Expr_NamedUnknown,
         N: i32,
-    ) -> crate::OcctResult<*mut HandleExprGeneralExpression>;
-    /// **Source:** `Expr_Difference.hxx`:70 - `Expr_Difference::Evaluate()`
-    pub fn Expr_Difference_evaluate(
-        self_: *const Expr_Difference,
-        vars: *const Expr_Array1OfNamedUnknown,
-        vals: *const TColStd_Array1OfReal,
-    ) -> crate::OcctResult<f64>;
-    /// **Source:** `Expr_Difference.hxx`:74 - `Expr_Difference::String()`
+    ) -> crate::OcctResult<*mut Handle_Expr_GeneralExpression>;
+    /// **Source:** `Expr_Difference.hxx`:69 - `Expr_Difference::String()`
     pub fn Expr_Difference_string(
         self_: *const Expr_Difference,
     ) -> crate::OcctResult<*mut TCollection_AsciiString>;
-    /// **Source:** `Expr_Difference.hxx`:76 - `Expr_Difference::DynamicType()`
+    /// **Source:** `Expr_Difference.hxx`:71 - `Expr_Difference::DynamicType()`
     pub fn Expr_Difference_dynamic_type(
         self_: *const Expr_Difference,
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// **Source:** `Expr_Difference.hxx`:76 - `Expr_Difference::get_type_name()`
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
+    /// **Source:** `Expr_Difference.hxx`:71 - `Expr_Difference::get_type_name()`
     pub fn Expr_Difference_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
-    /// **Source:** `Expr_Difference.hxx`:76 - `Expr_Difference::get_type_descriptor()`
-    pub fn Expr_Difference_get_type_descriptor() -> crate::OcctResult<*const HandleStandardType>;
+    /// **Source:** `Expr_Difference.hxx`:71 - `Expr_Difference::get_type_descriptor()`
+    pub fn Expr_Difference_get_type_descriptor() -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast Expr_Difference to Expr_BinaryExpression
     pub fn Expr_Difference_as_Expr_BinaryExpression(
         self_: *const Expr_Difference,
@@ -2064,150 +1997,150 @@ unsafe extern "C" {
     /// Wrap Expr_Difference in a Handle
     pub fn Expr_Difference_to_handle(
         obj: *mut Expr_Difference,
-    ) -> crate::OcctResult<*mut HandleExprDifference>;
+    ) -> crate::OcctResult<*mut Handle_Expr_Difference>;
     /// Destroy Handle<Expr_Difference>
-    pub fn HandleExprDifference_destructor(self_: *mut HandleExprDifference);
+    pub fn Handle_Expr_Difference_destructor(self_: *mut Handle_Expr_Difference);
     /// Clone Handle<Expr_Difference> (increments reference count)
-    pub fn HandleExprDifference_clone(
-        self_: *const HandleExprDifference,
-    ) -> crate::OcctResult<*mut HandleExprDifference>;
+    pub fn Handle_Expr_Difference_clone(
+        self_: *const Handle_Expr_Difference,
+    ) -> crate::OcctResult<*mut Handle_Expr_Difference>;
     /// Check if Handle<Expr_Difference> is null
-    pub fn HandleExprDifference_is_null(self_: *const HandleExprDifference) -> bool;
+    pub fn Handle_Expr_Difference_is_null(self_: *const Handle_Expr_Difference) -> bool;
     /// Dereference Handle to get *const Expr_Difference
-    pub fn HandleExprDifference_get(
-        handle: *const HandleExprDifference,
+    pub fn Handle_Expr_Difference_get(
+        handle: *const Handle_Expr_Difference,
     ) -> crate::OcctResult<*const Expr_Difference>;
     /// Dereference Handle to get *mut Expr_Difference
-    pub fn HandleExprDifference_get_mut(
-        handle: *mut HandleExprDifference,
+    pub fn Handle_Expr_Difference_get_mut(
+        handle: *mut Handle_Expr_Difference,
     ) -> crate::OcctResult<*mut Expr_Difference>;
     /// Upcast Handle<Expr_Difference> to Handle<Expr_BinaryExpression>
-    pub fn HandleExprDifference_to_HandleExprBinaryExpression(
-        self_: *const HandleExprDifference,
-    ) -> crate::OcctResult<*mut HandleExprBinaryExpression>;
+    pub fn Handle_Expr_Difference_to_Handle_Expr_BinaryExpression(
+        self_: *const Handle_Expr_Difference,
+    ) -> crate::OcctResult<*mut Handle_Expr_BinaryExpression>;
     /// Upcast Handle<Expr_Difference> to Handle<Expr_GeneralExpression>
-    pub fn HandleExprDifference_to_HandleExprGeneralExpression(
-        self_: *const HandleExprDifference,
-    ) -> crate::OcctResult<*mut HandleExprGeneralExpression>;
+    pub fn Handle_Expr_Difference_to_Handle_Expr_GeneralExpression(
+        self_: *const Handle_Expr_Difference,
+    ) -> crate::OcctResult<*mut Handle_Expr_GeneralExpression>;
     /// Upcast Handle<Expr_Difference> to Handle<Standard_Transient>
-    pub fn HandleExprDifference_to_HandleStandardTransient(
-        self_: *const HandleExprDifference,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
-    /// Inherited: **Source:** `Expr_BinaryExpression.hxx`:36 - `Expr_BinaryExpression::FirstOperand()`
+    pub fn Handle_Expr_Difference_to_Handle_Standard_Transient(
+        self_: *const Handle_Expr_Difference,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
+    /// Inherited: **Source:** `Expr_BinaryExpression.hxx`:33 - `Expr_BinaryExpression::FirstOperand()`
     pub fn Expr_Difference_inherited_FirstOperand(
         self_: *const Expr_Difference,
-    ) -> crate::OcctResult<*const HandleExprGeneralExpression>;
-    /// Inherited: **Source:** `Expr_BinaryExpression.hxx`:38 - `Expr_BinaryExpression::SecondOperand()`
+    ) -> crate::OcctResult<*const Handle_Expr_GeneralExpression>;
+    /// Inherited: **Source:** `Expr_BinaryExpression.hxx`:35 - `Expr_BinaryExpression::SecondOperand()`
     pub fn Expr_Difference_inherited_SecondOperand(
         self_: *const Expr_Difference,
-    ) -> crate::OcctResult<*const HandleExprGeneralExpression>;
-    /// Inherited: **Source:** `Expr_BinaryExpression.hxx`:42 - `Expr_BinaryExpression::SetFirstOperand()`
+    ) -> crate::OcctResult<*const Handle_Expr_GeneralExpression>;
+    /// Inherited: **Source:** `Expr_BinaryExpression.hxx`:39 - `Expr_BinaryExpression::SetFirstOperand()`
     pub fn Expr_Difference_inherited_SetFirstOperand(
         self_: *mut Expr_Difference,
-        exp: *const HandleExprGeneralExpression,
+        exp: *const Handle_Expr_GeneralExpression,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Expr_BinaryExpression.hxx`:46 - `Expr_BinaryExpression::SetSecondOperand()`
+    /// Inherited: **Source:** `Expr_BinaryExpression.hxx`:43 - `Expr_BinaryExpression::SetSecondOperand()`
     pub fn Expr_Difference_inherited_SetSecondOperand(
         self_: *mut Expr_Difference,
-        exp: *const HandleExprGeneralExpression,
+        exp: *const Handle_Expr_GeneralExpression,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Expr_BinaryExpression.hxx`:50 - `Expr_BinaryExpression::NbSubExpressions()`
+    /// Inherited: **Source:** `Expr_BinaryExpression.hxx`:47 - `Expr_BinaryExpression::NbSubExpressions()`
     pub fn Expr_Difference_inherited_NbSubExpressions(
         self_: *const Expr_Difference,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Expr_BinaryExpression.hxx`:54 - `Expr_BinaryExpression::SubExpression()`
+    /// Inherited: **Source:** `Expr_BinaryExpression.hxx`:51 - `Expr_BinaryExpression::SubExpression()`
     pub fn Expr_Difference_inherited_SubExpression(
         self_: *const Expr_Difference,
         I: i32,
-    ) -> crate::OcctResult<*const HandleExprGeneralExpression>;
-    /// Inherited: **Source:** `Expr_BinaryExpression.hxx`:58 - `Expr_BinaryExpression::ContainsUnknowns()`
+    ) -> crate::OcctResult<*const Handle_Expr_GeneralExpression>;
+    /// Inherited: **Source:** `Expr_BinaryExpression.hxx`:55 - `Expr_BinaryExpression::ContainsUnknowns()`
     pub fn Expr_Difference_inherited_ContainsUnknowns(
         self_: *const Expr_Difference,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Expr_BinaryExpression.hxx`:62 - `Expr_BinaryExpression::Contains()`
+    /// Inherited: **Source:** `Expr_BinaryExpression.hxx`:58 - `Expr_BinaryExpression::Contains()`
     pub fn Expr_Difference_inherited_Contains(
         self_: *const Expr_Difference,
-        exp: *const HandleExprGeneralExpression,
+        exp: *const Handle_Expr_GeneralExpression,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Expr_BinaryExpression.hxx`:66 - `Expr_BinaryExpression::Replace()`
+    /// Inherited: **Source:** `Expr_BinaryExpression.hxx`:62 - `Expr_BinaryExpression::Replace()`
     pub fn Expr_Difference_inherited_Replace(
         self_: *mut Expr_Difference,
-        var: *const HandleExprNamedUnknown,
-        with: *const HandleExprGeneralExpression,
+        var: *const Handle_Expr_NamedUnknown,
+        with: *const Handle_Expr_GeneralExpression,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Expr_BinaryExpression.hxx`:72 - `Expr_BinaryExpression::Simplified()`
+    /// Inherited: **Source:** `Expr_BinaryExpression.hxx`:68 - `Expr_BinaryExpression::Simplified()`
     pub fn Expr_Difference_inherited_Simplified(
         self_: *const Expr_Difference,
-    ) -> crate::OcctResult<*mut HandleExprGeneralExpression>;
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:76 - `Expr_GeneralExpression::IsShareable()`
+    ) -> crate::OcctResult<*mut Handle_Expr_GeneralExpression>;
+    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:71 - `Expr_GeneralExpression::IsShareable()`
     pub fn Expr_Difference_inherited_IsShareable(
         self_: *const Expr_Difference,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:112 - `Expr_GeneralExpression::EvaluateNumeric()`
+    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:108 - `Expr_GeneralExpression::EvaluateNumeric()`
     pub fn Expr_Difference_inherited_EvaluateNumeric(
         self_: *const Expr_Difference,
     ) -> crate::OcctResult<f64>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn Expr_Difference_inherited_IsInstance(
         self_: *const Expr_Difference,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn Expr_Difference_inherited_IsKind(
         self_: *const Expr_Difference,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn Expr_Difference_inherited_This(
         self_: *const Expr_Difference,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn Expr_Difference_inherited_GetRefCount(
         self_: *const Expr_Difference,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn Expr_Difference_inherited_IncrementRefCounter(
         self_: *mut Expr_Difference,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn Expr_Difference_inherited_DecrementRefCounter(
         self_: *mut Expr_Difference,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn Expr_Difference_inherited_Delete(
         self_: *const Expr_Difference,
     ) -> *const std::ffi::c_char;
     // ======================== Expr_Different ========================
     pub fn Expr_Different_destructor(self_: *mut Expr_Different);
-    /// **Source:** `Expr_Different.hxx`:35 - `Expr_Different::Expr_Different()`
+    /// **Source:** `Expr_Different.hxx`:32 - `Expr_Different::Expr_Different()`
     pub fn Expr_Different_ctor_handleexprgeneralexpression2(
-        exp1: *const HandleExprGeneralExpression,
-        exp2: *const HandleExprGeneralExpression,
+        exp1: *const Handle_Expr_GeneralExpression,
+        exp2: *const Handle_Expr_GeneralExpression,
     ) -> crate::OcctResult<*mut Expr_Different>;
-    /// **Source:** `Expr_Different.hxx`:38 - `Expr_Different::IsSatisfied()`
+    /// **Source:** `Expr_Different.hxx`:35 - `Expr_Different::IsSatisfied()`
     pub fn Expr_Different_is_satisfied(self_: *const Expr_Different) -> crate::OcctResult<bool>;
-    /// **Source:** `Expr_Different.hxx`:43 - `Expr_Different::Simplified()`
+    /// **Source:** `Expr_Different.hxx`:40 - `Expr_Different::Simplified()`
     pub fn Expr_Different_simplified(
         self_: *const Expr_Different,
-    ) -> crate::OcctResult<*mut HandleExprGeneralRelation>;
-    /// **Source:** `Expr_Different.hxx`:47 - `Expr_Different::Simplify()`
+    ) -> crate::OcctResult<*mut Handle_Expr_GeneralRelation>;
+    /// **Source:** `Expr_Different.hxx`:44 - `Expr_Different::Simplify()`
     pub fn Expr_Different_simplify(self_: *mut Expr_Different) -> *const std::ffi::c_char;
-    /// **Source:** `Expr_Different.hxx`:51 - `Expr_Different::Copy()`
+    /// **Source:** `Expr_Different.hxx`:48 - `Expr_Different::Copy()`
     pub fn Expr_Different_copy(
         self_: *const Expr_Different,
-    ) -> crate::OcctResult<*mut HandleExprGeneralRelation>;
-    /// **Source:** `Expr_Different.hxx`:54 - `Expr_Different::String()`
+    ) -> crate::OcctResult<*mut Handle_Expr_GeneralRelation>;
+    /// **Source:** `Expr_Different.hxx`:51 - `Expr_Different::String()`
     pub fn Expr_Different_string(
         self_: *const Expr_Different,
     ) -> crate::OcctResult<*mut TCollection_AsciiString>;
-    /// **Source:** `Expr_Different.hxx`:56 - `Expr_Different::DynamicType()`
+    /// **Source:** `Expr_Different.hxx`:53 - `Expr_Different::DynamicType()`
     pub fn Expr_Different_dynamic_type(
         self_: *const Expr_Different,
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// **Source:** `Expr_Different.hxx`:56 - `Expr_Different::get_type_name()`
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
+    /// **Source:** `Expr_Different.hxx`:53 - `Expr_Different::get_type_name()`
     pub fn Expr_Different_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
-    /// **Source:** `Expr_Different.hxx`:56 - `Expr_Different::get_type_descriptor()`
-    pub fn Expr_Different_get_type_descriptor() -> crate::OcctResult<*const HandleStandardType>;
+    /// **Source:** `Expr_Different.hxx`:53 - `Expr_Different::get_type_descriptor()`
+    pub fn Expr_Different_get_type_descriptor() -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast Expr_Different to Expr_SingleRelation
     pub fn Expr_Different_as_Expr_SingleRelation(
         self_: *const Expr_Different,
@@ -2235,155 +2168,149 @@ unsafe extern "C" {
     /// Wrap Expr_Different in a Handle
     pub fn Expr_Different_to_handle(
         obj: *mut Expr_Different,
-    ) -> crate::OcctResult<*mut HandleExprDifferent>;
+    ) -> crate::OcctResult<*mut Handle_Expr_Different>;
     /// Destroy Handle<Expr_Different>
-    pub fn HandleExprDifferent_destructor(self_: *mut HandleExprDifferent);
+    pub fn Handle_Expr_Different_destructor(self_: *mut Handle_Expr_Different);
     /// Clone Handle<Expr_Different> (increments reference count)
-    pub fn HandleExprDifferent_clone(
-        self_: *const HandleExprDifferent,
-    ) -> crate::OcctResult<*mut HandleExprDifferent>;
+    pub fn Handle_Expr_Different_clone(
+        self_: *const Handle_Expr_Different,
+    ) -> crate::OcctResult<*mut Handle_Expr_Different>;
     /// Check if Handle<Expr_Different> is null
-    pub fn HandleExprDifferent_is_null(self_: *const HandleExprDifferent) -> bool;
+    pub fn Handle_Expr_Different_is_null(self_: *const Handle_Expr_Different) -> bool;
     /// Dereference Handle to get *const Expr_Different
-    pub fn HandleExprDifferent_get(
-        handle: *const HandleExprDifferent,
+    pub fn Handle_Expr_Different_get(
+        handle: *const Handle_Expr_Different,
     ) -> crate::OcctResult<*const Expr_Different>;
     /// Dereference Handle to get *mut Expr_Different
-    pub fn HandleExprDifferent_get_mut(
-        handle: *mut HandleExprDifferent,
+    pub fn Handle_Expr_Different_get_mut(
+        handle: *mut Handle_Expr_Different,
     ) -> crate::OcctResult<*mut Expr_Different>;
     /// Upcast Handle<Expr_Different> to Handle<Expr_SingleRelation>
-    pub fn HandleExprDifferent_to_HandleExprSingleRelation(
-        self_: *const HandleExprDifferent,
-    ) -> crate::OcctResult<*mut HandleExprSingleRelation>;
+    pub fn Handle_Expr_Different_to_Handle_Expr_SingleRelation(
+        self_: *const Handle_Expr_Different,
+    ) -> crate::OcctResult<*mut Handle_Expr_SingleRelation>;
     /// Upcast Handle<Expr_Different> to Handle<Expr_GeneralRelation>
-    pub fn HandleExprDifferent_to_HandleExprGeneralRelation(
-        self_: *const HandleExprDifferent,
-    ) -> crate::OcctResult<*mut HandleExprGeneralRelation>;
+    pub fn Handle_Expr_Different_to_Handle_Expr_GeneralRelation(
+        self_: *const Handle_Expr_Different,
+    ) -> crate::OcctResult<*mut Handle_Expr_GeneralRelation>;
     /// Upcast Handle<Expr_Different> to Handle<Standard_Transient>
-    pub fn HandleExprDifferent_to_HandleStandardTransient(
-        self_: *const HandleExprDifferent,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
-    /// Inherited: **Source:** `Expr_SingleRelation.hxx`:36 - `Expr_SingleRelation::SetFirstMember()`
+    pub fn Handle_Expr_Different_to_Handle_Standard_Transient(
+        self_: *const Handle_Expr_Different,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
+    /// Inherited: **Source:** `Expr_SingleRelation.hxx`:33 - `Expr_SingleRelation::SetFirstMember()`
     pub fn Expr_Different_inherited_SetFirstMember(
         self_: *mut Expr_Different,
-        exp: *const HandleExprGeneralExpression,
+        exp: *const Handle_Expr_GeneralExpression,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Expr_SingleRelation.hxx`:39 - `Expr_SingleRelation::SetSecondMember()`
+    /// Inherited: **Source:** `Expr_SingleRelation.hxx`:36 - `Expr_SingleRelation::SetSecondMember()`
     pub fn Expr_Different_inherited_SetSecondMember(
         self_: *mut Expr_Different,
-        exp: *const HandleExprGeneralExpression,
+        exp: *const Handle_Expr_GeneralExpression,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Expr_SingleRelation.hxx`:42 - `Expr_SingleRelation::FirstMember()`
+    /// Inherited: **Source:** `Expr_SingleRelation.hxx`:39 - `Expr_SingleRelation::FirstMember()`
     pub fn Expr_Different_inherited_FirstMember(
         self_: *const Expr_Different,
-    ) -> crate::OcctResult<*mut HandleExprGeneralExpression>;
-    /// Inherited: **Source:** `Expr_SingleRelation.hxx`:45 - `Expr_SingleRelation::SecondMember()`
+    ) -> crate::OcctResult<*mut Handle_Expr_GeneralExpression>;
+    /// Inherited: **Source:** `Expr_SingleRelation.hxx`:42 - `Expr_SingleRelation::SecondMember()`
     pub fn Expr_Different_inherited_SecondMember(
         self_: *const Expr_Different,
-    ) -> crate::OcctResult<*mut HandleExprGeneralExpression>;
-    /// Inherited: **Source:** `Expr_SingleRelation.hxx`:48 - `Expr_SingleRelation::IsLinear()`
+    ) -> crate::OcctResult<*mut Handle_Expr_GeneralExpression>;
+    /// Inherited: **Source:** `Expr_SingleRelation.hxx`:45 - `Expr_SingleRelation::IsLinear()`
     pub fn Expr_Different_inherited_IsLinear(
         self_: *const Expr_Different,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Expr_SingleRelation.hxx`:51 - `Expr_SingleRelation::NbOfSubRelations()`
+    /// Inherited: **Source:** `Expr_SingleRelation.hxx`:48 - `Expr_SingleRelation::NbOfSubRelations()`
     pub fn Expr_Different_inherited_NbOfSubRelations(
         self_: *const Expr_Different,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Expr_SingleRelation.hxx`:55 - `Expr_SingleRelation::NbOfSingleRelations()`
+    /// Inherited: **Source:** `Expr_SingleRelation.hxx`:52 - `Expr_SingleRelation::NbOfSingleRelations()`
     pub fn Expr_Different_inherited_NbOfSingleRelations(
         self_: *const Expr_Different,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Expr_SingleRelation.hxx`:59 - `Expr_SingleRelation::SubRelation()`
+    /// Inherited: **Source:** `Expr_SingleRelation.hxx`:56 - `Expr_SingleRelation::SubRelation()`
     pub fn Expr_Different_inherited_SubRelation(
         self_: *const Expr_Different,
         index: i32,
-    ) -> crate::OcctResult<*mut HandleExprGeneralRelation>;
-    /// Inherited: **Source:** `Expr_SingleRelation.hxx`:64 - `Expr_SingleRelation::Contains()`
+    ) -> crate::OcctResult<*mut Handle_Expr_GeneralRelation>;
+    /// Inherited: **Source:** `Expr_SingleRelation.hxx`:59 - `Expr_SingleRelation::Contains()`
     pub fn Expr_Different_inherited_Contains(
         self_: *const Expr_Different,
-        exp: *const HandleExprGeneralExpression,
+        exp: *const Handle_Expr_GeneralExpression,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Expr_SingleRelation.hxx`:67 - `Expr_SingleRelation::Replace()`
+    /// Inherited: **Source:** `Expr_SingleRelation.hxx`:62 - `Expr_SingleRelation::Replace()`
     pub fn Expr_Different_inherited_Replace(
         self_: *mut Expr_Different,
-        var: *const HandleExprNamedUnknown,
-        with: *const HandleExprGeneralExpression,
+        var: *const Handle_Expr_NamedUnknown,
+        with: *const Handle_Expr_GeneralExpression,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn Expr_Different_inherited_IsInstance(
         self_: *const Expr_Different,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn Expr_Different_inherited_IsKind(
         self_: *const Expr_Different,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn Expr_Different_inherited_This(
         self_: *const Expr_Different,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn Expr_Different_inherited_GetRefCount(
         self_: *const Expr_Different,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn Expr_Different_inherited_IncrementRefCounter(
         self_: *mut Expr_Different,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn Expr_Different_inherited_DecrementRefCounter(
         self_: *mut Expr_Different,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn Expr_Different_inherited_Delete(self_: *const Expr_Different)
         -> *const std::ffi::c_char;
     // ======================== Expr_Division ========================
     pub fn Expr_Division_destructor(self_: *mut Expr_Division);
-    /// **Source:** `Expr_Division.hxx`:38 - `Expr_Division::Expr_Division()`
+    /// **Source:** `Expr_Division.hxx`:34 - `Expr_Division::Expr_Division()`
     pub fn Expr_Division_ctor_handleexprgeneralexpression2(
-        exp1: *const HandleExprGeneralExpression,
-        exp2: *const HandleExprGeneralExpression,
+        exp1: *const Handle_Expr_GeneralExpression,
+        exp2: *const Handle_Expr_GeneralExpression,
     ) -> crate::OcctResult<*mut Expr_Division>;
-    /// **Source:** `Expr_Division.hxx`:43 - `Expr_Division::ShallowSimplified()`
+    /// **Source:** `Expr_Division.hxx`:39 - `Expr_Division::ShallowSimplified()`
     pub fn Expr_Division_shallow_simplified(
         self_: *const Expr_Division,
-    ) -> crate::OcctResult<*mut HandleExprGeneralExpression>;
-    /// **Source:** `Expr_Division.hxx`:46 - `Expr_Division::Copy()`
+    ) -> crate::OcctResult<*mut Handle_Expr_GeneralExpression>;
+    /// **Source:** `Expr_Division.hxx`:42 - `Expr_Division::Copy()`
     pub fn Expr_Division_copy(
         self_: *const Expr_Division,
-    ) -> crate::OcctResult<*mut HandleExprGeneralExpression>;
-    /// **Source:** `Expr_Division.hxx`:52 - `Expr_Division::IsIdentical()`
+    ) -> crate::OcctResult<*mut Handle_Expr_GeneralExpression>;
+    /// **Source:** `Expr_Division.hxx`:47 - `Expr_Division::IsIdentical()`
     pub fn Expr_Division_is_identical(
         self_: *const Expr_Division,
-        Other: *const HandleExprGeneralExpression,
+        Other: *const Handle_Expr_GeneralExpression,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `Expr_Division.hxx`:54 - `Expr_Division::IsLinear()`
+    /// **Source:** `Expr_Division.hxx`:49 - `Expr_Division::IsLinear()`
     pub fn Expr_Division_is_linear(self_: *const Expr_Division) -> crate::OcctResult<bool>;
-    /// **Source:** `Expr_Division.hxx`:57 - `Expr_Division::Derivative()`
+    /// **Source:** `Expr_Division.hxx`:52 - `Expr_Division::Derivative()`
     pub fn Expr_Division_derivative(
         self_: *const Expr_Division,
-        X: *const HandleExprNamedUnknown,
-    ) -> crate::OcctResult<*mut HandleExprGeneralExpression>;
-    /// **Source:** `Expr_Division.hxx`:64 - `Expr_Division::Evaluate()`
-    pub fn Expr_Division_evaluate(
-        self_: *const Expr_Division,
-        vars: *const Expr_Array1OfNamedUnknown,
-        vals: *const TColStd_Array1OfReal,
-    ) -> crate::OcctResult<f64>;
-    /// **Source:** `Expr_Division.hxx`:68 - `Expr_Division::String()`
+        X: *const Handle_Expr_NamedUnknown,
+    ) -> crate::OcctResult<*mut Handle_Expr_GeneralExpression>;
+    /// **Source:** `Expr_Division.hxx`:63 - `Expr_Division::String()`
     pub fn Expr_Division_string(
         self_: *const Expr_Division,
     ) -> crate::OcctResult<*mut TCollection_AsciiString>;
-    /// **Source:** `Expr_Division.hxx`:70 - `Expr_Division::DynamicType()`
+    /// **Source:** `Expr_Division.hxx`:65 - `Expr_Division::DynamicType()`
     pub fn Expr_Division_dynamic_type(
         self_: *const Expr_Division,
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// **Source:** `Expr_Division.hxx`:70 - `Expr_Division::get_type_name()`
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
+    /// **Source:** `Expr_Division.hxx`:65 - `Expr_Division::get_type_name()`
     pub fn Expr_Division_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
-    /// **Source:** `Expr_Division.hxx`:70 - `Expr_Division::get_type_descriptor()`
-    pub fn Expr_Division_get_type_descriptor() -> crate::OcctResult<*const HandleStandardType>;
+    /// **Source:** `Expr_Division.hxx`:65 - `Expr_Division::get_type_descriptor()`
+    pub fn Expr_Division_get_type_descriptor() -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast Expr_Division to Expr_BinaryExpression
     pub fn Expr_Division_as_Expr_BinaryExpression(
         self_: *const Expr_Division,
@@ -2411,154 +2338,154 @@ unsafe extern "C" {
     /// Wrap Expr_Division in a Handle
     pub fn Expr_Division_to_handle(
         obj: *mut Expr_Division,
-    ) -> crate::OcctResult<*mut HandleExprDivision>;
+    ) -> crate::OcctResult<*mut Handle_Expr_Division>;
     /// Destroy Handle<Expr_Division>
-    pub fn HandleExprDivision_destructor(self_: *mut HandleExprDivision);
+    pub fn Handle_Expr_Division_destructor(self_: *mut Handle_Expr_Division);
     /// Clone Handle<Expr_Division> (increments reference count)
-    pub fn HandleExprDivision_clone(
-        self_: *const HandleExprDivision,
-    ) -> crate::OcctResult<*mut HandleExprDivision>;
+    pub fn Handle_Expr_Division_clone(
+        self_: *const Handle_Expr_Division,
+    ) -> crate::OcctResult<*mut Handle_Expr_Division>;
     /// Check if Handle<Expr_Division> is null
-    pub fn HandleExprDivision_is_null(self_: *const HandleExprDivision) -> bool;
+    pub fn Handle_Expr_Division_is_null(self_: *const Handle_Expr_Division) -> bool;
     /// Dereference Handle to get *const Expr_Division
-    pub fn HandleExprDivision_get(
-        handle: *const HandleExprDivision,
+    pub fn Handle_Expr_Division_get(
+        handle: *const Handle_Expr_Division,
     ) -> crate::OcctResult<*const Expr_Division>;
     /// Dereference Handle to get *mut Expr_Division
-    pub fn HandleExprDivision_get_mut(
-        handle: *mut HandleExprDivision,
+    pub fn Handle_Expr_Division_get_mut(
+        handle: *mut Handle_Expr_Division,
     ) -> crate::OcctResult<*mut Expr_Division>;
     /// Upcast Handle<Expr_Division> to Handle<Expr_BinaryExpression>
-    pub fn HandleExprDivision_to_HandleExprBinaryExpression(
-        self_: *const HandleExprDivision,
-    ) -> crate::OcctResult<*mut HandleExprBinaryExpression>;
+    pub fn Handle_Expr_Division_to_Handle_Expr_BinaryExpression(
+        self_: *const Handle_Expr_Division,
+    ) -> crate::OcctResult<*mut Handle_Expr_BinaryExpression>;
     /// Upcast Handle<Expr_Division> to Handle<Expr_GeneralExpression>
-    pub fn HandleExprDivision_to_HandleExprGeneralExpression(
-        self_: *const HandleExprDivision,
-    ) -> crate::OcctResult<*mut HandleExprGeneralExpression>;
+    pub fn Handle_Expr_Division_to_Handle_Expr_GeneralExpression(
+        self_: *const Handle_Expr_Division,
+    ) -> crate::OcctResult<*mut Handle_Expr_GeneralExpression>;
     /// Upcast Handle<Expr_Division> to Handle<Standard_Transient>
-    pub fn HandleExprDivision_to_HandleStandardTransient(
-        self_: *const HandleExprDivision,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
-    /// Inherited: **Source:** `Expr_BinaryExpression.hxx`:36 - `Expr_BinaryExpression::FirstOperand()`
+    pub fn Handle_Expr_Division_to_Handle_Standard_Transient(
+        self_: *const Handle_Expr_Division,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
+    /// Inherited: **Source:** `Expr_BinaryExpression.hxx`:33 - `Expr_BinaryExpression::FirstOperand()`
     pub fn Expr_Division_inherited_FirstOperand(
         self_: *const Expr_Division,
-    ) -> crate::OcctResult<*const HandleExprGeneralExpression>;
-    /// Inherited: **Source:** `Expr_BinaryExpression.hxx`:38 - `Expr_BinaryExpression::SecondOperand()`
+    ) -> crate::OcctResult<*const Handle_Expr_GeneralExpression>;
+    /// Inherited: **Source:** `Expr_BinaryExpression.hxx`:35 - `Expr_BinaryExpression::SecondOperand()`
     pub fn Expr_Division_inherited_SecondOperand(
         self_: *const Expr_Division,
-    ) -> crate::OcctResult<*const HandleExprGeneralExpression>;
-    /// Inherited: **Source:** `Expr_BinaryExpression.hxx`:42 - `Expr_BinaryExpression::SetFirstOperand()`
+    ) -> crate::OcctResult<*const Handle_Expr_GeneralExpression>;
+    /// Inherited: **Source:** `Expr_BinaryExpression.hxx`:39 - `Expr_BinaryExpression::SetFirstOperand()`
     pub fn Expr_Division_inherited_SetFirstOperand(
         self_: *mut Expr_Division,
-        exp: *const HandleExprGeneralExpression,
+        exp: *const Handle_Expr_GeneralExpression,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Expr_BinaryExpression.hxx`:46 - `Expr_BinaryExpression::SetSecondOperand()`
+    /// Inherited: **Source:** `Expr_BinaryExpression.hxx`:43 - `Expr_BinaryExpression::SetSecondOperand()`
     pub fn Expr_Division_inherited_SetSecondOperand(
         self_: *mut Expr_Division,
-        exp: *const HandleExprGeneralExpression,
+        exp: *const Handle_Expr_GeneralExpression,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Expr_BinaryExpression.hxx`:50 - `Expr_BinaryExpression::NbSubExpressions()`
+    /// Inherited: **Source:** `Expr_BinaryExpression.hxx`:47 - `Expr_BinaryExpression::NbSubExpressions()`
     pub fn Expr_Division_inherited_NbSubExpressions(
         self_: *const Expr_Division,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Expr_BinaryExpression.hxx`:54 - `Expr_BinaryExpression::SubExpression()`
+    /// Inherited: **Source:** `Expr_BinaryExpression.hxx`:51 - `Expr_BinaryExpression::SubExpression()`
     pub fn Expr_Division_inherited_SubExpression(
         self_: *const Expr_Division,
         I: i32,
-    ) -> crate::OcctResult<*const HandleExprGeneralExpression>;
-    /// Inherited: **Source:** `Expr_BinaryExpression.hxx`:58 - `Expr_BinaryExpression::ContainsUnknowns()`
+    ) -> crate::OcctResult<*const Handle_Expr_GeneralExpression>;
+    /// Inherited: **Source:** `Expr_BinaryExpression.hxx`:55 - `Expr_BinaryExpression::ContainsUnknowns()`
     pub fn Expr_Division_inherited_ContainsUnknowns(
         self_: *const Expr_Division,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Expr_BinaryExpression.hxx`:62 - `Expr_BinaryExpression::Contains()`
+    /// Inherited: **Source:** `Expr_BinaryExpression.hxx`:58 - `Expr_BinaryExpression::Contains()`
     pub fn Expr_Division_inherited_Contains(
         self_: *const Expr_Division,
-        exp: *const HandleExprGeneralExpression,
+        exp: *const Handle_Expr_GeneralExpression,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Expr_BinaryExpression.hxx`:66 - `Expr_BinaryExpression::Replace()`
+    /// Inherited: **Source:** `Expr_BinaryExpression.hxx`:62 - `Expr_BinaryExpression::Replace()`
     pub fn Expr_Division_inherited_Replace(
         self_: *mut Expr_Division,
-        var: *const HandleExprNamedUnknown,
-        with: *const HandleExprGeneralExpression,
+        var: *const Handle_Expr_NamedUnknown,
+        with: *const Handle_Expr_GeneralExpression,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Expr_BinaryExpression.hxx`:72 - `Expr_BinaryExpression::Simplified()`
+    /// Inherited: **Source:** `Expr_BinaryExpression.hxx`:68 - `Expr_BinaryExpression::Simplified()`
     pub fn Expr_Division_inherited_Simplified(
         self_: *const Expr_Division,
-    ) -> crate::OcctResult<*mut HandleExprGeneralExpression>;
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:76 - `Expr_GeneralExpression::IsShareable()`
+    ) -> crate::OcctResult<*mut Handle_Expr_GeneralExpression>;
+    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:71 - `Expr_GeneralExpression::IsShareable()`
     pub fn Expr_Division_inherited_IsShareable(
         self_: *const Expr_Division,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:91 - `Expr_GeneralExpression::NDerivative()`
+    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:86 - `Expr_GeneralExpression::NDerivative()`
     pub fn Expr_Division_inherited_NDerivative(
         self_: *const Expr_Division,
-        X: *const HandleExprNamedUnknown,
+        X: *const Handle_Expr_NamedUnknown,
         N: i32,
-    ) -> crate::OcctResult<*mut HandleExprGeneralExpression>;
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:112 - `Expr_GeneralExpression::EvaluateNumeric()`
+    ) -> crate::OcctResult<*mut Handle_Expr_GeneralExpression>;
+    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:108 - `Expr_GeneralExpression::EvaluateNumeric()`
     pub fn Expr_Division_inherited_EvaluateNumeric(
         self_: *const Expr_Division,
     ) -> crate::OcctResult<f64>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn Expr_Division_inherited_IsInstance(
         self_: *const Expr_Division,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn Expr_Division_inherited_IsKind(
         self_: *const Expr_Division,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn Expr_Division_inherited_This(
         self_: *const Expr_Division,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn Expr_Division_inherited_GetRefCount(
         self_: *const Expr_Division,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn Expr_Division_inherited_IncrementRefCounter(
         self_: *mut Expr_Division,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn Expr_Division_inherited_DecrementRefCounter(
         self_: *mut Expr_Division,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn Expr_Division_inherited_Delete(self_: *const Expr_Division) -> *const std::ffi::c_char;
     // ======================== Expr_Equal ========================
     pub fn Expr_Equal_destructor(self_: *mut Expr_Equal);
-    /// **Source:** `Expr_Equal.hxx`:35 - `Expr_Equal::Expr_Equal()`
+    /// **Source:** `Expr_Equal.hxx`:32 - `Expr_Equal::Expr_Equal()`
     pub fn Expr_Equal_ctor_handleexprgeneralexpression2(
-        exp1: *const HandleExprGeneralExpression,
-        exp2: *const HandleExprGeneralExpression,
+        exp1: *const Handle_Expr_GeneralExpression,
+        exp2: *const Handle_Expr_GeneralExpression,
     ) -> crate::OcctResult<*mut Expr_Equal>;
-    /// **Source:** `Expr_Equal.hxx`:38 - `Expr_Equal::IsSatisfied()`
+    /// **Source:** `Expr_Equal.hxx`:35 - `Expr_Equal::IsSatisfied()`
     pub fn Expr_Equal_is_satisfied(self_: *const Expr_Equal) -> crate::OcctResult<bool>;
-    /// **Source:** `Expr_Equal.hxx`:43 - `Expr_Equal::Simplified()`
+    /// **Source:** `Expr_Equal.hxx`:40 - `Expr_Equal::Simplified()`
     pub fn Expr_Equal_simplified(
         self_: *const Expr_Equal,
-    ) -> crate::OcctResult<*mut HandleExprGeneralRelation>;
-    /// **Source:** `Expr_Equal.hxx`:47 - `Expr_Equal::Simplify()`
+    ) -> crate::OcctResult<*mut Handle_Expr_GeneralRelation>;
+    /// **Source:** `Expr_Equal.hxx`:44 - `Expr_Equal::Simplify()`
     pub fn Expr_Equal_simplify(self_: *mut Expr_Equal) -> *const std::ffi::c_char;
-    /// **Source:** `Expr_Equal.hxx`:50 - `Expr_Equal::Copy()`
+    /// **Source:** `Expr_Equal.hxx`:47 - `Expr_Equal::Copy()`
     pub fn Expr_Equal_copy(
         self_: *const Expr_Equal,
-    ) -> crate::OcctResult<*mut HandleExprGeneralRelation>;
-    /// **Source:** `Expr_Equal.hxx`:53 - `Expr_Equal::String()`
+    ) -> crate::OcctResult<*mut Handle_Expr_GeneralRelation>;
+    /// **Source:** `Expr_Equal.hxx`:50 - `Expr_Equal::String()`
     pub fn Expr_Equal_string(
         self_: *const Expr_Equal,
     ) -> crate::OcctResult<*mut TCollection_AsciiString>;
-    /// **Source:** `Expr_Equal.hxx`:55 - `Expr_Equal::DynamicType()`
+    /// **Source:** `Expr_Equal.hxx`:52 - `Expr_Equal::DynamicType()`
     pub fn Expr_Equal_dynamic_type(
         self_: *const Expr_Equal,
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// **Source:** `Expr_Equal.hxx`:55 - `Expr_Equal::get_type_name()`
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
+    /// **Source:** `Expr_Equal.hxx`:52 - `Expr_Equal::get_type_name()`
     pub fn Expr_Equal_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
-    /// **Source:** `Expr_Equal.hxx`:55 - `Expr_Equal::get_type_descriptor()`
-    pub fn Expr_Equal_get_type_descriptor() -> crate::OcctResult<*const HandleStandardType>;
+    /// **Source:** `Expr_Equal.hxx`:52 - `Expr_Equal::get_type_descriptor()`
+    pub fn Expr_Equal_get_type_descriptor() -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast Expr_Equal to Expr_SingleRelation
     pub fn Expr_Equal_as_Expr_SingleRelation(
         self_: *const Expr_Equal,
@@ -2584,149 +2511,143 @@ unsafe extern "C" {
         self_: *mut Expr_Equal,
     ) -> crate::OcctResult<*mut Standard_Transient>;
     /// Wrap Expr_Equal in a Handle
-    pub fn Expr_Equal_to_handle(obj: *mut Expr_Equal) -> crate::OcctResult<*mut HandleExprEqual>;
+    pub fn Expr_Equal_to_handle(obj: *mut Expr_Equal) -> crate::OcctResult<*mut Handle_Expr_Equal>;
     /// Destroy Handle<Expr_Equal>
-    pub fn HandleExprEqual_destructor(self_: *mut HandleExprEqual);
+    pub fn Handle_Expr_Equal_destructor(self_: *mut Handle_Expr_Equal);
     /// Clone Handle<Expr_Equal> (increments reference count)
-    pub fn HandleExprEqual_clone(
-        self_: *const HandleExprEqual,
-    ) -> crate::OcctResult<*mut HandleExprEqual>;
+    pub fn Handle_Expr_Equal_clone(
+        self_: *const Handle_Expr_Equal,
+    ) -> crate::OcctResult<*mut Handle_Expr_Equal>;
     /// Check if Handle<Expr_Equal> is null
-    pub fn HandleExprEqual_is_null(self_: *const HandleExprEqual) -> bool;
+    pub fn Handle_Expr_Equal_is_null(self_: *const Handle_Expr_Equal) -> bool;
     /// Dereference Handle to get *const Expr_Equal
-    pub fn HandleExprEqual_get(
-        handle: *const HandleExprEqual,
+    pub fn Handle_Expr_Equal_get(
+        handle: *const Handle_Expr_Equal,
     ) -> crate::OcctResult<*const Expr_Equal>;
     /// Dereference Handle to get *mut Expr_Equal
-    pub fn HandleExprEqual_get_mut(
-        handle: *mut HandleExprEqual,
+    pub fn Handle_Expr_Equal_get_mut(
+        handle: *mut Handle_Expr_Equal,
     ) -> crate::OcctResult<*mut Expr_Equal>;
     /// Upcast Handle<Expr_Equal> to Handle<Expr_SingleRelation>
-    pub fn HandleExprEqual_to_HandleExprSingleRelation(
-        self_: *const HandleExprEqual,
-    ) -> crate::OcctResult<*mut HandleExprSingleRelation>;
+    pub fn Handle_Expr_Equal_to_Handle_Expr_SingleRelation(
+        self_: *const Handle_Expr_Equal,
+    ) -> crate::OcctResult<*mut Handle_Expr_SingleRelation>;
     /// Upcast Handle<Expr_Equal> to Handle<Expr_GeneralRelation>
-    pub fn HandleExprEqual_to_HandleExprGeneralRelation(
-        self_: *const HandleExprEqual,
-    ) -> crate::OcctResult<*mut HandleExprGeneralRelation>;
+    pub fn Handle_Expr_Equal_to_Handle_Expr_GeneralRelation(
+        self_: *const Handle_Expr_Equal,
+    ) -> crate::OcctResult<*mut Handle_Expr_GeneralRelation>;
     /// Upcast Handle<Expr_Equal> to Handle<Standard_Transient>
-    pub fn HandleExprEqual_to_HandleStandardTransient(
-        self_: *const HandleExprEqual,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
-    /// Inherited: **Source:** `Expr_SingleRelation.hxx`:36 - `Expr_SingleRelation::SetFirstMember()`
+    pub fn Handle_Expr_Equal_to_Handle_Standard_Transient(
+        self_: *const Handle_Expr_Equal,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
+    /// Inherited: **Source:** `Expr_SingleRelation.hxx`:33 - `Expr_SingleRelation::SetFirstMember()`
     pub fn Expr_Equal_inherited_SetFirstMember(
         self_: *mut Expr_Equal,
-        exp: *const HandleExprGeneralExpression,
+        exp: *const Handle_Expr_GeneralExpression,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Expr_SingleRelation.hxx`:39 - `Expr_SingleRelation::SetSecondMember()`
+    /// Inherited: **Source:** `Expr_SingleRelation.hxx`:36 - `Expr_SingleRelation::SetSecondMember()`
     pub fn Expr_Equal_inherited_SetSecondMember(
         self_: *mut Expr_Equal,
-        exp: *const HandleExprGeneralExpression,
+        exp: *const Handle_Expr_GeneralExpression,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Expr_SingleRelation.hxx`:42 - `Expr_SingleRelation::FirstMember()`
+    /// Inherited: **Source:** `Expr_SingleRelation.hxx`:39 - `Expr_SingleRelation::FirstMember()`
     pub fn Expr_Equal_inherited_FirstMember(
         self_: *const Expr_Equal,
-    ) -> crate::OcctResult<*mut HandleExprGeneralExpression>;
-    /// Inherited: **Source:** `Expr_SingleRelation.hxx`:45 - `Expr_SingleRelation::SecondMember()`
+    ) -> crate::OcctResult<*mut Handle_Expr_GeneralExpression>;
+    /// Inherited: **Source:** `Expr_SingleRelation.hxx`:42 - `Expr_SingleRelation::SecondMember()`
     pub fn Expr_Equal_inherited_SecondMember(
         self_: *const Expr_Equal,
-    ) -> crate::OcctResult<*mut HandleExprGeneralExpression>;
-    /// Inherited: **Source:** `Expr_SingleRelation.hxx`:48 - `Expr_SingleRelation::IsLinear()`
+    ) -> crate::OcctResult<*mut Handle_Expr_GeneralExpression>;
+    /// Inherited: **Source:** `Expr_SingleRelation.hxx`:45 - `Expr_SingleRelation::IsLinear()`
     pub fn Expr_Equal_inherited_IsLinear(self_: *const Expr_Equal) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Expr_SingleRelation.hxx`:51 - `Expr_SingleRelation::NbOfSubRelations()`
+    /// Inherited: **Source:** `Expr_SingleRelation.hxx`:48 - `Expr_SingleRelation::NbOfSubRelations()`
     pub fn Expr_Equal_inherited_NbOfSubRelations(
         self_: *const Expr_Equal,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Expr_SingleRelation.hxx`:55 - `Expr_SingleRelation::NbOfSingleRelations()`
+    /// Inherited: **Source:** `Expr_SingleRelation.hxx`:52 - `Expr_SingleRelation::NbOfSingleRelations()`
     pub fn Expr_Equal_inherited_NbOfSingleRelations(
         self_: *const Expr_Equal,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Expr_SingleRelation.hxx`:59 - `Expr_SingleRelation::SubRelation()`
+    /// Inherited: **Source:** `Expr_SingleRelation.hxx`:56 - `Expr_SingleRelation::SubRelation()`
     pub fn Expr_Equal_inherited_SubRelation(
         self_: *const Expr_Equal,
         index: i32,
-    ) -> crate::OcctResult<*mut HandleExprGeneralRelation>;
-    /// Inherited: **Source:** `Expr_SingleRelation.hxx`:64 - `Expr_SingleRelation::Contains()`
+    ) -> crate::OcctResult<*mut Handle_Expr_GeneralRelation>;
+    /// Inherited: **Source:** `Expr_SingleRelation.hxx`:59 - `Expr_SingleRelation::Contains()`
     pub fn Expr_Equal_inherited_Contains(
         self_: *const Expr_Equal,
-        exp: *const HandleExprGeneralExpression,
+        exp: *const Handle_Expr_GeneralExpression,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Expr_SingleRelation.hxx`:67 - `Expr_SingleRelation::Replace()`
+    /// Inherited: **Source:** `Expr_SingleRelation.hxx`:62 - `Expr_SingleRelation::Replace()`
     pub fn Expr_Equal_inherited_Replace(
         self_: *mut Expr_Equal,
-        var: *const HandleExprNamedUnknown,
-        with: *const HandleExprGeneralExpression,
+        var: *const Handle_Expr_NamedUnknown,
+        with: *const Handle_Expr_GeneralExpression,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn Expr_Equal_inherited_IsInstance(
         self_: *const Expr_Equal,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn Expr_Equal_inherited_IsKind(
         self_: *const Expr_Equal,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn Expr_Equal_inherited_This(
         self_: *const Expr_Equal,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn Expr_Equal_inherited_GetRefCount(self_: *const Expr_Equal) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn Expr_Equal_inherited_IncrementRefCounter(
         self_: *mut Expr_Equal,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn Expr_Equal_inherited_DecrementRefCounter(
         self_: *mut Expr_Equal,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn Expr_Equal_inherited_Delete(self_: *const Expr_Equal) -> *const std::ffi::c_char;
     // ======================== Expr_Exponential ========================
     pub fn Expr_Exponential_destructor(self_: *mut Expr_Exponential);
-    /// **Source:** `Expr_Exponential.hxx`:37 - `Expr_Exponential::Expr_Exponential()`
+    /// **Source:** `Expr_Exponential.hxx`:33 - `Expr_Exponential::Expr_Exponential()`
     pub fn Expr_Exponential_ctor_handleexprgeneralexpression(
-        exp: *const HandleExprGeneralExpression,
+        exp: *const Handle_Expr_GeneralExpression,
     ) -> crate::OcctResult<*mut Expr_Exponential>;
-    /// **Source:** `Expr_Exponential.hxx`:41 - `Expr_Exponential::ShallowSimplified()`
+    /// **Source:** `Expr_Exponential.hxx`:37 - `Expr_Exponential::ShallowSimplified()`
     pub fn Expr_Exponential_shallow_simplified(
         self_: *const Expr_Exponential,
-    ) -> crate::OcctResult<*mut HandleExprGeneralExpression>;
-    /// **Source:** `Expr_Exponential.hxx`:44 - `Expr_Exponential::Copy()`
+    ) -> crate::OcctResult<*mut Handle_Expr_GeneralExpression>;
+    /// **Source:** `Expr_Exponential.hxx`:40 - `Expr_Exponential::Copy()`
     pub fn Expr_Exponential_copy(
         self_: *const Expr_Exponential,
-    ) -> crate::OcctResult<*mut HandleExprGeneralExpression>;
-    /// **Source:** `Expr_Exponential.hxx`:50 - `Expr_Exponential::IsIdentical()`
+    ) -> crate::OcctResult<*mut Handle_Expr_GeneralExpression>;
+    /// **Source:** `Expr_Exponential.hxx`:45 - `Expr_Exponential::IsIdentical()`
     pub fn Expr_Exponential_is_identical(
         self_: *const Expr_Exponential,
-        Other: *const HandleExprGeneralExpression,
+        Other: *const Handle_Expr_GeneralExpression,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `Expr_Exponential.hxx`:52 - `Expr_Exponential::IsLinear()`
+    /// **Source:** `Expr_Exponential.hxx`:47 - `Expr_Exponential::IsLinear()`
     pub fn Expr_Exponential_is_linear(self_: *const Expr_Exponential) -> crate::OcctResult<bool>;
-    /// **Source:** `Expr_Exponential.hxx`:55 - `Expr_Exponential::Derivative()`
+    /// **Source:** `Expr_Exponential.hxx`:50 - `Expr_Exponential::Derivative()`
     pub fn Expr_Exponential_derivative(
         self_: *const Expr_Exponential,
-        X: *const HandleExprNamedUnknown,
-    ) -> crate::OcctResult<*mut HandleExprGeneralExpression>;
-    /// **Source:** `Expr_Exponential.hxx`:62 - `Expr_Exponential::Evaluate()`
-    pub fn Expr_Exponential_evaluate(
-        self_: *const Expr_Exponential,
-        vars: *const Expr_Array1OfNamedUnknown,
-        vals: *const TColStd_Array1OfReal,
-    ) -> crate::OcctResult<f64>;
-    /// **Source:** `Expr_Exponential.hxx`:66 - `Expr_Exponential::String()`
+        X: *const Handle_Expr_NamedUnknown,
+    ) -> crate::OcctResult<*mut Handle_Expr_GeneralExpression>;
+    /// **Source:** `Expr_Exponential.hxx`:61 - `Expr_Exponential::String()`
     pub fn Expr_Exponential_string(
         self_: *const Expr_Exponential,
     ) -> crate::OcctResult<*mut TCollection_AsciiString>;
-    /// **Source:** `Expr_Exponential.hxx`:68 - `Expr_Exponential::DynamicType()`
+    /// **Source:** `Expr_Exponential.hxx`:63 - `Expr_Exponential::DynamicType()`
     pub fn Expr_Exponential_dynamic_type(
         self_: *const Expr_Exponential,
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// **Source:** `Expr_Exponential.hxx`:68 - `Expr_Exponential::get_type_name()`
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
+    /// **Source:** `Expr_Exponential.hxx`:63 - `Expr_Exponential::get_type_name()`
     pub fn Expr_Exponential_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
-    /// **Source:** `Expr_Exponential.hxx`:68 - `Expr_Exponential::get_type_descriptor()`
-    pub fn Expr_Exponential_get_type_descriptor() -> crate::OcctResult<*const HandleStandardType>;
+    /// **Source:** `Expr_Exponential.hxx`:63 - `Expr_Exponential::get_type_descriptor()`
+    pub fn Expr_Exponential_get_type_descriptor() -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast Expr_Exponential to Expr_UnaryExpression
     pub fn Expr_Exponential_as_Expr_UnaryExpression(
         self_: *const Expr_Exponential,
@@ -2754,161 +2675,155 @@ unsafe extern "C" {
     /// Wrap Expr_Exponential in a Handle
     pub fn Expr_Exponential_to_handle(
         obj: *mut Expr_Exponential,
-    ) -> crate::OcctResult<*mut HandleExprExponential>;
+    ) -> crate::OcctResult<*mut Handle_Expr_Exponential>;
     /// Destroy Handle<Expr_Exponential>
-    pub fn HandleExprExponential_destructor(self_: *mut HandleExprExponential);
+    pub fn Handle_Expr_Exponential_destructor(self_: *mut Handle_Expr_Exponential);
     /// Clone Handle<Expr_Exponential> (increments reference count)
-    pub fn HandleExprExponential_clone(
-        self_: *const HandleExprExponential,
-    ) -> crate::OcctResult<*mut HandleExprExponential>;
+    pub fn Handle_Expr_Exponential_clone(
+        self_: *const Handle_Expr_Exponential,
+    ) -> crate::OcctResult<*mut Handle_Expr_Exponential>;
     /// Check if Handle<Expr_Exponential> is null
-    pub fn HandleExprExponential_is_null(self_: *const HandleExprExponential) -> bool;
+    pub fn Handle_Expr_Exponential_is_null(self_: *const Handle_Expr_Exponential) -> bool;
     /// Dereference Handle to get *const Expr_Exponential
-    pub fn HandleExprExponential_get(
-        handle: *const HandleExprExponential,
+    pub fn Handle_Expr_Exponential_get(
+        handle: *const Handle_Expr_Exponential,
     ) -> crate::OcctResult<*const Expr_Exponential>;
     /// Dereference Handle to get *mut Expr_Exponential
-    pub fn HandleExprExponential_get_mut(
-        handle: *mut HandleExprExponential,
+    pub fn Handle_Expr_Exponential_get_mut(
+        handle: *mut Handle_Expr_Exponential,
     ) -> crate::OcctResult<*mut Expr_Exponential>;
     /// Upcast Handle<Expr_Exponential> to Handle<Expr_UnaryExpression>
-    pub fn HandleExprExponential_to_HandleExprUnaryExpression(
-        self_: *const HandleExprExponential,
-    ) -> crate::OcctResult<*mut HandleExprUnaryExpression>;
+    pub fn Handle_Expr_Exponential_to_Handle_Expr_UnaryExpression(
+        self_: *const Handle_Expr_Exponential,
+    ) -> crate::OcctResult<*mut Handle_Expr_UnaryExpression>;
     /// Upcast Handle<Expr_Exponential> to Handle<Expr_GeneralExpression>
-    pub fn HandleExprExponential_to_HandleExprGeneralExpression(
-        self_: *const HandleExprExponential,
-    ) -> crate::OcctResult<*mut HandleExprGeneralExpression>;
+    pub fn Handle_Expr_Exponential_to_Handle_Expr_GeneralExpression(
+        self_: *const Handle_Expr_Exponential,
+    ) -> crate::OcctResult<*mut Handle_Expr_GeneralExpression>;
     /// Upcast Handle<Expr_Exponential> to Handle<Standard_Transient>
-    pub fn HandleExprExponential_to_HandleStandardTransient(
-        self_: *const HandleExprExponential,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
-    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:35 - `Expr_UnaryExpression::Operand()`
+    pub fn Handle_Expr_Exponential_to_Handle_Standard_Transient(
+        self_: *const Handle_Expr_Exponential,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
+    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:32 - `Expr_UnaryExpression::Operand()`
     pub fn Expr_Exponential_inherited_Operand(
         self_: *const Expr_Exponential,
-    ) -> crate::OcctResult<*const HandleExprGeneralExpression>;
-    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:39 - `Expr_UnaryExpression::SetOperand()`
+    ) -> crate::OcctResult<*const Handle_Expr_GeneralExpression>;
+    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:36 - `Expr_UnaryExpression::SetOperand()`
     pub fn Expr_Exponential_inherited_SetOperand(
         self_: *mut Expr_Exponential,
-        exp: *const HandleExprGeneralExpression,
+        exp: *const Handle_Expr_GeneralExpression,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:43 - `Expr_UnaryExpression::NbSubExpressions()`
+    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:40 - `Expr_UnaryExpression::NbSubExpressions()`
     pub fn Expr_Exponential_inherited_NbSubExpressions(
         self_: *const Expr_Exponential,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:47 - `Expr_UnaryExpression::SubExpression()`
+    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:44 - `Expr_UnaryExpression::SubExpression()`
     pub fn Expr_Exponential_inherited_SubExpression(
         self_: *const Expr_Exponential,
         I: i32,
-    ) -> crate::OcctResult<*const HandleExprGeneralExpression>;
-    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:51 - `Expr_UnaryExpression::ContainsUnknowns()`
+    ) -> crate::OcctResult<*const Handle_Expr_GeneralExpression>;
+    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:48 - `Expr_UnaryExpression::ContainsUnknowns()`
     pub fn Expr_Exponential_inherited_ContainsUnknowns(
         self_: *const Expr_Exponential,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:55 - `Expr_UnaryExpression::Contains()`
+    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:51 - `Expr_UnaryExpression::Contains()`
     pub fn Expr_Exponential_inherited_Contains(
         self_: *const Expr_Exponential,
-        exp: *const HandleExprGeneralExpression,
+        exp: *const Handle_Expr_GeneralExpression,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:59 - `Expr_UnaryExpression::Replace()`
+    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:55 - `Expr_UnaryExpression::Replace()`
     pub fn Expr_Exponential_inherited_Replace(
         self_: *mut Expr_Exponential,
-        var: *const HandleExprNamedUnknown,
-        with: *const HandleExprGeneralExpression,
+        var: *const Handle_Expr_NamedUnknown,
+        with: *const Handle_Expr_GeneralExpression,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:65 - `Expr_UnaryExpression::Simplified()`
+    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:61 - `Expr_UnaryExpression::Simplified()`
     pub fn Expr_Exponential_inherited_Simplified(
         self_: *const Expr_Exponential,
-    ) -> crate::OcctResult<*mut HandleExprGeneralExpression>;
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:76 - `Expr_GeneralExpression::IsShareable()`
+    ) -> crate::OcctResult<*mut Handle_Expr_GeneralExpression>;
+    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:71 - `Expr_GeneralExpression::IsShareable()`
     pub fn Expr_Exponential_inherited_IsShareable(
         self_: *const Expr_Exponential,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:91 - `Expr_GeneralExpression::NDerivative()`
+    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:86 - `Expr_GeneralExpression::NDerivative()`
     pub fn Expr_Exponential_inherited_NDerivative(
         self_: *const Expr_Exponential,
-        X: *const HandleExprNamedUnknown,
+        X: *const Handle_Expr_NamedUnknown,
         N: i32,
-    ) -> crate::OcctResult<*mut HandleExprGeneralExpression>;
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:112 - `Expr_GeneralExpression::EvaluateNumeric()`
+    ) -> crate::OcctResult<*mut Handle_Expr_GeneralExpression>;
+    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:108 - `Expr_GeneralExpression::EvaluateNumeric()`
     pub fn Expr_Exponential_inherited_EvaluateNumeric(
         self_: *const Expr_Exponential,
     ) -> crate::OcctResult<f64>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn Expr_Exponential_inherited_IsInstance(
         self_: *const Expr_Exponential,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn Expr_Exponential_inherited_IsKind(
         self_: *const Expr_Exponential,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn Expr_Exponential_inherited_This(
         self_: *const Expr_Exponential,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn Expr_Exponential_inherited_GetRefCount(
         self_: *const Expr_Exponential,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn Expr_Exponential_inherited_IncrementRefCounter(
         self_: *mut Expr_Exponential,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn Expr_Exponential_inherited_DecrementRefCounter(
         self_: *mut Expr_Exponential,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn Expr_Exponential_inherited_Delete(
         self_: *const Expr_Exponential,
     ) -> *const std::ffi::c_char;
     // ======================== Expr_Exponentiate ========================
     pub fn Expr_Exponentiate_destructor(self_: *mut Expr_Exponentiate);
-    /// **Source:** `Expr_Exponentiate.hxx`:38 - `Expr_Exponentiate::Expr_Exponentiate()`
+    /// **Source:** `Expr_Exponentiate.hxx`:34 - `Expr_Exponentiate::Expr_Exponentiate()`
     pub fn Expr_Exponentiate_ctor_handleexprgeneralexpression2(
-        exp1: *const HandleExprGeneralExpression,
-        exp2: *const HandleExprGeneralExpression,
+        exp1: *const Handle_Expr_GeneralExpression,
+        exp2: *const Handle_Expr_GeneralExpression,
     ) -> crate::OcctResult<*mut Expr_Exponentiate>;
-    /// **Source:** `Expr_Exponentiate.hxx`:43 - `Expr_Exponentiate::ShallowSimplified()`
+    /// **Source:** `Expr_Exponentiate.hxx`:39 - `Expr_Exponentiate::ShallowSimplified()`
     pub fn Expr_Exponentiate_shallow_simplified(
         self_: *const Expr_Exponentiate,
-    ) -> crate::OcctResult<*mut HandleExprGeneralExpression>;
-    /// **Source:** `Expr_Exponentiate.hxx`:46 - `Expr_Exponentiate::Copy()`
+    ) -> crate::OcctResult<*mut Handle_Expr_GeneralExpression>;
+    /// **Source:** `Expr_Exponentiate.hxx`:42 - `Expr_Exponentiate::Copy()`
     pub fn Expr_Exponentiate_copy(
         self_: *const Expr_Exponentiate,
-    ) -> crate::OcctResult<*mut HandleExprGeneralExpression>;
-    /// **Source:** `Expr_Exponentiate.hxx`:52 - `Expr_Exponentiate::IsIdentical()`
+    ) -> crate::OcctResult<*mut Handle_Expr_GeneralExpression>;
+    /// **Source:** `Expr_Exponentiate.hxx`:47 - `Expr_Exponentiate::IsIdentical()`
     pub fn Expr_Exponentiate_is_identical(
         self_: *const Expr_Exponentiate,
-        Other: *const HandleExprGeneralExpression,
+        Other: *const Handle_Expr_GeneralExpression,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `Expr_Exponentiate.hxx`:54 - `Expr_Exponentiate::IsLinear()`
+    /// **Source:** `Expr_Exponentiate.hxx`:49 - `Expr_Exponentiate::IsLinear()`
     pub fn Expr_Exponentiate_is_linear(self_: *const Expr_Exponentiate) -> crate::OcctResult<bool>;
-    /// **Source:** `Expr_Exponentiate.hxx`:57 - `Expr_Exponentiate::Derivative()`
+    /// **Source:** `Expr_Exponentiate.hxx`:52 - `Expr_Exponentiate::Derivative()`
     pub fn Expr_Exponentiate_derivative(
         self_: *const Expr_Exponentiate,
-        X: *const HandleExprNamedUnknown,
-    ) -> crate::OcctResult<*mut HandleExprGeneralExpression>;
-    /// **Source:** `Expr_Exponentiate.hxx`:64 - `Expr_Exponentiate::Evaluate()`
-    pub fn Expr_Exponentiate_evaluate(
-        self_: *const Expr_Exponentiate,
-        vars: *const Expr_Array1OfNamedUnknown,
-        vals: *const TColStd_Array1OfReal,
-    ) -> crate::OcctResult<f64>;
-    /// **Source:** `Expr_Exponentiate.hxx`:68 - `Expr_Exponentiate::String()`
+        X: *const Handle_Expr_NamedUnknown,
+    ) -> crate::OcctResult<*mut Handle_Expr_GeneralExpression>;
+    /// **Source:** `Expr_Exponentiate.hxx`:63 - `Expr_Exponentiate::String()`
     pub fn Expr_Exponentiate_string(
         self_: *const Expr_Exponentiate,
     ) -> crate::OcctResult<*mut TCollection_AsciiString>;
-    /// **Source:** `Expr_Exponentiate.hxx`:70 - `Expr_Exponentiate::DynamicType()`
+    /// **Source:** `Expr_Exponentiate.hxx`:65 - `Expr_Exponentiate::DynamicType()`
     pub fn Expr_Exponentiate_dynamic_type(
         self_: *const Expr_Exponentiate,
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// **Source:** `Expr_Exponentiate.hxx`:70 - `Expr_Exponentiate::get_type_name()`
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
+    /// **Source:** `Expr_Exponentiate.hxx`:65 - `Expr_Exponentiate::get_type_name()`
     pub fn Expr_Exponentiate_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
-    /// **Source:** `Expr_Exponentiate.hxx`:70 - `Expr_Exponentiate::get_type_descriptor()`
-    pub fn Expr_Exponentiate_get_type_descriptor() -> crate::OcctResult<*const HandleStandardType>;
+    /// **Source:** `Expr_Exponentiate.hxx`:65 - `Expr_Exponentiate::get_type_descriptor()`
+    pub fn Expr_Exponentiate_get_type_descriptor() -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast Expr_Exponentiate to Expr_BinaryExpression
     pub fn Expr_Exponentiate_as_Expr_BinaryExpression(
         self_: *const Expr_Exponentiate,
@@ -2936,163 +2851,140 @@ unsafe extern "C" {
     /// Wrap Expr_Exponentiate in a Handle
     pub fn Expr_Exponentiate_to_handle(
         obj: *mut Expr_Exponentiate,
-    ) -> crate::OcctResult<*mut HandleExprExponentiate>;
+    ) -> crate::OcctResult<*mut Handle_Expr_Exponentiate>;
     /// Destroy Handle<Expr_Exponentiate>
-    pub fn HandleExprExponentiate_destructor(self_: *mut HandleExprExponentiate);
+    pub fn Handle_Expr_Exponentiate_destructor(self_: *mut Handle_Expr_Exponentiate);
     /// Clone Handle<Expr_Exponentiate> (increments reference count)
-    pub fn HandleExprExponentiate_clone(
-        self_: *const HandleExprExponentiate,
-    ) -> crate::OcctResult<*mut HandleExprExponentiate>;
+    pub fn Handle_Expr_Exponentiate_clone(
+        self_: *const Handle_Expr_Exponentiate,
+    ) -> crate::OcctResult<*mut Handle_Expr_Exponentiate>;
     /// Check if Handle<Expr_Exponentiate> is null
-    pub fn HandleExprExponentiate_is_null(self_: *const HandleExprExponentiate) -> bool;
+    pub fn Handle_Expr_Exponentiate_is_null(self_: *const Handle_Expr_Exponentiate) -> bool;
     /// Dereference Handle to get *const Expr_Exponentiate
-    pub fn HandleExprExponentiate_get(
-        handle: *const HandleExprExponentiate,
+    pub fn Handle_Expr_Exponentiate_get(
+        handle: *const Handle_Expr_Exponentiate,
     ) -> crate::OcctResult<*const Expr_Exponentiate>;
     /// Dereference Handle to get *mut Expr_Exponentiate
-    pub fn HandleExprExponentiate_get_mut(
-        handle: *mut HandleExprExponentiate,
+    pub fn Handle_Expr_Exponentiate_get_mut(
+        handle: *mut Handle_Expr_Exponentiate,
     ) -> crate::OcctResult<*mut Expr_Exponentiate>;
     /// Upcast Handle<Expr_Exponentiate> to Handle<Expr_BinaryExpression>
-    pub fn HandleExprExponentiate_to_HandleExprBinaryExpression(
-        self_: *const HandleExprExponentiate,
-    ) -> crate::OcctResult<*mut HandleExprBinaryExpression>;
+    pub fn Handle_Expr_Exponentiate_to_Handle_Expr_BinaryExpression(
+        self_: *const Handle_Expr_Exponentiate,
+    ) -> crate::OcctResult<*mut Handle_Expr_BinaryExpression>;
     /// Upcast Handle<Expr_Exponentiate> to Handle<Expr_GeneralExpression>
-    pub fn HandleExprExponentiate_to_HandleExprGeneralExpression(
-        self_: *const HandleExprExponentiate,
-    ) -> crate::OcctResult<*mut HandleExprGeneralExpression>;
+    pub fn Handle_Expr_Exponentiate_to_Handle_Expr_GeneralExpression(
+        self_: *const Handle_Expr_Exponentiate,
+    ) -> crate::OcctResult<*mut Handle_Expr_GeneralExpression>;
     /// Upcast Handle<Expr_Exponentiate> to Handle<Standard_Transient>
-    pub fn HandleExprExponentiate_to_HandleStandardTransient(
-        self_: *const HandleExprExponentiate,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
-    /// Inherited: **Source:** `Expr_BinaryExpression.hxx`:36 - `Expr_BinaryExpression::FirstOperand()`
+    pub fn Handle_Expr_Exponentiate_to_Handle_Standard_Transient(
+        self_: *const Handle_Expr_Exponentiate,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
+    /// Inherited: **Source:** `Expr_BinaryExpression.hxx`:33 - `Expr_BinaryExpression::FirstOperand()`
     pub fn Expr_Exponentiate_inherited_FirstOperand(
         self_: *const Expr_Exponentiate,
-    ) -> crate::OcctResult<*const HandleExprGeneralExpression>;
-    /// Inherited: **Source:** `Expr_BinaryExpression.hxx`:38 - `Expr_BinaryExpression::SecondOperand()`
+    ) -> crate::OcctResult<*const Handle_Expr_GeneralExpression>;
+    /// Inherited: **Source:** `Expr_BinaryExpression.hxx`:35 - `Expr_BinaryExpression::SecondOperand()`
     pub fn Expr_Exponentiate_inherited_SecondOperand(
         self_: *const Expr_Exponentiate,
-    ) -> crate::OcctResult<*const HandleExprGeneralExpression>;
-    /// Inherited: **Source:** `Expr_BinaryExpression.hxx`:42 - `Expr_BinaryExpression::SetFirstOperand()`
+    ) -> crate::OcctResult<*const Handle_Expr_GeneralExpression>;
+    /// Inherited: **Source:** `Expr_BinaryExpression.hxx`:39 - `Expr_BinaryExpression::SetFirstOperand()`
     pub fn Expr_Exponentiate_inherited_SetFirstOperand(
         self_: *mut Expr_Exponentiate,
-        exp: *const HandleExprGeneralExpression,
+        exp: *const Handle_Expr_GeneralExpression,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Expr_BinaryExpression.hxx`:46 - `Expr_BinaryExpression::SetSecondOperand()`
+    /// Inherited: **Source:** `Expr_BinaryExpression.hxx`:43 - `Expr_BinaryExpression::SetSecondOperand()`
     pub fn Expr_Exponentiate_inherited_SetSecondOperand(
         self_: *mut Expr_Exponentiate,
-        exp: *const HandleExprGeneralExpression,
+        exp: *const Handle_Expr_GeneralExpression,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Expr_BinaryExpression.hxx`:50 - `Expr_BinaryExpression::NbSubExpressions()`
+    /// Inherited: **Source:** `Expr_BinaryExpression.hxx`:47 - `Expr_BinaryExpression::NbSubExpressions()`
     pub fn Expr_Exponentiate_inherited_NbSubExpressions(
         self_: *const Expr_Exponentiate,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Expr_BinaryExpression.hxx`:54 - `Expr_BinaryExpression::SubExpression()`
+    /// Inherited: **Source:** `Expr_BinaryExpression.hxx`:51 - `Expr_BinaryExpression::SubExpression()`
     pub fn Expr_Exponentiate_inherited_SubExpression(
         self_: *const Expr_Exponentiate,
         I: i32,
-    ) -> crate::OcctResult<*const HandleExprGeneralExpression>;
-    /// Inherited: **Source:** `Expr_BinaryExpression.hxx`:58 - `Expr_BinaryExpression::ContainsUnknowns()`
+    ) -> crate::OcctResult<*const Handle_Expr_GeneralExpression>;
+    /// Inherited: **Source:** `Expr_BinaryExpression.hxx`:55 - `Expr_BinaryExpression::ContainsUnknowns()`
     pub fn Expr_Exponentiate_inherited_ContainsUnknowns(
         self_: *const Expr_Exponentiate,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Expr_BinaryExpression.hxx`:62 - `Expr_BinaryExpression::Contains()`
+    /// Inherited: **Source:** `Expr_BinaryExpression.hxx`:58 - `Expr_BinaryExpression::Contains()`
     pub fn Expr_Exponentiate_inherited_Contains(
         self_: *const Expr_Exponentiate,
-        exp: *const HandleExprGeneralExpression,
+        exp: *const Handle_Expr_GeneralExpression,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Expr_BinaryExpression.hxx`:66 - `Expr_BinaryExpression::Replace()`
+    /// Inherited: **Source:** `Expr_BinaryExpression.hxx`:62 - `Expr_BinaryExpression::Replace()`
     pub fn Expr_Exponentiate_inherited_Replace(
         self_: *mut Expr_Exponentiate,
-        var: *const HandleExprNamedUnknown,
-        with: *const HandleExprGeneralExpression,
+        var: *const Handle_Expr_NamedUnknown,
+        with: *const Handle_Expr_GeneralExpression,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Expr_BinaryExpression.hxx`:72 - `Expr_BinaryExpression::Simplified()`
+    /// Inherited: **Source:** `Expr_BinaryExpression.hxx`:68 - `Expr_BinaryExpression::Simplified()`
     pub fn Expr_Exponentiate_inherited_Simplified(
         self_: *const Expr_Exponentiate,
-    ) -> crate::OcctResult<*mut HandleExprGeneralExpression>;
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:76 - `Expr_GeneralExpression::IsShareable()`
+    ) -> crate::OcctResult<*mut Handle_Expr_GeneralExpression>;
+    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:71 - `Expr_GeneralExpression::IsShareable()`
     pub fn Expr_Exponentiate_inherited_IsShareable(
         self_: *const Expr_Exponentiate,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:91 - `Expr_GeneralExpression::NDerivative()`
+    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:86 - `Expr_GeneralExpression::NDerivative()`
     pub fn Expr_Exponentiate_inherited_NDerivative(
         self_: *const Expr_Exponentiate,
-        X: *const HandleExprNamedUnknown,
+        X: *const Handle_Expr_NamedUnknown,
         N: i32,
-    ) -> crate::OcctResult<*mut HandleExprGeneralExpression>;
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:112 - `Expr_GeneralExpression::EvaluateNumeric()`
+    ) -> crate::OcctResult<*mut Handle_Expr_GeneralExpression>;
+    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:108 - `Expr_GeneralExpression::EvaluateNumeric()`
     pub fn Expr_Exponentiate_inherited_EvaluateNumeric(
         self_: *const Expr_Exponentiate,
     ) -> crate::OcctResult<f64>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn Expr_Exponentiate_inherited_IsInstance(
         self_: *const Expr_Exponentiate,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn Expr_Exponentiate_inherited_IsKind(
         self_: *const Expr_Exponentiate,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn Expr_Exponentiate_inherited_This(
         self_: *const Expr_Exponentiate,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn Expr_Exponentiate_inherited_GetRefCount(
         self_: *const Expr_Exponentiate,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn Expr_Exponentiate_inherited_IncrementRefCounter(
         self_: *mut Expr_Exponentiate,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn Expr_Exponentiate_inherited_DecrementRefCounter(
         self_: *mut Expr_Exponentiate,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn Expr_Exponentiate_inherited_Delete(
         self_: *const Expr_Exponentiate,
     ) -> *const std::ffi::c_char;
     // ======================== Expr_ExprFailure ========================
     pub fn Expr_ExprFailure_destructor(self_: *mut Expr_ExprFailure);
-    /// **Source:** `Expr_ExprFailure.hxx`:36 - `Expr_ExprFailure::Expr_ExprFailure()`
-    pub fn Expr_ExprFailure_ctor() -> crate::OcctResult<*mut Expr_ExprFailure>;
-    /// **Source:** `Expr_ExprFailure.hxx`:36 - `Expr_ExprFailure::Expr_ExprFailure()`
+    /// **Source:** `Expr_ExprFailure.hxx`:32 - `Expr_ExprFailure::Expr_ExprFailure()`
     pub fn Expr_ExprFailure_ctor_charptr(
         theMessage: *const std::ffi::c_char,
     ) -> crate::OcctResult<*mut Expr_ExprFailure>;
-    /// **Source:** `Expr_ExprFailure.hxx`:36 - `Expr_ExprFailure::Expr_ExprFailure()`
+    /// **Source:** `Expr_ExprFailure.hxx`:32 - `Expr_ExprFailure::Expr_ExprFailure()`
     pub fn Expr_ExprFailure_ctor_charptr2(
         theMessage: *const std::ffi::c_char,
         theStackTrace: *const std::ffi::c_char,
     ) -> crate::OcctResult<*mut Expr_ExprFailure>;
-    /// **Source:** `Expr_ExprFailure.hxx`:36 - `Expr_ExprFailure::DynamicType()`
-    pub fn Expr_ExprFailure_dynamic_type(
+    /// **Source:** `Expr_ExprFailure.hxx`:32 - `Expr_ExprFailure::ExceptionType()`
+    pub fn Expr_ExprFailure_exception_type(
         self_: *const Expr_ExprFailure,
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// **Source:** `Expr_ExprFailure.hxx`:36 - `Expr_ExprFailure::Raise()`
-    pub fn Expr_ExprFailure_raise_charptr(
-        theMessage: *const std::ffi::c_char,
-    ) -> *const std::ffi::c_char;
-    /// **Source:** `Expr_ExprFailure.hxx`:36 - `Expr_ExprFailure::Raise()`
-    pub fn Expr_ExprFailure_raise_sstream(
-        theMessage: *mut Standard_SStream,
-    ) -> *const std::ffi::c_char;
-    /// **Source:** `Expr_ExprFailure.hxx`:36 - `Expr_ExprFailure::NewInstance()`
-    pub fn Expr_ExprFailure_new_instance_charptr(
-        theMessage: *const std::ffi::c_char,
-    ) -> crate::OcctResult<*mut HandleExprExprFailure>;
-    /// **Source:** `Expr_ExprFailure.hxx`:36 - `Expr_ExprFailure::NewInstance()`
-    pub fn Expr_ExprFailure_new_instance_charptr2(
-        theMessage: *const std::ffi::c_char,
-        theStackTrace: *const std::ffi::c_char,
-    ) -> crate::OcctResult<*mut HandleExprExprFailure>;
-    /// **Source:** `Expr_ExprFailure.hxx`:36 - `Expr_ExprFailure::get_type_name()`
-    pub fn Expr_ExprFailure_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
-    /// **Source:** `Expr_ExprFailure.hxx`:36 - `Expr_ExprFailure::get_type_descriptor()`
-    pub fn Expr_ExprFailure_get_type_descriptor() -> crate::OcctResult<*const HandleStandardType>;
+    ) -> crate::OcctResult<*const std::ffi::c_char>;
     /// Upcast Expr_ExprFailure to Standard_Failure
     pub fn Expr_ExprFailure_as_Standard_Failure(
         self_: *const Expr_ExprFailure,
@@ -3101,185 +2993,86 @@ unsafe extern "C" {
     pub fn Expr_ExprFailure_as_Standard_Failure_mut(
         self_: *mut Expr_ExprFailure,
     ) -> crate::OcctResult<*mut Standard_Failure>;
-    /// Upcast Expr_ExprFailure to Standard_Transient
-    pub fn Expr_ExprFailure_as_Standard_Transient(
-        self_: *const Expr_ExprFailure,
-    ) -> crate::OcctResult<*const Standard_Transient>;
-    /// Upcast Expr_ExprFailure to Standard_Transient (mutable)
-    pub fn Expr_ExprFailure_as_Standard_Transient_mut(
-        self_: *mut Expr_ExprFailure,
-    ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Wrap Expr_ExprFailure in a Handle
-    pub fn Expr_ExprFailure_to_handle(
-        obj: *mut Expr_ExprFailure,
-    ) -> crate::OcctResult<*mut HandleExprExprFailure>;
-    /// Destroy Handle<Expr_ExprFailure>
-    pub fn HandleExprExprFailure_destructor(self_: *mut HandleExprExprFailure);
-    /// Clone Handle<Expr_ExprFailure> (increments reference count)
-    pub fn HandleExprExprFailure_clone(
-        self_: *const HandleExprExprFailure,
-    ) -> crate::OcctResult<*mut HandleExprExprFailure>;
-    /// Check if Handle<Expr_ExprFailure> is null
-    pub fn HandleExprExprFailure_is_null(self_: *const HandleExprExprFailure) -> bool;
-    /// Dereference Handle to get *const Expr_ExprFailure
-    pub fn HandleExprExprFailure_get(
-        handle: *const HandleExprExprFailure,
-    ) -> crate::OcctResult<*const Expr_ExprFailure>;
-    /// Dereference Handle to get *mut Expr_ExprFailure
-    pub fn HandleExprExprFailure_get_mut(
-        handle: *mut HandleExprExprFailure,
-    ) -> crate::OcctResult<*mut Expr_ExprFailure>;
-    /// Upcast Handle<Expr_ExprFailure> to Handle<Standard_Failure>
-    pub fn HandleExprExprFailure_to_HandleStandardFailure(
-        self_: *const HandleExprExprFailure,
-    ) -> crate::OcctResult<*mut HandleStandardFailure>;
-    /// Upcast Handle<Expr_ExprFailure> to Handle<Standard_Transient>
-    pub fn HandleExprExprFailure_to_HandleStandardTransient(
-        self_: *const HandleExprExprFailure,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
-    /// Downcast Handle<Expr_ExprFailure> to Handle<Expr_InvalidAssignment> (returns null on failure)
-    pub fn HandleExprExprFailure_downcast_to_HandleExprInvalidAssignment(
-        self_: *const HandleExprExprFailure,
-    ) -> crate::OcctResult<*mut HandleExprInvalidAssignment>;
-    /// Downcast Handle<Expr_ExprFailure> to Handle<Expr_InvalidFunction> (returns null on failure)
-    pub fn HandleExprExprFailure_downcast_to_HandleExprInvalidFunction(
-        self_: *const HandleExprExprFailure,
-    ) -> crate::OcctResult<*mut HandleExprInvalidFunction>;
-    /// Downcast Handle<Expr_ExprFailure> to Handle<Expr_InvalidOperand> (returns null on failure)
-    pub fn HandleExprExprFailure_downcast_to_HandleExprInvalidOperand(
-        self_: *const HandleExprExprFailure,
-    ) -> crate::OcctResult<*mut HandleExprInvalidOperand>;
-    /// Downcast Handle<Expr_ExprFailure> to Handle<Expr_NotAssigned> (returns null on failure)
-    pub fn HandleExprExprFailure_downcast_to_HandleExprNotAssigned(
-        self_: *const HandleExprExprFailure,
-    ) -> crate::OcctResult<*mut HandleExprNotAssigned>;
-    /// Downcast Handle<Expr_ExprFailure> to Handle<Expr_NotEvaluable> (returns null on failure)
-    pub fn HandleExprExprFailure_downcast_to_HandleExprNotEvaluable(
-        self_: *const HandleExprExprFailure,
-    ) -> crate::OcctResult<*mut HandleExprNotEvaluable>;
-    /// Inherited: **Source:** `Standard_Failure.hxx`:58 - `Standard_Failure::Print()`
+    /// Inherited: **Source:** `Standard_Failure.hxx`:73 - `Standard_Failure::Print()`
     pub fn Expr_ExprFailure_inherited_Print(
         self_: *const Expr_ExprFailure,
         theStream: *mut Standard_OStream,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Failure.hxx`:72 - `Standard_Failure::Reraise()`
-    pub fn Expr_ExprFailure_inherited_Reraise(
-        self_: *mut Expr_ExprFailure,
-    ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Failure.hxx`:112 - `Standard_Failure::Jump()`
-    pub fn Expr_ExprFailure_inherited_Jump(self_: *mut Expr_ExprFailure)
-        -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn Expr_ExprFailure_inherited_IsInstance(
-        self_: *const Expr_ExprFailure,
-        theType: *const HandleStandardType,
-    ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn Expr_ExprFailure_inherited_IsKind(
-        self_: *const Expr_ExprFailure,
-        theType: *const HandleStandardType,
-    ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
-    pub fn Expr_ExprFailure_inherited_This(
-        self_: *const Expr_ExprFailure,
-    ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
-    pub fn Expr_ExprFailure_inherited_GetRefCount(
-        self_: *const Expr_ExprFailure,
-    ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
-    pub fn Expr_ExprFailure_inherited_IncrementRefCounter(
-        self_: *mut Expr_ExprFailure,
-    ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
-    pub fn Expr_ExprFailure_inherited_DecrementRefCounter(
-        self_: *mut Expr_ExprFailure,
-    ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
-    pub fn Expr_ExprFailure_inherited_Delete(
-        self_: *const Expr_ExprFailure,
-    ) -> *const std::ffi::c_char;
     // ======================== Expr_FunctionDerivative ========================
     pub fn Expr_FunctionDerivative_destructor(self_: *mut Expr_FunctionDerivative);
-    /// **Source:** `Expr_FunctionDerivative.hxx`:42 - `Expr_FunctionDerivative::Expr_FunctionDerivative()`
+    /// **Source:** `Expr_FunctionDerivative.hxx`:38 - `Expr_FunctionDerivative::Expr_FunctionDerivative()`
     pub fn Expr_FunctionDerivative_ctor_handleexprgeneralfunction_handleexprnamedunknown_int(
-        func: *const HandleExprGeneralFunction,
-        withX: *const HandleExprNamedUnknown,
+        func: *const Handle_Expr_GeneralFunction,
+        withX: *const Handle_Expr_NamedUnknown,
         deg: i32,
     ) -> crate::OcctResult<*mut Expr_FunctionDerivative>;
-    /// **Source:** `Expr_FunctionDerivative.hxx`:47 - `Expr_FunctionDerivative::NbOfVariables()`
+    /// **Source:** `Expr_FunctionDerivative.hxx`:43 - `Expr_FunctionDerivative::NbOfVariables()`
     pub fn Expr_FunctionDerivative_nb_of_variables(
         self_: *const Expr_FunctionDerivative,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `Expr_FunctionDerivative.hxx`:52 - `Expr_FunctionDerivative::Variable()`
+    /// **Source:** `Expr_FunctionDerivative.hxx`:48 - `Expr_FunctionDerivative::Variable()`
     pub fn Expr_FunctionDerivative_variable(
         self_: *const Expr_FunctionDerivative,
         index: i32,
-    ) -> crate::OcctResult<*mut HandleExprNamedUnknown>;
-    /// **Source:** `Expr_FunctionDerivative.hxx`:59 - `Expr_FunctionDerivative::Evaluate()`
-    pub fn Expr_FunctionDerivative_evaluate(
-        self_: *const Expr_FunctionDerivative,
-        vars: *const Expr_Array1OfNamedUnknown,
-        values: *const TColStd_Array1OfReal,
-    ) -> crate::OcctResult<f64>;
-    /// **Source:** `Expr_FunctionDerivative.hxx`:63 - `Expr_FunctionDerivative::Copy()`
+    ) -> crate::OcctResult<*mut Handle_Expr_NamedUnknown>;
+    /// **Source:** `Expr_FunctionDerivative.hxx`:57 - `Expr_FunctionDerivative::Copy()`
     pub fn Expr_FunctionDerivative_copy(
         self_: *const Expr_FunctionDerivative,
-    ) -> crate::OcctResult<*mut HandleExprGeneralFunction>;
-    /// **Source:** `Expr_FunctionDerivative.hxx`:66 - `Expr_FunctionDerivative::Derivative()`
+    ) -> crate::OcctResult<*mut Handle_Expr_GeneralFunction>;
+    /// **Source:** `Expr_FunctionDerivative.hxx`:60 - `Expr_FunctionDerivative::Derivative()`
     pub fn Expr_FunctionDerivative_derivative_handleexprnamedunknown(
         self_: *const Expr_FunctionDerivative,
-        var: *const HandleExprNamedUnknown,
-    ) -> crate::OcctResult<*mut HandleExprGeneralFunction>;
-    /// **Source:** `Expr_FunctionDerivative.hxx`:71 - `Expr_FunctionDerivative::Derivative()`
+        var: *const Handle_Expr_NamedUnknown,
+    ) -> crate::OcctResult<*mut Handle_Expr_GeneralFunction>;
+    /// **Source:** `Expr_FunctionDerivative.hxx`:65 - `Expr_FunctionDerivative::Derivative()`
     pub fn Expr_FunctionDerivative_derivative_handleexprnamedunknown_int(
         self_: *const Expr_FunctionDerivative,
-        var: *const HandleExprNamedUnknown,
+        var: *const Handle_Expr_NamedUnknown,
         deg: i32,
-    ) -> crate::OcctResult<*mut HandleExprGeneralFunction>;
-    /// **Source:** `Expr_FunctionDerivative.hxx`:78 - `Expr_FunctionDerivative::IsIdentical()`
+    ) -> crate::OcctResult<*mut Handle_Expr_GeneralFunction>;
+    /// **Source:** `Expr_FunctionDerivative.hxx`:71 - `Expr_FunctionDerivative::IsIdentical()`
     pub fn Expr_FunctionDerivative_is_identical(
         self_: *const Expr_FunctionDerivative,
-        func: *const HandleExprGeneralFunction,
+        func: *const Handle_Expr_GeneralFunction,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `Expr_FunctionDerivative.hxx`:82 - `Expr_FunctionDerivative::IsLinearOnVariable()`
+    /// **Source:** `Expr_FunctionDerivative.hxx`:74 - `Expr_FunctionDerivative::IsLinearOnVariable()`
     pub fn Expr_FunctionDerivative_is_linear_on_variable(
         self_: *const Expr_FunctionDerivative,
         index: i32,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `Expr_FunctionDerivative.hxx`:85 - `Expr_FunctionDerivative::Function()`
+    /// **Source:** `Expr_FunctionDerivative.hxx`:77 - `Expr_FunctionDerivative::Function()`
     pub fn Expr_FunctionDerivative_function(
         self_: *const Expr_FunctionDerivative,
-    ) -> crate::OcctResult<*mut HandleExprGeneralFunction>;
-    /// **Source:** `Expr_FunctionDerivative.hxx`:88 - `Expr_FunctionDerivative::Degree()`
+    ) -> crate::OcctResult<*mut Handle_Expr_GeneralFunction>;
+    /// **Source:** `Expr_FunctionDerivative.hxx`:80 - `Expr_FunctionDerivative::Degree()`
     pub fn Expr_FunctionDerivative_degree(
         self_: *const Expr_FunctionDerivative,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `Expr_FunctionDerivative.hxx`:91 - `Expr_FunctionDerivative::DerivVariable()`
+    /// **Source:** `Expr_FunctionDerivative.hxx`:83 - `Expr_FunctionDerivative::DerivVariable()`
     pub fn Expr_FunctionDerivative_deriv_variable(
         self_: *const Expr_FunctionDerivative,
-    ) -> crate::OcctResult<*mut HandleExprNamedUnknown>;
-    /// **Source:** `Expr_FunctionDerivative.hxx`:93 - `Expr_FunctionDerivative::GetStringName()`
+    ) -> crate::OcctResult<*mut Handle_Expr_NamedUnknown>;
+    /// **Source:** `Expr_FunctionDerivative.hxx`:85 - `Expr_FunctionDerivative::GetStringName()`
     pub fn Expr_FunctionDerivative_get_string_name(
         self_: *const Expr_FunctionDerivative,
     ) -> crate::OcctResult<*mut TCollection_AsciiString>;
-    /// **Source:** `Expr_FunctionDerivative.hxx`:95 - `Expr_FunctionDerivative::Expression()`
+    /// **Source:** `Expr_FunctionDerivative.hxx`:87 - `Expr_FunctionDerivative::Expression()`
     pub fn Expr_FunctionDerivative_expression(
         self_: *const Expr_FunctionDerivative,
-    ) -> crate::OcctResult<*mut HandleExprGeneralExpression>;
-    /// **Source:** `Expr_FunctionDerivative.hxx`:97 - `Expr_FunctionDerivative::UpdateExpression()`
+    ) -> crate::OcctResult<*mut Handle_Expr_GeneralExpression>;
+    /// **Source:** `Expr_FunctionDerivative.hxx`:89 - `Expr_FunctionDerivative::UpdateExpression()`
     pub fn Expr_FunctionDerivative_update_expression(
         self_: *mut Expr_FunctionDerivative,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `Expr_FunctionDerivative.hxx`:101 - `Expr_FunctionDerivative::DynamicType()`
+    /// **Source:** `Expr_FunctionDerivative.hxx`:93 - `Expr_FunctionDerivative::DynamicType()`
     pub fn Expr_FunctionDerivative_dynamic_type(
         self_: *const Expr_FunctionDerivative,
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// **Source:** `Expr_FunctionDerivative.hxx`:101 - `Expr_FunctionDerivative::get_type_name()`
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
+    /// **Source:** `Expr_FunctionDerivative.hxx`:93 - `Expr_FunctionDerivative::get_type_name()`
     pub fn Expr_FunctionDerivative_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
-    /// **Source:** `Expr_FunctionDerivative.hxx`:101 - `Expr_FunctionDerivative::get_type_descriptor()`
+    /// **Source:** `Expr_FunctionDerivative.hxx`:93 - `Expr_FunctionDerivative::get_type_descriptor()`
     pub fn Expr_FunctionDerivative_get_type_descriptor(
-    ) -> crate::OcctResult<*const HandleStandardType>;
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast Expr_FunctionDerivative to Expr_GeneralFunction
     pub fn Expr_FunctionDerivative_as_Expr_GeneralFunction(
         self_: *const Expr_FunctionDerivative,
@@ -3299,147 +3092,142 @@ unsafe extern "C" {
     /// Wrap Expr_FunctionDerivative in a Handle
     pub fn Expr_FunctionDerivative_to_handle(
         obj: *mut Expr_FunctionDerivative,
-    ) -> crate::OcctResult<*mut HandleExprFunctionDerivative>;
+    ) -> crate::OcctResult<*mut Handle_Expr_FunctionDerivative>;
     /// Destroy Handle<Expr_FunctionDerivative>
-    pub fn HandleExprFunctionDerivative_destructor(self_: *mut HandleExprFunctionDerivative);
+    pub fn Handle_Expr_FunctionDerivative_destructor(self_: *mut Handle_Expr_FunctionDerivative);
     /// Clone Handle<Expr_FunctionDerivative> (increments reference count)
-    pub fn HandleExprFunctionDerivative_clone(
-        self_: *const HandleExprFunctionDerivative,
-    ) -> crate::OcctResult<*mut HandleExprFunctionDerivative>;
+    pub fn Handle_Expr_FunctionDerivative_clone(
+        self_: *const Handle_Expr_FunctionDerivative,
+    ) -> crate::OcctResult<*mut Handle_Expr_FunctionDerivative>;
     /// Check if Handle<Expr_FunctionDerivative> is null
-    pub fn HandleExprFunctionDerivative_is_null(self_: *const HandleExprFunctionDerivative)
-        -> bool;
+    pub fn Handle_Expr_FunctionDerivative_is_null(
+        self_: *const Handle_Expr_FunctionDerivative,
+    ) -> bool;
     /// Dereference Handle to get *const Expr_FunctionDerivative
-    pub fn HandleExprFunctionDerivative_get(
-        handle: *const HandleExprFunctionDerivative,
+    pub fn Handle_Expr_FunctionDerivative_get(
+        handle: *const Handle_Expr_FunctionDerivative,
     ) -> crate::OcctResult<*const Expr_FunctionDerivative>;
     /// Dereference Handle to get *mut Expr_FunctionDerivative
-    pub fn HandleExprFunctionDerivative_get_mut(
-        handle: *mut HandleExprFunctionDerivative,
+    pub fn Handle_Expr_FunctionDerivative_get_mut(
+        handle: *mut Handle_Expr_FunctionDerivative,
     ) -> crate::OcctResult<*mut Expr_FunctionDerivative>;
     /// Upcast Handle<Expr_FunctionDerivative> to Handle<Expr_GeneralFunction>
-    pub fn HandleExprFunctionDerivative_to_HandleExprGeneralFunction(
-        self_: *const HandleExprFunctionDerivative,
-    ) -> crate::OcctResult<*mut HandleExprGeneralFunction>;
+    pub fn Handle_Expr_FunctionDerivative_to_Handle_Expr_GeneralFunction(
+        self_: *const Handle_Expr_FunctionDerivative,
+    ) -> crate::OcctResult<*mut Handle_Expr_GeneralFunction>;
     /// Upcast Handle<Expr_FunctionDerivative> to Handle<Standard_Transient>
-    pub fn HandleExprFunctionDerivative_to_HandleStandardTransient(
-        self_: *const HandleExprFunctionDerivative,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn Handle_Expr_FunctionDerivative_to_Handle_Standard_Transient(
+        self_: *const Handle_Expr_FunctionDerivative,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn Expr_FunctionDerivative_inherited_IsInstance(
         self_: *const Expr_FunctionDerivative,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn Expr_FunctionDerivative_inherited_IsKind(
         self_: *const Expr_FunctionDerivative,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn Expr_FunctionDerivative_inherited_This(
         self_: *const Expr_FunctionDerivative,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn Expr_FunctionDerivative_inherited_GetRefCount(
         self_: *const Expr_FunctionDerivative,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn Expr_FunctionDerivative_inherited_IncrementRefCounter(
         self_: *mut Expr_FunctionDerivative,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn Expr_FunctionDerivative_inherited_DecrementRefCounter(
         self_: *mut Expr_FunctionDerivative,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn Expr_FunctionDerivative_inherited_Delete(
         self_: *const Expr_FunctionDerivative,
     ) -> *const std::ffi::c_char;
     // ======================== Expr_GeneralExpression ========================
     pub fn Expr_GeneralExpression_destructor(self_: *mut Expr_GeneralExpression);
-    /// **Source:** `Expr_GeneralExpression.hxx`:41 - `Expr_GeneralExpression::NbSubExpressions()`
+    /// **Source:** `Expr_GeneralExpression.hxx`:37 - `Expr_GeneralExpression::NbSubExpressions()`
     pub fn Expr_GeneralExpression_nb_sub_expressions(
         self_: *const Expr_GeneralExpression,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `Expr_GeneralExpression.hxx`:45 - `Expr_GeneralExpression::SubExpression()`
+    /// **Source:** `Expr_GeneralExpression.hxx`:41 - `Expr_GeneralExpression::SubExpression()`
     pub fn Expr_GeneralExpression_sub_expression(
         self_: *const Expr_GeneralExpression,
         I: i32,
-    ) -> crate::OcctResult<*const HandleExprGeneralExpression>;
-    /// **Source:** `Expr_GeneralExpression.hxx`:51 - `Expr_GeneralExpression::Simplified()`
+    ) -> crate::OcctResult<*const Handle_Expr_GeneralExpression>;
+    /// **Source:** `Expr_GeneralExpression.hxx`:47 - `Expr_GeneralExpression::Simplified()`
     pub fn Expr_GeneralExpression_simplified(
         self_: *const Expr_GeneralExpression,
-    ) -> crate::OcctResult<*mut HandleExprGeneralExpression>;
-    /// **Source:** `Expr_GeneralExpression.hxx`:55 - `Expr_GeneralExpression::ShallowSimplified()`
+    ) -> crate::OcctResult<*mut Handle_Expr_GeneralExpression>;
+    /// **Source:** `Expr_GeneralExpression.hxx`:51 - `Expr_GeneralExpression::ShallowSimplified()`
     pub fn Expr_GeneralExpression_shallow_simplified(
         self_: *const Expr_GeneralExpression,
-    ) -> crate::OcctResult<*mut HandleExprGeneralExpression>;
-    /// **Source:** `Expr_GeneralExpression.hxx`:59 - `Expr_GeneralExpression::Copy()`
+    ) -> crate::OcctResult<*mut Handle_Expr_GeneralExpression>;
+    /// **Source:** `Expr_GeneralExpression.hxx`:55 - `Expr_GeneralExpression::Copy()`
     pub fn Expr_GeneralExpression_copy(
         self_: *const Expr_GeneralExpression,
-    ) -> crate::OcctResult<*mut HandleExprGeneralExpression>;
-    /// **Source:** `Expr_GeneralExpression.hxx`:62 - `Expr_GeneralExpression::ContainsUnknowns()`
+    ) -> crate::OcctResult<*mut Handle_Expr_GeneralExpression>;
+    /// **Source:** `Expr_GeneralExpression.hxx`:58 - `Expr_GeneralExpression::ContainsUnknowns()`
     pub fn Expr_GeneralExpression_contains_unknowns(
         self_: *const Expr_GeneralExpression,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `Expr_GeneralExpression.hxx`:65 - `Expr_GeneralExpression::Contains()`
+    /// **Source:** `Expr_GeneralExpression.hxx`:61 - `Expr_GeneralExpression::Contains()`
     pub fn Expr_GeneralExpression_contains(
         self_: *const Expr_GeneralExpression,
-        exp: *const HandleExprGeneralExpression,
+        exp: *const Handle_Expr_GeneralExpression,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `Expr_GeneralExpression.hxx`:70 - `Expr_GeneralExpression::IsLinear()`
+    /// **Source:** `Expr_GeneralExpression.hxx`:65 - `Expr_GeneralExpression::IsLinear()`
     pub fn Expr_GeneralExpression_is_linear(
         self_: *const Expr_GeneralExpression,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `Expr_GeneralExpression.hxx`:76 - `Expr_GeneralExpression::IsShareable()`
+    /// **Source:** `Expr_GeneralExpression.hxx`:71 - `Expr_GeneralExpression::IsShareable()`
     pub fn Expr_GeneralExpression_is_shareable(
         self_: *const Expr_GeneralExpression,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `Expr_GeneralExpression.hxx`:82 - `Expr_GeneralExpression::IsIdentical()`
+    /// **Source:** `Expr_GeneralExpression.hxx`:77 - `Expr_GeneralExpression::IsIdentical()`
     pub fn Expr_GeneralExpression_is_identical(
         self_: *const Expr_GeneralExpression,
-        Other: *const HandleExprGeneralExpression,
+        Other: *const Handle_Expr_GeneralExpression,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `Expr_GeneralExpression.hxx`:86 - `Expr_GeneralExpression::Derivative()`
+    /// **Source:** `Expr_GeneralExpression.hxx`:81 - `Expr_GeneralExpression::Derivative()`
     pub fn Expr_GeneralExpression_derivative(
         self_: *const Expr_GeneralExpression,
-        X: *const HandleExprNamedUnknown,
-    ) -> crate::OcctResult<*mut HandleExprGeneralExpression>;
-    /// **Source:** `Expr_GeneralExpression.hxx`:91 - `Expr_GeneralExpression::NDerivative()`
+        X: *const Handle_Expr_NamedUnknown,
+    ) -> crate::OcctResult<*mut Handle_Expr_GeneralExpression>;
+    /// **Source:** `Expr_GeneralExpression.hxx`:86 - `Expr_GeneralExpression::NDerivative()`
     pub fn Expr_GeneralExpression_n_derivative(
         self_: *const Expr_GeneralExpression,
-        X: *const HandleExprNamedUnknown,
+        X: *const Handle_Expr_NamedUnknown,
         N: i32,
-    ) -> crate::OcctResult<*mut HandleExprGeneralExpression>;
-    /// **Source:** `Expr_GeneralExpression.hxx`:98 - `Expr_GeneralExpression::Replace()`
+    ) -> crate::OcctResult<*mut Handle_Expr_GeneralExpression>;
+    /// **Source:** `Expr_GeneralExpression.hxx`:93 - `Expr_GeneralExpression::Replace()`
     pub fn Expr_GeneralExpression_replace(
         self_: *mut Expr_GeneralExpression,
-        var: *const HandleExprNamedUnknown,
-        with: *const HandleExprGeneralExpression,
+        var: *const Handle_Expr_NamedUnknown,
+        with: *const Handle_Expr_GeneralExpression,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `Expr_GeneralExpression.hxx`:105 - `Expr_GeneralExpression::Evaluate()`
-    pub fn Expr_GeneralExpression_evaluate(
-        self_: *const Expr_GeneralExpression,
-        vars: *const Expr_Array1OfNamedUnknown,
-        vals: *const TColStd_Array1OfReal,
-    ) -> crate::OcctResult<f64>;
-    /// **Source:** `Expr_GeneralExpression.hxx`:112 - `Expr_GeneralExpression::EvaluateNumeric()`
+    /// **Source:** `Expr_GeneralExpression.hxx`:108 - `Expr_GeneralExpression::EvaluateNumeric()`
     pub fn Expr_GeneralExpression_evaluate_numeric(
         self_: *const Expr_GeneralExpression,
     ) -> crate::OcctResult<f64>;
-    /// **Source:** `Expr_GeneralExpression.hxx`:115 - `Expr_GeneralExpression::String()`
+    /// **Source:** `Expr_GeneralExpression.hxx`:111 - `Expr_GeneralExpression::String()`
     pub fn Expr_GeneralExpression_string(
         self_: *const Expr_GeneralExpression,
     ) -> crate::OcctResult<*mut TCollection_AsciiString>;
-    /// **Source:** `Expr_GeneralExpression.hxx`:117 - `Expr_GeneralExpression::DynamicType()`
+    /// **Source:** `Expr_GeneralExpression.hxx`:113 - `Expr_GeneralExpression::DynamicType()`
     pub fn Expr_GeneralExpression_dynamic_type(
         self_: *const Expr_GeneralExpression,
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// **Source:** `Expr_GeneralExpression.hxx`:117 - `Expr_GeneralExpression::get_type_name()`
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
+    /// **Source:** `Expr_GeneralExpression.hxx`:113 - `Expr_GeneralExpression::get_type_name()`
     pub fn Expr_GeneralExpression_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
-    /// **Source:** `Expr_GeneralExpression.hxx`:117 - `Expr_GeneralExpression::get_type_descriptor()`
+    /// **Source:** `Expr_GeneralExpression.hxx`:113 - `Expr_GeneralExpression::get_type_descriptor()`
     pub fn Expr_GeneralExpression_get_type_descriptor(
-    ) -> crate::OcctResult<*const HandleStandardType>;
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast Expr_GeneralExpression to Standard_Transient
     pub fn Expr_GeneralExpression_as_Standard_Transient(
         self_: *const Expr_GeneralExpression,
@@ -3449,249 +3237,246 @@ unsafe extern "C" {
         self_: *mut Expr_GeneralExpression,
     ) -> crate::OcctResult<*mut Standard_Transient>;
     /// Destroy Handle<Expr_GeneralExpression>
-    pub fn HandleExprGeneralExpression_destructor(self_: *mut HandleExprGeneralExpression);
+    pub fn Handle_Expr_GeneralExpression_destructor(self_: *mut Handle_Expr_GeneralExpression);
     /// Clone Handle<Expr_GeneralExpression> (increments reference count)
-    pub fn HandleExprGeneralExpression_clone(
-        self_: *const HandleExprGeneralExpression,
-    ) -> crate::OcctResult<*mut HandleExprGeneralExpression>;
+    pub fn Handle_Expr_GeneralExpression_clone(
+        self_: *const Handle_Expr_GeneralExpression,
+    ) -> crate::OcctResult<*mut Handle_Expr_GeneralExpression>;
     /// Check if Handle<Expr_GeneralExpression> is null
-    pub fn HandleExprGeneralExpression_is_null(self_: *const HandleExprGeneralExpression) -> bool;
+    pub fn Handle_Expr_GeneralExpression_is_null(
+        self_: *const Handle_Expr_GeneralExpression,
+    ) -> bool;
     /// Dereference Handle to get *const Expr_GeneralExpression
-    pub fn HandleExprGeneralExpression_get(
-        handle: *const HandleExprGeneralExpression,
+    pub fn Handle_Expr_GeneralExpression_get(
+        handle: *const Handle_Expr_GeneralExpression,
     ) -> crate::OcctResult<*const Expr_GeneralExpression>;
     /// Dereference Handle to get *mut Expr_GeneralExpression
-    pub fn HandleExprGeneralExpression_get_mut(
-        handle: *mut HandleExprGeneralExpression,
+    pub fn Handle_Expr_GeneralExpression_get_mut(
+        handle: *mut Handle_Expr_GeneralExpression,
     ) -> crate::OcctResult<*mut Expr_GeneralExpression>;
     /// Upcast Handle<Expr_GeneralExpression> to Handle<Standard_Transient>
-    pub fn HandleExprGeneralExpression_to_HandleStandardTransient(
-        self_: *const HandleExprGeneralExpression,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
+    pub fn Handle_Expr_GeneralExpression_to_Handle_Standard_Transient(
+        self_: *const Handle_Expr_GeneralExpression,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
     /// Downcast Handle<Expr_GeneralExpression> to Handle<Expr_Absolute> (returns null on failure)
-    pub fn HandleExprGeneralExpression_downcast_to_HandleExprAbsolute(
-        self_: *const HandleExprGeneralExpression,
-    ) -> crate::OcctResult<*mut HandleExprAbsolute>;
+    pub fn Handle_Expr_GeneralExpression_downcast_to_Handle_Expr_Absolute(
+        self_: *const Handle_Expr_GeneralExpression,
+    ) -> crate::OcctResult<*mut Handle_Expr_Absolute>;
     /// Downcast Handle<Expr_GeneralExpression> to Handle<Expr_ArcCosine> (returns null on failure)
-    pub fn HandleExprGeneralExpression_downcast_to_HandleExprArcCosine(
-        self_: *const HandleExprGeneralExpression,
-    ) -> crate::OcctResult<*mut HandleExprArcCosine>;
+    pub fn Handle_Expr_GeneralExpression_downcast_to_Handle_Expr_ArcCosine(
+        self_: *const Handle_Expr_GeneralExpression,
+    ) -> crate::OcctResult<*mut Handle_Expr_ArcCosine>;
     /// Downcast Handle<Expr_GeneralExpression> to Handle<Expr_ArcSine> (returns null on failure)
-    pub fn HandleExprGeneralExpression_downcast_to_HandleExprArcSine(
-        self_: *const HandleExprGeneralExpression,
-    ) -> crate::OcctResult<*mut HandleExprArcSine>;
+    pub fn Handle_Expr_GeneralExpression_downcast_to_Handle_Expr_ArcSine(
+        self_: *const Handle_Expr_GeneralExpression,
+    ) -> crate::OcctResult<*mut Handle_Expr_ArcSine>;
     /// Downcast Handle<Expr_GeneralExpression> to Handle<Expr_ArcTangent> (returns null on failure)
-    pub fn HandleExprGeneralExpression_downcast_to_HandleExprArcTangent(
-        self_: *const HandleExprGeneralExpression,
-    ) -> crate::OcctResult<*mut HandleExprArcTangent>;
+    pub fn Handle_Expr_GeneralExpression_downcast_to_Handle_Expr_ArcTangent(
+        self_: *const Handle_Expr_GeneralExpression,
+    ) -> crate::OcctResult<*mut Handle_Expr_ArcTangent>;
     /// Downcast Handle<Expr_GeneralExpression> to Handle<Expr_ArgCosh> (returns null on failure)
-    pub fn HandleExprGeneralExpression_downcast_to_HandleExprArgCosh(
-        self_: *const HandleExprGeneralExpression,
-    ) -> crate::OcctResult<*mut HandleExprArgCosh>;
+    pub fn Handle_Expr_GeneralExpression_downcast_to_Handle_Expr_ArgCosh(
+        self_: *const Handle_Expr_GeneralExpression,
+    ) -> crate::OcctResult<*mut Handle_Expr_ArgCosh>;
     /// Downcast Handle<Expr_GeneralExpression> to Handle<Expr_ArgSinh> (returns null on failure)
-    pub fn HandleExprGeneralExpression_downcast_to_HandleExprArgSinh(
-        self_: *const HandleExprGeneralExpression,
-    ) -> crate::OcctResult<*mut HandleExprArgSinh>;
+    pub fn Handle_Expr_GeneralExpression_downcast_to_Handle_Expr_ArgSinh(
+        self_: *const Handle_Expr_GeneralExpression,
+    ) -> crate::OcctResult<*mut Handle_Expr_ArgSinh>;
     /// Downcast Handle<Expr_GeneralExpression> to Handle<Expr_ArgTanh> (returns null on failure)
-    pub fn HandleExprGeneralExpression_downcast_to_HandleExprArgTanh(
-        self_: *const HandleExprGeneralExpression,
-    ) -> crate::OcctResult<*mut HandleExprArgTanh>;
+    pub fn Handle_Expr_GeneralExpression_downcast_to_Handle_Expr_ArgTanh(
+        self_: *const Handle_Expr_GeneralExpression,
+    ) -> crate::OcctResult<*mut Handle_Expr_ArgTanh>;
     /// Downcast Handle<Expr_GeneralExpression> to Handle<Expr_BinaryExpression> (returns null on failure)
-    pub fn HandleExprGeneralExpression_downcast_to_HandleExprBinaryExpression(
-        self_: *const HandleExprGeneralExpression,
-    ) -> crate::OcctResult<*mut HandleExprBinaryExpression>;
+    pub fn Handle_Expr_GeneralExpression_downcast_to_Handle_Expr_BinaryExpression(
+        self_: *const Handle_Expr_GeneralExpression,
+    ) -> crate::OcctResult<*mut Handle_Expr_BinaryExpression>;
     /// Downcast Handle<Expr_GeneralExpression> to Handle<Expr_BinaryFunction> (returns null on failure)
-    pub fn HandleExprGeneralExpression_downcast_to_HandleExprBinaryFunction(
-        self_: *const HandleExprGeneralExpression,
-    ) -> crate::OcctResult<*mut HandleExprBinaryFunction>;
+    pub fn Handle_Expr_GeneralExpression_downcast_to_Handle_Expr_BinaryFunction(
+        self_: *const Handle_Expr_GeneralExpression,
+    ) -> crate::OcctResult<*mut Handle_Expr_BinaryFunction>;
     /// Downcast Handle<Expr_GeneralExpression> to Handle<Expr_Cosh> (returns null on failure)
-    pub fn HandleExprGeneralExpression_downcast_to_HandleExprCosh(
-        self_: *const HandleExprGeneralExpression,
-    ) -> crate::OcctResult<*mut HandleExprCosh>;
+    pub fn Handle_Expr_GeneralExpression_downcast_to_Handle_Expr_Cosh(
+        self_: *const Handle_Expr_GeneralExpression,
+    ) -> crate::OcctResult<*mut Handle_Expr_Cosh>;
     /// Downcast Handle<Expr_GeneralExpression> to Handle<Expr_Cosine> (returns null on failure)
-    pub fn HandleExprGeneralExpression_downcast_to_HandleExprCosine(
-        self_: *const HandleExprGeneralExpression,
-    ) -> crate::OcctResult<*mut HandleExprCosine>;
+    pub fn Handle_Expr_GeneralExpression_downcast_to_Handle_Expr_Cosine(
+        self_: *const Handle_Expr_GeneralExpression,
+    ) -> crate::OcctResult<*mut Handle_Expr_Cosine>;
     /// Downcast Handle<Expr_GeneralExpression> to Handle<Expr_Difference> (returns null on failure)
-    pub fn HandleExprGeneralExpression_downcast_to_HandleExprDifference(
-        self_: *const HandleExprGeneralExpression,
-    ) -> crate::OcctResult<*mut HandleExprDifference>;
+    pub fn Handle_Expr_GeneralExpression_downcast_to_Handle_Expr_Difference(
+        self_: *const Handle_Expr_GeneralExpression,
+    ) -> crate::OcctResult<*mut Handle_Expr_Difference>;
     /// Downcast Handle<Expr_GeneralExpression> to Handle<Expr_Division> (returns null on failure)
-    pub fn HandleExprGeneralExpression_downcast_to_HandleExprDivision(
-        self_: *const HandleExprGeneralExpression,
-    ) -> crate::OcctResult<*mut HandleExprDivision>;
+    pub fn Handle_Expr_GeneralExpression_downcast_to_Handle_Expr_Division(
+        self_: *const Handle_Expr_GeneralExpression,
+    ) -> crate::OcctResult<*mut Handle_Expr_Division>;
     /// Downcast Handle<Expr_GeneralExpression> to Handle<Expr_Exponential> (returns null on failure)
-    pub fn HandleExprGeneralExpression_downcast_to_HandleExprExponential(
-        self_: *const HandleExprGeneralExpression,
-    ) -> crate::OcctResult<*mut HandleExprExponential>;
+    pub fn Handle_Expr_GeneralExpression_downcast_to_Handle_Expr_Exponential(
+        self_: *const Handle_Expr_GeneralExpression,
+    ) -> crate::OcctResult<*mut Handle_Expr_Exponential>;
     /// Downcast Handle<Expr_GeneralExpression> to Handle<Expr_Exponentiate> (returns null on failure)
-    pub fn HandleExprGeneralExpression_downcast_to_HandleExprExponentiate(
-        self_: *const HandleExprGeneralExpression,
-    ) -> crate::OcctResult<*mut HandleExprExponentiate>;
+    pub fn Handle_Expr_GeneralExpression_downcast_to_Handle_Expr_Exponentiate(
+        self_: *const Handle_Expr_GeneralExpression,
+    ) -> crate::OcctResult<*mut Handle_Expr_Exponentiate>;
     /// Downcast Handle<Expr_GeneralExpression> to Handle<Expr_LogOf10> (returns null on failure)
-    pub fn HandleExprGeneralExpression_downcast_to_HandleExprLogOf10(
-        self_: *const HandleExprGeneralExpression,
-    ) -> crate::OcctResult<*mut HandleExprLogOf10>;
+    pub fn Handle_Expr_GeneralExpression_downcast_to_Handle_Expr_LogOf10(
+        self_: *const Handle_Expr_GeneralExpression,
+    ) -> crate::OcctResult<*mut Handle_Expr_LogOf10>;
     /// Downcast Handle<Expr_GeneralExpression> to Handle<Expr_LogOfe> (returns null on failure)
-    pub fn HandleExprGeneralExpression_downcast_to_HandleExprLogOfe(
-        self_: *const HandleExprGeneralExpression,
-    ) -> crate::OcctResult<*mut HandleExprLogOfe>;
+    pub fn Handle_Expr_GeneralExpression_downcast_to_Handle_Expr_LogOfe(
+        self_: *const Handle_Expr_GeneralExpression,
+    ) -> crate::OcctResult<*mut Handle_Expr_LogOfe>;
     /// Downcast Handle<Expr_GeneralExpression> to Handle<Expr_NamedConstant> (returns null on failure)
-    pub fn HandleExprGeneralExpression_downcast_to_HandleExprNamedConstant(
-        self_: *const HandleExprGeneralExpression,
-    ) -> crate::OcctResult<*mut HandleExprNamedConstant>;
+    pub fn Handle_Expr_GeneralExpression_downcast_to_Handle_Expr_NamedConstant(
+        self_: *const Handle_Expr_GeneralExpression,
+    ) -> crate::OcctResult<*mut Handle_Expr_NamedConstant>;
     /// Downcast Handle<Expr_GeneralExpression> to Handle<Expr_NamedExpression> (returns null on failure)
-    pub fn HandleExprGeneralExpression_downcast_to_HandleExprNamedExpression(
-        self_: *const HandleExprGeneralExpression,
-    ) -> crate::OcctResult<*mut HandleExprNamedExpression>;
+    pub fn Handle_Expr_GeneralExpression_downcast_to_Handle_Expr_NamedExpression(
+        self_: *const Handle_Expr_GeneralExpression,
+    ) -> crate::OcctResult<*mut Handle_Expr_NamedExpression>;
     /// Downcast Handle<Expr_GeneralExpression> to Handle<Expr_NamedUnknown> (returns null on failure)
-    pub fn HandleExprGeneralExpression_downcast_to_HandleExprNamedUnknown(
-        self_: *const HandleExprGeneralExpression,
-    ) -> crate::OcctResult<*mut HandleExprNamedUnknown>;
+    pub fn Handle_Expr_GeneralExpression_downcast_to_Handle_Expr_NamedUnknown(
+        self_: *const Handle_Expr_GeneralExpression,
+    ) -> crate::OcctResult<*mut Handle_Expr_NamedUnknown>;
     /// Downcast Handle<Expr_GeneralExpression> to Handle<Expr_NumericValue> (returns null on failure)
-    pub fn HandleExprGeneralExpression_downcast_to_HandleExprNumericValue(
-        self_: *const HandleExprGeneralExpression,
-    ) -> crate::OcctResult<*mut HandleExprNumericValue>;
+    pub fn Handle_Expr_GeneralExpression_downcast_to_Handle_Expr_NumericValue(
+        self_: *const Handle_Expr_GeneralExpression,
+    ) -> crate::OcctResult<*mut Handle_Expr_NumericValue>;
     /// Downcast Handle<Expr_GeneralExpression> to Handle<Expr_PolyExpression> (returns null on failure)
-    pub fn HandleExprGeneralExpression_downcast_to_HandleExprPolyExpression(
-        self_: *const HandleExprGeneralExpression,
-    ) -> crate::OcctResult<*mut HandleExprPolyExpression>;
+    pub fn Handle_Expr_GeneralExpression_downcast_to_Handle_Expr_PolyExpression(
+        self_: *const Handle_Expr_GeneralExpression,
+    ) -> crate::OcctResult<*mut Handle_Expr_PolyExpression>;
     /// Downcast Handle<Expr_GeneralExpression> to Handle<Expr_PolyFunction> (returns null on failure)
-    pub fn HandleExprGeneralExpression_downcast_to_HandleExprPolyFunction(
-        self_: *const HandleExprGeneralExpression,
-    ) -> crate::OcctResult<*mut HandleExprPolyFunction>;
+    pub fn Handle_Expr_GeneralExpression_downcast_to_Handle_Expr_PolyFunction(
+        self_: *const Handle_Expr_GeneralExpression,
+    ) -> crate::OcctResult<*mut Handle_Expr_PolyFunction>;
     /// Downcast Handle<Expr_GeneralExpression> to Handle<Expr_Product> (returns null on failure)
-    pub fn HandleExprGeneralExpression_downcast_to_HandleExprProduct(
-        self_: *const HandleExprGeneralExpression,
-    ) -> crate::OcctResult<*mut HandleExprProduct>;
+    pub fn Handle_Expr_GeneralExpression_downcast_to_Handle_Expr_Product(
+        self_: *const Handle_Expr_GeneralExpression,
+    ) -> crate::OcctResult<*mut Handle_Expr_Product>;
     /// Downcast Handle<Expr_GeneralExpression> to Handle<Expr_Sign> (returns null on failure)
-    pub fn HandleExprGeneralExpression_downcast_to_HandleExprSign(
-        self_: *const HandleExprGeneralExpression,
-    ) -> crate::OcctResult<*mut HandleExprSign>;
+    pub fn Handle_Expr_GeneralExpression_downcast_to_Handle_Expr_Sign(
+        self_: *const Handle_Expr_GeneralExpression,
+    ) -> crate::OcctResult<*mut Handle_Expr_Sign>;
     /// Downcast Handle<Expr_GeneralExpression> to Handle<Expr_Sine> (returns null on failure)
-    pub fn HandleExprGeneralExpression_downcast_to_HandleExprSine(
-        self_: *const HandleExprGeneralExpression,
-    ) -> crate::OcctResult<*mut HandleExprSine>;
+    pub fn Handle_Expr_GeneralExpression_downcast_to_Handle_Expr_Sine(
+        self_: *const Handle_Expr_GeneralExpression,
+    ) -> crate::OcctResult<*mut Handle_Expr_Sine>;
     /// Downcast Handle<Expr_GeneralExpression> to Handle<Expr_Sinh> (returns null on failure)
-    pub fn HandleExprGeneralExpression_downcast_to_HandleExprSinh(
-        self_: *const HandleExprGeneralExpression,
-    ) -> crate::OcctResult<*mut HandleExprSinh>;
+    pub fn Handle_Expr_GeneralExpression_downcast_to_Handle_Expr_Sinh(
+        self_: *const Handle_Expr_GeneralExpression,
+    ) -> crate::OcctResult<*mut Handle_Expr_Sinh>;
     /// Downcast Handle<Expr_GeneralExpression> to Handle<Expr_Square> (returns null on failure)
-    pub fn HandleExprGeneralExpression_downcast_to_HandleExprSquare(
-        self_: *const HandleExprGeneralExpression,
-    ) -> crate::OcctResult<*mut HandleExprSquare>;
+    pub fn Handle_Expr_GeneralExpression_downcast_to_Handle_Expr_Square(
+        self_: *const Handle_Expr_GeneralExpression,
+    ) -> crate::OcctResult<*mut Handle_Expr_Square>;
     /// Downcast Handle<Expr_GeneralExpression> to Handle<Expr_SquareRoot> (returns null on failure)
-    pub fn HandleExprGeneralExpression_downcast_to_HandleExprSquareRoot(
-        self_: *const HandleExprGeneralExpression,
-    ) -> crate::OcctResult<*mut HandleExprSquareRoot>;
+    pub fn Handle_Expr_GeneralExpression_downcast_to_Handle_Expr_SquareRoot(
+        self_: *const Handle_Expr_GeneralExpression,
+    ) -> crate::OcctResult<*mut Handle_Expr_SquareRoot>;
     /// Downcast Handle<Expr_GeneralExpression> to Handle<Expr_Sum> (returns null on failure)
-    pub fn HandleExprGeneralExpression_downcast_to_HandleExprSum(
-        self_: *const HandleExprGeneralExpression,
-    ) -> crate::OcctResult<*mut HandleExprSum>;
+    pub fn Handle_Expr_GeneralExpression_downcast_to_Handle_Expr_Sum(
+        self_: *const Handle_Expr_GeneralExpression,
+    ) -> crate::OcctResult<*mut Handle_Expr_Sum>;
     /// Downcast Handle<Expr_GeneralExpression> to Handle<Expr_Tangent> (returns null on failure)
-    pub fn HandleExprGeneralExpression_downcast_to_HandleExprTangent(
-        self_: *const HandleExprGeneralExpression,
-    ) -> crate::OcctResult<*mut HandleExprTangent>;
+    pub fn Handle_Expr_GeneralExpression_downcast_to_Handle_Expr_Tangent(
+        self_: *const Handle_Expr_GeneralExpression,
+    ) -> crate::OcctResult<*mut Handle_Expr_Tangent>;
     /// Downcast Handle<Expr_GeneralExpression> to Handle<Expr_Tanh> (returns null on failure)
-    pub fn HandleExprGeneralExpression_downcast_to_HandleExprTanh(
-        self_: *const HandleExprGeneralExpression,
-    ) -> crate::OcctResult<*mut HandleExprTanh>;
+    pub fn Handle_Expr_GeneralExpression_downcast_to_Handle_Expr_Tanh(
+        self_: *const Handle_Expr_GeneralExpression,
+    ) -> crate::OcctResult<*mut Handle_Expr_Tanh>;
     /// Downcast Handle<Expr_GeneralExpression> to Handle<Expr_UnaryExpression> (returns null on failure)
-    pub fn HandleExprGeneralExpression_downcast_to_HandleExprUnaryExpression(
-        self_: *const HandleExprGeneralExpression,
-    ) -> crate::OcctResult<*mut HandleExprUnaryExpression>;
+    pub fn Handle_Expr_GeneralExpression_downcast_to_Handle_Expr_UnaryExpression(
+        self_: *const Handle_Expr_GeneralExpression,
+    ) -> crate::OcctResult<*mut Handle_Expr_UnaryExpression>;
     /// Downcast Handle<Expr_GeneralExpression> to Handle<Expr_UnaryFunction> (returns null on failure)
-    pub fn HandleExprGeneralExpression_downcast_to_HandleExprUnaryFunction(
-        self_: *const HandleExprGeneralExpression,
-    ) -> crate::OcctResult<*mut HandleExprUnaryFunction>;
+    pub fn Handle_Expr_GeneralExpression_downcast_to_Handle_Expr_UnaryFunction(
+        self_: *const Handle_Expr_GeneralExpression,
+    ) -> crate::OcctResult<*mut Handle_Expr_UnaryFunction>;
     /// Downcast Handle<Expr_GeneralExpression> to Handle<Expr_UnaryMinus> (returns null on failure)
-    pub fn HandleExprGeneralExpression_downcast_to_HandleExprUnaryMinus(
-        self_: *const HandleExprGeneralExpression,
-    ) -> crate::OcctResult<*mut HandleExprUnaryMinus>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn Handle_Expr_GeneralExpression_downcast_to_Handle_Expr_UnaryMinus(
+        self_: *const Handle_Expr_GeneralExpression,
+    ) -> crate::OcctResult<*mut Handle_Expr_UnaryMinus>;
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn Expr_GeneralExpression_inherited_IsInstance(
         self_: *const Expr_GeneralExpression,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn Expr_GeneralExpression_inherited_IsKind(
         self_: *const Expr_GeneralExpression,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn Expr_GeneralExpression_inherited_This(
         self_: *const Expr_GeneralExpression,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn Expr_GeneralExpression_inherited_GetRefCount(
         self_: *const Expr_GeneralExpression,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn Expr_GeneralExpression_inherited_IncrementRefCounter(
         self_: *mut Expr_GeneralExpression,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn Expr_GeneralExpression_inherited_DecrementRefCounter(
         self_: *mut Expr_GeneralExpression,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn Expr_GeneralExpression_inherited_Delete(
         self_: *const Expr_GeneralExpression,
     ) -> *const std::ffi::c_char;
     // ======================== Expr_GeneralFunction ========================
     pub fn Expr_GeneralFunction_destructor(self_: *mut Expr_GeneralFunction);
-    /// **Source:** `Expr_GeneralFunction.hxx`:40 - `Expr_GeneralFunction::NbOfVariables()`
+    /// **Source:** `Expr_GeneralFunction.hxx`:36 - `Expr_GeneralFunction::NbOfVariables()`
     pub fn Expr_GeneralFunction_nb_of_variables(
         self_: *const Expr_GeneralFunction,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `Expr_GeneralFunction.hxx`:44 - `Expr_GeneralFunction::Variable()`
+    /// **Source:** `Expr_GeneralFunction.hxx`:40 - `Expr_GeneralFunction::Variable()`
     pub fn Expr_GeneralFunction_variable(
         self_: *const Expr_GeneralFunction,
         index: i32,
-    ) -> crate::OcctResult<*mut HandleExprNamedUnknown>;
-    /// **Source:** `Expr_GeneralFunction.hxx`:48 - `Expr_GeneralFunction::Copy()`
+    ) -> crate::OcctResult<*mut Handle_Expr_NamedUnknown>;
+    /// **Source:** `Expr_GeneralFunction.hxx`:43 - `Expr_GeneralFunction::Copy()`
     pub fn Expr_GeneralFunction_copy(
         self_: *const Expr_GeneralFunction,
-    ) -> crate::OcctResult<*mut HandleExprGeneralFunction>;
-    /// **Source:** `Expr_GeneralFunction.hxx`:51 - `Expr_GeneralFunction::Derivative()`
+    ) -> crate::OcctResult<*mut Handle_Expr_GeneralFunction>;
+    /// **Source:** `Expr_GeneralFunction.hxx`:46 - `Expr_GeneralFunction::Derivative()`
     pub fn Expr_GeneralFunction_derivative_handleexprnamedunknown(
         self_: *const Expr_GeneralFunction,
-        var: *const HandleExprNamedUnknown,
-    ) -> crate::OcctResult<*mut HandleExprGeneralFunction>;
-    /// **Source:** `Expr_GeneralFunction.hxx`:56 - `Expr_GeneralFunction::Derivative()`
+        var: *const Handle_Expr_NamedUnknown,
+    ) -> crate::OcctResult<*mut Handle_Expr_GeneralFunction>;
+    /// **Source:** `Expr_GeneralFunction.hxx`:51 - `Expr_GeneralFunction::Derivative()`
     pub fn Expr_GeneralFunction_derivative_handleexprnamedunknown_int(
         self_: *const Expr_GeneralFunction,
-        var: *const HandleExprNamedUnknown,
+        var: *const Handle_Expr_NamedUnknown,
         deg: i32,
-    ) -> crate::OcctResult<*mut HandleExprGeneralFunction>;
-    /// **Source:** `Expr_GeneralFunction.hxx`:63 - `Expr_GeneralFunction::Evaluate()`
-    pub fn Expr_GeneralFunction_evaluate(
-        self_: *const Expr_GeneralFunction,
-        vars: *const Expr_Array1OfNamedUnknown,
-        vals: *const TColStd_Array1OfReal,
-    ) -> crate::OcctResult<f64>;
-    /// **Source:** `Expr_GeneralFunction.hxx`:68 - `Expr_GeneralFunction::IsIdentical()`
+    ) -> crate::OcctResult<*mut Handle_Expr_GeneralFunction>;
+    /// **Source:** `Expr_GeneralFunction.hxx`:64 - `Expr_GeneralFunction::IsIdentical()`
     pub fn Expr_GeneralFunction_is_identical(
         self_: *const Expr_GeneralFunction,
-        func: *const HandleExprGeneralFunction,
+        func: *const Handle_Expr_GeneralFunction,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `Expr_GeneralFunction.hxx`:72 - `Expr_GeneralFunction::IsLinearOnVariable()`
+    /// **Source:** `Expr_GeneralFunction.hxx`:67 - `Expr_GeneralFunction::IsLinearOnVariable()`
     pub fn Expr_GeneralFunction_is_linear_on_variable(
         self_: *const Expr_GeneralFunction,
         index: i32,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `Expr_GeneralFunction.hxx`:75 - `Expr_GeneralFunction::GetStringName()`
+    /// **Source:** `Expr_GeneralFunction.hxx`:69 - `Expr_GeneralFunction::GetStringName()`
     pub fn Expr_GeneralFunction_get_string_name(
         self_: *const Expr_GeneralFunction,
     ) -> crate::OcctResult<*mut TCollection_AsciiString>;
-    /// **Source:** `Expr_GeneralFunction.hxx`:77 - `Expr_GeneralFunction::DynamicType()`
+    /// **Source:** `Expr_GeneralFunction.hxx`:71 - `Expr_GeneralFunction::DynamicType()`
     pub fn Expr_GeneralFunction_dynamic_type(
         self_: *const Expr_GeneralFunction,
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// **Source:** `Expr_GeneralFunction.hxx`:77 - `Expr_GeneralFunction::get_type_name()`
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
+    /// **Source:** `Expr_GeneralFunction.hxx`:71 - `Expr_GeneralFunction::get_type_name()`
     pub fn Expr_GeneralFunction_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
-    /// **Source:** `Expr_GeneralFunction.hxx`:77 - `Expr_GeneralFunction::get_type_descriptor()`
-    pub fn Expr_GeneralFunction_get_type_descriptor() -> crate::OcctResult<*const HandleStandardType>;
+    /// **Source:** `Expr_GeneralFunction.hxx`:71 - `Expr_GeneralFunction::get_type_descriptor()`
+    pub fn Expr_GeneralFunction_get_type_descriptor(
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast Expr_GeneralFunction to Standard_Transient
     pub fn Expr_GeneralFunction_as_Standard_Transient(
         self_: *const Expr_GeneralFunction,
@@ -3701,121 +3486,122 @@ unsafe extern "C" {
         self_: *mut Expr_GeneralFunction,
     ) -> crate::OcctResult<*mut Standard_Transient>;
     /// Destroy Handle<Expr_GeneralFunction>
-    pub fn HandleExprGeneralFunction_destructor(self_: *mut HandleExprGeneralFunction);
+    pub fn Handle_Expr_GeneralFunction_destructor(self_: *mut Handle_Expr_GeneralFunction);
     /// Clone Handle<Expr_GeneralFunction> (increments reference count)
-    pub fn HandleExprGeneralFunction_clone(
-        self_: *const HandleExprGeneralFunction,
-    ) -> crate::OcctResult<*mut HandleExprGeneralFunction>;
+    pub fn Handle_Expr_GeneralFunction_clone(
+        self_: *const Handle_Expr_GeneralFunction,
+    ) -> crate::OcctResult<*mut Handle_Expr_GeneralFunction>;
     /// Check if Handle<Expr_GeneralFunction> is null
-    pub fn HandleExprGeneralFunction_is_null(self_: *const HandleExprGeneralFunction) -> bool;
+    pub fn Handle_Expr_GeneralFunction_is_null(self_: *const Handle_Expr_GeneralFunction) -> bool;
     /// Dereference Handle to get *const Expr_GeneralFunction
-    pub fn HandleExprGeneralFunction_get(
-        handle: *const HandleExprGeneralFunction,
+    pub fn Handle_Expr_GeneralFunction_get(
+        handle: *const Handle_Expr_GeneralFunction,
     ) -> crate::OcctResult<*const Expr_GeneralFunction>;
     /// Dereference Handle to get *mut Expr_GeneralFunction
-    pub fn HandleExprGeneralFunction_get_mut(
-        handle: *mut HandleExprGeneralFunction,
+    pub fn Handle_Expr_GeneralFunction_get_mut(
+        handle: *mut Handle_Expr_GeneralFunction,
     ) -> crate::OcctResult<*mut Expr_GeneralFunction>;
     /// Upcast Handle<Expr_GeneralFunction> to Handle<Standard_Transient>
-    pub fn HandleExprGeneralFunction_to_HandleStandardTransient(
-        self_: *const HandleExprGeneralFunction,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
+    pub fn Handle_Expr_GeneralFunction_to_Handle_Standard_Transient(
+        self_: *const Handle_Expr_GeneralFunction,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
     /// Downcast Handle<Expr_GeneralFunction> to Handle<Expr_FunctionDerivative> (returns null on failure)
-    pub fn HandleExprGeneralFunction_downcast_to_HandleExprFunctionDerivative(
-        self_: *const HandleExprGeneralFunction,
-    ) -> crate::OcctResult<*mut HandleExprFunctionDerivative>;
+    pub fn Handle_Expr_GeneralFunction_downcast_to_Handle_Expr_FunctionDerivative(
+        self_: *const Handle_Expr_GeneralFunction,
+    ) -> crate::OcctResult<*mut Handle_Expr_FunctionDerivative>;
     /// Downcast Handle<Expr_GeneralFunction> to Handle<Expr_NamedFunction> (returns null on failure)
-    pub fn HandleExprGeneralFunction_downcast_to_HandleExprNamedFunction(
-        self_: *const HandleExprGeneralFunction,
-    ) -> crate::OcctResult<*mut HandleExprNamedFunction>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn Handle_Expr_GeneralFunction_downcast_to_Handle_Expr_NamedFunction(
+        self_: *const Handle_Expr_GeneralFunction,
+    ) -> crate::OcctResult<*mut Handle_Expr_NamedFunction>;
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn Expr_GeneralFunction_inherited_IsInstance(
         self_: *const Expr_GeneralFunction,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn Expr_GeneralFunction_inherited_IsKind(
         self_: *const Expr_GeneralFunction,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn Expr_GeneralFunction_inherited_This(
         self_: *const Expr_GeneralFunction,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn Expr_GeneralFunction_inherited_GetRefCount(
         self_: *const Expr_GeneralFunction,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn Expr_GeneralFunction_inherited_IncrementRefCounter(
         self_: *mut Expr_GeneralFunction,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn Expr_GeneralFunction_inherited_DecrementRefCounter(
         self_: *mut Expr_GeneralFunction,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn Expr_GeneralFunction_inherited_Delete(
         self_: *const Expr_GeneralFunction,
     ) -> *const std::ffi::c_char;
     // ======================== Expr_GeneralRelation ========================
     pub fn Expr_GeneralRelation_destructor(self_: *mut Expr_GeneralRelation);
-    /// **Source:** `Expr_GeneralRelation.hxx`:39 - `Expr_GeneralRelation::IsSatisfied()`
+    /// **Source:** `Expr_GeneralRelation.hxx`:36 - `Expr_GeneralRelation::IsSatisfied()`
     pub fn Expr_GeneralRelation_is_satisfied(
         self_: *const Expr_GeneralRelation,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `Expr_GeneralRelation.hxx`:42 - `Expr_GeneralRelation::IsLinear()`
+    /// **Source:** `Expr_GeneralRelation.hxx`:39 - `Expr_GeneralRelation::IsLinear()`
     pub fn Expr_GeneralRelation_is_linear(
         self_: *const Expr_GeneralRelation,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `Expr_GeneralRelation.hxx`:47 - `Expr_GeneralRelation::Simplified()`
+    /// **Source:** `Expr_GeneralRelation.hxx`:44 - `Expr_GeneralRelation::Simplified()`
     pub fn Expr_GeneralRelation_simplified(
         self_: *const Expr_GeneralRelation,
-    ) -> crate::OcctResult<*mut HandleExprGeneralRelation>;
-    /// **Source:** `Expr_GeneralRelation.hxx`:51 - `Expr_GeneralRelation::Simplify()`
+    ) -> crate::OcctResult<*mut Handle_Expr_GeneralRelation>;
+    /// **Source:** `Expr_GeneralRelation.hxx`:48 - `Expr_GeneralRelation::Simplify()`
     pub fn Expr_GeneralRelation_simplify(
         self_: *mut Expr_GeneralRelation,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `Expr_GeneralRelation.hxx`:55 - `Expr_GeneralRelation::Copy()`
+    /// **Source:** `Expr_GeneralRelation.hxx`:52 - `Expr_GeneralRelation::Copy()`
     pub fn Expr_GeneralRelation_copy(
         self_: *const Expr_GeneralRelation,
-    ) -> crate::OcctResult<*mut HandleExprGeneralRelation>;
-    /// **Source:** `Expr_GeneralRelation.hxx`:58 - `Expr_GeneralRelation::NbOfSubRelations()`
+    ) -> crate::OcctResult<*mut Handle_Expr_GeneralRelation>;
+    /// **Source:** `Expr_GeneralRelation.hxx`:55 - `Expr_GeneralRelation::NbOfSubRelations()`
     pub fn Expr_GeneralRelation_nb_of_sub_relations(
         self_: *const Expr_GeneralRelation,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `Expr_GeneralRelation.hxx`:62 - `Expr_GeneralRelation::NbOfSingleRelations()`
+    /// **Source:** `Expr_GeneralRelation.hxx`:59 - `Expr_GeneralRelation::NbOfSingleRelations()`
     pub fn Expr_GeneralRelation_nb_of_single_relations(
         self_: *const Expr_GeneralRelation,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `Expr_GeneralRelation.hxx`:66 - `Expr_GeneralRelation::SubRelation()`
+    /// **Source:** `Expr_GeneralRelation.hxx`:63 - `Expr_GeneralRelation::SubRelation()`
     pub fn Expr_GeneralRelation_sub_relation(
         self_: *const Expr_GeneralRelation,
         index: i32,
-    ) -> crate::OcctResult<*mut HandleExprGeneralRelation>;
-    /// **Source:** `Expr_GeneralRelation.hxx`:70 - `Expr_GeneralRelation::Contains()`
+    ) -> crate::OcctResult<*mut Handle_Expr_GeneralRelation>;
+    /// **Source:** `Expr_GeneralRelation.hxx`:66 - `Expr_GeneralRelation::Contains()`
     pub fn Expr_GeneralRelation_contains(
         self_: *const Expr_GeneralRelation,
-        exp: *const HandleExprGeneralExpression,
+        exp: *const Handle_Expr_GeneralExpression,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `Expr_GeneralRelation.hxx`:74 - `Expr_GeneralRelation::Replace()`
+    /// **Source:** `Expr_GeneralRelation.hxx`:69 - `Expr_GeneralRelation::Replace()`
     pub fn Expr_GeneralRelation_replace(
         self_: *mut Expr_GeneralRelation,
-        var: *const HandleExprNamedUnknown,
-        with: *const HandleExprGeneralExpression,
+        var: *const Handle_Expr_NamedUnknown,
+        with: *const Handle_Expr_GeneralExpression,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `Expr_GeneralRelation.hxx`:78 - `Expr_GeneralRelation::String()`
+    /// **Source:** `Expr_GeneralRelation.hxx`:73 - `Expr_GeneralRelation::String()`
     pub fn Expr_GeneralRelation_string(
         self_: *const Expr_GeneralRelation,
     ) -> crate::OcctResult<*mut TCollection_AsciiString>;
-    /// **Source:** `Expr_GeneralRelation.hxx`:80 - `Expr_GeneralRelation::DynamicType()`
+    /// **Source:** `Expr_GeneralRelation.hxx`:75 - `Expr_GeneralRelation::DynamicType()`
     pub fn Expr_GeneralRelation_dynamic_type(
         self_: *const Expr_GeneralRelation,
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// **Source:** `Expr_GeneralRelation.hxx`:80 - `Expr_GeneralRelation::get_type_name()`
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
+    /// **Source:** `Expr_GeneralRelation.hxx`:75 - `Expr_GeneralRelation::get_type_name()`
     pub fn Expr_GeneralRelation_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
-    /// **Source:** `Expr_GeneralRelation.hxx`:80 - `Expr_GeneralRelation::get_type_descriptor()`
-    pub fn Expr_GeneralRelation_get_type_descriptor() -> crate::OcctResult<*const HandleStandardType>;
+    /// **Source:** `Expr_GeneralRelation.hxx`:75 - `Expr_GeneralRelation::get_type_descriptor()`
+    pub fn Expr_GeneralRelation_get_type_descriptor(
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast Expr_GeneralRelation to Standard_Transient
     pub fn Expr_GeneralRelation_as_Standard_Transient(
         self_: *const Expr_GeneralRelation,
@@ -3825,119 +3611,119 @@ unsafe extern "C" {
         self_: *mut Expr_GeneralRelation,
     ) -> crate::OcctResult<*mut Standard_Transient>;
     /// Destroy Handle<Expr_GeneralRelation>
-    pub fn HandleExprGeneralRelation_destructor(self_: *mut HandleExprGeneralRelation);
+    pub fn Handle_Expr_GeneralRelation_destructor(self_: *mut Handle_Expr_GeneralRelation);
     /// Clone Handle<Expr_GeneralRelation> (increments reference count)
-    pub fn HandleExprGeneralRelation_clone(
-        self_: *const HandleExprGeneralRelation,
-    ) -> crate::OcctResult<*mut HandleExprGeneralRelation>;
+    pub fn Handle_Expr_GeneralRelation_clone(
+        self_: *const Handle_Expr_GeneralRelation,
+    ) -> crate::OcctResult<*mut Handle_Expr_GeneralRelation>;
     /// Check if Handle<Expr_GeneralRelation> is null
-    pub fn HandleExprGeneralRelation_is_null(self_: *const HandleExprGeneralRelation) -> bool;
+    pub fn Handle_Expr_GeneralRelation_is_null(self_: *const Handle_Expr_GeneralRelation) -> bool;
     /// Dereference Handle to get *const Expr_GeneralRelation
-    pub fn HandleExprGeneralRelation_get(
-        handle: *const HandleExprGeneralRelation,
+    pub fn Handle_Expr_GeneralRelation_get(
+        handle: *const Handle_Expr_GeneralRelation,
     ) -> crate::OcctResult<*const Expr_GeneralRelation>;
     /// Dereference Handle to get *mut Expr_GeneralRelation
-    pub fn HandleExprGeneralRelation_get_mut(
-        handle: *mut HandleExprGeneralRelation,
+    pub fn Handle_Expr_GeneralRelation_get_mut(
+        handle: *mut Handle_Expr_GeneralRelation,
     ) -> crate::OcctResult<*mut Expr_GeneralRelation>;
     /// Upcast Handle<Expr_GeneralRelation> to Handle<Standard_Transient>
-    pub fn HandleExprGeneralRelation_to_HandleStandardTransient(
-        self_: *const HandleExprGeneralRelation,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
+    pub fn Handle_Expr_GeneralRelation_to_Handle_Standard_Transient(
+        self_: *const Handle_Expr_GeneralRelation,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
     /// Downcast Handle<Expr_GeneralRelation> to Handle<Expr_Different> (returns null on failure)
-    pub fn HandleExprGeneralRelation_downcast_to_HandleExprDifferent(
-        self_: *const HandleExprGeneralRelation,
-    ) -> crate::OcctResult<*mut HandleExprDifferent>;
+    pub fn Handle_Expr_GeneralRelation_downcast_to_Handle_Expr_Different(
+        self_: *const Handle_Expr_GeneralRelation,
+    ) -> crate::OcctResult<*mut Handle_Expr_Different>;
     /// Downcast Handle<Expr_GeneralRelation> to Handle<Expr_Equal> (returns null on failure)
-    pub fn HandleExprGeneralRelation_downcast_to_HandleExprEqual(
-        self_: *const HandleExprGeneralRelation,
-    ) -> crate::OcctResult<*mut HandleExprEqual>;
+    pub fn Handle_Expr_GeneralRelation_downcast_to_Handle_Expr_Equal(
+        self_: *const Handle_Expr_GeneralRelation,
+    ) -> crate::OcctResult<*mut Handle_Expr_Equal>;
     /// Downcast Handle<Expr_GeneralRelation> to Handle<Expr_GreaterThan> (returns null on failure)
-    pub fn HandleExprGeneralRelation_downcast_to_HandleExprGreaterThan(
-        self_: *const HandleExprGeneralRelation,
-    ) -> crate::OcctResult<*mut HandleExprGreaterThan>;
+    pub fn Handle_Expr_GeneralRelation_downcast_to_Handle_Expr_GreaterThan(
+        self_: *const Handle_Expr_GeneralRelation,
+    ) -> crate::OcctResult<*mut Handle_Expr_GreaterThan>;
     /// Downcast Handle<Expr_GeneralRelation> to Handle<Expr_GreaterThanOrEqual> (returns null on failure)
-    pub fn HandleExprGeneralRelation_downcast_to_HandleExprGreaterThanOrEqual(
-        self_: *const HandleExprGeneralRelation,
-    ) -> crate::OcctResult<*mut HandleExprGreaterThanOrEqual>;
+    pub fn Handle_Expr_GeneralRelation_downcast_to_Handle_Expr_GreaterThanOrEqual(
+        self_: *const Handle_Expr_GeneralRelation,
+    ) -> crate::OcctResult<*mut Handle_Expr_GreaterThanOrEqual>;
     /// Downcast Handle<Expr_GeneralRelation> to Handle<Expr_LessThan> (returns null on failure)
-    pub fn HandleExprGeneralRelation_downcast_to_HandleExprLessThan(
-        self_: *const HandleExprGeneralRelation,
-    ) -> crate::OcctResult<*mut HandleExprLessThan>;
+    pub fn Handle_Expr_GeneralRelation_downcast_to_Handle_Expr_LessThan(
+        self_: *const Handle_Expr_GeneralRelation,
+    ) -> crate::OcctResult<*mut Handle_Expr_LessThan>;
     /// Downcast Handle<Expr_GeneralRelation> to Handle<Expr_LessThanOrEqual> (returns null on failure)
-    pub fn HandleExprGeneralRelation_downcast_to_HandleExprLessThanOrEqual(
-        self_: *const HandleExprGeneralRelation,
-    ) -> crate::OcctResult<*mut HandleExprLessThanOrEqual>;
+    pub fn Handle_Expr_GeneralRelation_downcast_to_Handle_Expr_LessThanOrEqual(
+        self_: *const Handle_Expr_GeneralRelation,
+    ) -> crate::OcctResult<*mut Handle_Expr_LessThanOrEqual>;
     /// Downcast Handle<Expr_GeneralRelation> to Handle<Expr_SingleRelation> (returns null on failure)
-    pub fn HandleExprGeneralRelation_downcast_to_HandleExprSingleRelation(
-        self_: *const HandleExprGeneralRelation,
-    ) -> crate::OcctResult<*mut HandleExprSingleRelation>;
+    pub fn Handle_Expr_GeneralRelation_downcast_to_Handle_Expr_SingleRelation(
+        self_: *const Handle_Expr_GeneralRelation,
+    ) -> crate::OcctResult<*mut Handle_Expr_SingleRelation>;
     /// Downcast Handle<Expr_GeneralRelation> to Handle<Expr_SystemRelation> (returns null on failure)
-    pub fn HandleExprGeneralRelation_downcast_to_HandleExprSystemRelation(
-        self_: *const HandleExprGeneralRelation,
-    ) -> crate::OcctResult<*mut HandleExprSystemRelation>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn Handle_Expr_GeneralRelation_downcast_to_Handle_Expr_SystemRelation(
+        self_: *const Handle_Expr_GeneralRelation,
+    ) -> crate::OcctResult<*mut Handle_Expr_SystemRelation>;
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn Expr_GeneralRelation_inherited_IsInstance(
         self_: *const Expr_GeneralRelation,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn Expr_GeneralRelation_inherited_IsKind(
         self_: *const Expr_GeneralRelation,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn Expr_GeneralRelation_inherited_This(
         self_: *const Expr_GeneralRelation,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn Expr_GeneralRelation_inherited_GetRefCount(
         self_: *const Expr_GeneralRelation,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn Expr_GeneralRelation_inherited_IncrementRefCounter(
         self_: *mut Expr_GeneralRelation,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn Expr_GeneralRelation_inherited_DecrementRefCounter(
         self_: *mut Expr_GeneralRelation,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn Expr_GeneralRelation_inherited_Delete(
         self_: *const Expr_GeneralRelation,
     ) -> *const std::ffi::c_char;
     // ======================== Expr_GreaterThan ========================
     pub fn Expr_GreaterThan_destructor(self_: *mut Expr_GreaterThan);
-    /// **Source:** `Expr_GreaterThan.hxx`:36 - `Expr_GreaterThan::Expr_GreaterThan()`
+    /// **Source:** `Expr_GreaterThan.hxx`:33 - `Expr_GreaterThan::Expr_GreaterThan()`
     pub fn Expr_GreaterThan_ctor_handleexprgeneralexpression2(
-        exp1: *const HandleExprGeneralExpression,
-        exp2: *const HandleExprGeneralExpression,
+        exp1: *const Handle_Expr_GeneralExpression,
+        exp2: *const Handle_Expr_GeneralExpression,
     ) -> crate::OcctResult<*mut Expr_GreaterThan>;
-    /// **Source:** `Expr_GreaterThan.hxx`:39 - `Expr_GreaterThan::IsSatisfied()`
+    /// **Source:** `Expr_GreaterThan.hxx`:36 - `Expr_GreaterThan::IsSatisfied()`
     pub fn Expr_GreaterThan_is_satisfied(self_: *const Expr_GreaterThan)
         -> crate::OcctResult<bool>;
-    /// **Source:** `Expr_GreaterThan.hxx`:44 - `Expr_GreaterThan::Simplified()`
+    /// **Source:** `Expr_GreaterThan.hxx`:41 - `Expr_GreaterThan::Simplified()`
     pub fn Expr_GreaterThan_simplified(
         self_: *const Expr_GreaterThan,
-    ) -> crate::OcctResult<*mut HandleExprGeneralRelation>;
-    /// **Source:** `Expr_GreaterThan.hxx`:48 - `Expr_GreaterThan::Simplify()`
+    ) -> crate::OcctResult<*mut Handle_Expr_GeneralRelation>;
+    /// **Source:** `Expr_GreaterThan.hxx`:45 - `Expr_GreaterThan::Simplify()`
     pub fn Expr_GreaterThan_simplify(self_: *mut Expr_GreaterThan) -> *const std::ffi::c_char;
-    /// **Source:** `Expr_GreaterThan.hxx`:51 - `Expr_GreaterThan::Copy()`
+    /// **Source:** `Expr_GreaterThan.hxx`:48 - `Expr_GreaterThan::Copy()`
     pub fn Expr_GreaterThan_copy(
         self_: *const Expr_GreaterThan,
-    ) -> crate::OcctResult<*mut HandleExprGeneralRelation>;
-    /// **Source:** `Expr_GreaterThan.hxx`:54 - `Expr_GreaterThan::String()`
+    ) -> crate::OcctResult<*mut Handle_Expr_GeneralRelation>;
+    /// **Source:** `Expr_GreaterThan.hxx`:51 - `Expr_GreaterThan::String()`
     pub fn Expr_GreaterThan_string(
         self_: *const Expr_GreaterThan,
     ) -> crate::OcctResult<*mut TCollection_AsciiString>;
-    /// **Source:** `Expr_GreaterThan.hxx`:56 - `Expr_GreaterThan::DynamicType()`
+    /// **Source:** `Expr_GreaterThan.hxx`:53 - `Expr_GreaterThan::DynamicType()`
     pub fn Expr_GreaterThan_dynamic_type(
         self_: *const Expr_GreaterThan,
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// **Source:** `Expr_GreaterThan.hxx`:56 - `Expr_GreaterThan::get_type_name()`
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
+    /// **Source:** `Expr_GreaterThan.hxx`:53 - `Expr_GreaterThan::get_type_name()`
     pub fn Expr_GreaterThan_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
-    /// **Source:** `Expr_GreaterThan.hxx`:56 - `Expr_GreaterThan::get_type_descriptor()`
-    pub fn Expr_GreaterThan_get_type_descriptor() -> crate::OcctResult<*const HandleStandardType>;
+    /// **Source:** `Expr_GreaterThan.hxx`:53 - `Expr_GreaterThan::get_type_descriptor()`
+    pub fn Expr_GreaterThan_get_type_descriptor() -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast Expr_GreaterThan to Expr_SingleRelation
     pub fn Expr_GreaterThan_as_Expr_SingleRelation(
         self_: *const Expr_GreaterThan,
@@ -3965,147 +3751,147 @@ unsafe extern "C" {
     /// Wrap Expr_GreaterThan in a Handle
     pub fn Expr_GreaterThan_to_handle(
         obj: *mut Expr_GreaterThan,
-    ) -> crate::OcctResult<*mut HandleExprGreaterThan>;
+    ) -> crate::OcctResult<*mut Handle_Expr_GreaterThan>;
     /// Destroy Handle<Expr_GreaterThan>
-    pub fn HandleExprGreaterThan_destructor(self_: *mut HandleExprGreaterThan);
+    pub fn Handle_Expr_GreaterThan_destructor(self_: *mut Handle_Expr_GreaterThan);
     /// Clone Handle<Expr_GreaterThan> (increments reference count)
-    pub fn HandleExprGreaterThan_clone(
-        self_: *const HandleExprGreaterThan,
-    ) -> crate::OcctResult<*mut HandleExprGreaterThan>;
+    pub fn Handle_Expr_GreaterThan_clone(
+        self_: *const Handle_Expr_GreaterThan,
+    ) -> crate::OcctResult<*mut Handle_Expr_GreaterThan>;
     /// Check if Handle<Expr_GreaterThan> is null
-    pub fn HandleExprGreaterThan_is_null(self_: *const HandleExprGreaterThan) -> bool;
+    pub fn Handle_Expr_GreaterThan_is_null(self_: *const Handle_Expr_GreaterThan) -> bool;
     /// Dereference Handle to get *const Expr_GreaterThan
-    pub fn HandleExprGreaterThan_get(
-        handle: *const HandleExprGreaterThan,
+    pub fn Handle_Expr_GreaterThan_get(
+        handle: *const Handle_Expr_GreaterThan,
     ) -> crate::OcctResult<*const Expr_GreaterThan>;
     /// Dereference Handle to get *mut Expr_GreaterThan
-    pub fn HandleExprGreaterThan_get_mut(
-        handle: *mut HandleExprGreaterThan,
+    pub fn Handle_Expr_GreaterThan_get_mut(
+        handle: *mut Handle_Expr_GreaterThan,
     ) -> crate::OcctResult<*mut Expr_GreaterThan>;
     /// Upcast Handle<Expr_GreaterThan> to Handle<Expr_SingleRelation>
-    pub fn HandleExprGreaterThan_to_HandleExprSingleRelation(
-        self_: *const HandleExprGreaterThan,
-    ) -> crate::OcctResult<*mut HandleExprSingleRelation>;
+    pub fn Handle_Expr_GreaterThan_to_Handle_Expr_SingleRelation(
+        self_: *const Handle_Expr_GreaterThan,
+    ) -> crate::OcctResult<*mut Handle_Expr_SingleRelation>;
     /// Upcast Handle<Expr_GreaterThan> to Handle<Expr_GeneralRelation>
-    pub fn HandleExprGreaterThan_to_HandleExprGeneralRelation(
-        self_: *const HandleExprGreaterThan,
-    ) -> crate::OcctResult<*mut HandleExprGeneralRelation>;
+    pub fn Handle_Expr_GreaterThan_to_Handle_Expr_GeneralRelation(
+        self_: *const Handle_Expr_GreaterThan,
+    ) -> crate::OcctResult<*mut Handle_Expr_GeneralRelation>;
     /// Upcast Handle<Expr_GreaterThan> to Handle<Standard_Transient>
-    pub fn HandleExprGreaterThan_to_HandleStandardTransient(
-        self_: *const HandleExprGreaterThan,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
-    /// Inherited: **Source:** `Expr_SingleRelation.hxx`:36 - `Expr_SingleRelation::SetFirstMember()`
+    pub fn Handle_Expr_GreaterThan_to_Handle_Standard_Transient(
+        self_: *const Handle_Expr_GreaterThan,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
+    /// Inherited: **Source:** `Expr_SingleRelation.hxx`:33 - `Expr_SingleRelation::SetFirstMember()`
     pub fn Expr_GreaterThan_inherited_SetFirstMember(
         self_: *mut Expr_GreaterThan,
-        exp: *const HandleExprGeneralExpression,
+        exp: *const Handle_Expr_GeneralExpression,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Expr_SingleRelation.hxx`:39 - `Expr_SingleRelation::SetSecondMember()`
+    /// Inherited: **Source:** `Expr_SingleRelation.hxx`:36 - `Expr_SingleRelation::SetSecondMember()`
     pub fn Expr_GreaterThan_inherited_SetSecondMember(
         self_: *mut Expr_GreaterThan,
-        exp: *const HandleExprGeneralExpression,
+        exp: *const Handle_Expr_GeneralExpression,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Expr_SingleRelation.hxx`:42 - `Expr_SingleRelation::FirstMember()`
+    /// Inherited: **Source:** `Expr_SingleRelation.hxx`:39 - `Expr_SingleRelation::FirstMember()`
     pub fn Expr_GreaterThan_inherited_FirstMember(
         self_: *const Expr_GreaterThan,
-    ) -> crate::OcctResult<*mut HandleExprGeneralExpression>;
-    /// Inherited: **Source:** `Expr_SingleRelation.hxx`:45 - `Expr_SingleRelation::SecondMember()`
+    ) -> crate::OcctResult<*mut Handle_Expr_GeneralExpression>;
+    /// Inherited: **Source:** `Expr_SingleRelation.hxx`:42 - `Expr_SingleRelation::SecondMember()`
     pub fn Expr_GreaterThan_inherited_SecondMember(
         self_: *const Expr_GreaterThan,
-    ) -> crate::OcctResult<*mut HandleExprGeneralExpression>;
-    /// Inherited: **Source:** `Expr_SingleRelation.hxx`:48 - `Expr_SingleRelation::IsLinear()`
+    ) -> crate::OcctResult<*mut Handle_Expr_GeneralExpression>;
+    /// Inherited: **Source:** `Expr_SingleRelation.hxx`:45 - `Expr_SingleRelation::IsLinear()`
     pub fn Expr_GreaterThan_inherited_IsLinear(
         self_: *const Expr_GreaterThan,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Expr_SingleRelation.hxx`:51 - `Expr_SingleRelation::NbOfSubRelations()`
+    /// Inherited: **Source:** `Expr_SingleRelation.hxx`:48 - `Expr_SingleRelation::NbOfSubRelations()`
     pub fn Expr_GreaterThan_inherited_NbOfSubRelations(
         self_: *const Expr_GreaterThan,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Expr_SingleRelation.hxx`:55 - `Expr_SingleRelation::NbOfSingleRelations()`
+    /// Inherited: **Source:** `Expr_SingleRelation.hxx`:52 - `Expr_SingleRelation::NbOfSingleRelations()`
     pub fn Expr_GreaterThan_inherited_NbOfSingleRelations(
         self_: *const Expr_GreaterThan,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Expr_SingleRelation.hxx`:59 - `Expr_SingleRelation::SubRelation()`
+    /// Inherited: **Source:** `Expr_SingleRelation.hxx`:56 - `Expr_SingleRelation::SubRelation()`
     pub fn Expr_GreaterThan_inherited_SubRelation(
         self_: *const Expr_GreaterThan,
         index: i32,
-    ) -> crate::OcctResult<*mut HandleExprGeneralRelation>;
-    /// Inherited: **Source:** `Expr_SingleRelation.hxx`:64 - `Expr_SingleRelation::Contains()`
+    ) -> crate::OcctResult<*mut Handle_Expr_GeneralRelation>;
+    /// Inherited: **Source:** `Expr_SingleRelation.hxx`:59 - `Expr_SingleRelation::Contains()`
     pub fn Expr_GreaterThan_inherited_Contains(
         self_: *const Expr_GreaterThan,
-        exp: *const HandleExprGeneralExpression,
+        exp: *const Handle_Expr_GeneralExpression,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Expr_SingleRelation.hxx`:67 - `Expr_SingleRelation::Replace()`
+    /// Inherited: **Source:** `Expr_SingleRelation.hxx`:62 - `Expr_SingleRelation::Replace()`
     pub fn Expr_GreaterThan_inherited_Replace(
         self_: *mut Expr_GreaterThan,
-        var: *const HandleExprNamedUnknown,
-        with: *const HandleExprGeneralExpression,
+        var: *const Handle_Expr_NamedUnknown,
+        with: *const Handle_Expr_GeneralExpression,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn Expr_GreaterThan_inherited_IsInstance(
         self_: *const Expr_GreaterThan,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn Expr_GreaterThan_inherited_IsKind(
         self_: *const Expr_GreaterThan,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn Expr_GreaterThan_inherited_This(
         self_: *const Expr_GreaterThan,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn Expr_GreaterThan_inherited_GetRefCount(
         self_: *const Expr_GreaterThan,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn Expr_GreaterThan_inherited_IncrementRefCounter(
         self_: *mut Expr_GreaterThan,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn Expr_GreaterThan_inherited_DecrementRefCounter(
         self_: *mut Expr_GreaterThan,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn Expr_GreaterThan_inherited_Delete(
         self_: *const Expr_GreaterThan,
     ) -> *const std::ffi::c_char;
     // ======================== Expr_GreaterThanOrEqual ========================
     pub fn Expr_GreaterThanOrEqual_destructor(self_: *mut Expr_GreaterThanOrEqual);
-    /// **Source:** `Expr_GreaterThanOrEqual.hxx`:36 - `Expr_GreaterThanOrEqual::Expr_GreaterThanOrEqual()`
+    /// **Source:** `Expr_GreaterThanOrEqual.hxx`:33 - `Expr_GreaterThanOrEqual::Expr_GreaterThanOrEqual()`
     pub fn Expr_GreaterThanOrEqual_ctor_handleexprgeneralexpression2(
-        exp1: *const HandleExprGeneralExpression,
-        exp2: *const HandleExprGeneralExpression,
+        exp1: *const Handle_Expr_GeneralExpression,
+        exp2: *const Handle_Expr_GeneralExpression,
     ) -> crate::OcctResult<*mut Expr_GreaterThanOrEqual>;
-    /// **Source:** `Expr_GreaterThanOrEqual.hxx`:39 - `Expr_GreaterThanOrEqual::IsSatisfied()`
+    /// **Source:** `Expr_GreaterThanOrEqual.hxx`:36 - `Expr_GreaterThanOrEqual::IsSatisfied()`
     pub fn Expr_GreaterThanOrEqual_is_satisfied(
         self_: *const Expr_GreaterThanOrEqual,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `Expr_GreaterThanOrEqual.hxx`:44 - `Expr_GreaterThanOrEqual::Simplified()`
+    /// **Source:** `Expr_GreaterThanOrEqual.hxx`:41 - `Expr_GreaterThanOrEqual::Simplified()`
     pub fn Expr_GreaterThanOrEqual_simplified(
         self_: *const Expr_GreaterThanOrEqual,
-    ) -> crate::OcctResult<*mut HandleExprGeneralRelation>;
-    /// **Source:** `Expr_GreaterThanOrEqual.hxx`:48 - `Expr_GreaterThanOrEqual::Simplify()`
+    ) -> crate::OcctResult<*mut Handle_Expr_GeneralRelation>;
+    /// **Source:** `Expr_GreaterThanOrEqual.hxx`:45 - `Expr_GreaterThanOrEqual::Simplify()`
     pub fn Expr_GreaterThanOrEqual_simplify(
         self_: *mut Expr_GreaterThanOrEqual,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `Expr_GreaterThanOrEqual.hxx`:51 - `Expr_GreaterThanOrEqual::Copy()`
+    /// **Source:** `Expr_GreaterThanOrEqual.hxx`:48 - `Expr_GreaterThanOrEqual::Copy()`
     pub fn Expr_GreaterThanOrEqual_copy(
         self_: *const Expr_GreaterThanOrEqual,
-    ) -> crate::OcctResult<*mut HandleExprGeneralRelation>;
-    /// **Source:** `Expr_GreaterThanOrEqual.hxx`:54 - `Expr_GreaterThanOrEqual::String()`
+    ) -> crate::OcctResult<*mut Handle_Expr_GeneralRelation>;
+    /// **Source:** `Expr_GreaterThanOrEqual.hxx`:51 - `Expr_GreaterThanOrEqual::String()`
     pub fn Expr_GreaterThanOrEqual_string(
         self_: *const Expr_GreaterThanOrEqual,
     ) -> crate::OcctResult<*mut TCollection_AsciiString>;
-    /// **Source:** `Expr_GreaterThanOrEqual.hxx`:56 - `Expr_GreaterThanOrEqual::DynamicType()`
+    /// **Source:** `Expr_GreaterThanOrEqual.hxx`:53 - `Expr_GreaterThanOrEqual::DynamicType()`
     pub fn Expr_GreaterThanOrEqual_dynamic_type(
         self_: *const Expr_GreaterThanOrEqual,
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// **Source:** `Expr_GreaterThanOrEqual.hxx`:56 - `Expr_GreaterThanOrEqual::get_type_name()`
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
+    /// **Source:** `Expr_GreaterThanOrEqual.hxx`:53 - `Expr_GreaterThanOrEqual::get_type_name()`
     pub fn Expr_GreaterThanOrEqual_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
-    /// **Source:** `Expr_GreaterThanOrEqual.hxx`:56 - `Expr_GreaterThanOrEqual::get_type_descriptor()`
+    /// **Source:** `Expr_GreaterThanOrEqual.hxx`:53 - `Expr_GreaterThanOrEqual::get_type_descriptor()`
     pub fn Expr_GreaterThanOrEqual_get_type_descriptor(
-    ) -> crate::OcctResult<*const HandleStandardType>;
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast Expr_GreaterThanOrEqual to Expr_SingleRelation
     pub fn Expr_GreaterThanOrEqual_as_Expr_SingleRelation(
         self_: *const Expr_GreaterThanOrEqual,
@@ -4133,151 +3919,128 @@ unsafe extern "C" {
     /// Wrap Expr_GreaterThanOrEqual in a Handle
     pub fn Expr_GreaterThanOrEqual_to_handle(
         obj: *mut Expr_GreaterThanOrEqual,
-    ) -> crate::OcctResult<*mut HandleExprGreaterThanOrEqual>;
+    ) -> crate::OcctResult<*mut Handle_Expr_GreaterThanOrEqual>;
     /// Destroy Handle<Expr_GreaterThanOrEqual>
-    pub fn HandleExprGreaterThanOrEqual_destructor(self_: *mut HandleExprGreaterThanOrEqual);
+    pub fn Handle_Expr_GreaterThanOrEqual_destructor(self_: *mut Handle_Expr_GreaterThanOrEqual);
     /// Clone Handle<Expr_GreaterThanOrEqual> (increments reference count)
-    pub fn HandleExprGreaterThanOrEqual_clone(
-        self_: *const HandleExprGreaterThanOrEqual,
-    ) -> crate::OcctResult<*mut HandleExprGreaterThanOrEqual>;
+    pub fn Handle_Expr_GreaterThanOrEqual_clone(
+        self_: *const Handle_Expr_GreaterThanOrEqual,
+    ) -> crate::OcctResult<*mut Handle_Expr_GreaterThanOrEqual>;
     /// Check if Handle<Expr_GreaterThanOrEqual> is null
-    pub fn HandleExprGreaterThanOrEqual_is_null(self_: *const HandleExprGreaterThanOrEqual)
-        -> bool;
+    pub fn Handle_Expr_GreaterThanOrEqual_is_null(
+        self_: *const Handle_Expr_GreaterThanOrEqual,
+    ) -> bool;
     /// Dereference Handle to get *const Expr_GreaterThanOrEqual
-    pub fn HandleExprGreaterThanOrEqual_get(
-        handle: *const HandleExprGreaterThanOrEqual,
+    pub fn Handle_Expr_GreaterThanOrEqual_get(
+        handle: *const Handle_Expr_GreaterThanOrEqual,
     ) -> crate::OcctResult<*const Expr_GreaterThanOrEqual>;
     /// Dereference Handle to get *mut Expr_GreaterThanOrEqual
-    pub fn HandleExprGreaterThanOrEqual_get_mut(
-        handle: *mut HandleExprGreaterThanOrEqual,
+    pub fn Handle_Expr_GreaterThanOrEqual_get_mut(
+        handle: *mut Handle_Expr_GreaterThanOrEqual,
     ) -> crate::OcctResult<*mut Expr_GreaterThanOrEqual>;
     /// Upcast Handle<Expr_GreaterThanOrEqual> to Handle<Expr_SingleRelation>
-    pub fn HandleExprGreaterThanOrEqual_to_HandleExprSingleRelation(
-        self_: *const HandleExprGreaterThanOrEqual,
-    ) -> crate::OcctResult<*mut HandleExprSingleRelation>;
+    pub fn Handle_Expr_GreaterThanOrEqual_to_Handle_Expr_SingleRelation(
+        self_: *const Handle_Expr_GreaterThanOrEqual,
+    ) -> crate::OcctResult<*mut Handle_Expr_SingleRelation>;
     /// Upcast Handle<Expr_GreaterThanOrEqual> to Handle<Expr_GeneralRelation>
-    pub fn HandleExprGreaterThanOrEqual_to_HandleExprGeneralRelation(
-        self_: *const HandleExprGreaterThanOrEqual,
-    ) -> crate::OcctResult<*mut HandleExprGeneralRelation>;
+    pub fn Handle_Expr_GreaterThanOrEqual_to_Handle_Expr_GeneralRelation(
+        self_: *const Handle_Expr_GreaterThanOrEqual,
+    ) -> crate::OcctResult<*mut Handle_Expr_GeneralRelation>;
     /// Upcast Handle<Expr_GreaterThanOrEqual> to Handle<Standard_Transient>
-    pub fn HandleExprGreaterThanOrEqual_to_HandleStandardTransient(
-        self_: *const HandleExprGreaterThanOrEqual,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
-    /// Inherited: **Source:** `Expr_SingleRelation.hxx`:36 - `Expr_SingleRelation::SetFirstMember()`
+    pub fn Handle_Expr_GreaterThanOrEqual_to_Handle_Standard_Transient(
+        self_: *const Handle_Expr_GreaterThanOrEqual,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
+    /// Inherited: **Source:** `Expr_SingleRelation.hxx`:33 - `Expr_SingleRelation::SetFirstMember()`
     pub fn Expr_GreaterThanOrEqual_inherited_SetFirstMember(
         self_: *mut Expr_GreaterThanOrEqual,
-        exp: *const HandleExprGeneralExpression,
+        exp: *const Handle_Expr_GeneralExpression,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Expr_SingleRelation.hxx`:39 - `Expr_SingleRelation::SetSecondMember()`
+    /// Inherited: **Source:** `Expr_SingleRelation.hxx`:36 - `Expr_SingleRelation::SetSecondMember()`
     pub fn Expr_GreaterThanOrEqual_inherited_SetSecondMember(
         self_: *mut Expr_GreaterThanOrEqual,
-        exp: *const HandleExprGeneralExpression,
+        exp: *const Handle_Expr_GeneralExpression,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Expr_SingleRelation.hxx`:42 - `Expr_SingleRelation::FirstMember()`
+    /// Inherited: **Source:** `Expr_SingleRelation.hxx`:39 - `Expr_SingleRelation::FirstMember()`
     pub fn Expr_GreaterThanOrEqual_inherited_FirstMember(
         self_: *const Expr_GreaterThanOrEqual,
-    ) -> crate::OcctResult<*mut HandleExprGeneralExpression>;
-    /// Inherited: **Source:** `Expr_SingleRelation.hxx`:45 - `Expr_SingleRelation::SecondMember()`
+    ) -> crate::OcctResult<*mut Handle_Expr_GeneralExpression>;
+    /// Inherited: **Source:** `Expr_SingleRelation.hxx`:42 - `Expr_SingleRelation::SecondMember()`
     pub fn Expr_GreaterThanOrEqual_inherited_SecondMember(
         self_: *const Expr_GreaterThanOrEqual,
-    ) -> crate::OcctResult<*mut HandleExprGeneralExpression>;
-    /// Inherited: **Source:** `Expr_SingleRelation.hxx`:48 - `Expr_SingleRelation::IsLinear()`
+    ) -> crate::OcctResult<*mut Handle_Expr_GeneralExpression>;
+    /// Inherited: **Source:** `Expr_SingleRelation.hxx`:45 - `Expr_SingleRelation::IsLinear()`
     pub fn Expr_GreaterThanOrEqual_inherited_IsLinear(
         self_: *const Expr_GreaterThanOrEqual,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Expr_SingleRelation.hxx`:51 - `Expr_SingleRelation::NbOfSubRelations()`
+    /// Inherited: **Source:** `Expr_SingleRelation.hxx`:48 - `Expr_SingleRelation::NbOfSubRelations()`
     pub fn Expr_GreaterThanOrEqual_inherited_NbOfSubRelations(
         self_: *const Expr_GreaterThanOrEqual,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Expr_SingleRelation.hxx`:55 - `Expr_SingleRelation::NbOfSingleRelations()`
+    /// Inherited: **Source:** `Expr_SingleRelation.hxx`:52 - `Expr_SingleRelation::NbOfSingleRelations()`
     pub fn Expr_GreaterThanOrEqual_inherited_NbOfSingleRelations(
         self_: *const Expr_GreaterThanOrEqual,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Expr_SingleRelation.hxx`:59 - `Expr_SingleRelation::SubRelation()`
+    /// Inherited: **Source:** `Expr_SingleRelation.hxx`:56 - `Expr_SingleRelation::SubRelation()`
     pub fn Expr_GreaterThanOrEqual_inherited_SubRelation(
         self_: *const Expr_GreaterThanOrEqual,
         index: i32,
-    ) -> crate::OcctResult<*mut HandleExprGeneralRelation>;
-    /// Inherited: **Source:** `Expr_SingleRelation.hxx`:64 - `Expr_SingleRelation::Contains()`
+    ) -> crate::OcctResult<*mut Handle_Expr_GeneralRelation>;
+    /// Inherited: **Source:** `Expr_SingleRelation.hxx`:59 - `Expr_SingleRelation::Contains()`
     pub fn Expr_GreaterThanOrEqual_inherited_Contains(
         self_: *const Expr_GreaterThanOrEqual,
-        exp: *const HandleExprGeneralExpression,
+        exp: *const Handle_Expr_GeneralExpression,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Expr_SingleRelation.hxx`:67 - `Expr_SingleRelation::Replace()`
+    /// Inherited: **Source:** `Expr_SingleRelation.hxx`:62 - `Expr_SingleRelation::Replace()`
     pub fn Expr_GreaterThanOrEqual_inherited_Replace(
         self_: *mut Expr_GreaterThanOrEqual,
-        var: *const HandleExprNamedUnknown,
-        with: *const HandleExprGeneralExpression,
+        var: *const Handle_Expr_NamedUnknown,
+        with: *const Handle_Expr_GeneralExpression,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn Expr_GreaterThanOrEqual_inherited_IsInstance(
         self_: *const Expr_GreaterThanOrEqual,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn Expr_GreaterThanOrEqual_inherited_IsKind(
         self_: *const Expr_GreaterThanOrEqual,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn Expr_GreaterThanOrEqual_inherited_This(
         self_: *const Expr_GreaterThanOrEqual,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn Expr_GreaterThanOrEqual_inherited_GetRefCount(
         self_: *const Expr_GreaterThanOrEqual,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn Expr_GreaterThanOrEqual_inherited_IncrementRefCounter(
         self_: *mut Expr_GreaterThanOrEqual,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn Expr_GreaterThanOrEqual_inherited_DecrementRefCounter(
         self_: *mut Expr_GreaterThanOrEqual,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn Expr_GreaterThanOrEqual_inherited_Delete(
         self_: *const Expr_GreaterThanOrEqual,
     ) -> *const std::ffi::c_char;
     // ======================== Expr_InvalidAssignment ========================
     pub fn Expr_InvalidAssignment_destructor(self_: *mut Expr_InvalidAssignment);
-    /// **Source:** `Expr_InvalidAssignment.hxx`:36 - `Expr_InvalidAssignment::Expr_InvalidAssignment()`
-    pub fn Expr_InvalidAssignment_ctor() -> crate::OcctResult<*mut Expr_InvalidAssignment>;
-    /// **Source:** `Expr_InvalidAssignment.hxx`:36 - `Expr_InvalidAssignment::Expr_InvalidAssignment()`
+    /// **Source:** `Expr_InvalidAssignment.hxx`:32 - `Expr_InvalidAssignment::Expr_InvalidAssignment()`
     pub fn Expr_InvalidAssignment_ctor_charptr(
         theMessage: *const std::ffi::c_char,
     ) -> crate::OcctResult<*mut Expr_InvalidAssignment>;
-    /// **Source:** `Expr_InvalidAssignment.hxx`:36 - `Expr_InvalidAssignment::Expr_InvalidAssignment()`
+    /// **Source:** `Expr_InvalidAssignment.hxx`:32 - `Expr_InvalidAssignment::Expr_InvalidAssignment()`
     pub fn Expr_InvalidAssignment_ctor_charptr2(
         theMessage: *const std::ffi::c_char,
         theStackTrace: *const std::ffi::c_char,
     ) -> crate::OcctResult<*mut Expr_InvalidAssignment>;
-    /// **Source:** `Expr_InvalidAssignment.hxx`:36 - `Expr_InvalidAssignment::DynamicType()`
-    pub fn Expr_InvalidAssignment_dynamic_type(
+    /// **Source:** `Expr_InvalidAssignment.hxx`:32 - `Expr_InvalidAssignment::ExceptionType()`
+    pub fn Expr_InvalidAssignment_exception_type(
         self_: *const Expr_InvalidAssignment,
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// **Source:** `Expr_InvalidAssignment.hxx`:36 - `Expr_InvalidAssignment::Raise()`
-    pub fn Expr_InvalidAssignment_raise_charptr(
-        theMessage: *const std::ffi::c_char,
-    ) -> *const std::ffi::c_char;
-    /// **Source:** `Expr_InvalidAssignment.hxx`:36 - `Expr_InvalidAssignment::Raise()`
-    pub fn Expr_InvalidAssignment_raise_sstream(
-        theMessage: *mut Standard_SStream,
-    ) -> *const std::ffi::c_char;
-    /// **Source:** `Expr_InvalidAssignment.hxx`:36 - `Expr_InvalidAssignment::NewInstance()`
-    pub fn Expr_InvalidAssignment_new_instance_charptr(
-        theMessage: *const std::ffi::c_char,
-    ) -> crate::OcctResult<*mut HandleExprInvalidAssignment>;
-    /// **Source:** `Expr_InvalidAssignment.hxx`:36 - `Expr_InvalidAssignment::NewInstance()`
-    pub fn Expr_InvalidAssignment_new_instance_charptr2(
-        theMessage: *const std::ffi::c_char,
-        theStackTrace: *const std::ffi::c_char,
-    ) -> crate::OcctResult<*mut HandleExprInvalidAssignment>;
-    /// **Source:** `Expr_InvalidAssignment.hxx`:36 - `Expr_InvalidAssignment::get_type_name()`
-    pub fn Expr_InvalidAssignment_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
-    /// **Source:** `Expr_InvalidAssignment.hxx`:36 - `Expr_InvalidAssignment::get_type_descriptor()`
-    pub fn Expr_InvalidAssignment_get_type_descriptor(
-    ) -> crate::OcctResult<*const HandleStandardType>;
+    ) -> crate::OcctResult<*const std::ffi::c_char>;
     /// Upcast Expr_InvalidAssignment to Expr_ExprFailure
     pub fn Expr_InvalidAssignment_as_Expr_ExprFailure(
         self_: *const Expr_InvalidAssignment,
@@ -4294,127 +4057,26 @@ unsafe extern "C" {
     pub fn Expr_InvalidAssignment_as_Standard_Failure_mut(
         self_: *mut Expr_InvalidAssignment,
     ) -> crate::OcctResult<*mut Standard_Failure>;
-    /// Upcast Expr_InvalidAssignment to Standard_Transient
-    pub fn Expr_InvalidAssignment_as_Standard_Transient(
-        self_: *const Expr_InvalidAssignment,
-    ) -> crate::OcctResult<*const Standard_Transient>;
-    /// Upcast Expr_InvalidAssignment to Standard_Transient (mutable)
-    pub fn Expr_InvalidAssignment_as_Standard_Transient_mut(
-        self_: *mut Expr_InvalidAssignment,
-    ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Wrap Expr_InvalidAssignment in a Handle
-    pub fn Expr_InvalidAssignment_to_handle(
-        obj: *mut Expr_InvalidAssignment,
-    ) -> crate::OcctResult<*mut HandleExprInvalidAssignment>;
-    /// Destroy Handle<Expr_InvalidAssignment>
-    pub fn HandleExprInvalidAssignment_destructor(self_: *mut HandleExprInvalidAssignment);
-    /// Clone Handle<Expr_InvalidAssignment> (increments reference count)
-    pub fn HandleExprInvalidAssignment_clone(
-        self_: *const HandleExprInvalidAssignment,
-    ) -> crate::OcctResult<*mut HandleExprInvalidAssignment>;
-    /// Check if Handle<Expr_InvalidAssignment> is null
-    pub fn HandleExprInvalidAssignment_is_null(self_: *const HandleExprInvalidAssignment) -> bool;
-    /// Dereference Handle to get *const Expr_InvalidAssignment
-    pub fn HandleExprInvalidAssignment_get(
-        handle: *const HandleExprInvalidAssignment,
-    ) -> crate::OcctResult<*const Expr_InvalidAssignment>;
-    /// Dereference Handle to get *mut Expr_InvalidAssignment
-    pub fn HandleExprInvalidAssignment_get_mut(
-        handle: *mut HandleExprInvalidAssignment,
-    ) -> crate::OcctResult<*mut Expr_InvalidAssignment>;
-    /// Upcast Handle<Expr_InvalidAssignment> to Handle<Expr_ExprFailure>
-    pub fn HandleExprInvalidAssignment_to_HandleExprExprFailure(
-        self_: *const HandleExprInvalidAssignment,
-    ) -> crate::OcctResult<*mut HandleExprExprFailure>;
-    /// Upcast Handle<Expr_InvalidAssignment> to Handle<Standard_Failure>
-    pub fn HandleExprInvalidAssignment_to_HandleStandardFailure(
-        self_: *const HandleExprInvalidAssignment,
-    ) -> crate::OcctResult<*mut HandleStandardFailure>;
-    /// Upcast Handle<Expr_InvalidAssignment> to Handle<Standard_Transient>
-    pub fn HandleExprInvalidAssignment_to_HandleStandardTransient(
-        self_: *const HandleExprInvalidAssignment,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
-    /// Inherited: **Source:** `Standard_Failure.hxx`:58 - `Standard_Failure::Print()`
+    /// Inherited: **Source:** `Standard_Failure.hxx`:73 - `Standard_Failure::Print()`
     pub fn Expr_InvalidAssignment_inherited_Print(
         self_: *const Expr_InvalidAssignment,
         theStream: *mut Standard_OStream,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Failure.hxx`:72 - `Standard_Failure::Reraise()`
-    pub fn Expr_InvalidAssignment_inherited_Reraise(
-        self_: *mut Expr_InvalidAssignment,
-    ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Failure.hxx`:112 - `Standard_Failure::Jump()`
-    pub fn Expr_InvalidAssignment_inherited_Jump(
-        self_: *mut Expr_InvalidAssignment,
-    ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn Expr_InvalidAssignment_inherited_IsInstance(
-        self_: *const Expr_InvalidAssignment,
-        theType: *const HandleStandardType,
-    ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn Expr_InvalidAssignment_inherited_IsKind(
-        self_: *const Expr_InvalidAssignment,
-        theType: *const HandleStandardType,
-    ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
-    pub fn Expr_InvalidAssignment_inherited_This(
-        self_: *const Expr_InvalidAssignment,
-    ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
-    pub fn Expr_InvalidAssignment_inherited_GetRefCount(
-        self_: *const Expr_InvalidAssignment,
-    ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
-    pub fn Expr_InvalidAssignment_inherited_IncrementRefCounter(
-        self_: *mut Expr_InvalidAssignment,
-    ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
-    pub fn Expr_InvalidAssignment_inherited_DecrementRefCounter(
-        self_: *mut Expr_InvalidAssignment,
-    ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
-    pub fn Expr_InvalidAssignment_inherited_Delete(
-        self_: *const Expr_InvalidAssignment,
-    ) -> *const std::ffi::c_char;
     // ======================== Expr_InvalidFunction ========================
     pub fn Expr_InvalidFunction_destructor(self_: *mut Expr_InvalidFunction);
-    /// **Source:** `Expr_InvalidFunction.hxx`:36 - `Expr_InvalidFunction::Expr_InvalidFunction()`
-    pub fn Expr_InvalidFunction_ctor() -> crate::OcctResult<*mut Expr_InvalidFunction>;
-    /// **Source:** `Expr_InvalidFunction.hxx`:36 - `Expr_InvalidFunction::Expr_InvalidFunction()`
+    /// **Source:** `Expr_InvalidFunction.hxx`:32 - `Expr_InvalidFunction::Expr_InvalidFunction()`
     pub fn Expr_InvalidFunction_ctor_charptr(
         theMessage: *const std::ffi::c_char,
     ) -> crate::OcctResult<*mut Expr_InvalidFunction>;
-    /// **Source:** `Expr_InvalidFunction.hxx`:36 - `Expr_InvalidFunction::Expr_InvalidFunction()`
+    /// **Source:** `Expr_InvalidFunction.hxx`:32 - `Expr_InvalidFunction::Expr_InvalidFunction()`
     pub fn Expr_InvalidFunction_ctor_charptr2(
         theMessage: *const std::ffi::c_char,
         theStackTrace: *const std::ffi::c_char,
     ) -> crate::OcctResult<*mut Expr_InvalidFunction>;
-    /// **Source:** `Expr_InvalidFunction.hxx`:36 - `Expr_InvalidFunction::DynamicType()`
-    pub fn Expr_InvalidFunction_dynamic_type(
+    /// **Source:** `Expr_InvalidFunction.hxx`:32 - `Expr_InvalidFunction::ExceptionType()`
+    pub fn Expr_InvalidFunction_exception_type(
         self_: *const Expr_InvalidFunction,
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// **Source:** `Expr_InvalidFunction.hxx`:36 - `Expr_InvalidFunction::Raise()`
-    pub fn Expr_InvalidFunction_raise_charptr(
-        theMessage: *const std::ffi::c_char,
-    ) -> *const std::ffi::c_char;
-    /// **Source:** `Expr_InvalidFunction.hxx`:36 - `Expr_InvalidFunction::Raise()`
-    pub fn Expr_InvalidFunction_raise_sstream(
-        theMessage: *mut Standard_SStream,
-    ) -> *const std::ffi::c_char;
-    /// **Source:** `Expr_InvalidFunction.hxx`:36 - `Expr_InvalidFunction::NewInstance()`
-    pub fn Expr_InvalidFunction_new_instance_charptr(
-        theMessage: *const std::ffi::c_char,
-    ) -> crate::OcctResult<*mut HandleExprInvalidFunction>;
-    /// **Source:** `Expr_InvalidFunction.hxx`:36 - `Expr_InvalidFunction::NewInstance()`
-    pub fn Expr_InvalidFunction_new_instance_charptr2(
-        theMessage: *const std::ffi::c_char,
-        theStackTrace: *const std::ffi::c_char,
-    ) -> crate::OcctResult<*mut HandleExprInvalidFunction>;
-    /// **Source:** `Expr_InvalidFunction.hxx`:36 - `Expr_InvalidFunction::get_type_name()`
-    pub fn Expr_InvalidFunction_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
-    /// **Source:** `Expr_InvalidFunction.hxx`:36 - `Expr_InvalidFunction::get_type_descriptor()`
-    pub fn Expr_InvalidFunction_get_type_descriptor() -> crate::OcctResult<*const HandleStandardType>;
+    ) -> crate::OcctResult<*const std::ffi::c_char>;
     /// Upcast Expr_InvalidFunction to Expr_ExprFailure
     pub fn Expr_InvalidFunction_as_Expr_ExprFailure(
         self_: *const Expr_InvalidFunction,
@@ -4431,127 +4093,26 @@ unsafe extern "C" {
     pub fn Expr_InvalidFunction_as_Standard_Failure_mut(
         self_: *mut Expr_InvalidFunction,
     ) -> crate::OcctResult<*mut Standard_Failure>;
-    /// Upcast Expr_InvalidFunction to Standard_Transient
-    pub fn Expr_InvalidFunction_as_Standard_Transient(
-        self_: *const Expr_InvalidFunction,
-    ) -> crate::OcctResult<*const Standard_Transient>;
-    /// Upcast Expr_InvalidFunction to Standard_Transient (mutable)
-    pub fn Expr_InvalidFunction_as_Standard_Transient_mut(
-        self_: *mut Expr_InvalidFunction,
-    ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Wrap Expr_InvalidFunction in a Handle
-    pub fn Expr_InvalidFunction_to_handle(
-        obj: *mut Expr_InvalidFunction,
-    ) -> crate::OcctResult<*mut HandleExprInvalidFunction>;
-    /// Destroy Handle<Expr_InvalidFunction>
-    pub fn HandleExprInvalidFunction_destructor(self_: *mut HandleExprInvalidFunction);
-    /// Clone Handle<Expr_InvalidFunction> (increments reference count)
-    pub fn HandleExprInvalidFunction_clone(
-        self_: *const HandleExprInvalidFunction,
-    ) -> crate::OcctResult<*mut HandleExprInvalidFunction>;
-    /// Check if Handle<Expr_InvalidFunction> is null
-    pub fn HandleExprInvalidFunction_is_null(self_: *const HandleExprInvalidFunction) -> bool;
-    /// Dereference Handle to get *const Expr_InvalidFunction
-    pub fn HandleExprInvalidFunction_get(
-        handle: *const HandleExprInvalidFunction,
-    ) -> crate::OcctResult<*const Expr_InvalidFunction>;
-    /// Dereference Handle to get *mut Expr_InvalidFunction
-    pub fn HandleExprInvalidFunction_get_mut(
-        handle: *mut HandleExprInvalidFunction,
-    ) -> crate::OcctResult<*mut Expr_InvalidFunction>;
-    /// Upcast Handle<Expr_InvalidFunction> to Handle<Expr_ExprFailure>
-    pub fn HandleExprInvalidFunction_to_HandleExprExprFailure(
-        self_: *const HandleExprInvalidFunction,
-    ) -> crate::OcctResult<*mut HandleExprExprFailure>;
-    /// Upcast Handle<Expr_InvalidFunction> to Handle<Standard_Failure>
-    pub fn HandleExprInvalidFunction_to_HandleStandardFailure(
-        self_: *const HandleExprInvalidFunction,
-    ) -> crate::OcctResult<*mut HandleStandardFailure>;
-    /// Upcast Handle<Expr_InvalidFunction> to Handle<Standard_Transient>
-    pub fn HandleExprInvalidFunction_to_HandleStandardTransient(
-        self_: *const HandleExprInvalidFunction,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
-    /// Inherited: **Source:** `Standard_Failure.hxx`:58 - `Standard_Failure::Print()`
+    /// Inherited: **Source:** `Standard_Failure.hxx`:73 - `Standard_Failure::Print()`
     pub fn Expr_InvalidFunction_inherited_Print(
         self_: *const Expr_InvalidFunction,
         theStream: *mut Standard_OStream,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Failure.hxx`:72 - `Standard_Failure::Reraise()`
-    pub fn Expr_InvalidFunction_inherited_Reraise(
-        self_: *mut Expr_InvalidFunction,
-    ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Failure.hxx`:112 - `Standard_Failure::Jump()`
-    pub fn Expr_InvalidFunction_inherited_Jump(
-        self_: *mut Expr_InvalidFunction,
-    ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn Expr_InvalidFunction_inherited_IsInstance(
-        self_: *const Expr_InvalidFunction,
-        theType: *const HandleStandardType,
-    ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn Expr_InvalidFunction_inherited_IsKind(
-        self_: *const Expr_InvalidFunction,
-        theType: *const HandleStandardType,
-    ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
-    pub fn Expr_InvalidFunction_inherited_This(
-        self_: *const Expr_InvalidFunction,
-    ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
-    pub fn Expr_InvalidFunction_inherited_GetRefCount(
-        self_: *const Expr_InvalidFunction,
-    ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
-    pub fn Expr_InvalidFunction_inherited_IncrementRefCounter(
-        self_: *mut Expr_InvalidFunction,
-    ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
-    pub fn Expr_InvalidFunction_inherited_DecrementRefCounter(
-        self_: *mut Expr_InvalidFunction,
-    ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
-    pub fn Expr_InvalidFunction_inherited_Delete(
-        self_: *const Expr_InvalidFunction,
-    ) -> *const std::ffi::c_char;
     // ======================== Expr_InvalidOperand ========================
     pub fn Expr_InvalidOperand_destructor(self_: *mut Expr_InvalidOperand);
-    /// **Source:** `Expr_InvalidOperand.hxx`:36 - `Expr_InvalidOperand::Expr_InvalidOperand()`
-    pub fn Expr_InvalidOperand_ctor() -> crate::OcctResult<*mut Expr_InvalidOperand>;
-    /// **Source:** `Expr_InvalidOperand.hxx`:36 - `Expr_InvalidOperand::Expr_InvalidOperand()`
+    /// **Source:** `Expr_InvalidOperand.hxx`:32 - `Expr_InvalidOperand::Expr_InvalidOperand()`
     pub fn Expr_InvalidOperand_ctor_charptr(
         theMessage: *const std::ffi::c_char,
     ) -> crate::OcctResult<*mut Expr_InvalidOperand>;
-    /// **Source:** `Expr_InvalidOperand.hxx`:36 - `Expr_InvalidOperand::Expr_InvalidOperand()`
+    /// **Source:** `Expr_InvalidOperand.hxx`:32 - `Expr_InvalidOperand::Expr_InvalidOperand()`
     pub fn Expr_InvalidOperand_ctor_charptr2(
         theMessage: *const std::ffi::c_char,
         theStackTrace: *const std::ffi::c_char,
     ) -> crate::OcctResult<*mut Expr_InvalidOperand>;
-    /// **Source:** `Expr_InvalidOperand.hxx`:36 - `Expr_InvalidOperand::DynamicType()`
-    pub fn Expr_InvalidOperand_dynamic_type(
+    /// **Source:** `Expr_InvalidOperand.hxx`:32 - `Expr_InvalidOperand::ExceptionType()`
+    pub fn Expr_InvalidOperand_exception_type(
         self_: *const Expr_InvalidOperand,
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// **Source:** `Expr_InvalidOperand.hxx`:36 - `Expr_InvalidOperand::Raise()`
-    pub fn Expr_InvalidOperand_raise_charptr(
-        theMessage: *const std::ffi::c_char,
-    ) -> *const std::ffi::c_char;
-    /// **Source:** `Expr_InvalidOperand.hxx`:36 - `Expr_InvalidOperand::Raise()`
-    pub fn Expr_InvalidOperand_raise_sstream(
-        theMessage: *mut Standard_SStream,
-    ) -> *const std::ffi::c_char;
-    /// **Source:** `Expr_InvalidOperand.hxx`:36 - `Expr_InvalidOperand::NewInstance()`
-    pub fn Expr_InvalidOperand_new_instance_charptr(
-        theMessage: *const std::ffi::c_char,
-    ) -> crate::OcctResult<*mut HandleExprInvalidOperand>;
-    /// **Source:** `Expr_InvalidOperand.hxx`:36 - `Expr_InvalidOperand::NewInstance()`
-    pub fn Expr_InvalidOperand_new_instance_charptr2(
-        theMessage: *const std::ffi::c_char,
-        theStackTrace: *const std::ffi::c_char,
-    ) -> crate::OcctResult<*mut HandleExprInvalidOperand>;
-    /// **Source:** `Expr_InvalidOperand.hxx`:36 - `Expr_InvalidOperand::get_type_name()`
-    pub fn Expr_InvalidOperand_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
-    /// **Source:** `Expr_InvalidOperand.hxx`:36 - `Expr_InvalidOperand::get_type_descriptor()`
-    pub fn Expr_InvalidOperand_get_type_descriptor() -> crate::OcctResult<*const HandleStandardType>;
+    ) -> crate::OcctResult<*const std::ffi::c_char>;
     /// Upcast Expr_InvalidOperand to Expr_ExprFailure
     pub fn Expr_InvalidOperand_as_Expr_ExprFailure(
         self_: *const Expr_InvalidOperand,
@@ -4568,120 +4129,42 @@ unsafe extern "C" {
     pub fn Expr_InvalidOperand_as_Standard_Failure_mut(
         self_: *mut Expr_InvalidOperand,
     ) -> crate::OcctResult<*mut Standard_Failure>;
-    /// Upcast Expr_InvalidOperand to Standard_Transient
-    pub fn Expr_InvalidOperand_as_Standard_Transient(
-        self_: *const Expr_InvalidOperand,
-    ) -> crate::OcctResult<*const Standard_Transient>;
-    /// Upcast Expr_InvalidOperand to Standard_Transient (mutable)
-    pub fn Expr_InvalidOperand_as_Standard_Transient_mut(
-        self_: *mut Expr_InvalidOperand,
-    ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Wrap Expr_InvalidOperand in a Handle
-    pub fn Expr_InvalidOperand_to_handle(
-        obj: *mut Expr_InvalidOperand,
-    ) -> crate::OcctResult<*mut HandleExprInvalidOperand>;
-    /// Destroy Handle<Expr_InvalidOperand>
-    pub fn HandleExprInvalidOperand_destructor(self_: *mut HandleExprInvalidOperand);
-    /// Clone Handle<Expr_InvalidOperand> (increments reference count)
-    pub fn HandleExprInvalidOperand_clone(
-        self_: *const HandleExprInvalidOperand,
-    ) -> crate::OcctResult<*mut HandleExprInvalidOperand>;
-    /// Check if Handle<Expr_InvalidOperand> is null
-    pub fn HandleExprInvalidOperand_is_null(self_: *const HandleExprInvalidOperand) -> bool;
-    /// Dereference Handle to get *const Expr_InvalidOperand
-    pub fn HandleExprInvalidOperand_get(
-        handle: *const HandleExprInvalidOperand,
-    ) -> crate::OcctResult<*const Expr_InvalidOperand>;
-    /// Dereference Handle to get *mut Expr_InvalidOperand
-    pub fn HandleExprInvalidOperand_get_mut(
-        handle: *mut HandleExprInvalidOperand,
-    ) -> crate::OcctResult<*mut Expr_InvalidOperand>;
-    /// Upcast Handle<Expr_InvalidOperand> to Handle<Expr_ExprFailure>
-    pub fn HandleExprInvalidOperand_to_HandleExprExprFailure(
-        self_: *const HandleExprInvalidOperand,
-    ) -> crate::OcctResult<*mut HandleExprExprFailure>;
-    /// Upcast Handle<Expr_InvalidOperand> to Handle<Standard_Failure>
-    pub fn HandleExprInvalidOperand_to_HandleStandardFailure(
-        self_: *const HandleExprInvalidOperand,
-    ) -> crate::OcctResult<*mut HandleStandardFailure>;
-    /// Upcast Handle<Expr_InvalidOperand> to Handle<Standard_Transient>
-    pub fn HandleExprInvalidOperand_to_HandleStandardTransient(
-        self_: *const HandleExprInvalidOperand,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
-    /// Inherited: **Source:** `Standard_Failure.hxx`:58 - `Standard_Failure::Print()`
+    /// Inherited: **Source:** `Standard_Failure.hxx`:73 - `Standard_Failure::Print()`
     pub fn Expr_InvalidOperand_inherited_Print(
         self_: *const Expr_InvalidOperand,
         theStream: *mut Standard_OStream,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Failure.hxx`:72 - `Standard_Failure::Reraise()`
-    pub fn Expr_InvalidOperand_inherited_Reraise(
-        self_: *mut Expr_InvalidOperand,
-    ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Failure.hxx`:112 - `Standard_Failure::Jump()`
-    pub fn Expr_InvalidOperand_inherited_Jump(
-        self_: *mut Expr_InvalidOperand,
-    ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn Expr_InvalidOperand_inherited_IsInstance(
-        self_: *const Expr_InvalidOperand,
-        theType: *const HandleStandardType,
-    ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn Expr_InvalidOperand_inherited_IsKind(
-        self_: *const Expr_InvalidOperand,
-        theType: *const HandleStandardType,
-    ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
-    pub fn Expr_InvalidOperand_inherited_This(
-        self_: *const Expr_InvalidOperand,
-    ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
-    pub fn Expr_InvalidOperand_inherited_GetRefCount(
-        self_: *const Expr_InvalidOperand,
-    ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
-    pub fn Expr_InvalidOperand_inherited_IncrementRefCounter(
-        self_: *mut Expr_InvalidOperand,
-    ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
-    pub fn Expr_InvalidOperand_inherited_DecrementRefCounter(
-        self_: *mut Expr_InvalidOperand,
-    ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
-    pub fn Expr_InvalidOperand_inherited_Delete(
-        self_: *const Expr_InvalidOperand,
-    ) -> *const std::ffi::c_char;
     // ======================== Expr_LessThan ========================
     pub fn Expr_LessThan_destructor(self_: *mut Expr_LessThan);
-    /// **Source:** `Expr_LessThan.hxx`:36 - `Expr_LessThan::Expr_LessThan()`
+    /// **Source:** `Expr_LessThan.hxx`:33 - `Expr_LessThan::Expr_LessThan()`
     pub fn Expr_LessThan_ctor_handleexprgeneralexpression2(
-        exp1: *const HandleExprGeneralExpression,
-        exp2: *const HandleExprGeneralExpression,
+        exp1: *const Handle_Expr_GeneralExpression,
+        exp2: *const Handle_Expr_GeneralExpression,
     ) -> crate::OcctResult<*mut Expr_LessThan>;
-    /// **Source:** `Expr_LessThan.hxx`:39 - `Expr_LessThan::IsSatisfied()`
+    /// **Source:** `Expr_LessThan.hxx`:36 - `Expr_LessThan::IsSatisfied()`
     pub fn Expr_LessThan_is_satisfied(self_: *const Expr_LessThan) -> crate::OcctResult<bool>;
-    /// **Source:** `Expr_LessThan.hxx`:44 - `Expr_LessThan::Simplified()`
+    /// **Source:** `Expr_LessThan.hxx`:41 - `Expr_LessThan::Simplified()`
     pub fn Expr_LessThan_simplified(
         self_: *const Expr_LessThan,
-    ) -> crate::OcctResult<*mut HandleExprGeneralRelation>;
-    /// **Source:** `Expr_LessThan.hxx`:48 - `Expr_LessThan::Simplify()`
+    ) -> crate::OcctResult<*mut Handle_Expr_GeneralRelation>;
+    /// **Source:** `Expr_LessThan.hxx`:45 - `Expr_LessThan::Simplify()`
     pub fn Expr_LessThan_simplify(self_: *mut Expr_LessThan) -> *const std::ffi::c_char;
-    /// **Source:** `Expr_LessThan.hxx`:51 - `Expr_LessThan::Copy()`
+    /// **Source:** `Expr_LessThan.hxx`:48 - `Expr_LessThan::Copy()`
     pub fn Expr_LessThan_copy(
         self_: *const Expr_LessThan,
-    ) -> crate::OcctResult<*mut HandleExprGeneralRelation>;
-    /// **Source:** `Expr_LessThan.hxx`:54 - `Expr_LessThan::String()`
+    ) -> crate::OcctResult<*mut Handle_Expr_GeneralRelation>;
+    /// **Source:** `Expr_LessThan.hxx`:51 - `Expr_LessThan::String()`
     pub fn Expr_LessThan_string(
         self_: *const Expr_LessThan,
     ) -> crate::OcctResult<*mut TCollection_AsciiString>;
-    /// **Source:** `Expr_LessThan.hxx`:56 - `Expr_LessThan::DynamicType()`
+    /// **Source:** `Expr_LessThan.hxx`:53 - `Expr_LessThan::DynamicType()`
     pub fn Expr_LessThan_dynamic_type(
         self_: *const Expr_LessThan,
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// **Source:** `Expr_LessThan.hxx`:56 - `Expr_LessThan::get_type_name()`
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
+    /// **Source:** `Expr_LessThan.hxx`:53 - `Expr_LessThan::get_type_name()`
     pub fn Expr_LessThan_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
-    /// **Source:** `Expr_LessThan.hxx`:56 - `Expr_LessThan::get_type_descriptor()`
-    pub fn Expr_LessThan_get_type_descriptor() -> crate::OcctResult<*const HandleStandardType>;
+    /// **Source:** `Expr_LessThan.hxx`:53 - `Expr_LessThan::get_type_descriptor()`
+    pub fn Expr_LessThan_get_type_descriptor() -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast Expr_LessThan to Expr_SingleRelation
     pub fn Expr_LessThan_as_Expr_SingleRelation(
         self_: *const Expr_LessThan,
@@ -4709,143 +4192,144 @@ unsafe extern "C" {
     /// Wrap Expr_LessThan in a Handle
     pub fn Expr_LessThan_to_handle(
         obj: *mut Expr_LessThan,
-    ) -> crate::OcctResult<*mut HandleExprLessThan>;
+    ) -> crate::OcctResult<*mut Handle_Expr_LessThan>;
     /// Destroy Handle<Expr_LessThan>
-    pub fn HandleExprLessThan_destructor(self_: *mut HandleExprLessThan);
+    pub fn Handle_Expr_LessThan_destructor(self_: *mut Handle_Expr_LessThan);
     /// Clone Handle<Expr_LessThan> (increments reference count)
-    pub fn HandleExprLessThan_clone(
-        self_: *const HandleExprLessThan,
-    ) -> crate::OcctResult<*mut HandleExprLessThan>;
+    pub fn Handle_Expr_LessThan_clone(
+        self_: *const Handle_Expr_LessThan,
+    ) -> crate::OcctResult<*mut Handle_Expr_LessThan>;
     /// Check if Handle<Expr_LessThan> is null
-    pub fn HandleExprLessThan_is_null(self_: *const HandleExprLessThan) -> bool;
+    pub fn Handle_Expr_LessThan_is_null(self_: *const Handle_Expr_LessThan) -> bool;
     /// Dereference Handle to get *const Expr_LessThan
-    pub fn HandleExprLessThan_get(
-        handle: *const HandleExprLessThan,
+    pub fn Handle_Expr_LessThan_get(
+        handle: *const Handle_Expr_LessThan,
     ) -> crate::OcctResult<*const Expr_LessThan>;
     /// Dereference Handle to get *mut Expr_LessThan
-    pub fn HandleExprLessThan_get_mut(
-        handle: *mut HandleExprLessThan,
+    pub fn Handle_Expr_LessThan_get_mut(
+        handle: *mut Handle_Expr_LessThan,
     ) -> crate::OcctResult<*mut Expr_LessThan>;
     /// Upcast Handle<Expr_LessThan> to Handle<Expr_SingleRelation>
-    pub fn HandleExprLessThan_to_HandleExprSingleRelation(
-        self_: *const HandleExprLessThan,
-    ) -> crate::OcctResult<*mut HandleExprSingleRelation>;
+    pub fn Handle_Expr_LessThan_to_Handle_Expr_SingleRelation(
+        self_: *const Handle_Expr_LessThan,
+    ) -> crate::OcctResult<*mut Handle_Expr_SingleRelation>;
     /// Upcast Handle<Expr_LessThan> to Handle<Expr_GeneralRelation>
-    pub fn HandleExprLessThan_to_HandleExprGeneralRelation(
-        self_: *const HandleExprLessThan,
-    ) -> crate::OcctResult<*mut HandleExprGeneralRelation>;
+    pub fn Handle_Expr_LessThan_to_Handle_Expr_GeneralRelation(
+        self_: *const Handle_Expr_LessThan,
+    ) -> crate::OcctResult<*mut Handle_Expr_GeneralRelation>;
     /// Upcast Handle<Expr_LessThan> to Handle<Standard_Transient>
-    pub fn HandleExprLessThan_to_HandleStandardTransient(
-        self_: *const HandleExprLessThan,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
-    /// Inherited: **Source:** `Expr_SingleRelation.hxx`:36 - `Expr_SingleRelation::SetFirstMember()`
+    pub fn Handle_Expr_LessThan_to_Handle_Standard_Transient(
+        self_: *const Handle_Expr_LessThan,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
+    /// Inherited: **Source:** `Expr_SingleRelation.hxx`:33 - `Expr_SingleRelation::SetFirstMember()`
     pub fn Expr_LessThan_inherited_SetFirstMember(
         self_: *mut Expr_LessThan,
-        exp: *const HandleExprGeneralExpression,
+        exp: *const Handle_Expr_GeneralExpression,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Expr_SingleRelation.hxx`:39 - `Expr_SingleRelation::SetSecondMember()`
+    /// Inherited: **Source:** `Expr_SingleRelation.hxx`:36 - `Expr_SingleRelation::SetSecondMember()`
     pub fn Expr_LessThan_inherited_SetSecondMember(
         self_: *mut Expr_LessThan,
-        exp: *const HandleExprGeneralExpression,
+        exp: *const Handle_Expr_GeneralExpression,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Expr_SingleRelation.hxx`:42 - `Expr_SingleRelation::FirstMember()`
+    /// Inherited: **Source:** `Expr_SingleRelation.hxx`:39 - `Expr_SingleRelation::FirstMember()`
     pub fn Expr_LessThan_inherited_FirstMember(
         self_: *const Expr_LessThan,
-    ) -> crate::OcctResult<*mut HandleExprGeneralExpression>;
-    /// Inherited: **Source:** `Expr_SingleRelation.hxx`:45 - `Expr_SingleRelation::SecondMember()`
+    ) -> crate::OcctResult<*mut Handle_Expr_GeneralExpression>;
+    /// Inherited: **Source:** `Expr_SingleRelation.hxx`:42 - `Expr_SingleRelation::SecondMember()`
     pub fn Expr_LessThan_inherited_SecondMember(
         self_: *const Expr_LessThan,
-    ) -> crate::OcctResult<*mut HandleExprGeneralExpression>;
-    /// Inherited: **Source:** `Expr_SingleRelation.hxx`:48 - `Expr_SingleRelation::IsLinear()`
+    ) -> crate::OcctResult<*mut Handle_Expr_GeneralExpression>;
+    /// Inherited: **Source:** `Expr_SingleRelation.hxx`:45 - `Expr_SingleRelation::IsLinear()`
     pub fn Expr_LessThan_inherited_IsLinear(self_: *const Expr_LessThan)
         -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Expr_SingleRelation.hxx`:51 - `Expr_SingleRelation::NbOfSubRelations()`
+    /// Inherited: **Source:** `Expr_SingleRelation.hxx`:48 - `Expr_SingleRelation::NbOfSubRelations()`
     pub fn Expr_LessThan_inherited_NbOfSubRelations(
         self_: *const Expr_LessThan,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Expr_SingleRelation.hxx`:55 - `Expr_SingleRelation::NbOfSingleRelations()`
+    /// Inherited: **Source:** `Expr_SingleRelation.hxx`:52 - `Expr_SingleRelation::NbOfSingleRelations()`
     pub fn Expr_LessThan_inherited_NbOfSingleRelations(
         self_: *const Expr_LessThan,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Expr_SingleRelation.hxx`:59 - `Expr_SingleRelation::SubRelation()`
+    /// Inherited: **Source:** `Expr_SingleRelation.hxx`:56 - `Expr_SingleRelation::SubRelation()`
     pub fn Expr_LessThan_inherited_SubRelation(
         self_: *const Expr_LessThan,
         index: i32,
-    ) -> crate::OcctResult<*mut HandleExprGeneralRelation>;
-    /// Inherited: **Source:** `Expr_SingleRelation.hxx`:64 - `Expr_SingleRelation::Contains()`
+    ) -> crate::OcctResult<*mut Handle_Expr_GeneralRelation>;
+    /// Inherited: **Source:** `Expr_SingleRelation.hxx`:59 - `Expr_SingleRelation::Contains()`
     pub fn Expr_LessThan_inherited_Contains(
         self_: *const Expr_LessThan,
-        exp: *const HandleExprGeneralExpression,
+        exp: *const Handle_Expr_GeneralExpression,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Expr_SingleRelation.hxx`:67 - `Expr_SingleRelation::Replace()`
+    /// Inherited: **Source:** `Expr_SingleRelation.hxx`:62 - `Expr_SingleRelation::Replace()`
     pub fn Expr_LessThan_inherited_Replace(
         self_: *mut Expr_LessThan,
-        var: *const HandleExprNamedUnknown,
-        with: *const HandleExprGeneralExpression,
+        var: *const Handle_Expr_NamedUnknown,
+        with: *const Handle_Expr_GeneralExpression,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn Expr_LessThan_inherited_IsInstance(
         self_: *const Expr_LessThan,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn Expr_LessThan_inherited_IsKind(
         self_: *const Expr_LessThan,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn Expr_LessThan_inherited_This(
         self_: *const Expr_LessThan,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn Expr_LessThan_inherited_GetRefCount(
         self_: *const Expr_LessThan,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn Expr_LessThan_inherited_IncrementRefCounter(
         self_: *mut Expr_LessThan,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn Expr_LessThan_inherited_DecrementRefCounter(
         self_: *mut Expr_LessThan,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn Expr_LessThan_inherited_Delete(self_: *const Expr_LessThan) -> *const std::ffi::c_char;
     // ======================== Expr_LessThanOrEqual ========================
     pub fn Expr_LessThanOrEqual_destructor(self_: *mut Expr_LessThanOrEqual);
-    /// **Source:** `Expr_LessThanOrEqual.hxx`:36 - `Expr_LessThanOrEqual::Expr_LessThanOrEqual()`
+    /// **Source:** `Expr_LessThanOrEqual.hxx`:33 - `Expr_LessThanOrEqual::Expr_LessThanOrEqual()`
     pub fn Expr_LessThanOrEqual_ctor_handleexprgeneralexpression2(
-        exp1: *const HandleExprGeneralExpression,
-        exp2: *const HandleExprGeneralExpression,
+        exp1: *const Handle_Expr_GeneralExpression,
+        exp2: *const Handle_Expr_GeneralExpression,
     ) -> crate::OcctResult<*mut Expr_LessThanOrEqual>;
-    /// **Source:** `Expr_LessThanOrEqual.hxx`:39 - `Expr_LessThanOrEqual::IsSatisfied()`
+    /// **Source:** `Expr_LessThanOrEqual.hxx`:36 - `Expr_LessThanOrEqual::IsSatisfied()`
     pub fn Expr_LessThanOrEqual_is_satisfied(
         self_: *const Expr_LessThanOrEqual,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `Expr_LessThanOrEqual.hxx`:44 - `Expr_LessThanOrEqual::Simplified()`
+    /// **Source:** `Expr_LessThanOrEqual.hxx`:41 - `Expr_LessThanOrEqual::Simplified()`
     pub fn Expr_LessThanOrEqual_simplified(
         self_: *const Expr_LessThanOrEqual,
-    ) -> crate::OcctResult<*mut HandleExprGeneralRelation>;
-    /// **Source:** `Expr_LessThanOrEqual.hxx`:48 - `Expr_LessThanOrEqual::Simplify()`
+    ) -> crate::OcctResult<*mut Handle_Expr_GeneralRelation>;
+    /// **Source:** `Expr_LessThanOrEqual.hxx`:45 - `Expr_LessThanOrEqual::Simplify()`
     pub fn Expr_LessThanOrEqual_simplify(
         self_: *mut Expr_LessThanOrEqual,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `Expr_LessThanOrEqual.hxx`:51 - `Expr_LessThanOrEqual::Copy()`
+    /// **Source:** `Expr_LessThanOrEqual.hxx`:48 - `Expr_LessThanOrEqual::Copy()`
     pub fn Expr_LessThanOrEqual_copy(
         self_: *const Expr_LessThanOrEqual,
-    ) -> crate::OcctResult<*mut HandleExprGeneralRelation>;
-    /// **Source:** `Expr_LessThanOrEqual.hxx`:54 - `Expr_LessThanOrEqual::String()`
+    ) -> crate::OcctResult<*mut Handle_Expr_GeneralRelation>;
+    /// **Source:** `Expr_LessThanOrEqual.hxx`:51 - `Expr_LessThanOrEqual::String()`
     pub fn Expr_LessThanOrEqual_string(
         self_: *const Expr_LessThanOrEqual,
     ) -> crate::OcctResult<*mut TCollection_AsciiString>;
-    /// **Source:** `Expr_LessThanOrEqual.hxx`:56 - `Expr_LessThanOrEqual::DynamicType()`
+    /// **Source:** `Expr_LessThanOrEqual.hxx`:53 - `Expr_LessThanOrEqual::DynamicType()`
     pub fn Expr_LessThanOrEqual_dynamic_type(
         self_: *const Expr_LessThanOrEqual,
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// **Source:** `Expr_LessThanOrEqual.hxx`:56 - `Expr_LessThanOrEqual::get_type_name()`
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
+    /// **Source:** `Expr_LessThanOrEqual.hxx`:53 - `Expr_LessThanOrEqual::get_type_name()`
     pub fn Expr_LessThanOrEqual_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
-    /// **Source:** `Expr_LessThanOrEqual.hxx`:56 - `Expr_LessThanOrEqual::get_type_descriptor()`
-    pub fn Expr_LessThanOrEqual_get_type_descriptor() -> crate::OcctResult<*const HandleStandardType>;
+    /// **Source:** `Expr_LessThanOrEqual.hxx`:53 - `Expr_LessThanOrEqual::get_type_descriptor()`
+    pub fn Expr_LessThanOrEqual_get_type_descriptor(
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast Expr_LessThanOrEqual to Expr_SingleRelation
     pub fn Expr_LessThanOrEqual_as_Expr_SingleRelation(
         self_: *const Expr_LessThanOrEqual,
@@ -4873,155 +4357,149 @@ unsafe extern "C" {
     /// Wrap Expr_LessThanOrEqual in a Handle
     pub fn Expr_LessThanOrEqual_to_handle(
         obj: *mut Expr_LessThanOrEqual,
-    ) -> crate::OcctResult<*mut HandleExprLessThanOrEqual>;
+    ) -> crate::OcctResult<*mut Handle_Expr_LessThanOrEqual>;
     /// Destroy Handle<Expr_LessThanOrEqual>
-    pub fn HandleExprLessThanOrEqual_destructor(self_: *mut HandleExprLessThanOrEqual);
+    pub fn Handle_Expr_LessThanOrEqual_destructor(self_: *mut Handle_Expr_LessThanOrEqual);
     /// Clone Handle<Expr_LessThanOrEqual> (increments reference count)
-    pub fn HandleExprLessThanOrEqual_clone(
-        self_: *const HandleExprLessThanOrEqual,
-    ) -> crate::OcctResult<*mut HandleExprLessThanOrEqual>;
+    pub fn Handle_Expr_LessThanOrEqual_clone(
+        self_: *const Handle_Expr_LessThanOrEqual,
+    ) -> crate::OcctResult<*mut Handle_Expr_LessThanOrEqual>;
     /// Check if Handle<Expr_LessThanOrEqual> is null
-    pub fn HandleExprLessThanOrEqual_is_null(self_: *const HandleExprLessThanOrEqual) -> bool;
+    pub fn Handle_Expr_LessThanOrEqual_is_null(self_: *const Handle_Expr_LessThanOrEqual) -> bool;
     /// Dereference Handle to get *const Expr_LessThanOrEqual
-    pub fn HandleExprLessThanOrEqual_get(
-        handle: *const HandleExprLessThanOrEqual,
+    pub fn Handle_Expr_LessThanOrEqual_get(
+        handle: *const Handle_Expr_LessThanOrEqual,
     ) -> crate::OcctResult<*const Expr_LessThanOrEqual>;
     /// Dereference Handle to get *mut Expr_LessThanOrEqual
-    pub fn HandleExprLessThanOrEqual_get_mut(
-        handle: *mut HandleExprLessThanOrEqual,
+    pub fn Handle_Expr_LessThanOrEqual_get_mut(
+        handle: *mut Handle_Expr_LessThanOrEqual,
     ) -> crate::OcctResult<*mut Expr_LessThanOrEqual>;
     /// Upcast Handle<Expr_LessThanOrEqual> to Handle<Expr_SingleRelation>
-    pub fn HandleExprLessThanOrEqual_to_HandleExprSingleRelation(
-        self_: *const HandleExprLessThanOrEqual,
-    ) -> crate::OcctResult<*mut HandleExprSingleRelation>;
+    pub fn Handle_Expr_LessThanOrEqual_to_Handle_Expr_SingleRelation(
+        self_: *const Handle_Expr_LessThanOrEqual,
+    ) -> crate::OcctResult<*mut Handle_Expr_SingleRelation>;
     /// Upcast Handle<Expr_LessThanOrEqual> to Handle<Expr_GeneralRelation>
-    pub fn HandleExprLessThanOrEqual_to_HandleExprGeneralRelation(
-        self_: *const HandleExprLessThanOrEqual,
-    ) -> crate::OcctResult<*mut HandleExprGeneralRelation>;
+    pub fn Handle_Expr_LessThanOrEqual_to_Handle_Expr_GeneralRelation(
+        self_: *const Handle_Expr_LessThanOrEqual,
+    ) -> crate::OcctResult<*mut Handle_Expr_GeneralRelation>;
     /// Upcast Handle<Expr_LessThanOrEqual> to Handle<Standard_Transient>
-    pub fn HandleExprLessThanOrEqual_to_HandleStandardTransient(
-        self_: *const HandleExprLessThanOrEqual,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
-    /// Inherited: **Source:** `Expr_SingleRelation.hxx`:36 - `Expr_SingleRelation::SetFirstMember()`
+    pub fn Handle_Expr_LessThanOrEqual_to_Handle_Standard_Transient(
+        self_: *const Handle_Expr_LessThanOrEqual,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
+    /// Inherited: **Source:** `Expr_SingleRelation.hxx`:33 - `Expr_SingleRelation::SetFirstMember()`
     pub fn Expr_LessThanOrEqual_inherited_SetFirstMember(
         self_: *mut Expr_LessThanOrEqual,
-        exp: *const HandleExprGeneralExpression,
+        exp: *const Handle_Expr_GeneralExpression,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Expr_SingleRelation.hxx`:39 - `Expr_SingleRelation::SetSecondMember()`
+    /// Inherited: **Source:** `Expr_SingleRelation.hxx`:36 - `Expr_SingleRelation::SetSecondMember()`
     pub fn Expr_LessThanOrEqual_inherited_SetSecondMember(
         self_: *mut Expr_LessThanOrEqual,
-        exp: *const HandleExprGeneralExpression,
+        exp: *const Handle_Expr_GeneralExpression,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Expr_SingleRelation.hxx`:42 - `Expr_SingleRelation::FirstMember()`
+    /// Inherited: **Source:** `Expr_SingleRelation.hxx`:39 - `Expr_SingleRelation::FirstMember()`
     pub fn Expr_LessThanOrEqual_inherited_FirstMember(
         self_: *const Expr_LessThanOrEqual,
-    ) -> crate::OcctResult<*mut HandleExprGeneralExpression>;
-    /// Inherited: **Source:** `Expr_SingleRelation.hxx`:45 - `Expr_SingleRelation::SecondMember()`
+    ) -> crate::OcctResult<*mut Handle_Expr_GeneralExpression>;
+    /// Inherited: **Source:** `Expr_SingleRelation.hxx`:42 - `Expr_SingleRelation::SecondMember()`
     pub fn Expr_LessThanOrEqual_inherited_SecondMember(
         self_: *const Expr_LessThanOrEqual,
-    ) -> crate::OcctResult<*mut HandleExprGeneralExpression>;
-    /// Inherited: **Source:** `Expr_SingleRelation.hxx`:48 - `Expr_SingleRelation::IsLinear()`
+    ) -> crate::OcctResult<*mut Handle_Expr_GeneralExpression>;
+    /// Inherited: **Source:** `Expr_SingleRelation.hxx`:45 - `Expr_SingleRelation::IsLinear()`
     pub fn Expr_LessThanOrEqual_inherited_IsLinear(
         self_: *const Expr_LessThanOrEqual,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Expr_SingleRelation.hxx`:51 - `Expr_SingleRelation::NbOfSubRelations()`
+    /// Inherited: **Source:** `Expr_SingleRelation.hxx`:48 - `Expr_SingleRelation::NbOfSubRelations()`
     pub fn Expr_LessThanOrEqual_inherited_NbOfSubRelations(
         self_: *const Expr_LessThanOrEqual,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Expr_SingleRelation.hxx`:55 - `Expr_SingleRelation::NbOfSingleRelations()`
+    /// Inherited: **Source:** `Expr_SingleRelation.hxx`:52 - `Expr_SingleRelation::NbOfSingleRelations()`
     pub fn Expr_LessThanOrEqual_inherited_NbOfSingleRelations(
         self_: *const Expr_LessThanOrEqual,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Expr_SingleRelation.hxx`:59 - `Expr_SingleRelation::SubRelation()`
+    /// Inherited: **Source:** `Expr_SingleRelation.hxx`:56 - `Expr_SingleRelation::SubRelation()`
     pub fn Expr_LessThanOrEqual_inherited_SubRelation(
         self_: *const Expr_LessThanOrEqual,
         index: i32,
-    ) -> crate::OcctResult<*mut HandleExprGeneralRelation>;
-    /// Inherited: **Source:** `Expr_SingleRelation.hxx`:64 - `Expr_SingleRelation::Contains()`
+    ) -> crate::OcctResult<*mut Handle_Expr_GeneralRelation>;
+    /// Inherited: **Source:** `Expr_SingleRelation.hxx`:59 - `Expr_SingleRelation::Contains()`
     pub fn Expr_LessThanOrEqual_inherited_Contains(
         self_: *const Expr_LessThanOrEqual,
-        exp: *const HandleExprGeneralExpression,
+        exp: *const Handle_Expr_GeneralExpression,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Expr_SingleRelation.hxx`:67 - `Expr_SingleRelation::Replace()`
+    /// Inherited: **Source:** `Expr_SingleRelation.hxx`:62 - `Expr_SingleRelation::Replace()`
     pub fn Expr_LessThanOrEqual_inherited_Replace(
         self_: *mut Expr_LessThanOrEqual,
-        var: *const HandleExprNamedUnknown,
-        with: *const HandleExprGeneralExpression,
+        var: *const Handle_Expr_NamedUnknown,
+        with: *const Handle_Expr_GeneralExpression,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn Expr_LessThanOrEqual_inherited_IsInstance(
         self_: *const Expr_LessThanOrEqual,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn Expr_LessThanOrEqual_inherited_IsKind(
         self_: *const Expr_LessThanOrEqual,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn Expr_LessThanOrEqual_inherited_This(
         self_: *const Expr_LessThanOrEqual,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn Expr_LessThanOrEqual_inherited_GetRefCount(
         self_: *const Expr_LessThanOrEqual,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn Expr_LessThanOrEqual_inherited_IncrementRefCounter(
         self_: *mut Expr_LessThanOrEqual,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn Expr_LessThanOrEqual_inherited_DecrementRefCounter(
         self_: *mut Expr_LessThanOrEqual,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn Expr_LessThanOrEqual_inherited_Delete(
         self_: *const Expr_LessThanOrEqual,
     ) -> *const std::ffi::c_char;
     // ======================== Expr_LogOf10 ========================
     pub fn Expr_LogOf10_destructor(self_: *mut Expr_LogOf10);
-    /// **Source:** `Expr_LogOf10.hxx`:38 - `Expr_LogOf10::Expr_LogOf10()`
+    /// **Source:** `Expr_LogOf10.hxx`:34 - `Expr_LogOf10::Expr_LogOf10()`
     pub fn Expr_LogOf10_ctor_handleexprgeneralexpression(
-        exp: *const HandleExprGeneralExpression,
+        exp: *const Handle_Expr_GeneralExpression,
     ) -> crate::OcctResult<*mut Expr_LogOf10>;
-    /// **Source:** `Expr_LogOf10.hxx`:42 - `Expr_LogOf10::ShallowSimplified()`
+    /// **Source:** `Expr_LogOf10.hxx`:38 - `Expr_LogOf10::ShallowSimplified()`
     pub fn Expr_LogOf10_shallow_simplified(
         self_: *const Expr_LogOf10,
-    ) -> crate::OcctResult<*mut HandleExprGeneralExpression>;
-    /// **Source:** `Expr_LogOf10.hxx`:45 - `Expr_LogOf10::Copy()`
+    ) -> crate::OcctResult<*mut Handle_Expr_GeneralExpression>;
+    /// **Source:** `Expr_LogOf10.hxx`:41 - `Expr_LogOf10::Copy()`
     pub fn Expr_LogOf10_copy(
         self_: *const Expr_LogOf10,
-    ) -> crate::OcctResult<*mut HandleExprGeneralExpression>;
-    /// **Source:** `Expr_LogOf10.hxx`:51 - `Expr_LogOf10::IsIdentical()`
+    ) -> crate::OcctResult<*mut Handle_Expr_GeneralExpression>;
+    /// **Source:** `Expr_LogOf10.hxx`:46 - `Expr_LogOf10::IsIdentical()`
     pub fn Expr_LogOf10_is_identical(
         self_: *const Expr_LogOf10,
-        Other: *const HandleExprGeneralExpression,
+        Other: *const Handle_Expr_GeneralExpression,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `Expr_LogOf10.hxx`:53 - `Expr_LogOf10::IsLinear()`
+    /// **Source:** `Expr_LogOf10.hxx`:48 - `Expr_LogOf10::IsLinear()`
     pub fn Expr_LogOf10_is_linear(self_: *const Expr_LogOf10) -> crate::OcctResult<bool>;
-    /// **Source:** `Expr_LogOf10.hxx`:56 - `Expr_LogOf10::Derivative()`
+    /// **Source:** `Expr_LogOf10.hxx`:51 - `Expr_LogOf10::Derivative()`
     pub fn Expr_LogOf10_derivative(
         self_: *const Expr_LogOf10,
-        X: *const HandleExprNamedUnknown,
-    ) -> crate::OcctResult<*mut HandleExprGeneralExpression>;
-    /// **Source:** `Expr_LogOf10.hxx`:63 - `Expr_LogOf10::Evaluate()`
-    pub fn Expr_LogOf10_evaluate(
-        self_: *const Expr_LogOf10,
-        vars: *const Expr_Array1OfNamedUnknown,
-        vals: *const TColStd_Array1OfReal,
-    ) -> crate::OcctResult<f64>;
-    /// **Source:** `Expr_LogOf10.hxx`:67 - `Expr_LogOf10::String()`
+        X: *const Handle_Expr_NamedUnknown,
+    ) -> crate::OcctResult<*mut Handle_Expr_GeneralExpression>;
+    /// **Source:** `Expr_LogOf10.hxx`:62 - `Expr_LogOf10::String()`
     pub fn Expr_LogOf10_string(
         self_: *const Expr_LogOf10,
     ) -> crate::OcctResult<*mut TCollection_AsciiString>;
-    /// **Source:** `Expr_LogOf10.hxx`:69 - `Expr_LogOf10::DynamicType()`
+    /// **Source:** `Expr_LogOf10.hxx`:64 - `Expr_LogOf10::DynamicType()`
     pub fn Expr_LogOf10_dynamic_type(
         self_: *const Expr_LogOf10,
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// **Source:** `Expr_LogOf10.hxx`:69 - `Expr_LogOf10::get_type_name()`
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
+    /// **Source:** `Expr_LogOf10.hxx`:64 - `Expr_LogOf10::get_type_name()`
     pub fn Expr_LogOf10_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
-    /// **Source:** `Expr_LogOf10.hxx`:69 - `Expr_LogOf10::get_type_descriptor()`
-    pub fn Expr_LogOf10_get_type_descriptor() -> crate::OcctResult<*const HandleStandardType>;
+    /// **Source:** `Expr_LogOf10.hxx`:64 - `Expr_LogOf10::get_type_descriptor()`
+    pub fn Expr_LogOf10_get_type_descriptor() -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast Expr_LogOf10 to Expr_UnaryExpression
     pub fn Expr_LogOf10_as_Expr_UnaryExpression(
         self_: *const Expr_LogOf10,
@@ -5049,157 +4527,151 @@ unsafe extern "C" {
     /// Wrap Expr_LogOf10 in a Handle
     pub fn Expr_LogOf10_to_handle(
         obj: *mut Expr_LogOf10,
-    ) -> crate::OcctResult<*mut HandleExprLogOf10>;
+    ) -> crate::OcctResult<*mut Handle_Expr_LogOf10>;
     /// Destroy Handle<Expr_LogOf10>
-    pub fn HandleExprLogOf10_destructor(self_: *mut HandleExprLogOf10);
+    pub fn Handle_Expr_LogOf10_destructor(self_: *mut Handle_Expr_LogOf10);
     /// Clone Handle<Expr_LogOf10> (increments reference count)
-    pub fn HandleExprLogOf10_clone(
-        self_: *const HandleExprLogOf10,
-    ) -> crate::OcctResult<*mut HandleExprLogOf10>;
+    pub fn Handle_Expr_LogOf10_clone(
+        self_: *const Handle_Expr_LogOf10,
+    ) -> crate::OcctResult<*mut Handle_Expr_LogOf10>;
     /// Check if Handle<Expr_LogOf10> is null
-    pub fn HandleExprLogOf10_is_null(self_: *const HandleExprLogOf10) -> bool;
+    pub fn Handle_Expr_LogOf10_is_null(self_: *const Handle_Expr_LogOf10) -> bool;
     /// Dereference Handle to get *const Expr_LogOf10
-    pub fn HandleExprLogOf10_get(
-        handle: *const HandleExprLogOf10,
+    pub fn Handle_Expr_LogOf10_get(
+        handle: *const Handle_Expr_LogOf10,
     ) -> crate::OcctResult<*const Expr_LogOf10>;
     /// Dereference Handle to get *mut Expr_LogOf10
-    pub fn HandleExprLogOf10_get_mut(
-        handle: *mut HandleExprLogOf10,
+    pub fn Handle_Expr_LogOf10_get_mut(
+        handle: *mut Handle_Expr_LogOf10,
     ) -> crate::OcctResult<*mut Expr_LogOf10>;
     /// Upcast Handle<Expr_LogOf10> to Handle<Expr_UnaryExpression>
-    pub fn HandleExprLogOf10_to_HandleExprUnaryExpression(
-        self_: *const HandleExprLogOf10,
-    ) -> crate::OcctResult<*mut HandleExprUnaryExpression>;
+    pub fn Handle_Expr_LogOf10_to_Handle_Expr_UnaryExpression(
+        self_: *const Handle_Expr_LogOf10,
+    ) -> crate::OcctResult<*mut Handle_Expr_UnaryExpression>;
     /// Upcast Handle<Expr_LogOf10> to Handle<Expr_GeneralExpression>
-    pub fn HandleExprLogOf10_to_HandleExprGeneralExpression(
-        self_: *const HandleExprLogOf10,
-    ) -> crate::OcctResult<*mut HandleExprGeneralExpression>;
+    pub fn Handle_Expr_LogOf10_to_Handle_Expr_GeneralExpression(
+        self_: *const Handle_Expr_LogOf10,
+    ) -> crate::OcctResult<*mut Handle_Expr_GeneralExpression>;
     /// Upcast Handle<Expr_LogOf10> to Handle<Standard_Transient>
-    pub fn HandleExprLogOf10_to_HandleStandardTransient(
-        self_: *const HandleExprLogOf10,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
-    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:35 - `Expr_UnaryExpression::Operand()`
+    pub fn Handle_Expr_LogOf10_to_Handle_Standard_Transient(
+        self_: *const Handle_Expr_LogOf10,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
+    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:32 - `Expr_UnaryExpression::Operand()`
     pub fn Expr_LogOf10_inherited_Operand(
         self_: *const Expr_LogOf10,
-    ) -> crate::OcctResult<*const HandleExprGeneralExpression>;
-    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:39 - `Expr_UnaryExpression::SetOperand()`
+    ) -> crate::OcctResult<*const Handle_Expr_GeneralExpression>;
+    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:36 - `Expr_UnaryExpression::SetOperand()`
     pub fn Expr_LogOf10_inherited_SetOperand(
         self_: *mut Expr_LogOf10,
-        exp: *const HandleExprGeneralExpression,
+        exp: *const Handle_Expr_GeneralExpression,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:43 - `Expr_UnaryExpression::NbSubExpressions()`
+    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:40 - `Expr_UnaryExpression::NbSubExpressions()`
     pub fn Expr_LogOf10_inherited_NbSubExpressions(
         self_: *const Expr_LogOf10,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:47 - `Expr_UnaryExpression::SubExpression()`
+    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:44 - `Expr_UnaryExpression::SubExpression()`
     pub fn Expr_LogOf10_inherited_SubExpression(
         self_: *const Expr_LogOf10,
         I: i32,
-    ) -> crate::OcctResult<*const HandleExprGeneralExpression>;
-    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:51 - `Expr_UnaryExpression::ContainsUnknowns()`
+    ) -> crate::OcctResult<*const Handle_Expr_GeneralExpression>;
+    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:48 - `Expr_UnaryExpression::ContainsUnknowns()`
     pub fn Expr_LogOf10_inherited_ContainsUnknowns(
         self_: *const Expr_LogOf10,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:55 - `Expr_UnaryExpression::Contains()`
+    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:51 - `Expr_UnaryExpression::Contains()`
     pub fn Expr_LogOf10_inherited_Contains(
         self_: *const Expr_LogOf10,
-        exp: *const HandleExprGeneralExpression,
+        exp: *const Handle_Expr_GeneralExpression,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:59 - `Expr_UnaryExpression::Replace()`
+    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:55 - `Expr_UnaryExpression::Replace()`
     pub fn Expr_LogOf10_inherited_Replace(
         self_: *mut Expr_LogOf10,
-        var: *const HandleExprNamedUnknown,
-        with: *const HandleExprGeneralExpression,
+        var: *const Handle_Expr_NamedUnknown,
+        with: *const Handle_Expr_GeneralExpression,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:65 - `Expr_UnaryExpression::Simplified()`
+    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:61 - `Expr_UnaryExpression::Simplified()`
     pub fn Expr_LogOf10_inherited_Simplified(
         self_: *const Expr_LogOf10,
-    ) -> crate::OcctResult<*mut HandleExprGeneralExpression>;
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:76 - `Expr_GeneralExpression::IsShareable()`
+    ) -> crate::OcctResult<*mut Handle_Expr_GeneralExpression>;
+    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:71 - `Expr_GeneralExpression::IsShareable()`
     pub fn Expr_LogOf10_inherited_IsShareable(
         self_: *const Expr_LogOf10,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:91 - `Expr_GeneralExpression::NDerivative()`
+    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:86 - `Expr_GeneralExpression::NDerivative()`
     pub fn Expr_LogOf10_inherited_NDerivative(
         self_: *const Expr_LogOf10,
-        X: *const HandleExprNamedUnknown,
+        X: *const Handle_Expr_NamedUnknown,
         N: i32,
-    ) -> crate::OcctResult<*mut HandleExprGeneralExpression>;
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:112 - `Expr_GeneralExpression::EvaluateNumeric()`
+    ) -> crate::OcctResult<*mut Handle_Expr_GeneralExpression>;
+    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:108 - `Expr_GeneralExpression::EvaluateNumeric()`
     pub fn Expr_LogOf10_inherited_EvaluateNumeric(
         self_: *const Expr_LogOf10,
     ) -> crate::OcctResult<f64>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn Expr_LogOf10_inherited_IsInstance(
         self_: *const Expr_LogOf10,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn Expr_LogOf10_inherited_IsKind(
         self_: *const Expr_LogOf10,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn Expr_LogOf10_inherited_This(
         self_: *const Expr_LogOf10,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn Expr_LogOf10_inherited_GetRefCount(self_: *const Expr_LogOf10)
         -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn Expr_LogOf10_inherited_IncrementRefCounter(
         self_: *mut Expr_LogOf10,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn Expr_LogOf10_inherited_DecrementRefCounter(
         self_: *mut Expr_LogOf10,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn Expr_LogOf10_inherited_Delete(self_: *const Expr_LogOf10) -> *const std::ffi::c_char;
     // ======================== Expr_LogOfe ========================
     pub fn Expr_LogOfe_destructor(self_: *mut Expr_LogOfe);
-    /// **Source:** `Expr_LogOfe.hxx`:38 - `Expr_LogOfe::Expr_LogOfe()`
+    /// **Source:** `Expr_LogOfe.hxx`:34 - `Expr_LogOfe::Expr_LogOfe()`
     pub fn Expr_LogOfe_ctor_handleexprgeneralexpression(
-        exp: *const HandleExprGeneralExpression,
+        exp: *const Handle_Expr_GeneralExpression,
     ) -> crate::OcctResult<*mut Expr_LogOfe>;
-    /// **Source:** `Expr_LogOfe.hxx`:42 - `Expr_LogOfe::ShallowSimplified()`
+    /// **Source:** `Expr_LogOfe.hxx`:38 - `Expr_LogOfe::ShallowSimplified()`
     pub fn Expr_LogOfe_shallow_simplified(
         self_: *const Expr_LogOfe,
-    ) -> crate::OcctResult<*mut HandleExprGeneralExpression>;
-    /// **Source:** `Expr_LogOfe.hxx`:45 - `Expr_LogOfe::Copy()`
+    ) -> crate::OcctResult<*mut Handle_Expr_GeneralExpression>;
+    /// **Source:** `Expr_LogOfe.hxx`:41 - `Expr_LogOfe::Copy()`
     pub fn Expr_LogOfe_copy(
         self_: *const Expr_LogOfe,
-    ) -> crate::OcctResult<*mut HandleExprGeneralExpression>;
-    /// **Source:** `Expr_LogOfe.hxx`:51 - `Expr_LogOfe::IsIdentical()`
+    ) -> crate::OcctResult<*mut Handle_Expr_GeneralExpression>;
+    /// **Source:** `Expr_LogOfe.hxx`:46 - `Expr_LogOfe::IsIdentical()`
     pub fn Expr_LogOfe_is_identical(
         self_: *const Expr_LogOfe,
-        Other: *const HandleExprGeneralExpression,
+        Other: *const Handle_Expr_GeneralExpression,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `Expr_LogOfe.hxx`:53 - `Expr_LogOfe::IsLinear()`
+    /// **Source:** `Expr_LogOfe.hxx`:48 - `Expr_LogOfe::IsLinear()`
     pub fn Expr_LogOfe_is_linear(self_: *const Expr_LogOfe) -> crate::OcctResult<bool>;
-    /// **Source:** `Expr_LogOfe.hxx`:56 - `Expr_LogOfe::Derivative()`
+    /// **Source:** `Expr_LogOfe.hxx`:51 - `Expr_LogOfe::Derivative()`
     pub fn Expr_LogOfe_derivative(
         self_: *const Expr_LogOfe,
-        X: *const HandleExprNamedUnknown,
-    ) -> crate::OcctResult<*mut HandleExprGeneralExpression>;
-    /// **Source:** `Expr_LogOfe.hxx`:63 - `Expr_LogOfe::Evaluate()`
-    pub fn Expr_LogOfe_evaluate(
-        self_: *const Expr_LogOfe,
-        vars: *const Expr_Array1OfNamedUnknown,
-        vals: *const TColStd_Array1OfReal,
-    ) -> crate::OcctResult<f64>;
-    /// **Source:** `Expr_LogOfe.hxx`:67 - `Expr_LogOfe::String()`
+        X: *const Handle_Expr_NamedUnknown,
+    ) -> crate::OcctResult<*mut Handle_Expr_GeneralExpression>;
+    /// **Source:** `Expr_LogOfe.hxx`:62 - `Expr_LogOfe::String()`
     pub fn Expr_LogOfe_string(
         self_: *const Expr_LogOfe,
     ) -> crate::OcctResult<*mut TCollection_AsciiString>;
-    /// **Source:** `Expr_LogOfe.hxx`:69 - `Expr_LogOfe::DynamicType()`
+    /// **Source:** `Expr_LogOfe.hxx`:64 - `Expr_LogOfe::DynamicType()`
     pub fn Expr_LogOfe_dynamic_type(
         self_: *const Expr_LogOfe,
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// **Source:** `Expr_LogOfe.hxx`:69 - `Expr_LogOfe::get_type_name()`
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
+    /// **Source:** `Expr_LogOfe.hxx`:64 - `Expr_LogOfe::get_type_name()`
     pub fn Expr_LogOfe_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
-    /// **Source:** `Expr_LogOfe.hxx`:69 - `Expr_LogOfe::get_type_descriptor()`
-    pub fn Expr_LogOfe_get_type_descriptor() -> crate::OcctResult<*const HandleStandardType>;
+    /// **Source:** `Expr_LogOfe.hxx`:64 - `Expr_LogOfe::get_type_descriptor()`
+    pub fn Expr_LogOfe_get_type_descriptor() -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast Expr_LogOfe to Expr_UnaryExpression
     pub fn Expr_LogOfe_as_Expr_UnaryExpression(
         self_: *const Expr_LogOfe,
@@ -5225,186 +4697,181 @@ unsafe extern "C" {
         self_: *mut Expr_LogOfe,
     ) -> crate::OcctResult<*mut Standard_Transient>;
     /// Wrap Expr_LogOfe in a Handle
-    pub fn Expr_LogOfe_to_handle(obj: *mut Expr_LogOfe)
-        -> crate::OcctResult<*mut HandleExprLogOfe>;
+    pub fn Expr_LogOfe_to_handle(
+        obj: *mut Expr_LogOfe,
+    ) -> crate::OcctResult<*mut Handle_Expr_LogOfe>;
     /// Destroy Handle<Expr_LogOfe>
-    pub fn HandleExprLogOfe_destructor(self_: *mut HandleExprLogOfe);
+    pub fn Handle_Expr_LogOfe_destructor(self_: *mut Handle_Expr_LogOfe);
     /// Clone Handle<Expr_LogOfe> (increments reference count)
-    pub fn HandleExprLogOfe_clone(
-        self_: *const HandleExprLogOfe,
-    ) -> crate::OcctResult<*mut HandleExprLogOfe>;
+    pub fn Handle_Expr_LogOfe_clone(
+        self_: *const Handle_Expr_LogOfe,
+    ) -> crate::OcctResult<*mut Handle_Expr_LogOfe>;
     /// Check if Handle<Expr_LogOfe> is null
-    pub fn HandleExprLogOfe_is_null(self_: *const HandleExprLogOfe) -> bool;
+    pub fn Handle_Expr_LogOfe_is_null(self_: *const Handle_Expr_LogOfe) -> bool;
     /// Dereference Handle to get *const Expr_LogOfe
-    pub fn HandleExprLogOfe_get(
-        handle: *const HandleExprLogOfe,
+    pub fn Handle_Expr_LogOfe_get(
+        handle: *const Handle_Expr_LogOfe,
     ) -> crate::OcctResult<*const Expr_LogOfe>;
     /// Dereference Handle to get *mut Expr_LogOfe
-    pub fn HandleExprLogOfe_get_mut(
-        handle: *mut HandleExprLogOfe,
+    pub fn Handle_Expr_LogOfe_get_mut(
+        handle: *mut Handle_Expr_LogOfe,
     ) -> crate::OcctResult<*mut Expr_LogOfe>;
     /// Upcast Handle<Expr_LogOfe> to Handle<Expr_UnaryExpression>
-    pub fn HandleExprLogOfe_to_HandleExprUnaryExpression(
-        self_: *const HandleExprLogOfe,
-    ) -> crate::OcctResult<*mut HandleExprUnaryExpression>;
+    pub fn Handle_Expr_LogOfe_to_Handle_Expr_UnaryExpression(
+        self_: *const Handle_Expr_LogOfe,
+    ) -> crate::OcctResult<*mut Handle_Expr_UnaryExpression>;
     /// Upcast Handle<Expr_LogOfe> to Handle<Expr_GeneralExpression>
-    pub fn HandleExprLogOfe_to_HandleExprGeneralExpression(
-        self_: *const HandleExprLogOfe,
-    ) -> crate::OcctResult<*mut HandleExprGeneralExpression>;
+    pub fn Handle_Expr_LogOfe_to_Handle_Expr_GeneralExpression(
+        self_: *const Handle_Expr_LogOfe,
+    ) -> crate::OcctResult<*mut Handle_Expr_GeneralExpression>;
     /// Upcast Handle<Expr_LogOfe> to Handle<Standard_Transient>
-    pub fn HandleExprLogOfe_to_HandleStandardTransient(
-        self_: *const HandleExprLogOfe,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
-    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:35 - `Expr_UnaryExpression::Operand()`
+    pub fn Handle_Expr_LogOfe_to_Handle_Standard_Transient(
+        self_: *const Handle_Expr_LogOfe,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
+    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:32 - `Expr_UnaryExpression::Operand()`
     pub fn Expr_LogOfe_inherited_Operand(
         self_: *const Expr_LogOfe,
-    ) -> crate::OcctResult<*const HandleExprGeneralExpression>;
-    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:39 - `Expr_UnaryExpression::SetOperand()`
+    ) -> crate::OcctResult<*const Handle_Expr_GeneralExpression>;
+    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:36 - `Expr_UnaryExpression::SetOperand()`
     pub fn Expr_LogOfe_inherited_SetOperand(
         self_: *mut Expr_LogOfe,
-        exp: *const HandleExprGeneralExpression,
+        exp: *const Handle_Expr_GeneralExpression,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:43 - `Expr_UnaryExpression::NbSubExpressions()`
+    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:40 - `Expr_UnaryExpression::NbSubExpressions()`
     pub fn Expr_LogOfe_inherited_NbSubExpressions(
         self_: *const Expr_LogOfe,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:47 - `Expr_UnaryExpression::SubExpression()`
+    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:44 - `Expr_UnaryExpression::SubExpression()`
     pub fn Expr_LogOfe_inherited_SubExpression(
         self_: *const Expr_LogOfe,
         I: i32,
-    ) -> crate::OcctResult<*const HandleExprGeneralExpression>;
-    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:51 - `Expr_UnaryExpression::ContainsUnknowns()`
+    ) -> crate::OcctResult<*const Handle_Expr_GeneralExpression>;
+    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:48 - `Expr_UnaryExpression::ContainsUnknowns()`
     pub fn Expr_LogOfe_inherited_ContainsUnknowns(
         self_: *const Expr_LogOfe,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:55 - `Expr_UnaryExpression::Contains()`
+    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:51 - `Expr_UnaryExpression::Contains()`
     pub fn Expr_LogOfe_inherited_Contains(
         self_: *const Expr_LogOfe,
-        exp: *const HandleExprGeneralExpression,
+        exp: *const Handle_Expr_GeneralExpression,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:59 - `Expr_UnaryExpression::Replace()`
+    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:55 - `Expr_UnaryExpression::Replace()`
     pub fn Expr_LogOfe_inherited_Replace(
         self_: *mut Expr_LogOfe,
-        var: *const HandleExprNamedUnknown,
-        with: *const HandleExprGeneralExpression,
+        var: *const Handle_Expr_NamedUnknown,
+        with: *const Handle_Expr_GeneralExpression,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:65 - `Expr_UnaryExpression::Simplified()`
+    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:61 - `Expr_UnaryExpression::Simplified()`
     pub fn Expr_LogOfe_inherited_Simplified(
         self_: *const Expr_LogOfe,
-    ) -> crate::OcctResult<*mut HandleExprGeneralExpression>;
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:76 - `Expr_GeneralExpression::IsShareable()`
+    ) -> crate::OcctResult<*mut Handle_Expr_GeneralExpression>;
+    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:71 - `Expr_GeneralExpression::IsShareable()`
     pub fn Expr_LogOfe_inherited_IsShareable(self_: *const Expr_LogOfe) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:91 - `Expr_GeneralExpression::NDerivative()`
+    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:86 - `Expr_GeneralExpression::NDerivative()`
     pub fn Expr_LogOfe_inherited_NDerivative(
         self_: *const Expr_LogOfe,
-        X: *const HandleExprNamedUnknown,
+        X: *const Handle_Expr_NamedUnknown,
         N: i32,
-    ) -> crate::OcctResult<*mut HandleExprGeneralExpression>;
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:112 - `Expr_GeneralExpression::EvaluateNumeric()`
+    ) -> crate::OcctResult<*mut Handle_Expr_GeneralExpression>;
+    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:108 - `Expr_GeneralExpression::EvaluateNumeric()`
     pub fn Expr_LogOfe_inherited_EvaluateNumeric(
         self_: *const Expr_LogOfe,
     ) -> crate::OcctResult<f64>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn Expr_LogOfe_inherited_IsInstance(
         self_: *const Expr_LogOfe,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn Expr_LogOfe_inherited_IsKind(
         self_: *const Expr_LogOfe,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn Expr_LogOfe_inherited_This(
         self_: *const Expr_LogOfe,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn Expr_LogOfe_inherited_GetRefCount(self_: *const Expr_LogOfe) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn Expr_LogOfe_inherited_IncrementRefCounter(
         self_: *mut Expr_LogOfe,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn Expr_LogOfe_inherited_DecrementRefCounter(
         self_: *mut Expr_LogOfe,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn Expr_LogOfe_inherited_Delete(self_: *const Expr_LogOfe) -> *const std::ffi::c_char;
     // ======================== Expr_NamedConstant ========================
     pub fn Expr_NamedConstant_destructor(self_: *mut Expr_NamedConstant);
-    /// **Source:** `Expr_NamedConstant.hxx`:41 - `Expr_NamedConstant::Expr_NamedConstant()`
+    /// **Source:** `Expr_NamedConstant.hxx`:37 - `Expr_NamedConstant::Expr_NamedConstant()`
     pub fn Expr_NamedConstant_ctor_asciistring_real(
         name: *const TCollection_AsciiString,
         value: f64,
     ) -> crate::OcctResult<*mut Expr_NamedConstant>;
-    /// **Source:** `Expr_NamedConstant.hxx`:44 - `Expr_NamedConstant::GetValue()`
+    /// **Source:** `Expr_NamedConstant.hxx`:39 - `Expr_NamedConstant::GetValue()`
     pub fn Expr_NamedConstant_get_value(self_: *const Expr_NamedConstant)
         -> crate::OcctResult<f64>;
-    /// **Source:** `Expr_NamedConstant.hxx`:48 - `Expr_NamedConstant::NbSubExpressions()`
+    /// **Source:** `Expr_NamedConstant.hxx`:43 - `Expr_NamedConstant::NbSubExpressions()`
     pub fn Expr_NamedConstant_nb_sub_expressions(
         self_: *const Expr_NamedConstant,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `Expr_NamedConstant.hxx`:52 - `Expr_NamedConstant::SubExpression()`
+    /// **Source:** `Expr_NamedConstant.hxx`:47 - `Expr_NamedConstant::SubExpression()`
     pub fn Expr_NamedConstant_sub_expression(
         self_: *const Expr_NamedConstant,
         I: i32,
-    ) -> crate::OcctResult<*const HandleExprGeneralExpression>;
-    /// **Source:** `Expr_NamedConstant.hxx`:58 - `Expr_NamedConstant::Simplified()`
+    ) -> crate::OcctResult<*const Handle_Expr_GeneralExpression>;
+    /// **Source:** `Expr_NamedConstant.hxx`:53 - `Expr_NamedConstant::Simplified()`
     pub fn Expr_NamedConstant_simplified(
         self_: *const Expr_NamedConstant,
-    ) -> crate::OcctResult<*mut HandleExprGeneralExpression>;
-    /// **Source:** `Expr_NamedConstant.hxx`:62 - `Expr_NamedConstant::ShallowSimplified()`
+    ) -> crate::OcctResult<*mut Handle_Expr_GeneralExpression>;
+    /// **Source:** `Expr_NamedConstant.hxx`:57 - `Expr_NamedConstant::ShallowSimplified()`
     pub fn Expr_NamedConstant_shallow_simplified(
         self_: *const Expr_NamedConstant,
-    ) -> crate::OcctResult<*mut HandleExprGeneralExpression>;
-    /// **Source:** `Expr_NamedConstant.hxx`:65 - `Expr_NamedConstant::Copy()`
+    ) -> crate::OcctResult<*mut Handle_Expr_GeneralExpression>;
+    /// **Source:** `Expr_NamedConstant.hxx`:60 - `Expr_NamedConstant::Copy()`
     pub fn Expr_NamedConstant_copy(
         self_: *const Expr_NamedConstant,
-    ) -> crate::OcctResult<*mut HandleExprGeneralExpression>;
-    /// **Source:** `Expr_NamedConstant.hxx`:69 - `Expr_NamedConstant::ContainsUnknowns()`
+    ) -> crate::OcctResult<*mut Handle_Expr_GeneralExpression>;
+    /// **Source:** `Expr_NamedConstant.hxx`:64 - `Expr_NamedConstant::ContainsUnknowns()`
     pub fn Expr_NamedConstant_contains_unknowns(
         self_: *const Expr_NamedConstant,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `Expr_NamedConstant.hxx`:73 - `Expr_NamedConstant::Contains()`
+    /// **Source:** `Expr_NamedConstant.hxx`:67 - `Expr_NamedConstant::Contains()`
     pub fn Expr_NamedConstant_contains(
         self_: *const Expr_NamedConstant,
-        exp: *const HandleExprGeneralExpression,
+        exp: *const Handle_Expr_GeneralExpression,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `Expr_NamedConstant.hxx`:75 - `Expr_NamedConstant::IsLinear()`
+    /// **Source:** `Expr_NamedConstant.hxx`:69 - `Expr_NamedConstant::IsLinear()`
     pub fn Expr_NamedConstant_is_linear(
         self_: *const Expr_NamedConstant,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `Expr_NamedConstant.hxx`:78 - `Expr_NamedConstant::Derivative()`
+    /// **Source:** `Expr_NamedConstant.hxx`:72 - `Expr_NamedConstant::Derivative()`
     pub fn Expr_NamedConstant_derivative(
         self_: *const Expr_NamedConstant,
-        X: *const HandleExprNamedUnknown,
-    ) -> crate::OcctResult<*mut HandleExprGeneralExpression>;
-    /// **Source:** `Expr_NamedConstant.hxx`:83 - `Expr_NamedConstant::NDerivative()`
+        X: *const Handle_Expr_NamedUnknown,
+    ) -> crate::OcctResult<*mut Handle_Expr_GeneralExpression>;
+    /// **Source:** `Expr_NamedConstant.hxx`:77 - `Expr_NamedConstant::NDerivative()`
     pub fn Expr_NamedConstant_n_derivative(
         self_: *const Expr_NamedConstant,
-        X: *const HandleExprNamedUnknown,
+        X: *const Handle_Expr_NamedUnknown,
         N: i32,
-    ) -> crate::OcctResult<*mut HandleExprGeneralExpression>;
-    /// **Source:** `Expr_NamedConstant.hxx`:88 - `Expr_NamedConstant::Replace()`
+    ) -> crate::OcctResult<*mut Handle_Expr_GeneralExpression>;
+    /// **Source:** `Expr_NamedConstant.hxx`:82 - `Expr_NamedConstant::Replace()`
     pub fn Expr_NamedConstant_replace(
         self_: *mut Expr_NamedConstant,
-        var: *const HandleExprNamedUnknown,
-        with: *const HandleExprGeneralExpression,
+        var: *const Handle_Expr_NamedUnknown,
+        with: *const Handle_Expr_GeneralExpression,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `Expr_NamedConstant.hxx`:93 - `Expr_NamedConstant::Evaluate()`
-    pub fn Expr_NamedConstant_evaluate(
-        self_: *const Expr_NamedConstant,
-        vars: *const Expr_Array1OfNamedUnknown,
-        vals: *const TColStd_Array1OfReal,
-    ) -> crate::OcctResult<f64>;
-    /// **Source:** `Expr_NamedConstant.hxx`:96 - `Expr_NamedConstant::DynamicType()`
+    /// **Source:** `Expr_NamedConstant.hxx`:90 - `Expr_NamedConstant::DynamicType()`
     pub fn Expr_NamedConstant_dynamic_type(
         self_: *const Expr_NamedConstant,
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// **Source:** `Expr_NamedConstant.hxx`:96 - `Expr_NamedConstant::get_type_name()`
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
+    /// **Source:** `Expr_NamedConstant.hxx`:90 - `Expr_NamedConstant::get_type_name()`
     pub fn Expr_NamedConstant_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
-    /// **Source:** `Expr_NamedConstant.hxx`:96 - `Expr_NamedConstant::get_type_descriptor()`
-    pub fn Expr_NamedConstant_get_type_descriptor() -> crate::OcctResult<*const HandleStandardType>;
+    /// **Source:** `Expr_NamedConstant.hxx`:90 - `Expr_NamedConstant::get_type_descriptor()`
+    pub fn Expr_NamedConstant_get_type_descriptor() -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast Expr_NamedConstant to Expr_NamedExpression
     pub fn Expr_NamedConstant_as_Expr_NamedExpression(
         self_: *const Expr_NamedConstant,
@@ -5432,123 +4899,124 @@ unsafe extern "C" {
     /// Wrap Expr_NamedConstant in a Handle
     pub fn Expr_NamedConstant_to_handle(
         obj: *mut Expr_NamedConstant,
-    ) -> crate::OcctResult<*mut HandleExprNamedConstant>;
+    ) -> crate::OcctResult<*mut Handle_Expr_NamedConstant>;
     /// Destroy Handle<Expr_NamedConstant>
-    pub fn HandleExprNamedConstant_destructor(self_: *mut HandleExprNamedConstant);
+    pub fn Handle_Expr_NamedConstant_destructor(self_: *mut Handle_Expr_NamedConstant);
     /// Clone Handle<Expr_NamedConstant> (increments reference count)
-    pub fn HandleExprNamedConstant_clone(
-        self_: *const HandleExprNamedConstant,
-    ) -> crate::OcctResult<*mut HandleExprNamedConstant>;
+    pub fn Handle_Expr_NamedConstant_clone(
+        self_: *const Handle_Expr_NamedConstant,
+    ) -> crate::OcctResult<*mut Handle_Expr_NamedConstant>;
     /// Check if Handle<Expr_NamedConstant> is null
-    pub fn HandleExprNamedConstant_is_null(self_: *const HandleExprNamedConstant) -> bool;
+    pub fn Handle_Expr_NamedConstant_is_null(self_: *const Handle_Expr_NamedConstant) -> bool;
     /// Dereference Handle to get *const Expr_NamedConstant
-    pub fn HandleExprNamedConstant_get(
-        handle: *const HandleExprNamedConstant,
+    pub fn Handle_Expr_NamedConstant_get(
+        handle: *const Handle_Expr_NamedConstant,
     ) -> crate::OcctResult<*const Expr_NamedConstant>;
     /// Dereference Handle to get *mut Expr_NamedConstant
-    pub fn HandleExprNamedConstant_get_mut(
-        handle: *mut HandleExprNamedConstant,
+    pub fn Handle_Expr_NamedConstant_get_mut(
+        handle: *mut Handle_Expr_NamedConstant,
     ) -> crate::OcctResult<*mut Expr_NamedConstant>;
     /// Upcast Handle<Expr_NamedConstant> to Handle<Expr_NamedExpression>
-    pub fn HandleExprNamedConstant_to_HandleExprNamedExpression(
-        self_: *const HandleExprNamedConstant,
-    ) -> crate::OcctResult<*mut HandleExprNamedExpression>;
+    pub fn Handle_Expr_NamedConstant_to_Handle_Expr_NamedExpression(
+        self_: *const Handle_Expr_NamedConstant,
+    ) -> crate::OcctResult<*mut Handle_Expr_NamedExpression>;
     /// Upcast Handle<Expr_NamedConstant> to Handle<Expr_GeneralExpression>
-    pub fn HandleExprNamedConstant_to_HandleExprGeneralExpression(
-        self_: *const HandleExprNamedConstant,
-    ) -> crate::OcctResult<*mut HandleExprGeneralExpression>;
+    pub fn Handle_Expr_NamedConstant_to_Handle_Expr_GeneralExpression(
+        self_: *const Handle_Expr_NamedConstant,
+    ) -> crate::OcctResult<*mut Handle_Expr_GeneralExpression>;
     /// Upcast Handle<Expr_NamedConstant> to Handle<Standard_Transient>
-    pub fn HandleExprNamedConstant_to_HandleStandardTransient(
-        self_: *const HandleExprNamedConstant,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
-    /// Inherited: **Source:** `Expr_NamedExpression.hxx`:36 - `Expr_NamedExpression::GetName()`
+    pub fn Handle_Expr_NamedConstant_to_Handle_Standard_Transient(
+        self_: *const Handle_Expr_NamedConstant,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
+    /// Inherited: **Source:** `Expr_NamedExpression.hxx`:33 - `Expr_NamedExpression::GetName()`
     pub fn Expr_NamedConstant_inherited_GetName(
         self_: *const Expr_NamedConstant,
     ) -> crate::OcctResult<*const TCollection_AsciiString>;
-    /// Inherited: **Source:** `Expr_NamedExpression.hxx`:38 - `Expr_NamedExpression::SetName()`
+    /// Inherited: **Source:** `Expr_NamedExpression.hxx`:35 - `Expr_NamedExpression::SetName()`
     pub fn Expr_NamedConstant_inherited_SetName(
         self_: *mut Expr_NamedConstant,
         name: *const TCollection_AsciiString,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Expr_NamedExpression.hxx`:43 - `Expr_NamedExpression::IsShareable()`
+    /// Inherited: **Source:** `Expr_NamedExpression.hxx`:40 - `Expr_NamedExpression::IsShareable()`
     pub fn Expr_NamedConstant_inherited_IsShareable(
         self_: *const Expr_NamedConstant,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Expr_NamedExpression.hxx`:49 - `Expr_NamedExpression::IsIdentical()`
+    /// Inherited: **Source:** `Expr_NamedExpression.hxx`:45 - `Expr_NamedExpression::IsIdentical()`
     pub fn Expr_NamedConstant_inherited_IsIdentical(
         self_: *const Expr_NamedConstant,
-        Other: *const HandleExprGeneralExpression,
+        Other: *const Handle_Expr_GeneralExpression,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Expr_NamedExpression.hxx`:52 - `Expr_NamedExpression::String()`
+    /// Inherited: **Source:** `Expr_NamedExpression.hxx`:48 - `Expr_NamedExpression::String()`
     pub fn Expr_NamedConstant_inherited_String(
         self_: *const Expr_NamedConstant,
     ) -> crate::OcctResult<*mut TCollection_AsciiString>;
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:112 - `Expr_GeneralExpression::EvaluateNumeric()`
+    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:108 - `Expr_GeneralExpression::EvaluateNumeric()`
     pub fn Expr_NamedConstant_inherited_EvaluateNumeric(
         self_: *const Expr_NamedConstant,
     ) -> crate::OcctResult<f64>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn Expr_NamedConstant_inherited_IsInstance(
         self_: *const Expr_NamedConstant,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn Expr_NamedConstant_inherited_IsKind(
         self_: *const Expr_NamedConstant,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn Expr_NamedConstant_inherited_This(
         self_: *const Expr_NamedConstant,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn Expr_NamedConstant_inherited_GetRefCount(
         self_: *const Expr_NamedConstant,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn Expr_NamedConstant_inherited_IncrementRefCounter(
         self_: *mut Expr_NamedConstant,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn Expr_NamedConstant_inherited_DecrementRefCounter(
         self_: *mut Expr_NamedConstant,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn Expr_NamedConstant_inherited_Delete(
         self_: *const Expr_NamedConstant,
     ) -> *const std::ffi::c_char;
     // ======================== Expr_NamedExpression ========================
     pub fn Expr_NamedExpression_destructor(self_: *mut Expr_NamedExpression);
-    /// **Source:** `Expr_NamedExpression.hxx`:36 - `Expr_NamedExpression::GetName()`
+    /// **Source:** `Expr_NamedExpression.hxx`:33 - `Expr_NamedExpression::GetName()`
     pub fn Expr_NamedExpression_get_name(
         self_: *const Expr_NamedExpression,
     ) -> crate::OcctResult<*const TCollection_AsciiString>;
-    /// **Source:** `Expr_NamedExpression.hxx`:38 - `Expr_NamedExpression::SetName()`
+    /// **Source:** `Expr_NamedExpression.hxx`:35 - `Expr_NamedExpression::SetName()`
     pub fn Expr_NamedExpression_set_name(
         self_: *mut Expr_NamedExpression,
         name: *const TCollection_AsciiString,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `Expr_NamedExpression.hxx`:43 - `Expr_NamedExpression::IsShareable()`
+    /// **Source:** `Expr_NamedExpression.hxx`:40 - `Expr_NamedExpression::IsShareable()`
     pub fn Expr_NamedExpression_is_shareable(
         self_: *const Expr_NamedExpression,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `Expr_NamedExpression.hxx`:49 - `Expr_NamedExpression::IsIdentical()`
+    /// **Source:** `Expr_NamedExpression.hxx`:45 - `Expr_NamedExpression::IsIdentical()`
     pub fn Expr_NamedExpression_is_identical(
         self_: *const Expr_NamedExpression,
-        Other: *const HandleExprGeneralExpression,
+        Other: *const Handle_Expr_GeneralExpression,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `Expr_NamedExpression.hxx`:52 - `Expr_NamedExpression::String()`
+    /// **Source:** `Expr_NamedExpression.hxx`:48 - `Expr_NamedExpression::String()`
     pub fn Expr_NamedExpression_string(
         self_: *const Expr_NamedExpression,
     ) -> crate::OcctResult<*mut TCollection_AsciiString>;
-    /// **Source:** `Expr_NamedExpression.hxx`:54 - `Expr_NamedExpression::DynamicType()`
+    /// **Source:** `Expr_NamedExpression.hxx`:50 - `Expr_NamedExpression::DynamicType()`
     pub fn Expr_NamedExpression_dynamic_type(
         self_: *const Expr_NamedExpression,
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// **Source:** `Expr_NamedExpression.hxx`:54 - `Expr_NamedExpression::get_type_name()`
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
+    /// **Source:** `Expr_NamedExpression.hxx`:50 - `Expr_NamedExpression::get_type_name()`
     pub fn Expr_NamedExpression_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
-    /// **Source:** `Expr_NamedExpression.hxx`:54 - `Expr_NamedExpression::get_type_descriptor()`
-    pub fn Expr_NamedExpression_get_type_descriptor() -> crate::OcctResult<*const HandleStandardType>;
+    /// **Source:** `Expr_NamedExpression.hxx`:50 - `Expr_NamedExpression::get_type_descriptor()`
+    pub fn Expr_NamedExpression_get_type_descriptor(
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast Expr_NamedExpression to Expr_GeneralExpression
     pub fn Expr_NamedExpression_as_Expr_GeneralExpression(
         self_: *const Expr_NamedExpression,
@@ -5566,206 +5034,188 @@ unsafe extern "C" {
         self_: *mut Expr_NamedExpression,
     ) -> crate::OcctResult<*mut Standard_Transient>;
     /// Destroy Handle<Expr_NamedExpression>
-    pub fn HandleExprNamedExpression_destructor(self_: *mut HandleExprNamedExpression);
+    pub fn Handle_Expr_NamedExpression_destructor(self_: *mut Handle_Expr_NamedExpression);
     /// Clone Handle<Expr_NamedExpression> (increments reference count)
-    pub fn HandleExprNamedExpression_clone(
-        self_: *const HandleExprNamedExpression,
-    ) -> crate::OcctResult<*mut HandleExprNamedExpression>;
+    pub fn Handle_Expr_NamedExpression_clone(
+        self_: *const Handle_Expr_NamedExpression,
+    ) -> crate::OcctResult<*mut Handle_Expr_NamedExpression>;
     /// Check if Handle<Expr_NamedExpression> is null
-    pub fn HandleExprNamedExpression_is_null(self_: *const HandleExprNamedExpression) -> bool;
+    pub fn Handle_Expr_NamedExpression_is_null(self_: *const Handle_Expr_NamedExpression) -> bool;
     /// Dereference Handle to get *const Expr_NamedExpression
-    pub fn HandleExprNamedExpression_get(
-        handle: *const HandleExprNamedExpression,
+    pub fn Handle_Expr_NamedExpression_get(
+        handle: *const Handle_Expr_NamedExpression,
     ) -> crate::OcctResult<*const Expr_NamedExpression>;
     /// Dereference Handle to get *mut Expr_NamedExpression
-    pub fn HandleExprNamedExpression_get_mut(
-        handle: *mut HandleExprNamedExpression,
+    pub fn Handle_Expr_NamedExpression_get_mut(
+        handle: *mut Handle_Expr_NamedExpression,
     ) -> crate::OcctResult<*mut Expr_NamedExpression>;
     /// Upcast Handle<Expr_NamedExpression> to Handle<Expr_GeneralExpression>
-    pub fn HandleExprNamedExpression_to_HandleExprGeneralExpression(
-        self_: *const HandleExprNamedExpression,
-    ) -> crate::OcctResult<*mut HandleExprGeneralExpression>;
+    pub fn Handle_Expr_NamedExpression_to_Handle_Expr_GeneralExpression(
+        self_: *const Handle_Expr_NamedExpression,
+    ) -> crate::OcctResult<*mut Handle_Expr_GeneralExpression>;
     /// Upcast Handle<Expr_NamedExpression> to Handle<Standard_Transient>
-    pub fn HandleExprNamedExpression_to_HandleStandardTransient(
-        self_: *const HandleExprNamedExpression,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
+    pub fn Handle_Expr_NamedExpression_to_Handle_Standard_Transient(
+        self_: *const Handle_Expr_NamedExpression,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
     /// Downcast Handle<Expr_NamedExpression> to Handle<Expr_NamedConstant> (returns null on failure)
-    pub fn HandleExprNamedExpression_downcast_to_HandleExprNamedConstant(
-        self_: *const HandleExprNamedExpression,
-    ) -> crate::OcctResult<*mut HandleExprNamedConstant>;
+    pub fn Handle_Expr_NamedExpression_downcast_to_Handle_Expr_NamedConstant(
+        self_: *const Handle_Expr_NamedExpression,
+    ) -> crate::OcctResult<*mut Handle_Expr_NamedConstant>;
     /// Downcast Handle<Expr_NamedExpression> to Handle<Expr_NamedUnknown> (returns null on failure)
-    pub fn HandleExprNamedExpression_downcast_to_HandleExprNamedUnknown(
-        self_: *const HandleExprNamedExpression,
-    ) -> crate::OcctResult<*mut HandleExprNamedUnknown>;
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:41 - `Expr_GeneralExpression::NbSubExpressions()`
+    pub fn Handle_Expr_NamedExpression_downcast_to_Handle_Expr_NamedUnknown(
+        self_: *const Handle_Expr_NamedExpression,
+    ) -> crate::OcctResult<*mut Handle_Expr_NamedUnknown>;
+    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:37 - `Expr_GeneralExpression::NbSubExpressions()`
     pub fn Expr_NamedExpression_inherited_NbSubExpressions(
         self_: *const Expr_NamedExpression,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:45 - `Expr_GeneralExpression::SubExpression()`
+    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:41 - `Expr_GeneralExpression::SubExpression()`
     pub fn Expr_NamedExpression_inherited_SubExpression(
         self_: *const Expr_NamedExpression,
         I: i32,
-    ) -> crate::OcctResult<*const HandleExprGeneralExpression>;
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:51 - `Expr_GeneralExpression::Simplified()`
+    ) -> crate::OcctResult<*const Handle_Expr_GeneralExpression>;
+    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:47 - `Expr_GeneralExpression::Simplified()`
     pub fn Expr_NamedExpression_inherited_Simplified(
         self_: *const Expr_NamedExpression,
-    ) -> crate::OcctResult<*mut HandleExprGeneralExpression>;
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:55 - `Expr_GeneralExpression::ShallowSimplified()`
+    ) -> crate::OcctResult<*mut Handle_Expr_GeneralExpression>;
+    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:51 - `Expr_GeneralExpression::ShallowSimplified()`
     pub fn Expr_NamedExpression_inherited_ShallowSimplified(
         self_: *const Expr_NamedExpression,
-    ) -> crate::OcctResult<*mut HandleExprGeneralExpression>;
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:59 - `Expr_GeneralExpression::Copy()`
+    ) -> crate::OcctResult<*mut Handle_Expr_GeneralExpression>;
+    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:55 - `Expr_GeneralExpression::Copy()`
     pub fn Expr_NamedExpression_inherited_Copy(
         self_: *const Expr_NamedExpression,
-    ) -> crate::OcctResult<*mut HandleExprGeneralExpression>;
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:62 - `Expr_GeneralExpression::ContainsUnknowns()`
+    ) -> crate::OcctResult<*mut Handle_Expr_GeneralExpression>;
+    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:58 - `Expr_GeneralExpression::ContainsUnknowns()`
     pub fn Expr_NamedExpression_inherited_ContainsUnknowns(
         self_: *const Expr_NamedExpression,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:65 - `Expr_GeneralExpression::Contains()`
+    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:61 - `Expr_GeneralExpression::Contains()`
     pub fn Expr_NamedExpression_inherited_Contains(
         self_: *const Expr_NamedExpression,
-        exp: *const HandleExprGeneralExpression,
+        exp: *const Handle_Expr_GeneralExpression,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:70 - `Expr_GeneralExpression::IsLinear()`
+    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:65 - `Expr_GeneralExpression::IsLinear()`
     pub fn Expr_NamedExpression_inherited_IsLinear(
         self_: *const Expr_NamedExpression,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:86 - `Expr_GeneralExpression::Derivative()`
+    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:81 - `Expr_GeneralExpression::Derivative()`
     pub fn Expr_NamedExpression_inherited_Derivative(
         self_: *const Expr_NamedExpression,
-        X: *const HandleExprNamedUnknown,
-    ) -> crate::OcctResult<*mut HandleExprGeneralExpression>;
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:91 - `Expr_GeneralExpression::NDerivative()`
+        X: *const Handle_Expr_NamedUnknown,
+    ) -> crate::OcctResult<*mut Handle_Expr_GeneralExpression>;
+    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:86 - `Expr_GeneralExpression::NDerivative()`
     pub fn Expr_NamedExpression_inherited_NDerivative(
         self_: *const Expr_NamedExpression,
-        X: *const HandleExprNamedUnknown,
+        X: *const Handle_Expr_NamedUnknown,
         N: i32,
-    ) -> crate::OcctResult<*mut HandleExprGeneralExpression>;
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:98 - `Expr_GeneralExpression::Replace()`
+    ) -> crate::OcctResult<*mut Handle_Expr_GeneralExpression>;
+    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:93 - `Expr_GeneralExpression::Replace()`
     pub fn Expr_NamedExpression_inherited_Replace(
         self_: *mut Expr_NamedExpression,
-        var: *const HandleExprNamedUnknown,
-        with: *const HandleExprGeneralExpression,
+        var: *const Handle_Expr_NamedUnknown,
+        with: *const Handle_Expr_GeneralExpression,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:105 - `Expr_GeneralExpression::Evaluate()`
-    pub fn Expr_NamedExpression_inherited_Evaluate(
-        self_: *const Expr_NamedExpression,
-        vars: *const Expr_Array1OfNamedUnknown,
-        vals: *const TColStd_Array1OfReal,
-    ) -> crate::OcctResult<f64>;
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:112 - `Expr_GeneralExpression::EvaluateNumeric()`
+    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:108 - `Expr_GeneralExpression::EvaluateNumeric()`
     pub fn Expr_NamedExpression_inherited_EvaluateNumeric(
         self_: *const Expr_NamedExpression,
     ) -> crate::OcctResult<f64>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn Expr_NamedExpression_inherited_IsInstance(
         self_: *const Expr_NamedExpression,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn Expr_NamedExpression_inherited_IsKind(
         self_: *const Expr_NamedExpression,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn Expr_NamedExpression_inherited_This(
         self_: *const Expr_NamedExpression,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn Expr_NamedExpression_inherited_GetRefCount(
         self_: *const Expr_NamedExpression,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn Expr_NamedExpression_inherited_IncrementRefCounter(
         self_: *mut Expr_NamedExpression,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn Expr_NamedExpression_inherited_DecrementRefCounter(
         self_: *mut Expr_NamedExpression,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn Expr_NamedExpression_inherited_Delete(
         self_: *const Expr_NamedExpression,
     ) -> *const std::ffi::c_char;
     // ======================== Expr_NamedFunction ========================
     pub fn Expr_NamedFunction_destructor(self_: *mut Expr_NamedFunction);
-    /// **Source:** `Expr_NamedFunction.hxx`:40 - `Expr_NamedFunction::Expr_NamedFunction()`
-    pub fn Expr_NamedFunction_ctor_asciistring_handleexprgeneralexpression_array1ofnamedunknown(
-        name: *const TCollection_AsciiString,
-        exp: *const HandleExprGeneralExpression,
-        vars: *const Expr_Array1OfNamedUnknown,
-    ) -> crate::OcctResult<*mut Expr_NamedFunction>;
-    /// **Source:** `Expr_NamedFunction.hxx`:45 - `Expr_NamedFunction::SetName()`
+    /// **Source:** `Expr_NamedFunction.hxx`:42 - `Expr_NamedFunction::SetName()`
     pub fn Expr_NamedFunction_set_name(
         self_: *mut Expr_NamedFunction,
         newname: *const TCollection_AsciiString,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `Expr_NamedFunction.hxx`:48 - `Expr_NamedFunction::GetName()`
+    /// **Source:** `Expr_NamedFunction.hxx`:45 - `Expr_NamedFunction::GetName()`
     pub fn Expr_NamedFunction_get_name(
         self_: *const Expr_NamedFunction,
     ) -> crate::OcctResult<*mut TCollection_AsciiString>;
-    /// **Source:** `Expr_NamedFunction.hxx`:51 - `Expr_NamedFunction::NbOfVariables()`
+    /// **Source:** `Expr_NamedFunction.hxx`:48 - `Expr_NamedFunction::NbOfVariables()`
     pub fn Expr_NamedFunction_nb_of_variables(
         self_: *const Expr_NamedFunction,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `Expr_NamedFunction.hxx`:56 - `Expr_NamedFunction::Variable()`
+    /// **Source:** `Expr_NamedFunction.hxx`:53 - `Expr_NamedFunction::Variable()`
     pub fn Expr_NamedFunction_variable(
         self_: *const Expr_NamedFunction,
         index: i32,
-    ) -> crate::OcctResult<*mut HandleExprNamedUnknown>;
-    /// **Source:** `Expr_NamedFunction.hxx`:63 - `Expr_NamedFunction::Evaluate()`
-    pub fn Expr_NamedFunction_evaluate(
-        self_: *const Expr_NamedFunction,
-        vars: *const Expr_Array1OfNamedUnknown,
-        values: *const TColStd_Array1OfReal,
-    ) -> crate::OcctResult<f64>;
-    /// **Source:** `Expr_NamedFunction.hxx`:67 - `Expr_NamedFunction::Copy()`
+    ) -> crate::OcctResult<*mut Handle_Expr_NamedUnknown>;
+    /// **Source:** `Expr_NamedFunction.hxx`:62 - `Expr_NamedFunction::Copy()`
     pub fn Expr_NamedFunction_copy(
         self_: *const Expr_NamedFunction,
-    ) -> crate::OcctResult<*mut HandleExprGeneralFunction>;
-    /// **Source:** `Expr_NamedFunction.hxx`:70 - `Expr_NamedFunction::Derivative()`
+    ) -> crate::OcctResult<*mut Handle_Expr_GeneralFunction>;
+    /// **Source:** `Expr_NamedFunction.hxx`:65 - `Expr_NamedFunction::Derivative()`
     pub fn Expr_NamedFunction_derivative_handleexprnamedunknown(
         self_: *const Expr_NamedFunction,
-        var: *const HandleExprNamedUnknown,
-    ) -> crate::OcctResult<*mut HandleExprGeneralFunction>;
-    /// **Source:** `Expr_NamedFunction.hxx`:75 - `Expr_NamedFunction::Derivative()`
+        var: *const Handle_Expr_NamedUnknown,
+    ) -> crate::OcctResult<*mut Handle_Expr_GeneralFunction>;
+    /// **Source:** `Expr_NamedFunction.hxx`:70 - `Expr_NamedFunction::Derivative()`
     pub fn Expr_NamedFunction_derivative_handleexprnamedunknown_int(
         self_: *const Expr_NamedFunction,
-        var: *const HandleExprNamedUnknown,
+        var: *const Handle_Expr_NamedUnknown,
         deg: i32,
-    ) -> crate::OcctResult<*mut HandleExprGeneralFunction>;
-    /// **Source:** `Expr_NamedFunction.hxx`:82 - `Expr_NamedFunction::IsIdentical()`
+    ) -> crate::OcctResult<*mut Handle_Expr_GeneralFunction>;
+    /// **Source:** `Expr_NamedFunction.hxx`:76 - `Expr_NamedFunction::IsIdentical()`
     pub fn Expr_NamedFunction_is_identical(
         self_: *const Expr_NamedFunction,
-        func: *const HandleExprGeneralFunction,
+        func: *const Handle_Expr_GeneralFunction,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `Expr_NamedFunction.hxx`:86 - `Expr_NamedFunction::IsLinearOnVariable()`
+    /// **Source:** `Expr_NamedFunction.hxx`:79 - `Expr_NamedFunction::IsLinearOnVariable()`
     pub fn Expr_NamedFunction_is_linear_on_variable(
         self_: *const Expr_NamedFunction,
         index: i32,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `Expr_NamedFunction.hxx`:88 - `Expr_NamedFunction::GetStringName()`
+    /// **Source:** `Expr_NamedFunction.hxx`:81 - `Expr_NamedFunction::GetStringName()`
     pub fn Expr_NamedFunction_get_string_name(
         self_: *const Expr_NamedFunction,
     ) -> crate::OcctResult<*mut TCollection_AsciiString>;
-    /// **Source:** `Expr_NamedFunction.hxx`:91 - `Expr_NamedFunction::Expression()`
+    /// **Source:** `Expr_NamedFunction.hxx`:84 - `Expr_NamedFunction::Expression()`
     pub fn Expr_NamedFunction_expression(
         self_: *const Expr_NamedFunction,
-    ) -> crate::OcctResult<*mut HandleExprGeneralExpression>;
-    /// **Source:** `Expr_NamedFunction.hxx`:95 - `Expr_NamedFunction::SetExpression()`
+    ) -> crate::OcctResult<*mut Handle_Expr_GeneralExpression>;
+    /// **Source:** `Expr_NamedFunction.hxx`:88 - `Expr_NamedFunction::SetExpression()`
     pub fn Expr_NamedFunction_set_expression(
         self_: *mut Expr_NamedFunction,
-        exp: *const HandleExprGeneralExpression,
+        exp: *const Handle_Expr_GeneralExpression,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `Expr_NamedFunction.hxx`:97 - `Expr_NamedFunction::DynamicType()`
+    /// **Source:** `Expr_NamedFunction.hxx`:90 - `Expr_NamedFunction::DynamicType()`
     pub fn Expr_NamedFunction_dynamic_type(
         self_: *const Expr_NamedFunction,
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// **Source:** `Expr_NamedFunction.hxx`:97 - `Expr_NamedFunction::get_type_name()`
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
+    /// **Source:** `Expr_NamedFunction.hxx`:90 - `Expr_NamedFunction::get_type_name()`
     pub fn Expr_NamedFunction_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
-    /// **Source:** `Expr_NamedFunction.hxx`:97 - `Expr_NamedFunction::get_type_descriptor()`
-    pub fn Expr_NamedFunction_get_type_descriptor() -> crate::OcctResult<*const HandleStandardType>;
+    /// **Source:** `Expr_NamedFunction.hxx`:90 - `Expr_NamedFunction::get_type_descriptor()`
+    pub fn Expr_NamedFunction_get_type_descriptor() -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast Expr_NamedFunction to Expr_GeneralFunction
     pub fn Expr_NamedFunction_as_Expr_GeneralFunction(
         self_: *const Expr_NamedFunction,
@@ -5785,139 +5235,133 @@ unsafe extern "C" {
     /// Wrap Expr_NamedFunction in a Handle
     pub fn Expr_NamedFunction_to_handle(
         obj: *mut Expr_NamedFunction,
-    ) -> crate::OcctResult<*mut HandleExprNamedFunction>;
+    ) -> crate::OcctResult<*mut Handle_Expr_NamedFunction>;
     /// Destroy Handle<Expr_NamedFunction>
-    pub fn HandleExprNamedFunction_destructor(self_: *mut HandleExprNamedFunction);
+    pub fn Handle_Expr_NamedFunction_destructor(self_: *mut Handle_Expr_NamedFunction);
     /// Clone Handle<Expr_NamedFunction> (increments reference count)
-    pub fn HandleExprNamedFunction_clone(
-        self_: *const HandleExprNamedFunction,
-    ) -> crate::OcctResult<*mut HandleExprNamedFunction>;
+    pub fn Handle_Expr_NamedFunction_clone(
+        self_: *const Handle_Expr_NamedFunction,
+    ) -> crate::OcctResult<*mut Handle_Expr_NamedFunction>;
     /// Check if Handle<Expr_NamedFunction> is null
-    pub fn HandleExprNamedFunction_is_null(self_: *const HandleExprNamedFunction) -> bool;
+    pub fn Handle_Expr_NamedFunction_is_null(self_: *const Handle_Expr_NamedFunction) -> bool;
     /// Dereference Handle to get *const Expr_NamedFunction
-    pub fn HandleExprNamedFunction_get(
-        handle: *const HandleExprNamedFunction,
+    pub fn Handle_Expr_NamedFunction_get(
+        handle: *const Handle_Expr_NamedFunction,
     ) -> crate::OcctResult<*const Expr_NamedFunction>;
     /// Dereference Handle to get *mut Expr_NamedFunction
-    pub fn HandleExprNamedFunction_get_mut(
-        handle: *mut HandleExprNamedFunction,
+    pub fn Handle_Expr_NamedFunction_get_mut(
+        handle: *mut Handle_Expr_NamedFunction,
     ) -> crate::OcctResult<*mut Expr_NamedFunction>;
     /// Upcast Handle<Expr_NamedFunction> to Handle<Expr_GeneralFunction>
-    pub fn HandleExprNamedFunction_to_HandleExprGeneralFunction(
-        self_: *const HandleExprNamedFunction,
-    ) -> crate::OcctResult<*mut HandleExprGeneralFunction>;
+    pub fn Handle_Expr_NamedFunction_to_Handle_Expr_GeneralFunction(
+        self_: *const Handle_Expr_NamedFunction,
+    ) -> crate::OcctResult<*mut Handle_Expr_GeneralFunction>;
     /// Upcast Handle<Expr_NamedFunction> to Handle<Standard_Transient>
-    pub fn HandleExprNamedFunction_to_HandleStandardTransient(
-        self_: *const HandleExprNamedFunction,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn Handle_Expr_NamedFunction_to_Handle_Standard_Transient(
+        self_: *const Handle_Expr_NamedFunction,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn Expr_NamedFunction_inherited_IsInstance(
         self_: *const Expr_NamedFunction,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn Expr_NamedFunction_inherited_IsKind(
         self_: *const Expr_NamedFunction,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn Expr_NamedFunction_inherited_This(
         self_: *const Expr_NamedFunction,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn Expr_NamedFunction_inherited_GetRefCount(
         self_: *const Expr_NamedFunction,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn Expr_NamedFunction_inherited_IncrementRefCounter(
         self_: *mut Expr_NamedFunction,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn Expr_NamedFunction_inherited_DecrementRefCounter(
         self_: *mut Expr_NamedFunction,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn Expr_NamedFunction_inherited_Delete(
         self_: *const Expr_NamedFunction,
     ) -> *const std::ffi::c_char;
     // ======================== Expr_NamedUnknown ========================
     pub fn Expr_NamedUnknown_destructor(self_: *mut Expr_NamedUnknown);
-    /// **Source:** `Expr_NamedUnknown.hxx`:39 - `Expr_NamedUnknown::Expr_NamedUnknown()`
+    /// **Source:** `Expr_NamedUnknown.hxx`:35 - `Expr_NamedUnknown::Expr_NamedUnknown()`
     pub fn Expr_NamedUnknown_ctor_asciistring(
         name: *const TCollection_AsciiString,
     ) -> crate::OcctResult<*mut Expr_NamedUnknown>;
-    /// **Source:** `Expr_NamedUnknown.hxx`:42 - `Expr_NamedUnknown::IsAssigned()`
+    /// **Source:** `Expr_NamedUnknown.hxx`:38 - `Expr_NamedUnknown::IsAssigned()`
     pub fn Expr_NamedUnknown_is_assigned(
         self_: *const Expr_NamedUnknown,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `Expr_NamedUnknown.hxx`:46 - `Expr_NamedUnknown::AssignedExpression()`
+    /// **Source:** `Expr_NamedUnknown.hxx`:42 - `Expr_NamedUnknown::AssignedExpression()`
     pub fn Expr_NamedUnknown_assigned_expression(
         self_: *const Expr_NamedUnknown,
-    ) -> crate::OcctResult<*const HandleExprGeneralExpression>;
-    /// **Source:** `Expr_NamedUnknown.hxx`:50 - `Expr_NamedUnknown::Assign()`
+    ) -> crate::OcctResult<*const Handle_Expr_GeneralExpression>;
+    /// **Source:** `Expr_NamedUnknown.hxx`:46 - `Expr_NamedUnknown::Assign()`
     pub fn Expr_NamedUnknown_assign(
         self_: *mut Expr_NamedUnknown,
-        exp: *const HandleExprGeneralExpression,
+        exp: *const Handle_Expr_GeneralExpression,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `Expr_NamedUnknown.hxx`:53 - `Expr_NamedUnknown::Deassign()`
+    /// **Source:** `Expr_NamedUnknown.hxx`:49 - `Expr_NamedUnknown::Deassign()`
     pub fn Expr_NamedUnknown_deassign(self_: *mut Expr_NamedUnknown) -> *const std::ffi::c_char;
-    /// **Source:** `Expr_NamedUnknown.hxx`:57 - `Expr_NamedUnknown::NbSubExpressions()`
+    /// **Source:** `Expr_NamedUnknown.hxx`:53 - `Expr_NamedUnknown::NbSubExpressions()`
     pub fn Expr_NamedUnknown_nb_sub_expressions(
         self_: *const Expr_NamedUnknown,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `Expr_NamedUnknown.hxx`:61 - `Expr_NamedUnknown::SubExpression()`
+    /// **Source:** `Expr_NamedUnknown.hxx`:57 - `Expr_NamedUnknown::SubExpression()`
     pub fn Expr_NamedUnknown_sub_expression(
         self_: *const Expr_NamedUnknown,
         I: i32,
-    ) -> crate::OcctResult<*const HandleExprGeneralExpression>;
-    /// **Source:** `Expr_NamedUnknown.hxx`:67 - `Expr_NamedUnknown::Simplified()`
+    ) -> crate::OcctResult<*const Handle_Expr_GeneralExpression>;
+    /// **Source:** `Expr_NamedUnknown.hxx`:63 - `Expr_NamedUnknown::Simplified()`
     pub fn Expr_NamedUnknown_simplified(
         self_: *const Expr_NamedUnknown,
-    ) -> crate::OcctResult<*mut HandleExprGeneralExpression>;
-    /// **Source:** `Expr_NamedUnknown.hxx`:71 - `Expr_NamedUnknown::ShallowSimplified()`
+    ) -> crate::OcctResult<*mut Handle_Expr_GeneralExpression>;
+    /// **Source:** `Expr_NamedUnknown.hxx`:67 - `Expr_NamedUnknown::ShallowSimplified()`
     pub fn Expr_NamedUnknown_shallow_simplified(
         self_: *const Expr_NamedUnknown,
-    ) -> crate::OcctResult<*mut HandleExprGeneralExpression>;
-    /// **Source:** `Expr_NamedUnknown.hxx`:74 - `Expr_NamedUnknown::Copy()`
+    ) -> crate::OcctResult<*mut Handle_Expr_GeneralExpression>;
+    /// **Source:** `Expr_NamedUnknown.hxx`:70 - `Expr_NamedUnknown::Copy()`
     pub fn Expr_NamedUnknown_copy(
         self_: *const Expr_NamedUnknown,
-    ) -> crate::OcctResult<*mut HandleExprGeneralExpression>;
-    /// **Source:** `Expr_NamedUnknown.hxx`:77 - `Expr_NamedUnknown::ContainsUnknowns()`
+    ) -> crate::OcctResult<*mut Handle_Expr_GeneralExpression>;
+    /// **Source:** `Expr_NamedUnknown.hxx`:73 - `Expr_NamedUnknown::ContainsUnknowns()`
     pub fn Expr_NamedUnknown_contains_unknowns(
         self_: *const Expr_NamedUnknown,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `Expr_NamedUnknown.hxx`:81 - `Expr_NamedUnknown::Contains()`
+    /// **Source:** `Expr_NamedUnknown.hxx`:76 - `Expr_NamedUnknown::Contains()`
     pub fn Expr_NamedUnknown_contains(
         self_: *const Expr_NamedUnknown,
-        exp: *const HandleExprGeneralExpression,
+        exp: *const Handle_Expr_GeneralExpression,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `Expr_NamedUnknown.hxx`:83 - `Expr_NamedUnknown::IsLinear()`
+    /// **Source:** `Expr_NamedUnknown.hxx`:78 - `Expr_NamedUnknown::IsLinear()`
     pub fn Expr_NamedUnknown_is_linear(self_: *const Expr_NamedUnknown) -> crate::OcctResult<bool>;
-    /// **Source:** `Expr_NamedUnknown.hxx`:86 - `Expr_NamedUnknown::Derivative()`
+    /// **Source:** `Expr_NamedUnknown.hxx`:81 - `Expr_NamedUnknown::Derivative()`
     pub fn Expr_NamedUnknown_derivative(
         self_: *const Expr_NamedUnknown,
-        X: *const HandleExprNamedUnknown,
-    ) -> crate::OcctResult<*mut HandleExprGeneralExpression>;
-    /// **Source:** `Expr_NamedUnknown.hxx`:91 - `Expr_NamedUnknown::Replace()`
+        X: *const Handle_Expr_NamedUnknown,
+    ) -> crate::OcctResult<*mut Handle_Expr_GeneralExpression>;
+    /// **Source:** `Expr_NamedUnknown.hxx`:86 - `Expr_NamedUnknown::Replace()`
     pub fn Expr_NamedUnknown_replace(
         self_: *mut Expr_NamedUnknown,
-        var: *const HandleExprNamedUnknown,
-        with: *const HandleExprGeneralExpression,
+        var: *const Handle_Expr_NamedUnknown,
+        with: *const Handle_Expr_GeneralExpression,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `Expr_NamedUnknown.hxx`:98 - `Expr_NamedUnknown::Evaluate()`
-    pub fn Expr_NamedUnknown_evaluate(
-        self_: *const Expr_NamedUnknown,
-        vars: *const Expr_Array1OfNamedUnknown,
-        vals: *const TColStd_Array1OfReal,
-    ) -> crate::OcctResult<f64>;
-    /// **Source:** `Expr_NamedUnknown.hxx`:101 - `Expr_NamedUnknown::DynamicType()`
+    /// **Source:** `Expr_NamedUnknown.hxx`:96 - `Expr_NamedUnknown::DynamicType()`
     pub fn Expr_NamedUnknown_dynamic_type(
         self_: *const Expr_NamedUnknown,
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// **Source:** `Expr_NamedUnknown.hxx`:101 - `Expr_NamedUnknown::get_type_name()`
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
+    /// **Source:** `Expr_NamedUnknown.hxx`:96 - `Expr_NamedUnknown::get_type_name()`
     pub fn Expr_NamedUnknown_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
-    /// **Source:** `Expr_NamedUnknown.hxx`:101 - `Expr_NamedUnknown::get_type_descriptor()`
-    pub fn Expr_NamedUnknown_get_type_descriptor() -> crate::OcctResult<*const HandleStandardType>;
+    /// **Source:** `Expr_NamedUnknown.hxx`:96 - `Expr_NamedUnknown::get_type_descriptor()`
+    pub fn Expr_NamedUnknown_get_type_descriptor() -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast Expr_NamedUnknown to Expr_NamedExpression
     pub fn Expr_NamedUnknown_as_Expr_NamedExpression(
         self_: *const Expr_NamedUnknown,
@@ -5945,135 +5389,112 @@ unsafe extern "C" {
     /// Wrap Expr_NamedUnknown in a Handle
     pub fn Expr_NamedUnknown_to_handle(
         obj: *mut Expr_NamedUnknown,
-    ) -> crate::OcctResult<*mut HandleExprNamedUnknown>;
+    ) -> crate::OcctResult<*mut Handle_Expr_NamedUnknown>;
     /// Destroy Handle<Expr_NamedUnknown>
-    pub fn HandleExprNamedUnknown_destructor(self_: *mut HandleExprNamedUnknown);
+    pub fn Handle_Expr_NamedUnknown_destructor(self_: *mut Handle_Expr_NamedUnknown);
     /// Clone Handle<Expr_NamedUnknown> (increments reference count)
-    pub fn HandleExprNamedUnknown_clone(
-        self_: *const HandleExprNamedUnknown,
-    ) -> crate::OcctResult<*mut HandleExprNamedUnknown>;
+    pub fn Handle_Expr_NamedUnknown_clone(
+        self_: *const Handle_Expr_NamedUnknown,
+    ) -> crate::OcctResult<*mut Handle_Expr_NamedUnknown>;
     /// Check if Handle<Expr_NamedUnknown> is null
-    pub fn HandleExprNamedUnknown_is_null(self_: *const HandleExprNamedUnknown) -> bool;
+    pub fn Handle_Expr_NamedUnknown_is_null(self_: *const Handle_Expr_NamedUnknown) -> bool;
     /// Dereference Handle to get *const Expr_NamedUnknown
-    pub fn HandleExprNamedUnknown_get(
-        handle: *const HandleExprNamedUnknown,
+    pub fn Handle_Expr_NamedUnknown_get(
+        handle: *const Handle_Expr_NamedUnknown,
     ) -> crate::OcctResult<*const Expr_NamedUnknown>;
     /// Dereference Handle to get *mut Expr_NamedUnknown
-    pub fn HandleExprNamedUnknown_get_mut(
-        handle: *mut HandleExprNamedUnknown,
+    pub fn Handle_Expr_NamedUnknown_get_mut(
+        handle: *mut Handle_Expr_NamedUnknown,
     ) -> crate::OcctResult<*mut Expr_NamedUnknown>;
     /// Upcast Handle<Expr_NamedUnknown> to Handle<Expr_NamedExpression>
-    pub fn HandleExprNamedUnknown_to_HandleExprNamedExpression(
-        self_: *const HandleExprNamedUnknown,
-    ) -> crate::OcctResult<*mut HandleExprNamedExpression>;
+    pub fn Handle_Expr_NamedUnknown_to_Handle_Expr_NamedExpression(
+        self_: *const Handle_Expr_NamedUnknown,
+    ) -> crate::OcctResult<*mut Handle_Expr_NamedExpression>;
     /// Upcast Handle<Expr_NamedUnknown> to Handle<Expr_GeneralExpression>
-    pub fn HandleExprNamedUnknown_to_HandleExprGeneralExpression(
-        self_: *const HandleExprNamedUnknown,
-    ) -> crate::OcctResult<*mut HandleExprGeneralExpression>;
+    pub fn Handle_Expr_NamedUnknown_to_Handle_Expr_GeneralExpression(
+        self_: *const Handle_Expr_NamedUnknown,
+    ) -> crate::OcctResult<*mut Handle_Expr_GeneralExpression>;
     /// Upcast Handle<Expr_NamedUnknown> to Handle<Standard_Transient>
-    pub fn HandleExprNamedUnknown_to_HandleStandardTransient(
-        self_: *const HandleExprNamedUnknown,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
-    /// Inherited: **Source:** `Expr_NamedExpression.hxx`:36 - `Expr_NamedExpression::GetName()`
+    pub fn Handle_Expr_NamedUnknown_to_Handle_Standard_Transient(
+        self_: *const Handle_Expr_NamedUnknown,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
+    /// Inherited: **Source:** `Expr_NamedExpression.hxx`:33 - `Expr_NamedExpression::GetName()`
     pub fn Expr_NamedUnknown_inherited_GetName(
         self_: *const Expr_NamedUnknown,
     ) -> crate::OcctResult<*const TCollection_AsciiString>;
-    /// Inherited: **Source:** `Expr_NamedExpression.hxx`:38 - `Expr_NamedExpression::SetName()`
+    /// Inherited: **Source:** `Expr_NamedExpression.hxx`:35 - `Expr_NamedExpression::SetName()`
     pub fn Expr_NamedUnknown_inherited_SetName(
         self_: *mut Expr_NamedUnknown,
         name: *const TCollection_AsciiString,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Expr_NamedExpression.hxx`:43 - `Expr_NamedExpression::IsShareable()`
+    /// Inherited: **Source:** `Expr_NamedExpression.hxx`:40 - `Expr_NamedExpression::IsShareable()`
     pub fn Expr_NamedUnknown_inherited_IsShareable(
         self_: *const Expr_NamedUnknown,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Expr_NamedExpression.hxx`:49 - `Expr_NamedExpression::IsIdentical()`
+    /// Inherited: **Source:** `Expr_NamedExpression.hxx`:45 - `Expr_NamedExpression::IsIdentical()`
     pub fn Expr_NamedUnknown_inherited_IsIdentical(
         self_: *const Expr_NamedUnknown,
-        Other: *const HandleExprGeneralExpression,
+        Other: *const Handle_Expr_GeneralExpression,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Expr_NamedExpression.hxx`:52 - `Expr_NamedExpression::String()`
+    /// Inherited: **Source:** `Expr_NamedExpression.hxx`:48 - `Expr_NamedExpression::String()`
     pub fn Expr_NamedUnknown_inherited_String(
         self_: *const Expr_NamedUnknown,
     ) -> crate::OcctResult<*mut TCollection_AsciiString>;
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:91 - `Expr_GeneralExpression::NDerivative()`
+    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:86 - `Expr_GeneralExpression::NDerivative()`
     pub fn Expr_NamedUnknown_inherited_NDerivative(
         self_: *const Expr_NamedUnknown,
-        X: *const HandleExprNamedUnknown,
+        X: *const Handle_Expr_NamedUnknown,
         N: i32,
-    ) -> crate::OcctResult<*mut HandleExprGeneralExpression>;
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:112 - `Expr_GeneralExpression::EvaluateNumeric()`
+    ) -> crate::OcctResult<*mut Handle_Expr_GeneralExpression>;
+    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:108 - `Expr_GeneralExpression::EvaluateNumeric()`
     pub fn Expr_NamedUnknown_inherited_EvaluateNumeric(
         self_: *const Expr_NamedUnknown,
     ) -> crate::OcctResult<f64>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn Expr_NamedUnknown_inherited_IsInstance(
         self_: *const Expr_NamedUnknown,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn Expr_NamedUnknown_inherited_IsKind(
         self_: *const Expr_NamedUnknown,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn Expr_NamedUnknown_inherited_This(
         self_: *const Expr_NamedUnknown,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn Expr_NamedUnknown_inherited_GetRefCount(
         self_: *const Expr_NamedUnknown,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn Expr_NamedUnknown_inherited_IncrementRefCounter(
         self_: *mut Expr_NamedUnknown,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn Expr_NamedUnknown_inherited_DecrementRefCounter(
         self_: *mut Expr_NamedUnknown,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn Expr_NamedUnknown_inherited_Delete(
         self_: *const Expr_NamedUnknown,
     ) -> *const std::ffi::c_char;
     // ======================== Expr_NotAssigned ========================
     pub fn Expr_NotAssigned_destructor(self_: *mut Expr_NotAssigned);
-    /// **Source:** `Expr_NotAssigned.hxx`:36 - `Expr_NotAssigned::Expr_NotAssigned()`
-    pub fn Expr_NotAssigned_ctor() -> crate::OcctResult<*mut Expr_NotAssigned>;
-    /// **Source:** `Expr_NotAssigned.hxx`:36 - `Expr_NotAssigned::Expr_NotAssigned()`
+    /// **Source:** `Expr_NotAssigned.hxx`:32 - `Expr_NotAssigned::Expr_NotAssigned()`
     pub fn Expr_NotAssigned_ctor_charptr(
         theMessage: *const std::ffi::c_char,
     ) -> crate::OcctResult<*mut Expr_NotAssigned>;
-    /// **Source:** `Expr_NotAssigned.hxx`:36 - `Expr_NotAssigned::Expr_NotAssigned()`
+    /// **Source:** `Expr_NotAssigned.hxx`:32 - `Expr_NotAssigned::Expr_NotAssigned()`
     pub fn Expr_NotAssigned_ctor_charptr2(
         theMessage: *const std::ffi::c_char,
         theStackTrace: *const std::ffi::c_char,
     ) -> crate::OcctResult<*mut Expr_NotAssigned>;
-    /// **Source:** `Expr_NotAssigned.hxx`:36 - `Expr_NotAssigned::DynamicType()`
-    pub fn Expr_NotAssigned_dynamic_type(
+    /// **Source:** `Expr_NotAssigned.hxx`:32 - `Expr_NotAssigned::ExceptionType()`
+    pub fn Expr_NotAssigned_exception_type(
         self_: *const Expr_NotAssigned,
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// **Source:** `Expr_NotAssigned.hxx`:36 - `Expr_NotAssigned::Raise()`
-    pub fn Expr_NotAssigned_raise_charptr(
-        theMessage: *const std::ffi::c_char,
-    ) -> *const std::ffi::c_char;
-    /// **Source:** `Expr_NotAssigned.hxx`:36 - `Expr_NotAssigned::Raise()`
-    pub fn Expr_NotAssigned_raise_sstream(
-        theMessage: *mut Standard_SStream,
-    ) -> *const std::ffi::c_char;
-    /// **Source:** `Expr_NotAssigned.hxx`:36 - `Expr_NotAssigned::NewInstance()`
-    pub fn Expr_NotAssigned_new_instance_charptr(
-        theMessage: *const std::ffi::c_char,
-    ) -> crate::OcctResult<*mut HandleExprNotAssigned>;
-    /// **Source:** `Expr_NotAssigned.hxx`:36 - `Expr_NotAssigned::NewInstance()`
-    pub fn Expr_NotAssigned_new_instance_charptr2(
-        theMessage: *const std::ffi::c_char,
-        theStackTrace: *const std::ffi::c_char,
-    ) -> crate::OcctResult<*mut HandleExprNotAssigned>;
-    /// **Source:** `Expr_NotAssigned.hxx`:36 - `Expr_NotAssigned::get_type_name()`
-    pub fn Expr_NotAssigned_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
-    /// **Source:** `Expr_NotAssigned.hxx`:36 - `Expr_NotAssigned::get_type_descriptor()`
-    pub fn Expr_NotAssigned_get_type_descriptor() -> crate::OcctResult<*const HandleStandardType>;
+    ) -> crate::OcctResult<*const std::ffi::c_char>;
     /// Upcast Expr_NotAssigned to Expr_ExprFailure
     pub fn Expr_NotAssigned_as_Expr_ExprFailure(
         self_: *const Expr_NotAssigned,
@@ -6090,126 +5511,26 @@ unsafe extern "C" {
     pub fn Expr_NotAssigned_as_Standard_Failure_mut(
         self_: *mut Expr_NotAssigned,
     ) -> crate::OcctResult<*mut Standard_Failure>;
-    /// Upcast Expr_NotAssigned to Standard_Transient
-    pub fn Expr_NotAssigned_as_Standard_Transient(
-        self_: *const Expr_NotAssigned,
-    ) -> crate::OcctResult<*const Standard_Transient>;
-    /// Upcast Expr_NotAssigned to Standard_Transient (mutable)
-    pub fn Expr_NotAssigned_as_Standard_Transient_mut(
-        self_: *mut Expr_NotAssigned,
-    ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Wrap Expr_NotAssigned in a Handle
-    pub fn Expr_NotAssigned_to_handle(
-        obj: *mut Expr_NotAssigned,
-    ) -> crate::OcctResult<*mut HandleExprNotAssigned>;
-    /// Destroy Handle<Expr_NotAssigned>
-    pub fn HandleExprNotAssigned_destructor(self_: *mut HandleExprNotAssigned);
-    /// Clone Handle<Expr_NotAssigned> (increments reference count)
-    pub fn HandleExprNotAssigned_clone(
-        self_: *const HandleExprNotAssigned,
-    ) -> crate::OcctResult<*mut HandleExprNotAssigned>;
-    /// Check if Handle<Expr_NotAssigned> is null
-    pub fn HandleExprNotAssigned_is_null(self_: *const HandleExprNotAssigned) -> bool;
-    /// Dereference Handle to get *const Expr_NotAssigned
-    pub fn HandleExprNotAssigned_get(
-        handle: *const HandleExprNotAssigned,
-    ) -> crate::OcctResult<*const Expr_NotAssigned>;
-    /// Dereference Handle to get *mut Expr_NotAssigned
-    pub fn HandleExprNotAssigned_get_mut(
-        handle: *mut HandleExprNotAssigned,
-    ) -> crate::OcctResult<*mut Expr_NotAssigned>;
-    /// Upcast Handle<Expr_NotAssigned> to Handle<Expr_ExprFailure>
-    pub fn HandleExprNotAssigned_to_HandleExprExprFailure(
-        self_: *const HandleExprNotAssigned,
-    ) -> crate::OcctResult<*mut HandleExprExprFailure>;
-    /// Upcast Handle<Expr_NotAssigned> to Handle<Standard_Failure>
-    pub fn HandleExprNotAssigned_to_HandleStandardFailure(
-        self_: *const HandleExprNotAssigned,
-    ) -> crate::OcctResult<*mut HandleStandardFailure>;
-    /// Upcast Handle<Expr_NotAssigned> to Handle<Standard_Transient>
-    pub fn HandleExprNotAssigned_to_HandleStandardTransient(
-        self_: *const HandleExprNotAssigned,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
-    /// Inherited: **Source:** `Standard_Failure.hxx`:58 - `Standard_Failure::Print()`
+    /// Inherited: **Source:** `Standard_Failure.hxx`:73 - `Standard_Failure::Print()`
     pub fn Expr_NotAssigned_inherited_Print(
         self_: *const Expr_NotAssigned,
         theStream: *mut Standard_OStream,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Failure.hxx`:72 - `Standard_Failure::Reraise()`
-    pub fn Expr_NotAssigned_inherited_Reraise(
-        self_: *mut Expr_NotAssigned,
-    ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Failure.hxx`:112 - `Standard_Failure::Jump()`
-    pub fn Expr_NotAssigned_inherited_Jump(self_: *mut Expr_NotAssigned)
-        -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn Expr_NotAssigned_inherited_IsInstance(
-        self_: *const Expr_NotAssigned,
-        theType: *const HandleStandardType,
-    ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn Expr_NotAssigned_inherited_IsKind(
-        self_: *const Expr_NotAssigned,
-        theType: *const HandleStandardType,
-    ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
-    pub fn Expr_NotAssigned_inherited_This(
-        self_: *const Expr_NotAssigned,
-    ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
-    pub fn Expr_NotAssigned_inherited_GetRefCount(
-        self_: *const Expr_NotAssigned,
-    ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
-    pub fn Expr_NotAssigned_inherited_IncrementRefCounter(
-        self_: *mut Expr_NotAssigned,
-    ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
-    pub fn Expr_NotAssigned_inherited_DecrementRefCounter(
-        self_: *mut Expr_NotAssigned,
-    ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
-    pub fn Expr_NotAssigned_inherited_Delete(
-        self_: *const Expr_NotAssigned,
-    ) -> *const std::ffi::c_char;
     // ======================== Expr_NotEvaluable ========================
     pub fn Expr_NotEvaluable_destructor(self_: *mut Expr_NotEvaluable);
-    /// **Source:** `Expr_NotEvaluable.hxx`:36 - `Expr_NotEvaluable::Expr_NotEvaluable()`
-    pub fn Expr_NotEvaluable_ctor() -> crate::OcctResult<*mut Expr_NotEvaluable>;
-    /// **Source:** `Expr_NotEvaluable.hxx`:36 - `Expr_NotEvaluable::Expr_NotEvaluable()`
+    /// **Source:** `Expr_NotEvaluable.hxx`:32 - `Expr_NotEvaluable::Expr_NotEvaluable()`
     pub fn Expr_NotEvaluable_ctor_charptr(
         theMessage: *const std::ffi::c_char,
     ) -> crate::OcctResult<*mut Expr_NotEvaluable>;
-    /// **Source:** `Expr_NotEvaluable.hxx`:36 - `Expr_NotEvaluable::Expr_NotEvaluable()`
+    /// **Source:** `Expr_NotEvaluable.hxx`:32 - `Expr_NotEvaluable::Expr_NotEvaluable()`
     pub fn Expr_NotEvaluable_ctor_charptr2(
         theMessage: *const std::ffi::c_char,
         theStackTrace: *const std::ffi::c_char,
     ) -> crate::OcctResult<*mut Expr_NotEvaluable>;
-    /// **Source:** `Expr_NotEvaluable.hxx`:36 - `Expr_NotEvaluable::DynamicType()`
-    pub fn Expr_NotEvaluable_dynamic_type(
+    /// **Source:** `Expr_NotEvaluable.hxx`:32 - `Expr_NotEvaluable::ExceptionType()`
+    pub fn Expr_NotEvaluable_exception_type(
         self_: *const Expr_NotEvaluable,
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// **Source:** `Expr_NotEvaluable.hxx`:36 - `Expr_NotEvaluable::Raise()`
-    pub fn Expr_NotEvaluable_raise_charptr(
-        theMessage: *const std::ffi::c_char,
-    ) -> *const std::ffi::c_char;
-    /// **Source:** `Expr_NotEvaluable.hxx`:36 - `Expr_NotEvaluable::Raise()`
-    pub fn Expr_NotEvaluable_raise_sstream(
-        theMessage: *mut Standard_SStream,
-    ) -> *const std::ffi::c_char;
-    /// **Source:** `Expr_NotEvaluable.hxx`:36 - `Expr_NotEvaluable::NewInstance()`
-    pub fn Expr_NotEvaluable_new_instance_charptr(
-        theMessage: *const std::ffi::c_char,
-    ) -> crate::OcctResult<*mut HandleExprNotEvaluable>;
-    /// **Source:** `Expr_NotEvaluable.hxx`:36 - `Expr_NotEvaluable::NewInstance()`
-    pub fn Expr_NotEvaluable_new_instance_charptr2(
-        theMessage: *const std::ffi::c_char,
-        theStackTrace: *const std::ffi::c_char,
-    ) -> crate::OcctResult<*mut HandleExprNotEvaluable>;
-    /// **Source:** `Expr_NotEvaluable.hxx`:36 - `Expr_NotEvaluable::get_type_name()`
-    pub fn Expr_NotEvaluable_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
-    /// **Source:** `Expr_NotEvaluable.hxx`:36 - `Expr_NotEvaluable::get_type_descriptor()`
-    pub fn Expr_NotEvaluable_get_type_descriptor() -> crate::OcctResult<*const HandleStandardType>;
+    ) -> crate::OcctResult<*const std::ffi::c_char>;
     /// Upcast Expr_NotEvaluable to Expr_ExprFailure
     pub fn Expr_NotEvaluable_as_Expr_ExprFailure(
         self_: *const Expr_NotEvaluable,
@@ -6226,172 +5547,88 @@ unsafe extern "C" {
     pub fn Expr_NotEvaluable_as_Standard_Failure_mut(
         self_: *mut Expr_NotEvaluable,
     ) -> crate::OcctResult<*mut Standard_Failure>;
-    /// Upcast Expr_NotEvaluable to Standard_Transient
-    pub fn Expr_NotEvaluable_as_Standard_Transient(
-        self_: *const Expr_NotEvaluable,
-    ) -> crate::OcctResult<*const Standard_Transient>;
-    /// Upcast Expr_NotEvaluable to Standard_Transient (mutable)
-    pub fn Expr_NotEvaluable_as_Standard_Transient_mut(
-        self_: *mut Expr_NotEvaluable,
-    ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Wrap Expr_NotEvaluable in a Handle
-    pub fn Expr_NotEvaluable_to_handle(
-        obj: *mut Expr_NotEvaluable,
-    ) -> crate::OcctResult<*mut HandleExprNotEvaluable>;
-    /// Destroy Handle<Expr_NotEvaluable>
-    pub fn HandleExprNotEvaluable_destructor(self_: *mut HandleExprNotEvaluable);
-    /// Clone Handle<Expr_NotEvaluable> (increments reference count)
-    pub fn HandleExprNotEvaluable_clone(
-        self_: *const HandleExprNotEvaluable,
-    ) -> crate::OcctResult<*mut HandleExprNotEvaluable>;
-    /// Check if Handle<Expr_NotEvaluable> is null
-    pub fn HandleExprNotEvaluable_is_null(self_: *const HandleExprNotEvaluable) -> bool;
-    /// Dereference Handle to get *const Expr_NotEvaluable
-    pub fn HandleExprNotEvaluable_get(
-        handle: *const HandleExprNotEvaluable,
-    ) -> crate::OcctResult<*const Expr_NotEvaluable>;
-    /// Dereference Handle to get *mut Expr_NotEvaluable
-    pub fn HandleExprNotEvaluable_get_mut(
-        handle: *mut HandleExprNotEvaluable,
-    ) -> crate::OcctResult<*mut Expr_NotEvaluable>;
-    /// Upcast Handle<Expr_NotEvaluable> to Handle<Expr_ExprFailure>
-    pub fn HandleExprNotEvaluable_to_HandleExprExprFailure(
-        self_: *const HandleExprNotEvaluable,
-    ) -> crate::OcctResult<*mut HandleExprExprFailure>;
-    /// Upcast Handle<Expr_NotEvaluable> to Handle<Standard_Failure>
-    pub fn HandleExprNotEvaluable_to_HandleStandardFailure(
-        self_: *const HandleExprNotEvaluable,
-    ) -> crate::OcctResult<*mut HandleStandardFailure>;
-    /// Upcast Handle<Expr_NotEvaluable> to Handle<Standard_Transient>
-    pub fn HandleExprNotEvaluable_to_HandleStandardTransient(
-        self_: *const HandleExprNotEvaluable,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
-    /// Inherited: **Source:** `Standard_Failure.hxx`:58 - `Standard_Failure::Print()`
+    /// Inherited: **Source:** `Standard_Failure.hxx`:73 - `Standard_Failure::Print()`
     pub fn Expr_NotEvaluable_inherited_Print(
         self_: *const Expr_NotEvaluable,
         theStream: *mut Standard_OStream,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Failure.hxx`:72 - `Standard_Failure::Reraise()`
-    pub fn Expr_NotEvaluable_inherited_Reraise(
-        self_: *mut Expr_NotEvaluable,
-    ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Failure.hxx`:112 - `Standard_Failure::Jump()`
-    pub fn Expr_NotEvaluable_inherited_Jump(
-        self_: *mut Expr_NotEvaluable,
-    ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn Expr_NotEvaluable_inherited_IsInstance(
-        self_: *const Expr_NotEvaluable,
-        theType: *const HandleStandardType,
-    ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn Expr_NotEvaluable_inherited_IsKind(
-        self_: *const Expr_NotEvaluable,
-        theType: *const HandleStandardType,
-    ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
-    pub fn Expr_NotEvaluable_inherited_This(
-        self_: *const Expr_NotEvaluable,
-    ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
-    pub fn Expr_NotEvaluable_inherited_GetRefCount(
-        self_: *const Expr_NotEvaluable,
-    ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
-    pub fn Expr_NotEvaluable_inherited_IncrementRefCounter(
-        self_: *mut Expr_NotEvaluable,
-    ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
-    pub fn Expr_NotEvaluable_inherited_DecrementRefCounter(
-        self_: *mut Expr_NotEvaluable,
-    ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
-    pub fn Expr_NotEvaluable_inherited_Delete(
-        self_: *const Expr_NotEvaluable,
-    ) -> *const std::ffi::c_char;
     // ======================== Expr_NumericValue ========================
     pub fn Expr_NumericValue_destructor(self_: *mut Expr_NumericValue);
-    /// **Source:** `Expr_NumericValue.hxx`:39 - `Expr_NumericValue::Expr_NumericValue()`
+    /// **Source:** `Expr_NumericValue.hxx`:35 - `Expr_NumericValue::Expr_NumericValue()`
     pub fn Expr_NumericValue_ctor_real(val: f64) -> crate::OcctResult<*mut Expr_NumericValue>;
-    /// **Source:** `Expr_NumericValue.hxx`:41 - `Expr_NumericValue::GetValue()`
+    /// **Source:** `Expr_NumericValue.hxx`:37 - `Expr_NumericValue::GetValue()`
     pub fn Expr_NumericValue_get_value(self_: *const Expr_NumericValue) -> crate::OcctResult<f64>;
-    /// **Source:** `Expr_NumericValue.hxx`:43 - `Expr_NumericValue::SetValue()`
+    /// **Source:** `Expr_NumericValue.hxx`:39 - `Expr_NumericValue::SetValue()`
     pub fn Expr_NumericValue_set_value(
         self_: *mut Expr_NumericValue,
         val: f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `Expr_NumericValue.hxx`:47 - `Expr_NumericValue::NbSubExpressions()`
+    /// **Source:** `Expr_NumericValue.hxx`:43 - `Expr_NumericValue::NbSubExpressions()`
     pub fn Expr_NumericValue_nb_sub_expressions(
         self_: *const Expr_NumericValue,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `Expr_NumericValue.hxx`:51 - `Expr_NumericValue::SubExpression()`
+    /// **Source:** `Expr_NumericValue.hxx`:47 - `Expr_NumericValue::SubExpression()`
     pub fn Expr_NumericValue_sub_expression(
         self_: *const Expr_NumericValue,
         I: i32,
-    ) -> crate::OcctResult<*const HandleExprGeneralExpression>;
-    /// **Source:** `Expr_NumericValue.hxx`:57 - `Expr_NumericValue::Simplified()`
+    ) -> crate::OcctResult<*const Handle_Expr_GeneralExpression>;
+    /// **Source:** `Expr_NumericValue.hxx`:53 - `Expr_NumericValue::Simplified()`
     pub fn Expr_NumericValue_simplified(
         self_: *const Expr_NumericValue,
-    ) -> crate::OcctResult<*mut HandleExprGeneralExpression>;
-    /// **Source:** `Expr_NumericValue.hxx`:61 - `Expr_NumericValue::ShallowSimplified()`
+    ) -> crate::OcctResult<*mut Handle_Expr_GeneralExpression>;
+    /// **Source:** `Expr_NumericValue.hxx`:57 - `Expr_NumericValue::ShallowSimplified()`
     pub fn Expr_NumericValue_shallow_simplified(
         self_: *const Expr_NumericValue,
-    ) -> crate::OcctResult<*mut HandleExprGeneralExpression>;
-    /// **Source:** `Expr_NumericValue.hxx`:64 - `Expr_NumericValue::Copy()`
+    ) -> crate::OcctResult<*mut Handle_Expr_GeneralExpression>;
+    /// **Source:** `Expr_NumericValue.hxx`:60 - `Expr_NumericValue::Copy()`
     pub fn Expr_NumericValue_copy(
         self_: *const Expr_NumericValue,
-    ) -> crate::OcctResult<*mut HandleExprGeneralExpression>;
-    /// **Source:** `Expr_NumericValue.hxx`:67 - `Expr_NumericValue::ContainsUnknowns()`
+    ) -> crate::OcctResult<*mut Handle_Expr_GeneralExpression>;
+    /// **Source:** `Expr_NumericValue.hxx`:63 - `Expr_NumericValue::ContainsUnknowns()`
     pub fn Expr_NumericValue_contains_unknowns(
         self_: *const Expr_NumericValue,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `Expr_NumericValue.hxx`:71 - `Expr_NumericValue::Contains()`
+    /// **Source:** `Expr_NumericValue.hxx`:66 - `Expr_NumericValue::Contains()`
     pub fn Expr_NumericValue_contains(
         self_: *const Expr_NumericValue,
-        exp: *const HandleExprGeneralExpression,
+        exp: *const Handle_Expr_GeneralExpression,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `Expr_NumericValue.hxx`:77 - `Expr_NumericValue::IsIdentical()`
+    /// **Source:** `Expr_NumericValue.hxx`:71 - `Expr_NumericValue::IsIdentical()`
     pub fn Expr_NumericValue_is_identical(
         self_: *const Expr_NumericValue,
-        Other: *const HandleExprGeneralExpression,
+        Other: *const Handle_Expr_GeneralExpression,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `Expr_NumericValue.hxx`:79 - `Expr_NumericValue::IsLinear()`
+    /// **Source:** `Expr_NumericValue.hxx`:73 - `Expr_NumericValue::IsLinear()`
     pub fn Expr_NumericValue_is_linear(self_: *const Expr_NumericValue) -> crate::OcctResult<bool>;
-    /// **Source:** `Expr_NumericValue.hxx`:82 - `Expr_NumericValue::Derivative()`
+    /// **Source:** `Expr_NumericValue.hxx`:76 - `Expr_NumericValue::Derivative()`
     pub fn Expr_NumericValue_derivative(
         self_: *const Expr_NumericValue,
-        X: *const HandleExprNamedUnknown,
-    ) -> crate::OcctResult<*mut HandleExprGeneralExpression>;
-    /// **Source:** `Expr_NumericValue.hxx`:87 - `Expr_NumericValue::NDerivative()`
+        X: *const Handle_Expr_NamedUnknown,
+    ) -> crate::OcctResult<*mut Handle_Expr_GeneralExpression>;
+    /// **Source:** `Expr_NumericValue.hxx`:81 - `Expr_NumericValue::NDerivative()`
     pub fn Expr_NumericValue_n_derivative(
         self_: *const Expr_NumericValue,
-        X: *const HandleExprNamedUnknown,
+        X: *const Handle_Expr_NamedUnknown,
         N: i32,
-    ) -> crate::OcctResult<*mut HandleExprGeneralExpression>;
-    /// **Source:** `Expr_NumericValue.hxx`:92 - `Expr_NumericValue::Replace()`
+    ) -> crate::OcctResult<*mut Handle_Expr_GeneralExpression>;
+    /// **Source:** `Expr_NumericValue.hxx`:86 - `Expr_NumericValue::Replace()`
     pub fn Expr_NumericValue_replace(
         self_: *mut Expr_NumericValue,
-        var: *const HandleExprNamedUnknown,
-        with: *const HandleExprGeneralExpression,
+        var: *const Handle_Expr_NamedUnknown,
+        with: *const Handle_Expr_GeneralExpression,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `Expr_NumericValue.hxx`:97 - `Expr_NumericValue::Evaluate()`
-    pub fn Expr_NumericValue_evaluate(
-        self_: *const Expr_NumericValue,
-        vars: *const Expr_Array1OfNamedUnknown,
-        vals: *const TColStd_Array1OfReal,
-    ) -> crate::OcctResult<f64>;
-    /// **Source:** `Expr_NumericValue.hxx`:101 - `Expr_NumericValue::String()`
+    /// **Source:** `Expr_NumericValue.hxx`:95 - `Expr_NumericValue::String()`
     pub fn Expr_NumericValue_string(
         self_: *const Expr_NumericValue,
     ) -> crate::OcctResult<*mut TCollection_AsciiString>;
-    /// **Source:** `Expr_NumericValue.hxx`:103 - `Expr_NumericValue::DynamicType()`
+    /// **Source:** `Expr_NumericValue.hxx`:97 - `Expr_NumericValue::DynamicType()`
     pub fn Expr_NumericValue_dynamic_type(
         self_: *const Expr_NumericValue,
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// **Source:** `Expr_NumericValue.hxx`:103 - `Expr_NumericValue::get_type_name()`
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
+    /// **Source:** `Expr_NumericValue.hxx`:97 - `Expr_NumericValue::get_type_name()`
     pub fn Expr_NumericValue_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
-    /// **Source:** `Expr_NumericValue.hxx`:103 - `Expr_NumericValue::get_type_descriptor()`
-    pub fn Expr_NumericValue_get_type_descriptor() -> crate::OcctResult<*const HandleStandardType>;
+    /// **Source:** `Expr_NumericValue.hxx`:97 - `Expr_NumericValue::get_type_descriptor()`
+    pub fn Expr_NumericValue_get_type_descriptor() -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast Expr_NumericValue to Expr_GeneralExpression
     pub fn Expr_NumericValue_as_Expr_GeneralExpression(
         self_: *const Expr_NumericValue,
@@ -6411,122 +5648,123 @@ unsafe extern "C" {
     /// Wrap Expr_NumericValue in a Handle
     pub fn Expr_NumericValue_to_handle(
         obj: *mut Expr_NumericValue,
-    ) -> crate::OcctResult<*mut HandleExprNumericValue>;
+    ) -> crate::OcctResult<*mut Handle_Expr_NumericValue>;
     /// Destroy Handle<Expr_NumericValue>
-    pub fn HandleExprNumericValue_destructor(self_: *mut HandleExprNumericValue);
+    pub fn Handle_Expr_NumericValue_destructor(self_: *mut Handle_Expr_NumericValue);
     /// Clone Handle<Expr_NumericValue> (increments reference count)
-    pub fn HandleExprNumericValue_clone(
-        self_: *const HandleExprNumericValue,
-    ) -> crate::OcctResult<*mut HandleExprNumericValue>;
+    pub fn Handle_Expr_NumericValue_clone(
+        self_: *const Handle_Expr_NumericValue,
+    ) -> crate::OcctResult<*mut Handle_Expr_NumericValue>;
     /// Check if Handle<Expr_NumericValue> is null
-    pub fn HandleExprNumericValue_is_null(self_: *const HandleExprNumericValue) -> bool;
+    pub fn Handle_Expr_NumericValue_is_null(self_: *const Handle_Expr_NumericValue) -> bool;
     /// Dereference Handle to get *const Expr_NumericValue
-    pub fn HandleExprNumericValue_get(
-        handle: *const HandleExprNumericValue,
+    pub fn Handle_Expr_NumericValue_get(
+        handle: *const Handle_Expr_NumericValue,
     ) -> crate::OcctResult<*const Expr_NumericValue>;
     /// Dereference Handle to get *mut Expr_NumericValue
-    pub fn HandleExprNumericValue_get_mut(
-        handle: *mut HandleExprNumericValue,
+    pub fn Handle_Expr_NumericValue_get_mut(
+        handle: *mut Handle_Expr_NumericValue,
     ) -> crate::OcctResult<*mut Expr_NumericValue>;
     /// Upcast Handle<Expr_NumericValue> to Handle<Expr_GeneralExpression>
-    pub fn HandleExprNumericValue_to_HandleExprGeneralExpression(
-        self_: *const HandleExprNumericValue,
-    ) -> crate::OcctResult<*mut HandleExprGeneralExpression>;
+    pub fn Handle_Expr_NumericValue_to_Handle_Expr_GeneralExpression(
+        self_: *const Handle_Expr_NumericValue,
+    ) -> crate::OcctResult<*mut Handle_Expr_GeneralExpression>;
     /// Upcast Handle<Expr_NumericValue> to Handle<Standard_Transient>
-    pub fn HandleExprNumericValue_to_HandleStandardTransient(
-        self_: *const HandleExprNumericValue,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:76 - `Expr_GeneralExpression::IsShareable()`
+    pub fn Handle_Expr_NumericValue_to_Handle_Standard_Transient(
+        self_: *const Handle_Expr_NumericValue,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
+    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:71 - `Expr_GeneralExpression::IsShareable()`
     pub fn Expr_NumericValue_inherited_IsShareable(
         self_: *const Expr_NumericValue,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:112 - `Expr_GeneralExpression::EvaluateNumeric()`
+    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:108 - `Expr_GeneralExpression::EvaluateNumeric()`
     pub fn Expr_NumericValue_inherited_EvaluateNumeric(
         self_: *const Expr_NumericValue,
     ) -> crate::OcctResult<f64>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn Expr_NumericValue_inherited_IsInstance(
         self_: *const Expr_NumericValue,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn Expr_NumericValue_inherited_IsKind(
         self_: *const Expr_NumericValue,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn Expr_NumericValue_inherited_This(
         self_: *const Expr_NumericValue,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn Expr_NumericValue_inherited_GetRefCount(
         self_: *const Expr_NumericValue,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn Expr_NumericValue_inherited_IncrementRefCounter(
         self_: *mut Expr_NumericValue,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn Expr_NumericValue_inherited_DecrementRefCounter(
         self_: *mut Expr_NumericValue,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn Expr_NumericValue_inherited_Delete(
         self_: *const Expr_NumericValue,
     ) -> *const std::ffi::c_char;
     // ======================== Expr_PolyExpression ========================
     pub fn Expr_PolyExpression_destructor(self_: *mut Expr_PolyExpression);
-    /// **Source:** `Expr_PolyExpression.hxx`:36 - `Expr_PolyExpression::NbOperands()`
+    /// **Source:** `Expr_PolyExpression.hxx`:33 - `Expr_PolyExpression::NbOperands()`
     pub fn Expr_PolyExpression_nb_operands(
         self_: *const Expr_PolyExpression,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `Expr_PolyExpression.hxx`:40 - `Expr_PolyExpression::Operand()`
+    /// **Source:** `Expr_PolyExpression.hxx`:37 - `Expr_PolyExpression::Operand()`
     pub fn Expr_PolyExpression_operand(
         self_: *const Expr_PolyExpression,
         index: i32,
-    ) -> crate::OcctResult<*const HandleExprGeneralExpression>;
-    /// **Source:** `Expr_PolyExpression.hxx`:45 - `Expr_PolyExpression::SetOperand()`
+    ) -> crate::OcctResult<*const Handle_Expr_GeneralExpression>;
+    /// **Source:** `Expr_PolyExpression.hxx`:42 - `Expr_PolyExpression::SetOperand()`
     pub fn Expr_PolyExpression_set_operand(
         self_: *mut Expr_PolyExpression,
-        exp: *const HandleExprGeneralExpression,
+        exp: *const Handle_Expr_GeneralExpression,
         index: i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `Expr_PolyExpression.hxx`:50 - `Expr_PolyExpression::NbSubExpressions()`
+    /// **Source:** `Expr_PolyExpression.hxx`:46 - `Expr_PolyExpression::NbSubExpressions()`
     pub fn Expr_PolyExpression_nb_sub_expressions(
         self_: *const Expr_PolyExpression,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `Expr_PolyExpression.hxx`:54 - `Expr_PolyExpression::SubExpression()`
+    /// **Source:** `Expr_PolyExpression.hxx`:50 - `Expr_PolyExpression::SubExpression()`
     pub fn Expr_PolyExpression_sub_expression(
         self_: *const Expr_PolyExpression,
         I: i32,
-    ) -> crate::OcctResult<*const HandleExprGeneralExpression>;
-    /// **Source:** `Expr_PolyExpression.hxx`:58 - `Expr_PolyExpression::ContainsUnknowns()`
+    ) -> crate::OcctResult<*const Handle_Expr_GeneralExpression>;
+    /// **Source:** `Expr_PolyExpression.hxx`:54 - `Expr_PolyExpression::ContainsUnknowns()`
     pub fn Expr_PolyExpression_contains_unknowns(
         self_: *const Expr_PolyExpression,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `Expr_PolyExpression.hxx`:62 - `Expr_PolyExpression::Contains()`
+    /// **Source:** `Expr_PolyExpression.hxx`:57 - `Expr_PolyExpression::Contains()`
     pub fn Expr_PolyExpression_contains(
         self_: *const Expr_PolyExpression,
-        exp: *const HandleExprGeneralExpression,
+        exp: *const Handle_Expr_GeneralExpression,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `Expr_PolyExpression.hxx`:66 - `Expr_PolyExpression::Replace()`
+    /// **Source:** `Expr_PolyExpression.hxx`:61 - `Expr_PolyExpression::Replace()`
     pub fn Expr_PolyExpression_replace(
         self_: *mut Expr_PolyExpression,
-        var: *const HandleExprNamedUnknown,
-        with: *const HandleExprGeneralExpression,
+        var: *const Handle_Expr_NamedUnknown,
+        with: *const Handle_Expr_GeneralExpression,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `Expr_PolyExpression.hxx`:72 - `Expr_PolyExpression::Simplified()`
+    /// **Source:** `Expr_PolyExpression.hxx`:67 - `Expr_PolyExpression::Simplified()`
     pub fn Expr_PolyExpression_simplified(
         self_: *const Expr_PolyExpression,
-    ) -> crate::OcctResult<*mut HandleExprGeneralExpression>;
-    /// **Source:** `Expr_PolyExpression.hxx`:74 - `Expr_PolyExpression::DynamicType()`
+    ) -> crate::OcctResult<*mut Handle_Expr_GeneralExpression>;
+    /// **Source:** `Expr_PolyExpression.hxx`:69 - `Expr_PolyExpression::DynamicType()`
     pub fn Expr_PolyExpression_dynamic_type(
         self_: *const Expr_PolyExpression,
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// **Source:** `Expr_PolyExpression.hxx`:74 - `Expr_PolyExpression::get_type_name()`
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
+    /// **Source:** `Expr_PolyExpression.hxx`:69 - `Expr_PolyExpression::get_type_name()`
     pub fn Expr_PolyExpression_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
-    /// **Source:** `Expr_PolyExpression.hxx`:74 - `Expr_PolyExpression::get_type_descriptor()`
-    pub fn Expr_PolyExpression_get_type_descriptor() -> crate::OcctResult<*const HandleStandardType>;
+    /// **Source:** `Expr_PolyExpression.hxx`:69 - `Expr_PolyExpression::get_type_descriptor()`
+    pub fn Expr_PolyExpression_get_type_descriptor(
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast Expr_PolyExpression to Expr_GeneralExpression
     pub fn Expr_PolyExpression_as_Expr_GeneralExpression(
         self_: *const Expr_PolyExpression,
@@ -6544,166 +5782,149 @@ unsafe extern "C" {
         self_: *mut Expr_PolyExpression,
     ) -> crate::OcctResult<*mut Standard_Transient>;
     /// Destroy Handle<Expr_PolyExpression>
-    pub fn HandleExprPolyExpression_destructor(self_: *mut HandleExprPolyExpression);
+    pub fn Handle_Expr_PolyExpression_destructor(self_: *mut Handle_Expr_PolyExpression);
     /// Clone Handle<Expr_PolyExpression> (increments reference count)
-    pub fn HandleExprPolyExpression_clone(
-        self_: *const HandleExprPolyExpression,
-    ) -> crate::OcctResult<*mut HandleExprPolyExpression>;
+    pub fn Handle_Expr_PolyExpression_clone(
+        self_: *const Handle_Expr_PolyExpression,
+    ) -> crate::OcctResult<*mut Handle_Expr_PolyExpression>;
     /// Check if Handle<Expr_PolyExpression> is null
-    pub fn HandleExprPolyExpression_is_null(self_: *const HandleExprPolyExpression) -> bool;
+    pub fn Handle_Expr_PolyExpression_is_null(self_: *const Handle_Expr_PolyExpression) -> bool;
     /// Dereference Handle to get *const Expr_PolyExpression
-    pub fn HandleExprPolyExpression_get(
-        handle: *const HandleExprPolyExpression,
+    pub fn Handle_Expr_PolyExpression_get(
+        handle: *const Handle_Expr_PolyExpression,
     ) -> crate::OcctResult<*const Expr_PolyExpression>;
     /// Dereference Handle to get *mut Expr_PolyExpression
-    pub fn HandleExprPolyExpression_get_mut(
-        handle: *mut HandleExprPolyExpression,
+    pub fn Handle_Expr_PolyExpression_get_mut(
+        handle: *mut Handle_Expr_PolyExpression,
     ) -> crate::OcctResult<*mut Expr_PolyExpression>;
     /// Upcast Handle<Expr_PolyExpression> to Handle<Expr_GeneralExpression>
-    pub fn HandleExprPolyExpression_to_HandleExprGeneralExpression(
-        self_: *const HandleExprPolyExpression,
-    ) -> crate::OcctResult<*mut HandleExprGeneralExpression>;
+    pub fn Handle_Expr_PolyExpression_to_Handle_Expr_GeneralExpression(
+        self_: *const Handle_Expr_PolyExpression,
+    ) -> crate::OcctResult<*mut Handle_Expr_GeneralExpression>;
     /// Upcast Handle<Expr_PolyExpression> to Handle<Standard_Transient>
-    pub fn HandleExprPolyExpression_to_HandleStandardTransient(
-        self_: *const HandleExprPolyExpression,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
+    pub fn Handle_Expr_PolyExpression_to_Handle_Standard_Transient(
+        self_: *const Handle_Expr_PolyExpression,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
     /// Downcast Handle<Expr_PolyExpression> to Handle<Expr_PolyFunction> (returns null on failure)
-    pub fn HandleExprPolyExpression_downcast_to_HandleExprPolyFunction(
-        self_: *const HandleExprPolyExpression,
-    ) -> crate::OcctResult<*mut HandleExprPolyFunction>;
+    pub fn Handle_Expr_PolyExpression_downcast_to_Handle_Expr_PolyFunction(
+        self_: *const Handle_Expr_PolyExpression,
+    ) -> crate::OcctResult<*mut Handle_Expr_PolyFunction>;
     /// Downcast Handle<Expr_PolyExpression> to Handle<Expr_Product> (returns null on failure)
-    pub fn HandleExprPolyExpression_downcast_to_HandleExprProduct(
-        self_: *const HandleExprPolyExpression,
-    ) -> crate::OcctResult<*mut HandleExprProduct>;
+    pub fn Handle_Expr_PolyExpression_downcast_to_Handle_Expr_Product(
+        self_: *const Handle_Expr_PolyExpression,
+    ) -> crate::OcctResult<*mut Handle_Expr_Product>;
     /// Downcast Handle<Expr_PolyExpression> to Handle<Expr_Sum> (returns null on failure)
-    pub fn HandleExprPolyExpression_downcast_to_HandleExprSum(
-        self_: *const HandleExprPolyExpression,
-    ) -> crate::OcctResult<*mut HandleExprSum>;
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:55 - `Expr_GeneralExpression::ShallowSimplified()`
+    pub fn Handle_Expr_PolyExpression_downcast_to_Handle_Expr_Sum(
+        self_: *const Handle_Expr_PolyExpression,
+    ) -> crate::OcctResult<*mut Handle_Expr_Sum>;
+    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:51 - `Expr_GeneralExpression::ShallowSimplified()`
     pub fn Expr_PolyExpression_inherited_ShallowSimplified(
         self_: *const Expr_PolyExpression,
-    ) -> crate::OcctResult<*mut HandleExprGeneralExpression>;
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:59 - `Expr_GeneralExpression::Copy()`
+    ) -> crate::OcctResult<*mut Handle_Expr_GeneralExpression>;
+    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:55 - `Expr_GeneralExpression::Copy()`
     pub fn Expr_PolyExpression_inherited_Copy(
         self_: *const Expr_PolyExpression,
-    ) -> crate::OcctResult<*mut HandleExprGeneralExpression>;
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:70 - `Expr_GeneralExpression::IsLinear()`
+    ) -> crate::OcctResult<*mut Handle_Expr_GeneralExpression>;
+    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:65 - `Expr_GeneralExpression::IsLinear()`
     pub fn Expr_PolyExpression_inherited_IsLinear(
         self_: *const Expr_PolyExpression,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:76 - `Expr_GeneralExpression::IsShareable()`
+    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:71 - `Expr_GeneralExpression::IsShareable()`
     pub fn Expr_PolyExpression_inherited_IsShareable(
         self_: *const Expr_PolyExpression,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:82 - `Expr_GeneralExpression::IsIdentical()`
+    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:77 - `Expr_GeneralExpression::IsIdentical()`
     pub fn Expr_PolyExpression_inherited_IsIdentical(
         self_: *const Expr_PolyExpression,
-        Other: *const HandleExprGeneralExpression,
+        Other: *const Handle_Expr_GeneralExpression,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:86 - `Expr_GeneralExpression::Derivative()`
+    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:81 - `Expr_GeneralExpression::Derivative()`
     pub fn Expr_PolyExpression_inherited_Derivative(
         self_: *const Expr_PolyExpression,
-        X: *const HandleExprNamedUnknown,
-    ) -> crate::OcctResult<*mut HandleExprGeneralExpression>;
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:91 - `Expr_GeneralExpression::NDerivative()`
+        X: *const Handle_Expr_NamedUnknown,
+    ) -> crate::OcctResult<*mut Handle_Expr_GeneralExpression>;
+    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:86 - `Expr_GeneralExpression::NDerivative()`
     pub fn Expr_PolyExpression_inherited_NDerivative(
         self_: *const Expr_PolyExpression,
-        X: *const HandleExprNamedUnknown,
+        X: *const Handle_Expr_NamedUnknown,
         N: i32,
-    ) -> crate::OcctResult<*mut HandleExprGeneralExpression>;
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:105 - `Expr_GeneralExpression::Evaluate()`
-    pub fn Expr_PolyExpression_inherited_Evaluate(
-        self_: *const Expr_PolyExpression,
-        vars: *const Expr_Array1OfNamedUnknown,
-        vals: *const TColStd_Array1OfReal,
-    ) -> crate::OcctResult<f64>;
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:112 - `Expr_GeneralExpression::EvaluateNumeric()`
+    ) -> crate::OcctResult<*mut Handle_Expr_GeneralExpression>;
+    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:108 - `Expr_GeneralExpression::EvaluateNumeric()`
     pub fn Expr_PolyExpression_inherited_EvaluateNumeric(
         self_: *const Expr_PolyExpression,
     ) -> crate::OcctResult<f64>;
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:115 - `Expr_GeneralExpression::String()`
+    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:111 - `Expr_GeneralExpression::String()`
     pub fn Expr_PolyExpression_inherited_String(
         self_: *const Expr_PolyExpression,
     ) -> crate::OcctResult<*mut TCollection_AsciiString>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn Expr_PolyExpression_inherited_IsInstance(
         self_: *const Expr_PolyExpression,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn Expr_PolyExpression_inherited_IsKind(
         self_: *const Expr_PolyExpression,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn Expr_PolyExpression_inherited_This(
         self_: *const Expr_PolyExpression,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn Expr_PolyExpression_inherited_GetRefCount(
         self_: *const Expr_PolyExpression,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn Expr_PolyExpression_inherited_IncrementRefCounter(
         self_: *mut Expr_PolyExpression,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn Expr_PolyExpression_inherited_DecrementRefCounter(
         self_: *mut Expr_PolyExpression,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn Expr_PolyExpression_inherited_Delete(
         self_: *const Expr_PolyExpression,
     ) -> *const std::ffi::c_char;
     // ======================== Expr_PolyFunction ========================
     pub fn Expr_PolyFunction_destructor(self_: *mut Expr_PolyFunction);
-    /// **Source:** `Expr_PolyFunction.hxx`:42 - `Expr_PolyFunction::Expr_PolyFunction()`
-    pub fn Expr_PolyFunction_ctor_handleexprgeneralfunction_array1ofgeneralexpression(
-        func: *const HandleExprGeneralFunction,
-        exps: *const Expr_Array1OfGeneralExpression,
-    ) -> crate::OcctResult<*mut Expr_PolyFunction>;
-    /// **Source:** `Expr_PolyFunction.hxx`:46 - `Expr_PolyFunction::Function()`
+    /// **Source:** `Expr_PolyFunction.hxx`:43 - `Expr_PolyFunction::Function()`
     pub fn Expr_PolyFunction_function(
         self_: *const Expr_PolyFunction,
-    ) -> crate::OcctResult<*mut HandleExprGeneralFunction>;
-    /// **Source:** `Expr_PolyFunction.hxx`:50 - `Expr_PolyFunction::ShallowSimplified()`
+    ) -> crate::OcctResult<*mut Handle_Expr_GeneralFunction>;
+    /// **Source:** `Expr_PolyFunction.hxx`:47 - `Expr_PolyFunction::ShallowSimplified()`
     pub fn Expr_PolyFunction_shallow_simplified(
         self_: *const Expr_PolyFunction,
-    ) -> crate::OcctResult<*mut HandleExprGeneralExpression>;
-    /// **Source:** `Expr_PolyFunction.hxx`:53 - `Expr_PolyFunction::Copy()`
+    ) -> crate::OcctResult<*mut Handle_Expr_GeneralExpression>;
+    /// **Source:** `Expr_PolyFunction.hxx`:50 - `Expr_PolyFunction::Copy()`
     pub fn Expr_PolyFunction_copy(
         self_: *const Expr_PolyFunction,
-    ) -> crate::OcctResult<*mut HandleExprGeneralExpression>;
-    /// **Source:** `Expr_PolyFunction.hxx`:59 - `Expr_PolyFunction::IsIdentical()`
+    ) -> crate::OcctResult<*mut Handle_Expr_GeneralExpression>;
+    /// **Source:** `Expr_PolyFunction.hxx`:55 - `Expr_PolyFunction::IsIdentical()`
     pub fn Expr_PolyFunction_is_identical(
         self_: *const Expr_PolyFunction,
-        Other: *const HandleExprGeneralExpression,
+        Other: *const Handle_Expr_GeneralExpression,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `Expr_PolyFunction.hxx`:61 - `Expr_PolyFunction::IsLinear()`
+    /// **Source:** `Expr_PolyFunction.hxx`:57 - `Expr_PolyFunction::IsLinear()`
     pub fn Expr_PolyFunction_is_linear(self_: *const Expr_PolyFunction) -> crate::OcctResult<bool>;
-    /// **Source:** `Expr_PolyFunction.hxx`:64 - `Expr_PolyFunction::Derivative()`
+    /// **Source:** `Expr_PolyFunction.hxx`:60 - `Expr_PolyFunction::Derivative()`
     pub fn Expr_PolyFunction_derivative(
         self_: *const Expr_PolyFunction,
-        X: *const HandleExprNamedUnknown,
-    ) -> crate::OcctResult<*mut HandleExprGeneralExpression>;
-    /// **Source:** `Expr_PolyFunction.hxx`:71 - `Expr_PolyFunction::Evaluate()`
-    pub fn Expr_PolyFunction_evaluate(
-        self_: *const Expr_PolyFunction,
-        vars: *const Expr_Array1OfNamedUnknown,
-        vals: *const TColStd_Array1OfReal,
-    ) -> crate::OcctResult<f64>;
-    /// **Source:** `Expr_PolyFunction.hxx`:75 - `Expr_PolyFunction::String()`
+        X: *const Handle_Expr_NamedUnknown,
+    ) -> crate::OcctResult<*mut Handle_Expr_GeneralExpression>;
+    /// **Source:** `Expr_PolyFunction.hxx`:71 - `Expr_PolyFunction::String()`
     pub fn Expr_PolyFunction_string(
         self_: *const Expr_PolyFunction,
     ) -> crate::OcctResult<*mut TCollection_AsciiString>;
-    /// **Source:** `Expr_PolyFunction.hxx`:77 - `Expr_PolyFunction::DynamicType()`
+    /// **Source:** `Expr_PolyFunction.hxx`:73 - `Expr_PolyFunction::DynamicType()`
     pub fn Expr_PolyFunction_dynamic_type(
         self_: *const Expr_PolyFunction,
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// **Source:** `Expr_PolyFunction.hxx`:77 - `Expr_PolyFunction::get_type_name()`
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
+    /// **Source:** `Expr_PolyFunction.hxx`:73 - `Expr_PolyFunction::get_type_name()`
     pub fn Expr_PolyFunction_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
-    /// **Source:** `Expr_PolyFunction.hxx`:77 - `Expr_PolyFunction::get_type_descriptor()`
-    pub fn Expr_PolyFunction_get_type_descriptor() -> crate::OcctResult<*const HandleStandardType>;
+    /// **Source:** `Expr_PolyFunction.hxx`:73 - `Expr_PolyFunction::get_type_descriptor()`
+    pub fn Expr_PolyFunction_get_type_descriptor() -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast Expr_PolyFunction to Expr_PolyExpression
     pub fn Expr_PolyFunction_as_Expr_PolyExpression(
         self_: *const Expr_PolyFunction,
@@ -6731,171 +5952,161 @@ unsafe extern "C" {
     /// Wrap Expr_PolyFunction in a Handle
     pub fn Expr_PolyFunction_to_handle(
         obj: *mut Expr_PolyFunction,
-    ) -> crate::OcctResult<*mut HandleExprPolyFunction>;
+    ) -> crate::OcctResult<*mut Handle_Expr_PolyFunction>;
     /// Destroy Handle<Expr_PolyFunction>
-    pub fn HandleExprPolyFunction_destructor(self_: *mut HandleExprPolyFunction);
+    pub fn Handle_Expr_PolyFunction_destructor(self_: *mut Handle_Expr_PolyFunction);
     /// Clone Handle<Expr_PolyFunction> (increments reference count)
-    pub fn HandleExprPolyFunction_clone(
-        self_: *const HandleExprPolyFunction,
-    ) -> crate::OcctResult<*mut HandleExprPolyFunction>;
+    pub fn Handle_Expr_PolyFunction_clone(
+        self_: *const Handle_Expr_PolyFunction,
+    ) -> crate::OcctResult<*mut Handle_Expr_PolyFunction>;
     /// Check if Handle<Expr_PolyFunction> is null
-    pub fn HandleExprPolyFunction_is_null(self_: *const HandleExprPolyFunction) -> bool;
+    pub fn Handle_Expr_PolyFunction_is_null(self_: *const Handle_Expr_PolyFunction) -> bool;
     /// Dereference Handle to get *const Expr_PolyFunction
-    pub fn HandleExprPolyFunction_get(
-        handle: *const HandleExprPolyFunction,
+    pub fn Handle_Expr_PolyFunction_get(
+        handle: *const Handle_Expr_PolyFunction,
     ) -> crate::OcctResult<*const Expr_PolyFunction>;
     /// Dereference Handle to get *mut Expr_PolyFunction
-    pub fn HandleExprPolyFunction_get_mut(
-        handle: *mut HandleExprPolyFunction,
+    pub fn Handle_Expr_PolyFunction_get_mut(
+        handle: *mut Handle_Expr_PolyFunction,
     ) -> crate::OcctResult<*mut Expr_PolyFunction>;
     /// Upcast Handle<Expr_PolyFunction> to Handle<Expr_PolyExpression>
-    pub fn HandleExprPolyFunction_to_HandleExprPolyExpression(
-        self_: *const HandleExprPolyFunction,
-    ) -> crate::OcctResult<*mut HandleExprPolyExpression>;
+    pub fn Handle_Expr_PolyFunction_to_Handle_Expr_PolyExpression(
+        self_: *const Handle_Expr_PolyFunction,
+    ) -> crate::OcctResult<*mut Handle_Expr_PolyExpression>;
     /// Upcast Handle<Expr_PolyFunction> to Handle<Expr_GeneralExpression>
-    pub fn HandleExprPolyFunction_to_HandleExprGeneralExpression(
-        self_: *const HandleExprPolyFunction,
-    ) -> crate::OcctResult<*mut HandleExprGeneralExpression>;
+    pub fn Handle_Expr_PolyFunction_to_Handle_Expr_GeneralExpression(
+        self_: *const Handle_Expr_PolyFunction,
+    ) -> crate::OcctResult<*mut Handle_Expr_GeneralExpression>;
     /// Upcast Handle<Expr_PolyFunction> to Handle<Standard_Transient>
-    pub fn HandleExprPolyFunction_to_HandleStandardTransient(
-        self_: *const HandleExprPolyFunction,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
-    /// Inherited: **Source:** `Expr_PolyExpression.hxx`:36 - `Expr_PolyExpression::NbOperands()`
+    pub fn Handle_Expr_PolyFunction_to_Handle_Standard_Transient(
+        self_: *const Handle_Expr_PolyFunction,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
+    /// Inherited: **Source:** `Expr_PolyExpression.hxx`:33 - `Expr_PolyExpression::NbOperands()`
     pub fn Expr_PolyFunction_inherited_NbOperands(
         self_: *const Expr_PolyFunction,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Expr_PolyExpression.hxx`:40 - `Expr_PolyExpression::Operand()`
+    /// Inherited: **Source:** `Expr_PolyExpression.hxx`:37 - `Expr_PolyExpression::Operand()`
     pub fn Expr_PolyFunction_inherited_Operand(
         self_: *const Expr_PolyFunction,
         index: i32,
-    ) -> crate::OcctResult<*const HandleExprGeneralExpression>;
-    /// Inherited: **Source:** `Expr_PolyExpression.hxx`:45 - `Expr_PolyExpression::SetOperand()`
+    ) -> crate::OcctResult<*const Handle_Expr_GeneralExpression>;
+    /// Inherited: **Source:** `Expr_PolyExpression.hxx`:42 - `Expr_PolyExpression::SetOperand()`
     pub fn Expr_PolyFunction_inherited_SetOperand(
         self_: *mut Expr_PolyFunction,
-        exp: *const HandleExprGeneralExpression,
+        exp: *const Handle_Expr_GeneralExpression,
         index: i32,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Expr_PolyExpression.hxx`:50 - `Expr_PolyExpression::NbSubExpressions()`
+    /// Inherited: **Source:** `Expr_PolyExpression.hxx`:46 - `Expr_PolyExpression::NbSubExpressions()`
     pub fn Expr_PolyFunction_inherited_NbSubExpressions(
         self_: *const Expr_PolyFunction,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Expr_PolyExpression.hxx`:54 - `Expr_PolyExpression::SubExpression()`
+    /// Inherited: **Source:** `Expr_PolyExpression.hxx`:50 - `Expr_PolyExpression::SubExpression()`
     pub fn Expr_PolyFunction_inherited_SubExpression(
         self_: *const Expr_PolyFunction,
         I: i32,
-    ) -> crate::OcctResult<*const HandleExprGeneralExpression>;
-    /// Inherited: **Source:** `Expr_PolyExpression.hxx`:58 - `Expr_PolyExpression::ContainsUnknowns()`
+    ) -> crate::OcctResult<*const Handle_Expr_GeneralExpression>;
+    /// Inherited: **Source:** `Expr_PolyExpression.hxx`:54 - `Expr_PolyExpression::ContainsUnknowns()`
     pub fn Expr_PolyFunction_inherited_ContainsUnknowns(
         self_: *const Expr_PolyFunction,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Expr_PolyExpression.hxx`:62 - `Expr_PolyExpression::Contains()`
+    /// Inherited: **Source:** `Expr_PolyExpression.hxx`:57 - `Expr_PolyExpression::Contains()`
     pub fn Expr_PolyFunction_inherited_Contains(
         self_: *const Expr_PolyFunction,
-        exp: *const HandleExprGeneralExpression,
+        exp: *const Handle_Expr_GeneralExpression,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Expr_PolyExpression.hxx`:66 - `Expr_PolyExpression::Replace()`
+    /// Inherited: **Source:** `Expr_PolyExpression.hxx`:61 - `Expr_PolyExpression::Replace()`
     pub fn Expr_PolyFunction_inherited_Replace(
         self_: *mut Expr_PolyFunction,
-        var: *const HandleExprNamedUnknown,
-        with: *const HandleExprGeneralExpression,
+        var: *const Handle_Expr_NamedUnknown,
+        with: *const Handle_Expr_GeneralExpression,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Expr_PolyExpression.hxx`:72 - `Expr_PolyExpression::Simplified()`
+    /// Inherited: **Source:** `Expr_PolyExpression.hxx`:67 - `Expr_PolyExpression::Simplified()`
     pub fn Expr_PolyFunction_inherited_Simplified(
         self_: *const Expr_PolyFunction,
-    ) -> crate::OcctResult<*mut HandleExprGeneralExpression>;
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:76 - `Expr_GeneralExpression::IsShareable()`
+    ) -> crate::OcctResult<*mut Handle_Expr_GeneralExpression>;
+    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:71 - `Expr_GeneralExpression::IsShareable()`
     pub fn Expr_PolyFunction_inherited_IsShareable(
         self_: *const Expr_PolyFunction,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:91 - `Expr_GeneralExpression::NDerivative()`
+    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:86 - `Expr_GeneralExpression::NDerivative()`
     pub fn Expr_PolyFunction_inherited_NDerivative(
         self_: *const Expr_PolyFunction,
-        X: *const HandleExprNamedUnknown,
+        X: *const Handle_Expr_NamedUnknown,
         N: i32,
-    ) -> crate::OcctResult<*mut HandleExprGeneralExpression>;
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:112 - `Expr_GeneralExpression::EvaluateNumeric()`
+    ) -> crate::OcctResult<*mut Handle_Expr_GeneralExpression>;
+    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:108 - `Expr_GeneralExpression::EvaluateNumeric()`
     pub fn Expr_PolyFunction_inherited_EvaluateNumeric(
         self_: *const Expr_PolyFunction,
     ) -> crate::OcctResult<f64>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn Expr_PolyFunction_inherited_IsInstance(
         self_: *const Expr_PolyFunction,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn Expr_PolyFunction_inherited_IsKind(
         self_: *const Expr_PolyFunction,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn Expr_PolyFunction_inherited_This(
         self_: *const Expr_PolyFunction,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn Expr_PolyFunction_inherited_GetRefCount(
         self_: *const Expr_PolyFunction,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn Expr_PolyFunction_inherited_IncrementRefCounter(
         self_: *mut Expr_PolyFunction,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn Expr_PolyFunction_inherited_DecrementRefCounter(
         self_: *mut Expr_PolyFunction,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn Expr_PolyFunction_inherited_Delete(
         self_: *const Expr_PolyFunction,
     ) -> *const std::ffi::c_char;
     // ======================== Expr_Product ========================
     pub fn Expr_Product_destructor(self_: *mut Expr_Product);
-    /// **Source:** `Expr_Product.hxx`:39 - `Expr_Product::Expr_Product()`
-    pub fn Expr_Product_ctor_sequenceofgeneralexpression(
-        exps: *const Expr_SequenceOfGeneralExpression,
-    ) -> crate::OcctResult<*mut Expr_Product>;
-    /// **Source:** `Expr_Product.hxx`:42 - `Expr_Product::Expr_Product()`
+    /// **Source:** `Expr_Product.hxx`:40 - `Expr_Product::Expr_Product()`
     pub fn Expr_Product_ctor_handleexprgeneralexpression2(
-        exp1: *const HandleExprGeneralExpression,
-        exp2: *const HandleExprGeneralExpression,
+        exp1: *const Handle_Expr_GeneralExpression,
+        exp2: *const Handle_Expr_GeneralExpression,
     ) -> crate::OcctResult<*mut Expr_Product>;
-    /// **Source:** `Expr_Product.hxx`:47 - `Expr_Product::ShallowSimplified()`
+    /// **Source:** `Expr_Product.hxx`:45 - `Expr_Product::ShallowSimplified()`
     pub fn Expr_Product_shallow_simplified(
         self_: *const Expr_Product,
-    ) -> crate::OcctResult<*mut HandleExprGeneralExpression>;
-    /// **Source:** `Expr_Product.hxx`:50 - `Expr_Product::Copy()`
+    ) -> crate::OcctResult<*mut Handle_Expr_GeneralExpression>;
+    /// **Source:** `Expr_Product.hxx`:48 - `Expr_Product::Copy()`
     pub fn Expr_Product_copy(
         self_: *const Expr_Product,
-    ) -> crate::OcctResult<*mut HandleExprGeneralExpression>;
-    /// **Source:** `Expr_Product.hxx`:56 - `Expr_Product::IsIdentical()`
+    ) -> crate::OcctResult<*mut Handle_Expr_GeneralExpression>;
+    /// **Source:** `Expr_Product.hxx`:53 - `Expr_Product::IsIdentical()`
     pub fn Expr_Product_is_identical(
         self_: *const Expr_Product,
-        Other: *const HandleExprGeneralExpression,
+        Other: *const Handle_Expr_GeneralExpression,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `Expr_Product.hxx`:58 - `Expr_Product::IsLinear()`
+    /// **Source:** `Expr_Product.hxx`:55 - `Expr_Product::IsLinear()`
     pub fn Expr_Product_is_linear(self_: *const Expr_Product) -> crate::OcctResult<bool>;
-    /// **Source:** `Expr_Product.hxx`:61 - `Expr_Product::Derivative()`
+    /// **Source:** `Expr_Product.hxx`:58 - `Expr_Product::Derivative()`
     pub fn Expr_Product_derivative(
         self_: *const Expr_Product,
-        X: *const HandleExprNamedUnknown,
-    ) -> crate::OcctResult<*mut HandleExprGeneralExpression>;
-    /// **Source:** `Expr_Product.hxx`:68 - `Expr_Product::Evaluate()`
-    pub fn Expr_Product_evaluate(
-        self_: *const Expr_Product,
-        vars: *const Expr_Array1OfNamedUnknown,
-        vals: *const TColStd_Array1OfReal,
-    ) -> crate::OcctResult<f64>;
-    /// **Source:** `Expr_Product.hxx`:72 - `Expr_Product::String()`
+        X: *const Handle_Expr_NamedUnknown,
+    ) -> crate::OcctResult<*mut Handle_Expr_GeneralExpression>;
+    /// **Source:** `Expr_Product.hxx`:69 - `Expr_Product::String()`
     pub fn Expr_Product_string(
         self_: *const Expr_Product,
     ) -> crate::OcctResult<*mut TCollection_AsciiString>;
-    /// **Source:** `Expr_Product.hxx`:74 - `Expr_Product::DynamicType()`
+    /// **Source:** `Expr_Product.hxx`:71 - `Expr_Product::DynamicType()`
     pub fn Expr_Product_dynamic_type(
         self_: *const Expr_Product,
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// **Source:** `Expr_Product.hxx`:74 - `Expr_Product::get_type_name()`
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
+    /// **Source:** `Expr_Product.hxx`:71 - `Expr_Product::get_type_name()`
     pub fn Expr_Product_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
-    /// **Source:** `Expr_Product.hxx`:74 - `Expr_Product::get_type_descriptor()`
-    pub fn Expr_Product_get_type_descriptor() -> crate::OcctResult<*const HandleStandardType>;
+    /// **Source:** `Expr_Product.hxx`:71 - `Expr_Product::get_type_descriptor()`
+    pub fn Expr_Product_get_type_descriptor() -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast Expr_Product to Expr_PolyExpression
     pub fn Expr_Product_as_Expr_PolyExpression(
         self_: *const Expr_Product,
@@ -6923,192 +6134,186 @@ unsafe extern "C" {
     /// Wrap Expr_Product in a Handle
     pub fn Expr_Product_to_handle(
         obj: *mut Expr_Product,
-    ) -> crate::OcctResult<*mut HandleExprProduct>;
+    ) -> crate::OcctResult<*mut Handle_Expr_Product>;
     /// Destroy Handle<Expr_Product>
-    pub fn HandleExprProduct_destructor(self_: *mut HandleExprProduct);
+    pub fn Handle_Expr_Product_destructor(self_: *mut Handle_Expr_Product);
     /// Clone Handle<Expr_Product> (increments reference count)
-    pub fn HandleExprProduct_clone(
-        self_: *const HandleExprProduct,
-    ) -> crate::OcctResult<*mut HandleExprProduct>;
+    pub fn Handle_Expr_Product_clone(
+        self_: *const Handle_Expr_Product,
+    ) -> crate::OcctResult<*mut Handle_Expr_Product>;
     /// Check if Handle<Expr_Product> is null
-    pub fn HandleExprProduct_is_null(self_: *const HandleExprProduct) -> bool;
+    pub fn Handle_Expr_Product_is_null(self_: *const Handle_Expr_Product) -> bool;
     /// Dereference Handle to get *const Expr_Product
-    pub fn HandleExprProduct_get(
-        handle: *const HandleExprProduct,
+    pub fn Handle_Expr_Product_get(
+        handle: *const Handle_Expr_Product,
     ) -> crate::OcctResult<*const Expr_Product>;
     /// Dereference Handle to get *mut Expr_Product
-    pub fn HandleExprProduct_get_mut(
-        handle: *mut HandleExprProduct,
+    pub fn Handle_Expr_Product_get_mut(
+        handle: *mut Handle_Expr_Product,
     ) -> crate::OcctResult<*mut Expr_Product>;
     /// Upcast Handle<Expr_Product> to Handle<Expr_PolyExpression>
-    pub fn HandleExprProduct_to_HandleExprPolyExpression(
-        self_: *const HandleExprProduct,
-    ) -> crate::OcctResult<*mut HandleExprPolyExpression>;
+    pub fn Handle_Expr_Product_to_Handle_Expr_PolyExpression(
+        self_: *const Handle_Expr_Product,
+    ) -> crate::OcctResult<*mut Handle_Expr_PolyExpression>;
     /// Upcast Handle<Expr_Product> to Handle<Expr_GeneralExpression>
-    pub fn HandleExprProduct_to_HandleExprGeneralExpression(
-        self_: *const HandleExprProduct,
-    ) -> crate::OcctResult<*mut HandleExprGeneralExpression>;
+    pub fn Handle_Expr_Product_to_Handle_Expr_GeneralExpression(
+        self_: *const Handle_Expr_Product,
+    ) -> crate::OcctResult<*mut Handle_Expr_GeneralExpression>;
     /// Upcast Handle<Expr_Product> to Handle<Standard_Transient>
-    pub fn HandleExprProduct_to_HandleStandardTransient(
-        self_: *const HandleExprProduct,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
-    /// Inherited: **Source:** `Expr_PolyExpression.hxx`:36 - `Expr_PolyExpression::NbOperands()`
+    pub fn Handle_Expr_Product_to_Handle_Standard_Transient(
+        self_: *const Handle_Expr_Product,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
+    /// Inherited: **Source:** `Expr_PolyExpression.hxx`:33 - `Expr_PolyExpression::NbOperands()`
     pub fn Expr_Product_inherited_NbOperands(self_: *const Expr_Product) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Expr_PolyExpression.hxx`:40 - `Expr_PolyExpression::Operand()`
+    /// Inherited: **Source:** `Expr_PolyExpression.hxx`:37 - `Expr_PolyExpression::Operand()`
     pub fn Expr_Product_inherited_Operand(
         self_: *const Expr_Product,
         index: i32,
-    ) -> crate::OcctResult<*const HandleExprGeneralExpression>;
-    /// Inherited: **Source:** `Expr_PolyExpression.hxx`:45 - `Expr_PolyExpression::SetOperand()`
+    ) -> crate::OcctResult<*const Handle_Expr_GeneralExpression>;
+    /// Inherited: **Source:** `Expr_PolyExpression.hxx`:42 - `Expr_PolyExpression::SetOperand()`
     pub fn Expr_Product_inherited_SetOperand(
         self_: *mut Expr_Product,
-        exp: *const HandleExprGeneralExpression,
+        exp: *const Handle_Expr_GeneralExpression,
         index: i32,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Expr_PolyExpression.hxx`:50 - `Expr_PolyExpression::NbSubExpressions()`
+    /// Inherited: **Source:** `Expr_PolyExpression.hxx`:46 - `Expr_PolyExpression::NbSubExpressions()`
     pub fn Expr_Product_inherited_NbSubExpressions(
         self_: *const Expr_Product,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Expr_PolyExpression.hxx`:54 - `Expr_PolyExpression::SubExpression()`
+    /// Inherited: **Source:** `Expr_PolyExpression.hxx`:50 - `Expr_PolyExpression::SubExpression()`
     pub fn Expr_Product_inherited_SubExpression(
         self_: *const Expr_Product,
         I: i32,
-    ) -> crate::OcctResult<*const HandleExprGeneralExpression>;
-    /// Inherited: **Source:** `Expr_PolyExpression.hxx`:58 - `Expr_PolyExpression::ContainsUnknowns()`
+    ) -> crate::OcctResult<*const Handle_Expr_GeneralExpression>;
+    /// Inherited: **Source:** `Expr_PolyExpression.hxx`:54 - `Expr_PolyExpression::ContainsUnknowns()`
     pub fn Expr_Product_inherited_ContainsUnknowns(
         self_: *const Expr_Product,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Expr_PolyExpression.hxx`:62 - `Expr_PolyExpression::Contains()`
+    /// Inherited: **Source:** `Expr_PolyExpression.hxx`:57 - `Expr_PolyExpression::Contains()`
     pub fn Expr_Product_inherited_Contains(
         self_: *const Expr_Product,
-        exp: *const HandleExprGeneralExpression,
+        exp: *const Handle_Expr_GeneralExpression,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Expr_PolyExpression.hxx`:66 - `Expr_PolyExpression::Replace()`
+    /// Inherited: **Source:** `Expr_PolyExpression.hxx`:61 - `Expr_PolyExpression::Replace()`
     pub fn Expr_Product_inherited_Replace(
         self_: *mut Expr_Product,
-        var: *const HandleExprNamedUnknown,
-        with: *const HandleExprGeneralExpression,
+        var: *const Handle_Expr_NamedUnknown,
+        with: *const Handle_Expr_GeneralExpression,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Expr_PolyExpression.hxx`:72 - `Expr_PolyExpression::Simplified()`
+    /// Inherited: **Source:** `Expr_PolyExpression.hxx`:67 - `Expr_PolyExpression::Simplified()`
     pub fn Expr_Product_inherited_Simplified(
         self_: *const Expr_Product,
-    ) -> crate::OcctResult<*mut HandleExprGeneralExpression>;
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:76 - `Expr_GeneralExpression::IsShareable()`
+    ) -> crate::OcctResult<*mut Handle_Expr_GeneralExpression>;
+    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:71 - `Expr_GeneralExpression::IsShareable()`
     pub fn Expr_Product_inherited_IsShareable(
         self_: *const Expr_Product,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:91 - `Expr_GeneralExpression::NDerivative()`
+    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:86 - `Expr_GeneralExpression::NDerivative()`
     pub fn Expr_Product_inherited_NDerivative(
         self_: *const Expr_Product,
-        X: *const HandleExprNamedUnknown,
+        X: *const Handle_Expr_NamedUnknown,
         N: i32,
-    ) -> crate::OcctResult<*mut HandleExprGeneralExpression>;
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:112 - `Expr_GeneralExpression::EvaluateNumeric()`
+    ) -> crate::OcctResult<*mut Handle_Expr_GeneralExpression>;
+    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:108 - `Expr_GeneralExpression::EvaluateNumeric()`
     pub fn Expr_Product_inherited_EvaluateNumeric(
         self_: *const Expr_Product,
     ) -> crate::OcctResult<f64>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn Expr_Product_inherited_IsInstance(
         self_: *const Expr_Product,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn Expr_Product_inherited_IsKind(
         self_: *const Expr_Product,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn Expr_Product_inherited_This(
         self_: *const Expr_Product,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn Expr_Product_inherited_GetRefCount(self_: *const Expr_Product)
         -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn Expr_Product_inherited_IncrementRefCounter(
         self_: *mut Expr_Product,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn Expr_Product_inherited_DecrementRefCounter(
         self_: *mut Expr_Product,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn Expr_Product_inherited_Delete(self_: *const Expr_Product) -> *const std::ffi::c_char;
     // ======================== Expr_RUIterator ========================
     pub fn Expr_RUIterator_destructor(self_: *mut Expr_RUIterator);
-    /// **Source:** `Expr_RUIterator.hxx`:37 - `Expr_RUIterator::Expr_RUIterator()`
+    /// **Source:** `Expr_RUIterator.hxx`:38 - `Expr_RUIterator::Expr_RUIterator()`
     pub fn Expr_RUIterator_ctor_handleexprgeneralrelation(
-        rel: *const HandleExprGeneralRelation,
+        rel: *const Handle_Expr_GeneralRelation,
     ) -> crate::OcctResult<*mut Expr_RUIterator>;
-    /// **Source:** `Expr_RUIterator.hxx`:40 - `Expr_RUIterator::More()`
+    /// **Source:** `Expr_RUIterator.hxx`:41 - `Expr_RUIterator::More()`
     pub fn Expr_RUIterator_more(self_: *const Expr_RUIterator) -> crate::OcctResult<bool>;
-    /// **Source:** `Expr_RUIterator.hxx`:42 - `Expr_RUIterator::Next()`
+    /// **Source:** `Expr_RUIterator.hxx`:43 - `Expr_RUIterator::Next()`
     pub fn Expr_RUIterator_next(self_: *mut Expr_RUIterator) -> *const std::ffi::c_char;
-    /// **Source:** `Expr_RUIterator.hxx`:46 - `Expr_RUIterator::Value()`
+    /// **Source:** `Expr_RUIterator.hxx`:47 - `Expr_RUIterator::Value()`
     pub fn Expr_RUIterator_value(
         self_: *const Expr_RUIterator,
-    ) -> crate::OcctResult<*mut HandleExprNamedUnknown>;
+    ) -> crate::OcctResult<*mut Handle_Expr_NamedUnknown>;
     // ======================== Expr_RelationIterator ========================
     pub fn Expr_RelationIterator_destructor(self_: *mut Expr_RelationIterator);
-    /// **Source:** `Expr_RelationIterator.hxx`:37 - `Expr_RelationIterator::Expr_RelationIterator()`
+    /// **Source:** `Expr_RelationIterator.hxx`:38 - `Expr_RelationIterator::Expr_RelationIterator()`
     pub fn Expr_RelationIterator_ctor_handleexprgeneralrelation(
-        rel: *const HandleExprGeneralRelation,
+        rel: *const Handle_Expr_GeneralRelation,
     ) -> crate::OcctResult<*mut Expr_RelationIterator>;
-    /// **Source:** `Expr_RelationIterator.hxx`:40 - `Expr_RelationIterator::More()`
+    /// **Source:** `Expr_RelationIterator.hxx`:41 - `Expr_RelationIterator::More()`
     pub fn Expr_RelationIterator_more(
         self_: *const Expr_RelationIterator,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `Expr_RelationIterator.hxx`:42 - `Expr_RelationIterator::Next()`
+    /// **Source:** `Expr_RelationIterator.hxx`:43 - `Expr_RelationIterator::Next()`
     pub fn Expr_RelationIterator_next(self_: *mut Expr_RelationIterator)
         -> *const std::ffi::c_char;
-    /// **Source:** `Expr_RelationIterator.hxx`:46 - `Expr_RelationIterator::Value()`
+    /// **Source:** `Expr_RelationIterator.hxx`:47 - `Expr_RelationIterator::Value()`
     pub fn Expr_RelationIterator_value(
         self_: *const Expr_RelationIterator,
-    ) -> crate::OcctResult<*mut HandleExprSingleRelation>;
+    ) -> crate::OcctResult<*mut Handle_Expr_SingleRelation>;
     // ======================== Expr_Sign ========================
     pub fn Expr_Sign_destructor(self_: *mut Expr_Sign);
-    /// **Source:** `Expr_Sign.hxx`:38 - `Expr_Sign::Expr_Sign()`
+    /// **Source:** `Expr_Sign.hxx`:34 - `Expr_Sign::Expr_Sign()`
     pub fn Expr_Sign_ctor_handleexprgeneralexpression(
-        exp: *const HandleExprGeneralExpression,
+        exp: *const Handle_Expr_GeneralExpression,
     ) -> crate::OcctResult<*mut Expr_Sign>;
-    /// **Source:** `Expr_Sign.hxx`:42 - `Expr_Sign::ShallowSimplified()`
+    /// **Source:** `Expr_Sign.hxx`:38 - `Expr_Sign::ShallowSimplified()`
     pub fn Expr_Sign_shallow_simplified(
         self_: *const Expr_Sign,
-    ) -> crate::OcctResult<*mut HandleExprGeneralExpression>;
-    /// **Source:** `Expr_Sign.hxx`:45 - `Expr_Sign::Copy()`
+    ) -> crate::OcctResult<*mut Handle_Expr_GeneralExpression>;
+    /// **Source:** `Expr_Sign.hxx`:41 - `Expr_Sign::Copy()`
     pub fn Expr_Sign_copy(
         self_: *const Expr_Sign,
-    ) -> crate::OcctResult<*mut HandleExprGeneralExpression>;
-    /// **Source:** `Expr_Sign.hxx`:51 - `Expr_Sign::IsIdentical()`
+    ) -> crate::OcctResult<*mut Handle_Expr_GeneralExpression>;
+    /// **Source:** `Expr_Sign.hxx`:46 - `Expr_Sign::IsIdentical()`
     pub fn Expr_Sign_is_identical(
         self_: *const Expr_Sign,
-        Other: *const HandleExprGeneralExpression,
+        Other: *const Handle_Expr_GeneralExpression,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `Expr_Sign.hxx`:53 - `Expr_Sign::IsLinear()`
+    /// **Source:** `Expr_Sign.hxx`:48 - `Expr_Sign::IsLinear()`
     pub fn Expr_Sign_is_linear(self_: *const Expr_Sign) -> crate::OcctResult<bool>;
-    /// **Source:** `Expr_Sign.hxx`:56 - `Expr_Sign::Derivative()`
+    /// **Source:** `Expr_Sign.hxx`:51 - `Expr_Sign::Derivative()`
     pub fn Expr_Sign_derivative(
         self_: *const Expr_Sign,
-        X: *const HandleExprNamedUnknown,
-    ) -> crate::OcctResult<*mut HandleExprGeneralExpression>;
-    /// **Source:** `Expr_Sign.hxx`:63 - `Expr_Sign::Evaluate()`
-    pub fn Expr_Sign_evaluate(
-        self_: *const Expr_Sign,
-        vars: *const Expr_Array1OfNamedUnknown,
-        vals: *const TColStd_Array1OfReal,
-    ) -> crate::OcctResult<f64>;
-    /// **Source:** `Expr_Sign.hxx`:67 - `Expr_Sign::String()`
+        X: *const Handle_Expr_NamedUnknown,
+    ) -> crate::OcctResult<*mut Handle_Expr_GeneralExpression>;
+    /// **Source:** `Expr_Sign.hxx`:62 - `Expr_Sign::String()`
     pub fn Expr_Sign_string(
         self_: *const Expr_Sign,
     ) -> crate::OcctResult<*mut TCollection_AsciiString>;
-    /// **Source:** `Expr_Sign.hxx`:69 - `Expr_Sign::DynamicType()`
+    /// **Source:** `Expr_Sign.hxx`:64 - `Expr_Sign::DynamicType()`
     pub fn Expr_Sign_dynamic_type(
         self_: *const Expr_Sign,
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// **Source:** `Expr_Sign.hxx`:69 - `Expr_Sign::get_type_name()`
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
+    /// **Source:** `Expr_Sign.hxx`:64 - `Expr_Sign::get_type_name()`
     pub fn Expr_Sign_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
-    /// **Source:** `Expr_Sign.hxx`:69 - `Expr_Sign::get_type_descriptor()`
-    pub fn Expr_Sign_get_type_descriptor() -> crate::OcctResult<*const HandleStandardType>;
+    /// **Source:** `Expr_Sign.hxx`:64 - `Expr_Sign::get_type_descriptor()`
+    pub fn Expr_Sign_get_type_descriptor() -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast Expr_Sign to Expr_UnaryExpression
     pub fn Expr_Sign_as_Expr_UnaryExpression(
         self_: *const Expr_Sign,
@@ -7134,146 +6339,142 @@ unsafe extern "C" {
         self_: *mut Expr_Sign,
     ) -> crate::OcctResult<*mut Standard_Transient>;
     /// Wrap Expr_Sign in a Handle
-    pub fn Expr_Sign_to_handle(obj: *mut Expr_Sign) -> crate::OcctResult<*mut HandleExprSign>;
+    pub fn Expr_Sign_to_handle(obj: *mut Expr_Sign) -> crate::OcctResult<*mut Handle_Expr_Sign>;
     /// Destroy Handle<Expr_Sign>
-    pub fn HandleExprSign_destructor(self_: *mut HandleExprSign);
+    pub fn Handle_Expr_Sign_destructor(self_: *mut Handle_Expr_Sign);
     /// Clone Handle<Expr_Sign> (increments reference count)
-    pub fn HandleExprSign_clone(
-        self_: *const HandleExprSign,
-    ) -> crate::OcctResult<*mut HandleExprSign>;
+    pub fn Handle_Expr_Sign_clone(
+        self_: *const Handle_Expr_Sign,
+    ) -> crate::OcctResult<*mut Handle_Expr_Sign>;
     /// Check if Handle<Expr_Sign> is null
-    pub fn HandleExprSign_is_null(self_: *const HandleExprSign) -> bool;
+    pub fn Handle_Expr_Sign_is_null(self_: *const Handle_Expr_Sign) -> bool;
     /// Dereference Handle to get *const Expr_Sign
-    pub fn HandleExprSign_get(handle: *const HandleExprSign)
-        -> crate::OcctResult<*const Expr_Sign>;
+    pub fn Handle_Expr_Sign_get(
+        handle: *const Handle_Expr_Sign,
+    ) -> crate::OcctResult<*const Expr_Sign>;
     /// Dereference Handle to get *mut Expr_Sign
-    pub fn HandleExprSign_get_mut(handle: *mut HandleExprSign)
-        -> crate::OcctResult<*mut Expr_Sign>;
+    pub fn Handle_Expr_Sign_get_mut(
+        handle: *mut Handle_Expr_Sign,
+    ) -> crate::OcctResult<*mut Expr_Sign>;
     /// Upcast Handle<Expr_Sign> to Handle<Expr_UnaryExpression>
-    pub fn HandleExprSign_to_HandleExprUnaryExpression(
-        self_: *const HandleExprSign,
-    ) -> crate::OcctResult<*mut HandleExprUnaryExpression>;
+    pub fn Handle_Expr_Sign_to_Handle_Expr_UnaryExpression(
+        self_: *const Handle_Expr_Sign,
+    ) -> crate::OcctResult<*mut Handle_Expr_UnaryExpression>;
     /// Upcast Handle<Expr_Sign> to Handle<Expr_GeneralExpression>
-    pub fn HandleExprSign_to_HandleExprGeneralExpression(
-        self_: *const HandleExprSign,
-    ) -> crate::OcctResult<*mut HandleExprGeneralExpression>;
+    pub fn Handle_Expr_Sign_to_Handle_Expr_GeneralExpression(
+        self_: *const Handle_Expr_Sign,
+    ) -> crate::OcctResult<*mut Handle_Expr_GeneralExpression>;
     /// Upcast Handle<Expr_Sign> to Handle<Standard_Transient>
-    pub fn HandleExprSign_to_HandleStandardTransient(
-        self_: *const HandleExprSign,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
-    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:35 - `Expr_UnaryExpression::Operand()`
+    pub fn Handle_Expr_Sign_to_Handle_Standard_Transient(
+        self_: *const Handle_Expr_Sign,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
+    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:32 - `Expr_UnaryExpression::Operand()`
     pub fn Expr_Sign_inherited_Operand(
         self_: *const Expr_Sign,
-    ) -> crate::OcctResult<*const HandleExprGeneralExpression>;
-    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:39 - `Expr_UnaryExpression::SetOperand()`
+    ) -> crate::OcctResult<*const Handle_Expr_GeneralExpression>;
+    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:36 - `Expr_UnaryExpression::SetOperand()`
     pub fn Expr_Sign_inherited_SetOperand(
         self_: *mut Expr_Sign,
-        exp: *const HandleExprGeneralExpression,
+        exp: *const Handle_Expr_GeneralExpression,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:43 - `Expr_UnaryExpression::NbSubExpressions()`
+    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:40 - `Expr_UnaryExpression::NbSubExpressions()`
     pub fn Expr_Sign_inherited_NbSubExpressions(self_: *const Expr_Sign) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:47 - `Expr_UnaryExpression::SubExpression()`
+    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:44 - `Expr_UnaryExpression::SubExpression()`
     pub fn Expr_Sign_inherited_SubExpression(
         self_: *const Expr_Sign,
         I: i32,
-    ) -> crate::OcctResult<*const HandleExprGeneralExpression>;
-    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:51 - `Expr_UnaryExpression::ContainsUnknowns()`
+    ) -> crate::OcctResult<*const Handle_Expr_GeneralExpression>;
+    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:48 - `Expr_UnaryExpression::ContainsUnknowns()`
     pub fn Expr_Sign_inherited_ContainsUnknowns(self_: *const Expr_Sign)
         -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:55 - `Expr_UnaryExpression::Contains()`
+    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:51 - `Expr_UnaryExpression::Contains()`
     pub fn Expr_Sign_inherited_Contains(
         self_: *const Expr_Sign,
-        exp: *const HandleExprGeneralExpression,
+        exp: *const Handle_Expr_GeneralExpression,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:59 - `Expr_UnaryExpression::Replace()`
+    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:55 - `Expr_UnaryExpression::Replace()`
     pub fn Expr_Sign_inherited_Replace(
         self_: *mut Expr_Sign,
-        var: *const HandleExprNamedUnknown,
-        with: *const HandleExprGeneralExpression,
+        var: *const Handle_Expr_NamedUnknown,
+        with: *const Handle_Expr_GeneralExpression,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:65 - `Expr_UnaryExpression::Simplified()`
+    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:61 - `Expr_UnaryExpression::Simplified()`
     pub fn Expr_Sign_inherited_Simplified(
         self_: *const Expr_Sign,
-    ) -> crate::OcctResult<*mut HandleExprGeneralExpression>;
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:76 - `Expr_GeneralExpression::IsShareable()`
+    ) -> crate::OcctResult<*mut Handle_Expr_GeneralExpression>;
+    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:71 - `Expr_GeneralExpression::IsShareable()`
     pub fn Expr_Sign_inherited_IsShareable(self_: *const Expr_Sign) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:91 - `Expr_GeneralExpression::NDerivative()`
+    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:86 - `Expr_GeneralExpression::NDerivative()`
     pub fn Expr_Sign_inherited_NDerivative(
         self_: *const Expr_Sign,
-        X: *const HandleExprNamedUnknown,
+        X: *const Handle_Expr_NamedUnknown,
         N: i32,
-    ) -> crate::OcctResult<*mut HandleExprGeneralExpression>;
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:112 - `Expr_GeneralExpression::EvaluateNumeric()`
+    ) -> crate::OcctResult<*mut Handle_Expr_GeneralExpression>;
+    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:108 - `Expr_GeneralExpression::EvaluateNumeric()`
     pub fn Expr_Sign_inherited_EvaluateNumeric(self_: *const Expr_Sign) -> crate::OcctResult<f64>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn Expr_Sign_inherited_IsInstance(
         self_: *const Expr_Sign,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn Expr_Sign_inherited_IsKind(
         self_: *const Expr_Sign,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn Expr_Sign_inherited_This(
         self_: *const Expr_Sign,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn Expr_Sign_inherited_GetRefCount(self_: *const Expr_Sign) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn Expr_Sign_inherited_IncrementRefCounter(
         self_: *mut Expr_Sign,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn Expr_Sign_inherited_DecrementRefCounter(self_: *mut Expr_Sign)
         -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn Expr_Sign_inherited_Delete(self_: *const Expr_Sign) -> *const std::ffi::c_char;
     // ======================== Expr_Sine ========================
     pub fn Expr_Sine_destructor(self_: *mut Expr_Sine);
-    /// **Source:** `Expr_Sine.hxx`:38 - `Expr_Sine::Expr_Sine()`
+    /// **Source:** `Expr_Sine.hxx`:34 - `Expr_Sine::Expr_Sine()`
     pub fn Expr_Sine_ctor_handleexprgeneralexpression(
-        exp: *const HandleExprGeneralExpression,
+        exp: *const Handle_Expr_GeneralExpression,
     ) -> crate::OcctResult<*mut Expr_Sine>;
-    /// **Source:** `Expr_Sine.hxx`:42 - `Expr_Sine::ShallowSimplified()`
+    /// **Source:** `Expr_Sine.hxx`:38 - `Expr_Sine::ShallowSimplified()`
     pub fn Expr_Sine_shallow_simplified(
         self_: *const Expr_Sine,
-    ) -> crate::OcctResult<*mut HandleExprGeneralExpression>;
-    /// **Source:** `Expr_Sine.hxx`:45 - `Expr_Sine::Copy()`
+    ) -> crate::OcctResult<*mut Handle_Expr_GeneralExpression>;
+    /// **Source:** `Expr_Sine.hxx`:41 - `Expr_Sine::Copy()`
     pub fn Expr_Sine_copy(
         self_: *const Expr_Sine,
-    ) -> crate::OcctResult<*mut HandleExprGeneralExpression>;
-    /// **Source:** `Expr_Sine.hxx`:51 - `Expr_Sine::IsIdentical()`
+    ) -> crate::OcctResult<*mut Handle_Expr_GeneralExpression>;
+    /// **Source:** `Expr_Sine.hxx`:46 - `Expr_Sine::IsIdentical()`
     pub fn Expr_Sine_is_identical(
         self_: *const Expr_Sine,
-        Other: *const HandleExprGeneralExpression,
+        Other: *const Handle_Expr_GeneralExpression,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `Expr_Sine.hxx`:53 - `Expr_Sine::IsLinear()`
+    /// **Source:** `Expr_Sine.hxx`:48 - `Expr_Sine::IsLinear()`
     pub fn Expr_Sine_is_linear(self_: *const Expr_Sine) -> crate::OcctResult<bool>;
-    /// **Source:** `Expr_Sine.hxx`:56 - `Expr_Sine::Derivative()`
+    /// **Source:** `Expr_Sine.hxx`:51 - `Expr_Sine::Derivative()`
     pub fn Expr_Sine_derivative(
         self_: *const Expr_Sine,
-        X: *const HandleExprNamedUnknown,
-    ) -> crate::OcctResult<*mut HandleExprGeneralExpression>;
-    /// **Source:** `Expr_Sine.hxx`:63 - `Expr_Sine::Evaluate()`
-    pub fn Expr_Sine_evaluate(
-        self_: *const Expr_Sine,
-        vars: *const Expr_Array1OfNamedUnknown,
-        vals: *const TColStd_Array1OfReal,
-    ) -> crate::OcctResult<f64>;
-    /// **Source:** `Expr_Sine.hxx`:67 - `Expr_Sine::String()`
+        X: *const Handle_Expr_NamedUnknown,
+    ) -> crate::OcctResult<*mut Handle_Expr_GeneralExpression>;
+    /// **Source:** `Expr_Sine.hxx`:62 - `Expr_Sine::String()`
     pub fn Expr_Sine_string(
         self_: *const Expr_Sine,
     ) -> crate::OcctResult<*mut TCollection_AsciiString>;
-    /// **Source:** `Expr_Sine.hxx`:69 - `Expr_Sine::DynamicType()`
+    /// **Source:** `Expr_Sine.hxx`:64 - `Expr_Sine::DynamicType()`
     pub fn Expr_Sine_dynamic_type(
         self_: *const Expr_Sine,
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// **Source:** `Expr_Sine.hxx`:69 - `Expr_Sine::get_type_name()`
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
+    /// **Source:** `Expr_Sine.hxx`:64 - `Expr_Sine::get_type_name()`
     pub fn Expr_Sine_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
-    /// **Source:** `Expr_Sine.hxx`:69 - `Expr_Sine::get_type_descriptor()`
-    pub fn Expr_Sine_get_type_descriptor() -> crate::OcctResult<*const HandleStandardType>;
+    /// **Source:** `Expr_Sine.hxx`:64 - `Expr_Sine::get_type_descriptor()`
+    pub fn Expr_Sine_get_type_descriptor() -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast Expr_Sine to Expr_UnaryExpression
     pub fn Expr_Sine_as_Expr_UnaryExpression(
         self_: *const Expr_Sine,
@@ -7299,158 +6500,161 @@ unsafe extern "C" {
         self_: *mut Expr_Sine,
     ) -> crate::OcctResult<*mut Standard_Transient>;
     /// Wrap Expr_Sine in a Handle
-    pub fn Expr_Sine_to_handle(obj: *mut Expr_Sine) -> crate::OcctResult<*mut HandleExprSine>;
+    pub fn Expr_Sine_to_handle(obj: *mut Expr_Sine) -> crate::OcctResult<*mut Handle_Expr_Sine>;
     /// Destroy Handle<Expr_Sine>
-    pub fn HandleExprSine_destructor(self_: *mut HandleExprSine);
+    pub fn Handle_Expr_Sine_destructor(self_: *mut Handle_Expr_Sine);
     /// Clone Handle<Expr_Sine> (increments reference count)
-    pub fn HandleExprSine_clone(
-        self_: *const HandleExprSine,
-    ) -> crate::OcctResult<*mut HandleExprSine>;
+    pub fn Handle_Expr_Sine_clone(
+        self_: *const Handle_Expr_Sine,
+    ) -> crate::OcctResult<*mut Handle_Expr_Sine>;
     /// Check if Handle<Expr_Sine> is null
-    pub fn HandleExprSine_is_null(self_: *const HandleExprSine) -> bool;
+    pub fn Handle_Expr_Sine_is_null(self_: *const Handle_Expr_Sine) -> bool;
     /// Dereference Handle to get *const Expr_Sine
-    pub fn HandleExprSine_get(handle: *const HandleExprSine)
-        -> crate::OcctResult<*const Expr_Sine>;
+    pub fn Handle_Expr_Sine_get(
+        handle: *const Handle_Expr_Sine,
+    ) -> crate::OcctResult<*const Expr_Sine>;
     /// Dereference Handle to get *mut Expr_Sine
-    pub fn HandleExprSine_get_mut(handle: *mut HandleExprSine)
-        -> crate::OcctResult<*mut Expr_Sine>;
+    pub fn Handle_Expr_Sine_get_mut(
+        handle: *mut Handle_Expr_Sine,
+    ) -> crate::OcctResult<*mut Expr_Sine>;
     /// Upcast Handle<Expr_Sine> to Handle<Expr_UnaryExpression>
-    pub fn HandleExprSine_to_HandleExprUnaryExpression(
-        self_: *const HandleExprSine,
-    ) -> crate::OcctResult<*mut HandleExprUnaryExpression>;
+    pub fn Handle_Expr_Sine_to_Handle_Expr_UnaryExpression(
+        self_: *const Handle_Expr_Sine,
+    ) -> crate::OcctResult<*mut Handle_Expr_UnaryExpression>;
     /// Upcast Handle<Expr_Sine> to Handle<Expr_GeneralExpression>
-    pub fn HandleExprSine_to_HandleExprGeneralExpression(
-        self_: *const HandleExprSine,
-    ) -> crate::OcctResult<*mut HandleExprGeneralExpression>;
+    pub fn Handle_Expr_Sine_to_Handle_Expr_GeneralExpression(
+        self_: *const Handle_Expr_Sine,
+    ) -> crate::OcctResult<*mut Handle_Expr_GeneralExpression>;
     /// Upcast Handle<Expr_Sine> to Handle<Standard_Transient>
-    pub fn HandleExprSine_to_HandleStandardTransient(
-        self_: *const HandleExprSine,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
-    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:35 - `Expr_UnaryExpression::Operand()`
+    pub fn Handle_Expr_Sine_to_Handle_Standard_Transient(
+        self_: *const Handle_Expr_Sine,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
+    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:32 - `Expr_UnaryExpression::Operand()`
     pub fn Expr_Sine_inherited_Operand(
         self_: *const Expr_Sine,
-    ) -> crate::OcctResult<*const HandleExprGeneralExpression>;
-    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:39 - `Expr_UnaryExpression::SetOperand()`
+    ) -> crate::OcctResult<*const Handle_Expr_GeneralExpression>;
+    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:36 - `Expr_UnaryExpression::SetOperand()`
     pub fn Expr_Sine_inherited_SetOperand(
         self_: *mut Expr_Sine,
-        exp: *const HandleExprGeneralExpression,
+        exp: *const Handle_Expr_GeneralExpression,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:43 - `Expr_UnaryExpression::NbSubExpressions()`
+    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:40 - `Expr_UnaryExpression::NbSubExpressions()`
     pub fn Expr_Sine_inherited_NbSubExpressions(self_: *const Expr_Sine) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:47 - `Expr_UnaryExpression::SubExpression()`
+    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:44 - `Expr_UnaryExpression::SubExpression()`
     pub fn Expr_Sine_inherited_SubExpression(
         self_: *const Expr_Sine,
         I: i32,
-    ) -> crate::OcctResult<*const HandleExprGeneralExpression>;
-    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:51 - `Expr_UnaryExpression::ContainsUnknowns()`
+    ) -> crate::OcctResult<*const Handle_Expr_GeneralExpression>;
+    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:48 - `Expr_UnaryExpression::ContainsUnknowns()`
     pub fn Expr_Sine_inherited_ContainsUnknowns(self_: *const Expr_Sine)
         -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:55 - `Expr_UnaryExpression::Contains()`
+    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:51 - `Expr_UnaryExpression::Contains()`
     pub fn Expr_Sine_inherited_Contains(
         self_: *const Expr_Sine,
-        exp: *const HandleExprGeneralExpression,
+        exp: *const Handle_Expr_GeneralExpression,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:59 - `Expr_UnaryExpression::Replace()`
+    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:55 - `Expr_UnaryExpression::Replace()`
     pub fn Expr_Sine_inherited_Replace(
         self_: *mut Expr_Sine,
-        var: *const HandleExprNamedUnknown,
-        with: *const HandleExprGeneralExpression,
+        var: *const Handle_Expr_NamedUnknown,
+        with: *const Handle_Expr_GeneralExpression,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:65 - `Expr_UnaryExpression::Simplified()`
+    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:61 - `Expr_UnaryExpression::Simplified()`
     pub fn Expr_Sine_inherited_Simplified(
         self_: *const Expr_Sine,
-    ) -> crate::OcctResult<*mut HandleExprGeneralExpression>;
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:76 - `Expr_GeneralExpression::IsShareable()`
+    ) -> crate::OcctResult<*mut Handle_Expr_GeneralExpression>;
+    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:71 - `Expr_GeneralExpression::IsShareable()`
     pub fn Expr_Sine_inherited_IsShareable(self_: *const Expr_Sine) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:91 - `Expr_GeneralExpression::NDerivative()`
+    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:86 - `Expr_GeneralExpression::NDerivative()`
     pub fn Expr_Sine_inherited_NDerivative(
         self_: *const Expr_Sine,
-        X: *const HandleExprNamedUnknown,
+        X: *const Handle_Expr_NamedUnknown,
         N: i32,
-    ) -> crate::OcctResult<*mut HandleExprGeneralExpression>;
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:112 - `Expr_GeneralExpression::EvaluateNumeric()`
+    ) -> crate::OcctResult<*mut Handle_Expr_GeneralExpression>;
+    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:108 - `Expr_GeneralExpression::EvaluateNumeric()`
     pub fn Expr_Sine_inherited_EvaluateNumeric(self_: *const Expr_Sine) -> crate::OcctResult<f64>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn Expr_Sine_inherited_IsInstance(
         self_: *const Expr_Sine,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn Expr_Sine_inherited_IsKind(
         self_: *const Expr_Sine,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn Expr_Sine_inherited_This(
         self_: *const Expr_Sine,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn Expr_Sine_inherited_GetRefCount(self_: *const Expr_Sine) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn Expr_Sine_inherited_IncrementRefCounter(
         self_: *mut Expr_Sine,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn Expr_Sine_inherited_DecrementRefCounter(self_: *mut Expr_Sine)
         -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn Expr_Sine_inherited_Delete(self_: *const Expr_Sine) -> *const std::ffi::c_char;
     // ======================== Expr_SingleRelation ========================
     pub fn Expr_SingleRelation_destructor(self_: *mut Expr_SingleRelation);
-    /// **Source:** `Expr_SingleRelation.hxx`:36 - `Expr_SingleRelation::SetFirstMember()`
+    /// **Source:** `Expr_SingleRelation.hxx`:33 - `Expr_SingleRelation::SetFirstMember()`
     pub fn Expr_SingleRelation_set_first_member(
         self_: *mut Expr_SingleRelation,
-        exp: *const HandleExprGeneralExpression,
+        exp: *const Handle_Expr_GeneralExpression,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `Expr_SingleRelation.hxx`:39 - `Expr_SingleRelation::SetSecondMember()`
+    /// **Source:** `Expr_SingleRelation.hxx`:36 - `Expr_SingleRelation::SetSecondMember()`
     pub fn Expr_SingleRelation_set_second_member(
         self_: *mut Expr_SingleRelation,
-        exp: *const HandleExprGeneralExpression,
+        exp: *const Handle_Expr_GeneralExpression,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `Expr_SingleRelation.hxx`:42 - `Expr_SingleRelation::FirstMember()`
+    /// **Source:** `Expr_SingleRelation.hxx`:39 - `Expr_SingleRelation::FirstMember()`
     pub fn Expr_SingleRelation_first_member(
         self_: *const Expr_SingleRelation,
-    ) -> crate::OcctResult<*mut HandleExprGeneralExpression>;
-    /// **Source:** `Expr_SingleRelation.hxx`:45 - `Expr_SingleRelation::SecondMember()`
+    ) -> crate::OcctResult<*mut Handle_Expr_GeneralExpression>;
+    /// **Source:** `Expr_SingleRelation.hxx`:42 - `Expr_SingleRelation::SecondMember()`
     pub fn Expr_SingleRelation_second_member(
         self_: *const Expr_SingleRelation,
-    ) -> crate::OcctResult<*mut HandleExprGeneralExpression>;
-    /// **Source:** `Expr_SingleRelation.hxx`:48 - `Expr_SingleRelation::IsLinear()`
+    ) -> crate::OcctResult<*mut Handle_Expr_GeneralExpression>;
+    /// **Source:** `Expr_SingleRelation.hxx`:45 - `Expr_SingleRelation::IsLinear()`
     pub fn Expr_SingleRelation_is_linear(
         self_: *const Expr_SingleRelation,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `Expr_SingleRelation.hxx`:51 - `Expr_SingleRelation::NbOfSubRelations()`
+    /// **Source:** `Expr_SingleRelation.hxx`:48 - `Expr_SingleRelation::NbOfSubRelations()`
     pub fn Expr_SingleRelation_nb_of_sub_relations(
         self_: *const Expr_SingleRelation,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `Expr_SingleRelation.hxx`:55 - `Expr_SingleRelation::NbOfSingleRelations()`
+    /// **Source:** `Expr_SingleRelation.hxx`:52 - `Expr_SingleRelation::NbOfSingleRelations()`
     pub fn Expr_SingleRelation_nb_of_single_relations(
         self_: *const Expr_SingleRelation,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `Expr_SingleRelation.hxx`:59 - `Expr_SingleRelation::SubRelation()`
+    /// **Source:** `Expr_SingleRelation.hxx`:56 - `Expr_SingleRelation::SubRelation()`
     pub fn Expr_SingleRelation_sub_relation(
         self_: *const Expr_SingleRelation,
         index: i32,
-    ) -> crate::OcctResult<*mut HandleExprGeneralRelation>;
-    /// **Source:** `Expr_SingleRelation.hxx`:64 - `Expr_SingleRelation::Contains()`
+    ) -> crate::OcctResult<*mut Handle_Expr_GeneralRelation>;
+    /// **Source:** `Expr_SingleRelation.hxx`:59 - `Expr_SingleRelation::Contains()`
     pub fn Expr_SingleRelation_contains(
         self_: *const Expr_SingleRelation,
-        exp: *const HandleExprGeneralExpression,
+        exp: *const Handle_Expr_GeneralExpression,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `Expr_SingleRelation.hxx`:67 - `Expr_SingleRelation::Replace()`
+    /// **Source:** `Expr_SingleRelation.hxx`:62 - `Expr_SingleRelation::Replace()`
     pub fn Expr_SingleRelation_replace(
         self_: *mut Expr_SingleRelation,
-        var: *const HandleExprNamedUnknown,
-        with: *const HandleExprGeneralExpression,
+        var: *const Handle_Expr_NamedUnknown,
+        with: *const Handle_Expr_GeneralExpression,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `Expr_SingleRelation.hxx`:70 - `Expr_SingleRelation::DynamicType()`
+    /// **Source:** `Expr_SingleRelation.hxx`:65 - `Expr_SingleRelation::DynamicType()`
     pub fn Expr_SingleRelation_dynamic_type(
         self_: *const Expr_SingleRelation,
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// **Source:** `Expr_SingleRelation.hxx`:70 - `Expr_SingleRelation::get_type_name()`
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
+    /// **Source:** `Expr_SingleRelation.hxx`:65 - `Expr_SingleRelation::get_type_name()`
     pub fn Expr_SingleRelation_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
-    /// **Source:** `Expr_SingleRelation.hxx`:70 - `Expr_SingleRelation::get_type_descriptor()`
-    pub fn Expr_SingleRelation_get_type_descriptor() -> crate::OcctResult<*const HandleStandardType>;
+    /// **Source:** `Expr_SingleRelation.hxx`:65 - `Expr_SingleRelation::get_type_descriptor()`
+    pub fn Expr_SingleRelation_get_type_descriptor(
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast Expr_SingleRelation to Expr_GeneralRelation
     pub fn Expr_SingleRelation_as_Expr_GeneralRelation(
         self_: *const Expr_SingleRelation,
@@ -7468,147 +6672,141 @@ unsafe extern "C" {
         self_: *mut Expr_SingleRelation,
     ) -> crate::OcctResult<*mut Standard_Transient>;
     /// Destroy Handle<Expr_SingleRelation>
-    pub fn HandleExprSingleRelation_destructor(self_: *mut HandleExprSingleRelation);
+    pub fn Handle_Expr_SingleRelation_destructor(self_: *mut Handle_Expr_SingleRelation);
     /// Clone Handle<Expr_SingleRelation> (increments reference count)
-    pub fn HandleExprSingleRelation_clone(
-        self_: *const HandleExprSingleRelation,
-    ) -> crate::OcctResult<*mut HandleExprSingleRelation>;
+    pub fn Handle_Expr_SingleRelation_clone(
+        self_: *const Handle_Expr_SingleRelation,
+    ) -> crate::OcctResult<*mut Handle_Expr_SingleRelation>;
     /// Check if Handle<Expr_SingleRelation> is null
-    pub fn HandleExprSingleRelation_is_null(self_: *const HandleExprSingleRelation) -> bool;
+    pub fn Handle_Expr_SingleRelation_is_null(self_: *const Handle_Expr_SingleRelation) -> bool;
     /// Dereference Handle to get *const Expr_SingleRelation
-    pub fn HandleExprSingleRelation_get(
-        handle: *const HandleExprSingleRelation,
+    pub fn Handle_Expr_SingleRelation_get(
+        handle: *const Handle_Expr_SingleRelation,
     ) -> crate::OcctResult<*const Expr_SingleRelation>;
     /// Dereference Handle to get *mut Expr_SingleRelation
-    pub fn HandleExprSingleRelation_get_mut(
-        handle: *mut HandleExprSingleRelation,
+    pub fn Handle_Expr_SingleRelation_get_mut(
+        handle: *mut Handle_Expr_SingleRelation,
     ) -> crate::OcctResult<*mut Expr_SingleRelation>;
     /// Upcast Handle<Expr_SingleRelation> to Handle<Expr_GeneralRelation>
-    pub fn HandleExprSingleRelation_to_HandleExprGeneralRelation(
-        self_: *const HandleExprSingleRelation,
-    ) -> crate::OcctResult<*mut HandleExprGeneralRelation>;
+    pub fn Handle_Expr_SingleRelation_to_Handle_Expr_GeneralRelation(
+        self_: *const Handle_Expr_SingleRelation,
+    ) -> crate::OcctResult<*mut Handle_Expr_GeneralRelation>;
     /// Upcast Handle<Expr_SingleRelation> to Handle<Standard_Transient>
-    pub fn HandleExprSingleRelation_to_HandleStandardTransient(
-        self_: *const HandleExprSingleRelation,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
+    pub fn Handle_Expr_SingleRelation_to_Handle_Standard_Transient(
+        self_: *const Handle_Expr_SingleRelation,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
     /// Downcast Handle<Expr_SingleRelation> to Handle<Expr_Different> (returns null on failure)
-    pub fn HandleExprSingleRelation_downcast_to_HandleExprDifferent(
-        self_: *const HandleExprSingleRelation,
-    ) -> crate::OcctResult<*mut HandleExprDifferent>;
+    pub fn Handle_Expr_SingleRelation_downcast_to_Handle_Expr_Different(
+        self_: *const Handle_Expr_SingleRelation,
+    ) -> crate::OcctResult<*mut Handle_Expr_Different>;
     /// Downcast Handle<Expr_SingleRelation> to Handle<Expr_Equal> (returns null on failure)
-    pub fn HandleExprSingleRelation_downcast_to_HandleExprEqual(
-        self_: *const HandleExprSingleRelation,
-    ) -> crate::OcctResult<*mut HandleExprEqual>;
+    pub fn Handle_Expr_SingleRelation_downcast_to_Handle_Expr_Equal(
+        self_: *const Handle_Expr_SingleRelation,
+    ) -> crate::OcctResult<*mut Handle_Expr_Equal>;
     /// Downcast Handle<Expr_SingleRelation> to Handle<Expr_GreaterThan> (returns null on failure)
-    pub fn HandleExprSingleRelation_downcast_to_HandleExprGreaterThan(
-        self_: *const HandleExprSingleRelation,
-    ) -> crate::OcctResult<*mut HandleExprGreaterThan>;
+    pub fn Handle_Expr_SingleRelation_downcast_to_Handle_Expr_GreaterThan(
+        self_: *const Handle_Expr_SingleRelation,
+    ) -> crate::OcctResult<*mut Handle_Expr_GreaterThan>;
     /// Downcast Handle<Expr_SingleRelation> to Handle<Expr_GreaterThanOrEqual> (returns null on failure)
-    pub fn HandleExprSingleRelation_downcast_to_HandleExprGreaterThanOrEqual(
-        self_: *const HandleExprSingleRelation,
-    ) -> crate::OcctResult<*mut HandleExprGreaterThanOrEqual>;
+    pub fn Handle_Expr_SingleRelation_downcast_to_Handle_Expr_GreaterThanOrEqual(
+        self_: *const Handle_Expr_SingleRelation,
+    ) -> crate::OcctResult<*mut Handle_Expr_GreaterThanOrEqual>;
     /// Downcast Handle<Expr_SingleRelation> to Handle<Expr_LessThan> (returns null on failure)
-    pub fn HandleExprSingleRelation_downcast_to_HandleExprLessThan(
-        self_: *const HandleExprSingleRelation,
-    ) -> crate::OcctResult<*mut HandleExprLessThan>;
+    pub fn Handle_Expr_SingleRelation_downcast_to_Handle_Expr_LessThan(
+        self_: *const Handle_Expr_SingleRelation,
+    ) -> crate::OcctResult<*mut Handle_Expr_LessThan>;
     /// Downcast Handle<Expr_SingleRelation> to Handle<Expr_LessThanOrEqual> (returns null on failure)
-    pub fn HandleExprSingleRelation_downcast_to_HandleExprLessThanOrEqual(
-        self_: *const HandleExprSingleRelation,
-    ) -> crate::OcctResult<*mut HandleExprLessThanOrEqual>;
-    /// Inherited: **Source:** `Expr_GeneralRelation.hxx`:39 - `Expr_GeneralRelation::IsSatisfied()`
+    pub fn Handle_Expr_SingleRelation_downcast_to_Handle_Expr_LessThanOrEqual(
+        self_: *const Handle_Expr_SingleRelation,
+    ) -> crate::OcctResult<*mut Handle_Expr_LessThanOrEqual>;
+    /// Inherited: **Source:** `Expr_GeneralRelation.hxx`:36 - `Expr_GeneralRelation::IsSatisfied()`
     pub fn Expr_SingleRelation_inherited_IsSatisfied(
         self_: *const Expr_SingleRelation,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Expr_GeneralRelation.hxx`:47 - `Expr_GeneralRelation::Simplified()`
+    /// Inherited: **Source:** `Expr_GeneralRelation.hxx`:44 - `Expr_GeneralRelation::Simplified()`
     pub fn Expr_SingleRelation_inherited_Simplified(
         self_: *const Expr_SingleRelation,
-    ) -> crate::OcctResult<*mut HandleExprGeneralRelation>;
-    /// Inherited: **Source:** `Expr_GeneralRelation.hxx`:51 - `Expr_GeneralRelation::Simplify()`
+    ) -> crate::OcctResult<*mut Handle_Expr_GeneralRelation>;
+    /// Inherited: **Source:** `Expr_GeneralRelation.hxx`:48 - `Expr_GeneralRelation::Simplify()`
     pub fn Expr_SingleRelation_inherited_Simplify(
         self_: *mut Expr_SingleRelation,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Expr_GeneralRelation.hxx`:55 - `Expr_GeneralRelation::Copy()`
+    /// Inherited: **Source:** `Expr_GeneralRelation.hxx`:52 - `Expr_GeneralRelation::Copy()`
     pub fn Expr_SingleRelation_inherited_Copy(
         self_: *const Expr_SingleRelation,
-    ) -> crate::OcctResult<*mut HandleExprGeneralRelation>;
-    /// Inherited: **Source:** `Expr_GeneralRelation.hxx`:78 - `Expr_GeneralRelation::String()`
+    ) -> crate::OcctResult<*mut Handle_Expr_GeneralRelation>;
+    /// Inherited: **Source:** `Expr_GeneralRelation.hxx`:73 - `Expr_GeneralRelation::String()`
     pub fn Expr_SingleRelation_inherited_String(
         self_: *const Expr_SingleRelation,
     ) -> crate::OcctResult<*mut TCollection_AsciiString>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn Expr_SingleRelation_inherited_IsInstance(
         self_: *const Expr_SingleRelation,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn Expr_SingleRelation_inherited_IsKind(
         self_: *const Expr_SingleRelation,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn Expr_SingleRelation_inherited_This(
         self_: *const Expr_SingleRelation,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn Expr_SingleRelation_inherited_GetRefCount(
         self_: *const Expr_SingleRelation,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn Expr_SingleRelation_inherited_IncrementRefCounter(
         self_: *mut Expr_SingleRelation,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn Expr_SingleRelation_inherited_DecrementRefCounter(
         self_: *mut Expr_SingleRelation,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn Expr_SingleRelation_inherited_Delete(
         self_: *const Expr_SingleRelation,
     ) -> *const std::ffi::c_char;
     // ======================== Expr_Sinh ========================
     pub fn Expr_Sinh_destructor(self_: *mut Expr_Sinh);
-    /// **Source:** `Expr_Sinh.hxx`:38 - `Expr_Sinh::Expr_Sinh()`
+    /// **Source:** `Expr_Sinh.hxx`:34 - `Expr_Sinh::Expr_Sinh()`
     pub fn Expr_Sinh_ctor_handleexprgeneralexpression(
-        exp: *const HandleExprGeneralExpression,
+        exp: *const Handle_Expr_GeneralExpression,
     ) -> crate::OcctResult<*mut Expr_Sinh>;
-    /// **Source:** `Expr_Sinh.hxx`:42 - `Expr_Sinh::ShallowSimplified()`
+    /// **Source:** `Expr_Sinh.hxx`:38 - `Expr_Sinh::ShallowSimplified()`
     pub fn Expr_Sinh_shallow_simplified(
         self_: *const Expr_Sinh,
-    ) -> crate::OcctResult<*mut HandleExprGeneralExpression>;
-    /// **Source:** `Expr_Sinh.hxx`:45 - `Expr_Sinh::Copy()`
+    ) -> crate::OcctResult<*mut Handle_Expr_GeneralExpression>;
+    /// **Source:** `Expr_Sinh.hxx`:41 - `Expr_Sinh::Copy()`
     pub fn Expr_Sinh_copy(
         self_: *const Expr_Sinh,
-    ) -> crate::OcctResult<*mut HandleExprGeneralExpression>;
-    /// **Source:** `Expr_Sinh.hxx`:51 - `Expr_Sinh::IsIdentical()`
+    ) -> crate::OcctResult<*mut Handle_Expr_GeneralExpression>;
+    /// **Source:** `Expr_Sinh.hxx`:46 - `Expr_Sinh::IsIdentical()`
     pub fn Expr_Sinh_is_identical(
         self_: *const Expr_Sinh,
-        Other: *const HandleExprGeneralExpression,
+        Other: *const Handle_Expr_GeneralExpression,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `Expr_Sinh.hxx`:53 - `Expr_Sinh::IsLinear()`
+    /// **Source:** `Expr_Sinh.hxx`:48 - `Expr_Sinh::IsLinear()`
     pub fn Expr_Sinh_is_linear(self_: *const Expr_Sinh) -> crate::OcctResult<bool>;
-    /// **Source:** `Expr_Sinh.hxx`:56 - `Expr_Sinh::Derivative()`
+    /// **Source:** `Expr_Sinh.hxx`:51 - `Expr_Sinh::Derivative()`
     pub fn Expr_Sinh_derivative(
         self_: *const Expr_Sinh,
-        X: *const HandleExprNamedUnknown,
-    ) -> crate::OcctResult<*mut HandleExprGeneralExpression>;
-    /// **Source:** `Expr_Sinh.hxx`:63 - `Expr_Sinh::Evaluate()`
-    pub fn Expr_Sinh_evaluate(
-        self_: *const Expr_Sinh,
-        vars: *const Expr_Array1OfNamedUnknown,
-        vals: *const TColStd_Array1OfReal,
-    ) -> crate::OcctResult<f64>;
-    /// **Source:** `Expr_Sinh.hxx`:67 - `Expr_Sinh::String()`
+        X: *const Handle_Expr_NamedUnknown,
+    ) -> crate::OcctResult<*mut Handle_Expr_GeneralExpression>;
+    /// **Source:** `Expr_Sinh.hxx`:62 - `Expr_Sinh::String()`
     pub fn Expr_Sinh_string(
         self_: *const Expr_Sinh,
     ) -> crate::OcctResult<*mut TCollection_AsciiString>;
-    /// **Source:** `Expr_Sinh.hxx`:69 - `Expr_Sinh::DynamicType()`
+    /// **Source:** `Expr_Sinh.hxx`:64 - `Expr_Sinh::DynamicType()`
     pub fn Expr_Sinh_dynamic_type(
         self_: *const Expr_Sinh,
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// **Source:** `Expr_Sinh.hxx`:69 - `Expr_Sinh::get_type_name()`
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
+    /// **Source:** `Expr_Sinh.hxx`:64 - `Expr_Sinh::get_type_name()`
     pub fn Expr_Sinh_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
-    /// **Source:** `Expr_Sinh.hxx`:69 - `Expr_Sinh::get_type_descriptor()`
-    pub fn Expr_Sinh_get_type_descriptor() -> crate::OcctResult<*const HandleStandardType>;
+    /// **Source:** `Expr_Sinh.hxx`:64 - `Expr_Sinh::get_type_descriptor()`
+    pub fn Expr_Sinh_get_type_descriptor() -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast Expr_Sinh to Expr_UnaryExpression
     pub fn Expr_Sinh_as_Expr_UnaryExpression(
         self_: *const Expr_Sinh,
@@ -7634,146 +6832,142 @@ unsafe extern "C" {
         self_: *mut Expr_Sinh,
     ) -> crate::OcctResult<*mut Standard_Transient>;
     /// Wrap Expr_Sinh in a Handle
-    pub fn Expr_Sinh_to_handle(obj: *mut Expr_Sinh) -> crate::OcctResult<*mut HandleExprSinh>;
+    pub fn Expr_Sinh_to_handle(obj: *mut Expr_Sinh) -> crate::OcctResult<*mut Handle_Expr_Sinh>;
     /// Destroy Handle<Expr_Sinh>
-    pub fn HandleExprSinh_destructor(self_: *mut HandleExprSinh);
+    pub fn Handle_Expr_Sinh_destructor(self_: *mut Handle_Expr_Sinh);
     /// Clone Handle<Expr_Sinh> (increments reference count)
-    pub fn HandleExprSinh_clone(
-        self_: *const HandleExprSinh,
-    ) -> crate::OcctResult<*mut HandleExprSinh>;
+    pub fn Handle_Expr_Sinh_clone(
+        self_: *const Handle_Expr_Sinh,
+    ) -> crate::OcctResult<*mut Handle_Expr_Sinh>;
     /// Check if Handle<Expr_Sinh> is null
-    pub fn HandleExprSinh_is_null(self_: *const HandleExprSinh) -> bool;
+    pub fn Handle_Expr_Sinh_is_null(self_: *const Handle_Expr_Sinh) -> bool;
     /// Dereference Handle to get *const Expr_Sinh
-    pub fn HandleExprSinh_get(handle: *const HandleExprSinh)
-        -> crate::OcctResult<*const Expr_Sinh>;
+    pub fn Handle_Expr_Sinh_get(
+        handle: *const Handle_Expr_Sinh,
+    ) -> crate::OcctResult<*const Expr_Sinh>;
     /// Dereference Handle to get *mut Expr_Sinh
-    pub fn HandleExprSinh_get_mut(handle: *mut HandleExprSinh)
-        -> crate::OcctResult<*mut Expr_Sinh>;
+    pub fn Handle_Expr_Sinh_get_mut(
+        handle: *mut Handle_Expr_Sinh,
+    ) -> crate::OcctResult<*mut Expr_Sinh>;
     /// Upcast Handle<Expr_Sinh> to Handle<Expr_UnaryExpression>
-    pub fn HandleExprSinh_to_HandleExprUnaryExpression(
-        self_: *const HandleExprSinh,
-    ) -> crate::OcctResult<*mut HandleExprUnaryExpression>;
+    pub fn Handle_Expr_Sinh_to_Handle_Expr_UnaryExpression(
+        self_: *const Handle_Expr_Sinh,
+    ) -> crate::OcctResult<*mut Handle_Expr_UnaryExpression>;
     /// Upcast Handle<Expr_Sinh> to Handle<Expr_GeneralExpression>
-    pub fn HandleExprSinh_to_HandleExprGeneralExpression(
-        self_: *const HandleExprSinh,
-    ) -> crate::OcctResult<*mut HandleExprGeneralExpression>;
+    pub fn Handle_Expr_Sinh_to_Handle_Expr_GeneralExpression(
+        self_: *const Handle_Expr_Sinh,
+    ) -> crate::OcctResult<*mut Handle_Expr_GeneralExpression>;
     /// Upcast Handle<Expr_Sinh> to Handle<Standard_Transient>
-    pub fn HandleExprSinh_to_HandleStandardTransient(
-        self_: *const HandleExprSinh,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
-    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:35 - `Expr_UnaryExpression::Operand()`
+    pub fn Handle_Expr_Sinh_to_Handle_Standard_Transient(
+        self_: *const Handle_Expr_Sinh,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
+    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:32 - `Expr_UnaryExpression::Operand()`
     pub fn Expr_Sinh_inherited_Operand(
         self_: *const Expr_Sinh,
-    ) -> crate::OcctResult<*const HandleExprGeneralExpression>;
-    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:39 - `Expr_UnaryExpression::SetOperand()`
+    ) -> crate::OcctResult<*const Handle_Expr_GeneralExpression>;
+    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:36 - `Expr_UnaryExpression::SetOperand()`
     pub fn Expr_Sinh_inherited_SetOperand(
         self_: *mut Expr_Sinh,
-        exp: *const HandleExprGeneralExpression,
+        exp: *const Handle_Expr_GeneralExpression,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:43 - `Expr_UnaryExpression::NbSubExpressions()`
+    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:40 - `Expr_UnaryExpression::NbSubExpressions()`
     pub fn Expr_Sinh_inherited_NbSubExpressions(self_: *const Expr_Sinh) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:47 - `Expr_UnaryExpression::SubExpression()`
+    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:44 - `Expr_UnaryExpression::SubExpression()`
     pub fn Expr_Sinh_inherited_SubExpression(
         self_: *const Expr_Sinh,
         I: i32,
-    ) -> crate::OcctResult<*const HandleExprGeneralExpression>;
-    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:51 - `Expr_UnaryExpression::ContainsUnknowns()`
+    ) -> crate::OcctResult<*const Handle_Expr_GeneralExpression>;
+    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:48 - `Expr_UnaryExpression::ContainsUnknowns()`
     pub fn Expr_Sinh_inherited_ContainsUnknowns(self_: *const Expr_Sinh)
         -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:55 - `Expr_UnaryExpression::Contains()`
+    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:51 - `Expr_UnaryExpression::Contains()`
     pub fn Expr_Sinh_inherited_Contains(
         self_: *const Expr_Sinh,
-        exp: *const HandleExprGeneralExpression,
+        exp: *const Handle_Expr_GeneralExpression,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:59 - `Expr_UnaryExpression::Replace()`
+    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:55 - `Expr_UnaryExpression::Replace()`
     pub fn Expr_Sinh_inherited_Replace(
         self_: *mut Expr_Sinh,
-        var: *const HandleExprNamedUnknown,
-        with: *const HandleExprGeneralExpression,
+        var: *const Handle_Expr_NamedUnknown,
+        with: *const Handle_Expr_GeneralExpression,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:65 - `Expr_UnaryExpression::Simplified()`
+    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:61 - `Expr_UnaryExpression::Simplified()`
     pub fn Expr_Sinh_inherited_Simplified(
         self_: *const Expr_Sinh,
-    ) -> crate::OcctResult<*mut HandleExprGeneralExpression>;
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:76 - `Expr_GeneralExpression::IsShareable()`
+    ) -> crate::OcctResult<*mut Handle_Expr_GeneralExpression>;
+    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:71 - `Expr_GeneralExpression::IsShareable()`
     pub fn Expr_Sinh_inherited_IsShareable(self_: *const Expr_Sinh) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:91 - `Expr_GeneralExpression::NDerivative()`
+    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:86 - `Expr_GeneralExpression::NDerivative()`
     pub fn Expr_Sinh_inherited_NDerivative(
         self_: *const Expr_Sinh,
-        X: *const HandleExprNamedUnknown,
+        X: *const Handle_Expr_NamedUnknown,
         N: i32,
-    ) -> crate::OcctResult<*mut HandleExprGeneralExpression>;
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:112 - `Expr_GeneralExpression::EvaluateNumeric()`
+    ) -> crate::OcctResult<*mut Handle_Expr_GeneralExpression>;
+    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:108 - `Expr_GeneralExpression::EvaluateNumeric()`
     pub fn Expr_Sinh_inherited_EvaluateNumeric(self_: *const Expr_Sinh) -> crate::OcctResult<f64>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn Expr_Sinh_inherited_IsInstance(
         self_: *const Expr_Sinh,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn Expr_Sinh_inherited_IsKind(
         self_: *const Expr_Sinh,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn Expr_Sinh_inherited_This(
         self_: *const Expr_Sinh,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn Expr_Sinh_inherited_GetRefCount(self_: *const Expr_Sinh) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn Expr_Sinh_inherited_IncrementRefCounter(
         self_: *mut Expr_Sinh,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn Expr_Sinh_inherited_DecrementRefCounter(self_: *mut Expr_Sinh)
         -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn Expr_Sinh_inherited_Delete(self_: *const Expr_Sinh) -> *const std::ffi::c_char;
     // ======================== Expr_Square ========================
     pub fn Expr_Square_destructor(self_: *mut Expr_Square);
-    /// **Source:** `Expr_Square.hxx`:38 - `Expr_Square::Expr_Square()`
+    /// **Source:** `Expr_Square.hxx`:34 - `Expr_Square::Expr_Square()`
     pub fn Expr_Square_ctor_handleexprgeneralexpression(
-        exp: *const HandleExprGeneralExpression,
+        exp: *const Handle_Expr_GeneralExpression,
     ) -> crate::OcctResult<*mut Expr_Square>;
-    /// **Source:** `Expr_Square.hxx`:42 - `Expr_Square::ShallowSimplified()`
+    /// **Source:** `Expr_Square.hxx`:38 - `Expr_Square::ShallowSimplified()`
     pub fn Expr_Square_shallow_simplified(
         self_: *const Expr_Square,
-    ) -> crate::OcctResult<*mut HandleExprGeneralExpression>;
-    /// **Source:** `Expr_Square.hxx`:45 - `Expr_Square::Copy()`
+    ) -> crate::OcctResult<*mut Handle_Expr_GeneralExpression>;
+    /// **Source:** `Expr_Square.hxx`:41 - `Expr_Square::Copy()`
     pub fn Expr_Square_copy(
         self_: *const Expr_Square,
-    ) -> crate::OcctResult<*mut HandleExprGeneralExpression>;
-    /// **Source:** `Expr_Square.hxx`:51 - `Expr_Square::IsIdentical()`
+    ) -> crate::OcctResult<*mut Handle_Expr_GeneralExpression>;
+    /// **Source:** `Expr_Square.hxx`:46 - `Expr_Square::IsIdentical()`
     pub fn Expr_Square_is_identical(
         self_: *const Expr_Square,
-        Other: *const HandleExprGeneralExpression,
+        Other: *const Handle_Expr_GeneralExpression,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `Expr_Square.hxx`:53 - `Expr_Square::IsLinear()`
+    /// **Source:** `Expr_Square.hxx`:48 - `Expr_Square::IsLinear()`
     pub fn Expr_Square_is_linear(self_: *const Expr_Square) -> crate::OcctResult<bool>;
-    /// **Source:** `Expr_Square.hxx`:56 - `Expr_Square::Derivative()`
+    /// **Source:** `Expr_Square.hxx`:51 - `Expr_Square::Derivative()`
     pub fn Expr_Square_derivative(
         self_: *const Expr_Square,
-        X: *const HandleExprNamedUnknown,
-    ) -> crate::OcctResult<*mut HandleExprGeneralExpression>;
-    /// **Source:** `Expr_Square.hxx`:63 - `Expr_Square::Evaluate()`
-    pub fn Expr_Square_evaluate(
-        self_: *const Expr_Square,
-        vars: *const Expr_Array1OfNamedUnknown,
-        vals: *const TColStd_Array1OfReal,
-    ) -> crate::OcctResult<f64>;
-    /// **Source:** `Expr_Square.hxx`:67 - `Expr_Square::String()`
+        X: *const Handle_Expr_NamedUnknown,
+    ) -> crate::OcctResult<*mut Handle_Expr_GeneralExpression>;
+    /// **Source:** `Expr_Square.hxx`:62 - `Expr_Square::String()`
     pub fn Expr_Square_string(
         self_: *const Expr_Square,
     ) -> crate::OcctResult<*mut TCollection_AsciiString>;
-    /// **Source:** `Expr_Square.hxx`:69 - `Expr_Square::DynamicType()`
+    /// **Source:** `Expr_Square.hxx`:64 - `Expr_Square::DynamicType()`
     pub fn Expr_Square_dynamic_type(
         self_: *const Expr_Square,
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// **Source:** `Expr_Square.hxx`:69 - `Expr_Square::get_type_name()`
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
+    /// **Source:** `Expr_Square.hxx`:64 - `Expr_Square::get_type_name()`
     pub fn Expr_Square_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
-    /// **Source:** `Expr_Square.hxx`:69 - `Expr_Square::get_type_descriptor()`
-    pub fn Expr_Square_get_type_descriptor() -> crate::OcctResult<*const HandleStandardType>;
+    /// **Source:** `Expr_Square.hxx`:64 - `Expr_Square::get_type_descriptor()`
+    pub fn Expr_Square_get_type_descriptor() -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast Expr_Square to Expr_UnaryExpression
     pub fn Expr_Square_as_Expr_UnaryExpression(
         self_: *const Expr_Square,
@@ -7799,155 +6993,150 @@ unsafe extern "C" {
         self_: *mut Expr_Square,
     ) -> crate::OcctResult<*mut Standard_Transient>;
     /// Wrap Expr_Square in a Handle
-    pub fn Expr_Square_to_handle(obj: *mut Expr_Square)
-        -> crate::OcctResult<*mut HandleExprSquare>;
+    pub fn Expr_Square_to_handle(
+        obj: *mut Expr_Square,
+    ) -> crate::OcctResult<*mut Handle_Expr_Square>;
     /// Destroy Handle<Expr_Square>
-    pub fn HandleExprSquare_destructor(self_: *mut HandleExprSquare);
+    pub fn Handle_Expr_Square_destructor(self_: *mut Handle_Expr_Square);
     /// Clone Handle<Expr_Square> (increments reference count)
-    pub fn HandleExprSquare_clone(
-        self_: *const HandleExprSquare,
-    ) -> crate::OcctResult<*mut HandleExprSquare>;
+    pub fn Handle_Expr_Square_clone(
+        self_: *const Handle_Expr_Square,
+    ) -> crate::OcctResult<*mut Handle_Expr_Square>;
     /// Check if Handle<Expr_Square> is null
-    pub fn HandleExprSquare_is_null(self_: *const HandleExprSquare) -> bool;
+    pub fn Handle_Expr_Square_is_null(self_: *const Handle_Expr_Square) -> bool;
     /// Dereference Handle to get *const Expr_Square
-    pub fn HandleExprSquare_get(
-        handle: *const HandleExprSquare,
+    pub fn Handle_Expr_Square_get(
+        handle: *const Handle_Expr_Square,
     ) -> crate::OcctResult<*const Expr_Square>;
     /// Dereference Handle to get *mut Expr_Square
-    pub fn HandleExprSquare_get_mut(
-        handle: *mut HandleExprSquare,
+    pub fn Handle_Expr_Square_get_mut(
+        handle: *mut Handle_Expr_Square,
     ) -> crate::OcctResult<*mut Expr_Square>;
     /// Upcast Handle<Expr_Square> to Handle<Expr_UnaryExpression>
-    pub fn HandleExprSquare_to_HandleExprUnaryExpression(
-        self_: *const HandleExprSquare,
-    ) -> crate::OcctResult<*mut HandleExprUnaryExpression>;
+    pub fn Handle_Expr_Square_to_Handle_Expr_UnaryExpression(
+        self_: *const Handle_Expr_Square,
+    ) -> crate::OcctResult<*mut Handle_Expr_UnaryExpression>;
     /// Upcast Handle<Expr_Square> to Handle<Expr_GeneralExpression>
-    pub fn HandleExprSquare_to_HandleExprGeneralExpression(
-        self_: *const HandleExprSquare,
-    ) -> crate::OcctResult<*mut HandleExprGeneralExpression>;
+    pub fn Handle_Expr_Square_to_Handle_Expr_GeneralExpression(
+        self_: *const Handle_Expr_Square,
+    ) -> crate::OcctResult<*mut Handle_Expr_GeneralExpression>;
     /// Upcast Handle<Expr_Square> to Handle<Standard_Transient>
-    pub fn HandleExprSquare_to_HandleStandardTransient(
-        self_: *const HandleExprSquare,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
-    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:35 - `Expr_UnaryExpression::Operand()`
+    pub fn Handle_Expr_Square_to_Handle_Standard_Transient(
+        self_: *const Handle_Expr_Square,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
+    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:32 - `Expr_UnaryExpression::Operand()`
     pub fn Expr_Square_inherited_Operand(
         self_: *const Expr_Square,
-    ) -> crate::OcctResult<*const HandleExprGeneralExpression>;
-    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:39 - `Expr_UnaryExpression::SetOperand()`
+    ) -> crate::OcctResult<*const Handle_Expr_GeneralExpression>;
+    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:36 - `Expr_UnaryExpression::SetOperand()`
     pub fn Expr_Square_inherited_SetOperand(
         self_: *mut Expr_Square,
-        exp: *const HandleExprGeneralExpression,
+        exp: *const Handle_Expr_GeneralExpression,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:43 - `Expr_UnaryExpression::NbSubExpressions()`
+    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:40 - `Expr_UnaryExpression::NbSubExpressions()`
     pub fn Expr_Square_inherited_NbSubExpressions(
         self_: *const Expr_Square,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:47 - `Expr_UnaryExpression::SubExpression()`
+    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:44 - `Expr_UnaryExpression::SubExpression()`
     pub fn Expr_Square_inherited_SubExpression(
         self_: *const Expr_Square,
         I: i32,
-    ) -> crate::OcctResult<*const HandleExprGeneralExpression>;
-    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:51 - `Expr_UnaryExpression::ContainsUnknowns()`
+    ) -> crate::OcctResult<*const Handle_Expr_GeneralExpression>;
+    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:48 - `Expr_UnaryExpression::ContainsUnknowns()`
     pub fn Expr_Square_inherited_ContainsUnknowns(
         self_: *const Expr_Square,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:55 - `Expr_UnaryExpression::Contains()`
+    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:51 - `Expr_UnaryExpression::Contains()`
     pub fn Expr_Square_inherited_Contains(
         self_: *const Expr_Square,
-        exp: *const HandleExprGeneralExpression,
+        exp: *const Handle_Expr_GeneralExpression,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:59 - `Expr_UnaryExpression::Replace()`
+    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:55 - `Expr_UnaryExpression::Replace()`
     pub fn Expr_Square_inherited_Replace(
         self_: *mut Expr_Square,
-        var: *const HandleExprNamedUnknown,
-        with: *const HandleExprGeneralExpression,
+        var: *const Handle_Expr_NamedUnknown,
+        with: *const Handle_Expr_GeneralExpression,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:65 - `Expr_UnaryExpression::Simplified()`
+    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:61 - `Expr_UnaryExpression::Simplified()`
     pub fn Expr_Square_inherited_Simplified(
         self_: *const Expr_Square,
-    ) -> crate::OcctResult<*mut HandleExprGeneralExpression>;
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:76 - `Expr_GeneralExpression::IsShareable()`
+    ) -> crate::OcctResult<*mut Handle_Expr_GeneralExpression>;
+    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:71 - `Expr_GeneralExpression::IsShareable()`
     pub fn Expr_Square_inherited_IsShareable(self_: *const Expr_Square) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:91 - `Expr_GeneralExpression::NDerivative()`
+    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:86 - `Expr_GeneralExpression::NDerivative()`
     pub fn Expr_Square_inherited_NDerivative(
         self_: *const Expr_Square,
-        X: *const HandleExprNamedUnknown,
+        X: *const Handle_Expr_NamedUnknown,
         N: i32,
-    ) -> crate::OcctResult<*mut HandleExprGeneralExpression>;
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:112 - `Expr_GeneralExpression::EvaluateNumeric()`
+    ) -> crate::OcctResult<*mut Handle_Expr_GeneralExpression>;
+    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:108 - `Expr_GeneralExpression::EvaluateNumeric()`
     pub fn Expr_Square_inherited_EvaluateNumeric(
         self_: *const Expr_Square,
     ) -> crate::OcctResult<f64>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn Expr_Square_inherited_IsInstance(
         self_: *const Expr_Square,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn Expr_Square_inherited_IsKind(
         self_: *const Expr_Square,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn Expr_Square_inherited_This(
         self_: *const Expr_Square,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn Expr_Square_inherited_GetRefCount(self_: *const Expr_Square) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn Expr_Square_inherited_IncrementRefCounter(
         self_: *mut Expr_Square,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn Expr_Square_inherited_DecrementRefCounter(
         self_: *mut Expr_Square,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn Expr_Square_inherited_Delete(self_: *const Expr_Square) -> *const std::ffi::c_char;
     // ======================== Expr_SquareRoot ========================
     pub fn Expr_SquareRoot_destructor(self_: *mut Expr_SquareRoot);
-    /// **Source:** `Expr_SquareRoot.hxx`:38 - `Expr_SquareRoot::Expr_SquareRoot()`
+    /// **Source:** `Expr_SquareRoot.hxx`:34 - `Expr_SquareRoot::Expr_SquareRoot()`
     pub fn Expr_SquareRoot_ctor_handleexprgeneralexpression(
-        exp: *const HandleExprGeneralExpression,
+        exp: *const Handle_Expr_GeneralExpression,
     ) -> crate::OcctResult<*mut Expr_SquareRoot>;
-    /// **Source:** `Expr_SquareRoot.hxx`:42 - `Expr_SquareRoot::ShallowSimplified()`
+    /// **Source:** `Expr_SquareRoot.hxx`:38 - `Expr_SquareRoot::ShallowSimplified()`
     pub fn Expr_SquareRoot_shallow_simplified(
         self_: *const Expr_SquareRoot,
-    ) -> crate::OcctResult<*mut HandleExprGeneralExpression>;
-    /// **Source:** `Expr_SquareRoot.hxx`:45 - `Expr_SquareRoot::Copy()`
+    ) -> crate::OcctResult<*mut Handle_Expr_GeneralExpression>;
+    /// **Source:** `Expr_SquareRoot.hxx`:41 - `Expr_SquareRoot::Copy()`
     pub fn Expr_SquareRoot_copy(
         self_: *const Expr_SquareRoot,
-    ) -> crate::OcctResult<*mut HandleExprGeneralExpression>;
-    /// **Source:** `Expr_SquareRoot.hxx`:51 - `Expr_SquareRoot::IsIdentical()`
+    ) -> crate::OcctResult<*mut Handle_Expr_GeneralExpression>;
+    /// **Source:** `Expr_SquareRoot.hxx`:46 - `Expr_SquareRoot::IsIdentical()`
     pub fn Expr_SquareRoot_is_identical(
         self_: *const Expr_SquareRoot,
-        Other: *const HandleExprGeneralExpression,
+        Other: *const Handle_Expr_GeneralExpression,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `Expr_SquareRoot.hxx`:53 - `Expr_SquareRoot::IsLinear()`
+    /// **Source:** `Expr_SquareRoot.hxx`:48 - `Expr_SquareRoot::IsLinear()`
     pub fn Expr_SquareRoot_is_linear(self_: *const Expr_SquareRoot) -> crate::OcctResult<bool>;
-    /// **Source:** `Expr_SquareRoot.hxx`:56 - `Expr_SquareRoot::Derivative()`
+    /// **Source:** `Expr_SquareRoot.hxx`:51 - `Expr_SquareRoot::Derivative()`
     pub fn Expr_SquareRoot_derivative(
         self_: *const Expr_SquareRoot,
-        X: *const HandleExprNamedUnknown,
-    ) -> crate::OcctResult<*mut HandleExprGeneralExpression>;
-    /// **Source:** `Expr_SquareRoot.hxx`:63 - `Expr_SquareRoot::Evaluate()`
-    pub fn Expr_SquareRoot_evaluate(
-        self_: *const Expr_SquareRoot,
-        vars: *const Expr_Array1OfNamedUnknown,
-        vals: *const TColStd_Array1OfReal,
-    ) -> crate::OcctResult<f64>;
-    /// **Source:** `Expr_SquareRoot.hxx`:67 - `Expr_SquareRoot::String()`
+        X: *const Handle_Expr_NamedUnknown,
+    ) -> crate::OcctResult<*mut Handle_Expr_GeneralExpression>;
+    /// **Source:** `Expr_SquareRoot.hxx`:62 - `Expr_SquareRoot::String()`
     pub fn Expr_SquareRoot_string(
         self_: *const Expr_SquareRoot,
     ) -> crate::OcctResult<*mut TCollection_AsciiString>;
-    /// **Source:** `Expr_SquareRoot.hxx`:69 - `Expr_SquareRoot::DynamicType()`
+    /// **Source:** `Expr_SquareRoot.hxx`:64 - `Expr_SquareRoot::DynamicType()`
     pub fn Expr_SquareRoot_dynamic_type(
         self_: *const Expr_SquareRoot,
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// **Source:** `Expr_SquareRoot.hxx`:69 - `Expr_SquareRoot::get_type_name()`
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
+    /// **Source:** `Expr_SquareRoot.hxx`:64 - `Expr_SquareRoot::get_type_name()`
     pub fn Expr_SquareRoot_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
-    /// **Source:** `Expr_SquareRoot.hxx`:69 - `Expr_SquareRoot::get_type_descriptor()`
-    pub fn Expr_SquareRoot_get_type_descriptor() -> crate::OcctResult<*const HandleStandardType>;
+    /// **Source:** `Expr_SquareRoot.hxx`:64 - `Expr_SquareRoot::get_type_descriptor()`
+    pub fn Expr_SquareRoot_get_type_descriptor() -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast Expr_SquareRoot to Expr_UnaryExpression
     pub fn Expr_SquareRoot_as_Expr_UnaryExpression(
         self_: *const Expr_SquareRoot,
@@ -7975,171 +7164,161 @@ unsafe extern "C" {
     /// Wrap Expr_SquareRoot in a Handle
     pub fn Expr_SquareRoot_to_handle(
         obj: *mut Expr_SquareRoot,
-    ) -> crate::OcctResult<*mut HandleExprSquareRoot>;
+    ) -> crate::OcctResult<*mut Handle_Expr_SquareRoot>;
     /// Destroy Handle<Expr_SquareRoot>
-    pub fn HandleExprSquareRoot_destructor(self_: *mut HandleExprSquareRoot);
+    pub fn Handle_Expr_SquareRoot_destructor(self_: *mut Handle_Expr_SquareRoot);
     /// Clone Handle<Expr_SquareRoot> (increments reference count)
-    pub fn HandleExprSquareRoot_clone(
-        self_: *const HandleExprSquareRoot,
-    ) -> crate::OcctResult<*mut HandleExprSquareRoot>;
+    pub fn Handle_Expr_SquareRoot_clone(
+        self_: *const Handle_Expr_SquareRoot,
+    ) -> crate::OcctResult<*mut Handle_Expr_SquareRoot>;
     /// Check if Handle<Expr_SquareRoot> is null
-    pub fn HandleExprSquareRoot_is_null(self_: *const HandleExprSquareRoot) -> bool;
+    pub fn Handle_Expr_SquareRoot_is_null(self_: *const Handle_Expr_SquareRoot) -> bool;
     /// Dereference Handle to get *const Expr_SquareRoot
-    pub fn HandleExprSquareRoot_get(
-        handle: *const HandleExprSquareRoot,
+    pub fn Handle_Expr_SquareRoot_get(
+        handle: *const Handle_Expr_SquareRoot,
     ) -> crate::OcctResult<*const Expr_SquareRoot>;
     /// Dereference Handle to get *mut Expr_SquareRoot
-    pub fn HandleExprSquareRoot_get_mut(
-        handle: *mut HandleExprSquareRoot,
+    pub fn Handle_Expr_SquareRoot_get_mut(
+        handle: *mut Handle_Expr_SquareRoot,
     ) -> crate::OcctResult<*mut Expr_SquareRoot>;
     /// Upcast Handle<Expr_SquareRoot> to Handle<Expr_UnaryExpression>
-    pub fn HandleExprSquareRoot_to_HandleExprUnaryExpression(
-        self_: *const HandleExprSquareRoot,
-    ) -> crate::OcctResult<*mut HandleExprUnaryExpression>;
+    pub fn Handle_Expr_SquareRoot_to_Handle_Expr_UnaryExpression(
+        self_: *const Handle_Expr_SquareRoot,
+    ) -> crate::OcctResult<*mut Handle_Expr_UnaryExpression>;
     /// Upcast Handle<Expr_SquareRoot> to Handle<Expr_GeneralExpression>
-    pub fn HandleExprSquareRoot_to_HandleExprGeneralExpression(
-        self_: *const HandleExprSquareRoot,
-    ) -> crate::OcctResult<*mut HandleExprGeneralExpression>;
+    pub fn Handle_Expr_SquareRoot_to_Handle_Expr_GeneralExpression(
+        self_: *const Handle_Expr_SquareRoot,
+    ) -> crate::OcctResult<*mut Handle_Expr_GeneralExpression>;
     /// Upcast Handle<Expr_SquareRoot> to Handle<Standard_Transient>
-    pub fn HandleExprSquareRoot_to_HandleStandardTransient(
-        self_: *const HandleExprSquareRoot,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
-    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:35 - `Expr_UnaryExpression::Operand()`
+    pub fn Handle_Expr_SquareRoot_to_Handle_Standard_Transient(
+        self_: *const Handle_Expr_SquareRoot,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
+    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:32 - `Expr_UnaryExpression::Operand()`
     pub fn Expr_SquareRoot_inherited_Operand(
         self_: *const Expr_SquareRoot,
-    ) -> crate::OcctResult<*const HandleExprGeneralExpression>;
-    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:39 - `Expr_UnaryExpression::SetOperand()`
+    ) -> crate::OcctResult<*const Handle_Expr_GeneralExpression>;
+    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:36 - `Expr_UnaryExpression::SetOperand()`
     pub fn Expr_SquareRoot_inherited_SetOperand(
         self_: *mut Expr_SquareRoot,
-        exp: *const HandleExprGeneralExpression,
+        exp: *const Handle_Expr_GeneralExpression,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:43 - `Expr_UnaryExpression::NbSubExpressions()`
+    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:40 - `Expr_UnaryExpression::NbSubExpressions()`
     pub fn Expr_SquareRoot_inherited_NbSubExpressions(
         self_: *const Expr_SquareRoot,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:47 - `Expr_UnaryExpression::SubExpression()`
+    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:44 - `Expr_UnaryExpression::SubExpression()`
     pub fn Expr_SquareRoot_inherited_SubExpression(
         self_: *const Expr_SquareRoot,
         I: i32,
-    ) -> crate::OcctResult<*const HandleExprGeneralExpression>;
-    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:51 - `Expr_UnaryExpression::ContainsUnknowns()`
+    ) -> crate::OcctResult<*const Handle_Expr_GeneralExpression>;
+    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:48 - `Expr_UnaryExpression::ContainsUnknowns()`
     pub fn Expr_SquareRoot_inherited_ContainsUnknowns(
         self_: *const Expr_SquareRoot,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:55 - `Expr_UnaryExpression::Contains()`
+    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:51 - `Expr_UnaryExpression::Contains()`
     pub fn Expr_SquareRoot_inherited_Contains(
         self_: *const Expr_SquareRoot,
-        exp: *const HandleExprGeneralExpression,
+        exp: *const Handle_Expr_GeneralExpression,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:59 - `Expr_UnaryExpression::Replace()`
+    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:55 - `Expr_UnaryExpression::Replace()`
     pub fn Expr_SquareRoot_inherited_Replace(
         self_: *mut Expr_SquareRoot,
-        var: *const HandleExprNamedUnknown,
-        with: *const HandleExprGeneralExpression,
+        var: *const Handle_Expr_NamedUnknown,
+        with: *const Handle_Expr_GeneralExpression,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:65 - `Expr_UnaryExpression::Simplified()`
+    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:61 - `Expr_UnaryExpression::Simplified()`
     pub fn Expr_SquareRoot_inherited_Simplified(
         self_: *const Expr_SquareRoot,
-    ) -> crate::OcctResult<*mut HandleExprGeneralExpression>;
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:76 - `Expr_GeneralExpression::IsShareable()`
+    ) -> crate::OcctResult<*mut Handle_Expr_GeneralExpression>;
+    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:71 - `Expr_GeneralExpression::IsShareable()`
     pub fn Expr_SquareRoot_inherited_IsShareable(
         self_: *const Expr_SquareRoot,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:91 - `Expr_GeneralExpression::NDerivative()`
+    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:86 - `Expr_GeneralExpression::NDerivative()`
     pub fn Expr_SquareRoot_inherited_NDerivative(
         self_: *const Expr_SquareRoot,
-        X: *const HandleExprNamedUnknown,
+        X: *const Handle_Expr_NamedUnknown,
         N: i32,
-    ) -> crate::OcctResult<*mut HandleExprGeneralExpression>;
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:112 - `Expr_GeneralExpression::EvaluateNumeric()`
+    ) -> crate::OcctResult<*mut Handle_Expr_GeneralExpression>;
+    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:108 - `Expr_GeneralExpression::EvaluateNumeric()`
     pub fn Expr_SquareRoot_inherited_EvaluateNumeric(
         self_: *const Expr_SquareRoot,
     ) -> crate::OcctResult<f64>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn Expr_SquareRoot_inherited_IsInstance(
         self_: *const Expr_SquareRoot,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn Expr_SquareRoot_inherited_IsKind(
         self_: *const Expr_SquareRoot,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn Expr_SquareRoot_inherited_This(
         self_: *const Expr_SquareRoot,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn Expr_SquareRoot_inherited_GetRefCount(
         self_: *const Expr_SquareRoot,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn Expr_SquareRoot_inherited_IncrementRefCounter(
         self_: *mut Expr_SquareRoot,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn Expr_SquareRoot_inherited_DecrementRefCounter(
         self_: *mut Expr_SquareRoot,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn Expr_SquareRoot_inherited_Delete(
         self_: *const Expr_SquareRoot,
     ) -> *const std::ffi::c_char;
     // ======================== Expr_Sum ========================
     pub fn Expr_Sum_destructor(self_: *mut Expr_Sum);
     /// **Source:** `Expr_Sum.hxx`:40 - `Expr_Sum::Expr_Sum()`
-    pub fn Expr_Sum_ctor_sequenceofgeneralexpression(
-        exps: *const Expr_SequenceOfGeneralExpression,
-    ) -> crate::OcctResult<*mut Expr_Sum>;
-    /// **Source:** `Expr_Sum.hxx`:43 - `Expr_Sum::Expr_Sum()`
     pub fn Expr_Sum_ctor_handleexprgeneralexpression2(
-        exp1: *const HandleExprGeneralExpression,
-        exp2: *const HandleExprGeneralExpression,
+        exp1: *const Handle_Expr_GeneralExpression,
+        exp2: *const Handle_Expr_GeneralExpression,
     ) -> crate::OcctResult<*mut Expr_Sum>;
-    /// **Source:** `Expr_Sum.hxx`:48 - `Expr_Sum::ShallowSimplified()`
+    /// **Source:** `Expr_Sum.hxx`:45 - `Expr_Sum::ShallowSimplified()`
     pub fn Expr_Sum_shallow_simplified(
         self_: *const Expr_Sum,
-    ) -> crate::OcctResult<*mut HandleExprGeneralExpression>;
-    /// **Source:** `Expr_Sum.hxx`:51 - `Expr_Sum::Copy()`
+    ) -> crate::OcctResult<*mut Handle_Expr_GeneralExpression>;
+    /// **Source:** `Expr_Sum.hxx`:48 - `Expr_Sum::Copy()`
     pub fn Expr_Sum_copy(
         self_: *const Expr_Sum,
-    ) -> crate::OcctResult<*mut HandleExprGeneralExpression>;
-    /// **Source:** `Expr_Sum.hxx`:57 - `Expr_Sum::IsIdentical()`
+    ) -> crate::OcctResult<*mut Handle_Expr_GeneralExpression>;
+    /// **Source:** `Expr_Sum.hxx`:53 - `Expr_Sum::IsIdentical()`
     pub fn Expr_Sum_is_identical(
         self_: *const Expr_Sum,
-        Other: *const HandleExprGeneralExpression,
+        Other: *const Handle_Expr_GeneralExpression,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `Expr_Sum.hxx`:59 - `Expr_Sum::IsLinear()`
+    /// **Source:** `Expr_Sum.hxx`:55 - `Expr_Sum::IsLinear()`
     pub fn Expr_Sum_is_linear(self_: *const Expr_Sum) -> crate::OcctResult<bool>;
-    /// **Source:** `Expr_Sum.hxx`:62 - `Expr_Sum::Derivative()`
+    /// **Source:** `Expr_Sum.hxx`:58 - `Expr_Sum::Derivative()`
     pub fn Expr_Sum_derivative(
         self_: *const Expr_Sum,
-        X: *const HandleExprNamedUnknown,
-    ) -> crate::OcctResult<*mut HandleExprGeneralExpression>;
-    /// **Source:** `Expr_Sum.hxx`:67 - `Expr_Sum::NDerivative()`
+        X: *const Handle_Expr_NamedUnknown,
+    ) -> crate::OcctResult<*mut Handle_Expr_GeneralExpression>;
+    /// **Source:** `Expr_Sum.hxx`:63 - `Expr_Sum::NDerivative()`
     pub fn Expr_Sum_n_derivative(
         self_: *const Expr_Sum,
-        X: *const HandleExprNamedUnknown,
+        X: *const Handle_Expr_NamedUnknown,
         N: i32,
-    ) -> crate::OcctResult<*mut HandleExprGeneralExpression>;
-    /// **Source:** `Expr_Sum.hxx`:75 - `Expr_Sum::Evaluate()`
-    pub fn Expr_Sum_evaluate(
-        self_: *const Expr_Sum,
-        vars: *const Expr_Array1OfNamedUnknown,
-        vals: *const TColStd_Array1OfReal,
-    ) -> crate::OcctResult<f64>;
-    /// **Source:** `Expr_Sum.hxx`:79 - `Expr_Sum::String()`
+    ) -> crate::OcctResult<*mut Handle_Expr_GeneralExpression>;
+    /// **Source:** `Expr_Sum.hxx`:75 - `Expr_Sum::String()`
     pub fn Expr_Sum_string(
         self_: *const Expr_Sum,
     ) -> crate::OcctResult<*mut TCollection_AsciiString>;
-    /// **Source:** `Expr_Sum.hxx`:81 - `Expr_Sum::DynamicType()`
+    /// **Source:** `Expr_Sum.hxx`:77 - `Expr_Sum::DynamicType()`
     pub fn Expr_Sum_dynamic_type(
         self_: *const Expr_Sum,
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// **Source:** `Expr_Sum.hxx`:81 - `Expr_Sum::get_type_name()`
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
+    /// **Source:** `Expr_Sum.hxx`:77 - `Expr_Sum::get_type_name()`
     pub fn Expr_Sum_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
-    /// **Source:** `Expr_Sum.hxx`:81 - `Expr_Sum::get_type_descriptor()`
-    pub fn Expr_Sum_get_type_descriptor() -> crate::OcctResult<*const HandleStandardType>;
+    /// **Source:** `Expr_Sum.hxx`:77 - `Expr_Sum::get_type_descriptor()`
+    pub fn Expr_Sum_get_type_descriptor() -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast Expr_Sum to Expr_PolyExpression
     pub fn Expr_Sum_as_Expr_PolyExpression(
         self_: *const Expr_Sum,
@@ -8165,165 +7344,170 @@ unsafe extern "C" {
         self_: *mut Expr_Sum,
     ) -> crate::OcctResult<*mut Standard_Transient>;
     /// Wrap Expr_Sum in a Handle
-    pub fn Expr_Sum_to_handle(obj: *mut Expr_Sum) -> crate::OcctResult<*mut HandleExprSum>;
+    pub fn Expr_Sum_to_handle(obj: *mut Expr_Sum) -> crate::OcctResult<*mut Handle_Expr_Sum>;
     /// Destroy Handle<Expr_Sum>
-    pub fn HandleExprSum_destructor(self_: *mut HandleExprSum);
+    pub fn Handle_Expr_Sum_destructor(self_: *mut Handle_Expr_Sum);
     /// Clone Handle<Expr_Sum> (increments reference count)
-    pub fn HandleExprSum_clone(
-        self_: *const HandleExprSum,
-    ) -> crate::OcctResult<*mut HandleExprSum>;
+    pub fn Handle_Expr_Sum_clone(
+        self_: *const Handle_Expr_Sum,
+    ) -> crate::OcctResult<*mut Handle_Expr_Sum>;
     /// Check if Handle<Expr_Sum> is null
-    pub fn HandleExprSum_is_null(self_: *const HandleExprSum) -> bool;
+    pub fn Handle_Expr_Sum_is_null(self_: *const Handle_Expr_Sum) -> bool;
     /// Dereference Handle to get *const Expr_Sum
-    pub fn HandleExprSum_get(handle: *const HandleExprSum) -> crate::OcctResult<*const Expr_Sum>;
+    pub fn Handle_Expr_Sum_get(
+        handle: *const Handle_Expr_Sum,
+    ) -> crate::OcctResult<*const Expr_Sum>;
     /// Dereference Handle to get *mut Expr_Sum
-    pub fn HandleExprSum_get_mut(handle: *mut HandleExprSum) -> crate::OcctResult<*mut Expr_Sum>;
+    pub fn Handle_Expr_Sum_get_mut(
+        handle: *mut Handle_Expr_Sum,
+    ) -> crate::OcctResult<*mut Expr_Sum>;
     /// Upcast Handle<Expr_Sum> to Handle<Expr_PolyExpression>
-    pub fn HandleExprSum_to_HandleExprPolyExpression(
-        self_: *const HandleExprSum,
-    ) -> crate::OcctResult<*mut HandleExprPolyExpression>;
+    pub fn Handle_Expr_Sum_to_Handle_Expr_PolyExpression(
+        self_: *const Handle_Expr_Sum,
+    ) -> crate::OcctResult<*mut Handle_Expr_PolyExpression>;
     /// Upcast Handle<Expr_Sum> to Handle<Expr_GeneralExpression>
-    pub fn HandleExprSum_to_HandleExprGeneralExpression(
-        self_: *const HandleExprSum,
-    ) -> crate::OcctResult<*mut HandleExprGeneralExpression>;
+    pub fn Handle_Expr_Sum_to_Handle_Expr_GeneralExpression(
+        self_: *const Handle_Expr_Sum,
+    ) -> crate::OcctResult<*mut Handle_Expr_GeneralExpression>;
     /// Upcast Handle<Expr_Sum> to Handle<Standard_Transient>
-    pub fn HandleExprSum_to_HandleStandardTransient(
-        self_: *const HandleExprSum,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
-    /// Inherited: **Source:** `Expr_PolyExpression.hxx`:36 - `Expr_PolyExpression::NbOperands()`
+    pub fn Handle_Expr_Sum_to_Handle_Standard_Transient(
+        self_: *const Handle_Expr_Sum,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
+    /// Inherited: **Source:** `Expr_PolyExpression.hxx`:33 - `Expr_PolyExpression::NbOperands()`
     pub fn Expr_Sum_inherited_NbOperands(self_: *const Expr_Sum) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Expr_PolyExpression.hxx`:40 - `Expr_PolyExpression::Operand()`
+    /// Inherited: **Source:** `Expr_PolyExpression.hxx`:37 - `Expr_PolyExpression::Operand()`
     pub fn Expr_Sum_inherited_Operand(
         self_: *const Expr_Sum,
         index: i32,
-    ) -> crate::OcctResult<*const HandleExprGeneralExpression>;
-    /// Inherited: **Source:** `Expr_PolyExpression.hxx`:45 - `Expr_PolyExpression::SetOperand()`
+    ) -> crate::OcctResult<*const Handle_Expr_GeneralExpression>;
+    /// Inherited: **Source:** `Expr_PolyExpression.hxx`:42 - `Expr_PolyExpression::SetOperand()`
     pub fn Expr_Sum_inherited_SetOperand(
         self_: *mut Expr_Sum,
-        exp: *const HandleExprGeneralExpression,
+        exp: *const Handle_Expr_GeneralExpression,
         index: i32,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Expr_PolyExpression.hxx`:50 - `Expr_PolyExpression::NbSubExpressions()`
+    /// Inherited: **Source:** `Expr_PolyExpression.hxx`:46 - `Expr_PolyExpression::NbSubExpressions()`
     pub fn Expr_Sum_inherited_NbSubExpressions(self_: *const Expr_Sum) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Expr_PolyExpression.hxx`:54 - `Expr_PolyExpression::SubExpression()`
+    /// Inherited: **Source:** `Expr_PolyExpression.hxx`:50 - `Expr_PolyExpression::SubExpression()`
     pub fn Expr_Sum_inherited_SubExpression(
         self_: *const Expr_Sum,
         I: i32,
-    ) -> crate::OcctResult<*const HandleExprGeneralExpression>;
-    /// Inherited: **Source:** `Expr_PolyExpression.hxx`:58 - `Expr_PolyExpression::ContainsUnknowns()`
+    ) -> crate::OcctResult<*const Handle_Expr_GeneralExpression>;
+    /// Inherited: **Source:** `Expr_PolyExpression.hxx`:54 - `Expr_PolyExpression::ContainsUnknowns()`
     pub fn Expr_Sum_inherited_ContainsUnknowns(self_: *const Expr_Sum) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Expr_PolyExpression.hxx`:62 - `Expr_PolyExpression::Contains()`
+    /// Inherited: **Source:** `Expr_PolyExpression.hxx`:57 - `Expr_PolyExpression::Contains()`
     pub fn Expr_Sum_inherited_Contains(
         self_: *const Expr_Sum,
-        exp: *const HandleExprGeneralExpression,
+        exp: *const Handle_Expr_GeneralExpression,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Expr_PolyExpression.hxx`:66 - `Expr_PolyExpression::Replace()`
+    /// Inherited: **Source:** `Expr_PolyExpression.hxx`:61 - `Expr_PolyExpression::Replace()`
     pub fn Expr_Sum_inherited_Replace(
         self_: *mut Expr_Sum,
-        var: *const HandleExprNamedUnknown,
-        with: *const HandleExprGeneralExpression,
+        var: *const Handle_Expr_NamedUnknown,
+        with: *const Handle_Expr_GeneralExpression,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Expr_PolyExpression.hxx`:72 - `Expr_PolyExpression::Simplified()`
+    /// Inherited: **Source:** `Expr_PolyExpression.hxx`:67 - `Expr_PolyExpression::Simplified()`
     pub fn Expr_Sum_inherited_Simplified(
         self_: *const Expr_Sum,
-    ) -> crate::OcctResult<*mut HandleExprGeneralExpression>;
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:76 - `Expr_GeneralExpression::IsShareable()`
+    ) -> crate::OcctResult<*mut Handle_Expr_GeneralExpression>;
+    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:71 - `Expr_GeneralExpression::IsShareable()`
     pub fn Expr_Sum_inherited_IsShareable(self_: *const Expr_Sum) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:112 - `Expr_GeneralExpression::EvaluateNumeric()`
+    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:108 - `Expr_GeneralExpression::EvaluateNumeric()`
     pub fn Expr_Sum_inherited_EvaluateNumeric(self_: *const Expr_Sum) -> crate::OcctResult<f64>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn Expr_Sum_inherited_IsInstance(
         self_: *const Expr_Sum,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn Expr_Sum_inherited_IsKind(
         self_: *const Expr_Sum,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn Expr_Sum_inherited_This(
         self_: *const Expr_Sum,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn Expr_Sum_inherited_GetRefCount(self_: *const Expr_Sum) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn Expr_Sum_inherited_IncrementRefCounter(self_: *mut Expr_Sum) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn Expr_Sum_inherited_DecrementRefCounter(self_: *mut Expr_Sum) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn Expr_Sum_inherited_Delete(self_: *const Expr_Sum) -> *const std::ffi::c_char;
     // ======================== Expr_SystemRelation ========================
     pub fn Expr_SystemRelation_destructor(self_: *mut Expr_SystemRelation);
-    /// **Source:** `Expr_SystemRelation.hxx`:38 - `Expr_SystemRelation::Expr_SystemRelation()`
+    /// **Source:** `Expr_SystemRelation.hxx`:35 - `Expr_SystemRelation::Expr_SystemRelation()`
     pub fn Expr_SystemRelation_ctor_handleexprgeneralrelation(
-        relation: *const HandleExprGeneralRelation,
+        relation: *const Handle_Expr_GeneralRelation,
     ) -> crate::OcctResult<*mut Expr_SystemRelation>;
-    /// **Source:** `Expr_SystemRelation.hxx`:41 - `Expr_SystemRelation::Add()`
+    /// **Source:** `Expr_SystemRelation.hxx`:38 - `Expr_SystemRelation::Add()`
     pub fn Expr_SystemRelation_add(
         self_: *mut Expr_SystemRelation,
-        relation: *const HandleExprGeneralRelation,
+        relation: *const Handle_Expr_GeneralRelation,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `Expr_SystemRelation.hxx`:43 - `Expr_SystemRelation::Remove()`
+    /// **Source:** `Expr_SystemRelation.hxx`:40 - `Expr_SystemRelation::Remove()`
     pub fn Expr_SystemRelation_remove(
         self_: *mut Expr_SystemRelation,
-        relation: *const HandleExprGeneralRelation,
+        relation: *const Handle_Expr_GeneralRelation,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `Expr_SystemRelation.hxx`:46 - `Expr_SystemRelation::IsLinear()`
+    /// **Source:** `Expr_SystemRelation.hxx`:43 - `Expr_SystemRelation::IsLinear()`
     pub fn Expr_SystemRelation_is_linear(
         self_: *const Expr_SystemRelation,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `Expr_SystemRelation.hxx`:49 - `Expr_SystemRelation::NbOfSubRelations()`
+    /// **Source:** `Expr_SystemRelation.hxx`:46 - `Expr_SystemRelation::NbOfSubRelations()`
     pub fn Expr_SystemRelation_nb_of_sub_relations(
         self_: *const Expr_SystemRelation,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `Expr_SystemRelation.hxx`:53 - `Expr_SystemRelation::NbOfSingleRelations()`
+    /// **Source:** `Expr_SystemRelation.hxx`:50 - `Expr_SystemRelation::NbOfSingleRelations()`
     pub fn Expr_SystemRelation_nb_of_single_relations(
         self_: *const Expr_SystemRelation,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `Expr_SystemRelation.hxx`:57 - `Expr_SystemRelation::SubRelation()`
+    /// **Source:** `Expr_SystemRelation.hxx`:54 - `Expr_SystemRelation::SubRelation()`
     pub fn Expr_SystemRelation_sub_relation(
         self_: *const Expr_SystemRelation,
         index: i32,
-    ) -> crate::OcctResult<*mut HandleExprGeneralRelation>;
-    /// **Source:** `Expr_SystemRelation.hxx`:60 - `Expr_SystemRelation::IsSatisfied()`
+    ) -> crate::OcctResult<*mut Handle_Expr_GeneralRelation>;
+    /// **Source:** `Expr_SystemRelation.hxx`:56 - `Expr_SystemRelation::IsSatisfied()`
     pub fn Expr_SystemRelation_is_satisfied(
         self_: *const Expr_SystemRelation,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `Expr_SystemRelation.hxx`:65 - `Expr_SystemRelation::Simplified()`
+    /// **Source:** `Expr_SystemRelation.hxx`:61 - `Expr_SystemRelation::Simplified()`
     pub fn Expr_SystemRelation_simplified(
         self_: *const Expr_SystemRelation,
-    ) -> crate::OcctResult<*mut HandleExprGeneralRelation>;
-    /// **Source:** `Expr_SystemRelation.hxx`:69 - `Expr_SystemRelation::Simplify()`
+    ) -> crate::OcctResult<*mut Handle_Expr_GeneralRelation>;
+    /// **Source:** `Expr_SystemRelation.hxx`:65 - `Expr_SystemRelation::Simplify()`
     pub fn Expr_SystemRelation_simplify(self_: *mut Expr_SystemRelation)
         -> *const std::ffi::c_char;
-    /// **Source:** `Expr_SystemRelation.hxx`:72 - `Expr_SystemRelation::Copy()`
+    /// **Source:** `Expr_SystemRelation.hxx`:68 - `Expr_SystemRelation::Copy()`
     pub fn Expr_SystemRelation_copy(
         self_: *const Expr_SystemRelation,
-    ) -> crate::OcctResult<*mut HandleExprGeneralRelation>;
-    /// **Source:** `Expr_SystemRelation.hxx`:76 - `Expr_SystemRelation::Contains()`
+    ) -> crate::OcctResult<*mut Handle_Expr_GeneralRelation>;
+    /// **Source:** `Expr_SystemRelation.hxx`:71 - `Expr_SystemRelation::Contains()`
     pub fn Expr_SystemRelation_contains(
         self_: *const Expr_SystemRelation,
-        exp: *const HandleExprGeneralExpression,
+        exp: *const Handle_Expr_GeneralExpression,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `Expr_SystemRelation.hxx`:79 - `Expr_SystemRelation::Replace()`
+    /// **Source:** `Expr_SystemRelation.hxx`:74 - `Expr_SystemRelation::Replace()`
     pub fn Expr_SystemRelation_replace(
         self_: *mut Expr_SystemRelation,
-        var: *const HandleExprNamedUnknown,
-        with: *const HandleExprGeneralExpression,
+        var: *const Handle_Expr_NamedUnknown,
+        with: *const Handle_Expr_GeneralExpression,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `Expr_SystemRelation.hxx`:83 - `Expr_SystemRelation::String()`
+    /// **Source:** `Expr_SystemRelation.hxx`:78 - `Expr_SystemRelation::String()`
     pub fn Expr_SystemRelation_string(
         self_: *const Expr_SystemRelation,
     ) -> crate::OcctResult<*mut TCollection_AsciiString>;
-    /// **Source:** `Expr_SystemRelation.hxx`:85 - `Expr_SystemRelation::DynamicType()`
+    /// **Source:** `Expr_SystemRelation.hxx`:80 - `Expr_SystemRelation::DynamicType()`
     pub fn Expr_SystemRelation_dynamic_type(
         self_: *const Expr_SystemRelation,
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// **Source:** `Expr_SystemRelation.hxx`:85 - `Expr_SystemRelation::get_type_name()`
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
+    /// **Source:** `Expr_SystemRelation.hxx`:80 - `Expr_SystemRelation::get_type_name()`
     pub fn Expr_SystemRelation_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
-    /// **Source:** `Expr_SystemRelation.hxx`:85 - `Expr_SystemRelation::get_type_descriptor()`
-    pub fn Expr_SystemRelation_get_type_descriptor() -> crate::OcctResult<*const HandleStandardType>;
+    /// **Source:** `Expr_SystemRelation.hxx`:80 - `Expr_SystemRelation::get_type_descriptor()`
+    pub fn Expr_SystemRelation_get_type_descriptor(
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast Expr_SystemRelation to Expr_GeneralRelation
     pub fn Expr_SystemRelation_as_Expr_GeneralRelation(
         self_: *const Expr_SystemRelation,
@@ -8343,105 +7527,99 @@ unsafe extern "C" {
     /// Wrap Expr_SystemRelation in a Handle
     pub fn Expr_SystemRelation_to_handle(
         obj: *mut Expr_SystemRelation,
-    ) -> crate::OcctResult<*mut HandleExprSystemRelation>;
+    ) -> crate::OcctResult<*mut Handle_Expr_SystemRelation>;
     /// Destroy Handle<Expr_SystemRelation>
-    pub fn HandleExprSystemRelation_destructor(self_: *mut HandleExprSystemRelation);
+    pub fn Handle_Expr_SystemRelation_destructor(self_: *mut Handle_Expr_SystemRelation);
     /// Clone Handle<Expr_SystemRelation> (increments reference count)
-    pub fn HandleExprSystemRelation_clone(
-        self_: *const HandleExprSystemRelation,
-    ) -> crate::OcctResult<*mut HandleExprSystemRelation>;
+    pub fn Handle_Expr_SystemRelation_clone(
+        self_: *const Handle_Expr_SystemRelation,
+    ) -> crate::OcctResult<*mut Handle_Expr_SystemRelation>;
     /// Check if Handle<Expr_SystemRelation> is null
-    pub fn HandleExprSystemRelation_is_null(self_: *const HandleExprSystemRelation) -> bool;
+    pub fn Handle_Expr_SystemRelation_is_null(self_: *const Handle_Expr_SystemRelation) -> bool;
     /// Dereference Handle to get *const Expr_SystemRelation
-    pub fn HandleExprSystemRelation_get(
-        handle: *const HandleExprSystemRelation,
+    pub fn Handle_Expr_SystemRelation_get(
+        handle: *const Handle_Expr_SystemRelation,
     ) -> crate::OcctResult<*const Expr_SystemRelation>;
     /// Dereference Handle to get *mut Expr_SystemRelation
-    pub fn HandleExprSystemRelation_get_mut(
-        handle: *mut HandleExprSystemRelation,
+    pub fn Handle_Expr_SystemRelation_get_mut(
+        handle: *mut Handle_Expr_SystemRelation,
     ) -> crate::OcctResult<*mut Expr_SystemRelation>;
     /// Upcast Handle<Expr_SystemRelation> to Handle<Expr_GeneralRelation>
-    pub fn HandleExprSystemRelation_to_HandleExprGeneralRelation(
-        self_: *const HandleExprSystemRelation,
-    ) -> crate::OcctResult<*mut HandleExprGeneralRelation>;
+    pub fn Handle_Expr_SystemRelation_to_Handle_Expr_GeneralRelation(
+        self_: *const Handle_Expr_SystemRelation,
+    ) -> crate::OcctResult<*mut Handle_Expr_GeneralRelation>;
     /// Upcast Handle<Expr_SystemRelation> to Handle<Standard_Transient>
-    pub fn HandleExprSystemRelation_to_HandleStandardTransient(
-        self_: *const HandleExprSystemRelation,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn Handle_Expr_SystemRelation_to_Handle_Standard_Transient(
+        self_: *const Handle_Expr_SystemRelation,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn Expr_SystemRelation_inherited_IsInstance(
         self_: *const Expr_SystemRelation,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn Expr_SystemRelation_inherited_IsKind(
         self_: *const Expr_SystemRelation,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn Expr_SystemRelation_inherited_This(
         self_: *const Expr_SystemRelation,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn Expr_SystemRelation_inherited_GetRefCount(
         self_: *const Expr_SystemRelation,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn Expr_SystemRelation_inherited_IncrementRefCounter(
         self_: *mut Expr_SystemRelation,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn Expr_SystemRelation_inherited_DecrementRefCounter(
         self_: *mut Expr_SystemRelation,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn Expr_SystemRelation_inherited_Delete(
         self_: *const Expr_SystemRelation,
     ) -> *const std::ffi::c_char;
     // ======================== Expr_Tangent ========================
     pub fn Expr_Tangent_destructor(self_: *mut Expr_Tangent);
-    /// **Source:** `Expr_Tangent.hxx`:38 - `Expr_Tangent::Expr_Tangent()`
+    /// **Source:** `Expr_Tangent.hxx`:34 - `Expr_Tangent::Expr_Tangent()`
     pub fn Expr_Tangent_ctor_handleexprgeneralexpression(
-        exp: *const HandleExprGeneralExpression,
+        exp: *const Handle_Expr_GeneralExpression,
     ) -> crate::OcctResult<*mut Expr_Tangent>;
-    /// **Source:** `Expr_Tangent.hxx`:42 - `Expr_Tangent::ShallowSimplified()`
+    /// **Source:** `Expr_Tangent.hxx`:38 - `Expr_Tangent::ShallowSimplified()`
     pub fn Expr_Tangent_shallow_simplified(
         self_: *const Expr_Tangent,
-    ) -> crate::OcctResult<*mut HandleExprGeneralExpression>;
-    /// **Source:** `Expr_Tangent.hxx`:45 - `Expr_Tangent::Copy()`
+    ) -> crate::OcctResult<*mut Handle_Expr_GeneralExpression>;
+    /// **Source:** `Expr_Tangent.hxx`:41 - `Expr_Tangent::Copy()`
     pub fn Expr_Tangent_copy(
         self_: *const Expr_Tangent,
-    ) -> crate::OcctResult<*mut HandleExprGeneralExpression>;
-    /// **Source:** `Expr_Tangent.hxx`:51 - `Expr_Tangent::IsIdentical()`
+    ) -> crate::OcctResult<*mut Handle_Expr_GeneralExpression>;
+    /// **Source:** `Expr_Tangent.hxx`:46 - `Expr_Tangent::IsIdentical()`
     pub fn Expr_Tangent_is_identical(
         self_: *const Expr_Tangent,
-        Other: *const HandleExprGeneralExpression,
+        Other: *const Handle_Expr_GeneralExpression,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `Expr_Tangent.hxx`:53 - `Expr_Tangent::IsLinear()`
+    /// **Source:** `Expr_Tangent.hxx`:48 - `Expr_Tangent::IsLinear()`
     pub fn Expr_Tangent_is_linear(self_: *const Expr_Tangent) -> crate::OcctResult<bool>;
-    /// **Source:** `Expr_Tangent.hxx`:56 - `Expr_Tangent::Derivative()`
+    /// **Source:** `Expr_Tangent.hxx`:51 - `Expr_Tangent::Derivative()`
     pub fn Expr_Tangent_derivative(
         self_: *const Expr_Tangent,
-        X: *const HandleExprNamedUnknown,
-    ) -> crate::OcctResult<*mut HandleExprGeneralExpression>;
-    /// **Source:** `Expr_Tangent.hxx`:63 - `Expr_Tangent::Evaluate()`
-    pub fn Expr_Tangent_evaluate(
-        self_: *const Expr_Tangent,
-        vars: *const Expr_Array1OfNamedUnknown,
-        vals: *const TColStd_Array1OfReal,
-    ) -> crate::OcctResult<f64>;
-    /// **Source:** `Expr_Tangent.hxx`:67 - `Expr_Tangent::String()`
+        X: *const Handle_Expr_NamedUnknown,
+    ) -> crate::OcctResult<*mut Handle_Expr_GeneralExpression>;
+    /// **Source:** `Expr_Tangent.hxx`:62 - `Expr_Tangent::String()`
     pub fn Expr_Tangent_string(
         self_: *const Expr_Tangent,
     ) -> crate::OcctResult<*mut TCollection_AsciiString>;
-    /// **Source:** `Expr_Tangent.hxx`:69 - `Expr_Tangent::DynamicType()`
+    /// **Source:** `Expr_Tangent.hxx`:64 - `Expr_Tangent::DynamicType()`
     pub fn Expr_Tangent_dynamic_type(
         self_: *const Expr_Tangent,
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// **Source:** `Expr_Tangent.hxx`:69 - `Expr_Tangent::get_type_name()`
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
+    /// **Source:** `Expr_Tangent.hxx`:64 - `Expr_Tangent::get_type_name()`
     pub fn Expr_Tangent_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
-    /// **Source:** `Expr_Tangent.hxx`:69 - `Expr_Tangent::get_type_descriptor()`
-    pub fn Expr_Tangent_get_type_descriptor() -> crate::OcctResult<*const HandleStandardType>;
+    /// **Source:** `Expr_Tangent.hxx`:64 - `Expr_Tangent::get_type_descriptor()`
+    pub fn Expr_Tangent_get_type_descriptor() -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast Expr_Tangent to Expr_UnaryExpression
     pub fn Expr_Tangent_as_Expr_UnaryExpression(
         self_: *const Expr_Tangent,
@@ -8469,157 +7647,151 @@ unsafe extern "C" {
     /// Wrap Expr_Tangent in a Handle
     pub fn Expr_Tangent_to_handle(
         obj: *mut Expr_Tangent,
-    ) -> crate::OcctResult<*mut HandleExprTangent>;
+    ) -> crate::OcctResult<*mut Handle_Expr_Tangent>;
     /// Destroy Handle<Expr_Tangent>
-    pub fn HandleExprTangent_destructor(self_: *mut HandleExprTangent);
+    pub fn Handle_Expr_Tangent_destructor(self_: *mut Handle_Expr_Tangent);
     /// Clone Handle<Expr_Tangent> (increments reference count)
-    pub fn HandleExprTangent_clone(
-        self_: *const HandleExprTangent,
-    ) -> crate::OcctResult<*mut HandleExprTangent>;
+    pub fn Handle_Expr_Tangent_clone(
+        self_: *const Handle_Expr_Tangent,
+    ) -> crate::OcctResult<*mut Handle_Expr_Tangent>;
     /// Check if Handle<Expr_Tangent> is null
-    pub fn HandleExprTangent_is_null(self_: *const HandleExprTangent) -> bool;
+    pub fn Handle_Expr_Tangent_is_null(self_: *const Handle_Expr_Tangent) -> bool;
     /// Dereference Handle to get *const Expr_Tangent
-    pub fn HandleExprTangent_get(
-        handle: *const HandleExprTangent,
+    pub fn Handle_Expr_Tangent_get(
+        handle: *const Handle_Expr_Tangent,
     ) -> crate::OcctResult<*const Expr_Tangent>;
     /// Dereference Handle to get *mut Expr_Tangent
-    pub fn HandleExprTangent_get_mut(
-        handle: *mut HandleExprTangent,
+    pub fn Handle_Expr_Tangent_get_mut(
+        handle: *mut Handle_Expr_Tangent,
     ) -> crate::OcctResult<*mut Expr_Tangent>;
     /// Upcast Handle<Expr_Tangent> to Handle<Expr_UnaryExpression>
-    pub fn HandleExprTangent_to_HandleExprUnaryExpression(
-        self_: *const HandleExprTangent,
-    ) -> crate::OcctResult<*mut HandleExprUnaryExpression>;
+    pub fn Handle_Expr_Tangent_to_Handle_Expr_UnaryExpression(
+        self_: *const Handle_Expr_Tangent,
+    ) -> crate::OcctResult<*mut Handle_Expr_UnaryExpression>;
     /// Upcast Handle<Expr_Tangent> to Handle<Expr_GeneralExpression>
-    pub fn HandleExprTangent_to_HandleExprGeneralExpression(
-        self_: *const HandleExprTangent,
-    ) -> crate::OcctResult<*mut HandleExprGeneralExpression>;
+    pub fn Handle_Expr_Tangent_to_Handle_Expr_GeneralExpression(
+        self_: *const Handle_Expr_Tangent,
+    ) -> crate::OcctResult<*mut Handle_Expr_GeneralExpression>;
     /// Upcast Handle<Expr_Tangent> to Handle<Standard_Transient>
-    pub fn HandleExprTangent_to_HandleStandardTransient(
-        self_: *const HandleExprTangent,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
-    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:35 - `Expr_UnaryExpression::Operand()`
+    pub fn Handle_Expr_Tangent_to_Handle_Standard_Transient(
+        self_: *const Handle_Expr_Tangent,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
+    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:32 - `Expr_UnaryExpression::Operand()`
     pub fn Expr_Tangent_inherited_Operand(
         self_: *const Expr_Tangent,
-    ) -> crate::OcctResult<*const HandleExprGeneralExpression>;
-    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:39 - `Expr_UnaryExpression::SetOperand()`
+    ) -> crate::OcctResult<*const Handle_Expr_GeneralExpression>;
+    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:36 - `Expr_UnaryExpression::SetOperand()`
     pub fn Expr_Tangent_inherited_SetOperand(
         self_: *mut Expr_Tangent,
-        exp: *const HandleExprGeneralExpression,
+        exp: *const Handle_Expr_GeneralExpression,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:43 - `Expr_UnaryExpression::NbSubExpressions()`
+    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:40 - `Expr_UnaryExpression::NbSubExpressions()`
     pub fn Expr_Tangent_inherited_NbSubExpressions(
         self_: *const Expr_Tangent,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:47 - `Expr_UnaryExpression::SubExpression()`
+    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:44 - `Expr_UnaryExpression::SubExpression()`
     pub fn Expr_Tangent_inherited_SubExpression(
         self_: *const Expr_Tangent,
         I: i32,
-    ) -> crate::OcctResult<*const HandleExprGeneralExpression>;
-    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:51 - `Expr_UnaryExpression::ContainsUnknowns()`
+    ) -> crate::OcctResult<*const Handle_Expr_GeneralExpression>;
+    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:48 - `Expr_UnaryExpression::ContainsUnknowns()`
     pub fn Expr_Tangent_inherited_ContainsUnknowns(
         self_: *const Expr_Tangent,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:55 - `Expr_UnaryExpression::Contains()`
+    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:51 - `Expr_UnaryExpression::Contains()`
     pub fn Expr_Tangent_inherited_Contains(
         self_: *const Expr_Tangent,
-        exp: *const HandleExprGeneralExpression,
+        exp: *const Handle_Expr_GeneralExpression,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:59 - `Expr_UnaryExpression::Replace()`
+    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:55 - `Expr_UnaryExpression::Replace()`
     pub fn Expr_Tangent_inherited_Replace(
         self_: *mut Expr_Tangent,
-        var: *const HandleExprNamedUnknown,
-        with: *const HandleExprGeneralExpression,
+        var: *const Handle_Expr_NamedUnknown,
+        with: *const Handle_Expr_GeneralExpression,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:65 - `Expr_UnaryExpression::Simplified()`
+    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:61 - `Expr_UnaryExpression::Simplified()`
     pub fn Expr_Tangent_inherited_Simplified(
         self_: *const Expr_Tangent,
-    ) -> crate::OcctResult<*mut HandleExprGeneralExpression>;
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:76 - `Expr_GeneralExpression::IsShareable()`
+    ) -> crate::OcctResult<*mut Handle_Expr_GeneralExpression>;
+    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:71 - `Expr_GeneralExpression::IsShareable()`
     pub fn Expr_Tangent_inherited_IsShareable(
         self_: *const Expr_Tangent,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:91 - `Expr_GeneralExpression::NDerivative()`
+    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:86 - `Expr_GeneralExpression::NDerivative()`
     pub fn Expr_Tangent_inherited_NDerivative(
         self_: *const Expr_Tangent,
-        X: *const HandleExprNamedUnknown,
+        X: *const Handle_Expr_NamedUnknown,
         N: i32,
-    ) -> crate::OcctResult<*mut HandleExprGeneralExpression>;
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:112 - `Expr_GeneralExpression::EvaluateNumeric()`
+    ) -> crate::OcctResult<*mut Handle_Expr_GeneralExpression>;
+    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:108 - `Expr_GeneralExpression::EvaluateNumeric()`
     pub fn Expr_Tangent_inherited_EvaluateNumeric(
         self_: *const Expr_Tangent,
     ) -> crate::OcctResult<f64>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn Expr_Tangent_inherited_IsInstance(
         self_: *const Expr_Tangent,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn Expr_Tangent_inherited_IsKind(
         self_: *const Expr_Tangent,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn Expr_Tangent_inherited_This(
         self_: *const Expr_Tangent,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn Expr_Tangent_inherited_GetRefCount(self_: *const Expr_Tangent)
         -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn Expr_Tangent_inherited_IncrementRefCounter(
         self_: *mut Expr_Tangent,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn Expr_Tangent_inherited_DecrementRefCounter(
         self_: *mut Expr_Tangent,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn Expr_Tangent_inherited_Delete(self_: *const Expr_Tangent) -> *const std::ffi::c_char;
     // ======================== Expr_Tanh ========================
     pub fn Expr_Tanh_destructor(self_: *mut Expr_Tanh);
-    /// **Source:** `Expr_Tanh.hxx`:38 - `Expr_Tanh::Expr_Tanh()`
+    /// **Source:** `Expr_Tanh.hxx`:34 - `Expr_Tanh::Expr_Tanh()`
     pub fn Expr_Tanh_ctor_handleexprgeneralexpression(
-        exp: *const HandleExprGeneralExpression,
+        exp: *const Handle_Expr_GeneralExpression,
     ) -> crate::OcctResult<*mut Expr_Tanh>;
-    /// **Source:** `Expr_Tanh.hxx`:42 - `Expr_Tanh::ShallowSimplified()`
+    /// **Source:** `Expr_Tanh.hxx`:38 - `Expr_Tanh::ShallowSimplified()`
     pub fn Expr_Tanh_shallow_simplified(
         self_: *const Expr_Tanh,
-    ) -> crate::OcctResult<*mut HandleExprGeneralExpression>;
-    /// **Source:** `Expr_Tanh.hxx`:45 - `Expr_Tanh::Copy()`
+    ) -> crate::OcctResult<*mut Handle_Expr_GeneralExpression>;
+    /// **Source:** `Expr_Tanh.hxx`:41 - `Expr_Tanh::Copy()`
     pub fn Expr_Tanh_copy(
         self_: *const Expr_Tanh,
-    ) -> crate::OcctResult<*mut HandleExprGeneralExpression>;
-    /// **Source:** `Expr_Tanh.hxx`:51 - `Expr_Tanh::IsIdentical()`
+    ) -> crate::OcctResult<*mut Handle_Expr_GeneralExpression>;
+    /// **Source:** `Expr_Tanh.hxx`:46 - `Expr_Tanh::IsIdentical()`
     pub fn Expr_Tanh_is_identical(
         self_: *const Expr_Tanh,
-        Other: *const HandleExprGeneralExpression,
+        Other: *const Handle_Expr_GeneralExpression,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `Expr_Tanh.hxx`:53 - `Expr_Tanh::IsLinear()`
+    /// **Source:** `Expr_Tanh.hxx`:48 - `Expr_Tanh::IsLinear()`
     pub fn Expr_Tanh_is_linear(self_: *const Expr_Tanh) -> crate::OcctResult<bool>;
-    /// **Source:** `Expr_Tanh.hxx`:56 - `Expr_Tanh::Derivative()`
+    /// **Source:** `Expr_Tanh.hxx`:51 - `Expr_Tanh::Derivative()`
     pub fn Expr_Tanh_derivative(
         self_: *const Expr_Tanh,
-        X: *const HandleExprNamedUnknown,
-    ) -> crate::OcctResult<*mut HandleExprGeneralExpression>;
-    /// **Source:** `Expr_Tanh.hxx`:63 - `Expr_Tanh::Evaluate()`
-    pub fn Expr_Tanh_evaluate(
-        self_: *const Expr_Tanh,
-        vars: *const Expr_Array1OfNamedUnknown,
-        vals: *const TColStd_Array1OfReal,
-    ) -> crate::OcctResult<f64>;
-    /// **Source:** `Expr_Tanh.hxx`:67 - `Expr_Tanh::String()`
+        X: *const Handle_Expr_NamedUnknown,
+    ) -> crate::OcctResult<*mut Handle_Expr_GeneralExpression>;
+    /// **Source:** `Expr_Tanh.hxx`:62 - `Expr_Tanh::String()`
     pub fn Expr_Tanh_string(
         self_: *const Expr_Tanh,
     ) -> crate::OcctResult<*mut TCollection_AsciiString>;
-    /// **Source:** `Expr_Tanh.hxx`:69 - `Expr_Tanh::DynamicType()`
+    /// **Source:** `Expr_Tanh.hxx`:64 - `Expr_Tanh::DynamicType()`
     pub fn Expr_Tanh_dynamic_type(
         self_: *const Expr_Tanh,
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// **Source:** `Expr_Tanh.hxx`:69 - `Expr_Tanh::get_type_name()`
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
+    /// **Source:** `Expr_Tanh.hxx`:64 - `Expr_Tanh::get_type_name()`
     pub fn Expr_Tanh_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
-    /// **Source:** `Expr_Tanh.hxx`:69 - `Expr_Tanh::get_type_descriptor()`
-    pub fn Expr_Tanh_get_type_descriptor() -> crate::OcctResult<*const HandleStandardType>;
+    /// **Source:** `Expr_Tanh.hxx`:64 - `Expr_Tanh::get_type_descriptor()`
+    pub fn Expr_Tanh_get_type_descriptor() -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast Expr_Tanh to Expr_UnaryExpression
     pub fn Expr_Tanh_as_Expr_UnaryExpression(
         self_: *const Expr_Tanh,
@@ -8645,149 +7817,152 @@ unsafe extern "C" {
         self_: *mut Expr_Tanh,
     ) -> crate::OcctResult<*mut Standard_Transient>;
     /// Wrap Expr_Tanh in a Handle
-    pub fn Expr_Tanh_to_handle(obj: *mut Expr_Tanh) -> crate::OcctResult<*mut HandleExprTanh>;
+    pub fn Expr_Tanh_to_handle(obj: *mut Expr_Tanh) -> crate::OcctResult<*mut Handle_Expr_Tanh>;
     /// Destroy Handle<Expr_Tanh>
-    pub fn HandleExprTanh_destructor(self_: *mut HandleExprTanh);
+    pub fn Handle_Expr_Tanh_destructor(self_: *mut Handle_Expr_Tanh);
     /// Clone Handle<Expr_Tanh> (increments reference count)
-    pub fn HandleExprTanh_clone(
-        self_: *const HandleExprTanh,
-    ) -> crate::OcctResult<*mut HandleExprTanh>;
+    pub fn Handle_Expr_Tanh_clone(
+        self_: *const Handle_Expr_Tanh,
+    ) -> crate::OcctResult<*mut Handle_Expr_Tanh>;
     /// Check if Handle<Expr_Tanh> is null
-    pub fn HandleExprTanh_is_null(self_: *const HandleExprTanh) -> bool;
+    pub fn Handle_Expr_Tanh_is_null(self_: *const Handle_Expr_Tanh) -> bool;
     /// Dereference Handle to get *const Expr_Tanh
-    pub fn HandleExprTanh_get(handle: *const HandleExprTanh)
-        -> crate::OcctResult<*const Expr_Tanh>;
+    pub fn Handle_Expr_Tanh_get(
+        handle: *const Handle_Expr_Tanh,
+    ) -> crate::OcctResult<*const Expr_Tanh>;
     /// Dereference Handle to get *mut Expr_Tanh
-    pub fn HandleExprTanh_get_mut(handle: *mut HandleExprTanh)
-        -> crate::OcctResult<*mut Expr_Tanh>;
+    pub fn Handle_Expr_Tanh_get_mut(
+        handle: *mut Handle_Expr_Tanh,
+    ) -> crate::OcctResult<*mut Expr_Tanh>;
     /// Upcast Handle<Expr_Tanh> to Handle<Expr_UnaryExpression>
-    pub fn HandleExprTanh_to_HandleExprUnaryExpression(
-        self_: *const HandleExprTanh,
-    ) -> crate::OcctResult<*mut HandleExprUnaryExpression>;
+    pub fn Handle_Expr_Tanh_to_Handle_Expr_UnaryExpression(
+        self_: *const Handle_Expr_Tanh,
+    ) -> crate::OcctResult<*mut Handle_Expr_UnaryExpression>;
     /// Upcast Handle<Expr_Tanh> to Handle<Expr_GeneralExpression>
-    pub fn HandleExprTanh_to_HandleExprGeneralExpression(
-        self_: *const HandleExprTanh,
-    ) -> crate::OcctResult<*mut HandleExprGeneralExpression>;
+    pub fn Handle_Expr_Tanh_to_Handle_Expr_GeneralExpression(
+        self_: *const Handle_Expr_Tanh,
+    ) -> crate::OcctResult<*mut Handle_Expr_GeneralExpression>;
     /// Upcast Handle<Expr_Tanh> to Handle<Standard_Transient>
-    pub fn HandleExprTanh_to_HandleStandardTransient(
-        self_: *const HandleExprTanh,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
-    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:35 - `Expr_UnaryExpression::Operand()`
+    pub fn Handle_Expr_Tanh_to_Handle_Standard_Transient(
+        self_: *const Handle_Expr_Tanh,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
+    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:32 - `Expr_UnaryExpression::Operand()`
     pub fn Expr_Tanh_inherited_Operand(
         self_: *const Expr_Tanh,
-    ) -> crate::OcctResult<*const HandleExprGeneralExpression>;
-    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:39 - `Expr_UnaryExpression::SetOperand()`
+    ) -> crate::OcctResult<*const Handle_Expr_GeneralExpression>;
+    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:36 - `Expr_UnaryExpression::SetOperand()`
     pub fn Expr_Tanh_inherited_SetOperand(
         self_: *mut Expr_Tanh,
-        exp: *const HandleExprGeneralExpression,
+        exp: *const Handle_Expr_GeneralExpression,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:43 - `Expr_UnaryExpression::NbSubExpressions()`
+    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:40 - `Expr_UnaryExpression::NbSubExpressions()`
     pub fn Expr_Tanh_inherited_NbSubExpressions(self_: *const Expr_Tanh) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:47 - `Expr_UnaryExpression::SubExpression()`
+    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:44 - `Expr_UnaryExpression::SubExpression()`
     pub fn Expr_Tanh_inherited_SubExpression(
         self_: *const Expr_Tanh,
         I: i32,
-    ) -> crate::OcctResult<*const HandleExprGeneralExpression>;
-    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:51 - `Expr_UnaryExpression::ContainsUnknowns()`
+    ) -> crate::OcctResult<*const Handle_Expr_GeneralExpression>;
+    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:48 - `Expr_UnaryExpression::ContainsUnknowns()`
     pub fn Expr_Tanh_inherited_ContainsUnknowns(self_: *const Expr_Tanh)
         -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:55 - `Expr_UnaryExpression::Contains()`
+    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:51 - `Expr_UnaryExpression::Contains()`
     pub fn Expr_Tanh_inherited_Contains(
         self_: *const Expr_Tanh,
-        exp: *const HandleExprGeneralExpression,
+        exp: *const Handle_Expr_GeneralExpression,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:59 - `Expr_UnaryExpression::Replace()`
+    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:55 - `Expr_UnaryExpression::Replace()`
     pub fn Expr_Tanh_inherited_Replace(
         self_: *mut Expr_Tanh,
-        var: *const HandleExprNamedUnknown,
-        with: *const HandleExprGeneralExpression,
+        var: *const Handle_Expr_NamedUnknown,
+        with: *const Handle_Expr_GeneralExpression,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:65 - `Expr_UnaryExpression::Simplified()`
+    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:61 - `Expr_UnaryExpression::Simplified()`
     pub fn Expr_Tanh_inherited_Simplified(
         self_: *const Expr_Tanh,
-    ) -> crate::OcctResult<*mut HandleExprGeneralExpression>;
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:76 - `Expr_GeneralExpression::IsShareable()`
+    ) -> crate::OcctResult<*mut Handle_Expr_GeneralExpression>;
+    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:71 - `Expr_GeneralExpression::IsShareable()`
     pub fn Expr_Tanh_inherited_IsShareable(self_: *const Expr_Tanh) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:91 - `Expr_GeneralExpression::NDerivative()`
+    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:86 - `Expr_GeneralExpression::NDerivative()`
     pub fn Expr_Tanh_inherited_NDerivative(
         self_: *const Expr_Tanh,
-        X: *const HandleExprNamedUnknown,
+        X: *const Handle_Expr_NamedUnknown,
         N: i32,
-    ) -> crate::OcctResult<*mut HandleExprGeneralExpression>;
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:112 - `Expr_GeneralExpression::EvaluateNumeric()`
+    ) -> crate::OcctResult<*mut Handle_Expr_GeneralExpression>;
+    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:108 - `Expr_GeneralExpression::EvaluateNumeric()`
     pub fn Expr_Tanh_inherited_EvaluateNumeric(self_: *const Expr_Tanh) -> crate::OcctResult<f64>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn Expr_Tanh_inherited_IsInstance(
         self_: *const Expr_Tanh,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn Expr_Tanh_inherited_IsKind(
         self_: *const Expr_Tanh,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn Expr_Tanh_inherited_This(
         self_: *const Expr_Tanh,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn Expr_Tanh_inherited_GetRefCount(self_: *const Expr_Tanh) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn Expr_Tanh_inherited_IncrementRefCounter(
         self_: *mut Expr_Tanh,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn Expr_Tanh_inherited_DecrementRefCounter(self_: *mut Expr_Tanh)
         -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn Expr_Tanh_inherited_Delete(self_: *const Expr_Tanh) -> *const std::ffi::c_char;
     // ======================== Expr_UnaryExpression ========================
     pub fn Expr_UnaryExpression_destructor(self_: *mut Expr_UnaryExpression);
-    /// **Source:** `Expr_UnaryExpression.hxx`:35 - `Expr_UnaryExpression::Operand()`
+    /// **Source:** `Expr_UnaryExpression.hxx`:32 - `Expr_UnaryExpression::Operand()`
     pub fn Expr_UnaryExpression_operand(
         self_: *const Expr_UnaryExpression,
-    ) -> crate::OcctResult<*const HandleExprGeneralExpression>;
-    /// **Source:** `Expr_UnaryExpression.hxx`:39 - `Expr_UnaryExpression::SetOperand()`
+    ) -> crate::OcctResult<*const Handle_Expr_GeneralExpression>;
+    /// **Source:** `Expr_UnaryExpression.hxx`:36 - `Expr_UnaryExpression::SetOperand()`
     pub fn Expr_UnaryExpression_set_operand(
         self_: *mut Expr_UnaryExpression,
-        exp: *const HandleExprGeneralExpression,
+        exp: *const Handle_Expr_GeneralExpression,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `Expr_UnaryExpression.hxx`:43 - `Expr_UnaryExpression::NbSubExpressions()`
+    /// **Source:** `Expr_UnaryExpression.hxx`:40 - `Expr_UnaryExpression::NbSubExpressions()`
     pub fn Expr_UnaryExpression_nb_sub_expressions(
         self_: *const Expr_UnaryExpression,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `Expr_UnaryExpression.hxx`:47 - `Expr_UnaryExpression::SubExpression()`
+    /// **Source:** `Expr_UnaryExpression.hxx`:44 - `Expr_UnaryExpression::SubExpression()`
     pub fn Expr_UnaryExpression_sub_expression(
         self_: *const Expr_UnaryExpression,
         I: i32,
-    ) -> crate::OcctResult<*const HandleExprGeneralExpression>;
-    /// **Source:** `Expr_UnaryExpression.hxx`:51 - `Expr_UnaryExpression::ContainsUnknowns()`
+    ) -> crate::OcctResult<*const Handle_Expr_GeneralExpression>;
+    /// **Source:** `Expr_UnaryExpression.hxx`:48 - `Expr_UnaryExpression::ContainsUnknowns()`
     pub fn Expr_UnaryExpression_contains_unknowns(
         self_: *const Expr_UnaryExpression,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `Expr_UnaryExpression.hxx`:55 - `Expr_UnaryExpression::Contains()`
+    /// **Source:** `Expr_UnaryExpression.hxx`:51 - `Expr_UnaryExpression::Contains()`
     pub fn Expr_UnaryExpression_contains(
         self_: *const Expr_UnaryExpression,
-        exp: *const HandleExprGeneralExpression,
+        exp: *const Handle_Expr_GeneralExpression,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `Expr_UnaryExpression.hxx`:59 - `Expr_UnaryExpression::Replace()`
+    /// **Source:** `Expr_UnaryExpression.hxx`:55 - `Expr_UnaryExpression::Replace()`
     pub fn Expr_UnaryExpression_replace(
         self_: *mut Expr_UnaryExpression,
-        var: *const HandleExprNamedUnknown,
-        with: *const HandleExprGeneralExpression,
+        var: *const Handle_Expr_NamedUnknown,
+        with: *const Handle_Expr_GeneralExpression,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `Expr_UnaryExpression.hxx`:65 - `Expr_UnaryExpression::Simplified()`
+    /// **Source:** `Expr_UnaryExpression.hxx`:61 - `Expr_UnaryExpression::Simplified()`
     pub fn Expr_UnaryExpression_simplified(
         self_: *const Expr_UnaryExpression,
-    ) -> crate::OcctResult<*mut HandleExprGeneralExpression>;
-    /// **Source:** `Expr_UnaryExpression.hxx`:67 - `Expr_UnaryExpression::DynamicType()`
+    ) -> crate::OcctResult<*mut Handle_Expr_GeneralExpression>;
+    /// **Source:** `Expr_UnaryExpression.hxx`:63 - `Expr_UnaryExpression::DynamicType()`
     pub fn Expr_UnaryExpression_dynamic_type(
         self_: *const Expr_UnaryExpression,
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// **Source:** `Expr_UnaryExpression.hxx`:67 - `Expr_UnaryExpression::get_type_name()`
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
+    /// **Source:** `Expr_UnaryExpression.hxx`:63 - `Expr_UnaryExpression::get_type_name()`
     pub fn Expr_UnaryExpression_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
-    /// **Source:** `Expr_UnaryExpression.hxx`:67 - `Expr_UnaryExpression::get_type_descriptor()`
-    pub fn Expr_UnaryExpression_get_type_descriptor() -> crate::OcctResult<*const HandleStandardType>;
+    /// **Source:** `Expr_UnaryExpression.hxx`:63 - `Expr_UnaryExpression::get_type_descriptor()`
+    pub fn Expr_UnaryExpression_get_type_descriptor(
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast Expr_UnaryExpression to Expr_GeneralExpression
     pub fn Expr_UnaryExpression_as_Expr_GeneralExpression(
         self_: *const Expr_UnaryExpression,
@@ -8805,240 +7980,228 @@ unsafe extern "C" {
         self_: *mut Expr_UnaryExpression,
     ) -> crate::OcctResult<*mut Standard_Transient>;
     /// Destroy Handle<Expr_UnaryExpression>
-    pub fn HandleExprUnaryExpression_destructor(self_: *mut HandleExprUnaryExpression);
+    pub fn Handle_Expr_UnaryExpression_destructor(self_: *mut Handle_Expr_UnaryExpression);
     /// Clone Handle<Expr_UnaryExpression> (increments reference count)
-    pub fn HandleExprUnaryExpression_clone(
-        self_: *const HandleExprUnaryExpression,
-    ) -> crate::OcctResult<*mut HandleExprUnaryExpression>;
+    pub fn Handle_Expr_UnaryExpression_clone(
+        self_: *const Handle_Expr_UnaryExpression,
+    ) -> crate::OcctResult<*mut Handle_Expr_UnaryExpression>;
     /// Check if Handle<Expr_UnaryExpression> is null
-    pub fn HandleExprUnaryExpression_is_null(self_: *const HandleExprUnaryExpression) -> bool;
+    pub fn Handle_Expr_UnaryExpression_is_null(self_: *const Handle_Expr_UnaryExpression) -> bool;
     /// Dereference Handle to get *const Expr_UnaryExpression
-    pub fn HandleExprUnaryExpression_get(
-        handle: *const HandleExprUnaryExpression,
+    pub fn Handle_Expr_UnaryExpression_get(
+        handle: *const Handle_Expr_UnaryExpression,
     ) -> crate::OcctResult<*const Expr_UnaryExpression>;
     /// Dereference Handle to get *mut Expr_UnaryExpression
-    pub fn HandleExprUnaryExpression_get_mut(
-        handle: *mut HandleExprUnaryExpression,
+    pub fn Handle_Expr_UnaryExpression_get_mut(
+        handle: *mut Handle_Expr_UnaryExpression,
     ) -> crate::OcctResult<*mut Expr_UnaryExpression>;
     /// Upcast Handle<Expr_UnaryExpression> to Handle<Expr_GeneralExpression>
-    pub fn HandleExprUnaryExpression_to_HandleExprGeneralExpression(
-        self_: *const HandleExprUnaryExpression,
-    ) -> crate::OcctResult<*mut HandleExprGeneralExpression>;
+    pub fn Handle_Expr_UnaryExpression_to_Handle_Expr_GeneralExpression(
+        self_: *const Handle_Expr_UnaryExpression,
+    ) -> crate::OcctResult<*mut Handle_Expr_GeneralExpression>;
     /// Upcast Handle<Expr_UnaryExpression> to Handle<Standard_Transient>
-    pub fn HandleExprUnaryExpression_to_HandleStandardTransient(
-        self_: *const HandleExprUnaryExpression,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
+    pub fn Handle_Expr_UnaryExpression_to_Handle_Standard_Transient(
+        self_: *const Handle_Expr_UnaryExpression,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
     /// Downcast Handle<Expr_UnaryExpression> to Handle<Expr_Absolute> (returns null on failure)
-    pub fn HandleExprUnaryExpression_downcast_to_HandleExprAbsolute(
-        self_: *const HandleExprUnaryExpression,
-    ) -> crate::OcctResult<*mut HandleExprAbsolute>;
+    pub fn Handle_Expr_UnaryExpression_downcast_to_Handle_Expr_Absolute(
+        self_: *const Handle_Expr_UnaryExpression,
+    ) -> crate::OcctResult<*mut Handle_Expr_Absolute>;
     /// Downcast Handle<Expr_UnaryExpression> to Handle<Expr_ArcCosine> (returns null on failure)
-    pub fn HandleExprUnaryExpression_downcast_to_HandleExprArcCosine(
-        self_: *const HandleExprUnaryExpression,
-    ) -> crate::OcctResult<*mut HandleExprArcCosine>;
+    pub fn Handle_Expr_UnaryExpression_downcast_to_Handle_Expr_ArcCosine(
+        self_: *const Handle_Expr_UnaryExpression,
+    ) -> crate::OcctResult<*mut Handle_Expr_ArcCosine>;
     /// Downcast Handle<Expr_UnaryExpression> to Handle<Expr_ArcSine> (returns null on failure)
-    pub fn HandleExprUnaryExpression_downcast_to_HandleExprArcSine(
-        self_: *const HandleExprUnaryExpression,
-    ) -> crate::OcctResult<*mut HandleExprArcSine>;
+    pub fn Handle_Expr_UnaryExpression_downcast_to_Handle_Expr_ArcSine(
+        self_: *const Handle_Expr_UnaryExpression,
+    ) -> crate::OcctResult<*mut Handle_Expr_ArcSine>;
     /// Downcast Handle<Expr_UnaryExpression> to Handle<Expr_ArcTangent> (returns null on failure)
-    pub fn HandleExprUnaryExpression_downcast_to_HandleExprArcTangent(
-        self_: *const HandleExprUnaryExpression,
-    ) -> crate::OcctResult<*mut HandleExprArcTangent>;
+    pub fn Handle_Expr_UnaryExpression_downcast_to_Handle_Expr_ArcTangent(
+        self_: *const Handle_Expr_UnaryExpression,
+    ) -> crate::OcctResult<*mut Handle_Expr_ArcTangent>;
     /// Downcast Handle<Expr_UnaryExpression> to Handle<Expr_ArgCosh> (returns null on failure)
-    pub fn HandleExprUnaryExpression_downcast_to_HandleExprArgCosh(
-        self_: *const HandleExprUnaryExpression,
-    ) -> crate::OcctResult<*mut HandleExprArgCosh>;
+    pub fn Handle_Expr_UnaryExpression_downcast_to_Handle_Expr_ArgCosh(
+        self_: *const Handle_Expr_UnaryExpression,
+    ) -> crate::OcctResult<*mut Handle_Expr_ArgCosh>;
     /// Downcast Handle<Expr_UnaryExpression> to Handle<Expr_ArgSinh> (returns null on failure)
-    pub fn HandleExprUnaryExpression_downcast_to_HandleExprArgSinh(
-        self_: *const HandleExprUnaryExpression,
-    ) -> crate::OcctResult<*mut HandleExprArgSinh>;
+    pub fn Handle_Expr_UnaryExpression_downcast_to_Handle_Expr_ArgSinh(
+        self_: *const Handle_Expr_UnaryExpression,
+    ) -> crate::OcctResult<*mut Handle_Expr_ArgSinh>;
     /// Downcast Handle<Expr_UnaryExpression> to Handle<Expr_ArgTanh> (returns null on failure)
-    pub fn HandleExprUnaryExpression_downcast_to_HandleExprArgTanh(
-        self_: *const HandleExprUnaryExpression,
-    ) -> crate::OcctResult<*mut HandleExprArgTanh>;
+    pub fn Handle_Expr_UnaryExpression_downcast_to_Handle_Expr_ArgTanh(
+        self_: *const Handle_Expr_UnaryExpression,
+    ) -> crate::OcctResult<*mut Handle_Expr_ArgTanh>;
     /// Downcast Handle<Expr_UnaryExpression> to Handle<Expr_Cosh> (returns null on failure)
-    pub fn HandleExprUnaryExpression_downcast_to_HandleExprCosh(
-        self_: *const HandleExprUnaryExpression,
-    ) -> crate::OcctResult<*mut HandleExprCosh>;
+    pub fn Handle_Expr_UnaryExpression_downcast_to_Handle_Expr_Cosh(
+        self_: *const Handle_Expr_UnaryExpression,
+    ) -> crate::OcctResult<*mut Handle_Expr_Cosh>;
     /// Downcast Handle<Expr_UnaryExpression> to Handle<Expr_Cosine> (returns null on failure)
-    pub fn HandleExprUnaryExpression_downcast_to_HandleExprCosine(
-        self_: *const HandleExprUnaryExpression,
-    ) -> crate::OcctResult<*mut HandleExprCosine>;
+    pub fn Handle_Expr_UnaryExpression_downcast_to_Handle_Expr_Cosine(
+        self_: *const Handle_Expr_UnaryExpression,
+    ) -> crate::OcctResult<*mut Handle_Expr_Cosine>;
     /// Downcast Handle<Expr_UnaryExpression> to Handle<Expr_Exponential> (returns null on failure)
-    pub fn HandleExprUnaryExpression_downcast_to_HandleExprExponential(
-        self_: *const HandleExprUnaryExpression,
-    ) -> crate::OcctResult<*mut HandleExprExponential>;
+    pub fn Handle_Expr_UnaryExpression_downcast_to_Handle_Expr_Exponential(
+        self_: *const Handle_Expr_UnaryExpression,
+    ) -> crate::OcctResult<*mut Handle_Expr_Exponential>;
     /// Downcast Handle<Expr_UnaryExpression> to Handle<Expr_LogOf10> (returns null on failure)
-    pub fn HandleExprUnaryExpression_downcast_to_HandleExprLogOf10(
-        self_: *const HandleExprUnaryExpression,
-    ) -> crate::OcctResult<*mut HandleExprLogOf10>;
+    pub fn Handle_Expr_UnaryExpression_downcast_to_Handle_Expr_LogOf10(
+        self_: *const Handle_Expr_UnaryExpression,
+    ) -> crate::OcctResult<*mut Handle_Expr_LogOf10>;
     /// Downcast Handle<Expr_UnaryExpression> to Handle<Expr_LogOfe> (returns null on failure)
-    pub fn HandleExprUnaryExpression_downcast_to_HandleExprLogOfe(
-        self_: *const HandleExprUnaryExpression,
-    ) -> crate::OcctResult<*mut HandleExprLogOfe>;
+    pub fn Handle_Expr_UnaryExpression_downcast_to_Handle_Expr_LogOfe(
+        self_: *const Handle_Expr_UnaryExpression,
+    ) -> crate::OcctResult<*mut Handle_Expr_LogOfe>;
     /// Downcast Handle<Expr_UnaryExpression> to Handle<Expr_Sign> (returns null on failure)
-    pub fn HandleExprUnaryExpression_downcast_to_HandleExprSign(
-        self_: *const HandleExprUnaryExpression,
-    ) -> crate::OcctResult<*mut HandleExprSign>;
+    pub fn Handle_Expr_UnaryExpression_downcast_to_Handle_Expr_Sign(
+        self_: *const Handle_Expr_UnaryExpression,
+    ) -> crate::OcctResult<*mut Handle_Expr_Sign>;
     /// Downcast Handle<Expr_UnaryExpression> to Handle<Expr_Sine> (returns null on failure)
-    pub fn HandleExprUnaryExpression_downcast_to_HandleExprSine(
-        self_: *const HandleExprUnaryExpression,
-    ) -> crate::OcctResult<*mut HandleExprSine>;
+    pub fn Handle_Expr_UnaryExpression_downcast_to_Handle_Expr_Sine(
+        self_: *const Handle_Expr_UnaryExpression,
+    ) -> crate::OcctResult<*mut Handle_Expr_Sine>;
     /// Downcast Handle<Expr_UnaryExpression> to Handle<Expr_Sinh> (returns null on failure)
-    pub fn HandleExprUnaryExpression_downcast_to_HandleExprSinh(
-        self_: *const HandleExprUnaryExpression,
-    ) -> crate::OcctResult<*mut HandleExprSinh>;
+    pub fn Handle_Expr_UnaryExpression_downcast_to_Handle_Expr_Sinh(
+        self_: *const Handle_Expr_UnaryExpression,
+    ) -> crate::OcctResult<*mut Handle_Expr_Sinh>;
     /// Downcast Handle<Expr_UnaryExpression> to Handle<Expr_Square> (returns null on failure)
-    pub fn HandleExprUnaryExpression_downcast_to_HandleExprSquare(
-        self_: *const HandleExprUnaryExpression,
-    ) -> crate::OcctResult<*mut HandleExprSquare>;
+    pub fn Handle_Expr_UnaryExpression_downcast_to_Handle_Expr_Square(
+        self_: *const Handle_Expr_UnaryExpression,
+    ) -> crate::OcctResult<*mut Handle_Expr_Square>;
     /// Downcast Handle<Expr_UnaryExpression> to Handle<Expr_SquareRoot> (returns null on failure)
-    pub fn HandleExprUnaryExpression_downcast_to_HandleExprSquareRoot(
-        self_: *const HandleExprUnaryExpression,
-    ) -> crate::OcctResult<*mut HandleExprSquareRoot>;
+    pub fn Handle_Expr_UnaryExpression_downcast_to_Handle_Expr_SquareRoot(
+        self_: *const Handle_Expr_UnaryExpression,
+    ) -> crate::OcctResult<*mut Handle_Expr_SquareRoot>;
     /// Downcast Handle<Expr_UnaryExpression> to Handle<Expr_Tangent> (returns null on failure)
-    pub fn HandleExprUnaryExpression_downcast_to_HandleExprTangent(
-        self_: *const HandleExprUnaryExpression,
-    ) -> crate::OcctResult<*mut HandleExprTangent>;
+    pub fn Handle_Expr_UnaryExpression_downcast_to_Handle_Expr_Tangent(
+        self_: *const Handle_Expr_UnaryExpression,
+    ) -> crate::OcctResult<*mut Handle_Expr_Tangent>;
     /// Downcast Handle<Expr_UnaryExpression> to Handle<Expr_Tanh> (returns null on failure)
-    pub fn HandleExprUnaryExpression_downcast_to_HandleExprTanh(
-        self_: *const HandleExprUnaryExpression,
-    ) -> crate::OcctResult<*mut HandleExprTanh>;
+    pub fn Handle_Expr_UnaryExpression_downcast_to_Handle_Expr_Tanh(
+        self_: *const Handle_Expr_UnaryExpression,
+    ) -> crate::OcctResult<*mut Handle_Expr_Tanh>;
     /// Downcast Handle<Expr_UnaryExpression> to Handle<Expr_UnaryFunction> (returns null on failure)
-    pub fn HandleExprUnaryExpression_downcast_to_HandleExprUnaryFunction(
-        self_: *const HandleExprUnaryExpression,
-    ) -> crate::OcctResult<*mut HandleExprUnaryFunction>;
+    pub fn Handle_Expr_UnaryExpression_downcast_to_Handle_Expr_UnaryFunction(
+        self_: *const Handle_Expr_UnaryExpression,
+    ) -> crate::OcctResult<*mut Handle_Expr_UnaryFunction>;
     /// Downcast Handle<Expr_UnaryExpression> to Handle<Expr_UnaryMinus> (returns null on failure)
-    pub fn HandleExprUnaryExpression_downcast_to_HandleExprUnaryMinus(
-        self_: *const HandleExprUnaryExpression,
-    ) -> crate::OcctResult<*mut HandleExprUnaryMinus>;
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:55 - `Expr_GeneralExpression::ShallowSimplified()`
+    pub fn Handle_Expr_UnaryExpression_downcast_to_Handle_Expr_UnaryMinus(
+        self_: *const Handle_Expr_UnaryExpression,
+    ) -> crate::OcctResult<*mut Handle_Expr_UnaryMinus>;
+    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:51 - `Expr_GeneralExpression::ShallowSimplified()`
     pub fn Expr_UnaryExpression_inherited_ShallowSimplified(
         self_: *const Expr_UnaryExpression,
-    ) -> crate::OcctResult<*mut HandleExprGeneralExpression>;
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:59 - `Expr_GeneralExpression::Copy()`
+    ) -> crate::OcctResult<*mut Handle_Expr_GeneralExpression>;
+    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:55 - `Expr_GeneralExpression::Copy()`
     pub fn Expr_UnaryExpression_inherited_Copy(
         self_: *const Expr_UnaryExpression,
-    ) -> crate::OcctResult<*mut HandleExprGeneralExpression>;
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:70 - `Expr_GeneralExpression::IsLinear()`
+    ) -> crate::OcctResult<*mut Handle_Expr_GeneralExpression>;
+    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:65 - `Expr_GeneralExpression::IsLinear()`
     pub fn Expr_UnaryExpression_inherited_IsLinear(
         self_: *const Expr_UnaryExpression,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:76 - `Expr_GeneralExpression::IsShareable()`
+    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:71 - `Expr_GeneralExpression::IsShareable()`
     pub fn Expr_UnaryExpression_inherited_IsShareable(
         self_: *const Expr_UnaryExpression,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:82 - `Expr_GeneralExpression::IsIdentical()`
+    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:77 - `Expr_GeneralExpression::IsIdentical()`
     pub fn Expr_UnaryExpression_inherited_IsIdentical(
         self_: *const Expr_UnaryExpression,
-        Other: *const HandleExprGeneralExpression,
+        Other: *const Handle_Expr_GeneralExpression,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:86 - `Expr_GeneralExpression::Derivative()`
+    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:81 - `Expr_GeneralExpression::Derivative()`
     pub fn Expr_UnaryExpression_inherited_Derivative(
         self_: *const Expr_UnaryExpression,
-        X: *const HandleExprNamedUnknown,
-    ) -> crate::OcctResult<*mut HandleExprGeneralExpression>;
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:91 - `Expr_GeneralExpression::NDerivative()`
+        X: *const Handle_Expr_NamedUnknown,
+    ) -> crate::OcctResult<*mut Handle_Expr_GeneralExpression>;
+    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:86 - `Expr_GeneralExpression::NDerivative()`
     pub fn Expr_UnaryExpression_inherited_NDerivative(
         self_: *const Expr_UnaryExpression,
-        X: *const HandleExprNamedUnknown,
+        X: *const Handle_Expr_NamedUnknown,
         N: i32,
-    ) -> crate::OcctResult<*mut HandleExprGeneralExpression>;
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:105 - `Expr_GeneralExpression::Evaluate()`
-    pub fn Expr_UnaryExpression_inherited_Evaluate(
-        self_: *const Expr_UnaryExpression,
-        vars: *const Expr_Array1OfNamedUnknown,
-        vals: *const TColStd_Array1OfReal,
-    ) -> crate::OcctResult<f64>;
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:112 - `Expr_GeneralExpression::EvaluateNumeric()`
+    ) -> crate::OcctResult<*mut Handle_Expr_GeneralExpression>;
+    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:108 - `Expr_GeneralExpression::EvaluateNumeric()`
     pub fn Expr_UnaryExpression_inherited_EvaluateNumeric(
         self_: *const Expr_UnaryExpression,
     ) -> crate::OcctResult<f64>;
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:115 - `Expr_GeneralExpression::String()`
+    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:111 - `Expr_GeneralExpression::String()`
     pub fn Expr_UnaryExpression_inherited_String(
         self_: *const Expr_UnaryExpression,
     ) -> crate::OcctResult<*mut TCollection_AsciiString>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn Expr_UnaryExpression_inherited_IsInstance(
         self_: *const Expr_UnaryExpression,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn Expr_UnaryExpression_inherited_IsKind(
         self_: *const Expr_UnaryExpression,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn Expr_UnaryExpression_inherited_This(
         self_: *const Expr_UnaryExpression,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn Expr_UnaryExpression_inherited_GetRefCount(
         self_: *const Expr_UnaryExpression,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn Expr_UnaryExpression_inherited_IncrementRefCounter(
         self_: *mut Expr_UnaryExpression,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn Expr_UnaryExpression_inherited_DecrementRefCounter(
         self_: *mut Expr_UnaryExpression,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn Expr_UnaryExpression_inherited_Delete(
         self_: *const Expr_UnaryExpression,
     ) -> *const std::ffi::c_char;
     // ======================== Expr_UnaryFunction ========================
     pub fn Expr_UnaryFunction_destructor(self_: *mut Expr_UnaryFunction);
-    /// **Source:** `Expr_UnaryFunction.hxx`:42 - `Expr_UnaryFunction::Expr_UnaryFunction()`
+    /// **Source:** `Expr_UnaryFunction.hxx`:38 - `Expr_UnaryFunction::Expr_UnaryFunction()`
     pub fn Expr_UnaryFunction_ctor_handleexprgeneralfunction_handleexprgeneralexpression(
-        func: *const HandleExprGeneralFunction,
-        exp: *const HandleExprGeneralExpression,
+        func: *const Handle_Expr_GeneralFunction,
+        exp: *const Handle_Expr_GeneralExpression,
     ) -> crate::OcctResult<*mut Expr_UnaryFunction>;
-    /// **Source:** `Expr_UnaryFunction.hxx`:46 - `Expr_UnaryFunction::Function()`
+    /// **Source:** `Expr_UnaryFunction.hxx`:42 - `Expr_UnaryFunction::Function()`
     pub fn Expr_UnaryFunction_function(
         self_: *const Expr_UnaryFunction,
-    ) -> crate::OcctResult<*mut HandleExprGeneralFunction>;
-    /// **Source:** `Expr_UnaryFunction.hxx`:50 - `Expr_UnaryFunction::ShallowSimplified()`
+    ) -> crate::OcctResult<*mut Handle_Expr_GeneralFunction>;
+    /// **Source:** `Expr_UnaryFunction.hxx`:46 - `Expr_UnaryFunction::ShallowSimplified()`
     pub fn Expr_UnaryFunction_shallow_simplified(
         self_: *const Expr_UnaryFunction,
-    ) -> crate::OcctResult<*mut HandleExprGeneralExpression>;
-    /// **Source:** `Expr_UnaryFunction.hxx`:53 - `Expr_UnaryFunction::Copy()`
+    ) -> crate::OcctResult<*mut Handle_Expr_GeneralExpression>;
+    /// **Source:** `Expr_UnaryFunction.hxx`:49 - `Expr_UnaryFunction::Copy()`
     pub fn Expr_UnaryFunction_copy(
         self_: *const Expr_UnaryFunction,
-    ) -> crate::OcctResult<*mut HandleExprGeneralExpression>;
-    /// **Source:** `Expr_UnaryFunction.hxx`:59 - `Expr_UnaryFunction::IsIdentical()`
+    ) -> crate::OcctResult<*mut Handle_Expr_GeneralExpression>;
+    /// **Source:** `Expr_UnaryFunction.hxx`:54 - `Expr_UnaryFunction::IsIdentical()`
     pub fn Expr_UnaryFunction_is_identical(
         self_: *const Expr_UnaryFunction,
-        Other: *const HandleExprGeneralExpression,
+        Other: *const Handle_Expr_GeneralExpression,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `Expr_UnaryFunction.hxx`:61 - `Expr_UnaryFunction::IsLinear()`
+    /// **Source:** `Expr_UnaryFunction.hxx`:56 - `Expr_UnaryFunction::IsLinear()`
     pub fn Expr_UnaryFunction_is_linear(
         self_: *const Expr_UnaryFunction,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `Expr_UnaryFunction.hxx`:64 - `Expr_UnaryFunction::Derivative()`
+    /// **Source:** `Expr_UnaryFunction.hxx`:59 - `Expr_UnaryFunction::Derivative()`
     pub fn Expr_UnaryFunction_derivative(
         self_: *const Expr_UnaryFunction,
-        X: *const HandleExprNamedUnknown,
-    ) -> crate::OcctResult<*mut HandleExprGeneralExpression>;
-    /// **Source:** `Expr_UnaryFunction.hxx`:71 - `Expr_UnaryFunction::Evaluate()`
-    pub fn Expr_UnaryFunction_evaluate(
-        self_: *const Expr_UnaryFunction,
-        vars: *const Expr_Array1OfNamedUnknown,
-        vals: *const TColStd_Array1OfReal,
-    ) -> crate::OcctResult<f64>;
-    /// **Source:** `Expr_UnaryFunction.hxx`:75 - `Expr_UnaryFunction::String()`
+        X: *const Handle_Expr_NamedUnknown,
+    ) -> crate::OcctResult<*mut Handle_Expr_GeneralExpression>;
+    /// **Source:** `Expr_UnaryFunction.hxx`:70 - `Expr_UnaryFunction::String()`
     pub fn Expr_UnaryFunction_string(
         self_: *const Expr_UnaryFunction,
     ) -> crate::OcctResult<*mut TCollection_AsciiString>;
-    /// **Source:** `Expr_UnaryFunction.hxx`:77 - `Expr_UnaryFunction::DynamicType()`
+    /// **Source:** `Expr_UnaryFunction.hxx`:72 - `Expr_UnaryFunction::DynamicType()`
     pub fn Expr_UnaryFunction_dynamic_type(
         self_: *const Expr_UnaryFunction,
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// **Source:** `Expr_UnaryFunction.hxx`:77 - `Expr_UnaryFunction::get_type_name()`
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
+    /// **Source:** `Expr_UnaryFunction.hxx`:72 - `Expr_UnaryFunction::get_type_name()`
     pub fn Expr_UnaryFunction_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
-    /// **Source:** `Expr_UnaryFunction.hxx`:77 - `Expr_UnaryFunction::get_type_descriptor()`
-    pub fn Expr_UnaryFunction_get_type_descriptor() -> crate::OcctResult<*const HandleStandardType>;
+    /// **Source:** `Expr_UnaryFunction.hxx`:72 - `Expr_UnaryFunction::get_type_descriptor()`
+    pub fn Expr_UnaryFunction_get_type_descriptor() -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast Expr_UnaryFunction to Expr_UnaryExpression
     pub fn Expr_UnaryFunction_as_Expr_UnaryExpression(
         self_: *const Expr_UnaryFunction,
@@ -9066,166 +8229,160 @@ unsafe extern "C" {
     /// Wrap Expr_UnaryFunction in a Handle
     pub fn Expr_UnaryFunction_to_handle(
         obj: *mut Expr_UnaryFunction,
-    ) -> crate::OcctResult<*mut HandleExprUnaryFunction>;
+    ) -> crate::OcctResult<*mut Handle_Expr_UnaryFunction>;
     /// Destroy Handle<Expr_UnaryFunction>
-    pub fn HandleExprUnaryFunction_destructor(self_: *mut HandleExprUnaryFunction);
+    pub fn Handle_Expr_UnaryFunction_destructor(self_: *mut Handle_Expr_UnaryFunction);
     /// Clone Handle<Expr_UnaryFunction> (increments reference count)
-    pub fn HandleExprUnaryFunction_clone(
-        self_: *const HandleExprUnaryFunction,
-    ) -> crate::OcctResult<*mut HandleExprUnaryFunction>;
+    pub fn Handle_Expr_UnaryFunction_clone(
+        self_: *const Handle_Expr_UnaryFunction,
+    ) -> crate::OcctResult<*mut Handle_Expr_UnaryFunction>;
     /// Check if Handle<Expr_UnaryFunction> is null
-    pub fn HandleExprUnaryFunction_is_null(self_: *const HandleExprUnaryFunction) -> bool;
+    pub fn Handle_Expr_UnaryFunction_is_null(self_: *const Handle_Expr_UnaryFunction) -> bool;
     /// Dereference Handle to get *const Expr_UnaryFunction
-    pub fn HandleExprUnaryFunction_get(
-        handle: *const HandleExprUnaryFunction,
+    pub fn Handle_Expr_UnaryFunction_get(
+        handle: *const Handle_Expr_UnaryFunction,
     ) -> crate::OcctResult<*const Expr_UnaryFunction>;
     /// Dereference Handle to get *mut Expr_UnaryFunction
-    pub fn HandleExprUnaryFunction_get_mut(
-        handle: *mut HandleExprUnaryFunction,
+    pub fn Handle_Expr_UnaryFunction_get_mut(
+        handle: *mut Handle_Expr_UnaryFunction,
     ) -> crate::OcctResult<*mut Expr_UnaryFunction>;
     /// Upcast Handle<Expr_UnaryFunction> to Handle<Expr_UnaryExpression>
-    pub fn HandleExprUnaryFunction_to_HandleExprUnaryExpression(
-        self_: *const HandleExprUnaryFunction,
-    ) -> crate::OcctResult<*mut HandleExprUnaryExpression>;
+    pub fn Handle_Expr_UnaryFunction_to_Handle_Expr_UnaryExpression(
+        self_: *const Handle_Expr_UnaryFunction,
+    ) -> crate::OcctResult<*mut Handle_Expr_UnaryExpression>;
     /// Upcast Handle<Expr_UnaryFunction> to Handle<Expr_GeneralExpression>
-    pub fn HandleExprUnaryFunction_to_HandleExprGeneralExpression(
-        self_: *const HandleExprUnaryFunction,
-    ) -> crate::OcctResult<*mut HandleExprGeneralExpression>;
+    pub fn Handle_Expr_UnaryFunction_to_Handle_Expr_GeneralExpression(
+        self_: *const Handle_Expr_UnaryFunction,
+    ) -> crate::OcctResult<*mut Handle_Expr_GeneralExpression>;
     /// Upcast Handle<Expr_UnaryFunction> to Handle<Standard_Transient>
-    pub fn HandleExprUnaryFunction_to_HandleStandardTransient(
-        self_: *const HandleExprUnaryFunction,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
-    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:35 - `Expr_UnaryExpression::Operand()`
+    pub fn Handle_Expr_UnaryFunction_to_Handle_Standard_Transient(
+        self_: *const Handle_Expr_UnaryFunction,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
+    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:32 - `Expr_UnaryExpression::Operand()`
     pub fn Expr_UnaryFunction_inherited_Operand(
         self_: *const Expr_UnaryFunction,
-    ) -> crate::OcctResult<*const HandleExprGeneralExpression>;
-    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:39 - `Expr_UnaryExpression::SetOperand()`
+    ) -> crate::OcctResult<*const Handle_Expr_GeneralExpression>;
+    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:36 - `Expr_UnaryExpression::SetOperand()`
     pub fn Expr_UnaryFunction_inherited_SetOperand(
         self_: *mut Expr_UnaryFunction,
-        exp: *const HandleExprGeneralExpression,
+        exp: *const Handle_Expr_GeneralExpression,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:43 - `Expr_UnaryExpression::NbSubExpressions()`
+    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:40 - `Expr_UnaryExpression::NbSubExpressions()`
     pub fn Expr_UnaryFunction_inherited_NbSubExpressions(
         self_: *const Expr_UnaryFunction,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:47 - `Expr_UnaryExpression::SubExpression()`
+    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:44 - `Expr_UnaryExpression::SubExpression()`
     pub fn Expr_UnaryFunction_inherited_SubExpression(
         self_: *const Expr_UnaryFunction,
         I: i32,
-    ) -> crate::OcctResult<*const HandleExprGeneralExpression>;
-    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:51 - `Expr_UnaryExpression::ContainsUnknowns()`
+    ) -> crate::OcctResult<*const Handle_Expr_GeneralExpression>;
+    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:48 - `Expr_UnaryExpression::ContainsUnknowns()`
     pub fn Expr_UnaryFunction_inherited_ContainsUnknowns(
         self_: *const Expr_UnaryFunction,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:55 - `Expr_UnaryExpression::Contains()`
+    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:51 - `Expr_UnaryExpression::Contains()`
     pub fn Expr_UnaryFunction_inherited_Contains(
         self_: *const Expr_UnaryFunction,
-        exp: *const HandleExprGeneralExpression,
+        exp: *const Handle_Expr_GeneralExpression,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:59 - `Expr_UnaryExpression::Replace()`
+    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:55 - `Expr_UnaryExpression::Replace()`
     pub fn Expr_UnaryFunction_inherited_Replace(
         self_: *mut Expr_UnaryFunction,
-        var: *const HandleExprNamedUnknown,
-        with: *const HandleExprGeneralExpression,
+        var: *const Handle_Expr_NamedUnknown,
+        with: *const Handle_Expr_GeneralExpression,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:65 - `Expr_UnaryExpression::Simplified()`
+    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:61 - `Expr_UnaryExpression::Simplified()`
     pub fn Expr_UnaryFunction_inherited_Simplified(
         self_: *const Expr_UnaryFunction,
-    ) -> crate::OcctResult<*mut HandleExprGeneralExpression>;
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:76 - `Expr_GeneralExpression::IsShareable()`
+    ) -> crate::OcctResult<*mut Handle_Expr_GeneralExpression>;
+    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:71 - `Expr_GeneralExpression::IsShareable()`
     pub fn Expr_UnaryFunction_inherited_IsShareable(
         self_: *const Expr_UnaryFunction,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:91 - `Expr_GeneralExpression::NDerivative()`
+    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:86 - `Expr_GeneralExpression::NDerivative()`
     pub fn Expr_UnaryFunction_inherited_NDerivative(
         self_: *const Expr_UnaryFunction,
-        X: *const HandleExprNamedUnknown,
+        X: *const Handle_Expr_NamedUnknown,
         N: i32,
-    ) -> crate::OcctResult<*mut HandleExprGeneralExpression>;
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:112 - `Expr_GeneralExpression::EvaluateNumeric()`
+    ) -> crate::OcctResult<*mut Handle_Expr_GeneralExpression>;
+    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:108 - `Expr_GeneralExpression::EvaluateNumeric()`
     pub fn Expr_UnaryFunction_inherited_EvaluateNumeric(
         self_: *const Expr_UnaryFunction,
     ) -> crate::OcctResult<f64>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn Expr_UnaryFunction_inherited_IsInstance(
         self_: *const Expr_UnaryFunction,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn Expr_UnaryFunction_inherited_IsKind(
         self_: *const Expr_UnaryFunction,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn Expr_UnaryFunction_inherited_This(
         self_: *const Expr_UnaryFunction,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn Expr_UnaryFunction_inherited_GetRefCount(
         self_: *const Expr_UnaryFunction,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn Expr_UnaryFunction_inherited_IncrementRefCounter(
         self_: *mut Expr_UnaryFunction,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn Expr_UnaryFunction_inherited_DecrementRefCounter(
         self_: *mut Expr_UnaryFunction,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn Expr_UnaryFunction_inherited_Delete(
         self_: *const Expr_UnaryFunction,
     ) -> *const std::ffi::c_char;
     // ======================== Expr_UnaryMinus ========================
     pub fn Expr_UnaryMinus_destructor(self_: *mut Expr_UnaryMinus);
-    /// **Source:** `Expr_UnaryMinus.hxx`:39 - `Expr_UnaryMinus::Expr_UnaryMinus()`
+    /// **Source:** `Expr_UnaryMinus.hxx`:35 - `Expr_UnaryMinus::Expr_UnaryMinus()`
     pub fn Expr_UnaryMinus_ctor_handleexprgeneralexpression(
-        exp: *const HandleExprGeneralExpression,
+        exp: *const Handle_Expr_GeneralExpression,
     ) -> crate::OcctResult<*mut Expr_UnaryMinus>;
-    /// **Source:** `Expr_UnaryMinus.hxx`:43 - `Expr_UnaryMinus::ShallowSimplified()`
+    /// **Source:** `Expr_UnaryMinus.hxx`:39 - `Expr_UnaryMinus::ShallowSimplified()`
     pub fn Expr_UnaryMinus_shallow_simplified(
         self_: *const Expr_UnaryMinus,
-    ) -> crate::OcctResult<*mut HandleExprGeneralExpression>;
-    /// **Source:** `Expr_UnaryMinus.hxx`:46 - `Expr_UnaryMinus::Copy()`
+    ) -> crate::OcctResult<*mut Handle_Expr_GeneralExpression>;
+    /// **Source:** `Expr_UnaryMinus.hxx`:42 - `Expr_UnaryMinus::Copy()`
     pub fn Expr_UnaryMinus_copy(
         self_: *const Expr_UnaryMinus,
-    ) -> crate::OcctResult<*mut HandleExprGeneralExpression>;
-    /// **Source:** `Expr_UnaryMinus.hxx`:52 - `Expr_UnaryMinus::IsIdentical()`
+    ) -> crate::OcctResult<*mut Handle_Expr_GeneralExpression>;
+    /// **Source:** `Expr_UnaryMinus.hxx`:47 - `Expr_UnaryMinus::IsIdentical()`
     pub fn Expr_UnaryMinus_is_identical(
         self_: *const Expr_UnaryMinus,
-        Other: *const HandleExprGeneralExpression,
+        Other: *const Handle_Expr_GeneralExpression,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `Expr_UnaryMinus.hxx`:54 - `Expr_UnaryMinus::IsLinear()`
+    /// **Source:** `Expr_UnaryMinus.hxx`:49 - `Expr_UnaryMinus::IsLinear()`
     pub fn Expr_UnaryMinus_is_linear(self_: *const Expr_UnaryMinus) -> crate::OcctResult<bool>;
-    /// **Source:** `Expr_UnaryMinus.hxx`:57 - `Expr_UnaryMinus::Derivative()`
+    /// **Source:** `Expr_UnaryMinus.hxx`:52 - `Expr_UnaryMinus::Derivative()`
     pub fn Expr_UnaryMinus_derivative(
         self_: *const Expr_UnaryMinus,
-        X: *const HandleExprNamedUnknown,
-    ) -> crate::OcctResult<*mut HandleExprGeneralExpression>;
-    /// **Source:** `Expr_UnaryMinus.hxx`:62 - `Expr_UnaryMinus::NDerivative()`
+        X: *const Handle_Expr_NamedUnknown,
+    ) -> crate::OcctResult<*mut Handle_Expr_GeneralExpression>;
+    /// **Source:** `Expr_UnaryMinus.hxx`:57 - `Expr_UnaryMinus::NDerivative()`
     pub fn Expr_UnaryMinus_n_derivative(
         self_: *const Expr_UnaryMinus,
-        X: *const HandleExprNamedUnknown,
+        X: *const Handle_Expr_NamedUnknown,
         N: i32,
-    ) -> crate::OcctResult<*mut HandleExprGeneralExpression>;
-    /// **Source:** `Expr_UnaryMinus.hxx`:70 - `Expr_UnaryMinus::Evaluate()`
-    pub fn Expr_UnaryMinus_evaluate(
-        self_: *const Expr_UnaryMinus,
-        vars: *const Expr_Array1OfNamedUnknown,
-        vals: *const TColStd_Array1OfReal,
-    ) -> crate::OcctResult<f64>;
-    /// **Source:** `Expr_UnaryMinus.hxx`:74 - `Expr_UnaryMinus::String()`
+    ) -> crate::OcctResult<*mut Handle_Expr_GeneralExpression>;
+    /// **Source:** `Expr_UnaryMinus.hxx`:69 - `Expr_UnaryMinus::String()`
     pub fn Expr_UnaryMinus_string(
         self_: *const Expr_UnaryMinus,
     ) -> crate::OcctResult<*mut TCollection_AsciiString>;
-    /// **Source:** `Expr_UnaryMinus.hxx`:76 - `Expr_UnaryMinus::DynamicType()`
+    /// **Source:** `Expr_UnaryMinus.hxx`:71 - `Expr_UnaryMinus::DynamicType()`
     pub fn Expr_UnaryMinus_dynamic_type(
         self_: *const Expr_UnaryMinus,
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// **Source:** `Expr_UnaryMinus.hxx`:76 - `Expr_UnaryMinus::get_type_name()`
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
+    /// **Source:** `Expr_UnaryMinus.hxx`:71 - `Expr_UnaryMinus::get_type_name()`
     pub fn Expr_UnaryMinus_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
-    /// **Source:** `Expr_UnaryMinus.hxx`:76 - `Expr_UnaryMinus::get_type_descriptor()`
-    pub fn Expr_UnaryMinus_get_type_descriptor() -> crate::OcctResult<*const HandleStandardType>;
+    /// **Source:** `Expr_UnaryMinus.hxx`:71 - `Expr_UnaryMinus::get_type_descriptor()`
+    pub fn Expr_UnaryMinus_get_type_descriptor() -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast Expr_UnaryMinus to Expr_UnaryExpression
     pub fn Expr_UnaryMinus_as_Expr_UnaryExpression(
         self_: *const Expr_UnaryMinus,
@@ -9253,230 +8410,230 @@ unsafe extern "C" {
     /// Wrap Expr_UnaryMinus in a Handle
     pub fn Expr_UnaryMinus_to_handle(
         obj: *mut Expr_UnaryMinus,
-    ) -> crate::OcctResult<*mut HandleExprUnaryMinus>;
+    ) -> crate::OcctResult<*mut Handle_Expr_UnaryMinus>;
     /// Destroy Handle<Expr_UnaryMinus>
-    pub fn HandleExprUnaryMinus_destructor(self_: *mut HandleExprUnaryMinus);
+    pub fn Handle_Expr_UnaryMinus_destructor(self_: *mut Handle_Expr_UnaryMinus);
     /// Clone Handle<Expr_UnaryMinus> (increments reference count)
-    pub fn HandleExprUnaryMinus_clone(
-        self_: *const HandleExprUnaryMinus,
-    ) -> crate::OcctResult<*mut HandleExprUnaryMinus>;
+    pub fn Handle_Expr_UnaryMinus_clone(
+        self_: *const Handle_Expr_UnaryMinus,
+    ) -> crate::OcctResult<*mut Handle_Expr_UnaryMinus>;
     /// Check if Handle<Expr_UnaryMinus> is null
-    pub fn HandleExprUnaryMinus_is_null(self_: *const HandleExprUnaryMinus) -> bool;
+    pub fn Handle_Expr_UnaryMinus_is_null(self_: *const Handle_Expr_UnaryMinus) -> bool;
     /// Dereference Handle to get *const Expr_UnaryMinus
-    pub fn HandleExprUnaryMinus_get(
-        handle: *const HandleExprUnaryMinus,
+    pub fn Handle_Expr_UnaryMinus_get(
+        handle: *const Handle_Expr_UnaryMinus,
     ) -> crate::OcctResult<*const Expr_UnaryMinus>;
     /// Dereference Handle to get *mut Expr_UnaryMinus
-    pub fn HandleExprUnaryMinus_get_mut(
-        handle: *mut HandleExprUnaryMinus,
+    pub fn Handle_Expr_UnaryMinus_get_mut(
+        handle: *mut Handle_Expr_UnaryMinus,
     ) -> crate::OcctResult<*mut Expr_UnaryMinus>;
     /// Upcast Handle<Expr_UnaryMinus> to Handle<Expr_UnaryExpression>
-    pub fn HandleExprUnaryMinus_to_HandleExprUnaryExpression(
-        self_: *const HandleExprUnaryMinus,
-    ) -> crate::OcctResult<*mut HandleExprUnaryExpression>;
+    pub fn Handle_Expr_UnaryMinus_to_Handle_Expr_UnaryExpression(
+        self_: *const Handle_Expr_UnaryMinus,
+    ) -> crate::OcctResult<*mut Handle_Expr_UnaryExpression>;
     /// Upcast Handle<Expr_UnaryMinus> to Handle<Expr_GeneralExpression>
-    pub fn HandleExprUnaryMinus_to_HandleExprGeneralExpression(
-        self_: *const HandleExprUnaryMinus,
-    ) -> crate::OcctResult<*mut HandleExprGeneralExpression>;
+    pub fn Handle_Expr_UnaryMinus_to_Handle_Expr_GeneralExpression(
+        self_: *const Handle_Expr_UnaryMinus,
+    ) -> crate::OcctResult<*mut Handle_Expr_GeneralExpression>;
     /// Upcast Handle<Expr_UnaryMinus> to Handle<Standard_Transient>
-    pub fn HandleExprUnaryMinus_to_HandleStandardTransient(
-        self_: *const HandleExprUnaryMinus,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
-    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:35 - `Expr_UnaryExpression::Operand()`
+    pub fn Handle_Expr_UnaryMinus_to_Handle_Standard_Transient(
+        self_: *const Handle_Expr_UnaryMinus,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
+    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:32 - `Expr_UnaryExpression::Operand()`
     pub fn Expr_UnaryMinus_inherited_Operand(
         self_: *const Expr_UnaryMinus,
-    ) -> crate::OcctResult<*const HandleExprGeneralExpression>;
-    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:39 - `Expr_UnaryExpression::SetOperand()`
+    ) -> crate::OcctResult<*const Handle_Expr_GeneralExpression>;
+    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:36 - `Expr_UnaryExpression::SetOperand()`
     pub fn Expr_UnaryMinus_inherited_SetOperand(
         self_: *mut Expr_UnaryMinus,
-        exp: *const HandleExprGeneralExpression,
+        exp: *const Handle_Expr_GeneralExpression,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:43 - `Expr_UnaryExpression::NbSubExpressions()`
+    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:40 - `Expr_UnaryExpression::NbSubExpressions()`
     pub fn Expr_UnaryMinus_inherited_NbSubExpressions(
         self_: *const Expr_UnaryMinus,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:47 - `Expr_UnaryExpression::SubExpression()`
+    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:44 - `Expr_UnaryExpression::SubExpression()`
     pub fn Expr_UnaryMinus_inherited_SubExpression(
         self_: *const Expr_UnaryMinus,
         I: i32,
-    ) -> crate::OcctResult<*const HandleExprGeneralExpression>;
-    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:51 - `Expr_UnaryExpression::ContainsUnknowns()`
+    ) -> crate::OcctResult<*const Handle_Expr_GeneralExpression>;
+    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:48 - `Expr_UnaryExpression::ContainsUnknowns()`
     pub fn Expr_UnaryMinus_inherited_ContainsUnknowns(
         self_: *const Expr_UnaryMinus,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:55 - `Expr_UnaryExpression::Contains()`
+    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:51 - `Expr_UnaryExpression::Contains()`
     pub fn Expr_UnaryMinus_inherited_Contains(
         self_: *const Expr_UnaryMinus,
-        exp: *const HandleExprGeneralExpression,
+        exp: *const Handle_Expr_GeneralExpression,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:59 - `Expr_UnaryExpression::Replace()`
+    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:55 - `Expr_UnaryExpression::Replace()`
     pub fn Expr_UnaryMinus_inherited_Replace(
         self_: *mut Expr_UnaryMinus,
-        var: *const HandleExprNamedUnknown,
-        with: *const HandleExprGeneralExpression,
+        var: *const Handle_Expr_NamedUnknown,
+        with: *const Handle_Expr_GeneralExpression,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:65 - `Expr_UnaryExpression::Simplified()`
+    /// Inherited: **Source:** `Expr_UnaryExpression.hxx`:61 - `Expr_UnaryExpression::Simplified()`
     pub fn Expr_UnaryMinus_inherited_Simplified(
         self_: *const Expr_UnaryMinus,
-    ) -> crate::OcctResult<*mut HandleExprGeneralExpression>;
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:76 - `Expr_GeneralExpression::IsShareable()`
+    ) -> crate::OcctResult<*mut Handle_Expr_GeneralExpression>;
+    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:71 - `Expr_GeneralExpression::IsShareable()`
     pub fn Expr_UnaryMinus_inherited_IsShareable(
         self_: *const Expr_UnaryMinus,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:112 - `Expr_GeneralExpression::EvaluateNumeric()`
+    /// Inherited: **Source:** `Expr_GeneralExpression.hxx`:108 - `Expr_GeneralExpression::EvaluateNumeric()`
     pub fn Expr_UnaryMinus_inherited_EvaluateNumeric(
         self_: *const Expr_UnaryMinus,
     ) -> crate::OcctResult<f64>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn Expr_UnaryMinus_inherited_IsInstance(
         self_: *const Expr_UnaryMinus,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn Expr_UnaryMinus_inherited_IsKind(
         self_: *const Expr_UnaryMinus,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn Expr_UnaryMinus_inherited_This(
         self_: *const Expr_UnaryMinus,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn Expr_UnaryMinus_inherited_GetRefCount(
         self_: *const Expr_UnaryMinus,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn Expr_UnaryMinus_inherited_IncrementRefCounter(
         self_: *mut Expr_UnaryMinus,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn Expr_UnaryMinus_inherited_DecrementRefCounter(
         self_: *mut Expr_UnaryMinus,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn Expr_UnaryMinus_inherited_Delete(
         self_: *const Expr_UnaryMinus,
     ) -> *const std::ffi::c_char;
     // ======================== Expr_UnknownIterator ========================
     pub fn Expr_UnknownIterator_destructor(self_: *mut Expr_UnknownIterator);
-    /// **Source:** `Expr_UnknownIterator.hxx`:36 - `Expr_UnknownIterator::Expr_UnknownIterator()`
+    /// **Source:** `Expr_UnknownIterator.hxx`:37 - `Expr_UnknownIterator::Expr_UnknownIterator()`
     pub fn Expr_UnknownIterator_ctor_handleexprgeneralexpression(
-        exp: *const HandleExprGeneralExpression,
+        exp: *const Handle_Expr_GeneralExpression,
     ) -> crate::OcctResult<*mut Expr_UnknownIterator>;
-    /// **Source:** `Expr_UnknownIterator.hxx`:38 - `Expr_UnknownIterator::More()`
+    /// **Source:** `Expr_UnknownIterator.hxx`:39 - `Expr_UnknownIterator::More()`
     pub fn Expr_UnknownIterator_more(self_: *const Expr_UnknownIterator)
         -> crate::OcctResult<bool>;
-    /// **Source:** `Expr_UnknownIterator.hxx`:40 - `Expr_UnknownIterator::Next()`
+    /// **Source:** `Expr_UnknownIterator.hxx`:41 - `Expr_UnknownIterator::Next()`
     pub fn Expr_UnknownIterator_next(self_: *mut Expr_UnknownIterator) -> *const std::ffi::c_char;
-    /// **Source:** `Expr_UnknownIterator.hxx`:42 - `Expr_UnknownIterator::Value()`
+    /// **Source:** `Expr_UnknownIterator.hxx`:43 - `Expr_UnknownIterator::Value()`
     pub fn Expr_UnknownIterator_value(
         self_: *const Expr_UnknownIterator,
-    ) -> crate::OcctResult<*mut HandleExprNamedUnknown>;
+    ) -> crate::OcctResult<*mut Handle_Expr_NamedUnknown>;
     // ======================== ExprIntrp_Analysis ========================
     pub fn ExprIntrp_Analysis_destructor(self_: *mut ExprIntrp_Analysis);
-    /// **Source:** `ExprIntrp_Analysis.hxx`:45 - `ExprIntrp_Analysis::ExprIntrp_Analysis()`
+    /// **Source:** `ExprIntrp_Analysis.hxx`:46 - `ExprIntrp_Analysis::ExprIntrp_Analysis()`
     pub fn ExprIntrp_Analysis_ctor() -> crate::OcctResult<*mut ExprIntrp_Analysis>;
-    /// **Source:** `ExprIntrp_Analysis.hxx`:47 - `ExprIntrp_Analysis::SetMaster()`
+    /// **Source:** `ExprIntrp_Analysis.hxx`:48 - `ExprIntrp_Analysis::SetMaster()`
     pub fn ExprIntrp_Analysis_set_master(
         self_: *mut ExprIntrp_Analysis,
-        agen: *const HandleExprIntrpGenerator,
+        agen: *const Handle_ExprIntrp_Generator,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `ExprIntrp_Analysis.hxx`:49 - `ExprIntrp_Analysis::Push()`
+    /// **Source:** `ExprIntrp_Analysis.hxx`:50 - `ExprIntrp_Analysis::Push()`
     pub fn ExprIntrp_Analysis_push(
         self_: *mut ExprIntrp_Analysis,
-        exp: *const HandleExprGeneralExpression,
+        exp: *const Handle_Expr_GeneralExpression,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `ExprIntrp_Analysis.hxx`:51 - `ExprIntrp_Analysis::PushRelation()`
+    /// **Source:** `ExprIntrp_Analysis.hxx`:52 - `ExprIntrp_Analysis::PushRelation()`
     pub fn ExprIntrp_Analysis_push_relation(
         self_: *mut ExprIntrp_Analysis,
-        rel: *const HandleExprGeneralRelation,
+        rel: *const Handle_Expr_GeneralRelation,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `ExprIntrp_Analysis.hxx`:53 - `ExprIntrp_Analysis::PushName()`
+    /// **Source:** `ExprIntrp_Analysis.hxx`:54 - `ExprIntrp_Analysis::PushName()`
     pub fn ExprIntrp_Analysis_push_name(
         self_: *mut ExprIntrp_Analysis,
         name: *const TCollection_AsciiString,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `ExprIntrp_Analysis.hxx`:55 - `ExprIntrp_Analysis::PushValue()`
+    /// **Source:** `ExprIntrp_Analysis.hxx`:56 - `ExprIntrp_Analysis::PushValue()`
     pub fn ExprIntrp_Analysis_push_value(
         self_: *mut ExprIntrp_Analysis,
         degree: i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `ExprIntrp_Analysis.hxx`:57 - `ExprIntrp_Analysis::PushFunction()`
+    /// **Source:** `ExprIntrp_Analysis.hxx`:58 - `ExprIntrp_Analysis::PushFunction()`
     pub fn ExprIntrp_Analysis_push_function(
         self_: *mut ExprIntrp_Analysis,
-        func: *const HandleExprGeneralFunction,
+        func: *const Handle_Expr_GeneralFunction,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `ExprIntrp_Analysis.hxx`:59 - `ExprIntrp_Analysis::Pop()`
+    /// **Source:** `ExprIntrp_Analysis.hxx`:60 - `ExprIntrp_Analysis::Pop()`
     pub fn ExprIntrp_Analysis_pop(
         self_: *mut ExprIntrp_Analysis,
-    ) -> crate::OcctResult<*mut HandleExprGeneralExpression>;
-    /// **Source:** `ExprIntrp_Analysis.hxx`:61 - `ExprIntrp_Analysis::PopRelation()`
+    ) -> crate::OcctResult<*mut Handle_Expr_GeneralExpression>;
+    /// **Source:** `ExprIntrp_Analysis.hxx`:62 - `ExprIntrp_Analysis::PopRelation()`
     pub fn ExprIntrp_Analysis_pop_relation(
         self_: *mut ExprIntrp_Analysis,
-    ) -> crate::OcctResult<*mut HandleExprGeneralRelation>;
-    /// **Source:** `ExprIntrp_Analysis.hxx`:63 - `ExprIntrp_Analysis::PopName()`
+    ) -> crate::OcctResult<*mut Handle_Expr_GeneralRelation>;
+    /// **Source:** `ExprIntrp_Analysis.hxx`:64 - `ExprIntrp_Analysis::PopName()`
     pub fn ExprIntrp_Analysis_pop_name(
         self_: *mut ExprIntrp_Analysis,
     ) -> crate::OcctResult<*mut TCollection_AsciiString>;
-    /// **Source:** `ExprIntrp_Analysis.hxx`:65 - `ExprIntrp_Analysis::PopValue()`
+    /// **Source:** `ExprIntrp_Analysis.hxx`:66 - `ExprIntrp_Analysis::PopValue()`
     pub fn ExprIntrp_Analysis_pop_value(self_: *mut ExprIntrp_Analysis) -> crate::OcctResult<i32>;
-    /// **Source:** `ExprIntrp_Analysis.hxx`:67 - `ExprIntrp_Analysis::PopFunction()`
+    /// **Source:** `ExprIntrp_Analysis.hxx`:68 - `ExprIntrp_Analysis::PopFunction()`
     pub fn ExprIntrp_Analysis_pop_function(
         self_: *mut ExprIntrp_Analysis,
-    ) -> crate::OcctResult<*mut HandleExprGeneralFunction>;
-    /// **Source:** `ExprIntrp_Analysis.hxx`:69 - `ExprIntrp_Analysis::IsExpStackEmpty()`
+    ) -> crate::OcctResult<*mut Handle_Expr_GeneralFunction>;
+    /// **Source:** `ExprIntrp_Analysis.hxx`:70 - `ExprIntrp_Analysis::IsExpStackEmpty()`
     pub fn ExprIntrp_Analysis_is_exp_stack_empty(
         self_: *const ExprIntrp_Analysis,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `ExprIntrp_Analysis.hxx`:71 - `ExprIntrp_Analysis::IsRelStackEmpty()`
+    /// **Source:** `ExprIntrp_Analysis.hxx`:72 - `ExprIntrp_Analysis::IsRelStackEmpty()`
     pub fn ExprIntrp_Analysis_is_rel_stack_empty(
         self_: *const ExprIntrp_Analysis,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `ExprIntrp_Analysis.hxx`:73 - `ExprIntrp_Analysis::ResetAll()`
+    /// **Source:** `ExprIntrp_Analysis.hxx`:74 - `ExprIntrp_Analysis::ResetAll()`
     pub fn ExprIntrp_Analysis_reset_all(self_: *mut ExprIntrp_Analysis) -> *const std::ffi::c_char;
-    /// **Source:** `ExprIntrp_Analysis.hxx`:75 - `ExprIntrp_Analysis::Use()`
+    /// **Source:** `ExprIntrp_Analysis.hxx`:76 - `ExprIntrp_Analysis::Use()`
     pub fn ExprIntrp_Analysis_use_handleexprnamedfunction(
         self_: *mut ExprIntrp_Analysis,
-        func: *const HandleExprNamedFunction,
+        func: *const Handle_Expr_NamedFunction,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `ExprIntrp_Analysis.hxx`:77 - `ExprIntrp_Analysis::Use()`
+    /// **Source:** `ExprIntrp_Analysis.hxx`:78 - `ExprIntrp_Analysis::Use()`
     pub fn ExprIntrp_Analysis_use_handleexprnamedexpression(
         self_: *mut ExprIntrp_Analysis,
-        named: *const HandleExprNamedExpression,
+        named: *const Handle_Expr_NamedExpression,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `ExprIntrp_Analysis.hxx`:79 - `ExprIntrp_Analysis::GetNamed()`
+    /// **Source:** `ExprIntrp_Analysis.hxx`:80 - `ExprIntrp_Analysis::GetNamed()`
     pub fn ExprIntrp_Analysis_get_named(
         self_: *mut ExprIntrp_Analysis,
         name: *const TCollection_AsciiString,
-    ) -> crate::OcctResult<*mut HandleExprNamedExpression>;
-    /// **Source:** `ExprIntrp_Analysis.hxx`:81 - `ExprIntrp_Analysis::GetFunction()`
+    ) -> crate::OcctResult<*mut Handle_Expr_NamedExpression>;
+    /// **Source:** `ExprIntrp_Analysis.hxx`:82 - `ExprIntrp_Analysis::GetFunction()`
     pub fn ExprIntrp_Analysis_get_function(
         self_: *mut ExprIntrp_Analysis,
         name: *const TCollection_AsciiString,
-    ) -> crate::OcctResult<*mut HandleExprNamedFunction>;
+    ) -> crate::OcctResult<*mut Handle_Expr_NamedFunction>;
     // ======================== ExprIntrp_GenExp ========================
     pub fn ExprIntrp_GenExp_destructor(self_: *mut ExprIntrp_GenExp);
-    /// **Source:** `ExprIntrp_GenExp.hxx`:41 - `ExprIntrp_GenExp::Process()`
+    /// **Source:** `ExprIntrp_GenExp.hxx`:38 - `ExprIntrp_GenExp::Process()`
     pub fn ExprIntrp_GenExp_process(
         self_: *mut ExprIntrp_GenExp,
         str: *const TCollection_AsciiString,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `ExprIntrp_GenExp.hxx`:45 - `ExprIntrp_GenExp::IsDone()`
+    /// **Source:** `ExprIntrp_GenExp.hxx`:42 - `ExprIntrp_GenExp::IsDone()`
     pub fn ExprIntrp_GenExp_is_done(self_: *const ExprIntrp_GenExp) -> crate::OcctResult<bool>;
-    /// **Source:** `ExprIntrp_GenExp.hxx`:49 - `ExprIntrp_GenExp::Expression()`
+    /// **Source:** `ExprIntrp_GenExp.hxx`:46 - `ExprIntrp_GenExp::Expression()`
     pub fn ExprIntrp_GenExp_expression(
         self_: *const ExprIntrp_GenExp,
-    ) -> crate::OcctResult<*mut HandleExprGeneralExpression>;
-    /// **Source:** `ExprIntrp_GenExp.hxx`:51 - `ExprIntrp_GenExp::DynamicType()`
+    ) -> crate::OcctResult<*mut Handle_Expr_GeneralExpression>;
+    /// **Source:** `ExprIntrp_GenExp.hxx`:48 - `ExprIntrp_GenExp::DynamicType()`
     pub fn ExprIntrp_GenExp_dynamic_type(
         self_: *const ExprIntrp_GenExp,
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// **Source:** `ExprIntrp_GenExp.hxx`:38 - `ExprIntrp_GenExp::Create()`
-    pub fn ExprIntrp_GenExp_create() -> crate::OcctResult<*mut HandleExprIntrpGenExp>;
-    /// **Source:** `ExprIntrp_GenExp.hxx`:51 - `ExprIntrp_GenExp::get_type_name()`
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
+    /// **Source:** `ExprIntrp_GenExp.hxx`:35 - `ExprIntrp_GenExp::Create()`
+    pub fn ExprIntrp_GenExp_create() -> crate::OcctResult<*mut Handle_ExprIntrp_GenExp>;
+    /// **Source:** `ExprIntrp_GenExp.hxx`:48 - `ExprIntrp_GenExp::get_type_name()`
     pub fn ExprIntrp_GenExp_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
-    /// **Source:** `ExprIntrp_GenExp.hxx`:51 - `ExprIntrp_GenExp::get_type_descriptor()`
-    pub fn ExprIntrp_GenExp_get_type_descriptor() -> crate::OcctResult<*const HandleStandardType>;
+    /// **Source:** `ExprIntrp_GenExp.hxx`:48 - `ExprIntrp_GenExp::get_type_descriptor()`
+    pub fn ExprIntrp_GenExp_get_type_descriptor() -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast ExprIntrp_GenExp to ExprIntrp_Generator
     pub fn ExprIntrp_GenExp_as_ExprIntrp_Generator(
         self_: *const ExprIntrp_GenExp,
@@ -9496,98 +8653,95 @@ unsafe extern "C" {
     /// Wrap ExprIntrp_GenExp in a Handle
     pub fn ExprIntrp_GenExp_to_handle(
         obj: *mut ExprIntrp_GenExp,
-    ) -> crate::OcctResult<*mut HandleExprIntrpGenExp>;
+    ) -> crate::OcctResult<*mut Handle_ExprIntrp_GenExp>;
     /// Destroy Handle<ExprIntrp_GenExp>
-    pub fn HandleExprIntrpGenExp_destructor(self_: *mut HandleExprIntrpGenExp);
+    pub fn Handle_ExprIntrp_GenExp_destructor(self_: *mut Handle_ExprIntrp_GenExp);
     /// Clone Handle<ExprIntrp_GenExp> (increments reference count)
-    pub fn HandleExprIntrpGenExp_clone(
-        self_: *const HandleExprIntrpGenExp,
-    ) -> crate::OcctResult<*mut HandleExprIntrpGenExp>;
+    pub fn Handle_ExprIntrp_GenExp_clone(
+        self_: *const Handle_ExprIntrp_GenExp,
+    ) -> crate::OcctResult<*mut Handle_ExprIntrp_GenExp>;
     /// Check if Handle<ExprIntrp_GenExp> is null
-    pub fn HandleExprIntrpGenExp_is_null(self_: *const HandleExprIntrpGenExp) -> bool;
+    pub fn Handle_ExprIntrp_GenExp_is_null(self_: *const Handle_ExprIntrp_GenExp) -> bool;
     /// Dereference Handle to get *const ExprIntrp_GenExp
-    pub fn HandleExprIntrpGenExp_get(
-        handle: *const HandleExprIntrpGenExp,
+    pub fn Handle_ExprIntrp_GenExp_get(
+        handle: *const Handle_ExprIntrp_GenExp,
     ) -> crate::OcctResult<*const ExprIntrp_GenExp>;
     /// Dereference Handle to get *mut ExprIntrp_GenExp
-    pub fn HandleExprIntrpGenExp_get_mut(
-        handle: *mut HandleExprIntrpGenExp,
+    pub fn Handle_ExprIntrp_GenExp_get_mut(
+        handle: *mut Handle_ExprIntrp_GenExp,
     ) -> crate::OcctResult<*mut ExprIntrp_GenExp>;
     /// Upcast Handle<ExprIntrp_GenExp> to Handle<ExprIntrp_Generator>
-    pub fn HandleExprIntrpGenExp_to_HandleExprIntrpGenerator(
-        self_: *const HandleExprIntrpGenExp,
-    ) -> crate::OcctResult<*mut HandleExprIntrpGenerator>;
+    pub fn Handle_ExprIntrp_GenExp_to_Handle_ExprIntrp_Generator(
+        self_: *const Handle_ExprIntrp_GenExp,
+    ) -> crate::OcctResult<*mut Handle_ExprIntrp_Generator>;
     /// Upcast Handle<ExprIntrp_GenExp> to Handle<Standard_Transient>
-    pub fn HandleExprIntrpGenExp_to_HandleStandardTransient(
-        self_: *const HandleExprIntrpGenExp,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
-    /// Inherited: **Source:** `ExprIntrp_Generator.hxx`:38 - `ExprIntrp_Generator::Use()`
+    pub fn Handle_ExprIntrp_GenExp_to_Handle_Standard_Transient(
+        self_: *const Handle_ExprIntrp_GenExp,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
+    /// Inherited: **Source:** `ExprIntrp_Generator.hxx`:36 - `ExprIntrp_Generator::Use()`
     pub fn ExprIntrp_GenExp_inherited_Use(
         self_: *mut ExprIntrp_GenExp,
-        func: *const HandleExprNamedFunction,
+        func: *const Handle_Expr_NamedFunction,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `ExprIntrp_Generator.hxx`:42 - `ExprIntrp_Generator::GetNamed()`
+    /// Inherited: **Source:** `ExprIntrp_Generator.hxx`:47 - `ExprIntrp_Generator::GetNamed()`
     pub fn ExprIntrp_GenExp_inherited_GetNamed(
         self_: *const ExprIntrp_GenExp,
-    ) -> crate::OcctResult<*const ExprIntrp_SequenceOfNamedExpression>;
-    /// Inherited: **Source:** `ExprIntrp_Generator.hxx`:44 - `ExprIntrp_Generator::GetFunctions()`
-    pub fn ExprIntrp_GenExp_inherited_GetFunctions(
-        self_: *const ExprIntrp_GenExp,
-    ) -> crate::OcctResult<*const ExprIntrp_SequenceOfNamedFunction>;
-    /// Inherited: **Source:** `ExprIntrp_Generator.hxx`:54 - `ExprIntrp_Generator::GetFunction()`
+        name: *const TCollection_AsciiString,
+    ) -> crate::OcctResult<*mut Handle_Expr_NamedExpression>;
+    /// Inherited: **Source:** `ExprIntrp_Generator.hxx`:53 - `ExprIntrp_Generator::GetFunction()`
     pub fn ExprIntrp_GenExp_inherited_GetFunction(
         self_: *const ExprIntrp_GenExp,
         name: *const TCollection_AsciiString,
-    ) -> crate::OcctResult<*mut HandleExprNamedFunction>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    ) -> crate::OcctResult<*mut Handle_Expr_NamedFunction>;
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn ExprIntrp_GenExp_inherited_IsInstance(
         self_: *const ExprIntrp_GenExp,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn ExprIntrp_GenExp_inherited_IsKind(
         self_: *const ExprIntrp_GenExp,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn ExprIntrp_GenExp_inherited_This(
         self_: *const ExprIntrp_GenExp,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn ExprIntrp_GenExp_inherited_GetRefCount(
         self_: *const ExprIntrp_GenExp,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn ExprIntrp_GenExp_inherited_IncrementRefCounter(
         self_: *mut ExprIntrp_GenExp,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn ExprIntrp_GenExp_inherited_DecrementRefCounter(
         self_: *mut ExprIntrp_GenExp,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn ExprIntrp_GenExp_inherited_Delete(
         self_: *const ExprIntrp_GenExp,
     ) -> *const std::ffi::c_char;
     // ======================== ExprIntrp_GenFct ========================
     pub fn ExprIntrp_GenFct_destructor(self_: *mut ExprIntrp_GenFct);
-    /// **Source:** `ExprIntrp_GenFct.hxx`:37 - `ExprIntrp_GenFct::Process()`
+    /// **Source:** `ExprIntrp_GenFct.hxx`:34 - `ExprIntrp_GenFct::Process()`
     pub fn ExprIntrp_GenFct_process(
         self_: *mut ExprIntrp_GenFct,
         str: *const TCollection_AsciiString,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `ExprIntrp_GenFct.hxx`:39 - `ExprIntrp_GenFct::IsDone()`
+    /// **Source:** `ExprIntrp_GenFct.hxx`:36 - `ExprIntrp_GenFct::IsDone()`
     pub fn ExprIntrp_GenFct_is_done(self_: *const ExprIntrp_GenFct) -> crate::OcctResult<bool>;
-    /// **Source:** `ExprIntrp_GenFct.hxx`:41 - `ExprIntrp_GenFct::DynamicType()`
+    /// **Source:** `ExprIntrp_GenFct.hxx`:38 - `ExprIntrp_GenFct::DynamicType()`
     pub fn ExprIntrp_GenFct_dynamic_type(
         self_: *const ExprIntrp_GenFct,
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// **Source:** `ExprIntrp_GenFct.hxx`:35 - `ExprIntrp_GenFct::Create()`
-    pub fn ExprIntrp_GenFct_create() -> crate::OcctResult<*mut HandleExprIntrpGenFct>;
-    /// **Source:** `ExprIntrp_GenFct.hxx`:41 - `ExprIntrp_GenFct::get_type_name()`
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
+    /// **Source:** `ExprIntrp_GenFct.hxx`:32 - `ExprIntrp_GenFct::Create()`
+    pub fn ExprIntrp_GenFct_create() -> crate::OcctResult<*mut Handle_ExprIntrp_GenFct>;
+    /// **Source:** `ExprIntrp_GenFct.hxx`:38 - `ExprIntrp_GenFct::get_type_name()`
     pub fn ExprIntrp_GenFct_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
-    /// **Source:** `ExprIntrp_GenFct.hxx`:41 - `ExprIntrp_GenFct::get_type_descriptor()`
-    pub fn ExprIntrp_GenFct_get_type_descriptor() -> crate::OcctResult<*const HandleStandardType>;
+    /// **Source:** `ExprIntrp_GenFct.hxx`:38 - `ExprIntrp_GenFct::get_type_descriptor()`
+    pub fn ExprIntrp_GenFct_get_type_descriptor() -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast ExprIntrp_GenFct to ExprIntrp_Generator
     pub fn ExprIntrp_GenFct_as_ExprIntrp_Generator(
         self_: *const ExprIntrp_GenFct,
@@ -9607,102 +8761,99 @@ unsafe extern "C" {
     /// Wrap ExprIntrp_GenFct in a Handle
     pub fn ExprIntrp_GenFct_to_handle(
         obj: *mut ExprIntrp_GenFct,
-    ) -> crate::OcctResult<*mut HandleExprIntrpGenFct>;
+    ) -> crate::OcctResult<*mut Handle_ExprIntrp_GenFct>;
     /// Destroy Handle<ExprIntrp_GenFct>
-    pub fn HandleExprIntrpGenFct_destructor(self_: *mut HandleExprIntrpGenFct);
+    pub fn Handle_ExprIntrp_GenFct_destructor(self_: *mut Handle_ExprIntrp_GenFct);
     /// Clone Handle<ExprIntrp_GenFct> (increments reference count)
-    pub fn HandleExprIntrpGenFct_clone(
-        self_: *const HandleExprIntrpGenFct,
-    ) -> crate::OcctResult<*mut HandleExprIntrpGenFct>;
+    pub fn Handle_ExprIntrp_GenFct_clone(
+        self_: *const Handle_ExprIntrp_GenFct,
+    ) -> crate::OcctResult<*mut Handle_ExprIntrp_GenFct>;
     /// Check if Handle<ExprIntrp_GenFct> is null
-    pub fn HandleExprIntrpGenFct_is_null(self_: *const HandleExprIntrpGenFct) -> bool;
+    pub fn Handle_ExprIntrp_GenFct_is_null(self_: *const Handle_ExprIntrp_GenFct) -> bool;
     /// Dereference Handle to get *const ExprIntrp_GenFct
-    pub fn HandleExprIntrpGenFct_get(
-        handle: *const HandleExprIntrpGenFct,
+    pub fn Handle_ExprIntrp_GenFct_get(
+        handle: *const Handle_ExprIntrp_GenFct,
     ) -> crate::OcctResult<*const ExprIntrp_GenFct>;
     /// Dereference Handle to get *mut ExprIntrp_GenFct
-    pub fn HandleExprIntrpGenFct_get_mut(
-        handle: *mut HandleExprIntrpGenFct,
+    pub fn Handle_ExprIntrp_GenFct_get_mut(
+        handle: *mut Handle_ExprIntrp_GenFct,
     ) -> crate::OcctResult<*mut ExprIntrp_GenFct>;
     /// Upcast Handle<ExprIntrp_GenFct> to Handle<ExprIntrp_Generator>
-    pub fn HandleExprIntrpGenFct_to_HandleExprIntrpGenerator(
-        self_: *const HandleExprIntrpGenFct,
-    ) -> crate::OcctResult<*mut HandleExprIntrpGenerator>;
+    pub fn Handle_ExprIntrp_GenFct_to_Handle_ExprIntrp_Generator(
+        self_: *const Handle_ExprIntrp_GenFct,
+    ) -> crate::OcctResult<*mut Handle_ExprIntrp_Generator>;
     /// Upcast Handle<ExprIntrp_GenFct> to Handle<Standard_Transient>
-    pub fn HandleExprIntrpGenFct_to_HandleStandardTransient(
-        self_: *const HandleExprIntrpGenFct,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
-    /// Inherited: **Source:** `ExprIntrp_Generator.hxx`:38 - `ExprIntrp_Generator::Use()`
+    pub fn Handle_ExprIntrp_GenFct_to_Handle_Standard_Transient(
+        self_: *const Handle_ExprIntrp_GenFct,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
+    /// Inherited: **Source:** `ExprIntrp_Generator.hxx`:36 - `ExprIntrp_Generator::Use()`
     pub fn ExprIntrp_GenFct_inherited_Use(
         self_: *mut ExprIntrp_GenFct,
-        func: *const HandleExprNamedFunction,
+        func: *const Handle_Expr_NamedFunction,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `ExprIntrp_Generator.hxx`:42 - `ExprIntrp_Generator::GetNamed()`
+    /// Inherited: **Source:** `ExprIntrp_Generator.hxx`:47 - `ExprIntrp_Generator::GetNamed()`
     pub fn ExprIntrp_GenFct_inherited_GetNamed(
         self_: *const ExprIntrp_GenFct,
-    ) -> crate::OcctResult<*const ExprIntrp_SequenceOfNamedExpression>;
-    /// Inherited: **Source:** `ExprIntrp_Generator.hxx`:44 - `ExprIntrp_Generator::GetFunctions()`
-    pub fn ExprIntrp_GenFct_inherited_GetFunctions(
-        self_: *const ExprIntrp_GenFct,
-    ) -> crate::OcctResult<*const ExprIntrp_SequenceOfNamedFunction>;
-    /// Inherited: **Source:** `ExprIntrp_Generator.hxx`:54 - `ExprIntrp_Generator::GetFunction()`
+        name: *const TCollection_AsciiString,
+    ) -> crate::OcctResult<*mut Handle_Expr_NamedExpression>;
+    /// Inherited: **Source:** `ExprIntrp_Generator.hxx`:53 - `ExprIntrp_Generator::GetFunction()`
     pub fn ExprIntrp_GenFct_inherited_GetFunction(
         self_: *const ExprIntrp_GenFct,
         name: *const TCollection_AsciiString,
-    ) -> crate::OcctResult<*mut HandleExprNamedFunction>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    ) -> crate::OcctResult<*mut Handle_Expr_NamedFunction>;
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn ExprIntrp_GenFct_inherited_IsInstance(
         self_: *const ExprIntrp_GenFct,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn ExprIntrp_GenFct_inherited_IsKind(
         self_: *const ExprIntrp_GenFct,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn ExprIntrp_GenFct_inherited_This(
         self_: *const ExprIntrp_GenFct,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn ExprIntrp_GenFct_inherited_GetRefCount(
         self_: *const ExprIntrp_GenFct,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn ExprIntrp_GenFct_inherited_IncrementRefCounter(
         self_: *mut ExprIntrp_GenFct,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn ExprIntrp_GenFct_inherited_DecrementRefCounter(
         self_: *mut ExprIntrp_GenFct,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn ExprIntrp_GenFct_inherited_Delete(
         self_: *const ExprIntrp_GenFct,
     ) -> *const std::ffi::c_char;
     // ======================== ExprIntrp_GenRel ========================
     pub fn ExprIntrp_GenRel_destructor(self_: *mut ExprIntrp_GenRel);
-    /// **Source:** `ExprIntrp_GenRel.hxx`:39 - `ExprIntrp_GenRel::Process()`
+    /// **Source:** `ExprIntrp_GenRel.hxx`:36 - `ExprIntrp_GenRel::Process()`
     pub fn ExprIntrp_GenRel_process(
         self_: *mut ExprIntrp_GenRel,
         str: *const TCollection_AsciiString,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `ExprIntrp_GenRel.hxx`:43 - `ExprIntrp_GenRel::IsDone()`
+    /// **Source:** `ExprIntrp_GenRel.hxx`:40 - `ExprIntrp_GenRel::IsDone()`
     pub fn ExprIntrp_GenRel_is_done(self_: *const ExprIntrp_GenRel) -> crate::OcctResult<bool>;
-    /// **Source:** `ExprIntrp_GenRel.hxx`:47 - `ExprIntrp_GenRel::Relation()`
+    /// **Source:** `ExprIntrp_GenRel.hxx`:44 - `ExprIntrp_GenRel::Relation()`
     pub fn ExprIntrp_GenRel_relation(
         self_: *const ExprIntrp_GenRel,
-    ) -> crate::OcctResult<*mut HandleExprGeneralRelation>;
-    /// **Source:** `ExprIntrp_GenRel.hxx`:49 - `ExprIntrp_GenRel::DynamicType()`
+    ) -> crate::OcctResult<*mut Handle_Expr_GeneralRelation>;
+    /// **Source:** `ExprIntrp_GenRel.hxx`:46 - `ExprIntrp_GenRel::DynamicType()`
     pub fn ExprIntrp_GenRel_dynamic_type(
         self_: *const ExprIntrp_GenRel,
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// **Source:** `ExprIntrp_GenRel.hxx`:36 - `ExprIntrp_GenRel::Create()`
-    pub fn ExprIntrp_GenRel_create() -> crate::OcctResult<*mut HandleExprIntrpGenRel>;
-    /// **Source:** `ExprIntrp_GenRel.hxx`:49 - `ExprIntrp_GenRel::get_type_name()`
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
+    /// **Source:** `ExprIntrp_GenRel.hxx`:33 - `ExprIntrp_GenRel::Create()`
+    pub fn ExprIntrp_GenRel_create() -> crate::OcctResult<*mut Handle_ExprIntrp_GenRel>;
+    /// **Source:** `ExprIntrp_GenRel.hxx`:46 - `ExprIntrp_GenRel::get_type_name()`
     pub fn ExprIntrp_GenRel_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
-    /// **Source:** `ExprIntrp_GenRel.hxx`:49 - `ExprIntrp_GenRel::get_type_descriptor()`
-    pub fn ExprIntrp_GenRel_get_type_descriptor() -> crate::OcctResult<*const HandleStandardType>;
+    /// **Source:** `ExprIntrp_GenRel.hxx`:46 - `ExprIntrp_GenRel::get_type_descriptor()`
+    pub fn ExprIntrp_GenRel_get_type_descriptor() -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast ExprIntrp_GenRel to ExprIntrp_Generator
     pub fn ExprIntrp_GenRel_as_ExprIntrp_Generator(
         self_: *const ExprIntrp_GenRel,
@@ -9722,117 +8873,107 @@ unsafe extern "C" {
     /// Wrap ExprIntrp_GenRel in a Handle
     pub fn ExprIntrp_GenRel_to_handle(
         obj: *mut ExprIntrp_GenRel,
-    ) -> crate::OcctResult<*mut HandleExprIntrpGenRel>;
+    ) -> crate::OcctResult<*mut Handle_ExprIntrp_GenRel>;
     /// Destroy Handle<ExprIntrp_GenRel>
-    pub fn HandleExprIntrpGenRel_destructor(self_: *mut HandleExprIntrpGenRel);
+    pub fn Handle_ExprIntrp_GenRel_destructor(self_: *mut Handle_ExprIntrp_GenRel);
     /// Clone Handle<ExprIntrp_GenRel> (increments reference count)
-    pub fn HandleExprIntrpGenRel_clone(
-        self_: *const HandleExprIntrpGenRel,
-    ) -> crate::OcctResult<*mut HandleExprIntrpGenRel>;
+    pub fn Handle_ExprIntrp_GenRel_clone(
+        self_: *const Handle_ExprIntrp_GenRel,
+    ) -> crate::OcctResult<*mut Handle_ExprIntrp_GenRel>;
     /// Check if Handle<ExprIntrp_GenRel> is null
-    pub fn HandleExprIntrpGenRel_is_null(self_: *const HandleExprIntrpGenRel) -> bool;
+    pub fn Handle_ExprIntrp_GenRel_is_null(self_: *const Handle_ExprIntrp_GenRel) -> bool;
     /// Dereference Handle to get *const ExprIntrp_GenRel
-    pub fn HandleExprIntrpGenRel_get(
-        handle: *const HandleExprIntrpGenRel,
+    pub fn Handle_ExprIntrp_GenRel_get(
+        handle: *const Handle_ExprIntrp_GenRel,
     ) -> crate::OcctResult<*const ExprIntrp_GenRel>;
     /// Dereference Handle to get *mut ExprIntrp_GenRel
-    pub fn HandleExprIntrpGenRel_get_mut(
-        handle: *mut HandleExprIntrpGenRel,
+    pub fn Handle_ExprIntrp_GenRel_get_mut(
+        handle: *mut Handle_ExprIntrp_GenRel,
     ) -> crate::OcctResult<*mut ExprIntrp_GenRel>;
     /// Upcast Handle<ExprIntrp_GenRel> to Handle<ExprIntrp_Generator>
-    pub fn HandleExprIntrpGenRel_to_HandleExprIntrpGenerator(
-        self_: *const HandleExprIntrpGenRel,
-    ) -> crate::OcctResult<*mut HandleExprIntrpGenerator>;
+    pub fn Handle_ExprIntrp_GenRel_to_Handle_ExprIntrp_Generator(
+        self_: *const Handle_ExprIntrp_GenRel,
+    ) -> crate::OcctResult<*mut Handle_ExprIntrp_Generator>;
     /// Upcast Handle<ExprIntrp_GenRel> to Handle<Standard_Transient>
-    pub fn HandleExprIntrpGenRel_to_HandleStandardTransient(
-        self_: *const HandleExprIntrpGenRel,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
-    /// Inherited: **Source:** `ExprIntrp_Generator.hxx`:38 - `ExprIntrp_Generator::Use()`
+    pub fn Handle_ExprIntrp_GenRel_to_Handle_Standard_Transient(
+        self_: *const Handle_ExprIntrp_GenRel,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
+    /// Inherited: **Source:** `ExprIntrp_Generator.hxx`:36 - `ExprIntrp_Generator::Use()`
     pub fn ExprIntrp_GenRel_inherited_Use(
         self_: *mut ExprIntrp_GenRel,
-        func: *const HandleExprNamedFunction,
+        func: *const Handle_Expr_NamedFunction,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `ExprIntrp_Generator.hxx`:42 - `ExprIntrp_Generator::GetNamed()`
+    /// Inherited: **Source:** `ExprIntrp_Generator.hxx`:47 - `ExprIntrp_Generator::GetNamed()`
     pub fn ExprIntrp_GenRel_inherited_GetNamed(
         self_: *const ExprIntrp_GenRel,
-    ) -> crate::OcctResult<*const ExprIntrp_SequenceOfNamedExpression>;
-    /// Inherited: **Source:** `ExprIntrp_Generator.hxx`:44 - `ExprIntrp_Generator::GetFunctions()`
-    pub fn ExprIntrp_GenRel_inherited_GetFunctions(
-        self_: *const ExprIntrp_GenRel,
-    ) -> crate::OcctResult<*const ExprIntrp_SequenceOfNamedFunction>;
-    /// Inherited: **Source:** `ExprIntrp_Generator.hxx`:54 - `ExprIntrp_Generator::GetFunction()`
+        name: *const TCollection_AsciiString,
+    ) -> crate::OcctResult<*mut Handle_Expr_NamedExpression>;
+    /// Inherited: **Source:** `ExprIntrp_Generator.hxx`:53 - `ExprIntrp_Generator::GetFunction()`
     pub fn ExprIntrp_GenRel_inherited_GetFunction(
         self_: *const ExprIntrp_GenRel,
         name: *const TCollection_AsciiString,
-    ) -> crate::OcctResult<*mut HandleExprNamedFunction>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    ) -> crate::OcctResult<*mut Handle_Expr_NamedFunction>;
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn ExprIntrp_GenRel_inherited_IsInstance(
         self_: *const ExprIntrp_GenRel,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn ExprIntrp_GenRel_inherited_IsKind(
         self_: *const ExprIntrp_GenRel,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn ExprIntrp_GenRel_inherited_This(
         self_: *const ExprIntrp_GenRel,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn ExprIntrp_GenRel_inherited_GetRefCount(
         self_: *const ExprIntrp_GenRel,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn ExprIntrp_GenRel_inherited_IncrementRefCounter(
         self_: *mut ExprIntrp_GenRel,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn ExprIntrp_GenRel_inherited_DecrementRefCounter(
         self_: *mut ExprIntrp_GenRel,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn ExprIntrp_GenRel_inherited_Delete(
         self_: *const ExprIntrp_GenRel,
     ) -> *const std::ffi::c_char;
     // ======================== ExprIntrp_Generator ========================
     pub fn ExprIntrp_Generator_destructor(self_: *mut ExprIntrp_Generator);
-    /// **Source:** `ExprIntrp_Generator.hxx`:38 - `ExprIntrp_Generator::Use()`
+    /// **Source:** `ExprIntrp_Generator.hxx`:36 - `ExprIntrp_Generator::Use()`
     pub fn ExprIntrp_Generator_use_handleexprnamedfunction(
         self_: *mut ExprIntrp_Generator,
-        func: *const HandleExprNamedFunction,
+        func: *const Handle_Expr_NamedFunction,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `ExprIntrp_Generator.hxx`:40 - `ExprIntrp_Generator::Use()`
+    /// **Source:** `ExprIntrp_Generator.hxx`:38 - `ExprIntrp_Generator::Use()`
     pub fn ExprIntrp_Generator_use_handleexprnamedexpression(
         self_: *mut ExprIntrp_Generator,
-        named: *const HandleExprNamedExpression,
+        named: *const Handle_Expr_NamedExpression,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `ExprIntrp_Generator.hxx`:42 - `ExprIntrp_Generator::GetNamed()`
+    /// **Source:** `ExprIntrp_Generator.hxx`:47 - `ExprIntrp_Generator::GetNamed()`
     pub fn ExprIntrp_Generator_get_named(
         self_: *const ExprIntrp_Generator,
-    ) -> crate::OcctResult<*const ExprIntrp_SequenceOfNamedExpression>;
-    /// **Source:** `ExprIntrp_Generator.hxx`:44 - `ExprIntrp_Generator::GetFunctions()`
-    pub fn ExprIntrp_Generator_get_functions(
-        self_: *const ExprIntrp_Generator,
-    ) -> crate::OcctResult<*const ExprIntrp_SequenceOfNamedFunction>;
-    /// **Source:** `ExprIntrp_Generator.hxx`:49 - `ExprIntrp_Generator::GetNamed()`
-    pub fn ExprIntrp_Generator_get_named_asciistring(
-        self_: *const ExprIntrp_Generator,
         name: *const TCollection_AsciiString,
-    ) -> crate::OcctResult<*mut HandleExprNamedExpression>;
-    /// **Source:** `ExprIntrp_Generator.hxx`:54 - `ExprIntrp_Generator::GetFunction()`
+    ) -> crate::OcctResult<*mut Handle_Expr_NamedExpression>;
+    /// **Source:** `ExprIntrp_Generator.hxx`:53 - `ExprIntrp_Generator::GetFunction()`
     pub fn ExprIntrp_Generator_get_function(
         self_: *const ExprIntrp_Generator,
         name: *const TCollection_AsciiString,
-    ) -> crate::OcctResult<*mut HandleExprNamedFunction>;
+    ) -> crate::OcctResult<*mut Handle_Expr_NamedFunction>;
     /// **Source:** `ExprIntrp_Generator.hxx`:56 - `ExprIntrp_Generator::DynamicType()`
     pub fn ExprIntrp_Generator_dynamic_type(
         self_: *const ExprIntrp_Generator,
-    ) -> crate::OcctResult<*const HandleStandardType>;
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// **Source:** `ExprIntrp_Generator.hxx`:56 - `ExprIntrp_Generator::get_type_name()`
     pub fn ExprIntrp_Generator_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
     /// **Source:** `ExprIntrp_Generator.hxx`:56 - `ExprIntrp_Generator::get_type_descriptor()`
-    pub fn ExprIntrp_Generator_get_type_descriptor() -> crate::OcctResult<*const HandleStandardType>;
+    pub fn ExprIntrp_Generator_get_type_descriptor(
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast ExprIntrp_Generator to Standard_Transient
     pub fn ExprIntrp_Generator_as_Standard_Transient(
         self_: *const ExprIntrp_Generator,
@@ -9844,108 +8985,84 @@ unsafe extern "C" {
     /// Wrap ExprIntrp_Generator in a Handle
     pub fn ExprIntrp_Generator_to_handle(
         obj: *mut ExprIntrp_Generator,
-    ) -> crate::OcctResult<*mut HandleExprIntrpGenerator>;
+    ) -> crate::OcctResult<*mut Handle_ExprIntrp_Generator>;
     /// Destroy Handle<ExprIntrp_Generator>
-    pub fn HandleExprIntrpGenerator_destructor(self_: *mut HandleExprIntrpGenerator);
+    pub fn Handle_ExprIntrp_Generator_destructor(self_: *mut Handle_ExprIntrp_Generator);
     /// Clone Handle<ExprIntrp_Generator> (increments reference count)
-    pub fn HandleExprIntrpGenerator_clone(
-        self_: *const HandleExprIntrpGenerator,
-    ) -> crate::OcctResult<*mut HandleExprIntrpGenerator>;
+    pub fn Handle_ExprIntrp_Generator_clone(
+        self_: *const Handle_ExprIntrp_Generator,
+    ) -> crate::OcctResult<*mut Handle_ExprIntrp_Generator>;
     /// Check if Handle<ExprIntrp_Generator> is null
-    pub fn HandleExprIntrpGenerator_is_null(self_: *const HandleExprIntrpGenerator) -> bool;
+    pub fn Handle_ExprIntrp_Generator_is_null(self_: *const Handle_ExprIntrp_Generator) -> bool;
     /// Dereference Handle to get *const ExprIntrp_Generator
-    pub fn HandleExprIntrpGenerator_get(
-        handle: *const HandleExprIntrpGenerator,
+    pub fn Handle_ExprIntrp_Generator_get(
+        handle: *const Handle_ExprIntrp_Generator,
     ) -> crate::OcctResult<*const ExprIntrp_Generator>;
     /// Dereference Handle to get *mut ExprIntrp_Generator
-    pub fn HandleExprIntrpGenerator_get_mut(
-        handle: *mut HandleExprIntrpGenerator,
+    pub fn Handle_ExprIntrp_Generator_get_mut(
+        handle: *mut Handle_ExprIntrp_Generator,
     ) -> crate::OcctResult<*mut ExprIntrp_Generator>;
     /// Upcast Handle<ExprIntrp_Generator> to Handle<Standard_Transient>
-    pub fn HandleExprIntrpGenerator_to_HandleStandardTransient(
-        self_: *const HandleExprIntrpGenerator,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
+    pub fn Handle_ExprIntrp_Generator_to_Handle_Standard_Transient(
+        self_: *const Handle_ExprIntrp_Generator,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
     /// Downcast Handle<ExprIntrp_Generator> to Handle<ExprIntrp_GenExp> (returns null on failure)
-    pub fn HandleExprIntrpGenerator_downcast_to_HandleExprIntrpGenExp(
-        self_: *const HandleExprIntrpGenerator,
-    ) -> crate::OcctResult<*mut HandleExprIntrpGenExp>;
+    pub fn Handle_ExprIntrp_Generator_downcast_to_Handle_ExprIntrp_GenExp(
+        self_: *const Handle_ExprIntrp_Generator,
+    ) -> crate::OcctResult<*mut Handle_ExprIntrp_GenExp>;
     /// Downcast Handle<ExprIntrp_Generator> to Handle<ExprIntrp_GenFct> (returns null on failure)
-    pub fn HandleExprIntrpGenerator_downcast_to_HandleExprIntrpGenFct(
-        self_: *const HandleExprIntrpGenerator,
-    ) -> crate::OcctResult<*mut HandleExprIntrpGenFct>;
+    pub fn Handle_ExprIntrp_Generator_downcast_to_Handle_ExprIntrp_GenFct(
+        self_: *const Handle_ExprIntrp_Generator,
+    ) -> crate::OcctResult<*mut Handle_ExprIntrp_GenFct>;
     /// Downcast Handle<ExprIntrp_Generator> to Handle<ExprIntrp_GenRel> (returns null on failure)
-    pub fn HandleExprIntrpGenerator_downcast_to_HandleExprIntrpGenRel(
-        self_: *const HandleExprIntrpGenerator,
-    ) -> crate::OcctResult<*mut HandleExprIntrpGenRel>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn Handle_ExprIntrp_Generator_downcast_to_Handle_ExprIntrp_GenRel(
+        self_: *const Handle_ExprIntrp_Generator,
+    ) -> crate::OcctResult<*mut Handle_ExprIntrp_GenRel>;
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn ExprIntrp_Generator_inherited_IsInstance(
         self_: *const ExprIntrp_Generator,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn ExprIntrp_Generator_inherited_IsKind(
         self_: *const ExprIntrp_Generator,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn ExprIntrp_Generator_inherited_This(
         self_: *const ExprIntrp_Generator,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn ExprIntrp_Generator_inherited_GetRefCount(
         self_: *const ExprIntrp_Generator,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn ExprIntrp_Generator_inherited_IncrementRefCounter(
         self_: *mut ExprIntrp_Generator,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn ExprIntrp_Generator_inherited_DecrementRefCounter(
         self_: *mut ExprIntrp_Generator,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn ExprIntrp_Generator_inherited_Delete(
         self_: *const ExprIntrp_Generator,
     ) -> *const std::ffi::c_char;
     // ======================== ExprIntrp_SyntaxError ========================
     pub fn ExprIntrp_SyntaxError_destructor(self_: *mut ExprIntrp_SyntaxError);
-    /// **Source:** `ExprIntrp_SyntaxError.hxx`:36 - `ExprIntrp_SyntaxError::ExprIntrp_SyntaxError()`
-    pub fn ExprIntrp_SyntaxError_ctor() -> crate::OcctResult<*mut ExprIntrp_SyntaxError>;
-    /// **Source:** `ExprIntrp_SyntaxError.hxx`:36 - `ExprIntrp_SyntaxError::ExprIntrp_SyntaxError()`
+    /// **Source:** `ExprIntrp_SyntaxError.hxx`:32 - `ExprIntrp_SyntaxError::ExprIntrp_SyntaxError()`
     pub fn ExprIntrp_SyntaxError_ctor_charptr(
         theMessage: *const std::ffi::c_char,
     ) -> crate::OcctResult<*mut ExprIntrp_SyntaxError>;
-    /// **Source:** `ExprIntrp_SyntaxError.hxx`:36 - `ExprIntrp_SyntaxError::ExprIntrp_SyntaxError()`
+    /// **Source:** `ExprIntrp_SyntaxError.hxx`:32 - `ExprIntrp_SyntaxError::ExprIntrp_SyntaxError()`
     pub fn ExprIntrp_SyntaxError_ctor_charptr2(
         theMessage: *const std::ffi::c_char,
         theStackTrace: *const std::ffi::c_char,
     ) -> crate::OcctResult<*mut ExprIntrp_SyntaxError>;
-    /// **Source:** `ExprIntrp_SyntaxError.hxx`:36 - `ExprIntrp_SyntaxError::DynamicType()`
-    pub fn ExprIntrp_SyntaxError_dynamic_type(
+    /// **Source:** `ExprIntrp_SyntaxError.hxx`:32 - `ExprIntrp_SyntaxError::ExceptionType()`
+    pub fn ExprIntrp_SyntaxError_exception_type(
         self_: *const ExprIntrp_SyntaxError,
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// **Source:** `ExprIntrp_SyntaxError.hxx`:36 - `ExprIntrp_SyntaxError::Raise()`
-    pub fn ExprIntrp_SyntaxError_raise_charptr(
-        theMessage: *const std::ffi::c_char,
-    ) -> *const std::ffi::c_char;
-    /// **Source:** `ExprIntrp_SyntaxError.hxx`:36 - `ExprIntrp_SyntaxError::Raise()`
-    pub fn ExprIntrp_SyntaxError_raise_sstream(
-        theMessage: *mut Standard_SStream,
-    ) -> *const std::ffi::c_char;
-    /// **Source:** `ExprIntrp_SyntaxError.hxx`:36 - `ExprIntrp_SyntaxError::NewInstance()`
-    pub fn ExprIntrp_SyntaxError_new_instance_charptr(
-        theMessage: *const std::ffi::c_char,
-    ) -> crate::OcctResult<*mut HandleExprIntrpSyntaxError>;
-    /// **Source:** `ExprIntrp_SyntaxError.hxx`:36 - `ExprIntrp_SyntaxError::NewInstance()`
-    pub fn ExprIntrp_SyntaxError_new_instance_charptr2(
-        theMessage: *const std::ffi::c_char,
-        theStackTrace: *const std::ffi::c_char,
-    ) -> crate::OcctResult<*mut HandleExprIntrpSyntaxError>;
-    /// **Source:** `ExprIntrp_SyntaxError.hxx`:36 - `ExprIntrp_SyntaxError::get_type_name()`
-    pub fn ExprIntrp_SyntaxError_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
-    /// **Source:** `ExprIntrp_SyntaxError.hxx`:36 - `ExprIntrp_SyntaxError::get_type_descriptor()`
-    pub fn ExprIntrp_SyntaxError_get_type_descriptor(
-    ) -> crate::OcctResult<*const HandleStandardType>;
+    ) -> crate::OcctResult<*const std::ffi::c_char>;
     /// Upcast ExprIntrp_SyntaxError to Standard_Failure
     pub fn ExprIntrp_SyntaxError_as_Standard_Failure(
         self_: *const ExprIntrp_SyntaxError,
@@ -9954,112 +9071,25 @@ unsafe extern "C" {
     pub fn ExprIntrp_SyntaxError_as_Standard_Failure_mut(
         self_: *mut ExprIntrp_SyntaxError,
     ) -> crate::OcctResult<*mut Standard_Failure>;
-    /// Upcast ExprIntrp_SyntaxError to Standard_Transient
-    pub fn ExprIntrp_SyntaxError_as_Standard_Transient(
-        self_: *const ExprIntrp_SyntaxError,
-    ) -> crate::OcctResult<*const Standard_Transient>;
-    /// Upcast ExprIntrp_SyntaxError to Standard_Transient (mutable)
-    pub fn ExprIntrp_SyntaxError_as_Standard_Transient_mut(
-        self_: *mut ExprIntrp_SyntaxError,
-    ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Wrap ExprIntrp_SyntaxError in a Handle
-    pub fn ExprIntrp_SyntaxError_to_handle(
-        obj: *mut ExprIntrp_SyntaxError,
-    ) -> crate::OcctResult<*mut HandleExprIntrpSyntaxError>;
-    /// Destroy Handle<ExprIntrp_SyntaxError>
-    pub fn HandleExprIntrpSyntaxError_destructor(self_: *mut HandleExprIntrpSyntaxError);
-    /// Clone Handle<ExprIntrp_SyntaxError> (increments reference count)
-    pub fn HandleExprIntrpSyntaxError_clone(
-        self_: *const HandleExprIntrpSyntaxError,
-    ) -> crate::OcctResult<*mut HandleExprIntrpSyntaxError>;
-    /// Check if Handle<ExprIntrp_SyntaxError> is null
-    pub fn HandleExprIntrpSyntaxError_is_null(self_: *const HandleExprIntrpSyntaxError) -> bool;
-    /// Dereference Handle to get *const ExprIntrp_SyntaxError
-    pub fn HandleExprIntrpSyntaxError_get(
-        handle: *const HandleExprIntrpSyntaxError,
-    ) -> crate::OcctResult<*const ExprIntrp_SyntaxError>;
-    /// Dereference Handle to get *mut ExprIntrp_SyntaxError
-    pub fn HandleExprIntrpSyntaxError_get_mut(
-        handle: *mut HandleExprIntrpSyntaxError,
-    ) -> crate::OcctResult<*mut ExprIntrp_SyntaxError>;
-    /// Upcast Handle<ExprIntrp_SyntaxError> to Handle<Standard_Failure>
-    pub fn HandleExprIntrpSyntaxError_to_HandleStandardFailure(
-        self_: *const HandleExprIntrpSyntaxError,
-    ) -> crate::OcctResult<*mut HandleStandardFailure>;
-    /// Upcast Handle<ExprIntrp_SyntaxError> to Handle<Standard_Transient>
-    pub fn HandleExprIntrpSyntaxError_to_HandleStandardTransient(
-        self_: *const HandleExprIntrpSyntaxError,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
-    /// Inherited: **Source:** `Standard_Failure.hxx`:58 - `Standard_Failure::Print()`
+    /// Inherited: **Source:** `Standard_Failure.hxx`:73 - `Standard_Failure::Print()`
     pub fn ExprIntrp_SyntaxError_inherited_Print(
         self_: *const ExprIntrp_SyntaxError,
         theStream: *mut Standard_OStream,
-    ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Failure.hxx`:72 - `Standard_Failure::Reraise()`
-    pub fn ExprIntrp_SyntaxError_inherited_Reraise(
-        self_: *mut ExprIntrp_SyntaxError,
-    ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Failure.hxx`:112 - `Standard_Failure::Jump()`
-    pub fn ExprIntrp_SyntaxError_inherited_Jump(
-        self_: *mut ExprIntrp_SyntaxError,
-    ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn ExprIntrp_SyntaxError_inherited_IsInstance(
-        self_: *const ExprIntrp_SyntaxError,
-        theType: *const HandleStandardType,
-    ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn ExprIntrp_SyntaxError_inherited_IsKind(
-        self_: *const ExprIntrp_SyntaxError,
-        theType: *const HandleStandardType,
-    ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
-    pub fn ExprIntrp_SyntaxError_inherited_This(
-        self_: *const ExprIntrp_SyntaxError,
-    ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
-    pub fn ExprIntrp_SyntaxError_inherited_GetRefCount(
-        self_: *const ExprIntrp_SyntaxError,
-    ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
-    pub fn ExprIntrp_SyntaxError_inherited_IncrementRefCounter(
-        self_: *mut ExprIntrp_SyntaxError,
-    ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
-    pub fn ExprIntrp_SyntaxError_inherited_DecrementRefCounter(
-        self_: *mut ExprIntrp_SyntaxError,
-    ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
-    pub fn ExprIntrp_SyntaxError_inherited_Delete(
-        self_: *const ExprIntrp_SyntaxError,
     ) -> *const std::ffi::c_char;
 
     // Free functions
     /// **Source:** `Expr.hxx`:39 - `Expr::CopyShare`
     pub fn Expr_copy_share(
-        exp: *const HandleExprGeneralExpression,
-    ) -> crate::OcctResult<*mut HandleExprGeneralExpression>;
+        exp: *const Handle_Expr_GeneralExpression,
+    ) -> crate::OcctResult<*mut Handle_Expr_GeneralExpression>;
     /// **Source:** `Expr.hxx`:42 - `Expr::NbOfFreeVariables`
     pub fn Expr_nb_of_free_variables_handleexprgeneralexpression(
-        exp: *const HandleExprGeneralExpression,
+        exp: *const Handle_Expr_GeneralExpression,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `Expr.hxx`:45 - `Expr::NbOfFreeVariables`
+    /// **Source:** `Expr.hxx`:44 - `Expr::NbOfFreeVariables`
     pub fn Expr_nb_of_free_variables_handleexprgeneralrelation(
-        exp: *const HandleExprGeneralRelation,
+        exp: *const Handle_Expr_GeneralRelation,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `Expr.hxx`:48 - `Expr::Sign`
+    /// **Source:** `Expr.hxx`:46 - `Expr::Sign`
     pub fn Expr_sign(val: f64) -> crate::OcctResult<f64>;
-
-    // Nested type & typedef type destructors
-    pub fn ExprIntrp_SequenceOfNamedExpression_destructor(
-        self_: *mut ExprIntrp_SequenceOfNamedExpression,
-    );
-    pub fn ExprIntrp_SequenceOfNamedFunction_destructor(
-        self_: *mut ExprIntrp_SequenceOfNamedFunction,
-    );
-    pub fn Expr_Array1OfGeneralExpression_destructor(self_: *mut Expr_Array1OfGeneralExpression);
-    pub fn Expr_Array1OfNamedUnknown_destructor(self_: *mut Expr_Array1OfNamedUnknown);
-    pub fn Expr_SequenceOfGeneralExpression_destructor(
-        self_: *mut Expr_SequenceOfGeneralExpression,
-    );
 }

@@ -7,7 +7,7 @@
 #![allow(non_snake_case)]
 
 // Handle type re-exports (targets of handle upcasts/downcasts)
-pub use crate::ffi_types::{HandleStandardTransient, HandleStdObjMgtPersistent};
+pub use crate::ffi_types::{Handle_Standard_Transient, Handle_StdObjMgt_Persistent};
 
 // ========================
 // From StdLPersistent_Data.hxx
@@ -79,7 +79,7 @@ impl Data {
 
     /// **Source:** `StdLPersistent_Data.hxx`:46 - `StdLPersistent_Data::Import()`
     /// Import transient data from the persistent data.
-    pub fn import(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTDFData> {
+    pub fn import(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_TDF_Data> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKStdL::StdLPersistent_Data_import(self as *const Self),
@@ -134,7 +134,7 @@ impl Data {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStdLPersistentData> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_StdLPersistent_Data> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKStdL::StdLPersistent_Data_to_handle(obj.into_raw()),
@@ -143,7 +143,7 @@ impl Data {
     }
 
     /// Inherited: **Source:** `StdObjMgt_Persistent.hxx`:66 - `StdObjMgt_Persistent::ImportDocument()`
-    pub fn import_document(&self, theDocument: &crate::ffi_types::HandleTDocStdDocument) {
+    pub fn import_document(&self, theDocument: &crate::ffi_types::Handle_TDocStd_Document) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKStdL::StdLPersistent_Data_inherited_ImportDocument(
                 self as *const Self,
@@ -152,8 +152,8 @@ impl Data {
         })
     }
 
-    /// Inherited: **Source:** `StdObjMgt_Persistent.hxx`:71 - `StdObjMgt_Persistent::CreateAttribute()`
-    pub fn create_attribute(&mut self) -> crate::OwnedPtr<crate::ffi_types::HandleTDFAttribute> {
+    /// Inherited: **Source:** `StdObjMgt_Persistent.hxx`:72 - `StdObjMgt_Persistent::CreateAttribute()`
+    pub fn create_attribute(&mut self) -> crate::OwnedPtr<crate::ffi_types::Handle_TDF_Attribute> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKStdL::StdLPersistent_Data_inherited_CreateAttribute(
@@ -163,8 +163,8 @@ impl Data {
         }
     }
 
-    /// Inherited: **Source:** `StdObjMgt_Persistent.hxx`:76 - `StdObjMgt_Persistent::GetAttribute()`
-    pub fn get_attribute(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTDFAttribute> {
+    /// Inherited: **Source:** `StdObjMgt_Persistent.hxx`:77 - `StdObjMgt_Persistent::GetAttribute()`
+    pub fn get_attribute(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_TDF_Attribute> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKStdL::StdLPersistent_Data_inherited_GetAttribute(
@@ -174,7 +174,7 @@ impl Data {
         }
     }
 
-    /// Inherited: **Source:** `StdObjMgt_Persistent.hxx`:81 - `StdObjMgt_Persistent::ImportAttribute()`
+    /// Inherited: **Source:** `StdObjMgt_Persistent.hxx`:82 - `StdObjMgt_Persistent::ImportAttribute()`
     pub fn import_attribute(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKStdL::StdLPersistent_Data_inherited_ImportAttribute(
@@ -183,8 +183,10 @@ impl Data {
         })
     }
 
-    /// Inherited: **Source:** `StdObjMgt_Persistent.hxx`:86 - `StdObjMgt_Persistent::AsciiString()`
-    pub fn ascii_string(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTCollectionHAsciiString> {
+    /// Inherited: **Source:** `StdObjMgt_Persistent.hxx`:87 - `StdObjMgt_Persistent::AsciiString()`
+    pub fn ascii_string(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_TCollection_HAsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKStdL::StdLPersistent_Data_inherited_AsciiString(
@@ -194,10 +196,10 @@ impl Data {
         }
     }
 
-    /// Inherited: **Source:** `StdObjMgt_Persistent.hxx`:91 - `StdObjMgt_Persistent::ExtString()`
+    /// Inherited: **Source:** `StdObjMgt_Persistent.hxx`:92 - `StdObjMgt_Persistent::ExtString()`
     pub fn ext_string(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleTCollectionHExtendedString> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_TCollection_HExtendedString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKStdL::StdLPersistent_Data_inherited_ExtString(
@@ -207,10 +209,10 @@ impl Data {
         }
     }
 
-    /// Inherited: **Source:** `StdObjMgt_Persistent.hxx`:96 - `StdObjMgt_Persistent::Label()`
+    /// Inherited: **Source:** `StdObjMgt_Persistent.hxx`:97 - `StdObjMgt_Persistent::Label()`
     pub fn label(
         &self,
-        theDF: &crate::ffi_types::HandleTDFData,
+        theDF: &crate::ffi_types::Handle_TDF_Data,
     ) -> crate::OwnedPtr<crate::tdf::Label> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -222,22 +224,22 @@ impl Data {
         }
     }
 
-    /// Inherited: **Source:** `StdObjMgt_Persistent.hxx`:99 - `StdObjMgt_Persistent::TypeNum()`
+    /// Inherited: **Source:** `StdObjMgt_Persistent.hxx`:100 - `StdObjMgt_Persistent::TypeNum()`
     pub fn type_num(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKStdL::StdLPersistent_Data_inherited_TypeNum(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `StdObjMgt_Persistent.hxx`:105 - `StdObjMgt_Persistent::RefNum()`
+    /// Inherited: **Source:** `StdObjMgt_Persistent.hxx`:106 - `StdObjMgt_Persistent::RefNum()`
     pub fn ref_num(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKStdL::StdLPersistent_Data_inherited_RefNum(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:71 - `Standard_Transient::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:79 - `Standard_Transient::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKStdL::StdLPersistent_Data_inherited_DynamicType(
@@ -247,8 +249,8 @@ impl Data {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKStdL::StdLPersistent_Data_inherited_IsInstance(
                 self as *const Self,
@@ -257,8 +259,8 @@ impl Data {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKStdL::StdLPersistent_Data_inherited_IsKind(
                 self as *const Self,
@@ -267,7 +269,7 @@ impl Data {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -281,14 +283,14 @@ impl Data {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKStdL::StdLPersistent_Data_inherited_GetRefCount(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKStdL::StdLPersistent_Data_inherited_IncrementRefCounter(
@@ -297,7 +299,7 @@ impl Data {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKStdL::StdLPersistent_Data_inherited_DecrementRefCounter(
@@ -306,7 +308,7 @@ impl Data {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKStdL::StdLPersistent_Data_inherited_Delete(self as *const Self)
@@ -314,34 +316,34 @@ impl Data {
     }
 }
 
-pub use crate::ffi_types::HandleStdLPersistentData;
+pub use crate::ffi_types::Handle_StdLPersistent_Data;
 
-unsafe impl crate::CppDeletable for HandleStdLPersistentData {
+unsafe impl crate::CppDeletable for Handle_StdLPersistent_Data {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKStdL::HandleStdLPersistentData_destructor(ptr);
+            crate::ffi_extern_TKStdL::Handle_StdLPersistent_Data_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleStdLPersistentData {
+unsafe impl crate::CppCopyable for Handle_StdLPersistent_Data {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
         unsafe {
-            crate::check_result(crate::ffi_extern_TKStdL::HandleStdLPersistentData_clone(ptr))
+            crate::check_result(crate::ffi_extern_TKStdL::Handle_StdLPersistent_Data_clone(ptr))
         }
     }
 }
 
-impl HandleStdLPersistentData {
+impl Handle_StdLPersistent_Data {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
-        unsafe { crate::ffi_extern_TKStdL::HandleStdLPersistentData_is_null(self as *const Self) }
+        unsafe { crate::ffi_extern_TKStdL::Handle_StdLPersistent_Data_is_null(self as *const Self) }
     }
 
     /// Dereference this Handle to access the underlying StdLPersistent_Data
     pub fn get(&self) -> &crate::ffi_types::StdLPersistent_Data {
         unsafe {
-            &*crate::check_result(crate::ffi_extern_TKStdL::HandleStdLPersistentData_get(
+            &*crate::check_result(crate::ffi_extern_TKStdL::Handle_StdLPersistent_Data_get(
                 self as *const Self,
             ))
         }
@@ -350,7 +352,7 @@ impl HandleStdLPersistentData {
     /// Dereference this Handle to mutably access the underlying StdLPersistent_Data
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::StdLPersistent_Data {
         unsafe {
-            &mut *crate::check_result(crate::ffi_extern_TKStdL::HandleStdLPersistentData_get_mut(
+            &mut *crate::check_result(crate::ffi_extern_TKStdL::Handle_StdLPersistent_Data_get_mut(
                 self as *mut Self,
             ))
         }
@@ -359,10 +361,10 @@ impl HandleStdLPersistentData {
     /// Upcast Handle<StdLPersistent_Data> to Handle<StdObjMgt_Persistent>
     pub fn to_handle_persistent(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStdObjMgtPersistent> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_StdObjMgt_Persistent> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKStdL::HandleStdLPersistentData_to_HandleStdObjMgtPersistent(
+                crate::ffi_extern_TKStdL::Handle_StdLPersistent_Data_to_Handle_StdObjMgt_Persistent(
                     self as *const Self,
                 ),
             ))
@@ -372,10 +374,10 @@ impl HandleStdLPersistentData {
     /// Upcast Handle<StdLPersistent_Data> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKStdL::HandleStdLPersistentData_to_HandleStandardTransient(
+                crate::ffi_extern_TKStdL::Handle_StdLPersistent_Data_to_Handle_Standard_Transient(
                     self as *const Self,
                 ),
             ))
@@ -453,7 +455,7 @@ impl Document {
 
     /// **Source:** `StdLPersistent_Document.hxx`:36 - `StdLPersistent_Document::ImportDocument()`
     /// Import transient document from the persistent data.
-    pub fn import_document(&self, theDocument: &crate::ffi_types::HandleTDocStdDocument) {
+    pub fn import_document(&self, theDocument: &crate::ffi_types::Handle_TDocStd_Document) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKStdL::StdLPersistent_Document_import_document(
                 self as *const Self,
@@ -509,7 +511,7 @@ impl Document {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStdLPersistentDocument> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_StdLPersistent_Document> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKStdL::StdLPersistent_Document_to_handle(obj.into_raw()),
@@ -517,8 +519,8 @@ impl Document {
         }
     }
 
-    /// Inherited: **Source:** `StdObjMgt_Persistent.hxx`:71 - `StdObjMgt_Persistent::CreateAttribute()`
-    pub fn create_attribute(&mut self) -> crate::OwnedPtr<crate::ffi_types::HandleTDFAttribute> {
+    /// Inherited: **Source:** `StdObjMgt_Persistent.hxx`:72 - `StdObjMgt_Persistent::CreateAttribute()`
+    pub fn create_attribute(&mut self) -> crate::OwnedPtr<crate::ffi_types::Handle_TDF_Attribute> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKStdL::StdLPersistent_Document_inherited_CreateAttribute(
@@ -528,8 +530,8 @@ impl Document {
         }
     }
 
-    /// Inherited: **Source:** `StdObjMgt_Persistent.hxx`:76 - `StdObjMgt_Persistent::GetAttribute()`
-    pub fn get_attribute(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTDFAttribute> {
+    /// Inherited: **Source:** `StdObjMgt_Persistent.hxx`:77 - `StdObjMgt_Persistent::GetAttribute()`
+    pub fn get_attribute(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_TDF_Attribute> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKStdL::StdLPersistent_Document_inherited_GetAttribute(
@@ -539,7 +541,7 @@ impl Document {
         }
     }
 
-    /// Inherited: **Source:** `StdObjMgt_Persistent.hxx`:81 - `StdObjMgt_Persistent::ImportAttribute()`
+    /// Inherited: **Source:** `StdObjMgt_Persistent.hxx`:82 - `StdObjMgt_Persistent::ImportAttribute()`
     pub fn import_attribute(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKStdL::StdLPersistent_Document_inherited_ImportAttribute(
@@ -548,8 +550,10 @@ impl Document {
         })
     }
 
-    /// Inherited: **Source:** `StdObjMgt_Persistent.hxx`:86 - `StdObjMgt_Persistent::AsciiString()`
-    pub fn ascii_string(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTCollectionHAsciiString> {
+    /// Inherited: **Source:** `StdObjMgt_Persistent.hxx`:87 - `StdObjMgt_Persistent::AsciiString()`
+    pub fn ascii_string(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_TCollection_HAsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKStdL::StdLPersistent_Document_inherited_AsciiString(
@@ -559,10 +563,10 @@ impl Document {
         }
     }
 
-    /// Inherited: **Source:** `StdObjMgt_Persistent.hxx`:91 - `StdObjMgt_Persistent::ExtString()`
+    /// Inherited: **Source:** `StdObjMgt_Persistent.hxx`:92 - `StdObjMgt_Persistent::ExtString()`
     pub fn ext_string(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleTCollectionHExtendedString> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_TCollection_HExtendedString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKStdL::StdLPersistent_Document_inherited_ExtString(
@@ -572,10 +576,10 @@ impl Document {
         }
     }
 
-    /// Inherited: **Source:** `StdObjMgt_Persistent.hxx`:96 - `StdObjMgt_Persistent::Label()`
+    /// Inherited: **Source:** `StdObjMgt_Persistent.hxx`:97 - `StdObjMgt_Persistent::Label()`
     pub fn label(
         &self,
-        theDF: &crate::ffi_types::HandleTDFData,
+        theDF: &crate::ffi_types::Handle_TDF_Data,
     ) -> crate::OwnedPtr<crate::tdf::Label> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -587,22 +591,22 @@ impl Document {
         }
     }
 
-    /// Inherited: **Source:** `StdObjMgt_Persistent.hxx`:99 - `StdObjMgt_Persistent::TypeNum()`
+    /// Inherited: **Source:** `StdObjMgt_Persistent.hxx`:100 - `StdObjMgt_Persistent::TypeNum()`
     pub fn type_num(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKStdL::StdLPersistent_Document_inherited_TypeNum(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `StdObjMgt_Persistent.hxx`:105 - `StdObjMgt_Persistent::RefNum()`
+    /// Inherited: **Source:** `StdObjMgt_Persistent.hxx`:106 - `StdObjMgt_Persistent::RefNum()`
     pub fn ref_num(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKStdL::StdLPersistent_Document_inherited_RefNum(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:71 - `Standard_Transient::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:79 - `Standard_Transient::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKStdL::StdLPersistent_Document_inherited_DynamicType(
@@ -612,8 +616,8 @@ impl Document {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKStdL::StdLPersistent_Document_inherited_IsInstance(
                 self as *const Self,
@@ -622,8 +626,8 @@ impl Document {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKStdL::StdLPersistent_Document_inherited_IsKind(
                 self as *const Self,
@@ -632,7 +636,7 @@ impl Document {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -648,7 +652,7 @@ impl Document {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKStdL::StdLPersistent_Document_inherited_GetRefCount(
@@ -657,7 +661,7 @@ impl Document {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKStdL::StdLPersistent_Document_inherited_IncrementRefCounter(
@@ -666,7 +670,7 @@ impl Document {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKStdL::StdLPersistent_Document_inherited_DecrementRefCounter(
@@ -675,7 +679,7 @@ impl Document {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKStdL::StdLPersistent_Document_inherited_Delete(self as *const Self)
@@ -683,36 +687,36 @@ impl Document {
     }
 }
 
-pub use crate::ffi_types::HandleStdLPersistentDocument;
+pub use crate::ffi_types::Handle_StdLPersistent_Document;
 
-unsafe impl crate::CppDeletable for HandleStdLPersistentDocument {
+unsafe impl crate::CppDeletable for Handle_StdLPersistent_Document {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKStdL::HandleStdLPersistentDocument_destructor(ptr);
+            crate::ffi_extern_TKStdL::Handle_StdLPersistent_Document_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleStdLPersistentDocument {
+unsafe impl crate::CppCopyable for Handle_StdLPersistent_Document {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
         unsafe {
-            crate::check_result(crate::ffi_extern_TKStdL::HandleStdLPersistentDocument_clone(ptr))
+            crate::check_result(crate::ffi_extern_TKStdL::Handle_StdLPersistent_Document_clone(ptr))
         }
     }
 }
 
-impl HandleStdLPersistentDocument {
+impl Handle_StdLPersistent_Document {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
         unsafe {
-            crate::ffi_extern_TKStdL::HandleStdLPersistentDocument_is_null(self as *const Self)
+            crate::ffi_extern_TKStdL::Handle_StdLPersistent_Document_is_null(self as *const Self)
         }
     }
 
     /// Dereference this Handle to access the underlying StdLPersistent_Document
     pub fn get(&self) -> &crate::ffi_types::StdLPersistent_Document {
         unsafe {
-            &*crate::check_result(crate::ffi_extern_TKStdL::HandleStdLPersistentDocument_get(
+            &*crate::check_result(crate::ffi_extern_TKStdL::Handle_StdLPersistent_Document_get(
                 self as *const Self,
             ))
         }
@@ -722,7 +726,7 @@ impl HandleStdLPersistentDocument {
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::StdLPersistent_Document {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi_extern_TKStdL::HandleStdLPersistentDocument_get_mut(self as *mut Self),
+                crate::ffi_extern_TKStdL::Handle_StdLPersistent_Document_get_mut(self as *mut Self),
             )
         }
     }
@@ -730,26 +734,18 @@ impl HandleStdLPersistentDocument {
     /// Upcast Handle<StdLPersistent_Document> to Handle<StdObjMgt_Persistent>
     pub fn to_handle_persistent(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStdObjMgtPersistent> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_StdObjMgt_Persistent> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKStdL::HandleStdLPersistentDocument_to_HandleStdObjMgtPersistent(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKStdL::Handle_StdLPersistent_Document_to_Handle_StdObjMgt_Persistent(self as *const Self)))
         }
     }
 
     /// Upcast Handle<StdLPersistent_Document> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKStdL::HandleStdLPersistentDocument_to_HandleStandardTransient(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKStdL::Handle_StdLPersistent_Document_to_Handle_Standard_Transient(self as *const Self)))
         }
     }
 }
@@ -824,573 +820,13 @@ impl Function {
 
     /// **Source:** `StdLPersistent_Function.hxx`:47 - `StdLPersistent_Function::Import()`
     /// Import transient attribute from the persistent data.
-    pub fn import(&self, theAttribute: &crate::ffi_types::HandleTFunctionFunction) {
+    pub fn import(&self, theAttribute: &crate::ffi_types::Handle_TFunction_Function) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKStdL::StdLPersistent_Function_import(
                 self as *const Self,
                 theAttribute,
             )
         })
-    }
-}
-
-// ========================
-// From StdLPersistent_HArray1.hxx
-// ========================
-
-/// **Source:** `StdLPersistent_HArray1.hxx`:28 - `StdLPersistent_HArray1OfPersistent`
-pub use crate::ffi_types::StdLPersistent_HArray1OfPersistent as HArray1OfPersistent;
-
-unsafe impl crate::CppDeletable for HArray1OfPersistent {
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            crate::ffi_extern_TKStdL::StdLPersistent_HArray1OfPersistent_destructor(ptr);
-        }
-    }
-}
-
-impl HArray1OfPersistent {
-    /// **Source:** `StdLPersistent_HArray1.hxx`:28 - `StdLPersistent_HArray1OfPersistent::StdLPersistent_HArray1OfPersistent()`
-    pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKStdL::StdLPersistent_HArray1OfPersistent_ctor(),
-            ))
-        }
-    }
-
-    /// **Source:** `StdLPersistent_HArray1.hxx`:28 - `StdLPersistent_HArray1OfPersistent::StdLPersistent_HArray1OfPersistent()`
-    pub fn new_int2(theLower: i32, theUpper: i32) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKStdL::StdLPersistent_HArray1OfPersistent_ctor_int2(
-                    theLower, theUpper,
-                ),
-            ))
-        }
-    }
-
-    /// **Source:** `StdLPersistent_HArray1.hxx`:28 - `StdLPersistent_HArray1OfPersistent::StdLPersistent_HArray1OfPersistent()`
-    pub fn new_int2_handlestdobjmgtpersistent(
-        theLower: i32,
-        theUpper: i32,
-        theValue: &crate::ffi_types::HandleStdObjMgtPersistent,
-    ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKStdL::StdLPersistent_HArray1OfPersistent_ctor_int2_handlestdobjmgtpersistent(theLower, theUpper, theValue)))
-        }
-    }
-
-    /// **Source:** `StdLPersistent_HArray1.hxx`:28 - `StdLPersistent_HArray1OfPersistent::StdLPersistent_HArray1OfPersistent()`
-    pub fn new_handlestdobjmgtpersistent_int2_bool(
-        theBegin: &crate::ffi_types::HandleStdObjMgtPersistent,
-        theLower: i32,
-        theUpper: i32,
-        arg3: bool,
-    ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKStdL::StdLPersistent_HArray1OfPersistent_ctor_handlestdobjmgtpersistent_int2_bool(theBegin, theLower, theUpper, arg3)))
-        }
-    }
-
-    /// **Source:** `StdLPersistent_HArray1.hxx`:28 - `StdLPersistent_HArray1OfPersistent::StdLPersistent_HArray1OfPersistent()`
-    pub fn new_array1_opencascade_handle_stdobjmgt_persistent(
-        theOther: &crate::ffi_types::NCollection_Array1_opencascade_handle_StdObjMgt_Persistent,
-    ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKStdL::StdLPersistent_HArray1OfPersistent_ctor_array1_opencascade_handle_stdobjmgt_persistent(theOther)))
-        }
-    }
-
-    /// **Source:** `StdLPersistent_HArray1.hxx`:28 - `StdLPersistent_HArray1OfPersistent::Array1()`
-    pub fn array1(
-        &self,
-    ) -> &crate::ffi_types::NCollection_Array1_opencascade_handle_StdObjMgt_Persistent {
-        unsafe {
-            &*(crate::check_result(
-                crate::ffi_extern_TKStdL::StdLPersistent_HArray1OfPersistent_array1(
-                    self as *const Self,
-                ),
-            ))
-        }
-    }
-
-    /// **Source:** `StdLPersistent_HArray1.hxx`:28 - `StdLPersistent_HArray1OfPersistent::ChangeArray1()`
-    pub fn change_array1(
-        &mut self,
-    ) -> &mut crate::ffi_types::NCollection_Array1_opencascade_handle_StdObjMgt_Persistent {
-        unsafe {
-            &mut *(crate::check_result(
-                crate::ffi_extern_TKStdL::StdLPersistent_HArray1OfPersistent_change_array1(
-                    self as *mut Self,
-                ),
-            ))
-        }
-    }
-
-    /// **Source:** `StdLPersistent_HArray1.hxx`:28 - `StdLPersistent_HArray1OfPersistent::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
-        unsafe {
-            &*(crate::check_result(
-                crate::ffi_extern_TKStdL::StdLPersistent_HArray1OfPersistent_dynamic_type(
-                    self as *const Self,
-                ),
-            ))
-        }
-    }
-
-    /// **Source:** `StdLPersistent_HArray1.hxx`:28 - `StdLPersistent_HArray1OfPersistent::get_type_name()`
-    pub fn get_type_name() -> std::string::String {
-        unsafe {
-            std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi_extern_TKStdL::StdLPersistent_HArray1OfPersistent_get_type_name(),
-            ))
-        }
-        .to_string_lossy()
-        .into_owned()
-    }
-
-    /// **Source:** `StdLPersistent_HArray1.hxx`:28 - `StdLPersistent_HArray1OfPersistent::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
-        unsafe {
-            &*(crate::check_result(
-                crate::ffi_extern_TKStdL::StdLPersistent_HArray1OfPersistent_get_type_descriptor(),
-            ))
-        }
-    }
-
-    /// Upcast to Standard_Transient
-    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        unsafe {
-            &*crate::check_result(
-                crate::ffi_extern_TKStdL::StdLPersistent_HArray1OfPersistent_as_Standard_Transient(
-                    self as *const Self,
-                ),
-            )
-        }
-    }
-
-    /// Upcast to Standard_Transient (mutable)
-    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        unsafe {
-            &mut *crate::check_result(crate::ffi_extern_TKStdL::StdLPersistent_HArray1OfPersistent_as_Standard_Transient_mut(self as *mut Self))
-        }
-    }
-
-    /// Wrap in a Handle (reference-counted smart pointer)
-    pub fn to_handle(
-        obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStdLPersistentHArray1OfPersistent> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKStdL::StdLPersistent_HArray1OfPersistent_to_handle(
-                    obj.into_raw(),
-                ),
-            ))
-        }
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKStdL::StdLPersistent_HArray1OfPersistent_inherited_IsInstance(
-                self as *const Self,
-                theType,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKStdL::StdLPersistent_HArray1OfPersistent_inherited_IsKind(
-                self as *const Self,
-                theType,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
-    pub fn this(&self) -> Option<&crate::standard::Transient> {
-        {
-            let __val = crate::check_result(unsafe {
-                crate::ffi_extern_TKStdL::StdLPersistent_HArray1OfPersistent_inherited_This(
-                    self as *const Self,
-                )
-            });
-            if __val.is_null() {
-                None
-            } else {
-                Some(unsafe { &*__val })
-            }
-        }
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
-    pub fn get_ref_count(&self) -> i32 {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKStdL::StdLPersistent_HArray1OfPersistent_inherited_GetRefCount(
-                self as *const Self,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
-    pub fn increment_ref_counter(&mut self) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKStdL::StdLPersistent_HArray1OfPersistent_inherited_IncrementRefCounter(self as *mut Self)
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
-    pub fn decrement_ref_counter(&mut self) -> i32 {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKStdL::StdLPersistent_HArray1OfPersistent_inherited_DecrementRefCounter(self as *mut Self)
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
-    pub fn delete(&self) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKStdL::StdLPersistent_HArray1OfPersistent_inherited_Delete(
-                self as *const Self,
-            )
-        })
-    }
-}
-
-pub use crate::ffi_types::HandleStdLPersistentHArray1OfPersistent;
-
-unsafe impl crate::CppDeletable for HandleStdLPersistentHArray1OfPersistent {
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            crate::ffi_extern_TKStdL::HandleStdLPersistentHArray1OfPersistent_destructor(ptr);
-        }
-    }
-}
-
-unsafe impl crate::CppCopyable for HandleStdLPersistentHArray1OfPersistent {
-    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        unsafe {
-            crate::check_result(
-                crate::ffi_extern_TKStdL::HandleStdLPersistentHArray1OfPersistent_clone(ptr),
-            )
-        }
-    }
-}
-
-impl HandleStdLPersistentHArray1OfPersistent {
-    /// Returns `true` if this Handle is null (doesn't point to any object).
-    pub fn is_null(&self) -> bool {
-        unsafe {
-            crate::ffi_extern_TKStdL::HandleStdLPersistentHArray1OfPersistent_is_null(
-                self as *const Self,
-            )
-        }
-    }
-
-    /// Dereference this Handle to access the underlying StdLPersistent_HArray1OfPersistent
-    pub fn get(&self) -> &crate::ffi_types::StdLPersistent_HArray1OfPersistent {
-        unsafe {
-            &*crate::check_result(
-                crate::ffi_extern_TKStdL::HandleStdLPersistentHArray1OfPersistent_get(
-                    self as *const Self,
-                ),
-            )
-        }
-    }
-
-    /// Dereference this Handle to mutably access the underlying StdLPersistent_HArray1OfPersistent
-    pub fn get_mut(&mut self) -> &mut crate::ffi_types::StdLPersistent_HArray1OfPersistent {
-        unsafe {
-            &mut *crate::check_result(
-                crate::ffi_extern_TKStdL::HandleStdLPersistentHArray1OfPersistent_get_mut(
-                    self as *mut Self,
-                ),
-            )
-        }
-    }
-
-    /// Upcast Handle<StdLPersistent_HArray1OfPersistent> to Handle<Standard_Transient>
-    pub fn to_handle_transient(
-        &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKStdL::HandleStdLPersistentHArray1OfPersistent_to_HandleStandardTransient(self as *const Self)))
-        }
-    }
-}
-
-// ========================
-// From StdLPersistent_HArray2.hxx
-// ========================
-
-/// **Source:** `StdLPersistent_HArray2.hxx`:27 - `StdLPersistent_HArray2OfPersistent`
-pub use crate::ffi_types::StdLPersistent_HArray2OfPersistent as HArray2OfPersistent;
-
-unsafe impl crate::CppDeletable for HArray2OfPersistent {
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            crate::ffi_extern_TKStdL::StdLPersistent_HArray2OfPersistent_destructor(ptr);
-        }
-    }
-}
-
-impl HArray2OfPersistent {
-    /// **Source:** `StdLPersistent_HArray2.hxx`:27 - `StdLPersistent_HArray2OfPersistent::StdLPersistent_HArray2OfPersistent()`
-    pub fn new_int4(
-        theRowLow: i32,
-        theRowUpp: i32,
-        theColLow: i32,
-        theColUpp: i32,
-    ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKStdL::StdLPersistent_HArray2OfPersistent_ctor_int4(
-                    theRowLow, theRowUpp, theColLow, theColUpp,
-                ),
-            ))
-        }
-    }
-
-    /// **Source:** `StdLPersistent_HArray2.hxx`:27 - `StdLPersistent_HArray2OfPersistent::StdLPersistent_HArray2OfPersistent()`
-    pub fn new_int4_handlestdobjmgtpersistent(
-        theRowLow: i32,
-        theRowUpp: i32,
-        theColLow: i32,
-        theColUpp: i32,
-        theValue: &crate::ffi_types::HandleStdObjMgtPersistent,
-    ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKStdL::StdLPersistent_HArray2OfPersistent_ctor_int4_handlestdobjmgtpersistent(theRowLow, theRowUpp, theColLow, theColUpp, theValue)))
-        }
-    }
-
-    /// **Source:** `StdLPersistent_HArray2.hxx`:27 - `StdLPersistent_HArray2OfPersistent::StdLPersistent_HArray2OfPersistent()`
-    pub fn new_array2_opencascade_handle_stdobjmgt_persistent(
-        theOther: &crate::ffi_types::NCollection_Array2_opencascade_handle_StdObjMgt_Persistent,
-    ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKStdL::StdLPersistent_HArray2OfPersistent_ctor_array2_opencascade_handle_stdobjmgt_persistent(theOther)))
-        }
-    }
-
-    /// **Source:** `StdLPersistent_HArray2.hxx`:27 - `StdLPersistent_HArray2OfPersistent::Array2()`
-    pub fn array2(
-        &self,
-    ) -> &crate::ffi_types::NCollection_Array2_opencascade_handle_StdObjMgt_Persistent {
-        unsafe {
-            &*(crate::check_result(
-                crate::ffi_extern_TKStdL::StdLPersistent_HArray2OfPersistent_array2(
-                    self as *const Self,
-                ),
-            ))
-        }
-    }
-
-    /// **Source:** `StdLPersistent_HArray2.hxx`:27 - `StdLPersistent_HArray2OfPersistent::ChangeArray2()`
-    pub fn change_array2(
-        &mut self,
-    ) -> &mut crate::ffi_types::NCollection_Array2_opencascade_handle_StdObjMgt_Persistent {
-        unsafe {
-            &mut *(crate::check_result(
-                crate::ffi_extern_TKStdL::StdLPersistent_HArray2OfPersistent_change_array2(
-                    self as *mut Self,
-                ),
-            ))
-        }
-    }
-
-    /// **Source:** `StdLPersistent_HArray2.hxx`:27 - `StdLPersistent_HArray2OfPersistent::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
-        unsafe {
-            &*(crate::check_result(
-                crate::ffi_extern_TKStdL::StdLPersistent_HArray2OfPersistent_dynamic_type(
-                    self as *const Self,
-                ),
-            ))
-        }
-    }
-
-    /// **Source:** `StdLPersistent_HArray2.hxx`:27 - `StdLPersistent_HArray2OfPersistent::get_type_name()`
-    pub fn get_type_name() -> std::string::String {
-        unsafe {
-            std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi_extern_TKStdL::StdLPersistent_HArray2OfPersistent_get_type_name(),
-            ))
-        }
-        .to_string_lossy()
-        .into_owned()
-    }
-
-    /// **Source:** `StdLPersistent_HArray2.hxx`:27 - `StdLPersistent_HArray2OfPersistent::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
-        unsafe {
-            &*(crate::check_result(
-                crate::ffi_extern_TKStdL::StdLPersistent_HArray2OfPersistent_get_type_descriptor(),
-            ))
-        }
-    }
-
-    /// Upcast to Standard_Transient
-    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        unsafe {
-            &*crate::check_result(
-                crate::ffi_extern_TKStdL::StdLPersistent_HArray2OfPersistent_as_Standard_Transient(
-                    self as *const Self,
-                ),
-            )
-        }
-    }
-
-    /// Upcast to Standard_Transient (mutable)
-    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        unsafe {
-            &mut *crate::check_result(crate::ffi_extern_TKStdL::StdLPersistent_HArray2OfPersistent_as_Standard_Transient_mut(self as *mut Self))
-        }
-    }
-
-    /// Wrap in a Handle (reference-counted smart pointer)
-    pub fn to_handle(
-        obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStdLPersistentHArray2OfPersistent> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKStdL::StdLPersistent_HArray2OfPersistent_to_handle(
-                    obj.into_raw(),
-                ),
-            ))
-        }
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKStdL::StdLPersistent_HArray2OfPersistent_inherited_IsInstance(
-                self as *const Self,
-                theType,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKStdL::StdLPersistent_HArray2OfPersistent_inherited_IsKind(
-                self as *const Self,
-                theType,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
-    pub fn this(&self) -> Option<&crate::standard::Transient> {
-        {
-            let __val = crate::check_result(unsafe {
-                crate::ffi_extern_TKStdL::StdLPersistent_HArray2OfPersistent_inherited_This(
-                    self as *const Self,
-                )
-            });
-            if __val.is_null() {
-                None
-            } else {
-                Some(unsafe { &*__val })
-            }
-        }
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
-    pub fn get_ref_count(&self) -> i32 {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKStdL::StdLPersistent_HArray2OfPersistent_inherited_GetRefCount(
-                self as *const Self,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
-    pub fn increment_ref_counter(&mut self) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKStdL::StdLPersistent_HArray2OfPersistent_inherited_IncrementRefCounter(self as *mut Self)
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
-    pub fn decrement_ref_counter(&mut self) -> i32 {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKStdL::StdLPersistent_HArray2OfPersistent_inherited_DecrementRefCounter(self as *mut Self)
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
-    pub fn delete(&self) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKStdL::StdLPersistent_HArray2OfPersistent_inherited_Delete(
-                self as *const Self,
-            )
-        })
-    }
-}
-
-pub use crate::ffi_types::HandleStdLPersistentHArray2OfPersistent;
-
-unsafe impl crate::CppDeletable for HandleStdLPersistentHArray2OfPersistent {
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            crate::ffi_extern_TKStdL::HandleStdLPersistentHArray2OfPersistent_destructor(ptr);
-        }
-    }
-}
-
-unsafe impl crate::CppCopyable for HandleStdLPersistentHArray2OfPersistent {
-    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        unsafe {
-            crate::check_result(
-                crate::ffi_extern_TKStdL::HandleStdLPersistentHArray2OfPersistent_clone(ptr),
-            )
-        }
-    }
-}
-
-impl HandleStdLPersistentHArray2OfPersistent {
-    /// Returns `true` if this Handle is null (doesn't point to any object).
-    pub fn is_null(&self) -> bool {
-        unsafe {
-            crate::ffi_extern_TKStdL::HandleStdLPersistentHArray2OfPersistent_is_null(
-                self as *const Self,
-            )
-        }
-    }
-
-    /// Dereference this Handle to access the underlying StdLPersistent_HArray2OfPersistent
-    pub fn get(&self) -> &crate::ffi_types::StdLPersistent_HArray2OfPersistent {
-        unsafe {
-            &*crate::check_result(
-                crate::ffi_extern_TKStdL::HandleStdLPersistentHArray2OfPersistent_get(
-                    self as *const Self,
-                ),
-            )
-        }
-    }
-
-    /// Dereference this Handle to mutably access the underlying StdLPersistent_HArray2OfPersistent
-    pub fn get_mut(&mut self) -> &mut crate::ffi_types::StdLPersistent_HArray2OfPersistent {
-        unsafe {
-            &mut *crate::check_result(
-                crate::ffi_extern_TKStdL::HandleStdLPersistentHArray2OfPersistent_get_mut(
-                    self as *mut Self,
-                ),
-            )
-        }
-    }
-
-    /// Upcast Handle<StdLPersistent_HArray2OfPersistent> to Handle<Standard_Transient>
-    pub fn to_handle_transient(
-        &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKStdL::HandleStdLPersistentHArray2OfPersistent_to_HandleStandardTransient(self as *const Self)))
-        }
     }
 }
 
@@ -1445,7 +881,9 @@ impl HString_Ascii {
 
     /// **Source:** `StdLPersistent_HString.hxx`:51 - `StdLPersistent_HString_Ascii::AsciiString()`
     /// Get referenced ASCII string.
-    pub fn ascii_string(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTCollectionHAsciiString> {
+    pub fn ascii_string(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_TCollection_HAsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKStdL::StdLPersistent_HString_Ascii_ascii_string(
@@ -1493,7 +931,7 @@ impl HString_Extended {
     /// Get referenced extended string.
     pub fn ext_string(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleTCollectionHExtendedString> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_TCollection_HExtendedString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKStdL::StdLPersistent_HString_Extended_ext_string(
@@ -1587,7 +1025,7 @@ impl NamedData {
 
     /// **Source:** `StdLPersistent_NamedData.hxx`:88 - `StdLPersistent_NamedData::Import()`
     /// Import transient attribute from the persistent data.
-    pub fn import(&self, theAttribute: &crate::ffi_types::HandleTDataStdNamedData) {
+    pub fn import(&self, theAttribute: &crate::ffi_types::Handle_TDataStd_NamedData) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKStdL::StdLPersistent_NamedData_import(
                 self as *const Self,
@@ -1664,7 +1102,7 @@ impl Real {
 
     /// **Source:** `StdLPersistent_Real.hxx`:47 - `StdLPersistent_Real::Import()`
     /// Import transient attribute from the persistent data.
-    pub fn import(&self, theAttribute: &crate::ffi_types::HandleTDataStdReal) {
+    pub fn import(&self, theAttribute: &crate::ffi_types::Handle_TDataStd_Real) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKStdL::StdLPersistent_Real_import(self as *const Self, theAttribute)
         })
@@ -1741,7 +1179,7 @@ impl TreeNode {
 
     /// **Source:** `StdLPersistent_TreeNode.hxx`:38 - `StdLPersistent_TreeNode::CreateAttribute()`
     /// Create an empty transient attribute
-    pub fn create_attribute(&mut self) -> crate::OwnedPtr<crate::ffi_types::HandleTDFAttribute> {
+    pub fn create_attribute(&mut self) -> crate::OwnedPtr<crate::ffi_types::Handle_TDF_Attribute> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKStdL::StdLPersistent_TreeNode_create_attribute(
@@ -1917,7 +1355,7 @@ impl Value_UAttribute {
 
     /// **Source:** `StdLPersistent_Value.hxx`:69 - `StdLPersistent_Value_UAttribute::CreateAttribute()`
     /// Create an empty transient attribute
-    pub fn create_attribute(&mut self) -> crate::OwnedPtr<crate::ffi_types::HandleTDFAttribute> {
+    pub fn create_attribute(&mut self) -> crate::OwnedPtr<crate::ffi_types::Handle_TDF_Attribute> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKStdL::StdLPersistent_Value_UAttribute_create_attribute(
@@ -1965,7 +1403,7 @@ impl Value_Integer {
 
     /// **Source:** `StdLPersistent_Value.hxx`:78 - `StdLPersistent_Value_Integer::CreateAttribute()`
     /// Create an empty transient attribute
-    pub fn create_attribute(&mut self) -> crate::OwnedPtr<crate::ffi_types::HandleTDFAttribute> {
+    pub fn create_attribute(&mut self) -> crate::OwnedPtr<crate::ffi_types::Handle_TDF_Attribute> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKStdL::StdLPersistent_Value_Integer_create_attribute(
@@ -2011,7 +1449,7 @@ impl Value_Name {
 
     /// **Source:** `StdLPersistent_Value.hxx`:87 - `StdLPersistent_Value_Name::CreateAttribute()`
     /// Create an empty transient attribute
-    pub fn create_attribute(&mut self) -> crate::OwnedPtr<crate::ffi_types::HandleTDFAttribute> {
+    pub fn create_attribute(&mut self) -> crate::OwnedPtr<crate::ffi_types::Handle_TDF_Attribute> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKStdL::StdLPersistent_Value_Name_create_attribute(
@@ -2057,7 +1495,7 @@ impl Value_AsciiString {
 
     /// **Source:** `StdLPersistent_Value.hxx`:96 - `StdLPersistent_Value_AsciiString::CreateAttribute()`
     /// Create an empty transient attribute
-    pub fn create_attribute(&mut self) -> crate::OwnedPtr<crate::ffi_types::HandleTDFAttribute> {
+    pub fn create_attribute(&mut self) -> crate::OwnedPtr<crate::ffi_types::Handle_TDF_Attribute> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKStdL::StdLPersistent_Value_AsciiString_create_attribute(
@@ -2154,7 +1592,7 @@ impl Variable {
 
     /// **Source:** `StdLPersistent_Variable.hxx`:50 - `StdLPersistent_Variable::Import()`
     /// Import transient attribute from the persistent data.
-    pub fn import(&self, theAttribute: &crate::ffi_types::HandleTDataStdVariable) {
+    pub fn import(&self, theAttribute: &crate::ffi_types::Handle_TDataStd_Variable) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKStdL::StdLPersistent_Variable_import(
                 self as *const Self,
@@ -2234,7 +1672,7 @@ impl XLink {
 
     /// **Source:** `StdLPersistent_XLink.hxx`:45 - `StdLPersistent_XLink::Import()`
     /// Import transient attribute from the persistent data.
-    pub fn import(&self, theAttribute: &crate::ffi_types::HandleTDocStdXLink) {
+    pub fn import(&self, theAttribute: &crate::ffi_types::Handle_TDocStd_XLink) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKStdL::StdLPersistent_XLink_import(self as *const Self, theAttribute)
         })

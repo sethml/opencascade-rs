@@ -14,59 +14,63 @@ unsafe extern "C" {
     pub fn DESTL_ConfigurationNode_ctor() -> crate::OcctResult<*mut DESTL_ConfigurationNode>;
     /// **Source:** `DESTL_ConfigurationNode.hxx`:38 - `DESTL_ConfigurationNode::DESTL_ConfigurationNode()`
     pub fn DESTL_ConfigurationNode_ctor_handledestlconfigurationnode(
-        theNode: *const HandleDESTLConfigurationNode,
+        theNode: *const Handle_DESTL_ConfigurationNode,
     ) -> crate::OcctResult<*mut DESTL_ConfigurationNode>;
     /// **Source:** `DESTL_ConfigurationNode.hxx`:31 - `DESTL_ConfigurationNode::DynamicType()`
     pub fn DESTL_ConfigurationNode_dynamic_type(
         self_: *const DESTL_ConfigurationNode,
-    ) -> crate::OcctResult<*const HandleStandardType>;
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// **Source:** `DESTL_ConfigurationNode.hxx`:43 - `DESTL_ConfigurationNode::Load()`
     pub fn DESTL_ConfigurationNode_load(
         self_: *mut DESTL_ConfigurationNode,
-        theResource: *const HandleDEConfigurationContext,
+        theResource: *const Handle_DE_ConfigurationContext,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `DESTL_ConfigurationNode.hxx`:48 - `DESTL_ConfigurationNode::Save()`
+    /// **Source:** `DESTL_ConfigurationNode.hxx`:47 - `DESTL_ConfigurationNode::Save()`
     pub fn DESTL_ConfigurationNode_save(
         self_: *const DESTL_ConfigurationNode,
     ) -> crate::OcctResult<*mut TCollection_AsciiString>;
-    /// **Source:** `DESTL_ConfigurationNode.hxx`:52 - `DESTL_ConfigurationNode::Copy()`
+    /// **Source:** `DESTL_ConfigurationNode.hxx`:51 - `DESTL_ConfigurationNode::Copy()`
     pub fn DESTL_ConfigurationNode_copy(
         self_: *const DESTL_ConfigurationNode,
-    ) -> crate::OcctResult<*mut HandleDEConfigurationNode>;
-    /// **Source:** `DESTL_ConfigurationNode.hxx`:56 - `DESTL_ConfigurationNode::BuildProvider()`
+    ) -> crate::OcctResult<*mut Handle_DE_ConfigurationNode>;
+    /// **Source:** `DESTL_ConfigurationNode.hxx`:55 - `DESTL_ConfigurationNode::BuildProvider()`
     pub fn DESTL_ConfigurationNode_build_provider(
         self_: *mut DESTL_ConfigurationNode,
-    ) -> crate::OcctResult<*mut HandleDEProvider>;
-    /// **Source:** `DESTL_ConfigurationNode.hxx`:61 - `DESTL_ConfigurationNode::IsImportSupported()`
+    ) -> crate::OcctResult<*mut Handle_DE_Provider>;
+    /// **Source:** `DESTL_ConfigurationNode.hxx`:60 - `DESTL_ConfigurationNode::IsImportSupported()`
     pub fn DESTL_ConfigurationNode_is_import_supported(
         self_: *const DESTL_ConfigurationNode,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `DESTL_ConfigurationNode.hxx`:65 - `DESTL_ConfigurationNode::IsExportSupported()`
+    /// **Source:** `DESTL_ConfigurationNode.hxx`:64 - `DESTL_ConfigurationNode::IsExportSupported()`
     pub fn DESTL_ConfigurationNode_is_export_supported(
         self_: *const DESTL_ConfigurationNode,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `DESTL_ConfigurationNode.hxx`:69 - `DESTL_ConfigurationNode::GetFormat()`
+    /// **Source:** `DESTL_ConfigurationNode.hxx`:68 - `DESTL_ConfigurationNode::IsStreamSupported()`
+    pub fn DESTL_ConfigurationNode_is_stream_supported(
+        self_: *const DESTL_ConfigurationNode,
+    ) -> crate::OcctResult<bool>;
+    /// **Source:** `DESTL_ConfigurationNode.hxx`:72 - `DESTL_ConfigurationNode::GetFormat()`
     pub fn DESTL_ConfigurationNode_get_format(
         self_: *const DESTL_ConfigurationNode,
     ) -> crate::OcctResult<*mut TCollection_AsciiString>;
-    /// **Source:** `DESTL_ConfigurationNode.hxx`:73 - `DESTL_ConfigurationNode::GetVendor()`
+    /// **Source:** `DESTL_ConfigurationNode.hxx`:76 - `DESTL_ConfigurationNode::GetVendor()`
     pub fn DESTL_ConfigurationNode_get_vendor(
         self_: *const DESTL_ConfigurationNode,
     ) -> crate::OcctResult<*mut TCollection_AsciiString>;
-    /// **Source:** `DESTL_ConfigurationNode.hxx`:77 - `DESTL_ConfigurationNode::GetExtensions()`
+    /// **Source:** `DESTL_ConfigurationNode.hxx`:80 - `DESTL_ConfigurationNode::GetExtensions()`
     pub fn DESTL_ConfigurationNode_get_extensions(
         self_: *const DESTL_ConfigurationNode,
-    ) -> crate::OcctResult<*mut TColStd_ListOfAsciiString>;
-    /// **Source:** `DESTL_ConfigurationNode.hxx`:82 - `DESTL_ConfigurationNode::CheckContent()`
+    ) -> crate::OcctResult<*mut NCollection_List_TCollection_AsciiString>;
+    /// **Source:** `DESTL_ConfigurationNode.hxx`:85 - `DESTL_ConfigurationNode::CheckContent()`
     pub fn DESTL_ConfigurationNode_check_content(
         self_: *const DESTL_ConfigurationNode,
-        theBuffer: *const HandleNCollectionBuffer,
+        theBuffer: *const Handle_NCollection_Buffer,
     ) -> crate::OcctResult<bool>;
     /// **Source:** `DESTL_ConfigurationNode.hxx`:31 - `DESTL_ConfigurationNode::get_type_name()`
     pub fn DESTL_ConfigurationNode_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
     /// **Source:** `DESTL_ConfigurationNode.hxx`:31 - `DESTL_ConfigurationNode::get_type_descriptor()`
     pub fn DESTL_ConfigurationNode_get_type_descriptor(
-    ) -> crate::OcctResult<*const HandleStandardType>;
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast DESTL_ConfigurationNode to DE_ConfigurationNode
     pub fn DESTL_ConfigurationNode_as_DE_ConfigurationNode(
         self_: *const DESTL_ConfigurationNode,
@@ -86,84 +90,95 @@ unsafe extern "C" {
     /// Wrap DESTL_ConfigurationNode in a Handle
     pub fn DESTL_ConfigurationNode_to_handle(
         obj: *mut DESTL_ConfigurationNode,
-    ) -> crate::OcctResult<*mut HandleDESTLConfigurationNode>;
+    ) -> crate::OcctResult<*mut Handle_DESTL_ConfigurationNode>;
     /// Destroy Handle<DESTL_ConfigurationNode>
-    pub fn HandleDESTLConfigurationNode_destructor(self_: *mut HandleDESTLConfigurationNode);
+    pub fn Handle_DESTL_ConfigurationNode_destructor(self_: *mut Handle_DESTL_ConfigurationNode);
     /// Clone Handle<DESTL_ConfigurationNode> (increments reference count)
-    pub fn HandleDESTLConfigurationNode_clone(
-        self_: *const HandleDESTLConfigurationNode,
-    ) -> crate::OcctResult<*mut HandleDESTLConfigurationNode>;
+    pub fn Handle_DESTL_ConfigurationNode_clone(
+        self_: *const Handle_DESTL_ConfigurationNode,
+    ) -> crate::OcctResult<*mut Handle_DESTL_ConfigurationNode>;
     /// Check if Handle<DESTL_ConfigurationNode> is null
-    pub fn HandleDESTLConfigurationNode_is_null(self_: *const HandleDESTLConfigurationNode)
-        -> bool;
+    pub fn Handle_DESTL_ConfigurationNode_is_null(
+        self_: *const Handle_DESTL_ConfigurationNode,
+    ) -> bool;
     /// Dereference Handle to get *const DESTL_ConfigurationNode
-    pub fn HandleDESTLConfigurationNode_get(
-        handle: *const HandleDESTLConfigurationNode,
+    pub fn Handle_DESTL_ConfigurationNode_get(
+        handle: *const Handle_DESTL_ConfigurationNode,
     ) -> crate::OcctResult<*const DESTL_ConfigurationNode>;
     /// Dereference Handle to get *mut DESTL_ConfigurationNode
-    pub fn HandleDESTLConfigurationNode_get_mut(
-        handle: *mut HandleDESTLConfigurationNode,
+    pub fn Handle_DESTL_ConfigurationNode_get_mut(
+        handle: *mut Handle_DESTL_ConfigurationNode,
     ) -> crate::OcctResult<*mut DESTL_ConfigurationNode>;
     /// Upcast Handle<DESTL_ConfigurationNode> to Handle<DE_ConfigurationNode>
-    pub fn HandleDESTLConfigurationNode_to_HandleDEConfigurationNode(
-        self_: *const HandleDESTLConfigurationNode,
-    ) -> crate::OcctResult<*mut HandleDEConfigurationNode>;
+    pub fn Handle_DESTL_ConfigurationNode_to_Handle_DE_ConfigurationNode(
+        self_: *const Handle_DESTL_ConfigurationNode,
+    ) -> crate::OcctResult<*mut Handle_DE_ConfigurationNode>;
     /// Upcast Handle<DESTL_ConfigurationNode> to Handle<Standard_Transient>
-    pub fn HandleDESTLConfigurationNode_to_HandleStandardTransient(
-        self_: *const HandleDESTLConfigurationNode,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
-    /// Inherited: **Source:** `DE_ConfigurationNode.hxx`:91 - `DE_ConfigurationNode::UpdateLoad()`
+    pub fn Handle_DESTL_ConfigurationNode_to_Handle_Standard_Transient(
+        self_: *const Handle_DESTL_ConfigurationNode,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
+    /// Inherited: **Source:** `DE_ConfigurationNode.hxx`:94 - `DE_ConfigurationNode::UpdateLoad()`
     pub fn DESTL_ConfigurationNode_inherited_UpdateLoad(
         self_: *mut DESTL_ConfigurationNode,
         theToImport: bool,
         theToKeep: bool,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `DE_ConfigurationNode.hxx`:118 - `DE_ConfigurationNode::CheckExtension()`
+    /// Inherited: **Source:** `DE_ConfigurationNode.hxx`:124 - `DE_ConfigurationNode::CheckExtension()`
     pub fn DESTL_ConfigurationNode_inherited_CheckExtension(
         self_: *const DESTL_ConfigurationNode,
         theExtension: *const TCollection_AsciiString,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `DE_ConfigurationNode.hxx`:128 - `DE_ConfigurationNode::IsEnabled()`
+    /// Inherited: **Source:** `DE_ConfigurationNode.hxx`:134 - `DE_ConfigurationNode::IsEnabled()`
     pub fn DESTL_ConfigurationNode_inherited_IsEnabled(
         self_: *const DESTL_ConfigurationNode,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `DE_ConfigurationNode.hxx`:132 - `DE_ConfigurationNode::SetEnabled()`
+    /// Inherited: **Source:** `DE_ConfigurationNode.hxx`:138 - `DE_ConfigurationNode::SetEnabled()`
     pub fn DESTL_ConfigurationNode_inherited_SetEnabled(
         self_: *mut DESTL_ConfigurationNode,
         theIsLoaded: bool,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `DE_ConfigurationNode.hxx`:141 - `DE_ConfigurationNode::CustomActivation()`
+    /// Inherited: **Source:** `DE_ConfigurationNode.hxx`:147 - `DE_ConfigurationNode::CustomActivation()`
     pub fn DESTL_ConfigurationNode_inherited_CustomActivation(
         self_: *mut DESTL_ConfigurationNode,
-        arg0: *const TColStd_ListOfAsciiString,
+        arg0: *const NCollection_List_TCollection_AsciiString,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    /// Inherited: **Source:** `DE_ConfigurationNode.hxx`:164 - `DE_ConfigurationNode::Register()`
+    pub fn DESTL_ConfigurationNode_inherited_Register(
+        self_: *const DESTL_ConfigurationNode,
+        theWrapper: *const Handle_DE_Wrapper,
+    ) -> *const std::ffi::c_char;
+    /// Inherited: **Source:** `DE_ConfigurationNode.hxx`:168 - `DE_ConfigurationNode::UnRegister()`
+    pub fn DESTL_ConfigurationNode_inherited_UnRegister(
+        self_: *const DESTL_ConfigurationNode,
+        theWrapper: *const Handle_DE_Wrapper,
+    ) -> *const std::ffi::c_char;
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn DESTL_ConfigurationNode_inherited_IsInstance(
         self_: *const DESTL_ConfigurationNode,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn DESTL_ConfigurationNode_inherited_IsKind(
         self_: *const DESTL_ConfigurationNode,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn DESTL_ConfigurationNode_inherited_This(
         self_: *const DESTL_ConfigurationNode,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn DESTL_ConfigurationNode_inherited_GetRefCount(
         self_: *const DESTL_ConfigurationNode,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn DESTL_ConfigurationNode_inherited_IncrementRefCounter(
         self_: *mut DESTL_ConfigurationNode,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn DESTL_ConfigurationNode_inherited_DecrementRefCounter(
         self_: *mut DESTL_ConfigurationNode,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn DESTL_ConfigurationNode_inherited_Delete(
         self_: *const DESTL_ConfigurationNode,
     ) -> *const std::ffi::c_char;
@@ -178,40 +193,40 @@ unsafe extern "C" {
     pub fn DESTL_Provider_ctor() -> crate::OcctResult<*mut DESTL_Provider>;
     /// **Source:** `DESTL_Provider.hxx`:40 - `DESTL_Provider::DESTL_Provider()`
     pub fn DESTL_Provider_ctor_handledeconfigurationnode(
-        theNode: *const HandleDEConfigurationNode,
+        theNode: *const Handle_DE_ConfigurationNode,
     ) -> crate::OcctResult<*mut DESTL_Provider>;
     /// **Source:** `DESTL_Provider.hxx`:31 - `DESTL_Provider::DynamicType()`
     pub fn DESTL_Provider_dynamic_type(
         self_: *const DESTL_Provider,
-    ) -> crate::OcctResult<*const HandleStandardType>;
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// **Source:** `DESTL_Provider.hxx`:49 - `DESTL_Provider::Read()`
     pub fn DESTL_Provider_read_asciistring_handletdocstddocument_handlexscontrolworksession_progressrange(
         self_: *mut DESTL_Provider,
         thePath: *const TCollection_AsciiString,
-        theDocument: *const HandleTDocStdDocument,
-        theWS: *mut HandleXSControlWorkSession,
+        theDocument: *const Handle_TDocStd_Document,
+        theWS: *mut Handle_XSControl_WorkSession,
         theProgress: *const Message_ProgressRange,
     ) -> crate::OcctResult<bool>;
     /// **Source:** `DESTL_Provider.hxx`:61 - `DESTL_Provider::Write()`
     pub fn DESTL_Provider_write_asciistring_handletdocstddocument_handlexscontrolworksession_progressrange(
         self_: *mut DESTL_Provider,
         thePath: *const TCollection_AsciiString,
-        theDocument: *const HandleTDocStdDocument,
-        theWS: *mut HandleXSControlWorkSession,
+        theDocument: *const Handle_TDocStd_Document,
+        theWS: *mut Handle_XSControl_WorkSession,
         theProgress: *const Message_ProgressRange,
     ) -> crate::OcctResult<bool>;
     /// **Source:** `DESTL_Provider.hxx`:72 - `DESTL_Provider::Read()`
     pub fn DESTL_Provider_read_asciistring_handletdocstddocument_progressrange(
         self_: *mut DESTL_Provider,
         thePath: *const TCollection_AsciiString,
-        theDocument: *const HandleTDocStdDocument,
+        theDocument: *const Handle_TDocStd_Document,
         theProgress: *const Message_ProgressRange,
     ) -> crate::OcctResult<bool>;
     /// **Source:** `DESTL_Provider.hxx`:82 - `DESTL_Provider::Write()`
     pub fn DESTL_Provider_write_asciistring_handletdocstddocument_progressrange(
         self_: *mut DESTL_Provider,
         thePath: *const TCollection_AsciiString,
-        theDocument: *const HandleTDocStdDocument,
+        theDocument: *const Handle_TDocStd_Document,
         theProgress: *const Message_ProgressRange,
     ) -> crate::OcctResult<bool>;
     /// **Source:** `DESTL_Provider.hxx`:93 - `DESTL_Provider::Read()`
@@ -219,7 +234,7 @@ unsafe extern "C" {
         self_: *mut DESTL_Provider,
         thePath: *const TCollection_AsciiString,
         theShape: *mut TopoDS_Shape,
-        theWS: *mut HandleXSControlWorkSession,
+        theWS: *mut Handle_XSControl_WorkSession,
         theProgress: *const Message_ProgressRange,
     ) -> crate::OcctResult<bool>;
     /// **Source:** `DESTL_Provider.hxx`:105 - `DESTL_Provider::Write()`
@@ -227,35 +242,95 @@ unsafe extern "C" {
         self_: *mut DESTL_Provider,
         thePath: *const TCollection_AsciiString,
         theShape: *const TopoDS_Shape,
-        theWS: *mut HandleXSControlWorkSession,
+        theWS: *mut Handle_XSControl_WorkSession,
         theProgress: *const Message_ProgressRange,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `DESTL_Provider.hxx`:116 - `DESTL_Provider::Read()`
+    /// **Source:** `DESTL_Provider.hxx`:117 - `DESTL_Provider::Read()`
+    pub fn DESTL_Provider_read_readstreamlist_handletdocstddocument_handlexscontrolworksession_progressrange(
+        self_: *mut DESTL_Provider,
+        theStreams: *mut DE_Provider_ReadStreamList,
+        theDocument: *const Handle_TDocStd_Document,
+        theWS: *mut Handle_XSControl_WorkSession,
+        theProgress: *const Message_ProgressRange,
+    ) -> crate::OcctResult<bool>;
+    /// **Source:** `DESTL_Provider.hxx`:129 - `DESTL_Provider::Write()`
+    pub fn DESTL_Provider_write_writestreamlist_handletdocstddocument_handlexscontrolworksession_progressrange(
+        self_: *mut DESTL_Provider,
+        theStreams: *mut DE_Provider_WriteStreamList,
+        theDocument: *const Handle_TDocStd_Document,
+        theWS: *mut Handle_XSControl_WorkSession,
+        theProgress: *const Message_ProgressRange,
+    ) -> crate::OcctResult<bool>;
+    /// **Source:** `DESTL_Provider.hxx`:141 - `DESTL_Provider::Read()`
+    pub fn DESTL_Provider_read_readstreamlist_shape_handlexscontrolworksession_progressrange(
+        self_: *mut DESTL_Provider,
+        theStreams: *mut DE_Provider_ReadStreamList,
+        theShape: *mut TopoDS_Shape,
+        theWS: *mut Handle_XSControl_WorkSession,
+        theProgress: *const Message_ProgressRange,
+    ) -> crate::OcctResult<bool>;
+    /// **Source:** `DESTL_Provider.hxx`:153 - `DESTL_Provider::Write()`
+    pub fn DESTL_Provider_write_writestreamlist_shape_handlexscontrolworksession_progressrange(
+        self_: *mut DESTL_Provider,
+        theStreams: *mut DE_Provider_WriteStreamList,
+        theShape: *const TopoDS_Shape,
+        theWS: *mut Handle_XSControl_WorkSession,
+        theProgress: *const Message_ProgressRange,
+    ) -> crate::OcctResult<bool>;
+    /// **Source:** `DESTL_Provider.hxx`:164 - `DESTL_Provider::Read()`
     pub fn DESTL_Provider_read_asciistring_shape_progressrange(
         self_: *mut DESTL_Provider,
         thePath: *const TCollection_AsciiString,
         theShape: *mut TopoDS_Shape,
         theProgress: *const Message_ProgressRange,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `DESTL_Provider.hxx`:126 - `DESTL_Provider::Write()`
+    /// **Source:** `DESTL_Provider.hxx`:174 - `DESTL_Provider::Write()`
     pub fn DESTL_Provider_write_asciistring_shape_progressrange(
         self_: *mut DESTL_Provider,
         thePath: *const TCollection_AsciiString,
         theShape: *const TopoDS_Shape,
         theProgress: *const Message_ProgressRange,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `DESTL_Provider.hxx`:134 - `DESTL_Provider::GetFormat()`
+    /// **Source:** `DESTL_Provider.hxx`:184 - `DESTL_Provider::Read()`
+    pub fn DESTL_Provider_read_readstreamlist_handletdocstddocument_progressrange(
+        self_: *mut DESTL_Provider,
+        theStreams: *mut DE_Provider_ReadStreamList,
+        theDocument: *const Handle_TDocStd_Document,
+        theProgress: *const Message_ProgressRange,
+    ) -> crate::OcctResult<bool>;
+    /// **Source:** `DESTL_Provider.hxx`:194 - `DESTL_Provider::Write()`
+    pub fn DESTL_Provider_write_writestreamlist_handletdocstddocument_progressrange(
+        self_: *mut DESTL_Provider,
+        theStreams: *mut DE_Provider_WriteStreamList,
+        theDocument: *const Handle_TDocStd_Document,
+        theProgress: *const Message_ProgressRange,
+    ) -> crate::OcctResult<bool>;
+    /// **Source:** `DESTL_Provider.hxx`:204 - `DESTL_Provider::Read()`
+    pub fn DESTL_Provider_read_readstreamlist_shape_progressrange(
+        self_: *mut DESTL_Provider,
+        theStreams: *mut DE_Provider_ReadStreamList,
+        theShape: *mut TopoDS_Shape,
+        theProgress: *const Message_ProgressRange,
+    ) -> crate::OcctResult<bool>;
+    /// **Source:** `DESTL_Provider.hxx`:214 - `DESTL_Provider::Write()`
+    pub fn DESTL_Provider_write_writestreamlist_shape_progressrange(
+        self_: *mut DESTL_Provider,
+        theStreams: *mut DE_Provider_WriteStreamList,
+        theShape: *const TopoDS_Shape,
+        theProgress: *const Message_ProgressRange,
+    ) -> crate::OcctResult<bool>;
+    /// **Source:** `DESTL_Provider.hxx`:222 - `DESTL_Provider::GetFormat()`
     pub fn DESTL_Provider_get_format(
         self_: *const DESTL_Provider,
     ) -> crate::OcctResult<*mut TCollection_AsciiString>;
-    /// **Source:** `DESTL_Provider.hxx`:138 - `DESTL_Provider::GetVendor()`
+    /// **Source:** `DESTL_Provider.hxx`:226 - `DESTL_Provider::GetVendor()`
     pub fn DESTL_Provider_get_vendor(
         self_: *const DESTL_Provider,
     ) -> crate::OcctResult<*mut TCollection_AsciiString>;
     /// **Source:** `DESTL_Provider.hxx`:31 - `DESTL_Provider::get_type_name()`
     pub fn DESTL_Provider_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
     /// **Source:** `DESTL_Provider.hxx`:31 - `DESTL_Provider::get_type_descriptor()`
-    pub fn DESTL_Provider_get_type_descriptor() -> crate::OcctResult<*const HandleStandardType>;
+    pub fn DESTL_Provider_get_type_descriptor() -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast DESTL_Provider to DE_Provider
     pub fn DESTL_Provider_as_DE_Provider(
         self_: *const DESTL_Provider,
@@ -275,76 +350,76 @@ unsafe extern "C" {
     /// Wrap DESTL_Provider in a Handle
     pub fn DESTL_Provider_to_handle(
         obj: *mut DESTL_Provider,
-    ) -> crate::OcctResult<*mut HandleDESTLProvider>;
+    ) -> crate::OcctResult<*mut Handle_DESTL_Provider>;
     /// Destroy Handle<DESTL_Provider>
-    pub fn HandleDESTLProvider_destructor(self_: *mut HandleDESTLProvider);
+    pub fn Handle_DESTL_Provider_destructor(self_: *mut Handle_DESTL_Provider);
     /// Clone Handle<DESTL_Provider> (increments reference count)
-    pub fn HandleDESTLProvider_clone(
-        self_: *const HandleDESTLProvider,
-    ) -> crate::OcctResult<*mut HandleDESTLProvider>;
+    pub fn Handle_DESTL_Provider_clone(
+        self_: *const Handle_DESTL_Provider,
+    ) -> crate::OcctResult<*mut Handle_DESTL_Provider>;
     /// Check if Handle<DESTL_Provider> is null
-    pub fn HandleDESTLProvider_is_null(self_: *const HandleDESTLProvider) -> bool;
+    pub fn Handle_DESTL_Provider_is_null(self_: *const Handle_DESTL_Provider) -> bool;
     /// Dereference Handle to get *const DESTL_Provider
-    pub fn HandleDESTLProvider_get(
-        handle: *const HandleDESTLProvider,
+    pub fn Handle_DESTL_Provider_get(
+        handle: *const Handle_DESTL_Provider,
     ) -> crate::OcctResult<*const DESTL_Provider>;
     /// Dereference Handle to get *mut DESTL_Provider
-    pub fn HandleDESTLProvider_get_mut(
-        handle: *mut HandleDESTLProvider,
+    pub fn Handle_DESTL_Provider_get_mut(
+        handle: *mut Handle_DESTL_Provider,
     ) -> crate::OcctResult<*mut DESTL_Provider>;
     /// Upcast Handle<DESTL_Provider> to Handle<DE_Provider>
-    pub fn HandleDESTLProvider_to_HandleDEProvider(
-        self_: *const HandleDESTLProvider,
-    ) -> crate::OcctResult<*mut HandleDEProvider>;
+    pub fn Handle_DESTL_Provider_to_Handle_DE_Provider(
+        self_: *const Handle_DESTL_Provider,
+    ) -> crate::OcctResult<*mut Handle_DE_Provider>;
     /// Upcast Handle<DESTL_Provider> to Handle<Standard_Transient>
-    pub fn HandleDESTLProvider_to_HandleStandardTransient(
-        self_: *const HandleDESTLProvider,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
-    /// Inherited: **Source:** `DE_Provider.hxx`:155 - `DE_Provider::GetNode()`
+    pub fn Handle_DESTL_Provider_to_Handle_Standard_Transient(
+        self_: *const Handle_DESTL_Provider,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
+    /// Inherited: **Source:** `DE_Provider.hxx`:285 - `DE_Provider::GetNode()`
     pub fn DESTL_Provider_inherited_GetNode(
         self_: *const DESTL_Provider,
-    ) -> crate::OcctResult<*mut HandleDEConfigurationNode>;
-    /// Inherited: **Source:** `DE_Provider.hxx`:159 - `DE_Provider::SetNode()`
+    ) -> crate::OcctResult<*mut Handle_DE_ConfigurationNode>;
+    /// Inherited: **Source:** `DE_Provider.hxx`:289 - `DE_Provider::SetNode()`
     pub fn DESTL_Provider_inherited_SetNode(
         self_: *mut DESTL_Provider,
-        theNode: *const HandleDEConfigurationNode,
+        theNode: *const Handle_DE_ConfigurationNode,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn DESTL_Provider_inherited_IsInstance(
         self_: *const DESTL_Provider,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn DESTL_Provider_inherited_IsKind(
         self_: *const DESTL_Provider,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn DESTL_Provider_inherited_This(
         self_: *const DESTL_Provider,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn DESTL_Provider_inherited_GetRefCount(
         self_: *const DESTL_Provider,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn DESTL_Provider_inherited_IncrementRefCounter(
         self_: *mut DESTL_Provider,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn DESTL_Provider_inherited_DecrementRefCounter(
         self_: *mut DESTL_Provider,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn DESTL_Provider_inherited_Delete(self_: *const DESTL_Provider)
         -> *const std::ffi::c_char;
     // ======================== RWStl_Reader ========================
     pub fn RWStl_Reader_destructor(self_: *mut RWStl_Reader);
-    /// **Source:** `RWStl_Reader.hxx`:37 - `RWStl_Reader::DynamicType()`
+    /// **Source:** `RWStl_Reader.hxx`:38 - `RWStl_Reader::DynamicType()`
     pub fn RWStl_Reader_dynamic_type(
         self_: *const RWStl_Reader,
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// **Source:** `RWStl_Reader.hxx`:49 - `RWStl_Reader::Read()`
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
+    /// **Source:** `RWStl_Reader.hxx`:50 - `RWStl_Reader::Read()`
     pub fn RWStl_Reader_read(
         self_: *mut RWStl_Reader,
         theFile: *const std::ffi::c_char,
@@ -356,44 +431,44 @@ unsafe extern "C" {
         theStream: *mut Standard_IStream,
         isSeekgAvailable: bool,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `RWStl_Reader.hxx`:64 - `RWStl_Reader::ReadBinary()`
+    /// **Source:** `RWStl_Reader.hxx`:63 - `RWStl_Reader::ReadBinary()`
     pub fn RWStl_Reader_read_binary(
         self_: *mut RWStl_Reader,
         theStream: *mut Standard_IStream,
         theProgress: *const Message_ProgressRange,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `RWStl_Reader.hxx`:83 - `RWStl_Reader::AddNode()`
+    /// **Source:** `RWStl_Reader.hxx`:82 - `RWStl_Reader::AddNode()`
     pub fn RWStl_Reader_add_node(
         self_: *mut RWStl_Reader,
         thePnt: *const gp_XYZ,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `RWStl_Reader.hxx`:87 - `RWStl_Reader::AddTriangle()`
+    /// **Source:** `RWStl_Reader.hxx`:86 - `RWStl_Reader::AddTriangle()`
     pub fn RWStl_Reader_add_triangle(
         self_: *mut RWStl_Reader,
         theN1: i32,
         theN2: i32,
         theN3: i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `RWStl_Reader.hxx`:93 - `RWStl_Reader::AddSolid()`
+    /// **Source:** `RWStl_Reader.hxx`:90 - `RWStl_Reader::AddSolid()`
     pub fn RWStl_Reader_add_solid(self_: *mut RWStl_Reader) -> *const std::ffi::c_char;
-    /// **Source:** `RWStl_Reader.hxx`:98 - `RWStl_Reader::MergeAngle()`
+    /// **Source:** `RWStl_Reader.hxx`:95 - `RWStl_Reader::MergeAngle()`
     pub fn RWStl_Reader_merge_angle(self_: *const RWStl_Reader) -> crate::OcctResult<f64>;
-    /// **Source:** `RWStl_Reader.hxx`:103 - `RWStl_Reader::SetMergeAngle()`
+    /// **Source:** `RWStl_Reader.hxx`:100 - `RWStl_Reader::SetMergeAngle()`
     pub fn RWStl_Reader_set_merge_angle(
         self_: *mut RWStl_Reader,
         theAngleRad: f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `RWStl_Reader.hxx`:107 - `RWStl_Reader::MergeTolerance()`
+    /// **Source:** `RWStl_Reader.hxx`:104 - `RWStl_Reader::MergeTolerance()`
     pub fn RWStl_Reader_merge_tolerance(self_: *const RWStl_Reader) -> crate::OcctResult<f64>;
-    /// **Source:** `RWStl_Reader.hxx`:110 - `RWStl_Reader::SetMergeTolerance()`
+    /// **Source:** `RWStl_Reader.hxx`:107 - `RWStl_Reader::SetMergeTolerance()`
     pub fn RWStl_Reader_set_merge_tolerance(
         self_: *mut RWStl_Reader,
         theTolerance: f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `RWStl_Reader.hxx`:37 - `RWStl_Reader::get_type_name()`
+    /// **Source:** `RWStl_Reader.hxx`:38 - `RWStl_Reader::get_type_name()`
     pub fn RWStl_Reader_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
-    /// **Source:** `RWStl_Reader.hxx`:37 - `RWStl_Reader::get_type_descriptor()`
-    pub fn RWStl_Reader_get_type_descriptor() -> crate::OcctResult<*const HandleStandardType>;
+    /// **Source:** `RWStl_Reader.hxx`:38 - `RWStl_Reader::get_type_descriptor()`
+    pub fn RWStl_Reader_get_type_descriptor() -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast RWStl_Reader to Standard_Transient
     pub fn RWStl_Reader_as_Standard_Transient(
         self_: *const RWStl_Reader,
@@ -403,61 +478,67 @@ unsafe extern "C" {
         self_: *mut RWStl_Reader,
     ) -> crate::OcctResult<*mut Standard_Transient>;
     /// Destroy Handle<RWStl_Reader>
-    pub fn HandleRWStlReader_destructor(self_: *mut HandleRWStlReader);
+    pub fn Handle_RWStl_Reader_destructor(self_: *mut Handle_RWStl_Reader);
     /// Clone Handle<RWStl_Reader> (increments reference count)
-    pub fn HandleRWStlReader_clone(
-        self_: *const HandleRWStlReader,
-    ) -> crate::OcctResult<*mut HandleRWStlReader>;
+    pub fn Handle_RWStl_Reader_clone(
+        self_: *const Handle_RWStl_Reader,
+    ) -> crate::OcctResult<*mut Handle_RWStl_Reader>;
     /// Check if Handle<RWStl_Reader> is null
-    pub fn HandleRWStlReader_is_null(self_: *const HandleRWStlReader) -> bool;
+    pub fn Handle_RWStl_Reader_is_null(self_: *const Handle_RWStl_Reader) -> bool;
     /// Dereference Handle to get *const RWStl_Reader
-    pub fn HandleRWStlReader_get(
-        handle: *const HandleRWStlReader,
+    pub fn Handle_RWStl_Reader_get(
+        handle: *const Handle_RWStl_Reader,
     ) -> crate::OcctResult<*const RWStl_Reader>;
     /// Dereference Handle to get *mut RWStl_Reader
-    pub fn HandleRWStlReader_get_mut(
-        handle: *mut HandleRWStlReader,
+    pub fn Handle_RWStl_Reader_get_mut(
+        handle: *mut Handle_RWStl_Reader,
     ) -> crate::OcctResult<*mut RWStl_Reader>;
     /// Upcast Handle<RWStl_Reader> to Handle<Standard_Transient>
-    pub fn HandleRWStlReader_to_HandleStandardTransient(
-        self_: *const HandleRWStlReader,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn Handle_RWStl_Reader_to_Handle_Standard_Transient(
+        self_: *const Handle_RWStl_Reader,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn RWStl_Reader_inherited_IsInstance(
         self_: *const RWStl_Reader,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn RWStl_Reader_inherited_IsKind(
         self_: *const RWStl_Reader,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn RWStl_Reader_inherited_This(
         self_: *const RWStl_Reader,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn RWStl_Reader_inherited_GetRefCount(self_: *const RWStl_Reader)
         -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn RWStl_Reader_inherited_IncrementRefCounter(
         self_: *mut RWStl_Reader,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn RWStl_Reader_inherited_DecrementRefCounter(
         self_: *mut RWStl_Reader,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn RWStl_Reader_inherited_Delete(self_: *const RWStl_Reader) -> *const std::ffi::c_char;
     // ======================== StlAPI_Reader ========================
     pub fn StlAPI_Reader_destructor(self_: *mut StlAPI_Reader);
     /// **Source:** `StlAPI_Reader.hxx` - `StlAPI_Reader::StlAPI_Reader()`
     pub fn StlAPI_Reader_ctor() -> crate::OcctResult<*mut StlAPI_Reader>;
-    /// **Source:** `StlAPI_Reader.hxx`:32 - `StlAPI_Reader::Read()`
-    pub fn StlAPI_Reader_read(
+    /// **Source:** `StlAPI_Reader.hxx`:33 - `StlAPI_Reader::Read()`
+    pub fn StlAPI_Reader_read_shape_charptr(
         self_: *mut StlAPI_Reader,
         theShape: *mut TopoDS_Shape,
         theFileName: *const std::ffi::c_char,
+    ) -> crate::OcctResult<bool>;
+    /// **Source:** `StlAPI_Reader.hxx`:39 - `StlAPI_Reader::Read()`
+    pub fn StlAPI_Reader_read_shape_istream(
+        self_: *mut StlAPI_Reader,
+        theShape: *mut TopoDS_Shape,
+        theStream: *mut Standard_IStream,
     ) -> crate::OcctResult<bool>;
     // ======================== StlAPI_Writer ========================
     pub fn StlAPI_Writer_destructor(self_: *mut StlAPI_Writer);
@@ -465,60 +546,90 @@ unsafe extern "C" {
     pub fn StlAPI_Writer_ctor() -> crate::OcctResult<*mut StlAPI_Writer>;
     /// **Source:** `StlAPI_Writer.hxx`:39 - `StlAPI_Writer::ASCIIMode()`
     pub fn StlAPI_Writer_ascii_mode(self_: *mut StlAPI_Writer) -> crate::OcctResult<*mut bool>;
-    /// **Source:** `StlAPI_Writer.hxx`:44 - `StlAPI_Writer::Write()`
-    pub fn StlAPI_Writer_write(
+    /// **Source:** `StlAPI_Writer.hxx`:43 - `StlAPI_Writer::Write()`
+    pub fn StlAPI_Writer_write_shape_charptr_progressrange(
         self_: *mut StlAPI_Writer,
         theShape: *const TopoDS_Shape,
         theFileName: *const std::ffi::c_char,
         theProgress: *const Message_ProgressRange,
     ) -> crate::OcctResult<bool>;
+    /// **Source:** `StlAPI_Writer.hxx`:49 - `StlAPI_Writer::Write()`
+    pub fn StlAPI_Writer_write_shape_ostream_progressrange(
+        self_: *mut StlAPI_Writer,
+        theShape: *const TopoDS_Shape,
+        theStream: *mut Standard_OStream,
+        theProgress: *const Message_ProgressRange,
+    ) -> crate::OcctResult<bool>;
 
     // Free functions
     /// **Source:** `RWStl.hxx`:32 - `RWStl::WriteBinary`
-    pub fn RWStl_write_binary(
-        theMesh: *const HandlePolyTriangulation,
+    pub fn RWStl_write_binary_handlepolytriangulation_path_progressrange(
+        theMesh: *const Handle_Poly_Triangulation,
         thePath: *const OSD_Path,
         theProgress: *const Message_ProgressRange,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `RWStl.hxx`:40 - `RWStl::WriteAscii`
-    pub fn RWStl_write_ascii(
-        theMesh: *const HandlePolyTriangulation,
+    /// **Source:** `RWStl.hxx`:38 - `RWStl::WriteBinary`
+    pub fn RWStl_write_binary_handlepolytriangulation_ostream_progressrange(
+        theMesh: *const Handle_Poly_Triangulation,
+        theStream: *mut Standard_OStream,
+        theProgress: *const Message_ProgressRange,
+    ) -> crate::OcctResult<bool>;
+    /// **Source:** `RWStl.hxx`:46 - `RWStl::WriteAscii`
+    pub fn RWStl_write_ascii_handlepolytriangulation_path_progressrange(
+        theMesh: *const Handle_Poly_Triangulation,
         thePath: *const OSD_Path,
         theProgress: *const Message_ProgressRange,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `RWStl.hxx`:47 - `RWStl::ReadFile`
+    /// **Source:** `RWStl.hxx`:52 - `RWStl::WriteAscii`
+    pub fn RWStl_write_ascii_handlepolytriangulation_ostream_progressrange(
+        theMesh: *const Handle_Poly_Triangulation,
+        theStream: *mut Standard_OStream,
+        theProgress: *const Message_ProgressRange,
+    ) -> crate::OcctResult<bool>;
+    /// **Source:** `RWStl.hxx`:59 - `RWStl::ReadFile`
     pub fn RWStl_read_file_path_progressrange(
         theFile: *const OSD_Path,
         theProgress: *const Message_ProgressRange,
-    ) -> crate::OcctResult<*mut HandlePolyTriangulation>;
-    /// **Source:** `RWStl.hxx`:53 - `RWStl::ReadFile`
+    ) -> crate::OcctResult<*mut Handle_Poly_Triangulation>;
+    /// **Source:** `RWStl.hxx`:65 - `RWStl::ReadFile`
     pub fn RWStl_read_file_charptr_progressrange_2(
         theFile: *const std::ffi::c_char,
         theProgress: *const Message_ProgressRange,
-    ) -> crate::OcctResult<*mut HandlePolyTriangulation>;
-    /// **Source:** `RWStl.hxx`:66 - `RWStl::ReadFile`
+    ) -> crate::OcctResult<*mut Handle_Poly_Triangulation>;
+    /// **Source:** `RWStl.hxx`:78 - `RWStl::ReadFile`
     pub fn RWStl_read_file_charptr_real_progressrange(
         theFile: *const std::ffi::c_char,
         theMergeAngle: f64,
         theProgress: *const Message_ProgressRange,
-    ) -> crate::OcctResult<*mut HandlePolyTriangulation>;
-    /// **Source:** `RWStl.hxx`:77 - `RWStl::ReadFile`
-    pub fn RWStl_read_file_charptr_real_sequence_opencascade_handle_poly_triangulation_progressrange(
-        theFile: *const std::ffi::c_char,
-        theMergeAngle: f64,
-        theTriangList: *mut NCollection_Sequence_opencascade_handle_Poly_Triangulation,
-        theProgress: *const Message_ProgressRange,
-    ) -> *const std::ffi::c_char;
-    /// **Source:** `RWStl.hxx`:85 - `RWStl::ReadBinary`
+    ) -> crate::OcctResult<*mut Handle_Poly_Triangulation>;
+    /// **Source:** `RWStl.hxx`:97 - `RWStl::ReadBinary`
     pub fn RWStl_read_binary(
         thePath: *const OSD_Path,
         theProgress: *const Message_ProgressRange,
-    ) -> crate::OcctResult<*mut HandlePolyTriangulation>;
-    /// **Source:** `RWStl.hxx`:91 - `RWStl::ReadAscii`
+    ) -> crate::OcctResult<*mut Handle_Poly_Triangulation>;
+    /// **Source:** `RWStl.hxx`:103 - `RWStl::ReadAscii`
     pub fn RWStl_read_ascii(
         thePath: *const OSD_Path,
         theProgress: *const Message_ProgressRange,
-    ) -> crate::OcctResult<*mut HandlePolyTriangulation>;
+    ) -> crate::OcctResult<*mut Handle_Poly_Triangulation>;
+    /// **Source:** `RWStl.hxx`:109 - `RWStl::ReadBinaryStream`
+    pub fn RWStl_read_binary_stream(
+        theStream: *mut Standard_IStream,
+        theMergeAngle: f64,
+        theProgress: *const Message_ProgressRange,
+    ) -> crate::OcctResult<*mut Handle_Poly_Triangulation>;
+    /// **Source:** `RWStl.hxx`:116 - `RWStl::ReadAsciiStream`
+    pub fn RWStl_read_ascii_stream(
+        theStream: *mut Standard_IStream,
+        theMergeAngle: f64,
+        theProgress: *const Message_ProgressRange,
+    ) -> crate::OcctResult<*mut Handle_Poly_Triangulation>;
+    /// **Source:** `RWStl.hxx`:123 - `RWStl::ReadStream`
+    pub fn RWStl_read_stream(
+        theStream: *mut Standard_IStream,
+        theMergeAngle: f64,
+        theProgress: *const Message_ProgressRange,
+    ) -> crate::OcctResult<*mut Handle_Poly_Triangulation>;
     /// **Source:** `StlAPI.hxx`:35 - `StlAPI::Write`
     pub fn StlAPI_write_shape_charptr_bool(
         theShape: *const TopoDS_Shape,

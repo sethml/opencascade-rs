@@ -14,59 +14,59 @@ unsafe extern "C" {
     pub fn DEPLY_ConfigurationNode_ctor() -> crate::OcctResult<*mut DEPLY_ConfigurationNode>;
     /// **Source:** `DEPLY_ConfigurationNode.hxx`:42 - `DEPLY_ConfigurationNode::DEPLY_ConfigurationNode()`
     pub fn DEPLY_ConfigurationNode_ctor_handledeplyconfigurationnode(
-        theNode: *const HandleDEPLYConfigurationNode,
+        theNode: *const Handle_DEPLY_ConfigurationNode,
     ) -> crate::OcctResult<*mut DEPLY_ConfigurationNode>;
     /// **Source:** `DEPLY_ConfigurationNode.hxx`:35 - `DEPLY_ConfigurationNode::DynamicType()`
     pub fn DEPLY_ConfigurationNode_dynamic_type(
         self_: *const DEPLY_ConfigurationNode,
-    ) -> crate::OcctResult<*const HandleStandardType>;
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// **Source:** `DEPLY_ConfigurationNode.hxx`:47 - `DEPLY_ConfigurationNode::Load()`
     pub fn DEPLY_ConfigurationNode_load(
         self_: *mut DEPLY_ConfigurationNode,
-        theResource: *const HandleDEConfigurationContext,
+        theResource: *const Handle_DE_ConfigurationContext,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `DEPLY_ConfigurationNode.hxx`:52 - `DEPLY_ConfigurationNode::Save()`
+    /// **Source:** `DEPLY_ConfigurationNode.hxx`:51 - `DEPLY_ConfigurationNode::Save()`
     pub fn DEPLY_ConfigurationNode_save(
         self_: *const DEPLY_ConfigurationNode,
     ) -> crate::OcctResult<*mut TCollection_AsciiString>;
-    /// **Source:** `DEPLY_ConfigurationNode.hxx`:56 - `DEPLY_ConfigurationNode::Copy()`
+    /// **Source:** `DEPLY_ConfigurationNode.hxx`:55 - `DEPLY_ConfigurationNode::Copy()`
     pub fn DEPLY_ConfigurationNode_copy(
         self_: *const DEPLY_ConfigurationNode,
-    ) -> crate::OcctResult<*mut HandleDEConfigurationNode>;
-    /// **Source:** `DEPLY_ConfigurationNode.hxx`:60 - `DEPLY_ConfigurationNode::BuildProvider()`
+    ) -> crate::OcctResult<*mut Handle_DE_ConfigurationNode>;
+    /// **Source:** `DEPLY_ConfigurationNode.hxx`:59 - `DEPLY_ConfigurationNode::BuildProvider()`
     pub fn DEPLY_ConfigurationNode_build_provider(
         self_: *mut DEPLY_ConfigurationNode,
-    ) -> crate::OcctResult<*mut HandleDEProvider>;
-    /// **Source:** `DEPLY_ConfigurationNode.hxx`:65 - `DEPLY_ConfigurationNode::IsImportSupported()`
+    ) -> crate::OcctResult<*mut Handle_DE_Provider>;
+    /// **Source:** `DEPLY_ConfigurationNode.hxx`:64 - `DEPLY_ConfigurationNode::IsImportSupported()`
     pub fn DEPLY_ConfigurationNode_is_import_supported(
         self_: *const DEPLY_ConfigurationNode,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `DEPLY_ConfigurationNode.hxx`:69 - `DEPLY_ConfigurationNode::IsExportSupported()`
+    /// **Source:** `DEPLY_ConfigurationNode.hxx`:68 - `DEPLY_ConfigurationNode::IsExportSupported()`
     pub fn DEPLY_ConfigurationNode_is_export_supported(
         self_: *const DEPLY_ConfigurationNode,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `DEPLY_ConfigurationNode.hxx`:73 - `DEPLY_ConfigurationNode::GetFormat()`
+    /// **Source:** `DEPLY_ConfigurationNode.hxx`:72 - `DEPLY_ConfigurationNode::GetFormat()`
     pub fn DEPLY_ConfigurationNode_get_format(
         self_: *const DEPLY_ConfigurationNode,
     ) -> crate::OcctResult<*mut TCollection_AsciiString>;
-    /// **Source:** `DEPLY_ConfigurationNode.hxx`:77 - `DEPLY_ConfigurationNode::GetVendor()`
+    /// **Source:** `DEPLY_ConfigurationNode.hxx`:76 - `DEPLY_ConfigurationNode::GetVendor()`
     pub fn DEPLY_ConfigurationNode_get_vendor(
         self_: *const DEPLY_ConfigurationNode,
     ) -> crate::OcctResult<*mut TCollection_AsciiString>;
-    /// **Source:** `DEPLY_ConfigurationNode.hxx`:81 - `DEPLY_ConfigurationNode::GetExtensions()`
+    /// **Source:** `DEPLY_ConfigurationNode.hxx`:80 - `DEPLY_ConfigurationNode::GetExtensions()`
     pub fn DEPLY_ConfigurationNode_get_extensions(
         self_: *const DEPLY_ConfigurationNode,
-    ) -> crate::OcctResult<*mut TColStd_ListOfAsciiString>;
-    /// **Source:** `DEPLY_ConfigurationNode.hxx`:86 - `DEPLY_ConfigurationNode::CheckContent()`
+    ) -> crate::OcctResult<*mut NCollection_List_TCollection_AsciiString>;
+    /// **Source:** `DEPLY_ConfigurationNode.hxx`:85 - `DEPLY_ConfigurationNode::CheckContent()`
     pub fn DEPLY_ConfigurationNode_check_content(
         self_: *const DEPLY_ConfigurationNode,
-        theBuffer: *const HandleNCollectionBuffer,
+        theBuffer: *const Handle_NCollection_Buffer,
     ) -> crate::OcctResult<bool>;
     /// **Source:** `DEPLY_ConfigurationNode.hxx`:35 - `DEPLY_ConfigurationNode::get_type_name()`
     pub fn DEPLY_ConfigurationNode_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
     /// **Source:** `DEPLY_ConfigurationNode.hxx`:35 - `DEPLY_ConfigurationNode::get_type_descriptor()`
     pub fn DEPLY_ConfigurationNode_get_type_descriptor(
-    ) -> crate::OcctResult<*const HandleStandardType>;
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast DEPLY_ConfigurationNode to DE_ConfigurationNode
     pub fn DEPLY_ConfigurationNode_as_DE_ConfigurationNode(
         self_: *const DEPLY_ConfigurationNode,
@@ -86,84 +86,99 @@ unsafe extern "C" {
     /// Wrap DEPLY_ConfigurationNode in a Handle
     pub fn DEPLY_ConfigurationNode_to_handle(
         obj: *mut DEPLY_ConfigurationNode,
-    ) -> crate::OcctResult<*mut HandleDEPLYConfigurationNode>;
+    ) -> crate::OcctResult<*mut Handle_DEPLY_ConfigurationNode>;
     /// Destroy Handle<DEPLY_ConfigurationNode>
-    pub fn HandleDEPLYConfigurationNode_destructor(self_: *mut HandleDEPLYConfigurationNode);
+    pub fn Handle_DEPLY_ConfigurationNode_destructor(self_: *mut Handle_DEPLY_ConfigurationNode);
     /// Clone Handle<DEPLY_ConfigurationNode> (increments reference count)
-    pub fn HandleDEPLYConfigurationNode_clone(
-        self_: *const HandleDEPLYConfigurationNode,
-    ) -> crate::OcctResult<*mut HandleDEPLYConfigurationNode>;
+    pub fn Handle_DEPLY_ConfigurationNode_clone(
+        self_: *const Handle_DEPLY_ConfigurationNode,
+    ) -> crate::OcctResult<*mut Handle_DEPLY_ConfigurationNode>;
     /// Check if Handle<DEPLY_ConfigurationNode> is null
-    pub fn HandleDEPLYConfigurationNode_is_null(self_: *const HandleDEPLYConfigurationNode)
-        -> bool;
+    pub fn Handle_DEPLY_ConfigurationNode_is_null(
+        self_: *const Handle_DEPLY_ConfigurationNode,
+    ) -> bool;
     /// Dereference Handle to get *const DEPLY_ConfigurationNode
-    pub fn HandleDEPLYConfigurationNode_get(
-        handle: *const HandleDEPLYConfigurationNode,
+    pub fn Handle_DEPLY_ConfigurationNode_get(
+        handle: *const Handle_DEPLY_ConfigurationNode,
     ) -> crate::OcctResult<*const DEPLY_ConfigurationNode>;
     /// Dereference Handle to get *mut DEPLY_ConfigurationNode
-    pub fn HandleDEPLYConfigurationNode_get_mut(
-        handle: *mut HandleDEPLYConfigurationNode,
+    pub fn Handle_DEPLY_ConfigurationNode_get_mut(
+        handle: *mut Handle_DEPLY_ConfigurationNode,
     ) -> crate::OcctResult<*mut DEPLY_ConfigurationNode>;
     /// Upcast Handle<DEPLY_ConfigurationNode> to Handle<DE_ConfigurationNode>
-    pub fn HandleDEPLYConfigurationNode_to_HandleDEConfigurationNode(
-        self_: *const HandleDEPLYConfigurationNode,
-    ) -> crate::OcctResult<*mut HandleDEConfigurationNode>;
+    pub fn Handle_DEPLY_ConfigurationNode_to_Handle_DE_ConfigurationNode(
+        self_: *const Handle_DEPLY_ConfigurationNode,
+    ) -> crate::OcctResult<*mut Handle_DE_ConfigurationNode>;
     /// Upcast Handle<DEPLY_ConfigurationNode> to Handle<Standard_Transient>
-    pub fn HandleDEPLYConfigurationNode_to_HandleStandardTransient(
-        self_: *const HandleDEPLYConfigurationNode,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
-    /// Inherited: **Source:** `DE_ConfigurationNode.hxx`:91 - `DE_ConfigurationNode::UpdateLoad()`
+    pub fn Handle_DEPLY_ConfigurationNode_to_Handle_Standard_Transient(
+        self_: *const Handle_DEPLY_ConfigurationNode,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
+    /// Inherited: **Source:** `DE_ConfigurationNode.hxx`:94 - `DE_ConfigurationNode::UpdateLoad()`
     pub fn DEPLY_ConfigurationNode_inherited_UpdateLoad(
         self_: *mut DEPLY_ConfigurationNode,
         theToImport: bool,
         theToKeep: bool,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `DE_ConfigurationNode.hxx`:118 - `DE_ConfigurationNode::CheckExtension()`
+    /// Inherited: **Source:** `DE_ConfigurationNode.hxx`:107 - `DE_ConfigurationNode::IsStreamSupported()`
+    pub fn DEPLY_ConfigurationNode_inherited_IsStreamSupported(
+        self_: *const DEPLY_ConfigurationNode,
+    ) -> crate::OcctResult<bool>;
+    /// Inherited: **Source:** `DE_ConfigurationNode.hxx`:124 - `DE_ConfigurationNode::CheckExtension()`
     pub fn DEPLY_ConfigurationNode_inherited_CheckExtension(
         self_: *const DEPLY_ConfigurationNode,
         theExtension: *const TCollection_AsciiString,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `DE_ConfigurationNode.hxx`:128 - `DE_ConfigurationNode::IsEnabled()`
+    /// Inherited: **Source:** `DE_ConfigurationNode.hxx`:134 - `DE_ConfigurationNode::IsEnabled()`
     pub fn DEPLY_ConfigurationNode_inherited_IsEnabled(
         self_: *const DEPLY_ConfigurationNode,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `DE_ConfigurationNode.hxx`:132 - `DE_ConfigurationNode::SetEnabled()`
+    /// Inherited: **Source:** `DE_ConfigurationNode.hxx`:138 - `DE_ConfigurationNode::SetEnabled()`
     pub fn DEPLY_ConfigurationNode_inherited_SetEnabled(
         self_: *mut DEPLY_ConfigurationNode,
         theIsLoaded: bool,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `DE_ConfigurationNode.hxx`:141 - `DE_ConfigurationNode::CustomActivation()`
+    /// Inherited: **Source:** `DE_ConfigurationNode.hxx`:147 - `DE_ConfigurationNode::CustomActivation()`
     pub fn DEPLY_ConfigurationNode_inherited_CustomActivation(
         self_: *mut DEPLY_ConfigurationNode,
-        arg0: *const TColStd_ListOfAsciiString,
+        arg0: *const NCollection_List_TCollection_AsciiString,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    /// Inherited: **Source:** `DE_ConfigurationNode.hxx`:164 - `DE_ConfigurationNode::Register()`
+    pub fn DEPLY_ConfigurationNode_inherited_Register(
+        self_: *const DEPLY_ConfigurationNode,
+        theWrapper: *const Handle_DE_Wrapper,
+    ) -> *const std::ffi::c_char;
+    /// Inherited: **Source:** `DE_ConfigurationNode.hxx`:168 - `DE_ConfigurationNode::UnRegister()`
+    pub fn DEPLY_ConfigurationNode_inherited_UnRegister(
+        self_: *const DEPLY_ConfigurationNode,
+        theWrapper: *const Handle_DE_Wrapper,
+    ) -> *const std::ffi::c_char;
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn DEPLY_ConfigurationNode_inherited_IsInstance(
         self_: *const DEPLY_ConfigurationNode,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn DEPLY_ConfigurationNode_inherited_IsKind(
         self_: *const DEPLY_ConfigurationNode,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn DEPLY_ConfigurationNode_inherited_This(
         self_: *const DEPLY_ConfigurationNode,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn DEPLY_ConfigurationNode_inherited_GetRefCount(
         self_: *const DEPLY_ConfigurationNode,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn DEPLY_ConfigurationNode_inherited_IncrementRefCounter(
         self_: *mut DEPLY_ConfigurationNode,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn DEPLY_ConfigurationNode_inherited_DecrementRefCounter(
         self_: *mut DEPLY_ConfigurationNode,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn DEPLY_ConfigurationNode_inherited_Delete(
         self_: *const DEPLY_ConfigurationNode,
     ) -> *const std::ffi::c_char;
@@ -180,25 +195,25 @@ unsafe extern "C" {
     pub fn DEPLY_Provider_ctor() -> crate::OcctResult<*mut DEPLY_Provider>;
     /// **Source:** `DEPLY_Provider.hxx`:40 - `DEPLY_Provider::DEPLY_Provider()`
     pub fn DEPLY_Provider_ctor_handledeconfigurationnode(
-        theNode: *const HandleDEConfigurationNode,
+        theNode: *const Handle_DE_ConfigurationNode,
     ) -> crate::OcctResult<*mut DEPLY_Provider>;
     /// **Source:** `DEPLY_Provider.hxx`:31 - `DEPLY_Provider::DynamicType()`
     pub fn DEPLY_Provider_dynamic_type(
         self_: *const DEPLY_Provider,
-    ) -> crate::OcctResult<*const HandleStandardType>;
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// **Source:** `DEPLY_Provider.hxx`:49 - `DEPLY_Provider::Write()`
     pub fn DEPLY_Provider_write_asciistring_handletdocstddocument_handlexscontrolworksession_progressrange(
         self_: *mut DEPLY_Provider,
         thePath: *const TCollection_AsciiString,
-        theDocument: *const HandleTDocStdDocument,
-        theWS: *mut HandleXSControlWorkSession,
+        theDocument: *const Handle_TDocStd_Document,
+        theWS: *mut Handle_XSControl_WorkSession,
         theProgress: *const Message_ProgressRange,
     ) -> crate::OcctResult<bool>;
     /// **Source:** `DEPLY_Provider.hxx`:60 - `DEPLY_Provider::Write()`
     pub fn DEPLY_Provider_write_asciistring_handletdocstddocument_progressrange(
         self_: *mut DEPLY_Provider,
         thePath: *const TCollection_AsciiString,
-        theDocument: *const HandleTDocStdDocument,
+        theDocument: *const Handle_TDocStd_Document,
         theProgress: *const Message_ProgressRange,
     ) -> crate::OcctResult<bool>;
     /// **Source:** `DEPLY_Provider.hxx`:71 - `DEPLY_Provider::Write()`
@@ -206,7 +221,7 @@ unsafe extern "C" {
         self_: *mut DEPLY_Provider,
         thePath: *const TCollection_AsciiString,
         theShape: *const TopoDS_Shape,
-        theWS: *mut HandleXSControlWorkSession,
+        theWS: *mut Handle_XSControl_WorkSession,
         theProgress: *const Message_ProgressRange,
     ) -> crate::OcctResult<bool>;
     /// **Source:** `DEPLY_Provider.hxx`:82 - `DEPLY_Provider::Write()`
@@ -227,7 +242,7 @@ unsafe extern "C" {
     /// **Source:** `DEPLY_Provider.hxx`:31 - `DEPLY_Provider::get_type_name()`
     pub fn DEPLY_Provider_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
     /// **Source:** `DEPLY_Provider.hxx`:31 - `DEPLY_Provider::get_type_descriptor()`
-    pub fn DEPLY_Provider_get_type_descriptor() -> crate::OcctResult<*const HandleStandardType>;
+    pub fn DEPLY_Provider_get_type_descriptor() -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast DEPLY_Provider to DE_Provider
     pub fn DEPLY_Provider_as_DE_Provider(
         self_: *const DEPLY_Provider,
@@ -247,174 +262,174 @@ unsafe extern "C" {
     /// Wrap DEPLY_Provider in a Handle
     pub fn DEPLY_Provider_to_handle(
         obj: *mut DEPLY_Provider,
-    ) -> crate::OcctResult<*mut HandleDEPLYProvider>;
+    ) -> crate::OcctResult<*mut Handle_DEPLY_Provider>;
     /// Destroy Handle<DEPLY_Provider>
-    pub fn HandleDEPLYProvider_destructor(self_: *mut HandleDEPLYProvider);
+    pub fn Handle_DEPLY_Provider_destructor(self_: *mut Handle_DEPLY_Provider);
     /// Clone Handle<DEPLY_Provider> (increments reference count)
-    pub fn HandleDEPLYProvider_clone(
-        self_: *const HandleDEPLYProvider,
-    ) -> crate::OcctResult<*mut HandleDEPLYProvider>;
+    pub fn Handle_DEPLY_Provider_clone(
+        self_: *const Handle_DEPLY_Provider,
+    ) -> crate::OcctResult<*mut Handle_DEPLY_Provider>;
     /// Check if Handle<DEPLY_Provider> is null
-    pub fn HandleDEPLYProvider_is_null(self_: *const HandleDEPLYProvider) -> bool;
+    pub fn Handle_DEPLY_Provider_is_null(self_: *const Handle_DEPLY_Provider) -> bool;
     /// Dereference Handle to get *const DEPLY_Provider
-    pub fn HandleDEPLYProvider_get(
-        handle: *const HandleDEPLYProvider,
+    pub fn Handle_DEPLY_Provider_get(
+        handle: *const Handle_DEPLY_Provider,
     ) -> crate::OcctResult<*const DEPLY_Provider>;
     /// Dereference Handle to get *mut DEPLY_Provider
-    pub fn HandleDEPLYProvider_get_mut(
-        handle: *mut HandleDEPLYProvider,
+    pub fn Handle_DEPLY_Provider_get_mut(
+        handle: *mut Handle_DEPLY_Provider,
     ) -> crate::OcctResult<*mut DEPLY_Provider>;
     /// Upcast Handle<DEPLY_Provider> to Handle<DE_Provider>
-    pub fn HandleDEPLYProvider_to_HandleDEProvider(
-        self_: *const HandleDEPLYProvider,
-    ) -> crate::OcctResult<*mut HandleDEProvider>;
+    pub fn Handle_DEPLY_Provider_to_Handle_DE_Provider(
+        self_: *const Handle_DEPLY_Provider,
+    ) -> crate::OcctResult<*mut Handle_DE_Provider>;
     /// Upcast Handle<DEPLY_Provider> to Handle<Standard_Transient>
-    pub fn HandleDEPLYProvider_to_HandleStandardTransient(
-        self_: *const HandleDEPLYProvider,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
-    /// Inherited: **Source:** `DE_Provider.hxx`:62 - `DE_Provider::Read()`
+    pub fn Handle_DEPLY_Provider_to_Handle_Standard_Transient(
+        self_: *const Handle_DEPLY_Provider,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
+    /// Inherited: **Source:** `DE_Provider.hxx`:104 - `DE_Provider::Read()`
     pub fn DEPLY_Provider_inherited_Read(
         self_: *mut DEPLY_Provider,
         thePath: *const TCollection_AsciiString,
-        theDocument: *const HandleTDocStdDocument,
-        theWS: *mut HandleXSControlWorkSession,
+        theDocument: *const Handle_TDocStd_Document,
+        theWS: *mut Handle_XSControl_WorkSession,
         theProgress: *const Message_ProgressRange,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `DE_Provider.hxx`:155 - `DE_Provider::GetNode()`
+    /// Inherited: **Source:** `DE_Provider.hxx`:285 - `DE_Provider::GetNode()`
     pub fn DEPLY_Provider_inherited_GetNode(
         self_: *const DEPLY_Provider,
-    ) -> crate::OcctResult<*mut HandleDEConfigurationNode>;
-    /// Inherited: **Source:** `DE_Provider.hxx`:159 - `DE_Provider::SetNode()`
+    ) -> crate::OcctResult<*mut Handle_DE_ConfigurationNode>;
+    /// Inherited: **Source:** `DE_Provider.hxx`:289 - `DE_Provider::SetNode()`
     pub fn DEPLY_Provider_inherited_SetNode(
         self_: *mut DEPLY_Provider,
-        theNode: *const HandleDEConfigurationNode,
+        theNode: *const Handle_DE_ConfigurationNode,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn DEPLY_Provider_inherited_IsInstance(
         self_: *const DEPLY_Provider,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn DEPLY_Provider_inherited_IsKind(
         self_: *const DEPLY_Provider,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn DEPLY_Provider_inherited_This(
         self_: *const DEPLY_Provider,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn DEPLY_Provider_inherited_GetRefCount(
         self_: *const DEPLY_Provider,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn DEPLY_Provider_inherited_IncrementRefCounter(
         self_: *mut DEPLY_Provider,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn DEPLY_Provider_inherited_DecrementRefCounter(
         self_: *mut DEPLY_Provider,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn DEPLY_Provider_inherited_Delete(self_: *const DEPLY_Provider)
         -> *const std::ffi::c_char;
     // ======================== RWPly_CafWriter ========================
     pub fn RWPly_CafWriter_destructor(self_: *mut RWPly_CafWriter);
-    /// **Source:** `RWPly_CafWriter.hxx`:40 - `RWPly_CafWriter::RWPly_CafWriter()`
+    /// **Source:** `RWPly_CafWriter.hxx`:42 - `RWPly_CafWriter::RWPly_CafWriter()`
     pub fn RWPly_CafWriter_ctor_asciistring(
         theFile: *const TCollection_AsciiString,
     ) -> crate::OcctResult<*mut RWPly_CafWriter>;
-    /// **Source:** `RWPly_CafWriter.hxx`:36 - `RWPly_CafWriter::DynamicType()`
+    /// **Source:** `RWPly_CafWriter.hxx`:38 - `RWPly_CafWriter::DynamicType()`
     pub fn RWPly_CafWriter_dynamic_type(
         self_: *const RWPly_CafWriter,
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// **Source:** `RWPly_CafWriter.hxx`:46 - `RWPly_CafWriter::CoordinateSystemConverter()`
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
+    /// **Source:** `RWPly_CafWriter.hxx`:48 - `RWPly_CafWriter::CoordinateSystemConverter()`
     pub fn RWPly_CafWriter_coordinate_system_converter(
         self_: *const RWPly_CafWriter,
     ) -> crate::OcctResult<*const RWMesh_CoordinateSystemConverter>;
-    /// **Source:** `RWPly_CafWriter.hxx`:49 - `RWPly_CafWriter::ChangeCoordinateSystemConverter()`
+    /// **Source:** `RWPly_CafWriter.hxx`:51 - `RWPly_CafWriter::ChangeCoordinateSystemConverter()`
     pub fn RWPly_CafWriter_change_coordinate_system_converter(
         self_: *mut RWPly_CafWriter,
     ) -> crate::OcctResult<*mut RWMesh_CoordinateSystemConverter>;
-    /// **Source:** `RWPly_CafWriter.hxx`:52 - `RWPly_CafWriter::SetCoordinateSystemConverter()`
+    /// **Source:** `RWPly_CafWriter.hxx`:54 - `RWPly_CafWriter::SetCoordinateSystemConverter()`
     pub fn RWPly_CafWriter_set_coordinate_system_converter(
         self_: *mut RWPly_CafWriter,
         theConverter: *const RWMesh_CoordinateSystemConverter,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `RWPly_CafWriter.hxx`:58 - `RWPly_CafWriter::DefaultStyle()`
+    /// **Source:** `RWPly_CafWriter.hxx`:60 - `RWPly_CafWriter::DefaultStyle()`
     pub fn RWPly_CafWriter_default_style(
         self_: *const RWPly_CafWriter,
     ) -> crate::OcctResult<*const XCAFPrs_Style>;
-    /// **Source:** `RWPly_CafWriter.hxx`:61 - `RWPly_CafWriter::SetDefaultStyle()`
+    /// **Source:** `RWPly_CafWriter.hxx`:63 - `RWPly_CafWriter::SetDefaultStyle()`
     pub fn RWPly_CafWriter_set_default_style(
         self_: *mut RWPly_CafWriter,
         theStyle: *const XCAFPrs_Style,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `RWPly_CafWriter.hxx`:66 - `RWPly_CafWriter::IsDoublePrecision()`
+    /// **Source:** `RWPly_CafWriter.hxx`:68 - `RWPly_CafWriter::IsDoublePrecision()`
     pub fn RWPly_CafWriter_is_double_precision(
         self_: *const RWPly_CafWriter,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `RWPly_CafWriter.hxx`:69 - `RWPly_CafWriter::SetDoublePrecision()`
+    /// **Source:** `RWPly_CafWriter.hxx`:71 - `RWPly_CafWriter::SetDoublePrecision()`
     pub fn RWPly_CafWriter_set_double_precision(
         self_: *mut RWPly_CafWriter,
         theDoublePrec: bool,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `RWPly_CafWriter.hxx`:72 - `RWPly_CafWriter::HasNormals()`
+    /// **Source:** `RWPly_CafWriter.hxx`:74 - `RWPly_CafWriter::HasNormals()`
     pub fn RWPly_CafWriter_has_normals(self_: *const RWPly_CafWriter) -> crate::OcctResult<bool>;
-    /// **Source:** `RWPly_CafWriter.hxx`:75 - `RWPly_CafWriter::SetNormals()`
+    /// **Source:** `RWPly_CafWriter.hxx`:77 - `RWPly_CafWriter::SetNormals()`
     pub fn RWPly_CafWriter_set_normals(
         self_: *mut RWPly_CafWriter,
         theHasNormals: bool,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `RWPly_CafWriter.hxx`:78 - `RWPly_CafWriter::HasTexCoords()`
+    /// **Source:** `RWPly_CafWriter.hxx`:80 - `RWPly_CafWriter::HasTexCoords()`
     pub fn RWPly_CafWriter_has_tex_coords(self_: *const RWPly_CafWriter)
         -> crate::OcctResult<bool>;
-    /// **Source:** `RWPly_CafWriter.hxx`:81 - `RWPly_CafWriter::SetTexCoords()`
+    /// **Source:** `RWPly_CafWriter.hxx`:83 - `RWPly_CafWriter::SetTexCoords()`
     pub fn RWPly_CafWriter_set_tex_coords(
         self_: *mut RWPly_CafWriter,
         theHasTexCoords: bool,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `RWPly_CafWriter.hxx`:84 - `RWPly_CafWriter::HasColors()`
+    /// **Source:** `RWPly_CafWriter.hxx`:86 - `RWPly_CafWriter::HasColors()`
     pub fn RWPly_CafWriter_has_colors(self_: *const RWPly_CafWriter) -> crate::OcctResult<bool>;
-    /// **Source:** `RWPly_CafWriter.hxx`:87 - `RWPly_CafWriter::SetColors()`
+    /// **Source:** `RWPly_CafWriter.hxx`:89 - `RWPly_CafWriter::SetColors()`
     pub fn RWPly_CafWriter_set_colors(
         self_: *mut RWPly_CafWriter,
         theToWrite: bool,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `RWPly_CafWriter.hxx`:90 - `RWPly_CafWriter::HasPartId()`
+    /// **Source:** `RWPly_CafWriter.hxx`:92 - `RWPly_CafWriter::HasPartId()`
     pub fn RWPly_CafWriter_has_part_id(self_: *const RWPly_CafWriter) -> crate::OcctResult<bool>;
-    /// **Source:** `RWPly_CafWriter.hxx`:94 - `RWPly_CafWriter::SetPartId()`
+    /// **Source:** `RWPly_CafWriter.hxx`:96 - `RWPly_CafWriter::SetPartId()`
     pub fn RWPly_CafWriter_set_part_id(
         self_: *mut RWPly_CafWriter,
         theSurfId: bool,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `RWPly_CafWriter.hxx`:101 - `RWPly_CafWriter::HasFaceId()`
+    /// **Source:** `RWPly_CafWriter.hxx`:103 - `RWPly_CafWriter::HasFaceId()`
     pub fn RWPly_CafWriter_has_face_id(self_: *const RWPly_CafWriter) -> crate::OcctResult<bool>;
-    /// **Source:** `RWPly_CafWriter.hxx`:105 - `RWPly_CafWriter::SetFaceId()`
+    /// **Source:** `RWPly_CafWriter.hxx`:107 - `RWPly_CafWriter::SetFaceId()`
     pub fn RWPly_CafWriter_set_face_id(
         self_: *mut RWPly_CafWriter,
         theSurfId: bool,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `RWPly_CafWriter.hxx`:123 - `RWPly_CafWriter::Perform()`
-    pub fn RWPly_CafWriter_perform_handletdocstddocument_labelsequence_mapofasciistringptr_indexeddatamapofstringstring_progressrange(
+    /// **Source:** `RWPly_CafWriter.hxx`:125 - `RWPly_CafWriter::Perform()`
+    pub fn RWPly_CafWriter_perform_handletdocstddocument_seq_label_map_asciistringptr_idmap_asciistring_asciistring_progressrange(
         self_: *mut RWPly_CafWriter,
-        theDocument: *const HandleTDocStdDocument,
-        theRootLabels: *const TDF_LabelSequence,
-        theLabelFilter: *const TColStd_MapOfAsciiString,
-        theFileInfo: *const TColStd_IndexedDataMapOfStringString,
+        theDocument: *const Handle_TDocStd_Document,
+        theRootLabels: *const NCollection_Sequence_TDF_Label,
+        theLabelFilter: *const NCollection_Map_TCollection_AsciiString,
+        theFileInfo: *const NCollection_IndexedDataMap_TCollection_AsciiString_TCollection_AsciiString,
         theProgress: *const Message_ProgressRange,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `RWPly_CafWriter.hxx`:135 - `RWPly_CafWriter::Perform()`
-    pub fn RWPly_CafWriter_perform_handletdocstddocument_indexeddatamapofstringstring_progressrange(
+    /// **Source:** `RWPly_CafWriter.hxx`:138 - `RWPly_CafWriter::Perform()`
+    pub fn RWPly_CafWriter_perform_handletdocstddocument_idmap_asciistring_asciistring_progressrange(
         self_: *mut RWPly_CafWriter,
-        theDocument: *const HandleTDocStdDocument,
-        theFileInfo: *const TColStd_IndexedDataMapOfStringString,
+        theDocument: *const Handle_TDocStd_Document,
+        theFileInfo: *const NCollection_IndexedDataMap_TCollection_AsciiString_TCollection_AsciiString,
         theProgress: *const Message_ProgressRange,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `RWPly_CafWriter.hxx`:36 - `RWPly_CafWriter::get_type_name()`
+    /// **Source:** `RWPly_CafWriter.hxx`:38 - `RWPly_CafWriter::get_type_name()`
     pub fn RWPly_CafWriter_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
-    /// **Source:** `RWPly_CafWriter.hxx`:36 - `RWPly_CafWriter::get_type_descriptor()`
-    pub fn RWPly_CafWriter_get_type_descriptor() -> crate::OcctResult<*const HandleStandardType>;
+    /// **Source:** `RWPly_CafWriter.hxx`:38 - `RWPly_CafWriter::get_type_descriptor()`
+    pub fn RWPly_CafWriter_get_type_descriptor() -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast RWPly_CafWriter to Standard_Transient
     pub fn RWPly_CafWriter_as_Standard_Transient(
         self_: *const RWPly_CafWriter,
@@ -426,168 +441,168 @@ unsafe extern "C" {
     /// Wrap RWPly_CafWriter in a Handle
     pub fn RWPly_CafWriter_to_handle(
         obj: *mut RWPly_CafWriter,
-    ) -> crate::OcctResult<*mut HandleRWPlyCafWriter>;
+    ) -> crate::OcctResult<*mut Handle_RWPly_CafWriter>;
     /// Destroy Handle<RWPly_CafWriter>
-    pub fn HandleRWPlyCafWriter_destructor(self_: *mut HandleRWPlyCafWriter);
+    pub fn Handle_RWPly_CafWriter_destructor(self_: *mut Handle_RWPly_CafWriter);
     /// Clone Handle<RWPly_CafWriter> (increments reference count)
-    pub fn HandleRWPlyCafWriter_clone(
-        self_: *const HandleRWPlyCafWriter,
-    ) -> crate::OcctResult<*mut HandleRWPlyCafWriter>;
+    pub fn Handle_RWPly_CafWriter_clone(
+        self_: *const Handle_RWPly_CafWriter,
+    ) -> crate::OcctResult<*mut Handle_RWPly_CafWriter>;
     /// Check if Handle<RWPly_CafWriter> is null
-    pub fn HandleRWPlyCafWriter_is_null(self_: *const HandleRWPlyCafWriter) -> bool;
+    pub fn Handle_RWPly_CafWriter_is_null(self_: *const Handle_RWPly_CafWriter) -> bool;
     /// Dereference Handle to get *const RWPly_CafWriter
-    pub fn HandleRWPlyCafWriter_get(
-        handle: *const HandleRWPlyCafWriter,
+    pub fn Handle_RWPly_CafWriter_get(
+        handle: *const Handle_RWPly_CafWriter,
     ) -> crate::OcctResult<*const RWPly_CafWriter>;
     /// Dereference Handle to get *mut RWPly_CafWriter
-    pub fn HandleRWPlyCafWriter_get_mut(
-        handle: *mut HandleRWPlyCafWriter,
+    pub fn Handle_RWPly_CafWriter_get_mut(
+        handle: *mut Handle_RWPly_CafWriter,
     ) -> crate::OcctResult<*mut RWPly_CafWriter>;
     /// Upcast Handle<RWPly_CafWriter> to Handle<Standard_Transient>
-    pub fn HandleRWPlyCafWriter_to_HandleStandardTransient(
-        self_: *const HandleRWPlyCafWriter,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn Handle_RWPly_CafWriter_to_Handle_Standard_Transient(
+        self_: *const Handle_RWPly_CafWriter,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn RWPly_CafWriter_inherited_IsInstance(
         self_: *const RWPly_CafWriter,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn RWPly_CafWriter_inherited_IsKind(
         self_: *const RWPly_CafWriter,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn RWPly_CafWriter_inherited_This(
         self_: *const RWPly_CafWriter,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn RWPly_CafWriter_inherited_GetRefCount(
         self_: *const RWPly_CafWriter,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn RWPly_CafWriter_inherited_IncrementRefCounter(
         self_: *mut RWPly_CafWriter,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn RWPly_CafWriter_inherited_DecrementRefCounter(
         self_: *mut RWPly_CafWriter,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn RWPly_CafWriter_inherited_Delete(
         self_: *const RWPly_CafWriter,
     ) -> *const std::ffi::c_char;
     // ======================== RWPly_PlyWriterContext ========================
     pub fn RWPly_PlyWriterContext_destructor(self_: *mut RWPly_PlyWriterContext);
-    /// **Source:** `RWPly_PlyWriterContext.hxx`:29 - `RWPly_PlyWriterContext::RWPly_PlyWriterContext()`
+    /// **Source:** `RWPly_PlyWriterContext.hxx`:37 - `RWPly_PlyWriterContext::RWPly_PlyWriterContext()`
     pub fn RWPly_PlyWriterContext_ctor() -> crate::OcctResult<*mut RWPly_PlyWriterContext>;
-    /// **Source:** `RWPly_PlyWriterContext.hxx`:37 - `RWPly_PlyWriterContext::IsDoublePrecision()`
+    /// **Source:** `RWPly_PlyWriterContext.hxx`:45 - `RWPly_PlyWriterContext::IsDoublePrecision()`
     pub fn RWPly_PlyWriterContext_is_double_precision(
         self_: *const RWPly_PlyWriterContext,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `RWPly_PlyWriterContext.hxx`:40 - `RWPly_PlyWriterContext::SetDoublePrecision()`
+    /// **Source:** `RWPly_PlyWriterContext.hxx`:48 - `RWPly_PlyWriterContext::SetDoublePrecision()`
     pub fn RWPly_PlyWriterContext_set_double_precision(
         self_: *mut RWPly_PlyWriterContext,
         theDoublePrec: bool,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `RWPly_PlyWriterContext.hxx`:43 - `RWPly_PlyWriterContext::HasNormals()`
+    /// **Source:** `RWPly_PlyWriterContext.hxx`:51 - `RWPly_PlyWriterContext::HasNormals()`
     pub fn RWPly_PlyWriterContext_has_normals(
         self_: *const RWPly_PlyWriterContext,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `RWPly_PlyWriterContext.hxx`:46 - `RWPly_PlyWriterContext::SetNormals()`
+    /// **Source:** `RWPly_PlyWriterContext.hxx`:54 - `RWPly_PlyWriterContext::SetNormals()`
     pub fn RWPly_PlyWriterContext_set_normals(
         self_: *mut RWPly_PlyWriterContext,
         theHasNormals: bool,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `RWPly_PlyWriterContext.hxx`:50 - `RWPly_PlyWriterContext::HasTexCoords()`
+    /// **Source:** `RWPly_PlyWriterContext.hxx`:58 - `RWPly_PlyWriterContext::HasTexCoords()`
     pub fn RWPly_PlyWriterContext_has_tex_coords(
         self_: *const RWPly_PlyWriterContext,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `RWPly_PlyWriterContext.hxx`:53 - `RWPly_PlyWriterContext::SetTexCoords()`
+    /// **Source:** `RWPly_PlyWriterContext.hxx`:61 - `RWPly_PlyWriterContext::SetTexCoords()`
     pub fn RWPly_PlyWriterContext_set_tex_coords(
         self_: *mut RWPly_PlyWriterContext,
         theHasTexCoords: bool,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `RWPly_PlyWriterContext.hxx`:56 - `RWPly_PlyWriterContext::HasColors()`
+    /// **Source:** `RWPly_PlyWriterContext.hxx`:64 - `RWPly_PlyWriterContext::HasColors()`
     pub fn RWPly_PlyWriterContext_has_colors(
         self_: *const RWPly_PlyWriterContext,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `RWPly_PlyWriterContext.hxx`:59 - `RWPly_PlyWriterContext::SetColors()`
+    /// **Source:** `RWPly_PlyWriterContext.hxx`:67 - `RWPly_PlyWriterContext::SetColors()`
     pub fn RWPly_PlyWriterContext_set_colors(
         self_: *mut RWPly_PlyWriterContext,
         theToWrite: bool,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `RWPly_PlyWriterContext.hxx`:63 - `RWPly_PlyWriterContext::HasSurfaceId()`
+    /// **Source:** `RWPly_PlyWriterContext.hxx`:71 - `RWPly_PlyWriterContext::HasSurfaceId()`
     pub fn RWPly_PlyWriterContext_has_surface_id(
         self_: *const RWPly_PlyWriterContext,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `RWPly_PlyWriterContext.hxx`:66 - `RWPly_PlyWriterContext::SetSurfaceId()`
+    /// **Source:** `RWPly_PlyWriterContext.hxx`:74 - `RWPly_PlyWriterContext::SetSurfaceId()`
     pub fn RWPly_PlyWriterContext_set_surface_id_bool(
         self_: *mut RWPly_PlyWriterContext,
         theSurfId: bool,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `RWPly_PlyWriterContext.hxx`:70 - `RWPly_PlyWriterContext::IsOpened()`
+    /// **Source:** `RWPly_PlyWriterContext.hxx`:78 - `RWPly_PlyWriterContext::IsOpened()`
     pub fn RWPly_PlyWriterContext_is_opened(
         self_: *const RWPly_PlyWriterContext,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `RWPly_PlyWriterContext.hxx`:73 - `RWPly_PlyWriterContext::Open()`
+    /// **Source:** `RWPly_PlyWriterContext.hxx`:81 - `RWPly_PlyWriterContext::Open()`
     pub fn RWPly_PlyWriterContext_open(
         self_: *mut RWPly_PlyWriterContext,
         theName: *const TCollection_AsciiString,
         theStream: *const std_shared_ptr_std_ostream,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `RWPly_PlyWriterContext.hxx`:81 - `RWPly_PlyWriterContext::WriteHeader()`
+    /// **Source:** `RWPly_PlyWriterContext.hxx`:89 - `RWPly_PlyWriterContext::WriteHeader()`
     pub fn RWPly_PlyWriterContext_write_header(
         self_: *mut RWPly_PlyWriterContext,
         theNbNodes: i32,
         theNbElems: i32,
-        theFileInfo: *const TColStd_IndexedDataMapOfStringString,
+        theFileInfo: *const NCollection_IndexedDataMap_TCollection_AsciiString_TCollection_AsciiString,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `RWPly_PlyWriterContext.hxx`:90 - `RWPly_PlyWriterContext::WriteVertex()`
+    /// **Source:** `RWPly_PlyWriterContext.hxx`:100 - `RWPly_PlyWriterContext::WriteVertex()`
     pub fn RWPly_PlyWriterContext_write_vertex(
         self_: *mut RWPly_PlyWriterContext,
         thePoint: *const gp_Pnt,
-        theNorm: *const Graphic3d_Vec3,
-        theUV: *const Graphic3d_Vec2,
-        theColor: *const Graphic3d_Vec4ub,
+        theNorm: *const BVH_Vec3f,
+        theUV: *const BVH_Vec2f,
+        theColor: *const NCollection_Vec4_uint8_t,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `RWPly_PlyWriterContext.hxx`:96 - `RWPly_PlyWriterContext::NbWrittenVertices()`
+    /// **Source:** `RWPly_PlyWriterContext.hxx`:106 - `RWPly_PlyWriterContext::NbWrittenVertices()`
     pub fn RWPly_PlyWriterContext_nb_written_vertices(
         self_: *const RWPly_PlyWriterContext,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `RWPly_PlyWriterContext.hxx`:99 - `RWPly_PlyWriterContext::VertexOffset()`
+    /// **Source:** `RWPly_PlyWriterContext.hxx`:109 - `RWPly_PlyWriterContext::VertexOffset()`
     pub fn RWPly_PlyWriterContext_vertex_offset(
         self_: *const RWPly_PlyWriterContext,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `RWPly_PlyWriterContext.hxx`:102 - `RWPly_PlyWriterContext::SetVertexOffset()`
+    /// **Source:** `RWPly_PlyWriterContext.hxx`:112 - `RWPly_PlyWriterContext::SetVertexOffset()`
     pub fn RWPly_PlyWriterContext_set_vertex_offset(
         self_: *mut RWPly_PlyWriterContext,
         theOffset: i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `RWPly_PlyWriterContext.hxx`:105 - `RWPly_PlyWriterContext::SurfaceId()`
+    /// **Source:** `RWPly_PlyWriterContext.hxx`:115 - `RWPly_PlyWriterContext::SurfaceId()`
     pub fn RWPly_PlyWriterContext_surface_id(
         self_: *const RWPly_PlyWriterContext,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `RWPly_PlyWriterContext.hxx`:108 - `RWPly_PlyWriterContext::SetSurfaceId()`
+    /// **Source:** `RWPly_PlyWriterContext.hxx`:118 - `RWPly_PlyWriterContext::SetSurfaceId()`
     pub fn RWPly_PlyWriterContext_set_surface_id_int(
         self_: *mut RWPly_PlyWriterContext,
         theSurfId: i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `RWPly_PlyWriterContext.hxx`:111 - `RWPly_PlyWriterContext::WriteTriangle()`
+    /// **Source:** `RWPly_PlyWriterContext.hxx`:121 - `RWPly_PlyWriterContext::WriteTriangle()`
     pub fn RWPly_PlyWriterContext_write_triangle(
         self_: *mut RWPly_PlyWriterContext,
-        theTri: *const Graphic3d_Vec3i,
+        theTri: *const BVH_Vec3i,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `RWPly_PlyWriterContext.hxx`:114 - `RWPly_PlyWriterContext::WriteQuad()`
+    /// **Source:** `RWPly_PlyWriterContext.hxx`:124 - `RWPly_PlyWriterContext::WriteQuad()`
     pub fn RWPly_PlyWriterContext_write_quad(
         self_: *mut RWPly_PlyWriterContext,
-        theQuad: *const Graphic3d_Vec4i,
+        theQuad: *const BVH_Vec4i,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `RWPly_PlyWriterContext.hxx`:117 - `RWPly_PlyWriterContext::NbWrittenElements()`
+    /// **Source:** `RWPly_PlyWriterContext.hxx`:127 - `RWPly_PlyWriterContext::NbWrittenElements()`
     pub fn RWPly_PlyWriterContext_nb_written_elements(
         self_: *const RWPly_PlyWriterContext,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `RWPly_PlyWriterContext.hxx`:121 - `RWPly_PlyWriterContext::Close()`
+    /// **Source:** `RWPly_PlyWriterContext.hxx`:131 - `RWPly_PlyWriterContext::Close()`
     pub fn RWPly_PlyWriterContext_close(
         self_: *mut RWPly_PlyWriterContext,
         theIsAborted: bool,

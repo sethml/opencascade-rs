@@ -10,7 +10,7 @@
 // From StepAP209_Construct.hxx
 // ========================
 
-/// **Source:** `StepAP209_Construct.hxx`:42 - `StepAP209_Construct`
+/// **Source:** `StepAP209_Construct.hxx`:44 - `StepAP209_Construct`
 /// Basic tool for working with AP209 model
 pub use crate::ffi_types::StepAP209_Construct as Construct;
 
@@ -23,7 +23,7 @@ unsafe impl crate::CppDeletable for Construct {
 }
 
 impl Construct {
-    /// **Source:** `StepAP209_Construct.hxx`:48 - `StepAP209_Construct::StepAP209_Construct()`
+    /// **Source:** `StepAP209_Construct.hxx`:50 - `StepAP209_Construct::StepAP209_Construct()`
     /// Creates an empty tool
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
@@ -33,10 +33,10 @@ impl Construct {
         }
     }
 
-    /// **Source:** `StepAP209_Construct.hxx`:51 - `StepAP209_Construct::StepAP209_Construct()`
+    /// **Source:** `StepAP209_Construct.hxx`:53 - `StepAP209_Construct::StepAP209_Construct()`
     /// Creates a tool and initializes it
     pub fn new_handlexscontrolworksession(
-        WS: &crate::ffi_types::HandleXSControlWorkSession,
+        WS: &crate::ffi_types::Handle_XSControl_WorkSession,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -45,18 +45,18 @@ impl Construct {
         }
     }
 
-    /// **Source:** `StepAP209_Construct.hxx`:54 - `StepAP209_Construct::Init()`
+    /// **Source:** `StepAP209_Construct.hxx`:56 - `StepAP209_Construct::Init()`
     /// Initializes tool; returns True if succeeded
-    pub fn init(&mut self, WS: &crate::ffi_types::HandleXSControlWorkSession) -> bool {
+    pub fn init(&mut self, WS: &crate::ffi_types::Handle_XSControl_WorkSession) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepAP209_Construct_init(self as *mut Self, WS)
         })
     }
 
-    /// **Source:** `StepAP209_Construct.hxx`:57 - `StepAP209_Construct::IsDesing()`
+    /// **Source:** `StepAP209_Construct.hxx`:58 - `StepAP209_Construct::IsDesing()`
     pub fn is_desing(
         &self,
-        PD: &crate::ffi_types::HandleStepBasicProductDefinitionFormation,
+        PD: &crate::ffi_types::Handle_StepBasic_ProductDefinitionFormation,
     ) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepAP209_Construct_is_desing(self as *const Self, PD)
@@ -66,7 +66,7 @@ impl Construct {
     /// **Source:** `StepAP209_Construct.hxx`:60 - `StepAP209_Construct::IsAnalys()`
     pub fn is_analys(
         &self,
-        PD: &crate::ffi_types::HandleStepBasicProductDefinitionFormation,
+        PD: &crate::ffi_types::Handle_StepBasic_ProductDefinitionFormation,
     ) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepAP209_Construct_is_analys(self as *const Self, PD)
@@ -76,8 +76,8 @@ impl Construct {
     /// **Source:** `StepAP209_Construct.hxx`:62 - `StepAP209_Construct::FeaModel()`
     pub fn fea_model_handlestepbasicproduct(
         &self,
-        Prod: &crate::ffi_types::HandleStepBasicProduct,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStepFEAFeaModel> {
+        Prod: &crate::ffi_types::Handle_StepBasic_Product,
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_StepFEA_FeaModel> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDESTEP::StepAP209_Construct_fea_model_handlestepbasicproduct(
@@ -88,21 +88,21 @@ impl Construct {
         }
     }
 
-    /// **Source:** `StepAP209_Construct.hxx`:64 - `StepAP209_Construct::FeaModel()`
+    /// **Source:** `StepAP209_Construct.hxx`:65 - `StepAP209_Construct::FeaModel()`
     pub fn fea_model_handlestepbasicproductdefinitionformation(
         &self,
-        PDF: &crate::ffi_types::HandleStepBasicProductDefinitionFormation,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStepFEAFeaModel> {
+        PDF: &crate::ffi_types::Handle_StepBasic_ProductDefinitionFormation,
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_StepFEA_FeaModel> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::StepAP209_Construct_fea_model_handlestepbasicproductdefinitionformation(self as *const Self, PDF)))
         }
     }
 
-    /// **Source:** `StepAP209_Construct.hxx`:67 - `StepAP209_Construct::GetFeaAxis2Placement3d()`
+    /// **Source:** `StepAP209_Construct.hxx`:68 - `StepAP209_Construct::GetFeaAxis2Placement3d()`
     pub fn get_fea_axis2_placement3d(
         &self,
-        theFeaModel: &crate::ffi_types::HandleStepFEAFeaModel,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStepFEAFeaAxis2Placement3d> {
+        theFeaModel: &crate::ffi_types::Handle_StepFEA_FeaModel,
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_StepFEA_FeaAxis2Placement3d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDESTEP::StepAP209_Construct_get_fea_axis2_placement3d(
@@ -113,11 +113,11 @@ impl Construct {
         }
     }
 
-    /// **Source:** `StepAP209_Construct.hxx`:70 - `StepAP209_Construct::IdealShape()`
+    /// **Source:** `StepAP209_Construct.hxx`:71 - `StepAP209_Construct::IdealShape()`
     pub fn ideal_shape_handlestepbasicproduct(
         &self,
-        Prod: &crate::ffi_types::HandleStepBasicProduct,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStepShapeShapeRepresentation> {
+        Prod: &crate::ffi_types::Handle_StepBasic_Product,
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_StepShape_ShapeRepresentation> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDESTEP::StepAP209_Construct_ideal_shape_handlestepbasicproduct(
@@ -128,21 +128,21 @@ impl Construct {
         }
     }
 
-    /// **Source:** `StepAP209_Construct.hxx`:73 - `StepAP209_Construct::IdealShape()`
+    /// **Source:** `StepAP209_Construct.hxx`:74 - `StepAP209_Construct::IdealShape()`
     pub fn ideal_shape_handlestepbasicproductdefinitionformation(
         &self,
-        PDF: &crate::ffi_types::HandleStepBasicProductDefinitionFormation,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStepShapeShapeRepresentation> {
+        PDF: &crate::ffi_types::Handle_StepBasic_ProductDefinitionFormation,
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_StepShape_ShapeRepresentation> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::StepAP209_Construct_ideal_shape_handlestepbasicproductdefinitionformation(self as *const Self, PDF)))
         }
     }
 
-    /// **Source:** `StepAP209_Construct.hxx`:76 - `StepAP209_Construct::NominShape()`
+    /// **Source:** `StepAP209_Construct.hxx`:77 - `StepAP209_Construct::NominShape()`
     pub fn nomin_shape_handlestepbasicproduct(
         &self,
-        Prod: &crate::ffi_types::HandleStepBasicProduct,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStepShapeShapeRepresentation> {
+        Prod: &crate::ffi_types::Handle_StepBasic_Product,
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_StepShape_ShapeRepresentation> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDESTEP::StepAP209_Construct_nomin_shape_handlestepbasicproduct(
@@ -153,20 +153,18 @@ impl Construct {
         }
     }
 
-    /// **Source:** `StepAP209_Construct.hxx`:79 - `StepAP209_Construct::NominShape()`
+    /// **Source:** `StepAP209_Construct.hxx`:80 - `StepAP209_Construct::NominShape()`
     pub fn nomin_shape_handlestepbasicproductdefinitionformation(
         &self,
-        PDF: &crate::ffi_types::HandleStepBasicProductDefinitionFormation,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStepShapeShapeRepresentation> {
+        PDF: &crate::ffi_types::Handle_StepBasic_ProductDefinitionFormation,
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_StepShape_ShapeRepresentation> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::StepAP209_Construct_nomin_shape_handlestepbasicproductdefinitionformation(self as *const Self, PDF)))
         }
     }
 
-    /// **Source:** `StepAP209_Construct.hxx`:82 - `StepAP209_Construct::GetElementMaterial()`
-    pub fn get_element_material(
-        &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStepElementHSequenceOfElementMaterial> {
+    /// **Source:** `StepAP209_Construct.hxx`:84 - `StepAP209_Construct::GetElementMaterial()`
+    pub fn get_element_material(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HSequence_opencascade_handle_StepElement_ElementMaterial>{
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDESTEP::StepAP209_Construct_get_element_material(
@@ -176,11 +174,8 @@ impl Construct {
         }
     }
 
-    /// **Source:** `StepAP209_Construct.hxx`:84 - `StepAP209_Construct::GetElemGeomRelat()`
-    pub fn get_elem_geom_relat(
-        &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStepFEAHSequenceOfElementGeometricRelationship>
-    {
+    /// **Source:** `StepAP209_Construct.hxx`:88 - `StepAP209_Construct::GetElemGeomRelat()`
+    pub fn get_elem_geom_relat(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HSequence_opencascade_handle_StepFEA_ElementGeometricRelationship>{
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDESTEP::StepAP209_Construct_get_elem_geom_relat(
@@ -190,11 +185,8 @@ impl Construct {
         }
     }
 
-    /// **Source:** `StepAP209_Construct.hxx`:86 - `StepAP209_Construct::GetElements1D()`
-    pub fn get_elements1_d(
-        &self,
-        theFeaModel: &crate::ffi_types::HandleStepFEAFeaModel,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStepFEAHSequenceOfElementRepresentation> {
+    /// **Source:** `StepAP209_Construct.hxx`:91 - `StepAP209_Construct::GetElements1D()`
+    pub fn get_elements1_d(&self, theFeaModel: &crate::ffi_types::Handle_StepFEA_FeaModel) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HSequence_opencascade_handle_StepFEA_ElementRepresentation>{
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDESTEP::StepAP209_Construct_get_elements1_d(
@@ -205,11 +197,8 @@ impl Construct {
         }
     }
 
-    /// **Source:** `StepAP209_Construct.hxx`:89 - `StepAP209_Construct::GetElements2D()`
-    pub fn get_elements2_d(
-        &self,
-        theFEAModel: &crate::ffi_types::HandleStepFEAFeaModel,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStepFEAHSequenceOfElementRepresentation> {
+    /// **Source:** `StepAP209_Construct.hxx`:94 - `StepAP209_Construct::GetElements2D()`
+    pub fn get_elements2_d(&self, theFEAModel: &crate::ffi_types::Handle_StepFEA_FeaModel) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HSequence_opencascade_handle_StepFEA_ElementRepresentation>{
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDESTEP::StepAP209_Construct_get_elements2_d(
@@ -220,11 +209,8 @@ impl Construct {
         }
     }
 
-    /// **Source:** `StepAP209_Construct.hxx`:92 - `StepAP209_Construct::GetElements3D()`
-    pub fn get_elements3_d(
-        &self,
-        theFEAModel: &crate::ffi_types::HandleStepFEAFeaModel,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStepFEAHSequenceOfElementRepresentation> {
+    /// **Source:** `StepAP209_Construct.hxx`:97 - `StepAP209_Construct::GetElements3D()`
+    pub fn get_elements3_d(&self, theFEAModel: &crate::ffi_types::Handle_StepFEA_FeaModel) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HSequence_opencascade_handle_StepFEA_ElementRepresentation>{
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDESTEP::StepAP209_Construct_get_elements3_d(
@@ -235,14 +221,10 @@ impl Construct {
         }
     }
 
-    /// **Source:** `StepAP209_Construct.hxx`:97 - `StepAP209_Construct::GetCurElemSection()`
+    /// **Source:** `StepAP209_Construct.hxx`:103 - `StepAP209_Construct::GetCurElemSection()`
     /// Getting list of curve_element_section_definitions
     /// for given element_representation
-    pub fn get_cur_elem_section(
-        &self,
-        ElemRepr: &crate::ffi_types::HandleStepFEACurve3dElementRepresentation,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStepElementHSequenceOfCurveElementSectionDefinition>
-    {
+    pub fn get_cur_elem_section(&self, ElemRepr: &crate::ffi_types::Handle_StepFEA_Curve3dElementRepresentation) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HSequence_opencascade_handle_StepElement_CurveElementSectionDefinition>{
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDESTEP::StepAP209_Construct_get_cur_elem_section(
@@ -253,11 +235,11 @@ impl Construct {
         }
     }
 
-    /// **Source:** `StepAP209_Construct.hxx`:100 - `StepAP209_Construct::GetShReprForElem()`
+    /// **Source:** `StepAP209_Construct.hxx`:105 - `StepAP209_Construct::GetShReprForElem()`
     pub fn get_sh_repr_for_elem(
         &self,
-        ElemRepr: &crate::ffi_types::HandleStepFEAElementRepresentation,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStepShapeShapeRepresentation> {
+        ElemRepr: &crate::ffi_types::Handle_StepFEA_ElementRepresentation,
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_StepShape_ShapeRepresentation> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDESTEP::StepAP209_Construct_get_sh_repr_for_elem(
@@ -268,9 +250,12 @@ impl Construct {
         }
     }
 
-    /// **Source:** `StepAP209_Construct.hxx`:105 - `StepAP209_Construct::CreateAnalysStructure()`
+    /// **Source:** `StepAP209_Construct.hxx`:109 - `StepAP209_Construct::CreateAnalysStructure()`
     /// Create empty structure for idealized_analysis_shape
-    pub fn create_analys_structure(&self, Prod: &crate::ffi_types::HandleStepBasicProduct) -> bool {
+    pub fn create_analys_structure(
+        &self,
+        Prod: &crate::ffi_types::Handle_StepBasic_Product,
+    ) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepAP209_Construct_create_analys_structure(
                 self as *const Self,
@@ -279,9 +264,9 @@ impl Construct {
         })
     }
 
-    /// **Source:** `StepAP209_Construct.hxx`:108 - `StepAP209_Construct::CreateFeaStructure()`
+    /// **Source:** `StepAP209_Construct.hxx`:112 - `StepAP209_Construct::CreateFeaStructure()`
     /// Create fea structure
-    pub fn create_fea_structure(&self, Prod: &crate::ffi_types::HandleStepBasicProduct) -> bool {
+    pub fn create_fea_structure(&self, Prod: &crate::ffi_types::Handle_StepBasic_Product) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepAP209_Construct_create_fea_structure(
                 self as *const Self,
@@ -290,7 +275,7 @@ impl Construct {
         })
     }
 
-    /// **Source:** `StepAP209_Construct.hxx`:112 - `StepAP209_Construct::ReplaceCcDesingToApplied()`
+    /// **Source:** `StepAP209_Construct.hxx`:116 - `StepAP209_Construct::ReplaceCcDesingToApplied()`
     /// Put into model entities Applied... for AP209 instead of
     /// entities CcDesing... from AP203.
     pub fn replace_cc_desing_to_applied(&self) -> bool {
@@ -301,12 +286,12 @@ impl Construct {
         })
     }
 
-    /// **Source:** `StepAP209_Construct.hxx`:117 - `StepAP209_Construct::CreateAddingEntities()`
+    /// **Source:** `StepAP209_Construct.hxx`:120 - `StepAP209_Construct::CreateAddingEntities()`
     /// Create approval.. , date.. , time.. , person.. and
     /// organization.. entities for analysis structure
     pub fn create_adding_entities(
         &self,
-        AnaPD: &crate::ffi_types::HandleStepBasicProductDefinition,
+        AnaPD: &crate::ffi_types::Handle_StepBasic_ProductDefinition,
     ) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepAP209_Construct_create_adding_entities(
@@ -316,11 +301,11 @@ impl Construct {
         })
     }
 
-    /// **Source:** `StepAP209_Construct.hxx`:120 - `StepAP209_Construct::CreateAP203Structure()`
+    /// **Source:** `StepAP209_Construct.hxx`:124 - `StepAP209_Construct::CreateAP203Structure()`
     /// Create AP203 structure from existing AP209 structure
     pub fn create_ap203_structure(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStepDataStepModel> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_StepData_StepModel> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDESTEP::StepAP209_Construct_create_ap203_structure(
@@ -330,13 +315,13 @@ impl Construct {
         }
     }
 
-    /// **Source:** `StepAP209_Construct.hxx`:125 - `StepAP209_Construct::CreateAdding203Entities()`
+    /// **Source:** `StepAP209_Construct.hxx`:128 - `StepAP209_Construct::CreateAdding203Entities()`
     /// Create approval.. , date.. , time.. , person.. and
     /// organization.. entities for 203 structure
     pub fn create_adding203_entities(
         &self,
-        PD: &crate::ffi_types::HandleStepBasicProductDefinition,
-        aModel: &mut crate::ffi_types::HandleStepDataStepModel,
+        PD: &crate::ffi_types::Handle_StepBasic_ProductDefinition,
+        aModel: &mut crate::ffi_types::Handle_StepData_StepModel,
     ) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDESTEP::StepAP209_Construct_create_adding203_entities(
@@ -347,41 +332,41 @@ impl Construct {
         })
     }
 
-    /// **Source:** `StepAP209_Construct.hxx`:128 - `StepAP209_Construct::FeaModel()`
+    /// **Source:** `StepAP209_Construct.hxx`:131 - `StepAP209_Construct::FeaModel()`
     pub fn fea_model_handlestepreprproductdefinitionshape(
         &self,
-        PDS: &crate::ffi_types::HandleStepReprProductDefinitionShape,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStepFEAFeaModel> {
+        PDS: &crate::ffi_types::Handle_StepRepr_ProductDefinitionShape,
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_StepFEA_FeaModel> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::StepAP209_Construct_fea_model_handlestepreprproductdefinitionshape(self as *const Self, PDS)))
         }
     }
 
-    /// **Source:** `StepAP209_Construct.hxx`:131 - `StepAP209_Construct::FeaModel()`
+    /// **Source:** `StepAP209_Construct.hxx`:134 - `StepAP209_Construct::FeaModel()`
     pub fn fea_model_handlestepbasicproductdefinition(
         &self,
-        PD: &crate::ffi_types::HandleStepBasicProductDefinition,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStepFEAFeaModel> {
+        PD: &crate::ffi_types::Handle_StepBasic_ProductDefinition,
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_StepFEA_FeaModel> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::StepAP209_Construct_fea_model_handlestepbasicproductdefinition(self as *const Self, PD)))
         }
     }
 
-    /// **Source:** `StepAP209_Construct.hxx`:134 - `StepAP209_Construct::IdealShape()`
+    /// **Source:** `StepAP209_Construct.hxx`:137 - `StepAP209_Construct::IdealShape()`
     pub fn ideal_shape_handlestepbasicproductdefinition(
         &self,
-        PD: &crate::ffi_types::HandleStepBasicProductDefinition,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStepShapeShapeRepresentation> {
+        PD: &crate::ffi_types::Handle_StepBasic_ProductDefinition,
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_StepShape_ShapeRepresentation> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::StepAP209_Construct_ideal_shape_handlestepbasicproductdefinition(self as *const Self, PD)))
         }
     }
 
-    /// **Source:** `StepAP209_Construct.hxx`:137 - `StepAP209_Construct::IdealShape()`
+    /// **Source:** `StepAP209_Construct.hxx`:140 - `StepAP209_Construct::IdealShape()`
     pub fn ideal_shape_handlestepreprproductdefinitionshape(
         &self,
-        PDS: &crate::ffi_types::HandleStepReprProductDefinitionShape,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStepShapeShapeRepresentation> {
+        PDS: &crate::ffi_types::Handle_StepRepr_ProductDefinitionShape,
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_StepShape_ShapeRepresentation> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::StepAP209_Construct_ideal_shape_handlestepreprproductdefinitionshape(self as *const Self, PDS)))
         }
@@ -410,7 +395,7 @@ impl Construct {
     }
 
     /// Inherited: **Source:** `STEPConstruct_Tool.hxx`:53 - `STEPConstruct_Tool::WS()`
-    pub fn ws(&self) -> &crate::ffi_types::HandleXSControlWorkSession {
+    pub fn ws(&self) -> &crate::ffi_types::Handle_XSControl_WorkSession {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKDESTEP::StepAP209_Construct_inherited_WS(
                 self as *const Self,
@@ -419,7 +404,7 @@ impl Construct {
     }
 
     /// Inherited: **Source:** `STEPConstruct_Tool.hxx`:56 - `STEPConstruct_Tool::Model()`
-    pub fn model(&self) -> crate::OwnedPtr<crate::ffi_types::HandleInterfaceInterfaceModel> {
+    pub fn model(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_Interface_InterfaceModel> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDESTEP::StepAP209_Construct_inherited_Model(
@@ -442,7 +427,7 @@ impl Construct {
     }
 
     /// Inherited: **Source:** `STEPConstruct_Tool.hxx`:62 - `STEPConstruct_Tool::TransientProcess()`
-    pub fn transient_process(&self) -> &crate::ffi_types::HandleTransferTransientProcess {
+    pub fn transient_process(&self) -> &crate::ffi_types::Handle_Transfer_TransientProcess {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKDESTEP::StepAP209_Construct_inherited_TransientProcess(
@@ -453,7 +438,7 @@ impl Construct {
     }
 
     /// Inherited: **Source:** `STEPConstruct_Tool.hxx`:65 - `STEPConstruct_Tool::FinderProcess()`
-    pub fn finder_process(&self) -> &crate::ffi_types::HandleTransferFinderProcess {
+    pub fn finder_process(&self) -> &crate::ffi_types::Handle_Transfer_FinderProcess {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKDESTEP::StepAP209_Construct_inherited_FinderProcess(

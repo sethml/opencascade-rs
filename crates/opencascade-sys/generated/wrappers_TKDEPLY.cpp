@@ -3,15 +3,12 @@
 
 #include "occt_preamble.hxx"
 
+#include <BVH_Types.hxx>
 #include <DEPLY_ConfigurationNode.hxx>
 #include <DEPLY_Provider.hxx>
 #include <DE_ConfigurationContext.hxx>
 #include <DE_ConfigurationNode.hxx>
 #include <DE_Provider.hxx>
-#include <Graphic3d_ShaderVariable.hxx>
-#include <Graphic3d_Vec2.hxx>
-#include <Graphic3d_Vec3.hxx>
-#include <Graphic3d_Vec4.hxx>
 #include <Message_ProgressRange.hxx>
 #include <NCollection_Buffer.hxx>
 #include <RWMesh_CoordinateSystemConverter.hxx>
@@ -19,46 +16,41 @@
 #include <RWPly_PlyWriterContext.hxx>
 #include <Standard_Handle.hxx>
 #include <Standard_Type.hxx>
-#include <TColStd_IndexedDataMapOfStringString.hxx>
-#include <TColStd_ListOfAsciiString.hxx>
-#include <TColStd_MapOfAsciiString.hxx>
-#include <TDF_LabelSequence.hxx>
 #include <TDocStd_Document.hxx>
-#include <XCAFPrs_Style.hxx>
 #include <XSControl_WorkSession.hxx>
 
 // Handle type aliases
-typedef opencascade::handle<DEPLY_ConfigurationNode> HandleDEPLYConfigurationNode;
-typedef opencascade::handle<DEPLY_Provider> HandleDEPLYProvider;
-typedef opencascade::handle<DE_ConfigurationContext> HandleDEConfigurationContext;
-typedef opencascade::handle<DE_ConfigurationNode> HandleDEConfigurationNode;
-typedef opencascade::handle<DE_Provider> HandleDEProvider;
-typedef opencascade::handle<NCollection_Buffer> HandleNCollectionBuffer;
-typedef opencascade::handle<RWPly_CafWriter> HandleRWPlyCafWriter;
-typedef opencascade::handle<Standard_Transient> HandleStandardTransient;
-typedef opencascade::handle<Standard_Type> HandleStandardType;
-typedef opencascade::handle<TDocStd_Document> HandleTDocStdDocument;
-typedef opencascade::handle<XSControl_WorkSession> HandleXSControlWorkSession;
+typedef opencascade::handle<DEPLY_ConfigurationNode> Handle_DEPLY_ConfigurationNode;
+typedef opencascade::handle<DEPLY_Provider> Handle_DEPLY_Provider;
+typedef opencascade::handle<DE_ConfigurationContext> Handle_DE_ConfigurationContext;
+typedef opencascade::handle<DE_ConfigurationNode> Handle_DE_ConfigurationNode;
+typedef opencascade::handle<DE_Provider> Handle_DE_Provider;
+typedef opencascade::handle<NCollection_Buffer> Handle_NCollection_Buffer;
+typedef opencascade::handle<RWPly_CafWriter> Handle_RWPly_CafWriter;
+typedef opencascade::handle<Standard_Transient> Handle_Standard_Transient;
+typedef opencascade::handle<Standard_Type> Handle_Standard_Type;
+typedef opencascade::handle<TDocStd_Document> Handle_TDocStd_Document;
+typedef opencascade::handle<XSControl_WorkSession> Handle_XSControl_WorkSession;
 
 // Handle type destructors, clone, and is_null functions
-extern "C" void HandleDEPLYConfigurationNode_destructor(HandleDEPLYConfigurationNode* self_) { delete self_; }
-extern "C" OcctResult<HandleDEPLYConfigurationNode*> HandleDEPLYConfigurationNode_clone(const HandleDEPLYConfigurationNode* self_) {
-    try { return {new HandleDEPLYConfigurationNode(*self_), nullptr}; }
+extern "C" void Handle_DEPLY_ConfigurationNode_destructor(Handle_DEPLY_ConfigurationNode* self_) { delete self_; }
+extern "C" OcctResult<Handle_DEPLY_ConfigurationNode*> Handle_DEPLY_ConfigurationNode_clone(const Handle_DEPLY_ConfigurationNode* self_) {
+    try { return {new Handle_DEPLY_ConfigurationNode(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleDEPLYConfigurationNode_is_null(const HandleDEPLYConfigurationNode* self_) { return self_->IsNull(); }
-extern "C" void HandleDEPLYProvider_destructor(HandleDEPLYProvider* self_) { delete self_; }
-extern "C" OcctResult<HandleDEPLYProvider*> HandleDEPLYProvider_clone(const HandleDEPLYProvider* self_) {
-    try { return {new HandleDEPLYProvider(*self_), nullptr}; }
+extern "C" bool Handle_DEPLY_ConfigurationNode_is_null(const Handle_DEPLY_ConfigurationNode* self_) { return self_->IsNull(); }
+extern "C" void Handle_DEPLY_Provider_destructor(Handle_DEPLY_Provider* self_) { delete self_; }
+extern "C" OcctResult<Handle_DEPLY_Provider*> Handle_DEPLY_Provider_clone(const Handle_DEPLY_Provider* self_) {
+    try { return {new Handle_DEPLY_Provider(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleDEPLYProvider_is_null(const HandleDEPLYProvider* self_) { return self_->IsNull(); }
-extern "C" void HandleRWPlyCafWriter_destructor(HandleRWPlyCafWriter* self_) { delete self_; }
-extern "C" OcctResult<HandleRWPlyCafWriter*> HandleRWPlyCafWriter_clone(const HandleRWPlyCafWriter* self_) {
-    try { return {new HandleRWPlyCafWriter(*self_), nullptr}; }
+extern "C" bool Handle_DEPLY_Provider_is_null(const Handle_DEPLY_Provider* self_) { return self_->IsNull(); }
+extern "C" void Handle_RWPly_CafWriter_destructor(Handle_RWPly_CafWriter* self_) { delete self_; }
+extern "C" OcctResult<Handle_RWPly_CafWriter*> Handle_RWPly_CafWriter_clone(const Handle_RWPly_CafWriter* self_) {
+    try { return {new Handle_RWPly_CafWriter(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleRWPlyCafWriter_is_null(const HandleRWPlyCafWriter* self_) { return self_->IsNull(); }
+extern "C" bool Handle_RWPly_CafWriter_is_null(const Handle_RWPly_CafWriter* self_) { return self_->IsNull(); }
 
 // ========================
 // DEPLY_ConfigurationNode wrappers
@@ -92,8 +84,8 @@ extern "C" OcctResult<TCollection_AsciiString*> DEPLY_ConfigurationNode_get_vend
     try { return {new TCollection_AsciiString(self_->GetVendor()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TColStd_ListOfAsciiString*> DEPLY_ConfigurationNode_get_extensions(const DEPLY_ConfigurationNode* self_) {
-    try { return {new TColStd_ListOfAsciiString(self_->GetExtensions()), nullptr}; }
+extern "C" OcctResult<NCollection_List_TCollection_AsciiString*> DEPLY_ConfigurationNode_get_extensions(const DEPLY_ConfigurationNode* self_) {
+    try { return {new NCollection_List_TCollection_AsciiString(self_->GetExtensions()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(Standard_Type) const*> DEPLY_ConfigurationNode_dynamic_type(const DEPLY_ConfigurationNode* self_) {
@@ -128,28 +120,32 @@ extern "C" OcctResult<const DE_ConfigurationNode*> DEPLY_ConfigurationNode_as_DE
 extern "C" OcctResult<DE_ConfigurationNode*> DEPLY_ConfigurationNode_as_DE_ConfigurationNode_mut(DEPLY_ConfigurationNode* self_) { return {static_cast<DE_ConfigurationNode*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> DEPLY_ConfigurationNode_as_Standard_Transient(const DEPLY_ConfigurationNode* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> DEPLY_ConfigurationNode_as_Standard_Transient_mut(DEPLY_ConfigurationNode* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleDEPLYConfigurationNode*> DEPLY_ConfigurationNode_to_handle(DEPLY_ConfigurationNode* obj) {
-    try { return {new HandleDEPLYConfigurationNode(obj), nullptr}; }
+extern "C" OcctResult<Handle_DEPLY_ConfigurationNode*> DEPLY_ConfigurationNode_to_handle(DEPLY_ConfigurationNode* obj) {
+    try { return {new Handle_DEPLY_ConfigurationNode(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const DEPLY_ConfigurationNode*> HandleDEPLYConfigurationNode_get(const HandleDEPLYConfigurationNode* handle) {
+extern "C" OcctResult<const DEPLY_ConfigurationNode*> Handle_DEPLY_ConfigurationNode_get(const Handle_DEPLY_ConfigurationNode* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<DEPLY_ConfigurationNode*> HandleDEPLYConfigurationNode_get_mut(HandleDEPLYConfigurationNode* handle) {
+extern "C" OcctResult<DEPLY_ConfigurationNode*> Handle_DEPLY_ConfigurationNode_get_mut(Handle_DEPLY_ConfigurationNode* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleDEConfigurationNode*> HandleDEPLYConfigurationNode_to_HandleDEConfigurationNode(const HandleDEPLYConfigurationNode* self_) {
-    try { return {new HandleDEConfigurationNode(*self_), nullptr}; }
+extern "C" OcctResult<Handle_DE_ConfigurationNode*> Handle_DEPLY_ConfigurationNode_to_Handle_DE_ConfigurationNode(const Handle_DEPLY_ConfigurationNode* self_) {
+    try { return {new Handle_DE_ConfigurationNode(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleDEPLYConfigurationNode_to_HandleStandardTransient(const HandleDEPLYConfigurationNode* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_DEPLY_ConfigurationNode_to_Handle_Standard_Transient(const Handle_DEPLY_ConfigurationNode* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> DEPLY_ConfigurationNode_inherited_UpdateLoad(DEPLY_ConfigurationNode* self, bool theToImport, bool theToKeep) {
     try { return {self->UpdateLoad(theToImport, theToKeep), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<bool> DEPLY_ConfigurationNode_inherited_IsStreamSupported(const DEPLY_ConfigurationNode* self) {
+    try { return {self->IsStreamSupported(), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> DEPLY_ConfigurationNode_inherited_CheckExtension(const DEPLY_ConfigurationNode* self, TCollection_AsciiString const& theExtension) {
@@ -164,8 +160,16 @@ extern "C" const char* DEPLY_ConfigurationNode_inherited_SetEnabled(DEPLY_Config
     try { self->SetEnabled(theIsLoaded); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* DEPLY_ConfigurationNode_inherited_CustomActivation(DEPLY_ConfigurationNode* self, TColStd_ListOfAsciiString const& arg0) {
+extern "C" const char* DEPLY_ConfigurationNode_inherited_CustomActivation(DEPLY_ConfigurationNode* self, NCollection_List_TCollection_AsciiString const& arg0) {
     try { self->CustomActivation(arg0); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* DEPLY_ConfigurationNode_inherited_Register(const DEPLY_ConfigurationNode* self, Handle(DE_Wrapper) const& theWrapper) {
+    try { self->Register(theWrapper); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* DEPLY_ConfigurationNode_inherited_UnRegister(const DEPLY_ConfigurationNode* self, Handle(DE_Wrapper) const& theWrapper) {
+    try { self->UnRegister(theWrapper); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
 extern "C" OcctResult<bool> DEPLY_ConfigurationNode_inherited_IsInstance(const DEPLY_ConfigurationNode* self, Handle(Standard_Type) const& theType) {
@@ -260,24 +264,24 @@ extern "C" OcctResult<const DE_Provider*> DEPLY_Provider_as_DE_Provider(const DE
 extern "C" OcctResult<DE_Provider*> DEPLY_Provider_as_DE_Provider_mut(DEPLY_Provider* self_) { return {static_cast<DE_Provider*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> DEPLY_Provider_as_Standard_Transient(const DEPLY_Provider* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> DEPLY_Provider_as_Standard_Transient_mut(DEPLY_Provider* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleDEPLYProvider*> DEPLY_Provider_to_handle(DEPLY_Provider* obj) {
-    try { return {new HandleDEPLYProvider(obj), nullptr}; }
+extern "C" OcctResult<Handle_DEPLY_Provider*> DEPLY_Provider_to_handle(DEPLY_Provider* obj) {
+    try { return {new Handle_DEPLY_Provider(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const DEPLY_Provider*> HandleDEPLYProvider_get(const HandleDEPLYProvider* handle) {
+extern "C" OcctResult<const DEPLY_Provider*> Handle_DEPLY_Provider_get(const Handle_DEPLY_Provider* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<DEPLY_Provider*> HandleDEPLYProvider_get_mut(HandleDEPLYProvider* handle) {
+extern "C" OcctResult<DEPLY_Provider*> Handle_DEPLY_Provider_get_mut(Handle_DEPLY_Provider* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleDEProvider*> HandleDEPLYProvider_to_HandleDEProvider(const HandleDEPLYProvider* self_) {
-    try { return {new HandleDEProvider(*self_), nullptr}; }
+extern "C" OcctResult<Handle_DE_Provider*> Handle_DEPLY_Provider_to_Handle_DE_Provider(const Handle_DEPLY_Provider* self_) {
+    try { return {new Handle_DE_Provider(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleDEPLYProvider_to_HandleStandardTransient(const HandleDEPLYProvider* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_DEPLY_Provider_to_Handle_Standard_Transient(const Handle_DEPLY_Provider* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> DEPLY_Provider_inherited_Read(DEPLY_Provider* self, TCollection_AsciiString const& thePath, Handle(TDocStd_Document) const& theDocument, Handle(XSControl_WorkSession)& theWS, Message_ProgressRange const& theProgress) {
@@ -402,11 +406,11 @@ extern "C" const char* RWPly_CafWriter_set_face_id(RWPly_CafWriter* self_, bool 
     try { self_->SetFaceId(theSurfId); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<bool> RWPly_CafWriter_perform_handletdocstddocument_labelsequence_mapofasciistringptr_indexeddatamapofstringstring_progressrange(RWPly_CafWriter* self_, Handle(TDocStd_Document) const* theDocument, TDF_LabelSequence const* theRootLabels, const TColStd_MapOfAsciiString* theLabelFilter, TColStd_IndexedDataMapOfStringString const* theFileInfo, Message_ProgressRange const* theProgress) {
+extern "C" OcctResult<bool> RWPly_CafWriter_perform_handletdocstddocument_seq_label_map_asciistringptr_idmap_asciistring_asciistring_progressrange(RWPly_CafWriter* self_, Handle(TDocStd_Document) const* theDocument, NCollection_Sequence_TDF_Label const* theRootLabels, const NCollection_Map_TCollection_AsciiString* theLabelFilter, NCollection_IndexedDataMap_TCollection_AsciiString_TCollection_AsciiString const* theFileInfo, Message_ProgressRange const* theProgress) {
     try { return {self_->Perform(*theDocument, *theRootLabels, theLabelFilter, *theFileInfo, *theProgress), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<bool> RWPly_CafWriter_perform_handletdocstddocument_indexeddatamapofstringstring_progressrange(RWPly_CafWriter* self_, Handle(TDocStd_Document) const* theDocument, TColStd_IndexedDataMapOfStringString const* theFileInfo, Message_ProgressRange const* theProgress) {
+extern "C" OcctResult<bool> RWPly_CafWriter_perform_handletdocstddocument_idmap_asciistring_asciistring_progressrange(RWPly_CafWriter* self_, Handle(TDocStd_Document) const* theDocument, NCollection_IndexedDataMap_TCollection_AsciiString_TCollection_AsciiString const* theFileInfo, Message_ProgressRange const* theProgress) {
     try { return {self_->Perform(*theDocument, *theFileInfo, *theProgress), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -420,20 +424,20 @@ extern "C" OcctResult<Handle(Standard_Type) const*> RWPly_CafWriter_get_type_des
 }
 extern "C" OcctResult<const Standard_Transient*> RWPly_CafWriter_as_Standard_Transient(const RWPly_CafWriter* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> RWPly_CafWriter_as_Standard_Transient_mut(RWPly_CafWriter* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleRWPlyCafWriter*> RWPly_CafWriter_to_handle(RWPly_CafWriter* obj) {
-    try { return {new HandleRWPlyCafWriter(obj), nullptr}; }
+extern "C" OcctResult<Handle_RWPly_CafWriter*> RWPly_CafWriter_to_handle(RWPly_CafWriter* obj) {
+    try { return {new Handle_RWPly_CafWriter(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const RWPly_CafWriter*> HandleRWPlyCafWriter_get(const HandleRWPlyCafWriter* handle) {
+extern "C" OcctResult<const RWPly_CafWriter*> Handle_RWPly_CafWriter_get(const Handle_RWPly_CafWriter* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<RWPly_CafWriter*> HandleRWPlyCafWriter_get_mut(HandleRWPlyCafWriter* handle) {
+extern "C" OcctResult<RWPly_CafWriter*> Handle_RWPly_CafWriter_get_mut(Handle_RWPly_CafWriter* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleRWPlyCafWriter_to_HandleStandardTransient(const HandleRWPlyCafWriter* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_RWPly_CafWriter_to_Handle_Standard_Transient(const Handle_RWPly_CafWriter* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> RWPly_CafWriter_inherited_IsInstance(const RWPly_CafWriter* self, Handle(Standard_Type) const& theType) {
@@ -522,11 +526,11 @@ extern "C" OcctResult<bool> RWPly_PlyWriterContext_open(RWPly_PlyWriterContext* 
     try { return {self_->Open(*theName, *theStream), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<bool> RWPly_PlyWriterContext_write_header(RWPly_PlyWriterContext* self_, int32_t theNbNodes, int32_t theNbElems, TColStd_IndexedDataMapOfStringString const* theFileInfo) {
+extern "C" OcctResult<bool> RWPly_PlyWriterContext_write_header(RWPly_PlyWriterContext* self_, int32_t theNbNodes, int32_t theNbElems, NCollection_IndexedDataMap_TCollection_AsciiString_TCollection_AsciiString const* theFileInfo) {
     try { return {self_->WriteHeader(theNbNodes, theNbElems, *theFileInfo), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<bool> RWPly_PlyWriterContext_write_vertex(RWPly_PlyWriterContext* self_, gp_Pnt const* thePoint, Graphic3d_Vec3 const* theNorm, Graphic3d_Vec2 const* theUV, Graphic3d_Vec4ub const* theColor) {
+extern "C" OcctResult<bool> RWPly_PlyWriterContext_write_vertex(RWPly_PlyWriterContext* self_, gp_Pnt const* thePoint, BVH_Vec3f const* theNorm, BVH_Vec2f const* theUV, NCollection_Vec4_uint8_t const* theColor) {
     try { return {self_->WriteVertex(*thePoint, *theNorm, *theUV, *theColor), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -550,11 +554,11 @@ extern "C" const char* RWPly_PlyWriterContext_set_surface_id_int(RWPly_PlyWriter
     try { self_->SetSurfaceId(theSurfId); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<bool> RWPly_PlyWriterContext_write_triangle(RWPly_PlyWriterContext* self_, Graphic3d_Vec3i const* theTri) {
+extern "C" OcctResult<bool> RWPly_PlyWriterContext_write_triangle(RWPly_PlyWriterContext* self_, BVH_Vec3i const* theTri) {
     try { return {self_->WriteTriangle(*theTri), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<bool> RWPly_PlyWriterContext_write_quad(RWPly_PlyWriterContext* self_, Graphic3d_Vec4i const* theQuad) {
+extern "C" OcctResult<bool> RWPly_PlyWriterContext_write_quad(RWPly_PlyWriterContext* self_, BVH_Vec4i const* theQuad) {
     try { return {self_->WriteQuad(*theQuad), nullptr}; }
     OCCT_CATCH_RETURN
 }

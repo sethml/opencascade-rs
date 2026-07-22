@@ -7,13 +7,15 @@
 #![allow(non_snake_case)]
 
 // Handle type re-exports (targets of handle upcasts/downcasts)
-pub use crate::ffi_types::{HandleDEConfigurationNode, HandleDEProvider, HandleStandardTransient};
+pub use crate::ffi_types::{
+    Handle_DE_ConfigurationNode, Handle_DE_Provider, Handle_Standard_Transient,
+};
 
 // ========================
 // From DEXCAF_ConfigurationNode.hxx
 // ========================
 
-/// **Source:** `DEXCAF_ConfigurationNode.hxx`:31 - `DEXCAF_ConfigurationNode`
+/// **Source:** `DEXCAF_ConfigurationNode.hxx`:32 - `DEXCAF_ConfigurationNode`
 /// The purpose of this class is to configure the transfer process for XDE Documents
 /// Stores the necessary settings for DEXCAF_Provider.
 /// Configures and creates special provider to transfer XDE Documents.
@@ -35,7 +37,7 @@ unsafe impl crate::CppDeletable for ConfigurationNode {
 }
 
 impl ConfigurationNode {
-    /// **Source:** `DEXCAF_ConfigurationNode.hxx`:36 - `DEXCAF_ConfigurationNode::DEXCAF_ConfigurationNode()`
+    /// **Source:** `DEXCAF_ConfigurationNode.hxx`:37 - `DEXCAF_ConfigurationNode::DEXCAF_ConfigurationNode()`
     /// Initializes all field by default
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
@@ -45,19 +47,19 @@ impl ConfigurationNode {
         }
     }
 
-    /// **Source:** `DEXCAF_ConfigurationNode.hxx`:40 - `DEXCAF_ConfigurationNode::DEXCAF_ConfigurationNode()`
+    /// **Source:** `DEXCAF_ConfigurationNode.hxx`:41 - `DEXCAF_ConfigurationNode::DEXCAF_ConfigurationNode()`
     /// Copies values of all fields
     /// @param[in] theNode object to copy
     pub fn new_handledexcafconfigurationnode(
-        theNode: &crate::ffi_types::HandleDEXCAFConfigurationNode,
+        theNode: &crate::ffi_types::Handle_DEXCAF_ConfigurationNode,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDECascade::DEXCAF_ConfigurationNode_ctor_handledexcafconfigurationnode(theNode)))
         }
     }
 
-    /// **Source:** `DEXCAF_ConfigurationNode.hxx`:33 - `DEXCAF_ConfigurationNode::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `DEXCAF_ConfigurationNode.hxx`:34 - `DEXCAF_ConfigurationNode::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKDECascade::DEXCAF_ConfigurationNode_dynamic_type(
@@ -67,11 +69,11 @@ impl ConfigurationNode {
         }
     }
 
-    /// **Source:** `DEXCAF_ConfigurationNode.hxx`:45 - `DEXCAF_ConfigurationNode::Load()`
+    /// **Source:** `DEXCAF_ConfigurationNode.hxx`:46 - `DEXCAF_ConfigurationNode::Load()`
     /// Updates values according the resource
     /// @param[in] theResource input resource to use
     /// @return true if theResource loading has ended correctly
-    pub fn load(&mut self, theResource: &crate::ffi_types::HandleDEConfigurationContext) -> bool {
+    pub fn load(&mut self, theResource: &crate::ffi_types::Handle_DE_ConfigurationContext) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDECascade::DEXCAF_ConfigurationNode_load(
                 self as *mut Self,
@@ -94,7 +96,7 @@ impl ConfigurationNode {
     /// **Source:** `DEXCAF_ConfigurationNode.hxx`:54 - `DEXCAF_ConfigurationNode::Copy()`
     /// Copies values of all fields
     /// @return new object with the same field values
-    pub fn copy(&self) -> crate::OwnedPtr<crate::ffi_types::HandleDEConfigurationNode> {
+    pub fn copy(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_DE_ConfigurationNode> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDECascade::DEXCAF_ConfigurationNode_copy(self as *const Self),
@@ -105,7 +107,7 @@ impl ConfigurationNode {
     /// **Source:** `DEXCAF_ConfigurationNode.hxx`:58 - `DEXCAF_ConfigurationNode::BuildProvider()`
     /// Creates new provider for the own format
     /// @return new created provider
-    pub fn build_provider(&mut self) -> crate::OwnedPtr<crate::ffi_types::HandleDEProvider> {
+    pub fn build_provider(&mut self) -> crate::OwnedPtr<crate::ffi_types::Handle_DE_Provider> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDECascade::DEXCAF_ConfigurationNode_build_provider(
@@ -166,7 +168,9 @@ impl ConfigurationNode {
     /// **Source:** `DEXCAF_ConfigurationNode.hxx`:79 - `DEXCAF_ConfigurationNode::GetExtensions()`
     /// Gets list of supported file extensions
     /// @return list of extensions
-    pub fn get_extensions(&self) -> crate::OwnedPtr<crate::ffi_types::TColStd_ListOfAsciiString> {
+    pub fn get_extensions(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::NCollection_List_TCollection_AsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDECascade::DEXCAF_ConfigurationNode_get_extensions(
@@ -179,8 +183,8 @@ impl ConfigurationNode {
     /// **Source:** `DEXCAF_ConfigurationNode.hxx`:84 - `DEXCAF_ConfigurationNode::CheckContent()`
     /// Checks the file content to verify a format
     /// @param[in] theBuffer read stream buffer to check content
-    /// @return Standard_True if file is supported by a current provider
-    pub fn check_content(&self, theBuffer: &crate::ffi_types::HandleNCollectionBuffer) -> bool {
+    /// @return true if file is supported by a current provider
+    pub fn check_content(&self, theBuffer: &crate::ffi_types::Handle_NCollection_Buffer) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDECascade::DEXCAF_ConfigurationNode_check_content(
                 self as *const Self,
@@ -189,7 +193,7 @@ impl ConfigurationNode {
         })
     }
 
-    /// **Source:** `DEXCAF_ConfigurationNode.hxx`:33 - `DEXCAF_ConfigurationNode::get_type_name()`
+    /// **Source:** `DEXCAF_ConfigurationNode.hxx`:34 - `DEXCAF_ConfigurationNode::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -200,8 +204,8 @@ impl ConfigurationNode {
         .into_owned()
     }
 
-    /// **Source:** `DEXCAF_ConfigurationNode.hxx`:33 - `DEXCAF_ConfigurationNode::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    /// **Source:** `DEXCAF_ConfigurationNode.hxx`:34 - `DEXCAF_ConfigurationNode::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKDECascade::DEXCAF_ConfigurationNode_get_type_descriptor(),
@@ -256,7 +260,7 @@ impl ConfigurationNode {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleDEXCAFConfigurationNode> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_DEXCAF_ConfigurationNode> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDECascade::DEXCAF_ConfigurationNode_to_handle(obj.into_raw()),
@@ -264,7 +268,7 @@ impl ConfigurationNode {
         }
     }
 
-    /// Inherited: **Source:** `DE_ConfigurationNode.hxx`:91 - `DE_ConfigurationNode::UpdateLoad()`
+    /// Inherited: **Source:** `DE_ConfigurationNode.hxx`:94 - `DE_ConfigurationNode::UpdateLoad()`
     pub fn update_load(&mut self, theToImport: bool, theToKeep: bool) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDECascade::DEXCAF_ConfigurationNode_inherited_UpdateLoad(
@@ -275,7 +279,16 @@ impl ConfigurationNode {
         })
     }
 
-    /// Inherited: **Source:** `DE_ConfigurationNode.hxx`:118 - `DE_ConfigurationNode::CheckExtension()`
+    /// Inherited: **Source:** `DE_ConfigurationNode.hxx`:107 - `DE_ConfigurationNode::IsStreamSupported()`
+    pub fn is_stream_supported(&self) -> bool {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKDECascade::DEXCAF_ConfigurationNode_inherited_IsStreamSupported(
+                self as *const Self,
+            )
+        })
+    }
+
+    /// Inherited: **Source:** `DE_ConfigurationNode.hxx`:124 - `DE_ConfigurationNode::CheckExtension()`
     pub fn check_extension(&self, theExtension: &crate::t_collection::AsciiString) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDECascade::DEXCAF_ConfigurationNode_inherited_CheckExtension(
@@ -285,7 +298,7 @@ impl ConfigurationNode {
         })
     }
 
-    /// Inherited: **Source:** `DE_ConfigurationNode.hxx`:128 - `DE_ConfigurationNode::IsEnabled()`
+    /// Inherited: **Source:** `DE_ConfigurationNode.hxx`:134 - `DE_ConfigurationNode::IsEnabled()`
     pub fn is_enabled(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDECascade::DEXCAF_ConfigurationNode_inherited_IsEnabled(
@@ -294,7 +307,7 @@ impl ConfigurationNode {
         })
     }
 
-    /// Inherited: **Source:** `DE_ConfigurationNode.hxx`:132 - `DE_ConfigurationNode::SetEnabled()`
+    /// Inherited: **Source:** `DE_ConfigurationNode.hxx`:138 - `DE_ConfigurationNode::SetEnabled()`
     pub fn set_enabled(&mut self, theIsLoaded: bool) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDECascade::DEXCAF_ConfigurationNode_inherited_SetEnabled(
@@ -304,8 +317,11 @@ impl ConfigurationNode {
         })
     }
 
-    /// Inherited: **Source:** `DE_ConfigurationNode.hxx`:141 - `DE_ConfigurationNode::CustomActivation()`
-    pub fn custom_activation(&mut self, arg0: &crate::ffi_types::TColStd_ListOfAsciiString) {
+    /// Inherited: **Source:** `DE_ConfigurationNode.hxx`:147 - `DE_ConfigurationNode::CustomActivation()`
+    pub fn custom_activation(
+        &mut self,
+        arg0: &crate::ffi_types::NCollection_List_TCollection_AsciiString,
+    ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDECascade::DEXCAF_ConfigurationNode_inherited_CustomActivation(
                 self as *mut Self,
@@ -314,8 +330,28 @@ impl ConfigurationNode {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `DE_ConfigurationNode.hxx`:164 - `DE_ConfigurationNode::Register()`
+    pub fn register(&self, theWrapper: &crate::ffi_types::Handle_DE_Wrapper) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKDECascade::DEXCAF_ConfigurationNode_inherited_Register(
+                self as *const Self,
+                theWrapper,
+            )
+        })
+    }
+
+    /// Inherited: **Source:** `DE_ConfigurationNode.hxx`:168 - `DE_ConfigurationNode::UnRegister()`
+    pub fn un_register(&self, theWrapper: &crate::ffi_types::Handle_DE_Wrapper) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKDECascade::DEXCAF_ConfigurationNode_inherited_UnRegister(
+                self as *const Self,
+                theWrapper,
+            )
+        })
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDECascade::DEXCAF_ConfigurationNode_inherited_IsInstance(
                 self as *const Self,
@@ -324,8 +360,8 @@ impl ConfigurationNode {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDECascade::DEXCAF_ConfigurationNode_inherited_IsKind(
                 self as *const Self,
@@ -334,7 +370,7 @@ impl ConfigurationNode {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -350,7 +386,7 @@ impl ConfigurationNode {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDECascade::DEXCAF_ConfigurationNode_inherited_GetRefCount(
@@ -359,7 +395,7 @@ impl ConfigurationNode {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDECascade::DEXCAF_ConfigurationNode_inherited_IncrementRefCounter(
@@ -368,7 +404,7 @@ impl ConfigurationNode {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDECascade::DEXCAF_ConfigurationNode_inherited_DecrementRefCounter(
@@ -377,7 +413,7 @@ impl ConfigurationNode {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDECascade::DEXCAF_ConfigurationNode_inherited_Delete(
@@ -387,31 +423,31 @@ impl ConfigurationNode {
     }
 }
 
-pub use crate::ffi_types::HandleDEXCAFConfigurationNode;
+pub use crate::ffi_types::Handle_DEXCAF_ConfigurationNode;
 
-unsafe impl crate::CppDeletable for HandleDEXCAFConfigurationNode {
+unsafe impl crate::CppDeletable for Handle_DEXCAF_ConfigurationNode {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKDECascade::HandleDEXCAFConfigurationNode_destructor(ptr);
+            crate::ffi_extern_TKDECascade::Handle_DEXCAF_ConfigurationNode_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleDEXCAFConfigurationNode {
+unsafe impl crate::CppCopyable for Handle_DEXCAF_ConfigurationNode {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
         unsafe {
-            crate::check_result(crate::ffi_extern_TKDECascade::HandleDEXCAFConfigurationNode_clone(
-                ptr,
-            ))
+            crate::check_result(
+                crate::ffi_extern_TKDECascade::Handle_DEXCAF_ConfigurationNode_clone(ptr),
+            )
         }
     }
 }
 
-impl HandleDEXCAFConfigurationNode {
+impl Handle_DEXCAF_ConfigurationNode {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
         unsafe {
-            crate::ffi_extern_TKDECascade::HandleDEXCAFConfigurationNode_is_null(
+            crate::ffi_extern_TKDECascade::Handle_DEXCAF_ConfigurationNode_is_null(
                 self as *const Self,
             )
         }
@@ -420,9 +456,11 @@ impl HandleDEXCAFConfigurationNode {
     /// Dereference this Handle to access the underlying DEXCAF_ConfigurationNode
     pub fn get(&self) -> &crate::ffi_types::DEXCAF_ConfigurationNode {
         unsafe {
-            &*crate::check_result(crate::ffi_extern_TKDECascade::HandleDEXCAFConfigurationNode_get(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKDECascade::Handle_DEXCAF_ConfigurationNode_get(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -430,7 +468,7 @@ impl HandleDEXCAFConfigurationNode {
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::DEXCAF_ConfigurationNode {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi_extern_TKDECascade::HandleDEXCAFConfigurationNode_get_mut(
+                crate::ffi_extern_TKDECascade::Handle_DEXCAF_ConfigurationNode_get_mut(
                     self as *mut Self,
                 ),
             )
@@ -440,18 +478,18 @@ impl HandleDEXCAFConfigurationNode {
     /// Upcast Handle<DEXCAF_ConfigurationNode> to Handle<DE_ConfigurationNode>
     pub fn to_handle_configuration_node(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleDEConfigurationNode> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_DE_ConfigurationNode> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDECascade::HandleDEXCAFConfigurationNode_to_HandleDEConfigurationNode(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDECascade::Handle_DEXCAF_ConfigurationNode_to_Handle_DE_ConfigurationNode(self as *const Self)))
         }
     }
 
     /// Upcast Handle<DEXCAF_ConfigurationNode> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDECascade::HandleDEXCAFConfigurationNode_to_HandleStandardTransient(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDECascade::Handle_DEXCAF_ConfigurationNode_to_Handle_Standard_Transient(self as *const Self)))
         }
     }
 }
@@ -517,7 +555,7 @@ impl Provider {
     /// Configure translation process
     /// @param[in] theNode object to copy
     pub fn new_handledeconfigurationnode(
-        theNode: &crate::ffi_types::HandleDEConfigurationNode,
+        theNode: &crate::ffi_types::Handle_DE_ConfigurationNode,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -529,7 +567,7 @@ impl Provider {
     }
 
     /// **Source:** `DEXCAF_Provider.hxx`:31 - `DEXCAF_Provider::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKDECascade::DEXCAF_Provider_dynamic_type(
                 self as *const Self,
@@ -547,8 +585,8 @@ impl Provider {
     pub fn read_asciistring_handletdocstddocument_handlexscontrolworksession_progressrange(
         &mut self,
         thePath: &crate::t_collection::AsciiString,
-        theDocument: &crate::ffi_types::HandleTDocStdDocument,
-        theWS: &mut crate::ffi_types::HandleXSControlWorkSession,
+        theDocument: &crate::ffi_types::Handle_TDocStd_Document,
+        theWS: &mut crate::ffi_types::Handle_XSControl_WorkSession,
         theProgress: &crate::message::ProgressRange,
     ) -> bool {
         crate::check_result(unsafe {
@@ -566,8 +604,8 @@ impl Provider {
     pub fn write_asciistring_handletdocstddocument_handlexscontrolworksession_progressrange(
         &mut self,
         thePath: &crate::t_collection::AsciiString,
-        theDocument: &crate::ffi_types::HandleTDocStdDocument,
-        theWS: &mut crate::ffi_types::HandleXSControlWorkSession,
+        theDocument: &crate::ffi_types::Handle_TDocStd_Document,
+        theWS: &mut crate::ffi_types::Handle_XSControl_WorkSession,
         theProgress: &crate::message::ProgressRange,
     ) -> bool {
         crate::check_result(unsafe {
@@ -584,7 +622,7 @@ impl Provider {
     pub fn read_asciistring_handletdocstddocument_progressrange(
         &mut self,
         thePath: &crate::t_collection::AsciiString,
-        theDocument: &crate::ffi_types::HandleTDocStdDocument,
+        theDocument: &crate::ffi_types::Handle_TDocStd_Document,
         theProgress: &crate::message::ProgressRange,
     ) -> bool {
         crate::check_result(unsafe {
@@ -601,7 +639,7 @@ impl Provider {
     pub fn write_asciistring_handletdocstddocument_progressrange(
         &mut self,
         thePath: &crate::t_collection::AsciiString,
-        theDocument: &crate::ffi_types::HandleTDocStdDocument,
+        theDocument: &crate::ffi_types::Handle_TDocStd_Document,
         theProgress: &crate::message::ProgressRange,
     ) -> bool {
         crate::check_result(unsafe {
@@ -620,7 +658,7 @@ impl Provider {
         &mut self,
         thePath: &crate::t_collection::AsciiString,
         theShape: &mut crate::topo_ds::Shape,
-        theWS: &mut crate::ffi_types::HandleXSControlWorkSession,
+        theWS: &mut crate::ffi_types::Handle_XSControl_WorkSession,
         theProgress: &crate::message::ProgressRange,
     ) -> bool {
         crate::check_result(unsafe {
@@ -639,7 +677,7 @@ impl Provider {
         &mut self,
         thePath: &crate::t_collection::AsciiString,
         theShape: &crate::topo_ds::Shape,
-        theWS: &mut crate::ffi_types::HandleXSControlWorkSession,
+        theWS: &mut crate::ffi_types::Handle_XSControl_WorkSession,
         theProgress: &crate::message::ProgressRange,
     ) -> bool {
         crate::check_result(unsafe {
@@ -725,7 +763,7 @@ impl Provider {
     }
 
     /// **Source:** `DEXCAF_Provider.hxx`:31 - `DEXCAF_Provider::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKDECascade::DEXCAF_Provider_get_type_descriptor(),
@@ -778,7 +816,7 @@ impl Provider {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleDEXCAFProvider> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_DEXCAF_Provider> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDECascade::DEXCAF_Provider_to_handle(obj.into_raw()),
@@ -786,8 +824,8 @@ impl Provider {
         }
     }
 
-    /// Inherited: **Source:** `DE_Provider.hxx`:155 - `DE_Provider::GetNode()`
-    pub fn get_node(&self) -> crate::OwnedPtr<crate::ffi_types::HandleDEConfigurationNode> {
+    /// Inherited: **Source:** `DE_Provider.hxx`:285 - `DE_Provider::GetNode()`
+    pub fn get_node(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_DE_ConfigurationNode> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDECascade::DEXCAF_Provider_inherited_GetNode(
@@ -797,8 +835,8 @@ impl Provider {
         }
     }
 
-    /// Inherited: **Source:** `DE_Provider.hxx`:159 - `DE_Provider::SetNode()`
-    pub fn set_node(&mut self, theNode: &crate::ffi_types::HandleDEConfigurationNode) {
+    /// Inherited: **Source:** `DE_Provider.hxx`:289 - `DE_Provider::SetNode()`
+    pub fn set_node(&mut self, theNode: &crate::ffi_types::Handle_DE_ConfigurationNode) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDECascade::DEXCAF_Provider_inherited_SetNode(
                 self as *mut Self,
@@ -807,8 +845,8 @@ impl Provider {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDECascade::DEXCAF_Provider_inherited_IsInstance(
                 self as *const Self,
@@ -817,8 +855,8 @@ impl Provider {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDECascade::DEXCAF_Provider_inherited_IsKind(
                 self as *const Self,
@@ -827,7 +865,7 @@ impl Provider {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -841,7 +879,7 @@ impl Provider {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDECascade::DEXCAF_Provider_inherited_GetRefCount(
@@ -850,7 +888,7 @@ impl Provider {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDECascade::DEXCAF_Provider_inherited_IncrementRefCounter(
@@ -859,7 +897,7 @@ impl Provider {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDECascade::DEXCAF_Provider_inherited_DecrementRefCounter(
@@ -868,7 +906,7 @@ impl Provider {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDECascade::DEXCAF_Provider_inherited_Delete(self as *const Self)
@@ -876,34 +914,36 @@ impl Provider {
     }
 }
 
-pub use crate::ffi_types::HandleDEXCAFProvider;
+pub use crate::ffi_types::Handle_DEXCAF_Provider;
 
-unsafe impl crate::CppDeletable for HandleDEXCAFProvider {
+unsafe impl crate::CppDeletable for Handle_DEXCAF_Provider {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKDECascade::HandleDEXCAFProvider_destructor(ptr);
+            crate::ffi_extern_TKDECascade::Handle_DEXCAF_Provider_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleDEXCAFProvider {
+unsafe impl crate::CppCopyable for Handle_DEXCAF_Provider {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
         unsafe {
-            crate::check_result(crate::ffi_extern_TKDECascade::HandleDEXCAFProvider_clone(ptr))
+            crate::check_result(crate::ffi_extern_TKDECascade::Handle_DEXCAF_Provider_clone(ptr))
         }
     }
 }
 
-impl HandleDEXCAFProvider {
+impl Handle_DEXCAF_Provider {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
-        unsafe { crate::ffi_extern_TKDECascade::HandleDEXCAFProvider_is_null(self as *const Self) }
+        unsafe {
+            crate::ffi_extern_TKDECascade::Handle_DEXCAF_Provider_is_null(self as *const Self)
+        }
     }
 
     /// Dereference this Handle to access the underlying DEXCAF_Provider
     pub fn get(&self) -> &crate::ffi_types::DEXCAF_Provider {
         unsafe {
-            &*crate::check_result(crate::ffi_extern_TKDECascade::HandleDEXCAFProvider_get(
+            &*crate::check_result(crate::ffi_extern_TKDECascade::Handle_DEXCAF_Provider_get(
                 self as *const Self,
             ))
         }
@@ -912,17 +952,17 @@ impl HandleDEXCAFProvider {
     /// Dereference this Handle to mutably access the underlying DEXCAF_Provider
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::DEXCAF_Provider {
         unsafe {
-            &mut *crate::check_result(crate::ffi_extern_TKDECascade::HandleDEXCAFProvider_get_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKDECascade::Handle_DEXCAF_Provider_get_mut(self as *mut Self),
+            )
         }
     }
 
     /// Upcast Handle<DEXCAF_Provider> to Handle<DE_Provider>
-    pub fn to_handle_provider(&self) -> crate::OwnedPtr<crate::ffi_types::HandleDEProvider> {
+    pub fn to_handle_provider(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_DE_Provider> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKDECascade::HandleDEXCAFProvider_to_HandleDEProvider(
+                crate::ffi_extern_TKDECascade::Handle_DEXCAF_Provider_to_Handle_DE_Provider(
                     self as *const Self,
                 ),
             ))
@@ -932,10 +972,10 @@ impl HandleDEXCAFProvider {
     /// Upcast Handle<DEXCAF_Provider> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKDECascade::HandleDEXCAFProvider_to_HandleStandardTransient(
+                crate::ffi_extern_TKDECascade::Handle_DEXCAF_Provider_to_Handle_Standard_Transient(
                     self as *const Self,
                 ),
             ))

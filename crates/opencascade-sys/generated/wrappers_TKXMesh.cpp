@@ -3,14 +3,106 @@
 
 #include "occt_preamble.hxx"
 
+#include <BRepMesh_DiscretAlgoFactory.hxx>
 #include <BRepMesh_DiscretRoot.hxx>
-#include <XBRepMesh.hxx>
+#include <Standard_Handle.hxx>
+#include <Standard_Type.hxx>
+#include <XBRepMesh_Factory.hxx>
 
-// ========================
-// XBRepMesh namespace functions
-// ========================
-extern "C" OcctResult<int32_t> XBRepMesh_discret(TopoDS_Shape const* theShape, double theDeflection, double theAngle, BRepMesh_DiscretRoot** theAlgo) {
-    try { return {XBRepMesh::Discret(*theShape, theDeflection, theAngle, *theAlgo), nullptr}; }
+// Handle type aliases
+typedef opencascade::handle<BRepMesh_DiscretAlgoFactory> Handle_BRepMesh_DiscretAlgoFactory;
+typedef opencascade::handle<BRepMesh_DiscretRoot> Handle_BRepMesh_DiscretRoot;
+typedef opencascade::handle<Standard_Transient> Handle_Standard_Transient;
+typedef opencascade::handle<Standard_Type> Handle_Standard_Type;
+typedef opencascade::handle<XBRepMesh_Factory> Handle_XBRepMesh_Factory;
+
+// Handle type destructors, clone, and is_null functions
+extern "C" void Handle_XBRepMesh_Factory_destructor(Handle_XBRepMesh_Factory* self_) { delete self_; }
+extern "C" OcctResult<Handle_XBRepMesh_Factory*> Handle_XBRepMesh_Factory_clone(const Handle_XBRepMesh_Factory* self_) {
+    try { return {new Handle_XBRepMesh_Factory(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" bool Handle_XBRepMesh_Factory_is_null(const Handle_XBRepMesh_Factory* self_) { return self_->IsNull(); }
+
+// ========================
+// XBRepMesh_Factory wrappers
+// ========================
+
+extern "C" OcctResult<XBRepMesh_Factory*> XBRepMesh_Factory_ctor() {
+    try { return {new XBRepMesh_Factory(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Handle(BRepMesh_DiscretRoot)*> XBRepMesh_Factory_create_algorithm(XBRepMesh_Factory* self_, TopoDS_Shape const* theShape, double theLinDeflection, double theAngDeflection) {
+    try { return {new Handle(BRepMesh_DiscretRoot)(self_->CreateAlgorithm(*theShape, theLinDeflection, theAngDeflection)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Handle(Standard_Type) const*> XBRepMesh_Factory_dynamic_type(const XBRepMesh_Factory* self_) {
+    try { return {&(self_->DynamicType()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<char const*> XBRepMesh_Factory_get_type_name() {
+    try { return {XBRepMesh_Factory::get_type_name(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Handle(Standard_Type) const*> XBRepMesh_Factory_get_type_descriptor() {
+    try { return {&(XBRepMesh_Factory::get_type_descriptor()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<const BRepMesh_DiscretAlgoFactory*> XBRepMesh_Factory_as_BRepMesh_DiscretAlgoFactory(const XBRepMesh_Factory* self_) { return {static_cast<const BRepMesh_DiscretAlgoFactory*>(self_), nullptr}; }
+extern "C" OcctResult<BRepMesh_DiscretAlgoFactory*> XBRepMesh_Factory_as_BRepMesh_DiscretAlgoFactory_mut(XBRepMesh_Factory* self_) { return {static_cast<BRepMesh_DiscretAlgoFactory*>(self_), nullptr}; }
+extern "C" OcctResult<const Standard_Transient*> XBRepMesh_Factory_as_Standard_Transient(const XBRepMesh_Factory* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
+extern "C" OcctResult<Standard_Transient*> XBRepMesh_Factory_as_Standard_Transient_mut(XBRepMesh_Factory* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
+extern "C" OcctResult<Handle_XBRepMesh_Factory*> XBRepMesh_Factory_to_handle(XBRepMesh_Factory* obj) {
+    try { return {new Handle_XBRepMesh_Factory(obj), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<const XBRepMesh_Factory*> Handle_XBRepMesh_Factory_get(const Handle_XBRepMesh_Factory* handle) {
+    try { return {(*handle).get(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<XBRepMesh_Factory*> Handle_XBRepMesh_Factory_get_mut(Handle_XBRepMesh_Factory* handle) {
+    try { return {(*handle).get(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Handle_BRepMesh_DiscretAlgoFactory*> Handle_XBRepMesh_Factory_to_Handle_BRepMesh_DiscretAlgoFactory(const Handle_XBRepMesh_Factory* self_) {
+    try { return {new Handle_BRepMesh_DiscretAlgoFactory(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_XBRepMesh_Factory_to_Handle_Standard_Transient(const Handle_XBRepMesh_Factory* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<TCollection_AsciiString const*> XBRepMesh_Factory_inherited_Name(const XBRepMesh_Factory* self) {
+    try { return {&(self->Name()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<bool> XBRepMesh_Factory_inherited_IsInstance(const XBRepMesh_Factory* self, Handle(Standard_Type) const& theType) {
+    try { return {self->IsInstance(theType), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<bool> XBRepMesh_Factory_inherited_IsKind(const XBRepMesh_Factory* self, Handle(Standard_Type) const& theType) {
+    try { return {self->IsKind(theType), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Standard_Transient*> XBRepMesh_Factory_inherited_This(const XBRepMesh_Factory* self) {
+    try { return {self->This(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<int32_t> XBRepMesh_Factory_inherited_GetRefCount(const XBRepMesh_Factory* self) {
+    try { return {self->GetRefCount(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" const char* XBRepMesh_Factory_inherited_IncrementRefCounter(XBRepMesh_Factory* self) {
+    try { self->IncrementRefCounter(); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" OcctResult<int32_t> XBRepMesh_Factory_inherited_DecrementRefCounter(XBRepMesh_Factory* self) {
+    try { return {self->DecrementRefCounter(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" const char* XBRepMesh_Factory_inherited_Delete(const XBRepMesh_Factory* self) {
+    try { self->Delete(); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" void XBRepMesh_Factory_destructor(XBRepMesh_Factory* self_) { delete self_; }
 

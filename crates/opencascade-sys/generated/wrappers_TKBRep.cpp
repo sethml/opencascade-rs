@@ -4,19 +4,59 @@
 #include "occt_preamble.hxx"
 
 #include <Adaptor2d_Curve2d.hxx>
-#include <Adaptor3d_Curve.hxx>
 #include <Adaptor3d_CurveOnSurface.hxx>
+#include <Adaptor3d_Surface.hxx>
 #include <BOPAlgo_Alerts.hxx>
-#include <BRepAdaptor_Array1OfCurve.hxx>
 #include <BRepAdaptor_CompCurve.hxx>
 #include <BRepAdaptor_Curve.hxx>
 #include <BRepAdaptor_Curve2d.hxx>
-#include <BRepAdaptor_HArray1OfCurve.hxx>
 #include <BRepAdaptor_Surface.hxx>
+#include <BRepGraph.hxx>
+#include <BRepGraphInc_BitFlags.hxx>
+#include <BRepGraphInc_Load.hxx>
+#include <BRepGraphInc_Populate.hxx>
+#include <BRepGraphInc_Reconstruct.hxx>
+#include <BRepGraphInc_RepId.hxx>
+#include <BRepGraphInc_Storage.hxx>
+#include <BRepGraph_Cache.hxx>
+#include <BRepGraph_CacheDerivedState.hxx>
+#include <BRepGraph_CacheIterator.hxx>
+#include <BRepGraph_CacheMesh.hxx>
+#include <BRepGraph_CacheRegistry.hxx>
+#include <BRepGraph_ChildExplorer.hxx>
+#include <BRepGraph_Compact.hxx>
+#include <BRepGraph_Copy.hxx>
+#include <BRepGraph_CopyRemap.hxx>
+#include <BRepGraph_Data.hxx>
+#include <BRepGraph_Deduplicate.hxx>
+#include <BRepGraph_DeferredScope.hxx>
+#include <BRepGraph_EditorView.hxx>
+#include <BRepGraph_Iterator.hxx>
+#include <BRepGraph_Layer.hxx>
+#include <BRepGraph_LayerDeferred.hxx>
+#include <BRepGraph_LayerHistory.hxx>
+#include <BRepGraph_LayerIterator.hxx>
+#include <BRepGraph_LayerLock.hxx>
+#include <BRepGraph_LayerParametric.hxx>
+#include <BRepGraph_LayerRegistry.hxx>
+#include <BRepGraph_LayerTopoSupplement.hxx>
+#include <BRepGraph_MeshView.hxx>
+#include <BRepGraph_ParallelPolicy.hxx>
+#include <BRepGraph_ParentExplorer.hxx>
+#include <BRepGraph_RefUID.hxx>
+#include <BRepGraph_RefsView.hxx>
+#include <BRepGraph_RelatedIterator.hxx>
+#include <BRepGraph_ShapesView.hxx>
+#include <BRepGraph_SupplementEditor.hxx>
+#include <BRepGraph_SupplementIterator.hxx>
+#include <BRepGraph_Tool.hxx>
+#include <BRepGraph_TopoView.hxx>
+#include <BRepGraph_Transform.hxx>
+#include <BRepGraph_UIDsView.hxx>
+#include <BRepGraph_UsagePath.hxx>
+#include <BRepGraph_Validate.hxx>
+#include <BRepGraph_VersionStamp.hxx>
 #include <BRepLProp.hxx>
-#include <BRepLProp_CLProps.hxx>
-#include <BRepLProp_CurveTool.hxx>
-#include <BRepLProp_SLProps.hxx>
 #include <BRepLProp_SurfaceTool.hxx>
 #include <BRepOffset_SimpleOffset.hxx>
 #include <BRepTools.hxx>
@@ -40,8 +80,6 @@
 #include <BRep_CurveOnSurface.hxx>
 #include <BRep_CurveRepresentation.hxx>
 #include <BRep_GCurve.hxx>
-#include <BRep_ListOfCurveRepresentation.hxx>
-#include <BRep_ListOfPointRepresentation.hxx>
 #include <BRep_PointOnCurve.hxx>
 #include <BRep_PointOnCurveOnSurface.hxx>
 #include <BRep_PointOnSurface.hxx>
@@ -56,6 +94,7 @@
 #include <BRep_TFace.hxx>
 #include <BRep_TVertex.hxx>
 #include <BRep_Tool.hxx>
+#include <BinObjMgt_PByte.hxx>
 #include <BinTools.hxx>
 #include <BinTools_Curve2dSet.hxx>
 #include <BinTools_CurveSet.hxx>
@@ -72,29 +111,23 @@
 #include <Bnd_Box2d.hxx>
 #include <Draft_Modification.hxx>
 #include <Geom2dAdaptor_Curve.hxx>
-#include <Geom2d_Curve.hxx>
 #include <GeomAbs_CurveType.hxx>
 #include <GeomAbs_Shape.hxx>
-#include <GeomAbs_SurfaceType.hxx>
 #include <GeomAdaptor_Curve.hxx>
 #include <GeomAdaptor_Surface.hxx>
-#include <Geom_BSplineCurve.hxx>
-#include <Geom_BSplineSurface.hxx>
+#include <GeomAdaptor_TransformedCurve.hxx>
+#include <GeomAdaptor_TransformedSurface.hxx>
 #include <Geom_BezierCurve.hxx>
-#include <Geom_BezierSurface.hxx>
-#include <Geom_Curve.hxx>
-#include <Geom_OffsetCurve.hxx>
-#include <Geom_Surface.hxx>
 #include <Message_Alert.hxx>
 #include <Message_Attribute.hxx>
 #include <Message_AttributeStream.hxx>
 #include <Message_Messenger.hxx>
 #include <Message_ProgressRange.hxx>
 #include <OSD_FileSystem.hxx>
-#include <Poly_ListOfTriangulation.hxx>
 #include <Poly_Polygon2D.hxx>
 #include <Poly_Polygon3D.hxx>
 #include <Poly_PolygonOnTriangulation.hxx>
+#include <Poly_Triangulation.hxx>
 #include <ShapeBuild_ReShape.hxx>
 #include <ShapeCustom_BSplineRestriction.hxx>
 #include <ShapeCustom_ConvertToBSpline.hxx>
@@ -103,51 +136,19 @@
 #include <ShapeCustom_Modification.hxx>
 #include <ShapeCustom_SweptToElementary.hxx>
 #include <ShapeCustom_TrsfModification.hxx>
-#include <ShapeProcess.hxx>
-#include <Standard_DomainError.hxx>
-#include <Standard_Failure.hxx>
 #include <Standard_Handle.hxx>
 #include <Standard_IStream.hxx>
-#include <Standard_Mutex.hxx>
 #include <Standard_OStream.hxx>
 #include <Standard_SStream.hxx>
 #include <Standard_Type.hxx>
-#include <Standard_TypeDef.hxx>
-#include <TColStd_Array1OfReal.hxx>
+#include <TDF_HAllocator.hxx>
 #include <TopAbs_Orientation.hxx>
 #include <TopAbs_ShapeEnum.hxx>
 #include <TopExp.hxx>
 #include <TopExp_Explorer.hxx>
-#include <TopLoc_Location.hxx>
 #include <TopTools.hxx>
-#include <TopTools_Array1OfListOfShape.hxx>
-#include <TopTools_Array1OfShape.hxx>
-#include <TopTools_Array2OfShape.hxx>
-#include <TopTools_DataMapOfIntegerListOfShape.hxx>
-#include <TopTools_DataMapOfIntegerShape.hxx>
-#include <TopTools_DataMapOfOrientedShapeInteger.hxx>
-#include <TopTools_DataMapOfShapeBox.hxx>
-#include <TopTools_DataMapOfShapeInteger.hxx>
-#include <TopTools_DataMapOfShapeListOfShape.hxx>
-#include <TopTools_DataMapOfShapeReal.hxx>
-#include <TopTools_DataMapOfShapeShape.hxx>
 #include <TopTools_FormatVersion.hxx>
-#include <TopTools_HArray1OfListOfShape.hxx>
-#include <TopTools_HArray1OfShape.hxx>
-#include <TopTools_HArray2OfShape.hxx>
-#include <TopTools_HSequenceOfShape.hxx>
-#include <TopTools_IndexedDataMapOfShapeListOfShape.hxx>
-#include <TopTools_IndexedDataMapOfShapeReal.hxx>
-#include <TopTools_IndexedDataMapOfShapeShape.hxx>
-#include <TopTools_IndexedMapOfOrientedShape.hxx>
-#include <TopTools_IndexedMapOfShape.hxx>
-#include <TopTools_ListIteratorOfListOfShape.hxx>
-#include <TopTools_ListOfListOfShape.hxx>
-#include <TopTools_ListOfShape.hxx>
 #include <TopTools_LocationSet.hxx>
-#include <TopTools_MapOfShape.hxx>
-#include <TopTools_MutexForShapeProvider.hxx>
-#include <TopTools_SequenceOfShape.hxx>
 #include <TopTools_ShapeSet.hxx>
 #include <TopoDS.hxx>
 #include <TopoDS_AlertAttribute.hxx>
@@ -160,7 +161,6 @@
 #include <TopoDS_FrozenShape.hxx>
 #include <TopoDS_HShape.hxx>
 #include <TopoDS_Iterator.hxx>
-#include <TopoDS_ListOfShape.hxx>
 #include <TopoDS_LockedShape.hxx>
 #include <TopoDS_Shell.hxx>
 #include <TopoDS_Solid.hxx>
@@ -177,440 +177,446 @@
 #include <TopoDS_Vertex.hxx>
 #include <TopoDS_Wire.hxx>
 #include <gp_Ax1.hxx>
-#include <gp_Circ.hxx>
 #include <gp_Circ2d.hxx>
 #include <gp_Cone.hxx>
 #include <gp_Cylinder.hxx>
-#include <gp_Dir.hxx>
 #include <gp_Elips.hxx>
 #include <gp_Elips2d.hxx>
 #include <gp_GTrsf.hxx>
 #include <gp_Hypr.hxx>
 #include <gp_Hypr2d.hxx>
-#include <gp_Lin.hxx>
 #include <gp_Lin2d.hxx>
 #include <gp_Parab.hxx>
 #include <gp_Parab2d.hxx>
 #include <gp_Pln.hxx>
 #include <gp_Sphere.hxx>
 #include <gp_Torus.hxx>
-#include <gp_Trsf.hxx>
-#include <gp_Vec.hxx>
-#include <gp_Vec2d.hxx>
 
 // Handle type aliases
-typedef opencascade::handle<Adaptor2d_Curve2d> HandleAdaptor2dCurve2d;
-typedef opencascade::handle<Adaptor3d_Curve> HandleAdaptor3dCurve;
-typedef opencascade::handle<Adaptor3d_Surface> HandleAdaptor3dSurface;
-typedef opencascade::handle<BOPAlgo_AlertAcquiredSelfIntersection> HandleBOPAlgoAlertAcquiredSelfIntersection;
-typedef opencascade::handle<BOPAlgo_AlertBadPositioning> HandleBOPAlgoAlertBadPositioning;
-typedef opencascade::handle<BOPAlgo_AlertBuildingPCurveFailed> HandleBOPAlgoAlertBuildingPCurveFailed;
-typedef opencascade::handle<BOPAlgo_AlertEmptyShape> HandleBOPAlgoAlertEmptyShape;
-typedef opencascade::handle<BOPAlgo_AlertFaceBuilderUnusedEdges> HandleBOPAlgoAlertFaceBuilderUnusedEdges;
-typedef opencascade::handle<BOPAlgo_AlertIntersectionOfPairOfShapesFailed> HandleBOPAlgoAlertIntersectionOfPairOfShapesFailed;
-typedef opencascade::handle<BOPAlgo_AlertNotSplittableEdge> HandleBOPAlgoAlertNotSplittableEdge;
-typedef opencascade::handle<BOPAlgo_AlertRemovalOfIBForEdgesFailed> HandleBOPAlgoAlertRemovalOfIBForEdgesFailed;
-typedef opencascade::handle<BOPAlgo_AlertRemovalOfIBForFacesFailed> HandleBOPAlgoAlertRemovalOfIBForFacesFailed;
-typedef opencascade::handle<BOPAlgo_AlertRemovalOfIBForMDimShapes> HandleBOPAlgoAlertRemovalOfIBForMDimShapes;
-typedef opencascade::handle<BOPAlgo_AlertRemovalOfIBForSolidsFailed> HandleBOPAlgoAlertRemovalOfIBForSolidsFailed;
-typedef opencascade::handle<BOPAlgo_AlertSelfInterferingShape> HandleBOPAlgoAlertSelfInterferingShape;
-typedef opencascade::handle<BOPAlgo_AlertShapeIsNotPeriodic> HandleBOPAlgoAlertShapeIsNotPeriodic;
-typedef opencascade::handle<BOPAlgo_AlertShellSplitterFailed> HandleBOPAlgoAlertShellSplitterFailed;
-typedef opencascade::handle<BOPAlgo_AlertSolidBuilderUnusedFaces> HandleBOPAlgoAlertSolidBuilderUnusedFaces;
-typedef opencascade::handle<BOPAlgo_AlertTooSmallEdge> HandleBOPAlgoAlertTooSmallEdge;
-typedef opencascade::handle<BOPAlgo_AlertUnableToGlue> HandleBOPAlgoAlertUnableToGlue;
-typedef opencascade::handle<BOPAlgo_AlertUnableToMakeClosedEdgeOnFace> HandleBOPAlgoAlertUnableToMakeClosedEdgeOnFace;
-typedef opencascade::handle<BOPAlgo_AlertUnableToMakeIdentical> HandleBOPAlgoAlertUnableToMakeIdentical;
-typedef opencascade::handle<BOPAlgo_AlertUnableToMakePeriodic> HandleBOPAlgoAlertUnableToMakePeriodic;
-typedef opencascade::handle<BOPAlgo_AlertUnableToOrientTheShape> HandleBOPAlgoAlertUnableToOrientTheShape;
-typedef opencascade::handle<BOPAlgo_AlertUnableToRemoveTheFeature> HandleBOPAlgoAlertUnableToRemoveTheFeature;
-typedef opencascade::handle<BOPAlgo_AlertUnableToRepeat> HandleBOPAlgoAlertUnableToRepeat;
-typedef opencascade::handle<BOPAlgo_AlertUnableToTrim> HandleBOPAlgoAlertUnableToTrim;
-typedef opencascade::handle<BOPAlgo_AlertUnknownShape> HandleBOPAlgoAlertUnknownShape;
-typedef opencascade::handle<BOPAlgo_AlertUnsupportedType> HandleBOPAlgoAlertUnsupportedType;
-typedef opencascade::handle<BRepAdaptor_CompCurve> HandleBRepAdaptorCompCurve;
-typedef opencascade::handle<BRepAdaptor_Curve> HandleBRepAdaptorCurve;
-typedef opencascade::handle<BRepAdaptor_Curve2d> HandleBRepAdaptorCurve2d;
-typedef opencascade::handle<BRepAdaptor_HArray1OfCurve> HandleBRepAdaptorHArray1OfCurve;
-typedef opencascade::handle<BRepAdaptor_Surface> HandleBRepAdaptorSurface;
-typedef opencascade::handle<BRepOffset_SimpleOffset> HandleBRepOffsetSimpleOffset;
-typedef opencascade::handle<BRepTools_CopyModification> HandleBRepToolsCopyModification;
-typedef opencascade::handle<BRepTools_GTrsfModification> HandleBRepToolsGTrsfModification;
-typedef opencascade::handle<BRepTools_History> HandleBRepToolsHistory;
-typedef opencascade::handle<BRepTools_Modification> HandleBRepToolsModification;
-typedef opencascade::handle<BRepTools_NurbsConvertModification> HandleBRepToolsNurbsConvertModification;
-typedef opencascade::handle<BRepTools_ReShape> HandleBRepToolsReShape;
-typedef opencascade::handle<BRepTools_TrsfModification> HandleBRepToolsTrsfModification;
-typedef opencascade::handle<BRep_Curve3D> HandleBRepCurve3D;
-typedef opencascade::handle<BRep_CurveOn2Surfaces> HandleBRepCurveOn2Surfaces;
-typedef opencascade::handle<BRep_CurveOnClosedSurface> HandleBRepCurveOnClosedSurface;
-typedef opencascade::handle<BRep_CurveOnSurface> HandleBRepCurveOnSurface;
-typedef opencascade::handle<BRep_CurveRepresentation> HandleBRepCurveRepresentation;
-typedef opencascade::handle<BRep_GCurve> HandleBRepGCurve;
-typedef opencascade::handle<BRep_PointOnCurve> HandleBRepPointOnCurve;
-typedef opencascade::handle<BRep_PointOnCurveOnSurface> HandleBRepPointOnCurveOnSurface;
-typedef opencascade::handle<BRep_PointOnSurface> HandleBRepPointOnSurface;
-typedef opencascade::handle<BRep_PointRepresentation> HandleBRepPointRepresentation;
-typedef opencascade::handle<BRep_PointsOnSurface> HandleBRepPointsOnSurface;
-typedef opencascade::handle<BRep_Polygon3D> HandleBRepPolygon3D;
-typedef opencascade::handle<BRep_PolygonOnClosedSurface> HandleBRepPolygonOnClosedSurface;
-typedef opencascade::handle<BRep_PolygonOnClosedTriangulation> HandleBRepPolygonOnClosedTriangulation;
-typedef opencascade::handle<BRep_PolygonOnSurface> HandleBRepPolygonOnSurface;
-typedef opencascade::handle<BRep_PolygonOnTriangulation> HandleBRepPolygonOnTriangulation;
-typedef opencascade::handle<BRep_TEdge> HandleBRepTEdge;
-typedef opencascade::handle<BRep_TFace> HandleBRepTFace;
-typedef opencascade::handle<BRep_TVertex> HandleBRepTVertex;
-typedef opencascade::handle<Draft_Modification> HandleDraftModification;
-typedef opencascade::handle<Geom2dAdaptor_Curve> HandleGeom2dAdaptorCurve;
-typedef opencascade::handle<Geom2d_Curve> HandleGeom2dCurve;
-typedef opencascade::handle<Geom_BSplineCurve> HandleGeomBSplineCurve;
-typedef opencascade::handle<Geom_BSplineSurface> HandleGeomBSplineSurface;
-typedef opencascade::handle<Geom_BezierCurve> HandleGeomBezierCurve;
-typedef opencascade::handle<Geom_BezierSurface> HandleGeomBezierSurface;
-typedef opencascade::handle<Geom_Curve> HandleGeomCurve;
-typedef opencascade::handle<Geom_OffsetCurve> HandleGeomOffsetCurve;
-typedef opencascade::handle<Geom_Surface> HandleGeomSurface;
-typedef opencascade::handle<Message_Alert> HandleMessageAlert;
-typedef opencascade::handle<Message_Attribute> HandleMessageAttribute;
-typedef opencascade::handle<Message_AttributeStream> HandleMessageAttributeStream;
-typedef opencascade::handle<Message_Messenger> HandleMessageMessenger;
-typedef opencascade::handle<Poly_Polygon2D> HandlePolyPolygon2D;
-typedef opencascade::handle<Poly_Polygon3D> HandlePolyPolygon3D;
-typedef opencascade::handle<Poly_PolygonOnTriangulation> HandlePolyPolygonOnTriangulation;
-typedef opencascade::handle<Poly_Triangulation> HandlePolyTriangulation;
-typedef opencascade::handle<ShapeBuild_ReShape> HandleShapeBuildReShape;
-typedef opencascade::handle<ShapeCustom_BSplineRestriction> HandleShapeCustomBSplineRestriction;
-typedef opencascade::handle<ShapeCustom_ConvertToBSpline> HandleShapeCustomConvertToBSpline;
-typedef opencascade::handle<ShapeCustom_ConvertToRevolution> HandleShapeCustomConvertToRevolution;
-typedef opencascade::handle<ShapeCustom_DirectModification> HandleShapeCustomDirectModification;
-typedef opencascade::handle<ShapeCustom_Modification> HandleShapeCustomModification;
-typedef opencascade::handle<ShapeCustom_SweptToElementary> HandleShapeCustomSweptToElementary;
-typedef opencascade::handle<ShapeCustom_TrsfModification> HandleShapeCustomTrsfModification;
-typedef opencascade::handle<Standard_DomainError> HandleStandardDomainError;
-typedef opencascade::handle<Standard_Failure> HandleStandardFailure;
-typedef opencascade::handle<Standard_Transient> HandleStandardTransient;
-typedef opencascade::handle<Standard_Type> HandleStandardType;
-typedef opencascade::handle<TopTools_HArray1OfListOfShape> HandleTopToolsHArray1OfListOfShape;
-typedef opencascade::handle<TopTools_HArray1OfShape> HandleTopToolsHArray1OfShape;
-typedef opencascade::handle<TopTools_HArray2OfShape> HandleTopToolsHArray2OfShape;
-typedef opencascade::handle<TopTools_HSequenceOfShape> HandleTopToolsHSequenceOfShape;
-typedef opencascade::handle<TopoDS_AlertAttribute> HandleTopoDSAlertAttribute;
-typedef opencascade::handle<TopoDS_AlertWithShape> HandleTopoDSAlertWithShape;
-typedef opencascade::handle<TopoDS_FrozenShape> HandleTopoDSFrozenShape;
-typedef opencascade::handle<TopoDS_HShape> HandleTopoDSHShape;
-typedef opencascade::handle<TopoDS_LockedShape> HandleTopoDSLockedShape;
-typedef opencascade::handle<TopoDS_TCompSolid> HandleTopoDSTCompSolid;
-typedef opencascade::handle<TopoDS_TCompound> HandleTopoDSTCompound;
-typedef opencascade::handle<TopoDS_TEdge> HandleTopoDSTEdge;
-typedef opencascade::handle<TopoDS_TFace> HandleTopoDSTFace;
-typedef opencascade::handle<TopoDS_TShape> HandleTopoDSTShape;
-typedef opencascade::handle<TopoDS_TShell> HandleTopoDSTShell;
-typedef opencascade::handle<TopoDS_TSolid> HandleTopoDSTSolid;
-typedef opencascade::handle<TopoDS_TVertex> HandleTopoDSTVertex;
-typedef opencascade::handle<TopoDS_TWire> HandleTopoDSTWire;
-typedef opencascade::handle<TopoDS_UnCompatibleShapes> HandleTopoDSUnCompatibleShapes;
+typedef opencascade::handle<Adaptor2d_Curve2d> Handle_Adaptor2d_Curve2d;
+typedef opencascade::handle<Adaptor3d_Curve> Handle_Adaptor3d_Curve;
+typedef opencascade::handle<Adaptor3d_CurveOnSurface> Handle_Adaptor3d_CurveOnSurface;
+typedef opencascade::handle<Adaptor3d_Surface> Handle_Adaptor3d_Surface;
+typedef opencascade::handle<BOPAlgo_AlertAcquiredSelfIntersection> Handle_BOPAlgo_AlertAcquiredSelfIntersection;
+typedef opencascade::handle<BOPAlgo_AlertBadPositioning> Handle_BOPAlgo_AlertBadPositioning;
+typedef opencascade::handle<BOPAlgo_AlertBuildingPCurveFailed> Handle_BOPAlgo_AlertBuildingPCurveFailed;
+typedef opencascade::handle<BOPAlgo_AlertEmptyShape> Handle_BOPAlgo_AlertEmptyShape;
+typedef opencascade::handle<BOPAlgo_AlertFaceBuilderUnusedEdges> Handle_BOPAlgo_AlertFaceBuilderUnusedEdges;
+typedef opencascade::handle<BOPAlgo_AlertIntersectionOfPairOfShapesFailed> Handle_BOPAlgo_AlertIntersectionOfPairOfShapesFailed;
+typedef opencascade::handle<BOPAlgo_AlertNotSplittableEdge> Handle_BOPAlgo_AlertNotSplittableEdge;
+typedef opencascade::handle<BOPAlgo_AlertRemovalOfIBForEdgesFailed> Handle_BOPAlgo_AlertRemovalOfIBForEdgesFailed;
+typedef opencascade::handle<BOPAlgo_AlertRemovalOfIBForFacesFailed> Handle_BOPAlgo_AlertRemovalOfIBForFacesFailed;
+typedef opencascade::handle<BOPAlgo_AlertRemovalOfIBForMDimShapes> Handle_BOPAlgo_AlertRemovalOfIBForMDimShapes;
+typedef opencascade::handle<BOPAlgo_AlertRemovalOfIBForSolidsFailed> Handle_BOPAlgo_AlertRemovalOfIBForSolidsFailed;
+typedef opencascade::handle<BOPAlgo_AlertSelfInterferingShape> Handle_BOPAlgo_AlertSelfInterferingShape;
+typedef opencascade::handle<BOPAlgo_AlertShapeIsNotPeriodic> Handle_BOPAlgo_AlertShapeIsNotPeriodic;
+typedef opencascade::handle<BOPAlgo_AlertShellSplitterFailed> Handle_BOPAlgo_AlertShellSplitterFailed;
+typedef opencascade::handle<BOPAlgo_AlertSolidBuilderUnusedFaces> Handle_BOPAlgo_AlertSolidBuilderUnusedFaces;
+typedef opencascade::handle<BOPAlgo_AlertTooSmallEdge> Handle_BOPAlgo_AlertTooSmallEdge;
+typedef opencascade::handle<BOPAlgo_AlertUnableToGlue> Handle_BOPAlgo_AlertUnableToGlue;
+typedef opencascade::handle<BOPAlgo_AlertUnableToMakeClosedEdgeOnFace> Handle_BOPAlgo_AlertUnableToMakeClosedEdgeOnFace;
+typedef opencascade::handle<BOPAlgo_AlertUnableToMakeIdentical> Handle_BOPAlgo_AlertUnableToMakeIdentical;
+typedef opencascade::handle<BOPAlgo_AlertUnableToMakePeriodic> Handle_BOPAlgo_AlertUnableToMakePeriodic;
+typedef opencascade::handle<BOPAlgo_AlertUnableToOrientTheShape> Handle_BOPAlgo_AlertUnableToOrientTheShape;
+typedef opencascade::handle<BOPAlgo_AlertUnableToRemoveTheFeature> Handle_BOPAlgo_AlertUnableToRemoveTheFeature;
+typedef opencascade::handle<BOPAlgo_AlertUnableToRepeat> Handle_BOPAlgo_AlertUnableToRepeat;
+typedef opencascade::handle<BOPAlgo_AlertUnableToTrim> Handle_BOPAlgo_AlertUnableToTrim;
+typedef opencascade::handle<BOPAlgo_AlertUnknownShape> Handle_BOPAlgo_AlertUnknownShape;
+typedef opencascade::handle<BOPAlgo_AlertUnsupportedType> Handle_BOPAlgo_AlertUnsupportedType;
+typedef opencascade::handle<BRepAdaptor_CompCurve> Handle_BRepAdaptor_CompCurve;
+typedef opencascade::handle<BRepAdaptor_Curve> Handle_BRepAdaptor_Curve;
+typedef opencascade::handle<BRepAdaptor_Curve2d> Handle_BRepAdaptor_Curve2d;
+typedef opencascade::handle<BRepAdaptor_Surface> Handle_BRepAdaptor_Surface;
+typedef opencascade::handle<BRepGraph_Cache> Handle_BRepGraph_Cache;
+typedef opencascade::handle<BRepGraph_CacheDerivedState> Handle_BRepGraph_CacheDerivedState;
+typedef opencascade::handle<BRepGraph_CacheMesh> Handle_BRepGraph_CacheMesh;
+typedef opencascade::handle<BRepGraph_CacheMesh::Driver> Handle_BRepGraph_CacheMesh_Driver;
+typedef opencascade::handle<BRepGraph_Layer> Handle_BRepGraph_Layer;
+typedef opencascade::handle<BRepGraph_LayerDeferred> Handle_BRepGraph_LayerDeferred;
+typedef opencascade::handle<BRepGraph_LayerHistory> Handle_BRepGraph_LayerHistory;
+typedef opencascade::handle<BRepGraph_LayerLock> Handle_BRepGraph_LayerLock;
+typedef opencascade::handle<BRepGraph_LayerParametric> Handle_BRepGraph_LayerParametric;
+typedef opencascade::handle<BRepGraph_LayerTopoSupplement> Handle_BRepGraph_LayerTopoSupplement;
+typedef opencascade::handle<BRepOffset_SimpleOffset> Handle_BRepOffset_SimpleOffset;
+typedef opencascade::handle<BRepTools_CopyModification> Handle_BRepTools_CopyModification;
+typedef opencascade::handle<BRepTools_GTrsfModification> Handle_BRepTools_GTrsfModification;
+typedef opencascade::handle<BRepTools_History> Handle_BRepTools_History;
+typedef opencascade::handle<BRepTools_Modification> Handle_BRepTools_Modification;
+typedef opencascade::handle<BRepTools_NurbsConvertModification> Handle_BRepTools_NurbsConvertModification;
+typedef opencascade::handle<BRepTools_ReShape> Handle_BRepTools_ReShape;
+typedef opencascade::handle<BRepTools_TrsfModification> Handle_BRepTools_TrsfModification;
+typedef opencascade::handle<BRep_Curve3D> Handle_BRep_Curve3D;
+typedef opencascade::handle<BRep_CurveOn2Surfaces> Handle_BRep_CurveOn2Surfaces;
+typedef opencascade::handle<BRep_CurveOnClosedSurface> Handle_BRep_CurveOnClosedSurface;
+typedef opencascade::handle<BRep_CurveOnSurface> Handle_BRep_CurveOnSurface;
+typedef opencascade::handle<BRep_CurveRepresentation> Handle_BRep_CurveRepresentation;
+typedef opencascade::handle<BRep_GCurve> Handle_BRep_GCurve;
+typedef opencascade::handle<BRep_PointOnCurve> Handle_BRep_PointOnCurve;
+typedef opencascade::handle<BRep_PointOnCurveOnSurface> Handle_BRep_PointOnCurveOnSurface;
+typedef opencascade::handle<BRep_PointOnSurface> Handle_BRep_PointOnSurface;
+typedef opencascade::handle<BRep_PointRepresentation> Handle_BRep_PointRepresentation;
+typedef opencascade::handle<BRep_PointsOnSurface> Handle_BRep_PointsOnSurface;
+typedef opencascade::handle<BRep_Polygon3D> Handle_BRep_Polygon3D;
+typedef opencascade::handle<BRep_PolygonOnClosedSurface> Handle_BRep_PolygonOnClosedSurface;
+typedef opencascade::handle<BRep_PolygonOnClosedTriangulation> Handle_BRep_PolygonOnClosedTriangulation;
+typedef opencascade::handle<BRep_PolygonOnSurface> Handle_BRep_PolygonOnSurface;
+typedef opencascade::handle<BRep_PolygonOnTriangulation> Handle_BRep_PolygonOnTriangulation;
+typedef opencascade::handle<BRep_TEdge> Handle_BRep_TEdge;
+typedef opencascade::handle<BRep_TFace> Handle_BRep_TFace;
+typedef opencascade::handle<BRep_TVertex> Handle_BRep_TVertex;
+typedef opencascade::handle<Draft_Modification> Handle_Draft_Modification;
+typedef opencascade::handle<Geom2dAdaptor_Curve> Handle_Geom2dAdaptor_Curve;
+typedef opencascade::handle<Geom2d_Curve> Handle_Geom2d_Curve;
+typedef opencascade::handle<GeomAdaptor_TransformedCurve> Handle_GeomAdaptor_TransformedCurve;
+typedef opencascade::handle<GeomAdaptor_TransformedSurface> Handle_GeomAdaptor_TransformedSurface;
+typedef opencascade::handle<Geom_BSplineCurve> Handle_Geom_BSplineCurve;
+typedef opencascade::handle<Geom_BezierCurve> Handle_Geom_BezierCurve;
+typedef opencascade::handle<Geom_Curve> Handle_Geom_Curve;
+typedef opencascade::handle<Geom_Surface> Handle_Geom_Surface;
+typedef opencascade::handle<Message_Alert> Handle_Message_Alert;
+typedef opencascade::handle<Message_Attribute> Handle_Message_Attribute;
+typedef opencascade::handle<Message_AttributeStream> Handle_Message_AttributeStream;
+typedef opencascade::handle<Message_Messenger> Handle_Message_Messenger;
+typedef opencascade::handle<Poly_Polygon2D> Handle_Poly_Polygon2D;
+typedef opencascade::handle<Poly_Polygon3D> Handle_Poly_Polygon3D;
+typedef opencascade::handle<Poly_PolygonOnTriangulation> Handle_Poly_PolygonOnTriangulation;
+typedef opencascade::handle<Poly_Triangulation> Handle_Poly_Triangulation;
+typedef opencascade::handle<ShapeBuild_ReShape> Handle_ShapeBuild_ReShape;
+typedef opencascade::handle<ShapeCustom_BSplineRestriction> Handle_ShapeCustom_BSplineRestriction;
+typedef opencascade::handle<ShapeCustom_ConvertToBSpline> Handle_ShapeCustom_ConvertToBSpline;
+typedef opencascade::handle<ShapeCustom_ConvertToRevolution> Handle_ShapeCustom_ConvertToRevolution;
+typedef opencascade::handle<ShapeCustom_DirectModification> Handle_ShapeCustom_DirectModification;
+typedef opencascade::handle<ShapeCustom_Modification> Handle_ShapeCustom_Modification;
+typedef opencascade::handle<ShapeCustom_SweptToElementary> Handle_ShapeCustom_SweptToElementary;
+typedef opencascade::handle<ShapeCustom_TrsfModification> Handle_ShapeCustom_TrsfModification;
+typedef opencascade::handle<Standard_Transient> Handle_Standard_Transient;
+typedef opencascade::handle<Standard_Type> Handle_Standard_Type;
+typedef opencascade::handle<TopoDS_AlertAttribute> Handle_TopoDS_AlertAttribute;
+typedef opencascade::handle<TopoDS_AlertWithShape> Handle_TopoDS_AlertWithShape;
+typedef opencascade::handle<TopoDS_HShape> Handle_TopoDS_HShape;
+typedef opencascade::handle<TopoDS_TCompSolid> Handle_TopoDS_TCompSolid;
+typedef opencascade::handle<TopoDS_TCompound> Handle_TopoDS_TCompound;
+typedef opencascade::handle<TopoDS_TEdge> Handle_TopoDS_TEdge;
+typedef opencascade::handle<TopoDS_TFace> Handle_TopoDS_TFace;
+typedef opencascade::handle<TopoDS_TShape> Handle_TopoDS_TShape;
+typedef opencascade::handle<TopoDS_TShell> Handle_TopoDS_TShell;
+typedef opencascade::handle<TopoDS_TSolid> Handle_TopoDS_TSolid;
+typedef opencascade::handle<TopoDS_TVertex> Handle_TopoDS_TVertex;
+typedef opencascade::handle<TopoDS_TWire> Handle_TopoDS_TWire;
 
 // Handle type destructors, clone, and is_null functions
-extern "C" void HandleBRepAdaptorCompCurve_destructor(HandleBRepAdaptorCompCurve* self_) { delete self_; }
-extern "C" OcctResult<HandleBRepAdaptorCompCurve*> HandleBRepAdaptorCompCurve_clone(const HandleBRepAdaptorCompCurve* self_) {
-    try { return {new HandleBRepAdaptorCompCurve(*self_), nullptr}; }
+extern "C" void Handle_BRepAdaptor_CompCurve_destructor(Handle_BRepAdaptor_CompCurve* self_) { delete self_; }
+extern "C" OcctResult<Handle_BRepAdaptor_CompCurve*> Handle_BRepAdaptor_CompCurve_clone(const Handle_BRepAdaptor_CompCurve* self_) {
+    try { return {new Handle_BRepAdaptor_CompCurve(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleBRepAdaptorCompCurve_is_null(const HandleBRepAdaptorCompCurve* self_) { return self_->IsNull(); }
-extern "C" void HandleBRepAdaptorCurve_destructor(HandleBRepAdaptorCurve* self_) { delete self_; }
-extern "C" OcctResult<HandleBRepAdaptorCurve*> HandleBRepAdaptorCurve_clone(const HandleBRepAdaptorCurve* self_) {
-    try { return {new HandleBRepAdaptorCurve(*self_), nullptr}; }
+extern "C" bool Handle_BRepAdaptor_CompCurve_is_null(const Handle_BRepAdaptor_CompCurve* self_) { return self_->IsNull(); }
+extern "C" void Handle_BRepAdaptor_Curve_destructor(Handle_BRepAdaptor_Curve* self_) { delete self_; }
+extern "C" OcctResult<Handle_BRepAdaptor_Curve*> Handle_BRepAdaptor_Curve_clone(const Handle_BRepAdaptor_Curve* self_) {
+    try { return {new Handle_BRepAdaptor_Curve(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleBRepAdaptorCurve_is_null(const HandleBRepAdaptorCurve* self_) { return self_->IsNull(); }
-extern "C" void HandleBRepAdaptorCurve2d_destructor(HandleBRepAdaptorCurve2d* self_) { delete self_; }
-extern "C" OcctResult<HandleBRepAdaptorCurve2d*> HandleBRepAdaptorCurve2d_clone(const HandleBRepAdaptorCurve2d* self_) {
-    try { return {new HandleBRepAdaptorCurve2d(*self_), nullptr}; }
+extern "C" bool Handle_BRepAdaptor_Curve_is_null(const Handle_BRepAdaptor_Curve* self_) { return self_->IsNull(); }
+extern "C" void Handle_BRepAdaptor_Curve2d_destructor(Handle_BRepAdaptor_Curve2d* self_) { delete self_; }
+extern "C" OcctResult<Handle_BRepAdaptor_Curve2d*> Handle_BRepAdaptor_Curve2d_clone(const Handle_BRepAdaptor_Curve2d* self_) {
+    try { return {new Handle_BRepAdaptor_Curve2d(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleBRepAdaptorCurve2d_is_null(const HandleBRepAdaptorCurve2d* self_) { return self_->IsNull(); }
-extern "C" void HandleBRepAdaptorHArray1OfCurve_destructor(HandleBRepAdaptorHArray1OfCurve* self_) { delete self_; }
-extern "C" OcctResult<HandleBRepAdaptorHArray1OfCurve*> HandleBRepAdaptorHArray1OfCurve_clone(const HandleBRepAdaptorHArray1OfCurve* self_) {
-    try { return {new HandleBRepAdaptorHArray1OfCurve(*self_), nullptr}; }
+extern "C" bool Handle_BRepAdaptor_Curve2d_is_null(const Handle_BRepAdaptor_Curve2d* self_) { return self_->IsNull(); }
+extern "C" void Handle_BRepAdaptor_Surface_destructor(Handle_BRepAdaptor_Surface* self_) { delete self_; }
+extern "C" OcctResult<Handle_BRepAdaptor_Surface*> Handle_BRepAdaptor_Surface_clone(const Handle_BRepAdaptor_Surface* self_) {
+    try { return {new Handle_BRepAdaptor_Surface(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleBRepAdaptorHArray1OfCurve_is_null(const HandleBRepAdaptorHArray1OfCurve* self_) { return self_->IsNull(); }
-extern "C" void HandleBRepAdaptorSurface_destructor(HandleBRepAdaptorSurface* self_) { delete self_; }
-extern "C" OcctResult<HandleBRepAdaptorSurface*> HandleBRepAdaptorSurface_clone(const HandleBRepAdaptorSurface* self_) {
-    try { return {new HandleBRepAdaptorSurface(*self_), nullptr}; }
+extern "C" bool Handle_BRepAdaptor_Surface_is_null(const Handle_BRepAdaptor_Surface* self_) { return self_->IsNull(); }
+extern "C" void Handle_BRepGraph_Cache_destructor(Handle_BRepGraph_Cache* self_) { delete self_; }
+extern "C" OcctResult<Handle_BRepGraph_Cache*> Handle_BRepGraph_Cache_clone(const Handle_BRepGraph_Cache* self_) {
+    try { return {new Handle_BRepGraph_Cache(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleBRepAdaptorSurface_is_null(const HandleBRepAdaptorSurface* self_) { return self_->IsNull(); }
-extern "C" void HandleBRepToolsCopyModification_destructor(HandleBRepToolsCopyModification* self_) { delete self_; }
-extern "C" OcctResult<HandleBRepToolsCopyModification*> HandleBRepToolsCopyModification_clone(const HandleBRepToolsCopyModification* self_) {
-    try { return {new HandleBRepToolsCopyModification(*self_), nullptr}; }
+extern "C" bool Handle_BRepGraph_Cache_is_null(const Handle_BRepGraph_Cache* self_) { return self_->IsNull(); }
+extern "C" void Handle_BRepGraph_CacheDerivedState_destructor(Handle_BRepGraph_CacheDerivedState* self_) { delete self_; }
+extern "C" OcctResult<Handle_BRepGraph_CacheDerivedState*> Handle_BRepGraph_CacheDerivedState_clone(const Handle_BRepGraph_CacheDerivedState* self_) {
+    try { return {new Handle_BRepGraph_CacheDerivedState(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleBRepToolsCopyModification_is_null(const HandleBRepToolsCopyModification* self_) { return self_->IsNull(); }
-extern "C" void HandleBRepToolsGTrsfModification_destructor(HandleBRepToolsGTrsfModification* self_) { delete self_; }
-extern "C" OcctResult<HandleBRepToolsGTrsfModification*> HandleBRepToolsGTrsfModification_clone(const HandleBRepToolsGTrsfModification* self_) {
-    try { return {new HandleBRepToolsGTrsfModification(*self_), nullptr}; }
+extern "C" bool Handle_BRepGraph_CacheDerivedState_is_null(const Handle_BRepGraph_CacheDerivedState* self_) { return self_->IsNull(); }
+extern "C" void Handle_BRepGraph_CacheMesh_destructor(Handle_BRepGraph_CacheMesh* self_) { delete self_; }
+extern "C" OcctResult<Handle_BRepGraph_CacheMesh*> Handle_BRepGraph_CacheMesh_clone(const Handle_BRepGraph_CacheMesh* self_) {
+    try { return {new Handle_BRepGraph_CacheMesh(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleBRepToolsGTrsfModification_is_null(const HandleBRepToolsGTrsfModification* self_) { return self_->IsNull(); }
-extern "C" void HandleBRepToolsHistory_destructor(HandleBRepToolsHistory* self_) { delete self_; }
-extern "C" OcctResult<HandleBRepToolsHistory*> HandleBRepToolsHistory_clone(const HandleBRepToolsHistory* self_) {
-    try { return {new HandleBRepToolsHistory(*self_), nullptr}; }
+extern "C" bool Handle_BRepGraph_CacheMesh_is_null(const Handle_BRepGraph_CacheMesh* self_) { return self_->IsNull(); }
+extern "C" void Handle_BRepGraph_CacheMesh_Driver_destructor(Handle_BRepGraph_CacheMesh_Driver* self_) { delete self_; }
+extern "C" OcctResult<Handle_BRepGraph_CacheMesh_Driver*> Handle_BRepGraph_CacheMesh_Driver_clone(const Handle_BRepGraph_CacheMesh_Driver* self_) {
+    try { return {new Handle_BRepGraph_CacheMesh_Driver(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleBRepToolsHistory_is_null(const HandleBRepToolsHistory* self_) { return self_->IsNull(); }
-extern "C" void HandleBRepToolsModification_destructor(HandleBRepToolsModification* self_) { delete self_; }
-extern "C" OcctResult<HandleBRepToolsModification*> HandleBRepToolsModification_clone(const HandleBRepToolsModification* self_) {
-    try { return {new HandleBRepToolsModification(*self_), nullptr}; }
+extern "C" bool Handle_BRepGraph_CacheMesh_Driver_is_null(const Handle_BRepGraph_CacheMesh_Driver* self_) { return self_->IsNull(); }
+extern "C" void Handle_BRepGraph_Layer_destructor(Handle_BRepGraph_Layer* self_) { delete self_; }
+extern "C" OcctResult<Handle_BRepGraph_Layer*> Handle_BRepGraph_Layer_clone(const Handle_BRepGraph_Layer* self_) {
+    try { return {new Handle_BRepGraph_Layer(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleBRepToolsModification_is_null(const HandleBRepToolsModification* self_) { return self_->IsNull(); }
-extern "C" void HandleBRepToolsNurbsConvertModification_destructor(HandleBRepToolsNurbsConvertModification* self_) { delete self_; }
-extern "C" OcctResult<HandleBRepToolsNurbsConvertModification*> HandleBRepToolsNurbsConvertModification_clone(const HandleBRepToolsNurbsConvertModification* self_) {
-    try { return {new HandleBRepToolsNurbsConvertModification(*self_), nullptr}; }
+extern "C" bool Handle_BRepGraph_Layer_is_null(const Handle_BRepGraph_Layer* self_) { return self_->IsNull(); }
+extern "C" void Handle_BRepGraph_LayerDeferred_destructor(Handle_BRepGraph_LayerDeferred* self_) { delete self_; }
+extern "C" OcctResult<Handle_BRepGraph_LayerDeferred*> Handle_BRepGraph_LayerDeferred_clone(const Handle_BRepGraph_LayerDeferred* self_) {
+    try { return {new Handle_BRepGraph_LayerDeferred(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleBRepToolsNurbsConvertModification_is_null(const HandleBRepToolsNurbsConvertModification* self_) { return self_->IsNull(); }
-extern "C" void HandleBRepToolsReShape_destructor(HandleBRepToolsReShape* self_) { delete self_; }
-extern "C" OcctResult<HandleBRepToolsReShape*> HandleBRepToolsReShape_clone(const HandleBRepToolsReShape* self_) {
-    try { return {new HandleBRepToolsReShape(*self_), nullptr}; }
+extern "C" bool Handle_BRepGraph_LayerDeferred_is_null(const Handle_BRepGraph_LayerDeferred* self_) { return self_->IsNull(); }
+extern "C" void Handle_BRepGraph_LayerHistory_destructor(Handle_BRepGraph_LayerHistory* self_) { delete self_; }
+extern "C" OcctResult<Handle_BRepGraph_LayerHistory*> Handle_BRepGraph_LayerHistory_clone(const Handle_BRepGraph_LayerHistory* self_) {
+    try { return {new Handle_BRepGraph_LayerHistory(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleBRepToolsReShape_is_null(const HandleBRepToolsReShape* self_) { return self_->IsNull(); }
-extern "C" void HandleBRepToolsTrsfModification_destructor(HandleBRepToolsTrsfModification* self_) { delete self_; }
-extern "C" OcctResult<HandleBRepToolsTrsfModification*> HandleBRepToolsTrsfModification_clone(const HandleBRepToolsTrsfModification* self_) {
-    try { return {new HandleBRepToolsTrsfModification(*self_), nullptr}; }
+extern "C" bool Handle_BRepGraph_LayerHistory_is_null(const Handle_BRepGraph_LayerHistory* self_) { return self_->IsNull(); }
+extern "C" void Handle_BRepGraph_LayerLock_destructor(Handle_BRepGraph_LayerLock* self_) { delete self_; }
+extern "C" OcctResult<Handle_BRepGraph_LayerLock*> Handle_BRepGraph_LayerLock_clone(const Handle_BRepGraph_LayerLock* self_) {
+    try { return {new Handle_BRepGraph_LayerLock(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleBRepToolsTrsfModification_is_null(const HandleBRepToolsTrsfModification* self_) { return self_->IsNull(); }
-extern "C" void HandleBRepCurve3D_destructor(HandleBRepCurve3D* self_) { delete self_; }
-extern "C" OcctResult<HandleBRepCurve3D*> HandleBRepCurve3D_clone(const HandleBRepCurve3D* self_) {
-    try { return {new HandleBRepCurve3D(*self_), nullptr}; }
+extern "C" bool Handle_BRepGraph_LayerLock_is_null(const Handle_BRepGraph_LayerLock* self_) { return self_->IsNull(); }
+extern "C" void Handle_BRepGraph_LayerParametric_destructor(Handle_BRepGraph_LayerParametric* self_) { delete self_; }
+extern "C" OcctResult<Handle_BRepGraph_LayerParametric*> Handle_BRepGraph_LayerParametric_clone(const Handle_BRepGraph_LayerParametric* self_) {
+    try { return {new Handle_BRepGraph_LayerParametric(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleBRepCurve3D_is_null(const HandleBRepCurve3D* self_) { return self_->IsNull(); }
-extern "C" void HandleBRepCurveOn2Surfaces_destructor(HandleBRepCurveOn2Surfaces* self_) { delete self_; }
-extern "C" OcctResult<HandleBRepCurveOn2Surfaces*> HandleBRepCurveOn2Surfaces_clone(const HandleBRepCurveOn2Surfaces* self_) {
-    try { return {new HandleBRepCurveOn2Surfaces(*self_), nullptr}; }
+extern "C" bool Handle_BRepGraph_LayerParametric_is_null(const Handle_BRepGraph_LayerParametric* self_) { return self_->IsNull(); }
+extern "C" void Handle_BRepGraph_LayerTopoSupplement_destructor(Handle_BRepGraph_LayerTopoSupplement* self_) { delete self_; }
+extern "C" OcctResult<Handle_BRepGraph_LayerTopoSupplement*> Handle_BRepGraph_LayerTopoSupplement_clone(const Handle_BRepGraph_LayerTopoSupplement* self_) {
+    try { return {new Handle_BRepGraph_LayerTopoSupplement(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleBRepCurveOn2Surfaces_is_null(const HandleBRepCurveOn2Surfaces* self_) { return self_->IsNull(); }
-extern "C" void HandleBRepCurveOnClosedSurface_destructor(HandleBRepCurveOnClosedSurface* self_) { delete self_; }
-extern "C" OcctResult<HandleBRepCurveOnClosedSurface*> HandleBRepCurveOnClosedSurface_clone(const HandleBRepCurveOnClosedSurface* self_) {
-    try { return {new HandleBRepCurveOnClosedSurface(*self_), nullptr}; }
+extern "C" bool Handle_BRepGraph_LayerTopoSupplement_is_null(const Handle_BRepGraph_LayerTopoSupplement* self_) { return self_->IsNull(); }
+extern "C" void Handle_BRepTools_CopyModification_destructor(Handle_BRepTools_CopyModification* self_) { delete self_; }
+extern "C" OcctResult<Handle_BRepTools_CopyModification*> Handle_BRepTools_CopyModification_clone(const Handle_BRepTools_CopyModification* self_) {
+    try { return {new Handle_BRepTools_CopyModification(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleBRepCurveOnClosedSurface_is_null(const HandleBRepCurveOnClosedSurface* self_) { return self_->IsNull(); }
-extern "C" void HandleBRepCurveOnSurface_destructor(HandleBRepCurveOnSurface* self_) { delete self_; }
-extern "C" OcctResult<HandleBRepCurveOnSurface*> HandleBRepCurveOnSurface_clone(const HandleBRepCurveOnSurface* self_) {
-    try { return {new HandleBRepCurveOnSurface(*self_), nullptr}; }
+extern "C" bool Handle_BRepTools_CopyModification_is_null(const Handle_BRepTools_CopyModification* self_) { return self_->IsNull(); }
+extern "C" void Handle_BRepTools_GTrsfModification_destructor(Handle_BRepTools_GTrsfModification* self_) { delete self_; }
+extern "C" OcctResult<Handle_BRepTools_GTrsfModification*> Handle_BRepTools_GTrsfModification_clone(const Handle_BRepTools_GTrsfModification* self_) {
+    try { return {new Handle_BRepTools_GTrsfModification(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleBRepCurveOnSurface_is_null(const HandleBRepCurveOnSurface* self_) { return self_->IsNull(); }
-extern "C" void HandleBRepCurveRepresentation_destructor(HandleBRepCurveRepresentation* self_) { delete self_; }
-extern "C" OcctResult<HandleBRepCurveRepresentation*> HandleBRepCurveRepresentation_clone(const HandleBRepCurveRepresentation* self_) {
-    try { return {new HandleBRepCurveRepresentation(*self_), nullptr}; }
+extern "C" bool Handle_BRepTools_GTrsfModification_is_null(const Handle_BRepTools_GTrsfModification* self_) { return self_->IsNull(); }
+extern "C" void Handle_BRepTools_History_destructor(Handle_BRepTools_History* self_) { delete self_; }
+extern "C" OcctResult<Handle_BRepTools_History*> Handle_BRepTools_History_clone(const Handle_BRepTools_History* self_) {
+    try { return {new Handle_BRepTools_History(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleBRepCurveRepresentation_is_null(const HandleBRepCurveRepresentation* self_) { return self_->IsNull(); }
-extern "C" void HandleBRepGCurve_destructor(HandleBRepGCurve* self_) { delete self_; }
-extern "C" OcctResult<HandleBRepGCurve*> HandleBRepGCurve_clone(const HandleBRepGCurve* self_) {
-    try { return {new HandleBRepGCurve(*self_), nullptr}; }
+extern "C" bool Handle_BRepTools_History_is_null(const Handle_BRepTools_History* self_) { return self_->IsNull(); }
+extern "C" void Handle_BRepTools_Modification_destructor(Handle_BRepTools_Modification* self_) { delete self_; }
+extern "C" OcctResult<Handle_BRepTools_Modification*> Handle_BRepTools_Modification_clone(const Handle_BRepTools_Modification* self_) {
+    try { return {new Handle_BRepTools_Modification(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleBRepGCurve_is_null(const HandleBRepGCurve* self_) { return self_->IsNull(); }
-extern "C" void HandleBRepPointOnCurve_destructor(HandleBRepPointOnCurve* self_) { delete self_; }
-extern "C" OcctResult<HandleBRepPointOnCurve*> HandleBRepPointOnCurve_clone(const HandleBRepPointOnCurve* self_) {
-    try { return {new HandleBRepPointOnCurve(*self_), nullptr}; }
+extern "C" bool Handle_BRepTools_Modification_is_null(const Handle_BRepTools_Modification* self_) { return self_->IsNull(); }
+extern "C" void Handle_BRepTools_NurbsConvertModification_destructor(Handle_BRepTools_NurbsConvertModification* self_) { delete self_; }
+extern "C" OcctResult<Handle_BRepTools_NurbsConvertModification*> Handle_BRepTools_NurbsConvertModification_clone(const Handle_BRepTools_NurbsConvertModification* self_) {
+    try { return {new Handle_BRepTools_NurbsConvertModification(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleBRepPointOnCurve_is_null(const HandleBRepPointOnCurve* self_) { return self_->IsNull(); }
-extern "C" void HandleBRepPointOnCurveOnSurface_destructor(HandleBRepPointOnCurveOnSurface* self_) { delete self_; }
-extern "C" OcctResult<HandleBRepPointOnCurveOnSurface*> HandleBRepPointOnCurveOnSurface_clone(const HandleBRepPointOnCurveOnSurface* self_) {
-    try { return {new HandleBRepPointOnCurveOnSurface(*self_), nullptr}; }
+extern "C" bool Handle_BRepTools_NurbsConvertModification_is_null(const Handle_BRepTools_NurbsConvertModification* self_) { return self_->IsNull(); }
+extern "C" void Handle_BRepTools_ReShape_destructor(Handle_BRepTools_ReShape* self_) { delete self_; }
+extern "C" OcctResult<Handle_BRepTools_ReShape*> Handle_BRepTools_ReShape_clone(const Handle_BRepTools_ReShape* self_) {
+    try { return {new Handle_BRepTools_ReShape(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleBRepPointOnCurveOnSurface_is_null(const HandleBRepPointOnCurveOnSurface* self_) { return self_->IsNull(); }
-extern "C" void HandleBRepPointOnSurface_destructor(HandleBRepPointOnSurface* self_) { delete self_; }
-extern "C" OcctResult<HandleBRepPointOnSurface*> HandleBRepPointOnSurface_clone(const HandleBRepPointOnSurface* self_) {
-    try { return {new HandleBRepPointOnSurface(*self_), nullptr}; }
+extern "C" bool Handle_BRepTools_ReShape_is_null(const Handle_BRepTools_ReShape* self_) { return self_->IsNull(); }
+extern "C" void Handle_BRepTools_TrsfModification_destructor(Handle_BRepTools_TrsfModification* self_) { delete self_; }
+extern "C" OcctResult<Handle_BRepTools_TrsfModification*> Handle_BRepTools_TrsfModification_clone(const Handle_BRepTools_TrsfModification* self_) {
+    try { return {new Handle_BRepTools_TrsfModification(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleBRepPointOnSurface_is_null(const HandleBRepPointOnSurface* self_) { return self_->IsNull(); }
-extern "C" void HandleBRepPointRepresentation_destructor(HandleBRepPointRepresentation* self_) { delete self_; }
-extern "C" OcctResult<HandleBRepPointRepresentation*> HandleBRepPointRepresentation_clone(const HandleBRepPointRepresentation* self_) {
-    try { return {new HandleBRepPointRepresentation(*self_), nullptr}; }
+extern "C" bool Handle_BRepTools_TrsfModification_is_null(const Handle_BRepTools_TrsfModification* self_) { return self_->IsNull(); }
+extern "C" void Handle_BRep_Curve3D_destructor(Handle_BRep_Curve3D* self_) { delete self_; }
+extern "C" OcctResult<Handle_BRep_Curve3D*> Handle_BRep_Curve3D_clone(const Handle_BRep_Curve3D* self_) {
+    try { return {new Handle_BRep_Curve3D(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleBRepPointRepresentation_is_null(const HandleBRepPointRepresentation* self_) { return self_->IsNull(); }
-extern "C" void HandleBRepPointsOnSurface_destructor(HandleBRepPointsOnSurface* self_) { delete self_; }
-extern "C" OcctResult<HandleBRepPointsOnSurface*> HandleBRepPointsOnSurface_clone(const HandleBRepPointsOnSurface* self_) {
-    try { return {new HandleBRepPointsOnSurface(*self_), nullptr}; }
+extern "C" bool Handle_BRep_Curve3D_is_null(const Handle_BRep_Curve3D* self_) { return self_->IsNull(); }
+extern "C" void Handle_BRep_CurveOn2Surfaces_destructor(Handle_BRep_CurveOn2Surfaces* self_) { delete self_; }
+extern "C" OcctResult<Handle_BRep_CurveOn2Surfaces*> Handle_BRep_CurveOn2Surfaces_clone(const Handle_BRep_CurveOn2Surfaces* self_) {
+    try { return {new Handle_BRep_CurveOn2Surfaces(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleBRepPointsOnSurface_is_null(const HandleBRepPointsOnSurface* self_) { return self_->IsNull(); }
-extern "C" void HandleBRepPolygon3D_destructor(HandleBRepPolygon3D* self_) { delete self_; }
-extern "C" OcctResult<HandleBRepPolygon3D*> HandleBRepPolygon3D_clone(const HandleBRepPolygon3D* self_) {
-    try { return {new HandleBRepPolygon3D(*self_), nullptr}; }
+extern "C" bool Handle_BRep_CurveOn2Surfaces_is_null(const Handle_BRep_CurveOn2Surfaces* self_) { return self_->IsNull(); }
+extern "C" void Handle_BRep_CurveOnClosedSurface_destructor(Handle_BRep_CurveOnClosedSurface* self_) { delete self_; }
+extern "C" OcctResult<Handle_BRep_CurveOnClosedSurface*> Handle_BRep_CurveOnClosedSurface_clone(const Handle_BRep_CurveOnClosedSurface* self_) {
+    try { return {new Handle_BRep_CurveOnClosedSurface(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleBRepPolygon3D_is_null(const HandleBRepPolygon3D* self_) { return self_->IsNull(); }
-extern "C" void HandleBRepPolygonOnClosedSurface_destructor(HandleBRepPolygonOnClosedSurface* self_) { delete self_; }
-extern "C" OcctResult<HandleBRepPolygonOnClosedSurface*> HandleBRepPolygonOnClosedSurface_clone(const HandleBRepPolygonOnClosedSurface* self_) {
-    try { return {new HandleBRepPolygonOnClosedSurface(*self_), nullptr}; }
+extern "C" bool Handle_BRep_CurveOnClosedSurface_is_null(const Handle_BRep_CurveOnClosedSurface* self_) { return self_->IsNull(); }
+extern "C" void Handle_BRep_CurveOnSurface_destructor(Handle_BRep_CurveOnSurface* self_) { delete self_; }
+extern "C" OcctResult<Handle_BRep_CurveOnSurface*> Handle_BRep_CurveOnSurface_clone(const Handle_BRep_CurveOnSurface* self_) {
+    try { return {new Handle_BRep_CurveOnSurface(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleBRepPolygonOnClosedSurface_is_null(const HandleBRepPolygonOnClosedSurface* self_) { return self_->IsNull(); }
-extern "C" void HandleBRepPolygonOnClosedTriangulation_destructor(HandleBRepPolygonOnClosedTriangulation* self_) { delete self_; }
-extern "C" OcctResult<HandleBRepPolygonOnClosedTriangulation*> HandleBRepPolygonOnClosedTriangulation_clone(const HandleBRepPolygonOnClosedTriangulation* self_) {
-    try { return {new HandleBRepPolygonOnClosedTriangulation(*self_), nullptr}; }
+extern "C" bool Handle_BRep_CurveOnSurface_is_null(const Handle_BRep_CurveOnSurface* self_) { return self_->IsNull(); }
+extern "C" void Handle_BRep_CurveRepresentation_destructor(Handle_BRep_CurveRepresentation* self_) { delete self_; }
+extern "C" OcctResult<Handle_BRep_CurveRepresentation*> Handle_BRep_CurveRepresentation_clone(const Handle_BRep_CurveRepresentation* self_) {
+    try { return {new Handle_BRep_CurveRepresentation(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleBRepPolygonOnClosedTriangulation_is_null(const HandleBRepPolygonOnClosedTriangulation* self_) { return self_->IsNull(); }
-extern "C" void HandleBRepPolygonOnSurface_destructor(HandleBRepPolygonOnSurface* self_) { delete self_; }
-extern "C" OcctResult<HandleBRepPolygonOnSurface*> HandleBRepPolygonOnSurface_clone(const HandleBRepPolygonOnSurface* self_) {
-    try { return {new HandleBRepPolygonOnSurface(*self_), nullptr}; }
+extern "C" bool Handle_BRep_CurveRepresentation_is_null(const Handle_BRep_CurveRepresentation* self_) { return self_->IsNull(); }
+extern "C" void Handle_BRep_GCurve_destructor(Handle_BRep_GCurve* self_) { delete self_; }
+extern "C" OcctResult<Handle_BRep_GCurve*> Handle_BRep_GCurve_clone(const Handle_BRep_GCurve* self_) {
+    try { return {new Handle_BRep_GCurve(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleBRepPolygonOnSurface_is_null(const HandleBRepPolygonOnSurface* self_) { return self_->IsNull(); }
-extern "C" void HandleBRepPolygonOnTriangulation_destructor(HandleBRepPolygonOnTriangulation* self_) { delete self_; }
-extern "C" OcctResult<HandleBRepPolygonOnTriangulation*> HandleBRepPolygonOnTriangulation_clone(const HandleBRepPolygonOnTriangulation* self_) {
-    try { return {new HandleBRepPolygonOnTriangulation(*self_), nullptr}; }
+extern "C" bool Handle_BRep_GCurve_is_null(const Handle_BRep_GCurve* self_) { return self_->IsNull(); }
+extern "C" void Handle_BRep_PointOnCurve_destructor(Handle_BRep_PointOnCurve* self_) { delete self_; }
+extern "C" OcctResult<Handle_BRep_PointOnCurve*> Handle_BRep_PointOnCurve_clone(const Handle_BRep_PointOnCurve* self_) {
+    try { return {new Handle_BRep_PointOnCurve(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleBRepPolygonOnTriangulation_is_null(const HandleBRepPolygonOnTriangulation* self_) { return self_->IsNull(); }
-extern "C" void HandleBRepTEdge_destructor(HandleBRepTEdge* self_) { delete self_; }
-extern "C" OcctResult<HandleBRepTEdge*> HandleBRepTEdge_clone(const HandleBRepTEdge* self_) {
-    try { return {new HandleBRepTEdge(*self_), nullptr}; }
+extern "C" bool Handle_BRep_PointOnCurve_is_null(const Handle_BRep_PointOnCurve* self_) { return self_->IsNull(); }
+extern "C" void Handle_BRep_PointOnCurveOnSurface_destructor(Handle_BRep_PointOnCurveOnSurface* self_) { delete self_; }
+extern "C" OcctResult<Handle_BRep_PointOnCurveOnSurface*> Handle_BRep_PointOnCurveOnSurface_clone(const Handle_BRep_PointOnCurveOnSurface* self_) {
+    try { return {new Handle_BRep_PointOnCurveOnSurface(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleBRepTEdge_is_null(const HandleBRepTEdge* self_) { return self_->IsNull(); }
-extern "C" void HandleBRepTFace_destructor(HandleBRepTFace* self_) { delete self_; }
-extern "C" OcctResult<HandleBRepTFace*> HandleBRepTFace_clone(const HandleBRepTFace* self_) {
-    try { return {new HandleBRepTFace(*self_), nullptr}; }
+extern "C" bool Handle_BRep_PointOnCurveOnSurface_is_null(const Handle_BRep_PointOnCurveOnSurface* self_) { return self_->IsNull(); }
+extern "C" void Handle_BRep_PointOnSurface_destructor(Handle_BRep_PointOnSurface* self_) { delete self_; }
+extern "C" OcctResult<Handle_BRep_PointOnSurface*> Handle_BRep_PointOnSurface_clone(const Handle_BRep_PointOnSurface* self_) {
+    try { return {new Handle_BRep_PointOnSurface(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleBRepTFace_is_null(const HandleBRepTFace* self_) { return self_->IsNull(); }
-extern "C" void HandleBRepTVertex_destructor(HandleBRepTVertex* self_) { delete self_; }
-extern "C" OcctResult<HandleBRepTVertex*> HandleBRepTVertex_clone(const HandleBRepTVertex* self_) {
-    try { return {new HandleBRepTVertex(*self_), nullptr}; }
+extern "C" bool Handle_BRep_PointOnSurface_is_null(const Handle_BRep_PointOnSurface* self_) { return self_->IsNull(); }
+extern "C" void Handle_BRep_PointRepresentation_destructor(Handle_BRep_PointRepresentation* self_) { delete self_; }
+extern "C" OcctResult<Handle_BRep_PointRepresentation*> Handle_BRep_PointRepresentation_clone(const Handle_BRep_PointRepresentation* self_) {
+    try { return {new Handle_BRep_PointRepresentation(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleBRepTVertex_is_null(const HandleBRepTVertex* self_) { return self_->IsNull(); }
-extern "C" void HandleTopToolsHArray1OfListOfShape_destructor(HandleTopToolsHArray1OfListOfShape* self_) { delete self_; }
-extern "C" OcctResult<HandleTopToolsHArray1OfListOfShape*> HandleTopToolsHArray1OfListOfShape_clone(const HandleTopToolsHArray1OfListOfShape* self_) {
-    try { return {new HandleTopToolsHArray1OfListOfShape(*self_), nullptr}; }
+extern "C" bool Handle_BRep_PointRepresentation_is_null(const Handle_BRep_PointRepresentation* self_) { return self_->IsNull(); }
+extern "C" void Handle_BRep_PointsOnSurface_destructor(Handle_BRep_PointsOnSurface* self_) { delete self_; }
+extern "C" OcctResult<Handle_BRep_PointsOnSurface*> Handle_BRep_PointsOnSurface_clone(const Handle_BRep_PointsOnSurface* self_) {
+    try { return {new Handle_BRep_PointsOnSurface(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleTopToolsHArray1OfListOfShape_is_null(const HandleTopToolsHArray1OfListOfShape* self_) { return self_->IsNull(); }
-extern "C" void HandleTopToolsHArray1OfShape_destructor(HandleTopToolsHArray1OfShape* self_) { delete self_; }
-extern "C" OcctResult<HandleTopToolsHArray1OfShape*> HandleTopToolsHArray1OfShape_clone(const HandleTopToolsHArray1OfShape* self_) {
-    try { return {new HandleTopToolsHArray1OfShape(*self_), nullptr}; }
+extern "C" bool Handle_BRep_PointsOnSurface_is_null(const Handle_BRep_PointsOnSurface* self_) { return self_->IsNull(); }
+extern "C" void Handle_BRep_Polygon3D_destructor(Handle_BRep_Polygon3D* self_) { delete self_; }
+extern "C" OcctResult<Handle_BRep_Polygon3D*> Handle_BRep_Polygon3D_clone(const Handle_BRep_Polygon3D* self_) {
+    try { return {new Handle_BRep_Polygon3D(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleTopToolsHArray1OfShape_is_null(const HandleTopToolsHArray1OfShape* self_) { return self_->IsNull(); }
-extern "C" void HandleTopToolsHArray2OfShape_destructor(HandleTopToolsHArray2OfShape* self_) { delete self_; }
-extern "C" OcctResult<HandleTopToolsHArray2OfShape*> HandleTopToolsHArray2OfShape_clone(const HandleTopToolsHArray2OfShape* self_) {
-    try { return {new HandleTopToolsHArray2OfShape(*self_), nullptr}; }
+extern "C" bool Handle_BRep_Polygon3D_is_null(const Handle_BRep_Polygon3D* self_) { return self_->IsNull(); }
+extern "C" void Handle_BRep_PolygonOnClosedSurface_destructor(Handle_BRep_PolygonOnClosedSurface* self_) { delete self_; }
+extern "C" OcctResult<Handle_BRep_PolygonOnClosedSurface*> Handle_BRep_PolygonOnClosedSurface_clone(const Handle_BRep_PolygonOnClosedSurface* self_) {
+    try { return {new Handle_BRep_PolygonOnClosedSurface(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleTopToolsHArray2OfShape_is_null(const HandleTopToolsHArray2OfShape* self_) { return self_->IsNull(); }
-extern "C" void HandleTopToolsHSequenceOfShape_destructor(HandleTopToolsHSequenceOfShape* self_) { delete self_; }
-extern "C" OcctResult<HandleTopToolsHSequenceOfShape*> HandleTopToolsHSequenceOfShape_clone(const HandleTopToolsHSequenceOfShape* self_) {
-    try { return {new HandleTopToolsHSequenceOfShape(*self_), nullptr}; }
+extern "C" bool Handle_BRep_PolygonOnClosedSurface_is_null(const Handle_BRep_PolygonOnClosedSurface* self_) { return self_->IsNull(); }
+extern "C" void Handle_BRep_PolygonOnClosedTriangulation_destructor(Handle_BRep_PolygonOnClosedTriangulation* self_) { delete self_; }
+extern "C" OcctResult<Handle_BRep_PolygonOnClosedTriangulation*> Handle_BRep_PolygonOnClosedTriangulation_clone(const Handle_BRep_PolygonOnClosedTriangulation* self_) {
+    try { return {new Handle_BRep_PolygonOnClosedTriangulation(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleTopToolsHSequenceOfShape_is_null(const HandleTopToolsHSequenceOfShape* self_) { return self_->IsNull(); }
-extern "C" void HandleTopoDSAlertAttribute_destructor(HandleTopoDSAlertAttribute* self_) { delete self_; }
-extern "C" OcctResult<HandleTopoDSAlertAttribute*> HandleTopoDSAlertAttribute_clone(const HandleTopoDSAlertAttribute* self_) {
-    try { return {new HandleTopoDSAlertAttribute(*self_), nullptr}; }
+extern "C" bool Handle_BRep_PolygonOnClosedTriangulation_is_null(const Handle_BRep_PolygonOnClosedTriangulation* self_) { return self_->IsNull(); }
+extern "C" void Handle_BRep_PolygonOnSurface_destructor(Handle_BRep_PolygonOnSurface* self_) { delete self_; }
+extern "C" OcctResult<Handle_BRep_PolygonOnSurface*> Handle_BRep_PolygonOnSurface_clone(const Handle_BRep_PolygonOnSurface* self_) {
+    try { return {new Handle_BRep_PolygonOnSurface(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleTopoDSAlertAttribute_is_null(const HandleTopoDSAlertAttribute* self_) { return self_->IsNull(); }
-extern "C" void HandleTopoDSAlertWithShape_destructor(HandleTopoDSAlertWithShape* self_) { delete self_; }
-extern "C" OcctResult<HandleTopoDSAlertWithShape*> HandleTopoDSAlertWithShape_clone(const HandleTopoDSAlertWithShape* self_) {
-    try { return {new HandleTopoDSAlertWithShape(*self_), nullptr}; }
+extern "C" bool Handle_BRep_PolygonOnSurface_is_null(const Handle_BRep_PolygonOnSurface* self_) { return self_->IsNull(); }
+extern "C" void Handle_BRep_PolygonOnTriangulation_destructor(Handle_BRep_PolygonOnTriangulation* self_) { delete self_; }
+extern "C" OcctResult<Handle_BRep_PolygonOnTriangulation*> Handle_BRep_PolygonOnTriangulation_clone(const Handle_BRep_PolygonOnTriangulation* self_) {
+    try { return {new Handle_BRep_PolygonOnTriangulation(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleTopoDSAlertWithShape_is_null(const HandleTopoDSAlertWithShape* self_) { return self_->IsNull(); }
-extern "C" void HandleTopoDSFrozenShape_destructor(HandleTopoDSFrozenShape* self_) { delete self_; }
-extern "C" OcctResult<HandleTopoDSFrozenShape*> HandleTopoDSFrozenShape_clone(const HandleTopoDSFrozenShape* self_) {
-    try { return {new HandleTopoDSFrozenShape(*self_), nullptr}; }
+extern "C" bool Handle_BRep_PolygonOnTriangulation_is_null(const Handle_BRep_PolygonOnTriangulation* self_) { return self_->IsNull(); }
+extern "C" void Handle_BRep_TEdge_destructor(Handle_BRep_TEdge* self_) { delete self_; }
+extern "C" OcctResult<Handle_BRep_TEdge*> Handle_BRep_TEdge_clone(const Handle_BRep_TEdge* self_) {
+    try { return {new Handle_BRep_TEdge(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleTopoDSFrozenShape_is_null(const HandleTopoDSFrozenShape* self_) { return self_->IsNull(); }
-extern "C" void HandleTopoDSHShape_destructor(HandleTopoDSHShape* self_) { delete self_; }
-extern "C" OcctResult<HandleTopoDSHShape*> HandleTopoDSHShape_clone(const HandleTopoDSHShape* self_) {
-    try { return {new HandleTopoDSHShape(*self_), nullptr}; }
+extern "C" bool Handle_BRep_TEdge_is_null(const Handle_BRep_TEdge* self_) { return self_->IsNull(); }
+extern "C" void Handle_BRep_TFace_destructor(Handle_BRep_TFace* self_) { delete self_; }
+extern "C" OcctResult<Handle_BRep_TFace*> Handle_BRep_TFace_clone(const Handle_BRep_TFace* self_) {
+    try { return {new Handle_BRep_TFace(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleTopoDSHShape_is_null(const HandleTopoDSHShape* self_) { return self_->IsNull(); }
-extern "C" void HandleTopoDSLockedShape_destructor(HandleTopoDSLockedShape* self_) { delete self_; }
-extern "C" OcctResult<HandleTopoDSLockedShape*> HandleTopoDSLockedShape_clone(const HandleTopoDSLockedShape* self_) {
-    try { return {new HandleTopoDSLockedShape(*self_), nullptr}; }
+extern "C" bool Handle_BRep_TFace_is_null(const Handle_BRep_TFace* self_) { return self_->IsNull(); }
+extern "C" void Handle_BRep_TVertex_destructor(Handle_BRep_TVertex* self_) { delete self_; }
+extern "C" OcctResult<Handle_BRep_TVertex*> Handle_BRep_TVertex_clone(const Handle_BRep_TVertex* self_) {
+    try { return {new Handle_BRep_TVertex(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleTopoDSLockedShape_is_null(const HandleTopoDSLockedShape* self_) { return self_->IsNull(); }
-extern "C" void HandleTopoDSTCompSolid_destructor(HandleTopoDSTCompSolid* self_) { delete self_; }
-extern "C" OcctResult<HandleTopoDSTCompSolid*> HandleTopoDSTCompSolid_clone(const HandleTopoDSTCompSolid* self_) {
-    try { return {new HandleTopoDSTCompSolid(*self_), nullptr}; }
+extern "C" bool Handle_BRep_TVertex_is_null(const Handle_BRep_TVertex* self_) { return self_->IsNull(); }
+extern "C" void Handle_TopoDS_AlertAttribute_destructor(Handle_TopoDS_AlertAttribute* self_) { delete self_; }
+extern "C" OcctResult<Handle_TopoDS_AlertAttribute*> Handle_TopoDS_AlertAttribute_clone(const Handle_TopoDS_AlertAttribute* self_) {
+    try { return {new Handle_TopoDS_AlertAttribute(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleTopoDSTCompSolid_is_null(const HandleTopoDSTCompSolid* self_) { return self_->IsNull(); }
-extern "C" void HandleTopoDSTCompound_destructor(HandleTopoDSTCompound* self_) { delete self_; }
-extern "C" OcctResult<HandleTopoDSTCompound*> HandleTopoDSTCompound_clone(const HandleTopoDSTCompound* self_) {
-    try { return {new HandleTopoDSTCompound(*self_), nullptr}; }
+extern "C" bool Handle_TopoDS_AlertAttribute_is_null(const Handle_TopoDS_AlertAttribute* self_) { return self_->IsNull(); }
+extern "C" void Handle_TopoDS_AlertWithShape_destructor(Handle_TopoDS_AlertWithShape* self_) { delete self_; }
+extern "C" OcctResult<Handle_TopoDS_AlertWithShape*> Handle_TopoDS_AlertWithShape_clone(const Handle_TopoDS_AlertWithShape* self_) {
+    try { return {new Handle_TopoDS_AlertWithShape(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleTopoDSTCompound_is_null(const HandleTopoDSTCompound* self_) { return self_->IsNull(); }
-extern "C" void HandleTopoDSTEdge_destructor(HandleTopoDSTEdge* self_) { delete self_; }
-extern "C" OcctResult<HandleTopoDSTEdge*> HandleTopoDSTEdge_clone(const HandleTopoDSTEdge* self_) {
-    try { return {new HandleTopoDSTEdge(*self_), nullptr}; }
+extern "C" bool Handle_TopoDS_AlertWithShape_is_null(const Handle_TopoDS_AlertWithShape* self_) { return self_->IsNull(); }
+extern "C" void Handle_TopoDS_HShape_destructor(Handle_TopoDS_HShape* self_) { delete self_; }
+extern "C" OcctResult<Handle_TopoDS_HShape*> Handle_TopoDS_HShape_clone(const Handle_TopoDS_HShape* self_) {
+    try { return {new Handle_TopoDS_HShape(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleTopoDSTEdge_is_null(const HandleTopoDSTEdge* self_) { return self_->IsNull(); }
-extern "C" void HandleTopoDSTFace_destructor(HandleTopoDSTFace* self_) { delete self_; }
-extern "C" OcctResult<HandleTopoDSTFace*> HandleTopoDSTFace_clone(const HandleTopoDSTFace* self_) {
-    try { return {new HandleTopoDSTFace(*self_), nullptr}; }
+extern "C" bool Handle_TopoDS_HShape_is_null(const Handle_TopoDS_HShape* self_) { return self_->IsNull(); }
+extern "C" void Handle_TopoDS_TCompSolid_destructor(Handle_TopoDS_TCompSolid* self_) { delete self_; }
+extern "C" OcctResult<Handle_TopoDS_TCompSolid*> Handle_TopoDS_TCompSolid_clone(const Handle_TopoDS_TCompSolid* self_) {
+    try { return {new Handle_TopoDS_TCompSolid(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleTopoDSTFace_is_null(const HandleTopoDSTFace* self_) { return self_->IsNull(); }
-extern "C" void HandleTopoDSTShape_destructor(HandleTopoDSTShape* self_) { delete self_; }
-extern "C" OcctResult<HandleTopoDSTShape*> HandleTopoDSTShape_clone(const HandleTopoDSTShape* self_) {
-    try { return {new HandleTopoDSTShape(*self_), nullptr}; }
+extern "C" bool Handle_TopoDS_TCompSolid_is_null(const Handle_TopoDS_TCompSolid* self_) { return self_->IsNull(); }
+extern "C" void Handle_TopoDS_TCompound_destructor(Handle_TopoDS_TCompound* self_) { delete self_; }
+extern "C" OcctResult<Handle_TopoDS_TCompound*> Handle_TopoDS_TCompound_clone(const Handle_TopoDS_TCompound* self_) {
+    try { return {new Handle_TopoDS_TCompound(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleTopoDSTShape_is_null(const HandleTopoDSTShape* self_) { return self_->IsNull(); }
-extern "C" void HandleTopoDSTShell_destructor(HandleTopoDSTShell* self_) { delete self_; }
-extern "C" OcctResult<HandleTopoDSTShell*> HandleTopoDSTShell_clone(const HandleTopoDSTShell* self_) {
-    try { return {new HandleTopoDSTShell(*self_), nullptr}; }
+extern "C" bool Handle_TopoDS_TCompound_is_null(const Handle_TopoDS_TCompound* self_) { return self_->IsNull(); }
+extern "C" void Handle_TopoDS_TEdge_destructor(Handle_TopoDS_TEdge* self_) { delete self_; }
+extern "C" OcctResult<Handle_TopoDS_TEdge*> Handle_TopoDS_TEdge_clone(const Handle_TopoDS_TEdge* self_) {
+    try { return {new Handle_TopoDS_TEdge(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleTopoDSTShell_is_null(const HandleTopoDSTShell* self_) { return self_->IsNull(); }
-extern "C" void HandleTopoDSTSolid_destructor(HandleTopoDSTSolid* self_) { delete self_; }
-extern "C" OcctResult<HandleTopoDSTSolid*> HandleTopoDSTSolid_clone(const HandleTopoDSTSolid* self_) {
-    try { return {new HandleTopoDSTSolid(*self_), nullptr}; }
+extern "C" bool Handle_TopoDS_TEdge_is_null(const Handle_TopoDS_TEdge* self_) { return self_->IsNull(); }
+extern "C" void Handle_TopoDS_TFace_destructor(Handle_TopoDS_TFace* self_) { delete self_; }
+extern "C" OcctResult<Handle_TopoDS_TFace*> Handle_TopoDS_TFace_clone(const Handle_TopoDS_TFace* self_) {
+    try { return {new Handle_TopoDS_TFace(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleTopoDSTSolid_is_null(const HandleTopoDSTSolid* self_) { return self_->IsNull(); }
-extern "C" void HandleTopoDSTVertex_destructor(HandleTopoDSTVertex* self_) { delete self_; }
-extern "C" OcctResult<HandleTopoDSTVertex*> HandleTopoDSTVertex_clone(const HandleTopoDSTVertex* self_) {
-    try { return {new HandleTopoDSTVertex(*self_), nullptr}; }
+extern "C" bool Handle_TopoDS_TFace_is_null(const Handle_TopoDS_TFace* self_) { return self_->IsNull(); }
+extern "C" void Handle_TopoDS_TShape_destructor(Handle_TopoDS_TShape* self_) { delete self_; }
+extern "C" OcctResult<Handle_TopoDS_TShape*> Handle_TopoDS_TShape_clone(const Handle_TopoDS_TShape* self_) {
+    try { return {new Handle_TopoDS_TShape(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleTopoDSTVertex_is_null(const HandleTopoDSTVertex* self_) { return self_->IsNull(); }
-extern "C" void HandleTopoDSTWire_destructor(HandleTopoDSTWire* self_) { delete self_; }
-extern "C" OcctResult<HandleTopoDSTWire*> HandleTopoDSTWire_clone(const HandleTopoDSTWire* self_) {
-    try { return {new HandleTopoDSTWire(*self_), nullptr}; }
+extern "C" bool Handle_TopoDS_TShape_is_null(const Handle_TopoDS_TShape* self_) { return self_->IsNull(); }
+extern "C" void Handle_TopoDS_TShell_destructor(Handle_TopoDS_TShell* self_) { delete self_; }
+extern "C" OcctResult<Handle_TopoDS_TShell*> Handle_TopoDS_TShell_clone(const Handle_TopoDS_TShell* self_) {
+    try { return {new Handle_TopoDS_TShell(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleTopoDSTWire_is_null(const HandleTopoDSTWire* self_) { return self_->IsNull(); }
-extern "C" void HandleTopoDSUnCompatibleShapes_destructor(HandleTopoDSUnCompatibleShapes* self_) { delete self_; }
-extern "C" OcctResult<HandleTopoDSUnCompatibleShapes*> HandleTopoDSUnCompatibleShapes_clone(const HandleTopoDSUnCompatibleShapes* self_) {
-    try { return {new HandleTopoDSUnCompatibleShapes(*self_), nullptr}; }
+extern "C" bool Handle_TopoDS_TShell_is_null(const Handle_TopoDS_TShell* self_) { return self_->IsNull(); }
+extern "C" void Handle_TopoDS_TSolid_destructor(Handle_TopoDS_TSolid* self_) { delete self_; }
+extern "C" OcctResult<Handle_TopoDS_TSolid*> Handle_TopoDS_TSolid_clone(const Handle_TopoDS_TSolid* self_) {
+    try { return {new Handle_TopoDS_TSolid(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleTopoDSUnCompatibleShapes_is_null(const HandleTopoDSUnCompatibleShapes* self_) { return self_->IsNull(); }
+extern "C" bool Handle_TopoDS_TSolid_is_null(const Handle_TopoDS_TSolid* self_) { return self_->IsNull(); }
+extern "C" void Handle_TopoDS_TVertex_destructor(Handle_TopoDS_TVertex* self_) { delete self_; }
+extern "C" OcctResult<Handle_TopoDS_TVertex*> Handle_TopoDS_TVertex_clone(const Handle_TopoDS_TVertex* self_) {
+    try { return {new Handle_TopoDS_TVertex(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" bool Handle_TopoDS_TVertex_is_null(const Handle_TopoDS_TVertex* self_) { return self_->IsNull(); }
+extern "C" void Handle_TopoDS_TWire_destructor(Handle_TopoDS_TWire* self_) { delete self_; }
+extern "C" OcctResult<Handle_TopoDS_TWire*> Handle_TopoDS_TWire_clone(const Handle_TopoDS_TWire* self_) {
+    try { return {new Handle_TopoDS_TWire(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" bool Handle_TopoDS_TWire_is_null(const Handle_TopoDS_TWire* self_) { return self_->IsNull(); }
 
 // ========================
 // BRep_Builder wrappers
@@ -634,10 +640,6 @@ extern "C" const char* BRep_Builder_make_face_face_handlegeomsurface_location_re
 }
 extern "C" const char* BRep_Builder_make_face_face_handlepolytriangulation(const BRep_Builder* self_, TopoDS_Face* theFace, Handle(Poly_Triangulation) const* theTriangulation) {
     try { self_->MakeFace(*theFace, *theTriangulation); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* BRep_Builder_make_face_face_listoftriangulation_handlepolytriangulation(const BRep_Builder* self_, TopoDS_Face* theFace, Poly_ListOfTriangulation const* theTriangulations, Handle(Poly_Triangulation) const* theActiveTriangulation) {
-    try { self_->MakeFace(*theFace, *theTriangulations, *theActiveTriangulation); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
 extern "C" const char* BRep_Builder_update_face_face_handlegeomsurface_location_real(const BRep_Builder* self_, TopoDS_Face const* F, Handle(Geom_Surface) const* S, TopLoc_Location const* L, double Tol) {
@@ -906,28 +908,28 @@ extern "C" OcctResult<const BRep_CurveRepresentation*> BRep_Curve3D_as_BRep_Curv
 extern "C" OcctResult<BRep_CurveRepresentation*> BRep_Curve3D_as_BRep_CurveRepresentation_mut(BRep_Curve3D* self_) { return {static_cast<BRep_CurveRepresentation*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> BRep_Curve3D_as_Standard_Transient(const BRep_Curve3D* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> BRep_Curve3D_as_Standard_Transient_mut(BRep_Curve3D* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleBRepCurve3D*> BRep_Curve3D_to_handle(BRep_Curve3D* obj) {
-    try { return {new HandleBRepCurve3D(obj), nullptr}; }
+extern "C" OcctResult<Handle_BRep_Curve3D*> BRep_Curve3D_to_handle(BRep_Curve3D* obj) {
+    try { return {new Handle_BRep_Curve3D(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const BRep_Curve3D*> HandleBRepCurve3D_get(const HandleBRepCurve3D* handle) {
+extern "C" OcctResult<const BRep_Curve3D*> Handle_BRep_Curve3D_get(const Handle_BRep_Curve3D* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<BRep_Curve3D*> HandleBRepCurve3D_get_mut(HandleBRepCurve3D* handle) {
+extern "C" OcctResult<BRep_Curve3D*> Handle_BRep_Curve3D_get_mut(Handle_BRep_Curve3D* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleBRepGCurve*> HandleBRepCurve3D_to_HandleBRepGCurve(const HandleBRepCurve3D* self_) {
-    try { return {new HandleBRepGCurve(*self_), nullptr}; }
+extern "C" OcctResult<Handle_BRep_GCurve*> Handle_BRep_Curve3D_to_Handle_BRep_GCurve(const Handle_BRep_Curve3D* self_) {
+    try { return {new Handle_BRep_GCurve(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleBRepCurveRepresentation*> HandleBRepCurve3D_to_HandleBRepCurveRepresentation(const HandleBRepCurve3D* self_) {
-    try { return {new HandleBRepCurveRepresentation(*self_), nullptr}; }
+extern "C" OcctResult<Handle_BRep_CurveRepresentation*> Handle_BRep_Curve3D_to_Handle_BRep_CurveRepresentation(const Handle_BRep_Curve3D* self_) {
+    try { return {new Handle_BRep_CurveRepresentation(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleBRepCurve3D_to_HandleStandardTransient(const HandleBRepCurve3D* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_BRep_Curve3D_to_Handle_Standard_Transient(const Handle_BRep_Curve3D* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" const char* BRep_Curve3D_inherited_SetRange(BRep_Curve3D* self, double First, double Last) {
@@ -1124,24 +1126,24 @@ extern "C" OcctResult<const BRep_CurveRepresentation*> BRep_CurveOn2Surfaces_as_
 extern "C" OcctResult<BRep_CurveRepresentation*> BRep_CurveOn2Surfaces_as_BRep_CurveRepresentation_mut(BRep_CurveOn2Surfaces* self_) { return {static_cast<BRep_CurveRepresentation*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> BRep_CurveOn2Surfaces_as_Standard_Transient(const BRep_CurveOn2Surfaces* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> BRep_CurveOn2Surfaces_as_Standard_Transient_mut(BRep_CurveOn2Surfaces* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleBRepCurveOn2Surfaces*> BRep_CurveOn2Surfaces_to_handle(BRep_CurveOn2Surfaces* obj) {
-    try { return {new HandleBRepCurveOn2Surfaces(obj), nullptr}; }
+extern "C" OcctResult<Handle_BRep_CurveOn2Surfaces*> BRep_CurveOn2Surfaces_to_handle(BRep_CurveOn2Surfaces* obj) {
+    try { return {new Handle_BRep_CurveOn2Surfaces(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const BRep_CurveOn2Surfaces*> HandleBRepCurveOn2Surfaces_get(const HandleBRepCurveOn2Surfaces* handle) {
+extern "C" OcctResult<const BRep_CurveOn2Surfaces*> Handle_BRep_CurveOn2Surfaces_get(const Handle_BRep_CurveOn2Surfaces* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<BRep_CurveOn2Surfaces*> HandleBRepCurveOn2Surfaces_get_mut(HandleBRepCurveOn2Surfaces* handle) {
+extern "C" OcctResult<BRep_CurveOn2Surfaces*> Handle_BRep_CurveOn2Surfaces_get_mut(Handle_BRep_CurveOn2Surfaces* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleBRepCurveRepresentation*> HandleBRepCurveOn2Surfaces_to_HandleBRepCurveRepresentation(const HandleBRepCurveOn2Surfaces* self_) {
-    try { return {new HandleBRepCurveRepresentation(*self_), nullptr}; }
+extern "C" OcctResult<Handle_BRep_CurveRepresentation*> Handle_BRep_CurveOn2Surfaces_to_Handle_BRep_CurveRepresentation(const Handle_BRep_CurveOn2Surfaces* self_) {
+    try { return {new Handle_BRep_CurveRepresentation(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleBRepCurveOn2Surfaces_to_HandleStandardTransient(const HandleBRepCurveOn2Surfaces* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_BRep_CurveOn2Surfaces_to_Handle_Standard_Transient(const Handle_BRep_CurveOn2Surfaces* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> BRep_CurveOn2Surfaces_inherited_IsCurve3D(const BRep_CurveOn2Surfaces* self) {
@@ -1326,32 +1328,32 @@ extern "C" OcctResult<const BRep_CurveRepresentation*> BRep_CurveOnClosedSurface
 extern "C" OcctResult<BRep_CurveRepresentation*> BRep_CurveOnClosedSurface_as_BRep_CurveRepresentation_mut(BRep_CurveOnClosedSurface* self_) { return {static_cast<BRep_CurveRepresentation*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> BRep_CurveOnClosedSurface_as_Standard_Transient(const BRep_CurveOnClosedSurface* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> BRep_CurveOnClosedSurface_as_Standard_Transient_mut(BRep_CurveOnClosedSurface* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleBRepCurveOnClosedSurface*> BRep_CurveOnClosedSurface_to_handle(BRep_CurveOnClosedSurface* obj) {
-    try { return {new HandleBRepCurveOnClosedSurface(obj), nullptr}; }
+extern "C" OcctResult<Handle_BRep_CurveOnClosedSurface*> BRep_CurveOnClosedSurface_to_handle(BRep_CurveOnClosedSurface* obj) {
+    try { return {new Handle_BRep_CurveOnClosedSurface(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const BRep_CurveOnClosedSurface*> HandleBRepCurveOnClosedSurface_get(const HandleBRepCurveOnClosedSurface* handle) {
+extern "C" OcctResult<const BRep_CurveOnClosedSurface*> Handle_BRep_CurveOnClosedSurface_get(const Handle_BRep_CurveOnClosedSurface* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<BRep_CurveOnClosedSurface*> HandleBRepCurveOnClosedSurface_get_mut(HandleBRepCurveOnClosedSurface* handle) {
+extern "C" OcctResult<BRep_CurveOnClosedSurface*> Handle_BRep_CurveOnClosedSurface_get_mut(Handle_BRep_CurveOnClosedSurface* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleBRepCurveOnSurface*> HandleBRepCurveOnClosedSurface_to_HandleBRepCurveOnSurface(const HandleBRepCurveOnClosedSurface* self_) {
-    try { return {new HandleBRepCurveOnSurface(*self_), nullptr}; }
+extern "C" OcctResult<Handle_BRep_CurveOnSurface*> Handle_BRep_CurveOnClosedSurface_to_Handle_BRep_CurveOnSurface(const Handle_BRep_CurveOnClosedSurface* self_) {
+    try { return {new Handle_BRep_CurveOnSurface(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleBRepGCurve*> HandleBRepCurveOnClosedSurface_to_HandleBRepGCurve(const HandleBRepCurveOnClosedSurface* self_) {
-    try { return {new HandleBRepGCurve(*self_), nullptr}; }
+extern "C" OcctResult<Handle_BRep_GCurve*> Handle_BRep_CurveOnClosedSurface_to_Handle_BRep_GCurve(const Handle_BRep_CurveOnClosedSurface* self_) {
+    try { return {new Handle_BRep_GCurve(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleBRepCurveRepresentation*> HandleBRepCurveOnClosedSurface_to_HandleBRepCurveRepresentation(const HandleBRepCurveOnClosedSurface* self_) {
-    try { return {new HandleBRepCurveRepresentation(*self_), nullptr}; }
+extern "C" OcctResult<Handle_BRep_CurveRepresentation*> Handle_BRep_CurveOnClosedSurface_to_Handle_BRep_CurveRepresentation(const Handle_BRep_CurveOnClosedSurface* self_) {
+    try { return {new Handle_BRep_CurveRepresentation(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleBRepCurveOnClosedSurface_to_HandleStandardTransient(const HandleBRepCurveOnClosedSurface* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_BRep_CurveOnClosedSurface_to_Handle_Standard_Transient(const Handle_BRep_CurveOnClosedSurface* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" const char* BRep_CurveOnClosedSurface_inherited_SetUVPoints(BRep_CurveOnClosedSurface* self, gp_Pnt2d const& P1, gp_Pnt2d const& P2) {
@@ -1546,35 +1548,35 @@ extern "C" OcctResult<const BRep_CurveRepresentation*> BRep_CurveOnSurface_as_BR
 extern "C" OcctResult<BRep_CurveRepresentation*> BRep_CurveOnSurface_as_BRep_CurveRepresentation_mut(BRep_CurveOnSurface* self_) { return {static_cast<BRep_CurveRepresentation*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> BRep_CurveOnSurface_as_Standard_Transient(const BRep_CurveOnSurface* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> BRep_CurveOnSurface_as_Standard_Transient_mut(BRep_CurveOnSurface* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleBRepCurveOnSurface*> BRep_CurveOnSurface_to_handle(BRep_CurveOnSurface* obj) {
-    try { return {new HandleBRepCurveOnSurface(obj), nullptr}; }
+extern "C" OcctResult<Handle_BRep_CurveOnSurface*> BRep_CurveOnSurface_to_handle(BRep_CurveOnSurface* obj) {
+    try { return {new Handle_BRep_CurveOnSurface(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const BRep_CurveOnSurface*> HandleBRepCurveOnSurface_get(const HandleBRepCurveOnSurface* handle) {
+extern "C" OcctResult<const BRep_CurveOnSurface*> Handle_BRep_CurveOnSurface_get(const Handle_BRep_CurveOnSurface* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<BRep_CurveOnSurface*> HandleBRepCurveOnSurface_get_mut(HandleBRepCurveOnSurface* handle) {
+extern "C" OcctResult<BRep_CurveOnSurface*> Handle_BRep_CurveOnSurface_get_mut(Handle_BRep_CurveOnSurface* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleBRepGCurve*> HandleBRepCurveOnSurface_to_HandleBRepGCurve(const HandleBRepCurveOnSurface* self_) {
-    try { return {new HandleBRepGCurve(*self_), nullptr}; }
+extern "C" OcctResult<Handle_BRep_GCurve*> Handle_BRep_CurveOnSurface_to_Handle_BRep_GCurve(const Handle_BRep_CurveOnSurface* self_) {
+    try { return {new Handle_BRep_GCurve(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleBRepCurveRepresentation*> HandleBRepCurveOnSurface_to_HandleBRepCurveRepresentation(const HandleBRepCurveOnSurface* self_) {
-    try { return {new HandleBRepCurveRepresentation(*self_), nullptr}; }
+extern "C" OcctResult<Handle_BRep_CurveRepresentation*> Handle_BRep_CurveOnSurface_to_Handle_BRep_CurveRepresentation(const Handle_BRep_CurveOnSurface* self_) {
+    try { return {new Handle_BRep_CurveRepresentation(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleBRepCurveOnSurface_to_HandleStandardTransient(const HandleBRepCurveOnSurface* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_BRep_CurveOnSurface_to_Handle_Standard_Transient(const Handle_BRep_CurveOnSurface* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleBRepCurveOnClosedSurface*> HandleBRepCurveOnSurface_downcast_to_HandleBRepCurveOnClosedSurface(const HandleBRepCurveOnSurface* self_) {
+extern "C" OcctResult<Handle_BRep_CurveOnClosedSurface*> Handle_BRep_CurveOnSurface_downcast_to_Handle_BRep_CurveOnClosedSurface(const Handle_BRep_CurveOnSurface* self_) {
     try {
     opencascade::handle<BRep_CurveOnClosedSurface> result = opencascade::handle<BRep_CurveOnClosedSurface>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleBRepCurveOnClosedSurface(result), nullptr};
+    return {new Handle_BRep_CurveOnClosedSurface(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
@@ -1874,87 +1876,87 @@ extern "C" OcctResult<Handle(Standard_Type) const*> BRep_CurveRepresentation_get
 }
 extern "C" OcctResult<const Standard_Transient*> BRep_CurveRepresentation_as_Standard_Transient(const BRep_CurveRepresentation* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> BRep_CurveRepresentation_as_Standard_Transient_mut(BRep_CurveRepresentation* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<const BRep_CurveRepresentation*> HandleBRepCurveRepresentation_get(const HandleBRepCurveRepresentation* handle) {
+extern "C" OcctResult<const BRep_CurveRepresentation*> Handle_BRep_CurveRepresentation_get(const Handle_BRep_CurveRepresentation* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<BRep_CurveRepresentation*> HandleBRepCurveRepresentation_get_mut(HandleBRepCurveRepresentation* handle) {
+extern "C" OcctResult<BRep_CurveRepresentation*> Handle_BRep_CurveRepresentation_get_mut(Handle_BRep_CurveRepresentation* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleBRepCurveRepresentation_to_HandleStandardTransient(const HandleBRepCurveRepresentation* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_BRep_CurveRepresentation_to_Handle_Standard_Transient(const Handle_BRep_CurveRepresentation* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleBRepCurve3D*> HandleBRepCurveRepresentation_downcast_to_HandleBRepCurve3D(const HandleBRepCurveRepresentation* self_) {
+extern "C" OcctResult<Handle_BRep_Curve3D*> Handle_BRep_CurveRepresentation_downcast_to_Handle_BRep_Curve3D(const Handle_BRep_CurveRepresentation* self_) {
     try {
     opencascade::handle<BRep_Curve3D> result = opencascade::handle<BRep_Curve3D>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleBRepCurve3D(result), nullptr};
+    return {new Handle_BRep_Curve3D(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleBRepCurveOn2Surfaces*> HandleBRepCurveRepresentation_downcast_to_HandleBRepCurveOn2Surfaces(const HandleBRepCurveRepresentation* self_) {
+extern "C" OcctResult<Handle_BRep_CurveOn2Surfaces*> Handle_BRep_CurveRepresentation_downcast_to_Handle_BRep_CurveOn2Surfaces(const Handle_BRep_CurveRepresentation* self_) {
     try {
     opencascade::handle<BRep_CurveOn2Surfaces> result = opencascade::handle<BRep_CurveOn2Surfaces>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleBRepCurveOn2Surfaces(result), nullptr};
+    return {new Handle_BRep_CurveOn2Surfaces(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleBRepCurveOnClosedSurface*> HandleBRepCurveRepresentation_downcast_to_HandleBRepCurveOnClosedSurface(const HandleBRepCurveRepresentation* self_) {
+extern "C" OcctResult<Handle_BRep_CurveOnClosedSurface*> Handle_BRep_CurveRepresentation_downcast_to_Handle_BRep_CurveOnClosedSurface(const Handle_BRep_CurveRepresentation* self_) {
     try {
     opencascade::handle<BRep_CurveOnClosedSurface> result = opencascade::handle<BRep_CurveOnClosedSurface>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleBRepCurveOnClosedSurface(result), nullptr};
+    return {new Handle_BRep_CurveOnClosedSurface(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleBRepCurveOnSurface*> HandleBRepCurveRepresentation_downcast_to_HandleBRepCurveOnSurface(const HandleBRepCurveRepresentation* self_) {
+extern "C" OcctResult<Handle_BRep_CurveOnSurface*> Handle_BRep_CurveRepresentation_downcast_to_Handle_BRep_CurveOnSurface(const Handle_BRep_CurveRepresentation* self_) {
     try {
     opencascade::handle<BRep_CurveOnSurface> result = opencascade::handle<BRep_CurveOnSurface>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleBRepCurveOnSurface(result), nullptr};
+    return {new Handle_BRep_CurveOnSurface(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleBRepPolygon3D*> HandleBRepCurveRepresentation_downcast_to_HandleBRepPolygon3D(const HandleBRepCurveRepresentation* self_) {
+extern "C" OcctResult<Handle_BRep_Polygon3D*> Handle_BRep_CurveRepresentation_downcast_to_Handle_BRep_Polygon3D(const Handle_BRep_CurveRepresentation* self_) {
     try {
     opencascade::handle<BRep_Polygon3D> result = opencascade::handle<BRep_Polygon3D>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleBRepPolygon3D(result), nullptr};
+    return {new Handle_BRep_Polygon3D(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleBRepPolygonOnClosedSurface*> HandleBRepCurveRepresentation_downcast_to_HandleBRepPolygonOnClosedSurface(const HandleBRepCurveRepresentation* self_) {
+extern "C" OcctResult<Handle_BRep_PolygonOnClosedSurface*> Handle_BRep_CurveRepresentation_downcast_to_Handle_BRep_PolygonOnClosedSurface(const Handle_BRep_CurveRepresentation* self_) {
     try {
     opencascade::handle<BRep_PolygonOnClosedSurface> result = opencascade::handle<BRep_PolygonOnClosedSurface>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleBRepPolygonOnClosedSurface(result), nullptr};
+    return {new Handle_BRep_PolygonOnClosedSurface(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleBRepPolygonOnClosedTriangulation*> HandleBRepCurveRepresentation_downcast_to_HandleBRepPolygonOnClosedTriangulation(const HandleBRepCurveRepresentation* self_) {
+extern "C" OcctResult<Handle_BRep_PolygonOnClosedTriangulation*> Handle_BRep_CurveRepresentation_downcast_to_Handle_BRep_PolygonOnClosedTriangulation(const Handle_BRep_CurveRepresentation* self_) {
     try {
     opencascade::handle<BRep_PolygonOnClosedTriangulation> result = opencascade::handle<BRep_PolygonOnClosedTriangulation>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleBRepPolygonOnClosedTriangulation(result), nullptr};
+    return {new Handle_BRep_PolygonOnClosedTriangulation(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleBRepPolygonOnSurface*> HandleBRepCurveRepresentation_downcast_to_HandleBRepPolygonOnSurface(const HandleBRepCurveRepresentation* self_) {
+extern "C" OcctResult<Handle_BRep_PolygonOnSurface*> Handle_BRep_CurveRepresentation_downcast_to_Handle_BRep_PolygonOnSurface(const Handle_BRep_CurveRepresentation* self_) {
     try {
     opencascade::handle<BRep_PolygonOnSurface> result = opencascade::handle<BRep_PolygonOnSurface>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleBRepPolygonOnSurface(result), nullptr};
+    return {new Handle_BRep_PolygonOnSurface(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleBRepPolygonOnTriangulation*> HandleBRepCurveRepresentation_downcast_to_HandleBRepPolygonOnTriangulation(const HandleBRepCurveRepresentation* self_) {
+extern "C" OcctResult<Handle_BRep_PolygonOnTriangulation*> Handle_BRep_CurveRepresentation_downcast_to_Handle_BRep_PolygonOnTriangulation(const Handle_BRep_CurveRepresentation* self_) {
     try {
     opencascade::handle<BRep_PolygonOnTriangulation> result = opencascade::handle<BRep_PolygonOnTriangulation>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleBRepPolygonOnTriangulation(result), nullptr};
+    return {new Handle_BRep_PolygonOnTriangulation(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
@@ -2040,43 +2042,43 @@ extern "C" OcctResult<const BRep_CurveRepresentation*> BRep_GCurve_as_BRep_Curve
 extern "C" OcctResult<BRep_CurveRepresentation*> BRep_GCurve_as_BRep_CurveRepresentation_mut(BRep_GCurve* self_) { return {static_cast<BRep_CurveRepresentation*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> BRep_GCurve_as_Standard_Transient(const BRep_GCurve* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> BRep_GCurve_as_Standard_Transient_mut(BRep_GCurve* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<const BRep_GCurve*> HandleBRepGCurve_get(const HandleBRepGCurve* handle) {
+extern "C" OcctResult<const BRep_GCurve*> Handle_BRep_GCurve_get(const Handle_BRep_GCurve* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<BRep_GCurve*> HandleBRepGCurve_get_mut(HandleBRepGCurve* handle) {
+extern "C" OcctResult<BRep_GCurve*> Handle_BRep_GCurve_get_mut(Handle_BRep_GCurve* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleBRepCurveRepresentation*> HandleBRepGCurve_to_HandleBRepCurveRepresentation(const HandleBRepGCurve* self_) {
-    try { return {new HandleBRepCurveRepresentation(*self_), nullptr}; }
+extern "C" OcctResult<Handle_BRep_CurveRepresentation*> Handle_BRep_GCurve_to_Handle_BRep_CurveRepresentation(const Handle_BRep_GCurve* self_) {
+    try { return {new Handle_BRep_CurveRepresentation(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleBRepGCurve_to_HandleStandardTransient(const HandleBRepGCurve* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_BRep_GCurve_to_Handle_Standard_Transient(const Handle_BRep_GCurve* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleBRepCurve3D*> HandleBRepGCurve_downcast_to_HandleBRepCurve3D(const HandleBRepGCurve* self_) {
+extern "C" OcctResult<Handle_BRep_Curve3D*> Handle_BRep_GCurve_downcast_to_Handle_BRep_Curve3D(const Handle_BRep_GCurve* self_) {
     try {
     opencascade::handle<BRep_Curve3D> result = opencascade::handle<BRep_Curve3D>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleBRepCurve3D(result), nullptr};
+    return {new Handle_BRep_Curve3D(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleBRepCurveOnClosedSurface*> HandleBRepGCurve_downcast_to_HandleBRepCurveOnClosedSurface(const HandleBRepGCurve* self_) {
+extern "C" OcctResult<Handle_BRep_CurveOnClosedSurface*> Handle_BRep_GCurve_downcast_to_Handle_BRep_CurveOnClosedSurface(const Handle_BRep_GCurve* self_) {
     try {
     opencascade::handle<BRep_CurveOnClosedSurface> result = opencascade::handle<BRep_CurveOnClosedSurface>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleBRepCurveOnClosedSurface(result), nullptr};
+    return {new Handle_BRep_CurveOnClosedSurface(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleBRepCurveOnSurface*> HandleBRepGCurve_downcast_to_HandleBRepCurveOnSurface(const HandleBRepGCurve* self_) {
+extern "C" OcctResult<Handle_BRep_CurveOnSurface*> Handle_BRep_GCurve_downcast_to_Handle_BRep_CurveOnSurface(const Handle_BRep_GCurve* self_) {
     try {
     opencascade::handle<BRep_CurveOnSurface> result = opencascade::handle<BRep_CurveOnSurface>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleBRepCurveOnSurface(result), nullptr};
+    return {new Handle_BRep_CurveOnSurface(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
@@ -2246,24 +2248,24 @@ extern "C" OcctResult<const BRep_PointRepresentation*> BRep_PointOnCurve_as_BRep
 extern "C" OcctResult<BRep_PointRepresentation*> BRep_PointOnCurve_as_BRep_PointRepresentation_mut(BRep_PointOnCurve* self_) { return {static_cast<BRep_PointRepresentation*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> BRep_PointOnCurve_as_Standard_Transient(const BRep_PointOnCurve* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> BRep_PointOnCurve_as_Standard_Transient_mut(BRep_PointOnCurve* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleBRepPointOnCurve*> BRep_PointOnCurve_to_handle(BRep_PointOnCurve* obj) {
-    try { return {new HandleBRepPointOnCurve(obj), nullptr}; }
+extern "C" OcctResult<Handle_BRep_PointOnCurve*> BRep_PointOnCurve_to_handle(BRep_PointOnCurve* obj) {
+    try { return {new Handle_BRep_PointOnCurve(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const BRep_PointOnCurve*> HandleBRepPointOnCurve_get(const HandleBRepPointOnCurve* handle) {
+extern "C" OcctResult<const BRep_PointOnCurve*> Handle_BRep_PointOnCurve_get(const Handle_BRep_PointOnCurve* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<BRep_PointOnCurve*> HandleBRepPointOnCurve_get_mut(HandleBRepPointOnCurve* handle) {
+extern "C" OcctResult<BRep_PointOnCurve*> Handle_BRep_PointOnCurve_get_mut(Handle_BRep_PointOnCurve* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleBRepPointRepresentation*> HandleBRepPointOnCurve_to_HandleBRepPointRepresentation(const HandleBRepPointOnCurve* self_) {
-    try { return {new HandleBRepPointRepresentation(*self_), nullptr}; }
+extern "C" OcctResult<Handle_BRep_PointRepresentation*> Handle_BRep_PointOnCurve_to_Handle_BRep_PointRepresentation(const Handle_BRep_PointOnCurve* self_) {
+    try { return {new Handle_BRep_PointRepresentation(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleBRepPointOnCurve_to_HandleStandardTransient(const HandleBRepPointOnCurve* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_BRep_PointOnCurve_to_Handle_Standard_Transient(const Handle_BRep_PointOnCurve* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> BRep_PointOnCurve_inherited_IsPointOnCurveOnSurface(const BRep_PointOnCurve* self) {
@@ -2366,28 +2368,28 @@ extern "C" OcctResult<const BRep_PointRepresentation*> BRep_PointOnCurveOnSurfac
 extern "C" OcctResult<BRep_PointRepresentation*> BRep_PointOnCurveOnSurface_as_BRep_PointRepresentation_mut(BRep_PointOnCurveOnSurface* self_) { return {static_cast<BRep_PointRepresentation*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> BRep_PointOnCurveOnSurface_as_Standard_Transient(const BRep_PointOnCurveOnSurface* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> BRep_PointOnCurveOnSurface_as_Standard_Transient_mut(BRep_PointOnCurveOnSurface* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleBRepPointOnCurveOnSurface*> BRep_PointOnCurveOnSurface_to_handle(BRep_PointOnCurveOnSurface* obj) {
-    try { return {new HandleBRepPointOnCurveOnSurface(obj), nullptr}; }
+extern "C" OcctResult<Handle_BRep_PointOnCurveOnSurface*> BRep_PointOnCurveOnSurface_to_handle(BRep_PointOnCurveOnSurface* obj) {
+    try { return {new Handle_BRep_PointOnCurveOnSurface(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const BRep_PointOnCurveOnSurface*> HandleBRepPointOnCurveOnSurface_get(const HandleBRepPointOnCurveOnSurface* handle) {
+extern "C" OcctResult<const BRep_PointOnCurveOnSurface*> Handle_BRep_PointOnCurveOnSurface_get(const Handle_BRep_PointOnCurveOnSurface* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<BRep_PointOnCurveOnSurface*> HandleBRepPointOnCurveOnSurface_get_mut(HandleBRepPointOnCurveOnSurface* handle) {
+extern "C" OcctResult<BRep_PointOnCurveOnSurface*> Handle_BRep_PointOnCurveOnSurface_get_mut(Handle_BRep_PointOnCurveOnSurface* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleBRepPointsOnSurface*> HandleBRepPointOnCurveOnSurface_to_HandleBRepPointsOnSurface(const HandleBRepPointOnCurveOnSurface* self_) {
-    try { return {new HandleBRepPointsOnSurface(*self_), nullptr}; }
+extern "C" OcctResult<Handle_BRep_PointsOnSurface*> Handle_BRep_PointOnCurveOnSurface_to_Handle_BRep_PointsOnSurface(const Handle_BRep_PointOnCurveOnSurface* self_) {
+    try { return {new Handle_BRep_PointsOnSurface(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleBRepPointRepresentation*> HandleBRepPointOnCurveOnSurface_to_HandleBRepPointRepresentation(const HandleBRepPointOnCurveOnSurface* self_) {
-    try { return {new HandleBRepPointRepresentation(*self_), nullptr}; }
+extern "C" OcctResult<Handle_BRep_PointRepresentation*> Handle_BRep_PointOnCurveOnSurface_to_Handle_BRep_PointRepresentation(const Handle_BRep_PointOnCurveOnSurface* self_) {
+    try { return {new Handle_BRep_PointRepresentation(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleBRepPointOnCurveOnSurface_to_HandleStandardTransient(const HandleBRepPointOnCurveOnSurface* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_BRep_PointOnCurveOnSurface_to_Handle_Standard_Transient(const Handle_BRep_PointOnCurveOnSurface* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(Geom_Surface) const*> BRep_PointOnCurveOnSurface_inherited_Surface(const BRep_PointOnCurveOnSurface* self) {
@@ -2490,28 +2492,28 @@ extern "C" OcctResult<const BRep_PointRepresentation*> BRep_PointOnSurface_as_BR
 extern "C" OcctResult<BRep_PointRepresentation*> BRep_PointOnSurface_as_BRep_PointRepresentation_mut(BRep_PointOnSurface* self_) { return {static_cast<BRep_PointRepresentation*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> BRep_PointOnSurface_as_Standard_Transient(const BRep_PointOnSurface* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> BRep_PointOnSurface_as_Standard_Transient_mut(BRep_PointOnSurface* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleBRepPointOnSurface*> BRep_PointOnSurface_to_handle(BRep_PointOnSurface* obj) {
-    try { return {new HandleBRepPointOnSurface(obj), nullptr}; }
+extern "C" OcctResult<Handle_BRep_PointOnSurface*> BRep_PointOnSurface_to_handle(BRep_PointOnSurface* obj) {
+    try { return {new Handle_BRep_PointOnSurface(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const BRep_PointOnSurface*> HandleBRepPointOnSurface_get(const HandleBRepPointOnSurface* handle) {
+extern "C" OcctResult<const BRep_PointOnSurface*> Handle_BRep_PointOnSurface_get(const Handle_BRep_PointOnSurface* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<BRep_PointOnSurface*> HandleBRepPointOnSurface_get_mut(HandleBRepPointOnSurface* handle) {
+extern "C" OcctResult<BRep_PointOnSurface*> Handle_BRep_PointOnSurface_get_mut(Handle_BRep_PointOnSurface* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleBRepPointsOnSurface*> HandleBRepPointOnSurface_to_HandleBRepPointsOnSurface(const HandleBRepPointOnSurface* self_) {
-    try { return {new HandleBRepPointsOnSurface(*self_), nullptr}; }
+extern "C" OcctResult<Handle_BRep_PointsOnSurface*> Handle_BRep_PointOnSurface_to_Handle_BRep_PointsOnSurface(const Handle_BRep_PointOnSurface* self_) {
+    try { return {new Handle_BRep_PointsOnSurface(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleBRepPointRepresentation*> HandleBRepPointOnSurface_to_HandleBRepPointRepresentation(const HandleBRepPointOnSurface* self_) {
-    try { return {new HandleBRepPointRepresentation(*self_), nullptr}; }
+extern "C" OcctResult<Handle_BRep_PointRepresentation*> Handle_BRep_PointOnSurface_to_Handle_BRep_PointRepresentation(const Handle_BRep_PointOnSurface* self_) {
+    try { return {new Handle_BRep_PointRepresentation(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleBRepPointOnSurface_to_HandleStandardTransient(const HandleBRepPointOnSurface* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_BRep_PointOnSurface_to_Handle_Standard_Transient(const Handle_BRep_PointOnSurface* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(Geom_Surface) const*> BRep_PointOnSurface_inherited_Surface(const BRep_PointOnSurface* self) {
@@ -2662,51 +2664,51 @@ extern "C" OcctResult<Handle(Standard_Type) const*> BRep_PointRepresentation_get
 }
 extern "C" OcctResult<const Standard_Transient*> BRep_PointRepresentation_as_Standard_Transient(const BRep_PointRepresentation* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> BRep_PointRepresentation_as_Standard_Transient_mut(BRep_PointRepresentation* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleBRepPointRepresentation*> BRep_PointRepresentation_to_handle(BRep_PointRepresentation* obj) {
-    try { return {new HandleBRepPointRepresentation(obj), nullptr}; }
+extern "C" OcctResult<Handle_BRep_PointRepresentation*> BRep_PointRepresentation_to_handle(BRep_PointRepresentation* obj) {
+    try { return {new Handle_BRep_PointRepresentation(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const BRep_PointRepresentation*> HandleBRepPointRepresentation_get(const HandleBRepPointRepresentation* handle) {
+extern "C" OcctResult<const BRep_PointRepresentation*> Handle_BRep_PointRepresentation_get(const Handle_BRep_PointRepresentation* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<BRep_PointRepresentation*> HandleBRepPointRepresentation_get_mut(HandleBRepPointRepresentation* handle) {
+extern "C" OcctResult<BRep_PointRepresentation*> Handle_BRep_PointRepresentation_get_mut(Handle_BRep_PointRepresentation* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleBRepPointRepresentation_to_HandleStandardTransient(const HandleBRepPointRepresentation* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_BRep_PointRepresentation_to_Handle_Standard_Transient(const Handle_BRep_PointRepresentation* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleBRepPointOnCurve*> HandleBRepPointRepresentation_downcast_to_HandleBRepPointOnCurve(const HandleBRepPointRepresentation* self_) {
+extern "C" OcctResult<Handle_BRep_PointOnCurve*> Handle_BRep_PointRepresentation_downcast_to_Handle_BRep_PointOnCurve(const Handle_BRep_PointRepresentation* self_) {
     try {
     opencascade::handle<BRep_PointOnCurve> result = opencascade::handle<BRep_PointOnCurve>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleBRepPointOnCurve(result), nullptr};
+    return {new Handle_BRep_PointOnCurve(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleBRepPointOnCurveOnSurface*> HandleBRepPointRepresentation_downcast_to_HandleBRepPointOnCurveOnSurface(const HandleBRepPointRepresentation* self_) {
+extern "C" OcctResult<Handle_BRep_PointOnCurveOnSurface*> Handle_BRep_PointRepresentation_downcast_to_Handle_BRep_PointOnCurveOnSurface(const Handle_BRep_PointRepresentation* self_) {
     try {
     opencascade::handle<BRep_PointOnCurveOnSurface> result = opencascade::handle<BRep_PointOnCurveOnSurface>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleBRepPointOnCurveOnSurface(result), nullptr};
+    return {new Handle_BRep_PointOnCurveOnSurface(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleBRepPointOnSurface*> HandleBRepPointRepresentation_downcast_to_HandleBRepPointOnSurface(const HandleBRepPointRepresentation* self_) {
+extern "C" OcctResult<Handle_BRep_PointOnSurface*> Handle_BRep_PointRepresentation_downcast_to_Handle_BRep_PointOnSurface(const Handle_BRep_PointRepresentation* self_) {
     try {
     opencascade::handle<BRep_PointOnSurface> result = opencascade::handle<BRep_PointOnSurface>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleBRepPointOnSurface(result), nullptr};
+    return {new Handle_BRep_PointOnSurface(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleBRepPointsOnSurface*> HandleBRepPointRepresentation_downcast_to_HandleBRepPointsOnSurface(const HandleBRepPointRepresentation* self_) {
+extern "C" OcctResult<Handle_BRep_PointsOnSurface*> Handle_BRep_PointRepresentation_downcast_to_Handle_BRep_PointsOnSurface(const Handle_BRep_PointRepresentation* self_) {
     try {
     opencascade::handle<BRep_PointsOnSurface> result = opencascade::handle<BRep_PointsOnSurface>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleBRepPointsOnSurface(result), nullptr};
+    return {new Handle_BRep_PointsOnSurface(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
@@ -2768,39 +2770,39 @@ extern "C" OcctResult<const BRep_PointRepresentation*> BRep_PointsOnSurface_as_B
 extern "C" OcctResult<BRep_PointRepresentation*> BRep_PointsOnSurface_as_BRep_PointRepresentation_mut(BRep_PointsOnSurface* self_) { return {static_cast<BRep_PointRepresentation*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> BRep_PointsOnSurface_as_Standard_Transient(const BRep_PointsOnSurface* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> BRep_PointsOnSurface_as_Standard_Transient_mut(BRep_PointsOnSurface* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleBRepPointsOnSurface*> BRep_PointsOnSurface_to_handle(BRep_PointsOnSurface* obj) {
-    try { return {new HandleBRepPointsOnSurface(obj), nullptr}; }
+extern "C" OcctResult<Handle_BRep_PointsOnSurface*> BRep_PointsOnSurface_to_handle(BRep_PointsOnSurface* obj) {
+    try { return {new Handle_BRep_PointsOnSurface(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const BRep_PointsOnSurface*> HandleBRepPointsOnSurface_get(const HandleBRepPointsOnSurface* handle) {
+extern "C" OcctResult<const BRep_PointsOnSurface*> Handle_BRep_PointsOnSurface_get(const Handle_BRep_PointsOnSurface* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<BRep_PointsOnSurface*> HandleBRepPointsOnSurface_get_mut(HandleBRepPointsOnSurface* handle) {
+extern "C" OcctResult<BRep_PointsOnSurface*> Handle_BRep_PointsOnSurface_get_mut(Handle_BRep_PointsOnSurface* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleBRepPointRepresentation*> HandleBRepPointsOnSurface_to_HandleBRepPointRepresentation(const HandleBRepPointsOnSurface* self_) {
-    try { return {new HandleBRepPointRepresentation(*self_), nullptr}; }
+extern "C" OcctResult<Handle_BRep_PointRepresentation*> Handle_BRep_PointsOnSurface_to_Handle_BRep_PointRepresentation(const Handle_BRep_PointsOnSurface* self_) {
+    try { return {new Handle_BRep_PointRepresentation(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleBRepPointsOnSurface_to_HandleStandardTransient(const HandleBRepPointsOnSurface* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_BRep_PointsOnSurface_to_Handle_Standard_Transient(const Handle_BRep_PointsOnSurface* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleBRepPointOnCurveOnSurface*> HandleBRepPointsOnSurface_downcast_to_HandleBRepPointOnCurveOnSurface(const HandleBRepPointsOnSurface* self_) {
+extern "C" OcctResult<Handle_BRep_PointOnCurveOnSurface*> Handle_BRep_PointsOnSurface_downcast_to_Handle_BRep_PointOnCurveOnSurface(const Handle_BRep_PointsOnSurface* self_) {
     try {
     opencascade::handle<BRep_PointOnCurveOnSurface> result = opencascade::handle<BRep_PointOnCurveOnSurface>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleBRepPointOnCurveOnSurface(result), nullptr};
+    return {new Handle_BRep_PointOnCurveOnSurface(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleBRepPointOnSurface*> HandleBRepPointsOnSurface_downcast_to_HandleBRepPointOnSurface(const HandleBRepPointsOnSurface* self_) {
+extern "C" OcctResult<Handle_BRep_PointOnSurface*> Handle_BRep_PointsOnSurface_downcast_to_Handle_BRep_PointOnSurface(const Handle_BRep_PointsOnSurface* self_) {
     try {
     opencascade::handle<BRep_PointOnSurface> result = opencascade::handle<BRep_PointOnSurface>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleBRepPointOnSurface(result), nullptr};
+    return {new Handle_BRep_PointOnSurface(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
@@ -2906,24 +2908,24 @@ extern "C" OcctResult<const BRep_CurveRepresentation*> BRep_Polygon3D_as_BRep_Cu
 extern "C" OcctResult<BRep_CurveRepresentation*> BRep_Polygon3D_as_BRep_CurveRepresentation_mut(BRep_Polygon3D* self_) { return {static_cast<BRep_CurveRepresentation*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> BRep_Polygon3D_as_Standard_Transient(const BRep_Polygon3D* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> BRep_Polygon3D_as_Standard_Transient_mut(BRep_Polygon3D* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleBRepPolygon3D*> BRep_Polygon3D_to_handle(BRep_Polygon3D* obj) {
-    try { return {new HandleBRepPolygon3D(obj), nullptr}; }
+extern "C" OcctResult<Handle_BRep_Polygon3D*> BRep_Polygon3D_to_handle(BRep_Polygon3D* obj) {
+    try { return {new Handle_BRep_Polygon3D(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const BRep_Polygon3D*> HandleBRepPolygon3D_get(const HandleBRepPolygon3D* handle) {
+extern "C" OcctResult<const BRep_Polygon3D*> Handle_BRep_Polygon3D_get(const Handle_BRep_Polygon3D* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<BRep_Polygon3D*> HandleBRepPolygon3D_get_mut(HandleBRepPolygon3D* handle) {
+extern "C" OcctResult<BRep_Polygon3D*> Handle_BRep_Polygon3D_get_mut(Handle_BRep_Polygon3D* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleBRepCurveRepresentation*> HandleBRepPolygon3D_to_HandleBRepCurveRepresentation(const HandleBRepPolygon3D* self_) {
-    try { return {new HandleBRepCurveRepresentation(*self_), nullptr}; }
+extern "C" OcctResult<Handle_BRep_CurveRepresentation*> Handle_BRep_Polygon3D_to_Handle_BRep_CurveRepresentation(const Handle_BRep_Polygon3D* self_) {
+    try { return {new Handle_BRep_CurveRepresentation(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleBRepPolygon3D_to_HandleStandardTransient(const HandleBRepPolygon3D* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_BRep_Polygon3D_to_Handle_Standard_Transient(const Handle_BRep_Polygon3D* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> BRep_Polygon3D_inherited_IsCurve3D(const BRep_Polygon3D* self) {
@@ -3082,28 +3084,28 @@ extern "C" OcctResult<const BRep_CurveRepresentation*> BRep_PolygonOnClosedSurfa
 extern "C" OcctResult<BRep_CurveRepresentation*> BRep_PolygonOnClosedSurface_as_BRep_CurveRepresentation_mut(BRep_PolygonOnClosedSurface* self_) { return {static_cast<BRep_CurveRepresentation*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> BRep_PolygonOnClosedSurface_as_Standard_Transient(const BRep_PolygonOnClosedSurface* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> BRep_PolygonOnClosedSurface_as_Standard_Transient_mut(BRep_PolygonOnClosedSurface* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleBRepPolygonOnClosedSurface*> BRep_PolygonOnClosedSurface_to_handle(BRep_PolygonOnClosedSurface* obj) {
-    try { return {new HandleBRepPolygonOnClosedSurface(obj), nullptr}; }
+extern "C" OcctResult<Handle_BRep_PolygonOnClosedSurface*> BRep_PolygonOnClosedSurface_to_handle(BRep_PolygonOnClosedSurface* obj) {
+    try { return {new Handle_BRep_PolygonOnClosedSurface(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const BRep_PolygonOnClosedSurface*> HandleBRepPolygonOnClosedSurface_get(const HandleBRepPolygonOnClosedSurface* handle) {
+extern "C" OcctResult<const BRep_PolygonOnClosedSurface*> Handle_BRep_PolygonOnClosedSurface_get(const Handle_BRep_PolygonOnClosedSurface* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<BRep_PolygonOnClosedSurface*> HandleBRepPolygonOnClosedSurface_get_mut(HandleBRepPolygonOnClosedSurface* handle) {
+extern "C" OcctResult<BRep_PolygonOnClosedSurface*> Handle_BRep_PolygonOnClosedSurface_get_mut(Handle_BRep_PolygonOnClosedSurface* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleBRepPolygonOnSurface*> HandleBRepPolygonOnClosedSurface_to_HandleBRepPolygonOnSurface(const HandleBRepPolygonOnClosedSurface* self_) {
-    try { return {new HandleBRepPolygonOnSurface(*self_), nullptr}; }
+extern "C" OcctResult<Handle_BRep_PolygonOnSurface*> Handle_BRep_PolygonOnClosedSurface_to_Handle_BRep_PolygonOnSurface(const Handle_BRep_PolygonOnClosedSurface* self_) {
+    try { return {new Handle_BRep_PolygonOnSurface(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleBRepCurveRepresentation*> HandleBRepPolygonOnClosedSurface_to_HandleBRepCurveRepresentation(const HandleBRepPolygonOnClosedSurface* self_) {
-    try { return {new HandleBRepCurveRepresentation(*self_), nullptr}; }
+extern "C" OcctResult<Handle_BRep_CurveRepresentation*> Handle_BRep_PolygonOnClosedSurface_to_Handle_BRep_CurveRepresentation(const Handle_BRep_PolygonOnClosedSurface* self_) {
+    try { return {new Handle_BRep_CurveRepresentation(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleBRepPolygonOnClosedSurface_to_HandleStandardTransient(const HandleBRepPolygonOnClosedSurface* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_BRep_PolygonOnClosedSurface_to_Handle_Standard_Transient(const Handle_BRep_PolygonOnClosedSurface* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> BRep_PolygonOnClosedSurface_inherited_IsPolygonOnSurface(const BRep_PolygonOnClosedSurface* self) {
@@ -3262,28 +3264,28 @@ extern "C" OcctResult<const BRep_CurveRepresentation*> BRep_PolygonOnClosedTrian
 extern "C" OcctResult<BRep_CurveRepresentation*> BRep_PolygonOnClosedTriangulation_as_BRep_CurveRepresentation_mut(BRep_PolygonOnClosedTriangulation* self_) { return {static_cast<BRep_CurveRepresentation*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> BRep_PolygonOnClosedTriangulation_as_Standard_Transient(const BRep_PolygonOnClosedTriangulation* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> BRep_PolygonOnClosedTriangulation_as_Standard_Transient_mut(BRep_PolygonOnClosedTriangulation* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleBRepPolygonOnClosedTriangulation*> BRep_PolygonOnClosedTriangulation_to_handle(BRep_PolygonOnClosedTriangulation* obj) {
-    try { return {new HandleBRepPolygonOnClosedTriangulation(obj), nullptr}; }
+extern "C" OcctResult<Handle_BRep_PolygonOnClosedTriangulation*> BRep_PolygonOnClosedTriangulation_to_handle(BRep_PolygonOnClosedTriangulation* obj) {
+    try { return {new Handle_BRep_PolygonOnClosedTriangulation(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const BRep_PolygonOnClosedTriangulation*> HandleBRepPolygonOnClosedTriangulation_get(const HandleBRepPolygonOnClosedTriangulation* handle) {
+extern "C" OcctResult<const BRep_PolygonOnClosedTriangulation*> Handle_BRep_PolygonOnClosedTriangulation_get(const Handle_BRep_PolygonOnClosedTriangulation* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<BRep_PolygonOnClosedTriangulation*> HandleBRepPolygonOnClosedTriangulation_get_mut(HandleBRepPolygonOnClosedTriangulation* handle) {
+extern "C" OcctResult<BRep_PolygonOnClosedTriangulation*> Handle_BRep_PolygonOnClosedTriangulation_get_mut(Handle_BRep_PolygonOnClosedTriangulation* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleBRepPolygonOnTriangulation*> HandleBRepPolygonOnClosedTriangulation_to_HandleBRepPolygonOnTriangulation(const HandleBRepPolygonOnClosedTriangulation* self_) {
-    try { return {new HandleBRepPolygonOnTriangulation(*self_), nullptr}; }
+extern "C" OcctResult<Handle_BRep_PolygonOnTriangulation*> Handle_BRep_PolygonOnClosedTriangulation_to_Handle_BRep_PolygonOnTriangulation(const Handle_BRep_PolygonOnClosedTriangulation* self_) {
+    try { return {new Handle_BRep_PolygonOnTriangulation(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleBRepCurveRepresentation*> HandleBRepPolygonOnClosedTriangulation_to_HandleBRepCurveRepresentation(const HandleBRepPolygonOnClosedTriangulation* self_) {
-    try { return {new HandleBRepCurveRepresentation(*self_), nullptr}; }
+extern "C" OcctResult<Handle_BRep_CurveRepresentation*> Handle_BRep_PolygonOnClosedTriangulation_to_Handle_BRep_CurveRepresentation(const Handle_BRep_PolygonOnClosedTriangulation* self_) {
+    try { return {new Handle_BRep_CurveRepresentation(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleBRepPolygonOnClosedTriangulation_to_HandleStandardTransient(const HandleBRepPolygonOnClosedTriangulation* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_BRep_PolygonOnClosedTriangulation_to_Handle_Standard_Transient(const Handle_BRep_PolygonOnClosedTriangulation* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> BRep_PolygonOnClosedTriangulation_inherited_IsPolygonOnTriangulation(const BRep_PolygonOnClosedTriangulation* self) {
@@ -3448,31 +3450,31 @@ extern "C" OcctResult<const BRep_CurveRepresentation*> BRep_PolygonOnSurface_as_
 extern "C" OcctResult<BRep_CurveRepresentation*> BRep_PolygonOnSurface_as_BRep_CurveRepresentation_mut(BRep_PolygonOnSurface* self_) { return {static_cast<BRep_CurveRepresentation*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> BRep_PolygonOnSurface_as_Standard_Transient(const BRep_PolygonOnSurface* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> BRep_PolygonOnSurface_as_Standard_Transient_mut(BRep_PolygonOnSurface* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleBRepPolygonOnSurface*> BRep_PolygonOnSurface_to_handle(BRep_PolygonOnSurface* obj) {
-    try { return {new HandleBRepPolygonOnSurface(obj), nullptr}; }
+extern "C" OcctResult<Handle_BRep_PolygonOnSurface*> BRep_PolygonOnSurface_to_handle(BRep_PolygonOnSurface* obj) {
+    try { return {new Handle_BRep_PolygonOnSurface(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const BRep_PolygonOnSurface*> HandleBRepPolygonOnSurface_get(const HandleBRepPolygonOnSurface* handle) {
+extern "C" OcctResult<const BRep_PolygonOnSurface*> Handle_BRep_PolygonOnSurface_get(const Handle_BRep_PolygonOnSurface* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<BRep_PolygonOnSurface*> HandleBRepPolygonOnSurface_get_mut(HandleBRepPolygonOnSurface* handle) {
+extern "C" OcctResult<BRep_PolygonOnSurface*> Handle_BRep_PolygonOnSurface_get_mut(Handle_BRep_PolygonOnSurface* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleBRepCurveRepresentation*> HandleBRepPolygonOnSurface_to_HandleBRepCurveRepresentation(const HandleBRepPolygonOnSurface* self_) {
-    try { return {new HandleBRepCurveRepresentation(*self_), nullptr}; }
+extern "C" OcctResult<Handle_BRep_CurveRepresentation*> Handle_BRep_PolygonOnSurface_to_Handle_BRep_CurveRepresentation(const Handle_BRep_PolygonOnSurface* self_) {
+    try { return {new Handle_BRep_CurveRepresentation(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleBRepPolygonOnSurface_to_HandleStandardTransient(const HandleBRepPolygonOnSurface* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_BRep_PolygonOnSurface_to_Handle_Standard_Transient(const Handle_BRep_PolygonOnSurface* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleBRepPolygonOnClosedSurface*> HandleBRepPolygonOnSurface_downcast_to_HandleBRepPolygonOnClosedSurface(const HandleBRepPolygonOnSurface* self_) {
+extern "C" OcctResult<Handle_BRep_PolygonOnClosedSurface*> Handle_BRep_PolygonOnSurface_downcast_to_Handle_BRep_PolygonOnClosedSurface(const Handle_BRep_PolygonOnSurface* self_) {
     try {
     opencascade::handle<BRep_PolygonOnClosedSurface> result = opencascade::handle<BRep_PolygonOnClosedSurface>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleBRepPolygonOnClosedSurface(result), nullptr};
+    return {new Handle_BRep_PolygonOnClosedSurface(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
@@ -3634,31 +3636,31 @@ extern "C" OcctResult<const BRep_CurveRepresentation*> BRep_PolygonOnTriangulati
 extern "C" OcctResult<BRep_CurveRepresentation*> BRep_PolygonOnTriangulation_as_BRep_CurveRepresentation_mut(BRep_PolygonOnTriangulation* self_) { return {static_cast<BRep_CurveRepresentation*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> BRep_PolygonOnTriangulation_as_Standard_Transient(const BRep_PolygonOnTriangulation* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> BRep_PolygonOnTriangulation_as_Standard_Transient_mut(BRep_PolygonOnTriangulation* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleBRepPolygonOnTriangulation*> BRep_PolygonOnTriangulation_to_handle(BRep_PolygonOnTriangulation* obj) {
-    try { return {new HandleBRepPolygonOnTriangulation(obj), nullptr}; }
+extern "C" OcctResult<Handle_BRep_PolygonOnTriangulation*> BRep_PolygonOnTriangulation_to_handle(BRep_PolygonOnTriangulation* obj) {
+    try { return {new Handle_BRep_PolygonOnTriangulation(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const BRep_PolygonOnTriangulation*> HandleBRepPolygonOnTriangulation_get(const HandleBRepPolygonOnTriangulation* handle) {
+extern "C" OcctResult<const BRep_PolygonOnTriangulation*> Handle_BRep_PolygonOnTriangulation_get(const Handle_BRep_PolygonOnTriangulation* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<BRep_PolygonOnTriangulation*> HandleBRepPolygonOnTriangulation_get_mut(HandleBRepPolygonOnTriangulation* handle) {
+extern "C" OcctResult<BRep_PolygonOnTriangulation*> Handle_BRep_PolygonOnTriangulation_get_mut(Handle_BRep_PolygonOnTriangulation* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleBRepCurveRepresentation*> HandleBRepPolygonOnTriangulation_to_HandleBRepCurveRepresentation(const HandleBRepPolygonOnTriangulation* self_) {
-    try { return {new HandleBRepCurveRepresentation(*self_), nullptr}; }
+extern "C" OcctResult<Handle_BRep_CurveRepresentation*> Handle_BRep_PolygonOnTriangulation_to_Handle_BRep_CurveRepresentation(const Handle_BRep_PolygonOnTriangulation* self_) {
+    try { return {new Handle_BRep_CurveRepresentation(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleBRepPolygonOnTriangulation_to_HandleStandardTransient(const HandleBRepPolygonOnTriangulation* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_BRep_PolygonOnTriangulation_to_Handle_Standard_Transient(const Handle_BRep_PolygonOnTriangulation* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleBRepPolygonOnClosedTriangulation*> HandleBRepPolygonOnTriangulation_downcast_to_HandleBRepPolygonOnClosedTriangulation(const HandleBRepPolygonOnTriangulation* self_) {
+extern "C" OcctResult<Handle_BRep_PolygonOnClosedTriangulation*> Handle_BRep_PolygonOnTriangulation_downcast_to_Handle_BRep_PolygonOnClosedTriangulation(const Handle_BRep_PolygonOnTriangulation* self_) {
     try {
     opencascade::handle<BRep_PolygonOnClosedTriangulation> result = opencascade::handle<BRep_PolygonOnClosedTriangulation>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleBRepPolygonOnClosedTriangulation(result), nullptr};
+    return {new Handle_BRep_PolygonOnClosedTriangulation(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
@@ -3820,14 +3822,6 @@ extern "C" const char* BRep_TEdge_degenerated_bool(BRep_TEdge* self_, bool S) {
     try { self_->Degenerated(S); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<BRep_ListOfCurveRepresentation const*> BRep_TEdge_curves(const BRep_TEdge* self_) {
-    try { return {&(self_->Curves()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<BRep_ListOfCurveRepresentation*> BRep_TEdge_change_curves(BRep_TEdge* self_) {
-    try { return {&(self_->ChangeCurves()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
 extern "C" OcctResult<Handle(Standard_Type) const*> BRep_TEdge_dynamic_type(const BRep_TEdge* self_) {
     try { return {&(self_->DynamicType()), nullptr}; }
     OCCT_CATCH_RETURN
@@ -3846,32 +3840,28 @@ extern "C" OcctResult<const TopoDS_TShape*> BRep_TEdge_as_TopoDS_TShape(const BR
 extern "C" OcctResult<TopoDS_TShape*> BRep_TEdge_as_TopoDS_TShape_mut(BRep_TEdge* self_) { return {static_cast<TopoDS_TShape*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> BRep_TEdge_as_Standard_Transient(const BRep_TEdge* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> BRep_TEdge_as_Standard_Transient_mut(BRep_TEdge* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleBRepTEdge*> BRep_TEdge_to_handle(BRep_TEdge* obj) {
-    try { return {new HandleBRepTEdge(obj), nullptr}; }
+extern "C" OcctResult<Handle_BRep_TEdge*> BRep_TEdge_to_handle(BRep_TEdge* obj) {
+    try { return {new Handle_BRep_TEdge(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const BRep_TEdge*> HandleBRepTEdge_get(const HandleBRepTEdge* handle) {
+extern "C" OcctResult<const BRep_TEdge*> Handle_BRep_TEdge_get(const Handle_BRep_TEdge* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<BRep_TEdge*> HandleBRepTEdge_get_mut(HandleBRepTEdge* handle) {
+extern "C" OcctResult<BRep_TEdge*> Handle_BRep_TEdge_get_mut(Handle_BRep_TEdge* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTopoDSTEdge*> HandleBRepTEdge_to_HandleTopoDSTEdge(const HandleBRepTEdge* self_) {
-    try { return {new HandleTopoDSTEdge(*self_), nullptr}; }
+extern "C" OcctResult<Handle_TopoDS_TEdge*> Handle_BRep_TEdge_to_Handle_TopoDS_TEdge(const Handle_BRep_TEdge* self_) {
+    try { return {new Handle_TopoDS_TEdge(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTopoDSTShape*> HandleBRepTEdge_to_HandleTopoDSTShape(const HandleBRepTEdge* self_) {
-    try { return {new HandleTopoDSTShape(*self_), nullptr}; }
+extern "C" OcctResult<Handle_TopoDS_TShape*> Handle_BRep_TEdge_to_Handle_TopoDS_TShape(const Handle_BRep_TEdge* self_) {
+    try { return {new Handle_TopoDS_TShape(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleBRepTEdge_to_HandleStandardTransient(const HandleBRepTEdge* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<int32_t> BRep_TEdge_inherited_ShapeType(const BRep_TEdge* self) {
-    try { return {static_cast<int32_t>(self->ShapeType()), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_BRep_TEdge_to_Handle_Standard_Transient(const Handle_BRep_TEdge* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> BRep_TEdge_inherited_Free(const BRep_TEdge* self) {
@@ -3904,6 +3894,10 @@ extern "C" OcctResult<bool> BRep_TEdge_inherited_Infinite(const BRep_TEdge* self
 }
 extern "C" OcctResult<bool> BRep_TEdge_inherited_Convex(const BRep_TEdge* self) {
     try { return {self->Convex(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<int32_t> BRep_TEdge_inherited_ShapeType(const BRep_TEdge* self) {
+    try { return {static_cast<int32_t>(self->ShapeType()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<int32_t> BRep_TEdge_inherited_NbChildren(const BRep_TEdge* self) {
@@ -3992,14 +3986,6 @@ extern "C" const char* BRep_TFace_triangulation_handlepolytriangulation_bool(BRe
     try { self_->Triangulation(*theTriangulation, theToReset); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<Poly_ListOfTriangulation const*> BRep_TFace_triangulations(const BRep_TFace* self_) {
-    try { return {&(self_->Triangulations()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* BRep_TFace_triangulations_listoftriangulation_handlepolytriangulation(BRep_TFace* self_, Poly_ListOfTriangulation const* theTriangulations, Handle(Poly_Triangulation) const* theActiveTriangulation) {
-    try { self_->Triangulations(*theTriangulations, *theActiveTriangulation); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
 extern "C" OcctResult<int32_t> BRep_TFace_nb_triangulations(const BRep_TFace* self_) {
     try { return {self_->NbTriangulations(), nullptr}; }
     OCCT_CATCH_RETURN
@@ -4026,32 +4012,28 @@ extern "C" OcctResult<const TopoDS_TShape*> BRep_TFace_as_TopoDS_TShape(const BR
 extern "C" OcctResult<TopoDS_TShape*> BRep_TFace_as_TopoDS_TShape_mut(BRep_TFace* self_) { return {static_cast<TopoDS_TShape*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> BRep_TFace_as_Standard_Transient(const BRep_TFace* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> BRep_TFace_as_Standard_Transient_mut(BRep_TFace* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleBRepTFace*> BRep_TFace_to_handle(BRep_TFace* obj) {
-    try { return {new HandleBRepTFace(obj), nullptr}; }
+extern "C" OcctResult<Handle_BRep_TFace*> BRep_TFace_to_handle(BRep_TFace* obj) {
+    try { return {new Handle_BRep_TFace(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const BRep_TFace*> HandleBRepTFace_get(const HandleBRepTFace* handle) {
+extern "C" OcctResult<const BRep_TFace*> Handle_BRep_TFace_get(const Handle_BRep_TFace* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<BRep_TFace*> HandleBRepTFace_get_mut(HandleBRepTFace* handle) {
+extern "C" OcctResult<BRep_TFace*> Handle_BRep_TFace_get_mut(Handle_BRep_TFace* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTopoDSTFace*> HandleBRepTFace_to_HandleTopoDSTFace(const HandleBRepTFace* self_) {
-    try { return {new HandleTopoDSTFace(*self_), nullptr}; }
+extern "C" OcctResult<Handle_TopoDS_TFace*> Handle_BRep_TFace_to_Handle_TopoDS_TFace(const Handle_BRep_TFace* self_) {
+    try { return {new Handle_TopoDS_TFace(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTopoDSTShape*> HandleBRepTFace_to_HandleTopoDSTShape(const HandleBRepTFace* self_) {
-    try { return {new HandleTopoDSTShape(*self_), nullptr}; }
+extern "C" OcctResult<Handle_TopoDS_TShape*> Handle_BRep_TFace_to_Handle_TopoDS_TShape(const Handle_BRep_TFace* self_) {
+    try { return {new Handle_TopoDS_TShape(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleBRepTFace_to_HandleStandardTransient(const HandleBRepTFace* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<int32_t> BRep_TFace_inherited_ShapeType(const BRep_TFace* self) {
-    try { return {static_cast<int32_t>(self->ShapeType()), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_BRep_TFace_to_Handle_Standard_Transient(const Handle_BRep_TFace* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> BRep_TFace_inherited_Free(const BRep_TFace* self) {
@@ -4084,6 +4066,10 @@ extern "C" OcctResult<bool> BRep_TFace_inherited_Infinite(const BRep_TFace* self
 }
 extern "C" OcctResult<bool> BRep_TFace_inherited_Convex(const BRep_TFace* self) {
     try { return {self->Convex(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<int32_t> BRep_TFace_inherited_ShapeType(const BRep_TFace* self) {
+    try { return {static_cast<int32_t>(self->ShapeType()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<int32_t> BRep_TFace_inherited_NbChildren(const BRep_TFace* self) {
@@ -4152,14 +4138,6 @@ extern "C" const char* BRep_TVertex_pnt_pnt(BRep_TVertex* self_, gp_Pnt const* P
     try { self_->Pnt(*P); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<BRep_ListOfPointRepresentation const*> BRep_TVertex_points(const BRep_TVertex* self_) {
-    try { return {&(self_->Points()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<BRep_ListOfPointRepresentation*> BRep_TVertex_change_points(BRep_TVertex* self_) {
-    try { return {&(self_->ChangePoints()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
 extern "C" OcctResult<Handle(Standard_Type) const*> BRep_TVertex_dynamic_type(const BRep_TVertex* self_) {
     try { return {&(self_->DynamicType()), nullptr}; }
     OCCT_CATCH_RETURN
@@ -4178,32 +4156,28 @@ extern "C" OcctResult<const TopoDS_TShape*> BRep_TVertex_as_TopoDS_TShape(const 
 extern "C" OcctResult<TopoDS_TShape*> BRep_TVertex_as_TopoDS_TShape_mut(BRep_TVertex* self_) { return {static_cast<TopoDS_TShape*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> BRep_TVertex_as_Standard_Transient(const BRep_TVertex* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> BRep_TVertex_as_Standard_Transient_mut(BRep_TVertex* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleBRepTVertex*> BRep_TVertex_to_handle(BRep_TVertex* obj) {
-    try { return {new HandleBRepTVertex(obj), nullptr}; }
+extern "C" OcctResult<Handle_BRep_TVertex*> BRep_TVertex_to_handle(BRep_TVertex* obj) {
+    try { return {new Handle_BRep_TVertex(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const BRep_TVertex*> HandleBRepTVertex_get(const HandleBRepTVertex* handle) {
+extern "C" OcctResult<const BRep_TVertex*> Handle_BRep_TVertex_get(const Handle_BRep_TVertex* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<BRep_TVertex*> HandleBRepTVertex_get_mut(HandleBRepTVertex* handle) {
+extern "C" OcctResult<BRep_TVertex*> Handle_BRep_TVertex_get_mut(Handle_BRep_TVertex* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTopoDSTVertex*> HandleBRepTVertex_to_HandleTopoDSTVertex(const HandleBRepTVertex* self_) {
-    try { return {new HandleTopoDSTVertex(*self_), nullptr}; }
+extern "C" OcctResult<Handle_TopoDS_TVertex*> Handle_BRep_TVertex_to_Handle_TopoDS_TVertex(const Handle_BRep_TVertex* self_) {
+    try { return {new Handle_TopoDS_TVertex(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTopoDSTShape*> HandleBRepTVertex_to_HandleTopoDSTShape(const HandleBRepTVertex* self_) {
-    try { return {new HandleTopoDSTShape(*self_), nullptr}; }
+extern "C" OcctResult<Handle_TopoDS_TShape*> Handle_BRep_TVertex_to_Handle_TopoDS_TShape(const Handle_BRep_TVertex* self_) {
+    try { return {new Handle_TopoDS_TShape(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleBRepTVertex_to_HandleStandardTransient(const HandleBRepTVertex* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<int32_t> BRep_TVertex_inherited_ShapeType(const BRep_TVertex* self) {
-    try { return {static_cast<int32_t>(self->ShapeType()), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_BRep_TVertex_to_Handle_Standard_Transient(const Handle_BRep_TVertex* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> BRep_TVertex_inherited_Free(const BRep_TVertex* self) {
@@ -4236,6 +4210,10 @@ extern "C" OcctResult<bool> BRep_TVertex_inherited_Infinite(const BRep_TVertex* 
 }
 extern "C" OcctResult<bool> BRep_TVertex_inherited_Convex(const BRep_TVertex* self) {
     try { return {self->Convex(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<int32_t> BRep_TVertex_inherited_ShapeType(const BRep_TVertex* self) {
+    try { return {static_cast<int32_t>(self->ShapeType()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<int32_t> BRep_TVertex_inherited_NbChildren(const BRep_TVertex* self) {
@@ -4294,10 +4272,6 @@ extern "C" OcctResult<Handle(Geom_Surface)*> BRep_Tool_surface_face(TopoDS_Face 
 }
 extern "C" OcctResult<Handle(Poly_Triangulation) const*> BRep_Tool_triangulation(TopoDS_Face const* theFace, TopLoc_Location* theLocation, uint32_t theMeshPurpose) {
     try { return {&(BRep_Tool::Triangulation(*theFace, *theLocation, theMeshPurpose)), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Poly_ListOfTriangulation const*> BRep_Tool_triangulations(TopoDS_Face const* theFace, TopLoc_Location* theLocation) {
-    try { return {&(BRep_Tool::Triangulations(*theFace, *theLocation)), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<double> BRep_Tool_tolerance_face(TopoDS_Face const* F) {
@@ -4514,12 +4488,24 @@ extern "C" OcctResult<Handle(Adaptor3d_Curve)*> BRepAdaptor_CompCurve_trim(const
     try { return {new Handle(Adaptor3d_Curve)(self_->Trim(First, Last, Tol)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<gp_Pnt*> BRepAdaptor_CompCurve_value(const BRepAdaptor_CompCurve* self_, double U) {
-    try { return {new gp_Pnt(self_->Value(U)), nullptr}; }
+extern "C" OcctResult<gp_Pnt*> BRepAdaptor_CompCurve_eval_d0(const BRepAdaptor_CompCurve* self_, double theU) {
+    try { return {new gp_Pnt(self_->EvalD0(theU)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<gp_Vec*> BRepAdaptor_CompCurve_dn(const BRepAdaptor_CompCurve* self_, double U, int32_t N) {
-    try { return {new gp_Vec(self_->DN(U, N)), nullptr}; }
+extern "C" OcctResult<Geom_Curve::ResD1*> BRepAdaptor_CompCurve_eval_d1(const BRepAdaptor_CompCurve* self_, double theU) {
+    try { return {new Geom_Curve::ResD1(self_->EvalD1(theU)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Geom_Curve::ResD2*> BRepAdaptor_CompCurve_eval_d2(const BRepAdaptor_CompCurve* self_, double theU) {
+    try { return {new Geom_Curve::ResD2(self_->EvalD2(theU)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Geom_Curve::ResD3*> BRepAdaptor_CompCurve_eval_d3(const BRepAdaptor_CompCurve* self_, double theU) {
+    try { return {new Geom_Curve::ResD3(self_->EvalD3(theU)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<gp_Vec*> BRepAdaptor_CompCurve_eval_dn(const BRepAdaptor_CompCurve* self_, double theU, int32_t theN) {
+    try { return {new gp_Vec(self_->EvalDN(theU, theN)), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<gp_Lin*> BRepAdaptor_CompCurve_line(const BRepAdaptor_CompCurve* self_) {
@@ -4586,7 +4572,7 @@ extern "C" OcctResult<int32_t> BRepAdaptor_CompCurve_nb_intervals(const BRepAdap
     try { return {self_->NbIntervals(static_cast<GeomAbs_Shape>(S)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* BRepAdaptor_CompCurve_intervals(const BRepAdaptor_CompCurve* self_, TColStd_Array1OfReal* T, int32_t S) {
+extern "C" const char* BRepAdaptor_CompCurve_intervals(const BRepAdaptor_CompCurve* self_, NCollection_Array1_double* T, int32_t S) {
     try { self_->Intervals(*T, static_cast<GeomAbs_Shape>(S)); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -4601,22 +4587,6 @@ extern "C" OcctResult<bool> BRepAdaptor_CompCurve_is_periodic(const BRepAdaptor_
 extern "C" OcctResult<double> BRepAdaptor_CompCurve_period(const BRepAdaptor_CompCurve* self_) {
     try { return {self_->Period(), nullptr}; }
     OCCT_CATCH_RETURN
-}
-extern "C" const char* BRepAdaptor_CompCurve_d0(const BRepAdaptor_CompCurve* self_, double U, gp_Pnt* P) {
-    try { self_->D0(U, *P); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* BRepAdaptor_CompCurve_d1(const BRepAdaptor_CompCurve* self_, double U, gp_Pnt* P, gp_Vec* V) {
-    try { self_->D1(U, *P, *V); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* BRepAdaptor_CompCurve_d2(const BRepAdaptor_CompCurve* self_, double U, gp_Pnt* P, gp_Vec* V1, gp_Vec* V2) {
-    try { self_->D2(U, *P, *V1, *V2); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* BRepAdaptor_CompCurve_d3(const BRepAdaptor_CompCurve* self_, double U, gp_Pnt* P, gp_Vec* V1, gp_Vec* V2, gp_Vec* V3) {
-    try { self_->D3(U, *P, *V1, *V2, *V3); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
 }
 extern "C" OcctResult<double> BRepAdaptor_CompCurve_resolution(const BRepAdaptor_CompCurve* self_, double R3d) {
     try { return {self_->Resolution(R3d), nullptr}; }
@@ -4654,24 +4624,48 @@ extern "C" OcctResult<const Adaptor3d_Curve*> BRepAdaptor_CompCurve_as_Adaptor3d
 extern "C" OcctResult<Adaptor3d_Curve*> BRepAdaptor_CompCurve_as_Adaptor3d_Curve_mut(BRepAdaptor_CompCurve* self_) { return {static_cast<Adaptor3d_Curve*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> BRepAdaptor_CompCurve_as_Standard_Transient(const BRepAdaptor_CompCurve* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> BRepAdaptor_CompCurve_as_Standard_Transient_mut(BRepAdaptor_CompCurve* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleBRepAdaptorCompCurve*> BRepAdaptor_CompCurve_to_handle(BRepAdaptor_CompCurve* obj) {
-    try { return {new HandleBRepAdaptorCompCurve(obj), nullptr}; }
+extern "C" OcctResult<Handle_BRepAdaptor_CompCurve*> BRepAdaptor_CompCurve_to_handle(BRepAdaptor_CompCurve* obj) {
+    try { return {new Handle_BRepAdaptor_CompCurve(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const BRepAdaptor_CompCurve*> HandleBRepAdaptorCompCurve_get(const HandleBRepAdaptorCompCurve* handle) {
+extern "C" OcctResult<const BRepAdaptor_CompCurve*> Handle_BRepAdaptor_CompCurve_get(const Handle_BRepAdaptor_CompCurve* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<BRepAdaptor_CompCurve*> HandleBRepAdaptorCompCurve_get_mut(HandleBRepAdaptorCompCurve* handle) {
+extern "C" OcctResult<BRepAdaptor_CompCurve*> Handle_BRepAdaptor_CompCurve_get_mut(Handle_BRepAdaptor_CompCurve* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleAdaptor3dCurve*> HandleBRepAdaptorCompCurve_to_HandleAdaptor3dCurve(const HandleBRepAdaptorCompCurve* self_) {
-    try { return {new HandleAdaptor3dCurve(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Adaptor3d_Curve*> Handle_BRepAdaptor_CompCurve_to_Handle_Adaptor3d_Curve(const Handle_BRepAdaptor_CompCurve* self_) {
+    try { return {new Handle_Adaptor3d_Curve(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleBRepAdaptorCompCurve_to_HandleStandardTransient(const HandleBRepAdaptorCompCurve* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_BRepAdaptor_CompCurve_to_Handle_Standard_Transient(const Handle_BRepAdaptor_CompCurve* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<gp_Pnt*> BRepAdaptor_CompCurve_inherited_Value(const BRepAdaptor_CompCurve* self, double theU) {
+    try { return {new gp_Pnt(self->Value(theU)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" const char* BRepAdaptor_CompCurve_inherited_D0(const BRepAdaptor_CompCurve* self, double theU, gp_Pnt& theP) {
+    try { self->D0(theU, theP); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* BRepAdaptor_CompCurve_inherited_D1(const BRepAdaptor_CompCurve* self, double theU, gp_Pnt& theP, gp_Vec& theV) {
+    try { self->D1(theU, theP, theV); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* BRepAdaptor_CompCurve_inherited_D2(const BRepAdaptor_CompCurve* self, double theU, gp_Pnt& theP, gp_Vec& theV1, gp_Vec& theV2) {
+    try { self->D2(theU, theP, theV1, theV2); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* BRepAdaptor_CompCurve_inherited_D3(const BRepAdaptor_CompCurve* self, double theU, gp_Pnt& theP, gp_Vec& theV1, gp_Vec& theV2, gp_Vec& theV3) {
+    try { self->D3(theU, theP, theV1, theV2, theV3); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" OcctResult<gp_Vec*> BRepAdaptor_CompCurve_inherited_DN(const BRepAdaptor_CompCurve* self, double theU, int32_t theN) {
+    try { return {new gp_Vec(self->DN(theU, theN)), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(Geom_OffsetCurve)*> BRepAdaptor_CompCurve_inherited_OffsetCurve(const BRepAdaptor_CompCurve* self) {
@@ -4732,46 +4726,6 @@ extern "C" OcctResult<Handle(Adaptor3d_Curve)*> BRepAdaptor_Curve_trim(const BRe
     try { return {new Handle(Adaptor3d_Curve)(self_->Trim(First, Last, Tol)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<gp_Pnt*> BRepAdaptor_Curve_value(const BRepAdaptor_Curve* self_, double U) {
-    try { return {new gp_Pnt(self_->Value(U)), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<gp_Vec*> BRepAdaptor_Curve_dn(const BRepAdaptor_Curve* self_, double U, int32_t N) {
-    try { return {new gp_Vec(self_->DN(U, N)), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<gp_Lin*> BRepAdaptor_Curve_line(const BRepAdaptor_Curve* self_) {
-    try { return {new gp_Lin(self_->Line()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<gp_Circ*> BRepAdaptor_Curve_circle(const BRepAdaptor_Curve* self_) {
-    try { return {new gp_Circ(self_->Circle()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<gp_Elips*> BRepAdaptor_Curve_ellipse(const BRepAdaptor_Curve* self_) {
-    try { return {new gp_Elips(self_->Ellipse()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<gp_Hypr*> BRepAdaptor_Curve_hyperbola(const BRepAdaptor_Curve* self_) {
-    try { return {new gp_Hypr(self_->Hyperbola()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<gp_Parab*> BRepAdaptor_Curve_parabola(const BRepAdaptor_Curve* self_) {
-    try { return {new gp_Parab(self_->Parabola()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Handle(Geom_BezierCurve)*> BRepAdaptor_Curve_bezier(const BRepAdaptor_Curve* self_) {
-    try { return {new Handle(Geom_BezierCurve)(self_->Bezier()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Handle(Geom_BSplineCurve)*> BRepAdaptor_Curve_b_spline(const BRepAdaptor_Curve* self_) {
-    try { return {new Handle(Geom_BSplineCurve)(self_->BSpline()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Handle(Geom_OffsetCurve)*> BRepAdaptor_Curve_offset_curve(const BRepAdaptor_Curve* self_) {
-    try { return {new Handle(Geom_OffsetCurve)(self_->OffsetCurve()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
 extern "C" OcctResult<Handle(Standard_Type) const*> BRepAdaptor_Curve_dynamic_type(const BRepAdaptor_Curve* self_) {
     try { return {&(self_->DynamicType()), nullptr}; }
     OCCT_CATCH_RETURN
@@ -4788,104 +4742,12 @@ extern "C" const char* BRepAdaptor_Curve_initialize_edge_face(BRepAdaptor_Curve*
     try { self_->Initialize(*E, *F); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<gp_Trsf const*> BRepAdaptor_Curve_trsf(const BRepAdaptor_Curve* self_) {
-    try { return {&(self_->Trsf()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<bool> BRepAdaptor_Curve_is3_d_curve(const BRepAdaptor_Curve* self_) {
-    try { return {self_->Is3DCurve(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<bool> BRepAdaptor_Curve_is_curve_on_surface(const BRepAdaptor_Curve* self_) {
-    try { return {self_->IsCurveOnSurface(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<GeomAdaptor_Curve const*> BRepAdaptor_Curve_curve(const BRepAdaptor_Curve* self_) {
-    try { return {&(self_->Curve()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Adaptor3d_CurveOnSurface const*> BRepAdaptor_Curve_curve_on_surface(const BRepAdaptor_Curve* self_) {
-    try { return {&(self_->CurveOnSurface()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
 extern "C" OcctResult<TopoDS_Edge const*> BRepAdaptor_Curve_edge(const BRepAdaptor_Curve* self_) {
     try { return {&(self_->Edge()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<double> BRepAdaptor_Curve_tolerance(const BRepAdaptor_Curve* self_) {
     try { return {self_->Tolerance(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<double> BRepAdaptor_Curve_first_parameter(const BRepAdaptor_Curve* self_) {
-    try { return {self_->FirstParameter(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<double> BRepAdaptor_Curve_last_parameter(const BRepAdaptor_Curve* self_) {
-    try { return {self_->LastParameter(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<int32_t> BRepAdaptor_Curve_continuity(const BRepAdaptor_Curve* self_) {
-    try { return {static_cast<int32_t>(self_->Continuity()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<int32_t> BRepAdaptor_Curve_nb_intervals(const BRepAdaptor_Curve* self_, int32_t S) {
-    try { return {self_->NbIntervals(static_cast<GeomAbs_Shape>(S)), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* BRepAdaptor_Curve_intervals(const BRepAdaptor_Curve* self_, TColStd_Array1OfReal* T, int32_t S) {
-    try { self_->Intervals(*T, static_cast<GeomAbs_Shape>(S)); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<bool> BRepAdaptor_Curve_is_closed(const BRepAdaptor_Curve* self_) {
-    try { return {self_->IsClosed(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<bool> BRepAdaptor_Curve_is_periodic(const BRepAdaptor_Curve* self_) {
-    try { return {self_->IsPeriodic(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<double> BRepAdaptor_Curve_period(const BRepAdaptor_Curve* self_) {
-    try { return {self_->Period(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* BRepAdaptor_Curve_d0(const BRepAdaptor_Curve* self_, double U, gp_Pnt* P) {
-    try { self_->D0(U, *P); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* BRepAdaptor_Curve_d1(const BRepAdaptor_Curve* self_, double U, gp_Pnt* P, gp_Vec* V) {
-    try { self_->D1(U, *P, *V); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* BRepAdaptor_Curve_d2(const BRepAdaptor_Curve* self_, double U, gp_Pnt* P, gp_Vec* V1, gp_Vec* V2) {
-    try { self_->D2(U, *P, *V1, *V2); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* BRepAdaptor_Curve_d3(const BRepAdaptor_Curve* self_, double U, gp_Pnt* P, gp_Vec* V1, gp_Vec* V2, gp_Vec* V3) {
-    try { self_->D3(U, *P, *V1, *V2, *V3); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<double> BRepAdaptor_Curve_resolution(const BRepAdaptor_Curve* self_, double R3d) {
-    try { return {self_->Resolution(R3d), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<int32_t> BRepAdaptor_Curve_get_type(const BRepAdaptor_Curve* self_) {
-    try { return {static_cast<int32_t>(self_->GetType()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<int32_t> BRepAdaptor_Curve_degree(const BRepAdaptor_Curve* self_) {
-    try { return {self_->Degree(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<bool> BRepAdaptor_Curve_is_rational(const BRepAdaptor_Curve* self_) {
-    try { return {self_->IsRational(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<int32_t> BRepAdaptor_Curve_nb_poles(const BRepAdaptor_Curve* self_) {
-    try { return {self_->NbPoles(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<int32_t> BRepAdaptor_Curve_nb_knots(const BRepAdaptor_Curve* self_) {
-    try { return {self_->NbKnots(), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<char const*> BRepAdaptor_Curve_get_type_name() {
@@ -4896,28 +4758,206 @@ extern "C" OcctResult<Handle(Standard_Type) const*> BRepAdaptor_Curve_get_type_d
     try { return {&(BRepAdaptor_Curve::get_type_descriptor()), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" OcctResult<const GeomAdaptor_TransformedCurve*> BRepAdaptor_Curve_as_GeomAdaptor_TransformedCurve(const BRepAdaptor_Curve* self_) { return {static_cast<const GeomAdaptor_TransformedCurve*>(self_), nullptr}; }
+extern "C" OcctResult<GeomAdaptor_TransformedCurve*> BRepAdaptor_Curve_as_GeomAdaptor_TransformedCurve_mut(BRepAdaptor_Curve* self_) { return {static_cast<GeomAdaptor_TransformedCurve*>(self_), nullptr}; }
 extern "C" OcctResult<const Adaptor3d_Curve*> BRepAdaptor_Curve_as_Adaptor3d_Curve(const BRepAdaptor_Curve* self_) { return {static_cast<const Adaptor3d_Curve*>(self_), nullptr}; }
 extern "C" OcctResult<Adaptor3d_Curve*> BRepAdaptor_Curve_as_Adaptor3d_Curve_mut(BRepAdaptor_Curve* self_) { return {static_cast<Adaptor3d_Curve*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> BRepAdaptor_Curve_as_Standard_Transient(const BRepAdaptor_Curve* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> BRepAdaptor_Curve_as_Standard_Transient_mut(BRepAdaptor_Curve* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleBRepAdaptorCurve*> BRepAdaptor_Curve_to_handle(BRepAdaptor_Curve* obj) {
-    try { return {new HandleBRepAdaptorCurve(obj), nullptr}; }
+extern "C" OcctResult<Handle_BRepAdaptor_Curve*> BRepAdaptor_Curve_to_handle(BRepAdaptor_Curve* obj) {
+    try { return {new Handle_BRepAdaptor_Curve(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const BRepAdaptor_Curve*> HandleBRepAdaptorCurve_get(const HandleBRepAdaptorCurve* handle) {
+extern "C" OcctResult<const BRepAdaptor_Curve*> Handle_BRepAdaptor_Curve_get(const Handle_BRepAdaptor_Curve* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<BRepAdaptor_Curve*> HandleBRepAdaptorCurve_get_mut(HandleBRepAdaptorCurve* handle) {
+extern "C" OcctResult<BRepAdaptor_Curve*> Handle_BRepAdaptor_Curve_get_mut(Handle_BRepAdaptor_Curve* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleAdaptor3dCurve*> HandleBRepAdaptorCurve_to_HandleAdaptor3dCurve(const HandleBRepAdaptorCurve* self_) {
-    try { return {new HandleAdaptor3dCurve(*self_), nullptr}; }
+extern "C" OcctResult<Handle_GeomAdaptor_TransformedCurve*> Handle_BRepAdaptor_Curve_to_Handle_GeomAdaptor_TransformedCurve(const Handle_BRepAdaptor_Curve* self_) {
+    try { return {new Handle_GeomAdaptor_TransformedCurve(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleBRepAdaptorCurve_to_HandleStandardTransient(const HandleBRepAdaptorCurve* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Adaptor3d_Curve*> Handle_BRepAdaptor_Curve_to_Handle_Adaptor3d_Curve(const Handle_BRepAdaptor_Curve* self_) {
+    try { return {new Handle_Adaptor3d_Curve(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_BRepAdaptor_Curve_to_Handle_Standard_Transient(const Handle_BRepAdaptor_Curve* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" const char* BRepAdaptor_Curve_inherited_Load(BRepAdaptor_Curve* self, Handle(Geom_Curve) const& theCurve) {
+    try { self->Load(theCurve); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* BRepAdaptor_Curve_inherited_LoadCurveOnSurface(BRepAdaptor_Curve* self, Handle(Adaptor3d_CurveOnSurface) const& theConSurf) {
+    try { self->LoadCurveOnSurface(theConSurf); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* BRepAdaptor_Curve_inherited_SetTrsf(BRepAdaptor_Curve* self, gp_Trsf const& theTrsf) {
+    try { self->SetTrsf(theTrsf); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" OcctResult<gp_Trsf const*> BRepAdaptor_Curve_inherited_Trsf(const BRepAdaptor_Curve* self) {
+    try { return {&(self->Trsf()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<bool> BRepAdaptor_Curve_inherited_Is3DCurve(const BRepAdaptor_Curve* self) {
+    try { return {self->Is3DCurve(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<bool> BRepAdaptor_Curve_inherited_IsCurveOnSurface(const BRepAdaptor_Curve* self) {
+    try { return {self->IsCurveOnSurface(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<GeomAdaptor_Curve const*> BRepAdaptor_Curve_inherited_Curve(const BRepAdaptor_Curve* self) {
+    try { return {&(self->Curve()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<GeomAdaptor_Curve*> BRepAdaptor_Curve_inherited_ChangeCurve(BRepAdaptor_Curve* self) {
+    try { return {&(self->ChangeCurve()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Adaptor3d_CurveOnSurface const*> BRepAdaptor_Curve_inherited_CurveOnSurface(const BRepAdaptor_Curve* self) {
+    try { return {&(self->CurveOnSurface()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Handle(Geom_Curve) const*> BRepAdaptor_Curve_inherited_GeomCurve(const BRepAdaptor_Curve* self) {
+    try { return {&(self->GeomCurve()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<double> BRepAdaptor_Curve_inherited_FirstParameter(const BRepAdaptor_Curve* self) {
+    try { return {self->FirstParameter(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<double> BRepAdaptor_Curve_inherited_LastParameter(const BRepAdaptor_Curve* self) {
+    try { return {self->LastParameter(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<int32_t> BRepAdaptor_Curve_inherited_Continuity(const BRepAdaptor_Curve* self) {
+    try { return {static_cast<int32_t>(self->Continuity()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<int32_t> BRepAdaptor_Curve_inherited_NbIntervals(const BRepAdaptor_Curve* self, int32_t theS) {
+    try { return {self->NbIntervals(static_cast<GeomAbs_Shape>(theS)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" const char* BRepAdaptor_Curve_inherited_Intervals(const BRepAdaptor_Curve* self, NCollection_Array1_double& theT, int32_t theS) {
+    try { self->Intervals(theT, static_cast<GeomAbs_Shape>(theS)); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" OcctResult<bool> BRepAdaptor_Curve_inherited_IsClosed(const BRepAdaptor_Curve* self) {
+    try { return {self->IsClosed(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<bool> BRepAdaptor_Curve_inherited_IsPeriodic(const BRepAdaptor_Curve* self) {
+    try { return {self->IsPeriodic(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<double> BRepAdaptor_Curve_inherited_Period(const BRepAdaptor_Curve* self) {
+    try { return {self->Period(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<gp_Pnt*> BRepAdaptor_Curve_inherited_EvalD0(const BRepAdaptor_Curve* self, double theU) {
+    try { return {new gp_Pnt(self->EvalD0(theU)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Geom_Curve::ResD1*> BRepAdaptor_Curve_inherited_EvalD1(const BRepAdaptor_Curve* self, double theU) {
+    try { return {new Geom_Curve::ResD1(self->EvalD1(theU)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Geom_Curve::ResD2*> BRepAdaptor_Curve_inherited_EvalD2(const BRepAdaptor_Curve* self, double theU) {
+    try { return {new Geom_Curve::ResD2(self->EvalD2(theU)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Geom_Curve::ResD3*> BRepAdaptor_Curve_inherited_EvalD3(const BRepAdaptor_Curve* self, double theU) {
+    try { return {new Geom_Curve::ResD3(self->EvalD3(theU)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<gp_Vec*> BRepAdaptor_Curve_inherited_EvalDN(const BRepAdaptor_Curve* self, double theU, int32_t theN) {
+    try { return {new gp_Vec(self->EvalDN(theU, theN)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<double> BRepAdaptor_Curve_inherited_Resolution(const BRepAdaptor_Curve* self, double theR3d) {
+    try { return {self->Resolution(theR3d), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<int32_t> BRepAdaptor_Curve_inherited_GetType(const BRepAdaptor_Curve* self) {
+    try { return {static_cast<int32_t>(self->GetType()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<gp_Lin*> BRepAdaptor_Curve_inherited_Line(const BRepAdaptor_Curve* self) {
+    try { return {new gp_Lin(self->Line()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<gp_Circ*> BRepAdaptor_Curve_inherited_Circle(const BRepAdaptor_Curve* self) {
+    try { return {new gp_Circ(self->Circle()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<gp_Elips*> BRepAdaptor_Curve_inherited_Ellipse(const BRepAdaptor_Curve* self) {
+    try { return {new gp_Elips(self->Ellipse()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<gp_Hypr*> BRepAdaptor_Curve_inherited_Hyperbola(const BRepAdaptor_Curve* self) {
+    try { return {new gp_Hypr(self->Hyperbola()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<gp_Parab*> BRepAdaptor_Curve_inherited_Parabola(const BRepAdaptor_Curve* self) {
+    try { return {new gp_Parab(self->Parabola()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<int32_t> BRepAdaptor_Curve_inherited_Degree(const BRepAdaptor_Curve* self) {
+    try { return {self->Degree(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<bool> BRepAdaptor_Curve_inherited_IsRational(const BRepAdaptor_Curve* self) {
+    try { return {self->IsRational(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<int32_t> BRepAdaptor_Curve_inherited_NbPoles(const BRepAdaptor_Curve* self) {
+    try { return {self->NbPoles(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<int32_t> BRepAdaptor_Curve_inherited_NbKnots(const BRepAdaptor_Curve* self) {
+    try { return {self->NbKnots(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Handle(Geom_BezierCurve)*> BRepAdaptor_Curve_inherited_Bezier(const BRepAdaptor_Curve* self) {
+    try { return {new Handle(Geom_BezierCurve)(self->Bezier()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Handle(Geom_BSplineCurve)*> BRepAdaptor_Curve_inherited_BSpline(const BRepAdaptor_Curve* self) {
+    try { return {new Handle(Geom_BSplineCurve)(self->BSpline()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Handle(Geom_OffsetCurve)*> BRepAdaptor_Curve_inherited_OffsetCurve(const BRepAdaptor_Curve* self) {
+    try { return {new Handle(Geom_OffsetCurve)(self->OffsetCurve()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<gp_Pnt*> BRepAdaptor_Curve_inherited_Value(const BRepAdaptor_Curve* self, double theU) {
+    try { return {new gp_Pnt(self->Value(theU)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" const char* BRepAdaptor_Curve_inherited_D0(const BRepAdaptor_Curve* self, double theU, gp_Pnt& theP) {
+    try { self->D0(theU, theP); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* BRepAdaptor_Curve_inherited_D1(const BRepAdaptor_Curve* self, double theU, gp_Pnt& theP, gp_Vec& theV) {
+    try { self->D1(theU, theP, theV); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* BRepAdaptor_Curve_inherited_D2(const BRepAdaptor_Curve* self, double theU, gp_Pnt& theP, gp_Vec& theV1, gp_Vec& theV2) {
+    try { self->D2(theU, theP, theV1, theV2); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* BRepAdaptor_Curve_inherited_D3(const BRepAdaptor_Curve* self, double theU, gp_Pnt& theP, gp_Vec& theV1, gp_Vec& theV2, gp_Vec& theV3) {
+    try { self->D3(theU, theP, theV1, theV2, theV3); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" OcctResult<gp_Vec*> BRepAdaptor_Curve_inherited_DN(const BRepAdaptor_Curve* self, double theU, int32_t theN) {
+    try { return {new gp_Vec(self->DN(theU, theN)), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> BRepAdaptor_Curve_inherited_IsInstance(const BRepAdaptor_Curve* self, Handle(Standard_Type) const& theType) {
@@ -4996,28 +5036,28 @@ extern "C" OcctResult<const Adaptor2d_Curve2d*> BRepAdaptor_Curve2d_as_Adaptor2d
 extern "C" OcctResult<Adaptor2d_Curve2d*> BRepAdaptor_Curve2d_as_Adaptor2d_Curve2d_mut(BRepAdaptor_Curve2d* self_) { return {static_cast<Adaptor2d_Curve2d*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> BRepAdaptor_Curve2d_as_Standard_Transient(const BRepAdaptor_Curve2d* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> BRepAdaptor_Curve2d_as_Standard_Transient_mut(BRepAdaptor_Curve2d* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleBRepAdaptorCurve2d*> BRepAdaptor_Curve2d_to_handle(BRepAdaptor_Curve2d* obj) {
-    try { return {new HandleBRepAdaptorCurve2d(obj), nullptr}; }
+extern "C" OcctResult<Handle_BRepAdaptor_Curve2d*> BRepAdaptor_Curve2d_to_handle(BRepAdaptor_Curve2d* obj) {
+    try { return {new Handle_BRepAdaptor_Curve2d(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const BRepAdaptor_Curve2d*> HandleBRepAdaptorCurve2d_get(const HandleBRepAdaptorCurve2d* handle) {
+extern "C" OcctResult<const BRepAdaptor_Curve2d*> Handle_BRepAdaptor_Curve2d_get(const Handle_BRepAdaptor_Curve2d* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<BRepAdaptor_Curve2d*> HandleBRepAdaptorCurve2d_get_mut(HandleBRepAdaptorCurve2d* handle) {
+extern "C" OcctResult<BRepAdaptor_Curve2d*> Handle_BRepAdaptor_Curve2d_get_mut(Handle_BRepAdaptor_Curve2d* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleGeom2dAdaptorCurve*> HandleBRepAdaptorCurve2d_to_HandleGeom2dAdaptorCurve(const HandleBRepAdaptorCurve2d* self_) {
-    try { return {new HandleGeom2dAdaptorCurve(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Geom2dAdaptor_Curve*> Handle_BRepAdaptor_Curve2d_to_Handle_Geom2dAdaptor_Curve(const Handle_BRepAdaptor_Curve2d* self_) {
+    try { return {new Handle_Geom2dAdaptor_Curve(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleAdaptor2dCurve2d*> HandleBRepAdaptorCurve2d_to_HandleAdaptor2dCurve2d(const HandleBRepAdaptorCurve2d* self_) {
-    try { return {new HandleAdaptor2dCurve2d(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Adaptor2d_Curve2d*> Handle_BRepAdaptor_Curve2d_to_Handle_Adaptor2d_Curve2d(const Handle_BRepAdaptor_Curve2d* self_) {
+    try { return {new Handle_Adaptor2d_Curve2d(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleBRepAdaptorCurve2d_to_HandleStandardTransient(const HandleBRepAdaptorCurve2d* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_BRepAdaptor_Curve2d_to_Handle_Standard_Transient(const Handle_BRepAdaptor_Curve2d* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" const char* BRepAdaptor_Curve2d_inherited_Reset(BRepAdaptor_Curve2d* self) {
@@ -5027,6 +5067,10 @@ extern "C" const char* BRepAdaptor_Curve2d_inherited_Reset(BRepAdaptor_Curve2d* 
 extern "C" const char* BRepAdaptor_Curve2d_inherited_Load(BRepAdaptor_Curve2d* self, Handle(Geom2d_Curve) const& theCurve) {
     try { self->Load(theCurve); return nullptr; }
     OCCT_CATCH_RETURN_VOID
+}
+extern "C" OcctResult<bool> BRepAdaptor_Curve2d_inherited_IsInitialized(const BRepAdaptor_Curve2d* self) {
+    try { return {self->IsInitialized(), nullptr}; }
+    OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(Geom2d_Curve) const*> BRepAdaptor_Curve2d_inherited_Curve(const BRepAdaptor_Curve2d* self) {
     try { return {&(self->Curve()), nullptr}; }
@@ -5048,7 +5092,7 @@ extern "C" OcctResult<int32_t> BRepAdaptor_Curve2d_inherited_NbIntervals(const B
     try { return {self->NbIntervals(static_cast<GeomAbs_Shape>(S)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* BRepAdaptor_Curve2d_inherited_Intervals(const BRepAdaptor_Curve2d* self, TColStd_Array1OfReal& T, int32_t S) {
+extern "C" const char* BRepAdaptor_Curve2d_inherited_Intervals(const BRepAdaptor_Curve2d* self, NCollection_Array1_double& T, int32_t S) {
     try { self->Intervals(T, static_cast<GeomAbs_Shape>(S)); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -5148,6 +5192,26 @@ extern "C" OcctResult<Handle(Geom2d_BSplineCurve)*> BRepAdaptor_Curve2d_inherite
     try { return {new Handle(Geom2d_BSplineCurve)(self->BSpline()), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" OcctResult<gp_Pnt2d*> BRepAdaptor_Curve2d_inherited_EvalD0(const BRepAdaptor_Curve2d* self, double theU) {
+    try { return {new gp_Pnt2d(self->EvalD0(theU)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Geom2d_Curve::ResD1*> BRepAdaptor_Curve2d_inherited_EvalD1(const BRepAdaptor_Curve2d* self, double theU) {
+    try { return {new Geom2d_Curve::ResD1(self->EvalD1(theU)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Geom2d_Curve::ResD2*> BRepAdaptor_Curve2d_inherited_EvalD2(const BRepAdaptor_Curve2d* self, double theU) {
+    try { return {new Geom2d_Curve::ResD2(self->EvalD2(theU)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Geom2d_Curve::ResD3*> BRepAdaptor_Curve2d_inherited_EvalD3(const BRepAdaptor_Curve2d* self, double theU) {
+    try { return {new Geom2d_Curve::ResD3(self->EvalD3(theU)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<gp_Vec2d*> BRepAdaptor_Curve2d_inherited_EvalDN(const BRepAdaptor_Curve2d* self, double theU, int32_t theN) {
+    try { return {new gp_Vec2d(self->EvalDN(theU, theN)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" OcctResult<bool> BRepAdaptor_Curve2d_inherited_IsInstance(const BRepAdaptor_Curve2d* self, Handle(Standard_Type) const& theType) {
     try { return {self->IsInstance(theType), nullptr}; }
     OCCT_CATCH_RETURN
@@ -5179,98 +5243,6 @@ extern "C" const char* BRepAdaptor_Curve2d_inherited_Delete(const BRepAdaptor_Cu
 extern "C" void BRepAdaptor_Curve2d_destructor(BRepAdaptor_Curve2d* self_) { delete self_; }
 
 // ========================
-// BRepAdaptor_HArray1OfCurve wrappers
-// ========================
-
-extern "C" OcctResult<BRepAdaptor_HArray1OfCurve*> BRepAdaptor_HArray1OfCurve_ctor() {
-    try { return {new BRepAdaptor_HArray1OfCurve(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<BRepAdaptor_HArray1OfCurve*> BRepAdaptor_HArray1OfCurve_ctor_int2(int32_t theLower, int32_t theUpper) {
-    try { return {new BRepAdaptor_HArray1OfCurve(theLower, theUpper), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<BRepAdaptor_HArray1OfCurve*> BRepAdaptor_HArray1OfCurve_ctor_int2_curve(int32_t theLower, int32_t theUpper, BRepAdaptor_Curve const* theValue) {
-    try { return {new BRepAdaptor_HArray1OfCurve(theLower, theUpper, *theValue), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<BRepAdaptor_HArray1OfCurve*> BRepAdaptor_HArray1OfCurve_ctor_curve_int2_bool(BRepAdaptor_Curve const* theBegin, int32_t theLower, int32_t theUpper, bool arg3) {
-    try { return {new BRepAdaptor_HArray1OfCurve(*theBegin, theLower, theUpper, arg3), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<BRepAdaptor_HArray1OfCurve*> BRepAdaptor_HArray1OfCurve_ctor_array1ofcurve(BRepAdaptor_Array1OfCurve const* theOther) {
-    try { return {new BRepAdaptor_HArray1OfCurve(*theOther), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<BRepAdaptor_Array1OfCurve const*> BRepAdaptor_HArray1OfCurve_array1(const BRepAdaptor_HArray1OfCurve* self_) {
-    try { return {&(self_->Array1()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<BRepAdaptor_Array1OfCurve*> BRepAdaptor_HArray1OfCurve_change_array1(BRepAdaptor_HArray1OfCurve* self_) {
-    try { return {&(self_->ChangeArray1()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Handle(Standard_Type) const*> BRepAdaptor_HArray1OfCurve_dynamic_type(const BRepAdaptor_HArray1OfCurve* self_) {
-    try { return {&(self_->DynamicType()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<char const*> BRepAdaptor_HArray1OfCurve_get_type_name() {
-    try { return {BRepAdaptor_HArray1OfCurve::get_type_name(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Handle(Standard_Type) const*> BRepAdaptor_HArray1OfCurve_get_type_descriptor() {
-    try { return {&(BRepAdaptor_HArray1OfCurve::get_type_descriptor()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<const Standard_Transient*> BRepAdaptor_HArray1OfCurve_as_Standard_Transient(const BRepAdaptor_HArray1OfCurve* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<Standard_Transient*> BRepAdaptor_HArray1OfCurve_as_Standard_Transient_mut(BRepAdaptor_HArray1OfCurve* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleBRepAdaptorHArray1OfCurve*> BRepAdaptor_HArray1OfCurve_to_handle(BRepAdaptor_HArray1OfCurve* obj) {
-    try { return {new HandleBRepAdaptorHArray1OfCurve(obj), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<const BRepAdaptor_HArray1OfCurve*> HandleBRepAdaptorHArray1OfCurve_get(const HandleBRepAdaptorHArray1OfCurve* handle) {
-    try { return {(*handle).get(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<BRepAdaptor_HArray1OfCurve*> HandleBRepAdaptorHArray1OfCurve_get_mut(HandleBRepAdaptorHArray1OfCurve* handle) {
-    try { return {(*handle).get(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<HandleStandardTransient*> HandleBRepAdaptorHArray1OfCurve_to_HandleStandardTransient(const HandleBRepAdaptorHArray1OfCurve* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<bool> BRepAdaptor_HArray1OfCurve_inherited_IsInstance(const BRepAdaptor_HArray1OfCurve* self, Handle(Standard_Type) const& theType) {
-    try { return {self->IsInstance(theType), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<bool> BRepAdaptor_HArray1OfCurve_inherited_IsKind(const BRepAdaptor_HArray1OfCurve* self, Handle(Standard_Type) const& theType) {
-    try { return {self->IsKind(theType), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Standard_Transient*> BRepAdaptor_HArray1OfCurve_inherited_This(const BRepAdaptor_HArray1OfCurve* self) {
-    try { return {self->This(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<int32_t> BRepAdaptor_HArray1OfCurve_inherited_GetRefCount(const BRepAdaptor_HArray1OfCurve* self) {
-    try { return {self->GetRefCount(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* BRepAdaptor_HArray1OfCurve_inherited_IncrementRefCounter(BRepAdaptor_HArray1OfCurve* self) {
-    try { self->IncrementRefCounter(); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<int32_t> BRepAdaptor_HArray1OfCurve_inherited_DecrementRefCounter(BRepAdaptor_HArray1OfCurve* self) {
-    try { return {self->DecrementRefCounter(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* BRepAdaptor_HArray1OfCurve_inherited_Delete(const BRepAdaptor_HArray1OfCurve* self) {
-    try { self->Delete(); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" void BRepAdaptor_HArray1OfCurve_destructor(BRepAdaptor_HArray1OfCurve* self_) { delete self_; }
-
-// ========================
 // BRepAdaptor_Surface wrappers
 // ========================
 
@@ -5286,66 +5258,6 @@ extern "C" OcctResult<Handle(Adaptor3d_Surface)*> BRepAdaptor_Surface_shallow_co
     try { return {new Handle(Adaptor3d_Surface)(self_->ShallowCopy()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(Adaptor3d_Surface)*> BRepAdaptor_Surface_u_trim(const BRepAdaptor_Surface* self_, double First, double Last, double Tol) {
-    try { return {new Handle(Adaptor3d_Surface)(self_->UTrim(First, Last, Tol)), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Handle(Adaptor3d_Surface)*> BRepAdaptor_Surface_v_trim(const BRepAdaptor_Surface* self_, double First, double Last, double Tol) {
-    try { return {new Handle(Adaptor3d_Surface)(self_->VTrim(First, Last, Tol)), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<gp_Pnt*> BRepAdaptor_Surface_value(const BRepAdaptor_Surface* self_, double U, double V) {
-    try { return {new gp_Pnt(self_->Value(U, V)), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<gp_Vec*> BRepAdaptor_Surface_dn(const BRepAdaptor_Surface* self_, double U, double V, int32_t Nu, int32_t Nv) {
-    try { return {new gp_Vec(self_->DN(U, V, Nu, Nv)), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<gp_Pln*> BRepAdaptor_Surface_plane(const BRepAdaptor_Surface* self_) {
-    try { return {new gp_Pln(self_->Plane()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<gp_Cylinder*> BRepAdaptor_Surface_cylinder(const BRepAdaptor_Surface* self_) {
-    try { return {new gp_Cylinder(self_->Cylinder()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<gp_Cone*> BRepAdaptor_Surface_cone(const BRepAdaptor_Surface* self_) {
-    try { return {new gp_Cone(self_->Cone()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<gp_Sphere*> BRepAdaptor_Surface_sphere(const BRepAdaptor_Surface* self_) {
-    try { return {new gp_Sphere(self_->Sphere()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<gp_Torus*> BRepAdaptor_Surface_torus(const BRepAdaptor_Surface* self_) {
-    try { return {new gp_Torus(self_->Torus()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Handle(Geom_BezierSurface)*> BRepAdaptor_Surface_bezier(const BRepAdaptor_Surface* self_) {
-    try { return {new Handle(Geom_BezierSurface)(self_->Bezier()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Handle(Geom_BSplineSurface)*> BRepAdaptor_Surface_b_spline(const BRepAdaptor_Surface* self_) {
-    try { return {new Handle(Geom_BSplineSurface)(self_->BSpline()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<gp_Ax1*> BRepAdaptor_Surface_axe_of_revolution(const BRepAdaptor_Surface* self_) {
-    try { return {new gp_Ax1(self_->AxeOfRevolution()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<gp_Dir*> BRepAdaptor_Surface_direction(const BRepAdaptor_Surface* self_) {
-    try { return {new gp_Dir(self_->Direction()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Handle(Adaptor3d_Curve)*> BRepAdaptor_Surface_basis_curve(const BRepAdaptor_Surface* self_) {
-    try { return {new Handle(Adaptor3d_Curve)(self_->BasisCurve()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Handle(Adaptor3d_Surface)*> BRepAdaptor_Surface_basis_surface(const BRepAdaptor_Surface* self_) {
-    try { return {new Handle(Adaptor3d_Surface)(self_->BasisSurface()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
 extern "C" OcctResult<Handle(Standard_Type) const*> BRepAdaptor_Surface_dynamic_type(const BRepAdaptor_Surface* self_) {
     try { return {&(self_->DynamicType()), nullptr}; }
     OCCT_CATCH_RETURN
@@ -5354,152 +5266,12 @@ extern "C" const char* BRepAdaptor_Surface_initialize(BRepAdaptor_Surface* self_
     try { self_->Initialize(*F, Restriction); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<GeomAdaptor_Surface const*> BRepAdaptor_Surface_surface(const BRepAdaptor_Surface* self_) {
-    try { return {&(self_->Surface()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<GeomAdaptor_Surface*> BRepAdaptor_Surface_change_surface(BRepAdaptor_Surface* self_) {
-    try { return {&(self_->ChangeSurface()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<gp_Trsf const*> BRepAdaptor_Surface_trsf(const BRepAdaptor_Surface* self_) {
-    try { return {&(self_->Trsf()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
 extern "C" OcctResult<TopoDS_Face const*> BRepAdaptor_Surface_face(const BRepAdaptor_Surface* self_) {
     try { return {&(self_->Face()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<double> BRepAdaptor_Surface_tolerance(const BRepAdaptor_Surface* self_) {
     try { return {self_->Tolerance(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<double> BRepAdaptor_Surface_first_u_parameter(const BRepAdaptor_Surface* self_) {
-    try { return {self_->FirstUParameter(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<double> BRepAdaptor_Surface_last_u_parameter(const BRepAdaptor_Surface* self_) {
-    try { return {self_->LastUParameter(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<double> BRepAdaptor_Surface_first_v_parameter(const BRepAdaptor_Surface* self_) {
-    try { return {self_->FirstVParameter(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<double> BRepAdaptor_Surface_last_v_parameter(const BRepAdaptor_Surface* self_) {
-    try { return {self_->LastVParameter(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<int32_t> BRepAdaptor_Surface_u_continuity(const BRepAdaptor_Surface* self_) {
-    try { return {static_cast<int32_t>(self_->UContinuity()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<int32_t> BRepAdaptor_Surface_v_continuity(const BRepAdaptor_Surface* self_) {
-    try { return {static_cast<int32_t>(self_->VContinuity()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<int32_t> BRepAdaptor_Surface_nb_u_intervals(const BRepAdaptor_Surface* self_, int32_t theSh) {
-    try { return {self_->NbUIntervals(static_cast<GeomAbs_Shape>(theSh)), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<int32_t> BRepAdaptor_Surface_nb_v_intervals(const BRepAdaptor_Surface* self_, int32_t theSh) {
-    try { return {self_->NbVIntervals(static_cast<GeomAbs_Shape>(theSh)), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* BRepAdaptor_Surface_u_intervals(const BRepAdaptor_Surface* self_, TColStd_Array1OfReal* T, int32_t S) {
-    try { self_->UIntervals(*T, static_cast<GeomAbs_Shape>(S)); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* BRepAdaptor_Surface_v_intervals(const BRepAdaptor_Surface* self_, TColStd_Array1OfReal* T, int32_t S) {
-    try { self_->VIntervals(*T, static_cast<GeomAbs_Shape>(S)); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<bool> BRepAdaptor_Surface_is_u_closed(const BRepAdaptor_Surface* self_) {
-    try { return {self_->IsUClosed(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<bool> BRepAdaptor_Surface_is_v_closed(const BRepAdaptor_Surface* self_) {
-    try { return {self_->IsVClosed(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<bool> BRepAdaptor_Surface_is_u_periodic(const BRepAdaptor_Surface* self_) {
-    try { return {self_->IsUPeriodic(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<double> BRepAdaptor_Surface_u_period(const BRepAdaptor_Surface* self_) {
-    try { return {self_->UPeriod(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<bool> BRepAdaptor_Surface_is_v_periodic(const BRepAdaptor_Surface* self_) {
-    try { return {self_->IsVPeriodic(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<double> BRepAdaptor_Surface_v_period(const BRepAdaptor_Surface* self_) {
-    try { return {self_->VPeriod(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* BRepAdaptor_Surface_d0(const BRepAdaptor_Surface* self_, double U, double V, gp_Pnt* P) {
-    try { self_->D0(U, V, *P); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* BRepAdaptor_Surface_d1(const BRepAdaptor_Surface* self_, double U, double V, gp_Pnt* P, gp_Vec* D1U, gp_Vec* D1V) {
-    try { self_->D1(U, V, *P, *D1U, *D1V); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* BRepAdaptor_Surface_d2(const BRepAdaptor_Surface* self_, double U, double V, gp_Pnt* P, gp_Vec* D1U, gp_Vec* D1V, gp_Vec* D2U, gp_Vec* D2V, gp_Vec* D2UV) {
-    try { self_->D2(U, V, *P, *D1U, *D1V, *D2U, *D2V, *D2UV); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* BRepAdaptor_Surface_d3(const BRepAdaptor_Surface* self_, double U, double V, gp_Pnt* P, gp_Vec* D1U, gp_Vec* D1V, gp_Vec* D2U, gp_Vec* D2V, gp_Vec* D2UV, gp_Vec* D3U, gp_Vec* D3V, gp_Vec* D3UUV, gp_Vec* D3UVV) {
-    try { self_->D3(U, V, *P, *D1U, *D1V, *D2U, *D2V, *D2UV, *D3U, *D3V, *D3UUV, *D3UVV); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<double> BRepAdaptor_Surface_u_resolution(const BRepAdaptor_Surface* self_, double theR3d) {
-    try { return {self_->UResolution(theR3d), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<double> BRepAdaptor_Surface_v_resolution(const BRepAdaptor_Surface* self_, double theR3d) {
-    try { return {self_->VResolution(theR3d), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<int32_t> BRepAdaptor_Surface_get_type(const BRepAdaptor_Surface* self_) {
-    try { return {static_cast<int32_t>(self_->GetType()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<int32_t> BRepAdaptor_Surface_u_degree(const BRepAdaptor_Surface* self_) {
-    try { return {self_->UDegree(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<int32_t> BRepAdaptor_Surface_nb_u_poles(const BRepAdaptor_Surface* self_) {
-    try { return {self_->NbUPoles(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<int32_t> BRepAdaptor_Surface_v_degree(const BRepAdaptor_Surface* self_) {
-    try { return {self_->VDegree(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<int32_t> BRepAdaptor_Surface_nb_v_poles(const BRepAdaptor_Surface* self_) {
-    try { return {self_->NbVPoles(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<int32_t> BRepAdaptor_Surface_nb_u_knots(const BRepAdaptor_Surface* self_) {
-    try { return {self_->NbUKnots(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<int32_t> BRepAdaptor_Surface_nb_v_knots(const BRepAdaptor_Surface* self_) {
-    try { return {self_->NbVKnots(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<bool> BRepAdaptor_Surface_is_u_rational(const BRepAdaptor_Surface* self_) {
-    try { return {self_->IsURational(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<bool> BRepAdaptor_Surface_is_v_rational(const BRepAdaptor_Surface* self_) {
-    try { return {self_->IsVRational(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<double> BRepAdaptor_Surface_offset_value(const BRepAdaptor_Surface* self_) {
-    try { return {self_->OffsetValue(), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<char const*> BRepAdaptor_Surface_get_type_name() {
@@ -5510,28 +5282,282 @@ extern "C" OcctResult<Handle(Standard_Type) const*> BRepAdaptor_Surface_get_type
     try { return {&(BRepAdaptor_Surface::get_type_descriptor()), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" OcctResult<const GeomAdaptor_TransformedSurface*> BRepAdaptor_Surface_as_GeomAdaptor_TransformedSurface(const BRepAdaptor_Surface* self_) { return {static_cast<const GeomAdaptor_TransformedSurface*>(self_), nullptr}; }
+extern "C" OcctResult<GeomAdaptor_TransformedSurface*> BRepAdaptor_Surface_as_GeomAdaptor_TransformedSurface_mut(BRepAdaptor_Surface* self_) { return {static_cast<GeomAdaptor_TransformedSurface*>(self_), nullptr}; }
 extern "C" OcctResult<const Adaptor3d_Surface*> BRepAdaptor_Surface_as_Adaptor3d_Surface(const BRepAdaptor_Surface* self_) { return {static_cast<const Adaptor3d_Surface*>(self_), nullptr}; }
 extern "C" OcctResult<Adaptor3d_Surface*> BRepAdaptor_Surface_as_Adaptor3d_Surface_mut(BRepAdaptor_Surface* self_) { return {static_cast<Adaptor3d_Surface*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> BRepAdaptor_Surface_as_Standard_Transient(const BRepAdaptor_Surface* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> BRepAdaptor_Surface_as_Standard_Transient_mut(BRepAdaptor_Surface* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleBRepAdaptorSurface*> BRepAdaptor_Surface_to_handle(BRepAdaptor_Surface* obj) {
-    try { return {new HandleBRepAdaptorSurface(obj), nullptr}; }
+extern "C" OcctResult<Handle_BRepAdaptor_Surface*> BRepAdaptor_Surface_to_handle(BRepAdaptor_Surface* obj) {
+    try { return {new Handle_BRepAdaptor_Surface(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const BRepAdaptor_Surface*> HandleBRepAdaptorSurface_get(const HandleBRepAdaptorSurface* handle) {
+extern "C" OcctResult<const BRepAdaptor_Surface*> Handle_BRepAdaptor_Surface_get(const Handle_BRepAdaptor_Surface* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<BRepAdaptor_Surface*> HandleBRepAdaptorSurface_get_mut(HandleBRepAdaptorSurface* handle) {
+extern "C" OcctResult<BRepAdaptor_Surface*> Handle_BRepAdaptor_Surface_get_mut(Handle_BRepAdaptor_Surface* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleAdaptor3dSurface*> HandleBRepAdaptorSurface_to_HandleAdaptor3dSurface(const HandleBRepAdaptorSurface* self_) {
-    try { return {new HandleAdaptor3dSurface(*self_), nullptr}; }
+extern "C" OcctResult<Handle_GeomAdaptor_TransformedSurface*> Handle_BRepAdaptor_Surface_to_Handle_GeomAdaptor_TransformedSurface(const Handle_BRepAdaptor_Surface* self_) {
+    try { return {new Handle_GeomAdaptor_TransformedSurface(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleBRepAdaptorSurface_to_HandleStandardTransient(const HandleBRepAdaptorSurface* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Adaptor3d_Surface*> Handle_BRepAdaptor_Surface_to_Handle_Adaptor3d_Surface(const Handle_BRepAdaptor_Surface* self_) {
+    try { return {new Handle_Adaptor3d_Surface(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_BRepAdaptor_Surface_to_Handle_Standard_Transient(const Handle_BRepAdaptor_Surface* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" const char* BRepAdaptor_Surface_inherited_Load(BRepAdaptor_Surface* self, Handle(Geom_Surface) const& theSurface, gp_Trsf const& theTrsf) {
+    try { self->Load(theSurface, theTrsf); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* BRepAdaptor_Surface_inherited_SetTrsf(BRepAdaptor_Surface* self, gp_Trsf const& theTrsf) {
+    try { self->SetTrsf(theTrsf); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" OcctResult<bool> BRepAdaptor_Surface_inherited_HasTrsf(const BRepAdaptor_Surface* self) {
+    try { return {self->HasTrsf(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<gp_Trsf const*> BRepAdaptor_Surface_inherited_Trsf(const BRepAdaptor_Surface* self) {
+    try { return {&(self->Trsf()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<GeomAdaptor_Surface const*> BRepAdaptor_Surface_inherited_AdaptorSurfaceOriginal(const BRepAdaptor_Surface* self) {
+    try { return {&(self->AdaptorSurfaceOriginal()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<GeomAdaptor_Surface const*> BRepAdaptor_Surface_inherited_AdaptorSurfaceTransformed(const BRepAdaptor_Surface* self) {
+    try { return {&(self->AdaptorSurfaceTransformed()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Handle(Geom_Surface) const*> BRepAdaptor_Surface_inherited_GeomSurfaceOriginal(const BRepAdaptor_Surface* self) {
+    try { return {&(self->GeomSurfaceOriginal()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Handle(Geom_Surface) const*> BRepAdaptor_Surface_inherited_GeomSurfaceTransformed(const BRepAdaptor_Surface* self) {
+    try { return {&(self->GeomSurfaceTransformed()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<double> BRepAdaptor_Surface_inherited_FirstUParameter(const BRepAdaptor_Surface* self) {
+    try { return {self->FirstUParameter(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<double> BRepAdaptor_Surface_inherited_LastUParameter(const BRepAdaptor_Surface* self) {
+    try { return {self->LastUParameter(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<double> BRepAdaptor_Surface_inherited_FirstVParameter(const BRepAdaptor_Surface* self) {
+    try { return {self->FirstVParameter(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<double> BRepAdaptor_Surface_inherited_LastVParameter(const BRepAdaptor_Surface* self) {
+    try { return {self->LastVParameter(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<int32_t> BRepAdaptor_Surface_inherited_UContinuity(const BRepAdaptor_Surface* self) {
+    try { return {static_cast<int32_t>(self->UContinuity()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<int32_t> BRepAdaptor_Surface_inherited_VContinuity(const BRepAdaptor_Surface* self) {
+    try { return {static_cast<int32_t>(self->VContinuity()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<int32_t> BRepAdaptor_Surface_inherited_NbUIntervals(const BRepAdaptor_Surface* self, int32_t theS) {
+    try { return {self->NbUIntervals(static_cast<GeomAbs_Shape>(theS)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<int32_t> BRepAdaptor_Surface_inherited_NbVIntervals(const BRepAdaptor_Surface* self, int32_t theS) {
+    try { return {self->NbVIntervals(static_cast<GeomAbs_Shape>(theS)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" const char* BRepAdaptor_Surface_inherited_UIntervals(const BRepAdaptor_Surface* self, NCollection_Array1_double& theT, int32_t theS) {
+    try { self->UIntervals(theT, static_cast<GeomAbs_Shape>(theS)); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* BRepAdaptor_Surface_inherited_VIntervals(const BRepAdaptor_Surface* self, NCollection_Array1_double& theT, int32_t theS) {
+    try { self->VIntervals(theT, static_cast<GeomAbs_Shape>(theS)); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" OcctResult<Handle(Adaptor3d_Surface)*> BRepAdaptor_Surface_inherited_UTrim(const BRepAdaptor_Surface* self, double theFirst, double theLast, double theTol) {
+    try { return {new Handle(Adaptor3d_Surface)(self->UTrim(theFirst, theLast, theTol)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Handle(Adaptor3d_Surface)*> BRepAdaptor_Surface_inherited_VTrim(const BRepAdaptor_Surface* self, double theFirst, double theLast, double theTol) {
+    try { return {new Handle(Adaptor3d_Surface)(self->VTrim(theFirst, theLast, theTol)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<bool> BRepAdaptor_Surface_inherited_IsUClosed(const BRepAdaptor_Surface* self) {
+    try { return {self->IsUClosed(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<bool> BRepAdaptor_Surface_inherited_IsVClosed(const BRepAdaptor_Surface* self) {
+    try { return {self->IsVClosed(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<bool> BRepAdaptor_Surface_inherited_IsUPeriodic(const BRepAdaptor_Surface* self) {
+    try { return {self->IsUPeriodic(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<double> BRepAdaptor_Surface_inherited_UPeriod(const BRepAdaptor_Surface* self) {
+    try { return {self->UPeriod(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<bool> BRepAdaptor_Surface_inherited_IsVPeriodic(const BRepAdaptor_Surface* self) {
+    try { return {self->IsVPeriodic(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<double> BRepAdaptor_Surface_inherited_VPeriod(const BRepAdaptor_Surface* self) {
+    try { return {self->VPeriod(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<double> BRepAdaptor_Surface_inherited_ToleranceU(const BRepAdaptor_Surface* self) {
+    try { return {self->ToleranceU(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<double> BRepAdaptor_Surface_inherited_ToleranceV(const BRepAdaptor_Surface* self) {
+    try { return {self->ToleranceV(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<gp_Pnt*> BRepAdaptor_Surface_inherited_EvalD0(const BRepAdaptor_Surface* self, double theU, double theV) {
+    try { return {new gp_Pnt(self->EvalD0(theU, theV)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Geom_Surface::ResD1*> BRepAdaptor_Surface_inherited_EvalD1(const BRepAdaptor_Surface* self, double theU, double theV) {
+    try { return {new Geom_Surface::ResD1(self->EvalD1(theU, theV)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Geom_Surface::ResD2*> BRepAdaptor_Surface_inherited_EvalD2(const BRepAdaptor_Surface* self, double theU, double theV) {
+    try { return {new Geom_Surface::ResD2(self->EvalD2(theU, theV)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Geom_Surface::ResD3*> BRepAdaptor_Surface_inherited_EvalD3(const BRepAdaptor_Surface* self, double theU, double theV) {
+    try { return {new Geom_Surface::ResD3(self->EvalD3(theU, theV)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<gp_Vec*> BRepAdaptor_Surface_inherited_EvalDN(const BRepAdaptor_Surface* self, double theU, double theV, int32_t theNu, int32_t theNv) {
+    try { return {new gp_Vec(self->EvalDN(theU, theV, theNu, theNv)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<double> BRepAdaptor_Surface_inherited_UResolution(const BRepAdaptor_Surface* self, double theR3d) {
+    try { return {self->UResolution(theR3d), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<double> BRepAdaptor_Surface_inherited_VResolution(const BRepAdaptor_Surface* self, double theR3d) {
+    try { return {self->VResolution(theR3d), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<int32_t> BRepAdaptor_Surface_inherited_GetType(const BRepAdaptor_Surface* self) {
+    try { return {static_cast<int32_t>(self->GetType()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<gp_Pln*> BRepAdaptor_Surface_inherited_Plane(const BRepAdaptor_Surface* self) {
+    try { return {new gp_Pln(self->Plane()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<gp_Cylinder*> BRepAdaptor_Surface_inherited_Cylinder(const BRepAdaptor_Surface* self) {
+    try { return {new gp_Cylinder(self->Cylinder()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<gp_Cone*> BRepAdaptor_Surface_inherited_Cone(const BRepAdaptor_Surface* self) {
+    try { return {new gp_Cone(self->Cone()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<gp_Sphere*> BRepAdaptor_Surface_inherited_Sphere(const BRepAdaptor_Surface* self) {
+    try { return {new gp_Sphere(self->Sphere()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<gp_Torus*> BRepAdaptor_Surface_inherited_Torus(const BRepAdaptor_Surface* self) {
+    try { return {new gp_Torus(self->Torus()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<int32_t> BRepAdaptor_Surface_inherited_UDegree(const BRepAdaptor_Surface* self) {
+    try { return {self->UDegree(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<int32_t> BRepAdaptor_Surface_inherited_NbUPoles(const BRepAdaptor_Surface* self) {
+    try { return {self->NbUPoles(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<int32_t> BRepAdaptor_Surface_inherited_VDegree(const BRepAdaptor_Surface* self) {
+    try { return {self->VDegree(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<int32_t> BRepAdaptor_Surface_inherited_NbVPoles(const BRepAdaptor_Surface* self) {
+    try { return {self->NbVPoles(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<int32_t> BRepAdaptor_Surface_inherited_NbUKnots(const BRepAdaptor_Surface* self) {
+    try { return {self->NbUKnots(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<int32_t> BRepAdaptor_Surface_inherited_NbVKnots(const BRepAdaptor_Surface* self) {
+    try { return {self->NbVKnots(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<bool> BRepAdaptor_Surface_inherited_IsURational(const BRepAdaptor_Surface* self) {
+    try { return {self->IsURational(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<bool> BRepAdaptor_Surface_inherited_IsVRational(const BRepAdaptor_Surface* self) {
+    try { return {self->IsVRational(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Handle(Geom_BezierSurface)*> BRepAdaptor_Surface_inherited_Bezier(const BRepAdaptor_Surface* self) {
+    try { return {new Handle(Geom_BezierSurface)(self->Bezier()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Handle(Geom_BSplineSurface)*> BRepAdaptor_Surface_inherited_BSpline(const BRepAdaptor_Surface* self) {
+    try { return {new Handle(Geom_BSplineSurface)(self->BSpline()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<gp_Ax1*> BRepAdaptor_Surface_inherited_AxeOfRevolution(const BRepAdaptor_Surface* self) {
+    try { return {new gp_Ax1(self->AxeOfRevolution()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<gp_Dir*> BRepAdaptor_Surface_inherited_Direction(const BRepAdaptor_Surface* self) {
+    try { return {new gp_Dir(self->Direction()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Handle(Adaptor3d_Curve)*> BRepAdaptor_Surface_inherited_BasisCurve(const BRepAdaptor_Surface* self) {
+    try { return {new Handle(Adaptor3d_Curve)(self->BasisCurve()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Handle(Adaptor3d_Surface)*> BRepAdaptor_Surface_inherited_BasisSurface(const BRepAdaptor_Surface* self) {
+    try { return {new Handle(Adaptor3d_Surface)(self->BasisSurface()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<double> BRepAdaptor_Surface_inherited_OffsetValue(const BRepAdaptor_Surface* self) {
+    try { return {self->OffsetValue(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<gp_Pnt*> BRepAdaptor_Surface_inherited_Value(const BRepAdaptor_Surface* self, double theU, double theV) {
+    try { return {new gp_Pnt(self->Value(theU, theV)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" const char* BRepAdaptor_Surface_inherited_D0(const BRepAdaptor_Surface* self, double theU, double theV, gp_Pnt& theP) {
+    try { self->D0(theU, theV, theP); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* BRepAdaptor_Surface_inherited_D1(const BRepAdaptor_Surface* self, double theU, double theV, gp_Pnt& theP, gp_Vec& theD1U, gp_Vec& theD1V) {
+    try { self->D1(theU, theV, theP, theD1U, theD1V); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* BRepAdaptor_Surface_inherited_D2(const BRepAdaptor_Surface* self, double theU, double theV, gp_Pnt& theP, gp_Vec& theD1U, gp_Vec& theD1V, gp_Vec& theD2U, gp_Vec& theD2V, gp_Vec& theD2UV) {
+    try { self->D2(theU, theV, theP, theD1U, theD1V, theD2U, theD2V, theD2UV); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* BRepAdaptor_Surface_inherited_D3(const BRepAdaptor_Surface* self, double theU, double theV, gp_Pnt& theP, gp_Vec& theD1U, gp_Vec& theD1V, gp_Vec& theD2U, gp_Vec& theD2V, gp_Vec& theD2UV, gp_Vec& theD3U, gp_Vec& theD3V, gp_Vec& theD3UUV, gp_Vec& theD3UVV) {
+    try { self->D3(theU, theV, theP, theD1U, theD1V, theD2U, theD2V, theD2UV, theD3U, theD3V, theD3UUV, theD3UVV); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" OcctResult<gp_Vec*> BRepAdaptor_Surface_inherited_DN(const BRepAdaptor_Surface* self, double theU, double theV, int32_t theNu, int32_t theNv) {
+    try { return {new gp_Vec(self->DN(theU, theV, theNu, theNv)), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> BRepAdaptor_Surface_inherited_IsInstance(const BRepAdaptor_Surface* self, Handle(Standard_Type) const& theType) {
@@ -5565,206 +5591,6020 @@ extern "C" const char* BRepAdaptor_Surface_inherited_Delete(const BRepAdaptor_Su
 extern "C" void BRepAdaptor_Surface_destructor(BRepAdaptor_Surface* self_) { delete self_; }
 
 // ========================
-// BRepLProp_CLProps wrappers
+// BRepGraph wrappers
 // ========================
 
-extern "C" OcctResult<BRepLProp_CLProps*> BRepLProp_CLProps_ctor_curve_int_real(BRepAdaptor_Curve const* C, int32_t N, double Resolution) {
-    try { return {new BRepLProp_CLProps(*C, N, Resolution), nullptr}; }
+extern "C" OcctResult<BRepGraph*> BRepGraph_ctor() {
+    try { return {new BRepGraph(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<BRepLProp_CLProps*> BRepLProp_CLProps_ctor_curve_real_int_real(BRepAdaptor_Curve const* C, double U, int32_t N, double Resolution) {
-    try { return {new BRepLProp_CLProps(*C, U, N, Resolution), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<BRepLProp_CLProps*> BRepLProp_CLProps_ctor_int_real(int32_t N, double Resolution) {
-    try { return {new BRepLProp_CLProps(N, Resolution), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* BRepLProp_CLProps_set_parameter(BRepLProp_CLProps* self_, double U) {
-    try { self_->SetParameter(U); return nullptr; }
+extern "C" const char* BRepGraph_clear(BRepGraph* self_) {
+    try { self_->Clear(); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* BRepLProp_CLProps_set_curve(BRepLProp_CLProps* self_, BRepAdaptor_Curve const* C) {
-    try { self_->SetCurve(*C); return nullptr; }
+extern "C" OcctResult<bool> BRepGraph_is_empty(const BRepGraph* self_) {
+    try { return {self_->IsEmpty(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<bool> BRepGraph_validate_relations(const BRepGraph* self_) {
+    try { return {self_->ValidateRelations(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<NCollection_LinearVector_BRepGraph_ProductId const*> BRepGraph_root_product_ids(const BRepGraph* self_) {
+    try { return {&(self_->RootProductIds()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<TDF_HAllocator const*> BRepGraph_allocator(const BRepGraph* self_) {
+    try { return {&(self_->Allocator()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<bool> BRepGraph_is_valid(const BRepGraph* self_) {
+    try { return {self_->IsValid(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<bool> BRepGraph_is_null(const BRepGraph* self_) {
+    try { return {self_->IsNull(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<BRepGraph::TopoView const*> BRepGraph_topo(const BRepGraph* self_) {
+    try { return {&(self_->Topo()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<BRepGraph::UIDsView const*> BRepGraph_ui_ds(const BRepGraph* self_) {
+    try { return {&(self_->UIDs()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<BRepGraph::RefsView const*> BRepGraph_refs(const BRepGraph* self_) {
+    try { return {&(self_->Refs()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<BRepGraph::ShapesView*> BRepGraph_shapes_mut(BRepGraph* self_) {
+    try { return {&(self_->Shapes()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<BRepGraph::ShapesView const*> BRepGraph_shapes(const BRepGraph* self_) {
+    try { return {&(self_->Shapes()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<BRepGraph::EditorView*> BRepGraph_editor_mut(BRepGraph* self_) {
+    try { return {&(self_->Editor()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<BRepGraph::EditorView const*> BRepGraph_editor(const BRepGraph* self_) {
+    try { return {&(self_->Editor()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<BRepGraph::MeshView const*> BRepGraph_mesh(const BRepGraph* self_) {
+    try { return {&(self_->Mesh()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<BRepGraph::MeshView*> BRepGraph_mesh_mut(BRepGraph* self_) {
+    try { return {&(self_->Mesh()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<BRepGraph_LayerRegistry*> BRepGraph_layer_registry_mut(BRepGraph* self_) {
+    try { return {&(self_->LayerRegistry()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<BRepGraph_LayerRegistry const*> BRepGraph_layer_registry(const BRepGraph* self_) {
+    try { return {&(self_->LayerRegistry()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<BRepGraph_CacheRegistry*> BRepGraph_cache_registry_mut(BRepGraph* self_) {
+    try { return {&(self_->CacheRegistry()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<BRepGraph_CacheRegistry const*> BRepGraph_cache_registry(const BRepGraph* self_) {
+    try { return {&(self_->CacheRegistry()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" void BRepGraph_destructor(BRepGraph* self_) { delete self_; }
+
+// ========================
+// BRepGraph_Cache wrappers
+// ========================
+
+extern "C" OcctResult<Standard_GUID const*> BRepGraph_Cache_id(const BRepGraph_Cache* self_) {
+    try { return {&(self_->ID()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<TCollection_AsciiString const*> BRepGraph_Cache_name(const BRepGraph_Cache* self_) {
+    try { return {&(self_->Name()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" const char* BRepGraph_Cache_clear(BRepGraph_Cache* self_) {
+    try { self_->Clear(); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<gp_Pnt const*> BRepLProp_CLProps_value(const BRepLProp_CLProps* self_) {
+extern "C" const char* BRepGraph_Cache_copy_fresh_to(const BRepGraph_Cache* self_, BRepGraph_CopyRemap const* theCopy) {
+    try { self_->CopyFreshTo(*theCopy); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" OcctResult<Handle(Standard_Type) const*> BRepGraph_Cache_dynamic_type(const BRepGraph_Cache* self_) {
+    try { return {&(self_->DynamicType()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<char const*> BRepGraph_Cache_get_type_name() {
+    try { return {BRepGraph_Cache::get_type_name(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Handle(Standard_Type) const*> BRepGraph_Cache_get_type_descriptor() {
+    try { return {&(BRepGraph_Cache::get_type_descriptor()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<const Standard_Transient*> BRepGraph_Cache_as_Standard_Transient(const BRepGraph_Cache* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
+extern "C" OcctResult<Standard_Transient*> BRepGraph_Cache_as_Standard_Transient_mut(BRepGraph_Cache* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
+extern "C" OcctResult<const BRepGraph_Cache*> Handle_BRepGraph_Cache_get(const Handle_BRepGraph_Cache* handle) {
+    try { return {(*handle).get(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<BRepGraph_Cache*> Handle_BRepGraph_Cache_get_mut(Handle_BRepGraph_Cache* handle) {
+    try { return {(*handle).get(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_BRepGraph_Cache_to_Handle_Standard_Transient(const Handle_BRepGraph_Cache* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Handle_BRepGraph_CacheDerivedState*> Handle_BRepGraph_Cache_downcast_to_Handle_BRepGraph_CacheDerivedState(const Handle_BRepGraph_Cache* self_) {
+    try {
+    opencascade::handle<BRepGraph_CacheDerivedState> result = opencascade::handle<BRepGraph_CacheDerivedState>::DownCast(*self_);
+    if (result.IsNull()) { return {nullptr, nullptr}; }
+    return {new Handle_BRepGraph_CacheDerivedState(result), nullptr};
+    }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Handle_BRepGraph_CacheMesh*> Handle_BRepGraph_Cache_downcast_to_Handle_BRepGraph_CacheMesh(const Handle_BRepGraph_Cache* self_) {
+    try {
+    opencascade::handle<BRepGraph_CacheMesh> result = opencascade::handle<BRepGraph_CacheMesh>::DownCast(*self_);
+    if (result.IsNull()) { return {nullptr, nullptr}; }
+    return {new Handle_BRepGraph_CacheMesh(result), nullptr};
+    }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<bool> BRepGraph_Cache_inherited_IsInstance(const BRepGraph_Cache* self, Handle(Standard_Type) const& theType) {
+    try { return {self->IsInstance(theType), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<bool> BRepGraph_Cache_inherited_IsKind(const BRepGraph_Cache* self, Handle(Standard_Type) const& theType) {
+    try { return {self->IsKind(theType), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Standard_Transient*> BRepGraph_Cache_inherited_This(const BRepGraph_Cache* self) {
+    try { return {self->This(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<int32_t> BRepGraph_Cache_inherited_GetRefCount(const BRepGraph_Cache* self) {
+    try { return {self->GetRefCount(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" const char* BRepGraph_Cache_inherited_IncrementRefCounter(BRepGraph_Cache* self) {
+    try { self->IncrementRefCounter(); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" OcctResult<int32_t> BRepGraph_Cache_inherited_DecrementRefCounter(BRepGraph_Cache* self) {
+    try { return {self->DecrementRefCounter(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" const char* BRepGraph_Cache_inherited_Delete(const BRepGraph_Cache* self) {
+    try { self->Delete(); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" void BRepGraph_Cache_destructor(BRepGraph_Cache* self_) { delete self_; }
+
+// ========================
+// BRepGraph_CacheDerivedState wrappers
+// ========================
+
+extern "C" OcctResult<BRepGraph_CacheDerivedState*> BRepGraph_CacheDerivedState_ctor() {
+    try { return {new BRepGraph_CacheDerivedState(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Standard_GUID const*> BRepGraph_CacheDerivedState_id(const BRepGraph_CacheDerivedState* self_) {
+    try { return {&(self_->ID()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<TCollection_AsciiString const*> BRepGraph_CacheDerivedState_name(const BRepGraph_CacheDerivedState* self_) {
+    try { return {&(self_->Name()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" const char* BRepGraph_CacheDerivedState_clear(BRepGraph_CacheDerivedState* self_) {
+    try { self_->Clear(); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* BRepGraph_CacheDerivedState_copy_fresh_to(const BRepGraph_CacheDerivedState* self_, BRepGraph_CopyRemap const* theCopy) {
+    try { self_->CopyFreshTo(*theCopy); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" OcctResult<bool> BRepGraph_CacheDerivedState_is_degenerated(BRepGraph_CacheDerivedState* self_, BRepGraph_EdgeId const* theEdge) {
+    try { return {self_->IsDegenerated(*theEdge), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<bool> BRepGraph_CacheDerivedState_same_parameter(BRepGraph_CacheDerivedState* self_, BRepGraph_CoEdgeId const* theCoEdge) {
+    try { return {self_->SameParameter(*theCoEdge), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<bool> BRepGraph_CacheDerivedState_same_range(BRepGraph_CacheDerivedState* self_, BRepGraph_CoEdgeId const* theCoEdge) {
+    try { return {self_->SameRange(*theCoEdge), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<bool> BRepGraph_CacheDerivedState_is_closed(BRepGraph_CacheDerivedState* self_, BRepGraph_EdgeId const* theEdge) {
+    try { return {self_->IsClosed(*theEdge), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<bool> BRepGraph_CacheDerivedState_get_wire_is_closed(BRepGraph_CacheDerivedState* self_, BRepGraph_WireId const* theWire, bool* theClosed) {
+    try { return {self_->GetWireIsClosed(*theWire, *theClosed), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" const char* BRepGraph_CacheDerivedState_set_wire_is_closed(BRepGraph_CacheDerivedState* self_, BRepGraph_WireId const* theWire, bool theClosed) {
+    try { self_->SetWireIsClosed(*theWire, theClosed); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" OcctResult<bool> BRepGraph_CacheDerivedState_is_shell_closed(BRepGraph_CacheDerivedState* self_, BRepGraph_ShellId const* theShell) {
+    try { return {self_->IsShellClosed(*theShell), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Handle(Standard_Type) const*> BRepGraph_CacheDerivedState_dynamic_type(const BRepGraph_CacheDerivedState* self_) {
+    try { return {&(self_->DynamicType()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Standard_GUID const*> BRepGraph_CacheDerivedState_get_id() {
+    try { return {&(BRepGraph_CacheDerivedState::GetID()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<bool> BRepGraph_CacheDerivedState_compute_edge_properties(BRepGraph const* theGraph, BRepGraph_EdgeId const* theEdge, bool* theIsDegenerated, bool* theIsClosed) {
+    try { return {BRepGraph_CacheDerivedState::ComputeEdgeProperties(*theGraph, *theEdge, *theIsDegenerated, *theIsClosed), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<bool> BRepGraph_CacheDerivedState_compute_shell_is_closed(BRepGraph const* theGraph, BRepGraph_ShellId const* theShell) {
+    try { return {BRepGraph_CacheDerivedState::ComputeShellIsClosed(*theGraph, *theShell), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<bool> BRepGraph_CacheDerivedState_compute_wire_is_closed(BRepGraph const* theGraph, BRepGraph_WireId const* theWire) {
+    try { return {BRepGraph_CacheDerivedState::ComputeWireIsClosed(*theGraph, *theWire), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<char const*> BRepGraph_CacheDerivedState_get_type_name() {
+    try { return {BRepGraph_CacheDerivedState::get_type_name(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Handle(Standard_Type) const*> BRepGraph_CacheDerivedState_get_type_descriptor() {
+    try { return {&(BRepGraph_CacheDerivedState::get_type_descriptor()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<const BRepGraph_Cache*> BRepGraph_CacheDerivedState_as_BRepGraph_Cache(const BRepGraph_CacheDerivedState* self_) { return {static_cast<const BRepGraph_Cache*>(self_), nullptr}; }
+extern "C" OcctResult<BRepGraph_Cache*> BRepGraph_CacheDerivedState_as_BRepGraph_Cache_mut(BRepGraph_CacheDerivedState* self_) { return {static_cast<BRepGraph_Cache*>(self_), nullptr}; }
+extern "C" OcctResult<const Standard_Transient*> BRepGraph_CacheDerivedState_as_Standard_Transient(const BRepGraph_CacheDerivedState* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
+extern "C" OcctResult<Standard_Transient*> BRepGraph_CacheDerivedState_as_Standard_Transient_mut(BRepGraph_CacheDerivedState* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
+extern "C" OcctResult<Handle_BRepGraph_CacheDerivedState*> BRepGraph_CacheDerivedState_to_handle(BRepGraph_CacheDerivedState* obj) {
+    try { return {new Handle_BRepGraph_CacheDerivedState(obj), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<const BRepGraph_CacheDerivedState*> Handle_BRepGraph_CacheDerivedState_get(const Handle_BRepGraph_CacheDerivedState* handle) {
+    try { return {(*handle).get(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<BRepGraph_CacheDerivedState*> Handle_BRepGraph_CacheDerivedState_get_mut(Handle_BRepGraph_CacheDerivedState* handle) {
+    try { return {(*handle).get(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Handle_BRepGraph_Cache*> Handle_BRepGraph_CacheDerivedState_to_Handle_BRepGraph_Cache(const Handle_BRepGraph_CacheDerivedState* self_) {
+    try { return {new Handle_BRepGraph_Cache(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_BRepGraph_CacheDerivedState_to_Handle_Standard_Transient(const Handle_BRepGraph_CacheDerivedState* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<bool> BRepGraph_CacheDerivedState_inherited_IsInstance(const BRepGraph_CacheDerivedState* self, Handle(Standard_Type) const& theType) {
+    try { return {self->IsInstance(theType), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<bool> BRepGraph_CacheDerivedState_inherited_IsKind(const BRepGraph_CacheDerivedState* self, Handle(Standard_Type) const& theType) {
+    try { return {self->IsKind(theType), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Standard_Transient*> BRepGraph_CacheDerivedState_inherited_This(const BRepGraph_CacheDerivedState* self) {
+    try { return {self->This(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<int32_t> BRepGraph_CacheDerivedState_inherited_GetRefCount(const BRepGraph_CacheDerivedState* self) {
+    try { return {self->GetRefCount(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" const char* BRepGraph_CacheDerivedState_inherited_IncrementRefCounter(BRepGraph_CacheDerivedState* self) {
+    try { self->IncrementRefCounter(); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" OcctResult<int32_t> BRepGraph_CacheDerivedState_inherited_DecrementRefCounter(BRepGraph_CacheDerivedState* self) {
+    try { return {self->DecrementRefCounter(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" const char* BRepGraph_CacheDerivedState_inherited_Delete(const BRepGraph_CacheDerivedState* self) {
+    try { self->Delete(); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" void BRepGraph_CacheDerivedState_destructor(BRepGraph_CacheDerivedState* self_) { delete self_; }
+
+// ========================
+// BRepGraph_CacheIterator wrappers
+// ========================
+
+extern "C" OcctResult<BRepGraph_CacheIterator*> BRepGraph_CacheIterator_ctor_cacheregistry(BRepGraph_CacheRegistry const* theRegistry) {
+    try { return {new BRepGraph_CacheIterator(*theRegistry), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Handle(BRepGraph_Cache)*> BRepGraph_CacheIterator_value(const BRepGraph_CacheIterator* self_) {
+    try { return {new Handle(BRepGraph_Cache)(self_->Value()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<bool> BRepGraph_CacheIterator_more(const BRepGraph_CacheIterator* self_) {
+    try { return {self_->More(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" const char* BRepGraph_CacheIterator_next(BRepGraph_CacheIterator* self_) {
+    try { self_->Next(); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" OcctResult<uint32_t> BRepGraph_CacheIterator_slot(const BRepGraph_CacheIterator* self_) {
+    try { return {self_->Slot(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<uint32_t> BRepGraph_CacheIterator_nb_caches(const BRepGraph_CacheIterator* self_) {
+    try { return {self_->NbCaches(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" void BRepGraph_CacheIterator_destructor(BRepGraph_CacheIterator* self_) { delete self_; }
+
+// ========================
+// BRepGraph_CacheMesh wrappers
+// ========================
+
+extern "C" OcctResult<const BRepGraph_Cache*> BRepGraph_CacheMesh_as_BRepGraph_Cache(const BRepGraph_CacheMesh* self_) { return {static_cast<const BRepGraph_Cache*>(self_), nullptr}; }
+extern "C" OcctResult<BRepGraph_Cache*> BRepGraph_CacheMesh_as_BRepGraph_Cache_mut(BRepGraph_CacheMesh* self_) { return {static_cast<BRepGraph_Cache*>(self_), nullptr}; }
+extern "C" OcctResult<const Standard_Transient*> BRepGraph_CacheMesh_as_Standard_Transient(const BRepGraph_CacheMesh* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
+extern "C" OcctResult<Standard_Transient*> BRepGraph_CacheMesh_as_Standard_Transient_mut(BRepGraph_CacheMesh* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
+extern "C" OcctResult<const BRepGraph_CacheMesh*> Handle_BRepGraph_CacheMesh_get(const Handle_BRepGraph_CacheMesh* handle) {
+    try { return {(*handle).get(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<BRepGraph_CacheMesh*> Handle_BRepGraph_CacheMesh_get_mut(Handle_BRepGraph_CacheMesh* handle) {
+    try { return {(*handle).get(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Handle_BRepGraph_Cache*> Handle_BRepGraph_CacheMesh_to_Handle_BRepGraph_Cache(const Handle_BRepGraph_CacheMesh* self_) {
+    try { return {new Handle_BRepGraph_Cache(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_BRepGraph_CacheMesh_to_Handle_Standard_Transient(const Handle_BRepGraph_CacheMesh* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<bool> BRepGraph_CacheMesh_inherited_IsInstance(const BRepGraph_CacheMesh* self, Handle(Standard_Type) const& theType) {
+    try { return {self->IsInstance(theType), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<bool> BRepGraph_CacheMesh_inherited_IsKind(const BRepGraph_CacheMesh* self, Handle(Standard_Type) const& theType) {
+    try { return {self->IsKind(theType), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Standard_Transient*> BRepGraph_CacheMesh_inherited_This(const BRepGraph_CacheMesh* self) {
+    try { return {self->This(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<int32_t> BRepGraph_CacheMesh_inherited_GetRefCount(const BRepGraph_CacheMesh* self) {
+    try { return {self->GetRefCount(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" const char* BRepGraph_CacheMesh_inherited_IncrementRefCounter(BRepGraph_CacheMesh* self) {
+    try { self->IncrementRefCounter(); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" OcctResult<int32_t> BRepGraph_CacheMesh_inherited_DecrementRefCounter(BRepGraph_CacheMesh* self) {
+    try { return {self->DecrementRefCounter(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" const char* BRepGraph_CacheMesh_inherited_Delete(const BRepGraph_CacheMesh* self) {
+    try { self->Delete(); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+
+// sizeof helper for POD struct BRepGraph_CacheMesh::EntryStamp
+extern "C" size_t BRepGraph_CacheMesh_EntryStamp_sizeof() { return sizeof(BRepGraph_CacheMesh::EntryStamp); }
+extern "C" void BRepGraph_CacheMesh_EntryStamp_destructor(BRepGraph_CacheMesh::EntryStamp* self_) { delete self_; }
+
+// ========================
+// BRepGraph_CacheMesh::FaceMeshEntry wrappers
+// ========================
+
+extern "C" OcctResult<BRepGraph_CacheMesh::FaceMeshEntry*> BRepGraph_CacheMesh_FaceMeshEntry_ctor() {
+    try { return {new BRepGraph_CacheMesh::FaceMeshEntry(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<bool> BRepGraph_CacheMesh_FaceMeshEntry_is_present(const BRepGraph_CacheMesh::FaceMeshEntry* self_) {
+    try { return {self_->IsPresent(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" const char* BRepGraph_CacheMesh_FaceMeshEntry_clear_representation(BRepGraph_CacheMesh::FaceMeshEntry* self_) {
+    try { self_->ClearRepresentation(); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* BRepGraph_CacheMesh_FaceMeshEntry_reset(BRepGraph_CacheMesh::FaceMeshEntry* self_) {
+    try { self_->Reset(); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" void BRepGraph_CacheMesh_FaceMeshEntry_destructor(BRepGraph_CacheMesh::FaceMeshEntry* self_) { delete self_; }
+
+// ========================
+// BRepGraph_CacheMesh::CoEdgeMeshEntry wrappers
+// ========================
+
+extern "C" OcctResult<BRepGraph_CacheMesh::CoEdgeMeshEntry*> BRepGraph_CacheMesh_CoEdgeMeshEntry_ctor() {
+    try { return {new BRepGraph_CacheMesh::CoEdgeMeshEntry(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<bool> BRepGraph_CacheMesh_CoEdgeMeshEntry_is_present(const BRepGraph_CacheMesh::CoEdgeMeshEntry* self_) {
+    try { return {self_->IsPresent(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" const char* BRepGraph_CacheMesh_CoEdgeMeshEntry_reset(BRepGraph_CacheMesh::CoEdgeMeshEntry* self_) {
+    try { self_->Reset(); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" void BRepGraph_CacheMesh_CoEdgeMeshEntry_destructor(BRepGraph_CacheMesh::CoEdgeMeshEntry* self_) { delete self_; }
+
+// ========================
+// BRepGraph_CacheMesh::EdgeMeshEntry wrappers
+// ========================
+
+extern "C" OcctResult<BRepGraph_CacheMesh::EdgeMeshEntry*> BRepGraph_CacheMesh_EdgeMeshEntry_ctor() {
+    try { return {new BRepGraph_CacheMesh::EdgeMeshEntry(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<bool> BRepGraph_CacheMesh_EdgeMeshEntry_is_present(const BRepGraph_CacheMesh::EdgeMeshEntry* self_) {
+    try { return {self_->IsPresent(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" const char* BRepGraph_CacheMesh_EdgeMeshEntry_reset(BRepGraph_CacheMesh::EdgeMeshEntry* self_) {
+    try { self_->Reset(); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" void BRepGraph_CacheMesh_EdgeMeshEntry_destructor(BRepGraph_CacheMesh::EdgeMeshEntry* self_) { delete self_; }
+
+// ========================
+// BRepGraph_CacheMesh::DirtySet wrappers
+// ========================
+
+extern "C" OcctResult<BRepGraph_CacheMesh::DirtySet*> BRepGraph_CacheMesh_DirtySet_ctor() {
+    try { return {new BRepGraph_CacheMesh::DirtySet(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<bool> BRepGraph_CacheMesh_DirtySet_is_empty(const BRepGraph_CacheMesh::DirtySet* self_) {
+    try { return {self_->IsEmpty(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" const char* BRepGraph_CacheMesh_DirtySet_clear(BRepGraph_CacheMesh::DirtySet* self_) {
+    try { self_->Clear(); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" void BRepGraph_CacheMesh_DirtySet_destructor(BRepGraph_CacheMesh::DirtySet* self_) { delete self_; }
+
+// ========================
+// BRepGraph_CacheMesh::SlotState wrappers
+// ========================
+
+extern "C" OcctResult<BRepGraph_CacheMesh::SlotState*> BRepGraph_CacheMesh_SlotState_ctor() {
+    try { return {new BRepGraph_CacheMesh::SlotState(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" void BRepGraph_CacheMesh_SlotState_destructor(BRepGraph_CacheMesh::SlotState* self_) { delete self_; }
+
+// ========================
+// BRepGraph_CacheMesh::Driver wrappers
+// ========================
+
+extern "C" OcctResult<Standard_GUID const*> BRepGraph_CacheMesh_Driver_id(const BRepGraph_CacheMesh::Driver* self_) {
+    try { return {&(self_->ID()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<uint64_t> BRepGraph_CacheMesh_Driver_recipe_hash(const BRepGraph_CacheMesh::Driver* self_) {
+    try { return {self_->RecipeHash(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<bool> BRepGraph_CacheMesh_Driver_fill(BRepGraph_CacheMesh::Driver* self_, BRepGraph* theGraph, BRepGraph_CacheMesh::SlotId const* theSlot, BRepGraph_CacheMesh::DirtySet const* theDirtySet, Message_ProgressRange const* theRange) {
+    try { return {self_->Fill(*theGraph, *theSlot, *theDirtySet, *theRange), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Handle(Standard_Type) const*> BRepGraph_CacheMesh_Driver_dynamic_type(const BRepGraph_CacheMesh::Driver* self_) {
+    try { return {&(self_->DynamicType()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<char const*> BRepGraph_CacheMesh_Driver_get_type_name() {
+    try { return {BRepGraph_CacheMesh::Driver::get_type_name(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Handle(Standard_Type) const*> BRepGraph_CacheMesh_Driver_get_type_descriptor() {
+    try { return {&(BRepGraph_CacheMesh::Driver::get_type_descriptor()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<const Standard_Transient*> BRepGraph_CacheMesh_Driver_as_Standard_Transient(const BRepGraph_CacheMesh::Driver* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
+extern "C" OcctResult<Standard_Transient*> BRepGraph_CacheMesh_Driver_as_Standard_Transient_mut(BRepGraph_CacheMesh::Driver* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
+extern "C" OcctResult<const BRepGraph_CacheMesh::Driver*> Handle_BRepGraph_CacheMesh_Driver_get(const Handle_BRepGraph_CacheMesh_Driver* handle) {
+    try { return {(*handle).get(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<BRepGraph_CacheMesh::Driver*> Handle_BRepGraph_CacheMesh_Driver_get_mut(Handle_BRepGraph_CacheMesh_Driver* handle) {
+    try { return {(*handle).get(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_BRepGraph_CacheMesh_Driver_to_Handle_Standard_Transient(const Handle_BRepGraph_CacheMesh_Driver* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<bool> BRepGraph_CacheMesh_Driver_inherited_IsInstance(const BRepGraph_CacheMesh::Driver* self, Handle(Standard_Type) const& theType) {
+    try { return {self->IsInstance(theType), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<bool> BRepGraph_CacheMesh_Driver_inherited_IsKind(const BRepGraph_CacheMesh::Driver* self, Handle(Standard_Type) const& theType) {
+    try { return {self->IsKind(theType), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Standard_Transient*> BRepGraph_CacheMesh_Driver_inherited_This(const BRepGraph_CacheMesh::Driver* self) {
+    try { return {self->This(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<int32_t> BRepGraph_CacheMesh_Driver_inherited_GetRefCount(const BRepGraph_CacheMesh::Driver* self) {
+    try { return {self->GetRefCount(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" const char* BRepGraph_CacheMesh_Driver_inherited_IncrementRefCounter(BRepGraph_CacheMesh::Driver* self) {
+    try { self->IncrementRefCounter(); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" OcctResult<int32_t> BRepGraph_CacheMesh_Driver_inherited_DecrementRefCounter(BRepGraph_CacheMesh::Driver* self) {
+    try { return {self->DecrementRefCounter(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" const char* BRepGraph_CacheMesh_Driver_inherited_Delete(const BRepGraph_CacheMesh::Driver* self) {
+    try { self->Delete(); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" void BRepGraph_CacheMesh_Driver_destructor(BRepGraph_CacheMesh::Driver* self_) { delete self_; }
+
+// ========================
+// BRepGraph_CacheRegistry wrappers
+// ========================
+
+extern "C" OcctResult<BRepGraph_CacheRegistry*> BRepGraph_CacheRegistry_ctor() {
+    try { return {new BRepGraph_CacheRegistry(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Handle(BRepGraph_Cache)*> BRepGraph_CacheRegistry_find_cache(const BRepGraph_CacheRegistry* self_, Standard_GUID const* theGUID) {
+    try { return {new Handle(BRepGraph_Cache)(self_->FindCache(*theGUID)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Handle(BRepGraph_Cache)*> BRepGraph_CacheRegistry_cache(const BRepGraph_CacheRegistry* self_, uint32_t theSlot) {
+    try { return {new Handle(BRepGraph_Cache)(self_->Cache(theSlot)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<BRepGraph_CacheIterator*> BRepGraph_CacheRegistry_cache_iter(const BRepGraph_CacheRegistry* self_) {
+    try { return {new BRepGraph_CacheIterator(self_->CacheIter()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<uint32_t> BRepGraph_CacheRegistry_register_cache(BRepGraph_CacheRegistry* self_, Handle(BRepGraph_Cache) const* theCache) {
+    try { return {self_->RegisterCache(*theCache), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<uint32_t> BRepGraph_CacheRegistry_register(BRepGraph_CacheRegistry* self_, Handle(BRepGraph_Cache) const* theCache) {
+    try { return {self_->Register(*theCache), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" const char* BRepGraph_CacheRegistry_unregister_cache(BRepGraph_CacheRegistry* self_, Standard_GUID const* theGUID) {
+    try { self_->UnregisterCache(*theGUID); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" OcctResult<bool> BRepGraph_CacheRegistry_find_slot_guid_uint(const BRepGraph_CacheRegistry* self_, Standard_GUID const* theGUID, uint32_t* theSlot) {
+    try { return {self_->FindSlot(*theGUID, *theSlot), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<bool> BRepGraph_CacheRegistry_find_slot_handlebrepgraphcache_uint(const BRepGraph_CacheRegistry* self_, Handle(BRepGraph_Cache) const* theCache, uint32_t* theSlot) {
+    try { return {self_->FindSlot(*theCache, *theSlot), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<uint32_t> BRepGraph_CacheRegistry_nb_caches(const BRepGraph_CacheRegistry* self_) {
+    try { return {self_->NbCaches(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" const char* BRepGraph_CacheRegistry_clear_all(BRepGraph_CacheRegistry* self_) {
+    try { self_->ClearAll(); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* BRepGraph_CacheRegistry_copy_fresh_caches_to_brepgraph_flatdatamap_brepgraph_itemid_brepgraph_itemid_mode(const BRepGraph_CacheRegistry* self_, BRepGraph* theTargetGraph, NCollection_FlatDataMap_BRepGraph_ItemId_BRepGraph_ItemId const* theItemRemap, BRepGraph_CopyRemap::Mode const* theMode) {
+    try { self_->CopyFreshCachesTo(*theTargetGraph, *theItemRemap, *theMode); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* BRepGraph_CacheRegistry_copy_fresh_caches_to_brepgraph_mappingkind_mode(const BRepGraph_CacheRegistry* self_, BRepGraph* theTargetGraph, BRepGraph_CopyRemap::MappingKind const* theMappingKind, BRepGraph_CopyRemap::Mode const* theMode) {
+    try { self_->CopyFreshCachesTo(*theTargetGraph, *theMappingKind, *theMode); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* BRepGraph_CacheRegistry_clear(BRepGraph_CacheRegistry* self_) {
+    try { self_->Clear(); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" void BRepGraph_CacheRegistry_destructor(BRepGraph_CacheRegistry* self_) { delete self_; }
+
+// ========================
+// BRepGraph_ChildExplorer wrappers
+// ========================
+
+extern "C" OcctResult<BRepGraph_ChildExplorer*> BRepGraph_ChildExplorer_ctor_brepgraph_nodeid_config(BRepGraph const* theGraph, BRepGraph_NodeId const* theRoot, BRepGraph_ChildExplorer::Config const* theConfig) {
+    try { return {new BRepGraph_ChildExplorer(*theGraph, *theRoot, *theConfig), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<BRepGraph_ChildExplorer*> BRepGraph_ChildExplorer_ctor_brepgraph_nodeid(BRepGraph const* theGraph, BRepGraph_NodeId const* theRoot) {
+    try { return {new BRepGraph_ChildExplorer(*theGraph, *theRoot), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<BRepGraph_ChildExplorer*> BRepGraph_ChildExplorer_ctor_brepgraph_nodeid_traversalmode(BRepGraph const* theGraph, BRepGraph_NodeId const* theRoot, BRepGraph_ChildExplorer::TraversalMode const* theMode) {
+    try { return {new BRepGraph_ChildExplorer(*theGraph, *theRoot, *theMode), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<BRepGraph_ChildExplorer*> BRepGraph_ChildExplorer_ctor_brepgraph_nodeid_kind(BRepGraph const* theGraph, BRepGraph_NodeId const* theRoot, BRepGraph_NodeId::Kind const* theTargetKind) {
+    try { return {new BRepGraph_ChildExplorer(*theGraph, *theRoot, *theTargetKind), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<BRepGraph_ChildExplorer*> BRepGraph_ChildExplorer_ctor_brepgraph_nodeid_kind_traversalmode(BRepGraph const* theGraph, BRepGraph_NodeId const* theRoot, BRepGraph_NodeId::Kind const* theTargetKind, BRepGraph_ChildExplorer::TraversalMode const* theMode) {
+    try { return {new BRepGraph_ChildExplorer(*theGraph, *theRoot, *theTargetKind, *theMode), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<BRepGraph_ChildExplorer*> BRepGraph_ChildExplorer_ctor_brepgraph_productid_kind(BRepGraph const* theGraph, BRepGraph_ProductId const* theProduct, BRepGraph_NodeId::Kind const* theTargetKind) {
+    try { return {new BRepGraph_ChildExplorer(*theGraph, *theProduct, *theTargetKind), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<BRepGraph_ChildExplorer*> BRepGraph_ChildExplorer_ctor_brepgraph_productid_kind_traversalmode(BRepGraph const* theGraph, BRepGraph_ProductId const* theProduct, BRepGraph_NodeId::Kind const* theTargetKind, BRepGraph_ChildExplorer::TraversalMode const* theMode) {
+    try { return {new BRepGraph_ChildExplorer(*theGraph, *theProduct, *theTargetKind, *theMode), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<BRepGraph_ChildExplorer*> BRepGraph_ChildExplorer_ctor_brepgraph_nodeid_kind_bool2_traversalmode(BRepGraph const* theGraph, BRepGraph_NodeId const* theRoot, BRepGraph_NodeId::Kind const* theTargetKind, bool theCumLoc, bool theCumOri, BRepGraph_ChildExplorer::TraversalMode const* theMode) {
+    try { return {new BRepGraph_ChildExplorer(*theGraph, *theRoot, *theTargetKind, theCumLoc, theCumOri, *theMode), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<BRepGraph_ChildExplorer*> BRepGraph_ChildExplorer_ctor_brepgraph_productid_kind_bool2_traversalmode(BRepGraph const* theGraph, BRepGraph_ProductId const* theProduct, BRepGraph_NodeId::Kind const* theTargetKind, bool theCumLoc, bool theCumOri, BRepGraph_ChildExplorer::TraversalMode const* theMode) {
+    try { return {new BRepGraph_ChildExplorer(*theGraph, *theProduct, *theTargetKind, theCumLoc, theCumOri, *theMode), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<BRepGraph_ChildExplorer*> BRepGraph_ChildExplorer_ctor_brepgraph_nodeid_kind_location_orientation_traversalmode(BRepGraph const* theGraph, BRepGraph_NodeId const* theRoot, BRepGraph_NodeId::Kind const* theTargetKind, TopLoc_Location const* theStartLoc, int32_t theStartOri, BRepGraph_ChildExplorer::TraversalMode const* theMode) {
+    try { return {new BRepGraph_ChildExplorer(*theGraph, *theRoot, *theTargetKind, *theStartLoc, static_cast<TopAbs_Orientation>(theStartOri), *theMode), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<BRepGraphInc::NodeInstance*> BRepGraph_ChildExplorer_current(const BRepGraph_ChildExplorer* self_) {
+    try { return {new BRepGraphInc::NodeInstance(self_->Current()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<BRepGraph_NodeId*> BRepGraph_ChildExplorer_current_parent(const BRepGraph_ChildExplorer* self_) {
+    try { return {new BRepGraph_NodeId(self_->CurrentParent()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<BRepGraph_ChildExplorer::LinkKind*> BRepGraph_ChildExplorer_current_link_kind(const BRepGraph_ChildExplorer* self_) {
+    try { return {new BRepGraph_ChildExplorer::LinkKind(self_->CurrentLinkKind()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<BRepGraph_RefId*> BRepGraph_ChildExplorer_current_ref(const BRepGraph_ChildExplorer* self_) {
+    try { return {new BRepGraph_RefId(self_->CurrentRef()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<BRepGraph_UsagePath*> BRepGraph_ChildExplorer_current_usage_path(const BRepGraph_ChildExplorer* self_) {
+    try { return {new BRepGraph_UsagePath(self_->CurrentUsagePath()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<TopLoc_Location*> BRepGraph_ChildExplorer_location_of(const BRepGraph_ChildExplorer* self_, BRepGraph_NodeId::Kind const* theKind) {
+    try { return {new TopLoc_Location(self_->LocationOf(*theKind)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<BRepGraph_NodeId*> BRepGraph_ChildExplorer_node_of(const BRepGraph_ChildExplorer* self_, BRepGraph_NodeId::Kind const* theKind) {
+    try { return {new BRepGraph_NodeId(self_->NodeOf(*theKind)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<TopLoc_Location*> BRepGraph_ChildExplorer_location_at(const BRepGraph_ChildExplorer* self_, int32_t theLevel) {
+    try { return {new TopLoc_Location(self_->LocationAt(theLevel)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<BRepGraph_NodeId*> BRepGraph_ChildExplorer_node_at(const BRepGraph_ChildExplorer* self_, int32_t theLevel) {
+    try { return {new BRepGraph_NodeId(self_->NodeAt(theLevel)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<BRepGraph_ChildExplorer::Config const*> BRepGraph_ChildExplorer_get_config(const BRepGraph_ChildExplorer* self_) {
+    try { return {&(self_->GetConfig()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<bool> BRepGraph_ChildExplorer_more(const BRepGraph_ChildExplorer* self_) {
+    try { return {self_->More(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" const char* BRepGraph_ChildExplorer_next(BRepGraph_ChildExplorer* self_) {
+    try { self_->Next(); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" OcctResult<int32_t> BRepGraph_ChildExplorer_depth(const BRepGraph_ChildExplorer* self_) {
+    try { return {self_->Depth(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" void BRepGraph_ChildExplorer_destructor(BRepGraph_ChildExplorer* self_) { delete self_; }
+
+// ========================
+// BRepGraph_ChildExplorer::Config wrappers
+// ========================
+
+extern "C" OcctResult<BRepGraph_ChildExplorer::Config*> BRepGraph_ChildExplorer_Config_ctor() {
+    try { return {new BRepGraph_ChildExplorer::Config(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" void BRepGraph_ChildExplorer_Config_destructor(BRepGraph_ChildExplorer::Config* self_) { delete self_; }
+
+// ========================
+// BRepGraph_Compact wrappers
+// ========================
+
+
+// ========================
+// BRepGraph_Compact::Options wrappers
+// ========================
+
+extern "C" OcctResult<BRepGraph_Compact::Options*> BRepGraph_Compact_Options_ctor() {
+    try { return {new BRepGraph_Compact::Options(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" void BRepGraph_Compact_Options_destructor(BRepGraph_Compact::Options* self_) { delete self_; }
+
+// sizeof helper for POD struct BRepGraph_Compact::Result
+extern "C" size_t BRepGraph_Compact_Result_sizeof() { return sizeof(BRepGraph_Compact::Result); }
+extern "C" void BRepGraph_Compact_Result_destructor(BRepGraph_Compact::Result* self_) { delete self_; }
+
+// ========================
+// BRepGraph_Copy wrappers
+// ========================
+
+
+// ========================
+// BRepGraph_CopyRemap wrappers
+// ========================
+
+extern "C" OcctResult<BRepGraph_CopyRemap*> BRepGraph_CopyRemap_ctor_brepgraph2_itemmap_mode(BRepGraph const* theSourceGraph, BRepGraph* theTargetGraph, BRepGraph_CopyRemap::ItemMap const* theItemRemap, BRepGraph_CopyRemap::Mode const* theMode) {
+    try { return {new BRepGraph_CopyRemap(*theSourceGraph, *theTargetGraph, *theItemRemap, *theMode), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<BRepGraph_CopyRemap*> BRepGraph_CopyRemap_ctor_brepgraph2_mappingkind_mode(BRepGraph const* theSourceGraph, BRepGraph* theTargetGraph, BRepGraph_CopyRemap::MappingKind const* theMappingKind, BRepGraph_CopyRemap::Mode const* theMode) {
+    try { return {new BRepGraph_CopyRemap(*theSourceGraph, *theTargetGraph, *theMappingKind, *theMode), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<BRepGraph_CopyRemap::Mode*> BRepGraph_CopyRemap_copy_mode(const BRepGraph_CopyRemap* self_) {
+    try { return {new BRepGraph_CopyRemap::Mode(self_->CopyMode()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<BRepGraph_ItemId*> BRepGraph_CopyRemap_target_item(const BRepGraph_CopyRemap* self_, BRepGraph_ItemId const* theSourceItem) {
+    try { return {new BRepGraph_ItemId(self_->TargetItem(*theSourceItem)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<BRepGraph_ItemId*> BRepGraph_CopyRemap_target_item_or_invalid(const BRepGraph_CopyRemap* self_, BRepGraph_ItemId const* theSourceItem) {
+    try { return {new BRepGraph_ItemId(self_->TargetItemOrInvalid(*theSourceItem)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<BRepGraph_ItemUID*> BRepGraph_CopyRemap_source_uid(const BRepGraph_CopyRemap* self_, BRepGraph_ItemId const* theSourceItem) {
+    try { return {new BRepGraph_ItemUID(self_->SourceUID(*theSourceItem)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<BRepGraph_ItemUID*> BRepGraph_CopyRemap_target_uid(const BRepGraph_CopyRemap* self_, BRepGraph_ItemId const* theTargetItem) {
+    try { return {new BRepGraph_ItemUID(self_->TargetUID(*theTargetItem)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<BRepGraph_ItemUID*> BRepGraph_CopyRemap_target_uid_from_source(const BRepGraph_CopyRemap* self_, BRepGraph_ItemId const* theSourceItem) {
+    try { return {new BRepGraph_ItemUID(self_->TargetUIDFromSource(*theSourceItem)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<bool> BRepGraph_CopyRemap_is_compact(const BRepGraph_CopyRemap* self_) {
+    try { return {self_->IsCompact(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<BRepGraph const*> BRepGraph_CopyRemap_source_graph(const BRepGraph_CopyRemap* self_) {
+    try { return {&(self_->SourceGraph()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<BRepGraph*> BRepGraph_CopyRemap_target_graph(BRepGraph_CopyRemap* self_) {
+    try { return {&(self_->TargetGraph()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<BRepGraph const*> BRepGraph_CopyRemap_target_graph_const(const BRepGraph_CopyRemap* self_) {
+    try { return {&(self_->TargetGraphConst()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<BRepGraph_CopyRemap::ItemMap const*> BRepGraph_CopyRemap_items(const BRepGraph_CopyRemap* self_) {
+    try { return {&(self_->Items()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<bool> BRepGraph_CopyRemap_has_target_item(const BRepGraph_CopyRemap* self_, BRepGraph_ItemId const* theSourceItem) {
+    try { return {self_->HasTargetItem(*theSourceItem), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" void BRepGraph_CopyRemap_destructor(BRepGraph_CopyRemap* self_) { delete self_; }
+
+// ========================
+// BRepGraph_Data wrappers
+// ========================
+
+extern "C" OcctResult<BRepGraph_Data*> BRepGraph_Data_ctor() {
+    try { return {new BRepGraph_Data(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" void BRepGraph_Data_destructor(BRepGraph_Data* self_) { delete self_; }
+
+// ========================
+// BRepGraph_Deduplicate wrappers
+// ========================
+
+
+// sizeof helper for POD struct BRepGraph_Deduplicate::Options
+extern "C" size_t BRepGraph_Deduplicate_Options_sizeof() { return sizeof(BRepGraph_Deduplicate::Options); }
+extern "C" void BRepGraph_Deduplicate_Options_destructor(BRepGraph_Deduplicate::Options* self_) { delete self_; }
+
+// ========================
+// BRepGraph_Deduplicate::Result wrappers
+// ========================
+
+extern "C" OcctResult<BRepGraph_Deduplicate::Result*> BRepGraph_Deduplicate_Result_ctor() {
+    try { return {new BRepGraph_Deduplicate::Result(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" void BRepGraph_Deduplicate_Result_destructor(BRepGraph_Deduplicate::Result* self_) { delete self_; }
+
+// ========================
+// BRepGraph_DeferredScope wrappers
+// ========================
+
+extern "C" OcctResult<BRepGraph_DeferredScope*> BRepGraph_DeferredScope_ctor_brepgraph(BRepGraph* theGraph) {
+    try { return {new BRepGraph_DeferredScope(*theGraph), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" void BRepGraph_DeferredScope_destructor(BRepGraph_DeferredScope* self_) { delete self_; }
+
+// ========================
+// BRepGraph::EditorView wrappers
+// ========================
+
+extern "C" OcctResult<BRepGraph_SupplementEditor*> EditorView_supplement(BRepGraph::EditorView* self_) {
+    try { return {new BRepGraph_SupplementEditor(self_->Supplement()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<BRepGraph::EditorView::VertexOps*> EditorView_vertices(BRepGraph::EditorView* self_) {
+    try { return {&(self_->Vertices()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<BRepGraph::EditorView::EdgeOps*> EditorView_edges(BRepGraph::EditorView* self_) {
+    try { return {&(self_->Edges()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<BRepGraph::EditorView::CoEdgeOps*> EditorView_co_edges(BRepGraph::EditorView* self_) {
+    try { return {&(self_->CoEdges()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<BRepGraph::EditorView::WireOps*> EditorView_wires(BRepGraph::EditorView* self_) {
+    try { return {&(self_->Wires()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<BRepGraph::EditorView::FaceOps*> EditorView_faces(BRepGraph::EditorView* self_) {
+    try { return {&(self_->Faces()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<BRepGraph::EditorView::ShellOps*> EditorView_shells(BRepGraph::EditorView* self_) {
+    try { return {&(self_->Shells()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<BRepGraph::EditorView::SolidOps*> EditorView_solids(BRepGraph::EditorView* self_) {
+    try { return {&(self_->Solids()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<BRepGraph::EditorView::CompoundOps*> EditorView_compounds(BRepGraph::EditorView* self_) {
+    try { return {&(self_->Compounds()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<BRepGraph::EditorView::CompSolidOps*> EditorView_comp_solids(BRepGraph::EditorView* self_) {
+    try { return {&(self_->CompSolids()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<BRepGraph::EditorView::ProductOps*> EditorView_products(BRepGraph::EditorView* self_) {
+    try { return {&(self_->Products()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<BRepGraph::EditorView::OccurrenceOps*> EditorView_occurrences(BRepGraph::EditorView* self_) {
+    try { return {&(self_->Occurrences()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<BRepGraph::EditorView::GenOps*> EditorView_gen_(BRepGraph::EditorView* self_) {
+    try { return {&(self_->Gen()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" const char* EditorView_begin_deferred_invalidation(BRepGraph::EditorView* self_) {
+    try { self_->BeginDeferredInvalidation(); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* EditorView_end_deferred_invalidation(BRepGraph::EditorView* self_) {
+    try { self_->EndDeferredInvalidation(); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" OcctResult<bool> EditorView_is_deferred_mode(const BRepGraph::EditorView* self_) {
+    try { return {self_->IsDeferredMode(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" const char* EditorView_commit_mutation(BRepGraph::EditorView* self_) {
+    try { self_->CommitMutation(); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" void EditorView_destructor(BRepGraph::EditorView* self_) { delete self_; }
+
+// ========================
+// BRepGraph::EditorView::VertexOps wrappers
+// ========================
+
+extern "C" OcctResult<BRepGraph_VertexId*> EditorView_VertexOps_add(BRepGraph::EditorView::VertexOps* self_, gp_Pnt const* thePoint, double theTolerance) {
+    try { return {new BRepGraph_VertexId(self_->Add(*thePoint, theTolerance)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<BRepGraph_MutGuard_BRepGraphInc_VertexDef*> EditorView_VertexOps_mut_(BRepGraph::EditorView::VertexOps* self_, BRepGraph_VertexId const* theVertex) {
+    try { return {new BRepGraph_MutGuard_BRepGraphInc_VertexDef(self_->Mut(*theVertex)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<BRepGraph_MutGuard_BRepGraphInc_VertexRef*> EditorView_VertexOps_mut_ref(BRepGraph::EditorView::VertexOps* self_, BRepGraph_VertexRefId const* theVertexRef) {
+    try { return {new BRepGraph_MutGuard_BRepGraphInc_VertexRef(self_->MutRef(*theVertexRef)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" const char* EditorView_VertexOps_set_point_vertexid_pnt(BRepGraph::EditorView::VertexOps* self_, BRepGraph_VertexId const* theVertex, gp_Pnt const* thePoint) {
+    try { self_->SetPoint(*theVertex, *thePoint); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* EditorView_VertexOps_set_point_mutguard_brepgraphinc_vertexdef_pnt(BRepGraph::EditorView::VertexOps* self_, BRepGraph_MutGuard_BRepGraphInc_VertexDef* theMut, gp_Pnt const* thePoint) {
+    try { self_->SetPoint(*theMut, *thePoint); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* EditorView_VertexOps_set_tolerance_vertexid_real(BRepGraph::EditorView::VertexOps* self_, BRepGraph_VertexId const* theVertex, double theTolerance) {
+    try { self_->SetTolerance(*theVertex, theTolerance); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* EditorView_VertexOps_set_tolerance_mutguard_brepgraphinc_vertexdef_real(BRepGraph::EditorView::VertexOps* self_, BRepGraph_MutGuard_BRepGraphInc_VertexDef* theMut, double theTolerance) {
+    try { self_->SetTolerance(*theMut, theTolerance); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* EditorView_VertexOps_set_ref_child_vertex_id_vertexrefid_vertexid(BRepGraph::EditorView::VertexOps* self_, BRepGraph_VertexRefId const* theVertexRef, BRepGraph_VertexId const* theVertex) {
+    try { self_->SetRefChildVertexId(*theVertexRef, *theVertex); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* EditorView_VertexOps_set_ref_child_vertex_id_mutguard_brepgraphinc_vertexref_vertexid(BRepGraph::EditorView::VertexOps* self_, BRepGraph_MutGuard_BRepGraphInc_VertexRef* theMut, BRepGraph_VertexId const* theVertex) {
+    try { self_->SetRefChildVertexId(*theMut, *theVertex); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" void EditorView_VertexOps_destructor(BRepGraph::EditorView::VertexOps* self_) { delete self_; }
+
+// ========================
+// BRepGraph::EditorView::EdgeOps wrappers
+// ========================
+
+extern "C" OcctResult<BRepGraph_EdgeId*> EditorView_EdgeOps_add(BRepGraph::EditorView::EdgeOps* self_, BRepGraph_VertexId const* theStartVtx, BRepGraph_VertexId const* theEndVtx, Handle(Geom_Curve) const* theCurve, double theFirst, double theLast, double theTolerance) {
+    try { return {new BRepGraph_EdgeId(self_->Add(*theStartVtx, *theEndVtx, *theCurve, theFirst, theLast, theTolerance)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<BRepGraph_VertexRefId*> EditorView_EdgeOps_replace_vertex(BRepGraph::EditorView::EdgeOps* self_, BRepGraph_EdgeId const* theChildEdgeId, BRepGraph_VertexRefId const* theOldVertexRefId, BRepGraph_VertexId const* theNewChildVertexId) {
+    try { return {new BRepGraph_VertexRefId(self_->ReplaceVertex(*theChildEdgeId, *theOldVertexRefId, *theNewChildVertexId)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<BRepGraph_MutGuard_BRepGraphInc_EdgeDef*> EditorView_EdgeOps_mut_(BRepGraph::EditorView::EdgeOps* self_, BRepGraph_EdgeId const* theEdge) {
+    try { return {new BRepGraph_MutGuard_BRepGraphInc_EdgeDef(self_->Mut(*theEdge)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" const char* EditorView_EdgeOps_split(BRepGraph::EditorView::EdgeOps* self_, BRepGraph_EdgeId const* theEdgeEntity, BRepGraph_VertexId const* theSplitVertex, double theSplitParam, BRepGraph_EdgeId* theSubA, BRepGraph_EdgeId* theSubB) {
+    try { self_->Split(*theEdgeEntity, *theSplitVertex, theSplitParam, *theSubA, *theSubB); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" OcctResult<bool> EditorView_EdgeOps_remove_vertex(BRepGraph::EditorView::EdgeOps* self_, BRepGraph_EdgeId const* theChildEdgeId, BRepGraph_VertexRefId const* theVertexRefId) {
+    try { return {self_->RemoveVertex(*theChildEdgeId, *theVertexRefId), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" const char* EditorView_EdgeOps_reverse(BRepGraph::EditorView::EdgeOps* self_, BRepGraph_EdgeId const* theEdge) {
+    try { self_->Reverse(*theEdge); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* EditorView_EdgeOps_set_tolerance_edgeid_real(BRepGraph::EditorView::EdgeOps* self_, BRepGraph_EdgeId const* theEdge, double theTolerance) {
+    try { self_->SetTolerance(*theEdge, theTolerance); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* EditorView_EdgeOps_set_tolerance_mutguard_brepgraphinc_edgedef_real(BRepGraph::EditorView::EdgeOps* self_, BRepGraph_MutGuard_BRepGraphInc_EdgeDef* theMut, double theTolerance) {
+    try { self_->SetTolerance(*theMut, theTolerance); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* EditorView_EdgeOps_set_param_range_edgeid_real2(BRepGraph::EditorView::EdgeOps* self_, BRepGraph_EdgeId const* theEdge, double theFirst, double theLast) {
+    try { self_->SetParamRange(*theEdge, theFirst, theLast); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* EditorView_EdgeOps_set_param_range_mutguard_brepgraphinc_edgedef_real2(BRepGraph::EditorView::EdgeOps* self_, BRepGraph_MutGuard_BRepGraphInc_EdgeDef* theMut, double theFirst, double theLast) {
+    try { self_->SetParamRange(*theMut, theFirst, theLast); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* EditorView_EdgeOps_set_curve(BRepGraph::EditorView::EdgeOps* self_, BRepGraph_EdgeId const* theEdge, Handle(Geom_Curve) const* theCurve, double theFirst, double theLast) {
+    try { self_->SetCurve(*theEdge, *theCurve, theFirst, theLast); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* EditorView_EdgeOps_clear_curve(BRepGraph::EditorView::EdgeOps* self_, BRepGraph_EdgeId const* theEdge) {
+    try { self_->ClearCurve(*theEdge); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* EditorView_EdgeOps_set_persistent_polygon3_d(BRepGraph::EditorView::EdgeOps* self_, BRepGraph_EdgeId const* theEdge, Handle(Poly_Polygon3D) const* thePolygon) {
+    try { self_->SetPersistentPolygon3D(*theEdge, *thePolygon); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* EditorView_EdgeOps_clear_persistent_polygon3_d(BRepGraph::EditorView::EdgeOps* self_, BRepGraph_EdgeId const* theEdge) {
+    try { self_->ClearPersistentPolygon3D(*theEdge); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* EditorView_EdgeOps_set_start_vertex_ref_id_edgeid_vertexrefid(BRepGraph::EditorView::EdgeOps* self_, BRepGraph_EdgeId const* theEdge, BRepGraph_VertexRefId const* theVertexRef) {
+    try { self_->SetStartVertexRefId(*theEdge, *theVertexRef); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* EditorView_EdgeOps_set_start_vertex_ref_id_mutguard_brepgraphinc_edgedef_vertexrefid(BRepGraph::EditorView::EdgeOps* self_, BRepGraph_MutGuard_BRepGraphInc_EdgeDef* theMut, BRepGraph_VertexRefId const* theVertexRef) {
+    try { self_->SetStartVertexRefId(*theMut, *theVertexRef); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* EditorView_EdgeOps_set_end_vertex_ref_id_edgeid_vertexrefid(BRepGraph::EditorView::EdgeOps* self_, BRepGraph_EdgeId const* theEdge, BRepGraph_VertexRefId const* theVertexRef) {
+    try { self_->SetEndVertexRefId(*theEdge, *theVertexRef); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* EditorView_EdgeOps_set_end_vertex_ref_id_mutguard_brepgraphinc_edgedef_vertexrefid(BRepGraph::EditorView::EdgeOps* self_, BRepGraph_MutGuard_BRepGraphInc_EdgeDef* theMut, BRepGraph_VertexRefId const* theVertexRef) {
+    try { self_->SetEndVertexRefId(*theMut, *theVertexRef); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" void EditorView_EdgeOps_destructor(BRepGraph::EditorView::EdgeOps* self_) { delete self_; }
+
+// ========================
+// BRepGraph::EditorView::CoEdgeOps wrappers
+// ========================
+
+extern "C" OcctResult<BRepGraph_MutGuard_BRepGraphInc_CoEdgeDef*> EditorView_CoEdgeOps_mut_(BRepGraph::EditorView::CoEdgeOps* self_, BRepGraph_CoEdgeId const* theCoEdge) {
+    try { return {new BRepGraph_MutGuard_BRepGraphInc_CoEdgeDef(self_->Mut(*theCoEdge)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" const char* EditorView_CoEdgeOps_set_p_curve_coedgeid_handlegeom2dcurve(BRepGraph::EditorView::CoEdgeOps* self_, BRepGraph_CoEdgeId const* theCoEdge, Handle(Geom2d_Curve) const* theCurve2d) {
+    try { self_->SetPCurve(*theCoEdge, *theCurve2d); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* EditorView_CoEdgeOps_set_param_range_coedgeid_real2(BRepGraph::EditorView::CoEdgeOps* self_, BRepGraph_CoEdgeId const* theCoEdge, double theFirst, double theLast) {
+    try { self_->SetParamRange(*theCoEdge, theFirst, theLast); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* EditorView_CoEdgeOps_set_param_range_mutguard_brepgraphinc_coedgedef_real2(BRepGraph::EditorView::CoEdgeOps* self_, BRepGraph_MutGuard_BRepGraphInc_CoEdgeDef* theMut, double theFirst, double theLast) {
+    try { self_->SetParamRange(*theMut, theFirst, theLast); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* EditorView_CoEdgeOps_set_p_curve_coedgeid_handlegeom2dcurve_real2(BRepGraph::EditorView::CoEdgeOps* self_, BRepGraph_CoEdgeId const* theCoEdge, Handle(Geom2d_Curve) const* theCurve2d, double theFirst, double theLast) {
+    try { self_->SetPCurve(*theCoEdge, *theCurve2d, theFirst, theLast); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* EditorView_CoEdgeOps_clear_p_curve(BRepGraph::EditorView::CoEdgeOps* self_, BRepGraph_CoEdgeId const* theCoEdge) {
+    try { self_->ClearPCurve(*theCoEdge); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* EditorView_CoEdgeOps_set_persistent_polygon2_d(BRepGraph::EditorView::CoEdgeOps* self_, BRepGraph_CoEdgeId const* theCoEdge, Handle(Poly_Polygon2D) const* thePolygon) {
+    try { self_->SetPersistentPolygon2D(*theCoEdge, *thePolygon); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* EditorView_CoEdgeOps_set_persistent_polygon_on_tri(BRepGraph::EditorView::CoEdgeOps* self_, BRepGraph_CoEdgeId const* theCoEdge, Handle(Poly_PolygonOnTriangulation) const* thePolygon) {
+    try { self_->SetPersistentPolygonOnTri(*theCoEdge, *thePolygon); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* EditorView_CoEdgeOps_reset_p_curve_binding_coedgeid(BRepGraph::EditorView::CoEdgeOps* self_, BRepGraph_CoEdgeId const* theCoEdge) {
+    try { self_->ResetPCurveBinding(*theCoEdge); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* EditorView_CoEdgeOps_reset_p_curve_binding_mutguard_brepgraphinc_coedgedef(BRepGraph::EditorView::CoEdgeOps* self_, BRepGraph_MutGuard_BRepGraphInc_CoEdgeDef* theMut) {
+    try { self_->ResetPCurveBinding(*theMut); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* EditorView_CoEdgeOps_set_child_edge_id_coedgeid_edgeid(BRepGraph::EditorView::CoEdgeOps* self_, BRepGraph_CoEdgeId const* theCoEdge, BRepGraph_EdgeId const* theEdge) {
+    try { self_->SetChildEdgeId(*theCoEdge, *theEdge); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* EditorView_CoEdgeOps_set_child_edge_id_mutguard_brepgraphinc_coedgedef_edgeid(BRepGraph::EditorView::CoEdgeOps* self_, BRepGraph_MutGuard_BRepGraphInc_CoEdgeDef* theMut, BRepGraph_EdgeId const* theEdge) {
+    try { self_->SetChildEdgeId(*theMut, *theEdge); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* EditorView_CoEdgeOps_set_face_id_coedgeid_faceid(BRepGraph::EditorView::CoEdgeOps* self_, BRepGraph_CoEdgeId const* theCoEdge, BRepGraph_FaceId const* theFace) {
+    try { self_->SetFaceId(*theCoEdge, *theFace); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* EditorView_CoEdgeOps_set_face_id_mutguard_brepgraphinc_coedgedef_faceid(BRepGraph::EditorView::CoEdgeOps* self_, BRepGraph_MutGuard_BRepGraphInc_CoEdgeDef* theMut, BRepGraph_FaceId const* theFace) {
+    try { self_->SetFaceId(*theMut, *theFace); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" void EditorView_CoEdgeOps_destructor(BRepGraph::EditorView::CoEdgeOps* self_) { delete self_; }
+
+// ========================
+// BRepGraph::EditorView::WireOps wrappers
+// ========================
+
+extern "C" OcctResult<BRepGraph::EditorView::WireOps::CoEdgeOrderStatus*> EditorView_WireOps_check_co_edge_order_array1_brepgraph_coedgeid(const BRepGraph::EditorView::WireOps* self_, NCollection_Array1_BRepGraph_CoEdgeId const* theCoEdgeIds) {
+    try { return {new BRepGraph::EditorView::WireOps::CoEdgeOrderStatus(self_->CheckCoEdgeOrder(*theCoEdgeIds)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<BRepGraph::EditorView::WireOps::CoEdgeOrderStatus*> EditorView_WireOps_check_co_edge_order_wireid_array1_brepgraph_coedgeid(const BRepGraph::EditorView::WireOps* self_, BRepGraph_WireId const* theWire, NCollection_Array1_BRepGraph_CoEdgeId const* theCoEdgeIds) {
+    try { return {new BRepGraph::EditorView::WireOps::CoEdgeOrderStatus(self_->CheckCoEdgeOrder(*theWire, *theCoEdgeIds)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<BRepGraph::EditorView::WireOps::CoEdgeOrderStatus*> EditorView_WireOps_check_append_co_edge(const BRepGraph::EditorView::WireOps* self_, BRepGraph_WireId const* theWire, BRepGraph_CoEdgeId const* theCoEdgeId) {
+    try { return {new BRepGraph::EditorView::WireOps::CoEdgeOrderStatus(self_->CheckAppendCoEdge(*theWire, *theCoEdgeId)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<BRepGraph::EditorView::WireOps::ReplaceEdgeStatus*> EditorView_WireOps_check_replace_edge(const BRepGraph::EditorView::WireOps* self_, BRepGraph_WireId const* theWire, BRepGraph_EdgeId const* theOldEdge, BRepGraph_EdgeId const* theNewEdge, bool theReversed) {
+    try { return {new BRepGraph::EditorView::WireOps::ReplaceEdgeStatus(self_->CheckReplaceEdge(*theWire, *theOldEdge, *theNewEdge, theReversed)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<BRepGraph_WireId*> EditorView_WireOps_add(BRepGraph::EditorView::WireOps* self_, NCollection_Array1_BRepGraph_CoEdgeId const* theCoEdgeIds) {
+    try { return {new BRepGraph_WireId(self_->Add(*theCoEdgeIds)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<BRepGraph_MutGuard_BRepGraphInc_WireDef*> EditorView_WireOps_mut_(BRepGraph::EditorView::WireOps* self_, BRepGraph_WireId const* theWire) {
+    try { return {new BRepGraph_MutGuard_BRepGraphInc_WireDef(self_->Mut(*theWire)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<BRepGraph_MutGuard_BRepGraphInc_WireRef*> EditorView_WireOps_mut_ref(BRepGraph::EditorView::WireOps* self_, BRepGraph_WireRefId const* theWireRef) {
+    try { return {new BRepGraph_MutGuard_BRepGraphInc_WireRef(self_->MutRef(*theWireRef)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" const char* EditorView_WireOps_replace_edge(BRepGraph::EditorView::WireOps* self_, BRepGraph_WireId const* theChildWireId, BRepGraph_EdgeId const* theOldEdgeEntity, BRepGraph_EdgeId const* theNewEdgeEntity, bool theReversed) {
+    try { self_->ReplaceEdge(*theChildWireId, *theOldEdgeEntity, *theNewEdgeEntity, theReversed); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" OcctResult<bool> EditorView_WireOps_remove_co_edge(BRepGraph::EditorView::WireOps* self_, BRepGraph_WireId const* theChildWireId, BRepGraph_CoEdgeId const* theCoEdgeId) {
+    try { return {self_->RemoveCoEdge(*theChildWireId, *theCoEdgeId), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" const char* EditorView_WireOps_reverse(BRepGraph::EditorView::WireOps* self_, BRepGraph_WireId const* theWire) {
+    try { self_->Reverse(*theWire); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" OcctResult<bool> EditorView_WireOps_set_co_edge_order(BRepGraph::EditorView::WireOps* self_, BRepGraph_WireId const* theWire, NCollection_Array1_BRepGraph_CoEdgeId const* theCoEdgeIds) {
+    try { return {self_->SetCoEdgeOrder(*theWire, *theCoEdgeIds), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" const char* EditorView_WireOps_set_ref_child_wire_id_wirerefid_wireid(BRepGraph::EditorView::WireOps* self_, BRepGraph_WireRefId const* theWireRef, BRepGraph_WireId const* theWire) {
+    try { self_->SetRefChildWireId(*theWireRef, *theWire); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* EditorView_WireOps_set_ref_child_wire_id_mutguard_brepgraphinc_wireref_wireid(BRepGraph::EditorView::WireOps* self_, BRepGraph_MutGuard_BRepGraphInc_WireRef* theMut, BRepGraph_WireId const* theWire) {
+    try { self_->SetRefChildWireId(*theMut, *theWire); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" void EditorView_WireOps_destructor(BRepGraph::EditorView::WireOps* self_) { delete self_; }
+
+// ========================
+// BRepGraph::EditorView::FaceOps wrappers
+// ========================
+
+extern "C" OcctResult<BRepGraph_FaceId*> EditorView_FaceOps_add(BRepGraph::EditorView::FaceOps* self_, Handle(Geom_Surface) const* theSurface, BRepGraph_WireId const* theOuterWire, NCollection_Array1_BRepGraph_WireId const* theInnerWires, double theTolerance) {
+    try { return {new BRepGraph_FaceId(self_->Add(*theSurface, *theOuterWire, *theInnerWires, theTolerance)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<BRepGraph_MutGuard_BRepGraphInc_FaceDef*> EditorView_FaceOps_mut_(BRepGraph::EditorView::FaceOps* self_, BRepGraph_FaceId const* theFace) {
+    try { return {new BRepGraph_MutGuard_BRepGraphInc_FaceDef(self_->Mut(*theFace)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<BRepGraph_MutGuard_BRepGraphInc_FaceRef*> EditorView_FaceOps_mut_ref(BRepGraph::EditorView::FaceOps* self_, BRepGraph_FaceRefId const* theFaceRef) {
+    try { return {new BRepGraph_MutGuard_BRepGraphInc_FaceRef(self_->MutRef(*theFaceRef)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<bool> EditorView_FaceOps_remove_wire(BRepGraph::EditorView::FaceOps* self_, BRepGraph_FaceId const* theFaceId, BRepGraph_WireRefId const* theWireRefId) {
+    try { return {self_->RemoveWire(*theFaceId, *theWireRefId), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" const char* EditorView_FaceOps_set_tolerance_faceid_real(BRepGraph::EditorView::FaceOps* self_, BRepGraph_FaceId const* theFace, double theTolerance) {
+    try { self_->SetTolerance(*theFace, theTolerance); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* EditorView_FaceOps_set_tolerance_mutguard_brepgraphinc_facedef_real(BRepGraph::EditorView::FaceOps* self_, BRepGraph_MutGuard_BRepGraphInc_FaceDef* theMut, double theTolerance) {
+    try { self_->SetTolerance(*theMut, theTolerance); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* EditorView_FaceOps_set_surface(BRepGraph::EditorView::FaceOps* self_, BRepGraph_FaceId const* theFace, Handle(Geom_Surface) const* theSurface) {
+    try { self_->SetSurface(*theFace, *theSurface); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* EditorView_FaceOps_clear_surface(BRepGraph::EditorView::FaceOps* self_, BRepGraph_FaceId const* theFace) {
+    try { self_->ClearSurface(*theFace); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* EditorView_FaceOps_set_persistent_triangulation(BRepGraph::EditorView::FaceOps* self_, BRepGraph_FaceId const* theFace, Handle(Poly_Triangulation) const* theTriangulation) {
+    try { self_->SetPersistentTriangulation(*theFace, *theTriangulation); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* EditorView_FaceOps_clear_persistent_triangulation(BRepGraph::EditorView::FaceOps* self_, BRepGraph_FaceId const* theFace) {
+    try { self_->ClearPersistentTriangulation(*theFace); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* EditorView_FaceOps_set_ref_face_id_facerefid_faceid(BRepGraph::EditorView::FaceOps* self_, BRepGraph_FaceRefId const* theFaceRef, BRepGraph_FaceId const* theFace) {
+    try { self_->SetRefFaceId(*theFaceRef, *theFace); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* EditorView_FaceOps_set_ref_face_id_mutguard_brepgraphinc_faceref_faceid(BRepGraph::EditorView::FaceOps* self_, BRepGraph_MutGuard_BRepGraphInc_FaceRef* theMut, BRepGraph_FaceId const* theFace) {
+    try { self_->SetRefFaceId(*theMut, *theFace); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" void EditorView_FaceOps_destructor(BRepGraph::EditorView::FaceOps* self_) { delete self_; }
+
+// ========================
+// BRepGraph::EditorView::ShellOps wrappers
+// ========================
+
+extern "C" OcctResult<BRepGraph_ShellId*> EditorView_ShellOps_add(BRepGraph::EditorView::ShellOps* self_) {
+    try { return {new BRepGraph_ShellId(self_->Add()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<NCollection_Array1_BRepGraph_FaceRefId*> EditorView_ShellOps_append(BRepGraph::EditorView::ShellOps* self_, BRepGraph_ShellId const* theShellEntity, NCollection_Array1_BRepGraph_FaceId const* theFaceIds, NCollection_Array1_BRepGraphInc_ParityOrientation const* theOrientations) {
+    try { return {new NCollection_Array1_BRepGraph_FaceRefId(self_->Append(*theShellEntity, *theFaceIds, *theOrientations)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<BRepGraph_MutGuard_BRepGraphInc_ShellDef*> EditorView_ShellOps_mut_(BRepGraph::EditorView::ShellOps* self_, BRepGraph_ShellId const* theShell) {
+    try { return {new BRepGraph_MutGuard_BRepGraphInc_ShellDef(self_->Mut(*theShell)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<BRepGraph_MutGuard_BRepGraphInc_ShellRef*> EditorView_ShellOps_mut_ref(BRepGraph::EditorView::ShellOps* self_, BRepGraph_ShellRefId const* theShellRef) {
+    try { return {new BRepGraph_MutGuard_BRepGraphInc_ShellRef(self_->MutRef(*theShellRef)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<bool> EditorView_ShellOps_remove_face(BRepGraph::EditorView::ShellOps* self_, BRepGraph_ShellId const* theChildShellId, BRepGraph_FaceRefId const* theFaceRefId) {
+    try { return {self_->RemoveFace(*theChildShellId, *theFaceRefId), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<bool> EditorView_ShellOps_remove_faces(BRepGraph::EditorView::ShellOps* self_, BRepGraph_ShellId const* theShellId, NCollection_Array1_BRepGraph_FaceRefId const* theFaceRefs) {
+    try { return {self_->RemoveFaces(*theShellId, *theFaceRefs), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" const char* EditorView_ShellOps_set_ref_child_shell_id_shellrefid_shellid(BRepGraph::EditorView::ShellOps* self_, BRepGraph_ShellRefId const* theShellRef, BRepGraph_ShellId const* theShell) {
+    try { self_->SetRefChildShellId(*theShellRef, *theShell); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* EditorView_ShellOps_set_ref_child_shell_id_mutguard_brepgraphinc_shellref_shellid(BRepGraph::EditorView::ShellOps* self_, BRepGraph_MutGuard_BRepGraphInc_ShellRef* theMut, BRepGraph_ShellId const* theShell) {
+    try { self_->SetRefChildShellId(*theMut, *theShell); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" void EditorView_ShellOps_destructor(BRepGraph::EditorView::ShellOps* self_) { delete self_; }
+
+// ========================
+// BRepGraph::EditorView::SolidOps wrappers
+// ========================
+
+extern "C" OcctResult<BRepGraph_SolidId*> EditorView_SolidOps_add(BRepGraph::EditorView::SolidOps* self_) {
+    try { return {new BRepGraph_SolidId(self_->Add()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<NCollection_Array1_BRepGraph_ShellRefId*> EditorView_SolidOps_append(BRepGraph::EditorView::SolidOps* self_, BRepGraph_SolidId const* theSolidEntity, NCollection_Array1_BRepGraph_ShellId const* theShellIds, NCollection_Array1_BRepGraphInc_ParityOrientation const* theOrientations) {
+    try { return {new NCollection_Array1_BRepGraph_ShellRefId(self_->Append(*theSolidEntity, *theShellIds, *theOrientations)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<BRepGraph_MutGuard_BRepGraphInc_SolidDef*> EditorView_SolidOps_mut_(BRepGraph::EditorView::SolidOps* self_, BRepGraph_SolidId const* theSolid) {
+    try { return {new BRepGraph_MutGuard_BRepGraphInc_SolidDef(self_->Mut(*theSolid)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<BRepGraph_MutGuard_BRepGraphInc_SolidRef*> EditorView_SolidOps_mut_ref(BRepGraph::EditorView::SolidOps* self_, BRepGraph_SolidRefId const* theSolidRef) {
+    try { return {new BRepGraph_MutGuard_BRepGraphInc_SolidRef(self_->MutRef(*theSolidRef)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<bool> EditorView_SolidOps_remove_shell(BRepGraph::EditorView::SolidOps* self_, BRepGraph_SolidId const* theChildSolidId, BRepGraph_ShellRefId const* theShellRefId) {
+    try { return {self_->RemoveShell(*theChildSolidId, *theShellRefId), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<bool> EditorView_SolidOps_remove_shells(BRepGraph::EditorView::SolidOps* self_, BRepGraph_SolidId const* theSolidId, NCollection_Array1_BRepGraph_ShellRefId const* theShellRefs) {
+    try { return {self_->RemoveShells(*theSolidId, *theShellRefs), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" const char* EditorView_SolidOps_set_ref_child_solid_id_solidrefid_solidid(BRepGraph::EditorView::SolidOps* self_, BRepGraph_SolidRefId const* theSolidRef, BRepGraph_SolidId const* theSolid) {
+    try { self_->SetRefChildSolidId(*theSolidRef, *theSolid); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* EditorView_SolidOps_set_ref_child_solid_id_mutguard_brepgraphinc_solidref_solidid(BRepGraph::EditorView::SolidOps* self_, BRepGraph_MutGuard_BRepGraphInc_SolidRef* theMut, BRepGraph_SolidId const* theSolid) {
+    try { self_->SetRefChildSolidId(*theMut, *theSolid); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" void EditorView_SolidOps_destructor(BRepGraph::EditorView::SolidOps* self_) { delete self_; }
+
+// ========================
+// BRepGraph::EditorView::CompoundOps wrappers
+// ========================
+
+extern "C" OcctResult<BRepGraph_CompoundId*> EditorView_CompoundOps_add(BRepGraph::EditorView::CompoundOps* self_, NCollection_Array1_BRepGraph_NodeId const* theChildEntities) {
+    try { return {new BRepGraph_CompoundId(self_->Add(*theChildEntities)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<NCollection_Array1_BRepGraph_ChildRefId*> EditorView_CompoundOps_append(BRepGraph::EditorView::CompoundOps* self_, BRepGraph_CompoundId const* theCompoundEntity, NCollection_Array1_BRepGraph_NodeId const* theChildIds, NCollection_Array1_BRepGraphInc_ParityOrientation const* theOrientations) {
+    try { return {new NCollection_Array1_BRepGraph_ChildRefId(self_->Append(*theCompoundEntity, *theChildIds, *theOrientations)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<BRepGraph_MutGuard_BRepGraphInc_CompoundDef*> EditorView_CompoundOps_mut_(BRepGraph::EditorView::CompoundOps* self_, BRepGraph_CompoundId const* theCompound) {
+    try { return {new BRepGraph_MutGuard_BRepGraphInc_CompoundDef(self_->Mut(*theCompound)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<bool> EditorView_CompoundOps_remove_child(BRepGraph::EditorView::CompoundOps* self_, BRepGraph_CompoundId const* theCompoundDefId, BRepGraph_ChildRefId const* theChildRefId) {
+    try { return {self_->RemoveChild(*theCompoundDefId, *theChildRefId), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<bool> EditorView_CompoundOps_remove_children(BRepGraph::EditorView::CompoundOps* self_, BRepGraph_CompoundId const* theCompoundId, NCollection_Array1_BRepGraph_ChildRefId const* theChildRefs) {
+    try { return {self_->RemoveChildren(*theCompoundId, *theChildRefs), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" const char* EditorView_CompoundOps_replace_child(BRepGraph::EditorView::CompoundOps* self_, BRepGraph_ChildRefId const* theChildRef, BRepGraph_NodeId const* theNewChild) {
+    try { self_->ReplaceChild(*theChildRef, *theNewChild); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" void EditorView_CompoundOps_destructor(BRepGraph::EditorView::CompoundOps* self_) { delete self_; }
+
+// ========================
+// BRepGraph::EditorView::CompSolidOps wrappers
+// ========================
+
+extern "C" OcctResult<BRepGraph_CompSolidId*> EditorView_CompSolidOps_add(BRepGraph::EditorView::CompSolidOps* self_, NCollection_Array1_BRepGraph_SolidId const* theSolidEntities) {
+    try { return {new BRepGraph_CompSolidId(self_->Add(*theSolidEntities)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<NCollection_Array1_BRepGraph_SolidRefId*> EditorView_CompSolidOps_append(BRepGraph::EditorView::CompSolidOps* self_, BRepGraph_CompSolidId const* theCompSolidEntity, NCollection_Array1_BRepGraph_SolidId const* theSolidIds, NCollection_Array1_BRepGraphInc_ParityOrientation const* theOrientations) {
+    try { return {new NCollection_Array1_BRepGraph_SolidRefId(self_->Append(*theCompSolidEntity, *theSolidIds, *theOrientations)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<BRepGraph_MutGuard_BRepGraphInc_CompSolidDef*> EditorView_CompSolidOps_mut_(BRepGraph::EditorView::CompSolidOps* self_, BRepGraph_CompSolidId const* theCompSolid) {
+    try { return {new BRepGraph_MutGuard_BRepGraphInc_CompSolidDef(self_->Mut(*theCompSolid)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<bool> EditorView_CompSolidOps_remove_solid(BRepGraph::EditorView::CompSolidOps* self_, BRepGraph_CompSolidId const* theCompChildSolidId, BRepGraph_SolidRefId const* theSolidRefId) {
+    try { return {self_->RemoveSolid(*theCompChildSolidId, *theSolidRefId), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<bool> EditorView_CompSolidOps_remove_solids(BRepGraph::EditorView::CompSolidOps* self_, BRepGraph_CompSolidId const* theCompSolidId, NCollection_Array1_BRepGraph_SolidRefId const* theSolidRefs) {
+    try { return {self_->RemoveSolids(*theCompSolidId, *theSolidRefs), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" const char* EditorView_CompSolidOps_replace_solid(BRepGraph::EditorView::CompSolidOps* self_, BRepGraph_SolidRefId const* theSolidRef, BRepGraph_SolidId const* theNewSolid) {
+    try { self_->ReplaceSolid(*theSolidRef, *theNewSolid); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" void EditorView_CompSolidOps_destructor(BRepGraph::EditorView::CompSolidOps* self_) { delete self_; }
+
+// ========================
+// BRepGraph::EditorView::ProductOps wrappers
+// ========================
+
+extern "C" OcctResult<BRepGraph_ProductId*> EditorView_ProductOps_add_nodeid_location(BRepGraph::EditorView::ProductOps* self_, BRepGraph_NodeId const* theShapeRoot, TopLoc_Location const* thePlacement) {
+    try { return {new BRepGraph_ProductId(self_->Add(*theShapeRoot, *thePlacement)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<BRepGraph_ProductId*> EditorView_ProductOps_add(BRepGraph::EditorView::ProductOps* self_) {
+    try { return {new BRepGraph_ProductId(self_->Add()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<BRepGraph_OccurrenceId*> EditorView_ProductOps_append_productid2_location_occurrenceid_occurrencerefidptr(BRepGraph::EditorView::ProductOps* self_, BRepGraph_ProductId const* theParentProduct, BRepGraph_ProductId const* theReferencedProduct, TopLoc_Location const* thePlacement, BRepGraph_OccurrenceId const* theParentOccurrence, BRepGraph_OccurrenceRefId* theOutOccurrenceRefId) {
+    try { return {new BRepGraph_OccurrenceId(self_->Append(*theParentProduct, *theReferencedProduct, *thePlacement, *theParentOccurrence, theOutOccurrenceRefId)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<NCollection_Array1_BRepGraph_OccurrenceRefId*> EditorView_ProductOps_append_productid_array1_brepgraph_productid_arr1_location(BRepGraph::EditorView::ProductOps* self_, BRepGraph_ProductId const* theParentProduct, NCollection_Array1_BRepGraph_ProductId const* theChildProducts, NCollection_Array1_TopLoc_Location const* thePlacements) {
+    try { return {new NCollection_Array1_BRepGraph_OccurrenceRefId(self_->Append(*theParentProduct, *theChildProducts, *thePlacements)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<BRepGraph_MutGuard_BRepGraphInc_ProductDef*> EditorView_ProductOps_mut_(BRepGraph::EditorView::ProductOps* self_, BRepGraph_ProductId const* theProduct) {
+    try { return {new BRepGraph_MutGuard_BRepGraphInc_ProductDef(self_->Mut(*theProduct)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" const char* EditorView_ProductOps_append_document_root(BRepGraph::EditorView::ProductOps* self_, BRepGraph_ProductId const* theProductId) {
+    try { self_->AppendDocumentRoot(*theProductId); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" OcctResult<bool> EditorView_ProductOps_remove_occurrence(BRepGraph::EditorView::ProductOps* self_, BRepGraph_ProductId const* theProductDefId, BRepGraph_OccurrenceRefId const* theOccurrenceRefId) {
+    try { return {self_->RemoveOccurrence(*theProductDefId, *theOccurrenceRefId), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<bool> EditorView_ProductOps_remove_occurrences(BRepGraph::EditorView::ProductOps* self_, BRepGraph_ProductId const* theProductId, NCollection_Array1_BRepGraph_OccurrenceRefId const* theOccurrenceRefs) {
+    try { return {self_->RemoveOccurrences(*theProductId, *theOccurrenceRefs), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<bool> EditorView_ProductOps_remove_shape_root(BRepGraph::EditorView::ProductOps* self_, BRepGraph_ProductId const* theProductDefId) {
+    try { return {self_->RemoveShapeRoot(*theProductDefId), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" void EditorView_ProductOps_destructor(BRepGraph::EditorView::ProductOps* self_) { delete self_; }
+
+// ========================
+// BRepGraph::EditorView::OccurrenceOps wrappers
+// ========================
+
+extern "C" OcctResult<BRepGraph_MutGuard_BRepGraphInc_OccurrenceDef*> EditorView_OccurrenceOps_mut_(BRepGraph::EditorView::OccurrenceOps* self_, BRepGraph_OccurrenceId const* theOccurrence) {
+    try { return {new BRepGraph_MutGuard_BRepGraphInc_OccurrenceDef(self_->Mut(*theOccurrence)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<BRepGraph_MutGuard_BRepGraphInc_OccurrenceRef*> EditorView_OccurrenceOps_mut_ref(BRepGraph::EditorView::OccurrenceOps* self_, BRepGraph_OccurrenceRefId const* theOccurrenceRef) {
+    try { return {new BRepGraph_MutGuard_BRepGraphInc_OccurrenceRef(self_->MutRef(*theOccurrenceRef)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" const char* EditorView_OccurrenceOps_set_ref_local_location_occurrencerefid_location(BRepGraph::EditorView::OccurrenceOps* self_, BRepGraph_OccurrenceRefId const* theOccurrenceRef, TopLoc_Location const* theLoc) {
+    try { self_->SetRefLocalLocation(*theOccurrenceRef, *theLoc); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* EditorView_OccurrenceOps_set_ref_local_location_mutguard_brepgraphinc_occurrenceref_location(BRepGraph::EditorView::OccurrenceOps* self_, BRepGraph_MutGuard_BRepGraphInc_OccurrenceRef* theMut, TopLoc_Location const* theLoc) {
+    try { self_->SetRefLocalLocation(*theMut, *theLoc); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* EditorView_OccurrenceOps_set_child_node_id_occurrenceid_nodeid(BRepGraph::EditorView::OccurrenceOps* self_, BRepGraph_OccurrenceId const* theOccurrence, BRepGraph_NodeId const* theChildNodeId) {
+    try { self_->SetChildNodeId(*theOccurrence, *theChildNodeId); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* EditorView_OccurrenceOps_set_child_node_id_mutguard_brepgraphinc_occurrencedef_nodeid(BRepGraph::EditorView::OccurrenceOps* self_, BRepGraph_MutGuard_BRepGraphInc_OccurrenceDef* theMut, BRepGraph_NodeId const* theChildNodeId) {
+    try { self_->SetChildNodeId(*theMut, *theChildNodeId); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* EditorView_OccurrenceOps_set_ref_child_occurrence_id_occurrencerefid_occurrenceid(BRepGraph::EditorView::OccurrenceOps* self_, BRepGraph_OccurrenceRefId const* theOccurrenceRef, BRepGraph_OccurrenceId const* theOccurrence) {
+    try { self_->SetRefChildOccurrenceId(*theOccurrenceRef, *theOccurrence); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* EditorView_OccurrenceOps_set_ref_child_occurrence_id_mutguard_brepgraphinc_occurrenceref_occurrenceid(BRepGraph::EditorView::OccurrenceOps* self_, BRepGraph_MutGuard_BRepGraphInc_OccurrenceRef* theMut, BRepGraph_OccurrenceId const* theOccurrence) {
+    try { self_->SetRefChildOccurrenceId(*theMut, *theOccurrence); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" void EditorView_OccurrenceOps_destructor(BRepGraph::EditorView::OccurrenceOps* self_) { delete self_; }
+
+// ========================
+// BRepGraph::EditorView::GenOps wrappers
+// ========================
+
+extern "C" OcctResult<BRepGraph_MutGuard_BRepGraphInc_ChildRef*> EditorView_GenOps_mut_child_ref(BRepGraph::EditorView::GenOps* self_, BRepGraph_ChildRefId const* theChildRef) {
+    try { return {new BRepGraph_MutGuard_BRepGraphInc_ChildRef(self_->MutChildRef(*theChildRef)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" const char* EditorView_GenOps_remove_node(BRepGraph::EditorView::GenOps* self_, BRepGraph_NodeId const* theNode) {
+    try { self_->RemoveNode(*theNode); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* EditorView_GenOps_replace_node(BRepGraph::EditorView::GenOps* self_, BRepGraph_NodeId const* theNode, BRepGraph_NodeId const* theReplacement) {
+    try { self_->ReplaceNode(*theNode, *theReplacement); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* EditorView_GenOps_remove_subgraph(BRepGraph::EditorView::GenOps* self_, BRepGraph_NodeId const* theNode) {
+    try { self_->RemoveSubgraph(*theNode); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" OcctResult<bool> EditorView_GenOps_remove_ref_refid(BRepGraph::EditorView::GenOps* self_, BRepGraph_RefId const* theRef) {
+    try { return {self_->RemoveRef(*theRef), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<bool> EditorView_GenOps_remove_ref_nodeid_refid_bool(BRepGraph::EditorView::GenOps* self_, BRepGraph_NodeId const* theParent, BRepGraph_RefId const* theRef, bool theToPruneOrphanedChild) {
+    try { return {self_->RemoveRef(*theParent, *theRef, theToPruneOrphanedChild), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" const char* EditorView_GenOps_set_child_ref_local_location_childrefid_location(BRepGraph::EditorView::GenOps* self_, BRepGraph_ChildRefId const* theChildRef, TopLoc_Location const* theLoc) {
+    try { self_->SetChildRefLocalLocation(*theChildRef, *theLoc); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* EditorView_GenOps_set_child_ref_child_node_id_childrefid_nodeid(BRepGraph::EditorView::GenOps* self_, BRepGraph_ChildRefId const* theChildRef, BRepGraph_NodeId const* theChild) {
+    try { self_->SetChildRefChildNodeId(*theChildRef, *theChild); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* EditorView_GenOps_set_child_ref_child_node_id_mutguard_brepgraphinc_childref_nodeid(BRepGraph::EditorView::GenOps* self_, BRepGraph_MutGuard_BRepGraphInc_ChildRef* theMut, BRepGraph_NodeId const* theChild) {
+    try { self_->SetChildRefChildNodeId(*theMut, *theChild); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* EditorView_GenOps_set_child_ref_local_location_mutguard_brepgraphinc_childref_location(BRepGraph::EditorView::GenOps* self_, BRepGraph_MutGuard_BRepGraphInc_ChildRef* theMut, TopLoc_Location const* theLoc) {
+    try { self_->SetChildRefLocalLocation(*theMut, *theLoc); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* EditorView_GenOps_cleanup_removed_references(BRepGraph::EditorView::GenOps* self_) {
+    try { self_->CleanupRemovedReferences(); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" void EditorView_GenOps_destructor(BRepGraph::EditorView::GenOps* self_) { delete self_; }
+
+// ========================
+// BRepGraph::EditorView::BoundaryIssue wrappers
+// ========================
+
+extern "C" OcctResult<BRepGraph::EditorView::BoundaryIssue*> EditorView_BoundaryIssue_ctor() {
+    try { return {new BRepGraph::EditorView::BoundaryIssue(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" void EditorView_BoundaryIssue_destructor(BRepGraph::EditorView::BoundaryIssue* self_) { delete self_; }
+
+// ========================
+// BRepGraph_ItemId wrappers
+// ========================
+
+extern "C" OcctResult<BRepGraph_ItemId*> BRepGraph_ItemId_ctor() {
+    try { return {new BRepGraph_ItemId(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<BRepGraph_ItemId*> BRepGraph_ItemId_ctor_nodeid(BRepGraph_NodeId const* theNode) {
+    try { return {new BRepGraph_ItemId(*theNode), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<BRepGraph_ItemId*> BRepGraph_ItemId_ctor_refid(BRepGraph_RefId const* theRef) {
+    try { return {new BRepGraph_ItemId(*theRef), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<BRepGraph_ItemId::Domain*> BRepGraph_ItemId_item_domain(const BRepGraph_ItemId* self_) {
+    try { return {new BRepGraph_ItemId::Domain(self_->ItemDomain()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<BRepGraph_NodeId*> BRepGraph_ItemId_node_id(const BRepGraph_ItemId* self_) {
+    try { return {new BRepGraph_NodeId(self_->NodeId()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<BRepGraph_RefId*> BRepGraph_ItemId_ref_id(const BRepGraph_ItemId* self_) {
+    try { return {new BRepGraph_RefId(self_->RefId()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<BRepGraph_NodeId::Kind*> BRepGraph_ItemId_node_kind(const BRepGraph_ItemId* self_) {
+    try { return {new BRepGraph_NodeId::Kind(self_->NodeKind()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<BRepGraph_RefId::Kind*> BRepGraph_ItemId_ref_kind(const BRepGraph_ItemId* self_) {
+    try { return {new BRepGraph_RefId::Kind(self_->RefKind()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<bool> BRepGraph_ItemId_is_valid(const BRepGraph_ItemId* self_) {
+    try { return {self_->IsValid(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<bool> BRepGraph_ItemId_is_node(const BRepGraph_ItemId* self_) {
+    try { return {self_->IsNode(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<bool> BRepGraph_ItemId_is_reference(const BRepGraph_ItemId* self_) {
+    try { return {self_->IsReference(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<uint8_t> BRepGraph_ItemId_raw_kind(const BRepGraph_ItemId* self_) {
+    try { return {self_->RawKind(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<uint8_t> BRepGraph_ItemId_kind(const BRepGraph_ItemId* self_) {
+    try { return {self_->Kind(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<uint32_t> BRepGraph_ItemId_index(const BRepGraph_ItemId* self_) {
+    try { return {self_->Index(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" void BRepGraph_ItemId_destructor(BRepGraph_ItemId* self_) { delete self_; }
+
+// ========================
+// BRepGraph_ItemUID wrappers
+// ========================
+
+extern "C" OcctResult<BRepGraph_ItemUID*> BRepGraph_ItemUID_ctor() {
+    try { return {new BRepGraph_ItemUID(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<BRepGraph_ItemUID::Domain*> BRepGraph_ItemUID_item_domain(const BRepGraph_ItemUID* self_) {
+    try { return {new BRepGraph_ItemUID::Domain(self_->ItemDomain()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<BRepGraph_NodeId::Kind*> BRepGraph_ItemUID_node_kind(const BRepGraph_ItemUID* self_) {
+    try { return {new BRepGraph_NodeId::Kind(self_->NodeKind()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<BRepGraph_RefId::Kind*> BRepGraph_ItemUID_ref_kind(const BRepGraph_ItemUID* self_) {
+    try { return {new BRepGraph_RefId::Kind(self_->RefKind()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<bool> BRepGraph_ItemUID_is_valid(const BRepGraph_ItemUID* self_) {
+    try { return {self_->IsValid(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<bool> BRepGraph_ItemUID_is_node(const BRepGraph_ItemUID* self_) {
+    try { return {self_->IsNode(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<bool> BRepGraph_ItemUID_is_reference(const BRepGraph_ItemUID* self_) {
+    try { return {self_->IsReference(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<uint8_t> BRepGraph_ItemUID_raw_kind(const BRepGraph_ItemUID* self_) {
+    try { return {self_->RawKind(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<size_t> BRepGraph_ItemUID_counter(const BRepGraph_ItemUID* self_) {
+    try { return {self_->Counter(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<size_t> BRepGraph_ItemUID_hash_value(const BRepGraph_ItemUID* self_) {
+    try { return {self_->HashValue(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<BRepGraph_ItemUID*> BRepGraph_ItemUID_node(BRepGraph_NodeId::Kind const* theKind, size_t theCounter) {
+    try { return {new BRepGraph_ItemUID(BRepGraph_ItemUID::Node(*theKind, theCounter)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<BRepGraph_ItemUID*> BRepGraph_ItemUID_reference(BRepGraph_RefId::Kind const* theKind, size_t theCounter) {
+    try { return {new BRepGraph_ItemUID(BRepGraph_ItemUID::Reference(*theKind, theCounter)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<BRepGraph_ItemUID*> BRepGraph_ItemUID_invalid() {
+    try { return {new BRepGraph_ItemUID(BRepGraph_ItemUID::Invalid()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" void BRepGraph_ItemUID_destructor(BRepGraph_ItemUID* self_) { delete self_; }
+
+// ========================
+// BRepGraph_RootProductIterator wrappers
+// ========================
+
+extern "C" OcctResult<BRepGraph_RootProductIterator*> BRepGraph_RootProductIterator_ctor_brepgraph(BRepGraph const* theGraph) {
+    try { return {new BRepGraph_RootProductIterator(*theGraph), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<bool> BRepGraph_RootProductIterator_more(const BRepGraph_RootProductIterator* self_) {
+    try { return {self_->More(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" const char* BRepGraph_RootProductIterator_next(BRepGraph_RootProductIterator* self_) {
+    try { self_->Next(); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" OcctResult<BRepGraph_ProductId const*> BRepGraph_RootProductIterator_current(const BRepGraph_RootProductIterator* self_) {
+    try { return {&(self_->Current()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" void BRepGraph_RootProductIterator_destructor(BRepGraph_RootProductIterator* self_) { delete self_; }
+
+// ========================
+// BRepGraph_Layer wrappers
+// ========================
+
+extern "C" OcctResult<Standard_GUID const*> BRepGraph_Layer_id(const BRepGraph_Layer* self_) {
+    try { return {&(self_->ID()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<TCollection_AsciiString const*> BRepGraph_Layer_name(const BRepGraph_Layer* self_) {
+    try { return {&(self_->Name()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" const char* BRepGraph_Layer_on_node_removed(BRepGraph_Layer* self_, BRepGraph_NodeId const* theNode) {
+    try { self_->OnNodeRemoved(*theNode); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* BRepGraph_Layer_on_item_removed(BRepGraph_Layer* self_, BRepGraph_ItemId const* theItem) {
+    try { self_->OnItemRemoved(*theItem); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* BRepGraph_Layer_on_node_replaced(BRepGraph_Layer* self_, BRepGraph_NodeId const* theOldNode, BRepGraph_NodeId const* theNewNode) {
+    try { self_->OnNodeReplaced(*theOldNode, *theNewNode); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* BRepGraph_Layer_copy_to(const BRepGraph_Layer* self_, BRepGraph_CopyRemap const* theCopy) {
+    try { self_->CopyTo(*theCopy); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* BRepGraph_Layer_invalidate_all(BRepGraph_Layer* self_) {
+    try { self_->InvalidateAll(); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* BRepGraph_Layer_clear(BRepGraph_Layer* self_) {
+    try { self_->Clear(); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" OcctResult<int32_t> BRepGraph_Layer_subscribed_kinds(const BRepGraph_Layer* self_) {
+    try { return {self_->SubscribedKinds(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" const char* BRepGraph_Layer_on_node_modified(BRepGraph_Layer* self_, BRepGraph_NodeId const* theNode) {
+    try { self_->OnNodeModified(*theNode); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* BRepGraph_Layer_on_item_modified(BRepGraph_Layer* self_, BRepGraph_ItemId const* theItem) {
+    try { self_->OnItemModified(*theItem); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* BRepGraph_Layer_on_nodes_modified(BRepGraph_Layer* self_, NCollection_Array1_BRepGraph_NodeId const* theModifiedNodes) {
+    try { self_->OnNodesModified(*theModifiedNodes); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" OcctResult<int32_t> BRepGraph_Layer_subscribed_ref_kinds(const BRepGraph_Layer* self_) {
+    try { return {self_->SubscribedRefKinds(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" const char* BRepGraph_Layer_on_ref_removed(BRepGraph_Layer* self_, BRepGraph_RefId const* theRef) {
+    try { self_->OnRefRemoved(*theRef); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* BRepGraph_Layer_on_ref_modified(BRepGraph_Layer* self_, BRepGraph_RefId const* theRef) {
+    try { self_->OnRefModified(*theRef); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* BRepGraph_Layer_on_refs_modified(BRepGraph_Layer* self_, NCollection_Array1_BRepGraph_RefId const* theModifiedRefs) {
+    try { self_->OnRefsModified(*theModifiedRefs); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" OcctResult<uint64_t> BRepGraph_Layer_revision(const BRepGraph_Layer* self_) {
+    try { return {self_->Revision(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Handle(Standard_Type) const*> BRepGraph_Layer_dynamic_type(const BRepGraph_Layer* self_) {
+    try { return {&(self_->DynamicType()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<int32_t> BRepGraph_Layer_kind_bit(BRepGraph_NodeId::Kind const* theKind) {
+    try { return {BRepGraph_Layer::KindBit(*theKind), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<int32_t> BRepGraph_Layer_ref_kind_bit(BRepGraph_RefId::Kind const* theKind) {
+    try { return {BRepGraph_Layer::RefKindBit(*theKind), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<char const*> BRepGraph_Layer_get_type_name() {
+    try { return {BRepGraph_Layer::get_type_name(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Handle(Standard_Type) const*> BRepGraph_Layer_get_type_descriptor() {
+    try { return {&(BRepGraph_Layer::get_type_descriptor()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<const Standard_Transient*> BRepGraph_Layer_as_Standard_Transient(const BRepGraph_Layer* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
+extern "C" OcctResult<Standard_Transient*> BRepGraph_Layer_as_Standard_Transient_mut(BRepGraph_Layer* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
+extern "C" OcctResult<const BRepGraph_Layer*> Handle_BRepGraph_Layer_get(const Handle_BRepGraph_Layer* handle) {
+    try { return {(*handle).get(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<BRepGraph_Layer*> Handle_BRepGraph_Layer_get_mut(Handle_BRepGraph_Layer* handle) {
+    try { return {(*handle).get(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_BRepGraph_Layer_to_Handle_Standard_Transient(const Handle_BRepGraph_Layer* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Handle_BRepGraph_LayerDeferred*> Handle_BRepGraph_Layer_downcast_to_Handle_BRepGraph_LayerDeferred(const Handle_BRepGraph_Layer* self_) {
+    try {
+    opencascade::handle<BRepGraph_LayerDeferred> result = opencascade::handle<BRepGraph_LayerDeferred>::DownCast(*self_);
+    if (result.IsNull()) { return {nullptr, nullptr}; }
+    return {new Handle_BRepGraph_LayerDeferred(result), nullptr};
+    }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Handle_BRepGraph_LayerHistory*> Handle_BRepGraph_Layer_downcast_to_Handle_BRepGraph_LayerHistory(const Handle_BRepGraph_Layer* self_) {
+    try {
+    opencascade::handle<BRepGraph_LayerHistory> result = opencascade::handle<BRepGraph_LayerHistory>::DownCast(*self_);
+    if (result.IsNull()) { return {nullptr, nullptr}; }
+    return {new Handle_BRepGraph_LayerHistory(result), nullptr};
+    }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Handle_BRepGraph_LayerLock*> Handle_BRepGraph_Layer_downcast_to_Handle_BRepGraph_LayerLock(const Handle_BRepGraph_Layer* self_) {
+    try {
+    opencascade::handle<BRepGraph_LayerLock> result = opencascade::handle<BRepGraph_LayerLock>::DownCast(*self_);
+    if (result.IsNull()) { return {nullptr, nullptr}; }
+    return {new Handle_BRepGraph_LayerLock(result), nullptr};
+    }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Handle_BRepGraph_LayerParametric*> Handle_BRepGraph_Layer_downcast_to_Handle_BRepGraph_LayerParametric(const Handle_BRepGraph_Layer* self_) {
+    try {
+    opencascade::handle<BRepGraph_LayerParametric> result = opencascade::handle<BRepGraph_LayerParametric>::DownCast(*self_);
+    if (result.IsNull()) { return {nullptr, nullptr}; }
+    return {new Handle_BRepGraph_LayerParametric(result), nullptr};
+    }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Handle_BRepGraph_LayerTopoSupplement*> Handle_BRepGraph_Layer_downcast_to_Handle_BRepGraph_LayerTopoSupplement(const Handle_BRepGraph_Layer* self_) {
+    try {
+    opencascade::handle<BRepGraph_LayerTopoSupplement> result = opencascade::handle<BRepGraph_LayerTopoSupplement>::DownCast(*self_);
+    if (result.IsNull()) { return {nullptr, nullptr}; }
+    return {new Handle_BRepGraph_LayerTopoSupplement(result), nullptr};
+    }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<bool> BRepGraph_Layer_inherited_IsInstance(const BRepGraph_Layer* self, Handle(Standard_Type) const& theType) {
+    try { return {self->IsInstance(theType), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<bool> BRepGraph_Layer_inherited_IsKind(const BRepGraph_Layer* self, Handle(Standard_Type) const& theType) {
+    try { return {self->IsKind(theType), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Standard_Transient*> BRepGraph_Layer_inherited_This(const BRepGraph_Layer* self) {
+    try { return {self->This(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<int32_t> BRepGraph_Layer_inherited_GetRefCount(const BRepGraph_Layer* self) {
+    try { return {self->GetRefCount(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" const char* BRepGraph_Layer_inherited_IncrementRefCounter(BRepGraph_Layer* self) {
+    try { self->IncrementRefCounter(); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" OcctResult<int32_t> BRepGraph_Layer_inherited_DecrementRefCounter(BRepGraph_Layer* self) {
+    try { return {self->DecrementRefCounter(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" const char* BRepGraph_Layer_inherited_Delete(const BRepGraph_Layer* self) {
+    try { self->Delete(); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" void BRepGraph_Layer_destructor(BRepGraph_Layer* self_) { delete self_; }
+
+// ========================
+// BRepGraph_LayerDeferred wrappers
+// ========================
+
+extern "C" OcctResult<BRepGraph_LayerDeferred*> BRepGraph_LayerDeferred_ctor() {
+    try { return {new BRepGraph_LayerDeferred(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Standard_GUID const*> BRepGraph_LayerDeferred_id(const BRepGraph_LayerDeferred* self_) {
+    try { return {&(self_->ID()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<BRepGraph_LayerDeferred::Entry const*> BRepGraph_LayerDeferred_find_deferred_itemid(const BRepGraph_LayerDeferred* self_, BRepGraph_ItemId const* theItem) {
+    try { return {self_->FindDeferred(*theItem), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<BRepGraph_LayerDeferred::Entry const*> BRepGraph_LayerDeferred_find_deferred_nodeid(const BRepGraph_LayerDeferred* self_, BRepGraph_NodeId const* theNode) {
+    try { return {self_->FindDeferred(*theNode), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<BRepGraph_LayerDeferred::Entry const*> BRepGraph_LayerDeferred_find_deferred_refid(const BRepGraph_LayerDeferred* self_, BRepGraph_RefId const* theRef) {
+    try { return {self_->FindDeferred(*theRef), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<bool> BRepGraph_LayerDeferred_has_deferred_itemid(const BRepGraph_LayerDeferred* self_, BRepGraph_ItemId const* theItem) {
+    try { return {self_->HasDeferred(*theItem), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<bool> BRepGraph_LayerDeferred_has_deferred_nodeid(const BRepGraph_LayerDeferred* self_, BRepGraph_NodeId const* theNode) {
+    try { return {self_->HasDeferred(*theNode), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<bool> BRepGraph_LayerDeferred_has_deferred_refid(const BRepGraph_LayerDeferred* self_, BRepGraph_RefId const* theRef) {
+    try { return {self_->HasDeferred(*theRef), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" const char* BRepGraph_LayerDeferred_register_deferred_itemid_asciistring2_representationkind_asciistring_uint(BRepGraph_LayerDeferred* self_, BRepGraph_ItemId const* theItem, TCollection_AsciiString const* theProvider, TCollection_AsciiString const* theSourceKey, BRepGraph_LayerDeferred::RepresentationKind const* theRepresentationKind, TCollection_AsciiString const* theRepresentationName, uint32_t theSourceIndex) {
+    try { self_->RegisterDeferred(*theItem, *theProvider, *theSourceKey, *theRepresentationKind, *theRepresentationName, theSourceIndex); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* BRepGraph_LayerDeferred_register_deferred_representations(BRepGraph_LayerDeferred* self_, BRepGraph_ItemId const* theItem, TCollection_AsciiString const* theProvider, TCollection_AsciiString const* theSourceKey, const BRepGraph_LayerDeferred::Representation* theRepresentations, size_t theNbRepresentations) {
+    try { self_->RegisterDeferredRepresentations(*theItem, *theProvider, *theSourceKey, theRepresentations, theNbRepresentations); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* BRepGraph_LayerDeferred_register_deferred_representations_direct(BRepGraph_LayerDeferred* self_, BRepGraph_ItemId const* theItem, TCollection_AsciiString const* theProvider, TCollection_AsciiString const* theSourceKey, const BRepGraph_LayerDeferred::Representation* theRepresentations, size_t theNbRepresentations) {
+    try { self_->RegisterDeferredRepresentationsDirect(*theItem, *theProvider, *theSourceKey, theRepresentations, theNbRepresentations); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* BRepGraph_LayerDeferred_register_deferred_nodeid_asciistring2_representationkind_asciistring_uint(BRepGraph_LayerDeferred* self_, BRepGraph_NodeId const* theNode, TCollection_AsciiString const* theProvider, TCollection_AsciiString const* theSourceKey, BRepGraph_LayerDeferred::RepresentationKind const* theRepresentationKind, TCollection_AsciiString const* theRepresentationName, uint32_t theSourceIndex) {
+    try { self_->RegisterDeferred(*theNode, *theProvider, *theSourceKey, *theRepresentationKind, *theRepresentationName, theSourceIndex); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* BRepGraph_LayerDeferred_register_deferred_refid_asciistring2_representationkind_asciistring_uint(BRepGraph_LayerDeferred* self_, BRepGraph_RefId const* theRef, TCollection_AsciiString const* theProvider, TCollection_AsciiString const* theSourceKey, BRepGraph_LayerDeferred::RepresentationKind const* theRepresentationKind, TCollection_AsciiString const* theRepresentationName, uint32_t theSourceIndex) {
+    try { self_->RegisterDeferred(*theRef, *theProvider, *theSourceKey, *theRepresentationKind, *theRepresentationName, theSourceIndex); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* BRepGraph_LayerDeferred_unregister_deferred_itemid(BRepGraph_LayerDeferred* self_, BRepGraph_ItemId const* theItem) {
+    try { self_->UnregisterDeferred(*theItem); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* BRepGraph_LayerDeferred_unregister_deferred_nodeid(BRepGraph_LayerDeferred* self_, BRepGraph_NodeId const* theNode) {
+    try { self_->UnregisterDeferred(*theNode); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* BRepGraph_LayerDeferred_unregister_deferred_refid(BRepGraph_LayerDeferred* self_, BRepGraph_RefId const* theRef) {
+    try { self_->UnregisterDeferred(*theRef); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" OcctResult<bool> BRepGraph_LayerDeferred_has_deferred_items(const BRepGraph_LayerDeferred* self_) {
+    try { return {self_->HasDeferredItems(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<BRepGraph_LayerDeferred::Entry const*> BRepGraph_LayerDeferred_find_first_deferred(const BRepGraph_LayerDeferred* self_, BRepGraph_LayerDeferred::RepresentationKind const* theKind, BRepGraph_ItemId* theItem) {
+    try { return {self_->FindFirstDeferred(*theKind, theItem), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" const char* BRepGraph_LayerDeferred_reserve_deferred_items(BRepGraph_LayerDeferred* self_, size_t theNbItems) {
+    try { self_->ReserveDeferredItems(theNbItems); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* BRepGraph_LayerDeferred_begin_bulk_registration(BRepGraph_LayerDeferred* self_) {
+    try { self_->BeginBulkRegistration(); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* BRepGraph_LayerDeferred_end_bulk_registration(BRepGraph_LayerDeferred* self_) {
+    try { self_->EndBulkRegistration(); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" OcctResult<TCollection_AsciiString const*> BRepGraph_LayerDeferred_name(const BRepGraph_LayerDeferred* self_) {
+    try { return {&(self_->Name()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" const char* BRepGraph_LayerDeferred_on_node_removed(BRepGraph_LayerDeferred* self_, BRepGraph_NodeId const* theNode) {
+    try { self_->OnNodeRemoved(*theNode); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* BRepGraph_LayerDeferred_on_node_replaced(BRepGraph_LayerDeferred* self_, BRepGraph_NodeId const* theOldNode, BRepGraph_NodeId const* theNewNode) {
+    try { self_->OnNodeReplaced(*theOldNode, *theNewNode); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* BRepGraph_LayerDeferred_copy_to(const BRepGraph_LayerDeferred* self_, BRepGraph_CopyRemap const* theCopy) {
+    try { self_->CopyTo(*theCopy); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* BRepGraph_LayerDeferred_on_ref_removed(BRepGraph_LayerDeferred* self_, BRepGraph_RefId const* theRef) {
+    try { self_->OnRefRemoved(*theRef); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* BRepGraph_LayerDeferred_invalidate_all(BRepGraph_LayerDeferred* self_) {
+    try { self_->InvalidateAll(); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* BRepGraph_LayerDeferred_clear(BRepGraph_LayerDeferred* self_) {
+    try { self_->Clear(); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" OcctResult<Handle(Standard_Type) const*> BRepGraph_LayerDeferred_dynamic_type(const BRepGraph_LayerDeferred* self_) {
+    try { return {&(self_->DynamicType()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Standard_GUID const*> BRepGraph_LayerDeferred_get_id() {
+    try { return {&(BRepGraph_LayerDeferred::GetID()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<char const*> BRepGraph_LayerDeferred_get_type_name() {
+    try { return {BRepGraph_LayerDeferred::get_type_name(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Handle(Standard_Type) const*> BRepGraph_LayerDeferred_get_type_descriptor() {
+    try { return {&(BRepGraph_LayerDeferred::get_type_descriptor()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<const BRepGraph_Layer*> BRepGraph_LayerDeferred_as_BRepGraph_Layer(const BRepGraph_LayerDeferred* self_) { return {static_cast<const BRepGraph_Layer*>(self_), nullptr}; }
+extern "C" OcctResult<BRepGraph_Layer*> BRepGraph_LayerDeferred_as_BRepGraph_Layer_mut(BRepGraph_LayerDeferred* self_) { return {static_cast<BRepGraph_Layer*>(self_), nullptr}; }
+extern "C" OcctResult<const Standard_Transient*> BRepGraph_LayerDeferred_as_Standard_Transient(const BRepGraph_LayerDeferred* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
+extern "C" OcctResult<Standard_Transient*> BRepGraph_LayerDeferred_as_Standard_Transient_mut(BRepGraph_LayerDeferred* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
+extern "C" OcctResult<Handle_BRepGraph_LayerDeferred*> BRepGraph_LayerDeferred_to_handle(BRepGraph_LayerDeferred* obj) {
+    try { return {new Handle_BRepGraph_LayerDeferred(obj), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<const BRepGraph_LayerDeferred*> Handle_BRepGraph_LayerDeferred_get(const Handle_BRepGraph_LayerDeferred* handle) {
+    try { return {(*handle).get(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<BRepGraph_LayerDeferred*> Handle_BRepGraph_LayerDeferred_get_mut(Handle_BRepGraph_LayerDeferred* handle) {
+    try { return {(*handle).get(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Handle_BRepGraph_Layer*> Handle_BRepGraph_LayerDeferred_to_Handle_BRepGraph_Layer(const Handle_BRepGraph_LayerDeferred* self_) {
+    try { return {new Handle_BRepGraph_Layer(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_BRepGraph_LayerDeferred_to_Handle_Standard_Transient(const Handle_BRepGraph_LayerDeferred* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" const char* BRepGraph_LayerDeferred_inherited_OnItemRemoved(BRepGraph_LayerDeferred* self, BRepGraph_ItemId const& theItem) {
+    try { self->OnItemRemoved(theItem); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" OcctResult<int32_t> BRepGraph_LayerDeferred_inherited_SubscribedKinds(const BRepGraph_LayerDeferred* self) {
+    try { return {self->SubscribedKinds(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" const char* BRepGraph_LayerDeferred_inherited_OnNodeModified(BRepGraph_LayerDeferred* self, BRepGraph_NodeId const& theNode) {
+    try { self->OnNodeModified(theNode); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* BRepGraph_LayerDeferred_inherited_OnItemModified(BRepGraph_LayerDeferred* self, BRepGraph_ItemId const& theItem) {
+    try { self->OnItemModified(theItem); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* BRepGraph_LayerDeferred_inherited_OnNodesModified(BRepGraph_LayerDeferred* self, NCollection_Array1_BRepGraph_NodeId const& theModifiedNodes) {
+    try { self->OnNodesModified(theModifiedNodes); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" OcctResult<int32_t> BRepGraph_LayerDeferred_inherited_SubscribedRefKinds(const BRepGraph_LayerDeferred* self) {
+    try { return {self->SubscribedRefKinds(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" const char* BRepGraph_LayerDeferred_inherited_OnRefModified(BRepGraph_LayerDeferred* self, BRepGraph_RefId const& theRef) {
+    try { self->OnRefModified(theRef); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* BRepGraph_LayerDeferred_inherited_OnRefsModified(BRepGraph_LayerDeferred* self, NCollection_Array1_BRepGraph_RefId const& theModifiedRefs) {
+    try { self->OnRefsModified(theModifiedRefs); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" OcctResult<uint64_t> BRepGraph_LayerDeferred_inherited_Revision(const BRepGraph_LayerDeferred* self) {
+    try { return {self->Revision(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<bool> BRepGraph_LayerDeferred_inherited_IsInstance(const BRepGraph_LayerDeferred* self, Handle(Standard_Type) const& theType) {
+    try { return {self->IsInstance(theType), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<bool> BRepGraph_LayerDeferred_inherited_IsKind(const BRepGraph_LayerDeferred* self, Handle(Standard_Type) const& theType) {
+    try { return {self->IsKind(theType), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Standard_Transient*> BRepGraph_LayerDeferred_inherited_This(const BRepGraph_LayerDeferred* self) {
+    try { return {self->This(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<int32_t> BRepGraph_LayerDeferred_inherited_GetRefCount(const BRepGraph_LayerDeferred* self) {
+    try { return {self->GetRefCount(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" const char* BRepGraph_LayerDeferred_inherited_IncrementRefCounter(BRepGraph_LayerDeferred* self) {
+    try { self->IncrementRefCounter(); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" OcctResult<int32_t> BRepGraph_LayerDeferred_inherited_DecrementRefCounter(BRepGraph_LayerDeferred* self) {
+    try { return {self->DecrementRefCounter(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" const char* BRepGraph_LayerDeferred_inherited_Delete(const BRepGraph_LayerDeferred* self) {
+    try { self->Delete(); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" void BRepGraph_LayerDeferred_destructor(BRepGraph_LayerDeferred* self_) { delete self_; }
+
+// ========================
+// BRepGraph_LayerDeferred::Representation wrappers
+// ========================
+
+extern "C" OcctResult<BRepGraph_LayerDeferred::Representation*> BRepGraph_LayerDeferred_Representation_ctor() {
+    try { return {new BRepGraph_LayerDeferred::Representation(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" void BRepGraph_LayerDeferred_Representation_destructor(BRepGraph_LayerDeferred::Representation* self_) { delete self_; }
+
+// ========================
+// BRepGraph_LayerDeferred::Entry wrappers
+// ========================
+
+extern "C" OcctResult<BRepGraph_LayerDeferred::Entry*> BRepGraph_LayerDeferred_Entry_ctor() {
+    try { return {new BRepGraph_LayerDeferred::Entry(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" void BRepGraph_LayerDeferred_Entry_destructor(BRepGraph_LayerDeferred::Entry* self_) { delete self_; }
+
+// ========================
+// BRepGraph_LayerDeferred::Entry::RepresentationStorage wrappers
+// ========================
+
+extern "C" OcctResult<BRepGraph_LayerDeferred::Entry::RepresentationStorage*> BRepGraph_LayerDeferred_Entry_RepresentationStorage_ctor() {
+    try { return {new BRepGraph_LayerDeferred::Entry::RepresentationStorage(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<size_t> BRepGraph_LayerDeferred_Entry_RepresentationStorage_size(const BRepGraph_LayerDeferred::Entry::RepresentationStorage* self_) {
+    try { return {self_->Size(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<bool> BRepGraph_LayerDeferred_Entry_RepresentationStorage_is_empty(const BRepGraph_LayerDeferred::Entry::RepresentationStorage* self_) {
+    try { return {self_->IsEmpty(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<bool> BRepGraph_LayerDeferred_Entry_RepresentationStorage_contains_kind(const BRepGraph_LayerDeferred::Entry::RepresentationStorage* self_, BRepGraph_LayerDeferred::RepresentationKind const* theKind) {
+    try { return {self_->ContainsKind(*theKind), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<BRepGraph_LayerDeferred::Representation const*> BRepGraph_LayerDeferred_Entry_RepresentationStorage_value(const BRepGraph_LayerDeferred::Entry::RepresentationStorage* self_, size_t theIndex) {
+    try { return {&(self_->Value(theIndex)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<BRepGraph_LayerDeferred::Representation*> BRepGraph_LayerDeferred_Entry_RepresentationStorage_change_value(BRepGraph_LayerDeferred::Entry::RepresentationStorage* self_, size_t theIndex) {
+    try { return {&(self_->ChangeValue(theIndex)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<BRepGraph_LayerDeferred::Representation const*> BRepGraph_LayerDeferred_Entry_RepresentationStorage_first(const BRepGraph_LayerDeferred::Entry::RepresentationStorage* self_) {
+    try { return {&(self_->First()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" const char* BRepGraph_LayerDeferred_Entry_RepresentationStorage_append(BRepGraph_LayerDeferred::Entry::RepresentationStorage* self_, BRepGraph_LayerDeferred::Representation const* theRepresentation) {
+    try { self_->Append(*theRepresentation); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* BRepGraph_LayerDeferred_Entry_RepresentationStorage_clear(BRepGraph_LayerDeferred::Entry::RepresentationStorage* self_) {
+    try { self_->Clear(); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" OcctResult<BRepGraph_LayerDeferred::Entry::RepresentationStorage*> BRepGraph_LayerDeferred_Entry_RepresentationStorage_clone(const BRepGraph_LayerDeferred::Entry::RepresentationStorage* self_) {
+    try { return {new BRepGraph_LayerDeferred::Entry::RepresentationStorage(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" void BRepGraph_LayerDeferred_Entry_RepresentationStorage_destructor(BRepGraph_LayerDeferred::Entry::RepresentationStorage* self_) { delete self_; }
+
+// ========================
+// BRepGraph_LayerHistory wrappers
+// ========================
+
+extern "C" OcctResult<BRepGraph_LayerHistory*> BRepGraph_LayerHistory_ctor() {
+    try { return {new BRepGraph_LayerHistory(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<BRepGraph_NodeId*> BRepGraph_LayerHistory_find_original(const BRepGraph_LayerHistory* self_, BRepGraph_NodeId const* theModified) {
+    try { return {new BRepGraph_NodeId(self_->FindOriginal(*theModified)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<NCollection_LinearVector_BRepGraph_NodeId*> BRepGraph_LayerHistory_find_derived(const BRepGraph_LayerHistory* self_, BRepGraph_NodeId const* theOriginal) {
+    try { return {new NCollection_LinearVector_BRepGraph_NodeId(self_->FindDerived(*theOriginal)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<NCollection_LinearVector_BRepGraph_UID*> BRepGraph_LayerHistory_find_modified_brepgraph_uid(const BRepGraph_LayerHistory* self_, BRepGraph const* theGraph, BRepGraph_UID const* theUID) {
+    try { return {new NCollection_LinearVector_BRepGraph_UID(self_->FindModified(*theGraph, *theUID)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<NCollection_LinearVector_BRepGraph_UID*> BRepGraph_LayerHistory_find_generated_brepgraph_uid(const BRepGraph_LayerHistory* self_, BRepGraph const* theGraph, BRepGraph_UID const* theUID) {
+    try { return {new NCollection_LinearVector_BRepGraph_UID(self_->FindGenerated(*theGraph, *theUID)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<NCollection_LinearVector_BRepGraph_UID*> BRepGraph_LayerHistory_deleted_uids_brepgraph(const BRepGraph_LayerHistory* self_, BRepGraph const* theGraph) {
+    try { return {new NCollection_LinearVector_BRepGraph_UID(self_->DeletedUids(*theGraph)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Standard_GUID const*> BRepGraph_LayerHistory_id(const BRepGraph_LayerHistory* self_) {
+    try { return {&(self_->ID()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<TCollection_AsciiString const*> BRepGraph_LayerHistory_name(const BRepGraph_LayerHistory* self_) {
+    try { return {&(self_->Name()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" const char* BRepGraph_LayerHistory_record_asciistring_nodeid_arr1_nodeid_kind(BRepGraph_LayerHistory* self_, TCollection_AsciiString const* theOpLabel, BRepGraph_NodeId const* theOriginal, NCollection_Array1_BRepGraph_NodeId const* theReplacements, BRepGraph_LayerHistory::Kind const* theKind) {
+    try { self_->Record(*theOpLabel, *theOriginal, *theReplacements, *theKind); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* BRepGraph_LayerHistory_record_batch(BRepGraph_LayerHistory* self_, TCollection_AsciiString const* theOpLabel, NCollection_Array1_BRepGraph_NodeId const* theOriginals, NCollection_Array1_BRepGraph_NodeId const* theReplacements, TCollection_AsciiString const* theExtraInfo, BRepGraph_LayerHistory::Kind const* theKind) {
+    try { self_->RecordBatch(*theOpLabel, *theOriginals, *theReplacements, *theExtraInfo, *theKind); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* BRepGraph_LayerHistory_record_deleted(BRepGraph_LayerHistory* self_, TCollection_AsciiString const* theOpLabel, NCollection_Array1_BRepGraph_NodeId const* theDeleted) {
+    try { self_->RecordDeleted(*theOpLabel, *theDeleted); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* BRepGraph_LayerHistory_record_replaced(BRepGraph_LayerHistory* self_, TCollection_AsciiString const* theOpLabel, BRepGraph_NodeId const* theOriginal, BRepGraph_NodeId const* theReplacement) {
+    try { self_->RecordReplaced(*theOpLabel, *theOriginal, *theReplacement); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* BRepGraph_LayerHistory_record_replaced_batch(BRepGraph_LayerHistory* self_, TCollection_AsciiString const* theOpLabel, NCollection_Array1_BRepGraph_NodeId const* theOriginals, NCollection_Array1_BRepGraph_NodeId const* theReplacements, TCollection_AsciiString const* theExtraInfo) {
+    try { self_->RecordReplacedBatch(*theOpLabel, *theOriginals, *theReplacements, *theExtraInfo); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* BRepGraph_LayerHistory_record_uid(BRepGraph_LayerHistory* self_, TCollection_AsciiString const* theOpLabel, BRepGraph_UID const* theOriginal, NCollection_Array1_BRepGraph_UID const* theReplacements, BRepGraph_LayerHistory::Kind const* theKind) {
+    try { self_->RecordUid(*theOpLabel, *theOriginal, *theReplacements, *theKind); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* BRepGraph_LayerHistory_record_deleted_uid(BRepGraph_LayerHistory* self_, TCollection_AsciiString const* theOpLabel, NCollection_Array1_BRepGraph_UID const* theDeleted) {
+    try { self_->RecordDeletedUid(*theOpLabel, *theDeleted); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* BRepGraph_LayerHistory_record_item_uid(BRepGraph_LayerHistory* self_, TCollection_AsciiString const* theOpLabel, BRepGraph_ItemUID const* theOriginal, NCollection_Array1_BRepGraph_ItemUID const* theReplacements, BRepGraph_LayerHistory::Kind const* theKind) {
+    try { self_->RecordItemUid(*theOpLabel, *theOriginal, *theReplacements, *theKind); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* BRepGraph_LayerHistory_record_deleted_item_uid(BRepGraph_LayerHistory* self_, TCollection_AsciiString const* theOpLabel, NCollection_Array1_BRepGraph_ItemUID const* theDeleted) {
+    try { self_->RecordDeletedItemUid(*theOpLabel, *theDeleted); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* BRepGraph_LayerHistory_absorb_dmap_shape_nodeid2_handlebreptoolshistory_asciistring(BRepGraph_LayerHistory* self_, NCollection_DataMap_TopoDS_Shape_BRepGraph_NodeId_TopTools_ShapeMapHasher const* theInputs, NCollection_DataMap_TopoDS_Shape_BRepGraph_NodeId_TopTools_ShapeMapHasher const* theOutputs, Handle(BRepTools_History) const* theSource, TCollection_AsciiString const* theOpLabel) {
+    try { self_->Absorb(*theInputs, *theOutputs, *theSource, *theOpLabel); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* BRepGraph_LayerHistory_absorb_brepgraph2_dmap_shape_nodeid2_handlebreptoolshistory_asciistring(BRepGraph_LayerHistory* self_, BRepGraph const* theInputGraph, BRepGraph const* theOutputGraph, NCollection_DataMap_TopoDS_Shape_BRepGraph_NodeId_TopTools_ShapeMapHasher const* theInputs, NCollection_DataMap_TopoDS_Shape_BRepGraph_NodeId_TopTools_ShapeMapHasher const* theOutputs, Handle(BRepTools_History) const* theSource, TCollection_AsciiString const* theOpLabel) {
+    try { self_->Absorb(*theInputGraph, *theOutputGraph, *theInputs, *theOutputs, *theSource, *theOpLabel); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" OcctResult<NCollection_LinearVector_BRepGraph_NodeId const*> BRepGraph_LayerHistory_find_modified_nodeid(const BRepGraph_LayerHistory* self_, BRepGraph_NodeId const* theOriginal) {
+    try { return {self_->FindModified(*theOriginal), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<NCollection_LinearVector_BRepGraph_NodeId const*> BRepGraph_LayerHistory_find_generated_nodeid(const BRepGraph_LayerHistory* self_, BRepGraph_NodeId const* theOriginal) {
+    try { return {self_->FindGenerated(*theOriginal), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<bool> BRepGraph_LayerHistory_is_deleted_nodeid(const BRepGraph_LayerHistory* self_, BRepGraph_NodeId const* theOriginal) {
+    try { return {self_->IsDeleted(*theOriginal), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<NCollection_FlatMap_BRepGraph_NodeId const*> BRepGraph_LayerHistory_deleted_nodes(const BRepGraph_LayerHistory* self_) {
+    try { return {&(self_->DeletedNodes()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<NCollection_LinearVector_BRepGraph_UID const*> BRepGraph_LayerHistory_find_modified_uid(const BRepGraph_LayerHistory* self_, BRepGraph_UID const* theUID) {
+    try { return {self_->FindModified(*theUID), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<NCollection_LinearVector_BRepGraph_NodeId const*> BRepGraph_LayerHistory_find_originals(const BRepGraph_LayerHistory* self_, BRepGraph_NodeId const* theDerived) {
+    try { return {self_->FindOriginals(*theDerived), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<NCollection_LinearVector_BRepGraph_UID const*> BRepGraph_LayerHistory_find_generated_uid(const BRepGraph_LayerHistory* self_, BRepGraph_UID const* theUID) {
+    try { return {self_->FindGenerated(*theUID), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<bool> BRepGraph_LayerHistory_is_deleted_uid(const BRepGraph_LayerHistory* self_, BRepGraph_UID const* theUID) {
+    try { return {self_->IsDeleted(*theUID), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<NCollection_FlatMap_BRepGraph_UID const*> BRepGraph_LayerHistory_deleted_uids(const BRepGraph_LayerHistory* self_) {
+    try { return {&(self_->DeletedUids()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<bool> BRepGraph_LayerHistory_has_known_input_uid(const BRepGraph_LayerHistory* self_, BRepGraph_UID const* theUID) {
+    try { return {self_->HasKnownInput(*theUID), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<NCollection_LinearVector_BRepGraph_ItemUID const*> BRepGraph_LayerHistory_find_modified_itemuid(const BRepGraph_LayerHistory* self_, BRepGraph_ItemUID const* theUID) {
+    try { return {self_->FindModified(*theUID), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<NCollection_LinearVector_BRepGraph_ItemUID const*> BRepGraph_LayerHistory_find_generated_itemuid(const BRepGraph_LayerHistory* self_, BRepGraph_ItemUID const* theUID) {
+    try { return {self_->FindGenerated(*theUID), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<bool> BRepGraph_LayerHistory_is_deleted_itemuid(const BRepGraph_LayerHistory* self_, BRepGraph_ItemUID const* theUID) {
+    try { return {self_->IsDeleted(*theUID), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<NCollection_FlatMap_BRepGraph_ItemUID const*> BRepGraph_LayerHistory_deleted_item_uids(const BRepGraph_LayerHistory* self_) {
+    try { return {&(self_->DeletedItemUids()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<bool> BRepGraph_LayerHistory_has_known_input_itemuid(const BRepGraph_LayerHistory* self_, BRepGraph_ItemUID const* theUID) {
+    try { return {self_->HasKnownInput(*theUID), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<bool> BRepGraph_LayerHistory_is_deleted_brepgraph_uid(const BRepGraph_LayerHistory* self_, BRepGraph const* theGraph, BRepGraph_UID const* theUID) {
+    try { return {self_->IsDeleted(*theGraph, *theUID), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<size_t> BRepGraph_LayerHistory_nb_records(const BRepGraph_LayerHistory* self_) {
+    try { return {self_->NbRecords(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<BRepGraph_LayerHistory::Event const*> BRepGraph_LayerHistory_record_size(const BRepGraph_LayerHistory* self_, size_t theRecordIdx) {
+    try { return {&(self_->Record(theRecordIdx)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" const char* BRepGraph_LayerHistory_set_enabled(BRepGraph_LayerHistory* self_, bool theVal) {
+    try { self_->SetEnabled(theVal); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" OcctResult<bool> BRepGraph_LayerHistory_is_enabled(const BRepGraph_LayerHistory* self_) {
+    try { return {self_->IsEnabled(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" const char* BRepGraph_LayerHistory_clear(BRepGraph_LayerHistory* self_) {
+    try { self_->Clear(); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* BRepGraph_LayerHistory_on_node_removed(BRepGraph_LayerHistory* self_, BRepGraph_NodeId const* theNode) {
+    try { self_->OnNodeRemoved(*theNode); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* BRepGraph_LayerHistory_copy_to(const BRepGraph_LayerHistory* self_, BRepGraph_CopyRemap const* theCopy) {
+    try { self_->CopyTo(*theCopy); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* BRepGraph_LayerHistory_invalidate_all(BRepGraph_LayerHistory* self_) {
+    try { self_->InvalidateAll(); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" OcctResult<Handle(Standard_Type) const*> BRepGraph_LayerHistory_dynamic_type(const BRepGraph_LayerHistory* self_) {
+    try { return {&(self_->DynamicType()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Standard_GUID const*> BRepGraph_LayerHistory_get_id() {
+    try { return {&(BRepGraph_LayerHistory::GetID()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<char const*> BRepGraph_LayerHistory_get_type_name() {
+    try { return {BRepGraph_LayerHistory::get_type_name(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Handle(Standard_Type) const*> BRepGraph_LayerHistory_get_type_descriptor() {
+    try { return {&(BRepGraph_LayerHistory::get_type_descriptor()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<const BRepGraph_Layer*> BRepGraph_LayerHistory_as_BRepGraph_Layer(const BRepGraph_LayerHistory* self_) { return {static_cast<const BRepGraph_Layer*>(self_), nullptr}; }
+extern "C" OcctResult<BRepGraph_Layer*> BRepGraph_LayerHistory_as_BRepGraph_Layer_mut(BRepGraph_LayerHistory* self_) { return {static_cast<BRepGraph_Layer*>(self_), nullptr}; }
+extern "C" OcctResult<const Standard_Transient*> BRepGraph_LayerHistory_as_Standard_Transient(const BRepGraph_LayerHistory* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
+extern "C" OcctResult<Standard_Transient*> BRepGraph_LayerHistory_as_Standard_Transient_mut(BRepGraph_LayerHistory* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
+extern "C" OcctResult<Handle_BRepGraph_LayerHistory*> BRepGraph_LayerHistory_to_handle(BRepGraph_LayerHistory* obj) {
+    try { return {new Handle_BRepGraph_LayerHistory(obj), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<const BRepGraph_LayerHistory*> Handle_BRepGraph_LayerHistory_get(const Handle_BRepGraph_LayerHistory* handle) {
+    try { return {(*handle).get(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<BRepGraph_LayerHistory*> Handle_BRepGraph_LayerHistory_get_mut(Handle_BRepGraph_LayerHistory* handle) {
+    try { return {(*handle).get(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Handle_BRepGraph_Layer*> Handle_BRepGraph_LayerHistory_to_Handle_BRepGraph_Layer(const Handle_BRepGraph_LayerHistory* self_) {
+    try { return {new Handle_BRepGraph_Layer(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_BRepGraph_LayerHistory_to_Handle_Standard_Transient(const Handle_BRepGraph_LayerHistory* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" const char* BRepGraph_LayerHistory_inherited_OnItemRemoved(BRepGraph_LayerHistory* self, BRepGraph_ItemId const& theItem) {
+    try { self->OnItemRemoved(theItem); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* BRepGraph_LayerHistory_inherited_OnNodeReplaced(BRepGraph_LayerHistory* self, BRepGraph_NodeId const& theOldNode, BRepGraph_NodeId const& theNewNode) {
+    try { self->OnNodeReplaced(theOldNode, theNewNode); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" OcctResult<int32_t> BRepGraph_LayerHistory_inherited_SubscribedKinds(const BRepGraph_LayerHistory* self) {
+    try { return {self->SubscribedKinds(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" const char* BRepGraph_LayerHistory_inherited_OnNodeModified(BRepGraph_LayerHistory* self, BRepGraph_NodeId const& theNode) {
+    try { self->OnNodeModified(theNode); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* BRepGraph_LayerHistory_inherited_OnItemModified(BRepGraph_LayerHistory* self, BRepGraph_ItemId const& theItem) {
+    try { self->OnItemModified(theItem); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* BRepGraph_LayerHistory_inherited_OnNodesModified(BRepGraph_LayerHistory* self, NCollection_Array1_BRepGraph_NodeId const& theModifiedNodes) {
+    try { self->OnNodesModified(theModifiedNodes); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" OcctResult<int32_t> BRepGraph_LayerHistory_inherited_SubscribedRefKinds(const BRepGraph_LayerHistory* self) {
+    try { return {self->SubscribedRefKinds(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" const char* BRepGraph_LayerHistory_inherited_OnRefRemoved(BRepGraph_LayerHistory* self, BRepGraph_RefId const& theRef) {
+    try { self->OnRefRemoved(theRef); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* BRepGraph_LayerHistory_inherited_OnRefModified(BRepGraph_LayerHistory* self, BRepGraph_RefId const& theRef) {
+    try { self->OnRefModified(theRef); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* BRepGraph_LayerHistory_inherited_OnRefsModified(BRepGraph_LayerHistory* self, NCollection_Array1_BRepGraph_RefId const& theModifiedRefs) {
+    try { self->OnRefsModified(theModifiedRefs); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" OcctResult<uint64_t> BRepGraph_LayerHistory_inherited_Revision(const BRepGraph_LayerHistory* self) {
+    try { return {self->Revision(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<bool> BRepGraph_LayerHistory_inherited_IsInstance(const BRepGraph_LayerHistory* self, Handle(Standard_Type) const& theType) {
+    try { return {self->IsInstance(theType), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<bool> BRepGraph_LayerHistory_inherited_IsKind(const BRepGraph_LayerHistory* self, Handle(Standard_Type) const& theType) {
+    try { return {self->IsKind(theType), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Standard_Transient*> BRepGraph_LayerHistory_inherited_This(const BRepGraph_LayerHistory* self) {
+    try { return {self->This(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<int32_t> BRepGraph_LayerHistory_inherited_GetRefCount(const BRepGraph_LayerHistory* self) {
+    try { return {self->GetRefCount(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" const char* BRepGraph_LayerHistory_inherited_IncrementRefCounter(BRepGraph_LayerHistory* self) {
+    try { self->IncrementRefCounter(); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" OcctResult<int32_t> BRepGraph_LayerHistory_inherited_DecrementRefCounter(BRepGraph_LayerHistory* self) {
+    try { return {self->DecrementRefCounter(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" const char* BRepGraph_LayerHistory_inherited_Delete(const BRepGraph_LayerHistory* self) {
+    try { self->Delete(); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" void BRepGraph_LayerHistory_destructor(BRepGraph_LayerHistory* self_) { delete self_; }
+
+// ========================
+// BRepGraph_LayerHistory::Event wrappers
+// ========================
+
+extern "C" OcctResult<BRepGraph_LayerHistory::Event*> BRepGraph_LayerHistory_Event_ctor() {
+    try { return {new BRepGraph_LayerHistory::Event(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" void BRepGraph_LayerHistory_Event_destructor(BRepGraph_LayerHistory::Event* self_) { delete self_; }
+
+// ========================
+// BRepGraph_LayerIterator wrappers
+// ========================
+
+extern "C" OcctResult<BRepGraph_LayerIterator*> BRepGraph_LayerIterator_ctor_layerregistry(BRepGraph_LayerRegistry const* theRegistry) {
+    try { return {new BRepGraph_LayerIterator(*theRegistry), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Handle(BRepGraph_Layer)*> BRepGraph_LayerIterator_value(const BRepGraph_LayerIterator* self_) {
+    try { return {new Handle(BRepGraph_Layer)(self_->Value()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<bool> BRepGraph_LayerIterator_more(const BRepGraph_LayerIterator* self_) {
+    try { return {self_->More(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" const char* BRepGraph_LayerIterator_next(BRepGraph_LayerIterator* self_) {
+    try { self_->Next(); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" OcctResult<uint32_t> BRepGraph_LayerIterator_slot(const BRepGraph_LayerIterator* self_) {
+    try { return {self_->Slot(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<uint32_t> BRepGraph_LayerIterator_nb_layers(const BRepGraph_LayerIterator* self_) {
+    try { return {self_->NbLayers(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" void BRepGraph_LayerIterator_destructor(BRepGraph_LayerIterator* self_) { delete self_; }
+
+// ========================
+// BRepGraph_LayerLock wrappers
+// ========================
+
+extern "C" OcctResult<BRepGraph_LayerLock*> BRepGraph_LayerLock_ctor() {
+    try { return {new BRepGraph_LayerLock(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Standard_GUID const*> BRepGraph_LayerLock_id(const BRepGraph_LayerLock* self_) {
+    try { return {&(self_->ID()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<bool> BRepGraph_LayerLock_find_owner_id_itemid_guid(const BRepGraph_LayerLock* self_, BRepGraph_ItemId const* theItem, Standard_GUID* theOwnerId) {
+    try { return {self_->FindOwnerId(*theItem, *theOwnerId), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<bool> BRepGraph_LayerLock_find_owner_id_nodeid_guid(const BRepGraph_LayerLock* self_, BRepGraph_NodeId const* theNode, Standard_GUID* theOwnerId) {
+    try { return {self_->FindOwnerId(*theNode, *theOwnerId), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<bool> BRepGraph_LayerLock_find_owner_id_refid_guid(const BRepGraph_LayerLock* self_, BRepGraph_RefId const* theRef, Standard_GUID* theOwnerId) {
+    try { return {self_->FindOwnerId(*theRef, *theOwnerId), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<bool> BRepGraph_LayerLock_has_owner_itemid(const BRepGraph_LayerLock* self_, BRepGraph_ItemId const* theItem) {
+    try { return {self_->HasOwner(*theItem), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<bool> BRepGraph_LayerLock_has_owner_nodeid(const BRepGraph_LayerLock* self_, BRepGraph_NodeId const* theNode) {
+    try { return {self_->HasOwner(*theNode), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<bool> BRepGraph_LayerLock_has_owner_refid(const BRepGraph_LayerLock* self_, BRepGraph_RefId const* theRef) {
+    try { return {self_->HasOwner(*theRef), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" const char* BRepGraph_LayerLock_set_owner_itemid_guid(BRepGraph_LayerLock* self_, BRepGraph_ItemId const* theItem, Standard_GUID const* theOwnerId) {
+    try { self_->SetOwner(*theItem, *theOwnerId); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" OcctResult<bool> BRepGraph_LayerLock_set_owner_itemid_guid_bool(BRepGraph_LayerLock* self_, BRepGraph_ItemId const* theItem, Standard_GUID const* theOwnerId, bool theToUpdateRevision) {
+    try { return {self_->SetOwner(*theItem, *theOwnerId, theToUpdateRevision), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" const char* BRepGraph_LayerLock_set_owner_nodeid_guid(BRepGraph_LayerLock* self_, BRepGraph_NodeId const* theNode, Standard_GUID const* theOwnerId) {
+    try { self_->SetOwner(*theNode, *theOwnerId); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* BRepGraph_LayerLock_set_owner_refid_guid(BRepGraph_LayerLock* self_, BRepGraph_RefId const* theRef, Standard_GUID const* theOwnerId) {
+    try { self_->SetOwner(*theRef, *theOwnerId); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* BRepGraph_LayerLock_unset_owner_itemid(BRepGraph_LayerLock* self_, BRepGraph_ItemId const* theItem) {
+    try { self_->UnsetOwner(*theItem); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* BRepGraph_LayerLock_unset_owner_itemid_guid(BRepGraph_LayerLock* self_, BRepGraph_ItemId const* theItem, Standard_GUID const* theOwnerId) {
+    try { self_->UnsetOwner(*theItem, *theOwnerId); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* BRepGraph_LayerLock_unset_owner_nodeid(BRepGraph_LayerLock* self_, BRepGraph_NodeId const* theNode) {
+    try { self_->UnsetOwner(*theNode); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* BRepGraph_LayerLock_unset_owner_refid(BRepGraph_LayerLock* self_, BRepGraph_RefId const* theRef) {
+    try { self_->UnsetOwner(*theRef); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" OcctResult<bool> BRepGraph_LayerLock_has_owners(const BRepGraph_LayerLock* self_) {
+    try { return {self_->HasOwners(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" const char* BRepGraph_LayerLock_reserve_owners(BRepGraph_LayerLock* self_, size_t theNbOwners) {
+    try { self_->ReserveOwners(theNbOwners); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* BRepGraph_LayerLock_touch_owners(BRepGraph_LayerLock* self_) {
+    try { self_->TouchOwners(); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" OcctResult<TCollection_AsciiString const*> BRepGraph_LayerLock_name(const BRepGraph_LayerLock* self_) {
+    try { return {&(self_->Name()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" const char* BRepGraph_LayerLock_on_node_removed(BRepGraph_LayerLock* self_, BRepGraph_NodeId const* theNode) {
+    try { self_->OnNodeRemoved(*theNode); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* BRepGraph_LayerLock_on_node_replaced(BRepGraph_LayerLock* self_, BRepGraph_NodeId const* theOldNode, BRepGraph_NodeId const* theNewNode) {
+    try { self_->OnNodeReplaced(*theOldNode, *theNewNode); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* BRepGraph_LayerLock_copy_to(const BRepGraph_LayerLock* self_, BRepGraph_CopyRemap const* theCopy) {
+    try { self_->CopyTo(*theCopy); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* BRepGraph_LayerLock_on_ref_removed(BRepGraph_LayerLock* self_, BRepGraph_RefId const* theRef) {
+    try { self_->OnRefRemoved(*theRef); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* BRepGraph_LayerLock_invalidate_all(BRepGraph_LayerLock* self_) {
+    try { self_->InvalidateAll(); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* BRepGraph_LayerLock_clear(BRepGraph_LayerLock* self_) {
+    try { self_->Clear(); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" OcctResult<Handle(Standard_Type) const*> BRepGraph_LayerLock_dynamic_type(const BRepGraph_LayerLock* self_) {
+    try { return {&(self_->DynamicType()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Standard_GUID const*> BRepGraph_LayerLock_get_id() {
+    try { return {&(BRepGraph_LayerLock::GetID()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<char const*> BRepGraph_LayerLock_get_type_name() {
+    try { return {BRepGraph_LayerLock::get_type_name(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Handle(Standard_Type) const*> BRepGraph_LayerLock_get_type_descriptor() {
+    try { return {&(BRepGraph_LayerLock::get_type_descriptor()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<const BRepGraph_Layer*> BRepGraph_LayerLock_as_BRepGraph_Layer(const BRepGraph_LayerLock* self_) { return {static_cast<const BRepGraph_Layer*>(self_), nullptr}; }
+extern "C" OcctResult<BRepGraph_Layer*> BRepGraph_LayerLock_as_BRepGraph_Layer_mut(BRepGraph_LayerLock* self_) { return {static_cast<BRepGraph_Layer*>(self_), nullptr}; }
+extern "C" OcctResult<const Standard_Transient*> BRepGraph_LayerLock_as_Standard_Transient(const BRepGraph_LayerLock* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
+extern "C" OcctResult<Standard_Transient*> BRepGraph_LayerLock_as_Standard_Transient_mut(BRepGraph_LayerLock* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
+extern "C" OcctResult<Handle_BRepGraph_LayerLock*> BRepGraph_LayerLock_to_handle(BRepGraph_LayerLock* obj) {
+    try { return {new Handle_BRepGraph_LayerLock(obj), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<const BRepGraph_LayerLock*> Handle_BRepGraph_LayerLock_get(const Handle_BRepGraph_LayerLock* handle) {
+    try { return {(*handle).get(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<BRepGraph_LayerLock*> Handle_BRepGraph_LayerLock_get_mut(Handle_BRepGraph_LayerLock* handle) {
+    try { return {(*handle).get(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Handle_BRepGraph_Layer*> Handle_BRepGraph_LayerLock_to_Handle_BRepGraph_Layer(const Handle_BRepGraph_LayerLock* self_) {
+    try { return {new Handle_BRepGraph_Layer(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_BRepGraph_LayerLock_to_Handle_Standard_Transient(const Handle_BRepGraph_LayerLock* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" const char* BRepGraph_LayerLock_inherited_OnItemRemoved(BRepGraph_LayerLock* self, BRepGraph_ItemId const& theItem) {
+    try { self->OnItemRemoved(theItem); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" OcctResult<int32_t> BRepGraph_LayerLock_inherited_SubscribedKinds(const BRepGraph_LayerLock* self) {
+    try { return {self->SubscribedKinds(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" const char* BRepGraph_LayerLock_inherited_OnNodeModified(BRepGraph_LayerLock* self, BRepGraph_NodeId const& theNode) {
+    try { self->OnNodeModified(theNode); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* BRepGraph_LayerLock_inherited_OnItemModified(BRepGraph_LayerLock* self, BRepGraph_ItemId const& theItem) {
+    try { self->OnItemModified(theItem); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* BRepGraph_LayerLock_inherited_OnNodesModified(BRepGraph_LayerLock* self, NCollection_Array1_BRepGraph_NodeId const& theModifiedNodes) {
+    try { self->OnNodesModified(theModifiedNodes); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" OcctResult<int32_t> BRepGraph_LayerLock_inherited_SubscribedRefKinds(const BRepGraph_LayerLock* self) {
+    try { return {self->SubscribedRefKinds(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" const char* BRepGraph_LayerLock_inherited_OnRefModified(BRepGraph_LayerLock* self, BRepGraph_RefId const& theRef) {
+    try { self->OnRefModified(theRef); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* BRepGraph_LayerLock_inherited_OnRefsModified(BRepGraph_LayerLock* self, NCollection_Array1_BRepGraph_RefId const& theModifiedRefs) {
+    try { self->OnRefsModified(theModifiedRefs); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" OcctResult<uint64_t> BRepGraph_LayerLock_inherited_Revision(const BRepGraph_LayerLock* self) {
+    try { return {self->Revision(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<bool> BRepGraph_LayerLock_inherited_IsInstance(const BRepGraph_LayerLock* self, Handle(Standard_Type) const& theType) {
+    try { return {self->IsInstance(theType), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<bool> BRepGraph_LayerLock_inherited_IsKind(const BRepGraph_LayerLock* self, Handle(Standard_Type) const& theType) {
+    try { return {self->IsKind(theType), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Standard_Transient*> BRepGraph_LayerLock_inherited_This(const BRepGraph_LayerLock* self) {
+    try { return {self->This(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<int32_t> BRepGraph_LayerLock_inherited_GetRefCount(const BRepGraph_LayerLock* self) {
+    try { return {self->GetRefCount(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" const char* BRepGraph_LayerLock_inherited_IncrementRefCounter(BRepGraph_LayerLock* self) {
+    try { self->IncrementRefCounter(); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" OcctResult<int32_t> BRepGraph_LayerLock_inherited_DecrementRefCounter(BRepGraph_LayerLock* self) {
+    try { return {self->DecrementRefCounter(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" const char* BRepGraph_LayerLock_inherited_Delete(const BRepGraph_LayerLock* self) {
+    try { self->Delete(); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" void BRepGraph_LayerLock_destructor(BRepGraph_LayerLock* self_) { delete self_; }
+
+// ========================
+// BRepGraph_LayerLock::ScopedOwnerEdit wrappers
+// ========================
+
+extern "C" OcctResult<BRepGraph_LayerLock::ScopedOwnerEdit*> BRepGraph_LayerLock_ScopedOwnerEdit_ctor_layerlock_itemid_guid(BRepGraph_LayerLock* theLayer, BRepGraph_ItemId const* theItem, Standard_GUID const* theOwnerId) {
+    try { return {new BRepGraph_LayerLock::ScopedOwnerEdit(*theLayer, *theItem, *theOwnerId), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" void BRepGraph_LayerLock_ScopedOwnerEdit_destructor(BRepGraph_LayerLock::ScopedOwnerEdit* self_) { delete self_; }
+
+// ========================
+// BRepGraph_LayerParametric wrappers
+// ========================
+
+extern "C" OcctResult<Handle(Standard_Type) const*> BRepGraph_LayerParametric_dynamic_type(const BRepGraph_LayerParametric* self_) {
+    try { return {&(self_->DynamicType()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<uint32_t> BRepGraph_LayerParametric_generation_mask(BRepGraph_LayerParametric::GenerationFlag const* theFlag) {
+    try { return {BRepGraph_LayerParametric::GenerationMask(*theFlag), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<bool> BRepGraph_LayerParametric_has_generation_flag(uint32_t theFlags, BRepGraph_LayerParametric::GenerationFlag const* theFlag) {
+    try { return {BRepGraph_LayerParametric::HasGenerationFlag(theFlags, *theFlag), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<uint32_t> BRepGraph_LayerParametric_mesh_quality_value(BRepGraph_LayerParametric::MeshQuality const* theQuality, uint32_t theVeryCoarse, uint32_t theCoarse, uint32_t theMedium, uint32_t theFine, uint32_t theVeryFine) {
+    try { return {BRepGraph_LayerParametric::MeshQualityValue(*theQuality, theVeryCoarse, theCoarse, theMedium, theFine, theVeryFine), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<char const*> BRepGraph_LayerParametric_get_type_name() {
+    try { return {BRepGraph_LayerParametric::get_type_name(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Handle(Standard_Type) const*> BRepGraph_LayerParametric_get_type_descriptor() {
+    try { return {&(BRepGraph_LayerParametric::get_type_descriptor()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<const BRepGraph_Layer*> BRepGraph_LayerParametric_as_BRepGraph_Layer(const BRepGraph_LayerParametric* self_) { return {static_cast<const BRepGraph_Layer*>(self_), nullptr}; }
+extern "C" OcctResult<BRepGraph_Layer*> BRepGraph_LayerParametric_as_BRepGraph_Layer_mut(BRepGraph_LayerParametric* self_) { return {static_cast<BRepGraph_Layer*>(self_), nullptr}; }
+extern "C" OcctResult<const Standard_Transient*> BRepGraph_LayerParametric_as_Standard_Transient(const BRepGraph_LayerParametric* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
+extern "C" OcctResult<Standard_Transient*> BRepGraph_LayerParametric_as_Standard_Transient_mut(BRepGraph_LayerParametric* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
+extern "C" OcctResult<const BRepGraph_LayerParametric*> Handle_BRepGraph_LayerParametric_get(const Handle_BRepGraph_LayerParametric* handle) {
+    try { return {(*handle).get(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<BRepGraph_LayerParametric*> Handle_BRepGraph_LayerParametric_get_mut(Handle_BRepGraph_LayerParametric* handle) {
+    try { return {(*handle).get(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Handle_BRepGraph_Layer*> Handle_BRepGraph_LayerParametric_to_Handle_BRepGraph_Layer(const Handle_BRepGraph_LayerParametric* self_) {
+    try { return {new Handle_BRepGraph_Layer(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_BRepGraph_LayerParametric_to_Handle_Standard_Transient(const Handle_BRepGraph_LayerParametric* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Standard_GUID const*> BRepGraph_LayerParametric_inherited_ID(const BRepGraph_LayerParametric* self) {
+    try { return {&(self->ID()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<TCollection_AsciiString const*> BRepGraph_LayerParametric_inherited_Name(const BRepGraph_LayerParametric* self) {
+    try { return {&(self->Name()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" const char* BRepGraph_LayerParametric_inherited_OnNodeRemoved(BRepGraph_LayerParametric* self, BRepGraph_NodeId const& theNode) {
+    try { self->OnNodeRemoved(theNode); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* BRepGraph_LayerParametric_inherited_OnItemRemoved(BRepGraph_LayerParametric* self, BRepGraph_ItemId const& theItem) {
+    try { self->OnItemRemoved(theItem); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* BRepGraph_LayerParametric_inherited_OnNodeReplaced(BRepGraph_LayerParametric* self, BRepGraph_NodeId const& theOldNode, BRepGraph_NodeId const& theNewNode) {
+    try { self->OnNodeReplaced(theOldNode, theNewNode); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* BRepGraph_LayerParametric_inherited_CopyTo(const BRepGraph_LayerParametric* self, BRepGraph_CopyRemap const& theCopy) {
+    try { self->CopyTo(theCopy); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* BRepGraph_LayerParametric_inherited_InvalidateAll(BRepGraph_LayerParametric* self) {
+    try { self->InvalidateAll(); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* BRepGraph_LayerParametric_inherited_Clear(BRepGraph_LayerParametric* self) {
+    try { self->Clear(); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" OcctResult<int32_t> BRepGraph_LayerParametric_inherited_SubscribedKinds(const BRepGraph_LayerParametric* self) {
+    try { return {self->SubscribedKinds(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" const char* BRepGraph_LayerParametric_inherited_OnNodeModified(BRepGraph_LayerParametric* self, BRepGraph_NodeId const& theNode) {
+    try { self->OnNodeModified(theNode); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* BRepGraph_LayerParametric_inherited_OnItemModified(BRepGraph_LayerParametric* self, BRepGraph_ItemId const& theItem) {
+    try { self->OnItemModified(theItem); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* BRepGraph_LayerParametric_inherited_OnNodesModified(BRepGraph_LayerParametric* self, NCollection_Array1_BRepGraph_NodeId const& theModifiedNodes) {
+    try { self->OnNodesModified(theModifiedNodes); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" OcctResult<int32_t> BRepGraph_LayerParametric_inherited_SubscribedRefKinds(const BRepGraph_LayerParametric* self) {
+    try { return {self->SubscribedRefKinds(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" const char* BRepGraph_LayerParametric_inherited_OnRefRemoved(BRepGraph_LayerParametric* self, BRepGraph_RefId const& theRef) {
+    try { self->OnRefRemoved(theRef); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* BRepGraph_LayerParametric_inherited_OnRefModified(BRepGraph_LayerParametric* self, BRepGraph_RefId const& theRef) {
+    try { self->OnRefModified(theRef); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* BRepGraph_LayerParametric_inherited_OnRefsModified(BRepGraph_LayerParametric* self, NCollection_Array1_BRepGraph_RefId const& theModifiedRefs) {
+    try { self->OnRefsModified(theModifiedRefs); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" OcctResult<uint64_t> BRepGraph_LayerParametric_inherited_Revision(const BRepGraph_LayerParametric* self) {
+    try { return {self->Revision(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<bool> BRepGraph_LayerParametric_inherited_IsInstance(const BRepGraph_LayerParametric* self, Handle(Standard_Type) const& theType) {
+    try { return {self->IsInstance(theType), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<bool> BRepGraph_LayerParametric_inherited_IsKind(const BRepGraph_LayerParametric* self, Handle(Standard_Type) const& theType) {
+    try { return {self->IsKind(theType), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Standard_Transient*> BRepGraph_LayerParametric_inherited_This(const BRepGraph_LayerParametric* self) {
+    try { return {self->This(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<int32_t> BRepGraph_LayerParametric_inherited_GetRefCount(const BRepGraph_LayerParametric* self) {
+    try { return {self->GetRefCount(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" const char* BRepGraph_LayerParametric_inherited_IncrementRefCounter(BRepGraph_LayerParametric* self) {
+    try { self->IncrementRefCounter(); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" OcctResult<int32_t> BRepGraph_LayerParametric_inherited_DecrementRefCounter(BRepGraph_LayerParametric* self) {
+    try { return {self->DecrementRefCounter(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" const char* BRepGraph_LayerParametric_inherited_Delete(const BRepGraph_LayerParametric* self) {
+    try { self->Delete(); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" void BRepGraph_LayerParametric_destructor(BRepGraph_LayerParametric* self_) { delete self_; }
+
+// ========================
+// BRepGraph_LayerParametric::AddResult wrappers
+// ========================
+
+extern "C" OcctResult<BRepGraph_LayerParametric::AddResult*> BRepGraph_LayerParametric_AddResult_ctor() {
+    try { return {new BRepGraph_LayerParametric::AddResult(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" void BRepGraph_LayerParametric_AddResult_destructor(BRepGraph_LayerParametric::AddResult* self_) { delete self_; }
+
+// ========================
+// BRepGraph_LayerRegistry wrappers
+// ========================
+
+extern "C" OcctResult<BRepGraph_LayerRegistry*> BRepGraph_LayerRegistry_ctor() {
+    try { return {new BRepGraph_LayerRegistry(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Handle(BRepGraph_Layer)*> BRepGraph_LayerRegistry_find_layer(const BRepGraph_LayerRegistry* self_, Standard_GUID const* theGUID) {
+    try { return {new Handle(BRepGraph_Layer)(self_->FindLayer(*theGUID)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Handle(BRepGraph_Layer)*> BRepGraph_LayerRegistry_layer(const BRepGraph_LayerRegistry* self_, uint32_t theSlot) {
+    try { return {new Handle(BRepGraph_Layer)(self_->Layer(theSlot)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<uint32_t> BRepGraph_LayerRegistry_register_layer(BRepGraph_LayerRegistry* self_, Handle(BRepGraph_Layer) const* theLayer) {
+    try { return {self_->RegisterLayer(*theLayer), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" const char* BRepGraph_LayerRegistry_unregister_layer(BRepGraph_LayerRegistry* self_, Standard_GUID const* theGUID) {
+    try { self_->UnregisterLayer(*theGUID); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" OcctResult<bool> BRepGraph_LayerRegistry_find_slot(const BRepGraph_LayerRegistry* self_, Standard_GUID const* theGUID, uint32_t* theSlot) {
+    try { return {self_->FindSlot(*theGUID, *theSlot), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<uint32_t> BRepGraph_LayerRegistry_nb_layers(const BRepGraph_LayerRegistry* self_) {
+    try { return {self_->NbLayers(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<bool> BRepGraph_LayerRegistry_has_modification_subscribers(const BRepGraph_LayerRegistry* self_) {
+    try { return {self_->HasModificationSubscribers(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<int32_t> BRepGraph_LayerRegistry_subscribed_kinds_mask(const BRepGraph_LayerRegistry* self_) {
+    try { return {self_->SubscribedKindsMask(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" const char* BRepGraph_LayerRegistry_dispatch_on_node_removed(BRepGraph_LayerRegistry* self_, BRepGraph_NodeId const* theNode) {
+    try { self_->DispatchOnNodeRemoved(*theNode); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* BRepGraph_LayerRegistry_dispatch_on_item_removed(BRepGraph_LayerRegistry* self_, BRepGraph_ItemId const* theItem) {
+    try { self_->DispatchOnItemRemoved(*theItem); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* BRepGraph_LayerRegistry_dispatch_on_node_replaced(BRepGraph_LayerRegistry* self_, BRepGraph_NodeId const* theOldNode, BRepGraph_NodeId const* theNewNode) {
+    try { self_->DispatchOnNodeReplaced(*theOldNode, *theNewNode); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* BRepGraph_LayerRegistry_dispatch_node_modified(BRepGraph_LayerRegistry* self_, BRepGraph_NodeId const* theNode) {
+    try { self_->DispatchNodeModified(*theNode); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* BRepGraph_LayerRegistry_dispatch_item_modified(BRepGraph_LayerRegistry* self_, BRepGraph_ItemId const* theItem) {
+    try { self_->DispatchItemModified(*theItem); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* BRepGraph_LayerRegistry_dispatch_nodes_modified(BRepGraph_LayerRegistry* self_, NCollection_Array1_BRepGraph_NodeId const* theModifiedNodes, int32_t theModifiedKindsMask) {
+    try { self_->DispatchNodesModified(*theModifiedNodes, theModifiedKindsMask); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* BRepGraph_LayerRegistry_copy_layers_to_brepgraph_flatdatamap_brepgraph_itemid_brepgraph_itemid_mode(const BRepGraph_LayerRegistry* self_, BRepGraph* theTargetGraph, NCollection_FlatDataMap_BRepGraph_ItemId_BRepGraph_ItemId const* theItemRemap, BRepGraph_CopyRemap::Mode const* theMode) {
+    try { self_->CopyLayersTo(*theTargetGraph, *theItemRemap, *theMode); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* BRepGraph_LayerRegistry_copy_layers_to_brepgraph_mappingkind_mode(const BRepGraph_LayerRegistry* self_, BRepGraph* theTargetGraph, BRepGraph_CopyRemap::MappingKind const* theMappingKind, BRepGraph_CopyRemap::Mode const* theMode) {
+    try { self_->CopyLayersTo(*theTargetGraph, *theMappingKind, *theMode); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" OcctResult<bool> BRepGraph_LayerRegistry_has_ref_modification_subscribers(const BRepGraph_LayerRegistry* self_) {
+    try { return {self_->HasRefModificationSubscribers(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<int32_t> BRepGraph_LayerRegistry_subscribed_ref_kinds_mask(const BRepGraph_LayerRegistry* self_) {
+    try { return {self_->SubscribedRefKindsMask(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" const char* BRepGraph_LayerRegistry_dispatch_on_ref_removed(BRepGraph_LayerRegistry* self_, BRepGraph_RefId const* theRef) {
+    try { self_->DispatchOnRefRemoved(*theRef); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* BRepGraph_LayerRegistry_dispatch_ref_modified(BRepGraph_LayerRegistry* self_, BRepGraph_RefId const* theRef) {
+    try { self_->DispatchRefModified(*theRef); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* BRepGraph_LayerRegistry_dispatch_refs_modified(BRepGraph_LayerRegistry* self_, NCollection_Array1_BRepGraph_RefId const* theModifiedRefs, int32_t theModifiedRefKindsMask) {
+    try { self_->DispatchRefsModified(*theModifiedRefs, theModifiedRefKindsMask); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* BRepGraph_LayerRegistry_clear_all(BRepGraph_LayerRegistry* self_) {
+    try { self_->ClearAll(); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* BRepGraph_LayerRegistry_invalidate_all(BRepGraph_LayerRegistry* self_) {
+    try { self_->InvalidateAll(); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" void BRepGraph_LayerRegistry_destructor(BRepGraph_LayerRegistry* self_) { delete self_; }
+
+// ========================
+// BRepGraph_LayerTopoSupplement wrappers
+// ========================
+
+extern "C" OcctResult<BRepGraph_LayerTopoSupplement*> BRepGraph_LayerTopoSupplement_ctor() {
+    try { return {new BRepGraph_LayerTopoSupplement(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Standard_GUID const*> BRepGraph_LayerTopoSupplement_id(const BRepGraph_LayerTopoSupplement* self_) {
+    try { return {&(self_->ID()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<TCollection_AsciiString const*> BRepGraph_LayerTopoSupplement_name(const BRepGraph_LayerTopoSupplement* self_) {
+    try { return {&(self_->Name()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<BRepGraph_LayerTopoSupplement::Entry const*> BRepGraph_LayerTopoSupplement_find_by_uid(const BRepGraph_LayerTopoSupplement* self_, uint64_t theUid) {
+    try { return {self_->FindByUid(theUid), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<NCollection_LinearVector_uint64_t const*> BRepGraph_LayerTopoSupplement_attached_to(const BRepGraph_LayerTopoSupplement* self_, BRepGraph_NodeId const* theOwner) {
+    try { return {&(self_->AttachedTo(*theOwner)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<uint64_t> BRepGraph_LayerTopoSupplement_add_attachment(BRepGraph_LayerTopoSupplement* self_, BRepGraph_NodeId const* theOwner, BRepGraph_LayerTopoSupplement::AttachmentKind const* theKind, TopoDS_Shape const* theShape) {
+    try { return {self_->AddAttachment(*theOwner, *theKind, *theShape), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<bool> BRepGraph_LayerTopoSupplement_add_attachment_with_uid(BRepGraph_LayerTopoSupplement* self_, BRepGraph_NodeId const* theOwner, uint64_t theUid, BRepGraph_LayerTopoSupplement::AttachmentKind const* theKind, TopoDS_Shape const* theShape) {
+    try { return {self_->AddAttachmentWithUid(*theOwner, theUid, *theKind, *theShape), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<bool> BRepGraph_LayerTopoSupplement_remove_attachment(BRepGraph_LayerTopoSupplement* self_, uint64_t theUid) {
+    try { return {self_->RemoveAttachment(theUid), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" const char* BRepGraph_LayerTopoSupplement_validate(const BRepGraph_LayerTopoSupplement* self_) {
+    try { self_->Validate(); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* BRepGraph_LayerTopoSupplement_on_node_removed(BRepGraph_LayerTopoSupplement* self_, BRepGraph_NodeId const* theNode) {
+    try { self_->OnNodeRemoved(*theNode); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* BRepGraph_LayerTopoSupplement_on_node_replaced(BRepGraph_LayerTopoSupplement* self_, BRepGraph_NodeId const* theOldNode, BRepGraph_NodeId const* theNewNode) {
+    try { self_->OnNodeReplaced(*theOldNode, *theNewNode); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* BRepGraph_LayerTopoSupplement_copy_to(const BRepGraph_LayerTopoSupplement* self_, BRepGraph_CopyRemap const* theCopy) {
+    try { self_->CopyTo(*theCopy); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* BRepGraph_LayerTopoSupplement_invalidate_all(BRepGraph_LayerTopoSupplement* self_) {
+    try { self_->InvalidateAll(); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* BRepGraph_LayerTopoSupplement_clear(BRepGraph_LayerTopoSupplement* self_) {
+    try { self_->Clear(); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" OcctResult<Handle(Standard_Type) const*> BRepGraph_LayerTopoSupplement_dynamic_type(const BRepGraph_LayerTopoSupplement* self_) {
+    try { return {&(self_->DynamicType()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Standard_GUID const*> BRepGraph_LayerTopoSupplement_get_id() {
+    try { return {&(BRepGraph_LayerTopoSupplement::GetID()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<char const*> BRepGraph_LayerTopoSupplement_get_type_name() {
+    try { return {BRepGraph_LayerTopoSupplement::get_type_name(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Handle(Standard_Type) const*> BRepGraph_LayerTopoSupplement_get_type_descriptor() {
+    try { return {&(BRepGraph_LayerTopoSupplement::get_type_descriptor()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<const BRepGraph_Layer*> BRepGraph_LayerTopoSupplement_as_BRepGraph_Layer(const BRepGraph_LayerTopoSupplement* self_) { return {static_cast<const BRepGraph_Layer*>(self_), nullptr}; }
+extern "C" OcctResult<BRepGraph_Layer*> BRepGraph_LayerTopoSupplement_as_BRepGraph_Layer_mut(BRepGraph_LayerTopoSupplement* self_) { return {static_cast<BRepGraph_Layer*>(self_), nullptr}; }
+extern "C" OcctResult<const Standard_Transient*> BRepGraph_LayerTopoSupplement_as_Standard_Transient(const BRepGraph_LayerTopoSupplement* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
+extern "C" OcctResult<Standard_Transient*> BRepGraph_LayerTopoSupplement_as_Standard_Transient_mut(BRepGraph_LayerTopoSupplement* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
+extern "C" OcctResult<Handle_BRepGraph_LayerTopoSupplement*> BRepGraph_LayerTopoSupplement_to_handle(BRepGraph_LayerTopoSupplement* obj) {
+    try { return {new Handle_BRepGraph_LayerTopoSupplement(obj), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<const BRepGraph_LayerTopoSupplement*> Handle_BRepGraph_LayerTopoSupplement_get(const Handle_BRepGraph_LayerTopoSupplement* handle) {
+    try { return {(*handle).get(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<BRepGraph_LayerTopoSupplement*> Handle_BRepGraph_LayerTopoSupplement_get_mut(Handle_BRepGraph_LayerTopoSupplement* handle) {
+    try { return {(*handle).get(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Handle_BRepGraph_Layer*> Handle_BRepGraph_LayerTopoSupplement_to_Handle_BRepGraph_Layer(const Handle_BRepGraph_LayerTopoSupplement* self_) {
+    try { return {new Handle_BRepGraph_Layer(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_BRepGraph_LayerTopoSupplement_to_Handle_Standard_Transient(const Handle_BRepGraph_LayerTopoSupplement* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" const char* BRepGraph_LayerTopoSupplement_inherited_OnItemRemoved(BRepGraph_LayerTopoSupplement* self, BRepGraph_ItemId const& theItem) {
+    try { self->OnItemRemoved(theItem); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" OcctResult<int32_t> BRepGraph_LayerTopoSupplement_inherited_SubscribedKinds(const BRepGraph_LayerTopoSupplement* self) {
+    try { return {self->SubscribedKinds(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" const char* BRepGraph_LayerTopoSupplement_inherited_OnNodeModified(BRepGraph_LayerTopoSupplement* self, BRepGraph_NodeId const& theNode) {
+    try { self->OnNodeModified(theNode); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* BRepGraph_LayerTopoSupplement_inherited_OnItemModified(BRepGraph_LayerTopoSupplement* self, BRepGraph_ItemId const& theItem) {
+    try { self->OnItemModified(theItem); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* BRepGraph_LayerTopoSupplement_inherited_OnNodesModified(BRepGraph_LayerTopoSupplement* self, NCollection_Array1_BRepGraph_NodeId const& theModifiedNodes) {
+    try { self->OnNodesModified(theModifiedNodes); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" OcctResult<int32_t> BRepGraph_LayerTopoSupplement_inherited_SubscribedRefKinds(const BRepGraph_LayerTopoSupplement* self) {
+    try { return {self->SubscribedRefKinds(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" const char* BRepGraph_LayerTopoSupplement_inherited_OnRefRemoved(BRepGraph_LayerTopoSupplement* self, BRepGraph_RefId const& theRef) {
+    try { self->OnRefRemoved(theRef); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* BRepGraph_LayerTopoSupplement_inherited_OnRefModified(BRepGraph_LayerTopoSupplement* self, BRepGraph_RefId const& theRef) {
+    try { self->OnRefModified(theRef); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* BRepGraph_LayerTopoSupplement_inherited_OnRefsModified(BRepGraph_LayerTopoSupplement* self, NCollection_Array1_BRepGraph_RefId const& theModifiedRefs) {
+    try { self->OnRefsModified(theModifiedRefs); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" OcctResult<uint64_t> BRepGraph_LayerTopoSupplement_inherited_Revision(const BRepGraph_LayerTopoSupplement* self) {
+    try { return {self->Revision(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<bool> BRepGraph_LayerTopoSupplement_inherited_IsInstance(const BRepGraph_LayerTopoSupplement* self, Handle(Standard_Type) const& theType) {
+    try { return {self->IsInstance(theType), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<bool> BRepGraph_LayerTopoSupplement_inherited_IsKind(const BRepGraph_LayerTopoSupplement* self, Handle(Standard_Type) const& theType) {
+    try { return {self->IsKind(theType), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Standard_Transient*> BRepGraph_LayerTopoSupplement_inherited_This(const BRepGraph_LayerTopoSupplement* self) {
+    try { return {self->This(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<int32_t> BRepGraph_LayerTopoSupplement_inherited_GetRefCount(const BRepGraph_LayerTopoSupplement* self) {
+    try { return {self->GetRefCount(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" const char* BRepGraph_LayerTopoSupplement_inherited_IncrementRefCounter(BRepGraph_LayerTopoSupplement* self) {
+    try { self->IncrementRefCounter(); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" OcctResult<int32_t> BRepGraph_LayerTopoSupplement_inherited_DecrementRefCounter(BRepGraph_LayerTopoSupplement* self) {
+    try { return {self->DecrementRefCounter(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" const char* BRepGraph_LayerTopoSupplement_inherited_Delete(const BRepGraph_LayerTopoSupplement* self) {
+    try { self->Delete(); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" void BRepGraph_LayerTopoSupplement_destructor(BRepGraph_LayerTopoSupplement* self_) { delete self_; }
+
+// ========================
+// BRepGraph_LayerTopoSupplement::Entry wrappers
+// ========================
+
+extern "C" OcctResult<BRepGraph_LayerTopoSupplement::Entry*> BRepGraph_LayerTopoSupplement_Entry_ctor() {
+    try { return {new BRepGraph_LayerTopoSupplement::Entry(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" void BRepGraph_LayerTopoSupplement_Entry_destructor(BRepGraph_LayerTopoSupplement::Entry* self_) { delete self_; }
+
+// ========================
+// BRepGraph::MeshView wrappers
+// ========================
+
+extern "C" OcctResult<BRepGraph::MeshView::CacheView const*> MeshView_cache(const BRepGraph::MeshView* self_) {
+    try { return {&(self_->Cache()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<BRepGraph::MeshView::PersistentView const*> MeshView_persistent(const BRepGraph::MeshView* self_) {
+    try { return {&(self_->Persistent()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<BRepGraph::MeshView::EffectiveView const*> MeshView_effective(const BRepGraph::MeshView* self_) {
+    try { return {&(self_->Effective()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<BRepGraph::MeshView::EditorView*> MeshView_editor(BRepGraph::MeshView* self_) {
+    try { return {&(self_->Editor()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<BRepGraph::MeshView::PolyOps const*> MeshView_poly(const BRepGraph::MeshView* self_) {
+    try { return {&(self_->Poly()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" void MeshView_destructor(BRepGraph::MeshView* self_) { delete self_; }
+
+// ========================
+// BRepGraph::MeshView::CacheView wrappers
+// ========================
+
+extern "C" OcctResult<BRepGraph::MeshView::CacheView::FaceOps const*> MeshView_CacheView_faces(const BRepGraph::MeshView::CacheView* self_) {
+    try { return {&(self_->Faces()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<BRepGraph::MeshView::CacheView::EdgeOps const*> MeshView_CacheView_edges(const BRepGraph::MeshView::CacheView* self_) {
+    try { return {&(self_->Edges()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<BRepGraph::MeshView::CacheView::CoEdgeOps const*> MeshView_CacheView_co_edges(const BRepGraph::MeshView::CacheView* self_) {
+    try { return {&(self_->CoEdges()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" void MeshView_CacheView_destructor(BRepGraph::MeshView::CacheView* self_) { delete self_; }
+
+// ========================
+// BRepGraph::MeshView::CacheView::FaceOps wrappers
+// ========================
+
+extern "C" OcctResult<bool> MeshView_CacheView_FaceOps_has(const BRepGraph::MeshView::CacheView::FaceOps* self_, BRepGraph_FaceId const* theFace) {
+    try { return {self_->Has(*theFace), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Handle(Poly_Triangulation) const*> MeshView_CacheView_FaceOps_triangulation(const BRepGraph::MeshView::CacheView::FaceOps* self_, BRepGraph_FaceId const* theFace) {
+    try { return {&(self_->Triangulation(*theFace)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<BRepGraph_CacheMesh::FaceMeshEntry const*> MeshView_CacheView_FaceOps_entry(const BRepGraph::MeshView::CacheView::FaceOps* self_, BRepGraph_FaceId const* theFace) {
+    try { return {self_->Entry(*theFace), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" void MeshView_CacheView_FaceOps_destructor(BRepGraph::MeshView::CacheView::FaceOps* self_) { delete self_; }
+
+// ========================
+// BRepGraph::MeshView::CacheView::EdgeOps wrappers
+// ========================
+
+extern "C" OcctResult<bool> MeshView_CacheView_EdgeOps_has(const BRepGraph::MeshView::CacheView::EdgeOps* self_, BRepGraph_EdgeId const* theEdge) {
+    try { return {self_->Has(*theEdge), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Handle(Poly_Polygon3D) const*> MeshView_CacheView_EdgeOps_polygon3_d(const BRepGraph::MeshView::CacheView::EdgeOps* self_, BRepGraph_EdgeId const* theEdge) {
+    try { return {&(self_->Polygon3D(*theEdge)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<BRepGraph_CacheMesh::EdgeMeshEntry const*> MeshView_CacheView_EdgeOps_entry(const BRepGraph::MeshView::CacheView::EdgeOps* self_, BRepGraph_EdgeId const* theEdge) {
+    try { return {self_->Entry(*theEdge), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" void MeshView_CacheView_EdgeOps_destructor(BRepGraph::MeshView::CacheView::EdgeOps* self_) { delete self_; }
+
+// ========================
+// BRepGraph::MeshView::CacheView::CoEdgeOps wrappers
+// ========================
+
+extern "C" OcctResult<bool> MeshView_CacheView_CoEdgeOps_has(const BRepGraph::MeshView::CacheView::CoEdgeOps* self_, BRepGraph_CoEdgeId const* theCoEdge) {
+    try { return {self_->Has(*theCoEdge), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<BRepGraph_CacheMesh::CoEdgeMeshEntry const*> MeshView_CacheView_CoEdgeOps_find_polygon2_d(const BRepGraph::MeshView::CacheView::CoEdgeOps* self_, BRepGraph_CoEdgeId const* theCoEdge) {
+    try { return {self_->FindPolygon2D(*theCoEdge), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<BRepGraph_CacheMesh::CoEdgeMeshEntry const*> MeshView_CacheView_CoEdgeOps_find_polygon_on_tri(const BRepGraph::MeshView::CacheView::CoEdgeOps* self_, BRepGraph_CoEdgeId const* theCoEdge) {
+    try { return {self_->FindPolygonOnTri(*theCoEdge), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<BRepGraph_CacheMesh::CoEdgeMeshEntry const*> MeshView_CacheView_CoEdgeOps_find_raw(const BRepGraph::MeshView::CacheView::CoEdgeOps* self_, BRepGraph_CoEdgeId const* theCoEdge) {
+    try { return {self_->FindRaw(*theCoEdge), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" void MeshView_CacheView_CoEdgeOps_destructor(BRepGraph::MeshView::CacheView::CoEdgeOps* self_) { delete self_; }
+
+// ========================
+// BRepGraph::MeshView::PersistentView wrappers
+// ========================
+
+extern "C" OcctResult<BRepGraph::MeshView::PersistentView::FaceOps const*> MeshView_PersistentView_faces(const BRepGraph::MeshView::PersistentView* self_) {
+    try { return {&(self_->Faces()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<BRepGraph::MeshView::PersistentView::EdgeOps const*> MeshView_PersistentView_edges(const BRepGraph::MeshView::PersistentView* self_) {
+    try { return {&(self_->Edges()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<BRepGraph::MeshView::PersistentView::CoEdgeOps const*> MeshView_PersistentView_co_edges(const BRepGraph::MeshView::PersistentView* self_) {
+    try { return {&(self_->CoEdges()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" void MeshView_PersistentView_destructor(BRepGraph::MeshView::PersistentView* self_) { delete self_; }
+
+// ========================
+// BRepGraph::MeshView::PersistentView::FaceOps wrappers
+// ========================
+
+extern "C" OcctResult<bool> MeshView_PersistentView_FaceOps_has(const BRepGraph::MeshView::PersistentView::FaceOps* self_, BRepGraph_FaceId const* theFace) {
+    try { return {self_->Has(*theFace), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Handle(Poly_Triangulation) const*> MeshView_PersistentView_FaceOps_triangulation(const BRepGraph::MeshView::PersistentView::FaceOps* self_, BRepGraph_FaceId const* theFace) {
+    try { return {&(self_->Triangulation(*theFace)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" void MeshView_PersistentView_FaceOps_destructor(BRepGraph::MeshView::PersistentView::FaceOps* self_) { delete self_; }
+
+// ========================
+// BRepGraph::MeshView::PersistentView::EdgeOps wrappers
+// ========================
+
+extern "C" OcctResult<bool> MeshView_PersistentView_EdgeOps_has(const BRepGraph::MeshView::PersistentView::EdgeOps* self_, BRepGraph_EdgeId const* theEdge) {
+    try { return {self_->Has(*theEdge), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Handle(Poly_Polygon3D) const*> MeshView_PersistentView_EdgeOps_polygon3_d(const BRepGraph::MeshView::PersistentView::EdgeOps* self_, BRepGraph_EdgeId const* theEdge) {
+    try { return {&(self_->Polygon3D(*theEdge)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<bool> MeshView_PersistentView_EdgeOps_has_polygon_on_triangulation(const BRepGraph::MeshView::PersistentView::EdgeOps* self_, BRepGraph_EdgeId const* theEdge, BRepGraph_FaceId const* theFace) {
+    try { return {self_->HasPolygonOnTriangulation(*theEdge, *theFace), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Handle(Poly_PolygonOnTriangulation) const*> MeshView_PersistentView_EdgeOps_polygon_on_triangulation(const BRepGraph::MeshView::PersistentView::EdgeOps* self_, BRepGraph_EdgeId const* theEdge, BRepGraph_FaceId const* theFace) {
+    try { return {&(self_->PolygonOnTriangulation(*theEdge, *theFace)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" void MeshView_PersistentView_EdgeOps_destructor(BRepGraph::MeshView::PersistentView::EdgeOps* self_) { delete self_; }
+
+// ========================
+// BRepGraph::MeshView::PersistentView::CoEdgeOps wrappers
+// ========================
+
+extern "C" OcctResult<bool> MeshView_PersistentView_CoEdgeOps_has(const BRepGraph::MeshView::PersistentView::CoEdgeOps* self_, BRepGraph_CoEdgeId const* theCoEdge) {
+    try { return {self_->Has(*theCoEdge), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Handle(Poly_Polygon2D) const*> MeshView_PersistentView_CoEdgeOps_polygon_on_surface(const BRepGraph::MeshView::PersistentView::CoEdgeOps* self_, BRepGraph_CoEdgeId const* theCoEdge) {
+    try { return {&(self_->PolygonOnSurface(*theCoEdge)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<bool> MeshView_PersistentView_CoEdgeOps_has_polygon_on_triangulation(const BRepGraph::MeshView::PersistentView::CoEdgeOps* self_, BRepGraph_CoEdgeId const* theCoEdge) {
+    try { return {self_->HasPolygonOnTriangulation(*theCoEdge), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Handle(Poly_PolygonOnTriangulation) const*> MeshView_PersistentView_CoEdgeOps_polygon_on_triangulation(const BRepGraph::MeshView::PersistentView::CoEdgeOps* self_, BRepGraph_CoEdgeId const* theCoEdge) {
+    try { return {&(self_->PolygonOnTriangulation(*theCoEdge)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" void MeshView_PersistentView_CoEdgeOps_destructor(BRepGraph::MeshView::PersistentView::CoEdgeOps* self_) { delete self_; }
+
+// ========================
+// BRepGraph::MeshView::EffectiveView wrappers
+// ========================
+
+extern "C" OcctResult<BRepGraph::MeshView::EffectiveView::FaceOps const*> MeshView_EffectiveView_faces(const BRepGraph::MeshView::EffectiveView* self_) {
+    try { return {&(self_->Faces()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<BRepGraph::MeshView::EffectiveView::EdgeOps const*> MeshView_EffectiveView_edges(const BRepGraph::MeshView::EffectiveView* self_) {
+    try { return {&(self_->Edges()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<BRepGraph::MeshView::EffectiveView::CoEdgeOps const*> MeshView_EffectiveView_co_edges(const BRepGraph::MeshView::EffectiveView* self_) {
+    try { return {&(self_->CoEdges()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" void MeshView_EffectiveView_destructor(BRepGraph::MeshView::EffectiveView* self_) { delete self_; }
+
+// ========================
+// BRepGraph::MeshView::EffectiveView::FaceOps wrappers
+// ========================
+
+extern "C" OcctResult<bool> MeshView_EffectiveView_FaceOps_has(const BRepGraph::MeshView::EffectiveView::FaceOps* self_, BRepGraph_FaceId const* theFace) {
+    try { return {self_->Has(*theFace), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Handle(Poly_Triangulation) const*> MeshView_EffectiveView_FaceOps_triangulation(const BRepGraph::MeshView::EffectiveView::FaceOps* self_, BRepGraph_FaceId const* theFace) {
+    try { return {&(self_->Triangulation(*theFace)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" void MeshView_EffectiveView_FaceOps_destructor(BRepGraph::MeshView::EffectiveView::FaceOps* self_) { delete self_; }
+
+// ========================
+// BRepGraph::MeshView::EffectiveView::EdgeOps wrappers
+// ========================
+
+extern "C" OcctResult<bool> MeshView_EffectiveView_EdgeOps_has(const BRepGraph::MeshView::EffectiveView::EdgeOps* self_, BRepGraph_EdgeId const* theEdge) {
+    try { return {self_->Has(*theEdge), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Handle(Poly_Polygon3D) const*> MeshView_EffectiveView_EdgeOps_polygon3_d(const BRepGraph::MeshView::EffectiveView::EdgeOps* self_, BRepGraph_EdgeId const* theEdge) {
+    try { return {&(self_->Polygon3D(*theEdge)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" void MeshView_EffectiveView_EdgeOps_destructor(BRepGraph::MeshView::EffectiveView::EdgeOps* self_) { delete self_; }
+
+// ========================
+// BRepGraph::MeshView::EffectiveView::CoEdgeOps wrappers
+// ========================
+
+extern "C" OcctResult<bool> MeshView_EffectiveView_CoEdgeOps_has(const BRepGraph::MeshView::EffectiveView::CoEdgeOps* self_, BRepGraph_CoEdgeId const* theCoEdge) {
+    try { return {self_->Has(*theCoEdge), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<bool> MeshView_EffectiveView_CoEdgeOps_has_polygon_on_surface(const BRepGraph::MeshView::EffectiveView::CoEdgeOps* self_, BRepGraph_CoEdgeId const* theCoEdge) {
+    try { return {self_->HasPolygonOnSurface(*theCoEdge), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Handle(Poly_Polygon2D) const*> MeshView_EffectiveView_CoEdgeOps_polygon_on_surface(const BRepGraph::MeshView::EffectiveView::CoEdgeOps* self_, BRepGraph_CoEdgeId const* theCoEdge) {
+    try { return {&(self_->PolygonOnSurface(*theCoEdge)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<bool> MeshView_EffectiveView_CoEdgeOps_has_polygon_on_triangulation(const BRepGraph::MeshView::EffectiveView::CoEdgeOps* self_, BRepGraph_CoEdgeId const* theCoEdge) {
+    try { return {self_->HasPolygonOnTriangulation(*theCoEdge), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Handle(Poly_PolygonOnTriangulation) const*> MeshView_EffectiveView_CoEdgeOps_polygon_on_triangulation(const BRepGraph::MeshView::EffectiveView::CoEdgeOps* self_, BRepGraph_CoEdgeId const* theCoEdge) {
+    try { return {&(self_->PolygonOnTriangulation(*theCoEdge)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" void MeshView_EffectiveView_CoEdgeOps_destructor(BRepGraph::MeshView::EffectiveView::CoEdgeOps* self_) { delete self_; }
+
+// ========================
+// BRepGraph::MeshView::EditorView wrappers
+// ========================
+
+extern "C" OcctResult<BRepGraph::MeshView::EditorView::FaceOps*> MeshView_EditorView_faces(BRepGraph::MeshView::EditorView* self_) {
+    try { return {&(self_->Faces()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<BRepGraph::MeshView::EditorView::EdgeOps*> MeshView_EditorView_edges(BRepGraph::MeshView::EditorView* self_) {
+    try { return {&(self_->Edges()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<BRepGraph::MeshView::EditorView::CoEdgeOps*> MeshView_EditorView_co_edges(BRepGraph::MeshView::EditorView* self_) {
+    try { return {&(self_->CoEdges()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" const char* MeshView_EditorView_promote_to_persistent(BRepGraph::MeshView::EditorView* self_) {
+    try { self_->PromoteToPersistent(); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" void MeshView_EditorView_destructor(BRepGraph::MeshView::EditorView* self_) { delete self_; }
+
+// ========================
+// BRepGraph::MeshView::EditorView::FaceOps wrappers
+// ========================
+
+extern "C" const char* MeshView_EditorView_FaceOps_set_cached_triangulation(BRepGraph::MeshView::EditorView::FaceOps* self_, BRepGraph_FaceId const* theFace, Handle(Poly_Triangulation) const* theTriangulation) {
+    try { self_->SetCachedTriangulation(*theFace, *theTriangulation); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* MeshView_EditorView_FaceOps_clear(BRepGraph::MeshView::EditorView::FaceOps* self_, BRepGraph_FaceId const* theFace) {
+    try { self_->Clear(*theFace); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" void MeshView_EditorView_FaceOps_destructor(BRepGraph::MeshView::EditorView::FaceOps* self_) { delete self_; }
+
+// ========================
+// BRepGraph::MeshView::EditorView::EdgeOps wrappers
+// ========================
+
+extern "C" const char* MeshView_EditorView_EdgeOps_set_cached_polygon3_d(BRepGraph::MeshView::EditorView::EdgeOps* self_, BRepGraph_EdgeId const* theEdge, Handle(Poly_Polygon3D) const* thePolygon3D) {
+    try { self_->SetCachedPolygon3D(*theEdge, *thePolygon3D); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* MeshView_EditorView_EdgeOps_clear(BRepGraph::MeshView::EditorView::EdgeOps* self_, BRepGraph_EdgeId const* theEdge) {
+    try { self_->Clear(*theEdge); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" void MeshView_EditorView_EdgeOps_destructor(BRepGraph::MeshView::EditorView::EdgeOps* self_) { delete self_; }
+
+// ========================
+// BRepGraph::MeshView::EditorView::CoEdgeOps wrappers
+// ========================
+
+extern "C" const char* MeshView_EditorView_CoEdgeOps_append_cached_polygon_on_tri(BRepGraph::MeshView::EditorView::CoEdgeOps* self_, BRepGraph_CoEdgeId const* theCoEdge, Handle(Poly_PolygonOnTriangulation) const* thePolygonOnTri) {
+    try { self_->AppendCachedPolygonOnTri(*theCoEdge, *thePolygonOnTri); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* MeshView_EditorView_CoEdgeOps_set_cached_polygon2_d(BRepGraph::MeshView::EditorView::CoEdgeOps* self_, BRepGraph_CoEdgeId const* theCoEdge, Handle(Poly_Polygon2D) const* thePolygon2D) {
+    try { self_->SetCachedPolygon2D(*theCoEdge, *thePolygon2D); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* MeshView_EditorView_CoEdgeOps_clear(BRepGraph::MeshView::EditorView::CoEdgeOps* self_, BRepGraph_CoEdgeId const* theCoEdge) {
+    try { self_->Clear(*theCoEdge); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" void MeshView_EditorView_CoEdgeOps_destructor(BRepGraph::MeshView::EditorView::CoEdgeOps* self_) { delete self_; }
+
+// ========================
+// BRepGraph::MeshView::PolyOps wrappers
+// ========================
+
+extern "C" OcctResult<uint32_t> MeshView_PolyOps_nb_face_triangulations(const BRepGraph::MeshView::PolyOps* self_) {
+    try { return {self_->NbFaceTriangulations(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<uint32_t> MeshView_PolyOps_nb_edge_polygons3_d(const BRepGraph::MeshView::PolyOps* self_) {
+    try { return {self_->NbEdgePolygons3D(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<uint32_t> MeshView_PolyOps_nb_co_edge_polygons2_d(const BRepGraph::MeshView::PolyOps* self_) {
+    try { return {self_->NbCoEdgePolygons2D(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<uint32_t> MeshView_PolyOps_nb_co_edge_polygons_on_tri(const BRepGraph::MeshView::PolyOps* self_) {
+    try { return {self_->NbCoEdgePolygonsOnTri(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<uint32_t> MeshView_PolyOps_nb_active_triangulations(const BRepGraph::MeshView::PolyOps* self_) {
+    try { return {self_->NbActiveTriangulations(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<uint32_t> MeshView_PolyOps_nb_active_polygons3_d(const BRepGraph::MeshView::PolyOps* self_) {
+    try { return {self_->NbActivePolygons3D(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<uint32_t> MeshView_PolyOps_nb_active_polygons2_d(const BRepGraph::MeshView::PolyOps* self_) {
+    try { return {self_->NbActivePolygons2D(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<uint32_t> MeshView_PolyOps_nb_active_polygons_on_tri(const BRepGraph::MeshView::PolyOps* self_) {
+    try { return {self_->NbActivePolygonsOnTri(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" void MeshView_PolyOps_destructor(BRepGraph::MeshView::PolyOps* self_) { delete self_; }
+
+// ========================
+// BRepGraph_NodeId wrappers
+// ========================
+
+extern "C" OcctResult<BRepGraph_NodeId*> BRepGraph_NodeId_ctor() {
+    try { return {new BRepGraph_NodeId(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<BRepGraph_NodeId*> BRepGraph_NodeId_ctor_kind_uint(BRepGraph_NodeId::Kind const* theKind, uint32_t theIdx) {
+    try { return {new BRepGraph_NodeId(*theKind, theIdx), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<bool> BRepGraph_NodeId_is_valid(const BRepGraph_NodeId* self_) {
+    try { return {self_->IsValid(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<bool> BRepGraph_NodeId_is_valid_uint(const BRepGraph_NodeId* self_, uint32_t theMaxCount) {
+    try { return {self_->IsValid(theMaxCount), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<bool> BRepGraph_NodeId_is_removed(const BRepGraph_NodeId* self_, BRepGraph const* theGraph) {
+    try { return {self_->IsRemoved(*theGraph), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<bool> BRepGraph_NodeId_is_owned(const BRepGraph_NodeId* self_, BRepGraph const* theGraph) {
+    try { return {self_->IsOwned(*theGraph), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<bool> BRepGraph_NodeId_is_valid_kind(BRepGraph_NodeId::Kind const* theKind) {
+    try { return {BRepGraph_NodeId::IsValidKind(*theKind), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<bool> BRepGraph_NodeId_is_topology_kind(BRepGraph_NodeId::Kind const* theKind) {
+    try { return {BRepGraph_NodeId::IsTopologyKind(*theKind), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<bool> BRepGraph_NodeId_is_assembly_kind(BRepGraph_NodeId::Kind const* theKind) {
+    try { return {BRepGraph_NodeId::IsAssemblyKind(*theKind), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<BRepGraph_NodeId*> BRepGraph_NodeId_start(BRepGraph_NodeId::Kind const* theKind) {
+    try { return {new BRepGraph_NodeId(BRepGraph_NodeId::Start(*theKind)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<BRepGraph_NodeId*> BRepGraph_NodeId_invalid(BRepGraph_NodeId::Kind const* theKind) {
+    try { return {new BRepGraph_NodeId(BRepGraph_NodeId::Invalid(*theKind)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" void BRepGraph_NodeId_destructor(BRepGraph_NodeId* self_) { delete self_; }
+
+// ========================
+// BRepGraph_ParallelPolicy wrappers
+// ========================
+
+extern "C" OcctResult<BRepGraph_ParallelPolicy*> BRepGraph_ParallelPolicy_ctor() {
+    try { return {new BRepGraph_ParallelPolicy(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<int32_t> BRepGraph_ParallelPolicy_worker_count() {
+    try { return {BRepGraph_ParallelPolicy::WorkerCount(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<bool> BRepGraph_ParallelPolicy_is_parallel_allowed(bool theAllowParallel) {
+    try { return {BRepGraph_ParallelPolicy::IsParallelAllowed(theAllowParallel), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<bool> BRepGraph_ParallelPolicy_should_run_bool_int_workload(bool theAllowParallel, int32_t theWorkers, BRepGraph_ParallelPolicy::Workload const* theWorkload) {
+    try { return {BRepGraph_ParallelPolicy::ShouldRun(theAllowParallel, theWorkers, *theWorkload), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<bool> BRepGraph_ParallelPolicy_should_run_bool_workload(bool theAllowParallel, BRepGraph_ParallelPolicy::Workload const* theWorkload) {
+    try { return {BRepGraph_ParallelPolicy::ShouldRun(theAllowParallel, *theWorkload), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" void BRepGraph_ParallelPolicy_destructor(BRepGraph_ParallelPolicy* self_) { delete self_; }
+
+// sizeof helper for POD struct BRepGraph_ParallelPolicy::Workload
+extern "C" size_t BRepGraph_ParallelPolicy_Workload_sizeof() { return sizeof(BRepGraph_ParallelPolicy::Workload); }
+extern "C" void BRepGraph_ParallelPolicy_Workload_destructor(BRepGraph_ParallelPolicy::Workload* self_) { delete self_; }
+
+// ========================
+// BRepGraph_ParentExplorer wrappers
+// ========================
+
+extern "C" OcctResult<BRepGraph_ParentExplorer*> BRepGraph_ParentExplorer_ctor_brepgraph_nodeid_config(BRepGraph const* theGraph, BRepGraph_NodeId const* theNode, BRepGraph_ParentExplorer::Config const* theConfig) {
+    try { return {new BRepGraph_ParentExplorer(*theGraph, *theNode, *theConfig), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<BRepGraph_ParentExplorer*> BRepGraph_ParentExplorer_ctor_brepgraph_nodeid(BRepGraph const* theGraph, BRepGraph_NodeId const* theNode) {
+    try { return {new BRepGraph_ParentExplorer(*theGraph, *theNode), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<BRepGraph_ParentExplorer*> BRepGraph_ParentExplorer_ctor_brepgraph_nodeid_traversalmode(BRepGraph const* theGraph, BRepGraph_NodeId const* theNode, BRepGraph_ParentExplorer::TraversalMode const* theMode) {
+    try { return {new BRepGraph_ParentExplorer(*theGraph, *theNode, *theMode), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<BRepGraph_ParentExplorer*> BRepGraph_ParentExplorer_ctor_brepgraph_nodeid_kind(BRepGraph const* theGraph, BRepGraph_NodeId const* theNode, BRepGraph_NodeId::Kind const* theTargetKind) {
+    try { return {new BRepGraph_ParentExplorer(*theGraph, *theNode, *theTargetKind), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<BRepGraph_ParentExplorer*> BRepGraph_ParentExplorer_ctor_brepgraph_nodeid_kind_traversalmode(BRepGraph const* theGraph, BRepGraph_NodeId const* theNode, BRepGraph_NodeId::Kind const* theTargetKind, BRepGraph_ParentExplorer::TraversalMode const* theMode) {
+    try { return {new BRepGraph_ParentExplorer(*theGraph, *theNode, *theTargetKind, *theMode), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<BRepGraphInc::NodeInstance*> BRepGraph_ParentExplorer_current(const BRepGraph_ParentExplorer* self_) {
+    try { return {new BRepGraphInc::NodeInstance(self_->Current()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<BRepGraph_NodeId*> BRepGraph_ParentExplorer_current_child(const BRepGraph_ParentExplorer* self_) {
+    try { return {new BRepGraph_NodeId(self_->CurrentChild()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<BRepGraph_ParentExplorer::LinkKind*> BRepGraph_ParentExplorer_current_link_kind(const BRepGraph_ParentExplorer* self_) {
+    try { return {new BRepGraph_ParentExplorer::LinkKind(self_->CurrentLinkKind()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<BRepGraph_RefId*> BRepGraph_ParentExplorer_current_ref(const BRepGraph_ParentExplorer* self_) {
+    try { return {new BRepGraph_RefId(self_->CurrentRef()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<BRepGraph_ParentExplorer::Config const*> BRepGraph_ParentExplorer_get_config(const BRepGraph_ParentExplorer* self_) {
+    try { return {&(self_->GetConfig()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<bool> BRepGraph_ParentExplorer_more(const BRepGraph_ParentExplorer* self_) {
+    try { return {self_->More(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" const char* BRepGraph_ParentExplorer_next(BRepGraph_ParentExplorer* self_) {
+    try { self_->Next(); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" OcctResult<TopLoc_Location const*> BRepGraph_ParentExplorer_leaf_location(const BRepGraph_ParentExplorer* self_) {
+    try { return {&(self_->LeafLocation()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<int32_t> BRepGraph_ParentExplorer_leaf_orientation(const BRepGraph_ParentExplorer* self_) {
+    try { return {static_cast<int32_t>(self_->LeafOrientation()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<bool> BRepGraph_ParentExplorer_is_current_branch_root(const BRepGraph_ParentExplorer* self_) {
+    try { return {self_->IsCurrentBranchRoot(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" void BRepGraph_ParentExplorer_destructor(BRepGraph_ParentExplorer* self_) { delete self_; }
+
+// ========================
+// BRepGraph_ParentExplorer::Config wrappers
+// ========================
+
+extern "C" OcctResult<BRepGraph_ParentExplorer::Config*> BRepGraph_ParentExplorer_Config_ctor() {
+    try { return {new BRepGraph_ParentExplorer::Config(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" void BRepGraph_ParentExplorer_Config_destructor(BRepGraph_ParentExplorer::Config* self_) { delete self_; }
+
+// ========================
+// BRepGraph_RefId wrappers
+// ========================
+
+extern "C" OcctResult<BRepGraph_RefId*> BRepGraph_RefId_ctor() {
+    try { return {new BRepGraph_RefId(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<BRepGraph_RefId*> BRepGraph_RefId_ctor_kind_uint(BRepGraph_RefId::Kind const* theKind, uint32_t theIdx) {
+    try { return {new BRepGraph_RefId(*theKind, theIdx), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<bool> BRepGraph_RefId_is_valid(const BRepGraph_RefId* self_) {
+    try { return {self_->IsValid(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<bool> BRepGraph_RefId_is_valid_uint(const BRepGraph_RefId* self_, uint32_t theMaxCount) {
+    try { return {self_->IsValid(theMaxCount), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<bool> BRepGraph_RefId_is_removed(const BRepGraph_RefId* self_, BRepGraph const* theGraph) {
+    try { return {self_->IsRemoved(*theGraph), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<bool> BRepGraph_RefId_is_owned(const BRepGraph_RefId* self_, BRepGraph const* theGraph) {
+    try { return {self_->IsOwned(*theGraph), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<bool> BRepGraph_RefId_is_valid_kind(BRepGraph_RefId::Kind const* theKind) {
+    try { return {BRepGraph_RefId::IsValidKind(*theKind), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<bool> BRepGraph_RefId_is_topology_ref_kind(BRepGraph_RefId::Kind const* theKind) {
+    try { return {BRepGraph_RefId::IsTopologyRefKind(*theKind), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<BRepGraph_RefId*> BRepGraph_RefId_start(BRepGraph_RefId::Kind const* theKind) {
+    try { return {new BRepGraph_RefId(BRepGraph_RefId::Start(*theKind)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<BRepGraph_RefId*> BRepGraph_RefId_invalid(BRepGraph_RefId::Kind const* theKind) {
+    try { return {new BRepGraph_RefId(BRepGraph_RefId::Invalid(*theKind)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" void BRepGraph_RefId_destructor(BRepGraph_RefId* self_) { delete self_; }
+
+// ========================
+// BRepGraph_RefUID wrappers
+// ========================
+
+extern "C" OcctResult<BRepGraph_RefUID*> BRepGraph_RefUID_ctor() {
+    try { return {new BRepGraph_RefUID(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<BRepGraph_RefUID*> BRepGraph_RefUID_ctor_kind_uint(BRepGraph_RefId::Kind const* theKind, uint32_t theCounter) {
+    try { return {new BRepGraph_RefUID(*theKind, theCounter), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<bool> BRepGraph_RefUID_is_valid(const BRepGraph_RefUID* self_) {
+    try { return {self_->IsValid(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<size_t> BRepGraph_RefUID_hash_value(const BRepGraph_RefUID* self_) {
+    try { return {self_->HashValue(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<BRepGraph_RefUID*> BRepGraph_RefUID_invalid() {
+    try { return {new BRepGraph_RefUID(BRepGraph_RefUID::Invalid()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" void BRepGraph_RefUID_destructor(BRepGraph_RefUID* self_) { delete self_; }
+
+// ========================
+// BRepGraph::RefsView wrappers
+// ========================
+
+extern "C" OcctResult<BRepGraph::RefsView::ShellOps const*> RefsView_shells(const BRepGraph::RefsView* self_) {
+    try { return {&(self_->Shells()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<BRepGraph::RefsView::FaceOps const*> RefsView_faces(const BRepGraph::RefsView* self_) {
+    try { return {&(self_->Faces()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<BRepGraph::RefsView::WireOps const*> RefsView_wires(const BRepGraph::RefsView* self_) {
+    try { return {&(self_->Wires()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<BRepGraph::RefsView::VertexOps const*> RefsView_vertices(const BRepGraph::RefsView* self_) {
+    try { return {&(self_->Vertices()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<BRepGraph::RefsView::SolidOps const*> RefsView_solids(const BRepGraph::RefsView* self_) {
+    try { return {&(self_->Solids()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<BRepGraph::RefsView::ChildOps const*> RefsView_children(const BRepGraph::RefsView* self_) {
+    try { return {&(self_->Children()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<BRepGraph::RefsView::OccurrenceOps const*> RefsView_occurrences(const BRepGraph::RefsView* self_) {
+    try { return {&(self_->Occurrences()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<BRepGraph::RefsView::GenOps const*> RefsView_gen_(const BRepGraph::RefsView* self_) {
+    try { return {&(self_->Gen()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" void RefsView_destructor(BRepGraph::RefsView* self_) { delete self_; }
+
+// ========================
+// BRepGraph::RefsView::ShellOps wrappers
+// ========================
+
+extern "C" OcctResult<BRepGraph_ShellRefId*> RefsView_ShellOps_start_id(const BRepGraph::RefsView::ShellOps* self_) {
+    try { return {new BRepGraph_ShellRefId(self_->StartId()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<BRepGraph_ShellRefId*> RefsView_ShellOps_end_id(const BRepGraph::RefsView::ShellOps* self_) {
+    try { return {new BRepGraph_ShellRefId(self_->EndId()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<uint32_t> RefsView_ShellOps_nb(const BRepGraph::RefsView::ShellOps* self_) {
+    try { return {self_->Nb(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<uint32_t> RefsView_ShellOps_nb_active(const BRepGraph::RefsView::ShellOps* self_) {
+    try { return {self_->NbActive(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<NCollection_LinearVector_BRepGraph_ShellRefId const*> RefsView_ShellOps_ids_of(const BRepGraph::RefsView::ShellOps* self_, BRepGraph_SolidId const* theSolid) {
+    try { return {&(self_->IdsOf(*theSolid)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" void RefsView_ShellOps_destructor(BRepGraph::RefsView::ShellOps* self_) { delete self_; }
+
+// ========================
+// BRepGraph::RefsView::FaceOps wrappers
+// ========================
+
+extern "C" OcctResult<BRepGraph_FaceRefId*> RefsView_FaceOps_start_id(const BRepGraph::RefsView::FaceOps* self_) {
+    try { return {new BRepGraph_FaceRefId(self_->StartId()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<BRepGraph_FaceRefId*> RefsView_FaceOps_end_id(const BRepGraph::RefsView::FaceOps* self_) {
+    try { return {new BRepGraph_FaceRefId(self_->EndId()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<uint32_t> RefsView_FaceOps_nb(const BRepGraph::RefsView::FaceOps* self_) {
+    try { return {self_->Nb(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<uint32_t> RefsView_FaceOps_nb_active(const BRepGraph::RefsView::FaceOps* self_) {
+    try { return {self_->NbActive(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<NCollection_LinearVector_BRepGraph_FaceRefId const*> RefsView_FaceOps_ids_of(const BRepGraph::RefsView::FaceOps* self_, BRepGraph_ShellId const* theShell) {
+    try { return {&(self_->IdsOf(*theShell)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" void RefsView_FaceOps_destructor(BRepGraph::RefsView::FaceOps* self_) { delete self_; }
+
+// ========================
+// BRepGraph::RefsView::WireOps wrappers
+// ========================
+
+extern "C" OcctResult<BRepGraph_WireRefId*> RefsView_WireOps_start_id(const BRepGraph::RefsView::WireOps* self_) {
+    try { return {new BRepGraph_WireRefId(self_->StartId()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<BRepGraph_WireRefId*> RefsView_WireOps_end_id(const BRepGraph::RefsView::WireOps* self_) {
+    try { return {new BRepGraph_WireRefId(self_->EndId()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<uint32_t> RefsView_WireOps_nb(const BRepGraph::RefsView::WireOps* self_) {
+    try { return {self_->Nb(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<uint32_t> RefsView_WireOps_nb_active(const BRepGraph::RefsView::WireOps* self_) {
+    try { return {self_->NbActive(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<NCollection_LinearVector_BRepGraph_WireRefId const*> RefsView_WireOps_ids_of(const BRepGraph::RefsView::WireOps* self_, BRepGraph_FaceId const* theFace) {
+    try { return {&(self_->IdsOf(*theFace)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" void RefsView_WireOps_destructor(BRepGraph::RefsView::WireOps* self_) { delete self_; }
+
+// ========================
+// BRepGraph::RefsView::VertexOps wrappers
+// ========================
+
+extern "C" OcctResult<BRepGraph_VertexRefId*> RefsView_VertexOps_start_id(const BRepGraph::RefsView::VertexOps* self_) {
+    try { return {new BRepGraph_VertexRefId(self_->StartId()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<BRepGraph_VertexRefId*> RefsView_VertexOps_end_id(const BRepGraph::RefsView::VertexOps* self_) {
+    try { return {new BRepGraph_VertexRefId(self_->EndId()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<uint32_t> RefsView_VertexOps_nb(const BRepGraph::RefsView::VertexOps* self_) {
+    try { return {self_->Nb(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<uint32_t> RefsView_VertexOps_nb_active(const BRepGraph::RefsView::VertexOps* self_) {
+    try { return {self_->NbActive(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" void RefsView_VertexOps_destructor(BRepGraph::RefsView::VertexOps* self_) { delete self_; }
+
+// ========================
+// BRepGraph::RefsView::SolidOps wrappers
+// ========================
+
+extern "C" OcctResult<BRepGraph_SolidRefId*> RefsView_SolidOps_start_id(const BRepGraph::RefsView::SolidOps* self_) {
+    try { return {new BRepGraph_SolidRefId(self_->StartId()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<BRepGraph_SolidRefId*> RefsView_SolidOps_end_id(const BRepGraph::RefsView::SolidOps* self_) {
+    try { return {new BRepGraph_SolidRefId(self_->EndId()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<uint32_t> RefsView_SolidOps_nb(const BRepGraph::RefsView::SolidOps* self_) {
+    try { return {self_->Nb(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<uint32_t> RefsView_SolidOps_nb_active(const BRepGraph::RefsView::SolidOps* self_) {
+    try { return {self_->NbActive(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<NCollection_LinearVector_BRepGraph_SolidRefId const*> RefsView_SolidOps_ids_of(const BRepGraph::RefsView::SolidOps* self_, BRepGraph_CompSolidId const* theCompSolid) {
+    try { return {&(self_->IdsOf(*theCompSolid)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" void RefsView_SolidOps_destructor(BRepGraph::RefsView::SolidOps* self_) { delete self_; }
+
+// ========================
+// BRepGraph::RefsView::ChildOps wrappers
+// ========================
+
+extern "C" OcctResult<BRepGraph_ChildRefId*> RefsView_ChildOps_start_id(const BRepGraph::RefsView::ChildOps* self_) {
+    try { return {new BRepGraph_ChildRefId(self_->StartId()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<BRepGraph_ChildRefId*> RefsView_ChildOps_end_id(const BRepGraph::RefsView::ChildOps* self_) {
+    try { return {new BRepGraph_ChildRefId(self_->EndId()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<uint32_t> RefsView_ChildOps_nb(const BRepGraph::RefsView::ChildOps* self_) {
+    try { return {self_->Nb(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<uint32_t> RefsView_ChildOps_nb_active(const BRepGraph::RefsView::ChildOps* self_) {
+    try { return {self_->NbActive(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<NCollection_LinearVector_BRepGraph_ChildRefId const*> RefsView_ChildOps_ids_of(const BRepGraph::RefsView::ChildOps* self_, BRepGraph_CompoundId const* theCompound) {
+    try { return {&(self_->IdsOf(*theCompound)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<NCollection_LinearVector_BRepGraph_ChildRefId const*> RefsView_ChildOps_ids_referencing(const BRepGraph::RefsView::ChildOps* self_, BRepGraph_NodeId const* theChild) {
+    try { return {&(self_->IdsReferencing(*theChild)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" void RefsView_ChildOps_destructor(BRepGraph::RefsView::ChildOps* self_) { delete self_; }
+
+// ========================
+// BRepGraph::RefsView::OccurrenceOps wrappers
+// ========================
+
+extern "C" OcctResult<BRepGraph_OccurrenceRefId*> RefsView_OccurrenceOps_start_id(const BRepGraph::RefsView::OccurrenceOps* self_) {
+    try { return {new BRepGraph_OccurrenceRefId(self_->StartId()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<BRepGraph_OccurrenceRefId*> RefsView_OccurrenceOps_end_id(const BRepGraph::RefsView::OccurrenceOps* self_) {
+    try { return {new BRepGraph_OccurrenceRefId(self_->EndId()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<uint32_t> RefsView_OccurrenceOps_nb(const BRepGraph::RefsView::OccurrenceOps* self_) {
+    try { return {self_->Nb(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<uint32_t> RefsView_OccurrenceOps_nb_active(const BRepGraph::RefsView::OccurrenceOps* self_) {
+    try { return {self_->NbActive(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<NCollection_LinearVector_BRepGraph_OccurrenceRefId const*> RefsView_OccurrenceOps_ids_of(const BRepGraph::RefsView::OccurrenceOps* self_, BRepGraph_ProductId const* theProduct) {
+    try { return {&(self_->IdsOf(*theProduct)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<NCollection_LinearVector_BRepGraph_OccurrenceRefId const*> RefsView_OccurrenceOps_ids_referencing(const BRepGraph::RefsView::OccurrenceOps* self_, BRepGraph_NodeId const* theChild) {
+    try { return {&(self_->IdsReferencing(*theChild)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" void RefsView_OccurrenceOps_destructor(BRepGraph::RefsView::OccurrenceOps* self_) { delete self_; }
+
+// ========================
+// BRepGraph::RefsView::GenOps wrappers
+// ========================
+
+extern "C" OcctResult<BRepGraph_RefId*> RefsView_GenOps_ref_at_step(const BRepGraph::RefsView::GenOps* self_, BRepGraph_NodeId const* theParent, int32_t theStep) {
+    try { return {new BRepGraph_RefId(self_->RefAtStep(*theParent, theStep)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<BRepGraph_NodeId*> RefsView_GenOps_child_node(const BRepGraph::RefsView::GenOps* self_, BRepGraph_RefId const* theRef) {
+    try { return {new BRepGraph_NodeId(self_->ChildNode(*theRef)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<TopLoc_Location*> RefsView_GenOps_local_location(const BRepGraph::RefsView::GenOps* self_, BRepGraph_RefId const* theRef) {
+    try { return {new TopLoc_Location(self_->LocalLocation(*theRef)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<uint32_t> RefsView_GenOps_nb(const BRepGraph::RefsView::GenOps* self_, BRepGraph_RefId::Kind const* theKind) {
+    try { return {self_->Nb(*theKind), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<bool> RefsView_GenOps_is_valid(const BRepGraph::RefsView::GenOps* self_, BRepGraph_RefId const* theRef) {
+    try { return {self_->IsValid(*theRef), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<bool> RefsView_GenOps_is_active(const BRepGraph::RefsView::GenOps* self_, BRepGraph_RefId const* theRef) {
+    try { return {self_->IsActive(*theRef), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<bool> RefsView_GenOps_is_removed(const BRepGraph::RefsView::GenOps* self_, BRepGraph_RefId const* theRef) {
+    try { return {self_->IsRemoved(*theRef), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<int32_t> RefsView_GenOps_orientation(const BRepGraph::RefsView::GenOps* self_, BRepGraph_RefId const* theRef) {
+    try { return {static_cast<int32_t>(self_->Orientation(*theRef)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" void RefsView_GenOps_destructor(BRepGraph::RefsView::GenOps* self_) { delete self_; }
+
+// ========================
+// BRepGraph_RelatedIterator wrappers
+// ========================
+
+extern "C" OcctResult<BRepGraph_RelatedIterator*> BRepGraph_RelatedIterator_ctor_brepgraph_nodeid(BRepGraph const* theGraph, BRepGraph_NodeId const* theNode) {
+    try { return {new BRepGraph_RelatedIterator(*theGraph, *theNode), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<BRepGraph_RelatedIterator::RelationKind*> BRepGraph_RelatedIterator_current_relation(const BRepGraph_RelatedIterator* self_) {
+    try { return {new BRepGraph_RelatedIterator::RelationKind(self_->CurrentRelation()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<bool> BRepGraph_RelatedIterator_more(const BRepGraph_RelatedIterator* self_) {
+    try { return {self_->More(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" const char* BRepGraph_RelatedIterator_next(BRepGraph_RelatedIterator* self_) {
+    try { self_->Next(); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" OcctResult<BRepGraph_NodeId const*> BRepGraph_RelatedIterator_current(const BRepGraph_RelatedIterator* self_) {
+    try { return {&(self_->Current()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" void BRepGraph_RelatedIterator_destructor(BRepGraph_RelatedIterator* self_) { delete self_; }
+
+// ========================
+// BRepGraph::ShapesView wrappers
+// ========================
+
+extern "C" OcctResult<BRepGraph::ShapesView::Result*> ShapesView_add_shape(BRepGraph::ShapesView* self_, TopoDS_Shape const* theShape) {
+    try { return {new BRepGraph::ShapesView::Result(self_->Add(*theShape)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<BRepGraph::ShapesView::Result*> ShapesView_add_shape_options(BRepGraph::ShapesView* self_, TopoDS_Shape const* theShape, BRepGraph::ShapesView::Options const* theOptions) {
+    try { return {new BRepGraph::ShapesView::Result(self_->Add(*theShape, *theOptions)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<BRepGraph::ShapesView::Result*> ShapesView_add_shape_nodeid(BRepGraph::ShapesView* self_, TopoDS_Shape const* theShape, BRepGraph_NodeId const* theParent) {
+    try { return {new BRepGraph::ShapesView::Result(self_->Add(*theShape, *theParent)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<BRepGraph::ShapesView::Result*> ShapesView_add_shape_nodeid_options(BRepGraph::ShapesView* self_, TopoDS_Shape const* theShape, BRepGraph_NodeId const* theParent, BRepGraph::ShapesView::Options const* theOptions) {
+    try { return {new BRepGraph::ShapesView::Result(self_->Add(*theShape, *theParent, *theOptions)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<BRepGraph::ShapesView::Result*> ShapesView_add_with_history_shape_dmap_shape_nodeid_handlebreptoolshistory_asciistring(BRepGraph::ShapesView* self_, TopoDS_Shape const* theResultShape, NCollection_DataMap_TopoDS_Shape_BRepGraph_NodeId_TopTools_ShapeMapHasher const* theInputs, Handle(BRepTools_History) const* theHistory, TCollection_AsciiString const* theOpLabel) {
+    try { return {new BRepGraph::ShapesView::Result(self_->AddWithHistory(*theResultShape, *theInputs, *theHistory, *theOpLabel)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<BRepGraph::ShapesView::Result*> ShapesView_add_with_history_shape_dmap_shape_nodeid_handlebreptoolshistory_asciistring_options(BRepGraph::ShapesView* self_, TopoDS_Shape const* theResultShape, NCollection_DataMap_TopoDS_Shape_BRepGraph_NodeId_TopTools_ShapeMapHasher const* theInputs, Handle(BRepTools_History) const* theHistory, TCollection_AsciiString const* theOpLabel, BRepGraph::ShapesView::Options const* theOptions) {
+    try { return {new BRepGraph::ShapesView::Result(self_->AddWithHistory(*theResultShape, *theInputs, *theHistory, *theOpLabel, *theOptions)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<BRepGraph::ShapesView::Result*> ShapesView_add_with_history_shape_arr1_nodeid_handlebreptoolshistory_asciistring(BRepGraph::ShapesView* self_, TopoDS_Shape const* theResultShape, NCollection_Array1_BRepGraph_NodeId const* theInputRoots, Handle(BRepTools_History) const* theHistory, TCollection_AsciiString const* theOpLabel) {
+    try { return {new BRepGraph::ShapesView::Result(self_->AddWithHistory(*theResultShape, *theInputRoots, *theHistory, *theOpLabel)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<BRepGraph::ShapesView::Result*> ShapesView_add_with_history_shape_arr1_nodeid_handlebreptoolshistory_asciistring_options(BRepGraph::ShapesView* self_, TopoDS_Shape const* theResultShape, NCollection_Array1_BRepGraph_NodeId const* theInputRoots, Handle(BRepTools_History) const* theHistory, TCollection_AsciiString const* theOpLabel, BRepGraph::ShapesView::Options const* theOptions) {
+    try { return {new BRepGraph::ShapesView::Result(self_->AddWithHistory(*theResultShape, *theInputRoots, *theHistory, *theOpLabel, *theOptions)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<TopoDS_Shape*> ShapesView_shape(const BRepGraph::ShapesView* self_, BRepGraph_NodeId const* theNode) {
+    try { return {new TopoDS_Shape(self_->Shape(*theNode)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<TopoDS_Shape*> ShapesView_original(const BRepGraph::ShapesView* self_, BRepGraph_NodeId const* theNode) {
+    try { return {new TopoDS_Shape(self_->Original(*theNode)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<TopoDS_Shape*> ShapesView_reconstruct(const BRepGraph::ShapesView* self_, BRepGraph_NodeId const* theRoot) {
+    try { return {new TopoDS_Shape(self_->Reconstruct(*theRoot)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<BRepGraph_NodeId*> ShapesView_find_node(const BRepGraph::ShapesView* self_, TopoDS_Shape const* theShape) {
+    try { return {new BRepGraph_NodeId(self_->FindNode(*theShape)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" const char* ShapesView_collect_history_inputs(const BRepGraph::ShapesView* self_, NCollection_Array1_BRepGraph_NodeId const* theRoots, NCollection_DataMap_TopoDS_Shape_BRepGraph_NodeId_TopTools_ShapeMapHasher* theOutInputs) {
+    try { self_->CollectHistoryInputs(*theRoots, *theOutInputs); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" OcctResult<bool> ShapesView_has_original(const BRepGraph::ShapesView* self_, BRepGraph_NodeId const* theNode) {
+    try { return {self_->HasOriginal(*theNode), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" const char* ShapesView_clear_cached_nodeid(BRepGraph::ShapesView* self_, BRepGraph_NodeId const* theNode) {
+    try { self_->ClearCached(*theNode); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* ShapesView_clear_cached_refid(BRepGraph::ShapesView* self_, BRepGraph_RefId const* theRef) {
+    try { self_->ClearCached(*theRef); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" OcctResult<bool> ShapesView_has_node(const BRepGraph::ShapesView* self_, TopoDS_Shape const* theShape) {
+    try { return {self_->HasNode(*theShape), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<bool> ShapesView_remove_shape(BRepGraph::ShapesView* self_, TopoDS_Shape const* theShape) {
+    try { return {self_->RemoveShape(*theShape), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" void ShapesView_destructor(BRepGraph::ShapesView* self_) { delete self_; }
+
+// ========================
+// BRepGraph::ShapesView::Options wrappers
+// ========================
+
+extern "C" OcctResult<BRepGraph::ShapesView::Options*> ShapesView_Options_ctor() {
+    try { return {new BRepGraph::ShapesView::Options(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" void ShapesView_Options_destructor(BRepGraph::ShapesView::Options* self_) { delete self_; }
+
+// ========================
+// BRepGraph::ShapesView::Result wrappers
+// ========================
+
+extern "C" OcctResult<BRepGraph::ShapesView::Result*> ShapesView_Result_ctor() {
+    try { return {new BRepGraph::ShapesView::Result(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<bool> ShapesView_Result_is_ok(const BRepGraph::ShapesView::Result* self_) {
+    try { return {self_->IsOk(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" void ShapesView_Result_destructor(BRepGraph::ShapesView::Result* self_) { delete self_; }
+
+// ========================
+// BRepGraph_SupplementEditor wrappers
+// ========================
+
+extern "C" OcctResult<BRepGraph_SupplementEditor*> BRepGraph_SupplementEditor_ctor_brepgraph(BRepGraph* theGraph) {
+    try { return {new BRepGraph_SupplementEditor(*theGraph), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<uint64_t> BRepGraph_SupplementEditor_attach(BRepGraph_SupplementEditor* self_, BRepGraph_NodeId const* theOwner, BRepGraph_LayerTopoSupplement::AttachmentKind const* theKind, TopoDS_Shape const* theShape) {
+    try { return {self_->Attach(*theOwner, *theKind, *theShape), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<uint64_t> BRepGraph_SupplementEditor_attach_to_vertex(BRepGraph_SupplementEditor* self_, BRepGraph_VertexId const* theVertex, TopoDS_Shape const* theShape, BRepGraph_LayerTopoSupplement::AttachmentKind const* theKind) {
+    try { return {self_->AttachToVertex(*theVertex, *theShape, *theKind), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<uint64_t> BRepGraph_SupplementEditor_attach_to_edge(BRepGraph_SupplementEditor* self_, BRepGraph_EdgeId const* theEdge, TopoDS_Shape const* theShape, BRepGraph_LayerTopoSupplement::AttachmentKind const* theKind) {
+    try { return {self_->AttachToEdge(*theEdge, *theShape, *theKind), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<uint64_t> BRepGraph_SupplementEditor_attach_to_face(BRepGraph_SupplementEditor* self_, BRepGraph_FaceId const* theFace, TopoDS_Shape const* theShape, BRepGraph_LayerTopoSupplement::AttachmentKind const* theKind) {
+    try { return {self_->AttachToFace(*theFace, *theShape, *theKind), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<uint64_t> BRepGraph_SupplementEditor_attach_to_solid(BRepGraph_SupplementEditor* self_, BRepGraph_SolidId const* theSolid, TopoDS_Shape const* theShape, BRepGraph_LayerTopoSupplement::AttachmentKind const* theKind) {
+    try { return {self_->AttachToSolid(*theSolid, *theShape, *theKind), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<uint64_t> BRepGraph_SupplementEditor_attach_to_comp_solid(BRepGraph_SupplementEditor* self_, BRepGraph_CompSolidId const* theCompSolid, TopoDS_Shape const* theShape, BRepGraph_LayerTopoSupplement::AttachmentKind const* theKind) {
+    try { return {self_->AttachToCompSolid(*theCompSolid, *theShape, *theKind), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<uint64_t> BRepGraph_SupplementEditor_attach_to_shell(BRepGraph_SupplementEditor* self_, BRepGraph_ShellId const* theShell, TopoDS_Shape const* theShape, BRepGraph_LayerTopoSupplement::AttachmentKind const* theKind) {
+    try { return {self_->AttachToShell(*theShell, *theShape, *theKind), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<uint64_t> BRepGraph_SupplementEditor_attach_to_compound(BRepGraph_SupplementEditor* self_, BRepGraph_CompoundId const* theCompound, TopoDS_Shape const* theShape, BRepGraph_LayerTopoSupplement::AttachmentKind const* theKind) {
+    try { return {self_->AttachToCompound(*theCompound, *theShape, *theKind), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<bool> BRepGraph_SupplementEditor_remove_attachment(BRepGraph_SupplementEditor* self_, uint64_t theUid) {
+    try { return {self_->RemoveAttachment(theUid), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" void BRepGraph_SupplementEditor_destructor(BRepGraph_SupplementEditor* self_) { delete self_; }
+
+// ========================
+// BRepGraph_SupplementIterator wrappers
+// ========================
+
+extern "C" OcctResult<BRepGraph_SupplementIterator*> BRepGraph_SupplementIterator_ctor_brepgraph_nodeid(BRepGraph const* theGraph, BRepGraph_NodeId const* theOwner) {
+    try { return {new BRepGraph_SupplementIterator(*theGraph, *theOwner), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<bool> BRepGraph_SupplementIterator_more(const BRepGraph_SupplementIterator* self_) {
+    try { return {self_->More(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" const char* BRepGraph_SupplementIterator_next(BRepGraph_SupplementIterator* self_) {
+    try { self_->Next(); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" OcctResult<uint64_t> BRepGraph_SupplementIterator_uid(const BRepGraph_SupplementIterator* self_) {
+    try { return {self_->Uid(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<BRepGraph_LayerTopoSupplement::Entry const*> BRepGraph_SupplementIterator_value(const BRepGraph_SupplementIterator* self_) {
     try { return {&(self_->Value()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<gp_Vec const*> BRepLProp_CLProps_d1(BRepLProp_CLProps* self_) {
-    try { return {&(self_->D1()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<gp_Vec const*> BRepLProp_CLProps_d2(BRepLProp_CLProps* self_) {
-    try { return {&(self_->D2()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<gp_Vec const*> BRepLProp_CLProps_d3(BRepLProp_CLProps* self_) {
-    try { return {&(self_->D3()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<bool> BRepLProp_CLProps_is_tangent_defined(BRepLProp_CLProps* self_) {
-    try { return {self_->IsTangentDefined(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* BRepLProp_CLProps_tangent(BRepLProp_CLProps* self_, gp_Dir* D) {
-    try { self_->Tangent(*D); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<double> BRepLProp_CLProps_curvature(BRepLProp_CLProps* self_) {
-    try { return {self_->Curvature(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* BRepLProp_CLProps_normal(BRepLProp_CLProps* self_, gp_Dir* N) {
-    try { self_->Normal(*N); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* BRepLProp_CLProps_centre_of_curvature(BRepLProp_CLProps* self_, gp_Pnt* P) {
-    try { self_->CentreOfCurvature(*P); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" void BRepLProp_CLProps_destructor(BRepLProp_CLProps* self_) { delete self_; }
+extern "C" void BRepGraph_SupplementIterator_destructor(BRepGraph_SupplementIterator* self_) { delete self_; }
 
 // ========================
-// BRepLProp_CurveTool wrappers
+// BRepGraph_Tool wrappers
 // ========================
 
-extern "C" OcctResult<BRepLProp_CurveTool*> BRepLProp_CurveTool_ctor() {
-    try { return {new BRepLProp_CurveTool(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* BRepLProp_CurveTool_value(BRepAdaptor_Curve const* C, double U, gp_Pnt* P) {
-    try { BRepLProp_CurveTool::Value(*C, U, *P); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* BRepLProp_CurveTool_d1(BRepAdaptor_Curve const* C, double U, gp_Pnt* P, gp_Vec* V1) {
-    try { BRepLProp_CurveTool::D1(*C, U, *P, *V1); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* BRepLProp_CurveTool_d2(BRepAdaptor_Curve const* C, double U, gp_Pnt* P, gp_Vec* V1, gp_Vec* V2) {
-    try { BRepLProp_CurveTool::D2(*C, U, *P, *V1, *V2); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* BRepLProp_CurveTool_d3(BRepAdaptor_Curve const* C, double U, gp_Pnt* P, gp_Vec* V1, gp_Vec* V2, gp_Vec* V3) {
-    try { BRepLProp_CurveTool::D3(*C, U, *P, *V1, *V2, *V3); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<int32_t> BRepLProp_CurveTool_continuity(BRepAdaptor_Curve const* C) {
-    try { return {BRepLProp_CurveTool::Continuity(*C), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<double> BRepLProp_CurveTool_first_parameter(BRepAdaptor_Curve const* C) {
-    try { return {BRepLProp_CurveTool::FirstParameter(*C), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<double> BRepLProp_CurveTool_last_parameter(BRepAdaptor_Curve const* C) {
-    try { return {BRepLProp_CurveTool::LastParameter(*C), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" void BRepLProp_CurveTool_destructor(BRepLProp_CurveTool* self_) { delete self_; }
 
 // ========================
-// BRepLProp_SLProps wrappers
+// BRepGraph_Tool::Vertex wrappers
 // ========================
 
-extern "C" OcctResult<BRepLProp_SLProps*> BRepLProp_SLProps_ctor_surface_real2_int_real(BRepAdaptor_Surface const* S, double U, double V, int32_t N, double Resolution) {
-    try { return {new BRepLProp_SLProps(*S, U, V, N, Resolution), nullptr}; }
+extern "C" OcctResult<BRepGraph_Tool::Vertex*> BRepGraph_Tool_Vertex_ctor() {
+    try { return {new BRepGraph_Tool::Vertex(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<BRepLProp_SLProps*> BRepLProp_SLProps_ctor_surface_int_real(BRepAdaptor_Surface const* S, int32_t N, double Resolution) {
-    try { return {new BRepLProp_SLProps(*S, N, Resolution), nullptr}; }
+extern "C" OcctResult<BRepGraph_Tool::VertexUsage*> BRepGraph_Tool_Vertex_usage(BRepGraph const* theGraph, BRepGraph_VertexRefId const* theVertexRef) {
+    try { return {new BRepGraph_Tool::VertexUsage(BRepGraph_Tool::Vertex::Usage(*theGraph, *theVertexRef)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<BRepLProp_SLProps*> BRepLProp_SLProps_ctor_int_real(int32_t N, double Resolution) {
-    try { return {new BRepLProp_SLProps(N, Resolution), nullptr}; }
+extern "C" OcctResult<gp_Pnt*> BRepGraph_Tool_Vertex_pnt_brepgraph_vertexusage(BRepGraph const* theGraph, BRepGraph_Tool::VertexUsage const* theRef) {
+    try { return {new gp_Pnt(BRepGraph_Tool::Vertex::Pnt(*theGraph, *theRef)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* BRepLProp_SLProps_set_surface(BRepLProp_SLProps* self_, BRepAdaptor_Surface const* S) {
-    try { self_->SetSurface(*S); return nullptr; }
+extern "C" OcctResult<gp_Pnt*> BRepGraph_Tool_Vertex_pnt_brepgraph_vertexid(BRepGraph const* theGraph, BRepGraph_VertexId const* theVertex) {
+    try { return {new gp_Pnt(BRepGraph_Tool::Vertex::Pnt(*theGraph, *theVertex)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<gp_Pnt*> BRepGraph_Tool_Vertex_pnt_brepgraph_vertexrefid(BRepGraph const* theGraph, BRepGraph_VertexRefId const* theVertexRef) {
+    try { return {new gp_Pnt(BRepGraph_Tool::Vertex::Pnt(*theGraph, *theVertexRef)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<double> BRepGraph_Tool_Vertex_tolerance_brepgraph_vertexid(BRepGraph const* theGraph, BRepGraph_VertexId const* theVertex) {
+    try { return {BRepGraph_Tool::Vertex::Tolerance(*theGraph, *theVertex), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<double> BRepGraph_Tool_Vertex_tolerance_brepgraph_vertexrefid(BRepGraph const* theGraph, BRepGraph_VertexRefId const* theVertexRef) {
+    try { return {BRepGraph_Tool::Vertex::Tolerance(*theGraph, *theVertexRef), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<uint32_t> BRepGraph_Tool_Vertex_nb_edges(BRepGraph const* theGraph, BRepGraph_VertexId const* theVertex) {
+    try { return {BRepGraph_Tool::Vertex::NbEdges(*theGraph, *theVertex), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" void BRepGraph_Tool_Vertex_destructor(BRepGraph_Tool::Vertex* self_) { delete self_; }
+
+// ========================
+// BRepGraph_Tool::Edge wrappers
+// ========================
+
+extern "C" OcctResult<BRepGraph_Tool::Edge*> BRepGraph_Tool_Edge_ctor() {
+    try { return {new BRepGraph_Tool::Edge(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<double> BRepGraph_Tool_Edge_tolerance(BRepGraph const* theGraph, BRepGraph_EdgeId const* theEdge) {
+    try { return {BRepGraph_Tool::Edge::Tolerance(*theGraph, *theEdge), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<bool> BRepGraph_Tool_Edge_degenerated(BRepGraph const* theGraph, BRepGraph_EdgeId const* theEdge) {
+    try { return {BRepGraph_Tool::Edge::Degenerated(*theGraph, *theEdge), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<bool> BRepGraph_Tool_Edge_is_closed(BRepGraph const* theGraph, BRepGraph_EdgeId const* theEdge) {
+    try { return {BRepGraph_Tool::Edge::IsClosed(*theGraph, *theEdge), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<std_pair_double_double*> BRepGraph_Tool_Edge_range(BRepGraph const* theGraph, BRepGraph_EdgeId const* theEdge) {
+    try { return {new std_pair_double_double(BRepGraph_Tool::Edge::Range(*theGraph, *theEdge)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<BRepGraph_VertexRefId*> BRepGraph_Tool_Edge_start_vertex_id(BRepGraph const* theGraph, BRepGraph_EdgeId const* theEdge) {
+    try { return {new BRepGraph_VertexRefId(BRepGraph_Tool::Edge::StartVertexId(*theGraph, *theEdge)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<BRepGraph_VertexRefId*> BRepGraph_Tool_Edge_end_vertex_id(BRepGraph const* theGraph, BRepGraph_EdgeId const* theEdge) {
+    try { return {new BRepGraph_VertexRefId(BRepGraph_Tool::Edge::EndVertexId(*theGraph, *theEdge)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<bool> BRepGraph_Tool_Edge_has_curve(BRepGraph const* theGraph, BRepGraph_EdgeId const* theEdge) {
+    try { return {BRepGraph_Tool::Edge::HasCurve(*theGraph, *theEdge), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Handle(Geom_Curve) const*> BRepGraph_Tool_Edge_curve_brepgraph_edgeid(BRepGraph const* theGraph, BRepGraph_EdgeId const* theEdge) {
+    try { return {&(BRepGraph_Tool::Edge::Curve(*theGraph, *theEdge)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Handle(Geom_Curve)*> BRepGraph_Tool_Edge_curve_brepgraph_coedgeusage(BRepGraph const* theGraph, BRepGraph_Tool::CoEdgeUsage const* theRef) {
+    try { return {new Handle(Geom_Curve)(BRepGraph_Tool::Edge::Curve(*theGraph, *theRef)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<GeomAdaptor_TransformedCurve*> BRepGraph_Tool_Edge_curve_adaptor_brepgraph_edgeid(BRepGraph const* theGraph, BRepGraph_EdgeId const* theEdge) {
+    try { return {new GeomAdaptor_TransformedCurve(BRepGraph_Tool::Edge::CurveAdaptor(*theGraph, *theEdge)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<GeomAdaptor_TransformedCurve*> BRepGraph_Tool_Edge_curve_adaptor_brepgraph_coedgeusage(BRepGraph const* theGraph, BRepGraph_Tool::CoEdgeUsage const* theRef) {
+    try { return {new GeomAdaptor_TransformedCurve(BRepGraph_Tool::Edge::CurveAdaptor(*theGraph, *theRef)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<BRepGraph_EdgeId*> BRepGraph_Tool_Edge_find_by_vertices(BRepGraph const* theGraph, BRepGraph_VertexId const* theStartVertex, BRepGraph_VertexId const* theEndVertex, bool theToIgnoreOrientation) {
+    try { return {new BRepGraph_EdgeId(BRepGraph_Tool::Edge::FindByVertices(*theGraph, *theStartVertex, *theEndVertex, theToIgnoreOrientation)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<BRepGraph_CoEdgeId*> BRepGraph_Tool_Edge_find_p_curve_co_edge_id_brepgraph_edgeid_faceid(BRepGraph const* theGraph, BRepGraph_EdgeId const* theEdge, BRepGraph_FaceId const* theFace) {
+    try { return {new BRepGraph_CoEdgeId(BRepGraph_Tool::Edge::FindPCurveCoEdgeId(*theGraph, *theEdge, *theFace)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<BRepGraph_CoEdgeId*> BRepGraph_Tool_Edge_find_p_curve_co_edge_id_brepgraph_edgeid_faceid_orientation(BRepGraph const* theGraph, BRepGraph_EdgeId const* theEdge, BRepGraph_FaceId const* theFace, int32_t theOrientation) {
+    try { return {new BRepGraph_CoEdgeId(BRepGraph_Tool::Edge::FindPCurveCoEdgeId(*theGraph, *theEdge, *theFace, static_cast<TopAbs_Orientation>(theOrientation))), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<BRepGraph_CoEdgeId*> BRepGraph_Tool_Edge_find_co_edge_id_brepgraph_edgeid_faceid(BRepGraph const* theGraph, BRepGraph_EdgeId const* theEdge, BRepGraph_FaceId const* theFace) {
+    try { return {new BRepGraph_CoEdgeId(BRepGraph_Tool::Edge::FindCoEdgeId(*theGraph, *theEdge, *theFace)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<BRepGraph_CoEdgeId*> BRepGraph_Tool_Edge_find_co_edge_id_brepgraph_edgeid_faceid_orientation(BRepGraph const* theGraph, BRepGraph_EdgeId const* theEdge, BRepGraph_FaceId const* theFace, int32_t theOrientation) {
+    try { return {new BRepGraph_CoEdgeId(BRepGraph_Tool::Edge::FindCoEdgeId(*theGraph, *theEdge, *theFace, static_cast<TopAbs_Orientation>(theOrientation))), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<uint32_t> BRepGraph_Tool_Edge_nb_faces(BRepGraph const* theGraph, BRepGraph_EdgeId const* theEdge) {
+    try { return {BRepGraph_Tool::Edge::NbFaces(*theGraph, *theEdge), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<bool> BRepGraph_Tool_Edge_is_manifold(BRepGraph const* theGraph, BRepGraph_EdgeId const* theEdge) {
+    try { return {BRepGraph_Tool::Edge::IsManifold(*theGraph, *theEdge), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<bool> BRepGraph_Tool_Edge_is_boundary(BRepGraph const* theGraph, BRepGraph_EdgeId const* theEdge) {
+    try { return {BRepGraph_Tool::Edge::IsBoundary(*theGraph, *theEdge), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<bool> BRepGraph_Tool_Edge_is_seam_on_face(BRepGraph const* theGraph, BRepGraph_EdgeId const* theEdge, BRepGraph_FaceId const* theFace) {
+    try { return {BRepGraph_Tool::Edge::IsSeamOnFace(*theGraph, *theEdge, *theFace), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Handle(Adaptor3d_CurveOnSurface)*> BRepGraph_Tool_Edge_curve_on_surface(BRepGraph const* theGraph, BRepGraph_Tool::CoEdgeUsage const* theRef, BRepGraph_FaceId const* theFace) {
+    try { return {new Handle(Adaptor3d_CurveOnSurface)(BRepGraph_Tool::Edge::CurveOnSurface(*theGraph, *theRef, *theFace)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" void BRepGraph_Tool_Edge_destructor(BRepGraph_Tool::Edge* self_) { delete self_; }
+
+// ========================
+// BRepGraph_Tool::CoEdge wrappers
+// ========================
+
+extern "C" OcctResult<BRepGraph_Tool::CoEdge*> BRepGraph_Tool_CoEdge_ctor() {
+    try { return {new BRepGraph_Tool::CoEdge(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<int32_t> BRepGraph_Tool_CoEdge_orientation(BRepGraph const* theGraph, BRepGraph_CoEdgeId const* theCoEdge) {
+    try { return {static_cast<int32_t>(BRepGraph_Tool::CoEdge::Orientation(*theGraph, *theCoEdge)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<bool> BRepGraph_Tool_CoEdge_is_reversed(BRepGraph const* theGraph, BRepGraph_CoEdgeId const* theCoEdge) {
+    try { return {BRepGraph_Tool::CoEdge::IsReversed(*theGraph, *theCoEdge), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<BRepGraph_EdgeId*> BRepGraph_Tool_CoEdge_edge_of(BRepGraph const* theGraph, BRepGraph_CoEdgeId const* theCoEdge) {
+    try { return {new BRepGraph_EdgeId(BRepGraph_Tool::CoEdge::EdgeOf(*theGraph, *theCoEdge)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<BRepGraph_FaceId*> BRepGraph_Tool_CoEdge_face_of(BRepGraph const* theGraph, BRepGraph_CoEdgeId const* theCoEdge) {
+    try { return {new BRepGraph_FaceId(BRepGraph_Tool::CoEdge::FaceOf(*theGraph, *theCoEdge)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<BRepGraph_CoEdgeId*> BRepGraph_Tool_CoEdge_seam_pair(BRepGraph const* theGraph, BRepGraph_CoEdgeId const* theCoEdge) {
+    try { return {new BRepGraph_CoEdgeId(BRepGraph_Tool::CoEdge::SeamPair(*theGraph, *theCoEdge)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<bool> BRepGraph_Tool_CoEdge_is_seam(BRepGraph const* theGraph, BRepGraph_CoEdgeId const* theCoEdge) {
+    try { return {BRepGraph_Tool::CoEdge::IsSeam(*theGraph, *theCoEdge), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<bool> BRepGraph_Tool_CoEdge_has_p_curve(BRepGraph const* theGraph, BRepGraph_CoEdgeId const* theCoEdge) {
+    try { return {BRepGraph_Tool::CoEdge::HasPCurve(*theGraph, *theCoEdge), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<bool> BRepGraph_Tool_CoEdge_same_parameter(BRepGraph const* theGraph, BRepGraph_CoEdgeId const* theCoEdge) {
+    try { return {BRepGraph_Tool::CoEdge::SameParameter(*theGraph, *theCoEdge), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<bool> BRepGraph_Tool_CoEdge_same_range(BRepGraph const* theGraph, BRepGraph_CoEdgeId const* theCoEdge) {
+    try { return {BRepGraph_Tool::CoEdge::SameRange(*theGraph, *theCoEdge), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Handle(Geom2d_Curve) const*> BRepGraph_Tool_CoEdge_p_curve(BRepGraph const* theGraph, BRepGraph_CoEdgeId const* theCoEdge) {
+    try { return {&(BRepGraph_Tool::CoEdge::PCurve(*theGraph, *theCoEdge)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Geom2dAdaptor_Curve*> BRepGraph_Tool_CoEdge_p_curve_adaptor_brepgraph_coedgeid(BRepGraph const* theGraph, BRepGraph_CoEdgeId const* theCoEdge) {
+    try { return {new Geom2dAdaptor_Curve(BRepGraph_Tool::CoEdge::PCurveAdaptor(*theGraph, *theCoEdge)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Geom2dAdaptor_Curve*> BRepGraph_Tool_CoEdge_p_curve_adaptor_brepgraph_coedgeusage(BRepGraph const* theGraph, BRepGraph_Tool::CoEdgeUsage const* theRef) {
+    try { return {new Geom2dAdaptor_Curve(BRepGraph_Tool::CoEdge::PCurveAdaptor(*theGraph, *theRef)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<std_pair_gp_Pnt2d_gp_Pnt2d*> BRepGraph_Tool_CoEdge_uv_points(BRepGraph const* theGraph, BRepGraph_CoEdgeId const* theCoEdge) {
+    try { return {new std_pair_gp_Pnt2d_gp_Pnt2d(BRepGraph_Tool::CoEdge::UVPoints(*theGraph, *theCoEdge)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<std_pair_double_double*> BRepGraph_Tool_CoEdge_range(BRepGraph const* theGraph, BRepGraph_CoEdgeId const* theCoEdge) {
+    try { return {new std_pair_double_double(BRepGraph_Tool::CoEdge::Range(*theGraph, *theCoEdge)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" void BRepGraph_Tool_CoEdge_destructor(BRepGraph_Tool::CoEdge* self_) { delete self_; }
+
+// ========================
+// BRepGraph_Tool::Face wrappers
+// ========================
+
+extern "C" OcctResult<BRepGraph_Tool::Face*> BRepGraph_Tool_Face_ctor() {
+    try { return {new BRepGraph_Tool::Face(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<BRepGraph_Tool::FaceUsage*> BRepGraph_Tool_Face_usage(BRepGraph const* theGraph, BRepGraph_FaceRefId const* theFaceRef) {
+    try { return {new BRepGraph_Tool::FaceUsage(BRepGraph_Tool::Face::Usage(*theGraph, *theFaceRef)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<double> BRepGraph_Tool_Face_tolerance_brepgraph_faceid(BRepGraph const* theGraph, BRepGraph_FaceId const* theFace) {
+    try { return {BRepGraph_Tool::Face::Tolerance(*theGraph, *theFace), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<double> BRepGraph_Tool_Face_tolerance_brepgraph_facerefid(BRepGraph const* theGraph, BRepGraph_FaceRefId const* theFaceRef) {
+    try { return {BRepGraph_Tool::Face::Tolerance(*theGraph, *theFaceRef), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<bool> BRepGraph_Tool_Face_has_surface_brepgraph_faceid(BRepGraph const* theGraph, BRepGraph_FaceId const* theFace) {
+    try { return {BRepGraph_Tool::Face::HasSurface(*theGraph, *theFace), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<bool> BRepGraph_Tool_Face_has_surface_brepgraph_facerefid(BRepGraph const* theGraph, BRepGraph_FaceRefId const* theFaceRef) {
+    try { return {BRepGraph_Tool::Face::HasSurface(*theGraph, *theFaceRef), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<BRepGraph_WireId*> BRepGraph_Tool_Face_outer_wire_brepgraph_faceid(BRepGraph const* theGraph, BRepGraph_FaceId const* theFace) {
+    try { return {new BRepGraph_WireId(BRepGraph_Tool::Face::OuterWire(*theGraph, *theFace)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<BRepGraph_WireId*> BRepGraph_Tool_Face_outer_wire_brepgraph_facerefid(BRepGraph const* theGraph, BRepGraph_FaceRefId const* theFaceRef) {
+    try { return {new BRepGraph_WireId(BRepGraph_Tool::Face::OuterWire(*theGraph, *theFaceRef)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Handle(Geom_Surface) const*> BRepGraph_Tool_Face_surface_brepgraph_faceid(BRepGraph const* theGraph, BRepGraph_FaceId const* theFace) {
+    try { return {&(BRepGraph_Tool::Face::Surface(*theGraph, *theFace)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Handle(Geom_Surface) const*> BRepGraph_Tool_Face_surface_brepgraph_facerefid(BRepGraph const* theGraph, BRepGraph_FaceRefId const* theFaceRef) {
+    try { return {&(BRepGraph_Tool::Face::Surface(*theGraph, *theFaceRef)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<GeomAdaptor_TransformedSurface*> BRepGraph_Tool_Face_surface_adaptor_brepgraph_faceid(BRepGraph const* theGraph, BRepGraph_FaceId const* theFace) {
+    try { return {new GeomAdaptor_TransformedSurface(BRepGraph_Tool::Face::SurfaceAdaptor(*theGraph, *theFace)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<GeomAdaptor_TransformedSurface*> BRepGraph_Tool_Face_surface_adaptor_brepgraph_faceusage(BRepGraph const* theGraph, BRepGraph_Tool::FaceUsage const* theRef) {
+    try { return {new GeomAdaptor_TransformedSurface(BRepGraph_Tool::Face::SurfaceAdaptor(*theGraph, *theRef)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<GeomAdaptor_TransformedSurface*> BRepGraph_Tool_Face_surface_adaptor_brepgraph_facerefid(BRepGraph const* theGraph, BRepGraph_FaceRefId const* theFaceRef) {
+    try { return {new GeomAdaptor_TransformedSurface(BRepGraph_Tool::Face::SurfaceAdaptor(*theGraph, *theFaceRef)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<GeomAdaptor_TransformedSurface*> BRepGraph_Tool_Face_surface_adaptor_brepgraph_faceid_real4(BRepGraph const* theGraph, BRepGraph_FaceId const* theFace, double theUFirst, double theULast, double theVFirst, double theVLast) {
+    try { return {new GeomAdaptor_TransformedSurface(BRepGraph_Tool::Face::SurfaceAdaptor(*theGraph, *theFace, theUFirst, theULast, theVFirst, theVLast)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<GeomAdaptor_TransformedSurface*> BRepGraph_Tool_Face_surface_adaptor_brepgraph_faceusage_real4(BRepGraph const* theGraph, BRepGraph_Tool::FaceUsage const* theRef, double theUFirst, double theULast, double theVFirst, double theVLast) {
+    try { return {new GeomAdaptor_TransformedSurface(BRepGraph_Tool::Face::SurfaceAdaptor(*theGraph, *theRef, theUFirst, theULast, theVFirst, theVLast)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<GeomAdaptor_TransformedSurface*> BRepGraph_Tool_Face_surface_adaptor_brepgraph_facerefid_real4(BRepGraph const* theGraph, BRepGraph_FaceRefId const* theFaceRef, double theUFirst, double theULast, double theVFirst, double theVLast) {
+    try { return {new GeomAdaptor_TransformedSurface(BRepGraph_Tool::Face::SurfaceAdaptor(*theGraph, *theFaceRef, theUFirst, theULast, theVFirst, theVLast)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<uint32_t> BRepGraph_Tool_Face_nb_wires_brepgraph_faceid(BRepGraph const* theGraph, BRepGraph_FaceId const* theFace) {
+    try { return {BRepGraph_Tool::Face::NbWires(*theGraph, *theFace), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<uint32_t> BRepGraph_Tool_Face_nb_wires_brepgraph_facerefid(BRepGraph const* theGraph, BRepGraph_FaceRefId const* theFaceRef) {
+    try { return {BRepGraph_Tool::Face::NbWires(*theGraph, *theFaceRef), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" const char* BRepGraph_Tool_Face_bounds_brepgraph_faceid_real4(BRepGraph const* theGraph, BRepGraph_FaceId const* theFace, double* theUMin, double* theUMax, double* theVMin, double* theVMax) {
+    try { BRepGraph_Tool::Face::Bounds(*theGraph, *theFace, *theUMin, *theUMax, *theVMin, *theVMax); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* BRepLProp_SLProps_set_parameters(BRepLProp_SLProps* self_, double U, double V) {
-    try { self_->SetParameters(U, V); return nullptr; }
+extern "C" const char* BRepGraph_Tool_Face_bounds_brepgraph_facerefid_real4(BRepGraph const* theGraph, BRepGraph_FaceRefId const* theFaceRef, double* theUMin, double* theUMax, double* theVMin, double* theVMax) {
+    try { BRepGraph_Tool::Face::Bounds(*theGraph, *theFaceRef, *theUMin, *theUMax, *theVMin, *theVMax); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<gp_Pnt const*> BRepLProp_SLProps_value(const BRepLProp_SLProps* self_) {
-    try { return {&(self_->Value()), nullptr}; }
+extern "C" void BRepGraph_Tool_Face_destructor(BRepGraph_Tool::Face* self_) { delete self_; }
+
+// ========================
+// BRepGraph_Tool::Wire wrappers
+// ========================
+
+extern "C" OcctResult<BRepGraph_Tool::Wire*> BRepGraph_Tool_Wire_ctor() {
+    try { return {new BRepGraph_Tool::Wire(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<gp_Vec const*> BRepLProp_SLProps_d1u(BRepLProp_SLProps* self_) {
-    try { return {&(self_->D1U()), nullptr}; }
+extern "C" OcctResult<BRepGraph_Tool::WireUsage*> BRepGraph_Tool_Wire_usage(BRepGraph const* theGraph, BRepGraph_WireRefId const* theWireRef) {
+    try { return {new BRepGraph_Tool::WireUsage(BRepGraph_Tool::Wire::Usage(*theGraph, *theWireRef)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<gp_Vec const*> BRepLProp_SLProps_d1v(BRepLProp_SLProps* self_) {
-    try { return {&(self_->D1V()), nullptr}; }
+extern "C" OcctResult<bool> BRepGraph_Tool_Wire_is_closed_brepgraph_wireid(BRepGraph const* theGraph, BRepGraph_WireId const* theWire) {
+    try { return {BRepGraph_Tool::Wire::IsClosed(*theGraph, *theWire), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<gp_Vec const*> BRepLProp_SLProps_d2u(BRepLProp_SLProps* self_) {
-    try { return {&(self_->D2U()), nullptr}; }
+extern "C" OcctResult<bool> BRepGraph_Tool_Wire_is_closed_brepgraph_wirerefid(BRepGraph const* theGraph, BRepGraph_WireRefId const* theWireRef) {
+    try { return {BRepGraph_Tool::Wire::IsClosed(*theGraph, *theWireRef), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<gp_Vec const*> BRepLProp_SLProps_d2v(BRepLProp_SLProps* self_) {
-    try { return {&(self_->D2V()), nullptr}; }
+extern "C" OcctResult<uint32_t> BRepGraph_Tool_Wire_nb_co_edges_brepgraph_wireid(BRepGraph const* theGraph, BRepGraph_WireId const* theWire) {
+    try { return {BRepGraph_Tool::Wire::NbCoEdges(*theGraph, *theWire), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<gp_Vec const*> BRepLProp_SLProps_duv(BRepLProp_SLProps* self_) {
-    try { return {&(self_->DUV()), nullptr}; }
+extern "C" OcctResult<uint32_t> BRepGraph_Tool_Wire_nb_co_edges_brepgraph_wirerefid(BRepGraph const* theGraph, BRepGraph_WireRefId const* theWireRef) {
+    try { return {BRepGraph_Tool::Wire::NbCoEdges(*theGraph, *theWireRef), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<bool> BRepLProp_SLProps_is_tangent_u_defined(BRepLProp_SLProps* self_) {
-    try { return {self_->IsTangentUDefined(), nullptr}; }
+extern "C" OcctResult<uint32_t> BRepGraph_Tool_Wire_nb_distinct_edges_brepgraph_wireid(BRepGraph const* theGraph, BRepGraph_WireId const* theWire) {
+    try { return {BRepGraph_Tool::Wire::NbDistinctEdges(*theGraph, *theWire), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* BRepLProp_SLProps_tangent_u(BRepLProp_SLProps* self_, gp_Dir* D) {
-    try { self_->TangentU(*D); return nullptr; }
+extern "C" OcctResult<uint32_t> BRepGraph_Tool_Wire_nb_distinct_edges_brepgraph_wirerefid(BRepGraph const* theGraph, BRepGraph_WireRefId const* theWireRef) {
+    try { return {BRepGraph_Tool::Wire::NbDistinctEdges(*theGraph, *theWireRef), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<BRepGraph_FaceId*> BRepGraph_Tool_Wire_face_of_brepgraph_wireid(BRepGraph const* theGraph, BRepGraph_WireId const* theWire) {
+    try { return {new BRepGraph_FaceId(BRepGraph_Tool::Wire::FaceOf(*theGraph, *theWire)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<BRepGraph_FaceId*> BRepGraph_Tool_Wire_face_of_brepgraph_wirerefid(BRepGraph const* theGraph, BRepGraph_WireRefId const* theWireRef) {
+    try { return {new BRepGraph_FaceId(BRepGraph_Tool::Wire::FaceOf(*theGraph, *theWireRef)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<bool> BRepGraph_Tool_Wire_is_outer_brepgraph_wireid(BRepGraph const* theGraph, BRepGraph_WireId const* theWire) {
+    try { return {BRepGraph_Tool::Wire::IsOuter(*theGraph, *theWire), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<bool> BRepGraph_Tool_Wire_is_outer_brepgraph_wirerefid(BRepGraph const* theGraph, BRepGraph_WireRefId const* theWireRef) {
+    try { return {BRepGraph_Tool::Wire::IsOuter(*theGraph, *theWireRef), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" void BRepGraph_Tool_Wire_destructor(BRepGraph_Tool::Wire* self_) { delete self_; }
+
+// ========================
+// BRepGraph_Tool::Shell wrappers
+// ========================
+
+extern "C" OcctResult<BRepGraph_Tool::Shell*> BRepGraph_Tool_Shell_ctor() {
+    try { return {new BRepGraph_Tool::Shell(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<BRepGraph_Tool::ShellUsage*> BRepGraph_Tool_Shell_usage(BRepGraph const* theGraph, BRepGraph_ShellRefId const* theShellRef) {
+    try { return {new BRepGraph_Tool::ShellUsage(BRepGraph_Tool::Shell::Usage(*theGraph, *theShellRef)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<bool> BRepGraph_Tool_Shell_is_closed_brepgraph_shellid(BRepGraph const* theGraph, BRepGraph_ShellId const* theShell) {
+    try { return {BRepGraph_Tool::Shell::IsClosed(*theGraph, *theShell), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<bool> BRepGraph_Tool_Shell_is_closed_brepgraph_shellrefid(BRepGraph const* theGraph, BRepGraph_ShellRefId const* theShellRef) {
+    try { return {BRepGraph_Tool::Shell::IsClosed(*theGraph, *theShellRef), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<uint32_t> BRepGraph_Tool_Shell_nb_faces_brepgraph_shellid(BRepGraph const* theGraph, BRepGraph_ShellId const* theShell) {
+    try { return {BRepGraph_Tool::Shell::NbFaces(*theGraph, *theShell), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<uint32_t> BRepGraph_Tool_Shell_nb_faces_brepgraph_shellrefid(BRepGraph const* theGraph, BRepGraph_ShellRefId const* theShellRef) {
+    try { return {BRepGraph_Tool::Shell::NbFaces(*theGraph, *theShellRef), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" void BRepGraph_Tool_Shell_destructor(BRepGraph_Tool::Shell* self_) { delete self_; }
+
+// ========================
+// BRepGraph::TopoView wrappers
+// ========================
+
+extern "C" OcctResult<BRepGraph::TopoView::FaceOps const*> TopoView_faces(const BRepGraph::TopoView* self_) {
+    try { return {&(self_->Faces()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<BRepGraph::TopoView::EdgeOps const*> TopoView_edges(const BRepGraph::TopoView* self_) {
+    try { return {&(self_->Edges()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<BRepGraph::TopoView::VertexOps const*> TopoView_vertices(const BRepGraph::TopoView* self_) {
+    try { return {&(self_->Vertices()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<BRepGraph::TopoView::WireOps const*> TopoView_wires(const BRepGraph::TopoView* self_) {
+    try { return {&(self_->Wires()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<BRepGraph::TopoView::ShellOps const*> TopoView_shells(const BRepGraph::TopoView* self_) {
+    try { return {&(self_->Shells()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<BRepGraph::TopoView::SolidOps const*> TopoView_solids(const BRepGraph::TopoView* self_) {
+    try { return {&(self_->Solids()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<BRepGraph::TopoView::CoEdgeOps const*> TopoView_co_edges(const BRepGraph::TopoView* self_) {
+    try { return {&(self_->CoEdges()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<BRepGraph::TopoView::CompoundOps const*> TopoView_compounds(const BRepGraph::TopoView* self_) {
+    try { return {&(self_->Compounds()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<BRepGraph::TopoView::CompSolidOps const*> TopoView_comp_solids(const BRepGraph::TopoView* self_) {
+    try { return {&(self_->CompSolids()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<BRepGraph::TopoView::ProductOps const*> TopoView_products(const BRepGraph::TopoView* self_) {
+    try { return {&(self_->Products()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<BRepGraph::TopoView::OccurrenceOps const*> TopoView_occurrences(const BRepGraph::TopoView* self_) {
+    try { return {&(self_->Occurrences()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<BRepGraph::TopoView::GenOps const*> TopoView_gen_(const BRepGraph::TopoView* self_) {
+    try { return {&(self_->Gen()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<BRepGraph::TopoView::GeometryOps const*> TopoView_geometry(const BRepGraph::TopoView* self_) {
+    try { return {&(self_->Geometry()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" void TopoView_destructor(BRepGraph::TopoView* self_) { delete self_; }
+
+// ========================
+// BRepGraph::TopoView::FaceOps wrappers
+// ========================
+
+extern "C" OcctResult<BRepGraph_FaceId*> TopoView_FaceOps_start_id(const BRepGraph::TopoView::FaceOps* self_) {
+    try { return {new BRepGraph_FaceId(self_->StartId()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<BRepGraph_FaceId*> TopoView_FaceOps_end_id(const BRepGraph::TopoView::FaceOps* self_) {
+    try { return {new BRepGraph_FaceId(self_->EndId()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Handle(Geom_Surface)*> TopoView_FaceOps_surface(const BRepGraph::TopoView::FaceOps* self_, BRepGraph_FaceId const* theFace) {
+    try { return {new Handle(Geom_Surface)(self_->Surface(*theFace)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Handle(Poly_Triangulation)*> TopoView_FaceOps_active_triangulation(const BRepGraph::TopoView::FaceOps* self_, BRepGraph_FaceId const* theFace) {
+    try { return {new Handle(Poly_Triangulation)(self_->ActiveTriangulation(*theFace)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<uint32_t> TopoView_FaceOps_nb(const BRepGraph::TopoView::FaceOps* self_) {
+    try { return {self_->Nb(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<uint32_t> TopoView_FaceOps_nb_active(const BRepGraph::TopoView::FaceOps* self_) {
+    try { return {self_->NbActive(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" void TopoView_FaceOps_destructor(BRepGraph::TopoView::FaceOps* self_) { delete self_; }
+
+// ========================
+// BRepGraph::TopoView::EdgeOps wrappers
+// ========================
+
+extern "C" OcctResult<BRepGraph_EdgeId*> TopoView_EdgeOps_start_id(const BRepGraph::TopoView::EdgeOps* self_) {
+    try { return {new BRepGraph_EdgeId(self_->StartId()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<BRepGraph_EdgeId*> TopoView_EdgeOps_end_id(const BRepGraph::TopoView::EdgeOps* self_) {
+    try { return {new BRepGraph_EdgeId(self_->EndId()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Handle(Geom_Curve)*> TopoView_EdgeOps_curve3_d(const BRepGraph::TopoView::EdgeOps* self_, BRepGraph_EdgeId const* theEdge) {
+    try { return {new Handle(Geom_Curve)(self_->Curve3D(*theEdge)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<uint32_t> TopoView_EdgeOps_nb(const BRepGraph::TopoView::EdgeOps* self_) {
+    try { return {self_->Nb(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<uint32_t> TopoView_EdgeOps_nb_active(const BRepGraph::TopoView::EdgeOps* self_) {
+    try { return {self_->NbActive(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<uint32_t> TopoView_EdgeOps_nb_faces(const BRepGraph::TopoView::EdgeOps* self_, BRepGraph_EdgeId const* theEdge) {
+    try { return {self_->NbFaces(*theEdge), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<NCollection_LinearVector_BRepGraph_CoEdgeId const*> TopoView_EdgeOps_co_edges(const BRepGraph::TopoView::EdgeOps* self_, BRepGraph_EdgeId const* theEdge) {
+    try { return {&(self_->CoEdges(*theEdge)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" void TopoView_EdgeOps_destructor(BRepGraph::TopoView::EdgeOps* self_) { delete self_; }
+
+// ========================
+// BRepGraph::TopoView::VertexOps wrappers
+// ========================
+
+extern "C" OcctResult<BRepGraph_VertexId*> TopoView_VertexOps_start_id(const BRepGraph::TopoView::VertexOps* self_) {
+    try { return {new BRepGraph_VertexId(self_->StartId()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<BRepGraph_VertexId*> TopoView_VertexOps_end_id(const BRepGraph::TopoView::VertexOps* self_) {
+    try { return {new BRepGraph_VertexId(self_->EndId()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<uint32_t> TopoView_VertexOps_nb(const BRepGraph::TopoView::VertexOps* self_) {
+    try { return {self_->Nb(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<uint32_t> TopoView_VertexOps_nb_active(const BRepGraph::TopoView::VertexOps* self_) {
+    try { return {self_->NbActive(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<NCollection_LinearVector_BRepGraph_EdgeId const*> TopoView_VertexOps_edges(const BRepGraph::TopoView::VertexOps* self_, BRepGraph_VertexId const* theVertex) {
+    try { return {&(self_->Edges(*theVertex)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" void TopoView_VertexOps_destructor(BRepGraph::TopoView::VertexOps* self_) { delete self_; }
+
+// ========================
+// BRepGraph::TopoView::WireOps wrappers
+// ========================
+
+extern "C" OcctResult<BRepGraph_WireId*> TopoView_WireOps_start_id(const BRepGraph::TopoView::WireOps* self_) {
+    try { return {new BRepGraph_WireId(self_->StartId()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<BRepGraph_WireId*> TopoView_WireOps_end_id(const BRepGraph::TopoView::WireOps* self_) {
+    try { return {new BRepGraph_WireId(self_->EndId()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<uint32_t> TopoView_WireOps_nb(const BRepGraph::TopoView::WireOps* self_) {
+    try { return {self_->Nb(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<uint32_t> TopoView_WireOps_nb_active(const BRepGraph::TopoView::WireOps* self_) {
+    try { return {self_->NbActive(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" void TopoView_WireOps_destructor(BRepGraph::TopoView::WireOps* self_) { delete self_; }
+
+// ========================
+// BRepGraph::TopoView::ShellOps wrappers
+// ========================
+
+extern "C" OcctResult<BRepGraph_ShellId*> TopoView_ShellOps_start_id(const BRepGraph::TopoView::ShellOps* self_) {
+    try { return {new BRepGraph_ShellId(self_->StartId()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<BRepGraph_ShellId*> TopoView_ShellOps_end_id(const BRepGraph::TopoView::ShellOps* self_) {
+    try { return {new BRepGraph_ShellId(self_->EndId()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<uint32_t> TopoView_ShellOps_nb(const BRepGraph::TopoView::ShellOps* self_) {
+    try { return {self_->Nb(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<uint32_t> TopoView_ShellOps_nb_active(const BRepGraph::TopoView::ShellOps* self_) {
+    try { return {self_->NbActive(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" void TopoView_ShellOps_destructor(BRepGraph::TopoView::ShellOps* self_) { delete self_; }
+
+// ========================
+// BRepGraph::TopoView::SolidOps wrappers
+// ========================
+
+extern "C" OcctResult<BRepGraph_SolidId*> TopoView_SolidOps_start_id(const BRepGraph::TopoView::SolidOps* self_) {
+    try { return {new BRepGraph_SolidId(self_->StartId()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<BRepGraph_SolidId*> TopoView_SolidOps_end_id(const BRepGraph::TopoView::SolidOps* self_) {
+    try { return {new BRepGraph_SolidId(self_->EndId()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<uint32_t> TopoView_SolidOps_nb(const BRepGraph::TopoView::SolidOps* self_) {
+    try { return {self_->Nb(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<uint32_t> TopoView_SolidOps_nb_active(const BRepGraph::TopoView::SolidOps* self_) {
+    try { return {self_->NbActive(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" void TopoView_SolidOps_destructor(BRepGraph::TopoView::SolidOps* self_) { delete self_; }
+
+// ========================
+// BRepGraph::TopoView::CoEdgeOps wrappers
+// ========================
+
+extern "C" OcctResult<BRepGraph_CoEdgeId*> TopoView_CoEdgeOps_start_id(const BRepGraph::TopoView::CoEdgeOps* self_) {
+    try { return {new BRepGraph_CoEdgeId(self_->StartId()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<BRepGraph_CoEdgeId*> TopoView_CoEdgeOps_end_id(const BRepGraph::TopoView::CoEdgeOps* self_) {
+    try { return {new BRepGraph_CoEdgeId(self_->EndId()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<BRepGraph_EdgeId*> TopoView_CoEdgeOps_edge(const BRepGraph::TopoView::CoEdgeOps* self_, BRepGraph_CoEdgeId const* theCoEdge) {
+    try { return {new BRepGraph_EdgeId(self_->Edge(*theCoEdge)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<BRepGraph_FaceId*> TopoView_CoEdgeOps_face(const BRepGraph::TopoView::CoEdgeOps* self_, BRepGraph_CoEdgeId const* theCoEdge) {
+    try { return {new BRepGraph_FaceId(self_->Face(*theCoEdge)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<BRepGraph_WireId*> TopoView_CoEdgeOps_wire(const BRepGraph::TopoView::CoEdgeOps* self_, BRepGraph_CoEdgeId const* theCoEdge) {
+    try { return {new BRepGraph_WireId(self_->Wire(*theCoEdge)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Handle(Geom2d_Curve)*> TopoView_CoEdgeOps_curve2_d(const BRepGraph::TopoView::CoEdgeOps* self_, BRepGraph_CoEdgeId const* theCoEdge) {
+    try { return {new Handle(Geom2d_Curve)(self_->Curve2D(*theCoEdge)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<uint32_t> TopoView_CoEdgeOps_nb(const BRepGraph::TopoView::CoEdgeOps* self_) {
+    try { return {self_->Nb(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<uint32_t> TopoView_CoEdgeOps_nb_active(const BRepGraph::TopoView::CoEdgeOps* self_) {
+    try { return {self_->NbActive(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" void TopoView_CoEdgeOps_destructor(BRepGraph::TopoView::CoEdgeOps* self_) { delete self_; }
+
+// ========================
+// BRepGraph::TopoView::CompoundOps wrappers
+// ========================
+
+extern "C" OcctResult<BRepGraph_CompoundId*> TopoView_CompoundOps_start_id(const BRepGraph::TopoView::CompoundOps* self_) {
+    try { return {new BRepGraph_CompoundId(self_->StartId()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<BRepGraph_CompoundId*> TopoView_CompoundOps_end_id(const BRepGraph::TopoView::CompoundOps* self_) {
+    try { return {new BRepGraph_CompoundId(self_->EndId()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<uint32_t> TopoView_CompoundOps_nb(const BRepGraph::TopoView::CompoundOps* self_) {
+    try { return {self_->Nb(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<uint32_t> TopoView_CompoundOps_nb_active(const BRepGraph::TopoView::CompoundOps* self_) {
+    try { return {self_->NbActive(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" void TopoView_CompoundOps_destructor(BRepGraph::TopoView::CompoundOps* self_) { delete self_; }
+
+// ========================
+// BRepGraph::TopoView::CompSolidOps wrappers
+// ========================
+
+extern "C" OcctResult<BRepGraph_CompSolidId*> TopoView_CompSolidOps_start_id(const BRepGraph::TopoView::CompSolidOps* self_) {
+    try { return {new BRepGraph_CompSolidId(self_->StartId()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<BRepGraph_CompSolidId*> TopoView_CompSolidOps_end_id(const BRepGraph::TopoView::CompSolidOps* self_) {
+    try { return {new BRepGraph_CompSolidId(self_->EndId()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<uint32_t> TopoView_CompSolidOps_nb(const BRepGraph::TopoView::CompSolidOps* self_) {
+    try { return {self_->Nb(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<uint32_t> TopoView_CompSolidOps_nb_active(const BRepGraph::TopoView::CompSolidOps* self_) {
+    try { return {self_->NbActive(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" void TopoView_CompSolidOps_destructor(BRepGraph::TopoView::CompSolidOps* self_) { delete self_; }
+
+// ========================
+// BRepGraph::TopoView::ProductOps wrappers
+// ========================
+
+extern "C" OcctResult<BRepGraph_ProductId*> TopoView_ProductOps_start_id(const BRepGraph::TopoView::ProductOps* self_) {
+    try { return {new BRepGraph_ProductId(self_->StartId()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<BRepGraph_ProductId*> TopoView_ProductOps_end_id(const BRepGraph::TopoView::ProductOps* self_) {
+    try { return {new BRepGraph_ProductId(self_->EndId()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<BRepGraph_NodeId*> TopoView_ProductOps_shape_root(const BRepGraph::TopoView::ProductOps* self_, BRepGraph_ProductId const* theProduct) {
+    try { return {new BRepGraph_NodeId(self_->ShapeRoot(*theProduct)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<BRepGraph_NodeId*> TopoView_ProductOps_shape_root_node(const BRepGraph::TopoView::ProductOps* self_, BRepGraph_ProductId const* theProduct) {
+    try { return {new BRepGraph_NodeId(self_->ShapeRootNode(*theProduct)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<BRepGraph_OccurrenceId*> TopoView_ProductOps_component(const BRepGraph::TopoView::ProductOps* self_, BRepGraph_ProductId const* theProduct, int32_t theComponentIdx) {
+    try { return {new BRepGraph_OccurrenceId(self_->Component(*theProduct, theComponentIdx)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<uint32_t> TopoView_ProductOps_nb(const BRepGraph::TopoView::ProductOps* self_) {
+    try { return {self_->Nb(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<uint32_t> TopoView_ProductOps_nb_active(const BRepGraph::TopoView::ProductOps* self_) {
+    try { return {self_->NbActive(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<bool> TopoView_ProductOps_is_assembly(const BRepGraph::TopoView::ProductOps* self_, BRepGraph_ProductId const* theProduct) {
+    try { return {self_->IsAssembly(*theProduct), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<bool> TopoView_ProductOps_is_part(const BRepGraph::TopoView::ProductOps* self_, BRepGraph_ProductId const* theProduct) {
+    try { return {self_->IsPart(*theProduct), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<uint32_t> TopoView_ProductOps_nb_components(const BRepGraph::TopoView::ProductOps* self_, BRepGraph_ProductId const* theProduct) {
+    try { return {self_->NbComponents(*theProduct), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" void TopoView_ProductOps_destructor(BRepGraph::TopoView::ProductOps* self_) { delete self_; }
+
+// ========================
+// BRepGraph::TopoView::OccurrenceOps wrappers
+// ========================
+
+extern "C" OcctResult<BRepGraph_OccurrenceId*> TopoView_OccurrenceOps_start_id(const BRepGraph::TopoView::OccurrenceOps* self_) {
+    try { return {new BRepGraph_OccurrenceId(self_->StartId()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<BRepGraph_OccurrenceId*> TopoView_OccurrenceOps_end_id(const BRepGraph::TopoView::OccurrenceOps* self_) {
+    try { return {new BRepGraph_OccurrenceId(self_->EndId()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<BRepGraph_ProductId*> TopoView_OccurrenceOps_product(const BRepGraph::TopoView::OccurrenceOps* self_, BRepGraph_OccurrenceId const* theOccurrence) {
+    try { return {new BRepGraph_ProductId(self_->Product(*theOccurrence)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<BRepGraph_ProductId*> TopoView_OccurrenceOps_parent_product(const BRepGraph::TopoView::OccurrenceOps* self_, BRepGraph_OccurrenceId const* theOccurrence) {
+    try { return {new BRepGraph_ProductId(self_->ParentProduct(*theOccurrence)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<TopLoc_Location*> TopoView_OccurrenceOps_occurrence_location(const BRepGraph::TopoView::OccurrenceOps* self_, BRepGraph_OccurrenceId const* theOccurrence) {
+    try { return {new TopLoc_Location(self_->OccurrenceLocation(*theOccurrence)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<uint32_t> TopoView_OccurrenceOps_nb(const BRepGraph::TopoView::OccurrenceOps* self_) {
+    try { return {self_->Nb(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<uint32_t> TopoView_OccurrenceOps_nb_active(const BRepGraph::TopoView::OccurrenceOps* self_) {
+    try { return {self_->NbActive(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" void TopoView_OccurrenceOps_destructor(BRepGraph::TopoView::OccurrenceOps* self_) { delete self_; }
+
+// ========================
+// BRepGraph::TopoView::GenOps wrappers
+// ========================
+
+extern "C" OcctResult<NCollection_LinearVector_BRepGraph_ChildRefId const*> TopoView_GenOps_compound_ref_ids(const BRepGraph::TopoView::GenOps* self_, BRepGraph_NodeId const* theChild) {
+    try { return {&(self_->CompoundRefIds(*theChild)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<NCollection_LinearVector_BRepGraph_OccurrenceRefId const*> TopoView_GenOps_occurrence_ref_ids(const BRepGraph::TopoView::GenOps* self_, BRepGraph_NodeId const* theChild) {
+    try { return {&(self_->OccurrenceRefIds(*theChild)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<bool> TopoView_GenOps_has_compound_parents(const BRepGraph::TopoView::GenOps* self_, BRepGraph_NodeId const* theNode) {
+    try { return {self_->HasCompoundParents(*theNode), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<bool> TopoView_GenOps_has_occurrence_parents(const BRepGraph::TopoView::GenOps* self_, BRepGraph_NodeId const* theNode) {
+    try { return {self_->HasOccurrenceParents(*theNode), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<uint32_t> TopoView_GenOps_nb_nodes(const BRepGraph::TopoView::GenOps* self_) {
+    try { return {self_->NbNodes(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<uint32_t> TopoView_GenOps_nb(const BRepGraph::TopoView::GenOps* self_, BRepGraph_NodeId::Kind const* theKind) {
+    try { return {self_->Nb(*theKind), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<bool> TopoView_GenOps_is_valid(const BRepGraph::TopoView::GenOps* self_, BRepGraph_NodeId const* theNode) {
+    try { return {self_->IsValid(*theNode), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<bool> TopoView_GenOps_is_active(const BRepGraph::TopoView::GenOps* self_, BRepGraph_NodeId const* theNode) {
+    try { return {self_->IsActive(*theNode), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<bool> TopoView_GenOps_is_removed(const BRepGraph::TopoView::GenOps* self_, BRepGraph_NodeId const* theNode) {
+    try { return {self_->IsRemoved(*theNode), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" void TopoView_GenOps_destructor(BRepGraph::TopoView::GenOps* self_) { delete self_; }
+
+// ========================
+// BRepGraph::TopoView::GeometryOps wrappers
+// ========================
+
+extern "C" OcctResult<uint32_t> TopoView_GeometryOps_nb_face_surfaces(const BRepGraph::TopoView::GeometryOps* self_) {
+    try { return {self_->NbFaceSurfaces(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<uint32_t> TopoView_GeometryOps_nb_edge_curves3_d(const BRepGraph::TopoView::GeometryOps* self_) {
+    try { return {self_->NbEdgeCurves3D(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<uint32_t> TopoView_GeometryOps_nb_co_edge_curves2_d(const BRepGraph::TopoView::GeometryOps* self_) {
+    try { return {self_->NbCoEdgeCurves2D(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<uint32_t> TopoView_GeometryOps_nb_active_face_surfaces(const BRepGraph::TopoView::GeometryOps* self_) {
+    try { return {self_->NbActiveFaceSurfaces(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<uint32_t> TopoView_GeometryOps_nb_active_edge_curves3_d(const BRepGraph::TopoView::GeometryOps* self_) {
+    try { return {self_->NbActiveEdgeCurves3D(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<uint32_t> TopoView_GeometryOps_nb_active_co_edge_curves2_d(const BRepGraph::TopoView::GeometryOps* self_) {
+    try { return {self_->NbActiveCoEdgeCurves2D(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" void TopoView_GeometryOps_destructor(BRepGraph::TopoView::GeometryOps* self_) { delete self_; }
+
+// ========================
+// BRepGraph_Transform wrappers
+// ========================
+
+
+// ========================
+// BRepGraph_UID wrappers
+// ========================
+
+extern "C" OcctResult<BRepGraph_UID*> BRepGraph_UID_ctor() {
+    try { return {new BRepGraph_UID(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<BRepGraph_UID*> BRepGraph_UID_ctor_kind_uint(BRepGraph_NodeId::Kind const* theKind, uint32_t theCounter) {
+    try { return {new BRepGraph_UID(*theKind, theCounter), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<bool> BRepGraph_UID_is_valid(const BRepGraph_UID* self_) {
+    try { return {self_->IsValid(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<bool> BRepGraph_UID_is_topology(const BRepGraph_UID* self_) {
+    try { return {self_->IsTopology(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<bool> BRepGraph_UID_is_assembly(const BRepGraph_UID* self_) {
+    try { return {self_->IsAssembly(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<size_t> BRepGraph_UID_hash_value(const BRepGraph_UID* self_) {
+    try { return {self_->HashValue(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<BRepGraph_UID*> BRepGraph_UID_invalid() {
+    try { return {new BRepGraph_UID(BRepGraph_UID::Invalid()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" void BRepGraph_UID_destructor(BRepGraph_UID* self_) { delete self_; }
+
+// ========================
+// BRepGraph::UIDsView wrappers
+// ========================
+
+extern "C" OcctResult<BRepGraph_UID*> UIDsView_of_nodeid(const BRepGraph::UIDsView* self_, BRepGraph_NodeId const* theNode) {
+    try { return {new BRepGraph_UID(self_->Of(*theNode)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<BRepGraph_RefUID*> UIDsView_of_refid(const BRepGraph::UIDsView* self_, BRepGraph_RefId const* theRefId) {
+    try { return {new BRepGraph_RefUID(self_->Of(*theRefId)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<BRepGraph_ItemUID*> UIDsView_of_itemid(const BRepGraph::UIDsView* self_, BRepGraph_ItemId const* theItem) {
+    try { return {new BRepGraph_ItemUID(self_->Of(*theItem)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<BRepGraph_NodeId*> UIDsView_node_id_from(const BRepGraph::UIDsView* self_, BRepGraph_UID const* theUID) {
+    try { return {new BRepGraph_NodeId(self_->NodeIdFrom(*theUID)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<BRepGraph_RefId*> UIDsView_ref_id_from(const BRepGraph::UIDsView* self_, BRepGraph_RefUID const* theUID) {
+    try { return {new BRepGraph_RefId(self_->RefIdFrom(*theUID)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<BRepGraph_ItemId*> UIDsView_item_id_from(const BRepGraph::UIDsView* self_, BRepGraph_ItemUID const* theUID) {
+    try { return {new BRepGraph_ItemId(self_->ItemIdFrom(*theUID)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<BRepGraph_VersionStamp*> UIDsView_stamp_of_nodeid(const BRepGraph::UIDsView* self_, BRepGraph_NodeId const* theNode) {
+    try { return {new BRepGraph_VersionStamp(self_->StampOf(*theNode)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<BRepGraph_VersionStamp*> UIDsView_stamp_of_refid(const BRepGraph::UIDsView* self_, BRepGraph_RefId const* theRefId) {
+    try { return {new BRepGraph_VersionStamp(self_->StampOf(*theRefId)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<BRepGraph_VersionStamp*> UIDsView_stamp_of_repid(const BRepGraph::UIDsView* self_, BRepGraph_RepId const* theRepId) {
+    try { return {new BRepGraph_VersionStamp(self_->StampOf(*theRepId)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<BRepGraph_VersionStamp*> UIDsView_stamp_of_itemid(const BRepGraph::UIDsView* self_, BRepGraph_ItemId const* theItem) {
+    try { return {new BRepGraph_VersionStamp(self_->StampOf(*theItem)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<bool> UIDsView_has_uid(const BRepGraph::UIDsView* self_, BRepGraph_UID const* theUID) {
+    try { return {self_->Has(*theUID), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<bool> UIDsView_has_refuid(const BRepGraph::UIDsView* self_, BRepGraph_RefUID const* theUID) {
+    try { return {self_->Has(*theUID), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<bool> UIDsView_has_itemuid(const BRepGraph::UIDsView* self_, BRepGraph_ItemUID const* theUID) {
+    try { return {self_->Has(*theUID), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<uint32_t> UIDsView_generation(const BRepGraph::UIDsView* self_) {
+    try { return {self_->Generation(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Standard_GUID const*> UIDsView_graph_guid(const BRepGraph::UIDsView* self_) {
+    try { return {&(self_->GraphGUID()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<bool> UIDsView_is_stale(const BRepGraph::UIDsView* self_, BRepGraph_VersionStamp const* theStamp) {
+    try { return {self_->IsStale(*theStamp), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" void UIDsView_destructor(BRepGraph::UIDsView* self_) { delete self_; }
+
+// ========================
+// BRepGraph_UsagePath wrappers
+// ========================
+
+extern "C" OcctResult<BRepGraph_UsagePath*> BRepGraph_UsagePath_ctor() {
+    try { return {new BRepGraph_UsagePath(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<BRepGraph_UsagePath*> BRepGraph_UsagePath_ctor_size(size_t theCapacity) {
+    try { return {new BRepGraph_UsagePath(theCapacity), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<size_t> BRepGraph_UsagePath_size(const BRepGraph_UsagePath* self_) {
+    try { return {self_->Size(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<bool> BRepGraph_UsagePath_is_empty(const BRepGraph_UsagePath* self_) {
+    try { return {self_->IsEmpty(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<BRepGraph_UsagePath::Step const*> BRepGraph_UsagePath_value(const BRepGraph_UsagePath* self_, size_t theIdx) {
+    try { return {&(self_->Value(theIdx)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<BRepGraph_UsagePath::Step const*> BRepGraph_UsagePath_first(const BRepGraph_UsagePath* self_) {
+    try { return {&(self_->First()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<BRepGraph_UsagePath::Step const*> BRepGraph_UsagePath_last(const BRepGraph_UsagePath* self_) {
+    try { return {&(self_->Last()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" const char* BRepGraph_UsagePath_append(BRepGraph_UsagePath* self_, BRepGraph_UsagePath::Step const* theStep) {
+    try { self_->Append(*theStep); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<bool> BRepLProp_SLProps_is_tangent_v_defined(BRepLProp_SLProps* self_) {
-    try { return {self_->IsTangentVDefined(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* BRepLProp_SLProps_tangent_v(BRepLProp_SLProps* self_, gp_Dir* D) {
-    try { self_->TangentV(*D); return nullptr; }
+extern "C" const char* BRepGraph_UsagePath_insert_before(BRepGraph_UsagePath* self_, size_t theIdx, BRepGraph_UsagePath::Step const* theStep) {
+    try { self_->InsertBefore(theIdx, *theStep); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<bool> BRepLProp_SLProps_is_normal_defined(BRepLProp_SLProps* self_) {
-    try { return {self_->IsNormalDefined(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<gp_Dir const*> BRepLProp_SLProps_normal(BRepLProp_SLProps* self_) {
-    try { return {&(self_->Normal()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<bool> BRepLProp_SLProps_is_curvature_defined(BRepLProp_SLProps* self_) {
-    try { return {self_->IsCurvatureDefined(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<bool> BRepLProp_SLProps_is_umbilic(BRepLProp_SLProps* self_) {
-    try { return {self_->IsUmbilic(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<double> BRepLProp_SLProps_max_curvature(BRepLProp_SLProps* self_) {
-    try { return {self_->MaxCurvature(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<double> BRepLProp_SLProps_min_curvature(BRepLProp_SLProps* self_) {
-    try { return {self_->MinCurvature(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* BRepLProp_SLProps_curvature_directions(BRepLProp_SLProps* self_, gp_Dir* MaxD, gp_Dir* MinD) {
-    try { self_->CurvatureDirections(*MaxD, *MinD); return nullptr; }
+extern "C" const char* BRepGraph_UsagePath_clear(BRepGraph_UsagePath* self_) {
+    try { self_->Clear(); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<double> BRepLProp_SLProps_mean_curvature(BRepLProp_SLProps* self_) {
-    try { return {self_->MeanCurvature(), nullptr}; }
+extern "C" OcctResult<bool> BRepGraph_UsagePath_is_equal(const BRepGraph_UsagePath* self_, BRepGraph_UsagePath const* theOther) {
+    try { return {self_->IsEqual(*theOther), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<double> BRepLProp_SLProps_gaussian_curvature(BRepLProp_SLProps* self_) {
-    try { return {self_->GaussianCurvature(), nullptr}; }
+extern "C" OcctResult<size_t> BRepGraph_UsagePath_hash_code(const BRepGraph_UsagePath* self_) {
+    try { return {self_->HashCode(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" void BRepLProp_SLProps_destructor(BRepLProp_SLProps* self_) { delete self_; }
+extern "C" void BRepGraph_UsagePath_destructor(BRepGraph_UsagePath* self_) { delete self_; }
+
+// ========================
+// BRepGraph_UsagePath::Step wrappers
+// ========================
+
+extern "C" OcctResult<BRepGraph_UsagePath::Step*> BRepGraph_UsagePath_Step_ctor() {
+    try { return {new BRepGraph_UsagePath::Step(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" void BRepGraph_UsagePath_Step_destructor(BRepGraph_UsagePath::Step* self_) { delete self_; }
+
+// ========================
+// BRepGraph_Validate wrappers
+// ========================
+
+
+// ========================
+// BRepGraph_Validate::Issue wrappers
+// ========================
+
+extern "C" OcctResult<BRepGraph_Validate::Issue*> BRepGraph_Validate_Issue_ctor() {
+    try { return {new BRepGraph_Validate::Issue(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" void BRepGraph_Validate_Issue_destructor(BRepGraph_Validate::Issue* self_) { delete self_; }
+
+// ========================
+// BRepGraph_Validate::Result wrappers
+// ========================
+
+extern "C" OcctResult<BRepGraph_Validate::Result*> BRepGraph_Validate_Result_ctor() {
+    try { return {new BRepGraph_Validate::Result(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<bool> BRepGraph_Validate_Result_is_valid(const BRepGraph_Validate::Result* self_) {
+    try { return {self_->IsValid(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<int32_t> BRepGraph_Validate_Result_nb_issues(const BRepGraph_Validate::Result* self_, BRepGraph_Validate::Severity const* theSev) {
+    try { return {self_->NbIssues(*theSev), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" void BRepGraph_Validate_Result_destructor(BRepGraph_Validate::Result* self_) { delete self_; }
+
+// ========================
+// BRepGraph_Validate::Options wrappers
+// ========================
+
+extern "C" OcctResult<BRepGraph_Validate::Options*> BRepGraph_Validate_Options_ctor() {
+    try { return {new BRepGraph_Validate::Options(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<BRepGraph_Validate::Options*> BRepGraph_Validate_Options_lightweight() {
+    try { return {new BRepGraph_Validate::Options(BRepGraph_Validate::Options::Lightweight()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<BRepGraph_Validate::Options*> BRepGraph_Validate_Options_audit() {
+    try { return {new BRepGraph_Validate::Options(BRepGraph_Validate::Options::Audit()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" void BRepGraph_Validate_Options_destructor(BRepGraph_Validate::Options* self_) { delete self_; }
+
+// ========================
+// BRepGraph_VersionStamp wrappers
+// ========================
+
+extern "C" OcctResult<BRepGraph_VersionStamp*> BRepGraph_VersionStamp_ctor() {
+    try { return {new BRepGraph_VersionStamp(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<BRepGraph_VersionStamp*> BRepGraph_VersionStamp_ctor_uid_uint2(BRepGraph_UID const* theUID, uint32_t theMutationGen, uint32_t theGeneration) {
+    try { return {new BRepGraph_VersionStamp(*theUID, theMutationGen, theGeneration), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<BRepGraph_VersionStamp*> BRepGraph_VersionStamp_ctor_refuid_uint2(BRepGraph_RefUID const* theRefUID, uint32_t theMutationGen, uint32_t theGeneration) {
+    try { return {new BRepGraph_VersionStamp(*theRefUID, theMutationGen, theGeneration), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<BRepGraph_ItemUID*> BRepGraph_VersionStamp_item_uid(const BRepGraph_VersionStamp* self_) {
+    try { return {new BRepGraph_ItemUID(self_->ItemUID()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Standard_GUID*> BRepGraph_VersionStamp_to_guid(const BRepGraph_VersionStamp* self_, Standard_GUID const* theGraphGUID) {
+    try { return {new Standard_GUID(self_->ToGUID(*theGraphGUID)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<bool> BRepGraph_VersionStamp_is_valid(const BRepGraph_VersionStamp* self_) {
+    try { return {self_->IsValid(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<bool> BRepGraph_VersionStamp_is_node_stamp(const BRepGraph_VersionStamp* self_) {
+    try { return {self_->IsNodeStamp(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<bool> BRepGraph_VersionStamp_is_ref_stamp(const BRepGraph_VersionStamp* self_) {
+    try { return {self_->IsRefStamp(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<bool> BRepGraph_VersionStamp_is_same_item(const BRepGraph_VersionStamp* self_, BRepGraph_VersionStamp const* theOther) {
+    try { return {self_->IsSameItem(*theOther), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<size_t> BRepGraph_VersionStamp_hash_value(const BRepGraph_VersionStamp* self_) {
+    try { return {self_->HashValue(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" void BRepGraph_VersionStamp_destructor(BRepGraph_VersionStamp* self_) { delete self_; }
+
+// ========================
+// BRepGraphInc_BitFlags wrappers
+// ========================
+
+
+// ========================
+// BRepGraphInc_Populate wrappers
+// ========================
+
+
+// ========================
+// BRepGraphInc_Reconstruct wrappers
+// ========================
+
+
+// ========================
+// BRepGraphInc_Reconstruct::Cache wrappers
+// ========================
+
+extern "C" OcctResult<BRepGraphInc_Reconstruct::Cache*> BRepGraphInc_Reconstruct_Cache_ctor() {
+    try { return {new BRepGraphInc_Reconstruct::Cache(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<TopoDS_Shape const*> BRepGraphInc_Reconstruct_Cache_seek(const BRepGraphInc_Reconstruct::Cache* self_, BRepGraph_NodeId const* theNode) {
+    try { return {self_->Seek(*theNode), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" const char* BRepGraphInc_Reconstruct_Cache_bind(BRepGraphInc_Reconstruct::Cache* self_, BRepGraph_NodeId const* theNode, TopoDS_Shape const* theShape) {
+    try { self_->Bind(*theNode, *theShape); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" OcctResult<bool> BRepGraphInc_Reconstruct_Cache_is_bound(const BRepGraphInc_Reconstruct::Cache* self_, BRepGraph_NodeId const* theNode) {
+    try { return {self_->IsBound(*theNode), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" void BRepGraphInc_Reconstruct_Cache_destructor(BRepGraphInc_Reconstruct::Cache* self_) { delete self_; }
+
+// ========================
+// BRepGraphInc_Reconstruct::Cache::TempScope wrappers
+// ========================
+
+extern "C" OcctResult<BRepGraphInc_Reconstruct::Cache::TempScope*> BRepGraphInc_Reconstruct_Cache_TempScope_ctor_cache(BRepGraphInc_Reconstruct::Cache* theCache) {
+    try { return {new BRepGraphInc_Reconstruct::Cache::TempScope(*theCache), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" void BRepGraphInc_Reconstruct_Cache_TempScope_destructor(BRepGraphInc_Reconstruct::Cache::TempScope* self_) { delete self_; }
+
+// ========================
+// BRepGraph_RepId wrappers
+// ========================
+
+extern "C" OcctResult<BRepGraph_RepId*> BRepGraph_RepId_ctor() {
+    try { return {new BRepGraph_RepId(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<BRepGraph_RepId*> BRepGraph_RepId_ctor_kind_uint(BRepGraph_RepId::Kind const* theKind, uint32_t theIdx) {
+    try { return {new BRepGraph_RepId(*theKind, theIdx), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<bool> BRepGraph_RepId_is_valid(const BRepGraph_RepId* self_) {
+    try { return {self_->IsValid(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<bool> BRepGraph_RepId_is_valid_uint(const BRepGraph_RepId* self_, uint32_t theMaxCount) {
+    try { return {self_->IsValid(theMaxCount), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<bool> BRepGraph_RepId_is_removed(const BRepGraph_RepId* self_, BRepGraph const* theGraph) {
+    try { return {self_->IsRemoved(*theGraph), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<bool> BRepGraph_RepId_is_valid_kind(BRepGraph_RepId::Kind const* theKind) {
+    try { return {BRepGraph_RepId::IsValidKind(*theKind), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" void BRepGraph_RepId_destructor(BRepGraph_RepId* self_) { delete self_; }
+
+// ========================
+// BRepGraphInc_Storage wrappers
+// ========================
+
+extern "C" OcctResult<BRepGraphInc_Storage*> BRepGraphInc_Storage_ctor() {
+    try { return {new BRepGraphInc_Storage(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<BRepGraph_UID*> BRepGraphInc_Storage_allocate_node_uid(BRepGraphInc_Storage* self_, BRepGraph_NodeId const* theNodeId) {
+    try { return {new BRepGraph_UID(self_->AllocateNodeUID(*theNodeId)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<BRepGraph_RefUID*> BRepGraphInc_Storage_allocate_ref_uid(BRepGraphInc_Storage* self_, BRepGraph_RefId const* theRefId) {
+    try { return {new BRepGraph_RefUID(self_->AllocateRefUID(*theRefId)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<BRepGraph_EdgeCurve3DRepId*> BRepGraphInc_Storage_append_edge_curve3_d_rep(BRepGraphInc_Storage* self_) {
+    try { return {new BRepGraph_EdgeCurve3DRepId(self_->AppendEdgeCurve3DRep()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<BRepGraph_EdgePolygon3DRepId*> BRepGraphInc_Storage_append_edge_polygon3_d_rep(BRepGraphInc_Storage* self_) {
+    try { return {new BRepGraph_EdgePolygon3DRepId(self_->AppendEdgePolygon3DRep()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<BRepGraph_CoEdgeCurve2DRepId*> BRepGraphInc_Storage_append_co_edge_curve2_d_rep(BRepGraphInc_Storage* self_) {
+    try { return {new BRepGraph_CoEdgeCurve2DRepId(self_->AppendCoEdgeCurve2DRep()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<BRepGraph_CoEdgePolygon2DRepId*> BRepGraphInc_Storage_append_co_edge_polygon2_d_rep(BRepGraphInc_Storage* self_) {
+    try { return {new BRepGraph_CoEdgePolygon2DRepId(self_->AppendCoEdgePolygon2DRep()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<BRepGraph_CoEdgePolygonOnTriRepId*> BRepGraphInc_Storage_append_co_edge_polygon_on_tri_rep(BRepGraphInc_Storage* self_) {
+    try { return {new BRepGraph_CoEdgePolygonOnTriRepId(self_->AppendCoEdgePolygonOnTriRep()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<BRepGraph_FaceSurfaceRepId*> BRepGraphInc_Storage_append_face_surface_rep(BRepGraphInc_Storage* self_) {
+    try { return {new BRepGraph_FaceSurfaceRepId(self_->AppendFaceSurfaceRep()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<BRepGraph_FaceTriangulationRepId*> BRepGraphInc_Storage_append_face_triangulation_rep(BRepGraphInc_Storage* self_) {
+    try { return {new BRepGraph_FaceTriangulationRepId(self_->AppendFaceTriangulationRep()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<BRepGraph_VertexId*> BRepGraphInc_Storage_append_vertex(BRepGraphInc_Storage* self_) {
+    try { return {new BRepGraph_VertexId(self_->AppendVertex()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<BRepGraph_EdgeId*> BRepGraphInc_Storage_append_edge(BRepGraphInc_Storage* self_) {
+    try { return {new BRepGraph_EdgeId(self_->AppendEdge()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<BRepGraph_CoEdgeId*> BRepGraphInc_Storage_append_co_edge(BRepGraphInc_Storage* self_) {
+    try { return {new BRepGraph_CoEdgeId(self_->AppendCoEdge()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<BRepGraph_WireId*> BRepGraphInc_Storage_append_wire(BRepGraphInc_Storage* self_) {
+    try { return {new BRepGraph_WireId(self_->AppendWire()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<BRepGraph_FaceId*> BRepGraphInc_Storage_append_face(BRepGraphInc_Storage* self_) {
+    try { return {new BRepGraph_FaceId(self_->AppendFace()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<BRepGraph_ShellId*> BRepGraphInc_Storage_append_shell(BRepGraphInc_Storage* self_) {
+    try { return {new BRepGraph_ShellId(self_->AppendShell()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<BRepGraph_SolidId*> BRepGraphInc_Storage_append_solid(BRepGraphInc_Storage* self_) {
+    try { return {new BRepGraph_SolidId(self_->AppendSolid()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<BRepGraph_CompoundId*> BRepGraphInc_Storage_append_compound(BRepGraphInc_Storage* self_) {
+    try { return {new BRepGraph_CompoundId(self_->AppendCompound()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<BRepGraph_CompSolidId*> BRepGraphInc_Storage_append_comp_solid(BRepGraphInc_Storage* self_) {
+    try { return {new BRepGraph_CompSolidId(self_->AppendCompSolid()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<BRepGraph_ProductId*> BRepGraphInc_Storage_append_product(BRepGraphInc_Storage* self_) {
+    try { return {new BRepGraph_ProductId(self_->AppendProduct()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<BRepGraph_OccurrenceId*> BRepGraphInc_Storage_append_occurrence(BRepGraphInc_Storage* self_) {
+    try { return {new BRepGraph_OccurrenceId(self_->AppendOccurrence()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<BRepGraph_ShellRefId*> BRepGraphInc_Storage_append_shell_ref(BRepGraphInc_Storage* self_) {
+    try { return {new BRepGraph_ShellRefId(self_->AppendShellRef()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<BRepGraph_FaceRefId*> BRepGraphInc_Storage_append_face_ref(BRepGraphInc_Storage* self_) {
+    try { return {new BRepGraph_FaceRefId(self_->AppendFaceRef()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<BRepGraph_WireRefId*> BRepGraphInc_Storage_append_wire_ref(BRepGraphInc_Storage* self_) {
+    try { return {new BRepGraph_WireRefId(self_->AppendWireRef()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<BRepGraph_VertexRefId*> BRepGraphInc_Storage_append_vertex_ref(BRepGraphInc_Storage* self_) {
+    try { return {new BRepGraph_VertexRefId(self_->AppendVertexRef()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<BRepGraph_SolidRefId*> BRepGraphInc_Storage_append_solid_ref(BRepGraphInc_Storage* self_) {
+    try { return {new BRepGraph_SolidRefId(self_->AppendSolidRef()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<BRepGraph_ChildRefId*> BRepGraphInc_Storage_append_child_ref(BRepGraphInc_Storage* self_) {
+    try { return {new BRepGraph_ChildRefId(self_->AppendChildRef()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<BRepGraph_OccurrenceRefId*> BRepGraphInc_Storage_append_occurrence_ref(BRepGraphInc_Storage* self_) {
+    try { return {new BRepGraph_OccurrenceRefId(self_->AppendOccurrenceRef()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<BRepGraph_OccurrenceRefId*> BRepGraphInc_Storage_attach_occurrence_to_product(BRepGraphInc_Storage* self_, BRepGraph_ProductId const* theParentProductId, BRepGraph_OccurrenceId const* theChildOccurrenceId, TopLoc_Location const* theLocation) {
+    try { return {new BRepGraph_OccurrenceRefId(self_->AttachOccurrenceToProduct(*theParentProductId, *theChildOccurrenceId, *theLocation)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<BRepGraph_NodeId*> BRepGraphInc_Storage_find_node_id_by_uid(const BRepGraphInc_Storage* self_, BRepGraph_UID const* theUID) {
+    try { return {new BRepGraph_NodeId(self_->FindNodeIdByUID(*theUID)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<BRepGraph_RefId*> BRepGraphInc_Storage_find_ref_id_by_uid(const BRepGraphInc_Storage* self_, BRepGraph_RefUID const* theUID) {
+    try { return {new BRepGraph_RefId(self_->FindRefIdByUID(*theUID)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<BRepGraph_NodeId*> BRepGraphInc_Storage_find_definition_by_shape(const BRepGraphInc_Storage* self_, TopoDS_Shape const* theShape) {
+    try { return {new BRepGraph_NodeId(self_->FindDefinitionByShape(*theShape)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<TopoDS_Shape*> BRepGraphInc_Storage_find_original(const BRepGraphInc_Storage* self_, BRepGraph_NodeId const* theNodeId) {
+    try { return {new TopoDS_Shape(self_->FindOriginal(*theNodeId)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<BRepGraphInc_Storage::WireCoEdgeOrderStatus*> BRepGraphInc_Storage_canonicalize_wire_co_edge_order_status(BRepGraphInc_Storage* self_, BRepGraph_WireId const* theWireId) {
+    try { return {new BRepGraphInc_Storage::WireCoEdgeOrderStatus(self_->CanonicalizeWireCoEdgeOrderStatus(*theWireId)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<TDF_HAllocator const*> BRepGraphInc_Storage_allocator(const BRepGraphInc_Storage* self_) {
+    try { return {&(self_->Allocator()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<NCollection_LinearVector_BRepGraph_ProductId const*> BRepGraphInc_Storage_root_product_ids(const BRepGraphInc_Storage* self_) {
+    try { return {&(self_->RootProductIds()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<NCollection_LinearVector_BRepGraph_ProductId*> BRepGraphInc_Storage_change_root_product_ids(BRepGraphInc_Storage* self_) {
+    try { return {&(self_->ChangeRootProductIds()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<NCollection_LinearVector_BRepGraph_NodeId const*> BRepGraphInc_Storage_deferred_modified(const BRepGraphInc_Storage* self_) {
+    try { return {&(self_->DeferredModified()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<NCollection_LinearVector_BRepGraph_NodeId*> BRepGraphInc_Storage_change_deferred_modified(BRepGraphInc_Storage* self_) {
+    try { return {&(self_->ChangeDeferredModified()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<NCollection_LinearVector_BRepGraph_RefId const*> BRepGraphInc_Storage_deferred_ref_modified(const BRepGraphInc_Storage* self_) {
+    try { return {&(self_->DeferredRefModified()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<NCollection_LinearVector_BRepGraph_RefId*> BRepGraphInc_Storage_change_deferred_ref_modified(BRepGraphInc_Storage* self_) {
+    try { return {&(self_->ChangeDeferredRefModified()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<bool> BRepGraphInc_Storage_is_empty(const BRepGraphInc_Storage* self_) {
+    try { return {self_->IsEmpty(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<uint32_t> BRepGraphInc_Storage_next_node_uid_counter(const BRepGraphInc_Storage* self_, BRepGraph_NodeId::Kind const* theKind) {
+    try { return {self_->NextNodeUIDCounter(*theKind), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" const char* BRepGraphInc_Storage_set_next_node_uid_counter(BRepGraphInc_Storage* self_, BRepGraph_NodeId::Kind const* theKind, uint32_t theCounter) {
+    try { self_->SetNextNodeUIDCounter(*theKind, theCounter); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" OcctResult<uint32_t> BRepGraphInc_Storage_next_ref_uid_counter(const BRepGraphInc_Storage* self_, BRepGraph_RefId::Kind const* theKind) {
+    try { return {self_->NextRefUIDCounter(*theKind), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" const char* BRepGraphInc_Storage_set_next_ref_uid_counter(BRepGraphInc_Storage* self_, BRepGraph_RefId::Kind const* theKind, uint32_t theCounter) {
+    try { self_->SetNextRefUIDCounter(*theKind, theCounter); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" OcctResult<uint32_t> BRepGraphInc_Storage_generation(const BRepGraphInc_Storage* self_) {
+    try { return {self_->Generation(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" const char* BRepGraphInc_Storage_set_generation(BRepGraphInc_Storage* self_, uint32_t theGeneration) {
+    try { self_->SetGeneration(theGeneration); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* BRepGraphInc_Storage_increment_generation(BRepGraphInc_Storage* self_) {
+    try { self_->IncrementGeneration(); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" OcctResult<Standard_GUID const*> BRepGraphInc_Storage_graph_guid(const BRepGraphInc_Storage* self_) {
+    try { return {&(self_->GraphGUID()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" const char* BRepGraphInc_Storage_set_graph_guid(BRepGraphInc_Storage* self_, Standard_GUID const* theGuid) {
+    try { self_->SetGraphGUID(*theGuid); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" OcctResult<bool> BRepGraphInc_Storage_deferred_mode(const BRepGraphInc_Storage* self_) {
+    try { return {self_->DeferredMode(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" const char* BRepGraphInc_Storage_set_deferred_mode(BRepGraphInc_Storage* self_, bool theEnabled) {
+    try { self_->SetDeferredMode(theEnabled); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" OcctResult<uint32_t> BRepGraphInc_Storage_propagation_wave(const BRepGraphInc_Storage* self_) {
+    try { return {self_->PropagationWave(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<uint32_t> BRepGraphInc_Storage_advance_propagation_wave(BRepGraphInc_Storage* self_) {
+    try { return {self_->AdvancePropagationWave(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" const char* BRepGraphInc_Storage_increment_propagation_wave(BRepGraphInc_Storage* self_) {
+    try { self_->IncrementPropagationWave(); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" OcctResult<uint32_t> BRepGraphInc_Storage_remove_subgraph_depth(const BRepGraphInc_Storage* self_) {
+    try { return {self_->RemoveSubgraphDepth(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" const char* BRepGraphInc_Storage_increment_remove_subgraph_depth(BRepGraphInc_Storage* self_) {
+    try { self_->IncrementRemoveSubgraphDepth(); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* BRepGraphInc_Storage_decrement_remove_subgraph_depth(BRepGraphInc_Storage* self_) {
+    try { self_->DecrementRemoveSubgraphDepth(); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" OcctResult<uint32_t> BRepGraphInc_Storage_nb_vertices(const BRepGraphInc_Storage* self_) {
+    try { return {self_->NbVertices(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<uint32_t> BRepGraphInc_Storage_nb_edges(const BRepGraphInc_Storage* self_) {
+    try { return {self_->NbEdges(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<uint32_t> BRepGraphInc_Storage_nb_co_edges(const BRepGraphInc_Storage* self_) {
+    try { return {self_->NbCoEdges(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<uint32_t> BRepGraphInc_Storage_nb_wires(const BRepGraphInc_Storage* self_) {
+    try { return {self_->NbWires(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<uint32_t> BRepGraphInc_Storage_nb_faces(const BRepGraphInc_Storage* self_) {
+    try { return {self_->NbFaces(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<uint32_t> BRepGraphInc_Storage_nb_shells(const BRepGraphInc_Storage* self_) {
+    try { return {self_->NbShells(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<uint32_t> BRepGraphInc_Storage_nb_solids(const BRepGraphInc_Storage* self_) {
+    try { return {self_->NbSolids(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<uint32_t> BRepGraphInc_Storage_nb_compounds(const BRepGraphInc_Storage* self_) {
+    try { return {self_->NbCompounds(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<uint32_t> BRepGraphInc_Storage_nb_comp_solids(const BRepGraphInc_Storage* self_) {
+    try { return {self_->NbCompSolids(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<uint32_t> BRepGraphInc_Storage_nb_products(const BRepGraphInc_Storage* self_) {
+    try { return {self_->NbProducts(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<uint32_t> BRepGraphInc_Storage_nb_occurrences(const BRepGraphInc_Storage* self_) {
+    try { return {self_->NbOccurrences(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<uint32_t> BRepGraphInc_Storage_nb_shell_refs(const BRepGraphInc_Storage* self_) {
+    try { return {self_->NbShellRefs(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<uint32_t> BRepGraphInc_Storage_nb_face_refs(const BRepGraphInc_Storage* self_) {
+    try { return {self_->NbFaceRefs(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<uint32_t> BRepGraphInc_Storage_nb_wire_refs(const BRepGraphInc_Storage* self_) {
+    try { return {self_->NbWireRefs(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<uint32_t> BRepGraphInc_Storage_nb_vertex_refs(const BRepGraphInc_Storage* self_) {
+    try { return {self_->NbVertexRefs(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<uint32_t> BRepGraphInc_Storage_nb_solid_refs(const BRepGraphInc_Storage* self_) {
+    try { return {self_->NbSolidRefs(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<uint32_t> BRepGraphInc_Storage_nb_child_refs(const BRepGraphInc_Storage* self_) {
+    try { return {self_->NbChildRefs(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<uint32_t> BRepGraphInc_Storage_nb_occurrence_refs(const BRepGraphInc_Storage* self_) {
+    try { return {self_->NbOccurrenceRefs(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<uint32_t> BRepGraphInc_Storage_nb_active_vertices(const BRepGraphInc_Storage* self_) {
+    try { return {self_->NbActiveVertices(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<uint32_t> BRepGraphInc_Storage_nb_active_edges(const BRepGraphInc_Storage* self_) {
+    try { return {self_->NbActiveEdges(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<uint32_t> BRepGraphInc_Storage_nb_active_co_edges(const BRepGraphInc_Storage* self_) {
+    try { return {self_->NbActiveCoEdges(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<uint32_t> BRepGraphInc_Storage_nb_active_wires(const BRepGraphInc_Storage* self_) {
+    try { return {self_->NbActiveWires(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<uint32_t> BRepGraphInc_Storage_nb_active_faces(const BRepGraphInc_Storage* self_) {
+    try { return {self_->NbActiveFaces(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<uint32_t> BRepGraphInc_Storage_nb_active_shells(const BRepGraphInc_Storage* self_) {
+    try { return {self_->NbActiveShells(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<uint32_t> BRepGraphInc_Storage_nb_active_solids(const BRepGraphInc_Storage* self_) {
+    try { return {self_->NbActiveSolids(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<uint32_t> BRepGraphInc_Storage_nb_active_compounds(const BRepGraphInc_Storage* self_) {
+    try { return {self_->NbActiveCompounds(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<uint32_t> BRepGraphInc_Storage_nb_active_comp_solids(const BRepGraphInc_Storage* self_) {
+    try { return {self_->NbActiveCompSolids(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<uint32_t> BRepGraphInc_Storage_nb_active_products(const BRepGraphInc_Storage* self_) {
+    try { return {self_->NbActiveProducts(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<uint32_t> BRepGraphInc_Storage_nb_active_occurrences(const BRepGraphInc_Storage* self_) {
+    try { return {self_->NbActiveOccurrences(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<uint32_t> BRepGraphInc_Storage_nb_active_shell_refs(const BRepGraphInc_Storage* self_) {
+    try { return {self_->NbActiveShellRefs(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<uint32_t> BRepGraphInc_Storage_nb_active_face_refs(const BRepGraphInc_Storage* self_) {
+    try { return {self_->NbActiveFaceRefs(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<uint32_t> BRepGraphInc_Storage_nb_active_wire_refs(const BRepGraphInc_Storage* self_) {
+    try { return {self_->NbActiveWireRefs(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<uint32_t> BRepGraphInc_Storage_nb_active_vertex_refs(const BRepGraphInc_Storage* self_) {
+    try { return {self_->NbActiveVertexRefs(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<uint32_t> BRepGraphInc_Storage_nb_active_solid_refs(const BRepGraphInc_Storage* self_) {
+    try { return {self_->NbActiveSolidRefs(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<uint32_t> BRepGraphInc_Storage_nb_active_child_refs(const BRepGraphInc_Storage* self_) {
+    try { return {self_->NbActiveChildRefs(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<uint32_t> BRepGraphInc_Storage_nb_active_occurrence_refs(const BRepGraphInc_Storage* self_) {
+    try { return {self_->NbActiveOccurrenceRefs(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<bool> BRepGraphInc_Storage_mark_removed_nodeid(BRepGraphInc_Storage* self_, BRepGraph_NodeId const* theNodeId) {
+    try { return {self_->MarkRemoved(*theNodeId), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<bool> BRepGraphInc_Storage_mark_removed_ref(BRepGraphInc_Storage* self_, BRepGraph_RefId const* theRefId) {
+    try { return {self_->MarkRemovedRef(*theRefId), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<uint32_t> BRepGraphInc_Storage_nb_edge_curves3_d(const BRepGraphInc_Storage* self_) {
+    try { return {self_->NbEdgeCurves3D(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<uint32_t> BRepGraphInc_Storage_nb_edge_polygons3_d(const BRepGraphInc_Storage* self_) {
+    try { return {self_->NbEdgePolygons3D(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<uint32_t> BRepGraphInc_Storage_nb_co_edge_curves2_d(const BRepGraphInc_Storage* self_) {
+    try { return {self_->NbCoEdgeCurves2D(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<uint32_t> BRepGraphInc_Storage_nb_co_edge_polygons2_d(const BRepGraphInc_Storage* self_) {
+    try { return {self_->NbCoEdgePolygons2D(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<uint32_t> BRepGraphInc_Storage_nb_co_edge_polygons_on_tri(const BRepGraphInc_Storage* self_) {
+    try { return {self_->NbCoEdgePolygonsOnTri(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<uint32_t> BRepGraphInc_Storage_nb_face_surfaces(const BRepGraphInc_Storage* self_) {
+    try { return {self_->NbFaceSurfaces(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<uint32_t> BRepGraphInc_Storage_nb_face_triangulations(const BRepGraphInc_Storage* self_) {
+    try { return {self_->NbFaceTriangulations(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<uint32_t> BRepGraphInc_Storage_nb_active_edge_curves3_d(const BRepGraphInc_Storage* self_) {
+    try { return {self_->NbActiveEdgeCurves3D(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<uint32_t> BRepGraphInc_Storage_nb_active_co_edge_curves2_d(const BRepGraphInc_Storage* self_) {
+    try { return {self_->NbActiveCoEdgeCurves2D(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<uint32_t> BRepGraphInc_Storage_nb_active_face_surfaces(const BRepGraphInc_Storage* self_) {
+    try { return {self_->NbActiveFaceSurfaces(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<uint32_t> BRepGraphInc_Storage_nb_active_face_triangulations(const BRepGraphInc_Storage* self_) {
+    try { return {self_->NbActiveFaceTriangulations(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<uint32_t> BRepGraphInc_Storage_nb_active_edge_polygons3_d(const BRepGraphInc_Storage* self_) {
+    try { return {self_->NbActiveEdgePolygons3D(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<uint32_t> BRepGraphInc_Storage_nb_active_co_edge_polygons2_d(const BRepGraphInc_Storage* self_) {
+    try { return {self_->NbActiveCoEdgePolygons2D(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<uint32_t> BRepGraphInc_Storage_nb_active_co_edge_polygons_on_tri(const BRepGraphInc_Storage* self_) {
+    try { return {self_->NbActiveCoEdgePolygonsOnTri(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<bool> BRepGraphInc_Storage_mark_removed_repid(BRepGraphInc_Storage* self_, BRepGraph_RepId const* theRepId) {
+    try { return {self_->MarkRemoved(*theRepId), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" const char* BRepGraphInc_Storage_set_removed(BRepGraphInc_Storage* self_, BRepGraph_RepId const* theRepId, bool theVal) {
+    try { self_->SetRemoved(*theRepId, theVal); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" OcctResult<NCollection_LinearVector_BRepGraph_ChildRefId const*> BRepGraphInc_Storage_compound_refs_of_node(const BRepGraphInc_Storage* self_, BRepGraph_NodeId const* theNode) {
+    try { return {&(self_->CompoundRefsOfNode(*theNode)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<NCollection_LinearVector_BRepGraph_OccurrenceRefId const*> BRepGraphInc_Storage_occurrence_refs_of_node(const BRepGraphInc_Storage* self_, BRepGraph_NodeId const* theNode) {
+    try { return {&(self_->OccurrenceRefsOfNode(*theNode)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" const char* BRepGraphInc_Storage_attach_edge_to_vertex(BRepGraphInc_Storage* self_, BRepGraph_EdgeId const* theEdgeId, BRepGraph_VertexId const* theVertexId) {
+    try { self_->AttachEdgeToVertex(*theEdgeId, *theVertexId); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" OcctResult<bool> BRepGraphInc_Storage_detach_co_edge_use(BRepGraphInc_Storage* self_, BRepGraph_WireId const* theParentWireId, BRepGraph_CoEdgeId const* theCoEdgeId) {
+    try { return {self_->DetachCoEdgeUse(*theParentWireId, *theCoEdgeId), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<bool> BRepGraphInc_Storage_replace_co_edge_use_with_pair(BRepGraphInc_Storage* self_, BRepGraph_WireId const* theParentWireId, BRepGraph_CoEdgeId const* theOldCoEdgeId, BRepGraph_CoEdgeId const* theNewFirstCoEdgeId, BRepGraph_CoEdgeId const* theNewSecondCoEdgeId) {
+    try { return {self_->ReplaceCoEdgeUseWithPair(*theParentWireId, *theOldCoEdgeId, *theNewFirstCoEdgeId, *theNewSecondCoEdgeId), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<bool> BRepGraphInc_Storage_detach_wire_from_face(BRepGraphInc_Storage* self_, BRepGraph_FaceId const* theParentFaceId, BRepGraph_WireRefId const* theRefId) {
+    try { return {self_->DetachWireFromFace(*theParentFaceId, *theRefId), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<bool> BRepGraphInc_Storage_detach_face_from_shell(BRepGraphInc_Storage* self_, BRepGraph_ShellId const* theParentShellId, BRepGraph_FaceRefId const* theRefId) {
+    try { return {self_->DetachFaceFromShell(*theParentShellId, *theRefId), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<bool> BRepGraphInc_Storage_detach_shell_from_solid(BRepGraphInc_Storage* self_, BRepGraph_SolidId const* theParentSolidId, BRepGraph_ShellRefId const* theRefId) {
+    try { return {self_->DetachShellFromSolid(*theParentSolidId, *theRefId), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<bool> BRepGraphInc_Storage_detach_solid_from_comp_solid(BRepGraphInc_Storage* self_, BRepGraph_CompSolidId const* theParentCompSolidId, BRepGraph_SolidRefId const* theRefId) {
+    try { return {self_->DetachSolidFromCompSolid(*theParentCompSolidId, *theRefId), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<bool> BRepGraphInc_Storage_detach_child_from_compound(BRepGraphInc_Storage* self_, BRepGraph_CompoundId const* theParentCompoundId, BRepGraph_ChildRefId const* theRefId) {
+    try { return {self_->DetachChildFromCompound(*theParentCompoundId, *theRefId), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<bool> BRepGraphInc_Storage_detach_occurrence_from_product(BRepGraphInc_Storage* self_, BRepGraph_ProductId const* theParentProductId, BRepGraph_OccurrenceRefId const* theRefId) {
+    try { return {self_->DetachOccurrenceFromProduct(*theParentProductId, *theRefId), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" const char* BRepGraphInc_Storage_rebind_occurrence_child(BRepGraphInc_Storage* self_, BRepGraph_OccurrenceId const* theOccurrence, BRepGraph_NodeId const* theOldChild, BRepGraph_NodeId const* theNewChild) {
+    try { self_->RebindOccurrenceChild(*theOccurrence, *theOldChild, *theNewChild); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* BRepGraphInc_Storage_rebind_vertex_edge(BRepGraphInc_Storage* self_, BRepGraph_VertexId const* theOldVertex, BRepGraph_VertexId const* theNewVertex, BRepGraph_EdgeId const* theEdge, BRepGraph_VertexRefId const* theExcludingRef) {
+    try { self_->RebindVertexEdge(*theOldVertex, *theNewVertex, *theEdge, *theExcludingRef); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* BRepGraphInc_Storage_rebind_vertex_ref(BRepGraphInc_Storage* self_, BRepGraph_VertexRefId const* theRefId, BRepGraph_VertexId const* theOldVertex, BRepGraph_VertexId const* theNewVertex) {
+    try { self_->RebindVertexRef(*theRefId, *theOldVertex, *theNewVertex); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* BRepGraphInc_Storage_rebind_co_edge_edge(BRepGraphInc_Storage* self_, BRepGraph_CoEdgeId const* theCoEdge, BRepGraph_EdgeId const* theOldEdge, BRepGraph_EdgeId const* theNewEdge) {
+    try { self_->RebindCoEdgeEdge(*theCoEdge, *theOldEdge, *theNewEdge); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* BRepGraphInc_Storage_rebind_wire_ref(BRepGraphInc_Storage* self_, BRepGraph_WireRefId const* theRefId, BRepGraph_WireId const* theOldWire, BRepGraph_WireId const* theNewWire) {
+    try { self_->RebindWireRef(*theRefId, *theOldWire, *theNewWire); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* BRepGraphInc_Storage_rebind_face_ref(BRepGraphInc_Storage* self_, BRepGraph_FaceRefId const* theRefId, BRepGraph_FaceId const* theOldFace, BRepGraph_FaceId const* theNewFace) {
+    try { self_->RebindFaceRef(*theRefId, *theOldFace, *theNewFace); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* BRepGraphInc_Storage_rebind_shell_ref(BRepGraphInc_Storage* self_, BRepGraph_ShellRefId const* theRefId, BRepGraph_ShellId const* theOldShell, BRepGraph_ShellId const* theNewShell) {
+    try { self_->RebindShellRef(*theRefId, *theOldShell, *theNewShell); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* BRepGraphInc_Storage_rebind_solid_ref(BRepGraphInc_Storage* self_, BRepGraph_SolidRefId const* theRefId, BRepGraph_SolidId const* theOldSolid, BRepGraph_SolidId const* theNewSolid) {
+    try { self_->RebindSolidRef(*theRefId, *theOldSolid, *theNewSolid); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* BRepGraphInc_Storage_rebind_child_ref(BRepGraphInc_Storage* self_, BRepGraph_ChildRefId const* theRefId, BRepGraph_NodeId const* theOldChild, BRepGraph_NodeId const* theNewChild) {
+    try { self_->RebindChildRef(*theRefId, *theOldChild, *theNewChild); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* BRepGraphInc_Storage_rebind_occurrence_ref(BRepGraphInc_Storage* self_, BRepGraph_OccurrenceRefId const* theRefId, BRepGraph_OccurrenceId const* theOldOccurrence, BRepGraph_OccurrenceId const* theNewOccurrence) {
+    try { self_->RebindOccurrenceRef(*theRefId, *theOldOccurrence, *theNewOccurrence); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* BRepGraphInc_Storage_reverse_wire_co_edges(BRepGraphInc_Storage* self_, BRepGraph_WireId const* theWireId) {
+    try { self_->ReverseWireCoEdges(*theWireId); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* BRepGraphInc_Storage_set_wire_co_edges(BRepGraphInc_Storage* self_, BRepGraph_WireId const* theWireId, NCollection_Array1_BRepGraph_CoEdgeId const* theCoEdgeIds) {
+    try { self_->SetWireCoEdges(*theWireId, *theCoEdgeIds); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* BRepGraphInc_Storage_set_face_wire_refs(BRepGraphInc_Storage* self_, BRepGraph_FaceId const* theFaceId, NCollection_Array1_BRepGraph_WireRefId const* theWireRefIds) {
+    try { self_->SetFaceWireRefs(*theFaceId, *theWireRefIds); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* BRepGraphInc_Storage_set_shell_face_refs(BRepGraphInc_Storage* self_, BRepGraph_ShellId const* theShellId, NCollection_Array1_BRepGraph_FaceRefId const* theFaceRefIds) {
+    try { self_->SetShellFaceRefs(*theShellId, *theFaceRefIds); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* BRepGraphInc_Storage_set_solid_shell_refs(BRepGraphInc_Storage* self_, BRepGraph_SolidId const* theSolidId, NCollection_Array1_BRepGraph_ShellRefId const* theShellRefIds) {
+    try { self_->SetSolidShellRefs(*theSolidId, *theShellRefIds); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* BRepGraphInc_Storage_set_comp_solid_solid_refs(BRepGraphInc_Storage* self_, BRepGraph_CompSolidId const* theCompSolidId, NCollection_Array1_BRepGraph_SolidRefId const* theSolidRefIds) {
+    try { self_->SetCompSolidSolidRefs(*theCompSolidId, *theSolidRefIds); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* BRepGraphInc_Storage_set_compound_child_refs(BRepGraphInc_Storage* self_, BRepGraph_CompoundId const* theCompoundId, NCollection_Array1_BRepGraph_ChildRefId const* theChildRefIds) {
+    try { self_->SetCompoundChildRefs(*theCompoundId, *theChildRefIds); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* BRepGraphInc_Storage_set_product_occurrence_refs(BRepGraphInc_Storage* self_, BRepGraph_ProductId const* theProductId, NCollection_Array1_BRepGraph_OccurrenceRefId const* theOccurrenceRefIds) {
+    try { self_->SetProductOccurrenceRefs(*theProductId, *theOccurrenceRefIds); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" OcctResult<bool> BRepGraphInc_Storage_has_shape_binding(const BRepGraphInc_Storage* self_, TopoDS_Shape const* theShape) {
+    try { return {self_->HasShapeBinding(*theShape), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" const char* BRepGraphInc_Storage_set_definition_shape_binding(BRepGraphInc_Storage* self_, TopoDS_Shape const* theShape, BRepGraph_NodeId const* theNodeId) {
+    try { self_->SetDefinitionShapeBinding(*theShape, *theNodeId); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" OcctResult<bool> BRepGraphInc_Storage_remove_definition_shape_binding(BRepGraphInc_Storage* self_, TopoDS_Shape const* theShape, BRepGraph_NodeId const* theExpectedNodeId) {
+    try { return {self_->RemoveDefinitionShapeBinding(*theShape, *theExpectedNodeId), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<bool> BRepGraphInc_Storage_has_original(const BRepGraphInc_Storage* self_, BRepGraph_NodeId const* theNodeId) {
+    try { return {self_->HasOriginal(*theNodeId), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" const char* BRepGraphInc_Storage_bind_original(BRepGraphInc_Storage* self_, BRepGraph_NodeId const* theNodeId, TopoDS_Shape const* theShape) {
+    try { self_->BindOriginal(*theNodeId, *theShape); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* BRepGraphInc_Storage_un_bind_original(BRepGraphInc_Storage* self_, BRepGraph_NodeId const* theNodeId) {
+    try { self_->UnBindOriginal(*theNodeId); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* BRepGraphInc_Storage_copy_shape_bindings_from(BRepGraphInc_Storage* self_, BRepGraphInc_Storage const* theSource) {
+    try { self_->CopyShapeBindingsFrom(*theSource); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* BRepGraphInc_Storage_clear_current_shapes(BRepGraphInc_Storage* self_) {
+    try { self_->ClearCurrentShapes(); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* BRepGraphInc_Storage_unbind_current_shape(BRepGraphInc_Storage* self_, BRepGraph_NodeId const* theNode) {
+    try { self_->UnbindCurrentShape(*theNode); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* BRepGraphInc_Storage_clear_deferred_queues(BRepGraphInc_Storage* self_) {
+    try { self_->ClearDeferredQueues(); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* BRepGraphInc_Storage_clear(BRepGraphInc_Storage* self_) {
+    try { self_->Clear(); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* BRepGraphInc_Storage_recount_active_counts(BRepGraphInc_Storage* self_) {
+    try { self_->RecountActiveCounts(); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* BRepGraphInc_Storage_rebuild_derived_relations(BRepGraphInc_Storage* self_) {
+    try { self_->RebuildDerivedRelations(); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* BRepGraphInc_Storage_rebuild_derived_relations_preserving_active_counts(BRepGraphInc_Storage* self_) {
+    try { self_->RebuildDerivedRelationsPreservingActiveCounts(); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* BRepGraphInc_Storage_copy_removed_flags_from(BRepGraphInc_Storage* self_, BRepGraphInc_Storage const* theSource) {
+    try { self_->CopyRemovedFlagsFrom(*theSource); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" OcctResult<bool> BRepGraphInc_Storage_validate_relations(const BRepGraphInc_Storage* self_) {
+    try { return {self_->ValidateRelations(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<bool> BRepGraphInc_Storage_validate_wire_co_edge_order(const BRepGraphInc_Storage* self_, BRepGraph_WireId const* theWireId) {
+    try { return {self_->ValidateWireCoEdgeOrder(*theWireId), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<bool> BRepGraphInc_Storage_validate_wire_co_edge_orders(const BRepGraphInc_Storage* self_) {
+    try { return {self_->ValidateWireCoEdgeOrders(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<bool> BRepGraphInc_Storage_canonicalize_wire_co_edge_order(BRepGraphInc_Storage* self_, BRepGraph_WireId const* theWireId) {
+    try { return {self_->CanonicalizeWireCoEdgeOrder(*theWireId), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" const char* BRepGraphInc_Storage_rebuild_uid_reverse_indexes(BRepGraphInc_Storage* self_) {
+    try { self_->RebuildUIDReverseIndexes(); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* BRepGraphInc_Storage_mark_uid_reverse_indexes_dirty(BRepGraphInc_Storage* self_) {
+    try { self_->MarkUIDReverseIndexesDirty(); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* BRepGraphInc_Storage_ensure_uid_reverse_index(const BRepGraphInc_Storage* self_) {
+    try { self_->EnsureUIDReverseIndex(); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* BRepGraphInc_Storage_ensure_ref_uid_reverse_index(const BRepGraphInc_Storage* self_) {
+    try { self_->EnsureRefUIDReverseIndex(); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* BRepGraphInc_Storage_copy_derived_relations_from(BRepGraphInc_Storage* self_, BRepGraphInc_Storage const* theSource) {
+    try { self_->CopyDerivedRelationsFrom(*theSource); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" OcctResult<bool> BRepGraphInc_Storage_has_compound_parent(const BRepGraphInc_Storage* self_, BRepGraph_NodeId const* theNode) {
+    try { return {self_->HasCompoundParent(*theNode), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<bool> BRepGraphInc_Storage_has_occurrence_parent(const BRepGraphInc_Storage* self_, BRepGraph_NodeId const* theNode) {
+    try { return {self_->HasOccurrenceParent(*theNode), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<bool> BRepGraphInc_Storage_is_guarded(const BRepGraphInc_Storage* self_, BRepGraph_ItemId const* theId) {
+    try { return {self_->IsGuarded(*theId), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" const char* BRepGraphInc_Storage_set_guarded(BRepGraphInc_Storage* self_, BRepGraph_ItemId const* theId) {
+    try { self_->SetGuarded(*theId); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* BRepGraphInc_Storage_clear_guarded(BRepGraphInc_Storage* self_, BRepGraph_ItemId const* theId) {
+    try { self_->ClearGuarded(*theId); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" OcctResult<bool> BRepGraphInc_Storage_has_any_guard(const BRepGraphInc_Storage* self_) {
+    try { return {self_->HasAnyGuard(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" void BRepGraphInc_Storage_destructor(BRepGraphInc_Storage* self_) { delete self_; }
+
+// ========================
+// BRepGraphInc_Storage::CachedShape wrappers
+// ========================
+
+extern "C" OcctResult<BRepGraphInc_Storage::CachedShape*> BRepGraphInc_Storage_CachedShape_ctor() {
+    try { return {new BRepGraphInc_Storage::CachedShape(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" void BRepGraphInc_Storage_CachedShape_destructor(BRepGraphInc_Storage::CachedShape* self_) { delete self_; }
 
 // ========================
 // BRepLProp_SurfaceTool wrappers
@@ -5860,31 +11700,31 @@ extern "C" OcctResult<const BRepTools_Modification*> BRepTools_CopyModification_
 extern "C" OcctResult<BRepTools_Modification*> BRepTools_CopyModification_as_BRepTools_Modification_mut(BRepTools_CopyModification* self_) { return {static_cast<BRepTools_Modification*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> BRepTools_CopyModification_as_Standard_Transient(const BRepTools_CopyModification* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> BRepTools_CopyModification_as_Standard_Transient_mut(BRepTools_CopyModification* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleBRepToolsCopyModification*> BRepTools_CopyModification_to_handle(BRepTools_CopyModification* obj) {
-    try { return {new HandleBRepToolsCopyModification(obj), nullptr}; }
+extern "C" OcctResult<Handle_BRepTools_CopyModification*> BRepTools_CopyModification_to_handle(BRepTools_CopyModification* obj) {
+    try { return {new Handle_BRepTools_CopyModification(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const BRepTools_CopyModification*> HandleBRepToolsCopyModification_get(const HandleBRepToolsCopyModification* handle) {
+extern "C" OcctResult<const BRepTools_CopyModification*> Handle_BRepTools_CopyModification_get(const Handle_BRepTools_CopyModification* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<BRepTools_CopyModification*> HandleBRepToolsCopyModification_get_mut(HandleBRepToolsCopyModification* handle) {
+extern "C" OcctResult<BRepTools_CopyModification*> Handle_BRepTools_CopyModification_get_mut(Handle_BRepTools_CopyModification* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleBRepToolsModification*> HandleBRepToolsCopyModification_to_HandleBRepToolsModification(const HandleBRepToolsCopyModification* self_) {
-    try { return {new HandleBRepToolsModification(*self_), nullptr}; }
+extern "C" OcctResult<Handle_BRepTools_Modification*> Handle_BRepTools_CopyModification_to_Handle_BRepTools_Modification(const Handle_BRepTools_CopyModification* self_) {
+    try { return {new Handle_BRepTools_Modification(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleBRepToolsCopyModification_to_HandleStandardTransient(const HandleBRepToolsCopyModification* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_BRepTools_CopyModification_to_Handle_Standard_Transient(const Handle_BRepTools_CopyModification* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleBRepToolsNurbsConvertModification*> HandleBRepToolsCopyModification_downcast_to_HandleBRepToolsNurbsConvertModification(const HandleBRepToolsCopyModification* self_) {
+extern "C" OcctResult<Handle_BRepTools_NurbsConvertModification*> Handle_BRepTools_CopyModification_downcast_to_Handle_BRepTools_NurbsConvertModification(const Handle_BRepTools_CopyModification* self_) {
     try {
     opencascade::handle<BRepTools_NurbsConvertModification> result = opencascade::handle<BRepTools_NurbsConvertModification>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleBRepToolsNurbsConvertModification(result), nullptr};
+    return {new Handle_BRepTools_NurbsConvertModification(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
@@ -5982,24 +11822,24 @@ extern "C" OcctResult<const BRepTools_Modification*> BRepTools_GTrsfModification
 extern "C" OcctResult<BRepTools_Modification*> BRepTools_GTrsfModification_as_BRepTools_Modification_mut(BRepTools_GTrsfModification* self_) { return {static_cast<BRepTools_Modification*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> BRepTools_GTrsfModification_as_Standard_Transient(const BRepTools_GTrsfModification* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> BRepTools_GTrsfModification_as_Standard_Transient_mut(BRepTools_GTrsfModification* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleBRepToolsGTrsfModification*> BRepTools_GTrsfModification_to_handle(BRepTools_GTrsfModification* obj) {
-    try { return {new HandleBRepToolsGTrsfModification(obj), nullptr}; }
+extern "C" OcctResult<Handle_BRepTools_GTrsfModification*> BRepTools_GTrsfModification_to_handle(BRepTools_GTrsfModification* obj) {
+    try { return {new Handle_BRepTools_GTrsfModification(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const BRepTools_GTrsfModification*> HandleBRepToolsGTrsfModification_get(const HandleBRepToolsGTrsfModification* handle) {
+extern "C" OcctResult<const BRepTools_GTrsfModification*> Handle_BRepTools_GTrsfModification_get(const Handle_BRepTools_GTrsfModification* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<BRepTools_GTrsfModification*> HandleBRepToolsGTrsfModification_get_mut(HandleBRepToolsGTrsfModification* handle) {
+extern "C" OcctResult<BRepTools_GTrsfModification*> Handle_BRepTools_GTrsfModification_get_mut(Handle_BRepTools_GTrsfModification* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleBRepToolsModification*> HandleBRepToolsGTrsfModification_to_HandleBRepToolsModification(const HandleBRepToolsGTrsfModification* self_) {
-    try { return {new HandleBRepToolsModification(*self_), nullptr}; }
+extern "C" OcctResult<Handle_BRepTools_Modification*> Handle_BRepTools_GTrsfModification_to_Handle_BRepTools_Modification(const Handle_BRepTools_GTrsfModification* self_) {
+    try { return {new Handle_BRepTools_Modification(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleBRepToolsGTrsfModification_to_HandleStandardTransient(const HandleBRepToolsGTrsfModification* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_BRepTools_GTrsfModification_to_Handle_Standard_Transient(const Handle_BRepTools_GTrsfModification* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> BRepTools_GTrsfModification_inherited_IsInstance(const BRepTools_GTrsfModification* self, Handle(Standard_Type) const& theType) {
@@ -6064,11 +11904,11 @@ extern "C" const char* BRepTools_History_clear(BRepTools_History* self_) {
     try { self_->Clear(); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<TopTools_ListOfShape const*> BRepTools_History_generated(const BRepTools_History* self_, TopoDS_Shape const* theInitial) {
+extern "C" OcctResult<NCollection_List_TopoDS_Shape const*> BRepTools_History_generated(const BRepTools_History* self_, TopoDS_Shape const* theInitial) {
     try { return {&(self_->Generated(*theInitial)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TopTools_ListOfShape const*> BRepTools_History_modified(const BRepTools_History* self_, TopoDS_Shape const* theInitial) {
+extern "C" OcctResult<NCollection_List_TopoDS_Shape const*> BRepTools_History_modified(const BRepTools_History* self_, TopoDS_Shape const* theInitial) {
     try { return {&(self_->Modified(*theInitial)), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -6118,20 +11958,20 @@ extern "C" OcctResult<Handle(Standard_Type) const*> BRepTools_History_get_type_d
 }
 extern "C" OcctResult<const Standard_Transient*> BRepTools_History_as_Standard_Transient(const BRepTools_History* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> BRepTools_History_as_Standard_Transient_mut(BRepTools_History* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleBRepToolsHistory*> BRepTools_History_to_handle(BRepTools_History* obj) {
-    try { return {new HandleBRepToolsHistory(obj), nullptr}; }
+extern "C" OcctResult<Handle_BRepTools_History*> BRepTools_History_to_handle(BRepTools_History* obj) {
+    try { return {new Handle_BRepTools_History(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const BRepTools_History*> HandleBRepToolsHistory_get(const HandleBRepToolsHistory* handle) {
+extern "C" OcctResult<const BRepTools_History*> Handle_BRepTools_History_get(const Handle_BRepTools_History* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<BRepTools_History*> HandleBRepToolsHistory_get_mut(HandleBRepToolsHistory* handle) {
+extern "C" OcctResult<BRepTools_History*> Handle_BRepTools_History_get_mut(Handle_BRepTools_History* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleBRepToolsHistory_to_HandleStandardTransient(const HandleBRepToolsHistory* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_BRepTools_History_to_Handle_Standard_Transient(const Handle_BRepTools_History* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> BRepTools_History_inherited_IsInstance(const BRepTools_History* self, Handle(Standard_Type) const& theType) {
@@ -6218,119 +12058,119 @@ extern "C" OcctResult<Handle(Standard_Type) const*> BRepTools_Modification_get_t
 }
 extern "C" OcctResult<const Standard_Transient*> BRepTools_Modification_as_Standard_Transient(const BRepTools_Modification* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> BRepTools_Modification_as_Standard_Transient_mut(BRepTools_Modification* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<const BRepTools_Modification*> HandleBRepToolsModification_get(const HandleBRepToolsModification* handle) {
+extern "C" OcctResult<const BRepTools_Modification*> Handle_BRepTools_Modification_get(const Handle_BRepTools_Modification* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<BRepTools_Modification*> HandleBRepToolsModification_get_mut(HandleBRepToolsModification* handle) {
+extern "C" OcctResult<BRepTools_Modification*> Handle_BRepTools_Modification_get_mut(Handle_BRepTools_Modification* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleBRepToolsModification_to_HandleStandardTransient(const HandleBRepToolsModification* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_BRepTools_Modification_to_Handle_Standard_Transient(const Handle_BRepTools_Modification* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleBRepOffsetSimpleOffset*> HandleBRepToolsModification_downcast_to_HandleBRepOffsetSimpleOffset(const HandleBRepToolsModification* self_) {
+extern "C" OcctResult<Handle_BRepOffset_SimpleOffset*> Handle_BRepTools_Modification_downcast_to_Handle_BRepOffset_SimpleOffset(const Handle_BRepTools_Modification* self_) {
     try {
     opencascade::handle<BRepOffset_SimpleOffset> result = opencascade::handle<BRepOffset_SimpleOffset>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleBRepOffsetSimpleOffset(result), nullptr};
+    return {new Handle_BRepOffset_SimpleOffset(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleBRepToolsCopyModification*> HandleBRepToolsModification_downcast_to_HandleBRepToolsCopyModification(const HandleBRepToolsModification* self_) {
+extern "C" OcctResult<Handle_BRepTools_CopyModification*> Handle_BRepTools_Modification_downcast_to_Handle_BRepTools_CopyModification(const Handle_BRepTools_Modification* self_) {
     try {
     opencascade::handle<BRepTools_CopyModification> result = opencascade::handle<BRepTools_CopyModification>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleBRepToolsCopyModification(result), nullptr};
+    return {new Handle_BRepTools_CopyModification(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleBRepToolsGTrsfModification*> HandleBRepToolsModification_downcast_to_HandleBRepToolsGTrsfModification(const HandleBRepToolsModification* self_) {
+extern "C" OcctResult<Handle_BRepTools_GTrsfModification*> Handle_BRepTools_Modification_downcast_to_Handle_BRepTools_GTrsfModification(const Handle_BRepTools_Modification* self_) {
     try {
     opencascade::handle<BRepTools_GTrsfModification> result = opencascade::handle<BRepTools_GTrsfModification>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleBRepToolsGTrsfModification(result), nullptr};
+    return {new Handle_BRepTools_GTrsfModification(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleBRepToolsNurbsConvertModification*> HandleBRepToolsModification_downcast_to_HandleBRepToolsNurbsConvertModification(const HandleBRepToolsModification* self_) {
+extern "C" OcctResult<Handle_BRepTools_NurbsConvertModification*> Handle_BRepTools_Modification_downcast_to_Handle_BRepTools_NurbsConvertModification(const Handle_BRepTools_Modification* self_) {
     try {
     opencascade::handle<BRepTools_NurbsConvertModification> result = opencascade::handle<BRepTools_NurbsConvertModification>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleBRepToolsNurbsConvertModification(result), nullptr};
+    return {new Handle_BRepTools_NurbsConvertModification(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleBRepToolsTrsfModification*> HandleBRepToolsModification_downcast_to_HandleBRepToolsTrsfModification(const HandleBRepToolsModification* self_) {
+extern "C" OcctResult<Handle_BRepTools_TrsfModification*> Handle_BRepTools_Modification_downcast_to_Handle_BRepTools_TrsfModification(const Handle_BRepTools_Modification* self_) {
     try {
     opencascade::handle<BRepTools_TrsfModification> result = opencascade::handle<BRepTools_TrsfModification>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleBRepToolsTrsfModification(result), nullptr};
+    return {new Handle_BRepTools_TrsfModification(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleDraftModification*> HandleBRepToolsModification_downcast_to_HandleDraftModification(const HandleBRepToolsModification* self_) {
+extern "C" OcctResult<Handle_Draft_Modification*> Handle_BRepTools_Modification_downcast_to_Handle_Draft_Modification(const Handle_BRepTools_Modification* self_) {
     try {
     opencascade::handle<Draft_Modification> result = opencascade::handle<Draft_Modification>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleDraftModification(result), nullptr};
+    return {new Handle_Draft_Modification(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleShapeCustomBSplineRestriction*> HandleBRepToolsModification_downcast_to_HandleShapeCustomBSplineRestriction(const HandleBRepToolsModification* self_) {
+extern "C" OcctResult<Handle_ShapeCustom_BSplineRestriction*> Handle_BRepTools_Modification_downcast_to_Handle_ShapeCustom_BSplineRestriction(const Handle_BRepTools_Modification* self_) {
     try {
     opencascade::handle<ShapeCustom_BSplineRestriction> result = opencascade::handle<ShapeCustom_BSplineRestriction>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleShapeCustomBSplineRestriction(result), nullptr};
+    return {new Handle_ShapeCustom_BSplineRestriction(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleShapeCustomConvertToBSpline*> HandleBRepToolsModification_downcast_to_HandleShapeCustomConvertToBSpline(const HandleBRepToolsModification* self_) {
+extern "C" OcctResult<Handle_ShapeCustom_ConvertToBSpline*> Handle_BRepTools_Modification_downcast_to_Handle_ShapeCustom_ConvertToBSpline(const Handle_BRepTools_Modification* self_) {
     try {
     opencascade::handle<ShapeCustom_ConvertToBSpline> result = opencascade::handle<ShapeCustom_ConvertToBSpline>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleShapeCustomConvertToBSpline(result), nullptr};
+    return {new Handle_ShapeCustom_ConvertToBSpline(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleShapeCustomConvertToRevolution*> HandleBRepToolsModification_downcast_to_HandleShapeCustomConvertToRevolution(const HandleBRepToolsModification* self_) {
+extern "C" OcctResult<Handle_ShapeCustom_ConvertToRevolution*> Handle_BRepTools_Modification_downcast_to_Handle_ShapeCustom_ConvertToRevolution(const Handle_BRepTools_Modification* self_) {
     try {
     opencascade::handle<ShapeCustom_ConvertToRevolution> result = opencascade::handle<ShapeCustom_ConvertToRevolution>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleShapeCustomConvertToRevolution(result), nullptr};
+    return {new Handle_ShapeCustom_ConvertToRevolution(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleShapeCustomDirectModification*> HandleBRepToolsModification_downcast_to_HandleShapeCustomDirectModification(const HandleBRepToolsModification* self_) {
+extern "C" OcctResult<Handle_ShapeCustom_DirectModification*> Handle_BRepTools_Modification_downcast_to_Handle_ShapeCustom_DirectModification(const Handle_BRepTools_Modification* self_) {
     try {
     opencascade::handle<ShapeCustom_DirectModification> result = opencascade::handle<ShapeCustom_DirectModification>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleShapeCustomDirectModification(result), nullptr};
+    return {new Handle_ShapeCustom_DirectModification(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleShapeCustomModification*> HandleBRepToolsModification_downcast_to_HandleShapeCustomModification(const HandleBRepToolsModification* self_) {
+extern "C" OcctResult<Handle_ShapeCustom_Modification*> Handle_BRepTools_Modification_downcast_to_Handle_ShapeCustom_Modification(const Handle_BRepTools_Modification* self_) {
     try {
     opencascade::handle<ShapeCustom_Modification> result = opencascade::handle<ShapeCustom_Modification>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleShapeCustomModification(result), nullptr};
+    return {new Handle_ShapeCustom_Modification(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleShapeCustomSweptToElementary*> HandleBRepToolsModification_downcast_to_HandleShapeCustomSweptToElementary(const HandleBRepToolsModification* self_) {
+extern "C" OcctResult<Handle_ShapeCustom_SweptToElementary*> Handle_BRepTools_Modification_downcast_to_Handle_ShapeCustom_SweptToElementary(const Handle_BRepTools_Modification* self_) {
     try {
     opencascade::handle<ShapeCustom_SweptToElementary> result = opencascade::handle<ShapeCustom_SweptToElementary>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleShapeCustomSweptToElementary(result), nullptr};
+    return {new Handle_ShapeCustom_SweptToElementary(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleShapeCustomTrsfModification*> HandleBRepToolsModification_downcast_to_HandleShapeCustomTrsfModification(const HandleBRepToolsModification* self_) {
+extern "C" OcctResult<Handle_ShapeCustom_TrsfModification*> Handle_BRepTools_Modification_downcast_to_Handle_ShapeCustom_TrsfModification(const Handle_BRepTools_Modification* self_) {
     try {
     opencascade::handle<ShapeCustom_TrsfModification> result = opencascade::handle<ShapeCustom_TrsfModification>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleShapeCustomTrsfModification(result), nullptr};
+    return {new Handle_ShapeCustom_TrsfModification(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
@@ -6450,7 +12290,7 @@ extern "C" OcctResult<bool> BRepTools_NurbsConvertModification_new_polygon_on_tr
     try { return {self_->NewPolygonOnTriangulation(*theEdge, *theFace, *thePoly), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TopTools_ListOfShape const*> BRepTools_NurbsConvertModification_get_updated_edges(const BRepTools_NurbsConvertModification* self_) {
+extern "C" OcctResult<NCollection_List_TopoDS_Shape const*> BRepTools_NurbsConvertModification_get_updated_edges(const BRepTools_NurbsConvertModification* self_) {
     try { return {&(self_->GetUpdatedEdges()), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -6472,28 +12312,28 @@ extern "C" OcctResult<const BRepTools_Modification*> BRepTools_NurbsConvertModif
 extern "C" OcctResult<BRepTools_Modification*> BRepTools_NurbsConvertModification_as_BRepTools_Modification_mut(BRepTools_NurbsConvertModification* self_) { return {static_cast<BRepTools_Modification*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> BRepTools_NurbsConvertModification_as_Standard_Transient(const BRepTools_NurbsConvertModification* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> BRepTools_NurbsConvertModification_as_Standard_Transient_mut(BRepTools_NurbsConvertModification* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleBRepToolsNurbsConvertModification*> BRepTools_NurbsConvertModification_to_handle(BRepTools_NurbsConvertModification* obj) {
-    try { return {new HandleBRepToolsNurbsConvertModification(obj), nullptr}; }
+extern "C" OcctResult<Handle_BRepTools_NurbsConvertModification*> BRepTools_NurbsConvertModification_to_handle(BRepTools_NurbsConvertModification* obj) {
+    try { return {new Handle_BRepTools_NurbsConvertModification(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const BRepTools_NurbsConvertModification*> HandleBRepToolsNurbsConvertModification_get(const HandleBRepToolsNurbsConvertModification* handle) {
+extern "C" OcctResult<const BRepTools_NurbsConvertModification*> Handle_BRepTools_NurbsConvertModification_get(const Handle_BRepTools_NurbsConvertModification* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<BRepTools_NurbsConvertModification*> HandleBRepToolsNurbsConvertModification_get_mut(HandleBRepToolsNurbsConvertModification* handle) {
+extern "C" OcctResult<BRepTools_NurbsConvertModification*> Handle_BRepTools_NurbsConvertModification_get_mut(Handle_BRepTools_NurbsConvertModification* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleBRepToolsCopyModification*> HandleBRepToolsNurbsConvertModification_to_HandleBRepToolsCopyModification(const HandleBRepToolsNurbsConvertModification* self_) {
-    try { return {new HandleBRepToolsCopyModification(*self_), nullptr}; }
+extern "C" OcctResult<Handle_BRepTools_CopyModification*> Handle_BRepTools_NurbsConvertModification_to_Handle_BRepTools_CopyModification(const Handle_BRepTools_NurbsConvertModification* self_) {
+    try { return {new Handle_BRepTools_CopyModification(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleBRepToolsModification*> HandleBRepToolsNurbsConvertModification_to_HandleBRepToolsModification(const HandleBRepToolsNurbsConvertModification* self_) {
-    try { return {new HandleBRepToolsModification(*self_), nullptr}; }
+extern "C" OcctResult<Handle_BRepTools_Modification*> Handle_BRepTools_NurbsConvertModification_to_Handle_BRepTools_Modification(const Handle_BRepTools_NurbsConvertModification* self_) {
+    try { return {new Handle_BRepTools_Modification(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleBRepToolsNurbsConvertModification_to_HandleStandardTransient(const HandleBRepToolsNurbsConvertModification* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_BRepTools_NurbsConvertModification_to_Handle_Standard_Transient(const Handle_BRepTools_NurbsConvertModification* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> BRepTools_NurbsConvertModification_inherited_IsInstance(const BRepTools_NurbsConvertModification* self, Handle(Standard_Type) const& theType) {
@@ -6598,6 +12438,10 @@ extern "C" OcctResult<TopoDS_Shape*> BRepTools_ReShape_value(const BRepTools_ReS
     try { return {new TopoDS_Shape(self_->Value(*shape)), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" OcctResult<TopoDS_Shape*> BRepTools_ReShape_value_leaf(const BRepTools_ReShape* self_, TopoDS_Shape const* theShape) {
+    try { return {new TopoDS_Shape(self_->ValueLeaf(*theShape)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" OcctResult<TopoDS_Shape*> BRepTools_ReShape_apply(BRepTools_ReShape* self_, TopoDS_Shape const* theShape, int32_t theUntil) {
     try { return {new TopoDS_Shape(self_->Apply(*theShape, static_cast<TopAbs_ShapeEnum>(theUntil))), nullptr}; }
     OCCT_CATCH_RETURN
@@ -6656,27 +12500,27 @@ extern "C" OcctResult<Handle(Standard_Type) const*> BRepTools_ReShape_get_type_d
 }
 extern "C" OcctResult<const Standard_Transient*> BRepTools_ReShape_as_Standard_Transient(const BRepTools_ReShape* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> BRepTools_ReShape_as_Standard_Transient_mut(BRepTools_ReShape* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleBRepToolsReShape*> BRepTools_ReShape_to_handle(BRepTools_ReShape* obj) {
-    try { return {new HandleBRepToolsReShape(obj), nullptr}; }
+extern "C" OcctResult<Handle_BRepTools_ReShape*> BRepTools_ReShape_to_handle(BRepTools_ReShape* obj) {
+    try { return {new Handle_BRepTools_ReShape(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const BRepTools_ReShape*> HandleBRepToolsReShape_get(const HandleBRepToolsReShape* handle) {
+extern "C" OcctResult<const BRepTools_ReShape*> Handle_BRepTools_ReShape_get(const Handle_BRepTools_ReShape* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<BRepTools_ReShape*> HandleBRepToolsReShape_get_mut(HandleBRepToolsReShape* handle) {
+extern "C" OcctResult<BRepTools_ReShape*> Handle_BRepTools_ReShape_get_mut(Handle_BRepTools_ReShape* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleBRepToolsReShape_to_HandleStandardTransient(const HandleBRepToolsReShape* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_BRepTools_ReShape_to_Handle_Standard_Transient(const Handle_BRepTools_ReShape* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleShapeBuildReShape*> HandleBRepToolsReShape_downcast_to_HandleShapeBuildReShape(const HandleBRepToolsReShape* self_) {
+extern "C" OcctResult<Handle_ShapeBuild_ReShape*> Handle_BRepTools_ReShape_downcast_to_Handle_ShapeBuild_ReShape(const Handle_BRepTools_ReShape* self_) {
     try {
     opencascade::handle<ShapeBuild_ReShape> result = opencascade::handle<ShapeBuild_ReShape>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleShapeBuildReShape(result), nullptr};
+    return {new Handle_ShapeBuild_ReShape(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
@@ -6878,7 +12722,7 @@ extern "C" const char* BRepTools_Substitution_clear(BRepTools_Substitution* self
     try { self_->Clear(); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* BRepTools_Substitution_substitute(BRepTools_Substitution* self_, TopoDS_Shape const* OldShape, TopTools_ListOfShape const* NewShapes) {
+extern "C" const char* BRepTools_Substitution_substitute(BRepTools_Substitution* self_, TopoDS_Shape const* OldShape, NCollection_List_TopoDS_Shape const* NewShapes) {
     try { self_->Substitute(*OldShape, *NewShapes); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -6890,7 +12734,7 @@ extern "C" OcctResult<bool> BRepTools_Substitution_is_copied(const BRepTools_Sub
     try { return {self_->IsCopied(*S), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TopTools_ListOfShape const*> BRepTools_Substitution_copy(const BRepTools_Substitution* self_, TopoDS_Shape const* S) {
+extern "C" OcctResult<NCollection_List_TopoDS_Shape const*> BRepTools_Substitution_copy(const BRepTools_Substitution* self_, TopoDS_Shape const* S) {
     try { return {&(self_->Copy(*S)), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -6964,31 +12808,31 @@ extern "C" OcctResult<const BRepTools_Modification*> BRepTools_TrsfModification_
 extern "C" OcctResult<BRepTools_Modification*> BRepTools_TrsfModification_as_BRepTools_Modification_mut(BRepTools_TrsfModification* self_) { return {static_cast<BRepTools_Modification*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> BRepTools_TrsfModification_as_Standard_Transient(const BRepTools_TrsfModification* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> BRepTools_TrsfModification_as_Standard_Transient_mut(BRepTools_TrsfModification* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleBRepToolsTrsfModification*> BRepTools_TrsfModification_to_handle(BRepTools_TrsfModification* obj) {
-    try { return {new HandleBRepToolsTrsfModification(obj), nullptr}; }
+extern "C" OcctResult<Handle_BRepTools_TrsfModification*> BRepTools_TrsfModification_to_handle(BRepTools_TrsfModification* obj) {
+    try { return {new Handle_BRepTools_TrsfModification(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const BRepTools_TrsfModification*> HandleBRepToolsTrsfModification_get(const HandleBRepToolsTrsfModification* handle) {
+extern "C" OcctResult<const BRepTools_TrsfModification*> Handle_BRepTools_TrsfModification_get(const Handle_BRepTools_TrsfModification* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<BRepTools_TrsfModification*> HandleBRepToolsTrsfModification_get_mut(HandleBRepToolsTrsfModification* handle) {
+extern "C" OcctResult<BRepTools_TrsfModification*> Handle_BRepTools_TrsfModification_get_mut(Handle_BRepTools_TrsfModification* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleBRepToolsModification*> HandleBRepToolsTrsfModification_to_HandleBRepToolsModification(const HandleBRepToolsTrsfModification* self_) {
-    try { return {new HandleBRepToolsModification(*self_), nullptr}; }
+extern "C" OcctResult<Handle_BRepTools_Modification*> Handle_BRepTools_TrsfModification_to_Handle_BRepTools_Modification(const Handle_BRepTools_TrsfModification* self_) {
+    try { return {new Handle_BRepTools_Modification(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleBRepToolsTrsfModification_to_HandleStandardTransient(const HandleBRepToolsTrsfModification* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_BRepTools_TrsfModification_to_Handle_Standard_Transient(const Handle_BRepTools_TrsfModification* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleShapeCustomTrsfModification*> HandleBRepToolsTrsfModification_downcast_to_HandleShapeCustomTrsfModification(const HandleBRepToolsTrsfModification* self_) {
+extern "C" OcctResult<Handle_ShapeCustom_TrsfModification*> Handle_BRepTools_TrsfModification_downcast_to_Handle_ShapeCustom_TrsfModification(const Handle_BRepTools_TrsfModification* self_) {
     try {
     opencascade::handle<ShapeCustom_TrsfModification> result = opencascade::handle<ShapeCustom_TrsfModification>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleShapeCustomTrsfModification(result), nullptr};
+    return {new Handle_ShapeCustom_TrsfModification(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
@@ -7701,364 +13545,6 @@ extern "C" const char* TopExp_Explorer_clear(TopExp_Explorer* self_) {
 extern "C" void TopExp_Explorer_destructor(TopExp_Explorer* self_) { delete self_; }
 
 // ========================
-// TopTools_HArray1OfListOfShape wrappers
-// ========================
-
-extern "C" OcctResult<TopTools_HArray1OfListOfShape*> TopTools_HArray1OfListOfShape_ctor() {
-    try { return {new TopTools_HArray1OfListOfShape(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<TopTools_HArray1OfListOfShape*> TopTools_HArray1OfListOfShape_ctor_int2(int32_t theLower, int32_t theUpper) {
-    try { return {new TopTools_HArray1OfListOfShape(theLower, theUpper), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<TopTools_HArray1OfListOfShape*> TopTools_HArray1OfListOfShape_ctor_int2_type(int32_t theLower, int32_t theUpper, TopTools_Array1OfListOfShape::value_type const* theValue) {
-    try { return {new TopTools_HArray1OfListOfShape(theLower, theUpper, *theValue), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<TopTools_HArray1OfListOfShape*> TopTools_HArray1OfListOfShape_ctor_type_int2_bool(TopTools_Array1OfListOfShape::value_type const* theBegin, int32_t theLower, int32_t theUpper, bool arg3) {
-    try { return {new TopTools_HArray1OfListOfShape(*theBegin, theLower, theUpper, arg3), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<TopTools_HArray1OfListOfShape*> TopTools_HArray1OfListOfShape_ctor_array1oflistofshape(TopTools_Array1OfListOfShape const* theOther) {
-    try { return {new TopTools_HArray1OfListOfShape(*theOther), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<TopTools_Array1OfListOfShape const*> TopTools_HArray1OfListOfShape_array1(const TopTools_HArray1OfListOfShape* self_) {
-    try { return {&(self_->Array1()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<TopTools_Array1OfListOfShape*> TopTools_HArray1OfListOfShape_change_array1(TopTools_HArray1OfListOfShape* self_) {
-    try { return {&(self_->ChangeArray1()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Handle(Standard_Type) const*> TopTools_HArray1OfListOfShape_dynamic_type(const TopTools_HArray1OfListOfShape* self_) {
-    try { return {&(self_->DynamicType()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<char const*> TopTools_HArray1OfListOfShape_get_type_name() {
-    try { return {TopTools_HArray1OfListOfShape::get_type_name(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Handle(Standard_Type) const*> TopTools_HArray1OfListOfShape_get_type_descriptor() {
-    try { return {&(TopTools_HArray1OfListOfShape::get_type_descriptor()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<const Standard_Transient*> TopTools_HArray1OfListOfShape_as_Standard_Transient(const TopTools_HArray1OfListOfShape* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<Standard_Transient*> TopTools_HArray1OfListOfShape_as_Standard_Transient_mut(TopTools_HArray1OfListOfShape* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleTopToolsHArray1OfListOfShape*> TopTools_HArray1OfListOfShape_to_handle(TopTools_HArray1OfListOfShape* obj) {
-    try { return {new HandleTopToolsHArray1OfListOfShape(obj), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<const TopTools_HArray1OfListOfShape*> HandleTopToolsHArray1OfListOfShape_get(const HandleTopToolsHArray1OfListOfShape* handle) {
-    try { return {(*handle).get(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<TopTools_HArray1OfListOfShape*> HandleTopToolsHArray1OfListOfShape_get_mut(HandleTopToolsHArray1OfListOfShape* handle) {
-    try { return {(*handle).get(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<HandleStandardTransient*> HandleTopToolsHArray1OfListOfShape_to_HandleStandardTransient(const HandleTopToolsHArray1OfListOfShape* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<bool> TopTools_HArray1OfListOfShape_inherited_IsInstance(const TopTools_HArray1OfListOfShape* self, Handle(Standard_Type) const& theType) {
-    try { return {self->IsInstance(theType), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<bool> TopTools_HArray1OfListOfShape_inherited_IsKind(const TopTools_HArray1OfListOfShape* self, Handle(Standard_Type) const& theType) {
-    try { return {self->IsKind(theType), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Standard_Transient*> TopTools_HArray1OfListOfShape_inherited_This(const TopTools_HArray1OfListOfShape* self) {
-    try { return {self->This(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<int32_t> TopTools_HArray1OfListOfShape_inherited_GetRefCount(const TopTools_HArray1OfListOfShape* self) {
-    try { return {self->GetRefCount(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* TopTools_HArray1OfListOfShape_inherited_IncrementRefCounter(TopTools_HArray1OfListOfShape* self) {
-    try { self->IncrementRefCounter(); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<int32_t> TopTools_HArray1OfListOfShape_inherited_DecrementRefCounter(TopTools_HArray1OfListOfShape* self) {
-    try { return {self->DecrementRefCounter(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* TopTools_HArray1OfListOfShape_inherited_Delete(const TopTools_HArray1OfListOfShape* self) {
-    try { self->Delete(); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" void TopTools_HArray1OfListOfShape_destructor(TopTools_HArray1OfListOfShape* self_) { delete self_; }
-
-// ========================
-// TopTools_HArray1OfShape wrappers
-// ========================
-
-extern "C" OcctResult<TopTools_HArray1OfShape*> TopTools_HArray1OfShape_ctor() {
-    try { return {new TopTools_HArray1OfShape(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<TopTools_HArray1OfShape*> TopTools_HArray1OfShape_ctor_int2(int32_t theLower, int32_t theUpper) {
-    try { return {new TopTools_HArray1OfShape(theLower, theUpper), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<TopTools_HArray1OfShape*> TopTools_HArray1OfShape_ctor_int2_shape(int32_t theLower, int32_t theUpper, TopoDS_Shape const* theValue) {
-    try { return {new TopTools_HArray1OfShape(theLower, theUpper, *theValue), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<TopTools_HArray1OfShape*> TopTools_HArray1OfShape_ctor_shape_int2_bool(TopoDS_Shape const* theBegin, int32_t theLower, int32_t theUpper, bool arg3) {
-    try { return {new TopTools_HArray1OfShape(*theBegin, theLower, theUpper, arg3), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<TopTools_HArray1OfShape*> TopTools_HArray1OfShape_ctor_array1ofshape(TopTools_Array1OfShape const* theOther) {
-    try { return {new TopTools_HArray1OfShape(*theOther), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<TopTools_Array1OfShape const*> TopTools_HArray1OfShape_array1(const TopTools_HArray1OfShape* self_) {
-    try { return {&(self_->Array1()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<TopTools_Array1OfShape*> TopTools_HArray1OfShape_change_array1(TopTools_HArray1OfShape* self_) {
-    try { return {&(self_->ChangeArray1()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Handle(Standard_Type) const*> TopTools_HArray1OfShape_dynamic_type(const TopTools_HArray1OfShape* self_) {
-    try { return {&(self_->DynamicType()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<char const*> TopTools_HArray1OfShape_get_type_name() {
-    try { return {TopTools_HArray1OfShape::get_type_name(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Handle(Standard_Type) const*> TopTools_HArray1OfShape_get_type_descriptor() {
-    try { return {&(TopTools_HArray1OfShape::get_type_descriptor()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<const Standard_Transient*> TopTools_HArray1OfShape_as_Standard_Transient(const TopTools_HArray1OfShape* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<Standard_Transient*> TopTools_HArray1OfShape_as_Standard_Transient_mut(TopTools_HArray1OfShape* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleTopToolsHArray1OfShape*> TopTools_HArray1OfShape_to_handle(TopTools_HArray1OfShape* obj) {
-    try { return {new HandleTopToolsHArray1OfShape(obj), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<const TopTools_HArray1OfShape*> HandleTopToolsHArray1OfShape_get(const HandleTopToolsHArray1OfShape* handle) {
-    try { return {(*handle).get(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<TopTools_HArray1OfShape*> HandleTopToolsHArray1OfShape_get_mut(HandleTopToolsHArray1OfShape* handle) {
-    try { return {(*handle).get(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<HandleStandardTransient*> HandleTopToolsHArray1OfShape_to_HandleStandardTransient(const HandleTopToolsHArray1OfShape* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<bool> TopTools_HArray1OfShape_inherited_IsInstance(const TopTools_HArray1OfShape* self, Handle(Standard_Type) const& theType) {
-    try { return {self->IsInstance(theType), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<bool> TopTools_HArray1OfShape_inherited_IsKind(const TopTools_HArray1OfShape* self, Handle(Standard_Type) const& theType) {
-    try { return {self->IsKind(theType), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Standard_Transient*> TopTools_HArray1OfShape_inherited_This(const TopTools_HArray1OfShape* self) {
-    try { return {self->This(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<int32_t> TopTools_HArray1OfShape_inherited_GetRefCount(const TopTools_HArray1OfShape* self) {
-    try { return {self->GetRefCount(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* TopTools_HArray1OfShape_inherited_IncrementRefCounter(TopTools_HArray1OfShape* self) {
-    try { self->IncrementRefCounter(); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<int32_t> TopTools_HArray1OfShape_inherited_DecrementRefCounter(TopTools_HArray1OfShape* self) {
-    try { return {self->DecrementRefCounter(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* TopTools_HArray1OfShape_inherited_Delete(const TopTools_HArray1OfShape* self) {
-    try { self->Delete(); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" void TopTools_HArray1OfShape_destructor(TopTools_HArray1OfShape* self_) { delete self_; }
-
-// ========================
-// TopTools_HArray2OfShape wrappers
-// ========================
-
-extern "C" OcctResult<TopTools_HArray2OfShape*> TopTools_HArray2OfShape_ctor_int4(int32_t theRowLow, int32_t theRowUpp, int32_t theColLow, int32_t theColUpp) {
-    try { return {new TopTools_HArray2OfShape(theRowLow, theRowUpp, theColLow, theColUpp), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<TopTools_HArray2OfShape*> TopTools_HArray2OfShape_ctor_int4_shape(int32_t theRowLow, int32_t theRowUpp, int32_t theColLow, int32_t theColUpp, TopoDS_Shape const* theValue) {
-    try { return {new TopTools_HArray2OfShape(theRowLow, theRowUpp, theColLow, theColUpp, *theValue), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<TopTools_HArray2OfShape*> TopTools_HArray2OfShape_ctor_array2ofshape(TopTools_Array2OfShape const* theOther) {
-    try { return {new TopTools_HArray2OfShape(*theOther), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<TopTools_Array2OfShape const*> TopTools_HArray2OfShape_array2(const TopTools_HArray2OfShape* self_) {
-    try { return {&(self_->Array2()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<TopTools_Array2OfShape*> TopTools_HArray2OfShape_change_array2(TopTools_HArray2OfShape* self_) {
-    try { return {&(self_->ChangeArray2()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Handle(Standard_Type) const*> TopTools_HArray2OfShape_dynamic_type(const TopTools_HArray2OfShape* self_) {
-    try { return {&(self_->DynamicType()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<char const*> TopTools_HArray2OfShape_get_type_name() {
-    try { return {TopTools_HArray2OfShape::get_type_name(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Handle(Standard_Type) const*> TopTools_HArray2OfShape_get_type_descriptor() {
-    try { return {&(TopTools_HArray2OfShape::get_type_descriptor()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<const Standard_Transient*> TopTools_HArray2OfShape_as_Standard_Transient(const TopTools_HArray2OfShape* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<Standard_Transient*> TopTools_HArray2OfShape_as_Standard_Transient_mut(TopTools_HArray2OfShape* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleTopToolsHArray2OfShape*> TopTools_HArray2OfShape_to_handle(TopTools_HArray2OfShape* obj) {
-    try { return {new HandleTopToolsHArray2OfShape(obj), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<const TopTools_HArray2OfShape*> HandleTopToolsHArray2OfShape_get(const HandleTopToolsHArray2OfShape* handle) {
-    try { return {(*handle).get(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<TopTools_HArray2OfShape*> HandleTopToolsHArray2OfShape_get_mut(HandleTopToolsHArray2OfShape* handle) {
-    try { return {(*handle).get(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<HandleStandardTransient*> HandleTopToolsHArray2OfShape_to_HandleStandardTransient(const HandleTopToolsHArray2OfShape* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<bool> TopTools_HArray2OfShape_inherited_IsInstance(const TopTools_HArray2OfShape* self, Handle(Standard_Type) const& theType) {
-    try { return {self->IsInstance(theType), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<bool> TopTools_HArray2OfShape_inherited_IsKind(const TopTools_HArray2OfShape* self, Handle(Standard_Type) const& theType) {
-    try { return {self->IsKind(theType), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Standard_Transient*> TopTools_HArray2OfShape_inherited_This(const TopTools_HArray2OfShape* self) {
-    try { return {self->This(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<int32_t> TopTools_HArray2OfShape_inherited_GetRefCount(const TopTools_HArray2OfShape* self) {
-    try { return {self->GetRefCount(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* TopTools_HArray2OfShape_inherited_IncrementRefCounter(TopTools_HArray2OfShape* self) {
-    try { self->IncrementRefCounter(); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<int32_t> TopTools_HArray2OfShape_inherited_DecrementRefCounter(TopTools_HArray2OfShape* self) {
-    try { return {self->DecrementRefCounter(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* TopTools_HArray2OfShape_inherited_Delete(const TopTools_HArray2OfShape* self) {
-    try { self->Delete(); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" void TopTools_HArray2OfShape_destructor(TopTools_HArray2OfShape* self_) { delete self_; }
-
-// ========================
-// TopTools_HSequenceOfShape wrappers
-// ========================
-
-extern "C" OcctResult<TopTools_HSequenceOfShape*> TopTools_HSequenceOfShape_ctor() {
-    try { return {new TopTools_HSequenceOfShape(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<TopTools_HSequenceOfShape*> TopTools_HSequenceOfShape_ctor_sequenceofshape(TopTools_SequenceOfShape const* theOther) {
-    try { return {new TopTools_HSequenceOfShape(*theOther), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<TopTools_SequenceOfShape const*> TopTools_HSequenceOfShape_sequence(const TopTools_HSequenceOfShape* self_) {
-    try { return {&(self_->Sequence()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* TopTools_HSequenceOfShape_append_shape(TopTools_HSequenceOfShape* self_, TopoDS_Shape const* theItem) {
-    try { self_->Append(*theItem); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* TopTools_HSequenceOfShape_append_sequenceofshape(TopTools_HSequenceOfShape* self_, TopTools_SequenceOfShape* theSequence) {
-    try { self_->Append(*theSequence); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<TopTools_SequenceOfShape*> TopTools_HSequenceOfShape_change_sequence(TopTools_HSequenceOfShape* self_) {
-    try { return {&(self_->ChangeSequence()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Handle(Standard_Type) const*> TopTools_HSequenceOfShape_dynamic_type(const TopTools_HSequenceOfShape* self_) {
-    try { return {&(self_->DynamicType()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<char const*> TopTools_HSequenceOfShape_get_type_name() {
-    try { return {TopTools_HSequenceOfShape::get_type_name(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Handle(Standard_Type) const*> TopTools_HSequenceOfShape_get_type_descriptor() {
-    try { return {&(TopTools_HSequenceOfShape::get_type_descriptor()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<const TopTools_SequenceOfShape*> TopTools_HSequenceOfShape_as_TopTools_SequenceOfShape(const TopTools_HSequenceOfShape* self_) { return {static_cast<const TopTools_SequenceOfShape*>(self_), nullptr}; }
-extern "C" OcctResult<TopTools_SequenceOfShape*> TopTools_HSequenceOfShape_as_TopTools_SequenceOfShape_mut(TopTools_HSequenceOfShape* self_) { return {static_cast<TopTools_SequenceOfShape*>(self_), nullptr}; }
-extern "C" OcctResult<const Standard_Transient*> TopTools_HSequenceOfShape_as_Standard_Transient(const TopTools_HSequenceOfShape* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<Standard_Transient*> TopTools_HSequenceOfShape_as_Standard_Transient_mut(TopTools_HSequenceOfShape* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleTopToolsHSequenceOfShape*> TopTools_HSequenceOfShape_to_handle(TopTools_HSequenceOfShape* obj) {
-    try { return {new HandleTopToolsHSequenceOfShape(obj), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<const TopTools_HSequenceOfShape*> HandleTopToolsHSequenceOfShape_get(const HandleTopToolsHSequenceOfShape* handle) {
-    try { return {(*handle).get(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<TopTools_HSequenceOfShape*> HandleTopToolsHSequenceOfShape_get_mut(HandleTopToolsHSequenceOfShape* handle) {
-    try { return {(*handle).get(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<HandleStandardTransient*> HandleTopToolsHSequenceOfShape_to_HandleStandardTransient(const HandleTopToolsHSequenceOfShape* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<bool> TopTools_HSequenceOfShape_inherited_IsInstance(const TopTools_HSequenceOfShape* self, Handle(Standard_Type) const& theType) {
-    try { return {self->IsInstance(theType), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<bool> TopTools_HSequenceOfShape_inherited_IsKind(const TopTools_HSequenceOfShape* self, Handle(Standard_Type) const& theType) {
-    try { return {self->IsKind(theType), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Standard_Transient*> TopTools_HSequenceOfShape_inherited_This(const TopTools_HSequenceOfShape* self) {
-    try { return {self->This(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<int32_t> TopTools_HSequenceOfShape_inherited_GetRefCount(const TopTools_HSequenceOfShape* self) {
-    try { return {self->GetRefCount(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* TopTools_HSequenceOfShape_inherited_IncrementRefCounter(TopTools_HSequenceOfShape* self) {
-    try { self->IncrementRefCounter(); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<int32_t> TopTools_HSequenceOfShape_inherited_DecrementRefCounter(TopTools_HSequenceOfShape* self) {
-    try { return {self->DecrementRefCounter(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* TopTools_HSequenceOfShape_inherited_Delete(const TopTools_HSequenceOfShape* self) {
-    try { self->Delete(); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" void TopTools_HSequenceOfShape_destructor(TopTools_HSequenceOfShape* self_) { delete self_; }
-
-// ========================
 // TopTools_LocationSet wrappers
 // ========================
 
@@ -8095,32 +13581,6 @@ extern "C" const char* TopTools_LocationSet_read(TopTools_LocationSet* self_, St
     OCCT_CATCH_RETURN_VOID
 }
 extern "C" void TopTools_LocationSet_destructor(TopTools_LocationSet* self_) { delete self_; }
-
-// ========================
-// TopTools_MutexForShapeProvider wrappers
-// ========================
-
-extern "C" OcctResult<TopTools_MutexForShapeProvider*> TopTools_MutexForShapeProvider_ctor() {
-    try { return {new TopTools_MutexForShapeProvider(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* TopTools_MutexForShapeProvider_create_mutexes_for_sub_shapes(TopTools_MutexForShapeProvider* self_, TopoDS_Shape const* theShape, int32_t theType) {
-    try { self_->CreateMutexesForSubShapes(*theShape, static_cast<TopAbs_ShapeEnum>(theType)); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* TopTools_MutexForShapeProvider_create_mutex_for_shape(TopTools_MutexForShapeProvider* self_, TopoDS_Shape const* theShape) {
-    try { self_->CreateMutexForShape(*theShape); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<Standard_Mutex*> TopTools_MutexForShapeProvider_get_mutex(const TopTools_MutexForShapeProvider* self_, TopoDS_Shape const* theShape) {
-    try { return {self_->GetMutex(*theShape), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* TopTools_MutexForShapeProvider_remove_all_mutexes(TopTools_MutexForShapeProvider* self_) {
-    try { self_->RemoveAllMutexes(); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" void TopTools_MutexForShapeProvider_destructor(TopTools_MutexForShapeProvider* self_) { delete self_; }
 
 // ========================
 // TopTools_ShapeSet wrappers
@@ -8270,28 +13730,28 @@ extern "C" OcctResult<const Message_Attribute*> TopoDS_AlertAttribute_as_Message
 extern "C" OcctResult<Message_Attribute*> TopoDS_AlertAttribute_as_Message_Attribute_mut(TopoDS_AlertAttribute* self_) { return {static_cast<Message_Attribute*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> TopoDS_AlertAttribute_as_Standard_Transient(const TopoDS_AlertAttribute* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> TopoDS_AlertAttribute_as_Standard_Transient_mut(TopoDS_AlertAttribute* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleTopoDSAlertAttribute*> TopoDS_AlertAttribute_to_handle(TopoDS_AlertAttribute* obj) {
-    try { return {new HandleTopoDSAlertAttribute(obj), nullptr}; }
+extern "C" OcctResult<Handle_TopoDS_AlertAttribute*> TopoDS_AlertAttribute_to_handle(TopoDS_AlertAttribute* obj) {
+    try { return {new Handle_TopoDS_AlertAttribute(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const TopoDS_AlertAttribute*> HandleTopoDSAlertAttribute_get(const HandleTopoDSAlertAttribute* handle) {
+extern "C" OcctResult<const TopoDS_AlertAttribute*> Handle_TopoDS_AlertAttribute_get(const Handle_TopoDS_AlertAttribute* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TopoDS_AlertAttribute*> HandleTopoDSAlertAttribute_get_mut(HandleTopoDSAlertAttribute* handle) {
+extern "C" OcctResult<TopoDS_AlertAttribute*> Handle_TopoDS_AlertAttribute_get_mut(Handle_TopoDS_AlertAttribute* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleMessageAttributeStream*> HandleTopoDSAlertAttribute_to_HandleMessageAttributeStream(const HandleTopoDSAlertAttribute* self_) {
-    try { return {new HandleMessageAttributeStream(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Message_AttributeStream*> Handle_TopoDS_AlertAttribute_to_Handle_Message_AttributeStream(const Handle_TopoDS_AlertAttribute* self_) {
+    try { return {new Handle_Message_AttributeStream(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleMessageAttribute*> HandleTopoDSAlertAttribute_to_HandleMessageAttribute(const HandleTopoDSAlertAttribute* self_) {
-    try { return {new HandleMessageAttribute(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Message_Attribute*> Handle_TopoDS_AlertAttribute_to_Handle_Message_Attribute(const Handle_TopoDS_AlertAttribute* self_) {
+    try { return {new Handle_Message_Attribute(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleTopoDSAlertAttribute_to_HandleStandardTransient(const HandleTopoDSAlertAttribute* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_TopoDS_AlertAttribute_to_Handle_Standard_Transient(const Handle_TopoDS_AlertAttribute* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Standard_SStream const*> TopoDS_AlertAttribute_inherited_Stream(const TopoDS_AlertAttribute* self) {
@@ -8380,231 +13840,231 @@ extern "C" OcctResult<const Message_Alert*> TopoDS_AlertWithShape_as_Message_Ale
 extern "C" OcctResult<Message_Alert*> TopoDS_AlertWithShape_as_Message_Alert_mut(TopoDS_AlertWithShape* self_) { return {static_cast<Message_Alert*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> TopoDS_AlertWithShape_as_Standard_Transient(const TopoDS_AlertWithShape* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> TopoDS_AlertWithShape_as_Standard_Transient_mut(TopoDS_AlertWithShape* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleTopoDSAlertWithShape*> TopoDS_AlertWithShape_to_handle(TopoDS_AlertWithShape* obj) {
-    try { return {new HandleTopoDSAlertWithShape(obj), nullptr}; }
+extern "C" OcctResult<Handle_TopoDS_AlertWithShape*> TopoDS_AlertWithShape_to_handle(TopoDS_AlertWithShape* obj) {
+    try { return {new Handle_TopoDS_AlertWithShape(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const TopoDS_AlertWithShape*> HandleTopoDSAlertWithShape_get(const HandleTopoDSAlertWithShape* handle) {
+extern "C" OcctResult<const TopoDS_AlertWithShape*> Handle_TopoDS_AlertWithShape_get(const Handle_TopoDS_AlertWithShape* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TopoDS_AlertWithShape*> HandleTopoDSAlertWithShape_get_mut(HandleTopoDSAlertWithShape* handle) {
+extern "C" OcctResult<TopoDS_AlertWithShape*> Handle_TopoDS_AlertWithShape_get_mut(Handle_TopoDS_AlertWithShape* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleMessageAlert*> HandleTopoDSAlertWithShape_to_HandleMessageAlert(const HandleTopoDSAlertWithShape* self_) {
-    try { return {new HandleMessageAlert(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Message_Alert*> Handle_TopoDS_AlertWithShape_to_Handle_Message_Alert(const Handle_TopoDS_AlertWithShape* self_) {
+    try { return {new Handle_Message_Alert(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleTopoDSAlertWithShape_to_HandleStandardTransient(const HandleTopoDSAlertWithShape* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_TopoDS_AlertWithShape_to_Handle_Standard_Transient(const Handle_TopoDS_AlertWithShape* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleBOPAlgoAlertAcquiredSelfIntersection*> HandleTopoDSAlertWithShape_downcast_to_HandleBOPAlgoAlertAcquiredSelfIntersection(const HandleTopoDSAlertWithShape* self_) {
+extern "C" OcctResult<Handle_BOPAlgo_AlertAcquiredSelfIntersection*> Handle_TopoDS_AlertWithShape_downcast_to_Handle_BOPAlgo_AlertAcquiredSelfIntersection(const Handle_TopoDS_AlertWithShape* self_) {
     try {
     opencascade::handle<BOPAlgo_AlertAcquiredSelfIntersection> result = opencascade::handle<BOPAlgo_AlertAcquiredSelfIntersection>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleBOPAlgoAlertAcquiredSelfIntersection(result), nullptr};
+    return {new Handle_BOPAlgo_AlertAcquiredSelfIntersection(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleBOPAlgoAlertBadPositioning*> HandleTopoDSAlertWithShape_downcast_to_HandleBOPAlgoAlertBadPositioning(const HandleTopoDSAlertWithShape* self_) {
+extern "C" OcctResult<Handle_BOPAlgo_AlertBadPositioning*> Handle_TopoDS_AlertWithShape_downcast_to_Handle_BOPAlgo_AlertBadPositioning(const Handle_TopoDS_AlertWithShape* self_) {
     try {
     opencascade::handle<BOPAlgo_AlertBadPositioning> result = opencascade::handle<BOPAlgo_AlertBadPositioning>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleBOPAlgoAlertBadPositioning(result), nullptr};
+    return {new Handle_BOPAlgo_AlertBadPositioning(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleBOPAlgoAlertBuildingPCurveFailed*> HandleTopoDSAlertWithShape_downcast_to_HandleBOPAlgoAlertBuildingPCurveFailed(const HandleTopoDSAlertWithShape* self_) {
+extern "C" OcctResult<Handle_BOPAlgo_AlertBuildingPCurveFailed*> Handle_TopoDS_AlertWithShape_downcast_to_Handle_BOPAlgo_AlertBuildingPCurveFailed(const Handle_TopoDS_AlertWithShape* self_) {
     try {
     opencascade::handle<BOPAlgo_AlertBuildingPCurveFailed> result = opencascade::handle<BOPAlgo_AlertBuildingPCurveFailed>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleBOPAlgoAlertBuildingPCurveFailed(result), nullptr};
+    return {new Handle_BOPAlgo_AlertBuildingPCurveFailed(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleBOPAlgoAlertEmptyShape*> HandleTopoDSAlertWithShape_downcast_to_HandleBOPAlgoAlertEmptyShape(const HandleTopoDSAlertWithShape* self_) {
+extern "C" OcctResult<Handle_BOPAlgo_AlertEmptyShape*> Handle_TopoDS_AlertWithShape_downcast_to_Handle_BOPAlgo_AlertEmptyShape(const Handle_TopoDS_AlertWithShape* self_) {
     try {
     opencascade::handle<BOPAlgo_AlertEmptyShape> result = opencascade::handle<BOPAlgo_AlertEmptyShape>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleBOPAlgoAlertEmptyShape(result), nullptr};
+    return {new Handle_BOPAlgo_AlertEmptyShape(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleBOPAlgoAlertFaceBuilderUnusedEdges*> HandleTopoDSAlertWithShape_downcast_to_HandleBOPAlgoAlertFaceBuilderUnusedEdges(const HandleTopoDSAlertWithShape* self_) {
+extern "C" OcctResult<Handle_BOPAlgo_AlertFaceBuilderUnusedEdges*> Handle_TopoDS_AlertWithShape_downcast_to_Handle_BOPAlgo_AlertFaceBuilderUnusedEdges(const Handle_TopoDS_AlertWithShape* self_) {
     try {
     opencascade::handle<BOPAlgo_AlertFaceBuilderUnusedEdges> result = opencascade::handle<BOPAlgo_AlertFaceBuilderUnusedEdges>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleBOPAlgoAlertFaceBuilderUnusedEdges(result), nullptr};
+    return {new Handle_BOPAlgo_AlertFaceBuilderUnusedEdges(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleBOPAlgoAlertIntersectionOfPairOfShapesFailed*> HandleTopoDSAlertWithShape_downcast_to_HandleBOPAlgoAlertIntersectionOfPairOfShapesFailed(const HandleTopoDSAlertWithShape* self_) {
+extern "C" OcctResult<Handle_BOPAlgo_AlertIntersectionOfPairOfShapesFailed*> Handle_TopoDS_AlertWithShape_downcast_to_Handle_BOPAlgo_AlertIntersectionOfPairOfShapesFailed(const Handle_TopoDS_AlertWithShape* self_) {
     try {
     opencascade::handle<BOPAlgo_AlertIntersectionOfPairOfShapesFailed> result = opencascade::handle<BOPAlgo_AlertIntersectionOfPairOfShapesFailed>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleBOPAlgoAlertIntersectionOfPairOfShapesFailed(result), nullptr};
+    return {new Handle_BOPAlgo_AlertIntersectionOfPairOfShapesFailed(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleBOPAlgoAlertNotSplittableEdge*> HandleTopoDSAlertWithShape_downcast_to_HandleBOPAlgoAlertNotSplittableEdge(const HandleTopoDSAlertWithShape* self_) {
+extern "C" OcctResult<Handle_BOPAlgo_AlertNotSplittableEdge*> Handle_TopoDS_AlertWithShape_downcast_to_Handle_BOPAlgo_AlertNotSplittableEdge(const Handle_TopoDS_AlertWithShape* self_) {
     try {
     opencascade::handle<BOPAlgo_AlertNotSplittableEdge> result = opencascade::handle<BOPAlgo_AlertNotSplittableEdge>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleBOPAlgoAlertNotSplittableEdge(result), nullptr};
+    return {new Handle_BOPAlgo_AlertNotSplittableEdge(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleBOPAlgoAlertRemovalOfIBForEdgesFailed*> HandleTopoDSAlertWithShape_downcast_to_HandleBOPAlgoAlertRemovalOfIBForEdgesFailed(const HandleTopoDSAlertWithShape* self_) {
+extern "C" OcctResult<Handle_BOPAlgo_AlertRemovalOfIBForEdgesFailed*> Handle_TopoDS_AlertWithShape_downcast_to_Handle_BOPAlgo_AlertRemovalOfIBForEdgesFailed(const Handle_TopoDS_AlertWithShape* self_) {
     try {
     opencascade::handle<BOPAlgo_AlertRemovalOfIBForEdgesFailed> result = opencascade::handle<BOPAlgo_AlertRemovalOfIBForEdgesFailed>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleBOPAlgoAlertRemovalOfIBForEdgesFailed(result), nullptr};
+    return {new Handle_BOPAlgo_AlertRemovalOfIBForEdgesFailed(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleBOPAlgoAlertRemovalOfIBForFacesFailed*> HandleTopoDSAlertWithShape_downcast_to_HandleBOPAlgoAlertRemovalOfIBForFacesFailed(const HandleTopoDSAlertWithShape* self_) {
+extern "C" OcctResult<Handle_BOPAlgo_AlertRemovalOfIBForFacesFailed*> Handle_TopoDS_AlertWithShape_downcast_to_Handle_BOPAlgo_AlertRemovalOfIBForFacesFailed(const Handle_TopoDS_AlertWithShape* self_) {
     try {
     opencascade::handle<BOPAlgo_AlertRemovalOfIBForFacesFailed> result = opencascade::handle<BOPAlgo_AlertRemovalOfIBForFacesFailed>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleBOPAlgoAlertRemovalOfIBForFacesFailed(result), nullptr};
+    return {new Handle_BOPAlgo_AlertRemovalOfIBForFacesFailed(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleBOPAlgoAlertRemovalOfIBForMDimShapes*> HandleTopoDSAlertWithShape_downcast_to_HandleBOPAlgoAlertRemovalOfIBForMDimShapes(const HandleTopoDSAlertWithShape* self_) {
+extern "C" OcctResult<Handle_BOPAlgo_AlertRemovalOfIBForMDimShapes*> Handle_TopoDS_AlertWithShape_downcast_to_Handle_BOPAlgo_AlertRemovalOfIBForMDimShapes(const Handle_TopoDS_AlertWithShape* self_) {
     try {
     opencascade::handle<BOPAlgo_AlertRemovalOfIBForMDimShapes> result = opencascade::handle<BOPAlgo_AlertRemovalOfIBForMDimShapes>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleBOPAlgoAlertRemovalOfIBForMDimShapes(result), nullptr};
+    return {new Handle_BOPAlgo_AlertRemovalOfIBForMDimShapes(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleBOPAlgoAlertRemovalOfIBForSolidsFailed*> HandleTopoDSAlertWithShape_downcast_to_HandleBOPAlgoAlertRemovalOfIBForSolidsFailed(const HandleTopoDSAlertWithShape* self_) {
+extern "C" OcctResult<Handle_BOPAlgo_AlertRemovalOfIBForSolidsFailed*> Handle_TopoDS_AlertWithShape_downcast_to_Handle_BOPAlgo_AlertRemovalOfIBForSolidsFailed(const Handle_TopoDS_AlertWithShape* self_) {
     try {
     opencascade::handle<BOPAlgo_AlertRemovalOfIBForSolidsFailed> result = opencascade::handle<BOPAlgo_AlertRemovalOfIBForSolidsFailed>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleBOPAlgoAlertRemovalOfIBForSolidsFailed(result), nullptr};
+    return {new Handle_BOPAlgo_AlertRemovalOfIBForSolidsFailed(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleBOPAlgoAlertSelfInterferingShape*> HandleTopoDSAlertWithShape_downcast_to_HandleBOPAlgoAlertSelfInterferingShape(const HandleTopoDSAlertWithShape* self_) {
+extern "C" OcctResult<Handle_BOPAlgo_AlertSelfInterferingShape*> Handle_TopoDS_AlertWithShape_downcast_to_Handle_BOPAlgo_AlertSelfInterferingShape(const Handle_TopoDS_AlertWithShape* self_) {
     try {
     opencascade::handle<BOPAlgo_AlertSelfInterferingShape> result = opencascade::handle<BOPAlgo_AlertSelfInterferingShape>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleBOPAlgoAlertSelfInterferingShape(result), nullptr};
+    return {new Handle_BOPAlgo_AlertSelfInterferingShape(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleBOPAlgoAlertShapeIsNotPeriodic*> HandleTopoDSAlertWithShape_downcast_to_HandleBOPAlgoAlertShapeIsNotPeriodic(const HandleTopoDSAlertWithShape* self_) {
+extern "C" OcctResult<Handle_BOPAlgo_AlertShapeIsNotPeriodic*> Handle_TopoDS_AlertWithShape_downcast_to_Handle_BOPAlgo_AlertShapeIsNotPeriodic(const Handle_TopoDS_AlertWithShape* self_) {
     try {
     opencascade::handle<BOPAlgo_AlertShapeIsNotPeriodic> result = opencascade::handle<BOPAlgo_AlertShapeIsNotPeriodic>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleBOPAlgoAlertShapeIsNotPeriodic(result), nullptr};
+    return {new Handle_BOPAlgo_AlertShapeIsNotPeriodic(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleBOPAlgoAlertShellSplitterFailed*> HandleTopoDSAlertWithShape_downcast_to_HandleBOPAlgoAlertShellSplitterFailed(const HandleTopoDSAlertWithShape* self_) {
+extern "C" OcctResult<Handle_BOPAlgo_AlertShellSplitterFailed*> Handle_TopoDS_AlertWithShape_downcast_to_Handle_BOPAlgo_AlertShellSplitterFailed(const Handle_TopoDS_AlertWithShape* self_) {
     try {
     opencascade::handle<BOPAlgo_AlertShellSplitterFailed> result = opencascade::handle<BOPAlgo_AlertShellSplitterFailed>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleBOPAlgoAlertShellSplitterFailed(result), nullptr};
+    return {new Handle_BOPAlgo_AlertShellSplitterFailed(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleBOPAlgoAlertSolidBuilderUnusedFaces*> HandleTopoDSAlertWithShape_downcast_to_HandleBOPAlgoAlertSolidBuilderUnusedFaces(const HandleTopoDSAlertWithShape* self_) {
+extern "C" OcctResult<Handle_BOPAlgo_AlertSolidBuilderUnusedFaces*> Handle_TopoDS_AlertWithShape_downcast_to_Handle_BOPAlgo_AlertSolidBuilderUnusedFaces(const Handle_TopoDS_AlertWithShape* self_) {
     try {
     opencascade::handle<BOPAlgo_AlertSolidBuilderUnusedFaces> result = opencascade::handle<BOPAlgo_AlertSolidBuilderUnusedFaces>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleBOPAlgoAlertSolidBuilderUnusedFaces(result), nullptr};
+    return {new Handle_BOPAlgo_AlertSolidBuilderUnusedFaces(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleBOPAlgoAlertTooSmallEdge*> HandleTopoDSAlertWithShape_downcast_to_HandleBOPAlgoAlertTooSmallEdge(const HandleTopoDSAlertWithShape* self_) {
+extern "C" OcctResult<Handle_BOPAlgo_AlertTooSmallEdge*> Handle_TopoDS_AlertWithShape_downcast_to_Handle_BOPAlgo_AlertTooSmallEdge(const Handle_TopoDS_AlertWithShape* self_) {
     try {
     opencascade::handle<BOPAlgo_AlertTooSmallEdge> result = opencascade::handle<BOPAlgo_AlertTooSmallEdge>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleBOPAlgoAlertTooSmallEdge(result), nullptr};
+    return {new Handle_BOPAlgo_AlertTooSmallEdge(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleBOPAlgoAlertUnableToGlue*> HandleTopoDSAlertWithShape_downcast_to_HandleBOPAlgoAlertUnableToGlue(const HandleTopoDSAlertWithShape* self_) {
+extern "C" OcctResult<Handle_BOPAlgo_AlertUnableToGlue*> Handle_TopoDS_AlertWithShape_downcast_to_Handle_BOPAlgo_AlertUnableToGlue(const Handle_TopoDS_AlertWithShape* self_) {
     try {
     opencascade::handle<BOPAlgo_AlertUnableToGlue> result = opencascade::handle<BOPAlgo_AlertUnableToGlue>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleBOPAlgoAlertUnableToGlue(result), nullptr};
+    return {new Handle_BOPAlgo_AlertUnableToGlue(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleBOPAlgoAlertUnableToMakeClosedEdgeOnFace*> HandleTopoDSAlertWithShape_downcast_to_HandleBOPAlgoAlertUnableToMakeClosedEdgeOnFace(const HandleTopoDSAlertWithShape* self_) {
+extern "C" OcctResult<Handle_BOPAlgo_AlertUnableToMakeClosedEdgeOnFace*> Handle_TopoDS_AlertWithShape_downcast_to_Handle_BOPAlgo_AlertUnableToMakeClosedEdgeOnFace(const Handle_TopoDS_AlertWithShape* self_) {
     try {
     opencascade::handle<BOPAlgo_AlertUnableToMakeClosedEdgeOnFace> result = opencascade::handle<BOPAlgo_AlertUnableToMakeClosedEdgeOnFace>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleBOPAlgoAlertUnableToMakeClosedEdgeOnFace(result), nullptr};
+    return {new Handle_BOPAlgo_AlertUnableToMakeClosedEdgeOnFace(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleBOPAlgoAlertUnableToMakeIdentical*> HandleTopoDSAlertWithShape_downcast_to_HandleBOPAlgoAlertUnableToMakeIdentical(const HandleTopoDSAlertWithShape* self_) {
+extern "C" OcctResult<Handle_BOPAlgo_AlertUnableToMakeIdentical*> Handle_TopoDS_AlertWithShape_downcast_to_Handle_BOPAlgo_AlertUnableToMakeIdentical(const Handle_TopoDS_AlertWithShape* self_) {
     try {
     opencascade::handle<BOPAlgo_AlertUnableToMakeIdentical> result = opencascade::handle<BOPAlgo_AlertUnableToMakeIdentical>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleBOPAlgoAlertUnableToMakeIdentical(result), nullptr};
+    return {new Handle_BOPAlgo_AlertUnableToMakeIdentical(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleBOPAlgoAlertUnableToMakePeriodic*> HandleTopoDSAlertWithShape_downcast_to_HandleBOPAlgoAlertUnableToMakePeriodic(const HandleTopoDSAlertWithShape* self_) {
+extern "C" OcctResult<Handle_BOPAlgo_AlertUnableToMakePeriodic*> Handle_TopoDS_AlertWithShape_downcast_to_Handle_BOPAlgo_AlertUnableToMakePeriodic(const Handle_TopoDS_AlertWithShape* self_) {
     try {
     opencascade::handle<BOPAlgo_AlertUnableToMakePeriodic> result = opencascade::handle<BOPAlgo_AlertUnableToMakePeriodic>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleBOPAlgoAlertUnableToMakePeriodic(result), nullptr};
+    return {new Handle_BOPAlgo_AlertUnableToMakePeriodic(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleBOPAlgoAlertUnableToOrientTheShape*> HandleTopoDSAlertWithShape_downcast_to_HandleBOPAlgoAlertUnableToOrientTheShape(const HandleTopoDSAlertWithShape* self_) {
+extern "C" OcctResult<Handle_BOPAlgo_AlertUnableToOrientTheShape*> Handle_TopoDS_AlertWithShape_downcast_to_Handle_BOPAlgo_AlertUnableToOrientTheShape(const Handle_TopoDS_AlertWithShape* self_) {
     try {
     opencascade::handle<BOPAlgo_AlertUnableToOrientTheShape> result = opencascade::handle<BOPAlgo_AlertUnableToOrientTheShape>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleBOPAlgoAlertUnableToOrientTheShape(result), nullptr};
+    return {new Handle_BOPAlgo_AlertUnableToOrientTheShape(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleBOPAlgoAlertUnableToRemoveTheFeature*> HandleTopoDSAlertWithShape_downcast_to_HandleBOPAlgoAlertUnableToRemoveTheFeature(const HandleTopoDSAlertWithShape* self_) {
+extern "C" OcctResult<Handle_BOPAlgo_AlertUnableToRemoveTheFeature*> Handle_TopoDS_AlertWithShape_downcast_to_Handle_BOPAlgo_AlertUnableToRemoveTheFeature(const Handle_TopoDS_AlertWithShape* self_) {
     try {
     opencascade::handle<BOPAlgo_AlertUnableToRemoveTheFeature> result = opencascade::handle<BOPAlgo_AlertUnableToRemoveTheFeature>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleBOPAlgoAlertUnableToRemoveTheFeature(result), nullptr};
+    return {new Handle_BOPAlgo_AlertUnableToRemoveTheFeature(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleBOPAlgoAlertUnableToRepeat*> HandleTopoDSAlertWithShape_downcast_to_HandleBOPAlgoAlertUnableToRepeat(const HandleTopoDSAlertWithShape* self_) {
+extern "C" OcctResult<Handle_BOPAlgo_AlertUnableToRepeat*> Handle_TopoDS_AlertWithShape_downcast_to_Handle_BOPAlgo_AlertUnableToRepeat(const Handle_TopoDS_AlertWithShape* self_) {
     try {
     opencascade::handle<BOPAlgo_AlertUnableToRepeat> result = opencascade::handle<BOPAlgo_AlertUnableToRepeat>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleBOPAlgoAlertUnableToRepeat(result), nullptr};
+    return {new Handle_BOPAlgo_AlertUnableToRepeat(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleBOPAlgoAlertUnableToTrim*> HandleTopoDSAlertWithShape_downcast_to_HandleBOPAlgoAlertUnableToTrim(const HandleTopoDSAlertWithShape* self_) {
+extern "C" OcctResult<Handle_BOPAlgo_AlertUnableToTrim*> Handle_TopoDS_AlertWithShape_downcast_to_Handle_BOPAlgo_AlertUnableToTrim(const Handle_TopoDS_AlertWithShape* self_) {
     try {
     opencascade::handle<BOPAlgo_AlertUnableToTrim> result = opencascade::handle<BOPAlgo_AlertUnableToTrim>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleBOPAlgoAlertUnableToTrim(result), nullptr};
+    return {new Handle_BOPAlgo_AlertUnableToTrim(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleBOPAlgoAlertUnknownShape*> HandleTopoDSAlertWithShape_downcast_to_HandleBOPAlgoAlertUnknownShape(const HandleTopoDSAlertWithShape* self_) {
+extern "C" OcctResult<Handle_BOPAlgo_AlertUnknownShape*> Handle_TopoDS_AlertWithShape_downcast_to_Handle_BOPAlgo_AlertUnknownShape(const Handle_TopoDS_AlertWithShape* self_) {
     try {
     opencascade::handle<BOPAlgo_AlertUnknownShape> result = opencascade::handle<BOPAlgo_AlertUnknownShape>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleBOPAlgoAlertUnknownShape(result), nullptr};
+    return {new Handle_BOPAlgo_AlertUnknownShape(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleBOPAlgoAlertUnsupportedType*> HandleTopoDSAlertWithShape_downcast_to_HandleBOPAlgoAlertUnsupportedType(const HandleTopoDSAlertWithShape* self_) {
+extern "C" OcctResult<Handle_BOPAlgo_AlertUnsupportedType*> Handle_TopoDS_AlertWithShape_downcast_to_Handle_BOPAlgo_AlertUnsupportedType(const Handle_TopoDS_AlertWithShape* self_) {
     try {
     opencascade::handle<BOPAlgo_AlertUnsupportedType> result = opencascade::handle<BOPAlgo_AlertUnsupportedType>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleBOPAlgoAlertUnsupportedType(result), nullptr};
+    return {new Handle_BOPAlgo_AlertUnsupportedType(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
@@ -9244,10 +14704,6 @@ extern "C" void TopoDS_Face_destructor(TopoDS_Face* self_) { delete self_; }
 // TopoDS_FrozenShape wrappers
 // ========================
 
-extern "C" OcctResult<TopoDS_FrozenShape*> TopoDS_FrozenShape_ctor() {
-    try { return {new TopoDS_FrozenShape(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
 extern "C" OcctResult<TopoDS_FrozenShape*> TopoDS_FrozenShape_ctor_charptr(const char* theMessage) {
     try { return {new TopoDS_FrozenShape(theMessage), nullptr}; }
     OCCT_CATCH_RETURN
@@ -9256,102 +14712,20 @@ extern "C" OcctResult<TopoDS_FrozenShape*> TopoDS_FrozenShape_ctor_charptr2(cons
     try { return {new TopoDS_FrozenShape(theMessage, theStackTrace), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(Standard_Type) const*> TopoDS_FrozenShape_dynamic_type(const TopoDS_FrozenShape* self_) {
-    try { return {&(self_->DynamicType()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* TopoDS_FrozenShape_raise_charptr(const char* theMessage) {
-    try { TopoDS_FrozenShape::Raise(theMessage); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* TopoDS_FrozenShape_raise_sstream(Standard_SStream* theMessage) {
-    try { TopoDS_FrozenShape::Raise(*theMessage); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<Handle(TopoDS_FrozenShape)*> TopoDS_FrozenShape_new_instance_charptr(const char* theMessage) {
-    try { return {new Handle(TopoDS_FrozenShape)(TopoDS_FrozenShape::NewInstance(theMessage)), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Handle(TopoDS_FrozenShape)*> TopoDS_FrozenShape_new_instance_charptr2(const char* theMessage, const char* theStackTrace) {
-    try { return {new Handle(TopoDS_FrozenShape)(TopoDS_FrozenShape::NewInstance(theMessage, theStackTrace)), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<char const*> TopoDS_FrozenShape_get_type_name() {
-    try { return {TopoDS_FrozenShape::get_type_name(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Handle(Standard_Type) const*> TopoDS_FrozenShape_get_type_descriptor() {
-    try { return {&(TopoDS_FrozenShape::get_type_descriptor()), nullptr}; }
+extern "C" OcctResult<char const*> TopoDS_FrozenShape_exception_type(const TopoDS_FrozenShape* self_) {
+    try { return {self_->ExceptionType(), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<const Standard_DomainError*> TopoDS_FrozenShape_as_Standard_DomainError(const TopoDS_FrozenShape* self_) { return {static_cast<const Standard_DomainError*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_DomainError*> TopoDS_FrozenShape_as_Standard_DomainError_mut(TopoDS_FrozenShape* self_) { return {static_cast<Standard_DomainError*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Failure*> TopoDS_FrozenShape_as_Standard_Failure(const TopoDS_FrozenShape* self_) { return {static_cast<const Standard_Failure*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Failure*> TopoDS_FrozenShape_as_Standard_Failure_mut(TopoDS_FrozenShape* self_) { return {static_cast<Standard_Failure*>(self_), nullptr}; }
-extern "C" OcctResult<const Standard_Transient*> TopoDS_FrozenShape_as_Standard_Transient(const TopoDS_FrozenShape* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<Standard_Transient*> TopoDS_FrozenShape_as_Standard_Transient_mut(TopoDS_FrozenShape* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleTopoDSFrozenShape*> TopoDS_FrozenShape_to_handle(TopoDS_FrozenShape* obj) {
-    try { return {new HandleTopoDSFrozenShape(obj), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<const TopoDS_FrozenShape*> HandleTopoDSFrozenShape_get(const HandleTopoDSFrozenShape* handle) {
-    try { return {(*handle).get(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<TopoDS_FrozenShape*> HandleTopoDSFrozenShape_get_mut(HandleTopoDSFrozenShape* handle) {
-    try { return {(*handle).get(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<HandleStandardDomainError*> HandleTopoDSFrozenShape_to_HandleStandardDomainError(const HandleTopoDSFrozenShape* self_) {
-    try { return {new HandleStandardDomainError(*self_), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<HandleStandardFailure*> HandleTopoDSFrozenShape_to_HandleStandardFailure(const HandleTopoDSFrozenShape* self_) {
-    try { return {new HandleStandardFailure(*self_), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<HandleStandardTransient*> HandleTopoDSFrozenShape_to_HandleStandardTransient(const HandleTopoDSFrozenShape* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<TopoDS_FrozenShape*> TopoDS_FrozenShape_clone(const TopoDS_FrozenShape* self_) {
+    try { return {new TopoDS_FrozenShape(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" const char* TopoDS_FrozenShape_inherited_Print(const TopoDS_FrozenShape* self, Standard_OStream& theStream) {
     try { self->Print(theStream); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* TopoDS_FrozenShape_inherited_Reraise(TopoDS_FrozenShape* self) {
-    try { self->Reraise(); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* TopoDS_FrozenShape_inherited_Jump(TopoDS_FrozenShape* self) {
-    try { self->Jump(); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<bool> TopoDS_FrozenShape_inherited_IsInstance(const TopoDS_FrozenShape* self, Handle(Standard_Type) const& theType) {
-    try { return {self->IsInstance(theType), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<bool> TopoDS_FrozenShape_inherited_IsKind(const TopoDS_FrozenShape* self, Handle(Standard_Type) const& theType) {
-    try { return {self->IsKind(theType), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Standard_Transient*> TopoDS_FrozenShape_inherited_This(const TopoDS_FrozenShape* self) {
-    try { return {self->This(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<int32_t> TopoDS_FrozenShape_inherited_GetRefCount(const TopoDS_FrozenShape* self) {
-    try { return {self->GetRefCount(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* TopoDS_FrozenShape_inherited_IncrementRefCounter(TopoDS_FrozenShape* self) {
-    try { self->IncrementRefCounter(); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<int32_t> TopoDS_FrozenShape_inherited_DecrementRefCounter(TopoDS_FrozenShape* self) {
-    try { return {self->DecrementRefCounter(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* TopoDS_FrozenShape_inherited_Delete(const TopoDS_FrozenShape* self) {
-    try { self->Delete(); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
 extern "C" void TopoDS_FrozenShape_destructor(TopoDS_FrozenShape* self_) { delete self_; }
@@ -9394,20 +14768,20 @@ extern "C" OcctResult<Handle(Standard_Type) const*> TopoDS_HShape_get_type_descr
 }
 extern "C" OcctResult<const Standard_Transient*> TopoDS_HShape_as_Standard_Transient(const TopoDS_HShape* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> TopoDS_HShape_as_Standard_Transient_mut(TopoDS_HShape* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleTopoDSHShape*> TopoDS_HShape_to_handle(TopoDS_HShape* obj) {
-    try { return {new HandleTopoDSHShape(obj), nullptr}; }
+extern "C" OcctResult<Handle_TopoDS_HShape*> TopoDS_HShape_to_handle(TopoDS_HShape* obj) {
+    try { return {new Handle_TopoDS_HShape(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const TopoDS_HShape*> HandleTopoDSHShape_get(const HandleTopoDSHShape* handle) {
+extern "C" OcctResult<const TopoDS_HShape*> Handle_TopoDS_HShape_get(const Handle_TopoDS_HShape* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TopoDS_HShape*> HandleTopoDSHShape_get_mut(HandleTopoDSHShape* handle) {
+extern "C" OcctResult<TopoDS_HShape*> Handle_TopoDS_HShape_get_mut(Handle_TopoDS_HShape* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleTopoDSHShape_to_HandleStandardTransient(const HandleTopoDSHShape* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_TopoDS_HShape_to_Handle_Standard_Transient(const Handle_TopoDS_HShape* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> TopoDS_HShape_inherited_IsInstance(const TopoDS_HShape* self, Handle(Standard_Type) const& theType) {
@@ -9478,10 +14852,6 @@ extern "C" void TopoDS_Iterator_destructor(TopoDS_Iterator* self_) { delete self
 // TopoDS_LockedShape wrappers
 // ========================
 
-extern "C" OcctResult<TopoDS_LockedShape*> TopoDS_LockedShape_ctor() {
-    try { return {new TopoDS_LockedShape(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
 extern "C" OcctResult<TopoDS_LockedShape*> TopoDS_LockedShape_ctor_charptr(const char* theMessage) {
     try { return {new TopoDS_LockedShape(theMessage), nullptr}; }
     OCCT_CATCH_RETURN
@@ -9490,102 +14860,20 @@ extern "C" OcctResult<TopoDS_LockedShape*> TopoDS_LockedShape_ctor_charptr2(cons
     try { return {new TopoDS_LockedShape(theMessage, theStackTrace), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(Standard_Type) const*> TopoDS_LockedShape_dynamic_type(const TopoDS_LockedShape* self_) {
-    try { return {&(self_->DynamicType()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* TopoDS_LockedShape_raise_charptr(const char* theMessage) {
-    try { TopoDS_LockedShape::Raise(theMessage); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* TopoDS_LockedShape_raise_sstream(Standard_SStream* theMessage) {
-    try { TopoDS_LockedShape::Raise(*theMessage); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<Handle(TopoDS_LockedShape)*> TopoDS_LockedShape_new_instance_charptr(const char* theMessage) {
-    try { return {new Handle(TopoDS_LockedShape)(TopoDS_LockedShape::NewInstance(theMessage)), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Handle(TopoDS_LockedShape)*> TopoDS_LockedShape_new_instance_charptr2(const char* theMessage, const char* theStackTrace) {
-    try { return {new Handle(TopoDS_LockedShape)(TopoDS_LockedShape::NewInstance(theMessage, theStackTrace)), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<char const*> TopoDS_LockedShape_get_type_name() {
-    try { return {TopoDS_LockedShape::get_type_name(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Handle(Standard_Type) const*> TopoDS_LockedShape_get_type_descriptor() {
-    try { return {&(TopoDS_LockedShape::get_type_descriptor()), nullptr}; }
+extern "C" OcctResult<char const*> TopoDS_LockedShape_exception_type(const TopoDS_LockedShape* self_) {
+    try { return {self_->ExceptionType(), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<const Standard_DomainError*> TopoDS_LockedShape_as_Standard_DomainError(const TopoDS_LockedShape* self_) { return {static_cast<const Standard_DomainError*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_DomainError*> TopoDS_LockedShape_as_Standard_DomainError_mut(TopoDS_LockedShape* self_) { return {static_cast<Standard_DomainError*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Failure*> TopoDS_LockedShape_as_Standard_Failure(const TopoDS_LockedShape* self_) { return {static_cast<const Standard_Failure*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Failure*> TopoDS_LockedShape_as_Standard_Failure_mut(TopoDS_LockedShape* self_) { return {static_cast<Standard_Failure*>(self_), nullptr}; }
-extern "C" OcctResult<const Standard_Transient*> TopoDS_LockedShape_as_Standard_Transient(const TopoDS_LockedShape* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<Standard_Transient*> TopoDS_LockedShape_as_Standard_Transient_mut(TopoDS_LockedShape* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleTopoDSLockedShape*> TopoDS_LockedShape_to_handle(TopoDS_LockedShape* obj) {
-    try { return {new HandleTopoDSLockedShape(obj), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<const TopoDS_LockedShape*> HandleTopoDSLockedShape_get(const HandleTopoDSLockedShape* handle) {
-    try { return {(*handle).get(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<TopoDS_LockedShape*> HandleTopoDSLockedShape_get_mut(HandleTopoDSLockedShape* handle) {
-    try { return {(*handle).get(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<HandleStandardDomainError*> HandleTopoDSLockedShape_to_HandleStandardDomainError(const HandleTopoDSLockedShape* self_) {
-    try { return {new HandleStandardDomainError(*self_), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<HandleStandardFailure*> HandleTopoDSLockedShape_to_HandleStandardFailure(const HandleTopoDSLockedShape* self_) {
-    try { return {new HandleStandardFailure(*self_), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<HandleStandardTransient*> HandleTopoDSLockedShape_to_HandleStandardTransient(const HandleTopoDSLockedShape* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<TopoDS_LockedShape*> TopoDS_LockedShape_clone(const TopoDS_LockedShape* self_) {
+    try { return {new TopoDS_LockedShape(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" const char* TopoDS_LockedShape_inherited_Print(const TopoDS_LockedShape* self, Standard_OStream& theStream) {
     try { self->Print(theStream); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* TopoDS_LockedShape_inherited_Reraise(TopoDS_LockedShape* self) {
-    try { self->Reraise(); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* TopoDS_LockedShape_inherited_Jump(TopoDS_LockedShape* self) {
-    try { self->Jump(); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<bool> TopoDS_LockedShape_inherited_IsInstance(const TopoDS_LockedShape* self, Handle(Standard_Type) const& theType) {
-    try { return {self->IsInstance(theType), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<bool> TopoDS_LockedShape_inherited_IsKind(const TopoDS_LockedShape* self, Handle(Standard_Type) const& theType) {
-    try { return {self->IsKind(theType), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Standard_Transient*> TopoDS_LockedShape_inherited_This(const TopoDS_LockedShape* self) {
-    try { return {self->This(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<int32_t> TopoDS_LockedShape_inherited_GetRefCount(const TopoDS_LockedShape* self) {
-    try { return {self->GetRefCount(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* TopoDS_LockedShape_inherited_IncrementRefCounter(TopoDS_LockedShape* self) {
-    try { self->IncrementRefCounter(); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<int32_t> TopoDS_LockedShape_inherited_DecrementRefCounter(TopoDS_LockedShape* self) {
-    try { return {self->DecrementRefCounter(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* TopoDS_LockedShape_inherited_Delete(const TopoDS_LockedShape* self) {
-    try { self->Delete(); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
 extern "C" void TopoDS_LockedShape_destructor(TopoDS_LockedShape* self_) { delete self_; }
@@ -10064,10 +15352,6 @@ extern "C" OcctResult<Handle(TopoDS_TShape)*> TopoDS_TCompSolid_empty_copy(const
     try { return {new Handle(TopoDS_TShape)(self_->EmptyCopy()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<int32_t> TopoDS_TCompSolid_shape_type(const TopoDS_TCompSolid* self_) {
-    try { return {static_cast<int32_t>(self_->ShapeType()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
 extern "C" OcctResult<Handle(Standard_Type) const*> TopoDS_TCompSolid_dynamic_type(const TopoDS_TCompSolid* self_) {
     try { return {&(self_->DynamicType()), nullptr}; }
     OCCT_CATCH_RETURN
@@ -10084,24 +15368,24 @@ extern "C" OcctResult<const TopoDS_TShape*> TopoDS_TCompSolid_as_TopoDS_TShape(c
 extern "C" OcctResult<TopoDS_TShape*> TopoDS_TCompSolid_as_TopoDS_TShape_mut(TopoDS_TCompSolid* self_) { return {static_cast<TopoDS_TShape*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> TopoDS_TCompSolid_as_Standard_Transient(const TopoDS_TCompSolid* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> TopoDS_TCompSolid_as_Standard_Transient_mut(TopoDS_TCompSolid* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleTopoDSTCompSolid*> TopoDS_TCompSolid_to_handle(TopoDS_TCompSolid* obj) {
-    try { return {new HandleTopoDSTCompSolid(obj), nullptr}; }
+extern "C" OcctResult<Handle_TopoDS_TCompSolid*> TopoDS_TCompSolid_to_handle(TopoDS_TCompSolid* obj) {
+    try { return {new Handle_TopoDS_TCompSolid(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const TopoDS_TCompSolid*> HandleTopoDSTCompSolid_get(const HandleTopoDSTCompSolid* handle) {
+extern "C" OcctResult<const TopoDS_TCompSolid*> Handle_TopoDS_TCompSolid_get(const Handle_TopoDS_TCompSolid* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TopoDS_TCompSolid*> HandleTopoDSTCompSolid_get_mut(HandleTopoDSTCompSolid* handle) {
+extern "C" OcctResult<TopoDS_TCompSolid*> Handle_TopoDS_TCompSolid_get_mut(Handle_TopoDS_TCompSolid* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTopoDSTShape*> HandleTopoDSTCompSolid_to_HandleTopoDSTShape(const HandleTopoDSTCompSolid* self_) {
-    try { return {new HandleTopoDSTShape(*self_), nullptr}; }
+extern "C" OcctResult<Handle_TopoDS_TShape*> Handle_TopoDS_TCompSolid_to_Handle_TopoDS_TShape(const Handle_TopoDS_TCompSolid* self_) {
+    try { return {new Handle_TopoDS_TShape(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleTopoDSTCompSolid_to_HandleStandardTransient(const HandleTopoDSTCompSolid* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_TopoDS_TCompSolid_to_Handle_Standard_Transient(const Handle_TopoDS_TCompSolid* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> TopoDS_TCompSolid_inherited_Free(const TopoDS_TCompSolid* self) {
@@ -10134,6 +15418,10 @@ extern "C" OcctResult<bool> TopoDS_TCompSolid_inherited_Infinite(const TopoDS_TC
 }
 extern "C" OcctResult<bool> TopoDS_TCompSolid_inherited_Convex(const TopoDS_TCompSolid* self) {
     try { return {self->Convex(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<int32_t> TopoDS_TCompSolid_inherited_ShapeType(const TopoDS_TCompSolid* self) {
+    try { return {static_cast<int32_t>(self->ShapeType()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<int32_t> TopoDS_TCompSolid_inherited_NbChildren(const TopoDS_TCompSolid* self) {
@@ -10182,10 +15470,6 @@ extern "C" OcctResult<Handle(TopoDS_TShape)*> TopoDS_TCompound_empty_copy(const 
     try { return {new Handle(TopoDS_TShape)(self_->EmptyCopy()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<int32_t> TopoDS_TCompound_shape_type(const TopoDS_TCompound* self_) {
-    try { return {static_cast<int32_t>(self_->ShapeType()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
 extern "C" OcctResult<Handle(Standard_Type) const*> TopoDS_TCompound_dynamic_type(const TopoDS_TCompound* self_) {
     try { return {&(self_->DynamicType()), nullptr}; }
     OCCT_CATCH_RETURN
@@ -10202,24 +15486,24 @@ extern "C" OcctResult<const TopoDS_TShape*> TopoDS_TCompound_as_TopoDS_TShape(co
 extern "C" OcctResult<TopoDS_TShape*> TopoDS_TCompound_as_TopoDS_TShape_mut(TopoDS_TCompound* self_) { return {static_cast<TopoDS_TShape*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> TopoDS_TCompound_as_Standard_Transient(const TopoDS_TCompound* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> TopoDS_TCompound_as_Standard_Transient_mut(TopoDS_TCompound* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleTopoDSTCompound*> TopoDS_TCompound_to_handle(TopoDS_TCompound* obj) {
-    try { return {new HandleTopoDSTCompound(obj), nullptr}; }
+extern "C" OcctResult<Handle_TopoDS_TCompound*> TopoDS_TCompound_to_handle(TopoDS_TCompound* obj) {
+    try { return {new Handle_TopoDS_TCompound(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const TopoDS_TCompound*> HandleTopoDSTCompound_get(const HandleTopoDSTCompound* handle) {
+extern "C" OcctResult<const TopoDS_TCompound*> Handle_TopoDS_TCompound_get(const Handle_TopoDS_TCompound* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TopoDS_TCompound*> HandleTopoDSTCompound_get_mut(HandleTopoDSTCompound* handle) {
+extern "C" OcctResult<TopoDS_TCompound*> Handle_TopoDS_TCompound_get_mut(Handle_TopoDS_TCompound* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTopoDSTShape*> HandleTopoDSTCompound_to_HandleTopoDSTShape(const HandleTopoDSTCompound* self_) {
-    try { return {new HandleTopoDSTShape(*self_), nullptr}; }
+extern "C" OcctResult<Handle_TopoDS_TShape*> Handle_TopoDS_TCompound_to_Handle_TopoDS_TShape(const Handle_TopoDS_TCompound* self_) {
+    try { return {new Handle_TopoDS_TShape(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleTopoDSTCompound_to_HandleStandardTransient(const HandleTopoDSTCompound* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_TopoDS_TCompound_to_Handle_Standard_Transient(const Handle_TopoDS_TCompound* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> TopoDS_TCompound_inherited_Free(const TopoDS_TCompound* self) {
@@ -10252,6 +15536,10 @@ extern "C" OcctResult<bool> TopoDS_TCompound_inherited_Infinite(const TopoDS_TCo
 }
 extern "C" OcctResult<bool> TopoDS_TCompound_inherited_Convex(const TopoDS_TCompound* self) {
     try { return {self->Convex(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<int32_t> TopoDS_TCompound_inherited_ShapeType(const TopoDS_TCompound* self) {
+    try { return {static_cast<int32_t>(self->ShapeType()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<int32_t> TopoDS_TCompound_inherited_NbChildren(const TopoDS_TCompound* self) {
@@ -10292,8 +15580,8 @@ extern "C" void TopoDS_TCompound_destructor(TopoDS_TCompound* self_) { delete se
 // TopoDS_TEdge wrappers
 // ========================
 
-extern "C" OcctResult<int32_t> TopoDS_TEdge_shape_type(const TopoDS_TEdge* self_) {
-    try { return {static_cast<int32_t>(self_->ShapeType()), nullptr}; }
+extern "C" OcctResult<Handle(TopoDS_TShape)*> TopoDS_TEdge_empty_copy(const TopoDS_TEdge* self_) {
+    try { return {new Handle(TopoDS_TShape)(self_->EmptyCopy()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(Standard_Type) const*> TopoDS_TEdge_dynamic_type(const TopoDS_TEdge* self_) {
@@ -10312,27 +15600,31 @@ extern "C" OcctResult<const TopoDS_TShape*> TopoDS_TEdge_as_TopoDS_TShape(const 
 extern "C" OcctResult<TopoDS_TShape*> TopoDS_TEdge_as_TopoDS_TShape_mut(TopoDS_TEdge* self_) { return {static_cast<TopoDS_TShape*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> TopoDS_TEdge_as_Standard_Transient(const TopoDS_TEdge* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> TopoDS_TEdge_as_Standard_Transient_mut(TopoDS_TEdge* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<const TopoDS_TEdge*> HandleTopoDSTEdge_get(const HandleTopoDSTEdge* handle) {
+extern "C" OcctResult<Handle_TopoDS_TEdge*> TopoDS_TEdge_to_handle(TopoDS_TEdge* obj) {
+    try { return {new Handle_TopoDS_TEdge(obj), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<const TopoDS_TEdge*> Handle_TopoDS_TEdge_get(const Handle_TopoDS_TEdge* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TopoDS_TEdge*> HandleTopoDSTEdge_get_mut(HandleTopoDSTEdge* handle) {
+extern "C" OcctResult<TopoDS_TEdge*> Handle_TopoDS_TEdge_get_mut(Handle_TopoDS_TEdge* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTopoDSTShape*> HandleTopoDSTEdge_to_HandleTopoDSTShape(const HandleTopoDSTEdge* self_) {
-    try { return {new HandleTopoDSTShape(*self_), nullptr}; }
+extern "C" OcctResult<Handle_TopoDS_TShape*> Handle_TopoDS_TEdge_to_Handle_TopoDS_TShape(const Handle_TopoDS_TEdge* self_) {
+    try { return {new Handle_TopoDS_TShape(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleTopoDSTEdge_to_HandleStandardTransient(const HandleTopoDSTEdge* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_TopoDS_TEdge_to_Handle_Standard_Transient(const Handle_TopoDS_TEdge* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleBRepTEdge*> HandleTopoDSTEdge_downcast_to_HandleBRepTEdge(const HandleTopoDSTEdge* self_) {
+extern "C" OcctResult<Handle_BRep_TEdge*> Handle_TopoDS_TEdge_downcast_to_Handle_BRep_TEdge(const Handle_TopoDS_TEdge* self_) {
     try {
     opencascade::handle<BRep_TEdge> result = opencascade::handle<BRep_TEdge>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleBRepTEdge(result), nullptr};
+    return {new Handle_BRep_TEdge(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
@@ -10368,8 +15660,8 @@ extern "C" OcctResult<bool> TopoDS_TEdge_inherited_Convex(const TopoDS_TEdge* se
     try { return {self->Convex(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(TopoDS_TShape)*> TopoDS_TEdge_inherited_EmptyCopy(const TopoDS_TEdge* self) {
-    try { return {new Handle(TopoDS_TShape)(self->EmptyCopy()), nullptr}; }
+extern "C" OcctResult<int32_t> TopoDS_TEdge_inherited_ShapeType(const TopoDS_TEdge* self) {
+    try { return {static_cast<int32_t>(self->ShapeType()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<int32_t> TopoDS_TEdge_inherited_NbChildren(const TopoDS_TEdge* self) {
@@ -10418,10 +15710,6 @@ extern "C" OcctResult<Handle(TopoDS_TShape)*> TopoDS_TFace_empty_copy(const Topo
     try { return {new Handle(TopoDS_TShape)(self_->EmptyCopy()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<int32_t> TopoDS_TFace_shape_type(const TopoDS_TFace* self_) {
-    try { return {static_cast<int32_t>(self_->ShapeType()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
 extern "C" OcctResult<Handle(Standard_Type) const*> TopoDS_TFace_dynamic_type(const TopoDS_TFace* self_) {
     try { return {&(self_->DynamicType()), nullptr}; }
     OCCT_CATCH_RETURN
@@ -10438,31 +15726,31 @@ extern "C" OcctResult<const TopoDS_TShape*> TopoDS_TFace_as_TopoDS_TShape(const 
 extern "C" OcctResult<TopoDS_TShape*> TopoDS_TFace_as_TopoDS_TShape_mut(TopoDS_TFace* self_) { return {static_cast<TopoDS_TShape*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> TopoDS_TFace_as_Standard_Transient(const TopoDS_TFace* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> TopoDS_TFace_as_Standard_Transient_mut(TopoDS_TFace* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleTopoDSTFace*> TopoDS_TFace_to_handle(TopoDS_TFace* obj) {
-    try { return {new HandleTopoDSTFace(obj), nullptr}; }
+extern "C" OcctResult<Handle_TopoDS_TFace*> TopoDS_TFace_to_handle(TopoDS_TFace* obj) {
+    try { return {new Handle_TopoDS_TFace(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const TopoDS_TFace*> HandleTopoDSTFace_get(const HandleTopoDSTFace* handle) {
+extern "C" OcctResult<const TopoDS_TFace*> Handle_TopoDS_TFace_get(const Handle_TopoDS_TFace* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TopoDS_TFace*> HandleTopoDSTFace_get_mut(HandleTopoDSTFace* handle) {
+extern "C" OcctResult<TopoDS_TFace*> Handle_TopoDS_TFace_get_mut(Handle_TopoDS_TFace* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTopoDSTShape*> HandleTopoDSTFace_to_HandleTopoDSTShape(const HandleTopoDSTFace* self_) {
-    try { return {new HandleTopoDSTShape(*self_), nullptr}; }
+extern "C" OcctResult<Handle_TopoDS_TShape*> Handle_TopoDS_TFace_to_Handle_TopoDS_TShape(const Handle_TopoDS_TFace* self_) {
+    try { return {new Handle_TopoDS_TShape(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleTopoDSTFace_to_HandleStandardTransient(const HandleTopoDSTFace* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_TopoDS_TFace_to_Handle_Standard_Transient(const Handle_TopoDS_TFace* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleBRepTFace*> HandleTopoDSTFace_downcast_to_HandleBRepTFace(const HandleTopoDSTFace* self_) {
+extern "C" OcctResult<Handle_BRep_TFace*> Handle_TopoDS_TFace_downcast_to_Handle_BRep_TFace(const Handle_TopoDS_TFace* self_) {
     try {
     opencascade::handle<BRep_TFace> result = opencascade::handle<BRep_TFace>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleBRepTFace(result), nullptr};
+    return {new Handle_BRep_TFace(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
@@ -10496,6 +15784,10 @@ extern "C" OcctResult<bool> TopoDS_TFace_inherited_Infinite(const TopoDS_TFace* 
 }
 extern "C" OcctResult<bool> TopoDS_TFace_inherited_Convex(const TopoDS_TFace* self) {
     try { return {self->Convex(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<int32_t> TopoDS_TFace_inherited_ShapeType(const TopoDS_TFace* self) {
+    try { return {static_cast<int32_t>(self->ShapeType()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<int32_t> TopoDS_TFace_inherited_NbChildren(const TopoDS_TFace* self) {
@@ -10626,103 +15918,103 @@ extern "C" OcctResult<Handle(Standard_Type) const*> TopoDS_TShape_get_type_descr
 }
 extern "C" OcctResult<const Standard_Transient*> TopoDS_TShape_as_Standard_Transient(const TopoDS_TShape* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> TopoDS_TShape_as_Standard_Transient_mut(TopoDS_TShape* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<const TopoDS_TShape*> HandleTopoDSTShape_get(const HandleTopoDSTShape* handle) {
+extern "C" OcctResult<const TopoDS_TShape*> Handle_TopoDS_TShape_get(const Handle_TopoDS_TShape* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TopoDS_TShape*> HandleTopoDSTShape_get_mut(HandleTopoDSTShape* handle) {
+extern "C" OcctResult<TopoDS_TShape*> Handle_TopoDS_TShape_get_mut(Handle_TopoDS_TShape* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleTopoDSTShape_to_HandleStandardTransient(const HandleTopoDSTShape* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_TopoDS_TShape_to_Handle_Standard_Transient(const Handle_TopoDS_TShape* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleBRepTEdge*> HandleTopoDSTShape_downcast_to_HandleBRepTEdge(const HandleTopoDSTShape* self_) {
+extern "C" OcctResult<Handle_BRep_TEdge*> Handle_TopoDS_TShape_downcast_to_Handle_BRep_TEdge(const Handle_TopoDS_TShape* self_) {
     try {
     opencascade::handle<BRep_TEdge> result = opencascade::handle<BRep_TEdge>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleBRepTEdge(result), nullptr};
+    return {new Handle_BRep_TEdge(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleBRepTFace*> HandleTopoDSTShape_downcast_to_HandleBRepTFace(const HandleTopoDSTShape* self_) {
+extern "C" OcctResult<Handle_BRep_TFace*> Handle_TopoDS_TShape_downcast_to_Handle_BRep_TFace(const Handle_TopoDS_TShape* self_) {
     try {
     opencascade::handle<BRep_TFace> result = opencascade::handle<BRep_TFace>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleBRepTFace(result), nullptr};
+    return {new Handle_BRep_TFace(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleBRepTVertex*> HandleTopoDSTShape_downcast_to_HandleBRepTVertex(const HandleTopoDSTShape* self_) {
+extern "C" OcctResult<Handle_BRep_TVertex*> Handle_TopoDS_TShape_downcast_to_Handle_BRep_TVertex(const Handle_TopoDS_TShape* self_) {
     try {
     opencascade::handle<BRep_TVertex> result = opencascade::handle<BRep_TVertex>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleBRepTVertex(result), nullptr};
+    return {new Handle_BRep_TVertex(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTopoDSTCompSolid*> HandleTopoDSTShape_downcast_to_HandleTopoDSTCompSolid(const HandleTopoDSTShape* self_) {
+extern "C" OcctResult<Handle_TopoDS_TCompSolid*> Handle_TopoDS_TShape_downcast_to_Handle_TopoDS_TCompSolid(const Handle_TopoDS_TShape* self_) {
     try {
     opencascade::handle<TopoDS_TCompSolid> result = opencascade::handle<TopoDS_TCompSolid>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleTopoDSTCompSolid(result), nullptr};
+    return {new Handle_TopoDS_TCompSolid(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTopoDSTCompound*> HandleTopoDSTShape_downcast_to_HandleTopoDSTCompound(const HandleTopoDSTShape* self_) {
+extern "C" OcctResult<Handle_TopoDS_TCompound*> Handle_TopoDS_TShape_downcast_to_Handle_TopoDS_TCompound(const Handle_TopoDS_TShape* self_) {
     try {
     opencascade::handle<TopoDS_TCompound> result = opencascade::handle<TopoDS_TCompound>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleTopoDSTCompound(result), nullptr};
+    return {new Handle_TopoDS_TCompound(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTopoDSTEdge*> HandleTopoDSTShape_downcast_to_HandleTopoDSTEdge(const HandleTopoDSTShape* self_) {
+extern "C" OcctResult<Handle_TopoDS_TEdge*> Handle_TopoDS_TShape_downcast_to_Handle_TopoDS_TEdge(const Handle_TopoDS_TShape* self_) {
     try {
     opencascade::handle<TopoDS_TEdge> result = opencascade::handle<TopoDS_TEdge>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleTopoDSTEdge(result), nullptr};
+    return {new Handle_TopoDS_TEdge(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTopoDSTFace*> HandleTopoDSTShape_downcast_to_HandleTopoDSTFace(const HandleTopoDSTShape* self_) {
+extern "C" OcctResult<Handle_TopoDS_TFace*> Handle_TopoDS_TShape_downcast_to_Handle_TopoDS_TFace(const Handle_TopoDS_TShape* self_) {
     try {
     opencascade::handle<TopoDS_TFace> result = opencascade::handle<TopoDS_TFace>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleTopoDSTFace(result), nullptr};
+    return {new Handle_TopoDS_TFace(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTopoDSTShell*> HandleTopoDSTShape_downcast_to_HandleTopoDSTShell(const HandleTopoDSTShape* self_) {
+extern "C" OcctResult<Handle_TopoDS_TShell*> Handle_TopoDS_TShape_downcast_to_Handle_TopoDS_TShell(const Handle_TopoDS_TShape* self_) {
     try {
     opencascade::handle<TopoDS_TShell> result = opencascade::handle<TopoDS_TShell>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleTopoDSTShell(result), nullptr};
+    return {new Handle_TopoDS_TShell(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTopoDSTSolid*> HandleTopoDSTShape_downcast_to_HandleTopoDSTSolid(const HandleTopoDSTShape* self_) {
+extern "C" OcctResult<Handle_TopoDS_TSolid*> Handle_TopoDS_TShape_downcast_to_Handle_TopoDS_TSolid(const Handle_TopoDS_TShape* self_) {
     try {
     opencascade::handle<TopoDS_TSolid> result = opencascade::handle<TopoDS_TSolid>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleTopoDSTSolid(result), nullptr};
+    return {new Handle_TopoDS_TSolid(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTopoDSTVertex*> HandleTopoDSTShape_downcast_to_HandleTopoDSTVertex(const HandleTopoDSTShape* self_) {
+extern "C" OcctResult<Handle_TopoDS_TVertex*> Handle_TopoDS_TShape_downcast_to_Handle_TopoDS_TVertex(const Handle_TopoDS_TShape* self_) {
     try {
     opencascade::handle<TopoDS_TVertex> result = opencascade::handle<TopoDS_TVertex>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleTopoDSTVertex(result), nullptr};
+    return {new Handle_TopoDS_TVertex(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTopoDSTWire*> HandleTopoDSTShape_downcast_to_HandleTopoDSTWire(const HandleTopoDSTShape* self_) {
+extern "C" OcctResult<Handle_TopoDS_TWire*> Handle_TopoDS_TShape_downcast_to_Handle_TopoDS_TWire(const Handle_TopoDS_TShape* self_) {
     try {
     opencascade::handle<TopoDS_TWire> result = opencascade::handle<TopoDS_TWire>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleTopoDSTWire(result), nullptr};
+    return {new Handle_TopoDS_TWire(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
@@ -10768,10 +16060,6 @@ extern "C" OcctResult<Handle(TopoDS_TShape)*> TopoDS_TShell_empty_copy(const Top
     try { return {new Handle(TopoDS_TShape)(self_->EmptyCopy()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<int32_t> TopoDS_TShell_shape_type(const TopoDS_TShell* self_) {
-    try { return {static_cast<int32_t>(self_->ShapeType()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
 extern "C" OcctResult<Handle(Standard_Type) const*> TopoDS_TShell_dynamic_type(const TopoDS_TShell* self_) {
     try { return {&(self_->DynamicType()), nullptr}; }
     OCCT_CATCH_RETURN
@@ -10788,24 +16076,24 @@ extern "C" OcctResult<const TopoDS_TShape*> TopoDS_TShell_as_TopoDS_TShape(const
 extern "C" OcctResult<TopoDS_TShape*> TopoDS_TShell_as_TopoDS_TShape_mut(TopoDS_TShell* self_) { return {static_cast<TopoDS_TShape*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> TopoDS_TShell_as_Standard_Transient(const TopoDS_TShell* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> TopoDS_TShell_as_Standard_Transient_mut(TopoDS_TShell* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleTopoDSTShell*> TopoDS_TShell_to_handle(TopoDS_TShell* obj) {
-    try { return {new HandleTopoDSTShell(obj), nullptr}; }
+extern "C" OcctResult<Handle_TopoDS_TShell*> TopoDS_TShell_to_handle(TopoDS_TShell* obj) {
+    try { return {new Handle_TopoDS_TShell(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const TopoDS_TShell*> HandleTopoDSTShell_get(const HandleTopoDSTShell* handle) {
+extern "C" OcctResult<const TopoDS_TShell*> Handle_TopoDS_TShell_get(const Handle_TopoDS_TShell* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TopoDS_TShell*> HandleTopoDSTShell_get_mut(HandleTopoDSTShell* handle) {
+extern "C" OcctResult<TopoDS_TShell*> Handle_TopoDS_TShell_get_mut(Handle_TopoDS_TShell* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTopoDSTShape*> HandleTopoDSTShell_to_HandleTopoDSTShape(const HandleTopoDSTShell* self_) {
-    try { return {new HandleTopoDSTShape(*self_), nullptr}; }
+extern "C" OcctResult<Handle_TopoDS_TShape*> Handle_TopoDS_TShell_to_Handle_TopoDS_TShape(const Handle_TopoDS_TShell* self_) {
+    try { return {new Handle_TopoDS_TShape(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleTopoDSTShell_to_HandleStandardTransient(const HandleTopoDSTShell* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_TopoDS_TShell_to_Handle_Standard_Transient(const Handle_TopoDS_TShell* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> TopoDS_TShell_inherited_Free(const TopoDS_TShell* self) {
@@ -10838,6 +16126,10 @@ extern "C" OcctResult<bool> TopoDS_TShell_inherited_Infinite(const TopoDS_TShell
 }
 extern "C" OcctResult<bool> TopoDS_TShell_inherited_Convex(const TopoDS_TShell* self) {
     try { return {self->Convex(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<int32_t> TopoDS_TShell_inherited_ShapeType(const TopoDS_TShell* self) {
+    try { return {static_cast<int32_t>(self->ShapeType()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<int32_t> TopoDS_TShell_inherited_NbChildren(const TopoDS_TShell* self) {
@@ -10886,10 +16178,6 @@ extern "C" OcctResult<Handle(TopoDS_TShape)*> TopoDS_TSolid_empty_copy(const Top
     try { return {new Handle(TopoDS_TShape)(self_->EmptyCopy()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<int32_t> TopoDS_TSolid_shape_type(const TopoDS_TSolid* self_) {
-    try { return {static_cast<int32_t>(self_->ShapeType()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
 extern "C" OcctResult<Handle(Standard_Type) const*> TopoDS_TSolid_dynamic_type(const TopoDS_TSolid* self_) {
     try { return {&(self_->DynamicType()), nullptr}; }
     OCCT_CATCH_RETURN
@@ -10906,24 +16194,24 @@ extern "C" OcctResult<const TopoDS_TShape*> TopoDS_TSolid_as_TopoDS_TShape(const
 extern "C" OcctResult<TopoDS_TShape*> TopoDS_TSolid_as_TopoDS_TShape_mut(TopoDS_TSolid* self_) { return {static_cast<TopoDS_TShape*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> TopoDS_TSolid_as_Standard_Transient(const TopoDS_TSolid* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> TopoDS_TSolid_as_Standard_Transient_mut(TopoDS_TSolid* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleTopoDSTSolid*> TopoDS_TSolid_to_handle(TopoDS_TSolid* obj) {
-    try { return {new HandleTopoDSTSolid(obj), nullptr}; }
+extern "C" OcctResult<Handle_TopoDS_TSolid*> TopoDS_TSolid_to_handle(TopoDS_TSolid* obj) {
+    try { return {new Handle_TopoDS_TSolid(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const TopoDS_TSolid*> HandleTopoDSTSolid_get(const HandleTopoDSTSolid* handle) {
+extern "C" OcctResult<const TopoDS_TSolid*> Handle_TopoDS_TSolid_get(const Handle_TopoDS_TSolid* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TopoDS_TSolid*> HandleTopoDSTSolid_get_mut(HandleTopoDSTSolid* handle) {
+extern "C" OcctResult<TopoDS_TSolid*> Handle_TopoDS_TSolid_get_mut(Handle_TopoDS_TSolid* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTopoDSTShape*> HandleTopoDSTSolid_to_HandleTopoDSTShape(const HandleTopoDSTSolid* self_) {
-    try { return {new HandleTopoDSTShape(*self_), nullptr}; }
+extern "C" OcctResult<Handle_TopoDS_TShape*> Handle_TopoDS_TSolid_to_Handle_TopoDS_TShape(const Handle_TopoDS_TSolid* self_) {
+    try { return {new Handle_TopoDS_TShape(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleTopoDSTSolid_to_HandleStandardTransient(const HandleTopoDSTSolid* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_TopoDS_TSolid_to_Handle_Standard_Transient(const Handle_TopoDS_TSolid* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> TopoDS_TSolid_inherited_Free(const TopoDS_TSolid* self) {
@@ -10956,6 +16244,10 @@ extern "C" OcctResult<bool> TopoDS_TSolid_inherited_Infinite(const TopoDS_TSolid
 }
 extern "C" OcctResult<bool> TopoDS_TSolid_inherited_Convex(const TopoDS_TSolid* self) {
     try { return {self->Convex(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<int32_t> TopoDS_TSolid_inherited_ShapeType(const TopoDS_TSolid* self) {
+    try { return {static_cast<int32_t>(self->ShapeType()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<int32_t> TopoDS_TSolid_inherited_NbChildren(const TopoDS_TSolid* self) {
@@ -10996,10 +16288,6 @@ extern "C" void TopoDS_TSolid_destructor(TopoDS_TSolid* self_) { delete self_; }
 // TopoDS_TVertex wrappers
 // ========================
 
-extern "C" OcctResult<int32_t> TopoDS_TVertex_shape_type(const TopoDS_TVertex* self_) {
-    try { return {static_cast<int32_t>(self_->ShapeType()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
 extern "C" OcctResult<Handle(Standard_Type) const*> TopoDS_TVertex_dynamic_type(const TopoDS_TVertex* self_) {
     try { return {&(self_->DynamicType()), nullptr}; }
     OCCT_CATCH_RETURN
@@ -11016,27 +16304,27 @@ extern "C" OcctResult<const TopoDS_TShape*> TopoDS_TVertex_as_TopoDS_TShape(cons
 extern "C" OcctResult<TopoDS_TShape*> TopoDS_TVertex_as_TopoDS_TShape_mut(TopoDS_TVertex* self_) { return {static_cast<TopoDS_TShape*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> TopoDS_TVertex_as_Standard_Transient(const TopoDS_TVertex* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> TopoDS_TVertex_as_Standard_Transient_mut(TopoDS_TVertex* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<const TopoDS_TVertex*> HandleTopoDSTVertex_get(const HandleTopoDSTVertex* handle) {
+extern "C" OcctResult<const TopoDS_TVertex*> Handle_TopoDS_TVertex_get(const Handle_TopoDS_TVertex* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TopoDS_TVertex*> HandleTopoDSTVertex_get_mut(HandleTopoDSTVertex* handle) {
+extern "C" OcctResult<TopoDS_TVertex*> Handle_TopoDS_TVertex_get_mut(Handle_TopoDS_TVertex* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTopoDSTShape*> HandleTopoDSTVertex_to_HandleTopoDSTShape(const HandleTopoDSTVertex* self_) {
-    try { return {new HandleTopoDSTShape(*self_), nullptr}; }
+extern "C" OcctResult<Handle_TopoDS_TShape*> Handle_TopoDS_TVertex_to_Handle_TopoDS_TShape(const Handle_TopoDS_TVertex* self_) {
+    try { return {new Handle_TopoDS_TShape(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleTopoDSTVertex_to_HandleStandardTransient(const HandleTopoDSTVertex* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_TopoDS_TVertex_to_Handle_Standard_Transient(const Handle_TopoDS_TVertex* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleBRepTVertex*> HandleTopoDSTVertex_downcast_to_HandleBRepTVertex(const HandleTopoDSTVertex* self_) {
+extern "C" OcctResult<Handle_BRep_TVertex*> Handle_TopoDS_TVertex_downcast_to_Handle_BRep_TVertex(const Handle_TopoDS_TVertex* self_) {
     try {
     opencascade::handle<BRep_TVertex> result = opencascade::handle<BRep_TVertex>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleBRepTVertex(result), nullptr};
+    return {new Handle_BRep_TVertex(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
@@ -11070,6 +16358,10 @@ extern "C" OcctResult<bool> TopoDS_TVertex_inherited_Infinite(const TopoDS_TVert
 }
 extern "C" OcctResult<bool> TopoDS_TVertex_inherited_Convex(const TopoDS_TVertex* self) {
     try { return {self->Convex(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<int32_t> TopoDS_TVertex_inherited_ShapeType(const TopoDS_TVertex* self) {
+    try { return {static_cast<int32_t>(self->ShapeType()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(TopoDS_TShape)*> TopoDS_TVertex_inherited_EmptyCopy(const TopoDS_TVertex* self) {
@@ -11122,10 +16414,6 @@ extern "C" OcctResult<Handle(TopoDS_TShape)*> TopoDS_TWire_empty_copy(const Topo
     try { return {new Handle(TopoDS_TShape)(self_->EmptyCopy()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<int32_t> TopoDS_TWire_shape_type(const TopoDS_TWire* self_) {
-    try { return {static_cast<int32_t>(self_->ShapeType()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
 extern "C" OcctResult<Handle(Standard_Type) const*> TopoDS_TWire_dynamic_type(const TopoDS_TWire* self_) {
     try { return {&(self_->DynamicType()), nullptr}; }
     OCCT_CATCH_RETURN
@@ -11142,24 +16430,24 @@ extern "C" OcctResult<const TopoDS_TShape*> TopoDS_TWire_as_TopoDS_TShape(const 
 extern "C" OcctResult<TopoDS_TShape*> TopoDS_TWire_as_TopoDS_TShape_mut(TopoDS_TWire* self_) { return {static_cast<TopoDS_TShape*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> TopoDS_TWire_as_Standard_Transient(const TopoDS_TWire* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> TopoDS_TWire_as_Standard_Transient_mut(TopoDS_TWire* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleTopoDSTWire*> TopoDS_TWire_to_handle(TopoDS_TWire* obj) {
-    try { return {new HandleTopoDSTWire(obj), nullptr}; }
+extern "C" OcctResult<Handle_TopoDS_TWire*> TopoDS_TWire_to_handle(TopoDS_TWire* obj) {
+    try { return {new Handle_TopoDS_TWire(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const TopoDS_TWire*> HandleTopoDSTWire_get(const HandleTopoDSTWire* handle) {
+extern "C" OcctResult<const TopoDS_TWire*> Handle_TopoDS_TWire_get(const Handle_TopoDS_TWire* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TopoDS_TWire*> HandleTopoDSTWire_get_mut(HandleTopoDSTWire* handle) {
+extern "C" OcctResult<TopoDS_TWire*> Handle_TopoDS_TWire_get_mut(Handle_TopoDS_TWire* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTopoDSTShape*> HandleTopoDSTWire_to_HandleTopoDSTShape(const HandleTopoDSTWire* self_) {
-    try { return {new HandleTopoDSTShape(*self_), nullptr}; }
+extern "C" OcctResult<Handle_TopoDS_TShape*> Handle_TopoDS_TWire_to_Handle_TopoDS_TShape(const Handle_TopoDS_TWire* self_) {
+    try { return {new Handle_TopoDS_TShape(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleTopoDSTWire_to_HandleStandardTransient(const HandleTopoDSTWire* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_TopoDS_TWire_to_Handle_Standard_Transient(const Handle_TopoDS_TWire* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> TopoDS_TWire_inherited_Free(const TopoDS_TWire* self) {
@@ -11192,6 +16480,10 @@ extern "C" OcctResult<bool> TopoDS_TWire_inherited_Infinite(const TopoDS_TWire* 
 }
 extern "C" OcctResult<bool> TopoDS_TWire_inherited_Convex(const TopoDS_TWire* self) {
     try { return {self->Convex(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<int32_t> TopoDS_TWire_inherited_ShapeType(const TopoDS_TWire* self) {
+    try { return {static_cast<int32_t>(self->ShapeType()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<int32_t> TopoDS_TWire_inherited_NbChildren(const TopoDS_TWire* self) {
@@ -11232,10 +16524,6 @@ extern "C" void TopoDS_TWire_destructor(TopoDS_TWire* self_) { delete self_; }
 // TopoDS_UnCompatibleShapes wrappers
 // ========================
 
-extern "C" OcctResult<TopoDS_UnCompatibleShapes*> TopoDS_UnCompatibleShapes_ctor() {
-    try { return {new TopoDS_UnCompatibleShapes(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
 extern "C" OcctResult<TopoDS_UnCompatibleShapes*> TopoDS_UnCompatibleShapes_ctor_charptr(const char* theMessage) {
     try { return {new TopoDS_UnCompatibleShapes(theMessage), nullptr}; }
     OCCT_CATCH_RETURN
@@ -11244,102 +16532,20 @@ extern "C" OcctResult<TopoDS_UnCompatibleShapes*> TopoDS_UnCompatibleShapes_ctor
     try { return {new TopoDS_UnCompatibleShapes(theMessage, theStackTrace), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(Standard_Type) const*> TopoDS_UnCompatibleShapes_dynamic_type(const TopoDS_UnCompatibleShapes* self_) {
-    try { return {&(self_->DynamicType()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* TopoDS_UnCompatibleShapes_raise_charptr(const char* theMessage) {
-    try { TopoDS_UnCompatibleShapes::Raise(theMessage); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* TopoDS_UnCompatibleShapes_raise_sstream(Standard_SStream* theMessage) {
-    try { TopoDS_UnCompatibleShapes::Raise(*theMessage); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<Handle(TopoDS_UnCompatibleShapes)*> TopoDS_UnCompatibleShapes_new_instance_charptr(const char* theMessage) {
-    try { return {new Handle(TopoDS_UnCompatibleShapes)(TopoDS_UnCompatibleShapes::NewInstance(theMessage)), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Handle(TopoDS_UnCompatibleShapes)*> TopoDS_UnCompatibleShapes_new_instance_charptr2(const char* theMessage, const char* theStackTrace) {
-    try { return {new Handle(TopoDS_UnCompatibleShapes)(TopoDS_UnCompatibleShapes::NewInstance(theMessage, theStackTrace)), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<char const*> TopoDS_UnCompatibleShapes_get_type_name() {
-    try { return {TopoDS_UnCompatibleShapes::get_type_name(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Handle(Standard_Type) const*> TopoDS_UnCompatibleShapes_get_type_descriptor() {
-    try { return {&(TopoDS_UnCompatibleShapes::get_type_descriptor()), nullptr}; }
+extern "C" OcctResult<char const*> TopoDS_UnCompatibleShapes_exception_type(const TopoDS_UnCompatibleShapes* self_) {
+    try { return {self_->ExceptionType(), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<const Standard_DomainError*> TopoDS_UnCompatibleShapes_as_Standard_DomainError(const TopoDS_UnCompatibleShapes* self_) { return {static_cast<const Standard_DomainError*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_DomainError*> TopoDS_UnCompatibleShapes_as_Standard_DomainError_mut(TopoDS_UnCompatibleShapes* self_) { return {static_cast<Standard_DomainError*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Failure*> TopoDS_UnCompatibleShapes_as_Standard_Failure(const TopoDS_UnCompatibleShapes* self_) { return {static_cast<const Standard_Failure*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Failure*> TopoDS_UnCompatibleShapes_as_Standard_Failure_mut(TopoDS_UnCompatibleShapes* self_) { return {static_cast<Standard_Failure*>(self_), nullptr}; }
-extern "C" OcctResult<const Standard_Transient*> TopoDS_UnCompatibleShapes_as_Standard_Transient(const TopoDS_UnCompatibleShapes* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<Standard_Transient*> TopoDS_UnCompatibleShapes_as_Standard_Transient_mut(TopoDS_UnCompatibleShapes* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleTopoDSUnCompatibleShapes*> TopoDS_UnCompatibleShapes_to_handle(TopoDS_UnCompatibleShapes* obj) {
-    try { return {new HandleTopoDSUnCompatibleShapes(obj), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<const TopoDS_UnCompatibleShapes*> HandleTopoDSUnCompatibleShapes_get(const HandleTopoDSUnCompatibleShapes* handle) {
-    try { return {(*handle).get(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<TopoDS_UnCompatibleShapes*> HandleTopoDSUnCompatibleShapes_get_mut(HandleTopoDSUnCompatibleShapes* handle) {
-    try { return {(*handle).get(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<HandleStandardDomainError*> HandleTopoDSUnCompatibleShapes_to_HandleStandardDomainError(const HandleTopoDSUnCompatibleShapes* self_) {
-    try { return {new HandleStandardDomainError(*self_), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<HandleStandardFailure*> HandleTopoDSUnCompatibleShapes_to_HandleStandardFailure(const HandleTopoDSUnCompatibleShapes* self_) {
-    try { return {new HandleStandardFailure(*self_), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<HandleStandardTransient*> HandleTopoDSUnCompatibleShapes_to_HandleStandardTransient(const HandleTopoDSUnCompatibleShapes* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<TopoDS_UnCompatibleShapes*> TopoDS_UnCompatibleShapes_clone(const TopoDS_UnCompatibleShapes* self_) {
+    try { return {new TopoDS_UnCompatibleShapes(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" const char* TopoDS_UnCompatibleShapes_inherited_Print(const TopoDS_UnCompatibleShapes* self, Standard_OStream& theStream) {
     try { self->Print(theStream); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* TopoDS_UnCompatibleShapes_inherited_Reraise(TopoDS_UnCompatibleShapes* self) {
-    try { self->Reraise(); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* TopoDS_UnCompatibleShapes_inherited_Jump(TopoDS_UnCompatibleShapes* self) {
-    try { self->Jump(); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<bool> TopoDS_UnCompatibleShapes_inherited_IsInstance(const TopoDS_UnCompatibleShapes* self, Handle(Standard_Type) const& theType) {
-    try { return {self->IsInstance(theType), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<bool> TopoDS_UnCompatibleShapes_inherited_IsKind(const TopoDS_UnCompatibleShapes* self, Handle(Standard_Type) const& theType) {
-    try { return {self->IsKind(theType), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Standard_Transient*> TopoDS_UnCompatibleShapes_inherited_This(const TopoDS_UnCompatibleShapes* self) {
-    try { return {self->This(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<int32_t> TopoDS_UnCompatibleShapes_inherited_GetRefCount(const TopoDS_UnCompatibleShapes* self) {
-    try { return {self->GetRefCount(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* TopoDS_UnCompatibleShapes_inherited_IncrementRefCounter(TopoDS_UnCompatibleShapes* self) {
-    try { self->IncrementRefCounter(); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<int32_t> TopoDS_UnCompatibleShapes_inherited_DecrementRefCounter(TopoDS_UnCompatibleShapes* self) {
-    try { return {self->DecrementRefCounter(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* TopoDS_UnCompatibleShapes_inherited_Delete(const TopoDS_UnCompatibleShapes* self) {
-    try { self->Delete(); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
 extern "C" void TopoDS_UnCompatibleShapes_destructor(TopoDS_UnCompatibleShapes* self_) { delete self_; }
@@ -11751,7 +16957,7 @@ extern "C" OcctResult<TopoDS_Wire*> BRepTools_outer_wire_face(TopoDS_Face const*
     try { return {new TopoDS_Wire(BRepTools::OuterWire(*F)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* BRepTools_map3_d_edges(TopoDS_Shape const* S, TopTools_IndexedMapOfShape* M) {
+extern "C" const char* BRepTools_map3_d_edges(TopoDS_Shape const* S, NCollection_IndexedMap_TopoDS_Shape_TopTools_ShapeMapHasher* M) {
     try { BRepTools::Map3DEdges(*S, *M); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -11803,7 +17009,7 @@ extern "C" const char* BRepTools_remove_internals(TopoDS_Shape* theS, bool theFo
     try { BRepTools::RemoveInternals(*theS, theForce); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* BRepTools_check_locations(TopoDS_Shape const* theS, TopTools_ListOfShape* theProblemShapes) {
+extern "C" const char* BRepTools_check_locations(TopoDS_Shape const* theS, NCollection_List_TopoDS_Shape* theProblemShapes) {
     try { BRepTools::CheckLocations(*theS, *theProblemShapes); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -11879,23 +17085,23 @@ extern "C" OcctResult<bool> BinTools_read_shape_charptr_progressrange(TopoDS_Sha
 // ========================
 // TopExp namespace functions
 // ========================
-extern "C" const char* TopExp_map_shapes_shape_shapeenum_indexedmapofshape(TopoDS_Shape const* S, int32_t T, TopTools_IndexedMapOfShape* M) {
+extern "C" const char* TopExp_map_shapes_shape_shapeenum_imap_shape(TopoDS_Shape const* S, int32_t T, NCollection_IndexedMap_TopoDS_Shape_TopTools_ShapeMapHasher* M) {
     try { TopExp::MapShapes(*S, static_cast<TopAbs_ShapeEnum>(T), *M); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* TopExp_map_shapes_shape_indexedmapofshape_bool2(TopoDS_Shape const* S, TopTools_IndexedMapOfShape* M, bool cumOri, bool cumLoc) {
+extern "C" const char* TopExp_map_shapes_shape_imap_shape_bool2(TopoDS_Shape const* S, NCollection_IndexedMap_TopoDS_Shape_TopTools_ShapeMapHasher* M, bool cumOri, bool cumLoc) {
     try { TopExp::MapShapes(*S, *M, cumOri, cumLoc); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* TopExp_map_shapes_shape_mapofshape_bool2(TopoDS_Shape const* S, TopTools_MapOfShape* M, bool cumOri, bool cumLoc) {
+extern "C" const char* TopExp_map_shapes_shape_map_shape_bool2(TopoDS_Shape const* S, NCollection_Map_TopoDS_Shape_TopTools_ShapeMapHasher* M, bool cumOri, bool cumLoc) {
     try { TopExp::MapShapes(*S, *M, cumOri, cumLoc); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* TopExp_map_shapes_and_ancestors(TopoDS_Shape const* S, int32_t TS, int32_t TA, TopTools_IndexedDataMapOfShapeListOfShape* M) {
+extern "C" const char* TopExp_map_shapes_and_ancestors(TopoDS_Shape const* S, int32_t TS, int32_t TA, NCollection_IndexedDataMap_TopoDS_Shape_NCollection_List_TopoDS_Shape_TopTools_ShapeMapHasher* M) {
     try { TopExp::MapShapesAndAncestors(*S, static_cast<TopAbs_ShapeEnum>(TS), static_cast<TopAbs_ShapeEnum>(TA), *M); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* TopExp_map_shapes_and_unique_ancestors(TopoDS_Shape const* S, int32_t TS, int32_t TA, TopTools_IndexedDataMapOfShapeListOfShape* M, bool useOrientation) {
+extern "C" const char* TopExp_map_shapes_and_unique_ancestors(TopoDS_Shape const* S, int32_t TS, int32_t TA, NCollection_IndexedDataMap_TopoDS_Shape_NCollection_List_TopoDS_Shape_TopTools_ShapeMapHasher* M, bool useOrientation) {
     try { TopExp::MapShapesAndUniqueAncestors(*S, static_cast<TopAbs_ShapeEnum>(TS), static_cast<TopAbs_ShapeEnum>(TA), *M, useOrientation); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -12002,378 +17208,178 @@ extern "C" OcctResult<TopoDS_Compound*> TopoDS_compound_mut(TopoDS_Shape* theSha
 
 
 // Nested type and typedef type destructors
-extern "C" void BRepAdaptor_Array1OfCurve_destructor(BRepAdaptor_Array1OfCurve* self_) { delete self_; }
-extern "C" void BRep_ListOfCurveRepresentation_destructor(BRep_ListOfCurveRepresentation* self_) { delete self_; }
-extern "C" void BRep_ListOfPointRepresentation_destructor(BRep_ListOfPointRepresentation* self_) { delete self_; }
-extern "C" void TopTools_Array1OfListOfShape_destructor(TopTools_Array1OfListOfShape* self_) { delete self_; }
-extern "C" void TopTools_Array1OfListOfShape_value_type_destructor(TopTools_Array1OfListOfShape::value_type* self_) { delete self_; }
-extern "C" void TopTools_Array1OfShape_destructor(TopTools_Array1OfShape* self_) { delete self_; }
-extern "C" void TopTools_Array2OfShape_destructor(TopTools_Array2OfShape* self_) { delete self_; }
-extern "C" void TopTools_DataMapOfIntegerListOfShape_destructor(TopTools_DataMapOfIntegerListOfShape* self_) { delete self_; }
-extern "C" void TopTools_DataMapOfIntegerShape_destructor(TopTools_DataMapOfIntegerShape* self_) { delete self_; }
-extern "C" void TopTools_DataMapOfOrientedShapeInteger_destructor(TopTools_DataMapOfOrientedShapeInteger* self_) { delete self_; }
-extern "C" void TopTools_DataMapOfShapeBox_destructor(TopTools_DataMapOfShapeBox* self_) { delete self_; }
-extern "C" void TopTools_DataMapOfShapeInteger_destructor(TopTools_DataMapOfShapeInteger* self_) { delete self_; }
-extern "C" void TopTools_DataMapOfShapeListOfShape_destructor(TopTools_DataMapOfShapeListOfShape* self_) { delete self_; }
-extern "C" void TopTools_DataMapOfShapeReal_destructor(TopTools_DataMapOfShapeReal* self_) { delete self_; }
-extern "C" void TopTools_IndexedDataMapOfShapeReal_destructor(TopTools_IndexedDataMapOfShapeReal* self_) { delete self_; }
-extern "C" void TopTools_IndexedDataMapOfShapeShape_destructor(TopTools_IndexedDataMapOfShapeShape* self_) { delete self_; }
-extern "C" void TopTools_IndexedMapOfOrientedShape_destructor(TopTools_IndexedMapOfOrientedShape* self_) { delete self_; }
-extern "C" void TopTools_ListIteratorOfListOfShape_destructor(TopTools_ListIteratorOfListOfShape* self_) { delete self_; }
-extern "C" void TopTools_ListOfListOfShape_destructor(TopTools_ListOfListOfShape* self_) { delete self_; }
-extern "C" void TopoDS_ListOfShape_destructor(TopoDS_ListOfShape* self_) { delete self_; }
-
-// ========================
-// Collection type wrappers
-// ========================
-
-// ========================
-// TopTools_DataMapOfShapeShape - Key-value map
-// ========================
-
-extern "C" TopTools_DataMapOfShapeShape* TopTools_DataMapOfShapeShape_new() {
-    return new TopTools_DataMapOfShapeShape();
-}
-
-extern "C" void TopTools_DataMapOfShapeShape_destructor(TopTools_DataMapOfShapeShape* self_) {
-    delete self_;
-}
-
-struct DataMapOfShapeShapeIterator {
-    TopTools_DataMapOfShapeShape::Iterator inner;
-};
-
-extern "C" void DataMapOfShapeShapeIterator_destructor(DataMapOfShapeShapeIterator* self_) {
-    delete self_;
-}
-
-extern "C" DataMapOfShapeShapeIterator* TopTools_DataMapOfShapeShape_iter(const TopTools_DataMapOfShapeShape* coll) {
-    auto iter = new DataMapOfShapeShapeIterator();
-    iter->inner.Initialize(*coll);
-    return iter;
-}
-
-extern "C" TopoDS_Shape* DataMapOfShapeShapeIterator_next_key(DataMapOfShapeShapeIterator* iter) {
-    if (!iter->inner.More()) {
-        return nullptr;
-    }
-    auto result = new TopoDS_Shape(iter->inner.Key());
-    iter->inner.Next();
-    return result;
-}
-
-extern "C" TopoDS_Shape* TopTools_DataMapOfShapeShape_find(const TopTools_DataMapOfShapeShape* coll, const TopoDS_Shape* key) {
-    const auto* found = coll->Seek(*key);
-    if (found == nullptr) {
-        return nullptr;
-    }
-    return new TopoDS_Shape(*found);
-}
-
-extern "C" bool TopTools_DataMapOfShapeShape_contains(const TopTools_DataMapOfShapeShape* coll, const TopoDS_Shape* key) {
-    return coll->IsBound(*key);
-}
-
-extern "C" bool TopTools_DataMapOfShapeShape_bind(TopTools_DataMapOfShapeShape* coll, const TopoDS_Shape* key, const TopoDS_Shape* value) {
-    return coll->Bind(*key, *value);
-}
-
-extern "C" int TopTools_DataMapOfShapeShape_size(const TopTools_DataMapOfShapeShape* coll) {
-    return coll->Extent();
-}
-
-extern "C" void TopTools_DataMapOfShapeShape_clear(TopTools_DataMapOfShapeShape* coll) {
-    coll->Clear();
-}
-
-// ========================
-// TopTools_IndexedDataMapOfShapeListOfShape - Key-value map with index access (1-indexed)
-// ========================
-
-extern "C" TopTools_IndexedDataMapOfShapeListOfShape* TopTools_IndexedDataMapOfShapeListOfShape_new() {
-    return new TopTools_IndexedDataMapOfShapeListOfShape();
-}
-
-extern "C" void TopTools_IndexedDataMapOfShapeListOfShape_destructor(TopTools_IndexedDataMapOfShapeListOfShape* self_) {
-    delete self_;
-}
-
-struct IndexedDataMapOfShapeListOfShapeIterator {
-    const TopTools_IndexedDataMapOfShapeListOfShape* coll;
-    int index;  // 1-indexed (OCCT convention)
-    int extent;
-};
-
-extern "C" void IndexedDataMapOfShapeListOfShapeIterator_destructor(IndexedDataMapOfShapeListOfShapeIterator* self_) {
-    delete self_;
-}
-
-extern "C" IndexedDataMapOfShapeListOfShapeIterator* TopTools_IndexedDataMapOfShapeListOfShape_iter(const TopTools_IndexedDataMapOfShapeListOfShape* coll) {
-    auto iter = new IndexedDataMapOfShapeListOfShapeIterator();
-    iter->coll = coll;
-    iter->index = 1;
-    iter->extent = coll->Extent();
-    return iter;
-}
-
-extern "C" TopoDS_Shape* IndexedDataMapOfShapeListOfShapeIterator_next_key(IndexedDataMapOfShapeListOfShapeIterator* iter) {
-    if (iter->index > iter->extent) {
-        return nullptr;
-    }
-    auto result = new TopoDS_Shape(iter->coll->FindKey(iter->index));
-    ++iter->index;
-    return result;
-}
-
-extern "C" const TopTools_ListOfShape* TopTools_IndexedDataMapOfShapeListOfShape_find_from_key(const TopTools_IndexedDataMapOfShapeListOfShape* coll, const TopoDS_Shape* key) {
-    return &coll->FindFromKey(*key);
-}
-
-extern "C" const TopTools_ListOfShape* TopTools_IndexedDataMapOfShapeListOfShape_find_from_index(const TopTools_IndexedDataMapOfShapeListOfShape* coll, int index) {
-    return &coll->FindFromIndex(index);
-}
-
-extern "C" TopoDS_Shape* TopTools_IndexedDataMapOfShapeListOfShape_find_key(const TopTools_IndexedDataMapOfShapeListOfShape* coll, int index) {
-    return new TopoDS_Shape(coll->FindKey(index));
-}
-
-extern "C" int TopTools_IndexedDataMapOfShapeListOfShape_find_index(const TopTools_IndexedDataMapOfShapeListOfShape* coll, const TopoDS_Shape* key) {
-    return coll->FindIndex(*key);
-}
-
-extern "C" bool TopTools_IndexedDataMapOfShapeListOfShape_contains(const TopTools_IndexedDataMapOfShapeListOfShape* coll, const TopoDS_Shape* key) {
-    return coll->Contains(*key);
-}
-
-extern "C" int TopTools_IndexedDataMapOfShapeListOfShape_add(TopTools_IndexedDataMapOfShapeListOfShape* coll, const TopoDS_Shape* key, const TopTools_ListOfShape* value) {
-    return coll->Add(*key, *value);
-}
-
-extern "C" int TopTools_IndexedDataMapOfShapeListOfShape_size(const TopTools_IndexedDataMapOfShapeListOfShape* coll) {
-    return coll->Extent();
-}
-
-extern "C" void TopTools_IndexedDataMapOfShapeListOfShape_clear(TopTools_IndexedDataMapOfShapeListOfShape* coll) {
-    coll->Clear();
-}
-
-// ========================
-// TopTools_IndexedMapOfShape - Set with integer index access (1-indexed)
-// ========================
-
-extern "C" TopTools_IndexedMapOfShape* TopTools_IndexedMapOfShape_new() {
-    return new TopTools_IndexedMapOfShape();
-}
-
-extern "C" void TopTools_IndexedMapOfShape_destructor(TopTools_IndexedMapOfShape* self_) {
-    delete self_;
-}
-
-struct IndexedMapOfShapeIterator {
-    const TopTools_IndexedMapOfShape* coll;
-    int index;  // 1-indexed (OCCT convention)
-    int extent;
-};
-
-extern "C" void IndexedMapOfShapeIterator_destructor(IndexedMapOfShapeIterator* self_) {
-    delete self_;
-}
-
-extern "C" IndexedMapOfShapeIterator* TopTools_IndexedMapOfShape_iter(const TopTools_IndexedMapOfShape* coll) {
-    auto iter = new IndexedMapOfShapeIterator();
-    iter->coll = coll;
-    iter->index = 1;
-    iter->extent = coll->Extent();
-    return iter;
-}
-
-extern "C" TopoDS_Shape* IndexedMapOfShapeIterator_next(IndexedMapOfShapeIterator* iter) {
-    if (iter->index > iter->extent) {
-        return nullptr;
-    }
-    auto result = new TopoDS_Shape(iter->coll->FindKey(iter->index));
-    ++iter->index;
-    return result;
-}
-
-extern "C" int TopTools_IndexedMapOfShape_size(const TopTools_IndexedMapOfShape* coll) {
-    return coll->Extent();
-}
-
-extern "C" void TopTools_IndexedMapOfShape_clear(TopTools_IndexedMapOfShape* coll) {
-    coll->Clear();
-}
-
-extern "C" int TopTools_IndexedMapOfShape_add(TopTools_IndexedMapOfShape* coll, const TopoDS_Shape* item) {
-    return coll->Add(*item);
-}
-
-extern "C" const TopoDS_Shape* TopTools_IndexedMapOfShape_find_key(const TopTools_IndexedMapOfShape* coll, int index) {
-    return &coll->FindKey(index);
-}
-
-extern "C" int TopTools_IndexedMapOfShape_find_index(const TopTools_IndexedMapOfShape* coll, const TopoDS_Shape* item) {
-    return coll->FindIndex(*item);
-}
-
-// ========================
-// TopTools_ListOfShape - Doubly-linked list
-// ========================
-
-extern "C" TopTools_ListOfShape* TopTools_ListOfShape_new() {
-    return new TopTools_ListOfShape();
-}
-
-extern "C" void TopTools_ListOfShape_destructor(TopTools_ListOfShape* self_) {
-    delete self_;
-}
-
-struct ListOfShapeIterator {
-    TopTools_ListOfShape::const_iterator current;
-    TopTools_ListOfShape::const_iterator end;
-};
-
-extern "C" void ListOfShapeIterator_destructor(ListOfShapeIterator* self_) {
-    delete self_;
-}
-
-extern "C" ListOfShapeIterator* TopTools_ListOfShape_iter(const TopTools_ListOfShape* coll) {
-    auto iter = new ListOfShapeIterator();
-    iter->current = coll->cbegin();
-    iter->end = coll->cend();
-    return iter;
-}
-
-extern "C" TopoDS_Shape* ListOfShapeIterator_next(ListOfShapeIterator* iter) {
-    if (iter->current == iter->end) {
-        return nullptr;
-    }
-    auto result = new TopoDS_Shape(*iter->current);
-    ++iter->current;
-    return result;
-}
-
-extern "C" int TopTools_ListOfShape_size(const TopTools_ListOfShape* coll) {
-    return coll->Size();
-}
-
-extern "C" void TopTools_ListOfShape_clear(TopTools_ListOfShape* coll) {
-    coll->Clear();
-}
-
-extern "C" void TopTools_ListOfShape_append(TopTools_ListOfShape* coll, const TopoDS_Shape* item) {
-    coll->Append(*item);
-}
-
-extern "C" void TopTools_ListOfShape_prepend(TopTools_ListOfShape* coll, const TopoDS_Shape* item) {
-    coll->Prepend(*item);
-}
-
-// ========================
-// TopTools_MapOfShape - Unordered set
-// ========================
-
-extern "C" TopTools_MapOfShape* TopTools_MapOfShape_new() {
-    return new TopTools_MapOfShape();
-}
-
-extern "C" void TopTools_MapOfShape_destructor(TopTools_MapOfShape* self_) {
-    delete self_;
-}
-
-struct MapOfShapeIterator {
-    TopTools_MapOfShape::const_iterator current;
-    TopTools_MapOfShape::const_iterator end;
-};
-
-extern "C" void MapOfShapeIterator_destructor(MapOfShapeIterator* self_) {
-    delete self_;
-}
-
-extern "C" MapOfShapeIterator* TopTools_MapOfShape_iter(const TopTools_MapOfShape* coll) {
-    auto iter = new MapOfShapeIterator();
-    iter->current = coll->cbegin();
-    iter->end = coll->cend();
-    return iter;
-}
-
-extern "C" TopoDS_Shape* MapOfShapeIterator_next(MapOfShapeIterator* iter) {
-    if (iter->current == iter->end) {
-        return nullptr;
-    }
-    auto result = new TopoDS_Shape(*iter->current);
-    ++iter->current;
-    return result;
-}
-
-extern "C" int TopTools_MapOfShape_size(const TopTools_MapOfShape* coll) {
-    return coll->Size();
-}
-
-extern "C" void TopTools_MapOfShape_clear(TopTools_MapOfShape* coll) {
-    coll->Clear();
-}
-
-extern "C" int TopTools_MapOfShape_add(TopTools_MapOfShape* coll, const TopoDS_Shape* item) {
-    return coll->Add(*item);
-}
-
-extern "C" bool TopTools_MapOfShape_contains(const TopTools_MapOfShape* coll, const TopoDS_Shape* item) {
-    return coll->Contains(*item);
-}
-
-// ========================
-// TopTools_SequenceOfShape - Dynamic array (1-indexed)
-// ========================
-
-extern "C" TopTools_SequenceOfShape* TopTools_SequenceOfShape_new() {
-    return new TopTools_SequenceOfShape();
-}
-
-extern "C" void TopTools_SequenceOfShape_destructor(TopTools_SequenceOfShape* self_) {
-    delete self_;
-}
-
-struct SequenceOfShapeIterator {
-    const TopTools_SequenceOfShape* coll;
-    int index;  // 1-indexed (OCCT convention)
-    int extent;
-};
-
-extern "C" void SequenceOfShapeIterator_destructor(SequenceOfShapeIterator* self_) {
-    delete self_;
-}
-
-extern "C" SequenceOfShapeIterator* TopTools_SequenceOfShape_iter(const TopTools_SequenceOfShape* coll) {
-    auto iter = new SequenceOfShapeIterator();
-    iter->coll = coll;
-    iter->index = 1;
-    iter->extent = coll->Length();
-    return iter;
-}
-
-extern "C" TopoDS_Shape* SequenceOfShapeIterator_next(SequenceOfShapeIterator* iter) {
-    if (iter->index > iter->extent) {
-        return nullptr;
-    }
-    auto result = new TopoDS_Shape(iter->coll->Value(iter->index));
-    ++iter->index;
-    return result;
-}
-
-extern "C" int TopTools_SequenceOfShape_size(const TopTools_SequenceOfShape* coll) {
-    return coll->Length();
-}
-
-extern "C" void TopTools_SequenceOfShape_clear(TopTools_SequenceOfShape* coll) {
-    coll->Clear();
-}
-
-extern "C" void TopTools_SequenceOfShape_append(TopTools_SequenceOfShape* coll, const TopoDS_Shape* item) {
-    coll->Append(*item);
-}
-
-extern "C" const TopoDS_Shape* TopTools_SequenceOfShape_value(const TopTools_SequenceOfShape* coll, int index) {
-    return &coll->Value(index);
-}
-
+extern "C" void BRepGraph_EditorView_destructor(BRepGraph::EditorView* self_) { delete self_; }
+extern "C" void BRepGraph_EditorView_CoEdgeOps_destructor(BRepGraph::EditorView::CoEdgeOps* self_) { delete self_; }
+extern "C" void BRepGraph_EditorView_CompSolidOps_destructor(BRepGraph::EditorView::CompSolidOps* self_) { delete self_; }
+extern "C" void BRepGraph_EditorView_CompoundOps_destructor(BRepGraph::EditorView::CompoundOps* self_) { delete self_; }
+extern "C" void BRepGraph_EditorView_EdgeOps_destructor(BRepGraph::EditorView::EdgeOps* self_) { delete self_; }
+extern "C" void BRepGraph_EditorView_FaceOps_destructor(BRepGraph::EditorView::FaceOps* self_) { delete self_; }
+extern "C" void BRepGraph_EditorView_GenOps_destructor(BRepGraph::EditorView::GenOps* self_) { delete self_; }
+extern "C" void BRepGraph_EditorView_OccurrenceOps_destructor(BRepGraph::EditorView::OccurrenceOps* self_) { delete self_; }
+extern "C" void BRepGraph_EditorView_ProductOps_destructor(BRepGraph::EditorView::ProductOps* self_) { delete self_; }
+extern "C" void BRepGraph_EditorView_ShellOps_destructor(BRepGraph::EditorView::ShellOps* self_) { delete self_; }
+extern "C" void BRepGraph_EditorView_SolidOps_destructor(BRepGraph::EditorView::SolidOps* self_) { delete self_; }
+extern "C" void BRepGraph_EditorView_VertexOps_destructor(BRepGraph::EditorView::VertexOps* self_) { delete self_; }
+extern "C" void BRepGraph_EditorView_WireOps_destructor(BRepGraph::EditorView::WireOps* self_) { delete self_; }
+extern "C" void BRepGraph_EditorView_WireOps_CoEdgeOrderStatus_destructor(BRepGraph::EditorView::WireOps::CoEdgeOrderStatus* self_) { delete self_; }
+extern "C" void BRepGraph_EditorView_WireOps_ReplaceEdgeStatus_destructor(BRepGraph::EditorView::WireOps::ReplaceEdgeStatus* self_) { delete self_; }
+extern "C" void BRepGraph_MeshView_destructor(BRepGraph::MeshView* self_) { delete self_; }
+extern "C" void BRepGraph_MeshView_CacheView_destructor(BRepGraph::MeshView::CacheView* self_) { delete self_; }
+extern "C" void BRepGraph_MeshView_CacheView_CoEdgeOps_destructor(BRepGraph::MeshView::CacheView::CoEdgeOps* self_) { delete self_; }
+extern "C" void BRepGraph_MeshView_CacheView_EdgeOps_destructor(BRepGraph::MeshView::CacheView::EdgeOps* self_) { delete self_; }
+extern "C" void BRepGraph_MeshView_CacheView_FaceOps_destructor(BRepGraph::MeshView::CacheView::FaceOps* self_) { delete self_; }
+extern "C" void BRepGraph_MeshView_EditorView_destructor(BRepGraph::MeshView::EditorView* self_) { delete self_; }
+extern "C" void BRepGraph_MeshView_EditorView_CoEdgeOps_destructor(BRepGraph::MeshView::EditorView::CoEdgeOps* self_) { delete self_; }
+extern "C" void BRepGraph_MeshView_EditorView_EdgeOps_destructor(BRepGraph::MeshView::EditorView::EdgeOps* self_) { delete self_; }
+extern "C" void BRepGraph_MeshView_EditorView_FaceOps_destructor(BRepGraph::MeshView::EditorView::FaceOps* self_) { delete self_; }
+extern "C" void BRepGraph_MeshView_EffectiveView_destructor(BRepGraph::MeshView::EffectiveView* self_) { delete self_; }
+extern "C" void BRepGraph_MeshView_EffectiveView_CoEdgeOps_destructor(BRepGraph::MeshView::EffectiveView::CoEdgeOps* self_) { delete self_; }
+extern "C" void BRepGraph_MeshView_EffectiveView_EdgeOps_destructor(BRepGraph::MeshView::EffectiveView::EdgeOps* self_) { delete self_; }
+extern "C" void BRepGraph_MeshView_EffectiveView_FaceOps_destructor(BRepGraph::MeshView::EffectiveView::FaceOps* self_) { delete self_; }
+extern "C" void BRepGraph_MeshView_PersistentView_destructor(BRepGraph::MeshView::PersistentView* self_) { delete self_; }
+extern "C" void BRepGraph_MeshView_PersistentView_CoEdgeOps_destructor(BRepGraph::MeshView::PersistentView::CoEdgeOps* self_) { delete self_; }
+extern "C" void BRepGraph_MeshView_PersistentView_EdgeOps_destructor(BRepGraph::MeshView::PersistentView::EdgeOps* self_) { delete self_; }
+extern "C" void BRepGraph_MeshView_PersistentView_FaceOps_destructor(BRepGraph::MeshView::PersistentView::FaceOps* self_) { delete self_; }
+extern "C" void BRepGraph_MeshView_PolyOps_destructor(BRepGraph::MeshView::PolyOps* self_) { delete self_; }
+extern "C" void BRepGraph_RefsView_destructor(BRepGraph::RefsView* self_) { delete self_; }
+extern "C" void BRepGraph_RefsView_ChildOps_destructor(BRepGraph::RefsView::ChildOps* self_) { delete self_; }
+extern "C" void BRepGraph_RefsView_FaceOps_destructor(BRepGraph::RefsView::FaceOps* self_) { delete self_; }
+extern "C" void BRepGraph_RefsView_GenOps_destructor(BRepGraph::RefsView::GenOps* self_) { delete self_; }
+extern "C" void BRepGraph_RefsView_OccurrenceOps_destructor(BRepGraph::RefsView::OccurrenceOps* self_) { delete self_; }
+extern "C" void BRepGraph_RefsView_ShellOps_destructor(BRepGraph::RefsView::ShellOps* self_) { delete self_; }
+extern "C" void BRepGraph_RefsView_SolidOps_destructor(BRepGraph::RefsView::SolidOps* self_) { delete self_; }
+extern "C" void BRepGraph_RefsView_VertexOps_destructor(BRepGraph::RefsView::VertexOps* self_) { delete self_; }
+extern "C" void BRepGraph_RefsView_WireOps_destructor(BRepGraph::RefsView::WireOps* self_) { delete self_; }
+extern "C" void BRepGraph_ShapesView_destructor(BRepGraph::ShapesView* self_) { delete self_; }
+extern "C" void BRepGraph_ShapesView_Options_destructor(BRepGraph::ShapesView::Options* self_) { delete self_; }
+extern "C" void BRepGraph_ShapesView_Result_destructor(BRepGraph::ShapesView::Result* self_) { delete self_; }
+extern "C" void BRepGraph_TopoView_destructor(BRepGraph::TopoView* self_) { delete self_; }
+extern "C" void BRepGraph_TopoView_CoEdgeOps_destructor(BRepGraph::TopoView::CoEdgeOps* self_) { delete self_; }
+extern "C" void BRepGraph_TopoView_CompSolidOps_destructor(BRepGraph::TopoView::CompSolidOps* self_) { delete self_; }
+extern "C" void BRepGraph_TopoView_CompoundOps_destructor(BRepGraph::TopoView::CompoundOps* self_) { delete self_; }
+extern "C" void BRepGraph_TopoView_EdgeOps_destructor(BRepGraph::TopoView::EdgeOps* self_) { delete self_; }
+extern "C" void BRepGraph_TopoView_FaceOps_destructor(BRepGraph::TopoView::FaceOps* self_) { delete self_; }
+extern "C" void BRepGraph_TopoView_GenOps_destructor(BRepGraph::TopoView::GenOps* self_) { delete self_; }
+extern "C" void BRepGraph_TopoView_GeometryOps_destructor(BRepGraph::TopoView::GeometryOps* self_) { delete self_; }
+extern "C" void BRepGraph_TopoView_OccurrenceOps_destructor(BRepGraph::TopoView::OccurrenceOps* self_) { delete self_; }
+extern "C" void BRepGraph_TopoView_ProductOps_destructor(BRepGraph::TopoView::ProductOps* self_) { delete self_; }
+extern "C" void BRepGraph_TopoView_ShellOps_destructor(BRepGraph::TopoView::ShellOps* self_) { delete self_; }
+extern "C" void BRepGraph_TopoView_SolidOps_destructor(BRepGraph::TopoView::SolidOps* self_) { delete self_; }
+extern "C" void BRepGraph_TopoView_VertexOps_destructor(BRepGraph::TopoView::VertexOps* self_) { delete self_; }
+extern "C" void BRepGraph_TopoView_WireOps_destructor(BRepGraph::TopoView::WireOps* self_) { delete self_; }
+extern "C" void BRepGraph_UIDsView_destructor(BRepGraph::UIDsView* self_) { delete self_; }
+extern "C" void BRepGraphInc_BaseDef_destructor(BRepGraphInc::BaseDef* self_) { delete self_; }
+extern "C" void BRepGraphInc_BaseRef_destructor(BRepGraphInc::BaseRef* self_) { delete self_; }
+extern "C" void BRepGraphInc_ChildRef_destructor(BRepGraphInc::ChildRef* self_) { delete self_; }
+extern "C" void BRepGraphInc_CoEdgeCurve2DRep_destructor(BRepGraphInc::CoEdgeCurve2DRep* self_) { delete self_; }
+extern "C" void BRepGraphInc_CoEdgeDef_destructor(BRepGraphInc::CoEdgeDef* self_) { delete self_; }
+extern "C" void BRepGraphInc_CoEdgePolygon2DRep_destructor(BRepGraphInc::CoEdgePolygon2DRep* self_) { delete self_; }
+extern "C" void BRepGraphInc_CoEdgePolygonOnTriRep_destructor(BRepGraphInc::CoEdgePolygonOnTriRep* self_) { delete self_; }
+extern "C" void BRepGraphInc_CompSolidDef_destructor(BRepGraphInc::CompSolidDef* self_) { delete self_; }
+extern "C" void BRepGraphInc_CompSolidRelations_destructor(BRepGraphInc::CompSolidRelations* self_) { delete self_; }
+extern "C" void BRepGraphInc_CompoundDef_destructor(BRepGraphInc::CompoundDef* self_) { delete self_; }
+extern "C" void BRepGraphInc_CompoundRelations_destructor(BRepGraphInc::CompoundRelations* self_) { delete self_; }
+extern "C" void BRepGraphInc_EdgeCurve3DRep_destructor(BRepGraphInc::EdgeCurve3DRep* self_) { delete self_; }
+extern "C" void BRepGraphInc_EdgeDef_destructor(BRepGraphInc::EdgeDef* self_) { delete self_; }
+extern "C" void BRepGraphInc_EdgePolygon3DRep_destructor(BRepGraphInc::EdgePolygon3DRep* self_) { delete self_; }
+extern "C" void BRepGraphInc_EdgeRelations_destructor(BRepGraphInc::EdgeRelations* self_) { delete self_; }
+extern "C" void BRepGraphInc_FaceDef_destructor(BRepGraphInc::FaceDef* self_) { delete self_; }
+extern "C" void BRepGraphInc_FaceRef_destructor(BRepGraphInc::FaceRef* self_) { delete self_; }
+extern "C" void BRepGraphInc_FaceRelations_destructor(BRepGraphInc::FaceRelations* self_) { delete self_; }
+extern "C" void BRepGraphInc_FaceSurfaceRep_destructor(BRepGraphInc::FaceSurfaceRep* self_) { delete self_; }
+extern "C" void BRepGraphInc_FaceTriangulationRep_destructor(BRepGraphInc::FaceTriangulationRep* self_) { delete self_; }
+extern "C" void BRepGraphInc_NodeInstance_destructor(BRepGraphInc::NodeInstance* self_) { delete self_; }
+extern "C" void BRepGraphInc_OccurrenceDef_destructor(BRepGraphInc::OccurrenceDef* self_) { delete self_; }
+extern "C" void BRepGraphInc_OccurrenceRef_destructor(BRepGraphInc::OccurrenceRef* self_) { delete self_; }
+extern "C" void BRepGraphInc_OccurrenceRelations_destructor(BRepGraphInc::OccurrenceRelations* self_) { delete self_; }
+extern "C" void BRepGraphInc_ParityOrientation_destructor(BRepGraphInc::ParityOrientation* self_) { delete self_; }
+extern "C" void BRepGraphInc_ProductDef_destructor(BRepGraphInc::ProductDef* self_) { delete self_; }
+extern "C" void BRepGraphInc_ProductRelations_destructor(BRepGraphInc::ProductRelations* self_) { delete self_; }
+extern "C" void BRepGraphInc_ShellDef_destructor(BRepGraphInc::ShellDef* self_) { delete self_; }
+extern "C" void BRepGraphInc_ShellRef_destructor(BRepGraphInc::ShellRef* self_) { delete self_; }
+extern "C" void BRepGraphInc_ShellRelations_destructor(BRepGraphInc::ShellRelations* self_) { delete self_; }
+extern "C" void BRepGraphInc_SolidDef_destructor(BRepGraphInc::SolidDef* self_) { delete self_; }
+extern "C" void BRepGraphInc_SolidRef_destructor(BRepGraphInc::SolidRef* self_) { delete self_; }
+extern "C" void BRepGraphInc_SolidRelations_destructor(BRepGraphInc::SolidRelations* self_) { delete self_; }
+extern "C" void BRepGraphInc_VertexDef_destructor(BRepGraphInc::VertexDef* self_) { delete self_; }
+extern "C" void BRepGraphInc_VertexRef_destructor(BRepGraphInc::VertexRef* self_) { delete self_; }
+extern "C" void BRepGraphInc_VertexRelations_destructor(BRepGraphInc::VertexRelations* self_) { delete self_; }
+extern "C" void BRepGraphInc_WireDef_destructor(BRepGraphInc::WireDef* self_) { delete self_; }
+extern "C" void BRepGraphInc_WireRef_destructor(BRepGraphInc::WireRef* self_) { delete self_; }
+extern "C" void BRepGraphInc_WireRelations_destructor(BRepGraphInc::WireRelations* self_) { delete self_; }
+extern "C" void BRepGraphInc_Load_Counts_destructor(BRepGraphInc_Load::Counts* self_) { delete self_; }
+extern "C" void BRepGraphInc_Populate_BuildStatus_destructor(BRepGraphInc_Populate::BuildStatus* self_) { delete self_; }
+extern "C" void BRepGraphInc_Populate_Options_destructor(BRepGraphInc_Populate::Options* self_) { delete self_; }
+extern "C" void BRepGraphInc_Storage_WireCoEdgeOrderStatus_destructor(BRepGraphInc_Storage::WireCoEdgeOrderStatus* self_) { delete self_; }
+extern "C" void BRepGraph_CacheMesh_SlotId_destructor(BRepGraph_CacheMesh::SlotId* self_) { delete self_; }
+extern "C" void BRepGraph_ChildExplorer_LinkKind_destructor(BRepGraph_ChildExplorer::LinkKind* self_) { delete self_; }
+extern "C" void BRepGraph_ChildExplorer_TraversalMode_destructor(BRepGraph_ChildExplorer::TraversalMode* self_) { delete self_; }
+extern "C" void BRepGraph_ChildRefId_destructor(BRepGraph_ChildRefId* self_) { delete self_; }
+extern "C" void BRepGraph_CoEdgeCurve2DRepId_destructor(BRepGraph_CoEdgeCurve2DRepId* self_) { delete self_; }
+extern "C" void BRepGraph_CoEdgeId_destructor(BRepGraph_CoEdgeId* self_) { delete self_; }
+extern "C" void BRepGraph_CoEdgePolygon2DRepId_destructor(BRepGraph_CoEdgePolygon2DRepId* self_) { delete self_; }
+extern "C" void BRepGraph_CoEdgePolygonOnTriRepId_destructor(BRepGraph_CoEdgePolygonOnTriRepId* self_) { delete self_; }
+extern "C" void BRepGraph_CompSolidId_destructor(BRepGraph_CompSolidId* self_) { delete self_; }
+extern "C" void BRepGraph_CompoundId_destructor(BRepGraph_CompoundId* self_) { delete self_; }
+extern "C" void BRepGraph_Copy_CachePolicy_destructor(BRepGraph_Copy::CachePolicy* self_) { delete self_; }
+extern "C" void BRepGraph_Copy_GeomPolicy_destructor(BRepGraph_Copy::GeomPolicy* self_) { delete self_; }
+extern "C" void BRepGraph_Copy_MeshPolicy_destructor(BRepGraph_Copy::MeshPolicy* self_) { delete self_; }
+extern "C" void BRepGraph_CopyRemap_ItemMap_destructor(BRepGraph_CopyRemap::ItemMap* self_) { delete self_; }
+extern "C" void BRepGraph_CopyRemap_MappingKind_destructor(BRepGraph_CopyRemap::MappingKind* self_) { delete self_; }
+extern "C" void BRepGraph_CopyRemap_Mode_destructor(BRepGraph_CopyRemap::Mode* self_) { delete self_; }
+extern "C" void BRepGraph_EdgeCurve3DRepId_destructor(BRepGraph_EdgeCurve3DRepId* self_) { delete self_; }
+extern "C" void BRepGraph_EdgeId_destructor(BRepGraph_EdgeId* self_) { delete self_; }
+extern "C" void BRepGraph_EdgePolygon3DRepId_destructor(BRepGraph_EdgePolygon3DRepId* self_) { delete self_; }
+extern "C" void BRepGraph_FaceId_destructor(BRepGraph_FaceId* self_) { delete self_; }
+extern "C" void BRepGraph_FaceRefId_destructor(BRepGraph_FaceRefId* self_) { delete self_; }
+extern "C" void BRepGraph_FaceSurfaceRepId_destructor(BRepGraph_FaceSurfaceRepId* self_) { delete self_; }
+extern "C" void BRepGraph_FaceTriangulationRepId_destructor(BRepGraph_FaceTriangulationRepId* self_) { delete self_; }
+extern "C" void BRepGraph_ItemId_Domain_destructor(BRepGraph_ItemId::Domain* self_) { delete self_; }
+extern "C" void BRepGraph_ItemUID_Domain_destructor(BRepGraph_ItemUID::Domain* self_) { delete self_; }
+extern "C" void BRepGraph_LayerDeferred_RepresentationKind_destructor(BRepGraph_LayerDeferred::RepresentationKind* self_) { delete self_; }
+extern "C" void BRepGraph_LayerHistory_Kind_destructor(BRepGraph_LayerHistory::Kind* self_) { delete self_; }
+extern "C" void BRepGraph_LayerParametric_GenerationFlag_destructor(BRepGraph_LayerParametric::GenerationFlag* self_) { delete self_; }
+extern "C" void BRepGraph_LayerParametric_MeshQuality_destructor(BRepGraph_LayerParametric::MeshQuality* self_) { delete self_; }
+extern "C" void BRepGraph_LayerTopoSupplement_AttachmentKind_destructor(BRepGraph_LayerTopoSupplement::AttachmentKind* self_) { delete self_; }
+extern "C" void BRepGraph_MutGuard_BRepGraphInc_ChildRef_destructor(BRepGraph_MutGuard_BRepGraphInc_ChildRef* self_) { delete self_; }
+extern "C" void BRepGraph_MutGuard_BRepGraphInc_CoEdgeDef_destructor(BRepGraph_MutGuard_BRepGraphInc_CoEdgeDef* self_) { delete self_; }
+extern "C" void BRepGraph_MutGuard_BRepGraphInc_CompSolidDef_destructor(BRepGraph_MutGuard_BRepGraphInc_CompSolidDef* self_) { delete self_; }
+extern "C" void BRepGraph_MutGuard_BRepGraphInc_CompoundDef_destructor(BRepGraph_MutGuard_BRepGraphInc_CompoundDef* self_) { delete self_; }
+extern "C" void BRepGraph_MutGuard_BRepGraphInc_EdgeDef_destructor(BRepGraph_MutGuard_BRepGraphInc_EdgeDef* self_) { delete self_; }
+extern "C" void BRepGraph_MutGuard_BRepGraphInc_FaceDef_destructor(BRepGraph_MutGuard_BRepGraphInc_FaceDef* self_) { delete self_; }
+extern "C" void BRepGraph_MutGuard_BRepGraphInc_FaceRef_destructor(BRepGraph_MutGuard_BRepGraphInc_FaceRef* self_) { delete self_; }
+extern "C" void BRepGraph_MutGuard_BRepGraphInc_OccurrenceDef_destructor(BRepGraph_MutGuard_BRepGraphInc_OccurrenceDef* self_) { delete self_; }
+extern "C" void BRepGraph_MutGuard_BRepGraphInc_OccurrenceRef_destructor(BRepGraph_MutGuard_BRepGraphInc_OccurrenceRef* self_) { delete self_; }
+extern "C" void BRepGraph_MutGuard_BRepGraphInc_ProductDef_destructor(BRepGraph_MutGuard_BRepGraphInc_ProductDef* self_) { delete self_; }
+extern "C" void BRepGraph_MutGuard_BRepGraphInc_ShellDef_destructor(BRepGraph_MutGuard_BRepGraphInc_ShellDef* self_) { delete self_; }
+extern "C" void BRepGraph_MutGuard_BRepGraphInc_ShellRef_destructor(BRepGraph_MutGuard_BRepGraphInc_ShellRef* self_) { delete self_; }
+extern "C" void BRepGraph_MutGuard_BRepGraphInc_SolidDef_destructor(BRepGraph_MutGuard_BRepGraphInc_SolidDef* self_) { delete self_; }
+extern "C" void BRepGraph_MutGuard_BRepGraphInc_SolidRef_destructor(BRepGraph_MutGuard_BRepGraphInc_SolidRef* self_) { delete self_; }
+extern "C" void BRepGraph_MutGuard_BRepGraphInc_VertexDef_destructor(BRepGraph_MutGuard_BRepGraphInc_VertexDef* self_) { delete self_; }
+extern "C" void BRepGraph_MutGuard_BRepGraphInc_VertexRef_destructor(BRepGraph_MutGuard_BRepGraphInc_VertexRef* self_) { delete self_; }
+extern "C" void BRepGraph_MutGuard_BRepGraphInc_WireDef_destructor(BRepGraph_MutGuard_BRepGraphInc_WireDef* self_) { delete self_; }
+extern "C" void BRepGraph_MutGuard_BRepGraphInc_WireRef_destructor(BRepGraph_MutGuard_BRepGraphInc_WireRef* self_) { delete self_; }
+extern "C" void BRepGraph_NodeId_Kind_destructor(BRepGraph_NodeId::Kind* self_) { delete self_; }
+extern "C" void BRepGraph_OccurrenceId_destructor(BRepGraph_OccurrenceId* self_) { delete self_; }
+extern "C" void BRepGraph_OccurrenceRefId_destructor(BRepGraph_OccurrenceRefId* self_) { delete self_; }
+extern "C" void BRepGraph_ParentExplorer_LinkKind_destructor(BRepGraph_ParentExplorer::LinkKind* self_) { delete self_; }
+extern "C" void BRepGraph_ParentExplorer_TraversalMode_destructor(BRepGraph_ParentExplorer::TraversalMode* self_) { delete self_; }
+extern "C" void BRepGraph_ProductId_destructor(BRepGraph_ProductId* self_) { delete self_; }
+extern "C" void BRepGraph_RefId_Kind_destructor(BRepGraph_RefId::Kind* self_) { delete self_; }
+extern "C" void BRepGraph_RelatedIterator_RelationKind_destructor(BRepGraph_RelatedIterator::RelationKind* self_) { delete self_; }
+extern "C" void BRepGraph_RepId_Kind_destructor(BRepGraph_RepId::Kind* self_) { delete self_; }
+extern "C" void BRepGraph_ShellId_destructor(BRepGraph_ShellId* self_) { delete self_; }
+extern "C" void BRepGraph_ShellRefId_destructor(BRepGraph_ShellRefId* self_) { delete self_; }
+extern "C" void BRepGraph_SolidId_destructor(BRepGraph_SolidId* self_) { delete self_; }
+extern "C" void BRepGraph_SolidRefId_destructor(BRepGraph_SolidRefId* self_) { delete self_; }
+extern "C" void BRepGraph_Tool_CoEdgeUsage_destructor(BRepGraph_Tool::CoEdgeUsage* self_) { delete self_; }
+extern "C" void BRepGraph_Tool_FaceUsage_destructor(BRepGraph_Tool::FaceUsage* self_) { delete self_; }
+extern "C" void BRepGraph_Tool_ShellUsage_destructor(BRepGraph_Tool::ShellUsage* self_) { delete self_; }
+extern "C" void BRepGraph_Tool_VertexUsage_destructor(BRepGraph_Tool::VertexUsage* self_) { delete self_; }
+extern "C" void BRepGraph_Tool_WireUsage_destructor(BRepGraph_Tool::WireUsage* self_) { delete self_; }
+extern "C" void BRepGraph_Validate_Mode_destructor(BRepGraph_Validate::Mode* self_) { delete self_; }
+extern "C" void BRepGraph_Validate_Severity_destructor(BRepGraph_Validate::Severity* self_) { delete self_; }
+extern "C" void BRepGraph_VertexId_destructor(BRepGraph_VertexId* self_) { delete self_; }
+extern "C" void BRepGraph_VertexRefId_destructor(BRepGraph_VertexRefId* self_) { delete self_; }
+extern "C" void BRepGraph_WireId_destructor(BRepGraph_WireId* self_) { delete self_; }
+extern "C" void BRepGraph_WireRefId_destructor(BRepGraph_WireRefId* self_) { delete self_; }

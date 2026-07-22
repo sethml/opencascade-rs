@@ -12,18 +12,18 @@ unsafe extern "C" {
     pub fn AppStd_Application_destructor(self_: *mut AppStd_Application);
     /// **Source:** `AppStd_Application.hxx` - `AppStd_Application::AppStd_Application()`
     pub fn AppStd_Application_ctor() -> crate::OcctResult<*mut AppStd_Application>;
-    /// **Source:** `AppStd_Application.hxx`:32 - `AppStd_Application::ResourcesName()`
+    /// **Source:** `AppStd_Application.hxx`:28 - `AppStd_Application::ResourcesName()`
     pub fn AppStd_Application_resources_name(
         self_: *mut AppStd_Application,
     ) -> crate::OcctResult<*const std::ffi::c_char>;
-    /// **Source:** `AppStd_Application.hxx`:37 - `AppStd_Application::DynamicType()`
+    /// **Source:** `AppStd_Application.hxx`:33 - `AppStd_Application::DynamicType()`
     pub fn AppStd_Application_dynamic_type(
         self_: *const AppStd_Application,
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// **Source:** `AppStd_Application.hxx`:37 - `AppStd_Application::get_type_name()`
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
+    /// **Source:** `AppStd_Application.hxx`:33 - `AppStd_Application::get_type_name()`
     pub fn AppStd_Application_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
-    /// **Source:** `AppStd_Application.hxx`:37 - `AppStd_Application::get_type_descriptor()`
-    pub fn AppStd_Application_get_type_descriptor() -> crate::OcctResult<*const HandleStandardType>;
+    /// **Source:** `AppStd_Application.hxx`:33 - `AppStd_Application::get_type_descriptor()`
+    pub fn AppStd_Application_get_type_descriptor() -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast AppStd_Application to TDocStd_Application
     pub fn AppStd_Application_as_TDocStd_Application(
         self_: *const AppStd_Application,
@@ -59,279 +59,274 @@ unsafe extern "C" {
     /// Wrap AppStd_Application in a Handle
     pub fn AppStd_Application_to_handle(
         obj: *mut AppStd_Application,
-    ) -> crate::OcctResult<*mut HandleAppStdApplication>;
+    ) -> crate::OcctResult<*mut Handle_AppStd_Application>;
     /// Destroy Handle<AppStd_Application>
-    pub fn HandleAppStdApplication_destructor(self_: *mut HandleAppStdApplication);
+    pub fn Handle_AppStd_Application_destructor(self_: *mut Handle_AppStd_Application);
     /// Clone Handle<AppStd_Application> (increments reference count)
-    pub fn HandleAppStdApplication_clone(
-        self_: *const HandleAppStdApplication,
-    ) -> crate::OcctResult<*mut HandleAppStdApplication>;
+    pub fn Handle_AppStd_Application_clone(
+        self_: *const Handle_AppStd_Application,
+    ) -> crate::OcctResult<*mut Handle_AppStd_Application>;
     /// Check if Handle<AppStd_Application> is null
-    pub fn HandleAppStdApplication_is_null(self_: *const HandleAppStdApplication) -> bool;
+    pub fn Handle_AppStd_Application_is_null(self_: *const Handle_AppStd_Application) -> bool;
     /// Dereference Handle to get *const AppStd_Application
-    pub fn HandleAppStdApplication_get(
-        handle: *const HandleAppStdApplication,
+    pub fn Handle_AppStd_Application_get(
+        handle: *const Handle_AppStd_Application,
     ) -> crate::OcctResult<*const AppStd_Application>;
     /// Dereference Handle to get *mut AppStd_Application
-    pub fn HandleAppStdApplication_get_mut(
-        handle: *mut HandleAppStdApplication,
+    pub fn Handle_AppStd_Application_get_mut(
+        handle: *mut Handle_AppStd_Application,
     ) -> crate::OcctResult<*mut AppStd_Application>;
     /// Upcast Handle<AppStd_Application> to Handle<TDocStd_Application>
-    pub fn HandleAppStdApplication_to_HandleTDocStdApplication(
-        self_: *const HandleAppStdApplication,
-    ) -> crate::OcctResult<*mut HandleTDocStdApplication>;
+    pub fn Handle_AppStd_Application_to_Handle_TDocStd_Application(
+        self_: *const Handle_AppStd_Application,
+    ) -> crate::OcctResult<*mut Handle_TDocStd_Application>;
     /// Upcast Handle<AppStd_Application> to Handle<CDF_Application>
-    pub fn HandleAppStdApplication_to_HandleCDFApplication(
-        self_: *const HandleAppStdApplication,
-    ) -> crate::OcctResult<*mut HandleCDFApplication>;
+    pub fn Handle_AppStd_Application_to_Handle_CDF_Application(
+        self_: *const Handle_AppStd_Application,
+    ) -> crate::OcctResult<*mut Handle_CDF_Application>;
     /// Upcast Handle<AppStd_Application> to Handle<CDM_Application>
-    pub fn HandleAppStdApplication_to_HandleCDMApplication(
-        self_: *const HandleAppStdApplication,
-    ) -> crate::OcctResult<*mut HandleCDMApplication>;
+    pub fn Handle_AppStd_Application_to_Handle_CDM_Application(
+        self_: *const Handle_AppStd_Application,
+    ) -> crate::OcctResult<*mut Handle_CDM_Application>;
     /// Upcast Handle<AppStd_Application> to Handle<Standard_Transient>
-    pub fn HandleAppStdApplication_to_HandleStandardTransient(
-        self_: *const HandleAppStdApplication,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
-    /// Inherited: **Source:** `TDocStd_Application.hxx`:76 - `TDocStd_Application::IsDriverLoaded()`
+    pub fn Handle_AppStd_Application_to_Handle_Standard_Transient(
+        self_: *const Handle_AppStd_Application,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
+    /// Inherited: **Source:** `TDocStd_Application.hxx`:74 - `TDocStd_Application::IsDriverLoaded()`
     pub fn AppStd_Application_inherited_IsDriverLoaded(
         self_: *const AppStd_Application,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `TDocStd_Application.hxx`:96 - `TDocStd_Application::Resources()`
+    /// Inherited: **Source:** `TDocStd_Application.hxx`:94 - `TDocStd_Application::Resources()`
     pub fn AppStd_Application_inherited_Resources(
         self_: *mut AppStd_Application,
-    ) -> crate::OcctResult<*mut HandleResourceManager>;
-    /// Inherited: **Source:** `TDocStd_Application.hxx`:140 - `TDocStd_Application::DefineFormat()`
+    ) -> crate::OcctResult<*mut Handle_Resource_Manager>;
+    /// Inherited: **Source:** `TDocStd_Application.hxx`:138 - `TDocStd_Application::DefineFormat()`
     pub fn AppStd_Application_inherited_DefineFormat(
         self_: *mut AppStd_Application,
         theFormat: *const TCollection_AsciiString,
         theDescription: *const TCollection_AsciiString,
         theExtension: *const TCollection_AsciiString,
-        theReader: *const HandlePCDMRetrievalDriver,
-        theWriter: *const HandlePCDMStorageDriver,
+        theReader: *const Handle_PCDM_RetrievalDriver,
+        theWriter: *const Handle_PCDM_StorageDriver,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `TDocStd_Application.hxx`:149 - `TDocStd_Application::ReadingFormats()`
+    /// Inherited: **Source:** `TDocStd_Application.hxx`:147 - `TDocStd_Application::ReadingFormats()`
     pub fn AppStd_Application_inherited_ReadingFormats(
         self_: *mut AppStd_Application,
-        theFormats: *mut TColStd_SequenceOfAsciiString,
+        theFormats: *mut NCollection_Sequence_TCollection_AsciiString,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `TDocStd_Application.hxx`:154 - `TDocStd_Application::WritingFormats()`
+    /// Inherited: **Source:** `TDocStd_Application.hxx`:152 - `TDocStd_Application::WritingFormats()`
     pub fn AppStd_Application_inherited_WritingFormats(
         self_: *mut AppStd_Application,
-        theFormats: *mut TColStd_SequenceOfAsciiString,
+        theFormats: *mut NCollection_Sequence_TCollection_AsciiString,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `TDocStd_Application.hxx`:157 - `TDocStd_Application::NbDocuments()`
+    /// Inherited: **Source:** `TDocStd_Application.hxx`:155 - `TDocStd_Application::NbDocuments()`
     pub fn AppStd_Application_inherited_NbDocuments(
         self_: *const AppStd_Application,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `TDocStd_Application.hxx`:171 - `TDocStd_Application::GetDocument()`
+    /// Inherited: **Source:** `TDocStd_Application.hxx`:161 - `TDocStd_Application::GetDocument()`
     pub fn AppStd_Application_inherited_GetDocument(
         self_: *const AppStd_Application,
         index: i32,
-        aDoc: *mut HandleTDocStdDocument,
-    ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `TDocStd_Application.hxx`:179 - `TDocStd_Application::NewDocument()`
+    ) -> crate::OcctResult<*mut Handle_TDocStd_Document>;
+    /// Inherited: **Source:** `TDocStd_Application.hxx`:172 - `TDocStd_Application::NewDocument()`
     pub fn AppStd_Application_inherited_NewDocument(
         self_: *mut AppStd_Application,
         format: *const TCollection_ExtendedString,
-        aDoc: *mut HandleCDMDocument,
+        aDoc: *mut Handle_CDM_Document,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `TDocStd_Application.hxx`:194 - `TDocStd_Application::InitDocument()`
+    /// Inherited: **Source:** `TDocStd_Application.hxx`:187 - `TDocStd_Application::InitDocument()`
     pub fn AppStd_Application_inherited_InitDocument(
         self_: *const AppStd_Application,
-        aDoc: *const HandleCDMDocument,
+        aDoc: *const Handle_CDM_Document,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `TDocStd_Application.hxx`:199 - `TDocStd_Application::Close()`
+    /// Inherited: **Source:** `TDocStd_Application.hxx`:191 - `TDocStd_Application::Close()`
     pub fn AppStd_Application_inherited_Close(
         self_: *mut AppStd_Application,
-        aDoc: *const HandleTDocStdDocument,
+        aDoc: *const Handle_TDocStd_Document,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `TDocStd_Application.hxx`:221 - `TDocStd_Application::IsInSession()`
+    /// Inherited: **Source:** `TDocStd_Application.hxx`:213 - `TDocStd_Application::IsInSession()`
     pub fn AppStd_Application_inherited_IsInSession(
         self_: *const AppStd_Application,
         path: *const TCollection_ExtendedString,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `TDocStd_Application.hxx`:232 - `TDocStd_Application::Open()`
+    /// Inherited: **Source:** `TDocStd_Application.hxx`:224 - `TDocStd_Application::Open()`
     pub fn AppStd_Application_inherited_Open(
         self_: *mut AppStd_Application,
         thePath: *const TCollection_ExtendedString,
-        theDoc: *mut HandleTDocStdDocument,
-        theFilter: *const HandlePCDMReaderFilter,
+        theDoc: *mut Handle_TDocStd_Document,
+        theFilter: *const Handle_PCDM_ReaderFilter,
         theRange: *const Message_ProgressRange,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `TDocStd_Application.hxx`:278 - `TDocStd_Application::SaveAs()`
+    /// Inherited: **Source:** `TDocStd_Application.hxx`:270 - `TDocStd_Application::SaveAs()`
     pub fn AppStd_Application_inherited_SaveAs(
         self_: *mut AppStd_Application,
-        theDoc: *const HandleTDocStdDocument,
+        theDoc: *const Handle_TDocStd_Document,
         path: *const TCollection_ExtendedString,
         theRange: *const Message_ProgressRange,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `TDocStd_Application.hxx`:294 - `TDocStd_Application::Save()`
+    /// Inherited: **Source:** `TDocStd_Application.hxx`:286 - `TDocStd_Application::Save()`
     pub fn AppStd_Application_inherited_Save(
         self_: *mut AppStd_Application,
-        theDoc: *const HandleTDocStdDocument,
+        theDoc: *const Handle_TDocStd_Document,
         theRange: *const Message_ProgressRange,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `TDocStd_Application.hxx`:321 - `TDocStd_Application::OnOpenTransaction()`
+    /// Inherited: **Source:** `TDocStd_Application.hxx`:312 - `TDocStd_Application::OnOpenTransaction()`
     pub fn AppStd_Application_inherited_OnOpenTransaction(
         self_: *mut AppStd_Application,
-        theDoc: *const HandleTDocStdDocument,
+        theDoc: *const Handle_TDocStd_Document,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `TDocStd_Application.hxx`:324 - `TDocStd_Application::OnCommitTransaction()`
+    /// Inherited: **Source:** `TDocStd_Application.hxx`:315 - `TDocStd_Application::OnCommitTransaction()`
     pub fn AppStd_Application_inherited_OnCommitTransaction(
         self_: *mut AppStd_Application,
-        theDoc: *const HandleTDocStdDocument,
+        theDoc: *const Handle_TDocStd_Document,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `TDocStd_Application.hxx`:327 - `TDocStd_Application::OnAbortTransaction()`
+    /// Inherited: **Source:** `TDocStd_Application.hxx`:318 - `TDocStd_Application::OnAbortTransaction()`
     pub fn AppStd_Application_inherited_OnAbortTransaction(
         self_: *mut AppStd_Application,
-        theDoc: *const HandleTDocStdDocument,
+        theDoc: *const Handle_TDocStd_Document,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `CDF_Application.hxx`:73 - `CDF_Application::CanClose()`
+    /// Inherited: **Source:** `CDF_Application.hxx`:71 - `CDF_Application::CanClose()`
     pub fn AppStd_Application_inherited_CanClose(
         self_: *mut AppStd_Application,
-        aDocument: *const HandleCDMDocument,
+        aDocument: *const Handle_CDM_Document,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `CDF_Application.hxx`:97 - `CDF_Application::Retrieve()`
+    /// Inherited: **Source:** `CDF_Application.hxx`:95 - `CDF_Application::Retrieve()`
     pub fn AppStd_Application_inherited_Retrieve(
         self_: *mut AppStd_Application,
         aFolder: *const TCollection_ExtendedString,
         aName: *const TCollection_ExtendedString,
         UseStorageConfiguration: bool,
-        theFilter: *const HandlePCDMReaderFilter,
+        theFilter: *const Handle_PCDM_ReaderFilter,
         theRange: *const Message_ProgressRange,
-    ) -> crate::OcctResult<*mut HandleCDMDocument>;
-    /// Inherited: **Source:** `CDF_Application.hxx`:126 - `CDF_Application::CanRetrieve()`
+    ) -> crate::OcctResult<*mut Handle_CDM_Document>;
+    /// Inherited: **Source:** `CDF_Application.hxx`:124 - `CDF_Application::CanRetrieve()`
     pub fn AppStd_Application_inherited_CanRetrieve(
         self_: *mut AppStd_Application,
         theFolder: *const TCollection_ExtendedString,
         theName: *const TCollection_ExtendedString,
         theAppendMode: bool,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `CDF_Application.hxx`:136 - `CDF_Application::GetRetrieveStatus()`
+    /// Inherited: **Source:** `CDF_Application.hxx`:134 - `CDF_Application::GetRetrieveStatus()`
     pub fn AppStd_Application_inherited_GetRetrieveStatus(
         self_: *const AppStd_Application,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `CDF_Application.hxx`:140 - `CDF_Application::Read()`
+    /// Inherited: **Source:** `CDF_Application.hxx`:138 - `CDF_Application::Read()`
     pub fn AppStd_Application_inherited_Read(
         self_: *mut AppStd_Application,
         theIStream: *mut Standard_IStream,
-        theDocument: *mut HandleCDMDocument,
-        theFilter: *const HandlePCDMReaderFilter,
+        theDocument: *mut Handle_CDM_Document,
+        theFilter: *const Handle_PCDM_ReaderFilter,
         theRange: *const Message_ProgressRange,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `CDF_Application.hxx`:158 - `CDF_Application::ReaderFromFormat()`
+    /// Inherited: **Source:** `CDF_Application.hxx`:156 - `CDF_Application::ReaderFromFormat()`
     pub fn AppStd_Application_inherited_ReaderFromFormat(
         self_: *mut AppStd_Application,
         aFormat: *const TCollection_ExtendedString,
-    ) -> crate::OcctResult<*mut HandlePCDMReader>;
-    /// Inherited: **Source:** `CDF_Application.hxx`:173 - `CDF_Application::WriterFromFormat()`
+    ) -> crate::OcctResult<*mut Handle_PCDM_Reader>;
+    /// Inherited: **Source:** `CDF_Application.hxx`:171 - `CDF_Application::WriterFromFormat()`
     pub fn AppStd_Application_inherited_WriterFromFormat(
         self_: *mut AppStd_Application,
         aFormat: *const TCollection_ExtendedString,
-    ) -> crate::OcctResult<*mut HandlePCDMStorageDriver>;
-    /// Inherited: **Source:** `CDF_Application.hxx`:179 - `CDF_Application::Format()`
+    ) -> crate::OcctResult<*mut Handle_PCDM_StorageDriver>;
+    /// Inherited: **Source:** `CDF_Application.hxx`:177 - `CDF_Application::Format()`
     pub fn AppStd_Application_inherited_Format(
         self_: *mut AppStd_Application,
         aFileName: *const TCollection_ExtendedString,
         theFormat: *mut TCollection_ExtendedString,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `CDF_Application.hxx`:187 - `CDF_Application::MetaDataDriver()`
+    /// Inherited: **Source:** `CDF_Application.hxx`:185 - `CDF_Application::MetaDataDriver()`
     pub fn AppStd_Application_inherited_MetaDataDriver(
         self_: *const AppStd_Application,
-    ) -> crate::OcctResult<*mut HandleCDFMetaDataDriver>;
-    /// Inherited: **Source:** `CDM_Application.hxx`:45 - `CDM_Application::MessageDriver()`
+    ) -> crate::OcctResult<*mut Handle_CDF_MetaDataDriver>;
+    /// Inherited: **Source:** `CDM_Application.hxx`:43 - `CDM_Application::MessageDriver()`
     pub fn AppStd_Application_inherited_MessageDriver(
         self_: *mut AppStd_Application,
-    ) -> crate::OcctResult<*mut HandleMessageMessenger>;
-    /// Inherited: **Source:** `CDM_Application.hxx`:49 - `CDM_Application::BeginOfUpdate()`
+    ) -> crate::OcctResult<*mut Handle_Message_Messenger>;
+    /// Inherited: **Source:** `CDM_Application.hxx`:47 - `CDM_Application::BeginOfUpdate()`
     pub fn AppStd_Application_inherited_BeginOfUpdate(
         self_: *mut AppStd_Application,
-        aDocument: *const HandleCDMDocument,
+        aDocument: *const Handle_CDM_Document,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `CDM_Application.hxx`:53 - `CDM_Application::EndOfUpdate()`
+    /// Inherited: **Source:** `CDM_Application.hxx`:51 - `CDM_Application::EndOfUpdate()`
     pub fn AppStd_Application_inherited_EndOfUpdate(
         self_: *mut AppStd_Application,
-        aDocument: *const HandleCDMDocument,
+        aDocument: *const Handle_CDM_Document,
         theStatus: bool,
         ErrorString: *const TCollection_ExtendedString,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `CDM_Application.hxx`:61 - `CDM_Application::Name()`
+    /// Inherited: **Source:** `CDM_Application.hxx`:59 - `CDM_Application::Name()`
     pub fn AppStd_Application_inherited_Name(
         self_: *const AppStd_Application,
     ) -> crate::OcctResult<*mut TCollection_ExtendedString>;
-    /// Inherited: **Source:** `CDM_Application.hxx`:64 - `CDM_Application::Version()`
+    /// Inherited: **Source:** `CDM_Application.hxx`:62 - `CDM_Application::Version()`
     pub fn AppStd_Application_inherited_Version(
         self_: *const AppStd_Application,
     ) -> crate::OcctResult<*mut TCollection_AsciiString>;
-    /// Inherited: **Source:** `CDM_Application.hxx`:67 - `CDM_Application::MetaDataLookUpTable()`
-    pub fn AppStd_Application_inherited_MetaDataLookUpTable(
-        self_: *mut AppStd_Application,
-    ) -> crate::OcctResult<*mut CDM_MetaDataLookUpTable>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn AppStd_Application_inherited_IsInstance(
         self_: *const AppStd_Application,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn AppStd_Application_inherited_IsKind(
         self_: *const AppStd_Application,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn AppStd_Application_inherited_This(
         self_: *const AppStd_Application,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn AppStd_Application_inherited_GetRefCount(
         self_: *const AppStd_Application,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn AppStd_Application_inherited_IncrementRefCounter(
         self_: *mut AppStd_Application,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn AppStd_Application_inherited_DecrementRefCounter(
         self_: *mut AppStd_Application,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn AppStd_Application_inherited_Delete(
         self_: *const AppStd_Application,
     ) -> *const std::ffi::c_char;
     // ======================== TDataXtd_Axis ========================
     pub fn TDataXtd_Axis_destructor(self_: *mut TDataXtd_Axis);
-    /// **Source:** `TDataXtd_Axis.hxx`:53 - `TDataXtd_Axis::TDataXtd_Axis()`
+    /// **Source:** `TDataXtd_Axis.hxx`:51 - `TDataXtd_Axis::TDataXtd_Axis()`
     pub fn TDataXtd_Axis_ctor() -> crate::OcctResult<*mut TDataXtd_Axis>;
-    /// **Source:** `TDataXtd_Axis.hxx`:55 - `TDataXtd_Axis::ID()`
+    /// **Source:** `TDataXtd_Axis.hxx`:53 - `TDataXtd_Axis::ID()`
     pub fn TDataXtd_Axis_id(self_: *const TDataXtd_Axis)
         -> crate::OcctResult<*const Standard_GUID>;
-    /// **Source:** `TDataXtd_Axis.hxx`:57 - `TDataXtd_Axis::Dump()`
+    /// **Source:** `TDataXtd_Axis.hxx`:55 - `TDataXtd_Axis::Dump()`
     pub fn TDataXtd_Axis_dump(
         self_: *mut TDataXtd_Axis,
         anOS: *mut Standard_OStream,
     ) -> crate::OcctResult<*mut Standard_OStream>;
-    /// **Source:** `TDataXtd_Axis.hxx`:59 - `TDataXtd_Axis::DynamicType()`
+    /// **Source:** `TDataXtd_Axis.hxx`:57 - `TDataXtd_Axis::DynamicType()`
     pub fn TDataXtd_Axis_dynamic_type(
         self_: *const TDataXtd_Axis,
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// **Source:** `TDataXtd_Axis.hxx`:59 - `TDataXtd_Axis::NewEmpty()`
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
+    /// **Source:** `TDataXtd_Axis.hxx`:57 - `TDataXtd_Axis::NewEmpty()`
     pub fn TDataXtd_Axis_new_empty(
         self_: *const TDataXtd_Axis,
-    ) -> crate::OcctResult<*mut HandleTDFAttribute>;
-    /// **Source:** `TDataXtd_Axis.hxx`:37 - `TDataXtd_Axis::GetID()`
+    ) -> crate::OcctResult<*mut Handle_TDF_Attribute>;
+    /// **Source:** `TDataXtd_Axis.hxx`:34 - `TDataXtd_Axis::GetID()`
     pub fn TDataXtd_Axis_get_id() -> crate::OcctResult<*const Standard_GUID>;
-    /// **Source:** `TDataXtd_Axis.hxx`:45 - `TDataXtd_Axis::Set()`
+    /// **Source:** `TDataXtd_Axis.hxx`:42 - `TDataXtd_Axis::Set()`
     pub fn TDataXtd_Axis_set_label(
         label: *const TDF_Label,
-    ) -> crate::OcctResult<*mut HandleTDataXtdAxis>;
-    /// **Source:** `TDataXtd_Axis.hxx`:51 - `TDataXtd_Axis::Set()`
+    ) -> crate::OcctResult<*mut Handle_TDataXtd_Axis>;
+    /// **Source:** `TDataXtd_Axis.hxx`:49 - `TDataXtd_Axis::Set()`
     pub fn TDataXtd_Axis_set_label_lin(
         label: *const TDF_Label,
         L: *const gp_Lin,
-    ) -> crate::OcctResult<*mut HandleTDataXtdAxis>;
-    /// **Source:** `TDataXtd_Axis.hxx`:59 - `TDataXtd_Axis::get_type_name()`
+    ) -> crate::OcctResult<*mut Handle_TDataXtd_Axis>;
+    /// **Source:** `TDataXtd_Axis.hxx`:57 - `TDataXtd_Axis::get_type_name()`
     pub fn TDataXtd_Axis_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
-    /// **Source:** `TDataXtd_Axis.hxx`:59 - `TDataXtd_Axis::get_type_descriptor()`
-    pub fn TDataXtd_Axis_get_type_descriptor() -> crate::OcctResult<*const HandleStandardType>;
+    /// **Source:** `TDataXtd_Axis.hxx`:57 - `TDataXtd_Axis::get_type_descriptor()`
+    pub fn TDataXtd_Axis_get_type_descriptor() -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast TDataXtd_Axis to TDataStd_GenericEmpty
     pub fn TDataXtd_Axis_as_TDataStd_GenericEmpty(
         self_: *const TDataXtd_Axis,
@@ -359,373 +354,367 @@ unsafe extern "C" {
     /// Wrap TDataXtd_Axis in a Handle
     pub fn TDataXtd_Axis_to_handle(
         obj: *mut TDataXtd_Axis,
-    ) -> crate::OcctResult<*mut HandleTDataXtdAxis>;
+    ) -> crate::OcctResult<*mut Handle_TDataXtd_Axis>;
     /// Destroy Handle<TDataXtd_Axis>
-    pub fn HandleTDataXtdAxis_destructor(self_: *mut HandleTDataXtdAxis);
+    pub fn Handle_TDataXtd_Axis_destructor(self_: *mut Handle_TDataXtd_Axis);
     /// Clone Handle<TDataXtd_Axis> (increments reference count)
-    pub fn HandleTDataXtdAxis_clone(
-        self_: *const HandleTDataXtdAxis,
-    ) -> crate::OcctResult<*mut HandleTDataXtdAxis>;
+    pub fn Handle_TDataXtd_Axis_clone(
+        self_: *const Handle_TDataXtd_Axis,
+    ) -> crate::OcctResult<*mut Handle_TDataXtd_Axis>;
     /// Check if Handle<TDataXtd_Axis> is null
-    pub fn HandleTDataXtdAxis_is_null(self_: *const HandleTDataXtdAxis) -> bool;
+    pub fn Handle_TDataXtd_Axis_is_null(self_: *const Handle_TDataXtd_Axis) -> bool;
     /// Dereference Handle to get *const TDataXtd_Axis
-    pub fn HandleTDataXtdAxis_get(
-        handle: *const HandleTDataXtdAxis,
+    pub fn Handle_TDataXtd_Axis_get(
+        handle: *const Handle_TDataXtd_Axis,
     ) -> crate::OcctResult<*const TDataXtd_Axis>;
     /// Dereference Handle to get *mut TDataXtd_Axis
-    pub fn HandleTDataXtdAxis_get_mut(
-        handle: *mut HandleTDataXtdAxis,
+    pub fn Handle_TDataXtd_Axis_get_mut(
+        handle: *mut Handle_TDataXtd_Axis,
     ) -> crate::OcctResult<*mut TDataXtd_Axis>;
     /// Upcast Handle<TDataXtd_Axis> to Handle<TDataStd_GenericEmpty>
-    pub fn HandleTDataXtdAxis_to_HandleTDataStdGenericEmpty(
-        self_: *const HandleTDataXtdAxis,
-    ) -> crate::OcctResult<*mut HandleTDataStdGenericEmpty>;
+    pub fn Handle_TDataXtd_Axis_to_Handle_TDataStd_GenericEmpty(
+        self_: *const Handle_TDataXtd_Axis,
+    ) -> crate::OcctResult<*mut Handle_TDataStd_GenericEmpty>;
     /// Upcast Handle<TDataXtd_Axis> to Handle<TDF_Attribute>
-    pub fn HandleTDataXtdAxis_to_HandleTDFAttribute(
-        self_: *const HandleTDataXtdAxis,
-    ) -> crate::OcctResult<*mut HandleTDFAttribute>;
+    pub fn Handle_TDataXtd_Axis_to_Handle_TDF_Attribute(
+        self_: *const Handle_TDataXtd_Axis,
+    ) -> crate::OcctResult<*mut Handle_TDF_Attribute>;
     /// Upcast Handle<TDataXtd_Axis> to Handle<Standard_Transient>
-    pub fn HandleTDataXtdAxis_to_HandleStandardTransient(
-        self_: *const HandleTDataXtdAxis,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
-    /// Inherited: **Source:** `TDataStd_GenericEmpty.hxx`:33 - `TDataStd_GenericEmpty::Restore()`
+    pub fn Handle_TDataXtd_Axis_to_Handle_Standard_Transient(
+        self_: *const Handle_TDataXtd_Axis,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
+    /// Inherited: **Source:** `TDataStd_GenericEmpty.hxx`:30 - `TDataStd_GenericEmpty::Restore()`
     pub fn TDataXtd_Axis_inherited_Restore(
         self_: *mut TDataXtd_Axis,
-        arg0: *const HandleTDFAttribute,
+        arg0: *const Handle_TDF_Attribute,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `TDataStd_GenericEmpty.hxx`:35 - `TDataStd_GenericEmpty::Paste()`
+    /// Inherited: **Source:** `TDataStd_GenericEmpty.hxx`:32 - `TDataStd_GenericEmpty::Paste()`
     pub fn TDataXtd_Axis_inherited_Paste(
         self_: *const TDataXtd_Axis,
-        arg0: *const HandleTDFAttribute,
-        arg1: *const HandleTDFRelocationTable,
+        arg0: *const Handle_TDF_Attribute,
+        arg1: *const Handle_TDF_RelocationTable,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:138 - `TDF_Attribute::SetID()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:135 - `TDF_Attribute::SetID()`
     pub fn TDataXtd_Axis_inherited_SetID(
         self_: *mut TDataXtd_Axis,
         arg0: *const Standard_GUID,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:150 - `TDF_Attribute::Label()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:147 - `TDF_Attribute::Label()`
     pub fn TDataXtd_Axis_inherited_Label(
         self_: *const TDataXtd_Axis,
     ) -> crate::OcctResult<*mut TDF_Label>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:154 - `TDF_Attribute::Transaction()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:151 - `TDF_Attribute::Transaction()`
     pub fn TDataXtd_Axis_inherited_Transaction(
         self_: *const TDataXtd_Axis,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:160 - `TDF_Attribute::UntilTransaction()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:157 - `TDF_Attribute::UntilTransaction()`
     pub fn TDataXtd_Axis_inherited_UntilTransaction(
         self_: *const TDataXtd_Axis,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:164 - `TDF_Attribute::IsValid()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:161 - `TDF_Attribute::IsValid()`
     pub fn TDataXtd_Axis_inherited_IsValid(self_: *const TDataXtd_Axis) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:167 - `TDF_Attribute::IsNew()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:164 - `TDF_Attribute::IsNew()`
     pub fn TDataXtd_Axis_inherited_IsNew(self_: *const TDataXtd_Axis) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:174 - `TDF_Attribute::IsForgotten()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:171 - `TDF_Attribute::IsForgotten()`
     pub fn TDataXtd_Axis_inherited_IsForgotten(
         self_: *const TDataXtd_Axis,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:178 - `TDF_Attribute::IsAttribute()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:175 - `TDF_Attribute::IsAttribute()`
     pub fn TDataXtd_Axis_inherited_IsAttribute(
         self_: *const TDataXtd_Axis,
         anID: *const Standard_GUID,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:185 - `TDF_Attribute::FindAttribute()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:182 - `TDF_Attribute::FindAttribute()`
     pub fn TDataXtd_Axis_inherited_FindAttribute(
         self_: *const TDataXtd_Axis,
         anID: *const Standard_GUID,
-        anAttribute: *mut HandleTDFAttribute,
+        anAttribute: *mut Handle_TDF_Attribute,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:199 - `TDF_Attribute::AddAttribute()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:196 - `TDF_Attribute::AddAttribute()`
     pub fn TDataXtd_Axis_inherited_AddAttribute(
         self_: *const TDataXtd_Axis,
-        other: *const HandleTDFAttribute,
+        other: *const Handle_TDF_Attribute,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:206 - `TDF_Attribute::ForgetAttribute()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:203 - `TDF_Attribute::ForgetAttribute()`
     pub fn TDataXtd_Axis_inherited_ForgetAttribute(
         self_: *const TDataXtd_Axis,
         aguid: *const Standard_GUID,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:214 - `TDF_Attribute::ForgetAllAttributes()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:211 - `TDF_Attribute::ForgetAllAttributes()`
     pub fn TDataXtd_Axis_inherited_ForgetAllAttributes(
         self_: *const TDataXtd_Axis,
         clearChildren: bool,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:218 - `TDF_Attribute::AfterAddition()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:214 - `TDF_Attribute::AfterAddition()`
     pub fn TDataXtd_Axis_inherited_AfterAddition(
         self_: *mut TDataXtd_Axis,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:222 - `TDF_Attribute::BeforeRemoval()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:218 - `TDF_Attribute::BeforeRemoval()`
     pub fn TDataXtd_Axis_inherited_BeforeRemoval(
         self_: *mut TDataXtd_Axis,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:226 - `TDF_Attribute::BeforeForget()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:222 - `TDF_Attribute::BeforeForget()`
     pub fn TDataXtd_Axis_inherited_BeforeForget(
         self_: *mut TDataXtd_Axis,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:230 - `TDF_Attribute::AfterResume()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:226 - `TDF_Attribute::AfterResume()`
     pub fn TDataXtd_Axis_inherited_AfterResume(
         self_: *mut TDataXtd_Axis,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:239 - `TDF_Attribute::AfterRetrieval()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:235 - `TDF_Attribute::AfterRetrieval()`
     pub fn TDataXtd_Axis_inherited_AfterRetrieval(
         self_: *mut TDataXtd_Axis,
         forceIt: bool,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:248 - `TDF_Attribute::BeforeUndo()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:243 - `TDF_Attribute::BeforeUndo()`
     pub fn TDataXtd_Axis_inherited_BeforeUndo(
         self_: *mut TDataXtd_Axis,
-        anAttDelta: *const HandleTDFAttributeDelta,
+        anAttDelta: *const Handle_TDF_AttributeDelta,
         forceIt: bool,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:258 - `TDF_Attribute::AfterUndo()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:252 - `TDF_Attribute::AfterUndo()`
     pub fn TDataXtd_Axis_inherited_AfterUndo(
         self_: *mut TDataXtd_Axis,
-        anAttDelta: *const HandleTDFAttributeDelta,
+        anAttDelta: *const Handle_TDF_AttributeDelta,
         forceIt: bool,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:265 - `TDF_Attribute::BeforeCommitTransaction()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:258 - `TDF_Attribute::BeforeCommitTransaction()`
     pub fn TDataXtd_Axis_inherited_BeforeCommitTransaction(
         self_: *mut TDataXtd_Axis,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:277 - `TDF_Attribute::Backup()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:270 - `TDF_Attribute::Backup()`
     pub fn TDataXtd_Axis_inherited_Backup(self_: *mut TDataXtd_Axis) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:282 - `TDF_Attribute::IsBackuped()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:275 - `TDF_Attribute::IsBackuped()`
     pub fn TDataXtd_Axis_inherited_IsBackuped(
         self_: *const TDataXtd_Axis,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:286 - `TDF_Attribute::BackupCopy()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:279 - `TDF_Attribute::BackupCopy()`
     pub fn TDataXtd_Axis_inherited_BackupCopy(
         self_: *const TDataXtd_Axis,
-    ) -> crate::OcctResult<*mut HandleTDFAttribute>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:296 - `TDF_Attribute::DeltaOnAddition()`
+    ) -> crate::OcctResult<*mut Handle_TDF_Attribute>;
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:289 - `TDF_Attribute::DeltaOnAddition()`
     pub fn TDataXtd_Axis_inherited_DeltaOnAddition(
         self_: *const TDataXtd_Axis,
-    ) -> crate::OcctResult<*mut HandleTDFDeltaOnAddition>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:300 - `TDF_Attribute::DeltaOnForget()`
+    ) -> crate::OcctResult<*mut Handle_TDF_DeltaOnAddition>;
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:293 - `TDF_Attribute::DeltaOnForget()`
     pub fn TDataXtd_Axis_inherited_DeltaOnForget(
         self_: *const TDataXtd_Axis,
-    ) -> crate::OcctResult<*mut HandleTDFDeltaOnForget>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:304 - `TDF_Attribute::DeltaOnResume()`
+    ) -> crate::OcctResult<*mut Handle_TDF_DeltaOnForget>;
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:297 - `TDF_Attribute::DeltaOnResume()`
     pub fn TDataXtd_Axis_inherited_DeltaOnResume(
         self_: *const TDataXtd_Axis,
-    ) -> crate::OcctResult<*mut HandleTDFDeltaOnResume>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:308 - `TDF_Attribute::DeltaOnModification()`
+    ) -> crate::OcctResult<*mut Handle_TDF_DeltaOnResume>;
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:301 - `TDF_Attribute::DeltaOnModification()`
     pub fn TDataXtd_Axis_inherited_DeltaOnModification(
         self_: *const TDataXtd_Axis,
-        anOldAttribute: *const HandleTDFAttribute,
-    ) -> crate::OcctResult<*mut HandleTDFDeltaOnModification>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:316 - `TDF_Attribute::DeltaOnRemoval()`
+        anOldAttribute: *const Handle_TDF_Attribute,
+    ) -> crate::OcctResult<*mut Handle_TDF_DeltaOnModification>;
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:310 - `TDF_Attribute::DeltaOnRemoval()`
     pub fn TDataXtd_Axis_inherited_DeltaOnRemoval(
         self_: *const TDataXtd_Axis,
-    ) -> crate::OcctResult<*mut HandleTDFDeltaOnRemoval>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:345 - `TDF_Attribute::References()`
+    ) -> crate::OcctResult<*mut Handle_TDF_DeltaOnRemoval>;
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:340 - `TDF_Attribute::References()`
     pub fn TDataXtd_Axis_inherited_References(
         self_: *const TDataXtd_Axis,
-        aDataSet: *const HandleTDFDataSet,
+        aDataSet: *const Handle_TDF_DataSet,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:358 - `TDF_Attribute::ExtendedDump()`
-    pub fn TDataXtd_Axis_inherited_ExtendedDump(
-        self_: *const TDataXtd_Axis,
-        anOS: *mut Standard_OStream,
-        aFilter: *const TDF_IDFilter,
-        aMap: *mut TDF_AttributeIndexedMap,
-    ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:374 - `TDF_Attribute::Forget()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:370 - `TDF_Attribute::Forget()`
     pub fn TDataXtd_Axis_inherited_Forget(
         self_: *mut TDataXtd_Axis,
         aTransaction: i32,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn TDataXtd_Axis_inherited_IsInstance(
         self_: *const TDataXtd_Axis,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn TDataXtd_Axis_inherited_IsKind(
         self_: *const TDataXtd_Axis,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn TDataXtd_Axis_inherited_This(
         self_: *const TDataXtd_Axis,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn TDataXtd_Axis_inherited_GetRefCount(
         self_: *const TDataXtd_Axis,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn TDataXtd_Axis_inherited_IncrementRefCounter(
         self_: *mut TDataXtd_Axis,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn TDataXtd_Axis_inherited_DecrementRefCounter(
         self_: *mut TDataXtd_Axis,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn TDataXtd_Axis_inherited_Delete(self_: *const TDataXtd_Axis) -> *const std::ffi::c_char;
     // ======================== TDataXtd_Constraint ========================
     pub fn TDataXtd_Constraint_destructor(self_: *mut TDataXtd_Constraint);
-    /// **Source:** `TDataXtd_Constraint.hxx`:62 - `TDataXtd_Constraint::TDataXtd_Constraint()`
+    /// **Source:** `TDataXtd_Constraint.hxx`:60 - `TDataXtd_Constraint::TDataXtd_Constraint()`
     pub fn TDataXtd_Constraint_ctor() -> crate::OcctResult<*mut TDataXtd_Constraint>;
-    /// **Source:** `TDataXtd_Constraint.hxx`:66 - `TDataXtd_Constraint::Set()`
+    /// **Source:** `TDataXtd_Constraint.hxx`:64 - `TDataXtd_Constraint::Set()`
     pub fn TDataXtd_Constraint_set_constraintenum_handletnamingnamedshape(
         self_: *mut TDataXtd_Constraint,
         type_: i32,
-        G1: *const HandleTNamingNamedShape,
+        G1: *const Handle_TNaming_NamedShape,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `TDataXtd_Constraint.hxx`:72 - `TDataXtd_Constraint::Set()`
+    /// **Source:** `TDataXtd_Constraint.hxx`:70 - `TDataXtd_Constraint::Set()`
     pub fn TDataXtd_Constraint_set_constraintenum_handletnamingnamedshape2(
         self_: *mut TDataXtd_Constraint,
         type_: i32,
-        G1: *const HandleTNamingNamedShape,
-        G2: *const HandleTNamingNamedShape,
+        G1: *const Handle_TNaming_NamedShape,
+        G2: *const Handle_TNaming_NamedShape,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `TDataXtd_Constraint.hxx`:79 - `TDataXtd_Constraint::Set()`
+    /// **Source:** `TDataXtd_Constraint.hxx`:77 - `TDataXtd_Constraint::Set()`
     pub fn TDataXtd_Constraint_set_constraintenum_handletnamingnamedshape3(
         self_: *mut TDataXtd_Constraint,
         type_: i32,
-        G1: *const HandleTNamingNamedShape,
-        G2: *const HandleTNamingNamedShape,
-        G3: *const HandleTNamingNamedShape,
+        G1: *const Handle_TNaming_NamedShape,
+        G2: *const Handle_TNaming_NamedShape,
+        G3: *const Handle_TNaming_NamedShape,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `TDataXtd_Constraint.hxx`:89 - `TDataXtd_Constraint::Set()`
+    /// **Source:** `TDataXtd_Constraint.hxx`:87 - `TDataXtd_Constraint::Set()`
     pub fn TDataXtd_Constraint_set_constraintenum_handletnamingnamedshape4(
         self_: *mut TDataXtd_Constraint,
         type_: i32,
-        G1: *const HandleTNamingNamedShape,
-        G2: *const HandleTNamingNamedShape,
-        G3: *const HandleTNamingNamedShape,
-        G4: *const HandleTNamingNamedShape,
+        G1: *const Handle_TNaming_NamedShape,
+        G2: *const Handle_TNaming_NamedShape,
+        G3: *const Handle_TNaming_NamedShape,
+        G4: *const Handle_TNaming_NamedShape,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `TDataXtd_Constraint.hxx`:100 - `TDataXtd_Constraint::Verified()`
+    /// **Source:** `TDataXtd_Constraint.hxx`:98 - `TDataXtd_Constraint::Verified()`
     pub fn TDataXtd_Constraint_verified(
         self_: *const TDataXtd_Constraint,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `TDataXtd_Constraint.hxx`:105 - `TDataXtd_Constraint::GetType()`
+    /// **Source:** `TDataXtd_Constraint.hxx`:103 - `TDataXtd_Constraint::GetType()`
     pub fn TDataXtd_Constraint_get_type(
         self_: *const TDataXtd_Constraint,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `TDataXtd_Constraint.hxx`:109 - `TDataXtd_Constraint::IsPlanar()`
+    /// **Source:** `TDataXtd_Constraint.hxx`:107 - `TDataXtd_Constraint::IsPlanar()`
     pub fn TDataXtd_Constraint_is_planar(
         self_: *const TDataXtd_Constraint,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `TDataXtd_Constraint.hxx`:116 - `TDataXtd_Constraint::GetPlane()`
+    /// **Source:** `TDataXtd_Constraint.hxx`:114 - `TDataXtd_Constraint::GetPlane()`
     pub fn TDataXtd_Constraint_get_plane(
         self_: *const TDataXtd_Constraint,
-    ) -> crate::OcctResult<*const HandleTNamingNamedShape>;
-    /// **Source:** `TDataXtd_Constraint.hxx`:120 - `TDataXtd_Constraint::IsDimension()`
+    ) -> crate::OcctResult<*const Handle_TNaming_NamedShape>;
+    /// **Source:** `TDataXtd_Constraint.hxx`:118 - `TDataXtd_Constraint::IsDimension()`
     pub fn TDataXtd_Constraint_is_dimension(
         self_: *const TDataXtd_Constraint,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `TDataXtd_Constraint.hxx`:126 - `TDataXtd_Constraint::GetValue()`
+    /// **Source:** `TDataXtd_Constraint.hxx`:124 - `TDataXtd_Constraint::GetValue()`
     pub fn TDataXtd_Constraint_get_value(
         self_: *const TDataXtd_Constraint,
-    ) -> crate::OcctResult<*const HandleTDataStdReal>;
-    /// **Source:** `TDataXtd_Constraint.hxx`:130 - `TDataXtd_Constraint::NbGeometries()`
+    ) -> crate::OcctResult<*const Handle_TDataStd_Real>;
+    /// **Source:** `TDataXtd_Constraint.hxx`:128 - `TDataXtd_Constraint::NbGeometries()`
     pub fn TDataXtd_Constraint_nb_geometries(
         self_: *const TDataXtd_Constraint,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `TDataXtd_Constraint.hxx`:137 - `TDataXtd_Constraint::GetGeometry()`
+    /// **Source:** `TDataXtd_Constraint.hxx`:135 - `TDataXtd_Constraint::GetGeometry()`
     pub fn TDataXtd_Constraint_get_geometry(
         self_: *const TDataXtd_Constraint,
         Index: i32,
-    ) -> crate::OcctResult<*mut HandleTNamingNamedShape>;
-    /// **Source:** `TDataXtd_Constraint.hxx`:142 - `TDataXtd_Constraint::ClearGeometries()`
+    ) -> crate::OcctResult<*mut Handle_TNaming_NamedShape>;
+    /// **Source:** `TDataXtd_Constraint.hxx`:140 - `TDataXtd_Constraint::ClearGeometries()`
     pub fn TDataXtd_Constraint_clear_geometries(
         self_: *mut TDataXtd_Constraint,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `TDataXtd_Constraint.hxx`:145 - `TDataXtd_Constraint::SetType()`
+    /// **Source:** `TDataXtd_Constraint.hxx`:143 - `TDataXtd_Constraint::SetType()`
     pub fn TDataXtd_Constraint_set_type(
         self_: *mut TDataXtd_Constraint,
         CTR: i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `TDataXtd_Constraint.hxx`:149 - `TDataXtd_Constraint::SetPlane()`
+    /// **Source:** `TDataXtd_Constraint.hxx`:147 - `TDataXtd_Constraint::SetPlane()`
     pub fn TDataXtd_Constraint_set_plane(
         self_: *mut TDataXtd_Constraint,
-        plane: *const HandleTNamingNamedShape,
+        plane: *const Handle_TNaming_NamedShape,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `TDataXtd_Constraint.hxx`:152 - `TDataXtd_Constraint::SetValue()`
+    /// **Source:** `TDataXtd_Constraint.hxx`:150 - `TDataXtd_Constraint::SetValue()`
     pub fn TDataXtd_Constraint_set_value(
         self_: *mut TDataXtd_Constraint,
-        V: *const HandleTDataStdReal,
+        V: *const Handle_TDataStd_Real,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `TDataXtd_Constraint.hxx`:157 - `TDataXtd_Constraint::SetGeometry()`
+    /// **Source:** `TDataXtd_Constraint.hxx`:155 - `TDataXtd_Constraint::SetGeometry()`
     pub fn TDataXtd_Constraint_set_geometry(
         self_: *mut TDataXtd_Constraint,
         Index: i32,
-        G: *const HandleTNamingNamedShape,
+        G: *const Handle_TNaming_NamedShape,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `TDataXtd_Constraint.hxx`:166 - `TDataXtd_Constraint::Verified()`
+    /// **Source:** `TDataXtd_Constraint.hxx`:163 - `TDataXtd_Constraint::Verified()`
     pub fn TDataXtd_Constraint_verified_bool(
         self_: *mut TDataXtd_Constraint,
         status: bool,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `TDataXtd_Constraint.hxx`:168 - `TDataXtd_Constraint::Inverted()`
+    /// **Source:** `TDataXtd_Constraint.hxx`:165 - `TDataXtd_Constraint::Inverted()`
     pub fn TDataXtd_Constraint_inverted_bool(
         self_: *mut TDataXtd_Constraint,
         status: bool,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `TDataXtd_Constraint.hxx`:170 - `TDataXtd_Constraint::Inverted()`
+    /// **Source:** `TDataXtd_Constraint.hxx`:167 - `TDataXtd_Constraint::Inverted()`
     pub fn TDataXtd_Constraint_inverted(
         self_: *const TDataXtd_Constraint,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `TDataXtd_Constraint.hxx`:172 - `TDataXtd_Constraint::Reversed()`
+    /// **Source:** `TDataXtd_Constraint.hxx`:169 - `TDataXtd_Constraint::Reversed()`
     pub fn TDataXtd_Constraint_reversed_bool(
         self_: *mut TDataXtd_Constraint,
         status: bool,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `TDataXtd_Constraint.hxx`:174 - `TDataXtd_Constraint::Reversed()`
+    /// **Source:** `TDataXtd_Constraint.hxx`:171 - `TDataXtd_Constraint::Reversed()`
     pub fn TDataXtd_Constraint_reversed(
         self_: *const TDataXtd_Constraint,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `TDataXtd_Constraint.hxx`:180 - `TDataXtd_Constraint::ID()`
+    /// **Source:** `TDataXtd_Constraint.hxx`:177 - `TDataXtd_Constraint::ID()`
     pub fn TDataXtd_Constraint_id(
         self_: *const TDataXtd_Constraint,
     ) -> crate::OcctResult<*const Standard_GUID>;
-    /// **Source:** `TDataXtd_Constraint.hxx`:182 - `TDataXtd_Constraint::Restore()`
+    /// **Source:** `TDataXtd_Constraint.hxx`:179 - `TDataXtd_Constraint::Restore()`
     pub fn TDataXtd_Constraint_restore(
         self_: *mut TDataXtd_Constraint,
-        With: *const HandleTDFAttribute,
+        With: *const Handle_TDF_Attribute,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `TDataXtd_Constraint.hxx`:184 - `TDataXtd_Constraint::NewEmpty()`
+    /// **Source:** `TDataXtd_Constraint.hxx`:181 - `TDataXtd_Constraint::NewEmpty()`
     pub fn TDataXtd_Constraint_new_empty(
         self_: *const TDataXtd_Constraint,
-    ) -> crate::OcctResult<*mut HandleTDFAttribute>;
-    /// **Source:** `TDataXtd_Constraint.hxx`:186 - `TDataXtd_Constraint::Paste()`
+    ) -> crate::OcctResult<*mut Handle_TDF_Attribute>;
+    /// **Source:** `TDataXtd_Constraint.hxx`:183 - `TDataXtd_Constraint::Paste()`
     pub fn TDataXtd_Constraint_paste(
         self_: *const TDataXtd_Constraint,
-        Into: *const HandleTDFAttribute,
-        RT: *const HandleTDFRelocationTable,
+        Into: *const Handle_TDF_Attribute,
+        RT: *const Handle_TDF_RelocationTable,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `TDataXtd_Constraint.hxx`:189 - `TDataXtd_Constraint::Dump()`
+    /// **Source:** `TDataXtd_Constraint.hxx`:186 - `TDataXtd_Constraint::Dump()`
     pub fn TDataXtd_Constraint_dump(
         self_: *mut TDataXtd_Constraint,
         anOS: *mut Standard_OStream,
     ) -> crate::OcctResult<*mut Standard_OStream>;
-    /// **Source:** `TDataXtd_Constraint.hxx`:191 - `TDataXtd_Constraint::References()`
+    /// **Source:** `TDataXtd_Constraint.hxx`:188 - `TDataXtd_Constraint::References()`
     pub fn TDataXtd_Constraint_references(
         self_: *const TDataXtd_Constraint,
-        DS: *const HandleTDFDataSet,
+        DS: *const Handle_TDF_DataSet,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `TDataXtd_Constraint.hxx`:193 - `TDataXtd_Constraint::DynamicType()`
+    /// **Source:** `TDataXtd_Constraint.hxx`:190 - `TDataXtd_Constraint::DynamicType()`
     pub fn TDataXtd_Constraint_dynamic_type(
         self_: *const TDataXtd_Constraint,
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// **Source:** `TDataXtd_Constraint.hxx`:53 - `TDataXtd_Constraint::GetID()`
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
+    /// **Source:** `TDataXtd_Constraint.hxx`:51 - `TDataXtd_Constraint::GetID()`
     pub fn TDataXtd_Constraint_get_id() -> crate::OcctResult<*const Standard_GUID>;
-    /// **Source:** `TDataXtd_Constraint.hxx`:60 - `TDataXtd_Constraint::Set()`
+    /// **Source:** `TDataXtd_Constraint.hxx`:58 - `TDataXtd_Constraint::Set()`
     pub fn TDataXtd_Constraint_set(
         label: *const TDF_Label,
-    ) -> crate::OcctResult<*mut HandleTDataXtdConstraint>;
-    /// **Source:** `TDataXtd_Constraint.hxx`:177 - `TDataXtd_Constraint::CollectChildConstraints()`
+    ) -> crate::OcctResult<*mut Handle_TDataXtd_Constraint>;
+    /// **Source:** `TDataXtd_Constraint.hxx`:174 - `TDataXtd_Constraint::CollectChildConstraints()`
     pub fn TDataXtd_Constraint_collect_child_constraints(
         aLabel: *const TDF_Label,
-        TheList: *mut TDF_LabelList,
+        TheList: *mut NCollection_List_TDF_Label,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `TDataXtd_Constraint.hxx`:193 - `TDataXtd_Constraint::get_type_name()`
+    /// **Source:** `TDataXtd_Constraint.hxx`:190 - `TDataXtd_Constraint::get_type_name()`
     pub fn TDataXtd_Constraint_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
-    /// **Source:** `TDataXtd_Constraint.hxx`:193 - `TDataXtd_Constraint::get_type_descriptor()`
-    pub fn TDataXtd_Constraint_get_type_descriptor() -> crate::OcctResult<*const HandleStandardType>;
+    /// **Source:** `TDataXtd_Constraint.hxx`:190 - `TDataXtd_Constraint::get_type_descriptor()`
+    pub fn TDataXtd_Constraint_get_type_descriptor(
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast TDataXtd_Constraint to TDF_Attribute
     pub fn TDataXtd_Constraint_as_TDF_Attribute(
         self_: *const TDataXtd_Constraint,
@@ -745,323 +734,316 @@ unsafe extern "C" {
     /// Wrap TDataXtd_Constraint in a Handle
     pub fn TDataXtd_Constraint_to_handle(
         obj: *mut TDataXtd_Constraint,
-    ) -> crate::OcctResult<*mut HandleTDataXtdConstraint>;
+    ) -> crate::OcctResult<*mut Handle_TDataXtd_Constraint>;
     /// Destroy Handle<TDataXtd_Constraint>
-    pub fn HandleTDataXtdConstraint_destructor(self_: *mut HandleTDataXtdConstraint);
+    pub fn Handle_TDataXtd_Constraint_destructor(self_: *mut Handle_TDataXtd_Constraint);
     /// Clone Handle<TDataXtd_Constraint> (increments reference count)
-    pub fn HandleTDataXtdConstraint_clone(
-        self_: *const HandleTDataXtdConstraint,
-    ) -> crate::OcctResult<*mut HandleTDataXtdConstraint>;
+    pub fn Handle_TDataXtd_Constraint_clone(
+        self_: *const Handle_TDataXtd_Constraint,
+    ) -> crate::OcctResult<*mut Handle_TDataXtd_Constraint>;
     /// Check if Handle<TDataXtd_Constraint> is null
-    pub fn HandleTDataXtdConstraint_is_null(self_: *const HandleTDataXtdConstraint) -> bool;
+    pub fn Handle_TDataXtd_Constraint_is_null(self_: *const Handle_TDataXtd_Constraint) -> bool;
     /// Dereference Handle to get *const TDataXtd_Constraint
-    pub fn HandleTDataXtdConstraint_get(
-        handle: *const HandleTDataXtdConstraint,
+    pub fn Handle_TDataXtd_Constraint_get(
+        handle: *const Handle_TDataXtd_Constraint,
     ) -> crate::OcctResult<*const TDataXtd_Constraint>;
     /// Dereference Handle to get *mut TDataXtd_Constraint
-    pub fn HandleTDataXtdConstraint_get_mut(
-        handle: *mut HandleTDataXtdConstraint,
+    pub fn Handle_TDataXtd_Constraint_get_mut(
+        handle: *mut Handle_TDataXtd_Constraint,
     ) -> crate::OcctResult<*mut TDataXtd_Constraint>;
     /// Upcast Handle<TDataXtd_Constraint> to Handle<TDF_Attribute>
-    pub fn HandleTDataXtdConstraint_to_HandleTDFAttribute(
-        self_: *const HandleTDataXtdConstraint,
-    ) -> crate::OcctResult<*mut HandleTDFAttribute>;
+    pub fn Handle_TDataXtd_Constraint_to_Handle_TDF_Attribute(
+        self_: *const Handle_TDataXtd_Constraint,
+    ) -> crate::OcctResult<*mut Handle_TDF_Attribute>;
     /// Upcast Handle<TDataXtd_Constraint> to Handle<Standard_Transient>
-    pub fn HandleTDataXtdConstraint_to_HandleStandardTransient(
-        self_: *const HandleTDataXtdConstraint,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:138 - `TDF_Attribute::SetID()`
+    pub fn Handle_TDataXtd_Constraint_to_Handle_Standard_Transient(
+        self_: *const Handle_TDataXtd_Constraint,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:135 - `TDF_Attribute::SetID()`
     pub fn TDataXtd_Constraint_inherited_SetID(
         self_: *mut TDataXtd_Constraint,
         arg0: *const Standard_GUID,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:150 - `TDF_Attribute::Label()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:147 - `TDF_Attribute::Label()`
     pub fn TDataXtd_Constraint_inherited_Label(
         self_: *const TDataXtd_Constraint,
     ) -> crate::OcctResult<*mut TDF_Label>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:154 - `TDF_Attribute::Transaction()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:151 - `TDF_Attribute::Transaction()`
     pub fn TDataXtd_Constraint_inherited_Transaction(
         self_: *const TDataXtd_Constraint,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:160 - `TDF_Attribute::UntilTransaction()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:157 - `TDF_Attribute::UntilTransaction()`
     pub fn TDataXtd_Constraint_inherited_UntilTransaction(
         self_: *const TDataXtd_Constraint,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:164 - `TDF_Attribute::IsValid()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:161 - `TDF_Attribute::IsValid()`
     pub fn TDataXtd_Constraint_inherited_IsValid(
         self_: *const TDataXtd_Constraint,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:167 - `TDF_Attribute::IsNew()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:164 - `TDF_Attribute::IsNew()`
     pub fn TDataXtd_Constraint_inherited_IsNew(
         self_: *const TDataXtd_Constraint,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:174 - `TDF_Attribute::IsForgotten()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:171 - `TDF_Attribute::IsForgotten()`
     pub fn TDataXtd_Constraint_inherited_IsForgotten(
         self_: *const TDataXtd_Constraint,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:178 - `TDF_Attribute::IsAttribute()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:175 - `TDF_Attribute::IsAttribute()`
     pub fn TDataXtd_Constraint_inherited_IsAttribute(
         self_: *const TDataXtd_Constraint,
         anID: *const Standard_GUID,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:185 - `TDF_Attribute::FindAttribute()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:182 - `TDF_Attribute::FindAttribute()`
     pub fn TDataXtd_Constraint_inherited_FindAttribute(
         self_: *const TDataXtd_Constraint,
         anID: *const Standard_GUID,
-        anAttribute: *mut HandleTDFAttribute,
+        anAttribute: *mut Handle_TDF_Attribute,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:199 - `TDF_Attribute::AddAttribute()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:196 - `TDF_Attribute::AddAttribute()`
     pub fn TDataXtd_Constraint_inherited_AddAttribute(
         self_: *const TDataXtd_Constraint,
-        other: *const HandleTDFAttribute,
+        other: *const Handle_TDF_Attribute,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:206 - `TDF_Attribute::ForgetAttribute()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:203 - `TDF_Attribute::ForgetAttribute()`
     pub fn TDataXtd_Constraint_inherited_ForgetAttribute(
         self_: *const TDataXtd_Constraint,
         aguid: *const Standard_GUID,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:214 - `TDF_Attribute::ForgetAllAttributes()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:211 - `TDF_Attribute::ForgetAllAttributes()`
     pub fn TDataXtd_Constraint_inherited_ForgetAllAttributes(
         self_: *const TDataXtd_Constraint,
         clearChildren: bool,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:218 - `TDF_Attribute::AfterAddition()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:214 - `TDF_Attribute::AfterAddition()`
     pub fn TDataXtd_Constraint_inherited_AfterAddition(
         self_: *mut TDataXtd_Constraint,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:222 - `TDF_Attribute::BeforeRemoval()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:218 - `TDF_Attribute::BeforeRemoval()`
     pub fn TDataXtd_Constraint_inherited_BeforeRemoval(
         self_: *mut TDataXtd_Constraint,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:226 - `TDF_Attribute::BeforeForget()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:222 - `TDF_Attribute::BeforeForget()`
     pub fn TDataXtd_Constraint_inherited_BeforeForget(
         self_: *mut TDataXtd_Constraint,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:230 - `TDF_Attribute::AfterResume()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:226 - `TDF_Attribute::AfterResume()`
     pub fn TDataXtd_Constraint_inherited_AfterResume(
         self_: *mut TDataXtd_Constraint,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:239 - `TDF_Attribute::AfterRetrieval()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:235 - `TDF_Attribute::AfterRetrieval()`
     pub fn TDataXtd_Constraint_inherited_AfterRetrieval(
         self_: *mut TDataXtd_Constraint,
         forceIt: bool,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:248 - `TDF_Attribute::BeforeUndo()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:243 - `TDF_Attribute::BeforeUndo()`
     pub fn TDataXtd_Constraint_inherited_BeforeUndo(
         self_: *mut TDataXtd_Constraint,
-        anAttDelta: *const HandleTDFAttributeDelta,
+        anAttDelta: *const Handle_TDF_AttributeDelta,
         forceIt: bool,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:258 - `TDF_Attribute::AfterUndo()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:252 - `TDF_Attribute::AfterUndo()`
     pub fn TDataXtd_Constraint_inherited_AfterUndo(
         self_: *mut TDataXtd_Constraint,
-        anAttDelta: *const HandleTDFAttributeDelta,
+        anAttDelta: *const Handle_TDF_AttributeDelta,
         forceIt: bool,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:265 - `TDF_Attribute::BeforeCommitTransaction()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:258 - `TDF_Attribute::BeforeCommitTransaction()`
     pub fn TDataXtd_Constraint_inherited_BeforeCommitTransaction(
         self_: *mut TDataXtd_Constraint,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:277 - `TDF_Attribute::Backup()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:270 - `TDF_Attribute::Backup()`
     pub fn TDataXtd_Constraint_inherited_Backup(
         self_: *mut TDataXtd_Constraint,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:282 - `TDF_Attribute::IsBackuped()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:275 - `TDF_Attribute::IsBackuped()`
     pub fn TDataXtd_Constraint_inherited_IsBackuped(
         self_: *const TDataXtd_Constraint,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:286 - `TDF_Attribute::BackupCopy()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:279 - `TDF_Attribute::BackupCopy()`
     pub fn TDataXtd_Constraint_inherited_BackupCopy(
         self_: *const TDataXtd_Constraint,
-    ) -> crate::OcctResult<*mut HandleTDFAttribute>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:296 - `TDF_Attribute::DeltaOnAddition()`
+    ) -> crate::OcctResult<*mut Handle_TDF_Attribute>;
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:289 - `TDF_Attribute::DeltaOnAddition()`
     pub fn TDataXtd_Constraint_inherited_DeltaOnAddition(
         self_: *const TDataXtd_Constraint,
-    ) -> crate::OcctResult<*mut HandleTDFDeltaOnAddition>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:300 - `TDF_Attribute::DeltaOnForget()`
+    ) -> crate::OcctResult<*mut Handle_TDF_DeltaOnAddition>;
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:293 - `TDF_Attribute::DeltaOnForget()`
     pub fn TDataXtd_Constraint_inherited_DeltaOnForget(
         self_: *const TDataXtd_Constraint,
-    ) -> crate::OcctResult<*mut HandleTDFDeltaOnForget>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:304 - `TDF_Attribute::DeltaOnResume()`
+    ) -> crate::OcctResult<*mut Handle_TDF_DeltaOnForget>;
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:297 - `TDF_Attribute::DeltaOnResume()`
     pub fn TDataXtd_Constraint_inherited_DeltaOnResume(
         self_: *const TDataXtd_Constraint,
-    ) -> crate::OcctResult<*mut HandleTDFDeltaOnResume>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:308 - `TDF_Attribute::DeltaOnModification()`
+    ) -> crate::OcctResult<*mut Handle_TDF_DeltaOnResume>;
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:301 - `TDF_Attribute::DeltaOnModification()`
     pub fn TDataXtd_Constraint_inherited_DeltaOnModification(
         self_: *const TDataXtd_Constraint,
-        anOldAttribute: *const HandleTDFAttribute,
-    ) -> crate::OcctResult<*mut HandleTDFDeltaOnModification>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:316 - `TDF_Attribute::DeltaOnRemoval()`
+        anOldAttribute: *const Handle_TDF_Attribute,
+    ) -> crate::OcctResult<*mut Handle_TDF_DeltaOnModification>;
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:310 - `TDF_Attribute::DeltaOnRemoval()`
     pub fn TDataXtd_Constraint_inherited_DeltaOnRemoval(
         self_: *const TDataXtd_Constraint,
-    ) -> crate::OcctResult<*mut HandleTDFDeltaOnRemoval>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:358 - `TDF_Attribute::ExtendedDump()`
-    pub fn TDataXtd_Constraint_inherited_ExtendedDump(
-        self_: *const TDataXtd_Constraint,
-        anOS: *mut Standard_OStream,
-        aFilter: *const TDF_IDFilter,
-        aMap: *mut TDF_AttributeIndexedMap,
-    ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:374 - `TDF_Attribute::Forget()`
+    ) -> crate::OcctResult<*mut Handle_TDF_DeltaOnRemoval>;
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:370 - `TDF_Attribute::Forget()`
     pub fn TDataXtd_Constraint_inherited_Forget(
         self_: *mut TDataXtd_Constraint,
         aTransaction: i32,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn TDataXtd_Constraint_inherited_IsInstance(
         self_: *const TDataXtd_Constraint,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn TDataXtd_Constraint_inherited_IsKind(
         self_: *const TDataXtd_Constraint,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn TDataXtd_Constraint_inherited_This(
         self_: *const TDataXtd_Constraint,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn TDataXtd_Constraint_inherited_GetRefCount(
         self_: *const TDataXtd_Constraint,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn TDataXtd_Constraint_inherited_IncrementRefCounter(
         self_: *mut TDataXtd_Constraint,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn TDataXtd_Constraint_inherited_DecrementRefCounter(
         self_: *mut TDataXtd_Constraint,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn TDataXtd_Constraint_inherited_Delete(
         self_: *const TDataXtd_Constraint,
     ) -> *const std::ffi::c_char;
     // ======================== TDataXtd_Geometry ========================
     pub fn TDataXtd_Geometry_destructor(self_: *mut TDataXtd_Geometry);
-    /// **Source:** `TDataXtd_Geometry.hxx`:120 - `TDataXtd_Geometry::TDataXtd_Geometry()`
+    /// **Source:** `TDataXtd_Geometry.hxx`:116 - `TDataXtd_Geometry::TDataXtd_Geometry()`
     pub fn TDataXtd_Geometry_ctor() -> crate::OcctResult<*mut TDataXtd_Geometry>;
-    /// **Source:** `TDataXtd_Geometry.hxx`:124 - `TDataXtd_Geometry::SetType()`
+    /// **Source:** `TDataXtd_Geometry.hxx`:120 - `TDataXtd_Geometry::SetType()`
     pub fn TDataXtd_Geometry_set_type(
         self_: *mut TDataXtd_Geometry,
         T: i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `TDataXtd_Geometry.hxx`:127 - `TDataXtd_Geometry::GetType()`
+    /// **Source:** `TDataXtd_Geometry.hxx`:123 - `TDataXtd_Geometry::GetType()`
     pub fn TDataXtd_Geometry_get_type(self_: *const TDataXtd_Geometry) -> crate::OcctResult<i32>;
-    /// **Source:** `TDataXtd_Geometry.hxx`:129 - `TDataXtd_Geometry::ID()`
+    /// **Source:** `TDataXtd_Geometry.hxx`:125 - `TDataXtd_Geometry::ID()`
     pub fn TDataXtd_Geometry_id(
         self_: *const TDataXtd_Geometry,
     ) -> crate::OcctResult<*const Standard_GUID>;
-    /// **Source:** `TDataXtd_Geometry.hxx`:131 - `TDataXtd_Geometry::Restore()`
+    /// **Source:** `TDataXtd_Geometry.hxx`:127 - `TDataXtd_Geometry::Restore()`
     pub fn TDataXtd_Geometry_restore(
         self_: *mut TDataXtd_Geometry,
-        with: *const HandleTDFAttribute,
+        with: *const Handle_TDF_Attribute,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `TDataXtd_Geometry.hxx`:133 - `TDataXtd_Geometry::NewEmpty()`
+    /// **Source:** `TDataXtd_Geometry.hxx`:129 - `TDataXtd_Geometry::NewEmpty()`
     pub fn TDataXtd_Geometry_new_empty(
         self_: *const TDataXtd_Geometry,
-    ) -> crate::OcctResult<*mut HandleTDFAttribute>;
-    /// **Source:** `TDataXtd_Geometry.hxx`:135 - `TDataXtd_Geometry::Paste()`
+    ) -> crate::OcctResult<*mut Handle_TDF_Attribute>;
+    /// **Source:** `TDataXtd_Geometry.hxx`:131 - `TDataXtd_Geometry::Paste()`
     pub fn TDataXtd_Geometry_paste(
         self_: *const TDataXtd_Geometry,
-        into: *const HandleTDFAttribute,
-        RT: *const HandleTDFRelocationTable,
+        into: *const Handle_TDF_Attribute,
+        RT: *const Handle_TDF_RelocationTable,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `TDataXtd_Geometry.hxx`:138 - `TDataXtd_Geometry::Dump()`
+    /// **Source:** `TDataXtd_Geometry.hxx`:134 - `TDataXtd_Geometry::Dump()`
     pub fn TDataXtd_Geometry_dump(
         self_: *mut TDataXtd_Geometry,
         anOS: *mut Standard_OStream,
     ) -> crate::OcctResult<*mut Standard_OStream>;
-    /// **Source:** `TDataXtd_Geometry.hxx`:140 - `TDataXtd_Geometry::DynamicType()`
+    /// **Source:** `TDataXtd_Geometry.hxx`:136 - `TDataXtd_Geometry::DynamicType()`
     pub fn TDataXtd_Geometry_dynamic_type(
         self_: *const TDataXtd_Geometry,
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// **Source:** `TDataXtd_Geometry.hxx`:58 - `TDataXtd_Geometry::Set()`
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
+    /// **Source:** `TDataXtd_Geometry.hxx`:55 - `TDataXtd_Geometry::Set()`
     pub fn TDataXtd_Geometry_set(
         label: *const TDF_Label,
-    ) -> crate::OcctResult<*mut HandleTDataXtdGeometry>;
-    /// **Source:** `TDataXtd_Geometry.hxx`:62 - `TDataXtd_Geometry::Type()`
+    ) -> crate::OcctResult<*mut Handle_TDataXtd_Geometry>;
+    /// **Source:** `TDataXtd_Geometry.hxx`:59 - `TDataXtd_Geometry::Type()`
     pub fn TDataXtd_Geometry_type_label(L: *const TDF_Label) -> crate::OcctResult<i32>;
-    /// **Source:** `TDataXtd_Geometry.hxx`:66 - `TDataXtd_Geometry::Type()`
+    /// **Source:** `TDataXtd_Geometry.hxx`:63 - `TDataXtd_Geometry::Type()`
     pub fn TDataXtd_Geometry_type_handletnamingnamedshape(
-        S: *const HandleTNamingNamedShape,
+        S: *const Handle_TNaming_NamedShape,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `TDataXtd_Geometry.hxx`:69 - `TDataXtd_Geometry::Point()`
+    /// **Source:** `TDataXtd_Geometry.hxx`:66 - `TDataXtd_Geometry::Point()`
     pub fn TDataXtd_Geometry_point_label_pnt(
         L: *const TDF_Label,
         G: *mut gp_Pnt,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `TDataXtd_Geometry.hxx`:72 - `TDataXtd_Geometry::Point()`
+    /// **Source:** `TDataXtd_Geometry.hxx`:69 - `TDataXtd_Geometry::Point()`
     pub fn TDataXtd_Geometry_point_handletnamingnamedshape_pnt(
-        S: *const HandleTNamingNamedShape,
+        S: *const Handle_TNaming_NamedShape,
         G: *mut gp_Pnt,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `TDataXtd_Geometry.hxx`:75 - `TDataXtd_Geometry::Axis()`
+    /// **Source:** `TDataXtd_Geometry.hxx`:72 - `TDataXtd_Geometry::Axis()`
     pub fn TDataXtd_Geometry_axis_label_ax1(
         L: *const TDF_Label,
         G: *mut gp_Ax1,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `TDataXtd_Geometry.hxx`:78 - `TDataXtd_Geometry::Axis()`
+    /// **Source:** `TDataXtd_Geometry.hxx`:75 - `TDataXtd_Geometry::Axis()`
     pub fn TDataXtd_Geometry_axis_handletnamingnamedshape_ax1(
-        S: *const HandleTNamingNamedShape,
+        S: *const Handle_TNaming_NamedShape,
         G: *mut gp_Ax1,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `TDataXtd_Geometry.hxx`:81 - `TDataXtd_Geometry::Line()`
+    /// **Source:** `TDataXtd_Geometry.hxx`:78 - `TDataXtd_Geometry::Line()`
     pub fn TDataXtd_Geometry_line_label_lin(
         L: *const TDF_Label,
         G: *mut gp_Lin,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `TDataXtd_Geometry.hxx`:84 - `TDataXtd_Geometry::Line()`
+    /// **Source:** `TDataXtd_Geometry.hxx`:81 - `TDataXtd_Geometry::Line()`
     pub fn TDataXtd_Geometry_line_handletnamingnamedshape_lin(
-        S: *const HandleTNamingNamedShape,
+        S: *const Handle_TNaming_NamedShape,
         G: *mut gp_Lin,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `TDataXtd_Geometry.hxx`:87 - `TDataXtd_Geometry::Circle()`
+    /// **Source:** `TDataXtd_Geometry.hxx`:84 - `TDataXtd_Geometry::Circle()`
     pub fn TDataXtd_Geometry_circle_label_circ(
         L: *const TDF_Label,
         G: *mut gp_Circ,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `TDataXtd_Geometry.hxx`:90 - `TDataXtd_Geometry::Circle()`
+    /// **Source:** `TDataXtd_Geometry.hxx`:87 - `TDataXtd_Geometry::Circle()`
     pub fn TDataXtd_Geometry_circle_handletnamingnamedshape_circ(
-        S: *const HandleTNamingNamedShape,
+        S: *const Handle_TNaming_NamedShape,
         G: *mut gp_Circ,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `TDataXtd_Geometry.hxx`:93 - `TDataXtd_Geometry::Ellipse()`
+    /// **Source:** `TDataXtd_Geometry.hxx`:90 - `TDataXtd_Geometry::Ellipse()`
     pub fn TDataXtd_Geometry_ellipse_label_elips(
         L: *const TDF_Label,
         G: *mut gp_Elips,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `TDataXtd_Geometry.hxx`:97 - `TDataXtd_Geometry::Ellipse()`
+    /// **Source:** `TDataXtd_Geometry.hxx`:94 - `TDataXtd_Geometry::Ellipse()`
     pub fn TDataXtd_Geometry_ellipse_handletnamingnamedshape_elips(
-        S: *const HandleTNamingNamedShape,
+        S: *const Handle_TNaming_NamedShape,
         G: *mut gp_Elips,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `TDataXtd_Geometry.hxx`:100 - `TDataXtd_Geometry::Plane()`
+    /// **Source:** `TDataXtd_Geometry.hxx`:97 - `TDataXtd_Geometry::Plane()`
     pub fn TDataXtd_Geometry_plane_label_pln(
         L: *const TDF_Label,
         G: *mut gp_Pln,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `TDataXtd_Geometry.hxx`:104 - `TDataXtd_Geometry::Plane()`
+    /// **Source:** `TDataXtd_Geometry.hxx`:101 - `TDataXtd_Geometry::Plane()`
     pub fn TDataXtd_Geometry_plane_handletnamingnamedshape_pln(
-        S: *const HandleTNamingNamedShape,
+        S: *const Handle_TNaming_NamedShape,
         G: *mut gp_Pln,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `TDataXtd_Geometry.hxx`:107 - `TDataXtd_Geometry::Cylinder()`
+    /// **Source:** `TDataXtd_Geometry.hxx`:104 - `TDataXtd_Geometry::Cylinder()`
     pub fn TDataXtd_Geometry_cylinder_label_cylinder(
         L: *const TDF_Label,
         G: *mut gp_Cylinder,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `TDataXtd_Geometry.hxx`:111 - `TDataXtd_Geometry::Cylinder()`
+    /// **Source:** `TDataXtd_Geometry.hxx`:108 - `TDataXtd_Geometry::Cylinder()`
     pub fn TDataXtd_Geometry_cylinder_handletnamingnamedshape_cylinder(
-        S: *const HandleTNamingNamedShape,
+        S: *const Handle_TNaming_NamedShape,
         G: *mut gp_Cylinder,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `TDataXtd_Geometry.hxx`:115 - `TDataXtd_Geometry::GetID()`
+    /// **Source:** `TDataXtd_Geometry.hxx`:111 - `TDataXtd_Geometry::GetID()`
     pub fn TDataXtd_Geometry_get_id() -> crate::OcctResult<*const Standard_GUID>;
-    /// **Source:** `TDataXtd_Geometry.hxx`:140 - `TDataXtd_Geometry::get_type_name()`
+    /// **Source:** `TDataXtd_Geometry.hxx`:136 - `TDataXtd_Geometry::get_type_name()`
     pub fn TDataXtd_Geometry_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
-    /// **Source:** `TDataXtd_Geometry.hxx`:140 - `TDataXtd_Geometry::get_type_descriptor()`
-    pub fn TDataXtd_Geometry_get_type_descriptor() -> crate::OcctResult<*const HandleStandardType>;
+    /// **Source:** `TDataXtd_Geometry.hxx`:136 - `TDataXtd_Geometry::get_type_descriptor()`
+    pub fn TDataXtd_Geometry_get_type_descriptor() -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast TDataXtd_Geometry to TDF_Attribute
     pub fn TDataXtd_Geometry_as_TDF_Attribute(
         self_: *const TDataXtd_Geometry,
@@ -1081,335 +1063,223 @@ unsafe extern "C" {
     /// Wrap TDataXtd_Geometry in a Handle
     pub fn TDataXtd_Geometry_to_handle(
         obj: *mut TDataXtd_Geometry,
-    ) -> crate::OcctResult<*mut HandleTDataXtdGeometry>;
+    ) -> crate::OcctResult<*mut Handle_TDataXtd_Geometry>;
     /// Destroy Handle<TDataXtd_Geometry>
-    pub fn HandleTDataXtdGeometry_destructor(self_: *mut HandleTDataXtdGeometry);
+    pub fn Handle_TDataXtd_Geometry_destructor(self_: *mut Handle_TDataXtd_Geometry);
     /// Clone Handle<TDataXtd_Geometry> (increments reference count)
-    pub fn HandleTDataXtdGeometry_clone(
-        self_: *const HandleTDataXtdGeometry,
-    ) -> crate::OcctResult<*mut HandleTDataXtdGeometry>;
+    pub fn Handle_TDataXtd_Geometry_clone(
+        self_: *const Handle_TDataXtd_Geometry,
+    ) -> crate::OcctResult<*mut Handle_TDataXtd_Geometry>;
     /// Check if Handle<TDataXtd_Geometry> is null
-    pub fn HandleTDataXtdGeometry_is_null(self_: *const HandleTDataXtdGeometry) -> bool;
+    pub fn Handle_TDataXtd_Geometry_is_null(self_: *const Handle_TDataXtd_Geometry) -> bool;
     /// Dereference Handle to get *const TDataXtd_Geometry
-    pub fn HandleTDataXtdGeometry_get(
-        handle: *const HandleTDataXtdGeometry,
+    pub fn Handle_TDataXtd_Geometry_get(
+        handle: *const Handle_TDataXtd_Geometry,
     ) -> crate::OcctResult<*const TDataXtd_Geometry>;
     /// Dereference Handle to get *mut TDataXtd_Geometry
-    pub fn HandleTDataXtdGeometry_get_mut(
-        handle: *mut HandleTDataXtdGeometry,
+    pub fn Handle_TDataXtd_Geometry_get_mut(
+        handle: *mut Handle_TDataXtd_Geometry,
     ) -> crate::OcctResult<*mut TDataXtd_Geometry>;
     /// Upcast Handle<TDataXtd_Geometry> to Handle<TDF_Attribute>
-    pub fn HandleTDataXtdGeometry_to_HandleTDFAttribute(
-        self_: *const HandleTDataXtdGeometry,
-    ) -> crate::OcctResult<*mut HandleTDFAttribute>;
+    pub fn Handle_TDataXtd_Geometry_to_Handle_TDF_Attribute(
+        self_: *const Handle_TDataXtd_Geometry,
+    ) -> crate::OcctResult<*mut Handle_TDF_Attribute>;
     /// Upcast Handle<TDataXtd_Geometry> to Handle<Standard_Transient>
-    pub fn HandleTDataXtdGeometry_to_HandleStandardTransient(
-        self_: *const HandleTDataXtdGeometry,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:138 - `TDF_Attribute::SetID()`
+    pub fn Handle_TDataXtd_Geometry_to_Handle_Standard_Transient(
+        self_: *const Handle_TDataXtd_Geometry,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:135 - `TDF_Attribute::SetID()`
     pub fn TDataXtd_Geometry_inherited_SetID(
         self_: *mut TDataXtd_Geometry,
         arg0: *const Standard_GUID,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:150 - `TDF_Attribute::Label()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:147 - `TDF_Attribute::Label()`
     pub fn TDataXtd_Geometry_inherited_Label(
         self_: *const TDataXtd_Geometry,
     ) -> crate::OcctResult<*mut TDF_Label>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:154 - `TDF_Attribute::Transaction()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:151 - `TDF_Attribute::Transaction()`
     pub fn TDataXtd_Geometry_inherited_Transaction(
         self_: *const TDataXtd_Geometry,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:160 - `TDF_Attribute::UntilTransaction()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:157 - `TDF_Attribute::UntilTransaction()`
     pub fn TDataXtd_Geometry_inherited_UntilTransaction(
         self_: *const TDataXtd_Geometry,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:164 - `TDF_Attribute::IsValid()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:161 - `TDF_Attribute::IsValid()`
     pub fn TDataXtd_Geometry_inherited_IsValid(
         self_: *const TDataXtd_Geometry,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:167 - `TDF_Attribute::IsNew()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:164 - `TDF_Attribute::IsNew()`
     pub fn TDataXtd_Geometry_inherited_IsNew(
         self_: *const TDataXtd_Geometry,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:174 - `TDF_Attribute::IsForgotten()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:171 - `TDF_Attribute::IsForgotten()`
     pub fn TDataXtd_Geometry_inherited_IsForgotten(
         self_: *const TDataXtd_Geometry,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:178 - `TDF_Attribute::IsAttribute()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:175 - `TDF_Attribute::IsAttribute()`
     pub fn TDataXtd_Geometry_inherited_IsAttribute(
         self_: *const TDataXtd_Geometry,
         anID: *const Standard_GUID,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:185 - `TDF_Attribute::FindAttribute()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:182 - `TDF_Attribute::FindAttribute()`
     pub fn TDataXtd_Geometry_inherited_FindAttribute(
         self_: *const TDataXtd_Geometry,
         anID: *const Standard_GUID,
-        anAttribute: *mut HandleTDFAttribute,
+        anAttribute: *mut Handle_TDF_Attribute,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:199 - `TDF_Attribute::AddAttribute()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:196 - `TDF_Attribute::AddAttribute()`
     pub fn TDataXtd_Geometry_inherited_AddAttribute(
         self_: *const TDataXtd_Geometry,
-        other: *const HandleTDFAttribute,
+        other: *const Handle_TDF_Attribute,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:206 - `TDF_Attribute::ForgetAttribute()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:203 - `TDF_Attribute::ForgetAttribute()`
     pub fn TDataXtd_Geometry_inherited_ForgetAttribute(
         self_: *const TDataXtd_Geometry,
         aguid: *const Standard_GUID,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:214 - `TDF_Attribute::ForgetAllAttributes()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:211 - `TDF_Attribute::ForgetAllAttributes()`
     pub fn TDataXtd_Geometry_inherited_ForgetAllAttributes(
         self_: *const TDataXtd_Geometry,
         clearChildren: bool,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:218 - `TDF_Attribute::AfterAddition()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:214 - `TDF_Attribute::AfterAddition()`
     pub fn TDataXtd_Geometry_inherited_AfterAddition(
         self_: *mut TDataXtd_Geometry,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:222 - `TDF_Attribute::BeforeRemoval()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:218 - `TDF_Attribute::BeforeRemoval()`
     pub fn TDataXtd_Geometry_inherited_BeforeRemoval(
         self_: *mut TDataXtd_Geometry,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:226 - `TDF_Attribute::BeforeForget()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:222 - `TDF_Attribute::BeforeForget()`
     pub fn TDataXtd_Geometry_inherited_BeforeForget(
         self_: *mut TDataXtd_Geometry,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:230 - `TDF_Attribute::AfterResume()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:226 - `TDF_Attribute::AfterResume()`
     pub fn TDataXtd_Geometry_inherited_AfterResume(
         self_: *mut TDataXtd_Geometry,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:239 - `TDF_Attribute::AfterRetrieval()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:235 - `TDF_Attribute::AfterRetrieval()`
     pub fn TDataXtd_Geometry_inherited_AfterRetrieval(
         self_: *mut TDataXtd_Geometry,
         forceIt: bool,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:248 - `TDF_Attribute::BeforeUndo()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:243 - `TDF_Attribute::BeforeUndo()`
     pub fn TDataXtd_Geometry_inherited_BeforeUndo(
         self_: *mut TDataXtd_Geometry,
-        anAttDelta: *const HandleTDFAttributeDelta,
+        anAttDelta: *const Handle_TDF_AttributeDelta,
         forceIt: bool,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:258 - `TDF_Attribute::AfterUndo()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:252 - `TDF_Attribute::AfterUndo()`
     pub fn TDataXtd_Geometry_inherited_AfterUndo(
         self_: *mut TDataXtd_Geometry,
-        anAttDelta: *const HandleTDFAttributeDelta,
+        anAttDelta: *const Handle_TDF_AttributeDelta,
         forceIt: bool,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:265 - `TDF_Attribute::BeforeCommitTransaction()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:258 - `TDF_Attribute::BeforeCommitTransaction()`
     pub fn TDataXtd_Geometry_inherited_BeforeCommitTransaction(
         self_: *mut TDataXtd_Geometry,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:277 - `TDF_Attribute::Backup()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:270 - `TDF_Attribute::Backup()`
     pub fn TDataXtd_Geometry_inherited_Backup(
         self_: *mut TDataXtd_Geometry,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:282 - `TDF_Attribute::IsBackuped()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:275 - `TDF_Attribute::IsBackuped()`
     pub fn TDataXtd_Geometry_inherited_IsBackuped(
         self_: *const TDataXtd_Geometry,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:286 - `TDF_Attribute::BackupCopy()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:279 - `TDF_Attribute::BackupCopy()`
     pub fn TDataXtd_Geometry_inherited_BackupCopy(
         self_: *const TDataXtd_Geometry,
-    ) -> crate::OcctResult<*mut HandleTDFAttribute>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:296 - `TDF_Attribute::DeltaOnAddition()`
+    ) -> crate::OcctResult<*mut Handle_TDF_Attribute>;
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:289 - `TDF_Attribute::DeltaOnAddition()`
     pub fn TDataXtd_Geometry_inherited_DeltaOnAddition(
         self_: *const TDataXtd_Geometry,
-    ) -> crate::OcctResult<*mut HandleTDFDeltaOnAddition>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:300 - `TDF_Attribute::DeltaOnForget()`
+    ) -> crate::OcctResult<*mut Handle_TDF_DeltaOnAddition>;
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:293 - `TDF_Attribute::DeltaOnForget()`
     pub fn TDataXtd_Geometry_inherited_DeltaOnForget(
         self_: *const TDataXtd_Geometry,
-    ) -> crate::OcctResult<*mut HandleTDFDeltaOnForget>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:304 - `TDF_Attribute::DeltaOnResume()`
+    ) -> crate::OcctResult<*mut Handle_TDF_DeltaOnForget>;
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:297 - `TDF_Attribute::DeltaOnResume()`
     pub fn TDataXtd_Geometry_inherited_DeltaOnResume(
         self_: *const TDataXtd_Geometry,
-    ) -> crate::OcctResult<*mut HandleTDFDeltaOnResume>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:308 - `TDF_Attribute::DeltaOnModification()`
+    ) -> crate::OcctResult<*mut Handle_TDF_DeltaOnResume>;
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:301 - `TDF_Attribute::DeltaOnModification()`
     pub fn TDataXtd_Geometry_inherited_DeltaOnModification(
         self_: *const TDataXtd_Geometry,
-        anOldAttribute: *const HandleTDFAttribute,
-    ) -> crate::OcctResult<*mut HandleTDFDeltaOnModification>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:316 - `TDF_Attribute::DeltaOnRemoval()`
+        anOldAttribute: *const Handle_TDF_Attribute,
+    ) -> crate::OcctResult<*mut Handle_TDF_DeltaOnModification>;
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:310 - `TDF_Attribute::DeltaOnRemoval()`
     pub fn TDataXtd_Geometry_inherited_DeltaOnRemoval(
         self_: *const TDataXtd_Geometry,
-    ) -> crate::OcctResult<*mut HandleTDFDeltaOnRemoval>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:345 - `TDF_Attribute::References()`
+    ) -> crate::OcctResult<*mut Handle_TDF_DeltaOnRemoval>;
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:340 - `TDF_Attribute::References()`
     pub fn TDataXtd_Geometry_inherited_References(
         self_: *const TDataXtd_Geometry,
-        aDataSet: *const HandleTDFDataSet,
+        aDataSet: *const Handle_TDF_DataSet,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:358 - `TDF_Attribute::ExtendedDump()`
-    pub fn TDataXtd_Geometry_inherited_ExtendedDump(
-        self_: *const TDataXtd_Geometry,
-        anOS: *mut Standard_OStream,
-        aFilter: *const TDF_IDFilter,
-        aMap: *mut TDF_AttributeIndexedMap,
-    ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:374 - `TDF_Attribute::Forget()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:370 - `TDF_Attribute::Forget()`
     pub fn TDataXtd_Geometry_inherited_Forget(
         self_: *mut TDataXtd_Geometry,
         aTransaction: i32,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn TDataXtd_Geometry_inherited_IsInstance(
         self_: *const TDataXtd_Geometry,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn TDataXtd_Geometry_inherited_IsKind(
         self_: *const TDataXtd_Geometry,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn TDataXtd_Geometry_inherited_This(
         self_: *const TDataXtd_Geometry,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn TDataXtd_Geometry_inherited_GetRefCount(
         self_: *const TDataXtd_Geometry,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn TDataXtd_Geometry_inherited_IncrementRefCounter(
         self_: *mut TDataXtd_Geometry,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn TDataXtd_Geometry_inherited_DecrementRefCounter(
         self_: *mut TDataXtd_Geometry,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn TDataXtd_Geometry_inherited_Delete(
         self_: *const TDataXtd_Geometry,
     ) -> *const std::ffi::c_char;
-    // ======================== TDataXtd_HArray1OfTrsf ========================
-    pub fn TDataXtd_HArray1OfTrsf_destructor(self_: *mut TDataXtd_HArray1OfTrsf);
-    /// **Source:** `TDataXtd_HArray1OfTrsf.hxx`:23 - `TDataXtd_HArray1OfTrsf::TDataXtd_HArray1OfTrsf()`
-    pub fn TDataXtd_HArray1OfTrsf_ctor() -> crate::OcctResult<*mut TDataXtd_HArray1OfTrsf>;
-    /// **Source:** `TDataXtd_HArray1OfTrsf.hxx`:23 - `TDataXtd_HArray1OfTrsf::TDataXtd_HArray1OfTrsf()`
-    pub fn TDataXtd_HArray1OfTrsf_ctor_int2(
-        theLower: i32,
-        theUpper: i32,
-    ) -> crate::OcctResult<*mut TDataXtd_HArray1OfTrsf>;
-    /// **Source:** `TDataXtd_HArray1OfTrsf.hxx`:23 - `TDataXtd_HArray1OfTrsf::TDataXtd_HArray1OfTrsf()`
-    pub fn TDataXtd_HArray1OfTrsf_ctor_int2_type(
-        theLower: i32,
-        theUpper: i32,
-        theValue: *const TDataXtd_Array1OfTrsf_value_type,
-    ) -> crate::OcctResult<*mut TDataXtd_HArray1OfTrsf>;
-    /// **Source:** `TDataXtd_HArray1OfTrsf.hxx`:23 - `TDataXtd_HArray1OfTrsf::TDataXtd_HArray1OfTrsf()`
-    pub fn TDataXtd_HArray1OfTrsf_ctor_type_int2_bool(
-        theBegin: *const TDataXtd_Array1OfTrsf_value_type,
-        theLower: i32,
-        theUpper: i32,
-        arg3: bool,
-    ) -> crate::OcctResult<*mut TDataXtd_HArray1OfTrsf>;
-    /// **Source:** `TDataXtd_HArray1OfTrsf.hxx`:23 - `TDataXtd_HArray1OfTrsf::TDataXtd_HArray1OfTrsf()`
-    pub fn TDataXtd_HArray1OfTrsf_ctor_array1oftrsf(
-        theOther: *const TDataXtd_Array1OfTrsf,
-    ) -> crate::OcctResult<*mut TDataXtd_HArray1OfTrsf>;
-    /// **Source:** `TDataXtd_HArray1OfTrsf.hxx`:23 - `TDataXtd_HArray1OfTrsf::Array1()`
-    pub fn TDataXtd_HArray1OfTrsf_array1(
-        self_: *const TDataXtd_HArray1OfTrsf,
-    ) -> crate::OcctResult<*const TDataXtd_Array1OfTrsf>;
-    /// **Source:** `TDataXtd_HArray1OfTrsf.hxx`:23 - `TDataXtd_HArray1OfTrsf::ChangeArray1()`
-    pub fn TDataXtd_HArray1OfTrsf_change_array1(
-        self_: *mut TDataXtd_HArray1OfTrsf,
-    ) -> crate::OcctResult<*mut TDataXtd_Array1OfTrsf>;
-    /// **Source:** `TDataXtd_HArray1OfTrsf.hxx`:23 - `TDataXtd_HArray1OfTrsf::DynamicType()`
-    pub fn TDataXtd_HArray1OfTrsf_dynamic_type(
-        self_: *const TDataXtd_HArray1OfTrsf,
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// **Source:** `TDataXtd_HArray1OfTrsf.hxx`:23 - `TDataXtd_HArray1OfTrsf::get_type_name()`
-    pub fn TDataXtd_HArray1OfTrsf_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
-    /// **Source:** `TDataXtd_HArray1OfTrsf.hxx`:23 - `TDataXtd_HArray1OfTrsf::get_type_descriptor()`
-    pub fn TDataXtd_HArray1OfTrsf_get_type_descriptor(
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// Upcast TDataXtd_HArray1OfTrsf to Standard_Transient
-    pub fn TDataXtd_HArray1OfTrsf_as_Standard_Transient(
-        self_: *const TDataXtd_HArray1OfTrsf,
-    ) -> crate::OcctResult<*const Standard_Transient>;
-    /// Upcast TDataXtd_HArray1OfTrsf to Standard_Transient (mutable)
-    pub fn TDataXtd_HArray1OfTrsf_as_Standard_Transient_mut(
-        self_: *mut TDataXtd_HArray1OfTrsf,
-    ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Wrap TDataXtd_HArray1OfTrsf in a Handle
-    pub fn TDataXtd_HArray1OfTrsf_to_handle(
-        obj: *mut TDataXtd_HArray1OfTrsf,
-    ) -> crate::OcctResult<*mut HandleTDataXtdHArray1OfTrsf>;
-    /// Destroy Handle<TDataXtd_HArray1OfTrsf>
-    pub fn HandleTDataXtdHArray1OfTrsf_destructor(self_: *mut HandleTDataXtdHArray1OfTrsf);
-    /// Clone Handle<TDataXtd_HArray1OfTrsf> (increments reference count)
-    pub fn HandleTDataXtdHArray1OfTrsf_clone(
-        self_: *const HandleTDataXtdHArray1OfTrsf,
-    ) -> crate::OcctResult<*mut HandleTDataXtdHArray1OfTrsf>;
-    /// Check if Handle<TDataXtd_HArray1OfTrsf> is null
-    pub fn HandleTDataXtdHArray1OfTrsf_is_null(self_: *const HandleTDataXtdHArray1OfTrsf) -> bool;
-    /// Dereference Handle to get *const TDataXtd_HArray1OfTrsf
-    pub fn HandleTDataXtdHArray1OfTrsf_get(
-        handle: *const HandleTDataXtdHArray1OfTrsf,
-    ) -> crate::OcctResult<*const TDataXtd_HArray1OfTrsf>;
-    /// Dereference Handle to get *mut TDataXtd_HArray1OfTrsf
-    pub fn HandleTDataXtdHArray1OfTrsf_get_mut(
-        handle: *mut HandleTDataXtdHArray1OfTrsf,
-    ) -> crate::OcctResult<*mut TDataXtd_HArray1OfTrsf>;
-    /// Upcast Handle<TDataXtd_HArray1OfTrsf> to Handle<Standard_Transient>
-    pub fn HandleTDataXtdHArray1OfTrsf_to_HandleStandardTransient(
-        self_: *const HandleTDataXtdHArray1OfTrsf,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn TDataXtd_HArray1OfTrsf_inherited_IsInstance(
-        self_: *const TDataXtd_HArray1OfTrsf,
-        theType: *const HandleStandardType,
-    ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn TDataXtd_HArray1OfTrsf_inherited_IsKind(
-        self_: *const TDataXtd_HArray1OfTrsf,
-        theType: *const HandleStandardType,
-    ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
-    pub fn TDataXtd_HArray1OfTrsf_inherited_This(
-        self_: *const TDataXtd_HArray1OfTrsf,
-    ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
-    pub fn TDataXtd_HArray1OfTrsf_inherited_GetRefCount(
-        self_: *const TDataXtd_HArray1OfTrsf,
-    ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
-    pub fn TDataXtd_HArray1OfTrsf_inherited_IncrementRefCounter(
-        self_: *mut TDataXtd_HArray1OfTrsf,
-    ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
-    pub fn TDataXtd_HArray1OfTrsf_inherited_DecrementRefCounter(
-        self_: *mut TDataXtd_HArray1OfTrsf,
-    ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
-    pub fn TDataXtd_HArray1OfTrsf_inherited_Delete(
-        self_: *const TDataXtd_HArray1OfTrsf,
-    ) -> *const std::ffi::c_char;
     // ======================== TDataXtd_Pattern ========================
     pub fn TDataXtd_Pattern_destructor(self_: *mut TDataXtd_Pattern);
-    /// **Source:** `TDataXtd_Pattern.hxx`:38 - `TDataXtd_Pattern::ID()`
+    /// **Source:** `TDataXtd_Pattern.hxx`:36 - `TDataXtd_Pattern::ID()`
     pub fn TDataXtd_Pattern_id(
         self_: *const TDataXtd_Pattern,
     ) -> crate::OcctResult<*const Standard_GUID>;
-    /// **Source:** `TDataXtd_Pattern.hxx`:41 - `TDataXtd_Pattern::PatternID()`
+    /// **Source:** `TDataXtd_Pattern.hxx`:39 - `TDataXtd_Pattern::PatternID()`
     pub fn TDataXtd_Pattern_pattern_id(
         self_: *const TDataXtd_Pattern,
     ) -> crate::OcctResult<*const Standard_GUID>;
-    /// **Source:** `TDataXtd_Pattern.hxx`:44 - `TDataXtd_Pattern::NbTrsfs()`
+    /// **Source:** `TDataXtd_Pattern.hxx`:42 - `TDataXtd_Pattern::NbTrsfs()`
     pub fn TDataXtd_Pattern_nb_trsfs(self_: *const TDataXtd_Pattern) -> crate::OcctResult<i32>;
-    /// **Source:** `TDataXtd_Pattern.hxx`:47 - `TDataXtd_Pattern::ComputeTrsfs()`
+    /// **Source:** `TDataXtd_Pattern.hxx`:45 - `TDataXtd_Pattern::ComputeTrsfs()`
     pub fn TDataXtd_Pattern_compute_trsfs(
         self_: *const TDataXtd_Pattern,
-        Trsfs: *mut TDataXtd_Array1OfTrsf,
+        Trsfs: *mut NCollection_Array1_gp_Trsf,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `TDataXtd_Pattern.hxx`:49 - `TDataXtd_Pattern::DynamicType()`
+    /// **Source:** `TDataXtd_Pattern.hxx`:47 - `TDataXtd_Pattern::DynamicType()`
     pub fn TDataXtd_Pattern_dynamic_type(
         self_: *const TDataXtd_Pattern,
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// **Source:** `TDataXtd_Pattern.hxx`:35 - `TDataXtd_Pattern::GetID()`
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
+    /// **Source:** `TDataXtd_Pattern.hxx`:33 - `TDataXtd_Pattern::GetID()`
     pub fn TDataXtd_Pattern_get_id() -> crate::OcctResult<*const Standard_GUID>;
-    /// **Source:** `TDataXtd_Pattern.hxx`:49 - `TDataXtd_Pattern::get_type_name()`
+    /// **Source:** `TDataXtd_Pattern.hxx`:47 - `TDataXtd_Pattern::get_type_name()`
     pub fn TDataXtd_Pattern_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
-    /// **Source:** `TDataXtd_Pattern.hxx`:49 - `TDataXtd_Pattern::get_type_descriptor()`
-    pub fn TDataXtd_Pattern_get_type_descriptor() -> crate::OcctResult<*const HandleStandardType>;
+    /// **Source:** `TDataXtd_Pattern.hxx`:47 - `TDataXtd_Pattern::get_type_descriptor()`
+    pub fn TDataXtd_Pattern_get_type_descriptor() -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast TDataXtd_Pattern to TDF_Attribute
     pub fn TDataXtd_Pattern_as_TDF_Attribute(
         self_: *const TDataXtd_Pattern,
@@ -1427,366 +1297,360 @@ unsafe extern "C" {
         self_: *mut TDataXtd_Pattern,
     ) -> crate::OcctResult<*mut Standard_Transient>;
     /// Destroy Handle<TDataXtd_Pattern>
-    pub fn HandleTDataXtdPattern_destructor(self_: *mut HandleTDataXtdPattern);
+    pub fn Handle_TDataXtd_Pattern_destructor(self_: *mut Handle_TDataXtd_Pattern);
     /// Clone Handle<TDataXtd_Pattern> (increments reference count)
-    pub fn HandleTDataXtdPattern_clone(
-        self_: *const HandleTDataXtdPattern,
-    ) -> crate::OcctResult<*mut HandleTDataXtdPattern>;
+    pub fn Handle_TDataXtd_Pattern_clone(
+        self_: *const Handle_TDataXtd_Pattern,
+    ) -> crate::OcctResult<*mut Handle_TDataXtd_Pattern>;
     /// Check if Handle<TDataXtd_Pattern> is null
-    pub fn HandleTDataXtdPattern_is_null(self_: *const HandleTDataXtdPattern) -> bool;
+    pub fn Handle_TDataXtd_Pattern_is_null(self_: *const Handle_TDataXtd_Pattern) -> bool;
     /// Dereference Handle to get *const TDataXtd_Pattern
-    pub fn HandleTDataXtdPattern_get(
-        handle: *const HandleTDataXtdPattern,
+    pub fn Handle_TDataXtd_Pattern_get(
+        handle: *const Handle_TDataXtd_Pattern,
     ) -> crate::OcctResult<*const TDataXtd_Pattern>;
     /// Dereference Handle to get *mut TDataXtd_Pattern
-    pub fn HandleTDataXtdPattern_get_mut(
-        handle: *mut HandleTDataXtdPattern,
+    pub fn Handle_TDataXtd_Pattern_get_mut(
+        handle: *mut Handle_TDataXtd_Pattern,
     ) -> crate::OcctResult<*mut TDataXtd_Pattern>;
     /// Upcast Handle<TDataXtd_Pattern> to Handle<TDF_Attribute>
-    pub fn HandleTDataXtdPattern_to_HandleTDFAttribute(
-        self_: *const HandleTDataXtdPattern,
-    ) -> crate::OcctResult<*mut HandleTDFAttribute>;
+    pub fn Handle_TDataXtd_Pattern_to_Handle_TDF_Attribute(
+        self_: *const Handle_TDataXtd_Pattern,
+    ) -> crate::OcctResult<*mut Handle_TDF_Attribute>;
     /// Upcast Handle<TDataXtd_Pattern> to Handle<Standard_Transient>
-    pub fn HandleTDataXtdPattern_to_HandleStandardTransient(
-        self_: *const HandleTDataXtdPattern,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
+    pub fn Handle_TDataXtd_Pattern_to_Handle_Standard_Transient(
+        self_: *const Handle_TDataXtd_Pattern,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
     /// Downcast Handle<TDataXtd_Pattern> to Handle<TDataXtd_PatternStd> (returns null on failure)
-    pub fn HandleTDataXtdPattern_downcast_to_HandleTDataXtdPatternStd(
-        self_: *const HandleTDataXtdPattern,
-    ) -> crate::OcctResult<*mut HandleTDataXtdPatternStd>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:138 - `TDF_Attribute::SetID()`
+    pub fn Handle_TDataXtd_Pattern_downcast_to_Handle_TDataXtd_PatternStd(
+        self_: *const Handle_TDataXtd_Pattern,
+    ) -> crate::OcctResult<*mut Handle_TDataXtd_PatternStd>;
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:135 - `TDF_Attribute::SetID()`
     pub fn TDataXtd_Pattern_inherited_SetID(
         self_: *mut TDataXtd_Pattern,
         arg0: *const Standard_GUID,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:150 - `TDF_Attribute::Label()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:147 - `TDF_Attribute::Label()`
     pub fn TDataXtd_Pattern_inherited_Label(
         self_: *const TDataXtd_Pattern,
     ) -> crate::OcctResult<*mut TDF_Label>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:154 - `TDF_Attribute::Transaction()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:151 - `TDF_Attribute::Transaction()`
     pub fn TDataXtd_Pattern_inherited_Transaction(
         self_: *const TDataXtd_Pattern,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:160 - `TDF_Attribute::UntilTransaction()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:157 - `TDF_Attribute::UntilTransaction()`
     pub fn TDataXtd_Pattern_inherited_UntilTransaction(
         self_: *const TDataXtd_Pattern,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:164 - `TDF_Attribute::IsValid()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:161 - `TDF_Attribute::IsValid()`
     pub fn TDataXtd_Pattern_inherited_IsValid(
         self_: *const TDataXtd_Pattern,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:167 - `TDF_Attribute::IsNew()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:164 - `TDF_Attribute::IsNew()`
     pub fn TDataXtd_Pattern_inherited_IsNew(
         self_: *const TDataXtd_Pattern,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:174 - `TDF_Attribute::IsForgotten()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:171 - `TDF_Attribute::IsForgotten()`
     pub fn TDataXtd_Pattern_inherited_IsForgotten(
         self_: *const TDataXtd_Pattern,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:178 - `TDF_Attribute::IsAttribute()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:175 - `TDF_Attribute::IsAttribute()`
     pub fn TDataXtd_Pattern_inherited_IsAttribute(
         self_: *const TDataXtd_Pattern,
         anID: *const Standard_GUID,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:185 - `TDF_Attribute::FindAttribute()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:182 - `TDF_Attribute::FindAttribute()`
     pub fn TDataXtd_Pattern_inherited_FindAttribute(
         self_: *const TDataXtd_Pattern,
         anID: *const Standard_GUID,
-        anAttribute: *mut HandleTDFAttribute,
+        anAttribute: *mut Handle_TDF_Attribute,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:199 - `TDF_Attribute::AddAttribute()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:196 - `TDF_Attribute::AddAttribute()`
     pub fn TDataXtd_Pattern_inherited_AddAttribute(
         self_: *const TDataXtd_Pattern,
-        other: *const HandleTDFAttribute,
+        other: *const Handle_TDF_Attribute,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:206 - `TDF_Attribute::ForgetAttribute()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:203 - `TDF_Attribute::ForgetAttribute()`
     pub fn TDataXtd_Pattern_inherited_ForgetAttribute(
         self_: *const TDataXtd_Pattern,
         aguid: *const Standard_GUID,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:214 - `TDF_Attribute::ForgetAllAttributes()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:211 - `TDF_Attribute::ForgetAllAttributes()`
     pub fn TDataXtd_Pattern_inherited_ForgetAllAttributes(
         self_: *const TDataXtd_Pattern,
         clearChildren: bool,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:218 - `TDF_Attribute::AfterAddition()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:214 - `TDF_Attribute::AfterAddition()`
     pub fn TDataXtd_Pattern_inherited_AfterAddition(
         self_: *mut TDataXtd_Pattern,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:222 - `TDF_Attribute::BeforeRemoval()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:218 - `TDF_Attribute::BeforeRemoval()`
     pub fn TDataXtd_Pattern_inherited_BeforeRemoval(
         self_: *mut TDataXtd_Pattern,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:226 - `TDF_Attribute::BeforeForget()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:222 - `TDF_Attribute::BeforeForget()`
     pub fn TDataXtd_Pattern_inherited_BeforeForget(
         self_: *mut TDataXtd_Pattern,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:230 - `TDF_Attribute::AfterResume()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:226 - `TDF_Attribute::AfterResume()`
     pub fn TDataXtd_Pattern_inherited_AfterResume(
         self_: *mut TDataXtd_Pattern,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:239 - `TDF_Attribute::AfterRetrieval()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:235 - `TDF_Attribute::AfterRetrieval()`
     pub fn TDataXtd_Pattern_inherited_AfterRetrieval(
         self_: *mut TDataXtd_Pattern,
         forceIt: bool,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:248 - `TDF_Attribute::BeforeUndo()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:243 - `TDF_Attribute::BeforeUndo()`
     pub fn TDataXtd_Pattern_inherited_BeforeUndo(
         self_: *mut TDataXtd_Pattern,
-        anAttDelta: *const HandleTDFAttributeDelta,
+        anAttDelta: *const Handle_TDF_AttributeDelta,
         forceIt: bool,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:258 - `TDF_Attribute::AfterUndo()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:252 - `TDF_Attribute::AfterUndo()`
     pub fn TDataXtd_Pattern_inherited_AfterUndo(
         self_: *mut TDataXtd_Pattern,
-        anAttDelta: *const HandleTDFAttributeDelta,
+        anAttDelta: *const Handle_TDF_AttributeDelta,
         forceIt: bool,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:265 - `TDF_Attribute::BeforeCommitTransaction()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:258 - `TDF_Attribute::BeforeCommitTransaction()`
     pub fn TDataXtd_Pattern_inherited_BeforeCommitTransaction(
         self_: *mut TDataXtd_Pattern,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:277 - `TDF_Attribute::Backup()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:270 - `TDF_Attribute::Backup()`
     pub fn TDataXtd_Pattern_inherited_Backup(
         self_: *mut TDataXtd_Pattern,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:282 - `TDF_Attribute::IsBackuped()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:275 - `TDF_Attribute::IsBackuped()`
     pub fn TDataXtd_Pattern_inherited_IsBackuped(
         self_: *const TDataXtd_Pattern,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:286 - `TDF_Attribute::BackupCopy()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:279 - `TDF_Attribute::BackupCopy()`
     pub fn TDataXtd_Pattern_inherited_BackupCopy(
         self_: *const TDataXtd_Pattern,
-    ) -> crate::OcctResult<*mut HandleTDFAttribute>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:291 - `TDF_Attribute::Restore()`
+    ) -> crate::OcctResult<*mut Handle_TDF_Attribute>;
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:284 - `TDF_Attribute::Restore()`
     pub fn TDataXtd_Pattern_inherited_Restore(
         self_: *mut TDataXtd_Pattern,
-        anAttribute: *const HandleTDFAttribute,
+        anAttribute: *const Handle_TDF_Attribute,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:296 - `TDF_Attribute::DeltaOnAddition()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:289 - `TDF_Attribute::DeltaOnAddition()`
     pub fn TDataXtd_Pattern_inherited_DeltaOnAddition(
         self_: *const TDataXtd_Pattern,
-    ) -> crate::OcctResult<*mut HandleTDFDeltaOnAddition>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:300 - `TDF_Attribute::DeltaOnForget()`
+    ) -> crate::OcctResult<*mut Handle_TDF_DeltaOnAddition>;
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:293 - `TDF_Attribute::DeltaOnForget()`
     pub fn TDataXtd_Pattern_inherited_DeltaOnForget(
         self_: *const TDataXtd_Pattern,
-    ) -> crate::OcctResult<*mut HandleTDFDeltaOnForget>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:304 - `TDF_Attribute::DeltaOnResume()`
+    ) -> crate::OcctResult<*mut Handle_TDF_DeltaOnForget>;
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:297 - `TDF_Attribute::DeltaOnResume()`
     pub fn TDataXtd_Pattern_inherited_DeltaOnResume(
         self_: *const TDataXtd_Pattern,
-    ) -> crate::OcctResult<*mut HandleTDFDeltaOnResume>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:308 - `TDF_Attribute::DeltaOnModification()`
+    ) -> crate::OcctResult<*mut Handle_TDF_DeltaOnResume>;
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:301 - `TDF_Attribute::DeltaOnModification()`
     pub fn TDataXtd_Pattern_inherited_DeltaOnModification(
         self_: *const TDataXtd_Pattern,
-        anOldAttribute: *const HandleTDFAttribute,
-    ) -> crate::OcctResult<*mut HandleTDFDeltaOnModification>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:316 - `TDF_Attribute::DeltaOnRemoval()`
+        anOldAttribute: *const Handle_TDF_Attribute,
+    ) -> crate::OcctResult<*mut Handle_TDF_DeltaOnModification>;
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:310 - `TDF_Attribute::DeltaOnRemoval()`
     pub fn TDataXtd_Pattern_inherited_DeltaOnRemoval(
         self_: *const TDataXtd_Pattern,
-    ) -> crate::OcctResult<*mut HandleTDFDeltaOnRemoval>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:320 - `TDF_Attribute::NewEmpty()`
+    ) -> crate::OcctResult<*mut Handle_TDF_DeltaOnRemoval>;
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:314 - `TDF_Attribute::NewEmpty()`
     pub fn TDataXtd_Pattern_inherited_NewEmpty(
         self_: *const TDataXtd_Pattern,
-    ) -> crate::OcctResult<*mut HandleTDFAttribute>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:335 - `TDF_Attribute::Paste()`
+    ) -> crate::OcctResult<*mut Handle_TDF_Attribute>;
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:329 - `TDF_Attribute::Paste()`
     pub fn TDataXtd_Pattern_inherited_Paste(
         self_: *const TDataXtd_Pattern,
-        intoAttribute: *const HandleTDFAttribute,
-        aRelocationTable: *const HandleTDFRelocationTable,
+        intoAttribute: *const Handle_TDF_Attribute,
+        aRelocationTable: *const Handle_TDF_RelocationTable,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:345 - `TDF_Attribute::References()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:340 - `TDF_Attribute::References()`
     pub fn TDataXtd_Pattern_inherited_References(
         self_: *const TDataXtd_Pattern,
-        aDataSet: *const HandleTDFDataSet,
+        aDataSet: *const Handle_TDF_DataSet,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:358 - `TDF_Attribute::ExtendedDump()`
-    pub fn TDataXtd_Pattern_inherited_ExtendedDump(
-        self_: *const TDataXtd_Pattern,
-        anOS: *mut Standard_OStream,
-        aFilter: *const TDF_IDFilter,
-        aMap: *mut TDF_AttributeIndexedMap,
-    ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:374 - `TDF_Attribute::Forget()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:370 - `TDF_Attribute::Forget()`
     pub fn TDataXtd_Pattern_inherited_Forget(
         self_: *mut TDataXtd_Pattern,
         aTransaction: i32,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn TDataXtd_Pattern_inherited_IsInstance(
         self_: *const TDataXtd_Pattern,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn TDataXtd_Pattern_inherited_IsKind(
         self_: *const TDataXtd_Pattern,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn TDataXtd_Pattern_inherited_This(
         self_: *const TDataXtd_Pattern,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn TDataXtd_Pattern_inherited_GetRefCount(
         self_: *const TDataXtd_Pattern,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn TDataXtd_Pattern_inherited_IncrementRefCounter(
         self_: *mut TDataXtd_Pattern,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn TDataXtd_Pattern_inherited_DecrementRefCounter(
         self_: *mut TDataXtd_Pattern,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn TDataXtd_Pattern_inherited_Delete(
         self_: *const TDataXtd_Pattern,
     ) -> *const std::ffi::c_char;
     // ======================== TDataXtd_PatternStd ========================
     pub fn TDataXtd_PatternStd_destructor(self_: *mut TDataXtd_PatternStd);
-    /// **Source:** `TDataXtd_PatternStd.hxx`:50 - `TDataXtd_PatternStd::TDataXtd_PatternStd()`
+    /// **Source:** `TDataXtd_PatternStd.hxx`:48 - `TDataXtd_PatternStd::TDataXtd_PatternStd()`
     pub fn TDataXtd_PatternStd_ctor() -> crate::OcctResult<*mut TDataXtd_PatternStd>;
-    /// **Source:** `TDataXtd_PatternStd.hxx`:52 - `TDataXtd_PatternStd::Signature()`
+    /// **Source:** `TDataXtd_PatternStd.hxx`:50 - `TDataXtd_PatternStd::Signature()`
     pub fn TDataXtd_PatternStd_signature_int(
         self_: *mut TDataXtd_PatternStd,
         signature: i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `TDataXtd_PatternStd.hxx`:54 - `TDataXtd_PatternStd::Axis1()`
+    /// **Source:** `TDataXtd_PatternStd.hxx`:52 - `TDataXtd_PatternStd::Axis1()`
     pub fn TDataXtd_PatternStd_axis1_handletnamingnamedshape(
         self_: *mut TDataXtd_PatternStd,
-        Axis1: *const HandleTNamingNamedShape,
+        Axis1: *const Handle_TNaming_NamedShape,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `TDataXtd_PatternStd.hxx`:56 - `TDataXtd_PatternStd::Axis2()`
+    /// **Source:** `TDataXtd_PatternStd.hxx`:54 - `TDataXtd_PatternStd::Axis2()`
     pub fn TDataXtd_PatternStd_axis2_handletnamingnamedshape(
         self_: *mut TDataXtd_PatternStd,
-        Axis2: *const HandleTNamingNamedShape,
+        Axis2: *const Handle_TNaming_NamedShape,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `TDataXtd_PatternStd.hxx`:58 - `TDataXtd_PatternStd::Axis1Reversed()`
+    /// **Source:** `TDataXtd_PatternStd.hxx`:56 - `TDataXtd_PatternStd::Axis1Reversed()`
     pub fn TDataXtd_PatternStd_axis1_reversed_bool(
         self_: *mut TDataXtd_PatternStd,
         Axis1Reversed: bool,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `TDataXtd_PatternStd.hxx`:60 - `TDataXtd_PatternStd::Axis2Reversed()`
+    /// **Source:** `TDataXtd_PatternStd.hxx`:58 - `TDataXtd_PatternStd::Axis2Reversed()`
     pub fn TDataXtd_PatternStd_axis2_reversed_bool(
         self_: *mut TDataXtd_PatternStd,
         Axis2Reversed: bool,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `TDataXtd_PatternStd.hxx`:62 - `TDataXtd_PatternStd::Value1()`
+    /// **Source:** `TDataXtd_PatternStd.hxx`:60 - `TDataXtd_PatternStd::Value1()`
     pub fn TDataXtd_PatternStd_value1_handletdatastdreal(
         self_: *mut TDataXtd_PatternStd,
-        value: *const HandleTDataStdReal,
+        value: *const Handle_TDataStd_Real,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `TDataXtd_PatternStd.hxx`:64 - `TDataXtd_PatternStd::Value2()`
+    /// **Source:** `TDataXtd_PatternStd.hxx`:62 - `TDataXtd_PatternStd::Value2()`
     pub fn TDataXtd_PatternStd_value2_handletdatastdreal(
         self_: *mut TDataXtd_PatternStd,
-        value: *const HandleTDataStdReal,
+        value: *const Handle_TDataStd_Real,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `TDataXtd_PatternStd.hxx`:66 - `TDataXtd_PatternStd::NbInstances1()`
+    /// **Source:** `TDataXtd_PatternStd.hxx`:64 - `TDataXtd_PatternStd::NbInstances1()`
     pub fn TDataXtd_PatternStd_nb_instances1_handletdatastdinteger(
         self_: *mut TDataXtd_PatternStd,
-        NbInstances1: *const HandleTDataStdInteger,
+        NbInstances1: *const Handle_TDataStd_Integer,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `TDataXtd_PatternStd.hxx`:68 - `TDataXtd_PatternStd::NbInstances2()`
+    /// **Source:** `TDataXtd_PatternStd.hxx`:66 - `TDataXtd_PatternStd::NbInstances2()`
     pub fn TDataXtd_PatternStd_nb_instances2_handletdatastdinteger(
         self_: *mut TDataXtd_PatternStd,
-        NbInstances2: *const HandleTDataStdInteger,
+        NbInstances2: *const Handle_TDataStd_Integer,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `TDataXtd_PatternStd.hxx`:70 - `TDataXtd_PatternStd::Mirror()`
+    /// **Source:** `TDataXtd_PatternStd.hxx`:68 - `TDataXtd_PatternStd::Mirror()`
     pub fn TDataXtd_PatternStd_mirror_handletnamingnamedshape(
         self_: *mut TDataXtd_PatternStd,
-        plane: *const HandleTNamingNamedShape,
+        plane: *const Handle_TNaming_NamedShape,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `TDataXtd_PatternStd.hxx`:72 - `TDataXtd_PatternStd::Signature()`
+    /// **Source:** `TDataXtd_PatternStd.hxx`:70 - `TDataXtd_PatternStd::Signature()`
     pub fn TDataXtd_PatternStd_signature(
         self_: *const TDataXtd_PatternStd,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `TDataXtd_PatternStd.hxx`:74 - `TDataXtd_PatternStd::Axis1()`
+    /// **Source:** `TDataXtd_PatternStd.hxx`:72 - `TDataXtd_PatternStd::Axis1()`
     pub fn TDataXtd_PatternStd_axis1(
         self_: *const TDataXtd_PatternStd,
-    ) -> crate::OcctResult<*mut HandleTNamingNamedShape>;
-    /// **Source:** `TDataXtd_PatternStd.hxx`:76 - `TDataXtd_PatternStd::Axis2()`
+    ) -> crate::OcctResult<*mut Handle_TNaming_NamedShape>;
+    /// **Source:** `TDataXtd_PatternStd.hxx`:74 - `TDataXtd_PatternStd::Axis2()`
     pub fn TDataXtd_PatternStd_axis2(
         self_: *const TDataXtd_PatternStd,
-    ) -> crate::OcctResult<*mut HandleTNamingNamedShape>;
-    /// **Source:** `TDataXtd_PatternStd.hxx`:78 - `TDataXtd_PatternStd::Axis1Reversed()`
+    ) -> crate::OcctResult<*mut Handle_TNaming_NamedShape>;
+    /// **Source:** `TDataXtd_PatternStd.hxx`:76 - `TDataXtd_PatternStd::Axis1Reversed()`
     pub fn TDataXtd_PatternStd_axis1_reversed(
         self_: *const TDataXtd_PatternStd,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `TDataXtd_PatternStd.hxx`:80 - `TDataXtd_PatternStd::Axis2Reversed()`
+    /// **Source:** `TDataXtd_PatternStd.hxx`:78 - `TDataXtd_PatternStd::Axis2Reversed()`
     pub fn TDataXtd_PatternStd_axis2_reversed(
         self_: *const TDataXtd_PatternStd,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `TDataXtd_PatternStd.hxx`:82 - `TDataXtd_PatternStd::Value1()`
+    /// **Source:** `TDataXtd_PatternStd.hxx`:80 - `TDataXtd_PatternStd::Value1()`
     pub fn TDataXtd_PatternStd_value1(
         self_: *const TDataXtd_PatternStd,
-    ) -> crate::OcctResult<*mut HandleTDataStdReal>;
-    /// **Source:** `TDataXtd_PatternStd.hxx`:84 - `TDataXtd_PatternStd::Value2()`
+    ) -> crate::OcctResult<*mut Handle_TDataStd_Real>;
+    /// **Source:** `TDataXtd_PatternStd.hxx`:82 - `TDataXtd_PatternStd::Value2()`
     pub fn TDataXtd_PatternStd_value2(
         self_: *const TDataXtd_PatternStd,
-    ) -> crate::OcctResult<*mut HandleTDataStdReal>;
-    /// **Source:** `TDataXtd_PatternStd.hxx`:86 - `TDataXtd_PatternStd::NbInstances1()`
+    ) -> crate::OcctResult<*mut Handle_TDataStd_Real>;
+    /// **Source:** `TDataXtd_PatternStd.hxx`:84 - `TDataXtd_PatternStd::NbInstances1()`
     pub fn TDataXtd_PatternStd_nb_instances1(
         self_: *const TDataXtd_PatternStd,
-    ) -> crate::OcctResult<*mut HandleTDataStdInteger>;
-    /// **Source:** `TDataXtd_PatternStd.hxx`:88 - `TDataXtd_PatternStd::NbInstances2()`
+    ) -> crate::OcctResult<*mut Handle_TDataStd_Integer>;
+    /// **Source:** `TDataXtd_PatternStd.hxx`:86 - `TDataXtd_PatternStd::NbInstances2()`
     pub fn TDataXtd_PatternStd_nb_instances2(
         self_: *const TDataXtd_PatternStd,
-    ) -> crate::OcctResult<*mut HandleTDataStdInteger>;
-    /// **Source:** `TDataXtd_PatternStd.hxx`:90 - `TDataXtd_PatternStd::Mirror()`
+    ) -> crate::OcctResult<*mut Handle_TDataStd_Integer>;
+    /// **Source:** `TDataXtd_PatternStd.hxx`:88 - `TDataXtd_PatternStd::Mirror()`
     pub fn TDataXtd_PatternStd_mirror(
         self_: *const TDataXtd_PatternStd,
-    ) -> crate::OcctResult<*mut HandleTNamingNamedShape>;
-    /// **Source:** `TDataXtd_PatternStd.hxx`:92 - `TDataXtd_PatternStd::NbTrsfs()`
+    ) -> crate::OcctResult<*mut Handle_TNaming_NamedShape>;
+    /// **Source:** `TDataXtd_PatternStd.hxx`:90 - `TDataXtd_PatternStd::NbTrsfs()`
     pub fn TDataXtd_PatternStd_nb_trsfs(
         self_: *const TDataXtd_PatternStd,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `TDataXtd_PatternStd.hxx`:94 - `TDataXtd_PatternStd::ComputeTrsfs()`
+    /// **Source:** `TDataXtd_PatternStd.hxx`:92 - `TDataXtd_PatternStd::ComputeTrsfs()`
     pub fn TDataXtd_PatternStd_compute_trsfs(
         self_: *const TDataXtd_PatternStd,
-        Trsfs: *mut TDataXtd_Array1OfTrsf,
+        Trsfs: *mut NCollection_Array1_gp_Trsf,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `TDataXtd_PatternStd.hxx`:96 - `TDataXtd_PatternStd::PatternID()`
+    /// **Source:** `TDataXtd_PatternStd.hxx`:94 - `TDataXtd_PatternStd::PatternID()`
     pub fn TDataXtd_PatternStd_pattern_id(
         self_: *const TDataXtd_PatternStd,
     ) -> crate::OcctResult<*const Standard_GUID>;
-    /// **Source:** `TDataXtd_PatternStd.hxx`:98 - `TDataXtd_PatternStd::Restore()`
+    /// **Source:** `TDataXtd_PatternStd.hxx`:96 - `TDataXtd_PatternStd::Restore()`
     pub fn TDataXtd_PatternStd_restore(
         self_: *mut TDataXtd_PatternStd,
-        With: *const HandleTDFAttribute,
+        With: *const Handle_TDF_Attribute,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `TDataXtd_PatternStd.hxx`:100 - `TDataXtd_PatternStd::NewEmpty()`
+    /// **Source:** `TDataXtd_PatternStd.hxx`:98 - `TDataXtd_PatternStd::NewEmpty()`
     pub fn TDataXtd_PatternStd_new_empty(
         self_: *const TDataXtd_PatternStd,
-    ) -> crate::OcctResult<*mut HandleTDFAttribute>;
-    /// **Source:** `TDataXtd_PatternStd.hxx`:102 - `TDataXtd_PatternStd::Paste()`
+    ) -> crate::OcctResult<*mut Handle_TDF_Attribute>;
+    /// **Source:** `TDataXtd_PatternStd.hxx`:100 - `TDataXtd_PatternStd::Paste()`
     pub fn TDataXtd_PatternStd_paste(
         self_: *const TDataXtd_PatternStd,
-        Into: *const HandleTDFAttribute,
-        RT: *const HandleTDFRelocationTable,
+        Into: *const Handle_TDF_Attribute,
+        RT: *const Handle_TDF_RelocationTable,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `TDataXtd_PatternStd.hxx`:105 - `TDataXtd_PatternStd::References()`
+    /// **Source:** `TDataXtd_PatternStd.hxx`:103 - `TDataXtd_PatternStd::References()`
     pub fn TDataXtd_PatternStd_references(
         self_: *const TDataXtd_PatternStd,
-        aDataSet: *const HandleTDFDataSet,
+        aDataSet: *const Handle_TDF_DataSet,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `TDataXtd_PatternStd.hxx`:108 - `TDataXtd_PatternStd::Dump()`
+    /// **Source:** `TDataXtd_PatternStd.hxx`:105 - `TDataXtd_PatternStd::Dump()`
     pub fn TDataXtd_PatternStd_dump(
         self_: *mut TDataXtd_PatternStd,
         anOS: *mut Standard_OStream,
     ) -> crate::OcctResult<*mut Standard_OStream>;
-    /// **Source:** `TDataXtd_PatternStd.hxx`:110 - `TDataXtd_PatternStd::DynamicType()`
+    /// **Source:** `TDataXtd_PatternStd.hxx`:107 - `TDataXtd_PatternStd::DynamicType()`
     pub fn TDataXtd_PatternStd_dynamic_type(
         self_: *const TDataXtd_PatternStd,
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// **Source:** `TDataXtd_PatternStd.hxx`:45 - `TDataXtd_PatternStd::GetPatternID()`
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
+    /// **Source:** `TDataXtd_PatternStd.hxx`:43 - `TDataXtd_PatternStd::GetPatternID()`
     pub fn TDataXtd_PatternStd_get_pattern_id() -> crate::OcctResult<*const Standard_GUID>;
-    /// **Source:** `TDataXtd_PatternStd.hxx`:48 - `TDataXtd_PatternStd::Set()`
+    /// **Source:** `TDataXtd_PatternStd.hxx`:46 - `TDataXtd_PatternStd::Set()`
     pub fn TDataXtd_PatternStd_set(
         label: *const TDF_Label,
-    ) -> crate::OcctResult<*mut HandleTDataXtdPatternStd>;
-    /// **Source:** `TDataXtd_PatternStd.hxx`:110 - `TDataXtd_PatternStd::get_type_name()`
+    ) -> crate::OcctResult<*mut Handle_TDataXtd_PatternStd>;
+    /// **Source:** `TDataXtd_PatternStd.hxx`:107 - `TDataXtd_PatternStd::get_type_name()`
     pub fn TDataXtd_PatternStd_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
-    /// **Source:** `TDataXtd_PatternStd.hxx`:110 - `TDataXtd_PatternStd::get_type_descriptor()`
-    pub fn TDataXtd_PatternStd_get_type_descriptor() -> crate::OcctResult<*const HandleStandardType>;
+    /// **Source:** `TDataXtd_PatternStd.hxx`:107 - `TDataXtd_PatternStd::get_type_descriptor()`
+    pub fn TDataXtd_PatternStd_get_type_descriptor(
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast TDataXtd_PatternStd to TDataXtd_Pattern
     pub fn TDataXtd_PatternStd_as_TDataXtd_Pattern(
         self_: *const TDataXtd_PatternStd,
@@ -1814,237 +1678,230 @@ unsafe extern "C" {
     /// Wrap TDataXtd_PatternStd in a Handle
     pub fn TDataXtd_PatternStd_to_handle(
         obj: *mut TDataXtd_PatternStd,
-    ) -> crate::OcctResult<*mut HandleTDataXtdPatternStd>;
+    ) -> crate::OcctResult<*mut Handle_TDataXtd_PatternStd>;
     /// Destroy Handle<TDataXtd_PatternStd>
-    pub fn HandleTDataXtdPatternStd_destructor(self_: *mut HandleTDataXtdPatternStd);
+    pub fn Handle_TDataXtd_PatternStd_destructor(self_: *mut Handle_TDataXtd_PatternStd);
     /// Clone Handle<TDataXtd_PatternStd> (increments reference count)
-    pub fn HandleTDataXtdPatternStd_clone(
-        self_: *const HandleTDataXtdPatternStd,
-    ) -> crate::OcctResult<*mut HandleTDataXtdPatternStd>;
+    pub fn Handle_TDataXtd_PatternStd_clone(
+        self_: *const Handle_TDataXtd_PatternStd,
+    ) -> crate::OcctResult<*mut Handle_TDataXtd_PatternStd>;
     /// Check if Handle<TDataXtd_PatternStd> is null
-    pub fn HandleTDataXtdPatternStd_is_null(self_: *const HandleTDataXtdPatternStd) -> bool;
+    pub fn Handle_TDataXtd_PatternStd_is_null(self_: *const Handle_TDataXtd_PatternStd) -> bool;
     /// Dereference Handle to get *const TDataXtd_PatternStd
-    pub fn HandleTDataXtdPatternStd_get(
-        handle: *const HandleTDataXtdPatternStd,
+    pub fn Handle_TDataXtd_PatternStd_get(
+        handle: *const Handle_TDataXtd_PatternStd,
     ) -> crate::OcctResult<*const TDataXtd_PatternStd>;
     /// Dereference Handle to get *mut TDataXtd_PatternStd
-    pub fn HandleTDataXtdPatternStd_get_mut(
-        handle: *mut HandleTDataXtdPatternStd,
+    pub fn Handle_TDataXtd_PatternStd_get_mut(
+        handle: *mut Handle_TDataXtd_PatternStd,
     ) -> crate::OcctResult<*mut TDataXtd_PatternStd>;
     /// Upcast Handle<TDataXtd_PatternStd> to Handle<TDataXtd_Pattern>
-    pub fn HandleTDataXtdPatternStd_to_HandleTDataXtdPattern(
-        self_: *const HandleTDataXtdPatternStd,
-    ) -> crate::OcctResult<*mut HandleTDataXtdPattern>;
+    pub fn Handle_TDataXtd_PatternStd_to_Handle_TDataXtd_Pattern(
+        self_: *const Handle_TDataXtd_PatternStd,
+    ) -> crate::OcctResult<*mut Handle_TDataXtd_Pattern>;
     /// Upcast Handle<TDataXtd_PatternStd> to Handle<TDF_Attribute>
-    pub fn HandleTDataXtdPatternStd_to_HandleTDFAttribute(
-        self_: *const HandleTDataXtdPatternStd,
-    ) -> crate::OcctResult<*mut HandleTDFAttribute>;
+    pub fn Handle_TDataXtd_PatternStd_to_Handle_TDF_Attribute(
+        self_: *const Handle_TDataXtd_PatternStd,
+    ) -> crate::OcctResult<*mut Handle_TDF_Attribute>;
     /// Upcast Handle<TDataXtd_PatternStd> to Handle<Standard_Transient>
-    pub fn HandleTDataXtdPatternStd_to_HandleStandardTransient(
-        self_: *const HandleTDataXtdPatternStd,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
-    /// Inherited: **Source:** `TDataXtd_Pattern.hxx`:38 - `TDataXtd_Pattern::ID()`
+    pub fn Handle_TDataXtd_PatternStd_to_Handle_Standard_Transient(
+        self_: *const Handle_TDataXtd_PatternStd,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
+    /// Inherited: **Source:** `TDataXtd_Pattern.hxx`:36 - `TDataXtd_Pattern::ID()`
     pub fn TDataXtd_PatternStd_inherited_ID(
         self_: *const TDataXtd_PatternStd,
     ) -> crate::OcctResult<*const Standard_GUID>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:138 - `TDF_Attribute::SetID()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:135 - `TDF_Attribute::SetID()`
     pub fn TDataXtd_PatternStd_inherited_SetID(
         self_: *mut TDataXtd_PatternStd,
         arg0: *const Standard_GUID,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:150 - `TDF_Attribute::Label()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:147 - `TDF_Attribute::Label()`
     pub fn TDataXtd_PatternStd_inherited_Label(
         self_: *const TDataXtd_PatternStd,
     ) -> crate::OcctResult<*mut TDF_Label>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:154 - `TDF_Attribute::Transaction()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:151 - `TDF_Attribute::Transaction()`
     pub fn TDataXtd_PatternStd_inherited_Transaction(
         self_: *const TDataXtd_PatternStd,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:160 - `TDF_Attribute::UntilTransaction()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:157 - `TDF_Attribute::UntilTransaction()`
     pub fn TDataXtd_PatternStd_inherited_UntilTransaction(
         self_: *const TDataXtd_PatternStd,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:164 - `TDF_Attribute::IsValid()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:161 - `TDF_Attribute::IsValid()`
     pub fn TDataXtd_PatternStd_inherited_IsValid(
         self_: *const TDataXtd_PatternStd,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:167 - `TDF_Attribute::IsNew()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:164 - `TDF_Attribute::IsNew()`
     pub fn TDataXtd_PatternStd_inherited_IsNew(
         self_: *const TDataXtd_PatternStd,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:174 - `TDF_Attribute::IsForgotten()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:171 - `TDF_Attribute::IsForgotten()`
     pub fn TDataXtd_PatternStd_inherited_IsForgotten(
         self_: *const TDataXtd_PatternStd,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:178 - `TDF_Attribute::IsAttribute()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:175 - `TDF_Attribute::IsAttribute()`
     pub fn TDataXtd_PatternStd_inherited_IsAttribute(
         self_: *const TDataXtd_PatternStd,
         anID: *const Standard_GUID,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:185 - `TDF_Attribute::FindAttribute()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:182 - `TDF_Attribute::FindAttribute()`
     pub fn TDataXtd_PatternStd_inherited_FindAttribute(
         self_: *const TDataXtd_PatternStd,
         anID: *const Standard_GUID,
-        anAttribute: *mut HandleTDFAttribute,
+        anAttribute: *mut Handle_TDF_Attribute,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:199 - `TDF_Attribute::AddAttribute()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:196 - `TDF_Attribute::AddAttribute()`
     pub fn TDataXtd_PatternStd_inherited_AddAttribute(
         self_: *const TDataXtd_PatternStd,
-        other: *const HandleTDFAttribute,
+        other: *const Handle_TDF_Attribute,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:206 - `TDF_Attribute::ForgetAttribute()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:203 - `TDF_Attribute::ForgetAttribute()`
     pub fn TDataXtd_PatternStd_inherited_ForgetAttribute(
         self_: *const TDataXtd_PatternStd,
         aguid: *const Standard_GUID,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:214 - `TDF_Attribute::ForgetAllAttributes()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:211 - `TDF_Attribute::ForgetAllAttributes()`
     pub fn TDataXtd_PatternStd_inherited_ForgetAllAttributes(
         self_: *const TDataXtd_PatternStd,
         clearChildren: bool,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:218 - `TDF_Attribute::AfterAddition()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:214 - `TDF_Attribute::AfterAddition()`
     pub fn TDataXtd_PatternStd_inherited_AfterAddition(
         self_: *mut TDataXtd_PatternStd,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:222 - `TDF_Attribute::BeforeRemoval()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:218 - `TDF_Attribute::BeforeRemoval()`
     pub fn TDataXtd_PatternStd_inherited_BeforeRemoval(
         self_: *mut TDataXtd_PatternStd,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:226 - `TDF_Attribute::BeforeForget()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:222 - `TDF_Attribute::BeforeForget()`
     pub fn TDataXtd_PatternStd_inherited_BeforeForget(
         self_: *mut TDataXtd_PatternStd,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:230 - `TDF_Attribute::AfterResume()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:226 - `TDF_Attribute::AfterResume()`
     pub fn TDataXtd_PatternStd_inherited_AfterResume(
         self_: *mut TDataXtd_PatternStd,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:239 - `TDF_Attribute::AfterRetrieval()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:235 - `TDF_Attribute::AfterRetrieval()`
     pub fn TDataXtd_PatternStd_inherited_AfterRetrieval(
         self_: *mut TDataXtd_PatternStd,
         forceIt: bool,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:248 - `TDF_Attribute::BeforeUndo()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:243 - `TDF_Attribute::BeforeUndo()`
     pub fn TDataXtd_PatternStd_inherited_BeforeUndo(
         self_: *mut TDataXtd_PatternStd,
-        anAttDelta: *const HandleTDFAttributeDelta,
+        anAttDelta: *const Handle_TDF_AttributeDelta,
         forceIt: bool,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:258 - `TDF_Attribute::AfterUndo()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:252 - `TDF_Attribute::AfterUndo()`
     pub fn TDataXtd_PatternStd_inherited_AfterUndo(
         self_: *mut TDataXtd_PatternStd,
-        anAttDelta: *const HandleTDFAttributeDelta,
+        anAttDelta: *const Handle_TDF_AttributeDelta,
         forceIt: bool,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:265 - `TDF_Attribute::BeforeCommitTransaction()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:258 - `TDF_Attribute::BeforeCommitTransaction()`
     pub fn TDataXtd_PatternStd_inherited_BeforeCommitTransaction(
         self_: *mut TDataXtd_PatternStd,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:277 - `TDF_Attribute::Backup()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:270 - `TDF_Attribute::Backup()`
     pub fn TDataXtd_PatternStd_inherited_Backup(
         self_: *mut TDataXtd_PatternStd,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:282 - `TDF_Attribute::IsBackuped()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:275 - `TDF_Attribute::IsBackuped()`
     pub fn TDataXtd_PatternStd_inherited_IsBackuped(
         self_: *const TDataXtd_PatternStd,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:286 - `TDF_Attribute::BackupCopy()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:279 - `TDF_Attribute::BackupCopy()`
     pub fn TDataXtd_PatternStd_inherited_BackupCopy(
         self_: *const TDataXtd_PatternStd,
-    ) -> crate::OcctResult<*mut HandleTDFAttribute>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:296 - `TDF_Attribute::DeltaOnAddition()`
+    ) -> crate::OcctResult<*mut Handle_TDF_Attribute>;
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:289 - `TDF_Attribute::DeltaOnAddition()`
     pub fn TDataXtd_PatternStd_inherited_DeltaOnAddition(
         self_: *const TDataXtd_PatternStd,
-    ) -> crate::OcctResult<*mut HandleTDFDeltaOnAddition>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:300 - `TDF_Attribute::DeltaOnForget()`
+    ) -> crate::OcctResult<*mut Handle_TDF_DeltaOnAddition>;
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:293 - `TDF_Attribute::DeltaOnForget()`
     pub fn TDataXtd_PatternStd_inherited_DeltaOnForget(
         self_: *const TDataXtd_PatternStd,
-    ) -> crate::OcctResult<*mut HandleTDFDeltaOnForget>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:304 - `TDF_Attribute::DeltaOnResume()`
+    ) -> crate::OcctResult<*mut Handle_TDF_DeltaOnForget>;
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:297 - `TDF_Attribute::DeltaOnResume()`
     pub fn TDataXtd_PatternStd_inherited_DeltaOnResume(
         self_: *const TDataXtd_PatternStd,
-    ) -> crate::OcctResult<*mut HandleTDFDeltaOnResume>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:308 - `TDF_Attribute::DeltaOnModification()`
+    ) -> crate::OcctResult<*mut Handle_TDF_DeltaOnResume>;
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:301 - `TDF_Attribute::DeltaOnModification()`
     pub fn TDataXtd_PatternStd_inherited_DeltaOnModification(
         self_: *const TDataXtd_PatternStd,
-        anOldAttribute: *const HandleTDFAttribute,
-    ) -> crate::OcctResult<*mut HandleTDFDeltaOnModification>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:316 - `TDF_Attribute::DeltaOnRemoval()`
+        anOldAttribute: *const Handle_TDF_Attribute,
+    ) -> crate::OcctResult<*mut Handle_TDF_DeltaOnModification>;
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:310 - `TDF_Attribute::DeltaOnRemoval()`
     pub fn TDataXtd_PatternStd_inherited_DeltaOnRemoval(
         self_: *const TDataXtd_PatternStd,
-    ) -> crate::OcctResult<*mut HandleTDFDeltaOnRemoval>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:358 - `TDF_Attribute::ExtendedDump()`
-    pub fn TDataXtd_PatternStd_inherited_ExtendedDump(
-        self_: *const TDataXtd_PatternStd,
-        anOS: *mut Standard_OStream,
-        aFilter: *const TDF_IDFilter,
-        aMap: *mut TDF_AttributeIndexedMap,
-    ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:374 - `TDF_Attribute::Forget()`
+    ) -> crate::OcctResult<*mut Handle_TDF_DeltaOnRemoval>;
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:370 - `TDF_Attribute::Forget()`
     pub fn TDataXtd_PatternStd_inherited_Forget(
         self_: *mut TDataXtd_PatternStd,
         aTransaction: i32,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn TDataXtd_PatternStd_inherited_IsInstance(
         self_: *const TDataXtd_PatternStd,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn TDataXtd_PatternStd_inherited_IsKind(
         self_: *const TDataXtd_PatternStd,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn TDataXtd_PatternStd_inherited_This(
         self_: *const TDataXtd_PatternStd,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn TDataXtd_PatternStd_inherited_GetRefCount(
         self_: *const TDataXtd_PatternStd,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn TDataXtd_PatternStd_inherited_IncrementRefCounter(
         self_: *mut TDataXtd_PatternStd,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn TDataXtd_PatternStd_inherited_DecrementRefCounter(
         self_: *mut TDataXtd_PatternStd,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn TDataXtd_PatternStd_inherited_Delete(
         self_: *const TDataXtd_PatternStd,
     ) -> *const std::ffi::c_char;
     // ======================== TDataXtd_Placement ========================
     pub fn TDataXtd_Placement_destructor(self_: *mut TDataXtd_Placement);
-    /// **Source:** `TDataXtd_Placement.hxx`:39 - `TDataXtd_Placement::TDataXtd_Placement()`
+    /// **Source:** `TDataXtd_Placement.hxx`:36 - `TDataXtd_Placement::TDataXtd_Placement()`
     pub fn TDataXtd_Placement_ctor() -> crate::OcctResult<*mut TDataXtd_Placement>;
-    /// **Source:** `TDataXtd_Placement.hxx`:41 - `TDataXtd_Placement::ID()`
+    /// **Source:** `TDataXtd_Placement.hxx`:38 - `TDataXtd_Placement::ID()`
     pub fn TDataXtd_Placement_id(
         self_: *const TDataXtd_Placement,
     ) -> crate::OcctResult<*const Standard_GUID>;
-    /// **Source:** `TDataXtd_Placement.hxx`:43 - `TDataXtd_Placement::Dump()`
+    /// **Source:** `TDataXtd_Placement.hxx`:40 - `TDataXtd_Placement::Dump()`
     pub fn TDataXtd_Placement_dump(
         self_: *mut TDataXtd_Placement,
         anOS: *mut Standard_OStream,
     ) -> crate::OcctResult<*mut Standard_OStream>;
-    /// **Source:** `TDataXtd_Placement.hxx`:45 - `TDataXtd_Placement::DynamicType()`
+    /// **Source:** `TDataXtd_Placement.hxx`:42 - `TDataXtd_Placement::DynamicType()`
     pub fn TDataXtd_Placement_dynamic_type(
         self_: *const TDataXtd_Placement,
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// **Source:** `TDataXtd_Placement.hxx`:45 - `TDataXtd_Placement::NewEmpty()`
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
+    /// **Source:** `TDataXtd_Placement.hxx`:42 - `TDataXtd_Placement::NewEmpty()`
     pub fn TDataXtd_Placement_new_empty(
         self_: *const TDataXtd_Placement,
-    ) -> crate::OcctResult<*mut HandleTDFAttribute>;
-    /// **Source:** `TDataXtd_Placement.hxx`:31 - `TDataXtd_Placement::GetID()`
+    ) -> crate::OcctResult<*mut Handle_TDF_Attribute>;
+    /// **Source:** `TDataXtd_Placement.hxx`:28 - `TDataXtd_Placement::GetID()`
     pub fn TDataXtd_Placement_get_id() -> crate::OcctResult<*const Standard_GUID>;
-    /// **Source:** `TDataXtd_Placement.hxx`:37 - `TDataXtd_Placement::Set()`
+    /// **Source:** `TDataXtd_Placement.hxx`:34 - `TDataXtd_Placement::Set()`
     pub fn TDataXtd_Placement_set(
         label: *const TDF_Label,
-    ) -> crate::OcctResult<*mut HandleTDataXtdPlacement>;
-    /// **Source:** `TDataXtd_Placement.hxx`:45 - `TDataXtd_Placement::get_type_name()`
+    ) -> crate::OcctResult<*mut Handle_TDataXtd_Placement>;
+    /// **Source:** `TDataXtd_Placement.hxx`:42 - `TDataXtd_Placement::get_type_name()`
     pub fn TDataXtd_Placement_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
-    /// **Source:** `TDataXtd_Placement.hxx`:45 - `TDataXtd_Placement::get_type_descriptor()`
-    pub fn TDataXtd_Placement_get_type_descriptor() -> crate::OcctResult<*const HandleStandardType>;
+    /// **Source:** `TDataXtd_Placement.hxx`:42 - `TDataXtd_Placement::get_type_descriptor()`
+    pub fn TDataXtd_Placement_get_type_descriptor() -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast TDataXtd_Placement to TDataStd_GenericEmpty
     pub fn TDataXtd_Placement_as_TDataStd_GenericEmpty(
         self_: *const TDataXtd_Placement,
@@ -2072,254 +1929,247 @@ unsafe extern "C" {
     /// Wrap TDataXtd_Placement in a Handle
     pub fn TDataXtd_Placement_to_handle(
         obj: *mut TDataXtd_Placement,
-    ) -> crate::OcctResult<*mut HandleTDataXtdPlacement>;
+    ) -> crate::OcctResult<*mut Handle_TDataXtd_Placement>;
     /// Destroy Handle<TDataXtd_Placement>
-    pub fn HandleTDataXtdPlacement_destructor(self_: *mut HandleTDataXtdPlacement);
+    pub fn Handle_TDataXtd_Placement_destructor(self_: *mut Handle_TDataXtd_Placement);
     /// Clone Handle<TDataXtd_Placement> (increments reference count)
-    pub fn HandleTDataXtdPlacement_clone(
-        self_: *const HandleTDataXtdPlacement,
-    ) -> crate::OcctResult<*mut HandleTDataXtdPlacement>;
+    pub fn Handle_TDataXtd_Placement_clone(
+        self_: *const Handle_TDataXtd_Placement,
+    ) -> crate::OcctResult<*mut Handle_TDataXtd_Placement>;
     /// Check if Handle<TDataXtd_Placement> is null
-    pub fn HandleTDataXtdPlacement_is_null(self_: *const HandleTDataXtdPlacement) -> bool;
+    pub fn Handle_TDataXtd_Placement_is_null(self_: *const Handle_TDataXtd_Placement) -> bool;
     /// Dereference Handle to get *const TDataXtd_Placement
-    pub fn HandleTDataXtdPlacement_get(
-        handle: *const HandleTDataXtdPlacement,
+    pub fn Handle_TDataXtd_Placement_get(
+        handle: *const Handle_TDataXtd_Placement,
     ) -> crate::OcctResult<*const TDataXtd_Placement>;
     /// Dereference Handle to get *mut TDataXtd_Placement
-    pub fn HandleTDataXtdPlacement_get_mut(
-        handle: *mut HandleTDataXtdPlacement,
+    pub fn Handle_TDataXtd_Placement_get_mut(
+        handle: *mut Handle_TDataXtd_Placement,
     ) -> crate::OcctResult<*mut TDataXtd_Placement>;
     /// Upcast Handle<TDataXtd_Placement> to Handle<TDataStd_GenericEmpty>
-    pub fn HandleTDataXtdPlacement_to_HandleTDataStdGenericEmpty(
-        self_: *const HandleTDataXtdPlacement,
-    ) -> crate::OcctResult<*mut HandleTDataStdGenericEmpty>;
+    pub fn Handle_TDataXtd_Placement_to_Handle_TDataStd_GenericEmpty(
+        self_: *const Handle_TDataXtd_Placement,
+    ) -> crate::OcctResult<*mut Handle_TDataStd_GenericEmpty>;
     /// Upcast Handle<TDataXtd_Placement> to Handle<TDF_Attribute>
-    pub fn HandleTDataXtdPlacement_to_HandleTDFAttribute(
-        self_: *const HandleTDataXtdPlacement,
-    ) -> crate::OcctResult<*mut HandleTDFAttribute>;
+    pub fn Handle_TDataXtd_Placement_to_Handle_TDF_Attribute(
+        self_: *const Handle_TDataXtd_Placement,
+    ) -> crate::OcctResult<*mut Handle_TDF_Attribute>;
     /// Upcast Handle<TDataXtd_Placement> to Handle<Standard_Transient>
-    pub fn HandleTDataXtdPlacement_to_HandleStandardTransient(
-        self_: *const HandleTDataXtdPlacement,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
-    /// Inherited: **Source:** `TDataStd_GenericEmpty.hxx`:33 - `TDataStd_GenericEmpty::Restore()`
+    pub fn Handle_TDataXtd_Placement_to_Handle_Standard_Transient(
+        self_: *const Handle_TDataXtd_Placement,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
+    /// Inherited: **Source:** `TDataStd_GenericEmpty.hxx`:30 - `TDataStd_GenericEmpty::Restore()`
     pub fn TDataXtd_Placement_inherited_Restore(
         self_: *mut TDataXtd_Placement,
-        arg0: *const HandleTDFAttribute,
+        arg0: *const Handle_TDF_Attribute,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `TDataStd_GenericEmpty.hxx`:35 - `TDataStd_GenericEmpty::Paste()`
+    /// Inherited: **Source:** `TDataStd_GenericEmpty.hxx`:32 - `TDataStd_GenericEmpty::Paste()`
     pub fn TDataXtd_Placement_inherited_Paste(
         self_: *const TDataXtd_Placement,
-        arg0: *const HandleTDFAttribute,
-        arg1: *const HandleTDFRelocationTable,
+        arg0: *const Handle_TDF_Attribute,
+        arg1: *const Handle_TDF_RelocationTable,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:138 - `TDF_Attribute::SetID()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:135 - `TDF_Attribute::SetID()`
     pub fn TDataXtd_Placement_inherited_SetID(
         self_: *mut TDataXtd_Placement,
         arg0: *const Standard_GUID,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:150 - `TDF_Attribute::Label()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:147 - `TDF_Attribute::Label()`
     pub fn TDataXtd_Placement_inherited_Label(
         self_: *const TDataXtd_Placement,
     ) -> crate::OcctResult<*mut TDF_Label>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:154 - `TDF_Attribute::Transaction()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:151 - `TDF_Attribute::Transaction()`
     pub fn TDataXtd_Placement_inherited_Transaction(
         self_: *const TDataXtd_Placement,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:160 - `TDF_Attribute::UntilTransaction()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:157 - `TDF_Attribute::UntilTransaction()`
     pub fn TDataXtd_Placement_inherited_UntilTransaction(
         self_: *const TDataXtd_Placement,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:164 - `TDF_Attribute::IsValid()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:161 - `TDF_Attribute::IsValid()`
     pub fn TDataXtd_Placement_inherited_IsValid(
         self_: *const TDataXtd_Placement,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:167 - `TDF_Attribute::IsNew()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:164 - `TDF_Attribute::IsNew()`
     pub fn TDataXtd_Placement_inherited_IsNew(
         self_: *const TDataXtd_Placement,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:174 - `TDF_Attribute::IsForgotten()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:171 - `TDF_Attribute::IsForgotten()`
     pub fn TDataXtd_Placement_inherited_IsForgotten(
         self_: *const TDataXtd_Placement,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:178 - `TDF_Attribute::IsAttribute()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:175 - `TDF_Attribute::IsAttribute()`
     pub fn TDataXtd_Placement_inherited_IsAttribute(
         self_: *const TDataXtd_Placement,
         anID: *const Standard_GUID,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:185 - `TDF_Attribute::FindAttribute()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:182 - `TDF_Attribute::FindAttribute()`
     pub fn TDataXtd_Placement_inherited_FindAttribute(
         self_: *const TDataXtd_Placement,
         anID: *const Standard_GUID,
-        anAttribute: *mut HandleTDFAttribute,
+        anAttribute: *mut Handle_TDF_Attribute,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:199 - `TDF_Attribute::AddAttribute()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:196 - `TDF_Attribute::AddAttribute()`
     pub fn TDataXtd_Placement_inherited_AddAttribute(
         self_: *const TDataXtd_Placement,
-        other: *const HandleTDFAttribute,
+        other: *const Handle_TDF_Attribute,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:206 - `TDF_Attribute::ForgetAttribute()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:203 - `TDF_Attribute::ForgetAttribute()`
     pub fn TDataXtd_Placement_inherited_ForgetAttribute(
         self_: *const TDataXtd_Placement,
         aguid: *const Standard_GUID,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:214 - `TDF_Attribute::ForgetAllAttributes()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:211 - `TDF_Attribute::ForgetAllAttributes()`
     pub fn TDataXtd_Placement_inherited_ForgetAllAttributes(
         self_: *const TDataXtd_Placement,
         clearChildren: bool,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:218 - `TDF_Attribute::AfterAddition()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:214 - `TDF_Attribute::AfterAddition()`
     pub fn TDataXtd_Placement_inherited_AfterAddition(
         self_: *mut TDataXtd_Placement,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:222 - `TDF_Attribute::BeforeRemoval()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:218 - `TDF_Attribute::BeforeRemoval()`
     pub fn TDataXtd_Placement_inherited_BeforeRemoval(
         self_: *mut TDataXtd_Placement,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:226 - `TDF_Attribute::BeforeForget()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:222 - `TDF_Attribute::BeforeForget()`
     pub fn TDataXtd_Placement_inherited_BeforeForget(
         self_: *mut TDataXtd_Placement,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:230 - `TDF_Attribute::AfterResume()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:226 - `TDF_Attribute::AfterResume()`
     pub fn TDataXtd_Placement_inherited_AfterResume(
         self_: *mut TDataXtd_Placement,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:239 - `TDF_Attribute::AfterRetrieval()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:235 - `TDF_Attribute::AfterRetrieval()`
     pub fn TDataXtd_Placement_inherited_AfterRetrieval(
         self_: *mut TDataXtd_Placement,
         forceIt: bool,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:248 - `TDF_Attribute::BeforeUndo()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:243 - `TDF_Attribute::BeforeUndo()`
     pub fn TDataXtd_Placement_inherited_BeforeUndo(
         self_: *mut TDataXtd_Placement,
-        anAttDelta: *const HandleTDFAttributeDelta,
+        anAttDelta: *const Handle_TDF_AttributeDelta,
         forceIt: bool,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:258 - `TDF_Attribute::AfterUndo()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:252 - `TDF_Attribute::AfterUndo()`
     pub fn TDataXtd_Placement_inherited_AfterUndo(
         self_: *mut TDataXtd_Placement,
-        anAttDelta: *const HandleTDFAttributeDelta,
+        anAttDelta: *const Handle_TDF_AttributeDelta,
         forceIt: bool,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:265 - `TDF_Attribute::BeforeCommitTransaction()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:258 - `TDF_Attribute::BeforeCommitTransaction()`
     pub fn TDataXtd_Placement_inherited_BeforeCommitTransaction(
         self_: *mut TDataXtd_Placement,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:277 - `TDF_Attribute::Backup()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:270 - `TDF_Attribute::Backup()`
     pub fn TDataXtd_Placement_inherited_Backup(
         self_: *mut TDataXtd_Placement,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:282 - `TDF_Attribute::IsBackuped()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:275 - `TDF_Attribute::IsBackuped()`
     pub fn TDataXtd_Placement_inherited_IsBackuped(
         self_: *const TDataXtd_Placement,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:286 - `TDF_Attribute::BackupCopy()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:279 - `TDF_Attribute::BackupCopy()`
     pub fn TDataXtd_Placement_inherited_BackupCopy(
         self_: *const TDataXtd_Placement,
-    ) -> crate::OcctResult<*mut HandleTDFAttribute>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:296 - `TDF_Attribute::DeltaOnAddition()`
+    ) -> crate::OcctResult<*mut Handle_TDF_Attribute>;
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:289 - `TDF_Attribute::DeltaOnAddition()`
     pub fn TDataXtd_Placement_inherited_DeltaOnAddition(
         self_: *const TDataXtd_Placement,
-    ) -> crate::OcctResult<*mut HandleTDFDeltaOnAddition>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:300 - `TDF_Attribute::DeltaOnForget()`
+    ) -> crate::OcctResult<*mut Handle_TDF_DeltaOnAddition>;
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:293 - `TDF_Attribute::DeltaOnForget()`
     pub fn TDataXtd_Placement_inherited_DeltaOnForget(
         self_: *const TDataXtd_Placement,
-    ) -> crate::OcctResult<*mut HandleTDFDeltaOnForget>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:304 - `TDF_Attribute::DeltaOnResume()`
+    ) -> crate::OcctResult<*mut Handle_TDF_DeltaOnForget>;
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:297 - `TDF_Attribute::DeltaOnResume()`
     pub fn TDataXtd_Placement_inherited_DeltaOnResume(
         self_: *const TDataXtd_Placement,
-    ) -> crate::OcctResult<*mut HandleTDFDeltaOnResume>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:308 - `TDF_Attribute::DeltaOnModification()`
+    ) -> crate::OcctResult<*mut Handle_TDF_DeltaOnResume>;
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:301 - `TDF_Attribute::DeltaOnModification()`
     pub fn TDataXtd_Placement_inherited_DeltaOnModification(
         self_: *const TDataXtd_Placement,
-        anOldAttribute: *const HandleTDFAttribute,
-    ) -> crate::OcctResult<*mut HandleTDFDeltaOnModification>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:316 - `TDF_Attribute::DeltaOnRemoval()`
+        anOldAttribute: *const Handle_TDF_Attribute,
+    ) -> crate::OcctResult<*mut Handle_TDF_DeltaOnModification>;
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:310 - `TDF_Attribute::DeltaOnRemoval()`
     pub fn TDataXtd_Placement_inherited_DeltaOnRemoval(
         self_: *const TDataXtd_Placement,
-    ) -> crate::OcctResult<*mut HandleTDFDeltaOnRemoval>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:345 - `TDF_Attribute::References()`
+    ) -> crate::OcctResult<*mut Handle_TDF_DeltaOnRemoval>;
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:340 - `TDF_Attribute::References()`
     pub fn TDataXtd_Placement_inherited_References(
         self_: *const TDataXtd_Placement,
-        aDataSet: *const HandleTDFDataSet,
+        aDataSet: *const Handle_TDF_DataSet,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:358 - `TDF_Attribute::ExtendedDump()`
-    pub fn TDataXtd_Placement_inherited_ExtendedDump(
-        self_: *const TDataXtd_Placement,
-        anOS: *mut Standard_OStream,
-        aFilter: *const TDF_IDFilter,
-        aMap: *mut TDF_AttributeIndexedMap,
-    ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:374 - `TDF_Attribute::Forget()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:370 - `TDF_Attribute::Forget()`
     pub fn TDataXtd_Placement_inherited_Forget(
         self_: *mut TDataXtd_Placement,
         aTransaction: i32,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn TDataXtd_Placement_inherited_IsInstance(
         self_: *const TDataXtd_Placement,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn TDataXtd_Placement_inherited_IsKind(
         self_: *const TDataXtd_Placement,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn TDataXtd_Placement_inherited_This(
         self_: *const TDataXtd_Placement,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn TDataXtd_Placement_inherited_GetRefCount(
         self_: *const TDataXtd_Placement,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn TDataXtd_Placement_inherited_IncrementRefCounter(
         self_: *mut TDataXtd_Placement,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn TDataXtd_Placement_inherited_DecrementRefCounter(
         self_: *mut TDataXtd_Placement,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn TDataXtd_Placement_inherited_Delete(
         self_: *const TDataXtd_Placement,
     ) -> *const std::ffi::c_char;
     // ======================== TDataXtd_Plane ========================
     pub fn TDataXtd_Plane_destructor(self_: *mut TDataXtd_Plane);
-    /// **Source:** `TDataXtd_Plane.hxx`:52 - `TDataXtd_Plane::TDataXtd_Plane()`
+    /// **Source:** `TDataXtd_Plane.hxx`:49 - `TDataXtd_Plane::TDataXtd_Plane()`
     pub fn TDataXtd_Plane_ctor() -> crate::OcctResult<*mut TDataXtd_Plane>;
-    /// **Source:** `TDataXtd_Plane.hxx`:54 - `TDataXtd_Plane::ID()`
+    /// **Source:** `TDataXtd_Plane.hxx`:51 - `TDataXtd_Plane::ID()`
     pub fn TDataXtd_Plane_id(
         self_: *const TDataXtd_Plane,
     ) -> crate::OcctResult<*const Standard_GUID>;
-    /// **Source:** `TDataXtd_Plane.hxx`:56 - `TDataXtd_Plane::Dump()`
+    /// **Source:** `TDataXtd_Plane.hxx`:53 - `TDataXtd_Plane::Dump()`
     pub fn TDataXtd_Plane_dump(
         self_: *mut TDataXtd_Plane,
         anOS: *mut Standard_OStream,
     ) -> crate::OcctResult<*mut Standard_OStream>;
-    /// **Source:** `TDataXtd_Plane.hxx`:58 - `TDataXtd_Plane::DynamicType()`
+    /// **Source:** `TDataXtd_Plane.hxx`:55 - `TDataXtd_Plane::DynamicType()`
     pub fn TDataXtd_Plane_dynamic_type(
         self_: *const TDataXtd_Plane,
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// **Source:** `TDataXtd_Plane.hxx`:58 - `TDataXtd_Plane::NewEmpty()`
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
+    /// **Source:** `TDataXtd_Plane.hxx`:55 - `TDataXtd_Plane::NewEmpty()`
     pub fn TDataXtd_Plane_new_empty(
         self_: *const TDataXtd_Plane,
-    ) -> crate::OcctResult<*mut HandleTDFAttribute>;
-    /// **Source:** `TDataXtd_Plane.hxx`:37 - `TDataXtd_Plane::GetID()`
+    ) -> crate::OcctResult<*mut Handle_TDF_Attribute>;
+    /// **Source:** `TDataXtd_Plane.hxx`:34 - `TDataXtd_Plane::GetID()`
     pub fn TDataXtd_Plane_get_id() -> crate::OcctResult<*const Standard_GUID>;
-    /// **Source:** `TDataXtd_Plane.hxx`:44 - `TDataXtd_Plane::Set()`
+    /// **Source:** `TDataXtd_Plane.hxx`:41 - `TDataXtd_Plane::Set()`
     pub fn TDataXtd_Plane_set_label(
         label: *const TDF_Label,
-    ) -> crate::OcctResult<*mut HandleTDataXtdPlane>;
-    /// **Source:** `TDataXtd_Plane.hxx`:50 - `TDataXtd_Plane::Set()`
+    ) -> crate::OcctResult<*mut Handle_TDataXtd_Plane>;
+    /// **Source:** `TDataXtd_Plane.hxx`:47 - `TDataXtd_Plane::Set()`
     pub fn TDataXtd_Plane_set_label_pln(
         label: *const TDF_Label,
         P: *const gp_Pln,
-    ) -> crate::OcctResult<*mut HandleTDataXtdPlane>;
-    /// **Source:** `TDataXtd_Plane.hxx`:58 - `TDataXtd_Plane::get_type_name()`
+    ) -> crate::OcctResult<*mut Handle_TDataXtd_Plane>;
+    /// **Source:** `TDataXtd_Plane.hxx`:55 - `TDataXtd_Plane::get_type_name()`
     pub fn TDataXtd_Plane_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
-    /// **Source:** `TDataXtd_Plane.hxx`:58 - `TDataXtd_Plane::get_type_descriptor()`
-    pub fn TDataXtd_Plane_get_type_descriptor() -> crate::OcctResult<*const HandleStandardType>;
+    /// **Source:** `TDataXtd_Plane.hxx`:55 - `TDataXtd_Plane::get_type_descriptor()`
+    pub fn TDataXtd_Plane_get_type_descriptor() -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast TDataXtd_Plane to TDataStd_GenericEmpty
     pub fn TDataXtd_Plane_as_TDataStd_GenericEmpty(
         self_: *const TDataXtd_Plane,
@@ -2347,249 +2197,242 @@ unsafe extern "C" {
     /// Wrap TDataXtd_Plane in a Handle
     pub fn TDataXtd_Plane_to_handle(
         obj: *mut TDataXtd_Plane,
-    ) -> crate::OcctResult<*mut HandleTDataXtdPlane>;
+    ) -> crate::OcctResult<*mut Handle_TDataXtd_Plane>;
     /// Destroy Handle<TDataXtd_Plane>
-    pub fn HandleTDataXtdPlane_destructor(self_: *mut HandleTDataXtdPlane);
+    pub fn Handle_TDataXtd_Plane_destructor(self_: *mut Handle_TDataXtd_Plane);
     /// Clone Handle<TDataXtd_Plane> (increments reference count)
-    pub fn HandleTDataXtdPlane_clone(
-        self_: *const HandleTDataXtdPlane,
-    ) -> crate::OcctResult<*mut HandleTDataXtdPlane>;
+    pub fn Handle_TDataXtd_Plane_clone(
+        self_: *const Handle_TDataXtd_Plane,
+    ) -> crate::OcctResult<*mut Handle_TDataXtd_Plane>;
     /// Check if Handle<TDataXtd_Plane> is null
-    pub fn HandleTDataXtdPlane_is_null(self_: *const HandleTDataXtdPlane) -> bool;
+    pub fn Handle_TDataXtd_Plane_is_null(self_: *const Handle_TDataXtd_Plane) -> bool;
     /// Dereference Handle to get *const TDataXtd_Plane
-    pub fn HandleTDataXtdPlane_get(
-        handle: *const HandleTDataXtdPlane,
+    pub fn Handle_TDataXtd_Plane_get(
+        handle: *const Handle_TDataXtd_Plane,
     ) -> crate::OcctResult<*const TDataXtd_Plane>;
     /// Dereference Handle to get *mut TDataXtd_Plane
-    pub fn HandleTDataXtdPlane_get_mut(
-        handle: *mut HandleTDataXtdPlane,
+    pub fn Handle_TDataXtd_Plane_get_mut(
+        handle: *mut Handle_TDataXtd_Plane,
     ) -> crate::OcctResult<*mut TDataXtd_Plane>;
     /// Upcast Handle<TDataXtd_Plane> to Handle<TDataStd_GenericEmpty>
-    pub fn HandleTDataXtdPlane_to_HandleTDataStdGenericEmpty(
-        self_: *const HandleTDataXtdPlane,
-    ) -> crate::OcctResult<*mut HandleTDataStdGenericEmpty>;
+    pub fn Handle_TDataXtd_Plane_to_Handle_TDataStd_GenericEmpty(
+        self_: *const Handle_TDataXtd_Plane,
+    ) -> crate::OcctResult<*mut Handle_TDataStd_GenericEmpty>;
     /// Upcast Handle<TDataXtd_Plane> to Handle<TDF_Attribute>
-    pub fn HandleTDataXtdPlane_to_HandleTDFAttribute(
-        self_: *const HandleTDataXtdPlane,
-    ) -> crate::OcctResult<*mut HandleTDFAttribute>;
+    pub fn Handle_TDataXtd_Plane_to_Handle_TDF_Attribute(
+        self_: *const Handle_TDataXtd_Plane,
+    ) -> crate::OcctResult<*mut Handle_TDF_Attribute>;
     /// Upcast Handle<TDataXtd_Plane> to Handle<Standard_Transient>
-    pub fn HandleTDataXtdPlane_to_HandleStandardTransient(
-        self_: *const HandleTDataXtdPlane,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
-    /// Inherited: **Source:** `TDataStd_GenericEmpty.hxx`:33 - `TDataStd_GenericEmpty::Restore()`
+    pub fn Handle_TDataXtd_Plane_to_Handle_Standard_Transient(
+        self_: *const Handle_TDataXtd_Plane,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
+    /// Inherited: **Source:** `TDataStd_GenericEmpty.hxx`:30 - `TDataStd_GenericEmpty::Restore()`
     pub fn TDataXtd_Plane_inherited_Restore(
         self_: *mut TDataXtd_Plane,
-        arg0: *const HandleTDFAttribute,
+        arg0: *const Handle_TDF_Attribute,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `TDataStd_GenericEmpty.hxx`:35 - `TDataStd_GenericEmpty::Paste()`
+    /// Inherited: **Source:** `TDataStd_GenericEmpty.hxx`:32 - `TDataStd_GenericEmpty::Paste()`
     pub fn TDataXtd_Plane_inherited_Paste(
         self_: *const TDataXtd_Plane,
-        arg0: *const HandleTDFAttribute,
-        arg1: *const HandleTDFRelocationTable,
+        arg0: *const Handle_TDF_Attribute,
+        arg1: *const Handle_TDF_RelocationTable,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:138 - `TDF_Attribute::SetID()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:135 - `TDF_Attribute::SetID()`
     pub fn TDataXtd_Plane_inherited_SetID(
         self_: *mut TDataXtd_Plane,
         arg0: *const Standard_GUID,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:150 - `TDF_Attribute::Label()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:147 - `TDF_Attribute::Label()`
     pub fn TDataXtd_Plane_inherited_Label(
         self_: *const TDataXtd_Plane,
     ) -> crate::OcctResult<*mut TDF_Label>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:154 - `TDF_Attribute::Transaction()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:151 - `TDF_Attribute::Transaction()`
     pub fn TDataXtd_Plane_inherited_Transaction(
         self_: *const TDataXtd_Plane,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:160 - `TDF_Attribute::UntilTransaction()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:157 - `TDF_Attribute::UntilTransaction()`
     pub fn TDataXtd_Plane_inherited_UntilTransaction(
         self_: *const TDataXtd_Plane,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:164 - `TDF_Attribute::IsValid()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:161 - `TDF_Attribute::IsValid()`
     pub fn TDataXtd_Plane_inherited_IsValid(
         self_: *const TDataXtd_Plane,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:167 - `TDF_Attribute::IsNew()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:164 - `TDF_Attribute::IsNew()`
     pub fn TDataXtd_Plane_inherited_IsNew(self_: *const TDataXtd_Plane) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:174 - `TDF_Attribute::IsForgotten()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:171 - `TDF_Attribute::IsForgotten()`
     pub fn TDataXtd_Plane_inherited_IsForgotten(
         self_: *const TDataXtd_Plane,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:178 - `TDF_Attribute::IsAttribute()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:175 - `TDF_Attribute::IsAttribute()`
     pub fn TDataXtd_Plane_inherited_IsAttribute(
         self_: *const TDataXtd_Plane,
         anID: *const Standard_GUID,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:185 - `TDF_Attribute::FindAttribute()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:182 - `TDF_Attribute::FindAttribute()`
     pub fn TDataXtd_Plane_inherited_FindAttribute(
         self_: *const TDataXtd_Plane,
         anID: *const Standard_GUID,
-        anAttribute: *mut HandleTDFAttribute,
+        anAttribute: *mut Handle_TDF_Attribute,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:199 - `TDF_Attribute::AddAttribute()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:196 - `TDF_Attribute::AddAttribute()`
     pub fn TDataXtd_Plane_inherited_AddAttribute(
         self_: *const TDataXtd_Plane,
-        other: *const HandleTDFAttribute,
+        other: *const Handle_TDF_Attribute,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:206 - `TDF_Attribute::ForgetAttribute()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:203 - `TDF_Attribute::ForgetAttribute()`
     pub fn TDataXtd_Plane_inherited_ForgetAttribute(
         self_: *const TDataXtd_Plane,
         aguid: *const Standard_GUID,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:214 - `TDF_Attribute::ForgetAllAttributes()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:211 - `TDF_Attribute::ForgetAllAttributes()`
     pub fn TDataXtd_Plane_inherited_ForgetAllAttributes(
         self_: *const TDataXtd_Plane,
         clearChildren: bool,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:218 - `TDF_Attribute::AfterAddition()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:214 - `TDF_Attribute::AfterAddition()`
     pub fn TDataXtd_Plane_inherited_AfterAddition(
         self_: *mut TDataXtd_Plane,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:222 - `TDF_Attribute::BeforeRemoval()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:218 - `TDF_Attribute::BeforeRemoval()`
     pub fn TDataXtd_Plane_inherited_BeforeRemoval(
         self_: *mut TDataXtd_Plane,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:226 - `TDF_Attribute::BeforeForget()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:222 - `TDF_Attribute::BeforeForget()`
     pub fn TDataXtd_Plane_inherited_BeforeForget(
         self_: *mut TDataXtd_Plane,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:230 - `TDF_Attribute::AfterResume()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:226 - `TDF_Attribute::AfterResume()`
     pub fn TDataXtd_Plane_inherited_AfterResume(
         self_: *mut TDataXtd_Plane,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:239 - `TDF_Attribute::AfterRetrieval()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:235 - `TDF_Attribute::AfterRetrieval()`
     pub fn TDataXtd_Plane_inherited_AfterRetrieval(
         self_: *mut TDataXtd_Plane,
         forceIt: bool,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:248 - `TDF_Attribute::BeforeUndo()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:243 - `TDF_Attribute::BeforeUndo()`
     pub fn TDataXtd_Plane_inherited_BeforeUndo(
         self_: *mut TDataXtd_Plane,
-        anAttDelta: *const HandleTDFAttributeDelta,
+        anAttDelta: *const Handle_TDF_AttributeDelta,
         forceIt: bool,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:258 - `TDF_Attribute::AfterUndo()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:252 - `TDF_Attribute::AfterUndo()`
     pub fn TDataXtd_Plane_inherited_AfterUndo(
         self_: *mut TDataXtd_Plane,
-        anAttDelta: *const HandleTDFAttributeDelta,
+        anAttDelta: *const Handle_TDF_AttributeDelta,
         forceIt: bool,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:265 - `TDF_Attribute::BeforeCommitTransaction()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:258 - `TDF_Attribute::BeforeCommitTransaction()`
     pub fn TDataXtd_Plane_inherited_BeforeCommitTransaction(
         self_: *mut TDataXtd_Plane,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:277 - `TDF_Attribute::Backup()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:270 - `TDF_Attribute::Backup()`
     pub fn TDataXtd_Plane_inherited_Backup(self_: *mut TDataXtd_Plane) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:282 - `TDF_Attribute::IsBackuped()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:275 - `TDF_Attribute::IsBackuped()`
     pub fn TDataXtd_Plane_inherited_IsBackuped(
         self_: *const TDataXtd_Plane,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:286 - `TDF_Attribute::BackupCopy()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:279 - `TDF_Attribute::BackupCopy()`
     pub fn TDataXtd_Plane_inherited_BackupCopy(
         self_: *const TDataXtd_Plane,
-    ) -> crate::OcctResult<*mut HandleTDFAttribute>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:296 - `TDF_Attribute::DeltaOnAddition()`
+    ) -> crate::OcctResult<*mut Handle_TDF_Attribute>;
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:289 - `TDF_Attribute::DeltaOnAddition()`
     pub fn TDataXtd_Plane_inherited_DeltaOnAddition(
         self_: *const TDataXtd_Plane,
-    ) -> crate::OcctResult<*mut HandleTDFDeltaOnAddition>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:300 - `TDF_Attribute::DeltaOnForget()`
+    ) -> crate::OcctResult<*mut Handle_TDF_DeltaOnAddition>;
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:293 - `TDF_Attribute::DeltaOnForget()`
     pub fn TDataXtd_Plane_inherited_DeltaOnForget(
         self_: *const TDataXtd_Plane,
-    ) -> crate::OcctResult<*mut HandleTDFDeltaOnForget>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:304 - `TDF_Attribute::DeltaOnResume()`
+    ) -> crate::OcctResult<*mut Handle_TDF_DeltaOnForget>;
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:297 - `TDF_Attribute::DeltaOnResume()`
     pub fn TDataXtd_Plane_inherited_DeltaOnResume(
         self_: *const TDataXtd_Plane,
-    ) -> crate::OcctResult<*mut HandleTDFDeltaOnResume>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:308 - `TDF_Attribute::DeltaOnModification()`
+    ) -> crate::OcctResult<*mut Handle_TDF_DeltaOnResume>;
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:301 - `TDF_Attribute::DeltaOnModification()`
     pub fn TDataXtd_Plane_inherited_DeltaOnModification(
         self_: *const TDataXtd_Plane,
-        anOldAttribute: *const HandleTDFAttribute,
-    ) -> crate::OcctResult<*mut HandleTDFDeltaOnModification>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:316 - `TDF_Attribute::DeltaOnRemoval()`
+        anOldAttribute: *const Handle_TDF_Attribute,
+    ) -> crate::OcctResult<*mut Handle_TDF_DeltaOnModification>;
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:310 - `TDF_Attribute::DeltaOnRemoval()`
     pub fn TDataXtd_Plane_inherited_DeltaOnRemoval(
         self_: *const TDataXtd_Plane,
-    ) -> crate::OcctResult<*mut HandleTDFDeltaOnRemoval>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:345 - `TDF_Attribute::References()`
+    ) -> crate::OcctResult<*mut Handle_TDF_DeltaOnRemoval>;
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:340 - `TDF_Attribute::References()`
     pub fn TDataXtd_Plane_inherited_References(
         self_: *const TDataXtd_Plane,
-        aDataSet: *const HandleTDFDataSet,
+        aDataSet: *const Handle_TDF_DataSet,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:358 - `TDF_Attribute::ExtendedDump()`
-    pub fn TDataXtd_Plane_inherited_ExtendedDump(
-        self_: *const TDataXtd_Plane,
-        anOS: *mut Standard_OStream,
-        aFilter: *const TDF_IDFilter,
-        aMap: *mut TDF_AttributeIndexedMap,
-    ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:374 - `TDF_Attribute::Forget()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:370 - `TDF_Attribute::Forget()`
     pub fn TDataXtd_Plane_inherited_Forget(
         self_: *mut TDataXtd_Plane,
         aTransaction: i32,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn TDataXtd_Plane_inherited_IsInstance(
         self_: *const TDataXtd_Plane,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn TDataXtd_Plane_inherited_IsKind(
         self_: *const TDataXtd_Plane,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn TDataXtd_Plane_inherited_This(
         self_: *const TDataXtd_Plane,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn TDataXtd_Plane_inherited_GetRefCount(
         self_: *const TDataXtd_Plane,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn TDataXtd_Plane_inherited_IncrementRefCounter(
         self_: *mut TDataXtd_Plane,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn TDataXtd_Plane_inherited_DecrementRefCounter(
         self_: *mut TDataXtd_Plane,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn TDataXtd_Plane_inherited_Delete(self_: *const TDataXtd_Plane)
         -> *const std::ffi::c_char;
     // ======================== TDataXtd_Point ========================
     pub fn TDataXtd_Point_destructor(self_: *mut TDataXtd_Point);
-    /// **Source:** `TDataXtd_Point.hxx`:52 - `TDataXtd_Point::TDataXtd_Point()`
+    /// **Source:** `TDataXtd_Point.hxx`:49 - `TDataXtd_Point::TDataXtd_Point()`
     pub fn TDataXtd_Point_ctor() -> crate::OcctResult<*mut TDataXtd_Point>;
-    /// **Source:** `TDataXtd_Point.hxx`:54 - `TDataXtd_Point::ID()`
+    /// **Source:** `TDataXtd_Point.hxx`:51 - `TDataXtd_Point::ID()`
     pub fn TDataXtd_Point_id(
         self_: *const TDataXtd_Point,
     ) -> crate::OcctResult<*const Standard_GUID>;
-    /// **Source:** `TDataXtd_Point.hxx`:56 - `TDataXtd_Point::Dump()`
+    /// **Source:** `TDataXtd_Point.hxx`:53 - `TDataXtd_Point::Dump()`
     pub fn TDataXtd_Point_dump(
         self_: *mut TDataXtd_Point,
         anOS: *mut Standard_OStream,
     ) -> crate::OcctResult<*mut Standard_OStream>;
-    /// **Source:** `TDataXtd_Point.hxx`:58 - `TDataXtd_Point::DynamicType()`
+    /// **Source:** `TDataXtd_Point.hxx`:55 - `TDataXtd_Point::DynamicType()`
     pub fn TDataXtd_Point_dynamic_type(
         self_: *const TDataXtd_Point,
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// **Source:** `TDataXtd_Point.hxx`:58 - `TDataXtd_Point::NewEmpty()`
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
+    /// **Source:** `TDataXtd_Point.hxx`:55 - `TDataXtd_Point::NewEmpty()`
     pub fn TDataXtd_Point_new_empty(
         self_: *const TDataXtd_Point,
-    ) -> crate::OcctResult<*mut HandleTDFAttribute>;
-    /// **Source:** `TDataXtd_Point.hxx`:40 - `TDataXtd_Point::GetID()`
+    ) -> crate::OcctResult<*mut Handle_TDF_Attribute>;
+    /// **Source:** `TDataXtd_Point.hxx`:37 - `TDataXtd_Point::GetID()`
     pub fn TDataXtd_Point_get_id() -> crate::OcctResult<*const Standard_GUID>;
-    /// **Source:** `TDataXtd_Point.hxx`:44 - `TDataXtd_Point::Set()`
+    /// **Source:** `TDataXtd_Point.hxx`:41 - `TDataXtd_Point::Set()`
     pub fn TDataXtd_Point_set_label(
         label: *const TDF_Label,
-    ) -> crate::OcctResult<*mut HandleTDataXtdPoint>;
-    /// **Source:** `TDataXtd_Point.hxx`:50 - `TDataXtd_Point::Set()`
+    ) -> crate::OcctResult<*mut Handle_TDataXtd_Point>;
+    /// **Source:** `TDataXtd_Point.hxx`:47 - `TDataXtd_Point::Set()`
     pub fn TDataXtd_Point_set_label_pnt(
         label: *const TDF_Label,
         P: *const gp_Pnt,
-    ) -> crate::OcctResult<*mut HandleTDataXtdPoint>;
-    /// **Source:** `TDataXtd_Point.hxx`:58 - `TDataXtd_Point::get_type_name()`
+    ) -> crate::OcctResult<*mut Handle_TDataXtd_Point>;
+    /// **Source:** `TDataXtd_Point.hxx`:55 - `TDataXtd_Point::get_type_name()`
     pub fn TDataXtd_Point_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
-    /// **Source:** `TDataXtd_Point.hxx`:58 - `TDataXtd_Point::get_type_descriptor()`
-    pub fn TDataXtd_Point_get_type_descriptor() -> crate::OcctResult<*const HandleStandardType>;
+    /// **Source:** `TDataXtd_Point.hxx`:55 - `TDataXtd_Point::get_type_descriptor()`
+    pub fn TDataXtd_Point_get_type_descriptor() -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast TDataXtd_Point to TDataStd_GenericEmpty
     pub fn TDataXtd_Point_as_TDataStd_GenericEmpty(
         self_: *const TDataXtd_Point,
@@ -2617,269 +2460,262 @@ unsafe extern "C" {
     /// Wrap TDataXtd_Point in a Handle
     pub fn TDataXtd_Point_to_handle(
         obj: *mut TDataXtd_Point,
-    ) -> crate::OcctResult<*mut HandleTDataXtdPoint>;
+    ) -> crate::OcctResult<*mut Handle_TDataXtd_Point>;
     /// Destroy Handle<TDataXtd_Point>
-    pub fn HandleTDataXtdPoint_destructor(self_: *mut HandleTDataXtdPoint);
+    pub fn Handle_TDataXtd_Point_destructor(self_: *mut Handle_TDataXtd_Point);
     /// Clone Handle<TDataXtd_Point> (increments reference count)
-    pub fn HandleTDataXtdPoint_clone(
-        self_: *const HandleTDataXtdPoint,
-    ) -> crate::OcctResult<*mut HandleTDataXtdPoint>;
+    pub fn Handle_TDataXtd_Point_clone(
+        self_: *const Handle_TDataXtd_Point,
+    ) -> crate::OcctResult<*mut Handle_TDataXtd_Point>;
     /// Check if Handle<TDataXtd_Point> is null
-    pub fn HandleTDataXtdPoint_is_null(self_: *const HandleTDataXtdPoint) -> bool;
+    pub fn Handle_TDataXtd_Point_is_null(self_: *const Handle_TDataXtd_Point) -> bool;
     /// Dereference Handle to get *const TDataXtd_Point
-    pub fn HandleTDataXtdPoint_get(
-        handle: *const HandleTDataXtdPoint,
+    pub fn Handle_TDataXtd_Point_get(
+        handle: *const Handle_TDataXtd_Point,
     ) -> crate::OcctResult<*const TDataXtd_Point>;
     /// Dereference Handle to get *mut TDataXtd_Point
-    pub fn HandleTDataXtdPoint_get_mut(
-        handle: *mut HandleTDataXtdPoint,
+    pub fn Handle_TDataXtd_Point_get_mut(
+        handle: *mut Handle_TDataXtd_Point,
     ) -> crate::OcctResult<*mut TDataXtd_Point>;
     /// Upcast Handle<TDataXtd_Point> to Handle<TDataStd_GenericEmpty>
-    pub fn HandleTDataXtdPoint_to_HandleTDataStdGenericEmpty(
-        self_: *const HandleTDataXtdPoint,
-    ) -> crate::OcctResult<*mut HandleTDataStdGenericEmpty>;
+    pub fn Handle_TDataXtd_Point_to_Handle_TDataStd_GenericEmpty(
+        self_: *const Handle_TDataXtd_Point,
+    ) -> crate::OcctResult<*mut Handle_TDataStd_GenericEmpty>;
     /// Upcast Handle<TDataXtd_Point> to Handle<TDF_Attribute>
-    pub fn HandleTDataXtdPoint_to_HandleTDFAttribute(
-        self_: *const HandleTDataXtdPoint,
-    ) -> crate::OcctResult<*mut HandleTDFAttribute>;
+    pub fn Handle_TDataXtd_Point_to_Handle_TDF_Attribute(
+        self_: *const Handle_TDataXtd_Point,
+    ) -> crate::OcctResult<*mut Handle_TDF_Attribute>;
     /// Upcast Handle<TDataXtd_Point> to Handle<Standard_Transient>
-    pub fn HandleTDataXtdPoint_to_HandleStandardTransient(
-        self_: *const HandleTDataXtdPoint,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
-    /// Inherited: **Source:** `TDataStd_GenericEmpty.hxx`:33 - `TDataStd_GenericEmpty::Restore()`
+    pub fn Handle_TDataXtd_Point_to_Handle_Standard_Transient(
+        self_: *const Handle_TDataXtd_Point,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
+    /// Inherited: **Source:** `TDataStd_GenericEmpty.hxx`:30 - `TDataStd_GenericEmpty::Restore()`
     pub fn TDataXtd_Point_inherited_Restore(
         self_: *mut TDataXtd_Point,
-        arg0: *const HandleTDFAttribute,
+        arg0: *const Handle_TDF_Attribute,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `TDataStd_GenericEmpty.hxx`:35 - `TDataStd_GenericEmpty::Paste()`
+    /// Inherited: **Source:** `TDataStd_GenericEmpty.hxx`:32 - `TDataStd_GenericEmpty::Paste()`
     pub fn TDataXtd_Point_inherited_Paste(
         self_: *const TDataXtd_Point,
-        arg0: *const HandleTDFAttribute,
-        arg1: *const HandleTDFRelocationTable,
+        arg0: *const Handle_TDF_Attribute,
+        arg1: *const Handle_TDF_RelocationTable,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:138 - `TDF_Attribute::SetID()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:135 - `TDF_Attribute::SetID()`
     pub fn TDataXtd_Point_inherited_SetID(
         self_: *mut TDataXtd_Point,
         arg0: *const Standard_GUID,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:150 - `TDF_Attribute::Label()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:147 - `TDF_Attribute::Label()`
     pub fn TDataXtd_Point_inherited_Label(
         self_: *const TDataXtd_Point,
     ) -> crate::OcctResult<*mut TDF_Label>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:154 - `TDF_Attribute::Transaction()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:151 - `TDF_Attribute::Transaction()`
     pub fn TDataXtd_Point_inherited_Transaction(
         self_: *const TDataXtd_Point,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:160 - `TDF_Attribute::UntilTransaction()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:157 - `TDF_Attribute::UntilTransaction()`
     pub fn TDataXtd_Point_inherited_UntilTransaction(
         self_: *const TDataXtd_Point,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:164 - `TDF_Attribute::IsValid()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:161 - `TDF_Attribute::IsValid()`
     pub fn TDataXtd_Point_inherited_IsValid(
         self_: *const TDataXtd_Point,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:167 - `TDF_Attribute::IsNew()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:164 - `TDF_Attribute::IsNew()`
     pub fn TDataXtd_Point_inherited_IsNew(self_: *const TDataXtd_Point) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:174 - `TDF_Attribute::IsForgotten()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:171 - `TDF_Attribute::IsForgotten()`
     pub fn TDataXtd_Point_inherited_IsForgotten(
         self_: *const TDataXtd_Point,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:178 - `TDF_Attribute::IsAttribute()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:175 - `TDF_Attribute::IsAttribute()`
     pub fn TDataXtd_Point_inherited_IsAttribute(
         self_: *const TDataXtd_Point,
         anID: *const Standard_GUID,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:185 - `TDF_Attribute::FindAttribute()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:182 - `TDF_Attribute::FindAttribute()`
     pub fn TDataXtd_Point_inherited_FindAttribute(
         self_: *const TDataXtd_Point,
         anID: *const Standard_GUID,
-        anAttribute: *mut HandleTDFAttribute,
+        anAttribute: *mut Handle_TDF_Attribute,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:199 - `TDF_Attribute::AddAttribute()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:196 - `TDF_Attribute::AddAttribute()`
     pub fn TDataXtd_Point_inherited_AddAttribute(
         self_: *const TDataXtd_Point,
-        other: *const HandleTDFAttribute,
+        other: *const Handle_TDF_Attribute,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:206 - `TDF_Attribute::ForgetAttribute()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:203 - `TDF_Attribute::ForgetAttribute()`
     pub fn TDataXtd_Point_inherited_ForgetAttribute(
         self_: *const TDataXtd_Point,
         aguid: *const Standard_GUID,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:214 - `TDF_Attribute::ForgetAllAttributes()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:211 - `TDF_Attribute::ForgetAllAttributes()`
     pub fn TDataXtd_Point_inherited_ForgetAllAttributes(
         self_: *const TDataXtd_Point,
         clearChildren: bool,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:218 - `TDF_Attribute::AfterAddition()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:214 - `TDF_Attribute::AfterAddition()`
     pub fn TDataXtd_Point_inherited_AfterAddition(
         self_: *mut TDataXtd_Point,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:222 - `TDF_Attribute::BeforeRemoval()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:218 - `TDF_Attribute::BeforeRemoval()`
     pub fn TDataXtd_Point_inherited_BeforeRemoval(
         self_: *mut TDataXtd_Point,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:226 - `TDF_Attribute::BeforeForget()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:222 - `TDF_Attribute::BeforeForget()`
     pub fn TDataXtd_Point_inherited_BeforeForget(
         self_: *mut TDataXtd_Point,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:230 - `TDF_Attribute::AfterResume()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:226 - `TDF_Attribute::AfterResume()`
     pub fn TDataXtd_Point_inherited_AfterResume(
         self_: *mut TDataXtd_Point,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:239 - `TDF_Attribute::AfterRetrieval()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:235 - `TDF_Attribute::AfterRetrieval()`
     pub fn TDataXtd_Point_inherited_AfterRetrieval(
         self_: *mut TDataXtd_Point,
         forceIt: bool,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:248 - `TDF_Attribute::BeforeUndo()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:243 - `TDF_Attribute::BeforeUndo()`
     pub fn TDataXtd_Point_inherited_BeforeUndo(
         self_: *mut TDataXtd_Point,
-        anAttDelta: *const HandleTDFAttributeDelta,
+        anAttDelta: *const Handle_TDF_AttributeDelta,
         forceIt: bool,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:258 - `TDF_Attribute::AfterUndo()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:252 - `TDF_Attribute::AfterUndo()`
     pub fn TDataXtd_Point_inherited_AfterUndo(
         self_: *mut TDataXtd_Point,
-        anAttDelta: *const HandleTDFAttributeDelta,
+        anAttDelta: *const Handle_TDF_AttributeDelta,
         forceIt: bool,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:265 - `TDF_Attribute::BeforeCommitTransaction()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:258 - `TDF_Attribute::BeforeCommitTransaction()`
     pub fn TDataXtd_Point_inherited_BeforeCommitTransaction(
         self_: *mut TDataXtd_Point,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:277 - `TDF_Attribute::Backup()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:270 - `TDF_Attribute::Backup()`
     pub fn TDataXtd_Point_inherited_Backup(self_: *mut TDataXtd_Point) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:282 - `TDF_Attribute::IsBackuped()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:275 - `TDF_Attribute::IsBackuped()`
     pub fn TDataXtd_Point_inherited_IsBackuped(
         self_: *const TDataXtd_Point,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:286 - `TDF_Attribute::BackupCopy()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:279 - `TDF_Attribute::BackupCopy()`
     pub fn TDataXtd_Point_inherited_BackupCopy(
         self_: *const TDataXtd_Point,
-    ) -> crate::OcctResult<*mut HandleTDFAttribute>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:296 - `TDF_Attribute::DeltaOnAddition()`
+    ) -> crate::OcctResult<*mut Handle_TDF_Attribute>;
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:289 - `TDF_Attribute::DeltaOnAddition()`
     pub fn TDataXtd_Point_inherited_DeltaOnAddition(
         self_: *const TDataXtd_Point,
-    ) -> crate::OcctResult<*mut HandleTDFDeltaOnAddition>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:300 - `TDF_Attribute::DeltaOnForget()`
+    ) -> crate::OcctResult<*mut Handle_TDF_DeltaOnAddition>;
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:293 - `TDF_Attribute::DeltaOnForget()`
     pub fn TDataXtd_Point_inherited_DeltaOnForget(
         self_: *const TDataXtd_Point,
-    ) -> crate::OcctResult<*mut HandleTDFDeltaOnForget>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:304 - `TDF_Attribute::DeltaOnResume()`
+    ) -> crate::OcctResult<*mut Handle_TDF_DeltaOnForget>;
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:297 - `TDF_Attribute::DeltaOnResume()`
     pub fn TDataXtd_Point_inherited_DeltaOnResume(
         self_: *const TDataXtd_Point,
-    ) -> crate::OcctResult<*mut HandleTDFDeltaOnResume>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:308 - `TDF_Attribute::DeltaOnModification()`
+    ) -> crate::OcctResult<*mut Handle_TDF_DeltaOnResume>;
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:301 - `TDF_Attribute::DeltaOnModification()`
     pub fn TDataXtd_Point_inherited_DeltaOnModification(
         self_: *const TDataXtd_Point,
-        anOldAttribute: *const HandleTDFAttribute,
-    ) -> crate::OcctResult<*mut HandleTDFDeltaOnModification>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:316 - `TDF_Attribute::DeltaOnRemoval()`
+        anOldAttribute: *const Handle_TDF_Attribute,
+    ) -> crate::OcctResult<*mut Handle_TDF_DeltaOnModification>;
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:310 - `TDF_Attribute::DeltaOnRemoval()`
     pub fn TDataXtd_Point_inherited_DeltaOnRemoval(
         self_: *const TDataXtd_Point,
-    ) -> crate::OcctResult<*mut HandleTDFDeltaOnRemoval>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:345 - `TDF_Attribute::References()`
+    ) -> crate::OcctResult<*mut Handle_TDF_DeltaOnRemoval>;
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:340 - `TDF_Attribute::References()`
     pub fn TDataXtd_Point_inherited_References(
         self_: *const TDataXtd_Point,
-        aDataSet: *const HandleTDFDataSet,
+        aDataSet: *const Handle_TDF_DataSet,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:358 - `TDF_Attribute::ExtendedDump()`
-    pub fn TDataXtd_Point_inherited_ExtendedDump(
-        self_: *const TDataXtd_Point,
-        anOS: *mut Standard_OStream,
-        aFilter: *const TDF_IDFilter,
-        aMap: *mut TDF_AttributeIndexedMap,
-    ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:374 - `TDF_Attribute::Forget()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:370 - `TDF_Attribute::Forget()`
     pub fn TDataXtd_Point_inherited_Forget(
         self_: *mut TDataXtd_Point,
         aTransaction: i32,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn TDataXtd_Point_inherited_IsInstance(
         self_: *const TDataXtd_Point,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn TDataXtd_Point_inherited_IsKind(
         self_: *const TDataXtd_Point,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn TDataXtd_Point_inherited_This(
         self_: *const TDataXtd_Point,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn TDataXtd_Point_inherited_GetRefCount(
         self_: *const TDataXtd_Point,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn TDataXtd_Point_inherited_IncrementRefCounter(
         self_: *mut TDataXtd_Point,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn TDataXtd_Point_inherited_DecrementRefCounter(
         self_: *mut TDataXtd_Point,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn TDataXtd_Point_inherited_Delete(self_: *const TDataXtd_Point)
         -> *const std::ffi::c_char;
     // ======================== TDataXtd_Position ========================
     pub fn TDataXtd_Position_destructor(self_: *mut TDataXtd_Position);
-    /// **Source:** `TDataXtd_Position.hxx`:47 - `TDataXtd_Position::TDataXtd_Position()`
+    /// **Source:** `TDataXtd_Position.hxx`:44 - `TDataXtd_Position::TDataXtd_Position()`
     pub fn TDataXtd_Position_ctor() -> crate::OcctResult<*mut TDataXtd_Position>;
-    /// **Source:** `TDataXtd_Position.hxx`:50 - `TDataXtd_Position::ID()`
+    /// **Source:** `TDataXtd_Position.hxx`:47 - `TDataXtd_Position::ID()`
     pub fn TDataXtd_Position_id(
         self_: *const TDataXtd_Position,
     ) -> crate::OcctResult<*const Standard_GUID>;
-    /// **Source:** `TDataXtd_Position.hxx`:57 - `TDataXtd_Position::Restore()`
+    /// **Source:** `TDataXtd_Position.hxx`:54 - `TDataXtd_Position::Restore()`
     pub fn TDataXtd_Position_restore(
         self_: *mut TDataXtd_Position,
-        anAttribute: *const HandleTDFAttribute,
+        anAttribute: *const Handle_TDF_Attribute,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `TDataXtd_Position.hxx`:61 - `TDataXtd_Position::NewEmpty()`
+    /// **Source:** `TDataXtd_Position.hxx`:58 - `TDataXtd_Position::NewEmpty()`
     pub fn TDataXtd_Position_new_empty(
         self_: *const TDataXtd_Position,
-    ) -> crate::OcctResult<*mut HandleTDFAttribute>;
-    /// **Source:** `TDataXtd_Position.hxx`:70 - `TDataXtd_Position::Paste()`
+    ) -> crate::OcctResult<*mut Handle_TDF_Attribute>;
+    /// **Source:** `TDataXtd_Position.hxx`:67 - `TDataXtd_Position::Paste()`
     pub fn TDataXtd_Position_paste(
         self_: *const TDataXtd_Position,
-        intoAttribute: *const HandleTDFAttribute,
-        aRelocTationable: *const HandleTDFRelocationTable,
+        intoAttribute: *const Handle_TDF_Attribute,
+        aRelocTationable: *const Handle_TDF_RelocationTable,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `TDataXtd_Position.hxx`:74 - `TDataXtd_Position::GetPosition()`
+    /// **Source:** `TDataXtd_Position.hxx`:71 - `TDataXtd_Position::GetPosition()`
     pub fn TDataXtd_Position_get_position(
         self_: *const TDataXtd_Position,
     ) -> crate::OcctResult<*const gp_Pnt>;
-    /// **Source:** `TDataXtd_Position.hxx`:76 - `TDataXtd_Position::SetPosition()`
+    /// **Source:** `TDataXtd_Position.hxx`:73 - `TDataXtd_Position::SetPosition()`
     pub fn TDataXtd_Position_set_position(
         self_: *mut TDataXtd_Position,
         aPos: *const gp_Pnt,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `TDataXtd_Position.hxx`:78 - `TDataXtd_Position::DynamicType()`
+    /// **Source:** `TDataXtd_Position.hxx`:75 - `TDataXtd_Position::DynamicType()`
     pub fn TDataXtd_Position_dynamic_type(
         self_: *const TDataXtd_Position,
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// **Source:** `TDataXtd_Position.hxx`:37 - `TDataXtd_Position::Set()`
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
+    /// **Source:** `TDataXtd_Position.hxx`:34 - `TDataXtd_Position::Set()`
     pub fn TDataXtd_Position_set_label_pnt(
         aLabel: *const TDF_Label,
         aPos: *const gp_Pnt,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `TDataXtd_Position.hxx`:41 - `TDataXtd_Position::Set()`
+    /// **Source:** `TDataXtd_Position.hxx`:38 - `TDataXtd_Position::Set()`
     pub fn TDataXtd_Position_set_label(
         aLabel: *const TDF_Label,
-    ) -> crate::OcctResult<*mut HandleTDataXtdPosition>;
-    /// **Source:** `TDataXtd_Position.hxx`:45 - `TDataXtd_Position::Get()`
+    ) -> crate::OcctResult<*mut Handle_TDataXtd_Position>;
+    /// **Source:** `TDataXtd_Position.hxx`:42 - `TDataXtd_Position::Get()`
     pub fn TDataXtd_Position_get(
         aLabel: *const TDF_Label,
         aPos: *mut gp_Pnt,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `TDataXtd_Position.hxx`:53 - `TDataXtd_Position::GetID()`
+    /// **Source:** `TDataXtd_Position.hxx`:50 - `TDataXtd_Position::GetID()`
     pub fn TDataXtd_Position_get_id() -> crate::OcctResult<*const Standard_GUID>;
-    /// **Source:** `TDataXtd_Position.hxx`:78 - `TDataXtd_Position::get_type_name()`
+    /// **Source:** `TDataXtd_Position.hxx`:75 - `TDataXtd_Position::get_type_name()`
     pub fn TDataXtd_Position_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
-    /// **Source:** `TDataXtd_Position.hxx`:78 - `TDataXtd_Position::get_type_descriptor()`
-    pub fn TDataXtd_Position_get_type_descriptor() -> crate::OcctResult<*const HandleStandardType>;
+    /// **Source:** `TDataXtd_Position.hxx`:75 - `TDataXtd_Position::get_type_descriptor()`
+    pub fn TDataXtd_Position_get_type_descriptor() -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast TDataXtd_Position to TDF_Attribute
     pub fn TDataXtd_Position_as_TDF_Attribute(
         self_: *const TDataXtd_Position,
@@ -2899,385 +2735,378 @@ unsafe extern "C" {
     /// Wrap TDataXtd_Position in a Handle
     pub fn TDataXtd_Position_to_handle(
         obj: *mut TDataXtd_Position,
-    ) -> crate::OcctResult<*mut HandleTDataXtdPosition>;
+    ) -> crate::OcctResult<*mut Handle_TDataXtd_Position>;
     /// Destroy Handle<TDataXtd_Position>
-    pub fn HandleTDataXtdPosition_destructor(self_: *mut HandleTDataXtdPosition);
+    pub fn Handle_TDataXtd_Position_destructor(self_: *mut Handle_TDataXtd_Position);
     /// Clone Handle<TDataXtd_Position> (increments reference count)
-    pub fn HandleTDataXtdPosition_clone(
-        self_: *const HandleTDataXtdPosition,
-    ) -> crate::OcctResult<*mut HandleTDataXtdPosition>;
+    pub fn Handle_TDataXtd_Position_clone(
+        self_: *const Handle_TDataXtd_Position,
+    ) -> crate::OcctResult<*mut Handle_TDataXtd_Position>;
     /// Check if Handle<TDataXtd_Position> is null
-    pub fn HandleTDataXtdPosition_is_null(self_: *const HandleTDataXtdPosition) -> bool;
+    pub fn Handle_TDataXtd_Position_is_null(self_: *const Handle_TDataXtd_Position) -> bool;
     /// Dereference Handle to get *const TDataXtd_Position
-    pub fn HandleTDataXtdPosition_get(
-        handle: *const HandleTDataXtdPosition,
+    pub fn Handle_TDataXtd_Position_get(
+        handle: *const Handle_TDataXtd_Position,
     ) -> crate::OcctResult<*const TDataXtd_Position>;
     /// Dereference Handle to get *mut TDataXtd_Position
-    pub fn HandleTDataXtdPosition_get_mut(
-        handle: *mut HandleTDataXtdPosition,
+    pub fn Handle_TDataXtd_Position_get_mut(
+        handle: *mut Handle_TDataXtd_Position,
     ) -> crate::OcctResult<*mut TDataXtd_Position>;
     /// Upcast Handle<TDataXtd_Position> to Handle<TDF_Attribute>
-    pub fn HandleTDataXtdPosition_to_HandleTDFAttribute(
-        self_: *const HandleTDataXtdPosition,
-    ) -> crate::OcctResult<*mut HandleTDFAttribute>;
+    pub fn Handle_TDataXtd_Position_to_Handle_TDF_Attribute(
+        self_: *const Handle_TDataXtd_Position,
+    ) -> crate::OcctResult<*mut Handle_TDF_Attribute>;
     /// Upcast Handle<TDataXtd_Position> to Handle<Standard_Transient>
-    pub fn HandleTDataXtdPosition_to_HandleStandardTransient(
-        self_: *const HandleTDataXtdPosition,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:138 - `TDF_Attribute::SetID()`
+    pub fn Handle_TDataXtd_Position_to_Handle_Standard_Transient(
+        self_: *const Handle_TDataXtd_Position,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:135 - `TDF_Attribute::SetID()`
     pub fn TDataXtd_Position_inherited_SetID(
         self_: *mut TDataXtd_Position,
         arg0: *const Standard_GUID,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:150 - `TDF_Attribute::Label()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:147 - `TDF_Attribute::Label()`
     pub fn TDataXtd_Position_inherited_Label(
         self_: *const TDataXtd_Position,
     ) -> crate::OcctResult<*mut TDF_Label>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:154 - `TDF_Attribute::Transaction()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:151 - `TDF_Attribute::Transaction()`
     pub fn TDataXtd_Position_inherited_Transaction(
         self_: *const TDataXtd_Position,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:160 - `TDF_Attribute::UntilTransaction()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:157 - `TDF_Attribute::UntilTransaction()`
     pub fn TDataXtd_Position_inherited_UntilTransaction(
         self_: *const TDataXtd_Position,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:164 - `TDF_Attribute::IsValid()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:161 - `TDF_Attribute::IsValid()`
     pub fn TDataXtd_Position_inherited_IsValid(
         self_: *const TDataXtd_Position,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:167 - `TDF_Attribute::IsNew()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:164 - `TDF_Attribute::IsNew()`
     pub fn TDataXtd_Position_inherited_IsNew(
         self_: *const TDataXtd_Position,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:174 - `TDF_Attribute::IsForgotten()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:171 - `TDF_Attribute::IsForgotten()`
     pub fn TDataXtd_Position_inherited_IsForgotten(
         self_: *const TDataXtd_Position,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:178 - `TDF_Attribute::IsAttribute()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:175 - `TDF_Attribute::IsAttribute()`
     pub fn TDataXtd_Position_inherited_IsAttribute(
         self_: *const TDataXtd_Position,
         anID: *const Standard_GUID,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:185 - `TDF_Attribute::FindAttribute()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:182 - `TDF_Attribute::FindAttribute()`
     pub fn TDataXtd_Position_inherited_FindAttribute(
         self_: *const TDataXtd_Position,
         anID: *const Standard_GUID,
-        anAttribute: *mut HandleTDFAttribute,
+        anAttribute: *mut Handle_TDF_Attribute,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:199 - `TDF_Attribute::AddAttribute()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:196 - `TDF_Attribute::AddAttribute()`
     pub fn TDataXtd_Position_inherited_AddAttribute(
         self_: *const TDataXtd_Position,
-        other: *const HandleTDFAttribute,
+        other: *const Handle_TDF_Attribute,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:206 - `TDF_Attribute::ForgetAttribute()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:203 - `TDF_Attribute::ForgetAttribute()`
     pub fn TDataXtd_Position_inherited_ForgetAttribute(
         self_: *const TDataXtd_Position,
         aguid: *const Standard_GUID,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:214 - `TDF_Attribute::ForgetAllAttributes()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:211 - `TDF_Attribute::ForgetAllAttributes()`
     pub fn TDataXtd_Position_inherited_ForgetAllAttributes(
         self_: *const TDataXtd_Position,
         clearChildren: bool,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:218 - `TDF_Attribute::AfterAddition()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:214 - `TDF_Attribute::AfterAddition()`
     pub fn TDataXtd_Position_inherited_AfterAddition(
         self_: *mut TDataXtd_Position,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:222 - `TDF_Attribute::BeforeRemoval()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:218 - `TDF_Attribute::BeforeRemoval()`
     pub fn TDataXtd_Position_inherited_BeforeRemoval(
         self_: *mut TDataXtd_Position,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:226 - `TDF_Attribute::BeforeForget()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:222 - `TDF_Attribute::BeforeForget()`
     pub fn TDataXtd_Position_inherited_BeforeForget(
         self_: *mut TDataXtd_Position,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:230 - `TDF_Attribute::AfterResume()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:226 - `TDF_Attribute::AfterResume()`
     pub fn TDataXtd_Position_inherited_AfterResume(
         self_: *mut TDataXtd_Position,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:239 - `TDF_Attribute::AfterRetrieval()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:235 - `TDF_Attribute::AfterRetrieval()`
     pub fn TDataXtd_Position_inherited_AfterRetrieval(
         self_: *mut TDataXtd_Position,
         forceIt: bool,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:248 - `TDF_Attribute::BeforeUndo()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:243 - `TDF_Attribute::BeforeUndo()`
     pub fn TDataXtd_Position_inherited_BeforeUndo(
         self_: *mut TDataXtd_Position,
-        anAttDelta: *const HandleTDFAttributeDelta,
+        anAttDelta: *const Handle_TDF_AttributeDelta,
         forceIt: bool,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:258 - `TDF_Attribute::AfterUndo()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:252 - `TDF_Attribute::AfterUndo()`
     pub fn TDataXtd_Position_inherited_AfterUndo(
         self_: *mut TDataXtd_Position,
-        anAttDelta: *const HandleTDFAttributeDelta,
+        anAttDelta: *const Handle_TDF_AttributeDelta,
         forceIt: bool,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:265 - `TDF_Attribute::BeforeCommitTransaction()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:258 - `TDF_Attribute::BeforeCommitTransaction()`
     pub fn TDataXtd_Position_inherited_BeforeCommitTransaction(
         self_: *mut TDataXtd_Position,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:277 - `TDF_Attribute::Backup()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:270 - `TDF_Attribute::Backup()`
     pub fn TDataXtd_Position_inherited_Backup(
         self_: *mut TDataXtd_Position,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:282 - `TDF_Attribute::IsBackuped()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:275 - `TDF_Attribute::IsBackuped()`
     pub fn TDataXtd_Position_inherited_IsBackuped(
         self_: *const TDataXtd_Position,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:286 - `TDF_Attribute::BackupCopy()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:279 - `TDF_Attribute::BackupCopy()`
     pub fn TDataXtd_Position_inherited_BackupCopy(
         self_: *const TDataXtd_Position,
-    ) -> crate::OcctResult<*mut HandleTDFAttribute>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:296 - `TDF_Attribute::DeltaOnAddition()`
+    ) -> crate::OcctResult<*mut Handle_TDF_Attribute>;
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:289 - `TDF_Attribute::DeltaOnAddition()`
     pub fn TDataXtd_Position_inherited_DeltaOnAddition(
         self_: *const TDataXtd_Position,
-    ) -> crate::OcctResult<*mut HandleTDFDeltaOnAddition>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:300 - `TDF_Attribute::DeltaOnForget()`
+    ) -> crate::OcctResult<*mut Handle_TDF_DeltaOnAddition>;
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:293 - `TDF_Attribute::DeltaOnForget()`
     pub fn TDataXtd_Position_inherited_DeltaOnForget(
         self_: *const TDataXtd_Position,
-    ) -> crate::OcctResult<*mut HandleTDFDeltaOnForget>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:304 - `TDF_Attribute::DeltaOnResume()`
+    ) -> crate::OcctResult<*mut Handle_TDF_DeltaOnForget>;
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:297 - `TDF_Attribute::DeltaOnResume()`
     pub fn TDataXtd_Position_inherited_DeltaOnResume(
         self_: *const TDataXtd_Position,
-    ) -> crate::OcctResult<*mut HandleTDFDeltaOnResume>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:308 - `TDF_Attribute::DeltaOnModification()`
+    ) -> crate::OcctResult<*mut Handle_TDF_DeltaOnResume>;
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:301 - `TDF_Attribute::DeltaOnModification()`
     pub fn TDataXtd_Position_inherited_DeltaOnModification(
         self_: *const TDataXtd_Position,
-        anOldAttribute: *const HandleTDFAttribute,
-    ) -> crate::OcctResult<*mut HandleTDFDeltaOnModification>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:316 - `TDF_Attribute::DeltaOnRemoval()`
+        anOldAttribute: *const Handle_TDF_Attribute,
+    ) -> crate::OcctResult<*mut Handle_TDF_DeltaOnModification>;
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:310 - `TDF_Attribute::DeltaOnRemoval()`
     pub fn TDataXtd_Position_inherited_DeltaOnRemoval(
         self_: *const TDataXtd_Position,
-    ) -> crate::OcctResult<*mut HandleTDFDeltaOnRemoval>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:345 - `TDF_Attribute::References()`
+    ) -> crate::OcctResult<*mut Handle_TDF_DeltaOnRemoval>;
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:340 - `TDF_Attribute::References()`
     pub fn TDataXtd_Position_inherited_References(
         self_: *const TDataXtd_Position,
-        aDataSet: *const HandleTDFDataSet,
+        aDataSet: *const Handle_TDF_DataSet,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:358 - `TDF_Attribute::ExtendedDump()`
-    pub fn TDataXtd_Position_inherited_ExtendedDump(
-        self_: *const TDataXtd_Position,
-        anOS: *mut Standard_OStream,
-        aFilter: *const TDF_IDFilter,
-        aMap: *mut TDF_AttributeIndexedMap,
-    ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:374 - `TDF_Attribute::Forget()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:370 - `TDF_Attribute::Forget()`
     pub fn TDataXtd_Position_inherited_Forget(
         self_: *mut TDataXtd_Position,
         aTransaction: i32,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn TDataXtd_Position_inherited_IsInstance(
         self_: *const TDataXtd_Position,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn TDataXtd_Position_inherited_IsKind(
         self_: *const TDataXtd_Position,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn TDataXtd_Position_inherited_This(
         self_: *const TDataXtd_Position,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn TDataXtd_Position_inherited_GetRefCount(
         self_: *const TDataXtd_Position,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn TDataXtd_Position_inherited_IncrementRefCounter(
         self_: *mut TDataXtd_Position,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn TDataXtd_Position_inherited_DecrementRefCounter(
         self_: *mut TDataXtd_Position,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn TDataXtd_Position_inherited_Delete(
         self_: *const TDataXtd_Position,
     ) -> *const std::ffi::c_char;
     // ======================== TDataXtd_Presentation ========================
     pub fn TDataXtd_Presentation_destructor(self_: *mut TDataXtd_Presentation);
-    /// **Source:** `TDataXtd_Presentation.hxx`:42 - `TDataXtd_Presentation::TDataXtd_Presentation()`
+    /// **Source:** `TDataXtd_Presentation.hxx`:40 - `TDataXtd_Presentation::TDataXtd_Presentation()`
     pub fn TDataXtd_Presentation_ctor() -> crate::OcctResult<*mut TDataXtd_Presentation>;
-    /// **Source:** `TDataXtd_Presentation.hxx`:52 - `TDataXtd_Presentation::ID()`
+    /// **Source:** `TDataXtd_Presentation.hxx`:50 - `TDataXtd_Presentation::ID()`
     pub fn TDataXtd_Presentation_id(
         self_: *const TDataXtd_Presentation,
     ) -> crate::OcctResult<*const Standard_GUID>;
-    /// **Source:** `TDataXtd_Presentation.hxx`:59 - `TDataXtd_Presentation::Restore()`
+    /// **Source:** `TDataXtd_Presentation.hxx`:57 - `TDataXtd_Presentation::Restore()`
     pub fn TDataXtd_Presentation_restore(
         self_: *mut TDataXtd_Presentation,
-        anAttribute: *const HandleTDFAttribute,
+        anAttribute: *const Handle_TDF_Attribute,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `TDataXtd_Presentation.hxx`:63 - `TDataXtd_Presentation::NewEmpty()`
+    /// **Source:** `TDataXtd_Presentation.hxx`:61 - `TDataXtd_Presentation::NewEmpty()`
     pub fn TDataXtd_Presentation_new_empty(
         self_: *const TDataXtd_Presentation,
-    ) -> crate::OcctResult<*mut HandleTDFAttribute>;
-    /// **Source:** `TDataXtd_Presentation.hxx`:72 - `TDataXtd_Presentation::Paste()`
+    ) -> crate::OcctResult<*mut Handle_TDF_Attribute>;
+    /// **Source:** `TDataXtd_Presentation.hxx`:70 - `TDataXtd_Presentation::Paste()`
     pub fn TDataXtd_Presentation_paste(
         self_: *const TDataXtd_Presentation,
-        intoAttribute: *const HandleTDFAttribute,
-        aRelocTationable: *const HandleTDFRelocationTable,
+        intoAttribute: *const Handle_TDF_Attribute,
+        aRelocTationable: *const Handle_TDF_RelocationTable,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `TDataXtd_Presentation.hxx`:76 - `TDataXtd_Presentation::BackupCopy()`
+    /// **Source:** `TDataXtd_Presentation.hxx`:74 - `TDataXtd_Presentation::BackupCopy()`
     pub fn TDataXtd_Presentation_backup_copy(
         self_: *const TDataXtd_Presentation,
-    ) -> crate::OcctResult<*mut HandleTDFAttribute>;
-    /// **Source:** `TDataXtd_Presentation.hxx`:78 - `TDataXtd_Presentation::DynamicType()`
+    ) -> crate::OcctResult<*mut Handle_TDF_Attribute>;
+    /// **Source:** `TDataXtd_Presentation.hxx`:76 - `TDataXtd_Presentation::DynamicType()`
     pub fn TDataXtd_Presentation_dynamic_type(
         self_: *const TDataXtd_Presentation,
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// **Source:** `TDataXtd_Presentation.hxx`:84 - `TDataXtd_Presentation::GetDriverGUID()`
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
+    /// **Source:** `TDataXtd_Presentation.hxx`:82 - `TDataXtd_Presentation::GetDriverGUID()`
     pub fn TDataXtd_Presentation_get_driver_guid(
         self_: *const TDataXtd_Presentation,
     ) -> crate::OcctResult<*mut Standard_GUID>;
-    /// **Source:** `TDataXtd_Presentation.hxx`:87 - `TDataXtd_Presentation::SetDriverGUID()`
+    /// **Source:** `TDataXtd_Presentation.hxx`:85 - `TDataXtd_Presentation::SetDriverGUID()`
     pub fn TDataXtd_Presentation_set_driver_guid(
         self_: *mut TDataXtd_Presentation,
         theGUID: *const Standard_GUID,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `TDataXtd_Presentation.hxx`:89 - `TDataXtd_Presentation::IsDisplayed()`
+    /// **Source:** `TDataXtd_Presentation.hxx`:87 - `TDataXtd_Presentation::IsDisplayed()`
     pub fn TDataXtd_Presentation_is_displayed(
         self_: *const TDataXtd_Presentation,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `TDataXtd_Presentation.hxx`:91 - `TDataXtd_Presentation::HasOwnMaterial()`
+    /// **Source:** `TDataXtd_Presentation.hxx`:89 - `TDataXtd_Presentation::HasOwnMaterial()`
     pub fn TDataXtd_Presentation_has_own_material(
         self_: *const TDataXtd_Presentation,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `TDataXtd_Presentation.hxx`:93 - `TDataXtd_Presentation::HasOwnTransparency()`
+    /// **Source:** `TDataXtd_Presentation.hxx`:91 - `TDataXtd_Presentation::HasOwnTransparency()`
     pub fn TDataXtd_Presentation_has_own_transparency(
         self_: *const TDataXtd_Presentation,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `TDataXtd_Presentation.hxx`:95 - `TDataXtd_Presentation::HasOwnColor()`
+    /// **Source:** `TDataXtd_Presentation.hxx`:93 - `TDataXtd_Presentation::HasOwnColor()`
     pub fn TDataXtd_Presentation_has_own_color(
         self_: *const TDataXtd_Presentation,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `TDataXtd_Presentation.hxx`:97 - `TDataXtd_Presentation::HasOwnWidth()`
+    /// **Source:** `TDataXtd_Presentation.hxx`:95 - `TDataXtd_Presentation::HasOwnWidth()`
     pub fn TDataXtd_Presentation_has_own_width(
         self_: *const TDataXtd_Presentation,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `TDataXtd_Presentation.hxx`:99 - `TDataXtd_Presentation::HasOwnMode()`
+    /// **Source:** `TDataXtd_Presentation.hxx`:97 - `TDataXtd_Presentation::HasOwnMode()`
     pub fn TDataXtd_Presentation_has_own_mode(
         self_: *const TDataXtd_Presentation,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `TDataXtd_Presentation.hxx`:101 - `TDataXtd_Presentation::HasOwnSelectionMode()`
+    /// **Source:** `TDataXtd_Presentation.hxx`:99 - `TDataXtd_Presentation::HasOwnSelectionMode()`
     pub fn TDataXtd_Presentation_has_own_selection_mode(
         self_: *const TDataXtd_Presentation,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `TDataXtd_Presentation.hxx`:103 - `TDataXtd_Presentation::SetDisplayed()`
+    /// **Source:** `TDataXtd_Presentation.hxx`:101 - `TDataXtd_Presentation::SetDisplayed()`
     pub fn TDataXtd_Presentation_set_displayed(
         self_: *mut TDataXtd_Presentation,
         theIsDisplayed: bool,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `TDataXtd_Presentation.hxx`:105 - `TDataXtd_Presentation::SetMaterialIndex()`
+    /// **Source:** `TDataXtd_Presentation.hxx`:103 - `TDataXtd_Presentation::SetMaterialIndex()`
     pub fn TDataXtd_Presentation_set_material_index(
         self_: *mut TDataXtd_Presentation,
         theMaterialIndex: i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `TDataXtd_Presentation.hxx`:107 - `TDataXtd_Presentation::SetTransparency()`
+    /// **Source:** `TDataXtd_Presentation.hxx`:105 - `TDataXtd_Presentation::SetTransparency()`
     pub fn TDataXtd_Presentation_set_transparency(
         self_: *mut TDataXtd_Presentation,
         theValue: f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `TDataXtd_Presentation.hxx`:109 - `TDataXtd_Presentation::SetColor()`
+    /// **Source:** `TDataXtd_Presentation.hxx`:107 - `TDataXtd_Presentation::SetColor()`
     pub fn TDataXtd_Presentation_set_color(
         self_: *mut TDataXtd_Presentation,
         theColor: i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `TDataXtd_Presentation.hxx`:111 - `TDataXtd_Presentation::SetWidth()`
+    /// **Source:** `TDataXtd_Presentation.hxx`:109 - `TDataXtd_Presentation::SetWidth()`
     pub fn TDataXtd_Presentation_set_width(
         self_: *mut TDataXtd_Presentation,
         theWidth: f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `TDataXtd_Presentation.hxx`:113 - `TDataXtd_Presentation::SetMode()`
+    /// **Source:** `TDataXtd_Presentation.hxx`:111 - `TDataXtd_Presentation::SetMode()`
     pub fn TDataXtd_Presentation_set_mode(
         self_: *mut TDataXtd_Presentation,
         theMode: i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `TDataXtd_Presentation.hxx`:117 - `TDataXtd_Presentation::GetNbSelectionModes()`
+    /// **Source:** `TDataXtd_Presentation.hxx`:115 - `TDataXtd_Presentation::GetNbSelectionModes()`
     pub fn TDataXtd_Presentation_get_nb_selection_modes(
         self_: *const TDataXtd_Presentation,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `TDataXtd_Presentation.hxx`:124 - `TDataXtd_Presentation::SetSelectionMode()`
+    /// **Source:** `TDataXtd_Presentation.hxx`:122 - `TDataXtd_Presentation::SetSelectionMode()`
     pub fn TDataXtd_Presentation_set_selection_mode(
         self_: *mut TDataXtd_Presentation,
         theSelectionMode: i32,
         theTransaction: bool,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `TDataXtd_Presentation.hxx`:126 - `TDataXtd_Presentation::AddSelectionMode()`
+    /// **Source:** `TDataXtd_Presentation.hxx`:124 - `TDataXtd_Presentation::AddSelectionMode()`
     pub fn TDataXtd_Presentation_add_selection_mode(
         self_: *mut TDataXtd_Presentation,
         theSelectionMode: i32,
         theTransaction: bool,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `TDataXtd_Presentation.hxx`:129 - `TDataXtd_Presentation::MaterialIndex()`
+    /// **Source:** `TDataXtd_Presentation.hxx`:127 - `TDataXtd_Presentation::MaterialIndex()`
     pub fn TDataXtd_Presentation_material_index(
         self_: *const TDataXtd_Presentation,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `TDataXtd_Presentation.hxx`:131 - `TDataXtd_Presentation::Transparency()`
+    /// **Source:** `TDataXtd_Presentation.hxx`:129 - `TDataXtd_Presentation::Transparency()`
     pub fn TDataXtd_Presentation_transparency(
         self_: *const TDataXtd_Presentation,
     ) -> crate::OcctResult<f64>;
-    /// **Source:** `TDataXtd_Presentation.hxx`:133 - `TDataXtd_Presentation::Color()`
+    /// **Source:** `TDataXtd_Presentation.hxx`:131 - `TDataXtd_Presentation::Color()`
     pub fn TDataXtd_Presentation_color(
         self_: *const TDataXtd_Presentation,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `TDataXtd_Presentation.hxx`:135 - `TDataXtd_Presentation::Width()`
+    /// **Source:** `TDataXtd_Presentation.hxx`:133 - `TDataXtd_Presentation::Width()`
     pub fn TDataXtd_Presentation_width(
         self_: *const TDataXtd_Presentation,
     ) -> crate::OcctResult<f64>;
-    /// **Source:** `TDataXtd_Presentation.hxx`:137 - `TDataXtd_Presentation::Mode()`
+    /// **Source:** `TDataXtd_Presentation.hxx`:135 - `TDataXtd_Presentation::Mode()`
     pub fn TDataXtd_Presentation_mode(
         self_: *const TDataXtd_Presentation,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `TDataXtd_Presentation.hxx`:139 - `TDataXtd_Presentation::SelectionMode()`
+    /// **Source:** `TDataXtd_Presentation.hxx`:137 - `TDataXtd_Presentation::SelectionMode()`
     pub fn TDataXtd_Presentation_selection_mode(
         self_: *const TDataXtd_Presentation,
         index: i32,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `TDataXtd_Presentation.hxx`:141 - `TDataXtd_Presentation::UnsetMaterial()`
+    /// **Source:** `TDataXtd_Presentation.hxx`:139 - `TDataXtd_Presentation::UnsetMaterial()`
     pub fn TDataXtd_Presentation_unset_material(
         self_: *mut TDataXtd_Presentation,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `TDataXtd_Presentation.hxx`:143 - `TDataXtd_Presentation::UnsetTransparency()`
+    /// **Source:** `TDataXtd_Presentation.hxx`:141 - `TDataXtd_Presentation::UnsetTransparency()`
     pub fn TDataXtd_Presentation_unset_transparency(
         self_: *mut TDataXtd_Presentation,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `TDataXtd_Presentation.hxx`:145 - `TDataXtd_Presentation::UnsetColor()`
+    /// **Source:** `TDataXtd_Presentation.hxx`:143 - `TDataXtd_Presentation::UnsetColor()`
     pub fn TDataXtd_Presentation_unset_color(
         self_: *mut TDataXtd_Presentation,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `TDataXtd_Presentation.hxx`:147 - `TDataXtd_Presentation::UnsetWidth()`
+    /// **Source:** `TDataXtd_Presentation.hxx`:145 - `TDataXtd_Presentation::UnsetWidth()`
     pub fn TDataXtd_Presentation_unset_width(
         self_: *mut TDataXtd_Presentation,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `TDataXtd_Presentation.hxx`:149 - `TDataXtd_Presentation::UnsetMode()`
+    /// **Source:** `TDataXtd_Presentation.hxx`:147 - `TDataXtd_Presentation::UnsetMode()`
     pub fn TDataXtd_Presentation_unset_mode(
         self_: *mut TDataXtd_Presentation,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `TDataXtd_Presentation.hxx`:151 - `TDataXtd_Presentation::UnsetSelectionMode()`
+    /// **Source:** `TDataXtd_Presentation.hxx`:149 - `TDataXtd_Presentation::UnsetSelectionMode()`
     pub fn TDataXtd_Presentation_unset_selection_mode(
         self_: *mut TDataXtd_Presentation,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `TDataXtd_Presentation.hxx`:45 - `TDataXtd_Presentation::Set()`
+    /// **Source:** `TDataXtd_Presentation.hxx`:43 - `TDataXtd_Presentation::Set()`
     pub fn TDataXtd_Presentation_set(
         theLabel: *const TDF_Label,
         theDriverId: *const Standard_GUID,
-    ) -> crate::OcctResult<*mut HandleTDataXtdPresentation>;
-    /// **Source:** `TDataXtd_Presentation.hxx`:49 - `TDataXtd_Presentation::Unset()`
+    ) -> crate::OcctResult<*mut Handle_TDataXtd_Presentation>;
+    /// **Source:** `TDataXtd_Presentation.hxx`:47 - `TDataXtd_Presentation::Unset()`
     pub fn TDataXtd_Presentation_unset(theLabel: *const TDF_Label) -> *const std::ffi::c_char;
-    /// **Source:** `TDataXtd_Presentation.hxx`:55 - `TDataXtd_Presentation::GetID()`
+    /// **Source:** `TDataXtd_Presentation.hxx`:53 - `TDataXtd_Presentation::GetID()`
     pub fn TDataXtd_Presentation_get_id() -> crate::OcctResult<*const Standard_GUID>;
-    /// **Source:** `TDataXtd_Presentation.hxx`:78 - `TDataXtd_Presentation::get_type_name()`
+    /// **Source:** `TDataXtd_Presentation.hxx`:76 - `TDataXtd_Presentation::get_type_name()`
     pub fn TDataXtd_Presentation_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
-    /// **Source:** `TDataXtd_Presentation.hxx`:78 - `TDataXtd_Presentation::get_type_descriptor()`
+    /// **Source:** `TDataXtd_Presentation.hxx`:76 - `TDataXtd_Presentation::get_type_descriptor()`
     pub fn TDataXtd_Presentation_get_type_descriptor(
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// **Source:** `TDataXtd_Presentation.hxx`:156 - `TDataXtd_Presentation::getColorNameFromOldEnum()`
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
+    /// **Source:** `TDataXtd_Presentation.hxx`:154 - `TDataXtd_Presentation::getColorNameFromOldEnum()`
     pub fn TDataXtd_Presentation_get_color_name_from_old_enum(
         theOld: i32,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `TDataXtd_Presentation.hxx`:160 - `TDataXtd_Presentation::getOldColorNameFromNewEnum()`
+    /// **Source:** `TDataXtd_Presentation.hxx`:158 - `TDataXtd_Presentation::getOldColorNameFromNewEnum()`
     pub fn TDataXtd_Presentation_get_old_color_name_from_new_enum(
         theNew: i32,
     ) -> crate::OcctResult<i32>;
@@ -3300,247 +3129,241 @@ unsafe extern "C" {
     /// Wrap TDataXtd_Presentation in a Handle
     pub fn TDataXtd_Presentation_to_handle(
         obj: *mut TDataXtd_Presentation,
-    ) -> crate::OcctResult<*mut HandleTDataXtdPresentation>;
+    ) -> crate::OcctResult<*mut Handle_TDataXtd_Presentation>;
     /// Destroy Handle<TDataXtd_Presentation>
-    pub fn HandleTDataXtdPresentation_destructor(self_: *mut HandleTDataXtdPresentation);
+    pub fn Handle_TDataXtd_Presentation_destructor(self_: *mut Handle_TDataXtd_Presentation);
     /// Clone Handle<TDataXtd_Presentation> (increments reference count)
-    pub fn HandleTDataXtdPresentation_clone(
-        self_: *const HandleTDataXtdPresentation,
-    ) -> crate::OcctResult<*mut HandleTDataXtdPresentation>;
+    pub fn Handle_TDataXtd_Presentation_clone(
+        self_: *const Handle_TDataXtd_Presentation,
+    ) -> crate::OcctResult<*mut Handle_TDataXtd_Presentation>;
     /// Check if Handle<TDataXtd_Presentation> is null
-    pub fn HandleTDataXtdPresentation_is_null(self_: *const HandleTDataXtdPresentation) -> bool;
+    pub fn Handle_TDataXtd_Presentation_is_null(self_: *const Handle_TDataXtd_Presentation)
+        -> bool;
     /// Dereference Handle to get *const TDataXtd_Presentation
-    pub fn HandleTDataXtdPresentation_get(
-        handle: *const HandleTDataXtdPresentation,
+    pub fn Handle_TDataXtd_Presentation_get(
+        handle: *const Handle_TDataXtd_Presentation,
     ) -> crate::OcctResult<*const TDataXtd_Presentation>;
     /// Dereference Handle to get *mut TDataXtd_Presentation
-    pub fn HandleTDataXtdPresentation_get_mut(
-        handle: *mut HandleTDataXtdPresentation,
+    pub fn Handle_TDataXtd_Presentation_get_mut(
+        handle: *mut Handle_TDataXtd_Presentation,
     ) -> crate::OcctResult<*mut TDataXtd_Presentation>;
     /// Upcast Handle<TDataXtd_Presentation> to Handle<TDF_Attribute>
-    pub fn HandleTDataXtdPresentation_to_HandleTDFAttribute(
-        self_: *const HandleTDataXtdPresentation,
-    ) -> crate::OcctResult<*mut HandleTDFAttribute>;
+    pub fn Handle_TDataXtd_Presentation_to_Handle_TDF_Attribute(
+        self_: *const Handle_TDataXtd_Presentation,
+    ) -> crate::OcctResult<*mut Handle_TDF_Attribute>;
     /// Upcast Handle<TDataXtd_Presentation> to Handle<Standard_Transient>
-    pub fn HandleTDataXtdPresentation_to_HandleStandardTransient(
-        self_: *const HandleTDataXtdPresentation,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:138 - `TDF_Attribute::SetID()`
+    pub fn Handle_TDataXtd_Presentation_to_Handle_Standard_Transient(
+        self_: *const Handle_TDataXtd_Presentation,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:135 - `TDF_Attribute::SetID()`
     pub fn TDataXtd_Presentation_inherited_SetID(
         self_: *mut TDataXtd_Presentation,
         arg0: *const Standard_GUID,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:150 - `TDF_Attribute::Label()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:147 - `TDF_Attribute::Label()`
     pub fn TDataXtd_Presentation_inherited_Label(
         self_: *const TDataXtd_Presentation,
     ) -> crate::OcctResult<*mut TDF_Label>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:154 - `TDF_Attribute::Transaction()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:151 - `TDF_Attribute::Transaction()`
     pub fn TDataXtd_Presentation_inherited_Transaction(
         self_: *const TDataXtd_Presentation,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:160 - `TDF_Attribute::UntilTransaction()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:157 - `TDF_Attribute::UntilTransaction()`
     pub fn TDataXtd_Presentation_inherited_UntilTransaction(
         self_: *const TDataXtd_Presentation,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:164 - `TDF_Attribute::IsValid()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:161 - `TDF_Attribute::IsValid()`
     pub fn TDataXtd_Presentation_inherited_IsValid(
         self_: *const TDataXtd_Presentation,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:167 - `TDF_Attribute::IsNew()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:164 - `TDF_Attribute::IsNew()`
     pub fn TDataXtd_Presentation_inherited_IsNew(
         self_: *const TDataXtd_Presentation,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:174 - `TDF_Attribute::IsForgotten()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:171 - `TDF_Attribute::IsForgotten()`
     pub fn TDataXtd_Presentation_inherited_IsForgotten(
         self_: *const TDataXtd_Presentation,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:178 - `TDF_Attribute::IsAttribute()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:175 - `TDF_Attribute::IsAttribute()`
     pub fn TDataXtd_Presentation_inherited_IsAttribute(
         self_: *const TDataXtd_Presentation,
         anID: *const Standard_GUID,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:185 - `TDF_Attribute::FindAttribute()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:182 - `TDF_Attribute::FindAttribute()`
     pub fn TDataXtd_Presentation_inherited_FindAttribute(
         self_: *const TDataXtd_Presentation,
         anID: *const Standard_GUID,
-        anAttribute: *mut HandleTDFAttribute,
+        anAttribute: *mut Handle_TDF_Attribute,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:199 - `TDF_Attribute::AddAttribute()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:196 - `TDF_Attribute::AddAttribute()`
     pub fn TDataXtd_Presentation_inherited_AddAttribute(
         self_: *const TDataXtd_Presentation,
-        other: *const HandleTDFAttribute,
+        other: *const Handle_TDF_Attribute,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:206 - `TDF_Attribute::ForgetAttribute()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:203 - `TDF_Attribute::ForgetAttribute()`
     pub fn TDataXtd_Presentation_inherited_ForgetAttribute(
         self_: *const TDataXtd_Presentation,
         aguid: *const Standard_GUID,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:214 - `TDF_Attribute::ForgetAllAttributes()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:211 - `TDF_Attribute::ForgetAllAttributes()`
     pub fn TDataXtd_Presentation_inherited_ForgetAllAttributes(
         self_: *const TDataXtd_Presentation,
         clearChildren: bool,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:218 - `TDF_Attribute::AfterAddition()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:214 - `TDF_Attribute::AfterAddition()`
     pub fn TDataXtd_Presentation_inherited_AfterAddition(
         self_: *mut TDataXtd_Presentation,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:222 - `TDF_Attribute::BeforeRemoval()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:218 - `TDF_Attribute::BeforeRemoval()`
     pub fn TDataXtd_Presentation_inherited_BeforeRemoval(
         self_: *mut TDataXtd_Presentation,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:226 - `TDF_Attribute::BeforeForget()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:222 - `TDF_Attribute::BeforeForget()`
     pub fn TDataXtd_Presentation_inherited_BeforeForget(
         self_: *mut TDataXtd_Presentation,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:230 - `TDF_Attribute::AfterResume()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:226 - `TDF_Attribute::AfterResume()`
     pub fn TDataXtd_Presentation_inherited_AfterResume(
         self_: *mut TDataXtd_Presentation,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:239 - `TDF_Attribute::AfterRetrieval()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:235 - `TDF_Attribute::AfterRetrieval()`
     pub fn TDataXtd_Presentation_inherited_AfterRetrieval(
         self_: *mut TDataXtd_Presentation,
         forceIt: bool,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:248 - `TDF_Attribute::BeforeUndo()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:243 - `TDF_Attribute::BeforeUndo()`
     pub fn TDataXtd_Presentation_inherited_BeforeUndo(
         self_: *mut TDataXtd_Presentation,
-        anAttDelta: *const HandleTDFAttributeDelta,
+        anAttDelta: *const Handle_TDF_AttributeDelta,
         forceIt: bool,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:258 - `TDF_Attribute::AfterUndo()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:252 - `TDF_Attribute::AfterUndo()`
     pub fn TDataXtd_Presentation_inherited_AfterUndo(
         self_: *mut TDataXtd_Presentation,
-        anAttDelta: *const HandleTDFAttributeDelta,
+        anAttDelta: *const Handle_TDF_AttributeDelta,
         forceIt: bool,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:265 - `TDF_Attribute::BeforeCommitTransaction()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:258 - `TDF_Attribute::BeforeCommitTransaction()`
     pub fn TDataXtd_Presentation_inherited_BeforeCommitTransaction(
         self_: *mut TDataXtd_Presentation,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:277 - `TDF_Attribute::Backup()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:270 - `TDF_Attribute::Backup()`
     pub fn TDataXtd_Presentation_inherited_Backup(
         self_: *mut TDataXtd_Presentation,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:282 - `TDF_Attribute::IsBackuped()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:275 - `TDF_Attribute::IsBackuped()`
     pub fn TDataXtd_Presentation_inherited_IsBackuped(
         self_: *const TDataXtd_Presentation,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:296 - `TDF_Attribute::DeltaOnAddition()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:289 - `TDF_Attribute::DeltaOnAddition()`
     pub fn TDataXtd_Presentation_inherited_DeltaOnAddition(
         self_: *const TDataXtd_Presentation,
-    ) -> crate::OcctResult<*mut HandleTDFDeltaOnAddition>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:300 - `TDF_Attribute::DeltaOnForget()`
+    ) -> crate::OcctResult<*mut Handle_TDF_DeltaOnAddition>;
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:293 - `TDF_Attribute::DeltaOnForget()`
     pub fn TDataXtd_Presentation_inherited_DeltaOnForget(
         self_: *const TDataXtd_Presentation,
-    ) -> crate::OcctResult<*mut HandleTDFDeltaOnForget>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:304 - `TDF_Attribute::DeltaOnResume()`
+    ) -> crate::OcctResult<*mut Handle_TDF_DeltaOnForget>;
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:297 - `TDF_Attribute::DeltaOnResume()`
     pub fn TDataXtd_Presentation_inherited_DeltaOnResume(
         self_: *const TDataXtd_Presentation,
-    ) -> crate::OcctResult<*mut HandleTDFDeltaOnResume>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:308 - `TDF_Attribute::DeltaOnModification()`
+    ) -> crate::OcctResult<*mut Handle_TDF_DeltaOnResume>;
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:301 - `TDF_Attribute::DeltaOnModification()`
     pub fn TDataXtd_Presentation_inherited_DeltaOnModification(
         self_: *const TDataXtd_Presentation,
-        anOldAttribute: *const HandleTDFAttribute,
-    ) -> crate::OcctResult<*mut HandleTDFDeltaOnModification>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:316 - `TDF_Attribute::DeltaOnRemoval()`
+        anOldAttribute: *const Handle_TDF_Attribute,
+    ) -> crate::OcctResult<*mut Handle_TDF_DeltaOnModification>;
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:310 - `TDF_Attribute::DeltaOnRemoval()`
     pub fn TDataXtd_Presentation_inherited_DeltaOnRemoval(
         self_: *const TDataXtd_Presentation,
-    ) -> crate::OcctResult<*mut HandleTDFDeltaOnRemoval>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:345 - `TDF_Attribute::References()`
+    ) -> crate::OcctResult<*mut Handle_TDF_DeltaOnRemoval>;
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:340 - `TDF_Attribute::References()`
     pub fn TDataXtd_Presentation_inherited_References(
         self_: *const TDataXtd_Presentation,
-        aDataSet: *const HandleTDFDataSet,
+        aDataSet: *const Handle_TDF_DataSet,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:358 - `TDF_Attribute::ExtendedDump()`
-    pub fn TDataXtd_Presentation_inherited_ExtendedDump(
-        self_: *const TDataXtd_Presentation,
-        anOS: *mut Standard_OStream,
-        aFilter: *const TDF_IDFilter,
-        aMap: *mut TDF_AttributeIndexedMap,
-    ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:374 - `TDF_Attribute::Forget()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:370 - `TDF_Attribute::Forget()`
     pub fn TDataXtd_Presentation_inherited_Forget(
         self_: *mut TDataXtd_Presentation,
         aTransaction: i32,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn TDataXtd_Presentation_inherited_IsInstance(
         self_: *const TDataXtd_Presentation,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn TDataXtd_Presentation_inherited_IsKind(
         self_: *const TDataXtd_Presentation,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn TDataXtd_Presentation_inherited_This(
         self_: *const TDataXtd_Presentation,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn TDataXtd_Presentation_inherited_GetRefCount(
         self_: *const TDataXtd_Presentation,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn TDataXtd_Presentation_inherited_IncrementRefCounter(
         self_: *mut TDataXtd_Presentation,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn TDataXtd_Presentation_inherited_DecrementRefCounter(
         self_: *mut TDataXtd_Presentation,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn TDataXtd_Presentation_inherited_Delete(
         self_: *const TDataXtd_Presentation,
     ) -> *const std::ffi::c_char;
     // ======================== TDataXtd_Shape ========================
     pub fn TDataXtd_Shape_destructor(self_: *mut TDataXtd_Shape);
-    /// **Source:** `TDataXtd_Shape.hxx`:56 - `TDataXtd_Shape::TDataXtd_Shape()`
+    /// **Source:** `TDataXtd_Shape.hxx`:53 - `TDataXtd_Shape::TDataXtd_Shape()`
     pub fn TDataXtd_Shape_ctor() -> crate::OcctResult<*mut TDataXtd_Shape>;
-    /// **Source:** `TDataXtd_Shape.hxx`:58 - `TDataXtd_Shape::ID()`
+    /// **Source:** `TDataXtd_Shape.hxx`:55 - `TDataXtd_Shape::ID()`
     pub fn TDataXtd_Shape_id(
         self_: *const TDataXtd_Shape,
     ) -> crate::OcctResult<*const Standard_GUID>;
-    /// **Source:** `TDataXtd_Shape.hxx`:60 - `TDataXtd_Shape::References()`
+    /// **Source:** `TDataXtd_Shape.hxx`:57 - `TDataXtd_Shape::References()`
     pub fn TDataXtd_Shape_references(
         self_: *const TDataXtd_Shape,
-        DS: *const HandleTDFDataSet,
+        DS: *const Handle_TDF_DataSet,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `TDataXtd_Shape.hxx`:62 - `TDataXtd_Shape::Dump()`
+    /// **Source:** `TDataXtd_Shape.hxx`:59 - `TDataXtd_Shape::Dump()`
     pub fn TDataXtd_Shape_dump(
         self_: *mut TDataXtd_Shape,
         anOS: *mut Standard_OStream,
     ) -> crate::OcctResult<*mut Standard_OStream>;
-    /// **Source:** `TDataXtd_Shape.hxx`:64 - `TDataXtd_Shape::DynamicType()`
+    /// **Source:** `TDataXtd_Shape.hxx`:61 - `TDataXtd_Shape::DynamicType()`
     pub fn TDataXtd_Shape_dynamic_type(
         self_: *const TDataXtd_Shape,
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// **Source:** `TDataXtd_Shape.hxx`:64 - `TDataXtd_Shape::NewEmpty()`
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
+    /// **Source:** `TDataXtd_Shape.hxx`:61 - `TDataXtd_Shape::NewEmpty()`
     pub fn TDataXtd_Shape_new_empty(
         self_: *const TDataXtd_Shape,
-    ) -> crate::OcctResult<*mut HandleTDFAttribute>;
-    /// **Source:** `TDataXtd_Shape.hxx`:37 - `TDataXtd_Shape::Find()`
+    ) -> crate::OcctResult<*mut Handle_TDF_Attribute>;
+    /// **Source:** `TDataXtd_Shape.hxx`:34 - `TDataXtd_Shape::Find()`
     pub fn TDataXtd_Shape_find(
         current: *const TDF_Label,
-        S: *mut HandleTDataXtdShape,
+        S: *mut Handle_TDataXtd_Shape,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `TDataXtd_Shape.hxx`:41 - `TDataXtd_Shape::New()`
+    /// **Source:** `TDataXtd_Shape.hxx`:38 - `TDataXtd_Shape::New()`
     pub fn TDataXtd_Shape_new(
         label: *const TDF_Label,
-    ) -> crate::OcctResult<*mut HandleTDataXtdShape>;
-    /// **Source:** `TDataXtd_Shape.hxx`:45 - `TDataXtd_Shape::Set()`
+    ) -> crate::OcctResult<*mut Handle_TDataXtd_Shape>;
+    /// **Source:** `TDataXtd_Shape.hxx`:42 - `TDataXtd_Shape::Set()`
     pub fn TDataXtd_Shape_set(
         label: *const TDF_Label,
         shape: *const TopoDS_Shape,
-    ) -> crate::OcctResult<*mut HandleTDataXtdShape>;
-    /// **Source:** `TDataXtd_Shape.hxx`:50 - `TDataXtd_Shape::Get()`
+    ) -> crate::OcctResult<*mut Handle_TDataXtd_Shape>;
+    /// **Source:** `TDataXtd_Shape.hxx`:47 - `TDataXtd_Shape::Get()`
     pub fn TDataXtd_Shape_get(label: *const TDF_Label) -> crate::OcctResult<*mut TopoDS_Shape>;
-    /// **Source:** `TDataXtd_Shape.hxx`:54 - `TDataXtd_Shape::GetID()`
+    /// **Source:** `TDataXtd_Shape.hxx`:51 - `TDataXtd_Shape::GetID()`
     pub fn TDataXtd_Shape_get_id() -> crate::OcctResult<*const Standard_GUID>;
-    /// **Source:** `TDataXtd_Shape.hxx`:64 - `TDataXtd_Shape::get_type_name()`
+    /// **Source:** `TDataXtd_Shape.hxx`:61 - `TDataXtd_Shape::get_type_name()`
     pub fn TDataXtd_Shape_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
-    /// **Source:** `TDataXtd_Shape.hxx`:64 - `TDataXtd_Shape::get_type_descriptor()`
-    pub fn TDataXtd_Shape_get_type_descriptor() -> crate::OcctResult<*const HandleStandardType>;
+    /// **Source:** `TDataXtd_Shape.hxx`:61 - `TDataXtd_Shape::get_type_descriptor()`
+    pub fn TDataXtd_Shape_get_type_descriptor() -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast TDataXtd_Shape to TDataStd_GenericEmpty
     pub fn TDataXtd_Shape_as_TDataStd_GenericEmpty(
         self_: *const TDataXtd_Shape,
@@ -3568,338 +3391,331 @@ unsafe extern "C" {
     /// Wrap TDataXtd_Shape in a Handle
     pub fn TDataXtd_Shape_to_handle(
         obj: *mut TDataXtd_Shape,
-    ) -> crate::OcctResult<*mut HandleTDataXtdShape>;
+    ) -> crate::OcctResult<*mut Handle_TDataXtd_Shape>;
     /// Destroy Handle<TDataXtd_Shape>
-    pub fn HandleTDataXtdShape_destructor(self_: *mut HandleTDataXtdShape);
+    pub fn Handle_TDataXtd_Shape_destructor(self_: *mut Handle_TDataXtd_Shape);
     /// Clone Handle<TDataXtd_Shape> (increments reference count)
-    pub fn HandleTDataXtdShape_clone(
-        self_: *const HandleTDataXtdShape,
-    ) -> crate::OcctResult<*mut HandleTDataXtdShape>;
+    pub fn Handle_TDataXtd_Shape_clone(
+        self_: *const Handle_TDataXtd_Shape,
+    ) -> crate::OcctResult<*mut Handle_TDataXtd_Shape>;
     /// Check if Handle<TDataXtd_Shape> is null
-    pub fn HandleTDataXtdShape_is_null(self_: *const HandleTDataXtdShape) -> bool;
+    pub fn Handle_TDataXtd_Shape_is_null(self_: *const Handle_TDataXtd_Shape) -> bool;
     /// Dereference Handle to get *const TDataXtd_Shape
-    pub fn HandleTDataXtdShape_get(
-        handle: *const HandleTDataXtdShape,
+    pub fn Handle_TDataXtd_Shape_get(
+        handle: *const Handle_TDataXtd_Shape,
     ) -> crate::OcctResult<*const TDataXtd_Shape>;
     /// Dereference Handle to get *mut TDataXtd_Shape
-    pub fn HandleTDataXtdShape_get_mut(
-        handle: *mut HandleTDataXtdShape,
+    pub fn Handle_TDataXtd_Shape_get_mut(
+        handle: *mut Handle_TDataXtd_Shape,
     ) -> crate::OcctResult<*mut TDataXtd_Shape>;
     /// Upcast Handle<TDataXtd_Shape> to Handle<TDataStd_GenericEmpty>
-    pub fn HandleTDataXtdShape_to_HandleTDataStdGenericEmpty(
-        self_: *const HandleTDataXtdShape,
-    ) -> crate::OcctResult<*mut HandleTDataStdGenericEmpty>;
+    pub fn Handle_TDataXtd_Shape_to_Handle_TDataStd_GenericEmpty(
+        self_: *const Handle_TDataXtd_Shape,
+    ) -> crate::OcctResult<*mut Handle_TDataStd_GenericEmpty>;
     /// Upcast Handle<TDataXtd_Shape> to Handle<TDF_Attribute>
-    pub fn HandleTDataXtdShape_to_HandleTDFAttribute(
-        self_: *const HandleTDataXtdShape,
-    ) -> crate::OcctResult<*mut HandleTDFAttribute>;
+    pub fn Handle_TDataXtd_Shape_to_Handle_TDF_Attribute(
+        self_: *const Handle_TDataXtd_Shape,
+    ) -> crate::OcctResult<*mut Handle_TDF_Attribute>;
     /// Upcast Handle<TDataXtd_Shape> to Handle<Standard_Transient>
-    pub fn HandleTDataXtdShape_to_HandleStandardTransient(
-        self_: *const HandleTDataXtdShape,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
-    /// Inherited: **Source:** `TDataStd_GenericEmpty.hxx`:33 - `TDataStd_GenericEmpty::Restore()`
+    pub fn Handle_TDataXtd_Shape_to_Handle_Standard_Transient(
+        self_: *const Handle_TDataXtd_Shape,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
+    /// Inherited: **Source:** `TDataStd_GenericEmpty.hxx`:30 - `TDataStd_GenericEmpty::Restore()`
     pub fn TDataXtd_Shape_inherited_Restore(
         self_: *mut TDataXtd_Shape,
-        arg0: *const HandleTDFAttribute,
+        arg0: *const Handle_TDF_Attribute,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `TDataStd_GenericEmpty.hxx`:35 - `TDataStd_GenericEmpty::Paste()`
+    /// Inherited: **Source:** `TDataStd_GenericEmpty.hxx`:32 - `TDataStd_GenericEmpty::Paste()`
     pub fn TDataXtd_Shape_inherited_Paste(
         self_: *const TDataXtd_Shape,
-        arg0: *const HandleTDFAttribute,
-        arg1: *const HandleTDFRelocationTable,
+        arg0: *const Handle_TDF_Attribute,
+        arg1: *const Handle_TDF_RelocationTable,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:138 - `TDF_Attribute::SetID()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:135 - `TDF_Attribute::SetID()`
     pub fn TDataXtd_Shape_inherited_SetID(
         self_: *mut TDataXtd_Shape,
         arg0: *const Standard_GUID,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:150 - `TDF_Attribute::Label()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:147 - `TDF_Attribute::Label()`
     pub fn TDataXtd_Shape_inherited_Label(
         self_: *const TDataXtd_Shape,
     ) -> crate::OcctResult<*mut TDF_Label>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:154 - `TDF_Attribute::Transaction()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:151 - `TDF_Attribute::Transaction()`
     pub fn TDataXtd_Shape_inherited_Transaction(
         self_: *const TDataXtd_Shape,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:160 - `TDF_Attribute::UntilTransaction()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:157 - `TDF_Attribute::UntilTransaction()`
     pub fn TDataXtd_Shape_inherited_UntilTransaction(
         self_: *const TDataXtd_Shape,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:164 - `TDF_Attribute::IsValid()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:161 - `TDF_Attribute::IsValid()`
     pub fn TDataXtd_Shape_inherited_IsValid(
         self_: *const TDataXtd_Shape,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:167 - `TDF_Attribute::IsNew()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:164 - `TDF_Attribute::IsNew()`
     pub fn TDataXtd_Shape_inherited_IsNew(self_: *const TDataXtd_Shape) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:174 - `TDF_Attribute::IsForgotten()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:171 - `TDF_Attribute::IsForgotten()`
     pub fn TDataXtd_Shape_inherited_IsForgotten(
         self_: *const TDataXtd_Shape,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:178 - `TDF_Attribute::IsAttribute()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:175 - `TDF_Attribute::IsAttribute()`
     pub fn TDataXtd_Shape_inherited_IsAttribute(
         self_: *const TDataXtd_Shape,
         anID: *const Standard_GUID,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:185 - `TDF_Attribute::FindAttribute()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:182 - `TDF_Attribute::FindAttribute()`
     pub fn TDataXtd_Shape_inherited_FindAttribute(
         self_: *const TDataXtd_Shape,
         anID: *const Standard_GUID,
-        anAttribute: *mut HandleTDFAttribute,
+        anAttribute: *mut Handle_TDF_Attribute,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:199 - `TDF_Attribute::AddAttribute()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:196 - `TDF_Attribute::AddAttribute()`
     pub fn TDataXtd_Shape_inherited_AddAttribute(
         self_: *const TDataXtd_Shape,
-        other: *const HandleTDFAttribute,
+        other: *const Handle_TDF_Attribute,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:206 - `TDF_Attribute::ForgetAttribute()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:203 - `TDF_Attribute::ForgetAttribute()`
     pub fn TDataXtd_Shape_inherited_ForgetAttribute(
         self_: *const TDataXtd_Shape,
         aguid: *const Standard_GUID,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:214 - `TDF_Attribute::ForgetAllAttributes()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:211 - `TDF_Attribute::ForgetAllAttributes()`
     pub fn TDataXtd_Shape_inherited_ForgetAllAttributes(
         self_: *const TDataXtd_Shape,
         clearChildren: bool,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:218 - `TDF_Attribute::AfterAddition()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:214 - `TDF_Attribute::AfterAddition()`
     pub fn TDataXtd_Shape_inherited_AfterAddition(
         self_: *mut TDataXtd_Shape,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:222 - `TDF_Attribute::BeforeRemoval()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:218 - `TDF_Attribute::BeforeRemoval()`
     pub fn TDataXtd_Shape_inherited_BeforeRemoval(
         self_: *mut TDataXtd_Shape,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:226 - `TDF_Attribute::BeforeForget()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:222 - `TDF_Attribute::BeforeForget()`
     pub fn TDataXtd_Shape_inherited_BeforeForget(
         self_: *mut TDataXtd_Shape,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:230 - `TDF_Attribute::AfterResume()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:226 - `TDF_Attribute::AfterResume()`
     pub fn TDataXtd_Shape_inherited_AfterResume(
         self_: *mut TDataXtd_Shape,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:239 - `TDF_Attribute::AfterRetrieval()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:235 - `TDF_Attribute::AfterRetrieval()`
     pub fn TDataXtd_Shape_inherited_AfterRetrieval(
         self_: *mut TDataXtd_Shape,
         forceIt: bool,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:248 - `TDF_Attribute::BeforeUndo()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:243 - `TDF_Attribute::BeforeUndo()`
     pub fn TDataXtd_Shape_inherited_BeforeUndo(
         self_: *mut TDataXtd_Shape,
-        anAttDelta: *const HandleTDFAttributeDelta,
+        anAttDelta: *const Handle_TDF_AttributeDelta,
         forceIt: bool,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:258 - `TDF_Attribute::AfterUndo()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:252 - `TDF_Attribute::AfterUndo()`
     pub fn TDataXtd_Shape_inherited_AfterUndo(
         self_: *mut TDataXtd_Shape,
-        anAttDelta: *const HandleTDFAttributeDelta,
+        anAttDelta: *const Handle_TDF_AttributeDelta,
         forceIt: bool,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:265 - `TDF_Attribute::BeforeCommitTransaction()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:258 - `TDF_Attribute::BeforeCommitTransaction()`
     pub fn TDataXtd_Shape_inherited_BeforeCommitTransaction(
         self_: *mut TDataXtd_Shape,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:277 - `TDF_Attribute::Backup()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:270 - `TDF_Attribute::Backup()`
     pub fn TDataXtd_Shape_inherited_Backup(self_: *mut TDataXtd_Shape) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:282 - `TDF_Attribute::IsBackuped()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:275 - `TDF_Attribute::IsBackuped()`
     pub fn TDataXtd_Shape_inherited_IsBackuped(
         self_: *const TDataXtd_Shape,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:286 - `TDF_Attribute::BackupCopy()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:279 - `TDF_Attribute::BackupCopy()`
     pub fn TDataXtd_Shape_inherited_BackupCopy(
         self_: *const TDataXtd_Shape,
-    ) -> crate::OcctResult<*mut HandleTDFAttribute>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:296 - `TDF_Attribute::DeltaOnAddition()`
+    ) -> crate::OcctResult<*mut Handle_TDF_Attribute>;
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:289 - `TDF_Attribute::DeltaOnAddition()`
     pub fn TDataXtd_Shape_inherited_DeltaOnAddition(
         self_: *const TDataXtd_Shape,
-    ) -> crate::OcctResult<*mut HandleTDFDeltaOnAddition>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:300 - `TDF_Attribute::DeltaOnForget()`
+    ) -> crate::OcctResult<*mut Handle_TDF_DeltaOnAddition>;
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:293 - `TDF_Attribute::DeltaOnForget()`
     pub fn TDataXtd_Shape_inherited_DeltaOnForget(
         self_: *const TDataXtd_Shape,
-    ) -> crate::OcctResult<*mut HandleTDFDeltaOnForget>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:304 - `TDF_Attribute::DeltaOnResume()`
+    ) -> crate::OcctResult<*mut Handle_TDF_DeltaOnForget>;
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:297 - `TDF_Attribute::DeltaOnResume()`
     pub fn TDataXtd_Shape_inherited_DeltaOnResume(
         self_: *const TDataXtd_Shape,
-    ) -> crate::OcctResult<*mut HandleTDFDeltaOnResume>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:308 - `TDF_Attribute::DeltaOnModification()`
+    ) -> crate::OcctResult<*mut Handle_TDF_DeltaOnResume>;
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:301 - `TDF_Attribute::DeltaOnModification()`
     pub fn TDataXtd_Shape_inherited_DeltaOnModification(
         self_: *const TDataXtd_Shape,
-        anOldAttribute: *const HandleTDFAttribute,
-    ) -> crate::OcctResult<*mut HandleTDFDeltaOnModification>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:316 - `TDF_Attribute::DeltaOnRemoval()`
+        anOldAttribute: *const Handle_TDF_Attribute,
+    ) -> crate::OcctResult<*mut Handle_TDF_DeltaOnModification>;
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:310 - `TDF_Attribute::DeltaOnRemoval()`
     pub fn TDataXtd_Shape_inherited_DeltaOnRemoval(
         self_: *const TDataXtd_Shape,
-    ) -> crate::OcctResult<*mut HandleTDFDeltaOnRemoval>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:358 - `TDF_Attribute::ExtendedDump()`
-    pub fn TDataXtd_Shape_inherited_ExtendedDump(
-        self_: *const TDataXtd_Shape,
-        anOS: *mut Standard_OStream,
-        aFilter: *const TDF_IDFilter,
-        aMap: *mut TDF_AttributeIndexedMap,
-    ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:374 - `TDF_Attribute::Forget()`
+    ) -> crate::OcctResult<*mut Handle_TDF_DeltaOnRemoval>;
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:370 - `TDF_Attribute::Forget()`
     pub fn TDataXtd_Shape_inherited_Forget(
         self_: *mut TDataXtd_Shape,
         aTransaction: i32,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn TDataXtd_Shape_inherited_IsInstance(
         self_: *const TDataXtd_Shape,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn TDataXtd_Shape_inherited_IsKind(
         self_: *const TDataXtd_Shape,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn TDataXtd_Shape_inherited_This(
         self_: *const TDataXtd_Shape,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn TDataXtd_Shape_inherited_GetRefCount(
         self_: *const TDataXtd_Shape,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn TDataXtd_Shape_inherited_IncrementRefCounter(
         self_: *mut TDataXtd_Shape,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn TDataXtd_Shape_inherited_DecrementRefCounter(
         self_: *mut TDataXtd_Shape,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn TDataXtd_Shape_inherited_Delete(self_: *const TDataXtd_Shape)
         -> *const std::ffi::c_char;
     // ======================== TDataXtd_Triangulation ========================
     pub fn TDataXtd_Triangulation_destructor(self_: *mut TDataXtd_Triangulation);
-    /// **Source:** `TDataXtd_Triangulation.hxx`:62 - `TDataXtd_Triangulation::TDataXtd_Triangulation()`
+    /// **Source:** `TDataXtd_Triangulation.hxx`:59 - `TDataXtd_Triangulation::TDataXtd_Triangulation()`
     pub fn TDataXtd_Triangulation_ctor() -> crate::OcctResult<*mut TDataXtd_Triangulation>;
-    /// **Source:** `TDataXtd_Triangulation.hxx`:65 - `TDataXtd_Triangulation::Set()`
+    /// **Source:** `TDataXtd_Triangulation.hxx`:62 - `TDataXtd_Triangulation::Set()`
     pub fn TDataXtd_Triangulation_set(
         self_: *mut TDataXtd_Triangulation,
-        theTriangulation: *const HandlePolyTriangulation,
+        theTriangulation: *const Handle_Poly_Triangulation,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `TDataXtd_Triangulation.hxx`:68 - `TDataXtd_Triangulation::Get()`
+    /// **Source:** `TDataXtd_Triangulation.hxx`:65 - `TDataXtd_Triangulation::Get()`
     pub fn TDataXtd_Triangulation_get(
         self_: *const TDataXtd_Triangulation,
-    ) -> crate::OcctResult<*const HandlePolyTriangulation>;
-    /// **Source:** `TDataXtd_Triangulation.hxx`:78 - `TDataXtd_Triangulation::Deflection()`
+    ) -> crate::OcctResult<*const Handle_Poly_Triangulation>;
+    /// **Source:** `TDataXtd_Triangulation.hxx`:75 - `TDataXtd_Triangulation::Deflection()`
     pub fn TDataXtd_Triangulation_deflection(
         self_: *const TDataXtd_Triangulation,
     ) -> crate::OcctResult<f64>;
-    /// **Source:** `TDataXtd_Triangulation.hxx`:82 - `TDataXtd_Triangulation::Deflection()`
+    /// **Source:** `TDataXtd_Triangulation.hxx`:79 - `TDataXtd_Triangulation::Deflection()`
     pub fn TDataXtd_Triangulation_deflection_real(
         self_: *mut TDataXtd_Triangulation,
         theDeflection: f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `TDataXtd_Triangulation.hxx`:85 - `TDataXtd_Triangulation::RemoveUVNodes()`
+    /// **Source:** `TDataXtd_Triangulation.hxx`:82 - `TDataXtd_Triangulation::RemoveUVNodes()`
     pub fn TDataXtd_Triangulation_remove_uv_nodes(
         self_: *mut TDataXtd_Triangulation,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `TDataXtd_Triangulation.hxx`:88 - `TDataXtd_Triangulation::NbNodes()`
+    /// **Source:** `TDataXtd_Triangulation.hxx`:85 - `TDataXtd_Triangulation::NbNodes()`
     pub fn TDataXtd_Triangulation_nb_nodes(
         self_: *const TDataXtd_Triangulation,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `TDataXtd_Triangulation.hxx`:91 - `TDataXtd_Triangulation::NbTriangles()`
+    /// **Source:** `TDataXtd_Triangulation.hxx`:88 - `TDataXtd_Triangulation::NbTriangles()`
     pub fn TDataXtd_Triangulation_nb_triangles(
         self_: *const TDataXtd_Triangulation,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `TDataXtd_Triangulation.hxx`:94 - `TDataXtd_Triangulation::HasUVNodes()`
+    /// **Source:** `TDataXtd_Triangulation.hxx`:91 - `TDataXtd_Triangulation::HasUVNodes()`
     pub fn TDataXtd_Triangulation_has_uv_nodes(
         self_: *const TDataXtd_Triangulation,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `TDataXtd_Triangulation.hxx`:98 - `TDataXtd_Triangulation::Node()`
+    /// **Source:** `TDataXtd_Triangulation.hxx`:95 - `TDataXtd_Triangulation::Node()`
     pub fn TDataXtd_Triangulation_node(
         self_: *const TDataXtd_Triangulation,
         theIndex: i32,
     ) -> crate::OcctResult<*mut gp_Pnt>;
-    /// **Source:** `TDataXtd_Triangulation.hxx`:103 - `TDataXtd_Triangulation::SetNode()`
+    /// **Source:** `TDataXtd_Triangulation.hxx`:100 - `TDataXtd_Triangulation::SetNode()`
     pub fn TDataXtd_Triangulation_set_node(
         self_: *mut TDataXtd_Triangulation,
         theIndex: i32,
         theNode: *const gp_Pnt,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `TDataXtd_Triangulation.hxx`:107 - `TDataXtd_Triangulation::UVNode()`
+    /// **Source:** `TDataXtd_Triangulation.hxx`:104 - `TDataXtd_Triangulation::UVNode()`
     pub fn TDataXtd_Triangulation_uv_node(
         self_: *const TDataXtd_Triangulation,
         theIndex: i32,
     ) -> crate::OcctResult<*mut gp_Pnt2d>;
-    /// **Source:** `TDataXtd_Triangulation.hxx`:112 - `TDataXtd_Triangulation::SetUVNode()`
+    /// **Source:** `TDataXtd_Triangulation.hxx`:109 - `TDataXtd_Triangulation::SetUVNode()`
     pub fn TDataXtd_Triangulation_set_uv_node(
         self_: *mut TDataXtd_Triangulation,
         theIndex: i32,
         theUVNode: *const gp_Pnt2d,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `TDataXtd_Triangulation.hxx`:116 - `TDataXtd_Triangulation::Triangle()`
+    /// **Source:** `TDataXtd_Triangulation.hxx`:113 - `TDataXtd_Triangulation::Triangle()`
     pub fn TDataXtd_Triangulation_triangle(
         self_: *const TDataXtd_Triangulation,
         theIndex: i32,
     ) -> crate::OcctResult<*mut Poly_Triangle>;
-    /// **Source:** `TDataXtd_Triangulation.hxx`:121 - `TDataXtd_Triangulation::SetTriangle()`
+    /// **Source:** `TDataXtd_Triangulation.hxx`:118 - `TDataXtd_Triangulation::SetTriangle()`
     pub fn TDataXtd_Triangulation_set_triangle(
         self_: *mut TDataXtd_Triangulation,
         theIndex: i32,
         theTriangle: *const Poly_Triangle,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `TDataXtd_Triangulation.hxx`:126 - `TDataXtd_Triangulation::SetNormal()`
+    /// **Source:** `TDataXtd_Triangulation.hxx`:122 - `TDataXtd_Triangulation::SetNormal()`
     pub fn TDataXtd_Triangulation_set_normal(
         self_: *mut TDataXtd_Triangulation,
         theIndex: i32,
         theNormal: *const gp_Dir,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `TDataXtd_Triangulation.hxx`:129 - `TDataXtd_Triangulation::HasNormals()`
+    /// **Source:** `TDataXtd_Triangulation.hxx`:125 - `TDataXtd_Triangulation::HasNormals()`
     pub fn TDataXtd_Triangulation_has_normals(
         self_: *const TDataXtd_Triangulation,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `TDataXtd_Triangulation.hxx`:133 - `TDataXtd_Triangulation::Normal()`
+    /// **Source:** `TDataXtd_Triangulation.hxx`:129 - `TDataXtd_Triangulation::Normal()`
     pub fn TDataXtd_Triangulation_normal(
         self_: *const TDataXtd_Triangulation,
         theIndex: i32,
     ) -> crate::OcctResult<*mut gp_Dir>;
-    /// **Source:** `TDataXtd_Triangulation.hxx`:138 - `TDataXtd_Triangulation::ID()`
+    /// **Source:** `TDataXtd_Triangulation.hxx`:134 - `TDataXtd_Triangulation::ID()`
     pub fn TDataXtd_Triangulation_id(
         self_: *const TDataXtd_Triangulation,
     ) -> crate::OcctResult<*const Standard_GUID>;
-    /// **Source:** `TDataXtd_Triangulation.hxx`:140 - `TDataXtd_Triangulation::Restore()`
+    /// **Source:** `TDataXtd_Triangulation.hxx`:136 - `TDataXtd_Triangulation::Restore()`
     pub fn TDataXtd_Triangulation_restore(
         self_: *mut TDataXtd_Triangulation,
-        theAttribute: *const HandleTDFAttribute,
+        theAttribute: *const Handle_TDF_Attribute,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `TDataXtd_Triangulation.hxx`:142 - `TDataXtd_Triangulation::NewEmpty()`
+    /// **Source:** `TDataXtd_Triangulation.hxx`:138 - `TDataXtd_Triangulation::NewEmpty()`
     pub fn TDataXtd_Triangulation_new_empty(
         self_: *const TDataXtd_Triangulation,
-    ) -> crate::OcctResult<*mut HandleTDFAttribute>;
-    /// **Source:** `TDataXtd_Triangulation.hxx`:144 - `TDataXtd_Triangulation::Paste()`
+    ) -> crate::OcctResult<*mut Handle_TDF_Attribute>;
+    /// **Source:** `TDataXtd_Triangulation.hxx`:140 - `TDataXtd_Triangulation::Paste()`
     pub fn TDataXtd_Triangulation_paste(
         self_: *const TDataXtd_Triangulation,
-        Into: *const HandleTDFAttribute,
-        RT: *const HandleTDFRelocationTable,
+        Into: *const Handle_TDF_Attribute,
+        RT: *const Handle_TDF_RelocationTable,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `TDataXtd_Triangulation.hxx`:147 - `TDataXtd_Triangulation::Dump()`
+    /// **Source:** `TDataXtd_Triangulation.hxx`:143 - `TDataXtd_Triangulation::Dump()`
     pub fn TDataXtd_Triangulation_dump(
         self_: *mut TDataXtd_Triangulation,
         anOS: *mut Standard_OStream,
     ) -> crate::OcctResult<*mut Standard_OStream>;
-    /// **Source:** `TDataXtd_Triangulation.hxx`:149 - `TDataXtd_Triangulation::DynamicType()`
+    /// **Source:** `TDataXtd_Triangulation.hxx`:145 - `TDataXtd_Triangulation::DynamicType()`
     pub fn TDataXtd_Triangulation_dynamic_type(
         self_: *const TDataXtd_Triangulation,
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// **Source:** `TDataXtd_Triangulation.hxx`:44 - `TDataXtd_Triangulation::GetID()`
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
+    /// **Source:** `TDataXtd_Triangulation.hxx`:41 - `TDataXtd_Triangulation::GetID()`
     pub fn TDataXtd_Triangulation_get_id() -> crate::OcctResult<*const Standard_GUID>;
-    /// **Source:** `TDataXtd_Triangulation.hxx`:47 - `TDataXtd_Triangulation::Set()`
+    /// **Source:** `TDataXtd_Triangulation.hxx`:44 - `TDataXtd_Triangulation::Set()`
     pub fn TDataXtd_Triangulation_set_label(
         theLabel: *const TDF_Label,
-    ) -> crate::OcctResult<*mut HandleTDataXtdTriangulation>;
-    /// **Source:** `TDataXtd_Triangulation.hxx`:51 - `TDataXtd_Triangulation::Set()`
+    ) -> crate::OcctResult<*mut Handle_TDataXtd_Triangulation>;
+    /// **Source:** `TDataXtd_Triangulation.hxx`:48 - `TDataXtd_Triangulation::Set()`
     pub fn TDataXtd_Triangulation_set_label_handlepolytriangulation(
         theLabel: *const TDF_Label,
-        theTriangulation: *const HandlePolyTriangulation,
-    ) -> crate::OcctResult<*mut HandleTDataXtdTriangulation>;
-    /// **Source:** `TDataXtd_Triangulation.hxx`:149 - `TDataXtd_Triangulation::get_type_name()`
+        theTriangulation: *const Handle_Poly_Triangulation,
+    ) -> crate::OcctResult<*mut Handle_TDataXtd_Triangulation>;
+    /// **Source:** `TDataXtd_Triangulation.hxx`:145 - `TDataXtd_Triangulation::get_type_name()`
     pub fn TDataXtd_Triangulation_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
-    /// **Source:** `TDataXtd_Triangulation.hxx`:149 - `TDataXtd_Triangulation::get_type_descriptor()`
+    /// **Source:** `TDataXtd_Triangulation.hxx`:145 - `TDataXtd_Triangulation::get_type_descriptor()`
     pub fn TDataXtd_Triangulation_get_type_descriptor(
-    ) -> crate::OcctResult<*const HandleStandardType>;
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast TDataXtd_Triangulation to TDF_Attribute
     pub fn TDataXtd_Triangulation_as_TDF_Attribute(
         self_: *const TDataXtd_Triangulation,
@@ -3919,200 +3735,195 @@ unsafe extern "C" {
     /// Wrap TDataXtd_Triangulation in a Handle
     pub fn TDataXtd_Triangulation_to_handle(
         obj: *mut TDataXtd_Triangulation,
-    ) -> crate::OcctResult<*mut HandleTDataXtdTriangulation>;
+    ) -> crate::OcctResult<*mut Handle_TDataXtd_Triangulation>;
     /// Destroy Handle<TDataXtd_Triangulation>
-    pub fn HandleTDataXtdTriangulation_destructor(self_: *mut HandleTDataXtdTriangulation);
+    pub fn Handle_TDataXtd_Triangulation_destructor(self_: *mut Handle_TDataXtd_Triangulation);
     /// Clone Handle<TDataXtd_Triangulation> (increments reference count)
-    pub fn HandleTDataXtdTriangulation_clone(
-        self_: *const HandleTDataXtdTriangulation,
-    ) -> crate::OcctResult<*mut HandleTDataXtdTriangulation>;
+    pub fn Handle_TDataXtd_Triangulation_clone(
+        self_: *const Handle_TDataXtd_Triangulation,
+    ) -> crate::OcctResult<*mut Handle_TDataXtd_Triangulation>;
     /// Check if Handle<TDataXtd_Triangulation> is null
-    pub fn HandleTDataXtdTriangulation_is_null(self_: *const HandleTDataXtdTriangulation) -> bool;
+    pub fn Handle_TDataXtd_Triangulation_is_null(
+        self_: *const Handle_TDataXtd_Triangulation,
+    ) -> bool;
     /// Dereference Handle to get *const TDataXtd_Triangulation
-    pub fn HandleTDataXtdTriangulation_get(
-        handle: *const HandleTDataXtdTriangulation,
+    pub fn Handle_TDataXtd_Triangulation_get(
+        handle: *const Handle_TDataXtd_Triangulation,
     ) -> crate::OcctResult<*const TDataXtd_Triangulation>;
     /// Dereference Handle to get *mut TDataXtd_Triangulation
-    pub fn HandleTDataXtdTriangulation_get_mut(
-        handle: *mut HandleTDataXtdTriangulation,
+    pub fn Handle_TDataXtd_Triangulation_get_mut(
+        handle: *mut Handle_TDataXtd_Triangulation,
     ) -> crate::OcctResult<*mut TDataXtd_Triangulation>;
     /// Upcast Handle<TDataXtd_Triangulation> to Handle<TDF_Attribute>
-    pub fn HandleTDataXtdTriangulation_to_HandleTDFAttribute(
-        self_: *const HandleTDataXtdTriangulation,
-    ) -> crate::OcctResult<*mut HandleTDFAttribute>;
+    pub fn Handle_TDataXtd_Triangulation_to_Handle_TDF_Attribute(
+        self_: *const Handle_TDataXtd_Triangulation,
+    ) -> crate::OcctResult<*mut Handle_TDF_Attribute>;
     /// Upcast Handle<TDataXtd_Triangulation> to Handle<Standard_Transient>
-    pub fn HandleTDataXtdTriangulation_to_HandleStandardTransient(
-        self_: *const HandleTDataXtdTriangulation,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:138 - `TDF_Attribute::SetID()`
+    pub fn Handle_TDataXtd_Triangulation_to_Handle_Standard_Transient(
+        self_: *const Handle_TDataXtd_Triangulation,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:135 - `TDF_Attribute::SetID()`
     pub fn TDataXtd_Triangulation_inherited_SetID(
         self_: *mut TDataXtd_Triangulation,
         arg0: *const Standard_GUID,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:150 - `TDF_Attribute::Label()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:147 - `TDF_Attribute::Label()`
     pub fn TDataXtd_Triangulation_inherited_Label(
         self_: *const TDataXtd_Triangulation,
     ) -> crate::OcctResult<*mut TDF_Label>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:154 - `TDF_Attribute::Transaction()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:151 - `TDF_Attribute::Transaction()`
     pub fn TDataXtd_Triangulation_inherited_Transaction(
         self_: *const TDataXtd_Triangulation,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:160 - `TDF_Attribute::UntilTransaction()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:157 - `TDF_Attribute::UntilTransaction()`
     pub fn TDataXtd_Triangulation_inherited_UntilTransaction(
         self_: *const TDataXtd_Triangulation,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:164 - `TDF_Attribute::IsValid()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:161 - `TDF_Attribute::IsValid()`
     pub fn TDataXtd_Triangulation_inherited_IsValid(
         self_: *const TDataXtd_Triangulation,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:167 - `TDF_Attribute::IsNew()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:164 - `TDF_Attribute::IsNew()`
     pub fn TDataXtd_Triangulation_inherited_IsNew(
         self_: *const TDataXtd_Triangulation,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:174 - `TDF_Attribute::IsForgotten()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:171 - `TDF_Attribute::IsForgotten()`
     pub fn TDataXtd_Triangulation_inherited_IsForgotten(
         self_: *const TDataXtd_Triangulation,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:178 - `TDF_Attribute::IsAttribute()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:175 - `TDF_Attribute::IsAttribute()`
     pub fn TDataXtd_Triangulation_inherited_IsAttribute(
         self_: *const TDataXtd_Triangulation,
         anID: *const Standard_GUID,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:185 - `TDF_Attribute::FindAttribute()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:182 - `TDF_Attribute::FindAttribute()`
     pub fn TDataXtd_Triangulation_inherited_FindAttribute(
         self_: *const TDataXtd_Triangulation,
         anID: *const Standard_GUID,
-        anAttribute: *mut HandleTDFAttribute,
+        anAttribute: *mut Handle_TDF_Attribute,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:199 - `TDF_Attribute::AddAttribute()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:196 - `TDF_Attribute::AddAttribute()`
     pub fn TDataXtd_Triangulation_inherited_AddAttribute(
         self_: *const TDataXtd_Triangulation,
-        other: *const HandleTDFAttribute,
+        other: *const Handle_TDF_Attribute,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:206 - `TDF_Attribute::ForgetAttribute()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:203 - `TDF_Attribute::ForgetAttribute()`
     pub fn TDataXtd_Triangulation_inherited_ForgetAttribute(
         self_: *const TDataXtd_Triangulation,
         aguid: *const Standard_GUID,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:214 - `TDF_Attribute::ForgetAllAttributes()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:211 - `TDF_Attribute::ForgetAllAttributes()`
     pub fn TDataXtd_Triangulation_inherited_ForgetAllAttributes(
         self_: *const TDataXtd_Triangulation,
         clearChildren: bool,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:218 - `TDF_Attribute::AfterAddition()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:214 - `TDF_Attribute::AfterAddition()`
     pub fn TDataXtd_Triangulation_inherited_AfterAddition(
         self_: *mut TDataXtd_Triangulation,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:222 - `TDF_Attribute::BeforeRemoval()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:218 - `TDF_Attribute::BeforeRemoval()`
     pub fn TDataXtd_Triangulation_inherited_BeforeRemoval(
         self_: *mut TDataXtd_Triangulation,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:226 - `TDF_Attribute::BeforeForget()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:222 - `TDF_Attribute::BeforeForget()`
     pub fn TDataXtd_Triangulation_inherited_BeforeForget(
         self_: *mut TDataXtd_Triangulation,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:230 - `TDF_Attribute::AfterResume()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:226 - `TDF_Attribute::AfterResume()`
     pub fn TDataXtd_Triangulation_inherited_AfterResume(
         self_: *mut TDataXtd_Triangulation,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:239 - `TDF_Attribute::AfterRetrieval()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:235 - `TDF_Attribute::AfterRetrieval()`
     pub fn TDataXtd_Triangulation_inherited_AfterRetrieval(
         self_: *mut TDataXtd_Triangulation,
         forceIt: bool,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:248 - `TDF_Attribute::BeforeUndo()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:243 - `TDF_Attribute::BeforeUndo()`
     pub fn TDataXtd_Triangulation_inherited_BeforeUndo(
         self_: *mut TDataXtd_Triangulation,
-        anAttDelta: *const HandleTDFAttributeDelta,
+        anAttDelta: *const Handle_TDF_AttributeDelta,
         forceIt: bool,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:258 - `TDF_Attribute::AfterUndo()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:252 - `TDF_Attribute::AfterUndo()`
     pub fn TDataXtd_Triangulation_inherited_AfterUndo(
         self_: *mut TDataXtd_Triangulation,
-        anAttDelta: *const HandleTDFAttributeDelta,
+        anAttDelta: *const Handle_TDF_AttributeDelta,
         forceIt: bool,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:265 - `TDF_Attribute::BeforeCommitTransaction()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:258 - `TDF_Attribute::BeforeCommitTransaction()`
     pub fn TDataXtd_Triangulation_inherited_BeforeCommitTransaction(
         self_: *mut TDataXtd_Triangulation,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:277 - `TDF_Attribute::Backup()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:270 - `TDF_Attribute::Backup()`
     pub fn TDataXtd_Triangulation_inherited_Backup(
         self_: *mut TDataXtd_Triangulation,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:282 - `TDF_Attribute::IsBackuped()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:275 - `TDF_Attribute::IsBackuped()`
     pub fn TDataXtd_Triangulation_inherited_IsBackuped(
         self_: *const TDataXtd_Triangulation,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:286 - `TDF_Attribute::BackupCopy()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:279 - `TDF_Attribute::BackupCopy()`
     pub fn TDataXtd_Triangulation_inherited_BackupCopy(
         self_: *const TDataXtd_Triangulation,
-    ) -> crate::OcctResult<*mut HandleTDFAttribute>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:296 - `TDF_Attribute::DeltaOnAddition()`
+    ) -> crate::OcctResult<*mut Handle_TDF_Attribute>;
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:289 - `TDF_Attribute::DeltaOnAddition()`
     pub fn TDataXtd_Triangulation_inherited_DeltaOnAddition(
         self_: *const TDataXtd_Triangulation,
-    ) -> crate::OcctResult<*mut HandleTDFDeltaOnAddition>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:300 - `TDF_Attribute::DeltaOnForget()`
+    ) -> crate::OcctResult<*mut Handle_TDF_DeltaOnAddition>;
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:293 - `TDF_Attribute::DeltaOnForget()`
     pub fn TDataXtd_Triangulation_inherited_DeltaOnForget(
         self_: *const TDataXtd_Triangulation,
-    ) -> crate::OcctResult<*mut HandleTDFDeltaOnForget>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:304 - `TDF_Attribute::DeltaOnResume()`
+    ) -> crate::OcctResult<*mut Handle_TDF_DeltaOnForget>;
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:297 - `TDF_Attribute::DeltaOnResume()`
     pub fn TDataXtd_Triangulation_inherited_DeltaOnResume(
         self_: *const TDataXtd_Triangulation,
-    ) -> crate::OcctResult<*mut HandleTDFDeltaOnResume>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:308 - `TDF_Attribute::DeltaOnModification()`
+    ) -> crate::OcctResult<*mut Handle_TDF_DeltaOnResume>;
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:301 - `TDF_Attribute::DeltaOnModification()`
     pub fn TDataXtd_Triangulation_inherited_DeltaOnModification(
         self_: *const TDataXtd_Triangulation,
-        anOldAttribute: *const HandleTDFAttribute,
-    ) -> crate::OcctResult<*mut HandleTDFDeltaOnModification>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:316 - `TDF_Attribute::DeltaOnRemoval()`
+        anOldAttribute: *const Handle_TDF_Attribute,
+    ) -> crate::OcctResult<*mut Handle_TDF_DeltaOnModification>;
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:310 - `TDF_Attribute::DeltaOnRemoval()`
     pub fn TDataXtd_Triangulation_inherited_DeltaOnRemoval(
         self_: *const TDataXtd_Triangulation,
-    ) -> crate::OcctResult<*mut HandleTDFDeltaOnRemoval>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:345 - `TDF_Attribute::References()`
+    ) -> crate::OcctResult<*mut Handle_TDF_DeltaOnRemoval>;
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:340 - `TDF_Attribute::References()`
     pub fn TDataXtd_Triangulation_inherited_References(
         self_: *const TDataXtd_Triangulation,
-        aDataSet: *const HandleTDFDataSet,
+        aDataSet: *const Handle_TDF_DataSet,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:358 - `TDF_Attribute::ExtendedDump()`
-    pub fn TDataXtd_Triangulation_inherited_ExtendedDump(
-        self_: *const TDataXtd_Triangulation,
-        anOS: *mut Standard_OStream,
-        aFilter: *const TDF_IDFilter,
-        aMap: *mut TDF_AttributeIndexedMap,
-    ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:374 - `TDF_Attribute::Forget()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:370 - `TDF_Attribute::Forget()`
     pub fn TDataXtd_Triangulation_inherited_Forget(
         self_: *mut TDataXtd_Triangulation,
         aTransaction: i32,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn TDataXtd_Triangulation_inherited_IsInstance(
         self_: *const TDataXtd_Triangulation,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn TDataXtd_Triangulation_inherited_IsKind(
         self_: *const TDataXtd_Triangulation,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn TDataXtd_Triangulation_inherited_This(
         self_: *const TDataXtd_Triangulation,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn TDataXtd_Triangulation_inherited_GetRefCount(
         self_: *const TDataXtd_Triangulation,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn TDataXtd_Triangulation_inherited_IncrementRefCounter(
         self_: *mut TDataXtd_Triangulation,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn TDataXtd_Triangulation_inherited_DecrementRefCounter(
         self_: *mut TDataXtd_Triangulation,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn TDataXtd_Triangulation_inherited_Delete(
         self_: *const TDataXtd_Triangulation,
     ) -> *const std::ffi::c_char;
@@ -4153,48 +3964,30 @@ unsafe extern "C" {
     /// **Source:** `TNaming_Builder.hxx`:74 - `TNaming_Builder::NamedShape()`
     pub fn TNaming_Builder_named_shape(
         self_: *const TNaming_Builder,
-    ) -> crate::OcctResult<*mut HandleTNamingNamedShape>;
+    ) -> crate::OcctResult<*mut Handle_TNaming_NamedShape>;
     // ======================== TNaming_CopyShape ========================
     pub fn TNaming_CopyShape_destructor(self_: *mut TNaming_CopyShape);
     /// **Source:** `TNaming_CopyShape.hxx` - `TNaming_CopyShape::TNaming_CopyShape()`
     pub fn TNaming_CopyShape_ctor() -> crate::OcctResult<*mut TNaming_CopyShape>;
-    /// **Source:** `TNaming_CopyShape.hxx`:34 - `TNaming_CopyShape::CopyTool()`
-    pub fn TNaming_CopyShape_copy_tool(
-        aShape: *const TopoDS_Shape,
-        aMap: *mut TColStd_IndexedDataMapOfTransientTransient,
-        aResult: *mut TopoDS_Shape,
-    ) -> *const std::ffi::c_char;
-    /// **Source:** `TNaming_CopyShape.hxx`:39 - `TNaming_CopyShape::Translate()`
-    pub fn TNaming_CopyShape_translate_shape_indexeddatamapoftransienttransient_shape_handletnamingtranslatetool(
-        aShape: *const TopoDS_Shape,
-        aMap: *mut TColStd_IndexedDataMapOfTransientTransient,
-        aResult: *mut TopoDS_Shape,
-        TrTool: *const HandleTNamingTranslateTool,
-    ) -> *const std::ffi::c_char;
-    /// **Source:** `TNaming_CopyShape.hxx`:46 - `TNaming_CopyShape::Translate()`
-    pub fn TNaming_CopyShape_translate_location_indexeddatamapoftransienttransient(
-        L: *const TopLoc_Location,
-        aMap: *mut TColStd_IndexedDataMapOfTransientTransient,
-    ) -> crate::OcctResult<*mut TopLoc_Location>;
     // ======================== TNaming_DeltaOnModification ========================
     pub fn TNaming_DeltaOnModification_destructor(self_: *mut TNaming_DeltaOnModification);
-    /// **Source:** `TNaming_DeltaOnModification.hxx`:40 - `TNaming_DeltaOnModification::TNaming_DeltaOnModification()`
+    /// **Source:** `TNaming_DeltaOnModification.hxx`:39 - `TNaming_DeltaOnModification::TNaming_DeltaOnModification()`
     pub fn TNaming_DeltaOnModification_ctor_handletnamingnamedshape(
-        NS: *const HandleTNamingNamedShape,
+        NS: *const Handle_TNaming_NamedShape,
     ) -> crate::OcctResult<*mut TNaming_DeltaOnModification>;
-    /// **Source:** `TNaming_DeltaOnModification.hxx`:43 - `TNaming_DeltaOnModification::Apply()`
+    /// **Source:** `TNaming_DeltaOnModification.hxx`:42 - `TNaming_DeltaOnModification::Apply()`
     pub fn TNaming_DeltaOnModification_apply(
         self_: *mut TNaming_DeltaOnModification,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `TNaming_DeltaOnModification.hxx`:45 - `TNaming_DeltaOnModification::DynamicType()`
+    /// **Source:** `TNaming_DeltaOnModification.hxx`:44 - `TNaming_DeltaOnModification::DynamicType()`
     pub fn TNaming_DeltaOnModification_dynamic_type(
         self_: *const TNaming_DeltaOnModification,
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// **Source:** `TNaming_DeltaOnModification.hxx`:45 - `TNaming_DeltaOnModification::get_type_name()`
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
+    /// **Source:** `TNaming_DeltaOnModification.hxx`:44 - `TNaming_DeltaOnModification::get_type_name()`
     pub fn TNaming_DeltaOnModification_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
-    /// **Source:** `TNaming_DeltaOnModification.hxx`:45 - `TNaming_DeltaOnModification::get_type_descriptor()`
+    /// **Source:** `TNaming_DeltaOnModification.hxx`:44 - `TNaming_DeltaOnModification::get_type_descriptor()`
     pub fn TNaming_DeltaOnModification_get_type_descriptor(
-    ) -> crate::OcctResult<*const HandleStandardType>;
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast TNaming_DeltaOnModification to TDF_DeltaOnModification
     pub fn TNaming_DeltaOnModification_as_TDF_DeltaOnModification(
         self_: *const TNaming_DeltaOnModification,
@@ -4222,100 +4015,100 @@ unsafe extern "C" {
     /// Wrap TNaming_DeltaOnModification in a Handle
     pub fn TNaming_DeltaOnModification_to_handle(
         obj: *mut TNaming_DeltaOnModification,
-    ) -> crate::OcctResult<*mut HandleTNamingDeltaOnModification>;
+    ) -> crate::OcctResult<*mut Handle_TNaming_DeltaOnModification>;
     /// Destroy Handle<TNaming_DeltaOnModification>
-    pub fn HandleTNamingDeltaOnModification_destructor(
-        self_: *mut HandleTNamingDeltaOnModification,
+    pub fn Handle_TNaming_DeltaOnModification_destructor(
+        self_: *mut Handle_TNaming_DeltaOnModification,
     );
     /// Clone Handle<TNaming_DeltaOnModification> (increments reference count)
-    pub fn HandleTNamingDeltaOnModification_clone(
-        self_: *const HandleTNamingDeltaOnModification,
-    ) -> crate::OcctResult<*mut HandleTNamingDeltaOnModification>;
+    pub fn Handle_TNaming_DeltaOnModification_clone(
+        self_: *const Handle_TNaming_DeltaOnModification,
+    ) -> crate::OcctResult<*mut Handle_TNaming_DeltaOnModification>;
     /// Check if Handle<TNaming_DeltaOnModification> is null
-    pub fn HandleTNamingDeltaOnModification_is_null(
-        self_: *const HandleTNamingDeltaOnModification,
+    pub fn Handle_TNaming_DeltaOnModification_is_null(
+        self_: *const Handle_TNaming_DeltaOnModification,
     ) -> bool;
     /// Dereference Handle to get *const TNaming_DeltaOnModification
-    pub fn HandleTNamingDeltaOnModification_get(
-        handle: *const HandleTNamingDeltaOnModification,
+    pub fn Handle_TNaming_DeltaOnModification_get(
+        handle: *const Handle_TNaming_DeltaOnModification,
     ) -> crate::OcctResult<*const TNaming_DeltaOnModification>;
     /// Dereference Handle to get *mut TNaming_DeltaOnModification
-    pub fn HandleTNamingDeltaOnModification_get_mut(
-        handle: *mut HandleTNamingDeltaOnModification,
+    pub fn Handle_TNaming_DeltaOnModification_get_mut(
+        handle: *mut Handle_TNaming_DeltaOnModification,
     ) -> crate::OcctResult<*mut TNaming_DeltaOnModification>;
     /// Upcast Handle<TNaming_DeltaOnModification> to Handle<TDF_DeltaOnModification>
-    pub fn HandleTNamingDeltaOnModification_to_HandleTDFDeltaOnModification(
-        self_: *const HandleTNamingDeltaOnModification,
-    ) -> crate::OcctResult<*mut HandleTDFDeltaOnModification>;
+    pub fn Handle_TNaming_DeltaOnModification_to_Handle_TDF_DeltaOnModification(
+        self_: *const Handle_TNaming_DeltaOnModification,
+    ) -> crate::OcctResult<*mut Handle_TDF_DeltaOnModification>;
     /// Upcast Handle<TNaming_DeltaOnModification> to Handle<TDF_AttributeDelta>
-    pub fn HandleTNamingDeltaOnModification_to_HandleTDFAttributeDelta(
-        self_: *const HandleTNamingDeltaOnModification,
-    ) -> crate::OcctResult<*mut HandleTDFAttributeDelta>;
+    pub fn Handle_TNaming_DeltaOnModification_to_Handle_TDF_AttributeDelta(
+        self_: *const Handle_TNaming_DeltaOnModification,
+    ) -> crate::OcctResult<*mut Handle_TDF_AttributeDelta>;
     /// Upcast Handle<TNaming_DeltaOnModification> to Handle<Standard_Transient>
-    pub fn HandleTNamingDeltaOnModification_to_HandleStandardTransient(
-        self_: *const HandleTNamingDeltaOnModification,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
-    /// Inherited: **Source:** `TDF_AttributeDelta.hxx`:50 - `TDF_AttributeDelta::Label()`
+    pub fn Handle_TNaming_DeltaOnModification_to_Handle_Standard_Transient(
+        self_: *const Handle_TNaming_DeltaOnModification,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
+    /// Inherited: **Source:** `TDF_AttributeDelta.hxx`:47 - `TDF_AttributeDelta::Label()`
     pub fn TNaming_DeltaOnModification_inherited_Label(
         self_: *const TNaming_DeltaOnModification,
     ) -> crate::OcctResult<*mut TDF_Label>;
-    /// Inherited: **Source:** `TDF_AttributeDelta.hxx`:53 - `TDF_AttributeDelta::Attribute()`
+    /// Inherited: **Source:** `TDF_AttributeDelta.hxx`:50 - `TDF_AttributeDelta::Attribute()`
     pub fn TNaming_DeltaOnModification_inherited_Attribute(
         self_: *const TNaming_DeltaOnModification,
-    ) -> crate::OcctResult<*mut HandleTDFAttribute>;
-    /// Inherited: **Source:** `TDF_AttributeDelta.hxx`:56 - `TDF_AttributeDelta::ID()`
+    ) -> crate::OcctResult<*mut Handle_TDF_Attribute>;
+    /// Inherited: **Source:** `TDF_AttributeDelta.hxx`:53 - `TDF_AttributeDelta::ID()`
     pub fn TNaming_DeltaOnModification_inherited_ID(
         self_: *const TNaming_DeltaOnModification,
     ) -> crate::OcctResult<*mut Standard_GUID>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn TNaming_DeltaOnModification_inherited_IsInstance(
         self_: *const TNaming_DeltaOnModification,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn TNaming_DeltaOnModification_inherited_IsKind(
         self_: *const TNaming_DeltaOnModification,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn TNaming_DeltaOnModification_inherited_This(
         self_: *const TNaming_DeltaOnModification,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn TNaming_DeltaOnModification_inherited_GetRefCount(
         self_: *const TNaming_DeltaOnModification,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn TNaming_DeltaOnModification_inherited_IncrementRefCounter(
         self_: *mut TNaming_DeltaOnModification,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn TNaming_DeltaOnModification_inherited_DecrementRefCounter(
         self_: *mut TNaming_DeltaOnModification,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn TNaming_DeltaOnModification_inherited_Delete(
         self_: *const TNaming_DeltaOnModification,
     ) -> *const std::ffi::c_char;
     // ======================== TNaming_DeltaOnRemoval ========================
     pub fn TNaming_DeltaOnRemoval_destructor(self_: *mut TNaming_DeltaOnRemoval);
-    /// **Source:** `TNaming_DeltaOnRemoval.hxx`:35 - `TNaming_DeltaOnRemoval::TNaming_DeltaOnRemoval()`
+    /// **Source:** `TNaming_DeltaOnRemoval.hxx`:32 - `TNaming_DeltaOnRemoval::TNaming_DeltaOnRemoval()`
     pub fn TNaming_DeltaOnRemoval_ctor_handletnamingnamedshape(
-        NS: *const HandleTNamingNamedShape,
+        NS: *const Handle_TNaming_NamedShape,
     ) -> crate::OcctResult<*mut TNaming_DeltaOnRemoval>;
-    /// **Source:** `TNaming_DeltaOnRemoval.hxx`:38 - `TNaming_DeltaOnRemoval::Apply()`
+    /// **Source:** `TNaming_DeltaOnRemoval.hxx`:35 - `TNaming_DeltaOnRemoval::Apply()`
     pub fn TNaming_DeltaOnRemoval_apply(
         self_: *mut TNaming_DeltaOnRemoval,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `TNaming_DeltaOnRemoval.hxx`:40 - `TNaming_DeltaOnRemoval::DynamicType()`
+    /// **Source:** `TNaming_DeltaOnRemoval.hxx`:37 - `TNaming_DeltaOnRemoval::DynamicType()`
     pub fn TNaming_DeltaOnRemoval_dynamic_type(
         self_: *const TNaming_DeltaOnRemoval,
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// **Source:** `TNaming_DeltaOnRemoval.hxx`:40 - `TNaming_DeltaOnRemoval::get_type_name()`
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
+    /// **Source:** `TNaming_DeltaOnRemoval.hxx`:37 - `TNaming_DeltaOnRemoval::get_type_name()`
     pub fn TNaming_DeltaOnRemoval_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
-    /// **Source:** `TNaming_DeltaOnRemoval.hxx`:40 - `TNaming_DeltaOnRemoval::get_type_descriptor()`
+    /// **Source:** `TNaming_DeltaOnRemoval.hxx`:37 - `TNaming_DeltaOnRemoval::get_type_descriptor()`
     pub fn TNaming_DeltaOnRemoval_get_type_descriptor(
-    ) -> crate::OcctResult<*const HandleStandardType>;
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast TNaming_DeltaOnRemoval to TDF_DeltaOnRemoval
     pub fn TNaming_DeltaOnRemoval_as_TDF_DeltaOnRemoval(
         self_: *const TNaming_DeltaOnRemoval,
@@ -4343,161 +4136,163 @@ unsafe extern "C" {
     /// Wrap TNaming_DeltaOnRemoval in a Handle
     pub fn TNaming_DeltaOnRemoval_to_handle(
         obj: *mut TNaming_DeltaOnRemoval,
-    ) -> crate::OcctResult<*mut HandleTNamingDeltaOnRemoval>;
+    ) -> crate::OcctResult<*mut Handle_TNaming_DeltaOnRemoval>;
     /// Destroy Handle<TNaming_DeltaOnRemoval>
-    pub fn HandleTNamingDeltaOnRemoval_destructor(self_: *mut HandleTNamingDeltaOnRemoval);
+    pub fn Handle_TNaming_DeltaOnRemoval_destructor(self_: *mut Handle_TNaming_DeltaOnRemoval);
     /// Clone Handle<TNaming_DeltaOnRemoval> (increments reference count)
-    pub fn HandleTNamingDeltaOnRemoval_clone(
-        self_: *const HandleTNamingDeltaOnRemoval,
-    ) -> crate::OcctResult<*mut HandleTNamingDeltaOnRemoval>;
+    pub fn Handle_TNaming_DeltaOnRemoval_clone(
+        self_: *const Handle_TNaming_DeltaOnRemoval,
+    ) -> crate::OcctResult<*mut Handle_TNaming_DeltaOnRemoval>;
     /// Check if Handle<TNaming_DeltaOnRemoval> is null
-    pub fn HandleTNamingDeltaOnRemoval_is_null(self_: *const HandleTNamingDeltaOnRemoval) -> bool;
+    pub fn Handle_TNaming_DeltaOnRemoval_is_null(
+        self_: *const Handle_TNaming_DeltaOnRemoval,
+    ) -> bool;
     /// Dereference Handle to get *const TNaming_DeltaOnRemoval
-    pub fn HandleTNamingDeltaOnRemoval_get(
-        handle: *const HandleTNamingDeltaOnRemoval,
+    pub fn Handle_TNaming_DeltaOnRemoval_get(
+        handle: *const Handle_TNaming_DeltaOnRemoval,
     ) -> crate::OcctResult<*const TNaming_DeltaOnRemoval>;
     /// Dereference Handle to get *mut TNaming_DeltaOnRemoval
-    pub fn HandleTNamingDeltaOnRemoval_get_mut(
-        handle: *mut HandleTNamingDeltaOnRemoval,
+    pub fn Handle_TNaming_DeltaOnRemoval_get_mut(
+        handle: *mut Handle_TNaming_DeltaOnRemoval,
     ) -> crate::OcctResult<*mut TNaming_DeltaOnRemoval>;
     /// Upcast Handle<TNaming_DeltaOnRemoval> to Handle<TDF_DeltaOnRemoval>
-    pub fn HandleTNamingDeltaOnRemoval_to_HandleTDFDeltaOnRemoval(
-        self_: *const HandleTNamingDeltaOnRemoval,
-    ) -> crate::OcctResult<*mut HandleTDFDeltaOnRemoval>;
+    pub fn Handle_TNaming_DeltaOnRemoval_to_Handle_TDF_DeltaOnRemoval(
+        self_: *const Handle_TNaming_DeltaOnRemoval,
+    ) -> crate::OcctResult<*mut Handle_TDF_DeltaOnRemoval>;
     /// Upcast Handle<TNaming_DeltaOnRemoval> to Handle<TDF_AttributeDelta>
-    pub fn HandleTNamingDeltaOnRemoval_to_HandleTDFAttributeDelta(
-        self_: *const HandleTNamingDeltaOnRemoval,
-    ) -> crate::OcctResult<*mut HandleTDFAttributeDelta>;
+    pub fn Handle_TNaming_DeltaOnRemoval_to_Handle_TDF_AttributeDelta(
+        self_: *const Handle_TNaming_DeltaOnRemoval,
+    ) -> crate::OcctResult<*mut Handle_TDF_AttributeDelta>;
     /// Upcast Handle<TNaming_DeltaOnRemoval> to Handle<Standard_Transient>
-    pub fn HandleTNamingDeltaOnRemoval_to_HandleStandardTransient(
-        self_: *const HandleTNamingDeltaOnRemoval,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
-    /// Inherited: **Source:** `TDF_AttributeDelta.hxx`:50 - `TDF_AttributeDelta::Label()`
+    pub fn Handle_TNaming_DeltaOnRemoval_to_Handle_Standard_Transient(
+        self_: *const Handle_TNaming_DeltaOnRemoval,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
+    /// Inherited: **Source:** `TDF_AttributeDelta.hxx`:47 - `TDF_AttributeDelta::Label()`
     pub fn TNaming_DeltaOnRemoval_inherited_Label(
         self_: *const TNaming_DeltaOnRemoval,
     ) -> crate::OcctResult<*mut TDF_Label>;
-    /// Inherited: **Source:** `TDF_AttributeDelta.hxx`:53 - `TDF_AttributeDelta::Attribute()`
+    /// Inherited: **Source:** `TDF_AttributeDelta.hxx`:50 - `TDF_AttributeDelta::Attribute()`
     pub fn TNaming_DeltaOnRemoval_inherited_Attribute(
         self_: *const TNaming_DeltaOnRemoval,
-    ) -> crate::OcctResult<*mut HandleTDFAttribute>;
-    /// Inherited: **Source:** `TDF_AttributeDelta.hxx`:56 - `TDF_AttributeDelta::ID()`
+    ) -> crate::OcctResult<*mut Handle_TDF_Attribute>;
+    /// Inherited: **Source:** `TDF_AttributeDelta.hxx`:53 - `TDF_AttributeDelta::ID()`
     pub fn TNaming_DeltaOnRemoval_inherited_ID(
         self_: *const TNaming_DeltaOnRemoval,
     ) -> crate::OcctResult<*mut Standard_GUID>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn TNaming_DeltaOnRemoval_inherited_IsInstance(
         self_: *const TNaming_DeltaOnRemoval,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn TNaming_DeltaOnRemoval_inherited_IsKind(
         self_: *const TNaming_DeltaOnRemoval,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn TNaming_DeltaOnRemoval_inherited_This(
         self_: *const TNaming_DeltaOnRemoval,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn TNaming_DeltaOnRemoval_inherited_GetRefCount(
         self_: *const TNaming_DeltaOnRemoval,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn TNaming_DeltaOnRemoval_inherited_IncrementRefCounter(
         self_: *mut TNaming_DeltaOnRemoval,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn TNaming_DeltaOnRemoval_inherited_DecrementRefCounter(
         self_: *mut TNaming_DeltaOnRemoval,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn TNaming_DeltaOnRemoval_inherited_Delete(
         self_: *const TNaming_DeltaOnRemoval,
     ) -> *const std::ffi::c_char;
     // ======================== TNaming_Identifier ========================
     pub fn TNaming_Identifier_destructor(self_: *mut TNaming_Identifier);
-    /// **Source:** `TNaming_Identifier.hxx`:36 - `TNaming_Identifier::TNaming_Identifier()`
+    /// **Source:** `TNaming_Identifier.hxx`:37 - `TNaming_Identifier::TNaming_Identifier()`
     pub fn TNaming_Identifier_ctor_label_shape2_bool(
         Lab: *const TDF_Label,
         S: *const TopoDS_Shape,
         Context: *const TopoDS_Shape,
         Geom: bool,
     ) -> crate::OcctResult<*mut TNaming_Identifier>;
-    /// **Source:** `TNaming_Identifier.hxx`:41 - `TNaming_Identifier::TNaming_Identifier()`
+    /// **Source:** `TNaming_Identifier.hxx`:42 - `TNaming_Identifier::TNaming_Identifier()`
     pub fn TNaming_Identifier_ctor_label_shape_handletnamingnamedshape_bool(
         Lab: *const TDF_Label,
         S: *const TopoDS_Shape,
-        ContextNS: *const HandleTNamingNamedShape,
+        ContextNS: *const Handle_TNaming_NamedShape,
         Geom: bool,
     ) -> crate::OcctResult<*mut TNaming_Identifier>;
-    /// **Source:** `TNaming_Identifier.hxx`:46 - `TNaming_Identifier::IsDone()`
+    /// **Source:** `TNaming_Identifier.hxx`:47 - `TNaming_Identifier::IsDone()`
     pub fn TNaming_Identifier_is_done(self_: *const TNaming_Identifier) -> crate::OcctResult<bool>;
-    /// **Source:** `TNaming_Identifier.hxx`:48 - `TNaming_Identifier::Type()`
+    /// **Source:** `TNaming_Identifier.hxx`:49 - `TNaming_Identifier::Type()`
     pub fn TNaming_Identifier_type_(self_: *const TNaming_Identifier) -> crate::OcctResult<i32>;
-    /// **Source:** `TNaming_Identifier.hxx`:50 - `TNaming_Identifier::IsFeature()`
+    /// **Source:** `TNaming_Identifier.hxx`:51 - `TNaming_Identifier::IsFeature()`
     pub fn TNaming_Identifier_is_feature(self_: *mut TNaming_Identifier)
         -> crate::OcctResult<bool>;
-    /// **Source:** `TNaming_Identifier.hxx`:52 - `TNaming_Identifier::Feature()`
+    /// **Source:** `TNaming_Identifier.hxx`:53 - `TNaming_Identifier::Feature()`
     pub fn TNaming_Identifier_feature(
         self_: *const TNaming_Identifier,
-    ) -> crate::OcctResult<*mut HandleTNamingNamedShape>;
-    /// **Source:** `TNaming_Identifier.hxx`:54 - `TNaming_Identifier::InitArgs()`
+    ) -> crate::OcctResult<*mut Handle_TNaming_NamedShape>;
+    /// **Source:** `TNaming_Identifier.hxx`:55 - `TNaming_Identifier::InitArgs()`
     pub fn TNaming_Identifier_init_args(self_: *mut TNaming_Identifier) -> *const std::ffi::c_char;
-    /// **Source:** `TNaming_Identifier.hxx`:56 - `TNaming_Identifier::MoreArgs()`
+    /// **Source:** `TNaming_Identifier.hxx`:57 - `TNaming_Identifier::MoreArgs()`
     pub fn TNaming_Identifier_more_args(
         self_: *const TNaming_Identifier,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `TNaming_Identifier.hxx`:58 - `TNaming_Identifier::NextArg()`
+    /// **Source:** `TNaming_Identifier.hxx`:59 - `TNaming_Identifier::NextArg()`
     pub fn TNaming_Identifier_next_arg(self_: *mut TNaming_Identifier) -> *const std::ffi::c_char;
-    /// **Source:** `TNaming_Identifier.hxx`:60 - `TNaming_Identifier::ArgIsFeature()`
+    /// **Source:** `TNaming_Identifier.hxx`:61 - `TNaming_Identifier::ArgIsFeature()`
     pub fn TNaming_Identifier_arg_is_feature(
         self_: *const TNaming_Identifier,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `TNaming_Identifier.hxx`:62 - `TNaming_Identifier::FeatureArg()`
+    /// **Source:** `TNaming_Identifier.hxx`:63 - `TNaming_Identifier::FeatureArg()`
     pub fn TNaming_Identifier_feature_arg(
         self_: *mut TNaming_Identifier,
-    ) -> crate::OcctResult<*mut HandleTNamingNamedShape>;
-    /// **Source:** `TNaming_Identifier.hxx`:64 - `TNaming_Identifier::ShapeArg()`
+    ) -> crate::OcctResult<*mut Handle_TNaming_NamedShape>;
+    /// **Source:** `TNaming_Identifier.hxx`:65 - `TNaming_Identifier::ShapeArg()`
     pub fn TNaming_Identifier_shape_arg(
         self_: *mut TNaming_Identifier,
     ) -> crate::OcctResult<*mut TopoDS_Shape>;
-    /// **Source:** `TNaming_Identifier.hxx`:66 - `TNaming_Identifier::ShapeContext()`
+    /// **Source:** `TNaming_Identifier.hxx`:67 - `TNaming_Identifier::ShapeContext()`
     pub fn TNaming_Identifier_shape_context(
         self_: *const TNaming_Identifier,
     ) -> crate::OcctResult<*mut TopoDS_Shape>;
-    /// **Source:** `TNaming_Identifier.hxx`:68 - `TNaming_Identifier::NamedShapeOfGeneration()`
+    /// **Source:** `TNaming_Identifier.hxx`:69 - `TNaming_Identifier::NamedShapeOfGeneration()`
     pub fn TNaming_Identifier_named_shape_of_generation(
         self_: *const TNaming_Identifier,
-    ) -> crate::OcctResult<*mut HandleTNamingNamedShape>;
-    /// **Source:** `TNaming_Identifier.hxx`:70 - `TNaming_Identifier::AncestorIdentification()`
+    ) -> crate::OcctResult<*mut Handle_TNaming_NamedShape>;
+    /// **Source:** `TNaming_Identifier.hxx`:71 - `TNaming_Identifier::AncestorIdentification()`
     pub fn TNaming_Identifier_ancestor_identification(
         self_: *mut TNaming_Identifier,
         Localizer: *mut TNaming_Localizer,
         Context: *const TopoDS_Shape,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `TNaming_Identifier.hxx`:73 - `TNaming_Identifier::PrimitiveIdentification()`
+    /// **Source:** `TNaming_Identifier.hxx`:74 - `TNaming_Identifier::PrimitiveIdentification()`
     pub fn TNaming_Identifier_primitive_identification(
         self_: *mut TNaming_Identifier,
         Localizer: *mut TNaming_Localizer,
-        NS: *const HandleTNamingNamedShape,
+        NS: *const Handle_TNaming_NamedShape,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `TNaming_Identifier.hxx`:76 - `TNaming_Identifier::GeneratedIdentification()`
+    /// **Source:** `TNaming_Identifier.hxx`:77 - `TNaming_Identifier::GeneratedIdentification()`
     pub fn TNaming_Identifier_generated_identification(
         self_: *mut TNaming_Identifier,
         Localizer: *mut TNaming_Localizer,
-        NS: *const HandleTNamingNamedShape,
+        NS: *const Handle_TNaming_NamedShape,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `TNaming_Identifier.hxx`:79 - `TNaming_Identifier::Identification()`
+    /// **Source:** `TNaming_Identifier.hxx`:80 - `TNaming_Identifier::Identification()`
     pub fn TNaming_Identifier_identification(
         self_: *mut TNaming_Identifier,
         Localizer: *mut TNaming_Localizer,
-        NS: *const HandleTNamingNamedShape,
+        NS: *const Handle_TNaming_NamedShape,
     ) -> *const std::ffi::c_char;
     // ======================== TNaming_Iterator ========================
     pub fn TNaming_Iterator_destructor(self_: *mut TNaming_Iterator);
     /// **Source:** `TNaming_Iterator.hxx`:51 - `TNaming_Iterator::TNaming_Iterator()`
     pub fn TNaming_Iterator_ctor_handletnamingnamedshape(
-        anAtt: *const HandleTNamingNamedShape,
+        anAtt: *const Handle_TNaming_NamedShape,
     ) -> crate::OcctResult<*mut TNaming_Iterator>;
     /// **Source:** `TNaming_Iterator.hxx`:55 - `TNaming_Iterator::TNaming_Iterator()`
     pub fn TNaming_Iterator_ctor_label(
@@ -4528,270 +4323,245 @@ unsafe extern "C" {
     pub fn TNaming_Iterator_evolution(self_: *const TNaming_Iterator) -> crate::OcctResult<i32>;
     // ======================== TNaming_IteratorOnShapesSet ========================
     pub fn TNaming_IteratorOnShapesSet_destructor(self_: *mut TNaming_IteratorOnShapesSet);
-    /// **Source:** `TNaming_IteratorOnShapesSet.hxx`:36 - `TNaming_IteratorOnShapesSet::TNaming_IteratorOnShapesSet()`
+    /// **Source:** `TNaming_IteratorOnShapesSet.hxx`:40 - `TNaming_IteratorOnShapesSet::TNaming_IteratorOnShapesSet()`
     pub fn TNaming_IteratorOnShapesSet_ctor() -> crate::OcctResult<*mut TNaming_IteratorOnShapesSet>;
-    /// **Source:** `TNaming_IteratorOnShapesSet.hxx`:38 - `TNaming_IteratorOnShapesSet::TNaming_IteratorOnShapesSet()`
+    /// **Source:** `TNaming_IteratorOnShapesSet.hxx`:42 - `TNaming_IteratorOnShapesSet::TNaming_IteratorOnShapesSet()`
     pub fn TNaming_IteratorOnShapesSet_ctor_shapesset(
         S: *const TNaming_ShapesSet,
     ) -> crate::OcctResult<*mut TNaming_IteratorOnShapesSet>;
-    /// **Source:** `TNaming_IteratorOnShapesSet.hxx`:41 - `TNaming_IteratorOnShapesSet::Init()`
+    /// **Source:** `TNaming_IteratorOnShapesSet.hxx`:45 - `TNaming_IteratorOnShapesSet::Init()`
     pub fn TNaming_IteratorOnShapesSet_init(
         self_: *mut TNaming_IteratorOnShapesSet,
         S: *const TNaming_ShapesSet,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `TNaming_IteratorOnShapesSet.hxx`:45 - `TNaming_IteratorOnShapesSet::More()`
+    /// **Source:** `TNaming_IteratorOnShapesSet.hxx`:49 - `TNaming_IteratorOnShapesSet::More()`
     pub fn TNaming_IteratorOnShapesSet_more(
         self_: *const TNaming_IteratorOnShapesSet,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `TNaming_IteratorOnShapesSet.hxx`:48 - `TNaming_IteratorOnShapesSet::Next()`
+    /// **Source:** `TNaming_IteratorOnShapesSet.hxx`:52 - `TNaming_IteratorOnShapesSet::Next()`
     pub fn TNaming_IteratorOnShapesSet_next(
         self_: *mut TNaming_IteratorOnShapesSet,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `TNaming_IteratorOnShapesSet.hxx`:50 - `TNaming_IteratorOnShapesSet::Value()`
+    /// **Source:** `TNaming_IteratorOnShapesSet.hxx`:54 - `TNaming_IteratorOnShapesSet::Value()`
     pub fn TNaming_IteratorOnShapesSet_value(
         self_: *const TNaming_IteratorOnShapesSet,
     ) -> crate::OcctResult<*const TopoDS_Shape>;
     // ======================== TNaming_Localizer ========================
     pub fn TNaming_Localizer_destructor(self_: *mut TNaming_Localizer);
-    /// **Source:** `TNaming_Localizer.hxx`:44 - `TNaming_Localizer::TNaming_Localizer()`
+    /// **Source:** `TNaming_Localizer.hxx`:43 - `TNaming_Localizer::TNaming_Localizer()`
     pub fn TNaming_Localizer_ctor() -> crate::OcctResult<*mut TNaming_Localizer>;
-    /// **Source:** `TNaming_Localizer.hxx`:46 - `TNaming_Localizer::Init()`
+    /// **Source:** `TNaming_Localizer.hxx`:45 - `TNaming_Localizer::Init()`
     pub fn TNaming_Localizer_init(
         self_: *mut TNaming_Localizer,
-        US: *const HandleTNamingUsedShapes,
+        US: *const Handle_TNaming_UsedShapes,
         CurTrans: i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `TNaming_Localizer.hxx`:48 - `TNaming_Localizer::SubShapes()`
+    /// **Source:** `TNaming_Localizer.hxx`:47 - `TNaming_Localizer::SubShapes()`
     pub fn TNaming_Localizer_sub_shapes(
         self_: *mut TNaming_Localizer,
         S: *const TopoDS_Shape,
         Type: i32,
-    ) -> crate::OcctResult<*const TopTools_MapOfShape>;
-    /// **Source:** `TNaming_Localizer.hxx`:51 - `TNaming_Localizer::Ancestors()`
-    pub fn TNaming_Localizer_ancestors(
-        self_: *mut TNaming_Localizer,
-        S: *const TopoDS_Shape,
-        Type: i32,
-    ) -> crate::OcctResult<*const TopTools_IndexedDataMapOfShapeListOfShape>;
-    /// **Source:** `TNaming_Localizer.hxx`:55 - `TNaming_Localizer::FindFeaturesInAncestors()`
+    ) -> crate::OcctResult<*const NCollection_Map_TopoDS_Shape_TopTools_ShapeMapHasher>;
+    /// **Source:** `TNaming_Localizer.hxx`:54 - `TNaming_Localizer::Ancestors()`
+    pub fn TNaming_Localizer_ancestors(self_: *mut TNaming_Localizer, S: *const TopoDS_Shape, Type: i32) -> crate::OcctResult<*const NCollection_IndexedDataMap_TopoDS_Shape_NCollection_List_TopoDS_Shape_TopTools_ShapeMapHasher>;
+    /// **Source:** `TNaming_Localizer.hxx`:56 - `TNaming_Localizer::FindFeaturesInAncestors()`
     pub fn TNaming_Localizer_find_features_in_ancestors(
         self_: *mut TNaming_Localizer,
         S: *const TopoDS_Shape,
         In: *const TopoDS_Shape,
-        AncInFeatures: *mut TopTools_MapOfShape,
+        AncInFeatures: *mut NCollection_Map_TopoDS_Shape_TopTools_ShapeMapHasher,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `TNaming_Localizer.hxx`:59 - `TNaming_Localizer::GoBack()`
-    pub fn TNaming_Localizer_go_back(
-        self_: *mut TNaming_Localizer,
-        S: *const TopoDS_Shape,
-        Lab: *const TDF_Label,
-        Evol: i32,
-        OldS: *mut TopTools_ListOfShape,
-        OldLab: *mut TNaming_ListOfNamedShape,
-    ) -> *const std::ffi::c_char;
-    /// **Source:** `TNaming_Localizer.hxx`:65 - `TNaming_Localizer::Backward()`
-    pub fn TNaming_Localizer_backward(
-        self_: *mut TNaming_Localizer,
-        NS: *const HandleTNamingNamedShape,
-        S: *const TopoDS_Shape,
-        Primitives: *mut TNaming_MapOfNamedShape,
-        ValidShapes: *mut TopTools_MapOfShape,
-    ) -> *const std::ffi::c_char;
-    /// **Source:** `TNaming_Localizer.hxx`:70 - `TNaming_Localizer::FindNeighbourg()`
+    /// **Source:** `TNaming_Localizer.hxx`:73 - `TNaming_Localizer::FindNeighbourg()`
     pub fn TNaming_Localizer_find_neighbourg(
         self_: *mut TNaming_Localizer,
         Cont: *const TopoDS_Shape,
         S: *const TopoDS_Shape,
-        Neighbourg: *mut TopTools_MapOfShape,
+        Neighbourg: *mut NCollection_Map_TopoDS_Shape_TopTools_ShapeMapHasher,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `TNaming_Localizer.hxx`:74 - `TNaming_Localizer::IsNew()`
+    /// **Source:** `TNaming_Localizer.hxx`:78 - `TNaming_Localizer::IsNew()`
     pub fn TNaming_Localizer_is_new(
         S: *const TopoDS_Shape,
-        NS: *const HandleTNamingNamedShape,
+        NS: *const Handle_TNaming_NamedShape,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `TNaming_Localizer.hxx`:77 - `TNaming_Localizer::FindGenerator()`
+    /// **Source:** `TNaming_Localizer.hxx`:81 - `TNaming_Localizer::FindGenerator()`
     pub fn TNaming_Localizer_find_generator(
-        NS: *const HandleTNamingNamedShape,
+        NS: *const Handle_TNaming_NamedShape,
         S: *const TopoDS_Shape,
-        theListOfGenerators: *mut TopTools_ListOfShape,
+        theListOfGenerators: *mut NCollection_List_TopoDS_Shape,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `TNaming_Localizer.hxx`:82 - `TNaming_Localizer::FindShapeContext()`
+    /// **Source:** `TNaming_Localizer.hxx`:86 - `TNaming_Localizer::FindShapeContext()`
     pub fn TNaming_Localizer_find_shape_context(
-        NS: *const HandleTNamingNamedShape,
+        NS: *const Handle_TNaming_NamedShape,
         theS: *const TopoDS_Shape,
         theSC: *mut TopoDS_Shape,
     ) -> *const std::ffi::c_char;
     // ======================== TNaming_Name ========================
     pub fn TNaming_Name_destructor(self_: *mut TNaming_Name);
-    /// **Source:** `TNaming_Name.hxx`:41 - `TNaming_Name::TNaming_Name()`
+    /// **Source:** `TNaming_Name.hxx`:42 - `TNaming_Name::TNaming_Name()`
     pub fn TNaming_Name_ctor() -> crate::OcctResult<*mut TNaming_Name>;
-    /// **Source:** `TNaming_Name.hxx`:43 - `TNaming_Name::Type()`
+    /// **Source:** `TNaming_Name.hxx`:44 - `TNaming_Name::Type()`
     pub fn TNaming_Name_type_nametype(
         self_: *mut TNaming_Name,
         aType: i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `TNaming_Name.hxx`:45 - `TNaming_Name::ShapeType()`
+    /// **Source:** `TNaming_Name.hxx`:46 - `TNaming_Name::ShapeType()`
     pub fn TNaming_Name_shape_type_shapeenum(
         self_: *mut TNaming_Name,
         aType: i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `TNaming_Name.hxx`:47 - `TNaming_Name::Shape()`
+    /// **Source:** `TNaming_Name.hxx`:48 - `TNaming_Name::Shape()`
     pub fn TNaming_Name_shape_shape(
         self_: *mut TNaming_Name,
         theShape: *const TopoDS_Shape,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `TNaming_Name.hxx`:49 - `TNaming_Name::Append()`
+    /// **Source:** `TNaming_Name.hxx`:50 - `TNaming_Name::Append()`
     pub fn TNaming_Name_append(
         self_: *mut TNaming_Name,
-        arg: *const HandleTNamingNamedShape,
+        arg: *const Handle_TNaming_NamedShape,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `TNaming_Name.hxx`:51 - `TNaming_Name::StopNamedShape()`
+    /// **Source:** `TNaming_Name.hxx`:52 - `TNaming_Name::StopNamedShape()`
     pub fn TNaming_Name_stop_named_shape_handletnamingnamedshape(
         self_: *mut TNaming_Name,
-        arg: *const HandleTNamingNamedShape,
+        arg: *const Handle_TNaming_NamedShape,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `TNaming_Name.hxx`:53 - `TNaming_Name::Index()`
+    /// **Source:** `TNaming_Name.hxx`:54 - `TNaming_Name::Index()`
     pub fn TNaming_Name_index_int(self_: *mut TNaming_Name, I: i32) -> *const std::ffi::c_char;
-    /// **Source:** `TNaming_Name.hxx`:55 - `TNaming_Name::ContextLabel()`
+    /// **Source:** `TNaming_Name.hxx`:56 - `TNaming_Name::ContextLabel()`
     pub fn TNaming_Name_context_label_label(
         self_: *mut TNaming_Name,
         theLab: *const TDF_Label,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `TNaming_Name.hxx`:57 - `TNaming_Name::Orientation()`
+    /// **Source:** `TNaming_Name.hxx`:58 - `TNaming_Name::Orientation()`
     pub fn TNaming_Name_orientation_orientation(
         self_: *mut TNaming_Name,
         theOrientation: i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `TNaming_Name.hxx`:59 - `TNaming_Name::Type()`
+    /// **Source:** `TNaming_Name.hxx`:60 - `TNaming_Name::Type()`
     pub fn TNaming_Name_type_(self_: *const TNaming_Name) -> crate::OcctResult<i32>;
-    /// **Source:** `TNaming_Name.hxx`:61 - `TNaming_Name::ShapeType()`
+    /// **Source:** `TNaming_Name.hxx`:62 - `TNaming_Name::ShapeType()`
     pub fn TNaming_Name_shape_type(self_: *const TNaming_Name) -> crate::OcctResult<i32>;
-    /// **Source:** `TNaming_Name.hxx`:63 - `TNaming_Name::Shape()`
+    /// **Source:** `TNaming_Name.hxx`:64 - `TNaming_Name::Shape()`
     pub fn TNaming_Name_shape(self_: *const TNaming_Name) -> crate::OcctResult<*mut TopoDS_Shape>;
-    /// **Source:** `TNaming_Name.hxx`:65 - `TNaming_Name::Arguments()`
-    pub fn TNaming_Name_arguments(
-        self_: *const TNaming_Name,
-    ) -> crate::OcctResult<*const TNaming_ListOfNamedShape>;
-    /// **Source:** `TNaming_Name.hxx`:67 - `TNaming_Name::StopNamedShape()`
+    /// **Source:** `TNaming_Name.hxx`:68 - `TNaming_Name::StopNamedShape()`
     pub fn TNaming_Name_stop_named_shape(
         self_: *const TNaming_Name,
-    ) -> crate::OcctResult<*mut HandleTNamingNamedShape>;
-    /// **Source:** `TNaming_Name.hxx`:69 - `TNaming_Name::Index()`
+    ) -> crate::OcctResult<*mut Handle_TNaming_NamedShape>;
+    /// **Source:** `TNaming_Name.hxx`:70 - `TNaming_Name::Index()`
     pub fn TNaming_Name_index(self_: *const TNaming_Name) -> crate::OcctResult<i32>;
-    /// **Source:** `TNaming_Name.hxx`:71 - `TNaming_Name::ContextLabel()`
+    /// **Source:** `TNaming_Name.hxx`:72 - `TNaming_Name::ContextLabel()`
     pub fn TNaming_Name_context_label(
         self_: *const TNaming_Name,
     ) -> crate::OcctResult<*const TDF_Label>;
-    /// **Source:** `TNaming_Name.hxx`:73 - `TNaming_Name::Orientation()`
+    /// **Source:** `TNaming_Name.hxx`:74 - `TNaming_Name::Orientation()`
     pub fn TNaming_Name_orientation(self_: *const TNaming_Name) -> crate::OcctResult<i32>;
-    /// **Source:** `TNaming_Name.hxx`:75 - `TNaming_Name::Solve()`
+    /// **Source:** `TNaming_Name.hxx`:76 - `TNaming_Name::Solve()`
     pub fn TNaming_Name_solve(
         self_: *const TNaming_Name,
         aLab: *const TDF_Label,
-        Valid: *const TDF_LabelMap,
+        Valid: *const NCollection_Map_TDF_Label,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `TNaming_Name.hxx`:77 - `TNaming_Name::Paste()`
+    /// **Source:** `TNaming_Name.hxx`:78 - `TNaming_Name::Paste()`
     pub fn TNaming_Name_paste(
         self_: *const TNaming_Name,
         into: *mut TNaming_Name,
-        RT: *const HandleTDFRelocationTable,
+        RT: *const Handle_TDF_RelocationTable,
     ) -> *const std::ffi::c_char;
     // ======================== TNaming_NamedShape ========================
     pub fn TNaming_NamedShape_destructor(self_: *mut TNaming_NamedShape);
-    /// **Source:** `TNaming_NamedShape.hxx`:56 - `TNaming_NamedShape::TNaming_NamedShape()`
+    /// **Source:** `TNaming_NamedShape.hxx`:53 - `TNaming_NamedShape::TNaming_NamedShape()`
     pub fn TNaming_NamedShape_ctor() -> crate::OcctResult<*mut TNaming_NamedShape>;
-    /// **Source:** `TNaming_NamedShape.hxx`:58 - `TNaming_NamedShape::IsEmpty()`
+    /// **Source:** `TNaming_NamedShape.hxx`:55 - `TNaming_NamedShape::IsEmpty()`
     pub fn TNaming_NamedShape_is_empty(self_: *const TNaming_NamedShape)
         -> crate::OcctResult<bool>;
-    /// **Source:** `TNaming_NamedShape.hxx`:62 - `TNaming_NamedShape::Get()`
+    /// **Source:** `TNaming_NamedShape.hxx`:59 - `TNaming_NamedShape::Get()`
     pub fn TNaming_NamedShape_get(
         self_: *const TNaming_NamedShape,
     ) -> crate::OcctResult<*mut TopoDS_Shape>;
-    /// **Source:** `TNaming_NamedShape.hxx`:65 - `TNaming_NamedShape::Evolution()`
+    /// **Source:** `TNaming_NamedShape.hxx`:62 - `TNaming_NamedShape::Evolution()`
     pub fn TNaming_NamedShape_evolution(self_: *const TNaming_NamedShape)
         -> crate::OcctResult<i32>;
-    /// **Source:** `TNaming_NamedShape.hxx`:68 - `TNaming_NamedShape::Version()`
+    /// **Source:** `TNaming_NamedShape.hxx`:65 - `TNaming_NamedShape::Version()`
     pub fn TNaming_NamedShape_version(self_: *const TNaming_NamedShape) -> crate::OcctResult<i32>;
-    /// **Source:** `TNaming_NamedShape.hxx`:71 - `TNaming_NamedShape::SetVersion()`
+    /// **Source:** `TNaming_NamedShape.hxx`:68 - `TNaming_NamedShape::SetVersion()`
     pub fn TNaming_NamedShape_set_version(
         self_: *mut TNaming_NamedShape,
         version: i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `TNaming_NamedShape.hxx`:73 - `TNaming_NamedShape::Clear()`
+    /// **Source:** `TNaming_NamedShape.hxx`:70 - `TNaming_NamedShape::Clear()`
     pub fn TNaming_NamedShape_clear(self_: *mut TNaming_NamedShape) -> *const std::ffi::c_char;
-    /// **Source:** `TNaming_NamedShape.hxx`:78 - `TNaming_NamedShape::ID()`
+    /// **Source:** `TNaming_NamedShape.hxx`:75 - `TNaming_NamedShape::ID()`
     pub fn TNaming_NamedShape_id(
         self_: *const TNaming_NamedShape,
     ) -> crate::OcctResult<*const Standard_GUID>;
-    /// **Source:** `TNaming_NamedShape.hxx`:82 - `TNaming_NamedShape::BackupCopy()`
+    /// **Source:** `TNaming_NamedShape.hxx`:79 - `TNaming_NamedShape::BackupCopy()`
     pub fn TNaming_NamedShape_backup_copy(
         self_: *const TNaming_NamedShape,
-    ) -> crate::OcctResult<*mut HandleTDFAttribute>;
-    /// **Source:** `TNaming_NamedShape.hxx`:86 - `TNaming_NamedShape::Restore()`
+    ) -> crate::OcctResult<*mut Handle_TDF_Attribute>;
+    /// **Source:** `TNaming_NamedShape.hxx`:83 - `TNaming_NamedShape::Restore()`
     pub fn TNaming_NamedShape_restore(
         self_: *mut TNaming_NamedShape,
-        anAttribute: *const HandleTDFAttribute,
+        anAttribute: *const Handle_TDF_Attribute,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `TNaming_NamedShape.hxx`:90 - `TNaming_NamedShape::DeltaOnModification()`
+    /// **Source:** `TNaming_NamedShape.hxx`:87 - `TNaming_NamedShape::DeltaOnModification()`
     pub fn TNaming_NamedShape_delta_on_modification_handletdfattribute(
         self_: *const TNaming_NamedShape,
-        anOldAttribute: *const HandleTDFAttribute,
-    ) -> crate::OcctResult<*mut HandleTDFDeltaOnModification>;
-    /// **Source:** `TNaming_NamedShape.hxx`:94 - `TNaming_NamedShape::DeltaOnModification()`
+        anOldAttribute: *const Handle_TDF_Attribute,
+    ) -> crate::OcctResult<*mut Handle_TDF_DeltaOnModification>;
+    /// **Source:** `TNaming_NamedShape.hxx`:91 - `TNaming_NamedShape::DeltaOnModification()`
     pub fn TNaming_NamedShape_delta_on_modification_handletdfdeltaonmodification(
         self_: *mut TNaming_NamedShape,
-        aDelta: *const HandleTDFDeltaOnModification,
+        aDelta: *const Handle_TDF_DeltaOnModification,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `TNaming_NamedShape.hxx`:99 - `TNaming_NamedShape::DeltaOnRemoval()`
+    /// **Source:** `TNaming_NamedShape.hxx`:96 - `TNaming_NamedShape::DeltaOnRemoval()`
     pub fn TNaming_NamedShape_delta_on_removal(
         self_: *const TNaming_NamedShape,
-    ) -> crate::OcctResult<*mut HandleTDFDeltaOnRemoval>;
-    /// **Source:** `TNaming_NamedShape.hxx`:103 - `TNaming_NamedShape::NewEmpty()`
+    ) -> crate::OcctResult<*mut Handle_TDF_DeltaOnRemoval>;
+    /// **Source:** `TNaming_NamedShape.hxx`:100 - `TNaming_NamedShape::NewEmpty()`
     pub fn TNaming_NamedShape_new_empty(
         self_: *const TNaming_NamedShape,
-    ) -> crate::OcctResult<*mut HandleTDFAttribute>;
-    /// **Source:** `TNaming_NamedShape.hxx`:112 - `TNaming_NamedShape::Paste()`
+    ) -> crate::OcctResult<*mut Handle_TDF_Attribute>;
+    /// **Source:** `TNaming_NamedShape.hxx`:109 - `TNaming_NamedShape::Paste()`
     pub fn TNaming_NamedShape_paste(
         self_: *const TNaming_NamedShape,
-        intoAttribute: *const HandleTDFAttribute,
-        aRelocTationable: *const HandleTDFRelocationTable,
+        intoAttribute: *const Handle_TDF_Attribute,
+        aRelocTationable: *const Handle_TDF_RelocationTable,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `TNaming_NamedShape.hxx`:119 - `TNaming_NamedShape::References()`
+    /// **Source:** `TNaming_NamedShape.hxx`:116 - `TNaming_NamedShape::References()`
     pub fn TNaming_NamedShape_references(
         self_: *const TNaming_NamedShape,
-        aDataSet: *const HandleTDFDataSet,
+        aDataSet: *const Handle_TDF_DataSet,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `TNaming_NamedShape.hxx`:122 - `TNaming_NamedShape::BeforeRemoval()`
+    /// **Source:** `TNaming_NamedShape.hxx`:118 - `TNaming_NamedShape::BeforeRemoval()`
     pub fn TNaming_NamedShape_before_removal(
         self_: *mut TNaming_NamedShape,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `TNaming_NamedShape.hxx`:125 - `TNaming_NamedShape::BeforeUndo()`
+    /// **Source:** `TNaming_NamedShape.hxx`:121 - `TNaming_NamedShape::BeforeUndo()`
     pub fn TNaming_NamedShape_before_undo(
         self_: *mut TNaming_NamedShape,
-        anAttDelta: *const HandleTDFAttributeDelta,
+        anAttDelta: *const Handle_TDF_AttributeDelta,
         forceIt: bool,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `TNaming_NamedShape.hxx`:130 - `TNaming_NamedShape::AfterUndo()`
+    /// **Source:** `TNaming_NamedShape.hxx`:125 - `TNaming_NamedShape::AfterUndo()`
     pub fn TNaming_NamedShape_after_undo(
         self_: *mut TNaming_NamedShape,
-        anAttDelta: *const HandleTDFAttributeDelta,
+        anAttDelta: *const Handle_TDF_AttributeDelta,
         forceIt: bool,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `TNaming_NamedShape.hxx`:135 - `TNaming_NamedShape::Dump()`
+    /// **Source:** `TNaming_NamedShape.hxx`:129 - `TNaming_NamedShape::Dump()`
     pub fn TNaming_NamedShape_dump(
         self_: *mut TNaming_NamedShape,
         anOS: *mut Standard_OStream,
     ) -> crate::OcctResult<*mut Standard_OStream>;
-    /// **Source:** `TNaming_NamedShape.hxx`:146 - `TNaming_NamedShape::DynamicType()`
+    /// **Source:** `TNaming_NamedShape.hxx`:139 - `TNaming_NamedShape::DynamicType()`
     pub fn TNaming_NamedShape_dynamic_type(
         self_: *const TNaming_NamedShape,
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// **Source:** `TNaming_NamedShape.hxx`:54 - `TNaming_NamedShape::GetID()`
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
+    /// **Source:** `TNaming_NamedShape.hxx`:51 - `TNaming_NamedShape::GetID()`
     pub fn TNaming_NamedShape_get_id() -> crate::OcctResult<*const Standard_GUID>;
-    /// **Source:** `TNaming_NamedShape.hxx`:146 - `TNaming_NamedShape::get_type_name()`
+    /// **Source:** `TNaming_NamedShape.hxx`:139 - `TNaming_NamedShape::get_type_name()`
     pub fn TNaming_NamedShape_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
-    /// **Source:** `TNaming_NamedShape.hxx`:146 - `TNaming_NamedShape::get_type_descriptor()`
-    pub fn TNaming_NamedShape_get_type_descriptor() -> crate::OcctResult<*const HandleStandardType>;
+    /// **Source:** `TNaming_NamedShape.hxx`:139 - `TNaming_NamedShape::get_type_descriptor()`
+    pub fn TNaming_NamedShape_get_type_descriptor() -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast TNaming_NamedShape to TDF_Attribute
     pub fn TNaming_NamedShape_as_TDF_Attribute(
         self_: *const TNaming_NamedShape,
@@ -4811,166 +4581,159 @@ unsafe extern "C" {
     /// Wrap TNaming_NamedShape in a Handle
     pub fn TNaming_NamedShape_to_handle(
         obj: *mut TNaming_NamedShape,
-    ) -> crate::OcctResult<*mut HandleTNamingNamedShape>;
+    ) -> crate::OcctResult<*mut Handle_TNaming_NamedShape>;
     /// Destroy Handle<TNaming_NamedShape>
-    pub fn HandleTNamingNamedShape_destructor(self_: *mut HandleTNamingNamedShape);
+    pub fn Handle_TNaming_NamedShape_destructor(self_: *mut Handle_TNaming_NamedShape);
     /// Clone Handle<TNaming_NamedShape> (increments reference count)
-    pub fn HandleTNamingNamedShape_clone(
-        self_: *const HandleTNamingNamedShape,
-    ) -> crate::OcctResult<*mut HandleTNamingNamedShape>;
+    pub fn Handle_TNaming_NamedShape_clone(
+        self_: *const Handle_TNaming_NamedShape,
+    ) -> crate::OcctResult<*mut Handle_TNaming_NamedShape>;
     /// Check if Handle<TNaming_NamedShape> is null
-    pub fn HandleTNamingNamedShape_is_null(self_: *const HandleTNamingNamedShape) -> bool;
+    pub fn Handle_TNaming_NamedShape_is_null(self_: *const Handle_TNaming_NamedShape) -> bool;
     /// Dereference Handle to get *const TNaming_NamedShape
-    pub fn HandleTNamingNamedShape_get(
-        handle: *const HandleTNamingNamedShape,
+    pub fn Handle_TNaming_NamedShape_get(
+        handle: *const Handle_TNaming_NamedShape,
     ) -> crate::OcctResult<*const TNaming_NamedShape>;
     /// Dereference Handle to get *mut TNaming_NamedShape
-    pub fn HandleTNamingNamedShape_get_mut(
-        handle: *mut HandleTNamingNamedShape,
+    pub fn Handle_TNaming_NamedShape_get_mut(
+        handle: *mut Handle_TNaming_NamedShape,
     ) -> crate::OcctResult<*mut TNaming_NamedShape>;
     /// Upcast Handle<TNaming_NamedShape> to Handle<TDF_Attribute>
-    pub fn HandleTNamingNamedShape_to_HandleTDFAttribute(
-        self_: *const HandleTNamingNamedShape,
-    ) -> crate::OcctResult<*mut HandleTDFAttribute>;
+    pub fn Handle_TNaming_NamedShape_to_Handle_TDF_Attribute(
+        self_: *const Handle_TNaming_NamedShape,
+    ) -> crate::OcctResult<*mut Handle_TDF_Attribute>;
     /// Upcast Handle<TNaming_NamedShape> to Handle<Standard_Transient>
-    pub fn HandleTNamingNamedShape_to_HandleStandardTransient(
-        self_: *const HandleTNamingNamedShape,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:138 - `TDF_Attribute::SetID()`
+    pub fn Handle_TNaming_NamedShape_to_Handle_Standard_Transient(
+        self_: *const Handle_TNaming_NamedShape,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:135 - `TDF_Attribute::SetID()`
     pub fn TNaming_NamedShape_inherited_SetID(
         self_: *mut TNaming_NamedShape,
         arg0: *const Standard_GUID,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:150 - `TDF_Attribute::Label()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:147 - `TDF_Attribute::Label()`
     pub fn TNaming_NamedShape_inherited_Label(
         self_: *const TNaming_NamedShape,
     ) -> crate::OcctResult<*mut TDF_Label>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:154 - `TDF_Attribute::Transaction()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:151 - `TDF_Attribute::Transaction()`
     pub fn TNaming_NamedShape_inherited_Transaction(
         self_: *const TNaming_NamedShape,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:160 - `TDF_Attribute::UntilTransaction()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:157 - `TDF_Attribute::UntilTransaction()`
     pub fn TNaming_NamedShape_inherited_UntilTransaction(
         self_: *const TNaming_NamedShape,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:164 - `TDF_Attribute::IsValid()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:161 - `TDF_Attribute::IsValid()`
     pub fn TNaming_NamedShape_inherited_IsValid(
         self_: *const TNaming_NamedShape,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:167 - `TDF_Attribute::IsNew()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:164 - `TDF_Attribute::IsNew()`
     pub fn TNaming_NamedShape_inherited_IsNew(
         self_: *const TNaming_NamedShape,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:174 - `TDF_Attribute::IsForgotten()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:171 - `TDF_Attribute::IsForgotten()`
     pub fn TNaming_NamedShape_inherited_IsForgotten(
         self_: *const TNaming_NamedShape,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:178 - `TDF_Attribute::IsAttribute()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:175 - `TDF_Attribute::IsAttribute()`
     pub fn TNaming_NamedShape_inherited_IsAttribute(
         self_: *const TNaming_NamedShape,
         anID: *const Standard_GUID,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:185 - `TDF_Attribute::FindAttribute()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:182 - `TDF_Attribute::FindAttribute()`
     pub fn TNaming_NamedShape_inherited_FindAttribute(
         self_: *const TNaming_NamedShape,
         anID: *const Standard_GUID,
-        anAttribute: *mut HandleTDFAttribute,
+        anAttribute: *mut Handle_TDF_Attribute,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:199 - `TDF_Attribute::AddAttribute()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:196 - `TDF_Attribute::AddAttribute()`
     pub fn TNaming_NamedShape_inherited_AddAttribute(
         self_: *const TNaming_NamedShape,
-        other: *const HandleTDFAttribute,
+        other: *const Handle_TDF_Attribute,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:206 - `TDF_Attribute::ForgetAttribute()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:203 - `TDF_Attribute::ForgetAttribute()`
     pub fn TNaming_NamedShape_inherited_ForgetAttribute(
         self_: *const TNaming_NamedShape,
         aguid: *const Standard_GUID,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:214 - `TDF_Attribute::ForgetAllAttributes()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:211 - `TDF_Attribute::ForgetAllAttributes()`
     pub fn TNaming_NamedShape_inherited_ForgetAllAttributes(
         self_: *const TNaming_NamedShape,
         clearChildren: bool,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:218 - `TDF_Attribute::AfterAddition()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:214 - `TDF_Attribute::AfterAddition()`
     pub fn TNaming_NamedShape_inherited_AfterAddition(
         self_: *mut TNaming_NamedShape,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:226 - `TDF_Attribute::BeforeForget()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:222 - `TDF_Attribute::BeforeForget()`
     pub fn TNaming_NamedShape_inherited_BeforeForget(
         self_: *mut TNaming_NamedShape,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:230 - `TDF_Attribute::AfterResume()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:226 - `TDF_Attribute::AfterResume()`
     pub fn TNaming_NamedShape_inherited_AfterResume(
         self_: *mut TNaming_NamedShape,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:239 - `TDF_Attribute::AfterRetrieval()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:235 - `TDF_Attribute::AfterRetrieval()`
     pub fn TNaming_NamedShape_inherited_AfterRetrieval(
         self_: *mut TNaming_NamedShape,
         forceIt: bool,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:265 - `TDF_Attribute::BeforeCommitTransaction()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:258 - `TDF_Attribute::BeforeCommitTransaction()`
     pub fn TNaming_NamedShape_inherited_BeforeCommitTransaction(
         self_: *mut TNaming_NamedShape,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:277 - `TDF_Attribute::Backup()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:270 - `TDF_Attribute::Backup()`
     pub fn TNaming_NamedShape_inherited_Backup(
         self_: *mut TNaming_NamedShape,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:282 - `TDF_Attribute::IsBackuped()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:275 - `TDF_Attribute::IsBackuped()`
     pub fn TNaming_NamedShape_inherited_IsBackuped(
         self_: *const TNaming_NamedShape,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:296 - `TDF_Attribute::DeltaOnAddition()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:289 - `TDF_Attribute::DeltaOnAddition()`
     pub fn TNaming_NamedShape_inherited_DeltaOnAddition(
         self_: *const TNaming_NamedShape,
-    ) -> crate::OcctResult<*mut HandleTDFDeltaOnAddition>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:300 - `TDF_Attribute::DeltaOnForget()`
+    ) -> crate::OcctResult<*mut Handle_TDF_DeltaOnAddition>;
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:293 - `TDF_Attribute::DeltaOnForget()`
     pub fn TNaming_NamedShape_inherited_DeltaOnForget(
         self_: *const TNaming_NamedShape,
-    ) -> crate::OcctResult<*mut HandleTDFDeltaOnForget>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:304 - `TDF_Attribute::DeltaOnResume()`
+    ) -> crate::OcctResult<*mut Handle_TDF_DeltaOnForget>;
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:297 - `TDF_Attribute::DeltaOnResume()`
     pub fn TNaming_NamedShape_inherited_DeltaOnResume(
         self_: *const TNaming_NamedShape,
-    ) -> crate::OcctResult<*mut HandleTDFDeltaOnResume>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:358 - `TDF_Attribute::ExtendedDump()`
-    pub fn TNaming_NamedShape_inherited_ExtendedDump(
-        self_: *const TNaming_NamedShape,
-        anOS: *mut Standard_OStream,
-        aFilter: *const TDF_IDFilter,
-        aMap: *mut TDF_AttributeIndexedMap,
-    ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:374 - `TDF_Attribute::Forget()`
+    ) -> crate::OcctResult<*mut Handle_TDF_DeltaOnResume>;
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:370 - `TDF_Attribute::Forget()`
     pub fn TNaming_NamedShape_inherited_Forget(
         self_: *mut TNaming_NamedShape,
         aTransaction: i32,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn TNaming_NamedShape_inherited_IsInstance(
         self_: *const TNaming_NamedShape,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn TNaming_NamedShape_inherited_IsKind(
         self_: *const TNaming_NamedShape,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn TNaming_NamedShape_inherited_This(
         self_: *const TNaming_NamedShape,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn TNaming_NamedShape_inherited_GetRefCount(
         self_: *const TNaming_NamedShape,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn TNaming_NamedShape_inherited_IncrementRefCounter(
         self_: *mut TNaming_NamedShape,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn TNaming_NamedShape_inherited_DecrementRefCounter(
         self_: *mut TNaming_NamedShape,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn TNaming_NamedShape_inherited_Delete(
         self_: *const TNaming_NamedShape,
     ) -> *const std::ffi::c_char;
@@ -4991,12 +4754,12 @@ unsafe extern "C" {
     /// **Source:** `TNaming_Naming.hxx`:82 - `TNaming_Naming::Regenerate()`
     pub fn TNaming_Naming_regenerate(
         self_: *mut TNaming_Naming,
-        scope: *mut TDF_LabelMap,
+        scope: *mut NCollection_Map_TDF_Label,
     ) -> crate::OcctResult<bool>;
     /// **Source:** `TNaming_Naming.hxx`:87 - `TNaming_Naming::Solve()`
     pub fn TNaming_Naming_solve(
         self_: *mut TNaming_Naming,
-        scope: *mut TDF_LabelMap,
+        scope: *mut NCollection_Map_TDF_Label,
     ) -> crate::OcctResult<bool>;
     /// **Source:** `TNaming_Naming.hxx`:91 - `TNaming_Naming::ID()`
     pub fn TNaming_Naming_id(
@@ -5005,46 +4768,39 @@ unsafe extern "C" {
     /// **Source:** `TNaming_Naming.hxx`:93 - `TNaming_Naming::NewEmpty()`
     pub fn TNaming_Naming_new_empty(
         self_: *const TNaming_Naming,
-    ) -> crate::OcctResult<*mut HandleTDFAttribute>;
+    ) -> crate::OcctResult<*mut Handle_TDF_Attribute>;
     /// **Source:** `TNaming_Naming.hxx`:95 - `TNaming_Naming::Restore()`
     pub fn TNaming_Naming_restore(
         self_: *mut TNaming_Naming,
-        With: *const HandleTDFAttribute,
+        With: *const Handle_TDF_Attribute,
     ) -> *const std::ffi::c_char;
     /// **Source:** `TNaming_Naming.hxx`:97 - `TNaming_Naming::Paste()`
     pub fn TNaming_Naming_paste(
         self_: *const TNaming_Naming,
-        Into: *const HandleTDFAttribute,
-        RT: *const HandleTDFRelocationTable,
+        Into: *const Handle_TDF_Attribute,
+        RT: *const Handle_TDF_RelocationTable,
     ) -> *const std::ffi::c_char;
     /// **Source:** `TNaming_Naming.hxx`:100 - `TNaming_Naming::References()`
     pub fn TNaming_Naming_references(
         self_: *const TNaming_Naming,
-        aDataSet: *const HandleTDFDataSet,
+        aDataSet: *const Handle_TDF_DataSet,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `TNaming_Naming.hxx`:103 - `TNaming_Naming::Dump()`
+    /// **Source:** `TNaming_Naming.hxx`:102 - `TNaming_Naming::Dump()`
     pub fn TNaming_Naming_dump(
         self_: *mut TNaming_Naming,
         anOS: *mut Standard_OStream,
     ) -> crate::OcctResult<*mut Standard_OStream>;
-    /// **Source:** `TNaming_Naming.hxx`:105 - `TNaming_Naming::ExtendedDump()`
-    pub fn TNaming_Naming_extended_dump(
-        self_: *const TNaming_Naming,
-        anOS: *mut Standard_OStream,
-        aFilter: *const TDF_IDFilter,
-        aMap: *mut TDF_AttributeIndexedMap,
-    ) -> *const std::ffi::c_char;
-    /// **Source:** `TNaming_Naming.hxx`:113 - `TNaming_Naming::DynamicType()`
+    /// **Source:** `TNaming_Naming.hxx`:112 - `TNaming_Naming::DynamicType()`
     pub fn TNaming_Naming_dynamic_type(
         self_: *const TNaming_Naming,
-    ) -> crate::OcctResult<*const HandleStandardType>;
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// **Source:** `TNaming_Naming.hxx`:50 - `TNaming_Naming::GetID()`
     pub fn TNaming_Naming_get_id() -> crate::OcctResult<*const Standard_GUID>;
     /// **Source:** `TNaming_Naming.hxx`:52 - `TNaming_Naming::Insert()`
     pub fn TNaming_Naming_insert(
         under: *const TDF_Label,
-    ) -> crate::OcctResult<*mut HandleTNamingNaming>;
-    /// **Source:** `TNaming_Naming.hxx`:65 - `TNaming_Naming::Name()`
+    ) -> crate::OcctResult<*mut Handle_TNaming_Naming>;
+    /// **Source:** `TNaming_Naming.hxx`:66 - `TNaming_Naming::Name()`
     pub fn TNaming_Naming_name(
         where_: *const TDF_Label,
         Selection: *const TopoDS_Shape,
@@ -5052,11 +4808,11 @@ unsafe extern "C" {
         Geometry: bool,
         KeepOrientation: bool,
         BNproblem: bool,
-    ) -> crate::OcctResult<*mut HandleTNamingNamedShape>;
-    /// **Source:** `TNaming_Naming.hxx`:113 - `TNaming_Naming::get_type_name()`
+    ) -> crate::OcctResult<*mut Handle_TNaming_NamedShape>;
+    /// **Source:** `TNaming_Naming.hxx`:112 - `TNaming_Naming::get_type_name()`
     pub fn TNaming_Naming_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
-    /// **Source:** `TNaming_Naming.hxx`:113 - `TNaming_Naming::get_type_descriptor()`
-    pub fn TNaming_Naming_get_type_descriptor() -> crate::OcctResult<*const HandleStandardType>;
+    /// **Source:** `TNaming_Naming.hxx`:112 - `TNaming_Naming::get_type_descriptor()`
+    pub fn TNaming_Naming_get_type_descriptor() -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast TNaming_Naming to TDF_Attribute
     pub fn TNaming_Naming_as_TDF_Attribute(
         self_: *const TNaming_Naming,
@@ -5076,209 +4832,209 @@ unsafe extern "C" {
     /// Wrap TNaming_Naming in a Handle
     pub fn TNaming_Naming_to_handle(
         obj: *mut TNaming_Naming,
-    ) -> crate::OcctResult<*mut HandleTNamingNaming>;
+    ) -> crate::OcctResult<*mut Handle_TNaming_Naming>;
     /// Destroy Handle<TNaming_Naming>
-    pub fn HandleTNamingNaming_destructor(self_: *mut HandleTNamingNaming);
+    pub fn Handle_TNaming_Naming_destructor(self_: *mut Handle_TNaming_Naming);
     /// Clone Handle<TNaming_Naming> (increments reference count)
-    pub fn HandleTNamingNaming_clone(
-        self_: *const HandleTNamingNaming,
-    ) -> crate::OcctResult<*mut HandleTNamingNaming>;
+    pub fn Handle_TNaming_Naming_clone(
+        self_: *const Handle_TNaming_Naming,
+    ) -> crate::OcctResult<*mut Handle_TNaming_Naming>;
     /// Check if Handle<TNaming_Naming> is null
-    pub fn HandleTNamingNaming_is_null(self_: *const HandleTNamingNaming) -> bool;
+    pub fn Handle_TNaming_Naming_is_null(self_: *const Handle_TNaming_Naming) -> bool;
     /// Dereference Handle to get *const TNaming_Naming
-    pub fn HandleTNamingNaming_get(
-        handle: *const HandleTNamingNaming,
+    pub fn Handle_TNaming_Naming_get(
+        handle: *const Handle_TNaming_Naming,
     ) -> crate::OcctResult<*const TNaming_Naming>;
     /// Dereference Handle to get *mut TNaming_Naming
-    pub fn HandleTNamingNaming_get_mut(
-        handle: *mut HandleTNamingNaming,
+    pub fn Handle_TNaming_Naming_get_mut(
+        handle: *mut Handle_TNaming_Naming,
     ) -> crate::OcctResult<*mut TNaming_Naming>;
     /// Upcast Handle<TNaming_Naming> to Handle<TDF_Attribute>
-    pub fn HandleTNamingNaming_to_HandleTDFAttribute(
-        self_: *const HandleTNamingNaming,
-    ) -> crate::OcctResult<*mut HandleTDFAttribute>;
+    pub fn Handle_TNaming_Naming_to_Handle_TDF_Attribute(
+        self_: *const Handle_TNaming_Naming,
+    ) -> crate::OcctResult<*mut Handle_TDF_Attribute>;
     /// Upcast Handle<TNaming_Naming> to Handle<Standard_Transient>
-    pub fn HandleTNamingNaming_to_HandleStandardTransient(
-        self_: *const HandleTNamingNaming,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:138 - `TDF_Attribute::SetID()`
+    pub fn Handle_TNaming_Naming_to_Handle_Standard_Transient(
+        self_: *const Handle_TNaming_Naming,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:135 - `TDF_Attribute::SetID()`
     pub fn TNaming_Naming_inherited_SetID(
         self_: *mut TNaming_Naming,
         arg0: *const Standard_GUID,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:150 - `TDF_Attribute::Label()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:147 - `TDF_Attribute::Label()`
     pub fn TNaming_Naming_inherited_Label(
         self_: *const TNaming_Naming,
     ) -> crate::OcctResult<*mut TDF_Label>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:154 - `TDF_Attribute::Transaction()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:151 - `TDF_Attribute::Transaction()`
     pub fn TNaming_Naming_inherited_Transaction(
         self_: *const TNaming_Naming,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:160 - `TDF_Attribute::UntilTransaction()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:157 - `TDF_Attribute::UntilTransaction()`
     pub fn TNaming_Naming_inherited_UntilTransaction(
         self_: *const TNaming_Naming,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:164 - `TDF_Attribute::IsValid()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:161 - `TDF_Attribute::IsValid()`
     pub fn TNaming_Naming_inherited_IsValid(
         self_: *const TNaming_Naming,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:167 - `TDF_Attribute::IsNew()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:164 - `TDF_Attribute::IsNew()`
     pub fn TNaming_Naming_inherited_IsNew(self_: *const TNaming_Naming) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:174 - `TDF_Attribute::IsForgotten()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:171 - `TDF_Attribute::IsForgotten()`
     pub fn TNaming_Naming_inherited_IsForgotten(
         self_: *const TNaming_Naming,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:178 - `TDF_Attribute::IsAttribute()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:175 - `TDF_Attribute::IsAttribute()`
     pub fn TNaming_Naming_inherited_IsAttribute(
         self_: *const TNaming_Naming,
         anID: *const Standard_GUID,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:185 - `TDF_Attribute::FindAttribute()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:182 - `TDF_Attribute::FindAttribute()`
     pub fn TNaming_Naming_inherited_FindAttribute(
         self_: *const TNaming_Naming,
         anID: *const Standard_GUID,
-        anAttribute: *mut HandleTDFAttribute,
+        anAttribute: *mut Handle_TDF_Attribute,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:199 - `TDF_Attribute::AddAttribute()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:196 - `TDF_Attribute::AddAttribute()`
     pub fn TNaming_Naming_inherited_AddAttribute(
         self_: *const TNaming_Naming,
-        other: *const HandleTDFAttribute,
+        other: *const Handle_TDF_Attribute,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:206 - `TDF_Attribute::ForgetAttribute()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:203 - `TDF_Attribute::ForgetAttribute()`
     pub fn TNaming_Naming_inherited_ForgetAttribute(
         self_: *const TNaming_Naming,
         aguid: *const Standard_GUID,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:214 - `TDF_Attribute::ForgetAllAttributes()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:211 - `TDF_Attribute::ForgetAllAttributes()`
     pub fn TNaming_Naming_inherited_ForgetAllAttributes(
         self_: *const TNaming_Naming,
         clearChildren: bool,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:218 - `TDF_Attribute::AfterAddition()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:214 - `TDF_Attribute::AfterAddition()`
     pub fn TNaming_Naming_inherited_AfterAddition(
         self_: *mut TNaming_Naming,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:222 - `TDF_Attribute::BeforeRemoval()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:218 - `TDF_Attribute::BeforeRemoval()`
     pub fn TNaming_Naming_inherited_BeforeRemoval(
         self_: *mut TNaming_Naming,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:226 - `TDF_Attribute::BeforeForget()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:222 - `TDF_Attribute::BeforeForget()`
     pub fn TNaming_Naming_inherited_BeforeForget(
         self_: *mut TNaming_Naming,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:230 - `TDF_Attribute::AfterResume()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:226 - `TDF_Attribute::AfterResume()`
     pub fn TNaming_Naming_inherited_AfterResume(
         self_: *mut TNaming_Naming,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:239 - `TDF_Attribute::AfterRetrieval()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:235 - `TDF_Attribute::AfterRetrieval()`
     pub fn TNaming_Naming_inherited_AfterRetrieval(
         self_: *mut TNaming_Naming,
         forceIt: bool,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:248 - `TDF_Attribute::BeforeUndo()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:243 - `TDF_Attribute::BeforeUndo()`
     pub fn TNaming_Naming_inherited_BeforeUndo(
         self_: *mut TNaming_Naming,
-        anAttDelta: *const HandleTDFAttributeDelta,
+        anAttDelta: *const Handle_TDF_AttributeDelta,
         forceIt: bool,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:258 - `TDF_Attribute::AfterUndo()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:252 - `TDF_Attribute::AfterUndo()`
     pub fn TNaming_Naming_inherited_AfterUndo(
         self_: *mut TNaming_Naming,
-        anAttDelta: *const HandleTDFAttributeDelta,
+        anAttDelta: *const Handle_TDF_AttributeDelta,
         forceIt: bool,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:265 - `TDF_Attribute::BeforeCommitTransaction()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:258 - `TDF_Attribute::BeforeCommitTransaction()`
     pub fn TNaming_Naming_inherited_BeforeCommitTransaction(
         self_: *mut TNaming_Naming,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:277 - `TDF_Attribute::Backup()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:270 - `TDF_Attribute::Backup()`
     pub fn TNaming_Naming_inherited_Backup(self_: *mut TNaming_Naming) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:282 - `TDF_Attribute::IsBackuped()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:275 - `TDF_Attribute::IsBackuped()`
     pub fn TNaming_Naming_inherited_IsBackuped(
         self_: *const TNaming_Naming,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:286 - `TDF_Attribute::BackupCopy()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:279 - `TDF_Attribute::BackupCopy()`
     pub fn TNaming_Naming_inherited_BackupCopy(
         self_: *const TNaming_Naming,
-    ) -> crate::OcctResult<*mut HandleTDFAttribute>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:296 - `TDF_Attribute::DeltaOnAddition()`
+    ) -> crate::OcctResult<*mut Handle_TDF_Attribute>;
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:289 - `TDF_Attribute::DeltaOnAddition()`
     pub fn TNaming_Naming_inherited_DeltaOnAddition(
         self_: *const TNaming_Naming,
-    ) -> crate::OcctResult<*mut HandleTDFDeltaOnAddition>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:300 - `TDF_Attribute::DeltaOnForget()`
+    ) -> crate::OcctResult<*mut Handle_TDF_DeltaOnAddition>;
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:293 - `TDF_Attribute::DeltaOnForget()`
     pub fn TNaming_Naming_inherited_DeltaOnForget(
         self_: *const TNaming_Naming,
-    ) -> crate::OcctResult<*mut HandleTDFDeltaOnForget>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:304 - `TDF_Attribute::DeltaOnResume()`
+    ) -> crate::OcctResult<*mut Handle_TDF_DeltaOnForget>;
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:297 - `TDF_Attribute::DeltaOnResume()`
     pub fn TNaming_Naming_inherited_DeltaOnResume(
         self_: *const TNaming_Naming,
-    ) -> crate::OcctResult<*mut HandleTDFDeltaOnResume>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:308 - `TDF_Attribute::DeltaOnModification()`
+    ) -> crate::OcctResult<*mut Handle_TDF_DeltaOnResume>;
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:301 - `TDF_Attribute::DeltaOnModification()`
     pub fn TNaming_Naming_inherited_DeltaOnModification(
         self_: *const TNaming_Naming,
-        anOldAttribute: *const HandleTDFAttribute,
-    ) -> crate::OcctResult<*mut HandleTDFDeltaOnModification>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:316 - `TDF_Attribute::DeltaOnRemoval()`
+        anOldAttribute: *const Handle_TDF_Attribute,
+    ) -> crate::OcctResult<*mut Handle_TDF_DeltaOnModification>;
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:310 - `TDF_Attribute::DeltaOnRemoval()`
     pub fn TNaming_Naming_inherited_DeltaOnRemoval(
         self_: *const TNaming_Naming,
-    ) -> crate::OcctResult<*mut HandleTDFDeltaOnRemoval>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:374 - `TDF_Attribute::Forget()`
+    ) -> crate::OcctResult<*mut Handle_TDF_DeltaOnRemoval>;
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:370 - `TDF_Attribute::Forget()`
     pub fn TNaming_Naming_inherited_Forget(
         self_: *mut TNaming_Naming,
         aTransaction: i32,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn TNaming_Naming_inherited_IsInstance(
         self_: *const TNaming_Naming,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn TNaming_Naming_inherited_IsKind(
         self_: *const TNaming_Naming,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn TNaming_Naming_inherited_This(
         self_: *const TNaming_Naming,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn TNaming_Naming_inherited_GetRefCount(
         self_: *const TNaming_Naming,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn TNaming_Naming_inherited_IncrementRefCounter(
         self_: *mut TNaming_Naming,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn TNaming_Naming_inherited_DecrementRefCounter(
         self_: *mut TNaming_Naming,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn TNaming_Naming_inherited_Delete(self_: *const TNaming_Naming)
         -> *const std::ffi::c_char;
     // ======================== TNaming_NamingTool ========================
     pub fn TNaming_NamingTool_destructor(self_: *mut TNaming_NamingTool);
     /// **Source:** `TNaming_NamingTool.hxx` - `TNaming_NamingTool::TNaming_NamingTool()`
     pub fn TNaming_NamingTool_ctor() -> crate::OcctResult<*mut TNaming_NamingTool>;
-    /// **Source:** `TNaming_NamingTool.hxx`:34 - `TNaming_NamingTool::CurrentShape()`
+    /// **Source:** `TNaming_NamingTool.hxx`:36 - `TNaming_NamingTool::CurrentShape()`
     pub fn TNaming_NamingTool_current_shape(
-        Valid: *const TDF_LabelMap,
-        Forbiden: *const TDF_LabelMap,
-        NS: *const HandleTNamingNamedShape,
-        MS: *mut TopTools_IndexedMapOfShape,
+        Valid: *const NCollection_Map_TDF_Label,
+        Forbiden: *const NCollection_Map_TDF_Label,
+        NS: *const Handle_TNaming_NamedShape,
+        MS: *mut NCollection_IndexedMap_TopoDS_Shape_TopTools_ShapeMapHasher,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `TNaming_NamingTool.hxx`:39 - `TNaming_NamingTool::CurrentShapeFromShape()`
+    /// **Source:** `TNaming_NamingTool.hxx`:42 - `TNaming_NamingTool::CurrentShapeFromShape()`
     pub fn TNaming_NamingTool_current_shape_from_shape(
-        Valid: *const TDF_LabelMap,
-        Forbiden: *const TDF_LabelMap,
+        Valid: *const NCollection_Map_TDF_Label,
+        Forbiden: *const NCollection_Map_TDF_Label,
         Acces: *const TDF_Label,
         S: *const TopoDS_Shape,
-        MS: *mut TopTools_IndexedMapOfShape,
+        MS: *mut NCollection_IndexedMap_TopoDS_Shape_TopTools_ShapeMapHasher,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `TNaming_NamingTool.hxx`:45 - `TNaming_NamingTool::BuildDescendants()`
+    /// **Source:** `TNaming_NamingTool.hxx`:49 - `TNaming_NamingTool::BuildDescendants()`
     pub fn TNaming_NamingTool_build_descendants(
-        NS: *const HandleTNamingNamedShape,
-        Labels: *mut TDF_LabelMap,
+        NS: *const Handle_TNaming_NamedShape,
+        Labels: *mut NCollection_Map_TDF_Label,
     ) -> *const std::ffi::c_char;
     // ======================== TNaming_NewShapeIterator ========================
     pub fn TNaming_NewShapeIterator_destructor(self_: *mut TNaming_NewShapeIterator);
@@ -5312,7 +5068,7 @@ unsafe extern "C" {
     /// **Source:** `TNaming_NewShapeIterator.hxx`:61 - `TNaming_NewShapeIterator::NamedShape()`
     pub fn TNaming_NewShapeIterator_named_shape(
         self_: *const TNaming_NewShapeIterator,
-    ) -> crate::OcctResult<*mut HandleTNamingNamedShape>;
+    ) -> crate::OcctResult<*mut Handle_TNaming_NamedShape>;
     /// **Source:** `TNaming_NewShapeIterator.hxx`:64 - `TNaming_NewShapeIterator::Shape()`
     pub fn TNaming_NewShapeIterator_shape(
         self_: *const TNaming_NewShapeIterator,
@@ -5357,7 +5113,7 @@ unsafe extern "C" {
     /// **Source:** `TNaming_OldShapeIterator.hxx`:61 - `TNaming_OldShapeIterator::NamedShape()`
     pub fn TNaming_OldShapeIterator_named_shape(
         self_: *const TNaming_OldShapeIterator,
-    ) -> crate::OcctResult<*mut HandleTNamingNamedShape>;
+    ) -> crate::OcctResult<*mut Handle_TNaming_NamedShape>;
     /// **Source:** `TNaming_OldShapeIterator.hxx`:63 - `TNaming_OldShapeIterator::Shape()`
     pub fn TNaming_OldShapeIterator_shape(
         self_: *const TNaming_OldShapeIterator,
@@ -5394,7 +5150,7 @@ unsafe extern "C" {
     /// **Source:** `TNaming_RefShape.hxx`:49 - `TNaming_RefShape::NamedShape()`
     pub fn TNaming_RefShape_named_shape(
         self_: *const TNaming_RefShape,
-    ) -> crate::OcctResult<*mut HandleTNamingNamedShape>;
+    ) -> crate::OcctResult<*mut Handle_TNaming_NamedShape>;
     // ======================== TNaming_SameShapeIterator ========================
     pub fn TNaming_SameShapeIterator_destructor(self_: *mut TNaming_SameShapeIterator);
     /// **Source:** `TNaming_SameShapeIterator.hxx`:39 - `TNaming_SameShapeIterator::TNaming_SameShapeIterator()`
@@ -5416,29 +5172,29 @@ unsafe extern "C" {
     ) -> crate::OcctResult<*mut TDF_Label>;
     // ======================== TNaming_Scope ========================
     pub fn TNaming_Scope_destructor(self_: *mut TNaming_Scope);
-    /// **Source:** `TNaming_Scope.hxx`:37 - `TNaming_Scope::TNaming_Scope()`
+    /// **Source:** `TNaming_Scope.hxx`:38 - `TNaming_Scope::TNaming_Scope()`
     pub fn TNaming_Scope_ctor() -> crate::OcctResult<*mut TNaming_Scope>;
-    /// **Source:** `TNaming_Scope.hxx`:41 - `TNaming_Scope::TNaming_Scope()`
+    /// **Source:** `TNaming_Scope.hxx`:42 - `TNaming_Scope::TNaming_Scope()`
     pub fn TNaming_Scope_ctor_bool(WithValid: bool) -> crate::OcctResult<*mut TNaming_Scope>;
-    /// **Source:** `TNaming_Scope.hxx`:44 - `TNaming_Scope::TNaming_Scope()`
-    pub fn TNaming_Scope_ctor_labelmap(
-        valid: *mut TDF_LabelMap,
+    /// **Source:** `TNaming_Scope.hxx`:45 - `TNaming_Scope::TNaming_Scope()`
+    pub fn TNaming_Scope_ctor_map_label(
+        valid: *mut NCollection_Map_TDF_Label,
     ) -> crate::OcctResult<*mut TNaming_Scope>;
-    /// **Source:** `TNaming_Scope.hxx`:46 - `TNaming_Scope::WithValid()`
+    /// **Source:** `TNaming_Scope.hxx`:47 - `TNaming_Scope::WithValid()`
     pub fn TNaming_Scope_with_valid(self_: *const TNaming_Scope) -> crate::OcctResult<bool>;
-    /// **Source:** `TNaming_Scope.hxx`:48 - `TNaming_Scope::WithValid()`
+    /// **Source:** `TNaming_Scope.hxx`:49 - `TNaming_Scope::WithValid()`
     pub fn TNaming_Scope_with_valid_bool(
         self_: *mut TNaming_Scope,
         mode: bool,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `TNaming_Scope.hxx`:50 - `TNaming_Scope::ClearValid()`
+    /// **Source:** `TNaming_Scope.hxx`:51 - `TNaming_Scope::ClearValid()`
     pub fn TNaming_Scope_clear_valid(self_: *mut TNaming_Scope) -> *const std::ffi::c_char;
-    /// **Source:** `TNaming_Scope.hxx`:52 - `TNaming_Scope::Valid()`
+    /// **Source:** `TNaming_Scope.hxx`:53 - `TNaming_Scope::Valid()`
     pub fn TNaming_Scope_valid(
         self_: *mut TNaming_Scope,
         L: *const TDF_Label,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `TNaming_Scope.hxx`:54 - `TNaming_Scope::ValidChildren()`
+    /// **Source:** `TNaming_Scope.hxx`:55 - `TNaming_Scope::ValidChildren()`
     pub fn TNaming_Scope_valid_children(
         self_: *mut TNaming_Scope,
         L: *const TDF_Label,
@@ -5455,31 +5211,31 @@ unsafe extern "C" {
         L: *const TDF_Label,
         withroot: bool,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `TNaming_Scope.hxx`:62 - `TNaming_Scope::IsValid()`
+    /// **Source:** `TNaming_Scope.hxx`:61 - `TNaming_Scope::IsValid()`
     pub fn TNaming_Scope_is_valid(
         self_: *const TNaming_Scope,
         L: *const TDF_Label,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `TNaming_Scope.hxx`:64 - `TNaming_Scope::GetValid()`
+    /// **Source:** `TNaming_Scope.hxx`:63 - `TNaming_Scope::GetValid()`
     pub fn TNaming_Scope_get_valid(
         self_: *const TNaming_Scope,
-    ) -> crate::OcctResult<*const TDF_LabelMap>;
-    /// **Source:** `TNaming_Scope.hxx`:66 - `TNaming_Scope::ChangeValid()`
+    ) -> crate::OcctResult<*const NCollection_Map_TDF_Label>;
+    /// **Source:** `TNaming_Scope.hxx`:65 - `TNaming_Scope::ChangeValid()`
     pub fn TNaming_Scope_change_valid(
         self_: *mut TNaming_Scope,
-    ) -> crate::OcctResult<*mut TDF_LabelMap>;
-    /// **Source:** `TNaming_Scope.hxx`:70 - `TNaming_Scope::CurrentShape()`
+    ) -> crate::OcctResult<*mut NCollection_Map_TDF_Label>;
+    /// **Source:** `TNaming_Scope.hxx`:69 - `TNaming_Scope::CurrentShape()`
     pub fn TNaming_Scope_current_shape(
         self_: *const TNaming_Scope,
-        NS: *const HandleTNamingNamedShape,
+        NS: *const Handle_TNaming_NamedShape,
     ) -> crate::OcctResult<*mut TopoDS_Shape>;
     // ======================== TNaming_Selector ========================
     pub fn TNaming_Selector_destructor(self_: *mut TNaming_Selector);
-    /// **Source:** `TNaming_Selector.hxx`:88 - `TNaming_Selector::TNaming_Selector()`
+    /// **Source:** `TNaming_Selector.hxx`:87 - `TNaming_Selector::TNaming_Selector()`
     pub fn TNaming_Selector_ctor_label(
         aLabel: *const TDF_Label,
     ) -> crate::OcctResult<*mut TNaming_Selector>;
-    /// **Source:** `TNaming_Selector.hxx`:100 - `TNaming_Selector::Select()`
+    /// **Source:** `TNaming_Selector.hxx`:98 - `TNaming_Selector::Select()`
     pub fn TNaming_Selector_select_shape2_bool2(
         self_: *const TNaming_Selector,
         Selection: *const TopoDS_Shape,
@@ -5487,248 +5243,216 @@ unsafe extern "C" {
         Geometry: bool,
         KeepOrientatation: bool,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `TNaming_Selector.hxx`:112 - `TNaming_Selector::Select()`
+    /// **Source:** `TNaming_Selector.hxx`:109 - `TNaming_Selector::Select()`
     pub fn TNaming_Selector_select_shape_bool2(
         self_: *const TNaming_Selector,
         Selection: *const TopoDS_Shape,
         Geometry: bool,
         KeepOrientatation: bool,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `TNaming_Selector.hxx`:121 - `TNaming_Selector::Solve()`
+    /// **Source:** `TNaming_Selector.hxx`:118 - `TNaming_Selector::Solve()`
     pub fn TNaming_Selector_solve(
         self_: *const TNaming_Selector,
-        Valid: *mut TDF_LabelMap,
+        Valid: *mut NCollection_Map_TDF_Label,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `TNaming_Selector.hxx`:125 - `TNaming_Selector::Arguments()`
-    pub fn TNaming_Selector_arguments(
-        self_: *const TNaming_Selector,
-        args: *mut TDF_AttributeMap,
-    ) -> *const std::ffi::c_char;
-    /// **Source:** `TNaming_Selector.hxx`:129 - `TNaming_Selector::NamedShape()`
+    /// **Source:** `TNaming_Selector.hxx`:126 - `TNaming_Selector::NamedShape()`
     pub fn TNaming_Selector_named_shape(
         self_: *const TNaming_Selector,
-    ) -> crate::OcctResult<*mut HandleTNamingNamedShape>;
+    ) -> crate::OcctResult<*mut Handle_TNaming_NamedShape>;
     /// **Source:** `TNaming_Selector.hxx`:79 - `TNaming_Selector::IsIdentified()`
     pub fn TNaming_Selector_is_identified(
         access: *const TDF_Label,
         selection: *const TopoDS_Shape,
-        NS: *mut HandleTNamingNamedShape,
+        NS: *mut Handle_TNaming_NamedShape,
         Geometry: bool,
     ) -> crate::OcctResult<bool>;
     // ======================== TNaming_ShapesSet ========================
     pub fn TNaming_ShapesSet_destructor(self_: *mut TNaming_ShapesSet);
-    /// **Source:** `TNaming_ShapesSet.hxx`:33 - `TNaming_ShapesSet::TNaming_ShapesSet()`
-    pub fn TNaming_ShapesSet_ctor() -> crate::OcctResult<*mut TNaming_ShapesSet>;
     /// **Source:** `TNaming_ShapesSet.hxx`:35 - `TNaming_ShapesSet::TNaming_ShapesSet()`
+    pub fn TNaming_ShapesSet_ctor() -> crate::OcctResult<*mut TNaming_ShapesSet>;
+    /// **Source:** `TNaming_ShapesSet.hxx`:37 - `TNaming_ShapesSet::TNaming_ShapesSet()`
     pub fn TNaming_ShapesSet_ctor_shape_shapeenum(
         S: *const TopoDS_Shape,
         Type: i32,
     ) -> crate::OcctResult<*mut TNaming_ShapesSet>;
-    /// **Source:** `TNaming_ShapesSet.hxx`:39 - `TNaming_ShapesSet::Clear()`
+    /// **Source:** `TNaming_ShapesSet.hxx`:41 - `TNaming_ShapesSet::Clear()`
     pub fn TNaming_ShapesSet_clear(self_: *mut TNaming_ShapesSet) -> *const std::ffi::c_char;
-    /// **Source:** `TNaming_ShapesSet.hxx`:42 - `TNaming_ShapesSet::Add()`
+    /// **Source:** `TNaming_ShapesSet.hxx`:44 - `TNaming_ShapesSet::Add()`
     pub fn TNaming_ShapesSet_add_shape(
         self_: *mut TNaming_ShapesSet,
         S: *const TopoDS_Shape,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `TNaming_ShapesSet.hxx`:45 - `TNaming_ShapesSet::Contains()`
+    /// **Source:** `TNaming_ShapesSet.hxx`:47 - `TNaming_ShapesSet::Contains()`
     pub fn TNaming_ShapesSet_contains(
         self_: *const TNaming_ShapesSet,
         S: *const TopoDS_Shape,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `TNaming_ShapesSet.hxx`:48 - `TNaming_ShapesSet::Remove()`
+    /// **Source:** `TNaming_ShapesSet.hxx`:50 - `TNaming_ShapesSet::Remove()`
     pub fn TNaming_ShapesSet_remove_shape(
         self_: *mut TNaming_ShapesSet,
         S: *const TopoDS_Shape,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `TNaming_ShapesSet.hxx`:51 - `TNaming_ShapesSet::Add()`
+    /// **Source:** `TNaming_ShapesSet.hxx`:53 - `TNaming_ShapesSet::Add()`
     pub fn TNaming_ShapesSet_add_shapesset(
         self_: *mut TNaming_ShapesSet,
         Shapes: *const TNaming_ShapesSet,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `TNaming_ShapesSet.hxx`:55 - `TNaming_ShapesSet::Filter()`
+    /// **Source:** `TNaming_ShapesSet.hxx`:57 - `TNaming_ShapesSet::Filter()`
     pub fn TNaming_ShapesSet_filter(
         self_: *mut TNaming_ShapesSet,
         Shapes: *const TNaming_ShapesSet,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `TNaming_ShapesSet.hxx`:58 - `TNaming_ShapesSet::Remove()`
+    /// **Source:** `TNaming_ShapesSet.hxx`:60 - `TNaming_ShapesSet::Remove()`
     pub fn TNaming_ShapesSet_remove_shapesset(
         self_: *mut TNaming_ShapesSet,
         Shapes: *const TNaming_ShapesSet,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `TNaming_ShapesSet.hxx`:60 - `TNaming_ShapesSet::IsEmpty()`
+    /// **Source:** `TNaming_ShapesSet.hxx`:62 - `TNaming_ShapesSet::IsEmpty()`
     pub fn TNaming_ShapesSet_is_empty(self_: *const TNaming_ShapesSet) -> crate::OcctResult<bool>;
-    /// **Source:** `TNaming_ShapesSet.hxx`:62 - `TNaming_ShapesSet::NbShapes()`
+    /// **Source:** `TNaming_ShapesSet.hxx`:64 - `TNaming_ShapesSet::NbShapes()`
     pub fn TNaming_ShapesSet_nb_shapes(self_: *const TNaming_ShapesSet) -> crate::OcctResult<i32>;
-    /// **Source:** `TNaming_ShapesSet.hxx`:64 - `TNaming_ShapesSet::ChangeMap()`
+    /// **Source:** `TNaming_ShapesSet.hxx`:66 - `TNaming_ShapesSet::ChangeMap()`
     pub fn TNaming_ShapesSet_change_map(
         self_: *mut TNaming_ShapesSet,
-    ) -> crate::OcctResult<*mut TopTools_MapOfShape>;
-    /// **Source:** `TNaming_ShapesSet.hxx`:66 - `TNaming_ShapesSet::Map()`
+    ) -> crate::OcctResult<*mut NCollection_Map_TopoDS_Shape_TopTools_ShapeMapHasher>;
+    /// **Source:** `TNaming_ShapesSet.hxx`:68 - `TNaming_ShapesSet::Map()`
     pub fn TNaming_ShapesSet_map(
         self_: *const TNaming_ShapesSet,
-    ) -> crate::OcctResult<*const TopTools_MapOfShape>;
+    ) -> crate::OcctResult<*const NCollection_Map_TopoDS_Shape_TopTools_ShapeMapHasher>;
     // ======================== TNaming_Tool ========================
     pub fn TNaming_Tool_destructor(self_: *mut TNaming_Tool);
     /// **Source:** `TNaming_Tool.hxx` - `TNaming_Tool::TNaming_Tool()`
     pub fn TNaming_Tool_ctor() -> crate::OcctResult<*mut TNaming_Tool>;
-    /// **Source:** `TNaming_Tool.hxx`:51 - `TNaming_Tool::CurrentShape()`
+    /// **Source:** `TNaming_Tool.hxx`:53 - `TNaming_Tool::CurrentShape()`
     pub fn TNaming_Tool_current_shape_handletnamingnamedshape(
-        NS: *const HandleTNamingNamedShape,
+        NS: *const Handle_TNaming_NamedShape,
     ) -> crate::OcctResult<*mut TopoDS_Shape>;
-    /// **Source:** `TNaming_Tool.hxx`:61 - `TNaming_Tool::CurrentShape()`
-    pub fn TNaming_Tool_current_shape_handletnamingnamedshape_labelmap(
-        NS: *const HandleTNamingNamedShape,
-        Updated: *const TDF_LabelMap,
+    /// **Source:** `TNaming_Tool.hxx`:63 - `TNaming_Tool::CurrentShape()`
+    pub fn TNaming_Tool_current_shape_handletnamingnamedshape_map_label(
+        NS: *const Handle_TNaming_NamedShape,
+        Updated: *const NCollection_Map_TDF_Label,
     ) -> crate::OcctResult<*mut TopoDS_Shape>;
-    /// **Source:** `TNaming_Tool.hxx`:66 - `TNaming_Tool::CurrentNamedShape()`
-    pub fn TNaming_Tool_current_named_shape_handletnamingnamedshape_labelmap(
-        NS: *const HandleTNamingNamedShape,
-        Updated: *const TDF_LabelMap,
-    ) -> crate::OcctResult<*mut HandleTNamingNamedShape>;
-    /// **Source:** `TNaming_Tool.hxx`:71 - `TNaming_Tool::CurrentNamedShape()`
+    /// **Source:** `TNaming_Tool.hxx`:68 - `TNaming_Tool::CurrentNamedShape()`
+    pub fn TNaming_Tool_current_named_shape_handletnamingnamedshape_map_label(
+        NS: *const Handle_TNaming_NamedShape,
+        Updated: *const NCollection_Map_TDF_Label,
+    ) -> crate::OcctResult<*mut Handle_TNaming_NamedShape>;
+    /// **Source:** `TNaming_Tool.hxx`:73 - `TNaming_Tool::CurrentNamedShape()`
     pub fn TNaming_Tool_current_named_shape_handletnamingnamedshape(
-        NS: *const HandleTNamingNamedShape,
-    ) -> crate::OcctResult<*mut HandleTNamingNamedShape>;
-    /// **Source:** `TNaming_Tool.hxx`:112 - `TNaming_Tool::NamedShape()`
+        NS: *const Handle_TNaming_NamedShape,
+    ) -> crate::OcctResult<*mut Handle_TNaming_NamedShape>;
+    /// **Source:** `TNaming_Tool.hxx`:114 - `TNaming_Tool::NamedShape()`
     pub fn TNaming_Tool_named_shape(
         aShape: *const TopoDS_Shape,
         anAcces: *const TDF_Label,
-    ) -> crate::OcctResult<*mut HandleTNamingNamedShape>;
-    /// **Source:** `TNaming_Tool.hxx`:120 - `TNaming_Tool::GetShape()`
+    ) -> crate::OcctResult<*mut Handle_TNaming_NamedShape>;
+    /// **Source:** `TNaming_Tool.hxx`:122 - `TNaming_Tool::GetShape()`
     pub fn TNaming_Tool_get_shape(
-        NS: *const HandleTNamingNamedShape,
+        NS: *const Handle_TNaming_NamedShape,
     ) -> crate::OcctResult<*mut TopoDS_Shape>;
-    /// **Source:** `TNaming_Tool.hxx`:123 - `TNaming_Tool::OriginalShape()`
+    /// **Source:** `TNaming_Tool.hxx`:125 - `TNaming_Tool::OriginalShape()`
     pub fn TNaming_Tool_original_shape(
-        NS: *const HandleTNamingNamedShape,
+        NS: *const Handle_TNaming_NamedShape,
     ) -> crate::OcctResult<*mut TopoDS_Shape>;
-    /// **Source:** `TNaming_Tool.hxx`:128 - `TNaming_Tool::GeneratedShape()`
+    /// **Source:** `TNaming_Tool.hxx`:130 - `TNaming_Tool::GeneratedShape()`
     pub fn TNaming_Tool_generated_shape(
         S: *const TopoDS_Shape,
-        Generation: *const HandleTNamingNamedShape,
+        Generation: *const Handle_TNaming_NamedShape,
     ) -> crate::OcctResult<*mut TopoDS_Shape>;
-    /// **Source:** `TNaming_Tool.hxx`:131 - `TNaming_Tool::Collect()`
-    pub fn TNaming_Tool_collect(
-        NS: *const HandleTNamingNamedShape,
-        Labels: *mut TNaming_MapOfNamedShape,
-        OnlyModif: bool,
-    ) -> *const std::ffi::c_char;
-    /// **Source:** `TNaming_Tool.hxx`:136 - `TNaming_Tool::HasLabel()`
+    /// **Source:** `TNaming_Tool.hxx`:139 - `TNaming_Tool::HasLabel()`
     pub fn TNaming_Tool_has_label(
         access: *const TDF_Label,
         aShape: *const TopoDS_Shape,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `TNaming_Tool.hxx`:142 - `TNaming_Tool::Label()`
+    /// **Source:** `TNaming_Tool.hxx`:144 - `TNaming_Tool::Label()`
     pub fn TNaming_Tool_label(
         access: *const TDF_Label,
         aShape: *const TopoDS_Shape,
         TransDef: *mut i32,
     ) -> crate::OcctResult<*mut TDF_Label>;
-    /// **Source:** `TNaming_Tool.hxx`:148 - `TNaming_Tool::InitialShape()`
+    /// **Source:** `TNaming_Tool.hxx`:150 - `TNaming_Tool::InitialShape()`
     pub fn TNaming_Tool_initial_shape(
         aShape: *const TopoDS_Shape,
         anAcces: *const TDF_Label,
-        Labels: *mut TDF_LabelList,
+        Labels: *mut NCollection_List_TDF_Label,
     ) -> crate::OcctResult<*mut TopoDS_Shape>;
-    /// **Source:** `TNaming_Tool.hxx`:154 - `TNaming_Tool::ValidUntil()`
+    /// **Source:** `TNaming_Tool.hxx`:156 - `TNaming_Tool::ValidUntil()`
     pub fn TNaming_Tool_valid_until(
         access: *const TDF_Label,
         S: *const TopoDS_Shape,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `TNaming_Tool.hxx`:160 - `TNaming_Tool::FindShape()`
+    /// **Source:** `TNaming_Tool.hxx`:161 - `TNaming_Tool::FindShape()`
     pub fn TNaming_Tool_find_shape(
-        Valid: *const TDF_LabelMap,
-        Forbiden: *const TDF_LabelMap,
-        Arg: *const HandleTNamingNamedShape,
+        Valid: *const NCollection_Map_TDF_Label,
+        Forbiden: *const NCollection_Map_TDF_Label,
+        Arg: *const Handle_TNaming_NamedShape,
         S: *mut TopoDS_Shape,
     ) -> *const std::ffi::c_char;
     // ======================== TNaming_TranslateTool ========================
     pub fn TNaming_TranslateTool_destructor(self_: *mut TNaming_TranslateTool);
     /// **Source:** `TNaming_TranslateTool.hxx` - `TNaming_TranslateTool::TNaming_TranslateTool()`
     pub fn TNaming_TranslateTool_ctor() -> crate::OcctResult<*mut TNaming_TranslateTool>;
-    /// **Source:** `TNaming_TranslateTool.hxx`:38 - `TNaming_TranslateTool::Add()`
+    /// **Source:** `TNaming_TranslateTool.hxx`:35 - `TNaming_TranslateTool::Add()`
     pub fn TNaming_TranslateTool_add(
         self_: *const TNaming_TranslateTool,
         S1: *mut TopoDS_Shape,
         S2: *const TopoDS_Shape,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `TNaming_TranslateTool.hxx`:40 - `TNaming_TranslateTool::MakeVertex()`
+    /// **Source:** `TNaming_TranslateTool.hxx`:37 - `TNaming_TranslateTool::MakeVertex()`
     pub fn TNaming_TranslateTool_make_vertex(
         self_: *const TNaming_TranslateTool,
         S: *mut TopoDS_Shape,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `TNaming_TranslateTool.hxx`:42 - `TNaming_TranslateTool::MakeEdge()`
+    /// **Source:** `TNaming_TranslateTool.hxx`:39 - `TNaming_TranslateTool::MakeEdge()`
     pub fn TNaming_TranslateTool_make_edge(
         self_: *const TNaming_TranslateTool,
         S: *mut TopoDS_Shape,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `TNaming_TranslateTool.hxx`:44 - `TNaming_TranslateTool::MakeWire()`
+    /// **Source:** `TNaming_TranslateTool.hxx`:41 - `TNaming_TranslateTool::MakeWire()`
     pub fn TNaming_TranslateTool_make_wire(
         self_: *const TNaming_TranslateTool,
         S: *mut TopoDS_Shape,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `TNaming_TranslateTool.hxx`:46 - `TNaming_TranslateTool::MakeFace()`
+    /// **Source:** `TNaming_TranslateTool.hxx`:43 - `TNaming_TranslateTool::MakeFace()`
     pub fn TNaming_TranslateTool_make_face(
         self_: *const TNaming_TranslateTool,
         S: *mut TopoDS_Shape,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `TNaming_TranslateTool.hxx`:48 - `TNaming_TranslateTool::MakeShell()`
+    /// **Source:** `TNaming_TranslateTool.hxx`:45 - `TNaming_TranslateTool::MakeShell()`
     pub fn TNaming_TranslateTool_make_shell(
         self_: *const TNaming_TranslateTool,
         S: *mut TopoDS_Shape,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `TNaming_TranslateTool.hxx`:50 - `TNaming_TranslateTool::MakeSolid()`
+    /// **Source:** `TNaming_TranslateTool.hxx`:47 - `TNaming_TranslateTool::MakeSolid()`
     pub fn TNaming_TranslateTool_make_solid(
         self_: *const TNaming_TranslateTool,
         S: *mut TopoDS_Shape,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `TNaming_TranslateTool.hxx`:52 - `TNaming_TranslateTool::MakeCompSolid()`
+    /// **Source:** `TNaming_TranslateTool.hxx`:49 - `TNaming_TranslateTool::MakeCompSolid()`
     pub fn TNaming_TranslateTool_make_comp_solid(
         self_: *const TNaming_TranslateTool,
         S: *mut TopoDS_Shape,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `TNaming_TranslateTool.hxx`:54 - `TNaming_TranslateTool::MakeCompound()`
+    /// **Source:** `TNaming_TranslateTool.hxx`:51 - `TNaming_TranslateTool::MakeCompound()`
     pub fn TNaming_TranslateTool_make_compound(
         self_: *const TNaming_TranslateTool,
         S: *mut TopoDS_Shape,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `TNaming_TranslateTool.hxx`:56 - `TNaming_TranslateTool::UpdateVertex()`
-    pub fn TNaming_TranslateTool_update_vertex(
-        self_: *const TNaming_TranslateTool,
-        S1: *const TopoDS_Shape,
-        S2: *mut TopoDS_Shape,
-        M: *mut TColStd_IndexedDataMapOfTransientTransient,
-    ) -> *const std::ffi::c_char;
-    /// **Source:** `TNaming_TranslateTool.hxx`:60 - `TNaming_TranslateTool::UpdateEdge()`
-    pub fn TNaming_TranslateTool_update_edge(
-        self_: *const TNaming_TranslateTool,
-        S1: *const TopoDS_Shape,
-        S2: *mut TopoDS_Shape,
-        M: *mut TColStd_IndexedDataMapOfTransientTransient,
-    ) -> *const std::ffi::c_char;
-    /// **Source:** `TNaming_TranslateTool.hxx`:64 - `TNaming_TranslateTool::UpdateFace()`
-    pub fn TNaming_TranslateTool_update_face(
-        self_: *const TNaming_TranslateTool,
-        S1: *const TopoDS_Shape,
-        S2: *mut TopoDS_Shape,
-        M: *mut TColStd_IndexedDataMapOfTransientTransient,
-    ) -> *const std::ffi::c_char;
-    /// **Source:** `TNaming_TranslateTool.hxx`:68 - `TNaming_TranslateTool::UpdateShape()`
+    /// **Source:** `TNaming_TranslateTool.hxx`:71 - `TNaming_TranslateTool::UpdateShape()`
     pub fn TNaming_TranslateTool_update_shape(
         self_: *const TNaming_TranslateTool,
         S1: *const TopoDS_Shape,
         S2: *mut TopoDS_Shape,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `TNaming_TranslateTool.hxx`:70 - `TNaming_TranslateTool::DynamicType()`
+    /// **Source:** `TNaming_TranslateTool.hxx`:73 - `TNaming_TranslateTool::DynamicType()`
     pub fn TNaming_TranslateTool_dynamic_type(
         self_: *const TNaming_TranslateTool,
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// **Source:** `TNaming_TranslateTool.hxx`:70 - `TNaming_TranslateTool::get_type_name()`
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
+    /// **Source:** `TNaming_TranslateTool.hxx`:73 - `TNaming_TranslateTool::get_type_name()`
     pub fn TNaming_TranslateTool_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
-    /// **Source:** `TNaming_TranslateTool.hxx`:70 - `TNaming_TranslateTool::get_type_descriptor()`
+    /// **Source:** `TNaming_TranslateTool.hxx`:73 - `TNaming_TranslateTool::get_type_descriptor()`
     pub fn TNaming_TranslateTool_get_type_descriptor(
-    ) -> crate::OcctResult<*const HandleStandardType>;
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast TNaming_TranslateTool to Standard_Transient
     pub fn TNaming_TranslateTool_as_Standard_Transient(
         self_: *const TNaming_TranslateTool,
@@ -5740,80 +5464,83 @@ unsafe extern "C" {
     /// Wrap TNaming_TranslateTool in a Handle
     pub fn TNaming_TranslateTool_to_handle(
         obj: *mut TNaming_TranslateTool,
-    ) -> crate::OcctResult<*mut HandleTNamingTranslateTool>;
+    ) -> crate::OcctResult<*mut Handle_TNaming_TranslateTool>;
     /// Destroy Handle<TNaming_TranslateTool>
-    pub fn HandleTNamingTranslateTool_destructor(self_: *mut HandleTNamingTranslateTool);
+    pub fn Handle_TNaming_TranslateTool_destructor(self_: *mut Handle_TNaming_TranslateTool);
     /// Clone Handle<TNaming_TranslateTool> (increments reference count)
-    pub fn HandleTNamingTranslateTool_clone(
-        self_: *const HandleTNamingTranslateTool,
-    ) -> crate::OcctResult<*mut HandleTNamingTranslateTool>;
+    pub fn Handle_TNaming_TranslateTool_clone(
+        self_: *const Handle_TNaming_TranslateTool,
+    ) -> crate::OcctResult<*mut Handle_TNaming_TranslateTool>;
     /// Check if Handle<TNaming_TranslateTool> is null
-    pub fn HandleTNamingTranslateTool_is_null(self_: *const HandleTNamingTranslateTool) -> bool;
+    pub fn Handle_TNaming_TranslateTool_is_null(self_: *const Handle_TNaming_TranslateTool)
+        -> bool;
     /// Dereference Handle to get *const TNaming_TranslateTool
-    pub fn HandleTNamingTranslateTool_get(
-        handle: *const HandleTNamingTranslateTool,
+    pub fn Handle_TNaming_TranslateTool_get(
+        handle: *const Handle_TNaming_TranslateTool,
     ) -> crate::OcctResult<*const TNaming_TranslateTool>;
     /// Dereference Handle to get *mut TNaming_TranslateTool
-    pub fn HandleTNamingTranslateTool_get_mut(
-        handle: *mut HandleTNamingTranslateTool,
+    pub fn Handle_TNaming_TranslateTool_get_mut(
+        handle: *mut Handle_TNaming_TranslateTool,
     ) -> crate::OcctResult<*mut TNaming_TranslateTool>;
     /// Upcast Handle<TNaming_TranslateTool> to Handle<Standard_Transient>
-    pub fn HandleTNamingTranslateTool_to_HandleStandardTransient(
-        self_: *const HandleTNamingTranslateTool,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn Handle_TNaming_TranslateTool_to_Handle_Standard_Transient(
+        self_: *const Handle_TNaming_TranslateTool,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn TNaming_TranslateTool_inherited_IsInstance(
         self_: *const TNaming_TranslateTool,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn TNaming_TranslateTool_inherited_IsKind(
         self_: *const TNaming_TranslateTool,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn TNaming_TranslateTool_inherited_This(
         self_: *const TNaming_TranslateTool,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn TNaming_TranslateTool_inherited_GetRefCount(
         self_: *const TNaming_TranslateTool,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn TNaming_TranslateTool_inherited_IncrementRefCounter(
         self_: *mut TNaming_TranslateTool,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn TNaming_TranslateTool_inherited_DecrementRefCounter(
         self_: *mut TNaming_TranslateTool,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn TNaming_TranslateTool_inherited_Delete(
         self_: *const TNaming_TranslateTool,
     ) -> *const std::ffi::c_char;
     // ======================== TNaming_Translator ========================
     pub fn TNaming_Translator_destructor(self_: *mut TNaming_Translator);
-    /// **Source:** `TNaming_Translator.hxx`:33 - `TNaming_Translator::TNaming_Translator()`
+    /// **Source:** `TNaming_Translator.hxx`:36 - `TNaming_Translator::TNaming_Translator()`
     pub fn TNaming_Translator_ctor() -> crate::OcctResult<*mut TNaming_Translator>;
-    /// **Source:** `TNaming_Translator.hxx`:35 - `TNaming_Translator::Add()`
+    /// **Source:** `TNaming_Translator.hxx`:38 - `TNaming_Translator::Add()`
     pub fn TNaming_Translator_add(
         self_: *mut TNaming_Translator,
         aShape: *const TopoDS_Shape,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `TNaming_Translator.hxx`:37 - `TNaming_Translator::Perform()`
+    /// **Source:** `TNaming_Translator.hxx`:40 - `TNaming_Translator::Perform()`
     pub fn TNaming_Translator_perform(self_: *mut TNaming_Translator) -> *const std::ffi::c_char;
-    /// **Source:** `TNaming_Translator.hxx`:39 - `TNaming_Translator::IsDone()`
+    /// **Source:** `TNaming_Translator.hxx`:42 - `TNaming_Translator::IsDone()`
     pub fn TNaming_Translator_is_done(self_: *const TNaming_Translator) -> crate::OcctResult<bool>;
-    /// **Source:** `TNaming_Translator.hxx`:42 - `TNaming_Translator::Copied()`
+    /// **Source:** `TNaming_Translator.hxx`:45 - `TNaming_Translator::Copied()`
     pub fn TNaming_Translator_copied_shape(
         self_: *const TNaming_Translator,
         aShape: *const TopoDS_Shape,
     ) -> crate::OcctResult<*mut TopoDS_Shape>;
-    /// **Source:** `TNaming_Translator.hxx`:45 - `TNaming_Translator::Copied()`
+    /// **Source:** `TNaming_Translator.hxx`:49 - `TNaming_Translator::Copied()`
     pub fn TNaming_Translator_copied(
         self_: *const TNaming_Translator,
-    ) -> crate::OcctResult<*const TopTools_DataMapOfShapeShape>;
-    /// **Source:** `TNaming_Translator.hxx`:47 - `TNaming_Translator::DumpMap()`
+    ) -> crate::OcctResult<
+        *const NCollection_DataMap_TopoDS_Shape_TopoDS_Shape_TopTools_ShapeMapHasher,
+    >;
+    /// **Source:** `TNaming_Translator.hxx`:51 - `TNaming_Translator::DumpMap()`
     pub fn TNaming_Translator_dump_map(
         self_: *const TNaming_Translator,
         isWrite: bool,
@@ -5825,7 +5552,9 @@ unsafe extern "C" {
     /// **Source:** `TNaming_UsedShapes.hxx`:49 - `TNaming_UsedShapes::Map()`
     pub fn TNaming_UsedShapes_map(
         self_: *mut TNaming_UsedShapes,
-    ) -> crate::OcctResult<*mut TNaming_DataMapOfShapePtrRefShape>;
+    ) -> crate::OcctResult<
+        *mut NCollection_DataMap_TopoDS_Shape_TNaming_PtrRefShape_TopTools_ShapeMapHasher,
+    >;
     /// **Source:** `TNaming_UsedShapes.hxx`:52 - `TNaming_UsedShapes::ID()`
     pub fn TNaming_UsedShapes_id(
         self_: *const TNaming_UsedShapes,
@@ -5833,11 +5562,11 @@ unsafe extern "C" {
     /// **Source:** `TNaming_UsedShapes.hxx`:59 - `TNaming_UsedShapes::BackupCopy()`
     pub fn TNaming_UsedShapes_backup_copy(
         self_: *const TNaming_UsedShapes,
-    ) -> crate::OcctResult<*mut HandleTDFAttribute>;
+    ) -> crate::OcctResult<*mut Handle_TDF_Attribute>;
     /// **Source:** `TNaming_UsedShapes.hxx`:63 - `TNaming_UsedShapes::Restore()`
     pub fn TNaming_UsedShapes_restore(
         self_: *mut TNaming_UsedShapes,
-        anAttribute: *const HandleTDFAttribute,
+        anAttribute: *const Handle_TDF_Attribute,
     ) -> *const std::ffi::c_char;
     /// **Source:** `TNaming_UsedShapes.hxx`:66 - `TNaming_UsedShapes::BeforeRemoval()`
     pub fn TNaming_UsedShapes_before_removal(
@@ -5846,47 +5575,47 @@ unsafe extern "C" {
     /// **Source:** `TNaming_UsedShapes.hxx`:69 - `TNaming_UsedShapes::AfterUndo()`
     pub fn TNaming_UsedShapes_after_undo(
         self_: *mut TNaming_UsedShapes,
-        anAttDelta: *const HandleTDFAttributeDelta,
+        anAttDelta: *const Handle_TDF_AttributeDelta,
         forceIt: bool,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `TNaming_UsedShapes.hxx`:74 - `TNaming_UsedShapes::DeltaOnAddition()`
+    /// **Source:** `TNaming_UsedShapes.hxx`:73 - `TNaming_UsedShapes::DeltaOnAddition()`
     pub fn TNaming_UsedShapes_delta_on_addition(
         self_: *const TNaming_UsedShapes,
-    ) -> crate::OcctResult<*mut HandleTDFDeltaOnAddition>;
-    /// **Source:** `TNaming_UsedShapes.hxx`:77 - `TNaming_UsedShapes::DeltaOnRemoval()`
+    ) -> crate::OcctResult<*mut Handle_TDF_DeltaOnAddition>;
+    /// **Source:** `TNaming_UsedShapes.hxx`:76 - `TNaming_UsedShapes::DeltaOnRemoval()`
     pub fn TNaming_UsedShapes_delta_on_removal(
         self_: *const TNaming_UsedShapes,
-    ) -> crate::OcctResult<*mut HandleTDFDeltaOnRemoval>;
-    /// **Source:** `TNaming_UsedShapes.hxx`:81 - `TNaming_UsedShapes::NewEmpty()`
+    ) -> crate::OcctResult<*mut Handle_TDF_DeltaOnRemoval>;
+    /// **Source:** `TNaming_UsedShapes.hxx`:80 - `TNaming_UsedShapes::NewEmpty()`
     pub fn TNaming_UsedShapes_new_empty(
         self_: *const TNaming_UsedShapes,
-    ) -> crate::OcctResult<*mut HandleTDFAttribute>;
-    /// **Source:** `TNaming_UsedShapes.hxx`:90 - `TNaming_UsedShapes::Paste()`
+    ) -> crate::OcctResult<*mut Handle_TDF_Attribute>;
+    /// **Source:** `TNaming_UsedShapes.hxx`:89 - `TNaming_UsedShapes::Paste()`
     pub fn TNaming_UsedShapes_paste(
         self_: *const TNaming_UsedShapes,
-        intoAttribute: *const HandleTDFAttribute,
-        aRelocTationable: *const HandleTDFRelocationTable,
+        intoAttribute: *const Handle_TDF_Attribute,
+        aRelocTationable: *const Handle_TDF_RelocationTable,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `TNaming_UsedShapes.hxx`:101 - `TNaming_UsedShapes::References()`
+    /// **Source:** `TNaming_UsedShapes.hxx`:100 - `TNaming_UsedShapes::References()`
     pub fn TNaming_UsedShapes_references(
         self_: *const TNaming_UsedShapes,
-        aDataSet: *const HandleTDFDataSet,
+        aDataSet: *const Handle_TDF_DataSet,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `TNaming_UsedShapes.hxx`:105 - `TNaming_UsedShapes::Dump()`
+    /// **Source:** `TNaming_UsedShapes.hxx`:103 - `TNaming_UsedShapes::Dump()`
     pub fn TNaming_UsedShapes_dump(
         self_: *mut TNaming_UsedShapes,
         anOS: *mut Standard_OStream,
     ) -> crate::OcctResult<*mut Standard_OStream>;
-    /// **Source:** `TNaming_UsedShapes.hxx`:113 - `TNaming_UsedShapes::DynamicType()`
+    /// **Source:** `TNaming_UsedShapes.hxx`:110 - `TNaming_UsedShapes::DynamicType()`
     pub fn TNaming_UsedShapes_dynamic_type(
         self_: *const TNaming_UsedShapes,
-    ) -> crate::OcctResult<*const HandleStandardType>;
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// **Source:** `TNaming_UsedShapes.hxx`:55 - `TNaming_UsedShapes::GetID()`
     pub fn TNaming_UsedShapes_get_id() -> crate::OcctResult<*const Standard_GUID>;
-    /// **Source:** `TNaming_UsedShapes.hxx`:113 - `TNaming_UsedShapes::get_type_name()`
+    /// **Source:** `TNaming_UsedShapes.hxx`:110 - `TNaming_UsedShapes::get_type_name()`
     pub fn TNaming_UsedShapes_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
-    /// **Source:** `TNaming_UsedShapes.hxx`:113 - `TNaming_UsedShapes::get_type_descriptor()`
-    pub fn TNaming_UsedShapes_get_type_descriptor() -> crate::OcctResult<*const HandleStandardType>;
+    /// **Source:** `TNaming_UsedShapes.hxx`:110 - `TNaming_UsedShapes::get_type_descriptor()`
+    pub fn TNaming_UsedShapes_get_type_descriptor() -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast TNaming_UsedShapes to TDF_Attribute
     pub fn TNaming_UsedShapes_as_TDF_Attribute(
         self_: *const TNaming_UsedShapes,
@@ -5906,282 +5635,272 @@ unsafe extern "C" {
     /// Wrap TNaming_UsedShapes in a Handle
     pub fn TNaming_UsedShapes_to_handle(
         obj: *mut TNaming_UsedShapes,
-    ) -> crate::OcctResult<*mut HandleTNamingUsedShapes>;
+    ) -> crate::OcctResult<*mut Handle_TNaming_UsedShapes>;
     /// Destroy Handle<TNaming_UsedShapes>
-    pub fn HandleTNamingUsedShapes_destructor(self_: *mut HandleTNamingUsedShapes);
+    pub fn Handle_TNaming_UsedShapes_destructor(self_: *mut Handle_TNaming_UsedShapes);
     /// Clone Handle<TNaming_UsedShapes> (increments reference count)
-    pub fn HandleTNamingUsedShapes_clone(
-        self_: *const HandleTNamingUsedShapes,
-    ) -> crate::OcctResult<*mut HandleTNamingUsedShapes>;
+    pub fn Handle_TNaming_UsedShapes_clone(
+        self_: *const Handle_TNaming_UsedShapes,
+    ) -> crate::OcctResult<*mut Handle_TNaming_UsedShapes>;
     /// Check if Handle<TNaming_UsedShapes> is null
-    pub fn HandleTNamingUsedShapes_is_null(self_: *const HandleTNamingUsedShapes) -> bool;
+    pub fn Handle_TNaming_UsedShapes_is_null(self_: *const Handle_TNaming_UsedShapes) -> bool;
     /// Dereference Handle to get *const TNaming_UsedShapes
-    pub fn HandleTNamingUsedShapes_get(
-        handle: *const HandleTNamingUsedShapes,
+    pub fn Handle_TNaming_UsedShapes_get(
+        handle: *const Handle_TNaming_UsedShapes,
     ) -> crate::OcctResult<*const TNaming_UsedShapes>;
     /// Dereference Handle to get *mut TNaming_UsedShapes
-    pub fn HandleTNamingUsedShapes_get_mut(
-        handle: *mut HandleTNamingUsedShapes,
+    pub fn Handle_TNaming_UsedShapes_get_mut(
+        handle: *mut Handle_TNaming_UsedShapes,
     ) -> crate::OcctResult<*mut TNaming_UsedShapes>;
     /// Upcast Handle<TNaming_UsedShapes> to Handle<TDF_Attribute>
-    pub fn HandleTNamingUsedShapes_to_HandleTDFAttribute(
-        self_: *const HandleTNamingUsedShapes,
-    ) -> crate::OcctResult<*mut HandleTDFAttribute>;
+    pub fn Handle_TNaming_UsedShapes_to_Handle_TDF_Attribute(
+        self_: *const Handle_TNaming_UsedShapes,
+    ) -> crate::OcctResult<*mut Handle_TDF_Attribute>;
     /// Upcast Handle<TNaming_UsedShapes> to Handle<Standard_Transient>
-    pub fn HandleTNamingUsedShapes_to_HandleStandardTransient(
-        self_: *const HandleTNamingUsedShapes,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:138 - `TDF_Attribute::SetID()`
+    pub fn Handle_TNaming_UsedShapes_to_Handle_Standard_Transient(
+        self_: *const Handle_TNaming_UsedShapes,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:135 - `TDF_Attribute::SetID()`
     pub fn TNaming_UsedShapes_inherited_SetID(
         self_: *mut TNaming_UsedShapes,
         arg0: *const Standard_GUID,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:150 - `TDF_Attribute::Label()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:147 - `TDF_Attribute::Label()`
     pub fn TNaming_UsedShapes_inherited_Label(
         self_: *const TNaming_UsedShapes,
     ) -> crate::OcctResult<*mut TDF_Label>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:154 - `TDF_Attribute::Transaction()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:151 - `TDF_Attribute::Transaction()`
     pub fn TNaming_UsedShapes_inherited_Transaction(
         self_: *const TNaming_UsedShapes,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:160 - `TDF_Attribute::UntilTransaction()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:157 - `TDF_Attribute::UntilTransaction()`
     pub fn TNaming_UsedShapes_inherited_UntilTransaction(
         self_: *const TNaming_UsedShapes,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:164 - `TDF_Attribute::IsValid()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:161 - `TDF_Attribute::IsValid()`
     pub fn TNaming_UsedShapes_inherited_IsValid(
         self_: *const TNaming_UsedShapes,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:167 - `TDF_Attribute::IsNew()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:164 - `TDF_Attribute::IsNew()`
     pub fn TNaming_UsedShapes_inherited_IsNew(
         self_: *const TNaming_UsedShapes,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:174 - `TDF_Attribute::IsForgotten()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:171 - `TDF_Attribute::IsForgotten()`
     pub fn TNaming_UsedShapes_inherited_IsForgotten(
         self_: *const TNaming_UsedShapes,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:178 - `TDF_Attribute::IsAttribute()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:175 - `TDF_Attribute::IsAttribute()`
     pub fn TNaming_UsedShapes_inherited_IsAttribute(
         self_: *const TNaming_UsedShapes,
         anID: *const Standard_GUID,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:185 - `TDF_Attribute::FindAttribute()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:182 - `TDF_Attribute::FindAttribute()`
     pub fn TNaming_UsedShapes_inherited_FindAttribute(
         self_: *const TNaming_UsedShapes,
         anID: *const Standard_GUID,
-        anAttribute: *mut HandleTDFAttribute,
+        anAttribute: *mut Handle_TDF_Attribute,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:199 - `TDF_Attribute::AddAttribute()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:196 - `TDF_Attribute::AddAttribute()`
     pub fn TNaming_UsedShapes_inherited_AddAttribute(
         self_: *const TNaming_UsedShapes,
-        other: *const HandleTDFAttribute,
+        other: *const Handle_TDF_Attribute,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:206 - `TDF_Attribute::ForgetAttribute()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:203 - `TDF_Attribute::ForgetAttribute()`
     pub fn TNaming_UsedShapes_inherited_ForgetAttribute(
         self_: *const TNaming_UsedShapes,
         aguid: *const Standard_GUID,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:214 - `TDF_Attribute::ForgetAllAttributes()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:211 - `TDF_Attribute::ForgetAllAttributes()`
     pub fn TNaming_UsedShapes_inherited_ForgetAllAttributes(
         self_: *const TNaming_UsedShapes,
         clearChildren: bool,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:218 - `TDF_Attribute::AfterAddition()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:214 - `TDF_Attribute::AfterAddition()`
     pub fn TNaming_UsedShapes_inherited_AfterAddition(
         self_: *mut TNaming_UsedShapes,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:226 - `TDF_Attribute::BeforeForget()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:222 - `TDF_Attribute::BeforeForget()`
     pub fn TNaming_UsedShapes_inherited_BeforeForget(
         self_: *mut TNaming_UsedShapes,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:230 - `TDF_Attribute::AfterResume()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:226 - `TDF_Attribute::AfterResume()`
     pub fn TNaming_UsedShapes_inherited_AfterResume(
         self_: *mut TNaming_UsedShapes,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:239 - `TDF_Attribute::AfterRetrieval()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:235 - `TDF_Attribute::AfterRetrieval()`
     pub fn TNaming_UsedShapes_inherited_AfterRetrieval(
         self_: *mut TNaming_UsedShapes,
         forceIt: bool,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:248 - `TDF_Attribute::BeforeUndo()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:243 - `TDF_Attribute::BeforeUndo()`
     pub fn TNaming_UsedShapes_inherited_BeforeUndo(
         self_: *mut TNaming_UsedShapes,
-        anAttDelta: *const HandleTDFAttributeDelta,
+        anAttDelta: *const Handle_TDF_AttributeDelta,
         forceIt: bool,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:265 - `TDF_Attribute::BeforeCommitTransaction()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:258 - `TDF_Attribute::BeforeCommitTransaction()`
     pub fn TNaming_UsedShapes_inherited_BeforeCommitTransaction(
         self_: *mut TNaming_UsedShapes,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:277 - `TDF_Attribute::Backup()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:270 - `TDF_Attribute::Backup()`
     pub fn TNaming_UsedShapes_inherited_Backup(
         self_: *mut TNaming_UsedShapes,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:282 - `TDF_Attribute::IsBackuped()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:275 - `TDF_Attribute::IsBackuped()`
     pub fn TNaming_UsedShapes_inherited_IsBackuped(
         self_: *const TNaming_UsedShapes,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:300 - `TDF_Attribute::DeltaOnForget()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:293 - `TDF_Attribute::DeltaOnForget()`
     pub fn TNaming_UsedShapes_inherited_DeltaOnForget(
         self_: *const TNaming_UsedShapes,
-    ) -> crate::OcctResult<*mut HandleTDFDeltaOnForget>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:304 - `TDF_Attribute::DeltaOnResume()`
+    ) -> crate::OcctResult<*mut Handle_TDF_DeltaOnForget>;
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:297 - `TDF_Attribute::DeltaOnResume()`
     pub fn TNaming_UsedShapes_inherited_DeltaOnResume(
         self_: *const TNaming_UsedShapes,
-    ) -> crate::OcctResult<*mut HandleTDFDeltaOnResume>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:308 - `TDF_Attribute::DeltaOnModification()`
+    ) -> crate::OcctResult<*mut Handle_TDF_DeltaOnResume>;
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:301 - `TDF_Attribute::DeltaOnModification()`
     pub fn TNaming_UsedShapes_inherited_DeltaOnModification(
         self_: *const TNaming_UsedShapes,
-        anOldAttribute: *const HandleTDFAttribute,
-    ) -> crate::OcctResult<*mut HandleTDFDeltaOnModification>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:358 - `TDF_Attribute::ExtendedDump()`
-    pub fn TNaming_UsedShapes_inherited_ExtendedDump(
-        self_: *const TNaming_UsedShapes,
-        anOS: *mut Standard_OStream,
-        aFilter: *const TDF_IDFilter,
-        aMap: *mut TDF_AttributeIndexedMap,
-    ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:374 - `TDF_Attribute::Forget()`
+        anOldAttribute: *const Handle_TDF_Attribute,
+    ) -> crate::OcctResult<*mut Handle_TDF_DeltaOnModification>;
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:370 - `TDF_Attribute::Forget()`
     pub fn TNaming_UsedShapes_inherited_Forget(
         self_: *mut TNaming_UsedShapes,
         aTransaction: i32,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn TNaming_UsedShapes_inherited_IsInstance(
         self_: *const TNaming_UsedShapes,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn TNaming_UsedShapes_inherited_IsKind(
         self_: *const TNaming_UsedShapes,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn TNaming_UsedShapes_inherited_This(
         self_: *const TNaming_UsedShapes,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn TNaming_UsedShapes_inherited_GetRefCount(
         self_: *const TNaming_UsedShapes,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn TNaming_UsedShapes_inherited_IncrementRefCounter(
         self_: *mut TNaming_UsedShapes,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn TNaming_UsedShapes_inherited_DecrementRefCounter(
         self_: *mut TNaming_UsedShapes,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn TNaming_UsedShapes_inherited_Delete(
         self_: *const TNaming_UsedShapes,
     ) -> *const std::ffi::c_char;
 
     // Free functions
-    /// **Source:** `TDataXtd.hxx`:44 - `TDataXtd::Print`
+    /// **Source:** `TDataXtd.hxx`:41 - `TDataXtd::IDList`
+    pub fn TDataXtd_id_list_mut(
+        anIDList: *mut NCollection_List_Standard_GUID,
+    ) -> *const std::ffi::c_char;
+    /// **Source:** `TDataXtd.hxx`:45 - `TDataXtd::Print`
     pub fn TDataXtd_print_geometryenum_ostream(
         GEO: i32,
         S: *mut Standard_OStream,
     ) -> crate::OcctResult<*mut Standard_OStream>;
-    /// **Source:** `TDataXtd.hxx`:49 - `TDataXtd::Print`
+    /// **Source:** `TDataXtd.hxx`:50 - `TDataXtd::Print`
     pub fn TDataXtd_print_constraintenum_ostream(
         CTR: i32,
         S: *mut Standard_OStream,
     ) -> crate::OcctResult<*mut Standard_OStream>;
-    /// **Source:** `TNaming.hxx`:104 - `TNaming::Substitute`
+    /// **Source:** `TNaming.hxx`:108 - `TNaming::Substitute`
     pub fn TNaming_substitute(
         labelsource: *const TDF_Label,
         labelcible: *const TDF_Label,
-        mapOldNew: *mut TopTools_DataMapOfShapeShape,
+        mapOldNew: *mut NCollection_DataMap_TopoDS_Shape_TopoDS_Shape_TopTools_ShapeMapHasher,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `TNaming.hxx`:115 - `TNaming::Update`
-    pub fn TNaming_update_label_datamapofshapeshape(
+    /// **Source:** `TNaming.hxx`:120 - `TNaming::Update`
+    pub fn TNaming_update_label_dmap_shape_shape(
         label: *const TDF_Label,
-        mapOldNew: *mut TopTools_DataMapOfShapeShape,
+        mapOldNew: *mut NCollection_DataMap_TopoDS_Shape_TopoDS_Shape_TopTools_ShapeMapHasher,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `TNaming.hxx`:120 - `TNaming::Displace`
+    /// **Source:** `TNaming.hxx`:126 - `TNaming::Displace`
     pub fn TNaming_displace(
         label: *const TDF_Label,
         aLocation: *const TopLoc_Location,
         WithOld: bool,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `TNaming.hxx`:126 - `TNaming::ChangeShapes`
+    /// **Source:** `TNaming.hxx`:132 - `TNaming::ChangeShapes`
     pub fn TNaming_change_shapes(
         label: *const TDF_Label,
-        M: *mut TopTools_DataMapOfShapeShape,
+        M: *mut NCollection_DataMap_TopoDS_Shape_TopoDS_Shape_TopTools_ShapeMapHasher,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `TNaming.hxx`:133 - `TNaming::Transform`
+    /// **Source:** `TNaming.hxx`:141 - `TNaming::Transform`
     pub fn TNaming_transform(
         label: *const TDF_Label,
         aTransformation: *const gp_Trsf,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `TNaming.hxx`:138 - `TNaming::Replicate`
+    /// **Source:** `TNaming.hxx`:146 - `TNaming::Replicate`
     pub fn TNaming_replicate_handletnamingnamedshape_trsf_label(
-        NS: *const HandleTNamingNamedShape,
+        NS: *const Handle_TNaming_NamedShape,
         T: *const gp_Trsf,
         L: *const TDF_Label,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `TNaming.hxx`:145 - `TNaming::Replicate`
+    /// **Source:** `TNaming.hxx`:153 - `TNaming::Replicate`
     pub fn TNaming_replicate_shape_trsf_label(
         SH: *const TopoDS_Shape,
         T: *const gp_Trsf,
         L: *const TDF_Label,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `TNaming.hxx`:150 - `TNaming::MakeShape`
+    /// **Source:** `TNaming.hxx`:158 - `TNaming::MakeShape`
     pub fn TNaming_make_shape(
-        MS: *const TopTools_MapOfShape,
+        MS: *const NCollection_Map_TopoDS_Shape_TopTools_ShapeMapHasher,
     ) -> crate::OcctResult<*mut TopoDS_Shape>;
-    /// **Source:** `TNaming.hxx`:153 - `TNaming::FindUniqueContext`
+    /// **Source:** `TNaming.hxx`:162 - `TNaming::FindUniqueContext`
     pub fn TNaming_find_unique_context(
         S: *const TopoDS_Shape,
         Context: *const TopoDS_Shape,
     ) -> crate::OcctResult<*mut TopoDS_Shape>;
-    /// **Source:** `TNaming.hxx`:159 - `TNaming::FindUniqueContextSet`
+    /// **Source:** `TNaming.hxx`:168 - `TNaming::FindUniqueContextSet`
     pub fn TNaming_find_unique_context_set(
         S: *const TopoDS_Shape,
         Context: *const TopoDS_Shape,
-        Arr: *mut HandleTopToolsHArray1OfShape,
+        Arr: *mut Handle_NCollection_HArray1_TopoDS_Shape,
     ) -> crate::OcctResult<*mut TopoDS_Shape>;
-    /// **Source:** `TNaming.hxx`:164 - `TNaming::SubstituteSShape`
+    /// **Source:** `TNaming.hxx`:174 - `TNaming::SubstituteSShape`
     pub fn TNaming_substitute_s_shape(
         accesslabel: *const TDF_Label,
         From: *const TopoDS_Shape,
         To: *mut TopoDS_Shape,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `TNaming.hxx`:169 - `TNaming::OuterWire`
+    /// **Source:** `TNaming.hxx`:179 - `TNaming::OuterWire`
     pub fn TNaming_outer_wire_face_wire(
         theFace: *const TopoDS_Face,
         theWire: *mut TopoDS_Wire,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `TNaming.hxx`:175 - `TNaming::OuterShell`
+    /// **Source:** `TNaming.hxx`:184 - `TNaming::OuterShell`
     pub fn TNaming_outer_shell_solid_shell(
         theSolid: *const TopoDS_Solid,
         theShell: *mut TopoDS_Shell,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `TNaming.hxx`:185 - `TNaming::Print`
+    /// **Source:** `TNaming.hxx`:189 - `TNaming::IDList`
+    pub fn TNaming_id_list_mut(
+        anIDList: *mut NCollection_List_Standard_GUID,
+    ) -> *const std::ffi::c_char;
+    /// **Source:** `TNaming.hxx`:193 - `TNaming::Print`
     pub fn TNaming_print_evolution_ostream(
         EVOL: i32,
         S: *mut Standard_OStream,
     ) -> crate::OcctResult<*mut Standard_OStream>;
-    /// **Source:** `TNaming.hxx`:189 - `TNaming::Print`
+    /// **Source:** `TNaming.hxx`:197 - `TNaming::Print`
     pub fn TNaming_print_nametype_ostream(
         NAME: i32,
         S: *mut Standard_OStream,
     ) -> crate::OcctResult<*mut Standard_OStream>;
-    /// **Source:** `TNaming.hxx`:193 - `TNaming::Print`
+    /// **Source:** `TNaming.hxx`:201 - `TNaming::Print`
     pub fn TNaming_print_label_ostream(
         ACCESS: *const TDF_Label,
         S: *mut Standard_OStream,
     ) -> crate::OcctResult<*mut Standard_OStream>;
-
-    // Nested type & typedef type destructors
-    pub fn TDataXtd_Array1OfTrsf_destructor(self_: *mut TDataXtd_Array1OfTrsf);
-    pub fn TDataXtd_Array1OfTrsf_value_type_destructor(
-        self_: *mut TDataXtd_Array1OfTrsf_value_type,
-    );
-    pub fn TNaming_DataMapOfShapePtrRefShape_destructor(
-        self_: *mut TNaming_DataMapOfShapePtrRefShape,
-    );
-    pub fn TNaming_ListOfNamedShape_destructor(self_: *mut TNaming_ListOfNamedShape);
-    pub fn TNaming_MapOfNamedShape_destructor(self_: *mut TNaming_MapOfNamedShape);
 }

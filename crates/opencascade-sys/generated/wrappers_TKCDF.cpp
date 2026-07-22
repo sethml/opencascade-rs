@@ -5,11 +5,11 @@
 
 #include <AppStdL_Application.hxx>
 #include <AppStd_Application.hxx>
-#include <BRepClass3d_MapOfInter.hxx>
 #include <BinDrivers_DocumentRetrievalDriver.hxx>
 #include <BinDrivers_DocumentStorageDriver.hxx>
 #include <BinLDrivers_DocumentRetrievalDriver.hxx>
 #include <BinLDrivers_DocumentStorageDriver.hxx>
+#include <BinObjMgt_PExtChar.hxx>
 #include <BinTObjDrivers_DocumentRetrievalDriver.hxx>
 #include <BinTObjDrivers_DocumentStorageDriver.hxx>
 #include <BinXCAFDrivers_DocumentRetrievalDriver.hxx>
@@ -27,7 +27,6 @@
 #include <CDM_CanCloseStatus.hxx>
 #include <CDM_Document.hxx>
 #include <CDM_MetaData.hxx>
-#include <CDM_MetaDataLookUpTable.hxx>
 #include <CDM_Reference.hxx>
 #include <CDM_ReferenceIterator.hxx>
 #include <LDOM_Attr.hxx>
@@ -63,34 +62,23 @@
 #include <PCDM_Reader.hxx>
 #include <PCDM_ReaderFilter.hxx>
 #include <PCDM_ReaderStatus.hxx>
-#include <PCDM_Reference.hxx>
 #include <PCDM_ReferenceIterator.hxx>
 #include <PCDM_RetrievalDriver.hxx>
-#include <PCDM_SequenceOfDocument.hxx>
-#include <PCDM_SequenceOfReference.hxx>
 #include <PCDM_StorageDriver.hxx>
 #include <PCDM_StoreStatus.hxx>
 #include <PCDM_TypeOfFileDriver.hxx>
 #include <PCDM_Writer.hxx>
 #include <Resource_Manager.hxx>
-#include <Standard_Failure.hxx>
-#include <Standard_GUID.hxx>
 #include <Standard_Handle.hxx>
 #include <Standard_IStream.hxx>
 #include <Standard_OStream.hxx>
-#include <Standard_Persistent.hxx>
-#include <Standard_SStream.hxx>
 #include <Standard_Type.hxx>
-#include <Standard_TypeDef.hxx>
 #include <StdDrivers_DocumentRetrievalDriver.hxx>
 #include <StdLDrivers_DocumentRetrievalDriver.hxx>
 #include <Storage_BaseDriver.hxx>
 #include <Storage_Data.hxx>
 #include <Storage_Error.hxx>
 #include <Storage_OpenMode.hxx>
-#include <TColStd_SequenceOfExtendedString.hxx>
-#include <TCollection_ExtendedString.hxx>
-#include <TCollection_HExtendedString.hxx>
 #include <TDocStd_Application.hxx>
 #include <TDocStd_Document.hxx>
 #include <TObj_Application.hxx>
@@ -106,188 +94,180 @@
 #include <XmlXCAFDrivers_DocumentStorageDriver.hxx>
 
 // Handle type aliases
-typedef opencascade::handle<AppStdL_Application> HandleAppStdLApplication;
-typedef opencascade::handle<AppStd_Application> HandleAppStdApplication;
-typedef opencascade::handle<BinDrivers_DocumentRetrievalDriver> HandleBinDriversDocumentRetrievalDriver;
-typedef opencascade::handle<BinDrivers_DocumentStorageDriver> HandleBinDriversDocumentStorageDriver;
-typedef opencascade::handle<BinLDrivers_DocumentRetrievalDriver> HandleBinLDriversDocumentRetrievalDriver;
-typedef opencascade::handle<BinLDrivers_DocumentStorageDriver> HandleBinLDriversDocumentStorageDriver;
-typedef opencascade::handle<BinTObjDrivers_DocumentRetrievalDriver> HandleBinTObjDriversDocumentRetrievalDriver;
-typedef opencascade::handle<BinTObjDrivers_DocumentStorageDriver> HandleBinTObjDriversDocumentStorageDriver;
-typedef opencascade::handle<BinXCAFDrivers_DocumentRetrievalDriver> HandleBinXCAFDriversDocumentRetrievalDriver;
-typedef opencascade::handle<BinXCAFDrivers_DocumentStorageDriver> HandleBinXCAFDriversDocumentStorageDriver;
-typedef opencascade::handle<CDF_Application> HandleCDFApplication;
-typedef opencascade::handle<CDF_Directory> HandleCDFDirectory;
-typedef opencascade::handle<CDF_FWOSDriver> HandleCDFFWOSDriver;
-typedef opencascade::handle<CDF_MetaDataDriver> HandleCDFMetaDataDriver;
-typedef opencascade::handle<CDF_MetaDataDriverFactory> HandleCDFMetaDataDriverFactory;
-typedef opencascade::handle<CDF_StoreList> HandleCDFStoreList;
-typedef opencascade::handle<CDM_Application> HandleCDMApplication;
-typedef opencascade::handle<CDM_Document> HandleCDMDocument;
-typedef opencascade::handle<CDM_MetaData> HandleCDMMetaData;
-typedef opencascade::handle<CDM_Reference> HandleCDMReference;
-typedef opencascade::handle<LDOM_MemManager> HandleLDOMMemManager;
-typedef opencascade::handle<Message_Messenger> HandleMessageMessenger;
-typedef opencascade::handle<PCDM_Document> HandlePCDMDocument;
-typedef opencascade::handle<PCDM_DriverError> HandlePCDMDriverError;
-typedef opencascade::handle<PCDM_ReadWriter> HandlePCDMReadWriter;
-typedef opencascade::handle<PCDM_ReadWriter_1> HandlePCDMReadWriter1;
-typedef opencascade::handle<PCDM_Reader> HandlePCDMReader;
-typedef opencascade::handle<PCDM_ReaderFilter> HandlePCDMReaderFilter;
-typedef opencascade::handle<PCDM_ReferenceIterator> HandlePCDMReferenceIterator;
-typedef opencascade::handle<PCDM_RetrievalDriver> HandlePCDMRetrievalDriver;
-typedef opencascade::handle<PCDM_StorageDriver> HandlePCDMStorageDriver;
-typedef opencascade::handle<PCDM_Writer> HandlePCDMWriter;
-typedef opencascade::handle<Resource_Manager> HandleResourceManager;
-typedef opencascade::handle<Standard_Failure> HandleStandardFailure;
-typedef opencascade::handle<Standard_Persistent> HandleStandardPersistent;
-typedef opencascade::handle<Standard_Transient> HandleStandardTransient;
-typedef opencascade::handle<Standard_Type> HandleStandardType;
-typedef opencascade::handle<StdDrivers_DocumentRetrievalDriver> HandleStdDriversDocumentRetrievalDriver;
-typedef opencascade::handle<StdLDrivers_DocumentRetrievalDriver> HandleStdLDriversDocumentRetrievalDriver;
-typedef opencascade::handle<Storage_BaseDriver> HandleStorageBaseDriver;
-typedef opencascade::handle<Storage_Data> HandleStorageData;
-typedef opencascade::handle<TCollection_HExtendedString> HandleTCollectionHExtendedString;
-typedef opencascade::handle<TDocStd_Application> HandleTDocStdApplication;
-typedef opencascade::handle<TDocStd_Document> HandleTDocStdDocument;
-typedef opencascade::handle<TObj_Application> HandleTObjApplication;
-typedef opencascade::handle<XCAFApp_Application> HandleXCAFAppApplication;
-typedef opencascade::handle<XmlDrivers_DocumentRetrievalDriver> HandleXmlDriversDocumentRetrievalDriver;
-typedef opencascade::handle<XmlDrivers_DocumentStorageDriver> HandleXmlDriversDocumentStorageDriver;
-typedef opencascade::handle<XmlLDrivers_DocumentRetrievalDriver> HandleXmlLDriversDocumentRetrievalDriver;
-typedef opencascade::handle<XmlLDrivers_DocumentStorageDriver> HandleXmlLDriversDocumentStorageDriver;
-typedef opencascade::handle<XmlTObjDrivers_DocumentRetrievalDriver> HandleXmlTObjDriversDocumentRetrievalDriver;
-typedef opencascade::handle<XmlTObjDrivers_DocumentStorageDriver> HandleXmlTObjDriversDocumentStorageDriver;
-typedef opencascade::handle<XmlXCAFDrivers_DocumentRetrievalDriver> HandleXmlXCAFDriversDocumentRetrievalDriver;
-typedef opencascade::handle<XmlXCAFDrivers_DocumentStorageDriver> HandleXmlXCAFDriversDocumentStorageDriver;
+typedef opencascade::handle<AppStdL_Application> Handle_AppStdL_Application;
+typedef opencascade::handle<AppStd_Application> Handle_AppStd_Application;
+typedef opencascade::handle<BinDrivers_DocumentRetrievalDriver> Handle_BinDrivers_DocumentRetrievalDriver;
+typedef opencascade::handle<BinDrivers_DocumentStorageDriver> Handle_BinDrivers_DocumentStorageDriver;
+typedef opencascade::handle<BinLDrivers_DocumentRetrievalDriver> Handle_BinLDrivers_DocumentRetrievalDriver;
+typedef opencascade::handle<BinLDrivers_DocumentStorageDriver> Handle_BinLDrivers_DocumentStorageDriver;
+typedef opencascade::handle<BinTObjDrivers_DocumentRetrievalDriver> Handle_BinTObjDrivers_DocumentRetrievalDriver;
+typedef opencascade::handle<BinTObjDrivers_DocumentStorageDriver> Handle_BinTObjDrivers_DocumentStorageDriver;
+typedef opencascade::handle<BinXCAFDrivers_DocumentRetrievalDriver> Handle_BinXCAFDrivers_DocumentRetrievalDriver;
+typedef opencascade::handle<BinXCAFDrivers_DocumentStorageDriver> Handle_BinXCAFDrivers_DocumentStorageDriver;
+typedef opencascade::handle<CDF_Application> Handle_CDF_Application;
+typedef opencascade::handle<CDF_Directory> Handle_CDF_Directory;
+typedef opencascade::handle<CDF_FWOSDriver> Handle_CDF_FWOSDriver;
+typedef opencascade::handle<CDF_MetaDataDriver> Handle_CDF_MetaDataDriver;
+typedef opencascade::handle<CDF_MetaDataDriverFactory> Handle_CDF_MetaDataDriverFactory;
+typedef opencascade::handle<CDF_StoreList> Handle_CDF_StoreList;
+typedef opencascade::handle<CDM_Application> Handle_CDM_Application;
+typedef opencascade::handle<CDM_Document> Handle_CDM_Document;
+typedef opencascade::handle<CDM_MetaData> Handle_CDM_MetaData;
+typedef opencascade::handle<CDM_Reference> Handle_CDM_Reference;
+typedef opencascade::handle<LDOM_MemManager> Handle_LDOM_MemManager;
+typedef opencascade::handle<Message_Messenger> Handle_Message_Messenger;
+typedef opencascade::handle<PCDM_Document> Handle_PCDM_Document;
+typedef opencascade::handle<PCDM_ReadWriter> Handle_PCDM_ReadWriter;
+typedef opencascade::handle<PCDM_ReadWriter_1> Handle_PCDM_ReadWriter_1;
+typedef opencascade::handle<PCDM_Reader> Handle_PCDM_Reader;
+typedef opencascade::handle<PCDM_ReaderFilter> Handle_PCDM_ReaderFilter;
+typedef opencascade::handle<PCDM_ReferenceIterator> Handle_PCDM_ReferenceIterator;
+typedef opencascade::handle<PCDM_RetrievalDriver> Handle_PCDM_RetrievalDriver;
+typedef opencascade::handle<PCDM_StorageDriver> Handle_PCDM_StorageDriver;
+typedef opencascade::handle<PCDM_Writer> Handle_PCDM_Writer;
+typedef opencascade::handle<Resource_Manager> Handle_Resource_Manager;
+typedef opencascade::handle<Standard_Persistent> Handle_Standard_Persistent;
+typedef opencascade::handle<Standard_Transient> Handle_Standard_Transient;
+typedef opencascade::handle<Standard_Type> Handle_Standard_Type;
+typedef opencascade::handle<StdDrivers_DocumentRetrievalDriver> Handle_StdDrivers_DocumentRetrievalDriver;
+typedef opencascade::handle<StdLDrivers_DocumentRetrievalDriver> Handle_StdLDrivers_DocumentRetrievalDriver;
+typedef opencascade::handle<Storage_BaseDriver> Handle_Storage_BaseDriver;
+typedef opencascade::handle<Storage_Data> Handle_Storage_Data;
+typedef opencascade::handle<TCollection_HExtendedString> Handle_TCollection_HExtendedString;
+typedef opencascade::handle<TDocStd_Application> Handle_TDocStd_Application;
+typedef opencascade::handle<TDocStd_Document> Handle_TDocStd_Document;
+typedef opencascade::handle<TObj_Application> Handle_TObj_Application;
+typedef opencascade::handle<XCAFApp_Application> Handle_XCAFApp_Application;
+typedef opencascade::handle<XmlDrivers_DocumentRetrievalDriver> Handle_XmlDrivers_DocumentRetrievalDriver;
+typedef opencascade::handle<XmlDrivers_DocumentStorageDriver> Handle_XmlDrivers_DocumentStorageDriver;
+typedef opencascade::handle<XmlLDrivers_DocumentRetrievalDriver> Handle_XmlLDrivers_DocumentRetrievalDriver;
+typedef opencascade::handle<XmlLDrivers_DocumentStorageDriver> Handle_XmlLDrivers_DocumentStorageDriver;
+typedef opencascade::handle<XmlTObjDrivers_DocumentRetrievalDriver> Handle_XmlTObjDrivers_DocumentRetrievalDriver;
+typedef opencascade::handle<XmlTObjDrivers_DocumentStorageDriver> Handle_XmlTObjDrivers_DocumentStorageDriver;
+typedef opencascade::handle<XmlXCAFDrivers_DocumentRetrievalDriver> Handle_XmlXCAFDrivers_DocumentRetrievalDriver;
+typedef opencascade::handle<XmlXCAFDrivers_DocumentStorageDriver> Handle_XmlXCAFDrivers_DocumentStorageDriver;
 
 // Handle type destructors, clone, and is_null functions
-extern "C" void HandleCDFApplication_destructor(HandleCDFApplication* self_) { delete self_; }
-extern "C" OcctResult<HandleCDFApplication*> HandleCDFApplication_clone(const HandleCDFApplication* self_) {
-    try { return {new HandleCDFApplication(*self_), nullptr}; }
+extern "C" void Handle_CDF_Application_destructor(Handle_CDF_Application* self_) { delete self_; }
+extern "C" OcctResult<Handle_CDF_Application*> Handle_CDF_Application_clone(const Handle_CDF_Application* self_) {
+    try { return {new Handle_CDF_Application(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleCDFApplication_is_null(const HandleCDFApplication* self_) { return self_->IsNull(); }
-extern "C" void HandleCDFDirectory_destructor(HandleCDFDirectory* self_) { delete self_; }
-extern "C" OcctResult<HandleCDFDirectory*> HandleCDFDirectory_clone(const HandleCDFDirectory* self_) {
-    try { return {new HandleCDFDirectory(*self_), nullptr}; }
+extern "C" bool Handle_CDF_Application_is_null(const Handle_CDF_Application* self_) { return self_->IsNull(); }
+extern "C" void Handle_CDF_Directory_destructor(Handle_CDF_Directory* self_) { delete self_; }
+extern "C" OcctResult<Handle_CDF_Directory*> Handle_CDF_Directory_clone(const Handle_CDF_Directory* self_) {
+    try { return {new Handle_CDF_Directory(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleCDFDirectory_is_null(const HandleCDFDirectory* self_) { return self_->IsNull(); }
-extern "C" void HandleCDFFWOSDriver_destructor(HandleCDFFWOSDriver* self_) { delete self_; }
-extern "C" OcctResult<HandleCDFFWOSDriver*> HandleCDFFWOSDriver_clone(const HandleCDFFWOSDriver* self_) {
-    try { return {new HandleCDFFWOSDriver(*self_), nullptr}; }
+extern "C" bool Handle_CDF_Directory_is_null(const Handle_CDF_Directory* self_) { return self_->IsNull(); }
+extern "C" void Handle_CDF_FWOSDriver_destructor(Handle_CDF_FWOSDriver* self_) { delete self_; }
+extern "C" OcctResult<Handle_CDF_FWOSDriver*> Handle_CDF_FWOSDriver_clone(const Handle_CDF_FWOSDriver* self_) {
+    try { return {new Handle_CDF_FWOSDriver(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleCDFFWOSDriver_is_null(const HandleCDFFWOSDriver* self_) { return self_->IsNull(); }
-extern "C" void HandleCDFMetaDataDriver_destructor(HandleCDFMetaDataDriver* self_) { delete self_; }
-extern "C" OcctResult<HandleCDFMetaDataDriver*> HandleCDFMetaDataDriver_clone(const HandleCDFMetaDataDriver* self_) {
-    try { return {new HandleCDFMetaDataDriver(*self_), nullptr}; }
+extern "C" bool Handle_CDF_FWOSDriver_is_null(const Handle_CDF_FWOSDriver* self_) { return self_->IsNull(); }
+extern "C" void Handle_CDF_MetaDataDriver_destructor(Handle_CDF_MetaDataDriver* self_) { delete self_; }
+extern "C" OcctResult<Handle_CDF_MetaDataDriver*> Handle_CDF_MetaDataDriver_clone(const Handle_CDF_MetaDataDriver* self_) {
+    try { return {new Handle_CDF_MetaDataDriver(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleCDFMetaDataDriver_is_null(const HandleCDFMetaDataDriver* self_) { return self_->IsNull(); }
-extern "C" void HandleCDFMetaDataDriverFactory_destructor(HandleCDFMetaDataDriverFactory* self_) { delete self_; }
-extern "C" OcctResult<HandleCDFMetaDataDriverFactory*> HandleCDFMetaDataDriverFactory_clone(const HandleCDFMetaDataDriverFactory* self_) {
-    try { return {new HandleCDFMetaDataDriverFactory(*self_), nullptr}; }
+extern "C" bool Handle_CDF_MetaDataDriver_is_null(const Handle_CDF_MetaDataDriver* self_) { return self_->IsNull(); }
+extern "C" void Handle_CDF_MetaDataDriverFactory_destructor(Handle_CDF_MetaDataDriverFactory* self_) { delete self_; }
+extern "C" OcctResult<Handle_CDF_MetaDataDriverFactory*> Handle_CDF_MetaDataDriverFactory_clone(const Handle_CDF_MetaDataDriverFactory* self_) {
+    try { return {new Handle_CDF_MetaDataDriverFactory(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleCDFMetaDataDriverFactory_is_null(const HandleCDFMetaDataDriverFactory* self_) { return self_->IsNull(); }
-extern "C" void HandleCDFStoreList_destructor(HandleCDFStoreList* self_) { delete self_; }
-extern "C" OcctResult<HandleCDFStoreList*> HandleCDFStoreList_clone(const HandleCDFStoreList* self_) {
-    try { return {new HandleCDFStoreList(*self_), nullptr}; }
+extern "C" bool Handle_CDF_MetaDataDriverFactory_is_null(const Handle_CDF_MetaDataDriverFactory* self_) { return self_->IsNull(); }
+extern "C" void Handle_CDF_StoreList_destructor(Handle_CDF_StoreList* self_) { delete self_; }
+extern "C" OcctResult<Handle_CDF_StoreList*> Handle_CDF_StoreList_clone(const Handle_CDF_StoreList* self_) {
+    try { return {new Handle_CDF_StoreList(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleCDFStoreList_is_null(const HandleCDFStoreList* self_) { return self_->IsNull(); }
-extern "C" void HandleCDMApplication_destructor(HandleCDMApplication* self_) { delete self_; }
-extern "C" OcctResult<HandleCDMApplication*> HandleCDMApplication_clone(const HandleCDMApplication* self_) {
-    try { return {new HandleCDMApplication(*self_), nullptr}; }
+extern "C" bool Handle_CDF_StoreList_is_null(const Handle_CDF_StoreList* self_) { return self_->IsNull(); }
+extern "C" void Handle_CDM_Application_destructor(Handle_CDM_Application* self_) { delete self_; }
+extern "C" OcctResult<Handle_CDM_Application*> Handle_CDM_Application_clone(const Handle_CDM_Application* self_) {
+    try { return {new Handle_CDM_Application(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleCDMApplication_is_null(const HandleCDMApplication* self_) { return self_->IsNull(); }
-extern "C" void HandleCDMDocument_destructor(HandleCDMDocument* self_) { delete self_; }
-extern "C" OcctResult<HandleCDMDocument*> HandleCDMDocument_clone(const HandleCDMDocument* self_) {
-    try { return {new HandleCDMDocument(*self_), nullptr}; }
+extern "C" bool Handle_CDM_Application_is_null(const Handle_CDM_Application* self_) { return self_->IsNull(); }
+extern "C" void Handle_CDM_Document_destructor(Handle_CDM_Document* self_) { delete self_; }
+extern "C" OcctResult<Handle_CDM_Document*> Handle_CDM_Document_clone(const Handle_CDM_Document* self_) {
+    try { return {new Handle_CDM_Document(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleCDMDocument_is_null(const HandleCDMDocument* self_) { return self_->IsNull(); }
-extern "C" void HandleCDMMetaData_destructor(HandleCDMMetaData* self_) { delete self_; }
-extern "C" OcctResult<HandleCDMMetaData*> HandleCDMMetaData_clone(const HandleCDMMetaData* self_) {
-    try { return {new HandleCDMMetaData(*self_), nullptr}; }
+extern "C" bool Handle_CDM_Document_is_null(const Handle_CDM_Document* self_) { return self_->IsNull(); }
+extern "C" void Handle_CDM_MetaData_destructor(Handle_CDM_MetaData* self_) { delete self_; }
+extern "C" OcctResult<Handle_CDM_MetaData*> Handle_CDM_MetaData_clone(const Handle_CDM_MetaData* self_) {
+    try { return {new Handle_CDM_MetaData(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleCDMMetaData_is_null(const HandleCDMMetaData* self_) { return self_->IsNull(); }
-extern "C" void HandleCDMReference_destructor(HandleCDMReference* self_) { delete self_; }
-extern "C" OcctResult<HandleCDMReference*> HandleCDMReference_clone(const HandleCDMReference* self_) {
-    try { return {new HandleCDMReference(*self_), nullptr}; }
+extern "C" bool Handle_CDM_MetaData_is_null(const Handle_CDM_MetaData* self_) { return self_->IsNull(); }
+extern "C" void Handle_CDM_Reference_destructor(Handle_CDM_Reference* self_) { delete self_; }
+extern "C" OcctResult<Handle_CDM_Reference*> Handle_CDM_Reference_clone(const Handle_CDM_Reference* self_) {
+    try { return {new Handle_CDM_Reference(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleCDMReference_is_null(const HandleCDMReference* self_) { return self_->IsNull(); }
-extern "C" void HandleLDOMMemManager_destructor(HandleLDOMMemManager* self_) { delete self_; }
-extern "C" OcctResult<HandleLDOMMemManager*> HandleLDOMMemManager_clone(const HandleLDOMMemManager* self_) {
-    try { return {new HandleLDOMMemManager(*self_), nullptr}; }
+extern "C" bool Handle_CDM_Reference_is_null(const Handle_CDM_Reference* self_) { return self_->IsNull(); }
+extern "C" void Handle_LDOM_MemManager_destructor(Handle_LDOM_MemManager* self_) { delete self_; }
+extern "C" OcctResult<Handle_LDOM_MemManager*> Handle_LDOM_MemManager_clone(const Handle_LDOM_MemManager* self_) {
+    try { return {new Handle_LDOM_MemManager(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleLDOMMemManager_is_null(const HandleLDOMMemManager* self_) { return self_->IsNull(); }
-extern "C" void HandlePCDMDocument_destructor(HandlePCDMDocument* self_) { delete self_; }
-extern "C" OcctResult<HandlePCDMDocument*> HandlePCDMDocument_clone(const HandlePCDMDocument* self_) {
-    try { return {new HandlePCDMDocument(*self_), nullptr}; }
+extern "C" bool Handle_LDOM_MemManager_is_null(const Handle_LDOM_MemManager* self_) { return self_->IsNull(); }
+extern "C" void Handle_PCDM_Document_destructor(Handle_PCDM_Document* self_) { delete self_; }
+extern "C" OcctResult<Handle_PCDM_Document*> Handle_PCDM_Document_clone(const Handle_PCDM_Document* self_) {
+    try { return {new Handle_PCDM_Document(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandlePCDMDocument_is_null(const HandlePCDMDocument* self_) { return self_->IsNull(); }
-extern "C" void HandlePCDMDriverError_destructor(HandlePCDMDriverError* self_) { delete self_; }
-extern "C" OcctResult<HandlePCDMDriverError*> HandlePCDMDriverError_clone(const HandlePCDMDriverError* self_) {
-    try { return {new HandlePCDMDriverError(*self_), nullptr}; }
+extern "C" bool Handle_PCDM_Document_is_null(const Handle_PCDM_Document* self_) { return self_->IsNull(); }
+extern "C" void Handle_PCDM_ReadWriter_destructor(Handle_PCDM_ReadWriter* self_) { delete self_; }
+extern "C" OcctResult<Handle_PCDM_ReadWriter*> Handle_PCDM_ReadWriter_clone(const Handle_PCDM_ReadWriter* self_) {
+    try { return {new Handle_PCDM_ReadWriter(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandlePCDMDriverError_is_null(const HandlePCDMDriverError* self_) { return self_->IsNull(); }
-extern "C" void HandlePCDMReadWriter_destructor(HandlePCDMReadWriter* self_) { delete self_; }
-extern "C" OcctResult<HandlePCDMReadWriter*> HandlePCDMReadWriter_clone(const HandlePCDMReadWriter* self_) {
-    try { return {new HandlePCDMReadWriter(*self_), nullptr}; }
+extern "C" bool Handle_PCDM_ReadWriter_is_null(const Handle_PCDM_ReadWriter* self_) { return self_->IsNull(); }
+extern "C" void Handle_PCDM_ReadWriter_1_destructor(Handle_PCDM_ReadWriter_1* self_) { delete self_; }
+extern "C" OcctResult<Handle_PCDM_ReadWriter_1*> Handle_PCDM_ReadWriter_1_clone(const Handle_PCDM_ReadWriter_1* self_) {
+    try { return {new Handle_PCDM_ReadWriter_1(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandlePCDMReadWriter_is_null(const HandlePCDMReadWriter* self_) { return self_->IsNull(); }
-extern "C" void HandlePCDMReadWriter1_destructor(HandlePCDMReadWriter1* self_) { delete self_; }
-extern "C" OcctResult<HandlePCDMReadWriter1*> HandlePCDMReadWriter1_clone(const HandlePCDMReadWriter1* self_) {
-    try { return {new HandlePCDMReadWriter1(*self_), nullptr}; }
+extern "C" bool Handle_PCDM_ReadWriter_1_is_null(const Handle_PCDM_ReadWriter_1* self_) { return self_->IsNull(); }
+extern "C" void Handle_PCDM_Reader_destructor(Handle_PCDM_Reader* self_) { delete self_; }
+extern "C" OcctResult<Handle_PCDM_Reader*> Handle_PCDM_Reader_clone(const Handle_PCDM_Reader* self_) {
+    try { return {new Handle_PCDM_Reader(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandlePCDMReadWriter1_is_null(const HandlePCDMReadWriter1* self_) { return self_->IsNull(); }
-extern "C" void HandlePCDMReader_destructor(HandlePCDMReader* self_) { delete self_; }
-extern "C" OcctResult<HandlePCDMReader*> HandlePCDMReader_clone(const HandlePCDMReader* self_) {
-    try { return {new HandlePCDMReader(*self_), nullptr}; }
+extern "C" bool Handle_PCDM_Reader_is_null(const Handle_PCDM_Reader* self_) { return self_->IsNull(); }
+extern "C" void Handle_PCDM_ReaderFilter_destructor(Handle_PCDM_ReaderFilter* self_) { delete self_; }
+extern "C" OcctResult<Handle_PCDM_ReaderFilter*> Handle_PCDM_ReaderFilter_clone(const Handle_PCDM_ReaderFilter* self_) {
+    try { return {new Handle_PCDM_ReaderFilter(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandlePCDMReader_is_null(const HandlePCDMReader* self_) { return self_->IsNull(); }
-extern "C" void HandlePCDMReaderFilter_destructor(HandlePCDMReaderFilter* self_) { delete self_; }
-extern "C" OcctResult<HandlePCDMReaderFilter*> HandlePCDMReaderFilter_clone(const HandlePCDMReaderFilter* self_) {
-    try { return {new HandlePCDMReaderFilter(*self_), nullptr}; }
+extern "C" bool Handle_PCDM_ReaderFilter_is_null(const Handle_PCDM_ReaderFilter* self_) { return self_->IsNull(); }
+extern "C" void Handle_PCDM_ReferenceIterator_destructor(Handle_PCDM_ReferenceIterator* self_) { delete self_; }
+extern "C" OcctResult<Handle_PCDM_ReferenceIterator*> Handle_PCDM_ReferenceIterator_clone(const Handle_PCDM_ReferenceIterator* self_) {
+    try { return {new Handle_PCDM_ReferenceIterator(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandlePCDMReaderFilter_is_null(const HandlePCDMReaderFilter* self_) { return self_->IsNull(); }
-extern "C" void HandlePCDMReferenceIterator_destructor(HandlePCDMReferenceIterator* self_) { delete self_; }
-extern "C" OcctResult<HandlePCDMReferenceIterator*> HandlePCDMReferenceIterator_clone(const HandlePCDMReferenceIterator* self_) {
-    try { return {new HandlePCDMReferenceIterator(*self_), nullptr}; }
+extern "C" bool Handle_PCDM_ReferenceIterator_is_null(const Handle_PCDM_ReferenceIterator* self_) { return self_->IsNull(); }
+extern "C" void Handle_PCDM_RetrievalDriver_destructor(Handle_PCDM_RetrievalDriver* self_) { delete self_; }
+extern "C" OcctResult<Handle_PCDM_RetrievalDriver*> Handle_PCDM_RetrievalDriver_clone(const Handle_PCDM_RetrievalDriver* self_) {
+    try { return {new Handle_PCDM_RetrievalDriver(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandlePCDMReferenceIterator_is_null(const HandlePCDMReferenceIterator* self_) { return self_->IsNull(); }
-extern "C" void HandlePCDMRetrievalDriver_destructor(HandlePCDMRetrievalDriver* self_) { delete self_; }
-extern "C" OcctResult<HandlePCDMRetrievalDriver*> HandlePCDMRetrievalDriver_clone(const HandlePCDMRetrievalDriver* self_) {
-    try { return {new HandlePCDMRetrievalDriver(*self_), nullptr}; }
+extern "C" bool Handle_PCDM_RetrievalDriver_is_null(const Handle_PCDM_RetrievalDriver* self_) { return self_->IsNull(); }
+extern "C" void Handle_PCDM_StorageDriver_destructor(Handle_PCDM_StorageDriver* self_) { delete self_; }
+extern "C" OcctResult<Handle_PCDM_StorageDriver*> Handle_PCDM_StorageDriver_clone(const Handle_PCDM_StorageDriver* self_) {
+    try { return {new Handle_PCDM_StorageDriver(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandlePCDMRetrievalDriver_is_null(const HandlePCDMRetrievalDriver* self_) { return self_->IsNull(); }
-extern "C" void HandlePCDMStorageDriver_destructor(HandlePCDMStorageDriver* self_) { delete self_; }
-extern "C" OcctResult<HandlePCDMStorageDriver*> HandlePCDMStorageDriver_clone(const HandlePCDMStorageDriver* self_) {
-    try { return {new HandlePCDMStorageDriver(*self_), nullptr}; }
+extern "C" bool Handle_PCDM_StorageDriver_is_null(const Handle_PCDM_StorageDriver* self_) { return self_->IsNull(); }
+extern "C" void Handle_PCDM_Writer_destructor(Handle_PCDM_Writer* self_) { delete self_; }
+extern "C" OcctResult<Handle_PCDM_Writer*> Handle_PCDM_Writer_clone(const Handle_PCDM_Writer* self_) {
+    try { return {new Handle_PCDM_Writer(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandlePCDMStorageDriver_is_null(const HandlePCDMStorageDriver* self_) { return self_->IsNull(); }
-extern "C" void HandlePCDMWriter_destructor(HandlePCDMWriter* self_) { delete self_; }
-extern "C" OcctResult<HandlePCDMWriter*> HandlePCDMWriter_clone(const HandlePCDMWriter* self_) {
-    try { return {new HandlePCDMWriter(*self_), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" bool HandlePCDMWriter_is_null(const HandlePCDMWriter* self_) { return self_->IsNull(); }
+extern "C" bool Handle_PCDM_Writer_is_null(const Handle_PCDM_Writer* self_) { return self_->IsNull(); }
 
 // ========================
 // CDF_Application wrappers
@@ -381,59 +361,59 @@ extern "C" OcctResult<const CDM_Application*> CDF_Application_as_CDM_Application
 extern "C" OcctResult<CDM_Application*> CDF_Application_as_CDM_Application_mut(CDF_Application* self_) { return {static_cast<CDM_Application*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> CDF_Application_as_Standard_Transient(const CDF_Application* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> CDF_Application_as_Standard_Transient_mut(CDF_Application* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<const CDF_Application*> HandleCDFApplication_get(const HandleCDFApplication* handle) {
+extern "C" OcctResult<const CDF_Application*> Handle_CDF_Application_get(const Handle_CDF_Application* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<CDF_Application*> HandleCDFApplication_get_mut(HandleCDFApplication* handle) {
+extern "C" OcctResult<CDF_Application*> Handle_CDF_Application_get_mut(Handle_CDF_Application* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleCDMApplication*> HandleCDFApplication_to_HandleCDMApplication(const HandleCDFApplication* self_) {
-    try { return {new HandleCDMApplication(*self_), nullptr}; }
+extern "C" OcctResult<Handle_CDM_Application*> Handle_CDF_Application_to_Handle_CDM_Application(const Handle_CDF_Application* self_) {
+    try { return {new Handle_CDM_Application(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleCDFApplication_to_HandleStandardTransient(const HandleCDFApplication* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_CDF_Application_to_Handle_Standard_Transient(const Handle_CDF_Application* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleAppStdLApplication*> HandleCDFApplication_downcast_to_HandleAppStdLApplication(const HandleCDFApplication* self_) {
+extern "C" OcctResult<Handle_AppStdL_Application*> Handle_CDF_Application_downcast_to_Handle_AppStdL_Application(const Handle_CDF_Application* self_) {
     try {
     opencascade::handle<AppStdL_Application> result = opencascade::handle<AppStdL_Application>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleAppStdLApplication(result), nullptr};
+    return {new Handle_AppStdL_Application(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleAppStdApplication*> HandleCDFApplication_downcast_to_HandleAppStdApplication(const HandleCDFApplication* self_) {
+extern "C" OcctResult<Handle_AppStd_Application*> Handle_CDF_Application_downcast_to_Handle_AppStd_Application(const Handle_CDF_Application* self_) {
     try {
     opencascade::handle<AppStd_Application> result = opencascade::handle<AppStd_Application>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleAppStdApplication(result), nullptr};
+    return {new Handle_AppStd_Application(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTDocStdApplication*> HandleCDFApplication_downcast_to_HandleTDocStdApplication(const HandleCDFApplication* self_) {
+extern "C" OcctResult<Handle_TDocStd_Application*> Handle_CDF_Application_downcast_to_Handle_TDocStd_Application(const Handle_CDF_Application* self_) {
     try {
     opencascade::handle<TDocStd_Application> result = opencascade::handle<TDocStd_Application>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleTDocStdApplication(result), nullptr};
+    return {new Handle_TDocStd_Application(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTObjApplication*> HandleCDFApplication_downcast_to_HandleTObjApplication(const HandleCDFApplication* self_) {
+extern "C" OcctResult<Handle_TObj_Application*> Handle_CDF_Application_downcast_to_Handle_TObj_Application(const Handle_CDF_Application* self_) {
     try {
     opencascade::handle<TObj_Application> result = opencascade::handle<TObj_Application>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleTObjApplication(result), nullptr};
+    return {new Handle_TObj_Application(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleXCAFAppApplication*> HandleCDFApplication_downcast_to_HandleXCAFAppApplication(const HandleCDFApplication* self_) {
+extern "C" OcctResult<Handle_XCAFApp_Application*> Handle_CDF_Application_downcast_to_Handle_XCAFApp_Application(const Handle_CDF_Application* self_) {
     try {
     opencascade::handle<XCAFApp_Application> result = opencascade::handle<XCAFApp_Application>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleXCAFAppApplication(result), nullptr};
+    return {new Handle_XCAFApp_Application(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
@@ -459,10 +439,6 @@ extern "C" OcctResult<TCollection_ExtendedString*> CDF_Application_inherited_Nam
 }
 extern "C" OcctResult<TCollection_AsciiString*> CDF_Application_inherited_Version(const CDF_Application* self) {
     try { return {new TCollection_AsciiString(self->Version()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<CDM_MetaDataLookUpTable*> CDF_Application_inherited_MetaDataLookUpTable(CDF_Application* self) {
-    try { return {&(self->MetaDataLookUpTable()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> CDF_Application_inherited_IsInstance(const CDF_Application* self, Handle(Standard_Type) const& theType) {
@@ -541,20 +517,20 @@ extern "C" OcctResult<Handle(Standard_Type) const*> CDF_Directory_get_type_descr
 }
 extern "C" OcctResult<const Standard_Transient*> CDF_Directory_as_Standard_Transient(const CDF_Directory* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> CDF_Directory_as_Standard_Transient_mut(CDF_Directory* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleCDFDirectory*> CDF_Directory_to_handle(CDF_Directory* obj) {
-    try { return {new HandleCDFDirectory(obj), nullptr}; }
+extern "C" OcctResult<Handle_CDF_Directory*> CDF_Directory_to_handle(CDF_Directory* obj) {
+    try { return {new Handle_CDF_Directory(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const CDF_Directory*> HandleCDFDirectory_get(const HandleCDFDirectory* handle) {
+extern "C" OcctResult<const CDF_Directory*> Handle_CDF_Directory_get(const Handle_CDF_Directory* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<CDF_Directory*> HandleCDFDirectory_get_mut(HandleCDFDirectory* handle) {
+extern "C" OcctResult<CDF_Directory*> Handle_CDF_Directory_get_mut(Handle_CDF_Directory* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleCDFDirectory_to_HandleStandardTransient(const HandleCDFDirectory* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_CDF_Directory_to_Handle_Standard_Transient(const Handle_CDF_Directory* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> CDF_Directory_inherited_IsInstance(const CDF_Directory* self, Handle(Standard_Type) const& theType) {
@@ -617,10 +593,6 @@ extern "C" void CDF_DirectoryIterator_destructor(CDF_DirectoryIterator* self_) {
 // CDF_FWOSDriver wrappers
 // ========================
 
-extern "C" OcctResult<CDF_FWOSDriver*> CDF_FWOSDriver_ctor_metadatalookuptable(CDM_MetaDataLookUpTable* theLookUpTable) {
-    try { return {new CDF_FWOSDriver(*theLookUpTable), nullptr}; }
-    OCCT_CATCH_RETURN
-}
 extern "C" OcctResult<TCollection_ExtendedString*> CDF_FWOSDriver_default_folder(CDF_FWOSDriver* self_) {
     try { return {new TCollection_ExtendedString(self_->DefaultFolder()), nullptr}; }
     OCCT_CATCH_RETURN
@@ -661,24 +633,24 @@ extern "C" OcctResult<const CDF_MetaDataDriver*> CDF_FWOSDriver_as_CDF_MetaDataD
 extern "C" OcctResult<CDF_MetaDataDriver*> CDF_FWOSDriver_as_CDF_MetaDataDriver_mut(CDF_FWOSDriver* self_) { return {static_cast<CDF_MetaDataDriver*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> CDF_FWOSDriver_as_Standard_Transient(const CDF_FWOSDriver* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> CDF_FWOSDriver_as_Standard_Transient_mut(CDF_FWOSDriver* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleCDFFWOSDriver*> CDF_FWOSDriver_to_handle(CDF_FWOSDriver* obj) {
-    try { return {new HandleCDFFWOSDriver(obj), nullptr}; }
+extern "C" OcctResult<Handle_CDF_FWOSDriver*> CDF_FWOSDriver_to_handle(CDF_FWOSDriver* obj) {
+    try { return {new Handle_CDF_FWOSDriver(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const CDF_FWOSDriver*> HandleCDFFWOSDriver_get(const HandleCDFFWOSDriver* handle) {
+extern "C" OcctResult<const CDF_FWOSDriver*> Handle_CDF_FWOSDriver_get(const Handle_CDF_FWOSDriver* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<CDF_FWOSDriver*> HandleCDFFWOSDriver_get_mut(HandleCDFFWOSDriver* handle) {
+extern "C" OcctResult<CDF_FWOSDriver*> Handle_CDF_FWOSDriver_get_mut(Handle_CDF_FWOSDriver* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleCDFMetaDataDriver*> HandleCDFFWOSDriver_to_HandleCDFMetaDataDriver(const HandleCDFFWOSDriver* self_) {
-    try { return {new HandleCDFMetaDataDriver(*self_), nullptr}; }
+extern "C" OcctResult<Handle_CDF_MetaDataDriver*> Handle_CDF_FWOSDriver_to_Handle_CDF_MetaDataDriver(const Handle_CDF_FWOSDriver* self_) {
+    try { return {new Handle_CDF_MetaDataDriver(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleCDFFWOSDriver_to_HandleStandardTransient(const HandleCDFFWOSDriver* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_CDF_FWOSDriver_to_Handle_Standard_Transient(const Handle_CDF_FWOSDriver* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> CDF_FWOSDriver_inherited_HasVersionCapability(CDF_FWOSDriver* self) {
@@ -817,23 +789,23 @@ extern "C" OcctResult<Handle(Standard_Type) const*> CDF_MetaDataDriver_get_type_
 }
 extern "C" OcctResult<const Standard_Transient*> CDF_MetaDataDriver_as_Standard_Transient(const CDF_MetaDataDriver* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> CDF_MetaDataDriver_as_Standard_Transient_mut(CDF_MetaDataDriver* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<const CDF_MetaDataDriver*> HandleCDFMetaDataDriver_get(const HandleCDFMetaDataDriver* handle) {
+extern "C" OcctResult<const CDF_MetaDataDriver*> Handle_CDF_MetaDataDriver_get(const Handle_CDF_MetaDataDriver* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<CDF_MetaDataDriver*> HandleCDFMetaDataDriver_get_mut(HandleCDFMetaDataDriver* handle) {
+extern "C" OcctResult<CDF_MetaDataDriver*> Handle_CDF_MetaDataDriver_get_mut(Handle_CDF_MetaDataDriver* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleCDFMetaDataDriver_to_HandleStandardTransient(const HandleCDFMetaDataDriver* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_CDF_MetaDataDriver_to_Handle_Standard_Transient(const Handle_CDF_MetaDataDriver* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleCDFFWOSDriver*> HandleCDFMetaDataDriver_downcast_to_HandleCDFFWOSDriver(const HandleCDFMetaDataDriver* self_) {
+extern "C" OcctResult<Handle_CDF_FWOSDriver*> Handle_CDF_MetaDataDriver_downcast_to_Handle_CDF_FWOSDriver(const Handle_CDF_MetaDataDriver* self_) {
     try {
     opencascade::handle<CDF_FWOSDriver> result = opencascade::handle<CDF_FWOSDriver>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleCDFFWOSDriver(result), nullptr};
+    return {new Handle_CDF_FWOSDriver(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
@@ -889,16 +861,16 @@ extern "C" OcctResult<Handle(Standard_Type) const*> CDF_MetaDataDriverFactory_ge
 }
 extern "C" OcctResult<const Standard_Transient*> CDF_MetaDataDriverFactory_as_Standard_Transient(const CDF_MetaDataDriverFactory* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> CDF_MetaDataDriverFactory_as_Standard_Transient_mut(CDF_MetaDataDriverFactory* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<const CDF_MetaDataDriverFactory*> HandleCDFMetaDataDriverFactory_get(const HandleCDFMetaDataDriverFactory* handle) {
+extern "C" OcctResult<const CDF_MetaDataDriverFactory*> Handle_CDF_MetaDataDriverFactory_get(const Handle_CDF_MetaDataDriverFactory* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<CDF_MetaDataDriverFactory*> HandleCDFMetaDataDriverFactory_get_mut(HandleCDFMetaDataDriverFactory* handle) {
+extern "C" OcctResult<CDF_MetaDataDriverFactory*> Handle_CDF_MetaDataDriverFactory_get_mut(Handle_CDF_MetaDataDriverFactory* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleCDFMetaDataDriverFactory_to_HandleStandardTransient(const HandleCDFMetaDataDriverFactory* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_CDF_MetaDataDriverFactory_to_Handle_Standard_Transient(const Handle_CDF_MetaDataDriverFactory* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> CDF_MetaDataDriverFactory_inherited_IsInstance(const CDF_MetaDataDriverFactory* self, Handle(Standard_Type) const& theType) {
@@ -1087,20 +1059,20 @@ extern "C" OcctResult<Handle(Standard_Type) const*> CDF_StoreList_get_type_descr
 }
 extern "C" OcctResult<const Standard_Transient*> CDF_StoreList_as_Standard_Transient(const CDF_StoreList* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> CDF_StoreList_as_Standard_Transient_mut(CDF_StoreList* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleCDFStoreList*> CDF_StoreList_to_handle(CDF_StoreList* obj) {
-    try { return {new HandleCDFStoreList(obj), nullptr}; }
+extern "C" OcctResult<Handle_CDF_StoreList*> CDF_StoreList_to_handle(CDF_StoreList* obj) {
+    try { return {new Handle_CDF_StoreList(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const CDF_StoreList*> HandleCDFStoreList_get(const HandleCDFStoreList* handle) {
+extern "C" OcctResult<const CDF_StoreList*> Handle_CDF_StoreList_get(const Handle_CDF_StoreList* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<CDF_StoreList*> HandleCDFStoreList_get_mut(HandleCDFStoreList* handle) {
+extern "C" OcctResult<CDF_StoreList*> Handle_CDF_StoreList_get_mut(Handle_CDF_StoreList* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleCDFStoreList_to_HandleStandardTransient(const HandleCDFStoreList* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_CDF_StoreList_to_Handle_Standard_Transient(const Handle_CDF_StoreList* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> CDF_StoreList_inherited_IsInstance(const CDF_StoreList* self, Handle(Standard_Type) const& theType) {
@@ -1165,10 +1137,6 @@ extern "C" const char* CDM_Application_write(CDM_Application* self_, char16_t co
     try { self_->Write(aString); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<CDM_MetaDataLookUpTable*> CDM_Application_meta_data_look_up_table(CDM_Application* self_) {
-    try { return {&(self_->MetaDataLookUpTable()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
 extern "C" OcctResult<Handle(Standard_Type) const*> CDM_Application_dynamic_type(const CDM_Application* self_) {
     try { return {&(self_->DynamicType()), nullptr}; }
     OCCT_CATCH_RETURN
@@ -1183,63 +1151,63 @@ extern "C" OcctResult<Handle(Standard_Type) const*> CDM_Application_get_type_des
 }
 extern "C" OcctResult<const Standard_Transient*> CDM_Application_as_Standard_Transient(const CDM_Application* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> CDM_Application_as_Standard_Transient_mut(CDM_Application* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<const CDM_Application*> HandleCDMApplication_get(const HandleCDMApplication* handle) {
+extern "C" OcctResult<const CDM_Application*> Handle_CDM_Application_get(const Handle_CDM_Application* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<CDM_Application*> HandleCDMApplication_get_mut(HandleCDMApplication* handle) {
+extern "C" OcctResult<CDM_Application*> Handle_CDM_Application_get_mut(Handle_CDM_Application* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleCDMApplication_to_HandleStandardTransient(const HandleCDMApplication* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_CDM_Application_to_Handle_Standard_Transient(const Handle_CDM_Application* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleAppStdLApplication*> HandleCDMApplication_downcast_to_HandleAppStdLApplication(const HandleCDMApplication* self_) {
+extern "C" OcctResult<Handle_AppStdL_Application*> Handle_CDM_Application_downcast_to_Handle_AppStdL_Application(const Handle_CDM_Application* self_) {
     try {
     opencascade::handle<AppStdL_Application> result = opencascade::handle<AppStdL_Application>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleAppStdLApplication(result), nullptr};
+    return {new Handle_AppStdL_Application(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleAppStdApplication*> HandleCDMApplication_downcast_to_HandleAppStdApplication(const HandleCDMApplication* self_) {
+extern "C" OcctResult<Handle_AppStd_Application*> Handle_CDM_Application_downcast_to_Handle_AppStd_Application(const Handle_CDM_Application* self_) {
     try {
     opencascade::handle<AppStd_Application> result = opencascade::handle<AppStd_Application>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleAppStdApplication(result), nullptr};
+    return {new Handle_AppStd_Application(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleCDFApplication*> HandleCDMApplication_downcast_to_HandleCDFApplication(const HandleCDMApplication* self_) {
+extern "C" OcctResult<Handle_CDF_Application*> Handle_CDM_Application_downcast_to_Handle_CDF_Application(const Handle_CDM_Application* self_) {
     try {
     opencascade::handle<CDF_Application> result = opencascade::handle<CDF_Application>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleCDFApplication(result), nullptr};
+    return {new Handle_CDF_Application(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTDocStdApplication*> HandleCDMApplication_downcast_to_HandleTDocStdApplication(const HandleCDMApplication* self_) {
+extern "C" OcctResult<Handle_TDocStd_Application*> Handle_CDM_Application_downcast_to_Handle_TDocStd_Application(const Handle_CDM_Application* self_) {
     try {
     opencascade::handle<TDocStd_Application> result = opencascade::handle<TDocStd_Application>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleTDocStdApplication(result), nullptr};
+    return {new Handle_TDocStd_Application(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTObjApplication*> HandleCDMApplication_downcast_to_HandleTObjApplication(const HandleCDMApplication* self_) {
+extern "C" OcctResult<Handle_TObj_Application*> Handle_CDM_Application_downcast_to_Handle_TObj_Application(const Handle_CDM_Application* self_) {
     try {
     opencascade::handle<TObj_Application> result = opencascade::handle<TObj_Application>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleTObjApplication(result), nullptr};
+    return {new Handle_TObj_Application(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleXCAFAppApplication*> HandleCDMApplication_downcast_to_HandleXCAFAppApplication(const HandleCDMApplication* self_) {
+extern "C" OcctResult<Handle_XCAFApp_Application*> Handle_CDM_Application_downcast_to_Handle_XCAFApp_Application(const Handle_CDM_Application* self_) {
     try {
     opencascade::handle<XCAFApp_Application> result = opencascade::handle<XCAFApp_Application>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleXCAFAppApplication(result), nullptr};
+    return {new Handle_XCAFApp_Application(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
@@ -1325,7 +1293,7 @@ extern "C" OcctResult<Handle(CDM_Reference)*> CDM_Document_reference(const CDM_D
     try { return {new Handle(CDM_Reference)(self_->Reference(aReferenceIdentifier)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* CDM_Document_update_handlecdmdocument_int_address(CDM_Document* self_, Handle(CDM_Document) const* aToDocument, int32_t aReferenceIdentifier, Standard_Address aModifContext) {
+extern "C" const char* CDM_Document_update_handlecdmdocument_int_voidptr(CDM_Document* self_, Handle(CDM_Document) const* aToDocument, int32_t aReferenceIdentifier, void* aModifContext) {
     try { self_->Update(*aToDocument, aReferenceIdentifier, aModifContext); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -1333,7 +1301,7 @@ extern "C" OcctResult<bool> CDM_Document_update_extendedstring(CDM_Document* sel
     try { return {self_->Update(*ErrorString), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* CDM_Document_extensions(const CDM_Document* self_, TColStd_SequenceOfExtendedString* Extensions) {
+extern "C" const char* CDM_Document_extensions(const CDM_Document* self_, NCollection_Sequence_TCollection_ExtendedString* Extensions) {
     try { self_->Extensions(*Extensions); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -1361,7 +1329,7 @@ extern "C" OcctResult<bool> CDM_Document_is_stored_int(const CDM_Document* self_
     try { return {self_->IsStored(aReferenceIdentifier), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* CDM_Document_update_from_documents(const CDM_Document* self_, Standard_Address aModifContext) {
+extern "C" const char* CDM_Document_update_from_documents(const CDM_Document* self_, void* aModifContext) {
     try { self_->UpdateFromDocuments(aModifContext); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -1429,11 +1397,11 @@ extern "C" const char* CDM_Document_add_comment(CDM_Document* self_, TCollection
     try { self_->AddComment(*aComment); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* CDM_Document_set_comments(CDM_Document* self_, TColStd_SequenceOfExtendedString const* aComments) {
+extern "C" const char* CDM_Document_set_comments(CDM_Document* self_, NCollection_Sequence_TCollection_ExtendedString const* aComments) {
     try { self_->SetComments(*aComments); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* CDM_Document_comments(const CDM_Document* self_, TColStd_SequenceOfExtendedString* aComments) {
+extern "C" const char* CDM_Document_comments(const CDM_Document* self_, NCollection_Sequence_TCollection_ExtendedString* aComments) {
     try { self_->Comments(*aComments); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -1575,23 +1543,23 @@ extern "C" OcctResult<Handle(Standard_Type) const*> CDM_Document_get_type_descri
 }
 extern "C" OcctResult<const Standard_Transient*> CDM_Document_as_Standard_Transient(const CDM_Document* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> CDM_Document_as_Standard_Transient_mut(CDM_Document* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<const CDM_Document*> HandleCDMDocument_get(const HandleCDMDocument* handle) {
+extern "C" OcctResult<const CDM_Document*> Handle_CDM_Document_get(const Handle_CDM_Document* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<CDM_Document*> HandleCDMDocument_get_mut(HandleCDMDocument* handle) {
+extern "C" OcctResult<CDM_Document*> Handle_CDM_Document_get_mut(Handle_CDM_Document* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleCDMDocument_to_HandleStandardTransient(const HandleCDMDocument* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_CDM_Document_to_Handle_Standard_Transient(const Handle_CDM_Document* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleTDocStdDocument*> HandleCDMDocument_downcast_to_HandleTDocStdDocument(const HandleCDMDocument* self_) {
+extern "C" OcctResult<Handle_TDocStd_Document*> Handle_CDM_Document_downcast_to_Handle_TDocStd_Document(const Handle_CDM_Document* self_) {
     try {
     opencascade::handle<TDocStd_Document> result = opencascade::handle<TDocStd_Document>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleTDocStdDocument(result), nullptr};
+    return {new Handle_TDocStd_Document(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
@@ -1656,14 +1624,6 @@ extern "C" OcctResult<Handle(Standard_Type) const*> CDM_MetaData_dynamic_type(co
     try { return {&(self_->DynamicType()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(CDM_MetaData)*> CDM_MetaData_look_up_metadatalookuptable_extendedstring4_bool(CDM_MetaDataLookUpTable* theLookUpTable, TCollection_ExtendedString const* aFolder, TCollection_ExtendedString const* aName, TCollection_ExtendedString const* aPath, TCollection_ExtendedString const* aFileName, bool ReadOnly) {
-    try { return {new Handle(CDM_MetaData)(CDM_MetaData::LookUp(*theLookUpTable, *aFolder, *aName, *aPath, *aFileName, ReadOnly)), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Handle(CDM_MetaData)*> CDM_MetaData_look_up_metadatalookuptable_extendedstring5_bool(CDM_MetaDataLookUpTable* theLookUpTable, TCollection_ExtendedString const* aFolder, TCollection_ExtendedString const* aName, TCollection_ExtendedString const* aPath, TCollection_ExtendedString const* aVersion, TCollection_ExtendedString const* aFileName, bool ReadOnly) {
-    try { return {new Handle(CDM_MetaData)(CDM_MetaData::LookUp(*theLookUpTable, *aFolder, *aName, *aPath, *aVersion, *aFileName, ReadOnly)), nullptr}; }
-    OCCT_CATCH_RETURN
-}
 extern "C" OcctResult<char const*> CDM_MetaData_get_type_name() {
     try { return {CDM_MetaData::get_type_name(), nullptr}; }
     OCCT_CATCH_RETURN
@@ -1674,20 +1634,20 @@ extern "C" OcctResult<Handle(Standard_Type) const*> CDM_MetaData_get_type_descri
 }
 extern "C" OcctResult<const Standard_Transient*> CDM_MetaData_as_Standard_Transient(const CDM_MetaData* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> CDM_MetaData_as_Standard_Transient_mut(CDM_MetaData* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleCDMMetaData*> CDM_MetaData_to_handle(CDM_MetaData* obj) {
-    try { return {new HandleCDMMetaData(obj), nullptr}; }
+extern "C" OcctResult<Handle_CDM_MetaData*> CDM_MetaData_to_handle(CDM_MetaData* obj) {
+    try { return {new Handle_CDM_MetaData(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const CDM_MetaData*> HandleCDMMetaData_get(const HandleCDMMetaData* handle) {
+extern "C" OcctResult<const CDM_MetaData*> Handle_CDM_MetaData_get(const Handle_CDM_MetaData* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<CDM_MetaData*> HandleCDMMetaData_get_mut(HandleCDMMetaData* handle) {
+extern "C" OcctResult<CDM_MetaData*> Handle_CDM_MetaData_get_mut(Handle_CDM_MetaData* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleCDMMetaData_to_HandleStandardTransient(const HandleCDMMetaData* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_CDM_MetaData_to_Handle_Standard_Transient(const Handle_CDM_MetaData* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> CDM_MetaData_inherited_IsInstance(const CDM_MetaData* self, Handle(Standard_Type) const& theType) {
@@ -1758,20 +1718,20 @@ extern "C" OcctResult<Handle(Standard_Type) const*> CDM_Reference_get_type_descr
 }
 extern "C" OcctResult<const Standard_Transient*> CDM_Reference_as_Standard_Transient(const CDM_Reference* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> CDM_Reference_as_Standard_Transient_mut(CDM_Reference* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleCDMReference*> CDM_Reference_to_handle(CDM_Reference* obj) {
-    try { return {new HandleCDMReference(obj), nullptr}; }
+extern "C" OcctResult<Handle_CDM_Reference*> CDM_Reference_to_handle(CDM_Reference* obj) {
+    try { return {new Handle_CDM_Reference(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const CDM_Reference*> HandleCDMReference_get(const HandleCDMReference* handle) {
+extern "C" OcctResult<const CDM_Reference*> Handle_CDM_Reference_get(const Handle_CDM_Reference* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<CDM_Reference*> HandleCDMReference_get_mut(HandleCDMReference* handle) {
+extern "C" OcctResult<CDM_Reference*> Handle_CDM_Reference_get_mut(Handle_CDM_Reference* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleCDMReference_to_HandleStandardTransient(const HandleCDMReference* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_CDM_Reference_to_Handle_Standard_Transient(const Handle_CDM_Reference* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> CDM_Reference_inherited_IsInstance(const CDM_Reference* self, Handle(Standard_Type) const& theType) {
@@ -2520,20 +2480,20 @@ extern "C" OcctResult<Handle(Standard_Type) const*> LDOM_MemManager_get_type_des
 }
 extern "C" OcctResult<const Standard_Transient*> LDOM_MemManager_as_Standard_Transient(const LDOM_MemManager* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> LDOM_MemManager_as_Standard_Transient_mut(LDOM_MemManager* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleLDOMMemManager*> LDOM_MemManager_to_handle(LDOM_MemManager* obj) {
-    try { return {new HandleLDOMMemManager(obj), nullptr}; }
+extern "C" OcctResult<Handle_LDOM_MemManager*> LDOM_MemManager_to_handle(LDOM_MemManager* obj) {
+    try { return {new Handle_LDOM_MemManager(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const LDOM_MemManager*> HandleLDOMMemManager_get(const HandleLDOMMemManager* handle) {
+extern "C" OcctResult<const LDOM_MemManager*> Handle_LDOM_MemManager_get(const Handle_LDOM_MemManager* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<LDOM_MemManager*> HandleLDOMMemManager_get_mut(HandleLDOMMemManager* handle) {
+extern "C" OcctResult<LDOM_MemManager*> Handle_LDOM_MemManager_get_mut(Handle_LDOM_MemManager* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleLDOMMemManager_to_HandleStandardTransient(const HandleLDOMMemManager* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_LDOM_MemManager_to_Handle_Standard_Transient(const Handle_LDOM_MemManager* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> LDOM_MemManager_inherited_IsInstance(const LDOM_MemManager* self, Handle(Standard_Type) const& theType) {
@@ -2888,24 +2848,24 @@ extern "C" OcctResult<const Standard_Persistent*> PCDM_Document_as_Standard_Pers
 extern "C" OcctResult<Standard_Persistent*> PCDM_Document_as_Standard_Persistent_mut(PCDM_Document* self_) { return {static_cast<Standard_Persistent*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> PCDM_Document_as_Standard_Transient(const PCDM_Document* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> PCDM_Document_as_Standard_Transient_mut(PCDM_Document* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandlePCDMDocument*> PCDM_Document_to_handle(PCDM_Document* obj) {
-    try { return {new HandlePCDMDocument(obj), nullptr}; }
+extern "C" OcctResult<Handle_PCDM_Document*> PCDM_Document_to_handle(PCDM_Document* obj) {
+    try { return {new Handle_PCDM_Document(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const PCDM_Document*> HandlePCDMDocument_get(const HandlePCDMDocument* handle) {
+extern "C" OcctResult<const PCDM_Document*> Handle_PCDM_Document_get(const Handle_PCDM_Document* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<PCDM_Document*> HandlePCDMDocument_get_mut(HandlePCDMDocument* handle) {
+extern "C" OcctResult<PCDM_Document*> Handle_PCDM_Document_get_mut(Handle_PCDM_Document* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardPersistent*> HandlePCDMDocument_to_HandleStandardPersistent(const HandlePCDMDocument* self_) {
-    try { return {new HandleStandardPersistent(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Persistent*> Handle_PCDM_Document_to_Handle_Standard_Persistent(const Handle_PCDM_Document* self_) {
+    try { return {new Handle_Standard_Persistent(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandlePCDMDocument_to_HandleStandardTransient(const HandlePCDMDocument* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_PCDM_Document_to_Handle_Standard_Transient(const Handle_PCDM_Document* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<int32_t*> PCDM_Document_inherited_TypeNum(PCDM_Document* self) {
@@ -2946,10 +2906,6 @@ extern "C" void PCDM_Document_destructor(PCDM_Document* self_) { delete self_; }
 // PCDM_DriverError wrappers
 // ========================
 
-extern "C" OcctResult<PCDM_DriverError*> PCDM_DriverError_ctor() {
-    try { return {new PCDM_DriverError(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
 extern "C" OcctResult<PCDM_DriverError*> PCDM_DriverError_ctor_charptr(const char* theMessage) {
     try { return {new PCDM_DriverError(theMessage), nullptr}; }
     OCCT_CATCH_RETURN
@@ -2958,96 +2914,14 @@ extern "C" OcctResult<PCDM_DriverError*> PCDM_DriverError_ctor_charptr2(const ch
     try { return {new PCDM_DriverError(theMessage, theStackTrace), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(Standard_Type) const*> PCDM_DriverError_dynamic_type(const PCDM_DriverError* self_) {
-    try { return {&(self_->DynamicType()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* PCDM_DriverError_raise_charptr(const char* theMessage) {
-    try { PCDM_DriverError::Raise(theMessage); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* PCDM_DriverError_raise_sstream(Standard_SStream* theMessage) {
-    try { PCDM_DriverError::Raise(*theMessage); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<Handle(PCDM_DriverError)*> PCDM_DriverError_new_instance_charptr(const char* theMessage) {
-    try { return {new Handle(PCDM_DriverError)(PCDM_DriverError::NewInstance(theMessage)), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Handle(PCDM_DriverError)*> PCDM_DriverError_new_instance_charptr2(const char* theMessage, const char* theStackTrace) {
-    try { return {new Handle(PCDM_DriverError)(PCDM_DriverError::NewInstance(theMessage, theStackTrace)), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<char const*> PCDM_DriverError_get_type_name() {
-    try { return {PCDM_DriverError::get_type_name(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Handle(Standard_Type) const*> PCDM_DriverError_get_type_descriptor() {
-    try { return {&(PCDM_DriverError::get_type_descriptor()), nullptr}; }
+extern "C" OcctResult<char const*> PCDM_DriverError_exception_type(const PCDM_DriverError* self_) {
+    try { return {self_->ExceptionType(), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<const Standard_Failure*> PCDM_DriverError_as_Standard_Failure(const PCDM_DriverError* self_) { return {static_cast<const Standard_Failure*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Failure*> PCDM_DriverError_as_Standard_Failure_mut(PCDM_DriverError* self_) { return {static_cast<Standard_Failure*>(self_), nullptr}; }
-extern "C" OcctResult<const Standard_Transient*> PCDM_DriverError_as_Standard_Transient(const PCDM_DriverError* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<Standard_Transient*> PCDM_DriverError_as_Standard_Transient_mut(PCDM_DriverError* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandlePCDMDriverError*> PCDM_DriverError_to_handle(PCDM_DriverError* obj) {
-    try { return {new HandlePCDMDriverError(obj), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<const PCDM_DriverError*> HandlePCDMDriverError_get(const HandlePCDMDriverError* handle) {
-    try { return {(*handle).get(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<PCDM_DriverError*> HandlePCDMDriverError_get_mut(HandlePCDMDriverError* handle) {
-    try { return {(*handle).get(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<HandleStandardFailure*> HandlePCDMDriverError_to_HandleStandardFailure(const HandlePCDMDriverError* self_) {
-    try { return {new HandleStandardFailure(*self_), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<HandleStandardTransient*> HandlePCDMDriverError_to_HandleStandardTransient(const HandlePCDMDriverError* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
-    OCCT_CATCH_RETURN
-}
 extern "C" const char* PCDM_DriverError_inherited_Print(const PCDM_DriverError* self, Standard_OStream& theStream) {
     try { self->Print(theStream); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* PCDM_DriverError_inherited_Reraise(PCDM_DriverError* self) {
-    try { self->Reraise(); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* PCDM_DriverError_inherited_Jump(PCDM_DriverError* self) {
-    try { self->Jump(); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<bool> PCDM_DriverError_inherited_IsInstance(const PCDM_DriverError* self, Handle(Standard_Type) const& theType) {
-    try { return {self->IsInstance(theType), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<bool> PCDM_DriverError_inherited_IsKind(const PCDM_DriverError* self, Handle(Standard_Type) const& theType) {
-    try { return {self->IsKind(theType), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Standard_Transient*> PCDM_DriverError_inherited_This(const PCDM_DriverError* self) {
-    try { return {self->This(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<int32_t> PCDM_DriverError_inherited_GetRefCount(const PCDM_DriverError* self) {
-    try { return {self->GetRefCount(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* PCDM_DriverError_inherited_IncrementRefCounter(PCDM_DriverError* self) {
-    try { self->IncrementRefCounter(); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<int32_t> PCDM_DriverError_inherited_DecrementRefCounter(PCDM_DriverError* self) {
-    try { return {self->DecrementRefCounter(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* PCDM_DriverError_inherited_Delete(const PCDM_DriverError* self) {
-    try { self->Delete(); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
 extern "C" void PCDM_DriverError_destructor(PCDM_DriverError* self_) { delete self_; }
@@ -3080,11 +2954,11 @@ extern "C" OcctResult<int32_t> PCDM_ReadWriter_read_reference_counter(const PCDM
     try { return {self_->ReadReferenceCounter(*theFileName, *theMsgDriver), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* PCDM_ReadWriter_read_references(const PCDM_ReadWriter* self_, TCollection_ExtendedString const* aFileName, PCDM_SequenceOfReference* theReferences, Handle(Message_Messenger) const* theMsgDriver) {
+extern "C" const char* PCDM_ReadWriter_read_references(const PCDM_ReadWriter* self_, TCollection_ExtendedString const* aFileName, NCollection_Sequence_PCDM_Reference* theReferences, Handle(Message_Messenger) const* theMsgDriver) {
     try { self_->ReadReferences(*aFileName, *theReferences, *theMsgDriver); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* PCDM_ReadWriter_read_extensions(const PCDM_ReadWriter* self_, TCollection_ExtendedString const* aFileName, TColStd_SequenceOfExtendedString* theExtensions, Handle(Message_Messenger) const* theMsgDriver) {
+extern "C" const char* PCDM_ReadWriter_read_extensions(const PCDM_ReadWriter* self_, TCollection_ExtendedString const* aFileName, NCollection_Sequence_TCollection_ExtendedString* theExtensions, Handle(Message_Messenger) const* theMsgDriver) {
     try { self_->ReadExtensions(*aFileName, *theExtensions, *theMsgDriver); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -3130,23 +3004,23 @@ extern "C" OcctResult<Handle(Standard_Type) const*> PCDM_ReadWriter_get_type_des
 }
 extern "C" OcctResult<const Standard_Transient*> PCDM_ReadWriter_as_Standard_Transient(const PCDM_ReadWriter* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> PCDM_ReadWriter_as_Standard_Transient_mut(PCDM_ReadWriter* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<const PCDM_ReadWriter*> HandlePCDMReadWriter_get(const HandlePCDMReadWriter* handle) {
+extern "C" OcctResult<const PCDM_ReadWriter*> Handle_PCDM_ReadWriter_get(const Handle_PCDM_ReadWriter* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<PCDM_ReadWriter*> HandlePCDMReadWriter_get_mut(HandlePCDMReadWriter* handle) {
+extern "C" OcctResult<PCDM_ReadWriter*> Handle_PCDM_ReadWriter_get_mut(Handle_PCDM_ReadWriter* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandlePCDMReadWriter_to_HandleStandardTransient(const HandlePCDMReadWriter* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_PCDM_ReadWriter_to_Handle_Standard_Transient(const Handle_PCDM_ReadWriter* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandlePCDMReadWriter1*> HandlePCDMReadWriter_downcast_to_HandlePCDMReadWriter1(const HandlePCDMReadWriter* self_) {
+extern "C" OcctResult<Handle_PCDM_ReadWriter_1*> Handle_PCDM_ReadWriter_downcast_to_Handle_PCDM_ReadWriter_1(const Handle_PCDM_ReadWriter* self_) {
     try {
     opencascade::handle<PCDM_ReadWriter_1> result = opencascade::handle<PCDM_ReadWriter_1>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandlePCDMReadWriter1(result), nullptr};
+    return {new Handle_PCDM_ReadWriter_1(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
@@ -3212,11 +3086,11 @@ extern "C" OcctResult<int32_t> PCDM_ReadWriter_1_read_reference_counter(const PC
     try { return {self_->ReadReferenceCounter(*aFileName, *theMsgDriver), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* PCDM_ReadWriter_1_read_references(const PCDM_ReadWriter_1* self_, TCollection_ExtendedString const* aFileName, PCDM_SequenceOfReference* theReferences, Handle(Message_Messenger) const* theMsgDriver) {
+extern "C" const char* PCDM_ReadWriter_1_read_references(const PCDM_ReadWriter_1* self_, TCollection_ExtendedString const* aFileName, NCollection_Sequence_PCDM_Reference* theReferences, Handle(Message_Messenger) const* theMsgDriver) {
     try { self_->ReadReferences(*aFileName, *theReferences, *theMsgDriver); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* PCDM_ReadWriter_1_read_extensions(const PCDM_ReadWriter_1* self_, TCollection_ExtendedString const* aFileName, TColStd_SequenceOfExtendedString* theExtensions, Handle(Message_Messenger) const* theMsgDriver) {
+extern "C" const char* PCDM_ReadWriter_1_read_extensions(const PCDM_ReadWriter_1* self_, TCollection_ExtendedString const* aFileName, NCollection_Sequence_TCollection_ExtendedString* theExtensions, Handle(Message_Messenger) const* theMsgDriver) {
     try { self_->ReadExtensions(*aFileName, *theExtensions, *theMsgDriver); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -3240,24 +3114,24 @@ extern "C" OcctResult<const PCDM_ReadWriter*> PCDM_ReadWriter_1_as_PCDM_ReadWrit
 extern "C" OcctResult<PCDM_ReadWriter*> PCDM_ReadWriter_1_as_PCDM_ReadWriter_mut(PCDM_ReadWriter_1* self_) { return {static_cast<PCDM_ReadWriter*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> PCDM_ReadWriter_1_as_Standard_Transient(const PCDM_ReadWriter_1* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> PCDM_ReadWriter_1_as_Standard_Transient_mut(PCDM_ReadWriter_1* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandlePCDMReadWriter1*> PCDM_ReadWriter_1_to_handle(PCDM_ReadWriter_1* obj) {
-    try { return {new HandlePCDMReadWriter1(obj), nullptr}; }
+extern "C" OcctResult<Handle_PCDM_ReadWriter_1*> PCDM_ReadWriter_1_to_handle(PCDM_ReadWriter_1* obj) {
+    try { return {new Handle_PCDM_ReadWriter_1(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const PCDM_ReadWriter_1*> HandlePCDMReadWriter1_get(const HandlePCDMReadWriter1* handle) {
+extern "C" OcctResult<const PCDM_ReadWriter_1*> Handle_PCDM_ReadWriter_1_get(const Handle_PCDM_ReadWriter_1* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<PCDM_ReadWriter_1*> HandlePCDMReadWriter1_get_mut(HandlePCDMReadWriter1* handle) {
+extern "C" OcctResult<PCDM_ReadWriter_1*> Handle_PCDM_ReadWriter_1_get_mut(Handle_PCDM_ReadWriter_1* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandlePCDMReadWriter*> HandlePCDMReadWriter1_to_HandlePCDMReadWriter(const HandlePCDMReadWriter1* self_) {
-    try { return {new HandlePCDMReadWriter(*self_), nullptr}; }
+extern "C" OcctResult<Handle_PCDM_ReadWriter*> Handle_PCDM_ReadWriter_1_to_Handle_PCDM_ReadWriter(const Handle_PCDM_ReadWriter_1* self_) {
+    try { return {new Handle_PCDM_ReadWriter(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandlePCDMReadWriter1_to_HandleStandardTransient(const HandlePCDMReadWriter1* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_PCDM_ReadWriter_1_to_Handle_Standard_Transient(const Handle_PCDM_ReadWriter_1* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> PCDM_ReadWriter_1_inherited_IsInstance(const PCDM_ReadWriter_1* self, Handle(Standard_Type) const& theType) {
@@ -3320,103 +3194,103 @@ extern "C" OcctResult<Handle(Standard_Type) const*> PCDM_Reader_get_type_descrip
 }
 extern "C" OcctResult<const Standard_Transient*> PCDM_Reader_as_Standard_Transient(const PCDM_Reader* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> PCDM_Reader_as_Standard_Transient_mut(PCDM_Reader* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<const PCDM_Reader*> HandlePCDMReader_get(const HandlePCDMReader* handle) {
+extern "C" OcctResult<const PCDM_Reader*> Handle_PCDM_Reader_get(const Handle_PCDM_Reader* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<PCDM_Reader*> HandlePCDMReader_get_mut(HandlePCDMReader* handle) {
+extern "C" OcctResult<PCDM_Reader*> Handle_PCDM_Reader_get_mut(Handle_PCDM_Reader* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandlePCDMReader_to_HandleStandardTransient(const HandlePCDMReader* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_PCDM_Reader_to_Handle_Standard_Transient(const Handle_PCDM_Reader* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleBinDriversDocumentRetrievalDriver*> HandlePCDMReader_downcast_to_HandleBinDriversDocumentRetrievalDriver(const HandlePCDMReader* self_) {
+extern "C" OcctResult<Handle_BinDrivers_DocumentRetrievalDriver*> Handle_PCDM_Reader_downcast_to_Handle_BinDrivers_DocumentRetrievalDriver(const Handle_PCDM_Reader* self_) {
     try {
     opencascade::handle<BinDrivers_DocumentRetrievalDriver> result = opencascade::handle<BinDrivers_DocumentRetrievalDriver>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleBinDriversDocumentRetrievalDriver(result), nullptr};
+    return {new Handle_BinDrivers_DocumentRetrievalDriver(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleBinLDriversDocumentRetrievalDriver*> HandlePCDMReader_downcast_to_HandleBinLDriversDocumentRetrievalDriver(const HandlePCDMReader* self_) {
+extern "C" OcctResult<Handle_BinLDrivers_DocumentRetrievalDriver*> Handle_PCDM_Reader_downcast_to_Handle_BinLDrivers_DocumentRetrievalDriver(const Handle_PCDM_Reader* self_) {
     try {
     opencascade::handle<BinLDrivers_DocumentRetrievalDriver> result = opencascade::handle<BinLDrivers_DocumentRetrievalDriver>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleBinLDriversDocumentRetrievalDriver(result), nullptr};
+    return {new Handle_BinLDrivers_DocumentRetrievalDriver(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleBinTObjDriversDocumentRetrievalDriver*> HandlePCDMReader_downcast_to_HandleBinTObjDriversDocumentRetrievalDriver(const HandlePCDMReader* self_) {
+extern "C" OcctResult<Handle_BinTObjDrivers_DocumentRetrievalDriver*> Handle_PCDM_Reader_downcast_to_Handle_BinTObjDrivers_DocumentRetrievalDriver(const Handle_PCDM_Reader* self_) {
     try {
     opencascade::handle<BinTObjDrivers_DocumentRetrievalDriver> result = opencascade::handle<BinTObjDrivers_DocumentRetrievalDriver>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleBinTObjDriversDocumentRetrievalDriver(result), nullptr};
+    return {new Handle_BinTObjDrivers_DocumentRetrievalDriver(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleBinXCAFDriversDocumentRetrievalDriver*> HandlePCDMReader_downcast_to_HandleBinXCAFDriversDocumentRetrievalDriver(const HandlePCDMReader* self_) {
+extern "C" OcctResult<Handle_BinXCAFDrivers_DocumentRetrievalDriver*> Handle_PCDM_Reader_downcast_to_Handle_BinXCAFDrivers_DocumentRetrievalDriver(const Handle_PCDM_Reader* self_) {
     try {
     opencascade::handle<BinXCAFDrivers_DocumentRetrievalDriver> result = opencascade::handle<BinXCAFDrivers_DocumentRetrievalDriver>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleBinXCAFDriversDocumentRetrievalDriver(result), nullptr};
+    return {new Handle_BinXCAFDrivers_DocumentRetrievalDriver(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandlePCDMRetrievalDriver*> HandlePCDMReader_downcast_to_HandlePCDMRetrievalDriver(const HandlePCDMReader* self_) {
+extern "C" OcctResult<Handle_PCDM_RetrievalDriver*> Handle_PCDM_Reader_downcast_to_Handle_PCDM_RetrievalDriver(const Handle_PCDM_Reader* self_) {
     try {
     opencascade::handle<PCDM_RetrievalDriver> result = opencascade::handle<PCDM_RetrievalDriver>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandlePCDMRetrievalDriver(result), nullptr};
+    return {new Handle_PCDM_RetrievalDriver(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStdDriversDocumentRetrievalDriver*> HandlePCDMReader_downcast_to_HandleStdDriversDocumentRetrievalDriver(const HandlePCDMReader* self_) {
+extern "C" OcctResult<Handle_StdDrivers_DocumentRetrievalDriver*> Handle_PCDM_Reader_downcast_to_Handle_StdDrivers_DocumentRetrievalDriver(const Handle_PCDM_Reader* self_) {
     try {
     opencascade::handle<StdDrivers_DocumentRetrievalDriver> result = opencascade::handle<StdDrivers_DocumentRetrievalDriver>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleStdDriversDocumentRetrievalDriver(result), nullptr};
+    return {new Handle_StdDrivers_DocumentRetrievalDriver(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStdLDriversDocumentRetrievalDriver*> HandlePCDMReader_downcast_to_HandleStdLDriversDocumentRetrievalDriver(const HandlePCDMReader* self_) {
+extern "C" OcctResult<Handle_StdLDrivers_DocumentRetrievalDriver*> Handle_PCDM_Reader_downcast_to_Handle_StdLDrivers_DocumentRetrievalDriver(const Handle_PCDM_Reader* self_) {
     try {
     opencascade::handle<StdLDrivers_DocumentRetrievalDriver> result = opencascade::handle<StdLDrivers_DocumentRetrievalDriver>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleStdLDriversDocumentRetrievalDriver(result), nullptr};
+    return {new Handle_StdLDrivers_DocumentRetrievalDriver(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleXmlDriversDocumentRetrievalDriver*> HandlePCDMReader_downcast_to_HandleXmlDriversDocumentRetrievalDriver(const HandlePCDMReader* self_) {
+extern "C" OcctResult<Handle_XmlDrivers_DocumentRetrievalDriver*> Handle_PCDM_Reader_downcast_to_Handle_XmlDrivers_DocumentRetrievalDriver(const Handle_PCDM_Reader* self_) {
     try {
     opencascade::handle<XmlDrivers_DocumentRetrievalDriver> result = opencascade::handle<XmlDrivers_DocumentRetrievalDriver>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleXmlDriversDocumentRetrievalDriver(result), nullptr};
+    return {new Handle_XmlDrivers_DocumentRetrievalDriver(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleXmlLDriversDocumentRetrievalDriver*> HandlePCDMReader_downcast_to_HandleXmlLDriversDocumentRetrievalDriver(const HandlePCDMReader* self_) {
+extern "C" OcctResult<Handle_XmlLDrivers_DocumentRetrievalDriver*> Handle_PCDM_Reader_downcast_to_Handle_XmlLDrivers_DocumentRetrievalDriver(const Handle_PCDM_Reader* self_) {
     try {
     opencascade::handle<XmlLDrivers_DocumentRetrievalDriver> result = opencascade::handle<XmlLDrivers_DocumentRetrievalDriver>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleXmlLDriversDocumentRetrievalDriver(result), nullptr};
+    return {new Handle_XmlLDrivers_DocumentRetrievalDriver(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleXmlTObjDriversDocumentRetrievalDriver*> HandlePCDMReader_downcast_to_HandleXmlTObjDriversDocumentRetrievalDriver(const HandlePCDMReader* self_) {
+extern "C" OcctResult<Handle_XmlTObjDrivers_DocumentRetrievalDriver*> Handle_PCDM_Reader_downcast_to_Handle_XmlTObjDrivers_DocumentRetrievalDriver(const Handle_PCDM_Reader* self_) {
     try {
     opencascade::handle<XmlTObjDrivers_DocumentRetrievalDriver> result = opencascade::handle<XmlTObjDrivers_DocumentRetrievalDriver>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleXmlTObjDriversDocumentRetrievalDriver(result), nullptr};
+    return {new Handle_XmlTObjDrivers_DocumentRetrievalDriver(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleXmlXCAFDriversDocumentRetrievalDriver*> HandlePCDMReader_downcast_to_HandleXmlXCAFDriversDocumentRetrievalDriver(const HandlePCDMReader* self_) {
+extern "C" OcctResult<Handle_XmlXCAFDrivers_DocumentRetrievalDriver*> Handle_PCDM_Reader_downcast_to_Handle_XmlXCAFDrivers_DocumentRetrievalDriver(const Handle_PCDM_Reader* self_) {
     try {
     opencascade::handle<XmlXCAFDrivers_DocumentRetrievalDriver> result = opencascade::handle<XmlXCAFDrivers_DocumentRetrievalDriver>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleXmlXCAFDriversDocumentRetrievalDriver(result), nullptr};
+    return {new Handle_XmlXCAFDrivers_DocumentRetrievalDriver(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
@@ -3556,20 +3430,20 @@ extern "C" OcctResult<Handle(Standard_Type) const*> PCDM_ReaderFilter_get_type_d
 }
 extern "C" OcctResult<const Standard_Transient*> PCDM_ReaderFilter_as_Standard_Transient(const PCDM_ReaderFilter* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> PCDM_ReaderFilter_as_Standard_Transient_mut(PCDM_ReaderFilter* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandlePCDMReaderFilter*> PCDM_ReaderFilter_to_handle(PCDM_ReaderFilter* obj) {
-    try { return {new HandlePCDMReaderFilter(obj), nullptr}; }
+extern "C" OcctResult<Handle_PCDM_ReaderFilter*> PCDM_ReaderFilter_to_handle(PCDM_ReaderFilter* obj) {
+    try { return {new Handle_PCDM_ReaderFilter(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const PCDM_ReaderFilter*> HandlePCDMReaderFilter_get(const HandlePCDMReaderFilter* handle) {
+extern "C" OcctResult<const PCDM_ReaderFilter*> Handle_PCDM_ReaderFilter_get(const Handle_PCDM_ReaderFilter* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<PCDM_ReaderFilter*> HandlePCDMReaderFilter_get_mut(HandlePCDMReaderFilter* handle) {
+extern "C" OcctResult<PCDM_ReaderFilter*> Handle_PCDM_ReaderFilter_get_mut(Handle_PCDM_ReaderFilter* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandlePCDMReaderFilter_to_HandleStandardTransient(const HandlePCDMReaderFilter* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_PCDM_ReaderFilter_to_Handle_Standard_Transient(const Handle_PCDM_ReaderFilter* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> PCDM_ReaderFilter_inherited_IsInstance(const PCDM_ReaderFilter* self, Handle(Standard_Type) const& theType) {
@@ -3658,20 +3532,20 @@ extern "C" OcctResult<Handle(Standard_Type) const*> PCDM_ReferenceIterator_get_t
 }
 extern "C" OcctResult<const Standard_Transient*> PCDM_ReferenceIterator_as_Standard_Transient(const PCDM_ReferenceIterator* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> PCDM_ReferenceIterator_as_Standard_Transient_mut(PCDM_ReferenceIterator* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandlePCDMReferenceIterator*> PCDM_ReferenceIterator_to_handle(PCDM_ReferenceIterator* obj) {
-    try { return {new HandlePCDMReferenceIterator(obj), nullptr}; }
+extern "C" OcctResult<Handle_PCDM_ReferenceIterator*> PCDM_ReferenceIterator_to_handle(PCDM_ReferenceIterator* obj) {
+    try { return {new Handle_PCDM_ReferenceIterator(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const PCDM_ReferenceIterator*> HandlePCDMReferenceIterator_get(const HandlePCDMReferenceIterator* handle) {
+extern "C" OcctResult<const PCDM_ReferenceIterator*> Handle_PCDM_ReferenceIterator_get(const Handle_PCDM_ReferenceIterator* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<PCDM_ReferenceIterator*> HandlePCDMReferenceIterator_get_mut(HandlePCDMReferenceIterator* handle) {
+extern "C" OcctResult<PCDM_ReferenceIterator*> Handle_PCDM_ReferenceIterator_get_mut(Handle_PCDM_ReferenceIterator* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandlePCDMReferenceIterator_to_HandleStandardTransient(const HandlePCDMReferenceIterator* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_PCDM_ReferenceIterator_to_Handle_Standard_Transient(const Handle_PCDM_ReferenceIterator* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> PCDM_ReferenceIterator_inherited_IsInstance(const PCDM_ReferenceIterator* self, Handle(Standard_Type) const& theType) {
@@ -3740,99 +3614,99 @@ extern "C" OcctResult<const PCDM_Reader*> PCDM_RetrievalDriver_as_PCDM_Reader(co
 extern "C" OcctResult<PCDM_Reader*> PCDM_RetrievalDriver_as_PCDM_Reader_mut(PCDM_RetrievalDriver* self_) { return {static_cast<PCDM_Reader*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> PCDM_RetrievalDriver_as_Standard_Transient(const PCDM_RetrievalDriver* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> PCDM_RetrievalDriver_as_Standard_Transient_mut(PCDM_RetrievalDriver* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<const PCDM_RetrievalDriver*> HandlePCDMRetrievalDriver_get(const HandlePCDMRetrievalDriver* handle) {
+extern "C" OcctResult<const PCDM_RetrievalDriver*> Handle_PCDM_RetrievalDriver_get(const Handle_PCDM_RetrievalDriver* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<PCDM_RetrievalDriver*> HandlePCDMRetrievalDriver_get_mut(HandlePCDMRetrievalDriver* handle) {
+extern "C" OcctResult<PCDM_RetrievalDriver*> Handle_PCDM_RetrievalDriver_get_mut(Handle_PCDM_RetrievalDriver* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandlePCDMReader*> HandlePCDMRetrievalDriver_to_HandlePCDMReader(const HandlePCDMRetrievalDriver* self_) {
-    try { return {new HandlePCDMReader(*self_), nullptr}; }
+extern "C" OcctResult<Handle_PCDM_Reader*> Handle_PCDM_RetrievalDriver_to_Handle_PCDM_Reader(const Handle_PCDM_RetrievalDriver* self_) {
+    try { return {new Handle_PCDM_Reader(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandlePCDMRetrievalDriver_to_HandleStandardTransient(const HandlePCDMRetrievalDriver* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_PCDM_RetrievalDriver_to_Handle_Standard_Transient(const Handle_PCDM_RetrievalDriver* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleBinDriversDocumentRetrievalDriver*> HandlePCDMRetrievalDriver_downcast_to_HandleBinDriversDocumentRetrievalDriver(const HandlePCDMRetrievalDriver* self_) {
+extern "C" OcctResult<Handle_BinDrivers_DocumentRetrievalDriver*> Handle_PCDM_RetrievalDriver_downcast_to_Handle_BinDrivers_DocumentRetrievalDriver(const Handle_PCDM_RetrievalDriver* self_) {
     try {
     opencascade::handle<BinDrivers_DocumentRetrievalDriver> result = opencascade::handle<BinDrivers_DocumentRetrievalDriver>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleBinDriversDocumentRetrievalDriver(result), nullptr};
+    return {new Handle_BinDrivers_DocumentRetrievalDriver(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleBinLDriversDocumentRetrievalDriver*> HandlePCDMRetrievalDriver_downcast_to_HandleBinLDriversDocumentRetrievalDriver(const HandlePCDMRetrievalDriver* self_) {
+extern "C" OcctResult<Handle_BinLDrivers_DocumentRetrievalDriver*> Handle_PCDM_RetrievalDriver_downcast_to_Handle_BinLDrivers_DocumentRetrievalDriver(const Handle_PCDM_RetrievalDriver* self_) {
     try {
     opencascade::handle<BinLDrivers_DocumentRetrievalDriver> result = opencascade::handle<BinLDrivers_DocumentRetrievalDriver>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleBinLDriversDocumentRetrievalDriver(result), nullptr};
+    return {new Handle_BinLDrivers_DocumentRetrievalDriver(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleBinTObjDriversDocumentRetrievalDriver*> HandlePCDMRetrievalDriver_downcast_to_HandleBinTObjDriversDocumentRetrievalDriver(const HandlePCDMRetrievalDriver* self_) {
+extern "C" OcctResult<Handle_BinTObjDrivers_DocumentRetrievalDriver*> Handle_PCDM_RetrievalDriver_downcast_to_Handle_BinTObjDrivers_DocumentRetrievalDriver(const Handle_PCDM_RetrievalDriver* self_) {
     try {
     opencascade::handle<BinTObjDrivers_DocumentRetrievalDriver> result = opencascade::handle<BinTObjDrivers_DocumentRetrievalDriver>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleBinTObjDriversDocumentRetrievalDriver(result), nullptr};
+    return {new Handle_BinTObjDrivers_DocumentRetrievalDriver(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleBinXCAFDriversDocumentRetrievalDriver*> HandlePCDMRetrievalDriver_downcast_to_HandleBinXCAFDriversDocumentRetrievalDriver(const HandlePCDMRetrievalDriver* self_) {
+extern "C" OcctResult<Handle_BinXCAFDrivers_DocumentRetrievalDriver*> Handle_PCDM_RetrievalDriver_downcast_to_Handle_BinXCAFDrivers_DocumentRetrievalDriver(const Handle_PCDM_RetrievalDriver* self_) {
     try {
     opencascade::handle<BinXCAFDrivers_DocumentRetrievalDriver> result = opencascade::handle<BinXCAFDrivers_DocumentRetrievalDriver>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleBinXCAFDriversDocumentRetrievalDriver(result), nullptr};
+    return {new Handle_BinXCAFDrivers_DocumentRetrievalDriver(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStdDriversDocumentRetrievalDriver*> HandlePCDMRetrievalDriver_downcast_to_HandleStdDriversDocumentRetrievalDriver(const HandlePCDMRetrievalDriver* self_) {
+extern "C" OcctResult<Handle_StdDrivers_DocumentRetrievalDriver*> Handle_PCDM_RetrievalDriver_downcast_to_Handle_StdDrivers_DocumentRetrievalDriver(const Handle_PCDM_RetrievalDriver* self_) {
     try {
     opencascade::handle<StdDrivers_DocumentRetrievalDriver> result = opencascade::handle<StdDrivers_DocumentRetrievalDriver>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleStdDriversDocumentRetrievalDriver(result), nullptr};
+    return {new Handle_StdDrivers_DocumentRetrievalDriver(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStdLDriversDocumentRetrievalDriver*> HandlePCDMRetrievalDriver_downcast_to_HandleStdLDriversDocumentRetrievalDriver(const HandlePCDMRetrievalDriver* self_) {
+extern "C" OcctResult<Handle_StdLDrivers_DocumentRetrievalDriver*> Handle_PCDM_RetrievalDriver_downcast_to_Handle_StdLDrivers_DocumentRetrievalDriver(const Handle_PCDM_RetrievalDriver* self_) {
     try {
     opencascade::handle<StdLDrivers_DocumentRetrievalDriver> result = opencascade::handle<StdLDrivers_DocumentRetrievalDriver>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleStdLDriversDocumentRetrievalDriver(result), nullptr};
+    return {new Handle_StdLDrivers_DocumentRetrievalDriver(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleXmlDriversDocumentRetrievalDriver*> HandlePCDMRetrievalDriver_downcast_to_HandleXmlDriversDocumentRetrievalDriver(const HandlePCDMRetrievalDriver* self_) {
+extern "C" OcctResult<Handle_XmlDrivers_DocumentRetrievalDriver*> Handle_PCDM_RetrievalDriver_downcast_to_Handle_XmlDrivers_DocumentRetrievalDriver(const Handle_PCDM_RetrievalDriver* self_) {
     try {
     opencascade::handle<XmlDrivers_DocumentRetrievalDriver> result = opencascade::handle<XmlDrivers_DocumentRetrievalDriver>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleXmlDriversDocumentRetrievalDriver(result), nullptr};
+    return {new Handle_XmlDrivers_DocumentRetrievalDriver(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleXmlLDriversDocumentRetrievalDriver*> HandlePCDMRetrievalDriver_downcast_to_HandleXmlLDriversDocumentRetrievalDriver(const HandlePCDMRetrievalDriver* self_) {
+extern "C" OcctResult<Handle_XmlLDrivers_DocumentRetrievalDriver*> Handle_PCDM_RetrievalDriver_downcast_to_Handle_XmlLDrivers_DocumentRetrievalDriver(const Handle_PCDM_RetrievalDriver* self_) {
     try {
     opencascade::handle<XmlLDrivers_DocumentRetrievalDriver> result = opencascade::handle<XmlLDrivers_DocumentRetrievalDriver>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleXmlLDriversDocumentRetrievalDriver(result), nullptr};
+    return {new Handle_XmlLDrivers_DocumentRetrievalDriver(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleXmlTObjDriversDocumentRetrievalDriver*> HandlePCDMRetrievalDriver_downcast_to_HandleXmlTObjDriversDocumentRetrievalDriver(const HandlePCDMRetrievalDriver* self_) {
+extern "C" OcctResult<Handle_XmlTObjDrivers_DocumentRetrievalDriver*> Handle_PCDM_RetrievalDriver_downcast_to_Handle_XmlTObjDrivers_DocumentRetrievalDriver(const Handle_PCDM_RetrievalDriver* self_) {
     try {
     opencascade::handle<XmlTObjDrivers_DocumentRetrievalDriver> result = opencascade::handle<XmlTObjDrivers_DocumentRetrievalDriver>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleXmlTObjDriversDocumentRetrievalDriver(result), nullptr};
+    return {new Handle_XmlTObjDrivers_DocumentRetrievalDriver(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleXmlXCAFDriversDocumentRetrievalDriver*> HandlePCDMRetrievalDriver_downcast_to_HandleXmlXCAFDriversDocumentRetrievalDriver(const HandlePCDMRetrievalDriver* self_) {
+extern "C" OcctResult<Handle_XmlXCAFDrivers_DocumentRetrievalDriver*> Handle_PCDM_RetrievalDriver_downcast_to_Handle_XmlXCAFDrivers_DocumentRetrievalDriver(const Handle_PCDM_RetrievalDriver* self_) {
     try {
     opencascade::handle<XmlXCAFDrivers_DocumentRetrievalDriver> result = opencascade::handle<XmlXCAFDrivers_DocumentRetrievalDriver>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleXmlXCAFDriversDocumentRetrievalDriver(result), nullptr};
+    return {new Handle_XmlXCAFDrivers_DocumentRetrievalDriver(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
@@ -3882,17 +3756,13 @@ extern "C" OcctResult<PCDM_StorageDriver*> PCDM_StorageDriver_ctor() {
     try { return {new PCDM_StorageDriver(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(PCDM_Document)*> PCDM_StorageDriver_make_handlecdmdocument(PCDM_StorageDriver* self_, Handle(CDM_Document) const* aDocument) {
+extern "C" OcctResult<Handle(PCDM_Document)*> PCDM_StorageDriver_make(PCDM_StorageDriver* self_, Handle(CDM_Document) const* aDocument) {
     try { return {new Handle(PCDM_Document)(self_->Make(*aDocument)), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<TCollection_ExtendedString*> PCDM_StorageDriver_get_format(const PCDM_StorageDriver* self_) {
     try { return {new TCollection_ExtendedString(self_->GetFormat()), nullptr}; }
     OCCT_CATCH_RETURN
-}
-extern "C" const char* PCDM_StorageDriver_make_handlecdmdocument_sequenceofdocument(PCDM_StorageDriver* self_, Handle(CDM_Document) const* aDocument, PCDM_SequenceOfDocument* Documents) {
-    try { self_->Make(*aDocument, *Documents); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
 }
 extern "C" const char* PCDM_StorageDriver_write_handlecdmdocument_extendedstring_progressrange(PCDM_StorageDriver* self_, Handle(CDM_Document) const* aDocument, TCollection_ExtendedString const* aFileName, Message_ProgressRange const* theRange) {
     try { self_->Write(*aDocument, *aFileName, *theRange); return nullptr; }
@@ -3938,87 +3808,87 @@ extern "C" OcctResult<const PCDM_Writer*> PCDM_StorageDriver_as_PCDM_Writer(cons
 extern "C" OcctResult<PCDM_Writer*> PCDM_StorageDriver_as_PCDM_Writer_mut(PCDM_StorageDriver* self_) { return {static_cast<PCDM_Writer*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> PCDM_StorageDriver_as_Standard_Transient(const PCDM_StorageDriver* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> PCDM_StorageDriver_as_Standard_Transient_mut(PCDM_StorageDriver* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandlePCDMStorageDriver*> PCDM_StorageDriver_to_handle(PCDM_StorageDriver* obj) {
-    try { return {new HandlePCDMStorageDriver(obj), nullptr}; }
+extern "C" OcctResult<Handle_PCDM_StorageDriver*> PCDM_StorageDriver_to_handle(PCDM_StorageDriver* obj) {
+    try { return {new Handle_PCDM_StorageDriver(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const PCDM_StorageDriver*> HandlePCDMStorageDriver_get(const HandlePCDMStorageDriver* handle) {
+extern "C" OcctResult<const PCDM_StorageDriver*> Handle_PCDM_StorageDriver_get(const Handle_PCDM_StorageDriver* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<PCDM_StorageDriver*> HandlePCDMStorageDriver_get_mut(HandlePCDMStorageDriver* handle) {
+extern "C" OcctResult<PCDM_StorageDriver*> Handle_PCDM_StorageDriver_get_mut(Handle_PCDM_StorageDriver* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandlePCDMWriter*> HandlePCDMStorageDriver_to_HandlePCDMWriter(const HandlePCDMStorageDriver* self_) {
-    try { return {new HandlePCDMWriter(*self_), nullptr}; }
+extern "C" OcctResult<Handle_PCDM_Writer*> Handle_PCDM_StorageDriver_to_Handle_PCDM_Writer(const Handle_PCDM_StorageDriver* self_) {
+    try { return {new Handle_PCDM_Writer(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandlePCDMStorageDriver_to_HandleStandardTransient(const HandlePCDMStorageDriver* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_PCDM_StorageDriver_to_Handle_Standard_Transient(const Handle_PCDM_StorageDriver* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleBinDriversDocumentStorageDriver*> HandlePCDMStorageDriver_downcast_to_HandleBinDriversDocumentStorageDriver(const HandlePCDMStorageDriver* self_) {
+extern "C" OcctResult<Handle_BinDrivers_DocumentStorageDriver*> Handle_PCDM_StorageDriver_downcast_to_Handle_BinDrivers_DocumentStorageDriver(const Handle_PCDM_StorageDriver* self_) {
     try {
     opencascade::handle<BinDrivers_DocumentStorageDriver> result = opencascade::handle<BinDrivers_DocumentStorageDriver>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleBinDriversDocumentStorageDriver(result), nullptr};
+    return {new Handle_BinDrivers_DocumentStorageDriver(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleBinLDriversDocumentStorageDriver*> HandlePCDMStorageDriver_downcast_to_HandleBinLDriversDocumentStorageDriver(const HandlePCDMStorageDriver* self_) {
+extern "C" OcctResult<Handle_BinLDrivers_DocumentStorageDriver*> Handle_PCDM_StorageDriver_downcast_to_Handle_BinLDrivers_DocumentStorageDriver(const Handle_PCDM_StorageDriver* self_) {
     try {
     opencascade::handle<BinLDrivers_DocumentStorageDriver> result = opencascade::handle<BinLDrivers_DocumentStorageDriver>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleBinLDriversDocumentStorageDriver(result), nullptr};
+    return {new Handle_BinLDrivers_DocumentStorageDriver(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleBinTObjDriversDocumentStorageDriver*> HandlePCDMStorageDriver_downcast_to_HandleBinTObjDriversDocumentStorageDriver(const HandlePCDMStorageDriver* self_) {
+extern "C" OcctResult<Handle_BinTObjDrivers_DocumentStorageDriver*> Handle_PCDM_StorageDriver_downcast_to_Handle_BinTObjDrivers_DocumentStorageDriver(const Handle_PCDM_StorageDriver* self_) {
     try {
     opencascade::handle<BinTObjDrivers_DocumentStorageDriver> result = opencascade::handle<BinTObjDrivers_DocumentStorageDriver>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleBinTObjDriversDocumentStorageDriver(result), nullptr};
+    return {new Handle_BinTObjDrivers_DocumentStorageDriver(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleBinXCAFDriversDocumentStorageDriver*> HandlePCDMStorageDriver_downcast_to_HandleBinXCAFDriversDocumentStorageDriver(const HandlePCDMStorageDriver* self_) {
+extern "C" OcctResult<Handle_BinXCAFDrivers_DocumentStorageDriver*> Handle_PCDM_StorageDriver_downcast_to_Handle_BinXCAFDrivers_DocumentStorageDriver(const Handle_PCDM_StorageDriver* self_) {
     try {
     opencascade::handle<BinXCAFDrivers_DocumentStorageDriver> result = opencascade::handle<BinXCAFDrivers_DocumentStorageDriver>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleBinXCAFDriversDocumentStorageDriver(result), nullptr};
+    return {new Handle_BinXCAFDrivers_DocumentStorageDriver(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleXmlDriversDocumentStorageDriver*> HandlePCDMStorageDriver_downcast_to_HandleXmlDriversDocumentStorageDriver(const HandlePCDMStorageDriver* self_) {
+extern "C" OcctResult<Handle_XmlDrivers_DocumentStorageDriver*> Handle_PCDM_StorageDriver_downcast_to_Handle_XmlDrivers_DocumentStorageDriver(const Handle_PCDM_StorageDriver* self_) {
     try {
     opencascade::handle<XmlDrivers_DocumentStorageDriver> result = opencascade::handle<XmlDrivers_DocumentStorageDriver>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleXmlDriversDocumentStorageDriver(result), nullptr};
+    return {new Handle_XmlDrivers_DocumentStorageDriver(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleXmlLDriversDocumentStorageDriver*> HandlePCDMStorageDriver_downcast_to_HandleXmlLDriversDocumentStorageDriver(const HandlePCDMStorageDriver* self_) {
+extern "C" OcctResult<Handle_XmlLDrivers_DocumentStorageDriver*> Handle_PCDM_StorageDriver_downcast_to_Handle_XmlLDrivers_DocumentStorageDriver(const Handle_PCDM_StorageDriver* self_) {
     try {
     opencascade::handle<XmlLDrivers_DocumentStorageDriver> result = opencascade::handle<XmlLDrivers_DocumentStorageDriver>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleXmlLDriversDocumentStorageDriver(result), nullptr};
+    return {new Handle_XmlLDrivers_DocumentStorageDriver(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleXmlTObjDriversDocumentStorageDriver*> HandlePCDMStorageDriver_downcast_to_HandleXmlTObjDriversDocumentStorageDriver(const HandlePCDMStorageDriver* self_) {
+extern "C" OcctResult<Handle_XmlTObjDrivers_DocumentStorageDriver*> Handle_PCDM_StorageDriver_downcast_to_Handle_XmlTObjDrivers_DocumentStorageDriver(const Handle_PCDM_StorageDriver* self_) {
     try {
     opencascade::handle<XmlTObjDrivers_DocumentStorageDriver> result = opencascade::handle<XmlTObjDrivers_DocumentStorageDriver>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleXmlTObjDriversDocumentStorageDriver(result), nullptr};
+    return {new Handle_XmlTObjDrivers_DocumentStorageDriver(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleXmlXCAFDriversDocumentStorageDriver*> HandlePCDMStorageDriver_downcast_to_HandleXmlXCAFDriversDocumentStorageDriver(const HandlePCDMStorageDriver* self_) {
+extern "C" OcctResult<Handle_XmlXCAFDrivers_DocumentStorageDriver*> Handle_PCDM_StorageDriver_downcast_to_Handle_XmlXCAFDrivers_DocumentStorageDriver(const Handle_PCDM_StorageDriver* self_) {
     try {
     opencascade::handle<XmlXCAFDrivers_DocumentStorageDriver> result = opencascade::handle<XmlXCAFDrivers_DocumentStorageDriver>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleXmlXCAFDriversDocumentStorageDriver(result), nullptr};
+    return {new Handle_XmlXCAFDrivers_DocumentStorageDriver(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
@@ -4078,87 +3948,87 @@ extern "C" OcctResult<Handle(Standard_Type) const*> PCDM_Writer_get_type_descrip
 }
 extern "C" OcctResult<const Standard_Transient*> PCDM_Writer_as_Standard_Transient(const PCDM_Writer* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> PCDM_Writer_as_Standard_Transient_mut(PCDM_Writer* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<const PCDM_Writer*> HandlePCDMWriter_get(const HandlePCDMWriter* handle) {
+extern "C" OcctResult<const PCDM_Writer*> Handle_PCDM_Writer_get(const Handle_PCDM_Writer* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<PCDM_Writer*> HandlePCDMWriter_get_mut(HandlePCDMWriter* handle) {
+extern "C" OcctResult<PCDM_Writer*> Handle_PCDM_Writer_get_mut(Handle_PCDM_Writer* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandlePCDMWriter_to_HandleStandardTransient(const HandlePCDMWriter* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_PCDM_Writer_to_Handle_Standard_Transient(const Handle_PCDM_Writer* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleBinDriversDocumentStorageDriver*> HandlePCDMWriter_downcast_to_HandleBinDriversDocumentStorageDriver(const HandlePCDMWriter* self_) {
+extern "C" OcctResult<Handle_BinDrivers_DocumentStorageDriver*> Handle_PCDM_Writer_downcast_to_Handle_BinDrivers_DocumentStorageDriver(const Handle_PCDM_Writer* self_) {
     try {
     opencascade::handle<BinDrivers_DocumentStorageDriver> result = opencascade::handle<BinDrivers_DocumentStorageDriver>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleBinDriversDocumentStorageDriver(result), nullptr};
+    return {new Handle_BinDrivers_DocumentStorageDriver(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleBinLDriversDocumentStorageDriver*> HandlePCDMWriter_downcast_to_HandleBinLDriversDocumentStorageDriver(const HandlePCDMWriter* self_) {
+extern "C" OcctResult<Handle_BinLDrivers_DocumentStorageDriver*> Handle_PCDM_Writer_downcast_to_Handle_BinLDrivers_DocumentStorageDriver(const Handle_PCDM_Writer* self_) {
     try {
     opencascade::handle<BinLDrivers_DocumentStorageDriver> result = opencascade::handle<BinLDrivers_DocumentStorageDriver>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleBinLDriversDocumentStorageDriver(result), nullptr};
+    return {new Handle_BinLDrivers_DocumentStorageDriver(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleBinTObjDriversDocumentStorageDriver*> HandlePCDMWriter_downcast_to_HandleBinTObjDriversDocumentStorageDriver(const HandlePCDMWriter* self_) {
+extern "C" OcctResult<Handle_BinTObjDrivers_DocumentStorageDriver*> Handle_PCDM_Writer_downcast_to_Handle_BinTObjDrivers_DocumentStorageDriver(const Handle_PCDM_Writer* self_) {
     try {
     opencascade::handle<BinTObjDrivers_DocumentStorageDriver> result = opencascade::handle<BinTObjDrivers_DocumentStorageDriver>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleBinTObjDriversDocumentStorageDriver(result), nullptr};
+    return {new Handle_BinTObjDrivers_DocumentStorageDriver(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleBinXCAFDriversDocumentStorageDriver*> HandlePCDMWriter_downcast_to_HandleBinXCAFDriversDocumentStorageDriver(const HandlePCDMWriter* self_) {
+extern "C" OcctResult<Handle_BinXCAFDrivers_DocumentStorageDriver*> Handle_PCDM_Writer_downcast_to_Handle_BinXCAFDrivers_DocumentStorageDriver(const Handle_PCDM_Writer* self_) {
     try {
     opencascade::handle<BinXCAFDrivers_DocumentStorageDriver> result = opencascade::handle<BinXCAFDrivers_DocumentStorageDriver>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleBinXCAFDriversDocumentStorageDriver(result), nullptr};
+    return {new Handle_BinXCAFDrivers_DocumentStorageDriver(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandlePCDMStorageDriver*> HandlePCDMWriter_downcast_to_HandlePCDMStorageDriver(const HandlePCDMWriter* self_) {
+extern "C" OcctResult<Handle_PCDM_StorageDriver*> Handle_PCDM_Writer_downcast_to_Handle_PCDM_StorageDriver(const Handle_PCDM_Writer* self_) {
     try {
     opencascade::handle<PCDM_StorageDriver> result = opencascade::handle<PCDM_StorageDriver>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandlePCDMStorageDriver(result), nullptr};
+    return {new Handle_PCDM_StorageDriver(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleXmlDriversDocumentStorageDriver*> HandlePCDMWriter_downcast_to_HandleXmlDriversDocumentStorageDriver(const HandlePCDMWriter* self_) {
+extern "C" OcctResult<Handle_XmlDrivers_DocumentStorageDriver*> Handle_PCDM_Writer_downcast_to_Handle_XmlDrivers_DocumentStorageDriver(const Handle_PCDM_Writer* self_) {
     try {
     opencascade::handle<XmlDrivers_DocumentStorageDriver> result = opencascade::handle<XmlDrivers_DocumentStorageDriver>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleXmlDriversDocumentStorageDriver(result), nullptr};
+    return {new Handle_XmlDrivers_DocumentStorageDriver(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleXmlLDriversDocumentStorageDriver*> HandlePCDMWriter_downcast_to_HandleXmlLDriversDocumentStorageDriver(const HandlePCDMWriter* self_) {
+extern "C" OcctResult<Handle_XmlLDrivers_DocumentStorageDriver*> Handle_PCDM_Writer_downcast_to_Handle_XmlLDrivers_DocumentStorageDriver(const Handle_PCDM_Writer* self_) {
     try {
     opencascade::handle<XmlLDrivers_DocumentStorageDriver> result = opencascade::handle<XmlLDrivers_DocumentStorageDriver>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleXmlLDriversDocumentStorageDriver(result), nullptr};
+    return {new Handle_XmlLDrivers_DocumentStorageDriver(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleXmlTObjDriversDocumentStorageDriver*> HandlePCDMWriter_downcast_to_HandleXmlTObjDriversDocumentStorageDriver(const HandlePCDMWriter* self_) {
+extern "C" OcctResult<Handle_XmlTObjDrivers_DocumentStorageDriver*> Handle_PCDM_Writer_downcast_to_Handle_XmlTObjDrivers_DocumentStorageDriver(const Handle_PCDM_Writer* self_) {
     try {
     opencascade::handle<XmlTObjDrivers_DocumentStorageDriver> result = opencascade::handle<XmlTObjDrivers_DocumentStorageDriver>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleXmlTObjDriversDocumentStorageDriver(result), nullptr};
+    return {new Handle_XmlTObjDrivers_DocumentStorageDriver(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleXmlXCAFDriversDocumentStorageDriver*> HandlePCDMWriter_downcast_to_HandleXmlXCAFDriversDocumentStorageDriver(const HandlePCDMWriter* self_) {
+extern "C" OcctResult<Handle_XmlXCAFDrivers_DocumentStorageDriver*> Handle_PCDM_Writer_downcast_to_Handle_XmlXCAFDrivers_DocumentStorageDriver(const Handle_PCDM_Writer* self_) {
     try {
     opencascade::handle<XmlXCAFDrivers_DocumentStorageDriver> result = opencascade::handle<XmlXCAFDrivers_DocumentStorageDriver>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleXmlXCAFDriversDocumentStorageDriver(result), nullptr};
+    return {new Handle_XmlXCAFDrivers_DocumentStorageDriver(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
@@ -4282,10 +4152,7 @@ extern "C" OcctResult<bool> UTL_is_read_only(TCollection_ExtendedString const* a
 
 
 // Nested type and typedef type destructors
-extern "C" void CDM_MetaDataLookUpTable_destructor(CDM_MetaDataLookUpTable* self_) { delete self_; }
 extern "C" void LDOM_Node_NodeType_destructor(LDOM_Node::NodeType* self_) { delete self_; }
 extern "C" void LDOM_OSStream_BOMType_destructor(LDOM_OSStream::BOMType* self_) { delete self_; }
 extern "C" void LDOM_XmlReader_RecordType_destructor(LDOM_XmlReader::RecordType* self_) { delete self_; }
 extern "C" void PCDM_ReaderFilter_AppendMode_destructor(PCDM_ReaderFilter::AppendMode* self_) { delete self_; }
-extern "C" void PCDM_SequenceOfDocument_destructor(PCDM_SequenceOfDocument* self_) { delete self_; }
-extern "C" void PCDM_SequenceOfReference_destructor(PCDM_SequenceOfReference* self_) { delete self_; }

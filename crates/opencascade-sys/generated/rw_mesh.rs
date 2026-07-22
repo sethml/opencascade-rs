@@ -146,16 +146,15 @@ impl TryFrom<i32> for NameFormat {
 
 // Handle type re-exports (targets of handle upcasts/downcasts)
 pub use crate::ffi_types::{
-    HandlePolyTriangulation, HandleRWGltfCafReader, HandleRWGltfGltfLatePrimitiveArray,
-    HandleRWGltfGltfMaterialMap, HandleRWGltfTriangulationReader, HandleRWObjCafReader,
-    HandleRWObjObjMaterialMap, HandleStandardTransient, HandleVrmlAPICafReader,
+    Handle_Poly_Triangulation, Handle_RWObj_CafReader, Handle_RWObj_ObjMaterialMap,
+    Handle_Standard_Transient, Handle_VrmlAPI_CafReader,
 };
 
 // ========================
 // From RWMesh_CafReader.hxx
 // ========================
 
-/// **Source:** `RWMesh_CafReader.hxx`:50 - `RWMesh_CafReader`
+/// **Source:** `RWMesh_CafReader.hxx`:52 - `RWMesh_CafReader`
 /// The general interface for importing mesh data into XDE document.
 ///
 /// The tool implements auxiliary structures for creating an XDE document in two steps:
@@ -178,8 +177,8 @@ unsafe impl crate::CppDeletable for CafReader {
 }
 
 impl CafReader {
-    /// **Source:** `RWMesh_CafReader.hxx`:52 - `RWMesh_CafReader::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `RWMesh_CafReader.hxx`:54 - `RWMesh_CafReader::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKRWMesh::RWMesh_CafReader_dynamic_type(
                 self as *const Self,
@@ -187,9 +186,9 @@ impl CafReader {
         }
     }
 
-    /// **Source:** `RWMesh_CafReader.hxx`:72 - `RWMesh_CafReader::Document()`
+    /// **Source:** `RWMesh_CafReader.hxx`:74 - `RWMesh_CafReader::Document()`
     /// Return target document.
-    pub fn document(&self) -> &crate::ffi_types::HandleTDocStdDocument {
+    pub fn document(&self) -> &crate::ffi_types::Handle_TDocStd_Document {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKRWMesh::RWMesh_CafReader_document(
                 self as *const Self,
@@ -197,16 +196,16 @@ impl CafReader {
         }
     }
 
-    /// **Source:** `RWMesh_CafReader.hxx`:76 - `RWMesh_CafReader::SetDocument()`
+    /// **Source:** `RWMesh_CafReader.hxx`:78 - `RWMesh_CafReader::SetDocument()`
     /// Set target document.
     /// Set system length unit according to the units of the document
-    pub fn set_document(&mut self, theDoc: &crate::ffi_types::HandleTDocStdDocument) {
+    pub fn set_document(&mut self, theDoc: &crate::ffi_types::Handle_TDocStd_Document) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKRWMesh::RWMesh_CafReader_set_document(self as *mut Self, theDoc)
         })
     }
 
-    /// **Source:** `RWMesh_CafReader.hxx`:79 - `RWMesh_CafReader::RootPrefix()`
+    /// **Source:** `RWMesh_CafReader.hxx`:81 - `RWMesh_CafReader::RootPrefix()`
     /// Return prefix for generating root labels names.
     pub fn root_prefix(&self) -> &crate::t_collection::AsciiString {
         unsafe {
@@ -216,7 +215,7 @@ impl CafReader {
         }
     }
 
-    /// **Source:** `RWMesh_CafReader.hxx`:82 - `RWMesh_CafReader::SetRootPrefix()`
+    /// **Source:** `RWMesh_CafReader.hxx`:84 - `RWMesh_CafReader::SetRootPrefix()`
     /// Set prefix for generating root labels names
     pub fn set_root_prefix(&mut self, theRootPrefix: &crate::t_collection::AsciiString) {
         crate::check_void_result(unsafe {
@@ -227,7 +226,7 @@ impl CafReader {
         })
     }
 
-    /// **Source:** `RWMesh_CafReader.hxx`:95 - `RWMesh_CafReader::ToFillIncompleteDocument()`
+    /// **Source:** `RWMesh_CafReader.hxx`:97 - `RWMesh_CafReader::ToFillIncompleteDocument()`
     /// Flag indicating if partially read file content should be put into the XDE document, TRUE by
     /// default.
     ///
@@ -247,7 +246,7 @@ impl CafReader {
         })
     }
 
-    /// **Source:** `RWMesh_CafReader.hxx`:98 - `RWMesh_CafReader::SetFillIncompleteDocument()`
+    /// **Source:** `RWMesh_CafReader.hxx`:100 - `RWMesh_CafReader::SetFillIncompleteDocument()`
     /// Set flag allowing partially read file content to be put into the XDE document.
     pub fn set_fill_incomplete_document(&mut self, theToFillIncomplete: bool) {
         crate::check_void_result(unsafe {
@@ -258,7 +257,7 @@ impl CafReader {
         })
     }
 
-    /// **Source:** `RWMesh_CafReader.hxx`:104 - `RWMesh_CafReader::MemoryLimitMiB()`
+    /// **Source:** `RWMesh_CafReader.hxx`:106 - `RWMesh_CafReader::MemoryLimitMiB()`
     /// Return memory usage limit in MiB, -1 by default which means no limit.
     pub fn memory_limit_mi_b(&self) -> i32 {
         crate::check_result(unsafe {
@@ -266,7 +265,7 @@ impl CafReader {
         })
     }
 
-    /// **Source:** `RWMesh_CafReader.hxx`:107 - `RWMesh_CafReader::SetMemoryLimitMiB()`
+    /// **Source:** `RWMesh_CafReader.hxx`:109 - `RWMesh_CafReader::SetMemoryLimitMiB()`
     /// Set memory usage limit in MiB; can be ignored by reader implementation!
     pub fn set_memory_limit_mi_b(&mut self, theLimitMiB: i32) {
         crate::check_void_result(unsafe {
@@ -277,7 +276,7 @@ impl CafReader {
         })
     }
 
-    /// **Source:** `RWMesh_CafReader.hxx`:111 - `RWMesh_CafReader::CoordinateSystemConverter()`
+    /// **Source:** `RWMesh_CafReader.hxx`:113 - `RWMesh_CafReader::CoordinateSystemConverter()`
     /// Return coordinate system converter.
     pub fn coordinate_system_converter(&self) -> &CoordinateSystemConverter {
         unsafe {
@@ -289,7 +288,7 @@ impl CafReader {
         }
     }
 
-    /// **Source:** `RWMesh_CafReader.hxx`:117 - `RWMesh_CafReader::SetCoordinateSystemConverter()`
+    /// **Source:** `RWMesh_CafReader.hxx`:119 - `RWMesh_CafReader::SetCoordinateSystemConverter()`
     /// Set coordinate system converter.
     pub fn set_coordinate_system_converter(&mut self, theConverter: &CoordinateSystemConverter) {
         crate::check_void_result(unsafe {
@@ -300,7 +299,7 @@ impl CafReader {
         })
     }
 
-    /// **Source:** `RWMesh_CafReader.hxx`:124 - `RWMesh_CafReader::SystemLengthUnit()`
+    /// **Source:** `RWMesh_CafReader.hxx`:126 - `RWMesh_CafReader::SystemLengthUnit()`
     /// Return the length unit to convert into while reading the file, defined as scale factor for m
     /// (meters); -1.0 by default, which means that NO conversion will be applied.
     pub fn system_length_unit(&self) -> f64 {
@@ -309,7 +308,7 @@ impl CafReader {
         })
     }
 
-    /// **Source:** `RWMesh_CafReader.hxx`:128 - `RWMesh_CafReader::SetSystemLengthUnit()`
+    /// **Source:** `RWMesh_CafReader.hxx`:130 - `RWMesh_CafReader::SetSystemLengthUnit()`
     /// Set system length units to convert into while reading the file, defined as scale factor for m
     /// (meters).
     pub fn set_system_length_unit(&mut self, theUnits: f64) {
@@ -321,7 +320,7 @@ impl CafReader {
         })
     }
 
-    /// **Source:** `RWMesh_CafReader.hxx`:134 - `RWMesh_CafReader::HasSystemCoordinateSystem()`
+    /// **Source:** `RWMesh_CafReader.hxx`:133 - `RWMesh_CafReader::HasSystemCoordinateSystem()`
     /// Return TRUE if system coordinate system has been defined; FALSE by default.
     pub fn has_system_coordinate_system(&self) -> bool {
         crate::check_result(unsafe {
@@ -331,7 +330,7 @@ impl CafReader {
         })
     }
 
-    /// **Source:** `RWMesh_CafReader.hxx`:141 - `RWMesh_CafReader::SystemCoordinateSystem()`
+    /// **Source:** `RWMesh_CafReader.hxx`:137 - `RWMesh_CafReader::SystemCoordinateSystem()`
     /// Return system coordinate system; UNDEFINED by default, which means that no conversion will be
     /// done.
     pub fn system_coordinate_system(&self) -> &crate::gp::Ax3 {
@@ -344,7 +343,7 @@ impl CafReader {
         }
     }
 
-    /// **Source:** `RWMesh_CafReader.hxx`:147 - `RWMesh_CafReader::SetSystemCoordinateSystem()`
+    /// **Source:** `RWMesh_CafReader.hxx`:143 - `RWMesh_CafReader::SetSystemCoordinateSystem()`
     /// Set system origin coordinate system to perform conversion into during read.
     pub fn set_system_coordinate_system_ax3(&mut self, theCS: &crate::gp::Ax3) {
         crate::check_void_result(unsafe {
@@ -355,7 +354,7 @@ impl CafReader {
         })
     }
 
-    /// **Source:** `RWMesh_CafReader.hxx`:153 - `RWMesh_CafReader::SetSystemCoordinateSystem()`
+    /// **Source:** `RWMesh_CafReader.hxx`:149 - `RWMesh_CafReader::SetSystemCoordinateSystem()`
     /// Set system origin coordinate system to perform conversion into during read.
     pub fn set_system_coordinate_system_coordinatesystem(
         &mut self,
@@ -366,7 +365,7 @@ impl CafReader {
         })
     }
 
-    /// **Source:** `RWMesh_CafReader.hxx`:160 - `RWMesh_CafReader::FileLengthUnit()`
+    /// **Source:** `RWMesh_CafReader.hxx`:156 - `RWMesh_CafReader::FileLengthUnit()`
     /// Return the length unit to convert from while reading the file, defined as scale factor for m
     /// (meters). Can be undefined (-1.0) if file format is unitless.
     pub fn file_length_unit(&self) -> f64 {
@@ -375,7 +374,7 @@ impl CafReader {
         })
     }
 
-    /// **Source:** `RWMesh_CafReader.hxx`:164 - `RWMesh_CafReader::SetFileLengthUnit()`
+    /// **Source:** `RWMesh_CafReader.hxx`:160 - `RWMesh_CafReader::SetFileLengthUnit()`
     /// Set (override) file length units to convert from while reading the file, defined as scale
     /// factor for m (meters).
     pub fn set_file_length_unit(&mut self, theUnits: f64) {
@@ -387,7 +386,7 @@ impl CafReader {
         })
     }
 
-    /// **Source:** `RWMesh_CafReader.hxx`:170 - `RWMesh_CafReader::HasFileCoordinateSystem()`
+    /// **Source:** `RWMesh_CafReader.hxx`:163 - `RWMesh_CafReader::HasFileCoordinateSystem()`
     /// Return TRUE if file origin coordinate system has been defined.
     pub fn has_file_coordinate_system(&self) -> bool {
         crate::check_result(unsafe {
@@ -397,7 +396,7 @@ impl CafReader {
         })
     }
 
-    /// **Source:** `RWMesh_CafReader.hxx`:177 - `RWMesh_CafReader::FileCoordinateSystem()`
+    /// **Source:** `RWMesh_CafReader.hxx`:167 - `RWMesh_CafReader::FileCoordinateSystem()`
     /// Return file origin coordinate system; can be UNDEFINED, which means no conversion will be
     /// done.
     pub fn file_coordinate_system(&self) -> &crate::gp::Ax3 {
@@ -410,7 +409,7 @@ impl CafReader {
         }
     }
 
-    /// **Source:** `RWMesh_CafReader.hxx`:180 - `RWMesh_CafReader::SetFileCoordinateSystem()`
+    /// **Source:** `RWMesh_CafReader.hxx`:170 - `RWMesh_CafReader::SetFileCoordinateSystem()`
     /// Set (override) file origin coordinate system to perform conversion during read.
     pub fn set_file_coordinate_system_ax3(&mut self, theCS: &crate::gp::Ax3) {
         crate::check_void_result(unsafe {
@@ -421,7 +420,7 @@ impl CafReader {
         })
     }
 
-    /// **Source:** `RWMesh_CafReader.hxx`:186 - `RWMesh_CafReader::SetFileCoordinateSystem()`
+    /// **Source:** `RWMesh_CafReader.hxx`:176 - `RWMesh_CafReader::SetFileCoordinateSystem()`
     /// Set (override) file origin coordinate system to perform conversion during read.
     pub fn set_file_coordinate_system_coordinatesystem(
         &mut self,
@@ -435,7 +434,7 @@ impl CafReader {
         })
     }
 
-    /// **Source:** `RWMesh_CafReader.hxx`:194 - `RWMesh_CafReader::Perform()`
+    /// **Source:** `RWMesh_CafReader.hxx`:184 - `RWMesh_CafReader::Perform()`
     /// Open stream and pass it to Perform method.
     /// The Document instance should be set beforehand.
     pub fn perform_asciistring_progressrange(
@@ -452,7 +451,7 @@ impl CafReader {
         })
     }
 
-    /// **Source:** `RWMesh_CafReader.hxx`:202 - `RWMesh_CafReader::Perform()`
+    /// **Source:** `RWMesh_CafReader.hxx`:192 - `RWMesh_CafReader::Perform()`
     /// Read the data from specified file.
     pub fn perform_istream_progressrange_asciistring(
         &mut self,
@@ -470,7 +469,7 @@ impl CafReader {
         })
     }
 
-    /// **Source:** `RWMesh_CafReader.hxx`:211 - `RWMesh_CafReader::ExtraStatus()`
+    /// **Source:** `RWMesh_CafReader.hxx`:201 - `RWMesh_CafReader::ExtraStatus()`
     /// Return extended status flags.
     /// @sa RWMesh_CafReaderStatusEx enumeration.
     pub fn extra_status(&self) -> i32 {
@@ -479,7 +478,7 @@ impl CafReader {
         })
     }
 
-    /// **Source:** `RWMesh_CafReader.hxx`:215 - `RWMesh_CafReader::SingleShape()`
+    /// **Source:** `RWMesh_CafReader.hxx`:205 - `RWMesh_CafReader::SingleShape()`
     /// Return result as a single shape.
     pub fn single_shape(&self) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
@@ -489,9 +488,11 @@ impl CafReader {
         }
     }
 
-    /// **Source:** `RWMesh_CafReader.hxx`:218 - `RWMesh_CafReader::ExternalFiles()`
+    /// **Source:** `RWMesh_CafReader.hxx`:208 - `RWMesh_CafReader::ExternalFiles()`
     /// Return the list of complementary files - external references (textures, data, etc.).
-    pub fn external_files(&self) -> &crate::ffi_types::Interface_IndexedMapOfAsciiString {
+    pub fn external_files(
+        &self,
+    ) -> &crate::ffi_types::NCollection_IndexedMap_TCollection_AsciiString {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKRWMesh::RWMesh_CafReader_external_files(
                 self as *const Self,
@@ -499,9 +500,12 @@ impl CafReader {
         }
     }
 
-    /// **Source:** `RWMesh_CafReader.hxx`:224 - `RWMesh_CafReader::Metadata()`
+    /// **Source:** `RWMesh_CafReader.hxx`:214 - `RWMesh_CafReader::Metadata()`
     /// Return metadata map.
-    pub fn metadata(&self) -> &crate::ffi_types::TColStd_IndexedDataMapOfStringString {
+    pub fn metadata(
+        &self,
+    ) -> &crate::ffi_types::NCollection_IndexedDataMap_TCollection_AsciiString_TCollection_AsciiString
+    {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKRWMesh::RWMesh_CafReader_metadata(
                 self as *const Self,
@@ -509,7 +513,7 @@ impl CafReader {
         }
     }
 
-    /// **Source:** `RWMesh_CafReader.hxx`:227 - `RWMesh_CafReader::ProbeHeader()`
+    /// **Source:** `RWMesh_CafReader.hxx`:221 - `RWMesh_CafReader::ProbeHeader()`
     /// Open stream and pass it to ProbeHeader method.
     pub fn probe_header_asciistring_progressrange(
         &mut self,
@@ -525,7 +529,7 @@ impl CafReader {
         })
     }
 
-    /// **Source:** `RWMesh_CafReader.hxx`:238 - `RWMesh_CafReader::ProbeHeader()`
+    /// **Source:** `RWMesh_CafReader.hxx`:232 - `RWMesh_CafReader::ProbeHeader()`
     /// Read the header data from specified file without reading entire model.
     /// The main purpose is collecting metadata and external references - for copying model into a new
     /// location, for example. Can be NOT implemented (unsupported by format / reader).
@@ -540,7 +544,7 @@ impl CafReader {
         })
     }
 
-    /// **Source:** `RWMesh_CafReader.hxx`:52 - `RWMesh_CafReader::get_type_name()`
+    /// **Source:** `RWMesh_CafReader.hxx`:54 - `RWMesh_CafReader::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -551,8 +555,8 @@ impl CafReader {
         .into_owned()
     }
 
-    /// **Source:** `RWMesh_CafReader.hxx`:52 - `RWMesh_CafReader::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    /// **Source:** `RWMesh_CafReader.hxx`:54 - `RWMesh_CafReader::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKRWMesh::RWMesh_CafReader_get_type_descriptor(),
@@ -582,8 +586,8 @@ impl CafReader {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKRWMesh::RWMesh_CafReader_inherited_IsInstance(
                 self as *const Self,
@@ -592,8 +596,8 @@ impl CafReader {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKRWMesh::RWMesh_CafReader_inherited_IsKind(
                 self as *const Self,
@@ -602,7 +606,7 @@ impl CafReader {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -616,14 +620,14 @@ impl CafReader {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKRWMesh::RWMesh_CafReader_inherited_GetRefCount(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKRWMesh::RWMesh_CafReader_inherited_IncrementRefCounter(
@@ -632,7 +636,7 @@ impl CafReader {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKRWMesh::RWMesh_CafReader_inherited_DecrementRefCounter(
@@ -641,7 +645,7 @@ impl CafReader {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKRWMesh::RWMesh_CafReader_inherited_Delete(self as *const Self)
@@ -649,32 +653,34 @@ impl CafReader {
     }
 }
 
-pub use crate::ffi_types::HandleRWMeshCafReader;
+pub use crate::ffi_types::Handle_RWMesh_CafReader;
 
-unsafe impl crate::CppDeletable for HandleRWMeshCafReader {
+unsafe impl crate::CppDeletable for Handle_RWMesh_CafReader {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKRWMesh::HandleRWMeshCafReader_destructor(ptr);
+            crate::ffi_extern_TKRWMesh::Handle_RWMesh_CafReader_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleRWMeshCafReader {
+unsafe impl crate::CppCopyable for Handle_RWMesh_CafReader {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        unsafe { crate::check_result(crate::ffi_extern_TKRWMesh::HandleRWMeshCafReader_clone(ptr)) }
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKRWMesh::Handle_RWMesh_CafReader_clone(ptr))
+        }
     }
 }
 
-impl HandleRWMeshCafReader {
+impl Handle_RWMesh_CafReader {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
-        unsafe { crate::ffi_extern_TKRWMesh::HandleRWMeshCafReader_is_null(self as *const Self) }
+        unsafe { crate::ffi_extern_TKRWMesh::Handle_RWMesh_CafReader_is_null(self as *const Self) }
     }
 
     /// Dereference this Handle to access the underlying RWMesh_CafReader
     pub fn get(&self) -> &crate::ffi_types::RWMesh_CafReader {
         unsafe {
-            &*crate::check_result(crate::ffi_extern_TKRWMesh::HandleRWMeshCafReader_get(
+            &*crate::check_result(crate::ffi_extern_TKRWMesh::Handle_RWMesh_CafReader_get(
                 self as *const Self,
             ))
         }
@@ -683,7 +689,7 @@ impl HandleRWMeshCafReader {
     /// Dereference this Handle to mutably access the underlying RWMesh_CafReader
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::RWMesh_CafReader {
         unsafe {
-            &mut *crate::check_result(crate::ffi_extern_TKRWMesh::HandleRWMeshCafReader_get_mut(
+            &mut *crate::check_result(crate::ffi_extern_TKRWMesh::Handle_RWMesh_CafReader_get_mut(
                 self as *mut Self,
             ))
         }
@@ -692,31 +698,13 @@ impl HandleRWMeshCafReader {
     /// Upcast Handle<RWMesh_CafReader> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKRWMesh::HandleRWMeshCafReader_to_HandleStandardTransient(
+                crate::ffi_extern_TKRWMesh::Handle_RWMesh_CafReader_to_Handle_Standard_Transient(
                     self as *const Self,
                 ),
             ))
-        }
-    }
-
-    /// Downcast Handle<RWMesh_CafReader> to Handle<RWGltf_CafReader>
-    ///
-    /// Returns `None` if the handle does not point to a `RWGltf_CafReader` (or subclass).
-    pub fn downcast_to_rw_gltf_caf_reader(
-        &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleRWGltfCafReader>> {
-        let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKRWMesh::HandleRWMeshCafReader_downcast_to_HandleRWGltfCafReader(
-                self as *const Self,
-            )
-        });
-        if __val.is_null() {
-            None
-        } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(__val) })
         }
     }
 
@@ -725,9 +713,9 @@ impl HandleRWMeshCafReader {
     /// Returns `None` if the handle does not point to a `RWObj_CafReader` (or subclass).
     pub fn downcast_to_rw_obj_caf_reader(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleRWObjCafReader>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_RWObj_CafReader>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKRWMesh::HandleRWMeshCafReader_downcast_to_HandleRWObjCafReader(
+            crate::ffi_extern_TKRWMesh::Handle_RWMesh_CafReader_downcast_to_Handle_RWObj_CafReader(
                 self as *const Self,
             )
         });
@@ -743,9 +731,9 @@ impl HandleRWMeshCafReader {
     /// Returns `None` if the handle does not point to a `VrmlAPI_CafReader` (or subclass).
     pub fn downcast_to_vrml_api_caf_reader(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleVrmlAPICafReader>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_VrmlAPI_CafReader>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKRWMesh::HandleRWMeshCafReader_downcast_to_HandleVrmlAPICafReader(
+            crate::ffi_extern_TKRWMesh::Handle_RWMesh_CafReader_downcast_to_Handle_VrmlAPI_CafReader(
                 self as *const Self,
             )
         });
@@ -757,7 +745,7 @@ impl HandleRWMeshCafReader {
     }
 }
 
-/// **Source:** `RWMesh_CafReader.hxx`:55 - `RWMesh_CafReader_CafDocumentTools`
+/// **Source:** `RWMesh_CafReader.hxx`:57 - `RWMesh_CafReader_CafDocumentTools`
 /// Structure holding tools for filling the document.
 pub use crate::ffi_types::RWMesh_CafReader_CafDocumentTools as CafReader_CafDocumentTools;
 
@@ -785,7 +773,7 @@ impl CafReader_CafDocumentTools {
 // From RWMesh_CoordinateSystemConverter.hxx
 // ========================
 
-/// **Source:** `RWMesh_CoordinateSystemConverter.hxx`:49 - `RWMesh_CoordinateSystemConverter`
+/// **Source:** `RWMesh_CoordinateSystemConverter.hxx`:53 - `RWMesh_CoordinateSystemConverter`
 /// Coordinate system converter defining the following tools:
 /// - Initialization for commonly used coordinate systems Z-up and Y-up.
 /// - Perform length unit conversion (scaling).
@@ -821,7 +809,7 @@ unsafe impl crate::CppDeletable for CoordinateSystemConverter {
 }
 
 impl CoordinateSystemConverter {
-    /// **Source:** `RWMesh_CoordinateSystemConverter.hxx`:69 - `RWMesh_CoordinateSystemConverter::RWMesh_CoordinateSystemConverter()`
+    /// **Source:** `RWMesh_CoordinateSystemConverter.hxx`:73 - `RWMesh_CoordinateSystemConverter::RWMesh_CoordinateSystemConverter()`
     /// Empty constructor.
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
@@ -831,7 +819,7 @@ impl CoordinateSystemConverter {
         }
     }
 
-    /// **Source:** `RWMesh_CoordinateSystemConverter.hxx`:72 - `RWMesh_CoordinateSystemConverter::IsEmpty()`
+    /// **Source:** `RWMesh_CoordinateSystemConverter.hxx`:76 - `RWMesh_CoordinateSystemConverter::IsEmpty()`
     /// Return TRUE if there is no transformation (target and current coordinates systems are same).
     pub fn is_empty(&self) -> bool {
         crate::check_result(unsafe {
@@ -841,7 +829,7 @@ impl CoordinateSystemConverter {
         })
     }
 
-    /// **Source:** `RWMesh_CoordinateSystemConverter.hxx`:77 - `RWMesh_CoordinateSystemConverter::InputLengthUnit()`
+    /// **Source:** `RWMesh_CoordinateSystemConverter.hxx`:81 - `RWMesh_CoordinateSystemConverter::InputLengthUnit()`
     /// Return source length units, defined as scale factor to m (meters).
     /// -1.0 by default, which means that NO conversion will be applied (regardless output length
     /// unit).
@@ -853,7 +841,7 @@ impl CoordinateSystemConverter {
         })
     }
 
-    /// **Source:** `RWMesh_CoordinateSystemConverter.hxx`:80 - `RWMesh_CoordinateSystemConverter::SetInputLengthUnit()`
+    /// **Source:** `RWMesh_CoordinateSystemConverter.hxx`:84 - `RWMesh_CoordinateSystemConverter::SetInputLengthUnit()`
     /// Set source length units as scale factor to m (meters).
     pub fn set_input_length_unit(&mut self, theInputScale: f64) {
         crate::check_void_result(unsafe {
@@ -864,7 +852,7 @@ impl CoordinateSystemConverter {
         })
     }
 
-    /// **Source:** `RWMesh_CoordinateSystemConverter.hxx`:88 - `RWMesh_CoordinateSystemConverter::OutputLengthUnit()`
+    /// **Source:** `RWMesh_CoordinateSystemConverter.hxx`:92 - `RWMesh_CoordinateSystemConverter::OutputLengthUnit()`
     /// Return destination length units, defined as scale factor to m (meters).
     /// -1.0 by default, which means that NO conversion will be applied (regardless input length
     /// unit).
@@ -876,7 +864,7 @@ impl CoordinateSystemConverter {
         })
     }
 
-    /// **Source:** `RWMesh_CoordinateSystemConverter.hxx`:91 - `RWMesh_CoordinateSystemConverter::SetOutputLengthUnit()`
+    /// **Source:** `RWMesh_CoordinateSystemConverter.hxx`:95 - `RWMesh_CoordinateSystemConverter::SetOutputLengthUnit()`
     /// Set destination length units as scale factor to m (meters).
     pub fn set_output_length_unit(&mut self, theOutputScale: f64) {
         crate::check_void_result(unsafe {
@@ -887,7 +875,7 @@ impl CoordinateSystemConverter {
         })
     }
 
-    /// **Source:** `RWMesh_CoordinateSystemConverter.hxx`:97 - `RWMesh_CoordinateSystemConverter::HasInputCoordinateSystem()`
+    /// **Source:** `RWMesh_CoordinateSystemConverter.hxx`:101 - `RWMesh_CoordinateSystemConverter::HasInputCoordinateSystem()`
     /// Return TRUE if source coordinate system has been set; FALSE by default.
     pub fn has_input_coordinate_system(&self) -> bool {
         crate::check_result(unsafe {
@@ -897,7 +885,7 @@ impl CoordinateSystemConverter {
         })
     }
 
-    /// **Source:** `RWMesh_CoordinateSystemConverter.hxx`:100 - `RWMesh_CoordinateSystemConverter::InputCoordinateSystem()`
+    /// **Source:** `RWMesh_CoordinateSystemConverter.hxx`:104 - `RWMesh_CoordinateSystemConverter::InputCoordinateSystem()`
     /// Source coordinate system; UNDEFINED by default.
     pub fn input_coordinate_system(&self) -> &crate::gp::Ax3 {
         unsafe {
@@ -905,7 +893,7 @@ impl CoordinateSystemConverter {
         }
     }
 
-    /// **Source:** `RWMesh_CoordinateSystemConverter.hxx`:103 - `RWMesh_CoordinateSystemConverter::SetInputCoordinateSystem()`
+    /// **Source:** `RWMesh_CoordinateSystemConverter.hxx`:107 - `RWMesh_CoordinateSystemConverter::SetInputCoordinateSystem()`
     /// Set source coordinate system.
     pub fn set_input_coordinate_system_ax3(&mut self, theSysFrom: &crate::gp::Ax3) {
         crate::check_void_result(unsafe {
@@ -913,7 +901,7 @@ impl CoordinateSystemConverter {
         })
     }
 
-    /// **Source:** `RWMesh_CoordinateSystemConverter.hxx`:110 - `RWMesh_CoordinateSystemConverter::SetInputCoordinateSystem()`
+    /// **Source:** `RWMesh_CoordinateSystemConverter.hxx`:114 - `RWMesh_CoordinateSystemConverter::SetInputCoordinateSystem()`
     /// Set source coordinate system.
     pub fn set_input_coordinate_system_coordinatesystem(
         &mut self,
@@ -924,7 +912,7 @@ impl CoordinateSystemConverter {
         })
     }
 
-    /// **Source:** `RWMesh_CoordinateSystemConverter.hxx`:117 - `RWMesh_CoordinateSystemConverter::HasOutputCoordinateSystem()`
+    /// **Source:** `RWMesh_CoordinateSystemConverter.hxx`:121 - `RWMesh_CoordinateSystemConverter::HasOutputCoordinateSystem()`
     /// Return TRUE if destination coordinate system has been set; FALSE by default.
     pub fn has_output_coordinate_system(&self) -> bool {
         crate::check_result(unsafe {
@@ -932,7 +920,7 @@ impl CoordinateSystemConverter {
         })
     }
 
-    /// **Source:** `RWMesh_CoordinateSystemConverter.hxx`:120 - `RWMesh_CoordinateSystemConverter::OutputCoordinateSystem()`
+    /// **Source:** `RWMesh_CoordinateSystemConverter.hxx`:124 - `RWMesh_CoordinateSystemConverter::OutputCoordinateSystem()`
     /// Destination coordinate system; UNDEFINED by default.
     pub fn output_coordinate_system(&self) -> &crate::gp::Ax3 {
         unsafe {
@@ -940,7 +928,7 @@ impl CoordinateSystemConverter {
         }
     }
 
-    /// **Source:** `RWMesh_CoordinateSystemConverter.hxx`:123 - `RWMesh_CoordinateSystemConverter::SetOutputCoordinateSystem()`
+    /// **Source:** `RWMesh_CoordinateSystemConverter.hxx`:127 - `RWMesh_CoordinateSystemConverter::SetOutputCoordinateSystem()`
     /// Set destination coordinate system.
     pub fn set_output_coordinate_system_ax3(&mut self, theSysTo: &crate::gp::Ax3) {
         crate::check_void_result(unsafe {
@@ -948,7 +936,7 @@ impl CoordinateSystemConverter {
         })
     }
 
-    /// **Source:** `RWMesh_CoordinateSystemConverter.hxx`:130 - `RWMesh_CoordinateSystemConverter::SetOutputCoordinateSystem()`
+    /// **Source:** `RWMesh_CoordinateSystemConverter.hxx`:134 - `RWMesh_CoordinateSystemConverter::SetOutputCoordinateSystem()`
     /// Set destination coordinate system.
     pub fn set_output_coordinate_system_coordinatesystem(
         &mut self,
@@ -959,7 +947,7 @@ impl CoordinateSystemConverter {
         })
     }
 
-    /// **Source:** `RWMesh_CoordinateSystemConverter.hxx`:137 - `RWMesh_CoordinateSystemConverter::Init()`
+    /// **Source:** `RWMesh_CoordinateSystemConverter.hxx`:141 - `RWMesh_CoordinateSystemConverter::Init()`
     /// Initialize transformation.
     pub fn init(
         &mut self,
@@ -979,7 +967,7 @@ impl CoordinateSystemConverter {
         })
     }
 
-    /// **Source:** `RWMesh_CoordinateSystemConverter.hxx`:144 - `RWMesh_CoordinateSystemConverter::TransformTransformation()`
+    /// **Source:** `RWMesh_CoordinateSystemConverter.hxx`:148 - `RWMesh_CoordinateSystemConverter::TransformTransformation()`
     /// Transform transformation.
     pub fn transform_transformation(&self, theTrsf: &mut crate::gp::Trsf) {
         crate::check_void_result(unsafe {
@@ -990,7 +978,7 @@ impl CoordinateSystemConverter {
         })
     }
 
-    /// **Source:** `RWMesh_CoordinateSystemConverter.hxx`:159 - `RWMesh_CoordinateSystemConverter::TransformPosition()`
+    /// **Source:** `RWMesh_CoordinateSystemConverter.hxx`:163 - `RWMesh_CoordinateSystemConverter::TransformPosition()`
     /// Transform position.
     pub fn transform_position(&self, thePos: &mut crate::gp::XYZ) {
         crate::check_void_result(unsafe {
@@ -1001,9 +989,9 @@ impl CoordinateSystemConverter {
         })
     }
 
-    /// **Source:** `RWMesh_CoordinateSystemConverter.hxx`:172 - `RWMesh_CoordinateSystemConverter::TransformNormal()`
+    /// **Source:** `RWMesh_CoordinateSystemConverter.hxx`:176 - `RWMesh_CoordinateSystemConverter::TransformNormal()`
     /// Transform normal (e.g. exclude translation/scale part of transformation).
-    pub fn transform_normal(&self, theNorm: &mut crate::ffi_types::Graphic3d_Vec3) {
+    pub fn transform_normal(&self, theNorm: &mut crate::ffi_types::BVH_Vec3f) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKRWMesh::RWMesh_CoordinateSystemConverter_transform_normal(
                 self as *const Self,
@@ -1012,7 +1000,7 @@ impl CoordinateSystemConverter {
         })
     }
 
-    /// **Source:** `RWMesh_CoordinateSystemConverter.hxx`:53 - `RWMesh_CoordinateSystemConverter::StandardCoordinateSystem()`
+    /// **Source:** `RWMesh_CoordinateSystemConverter.hxx`:57 - `RWMesh_CoordinateSystemConverter::StandardCoordinateSystem()`
     /// Return a standard coordinate system definition.
     pub fn standard_coordinate_system(
         theSys: crate::rw_mesh::CoordinateSystem,
@@ -1027,7 +1015,7 @@ impl CoordinateSystemConverter {
 // From RWMesh_EdgeIterator.hxx
 // ========================
 
-/// **Source:** `RWMesh_EdgeIterator.hxx`:34 - `RWMesh_EdgeIterator`
+/// **Source:** `RWMesh_EdgeIterator.hxx`:37 - `RWMesh_EdgeIterator`
 /// Auxiliary class to iterate through edges.
 /// Provides functionality to iterate through the edges of a shape.
 /// It inherits from `RWMesh_ShapeIterator` and implements
@@ -1043,7 +1031,7 @@ unsafe impl crate::CppDeletable for EdgeIterator {
 }
 
 impl EdgeIterator {
-    /// **Source:** `RWMesh_EdgeIterator.hxx`:42 - `RWMesh_EdgeIterator::RWMesh_EdgeIterator()`
+    /// **Source:** `RWMesh_EdgeIterator.hxx`:45 - `RWMesh_EdgeIterator::RWMesh_EdgeIterator()`
     /// Main constructor.
     /// @param[in] theLabel The label of the shape.
     /// @param[in] theLocation The location of the shape.
@@ -1067,7 +1055,7 @@ impl EdgeIterator {
         }
     }
 
-    /// **Source:** `RWMesh_EdgeIterator.hxx`:50 - `RWMesh_EdgeIterator::RWMesh_EdgeIterator()`
+    /// **Source:** `RWMesh_EdgeIterator.hxx`:53 - `RWMesh_EdgeIterator::RWMesh_EdgeIterator()`
     /// Auxiliary constructor.
     /// @param[in] theShape The shape to iterate.
     /// @param[in] theStyle The style of the shape.
@@ -1084,7 +1072,7 @@ impl EdgeIterator {
         }
     }
 
-    /// **Source:** `RWMesh_EdgeIterator.hxx`:54 - `RWMesh_EdgeIterator::More()`
+    /// **Source:** `RWMesh_EdgeIterator.hxx`:57 - `RWMesh_EdgeIterator::More()`
     /// Return true if iterator points to the valid triangulation.
     pub fn more(&self) -> bool {
         crate::check_result(unsafe {
@@ -1092,7 +1080,7 @@ impl EdgeIterator {
         })
     }
 
-    /// **Source:** `RWMesh_EdgeIterator.hxx`:57 - `RWMesh_EdgeIterator::Next()`
+    /// **Source:** `RWMesh_EdgeIterator.hxx`:60 - `RWMesh_EdgeIterator::Next()`
     /// Find next value.
     pub fn next(&mut self) {
         crate::check_void_result(unsafe {
@@ -1100,7 +1088,7 @@ impl EdgeIterator {
         })
     }
 
-    /// **Source:** `RWMesh_EdgeIterator.hxx`:60 - `RWMesh_EdgeIterator::Edge()`
+    /// **Source:** `RWMesh_EdgeIterator.hxx`:63 - `RWMesh_EdgeIterator::Edge()`
     /// Return current edge.
     pub fn edge(&self) -> &crate::topo_ds::Edge {
         unsafe {
@@ -1110,7 +1098,7 @@ impl EdgeIterator {
         }
     }
 
-    /// **Source:** `RWMesh_EdgeIterator.hxx`:63 - `RWMesh_EdgeIterator::Shape()`
+    /// **Source:** `RWMesh_EdgeIterator.hxx`:66 - `RWMesh_EdgeIterator::Shape()`
     /// Return current edge.
     pub fn shape(&self) -> &crate::topo_ds::Shape {
         unsafe {
@@ -1120,9 +1108,9 @@ impl EdgeIterator {
         }
     }
 
-    /// **Source:** `RWMesh_EdgeIterator.hxx`:66 - `RWMesh_EdgeIterator::Polygon3D()`
+    /// **Source:** `RWMesh_EdgeIterator.hxx`:69 - `RWMesh_EdgeIterator::Polygon3D()`
     /// Return current edge data.
-    pub fn polygon3_d(&self) -> &crate::ffi_types::HandlePolyPolygon3D {
+    pub fn polygon3_d(&self) -> &crate::ffi_types::Handle_Poly_Polygon3D {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKRWMesh::RWMesh_EdgeIterator_polygon3_d(
                 self as *const Self,
@@ -1130,7 +1118,7 @@ impl EdgeIterator {
         }
     }
 
-    /// **Source:** `RWMesh_EdgeIterator.hxx`:69 - `RWMesh_EdgeIterator::IsEmpty()`
+    /// **Source:** `RWMesh_EdgeIterator.hxx`:72 - `RWMesh_EdgeIterator::IsEmpty()`
     /// Return true if geometry data is defined.
     pub fn is_empty(&self) -> bool {
         crate::check_result(unsafe {
@@ -1162,7 +1150,7 @@ impl EdgeIterator {
         })
     }
 
-    /// **Source:** `RWMesh_EdgeIterator.hxx`:89 - `RWMesh_EdgeIterator::NodeLower()`
+    /// **Source:** `RWMesh_EdgeIterator.hxx`:86 - `RWMesh_EdgeIterator::NodeLower()`
     /// Lower node index in current triangulation.
     pub fn node_lower(&self) -> i32 {
         crate::check_result(unsafe {
@@ -1170,7 +1158,7 @@ impl EdgeIterator {
         })
     }
 
-    /// **Source:** `RWMesh_EdgeIterator.hxx`:92 - `RWMesh_EdgeIterator::NodeUpper()`
+    /// **Source:** `RWMesh_EdgeIterator.hxx`:89 - `RWMesh_EdgeIterator::NodeUpper()`
     /// Upper node index in current triangulation.
     pub fn node_upper(&self) -> i32 {
         crate::check_result(unsafe {
@@ -1178,7 +1166,7 @@ impl EdgeIterator {
         })
     }
 
-    /// **Source:** `RWMesh_EdgeIterator.hxx`:96 - `RWMesh_EdgeIterator::node()`
+    /// **Source:** `RWMesh_EdgeIterator.hxx`:93 - `RWMesh_EdgeIterator::node()`
     /// Return the node with specified index with applied transformation.
     pub fn node(&self, theNode: i32) -> crate::OwnedPtr<crate::gp::Pnt> {
         unsafe {
@@ -1210,7 +1198,7 @@ impl EdgeIterator {
         }
     }
 
-    /// Inherited: **Source:** `RWMesh_ShapeIterator.hxx`:38 - `RWMesh_ShapeIterator::ExploredShape()`
+    /// Inherited: **Source:** `RWMesh_ShapeIterator.hxx`:41 - `RWMesh_ShapeIterator::ExploredShape()`
     pub fn explored_shape(&self) -> &crate::topo_ds::Shape {
         unsafe {
             &*(crate::check_result(
@@ -1221,7 +1209,7 @@ impl EdgeIterator {
         }
     }
 
-    /// Inherited: **Source:** `RWMesh_ShapeIterator.hxx`:53 - `RWMesh_ShapeIterator::Style()`
+    /// Inherited: **Source:** `RWMesh_ShapeIterator.hxx`:56 - `RWMesh_ShapeIterator::Style()`
     pub fn style(&self) -> &crate::xcaf_prs::Style {
         unsafe {
             &*(crate::check_result(
@@ -1232,14 +1220,14 @@ impl EdgeIterator {
         }
     }
 
-    /// Inherited: **Source:** `RWMesh_ShapeIterator.hxx`:56 - `RWMesh_ShapeIterator::HasColor()`
+    /// Inherited: **Source:** `RWMesh_ShapeIterator.hxx`:59 - `RWMesh_ShapeIterator::HasColor()`
     pub fn has_color(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKRWMesh::RWMesh_EdgeIterator_inherited_HasColor(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `RWMesh_ShapeIterator.hxx`:59 - `RWMesh_ShapeIterator::Color()`
+    /// Inherited: **Source:** `RWMesh_ShapeIterator.hxx`:62 - `RWMesh_ShapeIterator::Color()`
     pub fn color(&self) -> &crate::quantity::ColorRGBA {
         unsafe {
             &*(crate::check_result(
@@ -1250,7 +1238,7 @@ impl EdgeIterator {
         }
     }
 
-    /// Inherited: **Source:** `RWMesh_ShapeIterator.hxx`:77 - `RWMesh_ShapeIterator::NodeTransformed()`
+    /// Inherited: **Source:** `RWMesh_ShapeIterator.hxx`:80 - `RWMesh_ShapeIterator::NodeTransformed()`
     pub fn node_transformed(&self, theNode: i32) -> crate::OwnedPtr<crate::gp::Pnt> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -1363,7 +1351,7 @@ impl FaceIterator {
 
     /// **Source:** `RWMesh_FaceIterator.hxx`:64 - `RWMesh_FaceIterator::Triangulation()`
     /// Return current face triangulation.
-    pub fn triangulation(&self) -> &crate::ffi_types::HandlePolyTriangulation {
+    pub fn triangulation(&self) -> &crate::ffi_types::Handle_Poly_Triangulation {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKRWMesh::RWMesh_FaceIterator_triangulation(
                 self as *const Self,
@@ -1490,7 +1478,7 @@ impl FaceIterator {
         })
     }
 
-    /// **Source:** `RWMesh_FaceIterator.hxx`:137 - `RWMesh_FaceIterator::NodeLower()`
+    /// **Source:** `RWMesh_FaceIterator.hxx`:134 - `RWMesh_FaceIterator::NodeLower()`
     /// Lower node index in current triangulation.
     pub fn node_lower(&self) -> i32 {
         crate::check_result(unsafe {
@@ -1498,7 +1486,7 @@ impl FaceIterator {
         })
     }
 
-    /// **Source:** `RWMesh_FaceIterator.hxx`:140 - `RWMesh_FaceIterator::NodeUpper()`
+    /// **Source:** `RWMesh_FaceIterator.hxx`:137 - `RWMesh_FaceIterator::NodeUpper()`
     /// Upper node index in current triangulation.
     pub fn node_upper(&self) -> i32 {
         crate::check_result(unsafe {
@@ -1506,7 +1494,7 @@ impl FaceIterator {
         })
     }
 
-    /// **Source:** `RWMesh_FaceIterator.hxx`:143 - `RWMesh_FaceIterator::NodeTexCoord()`
+    /// **Source:** `RWMesh_FaceIterator.hxx`:140 - `RWMesh_FaceIterator::NodeTexCoord()`
     /// Return texture coordinates for the node.
     pub fn node_tex_coord(&self, theNode: i32) -> crate::OwnedPtr<crate::gp::Pnt2d> {
         unsafe {
@@ -1519,7 +1507,7 @@ impl FaceIterator {
         }
     }
 
-    /// **Source:** `RWMesh_FaceIterator.hxx`:150 - `RWMesh_FaceIterator::node()`
+    /// **Source:** `RWMesh_FaceIterator.hxx`:147 - `RWMesh_FaceIterator::node()`
     /// Return the node with specified index with applied transformation.
     pub fn node(&self, theNode: i32) -> crate::OwnedPtr<crate::gp::Pnt> {
         unsafe {
@@ -1529,7 +1517,7 @@ impl FaceIterator {
         }
     }
 
-    /// **Source:** `RWMesh_FaceIterator.hxx`:156 - `RWMesh_FaceIterator::normal()`
+    /// **Source:** `RWMesh_FaceIterator.hxx`:150 - `RWMesh_FaceIterator::normal()`
     /// Return normal at specified node index without face transformation applied.
     pub fn normal(&self, theNode: i32) -> crate::OwnedPtr<crate::gp::Dir> {
         unsafe {
@@ -1542,7 +1530,7 @@ impl FaceIterator {
         }
     }
 
-    /// **Source:** `RWMesh_FaceIterator.hxx`:159 - `RWMesh_FaceIterator::triangle()`
+    /// **Source:** `RWMesh_FaceIterator.hxx`:153 - `RWMesh_FaceIterator::triangle()`
     /// Return triangle with specified index.
     pub fn triangle(&self, theElemIndex: i32) -> crate::OwnedPtr<crate::poly::Triangle> {
         unsafe {
@@ -1577,7 +1565,7 @@ impl FaceIterator {
         }
     }
 
-    /// Inherited: **Source:** `RWMesh_ShapeIterator.hxx`:38 - `RWMesh_ShapeIterator::ExploredShape()`
+    /// Inherited: **Source:** `RWMesh_ShapeIterator.hxx`:41 - `RWMesh_ShapeIterator::ExploredShape()`
     pub fn explored_shape(&self) -> &crate::topo_ds::Shape {
         unsafe {
             &*(crate::check_result(
@@ -1588,7 +1576,7 @@ impl FaceIterator {
         }
     }
 
-    /// Inherited: **Source:** `RWMesh_ShapeIterator.hxx`:53 - `RWMesh_ShapeIterator::Style()`
+    /// Inherited: **Source:** `RWMesh_ShapeIterator.hxx`:56 - `RWMesh_ShapeIterator::Style()`
     pub fn style(&self) -> &crate::xcaf_prs::Style {
         unsafe {
             &*(crate::check_result(
@@ -1599,14 +1587,14 @@ impl FaceIterator {
         }
     }
 
-    /// Inherited: **Source:** `RWMesh_ShapeIterator.hxx`:56 - `RWMesh_ShapeIterator::HasColor()`
+    /// Inherited: **Source:** `RWMesh_ShapeIterator.hxx`:59 - `RWMesh_ShapeIterator::HasColor()`
     pub fn has_color(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKRWMesh::RWMesh_FaceIterator_inherited_HasColor(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `RWMesh_ShapeIterator.hxx`:59 - `RWMesh_ShapeIterator::Color()`
+    /// Inherited: **Source:** `RWMesh_ShapeIterator.hxx`:62 - `RWMesh_ShapeIterator::Color()`
     pub fn color(&self) -> &crate::quantity::ColorRGBA {
         unsafe {
             &*(crate::check_result(
@@ -1617,7 +1605,7 @@ impl FaceIterator {
         }
     }
 
-    /// Inherited: **Source:** `RWMesh_ShapeIterator.hxx`:77 - `RWMesh_ShapeIterator::NodeTransformed()`
+    /// Inherited: **Source:** `RWMesh_ShapeIterator.hxx`:80 - `RWMesh_ShapeIterator::NodeTransformed()`
     pub fn node_transformed(&self, theNode: i32) -> crate::OwnedPtr<crate::gp::Pnt> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -1650,7 +1638,7 @@ unsafe impl crate::CppDeletable for MaterialMap {
 
 impl MaterialMap {
     /// **Source:** `RWMesh_MaterialMap.hxx`:26 - `RWMesh_MaterialMap::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKRWMesh::RWMesh_MaterialMap_dynamic_type(
                 self as *const Self,
@@ -1730,7 +1718,7 @@ impl MaterialMap {
     pub fn copy_texture(
         &mut self,
         theResTexture: &mut crate::t_collection::AsciiString,
-        theTexture: &crate::ffi_types::HandleImageTexture,
+        theTexture: &crate::ffi_types::Handle_Image_Texture,
         theKey: &crate::t_collection::AsciiString,
     ) -> bool {
         crate::check_result(unsafe {
@@ -1781,7 +1769,7 @@ impl MaterialMap {
     }
 
     /// **Source:** `RWMesh_MaterialMap.hxx`:26 - `RWMesh_MaterialMap::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKRWMesh::RWMesh_MaterialMap_get_type_descriptor(),
@@ -1811,8 +1799,8 @@ impl MaterialMap {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKRWMesh::RWMesh_MaterialMap_inherited_IsInstance(
                 self as *const Self,
@@ -1821,8 +1809,8 @@ impl MaterialMap {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKRWMesh::RWMesh_MaterialMap_inherited_IsKind(
                 self as *const Self,
@@ -1831,7 +1819,7 @@ impl MaterialMap {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -1845,7 +1833,7 @@ impl MaterialMap {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKRWMesh::RWMesh_MaterialMap_inherited_GetRefCount(
@@ -1854,7 +1842,7 @@ impl MaterialMap {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKRWMesh::RWMesh_MaterialMap_inherited_IncrementRefCounter(
@@ -1863,7 +1851,7 @@ impl MaterialMap {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKRWMesh::RWMesh_MaterialMap_inherited_DecrementRefCounter(
@@ -1872,7 +1860,7 @@ impl MaterialMap {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKRWMesh::RWMesh_MaterialMap_inherited_Delete(self as *const Self)
@@ -1880,34 +1868,36 @@ impl MaterialMap {
     }
 }
 
-pub use crate::ffi_types::HandleRWMeshMaterialMap;
+pub use crate::ffi_types::Handle_RWMesh_MaterialMap;
 
-unsafe impl crate::CppDeletable for HandleRWMeshMaterialMap {
+unsafe impl crate::CppDeletable for Handle_RWMesh_MaterialMap {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKRWMesh::HandleRWMeshMaterialMap_destructor(ptr);
+            crate::ffi_extern_TKRWMesh::Handle_RWMesh_MaterialMap_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleRWMeshMaterialMap {
+unsafe impl crate::CppCopyable for Handle_RWMesh_MaterialMap {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
         unsafe {
-            crate::check_result(crate::ffi_extern_TKRWMesh::HandleRWMeshMaterialMap_clone(ptr))
+            crate::check_result(crate::ffi_extern_TKRWMesh::Handle_RWMesh_MaterialMap_clone(ptr))
         }
     }
 }
 
-impl HandleRWMeshMaterialMap {
+impl Handle_RWMesh_MaterialMap {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
-        unsafe { crate::ffi_extern_TKRWMesh::HandleRWMeshMaterialMap_is_null(self as *const Self) }
+        unsafe {
+            crate::ffi_extern_TKRWMesh::Handle_RWMesh_MaterialMap_is_null(self as *const Self)
+        }
     }
 
     /// Dereference this Handle to access the underlying RWMesh_MaterialMap
     pub fn get(&self) -> &crate::ffi_types::RWMesh_MaterialMap {
         unsafe {
-            &*crate::check_result(crate::ffi_extern_TKRWMesh::HandleRWMeshMaterialMap_get(
+            &*crate::check_result(crate::ffi_extern_TKRWMesh::Handle_RWMesh_MaterialMap_get(
                 self as *const Self,
             ))
         }
@@ -1916,38 +1906,22 @@ impl HandleRWMeshMaterialMap {
     /// Dereference this Handle to mutably access the underlying RWMesh_MaterialMap
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::RWMesh_MaterialMap {
         unsafe {
-            &mut *crate::check_result(crate::ffi_extern_TKRWMesh::HandleRWMeshMaterialMap_get_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKRWMesh::Handle_RWMesh_MaterialMap_get_mut(self as *mut Self),
+            )
         }
     }
 
     /// Upcast Handle<RWMesh_MaterialMap> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKRWMesh::HandleRWMeshMaterialMap_to_HandleStandardTransient(
+                crate::ffi_extern_TKRWMesh::Handle_RWMesh_MaterialMap_to_Handle_Standard_Transient(
                     self as *const Self,
                 ),
             ))
-        }
-    }
-
-    /// Downcast Handle<RWMesh_MaterialMap> to Handle<RWGltf_GltfMaterialMap>
-    ///
-    /// Returns `None` if the handle does not point to a `RWGltf_GltfMaterialMap` (or subclass).
-    pub fn downcast_to_gltf_material_map(
-        &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleRWGltfGltfMaterialMap>> {
-        let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKRWMesh::HandleRWMeshMaterialMap_downcast_to_HandleRWGltfGltfMaterialMap(self as *const Self)
-        });
-        if __val.is_null() {
-            None
-        } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(__val) })
         }
     }
 
@@ -1956,9 +1930,9 @@ impl HandleRWMeshMaterialMap {
     /// Returns `None` if the handle does not point to a `RWObj_ObjMaterialMap` (or subclass).
     pub fn downcast_to_obj_material_map(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleRWObjObjMaterialMap>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_RWObj_ObjMaterialMap>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKRWMesh::HandleRWMeshMaterialMap_downcast_to_HandleRWObjObjMaterialMap(self as *const Self)
+            crate::ffi_extern_TKRWMesh::Handle_RWMesh_MaterialMap_downcast_to_Handle_RWObj_ObjMaterialMap(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -2000,7 +1974,7 @@ impl NodeAttributes {
 // From RWMesh_ShapeIterator.hxx
 // ========================
 
-/// **Source:** `RWMesh_ShapeIterator.hxx`:34 - `RWMesh_ShapeIterator`
+/// **Source:** `RWMesh_ShapeIterator.hxx`:37 - `RWMesh_ShapeIterator`
 /// This is a virtual base class for other shape iterators.
 /// Provides an abstract interface for iterating over the elements of a shape.
 /// It defines a set of pure virtual methods that must be implemented by
@@ -2016,7 +1990,7 @@ unsafe impl crate::CppDeletable for ShapeIterator {
 }
 
 impl ShapeIterator {
-    /// **Source:** `RWMesh_ShapeIterator.hxx`:38 - `RWMesh_ShapeIterator::ExploredShape()`
+    /// **Source:** `RWMesh_ShapeIterator.hxx`:41 - `RWMesh_ShapeIterator::ExploredShape()`
     /// Return explored shape.
     pub fn explored_shape(&self) -> &crate::topo_ds::Shape {
         unsafe {
@@ -2028,7 +2002,7 @@ impl ShapeIterator {
         }
     }
 
-    /// **Source:** `RWMesh_ShapeIterator.hxx`:41 - `RWMesh_ShapeIterator::Shape()`
+    /// **Source:** `RWMesh_ShapeIterator.hxx`:44 - `RWMesh_ShapeIterator::Shape()`
     /// Return shape.
     pub fn shape(&self) -> &crate::topo_ds::Shape {
         unsafe {
@@ -2038,7 +2012,7 @@ impl ShapeIterator {
         }
     }
 
-    /// **Source:** `RWMesh_ShapeIterator.hxx`:44 - `RWMesh_ShapeIterator::More()`
+    /// **Source:** `RWMesh_ShapeIterator.hxx`:47 - `RWMesh_ShapeIterator::More()`
     /// Return true if iterator points to the valid triangulation.
     pub fn more(&self) -> bool {
         crate::check_result(unsafe {
@@ -2046,7 +2020,7 @@ impl ShapeIterator {
         })
     }
 
-    /// **Source:** `RWMesh_ShapeIterator.hxx`:47 - `RWMesh_ShapeIterator::Next()`
+    /// **Source:** `RWMesh_ShapeIterator.hxx`:50 - `RWMesh_ShapeIterator::Next()`
     /// Find next value.
     pub fn next(&mut self) {
         crate::check_void_result(unsafe {
@@ -2054,7 +2028,7 @@ impl ShapeIterator {
         })
     }
 
-    /// **Source:** `RWMesh_ShapeIterator.hxx`:50 - `RWMesh_ShapeIterator::IsEmpty()`
+    /// **Source:** `RWMesh_ShapeIterator.hxx`:53 - `RWMesh_ShapeIterator::IsEmpty()`
     /// Return true if mesh data is defined.
     pub fn is_empty(&self) -> bool {
         crate::check_result(unsafe {
@@ -2062,7 +2036,7 @@ impl ShapeIterator {
         })
     }
 
-    /// **Source:** `RWMesh_ShapeIterator.hxx`:53 - `RWMesh_ShapeIterator::Style()`
+    /// **Source:** `RWMesh_ShapeIterator.hxx`:56 - `RWMesh_ShapeIterator::Style()`
     /// Return shape material.
     pub fn style(&self) -> &crate::xcaf_prs::Style {
         unsafe {
@@ -2072,7 +2046,7 @@ impl ShapeIterator {
         }
     }
 
-    /// **Source:** `RWMesh_ShapeIterator.hxx`:56 - `RWMesh_ShapeIterator::HasColor()`
+    /// **Source:** `RWMesh_ShapeIterator.hxx`:59 - `RWMesh_ShapeIterator::HasColor()`
     /// Return TRUE if shape color is set.
     pub fn has_color(&self) -> bool {
         crate::check_result(unsafe {
@@ -2080,7 +2054,7 @@ impl ShapeIterator {
         })
     }
 
-    /// **Source:** `RWMesh_ShapeIterator.hxx`:59 - `RWMesh_ShapeIterator::Color()`
+    /// **Source:** `RWMesh_ShapeIterator.hxx`:62 - `RWMesh_ShapeIterator::Color()`
     /// Return shape color.
     pub fn color(&self) -> &crate::quantity::ColorRGBA {
         unsafe {
@@ -2090,7 +2064,7 @@ impl ShapeIterator {
         }
     }
 
-    /// **Source:** `RWMesh_ShapeIterator.hxx`:62 - `RWMesh_ShapeIterator::ElemLower()`
+    /// **Source:** `RWMesh_ShapeIterator.hxx`:65 - `RWMesh_ShapeIterator::ElemLower()`
     /// Lower element index in current triangulation.
     pub fn elem_lower(&self) -> i32 {
         crate::check_result(unsafe {
@@ -2098,7 +2072,7 @@ impl ShapeIterator {
         })
     }
 
-    /// **Source:** `RWMesh_ShapeIterator.hxx`:65 - `RWMesh_ShapeIterator::ElemUpper()`
+    /// **Source:** `RWMesh_ShapeIterator.hxx`:68 - `RWMesh_ShapeIterator::ElemUpper()`
     /// Upper element index in current triangulation.
     pub fn elem_upper(&self) -> i32 {
         crate::check_result(unsafe {
@@ -2106,7 +2080,7 @@ impl ShapeIterator {
         })
     }
 
-    /// **Source:** `RWMesh_ShapeIterator.hxx`:68 - `RWMesh_ShapeIterator::NbNodes()`
+    /// **Source:** `RWMesh_ShapeIterator.hxx`:71 - `RWMesh_ShapeIterator::NbNodes()`
     /// Return number of nodes for the current shape.
     pub fn nb_nodes(&self) -> i32 {
         crate::check_result(unsafe {
@@ -2114,7 +2088,7 @@ impl ShapeIterator {
         })
     }
 
-    /// **Source:** `RWMesh_ShapeIterator.hxx`:71 - `RWMesh_ShapeIterator::NodeLower()`
+    /// **Source:** `RWMesh_ShapeIterator.hxx`:74 - `RWMesh_ShapeIterator::NodeLower()`
     /// Lower node index in current shape.
     pub fn node_lower(&self) -> i32 {
         crate::check_result(unsafe {
@@ -2122,7 +2096,7 @@ impl ShapeIterator {
         })
     }
 
-    /// **Source:** `RWMesh_ShapeIterator.hxx`:74 - `RWMesh_ShapeIterator::NodeUpper()`
+    /// **Source:** `RWMesh_ShapeIterator.hxx`:77 - `RWMesh_ShapeIterator::NodeUpper()`
     /// Upper node index in current shape.
     pub fn node_upper(&self) -> i32 {
         crate::check_result(unsafe {
@@ -2130,7 +2104,7 @@ impl ShapeIterator {
         })
     }
 
-    /// **Source:** `RWMesh_ShapeIterator.hxx`:77 - `RWMesh_ShapeIterator::NodeTransformed()`
+    /// **Source:** `RWMesh_ShapeIterator.hxx`:80 - `RWMesh_ShapeIterator::NodeTransformed()`
     /// Return the node with specified index with applied transformation.
     pub fn node_transformed(&self, theNode: i32) -> crate::OwnedPtr<crate::gp::Pnt> {
         unsafe {
@@ -2148,7 +2122,7 @@ impl ShapeIterator {
 // From RWMesh_TriangulationReader.hxx
 // ========================
 
-/// **Source:** `RWMesh_TriangulationReader.hxx`:25 - `RWMesh_TriangulationReader`
+/// **Source:** `RWMesh_TriangulationReader.hxx`:26 - `RWMesh_TriangulationReader`
 /// Interface for reading primitive array from the buffer.
 pub use crate::ffi_types::RWMesh_TriangulationReader as TriangulationReader;
 
@@ -2161,8 +2135,8 @@ unsafe impl crate::CppDeletable for TriangulationReader {
 }
 
 impl TriangulationReader {
-    /// **Source:** `RWMesh_TriangulationReader.hxx`:27 - `RWMesh_TriangulationReader::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `RWMesh_TriangulationReader.hxx`:28 - `RWMesh_TriangulationReader::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKRWMesh::RWMesh_TriangulationReader_dynamic_type(
@@ -2172,7 +2146,7 @@ impl TriangulationReader {
         }
     }
 
-    /// **Source:** `RWMesh_TriangulationReader.hxx`:65 - `RWMesh_TriangulationReader::FileName()`
+    /// **Source:** `RWMesh_TriangulationReader.hxx`:66 - `RWMesh_TriangulationReader::FileName()`
     /// Returns file name for reporting issues.
     pub fn file_name(&self) -> &crate::t_collection::AsciiString {
         unsafe {
@@ -2184,7 +2158,7 @@ impl TriangulationReader {
         }
     }
 
-    /// **Source:** `RWMesh_TriangulationReader.hxx`:68 - `RWMesh_TriangulationReader::SetFileName()`
+    /// **Source:** `RWMesh_TriangulationReader.hxx`:69 - `RWMesh_TriangulationReader::SetFileName()`
     /// Sets file name for reporting issues.
     pub fn set_file_name(&mut self, theFileName: &crate::t_collection::AsciiString) {
         crate::check_void_result(unsafe {
@@ -2195,7 +2169,7 @@ impl TriangulationReader {
         })
     }
 
-    /// **Source:** `RWMesh_TriangulationReader.hxx`:71 - `RWMesh_TriangulationReader::CoordinateSystemConverter()`
+    /// **Source:** `RWMesh_TriangulationReader.hxx`:72 - `RWMesh_TriangulationReader::CoordinateSystemConverter()`
     /// Returns coordinate system converter using for correct data loading.
     pub fn coordinate_system_converter(&self) -> &CoordinateSystemConverter {
         unsafe {
@@ -2207,7 +2181,7 @@ impl TriangulationReader {
         }
     }
 
-    /// **Source:** `RWMesh_TriangulationReader.hxx`:77 - `RWMesh_TriangulationReader::SetCoordinateSystemConverter()`
+    /// **Source:** `RWMesh_TriangulationReader.hxx`:78 - `RWMesh_TriangulationReader::SetCoordinateSystemConverter()`
     /// Sets coordinate system converter.
     pub fn set_coordinate_system_converter(&mut self, theConverter: &CoordinateSystemConverter) {
         crate::check_void_result(unsafe {
@@ -2218,7 +2192,7 @@ impl TriangulationReader {
         })
     }
 
-    /// **Source:** `RWMesh_TriangulationReader.hxx`:83 - `RWMesh_TriangulationReader::IsDoublePrecision()`
+    /// **Source:** `RWMesh_TriangulationReader.hxx`:84 - `RWMesh_TriangulationReader::IsDoublePrecision()`
     /// Returns flag to fill in triangulation using double or single precision; FALSE by default.
     pub fn is_double_precision(&self) -> bool {
         crate::check_result(unsafe {
@@ -2228,7 +2202,7 @@ impl TriangulationReader {
         })
     }
 
-    /// **Source:** `RWMesh_TriangulationReader.hxx`:86 - `RWMesh_TriangulationReader::SetDoublePrecision()`
+    /// **Source:** `RWMesh_TriangulationReader.hxx`:87 - `RWMesh_TriangulationReader::SetDoublePrecision()`
     /// Sets flag to fill in triangulation using double or single precision.
     pub fn set_double_precision(&mut self, theIsDouble: bool) {
         crate::check_void_result(unsafe {
@@ -2239,7 +2213,7 @@ impl TriangulationReader {
         })
     }
 
-    /// **Source:** `RWMesh_TriangulationReader.hxx`:90 - `RWMesh_TriangulationReader::ToSkipDegenerates()`
+    /// **Source:** `RWMesh_TriangulationReader.hxx`:91 - `RWMesh_TriangulationReader::ToSkipDegenerates()`
     /// Returns TRUE if degenerated triangles should be skipped during mesh loading (only indexes will
     /// be checked).
     pub fn to_skip_degenerates(&self) -> bool {
@@ -2250,7 +2224,7 @@ impl TriangulationReader {
         })
     }
 
-    /// **Source:** `RWMesh_TriangulationReader.hxx`:93 - `RWMesh_TriangulationReader::SetToSkipDegenerates()`
+    /// **Source:** `RWMesh_TriangulationReader.hxx`:94 - `RWMesh_TriangulationReader::SetToSkipDegenerates()`
     /// Sets flag to skip degenerated triangles during mesh loading (only indexes will be checked).
     pub fn set_to_skip_degenerates(&mut self, theToSkip: bool) {
         crate::check_void_result(unsafe {
@@ -2261,7 +2235,7 @@ impl TriangulationReader {
         })
     }
 
-    /// **Source:** `RWMesh_TriangulationReader.hxx`:99 - `RWMesh_TriangulationReader::ToPrintDebugMessages()`
+    /// **Source:** `RWMesh_TriangulationReader.hxx`:97 - `RWMesh_TriangulationReader::ToPrintDebugMessages()`
     /// Returns TRUE if additional debug information should be print.
     pub fn to_print_debug_messages(&self) -> bool {
         crate::check_result(unsafe {
@@ -2271,7 +2245,7 @@ impl TriangulationReader {
         })
     }
 
-    /// **Source:** `RWMesh_TriangulationReader.hxx`:102 - `RWMesh_TriangulationReader::SetToPrintDebugMessages()`
+    /// **Source:** `RWMesh_TriangulationReader.hxx`:100 - `RWMesh_TriangulationReader::SetToPrintDebugMessages()`
     /// Sets flag to print debug information.
     pub fn set_to_print_debug_messages(&mut self, theToPrint: bool) {
         crate::check_void_result(unsafe {
@@ -2282,7 +2256,7 @@ impl TriangulationReader {
         })
     }
 
-    /// **Source:** `RWMesh_TriangulationReader.hxx`:109 - `RWMesh_TriangulationReader::StartStatistic()`
+    /// **Source:** `RWMesh_TriangulationReader.hxx`:104 - `RWMesh_TriangulationReader::StartStatistic()`
     /// Starts and reset internal object that accumulates nodes/triangles statistic during data
     /// reading.
     pub fn start_statistic(&mut self) {
@@ -2293,7 +2267,7 @@ impl TriangulationReader {
         })
     }
 
-    /// **Source:** `RWMesh_TriangulationReader.hxx`:123 - `RWMesh_TriangulationReader::StopStatistic()`
+    /// **Source:** `RWMesh_TriangulationReader.hxx`:118 - `RWMesh_TriangulationReader::StopStatistic()`
     /// Stops and nullify internal object that accumulates nodes/triangles statistic during data
     /// reading.
     pub fn stop_statistic(&mut self) {
@@ -2302,7 +2276,7 @@ impl TriangulationReader {
         })
     }
 
-    /// **Source:** `RWMesh_TriangulationReader.hxx`:135 - `RWMesh_TriangulationReader::PrintStatistic()`
+    /// **Source:** `RWMesh_TriangulationReader.hxx`:130 - `RWMesh_TriangulationReader::PrintStatistic()`
     /// Prints loading statistic.
     /// This method should be used between StartStatistic() and StopStatistic() calls
     /// for correct results.
@@ -2314,13 +2288,13 @@ impl TriangulationReader {
         })
     }
 
-    /// **Source:** `RWMesh_TriangulationReader.hxx`:145 - `RWMesh_TriangulationReader::Load()`
+    /// **Source:** `RWMesh_TriangulationReader.hxx`:140 - `RWMesh_TriangulationReader::Load()`
     /// Loads primitive array.
     pub fn load(
         &self,
-        theSourceMesh: &crate::ffi_types::HandleRWMeshTriangulationSource,
-        theDestMesh: &crate::ffi_types::HandlePolyTriangulation,
-        theFileSystem: &crate::ffi_types::HandleOSDFileSystem,
+        theSourceMesh: &crate::ffi_types::Handle_RWMesh_TriangulationSource,
+        theDestMesh: &crate::ffi_types::Handle_Poly_Triangulation,
+        theFileSystem: &crate::ffi_types::Handle_OSD_FileSystem,
     ) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKRWMesh::RWMesh_TriangulationReader_load(
@@ -2332,7 +2306,7 @@ impl TriangulationReader {
         })
     }
 
-    /// **Source:** `RWMesh_TriangulationReader.hxx`:27 - `RWMesh_TriangulationReader::get_type_name()`
+    /// **Source:** `RWMesh_TriangulationReader.hxx`:28 - `RWMesh_TriangulationReader::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -2343,8 +2317,8 @@ impl TriangulationReader {
         .into_owned()
     }
 
-    /// **Source:** `RWMesh_TriangulationReader.hxx`:27 - `RWMesh_TriangulationReader::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    /// **Source:** `RWMesh_TriangulationReader.hxx`:28 - `RWMesh_TriangulationReader::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKRWMesh::RWMesh_TriangulationReader_get_type_descriptor(),
@@ -2374,8 +2348,8 @@ impl TriangulationReader {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKRWMesh::RWMesh_TriangulationReader_inherited_IsInstance(
                 self as *const Self,
@@ -2384,8 +2358,8 @@ impl TriangulationReader {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKRWMesh::RWMesh_TriangulationReader_inherited_IsKind(
                 self as *const Self,
@@ -2394,7 +2368,7 @@ impl TriangulationReader {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -2410,7 +2384,7 @@ impl TriangulationReader {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKRWMesh::RWMesh_TriangulationReader_inherited_GetRefCount(
@@ -2419,7 +2393,7 @@ impl TriangulationReader {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKRWMesh::RWMesh_TriangulationReader_inherited_IncrementRefCounter(
@@ -2428,7 +2402,7 @@ impl TriangulationReader {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKRWMesh::RWMesh_TriangulationReader_inherited_DecrementRefCounter(
@@ -2437,7 +2411,7 @@ impl TriangulationReader {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKRWMesh::RWMesh_TriangulationReader_inherited_Delete(
@@ -2447,40 +2421,44 @@ impl TriangulationReader {
     }
 }
 
-pub use crate::ffi_types::HandleRWMeshTriangulationReader;
+pub use crate::ffi_types::Handle_RWMesh_TriangulationReader;
 
-unsafe impl crate::CppDeletable for HandleRWMeshTriangulationReader {
+unsafe impl crate::CppDeletable for Handle_RWMesh_TriangulationReader {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKRWMesh::HandleRWMeshTriangulationReader_destructor(ptr);
+            crate::ffi_extern_TKRWMesh::Handle_RWMesh_TriangulationReader_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleRWMeshTriangulationReader {
+unsafe impl crate::CppCopyable for Handle_RWMesh_TriangulationReader {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
         unsafe {
-            crate::check_result(crate::ffi_extern_TKRWMesh::HandleRWMeshTriangulationReader_clone(
-                ptr,
-            ))
+            crate::check_result(
+                crate::ffi_extern_TKRWMesh::Handle_RWMesh_TriangulationReader_clone(ptr),
+            )
         }
     }
 }
 
-impl HandleRWMeshTriangulationReader {
+impl Handle_RWMesh_TriangulationReader {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
         unsafe {
-            crate::ffi_extern_TKRWMesh::HandleRWMeshTriangulationReader_is_null(self as *const Self)
+            crate::ffi_extern_TKRWMesh::Handle_RWMesh_TriangulationReader_is_null(
+                self as *const Self,
+            )
         }
     }
 
     /// Dereference this Handle to access the underlying RWMesh_TriangulationReader
     pub fn get(&self) -> &crate::ffi_types::RWMesh_TriangulationReader {
         unsafe {
-            &*crate::check_result(crate::ffi_extern_TKRWMesh::HandleRWMeshTriangulationReader_get(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKRWMesh::Handle_RWMesh_TriangulationReader_get(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -2488,7 +2466,7 @@ impl HandleRWMeshTriangulationReader {
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::RWMesh_TriangulationReader {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi_extern_TKRWMesh::HandleRWMeshTriangulationReader_get_mut(
+                crate::ffi_extern_TKRWMesh::Handle_RWMesh_TriangulationReader_get_mut(
                     self as *mut Self,
                 ),
             )
@@ -2498,30 +2476,14 @@ impl HandleRWMeshTriangulationReader {
     /// Upcast Handle<RWMesh_TriangulationReader> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKRWMesh::HandleRWMeshTriangulationReader_to_HandleStandardTransient(self as *const Self)))
-        }
-    }
-
-    /// Downcast Handle<RWMesh_TriangulationReader> to Handle<RWGltf_TriangulationReader>
-    ///
-    /// Returns `None` if the handle does not point to a `RWGltf_TriangulationReader` (or subclass).
-    pub fn downcast_to_triangulation_reader(
-        &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleRWGltfTriangulationReader>> {
-        let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKRWMesh::HandleRWMeshTriangulationReader_downcast_to_HandleRWGltfTriangulationReader(self as *const Self)
-        });
-        if __val.is_null() {
-            None
-        } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(__val) })
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKRWMesh::Handle_RWMesh_TriangulationReader_to_Handle_Standard_Transient(self as *const Self)))
         }
     }
 }
 
-/// **Source:** `RWMesh_TriangulationReader.hxx`:29 - `RWMesh_TriangulationReader_LoadingStatistic`
+/// **Source:** `RWMesh_TriangulationReader.hxx`:30 - `RWMesh_TriangulationReader_LoadingStatistic`
 pub use crate::ffi_types::RWMesh_TriangulationReader_LoadingStatistic as TriangulationReader_LoadingStatistic;
 
 unsafe impl crate::CppDeletable for TriangulationReader_LoadingStatistic {
@@ -2562,7 +2524,7 @@ impl TriangulationSource {
     }
 
     /// **Source:** `RWMesh_TriangulationSource.hxx`:27 - `RWMesh_TriangulationSource::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKRWMesh::RWMesh_TriangulationSource_dynamic_type(
@@ -2574,7 +2536,7 @@ impl TriangulationSource {
 
     /// **Source:** `RWMesh_TriangulationSource.hxx`:36 - `RWMesh_TriangulationSource::Reader()`
     /// Returns reader allowing to read data from the buffer.
-    pub fn reader(&self) -> &crate::ffi_types::HandleRWMeshTriangulationReader {
+    pub fn reader(&self) -> &crate::ffi_types::Handle_RWMesh_TriangulationReader {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKRWMesh::RWMesh_TriangulationSource_reader(
                 self as *const Self,
@@ -2584,7 +2546,7 @@ impl TriangulationSource {
 
     /// **Source:** `RWMesh_TriangulationSource.hxx`:39 - `RWMesh_TriangulationSource::SetReader()`
     /// Sets reader allowing to read data from the buffer.
-    pub fn set_reader(&mut self, theReader: &crate::ffi_types::HandleRWMeshTriangulationReader) {
+    pub fn set_reader(&mut self, theReader: &crate::ffi_types::Handle_RWMesh_TriangulationReader) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKRWMesh::RWMesh_TriangulationSource_set_reader(
                 self as *mut Self,
@@ -2659,7 +2621,7 @@ impl TriangulationSource {
         })
     }
 
-    /// **Source:** `RWMesh_TriangulationSource.hxx`:75 - `RWMesh_TriangulationSource::NbDeferredNodes()`
+    /// **Source:** `RWMesh_TriangulationSource.hxx`:72 - `RWMesh_TriangulationSource::NbDeferredNodes()`
     /// @name late-load deferred data interface
     /// Returns number of nodes for deferred loading.
     /// Note: this is estimated values defined in object header, which might be different from
@@ -2673,7 +2635,7 @@ impl TriangulationSource {
         })
     }
 
-    /// **Source:** `RWMesh_TriangulationSource.hxx`:78 - `RWMesh_TriangulationSource::SetNbDeferredNodes()`
+    /// **Source:** `RWMesh_TriangulationSource.hxx`:75 - `RWMesh_TriangulationSource::SetNbDeferredNodes()`
     /// Sets number of nodes for deferred loading.
     pub fn set_nb_deferred_nodes(&mut self, theNbNodes: i32) {
         crate::check_void_result(unsafe {
@@ -2684,7 +2646,7 @@ impl TriangulationSource {
         })
     }
 
-    /// **Source:** `RWMesh_TriangulationSource.hxx`:84 - `RWMesh_TriangulationSource::NbDeferredTriangles()`
+    /// **Source:** `RWMesh_TriangulationSource.hxx`:81 - `RWMesh_TriangulationSource::NbDeferredTriangles()`
     /// Returns number of triangles for deferred loading.
     /// Note: this is estimated values defined in object header, which might be different from
     /// actually loaded values (due to broken header or extra mesh processing). Always check
@@ -2697,7 +2659,7 @@ impl TriangulationSource {
         })
     }
 
-    /// **Source:** `RWMesh_TriangulationSource.hxx`:90 - `RWMesh_TriangulationSource::SetNbDeferredTriangles()`
+    /// **Source:** `RWMesh_TriangulationSource.hxx`:84 - `RWMesh_TriangulationSource::SetNbDeferredTriangles()`
     /// Sets number of triangles for deferred loading.
     pub fn set_nb_deferred_triangles(&mut self, theNbTris: i32) {
         crate::check_void_result(unsafe {
@@ -2708,10 +2670,10 @@ impl TriangulationSource {
         })
     }
 
-    /// **Source:** `RWMesh_TriangulationSource.hxx`:94 - `RWMesh_TriangulationSource::InternalEdges()`
+    /// **Source:** `RWMesh_TriangulationSource.hxx`:88 - `RWMesh_TriangulationSource::InternalEdges()`
     /// Returns an internal array of edges.
     /// Edge()/SetEdge() should be used instead in portable code.
-    pub fn internal_edges(&mut self) -> &mut crate::ffi_types::TColStd_Array1OfInteger {
+    pub fn internal_edges(&mut self) -> &mut crate::ffi_types::NCollection_Array1_int {
         unsafe {
             &mut *(crate::check_result(
                 crate::ffi_extern_TKRWMesh::RWMesh_TriangulationSource_internal_edges(
@@ -2721,7 +2683,7 @@ impl TriangulationSource {
         }
     }
 
-    /// **Source:** `RWMesh_TriangulationSource.hxx`:99 - `RWMesh_TriangulationSource::ResizeEdges()`
+    /// **Source:** `RWMesh_TriangulationSource.hxx`:93 - `RWMesh_TriangulationSource::ResizeEdges()`
     /// Method resizing an internal array of triangles.
     /// @param[in] theNbTriangles  new number of triangles
     /// @param[in] theToCopyOld    copy old triangles into the new array
@@ -2747,7 +2709,7 @@ impl TriangulationSource {
     }
 
     /// **Source:** `RWMesh_TriangulationSource.hxx`:27 - `RWMesh_TriangulationSource::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKRWMesh::RWMesh_TriangulationSource_get_type_descriptor(),
@@ -2802,7 +2764,7 @@ impl TriangulationSource {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleRWMeshTriangulationSource> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_RWMesh_TriangulationSource> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKRWMesh::RWMesh_TriangulationSource_to_handle(obj.into_raw()),
@@ -2810,8 +2772,8 @@ impl TriangulationSource {
         }
     }
 
-    /// Inherited: **Source:** `Poly_Triangulation.hxx`:100 - `Poly_Triangulation::Copy()`
-    pub fn copy(&self) -> crate::OwnedPtr<crate::ffi_types::HandlePolyTriangulation> {
+    /// Inherited: **Source:** `Poly_Triangulation.hxx`:103 - `Poly_Triangulation::Copy()`
+    pub fn copy(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_Poly_Triangulation> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKRWMesh::RWMesh_TriangulationSource_inherited_Copy(
@@ -2821,7 +2783,7 @@ impl TriangulationSource {
         }
     }
 
-    /// Inherited: **Source:** `Poly_Triangulation.hxx`:106 - `Poly_Triangulation::Deflection()`
+    /// Inherited: **Source:** `Poly_Triangulation.hxx`:109 - `Poly_Triangulation::Deflection()`
     pub fn deflection(&self) -> f64 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKRWMesh::RWMesh_TriangulationSource_inherited_Deflection(
@@ -2830,8 +2792,8 @@ impl TriangulationSource {
         })
     }
 
-    /// Inherited: **Source:** `Poly_Triangulation.hxx`:113 - `Poly_Triangulation::Parameters()`
-    pub fn parameters(&self) -> &crate::ffi_types::HandlePolyTriangulationParameters {
+    /// Inherited: **Source:** `Poly_Triangulation.hxx`:116 - `Poly_Triangulation::Parameters()`
+    pub fn parameters(&self) -> &crate::ffi_types::Handle_Poly_TriangulationParameters {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKRWMesh::RWMesh_TriangulationSource_inherited_Parameters(
@@ -2841,7 +2803,7 @@ impl TriangulationSource {
         }
     }
 
-    /// Inherited: **Source:** `Poly_Triangulation.hxx`:119 - `Poly_Triangulation::Clear()`
+    /// Inherited: **Source:** `Poly_Triangulation.hxx`:125 - `Poly_Triangulation::Clear()`
     pub fn clear(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKRWMesh::RWMesh_TriangulationSource_inherited_Clear(
@@ -2850,7 +2812,7 @@ impl TriangulationSource {
         })
     }
 
-    /// Inherited: **Source:** `Poly_Triangulation.hxx`:128 - `Poly_Triangulation::NbNodes()`
+    /// Inherited: **Source:** `Poly_Triangulation.hxx`:131 - `Poly_Triangulation::NbNodes()`
     pub fn nb_nodes(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKRWMesh::RWMesh_TriangulationSource_inherited_NbNodes(
@@ -2859,7 +2821,7 @@ impl TriangulationSource {
         })
     }
 
-    /// Inherited: **Source:** `Poly_Triangulation.hxx`:131 - `Poly_Triangulation::NbTriangles()`
+    /// Inherited: **Source:** `Poly_Triangulation.hxx`:134 - `Poly_Triangulation::NbTriangles()`
     pub fn nb_triangles(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKRWMesh::RWMesh_TriangulationSource_inherited_NbTriangles(
@@ -2868,7 +2830,7 @@ impl TriangulationSource {
         })
     }
 
-    /// Inherited: **Source:** `Poly_Triangulation.hxx`:134 - `Poly_Triangulation::HasUVNodes()`
+    /// Inherited: **Source:** `Poly_Triangulation.hxx`:137 - `Poly_Triangulation::HasUVNodes()`
     pub fn has_uv_nodes(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKRWMesh::RWMesh_TriangulationSource_inherited_HasUVNodes(
@@ -2877,7 +2839,7 @@ impl TriangulationSource {
         })
     }
 
-    /// Inherited: **Source:** `Poly_Triangulation.hxx`:137 - `Poly_Triangulation::HasNormals()`
+    /// Inherited: **Source:** `Poly_Triangulation.hxx`:140 - `Poly_Triangulation::HasNormals()`
     pub fn has_normals(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKRWMesh::RWMesh_TriangulationSource_inherited_HasNormals(
@@ -2886,7 +2848,7 @@ impl TriangulationSource {
         })
     }
 
-    /// Inherited: **Source:** `Poly_Triangulation.hxx`:142 - `Poly_Triangulation::Node()`
+    /// Inherited: **Source:** `Poly_Triangulation.hxx`:145 - `Poly_Triangulation::Node()`
     pub fn node(&self, theIndex: i32) -> crate::OwnedPtr<crate::gp::Pnt> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -2898,7 +2860,7 @@ impl TriangulationSource {
         }
     }
 
-    /// Inherited: **Source:** `Poly_Triangulation.hxx`:147 - `Poly_Triangulation::SetNode()`
+    /// Inherited: **Source:** `Poly_Triangulation.hxx`:150 - `Poly_Triangulation::SetNode()`
     pub fn set_node(&mut self, theIndex: i32, thePnt: &crate::gp::Pnt) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKRWMesh::RWMesh_TriangulationSource_inherited_SetNode(
@@ -2932,7 +2894,7 @@ impl TriangulationSource {
         })
     }
 
-    /// Inherited: **Source:** `Poly_Triangulation.hxx`:168 - `Poly_Triangulation::Triangle()`
+    /// Inherited: **Source:** `Poly_Triangulation.hxx`:165 - `Poly_Triangulation::Triangle()`
     pub fn triangle(&self, theIndex: i32) -> &crate::poly::Triangle {
         unsafe {
             &*(crate::check_result(
@@ -2944,7 +2906,7 @@ impl TriangulationSource {
         }
     }
 
-    /// Inherited: **Source:** `Poly_Triangulation.hxx`:177 - `Poly_Triangulation::SetTriangle()`
+    /// Inherited: **Source:** `Poly_Triangulation.hxx`:171 - `Poly_Triangulation::SetTriangle()`
     pub fn set_triangle(&mut self, theIndex: i32, theTriangle: &crate::poly::Triangle) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKRWMesh::RWMesh_TriangulationSource_inherited_SetTriangle(
@@ -2955,7 +2917,7 @@ impl TriangulationSource {
         })
     }
 
-    /// Inherited: **Source:** `Poly_Triangulation.hxx`:185 - `Poly_Triangulation::Normal()`
+    /// Inherited: **Source:** `Poly_Triangulation.hxx`:179 - `Poly_Triangulation::Normal()`
     pub fn normal(&self, theIndex: i32) -> crate::OwnedPtr<crate::gp::Dir> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -2967,8 +2929,8 @@ impl TriangulationSource {
         }
     }
 
-    /// Inherited: **Source:** `Poly_Triangulation.hxx`:202 - `Poly_Triangulation::SetNormal()`
-    pub fn set_normal(&mut self, theIndex: i32, theNormal: &crate::ffi_types::gp_Vec3f) {
+    /// Inherited: **Source:** `Poly_Triangulation.hxx`:196 - `Poly_Triangulation::SetNormal()`
+    pub fn set_normal(&mut self, theIndex: i32, theNormal: &crate::ffi_types::BVH_Vec3f) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKRWMesh::RWMesh_TriangulationSource_inherited_SetNormal(
                 self as *mut Self,
@@ -2978,7 +2940,7 @@ impl TriangulationSource {
         })
     }
 
-    /// Inherited: **Source:** `Poly_Triangulation.hxx`:216 - `Poly_Triangulation::MeshPurpose()`
+    /// Inherited: **Source:** `Poly_Triangulation.hxx`:212 - `Poly_Triangulation::MeshPurpose()`
     pub fn mesh_purpose(&self) -> u32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKRWMesh::RWMesh_TriangulationSource_inherited_MeshPurpose(
@@ -2987,7 +2949,7 @@ impl TriangulationSource {
         })
     }
 
-    /// Inherited: **Source:** `Poly_Triangulation.hxx`:219 - `Poly_Triangulation::SetMeshPurpose()`
+    /// Inherited: **Source:** `Poly_Triangulation.hxx`:215 - `Poly_Triangulation::SetMeshPurpose()`
     pub fn set_mesh_purpose(&mut self, thePurpose: u32) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKRWMesh::RWMesh_TriangulationSource_inherited_SetMeshPurpose(
@@ -2997,7 +2959,7 @@ impl TriangulationSource {
         })
     }
 
-    /// Inherited: **Source:** `Poly_Triangulation.hxx`:223 - `Poly_Triangulation::CachedMinMax()`
+    /// Inherited: **Source:** `Poly_Triangulation.hxx`:219 - `Poly_Triangulation::CachedMinMax()`
     pub fn cached_min_max(&self) -> &crate::bnd::Box {
         unsafe {
             &*(crate::check_result(
@@ -3008,7 +2970,7 @@ impl TriangulationSource {
         }
     }
 
-    /// Inherited: **Source:** `Poly_Triangulation.hxx`:229 - `Poly_Triangulation::SetCachedMinMax()`
+    /// Inherited: **Source:** `Poly_Triangulation.hxx`:225 - `Poly_Triangulation::SetCachedMinMax()`
     pub fn set_cached_min_max(&mut self, theBox: &crate::bnd::Box) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKRWMesh::RWMesh_TriangulationSource_inherited_SetCachedMinMax(
@@ -3018,7 +2980,7 @@ impl TriangulationSource {
         })
     }
 
-    /// Inherited: **Source:** `Poly_Triangulation.hxx`:232 - `Poly_Triangulation::HasCachedMinMax()`
+    /// Inherited: **Source:** `Poly_Triangulation.hxx`:228 - `Poly_Triangulation::HasCachedMinMax()`
     pub fn has_cached_min_max(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKRWMesh::RWMesh_TriangulationSource_inherited_HasCachedMinMax(
@@ -3027,7 +2989,7 @@ impl TriangulationSource {
         })
     }
 
-    /// Inherited: **Source:** `Poly_Triangulation.hxx`:235 - `Poly_Triangulation::UpdateCachedMinMax()`
+    /// Inherited: **Source:** `Poly_Triangulation.hxx`:231 - `Poly_Triangulation::UpdateCachedMinMax()`
     pub fn update_cached_min_max(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKRWMesh::RWMesh_TriangulationSource_inherited_UpdateCachedMinMax(
@@ -3036,7 +2998,7 @@ impl TriangulationSource {
         })
     }
 
-    /// Inherited: **Source:** `Poly_Triangulation.hxx`:254 - `Poly_Triangulation::MinMax()`
+    /// Inherited: **Source:** `Poly_Triangulation.hxx`:250 - `Poly_Triangulation::MinMax()`
     pub fn min_max(
         &self,
         theBox: &mut crate::bnd::Box,
@@ -3053,7 +3015,7 @@ impl TriangulationSource {
         })
     }
 
-    /// Inherited: **Source:** `Poly_Triangulation.hxx`:264 - `Poly_Triangulation::IsDoublePrecision()`
+    /// Inherited: **Source:** `Poly_Triangulation.hxx`:259 - `Poly_Triangulation::IsDoublePrecision()`
     pub fn is_double_precision(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKRWMesh::RWMesh_TriangulationSource_inherited_IsDoublePrecision(
@@ -3062,7 +3024,7 @@ impl TriangulationSource {
         })
     }
 
-    /// Inherited: **Source:** `Poly_Triangulation.hxx`:268 - `Poly_Triangulation::SetDoublePrecision()`
+    /// Inherited: **Source:** `Poly_Triangulation.hxx`:263 - `Poly_Triangulation::SetDoublePrecision()`
     pub fn set_double_precision(&mut self, theIsDouble: bool) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKRWMesh::RWMesh_TriangulationSource_inherited_SetDoublePrecision(
@@ -3072,7 +3034,7 @@ impl TriangulationSource {
         })
     }
 
-    /// Inherited: **Source:** `Poly_Triangulation.hxx`:273 - `Poly_Triangulation::ResizeNodes()`
+    /// Inherited: **Source:** `Poly_Triangulation.hxx`:268 - `Poly_Triangulation::ResizeNodes()`
     pub fn resize_nodes(&mut self, theNbNodes: i32, theToCopyOld: bool) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKRWMesh::RWMesh_TriangulationSource_inherited_ResizeNodes(
@@ -3083,7 +3045,7 @@ impl TriangulationSource {
         })
     }
 
-    /// Inherited: **Source:** `Poly_Triangulation.hxx`:278 - `Poly_Triangulation::ResizeTriangles()`
+    /// Inherited: **Source:** `Poly_Triangulation.hxx`:273 - `Poly_Triangulation::ResizeTriangles()`
     pub fn resize_triangles(&mut self, theNbTriangles: i32, theToCopyOld: bool) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKRWMesh::RWMesh_TriangulationSource_inherited_ResizeTriangles(
@@ -3094,7 +3056,7 @@ impl TriangulationSource {
         })
     }
 
-    /// Inherited: **Source:** `Poly_Triangulation.hxx`:282 - `Poly_Triangulation::AddUVNodes()`
+    /// Inherited: **Source:** `Poly_Triangulation.hxx`:276 - `Poly_Triangulation::AddUVNodes()`
     pub fn add_uv_nodes(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKRWMesh::RWMesh_TriangulationSource_inherited_AddUVNodes(
@@ -3103,7 +3065,7 @@ impl TriangulationSource {
         })
     }
 
-    /// Inherited: **Source:** `Poly_Triangulation.hxx`:285 - `Poly_Triangulation::RemoveUVNodes()`
+    /// Inherited: **Source:** `Poly_Triangulation.hxx`:279 - `Poly_Triangulation::RemoveUVNodes()`
     pub fn remove_uv_nodes(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKRWMesh::RWMesh_TriangulationSource_inherited_RemoveUVNodes(
@@ -3112,7 +3074,7 @@ impl TriangulationSource {
         })
     }
 
-    /// Inherited: **Source:** `Poly_Triangulation.hxx`:288 - `Poly_Triangulation::AddNormals()`
+    /// Inherited: **Source:** `Poly_Triangulation.hxx`:282 - `Poly_Triangulation::AddNormals()`
     pub fn add_normals(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKRWMesh::RWMesh_TriangulationSource_inherited_AddNormals(
@@ -3121,7 +3083,7 @@ impl TriangulationSource {
         })
     }
 
-    /// Inherited: **Source:** `Poly_Triangulation.hxx`:291 - `Poly_Triangulation::RemoveNormals()`
+    /// Inherited: **Source:** `Poly_Triangulation.hxx`:285 - `Poly_Triangulation::RemoveNormals()`
     pub fn remove_normals(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKRWMesh::RWMesh_TriangulationSource_inherited_RemoveNormals(
@@ -3130,7 +3092,7 @@ impl TriangulationSource {
         })
     }
 
-    /// Inherited: **Source:** `Poly_Triangulation.hxx`:294 - `Poly_Triangulation::ComputeNormals()`
+    /// Inherited: **Source:** `Poly_Triangulation.hxx`:288 - `Poly_Triangulation::ComputeNormals()`
     pub fn compute_normals(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKRWMesh::RWMesh_TriangulationSource_inherited_ComputeNormals(
@@ -3139,8 +3101,10 @@ impl TriangulationSource {
         })
     }
 
-    /// Inherited: **Source:** `Poly_Triangulation.hxx`:300 - `Poly_Triangulation::MapNodeArray()`
-    pub fn map_node_array(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTColgpHArray1OfPnt> {
+    /// Inherited: **Source:** `Poly_Triangulation.hxx`:294 - `Poly_Triangulation::MapNodeArray()`
+    pub fn map_node_array(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HArray1_gp_Pnt> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKRWMesh::RWMesh_TriangulationSource_inherited_MapNodeArray(
@@ -3150,10 +3114,10 @@ impl TriangulationSource {
         }
     }
 
-    /// Inherited: **Source:** `Poly_Triangulation.hxx`:305 - `Poly_Triangulation::MapTriangleArray()`
+    /// Inherited: **Source:** `Poly_Triangulation.hxx`:299 - `Poly_Triangulation::MapTriangleArray()`
     pub fn map_triangle_array(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandlePolyHArray1OfTriangle> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HArray1_Poly_Triangle> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKRWMesh::RWMesh_TriangulationSource_inherited_MapTriangleArray(
@@ -3163,10 +3127,10 @@ impl TriangulationSource {
         }
     }
 
-    /// Inherited: **Source:** `Poly_Triangulation.hxx`:310 - `Poly_Triangulation::MapUVNodeArray()`
+    /// Inherited: **Source:** `Poly_Triangulation.hxx`:304 - `Poly_Triangulation::MapUVNodeArray()`
     pub fn map_uv_node_array(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleTColgpHArray1OfPnt2d> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HArray1_gp_Pnt2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKRWMesh::RWMesh_TriangulationSource_inherited_MapUVNodeArray(
@@ -3176,10 +3140,10 @@ impl TriangulationSource {
         }
     }
 
-    /// Inherited: **Source:** `Poly_Triangulation.hxx`:315 - `Poly_Triangulation::MapNormalArray()`
+    /// Inherited: **Source:** `Poly_Triangulation.hxx`:309 - `Poly_Triangulation::MapNormalArray()`
     pub fn map_normal_array(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleTShortHArray1OfShortReal> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HArray1_float> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKRWMesh::RWMesh_TriangulationSource_inherited_MapNormalArray(
@@ -3189,8 +3153,10 @@ impl TriangulationSource {
         }
     }
 
-    /// Inherited: **Source:** `Poly_Triangulation.hxx`:320 - `Poly_Triangulation::InternalTriangles()`
-    pub fn internal_triangles(&mut self) -> &mut crate::ffi_types::Poly_Array1OfTriangle {
+    /// Inherited: **Source:** `Poly_Triangulation.hxx`:314 - `Poly_Triangulation::InternalTriangles()`
+    pub fn internal_triangles(
+        &mut self,
+    ) -> &mut crate::ffi_types::NCollection_Array1_Poly_Triangle {
         unsafe {
             &mut *(crate::check_result(
                 crate::ffi_extern_TKRWMesh::RWMesh_TriangulationSource_inherited_InternalTriangles(
@@ -3200,7 +3166,7 @@ impl TriangulationSource {
         }
     }
 
-    /// Inherited: **Source:** `Poly_Triangulation.hxx`:324 - `Poly_Triangulation::InternalNodes()`
+    /// Inherited: **Source:** `Poly_Triangulation.hxx`:318 - `Poly_Triangulation::InternalNodes()`
     pub fn internal_nodes(&mut self) -> &mut crate::poly::ArrayOfNodes {
         unsafe {
             &mut *(crate::check_result(
@@ -3211,7 +3177,7 @@ impl TriangulationSource {
         }
     }
 
-    /// Inherited: **Source:** `Poly_Triangulation.hxx`:328 - `Poly_Triangulation::InternalUVNodes()`
+    /// Inherited: **Source:** `Poly_Triangulation.hxx`:322 - `Poly_Triangulation::InternalUVNodes()`
     pub fn internal_uv_nodes(&mut self) -> &mut crate::poly::ArrayOfUVNodes {
         unsafe {
             &mut *(crate::check_result(
@@ -3222,8 +3188,10 @@ impl TriangulationSource {
         }
     }
 
-    /// Inherited: **Source:** `Poly_Triangulation.hxx`:332 - `Poly_Triangulation::InternalNormals()`
-    pub fn internal_normals(&mut self) -> &mut crate::ffi_types::NCollection_Array1_gp_Vec3f {
+    /// Inherited: **Source:** `Poly_Triangulation.hxx`:326 - `Poly_Triangulation::InternalNormals()`
+    pub fn internal_normals(
+        &mut self,
+    ) -> &mut crate::ffi_types::NCollection_Array1_NCollection_Vec3_float {
         unsafe {
             &mut *(crate::check_result(
                 crate::ffi_extern_TKRWMesh::RWMesh_TriangulationSource_inherited_InternalNormals(
@@ -3233,7 +3201,7 @@ impl TriangulationSource {
         }
     }
 
-    /// Inherited: **Source:** `Poly_Triangulation.hxx`:364 - `Poly_Triangulation::HasDeferredData()`
+    /// Inherited: **Source:** `Poly_Triangulation.hxx`:352 - `Poly_Triangulation::HasDeferredData()`
     pub fn has_deferred_data(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKRWMesh::RWMesh_TriangulationSource_inherited_HasDeferredData(
@@ -3242,10 +3210,10 @@ impl TriangulationSource {
         })
     }
 
-    /// Inherited: **Source:** `Poly_Triangulation.hxx`:368 - `Poly_Triangulation::LoadDeferredData()`
+    /// Inherited: **Source:** `Poly_Triangulation.hxx`:356 - `Poly_Triangulation::LoadDeferredData()`
     pub fn load_deferred_data(
         &mut self,
-        theFileSystem: &crate::ffi_types::HandleOSDFileSystem,
+        theFileSystem: &crate::ffi_types::Handle_OSD_FileSystem,
     ) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKRWMesh::RWMesh_TriangulationSource_inherited_LoadDeferredData(
@@ -3255,17 +3223,17 @@ impl TriangulationSource {
         })
     }
 
-    /// Inherited: **Source:** `Poly_Triangulation.hxx`:373 - `Poly_Triangulation::DetachedLoadDeferredData()`
+    /// Inherited: **Source:** `Poly_Triangulation.hxx`:361 - `Poly_Triangulation::DetachedLoadDeferredData()`
     pub fn detached_load_deferred_data(
         &self,
-        theFileSystem: &crate::ffi_types::HandleOSDFileSystem,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandlePolyTriangulation> {
+        theFileSystem: &crate::ffi_types::Handle_OSD_FileSystem,
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Poly_Triangulation> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKRWMesh::RWMesh_TriangulationSource_inherited_DetachedLoadDeferredData(self as *const Self, theFileSystem)))
         }
     }
 
-    /// Inherited: **Source:** `Poly_Triangulation.hxx`:377 - `Poly_Triangulation::UnloadDeferredData()`
+    /// Inherited: **Source:** `Poly_Triangulation.hxx`:365 - `Poly_Triangulation::UnloadDeferredData()`
     pub fn unload_deferred_data(&mut self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKRWMesh::RWMesh_TriangulationSource_inherited_UnloadDeferredData(
@@ -3274,8 +3242,8 @@ impl TriangulationSource {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKRWMesh::RWMesh_TriangulationSource_inherited_IsInstance(
                 self as *const Self,
@@ -3284,8 +3252,8 @@ impl TriangulationSource {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKRWMesh::RWMesh_TriangulationSource_inherited_IsKind(
                 self as *const Self,
@@ -3294,7 +3262,7 @@ impl TriangulationSource {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -3310,7 +3278,7 @@ impl TriangulationSource {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKRWMesh::RWMesh_TriangulationSource_inherited_GetRefCount(
@@ -3319,7 +3287,7 @@ impl TriangulationSource {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKRWMesh::RWMesh_TriangulationSource_inherited_IncrementRefCounter(
@@ -3328,7 +3296,7 @@ impl TriangulationSource {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKRWMesh::RWMesh_TriangulationSource_inherited_DecrementRefCounter(
@@ -3337,7 +3305,7 @@ impl TriangulationSource {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKRWMesh::RWMesh_TriangulationSource_inherited_Delete(
@@ -3347,40 +3315,44 @@ impl TriangulationSource {
     }
 }
 
-pub use crate::ffi_types::HandleRWMeshTriangulationSource;
+pub use crate::ffi_types::Handle_RWMesh_TriangulationSource;
 
-unsafe impl crate::CppDeletable for HandleRWMeshTriangulationSource {
+unsafe impl crate::CppDeletable for Handle_RWMesh_TriangulationSource {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKRWMesh::HandleRWMeshTriangulationSource_destructor(ptr);
+            crate::ffi_extern_TKRWMesh::Handle_RWMesh_TriangulationSource_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleRWMeshTriangulationSource {
+unsafe impl crate::CppCopyable for Handle_RWMesh_TriangulationSource {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
         unsafe {
-            crate::check_result(crate::ffi_extern_TKRWMesh::HandleRWMeshTriangulationSource_clone(
-                ptr,
-            ))
+            crate::check_result(
+                crate::ffi_extern_TKRWMesh::Handle_RWMesh_TriangulationSource_clone(ptr),
+            )
         }
     }
 }
 
-impl HandleRWMeshTriangulationSource {
+impl Handle_RWMesh_TriangulationSource {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
         unsafe {
-            crate::ffi_extern_TKRWMesh::HandleRWMeshTriangulationSource_is_null(self as *const Self)
+            crate::ffi_extern_TKRWMesh::Handle_RWMesh_TriangulationSource_is_null(
+                self as *const Self,
+            )
         }
     }
 
     /// Dereference this Handle to access the underlying RWMesh_TriangulationSource
     pub fn get(&self) -> &crate::ffi_types::RWMesh_TriangulationSource {
         unsafe {
-            &*crate::check_result(crate::ffi_extern_TKRWMesh::HandleRWMeshTriangulationSource_get(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKRWMesh::Handle_RWMesh_TriangulationSource_get(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -3388,7 +3360,7 @@ impl HandleRWMeshTriangulationSource {
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::RWMesh_TriangulationSource {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi_extern_TKRWMesh::HandleRWMeshTriangulationSource_get_mut(
+                crate::ffi_extern_TKRWMesh::Handle_RWMesh_TriangulationSource_get_mut(
                     self as *mut Self,
                 ),
             )
@@ -3398,34 +3370,18 @@ impl HandleRWMeshTriangulationSource {
     /// Upcast Handle<RWMesh_TriangulationSource> to Handle<Poly_Triangulation>
     pub fn to_handle_triangulation(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandlePolyTriangulation> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Poly_Triangulation> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKRWMesh::HandleRWMeshTriangulationSource_to_HandlePolyTriangulation(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKRWMesh::Handle_RWMesh_TriangulationSource_to_Handle_Poly_Triangulation(self as *const Self)))
         }
     }
 
     /// Upcast Handle<RWMesh_TriangulationSource> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKRWMesh::HandleRWMeshTriangulationSource_to_HandleStandardTransient(self as *const Self)))
-        }
-    }
-
-    /// Downcast Handle<RWMesh_TriangulationSource> to Handle<RWGltf_GltfLatePrimitiveArray>
-    ///
-    /// Returns `None` if the handle does not point to a `RWGltf_GltfLatePrimitiveArray` (or subclass).
-    pub fn downcast_to_gltf_late_primitive_array(
-        &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleRWGltfGltfLatePrimitiveArray>> {
-        let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKRWMesh::HandleRWMeshTriangulationSource_downcast_to_HandleRWGltfGltfLatePrimitiveArray(self as *const Self)
-        });
-        if __val.is_null() {
-            None
-        } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(__val) })
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKRWMesh::Handle_RWMesh_TriangulationSource_to_Handle_Standard_Transient(self as *const Self)))
         }
     }
 }
@@ -3434,7 +3390,7 @@ impl HandleRWMeshTriangulationSource {
 // From RWMesh_VertexIterator.hxx
 // ========================
 
-/// **Source:** `RWMesh_VertexIterator.hxx`:34 - `RWMesh_VertexIterator`
+/// **Source:** `RWMesh_VertexIterator.hxx`:37 - `RWMesh_VertexIterator`
 /// Auxiliary class to iterate through vertices.
 /// Provides functionality to iterate through the vertices of a shape.
 /// It inherits from `RWMesh_ShapeIterator` and implements
@@ -3450,7 +3406,7 @@ unsafe impl crate::CppDeletable for VertexIterator {
 }
 
 impl VertexIterator {
-    /// **Source:** `RWMesh_VertexIterator.hxx`:42 - `RWMesh_VertexIterator::RWMesh_VertexIterator()`
+    /// **Source:** `RWMesh_VertexIterator.hxx`:45 - `RWMesh_VertexIterator::RWMesh_VertexIterator()`
     /// Main constructor.
     /// @param[in] theLabel The label of the shape.
     /// @param[in] theLocation The location of the shape.
@@ -3474,7 +3430,7 @@ impl VertexIterator {
         }
     }
 
-    /// **Source:** `RWMesh_VertexIterator.hxx`:50 - `RWMesh_VertexIterator::RWMesh_VertexIterator()`
+    /// **Source:** `RWMesh_VertexIterator.hxx`:53 - `RWMesh_VertexIterator::RWMesh_VertexIterator()`
     /// Auxiliary constructor.
     /// @param[in] theShape The shape to iterate.
     /// @param[in] theStyle The style of the shape.
@@ -3491,7 +3447,7 @@ impl VertexIterator {
         }
     }
 
-    /// **Source:** `RWMesh_VertexIterator.hxx`:54 - `RWMesh_VertexIterator::More()`
+    /// **Source:** `RWMesh_VertexIterator.hxx`:57 - `RWMesh_VertexIterator::More()`
     /// Return true if iterator points to the valid triangulation.
     pub fn more(&self) -> bool {
         crate::check_result(unsafe {
@@ -3499,7 +3455,7 @@ impl VertexIterator {
         })
     }
 
-    /// **Source:** `RWMesh_VertexIterator.hxx`:57 - `RWMesh_VertexIterator::Next()`
+    /// **Source:** `RWMesh_VertexIterator.hxx`:60 - `RWMesh_VertexIterator::Next()`
     /// Find next value.
     pub fn next(&mut self) {
         crate::check_void_result(unsafe {
@@ -3507,7 +3463,7 @@ impl VertexIterator {
         })
     }
 
-    /// **Source:** `RWMesh_VertexIterator.hxx`:60 - `RWMesh_VertexIterator::Vertex()`
+    /// **Source:** `RWMesh_VertexIterator.hxx`:63 - `RWMesh_VertexIterator::Vertex()`
     /// Return current edge.
     pub fn vertex(&self) -> &crate::topo_ds::Vertex {
         unsafe {
@@ -3517,7 +3473,7 @@ impl VertexIterator {
         }
     }
 
-    /// **Source:** `RWMesh_VertexIterator.hxx`:63 - `RWMesh_VertexIterator::Shape()`
+    /// **Source:** `RWMesh_VertexIterator.hxx`:66 - `RWMesh_VertexIterator::Shape()`
     /// Return current vertex.
     pub fn shape(&self) -> &crate::topo_ds::Shape {
         unsafe {
@@ -3527,7 +3483,7 @@ impl VertexIterator {
         }
     }
 
-    /// **Source:** `RWMesh_VertexIterator.hxx`:66 - `RWMesh_VertexIterator::Point()`
+    /// **Source:** `RWMesh_VertexIterator.hxx`:69 - `RWMesh_VertexIterator::Point()`
     /// Return current vertex data.
     pub fn point(&self) -> &crate::gp::Pnt {
         unsafe {
@@ -3537,7 +3493,7 @@ impl VertexIterator {
         }
     }
 
-    /// **Source:** `RWMesh_VertexIterator.hxx`:69 - `RWMesh_VertexIterator::IsEmpty()`
+    /// **Source:** `RWMesh_VertexIterator.hxx`:72 - `RWMesh_VertexIterator::IsEmpty()`
     /// Return true if geometry data is defined.
     pub fn is_empty(&self) -> bool {
         crate::check_result(unsafe {
@@ -3545,7 +3501,7 @@ impl VertexIterator {
         })
     }
 
-    /// **Source:** `RWMesh_VertexIterator.hxx`:73 - `RWMesh_VertexIterator::ElemLower()`
+    /// **Source:** `RWMesh_VertexIterator.hxx`:76 - `RWMesh_VertexIterator::ElemLower()`
     /// Lower element index in current triangulation.
     pub fn elem_lower(&self) -> i32 {
         crate::check_result(unsafe {
@@ -3553,7 +3509,7 @@ impl VertexIterator {
         })
     }
 
-    /// **Source:** `RWMesh_VertexIterator.hxx`:76 - `RWMesh_VertexIterator::ElemUpper()`
+    /// **Source:** `RWMesh_VertexIterator.hxx`:79 - `RWMesh_VertexIterator::ElemUpper()`
     /// Upper element index in current triangulation.
     pub fn elem_upper(&self) -> i32 {
         crate::check_result(unsafe {
@@ -3561,7 +3517,7 @@ impl VertexIterator {
         })
     }
 
-    /// **Source:** `RWMesh_VertexIterator.hxx`:80 - `RWMesh_VertexIterator::NbNodes()`
+    /// **Source:** `RWMesh_VertexIterator.hxx`:83 - `RWMesh_VertexIterator::NbNodes()`
     /// Return number of nodes for the current edge.
     pub fn nb_nodes(&self) -> i32 {
         crate::check_result(unsafe {
@@ -3569,7 +3525,7 @@ impl VertexIterator {
         })
     }
 
-    /// **Source:** `RWMesh_VertexIterator.hxx`:83 - `RWMesh_VertexIterator::NodeLower()`
+    /// **Source:** `RWMesh_VertexIterator.hxx`:86 - `RWMesh_VertexIterator::NodeLower()`
     /// Lower node index in current triangulation.
     pub fn node_lower(&self) -> i32 {
         crate::check_result(unsafe {
@@ -3577,7 +3533,7 @@ impl VertexIterator {
         })
     }
 
-    /// **Source:** `RWMesh_VertexIterator.hxx`:86 - `RWMesh_VertexIterator::NodeUpper()`
+    /// **Source:** `RWMesh_VertexIterator.hxx`:89 - `RWMesh_VertexIterator::NodeUpper()`
     /// Upper node index in current triangulation.
     pub fn node_upper(&self) -> i32 {
         crate::check_result(unsafe {
@@ -3585,7 +3541,7 @@ impl VertexIterator {
         })
     }
 
-    /// **Source:** `RWMesh_VertexIterator.hxx`:90 - `RWMesh_VertexIterator::node()`
+    /// **Source:** `RWMesh_VertexIterator.hxx`:93 - `RWMesh_VertexIterator::node()`
     /// Return the node with specified index with applied transformation.
     pub fn node(&self, arg0: i32) -> crate::OwnedPtr<crate::gp::Pnt> {
         unsafe {
@@ -3617,7 +3573,7 @@ impl VertexIterator {
         }
     }
 
-    /// Inherited: **Source:** `RWMesh_ShapeIterator.hxx`:38 - `RWMesh_ShapeIterator::ExploredShape()`
+    /// Inherited: **Source:** `RWMesh_ShapeIterator.hxx`:41 - `RWMesh_ShapeIterator::ExploredShape()`
     pub fn explored_shape(&self) -> &crate::topo_ds::Shape {
         unsafe {
             &*(crate::check_result(
@@ -3628,7 +3584,7 @@ impl VertexIterator {
         }
     }
 
-    /// Inherited: **Source:** `RWMesh_ShapeIterator.hxx`:53 - `RWMesh_ShapeIterator::Style()`
+    /// Inherited: **Source:** `RWMesh_ShapeIterator.hxx`:56 - `RWMesh_ShapeIterator::Style()`
     pub fn style(&self) -> &crate::xcaf_prs::Style {
         unsafe {
             &*(crate::check_result(
@@ -3639,7 +3595,7 @@ impl VertexIterator {
         }
     }
 
-    /// Inherited: **Source:** `RWMesh_ShapeIterator.hxx`:56 - `RWMesh_ShapeIterator::HasColor()`
+    /// Inherited: **Source:** `RWMesh_ShapeIterator.hxx`:59 - `RWMesh_ShapeIterator::HasColor()`
     pub fn has_color(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKRWMesh::RWMesh_VertexIterator_inherited_HasColor(
@@ -3648,7 +3604,7 @@ impl VertexIterator {
         })
     }
 
-    /// Inherited: **Source:** `RWMesh_ShapeIterator.hxx`:59 - `RWMesh_ShapeIterator::Color()`
+    /// Inherited: **Source:** `RWMesh_ShapeIterator.hxx`:62 - `RWMesh_ShapeIterator::Color()`
     pub fn color(&self) -> &crate::quantity::ColorRGBA {
         unsafe {
             &*(crate::check_result(
@@ -3659,7 +3615,7 @@ impl VertexIterator {
         }
     }
 
-    /// Inherited: **Source:** `RWMesh_ShapeIterator.hxx`:77 - `RWMesh_ShapeIterator::NodeTransformed()`
+    /// Inherited: **Source:** `RWMesh_ShapeIterator.hxx`:80 - `RWMesh_ShapeIterator::NodeTransformed()`
     pub fn node_transformed(&self, theNode: i32) -> crate::OwnedPtr<crate::gp::Pnt> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(

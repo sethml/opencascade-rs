@@ -344,14 +344,14 @@ impl Domain {
 // From IntRes2d_Intersection.hxx
 // ========================
 
-/// **Source:** `IntRes2d_Intersection.hxx`:33 - `IntRes2d_Intersection`
-/// Defines  the root   class  of  all  the  Intersections
-/// between  two 2D-Curves, and  provides all  the methods
+/// **Source:** `IntRes2d_Intersection.hxx`:34 - `IntRes2d_Intersection`
+/// Defines the root class of all the Intersections
+/// between two 2D-Curves, and provides all the methods
 /// about the results of the Intersections Algorithms.
 pub use crate::ffi_types::IntRes2d_Intersection as Intersection;
 
 impl Intersection {
-    /// **Source:** `IntRes2d_Intersection.hxx`:39 - `IntRes2d_Intersection::IsDone()`
+    /// **Source:** `IntRes2d_Intersection.hxx`:40 - `IntRes2d_Intersection::IsDone()`
     /// returns TRUE when the computation was successful.
     pub fn is_done(&self) -> bool {
         crate::check_result(unsafe {
@@ -359,7 +359,7 @@ impl Intersection {
         })
     }
 
-    /// **Source:** `IntRes2d_Intersection.hxx`:44 - `IntRes2d_Intersection::IsEmpty()`
+    /// **Source:** `IntRes2d_Intersection.hxx`:45 - `IntRes2d_Intersection::IsEmpty()`
     /// Returns TRUE if there is no intersection between the
     /// given arguments.
     /// The exception NotDone is raised if IsDone returns FALSE.
@@ -369,7 +369,7 @@ impl Intersection {
         })
     }
 
-    /// **Source:** `IntRes2d_Intersection.hxx`:49 - `IntRes2d_Intersection::NbPoints()`
+    /// **Source:** `IntRes2d_Intersection.hxx`:50 - `IntRes2d_Intersection::NbPoints()`
     /// This function returns the number of intersection
     /// points between the 2 curves.
     /// The exception NotDone is raised if IsDone returns FALSE.
@@ -379,7 +379,7 @@ impl Intersection {
         })
     }
 
-    /// **Source:** `IntRes2d_Intersection.hxx`:56 - `IntRes2d_Intersection::Point()`
+    /// **Source:** `IntRes2d_Intersection.hxx`:57 - `IntRes2d_Intersection::Point()`
     /// This function returns the intersection point
     /// of range N;
     /// The exception NotDone is raised if IsDone returns FALSE.
@@ -394,7 +394,7 @@ impl Intersection {
         }
     }
 
-    /// **Source:** `IntRes2d_Intersection.hxx`:61 - `IntRes2d_Intersection::NbSegments()`
+    /// **Source:** `IntRes2d_Intersection.hxx`:62 - `IntRes2d_Intersection::NbSegments()`
     /// This function returns the number of intersection
     /// segments between the two curves.
     /// The exception NotDone is raised if IsDone returns FALSE.
@@ -404,7 +404,7 @@ impl Intersection {
         })
     }
 
-    /// **Source:** `IntRes2d_Intersection.hxx`:68 - `IntRes2d_Intersection::Segment()`
+    /// **Source:** `IntRes2d_Intersection.hxx`:69 - `IntRes2d_Intersection::Segment()`
     /// This function returns the intersection segment
     /// of range N;
     /// The exception NotDone is raised if IsDone returns FALSE.
@@ -419,7 +419,7 @@ impl Intersection {
         }
     }
 
-    /// **Source:** `IntRes2d_Intersection.hxx`:70 - `IntRes2d_Intersection::SetReversedParameters()`
+    /// **Source:** `IntRes2d_Intersection.hxx`:71 - `IntRes2d_Intersection::SetReversedParameters()`
     pub fn set_reversed_parameters(&mut self, Reverseflag: bool) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::IntRes2d_Intersection_set_reversed_parameters(
@@ -636,11 +636,11 @@ impl IntersectionSegment {
     }
 
     /// **Source:** `IntRes2d_IntersectionSegment.hxx`:60 - `IntRes2d_IntersectionSegment::HasFirstPoint()`
-    /// Returns True if the segment is  limited by a first
-    /// point.   This  point defines  the lowest parameter
-    /// admitted on the first  curve for the  segment.  If
-    /// IsOpposite  returns  False, it  defines the lowest
-    /// parameter on the  second curve, otherwise,  it  is
+    /// Returns True if the segment is limited by a first
+    /// point. This point defines the lowest parameter
+    /// admitted on the first curve for the segment. If
+    /// IsOpposite returns False, it defines the lowest
+    /// parameter on the second curve, otherwise, it is
     /// the highest parameter on the second curve.
     pub fn has_first_point(&self) -> bool {
         crate::check_result(unsafe {
@@ -651,9 +651,9 @@ impl IntersectionSegment {
     }
 
     /// **Source:** `IntRes2d_IntersectionSegment.hxx`:66 - `IntRes2d_IntersectionSegment::FirstPoint()`
-    /// Returns the  first point   of the segment    as an
-    /// IntersectionPoint (with    a    transition).   The
-    /// exception  DomainError  is raised if HasFirstPoint
+    /// Returns the first point of the segment as an
+    /// IntersectionPoint (with a transition). The
+    /// exception DomainError is raised if HasFirstPoint
     /// returns False.
     pub fn first_point(&self) -> &IntersectionPoint {
         unsafe {
@@ -666,11 +666,11 @@ impl IntersectionSegment {
     }
 
     /// **Source:** `IntRes2d_IntersectionSegment.hxx`:74 - `IntRes2d_IntersectionSegment::HasLastPoint()`
-    /// Returns True if the segment  is  limited by a last
-    /// point.  This point  defines  the highest parameter
-    /// admitted on the  first curve for  the segment.  If
-    /// IsOpposite returns  False, it  defines the highest
-    /// parameter on  the  second curve, otherwise, it  is
+    /// Returns True if the segment is limited by a last
+    /// point. This point defines the highest parameter
+    /// admitted on the first curve for the segment. If
+    /// IsOpposite returns False, it defines the highest
+    /// parameter on the second curve, otherwise, it is
     /// the lowest parameter on the second curve.
     pub fn has_last_point(&self) -> bool {
         crate::check_result(unsafe {
@@ -681,9 +681,9 @@ impl IntersectionSegment {
     }
 
     /// **Source:** `IntRes2d_IntersectionSegment.hxx`:80 - `IntRes2d_IntersectionSegment::LastPoint()`
-    /// Returns   the  last point  of the    segment as an
-    /// IntersectionPoint   (with  a    transition).   The
-    /// exception        DomainError     is   raised    if
+    /// Returns the last point of the segment as an
+    /// IntersectionPoint (with a transition). The
+    /// exception DomainError is raised if
     /// HasLastExtremity returns False.
     pub fn last_point(&self) -> &IntersectionPoint {
         unsafe {
@@ -701,13 +701,13 @@ impl IntersectionSegment {
 // ========================
 
 /// **Source:** `IntRes2d_Transition.hxx`:37 - `IntRes2d_Transition`
-/// Definition of    the  type  of   transition    near an
-/// intersection point between  two curves. The transition
+/// Definition of the type of transition near an
+/// intersection point between two curves. The transition
 /// is either a "true transition", which means that one of
-/// the curves goes inside or outside  the area defined by
-/// the other curve  near  the intersection, or  a  "touch
-/// transition" which means that the  first curve does not
-/// cross  the  other one,  or an  "undecided" transition,
+/// the curves goes inside or outside the area defined by
+/// the other curve near the intersection, or a "touch
+/// transition" which means that the first curve does not
+/// cross the other one, or an "undecided" transition,
 /// which means that the curves are superposed.
 pub use crate::ffi_types::IntRes2d_Transition as Transition;
 
@@ -796,7 +796,7 @@ impl Transition {
         })
     }
 
-    /// **Source:** `IntRes2d_Transition.hxx`:65 - `IntRes2d_Transition::SetValue()`
+    /// **Source:** `IntRes2d_Transition.hxx`:63 - `IntRes2d_Transition::SetValue()`
     /// Sets the values of a TOUCH transition.
     pub fn set_value_bool_position_situation_bool(
         &mut self,
@@ -816,7 +816,7 @@ impl Transition {
         })
     }
 
-    /// **Source:** `IntRes2d_Transition.hxx`:71 - `IntRes2d_Transition::SetValue()`
+    /// **Source:** `IntRes2d_Transition.hxx`:69 - `IntRes2d_Transition::SetValue()`
     /// Sets the values of an UNDECIDED transition.
     pub fn set_value_position(&mut self, Pos: crate::int_res2d::Position) {
         crate::check_void_result(unsafe {
@@ -827,7 +827,7 @@ impl Transition {
         })
     }
 
-    /// **Source:** `IntRes2d_Transition.hxx`:74 - `IntRes2d_Transition::SetPosition()`
+    /// **Source:** `IntRes2d_Transition.hxx`:72 - `IntRes2d_Transition::SetPosition()`
     /// Sets the value of the position.
     pub fn set_position(&mut self, Pos: crate::int_res2d::Position) {
         crate::check_void_result(unsafe {
@@ -838,9 +838,9 @@ impl Transition {
         })
     }
 
-    /// **Source:** `IntRes2d_Transition.hxx`:79 - `IntRes2d_Transition::PositionOnCurve()`
-    /// Indicates if the  intersection is at the beginning
-    /// (IntRes2d_Head),  at the end (IntRes2d_End), or in
+    /// **Source:** `IntRes2d_Transition.hxx`:77 - `IntRes2d_Transition::PositionOnCurve()`
+    /// Indicates if the intersection is at the beginning
+    /// (IntRes2d_Head), at the end (IntRes2d_End), or in
     /// the middle (IntRes2d_Middle) of the curve.
     pub fn position_on_curve(&self) -> crate::int_res2d::Position {
         crate::int_res2d::Position::try_from(crate::check_result(unsafe {
@@ -849,7 +849,7 @@ impl Transition {
         .unwrap()
     }
 
-    /// **Source:** `IntRes2d_Transition.hxx`:85 - `IntRes2d_Transition::TransitionType()`
+    /// **Source:** `IntRes2d_Transition.hxx`:83 - `IntRes2d_Transition::TransitionType()`
     /// Returns the type of transition at the intersection.
     /// It may be IN or OUT or TOUCH, or UNDECIDED if the
     /// two first derivatives are not enough to give
@@ -861,7 +861,7 @@ impl Transition {
         .unwrap()
     }
 
-    /// **Source:** `IntRes2d_Transition.hxx`:91 - `IntRes2d_Transition::IsTangent()`
+    /// **Source:** `IntRes2d_Transition.hxx`:89 - `IntRes2d_Transition::IsTangent()`
     /// Returns TRUE when the 2 curves are tangent at the
     /// intersection point.
     /// Theexception DomainError is raised if the type of
@@ -872,7 +872,7 @@ impl Transition {
         })
     }
 
-    /// **Source:** `IntRes2d_Transition.hxx`:101 - `IntRes2d_Transition::Situation()`
+    /// **Source:** `IntRes2d_Transition.hxx`:99 - `IntRes2d_Transition::Situation()`
     /// returns a significant value if TransitionType returns
     /// TOUCH. In this case, the function returns :
     /// INSIDE when the curve remains inside the other one,
@@ -888,12 +888,12 @@ impl Transition {
         .unwrap()
     }
 
-    /// **Source:** `IntRes2d_Transition.hxx`:109 - `IntRes2d_Transition::IsOpposite()`
-    /// returns a  significant value   if   TransitionType
-    /// returns TOUCH. In this  case, the function returns
-    /// true   when  the  2   curves   locally define  two
-    /// different  parts of the  space.  If TransitionType
-    /// returns  IN or   OUT or UNDECIDED,  the  exception
+    /// **Source:** `IntRes2d_Transition.hxx`:107 - `IntRes2d_Transition::IsOpposite()`
+    /// returns a significant value if TransitionType
+    /// returns TOUCH. In this case, the function returns
+    /// true when the 2 curves locally define two
+    /// different parts of the space. If TransitionType
+    /// returns IN or OUT or UNDECIDED, the exception
     /// DomainError is raised.
     pub fn is_opposite(&self) -> bool {
         crate::check_result(unsafe {
@@ -901,9 +901,3 @@ impl Transition {
         })
     }
 }
-
-// ========================
-// Additional type re-exports
-// ========================
-
-pub use crate::ffi_types::IntRes2d_SequenceOfIntersectionPoint as SequenceOfIntersectionPoint;

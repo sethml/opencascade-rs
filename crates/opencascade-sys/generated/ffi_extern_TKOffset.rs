@@ -10,177 +10,177 @@ use crate::ffi_types::*;
 unsafe extern "C" {
     // ======================== BRepOffset_Analyse ========================
     pub fn BRepOffset_Analyse_destructor(self_: *mut BRepOffset_Analyse);
-    /// **Source:** `BRepOffset_Analyse.hxx`:50 - `BRepOffset_Analyse::BRepOffset_Analyse()`
+    /// **Source:** `BRepOffset_Analyse.hxx`:48 - `BRepOffset_Analyse::BRepOffset_Analyse()`
     pub fn BRepOffset_Analyse_ctor() -> crate::OcctResult<*mut BRepOffset_Analyse>;
-    /// **Source:** `BRepOffset_Analyse.hxx`:53 - `BRepOffset_Analyse::BRepOffset_Analyse()`
+    /// **Source:** `BRepOffset_Analyse.hxx`:51 - `BRepOffset_Analyse::BRepOffset_Analyse()`
     pub fn BRepOffset_Analyse_ctor_shape_real(
         theS: *const TopoDS_Shape,
         theAngle: f64,
     ) -> crate::OcctResult<*mut BRepOffset_Analyse>;
-    /// **Source:** `BRepOffset_Analyse.hxx`:57 - `BRepOffset_Analyse::Perform()`
+    /// **Source:** `BRepOffset_Analyse.hxx`:55 - `BRepOffset_Analyse::Perform()`
     pub fn BRepOffset_Analyse_perform(
         self_: *mut BRepOffset_Analyse,
         theS: *const TopoDS_Shape,
         theAngle: f64,
         theRange: *const Message_ProgressRange,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepOffset_Analyse.hxx`:63 - `BRepOffset_Analyse::IsDone()`
+    /// **Source:** `BRepOffset_Analyse.hxx`:61 - `BRepOffset_Analyse::IsDone()`
     pub fn BRepOffset_Analyse_is_done(self_: *const BRepOffset_Analyse) -> crate::OcctResult<bool>;
-    /// **Source:** `BRepOffset_Analyse.hxx`:66 - `BRepOffset_Analyse::Type()`
+    /// **Source:** `BRepOffset_Analyse.hxx`:64 - `BRepOffset_Analyse::Type()`
     pub fn BRepOffset_Analyse_type_(
         self_: *const BRepOffset_Analyse,
         theE: *const TopoDS_Edge,
-    ) -> crate::OcctResult<*const BRepOffset_ListOfInterval>;
-    /// **Source:** `BRepOffset_Analyse.hxx`:70 - `BRepOffset_Analyse::Edges()`
-    pub fn BRepOffset_Analyse_edges_vertex_typeofconcavity_listofshape(
+    ) -> crate::OcctResult<*const NCollection_List_BRepOffset_Interval>;
+    /// **Source:** `BRepOffset_Analyse.hxx`:68 - `BRepOffset_Analyse::Edges()`
+    pub fn BRepOffset_Analyse_edges_vertex_typeofconcavity_list_shape(
         self_: *const BRepOffset_Analyse,
         theV: *const TopoDS_Vertex,
         theType: i32,
-        theL: *mut TopTools_ListOfShape,
+        theL: *mut NCollection_List_TopoDS_Shape,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepOffset_Analyse.hxx`:76 - `BRepOffset_Analyse::Edges()`
-    pub fn BRepOffset_Analyse_edges_face_typeofconcavity_listofshape(
+    /// **Source:** `BRepOffset_Analyse.hxx`:74 - `BRepOffset_Analyse::Edges()`
+    pub fn BRepOffset_Analyse_edges_face_typeofconcavity_list_shape(
         self_: *const BRepOffset_Analyse,
         theF: *const TopoDS_Face,
         theType: i32,
-        theL: *mut TopTools_ListOfShape,
+        theL: *mut NCollection_List_TopoDS_Shape,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepOffset_Analyse.hxx`:82 - `BRepOffset_Analyse::TangentEdges()`
+    /// **Source:** `BRepOffset_Analyse.hxx`:80 - `BRepOffset_Analyse::TangentEdges()`
     pub fn BRepOffset_Analyse_tangent_edges(
         self_: *const BRepOffset_Analyse,
         theEdge: *const TopoDS_Edge,
         theVertex: *const TopoDS_Vertex,
-        theEdges: *mut TopTools_ListOfShape,
+        theEdges: *mut NCollection_List_TopoDS_Shape,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepOffset_Analyse.hxx`:87 - `BRepOffset_Analyse::HasAncestor()`
+    /// **Source:** `BRepOffset_Analyse.hxx`:85 - `BRepOffset_Analyse::HasAncestor()`
     pub fn BRepOffset_Analyse_has_ancestor(
         self_: *const BRepOffset_Analyse,
         theS: *const TopoDS_Shape,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BRepOffset_Analyse.hxx`:93 - `BRepOffset_Analyse::Ancestors()`
+    /// **Source:** `BRepOffset_Analyse.hxx`:88 - `BRepOffset_Analyse::Ancestors()`
     pub fn BRepOffset_Analyse_ancestors(
         self_: *const BRepOffset_Analyse,
         theS: *const TopoDS_Shape,
-    ) -> crate::OcctResult<*const TopTools_ListOfShape>;
+    ) -> crate::OcctResult<*const NCollection_List_TopoDS_Shape>;
+    /// **Source:** `BRepOffset_Analyse.hxx`:95 - `BRepOffset_Analyse::Explode()`
+    pub fn BRepOffset_Analyse_explode_list_shape_typeofconcavity(
+        self_: *const BRepOffset_Analyse,
+        theL: *mut NCollection_List_TopoDS_Shape,
+        theType: i32,
+    ) -> *const std::ffi::c_char;
     /// **Source:** `BRepOffset_Analyse.hxx`:100 - `BRepOffset_Analyse::Explode()`
-    pub fn BRepOffset_Analyse_explode_listofshape_typeofconcavity(
+    pub fn BRepOffset_Analyse_explode_list_shape_typeofconcavity2(
         self_: *const BRepOffset_Analyse,
-        theL: *mut TopTools_ListOfShape,
-        theType: i32,
-    ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepOffset_Analyse.hxx`:105 - `BRepOffset_Analyse::Explode()`
-    pub fn BRepOffset_Analyse_explode_listofshape_typeofconcavity2(
-        self_: *const BRepOffset_Analyse,
-        theL: *mut TopTools_ListOfShape,
+        theL: *mut NCollection_List_TopoDS_Shape,
         theType1: i32,
         theType2: i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepOffset_Analyse.hxx`:111 - `BRepOffset_Analyse::AddFaces()`
-    pub fn BRepOffset_Analyse_add_faces_face_compound_mapofshape_typeofconcavity(
+    /// **Source:** `BRepOffset_Analyse.hxx`:106 - `BRepOffset_Analyse::AddFaces()`
+    pub fn BRepOffset_Analyse_add_faces_face_compound_map_shape_typeofconcavity(
         self_: *const BRepOffset_Analyse,
         theFace: *const TopoDS_Face,
         theCo: *mut TopoDS_Compound,
-        theMap: *mut TopTools_MapOfShape,
+        theMap: *mut NCollection_Map_TopoDS_Shape_TopTools_ShapeMapHasher,
         theType: i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepOffset_Analyse.hxx`:118 - `BRepOffset_Analyse::AddFaces()`
-    pub fn BRepOffset_Analyse_add_faces_face_compound_mapofshape_typeofconcavity2(
+    /// **Source:** `BRepOffset_Analyse.hxx`:113 - `BRepOffset_Analyse::AddFaces()`
+    pub fn BRepOffset_Analyse_add_faces_face_compound_map_shape_typeofconcavity2(
         self_: *const BRepOffset_Analyse,
         theFace: *const TopoDS_Face,
         theCo: *mut TopoDS_Compound,
-        theMap: *mut TopTools_MapOfShape,
+        theMap: *mut NCollection_Map_TopoDS_Shape_TopTools_ShapeMapHasher,
         theType1: i32,
         theType2: i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepOffset_Analyse.hxx`:124 - `BRepOffset_Analyse::SetOffsetValue()`
+    /// **Source:** `BRepOffset_Analyse.hxx`:119 - `BRepOffset_Analyse::SetOffsetValue()`
     pub fn BRepOffset_Analyse_set_offset_value(
         self_: *mut BRepOffset_Analyse,
         theOffset: f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepOffset_Analyse.hxx`:127 - `BRepOffset_Analyse::SetFaceOffsetMap()`
+    /// **Source:** `BRepOffset_Analyse.hxx`:122 - `BRepOffset_Analyse::SetFaceOffsetMap()`
     pub fn BRepOffset_Analyse_set_face_offset_map(
         self_: *mut BRepOffset_Analyse,
-        theMap: *const TopTools_DataMapOfShapeReal,
+        theMap: *const NCollection_DataMap_TopoDS_Shape_double_TopTools_ShapeMapHasher,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepOffset_Analyse.hxx`:131 - `BRepOffset_Analyse::NewFaces()`
+    /// **Source:** `BRepOffset_Analyse.hxx`:130 - `BRepOffset_Analyse::NewFaces()`
     pub fn BRepOffset_Analyse_new_faces(
         self_: *const BRepOffset_Analyse,
-    ) -> crate::OcctResult<*const TopTools_ListOfShape>;
-    /// **Source:** `BRepOffset_Analyse.hxx`:135 - `BRepOffset_Analyse::Generated()`
+    ) -> crate::OcctResult<*const NCollection_List_TopoDS_Shape>;
+    /// **Source:** `BRepOffset_Analyse.hxx`:134 - `BRepOffset_Analyse::Generated()`
     pub fn BRepOffset_Analyse_generated(
         self_: *const BRepOffset_Analyse,
         theS: *const TopoDS_Shape,
     ) -> crate::OcctResult<*mut TopoDS_Shape>;
-    /// **Source:** `BRepOffset_Analyse.hxx`:138 - `BRepOffset_Analyse::HasGenerated()`
+    /// **Source:** `BRepOffset_Analyse.hxx`:137 - `BRepOffset_Analyse::HasGenerated()`
     pub fn BRepOffset_Analyse_has_generated(
         self_: *const BRepOffset_Analyse,
         theS: *const TopoDS_Shape,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BRepOffset_Analyse.hxx`:145 - `BRepOffset_Analyse::EdgeReplacement()`
+    /// **Source:** `BRepOffset_Analyse.hxx`:141 - `BRepOffset_Analyse::EdgeReplacement()`
     pub fn BRepOffset_Analyse_edge_replacement(
         self_: *const BRepOffset_Analyse,
         theFace: *const TopoDS_Face,
         theEdge: *const TopoDS_Edge,
     ) -> crate::OcctResult<*const TopoDS_Edge>;
-    /// **Source:** `BRepOffset_Analyse.hxx`:149 - `BRepOffset_Analyse::Descendants()`
+    /// **Source:** `BRepOffset_Analyse.hxx`:145 - `BRepOffset_Analyse::Descendants()`
     pub fn BRepOffset_Analyse_descendants(
         self_: *const BRepOffset_Analyse,
         theS: *const TopoDS_Shape,
         theUpdate: bool,
-    ) -> crate::OcctResult<*const TopTools_ListOfShape>;
-    /// **Source:** `BRepOffset_Analyse.hxx`:155 - `BRepOffset_Analyse::Clear()`
+    ) -> crate::OcctResult<*const NCollection_List_TopoDS_Shape>;
+    /// **Source:** `BRepOffset_Analyse.hxx`:151 - `BRepOffset_Analyse::Clear()`
     pub fn BRepOffset_Analyse_clear(self_: *mut BRepOffset_Analyse) -> *const std::ffi::c_char;
     // ======================== BRepOffset_Inter2d ========================
     pub fn BRepOffset_Inter2d_destructor(self_: *mut BRepOffset_Inter2d);
     /// **Source:** `BRepOffset_Inter2d.hxx` - `BRepOffset_Inter2d::BRepOffset_Inter2d()`
     pub fn BRepOffset_Inter2d_ctor() -> crate::OcctResult<*mut BRepOffset_Inter2d>;
-    /// **Source:** `BRepOffset_Inter2d.hxx`:46 - `BRepOffset_Inter2d::Compute()`
+    /// **Source:** `BRepOffset_Inter2d.hxx`:48 - `BRepOffset_Inter2d::Compute()`
     pub fn BRepOffset_Inter2d_compute(
-        AsDes: *const HandleBRepAlgoAsDes,
+        AsDes: *const Handle_BRepAlgo_AsDes,
         F: *const TopoDS_Face,
-        NewEdges: *const TopTools_IndexedMapOfShape,
+        NewEdges: *const NCollection_IndexedMap_TopoDS_Shape_TopTools_ShapeMapHasher,
         Tol: f64,
-        theEdgeIntEdges: *const TopTools_DataMapOfShapeListOfShape,
-        theDMVV: *mut TopTools_IndexedDataMapOfShapeListOfShape,
+        theEdgeIntEdges: *const NCollection_DataMap_TopoDS_Shape_NCollection_List_TopoDS_Shape_TopTools_ShapeMapHasher,
+        theDMVV: *mut NCollection_IndexedDataMap_TopoDS_Shape_NCollection_List_TopoDS_Shape_TopTools_ShapeMapHasher,
         theRange: *const Message_ProgressRange,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepOffset_Inter2d.hxx`:59 - `BRepOffset_Inter2d::ConnexIntByInt()`
+    /// **Source:** `BRepOffset_Inter2d.hxx`:66 - `BRepOffset_Inter2d::ConnexIntByInt()`
     pub fn BRepOffset_Inter2d_connex_int_by_int(
         FI: *const TopoDS_Face,
         OFI: *mut BRepOffset_Offset,
-        MES: *mut TopTools_DataMapOfShapeShape,
-        Build: *const TopTools_DataMapOfShapeShape,
-        theAsDes: *const HandleBRepAlgoAsDes,
-        AsDes2d: *const HandleBRepAlgoAsDes,
+        MES: *mut NCollection_DataMap_TopoDS_Shape_TopoDS_Shape_TopTools_ShapeMapHasher,
+        Build: *const NCollection_DataMap_TopoDS_Shape_TopoDS_Shape_TopTools_ShapeMapHasher,
+        theAsDes: *const Handle_BRepAlgo_AsDes,
+        AsDes2d: *const Handle_BRepAlgo_AsDes,
         Offset: f64,
         Tol: f64,
         Analyse: *const BRepOffset_Analyse,
-        FacesWithVerts: *mut TopTools_IndexedMapOfShape,
+        FacesWithVerts: *mut NCollection_IndexedMap_TopoDS_Shape_TopTools_ShapeMapHasher,
         theImageVV: *mut BRepAlgo_Image,
-        theEdgeIntEdges: *mut TopTools_DataMapOfShapeListOfShape,
-        theDMVV: *mut TopTools_IndexedDataMapOfShapeListOfShape,
+        theEdgeIntEdges: *mut NCollection_DataMap_TopoDS_Shape_NCollection_List_TopoDS_Shape_TopTools_ShapeMapHasher,
+        theDMVV: *mut NCollection_IndexedDataMap_TopoDS_Shape_NCollection_List_TopoDS_Shape_TopTools_ShapeMapHasher,
         theRange: *const Message_ProgressRange,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BRepOffset_Inter2d.hxx`:81 - `BRepOffset_Inter2d::ConnexIntByIntInVert()`
+    /// **Source:** `BRepOffset_Inter2d.hxx`:91 - `BRepOffset_Inter2d::ConnexIntByIntInVert()`
     pub fn BRepOffset_Inter2d_connex_int_by_int_in_vert(
         FI: *const TopoDS_Face,
         OFI: *mut BRepOffset_Offset,
-        MES: *mut TopTools_DataMapOfShapeShape,
-        Build: *const TopTools_DataMapOfShapeShape,
-        AsDes: *const HandleBRepAlgoAsDes,
-        AsDes2d: *const HandleBRepAlgoAsDes,
+        MES: *mut NCollection_DataMap_TopoDS_Shape_TopoDS_Shape_TopTools_ShapeMapHasher,
+        Build: *const NCollection_DataMap_TopoDS_Shape_TopoDS_Shape_TopTools_ShapeMapHasher,
+        AsDes: *const Handle_BRepAlgo_AsDes,
+        AsDes2d: *const Handle_BRepAlgo_AsDes,
         Tol: f64,
         Analyse: *const BRepOffset_Analyse,
-        theDMVV: *mut TopTools_IndexedDataMapOfShapeListOfShape,
+        theDMVV: *mut NCollection_IndexedDataMap_TopoDS_Shape_NCollection_List_TopoDS_Shape_TopTools_ShapeMapHasher,
         theRange: *const Message_ProgressRange,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepOffset_Inter2d.hxx`:96 - `BRepOffset_Inter2d::FuseVertices()`
+    /// **Source:** `BRepOffset_Inter2d.hxx`:108 - `BRepOffset_Inter2d::FuseVertices()`
     pub fn BRepOffset_Inter2d_fuse_vertices(
-        theDMVV: *const TopTools_IndexedDataMapOfShapeListOfShape,
-        theAsDes: *const HandleBRepAlgoAsDes,
+        theDMVV: *const NCollection_IndexedDataMap_TopoDS_Shape_NCollection_List_TopoDS_Shape_TopTools_ShapeMapHasher,
+        theAsDes: *const Handle_BRepAlgo_AsDes,
         theImageVV: *mut BRepAlgo_Image,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BRepOffset_Inter2d.hxx`:102 - `BRepOffset_Inter2d::ExtentEdge()`
+    /// **Source:** `BRepOffset_Inter2d.hxx`:116 - `BRepOffset_Inter2d::ExtentEdge()`
     pub fn BRepOffset_Inter2d_extent_edge(
         E: *const TopoDS_Edge,
         NE: *mut TopoDS_Edge,
@@ -188,94 +188,94 @@ unsafe extern "C" {
     ) -> crate::OcctResult<bool>;
     // ======================== BRepOffset_Inter3d ========================
     pub fn BRepOffset_Inter3d_destructor(self_: *mut BRepOffset_Inter3d);
-    /// **Source:** `BRepOffset_Inter3d.hxx`:47 - `BRepOffset_Inter3d::BRepOffset_Inter3d()`
+    /// **Source:** `BRepOffset_Inter3d.hxx`:48 - `BRepOffset_Inter3d::BRepOffset_Inter3d()`
     pub fn BRepOffset_Inter3d_ctor_handlebrepalgoasdes_state_real(
-        AsDes: *const HandleBRepAlgoAsDes,
+        AsDes: *const Handle_BRepAlgo_AsDes,
         Side: i32,
         Tol: f64,
     ) -> crate::OcctResult<*mut BRepOffset_Inter3d>;
-    /// **Source:** `BRepOffset_Inter3d.hxx`:52 - `BRepOffset_Inter3d::CompletInt()`
+    /// **Source:** `BRepOffset_Inter3d.hxx`:53 - `BRepOffset_Inter3d::CompletInt()`
     pub fn BRepOffset_Inter3d_complet_int(
         self_: *mut BRepOffset_Inter3d,
-        SetOfFaces: *const TopTools_ListOfShape,
+        SetOfFaces: *const NCollection_List_TopoDS_Shape,
         InitOffsetFace: *const BRepAlgo_Image,
         theRange: *const Message_ProgressRange,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepOffset_Inter3d.hxx`:57 - `BRepOffset_Inter3d::FaceInter()`
+    /// **Source:** `BRepOffset_Inter3d.hxx`:58 - `BRepOffset_Inter3d::FaceInter()`
     pub fn BRepOffset_Inter3d_face_inter(
         self_: *mut BRepOffset_Inter3d,
         F1: *const TopoDS_Face,
         F2: *const TopoDS_Face,
         InitOffsetFace: *const BRepAlgo_Image,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepOffset_Inter3d.hxx`:62 - `BRepOffset_Inter3d::ConnexIntByArc()`
+    /// **Source:** `BRepOffset_Inter3d.hxx`:63 - `BRepOffset_Inter3d::ConnexIntByArc()`
     pub fn BRepOffset_Inter3d_connex_int_by_arc(
         self_: *mut BRepOffset_Inter3d,
-        SetOfFaces: *const TopTools_ListOfShape,
+        SetOfFaces: *const NCollection_List_TopoDS_Shape,
         ShapeInit: *const TopoDS_Shape,
         Analyse: *const BRepOffset_Analyse,
         InitOffsetFace: *const BRepAlgo_Image,
         theRange: *const Message_ProgressRange,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepOffset_Inter3d.hxx`:70 - `BRepOffset_Inter3d::ConnexIntByInt()`
+    /// **Source:** `BRepOffset_Inter3d.hxx`:71 - `BRepOffset_Inter3d::ConnexIntByInt()`
     pub fn BRepOffset_Inter3d_connex_int_by_int(
         self_: *mut BRepOffset_Inter3d,
         SI: *const TopoDS_Shape,
-        MapSF: *const BRepOffset_DataMapOfShapeOffset,
+        MapSF: *const NCollection_DataMap_TopoDS_Shape_BRepOffset_Offset_TopTools_ShapeMapHasher,
         A: *const BRepOffset_Analyse,
-        MES: *mut TopTools_DataMapOfShapeShape,
-        Build: *mut TopTools_DataMapOfShapeShape,
-        Failed: *mut TopTools_ListOfShape,
+        MES: *mut NCollection_DataMap_TopoDS_Shape_TopoDS_Shape_TopTools_ShapeMapHasher,
+        Build: *mut NCollection_DataMap_TopoDS_Shape_TopoDS_Shape_TopTools_ShapeMapHasher,
+        Failed: *mut NCollection_List_TopoDS_Shape,
         theRange: *const Message_ProgressRange,
         bIsPlanar: bool,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepOffset_Inter3d.hxx`:80 - `BRepOffset_Inter3d::ContextIntByInt()`
+    /// **Source:** `BRepOffset_Inter3d.hxx`:82 - `BRepOffset_Inter3d::ContextIntByInt()`
     pub fn BRepOffset_Inter3d_context_int_by_int(
         self_: *mut BRepOffset_Inter3d,
-        ContextFaces: *const TopTools_IndexedMapOfShape,
+        ContextFaces: *const NCollection_IndexedMap_TopoDS_Shape_TopTools_ShapeMapHasher,
         ExtentContext: bool,
-        MapSF: *const BRepOffset_DataMapOfShapeOffset,
+        MapSF: *const NCollection_DataMap_TopoDS_Shape_BRepOffset_Offset_TopTools_ShapeMapHasher,
         A: *const BRepOffset_Analyse,
-        MES: *mut TopTools_DataMapOfShapeShape,
-        Build: *mut TopTools_DataMapOfShapeShape,
-        Failed: *mut TopTools_ListOfShape,
+        MES: *mut NCollection_DataMap_TopoDS_Shape_TopoDS_Shape_TopTools_ShapeMapHasher,
+        Build: *mut NCollection_DataMap_TopoDS_Shape_TopoDS_Shape_TopTools_ShapeMapHasher,
+        Failed: *mut NCollection_List_TopoDS_Shape,
         theRange: *const Message_ProgressRange,
         bIsPlanar: bool,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepOffset_Inter3d.hxx`:91 - `BRepOffset_Inter3d::ContextIntByArc()`
+    /// **Source:** `BRepOffset_Inter3d.hxx`:94 - `BRepOffset_Inter3d::ContextIntByArc()`
     pub fn BRepOffset_Inter3d_context_int_by_arc(
         self_: *mut BRepOffset_Inter3d,
-        ContextFaces: *const TopTools_IndexedMapOfShape,
+        ContextFaces: *const NCollection_IndexedMap_TopoDS_Shape_TopTools_ShapeMapHasher,
         ExtentContext: bool,
         Analyse: *const BRepOffset_Analyse,
         InitOffsetFace: *const BRepAlgo_Image,
         InitOffsetEdge: *mut BRepAlgo_Image,
         theRange: *const Message_ProgressRange,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepOffset_Inter3d.hxx`:99 - `BRepOffset_Inter3d::SetDone()`
+    /// **Source:** `BRepOffset_Inter3d.hxx`:103 - `BRepOffset_Inter3d::SetDone()`
     pub fn BRepOffset_Inter3d_set_done(
         self_: *mut BRepOffset_Inter3d,
         F1: *const TopoDS_Face,
         F2: *const TopoDS_Face,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepOffset_Inter3d.hxx`:102 - `BRepOffset_Inter3d::IsDone()`
+    /// **Source:** `BRepOffset_Inter3d.hxx`:106 - `BRepOffset_Inter3d::IsDone()`
     pub fn BRepOffset_Inter3d_is_done(
         self_: *const BRepOffset_Inter3d,
         F1: *const TopoDS_Face,
         F2: *const TopoDS_Face,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BRepOffset_Inter3d.hxx`:105 - `BRepOffset_Inter3d::TouchedFaces()`
+    /// **Source:** `BRepOffset_Inter3d.hxx`:109 - `BRepOffset_Inter3d::TouchedFaces()`
     pub fn BRepOffset_Inter3d_touched_faces(
         self_: *mut BRepOffset_Inter3d,
-    ) -> crate::OcctResult<*mut TopTools_IndexedMapOfShape>;
-    /// **Source:** `BRepOffset_Inter3d.hxx`:108 - `BRepOffset_Inter3d::AsDes()`
+    ) -> crate::OcctResult<*mut NCollection_IndexedMap_TopoDS_Shape_TopTools_ShapeMapHasher>;
+    /// **Source:** `BRepOffset_Inter3d.hxx`:115 - `BRepOffset_Inter3d::AsDes()`
     pub fn BRepOffset_Inter3d_as_des(
         self_: *const BRepOffset_Inter3d,
-    ) -> crate::OcctResult<*mut HandleBRepAlgoAsDes>;
-    /// **Source:** `BRepOffset_Inter3d.hxx`:111 - `BRepOffset_Inter3d::NewEdges()`
+    ) -> crate::OcctResult<*mut Handle_BRepAlgo_AsDes>;
+    /// **Source:** `BRepOffset_Inter3d.hxx`:118 - `BRepOffset_Inter3d::NewEdges()`
     pub fn BRepOffset_Inter3d_new_edges(
         self_: *mut BRepOffset_Inter3d,
-    ) -> crate::OcctResult<*mut TopTools_IndexedMapOfShape>;
+    ) -> crate::OcctResult<*mut NCollection_IndexedMap_TopoDS_Shape_TopTools_ShapeMapHasher>;
     // ======================== BRepOffset_Interval ========================
     pub fn BRepOffset_Interval_destructor(self_: *mut BRepOffset_Interval);
     /// **Source:** `BRepOffset_Interval.hxx`:32 - `BRepOffset_Interval::BRepOffset_Interval()`
@@ -309,40 +309,40 @@ unsafe extern "C" {
     pub fn BRepOffset_Interval_type_(self_: *const BRepOffset_Interval) -> crate::OcctResult<i32>;
     // ======================== BRepOffset_MakeLoops ========================
     pub fn BRepOffset_MakeLoops_destructor(self_: *mut BRepOffset_MakeLoops);
-    /// **Source:** `BRepOffset_MakeLoops.hxx`:37 - `BRepOffset_MakeLoops::BRepOffset_MakeLoops()`
+    /// **Source:** `BRepOffset_MakeLoops.hxx`:39 - `BRepOffset_MakeLoops::BRepOffset_MakeLoops()`
     pub fn BRepOffset_MakeLoops_ctor() -> crate::OcctResult<*mut BRepOffset_MakeLoops>;
-    /// **Source:** `BRepOffset_MakeLoops.hxx`:39 - `BRepOffset_MakeLoops::Build()`
+    /// **Source:** `BRepOffset_MakeLoops.hxx`:41 - `BRepOffset_MakeLoops::Build()`
     pub fn BRepOffset_MakeLoops_build(
         self_: *mut BRepOffset_MakeLoops,
-        LF: *const TopTools_ListOfShape,
-        AsDes: *const HandleBRepAlgoAsDes,
+        LF: *const NCollection_List_TopoDS_Shape,
+        AsDes: *const Handle_BRepAlgo_AsDes,
         Image: *mut BRepAlgo_Image,
         theImageVV: *mut BRepAlgo_Image,
         theRange: *const Message_ProgressRange,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepOffset_MakeLoops.hxx`:45 - `BRepOffset_MakeLoops::BuildOnContext()`
+    /// **Source:** `BRepOffset_MakeLoops.hxx`:47 - `BRepOffset_MakeLoops::BuildOnContext()`
     pub fn BRepOffset_MakeLoops_build_on_context(
         self_: *mut BRepOffset_MakeLoops,
-        LContext: *const TopTools_ListOfShape,
+        LContext: *const NCollection_List_TopoDS_Shape,
         Analyse: *const BRepOffset_Analyse,
-        AsDes: *const HandleBRepAlgoAsDes,
+        AsDes: *const Handle_BRepAlgo_AsDes,
         Image: *mut BRepAlgo_Image,
         InSide: bool,
         theRange: *const Message_ProgressRange,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepOffset_MakeLoops.hxx`:52 - `BRepOffset_MakeLoops::BuildFaces()`
+    /// **Source:** `BRepOffset_MakeLoops.hxx`:54 - `BRepOffset_MakeLoops::BuildFaces()`
     pub fn BRepOffset_MakeLoops_build_faces(
         self_: *mut BRepOffset_MakeLoops,
-        LF: *const TopTools_ListOfShape,
-        AsDes: *const HandleBRepAlgoAsDes,
+        LF: *const NCollection_List_TopoDS_Shape,
+        AsDes: *const Handle_BRepAlgo_AsDes,
         Image: *mut BRepAlgo_Image,
         theRange: *const Message_ProgressRange,
     ) -> *const std::ffi::c_char;
     // ======================== BRepOffset_MakeOffset ========================
     pub fn BRepOffset_MakeOffset_destructor(self_: *mut BRepOffset_MakeOffset);
-    /// **Source:** `BRepOffset_MakeOffset.hxx`:48 - `BRepOffset_MakeOffset::BRepOffset_MakeOffset()`
-    pub fn BRepOffset_MakeOffset_ctor() -> crate::OcctResult<*mut BRepOffset_MakeOffset>;
     /// **Source:** `BRepOffset_MakeOffset.hxx`:50 - `BRepOffset_MakeOffset::BRepOffset_MakeOffset()`
+    pub fn BRepOffset_MakeOffset_ctor() -> crate::OcctResult<*mut BRepOffset_MakeOffset>;
+    /// **Source:** `BRepOffset_MakeOffset.hxx`:52 - `BRepOffset_MakeOffset::BRepOffset_MakeOffset()`
     pub fn BRepOffset_MakeOffset_ctor_shape_real2_mode_bool2_jointype_bool2_progressrange(
         S: *const TopoDS_Shape,
         Offset: f64,
@@ -355,7 +355,7 @@ unsafe extern "C" {
         RemoveIntEdges: bool,
         theRange: *const Message_ProgressRange,
     ) -> crate::OcctResult<*mut BRepOffset_MakeOffset>;
-    /// **Source:** `BRepOffset_MakeOffset.hxx`:62 - `BRepOffset_MakeOffset::Initialize()`
+    /// **Source:** `BRepOffset_MakeOffset.hxx`:64 - `BRepOffset_MakeOffset::Initialize()`
     pub fn BRepOffset_MakeOffset_initialize(
         self_: *mut BRepOffset_MakeOffset,
         S: *const TopoDS_Shape,
@@ -368,92 +368,92 @@ unsafe extern "C" {
         Thickening: bool,
         RemoveIntEdges: bool,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepOffset_MakeOffset.hxx`:72 - `BRepOffset_MakeOffset::Clear()`
+    /// **Source:** `BRepOffset_MakeOffset.hxx`:74 - `BRepOffset_MakeOffset::Clear()`
     pub fn BRepOffset_MakeOffset_clear(
         self_: *mut BRepOffset_MakeOffset,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepOffset_MakeOffset.hxx`:75 - `BRepOffset_MakeOffset::AllowLinearization()`
+    /// **Source:** `BRepOffset_MakeOffset.hxx`:77 - `BRepOffset_MakeOffset::AllowLinearization()`
     pub fn BRepOffset_MakeOffset_allow_linearization(
         self_: *mut BRepOffset_MakeOffset,
         theIsAllowed: bool,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepOffset_MakeOffset.hxx`:79 - `BRepOffset_MakeOffset::AddFace()`
+    /// **Source:** `BRepOffset_MakeOffset.hxx`:81 - `BRepOffset_MakeOffset::AddFace()`
     pub fn BRepOffset_MakeOffset_add_face(
         self_: *mut BRepOffset_MakeOffset,
         F: *const TopoDS_Face,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepOffset_MakeOffset.hxx`:82 - `BRepOffset_MakeOffset::SetOffsetOnFace()`
+    /// **Source:** `BRepOffset_MakeOffset.hxx`:84 - `BRepOffset_MakeOffset::SetOffsetOnFace()`
     pub fn BRepOffset_MakeOffset_set_offset_on_face(
         self_: *mut BRepOffset_MakeOffset,
         F: *const TopoDS_Face,
         Off: f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepOffset_MakeOffset.hxx`:84 - `BRepOffset_MakeOffset::MakeOffsetShape()`
+    /// **Source:** `BRepOffset_MakeOffset.hxx`:86 - `BRepOffset_MakeOffset::MakeOffsetShape()`
     pub fn BRepOffset_MakeOffset_make_offset_shape(
         self_: *mut BRepOffset_MakeOffset,
         theRange: *const Message_ProgressRange,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepOffset_MakeOffset.hxx`:87 - `BRepOffset_MakeOffset::MakeThickSolid()`
+    /// **Source:** `BRepOffset_MakeOffset.hxx`:89 - `BRepOffset_MakeOffset::MakeThickSolid()`
     pub fn BRepOffset_MakeOffset_make_thick_solid(
         self_: *mut BRepOffset_MakeOffset,
         theRange: *const Message_ProgressRange,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepOffset_MakeOffset.hxx`:90 - `BRepOffset_MakeOffset::GetAnalyse()`
+    /// **Source:** `BRepOffset_MakeOffset.hxx`:92 - `BRepOffset_MakeOffset::GetAnalyse()`
     pub fn BRepOffset_MakeOffset_get_analyse(
         self_: *const BRepOffset_MakeOffset,
     ) -> crate::OcctResult<*const BRepOffset_Analyse>;
-    /// **Source:** `BRepOffset_MakeOffset.hxx`:92 - `BRepOffset_MakeOffset::IsDone()`
+    /// **Source:** `BRepOffset_MakeOffset.hxx`:94 - `BRepOffset_MakeOffset::IsDone()`
     pub fn BRepOffset_MakeOffset_is_done(
         self_: *const BRepOffset_MakeOffset,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BRepOffset_MakeOffset.hxx`:94 - `BRepOffset_MakeOffset::Shape()`
+    /// **Source:** `BRepOffset_MakeOffset.hxx`:96 - `BRepOffset_MakeOffset::Shape()`
     pub fn BRepOffset_MakeOffset_shape(
         self_: *const BRepOffset_MakeOffset,
     ) -> crate::OcctResult<*const TopoDS_Shape>;
-    /// **Source:** `BRepOffset_MakeOffset.hxx`:96 - `BRepOffset_MakeOffset::InitShape()`
+    /// **Source:** `BRepOffset_MakeOffset.hxx`:98 - `BRepOffset_MakeOffset::InitShape()`
     pub fn BRepOffset_MakeOffset_init_shape(
         self_: *const BRepOffset_MakeOffset,
     ) -> crate::OcctResult<*const TopoDS_Shape>;
-    /// **Source:** `BRepOffset_MakeOffset.hxx`:99 - `BRepOffset_MakeOffset::Error()`
+    /// **Source:** `BRepOffset_MakeOffset.hxx`:101 - `BRepOffset_MakeOffset::Error()`
     pub fn BRepOffset_MakeOffset_error(
         self_: *const BRepOffset_MakeOffset,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `BRepOffset_MakeOffset.hxx`:103 - `BRepOffset_MakeOffset::OffsetFacesFromShapes()`
+    /// **Source:** `BRepOffset_MakeOffset.hxx`:105 - `BRepOffset_MakeOffset::OffsetFacesFromShapes()`
     pub fn BRepOffset_MakeOffset_offset_faces_from_shapes(
         self_: *const BRepOffset_MakeOffset,
     ) -> crate::OcctResult<*const BRepAlgo_Image>;
-    /// **Source:** `BRepOffset_MakeOffset.hxx`:106 - `BRepOffset_MakeOffset::GetJoinType()`
+    /// **Source:** `BRepOffset_MakeOffset.hxx`:108 - `BRepOffset_MakeOffset::GetJoinType()`
     pub fn BRepOffset_MakeOffset_get_join_type(
         self_: *const BRepOffset_MakeOffset,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `BRepOffset_MakeOffset.hxx`:110 - `BRepOffset_MakeOffset::OffsetEdgesFromShapes()`
+    /// **Source:** `BRepOffset_MakeOffset.hxx`:112 - `BRepOffset_MakeOffset::OffsetEdgesFromShapes()`
     pub fn BRepOffset_MakeOffset_offset_edges_from_shapes(
         self_: *const BRepOffset_MakeOffset,
     ) -> crate::OcctResult<*const BRepAlgo_Image>;
-    /// **Source:** `BRepOffset_MakeOffset.hxx`:113 - `BRepOffset_MakeOffset::ClosingFaces()`
+    /// **Source:** `BRepOffset_MakeOffset.hxx`:116 - `BRepOffset_MakeOffset::ClosingFaces()`
     pub fn BRepOffset_MakeOffset_closing_faces(
         self_: *const BRepOffset_MakeOffset,
-    ) -> crate::OcctResult<*const TopTools_IndexedMapOfShape>;
-    /// **Source:** `BRepOffset_MakeOffset.hxx`:122 - `BRepOffset_MakeOffset::CheckInputData()`
+    ) -> crate::OcctResult<*const NCollection_IndexedMap_TopoDS_Shape_TopTools_ShapeMapHasher>;
+    /// **Source:** `BRepOffset_MakeOffset.hxx`:125 - `BRepOffset_MakeOffset::CheckInputData()`
     pub fn BRepOffset_MakeOffset_check_input_data(
         self_: *mut BRepOffset_MakeOffset,
         theRange: *const Message_ProgressRange,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BRepOffset_MakeOffset.hxx`:125 - `BRepOffset_MakeOffset::GetBadShape()`
+    /// **Source:** `BRepOffset_MakeOffset.hxx`:128 - `BRepOffset_MakeOffset::GetBadShape()`
     pub fn BRepOffset_MakeOffset_get_bad_shape(
         self_: *const BRepOffset_MakeOffset,
     ) -> crate::OcctResult<*const TopoDS_Shape>;
-    /// **Source:** `BRepOffset_MakeOffset.hxx`:129 - `BRepOffset_MakeOffset::Generated()`
+    /// **Source:** `BRepOffset_MakeOffset.hxx`:132 - `BRepOffset_MakeOffset::Generated()`
     pub fn BRepOffset_MakeOffset_generated(
         self_: *mut BRepOffset_MakeOffset,
         theS: *const TopoDS_Shape,
-    ) -> crate::OcctResult<*const TopTools_ListOfShape>;
-    /// **Source:** `BRepOffset_MakeOffset.hxx`:132 - `BRepOffset_MakeOffset::Modified()`
+    ) -> crate::OcctResult<*const NCollection_List_TopoDS_Shape>;
+    /// **Source:** `BRepOffset_MakeOffset.hxx`:135 - `BRepOffset_MakeOffset::Modified()`
     pub fn BRepOffset_MakeOffset_modified(
         self_: *mut BRepOffset_MakeOffset,
         theS: *const TopoDS_Shape,
-    ) -> crate::OcctResult<*const TopTools_ListOfShape>;
-    /// **Source:** `BRepOffset_MakeOffset.hxx`:135 - `BRepOffset_MakeOffset::IsDeleted()`
+    ) -> crate::OcctResult<*const NCollection_List_TopoDS_Shape>;
+    /// **Source:** `BRepOffset_MakeOffset.hxx`:138 - `BRepOffset_MakeOffset::IsDeleted()`
     pub fn BRepOffset_MakeOffset_is_deleted(
         self_: *mut BRepOffset_MakeOffset,
         S: *const TopoDS_Shape,
@@ -473,88 +473,88 @@ unsafe extern "C" {
         theInputShape: *const TopoDS_Shape,
         theOffsetValue: f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepOffset_MakeSimpleOffset.hxx`:76 - `BRepOffset_MakeSimpleOffset::Perform()`
+    /// **Source:** `BRepOffset_MakeSimpleOffset.hxx`:75 - `BRepOffset_MakeSimpleOffset::Perform()`
     pub fn BRepOffset_MakeSimpleOffset_perform(
         self_: *mut BRepOffset_MakeSimpleOffset,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepOffset_MakeSimpleOffset.hxx`:79 - `BRepOffset_MakeSimpleOffset::GetErrorMessage()`
+    /// **Source:** `BRepOffset_MakeSimpleOffset.hxx`:78 - `BRepOffset_MakeSimpleOffset::GetErrorMessage()`
     pub fn BRepOffset_MakeSimpleOffset_get_error_message(
         self_: *const BRepOffset_MakeSimpleOffset,
     ) -> crate::OcctResult<*mut TCollection_AsciiString>;
-    /// **Source:** `BRepOffset_MakeSimpleOffset.hxx`:82 - `BRepOffset_MakeSimpleOffset::GetError()`
+    /// **Source:** `BRepOffset_MakeSimpleOffset.hxx`:81 - `BRepOffset_MakeSimpleOffset::GetError()`
     pub fn BRepOffset_MakeSimpleOffset_get_error(
         self_: *const BRepOffset_MakeSimpleOffset,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `BRepOffset_MakeSimpleOffset.hxx`:86 - `BRepOffset_MakeSimpleOffset::GetBuildSolidFlag()`
+    /// **Source:** `BRepOffset_MakeSimpleOffset.hxx`:85 - `BRepOffset_MakeSimpleOffset::GetBuildSolidFlag()`
     pub fn BRepOffset_MakeSimpleOffset_get_build_solid_flag(
         self_: *const BRepOffset_MakeSimpleOffset,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BRepOffset_MakeSimpleOffset.hxx`:89 - `BRepOffset_MakeSimpleOffset::SetBuildSolidFlag()`
+    /// **Source:** `BRepOffset_MakeSimpleOffset.hxx`:88 - `BRepOffset_MakeSimpleOffset::SetBuildSolidFlag()`
     pub fn BRepOffset_MakeSimpleOffset_set_build_solid_flag(
         self_: *mut BRepOffset_MakeSimpleOffset,
         theBuildFlag: bool,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepOffset_MakeSimpleOffset.hxx`:92 - `BRepOffset_MakeSimpleOffset::GetOffsetValue()`
+    /// **Source:** `BRepOffset_MakeSimpleOffset.hxx`:91 - `BRepOffset_MakeSimpleOffset::GetOffsetValue()`
     pub fn BRepOffset_MakeSimpleOffset_get_offset_value(
         self_: *const BRepOffset_MakeSimpleOffset,
     ) -> crate::OcctResult<f64>;
-    /// **Source:** `BRepOffset_MakeSimpleOffset.hxx`:95 - `BRepOffset_MakeSimpleOffset::SetOffsetValue()`
+    /// **Source:** `BRepOffset_MakeSimpleOffset.hxx`:94 - `BRepOffset_MakeSimpleOffset::SetOffsetValue()`
     pub fn BRepOffset_MakeSimpleOffset_set_offset_value(
         self_: *mut BRepOffset_MakeSimpleOffset,
         theOffsetValue: f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepOffset_MakeSimpleOffset.hxx`:98 - `BRepOffset_MakeSimpleOffset::GetTolerance()`
+    /// **Source:** `BRepOffset_MakeSimpleOffset.hxx`:97 - `BRepOffset_MakeSimpleOffset::GetTolerance()`
     pub fn BRepOffset_MakeSimpleOffset_get_tolerance(
         self_: *const BRepOffset_MakeSimpleOffset,
     ) -> crate::OcctResult<f64>;
-    /// **Source:** `BRepOffset_MakeSimpleOffset.hxx`:101 - `BRepOffset_MakeSimpleOffset::SetTolerance()`
+    /// **Source:** `BRepOffset_MakeSimpleOffset.hxx`:100 - `BRepOffset_MakeSimpleOffset::SetTolerance()`
     pub fn BRepOffset_MakeSimpleOffset_set_tolerance(
         self_: *mut BRepOffset_MakeSimpleOffset,
         theValue: f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepOffset_MakeSimpleOffset.hxx`:104 - `BRepOffset_MakeSimpleOffset::IsDone()`
+    /// **Source:** `BRepOffset_MakeSimpleOffset.hxx`:103 - `BRepOffset_MakeSimpleOffset::IsDone()`
     pub fn BRepOffset_MakeSimpleOffset_is_done(
         self_: *const BRepOffset_MakeSimpleOffset,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BRepOffset_MakeSimpleOffset.hxx`:107 - `BRepOffset_MakeSimpleOffset::GetResultShape()`
+    /// **Source:** `BRepOffset_MakeSimpleOffset.hxx`:106 - `BRepOffset_MakeSimpleOffset::GetResultShape()`
     pub fn BRepOffset_MakeSimpleOffset_get_result_shape(
         self_: *const BRepOffset_MakeSimpleOffset,
     ) -> crate::OcctResult<*const TopoDS_Shape>;
-    /// **Source:** `BRepOffset_MakeSimpleOffset.hxx`:110 - `BRepOffset_MakeSimpleOffset::GetSafeOffset()`
+    /// **Source:** `BRepOffset_MakeSimpleOffset.hxx`:109 - `BRepOffset_MakeSimpleOffset::GetSafeOffset()`
     pub fn BRepOffset_MakeSimpleOffset_get_safe_offset(
         self_: *mut BRepOffset_MakeSimpleOffset,
         theExpectedToler: f64,
     ) -> crate::OcctResult<f64>;
-    /// **Source:** `BRepOffset_MakeSimpleOffset.hxx`:113 - `BRepOffset_MakeSimpleOffset::Generated()`
+    /// **Source:** `BRepOffset_MakeSimpleOffset.hxx`:112 - `BRepOffset_MakeSimpleOffset::Generated()`
     pub fn BRepOffset_MakeSimpleOffset_generated(
         self_: *const BRepOffset_MakeSimpleOffset,
         theShape: *const TopoDS_Shape,
     ) -> crate::OcctResult<*mut TopoDS_Shape>;
-    /// **Source:** `BRepOffset_MakeSimpleOffset.hxx`:116 - `BRepOffset_MakeSimpleOffset::Modified()`
+    /// **Source:** `BRepOffset_MakeSimpleOffset.hxx`:115 - `BRepOffset_MakeSimpleOffset::Modified()`
     pub fn BRepOffset_MakeSimpleOffset_modified(
         self_: *const BRepOffset_MakeSimpleOffset,
         theShape: *const TopoDS_Shape,
     ) -> crate::OcctResult<*mut TopoDS_Shape>;
     // ======================== BRepOffset_Offset ========================
     pub fn BRepOffset_Offset_destructor(self_: *mut BRepOffset_Offset);
-    /// **Source:** `BRepOffset_Offset.hxx`:48 - `BRepOffset_Offset::BRepOffset_Offset()`
-    pub fn BRepOffset_Offset_ctor() -> crate::OcctResult<*mut BRepOffset_Offset>;
     /// **Source:** `BRepOffset_Offset.hxx`:50 - `BRepOffset_Offset::BRepOffset_Offset()`
+    pub fn BRepOffset_Offset_ctor() -> crate::OcctResult<*mut BRepOffset_Offset>;
+    /// **Source:** `BRepOffset_Offset.hxx`:52 - `BRepOffset_Offset::BRepOffset_Offset()`
     pub fn BRepOffset_Offset_ctor_face_real_bool_jointype(
         Face: *const TopoDS_Face,
         Offset: f64,
         OffsetOutside: bool,
         JoinType: i32,
     ) -> crate::OcctResult<*mut BRepOffset_Offset>;
-    /// **Source:** `BRepOffset_Offset.hxx`:67 - `BRepOffset_Offset::BRepOffset_Offset()`
-    pub fn BRepOffset_Offset_ctor_face_real_datamapofshapeshape_bool_jointype(
+    /// **Source:** `BRepOffset_Offset.hxx`:69 - `BRepOffset_Offset::BRepOffset_Offset()`
+    pub fn BRepOffset_Offset_ctor_face_real_dmap_shape_shape_bool_jointype(
         Face: *const TopoDS_Face,
         Offset: f64,
-        Created: *const TopTools_DataMapOfShapeShape,
+        Created: *const NCollection_DataMap_TopoDS_Shape_TopoDS_Shape_TopTools_ShapeMapHasher,
         OffsetOutside: bool,
         JoinType: i32,
     ) -> crate::OcctResult<*mut BRepOffset_Offset>;
-    /// **Source:** `BRepOffset_Offset.hxx`:73 - `BRepOffset_Offset::BRepOffset_Offset()`
+    /// **Source:** `BRepOffset_Offset.hxx`:76 - `BRepOffset_Offset::BRepOffset_Offset()`
     pub fn BRepOffset_Offset_ctor_edge3_real_bool_real_shape(
         Path: *const TopoDS_Edge,
         Edge1: *const TopoDS_Edge,
@@ -564,7 +564,7 @@ unsafe extern "C" {
         Tol: f64,
         Conti: i32,
     ) -> crate::OcctResult<*mut BRepOffset_Offset>;
-    /// **Source:** `BRepOffset_Offset.hxx`:81 - `BRepOffset_Offset::BRepOffset_Offset()`
+    /// **Source:** `BRepOffset_Offset.hxx`:84 - `BRepOffset_Offset::BRepOffset_Offset()`
     pub fn BRepOffset_Offset_ctor_edge3_real_edge2_bool_real_shape(
         Path: *const TopoDS_Edge,
         Edge1: *const TopoDS_Edge,
@@ -576,16 +576,16 @@ unsafe extern "C" {
         Tol: f64,
         Conti: i32,
     ) -> crate::OcctResult<*mut BRepOffset_Offset>;
-    /// **Source:** `BRepOffset_Offset.hxx`:93 - `BRepOffset_Offset::BRepOffset_Offset()`
-    pub fn BRepOffset_Offset_ctor_vertex_listofshape_real_bool_real_shape(
+    /// **Source:** `BRepOffset_Offset.hxx`:96 - `BRepOffset_Offset::BRepOffset_Offset()`
+    pub fn BRepOffset_Offset_ctor_vertex_list_shape_real_bool_real_shape(
         Vertex: *const TopoDS_Vertex,
-        LEdge: *const TopTools_ListOfShape,
+        LEdge: *const NCollection_List_TopoDS_Shape,
         Offset: f64,
         Polynomial: bool,
         Tol: f64,
         Conti: i32,
     ) -> crate::OcctResult<*mut BRepOffset_Offset>;
-    /// **Source:** `BRepOffset_Offset.hxx`:100 - `BRepOffset_Offset::Init()`
+    /// **Source:** `BRepOffset_Offset.hxx`:103 - `BRepOffset_Offset::Init()`
     pub fn BRepOffset_Offset_init_face_real_bool_jointype(
         self_: *mut BRepOffset_Offset,
         Face: *const TopoDS_Face,
@@ -593,16 +593,16 @@ unsafe extern "C" {
         OffsetOutside: bool,
         JoinType: i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepOffset_Offset.hxx`:105 - `BRepOffset_Offset::Init()`
-    pub fn BRepOffset_Offset_init_face_real_datamapofshapeshape_bool_jointype(
+    /// **Source:** `BRepOffset_Offset.hxx`:108 - `BRepOffset_Offset::Init()`
+    pub fn BRepOffset_Offset_init_face_real_dmap_shape_shape_bool_jointype(
         self_: *mut BRepOffset_Offset,
         Face: *const TopoDS_Face,
         Offset: f64,
-        Created: *const TopTools_DataMapOfShapeShape,
+        Created: *const NCollection_DataMap_TopoDS_Shape_TopoDS_Shape_TopTools_ShapeMapHasher,
         OffsetOutside: bool,
         JoinType: i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepOffset_Offset.hxx`:111 - `BRepOffset_Offset::Init()`
+    /// **Source:** `BRepOffset_Offset.hxx`:115 - `BRepOffset_Offset::Init()`
     pub fn BRepOffset_Offset_init_edge3_real_bool_real_shape(
         self_: *mut BRepOffset_Offset,
         Path: *const TopoDS_Edge,
@@ -613,7 +613,7 @@ unsafe extern "C" {
         Tol: f64,
         Conti: i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepOffset_Offset.hxx`:119 - `BRepOffset_Offset::Init()`
+    /// **Source:** `BRepOffset_Offset.hxx`:123 - `BRepOffset_Offset::Init()`
     pub fn BRepOffset_Offset_init_edge3_real_edge2_bool_real_shape(
         self_: *mut BRepOffset_Offset,
         Path: *const TopoDS_Edge,
@@ -626,36 +626,36 @@ unsafe extern "C" {
         Tol: f64,
         Conti: i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepOffset_Offset.hxx`:131 - `BRepOffset_Offset::Init()`
-    pub fn BRepOffset_Offset_init_vertex_listofshape_real_bool_real_shape(
+    /// **Source:** `BRepOffset_Offset.hxx`:135 - `BRepOffset_Offset::Init()`
+    pub fn BRepOffset_Offset_init_vertex_list_shape_real_bool_real_shape(
         self_: *mut BRepOffset_Offset,
         Vertex: *const TopoDS_Vertex,
-        LEdge: *const TopTools_ListOfShape,
+        LEdge: *const NCollection_List_TopoDS_Shape,
         Offset: f64,
         Polynomial: bool,
         Tol: f64,
         Conti: i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepOffset_Offset.hxx`:139 - `BRepOffset_Offset::Init()`
+    /// **Source:** `BRepOffset_Offset.hxx`:143 - `BRepOffset_Offset::Init()`
     pub fn BRepOffset_Offset_init_edge_real(
         self_: *mut BRepOffset_Offset,
         Edge: *const TopoDS_Edge,
         Offset: f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepOffset_Offset.hxx`:141 - `BRepOffset_Offset::InitialShape()`
+    /// **Source:** `BRepOffset_Offset.hxx`:145 - `BRepOffset_Offset::InitialShape()`
     pub fn BRepOffset_Offset_initial_shape(
         self_: *const BRepOffset_Offset,
     ) -> crate::OcctResult<*const TopoDS_Shape>;
-    /// **Source:** `BRepOffset_Offset.hxx`:143 - `BRepOffset_Offset::Face()`
+    /// **Source:** `BRepOffset_Offset.hxx`:147 - `BRepOffset_Offset::Face()`
     pub fn BRepOffset_Offset_face(
         self_: *const BRepOffset_Offset,
     ) -> crate::OcctResult<*const TopoDS_Face>;
-    /// **Source:** `BRepOffset_Offset.hxx`:145 - `BRepOffset_Offset::Generated()`
+    /// **Source:** `BRepOffset_Offset.hxx`:149 - `BRepOffset_Offset::Generated()`
     pub fn BRepOffset_Offset_generated(
         self_: *const BRepOffset_Offset,
         Shape: *const TopoDS_Shape,
     ) -> crate::OcctResult<*mut TopoDS_Shape>;
-    /// **Source:** `BRepOffset_Offset.hxx`:147 - `BRepOffset_Offset::Status()`
+    /// **Source:** `BRepOffset_Offset.hxx`:151 - `BRepOffset_Offset::Status()`
     pub fn BRepOffset_Offset_status(self_: *const BRepOffset_Offset) -> crate::OcctResult<i32>;
     // ======================== BRepOffset_SimpleOffset ========================
     pub fn BRepOffset_SimpleOffset_destructor(self_: *mut BRepOffset_SimpleOffset);
@@ -668,12 +668,12 @@ unsafe extern "C" {
     /// **Source:** `BRepOffset_SimpleOffset.hxx`:47 - `BRepOffset_SimpleOffset::DynamicType()`
     pub fn BRepOffset_SimpleOffset_dynamic_type(
         self_: *const BRepOffset_SimpleOffset,
-    ) -> crate::OcctResult<*const HandleStandardType>;
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// **Source:** `BRepOffset_SimpleOffset.hxx`:68 - `BRepOffset_SimpleOffset::NewSurface()`
     pub fn BRepOffset_SimpleOffset_new_surface(
         self_: *mut BRepOffset_SimpleOffset,
         F: *const TopoDS_Face,
-        S: *mut HandleGeomSurface,
+        S: *mut Handle_Geom_Surface,
         L: *mut TopLoc_Location,
         Tol: *mut f64,
         RevWires: *mut bool,
@@ -683,7 +683,7 @@ unsafe extern "C" {
     pub fn BRepOffset_SimpleOffset_new_curve(
         self_: *mut BRepOffset_SimpleOffset,
         E: *const TopoDS_Edge,
-        C: *mut HandleGeomCurve,
+        C: *mut Handle_Geom_Curve,
         L: *mut TopLoc_Location,
         Tol: *mut f64,
     ) -> crate::OcctResult<bool>;
@@ -694,17 +694,17 @@ unsafe extern "C" {
         P: *mut gp_Pnt,
         Tol: *mut f64,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BRepOffset_SimpleOffset.hxx`:101 - `BRepOffset_SimpleOffset::NewCurve2d()`
+    /// **Source:** `BRepOffset_SimpleOffset.hxx`:99 - `BRepOffset_SimpleOffset::NewCurve2d()`
     pub fn BRepOffset_SimpleOffset_new_curve2d(
         self_: *mut BRepOffset_SimpleOffset,
         E: *const TopoDS_Edge,
         F: *const TopoDS_Face,
         NewE: *const TopoDS_Edge,
         NewF: *const TopoDS_Face,
-        C: *mut HandleGeom2dCurve,
+        C: *mut Handle_Geom2d_Curve,
         Tol: *mut f64,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BRepOffset_SimpleOffset.hxx`:113 - `BRepOffset_SimpleOffset::NewParameter()`
+    /// **Source:** `BRepOffset_SimpleOffset.hxx`:111 - `BRepOffset_SimpleOffset::NewParameter()`
     pub fn BRepOffset_SimpleOffset_new_parameter(
         self_: *mut BRepOffset_SimpleOffset,
         V: *const TopoDS_Vertex,
@@ -712,7 +712,7 @@ unsafe extern "C" {
         P: *mut f64,
         Tol: *mut f64,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BRepOffset_SimpleOffset.hxx`:124 - `BRepOffset_SimpleOffset::Continuity()`
+    /// **Source:** `BRepOffset_SimpleOffset.hxx`:122 - `BRepOffset_SimpleOffset::Continuity()`
     pub fn BRepOffset_SimpleOffset_continuity(
         self_: *mut BRepOffset_SimpleOffset,
         E: *const TopoDS_Edge,
@@ -726,7 +726,7 @@ unsafe extern "C" {
     pub fn BRepOffset_SimpleOffset_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
     /// **Source:** `BRepOffset_SimpleOffset.hxx`:47 - `BRepOffset_SimpleOffset::get_type_descriptor()`
     pub fn BRepOffset_SimpleOffset_get_type_descriptor(
-    ) -> crate::OcctResult<*const HandleStandardType>;
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast BRepOffset_SimpleOffset to BRepTools_Modification
     pub fn BRepOffset_SimpleOffset_as_BRepTools_Modification(
         self_: *const BRepOffset_SimpleOffset,
@@ -746,78 +746,79 @@ unsafe extern "C" {
     /// Wrap BRepOffset_SimpleOffset in a Handle
     pub fn BRepOffset_SimpleOffset_to_handle(
         obj: *mut BRepOffset_SimpleOffset,
-    ) -> crate::OcctResult<*mut HandleBRepOffsetSimpleOffset>;
+    ) -> crate::OcctResult<*mut Handle_BRepOffset_SimpleOffset>;
     /// Destroy Handle<BRepOffset_SimpleOffset>
-    pub fn HandleBRepOffsetSimpleOffset_destructor(self_: *mut HandleBRepOffsetSimpleOffset);
+    pub fn Handle_BRepOffset_SimpleOffset_destructor(self_: *mut Handle_BRepOffset_SimpleOffset);
     /// Clone Handle<BRepOffset_SimpleOffset> (increments reference count)
-    pub fn HandleBRepOffsetSimpleOffset_clone(
-        self_: *const HandleBRepOffsetSimpleOffset,
-    ) -> crate::OcctResult<*mut HandleBRepOffsetSimpleOffset>;
+    pub fn Handle_BRepOffset_SimpleOffset_clone(
+        self_: *const Handle_BRepOffset_SimpleOffset,
+    ) -> crate::OcctResult<*mut Handle_BRepOffset_SimpleOffset>;
     /// Check if Handle<BRepOffset_SimpleOffset> is null
-    pub fn HandleBRepOffsetSimpleOffset_is_null(self_: *const HandleBRepOffsetSimpleOffset)
-        -> bool;
+    pub fn Handle_BRepOffset_SimpleOffset_is_null(
+        self_: *const Handle_BRepOffset_SimpleOffset,
+    ) -> bool;
     /// Dereference Handle to get *const BRepOffset_SimpleOffset
-    pub fn HandleBRepOffsetSimpleOffset_get(
-        handle: *const HandleBRepOffsetSimpleOffset,
+    pub fn Handle_BRepOffset_SimpleOffset_get(
+        handle: *const Handle_BRepOffset_SimpleOffset,
     ) -> crate::OcctResult<*const BRepOffset_SimpleOffset>;
     /// Dereference Handle to get *mut BRepOffset_SimpleOffset
-    pub fn HandleBRepOffsetSimpleOffset_get_mut(
-        handle: *mut HandleBRepOffsetSimpleOffset,
+    pub fn Handle_BRepOffset_SimpleOffset_get_mut(
+        handle: *mut Handle_BRepOffset_SimpleOffset,
     ) -> crate::OcctResult<*mut BRepOffset_SimpleOffset>;
     /// Upcast Handle<BRepOffset_SimpleOffset> to Handle<BRepTools_Modification>
-    pub fn HandleBRepOffsetSimpleOffset_to_HandleBRepToolsModification(
-        self_: *const HandleBRepOffsetSimpleOffset,
-    ) -> crate::OcctResult<*mut HandleBRepToolsModification>;
+    pub fn Handle_BRepOffset_SimpleOffset_to_Handle_BRepTools_Modification(
+        self_: *const Handle_BRepOffset_SimpleOffset,
+    ) -> crate::OcctResult<*mut Handle_BRepTools_Modification>;
     /// Upcast Handle<BRepOffset_SimpleOffset> to Handle<Standard_Transient>
-    pub fn HandleBRepOffsetSimpleOffset_to_HandleStandardTransient(
-        self_: *const HandleBRepOffsetSimpleOffset,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
-    /// Inherited: **Source:** `BRepTools_Modification.hxx`:71 - `BRepTools_Modification::NewTriangulation()`
+    pub fn Handle_BRepOffset_SimpleOffset_to_Handle_Standard_Transient(
+        self_: *const Handle_BRepOffset_SimpleOffset,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
+    /// Inherited: **Source:** `BRepTools_Modification.hxx`:68 - `BRepTools_Modification::NewTriangulation()`
     pub fn BRepOffset_SimpleOffset_inherited_NewTriangulation(
         self_: *mut BRepOffset_SimpleOffset,
         F: *const TopoDS_Face,
-        T: *mut HandlePolyTriangulation,
+        T: *mut Handle_Poly_Triangulation,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `BRepTools_Modification.hxx`:89 - `BRepTools_Modification::NewPolygon()`
+    /// Inherited: **Source:** `BRepTools_Modification.hxx`:86 - `BRepTools_Modification::NewPolygon()`
     pub fn BRepOffset_SimpleOffset_inherited_NewPolygon(
         self_: *mut BRepOffset_SimpleOffset,
         E: *const TopoDS_Edge,
-        P: *mut HandlePolyPolygon3D,
+        P: *mut Handle_Poly_Polygon3D,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `BRepTools_Modification.hxx`:95 - `BRepTools_Modification::NewPolygonOnTriangulation()`
+    /// Inherited: **Source:** `BRepTools_Modification.hxx`:91 - `BRepTools_Modification::NewPolygonOnTriangulation()`
     pub fn BRepOffset_SimpleOffset_inherited_NewPolygonOnTriangulation(
         self_: *mut BRepOffset_SimpleOffset,
         E: *const TopoDS_Edge,
         F: *const TopoDS_Face,
-        P: *mut HandlePolyPolygonOnTriangulation,
+        P: *mut Handle_Poly_PolygonOnTriangulation,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn BRepOffset_SimpleOffset_inherited_IsInstance(
         self_: *const BRepOffset_SimpleOffset,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn BRepOffset_SimpleOffset_inherited_IsKind(
         self_: *const BRepOffset_SimpleOffset,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn BRepOffset_SimpleOffset_inherited_This(
         self_: *const BRepOffset_SimpleOffset,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn BRepOffset_SimpleOffset_inherited_GetRefCount(
         self_: *const BRepOffset_SimpleOffset,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn BRepOffset_SimpleOffset_inherited_IncrementRefCounter(
         self_: *mut BRepOffset_SimpleOffset,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn BRepOffset_SimpleOffset_inherited_DecrementRefCounter(
         self_: *mut BRepOffset_SimpleOffset,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn BRepOffset_SimpleOffset_inherited_Delete(
         self_: *const BRepOffset_SimpleOffset,
     ) -> *const std::ffi::c_char;
@@ -825,13 +826,13 @@ unsafe extern "C" {
     pub fn BRepOffset_Tool_destructor(self_: *mut BRepOffset_Tool);
     /// **Source:** `BRepOffset_Tool.hxx` - `BRepOffset_Tool::BRepOffset_Tool()`
     pub fn BRepOffset_Tool_ctor() -> crate::OcctResult<*mut BRepOffset_Tool>;
-    /// **Source:** `BRepOffset_Tool.hxx`:49 - `BRepOffset_Tool::EdgeVertices()`
+    /// **Source:** `BRepOffset_Tool.hxx`:50 - `BRepOffset_Tool::EdgeVertices()`
     pub fn BRepOffset_Tool_edge_vertices(
         E: *const TopoDS_Edge,
         V1: *mut TopoDS_Vertex,
         V2: *mut TopoDS_Vertex,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepOffset_Tool.hxx`:56 - `BRepOffset_Tool::OrientSection()`
+    /// **Source:** `BRepOffset_Tool.hxx`:57 - `BRepOffset_Tool::OrientSection()`
     pub fn BRepOffset_Tool_orient_section(
         E: *const TopoDS_Edge,
         F1: *const TopoDS_Face,
@@ -839,66 +840,66 @@ unsafe extern "C" {
         O1: &mut i32,
         O2: &mut i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepOffset_Tool.hxx`:66 - `BRepOffset_Tool::FindCommonShapes()`
-    pub fn BRepOffset_Tool_find_common_shapes_face2_listofshape2(
+    /// **Source:** `BRepOffset_Tool.hxx`:67 - `BRepOffset_Tool::FindCommonShapes()`
+    pub fn BRepOffset_Tool_find_common_shapes_face2_list_shape2(
         theF1: *const TopoDS_Face,
         theF2: *const TopoDS_Face,
-        theLE: *mut TopTools_ListOfShape,
-        theLV: *mut TopTools_ListOfShape,
+        theLE: *mut NCollection_List_TopoDS_Shape,
+        theLV: *mut NCollection_List_TopoDS_Shape,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BRepOffset_Tool.hxx`:74 - `BRepOffset_Tool::FindCommonShapes()`
-    pub fn BRepOffset_Tool_find_common_shapes_shape2_shapeenum_listofshape(
+    /// **Source:** `BRepOffset_Tool.hxx`:75 - `BRepOffset_Tool::FindCommonShapes()`
+    pub fn BRepOffset_Tool_find_common_shapes_shape2_shapeenum_list_shape(
         theS1: *const TopoDS_Shape,
         theS2: *const TopoDS_Shape,
         theType: i32,
-        theLSC: *mut TopTools_ListOfShape,
+        theLSC: *mut NCollection_List_TopoDS_Shape,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BRepOffset_Tool.hxx`:83 - `BRepOffset_Tool::Inter3D()`
+    /// **Source:** `BRepOffset_Tool.hxx`:84 - `BRepOffset_Tool::Inter3D()`
     pub fn BRepOffset_Tool_inter3_d(
         F1: *const TopoDS_Face,
         F2: *const TopoDS_Face,
-        LInt1: *mut TopTools_ListOfShape,
-        LInt2: *mut TopTools_ListOfShape,
+        LInt1: *mut NCollection_List_TopoDS_Shape,
+        LInt2: *mut NCollection_List_TopoDS_Shape,
         Side: i32,
         RefEdge: *const TopoDS_Edge,
         RefFace1: *const TopoDS_Face,
         RefFace2: *const TopoDS_Face,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepOffset_Tool.hxx`:96 - `BRepOffset_Tool::TryProject()`
+    /// **Source:** `BRepOffset_Tool.hxx`:97 - `BRepOffset_Tool::TryProject()`
     pub fn BRepOffset_Tool_try_project(
         F1: *const TopoDS_Face,
         F2: *const TopoDS_Face,
-        Edges: *const TopTools_ListOfShape,
-        LInt1: *mut TopTools_ListOfShape,
-        LInt2: *mut TopTools_ListOfShape,
+        Edges: *const NCollection_List_TopoDS_Shape,
+        LInt1: *mut NCollection_List_TopoDS_Shape,
+        LInt2: *mut NCollection_List_TopoDS_Shape,
         Side: i32,
         TolConf: f64,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BRepOffset_Tool.hxx`:104 - `BRepOffset_Tool::PipeInter()`
+    /// **Source:** `BRepOffset_Tool.hxx`:105 - `BRepOffset_Tool::PipeInter()`
     pub fn BRepOffset_Tool_pipe_inter(
         F1: *const TopoDS_Face,
         F2: *const TopoDS_Face,
-        LInt1: *mut TopTools_ListOfShape,
-        LInt2: *mut TopTools_ListOfShape,
+        LInt1: *mut NCollection_List_TopoDS_Shape,
+        LInt2: *mut NCollection_List_TopoDS_Shape,
         Side: i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepOffset_Tool.hxx`:110 - `BRepOffset_Tool::Inter2d()`
+    /// **Source:** `BRepOffset_Tool.hxx`:111 - `BRepOffset_Tool::Inter2d()`
     pub fn BRepOffset_Tool_inter2d(
         F: *const TopoDS_Face,
         E1: *const TopoDS_Edge,
         E2: *const TopoDS_Edge,
-        LV: *mut TopTools_ListOfShape,
+        LV: *mut NCollection_List_TopoDS_Shape,
         Tol: f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepOffset_Tool.hxx`:116 - `BRepOffset_Tool::InterOrExtent()`
+    /// **Source:** `BRepOffset_Tool.hxx`:117 - `BRepOffset_Tool::InterOrExtent()`
     pub fn BRepOffset_Tool_inter_or_extent(
         F1: *const TopoDS_Face,
         F2: *const TopoDS_Face,
-        LInt1: *mut TopTools_ListOfShape,
-        LInt2: *mut TopTools_ListOfShape,
+        LInt1: *mut NCollection_List_TopoDS_Shape,
+        LInt2: *mut NCollection_List_TopoDS_Shape,
         Side: i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepOffset_Tool.hxx`:122 - `BRepOffset_Tool::CheckBounds()`
+    /// **Source:** `BRepOffset_Tool.hxx`:123 - `BRepOffset_Tool::CheckBounds()`
     pub fn BRepOffset_Tool_check_bounds(
         F: *const TopoDS_Face,
         Analyse: *const BRepOffset_Analyse,
@@ -906,7 +907,7 @@ unsafe extern "C" {
         enlargeVfirst: *mut bool,
         enlargeVlast: *mut bool,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepOffset_Tool.hxx`:144 - `BRepOffset_Tool::EnLargeFace()`
+    /// **Source:** `BRepOffset_Tool.hxx`:145 - `BRepOffset_Tool::EnLargeFace()`
     pub fn BRepOffset_Tool_en_large_face(
         F: *const TopoDS_Face,
         NF: *mut TopoDS_Face,
@@ -924,40 +925,40 @@ unsafe extern "C" {
     /// **Source:** `BRepOffset_Tool.hxx`:158 - `BRepOffset_Tool::ExtentFace()`
     pub fn BRepOffset_Tool_extent_face(
         F: *const TopoDS_Face,
-        ConstShapes: *mut TopTools_DataMapOfShapeShape,
-        ToBuild: *mut TopTools_DataMapOfShapeShape,
+        ConstShapes: *mut NCollection_DataMap_TopoDS_Shape_TopoDS_Shape_TopTools_ShapeMapHasher,
+        ToBuild: *mut NCollection_DataMap_TopoDS_Shape_TopoDS_Shape_TopTools_ShapeMapHasher,
         Side: i32,
         TolConf: f64,
         NF: *mut TopoDS_Face,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepOffset_Tool.hxx`:170 - `BRepOffset_Tool::BuildNeighbour()`
+    /// **Source:** `BRepOffset_Tool.hxx`:171 - `BRepOffset_Tool::BuildNeighbour()`
     pub fn BRepOffset_Tool_build_neighbour(
         W: *const TopoDS_Wire,
         F: *const TopoDS_Face,
-        NOnV1: *mut TopTools_DataMapOfShapeShape,
-        NOnV2: *mut TopTools_DataMapOfShapeShape,
+        NOnV1: *mut NCollection_DataMap_TopoDS_Shape_TopoDS_Shape_TopTools_ShapeMapHasher,
+        NOnV2: *mut NCollection_DataMap_TopoDS_Shape_TopoDS_Shape_TopTools_ShapeMapHasher,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepOffset_Tool.hxx`:178 - `BRepOffset_Tool::MapVertexEdges()`
+    /// **Source:** `BRepOffset_Tool.hxx`:180 - `BRepOffset_Tool::MapVertexEdges()`
     pub fn BRepOffset_Tool_map_vertex_edges(
         S: *const TopoDS_Shape,
-        MVE: *mut TopTools_DataMapOfShapeListOfShape,
+        MVE: *mut NCollection_DataMap_TopoDS_Shape_NCollection_List_TopoDS_Shape_TopTools_ShapeMapHasher,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepOffset_Tool.hxx`:187 - `BRepOffset_Tool::Deboucle3D()`
+    /// **Source:** `BRepOffset_Tool.hxx`:191 - `BRepOffset_Tool::Deboucle3D()`
     pub fn BRepOffset_Tool_deboucle3_d(
         S: *const TopoDS_Shape,
-        Boundary: *const TopTools_MapOfShape,
+        Boundary: *const NCollection_Map_TopoDS_Shape_TopTools_ShapeMapHasher,
     ) -> crate::OcctResult<*mut TopoDS_Shape>;
-    /// **Source:** `BRepOffset_Tool.hxx`:190 - `BRepOffset_Tool::CorrectOrientation()`
+    /// **Source:** `BRepOffset_Tool.hxx`:195 - `BRepOffset_Tool::CorrectOrientation()`
     pub fn BRepOffset_Tool_correct_orientation(
         SI: *const TopoDS_Shape,
-        NewEdges: *const TopTools_IndexedMapOfShape,
-        AsDes: *mut HandleBRepAlgoAsDes,
+        NewEdges: *const NCollection_IndexedMap_TopoDS_Shape_TopTools_ShapeMapHasher,
+        AsDes: *const Handle_BRepAlgo_AsDes,
         InitOffset: *mut BRepAlgo_Image,
         Offset: f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepOffset_Tool.hxx`:196 - `BRepOffset_Tool::Gabarit()`
-    pub fn BRepOffset_Tool_gabarit(aCurve: *const HandleGeomCurve) -> crate::OcctResult<f64>;
-    /// **Source:** `BRepOffset_Tool.hxx`:200 - `BRepOffset_Tool::CheckPlanesNormals()`
+    /// **Source:** `BRepOffset_Tool.hxx`:202 - `BRepOffset_Tool::Gabarit()`
+    pub fn BRepOffset_Tool_gabarit(aCurve: *const Handle_Geom_Curve) -> crate::OcctResult<f64>;
+    /// **Source:** `BRepOffset_Tool.hxx`:206 - `BRepOffset_Tool::CheckPlanesNormals()`
     pub fn BRepOffset_Tool_check_planes_normals(
         theFace1: *const TopoDS_Face,
         theFace2: *const TopoDS_Face,
@@ -965,22 +966,22 @@ unsafe extern "C" {
     ) -> crate::OcctResult<bool>;
     // ======================== BRepOffsetAPI_DraftAngle ========================
     pub fn BRepOffsetAPI_DraftAngle_destructor(self_: *mut BRepOffsetAPI_DraftAngle);
-    /// **Source:** `BRepOffsetAPI_DraftAngle.hxx`:69 - `BRepOffsetAPI_DraftAngle::BRepOffsetAPI_DraftAngle()`
+    /// **Source:** `BRepOffsetAPI_DraftAngle.hxx`:70 - `BRepOffsetAPI_DraftAngle::BRepOffsetAPI_DraftAngle()`
     pub fn BRepOffsetAPI_DraftAngle_ctor() -> crate::OcctResult<*mut BRepOffsetAPI_DraftAngle>;
-    /// **Source:** `BRepOffsetAPI_DraftAngle.hxx`:74 - `BRepOffsetAPI_DraftAngle::BRepOffsetAPI_DraftAngle()`
+    /// **Source:** `BRepOffsetAPI_DraftAngle.hxx`:75 - `BRepOffsetAPI_DraftAngle::BRepOffsetAPI_DraftAngle()`
     pub fn BRepOffsetAPI_DraftAngle_ctor_shape(
         S: *const TopoDS_Shape,
     ) -> crate::OcctResult<*mut BRepOffsetAPI_DraftAngle>;
-    /// **Source:** `BRepOffsetAPI_DraftAngle.hxx`:79 - `BRepOffsetAPI_DraftAngle::Clear()`
+    /// **Source:** `BRepOffsetAPI_DraftAngle.hxx`:80 - `BRepOffsetAPI_DraftAngle::Clear()`
     pub fn BRepOffsetAPI_DraftAngle_clear(
         self_: *mut BRepOffsetAPI_DraftAngle,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepOffsetAPI_DraftAngle.hxx`:83 - `BRepOffsetAPI_DraftAngle::Init()`
+    /// **Source:** `BRepOffsetAPI_DraftAngle.hxx`:84 - `BRepOffsetAPI_DraftAngle::Init()`
     pub fn BRepOffsetAPI_DraftAngle_init(
         self_: *mut BRepOffsetAPI_DraftAngle,
         S: *const TopoDS_Shape,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepOffsetAPI_DraftAngle.hxx`:117 - `BRepOffsetAPI_DraftAngle::Add()`
+    /// **Source:** `BRepOffsetAPI_DraftAngle.hxx`:118 - `BRepOffsetAPI_DraftAngle::Add()`
     pub fn BRepOffsetAPI_DraftAngle_add(
         self_: *mut BRepOffsetAPI_DraftAngle,
         F: *const TopoDS_Face,
@@ -989,52 +990,52 @@ unsafe extern "C" {
         NeutralPlane: *const gp_Pln,
         Flag: bool,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepOffsetAPI_DraftAngle.hxx`:136 - `BRepOffsetAPI_DraftAngle::AddDone()`
+    /// **Source:** `BRepOffsetAPI_DraftAngle.hxx`:137 - `BRepOffsetAPI_DraftAngle::AddDone()`
     pub fn BRepOffsetAPI_DraftAngle_add_done(
         self_: *const BRepOffsetAPI_DraftAngle,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BRepOffsetAPI_DraftAngle.hxx`:151 - `BRepOffsetAPI_DraftAngle::Remove()`
+    /// **Source:** `BRepOffsetAPI_DraftAngle.hxx`:152 - `BRepOffsetAPI_DraftAngle::Remove()`
     pub fn BRepOffsetAPI_DraftAngle_remove(
         self_: *mut BRepOffsetAPI_DraftAngle,
         F: *const TopoDS_Face,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepOffsetAPI_DraftAngle.hxx`:159 - `BRepOffsetAPI_DraftAngle::ProblematicShape()`
+    /// **Source:** `BRepOffsetAPI_DraftAngle.hxx`:160 - `BRepOffsetAPI_DraftAngle::ProblematicShape()`
     pub fn BRepOffsetAPI_DraftAngle_problematic_shape(
         self_: *const BRepOffsetAPI_DraftAngle,
     ) -> crate::OcctResult<*const TopoDS_Shape>;
-    /// **Source:** `BRepOffsetAPI_DraftAngle.hxx`:166 - `BRepOffsetAPI_DraftAngle::Status()`
+    /// **Source:** `BRepOffsetAPI_DraftAngle.hxx`:167 - `BRepOffsetAPI_DraftAngle::Status()`
     pub fn BRepOffsetAPI_DraftAngle_status(
         self_: *const BRepOffsetAPI_DraftAngle,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `BRepOffsetAPI_DraftAngle.hxx`:170 - `BRepOffsetAPI_DraftAngle::ConnectedFaces()`
+    /// **Source:** `BRepOffsetAPI_DraftAngle.hxx`:171 - `BRepOffsetAPI_DraftAngle::ConnectedFaces()`
     pub fn BRepOffsetAPI_DraftAngle_connected_faces(
         self_: *const BRepOffsetAPI_DraftAngle,
         F: *const TopoDS_Face,
-    ) -> crate::OcctResult<*const TopTools_ListOfShape>;
-    /// **Source:** `BRepOffsetAPI_DraftAngle.hxx`:174 - `BRepOffsetAPI_DraftAngle::ModifiedFaces()`
+    ) -> crate::OcctResult<*const NCollection_List_TopoDS_Shape>;
+    /// **Source:** `BRepOffsetAPI_DraftAngle.hxx`:175 - `BRepOffsetAPI_DraftAngle::ModifiedFaces()`
     pub fn BRepOffsetAPI_DraftAngle_modified_faces(
         self_: *const BRepOffsetAPI_DraftAngle,
-    ) -> crate::OcctResult<*const TopTools_ListOfShape>;
-    /// **Source:** `BRepOffsetAPI_DraftAngle.hxx`:177 - `BRepOffsetAPI_DraftAngle::Build()`
+    ) -> crate::OcctResult<*const NCollection_List_TopoDS_Shape>;
+    /// **Source:** `BRepOffsetAPI_DraftAngle.hxx`:178 - `BRepOffsetAPI_DraftAngle::Build()`
     pub fn BRepOffsetAPI_DraftAngle_build(
         self_: *mut BRepOffsetAPI_DraftAngle,
         theRange: *const Message_ProgressRange,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepOffsetAPI_DraftAngle.hxx`:180 - `BRepOffsetAPI_DraftAngle::CorrectWires()`
+    /// **Source:** `BRepOffsetAPI_DraftAngle.hxx`:181 - `BRepOffsetAPI_DraftAngle::CorrectWires()`
     pub fn BRepOffsetAPI_DraftAngle_correct_wires(
         self_: *mut BRepOffsetAPI_DraftAngle,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepOffsetAPI_DraftAngle.hxx`:184 - `BRepOffsetAPI_DraftAngle::Generated()`
+    /// **Source:** `BRepOffsetAPI_DraftAngle.hxx`:185 - `BRepOffsetAPI_DraftAngle::Generated()`
     pub fn BRepOffsetAPI_DraftAngle_generated(
         self_: *mut BRepOffsetAPI_DraftAngle,
         S: *const TopoDS_Shape,
-    ) -> crate::OcctResult<*const TopTools_ListOfShape>;
+    ) -> crate::OcctResult<*const NCollection_List_TopoDS_Shape>;
     /// **Source:** `BRepOffsetAPI_DraftAngle.hxx`:189 - `BRepOffsetAPI_DraftAngle::Modified()`
     pub fn BRepOffsetAPI_DraftAngle_modified(
         self_: *mut BRepOffsetAPI_DraftAngle,
         S: *const TopoDS_Shape,
-    ) -> crate::OcctResult<*const TopTools_ListOfShape>;
-    /// **Source:** `BRepOffsetAPI_DraftAngle.hxx`:198 - `BRepOffsetAPI_DraftAngle::ModifiedShape()`
+    ) -> crate::OcctResult<*const NCollection_List_TopoDS_Shape>;
+    /// **Source:** `BRepOffsetAPI_DraftAngle.hxx`:197 - `BRepOffsetAPI_DraftAngle::ModifiedShape()`
     pub fn BRepOffsetAPI_DraftAngle_modified_shape(
         self_: *const BRepOffsetAPI_DraftAngle,
         S: *const TopoDS_Shape,
@@ -1084,44 +1085,44 @@ unsafe extern "C" {
     pub fn BRepOffsetAPI_FindContigousEdges_destructor(
         self_: *mut BRepOffsetAPI_FindContigousEdges,
     );
-    /// **Source:** `BRepOffsetAPI_FindContigousEdges.hxx`:55 - `BRepOffsetAPI_FindContigousEdges::BRepOffsetAPI_FindContigousEdges()`
+    /// **Source:** `BRepOffsetAPI_FindContigousEdges.hxx`:56 - `BRepOffsetAPI_FindContigousEdges::BRepOffsetAPI_FindContigousEdges()`
     pub fn BRepOffsetAPI_FindContigousEdges_ctor_real_bool(
         tolerance: f64,
         option: bool,
     ) -> crate::OcctResult<*mut BRepOffsetAPI_FindContigousEdges>;
-    /// **Source:** `BRepOffsetAPI_FindContigousEdges.hxx`:64 - `BRepOffsetAPI_FindContigousEdges::Init()`
+    /// **Source:** `BRepOffsetAPI_FindContigousEdges.hxx`:65 - `BRepOffsetAPI_FindContigousEdges::Init()`
     pub fn BRepOffsetAPI_FindContigousEdges_init(
         self_: *mut BRepOffsetAPI_FindContigousEdges,
         tolerance: f64,
         option: bool,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepOffsetAPI_FindContigousEdges.hxx`:71 - `BRepOffsetAPI_FindContigousEdges::Add()`
+    /// **Source:** `BRepOffsetAPI_FindContigousEdges.hxx`:72 - `BRepOffsetAPI_FindContigousEdges::Add()`
     pub fn BRepOffsetAPI_FindContigousEdges_add(
         self_: *mut BRepOffsetAPI_FindContigousEdges,
         shape: *const TopoDS_Shape,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepOffsetAPI_FindContigousEdges.hxx`:85 - `BRepOffsetAPI_FindContigousEdges::Perform()`
+    /// **Source:** `BRepOffsetAPI_FindContigousEdges.hxx`:86 - `BRepOffsetAPI_FindContigousEdges::Perform()`
     pub fn BRepOffsetAPI_FindContigousEdges_perform(
         self_: *mut BRepOffsetAPI_FindContigousEdges,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepOffsetAPI_FindContigousEdges.hxx`:88 - `BRepOffsetAPI_FindContigousEdges::NbEdges()`
+    /// **Source:** `BRepOffsetAPI_FindContigousEdges.hxx`:89 - `BRepOffsetAPI_FindContigousEdges::NbEdges()`
     pub fn BRepOffsetAPI_FindContigousEdges_nb_edges(
         self_: *const BRepOffsetAPI_FindContigousEdges,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `BRepOffsetAPI_FindContigousEdges.hxx`:92 - `BRepOffsetAPI_FindContigousEdges::NbContigousEdges()`
+    /// **Source:** `BRepOffsetAPI_FindContigousEdges.hxx`:93 - `BRepOffsetAPI_FindContigousEdges::NbContigousEdges()`
     pub fn BRepOffsetAPI_FindContigousEdges_nb_contigous_edges(
         self_: *const BRepOffsetAPI_FindContigousEdges,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `BRepOffsetAPI_FindContigousEdges.hxx`:101 - `BRepOffsetAPI_FindContigousEdges::ContigousEdge()`
+    /// **Source:** `BRepOffsetAPI_FindContigousEdges.hxx`:102 - `BRepOffsetAPI_FindContigousEdges::ContigousEdge()`
     pub fn BRepOffsetAPI_FindContigousEdges_contigous_edge(
         self_: *const BRepOffsetAPI_FindContigousEdges,
         index: i32,
     ) -> crate::OcctResult<*const TopoDS_Edge>;
-    /// **Source:** `BRepOffsetAPI_FindContigousEdges.hxx`:112 - `BRepOffsetAPI_FindContigousEdges::ContigousEdgeCouple()`
+    /// **Source:** `BRepOffsetAPI_FindContigousEdges.hxx`:113 - `BRepOffsetAPI_FindContigousEdges::ContigousEdgeCouple()`
     pub fn BRepOffsetAPI_FindContigousEdges_contigous_edge_couple(
         self_: *const BRepOffsetAPI_FindContigousEdges,
         index: i32,
-    ) -> crate::OcctResult<*const TopTools_ListOfShape>;
+    ) -> crate::OcctResult<*const NCollection_List_TopoDS_Shape>;
     /// **Source:** `BRepOffsetAPI_FindContigousEdges.hxx`:127 - `BRepOffsetAPI_FindContigousEdges::SectionToBoundary()`
     pub fn BRepOffsetAPI_FindContigousEdges_section_to_boundary(
         self_: *const BRepOffsetAPI_FindContigousEdges,
@@ -1157,36 +1158,36 @@ unsafe extern "C" {
     ) -> *const std::ffi::c_char;
     // ======================== BRepOffsetAPI_MakeDraft ========================
     pub fn BRepOffsetAPI_MakeDraft_destructor(self_: *mut BRepOffsetAPI_MakeDraft);
-    /// **Source:** `BRepOffsetAPI_MakeDraft.hxx`:47 - `BRepOffsetAPI_MakeDraft::BRepOffsetAPI_MakeDraft()`
+    /// **Source:** `BRepOffsetAPI_MakeDraft.hxx`:48 - `BRepOffsetAPI_MakeDraft::BRepOffsetAPI_MakeDraft()`
     pub fn BRepOffsetAPI_MakeDraft_ctor_shape_dir_real(
         Shape: *const TopoDS_Shape,
         Dir: *const gp_Dir,
         Angle: f64,
     ) -> crate::OcctResult<*mut BRepOffsetAPI_MakeDraft>;
-    /// **Source:** `BRepOffsetAPI_MakeDraft.hxx`:61 - `BRepOffsetAPI_MakeDraft::SetOptions()`
+    /// **Source:** `BRepOffsetAPI_MakeDraft.hxx`:62 - `BRepOffsetAPI_MakeDraft::SetOptions()`
     pub fn BRepOffsetAPI_MakeDraft_set_options(
         self_: *mut BRepOffsetAPI_MakeDraft,
         Style: i32,
         AngleMin: f64,
         AngleMax: f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepOffsetAPI_MakeDraft.hxx`:69 - `BRepOffsetAPI_MakeDraft::SetDraft()`
+    /// **Source:** `BRepOffsetAPI_MakeDraft.hxx`:70 - `BRepOffsetAPI_MakeDraft::SetDraft()`
     pub fn BRepOffsetAPI_MakeDraft_set_draft(
         self_: *mut BRepOffsetAPI_MakeDraft,
         IsInternal: bool,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepOffsetAPI_MakeDraft.hxx`:73 - `BRepOffsetAPI_MakeDraft::Perform()`
+    /// **Source:** `BRepOffsetAPI_MakeDraft.hxx`:74 - `BRepOffsetAPI_MakeDraft::Perform()`
     pub fn BRepOffsetAPI_MakeDraft_perform_real(
         self_: *mut BRepOffsetAPI_MakeDraft,
         LengthMax: f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepOffsetAPI_MakeDraft.hxx`:78 - `BRepOffsetAPI_MakeDraft::Perform()`
+    /// **Source:** `BRepOffsetAPI_MakeDraft.hxx`:79 - `BRepOffsetAPI_MakeDraft::Perform()`
     pub fn BRepOffsetAPI_MakeDraft_perform_handlegeomsurface_bool(
         self_: *mut BRepOffsetAPI_MakeDraft,
-        Surface: *const HandleGeomSurface,
+        Surface: *const Handle_Geom_Surface,
         KeepInsideSurface: bool,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepOffsetAPI_MakeDraft.hxx`:84 - `BRepOffsetAPI_MakeDraft::Perform()`
+    /// **Source:** `BRepOffsetAPI_MakeDraft.hxx`:85 - `BRepOffsetAPI_MakeDraft::Perform()`
     pub fn BRepOffsetAPI_MakeDraft_perform_shape_bool(
         self_: *mut BRepOffsetAPI_MakeDraft,
         StopShape: *const TopoDS_Shape,
@@ -1200,7 +1201,7 @@ unsafe extern "C" {
     pub fn BRepOffsetAPI_MakeDraft_generated(
         self_: *mut BRepOffsetAPI_MakeDraft,
         S: *const TopoDS_Shape,
-    ) -> crate::OcctResult<*const TopTools_ListOfShape>;
+    ) -> crate::OcctResult<*const NCollection_List_TopoDS_Shape>;
     /// Upcast BRepOffsetAPI_MakeDraft to BRepBuilderAPI_MakeShape
     pub fn BRepOffsetAPI_MakeDraft_as_BRepBuilderAPI_MakeShape(
         self_: *const BRepOffsetAPI_MakeDraft,
@@ -1241,9 +1242,9 @@ unsafe extern "C" {
     ) -> *const std::ffi::c_char;
     // ======================== BRepOffsetAPI_MakeEvolved ========================
     pub fn BRepOffsetAPI_MakeEvolved_destructor(self_: *mut BRepOffsetAPI_MakeEvolved);
-    /// **Source:** `BRepOffsetAPI_MakeEvolved.hxx`:82 - `BRepOffsetAPI_MakeEvolved::BRepOffsetAPI_MakeEvolved()`
+    /// **Source:** `BRepOffsetAPI_MakeEvolved.hxx`:83 - `BRepOffsetAPI_MakeEvolved::BRepOffsetAPI_MakeEvolved()`
     pub fn BRepOffsetAPI_MakeEvolved_ctor() -> crate::OcctResult<*mut BRepOffsetAPI_MakeEvolved>;
-    /// **Source:** `BRepOffsetAPI_MakeEvolved.hxx`:88 - `BRepOffsetAPI_MakeEvolved::BRepOffsetAPI_MakeEvolved()`
+    /// **Source:** `BRepOffsetAPI_MakeEvolved.hxx`:89 - `BRepOffsetAPI_MakeEvolved::BRepOffsetAPI_MakeEvolved()`
     pub fn BRepOffsetAPI_MakeEvolved_ctor_shape_wire_jointype_bool3_real_bool2(
         theSpine: *const TopoDS_Shape,
         theProfile: *const TopoDS_Wire,
@@ -1269,12 +1270,12 @@ unsafe extern "C" {
         self_: *const BRepOffsetAPI_MakeEvolved,
         SpineShape: *const TopoDS_Shape,
         ProfShape: *const TopoDS_Shape,
-    ) -> crate::OcctResult<*const TopTools_ListOfShape>;
-    /// **Source:** `BRepOffsetAPI_MakeEvolved.hxx`:112 - `BRepOffsetAPI_MakeEvolved::Top()`
+    ) -> crate::OcctResult<*const NCollection_List_TopoDS_Shape>;
+    /// **Source:** `BRepOffsetAPI_MakeEvolved.hxx`:113 - `BRepOffsetAPI_MakeEvolved::Top()`
     pub fn BRepOffsetAPI_MakeEvolved_top(
         self_: *const BRepOffsetAPI_MakeEvolved,
     ) -> crate::OcctResult<*const TopoDS_Shape>;
-    /// **Source:** `BRepOffsetAPI_MakeEvolved.hxx`:115 - `BRepOffsetAPI_MakeEvolved::Bottom()`
+    /// **Source:** `BRepOffsetAPI_MakeEvolved.hxx`:116 - `BRepOffsetAPI_MakeEvolved::Bottom()`
     pub fn BRepOffsetAPI_MakeEvolved_bottom(
         self_: *const BRepOffsetAPI_MakeEvolved,
     ) -> crate::OcctResult<*const TopoDS_Shape>;
@@ -1313,7 +1314,7 @@ unsafe extern "C" {
     ) -> *const std::ffi::c_char;
     // ======================== BRepOffsetAPI_MakeFilling ========================
     pub fn BRepOffsetAPI_MakeFilling_destructor(self_: *mut BRepOffsetAPI_MakeFilling);
-    /// **Source:** `BRepOffsetAPI_MakeFilling.hxx`:86 - `BRepOffsetAPI_MakeFilling::BRepOffsetAPI_MakeFilling()`
+    /// **Source:** `BRepOffsetAPI_MakeFilling.hxx`:87 - `BRepOffsetAPI_MakeFilling::BRepOffsetAPI_MakeFilling()`
     pub fn BRepOffsetAPI_MakeFilling_ctor_int3_bool_real4_int2(
         Degree: i32,
         NbPtsOnCur: i32,
@@ -1326,7 +1327,7 @@ unsafe extern "C" {
         MaxDeg: i32,
         MaxSegments: i32,
     ) -> crate::OcctResult<*mut BRepOffsetAPI_MakeFilling>;
-    /// **Source:** `BRepOffsetAPI_MakeFilling.hxx`:105 - `BRepOffsetAPI_MakeFilling::SetConstrParam()`
+    /// **Source:** `BRepOffsetAPI_MakeFilling.hxx`:106 - `BRepOffsetAPI_MakeFilling::SetConstrParam()`
     pub fn BRepOffsetAPI_MakeFilling_set_constr_param(
         self_: *mut BRepOffsetAPI_MakeFilling,
         Tol2d: f64,
@@ -1334,7 +1335,7 @@ unsafe extern "C" {
         TolAng: f64,
         TolCurv: f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepOffsetAPI_MakeFilling.hxx`:124 - `BRepOffsetAPI_MakeFilling::SetResolParam()`
+    /// **Source:** `BRepOffsetAPI_MakeFilling.hxx`:125 - `BRepOffsetAPI_MakeFilling::SetResolParam()`
     pub fn BRepOffsetAPI_MakeFilling_set_resol_param(
         self_: *mut BRepOffsetAPI_MakeFilling,
         Degree: i32,
@@ -1342,7 +1343,7 @@ unsafe extern "C" {
         NbIter: i32,
         Anisotropie: bool,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepOffsetAPI_MakeFilling.hxx`:135 - `BRepOffsetAPI_MakeFilling::SetApproxParam()`
+    /// **Source:** `BRepOffsetAPI_MakeFilling.hxx`:136 - `BRepOffsetAPI_MakeFilling::SetApproxParam()`
     pub fn BRepOffsetAPI_MakeFilling_set_approx_param(
         self_: *mut BRepOffsetAPI_MakeFilling,
         MaxDeg: i32,
@@ -1400,30 +1401,30 @@ unsafe extern "C" {
     pub fn BRepOffsetAPI_MakeFilling_generated(
         self_: *mut BRepOffsetAPI_MakeFilling,
         S: *const TopoDS_Shape,
-    ) -> crate::OcctResult<*const TopTools_ListOfShape>;
-    /// **Source:** `BRepOffsetAPI_MakeFilling.hxx`:216 - `BRepOffsetAPI_MakeFilling::G0Error()`
+    ) -> crate::OcctResult<*const NCollection_List_TopoDS_Shape>;
+    /// **Source:** `BRepOffsetAPI_MakeFilling.hxx`:215 - `BRepOffsetAPI_MakeFilling::G0Error()`
     pub fn BRepOffsetAPI_MakeFilling_g0_error(
         self_: *const BRepOffsetAPI_MakeFilling,
     ) -> crate::OcctResult<f64>;
-    /// **Source:** `BRepOffsetAPI_MakeFilling.hxx`:220 - `BRepOffsetAPI_MakeFilling::G1Error()`
+    /// **Source:** `BRepOffsetAPI_MakeFilling.hxx`:219 - `BRepOffsetAPI_MakeFilling::G1Error()`
     pub fn BRepOffsetAPI_MakeFilling_g1_error(
         self_: *const BRepOffsetAPI_MakeFilling,
     ) -> crate::OcctResult<f64>;
-    /// **Source:** `BRepOffsetAPI_MakeFilling.hxx`:224 - `BRepOffsetAPI_MakeFilling::G2Error()`
+    /// **Source:** `BRepOffsetAPI_MakeFilling.hxx`:223 - `BRepOffsetAPI_MakeFilling::G2Error()`
     pub fn BRepOffsetAPI_MakeFilling_g2_error(
         self_: *const BRepOffsetAPI_MakeFilling,
     ) -> crate::OcctResult<f64>;
-    /// **Source:** `BRepOffsetAPI_MakeFilling.hxx`:228 - `BRepOffsetAPI_MakeFilling::G0Error()`
+    /// **Source:** `BRepOffsetAPI_MakeFilling.hxx`:227 - `BRepOffsetAPI_MakeFilling::G0Error()`
     pub fn BRepOffsetAPI_MakeFilling_g0_error_int(
         self_: *mut BRepOffsetAPI_MakeFilling,
         Index: i32,
     ) -> crate::OcctResult<f64>;
-    /// **Source:** `BRepOffsetAPI_MakeFilling.hxx`:232 - `BRepOffsetAPI_MakeFilling::G1Error()`
+    /// **Source:** `BRepOffsetAPI_MakeFilling.hxx`:231 - `BRepOffsetAPI_MakeFilling::G1Error()`
     pub fn BRepOffsetAPI_MakeFilling_g1_error_int(
         self_: *mut BRepOffsetAPI_MakeFilling,
         Index: i32,
     ) -> crate::OcctResult<f64>;
-    /// **Source:** `BRepOffsetAPI_MakeFilling.hxx`:236 - `BRepOffsetAPI_MakeFilling::G2Error()`
+    /// **Source:** `BRepOffsetAPI_MakeFilling.hxx`:235 - `BRepOffsetAPI_MakeFilling::G2Error()`
     pub fn BRepOffsetAPI_MakeFilling_g2_error_int(
         self_: *mut BRepOffsetAPI_MakeFilling,
         Index: i32,
@@ -1459,59 +1460,59 @@ unsafe extern "C" {
     ) -> *const std::ffi::c_char;
     // ======================== BRepOffsetAPI_MakeOffset ========================
     pub fn BRepOffsetAPI_MakeOffset_destructor(self_: *mut BRepOffsetAPI_MakeOffset);
-    /// **Source:** `BRepOffsetAPI_MakeOffset.hxx`:42 - `BRepOffsetAPI_MakeOffset::BRepOffsetAPI_MakeOffset()`
+    /// **Source:** `BRepOffsetAPI_MakeOffset.hxx`:43 - `BRepOffsetAPI_MakeOffset::BRepOffsetAPI_MakeOffset()`
     pub fn BRepOffsetAPI_MakeOffset_ctor() -> crate::OcctResult<*mut BRepOffsetAPI_MakeOffset>;
-    /// **Source:** `BRepOffsetAPI_MakeOffset.hxx`:46 - `BRepOffsetAPI_MakeOffset::BRepOffsetAPI_MakeOffset()`
+    /// **Source:** `BRepOffsetAPI_MakeOffset.hxx`:47 - `BRepOffsetAPI_MakeOffset::BRepOffsetAPI_MakeOffset()`
     pub fn BRepOffsetAPI_MakeOffset_ctor_face_jointype_bool(
         Spine: *const TopoDS_Face,
         Join: i32,
         IsOpenResult: bool,
     ) -> crate::OcctResult<*mut BRepOffsetAPI_MakeOffset>;
-    /// **Source:** `BRepOffsetAPI_MakeOffset.hxx`:62 - `BRepOffsetAPI_MakeOffset::BRepOffsetAPI_MakeOffset()`
+    /// **Source:** `BRepOffsetAPI_MakeOffset.hxx`:63 - `BRepOffsetAPI_MakeOffset::BRepOffsetAPI_MakeOffset()`
     pub fn BRepOffsetAPI_MakeOffset_ctor_wire_jointype_bool(
         Spine: *const TopoDS_Wire,
         Join: i32,
         IsOpenResult: bool,
     ) -> crate::OcctResult<*mut BRepOffsetAPI_MakeOffset>;
-    /// **Source:** `BRepOffsetAPI_MakeOffset.hxx`:58 - `BRepOffsetAPI_MakeOffset::Init()`
+    /// **Source:** `BRepOffsetAPI_MakeOffset.hxx`:59 - `BRepOffsetAPI_MakeOffset::Init()`
     pub fn BRepOffsetAPI_MakeOffset_init_face_jointype_bool(
         self_: *mut BRepOffsetAPI_MakeOffset,
         Spine: *const TopoDS_Face,
         Join: i32,
         IsOpenResult: bool,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepOffsetAPI_MakeOffset.hxx`:67 - `BRepOffsetAPI_MakeOffset::Init()`
+    /// **Source:** `BRepOffsetAPI_MakeOffset.hxx`:68 - `BRepOffsetAPI_MakeOffset::Init()`
     pub fn BRepOffsetAPI_MakeOffset_init_jointype_bool(
         self_: *mut BRepOffsetAPI_MakeOffset,
         Join: i32,
         IsOpenResult: bool,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepOffsetAPI_MakeOffset.hxx`:73 - `BRepOffsetAPI_MakeOffset::SetApprox()`
+    /// **Source:** `BRepOffsetAPI_MakeOffset.hxx`:74 - `BRepOffsetAPI_MakeOffset::SetApprox()`
     pub fn BRepOffsetAPI_MakeOffset_set_approx(
         self_: *mut BRepOffsetAPI_MakeOffset,
         ToApprox: bool,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepOffsetAPI_MakeOffset.hxx`:76 - `BRepOffsetAPI_MakeOffset::AddWire()`
+    /// **Source:** `BRepOffsetAPI_MakeOffset.hxx`:77 - `BRepOffsetAPI_MakeOffset::AddWire()`
     pub fn BRepOffsetAPI_MakeOffset_add_wire(
         self_: *mut BRepOffsetAPI_MakeOffset,
         Spine: *const TopoDS_Wire,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepOffsetAPI_MakeOffset.hxx`:82 - `BRepOffsetAPI_MakeOffset::Perform()`
+    /// **Source:** `BRepOffsetAPI_MakeOffset.hxx`:83 - `BRepOffsetAPI_MakeOffset::Perform()`
     pub fn BRepOffsetAPI_MakeOffset_perform(
         self_: *mut BRepOffsetAPI_MakeOffset,
         Offset: f64,
         Alt: f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepOffsetAPI_MakeOffset.hxx`:85 - `BRepOffsetAPI_MakeOffset::Build()`
+    /// **Source:** `BRepOffsetAPI_MakeOffset.hxx`:86 - `BRepOffsetAPI_MakeOffset::Build()`
     pub fn BRepOffsetAPI_MakeOffset_build(
         self_: *mut BRepOffsetAPI_MakeOffset,
         theRange: *const Message_ProgressRange,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepOffsetAPI_MakeOffset.hxx`:90 - `BRepOffsetAPI_MakeOffset::Generated()`
+    /// **Source:** `BRepOffsetAPI_MakeOffset.hxx`:91 - `BRepOffsetAPI_MakeOffset::Generated()`
     pub fn BRepOffsetAPI_MakeOffset_generated(
         self_: *mut BRepOffsetAPI_MakeOffset,
         S: *const TopoDS_Shape,
-    ) -> crate::OcctResult<*const TopTools_ListOfShape>;
+    ) -> crate::OcctResult<*const NCollection_List_TopoDS_Shape>;
     /// **Source:** `BRepOffsetAPI_MakeOffset.hxx`:95 - `BRepOffsetAPI_MakeOffset::ConvertFace()`
     pub fn BRepOffsetAPI_MakeOffset_convert_face(
         theFace: *const TopoDS_Face,
@@ -1552,10 +1553,10 @@ unsafe extern "C" {
     ) -> *const std::ffi::c_char;
     // ======================== BRepOffsetAPI_MakeOffsetShape ========================
     pub fn BRepOffsetAPI_MakeOffsetShape_destructor(self_: *mut BRepOffsetAPI_MakeOffsetShape);
-    /// **Source:** `BRepOffsetAPI_MakeOffsetShape.hxx`:44 - `BRepOffsetAPI_MakeOffsetShape::BRepOffsetAPI_MakeOffsetShape()`
+    /// **Source:** `BRepOffsetAPI_MakeOffsetShape.hxx`:45 - `BRepOffsetAPI_MakeOffsetShape::BRepOffsetAPI_MakeOffsetShape()`
     pub fn BRepOffsetAPI_MakeOffsetShape_ctor(
     ) -> crate::OcctResult<*mut BRepOffsetAPI_MakeOffsetShape>;
-    /// **Source:** `BRepOffsetAPI_MakeOffsetShape.hxx`:48 - `BRepOffsetAPI_MakeOffsetShape::PerformBySimple()`
+    /// **Source:** `BRepOffsetAPI_MakeOffsetShape.hxx`:49 - `BRepOffsetAPI_MakeOffsetShape::PerformBySimple()`
     pub fn BRepOffsetAPI_MakeOffsetShape_perform_by_simple(
         self_: *mut BRepOffsetAPI_MakeOffsetShape,
         theS: *const TopoDS_Shape,
@@ -1587,18 +1588,18 @@ unsafe extern "C" {
     pub fn BRepOffsetAPI_MakeOffsetShape_generated(
         self_: *mut BRepOffsetAPI_MakeOffsetShape,
         S: *const TopoDS_Shape,
-    ) -> crate::OcctResult<*const TopTools_ListOfShape>;
-    /// **Source:** `BRepOffsetAPI_MakeOffsetShape.hxx`:129 - `BRepOffsetAPI_MakeOffsetShape::Modified()`
+    ) -> crate::OcctResult<*const NCollection_List_TopoDS_Shape>;
+    /// **Source:** `BRepOffsetAPI_MakeOffsetShape.hxx`:128 - `BRepOffsetAPI_MakeOffsetShape::Modified()`
     pub fn BRepOffsetAPI_MakeOffsetShape_modified(
         self_: *mut BRepOffsetAPI_MakeOffsetShape,
         S: *const TopoDS_Shape,
-    ) -> crate::OcctResult<*const TopTools_ListOfShape>;
-    /// **Source:** `BRepOffsetAPI_MakeOffsetShape.hxx`:133 - `BRepOffsetAPI_MakeOffsetShape::IsDeleted()`
+    ) -> crate::OcctResult<*const NCollection_List_TopoDS_Shape>;
+    /// **Source:** `BRepOffsetAPI_MakeOffsetShape.hxx`:131 - `BRepOffsetAPI_MakeOffsetShape::IsDeleted()`
     pub fn BRepOffsetAPI_MakeOffsetShape_is_deleted(
         self_: *mut BRepOffsetAPI_MakeOffsetShape,
         S: *const TopoDS_Shape,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BRepOffsetAPI_MakeOffsetShape.hxx`:136 - `BRepOffsetAPI_MakeOffsetShape::GetJoinType()`
+    /// **Source:** `BRepOffsetAPI_MakeOffsetShape.hxx`:134 - `BRepOffsetAPI_MakeOffsetShape::GetJoinType()`
     pub fn BRepOffsetAPI_MakeOffsetShape_get_join_type(
         self_: *const BRepOffsetAPI_MakeOffsetShape,
     ) -> crate::OcctResult<i32>;
@@ -1665,14 +1666,14 @@ unsafe extern "C" {
     pub fn BRepOffsetAPI_MakePipe_generated_shape(
         self_: *mut BRepOffsetAPI_MakePipe,
         S: *const TopoDS_Shape,
-    ) -> crate::OcctResult<*const TopTools_ListOfShape>;
-    /// **Source:** `BRepOffsetAPI_MakePipe.hxx`:83 - `BRepOffsetAPI_MakePipe::Generated()`
+    ) -> crate::OcctResult<*const NCollection_List_TopoDS_Shape>;
+    /// **Source:** `BRepOffsetAPI_MakePipe.hxx`:82 - `BRepOffsetAPI_MakePipe::Generated()`
     pub fn BRepOffsetAPI_MakePipe_generated_shape2(
         self_: *mut BRepOffsetAPI_MakePipe,
         SSpine: *const TopoDS_Shape,
         SProfile: *const TopoDS_Shape,
     ) -> crate::OcctResult<*mut TopoDS_Shape>;
-    /// **Source:** `BRepOffsetAPI_MakePipe.hxx`:85 - `BRepOffsetAPI_MakePipe::ErrorOnSurface()`
+    /// **Source:** `BRepOffsetAPI_MakePipe.hxx`:84 - `BRepOffsetAPI_MakePipe::ErrorOnSurface()`
     pub fn BRepOffsetAPI_MakePipe_error_on_surface(
         self_: *const BRepOffsetAPI_MakePipe,
     ) -> crate::OcctResult<f64>;
@@ -1719,49 +1720,49 @@ unsafe extern "C" {
     ) -> *const std::ffi::c_char;
     // ======================== BRepOffsetAPI_MakePipeShell ========================
     pub fn BRepOffsetAPI_MakePipeShell_destructor(self_: *mut BRepOffsetAPI_MakePipeShell);
-    /// **Source:** `BRepOffsetAPI_MakePipeShell.hxx`:64 - `BRepOffsetAPI_MakePipeShell::BRepOffsetAPI_MakePipeShell()`
+    /// **Source:** `BRepOffsetAPI_MakePipeShell.hxx`:65 - `BRepOffsetAPI_MakePipeShell::BRepOffsetAPI_MakePipeShell()`
     pub fn BRepOffsetAPI_MakePipeShell_ctor_wire(
         Spine: *const TopoDS_Wire,
     ) -> crate::OcctResult<*mut BRepOffsetAPI_MakePipeShell>;
-    /// **Source:** `BRepOffsetAPI_MakePipeShell.hxx`:69 - `BRepOffsetAPI_MakePipeShell::SetMode()`
+    /// **Source:** `BRepOffsetAPI_MakePipeShell.hxx`:70 - `BRepOffsetAPI_MakePipeShell::SetMode()`
     pub fn BRepOffsetAPI_MakePipeShell_set_mode_bool(
         self_: *mut BRepOffsetAPI_MakePipeShell,
         IsFrenet: bool,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepOffsetAPI_MakePipeShell.hxx`:73 - `BRepOffsetAPI_MakePipeShell::SetDiscreteMode()`
+    /// **Source:** `BRepOffsetAPI_MakePipeShell.hxx`:74 - `BRepOffsetAPI_MakePipeShell::SetDiscreteMode()`
     pub fn BRepOffsetAPI_MakePipeShell_set_discrete_mode(
         self_: *mut BRepOffsetAPI_MakePipeShell,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepOffsetAPI_MakePipeShell.hxx`:77 - `BRepOffsetAPI_MakePipeShell::SetMode()`
+    /// **Source:** `BRepOffsetAPI_MakePipeShell.hxx`:78 - `BRepOffsetAPI_MakePipeShell::SetMode()`
     pub fn BRepOffsetAPI_MakePipeShell_set_mode_ax2(
         self_: *mut BRepOffsetAPI_MakePipeShell,
         Axe: *const gp_Ax2,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepOffsetAPI_MakePipeShell.hxx`:82 - `BRepOffsetAPI_MakePipeShell::SetMode()`
+    /// **Source:** `BRepOffsetAPI_MakePipeShell.hxx`:83 - `BRepOffsetAPI_MakePipeShell::SetMode()`
     pub fn BRepOffsetAPI_MakePipeShell_set_mode_dir(
         self_: *mut BRepOffsetAPI_MakePipeShell,
         BiNormal: *const gp_Dir,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepOffsetAPI_MakePipeShell.hxx`:88 - `BRepOffsetAPI_MakePipeShell::SetMode()`
+    /// **Source:** `BRepOffsetAPI_MakePipeShell.hxx`:89 - `BRepOffsetAPI_MakePipeShell::SetMode()`
     pub fn BRepOffsetAPI_MakePipeShell_set_mode_shape(
         self_: *mut BRepOffsetAPI_MakePipeShell,
         SpineSupport: *const TopoDS_Shape,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BRepOffsetAPI_MakePipeShell.hxx`:118 - `BRepOffsetAPI_MakePipeShell::SetMode()`
+    /// **Source:** `BRepOffsetAPI_MakePipeShell.hxx`:119 - `BRepOffsetAPI_MakePipeShell::SetMode()`
     pub fn BRepOffsetAPI_MakePipeShell_set_mode_wire_bool_typeofcontact(
         self_: *mut BRepOffsetAPI_MakePipeShell,
         AuxiliarySpine: *const TopoDS_Wire,
         CurvilinearEquivalence: bool,
         KeepContact: i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepOffsetAPI_MakePipeShell.hxx`:132 - `BRepOffsetAPI_MakePipeShell::Add()`
+    /// **Source:** `BRepOffsetAPI_MakePipeShell.hxx`:133 - `BRepOffsetAPI_MakePipeShell::Add()`
     pub fn BRepOffsetAPI_MakePipeShell_add_shape_bool2(
         self_: *mut BRepOffsetAPI_MakePipeShell,
         Profile: *const TopoDS_Shape,
         WithContact: bool,
         WithCorrection: bool,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepOffsetAPI_MakePipeShell.hxx`:140 - `BRepOffsetAPI_MakePipeShell::Add()`
+    /// **Source:** `BRepOffsetAPI_MakePipeShell.hxx`:141 - `BRepOffsetAPI_MakePipeShell::Add()`
     pub fn BRepOffsetAPI_MakePipeShell_add_shape_vertex_bool2(
         self_: *mut BRepOffsetAPI_MakePipeShell,
         Profile: *const TopoDS_Shape,
@@ -1769,68 +1770,68 @@ unsafe extern "C" {
         WithContact: bool,
         WithCorrection: bool,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepOffsetAPI_MakePipeShell.hxx`:151 - `BRepOffsetAPI_MakePipeShell::SetLaw()`
+    /// **Source:** `BRepOffsetAPI_MakePipeShell.hxx`:152 - `BRepOffsetAPI_MakePipeShell::SetLaw()`
     pub fn BRepOffsetAPI_MakePipeShell_set_law_shape_handlelawfunction_bool2(
         self_: *mut BRepOffsetAPI_MakePipeShell,
         Profile: *const TopoDS_Shape,
-        L: *const HandleLawFunction,
+        L: *const Handle_Law_Function,
         WithContact: bool,
         WithCorrection: bool,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepOffsetAPI_MakePipeShell.hxx`:162 - `BRepOffsetAPI_MakePipeShell::SetLaw()`
+    /// **Source:** `BRepOffsetAPI_MakePipeShell.hxx`:163 - `BRepOffsetAPI_MakePipeShell::SetLaw()`
     pub fn BRepOffsetAPI_MakePipeShell_set_law_shape_handlelawfunction_vertex_bool2(
         self_: *mut BRepOffsetAPI_MakePipeShell,
         Profile: *const TopoDS_Shape,
-        L: *const HandleLawFunction,
+        L: *const Handle_Law_Function,
         Location: *const TopoDS_Vertex,
         WithContact: bool,
         WithCorrection: bool,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepOffsetAPI_MakePipeShell.hxx`:169 - `BRepOffsetAPI_MakePipeShell::Delete()`
+    /// **Source:** `BRepOffsetAPI_MakePipeShell.hxx`:170 - `BRepOffsetAPI_MakePipeShell::Delete()`
     pub fn BRepOffsetAPI_MakePipeShell_delete(
         self_: *mut BRepOffsetAPI_MakePipeShell,
         Profile: *const TopoDS_Shape,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepOffsetAPI_MakePipeShell.hxx`:173 - `BRepOffsetAPI_MakePipeShell::IsReady()`
+    /// **Source:** `BRepOffsetAPI_MakePipeShell.hxx`:174 - `BRepOffsetAPI_MakePipeShell::IsReady()`
     pub fn BRepOffsetAPI_MakePipeShell_is_ready(
         self_: *const BRepOffsetAPI_MakePipeShell,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BRepOffsetAPI_MakePipeShell.hxx`:180 - `BRepOffsetAPI_MakePipeShell::GetStatus()`
+    /// **Source:** `BRepOffsetAPI_MakePipeShell.hxx`:181 - `BRepOffsetAPI_MakePipeShell::GetStatus()`
     pub fn BRepOffsetAPI_MakePipeShell_get_status(
         self_: *const BRepOffsetAPI_MakePipeShell,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `BRepOffsetAPI_MakePipeShell.hxx`:186 - `BRepOffsetAPI_MakePipeShell::SetTolerance()`
+    /// **Source:** `BRepOffsetAPI_MakePipeShell.hxx`:187 - `BRepOffsetAPI_MakePipeShell::SetTolerance()`
     pub fn BRepOffsetAPI_MakePipeShell_set_tolerance(
         self_: *mut BRepOffsetAPI_MakePipeShell,
         Tol3d: f64,
         BoundTol: f64,
         TolAngular: f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepOffsetAPI_MakePipeShell.hxx`:191 - `BRepOffsetAPI_MakePipeShell::SetMaxDegree()`
+    /// **Source:** `BRepOffsetAPI_MakePipeShell.hxx`:192 - `BRepOffsetAPI_MakePipeShell::SetMaxDegree()`
     pub fn BRepOffsetAPI_MakePipeShell_set_max_degree(
         self_: *mut BRepOffsetAPI_MakePipeShell,
         NewMaxDegree: i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepOffsetAPI_MakePipeShell.hxx`:195 - `BRepOffsetAPI_MakePipeShell::SetMaxSegments()`
+    /// **Source:** `BRepOffsetAPI_MakePipeShell.hxx`:196 - `BRepOffsetAPI_MakePipeShell::SetMaxSegments()`
     pub fn BRepOffsetAPI_MakePipeShell_set_max_segments(
         self_: *mut BRepOffsetAPI_MakePipeShell,
         NewMaxSegments: i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepOffsetAPI_MakePipeShell.hxx`:200 - `BRepOffsetAPI_MakePipeShell::SetForceApproxC1()`
+    /// **Source:** `BRepOffsetAPI_MakePipeShell.hxx`:201 - `BRepOffsetAPI_MakePipeShell::SetForceApproxC1()`
     pub fn BRepOffsetAPI_MakePipeShell_set_force_approx_c1(
         self_: *mut BRepOffsetAPI_MakePipeShell,
         ForceApproxC1: bool,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepOffsetAPI_MakePipeShell.hxx`:239 - `BRepOffsetAPI_MakePipeShell::SetTransitionMode()`
+    /// **Source:** `BRepOffsetAPI_MakePipeShell.hxx`:240 - `BRepOffsetAPI_MakePipeShell::SetTransitionMode()`
     pub fn BRepOffsetAPI_MakePipeShell_set_transition_mode(
         self_: *mut BRepOffsetAPI_MakePipeShell,
         Mode: i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepOffsetAPI_MakePipeShell.hxx`:251 - `BRepOffsetAPI_MakePipeShell::Simulate()`
+    /// **Source:** `BRepOffsetAPI_MakePipeShell.hxx`:252 - `BRepOffsetAPI_MakePipeShell::Simulate()`
     pub fn BRepOffsetAPI_MakePipeShell_simulate(
         self_: *mut BRepOffsetAPI_MakePipeShell,
         NumberOfSection: i32,
-        Result: *mut TopTools_ListOfShape,
+        Result: *mut NCollection_List_TopoDS_Shape,
     ) -> *const std::ffi::c_char;
     /// **Source:** `BRepOffsetAPI_MakePipeShell.hxx`:255 - `BRepOffsetAPI_MakePipeShell::Build()`
     pub fn BRepOffsetAPI_MakePipeShell_build(
@@ -1853,17 +1854,26 @@ unsafe extern "C" {
     pub fn BRepOffsetAPI_MakePipeShell_generated(
         self_: *mut BRepOffsetAPI_MakePipeShell,
         S: *const TopoDS_Shape,
-    ) -> crate::OcctResult<*const TopTools_ListOfShape>;
-    /// **Source:** `BRepOffsetAPI_MakePipeShell.hxx`:275 - `BRepOffsetAPI_MakePipeShell::ErrorOnSurface()`
+    ) -> crate::OcctResult<*const NCollection_List_TopoDS_Shape>;
+    /// **Source:** `BRepOffsetAPI_MakePipeShell.hxx`:274 - `BRepOffsetAPI_MakePipeShell::ErrorOnSurface()`
     pub fn BRepOffsetAPI_MakePipeShell_error_on_surface(
         self_: *const BRepOffsetAPI_MakePipeShell,
     ) -> crate::OcctResult<f64>;
-    /// **Source:** `BRepOffsetAPI_MakePipeShell.hxx`:278 - `BRepOffsetAPI_MakePipeShell::Profiles()`
+    /// **Source:** `BRepOffsetAPI_MakePipeShell.hxx`:279 - `BRepOffsetAPI_MakePipeShell::SetIsBuildHistory()`
+    pub fn BRepOffsetAPI_MakePipeShell_set_is_build_history(
+        self_: *mut BRepOffsetAPI_MakePipeShell,
+        theIsBuildHistory: bool,
+    ) -> *const std::ffi::c_char;
+    /// **Source:** `BRepOffsetAPI_MakePipeShell.hxx`:286 - `BRepOffsetAPI_MakePipeShell::IsBuildHistory()`
+    pub fn BRepOffsetAPI_MakePipeShell_is_build_history(
+        self_: *const BRepOffsetAPI_MakePipeShell,
+    ) -> crate::OcctResult<bool>;
+    /// **Source:** `BRepOffsetAPI_MakePipeShell.hxx`:289 - `BRepOffsetAPI_MakePipeShell::Profiles()`
     pub fn BRepOffsetAPI_MakePipeShell_profiles(
         self_: *mut BRepOffsetAPI_MakePipeShell,
-        theProfiles: *mut TopTools_ListOfShape,
+        theProfiles: *mut NCollection_List_TopoDS_Shape,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepOffsetAPI_MakePipeShell.hxx`:281 - `BRepOffsetAPI_MakePipeShell::Spine()`
+    /// **Source:** `BRepOffsetAPI_MakePipeShell.hxx`:292 - `BRepOffsetAPI_MakePipeShell::Spine()`
     pub fn BRepOffsetAPI_MakePipeShell_spine(
         self_: *mut BRepOffsetAPI_MakePipeShell,
     ) -> crate::OcctResult<*const TopoDS_Wire>;
@@ -1910,20 +1920,20 @@ unsafe extern "C" {
     ) -> *const std::ffi::c_char;
     // ======================== BRepOffsetAPI_MakeThickSolid ========================
     pub fn BRepOffsetAPI_MakeThickSolid_destructor(self_: *mut BRepOffsetAPI_MakeThickSolid);
-    /// **Source:** `BRepOffsetAPI_MakeThickSolid.hxx`:52 - `BRepOffsetAPI_MakeThickSolid::BRepOffsetAPI_MakeThickSolid()`
+    /// **Source:** `BRepOffsetAPI_MakeThickSolid.hxx`:53 - `BRepOffsetAPI_MakeThickSolid::BRepOffsetAPI_MakeThickSolid()`
     pub fn BRepOffsetAPI_MakeThickSolid_ctor(
     ) -> crate::OcctResult<*mut BRepOffsetAPI_MakeThickSolid>;
-    /// **Source:** `BRepOffsetAPI_MakeThickSolid.hxx`:59 - `BRepOffsetAPI_MakeThickSolid::MakeThickSolidBySimple()`
+    /// **Source:** `BRepOffsetAPI_MakeThickSolid.hxx`:60 - `BRepOffsetAPI_MakeThickSolid::MakeThickSolidBySimple()`
     pub fn BRepOffsetAPI_MakeThickSolid_make_thick_solid_by_simple(
         self_: *mut BRepOffsetAPI_MakeThickSolid,
         theS: *const TopoDS_Shape,
         theOffsetValue: f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepOffsetAPI_MakeThickSolid.hxx`:102 - `BRepOffsetAPI_MakeThickSolid::MakeThickSolidByJoin()`
+    /// **Source:** `BRepOffsetAPI_MakeThickSolid.hxx`:103 - `BRepOffsetAPI_MakeThickSolid::MakeThickSolidByJoin()`
     pub fn BRepOffsetAPI_MakeThickSolid_make_thick_solid_by_join(
         self_: *mut BRepOffsetAPI_MakeThickSolid,
         S: *const TopoDS_Shape,
-        ClosingFaces: *const TopTools_ListOfShape,
+        ClosingFaces: *const NCollection_List_TopoDS_Shape,
         Offset: f64,
         Tol: f64,
         Mode: i32,
@@ -1933,16 +1943,16 @@ unsafe extern "C" {
         RemoveIntEdges: bool,
         theRange: *const Message_ProgressRange,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepOffsetAPI_MakeThickSolid.hxx`:115 - `BRepOffsetAPI_MakeThickSolid::Build()`
+    /// **Source:** `BRepOffsetAPI_MakeThickSolid.hxx`:116 - `BRepOffsetAPI_MakeThickSolid::Build()`
     pub fn BRepOffsetAPI_MakeThickSolid_build(
         self_: *mut BRepOffsetAPI_MakeThickSolid,
         theRange: *const Message_ProgressRange,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepOffsetAPI_MakeThickSolid.hxx`:120 - `BRepOffsetAPI_MakeThickSolid::Modified()`
+    /// **Source:** `BRepOffsetAPI_MakeThickSolid.hxx`:121 - `BRepOffsetAPI_MakeThickSolid::Modified()`
     pub fn BRepOffsetAPI_MakeThickSolid_modified(
         self_: *mut BRepOffsetAPI_MakeThickSolid,
         S: *const TopoDS_Shape,
-    ) -> crate::OcctResult<*const TopTools_ListOfShape>;
+    ) -> crate::OcctResult<*const NCollection_List_TopoDS_Shape>;
     /// Upcast BRepOffsetAPI_MakeThickSolid to BRepOffsetAPI_MakeOffsetShape
     pub fn BRepOffsetAPI_MakeThickSolid_as_BRepOffsetAPI_MakeOffsetShape(
         self_: *const BRepOffsetAPI_MakeThickSolid,
@@ -1967,7 +1977,7 @@ unsafe extern "C" {
     pub fn BRepOffsetAPI_MakeThickSolid_as_BRepBuilderAPI_Command_mut(
         self_: *mut BRepOffsetAPI_MakeThickSolid,
     ) -> crate::OcctResult<*mut BRepBuilderAPI_Command>;
-    /// Inherited: **Source:** `BRepOffsetAPI_MakeOffsetShape.hxx`:48 - `BRepOffsetAPI_MakeOffsetShape::PerformBySimple()`
+    /// Inherited: **Source:** `BRepOffsetAPI_MakeOffsetShape.hxx`:49 - `BRepOffsetAPI_MakeOffsetShape::PerformBySimple()`
     pub fn BRepOffsetAPI_MakeThickSolid_inherited_PerformBySimple(
         self_: *mut BRepOffsetAPI_MakeThickSolid,
         theS: *const TopoDS_Shape,
@@ -1990,12 +2000,12 @@ unsafe extern "C" {
     pub fn BRepOffsetAPI_MakeThickSolid_inherited_MakeOffset(
         self_: *const BRepOffsetAPI_MakeThickSolid,
     ) -> crate::OcctResult<*const BRepOffset_MakeOffset>;
-    /// Inherited: **Source:** `BRepOffsetAPI_MakeOffsetShape.hxx`:133 - `BRepOffsetAPI_MakeOffsetShape::IsDeleted()`
+    /// Inherited: **Source:** `BRepOffsetAPI_MakeOffsetShape.hxx`:131 - `BRepOffsetAPI_MakeOffsetShape::IsDeleted()`
     pub fn BRepOffsetAPI_MakeThickSolid_inherited_IsDeleted(
         self_: *mut BRepOffsetAPI_MakeThickSolid,
         S: *const TopoDS_Shape,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `BRepOffsetAPI_MakeOffsetShape.hxx`:136 - `BRepOffsetAPI_MakeOffsetShape::GetJoinType()`
+    /// Inherited: **Source:** `BRepOffsetAPI_MakeOffsetShape.hxx`:134 - `BRepOffsetAPI_MakeOffsetShape::GetJoinType()`
     pub fn BRepOffsetAPI_MakeThickSolid_inherited_GetJoinType(
         self_: *const BRepOffsetAPI_MakeThickSolid,
     ) -> crate::OcctResult<i32>;
@@ -2013,13 +2023,13 @@ unsafe extern "C" {
     ) -> *const std::ffi::c_char;
     // ======================== BRepOffsetAPI_MiddlePath ========================
     pub fn BRepOffsetAPI_MiddlePath_destructor(self_: *mut BRepOffsetAPI_MiddlePath);
-    /// **Source:** `BRepOffsetAPI_MiddlePath.hxx`:38 - `BRepOffsetAPI_MiddlePath::BRepOffsetAPI_MiddlePath()`
+    /// **Source:** `BRepOffsetAPI_MiddlePath.hxx`:39 - `BRepOffsetAPI_MiddlePath::BRepOffsetAPI_MiddlePath()`
     pub fn BRepOffsetAPI_MiddlePath_ctor_shape3(
         aShape: *const TopoDS_Shape,
         StartShape: *const TopoDS_Shape,
         EndShape: *const TopoDS_Shape,
     ) -> crate::OcctResult<*mut BRepOffsetAPI_MiddlePath>;
-    /// **Source:** `BRepOffsetAPI_MiddlePath.hxx`:42 - `BRepOffsetAPI_MiddlePath::Build()`
+    /// **Source:** `BRepOffsetAPI_MiddlePath.hxx`:43 - `BRepOffsetAPI_MiddlePath::Build()`
     pub fn BRepOffsetAPI_MiddlePath_build(
         self_: *mut BRepOffsetAPI_MiddlePath,
         theRange: *const Message_ProgressRange,
@@ -2059,24 +2069,24 @@ unsafe extern "C" {
     ) -> *const std::ffi::c_char;
     // ======================== BRepOffsetAPI_NormalProjection ========================
     pub fn BRepOffsetAPI_NormalProjection_destructor(self_: *mut BRepOffsetAPI_NormalProjection);
-    /// **Source:** `BRepOffsetAPI_NormalProjection.hxx`:42 - `BRepOffsetAPI_NormalProjection::BRepOffsetAPI_NormalProjection()`
+    /// **Source:** `BRepOffsetAPI_NormalProjection.hxx`:43 - `BRepOffsetAPI_NormalProjection::BRepOffsetAPI_NormalProjection()`
     pub fn BRepOffsetAPI_NormalProjection_ctor(
     ) -> crate::OcctResult<*mut BRepOffsetAPI_NormalProjection>;
-    /// **Source:** `BRepOffsetAPI_NormalProjection.hxx`:49 - `BRepOffsetAPI_NormalProjection::BRepOffsetAPI_NormalProjection()`
+    /// **Source:** `BRepOffsetAPI_NormalProjection.hxx`:50 - `BRepOffsetAPI_NormalProjection::BRepOffsetAPI_NormalProjection()`
     pub fn BRepOffsetAPI_NormalProjection_ctor_shape(
         S: *const TopoDS_Shape,
     ) -> crate::OcctResult<*mut BRepOffsetAPI_NormalProjection>;
-    /// **Source:** `BRepOffsetAPI_NormalProjection.hxx`:52 - `BRepOffsetAPI_NormalProjection::Init()`
+    /// **Source:** `BRepOffsetAPI_NormalProjection.hxx`:53 - `BRepOffsetAPI_NormalProjection::Init()`
     pub fn BRepOffsetAPI_NormalProjection_init(
         self_: *mut BRepOffsetAPI_NormalProjection,
         S: *const TopoDS_Shape,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepOffsetAPI_NormalProjection.hxx`:59 - `BRepOffsetAPI_NormalProjection::Add()`
+    /// **Source:** `BRepOffsetAPI_NormalProjection.hxx`:60 - `BRepOffsetAPI_NormalProjection::Add()`
     pub fn BRepOffsetAPI_NormalProjection_add(
         self_: *mut BRepOffsetAPI_NormalProjection,
         ToProj: *const TopoDS_Shape,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepOffsetAPI_NormalProjection.hxx`:68 - `BRepOffsetAPI_NormalProjection::SetParams()`
+    /// **Source:** `BRepOffsetAPI_NormalProjection.hxx`:69 - `BRepOffsetAPI_NormalProjection::SetParams()`
     pub fn BRepOffsetAPI_NormalProjection_set_params(
         self_: *mut BRepOffsetAPI_NormalProjection,
         Tol3D: f64,
@@ -2085,44 +2095,44 @@ unsafe extern "C" {
         MaxDegree: i32,
         MaxSeg: i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepOffsetAPI_NormalProjection.hxx`:78 - `BRepOffsetAPI_NormalProjection::SetMaxDistance()`
+    /// **Source:** `BRepOffsetAPI_NormalProjection.hxx`:79 - `BRepOffsetAPI_NormalProjection::SetMaxDistance()`
     pub fn BRepOffsetAPI_NormalProjection_set_max_distance(
         self_: *mut BRepOffsetAPI_NormalProjection,
         MaxDist: f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepOffsetAPI_NormalProjection.hxx`:81 - `BRepOffsetAPI_NormalProjection::SetLimit()`
+    /// **Source:** `BRepOffsetAPI_NormalProjection.hxx`:82 - `BRepOffsetAPI_NormalProjection::SetLimit()`
     pub fn BRepOffsetAPI_NormalProjection_set_limit(
         self_: *mut BRepOffsetAPI_NormalProjection,
         FaceBoundaries: bool,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepOffsetAPI_NormalProjection.hxx`:85 - `BRepOffsetAPI_NormalProjection::Compute3d()`
+    /// **Source:** `BRepOffsetAPI_NormalProjection.hxx`:86 - `BRepOffsetAPI_NormalProjection::Compute3d()`
     pub fn BRepOffsetAPI_NormalProjection_compute3d(
         self_: *mut BRepOffsetAPI_NormalProjection,
         With3d: bool,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepOffsetAPI_NormalProjection.hxx`:89 - `BRepOffsetAPI_NormalProjection::Build()`
+    /// **Source:** `BRepOffsetAPI_NormalProjection.hxx`:90 - `BRepOffsetAPI_NormalProjection::Build()`
     pub fn BRepOffsetAPI_NormalProjection_build(
         self_: *mut BRepOffsetAPI_NormalProjection,
         theRange: *const Message_ProgressRange,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepOffsetAPI_NormalProjection.hxx`:99 - `BRepOffsetAPI_NormalProjection::IsDone()`
+    /// **Source:** `BRepOffsetAPI_NormalProjection.hxx`:100 - `BRepOffsetAPI_NormalProjection::IsDone()`
     pub fn BRepOffsetAPI_NormalProjection_is_done(
         self_: *const BRepOffsetAPI_NormalProjection,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BRepOffsetAPI_NormalProjection.hxx`:105 - `BRepOffsetAPI_NormalProjection::Projection()`
+    /// **Source:** `BRepOffsetAPI_NormalProjection.hxx`:106 - `BRepOffsetAPI_NormalProjection::Projection()`
     pub fn BRepOffsetAPI_NormalProjection_projection(
         self_: *const BRepOffsetAPI_NormalProjection,
     ) -> crate::OcctResult<*const TopoDS_Shape>;
-    /// **Source:** `BRepOffsetAPI_NormalProjection.hxx`:112 - `BRepOffsetAPI_NormalProjection::Couple()`
+    /// **Source:** `BRepOffsetAPI_NormalProjection.hxx`:113 - `BRepOffsetAPI_NormalProjection::Couple()`
     pub fn BRepOffsetAPI_NormalProjection_couple(
         self_: *const BRepOffsetAPI_NormalProjection,
         E: *const TopoDS_Edge,
     ) -> crate::OcctResult<*const TopoDS_Shape>;
-    /// **Source:** `BRepOffsetAPI_NormalProjection.hxx`:116 - `BRepOffsetAPI_NormalProjection::Generated()`
+    /// **Source:** `BRepOffsetAPI_NormalProjection.hxx`:117 - `BRepOffsetAPI_NormalProjection::Generated()`
     pub fn BRepOffsetAPI_NormalProjection_generated(
         self_: *mut BRepOffsetAPI_NormalProjection,
         S: *const TopoDS_Shape,
-    ) -> crate::OcctResult<*const TopTools_ListOfShape>;
+    ) -> crate::OcctResult<*const NCollection_List_TopoDS_Shape>;
     /// **Source:** `BRepOffsetAPI_NormalProjection.hxx`:125 - `BRepOffsetAPI_NormalProjection::Ancestor()`
     pub fn BRepOffsetAPI_NormalProjection_ancestor(
         self_: *const BRepOffsetAPI_NormalProjection,
@@ -2131,7 +2141,7 @@ unsafe extern "C" {
     /// **Source:** `BRepOffsetAPI_NormalProjection.hxx`:129 - `BRepOffsetAPI_NormalProjection::BuildWire()`
     pub fn BRepOffsetAPI_NormalProjection_build_wire(
         self_: *const BRepOffsetAPI_NormalProjection,
-        Liste: *mut TopTools_ListOfShape,
+        Liste: *mut NCollection_List_TopoDS_Shape,
     ) -> crate::OcctResult<bool>;
     /// Upcast BRepOffsetAPI_NormalProjection to BRepBuilderAPI_MakeShape
     pub fn BRepOffsetAPI_NormalProjection_as_BRepBuilderAPI_MakeShape(
@@ -2164,121 +2174,121 @@ unsafe extern "C" {
     ) -> *const std::ffi::c_char;
     // ======================== BRepOffsetAPI_ThruSections ========================
     pub fn BRepOffsetAPI_ThruSections_destructor(self_: *mut BRepOffsetAPI_ThruSections);
-    /// **Source:** `BRepOffsetAPI_ThruSections.hxx`:64 - `BRepOffsetAPI_ThruSections::BRepOffsetAPI_ThruSections()`
+    /// **Source:** `BRepOffsetAPI_ThruSections.hxx`:65 - `BRepOffsetAPI_ThruSections::BRepOffsetAPI_ThruSections()`
     pub fn BRepOffsetAPI_ThruSections_ctor_bool2_real(
         isSolid: bool,
         ruled: bool,
         pres3d: f64,
     ) -> crate::OcctResult<*mut BRepOffsetAPI_ThruSections>;
-    /// **Source:** `BRepOffsetAPI_ThruSections.hxx`:80 - `BRepOffsetAPI_ThruSections::Init()`
+    /// **Source:** `BRepOffsetAPI_ThruSections.hxx`:81 - `BRepOffsetAPI_ThruSections::Init()`
     pub fn BRepOffsetAPI_ThruSections_init(
         self_: *mut BRepOffsetAPI_ThruSections,
         isSolid: bool,
         ruled: bool,
         pres3d: f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepOffsetAPI_ThruSections.hxx`:87 - `BRepOffsetAPI_ThruSections::AddWire()`
+    /// **Source:** `BRepOffsetAPI_ThruSections.hxx`:88 - `BRepOffsetAPI_ThruSections::AddWire()`
     pub fn BRepOffsetAPI_ThruSections_add_wire(
         self_: *mut BRepOffsetAPI_ThruSections,
         wire: *const TopoDS_Wire,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepOffsetAPI_ThruSections.hxx`:94 - `BRepOffsetAPI_ThruSections::AddVertex()`
+    /// **Source:** `BRepOffsetAPI_ThruSections.hxx`:95 - `BRepOffsetAPI_ThruSections::AddVertex()`
     pub fn BRepOffsetAPI_ThruSections_add_vertex(
         self_: *mut BRepOffsetAPI_ThruSections,
         aVertex: *const TopoDS_Vertex,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepOffsetAPI_ThruSections.hxx`:99 - `BRepOffsetAPI_ThruSections::CheckCompatibility()`
+    /// **Source:** `BRepOffsetAPI_ThruSections.hxx`:100 - `BRepOffsetAPI_ThruSections::CheckCompatibility()`
     pub fn BRepOffsetAPI_ThruSections_check_compatibility(
         self_: *mut BRepOffsetAPI_ThruSections,
         check: bool,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepOffsetAPI_ThruSections.hxx`:102 - `BRepOffsetAPI_ThruSections::SetSmoothing()`
+    /// **Source:** `BRepOffsetAPI_ThruSections.hxx`:103 - `BRepOffsetAPI_ThruSections::SetSmoothing()`
     pub fn BRepOffsetAPI_ThruSections_set_smoothing(
         self_: *mut BRepOffsetAPI_ThruSections,
         UseSmoothing: bool,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepOffsetAPI_ThruSections.hxx`:105 - `BRepOffsetAPI_ThruSections::SetParType()`
+    /// **Source:** `BRepOffsetAPI_ThruSections.hxx`:106 - `BRepOffsetAPI_ThruSections::SetParType()`
     pub fn BRepOffsetAPI_ThruSections_set_par_type(
         self_: *mut BRepOffsetAPI_ThruSections,
         ParType: i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepOffsetAPI_ThruSections.hxx`:108 - `BRepOffsetAPI_ThruSections::SetContinuity()`
+    /// **Source:** `BRepOffsetAPI_ThruSections.hxx`:109 - `BRepOffsetAPI_ThruSections::SetContinuity()`
     pub fn BRepOffsetAPI_ThruSections_set_continuity(
         self_: *mut BRepOffsetAPI_ThruSections,
         C: i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepOffsetAPI_ThruSections.hxx`:114 - `BRepOffsetAPI_ThruSections::SetCriteriumWeight()`
+    /// **Source:** `BRepOffsetAPI_ThruSections.hxx`:115 - `BRepOffsetAPI_ThruSections::SetCriteriumWeight()`
     pub fn BRepOffsetAPI_ThruSections_set_criterium_weight(
         self_: *mut BRepOffsetAPI_ThruSections,
         W1: f64,
         W2: f64,
         W3: f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepOffsetAPI_ThruSections.hxx`:119 - `BRepOffsetAPI_ThruSections::SetMaxDegree()`
+    /// **Source:** `BRepOffsetAPI_ThruSections.hxx`:118 - `BRepOffsetAPI_ThruSections::SetMaxDegree()`
     pub fn BRepOffsetAPI_ThruSections_set_max_degree(
         self_: *mut BRepOffsetAPI_ThruSections,
         MaxDeg: i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepOffsetAPI_ThruSections.hxx`:122 - `BRepOffsetAPI_ThruSections::ParType()`
+    /// **Source:** `BRepOffsetAPI_ThruSections.hxx`:121 - `BRepOffsetAPI_ThruSections::ParType()`
     pub fn BRepOffsetAPI_ThruSections_par_type(
         self_: *const BRepOffsetAPI_ThruSections,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `BRepOffsetAPI_ThruSections.hxx`:125 - `BRepOffsetAPI_ThruSections::Continuity()`
+    /// **Source:** `BRepOffsetAPI_ThruSections.hxx`:124 - `BRepOffsetAPI_ThruSections::Continuity()`
     pub fn BRepOffsetAPI_ThruSections_continuity(
         self_: *const BRepOffsetAPI_ThruSections,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `BRepOffsetAPI_ThruSections.hxx`:128 - `BRepOffsetAPI_ThruSections::MaxDegree()`
+    /// **Source:** `BRepOffsetAPI_ThruSections.hxx`:127 - `BRepOffsetAPI_ThruSections::MaxDegree()`
     pub fn BRepOffsetAPI_ThruSections_max_degree(
         self_: *const BRepOffsetAPI_ThruSections,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `BRepOffsetAPI_ThruSections.hxx`:131 - `BRepOffsetAPI_ThruSections::UseSmoothing()`
+    /// **Source:** `BRepOffsetAPI_ThruSections.hxx`:130 - `BRepOffsetAPI_ThruSections::UseSmoothing()`
     pub fn BRepOffsetAPI_ThruSections_use_smoothing(
         self_: *const BRepOffsetAPI_ThruSections,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BRepOffsetAPI_ThruSections.hxx`:135 - `BRepOffsetAPI_ThruSections::CriteriumWeight()`
+    /// **Source:** `BRepOffsetAPI_ThruSections.hxx`:134 - `BRepOffsetAPI_ThruSections::CriteriumWeight()`
     pub fn BRepOffsetAPI_ThruSections_criterium_weight(
         self_: *const BRepOffsetAPI_ThruSections,
         W1: *mut f64,
         W2: *mut f64,
         W3: *mut f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepOffsetAPI_ThruSections.hxx`:139 - `BRepOffsetAPI_ThruSections::Build()`
+    /// **Source:** `BRepOffsetAPI_ThruSections.hxx`:136 - `BRepOffsetAPI_ThruSections::Build()`
     pub fn BRepOffsetAPI_ThruSections_build(
         self_: *mut BRepOffsetAPI_ThruSections,
         theRange: *const Message_ProgressRange,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepOffsetAPI_ThruSections.hxx`:143 - `BRepOffsetAPI_ThruSections::FirstShape()`
+    /// **Source:** `BRepOffsetAPI_ThruSections.hxx`:140 - `BRepOffsetAPI_ThruSections::FirstShape()`
     pub fn BRepOffsetAPI_ThruSections_first_shape(
         self_: *const BRepOffsetAPI_ThruSections,
     ) -> crate::OcctResult<*const TopoDS_Shape>;
-    /// **Source:** `BRepOffsetAPI_ThruSections.hxx`:146 - `BRepOffsetAPI_ThruSections::LastShape()`
+    /// **Source:** `BRepOffsetAPI_ThruSections.hxx`:143 - `BRepOffsetAPI_ThruSections::LastShape()`
     pub fn BRepOffsetAPI_ThruSections_last_shape(
         self_: *const BRepOffsetAPI_ThruSections,
     ) -> crate::OcctResult<*const TopoDS_Shape>;
-    /// **Source:** `BRepOffsetAPI_ThruSections.hxx`:153 - `BRepOffsetAPI_ThruSections::GeneratedFace()`
+    /// **Source:** `BRepOffsetAPI_ThruSections.hxx`:150 - `BRepOffsetAPI_ThruSections::GeneratedFace()`
     pub fn BRepOffsetAPI_ThruSections_generated_face(
         self_: *const BRepOffsetAPI_ThruSections,
         Edge: *const TopoDS_Shape,
     ) -> crate::OcctResult<*mut TopoDS_Shape>;
-    /// **Source:** `BRepOffsetAPI_ThruSections.hxx`:158 - `BRepOffsetAPI_ThruSections::SetMutableInput()`
+    /// **Source:** `BRepOffsetAPI_ThruSections.hxx`:155 - `BRepOffsetAPI_ThruSections::SetMutableInput()`
     pub fn BRepOffsetAPI_ThruSections_set_mutable_input(
         self_: *mut BRepOffsetAPI_ThruSections,
         theIsMutableInput: bool,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepOffsetAPI_ThruSections.hxx`:164 - `BRepOffsetAPI_ThruSections::Generated()`
+    /// **Source:** `BRepOffsetAPI_ThruSections.hxx`:161 - `BRepOffsetAPI_ThruSections::Generated()`
     pub fn BRepOffsetAPI_ThruSections_generated(
         self_: *mut BRepOffsetAPI_ThruSections,
         S: *const TopoDS_Shape,
-    ) -> crate::OcctResult<*const TopTools_ListOfShape>;
-    /// **Source:** `BRepOffsetAPI_ThruSections.hxx`:168 - `BRepOffsetAPI_ThruSections::Wires()`
+    ) -> crate::OcctResult<*const NCollection_List_TopoDS_Shape>;
+    /// **Source:** `BRepOffsetAPI_ThruSections.hxx`:164 - `BRepOffsetAPI_ThruSections::Wires()`
     pub fn BRepOffsetAPI_ThruSections_wires(
         self_: *const BRepOffsetAPI_ThruSections,
-    ) -> crate::OcctResult<*const TopTools_ListOfShape>;
-    /// **Source:** `BRepOffsetAPI_ThruSections.hxx`:171 - `BRepOffsetAPI_ThruSections::IsMutableInput()`
+    ) -> crate::OcctResult<*const NCollection_List_TopoDS_Shape>;
+    /// **Source:** `BRepOffsetAPI_ThruSections.hxx`:167 - `BRepOffsetAPI_ThruSections::IsMutableInput()`
     pub fn BRepOffsetAPI_ThruSections_is_mutable_input(
         self_: *const BRepOffsetAPI_ThruSections,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BRepOffsetAPI_ThruSections.hxx`:174 - `BRepOffsetAPI_ThruSections::GetStatus()`
+    /// **Source:** `BRepOffsetAPI_ThruSections.hxx`:170 - `BRepOffsetAPI_ThruSections::GetStatus()`
     pub fn BRepOffsetAPI_ThruSections_get_status(
         self_: *const BRepOffsetAPI_ThruSections,
     ) -> crate::OcctResult<i32>;
@@ -2317,16 +2327,16 @@ unsafe extern "C" {
     ) -> *const std::ffi::c_char;
     // ======================== BiTgte_Blend ========================
     pub fn BiTgte_Blend_destructor(self_: *mut BiTgte_Blend);
-    /// **Source:** `BiTgte_Blend.hxx`:50 - `BiTgte_Blend::BiTgte_Blend()`
+    /// **Source:** `BiTgte_Blend.hxx`:52 - `BiTgte_Blend::BiTgte_Blend()`
     pub fn BiTgte_Blend_ctor() -> crate::OcctResult<*mut BiTgte_Blend>;
-    /// **Source:** `BiTgte_Blend.hxx`:57 - `BiTgte_Blend::BiTgte_Blend()`
+    /// **Source:** `BiTgte_Blend.hxx`:59 - `BiTgte_Blend::BiTgte_Blend()`
     pub fn BiTgte_Blend_ctor_shape_real2_bool(
         S: *const TopoDS_Shape,
         Radius: f64,
         Tol: f64,
         NUBS: bool,
     ) -> crate::OcctResult<*mut BiTgte_Blend>;
-    /// **Source:** `BiTgte_Blend.hxx`:62 - `BiTgte_Blend::Init()`
+    /// **Source:** `BiTgte_Blend.hxx`:64 - `BiTgte_Blend::Init()`
     pub fn BiTgte_Blend_init(
         self_: *mut BiTgte_Blend,
         S: *const TopoDS_Shape,
@@ -2334,109 +2344,109 @@ unsafe extern "C" {
         Tol: f64,
         NUBS: bool,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BiTgte_Blend.hxx`:68 - `BiTgte_Blend::Clear()`
+    /// **Source:** `BiTgte_Blend.hxx`:70 - `BiTgte_Blend::Clear()`
     pub fn BiTgte_Blend_clear(self_: *mut BiTgte_Blend) -> *const std::ffi::c_char;
-    /// **Source:** `BiTgte_Blend.hxx`:72 - `BiTgte_Blend::SetFaces()`
+    /// **Source:** `BiTgte_Blend.hxx`:74 - `BiTgte_Blend::SetFaces()`
     pub fn BiTgte_Blend_set_faces(
         self_: *mut BiTgte_Blend,
         F1: *const TopoDS_Face,
         F2: *const TopoDS_Face,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BiTgte_Blend.hxx`:75 - `BiTgte_Blend::SetEdge()`
+    /// **Source:** `BiTgte_Blend.hxx`:77 - `BiTgte_Blend::SetEdge()`
     pub fn BiTgte_Blend_set_edge(
         self_: *mut BiTgte_Blend,
         Edge: *const TopoDS_Edge,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BiTgte_Blend.hxx`:78 - `BiTgte_Blend::SetStoppingFace()`
+    /// **Source:** `BiTgte_Blend.hxx`:80 - `BiTgte_Blend::SetStoppingFace()`
     pub fn BiTgte_Blend_set_stopping_face(
         self_: *mut BiTgte_Blend,
         Face: *const TopoDS_Face,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BiTgte_Blend.hxx`:83 - `BiTgte_Blend::Perform()`
+    /// **Source:** `BiTgte_Blend.hxx`:85 - `BiTgte_Blend::Perform()`
     pub fn BiTgte_Blend_perform(
         self_: *mut BiTgte_Blend,
         BuildShape: bool,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BiTgte_Blend.hxx`:85 - `BiTgte_Blend::IsDone()`
+    /// **Source:** `BiTgte_Blend.hxx`:87 - `BiTgte_Blend::IsDone()`
     pub fn BiTgte_Blend_is_done(self_: *const BiTgte_Blend) -> crate::OcctResult<bool>;
-    /// **Source:** `BiTgte_Blend.hxx`:88 - `BiTgte_Blend::Shape()`
+    /// **Source:** `BiTgte_Blend.hxx`:90 - `BiTgte_Blend::Shape()`
     pub fn BiTgte_Blend_shape(self_: *const BiTgte_Blend)
         -> crate::OcctResult<*const TopoDS_Shape>;
-    /// **Source:** `BiTgte_Blend.hxx`:91 - `BiTgte_Blend::NbSurfaces()`
+    /// **Source:** `BiTgte_Blend.hxx`:93 - `BiTgte_Blend::NbSurfaces()`
     pub fn BiTgte_Blend_nb_surfaces(self_: *const BiTgte_Blend) -> crate::OcctResult<i32>;
-    /// **Source:** `BiTgte_Blend.hxx`:94 - `BiTgte_Blend::Surface()`
+    /// **Source:** `BiTgte_Blend.hxx`:96 - `BiTgte_Blend::Surface()`
     pub fn BiTgte_Blend_surface_int(
         self_: *const BiTgte_Blend,
         Index: i32,
-    ) -> crate::OcctResult<*mut HandleGeomSurface>;
-    /// **Source:** `BiTgte_Blend.hxx`:97 - `BiTgte_Blend::Face()`
+    ) -> crate::OcctResult<*mut Handle_Geom_Surface>;
+    /// **Source:** `BiTgte_Blend.hxx`:99 - `BiTgte_Blend::Face()`
     pub fn BiTgte_Blend_face_int(
         self_: *const BiTgte_Blend,
         Index: i32,
     ) -> crate::OcctResult<*const TopoDS_Face>;
-    /// **Source:** `BiTgte_Blend.hxx`:100 - `BiTgte_Blend::CenterLines()`
+    /// **Source:** `BiTgte_Blend.hxx`:102 - `BiTgte_Blend::CenterLines()`
     pub fn BiTgte_Blend_center_lines(
         self_: *const BiTgte_Blend,
-        LC: *mut TopTools_ListOfShape,
+        LC: *mut NCollection_List_TopoDS_Shape,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BiTgte_Blend.hxx`:108 - `BiTgte_Blend::Surface()`
+    /// **Source:** `BiTgte_Blend.hxx`:110 - `BiTgte_Blend::Surface()`
     pub fn BiTgte_Blend_surface_shape(
         self_: *const BiTgte_Blend,
         CenterLine: *const TopoDS_Shape,
-    ) -> crate::OcctResult<*mut HandleGeomSurface>;
-    /// **Source:** `BiTgte_Blend.hxx`:116 - `BiTgte_Blend::Face()`
+    ) -> crate::OcctResult<*mut Handle_Geom_Surface>;
+    /// **Source:** `BiTgte_Blend.hxx`:118 - `BiTgte_Blend::Face()`
     pub fn BiTgte_Blend_face_shape(
         self_: *const BiTgte_Blend,
         CenterLine: *const TopoDS_Shape,
     ) -> crate::OcctResult<*const TopoDS_Face>;
-    /// **Source:** `BiTgte_Blend.hxx`:119 - `BiTgte_Blend::ContactType()`
+    /// **Source:** `BiTgte_Blend.hxx`:121 - `BiTgte_Blend::ContactType()`
     pub fn BiTgte_Blend_contact_type(
         self_: *const BiTgte_Blend,
         Index: i32,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `BiTgte_Blend.hxx`:123 - `BiTgte_Blend::SupportShape1()`
+    /// **Source:** `BiTgte_Blend.hxx`:125 - `BiTgte_Blend::SupportShape1()`
     pub fn BiTgte_Blend_support_shape1(
         self_: *const BiTgte_Blend,
         Index: i32,
     ) -> crate::OcctResult<*const TopoDS_Shape>;
-    /// **Source:** `BiTgte_Blend.hxx`:127 - `BiTgte_Blend::SupportShape2()`
+    /// **Source:** `BiTgte_Blend.hxx`:129 - `BiTgte_Blend::SupportShape2()`
     pub fn BiTgte_Blend_support_shape2(
         self_: *const BiTgte_Blend,
         Index: i32,
     ) -> crate::OcctResult<*const TopoDS_Shape>;
-    /// **Source:** `BiTgte_Blend.hxx`:131 - `BiTgte_Blend::CurveOnShape1()`
+    /// **Source:** `BiTgte_Blend.hxx`:133 - `BiTgte_Blend::CurveOnShape1()`
     pub fn BiTgte_Blend_curve_on_shape1(
         self_: *const BiTgte_Blend,
         Index: i32,
-    ) -> crate::OcctResult<*mut HandleGeomCurve>;
-    /// **Source:** `BiTgte_Blend.hxx`:135 - `BiTgte_Blend::CurveOnShape2()`
+    ) -> crate::OcctResult<*mut Handle_Geom_Curve>;
+    /// **Source:** `BiTgte_Blend.hxx`:137 - `BiTgte_Blend::CurveOnShape2()`
     pub fn BiTgte_Blend_curve_on_shape2(
         self_: *const BiTgte_Blend,
         Index: i32,
-    ) -> crate::OcctResult<*mut HandleGeomCurve>;
-    /// **Source:** `BiTgte_Blend.hxx`:140 - `BiTgte_Blend::PCurveOnFace1()`
+    ) -> crate::OcctResult<*mut Handle_Geom_Curve>;
+    /// **Source:** `BiTgte_Blend.hxx`:142 - `BiTgte_Blend::PCurveOnFace1()`
     pub fn BiTgte_Blend_p_curve_on_face1(
         self_: *const BiTgte_Blend,
         Index: i32,
-    ) -> crate::OcctResult<*mut HandleGeom2dCurve>;
-    /// **Source:** `BiTgte_Blend.hxx`:144 - `BiTgte_Blend::PCurve1OnFillet()`
+    ) -> crate::OcctResult<*mut Handle_Geom2d_Curve>;
+    /// **Source:** `BiTgte_Blend.hxx`:146 - `BiTgte_Blend::PCurve1OnFillet()`
     pub fn BiTgte_Blend_p_curve1_on_fillet(
         self_: *const BiTgte_Blend,
         Index: i32,
-    ) -> crate::OcctResult<*mut HandleGeom2dCurve>;
-    /// **Source:** `BiTgte_Blend.hxx`:149 - `BiTgte_Blend::PCurveOnFace2()`
+    ) -> crate::OcctResult<*mut Handle_Geom2d_Curve>;
+    /// **Source:** `BiTgte_Blend.hxx`:151 - `BiTgte_Blend::PCurveOnFace2()`
     pub fn BiTgte_Blend_p_curve_on_face2(
         self_: *const BiTgte_Blend,
         Index: i32,
-    ) -> crate::OcctResult<*mut HandleGeom2dCurve>;
-    /// **Source:** `BiTgte_Blend.hxx`:153 - `BiTgte_Blend::PCurve2OnFillet()`
+    ) -> crate::OcctResult<*mut Handle_Geom2d_Curve>;
+    /// **Source:** `BiTgte_Blend.hxx`:155 - `BiTgte_Blend::PCurve2OnFillet()`
     pub fn BiTgte_Blend_p_curve2_on_fillet(
         self_: *const BiTgte_Blend,
         Index: i32,
-    ) -> crate::OcctResult<*mut HandleGeom2dCurve>;
-    /// **Source:** `BiTgte_Blend.hxx`:155 - `BiTgte_Blend::NbBranches()`
+    ) -> crate::OcctResult<*mut Handle_Geom2d_Curve>;
+    /// **Source:** `BiTgte_Blend.hxx`:157 - `BiTgte_Blend::NbBranches()`
     pub fn BiTgte_Blend_nb_branches(self_: *mut BiTgte_Blend) -> crate::OcctResult<i32>;
-    /// **Source:** `BiTgte_Blend.hxx`:161 - `BiTgte_Blend::IndicesOfBranche()`
+    /// **Source:** `BiTgte_Blend.hxx`:163 - `BiTgte_Blend::IndicesOfBranche()`
     pub fn BiTgte_Blend_indices_of_branche(
         self_: *const BiTgte_Blend,
         Index: i32,
@@ -2447,157 +2457,142 @@ unsafe extern "C" {
     pub fn BiTgte_Blend_compute_centers(self_: *mut BiTgte_Blend) -> *const std::ffi::c_char;
     // ======================== BiTgte_CurveOnEdge ========================
     pub fn BiTgte_CurveOnEdge_destructor(self_: *mut BiTgte_CurveOnEdge);
-    /// **Source:** `BiTgte_CurveOnEdge.hxx`:49 - `BiTgte_CurveOnEdge::BiTgte_CurveOnEdge()`
+    /// **Source:** `BiTgte_CurveOnEdge.hxx`:47 - `BiTgte_CurveOnEdge::BiTgte_CurveOnEdge()`
     pub fn BiTgte_CurveOnEdge_ctor() -> crate::OcctResult<*mut BiTgte_CurveOnEdge>;
-    /// **Source:** `BiTgte_CurveOnEdge.hxx`:51 - `BiTgte_CurveOnEdge::BiTgte_CurveOnEdge()`
+    /// **Source:** `BiTgte_CurveOnEdge.hxx`:49 - `BiTgte_CurveOnEdge::BiTgte_CurveOnEdge()`
     pub fn BiTgte_CurveOnEdge_ctor_edge2(
         EonF: *const TopoDS_Edge,
         Edge: *const TopoDS_Edge,
     ) -> crate::OcctResult<*mut BiTgte_CurveOnEdge>;
-    /// **Source:** `BiTgte_CurveOnEdge.hxx`:47 - `BiTgte_CurveOnEdge::DynamicType()`
+    /// **Source:** `BiTgte_CurveOnEdge.hxx`:45 - `BiTgte_CurveOnEdge::DynamicType()`
     pub fn BiTgte_CurveOnEdge_dynamic_type(
         self_: *const BiTgte_CurveOnEdge,
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// **Source:** `BiTgte_CurveOnEdge.hxx`:54 - `BiTgte_CurveOnEdge::ShallowCopy()`
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
+    /// **Source:** `BiTgte_CurveOnEdge.hxx`:52 - `BiTgte_CurveOnEdge::ShallowCopy()`
     pub fn BiTgte_CurveOnEdge_shallow_copy(
         self_: *const BiTgte_CurveOnEdge,
-    ) -> crate::OcctResult<*mut HandleAdaptor3dCurve>;
-    /// **Source:** `BiTgte_CurveOnEdge.hxx`:56 - `BiTgte_CurveOnEdge::Init()`
+    ) -> crate::OcctResult<*mut Handle_Adaptor3d_Curve>;
+    /// **Source:** `BiTgte_CurveOnEdge.hxx`:54 - `BiTgte_CurveOnEdge::Init()`
     pub fn BiTgte_CurveOnEdge_init(
         self_: *mut BiTgte_CurveOnEdge,
         EonF: *const TopoDS_Edge,
         Edge: *const TopoDS_Edge,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BiTgte_CurveOnEdge.hxx`:58 - `BiTgte_CurveOnEdge::FirstParameter()`
+    /// **Source:** `BiTgte_CurveOnEdge.hxx`:56 - `BiTgte_CurveOnEdge::FirstParameter()`
     pub fn BiTgte_CurveOnEdge_first_parameter(
         self_: *const BiTgte_CurveOnEdge,
     ) -> crate::OcctResult<f64>;
-    /// **Source:** `BiTgte_CurveOnEdge.hxx`:60 - `BiTgte_CurveOnEdge::LastParameter()`
+    /// **Source:** `BiTgte_CurveOnEdge.hxx`:58 - `BiTgte_CurveOnEdge::LastParameter()`
     pub fn BiTgte_CurveOnEdge_last_parameter(
         self_: *const BiTgte_CurveOnEdge,
     ) -> crate::OcctResult<f64>;
-    /// **Source:** `BiTgte_CurveOnEdge.hxx`:62 - `BiTgte_CurveOnEdge::Continuity()`
+    /// **Source:** `BiTgte_CurveOnEdge.hxx`:60 - `BiTgte_CurveOnEdge::Continuity()`
     pub fn BiTgte_CurveOnEdge_continuity(
         self_: *const BiTgte_CurveOnEdge,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `BiTgte_CurveOnEdge.hxx`:66 - `BiTgte_CurveOnEdge::NbIntervals()`
+    /// **Source:** `BiTgte_CurveOnEdge.hxx`:64 - `BiTgte_CurveOnEdge::NbIntervals()`
     pub fn BiTgte_CurveOnEdge_nb_intervals(
         self_: *const BiTgte_CurveOnEdge,
         S: i32,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `BiTgte_CurveOnEdge.hxx`:73 - `BiTgte_CurveOnEdge::Intervals()`
+    /// **Source:** `BiTgte_CurveOnEdge.hxx`:71 - `BiTgte_CurveOnEdge::Intervals()`
     pub fn BiTgte_CurveOnEdge_intervals(
         self_: *const BiTgte_CurveOnEdge,
-        T: *mut TColStd_Array1OfReal,
+        T: *mut NCollection_Array1_double,
         S: i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BiTgte_CurveOnEdge.hxx`:80 - `BiTgte_CurveOnEdge::Trim()`
+    /// **Source:** `BiTgte_CurveOnEdge.hxx`:78 - `BiTgte_CurveOnEdge::Trim()`
     pub fn BiTgte_CurveOnEdge_trim(
         self_: *const BiTgte_CurveOnEdge,
         First: f64,
         Last: f64,
         Tol: f64,
-    ) -> crate::OcctResult<*mut HandleAdaptor3dCurve>;
-    /// **Source:** `BiTgte_CurveOnEdge.hxx`:84 - `BiTgte_CurveOnEdge::IsClosed()`
+    ) -> crate::OcctResult<*mut Handle_Adaptor3d_Curve>;
+    /// **Source:** `BiTgte_CurveOnEdge.hxx`:82 - `BiTgte_CurveOnEdge::IsClosed()`
     pub fn BiTgte_CurveOnEdge_is_closed(
         self_: *const BiTgte_CurveOnEdge,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BiTgte_CurveOnEdge.hxx`:86 - `BiTgte_CurveOnEdge::IsPeriodic()`
+    /// **Source:** `BiTgte_CurveOnEdge.hxx`:84 - `BiTgte_CurveOnEdge::IsPeriodic()`
     pub fn BiTgte_CurveOnEdge_is_periodic(
         self_: *const BiTgte_CurveOnEdge,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BiTgte_CurveOnEdge.hxx`:88 - `BiTgte_CurveOnEdge::Period()`
+    /// **Source:** `BiTgte_CurveOnEdge.hxx`:86 - `BiTgte_CurveOnEdge::Period()`
     pub fn BiTgte_CurveOnEdge_period(self_: *const BiTgte_CurveOnEdge) -> crate::OcctResult<f64>;
-    /// **Source:** `BiTgte_CurveOnEdge.hxx`:91 - `BiTgte_CurveOnEdge::Value()`
-    pub fn BiTgte_CurveOnEdge_value(
+    /// **Source:** `BiTgte_CurveOnEdge.hxx`:89 - `BiTgte_CurveOnEdge::EvalD0()`
+    pub fn BiTgte_CurveOnEdge_eval_d0(
         self_: *const BiTgte_CurveOnEdge,
-        U: f64,
+        theU: f64,
     ) -> crate::OcctResult<*mut gp_Pnt>;
-    /// **Source:** `BiTgte_CurveOnEdge.hxx`:94 - `BiTgte_CurveOnEdge::D0()`
-    pub fn BiTgte_CurveOnEdge_d0(
+    /// **Source:** `BiTgte_CurveOnEdge.hxx`:92 - `BiTgte_CurveOnEdge::EvalD1()`
+    pub fn BiTgte_CurveOnEdge_eval_d1(
         self_: *const BiTgte_CurveOnEdge,
-        U: f64,
-        P: *mut gp_Pnt,
-    ) -> *const std::ffi::c_char;
-    /// **Source:** `BiTgte_CurveOnEdge.hxx`:100 - `BiTgte_CurveOnEdge::D1()`
-    pub fn BiTgte_CurveOnEdge_d1(
+        theU: f64,
+    ) -> crate::OcctResult<*mut Geom_Curve_ResD1>;
+    /// **Source:** `BiTgte_CurveOnEdge.hxx`:95 - `BiTgte_CurveOnEdge::EvalD2()`
+    pub fn BiTgte_CurveOnEdge_eval_d2(
         self_: *const BiTgte_CurveOnEdge,
-        U: f64,
-        P: *mut gp_Pnt,
-        V: *mut gp_Vec,
-    ) -> *const std::ffi::c_char;
-    /// **Source:** `BiTgte_CurveOnEdge.hxx`:106 - `BiTgte_CurveOnEdge::D2()`
-    pub fn BiTgte_CurveOnEdge_d2(
+        theU: f64,
+    ) -> crate::OcctResult<*mut Geom_Curve_ResD2>;
+    /// **Source:** `BiTgte_CurveOnEdge.hxx`:98 - `BiTgte_CurveOnEdge::EvalD3()`
+    pub fn BiTgte_CurveOnEdge_eval_d3(
         self_: *const BiTgte_CurveOnEdge,
-        U: f64,
-        P: *mut gp_Pnt,
-        V1: *mut gp_Vec,
-        V2: *mut gp_Vec,
-    ) -> *const std::ffi::c_char;
-    /// **Source:** `BiTgte_CurveOnEdge.hxx`:115 - `BiTgte_CurveOnEdge::D3()`
-    pub fn BiTgte_CurveOnEdge_d3(
+        theU: f64,
+    ) -> crate::OcctResult<*mut Geom_Curve_ResD3>;
+    /// **Source:** `BiTgte_CurveOnEdge.hxx`:101 - `BiTgte_CurveOnEdge::EvalDN()`
+    pub fn BiTgte_CurveOnEdge_eval_dn(
         self_: *const BiTgte_CurveOnEdge,
-        U: f64,
-        P: *mut gp_Pnt,
-        V1: *mut gp_Vec,
-        V2: *mut gp_Vec,
-        V3: *mut gp_Vec,
-    ) -> *const std::ffi::c_char;
-    /// **Source:** `BiTgte_CurveOnEdge.hxx`:126 - `BiTgte_CurveOnEdge::DN()`
-    pub fn BiTgte_CurveOnEdge_dn(
-        self_: *const BiTgte_CurveOnEdge,
-        U: f64,
-        N: i32,
+        theU: f64,
+        theN: i32,
     ) -> crate::OcctResult<*mut gp_Vec>;
-    /// **Source:** `BiTgte_CurveOnEdge.hxx`:131 - `BiTgte_CurveOnEdge::Resolution()`
+    /// **Source:** `BiTgte_CurveOnEdge.hxx`:105 - `BiTgte_CurveOnEdge::Resolution()`
     pub fn BiTgte_CurveOnEdge_resolution(
         self_: *const BiTgte_CurveOnEdge,
         R3d: f64,
     ) -> crate::OcctResult<f64>;
-    /// **Source:** `BiTgte_CurveOnEdge.hxx`:136 - `BiTgte_CurveOnEdge::GetType()`
+    /// **Source:** `BiTgte_CurveOnEdge.hxx`:110 - `BiTgte_CurveOnEdge::GetType()`
     pub fn BiTgte_CurveOnEdge_get_type(self_: *const BiTgte_CurveOnEdge) -> crate::OcctResult<i32>;
-    /// **Source:** `BiTgte_CurveOnEdge.hxx`:138 - `BiTgte_CurveOnEdge::Line()`
+    /// **Source:** `BiTgte_CurveOnEdge.hxx`:112 - `BiTgte_CurveOnEdge::Line()`
     pub fn BiTgte_CurveOnEdge_line(
         self_: *const BiTgte_CurveOnEdge,
     ) -> crate::OcctResult<*mut gp_Lin>;
-    /// **Source:** `BiTgte_CurveOnEdge.hxx`:140 - `BiTgte_CurveOnEdge::Circle()`
+    /// **Source:** `BiTgte_CurveOnEdge.hxx`:114 - `BiTgte_CurveOnEdge::Circle()`
     pub fn BiTgte_CurveOnEdge_circle(
         self_: *const BiTgte_CurveOnEdge,
     ) -> crate::OcctResult<*mut gp_Circ>;
-    /// **Source:** `BiTgte_CurveOnEdge.hxx`:142 - `BiTgte_CurveOnEdge::Ellipse()`
+    /// **Source:** `BiTgte_CurveOnEdge.hxx`:116 - `BiTgte_CurveOnEdge::Ellipse()`
     pub fn BiTgte_CurveOnEdge_ellipse(
         self_: *const BiTgte_CurveOnEdge,
     ) -> crate::OcctResult<*mut gp_Elips>;
-    /// **Source:** `BiTgte_CurveOnEdge.hxx`:144 - `BiTgte_CurveOnEdge::Hyperbola()`
+    /// **Source:** `BiTgte_CurveOnEdge.hxx`:118 - `BiTgte_CurveOnEdge::Hyperbola()`
     pub fn BiTgte_CurveOnEdge_hyperbola(
         self_: *const BiTgte_CurveOnEdge,
     ) -> crate::OcctResult<*mut gp_Hypr>;
-    /// **Source:** `BiTgte_CurveOnEdge.hxx`:146 - `BiTgte_CurveOnEdge::Parabola()`
+    /// **Source:** `BiTgte_CurveOnEdge.hxx`:120 - `BiTgte_CurveOnEdge::Parabola()`
     pub fn BiTgte_CurveOnEdge_parabola(
         self_: *const BiTgte_CurveOnEdge,
     ) -> crate::OcctResult<*mut gp_Parab>;
-    /// **Source:** `BiTgte_CurveOnEdge.hxx`:148 - `BiTgte_CurveOnEdge::Degree()`
+    /// **Source:** `BiTgte_CurveOnEdge.hxx`:122 - `BiTgte_CurveOnEdge::Degree()`
     pub fn BiTgte_CurveOnEdge_degree(self_: *const BiTgte_CurveOnEdge) -> crate::OcctResult<i32>;
-    /// **Source:** `BiTgte_CurveOnEdge.hxx`:150 - `BiTgte_CurveOnEdge::IsRational()`
+    /// **Source:** `BiTgte_CurveOnEdge.hxx`:124 - `BiTgte_CurveOnEdge::IsRational()`
     pub fn BiTgte_CurveOnEdge_is_rational(
         self_: *const BiTgte_CurveOnEdge,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BiTgte_CurveOnEdge.hxx`:152 - `BiTgte_CurveOnEdge::NbPoles()`
+    /// **Source:** `BiTgte_CurveOnEdge.hxx`:126 - `BiTgte_CurveOnEdge::NbPoles()`
     pub fn BiTgte_CurveOnEdge_nb_poles(self_: *const BiTgte_CurveOnEdge) -> crate::OcctResult<i32>;
-    /// **Source:** `BiTgte_CurveOnEdge.hxx`:154 - `BiTgte_CurveOnEdge::NbKnots()`
+    /// **Source:** `BiTgte_CurveOnEdge.hxx`:128 - `BiTgte_CurveOnEdge::NbKnots()`
     pub fn BiTgte_CurveOnEdge_nb_knots(self_: *const BiTgte_CurveOnEdge) -> crate::OcctResult<i32>;
-    /// **Source:** `BiTgte_CurveOnEdge.hxx`:156 - `BiTgte_CurveOnEdge::Bezier()`
+    /// **Source:** `BiTgte_CurveOnEdge.hxx`:130 - `BiTgte_CurveOnEdge::Bezier()`
     pub fn BiTgte_CurveOnEdge_bezier(
         self_: *const BiTgte_CurveOnEdge,
-    ) -> crate::OcctResult<*mut HandleGeomBezierCurve>;
-    /// **Source:** `BiTgte_CurveOnEdge.hxx`:158 - `BiTgte_CurveOnEdge::BSpline()`
+    ) -> crate::OcctResult<*mut Handle_Geom_BezierCurve>;
+    /// **Source:** `BiTgte_CurveOnEdge.hxx`:132 - `BiTgte_CurveOnEdge::BSpline()`
     pub fn BiTgte_CurveOnEdge_b_spline(
         self_: *const BiTgte_CurveOnEdge,
-    ) -> crate::OcctResult<*mut HandleGeomBSplineCurve>;
-    /// **Source:** `BiTgte_CurveOnEdge.hxx`:47 - `BiTgte_CurveOnEdge::get_type_name()`
+    ) -> crate::OcctResult<*mut Handle_Geom_BSplineCurve>;
+    /// **Source:** `BiTgte_CurveOnEdge.hxx`:45 - `BiTgte_CurveOnEdge::get_type_name()`
     pub fn BiTgte_CurveOnEdge_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
-    /// **Source:** `BiTgte_CurveOnEdge.hxx`:47 - `BiTgte_CurveOnEdge::get_type_descriptor()`
-    pub fn BiTgte_CurveOnEdge_get_type_descriptor() -> crate::OcctResult<*const HandleStandardType>;
+    /// **Source:** `BiTgte_CurveOnEdge.hxx`:45 - `BiTgte_CurveOnEdge::get_type_descriptor()`
+    pub fn BiTgte_CurveOnEdge_get_type_descriptor() -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast BiTgte_CurveOnEdge to Adaptor3d_Curve
     pub fn BiTgte_CurveOnEdge_as_Adaptor3d_Curve(
         self_: *const BiTgte_CurveOnEdge,
@@ -2617,224 +2612,251 @@ unsafe extern "C" {
     /// Wrap BiTgte_CurveOnEdge in a Handle
     pub fn BiTgte_CurveOnEdge_to_handle(
         obj: *mut BiTgte_CurveOnEdge,
-    ) -> crate::OcctResult<*mut HandleBiTgteCurveOnEdge>;
+    ) -> crate::OcctResult<*mut Handle_BiTgte_CurveOnEdge>;
     /// Destroy Handle<BiTgte_CurveOnEdge>
-    pub fn HandleBiTgteCurveOnEdge_destructor(self_: *mut HandleBiTgteCurveOnEdge);
+    pub fn Handle_BiTgte_CurveOnEdge_destructor(self_: *mut Handle_BiTgte_CurveOnEdge);
     /// Clone Handle<BiTgte_CurveOnEdge> (increments reference count)
-    pub fn HandleBiTgteCurveOnEdge_clone(
-        self_: *const HandleBiTgteCurveOnEdge,
-    ) -> crate::OcctResult<*mut HandleBiTgteCurveOnEdge>;
+    pub fn Handle_BiTgte_CurveOnEdge_clone(
+        self_: *const Handle_BiTgte_CurveOnEdge,
+    ) -> crate::OcctResult<*mut Handle_BiTgte_CurveOnEdge>;
     /// Check if Handle<BiTgte_CurveOnEdge> is null
-    pub fn HandleBiTgteCurveOnEdge_is_null(self_: *const HandleBiTgteCurveOnEdge) -> bool;
+    pub fn Handle_BiTgte_CurveOnEdge_is_null(self_: *const Handle_BiTgte_CurveOnEdge) -> bool;
     /// Dereference Handle to get *const BiTgte_CurveOnEdge
-    pub fn HandleBiTgteCurveOnEdge_get(
-        handle: *const HandleBiTgteCurveOnEdge,
+    pub fn Handle_BiTgte_CurveOnEdge_get(
+        handle: *const Handle_BiTgte_CurveOnEdge,
     ) -> crate::OcctResult<*const BiTgte_CurveOnEdge>;
     /// Dereference Handle to get *mut BiTgte_CurveOnEdge
-    pub fn HandleBiTgteCurveOnEdge_get_mut(
-        handle: *mut HandleBiTgteCurveOnEdge,
+    pub fn Handle_BiTgte_CurveOnEdge_get_mut(
+        handle: *mut Handle_BiTgte_CurveOnEdge,
     ) -> crate::OcctResult<*mut BiTgte_CurveOnEdge>;
     /// Upcast Handle<BiTgte_CurveOnEdge> to Handle<Adaptor3d_Curve>
-    pub fn HandleBiTgteCurveOnEdge_to_HandleAdaptor3dCurve(
-        self_: *const HandleBiTgteCurveOnEdge,
-    ) -> crate::OcctResult<*mut HandleAdaptor3dCurve>;
+    pub fn Handle_BiTgte_CurveOnEdge_to_Handle_Adaptor3d_Curve(
+        self_: *const Handle_BiTgte_CurveOnEdge,
+    ) -> crate::OcctResult<*mut Handle_Adaptor3d_Curve>;
     /// Upcast Handle<BiTgte_CurveOnEdge> to Handle<Standard_Transient>
-    pub fn HandleBiTgteCurveOnEdge_to_HandleStandardTransient(
-        self_: *const HandleBiTgteCurveOnEdge,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
-    /// Inherited: **Source:** `Adaptor3d_Curve.hxx`:156 - `Adaptor3d_Curve::OffsetCurve()`
+    pub fn Handle_BiTgte_CurveOnEdge_to_Handle_Standard_Transient(
+        self_: *const Handle_BiTgte_CurveOnEdge,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
+    /// Inherited: **Source:** `Adaptor3d_Curve.hxx`:89 - `Adaptor3d_Curve::Value()`
+    pub fn BiTgte_CurveOnEdge_inherited_Value(
+        self_: *const BiTgte_CurveOnEdge,
+        theU: f64,
+    ) -> crate::OcctResult<*mut gp_Pnt>;
+    /// Inherited: **Source:** `Adaptor3d_Curve.hxx`:92 - `Adaptor3d_Curve::D0()`
+    pub fn BiTgte_CurveOnEdge_inherited_D0(
+        self_: *const BiTgte_CurveOnEdge,
+        theU: f64,
+        theP: *mut gp_Pnt,
+    ) -> *const std::ffi::c_char;
+    /// Inherited: **Source:** `Adaptor3d_Curve.hxx`:98 - `Adaptor3d_Curve::D1()`
+    pub fn BiTgte_CurveOnEdge_inherited_D1(
+        self_: *const BiTgte_CurveOnEdge,
+        theU: f64,
+        theP: *mut gp_Pnt,
+        theV: *mut gp_Vec,
+    ) -> *const std::ffi::c_char;
+    /// Inherited: **Source:** `Adaptor3d_Curve.hxx`:109 - `Adaptor3d_Curve::D2()`
+    pub fn BiTgte_CurveOnEdge_inherited_D2(
+        self_: *const BiTgte_CurveOnEdge,
+        theU: f64,
+        theP: *mut gp_Pnt,
+        theV1: *mut gp_Vec,
+        theV2: *mut gp_Vec,
+    ) -> *const std::ffi::c_char;
+    /// Inherited: **Source:** `Adaptor3d_Curve.hxx`:121 - `Adaptor3d_Curve::D3()`
+    pub fn BiTgte_CurveOnEdge_inherited_D3(
+        self_: *const BiTgte_CurveOnEdge,
+        theU: f64,
+        theP: *mut gp_Pnt,
+        theV1: *mut gp_Vec,
+        theV2: *mut gp_Vec,
+        theV3: *mut gp_Vec,
+    ) -> *const std::ffi::c_char;
+    /// Inherited: **Source:** `Adaptor3d_Curve.hxx`:135 - `Adaptor3d_Curve::DN()`
+    pub fn BiTgte_CurveOnEdge_inherited_DN(
+        self_: *const BiTgte_CurveOnEdge,
+        theU: f64,
+        theN: i32,
+    ) -> crate::OcctResult<*mut gp_Vec>;
+    /// Inherited: **Source:** `Adaptor3d_Curve.hxx`:168 - `Adaptor3d_Curve::OffsetCurve()`
     pub fn BiTgte_CurveOnEdge_inherited_OffsetCurve(
         self_: *const BiTgte_CurveOnEdge,
-    ) -> crate::OcctResult<*mut HandleGeomOffsetCurve>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    ) -> crate::OcctResult<*mut Handle_Geom_OffsetCurve>;
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn BiTgte_CurveOnEdge_inherited_IsInstance(
         self_: *const BiTgte_CurveOnEdge,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn BiTgte_CurveOnEdge_inherited_IsKind(
         self_: *const BiTgte_CurveOnEdge,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn BiTgte_CurveOnEdge_inherited_This(
         self_: *const BiTgte_CurveOnEdge,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn BiTgte_CurveOnEdge_inherited_GetRefCount(
         self_: *const BiTgte_CurveOnEdge,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn BiTgte_CurveOnEdge_inherited_IncrementRefCounter(
         self_: *mut BiTgte_CurveOnEdge,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn BiTgte_CurveOnEdge_inherited_DecrementRefCounter(
         self_: *mut BiTgte_CurveOnEdge,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn BiTgte_CurveOnEdge_inherited_Delete(
         self_: *const BiTgte_CurveOnEdge,
     ) -> *const std::ffi::c_char;
     // ======================== BiTgte_CurveOnVertex ========================
     pub fn BiTgte_CurveOnVertex_destructor(self_: *mut BiTgte_CurveOnVertex);
-    /// **Source:** `BiTgte_CurveOnVertex.hxx`:49 - `BiTgte_CurveOnVertex::BiTgte_CurveOnVertex()`
+    /// **Source:** `BiTgte_CurveOnVertex.hxx`:48 - `BiTgte_CurveOnVertex::BiTgte_CurveOnVertex()`
     pub fn BiTgte_CurveOnVertex_ctor() -> crate::OcctResult<*mut BiTgte_CurveOnVertex>;
-    /// **Source:** `BiTgte_CurveOnVertex.hxx`:51 - `BiTgte_CurveOnVertex::BiTgte_CurveOnVertex()`
+    /// **Source:** `BiTgte_CurveOnVertex.hxx`:50 - `BiTgte_CurveOnVertex::BiTgte_CurveOnVertex()`
     pub fn BiTgte_CurveOnVertex_ctor_edge_vertex(
         EonF: *const TopoDS_Edge,
         V: *const TopoDS_Vertex,
     ) -> crate::OcctResult<*mut BiTgte_CurveOnVertex>;
-    /// **Source:** `BiTgte_CurveOnVertex.hxx`:47 - `BiTgte_CurveOnVertex::DynamicType()`
+    /// **Source:** `BiTgte_CurveOnVertex.hxx`:46 - `BiTgte_CurveOnVertex::DynamicType()`
     pub fn BiTgte_CurveOnVertex_dynamic_type(
         self_: *const BiTgte_CurveOnVertex,
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// **Source:** `BiTgte_CurveOnVertex.hxx`:53 - `BiTgte_CurveOnVertex::Init()`
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
+    /// **Source:** `BiTgte_CurveOnVertex.hxx`:52 - `BiTgte_CurveOnVertex::Init()`
     pub fn BiTgte_CurveOnVertex_init(
         self_: *mut BiTgte_CurveOnVertex,
         EonF: *const TopoDS_Edge,
         V: *const TopoDS_Vertex,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BiTgte_CurveOnVertex.hxx`:55 - `BiTgte_CurveOnVertex::FirstParameter()`
+    /// **Source:** `BiTgte_CurveOnVertex.hxx`:54 - `BiTgte_CurveOnVertex::FirstParameter()`
     pub fn BiTgte_CurveOnVertex_first_parameter(
         self_: *const BiTgte_CurveOnVertex,
     ) -> crate::OcctResult<f64>;
-    /// **Source:** `BiTgte_CurveOnVertex.hxx`:57 - `BiTgte_CurveOnVertex::LastParameter()`
+    /// **Source:** `BiTgte_CurveOnVertex.hxx`:56 - `BiTgte_CurveOnVertex::LastParameter()`
     pub fn BiTgte_CurveOnVertex_last_parameter(
         self_: *const BiTgte_CurveOnVertex,
     ) -> crate::OcctResult<f64>;
-    /// **Source:** `BiTgte_CurveOnVertex.hxx`:59 - `BiTgte_CurveOnVertex::Continuity()`
+    /// **Source:** `BiTgte_CurveOnVertex.hxx`:58 - `BiTgte_CurveOnVertex::Continuity()`
     pub fn BiTgte_CurveOnVertex_continuity(
         self_: *const BiTgte_CurveOnVertex,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `BiTgte_CurveOnVertex.hxx`:63 - `BiTgte_CurveOnVertex::NbIntervals()`
+    /// **Source:** `BiTgte_CurveOnVertex.hxx`:62 - `BiTgte_CurveOnVertex::NbIntervals()`
     pub fn BiTgte_CurveOnVertex_nb_intervals(
         self_: *const BiTgte_CurveOnVertex,
         S: i32,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `BiTgte_CurveOnVertex.hxx`:70 - `BiTgte_CurveOnVertex::Intervals()`
+    /// **Source:** `BiTgte_CurveOnVertex.hxx`:69 - `BiTgte_CurveOnVertex::Intervals()`
     pub fn BiTgte_CurveOnVertex_intervals(
         self_: *const BiTgte_CurveOnVertex,
-        T: *mut TColStd_Array1OfReal,
+        T: *mut NCollection_Array1_double,
         S: i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BiTgte_CurveOnVertex.hxx`:77 - `BiTgte_CurveOnVertex::Trim()`
+    /// **Source:** `BiTgte_CurveOnVertex.hxx`:76 - `BiTgte_CurveOnVertex::Trim()`
     pub fn BiTgte_CurveOnVertex_trim(
         self_: *const BiTgte_CurveOnVertex,
         First: f64,
         Last: f64,
         Tol: f64,
-    ) -> crate::OcctResult<*mut HandleAdaptor3dCurve>;
-    /// **Source:** `BiTgte_CurveOnVertex.hxx`:81 - `BiTgte_CurveOnVertex::IsClosed()`
+    ) -> crate::OcctResult<*mut Handle_Adaptor3d_Curve>;
+    /// **Source:** `BiTgte_CurveOnVertex.hxx`:80 - `BiTgte_CurveOnVertex::IsClosed()`
     pub fn BiTgte_CurveOnVertex_is_closed(
         self_: *const BiTgte_CurveOnVertex,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BiTgte_CurveOnVertex.hxx`:83 - `BiTgte_CurveOnVertex::IsPeriodic()`
+    /// **Source:** `BiTgte_CurveOnVertex.hxx`:82 - `BiTgte_CurveOnVertex::IsPeriodic()`
     pub fn BiTgte_CurveOnVertex_is_periodic(
         self_: *const BiTgte_CurveOnVertex,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BiTgte_CurveOnVertex.hxx`:85 - `BiTgte_CurveOnVertex::Period()`
+    /// **Source:** `BiTgte_CurveOnVertex.hxx`:84 - `BiTgte_CurveOnVertex::Period()`
     pub fn BiTgte_CurveOnVertex_period(
         self_: *const BiTgte_CurveOnVertex,
     ) -> crate::OcctResult<f64>;
-    /// **Source:** `BiTgte_CurveOnVertex.hxx`:88 - `BiTgte_CurveOnVertex::Value()`
-    pub fn BiTgte_CurveOnVertex_value(
+    /// **Source:** `BiTgte_CurveOnVertex.hxx`:87 - `BiTgte_CurveOnVertex::EvalD0()`
+    pub fn BiTgte_CurveOnVertex_eval_d0(
         self_: *const BiTgte_CurveOnVertex,
-        U: f64,
+        theU: f64,
     ) -> crate::OcctResult<*mut gp_Pnt>;
-    /// **Source:** `BiTgte_CurveOnVertex.hxx`:91 - `BiTgte_CurveOnVertex::D0()`
-    pub fn BiTgte_CurveOnVertex_d0(
+    /// **Source:** `BiTgte_CurveOnVertex.hxx`:90 - `BiTgte_CurveOnVertex::EvalD1()`
+    pub fn BiTgte_CurveOnVertex_eval_d1(
         self_: *const BiTgte_CurveOnVertex,
-        U: f64,
-        P: *mut gp_Pnt,
-    ) -> *const std::ffi::c_char;
-    /// **Source:** `BiTgte_CurveOnVertex.hxx`:97 - `BiTgte_CurveOnVertex::D1()`
-    pub fn BiTgte_CurveOnVertex_d1(
+        theU: f64,
+    ) -> crate::OcctResult<*mut Geom_Curve_ResD1>;
+    /// **Source:** `BiTgte_CurveOnVertex.hxx`:93 - `BiTgte_CurveOnVertex::EvalD2()`
+    pub fn BiTgte_CurveOnVertex_eval_d2(
         self_: *const BiTgte_CurveOnVertex,
-        U: f64,
-        P: *mut gp_Pnt,
-        V: *mut gp_Vec,
-    ) -> *const std::ffi::c_char;
-    /// **Source:** `BiTgte_CurveOnVertex.hxx`:103 - `BiTgte_CurveOnVertex::D2()`
-    pub fn BiTgte_CurveOnVertex_d2(
+        theU: f64,
+    ) -> crate::OcctResult<*mut Geom_Curve_ResD2>;
+    /// **Source:** `BiTgte_CurveOnVertex.hxx`:96 - `BiTgte_CurveOnVertex::EvalD3()`
+    pub fn BiTgte_CurveOnVertex_eval_d3(
         self_: *const BiTgte_CurveOnVertex,
-        U: f64,
-        P: *mut gp_Pnt,
-        V1: *mut gp_Vec,
-        V2: *mut gp_Vec,
-    ) -> *const std::ffi::c_char;
-    /// **Source:** `BiTgte_CurveOnVertex.hxx`:112 - `BiTgte_CurveOnVertex::D3()`
-    pub fn BiTgte_CurveOnVertex_d3(
+        theU: f64,
+    ) -> crate::OcctResult<*mut Geom_Curve_ResD3>;
+    /// **Source:** `BiTgte_CurveOnVertex.hxx`:99 - `BiTgte_CurveOnVertex::EvalDN()`
+    pub fn BiTgte_CurveOnVertex_eval_dn(
         self_: *const BiTgte_CurveOnVertex,
-        U: f64,
-        P: *mut gp_Pnt,
-        V1: *mut gp_Vec,
-        V2: *mut gp_Vec,
-        V3: *mut gp_Vec,
-    ) -> *const std::ffi::c_char;
-    /// **Source:** `BiTgte_CurveOnVertex.hxx`:123 - `BiTgte_CurveOnVertex::DN()`
-    pub fn BiTgte_CurveOnVertex_dn(
-        self_: *const BiTgte_CurveOnVertex,
-        U: f64,
-        N: i32,
+        theU: f64,
+        theN: i32,
     ) -> crate::OcctResult<*mut gp_Vec>;
-    /// **Source:** `BiTgte_CurveOnVertex.hxx`:128 - `BiTgte_CurveOnVertex::Resolution()`
+    /// **Source:** `BiTgte_CurveOnVertex.hxx`:103 - `BiTgte_CurveOnVertex::Resolution()`
     pub fn BiTgte_CurveOnVertex_resolution(
         self_: *const BiTgte_CurveOnVertex,
         R3d: f64,
     ) -> crate::OcctResult<f64>;
-    /// **Source:** `BiTgte_CurveOnVertex.hxx`:133 - `BiTgte_CurveOnVertex::GetType()`
+    /// **Source:** `BiTgte_CurveOnVertex.hxx`:108 - `BiTgte_CurveOnVertex::GetType()`
     pub fn BiTgte_CurveOnVertex_get_type(
         self_: *const BiTgte_CurveOnVertex,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `BiTgte_CurveOnVertex.hxx`:135 - `BiTgte_CurveOnVertex::Line()`
+    /// **Source:** `BiTgte_CurveOnVertex.hxx`:110 - `BiTgte_CurveOnVertex::Line()`
     pub fn BiTgte_CurveOnVertex_line(
         self_: *const BiTgte_CurveOnVertex,
     ) -> crate::OcctResult<*mut gp_Lin>;
-    /// **Source:** `BiTgte_CurveOnVertex.hxx`:137 - `BiTgte_CurveOnVertex::Circle()`
+    /// **Source:** `BiTgte_CurveOnVertex.hxx`:112 - `BiTgte_CurveOnVertex::Circle()`
     pub fn BiTgte_CurveOnVertex_circle(
         self_: *const BiTgte_CurveOnVertex,
     ) -> crate::OcctResult<*mut gp_Circ>;
-    /// **Source:** `BiTgte_CurveOnVertex.hxx`:139 - `BiTgte_CurveOnVertex::Ellipse()`
+    /// **Source:** `BiTgte_CurveOnVertex.hxx`:114 - `BiTgte_CurveOnVertex::Ellipse()`
     pub fn BiTgte_CurveOnVertex_ellipse(
         self_: *const BiTgte_CurveOnVertex,
     ) -> crate::OcctResult<*mut gp_Elips>;
-    /// **Source:** `BiTgte_CurveOnVertex.hxx`:141 - `BiTgte_CurveOnVertex::Hyperbola()`
+    /// **Source:** `BiTgte_CurveOnVertex.hxx`:116 - `BiTgte_CurveOnVertex::Hyperbola()`
     pub fn BiTgte_CurveOnVertex_hyperbola(
         self_: *const BiTgte_CurveOnVertex,
     ) -> crate::OcctResult<*mut gp_Hypr>;
-    /// **Source:** `BiTgte_CurveOnVertex.hxx`:143 - `BiTgte_CurveOnVertex::Parabola()`
+    /// **Source:** `BiTgte_CurveOnVertex.hxx`:118 - `BiTgte_CurveOnVertex::Parabola()`
     pub fn BiTgte_CurveOnVertex_parabola(
         self_: *const BiTgte_CurveOnVertex,
     ) -> crate::OcctResult<*mut gp_Parab>;
-    /// **Source:** `BiTgte_CurveOnVertex.hxx`:145 - `BiTgte_CurveOnVertex::Degree()`
+    /// **Source:** `BiTgte_CurveOnVertex.hxx`:120 - `BiTgte_CurveOnVertex::Degree()`
     pub fn BiTgte_CurveOnVertex_degree(
         self_: *const BiTgte_CurveOnVertex,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `BiTgte_CurveOnVertex.hxx`:147 - `BiTgte_CurveOnVertex::IsRational()`
+    /// **Source:** `BiTgte_CurveOnVertex.hxx`:122 - `BiTgte_CurveOnVertex::IsRational()`
     pub fn BiTgte_CurveOnVertex_is_rational(
         self_: *const BiTgte_CurveOnVertex,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BiTgte_CurveOnVertex.hxx`:149 - `BiTgte_CurveOnVertex::NbPoles()`
+    /// **Source:** `BiTgte_CurveOnVertex.hxx`:124 - `BiTgte_CurveOnVertex::NbPoles()`
     pub fn BiTgte_CurveOnVertex_nb_poles(
         self_: *const BiTgte_CurveOnVertex,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `BiTgte_CurveOnVertex.hxx`:151 - `BiTgte_CurveOnVertex::NbKnots()`
+    /// **Source:** `BiTgte_CurveOnVertex.hxx`:126 - `BiTgte_CurveOnVertex::NbKnots()`
     pub fn BiTgte_CurveOnVertex_nb_knots(
         self_: *const BiTgte_CurveOnVertex,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `BiTgte_CurveOnVertex.hxx`:153 - `BiTgte_CurveOnVertex::Bezier()`
+    /// **Source:** `BiTgte_CurveOnVertex.hxx`:128 - `BiTgte_CurveOnVertex::Bezier()`
     pub fn BiTgte_CurveOnVertex_bezier(
         self_: *const BiTgte_CurveOnVertex,
-    ) -> crate::OcctResult<*mut HandleGeomBezierCurve>;
-    /// **Source:** `BiTgte_CurveOnVertex.hxx`:155 - `BiTgte_CurveOnVertex::BSpline()`
+    ) -> crate::OcctResult<*mut Handle_Geom_BezierCurve>;
+    /// **Source:** `BiTgte_CurveOnVertex.hxx`:130 - `BiTgte_CurveOnVertex::BSpline()`
     pub fn BiTgte_CurveOnVertex_b_spline(
         self_: *const BiTgte_CurveOnVertex,
-    ) -> crate::OcctResult<*mut HandleGeomBSplineCurve>;
-    /// **Source:** `BiTgte_CurveOnVertex.hxx`:47 - `BiTgte_CurveOnVertex::get_type_name()`
+    ) -> crate::OcctResult<*mut Handle_Geom_BSplineCurve>;
+    /// **Source:** `BiTgte_CurveOnVertex.hxx`:46 - `BiTgte_CurveOnVertex::get_type_name()`
     pub fn BiTgte_CurveOnVertex_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
-    /// **Source:** `BiTgte_CurveOnVertex.hxx`:47 - `BiTgte_CurveOnVertex::get_type_descriptor()`
-    pub fn BiTgte_CurveOnVertex_get_type_descriptor() -> crate::OcctResult<*const HandleStandardType>;
+    /// **Source:** `BiTgte_CurveOnVertex.hxx`:46 - `BiTgte_CurveOnVertex::get_type_descriptor()`
+    pub fn BiTgte_CurveOnVertex_get_type_descriptor(
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast BiTgte_CurveOnVertex to Adaptor3d_Curve
     pub fn BiTgte_CurveOnVertex_as_Adaptor3d_Curve(
         self_: *const BiTgte_CurveOnVertex,
@@ -2854,66 +2876,107 @@ unsafe extern "C" {
     /// Wrap BiTgte_CurveOnVertex in a Handle
     pub fn BiTgte_CurveOnVertex_to_handle(
         obj: *mut BiTgte_CurveOnVertex,
-    ) -> crate::OcctResult<*mut HandleBiTgteCurveOnVertex>;
+    ) -> crate::OcctResult<*mut Handle_BiTgte_CurveOnVertex>;
     /// Destroy Handle<BiTgte_CurveOnVertex>
-    pub fn HandleBiTgteCurveOnVertex_destructor(self_: *mut HandleBiTgteCurveOnVertex);
+    pub fn Handle_BiTgte_CurveOnVertex_destructor(self_: *mut Handle_BiTgte_CurveOnVertex);
     /// Clone Handle<BiTgte_CurveOnVertex> (increments reference count)
-    pub fn HandleBiTgteCurveOnVertex_clone(
-        self_: *const HandleBiTgteCurveOnVertex,
-    ) -> crate::OcctResult<*mut HandleBiTgteCurveOnVertex>;
+    pub fn Handle_BiTgte_CurveOnVertex_clone(
+        self_: *const Handle_BiTgte_CurveOnVertex,
+    ) -> crate::OcctResult<*mut Handle_BiTgte_CurveOnVertex>;
     /// Check if Handle<BiTgte_CurveOnVertex> is null
-    pub fn HandleBiTgteCurveOnVertex_is_null(self_: *const HandleBiTgteCurveOnVertex) -> bool;
+    pub fn Handle_BiTgte_CurveOnVertex_is_null(self_: *const Handle_BiTgte_CurveOnVertex) -> bool;
     /// Dereference Handle to get *const BiTgte_CurveOnVertex
-    pub fn HandleBiTgteCurveOnVertex_get(
-        handle: *const HandleBiTgteCurveOnVertex,
+    pub fn Handle_BiTgte_CurveOnVertex_get(
+        handle: *const Handle_BiTgte_CurveOnVertex,
     ) -> crate::OcctResult<*const BiTgte_CurveOnVertex>;
     /// Dereference Handle to get *mut BiTgte_CurveOnVertex
-    pub fn HandleBiTgteCurveOnVertex_get_mut(
-        handle: *mut HandleBiTgteCurveOnVertex,
+    pub fn Handle_BiTgte_CurveOnVertex_get_mut(
+        handle: *mut Handle_BiTgte_CurveOnVertex,
     ) -> crate::OcctResult<*mut BiTgte_CurveOnVertex>;
     /// Upcast Handle<BiTgte_CurveOnVertex> to Handle<Adaptor3d_Curve>
-    pub fn HandleBiTgteCurveOnVertex_to_HandleAdaptor3dCurve(
-        self_: *const HandleBiTgteCurveOnVertex,
-    ) -> crate::OcctResult<*mut HandleAdaptor3dCurve>;
+    pub fn Handle_BiTgte_CurveOnVertex_to_Handle_Adaptor3d_Curve(
+        self_: *const Handle_BiTgte_CurveOnVertex,
+    ) -> crate::OcctResult<*mut Handle_Adaptor3d_Curve>;
     /// Upcast Handle<BiTgte_CurveOnVertex> to Handle<Standard_Transient>
-    pub fn HandleBiTgteCurveOnVertex_to_HandleStandardTransient(
-        self_: *const HandleBiTgteCurveOnVertex,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
-    /// Inherited: **Source:** `Adaptor3d_Curve.hxx`:57 - `Adaptor3d_Curve::ShallowCopy()`
+    pub fn Handle_BiTgte_CurveOnVertex_to_Handle_Standard_Transient(
+        self_: *const Handle_BiTgte_CurveOnVertex,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
+    /// Inherited: **Source:** `Adaptor3d_Curve.hxx`:54 - `Adaptor3d_Curve::ShallowCopy()`
     pub fn BiTgte_CurveOnVertex_inherited_ShallowCopy(
         self_: *const BiTgte_CurveOnVertex,
-    ) -> crate::OcctResult<*mut HandleAdaptor3dCurve>;
-    /// Inherited: **Source:** `Adaptor3d_Curve.hxx`:156 - `Adaptor3d_Curve::OffsetCurve()`
+    ) -> crate::OcctResult<*mut Handle_Adaptor3d_Curve>;
+    /// Inherited: **Source:** `Adaptor3d_Curve.hxx`:89 - `Adaptor3d_Curve::Value()`
+    pub fn BiTgte_CurveOnVertex_inherited_Value(
+        self_: *const BiTgte_CurveOnVertex,
+        theU: f64,
+    ) -> crate::OcctResult<*mut gp_Pnt>;
+    /// Inherited: **Source:** `Adaptor3d_Curve.hxx`:92 - `Adaptor3d_Curve::D0()`
+    pub fn BiTgte_CurveOnVertex_inherited_D0(
+        self_: *const BiTgte_CurveOnVertex,
+        theU: f64,
+        theP: *mut gp_Pnt,
+    ) -> *const std::ffi::c_char;
+    /// Inherited: **Source:** `Adaptor3d_Curve.hxx`:98 - `Adaptor3d_Curve::D1()`
+    pub fn BiTgte_CurveOnVertex_inherited_D1(
+        self_: *const BiTgte_CurveOnVertex,
+        theU: f64,
+        theP: *mut gp_Pnt,
+        theV: *mut gp_Vec,
+    ) -> *const std::ffi::c_char;
+    /// Inherited: **Source:** `Adaptor3d_Curve.hxx`:109 - `Adaptor3d_Curve::D2()`
+    pub fn BiTgte_CurveOnVertex_inherited_D2(
+        self_: *const BiTgte_CurveOnVertex,
+        theU: f64,
+        theP: *mut gp_Pnt,
+        theV1: *mut gp_Vec,
+        theV2: *mut gp_Vec,
+    ) -> *const std::ffi::c_char;
+    /// Inherited: **Source:** `Adaptor3d_Curve.hxx`:121 - `Adaptor3d_Curve::D3()`
+    pub fn BiTgte_CurveOnVertex_inherited_D3(
+        self_: *const BiTgte_CurveOnVertex,
+        theU: f64,
+        theP: *mut gp_Pnt,
+        theV1: *mut gp_Vec,
+        theV2: *mut gp_Vec,
+        theV3: *mut gp_Vec,
+    ) -> *const std::ffi::c_char;
+    /// Inherited: **Source:** `Adaptor3d_Curve.hxx`:135 - `Adaptor3d_Curve::DN()`
+    pub fn BiTgte_CurveOnVertex_inherited_DN(
+        self_: *const BiTgte_CurveOnVertex,
+        theU: f64,
+        theN: i32,
+    ) -> crate::OcctResult<*mut gp_Vec>;
+    /// Inherited: **Source:** `Adaptor3d_Curve.hxx`:168 - `Adaptor3d_Curve::OffsetCurve()`
     pub fn BiTgte_CurveOnVertex_inherited_OffsetCurve(
         self_: *const BiTgte_CurveOnVertex,
-    ) -> crate::OcctResult<*mut HandleGeomOffsetCurve>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    ) -> crate::OcctResult<*mut Handle_Geom_OffsetCurve>;
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn BiTgte_CurveOnVertex_inherited_IsInstance(
         self_: *const BiTgte_CurveOnVertex,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn BiTgte_CurveOnVertex_inherited_IsKind(
         self_: *const BiTgte_CurveOnVertex,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn BiTgte_CurveOnVertex_inherited_This(
         self_: *const BiTgte_CurveOnVertex,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn BiTgte_CurveOnVertex_inherited_GetRefCount(
         self_: *const BiTgte_CurveOnVertex,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn BiTgte_CurveOnVertex_inherited_IncrementRefCounter(
         self_: *mut BiTgte_CurveOnVertex,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn BiTgte_CurveOnVertex_inherited_DecrementRefCounter(
         self_: *mut BiTgte_CurveOnVertex,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn BiTgte_CurveOnVertex_inherited_Delete(
         self_: *const BiTgte_CurveOnVertex,
     ) -> *const std::ffi::c_char;
@@ -2954,7 +3017,7 @@ unsafe extern "C" {
     /// **Source:** `Draft_EdgeInfo.hxx`:50 - `Draft_EdgeInfo::Geometry()`
     pub fn Draft_EdgeInfo_geometry(
         self_: *const Draft_EdgeInfo,
-    ) -> crate::OcctResult<*const HandleGeomCurve>;
+    ) -> crate::OcctResult<*const Handle_Geom_Curve>;
     /// **Source:** `Draft_EdgeInfo.hxx`:52 - `Draft_EdgeInfo::FirstFace()`
     pub fn Draft_EdgeInfo_first_face(
         self_: *const Draft_EdgeInfo,
@@ -2966,23 +3029,23 @@ unsafe extern "C" {
     /// **Source:** `Draft_EdgeInfo.hxx`:56 - `Draft_EdgeInfo::FirstPC()`
     pub fn Draft_EdgeInfo_first_pc(
         self_: *const Draft_EdgeInfo,
-    ) -> crate::OcctResult<*const HandleGeom2dCurve>;
+    ) -> crate::OcctResult<*const Handle_Geom2d_Curve>;
     /// **Source:** `Draft_EdgeInfo.hxx`:58 - `Draft_EdgeInfo::SecondPC()`
     pub fn Draft_EdgeInfo_second_pc(
         self_: *const Draft_EdgeInfo,
-    ) -> crate::OcctResult<*const HandleGeom2dCurve>;
+    ) -> crate::OcctResult<*const Handle_Geom2d_Curve>;
     /// **Source:** `Draft_EdgeInfo.hxx`:60 - `Draft_EdgeInfo::ChangeGeometry()`
     pub fn Draft_EdgeInfo_change_geometry(
         self_: *mut Draft_EdgeInfo,
-    ) -> crate::OcctResult<*mut HandleGeomCurve>;
+    ) -> crate::OcctResult<*mut Handle_Geom_Curve>;
     /// **Source:** `Draft_EdgeInfo.hxx`:62 - `Draft_EdgeInfo::ChangeFirstPC()`
     pub fn Draft_EdgeInfo_change_first_pc(
         self_: *mut Draft_EdgeInfo,
-    ) -> crate::OcctResult<*mut HandleGeom2dCurve>;
+    ) -> crate::OcctResult<*mut Handle_Geom2d_Curve>;
     /// **Source:** `Draft_EdgeInfo.hxx`:64 - `Draft_EdgeInfo::ChangeSecondPC()`
     pub fn Draft_EdgeInfo_change_second_pc(
         self_: *mut Draft_EdgeInfo,
-    ) -> crate::OcctResult<*mut HandleGeom2dCurve>;
+    ) -> crate::OcctResult<*mut Handle_Geom2d_Curve>;
     /// **Source:** `Draft_EdgeInfo.hxx`:66 - `Draft_EdgeInfo::RootFace()`
     pub fn Draft_EdgeInfo_root_face(
         self_: *const Draft_EdgeInfo,
@@ -3000,49 +3063,49 @@ unsafe extern "C" {
     pub fn Draft_FaceInfo_ctor() -> crate::OcctResult<*mut Draft_FaceInfo>;
     /// **Source:** `Draft_FaceInfo.hxx`:36 - `Draft_FaceInfo::Draft_FaceInfo()`
     pub fn Draft_FaceInfo_ctor_handlegeomsurface_bool(
-        S: *const HandleGeomSurface,
+        S: *const Handle_Geom_Surface,
         HasNewGeometry: bool,
     ) -> crate::OcctResult<*mut Draft_FaceInfo>;
-    /// **Source:** `Draft_FaceInfo.hxx`:39 - `Draft_FaceInfo::RootFace()`
+    /// **Source:** `Draft_FaceInfo.hxx`:38 - `Draft_FaceInfo::RootFace()`
     pub fn Draft_FaceInfo_root_face_face(
         self_: *mut Draft_FaceInfo,
         F: *const TopoDS_Face,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `Draft_FaceInfo.hxx`:41 - `Draft_FaceInfo::NewGeometry()`
+    /// **Source:** `Draft_FaceInfo.hxx`:40 - `Draft_FaceInfo::NewGeometry()`
     pub fn Draft_FaceInfo_new_geometry(self_: *const Draft_FaceInfo) -> crate::OcctResult<bool>;
-    /// **Source:** `Draft_FaceInfo.hxx`:43 - `Draft_FaceInfo::Add()`
+    /// **Source:** `Draft_FaceInfo.hxx`:42 - `Draft_FaceInfo::Add()`
     pub fn Draft_FaceInfo_add(
         self_: *mut Draft_FaceInfo,
         F: *const TopoDS_Face,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `Draft_FaceInfo.hxx`:45 - `Draft_FaceInfo::FirstFace()`
+    /// **Source:** `Draft_FaceInfo.hxx`:44 - `Draft_FaceInfo::FirstFace()`
     pub fn Draft_FaceInfo_first_face(
         self_: *const Draft_FaceInfo,
     ) -> crate::OcctResult<*const TopoDS_Face>;
-    /// **Source:** `Draft_FaceInfo.hxx`:47 - `Draft_FaceInfo::SecondFace()`
+    /// **Source:** `Draft_FaceInfo.hxx`:46 - `Draft_FaceInfo::SecondFace()`
     pub fn Draft_FaceInfo_second_face(
         self_: *const Draft_FaceInfo,
     ) -> crate::OcctResult<*const TopoDS_Face>;
-    /// **Source:** `Draft_FaceInfo.hxx`:49 - `Draft_FaceInfo::Geometry()`
+    /// **Source:** `Draft_FaceInfo.hxx`:48 - `Draft_FaceInfo::Geometry()`
     pub fn Draft_FaceInfo_geometry(
         self_: *const Draft_FaceInfo,
-    ) -> crate::OcctResult<*const HandleGeomSurface>;
-    /// **Source:** `Draft_FaceInfo.hxx`:51 - `Draft_FaceInfo::ChangeGeometry()`
+    ) -> crate::OcctResult<*const Handle_Geom_Surface>;
+    /// **Source:** `Draft_FaceInfo.hxx`:50 - `Draft_FaceInfo::ChangeGeometry()`
     pub fn Draft_FaceInfo_change_geometry(
         self_: *mut Draft_FaceInfo,
-    ) -> crate::OcctResult<*mut HandleGeomSurface>;
-    /// **Source:** `Draft_FaceInfo.hxx`:53 - `Draft_FaceInfo::RootFace()`
+    ) -> crate::OcctResult<*mut Handle_Geom_Surface>;
+    /// **Source:** `Draft_FaceInfo.hxx`:52 - `Draft_FaceInfo::RootFace()`
     pub fn Draft_FaceInfo_root_face(
         self_: *const Draft_FaceInfo,
     ) -> crate::OcctResult<*const TopoDS_Face>;
-    /// **Source:** `Draft_FaceInfo.hxx`:55 - `Draft_FaceInfo::ChangeCurve()`
+    /// **Source:** `Draft_FaceInfo.hxx`:54 - `Draft_FaceInfo::ChangeCurve()`
     pub fn Draft_FaceInfo_change_curve(
         self_: *mut Draft_FaceInfo,
-    ) -> crate::OcctResult<*mut HandleGeomCurve>;
-    /// **Source:** `Draft_FaceInfo.hxx`:57 - `Draft_FaceInfo::Curve()`
+    ) -> crate::OcctResult<*mut Handle_Geom_Curve>;
+    /// **Source:** `Draft_FaceInfo.hxx`:56 - `Draft_FaceInfo::Curve()`
     pub fn Draft_FaceInfo_curve(
         self_: *const Draft_FaceInfo,
-    ) -> crate::OcctResult<*const HandleGeomCurve>;
+    ) -> crate::OcctResult<*const Handle_Geom_Curve>;
     // ======================== Draft_Modification ========================
     pub fn Draft_Modification_destructor(self_: *mut Draft_Modification);
     /// **Source:** `Draft_Modification.hxx`:51 - `Draft_Modification::Draft_Modification()`
@@ -3084,16 +3147,16 @@ unsafe extern "C" {
     pub fn Draft_Modification_connected_faces(
         self_: *mut Draft_Modification,
         F: *const TopoDS_Face,
-    ) -> crate::OcctResult<*const TopTools_ListOfShape>;
+    ) -> crate::OcctResult<*const NCollection_List_TopoDS_Shape>;
     /// **Source:** `Draft_Modification.hxx`:100 - `Draft_Modification::ModifiedFaces()`
     pub fn Draft_Modification_modified_faces(
         self_: *mut Draft_Modification,
-    ) -> crate::OcctResult<*const TopTools_ListOfShape>;
+    ) -> crate::OcctResult<*const NCollection_List_TopoDS_Shape>;
     /// **Source:** `Draft_Modification.hxx`:115 - `Draft_Modification::NewSurface()`
     pub fn Draft_Modification_new_surface(
         self_: *mut Draft_Modification,
         F: *const TopoDS_Face,
-        S: *mut HandleGeomSurface,
+        S: *mut Handle_Geom_Surface,
         L: *mut TopLoc_Location,
         Tol: *mut f64,
         RevWires: *mut bool,
@@ -3103,7 +3166,7 @@ unsafe extern "C" {
     pub fn Draft_Modification_new_curve(
         self_: *mut Draft_Modification,
         E: *const TopoDS_Edge,
-        C: *mut HandleGeomCurve,
+        C: *mut Handle_Geom_Curve,
         L: *mut TopLoc_Location,
         Tol: *mut f64,
     ) -> crate::OcctResult<bool>;
@@ -3114,17 +3177,17 @@ unsafe extern "C" {
         P: *mut gp_Pnt,
         Tol: *mut f64,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `Draft_Modification.hxx`:152 - `Draft_Modification::NewCurve2d()`
+    /// **Source:** `Draft_Modification.hxx`:150 - `Draft_Modification::NewCurve2d()`
     pub fn Draft_Modification_new_curve2d(
         self_: *mut Draft_Modification,
         E: *const TopoDS_Edge,
         F: *const TopoDS_Face,
         NewE: *const TopoDS_Edge,
         NewF: *const TopoDS_Face,
-        C: *mut HandleGeom2dCurve,
+        C: *mut Handle_Geom2d_Curve,
         Tol: *mut f64,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `Draft_Modification.hxx`:164 - `Draft_Modification::NewParameter()`
+    /// **Source:** `Draft_Modification.hxx`:162 - `Draft_Modification::NewParameter()`
     pub fn Draft_Modification_new_parameter(
         self_: *mut Draft_Modification,
         V: *const TopoDS_Vertex,
@@ -3132,7 +3195,7 @@ unsafe extern "C" {
         P: *mut f64,
         Tol: *mut f64,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `Draft_Modification.hxx`:175 - `Draft_Modification::Continuity()`
+    /// **Source:** `Draft_Modification.hxx`:173 - `Draft_Modification::Continuity()`
     pub fn Draft_Modification_continuity(
         self_: *mut Draft_Modification,
         E: *const TopoDS_Edge,
@@ -3142,14 +3205,14 @@ unsafe extern "C" {
         NewF1: *const TopoDS_Face,
         NewF2: *const TopoDS_Face,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `Draft_Modification.hxx`:182 - `Draft_Modification::DynamicType()`
+    /// **Source:** `Draft_Modification.hxx`:180 - `Draft_Modification::DynamicType()`
     pub fn Draft_Modification_dynamic_type(
         self_: *const Draft_Modification,
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// **Source:** `Draft_Modification.hxx`:182 - `Draft_Modification::get_type_name()`
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
+    /// **Source:** `Draft_Modification.hxx`:180 - `Draft_Modification::get_type_name()`
     pub fn Draft_Modification_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
-    /// **Source:** `Draft_Modification.hxx`:182 - `Draft_Modification::get_type_descriptor()`
-    pub fn Draft_Modification_get_type_descriptor() -> crate::OcctResult<*const HandleStandardType>;
+    /// **Source:** `Draft_Modification.hxx`:180 - `Draft_Modification::get_type_descriptor()`
+    pub fn Draft_Modification_get_type_descriptor() -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast Draft_Modification to BRepTools_Modification
     pub fn Draft_Modification_as_BRepTools_Modification(
         self_: *const Draft_Modification,
@@ -3169,77 +3232,77 @@ unsafe extern "C" {
     /// Wrap Draft_Modification in a Handle
     pub fn Draft_Modification_to_handle(
         obj: *mut Draft_Modification,
-    ) -> crate::OcctResult<*mut HandleDraftModification>;
+    ) -> crate::OcctResult<*mut Handle_Draft_Modification>;
     /// Destroy Handle<Draft_Modification>
-    pub fn HandleDraftModification_destructor(self_: *mut HandleDraftModification);
+    pub fn Handle_Draft_Modification_destructor(self_: *mut Handle_Draft_Modification);
     /// Clone Handle<Draft_Modification> (increments reference count)
-    pub fn HandleDraftModification_clone(
-        self_: *const HandleDraftModification,
-    ) -> crate::OcctResult<*mut HandleDraftModification>;
+    pub fn Handle_Draft_Modification_clone(
+        self_: *const Handle_Draft_Modification,
+    ) -> crate::OcctResult<*mut Handle_Draft_Modification>;
     /// Check if Handle<Draft_Modification> is null
-    pub fn HandleDraftModification_is_null(self_: *const HandleDraftModification) -> bool;
+    pub fn Handle_Draft_Modification_is_null(self_: *const Handle_Draft_Modification) -> bool;
     /// Dereference Handle to get *const Draft_Modification
-    pub fn HandleDraftModification_get(
-        handle: *const HandleDraftModification,
+    pub fn Handle_Draft_Modification_get(
+        handle: *const Handle_Draft_Modification,
     ) -> crate::OcctResult<*const Draft_Modification>;
     /// Dereference Handle to get *mut Draft_Modification
-    pub fn HandleDraftModification_get_mut(
-        handle: *mut HandleDraftModification,
+    pub fn Handle_Draft_Modification_get_mut(
+        handle: *mut Handle_Draft_Modification,
     ) -> crate::OcctResult<*mut Draft_Modification>;
     /// Upcast Handle<Draft_Modification> to Handle<BRepTools_Modification>
-    pub fn HandleDraftModification_to_HandleBRepToolsModification(
-        self_: *const HandleDraftModification,
-    ) -> crate::OcctResult<*mut HandleBRepToolsModification>;
+    pub fn Handle_Draft_Modification_to_Handle_BRepTools_Modification(
+        self_: *const Handle_Draft_Modification,
+    ) -> crate::OcctResult<*mut Handle_BRepTools_Modification>;
     /// Upcast Handle<Draft_Modification> to Handle<Standard_Transient>
-    pub fn HandleDraftModification_to_HandleStandardTransient(
-        self_: *const HandleDraftModification,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
-    /// Inherited: **Source:** `BRepTools_Modification.hxx`:71 - `BRepTools_Modification::NewTriangulation()`
+    pub fn Handle_Draft_Modification_to_Handle_Standard_Transient(
+        self_: *const Handle_Draft_Modification,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
+    /// Inherited: **Source:** `BRepTools_Modification.hxx`:68 - `BRepTools_Modification::NewTriangulation()`
     pub fn Draft_Modification_inherited_NewTriangulation(
         self_: *mut Draft_Modification,
         F: *const TopoDS_Face,
-        T: *mut HandlePolyTriangulation,
+        T: *mut Handle_Poly_Triangulation,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `BRepTools_Modification.hxx`:89 - `BRepTools_Modification::NewPolygon()`
+    /// Inherited: **Source:** `BRepTools_Modification.hxx`:86 - `BRepTools_Modification::NewPolygon()`
     pub fn Draft_Modification_inherited_NewPolygon(
         self_: *mut Draft_Modification,
         E: *const TopoDS_Edge,
-        P: *mut HandlePolyPolygon3D,
+        P: *mut Handle_Poly_Polygon3D,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `BRepTools_Modification.hxx`:95 - `BRepTools_Modification::NewPolygonOnTriangulation()`
+    /// Inherited: **Source:** `BRepTools_Modification.hxx`:91 - `BRepTools_Modification::NewPolygonOnTriangulation()`
     pub fn Draft_Modification_inherited_NewPolygonOnTriangulation(
         self_: *mut Draft_Modification,
         E: *const TopoDS_Edge,
         F: *const TopoDS_Face,
-        P: *mut HandlePolyPolygonOnTriangulation,
+        P: *mut Handle_Poly_PolygonOnTriangulation,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn Draft_Modification_inherited_IsInstance(
         self_: *const Draft_Modification,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn Draft_Modification_inherited_IsKind(
         self_: *const Draft_Modification,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn Draft_Modification_inherited_This(
         self_: *const Draft_Modification,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn Draft_Modification_inherited_GetRefCount(
         self_: *const Draft_Modification,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn Draft_Modification_inherited_IncrementRefCounter(
         self_: *mut Draft_Modification,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn Draft_Modification_inherited_DecrementRefCounter(
         self_: *mut Draft_Modification,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn Draft_Modification_inherited_Delete(
         self_: *const Draft_Modification,
     ) -> *const std::ffi::c_char;
@@ -3286,14 +3349,10 @@ unsafe extern "C" {
     // Free functions
     /// **Source:** `BRepOffset.hxx`:61 - `BRepOffset::CollapseSingularities`
     pub fn BRepOffset_collapse_singularities(
-        theSurface: *const HandleGeomSurface,
+        theSurface: *const Handle_Geom_Surface,
         theFace: *const TopoDS_Face,
         thePrecision: f64,
-    ) -> crate::OcctResult<*mut HandleGeomSurface>;
+    ) -> crate::OcctResult<*mut Handle_Geom_Surface>;
     /// **Source:** `Draft.hxx`:40 - `Draft::Angle`
     pub fn Draft_angle(F: *const TopoDS_Face, Direction: *const gp_Dir) -> crate::OcctResult<f64>;
-
-    // Nested type & typedef type destructors
-    pub fn BRepOffset_DataMapOfShapeOffset_destructor(self_: *mut BRepOffset_DataMapOfShapeOffset);
-    pub fn BRepOffset_ListOfInterval_destructor(self_: *mut BRepOffset_ListOfInterval);
 }

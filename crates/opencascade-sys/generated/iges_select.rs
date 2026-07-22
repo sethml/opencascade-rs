@@ -23,9 +23,9 @@ pub fn run() {
 /// (normally, types of <ent> and <sup> should suffice to
 /// known the case)
 pub fn what_iges(
-    ent: &crate::ffi_types::HandleIGESDataIGESEntity,
+    ent: &crate::ffi_types::Handle_IGESData_IGESEntity,
     G: &crate::interface::Graph,
-    sup: &mut crate::ffi_types::HandleIGESDataIGESEntity,
+    sup: &mut crate::ffi_types::Handle_IGESData_IGESEntity,
     index: &mut i32,
 ) -> i32 {
     crate::check_result(unsafe {
@@ -35,19 +35,19 @@ pub fn what_iges(
 
 // Handle type re-exports (targets of handle upcasts/downcasts)
 pub use crate::ffi_types::{
-    HandleIFSelectActivator, HandleIFSelectDispatch, HandleIFSelectEditor,
-    HandleIFSelectGeneralModifier, HandleIFSelectModifier, HandleIFSelectSelectDeduct,
-    HandleIFSelectSelectExplore, HandleIFSelectSelectExtract, HandleIFSelectSelection,
-    HandleIFSelectSessionDumper, HandleIFSelectSignCounter, HandleIFSelectSignature,
-    HandleIFSelectSignatureList, HandleIFSelectTransformer, HandleIFSelectWorkLibrary,
-    HandleInterfaceSignType, HandleMoniToolSignText, HandleStandardTransient,
+    Handle_IFSelect_Activator, Handle_IFSelect_Dispatch, Handle_IFSelect_Editor,
+    Handle_IFSelect_GeneralModifier, Handle_IFSelect_Modifier, Handle_IFSelect_SelectDeduct,
+    Handle_IFSelect_SelectExplore, Handle_IFSelect_SelectExtract, Handle_IFSelect_Selection,
+    Handle_IFSelect_SessionDumper, Handle_IFSelect_SignCounter, Handle_IFSelect_Signature,
+    Handle_IFSelect_SignatureList, Handle_IFSelect_Transformer, Handle_IFSelect_WorkLibrary,
+    Handle_Interface_SignType, Handle_MoniTool_SignText, Handle_Standard_Transient,
 };
 
 // ========================
 // From IGESSelect_Activator.hxx
 // ========================
 
-/// **Source:** `IGESSelect_Activator.hxx`:33 - `IGESSelect_Activator`
+/// **Source:** `IGESSelect_Activator.hxx`:30 - `IGESSelect_Activator`
 /// Performs Actions specific to IGESSelect, i.e. creation of
 /// IGES Selections and Dispatches, plus dumping specific to IGES
 pub use crate::ffi_types::IGESSelect_Activator as Activator;
@@ -61,7 +61,7 @@ unsafe impl crate::CppDeletable for Activator {
 }
 
 impl Activator {
-    /// **Source:** `IGESSelect_Activator.hxx`:37 - `IGESSelect_Activator::IGESSelect_Activator()`
+    /// **Source:** `IGESSelect_Activator.hxx`:34 - `IGESSelect_Activator::IGESSelect_Activator()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -70,12 +70,12 @@ impl Activator {
         }
     }
 
-    /// **Source:** `IGESSelect_Activator.hxx`:41 - `IGESSelect_Activator::Do()`
+    /// **Source:** `IGESSelect_Activator.hxx`:38 - `IGESSelect_Activator::Do()`
     /// Executes a Command Line for IGESSelect
     pub fn do_(
         &mut self,
         number: i32,
-        pilot: &crate::ffi_types::HandleIFSelectSessionPilot,
+        pilot: &crate::ffi_types::Handle_IFSelect_SessionPilot,
     ) -> crate::if_select::ReturnStatus {
         crate::if_select::ReturnStatus::try_from(crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_Activator_do_(self as *mut Self, number, pilot)
@@ -83,7 +83,7 @@ impl Activator {
         .unwrap()
     }
 
-    /// **Source:** `IGESSelect_Activator.hxx`:44 - `IGESSelect_Activator::Help()`
+    /// **Source:** `IGESSelect_Activator.hxx`:41 - `IGESSelect_Activator::Help()`
     /// Sends a short help message for IGESSelect commands
     pub fn help(&self, number: i32) -> std::string::String {
         unsafe {
@@ -95,8 +95,8 @@ impl Activator {
         .into_owned()
     }
 
-    /// **Source:** `IGESSelect_Activator.hxx`:46 - `IGESSelect_Activator::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `IGESSelect_Activator.hxx`:43 - `IGESSelect_Activator::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKDEIGES::IGESSelect_Activator_dynamic_type(
                 self as *const Self,
@@ -104,7 +104,7 @@ impl Activator {
         }
     }
 
-    /// **Source:** `IGESSelect_Activator.hxx`:46 - `IGESSelect_Activator::get_type_name()`
+    /// **Source:** `IGESSelect_Activator.hxx`:43 - `IGESSelect_Activator::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -115,8 +115,8 @@ impl Activator {
         .into_owned()
     }
 
-    /// **Source:** `IGESSelect_Activator.hxx`:46 - `IGESSelect_Activator::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    /// **Source:** `IGESSelect_Activator.hxx`:43 - `IGESSelect_Activator::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKDEIGES::IGESSelect_Activator_get_type_descriptor(),
@@ -171,7 +171,7 @@ impl Activator {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESSelectActivator> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_IGESSelect_Activator> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDEIGES::IGESSelect_Activator_to_handle(obj.into_raw()),
@@ -179,8 +179,8 @@ impl Activator {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_Activator_inherited_IsInstance(
                 self as *const Self,
@@ -189,8 +189,8 @@ impl Activator {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_Activator_inherited_IsKind(
                 self as *const Self,
@@ -199,7 +199,7 @@ impl Activator {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -213,7 +213,7 @@ impl Activator {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_Activator_inherited_GetRefCount(
@@ -222,7 +222,7 @@ impl Activator {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_Activator_inherited_IncrementRefCounter(
@@ -231,7 +231,7 @@ impl Activator {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_Activator_inherited_DecrementRefCounter(
@@ -240,7 +240,7 @@ impl Activator {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_Activator_inherited_Delete(self as *const Self)
@@ -248,36 +248,36 @@ impl Activator {
     }
 }
 
-pub use crate::ffi_types::HandleIGESSelectActivator;
+pub use crate::ffi_types::Handle_IGESSelect_Activator;
 
-unsafe impl crate::CppDeletable for HandleIGESSelectActivator {
+unsafe impl crate::CppDeletable for Handle_IGESSelect_Activator {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKDEIGES::HandleIGESSelectActivator_destructor(ptr);
+            crate::ffi_extern_TKDEIGES::Handle_IGESSelect_Activator_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleIGESSelectActivator {
+unsafe impl crate::CppCopyable for Handle_IGESSelect_Activator {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
         unsafe {
-            crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectActivator_clone(ptr))
+            crate::check_result(crate::ffi_extern_TKDEIGES::Handle_IGESSelect_Activator_clone(ptr))
         }
     }
 }
 
-impl HandleIGESSelectActivator {
+impl Handle_IGESSelect_Activator {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
         unsafe {
-            crate::ffi_extern_TKDEIGES::HandleIGESSelectActivator_is_null(self as *const Self)
+            crate::ffi_extern_TKDEIGES::Handle_IGESSelect_Activator_is_null(self as *const Self)
         }
     }
 
     /// Dereference this Handle to access the underlying IGESSelect_Activator
     pub fn get(&self) -> &crate::ffi_types::IGESSelect_Activator {
         unsafe {
-            &*crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectActivator_get(
+            &*crate::check_result(crate::ffi_extern_TKDEIGES::Handle_IGESSelect_Activator_get(
                 self as *const Self,
             ))
         }
@@ -287,7 +287,7 @@ impl HandleIGESSelectActivator {
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::IGESSelect_Activator {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi_extern_TKDEIGES::HandleIGESSelectActivator_get_mut(self as *mut Self),
+                crate::ffi_extern_TKDEIGES::Handle_IGESSelect_Activator_get_mut(self as *mut Self),
             )
         }
     }
@@ -295,26 +295,18 @@ impl HandleIGESSelectActivator {
     /// Upcast Handle<IGESSelect_Activator> to Handle<IFSelect_Activator>
     pub fn to_handle_activator(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleIFSelectActivator> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_IFSelect_Activator> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKDEIGES::HandleIGESSelectActivator_to_HandleIFSelectActivator(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::Handle_IGESSelect_Activator_to_Handle_IFSelect_Activator(self as *const Self)))
         }
     }
 
     /// Upcast Handle<IGESSelect_Activator> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKDEIGES::HandleIGESSelectActivator_to_HandleStandardTransient(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::Handle_IGESSelect_Activator_to_Handle_Standard_Transient(self as *const Self)))
         }
     }
 }
@@ -323,7 +315,7 @@ impl HandleIGESSelectActivator {
 // From IGESSelect_AddFileComment.hxx
 // ========================
 
-/// **Source:** `IGESSelect_AddFileComment.hxx`:36 - `IGESSelect_AddFileComment`
+/// **Source:** `IGESSelect_AddFileComment.hxx`:35 - `IGESSelect_AddFileComment`
 /// This class allows to add comment lines on writing an IGES File
 /// These lines are added to Start Section, instead of the only
 /// one blank line written by default.
@@ -338,7 +330,7 @@ unsafe impl crate::CppDeletable for AddFileComment {
 }
 
 impl AddFileComment {
-    /// **Source:** `IGESSelect_AddFileComment.hxx`:41 - `IGESSelect_AddFileComment::IGESSelect_AddFileComment()`
+    /// **Source:** `IGESSelect_AddFileComment.hxx`:40 - `IGESSelect_AddFileComment::IGESSelect_AddFileComment()`
     /// Creates a new empty AddFileComment. Use AddLine to complete it
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
@@ -348,7 +340,7 @@ impl AddFileComment {
         }
     }
 
-    /// **Source:** `IGESSelect_AddFileComment.hxx`:44 - `IGESSelect_AddFileComment::Clear()`
+    /// **Source:** `IGESSelect_AddFileComment.hxx`:43 - `IGESSelect_AddFileComment::Clear()`
     /// Clears the list of file comment lines already stored
     pub fn clear(&mut self) {
         crate::check_void_result(unsafe {
@@ -356,10 +348,10 @@ impl AddFileComment {
         })
     }
 
-    /// **Source:** `IGESSelect_AddFileComment.hxx`:49 - `IGESSelect_AddFileComment::AddLine()`
+    /// **Source:** `IGESSelect_AddFileComment.hxx`:48 - `IGESSelect_AddFileComment::AddLine()`
     /// Adds a line for file comment
-    /// Remark : Lines are limited to 72 useful char.s . A line of more than
-    /// 72 char.s will be splited into several ones of 72 max each.
+    /// Remark: Lines are limited to 72 useful chars. A line of more than
+    /// 72 chars will be split into several ones of 72 max each.
     pub fn add_line(&mut self, line: &str) {
         let c_line = std::ffi::CString::new(line).unwrap();
         crate::check_void_result(unsafe {
@@ -370,10 +362,13 @@ impl AddFileComment {
         })
     }
 
-    /// **Source:** `IGESSelect_AddFileComment.hxx`:53 - `IGESSelect_AddFileComment::AddLines()`
+    /// **Source:** `IGESSelect_AddFileComment.hxx`:52 - `IGESSelect_AddFileComment::AddLines()`
     /// Adds a list of lines for file comment
     /// Each of them must comply with demand of AddLine
-    pub fn add_lines(&mut self, lines: &crate::ffi_types::HandleTColStdHSequenceOfHAsciiString) {
+    pub fn add_lines(
+        &mut self,
+        lines: &crate::ffi_types::Handle_NCollection_HSequence_opencascade_handle_TCollection_HAsciiString,
+    ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_AddFileComment_add_lines(
                 self as *mut Self,
@@ -407,7 +402,11 @@ impl AddFileComment {
 
     /// **Source:** `IGESSelect_AddFileComment.hxx`:62 - `IGESSelect_AddFileComment::Lines()`
     /// Returns the complete list of lines in once
-    pub fn lines(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTColStdHSequenceOfHAsciiString> {
+    pub fn lines(
+        &self,
+    ) -> crate::OwnedPtr<
+        crate::ffi_types::Handle_NCollection_HSequence_opencascade_handle_TCollection_HAsciiString,
+    > {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDEIGES::IGESSelect_AddFileComment_lines(self as *const Self),
@@ -415,7 +414,7 @@ impl AddFileComment {
         }
     }
 
-    /// **Source:** `IGESSelect_AddFileComment.hxx`:65 - `IGESSelect_AddFileComment::Perform()`
+    /// **Source:** `IGESSelect_AddFileComment.hxx`:66 - `IGESSelect_AddFileComment::Perform()`
     /// Sends the comment lines to the file (Start Section)
     pub fn perform(
         &self,
@@ -431,7 +430,7 @@ impl AddFileComment {
         })
     }
 
-    /// **Source:** `IGESSelect_AddFileComment.hxx`:70 - `IGESSelect_AddFileComment::Label()`
+    /// **Source:** `IGESSelect_AddFileComment.hxx`:71 - `IGESSelect_AddFileComment::Label()`
     /// Returns specific Label, which is
     /// "Add <nn> Comment Lines (Start Section)"
     pub fn label(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
@@ -442,8 +441,8 @@ impl AddFileComment {
         }
     }
 
-    /// **Source:** `IGESSelect_AddFileComment.hxx`:72 - `IGESSelect_AddFileComment::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `IGESSelect_AddFileComment.hxx`:73 - `IGESSelect_AddFileComment::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKDEIGES::IGESSelect_AddFileComment_dynamic_type(
@@ -453,7 +452,7 @@ impl AddFileComment {
         }
     }
 
-    /// **Source:** `IGESSelect_AddFileComment.hxx`:72 - `IGESSelect_AddFileComment::get_type_name()`
+    /// **Source:** `IGESSelect_AddFileComment.hxx`:73 - `IGESSelect_AddFileComment::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -464,8 +463,8 @@ impl AddFileComment {
         .into_owned()
     }
 
-    /// **Source:** `IGESSelect_AddFileComment.hxx`:72 - `IGESSelect_AddFileComment::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    /// **Source:** `IGESSelect_AddFileComment.hxx`:73 - `IGESSelect_AddFileComment::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKDEIGES::IGESSelect_AddFileComment_get_type_descriptor(),
@@ -534,7 +533,7 @@ impl AddFileComment {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESSelectAddFileComment> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_IGESSelect_AddFileComment> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDEIGES::IGESSelect_AddFileComment_to_handle(obj.into_raw()),
@@ -542,7 +541,7 @@ impl AddFileComment {
         }
     }
 
-    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:68 - `IFSelect_GeneralModifier::MayChangeGraph()`
+    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:65 - `IFSelect_GeneralModifier::MayChangeGraph()`
     pub fn may_change_graph(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_AddFileComment_inherited_MayChangeGraph(
@@ -551,8 +550,8 @@ impl AddFileComment {
         })
     }
 
-    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:72 - `IFSelect_GeneralModifier::SetDispatch()`
-    pub fn set_dispatch(&mut self, disp: &crate::ffi_types::HandleIFSelectDispatch) {
+    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:69 - `IFSelect_GeneralModifier::SetDispatch()`
+    pub fn set_dispatch(&mut self, disp: &crate::ffi_types::Handle_IFSelect_Dispatch) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_AddFileComment_inherited_SetDispatch(
                 self as *mut Self,
@@ -561,8 +560,8 @@ impl AddFileComment {
         })
     }
 
-    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:75 - `IFSelect_GeneralModifier::Dispatch()`
-    pub fn dispatch(&self) -> crate::OwnedPtr<crate::ffi_types::HandleIFSelectDispatch> {
+    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:72 - `IFSelect_GeneralModifier::Dispatch()`
+    pub fn dispatch(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_IFSelect_Dispatch> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDEIGES::IGESSelect_AddFileComment_inherited_Dispatch(
@@ -572,8 +571,8 @@ impl AddFileComment {
         }
     }
 
-    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:80 - `IFSelect_GeneralModifier::Applies()`
-    pub fn applies(&self, disp: &crate::ffi_types::HandleIFSelectDispatch) -> bool {
+    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:77 - `IFSelect_GeneralModifier::Applies()`
+    pub fn applies(&self, disp: &crate::ffi_types::Handle_IFSelect_Dispatch) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_AddFileComment_inherited_Applies(
                 self as *const Self,
@@ -582,8 +581,8 @@ impl AddFileComment {
         })
     }
 
-    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:84 - `IFSelect_GeneralModifier::SetSelection()`
-    pub fn set_selection(&mut self, sel: &crate::ffi_types::HandleIFSelectSelection) {
+    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:81 - `IFSelect_GeneralModifier::SetSelection()`
+    pub fn set_selection(&mut self, sel: &crate::ffi_types::Handle_IFSelect_Selection) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_AddFileComment_inherited_SetSelection(
                 self as *mut Self,
@@ -592,7 +591,7 @@ impl AddFileComment {
         })
     }
 
-    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:87 - `IFSelect_GeneralModifier::ResetSelection()`
+    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:84 - `IFSelect_GeneralModifier::ResetSelection()`
     pub fn reset_selection(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_AddFileComment_inherited_ResetSelection(
@@ -601,7 +600,7 @@ impl AddFileComment {
         })
     }
 
-    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:90 - `IFSelect_GeneralModifier::HasSelection()`
+    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:87 - `IFSelect_GeneralModifier::HasSelection()`
     pub fn has_selection(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_AddFileComment_inherited_HasSelection(
@@ -610,8 +609,8 @@ impl AddFileComment {
         })
     }
 
-    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:93 - `IFSelect_GeneralModifier::Selection()`
-    pub fn selection(&self) -> crate::OwnedPtr<crate::ffi_types::HandleIFSelectSelection> {
+    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:90 - `IFSelect_GeneralModifier::Selection()`
+    pub fn selection(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_IFSelect_Selection> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDEIGES::IGESSelect_AddFileComment_inherited_Selection(
@@ -621,8 +620,8 @@ impl AddFileComment {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_AddFileComment_inherited_IsInstance(
                 self as *const Self,
@@ -631,8 +630,8 @@ impl AddFileComment {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_AddFileComment_inherited_IsKind(
                 self as *const Self,
@@ -641,7 +640,7 @@ impl AddFileComment {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -657,7 +656,7 @@ impl AddFileComment {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_AddFileComment_inherited_GetRefCount(
@@ -666,7 +665,7 @@ impl AddFileComment {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_AddFileComment_inherited_IncrementRefCounter(
@@ -675,7 +674,7 @@ impl AddFileComment {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_AddFileComment_inherited_DecrementRefCounter(
@@ -684,7 +683,7 @@ impl AddFileComment {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_AddFileComment_inherited_Delete(
@@ -694,38 +693,40 @@ impl AddFileComment {
     }
 }
 
-pub use crate::ffi_types::HandleIGESSelectAddFileComment;
+pub use crate::ffi_types::Handle_IGESSelect_AddFileComment;
 
-unsafe impl crate::CppDeletable for HandleIGESSelectAddFileComment {
+unsafe impl crate::CppDeletable for Handle_IGESSelect_AddFileComment {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKDEIGES::HandleIGESSelectAddFileComment_destructor(ptr);
+            crate::ffi_extern_TKDEIGES::Handle_IGESSelect_AddFileComment_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleIGESSelectAddFileComment {
+unsafe impl crate::CppCopyable for Handle_IGESSelect_AddFileComment {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
         unsafe {
-            crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectAddFileComment_clone(
+            crate::check_result(crate::ffi_extern_TKDEIGES::Handle_IGESSelect_AddFileComment_clone(
                 ptr,
             ))
         }
     }
 }
 
-impl HandleIGESSelectAddFileComment {
+impl Handle_IGESSelect_AddFileComment {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
         unsafe {
-            crate::ffi_extern_TKDEIGES::HandleIGESSelectAddFileComment_is_null(self as *const Self)
+            crate::ffi_extern_TKDEIGES::Handle_IGESSelect_AddFileComment_is_null(
+                self as *const Self,
+            )
         }
     }
 
     /// Dereference this Handle to access the underlying IGESSelect_AddFileComment
     pub fn get(&self) -> &crate::ffi_types::IGESSelect_AddFileComment {
         unsafe {
-            &*crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectAddFileComment_get(
+            &*crate::check_result(crate::ffi_extern_TKDEIGES::Handle_IGESSelect_AddFileComment_get(
                 self as *const Self,
             ))
         }
@@ -735,7 +736,7 @@ impl HandleIGESSelectAddFileComment {
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::IGESSelect_AddFileComment {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi_extern_TKDEIGES::HandleIGESSelectAddFileComment_get_mut(
+                crate::ffi_extern_TKDEIGES::Handle_IGESSelect_AddFileComment_get_mut(
                     self as *mut Self,
                 ),
             )
@@ -745,27 +746,27 @@ impl HandleIGESSelectAddFileComment {
     /// Upcast Handle<IGESSelect_AddFileComment> to Handle<IGESSelect_FileModifier>
     pub fn to_handle_file_modifier(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESSelectFileModifier> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_IGESSelect_FileModifier> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectAddFileComment_to_HandleIGESSelectFileModifier(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::Handle_IGESSelect_AddFileComment_to_Handle_IGESSelect_FileModifier(self as *const Self)))
         }
     }
 
     /// Upcast Handle<IGESSelect_AddFileComment> to Handle<IFSelect_GeneralModifier>
     pub fn to_handle_general_modifier(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleIFSelectGeneralModifier> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_IFSelect_GeneralModifier> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectAddFileComment_to_HandleIFSelectGeneralModifier(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::Handle_IGESSelect_AddFileComment_to_Handle_IFSelect_GeneralModifier(self as *const Self)))
         }
     }
 
     /// Upcast Handle<IGESSelect_AddFileComment> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectAddFileComment_to_HandleStandardTransient(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::Handle_IGESSelect_AddFileComment_to_Handle_Standard_Transient(self as *const Self)))
         }
     }
 }
@@ -774,7 +775,7 @@ impl HandleIGESSelectAddFileComment {
 // From IGESSelect_AddGroup.hxx
 // ========================
 
-/// **Source:** `IGESSelect_AddGroup.hxx`:34 - `IGESSelect_AddGroup`
+/// **Source:** `IGESSelect_AddGroup.hxx`:31 - `IGESSelect_AddGroup`
 /// Adds a Group to contain the entities designated by the
 /// Selection. If no Selection is given, nothing is done
 pub use crate::ffi_types::IGESSelect_AddGroup as AddGroup;
@@ -788,7 +789,7 @@ unsafe impl crate::CppDeletable for AddGroup {
 }
 
 impl AddGroup {
-    /// **Source:** `IGESSelect_AddGroup.hxx`:39 - `IGESSelect_AddGroup::IGESSelect_AddGroup()`
+    /// **Source:** `IGESSelect_AddGroup.hxx`:36 - `IGESSelect_AddGroup::IGESSelect_AddGroup()`
     /// Creates an AddGroup
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
@@ -798,12 +799,12 @@ impl AddGroup {
         }
     }
 
-    /// **Source:** `IGESSelect_AddGroup.hxx`:42 - `IGESSelect_AddGroup::Performing()`
+    /// **Source:** `IGESSelect_AddGroup.hxx`:39 - `IGESSelect_AddGroup::Performing()`
     /// Specific action : Adds a new group
     pub fn performing(
         &self,
         ctx: &mut crate::if_select::ContextModif,
-        target: &crate::ffi_types::HandleIGESDataIGESModel,
+        target: &crate::ffi_types::Handle_IGESData_IGESModel,
         TC: &mut crate::interface::CopyTool,
     ) {
         crate::check_void_result(unsafe {
@@ -816,7 +817,7 @@ impl AddGroup {
         })
     }
 
-    /// **Source:** `IGESSelect_AddGroup.hxx`:48 - `IGESSelect_AddGroup::Label()`
+    /// **Source:** `IGESSelect_AddGroup.hxx`:45 - `IGESSelect_AddGroup::Label()`
     /// Returns a text which is
     /// "Add Group"
     pub fn label(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
@@ -827,8 +828,8 @@ impl AddGroup {
         }
     }
 
-    /// **Source:** `IGESSelect_AddGroup.hxx`:50 - `IGESSelect_AddGroup::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `IGESSelect_AddGroup.hxx`:47 - `IGESSelect_AddGroup::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKDEIGES::IGESSelect_AddGroup_dynamic_type(
                 self as *const Self,
@@ -836,7 +837,7 @@ impl AddGroup {
         }
     }
 
-    /// **Source:** `IGESSelect_AddGroup.hxx`:50 - `IGESSelect_AddGroup::get_type_name()`
+    /// **Source:** `IGESSelect_AddGroup.hxx`:47 - `IGESSelect_AddGroup::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -847,8 +848,8 @@ impl AddGroup {
         .into_owned()
     }
 
-    /// **Source:** `IGESSelect_AddGroup.hxx`:50 - `IGESSelect_AddGroup::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    /// **Source:** `IGESSelect_AddGroup.hxx`:47 - `IGESSelect_AddGroup::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKDEIGES::IGESSelect_AddGroup_get_type_descriptor(),
@@ -947,7 +948,7 @@ impl AddGroup {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESSelectAddGroup> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_IGESSelect_AddGroup> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDEIGES::IGESSelect_AddGroup_to_handle(obj.into_raw()),
@@ -955,12 +956,12 @@ impl AddGroup {
         }
     }
 
-    /// Inherited: **Source:** `IGESSelect_ModelModifier.hxx`:41 - `IGESSelect_ModelModifier::Perform()`
+    /// Inherited: **Source:** `IGESSelect_ModelModifier.hxx`:38 - `IGESSelect_ModelModifier::Perform()`
     pub fn perform(
         &self,
         ctx: &mut crate::if_select::ContextModif,
-        target: &crate::ffi_types::HandleInterfaceInterfaceModel,
-        protocol: &crate::ffi_types::HandleInterfaceProtocol,
+        target: &crate::ffi_types::Handle_Interface_InterfaceModel,
+        protocol: &crate::ffi_types::Handle_Interface_Protocol,
         TC: &mut crate::interface::CopyTool,
     ) {
         crate::check_void_result(unsafe {
@@ -974,12 +975,12 @@ impl AddGroup {
         })
     }
 
-    /// Inherited: **Source:** `IGESSelect_ModelModifier.hxx`:50 - `IGESSelect_ModelModifier::PerformProtocol()`
+    /// Inherited: **Source:** `IGESSelect_ModelModifier.hxx`:47 - `IGESSelect_ModelModifier::PerformProtocol()`
     pub fn perform_protocol(
         &self,
         ctx: &mut crate::if_select::ContextModif,
-        target: &crate::ffi_types::HandleIGESDataIGESModel,
-        proto: &crate::ffi_types::HandleIGESDataProtocol,
+        target: &crate::ffi_types::Handle_IGESData_IGESModel,
+        proto: &crate::ffi_types::Handle_IGESData_Protocol,
         TC: &mut crate::interface::CopyTool,
     ) {
         crate::check_void_result(unsafe {
@@ -993,7 +994,7 @@ impl AddGroup {
         })
     }
 
-    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:68 - `IFSelect_GeneralModifier::MayChangeGraph()`
+    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:65 - `IFSelect_GeneralModifier::MayChangeGraph()`
     pub fn may_change_graph(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_AddGroup_inherited_MayChangeGraph(
@@ -1002,8 +1003,8 @@ impl AddGroup {
         })
     }
 
-    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:72 - `IFSelect_GeneralModifier::SetDispatch()`
-    pub fn set_dispatch(&mut self, disp: &crate::ffi_types::HandleIFSelectDispatch) {
+    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:69 - `IFSelect_GeneralModifier::SetDispatch()`
+    pub fn set_dispatch(&mut self, disp: &crate::ffi_types::Handle_IFSelect_Dispatch) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_AddGroup_inherited_SetDispatch(
                 self as *mut Self,
@@ -1012,8 +1013,8 @@ impl AddGroup {
         })
     }
 
-    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:75 - `IFSelect_GeneralModifier::Dispatch()`
-    pub fn dispatch(&self) -> crate::OwnedPtr<crate::ffi_types::HandleIFSelectDispatch> {
+    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:72 - `IFSelect_GeneralModifier::Dispatch()`
+    pub fn dispatch(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_IFSelect_Dispatch> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDEIGES::IGESSelect_AddGroup_inherited_Dispatch(
@@ -1023,8 +1024,8 @@ impl AddGroup {
         }
     }
 
-    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:80 - `IFSelect_GeneralModifier::Applies()`
-    pub fn applies(&self, disp: &crate::ffi_types::HandleIFSelectDispatch) -> bool {
+    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:77 - `IFSelect_GeneralModifier::Applies()`
+    pub fn applies(&self, disp: &crate::ffi_types::Handle_IFSelect_Dispatch) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_AddGroup_inherited_Applies(
                 self as *const Self,
@@ -1033,8 +1034,8 @@ impl AddGroup {
         })
     }
 
-    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:84 - `IFSelect_GeneralModifier::SetSelection()`
-    pub fn set_selection(&mut self, sel: &crate::ffi_types::HandleIFSelectSelection) {
+    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:81 - `IFSelect_GeneralModifier::SetSelection()`
+    pub fn set_selection(&mut self, sel: &crate::ffi_types::Handle_IFSelect_Selection) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_AddGroup_inherited_SetSelection(
                 self as *mut Self,
@@ -1043,7 +1044,7 @@ impl AddGroup {
         })
     }
 
-    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:87 - `IFSelect_GeneralModifier::ResetSelection()`
+    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:84 - `IFSelect_GeneralModifier::ResetSelection()`
     pub fn reset_selection(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_AddGroup_inherited_ResetSelection(
@@ -1052,7 +1053,7 @@ impl AddGroup {
         })
     }
 
-    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:90 - `IFSelect_GeneralModifier::HasSelection()`
+    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:87 - `IFSelect_GeneralModifier::HasSelection()`
     pub fn has_selection(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_AddGroup_inherited_HasSelection(
@@ -1061,8 +1062,8 @@ impl AddGroup {
         })
     }
 
-    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:93 - `IFSelect_GeneralModifier::Selection()`
-    pub fn selection(&self) -> crate::OwnedPtr<crate::ffi_types::HandleIFSelectSelection> {
+    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:90 - `IFSelect_GeneralModifier::Selection()`
+    pub fn selection(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_IFSelect_Selection> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDEIGES::IGESSelect_AddGroup_inherited_Selection(
@@ -1072,8 +1073,8 @@ impl AddGroup {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_AddGroup_inherited_IsInstance(
                 self as *const Self,
@@ -1082,8 +1083,8 @@ impl AddGroup {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_AddGroup_inherited_IsKind(
                 self as *const Self,
@@ -1092,7 +1093,7 @@ impl AddGroup {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -1106,7 +1107,7 @@ impl AddGroup {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_AddGroup_inherited_GetRefCount(
@@ -1115,7 +1116,7 @@ impl AddGroup {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_AddGroup_inherited_IncrementRefCounter(
@@ -1124,7 +1125,7 @@ impl AddGroup {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_AddGroup_inherited_DecrementRefCounter(
@@ -1133,7 +1134,7 @@ impl AddGroup {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_AddGroup_inherited_Delete(self as *const Self)
@@ -1141,34 +1142,36 @@ impl AddGroup {
     }
 }
 
-pub use crate::ffi_types::HandleIGESSelectAddGroup;
+pub use crate::ffi_types::Handle_IGESSelect_AddGroup;
 
-unsafe impl crate::CppDeletable for HandleIGESSelectAddGroup {
+unsafe impl crate::CppDeletable for Handle_IGESSelect_AddGroup {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKDEIGES::HandleIGESSelectAddGroup_destructor(ptr);
+            crate::ffi_extern_TKDEIGES::Handle_IGESSelect_AddGroup_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleIGESSelectAddGroup {
+unsafe impl crate::CppCopyable for Handle_IGESSelect_AddGroup {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
         unsafe {
-            crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectAddGroup_clone(ptr))
+            crate::check_result(crate::ffi_extern_TKDEIGES::Handle_IGESSelect_AddGroup_clone(ptr))
         }
     }
 }
 
-impl HandleIGESSelectAddGroup {
+impl Handle_IGESSelect_AddGroup {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
-        unsafe { crate::ffi_extern_TKDEIGES::HandleIGESSelectAddGroup_is_null(self as *const Self) }
+        unsafe {
+            crate::ffi_extern_TKDEIGES::Handle_IGESSelect_AddGroup_is_null(self as *const Self)
+        }
     }
 
     /// Dereference this Handle to access the underlying IGESSelect_AddGroup
     pub fn get(&self) -> &crate::ffi_types::IGESSelect_AddGroup {
         unsafe {
-            &*crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectAddGroup_get(
+            &*crate::check_result(crate::ffi_extern_TKDEIGES::Handle_IGESSelect_AddGroup_get(
                 self as *const Self,
             ))
         }
@@ -1177,26 +1180,28 @@ impl HandleIGESSelectAddGroup {
     /// Dereference this Handle to mutably access the underlying IGESSelect_AddGroup
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::IGESSelect_AddGroup {
         unsafe {
-            &mut *crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectAddGroup_get_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKDEIGES::Handle_IGESSelect_AddGroup_get_mut(self as *mut Self),
+            )
         }
     }
 
     /// Upcast Handle<IGESSelect_AddGroup> to Handle<IGESSelect_ModelModifier>
     pub fn to_handle_model_modifier(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESSelectModelModifier> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_IGESSelect_ModelModifier> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectAddGroup_to_HandleIGESSelectModelModifier(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::Handle_IGESSelect_AddGroup_to_Handle_IGESSelect_ModelModifier(self as *const Self)))
         }
     }
 
     /// Upcast Handle<IGESSelect_AddGroup> to Handle<IFSelect_Modifier>
-    pub fn to_handle_modifier(&self) -> crate::OwnedPtr<crate::ffi_types::HandleIFSelectModifier> {
+    pub fn to_handle_modifier(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_IFSelect_Modifier> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKDEIGES::HandleIGESSelectAddGroup_to_HandleIFSelectModifier(
+                crate::ffi_extern_TKDEIGES::Handle_IGESSelect_AddGroup_to_Handle_IFSelect_Modifier(
                     self as *const Self,
                 ),
             ))
@@ -1206,19 +1211,19 @@ impl HandleIGESSelectAddGroup {
     /// Upcast Handle<IGESSelect_AddGroup> to Handle<IFSelect_GeneralModifier>
     pub fn to_handle_general_modifier(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleIFSelectGeneralModifier> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_IFSelect_GeneralModifier> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectAddGroup_to_HandleIFSelectGeneralModifier(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::Handle_IGESSelect_AddGroup_to_Handle_IFSelect_GeneralModifier(self as *const Self)))
         }
     }
 
     /// Upcast Handle<IGESSelect_AddGroup> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKDEIGES::HandleIGESSelectAddGroup_to_HandleStandardTransient(
+                crate::ffi_extern_TKDEIGES::Handle_IGESSelect_AddGroup_to_Handle_Standard_Transient(
                     self as *const Self,
                 ),
             ))
@@ -1230,7 +1235,7 @@ impl HandleIGESSelectAddGroup {
 // From IGESSelect_AutoCorrect.hxx
 // ========================
 
-/// **Source:** `IGESSelect_AutoCorrect.hxx`:53 - `IGESSelect_AutoCorrect`
+/// **Source:** `IGESSelect_AutoCorrect.hxx`:50 - `IGESSelect_AutoCorrect`
 /// Does the absolutely effective corrections on IGES Entity.
 /// That is to say : regarding the norm in details, some values
 /// have mandatory values, or set of values with constraints.
@@ -1263,7 +1268,7 @@ unsafe impl crate::CppDeletable for AutoCorrect {
 }
 
 impl AutoCorrect {
-    /// **Source:** `IGESSelect_AutoCorrect.hxx`:58 - `IGESSelect_AutoCorrect::IGESSelect_AutoCorrect()`
+    /// **Source:** `IGESSelect_AutoCorrect.hxx`:55 - `IGESSelect_AutoCorrect::IGESSelect_AutoCorrect()`
     /// Creates an AutoCorrect.
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
@@ -1273,14 +1278,14 @@ impl AutoCorrect {
         }
     }
 
-    /// **Source:** `IGESSelect_AutoCorrect.hxx`:63 - `IGESSelect_AutoCorrect::Performing()`
+    /// **Source:** `IGESSelect_AutoCorrect.hxx`:60 - `IGESSelect_AutoCorrect::Performing()`
     /// Specific action : corrects entities when it is absolutely
     /// obvious, i.e. non equivoque (by DirChecker and specific
     /// service OwnCorrect) : works with a protocol.
     pub fn performing(
         &self,
         ctx: &mut crate::if_select::ContextModif,
-        target: &crate::ffi_types::HandleIGESDataIGESModel,
+        target: &crate::ffi_types::Handle_IGESData_IGESModel,
         TC: &mut crate::interface::CopyTool,
     ) {
         crate::check_void_result(unsafe {
@@ -1293,7 +1298,7 @@ impl AutoCorrect {
         })
     }
 
-    /// **Source:** `IGESSelect_AutoCorrect.hxx`:69 - `IGESSelect_AutoCorrect::Label()`
+    /// **Source:** `IGESSelect_AutoCorrect.hxx`:66 - `IGESSelect_AutoCorrect::Label()`
     /// Returns a text which is
     /// "Auto-correction of IGES Entities"
     pub fn label(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
@@ -1304,8 +1309,8 @@ impl AutoCorrect {
         }
     }
 
-    /// **Source:** `IGESSelect_AutoCorrect.hxx`:71 - `IGESSelect_AutoCorrect::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `IGESSelect_AutoCorrect.hxx`:68 - `IGESSelect_AutoCorrect::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKDEIGES::IGESSelect_AutoCorrect_dynamic_type(
@@ -1315,7 +1320,7 @@ impl AutoCorrect {
         }
     }
 
-    /// **Source:** `IGESSelect_AutoCorrect.hxx`:71 - `IGESSelect_AutoCorrect::get_type_name()`
+    /// **Source:** `IGESSelect_AutoCorrect.hxx`:68 - `IGESSelect_AutoCorrect::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -1326,8 +1331,8 @@ impl AutoCorrect {
         .into_owned()
     }
 
-    /// **Source:** `IGESSelect_AutoCorrect.hxx`:71 - `IGESSelect_AutoCorrect::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    /// **Source:** `IGESSelect_AutoCorrect.hxx`:68 - `IGESSelect_AutoCorrect::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKDEIGES::IGESSelect_AutoCorrect_get_type_descriptor(),
@@ -1426,7 +1431,7 @@ impl AutoCorrect {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESSelectAutoCorrect> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_IGESSelect_AutoCorrect> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDEIGES::IGESSelect_AutoCorrect_to_handle(obj.into_raw()),
@@ -1434,12 +1439,12 @@ impl AutoCorrect {
         }
     }
 
-    /// Inherited: **Source:** `IGESSelect_ModelModifier.hxx`:41 - `IGESSelect_ModelModifier::Perform()`
+    /// Inherited: **Source:** `IGESSelect_ModelModifier.hxx`:38 - `IGESSelect_ModelModifier::Perform()`
     pub fn perform(
         &self,
         ctx: &mut crate::if_select::ContextModif,
-        target: &crate::ffi_types::HandleInterfaceInterfaceModel,
-        protocol: &crate::ffi_types::HandleInterfaceProtocol,
+        target: &crate::ffi_types::Handle_Interface_InterfaceModel,
+        protocol: &crate::ffi_types::Handle_Interface_Protocol,
         TC: &mut crate::interface::CopyTool,
     ) {
         crate::check_void_result(unsafe {
@@ -1453,12 +1458,12 @@ impl AutoCorrect {
         })
     }
 
-    /// Inherited: **Source:** `IGESSelect_ModelModifier.hxx`:50 - `IGESSelect_ModelModifier::PerformProtocol()`
+    /// Inherited: **Source:** `IGESSelect_ModelModifier.hxx`:47 - `IGESSelect_ModelModifier::PerformProtocol()`
     pub fn perform_protocol(
         &self,
         ctx: &mut crate::if_select::ContextModif,
-        target: &crate::ffi_types::HandleIGESDataIGESModel,
-        proto: &crate::ffi_types::HandleIGESDataProtocol,
+        target: &crate::ffi_types::Handle_IGESData_IGESModel,
+        proto: &crate::ffi_types::Handle_IGESData_Protocol,
         TC: &mut crate::interface::CopyTool,
     ) {
         crate::check_void_result(unsafe {
@@ -1472,7 +1477,7 @@ impl AutoCorrect {
         })
     }
 
-    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:68 - `IFSelect_GeneralModifier::MayChangeGraph()`
+    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:65 - `IFSelect_GeneralModifier::MayChangeGraph()`
     pub fn may_change_graph(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_AutoCorrect_inherited_MayChangeGraph(
@@ -1481,8 +1486,8 @@ impl AutoCorrect {
         })
     }
 
-    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:72 - `IFSelect_GeneralModifier::SetDispatch()`
-    pub fn set_dispatch(&mut self, disp: &crate::ffi_types::HandleIFSelectDispatch) {
+    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:69 - `IFSelect_GeneralModifier::SetDispatch()`
+    pub fn set_dispatch(&mut self, disp: &crate::ffi_types::Handle_IFSelect_Dispatch) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_AutoCorrect_inherited_SetDispatch(
                 self as *mut Self,
@@ -1491,8 +1496,8 @@ impl AutoCorrect {
         })
     }
 
-    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:75 - `IFSelect_GeneralModifier::Dispatch()`
-    pub fn dispatch(&self) -> crate::OwnedPtr<crate::ffi_types::HandleIFSelectDispatch> {
+    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:72 - `IFSelect_GeneralModifier::Dispatch()`
+    pub fn dispatch(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_IFSelect_Dispatch> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDEIGES::IGESSelect_AutoCorrect_inherited_Dispatch(
@@ -1502,8 +1507,8 @@ impl AutoCorrect {
         }
     }
 
-    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:80 - `IFSelect_GeneralModifier::Applies()`
-    pub fn applies(&self, disp: &crate::ffi_types::HandleIFSelectDispatch) -> bool {
+    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:77 - `IFSelect_GeneralModifier::Applies()`
+    pub fn applies(&self, disp: &crate::ffi_types::Handle_IFSelect_Dispatch) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_AutoCorrect_inherited_Applies(
                 self as *const Self,
@@ -1512,8 +1517,8 @@ impl AutoCorrect {
         })
     }
 
-    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:84 - `IFSelect_GeneralModifier::SetSelection()`
-    pub fn set_selection(&mut self, sel: &crate::ffi_types::HandleIFSelectSelection) {
+    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:81 - `IFSelect_GeneralModifier::SetSelection()`
+    pub fn set_selection(&mut self, sel: &crate::ffi_types::Handle_IFSelect_Selection) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_AutoCorrect_inherited_SetSelection(
                 self as *mut Self,
@@ -1522,7 +1527,7 @@ impl AutoCorrect {
         })
     }
 
-    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:87 - `IFSelect_GeneralModifier::ResetSelection()`
+    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:84 - `IFSelect_GeneralModifier::ResetSelection()`
     pub fn reset_selection(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_AutoCorrect_inherited_ResetSelection(
@@ -1531,7 +1536,7 @@ impl AutoCorrect {
         })
     }
 
-    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:90 - `IFSelect_GeneralModifier::HasSelection()`
+    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:87 - `IFSelect_GeneralModifier::HasSelection()`
     pub fn has_selection(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_AutoCorrect_inherited_HasSelection(
@@ -1540,8 +1545,8 @@ impl AutoCorrect {
         })
     }
 
-    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:93 - `IFSelect_GeneralModifier::Selection()`
-    pub fn selection(&self) -> crate::OwnedPtr<crate::ffi_types::HandleIFSelectSelection> {
+    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:90 - `IFSelect_GeneralModifier::Selection()`
+    pub fn selection(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_IFSelect_Selection> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDEIGES::IGESSelect_AutoCorrect_inherited_Selection(
@@ -1551,8 +1556,8 @@ impl AutoCorrect {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_AutoCorrect_inherited_IsInstance(
                 self as *const Self,
@@ -1561,8 +1566,8 @@ impl AutoCorrect {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_AutoCorrect_inherited_IsKind(
                 self as *const Self,
@@ -1571,7 +1576,7 @@ impl AutoCorrect {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -1587,7 +1592,7 @@ impl AutoCorrect {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_AutoCorrect_inherited_GetRefCount(
@@ -1596,7 +1601,7 @@ impl AutoCorrect {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_AutoCorrect_inherited_IncrementRefCounter(
@@ -1605,7 +1610,7 @@ impl AutoCorrect {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_AutoCorrect_inherited_DecrementRefCounter(
@@ -1614,7 +1619,7 @@ impl AutoCorrect {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_AutoCorrect_inherited_Delete(self as *const Self)
@@ -1622,36 +1627,38 @@ impl AutoCorrect {
     }
 }
 
-pub use crate::ffi_types::HandleIGESSelectAutoCorrect;
+pub use crate::ffi_types::Handle_IGESSelect_AutoCorrect;
 
-unsafe impl crate::CppDeletable for HandleIGESSelectAutoCorrect {
+unsafe impl crate::CppDeletable for Handle_IGESSelect_AutoCorrect {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKDEIGES::HandleIGESSelectAutoCorrect_destructor(ptr);
+            crate::ffi_extern_TKDEIGES::Handle_IGESSelect_AutoCorrect_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleIGESSelectAutoCorrect {
+unsafe impl crate::CppCopyable for Handle_IGESSelect_AutoCorrect {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
         unsafe {
-            crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectAutoCorrect_clone(ptr))
+            crate::check_result(crate::ffi_extern_TKDEIGES::Handle_IGESSelect_AutoCorrect_clone(
+                ptr,
+            ))
         }
     }
 }
 
-impl HandleIGESSelectAutoCorrect {
+impl Handle_IGESSelect_AutoCorrect {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
         unsafe {
-            crate::ffi_extern_TKDEIGES::HandleIGESSelectAutoCorrect_is_null(self as *const Self)
+            crate::ffi_extern_TKDEIGES::Handle_IGESSelect_AutoCorrect_is_null(self as *const Self)
         }
     }
 
     /// Dereference this Handle to access the underlying IGESSelect_AutoCorrect
     pub fn get(&self) -> &crate::ffi_types::IGESSelect_AutoCorrect {
         unsafe {
-            &*crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectAutoCorrect_get(
+            &*crate::check_result(crate::ffi_extern_TKDEIGES::Handle_IGESSelect_AutoCorrect_get(
                 self as *const Self,
             ))
         }
@@ -1661,7 +1668,9 @@ impl HandleIGESSelectAutoCorrect {
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::IGESSelect_AutoCorrect {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi_extern_TKDEIGES::HandleIGESSelectAutoCorrect_get_mut(self as *mut Self),
+                crate::ffi_extern_TKDEIGES::Handle_IGESSelect_AutoCorrect_get_mut(
+                    self as *mut Self,
+                ),
             )
         }
     }
@@ -1669,42 +1678,36 @@ impl HandleIGESSelectAutoCorrect {
     /// Upcast Handle<IGESSelect_AutoCorrect> to Handle<IGESSelect_ModelModifier>
     pub fn to_handle_model_modifier(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESSelectModelModifier> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_IGESSelect_ModelModifier> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectAutoCorrect_to_HandleIGESSelectModelModifier(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::Handle_IGESSelect_AutoCorrect_to_Handle_IGESSelect_ModelModifier(self as *const Self)))
         }
     }
 
     /// Upcast Handle<IGESSelect_AutoCorrect> to Handle<IFSelect_Modifier>
-    pub fn to_handle_modifier(&self) -> crate::OwnedPtr<crate::ffi_types::HandleIFSelectModifier> {
+    pub fn to_handle_modifier(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_IFSelect_Modifier> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKDEIGES::HandleIGESSelectAutoCorrect_to_HandleIFSelectModifier(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::Handle_IGESSelect_AutoCorrect_to_Handle_IFSelect_Modifier(self as *const Self)))
         }
     }
 
     /// Upcast Handle<IGESSelect_AutoCorrect> to Handle<IFSelect_GeneralModifier>
     pub fn to_handle_general_modifier(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleIFSelectGeneralModifier> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_IFSelect_GeneralModifier> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectAutoCorrect_to_HandleIFSelectGeneralModifier(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::Handle_IGESSelect_AutoCorrect_to_Handle_IFSelect_GeneralModifier(self as *const Self)))
         }
     }
 
     /// Upcast Handle<IGESSelect_AutoCorrect> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKDEIGES::HandleIGESSelectAutoCorrect_to_HandleStandardTransient(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::Handle_IGESSelect_AutoCorrect_to_Handle_Standard_Transient(self as *const Self)))
         }
     }
 }
@@ -1713,7 +1716,7 @@ impl HandleIGESSelectAutoCorrect {
 // From IGESSelect_ChangeLevelList.hxx
 // ========================
 
-/// **Source:** `IGESSelect_ChangeLevelList.hxx`:44 - `IGESSelect_ChangeLevelList`
+/// **Source:** `IGESSelect_ChangeLevelList.hxx`:41 - `IGESSelect_ChangeLevelList`
 /// Changes Level List (in directory part) to a new single value
 /// Only entities attached to a LevelListEntity are considered
 /// If OldNumber is defined, only entities whose LevelList
@@ -1736,7 +1739,7 @@ unsafe impl crate::CppDeletable for ChangeLevelList {
 }
 
 impl ChangeLevelList {
-    /// **Source:** `IGESSelect_ChangeLevelList.hxx`:50 - `IGESSelect_ChangeLevelList::IGESSelect_ChangeLevelList()`
+    /// **Source:** `IGESSelect_ChangeLevelList.hxx`:47 - `IGESSelect_ChangeLevelList::IGESSelect_ChangeLevelList()`
     /// Creates a ChangeLevelList, not yet defined
     /// (see SetOldNumber and SetNewNumber)
     pub fn new() -> crate::OwnedPtr<Self> {
@@ -1747,7 +1750,7 @@ impl ChangeLevelList {
         }
     }
 
-    /// **Source:** `IGESSelect_ChangeLevelList.hxx`:55 - `IGESSelect_ChangeLevelList::HasOldNumber()`
+    /// **Source:** `IGESSelect_ChangeLevelList.hxx`:52 - `IGESSelect_ChangeLevelList::HasOldNumber()`
     /// Returns True if OldNumber is defined : then, only entities
     /// which have a LevelList which contains the value are processed.
     /// Else, all entities attached to a LevelList are.
@@ -1759,10 +1762,10 @@ impl ChangeLevelList {
         })
     }
 
-    /// **Source:** `IGESSelect_ChangeLevelList.hxx`:59 - `IGESSelect_ChangeLevelList::OldNumber()`
+    /// **Source:** `IGESSelect_ChangeLevelList.hxx`:56 - `IGESSelect_ChangeLevelList::OldNumber()`
     /// Returns the parameter for OldNumber. If not defined (Null
     /// Handle), it will be interpreted as "all level lists"
-    pub fn old_number(&self) -> crate::OwnedPtr<crate::ffi_types::HandleIFSelectIntParam> {
+    pub fn old_number(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_IFSelect_IntParam> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDEIGES::IGESSelect_ChangeLevelList_old_number(
@@ -1772,9 +1775,9 @@ impl ChangeLevelList {
         }
     }
 
-    /// **Source:** `IGESSelect_ChangeLevelList.hxx`:62 - `IGESSelect_ChangeLevelList::SetOldNumber()`
+    /// **Source:** `IGESSelect_ChangeLevelList.hxx`:59 - `IGESSelect_ChangeLevelList::SetOldNumber()`
     /// Sets a parameter for OldNumber
-    pub fn set_old_number(&mut self, param: &crate::ffi_types::HandleIFSelectIntParam) {
+    pub fn set_old_number(&mut self, param: &crate::ffi_types::Handle_IFSelect_IntParam) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_ChangeLevelList_set_old_number(
                 self as *mut Self,
@@ -1783,7 +1786,7 @@ impl ChangeLevelList {
         })
     }
 
-    /// **Source:** `IGESSelect_ChangeLevelList.hxx`:67 - `IGESSelect_ChangeLevelList::HasNewNumber()`
+    /// **Source:** `IGESSelect_ChangeLevelList.hxx`:64 - `IGESSelect_ChangeLevelList::HasNewNumber()`
     /// Returns True if NewNumber is defined : then, it gives the new
     /// value for Level Number. Else, the first value of the LevelList
     /// is used as new Level Number.
@@ -1795,10 +1798,10 @@ impl ChangeLevelList {
         })
     }
 
-    /// **Source:** `IGESSelect_ChangeLevelList.hxx`:71 - `IGESSelect_ChangeLevelList::NewNumber()`
+    /// **Source:** `IGESSelect_ChangeLevelList.hxx`:68 - `IGESSelect_ChangeLevelList::NewNumber()`
     /// Returns the parameter for NewNumber. If not defined (Null
     /// Handle), it will be interpreted as "new value 0"
-    pub fn new_number(&self) -> crate::OwnedPtr<crate::ffi_types::HandleIFSelectIntParam> {
+    pub fn new_number(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_IFSelect_IntParam> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDEIGES::IGESSelect_ChangeLevelList_new_number(
@@ -1808,9 +1811,9 @@ impl ChangeLevelList {
         }
     }
 
-    /// **Source:** `IGESSelect_ChangeLevelList.hxx`:74 - `IGESSelect_ChangeLevelList::SetNewNumber()`
+    /// **Source:** `IGESSelect_ChangeLevelList.hxx`:71 - `IGESSelect_ChangeLevelList::SetNewNumber()`
     /// Sets a parameter for NewNumber
-    pub fn set_new_number(&mut self, param: &crate::ffi_types::HandleIFSelectIntParam) {
+    pub fn set_new_number(&mut self, param: &crate::ffi_types::Handle_IFSelect_IntParam) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_ChangeLevelList_set_new_number(
                 self as *mut Self,
@@ -1819,7 +1822,7 @@ impl ChangeLevelList {
         })
     }
 
-    /// **Source:** `IGESSelect_ChangeLevelList.hxx`:83 - `IGESSelect_ChangeLevelList::Performing()`
+    /// **Source:** `IGESSelect_ChangeLevelList.hxx`:80 - `IGESSelect_ChangeLevelList::Performing()`
     /// Specific action : considers selected target entities :
     /// If OldNumber is not defined, all entities attached to a
     /// Level List
@@ -1830,7 +1833,7 @@ impl ChangeLevelList {
     pub fn performing(
         &self,
         ctx: &mut crate::if_select::ContextModif,
-        target: &crate::ffi_types::HandleIGESDataIGESModel,
+        target: &crate::ffi_types::Handle_IGESData_IGESModel,
         TC: &mut crate::interface::CopyTool,
     ) {
         crate::check_void_result(unsafe {
@@ -1843,7 +1846,7 @@ impl ChangeLevelList {
         })
     }
 
-    /// **Source:** `IGESSelect_ChangeLevelList.hxx`:91 - `IGESSelect_ChangeLevelList::Label()`
+    /// **Source:** `IGESSelect_ChangeLevelList.hxx`:88 - `IGESSelect_ChangeLevelList::Label()`
     /// Returns a text which begins by
     /// "Changes Level Lists containing <old>", or
     /// "Changes all Level Lists in D.E.", and ends by
@@ -1856,8 +1859,8 @@ impl ChangeLevelList {
         }
     }
 
-    /// **Source:** `IGESSelect_ChangeLevelList.hxx`:93 - `IGESSelect_ChangeLevelList::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `IGESSelect_ChangeLevelList.hxx`:90 - `IGESSelect_ChangeLevelList::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKDEIGES::IGESSelect_ChangeLevelList_dynamic_type(
@@ -1867,7 +1870,7 @@ impl ChangeLevelList {
         }
     }
 
-    /// **Source:** `IGESSelect_ChangeLevelList.hxx`:93 - `IGESSelect_ChangeLevelList::get_type_name()`
+    /// **Source:** `IGESSelect_ChangeLevelList.hxx`:90 - `IGESSelect_ChangeLevelList::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -1878,8 +1881,8 @@ impl ChangeLevelList {
         .into_owned()
     }
 
-    /// **Source:** `IGESSelect_ChangeLevelList.hxx`:93 - `IGESSelect_ChangeLevelList::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    /// **Source:** `IGESSelect_ChangeLevelList.hxx`:90 - `IGESSelect_ChangeLevelList::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKDEIGES::IGESSelect_ChangeLevelList_get_type_descriptor(),
@@ -1970,7 +1973,7 @@ impl ChangeLevelList {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESSelectChangeLevelList> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_IGESSelect_ChangeLevelList> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDEIGES::IGESSelect_ChangeLevelList_to_handle(obj.into_raw()),
@@ -1978,12 +1981,12 @@ impl ChangeLevelList {
         }
     }
 
-    /// Inherited: **Source:** `IGESSelect_ModelModifier.hxx`:41 - `IGESSelect_ModelModifier::Perform()`
+    /// Inherited: **Source:** `IGESSelect_ModelModifier.hxx`:38 - `IGESSelect_ModelModifier::Perform()`
     pub fn perform(
         &self,
         ctx: &mut crate::if_select::ContextModif,
-        target: &crate::ffi_types::HandleInterfaceInterfaceModel,
-        protocol: &crate::ffi_types::HandleInterfaceProtocol,
+        target: &crate::ffi_types::Handle_Interface_InterfaceModel,
+        protocol: &crate::ffi_types::Handle_Interface_Protocol,
         TC: &mut crate::interface::CopyTool,
     ) {
         crate::check_void_result(unsafe {
@@ -1997,12 +2000,12 @@ impl ChangeLevelList {
         })
     }
 
-    /// Inherited: **Source:** `IGESSelect_ModelModifier.hxx`:50 - `IGESSelect_ModelModifier::PerformProtocol()`
+    /// Inherited: **Source:** `IGESSelect_ModelModifier.hxx`:47 - `IGESSelect_ModelModifier::PerformProtocol()`
     pub fn perform_protocol(
         &self,
         ctx: &mut crate::if_select::ContextModif,
-        target: &crate::ffi_types::HandleIGESDataIGESModel,
-        proto: &crate::ffi_types::HandleIGESDataProtocol,
+        target: &crate::ffi_types::Handle_IGESData_IGESModel,
+        proto: &crate::ffi_types::Handle_IGESData_Protocol,
         TC: &mut crate::interface::CopyTool,
     ) {
         crate::check_void_result(unsafe {
@@ -2016,7 +2019,7 @@ impl ChangeLevelList {
         })
     }
 
-    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:68 - `IFSelect_GeneralModifier::MayChangeGraph()`
+    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:65 - `IFSelect_GeneralModifier::MayChangeGraph()`
     pub fn may_change_graph(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_ChangeLevelList_inherited_MayChangeGraph(
@@ -2025,8 +2028,8 @@ impl ChangeLevelList {
         })
     }
 
-    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:72 - `IFSelect_GeneralModifier::SetDispatch()`
-    pub fn set_dispatch(&mut self, disp: &crate::ffi_types::HandleIFSelectDispatch) {
+    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:69 - `IFSelect_GeneralModifier::SetDispatch()`
+    pub fn set_dispatch(&mut self, disp: &crate::ffi_types::Handle_IFSelect_Dispatch) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_ChangeLevelList_inherited_SetDispatch(
                 self as *mut Self,
@@ -2035,8 +2038,8 @@ impl ChangeLevelList {
         })
     }
 
-    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:75 - `IFSelect_GeneralModifier::Dispatch()`
-    pub fn dispatch(&self) -> crate::OwnedPtr<crate::ffi_types::HandleIFSelectDispatch> {
+    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:72 - `IFSelect_GeneralModifier::Dispatch()`
+    pub fn dispatch(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_IFSelect_Dispatch> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDEIGES::IGESSelect_ChangeLevelList_inherited_Dispatch(
@@ -2046,8 +2049,8 @@ impl ChangeLevelList {
         }
     }
 
-    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:80 - `IFSelect_GeneralModifier::Applies()`
-    pub fn applies(&self, disp: &crate::ffi_types::HandleIFSelectDispatch) -> bool {
+    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:77 - `IFSelect_GeneralModifier::Applies()`
+    pub fn applies(&self, disp: &crate::ffi_types::Handle_IFSelect_Dispatch) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_ChangeLevelList_inherited_Applies(
                 self as *const Self,
@@ -2056,8 +2059,8 @@ impl ChangeLevelList {
         })
     }
 
-    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:84 - `IFSelect_GeneralModifier::SetSelection()`
-    pub fn set_selection(&mut self, sel: &crate::ffi_types::HandleIFSelectSelection) {
+    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:81 - `IFSelect_GeneralModifier::SetSelection()`
+    pub fn set_selection(&mut self, sel: &crate::ffi_types::Handle_IFSelect_Selection) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_ChangeLevelList_inherited_SetSelection(
                 self as *mut Self,
@@ -2066,7 +2069,7 @@ impl ChangeLevelList {
         })
     }
 
-    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:87 - `IFSelect_GeneralModifier::ResetSelection()`
+    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:84 - `IFSelect_GeneralModifier::ResetSelection()`
     pub fn reset_selection(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_ChangeLevelList_inherited_ResetSelection(
@@ -2075,7 +2078,7 @@ impl ChangeLevelList {
         })
     }
 
-    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:90 - `IFSelect_GeneralModifier::HasSelection()`
+    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:87 - `IFSelect_GeneralModifier::HasSelection()`
     pub fn has_selection(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_ChangeLevelList_inherited_HasSelection(
@@ -2084,8 +2087,8 @@ impl ChangeLevelList {
         })
     }
 
-    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:93 - `IFSelect_GeneralModifier::Selection()`
-    pub fn selection(&self) -> crate::OwnedPtr<crate::ffi_types::HandleIFSelectSelection> {
+    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:90 - `IFSelect_GeneralModifier::Selection()`
+    pub fn selection(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_IFSelect_Selection> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDEIGES::IGESSelect_ChangeLevelList_inherited_Selection(
@@ -2095,8 +2098,8 @@ impl ChangeLevelList {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_ChangeLevelList_inherited_IsInstance(
                 self as *const Self,
@@ -2105,8 +2108,8 @@ impl ChangeLevelList {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_ChangeLevelList_inherited_IsKind(
                 self as *const Self,
@@ -2115,7 +2118,7 @@ impl ChangeLevelList {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -2131,7 +2134,7 @@ impl ChangeLevelList {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_ChangeLevelList_inherited_GetRefCount(
@@ -2140,7 +2143,7 @@ impl ChangeLevelList {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_ChangeLevelList_inherited_IncrementRefCounter(
@@ -2149,7 +2152,7 @@ impl ChangeLevelList {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_ChangeLevelList_inherited_DecrementRefCounter(
@@ -2158,7 +2161,7 @@ impl ChangeLevelList {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_ChangeLevelList_inherited_Delete(
@@ -2168,40 +2171,44 @@ impl ChangeLevelList {
     }
 }
 
-pub use crate::ffi_types::HandleIGESSelectChangeLevelList;
+pub use crate::ffi_types::Handle_IGESSelect_ChangeLevelList;
 
-unsafe impl crate::CppDeletable for HandleIGESSelectChangeLevelList {
+unsafe impl crate::CppDeletable for Handle_IGESSelect_ChangeLevelList {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKDEIGES::HandleIGESSelectChangeLevelList_destructor(ptr);
+            crate::ffi_extern_TKDEIGES::Handle_IGESSelect_ChangeLevelList_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleIGESSelectChangeLevelList {
+unsafe impl crate::CppCopyable for Handle_IGESSelect_ChangeLevelList {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
         unsafe {
-            crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectChangeLevelList_clone(
-                ptr,
-            ))
+            crate::check_result(
+                crate::ffi_extern_TKDEIGES::Handle_IGESSelect_ChangeLevelList_clone(ptr),
+            )
         }
     }
 }
 
-impl HandleIGESSelectChangeLevelList {
+impl Handle_IGESSelect_ChangeLevelList {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
         unsafe {
-            crate::ffi_extern_TKDEIGES::HandleIGESSelectChangeLevelList_is_null(self as *const Self)
+            crate::ffi_extern_TKDEIGES::Handle_IGESSelect_ChangeLevelList_is_null(
+                self as *const Self,
+            )
         }
     }
 
     /// Dereference this Handle to access the underlying IGESSelect_ChangeLevelList
     pub fn get(&self) -> &crate::ffi_types::IGESSelect_ChangeLevelList {
         unsafe {
-            &*crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectChangeLevelList_get(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKDEIGES::Handle_IGESSelect_ChangeLevelList_get(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -2209,7 +2216,7 @@ impl HandleIGESSelectChangeLevelList {
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::IGESSelect_ChangeLevelList {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi_extern_TKDEIGES::HandleIGESSelectChangeLevelList_get_mut(
+                crate::ffi_extern_TKDEIGES::Handle_IGESSelect_ChangeLevelList_get_mut(
                     self as *mut Self,
                 ),
             )
@@ -2219,34 +2226,36 @@ impl HandleIGESSelectChangeLevelList {
     /// Upcast Handle<IGESSelect_ChangeLevelList> to Handle<IGESSelect_ModelModifier>
     pub fn to_handle_model_modifier(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESSelectModelModifier> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_IGESSelect_ModelModifier> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectChangeLevelList_to_HandleIGESSelectModelModifier(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::Handle_IGESSelect_ChangeLevelList_to_Handle_IGESSelect_ModelModifier(self as *const Self)))
         }
     }
 
     /// Upcast Handle<IGESSelect_ChangeLevelList> to Handle<IFSelect_Modifier>
-    pub fn to_handle_modifier(&self) -> crate::OwnedPtr<crate::ffi_types::HandleIFSelectModifier> {
+    pub fn to_handle_modifier(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_IFSelect_Modifier> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectChangeLevelList_to_HandleIFSelectModifier(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::Handle_IGESSelect_ChangeLevelList_to_Handle_IFSelect_Modifier(self as *const Self)))
         }
     }
 
     /// Upcast Handle<IGESSelect_ChangeLevelList> to Handle<IFSelect_GeneralModifier>
     pub fn to_handle_general_modifier(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleIFSelectGeneralModifier> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_IFSelect_GeneralModifier> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectChangeLevelList_to_HandleIFSelectGeneralModifier(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::Handle_IGESSelect_ChangeLevelList_to_Handle_IFSelect_GeneralModifier(self as *const Self)))
         }
     }
 
     /// Upcast Handle<IGESSelect_ChangeLevelList> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectChangeLevelList_to_HandleStandardTransient(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::Handle_IGESSelect_ChangeLevelList_to_Handle_Standard_Transient(self as *const Self)))
         }
     }
 }
@@ -2255,7 +2264,7 @@ impl HandleIGESSelectChangeLevelList {
 // From IGESSelect_ChangeLevelNumber.hxx
 // ========================
 
-/// **Source:** `IGESSelect_ChangeLevelNumber.hxx`:41 - `IGESSelect_ChangeLevelNumber`
+/// **Source:** `IGESSelect_ChangeLevelNumber.hxx`:38 - `IGESSelect_ChangeLevelNumber`
 /// Changes Level Number (as null or single) to a new single value
 /// Entities attached to a LevelListEntity are ignored
 /// Entities considered can be, either all Entities but those
@@ -2275,7 +2284,7 @@ unsafe impl crate::CppDeletable for ChangeLevelNumber {
 }
 
 impl ChangeLevelNumber {
-    /// **Source:** `IGESSelect_ChangeLevelNumber.hxx`:47 - `IGESSelect_ChangeLevelNumber::IGESSelect_ChangeLevelNumber()`
+    /// **Source:** `IGESSelect_ChangeLevelNumber.hxx`:44 - `IGESSelect_ChangeLevelNumber::IGESSelect_ChangeLevelNumber()`
     /// Creates a ChangeLevelNumber, not yet defined
     /// (see SetOldNumber and SetNewNumber)
     pub fn new() -> crate::OwnedPtr<Self> {
@@ -2286,7 +2295,7 @@ impl ChangeLevelNumber {
         }
     }
 
-    /// **Source:** `IGESSelect_ChangeLevelNumber.hxx`:52 - `IGESSelect_ChangeLevelNumber::HasOldNumber()`
+    /// **Source:** `IGESSelect_ChangeLevelNumber.hxx`:49 - `IGESSelect_ChangeLevelNumber::HasOldNumber()`
     /// Returns True if OldNumber is defined : then, only entities
     /// attached to the value of OldNumber will be considered. Else,
     /// all entities but those attached to a Level List will be.
@@ -2298,10 +2307,10 @@ impl ChangeLevelNumber {
         })
     }
 
-    /// **Source:** `IGESSelect_ChangeLevelNumber.hxx`:56 - `IGESSelect_ChangeLevelNumber::OldNumber()`
+    /// **Source:** `IGESSelect_ChangeLevelNumber.hxx`:53 - `IGESSelect_ChangeLevelNumber::OldNumber()`
     /// Returns the parameter for OldNumber. If not defined (Null
     /// Handle), it will be interpreted as "all level numbers"
-    pub fn old_number(&self) -> crate::OwnedPtr<crate::ffi_types::HandleIFSelectIntParam> {
+    pub fn old_number(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_IFSelect_IntParam> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDEIGES::IGESSelect_ChangeLevelNumber_old_number(
@@ -2311,9 +2320,9 @@ impl ChangeLevelNumber {
         }
     }
 
-    /// **Source:** `IGESSelect_ChangeLevelNumber.hxx`:59 - `IGESSelect_ChangeLevelNumber::SetOldNumber()`
+    /// **Source:** `IGESSelect_ChangeLevelNumber.hxx`:56 - `IGESSelect_ChangeLevelNumber::SetOldNumber()`
     /// Sets a parameter for OldNumber
-    pub fn set_old_number(&mut self, param: &crate::ffi_types::HandleIFSelectIntParam) {
+    pub fn set_old_number(&mut self, param: &crate::ffi_types::Handle_IFSelect_IntParam) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_ChangeLevelNumber_set_old_number(
                 self as *mut Self,
@@ -2322,10 +2331,10 @@ impl ChangeLevelNumber {
         })
     }
 
-    /// **Source:** `IGESSelect_ChangeLevelNumber.hxx`:63 - `IGESSelect_ChangeLevelNumber::NewNumber()`
+    /// **Source:** `IGESSelect_ChangeLevelNumber.hxx`:60 - `IGESSelect_ChangeLevelNumber::NewNumber()`
     /// Returns the parameter for NewNumber. If not defined (Null
     /// Handle), it will be interpreted as "new value 0"
-    pub fn new_number(&self) -> crate::OwnedPtr<crate::ffi_types::HandleIFSelectIntParam> {
+    pub fn new_number(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_IFSelect_IntParam> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDEIGES::IGESSelect_ChangeLevelNumber_new_number(
@@ -2335,9 +2344,9 @@ impl ChangeLevelNumber {
         }
     }
 
-    /// **Source:** `IGESSelect_ChangeLevelNumber.hxx`:66 - `IGESSelect_ChangeLevelNumber::SetNewNumber()`
+    /// **Source:** `IGESSelect_ChangeLevelNumber.hxx`:63 - `IGESSelect_ChangeLevelNumber::SetNewNumber()`
     /// Sets a parameter for NewNumber
-    pub fn set_new_number(&mut self, param: &crate::ffi_types::HandleIFSelectIntParam) {
+    pub fn set_new_number(&mut self, param: &crate::ffi_types::Handle_IFSelect_IntParam) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_ChangeLevelNumber_set_new_number(
                 self as *mut Self,
@@ -2346,7 +2355,7 @@ impl ChangeLevelNumber {
         })
     }
 
-    /// **Source:** `IGESSelect_ChangeLevelNumber.hxx`:75 - `IGESSelect_ChangeLevelNumber::Performing()`
+    /// **Source:** `IGESSelect_ChangeLevelNumber.hxx`:72 - `IGESSelect_ChangeLevelNumber::Performing()`
     /// Specific action : considers selected target entities :
     /// If OldNumber is not defined, all entities but those attached
     /// to a Level List
@@ -2357,7 +2366,7 @@ impl ChangeLevelNumber {
     pub fn performing(
         &self,
         ctx: &mut crate::if_select::ContextModif,
-        target: &crate::ffi_types::HandleIGESDataIGESModel,
+        target: &crate::ffi_types::Handle_IGESData_IGESModel,
         TC: &mut crate::interface::CopyTool,
     ) {
         crate::check_void_result(unsafe {
@@ -2370,7 +2379,7 @@ impl ChangeLevelNumber {
         })
     }
 
-    /// **Source:** `IGESSelect_ChangeLevelNumber.hxx`:82 - `IGESSelect_ChangeLevelNumber::Label()`
+    /// **Source:** `IGESSelect_ChangeLevelNumber.hxx`:79 - `IGESSelect_ChangeLevelNumber::Label()`
     /// Returns a text which is
     /// "Changes Level Number <old> to <new>" , or
     /// "Changes all Levels Numbers positive and zero to <new>"
@@ -2382,8 +2391,8 @@ impl ChangeLevelNumber {
         }
     }
 
-    /// **Source:** `IGESSelect_ChangeLevelNumber.hxx`:84 - `IGESSelect_ChangeLevelNumber::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `IGESSelect_ChangeLevelNumber.hxx`:81 - `IGESSelect_ChangeLevelNumber::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKDEIGES::IGESSelect_ChangeLevelNumber_dynamic_type(
@@ -2393,7 +2402,7 @@ impl ChangeLevelNumber {
         }
     }
 
-    /// **Source:** `IGESSelect_ChangeLevelNumber.hxx`:84 - `IGESSelect_ChangeLevelNumber::get_type_name()`
+    /// **Source:** `IGESSelect_ChangeLevelNumber.hxx`:81 - `IGESSelect_ChangeLevelNumber::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -2404,8 +2413,8 @@ impl ChangeLevelNumber {
         .into_owned()
     }
 
-    /// **Source:** `IGESSelect_ChangeLevelNumber.hxx`:84 - `IGESSelect_ChangeLevelNumber::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    /// **Source:** `IGESSelect_ChangeLevelNumber.hxx`:81 - `IGESSelect_ChangeLevelNumber::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKDEIGES::IGESSelect_ChangeLevelNumber_get_type_descriptor(),
@@ -2488,7 +2497,7 @@ impl ChangeLevelNumber {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESSelectChangeLevelNumber> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_IGESSelect_ChangeLevelNumber> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDEIGES::IGESSelect_ChangeLevelNumber_to_handle(obj.into_raw()),
@@ -2496,12 +2505,12 @@ impl ChangeLevelNumber {
         }
     }
 
-    /// Inherited: **Source:** `IGESSelect_ModelModifier.hxx`:41 - `IGESSelect_ModelModifier::Perform()`
+    /// Inherited: **Source:** `IGESSelect_ModelModifier.hxx`:38 - `IGESSelect_ModelModifier::Perform()`
     pub fn perform(
         &self,
         ctx: &mut crate::if_select::ContextModif,
-        target: &crate::ffi_types::HandleInterfaceInterfaceModel,
-        protocol: &crate::ffi_types::HandleInterfaceProtocol,
+        target: &crate::ffi_types::Handle_Interface_InterfaceModel,
+        protocol: &crate::ffi_types::Handle_Interface_Protocol,
         TC: &mut crate::interface::CopyTool,
     ) {
         crate::check_void_result(unsafe {
@@ -2515,12 +2524,12 @@ impl ChangeLevelNumber {
         })
     }
 
-    /// Inherited: **Source:** `IGESSelect_ModelModifier.hxx`:50 - `IGESSelect_ModelModifier::PerformProtocol()`
+    /// Inherited: **Source:** `IGESSelect_ModelModifier.hxx`:47 - `IGESSelect_ModelModifier::PerformProtocol()`
     pub fn perform_protocol(
         &self,
         ctx: &mut crate::if_select::ContextModif,
-        target: &crate::ffi_types::HandleIGESDataIGESModel,
-        proto: &crate::ffi_types::HandleIGESDataProtocol,
+        target: &crate::ffi_types::Handle_IGESData_IGESModel,
+        proto: &crate::ffi_types::Handle_IGESData_Protocol,
         TC: &mut crate::interface::CopyTool,
     ) {
         crate::check_void_result(unsafe {
@@ -2534,7 +2543,7 @@ impl ChangeLevelNumber {
         })
     }
 
-    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:68 - `IFSelect_GeneralModifier::MayChangeGraph()`
+    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:65 - `IFSelect_GeneralModifier::MayChangeGraph()`
     pub fn may_change_graph(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_ChangeLevelNumber_inherited_MayChangeGraph(
@@ -2543,8 +2552,8 @@ impl ChangeLevelNumber {
         })
     }
 
-    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:72 - `IFSelect_GeneralModifier::SetDispatch()`
-    pub fn set_dispatch(&mut self, disp: &crate::ffi_types::HandleIFSelectDispatch) {
+    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:69 - `IFSelect_GeneralModifier::SetDispatch()`
+    pub fn set_dispatch(&mut self, disp: &crate::ffi_types::Handle_IFSelect_Dispatch) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_ChangeLevelNumber_inherited_SetDispatch(
                 self as *mut Self,
@@ -2553,8 +2562,8 @@ impl ChangeLevelNumber {
         })
     }
 
-    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:75 - `IFSelect_GeneralModifier::Dispatch()`
-    pub fn dispatch(&self) -> crate::OwnedPtr<crate::ffi_types::HandleIFSelectDispatch> {
+    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:72 - `IFSelect_GeneralModifier::Dispatch()`
+    pub fn dispatch(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_IFSelect_Dispatch> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDEIGES::IGESSelect_ChangeLevelNumber_inherited_Dispatch(
@@ -2564,8 +2573,8 @@ impl ChangeLevelNumber {
         }
     }
 
-    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:80 - `IFSelect_GeneralModifier::Applies()`
-    pub fn applies(&self, disp: &crate::ffi_types::HandleIFSelectDispatch) -> bool {
+    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:77 - `IFSelect_GeneralModifier::Applies()`
+    pub fn applies(&self, disp: &crate::ffi_types::Handle_IFSelect_Dispatch) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_ChangeLevelNumber_inherited_Applies(
                 self as *const Self,
@@ -2574,8 +2583,8 @@ impl ChangeLevelNumber {
         })
     }
 
-    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:84 - `IFSelect_GeneralModifier::SetSelection()`
-    pub fn set_selection(&mut self, sel: &crate::ffi_types::HandleIFSelectSelection) {
+    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:81 - `IFSelect_GeneralModifier::SetSelection()`
+    pub fn set_selection(&mut self, sel: &crate::ffi_types::Handle_IFSelect_Selection) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_ChangeLevelNumber_inherited_SetSelection(
                 self as *mut Self,
@@ -2584,7 +2593,7 @@ impl ChangeLevelNumber {
         })
     }
 
-    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:87 - `IFSelect_GeneralModifier::ResetSelection()`
+    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:84 - `IFSelect_GeneralModifier::ResetSelection()`
     pub fn reset_selection(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_ChangeLevelNumber_inherited_ResetSelection(
@@ -2593,7 +2602,7 @@ impl ChangeLevelNumber {
         })
     }
 
-    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:90 - `IFSelect_GeneralModifier::HasSelection()`
+    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:87 - `IFSelect_GeneralModifier::HasSelection()`
     pub fn has_selection(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_ChangeLevelNumber_inherited_HasSelection(
@@ -2602,8 +2611,8 @@ impl ChangeLevelNumber {
         })
     }
 
-    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:93 - `IFSelect_GeneralModifier::Selection()`
-    pub fn selection(&self) -> crate::OwnedPtr<crate::ffi_types::HandleIFSelectSelection> {
+    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:90 - `IFSelect_GeneralModifier::Selection()`
+    pub fn selection(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_IFSelect_Selection> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDEIGES::IGESSelect_ChangeLevelNumber_inherited_Selection(
@@ -2613,8 +2622,8 @@ impl ChangeLevelNumber {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_ChangeLevelNumber_inherited_IsInstance(
                 self as *const Self,
@@ -2623,8 +2632,8 @@ impl ChangeLevelNumber {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_ChangeLevelNumber_inherited_IsKind(
                 self as *const Self,
@@ -2633,7 +2642,7 @@ impl ChangeLevelNumber {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -2649,7 +2658,7 @@ impl ChangeLevelNumber {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_ChangeLevelNumber_inherited_GetRefCount(
@@ -2658,7 +2667,7 @@ impl ChangeLevelNumber {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_ChangeLevelNumber_inherited_IncrementRefCounter(
@@ -2667,7 +2676,7 @@ impl ChangeLevelNumber {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_ChangeLevelNumber_inherited_DecrementRefCounter(
@@ -2676,7 +2685,7 @@ impl ChangeLevelNumber {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_ChangeLevelNumber_inherited_Delete(
@@ -2686,31 +2695,31 @@ impl ChangeLevelNumber {
     }
 }
 
-pub use crate::ffi_types::HandleIGESSelectChangeLevelNumber;
+pub use crate::ffi_types::Handle_IGESSelect_ChangeLevelNumber;
 
-unsafe impl crate::CppDeletable for HandleIGESSelectChangeLevelNumber {
+unsafe impl crate::CppDeletable for Handle_IGESSelect_ChangeLevelNumber {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKDEIGES::HandleIGESSelectChangeLevelNumber_destructor(ptr);
+            crate::ffi_extern_TKDEIGES::Handle_IGESSelect_ChangeLevelNumber_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleIGESSelectChangeLevelNumber {
+unsafe impl crate::CppCopyable for Handle_IGESSelect_ChangeLevelNumber {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
         unsafe {
             crate::check_result(
-                crate::ffi_extern_TKDEIGES::HandleIGESSelectChangeLevelNumber_clone(ptr),
+                crate::ffi_extern_TKDEIGES::Handle_IGESSelect_ChangeLevelNumber_clone(ptr),
             )
         }
     }
 }
 
-impl HandleIGESSelectChangeLevelNumber {
+impl Handle_IGESSelect_ChangeLevelNumber {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
         unsafe {
-            crate::ffi_extern_TKDEIGES::HandleIGESSelectChangeLevelNumber_is_null(
+            crate::ffi_extern_TKDEIGES::Handle_IGESSelect_ChangeLevelNumber_is_null(
                 self as *const Self,
             )
         }
@@ -2720,7 +2729,7 @@ impl HandleIGESSelectChangeLevelNumber {
     pub fn get(&self) -> &crate::ffi_types::IGESSelect_ChangeLevelNumber {
         unsafe {
             &*crate::check_result(
-                crate::ffi_extern_TKDEIGES::HandleIGESSelectChangeLevelNumber_get(
+                crate::ffi_extern_TKDEIGES::Handle_IGESSelect_ChangeLevelNumber_get(
                     self as *const Self,
                 ),
             )
@@ -2731,7 +2740,7 @@ impl HandleIGESSelectChangeLevelNumber {
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::IGESSelect_ChangeLevelNumber {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi_extern_TKDEIGES::HandleIGESSelectChangeLevelNumber_get_mut(
+                crate::ffi_extern_TKDEIGES::Handle_IGESSelect_ChangeLevelNumber_get_mut(
                     self as *mut Self,
                 ),
             )
@@ -2741,34 +2750,36 @@ impl HandleIGESSelectChangeLevelNumber {
     /// Upcast Handle<IGESSelect_ChangeLevelNumber> to Handle<IGESSelect_ModelModifier>
     pub fn to_handle_model_modifier(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESSelectModelModifier> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_IGESSelect_ModelModifier> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectChangeLevelNumber_to_HandleIGESSelectModelModifier(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::Handle_IGESSelect_ChangeLevelNumber_to_Handle_IGESSelect_ModelModifier(self as *const Self)))
         }
     }
 
     /// Upcast Handle<IGESSelect_ChangeLevelNumber> to Handle<IFSelect_Modifier>
-    pub fn to_handle_modifier(&self) -> crate::OwnedPtr<crate::ffi_types::HandleIFSelectModifier> {
+    pub fn to_handle_modifier(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_IFSelect_Modifier> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectChangeLevelNumber_to_HandleIFSelectModifier(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::Handle_IGESSelect_ChangeLevelNumber_to_Handle_IFSelect_Modifier(self as *const Self)))
         }
     }
 
     /// Upcast Handle<IGESSelect_ChangeLevelNumber> to Handle<IFSelect_GeneralModifier>
     pub fn to_handle_general_modifier(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleIFSelectGeneralModifier> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_IFSelect_GeneralModifier> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectChangeLevelNumber_to_HandleIFSelectGeneralModifier(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::Handle_IGESSelect_ChangeLevelNumber_to_Handle_IFSelect_GeneralModifier(self as *const Self)))
         }
     }
 
     /// Upcast Handle<IGESSelect_ChangeLevelNumber> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectChangeLevelNumber_to_HandleStandardTransient(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::Handle_IGESSelect_ChangeLevelNumber_to_Handle_Standard_Transient(self as *const Self)))
         }
     }
 }
@@ -2777,7 +2788,7 @@ impl HandleIGESSelectChangeLevelNumber {
 // From IGESSelect_ComputeStatus.hxx
 // ========================
 
-/// **Source:** `IGESSelect_ComputeStatus.hxx`:39 - `IGESSelect_ComputeStatus`
+/// **Source:** `IGESSelect_ComputeStatus.hxx`:36 - `IGESSelect_ComputeStatus`
 /// Computes Status of IGES Entities for a whole IGESModel.
 /// This concerns SubordinateStatus and UseFlag, which must have
 /// some definite values according the way they are referenced.
@@ -2796,7 +2807,7 @@ unsafe impl crate::CppDeletable for ComputeStatus {
 }
 
 impl ComputeStatus {
-    /// **Source:** `IGESSelect_ComputeStatus.hxx`:44 - `IGESSelect_ComputeStatus::IGESSelect_ComputeStatus()`
+    /// **Source:** `IGESSelect_ComputeStatus.hxx`:41 - `IGESSelect_ComputeStatus::IGESSelect_ComputeStatus()`
     /// Creates an ComputeStatus, which uses the system Date
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
@@ -2806,7 +2817,7 @@ impl ComputeStatus {
         }
     }
 
-    /// **Source:** `IGESSelect_ComputeStatus.hxx`:50 - `IGESSelect_ComputeStatus::Performing()`
+    /// **Source:** `IGESSelect_ComputeStatus.hxx`:47 - `IGESSelect_ComputeStatus::Performing()`
     /// Specific action : it first evaluates the required values for
     /// Subordinate Status and Use Flag (in Directory Part of each
     /// IGES Entity). Then it corrects them, for the whole target.
@@ -2814,7 +2825,7 @@ impl ComputeStatus {
     pub fn performing(
         &self,
         ctx: &mut crate::if_select::ContextModif,
-        target: &crate::ffi_types::HandleIGESDataIGESModel,
+        target: &crate::ffi_types::Handle_IGESData_IGESModel,
         TC: &mut crate::interface::CopyTool,
     ) {
         crate::check_void_result(unsafe {
@@ -2827,7 +2838,7 @@ impl ComputeStatus {
         })
     }
 
-    /// **Source:** `IGESSelect_ComputeStatus.hxx`:56 - `IGESSelect_ComputeStatus::Label()`
+    /// **Source:** `IGESSelect_ComputeStatus.hxx`:53 - `IGESSelect_ComputeStatus::Label()`
     /// Returns a text which is
     /// "Compute Subordinate Status and Use Flag"
     pub fn label(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
@@ -2838,8 +2849,8 @@ impl ComputeStatus {
         }
     }
 
-    /// **Source:** `IGESSelect_ComputeStatus.hxx`:58 - `IGESSelect_ComputeStatus::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `IGESSelect_ComputeStatus.hxx`:55 - `IGESSelect_ComputeStatus::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKDEIGES::IGESSelect_ComputeStatus_dynamic_type(
@@ -2849,7 +2860,7 @@ impl ComputeStatus {
         }
     }
 
-    /// **Source:** `IGESSelect_ComputeStatus.hxx`:58 - `IGESSelect_ComputeStatus::get_type_name()`
+    /// **Source:** `IGESSelect_ComputeStatus.hxx`:55 - `IGESSelect_ComputeStatus::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -2860,8 +2871,8 @@ impl ComputeStatus {
         .into_owned()
     }
 
-    /// **Source:** `IGESSelect_ComputeStatus.hxx`:58 - `IGESSelect_ComputeStatus::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    /// **Source:** `IGESSelect_ComputeStatus.hxx`:55 - `IGESSelect_ComputeStatus::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKDEIGES::IGESSelect_ComputeStatus_get_type_descriptor(),
@@ -2952,7 +2963,7 @@ impl ComputeStatus {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESSelectComputeStatus> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_IGESSelect_ComputeStatus> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDEIGES::IGESSelect_ComputeStatus_to_handle(obj.into_raw()),
@@ -2960,12 +2971,12 @@ impl ComputeStatus {
         }
     }
 
-    /// Inherited: **Source:** `IGESSelect_ModelModifier.hxx`:41 - `IGESSelect_ModelModifier::Perform()`
+    /// Inherited: **Source:** `IGESSelect_ModelModifier.hxx`:38 - `IGESSelect_ModelModifier::Perform()`
     pub fn perform(
         &self,
         ctx: &mut crate::if_select::ContextModif,
-        target: &crate::ffi_types::HandleInterfaceInterfaceModel,
-        protocol: &crate::ffi_types::HandleInterfaceProtocol,
+        target: &crate::ffi_types::Handle_Interface_InterfaceModel,
+        protocol: &crate::ffi_types::Handle_Interface_Protocol,
         TC: &mut crate::interface::CopyTool,
     ) {
         crate::check_void_result(unsafe {
@@ -2979,12 +2990,12 @@ impl ComputeStatus {
         })
     }
 
-    /// Inherited: **Source:** `IGESSelect_ModelModifier.hxx`:50 - `IGESSelect_ModelModifier::PerformProtocol()`
+    /// Inherited: **Source:** `IGESSelect_ModelModifier.hxx`:47 - `IGESSelect_ModelModifier::PerformProtocol()`
     pub fn perform_protocol(
         &self,
         ctx: &mut crate::if_select::ContextModif,
-        target: &crate::ffi_types::HandleIGESDataIGESModel,
-        proto: &crate::ffi_types::HandleIGESDataProtocol,
+        target: &crate::ffi_types::Handle_IGESData_IGESModel,
+        proto: &crate::ffi_types::Handle_IGESData_Protocol,
         TC: &mut crate::interface::CopyTool,
     ) {
         crate::check_void_result(unsafe {
@@ -2998,7 +3009,7 @@ impl ComputeStatus {
         })
     }
 
-    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:68 - `IFSelect_GeneralModifier::MayChangeGraph()`
+    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:65 - `IFSelect_GeneralModifier::MayChangeGraph()`
     pub fn may_change_graph(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_ComputeStatus_inherited_MayChangeGraph(
@@ -3007,8 +3018,8 @@ impl ComputeStatus {
         })
     }
 
-    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:72 - `IFSelect_GeneralModifier::SetDispatch()`
-    pub fn set_dispatch(&mut self, disp: &crate::ffi_types::HandleIFSelectDispatch) {
+    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:69 - `IFSelect_GeneralModifier::SetDispatch()`
+    pub fn set_dispatch(&mut self, disp: &crate::ffi_types::Handle_IFSelect_Dispatch) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_ComputeStatus_inherited_SetDispatch(
                 self as *mut Self,
@@ -3017,8 +3028,8 @@ impl ComputeStatus {
         })
     }
 
-    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:75 - `IFSelect_GeneralModifier::Dispatch()`
-    pub fn dispatch(&self) -> crate::OwnedPtr<crate::ffi_types::HandleIFSelectDispatch> {
+    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:72 - `IFSelect_GeneralModifier::Dispatch()`
+    pub fn dispatch(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_IFSelect_Dispatch> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDEIGES::IGESSelect_ComputeStatus_inherited_Dispatch(
@@ -3028,8 +3039,8 @@ impl ComputeStatus {
         }
     }
 
-    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:80 - `IFSelect_GeneralModifier::Applies()`
-    pub fn applies(&self, disp: &crate::ffi_types::HandleIFSelectDispatch) -> bool {
+    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:77 - `IFSelect_GeneralModifier::Applies()`
+    pub fn applies(&self, disp: &crate::ffi_types::Handle_IFSelect_Dispatch) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_ComputeStatus_inherited_Applies(
                 self as *const Self,
@@ -3038,8 +3049,8 @@ impl ComputeStatus {
         })
     }
 
-    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:84 - `IFSelect_GeneralModifier::SetSelection()`
-    pub fn set_selection(&mut self, sel: &crate::ffi_types::HandleIFSelectSelection) {
+    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:81 - `IFSelect_GeneralModifier::SetSelection()`
+    pub fn set_selection(&mut self, sel: &crate::ffi_types::Handle_IFSelect_Selection) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_ComputeStatus_inherited_SetSelection(
                 self as *mut Self,
@@ -3048,7 +3059,7 @@ impl ComputeStatus {
         })
     }
 
-    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:87 - `IFSelect_GeneralModifier::ResetSelection()`
+    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:84 - `IFSelect_GeneralModifier::ResetSelection()`
     pub fn reset_selection(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_ComputeStatus_inherited_ResetSelection(
@@ -3057,7 +3068,7 @@ impl ComputeStatus {
         })
     }
 
-    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:90 - `IFSelect_GeneralModifier::HasSelection()`
+    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:87 - `IFSelect_GeneralModifier::HasSelection()`
     pub fn has_selection(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_ComputeStatus_inherited_HasSelection(
@@ -3066,8 +3077,8 @@ impl ComputeStatus {
         })
     }
 
-    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:93 - `IFSelect_GeneralModifier::Selection()`
-    pub fn selection(&self) -> crate::OwnedPtr<crate::ffi_types::HandleIFSelectSelection> {
+    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:90 - `IFSelect_GeneralModifier::Selection()`
+    pub fn selection(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_IFSelect_Selection> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDEIGES::IGESSelect_ComputeStatus_inherited_Selection(
@@ -3077,8 +3088,8 @@ impl ComputeStatus {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_ComputeStatus_inherited_IsInstance(
                 self as *const Self,
@@ -3087,8 +3098,8 @@ impl ComputeStatus {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_ComputeStatus_inherited_IsKind(
                 self as *const Self,
@@ -3097,7 +3108,7 @@ impl ComputeStatus {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -3113,7 +3124,7 @@ impl ComputeStatus {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_ComputeStatus_inherited_GetRefCount(
@@ -3122,7 +3133,7 @@ impl ComputeStatus {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_ComputeStatus_inherited_IncrementRefCounter(
@@ -3131,7 +3142,7 @@ impl ComputeStatus {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_ComputeStatus_inherited_DecrementRefCounter(
@@ -3140,7 +3151,7 @@ impl ComputeStatus {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_ComputeStatus_inherited_Delete(
@@ -3150,38 +3161,38 @@ impl ComputeStatus {
     }
 }
 
-pub use crate::ffi_types::HandleIGESSelectComputeStatus;
+pub use crate::ffi_types::Handle_IGESSelect_ComputeStatus;
 
-unsafe impl crate::CppDeletable for HandleIGESSelectComputeStatus {
+unsafe impl crate::CppDeletable for Handle_IGESSelect_ComputeStatus {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKDEIGES::HandleIGESSelectComputeStatus_destructor(ptr);
+            crate::ffi_extern_TKDEIGES::Handle_IGESSelect_ComputeStatus_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleIGESSelectComputeStatus {
+unsafe impl crate::CppCopyable for Handle_IGESSelect_ComputeStatus {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
         unsafe {
-            crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectComputeStatus_clone(
+            crate::check_result(crate::ffi_extern_TKDEIGES::Handle_IGESSelect_ComputeStatus_clone(
                 ptr,
             ))
         }
     }
 }
 
-impl HandleIGESSelectComputeStatus {
+impl Handle_IGESSelect_ComputeStatus {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
         unsafe {
-            crate::ffi_extern_TKDEIGES::HandleIGESSelectComputeStatus_is_null(self as *const Self)
+            crate::ffi_extern_TKDEIGES::Handle_IGESSelect_ComputeStatus_is_null(self as *const Self)
         }
     }
 
     /// Dereference this Handle to access the underlying IGESSelect_ComputeStatus
     pub fn get(&self) -> &crate::ffi_types::IGESSelect_ComputeStatus {
         unsafe {
-            &*crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectComputeStatus_get(
+            &*crate::check_result(crate::ffi_extern_TKDEIGES::Handle_IGESSelect_ComputeStatus_get(
                 self as *const Self,
             ))
         }
@@ -3191,7 +3202,7 @@ impl HandleIGESSelectComputeStatus {
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::IGESSelect_ComputeStatus {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi_extern_TKDEIGES::HandleIGESSelectComputeStatus_get_mut(
+                crate::ffi_extern_TKDEIGES::Handle_IGESSelect_ComputeStatus_get_mut(
                     self as *mut Self,
                 ),
             )
@@ -3201,38 +3212,36 @@ impl HandleIGESSelectComputeStatus {
     /// Upcast Handle<IGESSelect_ComputeStatus> to Handle<IGESSelect_ModelModifier>
     pub fn to_handle_model_modifier(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESSelectModelModifier> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_IGESSelect_ModelModifier> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectComputeStatus_to_HandleIGESSelectModelModifier(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::Handle_IGESSelect_ComputeStatus_to_Handle_IGESSelect_ModelModifier(self as *const Self)))
         }
     }
 
     /// Upcast Handle<IGESSelect_ComputeStatus> to Handle<IFSelect_Modifier>
-    pub fn to_handle_modifier(&self) -> crate::OwnedPtr<crate::ffi_types::HandleIFSelectModifier> {
+    pub fn to_handle_modifier(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_IFSelect_Modifier> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKDEIGES::HandleIGESSelectComputeStatus_to_HandleIFSelectModifier(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::Handle_IGESSelect_ComputeStatus_to_Handle_IFSelect_Modifier(self as *const Self)))
         }
     }
 
     /// Upcast Handle<IGESSelect_ComputeStatus> to Handle<IFSelect_GeneralModifier>
     pub fn to_handle_general_modifier(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleIFSelectGeneralModifier> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_IFSelect_GeneralModifier> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectComputeStatus_to_HandleIFSelectGeneralModifier(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::Handle_IGESSelect_ComputeStatus_to_Handle_IFSelect_GeneralModifier(self as *const Self)))
         }
     }
 
     /// Upcast Handle<IGESSelect_ComputeStatus> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectComputeStatus_to_HandleStandardTransient(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::Handle_IGESSelect_ComputeStatus_to_Handle_Standard_Transient(self as *const Self)))
         }
     }
 }
@@ -3304,8 +3313,8 @@ impl CounterOfLevelNumber {
     /// " LEVEL LIST", and for each of its constituent levels
     pub fn add_sign(
         &mut self,
-        ent: &crate::ffi_types::HandleStandardTransient,
-        model: &crate::ffi_types::HandleInterfaceInterfaceModel,
+        ent: &crate::ffi_types::Handle_Standard_Transient,
+        model: &crate::ffi_types::Handle_Interface_InterfaceModel,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_CounterOfLevelNumber_add_sign(
@@ -3316,10 +3325,10 @@ impl CounterOfLevelNumber {
         })
     }
 
-    /// **Source:** `IGESSelect_CounterOfLevelNumber.hxx`:61 - `IGESSelect_CounterOfLevelNumber::AddLevel()`
+    /// **Source:** `IGESSelect_CounterOfLevelNumber.hxx`:60 - `IGESSelect_CounterOfLevelNumber::AddLevel()`
     /// The internal action to record a new level number, positive,
     /// null (no level) or negative (level list)
-    pub fn add_level(&mut self, ent: &crate::ffi_types::HandleStandardTransient, level: i32) {
+    pub fn add_level(&mut self, ent: &crate::ffi_types::Handle_Standard_Transient, level: i32) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_CounterOfLevelNumber_add_level(
                 self as *mut Self,
@@ -3329,7 +3338,7 @@ impl CounterOfLevelNumber {
         })
     }
 
-    /// **Source:** `IGESSelect_CounterOfLevelNumber.hxx`:65 - `IGESSelect_CounterOfLevelNumber::HighestLevel()`
+    /// **Source:** `IGESSelect_CounterOfLevelNumber.hxx`:63 - `IGESSelect_CounterOfLevelNumber::HighestLevel()`
     /// Returns the highest value found for a level number
     pub fn highest_level(&self) -> i32 {
         crate::check_result(unsafe {
@@ -3339,7 +3348,7 @@ impl CounterOfLevelNumber {
         })
     }
 
-    /// **Source:** `IGESSelect_CounterOfLevelNumber.hxx`:71 - `IGESSelect_CounterOfLevelNumber::NbTimesLevel()`
+    /// **Source:** `IGESSelect_CounterOfLevelNumber.hxx`:69 - `IGESSelect_CounterOfLevelNumber::NbTimesLevel()`
     /// Returns the number of times a level is used,
     /// 0 if it has not been recorded at all
     /// <level> = 0 counts entities attached to no level
@@ -3353,9 +3362,9 @@ impl CounterOfLevelNumber {
         })
     }
 
-    /// **Source:** `IGESSelect_CounterOfLevelNumber.hxx`:74 - `IGESSelect_CounterOfLevelNumber::Levels()`
+    /// **Source:** `IGESSelect_CounterOfLevelNumber.hxx`:72 - `IGESSelect_CounterOfLevelNumber::Levels()`
     /// Returns the ordered list of used positive Level numbers
-    pub fn levels(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTColStdHSequenceOfInteger> {
+    pub fn levels(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HSequence_int> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDEIGES::IGESSelect_CounterOfLevelNumber_levels(
@@ -3365,15 +3374,15 @@ impl CounterOfLevelNumber {
         }
     }
 
-    /// **Source:** `IGESSelect_CounterOfLevelNumber.hxx`:79 - `IGESSelect_CounterOfLevelNumber::Sign()`
+    /// **Source:** `IGESSelect_CounterOfLevelNumber.hxx`:77 - `IGESSelect_CounterOfLevelNumber::Sign()`
     /// Determines and returns the value of the signature for an
     /// entity as an HAsciiString. Redefined, gives the same result
     /// as AddSign, see this method ("LEVEL LIST" or "nnnnnnn")
     pub fn sign(
         &self,
-        ent: &crate::ffi_types::HandleStandardTransient,
-        model: &crate::ffi_types::HandleInterfaceInterfaceModel,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleTCollectionHAsciiString> {
+        ent: &crate::ffi_types::Handle_Standard_Transient,
+        model: &crate::ffi_types::Handle_Interface_InterfaceModel,
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_TCollection_HAsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDEIGES::IGESSelect_CounterOfLevelNumber_sign(
@@ -3385,7 +3394,7 @@ impl CounterOfLevelNumber {
         }
     }
 
-    /// **Source:** `IGESSelect_CounterOfLevelNumber.hxx`:85 - `IGESSelect_CounterOfLevelNumber::PrintCount()`
+    /// **Source:** `IGESSelect_CounterOfLevelNumber.hxx`:83 - `IGESSelect_CounterOfLevelNumber::PrintCount()`
     /// Prints the counts of items (not the list) then the Highest
     /// Level Number recorded
     pub fn print_count(&self, S: &mut crate::ffi_types::Standard_OStream) {
@@ -3397,8 +3406,8 @@ impl CounterOfLevelNumber {
         })
     }
 
-    /// **Source:** `IGESSelect_CounterOfLevelNumber.hxx`:87 - `IGESSelect_CounterOfLevelNumber::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `IGESSelect_CounterOfLevelNumber.hxx`:85 - `IGESSelect_CounterOfLevelNumber::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKDEIGES::IGESSelect_CounterOfLevelNumber_dynamic_type(
@@ -3408,7 +3417,7 @@ impl CounterOfLevelNumber {
         }
     }
 
-    /// **Source:** `IGESSelect_CounterOfLevelNumber.hxx`:87 - `IGESSelect_CounterOfLevelNumber::get_type_name()`
+    /// **Source:** `IGESSelect_CounterOfLevelNumber.hxx`:85 - `IGESSelect_CounterOfLevelNumber::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -3419,8 +3428,8 @@ impl CounterOfLevelNumber {
         .into_owned()
     }
 
-    /// **Source:** `IGESSelect_CounterOfLevelNumber.hxx`:87 - `IGESSelect_CounterOfLevelNumber::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    /// **Source:** `IGESSelect_CounterOfLevelNumber.hxx`:85 - `IGESSelect_CounterOfLevelNumber::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKDEIGES::IGESSelect_CounterOfLevelNumber_get_type_descriptor(),
@@ -3481,7 +3490,7 @@ impl CounterOfLevelNumber {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESSelectCounterOfLevelNumber> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_IGESSelect_CounterOfLevelNumber> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDEIGES::IGESSelect_CounterOfLevelNumber_to_handle(
@@ -3491,8 +3500,8 @@ impl CounterOfLevelNumber {
         }
     }
 
-    /// Inherited: **Source:** `IFSelect_SignCounter.hxx`:76 - `IFSelect_SignCounter::Signature()`
-    pub fn signature(&self) -> crate::OwnedPtr<crate::ffi_types::HandleIFSelectSignature> {
+    /// Inherited: **Source:** `IFSelect_SignCounter.hxx`:74 - `IFSelect_SignCounter::Signature()`
+    pub fn signature(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_IFSelect_Signature> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDEIGES::IGESSelect_CounterOfLevelNumber_inherited_Signature(
@@ -3502,7 +3511,7 @@ impl CounterOfLevelNumber {
         }
     }
 
-    /// Inherited: **Source:** `IFSelect_SignCounter.hxx`:80 - `IFSelect_SignCounter::SetMap()`
+    /// Inherited: **Source:** `IFSelect_SignCounter.hxx`:78 - `IFSelect_SignCounter::SetMap()`
     pub fn set_map(&mut self, withmap: bool) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_CounterOfLevelNumber_inherited_SetMap(
@@ -3512,11 +3521,11 @@ impl CounterOfLevelNumber {
         })
     }
 
-    /// Inherited: **Source:** `IFSelect_SignCounter.hxx`:86 - `IFSelect_SignCounter::AddEntity()`
+    /// Inherited: **Source:** `IFSelect_SignCounter.hxx`:84 - `IFSelect_SignCounter::AddEntity()`
     pub fn add_entity(
         &mut self,
-        ent: &crate::ffi_types::HandleStandardTransient,
-        model: &crate::ffi_types::HandleInterfaceInterfaceModel,
+        ent: &crate::ffi_types::Handle_Standard_Transient,
+        model: &crate::ffi_types::Handle_Interface_InterfaceModel,
     ) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_CounterOfLevelNumber_inherited_AddEntity(
@@ -3527,11 +3536,11 @@ impl CounterOfLevelNumber {
         })
     }
 
-    /// Inherited: **Source:** `IFSelect_SignCounter.hxx`:99 - `IFSelect_SignCounter::AddList()`
+    /// Inherited: **Source:** `IFSelect_SignCounter.hxx`:97 - `IFSelect_SignCounter::AddList()`
     pub fn add_list(
         &mut self,
-        list: &crate::ffi_types::HandleTColStdHSequenceOfTransient,
-        model: &crate::ffi_types::HandleInterfaceInterfaceModel,
+        list: &crate::ffi_types::Handle_NCollection_HSequence_opencascade_handle_Standard_Transient,
+        model: &crate::ffi_types::Handle_Interface_InterfaceModel,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_CounterOfLevelNumber_inherited_AddList(
@@ -3542,10 +3551,10 @@ impl CounterOfLevelNumber {
         })
     }
 
-    /// Inherited: **Source:** `IFSelect_SignCounter.hxx`:105 - `IFSelect_SignCounter::AddWithGraph()`
+    /// Inherited: **Source:** `IFSelect_SignCounter.hxx`:104 - `IFSelect_SignCounter::AddWithGraph()`
     pub fn add_with_graph(
         &mut self,
-        list: &crate::ffi_types::HandleTColStdHSequenceOfTransient,
+        list: &crate::ffi_types::Handle_NCollection_HSequence_opencascade_handle_Standard_Transient,
         graph: &crate::interface::Graph,
     ) {
         crate::check_void_result(unsafe {
@@ -3558,7 +3567,7 @@ impl CounterOfLevelNumber {
     }
 
     /// Inherited: **Source:** `IFSelect_SignCounter.hxx`:109 - `IFSelect_SignCounter::AddModel()`
-    pub fn add_model(&mut self, model: &crate::ffi_types::HandleInterfaceInterfaceModel) {
+    pub fn add_model(&mut self, model: &crate::ffi_types::Handle_Interface_InterfaceModel) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_CounterOfLevelNumber_inherited_AddModel(
                 self as *mut Self,
@@ -3570,7 +3579,7 @@ impl CounterOfLevelNumber {
     /// Inherited: **Source:** `IFSelect_SignCounter.hxx`:113 - `IFSelect_SignCounter::AddFromSelection()`
     pub fn add_from_selection(
         &mut self,
-        sel: &crate::ffi_types::HandleIFSelectSelection,
+        sel: &crate::ffi_types::Handle_IFSelect_Selection,
         G: &crate::interface::Graph,
     ) {
         crate::check_void_result(unsafe {
@@ -3583,7 +3592,7 @@ impl CounterOfLevelNumber {
     }
 
     /// Inherited: **Source:** `IFSelect_SignCounter.hxx`:118 - `IFSelect_SignCounter::SetSelection()`
-    pub fn set_selection(&mut self, sel: &crate::ffi_types::HandleIFSelectSelection) {
+    pub fn set_selection(&mut self, sel: &crate::ffi_types::Handle_IFSelect_Selection) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_CounterOfLevelNumber_inherited_SetSelection(
                 self as *mut Self,
@@ -3593,7 +3602,7 @@ impl CounterOfLevelNumber {
     }
 
     /// Inherited: **Source:** `IFSelect_SignCounter.hxx`:121 - `IFSelect_SignCounter::Selection()`
-    pub fn selection(&self) -> crate::OwnedPtr<crate::ffi_types::HandleIFSelectSelection> {
+    pub fn selection(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_IFSelect_Selection> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDEIGES::IGESSelect_CounterOfLevelNumber_inherited_Selection(
@@ -3603,7 +3612,7 @@ impl CounterOfLevelNumber {
         }
     }
 
-    /// Inherited: **Source:** `IFSelect_SignCounter.hxx`:128 - `IFSelect_SignCounter::SetSelMode()`
+    /// Inherited: **Source:** `IFSelect_SignCounter.hxx`:129 - `IFSelect_SignCounter::SetSelMode()`
     pub fn set_sel_mode(&mut self, selmode: i32) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_CounterOfLevelNumber_inherited_SetSelMode(
@@ -3613,7 +3622,7 @@ impl CounterOfLevelNumber {
         })
     }
 
-    /// Inherited: **Source:** `IFSelect_SignCounter.hxx`:131 - `IFSelect_SignCounter::SelMode()`
+    /// Inherited: **Source:** `IFSelect_SignCounter.hxx`:132 - `IFSelect_SignCounter::SelMode()`
     pub fn sel_mode(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_CounterOfLevelNumber_inherited_SelMode(
@@ -3622,7 +3631,7 @@ impl CounterOfLevelNumber {
         })
     }
 
-    /// Inherited: **Source:** `IFSelect_SignCounter.hxx`:144 - `IFSelect_SignCounter::ComputeSelected()`
+    /// Inherited: **Source:** `IFSelect_SignCounter.hxx`:145 - `IFSelect_SignCounter::ComputeSelected()`
     pub fn compute_selected(&mut self, G: &crate::interface::Graph, forced: bool) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_CounterOfLevelNumber_inherited_ComputeSelected(
@@ -3633,7 +3642,7 @@ impl CounterOfLevelNumber {
         })
     }
 
-    /// Inherited: **Source:** `IFSelect_SignatureList.hxx`:52 - `IFSelect_SignatureList::SetList()`
+    /// Inherited: **Source:** `IFSelect_SignatureList.hxx`:50 - `IFSelect_SignatureList::SetList()`
     pub fn set_list(&mut self, withlist: bool) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_CounterOfLevelNumber_inherited_SetList(
@@ -3643,7 +3652,7 @@ impl CounterOfLevelNumber {
         })
     }
 
-    /// Inherited: **Source:** `IFSelect_SignatureList.hxx`:59 - `IFSelect_SignatureList::ModeSignOnly()`
+    /// Inherited: **Source:** `IFSelect_SignatureList.hxx`:57 - `IFSelect_SignatureList::ModeSignOnly()`
     pub fn mode_sign_only(&mut self) -> &mut bool {
         unsafe {
             &mut *(crate::check_result(
@@ -3654,7 +3663,7 @@ impl CounterOfLevelNumber {
         }
     }
 
-    /// Inherited: **Source:** `IFSelect_SignatureList.hxx`:94 - `IFSelect_SignatureList::HasEntities()`
+    /// Inherited: **Source:** `IFSelect_SignatureList.hxx`:92 - `IFSelect_SignatureList::HasEntities()`
     pub fn has_entities(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_CounterOfLevelNumber_inherited_HasEntities(
@@ -3663,7 +3672,7 @@ impl CounterOfLevelNumber {
         })
     }
 
-    /// Inherited: **Source:** `IFSelect_SignatureList.hxx`:97 - `IFSelect_SignatureList::NbNulls()`
+    /// Inherited: **Source:** `IFSelect_SignatureList.hxx`:95 - `IFSelect_SignatureList::NbNulls()`
     pub fn nb_nulls(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_CounterOfLevelNumber_inherited_NbNulls(
@@ -3672,11 +3681,11 @@ impl CounterOfLevelNumber {
         })
     }
 
-    /// Inherited: **Source:** `IFSelect_SignatureList.hxx`:128 - `IFSelect_SignatureList::PrintList()`
+    /// Inherited: **Source:** `IFSelect_SignatureList.hxx`:127 - `IFSelect_SignatureList::PrintList()`
     pub fn print_list(
         &self,
         S: &mut crate::ffi_types::Standard_OStream,
-        model: &crate::ffi_types::HandleInterfaceInterfaceModel,
+        model: &crate::ffi_types::Handle_Interface_InterfaceModel,
         mod_: crate::if_select::PrintCount,
     ) {
         crate::check_void_result(unsafe {
@@ -3689,7 +3698,7 @@ impl CounterOfLevelNumber {
         })
     }
 
-    /// Inherited: **Source:** `IFSelect_SignatureList.hxx`:136 - `IFSelect_SignatureList::PrintSum()`
+    /// Inherited: **Source:** `IFSelect_SignatureList.hxx`:135 - `IFSelect_SignatureList::PrintSum()`
     pub fn print_sum(&self, S: &mut crate::ffi_types::Standard_OStream) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_CounterOfLevelNumber_inherited_PrintSum(
@@ -3699,8 +3708,8 @@ impl CounterOfLevelNumber {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_CounterOfLevelNumber_inherited_IsInstance(
                 self as *const Self,
@@ -3709,8 +3718,8 @@ impl CounterOfLevelNumber {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_CounterOfLevelNumber_inherited_IsKind(
                 self as *const Self,
@@ -3719,7 +3728,7 @@ impl CounterOfLevelNumber {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -3735,7 +3744,7 @@ impl CounterOfLevelNumber {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_CounterOfLevelNumber_inherited_GetRefCount(
@@ -3744,21 +3753,21 @@ impl CounterOfLevelNumber {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_CounterOfLevelNumber_inherited_IncrementRefCounter(self as *mut Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_CounterOfLevelNumber_inherited_DecrementRefCounter(self as *mut Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_CounterOfLevelNumber_inherited_Delete(
@@ -3768,31 +3777,31 @@ impl CounterOfLevelNumber {
     }
 }
 
-pub use crate::ffi_types::HandleIGESSelectCounterOfLevelNumber;
+pub use crate::ffi_types::Handle_IGESSelect_CounterOfLevelNumber;
 
-unsafe impl crate::CppDeletable for HandleIGESSelectCounterOfLevelNumber {
+unsafe impl crate::CppDeletable for Handle_IGESSelect_CounterOfLevelNumber {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKDEIGES::HandleIGESSelectCounterOfLevelNumber_destructor(ptr);
+            crate::ffi_extern_TKDEIGES::Handle_IGESSelect_CounterOfLevelNumber_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleIGESSelectCounterOfLevelNumber {
+unsafe impl crate::CppCopyable for Handle_IGESSelect_CounterOfLevelNumber {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
         unsafe {
             crate::check_result(
-                crate::ffi_extern_TKDEIGES::HandleIGESSelectCounterOfLevelNumber_clone(ptr),
+                crate::ffi_extern_TKDEIGES::Handle_IGESSelect_CounterOfLevelNumber_clone(ptr),
             )
         }
     }
 }
 
-impl HandleIGESSelectCounterOfLevelNumber {
+impl Handle_IGESSelect_CounterOfLevelNumber {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
         unsafe {
-            crate::ffi_extern_TKDEIGES::HandleIGESSelectCounterOfLevelNumber_is_null(
+            crate::ffi_extern_TKDEIGES::Handle_IGESSelect_CounterOfLevelNumber_is_null(
                 self as *const Self,
             )
         }
@@ -3802,7 +3811,7 @@ impl HandleIGESSelectCounterOfLevelNumber {
     pub fn get(&self) -> &crate::ffi_types::IGESSelect_CounterOfLevelNumber {
         unsafe {
             &*crate::check_result(
-                crate::ffi_extern_TKDEIGES::HandleIGESSelectCounterOfLevelNumber_get(
+                crate::ffi_extern_TKDEIGES::Handle_IGESSelect_CounterOfLevelNumber_get(
                     self as *const Self,
                 ),
             )
@@ -3813,7 +3822,7 @@ impl HandleIGESSelectCounterOfLevelNumber {
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::IGESSelect_CounterOfLevelNumber {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi_extern_TKDEIGES::HandleIGESSelectCounterOfLevelNumber_get_mut(
+                crate::ffi_extern_TKDEIGES::Handle_IGESSelect_CounterOfLevelNumber_get_mut(
                     self as *mut Self,
                 ),
             )
@@ -3823,27 +3832,27 @@ impl HandleIGESSelectCounterOfLevelNumber {
     /// Upcast Handle<IGESSelect_CounterOfLevelNumber> to Handle<IFSelect_SignCounter>
     pub fn to_handle_sign_counter(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleIFSelectSignCounter> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_IFSelect_SignCounter> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectCounterOfLevelNumber_to_HandleIFSelectSignCounter(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::Handle_IGESSelect_CounterOfLevelNumber_to_Handle_IFSelect_SignCounter(self as *const Self)))
         }
     }
 
     /// Upcast Handle<IGESSelect_CounterOfLevelNumber> to Handle<IFSelect_SignatureList>
     pub fn to_handle_signature_list(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleIFSelectSignatureList> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_IFSelect_SignatureList> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectCounterOfLevelNumber_to_HandleIFSelectSignatureList(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::Handle_IGESSelect_CounterOfLevelNumber_to_Handle_IFSelect_SignatureList(self as *const Self)))
         }
     }
 
     /// Upcast Handle<IGESSelect_CounterOfLevelNumber> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectCounterOfLevelNumber_to_HandleStandardTransient(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::Handle_IGESSelect_CounterOfLevelNumber_to_Handle_Standard_Transient(self as *const Self)))
         }
     }
 }
@@ -3852,7 +3861,7 @@ impl HandleIGESSelectCounterOfLevelNumber {
 // From IGESSelect_DispPerDrawing.hxx
 // ========================
 
-/// **Source:** `IGESSelect_DispPerDrawing.hxx`:39 - `IGESSelect_DispPerDrawing`
+/// **Source:** `IGESSelect_DispPerDrawing.hxx`:36 - `IGESSelect_DispPerDrawing`
 /// This type of dispatch defines sets of entities attached to
 /// distinct drawings. This information is taken from attached
 /// views which appear in the Directory Part. Also Drawing Frames
@@ -3870,7 +3879,7 @@ unsafe impl crate::CppDeletable for DispPerDrawing {
 }
 
 impl DispPerDrawing {
-    /// **Source:** `IGESSelect_DispPerDrawing.hxx`:44 - `IGESSelect_DispPerDrawing::IGESSelect_DispPerDrawing()`
+    /// **Source:** `IGESSelect_DispPerDrawing.hxx`:41 - `IGESSelect_DispPerDrawing::IGESSelect_DispPerDrawing()`
     /// Creates a DispPerDrawing
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
@@ -3880,7 +3889,7 @@ impl DispPerDrawing {
         }
     }
 
-    /// **Source:** `IGESSelect_DispPerDrawing.hxx`:47 - `IGESSelect_DispPerDrawing::Label()`
+    /// **Source:** `IGESSelect_DispPerDrawing.hxx`:44 - `IGESSelect_DispPerDrawing::Label()`
     /// Returns as Label, "One File per Drawing"
     pub fn label(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe {
@@ -3890,7 +3899,7 @@ impl DispPerDrawing {
         }
     }
 
-    /// **Source:** `IGESSelect_DispPerDrawing.hxx`:51 - `IGESSelect_DispPerDrawing::Packets()`
+    /// **Source:** `IGESSelect_DispPerDrawing.hxx`:48 - `IGESSelect_DispPerDrawing::Packets()`
     /// Computes the list of produced Packets. Packets are computed
     /// by a ViewSorter (SortDrawings with also frames).
     pub fn packets(
@@ -3907,7 +3916,7 @@ impl DispPerDrawing {
         })
     }
 
-    /// **Source:** `IGESSelect_DispPerDrawing.hxx`:55 - `IGESSelect_DispPerDrawing::CanHaveRemainder()`
+    /// **Source:** `IGESSelect_DispPerDrawing.hxx`:52 - `IGESSelect_DispPerDrawing::CanHaveRemainder()`
     /// Returns True, because of entities attached to no view.
     pub fn can_have_remainder(&self) -> bool {
         crate::check_result(unsafe {
@@ -3917,7 +3926,7 @@ impl DispPerDrawing {
         })
     }
 
-    /// **Source:** `IGESSelect_DispPerDrawing.hxx`:59 - `IGESSelect_DispPerDrawing::Remainder()`
+    /// **Source:** `IGESSelect_DispPerDrawing.hxx`:56 - `IGESSelect_DispPerDrawing::Remainder()`
     /// Returns Remainder which is a set of Entities.
     /// It is supposed to be called once Packets has been called.
     pub fn remainder(
@@ -3934,8 +3943,8 @@ impl DispPerDrawing {
         }
     }
 
-    /// **Source:** `IGESSelect_DispPerDrawing.hxx`:62 - `IGESSelect_DispPerDrawing::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `IGESSelect_DispPerDrawing.hxx`:58 - `IGESSelect_DispPerDrawing::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKDEIGES::IGESSelect_DispPerDrawing_dynamic_type(
@@ -3945,7 +3954,7 @@ impl DispPerDrawing {
         }
     }
 
-    /// **Source:** `IGESSelect_DispPerDrawing.hxx`:62 - `IGESSelect_DispPerDrawing::get_type_name()`
+    /// **Source:** `IGESSelect_DispPerDrawing.hxx`:58 - `IGESSelect_DispPerDrawing::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -3956,8 +3965,8 @@ impl DispPerDrawing {
         .into_owned()
     }
 
-    /// **Source:** `IGESSelect_DispPerDrawing.hxx`:62 - `IGESSelect_DispPerDrawing::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    /// **Source:** `IGESSelect_DispPerDrawing.hxx`:58 - `IGESSelect_DispPerDrawing::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKDEIGES::IGESSelect_DispPerDrawing_get_type_descriptor(),
@@ -4012,7 +4021,7 @@ impl DispPerDrawing {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESSelectDispPerDrawing> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_IGESSelect_DispPerDrawing> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDEIGES::IGESSelect_DispPerDrawing_to_handle(obj.into_raw()),
@@ -4020,8 +4029,8 @@ impl DispPerDrawing {
         }
     }
 
-    /// Inherited: **Source:** `IFSelect_Dispatch.hxx`:58 - `IFSelect_Dispatch::SetRootName()`
-    pub fn set_root_name(&mut self, name: &crate::ffi_types::HandleTCollectionHAsciiString) {
+    /// Inherited: **Source:** `IFSelect_Dispatch.hxx`:55 - `IFSelect_Dispatch::SetRootName()`
+    pub fn set_root_name(&mut self, name: &crate::ffi_types::Handle_TCollection_HAsciiString) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_DispPerDrawing_inherited_SetRootName(
                 self as *mut Self,
@@ -4030,7 +4039,7 @@ impl DispPerDrawing {
         })
     }
 
-    /// Inherited: **Source:** `IFSelect_Dispatch.hxx`:62 - `IFSelect_Dispatch::HasRootName()`
+    /// Inherited: **Source:** `IFSelect_Dispatch.hxx`:59 - `IFSelect_Dispatch::HasRootName()`
     pub fn has_root_name(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_DispPerDrawing_inherited_HasRootName(
@@ -4039,8 +4048,8 @@ impl DispPerDrawing {
         })
     }
 
-    /// Inherited: **Source:** `IFSelect_Dispatch.hxx`:66 - `IFSelect_Dispatch::RootName()`
-    pub fn root_name(&self) -> &crate::ffi_types::HandleTCollectionHAsciiString {
+    /// Inherited: **Source:** `IFSelect_Dispatch.hxx`:63 - `IFSelect_Dispatch::RootName()`
+    pub fn root_name(&self) -> &crate::ffi_types::Handle_TCollection_HAsciiString {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKDEIGES::IGESSelect_DispPerDrawing_inherited_RootName(
@@ -4050,8 +4059,8 @@ impl DispPerDrawing {
         }
     }
 
-    /// Inherited: **Source:** `IFSelect_Dispatch.hxx`:69 - `IFSelect_Dispatch::SetFinalSelection()`
-    pub fn set_final_selection(&mut self, sel: &crate::ffi_types::HandleIFSelectSelection) {
+    /// Inherited: **Source:** `IFSelect_Dispatch.hxx`:66 - `IFSelect_Dispatch::SetFinalSelection()`
+    pub fn set_final_selection(&mut self, sel: &crate::ffi_types::Handle_IFSelect_Selection) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_DispPerDrawing_inherited_SetFinalSelection(
                 self as *mut Self,
@@ -4060,8 +4069,8 @@ impl DispPerDrawing {
         })
     }
 
-    /// Inherited: **Source:** `IFSelect_Dispatch.hxx`:73 - `IFSelect_Dispatch::FinalSelection()`
-    pub fn final_selection(&self) -> crate::OwnedPtr<crate::ffi_types::HandleIFSelectSelection> {
+    /// Inherited: **Source:** `IFSelect_Dispatch.hxx`:70 - `IFSelect_Dispatch::FinalSelection()`
+    pub fn final_selection(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_IFSelect_Selection> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDEIGES::IGESSelect_DispPerDrawing_inherited_FinalSelection(
@@ -4071,7 +4080,7 @@ impl DispPerDrawing {
         }
     }
 
-    /// Inherited: **Source:** `IFSelect_Dispatch.hxx`:77 - `IFSelect_Dispatch::Selections()`
+    /// Inherited: **Source:** `IFSelect_Dispatch.hxx`:74 - `IFSelect_Dispatch::Selections()`
     pub fn selections(&self) -> crate::OwnedPtr<crate::if_select::SelectionIterator> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -4082,7 +4091,7 @@ impl DispPerDrawing {
         }
     }
 
-    /// Inherited: **Source:** `IFSelect_Dispatch.hxx`:93 - `IFSelect_Dispatch::LimitedMax()`
+    /// Inherited: **Source:** `IFSelect_Dispatch.hxx`:90 - `IFSelect_Dispatch::LimitedMax()`
     pub fn limited_max(&self, nbent: i32, max: &mut i32) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_DispPerDrawing_inherited_LimitedMax(
@@ -4093,7 +4102,7 @@ impl DispPerDrawing {
         })
     }
 
-    /// Inherited: **Source:** `IFSelect_Dispatch.hxx`:103 - `IFSelect_Dispatch::GetEntities()`
+    /// Inherited: **Source:** `IFSelect_Dispatch.hxx`:99 - `IFSelect_Dispatch::GetEntities()`
     pub fn get_entities(
         &self,
         G: &crate::interface::Graph,
@@ -4108,7 +4117,7 @@ impl DispPerDrawing {
         }
     }
 
-    /// Inherited: **Source:** `IFSelect_Dispatch.hxx`:118 - `IFSelect_Dispatch::Packeted()`
+    /// Inherited: **Source:** `IFSelect_Dispatch.hxx`:114 - `IFSelect_Dispatch::Packeted()`
     pub fn packeted(
         &self,
         G: &crate::interface::Graph,
@@ -4123,8 +4132,8 @@ impl DispPerDrawing {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_DispPerDrawing_inherited_IsInstance(
                 self as *const Self,
@@ -4133,8 +4142,8 @@ impl DispPerDrawing {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_DispPerDrawing_inherited_IsKind(
                 self as *const Self,
@@ -4143,7 +4152,7 @@ impl DispPerDrawing {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -4159,7 +4168,7 @@ impl DispPerDrawing {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_DispPerDrawing_inherited_GetRefCount(
@@ -4168,7 +4177,7 @@ impl DispPerDrawing {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_DispPerDrawing_inherited_IncrementRefCounter(
@@ -4177,7 +4186,7 @@ impl DispPerDrawing {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_DispPerDrawing_inherited_DecrementRefCounter(
@@ -4186,7 +4195,7 @@ impl DispPerDrawing {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_DispPerDrawing_inherited_Delete(
@@ -4196,38 +4205,40 @@ impl DispPerDrawing {
     }
 }
 
-pub use crate::ffi_types::HandleIGESSelectDispPerDrawing;
+pub use crate::ffi_types::Handle_IGESSelect_DispPerDrawing;
 
-unsafe impl crate::CppDeletable for HandleIGESSelectDispPerDrawing {
+unsafe impl crate::CppDeletable for Handle_IGESSelect_DispPerDrawing {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKDEIGES::HandleIGESSelectDispPerDrawing_destructor(ptr);
+            crate::ffi_extern_TKDEIGES::Handle_IGESSelect_DispPerDrawing_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleIGESSelectDispPerDrawing {
+unsafe impl crate::CppCopyable for Handle_IGESSelect_DispPerDrawing {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
         unsafe {
-            crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectDispPerDrawing_clone(
+            crate::check_result(crate::ffi_extern_TKDEIGES::Handle_IGESSelect_DispPerDrawing_clone(
                 ptr,
             ))
         }
     }
 }
 
-impl HandleIGESSelectDispPerDrawing {
+impl Handle_IGESSelect_DispPerDrawing {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
         unsafe {
-            crate::ffi_extern_TKDEIGES::HandleIGESSelectDispPerDrawing_is_null(self as *const Self)
+            crate::ffi_extern_TKDEIGES::Handle_IGESSelect_DispPerDrawing_is_null(
+                self as *const Self,
+            )
         }
     }
 
     /// Dereference this Handle to access the underlying IGESSelect_DispPerDrawing
     pub fn get(&self) -> &crate::ffi_types::IGESSelect_DispPerDrawing {
         unsafe {
-            &*crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectDispPerDrawing_get(
+            &*crate::check_result(crate::ffi_extern_TKDEIGES::Handle_IGESSelect_DispPerDrawing_get(
                 self as *const Self,
             ))
         }
@@ -4237,7 +4248,7 @@ impl HandleIGESSelectDispPerDrawing {
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::IGESSelect_DispPerDrawing {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi_extern_TKDEIGES::HandleIGESSelectDispPerDrawing_get_mut(
+                crate::ffi_extern_TKDEIGES::Handle_IGESSelect_DispPerDrawing_get_mut(
                     self as *mut Self,
                 ),
             )
@@ -4245,18 +4256,20 @@ impl HandleIGESSelectDispPerDrawing {
     }
 
     /// Upcast Handle<IGESSelect_DispPerDrawing> to Handle<IFSelect_Dispatch>
-    pub fn to_handle_dispatch(&self) -> crate::OwnedPtr<crate::ffi_types::HandleIFSelectDispatch> {
+    pub fn to_handle_dispatch(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_IFSelect_Dispatch> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectDispPerDrawing_to_HandleIFSelectDispatch(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::Handle_IGESSelect_DispPerDrawing_to_Handle_IFSelect_Dispatch(self as *const Self)))
         }
     }
 
     /// Upcast Handle<IGESSelect_DispPerDrawing> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectDispPerDrawing_to_HandleStandardTransient(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::Handle_IGESSelect_DispPerDrawing_to_Handle_Standard_Transient(self as *const Self)))
         }
     }
 }
@@ -4265,7 +4278,7 @@ impl HandleIGESSelectDispPerDrawing {
 // From IGESSelect_DispPerSingleView.hxx
 // ========================
 
-/// **Source:** `IGESSelect_DispPerSingleView.hxx`:39 - `IGESSelect_DispPerSingleView`
+/// **Source:** `IGESSelect_DispPerSingleView.hxx`:36 - `IGESSelect_DispPerSingleView`
 /// This type of dispatch defines sets of entities attached to
 /// distinct single views. This information appears in the
 /// Directory Part. Drawings are taken into account too,
@@ -4283,7 +4296,7 @@ unsafe impl crate::CppDeletable for DispPerSingleView {
 }
 
 impl DispPerSingleView {
-    /// **Source:** `IGESSelect_DispPerSingleView.hxx`:44 - `IGESSelect_DispPerSingleView::IGESSelect_DispPerSingleView()`
+    /// **Source:** `IGESSelect_DispPerSingleView.hxx`:41 - `IGESSelect_DispPerSingleView::IGESSelect_DispPerSingleView()`
     /// Creates a DispPerSingleView
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
@@ -4293,7 +4306,7 @@ impl DispPerSingleView {
         }
     }
 
-    /// **Source:** `IGESSelect_DispPerSingleView.hxx`:47 - `IGESSelect_DispPerSingleView::Label()`
+    /// **Source:** `IGESSelect_DispPerSingleView.hxx`:44 - `IGESSelect_DispPerSingleView::Label()`
     /// Returns as Label, "One File per single View or Drawing Frame"
     pub fn label(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe {
@@ -4303,7 +4316,7 @@ impl DispPerSingleView {
         }
     }
 
-    /// **Source:** `IGESSelect_DispPerSingleView.hxx`:51 - `IGESSelect_DispPerSingleView::Packets()`
+    /// **Source:** `IGESSelect_DispPerSingleView.hxx`:48 - `IGESSelect_DispPerSingleView::Packets()`
     /// Computes the list of produced Packets. Packets are computed
     /// by a ViewSorter (SortSingleViews with also frames).
     pub fn packets(
@@ -4320,7 +4333,7 @@ impl DispPerSingleView {
         })
     }
 
-    /// **Source:** `IGESSelect_DispPerSingleView.hxx`:55 - `IGESSelect_DispPerSingleView::CanHaveRemainder()`
+    /// **Source:** `IGESSelect_DispPerSingleView.hxx`:52 - `IGESSelect_DispPerSingleView::CanHaveRemainder()`
     /// Returns True, because of entities attached to no view.
     pub fn can_have_remainder(&self) -> bool {
         crate::check_result(unsafe {
@@ -4330,7 +4343,7 @@ impl DispPerSingleView {
         })
     }
 
-    /// **Source:** `IGESSelect_DispPerSingleView.hxx`:59 - `IGESSelect_DispPerSingleView::Remainder()`
+    /// **Source:** `IGESSelect_DispPerSingleView.hxx`:56 - `IGESSelect_DispPerSingleView::Remainder()`
     /// Returns Remainder which is a set of Entities.
     /// It is supposed to be called once Packets has been called.
     pub fn remainder(
@@ -4347,8 +4360,8 @@ impl DispPerSingleView {
         }
     }
 
-    /// **Source:** `IGESSelect_DispPerSingleView.hxx`:62 - `IGESSelect_DispPerSingleView::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `IGESSelect_DispPerSingleView.hxx`:58 - `IGESSelect_DispPerSingleView::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKDEIGES::IGESSelect_DispPerSingleView_dynamic_type(
@@ -4358,7 +4371,7 @@ impl DispPerSingleView {
         }
     }
 
-    /// **Source:** `IGESSelect_DispPerSingleView.hxx`:62 - `IGESSelect_DispPerSingleView::get_type_name()`
+    /// **Source:** `IGESSelect_DispPerSingleView.hxx`:58 - `IGESSelect_DispPerSingleView::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -4369,8 +4382,8 @@ impl DispPerSingleView {
         .into_owned()
     }
 
-    /// **Source:** `IGESSelect_DispPerSingleView.hxx`:62 - `IGESSelect_DispPerSingleView::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    /// **Source:** `IGESSelect_DispPerSingleView.hxx`:58 - `IGESSelect_DispPerSingleView::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKDEIGES::IGESSelect_DispPerSingleView_get_type_descriptor(),
@@ -4425,7 +4438,7 @@ impl DispPerSingleView {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESSelectDispPerSingleView> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_IGESSelect_DispPerSingleView> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDEIGES::IGESSelect_DispPerSingleView_to_handle(obj.into_raw()),
@@ -4433,8 +4446,8 @@ impl DispPerSingleView {
         }
     }
 
-    /// Inherited: **Source:** `IFSelect_Dispatch.hxx`:58 - `IFSelect_Dispatch::SetRootName()`
-    pub fn set_root_name(&mut self, name: &crate::ffi_types::HandleTCollectionHAsciiString) {
+    /// Inherited: **Source:** `IFSelect_Dispatch.hxx`:55 - `IFSelect_Dispatch::SetRootName()`
+    pub fn set_root_name(&mut self, name: &crate::ffi_types::Handle_TCollection_HAsciiString) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_DispPerSingleView_inherited_SetRootName(
                 self as *mut Self,
@@ -4443,7 +4456,7 @@ impl DispPerSingleView {
         })
     }
 
-    /// Inherited: **Source:** `IFSelect_Dispatch.hxx`:62 - `IFSelect_Dispatch::HasRootName()`
+    /// Inherited: **Source:** `IFSelect_Dispatch.hxx`:59 - `IFSelect_Dispatch::HasRootName()`
     pub fn has_root_name(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_DispPerSingleView_inherited_HasRootName(
@@ -4452,8 +4465,8 @@ impl DispPerSingleView {
         })
     }
 
-    /// Inherited: **Source:** `IFSelect_Dispatch.hxx`:66 - `IFSelect_Dispatch::RootName()`
-    pub fn root_name(&self) -> &crate::ffi_types::HandleTCollectionHAsciiString {
+    /// Inherited: **Source:** `IFSelect_Dispatch.hxx`:63 - `IFSelect_Dispatch::RootName()`
+    pub fn root_name(&self) -> &crate::ffi_types::Handle_TCollection_HAsciiString {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKDEIGES::IGESSelect_DispPerSingleView_inherited_RootName(
@@ -4463,8 +4476,8 @@ impl DispPerSingleView {
         }
     }
 
-    /// Inherited: **Source:** `IFSelect_Dispatch.hxx`:69 - `IFSelect_Dispatch::SetFinalSelection()`
-    pub fn set_final_selection(&mut self, sel: &crate::ffi_types::HandleIFSelectSelection) {
+    /// Inherited: **Source:** `IFSelect_Dispatch.hxx`:66 - `IFSelect_Dispatch::SetFinalSelection()`
+    pub fn set_final_selection(&mut self, sel: &crate::ffi_types::Handle_IFSelect_Selection) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_DispPerSingleView_inherited_SetFinalSelection(
                 self as *mut Self,
@@ -4473,8 +4486,8 @@ impl DispPerSingleView {
         })
     }
 
-    /// Inherited: **Source:** `IFSelect_Dispatch.hxx`:73 - `IFSelect_Dispatch::FinalSelection()`
-    pub fn final_selection(&self) -> crate::OwnedPtr<crate::ffi_types::HandleIFSelectSelection> {
+    /// Inherited: **Source:** `IFSelect_Dispatch.hxx`:70 - `IFSelect_Dispatch::FinalSelection()`
+    pub fn final_selection(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_IFSelect_Selection> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDEIGES::IGESSelect_DispPerSingleView_inherited_FinalSelection(
@@ -4484,7 +4497,7 @@ impl DispPerSingleView {
         }
     }
 
-    /// Inherited: **Source:** `IFSelect_Dispatch.hxx`:77 - `IFSelect_Dispatch::Selections()`
+    /// Inherited: **Source:** `IFSelect_Dispatch.hxx`:74 - `IFSelect_Dispatch::Selections()`
     pub fn selections(&self) -> crate::OwnedPtr<crate::if_select::SelectionIterator> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -4495,7 +4508,7 @@ impl DispPerSingleView {
         }
     }
 
-    /// Inherited: **Source:** `IFSelect_Dispatch.hxx`:93 - `IFSelect_Dispatch::LimitedMax()`
+    /// Inherited: **Source:** `IFSelect_Dispatch.hxx`:90 - `IFSelect_Dispatch::LimitedMax()`
     pub fn limited_max(&self, nbent: i32, max: &mut i32) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_DispPerSingleView_inherited_LimitedMax(
@@ -4506,7 +4519,7 @@ impl DispPerSingleView {
         })
     }
 
-    /// Inherited: **Source:** `IFSelect_Dispatch.hxx`:103 - `IFSelect_Dispatch::GetEntities()`
+    /// Inherited: **Source:** `IFSelect_Dispatch.hxx`:99 - `IFSelect_Dispatch::GetEntities()`
     pub fn get_entities(
         &self,
         G: &crate::interface::Graph,
@@ -4521,7 +4534,7 @@ impl DispPerSingleView {
         }
     }
 
-    /// Inherited: **Source:** `IFSelect_Dispatch.hxx`:118 - `IFSelect_Dispatch::Packeted()`
+    /// Inherited: **Source:** `IFSelect_Dispatch.hxx`:114 - `IFSelect_Dispatch::Packeted()`
     pub fn packeted(
         &self,
         G: &crate::interface::Graph,
@@ -4536,8 +4549,8 @@ impl DispPerSingleView {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_DispPerSingleView_inherited_IsInstance(
                 self as *const Self,
@@ -4546,8 +4559,8 @@ impl DispPerSingleView {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_DispPerSingleView_inherited_IsKind(
                 self as *const Self,
@@ -4556,7 +4569,7 @@ impl DispPerSingleView {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -4572,7 +4585,7 @@ impl DispPerSingleView {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_DispPerSingleView_inherited_GetRefCount(
@@ -4581,7 +4594,7 @@ impl DispPerSingleView {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_DispPerSingleView_inherited_IncrementRefCounter(
@@ -4590,7 +4603,7 @@ impl DispPerSingleView {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_DispPerSingleView_inherited_DecrementRefCounter(
@@ -4599,7 +4612,7 @@ impl DispPerSingleView {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_DispPerSingleView_inherited_Delete(
@@ -4609,31 +4622,31 @@ impl DispPerSingleView {
     }
 }
 
-pub use crate::ffi_types::HandleIGESSelectDispPerSingleView;
+pub use crate::ffi_types::Handle_IGESSelect_DispPerSingleView;
 
-unsafe impl crate::CppDeletable for HandleIGESSelectDispPerSingleView {
+unsafe impl crate::CppDeletable for Handle_IGESSelect_DispPerSingleView {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKDEIGES::HandleIGESSelectDispPerSingleView_destructor(ptr);
+            crate::ffi_extern_TKDEIGES::Handle_IGESSelect_DispPerSingleView_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleIGESSelectDispPerSingleView {
+unsafe impl crate::CppCopyable for Handle_IGESSelect_DispPerSingleView {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
         unsafe {
             crate::check_result(
-                crate::ffi_extern_TKDEIGES::HandleIGESSelectDispPerSingleView_clone(ptr),
+                crate::ffi_extern_TKDEIGES::Handle_IGESSelect_DispPerSingleView_clone(ptr),
             )
         }
     }
 }
 
-impl HandleIGESSelectDispPerSingleView {
+impl Handle_IGESSelect_DispPerSingleView {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
         unsafe {
-            crate::ffi_extern_TKDEIGES::HandleIGESSelectDispPerSingleView_is_null(
+            crate::ffi_extern_TKDEIGES::Handle_IGESSelect_DispPerSingleView_is_null(
                 self as *const Self,
             )
         }
@@ -4643,7 +4656,7 @@ impl HandleIGESSelectDispPerSingleView {
     pub fn get(&self) -> &crate::ffi_types::IGESSelect_DispPerSingleView {
         unsafe {
             &*crate::check_result(
-                crate::ffi_extern_TKDEIGES::HandleIGESSelectDispPerSingleView_get(
+                crate::ffi_extern_TKDEIGES::Handle_IGESSelect_DispPerSingleView_get(
                     self as *const Self,
                 ),
             )
@@ -4654,7 +4667,7 @@ impl HandleIGESSelectDispPerSingleView {
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::IGESSelect_DispPerSingleView {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi_extern_TKDEIGES::HandleIGESSelectDispPerSingleView_get_mut(
+                crate::ffi_extern_TKDEIGES::Handle_IGESSelect_DispPerSingleView_get_mut(
                     self as *mut Self,
                 ),
             )
@@ -4662,18 +4675,20 @@ impl HandleIGESSelectDispPerSingleView {
     }
 
     /// Upcast Handle<IGESSelect_DispPerSingleView> to Handle<IFSelect_Dispatch>
-    pub fn to_handle_dispatch(&self) -> crate::OwnedPtr<crate::ffi_types::HandleIFSelectDispatch> {
+    pub fn to_handle_dispatch(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_IFSelect_Dispatch> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectDispPerSingleView_to_HandleIFSelectDispatch(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::Handle_IGESSelect_DispPerSingleView_to_Handle_IFSelect_Dispatch(self as *const Self)))
         }
     }
 
     /// Upcast Handle<IGESSelect_DispPerSingleView> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectDispPerSingleView_to_HandleStandardTransient(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::Handle_IGESSelect_DispPerSingleView_to_Handle_Standard_Transient(self as *const Self)))
         }
     }
 }
@@ -4682,7 +4697,7 @@ impl HandleIGESSelectDispPerSingleView {
 // From IGESSelect_Dumper.hxx
 // ========================
 
-/// **Source:** `IGESSelect_Dumper.hxx`:34 - `IGESSelect_Dumper`
+/// **Source:** `IGESSelect_Dumper.hxx`:31 - `IGESSelect_Dumper`
 /// Dumper from IGESSelect takes into account, for SessionFile, the
 /// classes defined in the package IGESSelect : Selections,
 /// Dispatches, Modifiers
@@ -4697,7 +4712,7 @@ unsafe impl crate::CppDeletable for Dumper {
 }
 
 impl Dumper {
-    /// **Source:** `IGESSelect_Dumper.hxx`:39 - `IGESSelect_Dumper::IGESSelect_Dumper()`
+    /// **Source:** `IGESSelect_Dumper.hxx`:36 - `IGESSelect_Dumper::IGESSelect_Dumper()`
     /// Creates a Dumper and puts it into the Library of Dumper
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
@@ -4707,27 +4722,27 @@ impl Dumper {
         }
     }
 
-    /// **Source:** `IGESSelect_Dumper.hxx`:44 - `IGESSelect_Dumper::WriteOwn()`
+    /// **Source:** `IGESSelect_Dumper.hxx`:40 - `IGESSelect_Dumper::WriteOwn()`
     /// Write the Own Parameters of Types defined in package IGESSelect
     /// Returns True if <item> has been processed, False else
     pub fn write_own(
         &self,
         file: &mut crate::if_select::SessionFile,
-        item: &crate::ffi_types::HandleStandardTransient,
+        item: &crate::ffi_types::Handle_Standard_Transient,
     ) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_Dumper_write_own(self as *const Self, file, item)
         })
     }
 
-    /// **Source:** `IGESSelect_Dumper.hxx`:50 - `IGESSelect_Dumper::ReadOwn()`
+    /// **Source:** `IGESSelect_Dumper.hxx`:45 - `IGESSelect_Dumper::ReadOwn()`
     /// Recognizes and Read Own Parameters for Types of package
     /// IGESSelect. Returns True if done and <item> created, False else
     pub fn read_own(
         &self,
         file: &mut crate::if_select::SessionFile,
         type_: &crate::t_collection::AsciiString,
-        item: &mut crate::ffi_types::HandleStandardTransient,
+        item: &mut crate::ffi_types::Handle_Standard_Transient,
     ) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_Dumper_read_own(
@@ -4739,8 +4754,8 @@ impl Dumper {
         })
     }
 
-    /// **Source:** `IGESSelect_Dumper.hxx`:54 - `IGESSelect_Dumper::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `IGESSelect_Dumper.hxx`:49 - `IGESSelect_Dumper::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKDEIGES::IGESSelect_Dumper_dynamic_type(
                 self as *const Self,
@@ -4748,7 +4763,7 @@ impl Dumper {
         }
     }
 
-    /// **Source:** `IGESSelect_Dumper.hxx`:54 - `IGESSelect_Dumper::get_type_name()`
+    /// **Source:** `IGESSelect_Dumper.hxx`:49 - `IGESSelect_Dumper::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -4759,8 +4774,8 @@ impl Dumper {
         .into_owned()
     }
 
-    /// **Source:** `IGESSelect_Dumper.hxx`:54 - `IGESSelect_Dumper::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    /// **Source:** `IGESSelect_Dumper.hxx`:49 - `IGESSelect_Dumper::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKDEIGES::IGESSelect_Dumper_get_type_descriptor(),
@@ -4815,7 +4830,7 @@ impl Dumper {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESSelectDumper> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_IGESSelect_Dumper> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDEIGES::IGESSelect_Dumper_to_handle(obj.into_raw()),
@@ -4823,8 +4838,8 @@ impl Dumper {
         }
     }
 
-    /// Inherited: **Source:** `IFSelect_SessionDumper.hxx`:65 - `IFSelect_SessionDumper::Next()`
-    pub fn next(&self) -> crate::OwnedPtr<crate::ffi_types::HandleIFSelectSessionDumper> {
+    /// Inherited: **Source:** `IFSelect_SessionDumper.hxx`:62 - `IFSelect_SessionDumper::Next()`
+    pub fn next(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_IFSelect_SessionDumper> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDEIGES::IGESSelect_Dumper_inherited_Next(self as *const Self),
@@ -4832,8 +4847,8 @@ impl Dumper {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_Dumper_inherited_IsInstance(
                 self as *const Self,
@@ -4842,8 +4857,8 @@ impl Dumper {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_Dumper_inherited_IsKind(
                 self as *const Self,
@@ -4852,7 +4867,7 @@ impl Dumper {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -4866,14 +4881,14 @@ impl Dumper {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_Dumper_inherited_GetRefCount(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_Dumper_inherited_IncrementRefCounter(
@@ -4882,7 +4897,7 @@ impl Dumper {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_Dumper_inherited_DecrementRefCounter(
@@ -4891,7 +4906,7 @@ impl Dumper {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_Dumper_inherited_Delete(self as *const Self)
@@ -4899,34 +4914,34 @@ impl Dumper {
     }
 }
 
-pub use crate::ffi_types::HandleIGESSelectDumper;
+pub use crate::ffi_types::Handle_IGESSelect_Dumper;
 
-unsafe impl crate::CppDeletable for HandleIGESSelectDumper {
+unsafe impl crate::CppDeletable for Handle_IGESSelect_Dumper {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKDEIGES::HandleIGESSelectDumper_destructor(ptr);
+            crate::ffi_extern_TKDEIGES::Handle_IGESSelect_Dumper_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleIGESSelectDumper {
+unsafe impl crate::CppCopyable for Handle_IGESSelect_Dumper {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
         unsafe {
-            crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectDumper_clone(ptr))
+            crate::check_result(crate::ffi_extern_TKDEIGES::Handle_IGESSelect_Dumper_clone(ptr))
         }
     }
 }
 
-impl HandleIGESSelectDumper {
+impl Handle_IGESSelect_Dumper {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
-        unsafe { crate::ffi_extern_TKDEIGES::HandleIGESSelectDumper_is_null(self as *const Self) }
+        unsafe { crate::ffi_extern_TKDEIGES::Handle_IGESSelect_Dumper_is_null(self as *const Self) }
     }
 
     /// Dereference this Handle to access the underlying IGESSelect_Dumper
     pub fn get(&self) -> &crate::ffi_types::IGESSelect_Dumper {
         unsafe {
-            &*crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectDumper_get(
+            &*crate::check_result(crate::ffi_extern_TKDEIGES::Handle_IGESSelect_Dumper_get(
                 self as *const Self,
             ))
         }
@@ -4935,7 +4950,7 @@ impl HandleIGESSelectDumper {
     /// Dereference this Handle to mutably access the underlying IGESSelect_Dumper
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::IGESSelect_Dumper {
         unsafe {
-            &mut *crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectDumper_get_mut(
+            &mut *crate::check_result(crate::ffi_extern_TKDEIGES::Handle_IGESSelect_Dumper_get_mut(
                 self as *mut Self,
             ))
         }
@@ -4944,23 +4959,19 @@ impl HandleIGESSelectDumper {
     /// Upcast Handle<IGESSelect_Dumper> to Handle<IFSelect_SessionDumper>
     pub fn to_handle_session_dumper(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleIFSelectSessionDumper> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_IFSelect_SessionDumper> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKDEIGES::HandleIGESSelectDumper_to_HandleIFSelectSessionDumper(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::Handle_IGESSelect_Dumper_to_Handle_IFSelect_SessionDumper(self as *const Self)))
         }
     }
 
     /// Upcast Handle<IGESSelect_Dumper> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKDEIGES::HandleIGESSelectDumper_to_HandleStandardTransient(
+                crate::ffi_extern_TKDEIGES::Handle_IGESSelect_Dumper_to_Handle_Standard_Transient(
                     self as *const Self,
                 ),
             ))
@@ -4972,7 +4983,7 @@ impl HandleIGESSelectDumper {
 // From IGESSelect_EditDirPart.hxx
 // ========================
 
-/// **Source:** `IGESSelect_EditDirPart.hxx`:36 - `IGESSelect_EditDirPart`
+/// **Source:** `IGESSelect_EditDirPart.hxx`:33 - `IGESSelect_EditDirPart`
 /// This class is aimed to display and edit the Directory Part of
 /// an IGESEntity
 pub use crate::ffi_types::IGESSelect_EditDirPart as EditDirPart;
@@ -4986,7 +4997,7 @@ unsafe impl crate::CppDeletable for EditDirPart {
 }
 
 impl EditDirPart {
-    /// **Source:** `IGESSelect_EditDirPart.hxx`:40 - `IGESSelect_EditDirPart::IGESSelect_EditDirPart()`
+    /// **Source:** `IGESSelect_EditDirPart.hxx`:37 - `IGESSelect_EditDirPart::IGESSelect_EditDirPart()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -4995,7 +5006,7 @@ impl EditDirPart {
         }
     }
 
-    /// **Source:** `IGESSelect_EditDirPart.hxx`:42 - `IGESSelect_EditDirPart::Label()`
+    /// **Source:** `IGESSelect_EditDirPart.hxx`:39 - `IGESSelect_EditDirPart::Label()`
     pub fn label(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -5004,19 +5015,19 @@ impl EditDirPart {
         }
     }
 
-    /// **Source:** `IGESSelect_EditDirPart.hxx`:45 - `IGESSelect_EditDirPart::Recognize()`
-    pub fn recognize(&self, form: &crate::ffi_types::HandleIFSelectEditForm) -> bool {
+    /// **Source:** `IGESSelect_EditDirPart.hxx`:41 - `IGESSelect_EditDirPart::Recognize()`
+    pub fn recognize(&self, form: &crate::ffi_types::Handle_IFSelect_EditForm) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_EditDirPart_recognize(self as *const Self, form)
         })
     }
 
-    /// **Source:** `IGESSelect_EditDirPart.hxx`:47 - `IGESSelect_EditDirPart::StringValue()`
+    /// **Source:** `IGESSelect_EditDirPart.hxx`:43 - `IGESSelect_EditDirPart::StringValue()`
     pub fn string_value(
         &self,
-        form: &crate::ffi_types::HandleIFSelectEditForm,
+        form: &crate::ffi_types::Handle_IFSelect_EditForm,
         num: i32,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleTCollectionHAsciiString> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_TCollection_HAsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDEIGES::IGESSelect_EditDirPart_string_value(
@@ -5028,12 +5039,12 @@ impl EditDirPart {
         }
     }
 
-    /// **Source:** `IGESSelect_EditDirPart.hxx`:52 - `IGESSelect_EditDirPart::Load()`
+    /// **Source:** `IGESSelect_EditDirPart.hxx`:47 - `IGESSelect_EditDirPart::Load()`
     pub fn load(
         &self,
-        form: &crate::ffi_types::HandleIFSelectEditForm,
-        ent: &crate::ffi_types::HandleStandardTransient,
-        model: &crate::ffi_types::HandleInterfaceInterfaceModel,
+        form: &crate::ffi_types::Handle_IFSelect_EditForm,
+        ent: &crate::ffi_types::Handle_Standard_Transient,
+        model: &crate::ffi_types::Handle_Interface_InterfaceModel,
     ) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_EditDirPart_load(
@@ -5045,12 +5056,12 @@ impl EditDirPart {
         })
     }
 
-    /// **Source:** `IGESSelect_EditDirPart.hxx`:56 - `IGESSelect_EditDirPart::Update()`
+    /// **Source:** `IGESSelect_EditDirPart.hxx`:51 - `IGESSelect_EditDirPart::Update()`
     pub fn update(
         &self,
-        form: &crate::ffi_types::HandleIFSelectEditForm,
+        form: &crate::ffi_types::Handle_IFSelect_EditForm,
         num: i32,
-        newval: &crate::ffi_types::HandleTCollectionHAsciiString,
+        newval: &crate::ffi_types::Handle_TCollection_HAsciiString,
         enforce: bool,
     ) -> bool {
         crate::check_result(unsafe {
@@ -5064,12 +5075,12 @@ impl EditDirPart {
         })
     }
 
-    /// **Source:** `IGESSelect_EditDirPart.hxx`:63 - `IGESSelect_EditDirPart::Apply()`
+    /// **Source:** `IGESSelect_EditDirPart.hxx`:56 - `IGESSelect_EditDirPart::Apply()`
     pub fn apply(
         &self,
-        form: &crate::ffi_types::HandleIFSelectEditForm,
-        ent: &crate::ffi_types::HandleStandardTransient,
-        model: &crate::ffi_types::HandleInterfaceInterfaceModel,
+        form: &crate::ffi_types::Handle_IFSelect_EditForm,
+        ent: &crate::ffi_types::Handle_Standard_Transient,
+        model: &crate::ffi_types::Handle_Interface_InterfaceModel,
     ) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_EditDirPart_apply(
@@ -5081,8 +5092,8 @@ impl EditDirPart {
         })
     }
 
-    /// **Source:** `IGESSelect_EditDirPart.hxx`:67 - `IGESSelect_EditDirPart::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `IGESSelect_EditDirPart.hxx`:60 - `IGESSelect_EditDirPart::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKDEIGES::IGESSelect_EditDirPart_dynamic_type(
@@ -5092,7 +5103,7 @@ impl EditDirPart {
         }
     }
 
-    /// **Source:** `IGESSelect_EditDirPart.hxx`:67 - `IGESSelect_EditDirPart::get_type_name()`
+    /// **Source:** `IGESSelect_EditDirPart.hxx`:60 - `IGESSelect_EditDirPart::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -5103,8 +5114,8 @@ impl EditDirPart {
         .into_owned()
     }
 
-    /// **Source:** `IGESSelect_EditDirPart.hxx`:67 - `IGESSelect_EditDirPart::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    /// **Source:** `IGESSelect_EditDirPart.hxx`:60 - `IGESSelect_EditDirPart::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKDEIGES::IGESSelect_EditDirPart_get_type_descriptor(),
@@ -5159,7 +5170,7 @@ impl EditDirPart {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESSelectEditDirPart> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_IGESSelect_EditDirPart> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDEIGES::IGESSelect_EditDirPart_to_handle(obj.into_raw()),
@@ -5167,7 +5178,7 @@ impl EditDirPart {
         }
     }
 
-    /// Inherited: **Source:** `IFSelect_Editor.hxx`:62 - `IFSelect_Editor::SetList()`
+    /// Inherited: **Source:** `IFSelect_Editor.hxx`:59 - `IFSelect_Editor::SetList()`
     pub fn set_list(&mut self, num: i32, max: i32) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_EditDirPart_inherited_SetList(
@@ -5178,7 +5189,7 @@ impl EditDirPart {
         })
     }
 
-    /// Inherited: **Source:** `IFSelect_Editor.hxx`:65 - `IFSelect_Editor::NbValues()`
+    /// Inherited: **Source:** `IFSelect_Editor.hxx`:62 - `IFSelect_Editor::NbValues()`
     pub fn nb_values(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_EditDirPart_inherited_NbValues(
@@ -5187,11 +5198,11 @@ impl EditDirPart {
         })
     }
 
-    /// Inherited: **Source:** `IFSelect_Editor.hxx`:68 - `IFSelect_Editor::TypedValue()`
+    /// Inherited: **Source:** `IFSelect_Editor.hxx`:65 - `IFSelect_Editor::TypedValue()`
     pub fn typed_value(
         &self,
         num: i32,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleInterfaceTypedValue> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Interface_TypedValue> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDEIGES::IGESSelect_EditDirPart_inherited_TypedValue(
@@ -5202,7 +5213,7 @@ impl EditDirPart {
         }
     }
 
-    /// Inherited: **Source:** `IFSelect_Editor.hxx`:71 - `IFSelect_Editor::IsList()`
+    /// Inherited: **Source:** `IFSelect_Editor.hxx`:68 - `IFSelect_Editor::IsList()`
     pub fn is_list(&self, num: i32) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_EditDirPart_inherited_IsList(
@@ -5212,7 +5223,7 @@ impl EditDirPart {
         })
     }
 
-    /// Inherited: **Source:** `IFSelect_Editor.hxx`:76 - `IFSelect_Editor::MaxList()`
+    /// Inherited: **Source:** `IFSelect_Editor.hxx`:73 - `IFSelect_Editor::MaxList()`
     pub fn max_list(&self, num: i32) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_EditDirPart_inherited_MaxList(
@@ -5222,7 +5233,7 @@ impl EditDirPart {
         })
     }
 
-    /// Inherited: **Source:** `IFSelect_Editor.hxx`:84 - `IFSelect_Editor::EditMode()`
+    /// Inherited: **Source:** `IFSelect_Editor.hxx`:80 - `IFSelect_Editor::EditMode()`
     pub fn edit_mode(&self, num: i32) -> crate::if_select::EditValue {
         crate::if_select::EditValue::try_from(crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_EditDirPart_inherited_EditMode(
@@ -5233,7 +5244,7 @@ impl EditDirPart {
         .unwrap()
     }
 
-    /// Inherited: **Source:** `IFSelect_Editor.hxx`:90 - `IFSelect_Editor::PrintNames()`
+    /// Inherited: **Source:** `IFSelect_Editor.hxx`:86 - `IFSelect_Editor::PrintNames()`
     pub fn print_names(&self, S: &mut crate::ffi_types::Standard_OStream) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_EditDirPart_inherited_PrintNames(
@@ -5243,7 +5254,7 @@ impl EditDirPart {
         })
     }
 
-    /// Inherited: **Source:** `IFSelect_Editor.hxx`:92 - `IFSelect_Editor::PrintDefs()`
+    /// Inherited: **Source:** `IFSelect_Editor.hxx`:88 - `IFSelect_Editor::PrintDefs()`
     pub fn print_defs(&self, S: &mut crate::ffi_types::Standard_OStream, labels: bool) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_EditDirPart_inherited_PrintDefs(
@@ -5254,7 +5265,7 @@ impl EditDirPart {
         })
     }
 
-    /// Inherited: **Source:** `IFSelect_Editor.hxx`:99 - `IFSelect_Editor::MaxNameLength()`
+    /// Inherited: **Source:** `IFSelect_Editor.hxx`:94 - `IFSelect_Editor::MaxNameLength()`
     pub fn max_name_length(&self, what: i32) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_EditDirPart_inherited_MaxNameLength(
@@ -5264,12 +5275,12 @@ impl EditDirPart {
         })
     }
 
-    /// Inherited: **Source:** `IFSelect_Editor.hxx`:106 - `IFSelect_Editor::Form()`
+    /// Inherited: **Source:** `IFSelect_Editor.hxx`:101 - `IFSelect_Editor::Form()`
     pub fn form(
         &self,
         readonly: bool,
         undoable: bool,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleIFSelectEditForm> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_IFSelect_EditForm> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDEIGES::IGESSelect_EditDirPart_inherited_Form(
@@ -5281,11 +5292,11 @@ impl EditDirPart {
         }
     }
 
-    /// Inherited: **Source:** `IFSelect_Editor.hxx`:124 - `IFSelect_Editor::ListEditor()`
+    /// Inherited: **Source:** `IFSelect_Editor.hxx`:117 - `IFSelect_Editor::ListEditor()`
     pub fn list_editor(
         &self,
         num: i32,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleIFSelectListEditor> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_IFSelect_ListEditor> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDEIGES::IGESSelect_EditDirPart_inherited_ListEditor(
@@ -5296,12 +5307,14 @@ impl EditDirPart {
         }
     }
 
-    /// Inherited: **Source:** `IFSelect_Editor.hxx`:130 - `IFSelect_Editor::ListValue()`
+    /// Inherited: **Source:** `IFSelect_Editor.hxx`:124 - `IFSelect_Editor::ListValue()`
     pub fn list_value(
         &self,
-        form: &crate::ffi_types::HandleIFSelectEditForm,
+        form: &crate::ffi_types::Handle_IFSelect_EditForm,
         num: i32,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleTColStdHSequenceOfHAsciiString> {
+    ) -> crate::OwnedPtr<
+        crate::ffi_types::Handle_NCollection_HSequence_opencascade_handle_TCollection_HAsciiString,
+    > {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDEIGES::IGESSelect_EditDirPart_inherited_ListValue(
@@ -5313,12 +5326,12 @@ impl EditDirPart {
         }
     }
 
-    /// Inherited: **Source:** `IFSelect_Editor.hxx`:159 - `IFSelect_Editor::UpdateList()`
+    /// Inherited: **Source:** `IFSelect_Editor.hxx`:150 - `IFSelect_Editor::UpdateList()`
     pub fn update_list(
         &self,
-        form: &crate::ffi_types::HandleIFSelectEditForm,
+        form: &crate::ffi_types::Handle_IFSelect_EditForm,
         num: i32,
-        newlist: &crate::ffi_types::HandleTColStdHSequenceOfHAsciiString,
+        newlist: &crate::ffi_types::Handle_NCollection_HSequence_opencascade_handle_TCollection_HAsciiString,
         enforce: bool,
     ) -> bool {
         crate::check_result(unsafe {
@@ -5332,8 +5345,8 @@ impl EditDirPart {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_EditDirPart_inherited_IsInstance(
                 self as *const Self,
@@ -5342,8 +5355,8 @@ impl EditDirPart {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_EditDirPart_inherited_IsKind(
                 self as *const Self,
@@ -5352,7 +5365,7 @@ impl EditDirPart {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -5368,7 +5381,7 @@ impl EditDirPart {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_EditDirPart_inherited_GetRefCount(
@@ -5377,7 +5390,7 @@ impl EditDirPart {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_EditDirPart_inherited_IncrementRefCounter(
@@ -5386,7 +5399,7 @@ impl EditDirPart {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_EditDirPart_inherited_DecrementRefCounter(
@@ -5395,7 +5408,7 @@ impl EditDirPart {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_EditDirPart_inherited_Delete(self as *const Self)
@@ -5403,36 +5416,38 @@ impl EditDirPart {
     }
 }
 
-pub use crate::ffi_types::HandleIGESSelectEditDirPart;
+pub use crate::ffi_types::Handle_IGESSelect_EditDirPart;
 
-unsafe impl crate::CppDeletable for HandleIGESSelectEditDirPart {
+unsafe impl crate::CppDeletable for Handle_IGESSelect_EditDirPart {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKDEIGES::HandleIGESSelectEditDirPart_destructor(ptr);
+            crate::ffi_extern_TKDEIGES::Handle_IGESSelect_EditDirPart_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleIGESSelectEditDirPart {
+unsafe impl crate::CppCopyable for Handle_IGESSelect_EditDirPart {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
         unsafe {
-            crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectEditDirPart_clone(ptr))
+            crate::check_result(crate::ffi_extern_TKDEIGES::Handle_IGESSelect_EditDirPart_clone(
+                ptr,
+            ))
         }
     }
 }
 
-impl HandleIGESSelectEditDirPart {
+impl Handle_IGESSelect_EditDirPart {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
         unsafe {
-            crate::ffi_extern_TKDEIGES::HandleIGESSelectEditDirPart_is_null(self as *const Self)
+            crate::ffi_extern_TKDEIGES::Handle_IGESSelect_EditDirPart_is_null(self as *const Self)
         }
     }
 
     /// Dereference this Handle to access the underlying IGESSelect_EditDirPart
     pub fn get(&self) -> &crate::ffi_types::IGESSelect_EditDirPart {
         unsafe {
-            &*crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectEditDirPart_get(
+            &*crate::check_result(crate::ffi_extern_TKDEIGES::Handle_IGESSelect_EditDirPart_get(
                 self as *const Self,
             ))
         }
@@ -5442,16 +5457,18 @@ impl HandleIGESSelectEditDirPart {
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::IGESSelect_EditDirPart {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi_extern_TKDEIGES::HandleIGESSelectEditDirPart_get_mut(self as *mut Self),
+                crate::ffi_extern_TKDEIGES::Handle_IGESSelect_EditDirPart_get_mut(
+                    self as *mut Self,
+                ),
             )
         }
     }
 
     /// Upcast Handle<IGESSelect_EditDirPart> to Handle<IFSelect_Editor>
-    pub fn to_handle_editor(&self) -> crate::OwnedPtr<crate::ffi_types::HandleIFSelectEditor> {
+    pub fn to_handle_editor(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_IFSelect_Editor> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKDEIGES::HandleIGESSelectEditDirPart_to_HandleIFSelectEditor(
+                crate::ffi_extern_TKDEIGES::Handle_IGESSelect_EditDirPart_to_Handle_IFSelect_Editor(
                     self as *const Self,
                 ),
             ))
@@ -5461,13 +5478,9 @@ impl HandleIGESSelectEditDirPart {
     /// Upcast Handle<IGESSelect_EditDirPart> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKDEIGES::HandleIGESSelectEditDirPart_to_HandleStandardTransient(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::Handle_IGESSelect_EditDirPart_to_Handle_Standard_Transient(self as *const Self)))
         }
     }
 }
@@ -5476,7 +5489,7 @@ impl HandleIGESSelectEditDirPart {
 // From IGESSelect_EditHeader.hxx
 // ========================
 
-/// **Source:** `IGESSelect_EditHeader.hxx`:36 - `IGESSelect_EditHeader`
+/// **Source:** `IGESSelect_EditHeader.hxx`:33 - `IGESSelect_EditHeader`
 /// This class is aimed to display and edit the Header of an
 /// IGES Model : Start Section and Global Section
 pub use crate::ffi_types::IGESSelect_EditHeader as EditHeader;
@@ -5490,7 +5503,7 @@ unsafe impl crate::CppDeletable for EditHeader {
 }
 
 impl EditHeader {
-    /// **Source:** `IGESSelect_EditHeader.hxx`:40 - `IGESSelect_EditHeader::IGESSelect_EditHeader()`
+    /// **Source:** `IGESSelect_EditHeader.hxx`:37 - `IGESSelect_EditHeader::IGESSelect_EditHeader()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -5499,7 +5512,7 @@ impl EditHeader {
         }
     }
 
-    /// **Source:** `IGESSelect_EditHeader.hxx`:42 - `IGESSelect_EditHeader::Label()`
+    /// **Source:** `IGESSelect_EditHeader.hxx`:39 - `IGESSelect_EditHeader::Label()`
     pub fn label(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -5508,19 +5521,19 @@ impl EditHeader {
         }
     }
 
-    /// **Source:** `IGESSelect_EditHeader.hxx`:45 - `IGESSelect_EditHeader::Recognize()`
-    pub fn recognize(&self, form: &crate::ffi_types::HandleIFSelectEditForm) -> bool {
+    /// **Source:** `IGESSelect_EditHeader.hxx`:41 - `IGESSelect_EditHeader::Recognize()`
+    pub fn recognize(&self, form: &crate::ffi_types::Handle_IFSelect_EditForm) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_EditHeader_recognize(self as *const Self, form)
         })
     }
 
-    /// **Source:** `IGESSelect_EditHeader.hxx`:47 - `IGESSelect_EditHeader::StringValue()`
+    /// **Source:** `IGESSelect_EditHeader.hxx`:43 - `IGESSelect_EditHeader::StringValue()`
     pub fn string_value(
         &self,
-        form: &crate::ffi_types::HandleIFSelectEditForm,
+        form: &crate::ffi_types::Handle_IFSelect_EditForm,
         num: i32,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleTCollectionHAsciiString> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_TCollection_HAsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDEIGES::IGESSelect_EditHeader_string_value(
@@ -5532,12 +5545,12 @@ impl EditHeader {
         }
     }
 
-    /// **Source:** `IGESSelect_EditHeader.hxx`:52 - `IGESSelect_EditHeader::Load()`
+    /// **Source:** `IGESSelect_EditHeader.hxx`:47 - `IGESSelect_EditHeader::Load()`
     pub fn load(
         &self,
-        form: &crate::ffi_types::HandleIFSelectEditForm,
-        ent: &crate::ffi_types::HandleStandardTransient,
-        model: &crate::ffi_types::HandleInterfaceInterfaceModel,
+        form: &crate::ffi_types::Handle_IFSelect_EditForm,
+        ent: &crate::ffi_types::Handle_Standard_Transient,
+        model: &crate::ffi_types::Handle_Interface_InterfaceModel,
     ) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_EditHeader_load(
@@ -5549,12 +5562,12 @@ impl EditHeader {
         })
     }
 
-    /// **Source:** `IGESSelect_EditHeader.hxx`:56 - `IGESSelect_EditHeader::Update()`
+    /// **Source:** `IGESSelect_EditHeader.hxx`:51 - `IGESSelect_EditHeader::Update()`
     pub fn update(
         &self,
-        form: &crate::ffi_types::HandleIFSelectEditForm,
+        form: &crate::ffi_types::Handle_IFSelect_EditForm,
         num: i32,
-        newval: &crate::ffi_types::HandleTCollectionHAsciiString,
+        newval: &crate::ffi_types::Handle_TCollection_HAsciiString,
         enforce: bool,
     ) -> bool {
         crate::check_result(unsafe {
@@ -5568,12 +5581,12 @@ impl EditHeader {
         })
     }
 
-    /// **Source:** `IGESSelect_EditHeader.hxx`:63 - `IGESSelect_EditHeader::Apply()`
+    /// **Source:** `IGESSelect_EditHeader.hxx`:56 - `IGESSelect_EditHeader::Apply()`
     pub fn apply(
         &self,
-        form: &crate::ffi_types::HandleIFSelectEditForm,
-        ent: &crate::ffi_types::HandleStandardTransient,
-        model: &crate::ffi_types::HandleInterfaceInterfaceModel,
+        form: &crate::ffi_types::Handle_IFSelect_EditForm,
+        ent: &crate::ffi_types::Handle_Standard_Transient,
+        model: &crate::ffi_types::Handle_Interface_InterfaceModel,
     ) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_EditHeader_apply(
@@ -5585,8 +5598,8 @@ impl EditHeader {
         })
     }
 
-    /// **Source:** `IGESSelect_EditHeader.hxx`:67 - `IGESSelect_EditHeader::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `IGESSelect_EditHeader.hxx`:60 - `IGESSelect_EditHeader::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKDEIGES::IGESSelect_EditHeader_dynamic_type(
                 self as *const Self,
@@ -5594,7 +5607,7 @@ impl EditHeader {
         }
     }
 
-    /// **Source:** `IGESSelect_EditHeader.hxx`:67 - `IGESSelect_EditHeader::get_type_name()`
+    /// **Source:** `IGESSelect_EditHeader.hxx`:60 - `IGESSelect_EditHeader::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -5605,8 +5618,8 @@ impl EditHeader {
         .into_owned()
     }
 
-    /// **Source:** `IGESSelect_EditHeader.hxx`:67 - `IGESSelect_EditHeader::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    /// **Source:** `IGESSelect_EditHeader.hxx`:60 - `IGESSelect_EditHeader::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKDEIGES::IGESSelect_EditHeader_get_type_descriptor(),
@@ -5661,7 +5674,7 @@ impl EditHeader {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESSelectEditHeader> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_IGESSelect_EditHeader> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDEIGES::IGESSelect_EditHeader_to_handle(obj.into_raw()),
@@ -5669,7 +5682,7 @@ impl EditHeader {
         }
     }
 
-    /// Inherited: **Source:** `IFSelect_Editor.hxx`:62 - `IFSelect_Editor::SetList()`
+    /// Inherited: **Source:** `IFSelect_Editor.hxx`:59 - `IFSelect_Editor::SetList()`
     pub fn set_list(&mut self, num: i32, max: i32) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_EditHeader_inherited_SetList(
@@ -5680,7 +5693,7 @@ impl EditHeader {
         })
     }
 
-    /// Inherited: **Source:** `IFSelect_Editor.hxx`:65 - `IFSelect_Editor::NbValues()`
+    /// Inherited: **Source:** `IFSelect_Editor.hxx`:62 - `IFSelect_Editor::NbValues()`
     pub fn nb_values(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_EditHeader_inherited_NbValues(
@@ -5689,11 +5702,11 @@ impl EditHeader {
         })
     }
 
-    /// Inherited: **Source:** `IFSelect_Editor.hxx`:68 - `IFSelect_Editor::TypedValue()`
+    /// Inherited: **Source:** `IFSelect_Editor.hxx`:65 - `IFSelect_Editor::TypedValue()`
     pub fn typed_value(
         &self,
         num: i32,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleInterfaceTypedValue> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Interface_TypedValue> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDEIGES::IGESSelect_EditHeader_inherited_TypedValue(
@@ -5704,7 +5717,7 @@ impl EditHeader {
         }
     }
 
-    /// Inherited: **Source:** `IFSelect_Editor.hxx`:71 - `IFSelect_Editor::IsList()`
+    /// Inherited: **Source:** `IFSelect_Editor.hxx`:68 - `IFSelect_Editor::IsList()`
     pub fn is_list(&self, num: i32) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_EditHeader_inherited_IsList(
@@ -5714,7 +5727,7 @@ impl EditHeader {
         })
     }
 
-    /// Inherited: **Source:** `IFSelect_Editor.hxx`:76 - `IFSelect_Editor::MaxList()`
+    /// Inherited: **Source:** `IFSelect_Editor.hxx`:73 - `IFSelect_Editor::MaxList()`
     pub fn max_list(&self, num: i32) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_EditHeader_inherited_MaxList(
@@ -5724,7 +5737,7 @@ impl EditHeader {
         })
     }
 
-    /// Inherited: **Source:** `IFSelect_Editor.hxx`:84 - `IFSelect_Editor::EditMode()`
+    /// Inherited: **Source:** `IFSelect_Editor.hxx`:80 - `IFSelect_Editor::EditMode()`
     pub fn edit_mode(&self, num: i32) -> crate::if_select::EditValue {
         crate::if_select::EditValue::try_from(crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_EditHeader_inherited_EditMode(
@@ -5735,7 +5748,7 @@ impl EditHeader {
         .unwrap()
     }
 
-    /// Inherited: **Source:** `IFSelect_Editor.hxx`:90 - `IFSelect_Editor::PrintNames()`
+    /// Inherited: **Source:** `IFSelect_Editor.hxx`:86 - `IFSelect_Editor::PrintNames()`
     pub fn print_names(&self, S: &mut crate::ffi_types::Standard_OStream) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_EditHeader_inherited_PrintNames(
@@ -5745,7 +5758,7 @@ impl EditHeader {
         })
     }
 
-    /// Inherited: **Source:** `IFSelect_Editor.hxx`:92 - `IFSelect_Editor::PrintDefs()`
+    /// Inherited: **Source:** `IFSelect_Editor.hxx`:88 - `IFSelect_Editor::PrintDefs()`
     pub fn print_defs(&self, S: &mut crate::ffi_types::Standard_OStream, labels: bool) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_EditHeader_inherited_PrintDefs(
@@ -5756,7 +5769,7 @@ impl EditHeader {
         })
     }
 
-    /// Inherited: **Source:** `IFSelect_Editor.hxx`:99 - `IFSelect_Editor::MaxNameLength()`
+    /// Inherited: **Source:** `IFSelect_Editor.hxx`:94 - `IFSelect_Editor::MaxNameLength()`
     pub fn max_name_length(&self, what: i32) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_EditHeader_inherited_MaxNameLength(
@@ -5766,12 +5779,12 @@ impl EditHeader {
         })
     }
 
-    /// Inherited: **Source:** `IFSelect_Editor.hxx`:106 - `IFSelect_Editor::Form()`
+    /// Inherited: **Source:** `IFSelect_Editor.hxx`:101 - `IFSelect_Editor::Form()`
     pub fn form(
         &self,
         readonly: bool,
         undoable: bool,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleIFSelectEditForm> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_IFSelect_EditForm> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDEIGES::IGESSelect_EditHeader_inherited_Form(
@@ -5783,11 +5796,11 @@ impl EditHeader {
         }
     }
 
-    /// Inherited: **Source:** `IFSelect_Editor.hxx`:124 - `IFSelect_Editor::ListEditor()`
+    /// Inherited: **Source:** `IFSelect_Editor.hxx`:117 - `IFSelect_Editor::ListEditor()`
     pub fn list_editor(
         &self,
         num: i32,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleIFSelectListEditor> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_IFSelect_ListEditor> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDEIGES::IGESSelect_EditHeader_inherited_ListEditor(
@@ -5798,12 +5811,14 @@ impl EditHeader {
         }
     }
 
-    /// Inherited: **Source:** `IFSelect_Editor.hxx`:130 - `IFSelect_Editor::ListValue()`
+    /// Inherited: **Source:** `IFSelect_Editor.hxx`:124 - `IFSelect_Editor::ListValue()`
     pub fn list_value(
         &self,
-        form: &crate::ffi_types::HandleIFSelectEditForm,
+        form: &crate::ffi_types::Handle_IFSelect_EditForm,
         num: i32,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleTColStdHSequenceOfHAsciiString> {
+    ) -> crate::OwnedPtr<
+        crate::ffi_types::Handle_NCollection_HSequence_opencascade_handle_TCollection_HAsciiString,
+    > {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDEIGES::IGESSelect_EditHeader_inherited_ListValue(
@@ -5815,12 +5830,12 @@ impl EditHeader {
         }
     }
 
-    /// Inherited: **Source:** `IFSelect_Editor.hxx`:159 - `IFSelect_Editor::UpdateList()`
+    /// Inherited: **Source:** `IFSelect_Editor.hxx`:150 - `IFSelect_Editor::UpdateList()`
     pub fn update_list(
         &self,
-        form: &crate::ffi_types::HandleIFSelectEditForm,
+        form: &crate::ffi_types::Handle_IFSelect_EditForm,
         num: i32,
-        newlist: &crate::ffi_types::HandleTColStdHSequenceOfHAsciiString,
+        newlist: &crate::ffi_types::Handle_NCollection_HSequence_opencascade_handle_TCollection_HAsciiString,
         enforce: bool,
     ) -> bool {
         crate::check_result(unsafe {
@@ -5834,8 +5849,8 @@ impl EditHeader {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_EditHeader_inherited_IsInstance(
                 self as *const Self,
@@ -5844,8 +5859,8 @@ impl EditHeader {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_EditHeader_inherited_IsKind(
                 self as *const Self,
@@ -5854,7 +5869,7 @@ impl EditHeader {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -5870,7 +5885,7 @@ impl EditHeader {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_EditHeader_inherited_GetRefCount(
@@ -5879,7 +5894,7 @@ impl EditHeader {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_EditHeader_inherited_IncrementRefCounter(
@@ -5888,7 +5903,7 @@ impl EditHeader {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_EditHeader_inherited_DecrementRefCounter(
@@ -5897,7 +5912,7 @@ impl EditHeader {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_EditHeader_inherited_Delete(self as *const Self)
@@ -5905,36 +5920,36 @@ impl EditHeader {
     }
 }
 
-pub use crate::ffi_types::HandleIGESSelectEditHeader;
+pub use crate::ffi_types::Handle_IGESSelect_EditHeader;
 
-unsafe impl crate::CppDeletable for HandleIGESSelectEditHeader {
+unsafe impl crate::CppDeletable for Handle_IGESSelect_EditHeader {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKDEIGES::HandleIGESSelectEditHeader_destructor(ptr);
+            crate::ffi_extern_TKDEIGES::Handle_IGESSelect_EditHeader_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleIGESSelectEditHeader {
+unsafe impl crate::CppCopyable for Handle_IGESSelect_EditHeader {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
         unsafe {
-            crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectEditHeader_clone(ptr))
+            crate::check_result(crate::ffi_extern_TKDEIGES::Handle_IGESSelect_EditHeader_clone(ptr))
         }
     }
 }
 
-impl HandleIGESSelectEditHeader {
+impl Handle_IGESSelect_EditHeader {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
         unsafe {
-            crate::ffi_extern_TKDEIGES::HandleIGESSelectEditHeader_is_null(self as *const Self)
+            crate::ffi_extern_TKDEIGES::Handle_IGESSelect_EditHeader_is_null(self as *const Self)
         }
     }
 
     /// Dereference this Handle to access the underlying IGESSelect_EditHeader
     pub fn get(&self) -> &crate::ffi_types::IGESSelect_EditHeader {
         unsafe {
-            &*crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectEditHeader_get(
+            &*crate::check_result(crate::ffi_extern_TKDEIGES::Handle_IGESSelect_EditHeader_get(
                 self as *const Self,
             ))
         }
@@ -5944,16 +5959,16 @@ impl HandleIGESSelectEditHeader {
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::IGESSelect_EditHeader {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi_extern_TKDEIGES::HandleIGESSelectEditHeader_get_mut(self as *mut Self),
+                crate::ffi_extern_TKDEIGES::Handle_IGESSelect_EditHeader_get_mut(self as *mut Self),
             )
         }
     }
 
     /// Upcast Handle<IGESSelect_EditHeader> to Handle<IFSelect_Editor>
-    pub fn to_handle_editor(&self) -> crate::OwnedPtr<crate::ffi_types::HandleIFSelectEditor> {
+    pub fn to_handle_editor(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_IFSelect_Editor> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKDEIGES::HandleIGESSelectEditHeader_to_HandleIFSelectEditor(
+                crate::ffi_extern_TKDEIGES::Handle_IGESSelect_EditHeader_to_Handle_IFSelect_Editor(
                     self as *const Self,
                 ),
             ))
@@ -5963,13 +5978,9 @@ impl HandleIGESSelectEditHeader {
     /// Upcast Handle<IGESSelect_EditHeader> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKDEIGES::HandleIGESSelectEditHeader_to_HandleStandardTransient(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::Handle_IGESSelect_EditHeader_to_Handle_Standard_Transient(self as *const Self)))
         }
     }
 }
@@ -5978,7 +5989,7 @@ impl HandleIGESSelectEditHeader {
 // From IGESSelect_FileModifier.hxx
 // ========================
 
-/// **Source:** `IGESSelect_FileModifier.hxx`:30 - `IGESSelect_FileModifier`
+/// **Source:** `IGESSelect_FileModifier.hxx`:27 - `IGESSelect_FileModifier`
 pub use crate::ffi_types::IGESSelect_FileModifier as FileModifier;
 
 unsafe impl crate::CppDeletable for FileModifier {
@@ -5990,7 +6001,7 @@ unsafe impl crate::CppDeletable for FileModifier {
 }
 
 impl FileModifier {
-    /// **Source:** `IGESSelect_FileModifier.hxx`:42 - `IGESSelect_FileModifier::Perform()`
+    /// **Source:** `IGESSelect_FileModifier.hxx`:39 - `IGESSelect_FileModifier::Perform()`
     /// Perform the action specific to each class of File Modifier
     /// <ctx> is the ContextWrite, which brings : the model, the
     /// protocol, the file name, plus the object AppliedModifiers
@@ -6013,8 +6024,8 @@ impl FileModifier {
         })
     }
 
-    /// **Source:** `IGESSelect_FileModifier.hxx`:45 - `IGESSelect_FileModifier::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `IGESSelect_FileModifier.hxx`:42 - `IGESSelect_FileModifier::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKDEIGES::IGESSelect_FileModifier_dynamic_type(
@@ -6024,7 +6035,7 @@ impl FileModifier {
         }
     }
 
-    /// **Source:** `IGESSelect_FileModifier.hxx`:45 - `IGESSelect_FileModifier::get_type_name()`
+    /// **Source:** `IGESSelect_FileModifier.hxx`:42 - `IGESSelect_FileModifier::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -6035,8 +6046,8 @@ impl FileModifier {
         .into_owned()
     }
 
-    /// **Source:** `IGESSelect_FileModifier.hxx`:45 - `IGESSelect_FileModifier::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    /// **Source:** `IGESSelect_FileModifier.hxx`:42 - `IGESSelect_FileModifier::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKDEIGES::IGESSelect_FileModifier_get_type_descriptor(),
@@ -6088,7 +6099,7 @@ impl FileModifier {
         }
     }
 
-    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:68 - `IFSelect_GeneralModifier::MayChangeGraph()`
+    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:65 - `IFSelect_GeneralModifier::MayChangeGraph()`
     pub fn may_change_graph(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_FileModifier_inherited_MayChangeGraph(
@@ -6097,8 +6108,8 @@ impl FileModifier {
         })
     }
 
-    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:72 - `IFSelect_GeneralModifier::SetDispatch()`
-    pub fn set_dispatch(&mut self, disp: &crate::ffi_types::HandleIFSelectDispatch) {
+    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:69 - `IFSelect_GeneralModifier::SetDispatch()`
+    pub fn set_dispatch(&mut self, disp: &crate::ffi_types::Handle_IFSelect_Dispatch) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_FileModifier_inherited_SetDispatch(
                 self as *mut Self,
@@ -6107,8 +6118,8 @@ impl FileModifier {
         })
     }
 
-    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:75 - `IFSelect_GeneralModifier::Dispatch()`
-    pub fn dispatch(&self) -> crate::OwnedPtr<crate::ffi_types::HandleIFSelectDispatch> {
+    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:72 - `IFSelect_GeneralModifier::Dispatch()`
+    pub fn dispatch(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_IFSelect_Dispatch> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDEIGES::IGESSelect_FileModifier_inherited_Dispatch(
@@ -6118,8 +6129,8 @@ impl FileModifier {
         }
     }
 
-    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:80 - `IFSelect_GeneralModifier::Applies()`
-    pub fn applies(&self, disp: &crate::ffi_types::HandleIFSelectDispatch) -> bool {
+    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:77 - `IFSelect_GeneralModifier::Applies()`
+    pub fn applies(&self, disp: &crate::ffi_types::Handle_IFSelect_Dispatch) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_FileModifier_inherited_Applies(
                 self as *const Self,
@@ -6128,8 +6139,8 @@ impl FileModifier {
         })
     }
 
-    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:84 - `IFSelect_GeneralModifier::SetSelection()`
-    pub fn set_selection(&mut self, sel: &crate::ffi_types::HandleIFSelectSelection) {
+    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:81 - `IFSelect_GeneralModifier::SetSelection()`
+    pub fn set_selection(&mut self, sel: &crate::ffi_types::Handle_IFSelect_Selection) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_FileModifier_inherited_SetSelection(
                 self as *mut Self,
@@ -6138,7 +6149,7 @@ impl FileModifier {
         })
     }
 
-    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:87 - `IFSelect_GeneralModifier::ResetSelection()`
+    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:84 - `IFSelect_GeneralModifier::ResetSelection()`
     pub fn reset_selection(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_FileModifier_inherited_ResetSelection(
@@ -6147,7 +6158,7 @@ impl FileModifier {
         })
     }
 
-    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:90 - `IFSelect_GeneralModifier::HasSelection()`
+    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:87 - `IFSelect_GeneralModifier::HasSelection()`
     pub fn has_selection(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_FileModifier_inherited_HasSelection(
@@ -6156,8 +6167,8 @@ impl FileModifier {
         })
     }
 
-    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:93 - `IFSelect_GeneralModifier::Selection()`
-    pub fn selection(&self) -> crate::OwnedPtr<crate::ffi_types::HandleIFSelectSelection> {
+    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:90 - `IFSelect_GeneralModifier::Selection()`
+    pub fn selection(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_IFSelect_Selection> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDEIGES::IGESSelect_FileModifier_inherited_Selection(
@@ -6167,7 +6178,7 @@ impl FileModifier {
         }
     }
 
-    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:96 - `IFSelect_GeneralModifier::Label()`
+    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:93 - `IFSelect_GeneralModifier::Label()`
     pub fn label(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -6178,8 +6189,8 @@ impl FileModifier {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_FileModifier_inherited_IsInstance(
                 self as *const Self,
@@ -6188,8 +6199,8 @@ impl FileModifier {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_FileModifier_inherited_IsKind(
                 self as *const Self,
@@ -6198,7 +6209,7 @@ impl FileModifier {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -6214,7 +6225,7 @@ impl FileModifier {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_FileModifier_inherited_GetRefCount(
@@ -6223,7 +6234,7 @@ impl FileModifier {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_FileModifier_inherited_IncrementRefCounter(
@@ -6232,7 +6243,7 @@ impl FileModifier {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_FileModifier_inherited_DecrementRefCounter(
@@ -6241,7 +6252,7 @@ impl FileModifier {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_FileModifier_inherited_Delete(
@@ -6251,36 +6262,38 @@ impl FileModifier {
     }
 }
 
-pub use crate::ffi_types::HandleIGESSelectFileModifier;
+pub use crate::ffi_types::Handle_IGESSelect_FileModifier;
 
-unsafe impl crate::CppDeletable for HandleIGESSelectFileModifier {
+unsafe impl crate::CppDeletable for Handle_IGESSelect_FileModifier {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKDEIGES::HandleIGESSelectFileModifier_destructor(ptr);
+            crate::ffi_extern_TKDEIGES::Handle_IGESSelect_FileModifier_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleIGESSelectFileModifier {
+unsafe impl crate::CppCopyable for Handle_IGESSelect_FileModifier {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
         unsafe {
-            crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectFileModifier_clone(ptr))
+            crate::check_result(crate::ffi_extern_TKDEIGES::Handle_IGESSelect_FileModifier_clone(
+                ptr,
+            ))
         }
     }
 }
 
-impl HandleIGESSelectFileModifier {
+impl Handle_IGESSelect_FileModifier {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
         unsafe {
-            crate::ffi_extern_TKDEIGES::HandleIGESSelectFileModifier_is_null(self as *const Self)
+            crate::ffi_extern_TKDEIGES::Handle_IGESSelect_FileModifier_is_null(self as *const Self)
         }
     }
 
     /// Dereference this Handle to access the underlying IGESSelect_FileModifier
     pub fn get(&self) -> &crate::ffi_types::IGESSelect_FileModifier {
         unsafe {
-            &*crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectFileModifier_get(
+            &*crate::check_result(crate::ffi_extern_TKDEIGES::Handle_IGESSelect_FileModifier_get(
                 self as *const Self,
             ))
         }
@@ -6290,7 +6303,9 @@ impl HandleIGESSelectFileModifier {
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::IGESSelect_FileModifier {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi_extern_TKDEIGES::HandleIGESSelectFileModifier_get_mut(self as *mut Self),
+                crate::ffi_extern_TKDEIGES::Handle_IGESSelect_FileModifier_get_mut(
+                    self as *mut Self,
+                ),
             )
         }
     }
@@ -6298,22 +6313,18 @@ impl HandleIGESSelectFileModifier {
     /// Upcast Handle<IGESSelect_FileModifier> to Handle<IFSelect_GeneralModifier>
     pub fn to_handle_general_modifier(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleIFSelectGeneralModifier> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_IFSelect_GeneralModifier> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectFileModifier_to_HandleIFSelectGeneralModifier(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::Handle_IGESSelect_FileModifier_to_Handle_IFSelect_GeneralModifier(self as *const Self)))
         }
     }
 
     /// Upcast Handle<IGESSelect_FileModifier> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKDEIGES::HandleIGESSelectFileModifier_to_HandleStandardTransient(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::Handle_IGESSelect_FileModifier_to_Handle_Standard_Transient(self as *const Self)))
         }
     }
 
@@ -6322,9 +6333,9 @@ impl HandleIGESSelectFileModifier {
     /// Returns `None` if the handle does not point to a `IGESSelect_AddFileComment` (or subclass).
     pub fn downcast_to_add_file_comment(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleIGESSelectAddFileComment>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_IGESSelect_AddFileComment>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKDEIGES::HandleIGESSelectFileModifier_downcast_to_HandleIGESSelectAddFileComment(self as *const Self)
+            crate::ffi_extern_TKDEIGES::Handle_IGESSelect_FileModifier_downcast_to_Handle_IGESSelect_AddFileComment(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -6338,9 +6349,9 @@ impl HandleIGESSelectFileModifier {
     /// Returns `None` if the handle does not point to a `IGESSelect_FloatFormat` (or subclass).
     pub fn downcast_to_float_format(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleIGESSelectFloatFormat>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_IGESSelect_FloatFormat>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKDEIGES::HandleIGESSelectFileModifier_downcast_to_HandleIGESSelectFloatFormat(self as *const Self)
+            crate::ffi_extern_TKDEIGES::Handle_IGESSelect_FileModifier_downcast_to_Handle_IGESSelect_FloatFormat(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -6354,7 +6365,7 @@ impl HandleIGESSelectFileModifier {
 // From IGESSelect_FloatFormat.hxx
 // ========================
 
-/// **Source:** `IGESSelect_FloatFormat.hxx`:36 - `IGESSelect_FloatFormat`
+/// **Source:** `IGESSelect_FloatFormat.hxx`:33 - `IGESSelect_FloatFormat`
 /// This class gives control out format for floatting values :
 /// ZeroSuppress or no, Main Format, Format in Range (for values
 /// around 1.), as IGESWriter allows to manage it.
@@ -6370,7 +6381,7 @@ unsafe impl crate::CppDeletable for FloatFormat {
 }
 
 impl FloatFormat {
-    /// **Source:** `IGESSelect_FloatFormat.hxx`:43 - `IGESSelect_FloatFormat::IGESSelect_FloatFormat()`
+    /// **Source:** `IGESSelect_FloatFormat.hxx`:40 - `IGESSelect_FloatFormat::IGESSelect_FloatFormat()`
     /// Creates a new FloatFormat, with standard options :
     /// ZeroSuppress, Main Format = %E,
     /// Format between 0.001 and 1000. = %f
@@ -6382,7 +6393,7 @@ impl FloatFormat {
         }
     }
 
-    /// **Source:** `IGESSelect_FloatFormat.hxx`:48 - `IGESSelect_FloatFormat::SetDefault()`
+    /// **Source:** `IGESSelect_FloatFormat.hxx`:45 - `IGESSelect_FloatFormat::SetDefault()`
     /// Sets FloatFormat to default value (see Create) but if <digits>
     /// is given positive, it commands Formats (main and range) to
     /// ensure <digits> significant digits to be displayed
@@ -6395,7 +6406,7 @@ impl FloatFormat {
         })
     }
 
-    /// **Source:** `IGESSelect_FloatFormat.hxx`:51 - `IGESSelect_FloatFormat::SetZeroSuppress()`
+    /// **Source:** `IGESSelect_FloatFormat.hxx`:48 - `IGESSelect_FloatFormat::SetZeroSuppress()`
     /// Sets ZeroSuppress mode to a new value
     pub fn set_zero_suppress(&mut self, mode: bool) {
         crate::check_void_result(unsafe {
@@ -6406,7 +6417,7 @@ impl FloatFormat {
         })
     }
 
-    /// **Source:** `IGESSelect_FloatFormat.hxx`:56 - `IGESSelect_FloatFormat::SetFormat()`
+    /// **Source:** `IGESSelect_FloatFormat.hxx`:53 - `IGESSelect_FloatFormat::SetFormat()`
     /// Sets Main Format to a new value
     /// Remark : SetFormat, SetZeroSuppress and SetFormatForRange are
     /// independent
@@ -6420,11 +6431,11 @@ impl FloatFormat {
         })
     }
 
-    /// **Source:** `IGESSelect_FloatFormat.hxx`:65 - `IGESSelect_FloatFormat::SetFormatForRange()`
+    /// **Source:** `IGESSelect_FloatFormat.hxx`:62 - `IGESSelect_FloatFormat::SetFormatForRange()`
     /// Sets Format for Range to a new value with its range of
     /// application.
     /// To cancel it, give format as "" (empty string)
-    /// Remark that if the condition (0. < Rmin < Rmax)  is not
+    /// Remark that if the condition (0. < Rmin < Rmax) is not
     /// verified, this secondary format will be ignored.
     /// Moreover, this secondary format is intended to be used in a
     /// range around 1.
@@ -6440,7 +6451,7 @@ impl FloatFormat {
         })
     }
 
-    /// **Source:** `IGESSelect_FloatFormat.hxx`:78 - `IGESSelect_FloatFormat::Format()`
+    /// **Source:** `IGESSelect_FloatFormat.hxx`:75 - `IGESSelect_FloatFormat::Format()`
     /// Returns all recorded parameters :
     /// zerosup  : ZeroSuppress status
     /// mainform : Main Format (which applies out of the range, or
@@ -6472,7 +6483,7 @@ impl FloatFormat {
         })
     }
 
-    /// **Source:** `IGESSelect_FloatFormat.hxx`:87 - `IGESSelect_FloatFormat::Perform()`
+    /// **Source:** `IGESSelect_FloatFormat.hxx`:84 - `IGESSelect_FloatFormat::Perform()`
     /// Sets the Floatting Formats of IGESWriter to the recorded
     /// parameters
     pub fn perform(
@@ -6489,7 +6500,7 @@ impl FloatFormat {
         })
     }
 
-    /// **Source:** `IGESSelect_FloatFormat.hxx`:92 - `IGESSelect_FloatFormat::Label()`
+    /// **Source:** `IGESSelect_FloatFormat.hxx`:89 - `IGESSelect_FloatFormat::Label()`
     /// Returns specific Label : for instance,
     /// "Float Format [ZeroSuppress] %E [, in range R1-R2 %f]"
     pub fn label(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
@@ -6500,8 +6511,8 @@ impl FloatFormat {
         }
     }
 
-    /// **Source:** `IGESSelect_FloatFormat.hxx`:94 - `IGESSelect_FloatFormat::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `IGESSelect_FloatFormat.hxx`:91 - `IGESSelect_FloatFormat::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKDEIGES::IGESSelect_FloatFormat_dynamic_type(
@@ -6511,7 +6522,7 @@ impl FloatFormat {
         }
     }
 
-    /// **Source:** `IGESSelect_FloatFormat.hxx`:94 - `IGESSelect_FloatFormat::get_type_name()`
+    /// **Source:** `IGESSelect_FloatFormat.hxx`:91 - `IGESSelect_FloatFormat::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -6522,8 +6533,8 @@ impl FloatFormat {
         .into_owned()
     }
 
-    /// **Source:** `IGESSelect_FloatFormat.hxx`:94 - `IGESSelect_FloatFormat::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    /// **Source:** `IGESSelect_FloatFormat.hxx`:91 - `IGESSelect_FloatFormat::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKDEIGES::IGESSelect_FloatFormat_get_type_descriptor(),
@@ -6600,7 +6611,7 @@ impl FloatFormat {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESSelectFloatFormat> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_IGESSelect_FloatFormat> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDEIGES::IGESSelect_FloatFormat_to_handle(obj.into_raw()),
@@ -6608,7 +6619,7 @@ impl FloatFormat {
         }
     }
 
-    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:68 - `IFSelect_GeneralModifier::MayChangeGraph()`
+    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:65 - `IFSelect_GeneralModifier::MayChangeGraph()`
     pub fn may_change_graph(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_FloatFormat_inherited_MayChangeGraph(
@@ -6617,8 +6628,8 @@ impl FloatFormat {
         })
     }
 
-    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:72 - `IFSelect_GeneralModifier::SetDispatch()`
-    pub fn set_dispatch(&mut self, disp: &crate::ffi_types::HandleIFSelectDispatch) {
+    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:69 - `IFSelect_GeneralModifier::SetDispatch()`
+    pub fn set_dispatch(&mut self, disp: &crate::ffi_types::Handle_IFSelect_Dispatch) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_FloatFormat_inherited_SetDispatch(
                 self as *mut Self,
@@ -6627,8 +6638,8 @@ impl FloatFormat {
         })
     }
 
-    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:75 - `IFSelect_GeneralModifier::Dispatch()`
-    pub fn dispatch(&self) -> crate::OwnedPtr<crate::ffi_types::HandleIFSelectDispatch> {
+    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:72 - `IFSelect_GeneralModifier::Dispatch()`
+    pub fn dispatch(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_IFSelect_Dispatch> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDEIGES::IGESSelect_FloatFormat_inherited_Dispatch(
@@ -6638,8 +6649,8 @@ impl FloatFormat {
         }
     }
 
-    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:80 - `IFSelect_GeneralModifier::Applies()`
-    pub fn applies(&self, disp: &crate::ffi_types::HandleIFSelectDispatch) -> bool {
+    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:77 - `IFSelect_GeneralModifier::Applies()`
+    pub fn applies(&self, disp: &crate::ffi_types::Handle_IFSelect_Dispatch) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_FloatFormat_inherited_Applies(
                 self as *const Self,
@@ -6648,8 +6659,8 @@ impl FloatFormat {
         })
     }
 
-    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:84 - `IFSelect_GeneralModifier::SetSelection()`
-    pub fn set_selection(&mut self, sel: &crate::ffi_types::HandleIFSelectSelection) {
+    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:81 - `IFSelect_GeneralModifier::SetSelection()`
+    pub fn set_selection(&mut self, sel: &crate::ffi_types::Handle_IFSelect_Selection) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_FloatFormat_inherited_SetSelection(
                 self as *mut Self,
@@ -6658,7 +6669,7 @@ impl FloatFormat {
         })
     }
 
-    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:87 - `IFSelect_GeneralModifier::ResetSelection()`
+    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:84 - `IFSelect_GeneralModifier::ResetSelection()`
     pub fn reset_selection(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_FloatFormat_inherited_ResetSelection(
@@ -6667,7 +6678,7 @@ impl FloatFormat {
         })
     }
 
-    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:90 - `IFSelect_GeneralModifier::HasSelection()`
+    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:87 - `IFSelect_GeneralModifier::HasSelection()`
     pub fn has_selection(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_FloatFormat_inherited_HasSelection(
@@ -6676,8 +6687,8 @@ impl FloatFormat {
         })
     }
 
-    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:93 - `IFSelect_GeneralModifier::Selection()`
-    pub fn selection(&self) -> crate::OwnedPtr<crate::ffi_types::HandleIFSelectSelection> {
+    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:90 - `IFSelect_GeneralModifier::Selection()`
+    pub fn selection(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_IFSelect_Selection> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDEIGES::IGESSelect_FloatFormat_inherited_Selection(
@@ -6687,8 +6698,8 @@ impl FloatFormat {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_FloatFormat_inherited_IsInstance(
                 self as *const Self,
@@ -6697,8 +6708,8 @@ impl FloatFormat {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_FloatFormat_inherited_IsKind(
                 self as *const Self,
@@ -6707,7 +6718,7 @@ impl FloatFormat {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -6723,7 +6734,7 @@ impl FloatFormat {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_FloatFormat_inherited_GetRefCount(
@@ -6732,7 +6743,7 @@ impl FloatFormat {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_FloatFormat_inherited_IncrementRefCounter(
@@ -6741,7 +6752,7 @@ impl FloatFormat {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_FloatFormat_inherited_DecrementRefCounter(
@@ -6750,7 +6761,7 @@ impl FloatFormat {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_FloatFormat_inherited_Delete(self as *const Self)
@@ -6758,36 +6769,38 @@ impl FloatFormat {
     }
 }
 
-pub use crate::ffi_types::HandleIGESSelectFloatFormat;
+pub use crate::ffi_types::Handle_IGESSelect_FloatFormat;
 
-unsafe impl crate::CppDeletable for HandleIGESSelectFloatFormat {
+unsafe impl crate::CppDeletable for Handle_IGESSelect_FloatFormat {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKDEIGES::HandleIGESSelectFloatFormat_destructor(ptr);
+            crate::ffi_extern_TKDEIGES::Handle_IGESSelect_FloatFormat_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleIGESSelectFloatFormat {
+unsafe impl crate::CppCopyable for Handle_IGESSelect_FloatFormat {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
         unsafe {
-            crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectFloatFormat_clone(ptr))
+            crate::check_result(crate::ffi_extern_TKDEIGES::Handle_IGESSelect_FloatFormat_clone(
+                ptr,
+            ))
         }
     }
 }
 
-impl HandleIGESSelectFloatFormat {
+impl Handle_IGESSelect_FloatFormat {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
         unsafe {
-            crate::ffi_extern_TKDEIGES::HandleIGESSelectFloatFormat_is_null(self as *const Self)
+            crate::ffi_extern_TKDEIGES::Handle_IGESSelect_FloatFormat_is_null(self as *const Self)
         }
     }
 
     /// Dereference this Handle to access the underlying IGESSelect_FloatFormat
     pub fn get(&self) -> &crate::ffi_types::IGESSelect_FloatFormat {
         unsafe {
-            &*crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectFloatFormat_get(
+            &*crate::check_result(crate::ffi_extern_TKDEIGES::Handle_IGESSelect_FloatFormat_get(
                 self as *const Self,
             ))
         }
@@ -6797,7 +6810,9 @@ impl HandleIGESSelectFloatFormat {
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::IGESSelect_FloatFormat {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi_extern_TKDEIGES::HandleIGESSelectFloatFormat_get_mut(self as *mut Self),
+                crate::ffi_extern_TKDEIGES::Handle_IGESSelect_FloatFormat_get_mut(
+                    self as *mut Self,
+                ),
             )
         }
     }
@@ -6805,31 +6820,27 @@ impl HandleIGESSelectFloatFormat {
     /// Upcast Handle<IGESSelect_FloatFormat> to Handle<IGESSelect_FileModifier>
     pub fn to_handle_file_modifier(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESSelectFileModifier> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_IGESSelect_FileModifier> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectFloatFormat_to_HandleIGESSelectFileModifier(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::Handle_IGESSelect_FloatFormat_to_Handle_IGESSelect_FileModifier(self as *const Self)))
         }
     }
 
     /// Upcast Handle<IGESSelect_FloatFormat> to Handle<IFSelect_GeneralModifier>
     pub fn to_handle_general_modifier(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleIFSelectGeneralModifier> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_IFSelect_GeneralModifier> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectFloatFormat_to_HandleIFSelectGeneralModifier(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::Handle_IGESSelect_FloatFormat_to_Handle_IFSelect_GeneralModifier(self as *const Self)))
         }
     }
 
     /// Upcast Handle<IGESSelect_FloatFormat> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKDEIGES::HandleIGESSelectFloatFormat_to_HandleStandardTransient(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::Handle_IGESSelect_FloatFormat_to_Handle_Standard_Transient(self as *const Self)))
         }
     }
 }
@@ -6838,7 +6849,7 @@ impl HandleIGESSelectFloatFormat {
 // From IGESSelect_IGESName.hxx
 // ========================
 
-/// **Source:** `IGESSelect_IGESName.hxx`:35 - `IGESSelect_IGESName`
+/// **Source:** `IGESSelect_IGESName.hxx`:32 - `IGESSelect_IGESName`
 /// IGESName is a Signature specific to IGESNorm :
 /// it considers the Name of an IGESEntity as being its ShortLabel
 /// (some sending systems use name, not to identify entities, but
@@ -6854,7 +6865,7 @@ unsafe impl crate::CppDeletable for IGESName {
 }
 
 impl IGESName {
-    /// **Source:** `IGESSelect_IGESName.hxx`:41 - `IGESSelect_IGESName::IGESSelect_IGESName()`
+    /// **Source:** `IGESSelect_IGESName.hxx`:38 - `IGESSelect_IGESName::IGESSelect_IGESName()`
     /// Creates a Signature for IGES Name (reduced to ShortLabel,
     /// without SubscriptLabel or Long Name)
     pub fn new() -> crate::OwnedPtr<Self> {
@@ -6865,13 +6876,13 @@ impl IGESName {
         }
     }
 
-    /// **Source:** `IGESSelect_IGESName.hxx`:46 - `IGESSelect_IGESName::Value()`
+    /// **Source:** `IGESSelect_IGESName.hxx`:42 - `IGESSelect_IGESName::Value()`
     /// Returns the ShortLabel as being the Name of an IGESEntity
     /// If <ent> has no name, it returns empty string ""
     pub fn value(
         &self,
-        ent: &crate::ffi_types::HandleStandardTransient,
-        model: &crate::ffi_types::HandleInterfaceInterfaceModel,
+        ent: &crate::ffi_types::Handle_Standard_Transient,
+        model: &crate::ffi_types::Handle_Interface_InterfaceModel,
     ) -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -6886,8 +6897,8 @@ impl IGESName {
         .into_owned()
     }
 
-    /// **Source:** `IGESSelect_IGESName.hxx`:49 - `IGESSelect_IGESName::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `IGESSelect_IGESName.hxx`:46 - `IGESSelect_IGESName::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKDEIGES::IGESSelect_IGESName_dynamic_type(
                 self as *const Self,
@@ -6895,7 +6906,7 @@ impl IGESName {
         }
     }
 
-    /// **Source:** `IGESSelect_IGESName.hxx`:49 - `IGESSelect_IGESName::get_type_name()`
+    /// **Source:** `IGESSelect_IGESName.hxx`:46 - `IGESSelect_IGESName::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -6906,8 +6917,8 @@ impl IGESName {
         .into_owned()
     }
 
-    /// **Source:** `IGESSelect_IGESName.hxx`:49 - `IGESSelect_IGESName::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    /// **Source:** `IGESSelect_IGESName.hxx`:46 - `IGESSelect_IGESName::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKDEIGES::IGESSelect_IGESName_get_type_descriptor(),
@@ -7006,7 +7017,7 @@ impl IGESName {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESSelectIGESName> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_IGESSelect_IGESName> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDEIGES::IGESSelect_IGESName_to_handle(obj.into_raw()),
@@ -7014,7 +7025,7 @@ impl IGESName {
         }
     }
 
-    /// Inherited: **Source:** `IFSelect_Signature.hxx`:46 - `IFSelect_Signature::SetIntCase()`
+    /// Inherited: **Source:** `IFSelect_Signature.hxx`:44 - `IFSelect_Signature::SetIntCase()`
     pub fn set_int_case(&mut self, hasmin: bool, valmin: i32, hasmax: bool, valmax: i32) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_IGESName_inherited_SetIntCase(
@@ -7027,7 +7038,7 @@ impl IGESName {
         })
     }
 
-    /// Inherited: **Source:** `IFSelect_Signature.hxx`:53 - `IFSelect_Signature::IsIntCase()`
+    /// Inherited: **Source:** `IFSelect_Signature.hxx`:51 - `IFSelect_Signature::IsIntCase()`
     pub fn is_int_case(
         &self,
         hasmin: &mut bool,
@@ -7046,10 +7057,11 @@ impl IGESName {
         })
     }
 
-    /// Inherited: **Source:** `IFSelect_Signature.hxx`:69 - `IFSelect_Signature::CaseList()`
+    /// Inherited: **Source:** `IFSelect_Signature.hxx`:64 - `IFSelect_Signature::CaseList()`
     pub fn case_list(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleTColStdHSequenceOfAsciiString> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HSequence_TCollection_AsciiString>
+    {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDEIGES::IGESSelect_IGESName_inherited_CaseList(
@@ -7059,7 +7071,7 @@ impl IGESName {
         }
     }
 
-    /// Inherited: **Source:** `IFSelect_Signature.hxx`:81 - `IFSelect_Signature::Label()`
+    /// Inherited: **Source:** `IFSelect_Signature.hxx`:76 - `IFSelect_Signature::Label()`
     pub fn label(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -7070,11 +7082,11 @@ impl IGESName {
         }
     }
 
-    /// Inherited: **Source:** `IFSelect_Signature.hxx`:87 - `IFSelect_Signature::Matches()`
+    /// Inherited: **Source:** `IFSelect_Signature.hxx`:82 - `IFSelect_Signature::Matches()`
     pub fn matches(
         &self,
-        ent: &crate::ffi_types::HandleStandardTransient,
-        model: &crate::ffi_types::HandleInterfaceInterfaceModel,
+        ent: &crate::ffi_types::Handle_Standard_Transient,
+        model: &crate::ffi_types::Handle_Interface_InterfaceModel,
         text: &crate::t_collection::AsciiString,
         exact: bool,
     ) -> bool {
@@ -7089,11 +7101,11 @@ impl IGESName {
         })
     }
 
-    /// Inherited: **Source:** `Interface_SignType.hxx`:42 - `Interface_SignType::Text()`
+    /// Inherited: **Source:** `Interface_SignType.hxx`:39 - `Interface_SignType::Text()`
     pub fn text(
         &self,
-        ent: &crate::ffi_types::HandleStandardTransient,
-        context: &crate::ffi_types::HandleStandardTransient,
+        ent: &crate::ffi_types::Handle_Standard_Transient,
+        context: &crate::ffi_types::Handle_Standard_Transient,
     ) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -7106,10 +7118,10 @@ impl IGESName {
         }
     }
 
-    /// Inherited: **Source:** `MoniTool_SignText.hxx`:46 - `MoniTool_SignText::TextAlone()`
+    /// Inherited: **Source:** `MoniTool_SignText.hxx`:43 - `MoniTool_SignText::TextAlone()`
     pub fn text_alone(
         &self,
-        ent: &crate::ffi_types::HandleStandardTransient,
+        ent: &crate::ffi_types::Handle_Standard_Transient,
     ) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -7121,8 +7133,8 @@ impl IGESName {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_IGESName_inherited_IsInstance(
                 self as *const Self,
@@ -7131,8 +7143,8 @@ impl IGESName {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_IGESName_inherited_IsKind(
                 self as *const Self,
@@ -7141,7 +7153,7 @@ impl IGESName {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -7155,7 +7167,7 @@ impl IGESName {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_IGESName_inherited_GetRefCount(
@@ -7164,7 +7176,7 @@ impl IGESName {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_IGESName_inherited_IncrementRefCounter(
@@ -7173,7 +7185,7 @@ impl IGESName {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_IGESName_inherited_DecrementRefCounter(
@@ -7182,7 +7194,7 @@ impl IGESName {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_IGESName_inherited_Delete(self as *const Self)
@@ -7190,34 +7202,36 @@ impl IGESName {
     }
 }
 
-pub use crate::ffi_types::HandleIGESSelectIGESName;
+pub use crate::ffi_types::Handle_IGESSelect_IGESName;
 
-unsafe impl crate::CppDeletable for HandleIGESSelectIGESName {
+unsafe impl crate::CppDeletable for Handle_IGESSelect_IGESName {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKDEIGES::HandleIGESSelectIGESName_destructor(ptr);
+            crate::ffi_extern_TKDEIGES::Handle_IGESSelect_IGESName_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleIGESSelectIGESName {
+unsafe impl crate::CppCopyable for Handle_IGESSelect_IGESName {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
         unsafe {
-            crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectIGESName_clone(ptr))
+            crate::check_result(crate::ffi_extern_TKDEIGES::Handle_IGESSelect_IGESName_clone(ptr))
         }
     }
 }
 
-impl HandleIGESSelectIGESName {
+impl Handle_IGESSelect_IGESName {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
-        unsafe { crate::ffi_extern_TKDEIGES::HandleIGESSelectIGESName_is_null(self as *const Self) }
+        unsafe {
+            crate::ffi_extern_TKDEIGES::Handle_IGESSelect_IGESName_is_null(self as *const Self)
+        }
     }
 
     /// Dereference this Handle to access the underlying IGESSelect_IGESName
     pub fn get(&self) -> &crate::ffi_types::IGESSelect_IGESName {
         unsafe {
-            &*crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectIGESName_get(
+            &*crate::check_result(crate::ffi_extern_TKDEIGES::Handle_IGESSelect_IGESName_get(
                 self as *const Self,
             ))
         }
@@ -7226,19 +7240,19 @@ impl HandleIGESSelectIGESName {
     /// Dereference this Handle to mutably access the underlying IGESSelect_IGESName
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::IGESSelect_IGESName {
         unsafe {
-            &mut *crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectIGESName_get_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKDEIGES::Handle_IGESSelect_IGESName_get_mut(self as *mut Self),
+            )
         }
     }
 
     /// Upcast Handle<IGESSelect_IGESName> to Handle<IFSelect_Signature>
     pub fn to_handle_signature(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleIFSelectSignature> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_IFSelect_Signature> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKDEIGES::HandleIGESSelectIGESName_to_HandleIFSelectSignature(
+                crate::ffi_extern_TKDEIGES::Handle_IGESSelect_IGESName_to_Handle_IFSelect_Signature(
                     self as *const Self,
                 ),
             ))
@@ -7248,10 +7262,10 @@ impl HandleIGESSelectIGESName {
     /// Upcast Handle<IGESSelect_IGESName> to Handle<Interface_SignType>
     pub fn to_handle_sign_type(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleInterfaceSignType> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Interface_SignType> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKDEIGES::HandleIGESSelectIGESName_to_HandleInterfaceSignType(
+                crate::ffi_extern_TKDEIGES::Handle_IGESSelect_IGESName_to_Handle_Interface_SignType(
                     self as *const Self,
                 ),
             ))
@@ -7259,10 +7273,12 @@ impl HandleIGESSelectIGESName {
     }
 
     /// Upcast Handle<IGESSelect_IGESName> to Handle<MoniTool_SignText>
-    pub fn to_handle_sign_text(&self) -> crate::OwnedPtr<crate::ffi_types::HandleMoniToolSignText> {
+    pub fn to_handle_sign_text(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_MoniTool_SignText> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKDEIGES::HandleIGESSelectIGESName_to_HandleMoniToolSignText(
+                crate::ffi_extern_TKDEIGES::Handle_IGESSelect_IGESName_to_Handle_MoniTool_SignText(
                     self as *const Self,
                 ),
             ))
@@ -7272,10 +7288,10 @@ impl HandleIGESSelectIGESName {
     /// Upcast Handle<IGESSelect_IGESName> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKDEIGES::HandleIGESSelectIGESName_to_HandleStandardTransient(
+                crate::ffi_extern_TKDEIGES::Handle_IGESSelect_IGESName_to_Handle_Standard_Transient(
                     self as *const Self,
                 ),
             ))
@@ -7287,11 +7303,11 @@ impl HandleIGESSelectIGESName {
 // From IGESSelect_IGESTypeForm.hxx
 // ========================
 
-/// **Source:** `IGESSelect_IGESTypeForm.hxx`:41 - `IGESSelect_IGESTypeForm`
+/// **Source:** `IGESSelect_IGESTypeForm.hxx`:38 - `IGESSelect_IGESTypeForm`
 /// IGESTypeForm is a Signature specific to the IGES Norm :
 /// it gives the signature under two possible forms :
 /// - as "mmm nnn", with "mmm" as IGES Type Number, and "nnn"
-/// as IGES From Number (even if = 0)  [Default]
+/// as IGES From Number (even if = 0) [Default]
 /// - as "mmm" alone, which gives only the IGES Type Number
 pub use crate::ffi_types::IGESSelect_IGESTypeForm as IGESTypeForm;
 
@@ -7304,7 +7320,7 @@ unsafe impl crate::CppDeletable for IGESTypeForm {
 }
 
 impl IGESTypeForm {
-    /// **Source:** `IGESSelect_IGESTypeForm.hxx`:47 - `IGESSelect_IGESTypeForm::IGESSelect_IGESTypeForm()`
+    /// **Source:** `IGESSelect_IGESTypeForm.hxx`:44 - `IGESSelect_IGESTypeForm::IGESSelect_IGESTypeForm()`
     /// Creates a Signature for IGES Type & Form Numbers
     /// If <withform> is False, for IGES Type Number only
     pub fn new_bool(withform: bool) -> crate::OwnedPtr<Self> {
@@ -7315,14 +7331,14 @@ impl IGESTypeForm {
         }
     }
 
-    /// **Source:** `IGESSelect_IGESTypeForm.hxx`:47 - `IGESSelect_IGESTypeForm::IGESSelect_IGESTypeForm()`
+    /// **Source:** `IGESSelect_IGESTypeForm.hxx`:44 - `IGESSelect_IGESTypeForm::IGESSelect_IGESTypeForm()`
     /// Creates a Signature for IGES Type & Form Numbers
     /// If <withform> is False, for IGES Type Number only
     pub fn new() -> crate::OwnedPtr<Self> {
         Self::new_bool(true)
     }
 
-    /// **Source:** `IGESSelect_IGESTypeForm.hxx`:50 - `IGESSelect_IGESTypeForm::SetForm()`
+    /// **Source:** `IGESSelect_IGESTypeForm.hxx`:47 - `IGESSelect_IGESTypeForm::SetForm()`
     /// Changes the mode for giving the Form Number
     pub fn set_form(&mut self, withform: bool) {
         crate::check_void_result(unsafe {
@@ -7333,13 +7349,13 @@ impl IGESTypeForm {
         })
     }
 
-    /// **Source:** `IGESSelect_IGESTypeForm.hxx`:55 - `IGESSelect_IGESTypeForm::Value()`
+    /// **Source:** `IGESSelect_IGESTypeForm.hxx`:51 - `IGESSelect_IGESTypeForm::Value()`
     /// Returns the signature for IGES, "mmm nnn" or "mmm" according
     /// creation choice (Type & Form or Type only)
     pub fn value(
         &self,
-        ent: &crate::ffi_types::HandleStandardTransient,
-        model: &crate::ffi_types::HandleInterfaceInterfaceModel,
+        ent: &crate::ffi_types::Handle_Standard_Transient,
+        model: &crate::ffi_types::Handle_Interface_InterfaceModel,
     ) -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -7354,8 +7370,8 @@ impl IGESTypeForm {
         .into_owned()
     }
 
-    /// **Source:** `IGESSelect_IGESTypeForm.hxx`:58 - `IGESSelect_IGESTypeForm::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `IGESSelect_IGESTypeForm.hxx`:55 - `IGESSelect_IGESTypeForm::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKDEIGES::IGESSelect_IGESTypeForm_dynamic_type(
@@ -7365,7 +7381,7 @@ impl IGESTypeForm {
         }
     }
 
-    /// **Source:** `IGESSelect_IGESTypeForm.hxx`:58 - `IGESSelect_IGESTypeForm::get_type_name()`
+    /// **Source:** `IGESSelect_IGESTypeForm.hxx`:55 - `IGESSelect_IGESTypeForm::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -7376,8 +7392,8 @@ impl IGESTypeForm {
         .into_owned()
     }
 
-    /// **Source:** `IGESSelect_IGESTypeForm.hxx`:58 - `IGESSelect_IGESTypeForm::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    /// **Source:** `IGESSelect_IGESTypeForm.hxx`:55 - `IGESSelect_IGESTypeForm::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKDEIGES::IGESSelect_IGESTypeForm_get_type_descriptor(),
@@ -7476,7 +7492,7 @@ impl IGESTypeForm {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESSelectIGESTypeForm> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_IGESSelect_IGESTypeForm> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDEIGES::IGESSelect_IGESTypeForm_to_handle(obj.into_raw()),
@@ -7484,7 +7500,7 @@ impl IGESTypeForm {
         }
     }
 
-    /// Inherited: **Source:** `IFSelect_Signature.hxx`:46 - `IFSelect_Signature::SetIntCase()`
+    /// Inherited: **Source:** `IFSelect_Signature.hxx`:44 - `IFSelect_Signature::SetIntCase()`
     pub fn set_int_case(&mut self, hasmin: bool, valmin: i32, hasmax: bool, valmax: i32) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_IGESTypeForm_inherited_SetIntCase(
@@ -7497,7 +7513,7 @@ impl IGESTypeForm {
         })
     }
 
-    /// Inherited: **Source:** `IFSelect_Signature.hxx`:53 - `IFSelect_Signature::IsIntCase()`
+    /// Inherited: **Source:** `IFSelect_Signature.hxx`:51 - `IFSelect_Signature::IsIntCase()`
     pub fn is_int_case(
         &self,
         hasmin: &mut bool,
@@ -7516,10 +7532,11 @@ impl IGESTypeForm {
         })
     }
 
-    /// Inherited: **Source:** `IFSelect_Signature.hxx`:69 - `IFSelect_Signature::CaseList()`
+    /// Inherited: **Source:** `IFSelect_Signature.hxx`:64 - `IFSelect_Signature::CaseList()`
     pub fn case_list(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleTColStdHSequenceOfAsciiString> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HSequence_TCollection_AsciiString>
+    {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDEIGES::IGESSelect_IGESTypeForm_inherited_CaseList(
@@ -7529,7 +7546,7 @@ impl IGESTypeForm {
         }
     }
 
-    /// Inherited: **Source:** `IFSelect_Signature.hxx`:81 - `IFSelect_Signature::Label()`
+    /// Inherited: **Source:** `IFSelect_Signature.hxx`:76 - `IFSelect_Signature::Label()`
     pub fn label(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -7540,11 +7557,11 @@ impl IGESTypeForm {
         }
     }
 
-    /// Inherited: **Source:** `IFSelect_Signature.hxx`:87 - `IFSelect_Signature::Matches()`
+    /// Inherited: **Source:** `IFSelect_Signature.hxx`:82 - `IFSelect_Signature::Matches()`
     pub fn matches(
         &self,
-        ent: &crate::ffi_types::HandleStandardTransient,
-        model: &crate::ffi_types::HandleInterfaceInterfaceModel,
+        ent: &crate::ffi_types::Handle_Standard_Transient,
+        model: &crate::ffi_types::Handle_Interface_InterfaceModel,
         text: &crate::t_collection::AsciiString,
         exact: bool,
     ) -> bool {
@@ -7559,11 +7576,11 @@ impl IGESTypeForm {
         })
     }
 
-    /// Inherited: **Source:** `Interface_SignType.hxx`:42 - `Interface_SignType::Text()`
+    /// Inherited: **Source:** `Interface_SignType.hxx`:39 - `Interface_SignType::Text()`
     pub fn text(
         &self,
-        ent: &crate::ffi_types::HandleStandardTransient,
-        context: &crate::ffi_types::HandleStandardTransient,
+        ent: &crate::ffi_types::Handle_Standard_Transient,
+        context: &crate::ffi_types::Handle_Standard_Transient,
     ) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -7576,10 +7593,10 @@ impl IGESTypeForm {
         }
     }
 
-    /// Inherited: **Source:** `MoniTool_SignText.hxx`:46 - `MoniTool_SignText::TextAlone()`
+    /// Inherited: **Source:** `MoniTool_SignText.hxx`:43 - `MoniTool_SignText::TextAlone()`
     pub fn text_alone(
         &self,
-        ent: &crate::ffi_types::HandleStandardTransient,
+        ent: &crate::ffi_types::Handle_Standard_Transient,
     ) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -7591,8 +7608,8 @@ impl IGESTypeForm {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_IGESTypeForm_inherited_IsInstance(
                 self as *const Self,
@@ -7601,8 +7618,8 @@ impl IGESTypeForm {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_IGESTypeForm_inherited_IsKind(
                 self as *const Self,
@@ -7611,7 +7628,7 @@ impl IGESTypeForm {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -7627,7 +7644,7 @@ impl IGESTypeForm {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_IGESTypeForm_inherited_GetRefCount(
@@ -7636,7 +7653,7 @@ impl IGESTypeForm {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_IGESTypeForm_inherited_IncrementRefCounter(
@@ -7645,7 +7662,7 @@ impl IGESTypeForm {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_IGESTypeForm_inherited_DecrementRefCounter(
@@ -7654,7 +7671,7 @@ impl IGESTypeForm {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_IGESTypeForm_inherited_Delete(
@@ -7664,36 +7681,38 @@ impl IGESTypeForm {
     }
 }
 
-pub use crate::ffi_types::HandleIGESSelectIGESTypeForm;
+pub use crate::ffi_types::Handle_IGESSelect_IGESTypeForm;
 
-unsafe impl crate::CppDeletable for HandleIGESSelectIGESTypeForm {
+unsafe impl crate::CppDeletable for Handle_IGESSelect_IGESTypeForm {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKDEIGES::HandleIGESSelectIGESTypeForm_destructor(ptr);
+            crate::ffi_extern_TKDEIGES::Handle_IGESSelect_IGESTypeForm_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleIGESSelectIGESTypeForm {
+unsafe impl crate::CppCopyable for Handle_IGESSelect_IGESTypeForm {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
         unsafe {
-            crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectIGESTypeForm_clone(ptr))
+            crate::check_result(crate::ffi_extern_TKDEIGES::Handle_IGESSelect_IGESTypeForm_clone(
+                ptr,
+            ))
         }
     }
 }
 
-impl HandleIGESSelectIGESTypeForm {
+impl Handle_IGESSelect_IGESTypeForm {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
         unsafe {
-            crate::ffi_extern_TKDEIGES::HandleIGESSelectIGESTypeForm_is_null(self as *const Self)
+            crate::ffi_extern_TKDEIGES::Handle_IGESSelect_IGESTypeForm_is_null(self as *const Self)
         }
     }
 
     /// Dereference this Handle to access the underlying IGESSelect_IGESTypeForm
     pub fn get(&self) -> &crate::ffi_types::IGESSelect_IGESTypeForm {
         unsafe {
-            &*crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectIGESTypeForm_get(
+            &*crate::check_result(crate::ffi_extern_TKDEIGES::Handle_IGESSelect_IGESTypeForm_get(
                 self as *const Self,
             ))
         }
@@ -7703,7 +7722,9 @@ impl HandleIGESSelectIGESTypeForm {
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::IGESSelect_IGESTypeForm {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi_extern_TKDEIGES::HandleIGESSelectIGESTypeForm_get_mut(self as *mut Self),
+                crate::ffi_extern_TKDEIGES::Handle_IGESSelect_IGESTypeForm_get_mut(
+                    self as *mut Self,
+                ),
             )
         }
     }
@@ -7711,50 +7732,36 @@ impl HandleIGESSelectIGESTypeForm {
     /// Upcast Handle<IGESSelect_IGESTypeForm> to Handle<IFSelect_Signature>
     pub fn to_handle_signature(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleIFSelectSignature> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_IFSelect_Signature> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKDEIGES::HandleIGESSelectIGESTypeForm_to_HandleIFSelectSignature(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::Handle_IGESSelect_IGESTypeForm_to_Handle_IFSelect_Signature(self as *const Self)))
         }
     }
 
     /// Upcast Handle<IGESSelect_IGESTypeForm> to Handle<Interface_SignType>
     pub fn to_handle_sign_type(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleInterfaceSignType> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Interface_SignType> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKDEIGES::HandleIGESSelectIGESTypeForm_to_HandleInterfaceSignType(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::Handle_IGESSelect_IGESTypeForm_to_Handle_Interface_SignType(self as *const Self)))
         }
     }
 
     /// Upcast Handle<IGESSelect_IGESTypeForm> to Handle<MoniTool_SignText>
-    pub fn to_handle_sign_text(&self) -> crate::OwnedPtr<crate::ffi_types::HandleMoniToolSignText> {
+    pub fn to_handle_sign_text(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_MoniTool_SignText> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKDEIGES::HandleIGESSelectIGESTypeForm_to_HandleMoniToolSignText(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::Handle_IGESSelect_IGESTypeForm_to_Handle_MoniTool_SignText(self as *const Self)))
         }
     }
 
     /// Upcast Handle<IGESSelect_IGESTypeForm> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKDEIGES::HandleIGESSelectIGESTypeForm_to_HandleStandardTransient(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::Handle_IGESSelect_IGESTypeForm_to_Handle_Standard_Transient(self as *const Self)))
         }
     }
 }
@@ -7763,7 +7770,7 @@ impl HandleIGESSelectIGESTypeForm {
 // From IGESSelect_ModelModifier.hxx
 // ========================
 
-/// **Source:** `IGESSelect_ModelModifier.hxx`:34 - `IGESSelect_ModelModifier`
+/// **Source:** `IGESSelect_ModelModifier.hxx`:31 - `IGESSelect_ModelModifier`
 pub use crate::ffi_types::IGESSelect_ModelModifier as ModelModifier;
 
 unsafe impl crate::CppDeletable for ModelModifier {
@@ -7775,15 +7782,15 @@ unsafe impl crate::CppDeletable for ModelModifier {
 }
 
 impl ModelModifier {
-    /// **Source:** `IGESSelect_ModelModifier.hxx`:41 - `IGESSelect_ModelModifier::Perform()`
+    /// **Source:** `IGESSelect_ModelModifier.hxx`:38 - `IGESSelect_ModelModifier::Perform()`
     /// The inherited Perform does the required cast (and refuses to
     /// go further if cast has failed) then calls the instantiated
     /// Performing
     pub fn perform(
         &self,
         ctx: &mut crate::if_select::ContextModif,
-        target: &crate::ffi_types::HandleInterfaceInterfaceModel,
-        protocol: &crate::ffi_types::HandleInterfaceProtocol,
+        target: &crate::ffi_types::Handle_Interface_InterfaceModel,
+        protocol: &crate::ffi_types::Handle_Interface_Protocol,
         TC: &mut crate::interface::CopyTool,
     ) {
         crate::check_void_result(unsafe {
@@ -7797,7 +7804,7 @@ impl ModelModifier {
         })
     }
 
-    /// **Source:** `IGESSelect_ModelModifier.hxx`:50 - `IGESSelect_ModelModifier::PerformProtocol()`
+    /// **Source:** `IGESSelect_ModelModifier.hxx`:47 - `IGESSelect_ModelModifier::PerformProtocol()`
     /// Specific Perform with Protocol. It is defined to let the
     /// Protocol unused and to call Performing without Protocol
     /// (most current case). It can be redefined if specific action
@@ -7805,8 +7812,8 @@ impl ModelModifier {
     pub fn perform_protocol(
         &self,
         ctx: &mut crate::if_select::ContextModif,
-        target: &crate::ffi_types::HandleIGESDataIGESModel,
-        proto: &crate::ffi_types::HandleIGESDataProtocol,
+        target: &crate::ffi_types::Handle_IGESData_IGESModel,
+        proto: &crate::ffi_types::Handle_IGESData_Protocol,
         TC: &mut crate::interface::CopyTool,
     ) {
         crate::check_void_result(unsafe {
@@ -7820,7 +7827,7 @@ impl ModelModifier {
         })
     }
 
-    /// **Source:** `IGESSelect_ModelModifier.hxx`:59 - `IGESSelect_ModelModifier::Performing()`
+    /// **Source:** `IGESSelect_ModelModifier.hxx`:56 - `IGESSelect_ModelModifier::Performing()`
     /// Specific Perform, without Protocol. If Performing with
     /// Protocol is redefined, Performing without Protocol must
     /// though be defined to do nothing (not called, but demanded
@@ -7828,7 +7835,7 @@ impl ModelModifier {
     pub fn performing(
         &self,
         ctx: &mut crate::if_select::ContextModif,
-        target: &crate::ffi_types::HandleIGESDataIGESModel,
+        target: &crate::ffi_types::Handle_IGESData_IGESModel,
         TC: &mut crate::interface::CopyTool,
     ) {
         crate::check_void_result(unsafe {
@@ -7841,8 +7848,8 @@ impl ModelModifier {
         })
     }
 
-    /// **Source:** `IGESSelect_ModelModifier.hxx`:63 - `IGESSelect_ModelModifier::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `IGESSelect_ModelModifier.hxx`:60 - `IGESSelect_ModelModifier::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKDEIGES::IGESSelect_ModelModifier_dynamic_type(
@@ -7852,7 +7859,7 @@ impl ModelModifier {
         }
     }
 
-    /// **Source:** `IGESSelect_ModelModifier.hxx`:63 - `IGESSelect_ModelModifier::get_type_name()`
+    /// **Source:** `IGESSelect_ModelModifier.hxx`:60 - `IGESSelect_ModelModifier::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -7863,8 +7870,8 @@ impl ModelModifier {
         .into_owned()
     }
 
-    /// **Source:** `IGESSelect_ModelModifier.hxx`:63 - `IGESSelect_ModelModifier::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    /// **Source:** `IGESSelect_ModelModifier.hxx`:60 - `IGESSelect_ModelModifier::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKDEIGES::IGESSelect_ModelModifier_get_type_descriptor(),
@@ -7934,7 +7941,7 @@ impl ModelModifier {
         }
     }
 
-    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:68 - `IFSelect_GeneralModifier::MayChangeGraph()`
+    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:65 - `IFSelect_GeneralModifier::MayChangeGraph()`
     pub fn may_change_graph(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_ModelModifier_inherited_MayChangeGraph(
@@ -7943,8 +7950,8 @@ impl ModelModifier {
         })
     }
 
-    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:72 - `IFSelect_GeneralModifier::SetDispatch()`
-    pub fn set_dispatch(&mut self, disp: &crate::ffi_types::HandleIFSelectDispatch) {
+    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:69 - `IFSelect_GeneralModifier::SetDispatch()`
+    pub fn set_dispatch(&mut self, disp: &crate::ffi_types::Handle_IFSelect_Dispatch) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_ModelModifier_inherited_SetDispatch(
                 self as *mut Self,
@@ -7953,8 +7960,8 @@ impl ModelModifier {
         })
     }
 
-    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:75 - `IFSelect_GeneralModifier::Dispatch()`
-    pub fn dispatch(&self) -> crate::OwnedPtr<crate::ffi_types::HandleIFSelectDispatch> {
+    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:72 - `IFSelect_GeneralModifier::Dispatch()`
+    pub fn dispatch(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_IFSelect_Dispatch> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDEIGES::IGESSelect_ModelModifier_inherited_Dispatch(
@@ -7964,8 +7971,8 @@ impl ModelModifier {
         }
     }
 
-    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:80 - `IFSelect_GeneralModifier::Applies()`
-    pub fn applies(&self, disp: &crate::ffi_types::HandleIFSelectDispatch) -> bool {
+    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:77 - `IFSelect_GeneralModifier::Applies()`
+    pub fn applies(&self, disp: &crate::ffi_types::Handle_IFSelect_Dispatch) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_ModelModifier_inherited_Applies(
                 self as *const Self,
@@ -7974,8 +7981,8 @@ impl ModelModifier {
         })
     }
 
-    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:84 - `IFSelect_GeneralModifier::SetSelection()`
-    pub fn set_selection(&mut self, sel: &crate::ffi_types::HandleIFSelectSelection) {
+    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:81 - `IFSelect_GeneralModifier::SetSelection()`
+    pub fn set_selection(&mut self, sel: &crate::ffi_types::Handle_IFSelect_Selection) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_ModelModifier_inherited_SetSelection(
                 self as *mut Self,
@@ -7984,7 +7991,7 @@ impl ModelModifier {
         })
     }
 
-    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:87 - `IFSelect_GeneralModifier::ResetSelection()`
+    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:84 - `IFSelect_GeneralModifier::ResetSelection()`
     pub fn reset_selection(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_ModelModifier_inherited_ResetSelection(
@@ -7993,7 +8000,7 @@ impl ModelModifier {
         })
     }
 
-    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:90 - `IFSelect_GeneralModifier::HasSelection()`
+    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:87 - `IFSelect_GeneralModifier::HasSelection()`
     pub fn has_selection(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_ModelModifier_inherited_HasSelection(
@@ -8002,8 +8009,8 @@ impl ModelModifier {
         })
     }
 
-    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:93 - `IFSelect_GeneralModifier::Selection()`
-    pub fn selection(&self) -> crate::OwnedPtr<crate::ffi_types::HandleIFSelectSelection> {
+    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:90 - `IFSelect_GeneralModifier::Selection()`
+    pub fn selection(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_IFSelect_Selection> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDEIGES::IGESSelect_ModelModifier_inherited_Selection(
@@ -8013,7 +8020,7 @@ impl ModelModifier {
         }
     }
 
-    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:96 - `IFSelect_GeneralModifier::Label()`
+    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:93 - `IFSelect_GeneralModifier::Label()`
     pub fn label(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -8024,8 +8031,8 @@ impl ModelModifier {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_ModelModifier_inherited_IsInstance(
                 self as *const Self,
@@ -8034,8 +8041,8 @@ impl ModelModifier {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_ModelModifier_inherited_IsKind(
                 self as *const Self,
@@ -8044,7 +8051,7 @@ impl ModelModifier {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -8060,7 +8067,7 @@ impl ModelModifier {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_ModelModifier_inherited_GetRefCount(
@@ -8069,7 +8076,7 @@ impl ModelModifier {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_ModelModifier_inherited_IncrementRefCounter(
@@ -8078,7 +8085,7 @@ impl ModelModifier {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_ModelModifier_inherited_DecrementRefCounter(
@@ -8087,7 +8094,7 @@ impl ModelModifier {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_ModelModifier_inherited_Delete(
@@ -8097,38 +8104,38 @@ impl ModelModifier {
     }
 }
 
-pub use crate::ffi_types::HandleIGESSelectModelModifier;
+pub use crate::ffi_types::Handle_IGESSelect_ModelModifier;
 
-unsafe impl crate::CppDeletable for HandleIGESSelectModelModifier {
+unsafe impl crate::CppDeletable for Handle_IGESSelect_ModelModifier {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKDEIGES::HandleIGESSelectModelModifier_destructor(ptr);
+            crate::ffi_extern_TKDEIGES::Handle_IGESSelect_ModelModifier_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleIGESSelectModelModifier {
+unsafe impl crate::CppCopyable for Handle_IGESSelect_ModelModifier {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
         unsafe {
-            crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectModelModifier_clone(
+            crate::check_result(crate::ffi_extern_TKDEIGES::Handle_IGESSelect_ModelModifier_clone(
                 ptr,
             ))
         }
     }
 }
 
-impl HandleIGESSelectModelModifier {
+impl Handle_IGESSelect_ModelModifier {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
         unsafe {
-            crate::ffi_extern_TKDEIGES::HandleIGESSelectModelModifier_is_null(self as *const Self)
+            crate::ffi_extern_TKDEIGES::Handle_IGESSelect_ModelModifier_is_null(self as *const Self)
         }
     }
 
     /// Dereference this Handle to access the underlying IGESSelect_ModelModifier
     pub fn get(&self) -> &crate::ffi_types::IGESSelect_ModelModifier {
         unsafe {
-            &*crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectModelModifier_get(
+            &*crate::check_result(crate::ffi_extern_TKDEIGES::Handle_IGESSelect_ModelModifier_get(
                 self as *const Self,
             ))
         }
@@ -8138,7 +8145,7 @@ impl HandleIGESSelectModelModifier {
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::IGESSelect_ModelModifier {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi_extern_TKDEIGES::HandleIGESSelectModelModifier_get_mut(
+                crate::ffi_extern_TKDEIGES::Handle_IGESSelect_ModelModifier_get_mut(
                     self as *mut Self,
                 ),
             )
@@ -8146,31 +8153,29 @@ impl HandleIGESSelectModelModifier {
     }
 
     /// Upcast Handle<IGESSelect_ModelModifier> to Handle<IFSelect_Modifier>
-    pub fn to_handle_modifier(&self) -> crate::OwnedPtr<crate::ffi_types::HandleIFSelectModifier> {
+    pub fn to_handle_modifier(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_IFSelect_Modifier> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKDEIGES::HandleIGESSelectModelModifier_to_HandleIFSelectModifier(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::Handle_IGESSelect_ModelModifier_to_Handle_IFSelect_Modifier(self as *const Self)))
         }
     }
 
     /// Upcast Handle<IGESSelect_ModelModifier> to Handle<IFSelect_GeneralModifier>
     pub fn to_handle_general_modifier(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleIFSelectGeneralModifier> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_IFSelect_GeneralModifier> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectModelModifier_to_HandleIFSelectGeneralModifier(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::Handle_IGESSelect_ModelModifier_to_Handle_IFSelect_GeneralModifier(self as *const Self)))
         }
     }
 
     /// Upcast Handle<IGESSelect_ModelModifier> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectModelModifier_to_HandleStandardTransient(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::Handle_IGESSelect_ModelModifier_to_Handle_Standard_Transient(self as *const Self)))
         }
     }
 
@@ -8179,9 +8184,9 @@ impl HandleIGESSelectModelModifier {
     /// Returns `None` if the handle does not point to a `IGESSelect_AddGroup` (or subclass).
     pub fn downcast_to_add_group(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleIGESSelectAddGroup>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_IGESSelect_AddGroup>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKDEIGES::HandleIGESSelectModelModifier_downcast_to_HandleIGESSelectAddGroup(self as *const Self)
+            crate::ffi_extern_TKDEIGES::Handle_IGESSelect_ModelModifier_downcast_to_Handle_IGESSelect_AddGroup(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -8195,9 +8200,9 @@ impl HandleIGESSelectModelModifier {
     /// Returns `None` if the handle does not point to a `IGESSelect_AutoCorrect` (or subclass).
     pub fn downcast_to_auto_correct(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleIGESSelectAutoCorrect>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_IGESSelect_AutoCorrect>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKDEIGES::HandleIGESSelectModelModifier_downcast_to_HandleIGESSelectAutoCorrect(self as *const Self)
+            crate::ffi_extern_TKDEIGES::Handle_IGESSelect_ModelModifier_downcast_to_Handle_IGESSelect_AutoCorrect(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -8211,9 +8216,9 @@ impl HandleIGESSelectModelModifier {
     /// Returns `None` if the handle does not point to a `IGESSelect_ChangeLevelList` (or subclass).
     pub fn downcast_to_change_level_list(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleIGESSelectChangeLevelList>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_IGESSelect_ChangeLevelList>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKDEIGES::HandleIGESSelectModelModifier_downcast_to_HandleIGESSelectChangeLevelList(self as *const Self)
+            crate::ffi_extern_TKDEIGES::Handle_IGESSelect_ModelModifier_downcast_to_Handle_IGESSelect_ChangeLevelList(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -8227,9 +8232,9 @@ impl HandleIGESSelectModelModifier {
     /// Returns `None` if the handle does not point to a `IGESSelect_ChangeLevelNumber` (or subclass).
     pub fn downcast_to_change_level_number(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleIGESSelectChangeLevelNumber>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_IGESSelect_ChangeLevelNumber>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKDEIGES::HandleIGESSelectModelModifier_downcast_to_HandleIGESSelectChangeLevelNumber(self as *const Self)
+            crate::ffi_extern_TKDEIGES::Handle_IGESSelect_ModelModifier_downcast_to_Handle_IGESSelect_ChangeLevelNumber(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -8243,9 +8248,9 @@ impl HandleIGESSelectModelModifier {
     /// Returns `None` if the handle does not point to a `IGESSelect_ComputeStatus` (or subclass).
     pub fn downcast_to_compute_status(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleIGESSelectComputeStatus>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_IGESSelect_ComputeStatus>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKDEIGES::HandleIGESSelectModelModifier_downcast_to_HandleIGESSelectComputeStatus(self as *const Self)
+            crate::ffi_extern_TKDEIGES::Handle_IGESSelect_ModelModifier_downcast_to_Handle_IGESSelect_ComputeStatus(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -8259,9 +8264,9 @@ impl HandleIGESSelectModelModifier {
     /// Returns `None` if the handle does not point to a `IGESSelect_RebuildDrawings` (or subclass).
     pub fn downcast_to_rebuild_drawings(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleIGESSelectRebuildDrawings>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_IGESSelect_RebuildDrawings>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKDEIGES::HandleIGESSelectModelModifier_downcast_to_HandleIGESSelectRebuildDrawings(self as *const Self)
+            crate::ffi_extern_TKDEIGES::Handle_IGESSelect_ModelModifier_downcast_to_Handle_IGESSelect_RebuildDrawings(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -8275,9 +8280,9 @@ impl HandleIGESSelectModelModifier {
     /// Returns `None` if the handle does not point to a `IGESSelect_RebuildGroups` (or subclass).
     pub fn downcast_to_rebuild_groups(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleIGESSelectRebuildGroups>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_IGESSelect_RebuildGroups>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKDEIGES::HandleIGESSelectModelModifier_downcast_to_HandleIGESSelectRebuildGroups(self as *const Self)
+            crate::ffi_extern_TKDEIGES::Handle_IGESSelect_ModelModifier_downcast_to_Handle_IGESSelect_RebuildGroups(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -8291,9 +8296,9 @@ impl HandleIGESSelectModelModifier {
     /// Returns `None` if the handle does not point to a `IGESSelect_RemoveCurves` (or subclass).
     pub fn downcast_to_remove_curves(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleIGESSelectRemoveCurves>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_IGESSelect_RemoveCurves>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKDEIGES::HandleIGESSelectModelModifier_downcast_to_HandleIGESSelectRemoveCurves(self as *const Self)
+            crate::ffi_extern_TKDEIGES::Handle_IGESSelect_ModelModifier_downcast_to_Handle_IGESSelect_RemoveCurves(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -8307,9 +8312,9 @@ impl HandleIGESSelectModelModifier {
     /// Returns `None` if the handle does not point to a `IGESSelect_SetGlobalParameter` (or subclass).
     pub fn downcast_to_set_global_parameter(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleIGESSelectSetGlobalParameter>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_IGESSelect_SetGlobalParameter>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKDEIGES::HandleIGESSelectModelModifier_downcast_to_HandleIGESSelectSetGlobalParameter(self as *const Self)
+            crate::ffi_extern_TKDEIGES::Handle_IGESSelect_ModelModifier_downcast_to_Handle_IGESSelect_SetGlobalParameter(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -8323,9 +8328,9 @@ impl HandleIGESSelectModelModifier {
     /// Returns `None` if the handle does not point to a `IGESSelect_SetLabel` (or subclass).
     pub fn downcast_to_set_label(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleIGESSelectSetLabel>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_IGESSelect_SetLabel>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKDEIGES::HandleIGESSelectModelModifier_downcast_to_HandleIGESSelectSetLabel(self as *const Self)
+            crate::ffi_extern_TKDEIGES::Handle_IGESSelect_ModelModifier_downcast_to_Handle_IGESSelect_SetLabel(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -8339,9 +8344,9 @@ impl HandleIGESSelectModelModifier {
     /// Returns `None` if the handle does not point to a `IGESSelect_SetVersion5` (or subclass).
     pub fn downcast_to_set_version5(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleIGESSelectSetVersion5>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_IGESSelect_SetVersion5>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKDEIGES::HandleIGESSelectModelModifier_downcast_to_HandleIGESSelectSetVersion5(self as *const Self)
+            crate::ffi_extern_TKDEIGES::Handle_IGESSelect_ModelModifier_downcast_to_Handle_IGESSelect_SetVersion5(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -8355,9 +8360,9 @@ impl HandleIGESSelectModelModifier {
     /// Returns `None` if the handle does not point to a `IGESSelect_UpdateCreationDate` (or subclass).
     pub fn downcast_to_update_creation_date(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleIGESSelectUpdateCreationDate>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_IGESSelect_UpdateCreationDate>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKDEIGES::HandleIGESSelectModelModifier_downcast_to_HandleIGESSelectUpdateCreationDate(self as *const Self)
+            crate::ffi_extern_TKDEIGES::Handle_IGESSelect_ModelModifier_downcast_to_Handle_IGESSelect_UpdateCreationDate(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -8371,9 +8376,9 @@ impl HandleIGESSelectModelModifier {
     /// Returns `None` if the handle does not point to a `IGESSelect_UpdateFileName` (or subclass).
     pub fn downcast_to_update_file_name(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleIGESSelectUpdateFileName>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_IGESSelect_UpdateFileName>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKDEIGES::HandleIGESSelectModelModifier_downcast_to_HandleIGESSelectUpdateFileName(self as *const Self)
+            crate::ffi_extern_TKDEIGES::Handle_IGESSelect_ModelModifier_downcast_to_Handle_IGESSelect_UpdateFileName(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -8387,9 +8392,9 @@ impl HandleIGESSelectModelModifier {
     /// Returns `None` if the handle does not point to a `IGESSelect_UpdateLastChange` (or subclass).
     pub fn downcast_to_update_last_change(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleIGESSelectUpdateLastChange>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_IGESSelect_UpdateLastChange>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKDEIGES::HandleIGESSelectModelModifier_downcast_to_HandleIGESSelectUpdateLastChange(self as *const Self)
+            crate::ffi_extern_TKDEIGES::Handle_IGESSelect_ModelModifier_downcast_to_Handle_IGESSelect_UpdateLastChange(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -8403,7 +8408,7 @@ impl HandleIGESSelectModelModifier {
 // From IGESSelect_RebuildDrawings.hxx
 // ========================
 
-/// **Source:** `IGESSelect_RebuildDrawings.hxx`:42 - `IGESSelect_RebuildDrawings`
+/// **Source:** `IGESSelect_RebuildDrawings.hxx`:39 - `IGESSelect_RebuildDrawings`
 /// Rebuilds Drawings which were bypassed to produce new models.
 /// If a set of entities, all put into a same IGESModel, were
 /// attached to a same Drawing in the starting Model, this Modifier
@@ -8425,7 +8430,7 @@ unsafe impl crate::CppDeletable for RebuildDrawings {
 }
 
 impl RebuildDrawings {
-    /// **Source:** `IGESSelect_RebuildDrawings.hxx`:47 - `IGESSelect_RebuildDrawings::IGESSelect_RebuildDrawings()`
+    /// **Source:** `IGESSelect_RebuildDrawings.hxx`:44 - `IGESSelect_RebuildDrawings::IGESSelect_RebuildDrawings()`
     /// Creates an RebuildDrawings, which uses the system Date
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
@@ -8435,12 +8440,12 @@ impl RebuildDrawings {
         }
     }
 
-    /// **Source:** `IGESSelect_RebuildDrawings.hxx`:50 - `IGESSelect_RebuildDrawings::Performing()`
+    /// **Source:** `IGESSelect_RebuildDrawings.hxx`:47 - `IGESSelect_RebuildDrawings::Performing()`
     /// Specific action : Rebuilds the original Drawings
     pub fn performing(
         &self,
         ctx: &mut crate::if_select::ContextModif,
-        target: &crate::ffi_types::HandleIGESDataIGESModel,
+        target: &crate::ffi_types::Handle_IGESData_IGESModel,
         TC: &mut crate::interface::CopyTool,
     ) {
         crate::check_void_result(unsafe {
@@ -8453,7 +8458,7 @@ impl RebuildDrawings {
         })
     }
 
-    /// **Source:** `IGESSelect_RebuildDrawings.hxx`:56 - `IGESSelect_RebuildDrawings::Label()`
+    /// **Source:** `IGESSelect_RebuildDrawings.hxx`:53 - `IGESSelect_RebuildDrawings::Label()`
     /// Returns a text which is
     /// "Rebuild Drawings"
     pub fn label(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
@@ -8464,8 +8469,8 @@ impl RebuildDrawings {
         }
     }
 
-    /// **Source:** `IGESSelect_RebuildDrawings.hxx`:58 - `IGESSelect_RebuildDrawings::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `IGESSelect_RebuildDrawings.hxx`:55 - `IGESSelect_RebuildDrawings::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKDEIGES::IGESSelect_RebuildDrawings_dynamic_type(
@@ -8475,7 +8480,7 @@ impl RebuildDrawings {
         }
     }
 
-    /// **Source:** `IGESSelect_RebuildDrawings.hxx`:58 - `IGESSelect_RebuildDrawings::get_type_name()`
+    /// **Source:** `IGESSelect_RebuildDrawings.hxx`:55 - `IGESSelect_RebuildDrawings::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -8486,8 +8491,8 @@ impl RebuildDrawings {
         .into_owned()
     }
 
-    /// **Source:** `IGESSelect_RebuildDrawings.hxx`:58 - `IGESSelect_RebuildDrawings::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    /// **Source:** `IGESSelect_RebuildDrawings.hxx`:55 - `IGESSelect_RebuildDrawings::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKDEIGES::IGESSelect_RebuildDrawings_get_type_descriptor(),
@@ -8578,7 +8583,7 @@ impl RebuildDrawings {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESSelectRebuildDrawings> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_IGESSelect_RebuildDrawings> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDEIGES::IGESSelect_RebuildDrawings_to_handle(obj.into_raw()),
@@ -8586,12 +8591,12 @@ impl RebuildDrawings {
         }
     }
 
-    /// Inherited: **Source:** `IGESSelect_ModelModifier.hxx`:41 - `IGESSelect_ModelModifier::Perform()`
+    /// Inherited: **Source:** `IGESSelect_ModelModifier.hxx`:38 - `IGESSelect_ModelModifier::Perform()`
     pub fn perform(
         &self,
         ctx: &mut crate::if_select::ContextModif,
-        target: &crate::ffi_types::HandleInterfaceInterfaceModel,
-        protocol: &crate::ffi_types::HandleInterfaceProtocol,
+        target: &crate::ffi_types::Handle_Interface_InterfaceModel,
+        protocol: &crate::ffi_types::Handle_Interface_Protocol,
         TC: &mut crate::interface::CopyTool,
     ) {
         crate::check_void_result(unsafe {
@@ -8605,12 +8610,12 @@ impl RebuildDrawings {
         })
     }
 
-    /// Inherited: **Source:** `IGESSelect_ModelModifier.hxx`:50 - `IGESSelect_ModelModifier::PerformProtocol()`
+    /// Inherited: **Source:** `IGESSelect_ModelModifier.hxx`:47 - `IGESSelect_ModelModifier::PerformProtocol()`
     pub fn perform_protocol(
         &self,
         ctx: &mut crate::if_select::ContextModif,
-        target: &crate::ffi_types::HandleIGESDataIGESModel,
-        proto: &crate::ffi_types::HandleIGESDataProtocol,
+        target: &crate::ffi_types::Handle_IGESData_IGESModel,
+        proto: &crate::ffi_types::Handle_IGESData_Protocol,
         TC: &mut crate::interface::CopyTool,
     ) {
         crate::check_void_result(unsafe {
@@ -8624,7 +8629,7 @@ impl RebuildDrawings {
         })
     }
 
-    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:68 - `IFSelect_GeneralModifier::MayChangeGraph()`
+    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:65 - `IFSelect_GeneralModifier::MayChangeGraph()`
     pub fn may_change_graph(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_RebuildDrawings_inherited_MayChangeGraph(
@@ -8633,8 +8638,8 @@ impl RebuildDrawings {
         })
     }
 
-    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:72 - `IFSelect_GeneralModifier::SetDispatch()`
-    pub fn set_dispatch(&mut self, disp: &crate::ffi_types::HandleIFSelectDispatch) {
+    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:69 - `IFSelect_GeneralModifier::SetDispatch()`
+    pub fn set_dispatch(&mut self, disp: &crate::ffi_types::Handle_IFSelect_Dispatch) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_RebuildDrawings_inherited_SetDispatch(
                 self as *mut Self,
@@ -8643,8 +8648,8 @@ impl RebuildDrawings {
         })
     }
 
-    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:75 - `IFSelect_GeneralModifier::Dispatch()`
-    pub fn dispatch(&self) -> crate::OwnedPtr<crate::ffi_types::HandleIFSelectDispatch> {
+    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:72 - `IFSelect_GeneralModifier::Dispatch()`
+    pub fn dispatch(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_IFSelect_Dispatch> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDEIGES::IGESSelect_RebuildDrawings_inherited_Dispatch(
@@ -8654,8 +8659,8 @@ impl RebuildDrawings {
         }
     }
 
-    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:80 - `IFSelect_GeneralModifier::Applies()`
-    pub fn applies(&self, disp: &crate::ffi_types::HandleIFSelectDispatch) -> bool {
+    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:77 - `IFSelect_GeneralModifier::Applies()`
+    pub fn applies(&self, disp: &crate::ffi_types::Handle_IFSelect_Dispatch) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_RebuildDrawings_inherited_Applies(
                 self as *const Self,
@@ -8664,8 +8669,8 @@ impl RebuildDrawings {
         })
     }
 
-    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:84 - `IFSelect_GeneralModifier::SetSelection()`
-    pub fn set_selection(&mut self, sel: &crate::ffi_types::HandleIFSelectSelection) {
+    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:81 - `IFSelect_GeneralModifier::SetSelection()`
+    pub fn set_selection(&mut self, sel: &crate::ffi_types::Handle_IFSelect_Selection) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_RebuildDrawings_inherited_SetSelection(
                 self as *mut Self,
@@ -8674,7 +8679,7 @@ impl RebuildDrawings {
         })
     }
 
-    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:87 - `IFSelect_GeneralModifier::ResetSelection()`
+    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:84 - `IFSelect_GeneralModifier::ResetSelection()`
     pub fn reset_selection(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_RebuildDrawings_inherited_ResetSelection(
@@ -8683,7 +8688,7 @@ impl RebuildDrawings {
         })
     }
 
-    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:90 - `IFSelect_GeneralModifier::HasSelection()`
+    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:87 - `IFSelect_GeneralModifier::HasSelection()`
     pub fn has_selection(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_RebuildDrawings_inherited_HasSelection(
@@ -8692,8 +8697,8 @@ impl RebuildDrawings {
         })
     }
 
-    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:93 - `IFSelect_GeneralModifier::Selection()`
-    pub fn selection(&self) -> crate::OwnedPtr<crate::ffi_types::HandleIFSelectSelection> {
+    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:90 - `IFSelect_GeneralModifier::Selection()`
+    pub fn selection(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_IFSelect_Selection> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDEIGES::IGESSelect_RebuildDrawings_inherited_Selection(
@@ -8703,8 +8708,8 @@ impl RebuildDrawings {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_RebuildDrawings_inherited_IsInstance(
                 self as *const Self,
@@ -8713,8 +8718,8 @@ impl RebuildDrawings {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_RebuildDrawings_inherited_IsKind(
                 self as *const Self,
@@ -8723,7 +8728,7 @@ impl RebuildDrawings {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -8739,7 +8744,7 @@ impl RebuildDrawings {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_RebuildDrawings_inherited_GetRefCount(
@@ -8748,7 +8753,7 @@ impl RebuildDrawings {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_RebuildDrawings_inherited_IncrementRefCounter(
@@ -8757,7 +8762,7 @@ impl RebuildDrawings {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_RebuildDrawings_inherited_DecrementRefCounter(
@@ -8766,7 +8771,7 @@ impl RebuildDrawings {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_RebuildDrawings_inherited_Delete(
@@ -8776,40 +8781,44 @@ impl RebuildDrawings {
     }
 }
 
-pub use crate::ffi_types::HandleIGESSelectRebuildDrawings;
+pub use crate::ffi_types::Handle_IGESSelect_RebuildDrawings;
 
-unsafe impl crate::CppDeletable for HandleIGESSelectRebuildDrawings {
+unsafe impl crate::CppDeletable for Handle_IGESSelect_RebuildDrawings {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKDEIGES::HandleIGESSelectRebuildDrawings_destructor(ptr);
+            crate::ffi_extern_TKDEIGES::Handle_IGESSelect_RebuildDrawings_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleIGESSelectRebuildDrawings {
+unsafe impl crate::CppCopyable for Handle_IGESSelect_RebuildDrawings {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
         unsafe {
-            crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectRebuildDrawings_clone(
-                ptr,
-            ))
+            crate::check_result(
+                crate::ffi_extern_TKDEIGES::Handle_IGESSelect_RebuildDrawings_clone(ptr),
+            )
         }
     }
 }
 
-impl HandleIGESSelectRebuildDrawings {
+impl Handle_IGESSelect_RebuildDrawings {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
         unsafe {
-            crate::ffi_extern_TKDEIGES::HandleIGESSelectRebuildDrawings_is_null(self as *const Self)
+            crate::ffi_extern_TKDEIGES::Handle_IGESSelect_RebuildDrawings_is_null(
+                self as *const Self,
+            )
         }
     }
 
     /// Dereference this Handle to access the underlying IGESSelect_RebuildDrawings
     pub fn get(&self) -> &crate::ffi_types::IGESSelect_RebuildDrawings {
         unsafe {
-            &*crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectRebuildDrawings_get(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKDEIGES::Handle_IGESSelect_RebuildDrawings_get(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -8817,7 +8826,7 @@ impl HandleIGESSelectRebuildDrawings {
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::IGESSelect_RebuildDrawings {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi_extern_TKDEIGES::HandleIGESSelectRebuildDrawings_get_mut(
+                crate::ffi_extern_TKDEIGES::Handle_IGESSelect_RebuildDrawings_get_mut(
                     self as *mut Self,
                 ),
             )
@@ -8827,34 +8836,36 @@ impl HandleIGESSelectRebuildDrawings {
     /// Upcast Handle<IGESSelect_RebuildDrawings> to Handle<IGESSelect_ModelModifier>
     pub fn to_handle_model_modifier(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESSelectModelModifier> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_IGESSelect_ModelModifier> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectRebuildDrawings_to_HandleIGESSelectModelModifier(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::Handle_IGESSelect_RebuildDrawings_to_Handle_IGESSelect_ModelModifier(self as *const Self)))
         }
     }
 
     /// Upcast Handle<IGESSelect_RebuildDrawings> to Handle<IFSelect_Modifier>
-    pub fn to_handle_modifier(&self) -> crate::OwnedPtr<crate::ffi_types::HandleIFSelectModifier> {
+    pub fn to_handle_modifier(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_IFSelect_Modifier> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectRebuildDrawings_to_HandleIFSelectModifier(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::Handle_IGESSelect_RebuildDrawings_to_Handle_IFSelect_Modifier(self as *const Self)))
         }
     }
 
     /// Upcast Handle<IGESSelect_RebuildDrawings> to Handle<IFSelect_GeneralModifier>
     pub fn to_handle_general_modifier(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleIFSelectGeneralModifier> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_IFSelect_GeneralModifier> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectRebuildDrawings_to_HandleIFSelectGeneralModifier(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::Handle_IGESSelect_RebuildDrawings_to_Handle_IFSelect_GeneralModifier(self as *const Self)))
         }
     }
 
     /// Upcast Handle<IGESSelect_RebuildDrawings> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectRebuildDrawings_to_HandleStandardTransient(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::Handle_IGESSelect_RebuildDrawings_to_Handle_Standard_Transient(self as *const Self)))
         }
     }
 }
@@ -8863,7 +8874,7 @@ impl HandleIGESSelectRebuildDrawings {
 // From IGESSelect_RebuildGroups.hxx
 // ========================
 
-/// **Source:** `IGESSelect_RebuildGroups.hxx`:42 - `IGESSelect_RebuildGroups`
+/// **Source:** `IGESSelect_RebuildGroups.hxx`:39 - `IGESSelect_RebuildGroups`
 /// Rebuilds Groups which were bypassed to produce new models.
 /// If a set of entities, all put into a same IGESModel, were
 /// part of a same Group in the starting Model, this Modifier
@@ -8885,7 +8896,7 @@ unsafe impl crate::CppDeletable for RebuildGroups {
 }
 
 impl RebuildGroups {
-    /// **Source:** `IGESSelect_RebuildGroups.hxx`:47 - `IGESSelect_RebuildGroups::IGESSelect_RebuildGroups()`
+    /// **Source:** `IGESSelect_RebuildGroups.hxx`:44 - `IGESSelect_RebuildGroups::IGESSelect_RebuildGroups()`
     /// Creates an RebuildGroups, which uses the system Date
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
@@ -8895,12 +8906,12 @@ impl RebuildGroups {
         }
     }
 
-    /// **Source:** `IGESSelect_RebuildGroups.hxx`:50 - `IGESSelect_RebuildGroups::Performing()`
+    /// **Source:** `IGESSelect_RebuildGroups.hxx`:47 - `IGESSelect_RebuildGroups::Performing()`
     /// Specific action : Rebuilds the original groups
     pub fn performing(
         &self,
         ctx: &mut crate::if_select::ContextModif,
-        target: &crate::ffi_types::HandleIGESDataIGESModel,
+        target: &crate::ffi_types::Handle_IGESData_IGESModel,
         TC: &mut crate::interface::CopyTool,
     ) {
         crate::check_void_result(unsafe {
@@ -8913,7 +8924,7 @@ impl RebuildGroups {
         })
     }
 
-    /// **Source:** `IGESSelect_RebuildGroups.hxx`:56 - `IGESSelect_RebuildGroups::Label()`
+    /// **Source:** `IGESSelect_RebuildGroups.hxx`:53 - `IGESSelect_RebuildGroups::Label()`
     /// Returns a text which is
     /// "Rebuild Groups"
     pub fn label(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
@@ -8924,8 +8935,8 @@ impl RebuildGroups {
         }
     }
 
-    /// **Source:** `IGESSelect_RebuildGroups.hxx`:58 - `IGESSelect_RebuildGroups::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `IGESSelect_RebuildGroups.hxx`:55 - `IGESSelect_RebuildGroups::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKDEIGES::IGESSelect_RebuildGroups_dynamic_type(
@@ -8935,7 +8946,7 @@ impl RebuildGroups {
         }
     }
 
-    /// **Source:** `IGESSelect_RebuildGroups.hxx`:58 - `IGESSelect_RebuildGroups::get_type_name()`
+    /// **Source:** `IGESSelect_RebuildGroups.hxx`:55 - `IGESSelect_RebuildGroups::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -8946,8 +8957,8 @@ impl RebuildGroups {
         .into_owned()
     }
 
-    /// **Source:** `IGESSelect_RebuildGroups.hxx`:58 - `IGESSelect_RebuildGroups::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    /// **Source:** `IGESSelect_RebuildGroups.hxx`:55 - `IGESSelect_RebuildGroups::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKDEIGES::IGESSelect_RebuildGroups_get_type_descriptor(),
@@ -9038,7 +9049,7 @@ impl RebuildGroups {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESSelectRebuildGroups> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_IGESSelect_RebuildGroups> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDEIGES::IGESSelect_RebuildGroups_to_handle(obj.into_raw()),
@@ -9046,12 +9057,12 @@ impl RebuildGroups {
         }
     }
 
-    /// Inherited: **Source:** `IGESSelect_ModelModifier.hxx`:41 - `IGESSelect_ModelModifier::Perform()`
+    /// Inherited: **Source:** `IGESSelect_ModelModifier.hxx`:38 - `IGESSelect_ModelModifier::Perform()`
     pub fn perform(
         &self,
         ctx: &mut crate::if_select::ContextModif,
-        target: &crate::ffi_types::HandleInterfaceInterfaceModel,
-        protocol: &crate::ffi_types::HandleInterfaceProtocol,
+        target: &crate::ffi_types::Handle_Interface_InterfaceModel,
+        protocol: &crate::ffi_types::Handle_Interface_Protocol,
         TC: &mut crate::interface::CopyTool,
     ) {
         crate::check_void_result(unsafe {
@@ -9065,12 +9076,12 @@ impl RebuildGroups {
         })
     }
 
-    /// Inherited: **Source:** `IGESSelect_ModelModifier.hxx`:50 - `IGESSelect_ModelModifier::PerformProtocol()`
+    /// Inherited: **Source:** `IGESSelect_ModelModifier.hxx`:47 - `IGESSelect_ModelModifier::PerformProtocol()`
     pub fn perform_protocol(
         &self,
         ctx: &mut crate::if_select::ContextModif,
-        target: &crate::ffi_types::HandleIGESDataIGESModel,
-        proto: &crate::ffi_types::HandleIGESDataProtocol,
+        target: &crate::ffi_types::Handle_IGESData_IGESModel,
+        proto: &crate::ffi_types::Handle_IGESData_Protocol,
         TC: &mut crate::interface::CopyTool,
     ) {
         crate::check_void_result(unsafe {
@@ -9084,7 +9095,7 @@ impl RebuildGroups {
         })
     }
 
-    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:68 - `IFSelect_GeneralModifier::MayChangeGraph()`
+    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:65 - `IFSelect_GeneralModifier::MayChangeGraph()`
     pub fn may_change_graph(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_RebuildGroups_inherited_MayChangeGraph(
@@ -9093,8 +9104,8 @@ impl RebuildGroups {
         })
     }
 
-    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:72 - `IFSelect_GeneralModifier::SetDispatch()`
-    pub fn set_dispatch(&mut self, disp: &crate::ffi_types::HandleIFSelectDispatch) {
+    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:69 - `IFSelect_GeneralModifier::SetDispatch()`
+    pub fn set_dispatch(&mut self, disp: &crate::ffi_types::Handle_IFSelect_Dispatch) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_RebuildGroups_inherited_SetDispatch(
                 self as *mut Self,
@@ -9103,8 +9114,8 @@ impl RebuildGroups {
         })
     }
 
-    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:75 - `IFSelect_GeneralModifier::Dispatch()`
-    pub fn dispatch(&self) -> crate::OwnedPtr<crate::ffi_types::HandleIFSelectDispatch> {
+    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:72 - `IFSelect_GeneralModifier::Dispatch()`
+    pub fn dispatch(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_IFSelect_Dispatch> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDEIGES::IGESSelect_RebuildGroups_inherited_Dispatch(
@@ -9114,8 +9125,8 @@ impl RebuildGroups {
         }
     }
 
-    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:80 - `IFSelect_GeneralModifier::Applies()`
-    pub fn applies(&self, disp: &crate::ffi_types::HandleIFSelectDispatch) -> bool {
+    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:77 - `IFSelect_GeneralModifier::Applies()`
+    pub fn applies(&self, disp: &crate::ffi_types::Handle_IFSelect_Dispatch) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_RebuildGroups_inherited_Applies(
                 self as *const Self,
@@ -9124,8 +9135,8 @@ impl RebuildGroups {
         })
     }
 
-    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:84 - `IFSelect_GeneralModifier::SetSelection()`
-    pub fn set_selection(&mut self, sel: &crate::ffi_types::HandleIFSelectSelection) {
+    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:81 - `IFSelect_GeneralModifier::SetSelection()`
+    pub fn set_selection(&mut self, sel: &crate::ffi_types::Handle_IFSelect_Selection) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_RebuildGroups_inherited_SetSelection(
                 self as *mut Self,
@@ -9134,7 +9145,7 @@ impl RebuildGroups {
         })
     }
 
-    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:87 - `IFSelect_GeneralModifier::ResetSelection()`
+    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:84 - `IFSelect_GeneralModifier::ResetSelection()`
     pub fn reset_selection(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_RebuildGroups_inherited_ResetSelection(
@@ -9143,7 +9154,7 @@ impl RebuildGroups {
         })
     }
 
-    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:90 - `IFSelect_GeneralModifier::HasSelection()`
+    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:87 - `IFSelect_GeneralModifier::HasSelection()`
     pub fn has_selection(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_RebuildGroups_inherited_HasSelection(
@@ -9152,8 +9163,8 @@ impl RebuildGroups {
         })
     }
 
-    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:93 - `IFSelect_GeneralModifier::Selection()`
-    pub fn selection(&self) -> crate::OwnedPtr<crate::ffi_types::HandleIFSelectSelection> {
+    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:90 - `IFSelect_GeneralModifier::Selection()`
+    pub fn selection(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_IFSelect_Selection> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDEIGES::IGESSelect_RebuildGroups_inherited_Selection(
@@ -9163,8 +9174,8 @@ impl RebuildGroups {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_RebuildGroups_inherited_IsInstance(
                 self as *const Self,
@@ -9173,8 +9184,8 @@ impl RebuildGroups {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_RebuildGroups_inherited_IsKind(
                 self as *const Self,
@@ -9183,7 +9194,7 @@ impl RebuildGroups {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -9199,7 +9210,7 @@ impl RebuildGroups {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_RebuildGroups_inherited_GetRefCount(
@@ -9208,7 +9219,7 @@ impl RebuildGroups {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_RebuildGroups_inherited_IncrementRefCounter(
@@ -9217,7 +9228,7 @@ impl RebuildGroups {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_RebuildGroups_inherited_DecrementRefCounter(
@@ -9226,7 +9237,7 @@ impl RebuildGroups {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_RebuildGroups_inherited_Delete(
@@ -9236,38 +9247,38 @@ impl RebuildGroups {
     }
 }
 
-pub use crate::ffi_types::HandleIGESSelectRebuildGroups;
+pub use crate::ffi_types::Handle_IGESSelect_RebuildGroups;
 
-unsafe impl crate::CppDeletable for HandleIGESSelectRebuildGroups {
+unsafe impl crate::CppDeletable for Handle_IGESSelect_RebuildGroups {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKDEIGES::HandleIGESSelectRebuildGroups_destructor(ptr);
+            crate::ffi_extern_TKDEIGES::Handle_IGESSelect_RebuildGroups_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleIGESSelectRebuildGroups {
+unsafe impl crate::CppCopyable for Handle_IGESSelect_RebuildGroups {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
         unsafe {
-            crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectRebuildGroups_clone(
+            crate::check_result(crate::ffi_extern_TKDEIGES::Handle_IGESSelect_RebuildGroups_clone(
                 ptr,
             ))
         }
     }
 }
 
-impl HandleIGESSelectRebuildGroups {
+impl Handle_IGESSelect_RebuildGroups {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
         unsafe {
-            crate::ffi_extern_TKDEIGES::HandleIGESSelectRebuildGroups_is_null(self as *const Self)
+            crate::ffi_extern_TKDEIGES::Handle_IGESSelect_RebuildGroups_is_null(self as *const Self)
         }
     }
 
     /// Dereference this Handle to access the underlying IGESSelect_RebuildGroups
     pub fn get(&self) -> &crate::ffi_types::IGESSelect_RebuildGroups {
         unsafe {
-            &*crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectRebuildGroups_get(
+            &*crate::check_result(crate::ffi_extern_TKDEIGES::Handle_IGESSelect_RebuildGroups_get(
                 self as *const Self,
             ))
         }
@@ -9277,7 +9288,7 @@ impl HandleIGESSelectRebuildGroups {
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::IGESSelect_RebuildGroups {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi_extern_TKDEIGES::HandleIGESSelectRebuildGroups_get_mut(
+                crate::ffi_extern_TKDEIGES::Handle_IGESSelect_RebuildGroups_get_mut(
                     self as *mut Self,
                 ),
             )
@@ -9287,38 +9298,36 @@ impl HandleIGESSelectRebuildGroups {
     /// Upcast Handle<IGESSelect_RebuildGroups> to Handle<IGESSelect_ModelModifier>
     pub fn to_handle_model_modifier(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESSelectModelModifier> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_IGESSelect_ModelModifier> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectRebuildGroups_to_HandleIGESSelectModelModifier(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::Handle_IGESSelect_RebuildGroups_to_Handle_IGESSelect_ModelModifier(self as *const Self)))
         }
     }
 
     /// Upcast Handle<IGESSelect_RebuildGroups> to Handle<IFSelect_Modifier>
-    pub fn to_handle_modifier(&self) -> crate::OwnedPtr<crate::ffi_types::HandleIFSelectModifier> {
+    pub fn to_handle_modifier(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_IFSelect_Modifier> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKDEIGES::HandleIGESSelectRebuildGroups_to_HandleIFSelectModifier(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::Handle_IGESSelect_RebuildGroups_to_Handle_IFSelect_Modifier(self as *const Self)))
         }
     }
 
     /// Upcast Handle<IGESSelect_RebuildGroups> to Handle<IFSelect_GeneralModifier>
     pub fn to_handle_general_modifier(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleIFSelectGeneralModifier> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_IFSelect_GeneralModifier> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectRebuildGroups_to_HandleIFSelectGeneralModifier(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::Handle_IGESSelect_RebuildGroups_to_Handle_IFSelect_GeneralModifier(self as *const Self)))
         }
     }
 
     /// Upcast Handle<IGESSelect_RebuildGroups> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectRebuildGroups_to_HandleStandardTransient(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::Handle_IGESSelect_RebuildGroups_to_Handle_Standard_Transient(self as *const Self)))
         }
     }
 }
@@ -9327,7 +9336,7 @@ impl HandleIGESSelectRebuildGroups {
 // From IGESSelect_RemoveCurves.hxx
 // ========================
 
-/// **Source:** `IGESSelect_RemoveCurves.hxx`:34 - `IGESSelect_RemoveCurves`
+/// **Source:** `IGESSelect_RemoveCurves.hxx`:31 - `IGESSelect_RemoveCurves`
 /// Removes Curves UV or 3D (not both !) from Faces, those
 /// designated by the Selection. No Selection means all the file
 pub use crate::ffi_types::IGESSelect_RemoveCurves as RemoveCurves;
@@ -9341,7 +9350,7 @@ unsafe impl crate::CppDeletable for RemoveCurves {
 }
 
 impl RemoveCurves {
-    /// **Source:** `IGESSelect_RemoveCurves.hxx`:41 - `IGESSelect_RemoveCurves::IGESSelect_RemoveCurves()`
+    /// **Source:** `IGESSelect_RemoveCurves.hxx`:38 - `IGESSelect_RemoveCurves::IGESSelect_RemoveCurves()`
     /// Creates a RemoveCurves from Faces (141/142/143/144)
     /// UV True  : Removes UV Curves (pcurves)
     /// UV False : Removes 3D Curves
@@ -9353,12 +9362,12 @@ impl RemoveCurves {
         }
     }
 
-    /// **Source:** `IGESSelect_RemoveCurves.hxx`:44 - `IGESSelect_RemoveCurves::Performing()`
+    /// **Source:** `IGESSelect_RemoveCurves.hxx`:41 - `IGESSelect_RemoveCurves::Performing()`
     /// Specific action : Removes the Curves
     pub fn performing(
         &self,
         ctx: &mut crate::if_select::ContextModif,
-        target: &crate::ffi_types::HandleIGESDataIGESModel,
+        target: &crate::ffi_types::Handle_IGESData_IGESModel,
         TC: &mut crate::interface::CopyTool,
     ) {
         crate::check_void_result(unsafe {
@@ -9371,9 +9380,9 @@ impl RemoveCurves {
         })
     }
 
-    /// **Source:** `IGESSelect_RemoveCurves.hxx`:50 - `IGESSelect_RemoveCurves::Label()`
+    /// **Source:** `IGESSelect_RemoveCurves.hxx`:47 - `IGESSelect_RemoveCurves::Label()`
     /// Returns a text which is
-    /// "Remove Curves UV on Face"  or  "Remove Curves 3D on Face"
+    /// "Remove Curves UV on Face" or "Remove Curves 3D on Face"
     pub fn label(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -9382,8 +9391,8 @@ impl RemoveCurves {
         }
     }
 
-    /// **Source:** `IGESSelect_RemoveCurves.hxx`:52 - `IGESSelect_RemoveCurves::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `IGESSelect_RemoveCurves.hxx`:49 - `IGESSelect_RemoveCurves::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKDEIGES::IGESSelect_RemoveCurves_dynamic_type(
@@ -9393,7 +9402,7 @@ impl RemoveCurves {
         }
     }
 
-    /// **Source:** `IGESSelect_RemoveCurves.hxx`:52 - `IGESSelect_RemoveCurves::get_type_name()`
+    /// **Source:** `IGESSelect_RemoveCurves.hxx`:49 - `IGESSelect_RemoveCurves::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -9404,8 +9413,8 @@ impl RemoveCurves {
         .into_owned()
     }
 
-    /// **Source:** `IGESSelect_RemoveCurves.hxx`:52 - `IGESSelect_RemoveCurves::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    /// **Source:** `IGESSelect_RemoveCurves.hxx`:49 - `IGESSelect_RemoveCurves::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKDEIGES::IGESSelect_RemoveCurves_get_type_descriptor(),
@@ -9504,7 +9513,7 @@ impl RemoveCurves {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESSelectRemoveCurves> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_IGESSelect_RemoveCurves> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDEIGES::IGESSelect_RemoveCurves_to_handle(obj.into_raw()),
@@ -9512,12 +9521,12 @@ impl RemoveCurves {
         }
     }
 
-    /// Inherited: **Source:** `IGESSelect_ModelModifier.hxx`:41 - `IGESSelect_ModelModifier::Perform()`
+    /// Inherited: **Source:** `IGESSelect_ModelModifier.hxx`:38 - `IGESSelect_ModelModifier::Perform()`
     pub fn perform(
         &self,
         ctx: &mut crate::if_select::ContextModif,
-        target: &crate::ffi_types::HandleInterfaceInterfaceModel,
-        protocol: &crate::ffi_types::HandleInterfaceProtocol,
+        target: &crate::ffi_types::Handle_Interface_InterfaceModel,
+        protocol: &crate::ffi_types::Handle_Interface_Protocol,
         TC: &mut crate::interface::CopyTool,
     ) {
         crate::check_void_result(unsafe {
@@ -9531,12 +9540,12 @@ impl RemoveCurves {
         })
     }
 
-    /// Inherited: **Source:** `IGESSelect_ModelModifier.hxx`:50 - `IGESSelect_ModelModifier::PerformProtocol()`
+    /// Inherited: **Source:** `IGESSelect_ModelModifier.hxx`:47 - `IGESSelect_ModelModifier::PerformProtocol()`
     pub fn perform_protocol(
         &self,
         ctx: &mut crate::if_select::ContextModif,
-        target: &crate::ffi_types::HandleIGESDataIGESModel,
-        proto: &crate::ffi_types::HandleIGESDataProtocol,
+        target: &crate::ffi_types::Handle_IGESData_IGESModel,
+        proto: &crate::ffi_types::Handle_IGESData_Protocol,
         TC: &mut crate::interface::CopyTool,
     ) {
         crate::check_void_result(unsafe {
@@ -9550,7 +9559,7 @@ impl RemoveCurves {
         })
     }
 
-    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:68 - `IFSelect_GeneralModifier::MayChangeGraph()`
+    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:65 - `IFSelect_GeneralModifier::MayChangeGraph()`
     pub fn may_change_graph(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_RemoveCurves_inherited_MayChangeGraph(
@@ -9559,8 +9568,8 @@ impl RemoveCurves {
         })
     }
 
-    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:72 - `IFSelect_GeneralModifier::SetDispatch()`
-    pub fn set_dispatch(&mut self, disp: &crate::ffi_types::HandleIFSelectDispatch) {
+    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:69 - `IFSelect_GeneralModifier::SetDispatch()`
+    pub fn set_dispatch(&mut self, disp: &crate::ffi_types::Handle_IFSelect_Dispatch) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_RemoveCurves_inherited_SetDispatch(
                 self as *mut Self,
@@ -9569,8 +9578,8 @@ impl RemoveCurves {
         })
     }
 
-    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:75 - `IFSelect_GeneralModifier::Dispatch()`
-    pub fn dispatch(&self) -> crate::OwnedPtr<crate::ffi_types::HandleIFSelectDispatch> {
+    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:72 - `IFSelect_GeneralModifier::Dispatch()`
+    pub fn dispatch(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_IFSelect_Dispatch> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDEIGES::IGESSelect_RemoveCurves_inherited_Dispatch(
@@ -9580,8 +9589,8 @@ impl RemoveCurves {
         }
     }
 
-    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:80 - `IFSelect_GeneralModifier::Applies()`
-    pub fn applies(&self, disp: &crate::ffi_types::HandleIFSelectDispatch) -> bool {
+    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:77 - `IFSelect_GeneralModifier::Applies()`
+    pub fn applies(&self, disp: &crate::ffi_types::Handle_IFSelect_Dispatch) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_RemoveCurves_inherited_Applies(
                 self as *const Self,
@@ -9590,8 +9599,8 @@ impl RemoveCurves {
         })
     }
 
-    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:84 - `IFSelect_GeneralModifier::SetSelection()`
-    pub fn set_selection(&mut self, sel: &crate::ffi_types::HandleIFSelectSelection) {
+    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:81 - `IFSelect_GeneralModifier::SetSelection()`
+    pub fn set_selection(&mut self, sel: &crate::ffi_types::Handle_IFSelect_Selection) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_RemoveCurves_inherited_SetSelection(
                 self as *mut Self,
@@ -9600,7 +9609,7 @@ impl RemoveCurves {
         })
     }
 
-    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:87 - `IFSelect_GeneralModifier::ResetSelection()`
+    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:84 - `IFSelect_GeneralModifier::ResetSelection()`
     pub fn reset_selection(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_RemoveCurves_inherited_ResetSelection(
@@ -9609,7 +9618,7 @@ impl RemoveCurves {
         })
     }
 
-    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:90 - `IFSelect_GeneralModifier::HasSelection()`
+    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:87 - `IFSelect_GeneralModifier::HasSelection()`
     pub fn has_selection(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_RemoveCurves_inherited_HasSelection(
@@ -9618,8 +9627,8 @@ impl RemoveCurves {
         })
     }
 
-    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:93 - `IFSelect_GeneralModifier::Selection()`
-    pub fn selection(&self) -> crate::OwnedPtr<crate::ffi_types::HandleIFSelectSelection> {
+    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:90 - `IFSelect_GeneralModifier::Selection()`
+    pub fn selection(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_IFSelect_Selection> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDEIGES::IGESSelect_RemoveCurves_inherited_Selection(
@@ -9629,8 +9638,8 @@ impl RemoveCurves {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_RemoveCurves_inherited_IsInstance(
                 self as *const Self,
@@ -9639,8 +9648,8 @@ impl RemoveCurves {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_RemoveCurves_inherited_IsKind(
                 self as *const Self,
@@ -9649,7 +9658,7 @@ impl RemoveCurves {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -9665,7 +9674,7 @@ impl RemoveCurves {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_RemoveCurves_inherited_GetRefCount(
@@ -9674,7 +9683,7 @@ impl RemoveCurves {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_RemoveCurves_inherited_IncrementRefCounter(
@@ -9683,7 +9692,7 @@ impl RemoveCurves {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_RemoveCurves_inherited_DecrementRefCounter(
@@ -9692,7 +9701,7 @@ impl RemoveCurves {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_RemoveCurves_inherited_Delete(
@@ -9702,36 +9711,38 @@ impl RemoveCurves {
     }
 }
 
-pub use crate::ffi_types::HandleIGESSelectRemoveCurves;
+pub use crate::ffi_types::Handle_IGESSelect_RemoveCurves;
 
-unsafe impl crate::CppDeletable for HandleIGESSelectRemoveCurves {
+unsafe impl crate::CppDeletable for Handle_IGESSelect_RemoveCurves {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKDEIGES::HandleIGESSelectRemoveCurves_destructor(ptr);
+            crate::ffi_extern_TKDEIGES::Handle_IGESSelect_RemoveCurves_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleIGESSelectRemoveCurves {
+unsafe impl crate::CppCopyable for Handle_IGESSelect_RemoveCurves {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
         unsafe {
-            crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectRemoveCurves_clone(ptr))
+            crate::check_result(crate::ffi_extern_TKDEIGES::Handle_IGESSelect_RemoveCurves_clone(
+                ptr,
+            ))
         }
     }
 }
 
-impl HandleIGESSelectRemoveCurves {
+impl Handle_IGESSelect_RemoveCurves {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
         unsafe {
-            crate::ffi_extern_TKDEIGES::HandleIGESSelectRemoveCurves_is_null(self as *const Self)
+            crate::ffi_extern_TKDEIGES::Handle_IGESSelect_RemoveCurves_is_null(self as *const Self)
         }
     }
 
     /// Dereference this Handle to access the underlying IGESSelect_RemoveCurves
     pub fn get(&self) -> &crate::ffi_types::IGESSelect_RemoveCurves {
         unsafe {
-            &*crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectRemoveCurves_get(
+            &*crate::check_result(crate::ffi_extern_TKDEIGES::Handle_IGESSelect_RemoveCurves_get(
                 self as *const Self,
             ))
         }
@@ -9741,7 +9752,9 @@ impl HandleIGESSelectRemoveCurves {
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::IGESSelect_RemoveCurves {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi_extern_TKDEIGES::HandleIGESSelectRemoveCurves_get_mut(self as *mut Self),
+                crate::ffi_extern_TKDEIGES::Handle_IGESSelect_RemoveCurves_get_mut(
+                    self as *mut Self,
+                ),
             )
         }
     }
@@ -9749,42 +9762,36 @@ impl HandleIGESSelectRemoveCurves {
     /// Upcast Handle<IGESSelect_RemoveCurves> to Handle<IGESSelect_ModelModifier>
     pub fn to_handle_model_modifier(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESSelectModelModifier> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_IGESSelect_ModelModifier> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectRemoveCurves_to_HandleIGESSelectModelModifier(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::Handle_IGESSelect_RemoveCurves_to_Handle_IGESSelect_ModelModifier(self as *const Self)))
         }
     }
 
     /// Upcast Handle<IGESSelect_RemoveCurves> to Handle<IFSelect_Modifier>
-    pub fn to_handle_modifier(&self) -> crate::OwnedPtr<crate::ffi_types::HandleIFSelectModifier> {
+    pub fn to_handle_modifier(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_IFSelect_Modifier> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKDEIGES::HandleIGESSelectRemoveCurves_to_HandleIFSelectModifier(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::Handle_IGESSelect_RemoveCurves_to_Handle_IFSelect_Modifier(self as *const Self)))
         }
     }
 
     /// Upcast Handle<IGESSelect_RemoveCurves> to Handle<IFSelect_GeneralModifier>
     pub fn to_handle_general_modifier(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleIFSelectGeneralModifier> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_IFSelect_GeneralModifier> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectRemoveCurves_to_HandleIFSelectGeneralModifier(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::Handle_IGESSelect_RemoveCurves_to_Handle_IFSelect_GeneralModifier(self as *const Self)))
         }
     }
 
     /// Upcast Handle<IGESSelect_RemoveCurves> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKDEIGES::HandleIGESSelectRemoveCurves_to_HandleStandardTransient(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::Handle_IGESSelect_RemoveCurves_to_Handle_Standard_Transient(self as *const Self)))
         }
     }
 }
@@ -9793,7 +9800,7 @@ impl HandleIGESSelectRemoveCurves {
 // From IGESSelect_SelectBasicGeom.hxx
 // ========================
 
-/// **Source:** `IGESSelect_SelectBasicGeom.hxx`:47 - `IGESSelect_SelectBasicGeom`
+/// **Source:** `IGESSelect_SelectBasicGeom.hxx`:44 - `IGESSelect_SelectBasicGeom`
 /// This selection returns the basic geometric elements
 /// contained in an IGES Entity
 /// Intended to run a "quick" transfer. I.E. :
@@ -9818,7 +9825,7 @@ unsafe impl crate::CppDeletable for SelectBasicGeom {
 }
 
 impl SelectBasicGeom {
-    /// **Source:** `IGESSelect_SelectBasicGeom.hxx`:57 - `IGESSelect_SelectBasicGeom::IGESSelect_SelectBasicGeom()`
+    /// **Source:** `IGESSelect_SelectBasicGeom.hxx`:54 - `IGESSelect_SelectBasicGeom::IGESSelect_SelectBasicGeom()`
     /// Creates a SelectBasicGeom, which always works recursively
     /// mode = -1 : Returns Surfaces (without trimming)
     /// mode = +1 : Returns Curves 3D (free or bound of surface)
@@ -9833,20 +9840,20 @@ impl SelectBasicGeom {
         }
     }
 
-    /// **Source:** `IGESSelect_SelectBasicGeom.hxx`:59 - `IGESSelect_SelectBasicGeom::CurvesOnly()`
+    /// **Source:** `IGESSelect_SelectBasicGeom.hxx`:56 - `IGESSelect_SelectBasicGeom::CurvesOnly()`
     pub fn curves_only(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_SelectBasicGeom_curves_only(self as *const Self)
         })
     }
 
-    /// **Source:** `IGESSelect_SelectBasicGeom.hxx`:64 - `IGESSelect_SelectBasicGeom::Explore()`
+    /// **Source:** `IGESSelect_SelectBasicGeom.hxx`:60 - `IGESSelect_SelectBasicGeom::Explore()`
     /// Explores an entity, to take its contained Curves 3d
     /// Works recursively
     pub fn explore(
         &self,
         level: i32,
-        ent: &crate::ffi_types::HandleStandardTransient,
+        ent: &crate::ffi_types::Handle_Standard_Transient,
         G: &crate::interface::Graph,
         explored: &mut crate::interface::EntityIterator,
     ) -> bool {
@@ -9861,7 +9868,7 @@ impl SelectBasicGeom {
         })
     }
 
-    /// **Source:** `IGESSelect_SelectBasicGeom.hxx`:71 - `IGESSelect_SelectBasicGeom::ExploreLabel()`
+    /// **Source:** `IGESSelect_SelectBasicGeom.hxx`:67 - `IGESSelect_SelectBasicGeom::ExploreLabel()`
     /// Returns a text defining the criterium : "Curves 3d" or
     /// "Basic Geometry"
     pub fn explore_label(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
@@ -9874,8 +9881,8 @@ impl SelectBasicGeom {
         }
     }
 
-    /// **Source:** `IGESSelect_SelectBasicGeom.hxx`:81 - `IGESSelect_SelectBasicGeom::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `IGESSelect_SelectBasicGeom.hxx`:77 - `IGESSelect_SelectBasicGeom::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKDEIGES::IGESSelect_SelectBasicGeom_dynamic_type(
@@ -9885,14 +9892,14 @@ impl SelectBasicGeom {
         }
     }
 
-    /// **Source:** `IGESSelect_SelectBasicGeom.hxx`:78 - `IGESSelect_SelectBasicGeom::SubCurves()`
+    /// **Source:** `IGESSelect_SelectBasicGeom.hxx`:74 - `IGESSelect_SelectBasicGeom::SubCurves()`
     /// This method can be called from everywhere to get the curves
     /// as sub-elements of a given curve :
     /// CompositeCurve : explored lists its subs + returns True
     /// Any Curve : explored is not filled but returned is True
     /// Other : returned is False
     pub fn sub_curves(
-        ent: &crate::ffi_types::HandleIGESDataIGESEntity,
+        ent: &crate::ffi_types::Handle_IGESData_IGESEntity,
         explored: &mut crate::interface::EntityIterator,
     ) -> bool {
         crate::check_result(unsafe {
@@ -9900,7 +9907,7 @@ impl SelectBasicGeom {
         })
     }
 
-    /// **Source:** `IGESSelect_SelectBasicGeom.hxx`:81 - `IGESSelect_SelectBasicGeom::get_type_name()`
+    /// **Source:** `IGESSelect_SelectBasicGeom.hxx`:77 - `IGESSelect_SelectBasicGeom::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -9911,8 +9918,8 @@ impl SelectBasicGeom {
         .into_owned()
     }
 
-    /// **Source:** `IGESSelect_SelectBasicGeom.hxx`:81 - `IGESSelect_SelectBasicGeom::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    /// **Source:** `IGESSelect_SelectBasicGeom.hxx`:77 - `IGESSelect_SelectBasicGeom::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKDEIGES::IGESSelect_SelectBasicGeom_get_type_descriptor(),
@@ -10007,7 +10014,7 @@ impl SelectBasicGeom {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESSelectSelectBasicGeom> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_IGESSelect_SelectBasicGeom> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDEIGES::IGESSelect_SelectBasicGeom_to_handle(obj.into_raw()),
@@ -10015,7 +10022,7 @@ impl SelectBasicGeom {
         }
     }
 
-    /// Inherited: **Source:** `IFSelect_SelectExplore.hxx`:55 - `IFSelect_SelectExplore::Level()`
+    /// Inherited: **Source:** `IFSelect_SelectExplore.hxx`:52 - `IFSelect_SelectExplore::Level()`
     pub fn level(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_SelectBasicGeom_inherited_Level(
@@ -10024,7 +10031,7 @@ impl SelectBasicGeom {
         })
     }
 
-    /// Inherited: **Source:** `IFSelect_SelectExplore.hxx`:63 - `IFSelect_SelectExplore::RootResult()`
+    /// Inherited: **Source:** `IFSelect_SelectExplore.hxx`:59 - `IFSelect_SelectExplore::RootResult()`
     pub fn root_result(
         &self,
         G: &crate::interface::Graph,
@@ -10039,7 +10046,7 @@ impl SelectBasicGeom {
         }
     }
 
-    /// Inherited: **Source:** `IFSelect_SelectExplore.hxx`:83 - `IFSelect_SelectExplore::Label()`
+    /// Inherited: **Source:** `IFSelect_SelectExplore.hxx`:79 - `IFSelect_SelectExplore::Label()`
     pub fn label(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -10050,8 +10057,8 @@ impl SelectBasicGeom {
         }
     }
 
-    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:49 - `IFSelect_SelectDeduct::SetInput()`
-    pub fn set_input(&mut self, sel: &crate::ffi_types::HandleIFSelectSelection) {
+    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:46 - `IFSelect_SelectDeduct::SetInput()`
+    pub fn set_input(&mut self, sel: &crate::ffi_types::Handle_IFSelect_Selection) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_SelectBasicGeom_inherited_SetInput(
                 self as *mut Self,
@@ -10060,8 +10067,8 @@ impl SelectBasicGeom {
         })
     }
 
-    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:52 - `IFSelect_SelectDeduct::Input()`
-    pub fn input(&self) -> crate::OwnedPtr<crate::ffi_types::HandleIFSelectSelection> {
+    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:49 - `IFSelect_SelectDeduct::Input()`
+    pub fn input(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_IFSelect_Selection> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDEIGES::IGESSelect_SelectBasicGeom_inherited_Input(
@@ -10071,7 +10078,7 @@ impl SelectBasicGeom {
         }
     }
 
-    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:55 - `IFSelect_SelectDeduct::HasInput()`
+    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:52 - `IFSelect_SelectDeduct::HasInput()`
     pub fn has_input(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_SelectBasicGeom_inherited_HasInput(
@@ -10080,7 +10087,7 @@ impl SelectBasicGeom {
         })
     }
 
-    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:59 - `IFSelect_SelectDeduct::HasAlternate()`
+    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:56 - `IFSelect_SelectDeduct::HasAlternate()`
     pub fn has_alternate(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_SelectBasicGeom_inherited_HasAlternate(
@@ -10089,8 +10096,8 @@ impl SelectBasicGeom {
         })
     }
 
-    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:67 - `IFSelect_SelectDeduct::Alternate()`
-    pub fn alternate(&mut self) -> &mut crate::ffi_types::HandleIFSelectSelectPointed {
+    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:64 - `IFSelect_SelectDeduct::Alternate()`
+    pub fn alternate(&mut self) -> &mut crate::ffi_types::Handle_IFSelect_SelectPointed {
         unsafe {
             &mut *(crate::check_result(
                 crate::ffi_extern_TKDEIGES::IGESSelect_SelectBasicGeom_inherited_Alternate(
@@ -10100,7 +10107,7 @@ impl SelectBasicGeom {
         }
     }
 
-    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:74 - `IFSelect_SelectDeduct::InputResult()`
+    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:71 - `IFSelect_SelectDeduct::InputResult()`
     pub fn input_result(
         &self,
         G: &crate::interface::Graph,
@@ -10115,7 +10122,7 @@ impl SelectBasicGeom {
         }
     }
 
-    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:78 - `IFSelect_SelectDeduct::FillIterator()`
+    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:75 - `IFSelect_SelectDeduct::FillIterator()`
     pub fn fill_iterator(&self, iter: &mut crate::if_select::SelectionIterator) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_SelectBasicGeom_inherited_FillIterator(
@@ -10125,7 +10132,7 @@ impl SelectBasicGeom {
         })
     }
 
-    /// Inherited: **Source:** `IFSelect_Selection.hxx`:55 - `IFSelect_Selection::UniqueResult()`
+    /// Inherited: **Source:** `IFSelect_Selection.hxx`:52 - `IFSelect_Selection::UniqueResult()`
     pub fn unique_result(
         &self,
         G: &crate::interface::Graph,
@@ -10140,7 +10147,7 @@ impl SelectBasicGeom {
         }
     }
 
-    /// Inherited: **Source:** `IFSelect_Selection.hxx`:59 - `IFSelect_Selection::CompleteResult()`
+    /// Inherited: **Source:** `IFSelect_Selection.hxx`:56 - `IFSelect_Selection::CompleteResult()`
     pub fn complete_result(
         &self,
         G: &crate::interface::Graph,
@@ -10155,8 +10162,8 @@ impl SelectBasicGeom {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_SelectBasicGeom_inherited_IsInstance(
                 self as *const Self,
@@ -10165,8 +10172,8 @@ impl SelectBasicGeom {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_SelectBasicGeom_inherited_IsKind(
                 self as *const Self,
@@ -10175,7 +10182,7 @@ impl SelectBasicGeom {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -10191,7 +10198,7 @@ impl SelectBasicGeom {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_SelectBasicGeom_inherited_GetRefCount(
@@ -10200,7 +10207,7 @@ impl SelectBasicGeom {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_SelectBasicGeom_inherited_IncrementRefCounter(
@@ -10209,7 +10216,7 @@ impl SelectBasicGeom {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_SelectBasicGeom_inherited_DecrementRefCounter(
@@ -10218,7 +10225,7 @@ impl SelectBasicGeom {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_SelectBasicGeom_inherited_Delete(
@@ -10228,40 +10235,44 @@ impl SelectBasicGeom {
     }
 }
 
-pub use crate::ffi_types::HandleIGESSelectSelectBasicGeom;
+pub use crate::ffi_types::Handle_IGESSelect_SelectBasicGeom;
 
-unsafe impl crate::CppDeletable for HandleIGESSelectSelectBasicGeom {
+unsafe impl crate::CppDeletable for Handle_IGESSelect_SelectBasicGeom {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKDEIGES::HandleIGESSelectSelectBasicGeom_destructor(ptr);
+            crate::ffi_extern_TKDEIGES::Handle_IGESSelect_SelectBasicGeom_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleIGESSelectSelectBasicGeom {
+unsafe impl crate::CppCopyable for Handle_IGESSelect_SelectBasicGeom {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
         unsafe {
-            crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectSelectBasicGeom_clone(
-                ptr,
-            ))
+            crate::check_result(
+                crate::ffi_extern_TKDEIGES::Handle_IGESSelect_SelectBasicGeom_clone(ptr),
+            )
         }
     }
 }
 
-impl HandleIGESSelectSelectBasicGeom {
+impl Handle_IGESSelect_SelectBasicGeom {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
         unsafe {
-            crate::ffi_extern_TKDEIGES::HandleIGESSelectSelectBasicGeom_is_null(self as *const Self)
+            crate::ffi_extern_TKDEIGES::Handle_IGESSelect_SelectBasicGeom_is_null(
+                self as *const Self,
+            )
         }
     }
 
     /// Dereference this Handle to access the underlying IGESSelect_SelectBasicGeom
     pub fn get(&self) -> &crate::ffi_types::IGESSelect_SelectBasicGeom {
         unsafe {
-            &*crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectSelectBasicGeom_get(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKDEIGES::Handle_IGESSelect_SelectBasicGeom_get(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -10269,7 +10280,7 @@ impl HandleIGESSelectSelectBasicGeom {
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::IGESSelect_SelectBasicGeom {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi_extern_TKDEIGES::HandleIGESSelectSelectBasicGeom_get_mut(
+                crate::ffi_extern_TKDEIGES::Handle_IGESSelect_SelectBasicGeom_get_mut(
                     self as *mut Self,
                 ),
             )
@@ -10279,36 +10290,36 @@ impl HandleIGESSelectSelectBasicGeom {
     /// Upcast Handle<IGESSelect_SelectBasicGeom> to Handle<IFSelect_SelectExplore>
     pub fn to_handle_select_explore(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleIFSelectSelectExplore> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_IFSelect_SelectExplore> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectSelectBasicGeom_to_HandleIFSelectSelectExplore(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::Handle_IGESSelect_SelectBasicGeom_to_Handle_IFSelect_SelectExplore(self as *const Self)))
         }
     }
 
     /// Upcast Handle<IGESSelect_SelectBasicGeom> to Handle<IFSelect_SelectDeduct>
     pub fn to_handle_select_deduct(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleIFSelectSelectDeduct> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_IFSelect_SelectDeduct> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectSelectBasicGeom_to_HandleIFSelectSelectDeduct(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::Handle_IGESSelect_SelectBasicGeom_to_Handle_IFSelect_SelectDeduct(self as *const Self)))
         }
     }
 
     /// Upcast Handle<IGESSelect_SelectBasicGeom> to Handle<IFSelect_Selection>
     pub fn to_handle_selection(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleIFSelectSelection> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_IFSelect_Selection> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectSelectBasicGeom_to_HandleIFSelectSelection(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::Handle_IGESSelect_SelectBasicGeom_to_Handle_IFSelect_Selection(self as *const Self)))
         }
     }
 
     /// Upcast Handle<IGESSelect_SelectBasicGeom> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectSelectBasicGeom_to_HandleStandardTransient(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::Handle_IGESSelect_SelectBasicGeom_to_Handle_Standard_Transient(self as *const Self)))
         }
     }
 }
@@ -10317,7 +10328,7 @@ impl HandleIGESSelectSelectBasicGeom {
 // From IGESSelect_SelectBypassGroup.hxx
 // ========================
 
-/// **Source:** `IGESSelect_SelectBypassGroup.hxx`:41 - `IGESSelect_SelectBypassGroup`
+/// **Source:** `IGESSelect_SelectBypassGroup.hxx`:38 - `IGESSelect_SelectBypassGroup`
 /// Selects a list built as follows :
 /// Groups are entities type 402, forms 1,7,14,15 (Group,
 /// Ordered or not, "WithoutBackPointer" or not)
@@ -10337,7 +10348,7 @@ unsafe impl crate::CppDeletable for SelectBypassGroup {
 }
 
 impl SelectBypassGroup {
-    /// **Source:** `IGESSelect_SelectBypassGroup.hxx`:47 - `IGESSelect_SelectBypassGroup::IGESSelect_SelectBypassGroup()`
+    /// **Source:** `IGESSelect_SelectBypassGroup.hxx`:44 - `IGESSelect_SelectBypassGroup::IGESSelect_SelectBypassGroup()`
     /// Creates a SelectBypassGroup, by default all level
     /// (level = 1 explores at first level)
     pub fn new_int(level: i32) -> crate::OwnedPtr<Self> {
@@ -10348,20 +10359,20 @@ impl SelectBypassGroup {
         }
     }
 
-    /// **Source:** `IGESSelect_SelectBypassGroup.hxx`:47 - `IGESSelect_SelectBypassGroup::IGESSelect_SelectBypassGroup()`
+    /// **Source:** `IGESSelect_SelectBypassGroup.hxx`:44 - `IGESSelect_SelectBypassGroup::IGESSelect_SelectBypassGroup()`
     /// Creates a SelectBypassGroup, by default all level
     /// (level = 1 explores at first level)
     pub fn new() -> crate::OwnedPtr<Self> {
         Self::new_int(0)
     }
 
-    /// **Source:** `IGESSelect_SelectBypassGroup.hxx`:52 - `IGESSelect_SelectBypassGroup::Explore()`
+    /// **Source:** `IGESSelect_SelectBypassGroup.hxx`:48 - `IGESSelect_SelectBypassGroup::Explore()`
     /// Explores an entity : for a Group, gives its elements
     /// Else, takes the entity itself
     pub fn explore(
         &self,
         level: i32,
-        ent: &crate::ffi_types::HandleStandardTransient,
+        ent: &crate::ffi_types::Handle_Standard_Transient,
         G: &crate::interface::Graph,
         explored: &mut crate::interface::EntityIterator,
     ) -> bool {
@@ -10376,7 +10387,7 @@ impl SelectBypassGroup {
         })
     }
 
-    /// **Source:** `IGESSelect_SelectBypassGroup.hxx`:58 - `IGESSelect_SelectBypassGroup::ExploreLabel()`
+    /// **Source:** `IGESSelect_SelectBypassGroup.hxx`:54 - `IGESSelect_SelectBypassGroup::ExploreLabel()`
     /// Returns a text defining the criterium : "Content of Group"
     pub fn explore_label(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe {
@@ -10388,8 +10399,8 @@ impl SelectBypassGroup {
         }
     }
 
-    /// **Source:** `IGESSelect_SelectBypassGroup.hxx`:60 - `IGESSelect_SelectBypassGroup::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `IGESSelect_SelectBypassGroup.hxx`:56 - `IGESSelect_SelectBypassGroup::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKDEIGES::IGESSelect_SelectBypassGroup_dynamic_type(
@@ -10399,7 +10410,7 @@ impl SelectBypassGroup {
         }
     }
 
-    /// **Source:** `IGESSelect_SelectBypassGroup.hxx`:60 - `IGESSelect_SelectBypassGroup::get_type_name()`
+    /// **Source:** `IGESSelect_SelectBypassGroup.hxx`:56 - `IGESSelect_SelectBypassGroup::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -10410,8 +10421,8 @@ impl SelectBypassGroup {
         .into_owned()
     }
 
-    /// **Source:** `IGESSelect_SelectBypassGroup.hxx`:60 - `IGESSelect_SelectBypassGroup::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    /// **Source:** `IGESSelect_SelectBypassGroup.hxx`:56 - `IGESSelect_SelectBypassGroup::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKDEIGES::IGESSelect_SelectBypassGroup_get_type_descriptor(),
@@ -10502,7 +10513,7 @@ impl SelectBypassGroup {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESSelectSelectBypassGroup> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_IGESSelect_SelectBypassGroup> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDEIGES::IGESSelect_SelectBypassGroup_to_handle(obj.into_raw()),
@@ -10510,7 +10521,7 @@ impl SelectBypassGroup {
         }
     }
 
-    /// Inherited: **Source:** `IFSelect_SelectExplore.hxx`:55 - `IFSelect_SelectExplore::Level()`
+    /// Inherited: **Source:** `IFSelect_SelectExplore.hxx`:52 - `IFSelect_SelectExplore::Level()`
     pub fn level(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_SelectBypassGroup_inherited_Level(
@@ -10519,7 +10530,7 @@ impl SelectBypassGroup {
         })
     }
 
-    /// Inherited: **Source:** `IFSelect_SelectExplore.hxx`:63 - `IFSelect_SelectExplore::RootResult()`
+    /// Inherited: **Source:** `IFSelect_SelectExplore.hxx`:59 - `IFSelect_SelectExplore::RootResult()`
     pub fn root_result(
         &self,
         G: &crate::interface::Graph,
@@ -10534,7 +10545,7 @@ impl SelectBypassGroup {
         }
     }
 
-    /// Inherited: **Source:** `IFSelect_SelectExplore.hxx`:83 - `IFSelect_SelectExplore::Label()`
+    /// Inherited: **Source:** `IFSelect_SelectExplore.hxx`:79 - `IFSelect_SelectExplore::Label()`
     pub fn label(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -10545,8 +10556,8 @@ impl SelectBypassGroup {
         }
     }
 
-    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:49 - `IFSelect_SelectDeduct::SetInput()`
-    pub fn set_input(&mut self, sel: &crate::ffi_types::HandleIFSelectSelection) {
+    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:46 - `IFSelect_SelectDeduct::SetInput()`
+    pub fn set_input(&mut self, sel: &crate::ffi_types::Handle_IFSelect_Selection) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_SelectBypassGroup_inherited_SetInput(
                 self as *mut Self,
@@ -10555,8 +10566,8 @@ impl SelectBypassGroup {
         })
     }
 
-    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:52 - `IFSelect_SelectDeduct::Input()`
-    pub fn input(&self) -> crate::OwnedPtr<crate::ffi_types::HandleIFSelectSelection> {
+    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:49 - `IFSelect_SelectDeduct::Input()`
+    pub fn input(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_IFSelect_Selection> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDEIGES::IGESSelect_SelectBypassGroup_inherited_Input(
@@ -10566,7 +10577,7 @@ impl SelectBypassGroup {
         }
     }
 
-    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:55 - `IFSelect_SelectDeduct::HasInput()`
+    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:52 - `IFSelect_SelectDeduct::HasInput()`
     pub fn has_input(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_SelectBypassGroup_inherited_HasInput(
@@ -10575,7 +10586,7 @@ impl SelectBypassGroup {
         })
     }
 
-    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:59 - `IFSelect_SelectDeduct::HasAlternate()`
+    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:56 - `IFSelect_SelectDeduct::HasAlternate()`
     pub fn has_alternate(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_SelectBypassGroup_inherited_HasAlternate(
@@ -10584,8 +10595,8 @@ impl SelectBypassGroup {
         })
     }
 
-    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:67 - `IFSelect_SelectDeduct::Alternate()`
-    pub fn alternate(&mut self) -> &mut crate::ffi_types::HandleIFSelectSelectPointed {
+    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:64 - `IFSelect_SelectDeduct::Alternate()`
+    pub fn alternate(&mut self) -> &mut crate::ffi_types::Handle_IFSelect_SelectPointed {
         unsafe {
             &mut *(crate::check_result(
                 crate::ffi_extern_TKDEIGES::IGESSelect_SelectBypassGroup_inherited_Alternate(
@@ -10595,7 +10606,7 @@ impl SelectBypassGroup {
         }
     }
 
-    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:74 - `IFSelect_SelectDeduct::InputResult()`
+    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:71 - `IFSelect_SelectDeduct::InputResult()`
     pub fn input_result(
         &self,
         G: &crate::interface::Graph,
@@ -10610,7 +10621,7 @@ impl SelectBypassGroup {
         }
     }
 
-    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:78 - `IFSelect_SelectDeduct::FillIterator()`
+    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:75 - `IFSelect_SelectDeduct::FillIterator()`
     pub fn fill_iterator(&self, iter: &mut crate::if_select::SelectionIterator) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_SelectBypassGroup_inherited_FillIterator(
@@ -10620,7 +10631,7 @@ impl SelectBypassGroup {
         })
     }
 
-    /// Inherited: **Source:** `IFSelect_Selection.hxx`:55 - `IFSelect_Selection::UniqueResult()`
+    /// Inherited: **Source:** `IFSelect_Selection.hxx`:52 - `IFSelect_Selection::UniqueResult()`
     pub fn unique_result(
         &self,
         G: &crate::interface::Graph,
@@ -10635,7 +10646,7 @@ impl SelectBypassGroup {
         }
     }
 
-    /// Inherited: **Source:** `IFSelect_Selection.hxx`:59 - `IFSelect_Selection::CompleteResult()`
+    /// Inherited: **Source:** `IFSelect_Selection.hxx`:56 - `IFSelect_Selection::CompleteResult()`
     pub fn complete_result(
         &self,
         G: &crate::interface::Graph,
@@ -10650,8 +10661,8 @@ impl SelectBypassGroup {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_SelectBypassGroup_inherited_IsInstance(
                 self as *const Self,
@@ -10660,8 +10671,8 @@ impl SelectBypassGroup {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_SelectBypassGroup_inherited_IsKind(
                 self as *const Self,
@@ -10670,7 +10681,7 @@ impl SelectBypassGroup {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -10686,7 +10697,7 @@ impl SelectBypassGroup {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_SelectBypassGroup_inherited_GetRefCount(
@@ -10695,7 +10706,7 @@ impl SelectBypassGroup {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_SelectBypassGroup_inherited_IncrementRefCounter(
@@ -10704,7 +10715,7 @@ impl SelectBypassGroup {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_SelectBypassGroup_inherited_DecrementRefCounter(
@@ -10713,7 +10724,7 @@ impl SelectBypassGroup {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_SelectBypassGroup_inherited_Delete(
@@ -10723,31 +10734,31 @@ impl SelectBypassGroup {
     }
 }
 
-pub use crate::ffi_types::HandleIGESSelectSelectBypassGroup;
+pub use crate::ffi_types::Handle_IGESSelect_SelectBypassGroup;
 
-unsafe impl crate::CppDeletable for HandleIGESSelectSelectBypassGroup {
+unsafe impl crate::CppDeletable for Handle_IGESSelect_SelectBypassGroup {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKDEIGES::HandleIGESSelectSelectBypassGroup_destructor(ptr);
+            crate::ffi_extern_TKDEIGES::Handle_IGESSelect_SelectBypassGroup_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleIGESSelectSelectBypassGroup {
+unsafe impl crate::CppCopyable for Handle_IGESSelect_SelectBypassGroup {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
         unsafe {
             crate::check_result(
-                crate::ffi_extern_TKDEIGES::HandleIGESSelectSelectBypassGroup_clone(ptr),
+                crate::ffi_extern_TKDEIGES::Handle_IGESSelect_SelectBypassGroup_clone(ptr),
             )
         }
     }
 }
 
-impl HandleIGESSelectSelectBypassGroup {
+impl Handle_IGESSelect_SelectBypassGroup {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
         unsafe {
-            crate::ffi_extern_TKDEIGES::HandleIGESSelectSelectBypassGroup_is_null(
+            crate::ffi_extern_TKDEIGES::Handle_IGESSelect_SelectBypassGroup_is_null(
                 self as *const Self,
             )
         }
@@ -10757,7 +10768,7 @@ impl HandleIGESSelectSelectBypassGroup {
     pub fn get(&self) -> &crate::ffi_types::IGESSelect_SelectBypassGroup {
         unsafe {
             &*crate::check_result(
-                crate::ffi_extern_TKDEIGES::HandleIGESSelectSelectBypassGroup_get(
+                crate::ffi_extern_TKDEIGES::Handle_IGESSelect_SelectBypassGroup_get(
                     self as *const Self,
                 ),
             )
@@ -10768,7 +10779,7 @@ impl HandleIGESSelectSelectBypassGroup {
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::IGESSelect_SelectBypassGroup {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi_extern_TKDEIGES::HandleIGESSelectSelectBypassGroup_get_mut(
+                crate::ffi_extern_TKDEIGES::Handle_IGESSelect_SelectBypassGroup_get_mut(
                     self as *mut Self,
                 ),
             )
@@ -10778,36 +10789,36 @@ impl HandleIGESSelectSelectBypassGroup {
     /// Upcast Handle<IGESSelect_SelectBypassGroup> to Handle<IFSelect_SelectExplore>
     pub fn to_handle_select_explore(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleIFSelectSelectExplore> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_IFSelect_SelectExplore> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectSelectBypassGroup_to_HandleIFSelectSelectExplore(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::Handle_IGESSelect_SelectBypassGroup_to_Handle_IFSelect_SelectExplore(self as *const Self)))
         }
     }
 
     /// Upcast Handle<IGESSelect_SelectBypassGroup> to Handle<IFSelect_SelectDeduct>
     pub fn to_handle_select_deduct(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleIFSelectSelectDeduct> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_IFSelect_SelectDeduct> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectSelectBypassGroup_to_HandleIFSelectSelectDeduct(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::Handle_IGESSelect_SelectBypassGroup_to_Handle_IFSelect_SelectDeduct(self as *const Self)))
         }
     }
 
     /// Upcast Handle<IGESSelect_SelectBypassGroup> to Handle<IFSelect_Selection>
     pub fn to_handle_selection(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleIFSelectSelection> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_IFSelect_Selection> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectSelectBypassGroup_to_HandleIFSelectSelection(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::Handle_IGESSelect_SelectBypassGroup_to_Handle_IFSelect_Selection(self as *const Self)))
         }
     }
 
     /// Upcast Handle<IGESSelect_SelectBypassGroup> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectSelectBypassGroup_to_HandleStandardTransient(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::Handle_IGESSelect_SelectBypassGroup_to_Handle_Standard_Transient(self as *const Self)))
         }
     }
 }
@@ -10816,7 +10827,7 @@ impl HandleIGESSelectSelectBypassGroup {
 // From IGESSelect_SelectBypassSubfigure.hxx
 // ========================
 
-/// **Source:** `IGESSelect_SelectBypassSubfigure.hxx`:47 - `IGESSelect_SelectBypassSubfigure`
+/// **Source:** `IGESSelect_SelectBypassSubfigure.hxx`:44 - `IGESSelect_SelectBypassSubfigure`
 /// Selects a list built as follows :
 /// Subfigures correspond to
 /// * Definition (basic : type 308, or Network : type 320)
@@ -10842,7 +10853,7 @@ unsafe impl crate::CppDeletable for SelectBypassSubfigure {
 }
 
 impl SelectBypassSubfigure {
-    /// **Source:** `IGESSelect_SelectBypassSubfigure.hxx`:53 - `IGESSelect_SelectBypassSubfigure::IGESSelect_SelectBypassSubfigure()`
+    /// **Source:** `IGESSelect_SelectBypassSubfigure.hxx`:50 - `IGESSelect_SelectBypassSubfigure::IGESSelect_SelectBypassSubfigure()`
     /// Creates a SelectBypassSubfigure, by default all level
     /// (level = 1 explores at first level)
     pub fn new_int(level: i32) -> crate::OwnedPtr<Self> {
@@ -10853,20 +10864,20 @@ impl SelectBypassSubfigure {
         }
     }
 
-    /// **Source:** `IGESSelect_SelectBypassSubfigure.hxx`:53 - `IGESSelect_SelectBypassSubfigure::IGESSelect_SelectBypassSubfigure()`
+    /// **Source:** `IGESSelect_SelectBypassSubfigure.hxx`:50 - `IGESSelect_SelectBypassSubfigure::IGESSelect_SelectBypassSubfigure()`
     /// Creates a SelectBypassSubfigure, by default all level
     /// (level = 1 explores at first level)
     pub fn new() -> crate::OwnedPtr<Self> {
         Self::new_int(0)
     }
 
-    /// **Source:** `IGESSelect_SelectBypassSubfigure.hxx`:58 - `IGESSelect_SelectBypassSubfigure::Explore()`
+    /// **Source:** `IGESSelect_SelectBypassSubfigure.hxx`:54 - `IGESSelect_SelectBypassSubfigure::Explore()`
     /// Explores an entity : for a Subfigure, gives its elements
     /// Else, takes the entity itself
     pub fn explore(
         &self,
         level: i32,
-        ent: &crate::ffi_types::HandleStandardTransient,
+        ent: &crate::ffi_types::Handle_Standard_Transient,
         G: &crate::interface::Graph,
         explored: &mut crate::interface::EntityIterator,
     ) -> bool {
@@ -10881,7 +10892,7 @@ impl SelectBypassSubfigure {
         })
     }
 
-    /// **Source:** `IGESSelect_SelectBypassSubfigure.hxx`:64 - `IGESSelect_SelectBypassSubfigure::ExploreLabel()`
+    /// **Source:** `IGESSelect_SelectBypassSubfigure.hxx`:60 - `IGESSelect_SelectBypassSubfigure::ExploreLabel()`
     /// Returns a text defining the criterium : "Content of Subfigure"
     pub fn explore_label(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe {
@@ -10893,8 +10904,8 @@ impl SelectBypassSubfigure {
         }
     }
 
-    /// **Source:** `IGESSelect_SelectBypassSubfigure.hxx`:66 - `IGESSelect_SelectBypassSubfigure::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `IGESSelect_SelectBypassSubfigure.hxx`:62 - `IGESSelect_SelectBypassSubfigure::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKDEIGES::IGESSelect_SelectBypassSubfigure_dynamic_type(
@@ -10904,7 +10915,7 @@ impl SelectBypassSubfigure {
         }
     }
 
-    /// **Source:** `IGESSelect_SelectBypassSubfigure.hxx`:66 - `IGESSelect_SelectBypassSubfigure::get_type_name()`
+    /// **Source:** `IGESSelect_SelectBypassSubfigure.hxx`:62 - `IGESSelect_SelectBypassSubfigure::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -10915,8 +10926,8 @@ impl SelectBypassSubfigure {
         .into_owned()
     }
 
-    /// **Source:** `IGESSelect_SelectBypassSubfigure.hxx`:66 - `IGESSelect_SelectBypassSubfigure::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    /// **Source:** `IGESSelect_SelectBypassSubfigure.hxx`:62 - `IGESSelect_SelectBypassSubfigure::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKDEIGES::IGESSelect_SelectBypassSubfigure_get_type_descriptor(),
@@ -10991,7 +11002,7 @@ impl SelectBypassSubfigure {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESSelectSelectBypassSubfigure> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_IGESSelect_SelectBypassSubfigure> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDEIGES::IGESSelect_SelectBypassSubfigure_to_handle(
@@ -11001,7 +11012,7 @@ impl SelectBypassSubfigure {
         }
     }
 
-    /// Inherited: **Source:** `IFSelect_SelectExplore.hxx`:55 - `IFSelect_SelectExplore::Level()`
+    /// Inherited: **Source:** `IFSelect_SelectExplore.hxx`:52 - `IFSelect_SelectExplore::Level()`
     pub fn level(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_SelectBypassSubfigure_inherited_Level(
@@ -11010,7 +11021,7 @@ impl SelectBypassSubfigure {
         })
     }
 
-    /// Inherited: **Source:** `IFSelect_SelectExplore.hxx`:63 - `IFSelect_SelectExplore::RootResult()`
+    /// Inherited: **Source:** `IFSelect_SelectExplore.hxx`:59 - `IFSelect_SelectExplore::RootResult()`
     pub fn root_result(
         &self,
         G: &crate::interface::Graph,
@@ -11025,7 +11036,7 @@ impl SelectBypassSubfigure {
         }
     }
 
-    /// Inherited: **Source:** `IFSelect_SelectExplore.hxx`:83 - `IFSelect_SelectExplore::Label()`
+    /// Inherited: **Source:** `IFSelect_SelectExplore.hxx`:79 - `IFSelect_SelectExplore::Label()`
     pub fn label(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -11036,8 +11047,8 @@ impl SelectBypassSubfigure {
         }
     }
 
-    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:49 - `IFSelect_SelectDeduct::SetInput()`
-    pub fn set_input(&mut self, sel: &crate::ffi_types::HandleIFSelectSelection) {
+    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:46 - `IFSelect_SelectDeduct::SetInput()`
+    pub fn set_input(&mut self, sel: &crate::ffi_types::Handle_IFSelect_Selection) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_SelectBypassSubfigure_inherited_SetInput(
                 self as *mut Self,
@@ -11046,8 +11057,8 @@ impl SelectBypassSubfigure {
         })
     }
 
-    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:52 - `IFSelect_SelectDeduct::Input()`
-    pub fn input(&self) -> crate::OwnedPtr<crate::ffi_types::HandleIFSelectSelection> {
+    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:49 - `IFSelect_SelectDeduct::Input()`
+    pub fn input(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_IFSelect_Selection> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDEIGES::IGESSelect_SelectBypassSubfigure_inherited_Input(
@@ -11057,7 +11068,7 @@ impl SelectBypassSubfigure {
         }
     }
 
-    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:55 - `IFSelect_SelectDeduct::HasInput()`
+    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:52 - `IFSelect_SelectDeduct::HasInput()`
     pub fn has_input(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_SelectBypassSubfigure_inherited_HasInput(
@@ -11066,7 +11077,7 @@ impl SelectBypassSubfigure {
         })
     }
 
-    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:59 - `IFSelect_SelectDeduct::HasAlternate()`
+    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:56 - `IFSelect_SelectDeduct::HasAlternate()`
     pub fn has_alternate(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_SelectBypassSubfigure_inherited_HasAlternate(
@@ -11075,8 +11086,8 @@ impl SelectBypassSubfigure {
         })
     }
 
-    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:67 - `IFSelect_SelectDeduct::Alternate()`
-    pub fn alternate(&mut self) -> &mut crate::ffi_types::HandleIFSelectSelectPointed {
+    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:64 - `IFSelect_SelectDeduct::Alternate()`
+    pub fn alternate(&mut self) -> &mut crate::ffi_types::Handle_IFSelect_SelectPointed {
         unsafe {
             &mut *(crate::check_result(
                 crate::ffi_extern_TKDEIGES::IGESSelect_SelectBypassSubfigure_inherited_Alternate(
@@ -11086,7 +11097,7 @@ impl SelectBypassSubfigure {
         }
     }
 
-    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:74 - `IFSelect_SelectDeduct::InputResult()`
+    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:71 - `IFSelect_SelectDeduct::InputResult()`
     pub fn input_result(
         &self,
         G: &crate::interface::Graph,
@@ -11101,7 +11112,7 @@ impl SelectBypassSubfigure {
         }
     }
 
-    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:78 - `IFSelect_SelectDeduct::FillIterator()`
+    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:75 - `IFSelect_SelectDeduct::FillIterator()`
     pub fn fill_iterator(&self, iter: &mut crate::if_select::SelectionIterator) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_SelectBypassSubfigure_inherited_FillIterator(
@@ -11111,7 +11122,7 @@ impl SelectBypassSubfigure {
         })
     }
 
-    /// Inherited: **Source:** `IFSelect_Selection.hxx`:55 - `IFSelect_Selection::UniqueResult()`
+    /// Inherited: **Source:** `IFSelect_Selection.hxx`:52 - `IFSelect_Selection::UniqueResult()`
     pub fn unique_result(
         &self,
         G: &crate::interface::Graph,
@@ -11126,7 +11137,7 @@ impl SelectBypassSubfigure {
         }
     }
 
-    /// Inherited: **Source:** `IFSelect_Selection.hxx`:59 - `IFSelect_Selection::CompleteResult()`
+    /// Inherited: **Source:** `IFSelect_Selection.hxx`:56 - `IFSelect_Selection::CompleteResult()`
     pub fn complete_result(
         &self,
         G: &crate::interface::Graph,
@@ -11136,8 +11147,8 @@ impl SelectBypassSubfigure {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_SelectBypassSubfigure_inherited_IsInstance(
                 self as *const Self,
@@ -11146,8 +11157,8 @@ impl SelectBypassSubfigure {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_SelectBypassSubfigure_inherited_IsKind(
                 self as *const Self,
@@ -11156,7 +11167,7 @@ impl SelectBypassSubfigure {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -11172,7 +11183,7 @@ impl SelectBypassSubfigure {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_SelectBypassSubfigure_inherited_GetRefCount(
@@ -11181,21 +11192,21 @@ impl SelectBypassSubfigure {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_SelectBypassSubfigure_inherited_IncrementRefCounter(self as *mut Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_SelectBypassSubfigure_inherited_DecrementRefCounter(self as *mut Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_SelectBypassSubfigure_inherited_Delete(
@@ -11205,31 +11216,31 @@ impl SelectBypassSubfigure {
     }
 }
 
-pub use crate::ffi_types::HandleIGESSelectSelectBypassSubfigure;
+pub use crate::ffi_types::Handle_IGESSelect_SelectBypassSubfigure;
 
-unsafe impl crate::CppDeletable for HandleIGESSelectSelectBypassSubfigure {
+unsafe impl crate::CppDeletable for Handle_IGESSelect_SelectBypassSubfigure {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKDEIGES::HandleIGESSelectSelectBypassSubfigure_destructor(ptr);
+            crate::ffi_extern_TKDEIGES::Handle_IGESSelect_SelectBypassSubfigure_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleIGESSelectSelectBypassSubfigure {
+unsafe impl crate::CppCopyable for Handle_IGESSelect_SelectBypassSubfigure {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
         unsafe {
             crate::check_result(
-                crate::ffi_extern_TKDEIGES::HandleIGESSelectSelectBypassSubfigure_clone(ptr),
+                crate::ffi_extern_TKDEIGES::Handle_IGESSelect_SelectBypassSubfigure_clone(ptr),
             )
         }
     }
 }
 
-impl HandleIGESSelectSelectBypassSubfigure {
+impl Handle_IGESSelect_SelectBypassSubfigure {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
         unsafe {
-            crate::ffi_extern_TKDEIGES::HandleIGESSelectSelectBypassSubfigure_is_null(
+            crate::ffi_extern_TKDEIGES::Handle_IGESSelect_SelectBypassSubfigure_is_null(
                 self as *const Self,
             )
         }
@@ -11239,7 +11250,7 @@ impl HandleIGESSelectSelectBypassSubfigure {
     pub fn get(&self) -> &crate::ffi_types::IGESSelect_SelectBypassSubfigure {
         unsafe {
             &*crate::check_result(
-                crate::ffi_extern_TKDEIGES::HandleIGESSelectSelectBypassSubfigure_get(
+                crate::ffi_extern_TKDEIGES::Handle_IGESSelect_SelectBypassSubfigure_get(
                     self as *const Self,
                 ),
             )
@@ -11250,7 +11261,7 @@ impl HandleIGESSelectSelectBypassSubfigure {
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::IGESSelect_SelectBypassSubfigure {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi_extern_TKDEIGES::HandleIGESSelectSelectBypassSubfigure_get_mut(
+                crate::ffi_extern_TKDEIGES::Handle_IGESSelect_SelectBypassSubfigure_get_mut(
                     self as *mut Self,
                 ),
             )
@@ -11260,36 +11271,36 @@ impl HandleIGESSelectSelectBypassSubfigure {
     /// Upcast Handle<IGESSelect_SelectBypassSubfigure> to Handle<IFSelect_SelectExplore>
     pub fn to_handle_select_explore(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleIFSelectSelectExplore> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_IFSelect_SelectExplore> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectSelectBypassSubfigure_to_HandleIFSelectSelectExplore(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::Handle_IGESSelect_SelectBypassSubfigure_to_Handle_IFSelect_SelectExplore(self as *const Self)))
         }
     }
 
     /// Upcast Handle<IGESSelect_SelectBypassSubfigure> to Handle<IFSelect_SelectDeduct>
     pub fn to_handle_select_deduct(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleIFSelectSelectDeduct> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_IFSelect_SelectDeduct> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectSelectBypassSubfigure_to_HandleIFSelectSelectDeduct(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::Handle_IGESSelect_SelectBypassSubfigure_to_Handle_IFSelect_SelectDeduct(self as *const Self)))
         }
     }
 
     /// Upcast Handle<IGESSelect_SelectBypassSubfigure> to Handle<IFSelect_Selection>
     pub fn to_handle_selection(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleIFSelectSelection> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_IFSelect_Selection> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectSelectBypassSubfigure_to_HandleIFSelectSelection(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::Handle_IGESSelect_SelectBypassSubfigure_to_Handle_IFSelect_Selection(self as *const Self)))
         }
     }
 
     /// Upcast Handle<IGESSelect_SelectBypassSubfigure> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectSelectBypassSubfigure_to_HandleStandardTransient(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::Handle_IGESSelect_SelectBypassSubfigure_to_Handle_Standard_Transient(self as *const Self)))
         }
     }
 }
@@ -11298,9 +11309,9 @@ impl HandleIGESSelectSelectBypassSubfigure {
 // From IGESSelect_SelectDrawingFrom.hxx
 // ========================
 
-/// **Source:** `IGESSelect_SelectDrawingFrom.hxx`:34 - `IGESSelect_SelectDrawingFrom`
+/// **Source:** `IGESSelect_SelectDrawingFrom.hxx`:31 - `IGESSelect_SelectDrawingFrom`
 /// This selection gets the Drawings attached to its input IGES
-/// entities. They are read through thr Single Views, referenced
+/// entities. They are read through the Single Views, referenced
 /// in Directory Parts of the entities
 pub use crate::ffi_types::IGESSelect_SelectDrawingFrom as SelectDrawingFrom;
 
@@ -11313,7 +11324,7 @@ unsafe impl crate::CppDeletable for SelectDrawingFrom {
 }
 
 impl SelectDrawingFrom {
-    /// **Source:** `IGESSelect_SelectDrawingFrom.hxx`:39 - `IGESSelect_SelectDrawingFrom::IGESSelect_SelectDrawingFrom()`
+    /// **Source:** `IGESSelect_SelectDrawingFrom.hxx`:36 - `IGESSelect_SelectDrawingFrom::IGESSelect_SelectDrawingFrom()`
     /// Creates a SelectDrawingFrom
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
@@ -11323,7 +11334,7 @@ impl SelectDrawingFrom {
         }
     }
 
-    /// **Source:** `IGESSelect_SelectDrawingFrom.hxx`:44 - `IGESSelect_SelectDrawingFrom::RootResult()`
+    /// **Source:** `IGESSelect_SelectDrawingFrom.hxx`:40 - `IGESSelect_SelectDrawingFrom::RootResult()`
     /// Selects the Drawings attached (through Single Views in
     /// Directory Part) to input entities
     pub fn root_result(
@@ -11340,8 +11351,8 @@ impl SelectDrawingFrom {
         }
     }
 
-    /// **Source:** `IGESSelect_SelectDrawingFrom.hxx`:47 - `IGESSelect_SelectDrawingFrom::Label()`
-    /// Returns the label, with is "Drawings attached"
+    /// **Source:** `IGESSelect_SelectDrawingFrom.hxx`:43 - `IGESSelect_SelectDrawingFrom::Label()`
+    /// Returns the label, with its "Drawings attached"
     pub fn label(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -11350,8 +11361,8 @@ impl SelectDrawingFrom {
         }
     }
 
-    /// **Source:** `IGESSelect_SelectDrawingFrom.hxx`:49 - `IGESSelect_SelectDrawingFrom::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `IGESSelect_SelectDrawingFrom.hxx`:45 - `IGESSelect_SelectDrawingFrom::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKDEIGES::IGESSelect_SelectDrawingFrom_dynamic_type(
@@ -11361,7 +11372,7 @@ impl SelectDrawingFrom {
         }
     }
 
-    /// **Source:** `IGESSelect_SelectDrawingFrom.hxx`:49 - `IGESSelect_SelectDrawingFrom::get_type_name()`
+    /// **Source:** `IGESSelect_SelectDrawingFrom.hxx`:45 - `IGESSelect_SelectDrawingFrom::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -11372,8 +11383,8 @@ impl SelectDrawingFrom {
         .into_owned()
     }
 
-    /// **Source:** `IGESSelect_SelectDrawingFrom.hxx`:49 - `IGESSelect_SelectDrawingFrom::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    /// **Source:** `IGESSelect_SelectDrawingFrom.hxx`:45 - `IGESSelect_SelectDrawingFrom::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKDEIGES::IGESSelect_SelectDrawingFrom_get_type_descriptor(),
@@ -11446,7 +11457,7 @@ impl SelectDrawingFrom {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESSelectSelectDrawingFrom> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_IGESSelect_SelectDrawingFrom> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDEIGES::IGESSelect_SelectDrawingFrom_to_handle(obj.into_raw()),
@@ -11454,8 +11465,8 @@ impl SelectDrawingFrom {
         }
     }
 
-    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:49 - `IFSelect_SelectDeduct::SetInput()`
-    pub fn set_input(&mut self, sel: &crate::ffi_types::HandleIFSelectSelection) {
+    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:46 - `IFSelect_SelectDeduct::SetInput()`
+    pub fn set_input(&mut self, sel: &crate::ffi_types::Handle_IFSelect_Selection) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_SelectDrawingFrom_inherited_SetInput(
                 self as *mut Self,
@@ -11464,8 +11475,8 @@ impl SelectDrawingFrom {
         })
     }
 
-    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:52 - `IFSelect_SelectDeduct::Input()`
-    pub fn input(&self) -> crate::OwnedPtr<crate::ffi_types::HandleIFSelectSelection> {
+    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:49 - `IFSelect_SelectDeduct::Input()`
+    pub fn input(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_IFSelect_Selection> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDEIGES::IGESSelect_SelectDrawingFrom_inherited_Input(
@@ -11475,7 +11486,7 @@ impl SelectDrawingFrom {
         }
     }
 
-    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:55 - `IFSelect_SelectDeduct::HasInput()`
+    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:52 - `IFSelect_SelectDeduct::HasInput()`
     pub fn has_input(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_SelectDrawingFrom_inherited_HasInput(
@@ -11484,7 +11495,7 @@ impl SelectDrawingFrom {
         })
     }
 
-    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:59 - `IFSelect_SelectDeduct::HasAlternate()`
+    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:56 - `IFSelect_SelectDeduct::HasAlternate()`
     pub fn has_alternate(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_SelectDrawingFrom_inherited_HasAlternate(
@@ -11493,8 +11504,8 @@ impl SelectDrawingFrom {
         })
     }
 
-    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:67 - `IFSelect_SelectDeduct::Alternate()`
-    pub fn alternate(&mut self) -> &mut crate::ffi_types::HandleIFSelectSelectPointed {
+    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:64 - `IFSelect_SelectDeduct::Alternate()`
+    pub fn alternate(&mut self) -> &mut crate::ffi_types::Handle_IFSelect_SelectPointed {
         unsafe {
             &mut *(crate::check_result(
                 crate::ffi_extern_TKDEIGES::IGESSelect_SelectDrawingFrom_inherited_Alternate(
@@ -11504,7 +11515,7 @@ impl SelectDrawingFrom {
         }
     }
 
-    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:74 - `IFSelect_SelectDeduct::InputResult()`
+    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:71 - `IFSelect_SelectDeduct::InputResult()`
     pub fn input_result(
         &self,
         G: &crate::interface::Graph,
@@ -11519,7 +11530,7 @@ impl SelectDrawingFrom {
         }
     }
 
-    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:78 - `IFSelect_SelectDeduct::FillIterator()`
+    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:75 - `IFSelect_SelectDeduct::FillIterator()`
     pub fn fill_iterator(&self, iter: &mut crate::if_select::SelectionIterator) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_SelectDrawingFrom_inherited_FillIterator(
@@ -11529,7 +11540,7 @@ impl SelectDrawingFrom {
         })
     }
 
-    /// Inherited: **Source:** `IFSelect_Selection.hxx`:55 - `IFSelect_Selection::UniqueResult()`
+    /// Inherited: **Source:** `IFSelect_Selection.hxx`:52 - `IFSelect_Selection::UniqueResult()`
     pub fn unique_result(
         &self,
         G: &crate::interface::Graph,
@@ -11544,7 +11555,7 @@ impl SelectDrawingFrom {
         }
     }
 
-    /// Inherited: **Source:** `IFSelect_Selection.hxx`:59 - `IFSelect_Selection::CompleteResult()`
+    /// Inherited: **Source:** `IFSelect_Selection.hxx`:56 - `IFSelect_Selection::CompleteResult()`
     pub fn complete_result(
         &self,
         G: &crate::interface::Graph,
@@ -11559,8 +11570,8 @@ impl SelectDrawingFrom {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_SelectDrawingFrom_inherited_IsInstance(
                 self as *const Self,
@@ -11569,8 +11580,8 @@ impl SelectDrawingFrom {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_SelectDrawingFrom_inherited_IsKind(
                 self as *const Self,
@@ -11579,7 +11590,7 @@ impl SelectDrawingFrom {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -11595,7 +11606,7 @@ impl SelectDrawingFrom {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_SelectDrawingFrom_inherited_GetRefCount(
@@ -11604,7 +11615,7 @@ impl SelectDrawingFrom {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_SelectDrawingFrom_inherited_IncrementRefCounter(
@@ -11613,7 +11624,7 @@ impl SelectDrawingFrom {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_SelectDrawingFrom_inherited_DecrementRefCounter(
@@ -11622,7 +11633,7 @@ impl SelectDrawingFrom {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_SelectDrawingFrom_inherited_Delete(
@@ -11632,31 +11643,31 @@ impl SelectDrawingFrom {
     }
 }
 
-pub use crate::ffi_types::HandleIGESSelectSelectDrawingFrom;
+pub use crate::ffi_types::Handle_IGESSelect_SelectDrawingFrom;
 
-unsafe impl crate::CppDeletable for HandleIGESSelectSelectDrawingFrom {
+unsafe impl crate::CppDeletable for Handle_IGESSelect_SelectDrawingFrom {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKDEIGES::HandleIGESSelectSelectDrawingFrom_destructor(ptr);
+            crate::ffi_extern_TKDEIGES::Handle_IGESSelect_SelectDrawingFrom_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleIGESSelectSelectDrawingFrom {
+unsafe impl crate::CppCopyable for Handle_IGESSelect_SelectDrawingFrom {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
         unsafe {
             crate::check_result(
-                crate::ffi_extern_TKDEIGES::HandleIGESSelectSelectDrawingFrom_clone(ptr),
+                crate::ffi_extern_TKDEIGES::Handle_IGESSelect_SelectDrawingFrom_clone(ptr),
             )
         }
     }
 }
 
-impl HandleIGESSelectSelectDrawingFrom {
+impl Handle_IGESSelect_SelectDrawingFrom {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
         unsafe {
-            crate::ffi_extern_TKDEIGES::HandleIGESSelectSelectDrawingFrom_is_null(
+            crate::ffi_extern_TKDEIGES::Handle_IGESSelect_SelectDrawingFrom_is_null(
                 self as *const Self,
             )
         }
@@ -11666,7 +11677,7 @@ impl HandleIGESSelectSelectDrawingFrom {
     pub fn get(&self) -> &crate::ffi_types::IGESSelect_SelectDrawingFrom {
         unsafe {
             &*crate::check_result(
-                crate::ffi_extern_TKDEIGES::HandleIGESSelectSelectDrawingFrom_get(
+                crate::ffi_extern_TKDEIGES::Handle_IGESSelect_SelectDrawingFrom_get(
                     self as *const Self,
                 ),
             )
@@ -11677,7 +11688,7 @@ impl HandleIGESSelectSelectDrawingFrom {
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::IGESSelect_SelectDrawingFrom {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi_extern_TKDEIGES::HandleIGESSelectSelectDrawingFrom_get_mut(
+                crate::ffi_extern_TKDEIGES::Handle_IGESSelect_SelectDrawingFrom_get_mut(
                     self as *mut Self,
                 ),
             )
@@ -11687,27 +11698,27 @@ impl HandleIGESSelectSelectDrawingFrom {
     /// Upcast Handle<IGESSelect_SelectDrawingFrom> to Handle<IFSelect_SelectDeduct>
     pub fn to_handle_select_deduct(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleIFSelectSelectDeduct> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_IFSelect_SelectDeduct> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectSelectDrawingFrom_to_HandleIFSelectSelectDeduct(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::Handle_IGESSelect_SelectDrawingFrom_to_Handle_IFSelect_SelectDeduct(self as *const Self)))
         }
     }
 
     /// Upcast Handle<IGESSelect_SelectDrawingFrom> to Handle<IFSelect_Selection>
     pub fn to_handle_selection(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleIFSelectSelection> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_IFSelect_Selection> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectSelectDrawingFrom_to_HandleIFSelectSelection(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::Handle_IGESSelect_SelectDrawingFrom_to_Handle_IFSelect_Selection(self as *const Self)))
         }
     }
 
     /// Upcast Handle<IGESSelect_SelectDrawingFrom> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectSelectDrawingFrom_to_HandleStandardTransient(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::Handle_IGESSelect_SelectDrawingFrom_to_Handle_Standard_Transient(self as *const Self)))
         }
     }
 }
@@ -11716,7 +11727,7 @@ impl HandleIGESSelectSelectDrawingFrom {
 // From IGESSelect_SelectFaces.hxx
 // ========================
 
-/// **Source:** `IGESSelect_SelectFaces.hxx`:43 - `IGESSelect_SelectFaces`
+/// **Source:** `IGESSelect_SelectFaces.hxx`:40 - `IGESSelect_SelectFaces`
 /// This selection returns the faces contained in an IGES Entity
 /// or itself if it is a Face
 /// Face means :
@@ -11738,7 +11749,7 @@ unsafe impl crate::CppDeletable for SelectFaces {
 }
 
 impl SelectFaces {
-    /// **Source:** `IGESSelect_SelectFaces.hxx`:47 - `IGESSelect_SelectFaces::IGESSelect_SelectFaces()`
+    /// **Source:** `IGESSelect_SelectFaces.hxx`:44 - `IGESSelect_SelectFaces::IGESSelect_SelectFaces()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -11747,13 +11758,13 @@ impl SelectFaces {
         }
     }
 
-    /// **Source:** `IGESSelect_SelectFaces.hxx`:52 - `IGESSelect_SelectFaces::Explore()`
+    /// **Source:** `IGESSelect_SelectFaces.hxx`:48 - `IGESSelect_SelectFaces::Explore()`
     /// Explores an entity, to take its faces
     /// Works recursively
     pub fn explore(
         &self,
         level: i32,
-        ent: &crate::ffi_types::HandleStandardTransient,
+        ent: &crate::ffi_types::Handle_Standard_Transient,
         G: &crate::interface::Graph,
         explored: &mut crate::interface::EntityIterator,
     ) -> bool {
@@ -11768,7 +11779,7 @@ impl SelectFaces {
         })
     }
 
-    /// **Source:** `IGESSelect_SelectFaces.hxx`:58 - `IGESSelect_SelectFaces::ExploreLabel()`
+    /// **Source:** `IGESSelect_SelectFaces.hxx`:54 - `IGESSelect_SelectFaces::ExploreLabel()`
     /// Returns a text defining the criterium : "Faces"
     pub fn explore_label(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe {
@@ -11780,8 +11791,8 @@ impl SelectFaces {
         }
     }
 
-    /// **Source:** `IGESSelect_SelectFaces.hxx`:60 - `IGESSelect_SelectFaces::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `IGESSelect_SelectFaces.hxx`:56 - `IGESSelect_SelectFaces::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKDEIGES::IGESSelect_SelectFaces_dynamic_type(
@@ -11791,7 +11802,7 @@ impl SelectFaces {
         }
     }
 
-    /// **Source:** `IGESSelect_SelectFaces.hxx`:60 - `IGESSelect_SelectFaces::get_type_name()`
+    /// **Source:** `IGESSelect_SelectFaces.hxx`:56 - `IGESSelect_SelectFaces::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -11802,8 +11813,8 @@ impl SelectFaces {
         .into_owned()
     }
 
-    /// **Source:** `IGESSelect_SelectFaces.hxx`:60 - `IGESSelect_SelectFaces::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    /// **Source:** `IGESSelect_SelectFaces.hxx`:56 - `IGESSelect_SelectFaces::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKDEIGES::IGESSelect_SelectFaces_get_type_descriptor(),
@@ -11902,7 +11913,7 @@ impl SelectFaces {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESSelectSelectFaces> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_IGESSelect_SelectFaces> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDEIGES::IGESSelect_SelectFaces_to_handle(obj.into_raw()),
@@ -11910,14 +11921,14 @@ impl SelectFaces {
         }
     }
 
-    /// Inherited: **Source:** `IFSelect_SelectExplore.hxx`:55 - `IFSelect_SelectExplore::Level()`
+    /// Inherited: **Source:** `IFSelect_SelectExplore.hxx`:52 - `IFSelect_SelectExplore::Level()`
     pub fn level(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_SelectFaces_inherited_Level(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `IFSelect_SelectExplore.hxx`:63 - `IFSelect_SelectExplore::RootResult()`
+    /// Inherited: **Source:** `IFSelect_SelectExplore.hxx`:59 - `IFSelect_SelectExplore::RootResult()`
     pub fn root_result(
         &self,
         G: &crate::interface::Graph,
@@ -11932,7 +11943,7 @@ impl SelectFaces {
         }
     }
 
-    /// Inherited: **Source:** `IFSelect_SelectExplore.hxx`:83 - `IFSelect_SelectExplore::Label()`
+    /// Inherited: **Source:** `IFSelect_SelectExplore.hxx`:79 - `IFSelect_SelectExplore::Label()`
     pub fn label(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -11943,8 +11954,8 @@ impl SelectFaces {
         }
     }
 
-    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:49 - `IFSelect_SelectDeduct::SetInput()`
-    pub fn set_input(&mut self, sel: &crate::ffi_types::HandleIFSelectSelection) {
+    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:46 - `IFSelect_SelectDeduct::SetInput()`
+    pub fn set_input(&mut self, sel: &crate::ffi_types::Handle_IFSelect_Selection) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_SelectFaces_inherited_SetInput(
                 self as *mut Self,
@@ -11953,8 +11964,8 @@ impl SelectFaces {
         })
     }
 
-    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:52 - `IFSelect_SelectDeduct::Input()`
-    pub fn input(&self) -> crate::OwnedPtr<crate::ffi_types::HandleIFSelectSelection> {
+    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:49 - `IFSelect_SelectDeduct::Input()`
+    pub fn input(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_IFSelect_Selection> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDEIGES::IGESSelect_SelectFaces_inherited_Input(
@@ -11964,7 +11975,7 @@ impl SelectFaces {
         }
     }
 
-    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:55 - `IFSelect_SelectDeduct::HasInput()`
+    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:52 - `IFSelect_SelectDeduct::HasInput()`
     pub fn has_input(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_SelectFaces_inherited_HasInput(
@@ -11973,7 +11984,7 @@ impl SelectFaces {
         })
     }
 
-    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:59 - `IFSelect_SelectDeduct::HasAlternate()`
+    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:56 - `IFSelect_SelectDeduct::HasAlternate()`
     pub fn has_alternate(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_SelectFaces_inherited_HasAlternate(
@@ -11982,8 +11993,8 @@ impl SelectFaces {
         })
     }
 
-    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:67 - `IFSelect_SelectDeduct::Alternate()`
-    pub fn alternate(&mut self) -> &mut crate::ffi_types::HandleIFSelectSelectPointed {
+    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:64 - `IFSelect_SelectDeduct::Alternate()`
+    pub fn alternate(&mut self) -> &mut crate::ffi_types::Handle_IFSelect_SelectPointed {
         unsafe {
             &mut *(crate::check_result(
                 crate::ffi_extern_TKDEIGES::IGESSelect_SelectFaces_inherited_Alternate(
@@ -11993,7 +12004,7 @@ impl SelectFaces {
         }
     }
 
-    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:74 - `IFSelect_SelectDeduct::InputResult()`
+    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:71 - `IFSelect_SelectDeduct::InputResult()`
     pub fn input_result(
         &self,
         G: &crate::interface::Graph,
@@ -12008,7 +12019,7 @@ impl SelectFaces {
         }
     }
 
-    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:78 - `IFSelect_SelectDeduct::FillIterator()`
+    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:75 - `IFSelect_SelectDeduct::FillIterator()`
     pub fn fill_iterator(&self, iter: &mut crate::if_select::SelectionIterator) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_SelectFaces_inherited_FillIterator(
@@ -12018,7 +12029,7 @@ impl SelectFaces {
         })
     }
 
-    /// Inherited: **Source:** `IFSelect_Selection.hxx`:55 - `IFSelect_Selection::UniqueResult()`
+    /// Inherited: **Source:** `IFSelect_Selection.hxx`:52 - `IFSelect_Selection::UniqueResult()`
     pub fn unique_result(
         &self,
         G: &crate::interface::Graph,
@@ -12033,7 +12044,7 @@ impl SelectFaces {
         }
     }
 
-    /// Inherited: **Source:** `IFSelect_Selection.hxx`:59 - `IFSelect_Selection::CompleteResult()`
+    /// Inherited: **Source:** `IFSelect_Selection.hxx`:56 - `IFSelect_Selection::CompleteResult()`
     pub fn complete_result(
         &self,
         G: &crate::interface::Graph,
@@ -12048,8 +12059,8 @@ impl SelectFaces {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_SelectFaces_inherited_IsInstance(
                 self as *const Self,
@@ -12058,8 +12069,8 @@ impl SelectFaces {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_SelectFaces_inherited_IsKind(
                 self as *const Self,
@@ -12068,7 +12079,7 @@ impl SelectFaces {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -12084,7 +12095,7 @@ impl SelectFaces {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_SelectFaces_inherited_GetRefCount(
@@ -12093,7 +12104,7 @@ impl SelectFaces {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_SelectFaces_inherited_IncrementRefCounter(
@@ -12102,7 +12113,7 @@ impl SelectFaces {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_SelectFaces_inherited_DecrementRefCounter(
@@ -12111,7 +12122,7 @@ impl SelectFaces {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_SelectFaces_inherited_Delete(self as *const Self)
@@ -12119,36 +12130,38 @@ impl SelectFaces {
     }
 }
 
-pub use crate::ffi_types::HandleIGESSelectSelectFaces;
+pub use crate::ffi_types::Handle_IGESSelect_SelectFaces;
 
-unsafe impl crate::CppDeletable for HandleIGESSelectSelectFaces {
+unsafe impl crate::CppDeletable for Handle_IGESSelect_SelectFaces {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKDEIGES::HandleIGESSelectSelectFaces_destructor(ptr);
+            crate::ffi_extern_TKDEIGES::Handle_IGESSelect_SelectFaces_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleIGESSelectSelectFaces {
+unsafe impl crate::CppCopyable for Handle_IGESSelect_SelectFaces {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
         unsafe {
-            crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectSelectFaces_clone(ptr))
+            crate::check_result(crate::ffi_extern_TKDEIGES::Handle_IGESSelect_SelectFaces_clone(
+                ptr,
+            ))
         }
     }
 }
 
-impl HandleIGESSelectSelectFaces {
+impl Handle_IGESSelect_SelectFaces {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
         unsafe {
-            crate::ffi_extern_TKDEIGES::HandleIGESSelectSelectFaces_is_null(self as *const Self)
+            crate::ffi_extern_TKDEIGES::Handle_IGESSelect_SelectFaces_is_null(self as *const Self)
         }
     }
 
     /// Dereference this Handle to access the underlying IGESSelect_SelectFaces
     pub fn get(&self) -> &crate::ffi_types::IGESSelect_SelectFaces {
         unsafe {
-            &*crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectSelectFaces_get(
+            &*crate::check_result(crate::ffi_extern_TKDEIGES::Handle_IGESSelect_SelectFaces_get(
                 self as *const Self,
             ))
         }
@@ -12158,7 +12171,9 @@ impl HandleIGESSelectSelectFaces {
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::IGESSelect_SelectFaces {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi_extern_TKDEIGES::HandleIGESSelectSelectFaces_get_mut(self as *mut Self),
+                crate::ffi_extern_TKDEIGES::Handle_IGESSelect_SelectFaces_get_mut(
+                    self as *mut Self,
+                ),
             )
         }
     }
@@ -12166,44 +12181,36 @@ impl HandleIGESSelectSelectFaces {
     /// Upcast Handle<IGESSelect_SelectFaces> to Handle<IFSelect_SelectExplore>
     pub fn to_handle_select_explore(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleIFSelectSelectExplore> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_IFSelect_SelectExplore> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectSelectFaces_to_HandleIFSelectSelectExplore(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::Handle_IGESSelect_SelectFaces_to_Handle_IFSelect_SelectExplore(self as *const Self)))
         }
     }
 
     /// Upcast Handle<IGESSelect_SelectFaces> to Handle<IFSelect_SelectDeduct>
     pub fn to_handle_select_deduct(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleIFSelectSelectDeduct> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_IFSelect_SelectDeduct> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectSelectFaces_to_HandleIFSelectSelectDeduct(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::Handle_IGESSelect_SelectFaces_to_Handle_IFSelect_SelectDeduct(self as *const Self)))
         }
     }
 
     /// Upcast Handle<IGESSelect_SelectFaces> to Handle<IFSelect_Selection>
     pub fn to_handle_selection(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleIFSelectSelection> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_IFSelect_Selection> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKDEIGES::HandleIGESSelectSelectFaces_to_HandleIFSelectSelection(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::Handle_IGESSelect_SelectFaces_to_Handle_IFSelect_Selection(self as *const Self)))
         }
     }
 
     /// Upcast Handle<IGESSelect_SelectFaces> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKDEIGES::HandleIGESSelectSelectFaces_to_HandleStandardTransient(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::Handle_IGESSelect_SelectFaces_to_Handle_Standard_Transient(self as *const Self)))
         }
     }
 }
@@ -12212,7 +12219,7 @@ impl HandleIGESSelectSelectFaces {
 // From IGESSelect_SelectFromDrawing.hxx
 // ========================
 
-/// **Source:** `IGESSelect_SelectFromDrawing.hxx`:35 - `IGESSelect_SelectFromDrawing`
+/// **Source:** `IGESSelect_SelectFromDrawing.hxx`:32 - `IGESSelect_SelectFromDrawing`
 /// This selection gets in all the model, the entities which are
 /// attached to the drawing(s) given as input. This includes :
 /// - Drawing Frame (Annotations directky referenced by Drawings)
@@ -12228,7 +12235,7 @@ unsafe impl crate::CppDeletable for SelectFromDrawing {
 }
 
 impl SelectFromDrawing {
-    /// **Source:** `IGESSelect_SelectFromDrawing.hxx`:40 - `IGESSelect_SelectFromDrawing::IGESSelect_SelectFromDrawing()`
+    /// **Source:** `IGESSelect_SelectFromDrawing.hxx`:37 - `IGESSelect_SelectFromDrawing::IGESSelect_SelectFromDrawing()`
     /// Creates a SelectFromDrawing
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
@@ -12238,7 +12245,7 @@ impl SelectFromDrawing {
         }
     }
 
-    /// **Source:** `IGESSelect_SelectFromDrawing.hxx`:45 - `IGESSelect_SelectFromDrawing::RootResult()`
+    /// **Source:** `IGESSelect_SelectFromDrawing.hxx`:41 - `IGESSelect_SelectFromDrawing::RootResult()`
     /// Selects the Entities which are attached to the Drawing(s)
     /// present in the Input
     pub fn root_result(
@@ -12255,7 +12262,7 @@ impl SelectFromDrawing {
         }
     }
 
-    /// **Source:** `IGESSelect_SelectFromDrawing.hxx`:48 - `IGESSelect_SelectFromDrawing::Label()`
+    /// **Source:** `IGESSelect_SelectFromDrawing.hxx`:44 - `IGESSelect_SelectFromDrawing::Label()`
     /// Returns the label, with is "Entities attached to Drawing"
     pub fn label(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe {
@@ -12265,8 +12272,8 @@ impl SelectFromDrawing {
         }
     }
 
-    /// **Source:** `IGESSelect_SelectFromDrawing.hxx`:50 - `IGESSelect_SelectFromDrawing::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `IGESSelect_SelectFromDrawing.hxx`:46 - `IGESSelect_SelectFromDrawing::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKDEIGES::IGESSelect_SelectFromDrawing_dynamic_type(
@@ -12276,7 +12283,7 @@ impl SelectFromDrawing {
         }
     }
 
-    /// **Source:** `IGESSelect_SelectFromDrawing.hxx`:50 - `IGESSelect_SelectFromDrawing::get_type_name()`
+    /// **Source:** `IGESSelect_SelectFromDrawing.hxx`:46 - `IGESSelect_SelectFromDrawing::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -12287,8 +12294,8 @@ impl SelectFromDrawing {
         .into_owned()
     }
 
-    /// **Source:** `IGESSelect_SelectFromDrawing.hxx`:50 - `IGESSelect_SelectFromDrawing::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    /// **Source:** `IGESSelect_SelectFromDrawing.hxx`:46 - `IGESSelect_SelectFromDrawing::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKDEIGES::IGESSelect_SelectFromDrawing_get_type_descriptor(),
@@ -12361,7 +12368,7 @@ impl SelectFromDrawing {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESSelectSelectFromDrawing> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_IGESSelect_SelectFromDrawing> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDEIGES::IGESSelect_SelectFromDrawing_to_handle(obj.into_raw()),
@@ -12369,8 +12376,8 @@ impl SelectFromDrawing {
         }
     }
 
-    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:49 - `IFSelect_SelectDeduct::SetInput()`
-    pub fn set_input(&mut self, sel: &crate::ffi_types::HandleIFSelectSelection) {
+    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:46 - `IFSelect_SelectDeduct::SetInput()`
+    pub fn set_input(&mut self, sel: &crate::ffi_types::Handle_IFSelect_Selection) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_SelectFromDrawing_inherited_SetInput(
                 self as *mut Self,
@@ -12379,8 +12386,8 @@ impl SelectFromDrawing {
         })
     }
 
-    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:52 - `IFSelect_SelectDeduct::Input()`
-    pub fn input(&self) -> crate::OwnedPtr<crate::ffi_types::HandleIFSelectSelection> {
+    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:49 - `IFSelect_SelectDeduct::Input()`
+    pub fn input(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_IFSelect_Selection> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDEIGES::IGESSelect_SelectFromDrawing_inherited_Input(
@@ -12390,7 +12397,7 @@ impl SelectFromDrawing {
         }
     }
 
-    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:55 - `IFSelect_SelectDeduct::HasInput()`
+    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:52 - `IFSelect_SelectDeduct::HasInput()`
     pub fn has_input(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_SelectFromDrawing_inherited_HasInput(
@@ -12399,7 +12406,7 @@ impl SelectFromDrawing {
         })
     }
 
-    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:59 - `IFSelect_SelectDeduct::HasAlternate()`
+    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:56 - `IFSelect_SelectDeduct::HasAlternate()`
     pub fn has_alternate(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_SelectFromDrawing_inherited_HasAlternate(
@@ -12408,8 +12415,8 @@ impl SelectFromDrawing {
         })
     }
 
-    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:67 - `IFSelect_SelectDeduct::Alternate()`
-    pub fn alternate(&mut self) -> &mut crate::ffi_types::HandleIFSelectSelectPointed {
+    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:64 - `IFSelect_SelectDeduct::Alternate()`
+    pub fn alternate(&mut self) -> &mut crate::ffi_types::Handle_IFSelect_SelectPointed {
         unsafe {
             &mut *(crate::check_result(
                 crate::ffi_extern_TKDEIGES::IGESSelect_SelectFromDrawing_inherited_Alternate(
@@ -12419,7 +12426,7 @@ impl SelectFromDrawing {
         }
     }
 
-    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:74 - `IFSelect_SelectDeduct::InputResult()`
+    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:71 - `IFSelect_SelectDeduct::InputResult()`
     pub fn input_result(
         &self,
         G: &crate::interface::Graph,
@@ -12434,7 +12441,7 @@ impl SelectFromDrawing {
         }
     }
 
-    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:78 - `IFSelect_SelectDeduct::FillIterator()`
+    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:75 - `IFSelect_SelectDeduct::FillIterator()`
     pub fn fill_iterator(&self, iter: &mut crate::if_select::SelectionIterator) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_SelectFromDrawing_inherited_FillIterator(
@@ -12444,7 +12451,7 @@ impl SelectFromDrawing {
         })
     }
 
-    /// Inherited: **Source:** `IFSelect_Selection.hxx`:55 - `IFSelect_Selection::UniqueResult()`
+    /// Inherited: **Source:** `IFSelect_Selection.hxx`:52 - `IFSelect_Selection::UniqueResult()`
     pub fn unique_result(
         &self,
         G: &crate::interface::Graph,
@@ -12459,7 +12466,7 @@ impl SelectFromDrawing {
         }
     }
 
-    /// Inherited: **Source:** `IFSelect_Selection.hxx`:59 - `IFSelect_Selection::CompleteResult()`
+    /// Inherited: **Source:** `IFSelect_Selection.hxx`:56 - `IFSelect_Selection::CompleteResult()`
     pub fn complete_result(
         &self,
         G: &crate::interface::Graph,
@@ -12474,8 +12481,8 @@ impl SelectFromDrawing {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_SelectFromDrawing_inherited_IsInstance(
                 self as *const Self,
@@ -12484,8 +12491,8 @@ impl SelectFromDrawing {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_SelectFromDrawing_inherited_IsKind(
                 self as *const Self,
@@ -12494,7 +12501,7 @@ impl SelectFromDrawing {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -12510,7 +12517,7 @@ impl SelectFromDrawing {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_SelectFromDrawing_inherited_GetRefCount(
@@ -12519,7 +12526,7 @@ impl SelectFromDrawing {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_SelectFromDrawing_inherited_IncrementRefCounter(
@@ -12528,7 +12535,7 @@ impl SelectFromDrawing {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_SelectFromDrawing_inherited_DecrementRefCounter(
@@ -12537,7 +12544,7 @@ impl SelectFromDrawing {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_SelectFromDrawing_inherited_Delete(
@@ -12547,31 +12554,31 @@ impl SelectFromDrawing {
     }
 }
 
-pub use crate::ffi_types::HandleIGESSelectSelectFromDrawing;
+pub use crate::ffi_types::Handle_IGESSelect_SelectFromDrawing;
 
-unsafe impl crate::CppDeletable for HandleIGESSelectSelectFromDrawing {
+unsafe impl crate::CppDeletable for Handle_IGESSelect_SelectFromDrawing {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKDEIGES::HandleIGESSelectSelectFromDrawing_destructor(ptr);
+            crate::ffi_extern_TKDEIGES::Handle_IGESSelect_SelectFromDrawing_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleIGESSelectSelectFromDrawing {
+unsafe impl crate::CppCopyable for Handle_IGESSelect_SelectFromDrawing {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
         unsafe {
             crate::check_result(
-                crate::ffi_extern_TKDEIGES::HandleIGESSelectSelectFromDrawing_clone(ptr),
+                crate::ffi_extern_TKDEIGES::Handle_IGESSelect_SelectFromDrawing_clone(ptr),
             )
         }
     }
 }
 
-impl HandleIGESSelectSelectFromDrawing {
+impl Handle_IGESSelect_SelectFromDrawing {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
         unsafe {
-            crate::ffi_extern_TKDEIGES::HandleIGESSelectSelectFromDrawing_is_null(
+            crate::ffi_extern_TKDEIGES::Handle_IGESSelect_SelectFromDrawing_is_null(
                 self as *const Self,
             )
         }
@@ -12581,7 +12588,7 @@ impl HandleIGESSelectSelectFromDrawing {
     pub fn get(&self) -> &crate::ffi_types::IGESSelect_SelectFromDrawing {
         unsafe {
             &*crate::check_result(
-                crate::ffi_extern_TKDEIGES::HandleIGESSelectSelectFromDrawing_get(
+                crate::ffi_extern_TKDEIGES::Handle_IGESSelect_SelectFromDrawing_get(
                     self as *const Self,
                 ),
             )
@@ -12592,7 +12599,7 @@ impl HandleIGESSelectSelectFromDrawing {
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::IGESSelect_SelectFromDrawing {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi_extern_TKDEIGES::HandleIGESSelectSelectFromDrawing_get_mut(
+                crate::ffi_extern_TKDEIGES::Handle_IGESSelect_SelectFromDrawing_get_mut(
                     self as *mut Self,
                 ),
             )
@@ -12602,27 +12609,27 @@ impl HandleIGESSelectSelectFromDrawing {
     /// Upcast Handle<IGESSelect_SelectFromDrawing> to Handle<IFSelect_SelectDeduct>
     pub fn to_handle_select_deduct(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleIFSelectSelectDeduct> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_IFSelect_SelectDeduct> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectSelectFromDrawing_to_HandleIFSelectSelectDeduct(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::Handle_IGESSelect_SelectFromDrawing_to_Handle_IFSelect_SelectDeduct(self as *const Self)))
         }
     }
 
     /// Upcast Handle<IGESSelect_SelectFromDrawing> to Handle<IFSelect_Selection>
     pub fn to_handle_selection(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleIFSelectSelection> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_IFSelect_Selection> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectSelectFromDrawing_to_HandleIFSelectSelection(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::Handle_IGESSelect_SelectFromDrawing_to_Handle_IFSelect_Selection(self as *const Self)))
         }
     }
 
     /// Upcast Handle<IGESSelect_SelectFromDrawing> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectSelectFromDrawing_to_HandleStandardTransient(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::Handle_IGESSelect_SelectFromDrawing_to_Handle_Standard_Transient(self as *const Self)))
         }
     }
 }
@@ -12631,7 +12638,7 @@ impl HandleIGESSelectSelectFromDrawing {
 // From IGESSelect_SelectFromSingleView.hxx
 // ========================
 
-/// **Source:** `IGESSelect_SelectFromSingleView.hxx`:35 - `IGESSelect_SelectFromSingleView`
+/// **Source:** `IGESSelect_SelectFromSingleView.hxx`:32 - `IGESSelect_SelectFromSingleView`
 /// This selection gets in all the model, the entities which are
 /// attached to the views given as input. Only Single Views are
 /// considered. This information is kept from Directory Part
@@ -12647,7 +12654,7 @@ unsafe impl crate::CppDeletable for SelectFromSingleView {
 }
 
 impl SelectFromSingleView {
-    /// **Source:** `IGESSelect_SelectFromSingleView.hxx`:40 - `IGESSelect_SelectFromSingleView::IGESSelect_SelectFromSingleView()`
+    /// **Source:** `IGESSelect_SelectFromSingleView.hxx`:37 - `IGESSelect_SelectFromSingleView::IGESSelect_SelectFromSingleView()`
     /// Creates a SelectFromSingleView
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
@@ -12657,7 +12664,7 @@ impl SelectFromSingleView {
         }
     }
 
-    /// **Source:** `IGESSelect_SelectFromSingleView.hxx`:45 - `IGESSelect_SelectFromSingleView::RootResult()`
+    /// **Source:** `IGESSelect_SelectFromSingleView.hxx`:41 - `IGESSelect_SelectFromSingleView::RootResult()`
     /// Selects the Entities which are attached to the Single View(s)
     /// present in the Input
     pub fn root_result(
@@ -12674,7 +12681,7 @@ impl SelectFromSingleView {
         }
     }
 
-    /// **Source:** `IGESSelect_SelectFromSingleView.hxx`:48 - `IGESSelect_SelectFromSingleView::Label()`
+    /// **Source:** `IGESSelect_SelectFromSingleView.hxx`:44 - `IGESSelect_SelectFromSingleView::Label()`
     /// Returns the label, with is "Entities attached to single View"
     pub fn label(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe {
@@ -12686,8 +12693,8 @@ impl SelectFromSingleView {
         }
     }
 
-    /// **Source:** `IGESSelect_SelectFromSingleView.hxx`:50 - `IGESSelect_SelectFromSingleView::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `IGESSelect_SelectFromSingleView.hxx`:46 - `IGESSelect_SelectFromSingleView::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKDEIGES::IGESSelect_SelectFromSingleView_dynamic_type(
@@ -12697,7 +12704,7 @@ impl SelectFromSingleView {
         }
     }
 
-    /// **Source:** `IGESSelect_SelectFromSingleView.hxx`:50 - `IGESSelect_SelectFromSingleView::get_type_name()`
+    /// **Source:** `IGESSelect_SelectFromSingleView.hxx`:46 - `IGESSelect_SelectFromSingleView::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -12708,8 +12715,8 @@ impl SelectFromSingleView {
         .into_owned()
     }
 
-    /// **Source:** `IGESSelect_SelectFromSingleView.hxx`:50 - `IGESSelect_SelectFromSingleView::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    /// **Source:** `IGESSelect_SelectFromSingleView.hxx`:46 - `IGESSelect_SelectFromSingleView::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKDEIGES::IGESSelect_SelectFromSingleView_get_type_descriptor(),
@@ -12770,7 +12777,7 @@ impl SelectFromSingleView {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESSelectSelectFromSingleView> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_IGESSelect_SelectFromSingleView> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDEIGES::IGESSelect_SelectFromSingleView_to_handle(
@@ -12780,8 +12787,8 @@ impl SelectFromSingleView {
         }
     }
 
-    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:49 - `IFSelect_SelectDeduct::SetInput()`
-    pub fn set_input(&mut self, sel: &crate::ffi_types::HandleIFSelectSelection) {
+    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:46 - `IFSelect_SelectDeduct::SetInput()`
+    pub fn set_input(&mut self, sel: &crate::ffi_types::Handle_IFSelect_Selection) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_SelectFromSingleView_inherited_SetInput(
                 self as *mut Self,
@@ -12790,8 +12797,8 @@ impl SelectFromSingleView {
         })
     }
 
-    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:52 - `IFSelect_SelectDeduct::Input()`
-    pub fn input(&self) -> crate::OwnedPtr<crate::ffi_types::HandleIFSelectSelection> {
+    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:49 - `IFSelect_SelectDeduct::Input()`
+    pub fn input(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_IFSelect_Selection> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDEIGES::IGESSelect_SelectFromSingleView_inherited_Input(
@@ -12801,7 +12808,7 @@ impl SelectFromSingleView {
         }
     }
 
-    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:55 - `IFSelect_SelectDeduct::HasInput()`
+    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:52 - `IFSelect_SelectDeduct::HasInput()`
     pub fn has_input(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_SelectFromSingleView_inherited_HasInput(
@@ -12810,7 +12817,7 @@ impl SelectFromSingleView {
         })
     }
 
-    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:59 - `IFSelect_SelectDeduct::HasAlternate()`
+    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:56 - `IFSelect_SelectDeduct::HasAlternate()`
     pub fn has_alternate(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_SelectFromSingleView_inherited_HasAlternate(
@@ -12819,8 +12826,8 @@ impl SelectFromSingleView {
         })
     }
 
-    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:67 - `IFSelect_SelectDeduct::Alternate()`
-    pub fn alternate(&mut self) -> &mut crate::ffi_types::HandleIFSelectSelectPointed {
+    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:64 - `IFSelect_SelectDeduct::Alternate()`
+    pub fn alternate(&mut self) -> &mut crate::ffi_types::Handle_IFSelect_SelectPointed {
         unsafe {
             &mut *(crate::check_result(
                 crate::ffi_extern_TKDEIGES::IGESSelect_SelectFromSingleView_inherited_Alternate(
@@ -12830,7 +12837,7 @@ impl SelectFromSingleView {
         }
     }
 
-    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:74 - `IFSelect_SelectDeduct::InputResult()`
+    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:71 - `IFSelect_SelectDeduct::InputResult()`
     pub fn input_result(
         &self,
         G: &crate::interface::Graph,
@@ -12845,7 +12852,7 @@ impl SelectFromSingleView {
         }
     }
 
-    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:78 - `IFSelect_SelectDeduct::FillIterator()`
+    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:75 - `IFSelect_SelectDeduct::FillIterator()`
     pub fn fill_iterator(&self, iter: &mut crate::if_select::SelectionIterator) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_SelectFromSingleView_inherited_FillIterator(
@@ -12855,7 +12862,7 @@ impl SelectFromSingleView {
         })
     }
 
-    /// Inherited: **Source:** `IFSelect_Selection.hxx`:55 - `IFSelect_Selection::UniqueResult()`
+    /// Inherited: **Source:** `IFSelect_Selection.hxx`:52 - `IFSelect_Selection::UniqueResult()`
     pub fn unique_result(
         &self,
         G: &crate::interface::Graph,
@@ -12870,7 +12877,7 @@ impl SelectFromSingleView {
         }
     }
 
-    /// Inherited: **Source:** `IFSelect_Selection.hxx`:59 - `IFSelect_Selection::CompleteResult()`
+    /// Inherited: **Source:** `IFSelect_Selection.hxx`:56 - `IFSelect_Selection::CompleteResult()`
     pub fn complete_result(
         &self,
         G: &crate::interface::Graph,
@@ -12880,8 +12887,8 @@ impl SelectFromSingleView {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_SelectFromSingleView_inherited_IsInstance(
                 self as *const Self,
@@ -12890,8 +12897,8 @@ impl SelectFromSingleView {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_SelectFromSingleView_inherited_IsKind(
                 self as *const Self,
@@ -12900,7 +12907,7 @@ impl SelectFromSingleView {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -12916,7 +12923,7 @@ impl SelectFromSingleView {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_SelectFromSingleView_inherited_GetRefCount(
@@ -12925,21 +12932,21 @@ impl SelectFromSingleView {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_SelectFromSingleView_inherited_IncrementRefCounter(self as *mut Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_SelectFromSingleView_inherited_DecrementRefCounter(self as *mut Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_SelectFromSingleView_inherited_Delete(
@@ -12949,31 +12956,31 @@ impl SelectFromSingleView {
     }
 }
 
-pub use crate::ffi_types::HandleIGESSelectSelectFromSingleView;
+pub use crate::ffi_types::Handle_IGESSelect_SelectFromSingleView;
 
-unsafe impl crate::CppDeletable for HandleIGESSelectSelectFromSingleView {
+unsafe impl crate::CppDeletable for Handle_IGESSelect_SelectFromSingleView {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKDEIGES::HandleIGESSelectSelectFromSingleView_destructor(ptr);
+            crate::ffi_extern_TKDEIGES::Handle_IGESSelect_SelectFromSingleView_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleIGESSelectSelectFromSingleView {
+unsafe impl crate::CppCopyable for Handle_IGESSelect_SelectFromSingleView {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
         unsafe {
             crate::check_result(
-                crate::ffi_extern_TKDEIGES::HandleIGESSelectSelectFromSingleView_clone(ptr),
+                crate::ffi_extern_TKDEIGES::Handle_IGESSelect_SelectFromSingleView_clone(ptr),
             )
         }
     }
 }
 
-impl HandleIGESSelectSelectFromSingleView {
+impl Handle_IGESSelect_SelectFromSingleView {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
         unsafe {
-            crate::ffi_extern_TKDEIGES::HandleIGESSelectSelectFromSingleView_is_null(
+            crate::ffi_extern_TKDEIGES::Handle_IGESSelect_SelectFromSingleView_is_null(
                 self as *const Self,
             )
         }
@@ -12983,7 +12990,7 @@ impl HandleIGESSelectSelectFromSingleView {
     pub fn get(&self) -> &crate::ffi_types::IGESSelect_SelectFromSingleView {
         unsafe {
             &*crate::check_result(
-                crate::ffi_extern_TKDEIGES::HandleIGESSelectSelectFromSingleView_get(
+                crate::ffi_extern_TKDEIGES::Handle_IGESSelect_SelectFromSingleView_get(
                     self as *const Self,
                 ),
             )
@@ -12994,7 +13001,7 @@ impl HandleIGESSelectSelectFromSingleView {
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::IGESSelect_SelectFromSingleView {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi_extern_TKDEIGES::HandleIGESSelectSelectFromSingleView_get_mut(
+                crate::ffi_extern_TKDEIGES::Handle_IGESSelect_SelectFromSingleView_get_mut(
                     self as *mut Self,
                 ),
             )
@@ -13004,27 +13011,27 @@ impl HandleIGESSelectSelectFromSingleView {
     /// Upcast Handle<IGESSelect_SelectFromSingleView> to Handle<IFSelect_SelectDeduct>
     pub fn to_handle_select_deduct(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleIFSelectSelectDeduct> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_IFSelect_SelectDeduct> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectSelectFromSingleView_to_HandleIFSelectSelectDeduct(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::Handle_IGESSelect_SelectFromSingleView_to_Handle_IFSelect_SelectDeduct(self as *const Self)))
         }
     }
 
     /// Upcast Handle<IGESSelect_SelectFromSingleView> to Handle<IFSelect_Selection>
     pub fn to_handle_selection(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleIFSelectSelection> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_IFSelect_Selection> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectSelectFromSingleView_to_HandleIFSelectSelection(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::Handle_IGESSelect_SelectFromSingleView_to_Handle_IFSelect_Selection(self as *const Self)))
         }
     }
 
     /// Upcast Handle<IGESSelect_SelectFromSingleView> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectSelectFromSingleView_to_HandleStandardTransient(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::Handle_IGESSelect_SelectFromSingleView_to_Handle_Standard_Transient(self as *const Self)))
         }
     }
 }
@@ -13033,7 +13040,7 @@ impl HandleIGESSelectSelectFromSingleView {
 // From IGESSelect_SelectLevelNumber.hxx
 // ========================
 
-/// **Source:** `IGESSelect_SelectLevelNumber.hxx`:41 - `IGESSelect_SelectLevelNumber`
+/// **Source:** `IGESSelect_SelectLevelNumber.hxx`:38 - `IGESSelect_SelectLevelNumber`
 /// This selection looks at Level Number of IGES Entities :
 /// it considers items attached, either to a single level with a
 /// given value, or to a level list which contains this value
@@ -13053,7 +13060,7 @@ unsafe impl crate::CppDeletable for SelectLevelNumber {
 }
 
 impl SelectLevelNumber {
-    /// **Source:** `IGESSelect_SelectLevelNumber.hxx`:47 - `IGESSelect_SelectLevelNumber::IGESSelect_SelectLevelNumber()`
+    /// **Source:** `IGESSelect_SelectLevelNumber.hxx`:44 - `IGESSelect_SelectLevelNumber::IGESSelect_SelectLevelNumber()`
     /// Creates a SelectLevelNumber, with no Level criterium : see
     /// SetLevelNumber. Empty, this selection filters nothing.
     pub fn new() -> crate::OwnedPtr<Self> {
@@ -13064,9 +13071,9 @@ impl SelectLevelNumber {
         }
     }
 
-    /// **Source:** `IGESSelect_SelectLevelNumber.hxx`:50 - `IGESSelect_SelectLevelNumber::SetLevelNumber()`
+    /// **Source:** `IGESSelect_SelectLevelNumber.hxx`:47 - `IGESSelect_SelectLevelNumber::SetLevelNumber()`
     /// Sets a Parameter as Level criterium
-    pub fn set_level_number(&mut self, levnum: &crate::ffi_types::HandleIFSelectIntParam) {
+    pub fn set_level_number(&mut self, levnum: &crate::ffi_types::Handle_IFSelect_IntParam) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_SelectLevelNumber_set_level_number(
                 self as *mut Self,
@@ -13075,10 +13082,10 @@ impl SelectLevelNumber {
         })
     }
 
-    /// **Source:** `IGESSelect_SelectLevelNumber.hxx`:54 - `IGESSelect_SelectLevelNumber::LevelNumber()`
+    /// **Source:** `IGESSelect_SelectLevelNumber.hxx`:51 - `IGESSelect_SelectLevelNumber::LevelNumber()`
     /// Returns the Level criterium. NullHandle if not yet set
     /// (interpreted as Level = 0 : no level number attached)
-    pub fn level_number(&self) -> crate::OwnedPtr<crate::ffi_types::HandleIFSelectIntParam> {
+    pub fn level_number(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_IFSelect_IntParam> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDEIGES::IGESSelect_SelectLevelNumber_level_number(
@@ -13088,15 +13095,15 @@ impl SelectLevelNumber {
         }
     }
 
-    /// **Source:** `IGESSelect_SelectLevelNumber.hxx`:60 - `IGESSelect_SelectLevelNumber::Sort()`
+    /// **Source:** `IGESSelect_SelectLevelNumber.hxx`:56 - `IGESSelect_SelectLevelNumber::Sort()`
     /// Returns True if <ent> is an IGES Entity with Level Number
     /// admits the criterium (= value if single level, or one of the
     /// attached level numbers = value if level list)
     pub fn sort(
         &self,
         rank: i32,
-        ent: &crate::ffi_types::HandleStandardTransient,
-        model: &crate::ffi_types::HandleInterfaceInterfaceModel,
+        ent: &crate::ffi_types::Handle_Standard_Transient,
+        model: &crate::ffi_types::Handle_Interface_InterfaceModel,
     ) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_SelectLevelNumber_sort(
@@ -13108,7 +13115,7 @@ impl SelectLevelNumber {
         })
     }
 
-    /// **Source:** `IGESSelect_SelectLevelNumber.hxx`:67 - `IGESSelect_SelectLevelNumber::ExtractLabel()`
+    /// **Source:** `IGESSelect_SelectLevelNumber.hxx`:63 - `IGESSelect_SelectLevelNumber::ExtractLabel()`
     /// Returns the Selection criterium :
     /// "IGES Entity, Level Number admits <nn>" (if nn > 0) or
     /// "IGES Entity attached to no Level" (if nn = 0)
@@ -13122,8 +13129,8 @@ impl SelectLevelNumber {
         }
     }
 
-    /// **Source:** `IGESSelect_SelectLevelNumber.hxx`:69 - `IGESSelect_SelectLevelNumber::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `IGESSelect_SelectLevelNumber.hxx`:65 - `IGESSelect_SelectLevelNumber::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKDEIGES::IGESSelect_SelectLevelNumber_dynamic_type(
@@ -13133,7 +13140,7 @@ impl SelectLevelNumber {
         }
     }
 
-    /// **Source:** `IGESSelect_SelectLevelNumber.hxx`:69 - `IGESSelect_SelectLevelNumber::get_type_name()`
+    /// **Source:** `IGESSelect_SelectLevelNumber.hxx`:65 - `IGESSelect_SelectLevelNumber::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -13144,8 +13151,8 @@ impl SelectLevelNumber {
         .into_owned()
     }
 
-    /// **Source:** `IGESSelect_SelectLevelNumber.hxx`:69 - `IGESSelect_SelectLevelNumber::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    /// **Source:** `IGESSelect_SelectLevelNumber.hxx`:65 - `IGESSelect_SelectLevelNumber::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKDEIGES::IGESSelect_SelectLevelNumber_get_type_descriptor(),
@@ -13236,7 +13243,7 @@ impl SelectLevelNumber {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESSelectSelectLevelNumber> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_IGESSelect_SelectLevelNumber> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDEIGES::IGESSelect_SelectLevelNumber_to_handle(obj.into_raw()),
@@ -13244,7 +13251,7 @@ impl SelectLevelNumber {
         }
     }
 
-    /// Inherited: **Source:** `IFSelect_SelectExtract.hxx`:46 - `IFSelect_SelectExtract::IsDirect()`
+    /// Inherited: **Source:** `IFSelect_SelectExtract.hxx`:43 - `IFSelect_SelectExtract::IsDirect()`
     pub fn is_direct(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_SelectLevelNumber_inherited_IsDirect(
@@ -13253,7 +13260,7 @@ impl SelectLevelNumber {
         })
     }
 
-    /// Inherited: **Source:** `IFSelect_SelectExtract.hxx`:50 - `IFSelect_SelectExtract::SetDirect()`
+    /// Inherited: **Source:** `IFSelect_SelectExtract.hxx`:47 - `IFSelect_SelectExtract::SetDirect()`
     pub fn set_direct(&mut self, direct: bool) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_SelectLevelNumber_inherited_SetDirect(
@@ -13263,7 +13270,7 @@ impl SelectLevelNumber {
         })
     }
 
-    /// Inherited: **Source:** `IFSelect_SelectExtract.hxx`:55 - `IFSelect_SelectExtract::RootResult()`
+    /// Inherited: **Source:** `IFSelect_SelectExtract.hxx`:52 - `IFSelect_SelectExtract::RootResult()`
     pub fn root_result(
         &self,
         G: &crate::interface::Graph,
@@ -13278,11 +13285,11 @@ impl SelectLevelNumber {
         }
     }
 
-    /// Inherited: **Source:** `IFSelect_SelectExtract.hxx`:75 - `IFSelect_SelectExtract::SortInGraph()`
+    /// Inherited: **Source:** `IFSelect_SelectExtract.hxx`:70 - `IFSelect_SelectExtract::SortInGraph()`
     pub fn sort_in_graph(
         &self,
         rank: i32,
-        ent: &crate::ffi_types::HandleStandardTransient,
+        ent: &crate::ffi_types::Handle_Standard_Transient,
         G: &crate::interface::Graph,
     ) -> bool {
         crate::check_result(unsafe {
@@ -13295,7 +13302,7 @@ impl SelectLevelNumber {
         })
     }
 
-    /// Inherited: **Source:** `IFSelect_SelectExtract.hxx`:81 - `IFSelect_SelectExtract::Label()`
+    /// Inherited: **Source:** `IFSelect_SelectExtract.hxx`:76 - `IFSelect_SelectExtract::Label()`
     pub fn label(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -13306,8 +13313,8 @@ impl SelectLevelNumber {
         }
     }
 
-    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:49 - `IFSelect_SelectDeduct::SetInput()`
-    pub fn set_input(&mut self, sel: &crate::ffi_types::HandleIFSelectSelection) {
+    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:46 - `IFSelect_SelectDeduct::SetInput()`
+    pub fn set_input(&mut self, sel: &crate::ffi_types::Handle_IFSelect_Selection) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_SelectLevelNumber_inherited_SetInput(
                 self as *mut Self,
@@ -13316,8 +13323,8 @@ impl SelectLevelNumber {
         })
     }
 
-    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:52 - `IFSelect_SelectDeduct::Input()`
-    pub fn input(&self) -> crate::OwnedPtr<crate::ffi_types::HandleIFSelectSelection> {
+    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:49 - `IFSelect_SelectDeduct::Input()`
+    pub fn input(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_IFSelect_Selection> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDEIGES::IGESSelect_SelectLevelNumber_inherited_Input(
@@ -13327,7 +13334,7 @@ impl SelectLevelNumber {
         }
     }
 
-    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:55 - `IFSelect_SelectDeduct::HasInput()`
+    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:52 - `IFSelect_SelectDeduct::HasInput()`
     pub fn has_input(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_SelectLevelNumber_inherited_HasInput(
@@ -13336,7 +13343,7 @@ impl SelectLevelNumber {
         })
     }
 
-    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:59 - `IFSelect_SelectDeduct::HasAlternate()`
+    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:56 - `IFSelect_SelectDeduct::HasAlternate()`
     pub fn has_alternate(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_SelectLevelNumber_inherited_HasAlternate(
@@ -13345,8 +13352,8 @@ impl SelectLevelNumber {
         })
     }
 
-    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:67 - `IFSelect_SelectDeduct::Alternate()`
-    pub fn alternate(&mut self) -> &mut crate::ffi_types::HandleIFSelectSelectPointed {
+    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:64 - `IFSelect_SelectDeduct::Alternate()`
+    pub fn alternate(&mut self) -> &mut crate::ffi_types::Handle_IFSelect_SelectPointed {
         unsafe {
             &mut *(crate::check_result(
                 crate::ffi_extern_TKDEIGES::IGESSelect_SelectLevelNumber_inherited_Alternate(
@@ -13356,7 +13363,7 @@ impl SelectLevelNumber {
         }
     }
 
-    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:74 - `IFSelect_SelectDeduct::InputResult()`
+    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:71 - `IFSelect_SelectDeduct::InputResult()`
     pub fn input_result(
         &self,
         G: &crate::interface::Graph,
@@ -13371,7 +13378,7 @@ impl SelectLevelNumber {
         }
     }
 
-    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:78 - `IFSelect_SelectDeduct::FillIterator()`
+    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:75 - `IFSelect_SelectDeduct::FillIterator()`
     pub fn fill_iterator(&self, iter: &mut crate::if_select::SelectionIterator) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_SelectLevelNumber_inherited_FillIterator(
@@ -13381,7 +13388,7 @@ impl SelectLevelNumber {
         })
     }
 
-    /// Inherited: **Source:** `IFSelect_Selection.hxx`:55 - `IFSelect_Selection::UniqueResult()`
+    /// Inherited: **Source:** `IFSelect_Selection.hxx`:52 - `IFSelect_Selection::UniqueResult()`
     pub fn unique_result(
         &self,
         G: &crate::interface::Graph,
@@ -13396,7 +13403,7 @@ impl SelectLevelNumber {
         }
     }
 
-    /// Inherited: **Source:** `IFSelect_Selection.hxx`:59 - `IFSelect_Selection::CompleteResult()`
+    /// Inherited: **Source:** `IFSelect_Selection.hxx`:56 - `IFSelect_Selection::CompleteResult()`
     pub fn complete_result(
         &self,
         G: &crate::interface::Graph,
@@ -13411,8 +13418,8 @@ impl SelectLevelNumber {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_SelectLevelNumber_inherited_IsInstance(
                 self as *const Self,
@@ -13421,8 +13428,8 @@ impl SelectLevelNumber {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_SelectLevelNumber_inherited_IsKind(
                 self as *const Self,
@@ -13431,7 +13438,7 @@ impl SelectLevelNumber {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -13447,7 +13454,7 @@ impl SelectLevelNumber {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_SelectLevelNumber_inherited_GetRefCount(
@@ -13456,7 +13463,7 @@ impl SelectLevelNumber {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_SelectLevelNumber_inherited_IncrementRefCounter(
@@ -13465,7 +13472,7 @@ impl SelectLevelNumber {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_SelectLevelNumber_inherited_DecrementRefCounter(
@@ -13474,7 +13481,7 @@ impl SelectLevelNumber {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_SelectLevelNumber_inherited_Delete(
@@ -13484,31 +13491,31 @@ impl SelectLevelNumber {
     }
 }
 
-pub use crate::ffi_types::HandleIGESSelectSelectLevelNumber;
+pub use crate::ffi_types::Handle_IGESSelect_SelectLevelNumber;
 
-unsafe impl crate::CppDeletable for HandleIGESSelectSelectLevelNumber {
+unsafe impl crate::CppDeletable for Handle_IGESSelect_SelectLevelNumber {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKDEIGES::HandleIGESSelectSelectLevelNumber_destructor(ptr);
+            crate::ffi_extern_TKDEIGES::Handle_IGESSelect_SelectLevelNumber_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleIGESSelectSelectLevelNumber {
+unsafe impl crate::CppCopyable for Handle_IGESSelect_SelectLevelNumber {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
         unsafe {
             crate::check_result(
-                crate::ffi_extern_TKDEIGES::HandleIGESSelectSelectLevelNumber_clone(ptr),
+                crate::ffi_extern_TKDEIGES::Handle_IGESSelect_SelectLevelNumber_clone(ptr),
             )
         }
     }
 }
 
-impl HandleIGESSelectSelectLevelNumber {
+impl Handle_IGESSelect_SelectLevelNumber {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
         unsafe {
-            crate::ffi_extern_TKDEIGES::HandleIGESSelectSelectLevelNumber_is_null(
+            crate::ffi_extern_TKDEIGES::Handle_IGESSelect_SelectLevelNumber_is_null(
                 self as *const Self,
             )
         }
@@ -13518,7 +13525,7 @@ impl HandleIGESSelectSelectLevelNumber {
     pub fn get(&self) -> &crate::ffi_types::IGESSelect_SelectLevelNumber {
         unsafe {
             &*crate::check_result(
-                crate::ffi_extern_TKDEIGES::HandleIGESSelectSelectLevelNumber_get(
+                crate::ffi_extern_TKDEIGES::Handle_IGESSelect_SelectLevelNumber_get(
                     self as *const Self,
                 ),
             )
@@ -13529,7 +13536,7 @@ impl HandleIGESSelectSelectLevelNumber {
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::IGESSelect_SelectLevelNumber {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi_extern_TKDEIGES::HandleIGESSelectSelectLevelNumber_get_mut(
+                crate::ffi_extern_TKDEIGES::Handle_IGESSelect_SelectLevelNumber_get_mut(
                     self as *mut Self,
                 ),
             )
@@ -13539,36 +13546,36 @@ impl HandleIGESSelectSelectLevelNumber {
     /// Upcast Handle<IGESSelect_SelectLevelNumber> to Handle<IFSelect_SelectExtract>
     pub fn to_handle_select_extract(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleIFSelectSelectExtract> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_IFSelect_SelectExtract> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectSelectLevelNumber_to_HandleIFSelectSelectExtract(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::Handle_IGESSelect_SelectLevelNumber_to_Handle_IFSelect_SelectExtract(self as *const Self)))
         }
     }
 
     /// Upcast Handle<IGESSelect_SelectLevelNumber> to Handle<IFSelect_SelectDeduct>
     pub fn to_handle_select_deduct(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleIFSelectSelectDeduct> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_IFSelect_SelectDeduct> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectSelectLevelNumber_to_HandleIFSelectSelectDeduct(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::Handle_IGESSelect_SelectLevelNumber_to_Handle_IFSelect_SelectDeduct(self as *const Self)))
         }
     }
 
     /// Upcast Handle<IGESSelect_SelectLevelNumber> to Handle<IFSelect_Selection>
     pub fn to_handle_selection(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleIFSelectSelection> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_IFSelect_Selection> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectSelectLevelNumber_to_HandleIFSelectSelection(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::Handle_IGESSelect_SelectLevelNumber_to_Handle_IFSelect_Selection(self as *const Self)))
         }
     }
 
     /// Upcast Handle<IGESSelect_SelectLevelNumber> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectSelectLevelNumber_to_HandleStandardTransient(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::Handle_IGESSelect_SelectLevelNumber_to_Handle_Standard_Transient(self as *const Self)))
         }
     }
 }
@@ -13577,7 +13584,7 @@ impl HandleIGESSelectSelectLevelNumber {
 // From IGESSelect_SelectName.hxx
 // ========================
 
-/// **Source:** `IGESSelect_SelectName.hxx`:38 - `IGESSelect_SelectName`
+/// **Source:** `IGESSelect_SelectName.hxx`:35 - `IGESSelect_SelectName`
 /// Selects Entities which have a given name.
 /// Consider Property Name if present, else Short Label, but
 /// not the Subscript Number
@@ -13594,7 +13601,7 @@ unsafe impl crate::CppDeletable for SelectName {
 }
 
 impl SelectName {
-    /// **Source:** `IGESSelect_SelectName.hxx`:44 - `IGESSelect_SelectName::IGESSelect_SelectName()`
+    /// **Source:** `IGESSelect_SelectName.hxx`:41 - `IGESSelect_SelectName::IGESSelect_SelectName()`
     /// Creates an empty SelectName : every entity is considered
     /// good (no filter active)
     pub fn new() -> crate::OwnedPtr<Self> {
@@ -13605,13 +13612,13 @@ impl SelectName {
         }
     }
 
-    /// **Source:** `IGESSelect_SelectName.hxx`:48 - `IGESSelect_SelectName::Sort()`
+    /// **Source:** `IGESSelect_SelectName.hxx`:44 - `IGESSelect_SelectName::Sort()`
     /// Returns True if Name of Entity complies with Name Filter
     pub fn sort(
         &self,
         rank: i32,
-        ent: &crate::ffi_types::HandleStandardTransient,
-        model: &crate::ffi_types::HandleInterfaceInterfaceModel,
+        ent: &crate::ffi_types::Handle_Standard_Transient,
+        model: &crate::ffi_types::Handle_Interface_InterfaceModel,
     ) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_SelectName_sort(
@@ -13623,19 +13630,19 @@ impl SelectName {
         })
     }
 
-    /// **Source:** `IGESSelect_SelectName.hxx`:55 - `IGESSelect_SelectName::SetName()`
+    /// **Source:** `IGESSelect_SelectName.hxx`:51 - `IGESSelect_SelectName::SetName()`
     /// Sets a Name as a criterium : IGES Entities which have this name
     /// are kept (without regular expression, there should be at most
     /// one). <name> can be regarded as a Text Parameter
-    pub fn set_name(&mut self, name: &crate::ffi_types::HandleTCollectionHAsciiString) {
+    pub fn set_name(&mut self, name: &crate::ffi_types::Handle_TCollection_HAsciiString) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_SelectName_set_name(self as *mut Self, name)
         })
     }
 
-    /// **Source:** `IGESSelect_SelectName.hxx`:58 - `IGESSelect_SelectName::Name()`
+    /// **Source:** `IGESSelect_SelectName.hxx`:54 - `IGESSelect_SelectName::Name()`
     /// Returns the Name used as Filter
-    pub fn name(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTCollectionHAsciiString> {
+    pub fn name(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_TCollection_HAsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDEIGES::IGESSelect_SelectName_name(self as *const Self),
@@ -13643,7 +13650,7 @@ impl SelectName {
         }
     }
 
-    /// **Source:** `IGESSelect_SelectName.hxx`:61 - `IGESSelect_SelectName::ExtractLabel()`
+    /// **Source:** `IGESSelect_SelectName.hxx`:57 - `IGESSelect_SelectName::ExtractLabel()`
     /// Returns the Selection criterium : "IGES Entity, Name : <name>"
     pub fn extract_label(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe {
@@ -13655,8 +13662,8 @@ impl SelectName {
         }
     }
 
-    /// **Source:** `IGESSelect_SelectName.hxx`:63 - `IGESSelect_SelectName::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `IGESSelect_SelectName.hxx`:59 - `IGESSelect_SelectName::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKDEIGES::IGESSelect_SelectName_dynamic_type(
                 self as *const Self,
@@ -13664,7 +13671,7 @@ impl SelectName {
         }
     }
 
-    /// **Source:** `IGESSelect_SelectName.hxx`:63 - `IGESSelect_SelectName::get_type_name()`
+    /// **Source:** `IGESSelect_SelectName.hxx`:59 - `IGESSelect_SelectName::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -13675,8 +13682,8 @@ impl SelectName {
         .into_owned()
     }
 
-    /// **Source:** `IGESSelect_SelectName.hxx`:63 - `IGESSelect_SelectName::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    /// **Source:** `IGESSelect_SelectName.hxx`:59 - `IGESSelect_SelectName::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKDEIGES::IGESSelect_SelectName_get_type_descriptor(),
@@ -13775,7 +13782,7 @@ impl SelectName {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESSelectSelectName> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_IGESSelect_SelectName> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDEIGES::IGESSelect_SelectName_to_handle(obj.into_raw()),
@@ -13783,7 +13790,7 @@ impl SelectName {
         }
     }
 
-    /// Inherited: **Source:** `IFSelect_SelectExtract.hxx`:46 - `IFSelect_SelectExtract::IsDirect()`
+    /// Inherited: **Source:** `IFSelect_SelectExtract.hxx`:43 - `IFSelect_SelectExtract::IsDirect()`
     pub fn is_direct(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_SelectName_inherited_IsDirect(
@@ -13792,7 +13799,7 @@ impl SelectName {
         })
     }
 
-    /// Inherited: **Source:** `IFSelect_SelectExtract.hxx`:50 - `IFSelect_SelectExtract::SetDirect()`
+    /// Inherited: **Source:** `IFSelect_SelectExtract.hxx`:47 - `IFSelect_SelectExtract::SetDirect()`
     pub fn set_direct(&mut self, direct: bool) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_SelectName_inherited_SetDirect(
@@ -13802,7 +13809,7 @@ impl SelectName {
         })
     }
 
-    /// Inherited: **Source:** `IFSelect_SelectExtract.hxx`:55 - `IFSelect_SelectExtract::RootResult()`
+    /// Inherited: **Source:** `IFSelect_SelectExtract.hxx`:52 - `IFSelect_SelectExtract::RootResult()`
     pub fn root_result(
         &self,
         G: &crate::interface::Graph,
@@ -13817,11 +13824,11 @@ impl SelectName {
         }
     }
 
-    /// Inherited: **Source:** `IFSelect_SelectExtract.hxx`:75 - `IFSelect_SelectExtract::SortInGraph()`
+    /// Inherited: **Source:** `IFSelect_SelectExtract.hxx`:70 - `IFSelect_SelectExtract::SortInGraph()`
     pub fn sort_in_graph(
         &self,
         rank: i32,
-        ent: &crate::ffi_types::HandleStandardTransient,
+        ent: &crate::ffi_types::Handle_Standard_Transient,
         G: &crate::interface::Graph,
     ) -> bool {
         crate::check_result(unsafe {
@@ -13834,7 +13841,7 @@ impl SelectName {
         })
     }
 
-    /// Inherited: **Source:** `IFSelect_SelectExtract.hxx`:81 - `IFSelect_SelectExtract::Label()`
+    /// Inherited: **Source:** `IFSelect_SelectExtract.hxx`:76 - `IFSelect_SelectExtract::Label()`
     pub fn label(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -13845,8 +13852,8 @@ impl SelectName {
         }
     }
 
-    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:49 - `IFSelect_SelectDeduct::SetInput()`
-    pub fn set_input(&mut self, sel: &crate::ffi_types::HandleIFSelectSelection) {
+    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:46 - `IFSelect_SelectDeduct::SetInput()`
+    pub fn set_input(&mut self, sel: &crate::ffi_types::Handle_IFSelect_Selection) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_SelectName_inherited_SetInput(
                 self as *mut Self,
@@ -13855,8 +13862,8 @@ impl SelectName {
         })
     }
 
-    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:52 - `IFSelect_SelectDeduct::Input()`
-    pub fn input(&self) -> crate::OwnedPtr<crate::ffi_types::HandleIFSelectSelection> {
+    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:49 - `IFSelect_SelectDeduct::Input()`
+    pub fn input(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_IFSelect_Selection> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDEIGES::IGESSelect_SelectName_inherited_Input(
@@ -13866,7 +13873,7 @@ impl SelectName {
         }
     }
 
-    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:55 - `IFSelect_SelectDeduct::HasInput()`
+    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:52 - `IFSelect_SelectDeduct::HasInput()`
     pub fn has_input(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_SelectName_inherited_HasInput(
@@ -13875,7 +13882,7 @@ impl SelectName {
         })
     }
 
-    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:59 - `IFSelect_SelectDeduct::HasAlternate()`
+    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:56 - `IFSelect_SelectDeduct::HasAlternate()`
     pub fn has_alternate(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_SelectName_inherited_HasAlternate(
@@ -13884,8 +13891,8 @@ impl SelectName {
         })
     }
 
-    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:67 - `IFSelect_SelectDeduct::Alternate()`
-    pub fn alternate(&mut self) -> &mut crate::ffi_types::HandleIFSelectSelectPointed {
+    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:64 - `IFSelect_SelectDeduct::Alternate()`
+    pub fn alternate(&mut self) -> &mut crate::ffi_types::Handle_IFSelect_SelectPointed {
         unsafe {
             &mut *(crate::check_result(
                 crate::ffi_extern_TKDEIGES::IGESSelect_SelectName_inherited_Alternate(
@@ -13895,7 +13902,7 @@ impl SelectName {
         }
     }
 
-    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:74 - `IFSelect_SelectDeduct::InputResult()`
+    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:71 - `IFSelect_SelectDeduct::InputResult()`
     pub fn input_result(
         &self,
         G: &crate::interface::Graph,
@@ -13910,7 +13917,7 @@ impl SelectName {
         }
     }
 
-    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:78 - `IFSelect_SelectDeduct::FillIterator()`
+    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:75 - `IFSelect_SelectDeduct::FillIterator()`
     pub fn fill_iterator(&self, iter: &mut crate::if_select::SelectionIterator) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_SelectName_inherited_FillIterator(
@@ -13920,7 +13927,7 @@ impl SelectName {
         })
     }
 
-    /// Inherited: **Source:** `IFSelect_Selection.hxx`:55 - `IFSelect_Selection::UniqueResult()`
+    /// Inherited: **Source:** `IFSelect_Selection.hxx`:52 - `IFSelect_Selection::UniqueResult()`
     pub fn unique_result(
         &self,
         G: &crate::interface::Graph,
@@ -13935,7 +13942,7 @@ impl SelectName {
         }
     }
 
-    /// Inherited: **Source:** `IFSelect_Selection.hxx`:59 - `IFSelect_Selection::CompleteResult()`
+    /// Inherited: **Source:** `IFSelect_Selection.hxx`:56 - `IFSelect_Selection::CompleteResult()`
     pub fn complete_result(
         &self,
         G: &crate::interface::Graph,
@@ -13950,8 +13957,8 @@ impl SelectName {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_SelectName_inherited_IsInstance(
                 self as *const Self,
@@ -13960,8 +13967,8 @@ impl SelectName {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_SelectName_inherited_IsKind(
                 self as *const Self,
@@ -13970,7 +13977,7 @@ impl SelectName {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -13986,7 +13993,7 @@ impl SelectName {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_SelectName_inherited_GetRefCount(
@@ -13995,7 +14002,7 @@ impl SelectName {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_SelectName_inherited_IncrementRefCounter(
@@ -14004,7 +14011,7 @@ impl SelectName {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_SelectName_inherited_DecrementRefCounter(
@@ -14013,7 +14020,7 @@ impl SelectName {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_SelectName_inherited_Delete(self as *const Self)
@@ -14021,36 +14028,36 @@ impl SelectName {
     }
 }
 
-pub use crate::ffi_types::HandleIGESSelectSelectName;
+pub use crate::ffi_types::Handle_IGESSelect_SelectName;
 
-unsafe impl crate::CppDeletable for HandleIGESSelectSelectName {
+unsafe impl crate::CppDeletable for Handle_IGESSelect_SelectName {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKDEIGES::HandleIGESSelectSelectName_destructor(ptr);
+            crate::ffi_extern_TKDEIGES::Handle_IGESSelect_SelectName_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleIGESSelectSelectName {
+unsafe impl crate::CppCopyable for Handle_IGESSelect_SelectName {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
         unsafe {
-            crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectSelectName_clone(ptr))
+            crate::check_result(crate::ffi_extern_TKDEIGES::Handle_IGESSelect_SelectName_clone(ptr))
         }
     }
 }
 
-impl HandleIGESSelectSelectName {
+impl Handle_IGESSelect_SelectName {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
         unsafe {
-            crate::ffi_extern_TKDEIGES::HandleIGESSelectSelectName_is_null(self as *const Self)
+            crate::ffi_extern_TKDEIGES::Handle_IGESSelect_SelectName_is_null(self as *const Self)
         }
     }
 
     /// Dereference this Handle to access the underlying IGESSelect_SelectName
     pub fn get(&self) -> &crate::ffi_types::IGESSelect_SelectName {
         unsafe {
-            &*crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectSelectName_get(
+            &*crate::check_result(crate::ffi_extern_TKDEIGES::Handle_IGESSelect_SelectName_get(
                 self as *const Self,
             ))
         }
@@ -14060,7 +14067,7 @@ impl HandleIGESSelectSelectName {
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::IGESSelect_SelectName {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi_extern_TKDEIGES::HandleIGESSelectSelectName_get_mut(self as *mut Self),
+                crate::ffi_extern_TKDEIGES::Handle_IGESSelect_SelectName_get_mut(self as *mut Self),
             )
         }
     }
@@ -14068,44 +14075,36 @@ impl HandleIGESSelectSelectName {
     /// Upcast Handle<IGESSelect_SelectName> to Handle<IFSelect_SelectExtract>
     pub fn to_handle_select_extract(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleIFSelectSelectExtract> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_IFSelect_SelectExtract> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectSelectName_to_HandleIFSelectSelectExtract(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::Handle_IGESSelect_SelectName_to_Handle_IFSelect_SelectExtract(self as *const Self)))
         }
     }
 
     /// Upcast Handle<IGESSelect_SelectName> to Handle<IFSelect_SelectDeduct>
     pub fn to_handle_select_deduct(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleIFSelectSelectDeduct> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_IFSelect_SelectDeduct> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectSelectName_to_HandleIFSelectSelectDeduct(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::Handle_IGESSelect_SelectName_to_Handle_IFSelect_SelectDeduct(self as *const Self)))
         }
     }
 
     /// Upcast Handle<IGESSelect_SelectName> to Handle<IFSelect_Selection>
     pub fn to_handle_selection(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleIFSelectSelection> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_IFSelect_Selection> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKDEIGES::HandleIGESSelectSelectName_to_HandleIFSelectSelection(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::Handle_IGESSelect_SelectName_to_Handle_IFSelect_Selection(self as *const Self)))
         }
     }
 
     /// Upcast Handle<IGESSelect_SelectName> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKDEIGES::HandleIGESSelectSelectName_to_HandleStandardTransient(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::Handle_IGESSelect_SelectName_to_Handle_Standard_Transient(self as *const Self)))
         }
     }
 }
@@ -14114,7 +14113,7 @@ impl HandleIGESSelectSelectName {
 // From IGESSelect_SelectPCurves.hxx
 // ========================
 
-/// **Source:** `IGESSelect_SelectPCurves.hxx`:36 - `IGESSelect_SelectPCurves`
+/// **Source:** `IGESSelect_SelectPCurves.hxx`:33 - `IGESSelect_SelectPCurves`
 /// This Selection returns the pcurves which lie on a face
 /// In two modes : global (i.e. a CompositeCurve is not explored)
 /// or basic (all the basic curves are listed)
@@ -14129,7 +14128,7 @@ unsafe impl crate::CppDeletable for SelectPCurves {
 }
 
 impl SelectPCurves {
-    /// **Source:** `IGESSelect_SelectPCurves.hxx`:44 - `IGESSelect_SelectPCurves::IGESSelect_SelectPCurves()`
+    /// **Source:** `IGESSelect_SelectPCurves.hxx`:41 - `IGESSelect_SelectPCurves::IGESSelect_SelectPCurves()`
     /// Creates a SelectPCurves
     /// basic True  : lists all the components of pcurves
     /// basic False : lists the uppest level definitions
@@ -14142,13 +14141,13 @@ impl SelectPCurves {
         }
     }
 
-    /// **Source:** `IGESSelect_SelectPCurves.hxx`:49 - `IGESSelect_SelectPCurves::Explore()`
+    /// **Source:** `IGESSelect_SelectPCurves.hxx`:45 - `IGESSelect_SelectPCurves::Explore()`
     /// Explores an entity, to take its contained PCurves
     /// An independent curve is IGNORED : only faces are explored
     pub fn explore(
         &self,
         level: i32,
-        ent: &crate::ffi_types::HandleStandardTransient,
+        ent: &crate::ffi_types::Handle_Standard_Transient,
         G: &crate::interface::Graph,
         explored: &mut crate::interface::EntityIterator,
     ) -> bool {
@@ -14163,7 +14162,7 @@ impl SelectPCurves {
         })
     }
 
-    /// **Source:** `IGESSelect_SelectPCurves.hxx`:56 - `IGESSelect_SelectPCurves::ExploreLabel()`
+    /// **Source:** `IGESSelect_SelectPCurves.hxx`:52 - `IGESSelect_SelectPCurves::ExploreLabel()`
     /// Returns a text defining the criterium : "Basic PCurves" or
     /// "Global PCurves"
     pub fn explore_label(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
@@ -14176,8 +14175,8 @@ impl SelectPCurves {
         }
     }
 
-    /// **Source:** `IGESSelect_SelectPCurves.hxx`:58 - `IGESSelect_SelectPCurves::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `IGESSelect_SelectPCurves.hxx`:54 - `IGESSelect_SelectPCurves::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKDEIGES::IGESSelect_SelectPCurves_dynamic_type(
@@ -14187,7 +14186,7 @@ impl SelectPCurves {
         }
     }
 
-    /// **Source:** `IGESSelect_SelectPCurves.hxx`:58 - `IGESSelect_SelectPCurves::get_type_name()`
+    /// **Source:** `IGESSelect_SelectPCurves.hxx`:54 - `IGESSelect_SelectPCurves::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -14198,8 +14197,8 @@ impl SelectPCurves {
         .into_owned()
     }
 
-    /// **Source:** `IGESSelect_SelectPCurves.hxx`:58 - `IGESSelect_SelectPCurves::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    /// **Source:** `IGESSelect_SelectPCurves.hxx`:54 - `IGESSelect_SelectPCurves::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKDEIGES::IGESSelect_SelectPCurves_get_type_descriptor(),
@@ -14298,7 +14297,7 @@ impl SelectPCurves {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESSelectSelectPCurves> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_IGESSelect_SelectPCurves> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDEIGES::IGESSelect_SelectPCurves_to_handle(obj.into_raw()),
@@ -14306,7 +14305,7 @@ impl SelectPCurves {
         }
     }
 
-    /// Inherited: **Source:** `IFSelect_SelectExplore.hxx`:55 - `IFSelect_SelectExplore::Level()`
+    /// Inherited: **Source:** `IFSelect_SelectExplore.hxx`:52 - `IFSelect_SelectExplore::Level()`
     pub fn level(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_SelectPCurves_inherited_Level(
@@ -14315,7 +14314,7 @@ impl SelectPCurves {
         })
     }
 
-    /// Inherited: **Source:** `IFSelect_SelectExplore.hxx`:63 - `IFSelect_SelectExplore::RootResult()`
+    /// Inherited: **Source:** `IFSelect_SelectExplore.hxx`:59 - `IFSelect_SelectExplore::RootResult()`
     pub fn root_result(
         &self,
         G: &crate::interface::Graph,
@@ -14330,7 +14329,7 @@ impl SelectPCurves {
         }
     }
 
-    /// Inherited: **Source:** `IFSelect_SelectExplore.hxx`:83 - `IFSelect_SelectExplore::Label()`
+    /// Inherited: **Source:** `IFSelect_SelectExplore.hxx`:79 - `IFSelect_SelectExplore::Label()`
     pub fn label(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -14341,8 +14340,8 @@ impl SelectPCurves {
         }
     }
 
-    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:49 - `IFSelect_SelectDeduct::SetInput()`
-    pub fn set_input(&mut self, sel: &crate::ffi_types::HandleIFSelectSelection) {
+    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:46 - `IFSelect_SelectDeduct::SetInput()`
+    pub fn set_input(&mut self, sel: &crate::ffi_types::Handle_IFSelect_Selection) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_SelectPCurves_inherited_SetInput(
                 self as *mut Self,
@@ -14351,8 +14350,8 @@ impl SelectPCurves {
         })
     }
 
-    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:52 - `IFSelect_SelectDeduct::Input()`
-    pub fn input(&self) -> crate::OwnedPtr<crate::ffi_types::HandleIFSelectSelection> {
+    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:49 - `IFSelect_SelectDeduct::Input()`
+    pub fn input(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_IFSelect_Selection> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDEIGES::IGESSelect_SelectPCurves_inherited_Input(
@@ -14362,7 +14361,7 @@ impl SelectPCurves {
         }
     }
 
-    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:55 - `IFSelect_SelectDeduct::HasInput()`
+    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:52 - `IFSelect_SelectDeduct::HasInput()`
     pub fn has_input(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_SelectPCurves_inherited_HasInput(
@@ -14371,7 +14370,7 @@ impl SelectPCurves {
         })
     }
 
-    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:59 - `IFSelect_SelectDeduct::HasAlternate()`
+    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:56 - `IFSelect_SelectDeduct::HasAlternate()`
     pub fn has_alternate(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_SelectPCurves_inherited_HasAlternate(
@@ -14380,8 +14379,8 @@ impl SelectPCurves {
         })
     }
 
-    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:67 - `IFSelect_SelectDeduct::Alternate()`
-    pub fn alternate(&mut self) -> &mut crate::ffi_types::HandleIFSelectSelectPointed {
+    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:64 - `IFSelect_SelectDeduct::Alternate()`
+    pub fn alternate(&mut self) -> &mut crate::ffi_types::Handle_IFSelect_SelectPointed {
         unsafe {
             &mut *(crate::check_result(
                 crate::ffi_extern_TKDEIGES::IGESSelect_SelectPCurves_inherited_Alternate(
@@ -14391,7 +14390,7 @@ impl SelectPCurves {
         }
     }
 
-    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:74 - `IFSelect_SelectDeduct::InputResult()`
+    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:71 - `IFSelect_SelectDeduct::InputResult()`
     pub fn input_result(
         &self,
         G: &crate::interface::Graph,
@@ -14406,7 +14405,7 @@ impl SelectPCurves {
         }
     }
 
-    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:78 - `IFSelect_SelectDeduct::FillIterator()`
+    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:75 - `IFSelect_SelectDeduct::FillIterator()`
     pub fn fill_iterator(&self, iter: &mut crate::if_select::SelectionIterator) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_SelectPCurves_inherited_FillIterator(
@@ -14416,7 +14415,7 @@ impl SelectPCurves {
         })
     }
 
-    /// Inherited: **Source:** `IFSelect_Selection.hxx`:55 - `IFSelect_Selection::UniqueResult()`
+    /// Inherited: **Source:** `IFSelect_Selection.hxx`:52 - `IFSelect_Selection::UniqueResult()`
     pub fn unique_result(
         &self,
         G: &crate::interface::Graph,
@@ -14431,7 +14430,7 @@ impl SelectPCurves {
         }
     }
 
-    /// Inherited: **Source:** `IFSelect_Selection.hxx`:59 - `IFSelect_Selection::CompleteResult()`
+    /// Inherited: **Source:** `IFSelect_Selection.hxx`:56 - `IFSelect_Selection::CompleteResult()`
     pub fn complete_result(
         &self,
         G: &crate::interface::Graph,
@@ -14446,8 +14445,8 @@ impl SelectPCurves {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_SelectPCurves_inherited_IsInstance(
                 self as *const Self,
@@ -14456,8 +14455,8 @@ impl SelectPCurves {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_SelectPCurves_inherited_IsKind(
                 self as *const Self,
@@ -14466,7 +14465,7 @@ impl SelectPCurves {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -14482,7 +14481,7 @@ impl SelectPCurves {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_SelectPCurves_inherited_GetRefCount(
@@ -14491,7 +14490,7 @@ impl SelectPCurves {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_SelectPCurves_inherited_IncrementRefCounter(
@@ -14500,7 +14499,7 @@ impl SelectPCurves {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_SelectPCurves_inherited_DecrementRefCounter(
@@ -14509,7 +14508,7 @@ impl SelectPCurves {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_SelectPCurves_inherited_Delete(
@@ -14519,38 +14518,38 @@ impl SelectPCurves {
     }
 }
 
-pub use crate::ffi_types::HandleIGESSelectSelectPCurves;
+pub use crate::ffi_types::Handle_IGESSelect_SelectPCurves;
 
-unsafe impl crate::CppDeletable for HandleIGESSelectSelectPCurves {
+unsafe impl crate::CppDeletable for Handle_IGESSelect_SelectPCurves {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKDEIGES::HandleIGESSelectSelectPCurves_destructor(ptr);
+            crate::ffi_extern_TKDEIGES::Handle_IGESSelect_SelectPCurves_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleIGESSelectSelectPCurves {
+unsafe impl crate::CppCopyable for Handle_IGESSelect_SelectPCurves {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
         unsafe {
-            crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectSelectPCurves_clone(
+            crate::check_result(crate::ffi_extern_TKDEIGES::Handle_IGESSelect_SelectPCurves_clone(
                 ptr,
             ))
         }
     }
 }
 
-impl HandleIGESSelectSelectPCurves {
+impl Handle_IGESSelect_SelectPCurves {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
         unsafe {
-            crate::ffi_extern_TKDEIGES::HandleIGESSelectSelectPCurves_is_null(self as *const Self)
+            crate::ffi_extern_TKDEIGES::Handle_IGESSelect_SelectPCurves_is_null(self as *const Self)
         }
     }
 
     /// Dereference this Handle to access the underlying IGESSelect_SelectPCurves
     pub fn get(&self) -> &crate::ffi_types::IGESSelect_SelectPCurves {
         unsafe {
-            &*crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectSelectPCurves_get(
+            &*crate::check_result(crate::ffi_extern_TKDEIGES::Handle_IGESSelect_SelectPCurves_get(
                 self as *const Self,
             ))
         }
@@ -14560,7 +14559,7 @@ impl HandleIGESSelectSelectPCurves {
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::IGESSelect_SelectPCurves {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi_extern_TKDEIGES::HandleIGESSelectSelectPCurves_get_mut(
+                crate::ffi_extern_TKDEIGES::Handle_IGESSelect_SelectPCurves_get_mut(
                     self as *mut Self,
                 ),
             )
@@ -14570,36 +14569,36 @@ impl HandleIGESSelectSelectPCurves {
     /// Upcast Handle<IGESSelect_SelectPCurves> to Handle<IFSelect_SelectExplore>
     pub fn to_handle_select_explore(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleIFSelectSelectExplore> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_IFSelect_SelectExplore> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectSelectPCurves_to_HandleIFSelectSelectExplore(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::Handle_IGESSelect_SelectPCurves_to_Handle_IFSelect_SelectExplore(self as *const Self)))
         }
     }
 
     /// Upcast Handle<IGESSelect_SelectPCurves> to Handle<IFSelect_SelectDeduct>
     pub fn to_handle_select_deduct(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleIFSelectSelectDeduct> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_IFSelect_SelectDeduct> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectSelectPCurves_to_HandleIFSelectSelectDeduct(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::Handle_IGESSelect_SelectPCurves_to_Handle_IFSelect_SelectDeduct(self as *const Self)))
         }
     }
 
     /// Upcast Handle<IGESSelect_SelectPCurves> to Handle<IFSelect_Selection>
     pub fn to_handle_selection(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleIFSelectSelection> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_IFSelect_Selection> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectSelectPCurves_to_HandleIFSelectSelection(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::Handle_IGESSelect_SelectPCurves_to_Handle_IFSelect_Selection(self as *const Self)))
         }
     }
 
     /// Upcast Handle<IGESSelect_SelectPCurves> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectSelectPCurves_to_HandleStandardTransient(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::Handle_IGESSelect_SelectPCurves_to_Handle_Standard_Transient(self as *const Self)))
         }
     }
 }
@@ -14608,7 +14607,7 @@ impl HandleIGESSelectSelectPCurves {
 // From IGESSelect_SelectSingleViewFrom.hxx
 // ========================
 
-/// **Source:** `IGESSelect_SelectSingleViewFrom.hxx`:34 - `IGESSelect_SelectSingleViewFrom`
+/// **Source:** `IGESSelect_SelectSingleViewFrom.hxx`:31 - `IGESSelect_SelectSingleViewFrom`
 /// This selection gets the Single Views attached to its input
 /// IGES entities. Single Views themselves or Drawings as passed
 /// as such (Drawings, for their Annotations)
@@ -14623,7 +14622,7 @@ unsafe impl crate::CppDeletable for SelectSingleViewFrom {
 }
 
 impl SelectSingleViewFrom {
-    /// **Source:** `IGESSelect_SelectSingleViewFrom.hxx`:39 - `IGESSelect_SelectSingleViewFrom::IGESSelect_SelectSingleViewFrom()`
+    /// **Source:** `IGESSelect_SelectSingleViewFrom.hxx`:36 - `IGESSelect_SelectSingleViewFrom::IGESSelect_SelectSingleViewFrom()`
     /// Creates a SelectSingleViewFrom
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
@@ -14633,7 +14632,7 @@ impl SelectSingleViewFrom {
         }
     }
 
-    /// **Source:** `IGESSelect_SelectSingleViewFrom.hxx`:44 - `IGESSelect_SelectSingleViewFrom::RootResult()`
+    /// **Source:** `IGESSelect_SelectSingleViewFrom.hxx`:40 - `IGESSelect_SelectSingleViewFrom::RootResult()`
     /// Selects the Single Views attached (in Directory Part) to
     /// input entities
     pub fn root_result(
@@ -14650,7 +14649,7 @@ impl SelectSingleViewFrom {
         }
     }
 
-    /// **Source:** `IGESSelect_SelectSingleViewFrom.hxx`:47 - `IGESSelect_SelectSingleViewFrom::Label()`
+    /// **Source:** `IGESSelect_SelectSingleViewFrom.hxx`:43 - `IGESSelect_SelectSingleViewFrom::Label()`
     /// Returns the label, with is "Single Views attached"
     pub fn label(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe {
@@ -14662,8 +14661,8 @@ impl SelectSingleViewFrom {
         }
     }
 
-    /// **Source:** `IGESSelect_SelectSingleViewFrom.hxx`:49 - `IGESSelect_SelectSingleViewFrom::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `IGESSelect_SelectSingleViewFrom.hxx`:45 - `IGESSelect_SelectSingleViewFrom::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKDEIGES::IGESSelect_SelectSingleViewFrom_dynamic_type(
@@ -14673,7 +14672,7 @@ impl SelectSingleViewFrom {
         }
     }
 
-    /// **Source:** `IGESSelect_SelectSingleViewFrom.hxx`:49 - `IGESSelect_SelectSingleViewFrom::get_type_name()`
+    /// **Source:** `IGESSelect_SelectSingleViewFrom.hxx`:45 - `IGESSelect_SelectSingleViewFrom::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -14684,8 +14683,8 @@ impl SelectSingleViewFrom {
         .into_owned()
     }
 
-    /// **Source:** `IGESSelect_SelectSingleViewFrom.hxx`:49 - `IGESSelect_SelectSingleViewFrom::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    /// **Source:** `IGESSelect_SelectSingleViewFrom.hxx`:45 - `IGESSelect_SelectSingleViewFrom::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKDEIGES::IGESSelect_SelectSingleViewFrom_get_type_descriptor(),
@@ -14746,7 +14745,7 @@ impl SelectSingleViewFrom {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESSelectSelectSingleViewFrom> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_IGESSelect_SelectSingleViewFrom> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDEIGES::IGESSelect_SelectSingleViewFrom_to_handle(
@@ -14756,8 +14755,8 @@ impl SelectSingleViewFrom {
         }
     }
 
-    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:49 - `IFSelect_SelectDeduct::SetInput()`
-    pub fn set_input(&mut self, sel: &crate::ffi_types::HandleIFSelectSelection) {
+    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:46 - `IFSelect_SelectDeduct::SetInput()`
+    pub fn set_input(&mut self, sel: &crate::ffi_types::Handle_IFSelect_Selection) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_SelectSingleViewFrom_inherited_SetInput(
                 self as *mut Self,
@@ -14766,8 +14765,8 @@ impl SelectSingleViewFrom {
         })
     }
 
-    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:52 - `IFSelect_SelectDeduct::Input()`
-    pub fn input(&self) -> crate::OwnedPtr<crate::ffi_types::HandleIFSelectSelection> {
+    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:49 - `IFSelect_SelectDeduct::Input()`
+    pub fn input(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_IFSelect_Selection> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDEIGES::IGESSelect_SelectSingleViewFrom_inherited_Input(
@@ -14777,7 +14776,7 @@ impl SelectSingleViewFrom {
         }
     }
 
-    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:55 - `IFSelect_SelectDeduct::HasInput()`
+    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:52 - `IFSelect_SelectDeduct::HasInput()`
     pub fn has_input(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_SelectSingleViewFrom_inherited_HasInput(
@@ -14786,7 +14785,7 @@ impl SelectSingleViewFrom {
         })
     }
 
-    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:59 - `IFSelect_SelectDeduct::HasAlternate()`
+    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:56 - `IFSelect_SelectDeduct::HasAlternate()`
     pub fn has_alternate(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_SelectSingleViewFrom_inherited_HasAlternate(
@@ -14795,8 +14794,8 @@ impl SelectSingleViewFrom {
         })
     }
 
-    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:67 - `IFSelect_SelectDeduct::Alternate()`
-    pub fn alternate(&mut self) -> &mut crate::ffi_types::HandleIFSelectSelectPointed {
+    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:64 - `IFSelect_SelectDeduct::Alternate()`
+    pub fn alternate(&mut self) -> &mut crate::ffi_types::Handle_IFSelect_SelectPointed {
         unsafe {
             &mut *(crate::check_result(
                 crate::ffi_extern_TKDEIGES::IGESSelect_SelectSingleViewFrom_inherited_Alternate(
@@ -14806,7 +14805,7 @@ impl SelectSingleViewFrom {
         }
     }
 
-    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:74 - `IFSelect_SelectDeduct::InputResult()`
+    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:71 - `IFSelect_SelectDeduct::InputResult()`
     pub fn input_result(
         &self,
         G: &crate::interface::Graph,
@@ -14821,7 +14820,7 @@ impl SelectSingleViewFrom {
         }
     }
 
-    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:78 - `IFSelect_SelectDeduct::FillIterator()`
+    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:75 - `IFSelect_SelectDeduct::FillIterator()`
     pub fn fill_iterator(&self, iter: &mut crate::if_select::SelectionIterator) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_SelectSingleViewFrom_inherited_FillIterator(
@@ -14831,7 +14830,7 @@ impl SelectSingleViewFrom {
         })
     }
 
-    /// Inherited: **Source:** `IFSelect_Selection.hxx`:55 - `IFSelect_Selection::UniqueResult()`
+    /// Inherited: **Source:** `IFSelect_Selection.hxx`:52 - `IFSelect_Selection::UniqueResult()`
     pub fn unique_result(
         &self,
         G: &crate::interface::Graph,
@@ -14846,7 +14845,7 @@ impl SelectSingleViewFrom {
         }
     }
 
-    /// Inherited: **Source:** `IFSelect_Selection.hxx`:59 - `IFSelect_Selection::CompleteResult()`
+    /// Inherited: **Source:** `IFSelect_Selection.hxx`:56 - `IFSelect_Selection::CompleteResult()`
     pub fn complete_result(
         &self,
         G: &crate::interface::Graph,
@@ -14856,8 +14855,8 @@ impl SelectSingleViewFrom {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_SelectSingleViewFrom_inherited_IsInstance(
                 self as *const Self,
@@ -14866,8 +14865,8 @@ impl SelectSingleViewFrom {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_SelectSingleViewFrom_inherited_IsKind(
                 self as *const Self,
@@ -14876,7 +14875,7 @@ impl SelectSingleViewFrom {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -14892,7 +14891,7 @@ impl SelectSingleViewFrom {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_SelectSingleViewFrom_inherited_GetRefCount(
@@ -14901,21 +14900,21 @@ impl SelectSingleViewFrom {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_SelectSingleViewFrom_inherited_IncrementRefCounter(self as *mut Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_SelectSingleViewFrom_inherited_DecrementRefCounter(self as *mut Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_SelectSingleViewFrom_inherited_Delete(
@@ -14925,31 +14924,31 @@ impl SelectSingleViewFrom {
     }
 }
 
-pub use crate::ffi_types::HandleIGESSelectSelectSingleViewFrom;
+pub use crate::ffi_types::Handle_IGESSelect_SelectSingleViewFrom;
 
-unsafe impl crate::CppDeletable for HandleIGESSelectSelectSingleViewFrom {
+unsafe impl crate::CppDeletable for Handle_IGESSelect_SelectSingleViewFrom {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKDEIGES::HandleIGESSelectSelectSingleViewFrom_destructor(ptr);
+            crate::ffi_extern_TKDEIGES::Handle_IGESSelect_SelectSingleViewFrom_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleIGESSelectSelectSingleViewFrom {
+unsafe impl crate::CppCopyable for Handle_IGESSelect_SelectSingleViewFrom {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
         unsafe {
             crate::check_result(
-                crate::ffi_extern_TKDEIGES::HandleIGESSelectSelectSingleViewFrom_clone(ptr),
+                crate::ffi_extern_TKDEIGES::Handle_IGESSelect_SelectSingleViewFrom_clone(ptr),
             )
         }
     }
 }
 
-impl HandleIGESSelectSelectSingleViewFrom {
+impl Handle_IGESSelect_SelectSingleViewFrom {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
         unsafe {
-            crate::ffi_extern_TKDEIGES::HandleIGESSelectSelectSingleViewFrom_is_null(
+            crate::ffi_extern_TKDEIGES::Handle_IGESSelect_SelectSingleViewFrom_is_null(
                 self as *const Self,
             )
         }
@@ -14959,7 +14958,7 @@ impl HandleIGESSelectSelectSingleViewFrom {
     pub fn get(&self) -> &crate::ffi_types::IGESSelect_SelectSingleViewFrom {
         unsafe {
             &*crate::check_result(
-                crate::ffi_extern_TKDEIGES::HandleIGESSelectSelectSingleViewFrom_get(
+                crate::ffi_extern_TKDEIGES::Handle_IGESSelect_SelectSingleViewFrom_get(
                     self as *const Self,
                 ),
             )
@@ -14970,7 +14969,7 @@ impl HandleIGESSelectSelectSingleViewFrom {
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::IGESSelect_SelectSingleViewFrom {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi_extern_TKDEIGES::HandleIGESSelectSelectSingleViewFrom_get_mut(
+                crate::ffi_extern_TKDEIGES::Handle_IGESSelect_SelectSingleViewFrom_get_mut(
                     self as *mut Self,
                 ),
             )
@@ -14980,27 +14979,27 @@ impl HandleIGESSelectSelectSingleViewFrom {
     /// Upcast Handle<IGESSelect_SelectSingleViewFrom> to Handle<IFSelect_SelectDeduct>
     pub fn to_handle_select_deduct(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleIFSelectSelectDeduct> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_IFSelect_SelectDeduct> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectSelectSingleViewFrom_to_HandleIFSelectSelectDeduct(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::Handle_IGESSelect_SelectSingleViewFrom_to_Handle_IFSelect_SelectDeduct(self as *const Self)))
         }
     }
 
     /// Upcast Handle<IGESSelect_SelectSingleViewFrom> to Handle<IFSelect_Selection>
     pub fn to_handle_selection(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleIFSelectSelection> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_IFSelect_Selection> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectSelectSingleViewFrom_to_HandleIFSelectSelection(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::Handle_IGESSelect_SelectSingleViewFrom_to_Handle_IFSelect_Selection(self as *const Self)))
         }
     }
 
     /// Upcast Handle<IGESSelect_SelectSingleViewFrom> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectSelectSingleViewFrom_to_HandleStandardTransient(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::Handle_IGESSelect_SelectSingleViewFrom_to_Handle_Standard_Transient(self as *const Self)))
         }
     }
 }
@@ -15009,7 +15008,7 @@ impl HandleIGESSelectSelectSingleViewFrom {
 // From IGESSelect_SelectSubordinate.hxx
 // ========================
 
-/// **Source:** `IGESSelect_SelectSubordinate.hxx`:48 - `IGESSelect_SelectSubordinate`
+/// **Source:** `IGESSelect_SelectSubordinate.hxx`:45 - `IGESSelect_SelectSubordinate`
 /// This selections uses Subordinate Status as sort criterium
 /// It is an integer number which can be :
 /// 0 Independent
@@ -15032,7 +15031,7 @@ unsafe impl crate::CppDeletable for SelectSubordinate {
 }
 
 impl SelectSubordinate {
-    /// **Source:** `IGESSelect_SelectSubordinate.hxx`:53 - `IGESSelect_SelectSubordinate::IGESSelect_SelectSubordinate()`
+    /// **Source:** `IGESSelect_SelectSubordinate.hxx`:50 - `IGESSelect_SelectSubordinate::IGESSelect_SelectSubordinate()`
     /// Creates a SelectSubordinate with a status to be sorted
     pub fn new_int(status: i32) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -15042,7 +15041,7 @@ impl SelectSubordinate {
         }
     }
 
-    /// **Source:** `IGESSelect_SelectSubordinate.hxx`:56 - `IGESSelect_SelectSubordinate::Status()`
+    /// **Source:** `IGESSelect_SelectSubordinate.hxx`:53 - `IGESSelect_SelectSubordinate::Status()`
     /// Returns the status used for sorting
     pub fn status(&self) -> i32 {
         crate::check_result(unsafe {
@@ -15050,14 +15049,14 @@ impl SelectSubordinate {
         })
     }
 
-    /// **Source:** `IGESSelect_SelectSubordinate.hxx`:61 - `IGESSelect_SelectSubordinate::Sort()`
+    /// **Source:** `IGESSelect_SelectSubordinate.hxx`:57 - `IGESSelect_SelectSubordinate::Sort()`
     /// Returns True if <ent> is an IGES Entity with Subordinate
     /// Status matching the criterium
     pub fn sort(
         &self,
         rank: i32,
-        ent: &crate::ffi_types::HandleStandardTransient,
-        model: &crate::ffi_types::HandleInterfaceInterfaceModel,
+        ent: &crate::ffi_types::Handle_Standard_Transient,
+        model: &crate::ffi_types::Handle_Interface_InterfaceModel,
     ) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_SelectSubordinate_sort(
@@ -15069,7 +15068,7 @@ impl SelectSubordinate {
         })
     }
 
-    /// **Source:** `IGESSelect_SelectSubordinate.hxx`:67 - `IGESSelect_SelectSubordinate::ExtractLabel()`
+    /// **Source:** `IGESSelect_SelectSubordinate.hxx`:63 - `IGESSelect_SelectSubordinate::ExtractLabel()`
     /// Returns the Selection criterium : "IGES Entity, Independent"
     /// etc...
     pub fn extract_label(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
@@ -15082,8 +15081,8 @@ impl SelectSubordinate {
         }
     }
 
-    /// **Source:** `IGESSelect_SelectSubordinate.hxx`:69 - `IGESSelect_SelectSubordinate::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `IGESSelect_SelectSubordinate.hxx`:65 - `IGESSelect_SelectSubordinate::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKDEIGES::IGESSelect_SelectSubordinate_dynamic_type(
@@ -15093,7 +15092,7 @@ impl SelectSubordinate {
         }
     }
 
-    /// **Source:** `IGESSelect_SelectSubordinate.hxx`:69 - `IGESSelect_SelectSubordinate::get_type_name()`
+    /// **Source:** `IGESSelect_SelectSubordinate.hxx`:65 - `IGESSelect_SelectSubordinate::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -15104,8 +15103,8 @@ impl SelectSubordinate {
         .into_owned()
     }
 
-    /// **Source:** `IGESSelect_SelectSubordinate.hxx`:69 - `IGESSelect_SelectSubordinate::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    /// **Source:** `IGESSelect_SelectSubordinate.hxx`:65 - `IGESSelect_SelectSubordinate::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKDEIGES::IGESSelect_SelectSubordinate_get_type_descriptor(),
@@ -15196,7 +15195,7 @@ impl SelectSubordinate {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESSelectSelectSubordinate> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_IGESSelect_SelectSubordinate> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDEIGES::IGESSelect_SelectSubordinate_to_handle(obj.into_raw()),
@@ -15204,7 +15203,7 @@ impl SelectSubordinate {
         }
     }
 
-    /// Inherited: **Source:** `IFSelect_SelectExtract.hxx`:46 - `IFSelect_SelectExtract::IsDirect()`
+    /// Inherited: **Source:** `IFSelect_SelectExtract.hxx`:43 - `IFSelect_SelectExtract::IsDirect()`
     pub fn is_direct(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_SelectSubordinate_inherited_IsDirect(
@@ -15213,7 +15212,7 @@ impl SelectSubordinate {
         })
     }
 
-    /// Inherited: **Source:** `IFSelect_SelectExtract.hxx`:50 - `IFSelect_SelectExtract::SetDirect()`
+    /// Inherited: **Source:** `IFSelect_SelectExtract.hxx`:47 - `IFSelect_SelectExtract::SetDirect()`
     pub fn set_direct(&mut self, direct: bool) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_SelectSubordinate_inherited_SetDirect(
@@ -15223,7 +15222,7 @@ impl SelectSubordinate {
         })
     }
 
-    /// Inherited: **Source:** `IFSelect_SelectExtract.hxx`:55 - `IFSelect_SelectExtract::RootResult()`
+    /// Inherited: **Source:** `IFSelect_SelectExtract.hxx`:52 - `IFSelect_SelectExtract::RootResult()`
     pub fn root_result(
         &self,
         G: &crate::interface::Graph,
@@ -15238,11 +15237,11 @@ impl SelectSubordinate {
         }
     }
 
-    /// Inherited: **Source:** `IFSelect_SelectExtract.hxx`:75 - `IFSelect_SelectExtract::SortInGraph()`
+    /// Inherited: **Source:** `IFSelect_SelectExtract.hxx`:70 - `IFSelect_SelectExtract::SortInGraph()`
     pub fn sort_in_graph(
         &self,
         rank: i32,
-        ent: &crate::ffi_types::HandleStandardTransient,
+        ent: &crate::ffi_types::Handle_Standard_Transient,
         G: &crate::interface::Graph,
     ) -> bool {
         crate::check_result(unsafe {
@@ -15255,7 +15254,7 @@ impl SelectSubordinate {
         })
     }
 
-    /// Inherited: **Source:** `IFSelect_SelectExtract.hxx`:81 - `IFSelect_SelectExtract::Label()`
+    /// Inherited: **Source:** `IFSelect_SelectExtract.hxx`:76 - `IFSelect_SelectExtract::Label()`
     pub fn label(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -15266,8 +15265,8 @@ impl SelectSubordinate {
         }
     }
 
-    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:49 - `IFSelect_SelectDeduct::SetInput()`
-    pub fn set_input(&mut self, sel: &crate::ffi_types::HandleIFSelectSelection) {
+    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:46 - `IFSelect_SelectDeduct::SetInput()`
+    pub fn set_input(&mut self, sel: &crate::ffi_types::Handle_IFSelect_Selection) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_SelectSubordinate_inherited_SetInput(
                 self as *mut Self,
@@ -15276,8 +15275,8 @@ impl SelectSubordinate {
         })
     }
 
-    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:52 - `IFSelect_SelectDeduct::Input()`
-    pub fn input(&self) -> crate::OwnedPtr<crate::ffi_types::HandleIFSelectSelection> {
+    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:49 - `IFSelect_SelectDeduct::Input()`
+    pub fn input(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_IFSelect_Selection> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDEIGES::IGESSelect_SelectSubordinate_inherited_Input(
@@ -15287,7 +15286,7 @@ impl SelectSubordinate {
         }
     }
 
-    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:55 - `IFSelect_SelectDeduct::HasInput()`
+    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:52 - `IFSelect_SelectDeduct::HasInput()`
     pub fn has_input(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_SelectSubordinate_inherited_HasInput(
@@ -15296,7 +15295,7 @@ impl SelectSubordinate {
         })
     }
 
-    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:59 - `IFSelect_SelectDeduct::HasAlternate()`
+    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:56 - `IFSelect_SelectDeduct::HasAlternate()`
     pub fn has_alternate(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_SelectSubordinate_inherited_HasAlternate(
@@ -15305,8 +15304,8 @@ impl SelectSubordinate {
         })
     }
 
-    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:67 - `IFSelect_SelectDeduct::Alternate()`
-    pub fn alternate(&mut self) -> &mut crate::ffi_types::HandleIFSelectSelectPointed {
+    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:64 - `IFSelect_SelectDeduct::Alternate()`
+    pub fn alternate(&mut self) -> &mut crate::ffi_types::Handle_IFSelect_SelectPointed {
         unsafe {
             &mut *(crate::check_result(
                 crate::ffi_extern_TKDEIGES::IGESSelect_SelectSubordinate_inherited_Alternate(
@@ -15316,7 +15315,7 @@ impl SelectSubordinate {
         }
     }
 
-    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:74 - `IFSelect_SelectDeduct::InputResult()`
+    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:71 - `IFSelect_SelectDeduct::InputResult()`
     pub fn input_result(
         &self,
         G: &crate::interface::Graph,
@@ -15331,7 +15330,7 @@ impl SelectSubordinate {
         }
     }
 
-    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:78 - `IFSelect_SelectDeduct::FillIterator()`
+    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:75 - `IFSelect_SelectDeduct::FillIterator()`
     pub fn fill_iterator(&self, iter: &mut crate::if_select::SelectionIterator) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_SelectSubordinate_inherited_FillIterator(
@@ -15341,7 +15340,7 @@ impl SelectSubordinate {
         })
     }
 
-    /// Inherited: **Source:** `IFSelect_Selection.hxx`:55 - `IFSelect_Selection::UniqueResult()`
+    /// Inherited: **Source:** `IFSelect_Selection.hxx`:52 - `IFSelect_Selection::UniqueResult()`
     pub fn unique_result(
         &self,
         G: &crate::interface::Graph,
@@ -15356,7 +15355,7 @@ impl SelectSubordinate {
         }
     }
 
-    /// Inherited: **Source:** `IFSelect_Selection.hxx`:59 - `IFSelect_Selection::CompleteResult()`
+    /// Inherited: **Source:** `IFSelect_Selection.hxx`:56 - `IFSelect_Selection::CompleteResult()`
     pub fn complete_result(
         &self,
         G: &crate::interface::Graph,
@@ -15371,8 +15370,8 @@ impl SelectSubordinate {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_SelectSubordinate_inherited_IsInstance(
                 self as *const Self,
@@ -15381,8 +15380,8 @@ impl SelectSubordinate {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_SelectSubordinate_inherited_IsKind(
                 self as *const Self,
@@ -15391,7 +15390,7 @@ impl SelectSubordinate {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -15407,7 +15406,7 @@ impl SelectSubordinate {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_SelectSubordinate_inherited_GetRefCount(
@@ -15416,7 +15415,7 @@ impl SelectSubordinate {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_SelectSubordinate_inherited_IncrementRefCounter(
@@ -15425,7 +15424,7 @@ impl SelectSubordinate {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_SelectSubordinate_inherited_DecrementRefCounter(
@@ -15434,7 +15433,7 @@ impl SelectSubordinate {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_SelectSubordinate_inherited_Delete(
@@ -15444,31 +15443,31 @@ impl SelectSubordinate {
     }
 }
 
-pub use crate::ffi_types::HandleIGESSelectSelectSubordinate;
+pub use crate::ffi_types::Handle_IGESSelect_SelectSubordinate;
 
-unsafe impl crate::CppDeletable for HandleIGESSelectSelectSubordinate {
+unsafe impl crate::CppDeletable for Handle_IGESSelect_SelectSubordinate {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKDEIGES::HandleIGESSelectSelectSubordinate_destructor(ptr);
+            crate::ffi_extern_TKDEIGES::Handle_IGESSelect_SelectSubordinate_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleIGESSelectSelectSubordinate {
+unsafe impl crate::CppCopyable for Handle_IGESSelect_SelectSubordinate {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
         unsafe {
             crate::check_result(
-                crate::ffi_extern_TKDEIGES::HandleIGESSelectSelectSubordinate_clone(ptr),
+                crate::ffi_extern_TKDEIGES::Handle_IGESSelect_SelectSubordinate_clone(ptr),
             )
         }
     }
 }
 
-impl HandleIGESSelectSelectSubordinate {
+impl Handle_IGESSelect_SelectSubordinate {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
         unsafe {
-            crate::ffi_extern_TKDEIGES::HandleIGESSelectSelectSubordinate_is_null(
+            crate::ffi_extern_TKDEIGES::Handle_IGESSelect_SelectSubordinate_is_null(
                 self as *const Self,
             )
         }
@@ -15478,7 +15477,7 @@ impl HandleIGESSelectSelectSubordinate {
     pub fn get(&self) -> &crate::ffi_types::IGESSelect_SelectSubordinate {
         unsafe {
             &*crate::check_result(
-                crate::ffi_extern_TKDEIGES::HandleIGESSelectSelectSubordinate_get(
+                crate::ffi_extern_TKDEIGES::Handle_IGESSelect_SelectSubordinate_get(
                     self as *const Self,
                 ),
             )
@@ -15489,7 +15488,7 @@ impl HandleIGESSelectSelectSubordinate {
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::IGESSelect_SelectSubordinate {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi_extern_TKDEIGES::HandleIGESSelectSelectSubordinate_get_mut(
+                crate::ffi_extern_TKDEIGES::Handle_IGESSelect_SelectSubordinate_get_mut(
                     self as *mut Self,
                 ),
             )
@@ -15499,36 +15498,36 @@ impl HandleIGESSelectSelectSubordinate {
     /// Upcast Handle<IGESSelect_SelectSubordinate> to Handle<IFSelect_SelectExtract>
     pub fn to_handle_select_extract(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleIFSelectSelectExtract> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_IFSelect_SelectExtract> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectSelectSubordinate_to_HandleIFSelectSelectExtract(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::Handle_IGESSelect_SelectSubordinate_to_Handle_IFSelect_SelectExtract(self as *const Self)))
         }
     }
 
     /// Upcast Handle<IGESSelect_SelectSubordinate> to Handle<IFSelect_SelectDeduct>
     pub fn to_handle_select_deduct(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleIFSelectSelectDeduct> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_IFSelect_SelectDeduct> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectSelectSubordinate_to_HandleIFSelectSelectDeduct(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::Handle_IGESSelect_SelectSubordinate_to_Handle_IFSelect_SelectDeduct(self as *const Self)))
         }
     }
 
     /// Upcast Handle<IGESSelect_SelectSubordinate> to Handle<IFSelect_Selection>
     pub fn to_handle_selection(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleIFSelectSelection> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_IFSelect_Selection> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectSelectSubordinate_to_HandleIFSelectSelection(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::Handle_IGESSelect_SelectSubordinate_to_Handle_IFSelect_Selection(self as *const Self)))
         }
     }
 
     /// Upcast Handle<IGESSelect_SelectSubordinate> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectSelectSubordinate_to_HandleStandardTransient(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::Handle_IGESSelect_SelectSubordinate_to_Handle_Standard_Transient(self as *const Self)))
         }
     }
 }
@@ -15537,7 +15536,7 @@ impl HandleIGESSelectSelectSubordinate {
 // From IGESSelect_SelectVisibleStatus.hxx
 // ========================
 
-/// **Source:** `IGESSelect_SelectVisibleStatus.hxx`:35 - `IGESSelect_SelectVisibleStatus`
+/// **Source:** `IGESSelect_SelectVisibleStatus.hxx`:32 - `IGESSelect_SelectVisibleStatus`
 /// This selection looks at Blank Status of IGES Entities
 /// Direct  selection keeps Visible Entities (Blank = 0),
 /// Reverse selection keeps Blanked Entities (Blank = 1)
@@ -15552,7 +15551,7 @@ unsafe impl crate::CppDeletable for SelectVisibleStatus {
 }
 
 impl SelectVisibleStatus {
-    /// **Source:** `IGESSelect_SelectVisibleStatus.hxx`:40 - `IGESSelect_SelectVisibleStatus::IGESSelect_SelectVisibleStatus()`
+    /// **Source:** `IGESSelect_SelectVisibleStatus.hxx`:37 - `IGESSelect_SelectVisibleStatus::IGESSelect_SelectVisibleStatus()`
     /// Creates a SelectVisibleStatus
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
@@ -15562,13 +15561,13 @@ impl SelectVisibleStatus {
         }
     }
 
-    /// **Source:** `IGESSelect_SelectVisibleStatus.hxx`:44 - `IGESSelect_SelectVisibleStatus::Sort()`
+    /// **Source:** `IGESSelect_SelectVisibleStatus.hxx`:40 - `IGESSelect_SelectVisibleStatus::Sort()`
     /// Returns True if <ent> is an IGES Entity with Blank Status = 0
     pub fn sort(
         &self,
         rank: i32,
-        ent: &crate::ffi_types::HandleStandardTransient,
-        model: &crate::ffi_types::HandleInterfaceInterfaceModel,
+        ent: &crate::ffi_types::Handle_Standard_Transient,
+        model: &crate::ffi_types::Handle_Interface_InterfaceModel,
     ) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_SelectVisibleStatus_sort(
@@ -15580,7 +15579,7 @@ impl SelectVisibleStatus {
         })
     }
 
-    /// **Source:** `IGESSelect_SelectVisibleStatus.hxx`:49 - `IGESSelect_SelectVisibleStatus::ExtractLabel()`
+    /// **Source:** `IGESSelect_SelectVisibleStatus.hxx`:45 - `IGESSelect_SelectVisibleStatus::ExtractLabel()`
     /// Returns the Selection criterium : "IGES Entity, Status Visible"
     pub fn extract_label(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe {
@@ -15592,8 +15591,8 @@ impl SelectVisibleStatus {
         }
     }
 
-    /// **Source:** `IGESSelect_SelectVisibleStatus.hxx`:51 - `IGESSelect_SelectVisibleStatus::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `IGESSelect_SelectVisibleStatus.hxx`:47 - `IGESSelect_SelectVisibleStatus::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKDEIGES::IGESSelect_SelectVisibleStatus_dynamic_type(
@@ -15603,7 +15602,7 @@ impl SelectVisibleStatus {
         }
     }
 
-    /// **Source:** `IGESSelect_SelectVisibleStatus.hxx`:51 - `IGESSelect_SelectVisibleStatus::get_type_name()`
+    /// **Source:** `IGESSelect_SelectVisibleStatus.hxx`:47 - `IGESSelect_SelectVisibleStatus::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -15614,8 +15613,8 @@ impl SelectVisibleStatus {
         .into_owned()
     }
 
-    /// **Source:** `IGESSelect_SelectVisibleStatus.hxx`:51 - `IGESSelect_SelectVisibleStatus::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    /// **Source:** `IGESSelect_SelectVisibleStatus.hxx`:47 - `IGESSelect_SelectVisibleStatus::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKDEIGES::IGESSelect_SelectVisibleStatus_get_type_descriptor(),
@@ -15694,7 +15693,7 @@ impl SelectVisibleStatus {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESSelectSelectVisibleStatus> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_IGESSelect_SelectVisibleStatus> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDEIGES::IGESSelect_SelectVisibleStatus_to_handle(
@@ -15704,7 +15703,7 @@ impl SelectVisibleStatus {
         }
     }
 
-    /// Inherited: **Source:** `IFSelect_SelectExtract.hxx`:46 - `IFSelect_SelectExtract::IsDirect()`
+    /// Inherited: **Source:** `IFSelect_SelectExtract.hxx`:43 - `IFSelect_SelectExtract::IsDirect()`
     pub fn is_direct(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_SelectVisibleStatus_inherited_IsDirect(
@@ -15713,7 +15712,7 @@ impl SelectVisibleStatus {
         })
     }
 
-    /// Inherited: **Source:** `IFSelect_SelectExtract.hxx`:50 - `IFSelect_SelectExtract::SetDirect()`
+    /// Inherited: **Source:** `IFSelect_SelectExtract.hxx`:47 - `IFSelect_SelectExtract::SetDirect()`
     pub fn set_direct(&mut self, direct: bool) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_SelectVisibleStatus_inherited_SetDirect(
@@ -15723,7 +15722,7 @@ impl SelectVisibleStatus {
         })
     }
 
-    /// Inherited: **Source:** `IFSelect_SelectExtract.hxx`:55 - `IFSelect_SelectExtract::RootResult()`
+    /// Inherited: **Source:** `IFSelect_SelectExtract.hxx`:52 - `IFSelect_SelectExtract::RootResult()`
     pub fn root_result(
         &self,
         G: &crate::interface::Graph,
@@ -15738,11 +15737,11 @@ impl SelectVisibleStatus {
         }
     }
 
-    /// Inherited: **Source:** `IFSelect_SelectExtract.hxx`:75 - `IFSelect_SelectExtract::SortInGraph()`
+    /// Inherited: **Source:** `IFSelect_SelectExtract.hxx`:70 - `IFSelect_SelectExtract::SortInGraph()`
     pub fn sort_in_graph(
         &self,
         rank: i32,
-        ent: &crate::ffi_types::HandleStandardTransient,
+        ent: &crate::ffi_types::Handle_Standard_Transient,
         G: &crate::interface::Graph,
     ) -> bool {
         crate::check_result(unsafe {
@@ -15755,7 +15754,7 @@ impl SelectVisibleStatus {
         })
     }
 
-    /// Inherited: **Source:** `IFSelect_SelectExtract.hxx`:81 - `IFSelect_SelectExtract::Label()`
+    /// Inherited: **Source:** `IFSelect_SelectExtract.hxx`:76 - `IFSelect_SelectExtract::Label()`
     pub fn label(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -15766,8 +15765,8 @@ impl SelectVisibleStatus {
         }
     }
 
-    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:49 - `IFSelect_SelectDeduct::SetInput()`
-    pub fn set_input(&mut self, sel: &crate::ffi_types::HandleIFSelectSelection) {
+    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:46 - `IFSelect_SelectDeduct::SetInput()`
+    pub fn set_input(&mut self, sel: &crate::ffi_types::Handle_IFSelect_Selection) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_SelectVisibleStatus_inherited_SetInput(
                 self as *mut Self,
@@ -15776,8 +15775,8 @@ impl SelectVisibleStatus {
         })
     }
 
-    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:52 - `IFSelect_SelectDeduct::Input()`
-    pub fn input(&self) -> crate::OwnedPtr<crate::ffi_types::HandleIFSelectSelection> {
+    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:49 - `IFSelect_SelectDeduct::Input()`
+    pub fn input(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_IFSelect_Selection> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDEIGES::IGESSelect_SelectVisibleStatus_inherited_Input(
@@ -15787,7 +15786,7 @@ impl SelectVisibleStatus {
         }
     }
 
-    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:55 - `IFSelect_SelectDeduct::HasInput()`
+    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:52 - `IFSelect_SelectDeduct::HasInput()`
     pub fn has_input(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_SelectVisibleStatus_inherited_HasInput(
@@ -15796,7 +15795,7 @@ impl SelectVisibleStatus {
         })
     }
 
-    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:59 - `IFSelect_SelectDeduct::HasAlternate()`
+    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:56 - `IFSelect_SelectDeduct::HasAlternate()`
     pub fn has_alternate(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_SelectVisibleStatus_inherited_HasAlternate(
@@ -15805,8 +15804,8 @@ impl SelectVisibleStatus {
         })
     }
 
-    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:67 - `IFSelect_SelectDeduct::Alternate()`
-    pub fn alternate(&mut self) -> &mut crate::ffi_types::HandleIFSelectSelectPointed {
+    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:64 - `IFSelect_SelectDeduct::Alternate()`
+    pub fn alternate(&mut self) -> &mut crate::ffi_types::Handle_IFSelect_SelectPointed {
         unsafe {
             &mut *(crate::check_result(
                 crate::ffi_extern_TKDEIGES::IGESSelect_SelectVisibleStatus_inherited_Alternate(
@@ -15816,7 +15815,7 @@ impl SelectVisibleStatus {
         }
     }
 
-    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:74 - `IFSelect_SelectDeduct::InputResult()`
+    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:71 - `IFSelect_SelectDeduct::InputResult()`
     pub fn input_result(
         &self,
         G: &crate::interface::Graph,
@@ -15831,7 +15830,7 @@ impl SelectVisibleStatus {
         }
     }
 
-    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:78 - `IFSelect_SelectDeduct::FillIterator()`
+    /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:75 - `IFSelect_SelectDeduct::FillIterator()`
     pub fn fill_iterator(&self, iter: &mut crate::if_select::SelectionIterator) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_SelectVisibleStatus_inherited_FillIterator(
@@ -15841,7 +15840,7 @@ impl SelectVisibleStatus {
         })
     }
 
-    /// Inherited: **Source:** `IFSelect_Selection.hxx`:55 - `IFSelect_Selection::UniqueResult()`
+    /// Inherited: **Source:** `IFSelect_Selection.hxx`:52 - `IFSelect_Selection::UniqueResult()`
     pub fn unique_result(
         &self,
         G: &crate::interface::Graph,
@@ -15856,7 +15855,7 @@ impl SelectVisibleStatus {
         }
     }
 
-    /// Inherited: **Source:** `IFSelect_Selection.hxx`:59 - `IFSelect_Selection::CompleteResult()`
+    /// Inherited: **Source:** `IFSelect_Selection.hxx`:56 - `IFSelect_Selection::CompleteResult()`
     pub fn complete_result(
         &self,
         G: &crate::interface::Graph,
@@ -15871,8 +15870,8 @@ impl SelectVisibleStatus {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_SelectVisibleStatus_inherited_IsInstance(
                 self as *const Self,
@@ -15881,8 +15880,8 @@ impl SelectVisibleStatus {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_SelectVisibleStatus_inherited_IsKind(
                 self as *const Self,
@@ -15891,7 +15890,7 @@ impl SelectVisibleStatus {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -15907,7 +15906,7 @@ impl SelectVisibleStatus {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_SelectVisibleStatus_inherited_GetRefCount(
@@ -15916,7 +15915,7 @@ impl SelectVisibleStatus {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_SelectVisibleStatus_inherited_IncrementRefCounter(
@@ -15925,7 +15924,7 @@ impl SelectVisibleStatus {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_SelectVisibleStatus_inherited_DecrementRefCounter(
@@ -15934,7 +15933,7 @@ impl SelectVisibleStatus {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_SelectVisibleStatus_inherited_Delete(
@@ -15944,31 +15943,31 @@ impl SelectVisibleStatus {
     }
 }
 
-pub use crate::ffi_types::HandleIGESSelectSelectVisibleStatus;
+pub use crate::ffi_types::Handle_IGESSelect_SelectVisibleStatus;
 
-unsafe impl crate::CppDeletable for HandleIGESSelectSelectVisibleStatus {
+unsafe impl crate::CppDeletable for Handle_IGESSelect_SelectVisibleStatus {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKDEIGES::HandleIGESSelectSelectVisibleStatus_destructor(ptr);
+            crate::ffi_extern_TKDEIGES::Handle_IGESSelect_SelectVisibleStatus_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleIGESSelectSelectVisibleStatus {
+unsafe impl crate::CppCopyable for Handle_IGESSelect_SelectVisibleStatus {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
         unsafe {
             crate::check_result(
-                crate::ffi_extern_TKDEIGES::HandleIGESSelectSelectVisibleStatus_clone(ptr),
+                crate::ffi_extern_TKDEIGES::Handle_IGESSelect_SelectVisibleStatus_clone(ptr),
             )
         }
     }
 }
 
-impl HandleIGESSelectSelectVisibleStatus {
+impl Handle_IGESSelect_SelectVisibleStatus {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
         unsafe {
-            crate::ffi_extern_TKDEIGES::HandleIGESSelectSelectVisibleStatus_is_null(
+            crate::ffi_extern_TKDEIGES::Handle_IGESSelect_SelectVisibleStatus_is_null(
                 self as *const Self,
             )
         }
@@ -15978,7 +15977,7 @@ impl HandleIGESSelectSelectVisibleStatus {
     pub fn get(&self) -> &crate::ffi_types::IGESSelect_SelectVisibleStatus {
         unsafe {
             &*crate::check_result(
-                crate::ffi_extern_TKDEIGES::HandleIGESSelectSelectVisibleStatus_get(
+                crate::ffi_extern_TKDEIGES::Handle_IGESSelect_SelectVisibleStatus_get(
                     self as *const Self,
                 ),
             )
@@ -15989,7 +15988,7 @@ impl HandleIGESSelectSelectVisibleStatus {
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::IGESSelect_SelectVisibleStatus {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi_extern_TKDEIGES::HandleIGESSelectSelectVisibleStatus_get_mut(
+                crate::ffi_extern_TKDEIGES::Handle_IGESSelect_SelectVisibleStatus_get_mut(
                     self as *mut Self,
                 ),
             )
@@ -15999,36 +15998,36 @@ impl HandleIGESSelectSelectVisibleStatus {
     /// Upcast Handle<IGESSelect_SelectVisibleStatus> to Handle<IFSelect_SelectExtract>
     pub fn to_handle_select_extract(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleIFSelectSelectExtract> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_IFSelect_SelectExtract> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectSelectVisibleStatus_to_HandleIFSelectSelectExtract(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::Handle_IGESSelect_SelectVisibleStatus_to_Handle_IFSelect_SelectExtract(self as *const Self)))
         }
     }
 
     /// Upcast Handle<IGESSelect_SelectVisibleStatus> to Handle<IFSelect_SelectDeduct>
     pub fn to_handle_select_deduct(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleIFSelectSelectDeduct> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_IFSelect_SelectDeduct> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectSelectVisibleStatus_to_HandleIFSelectSelectDeduct(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::Handle_IGESSelect_SelectVisibleStatus_to_Handle_IFSelect_SelectDeduct(self as *const Self)))
         }
     }
 
     /// Upcast Handle<IGESSelect_SelectVisibleStatus> to Handle<IFSelect_Selection>
     pub fn to_handle_selection(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleIFSelectSelection> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_IFSelect_Selection> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectSelectVisibleStatus_to_HandleIFSelectSelection(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::Handle_IGESSelect_SelectVisibleStatus_to_Handle_IFSelect_Selection(self as *const Self)))
         }
     }
 
     /// Upcast Handle<IGESSelect_SelectVisibleStatus> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectSelectVisibleStatus_to_HandleStandardTransient(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::Handle_IGESSelect_SelectVisibleStatus_to_Handle_Standard_Transient(self as *const Self)))
         }
     }
 }
@@ -16037,7 +16036,7 @@ impl HandleIGESSelectSelectVisibleStatus {
 // From IGESSelect_SetGlobalParameter.hxx
 // ========================
 
-/// **Source:** `IGESSelect_SetGlobalParameter.hxx`:44 - `IGESSelect_SetGlobalParameter`
+/// **Source:** `IGESSelect_SetGlobalParameter.hxx`:41 - `IGESSelect_SetGlobalParameter`
 /// Sets a Global (Header) Parameter to a new value, directly given
 /// Controls the form of the parameter (Integer, Real, String
 /// with such or such form), but not the consistence of the new
@@ -16059,7 +16058,7 @@ unsafe impl crate::CppDeletable for SetGlobalParameter {
 }
 
 impl SetGlobalParameter {
-    /// **Source:** `IGESSelect_SetGlobalParameter.hxx`:50 - `IGESSelect_SetGlobalParameter::IGESSelect_SetGlobalParameter()`
+    /// **Source:** `IGESSelect_SetGlobalParameter.hxx`:47 - `IGESSelect_SetGlobalParameter::IGESSelect_SetGlobalParameter()`
     /// Creates an SetGlobalParameter, to be applied on Global
     /// Parameter <numpar>
     pub fn new_int(numpar: i32) -> crate::OwnedPtr<Self> {
@@ -16070,7 +16069,7 @@ impl SetGlobalParameter {
         }
     }
 
-    /// **Source:** `IGESSelect_SetGlobalParameter.hxx`:54 - `IGESSelect_SetGlobalParameter::GlobalNumber()`
+    /// **Source:** `IGESSelect_SetGlobalParameter.hxx`:51 - `IGESSelect_SetGlobalParameter::GlobalNumber()`
     /// Returns the global parameter number to which this modifiers
     /// applies
     pub fn global_number(&self) -> i32 {
@@ -16081,9 +16080,9 @@ impl SetGlobalParameter {
         })
     }
 
-    /// **Source:** `IGESSelect_SetGlobalParameter.hxx`:57 - `IGESSelect_SetGlobalParameter::SetValue()`
+    /// **Source:** `IGESSelect_SetGlobalParameter.hxx`:54 - `IGESSelect_SetGlobalParameter::SetValue()`
     /// Sets a Text Parameter for the new value
-    pub fn set_value(&mut self, text: &crate::ffi_types::HandleTCollectionHAsciiString) {
+    pub fn set_value(&mut self, text: &crate::ffi_types::Handle_TCollection_HAsciiString) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_SetGlobalParameter_set_value(
                 self as *mut Self,
@@ -16092,9 +16091,9 @@ impl SetGlobalParameter {
         })
     }
 
-    /// **Source:** `IGESSelect_SetGlobalParameter.hxx`:60 - `IGESSelect_SetGlobalParameter::Value()`
+    /// **Source:** `IGESSelect_SetGlobalParameter.hxx`:57 - `IGESSelect_SetGlobalParameter::Value()`
     /// Returns the value to set to the global parameter (Text Param)
-    pub fn value(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTCollectionHAsciiString> {
+    pub fn value(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_TCollection_HAsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDEIGES::IGESSelect_SetGlobalParameter_value(
@@ -16104,14 +16103,14 @@ impl SetGlobalParameter {
         }
     }
 
-    /// **Source:** `IGESSelect_SetGlobalParameter.hxx`:65 - `IGESSelect_SetGlobalParameter::Performing()`
+    /// **Source:** `IGESSelect_SetGlobalParameter.hxx`:62 - `IGESSelect_SetGlobalParameter::Performing()`
     /// Specific action : only <target> is used : the form of the new
     /// value is checked regarding the parameter number (given at
     /// creation time).
     pub fn performing(
         &self,
         ctx: &mut crate::if_select::ContextModif,
-        target: &crate::ffi_types::HandleIGESDataIGESModel,
+        target: &crate::ffi_types::Handle_IGESData_IGESModel,
         TC: &mut crate::interface::CopyTool,
     ) {
         crate::check_void_result(unsafe {
@@ -16124,7 +16123,7 @@ impl SetGlobalParameter {
         })
     }
 
-    /// **Source:** `IGESSelect_SetGlobalParameter.hxx`:71 - `IGESSelect_SetGlobalParameter::Label()`
+    /// **Source:** `IGESSelect_SetGlobalParameter.hxx`:68 - `IGESSelect_SetGlobalParameter::Label()`
     /// Returns a text which is
     /// "Sets Global Parameter <numpar> to <new value>"
     pub fn label(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
@@ -16137,8 +16136,8 @@ impl SetGlobalParameter {
         }
     }
 
-    /// **Source:** `IGESSelect_SetGlobalParameter.hxx`:73 - `IGESSelect_SetGlobalParameter::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `IGESSelect_SetGlobalParameter.hxx`:70 - `IGESSelect_SetGlobalParameter::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKDEIGES::IGESSelect_SetGlobalParameter_dynamic_type(
@@ -16148,7 +16147,7 @@ impl SetGlobalParameter {
         }
     }
 
-    /// **Source:** `IGESSelect_SetGlobalParameter.hxx`:73 - `IGESSelect_SetGlobalParameter::get_type_name()`
+    /// **Source:** `IGESSelect_SetGlobalParameter.hxx`:70 - `IGESSelect_SetGlobalParameter::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -16159,8 +16158,8 @@ impl SetGlobalParameter {
         .into_owned()
     }
 
-    /// **Source:** `IGESSelect_SetGlobalParameter.hxx`:73 - `IGESSelect_SetGlobalParameter::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    /// **Source:** `IGESSelect_SetGlobalParameter.hxx`:70 - `IGESSelect_SetGlobalParameter::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKDEIGES::IGESSelect_SetGlobalParameter_get_type_descriptor(),
@@ -16243,7 +16242,7 @@ impl SetGlobalParameter {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESSelectSetGlobalParameter> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_IGESSelect_SetGlobalParameter> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDEIGES::IGESSelect_SetGlobalParameter_to_handle(obj.into_raw()),
@@ -16251,12 +16250,12 @@ impl SetGlobalParameter {
         }
     }
 
-    /// Inherited: **Source:** `IGESSelect_ModelModifier.hxx`:41 - `IGESSelect_ModelModifier::Perform()`
+    /// Inherited: **Source:** `IGESSelect_ModelModifier.hxx`:38 - `IGESSelect_ModelModifier::Perform()`
     pub fn perform(
         &self,
         ctx: &mut crate::if_select::ContextModif,
-        target: &crate::ffi_types::HandleInterfaceInterfaceModel,
-        protocol: &crate::ffi_types::HandleInterfaceProtocol,
+        target: &crate::ffi_types::Handle_Interface_InterfaceModel,
+        protocol: &crate::ffi_types::Handle_Interface_Protocol,
         TC: &mut crate::interface::CopyTool,
     ) {
         crate::check_void_result(unsafe {
@@ -16270,12 +16269,12 @@ impl SetGlobalParameter {
         })
     }
 
-    /// Inherited: **Source:** `IGESSelect_ModelModifier.hxx`:50 - `IGESSelect_ModelModifier::PerformProtocol()`
+    /// Inherited: **Source:** `IGESSelect_ModelModifier.hxx`:47 - `IGESSelect_ModelModifier::PerformProtocol()`
     pub fn perform_protocol(
         &self,
         ctx: &mut crate::if_select::ContextModif,
-        target: &crate::ffi_types::HandleIGESDataIGESModel,
-        proto: &crate::ffi_types::HandleIGESDataProtocol,
+        target: &crate::ffi_types::Handle_IGESData_IGESModel,
+        proto: &crate::ffi_types::Handle_IGESData_Protocol,
         TC: &mut crate::interface::CopyTool,
     ) {
         crate::check_void_result(unsafe {
@@ -16289,7 +16288,7 @@ impl SetGlobalParameter {
         })
     }
 
-    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:68 - `IFSelect_GeneralModifier::MayChangeGraph()`
+    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:65 - `IFSelect_GeneralModifier::MayChangeGraph()`
     pub fn may_change_graph(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_SetGlobalParameter_inherited_MayChangeGraph(
@@ -16298,8 +16297,8 @@ impl SetGlobalParameter {
         })
     }
 
-    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:72 - `IFSelect_GeneralModifier::SetDispatch()`
-    pub fn set_dispatch(&mut self, disp: &crate::ffi_types::HandleIFSelectDispatch) {
+    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:69 - `IFSelect_GeneralModifier::SetDispatch()`
+    pub fn set_dispatch(&mut self, disp: &crate::ffi_types::Handle_IFSelect_Dispatch) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_SetGlobalParameter_inherited_SetDispatch(
                 self as *mut Self,
@@ -16308,8 +16307,8 @@ impl SetGlobalParameter {
         })
     }
 
-    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:75 - `IFSelect_GeneralModifier::Dispatch()`
-    pub fn dispatch(&self) -> crate::OwnedPtr<crate::ffi_types::HandleIFSelectDispatch> {
+    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:72 - `IFSelect_GeneralModifier::Dispatch()`
+    pub fn dispatch(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_IFSelect_Dispatch> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDEIGES::IGESSelect_SetGlobalParameter_inherited_Dispatch(
@@ -16319,8 +16318,8 @@ impl SetGlobalParameter {
         }
     }
 
-    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:80 - `IFSelect_GeneralModifier::Applies()`
-    pub fn applies(&self, disp: &crate::ffi_types::HandleIFSelectDispatch) -> bool {
+    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:77 - `IFSelect_GeneralModifier::Applies()`
+    pub fn applies(&self, disp: &crate::ffi_types::Handle_IFSelect_Dispatch) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_SetGlobalParameter_inherited_Applies(
                 self as *const Self,
@@ -16329,8 +16328,8 @@ impl SetGlobalParameter {
         })
     }
 
-    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:84 - `IFSelect_GeneralModifier::SetSelection()`
-    pub fn set_selection(&mut self, sel: &crate::ffi_types::HandleIFSelectSelection) {
+    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:81 - `IFSelect_GeneralModifier::SetSelection()`
+    pub fn set_selection(&mut self, sel: &crate::ffi_types::Handle_IFSelect_Selection) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_SetGlobalParameter_inherited_SetSelection(
                 self as *mut Self,
@@ -16339,7 +16338,7 @@ impl SetGlobalParameter {
         })
     }
 
-    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:87 - `IFSelect_GeneralModifier::ResetSelection()`
+    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:84 - `IFSelect_GeneralModifier::ResetSelection()`
     pub fn reset_selection(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_SetGlobalParameter_inherited_ResetSelection(
@@ -16348,7 +16347,7 @@ impl SetGlobalParameter {
         })
     }
 
-    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:90 - `IFSelect_GeneralModifier::HasSelection()`
+    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:87 - `IFSelect_GeneralModifier::HasSelection()`
     pub fn has_selection(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_SetGlobalParameter_inherited_HasSelection(
@@ -16357,8 +16356,8 @@ impl SetGlobalParameter {
         })
     }
 
-    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:93 - `IFSelect_GeneralModifier::Selection()`
-    pub fn selection(&self) -> crate::OwnedPtr<crate::ffi_types::HandleIFSelectSelection> {
+    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:90 - `IFSelect_GeneralModifier::Selection()`
+    pub fn selection(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_IFSelect_Selection> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDEIGES::IGESSelect_SetGlobalParameter_inherited_Selection(
@@ -16368,8 +16367,8 @@ impl SetGlobalParameter {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_SetGlobalParameter_inherited_IsInstance(
                 self as *const Self,
@@ -16378,8 +16377,8 @@ impl SetGlobalParameter {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_SetGlobalParameter_inherited_IsKind(
                 self as *const Self,
@@ -16388,7 +16387,7 @@ impl SetGlobalParameter {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -16404,7 +16403,7 @@ impl SetGlobalParameter {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_SetGlobalParameter_inherited_GetRefCount(
@@ -16413,7 +16412,7 @@ impl SetGlobalParameter {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_SetGlobalParameter_inherited_IncrementRefCounter(
@@ -16422,7 +16421,7 @@ impl SetGlobalParameter {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_SetGlobalParameter_inherited_DecrementRefCounter(
@@ -16431,7 +16430,7 @@ impl SetGlobalParameter {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_SetGlobalParameter_inherited_Delete(
@@ -16441,31 +16440,31 @@ impl SetGlobalParameter {
     }
 }
 
-pub use crate::ffi_types::HandleIGESSelectSetGlobalParameter;
+pub use crate::ffi_types::Handle_IGESSelect_SetGlobalParameter;
 
-unsafe impl crate::CppDeletable for HandleIGESSelectSetGlobalParameter {
+unsafe impl crate::CppDeletable for Handle_IGESSelect_SetGlobalParameter {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKDEIGES::HandleIGESSelectSetGlobalParameter_destructor(ptr);
+            crate::ffi_extern_TKDEIGES::Handle_IGESSelect_SetGlobalParameter_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleIGESSelectSetGlobalParameter {
+unsafe impl crate::CppCopyable for Handle_IGESSelect_SetGlobalParameter {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
         unsafe {
             crate::check_result(
-                crate::ffi_extern_TKDEIGES::HandleIGESSelectSetGlobalParameter_clone(ptr),
+                crate::ffi_extern_TKDEIGES::Handle_IGESSelect_SetGlobalParameter_clone(ptr),
             )
         }
     }
 }
 
-impl HandleIGESSelectSetGlobalParameter {
+impl Handle_IGESSelect_SetGlobalParameter {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
         unsafe {
-            crate::ffi_extern_TKDEIGES::HandleIGESSelectSetGlobalParameter_is_null(
+            crate::ffi_extern_TKDEIGES::Handle_IGESSelect_SetGlobalParameter_is_null(
                 self as *const Self,
             )
         }
@@ -16475,7 +16474,7 @@ impl HandleIGESSelectSetGlobalParameter {
     pub fn get(&self) -> &crate::ffi_types::IGESSelect_SetGlobalParameter {
         unsafe {
             &*crate::check_result(
-                crate::ffi_extern_TKDEIGES::HandleIGESSelectSetGlobalParameter_get(
+                crate::ffi_extern_TKDEIGES::Handle_IGESSelect_SetGlobalParameter_get(
                     self as *const Self,
                 ),
             )
@@ -16486,7 +16485,7 @@ impl HandleIGESSelectSetGlobalParameter {
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::IGESSelect_SetGlobalParameter {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi_extern_TKDEIGES::HandleIGESSelectSetGlobalParameter_get_mut(
+                crate::ffi_extern_TKDEIGES::Handle_IGESSelect_SetGlobalParameter_get_mut(
                     self as *mut Self,
                 ),
             )
@@ -16496,34 +16495,36 @@ impl HandleIGESSelectSetGlobalParameter {
     /// Upcast Handle<IGESSelect_SetGlobalParameter> to Handle<IGESSelect_ModelModifier>
     pub fn to_handle_model_modifier(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESSelectModelModifier> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_IGESSelect_ModelModifier> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectSetGlobalParameter_to_HandleIGESSelectModelModifier(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::Handle_IGESSelect_SetGlobalParameter_to_Handle_IGESSelect_ModelModifier(self as *const Self)))
         }
     }
 
     /// Upcast Handle<IGESSelect_SetGlobalParameter> to Handle<IFSelect_Modifier>
-    pub fn to_handle_modifier(&self) -> crate::OwnedPtr<crate::ffi_types::HandleIFSelectModifier> {
+    pub fn to_handle_modifier(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_IFSelect_Modifier> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectSetGlobalParameter_to_HandleIFSelectModifier(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::Handle_IGESSelect_SetGlobalParameter_to_Handle_IFSelect_Modifier(self as *const Self)))
         }
     }
 
     /// Upcast Handle<IGESSelect_SetGlobalParameter> to Handle<IFSelect_GeneralModifier>
     pub fn to_handle_general_modifier(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleIFSelectGeneralModifier> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_IFSelect_GeneralModifier> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectSetGlobalParameter_to_HandleIFSelectGeneralModifier(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::Handle_IGESSelect_SetGlobalParameter_to_Handle_IFSelect_GeneralModifier(self as *const Self)))
         }
     }
 
     /// Upcast Handle<IGESSelect_SetGlobalParameter> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectSetGlobalParameter_to_HandleStandardTransient(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::Handle_IGESSelect_SetGlobalParameter_to_Handle_Standard_Transient(self as *const Self)))
         }
     }
 }
@@ -16532,7 +16533,7 @@ impl HandleIGESSelectSetGlobalParameter {
 // From IGESSelect_SetLabel.hxx
 // ========================
 
-/// **Source:** `IGESSelect_SetLabel.hxx`:39 - `IGESSelect_SetLabel`
+/// **Source:** `IGESSelect_SetLabel.hxx`:36 - `IGESSelect_SetLabel`
 /// Sets/Clears Short Label of Entities, those designated by the
 /// Selection. No Selection means all the file
 ///
@@ -16550,7 +16551,7 @@ unsafe impl crate::CppDeletable for SetLabel {
 }
 
 impl SetLabel {
-    /// **Source:** `IGESSelect_SetLabel.hxx`:45 - `IGESSelect_SetLabel::IGESSelect_SetLabel()`
+    /// **Source:** `IGESSelect_SetLabel.hxx`:42 - `IGESSelect_SetLabel::IGESSelect_SetLabel()`
     /// Creates a SetLabel for IGESEntity
     /// Mode : see Purpose of the class
     pub fn new_int_bool(mode: i32, enforce: bool) -> crate::OwnedPtr<Self> {
@@ -16561,12 +16562,12 @@ impl SetLabel {
         }
     }
 
-    /// **Source:** `IGESSelect_SetLabel.hxx`:48 - `IGESSelect_SetLabel::Performing()`
+    /// **Source:** `IGESSelect_SetLabel.hxx`:45 - `IGESSelect_SetLabel::Performing()`
     /// Specific action : Sets or Clears the Label
     pub fn performing(
         &self,
         ctx: &mut crate::if_select::ContextModif,
-        target: &crate::ffi_types::HandleIGESDataIGESModel,
+        target: &crate::ffi_types::Handle_IGESData_IGESModel,
         TC: &mut crate::interface::CopyTool,
     ) {
         crate::check_void_result(unsafe {
@@ -16579,9 +16580,9 @@ impl SetLabel {
         })
     }
 
-    /// **Source:** `IGESSelect_SetLabel.hxx`:55 - `IGESSelect_SetLabel::Label()`
+    /// **Source:** `IGESSelect_SetLabel.hxx`:52 - `IGESSelect_SetLabel::Label()`
     /// Returns a text which is
-    /// "Clear Short Label"  or  "Set Label to DE"
+    /// "Clear Short Label" or "Set Label to DE"
     /// With possible additional information " (enforced)"
     pub fn label(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe {
@@ -16591,8 +16592,8 @@ impl SetLabel {
         }
     }
 
-    /// **Source:** `IGESSelect_SetLabel.hxx`:57 - `IGESSelect_SetLabel::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `IGESSelect_SetLabel.hxx`:54 - `IGESSelect_SetLabel::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKDEIGES::IGESSelect_SetLabel_dynamic_type(
                 self as *const Self,
@@ -16600,7 +16601,7 @@ impl SetLabel {
         }
     }
 
-    /// **Source:** `IGESSelect_SetLabel.hxx`:57 - `IGESSelect_SetLabel::get_type_name()`
+    /// **Source:** `IGESSelect_SetLabel.hxx`:54 - `IGESSelect_SetLabel::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -16611,8 +16612,8 @@ impl SetLabel {
         .into_owned()
     }
 
-    /// **Source:** `IGESSelect_SetLabel.hxx`:57 - `IGESSelect_SetLabel::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    /// **Source:** `IGESSelect_SetLabel.hxx`:54 - `IGESSelect_SetLabel::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKDEIGES::IGESSelect_SetLabel_get_type_descriptor(),
@@ -16711,7 +16712,7 @@ impl SetLabel {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESSelectSetLabel> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_IGESSelect_SetLabel> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDEIGES::IGESSelect_SetLabel_to_handle(obj.into_raw()),
@@ -16719,12 +16720,12 @@ impl SetLabel {
         }
     }
 
-    /// Inherited: **Source:** `IGESSelect_ModelModifier.hxx`:41 - `IGESSelect_ModelModifier::Perform()`
+    /// Inherited: **Source:** `IGESSelect_ModelModifier.hxx`:38 - `IGESSelect_ModelModifier::Perform()`
     pub fn perform(
         &self,
         ctx: &mut crate::if_select::ContextModif,
-        target: &crate::ffi_types::HandleInterfaceInterfaceModel,
-        protocol: &crate::ffi_types::HandleInterfaceProtocol,
+        target: &crate::ffi_types::Handle_Interface_InterfaceModel,
+        protocol: &crate::ffi_types::Handle_Interface_Protocol,
         TC: &mut crate::interface::CopyTool,
     ) {
         crate::check_void_result(unsafe {
@@ -16738,12 +16739,12 @@ impl SetLabel {
         })
     }
 
-    /// Inherited: **Source:** `IGESSelect_ModelModifier.hxx`:50 - `IGESSelect_ModelModifier::PerformProtocol()`
+    /// Inherited: **Source:** `IGESSelect_ModelModifier.hxx`:47 - `IGESSelect_ModelModifier::PerformProtocol()`
     pub fn perform_protocol(
         &self,
         ctx: &mut crate::if_select::ContextModif,
-        target: &crate::ffi_types::HandleIGESDataIGESModel,
-        proto: &crate::ffi_types::HandleIGESDataProtocol,
+        target: &crate::ffi_types::Handle_IGESData_IGESModel,
+        proto: &crate::ffi_types::Handle_IGESData_Protocol,
         TC: &mut crate::interface::CopyTool,
     ) {
         crate::check_void_result(unsafe {
@@ -16757,7 +16758,7 @@ impl SetLabel {
         })
     }
 
-    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:68 - `IFSelect_GeneralModifier::MayChangeGraph()`
+    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:65 - `IFSelect_GeneralModifier::MayChangeGraph()`
     pub fn may_change_graph(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_SetLabel_inherited_MayChangeGraph(
@@ -16766,8 +16767,8 @@ impl SetLabel {
         })
     }
 
-    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:72 - `IFSelect_GeneralModifier::SetDispatch()`
-    pub fn set_dispatch(&mut self, disp: &crate::ffi_types::HandleIFSelectDispatch) {
+    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:69 - `IFSelect_GeneralModifier::SetDispatch()`
+    pub fn set_dispatch(&mut self, disp: &crate::ffi_types::Handle_IFSelect_Dispatch) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_SetLabel_inherited_SetDispatch(
                 self as *mut Self,
@@ -16776,8 +16777,8 @@ impl SetLabel {
         })
     }
 
-    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:75 - `IFSelect_GeneralModifier::Dispatch()`
-    pub fn dispatch(&self) -> crate::OwnedPtr<crate::ffi_types::HandleIFSelectDispatch> {
+    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:72 - `IFSelect_GeneralModifier::Dispatch()`
+    pub fn dispatch(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_IFSelect_Dispatch> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDEIGES::IGESSelect_SetLabel_inherited_Dispatch(
@@ -16787,8 +16788,8 @@ impl SetLabel {
         }
     }
 
-    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:80 - `IFSelect_GeneralModifier::Applies()`
-    pub fn applies(&self, disp: &crate::ffi_types::HandleIFSelectDispatch) -> bool {
+    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:77 - `IFSelect_GeneralModifier::Applies()`
+    pub fn applies(&self, disp: &crate::ffi_types::Handle_IFSelect_Dispatch) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_SetLabel_inherited_Applies(
                 self as *const Self,
@@ -16797,8 +16798,8 @@ impl SetLabel {
         })
     }
 
-    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:84 - `IFSelect_GeneralModifier::SetSelection()`
-    pub fn set_selection(&mut self, sel: &crate::ffi_types::HandleIFSelectSelection) {
+    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:81 - `IFSelect_GeneralModifier::SetSelection()`
+    pub fn set_selection(&mut self, sel: &crate::ffi_types::Handle_IFSelect_Selection) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_SetLabel_inherited_SetSelection(
                 self as *mut Self,
@@ -16807,7 +16808,7 @@ impl SetLabel {
         })
     }
 
-    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:87 - `IFSelect_GeneralModifier::ResetSelection()`
+    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:84 - `IFSelect_GeneralModifier::ResetSelection()`
     pub fn reset_selection(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_SetLabel_inherited_ResetSelection(
@@ -16816,7 +16817,7 @@ impl SetLabel {
         })
     }
 
-    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:90 - `IFSelect_GeneralModifier::HasSelection()`
+    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:87 - `IFSelect_GeneralModifier::HasSelection()`
     pub fn has_selection(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_SetLabel_inherited_HasSelection(
@@ -16825,8 +16826,8 @@ impl SetLabel {
         })
     }
 
-    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:93 - `IFSelect_GeneralModifier::Selection()`
-    pub fn selection(&self) -> crate::OwnedPtr<crate::ffi_types::HandleIFSelectSelection> {
+    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:90 - `IFSelect_GeneralModifier::Selection()`
+    pub fn selection(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_IFSelect_Selection> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDEIGES::IGESSelect_SetLabel_inherited_Selection(
@@ -16836,8 +16837,8 @@ impl SetLabel {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_SetLabel_inherited_IsInstance(
                 self as *const Self,
@@ -16846,8 +16847,8 @@ impl SetLabel {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_SetLabel_inherited_IsKind(
                 self as *const Self,
@@ -16856,7 +16857,7 @@ impl SetLabel {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -16870,7 +16871,7 @@ impl SetLabel {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_SetLabel_inherited_GetRefCount(
@@ -16879,7 +16880,7 @@ impl SetLabel {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_SetLabel_inherited_IncrementRefCounter(
@@ -16888,7 +16889,7 @@ impl SetLabel {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_SetLabel_inherited_DecrementRefCounter(
@@ -16897,7 +16898,7 @@ impl SetLabel {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_SetLabel_inherited_Delete(self as *const Self)
@@ -16905,34 +16906,36 @@ impl SetLabel {
     }
 }
 
-pub use crate::ffi_types::HandleIGESSelectSetLabel;
+pub use crate::ffi_types::Handle_IGESSelect_SetLabel;
 
-unsafe impl crate::CppDeletable for HandleIGESSelectSetLabel {
+unsafe impl crate::CppDeletable for Handle_IGESSelect_SetLabel {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKDEIGES::HandleIGESSelectSetLabel_destructor(ptr);
+            crate::ffi_extern_TKDEIGES::Handle_IGESSelect_SetLabel_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleIGESSelectSetLabel {
+unsafe impl crate::CppCopyable for Handle_IGESSelect_SetLabel {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
         unsafe {
-            crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectSetLabel_clone(ptr))
+            crate::check_result(crate::ffi_extern_TKDEIGES::Handle_IGESSelect_SetLabel_clone(ptr))
         }
     }
 }
 
-impl HandleIGESSelectSetLabel {
+impl Handle_IGESSelect_SetLabel {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
-        unsafe { crate::ffi_extern_TKDEIGES::HandleIGESSelectSetLabel_is_null(self as *const Self) }
+        unsafe {
+            crate::ffi_extern_TKDEIGES::Handle_IGESSelect_SetLabel_is_null(self as *const Self)
+        }
     }
 
     /// Dereference this Handle to access the underlying IGESSelect_SetLabel
     pub fn get(&self) -> &crate::ffi_types::IGESSelect_SetLabel {
         unsafe {
-            &*crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectSetLabel_get(
+            &*crate::check_result(crate::ffi_extern_TKDEIGES::Handle_IGESSelect_SetLabel_get(
                 self as *const Self,
             ))
         }
@@ -16941,26 +16944,28 @@ impl HandleIGESSelectSetLabel {
     /// Dereference this Handle to mutably access the underlying IGESSelect_SetLabel
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::IGESSelect_SetLabel {
         unsafe {
-            &mut *crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectSetLabel_get_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKDEIGES::Handle_IGESSelect_SetLabel_get_mut(self as *mut Self),
+            )
         }
     }
 
     /// Upcast Handle<IGESSelect_SetLabel> to Handle<IGESSelect_ModelModifier>
     pub fn to_handle_model_modifier(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESSelectModelModifier> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_IGESSelect_ModelModifier> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectSetLabel_to_HandleIGESSelectModelModifier(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::Handle_IGESSelect_SetLabel_to_Handle_IGESSelect_ModelModifier(self as *const Self)))
         }
     }
 
     /// Upcast Handle<IGESSelect_SetLabel> to Handle<IFSelect_Modifier>
-    pub fn to_handle_modifier(&self) -> crate::OwnedPtr<crate::ffi_types::HandleIFSelectModifier> {
+    pub fn to_handle_modifier(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_IFSelect_Modifier> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKDEIGES::HandleIGESSelectSetLabel_to_HandleIFSelectModifier(
+                crate::ffi_extern_TKDEIGES::Handle_IGESSelect_SetLabel_to_Handle_IFSelect_Modifier(
                     self as *const Self,
                 ),
             ))
@@ -16970,19 +16975,19 @@ impl HandleIGESSelectSetLabel {
     /// Upcast Handle<IGESSelect_SetLabel> to Handle<IFSelect_GeneralModifier>
     pub fn to_handle_general_modifier(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleIFSelectGeneralModifier> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_IFSelect_GeneralModifier> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectSetLabel_to_HandleIFSelectGeneralModifier(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::Handle_IGESSelect_SetLabel_to_Handle_IFSelect_GeneralModifier(self as *const Self)))
         }
     }
 
     /// Upcast Handle<IGESSelect_SetLabel> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKDEIGES::HandleIGESSelectSetLabel_to_HandleStandardTransient(
+                crate::ffi_extern_TKDEIGES::Handle_IGESSelect_SetLabel_to_Handle_Standard_Transient(
                     self as *const Self,
                 ),
             ))
@@ -16994,7 +16999,7 @@ impl HandleIGESSelectSetLabel {
 // From IGESSelect_SetVersion5.hxx
 // ========================
 
-/// **Source:** `IGESSelect_SetVersion5.hxx`:37 - `IGESSelect_SetVersion5`
+/// **Source:** `IGESSelect_SetVersion5.hxx`:34 - `IGESSelect_SetVersion5`
 /// Sets IGES Version (coded in global parameter 23) to be at least
 /// IGES 5.1 . If it is older, it is set to IGES 5.1, and
 /// LastChangeDate (new Global n0 25) is added (current time)
@@ -17011,7 +17016,7 @@ unsafe impl crate::CppDeletable for SetVersion5 {
 }
 
 impl SetVersion5 {
-    /// **Source:** `IGESSelect_SetVersion5.hxx`:43 - `IGESSelect_SetVersion5::IGESSelect_SetVersion5()`
+    /// **Source:** `IGESSelect_SetVersion5.hxx`:40 - `IGESSelect_SetVersion5::IGESSelect_SetVersion5()`
     /// Creates an SetVersion5, which uses the system Date for Last
     /// Change Date
     pub fn new() -> crate::OwnedPtr<Self> {
@@ -17022,14 +17027,14 @@ impl SetVersion5 {
         }
     }
 
-    /// **Source:** `IGESSelect_SetVersion5.hxx`:48 - `IGESSelect_SetVersion5::Performing()`
+    /// **Source:** `IGESSelect_SetVersion5.hxx`:45 - `IGESSelect_SetVersion5::Performing()`
     /// Specific action : only <target> is used : IGES Version (coded)
     /// is upgraded to 5.1 if it is older, and it this case the new
     /// global parameter 25 (LastChangeDate) is set to current time
     pub fn performing(
         &self,
         ctx: &mut crate::if_select::ContextModif,
-        target: &crate::ffi_types::HandleIGESDataIGESModel,
+        target: &crate::ffi_types::Handle_IGESData_IGESModel,
         TC: &mut crate::interface::CopyTool,
     ) {
         crate::check_void_result(unsafe {
@@ -17042,7 +17047,7 @@ impl SetVersion5 {
         })
     }
 
-    /// **Source:** `IGESSelect_SetVersion5.hxx`:54 - `IGESSelect_SetVersion5::Label()`
+    /// **Source:** `IGESSelect_SetVersion5.hxx`:51 - `IGESSelect_SetVersion5::Label()`
     /// Returns a text which is
     /// "Update IGES Version to 5.1"
     pub fn label(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
@@ -17053,8 +17058,8 @@ impl SetVersion5 {
         }
     }
 
-    /// **Source:** `IGESSelect_SetVersion5.hxx`:56 - `IGESSelect_SetVersion5::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `IGESSelect_SetVersion5.hxx`:53 - `IGESSelect_SetVersion5::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKDEIGES::IGESSelect_SetVersion5_dynamic_type(
@@ -17064,7 +17069,7 @@ impl SetVersion5 {
         }
     }
 
-    /// **Source:** `IGESSelect_SetVersion5.hxx`:56 - `IGESSelect_SetVersion5::get_type_name()`
+    /// **Source:** `IGESSelect_SetVersion5.hxx`:53 - `IGESSelect_SetVersion5::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -17075,8 +17080,8 @@ impl SetVersion5 {
         .into_owned()
     }
 
-    /// **Source:** `IGESSelect_SetVersion5.hxx`:56 - `IGESSelect_SetVersion5::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    /// **Source:** `IGESSelect_SetVersion5.hxx`:53 - `IGESSelect_SetVersion5::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKDEIGES::IGESSelect_SetVersion5_get_type_descriptor(),
@@ -17175,7 +17180,7 @@ impl SetVersion5 {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESSelectSetVersion5> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_IGESSelect_SetVersion5> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDEIGES::IGESSelect_SetVersion5_to_handle(obj.into_raw()),
@@ -17183,12 +17188,12 @@ impl SetVersion5 {
         }
     }
 
-    /// Inherited: **Source:** `IGESSelect_ModelModifier.hxx`:41 - `IGESSelect_ModelModifier::Perform()`
+    /// Inherited: **Source:** `IGESSelect_ModelModifier.hxx`:38 - `IGESSelect_ModelModifier::Perform()`
     pub fn perform(
         &self,
         ctx: &mut crate::if_select::ContextModif,
-        target: &crate::ffi_types::HandleInterfaceInterfaceModel,
-        protocol: &crate::ffi_types::HandleInterfaceProtocol,
+        target: &crate::ffi_types::Handle_Interface_InterfaceModel,
+        protocol: &crate::ffi_types::Handle_Interface_Protocol,
         TC: &mut crate::interface::CopyTool,
     ) {
         crate::check_void_result(unsafe {
@@ -17202,12 +17207,12 @@ impl SetVersion5 {
         })
     }
 
-    /// Inherited: **Source:** `IGESSelect_ModelModifier.hxx`:50 - `IGESSelect_ModelModifier::PerformProtocol()`
+    /// Inherited: **Source:** `IGESSelect_ModelModifier.hxx`:47 - `IGESSelect_ModelModifier::PerformProtocol()`
     pub fn perform_protocol(
         &self,
         ctx: &mut crate::if_select::ContextModif,
-        target: &crate::ffi_types::HandleIGESDataIGESModel,
-        proto: &crate::ffi_types::HandleIGESDataProtocol,
+        target: &crate::ffi_types::Handle_IGESData_IGESModel,
+        proto: &crate::ffi_types::Handle_IGESData_Protocol,
         TC: &mut crate::interface::CopyTool,
     ) {
         crate::check_void_result(unsafe {
@@ -17221,7 +17226,7 @@ impl SetVersion5 {
         })
     }
 
-    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:68 - `IFSelect_GeneralModifier::MayChangeGraph()`
+    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:65 - `IFSelect_GeneralModifier::MayChangeGraph()`
     pub fn may_change_graph(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_SetVersion5_inherited_MayChangeGraph(
@@ -17230,8 +17235,8 @@ impl SetVersion5 {
         })
     }
 
-    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:72 - `IFSelect_GeneralModifier::SetDispatch()`
-    pub fn set_dispatch(&mut self, disp: &crate::ffi_types::HandleIFSelectDispatch) {
+    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:69 - `IFSelect_GeneralModifier::SetDispatch()`
+    pub fn set_dispatch(&mut self, disp: &crate::ffi_types::Handle_IFSelect_Dispatch) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_SetVersion5_inherited_SetDispatch(
                 self as *mut Self,
@@ -17240,8 +17245,8 @@ impl SetVersion5 {
         })
     }
 
-    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:75 - `IFSelect_GeneralModifier::Dispatch()`
-    pub fn dispatch(&self) -> crate::OwnedPtr<crate::ffi_types::HandleIFSelectDispatch> {
+    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:72 - `IFSelect_GeneralModifier::Dispatch()`
+    pub fn dispatch(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_IFSelect_Dispatch> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDEIGES::IGESSelect_SetVersion5_inherited_Dispatch(
@@ -17251,8 +17256,8 @@ impl SetVersion5 {
         }
     }
 
-    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:80 - `IFSelect_GeneralModifier::Applies()`
-    pub fn applies(&self, disp: &crate::ffi_types::HandleIFSelectDispatch) -> bool {
+    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:77 - `IFSelect_GeneralModifier::Applies()`
+    pub fn applies(&self, disp: &crate::ffi_types::Handle_IFSelect_Dispatch) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_SetVersion5_inherited_Applies(
                 self as *const Self,
@@ -17261,8 +17266,8 @@ impl SetVersion5 {
         })
     }
 
-    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:84 - `IFSelect_GeneralModifier::SetSelection()`
-    pub fn set_selection(&mut self, sel: &crate::ffi_types::HandleIFSelectSelection) {
+    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:81 - `IFSelect_GeneralModifier::SetSelection()`
+    pub fn set_selection(&mut self, sel: &crate::ffi_types::Handle_IFSelect_Selection) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_SetVersion5_inherited_SetSelection(
                 self as *mut Self,
@@ -17271,7 +17276,7 @@ impl SetVersion5 {
         })
     }
 
-    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:87 - `IFSelect_GeneralModifier::ResetSelection()`
+    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:84 - `IFSelect_GeneralModifier::ResetSelection()`
     pub fn reset_selection(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_SetVersion5_inherited_ResetSelection(
@@ -17280,7 +17285,7 @@ impl SetVersion5 {
         })
     }
 
-    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:90 - `IFSelect_GeneralModifier::HasSelection()`
+    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:87 - `IFSelect_GeneralModifier::HasSelection()`
     pub fn has_selection(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_SetVersion5_inherited_HasSelection(
@@ -17289,8 +17294,8 @@ impl SetVersion5 {
         })
     }
 
-    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:93 - `IFSelect_GeneralModifier::Selection()`
-    pub fn selection(&self) -> crate::OwnedPtr<crate::ffi_types::HandleIFSelectSelection> {
+    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:90 - `IFSelect_GeneralModifier::Selection()`
+    pub fn selection(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_IFSelect_Selection> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDEIGES::IGESSelect_SetVersion5_inherited_Selection(
@@ -17300,8 +17305,8 @@ impl SetVersion5 {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_SetVersion5_inherited_IsInstance(
                 self as *const Self,
@@ -17310,8 +17315,8 @@ impl SetVersion5 {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_SetVersion5_inherited_IsKind(
                 self as *const Self,
@@ -17320,7 +17325,7 @@ impl SetVersion5 {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -17336,7 +17341,7 @@ impl SetVersion5 {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_SetVersion5_inherited_GetRefCount(
@@ -17345,7 +17350,7 @@ impl SetVersion5 {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_SetVersion5_inherited_IncrementRefCounter(
@@ -17354,7 +17359,7 @@ impl SetVersion5 {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_SetVersion5_inherited_DecrementRefCounter(
@@ -17363,7 +17368,7 @@ impl SetVersion5 {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_SetVersion5_inherited_Delete(self as *const Self)
@@ -17371,36 +17376,38 @@ impl SetVersion5 {
     }
 }
 
-pub use crate::ffi_types::HandleIGESSelectSetVersion5;
+pub use crate::ffi_types::Handle_IGESSelect_SetVersion5;
 
-unsafe impl crate::CppDeletable for HandleIGESSelectSetVersion5 {
+unsafe impl crate::CppDeletable for Handle_IGESSelect_SetVersion5 {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKDEIGES::HandleIGESSelectSetVersion5_destructor(ptr);
+            crate::ffi_extern_TKDEIGES::Handle_IGESSelect_SetVersion5_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleIGESSelectSetVersion5 {
+unsafe impl crate::CppCopyable for Handle_IGESSelect_SetVersion5 {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
         unsafe {
-            crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectSetVersion5_clone(ptr))
+            crate::check_result(crate::ffi_extern_TKDEIGES::Handle_IGESSelect_SetVersion5_clone(
+                ptr,
+            ))
         }
     }
 }
 
-impl HandleIGESSelectSetVersion5 {
+impl Handle_IGESSelect_SetVersion5 {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
         unsafe {
-            crate::ffi_extern_TKDEIGES::HandleIGESSelectSetVersion5_is_null(self as *const Self)
+            crate::ffi_extern_TKDEIGES::Handle_IGESSelect_SetVersion5_is_null(self as *const Self)
         }
     }
 
     /// Dereference this Handle to access the underlying IGESSelect_SetVersion5
     pub fn get(&self) -> &crate::ffi_types::IGESSelect_SetVersion5 {
         unsafe {
-            &*crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectSetVersion5_get(
+            &*crate::check_result(crate::ffi_extern_TKDEIGES::Handle_IGESSelect_SetVersion5_get(
                 self as *const Self,
             ))
         }
@@ -17410,7 +17417,9 @@ impl HandleIGESSelectSetVersion5 {
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::IGESSelect_SetVersion5 {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi_extern_TKDEIGES::HandleIGESSelectSetVersion5_get_mut(self as *mut Self),
+                crate::ffi_extern_TKDEIGES::Handle_IGESSelect_SetVersion5_get_mut(
+                    self as *mut Self,
+                ),
             )
         }
     }
@@ -17418,42 +17427,36 @@ impl HandleIGESSelectSetVersion5 {
     /// Upcast Handle<IGESSelect_SetVersion5> to Handle<IGESSelect_ModelModifier>
     pub fn to_handle_model_modifier(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESSelectModelModifier> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_IGESSelect_ModelModifier> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectSetVersion5_to_HandleIGESSelectModelModifier(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::Handle_IGESSelect_SetVersion5_to_Handle_IGESSelect_ModelModifier(self as *const Self)))
         }
     }
 
     /// Upcast Handle<IGESSelect_SetVersion5> to Handle<IFSelect_Modifier>
-    pub fn to_handle_modifier(&self) -> crate::OwnedPtr<crate::ffi_types::HandleIFSelectModifier> {
+    pub fn to_handle_modifier(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_IFSelect_Modifier> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKDEIGES::HandleIGESSelectSetVersion5_to_HandleIFSelectModifier(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::Handle_IGESSelect_SetVersion5_to_Handle_IFSelect_Modifier(self as *const Self)))
         }
     }
 
     /// Upcast Handle<IGESSelect_SetVersion5> to Handle<IFSelect_GeneralModifier>
     pub fn to_handle_general_modifier(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleIFSelectGeneralModifier> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_IFSelect_GeneralModifier> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectSetVersion5_to_HandleIFSelectGeneralModifier(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::Handle_IGESSelect_SetVersion5_to_Handle_IFSelect_GeneralModifier(self as *const Self)))
         }
     }
 
     /// Upcast Handle<IGESSelect_SetVersion5> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKDEIGES::HandleIGESSelectSetVersion5_to_HandleStandardTransient(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::Handle_IGESSelect_SetVersion5_to_Handle_Standard_Transient(self as *const Self)))
         }
     }
 }
@@ -17462,7 +17465,7 @@ impl HandleIGESSelectSetVersion5 {
 // From IGESSelect_SignColor.hxx
 // ========================
 
-/// **Source:** `IGESSelect_SignColor.hxx`:42 - `IGESSelect_SignColor`
+/// **Source:** `IGESSelect_SignColor.hxx`:39 - `IGESSelect_SignColor`
 /// Gives Color attached to an entity
 /// Several forms are possible, according to <mode>
 /// 1 : number : "Dnn" for entity, "Snn" for standard, "(none)" for 0
@@ -17485,7 +17488,7 @@ unsafe impl crate::CppDeletable for SignColor {
 }
 
 impl SignColor {
-    /// **Source:** `IGESSelect_SignColor.hxx`:50 - `IGESSelect_SignColor::IGESSelect_SignColor()`
+    /// **Source:** `IGESSelect_SignColor.hxx`:47 - `IGESSelect_SignColor::IGESSelect_SignColor()`
     /// Creates a SignColor
     /// mode : see above for the meaning
     /// modes 4,5,6 give a numeric integer value
@@ -17498,12 +17501,12 @@ impl SignColor {
         }
     }
 
-    /// **Source:** `IGESSelect_SignColor.hxx`:54 - `IGESSelect_SignColor::Value()`
+    /// **Source:** `IGESSelect_SignColor.hxx`:50 - `IGESSelect_SignColor::Value()`
     /// Returns the value (see above)
     pub fn value(
         &self,
-        ent: &crate::ffi_types::HandleStandardTransient,
-        model: &crate::ffi_types::HandleInterfaceInterfaceModel,
+        ent: &crate::ffi_types::Handle_Standard_Transient,
+        model: &crate::ffi_types::Handle_Interface_InterfaceModel,
     ) -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -17518,8 +17521,8 @@ impl SignColor {
         .into_owned()
     }
 
-    /// **Source:** `IGESSelect_SignColor.hxx`:57 - `IGESSelect_SignColor::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `IGESSelect_SignColor.hxx`:54 - `IGESSelect_SignColor::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKDEIGES::IGESSelect_SignColor_dynamic_type(
                 self as *const Self,
@@ -17527,7 +17530,7 @@ impl SignColor {
         }
     }
 
-    /// **Source:** `IGESSelect_SignColor.hxx`:57 - `IGESSelect_SignColor::get_type_name()`
+    /// **Source:** `IGESSelect_SignColor.hxx`:54 - `IGESSelect_SignColor::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -17538,8 +17541,8 @@ impl SignColor {
         .into_owned()
     }
 
-    /// **Source:** `IGESSelect_SignColor.hxx`:57 - `IGESSelect_SignColor::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    /// **Source:** `IGESSelect_SignColor.hxx`:54 - `IGESSelect_SignColor::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKDEIGES::IGESSelect_SignColor_get_type_descriptor(),
@@ -17638,7 +17641,7 @@ impl SignColor {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESSelectSignColor> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_IGESSelect_SignColor> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDEIGES::IGESSelect_SignColor_to_handle(obj.into_raw()),
@@ -17646,7 +17649,7 @@ impl SignColor {
         }
     }
 
-    /// Inherited: **Source:** `IFSelect_Signature.hxx`:46 - `IFSelect_Signature::SetIntCase()`
+    /// Inherited: **Source:** `IFSelect_Signature.hxx`:44 - `IFSelect_Signature::SetIntCase()`
     pub fn set_int_case(&mut self, hasmin: bool, valmin: i32, hasmax: bool, valmax: i32) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_SignColor_inherited_SetIntCase(
@@ -17659,7 +17662,7 @@ impl SignColor {
         })
     }
 
-    /// Inherited: **Source:** `IFSelect_Signature.hxx`:53 - `IFSelect_Signature::IsIntCase()`
+    /// Inherited: **Source:** `IFSelect_Signature.hxx`:51 - `IFSelect_Signature::IsIntCase()`
     pub fn is_int_case(
         &self,
         hasmin: &mut bool,
@@ -17678,10 +17681,11 @@ impl SignColor {
         })
     }
 
-    /// Inherited: **Source:** `IFSelect_Signature.hxx`:69 - `IFSelect_Signature::CaseList()`
+    /// Inherited: **Source:** `IFSelect_Signature.hxx`:64 - `IFSelect_Signature::CaseList()`
     pub fn case_list(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleTColStdHSequenceOfAsciiString> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HSequence_TCollection_AsciiString>
+    {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDEIGES::IGESSelect_SignColor_inherited_CaseList(
@@ -17691,7 +17695,7 @@ impl SignColor {
         }
     }
 
-    /// Inherited: **Source:** `IFSelect_Signature.hxx`:81 - `IFSelect_Signature::Label()`
+    /// Inherited: **Source:** `IFSelect_Signature.hxx`:76 - `IFSelect_Signature::Label()`
     pub fn label(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -17702,11 +17706,11 @@ impl SignColor {
         }
     }
 
-    /// Inherited: **Source:** `IFSelect_Signature.hxx`:87 - `IFSelect_Signature::Matches()`
+    /// Inherited: **Source:** `IFSelect_Signature.hxx`:82 - `IFSelect_Signature::Matches()`
     pub fn matches(
         &self,
-        ent: &crate::ffi_types::HandleStandardTransient,
-        model: &crate::ffi_types::HandleInterfaceInterfaceModel,
+        ent: &crate::ffi_types::Handle_Standard_Transient,
+        model: &crate::ffi_types::Handle_Interface_InterfaceModel,
         text: &crate::t_collection::AsciiString,
         exact: bool,
     ) -> bool {
@@ -17721,11 +17725,11 @@ impl SignColor {
         })
     }
 
-    /// Inherited: **Source:** `Interface_SignType.hxx`:42 - `Interface_SignType::Text()`
+    /// Inherited: **Source:** `Interface_SignType.hxx`:39 - `Interface_SignType::Text()`
     pub fn text(
         &self,
-        ent: &crate::ffi_types::HandleStandardTransient,
-        context: &crate::ffi_types::HandleStandardTransient,
+        ent: &crate::ffi_types::Handle_Standard_Transient,
+        context: &crate::ffi_types::Handle_Standard_Transient,
     ) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -17738,10 +17742,10 @@ impl SignColor {
         }
     }
 
-    /// Inherited: **Source:** `MoniTool_SignText.hxx`:46 - `MoniTool_SignText::TextAlone()`
+    /// Inherited: **Source:** `MoniTool_SignText.hxx`:43 - `MoniTool_SignText::TextAlone()`
     pub fn text_alone(
         &self,
-        ent: &crate::ffi_types::HandleStandardTransient,
+        ent: &crate::ffi_types::Handle_Standard_Transient,
     ) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -17753,8 +17757,8 @@ impl SignColor {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_SignColor_inherited_IsInstance(
                 self as *const Self,
@@ -17763,8 +17767,8 @@ impl SignColor {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_SignColor_inherited_IsKind(
                 self as *const Self,
@@ -17773,7 +17777,7 @@ impl SignColor {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -17787,7 +17791,7 @@ impl SignColor {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_SignColor_inherited_GetRefCount(
@@ -17796,7 +17800,7 @@ impl SignColor {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_SignColor_inherited_IncrementRefCounter(
@@ -17805,7 +17809,7 @@ impl SignColor {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_SignColor_inherited_DecrementRefCounter(
@@ -17814,7 +17818,7 @@ impl SignColor {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_SignColor_inherited_Delete(self as *const Self)
@@ -17822,36 +17826,36 @@ impl SignColor {
     }
 }
 
-pub use crate::ffi_types::HandleIGESSelectSignColor;
+pub use crate::ffi_types::Handle_IGESSelect_SignColor;
 
-unsafe impl crate::CppDeletable for HandleIGESSelectSignColor {
+unsafe impl crate::CppDeletable for Handle_IGESSelect_SignColor {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKDEIGES::HandleIGESSelectSignColor_destructor(ptr);
+            crate::ffi_extern_TKDEIGES::Handle_IGESSelect_SignColor_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleIGESSelectSignColor {
+unsafe impl crate::CppCopyable for Handle_IGESSelect_SignColor {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
         unsafe {
-            crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectSignColor_clone(ptr))
+            crate::check_result(crate::ffi_extern_TKDEIGES::Handle_IGESSelect_SignColor_clone(ptr))
         }
     }
 }
 
-impl HandleIGESSelectSignColor {
+impl Handle_IGESSelect_SignColor {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
         unsafe {
-            crate::ffi_extern_TKDEIGES::HandleIGESSelectSignColor_is_null(self as *const Self)
+            crate::ffi_extern_TKDEIGES::Handle_IGESSelect_SignColor_is_null(self as *const Self)
         }
     }
 
     /// Dereference this Handle to access the underlying IGESSelect_SignColor
     pub fn get(&self) -> &crate::ffi_types::IGESSelect_SignColor {
         unsafe {
-            &*crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectSignColor_get(
+            &*crate::check_result(crate::ffi_extern_TKDEIGES::Handle_IGESSelect_SignColor_get(
                 self as *const Self,
             ))
         }
@@ -17861,7 +17865,7 @@ impl HandleIGESSelectSignColor {
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::IGESSelect_SignColor {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi_extern_TKDEIGES::HandleIGESSelectSignColor_get_mut(self as *mut Self),
+                crate::ffi_extern_TKDEIGES::Handle_IGESSelect_SignColor_get_mut(self as *mut Self),
             )
         }
     }
@@ -17869,34 +17873,28 @@ impl HandleIGESSelectSignColor {
     /// Upcast Handle<IGESSelect_SignColor> to Handle<IFSelect_Signature>
     pub fn to_handle_signature(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleIFSelectSignature> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_IFSelect_Signature> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKDEIGES::HandleIGESSelectSignColor_to_HandleIFSelectSignature(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::Handle_IGESSelect_SignColor_to_Handle_IFSelect_Signature(self as *const Self)))
         }
     }
 
     /// Upcast Handle<IGESSelect_SignColor> to Handle<Interface_SignType>
     pub fn to_handle_sign_type(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleInterfaceSignType> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Interface_SignType> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKDEIGES::HandleIGESSelectSignColor_to_HandleInterfaceSignType(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::Handle_IGESSelect_SignColor_to_Handle_Interface_SignType(self as *const Self)))
         }
     }
 
     /// Upcast Handle<IGESSelect_SignColor> to Handle<MoniTool_SignText>
-    pub fn to_handle_sign_text(&self) -> crate::OwnedPtr<crate::ffi_types::HandleMoniToolSignText> {
+    pub fn to_handle_sign_text(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_MoniTool_SignText> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKDEIGES::HandleIGESSelectSignColor_to_HandleMoniToolSignText(
+                crate::ffi_extern_TKDEIGES::Handle_IGESSelect_SignColor_to_Handle_MoniTool_SignText(
                     self as *const Self,
                 ),
             ))
@@ -17906,13 +17904,9 @@ impl HandleIGESSelectSignColor {
     /// Upcast Handle<IGESSelect_SignColor> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKDEIGES::HandleIGESSelectSignColor_to_HandleStandardTransient(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::Handle_IGESSelect_SignColor_to_Handle_Standard_Transient(self as *const Self)))
         }
     }
 }
@@ -17921,7 +17915,7 @@ impl HandleIGESSelectSignColor {
 // From IGESSelect_SignLevelNumber.hxx
 // ========================
 
-/// **Source:** `IGESSelect_SignLevelNumber.hxx`:37 - `IGESSelect_SignLevelNumber`
+/// **Source:** `IGESSelect_SignLevelNumber.hxx`:34 - `IGESSelect_SignLevelNumber`
 /// Gives D.E. Level Number under two possible forms :
 /// * for counter : "LEVEL nnnnnnn", " NO LEVEL", " LEVEL LIST"
 /// * for selection : "/nnn/", "/0/", "/1/2/nnn/"
@@ -17939,7 +17933,7 @@ unsafe impl crate::CppDeletable for SignLevelNumber {
 }
 
 impl SignLevelNumber {
-    /// **Source:** `IGESSelect_SignLevelNumber.hxx`:45 - `IGESSelect_SignLevelNumber::IGESSelect_SignLevelNumber()`
+    /// **Source:** `IGESSelect_SignLevelNumber.hxx`:42 - `IGESSelect_SignLevelNumber::IGESSelect_SignLevelNumber()`
     /// Creates a SignLevelNumber
     /// <countmode> True : values are naturally displayed
     /// <countmode> False: values are separated by slashes
@@ -17952,12 +17946,12 @@ impl SignLevelNumber {
         }
     }
 
-    /// **Source:** `IGESSelect_SignLevelNumber.hxx`:49 - `IGESSelect_SignLevelNumber::Value()`
+    /// **Source:** `IGESSelect_SignLevelNumber.hxx`:45 - `IGESSelect_SignLevelNumber::Value()`
     /// Returns the value (see above)
     pub fn value(
         &self,
-        ent: &crate::ffi_types::HandleStandardTransient,
-        model: &crate::ffi_types::HandleInterfaceInterfaceModel,
+        ent: &crate::ffi_types::Handle_Standard_Transient,
+        model: &crate::ffi_types::Handle_Interface_InterfaceModel,
     ) -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -17972,8 +17966,8 @@ impl SignLevelNumber {
         .into_owned()
     }
 
-    /// **Source:** `IGESSelect_SignLevelNumber.hxx`:52 - `IGESSelect_SignLevelNumber::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `IGESSelect_SignLevelNumber.hxx`:49 - `IGESSelect_SignLevelNumber::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKDEIGES::IGESSelect_SignLevelNumber_dynamic_type(
@@ -17983,7 +17977,7 @@ impl SignLevelNumber {
         }
     }
 
-    /// **Source:** `IGESSelect_SignLevelNumber.hxx`:52 - `IGESSelect_SignLevelNumber::get_type_name()`
+    /// **Source:** `IGESSelect_SignLevelNumber.hxx`:49 - `IGESSelect_SignLevelNumber::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -17994,8 +17988,8 @@ impl SignLevelNumber {
         .into_owned()
     }
 
-    /// **Source:** `IGESSelect_SignLevelNumber.hxx`:52 - `IGESSelect_SignLevelNumber::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    /// **Source:** `IGESSelect_SignLevelNumber.hxx`:49 - `IGESSelect_SignLevelNumber::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKDEIGES::IGESSelect_SignLevelNumber_get_type_descriptor(),
@@ -18094,7 +18088,7 @@ impl SignLevelNumber {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESSelectSignLevelNumber> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_IGESSelect_SignLevelNumber> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDEIGES::IGESSelect_SignLevelNumber_to_handle(obj.into_raw()),
@@ -18102,7 +18096,7 @@ impl SignLevelNumber {
         }
     }
 
-    /// Inherited: **Source:** `IFSelect_Signature.hxx`:46 - `IFSelect_Signature::SetIntCase()`
+    /// Inherited: **Source:** `IFSelect_Signature.hxx`:44 - `IFSelect_Signature::SetIntCase()`
     pub fn set_int_case(&mut self, hasmin: bool, valmin: i32, hasmax: bool, valmax: i32) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_SignLevelNumber_inherited_SetIntCase(
@@ -18115,7 +18109,7 @@ impl SignLevelNumber {
         })
     }
 
-    /// Inherited: **Source:** `IFSelect_Signature.hxx`:53 - `IFSelect_Signature::IsIntCase()`
+    /// Inherited: **Source:** `IFSelect_Signature.hxx`:51 - `IFSelect_Signature::IsIntCase()`
     pub fn is_int_case(
         &self,
         hasmin: &mut bool,
@@ -18134,10 +18128,11 @@ impl SignLevelNumber {
         })
     }
 
-    /// Inherited: **Source:** `IFSelect_Signature.hxx`:69 - `IFSelect_Signature::CaseList()`
+    /// Inherited: **Source:** `IFSelect_Signature.hxx`:64 - `IFSelect_Signature::CaseList()`
     pub fn case_list(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleTColStdHSequenceOfAsciiString> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HSequence_TCollection_AsciiString>
+    {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDEIGES::IGESSelect_SignLevelNumber_inherited_CaseList(
@@ -18147,7 +18142,7 @@ impl SignLevelNumber {
         }
     }
 
-    /// Inherited: **Source:** `IFSelect_Signature.hxx`:81 - `IFSelect_Signature::Label()`
+    /// Inherited: **Source:** `IFSelect_Signature.hxx`:76 - `IFSelect_Signature::Label()`
     pub fn label(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -18158,11 +18153,11 @@ impl SignLevelNumber {
         }
     }
 
-    /// Inherited: **Source:** `IFSelect_Signature.hxx`:87 - `IFSelect_Signature::Matches()`
+    /// Inherited: **Source:** `IFSelect_Signature.hxx`:82 - `IFSelect_Signature::Matches()`
     pub fn matches(
         &self,
-        ent: &crate::ffi_types::HandleStandardTransient,
-        model: &crate::ffi_types::HandleInterfaceInterfaceModel,
+        ent: &crate::ffi_types::Handle_Standard_Transient,
+        model: &crate::ffi_types::Handle_Interface_InterfaceModel,
         text: &crate::t_collection::AsciiString,
         exact: bool,
     ) -> bool {
@@ -18177,11 +18172,11 @@ impl SignLevelNumber {
         })
     }
 
-    /// Inherited: **Source:** `Interface_SignType.hxx`:42 - `Interface_SignType::Text()`
+    /// Inherited: **Source:** `Interface_SignType.hxx`:39 - `Interface_SignType::Text()`
     pub fn text(
         &self,
-        ent: &crate::ffi_types::HandleStandardTransient,
-        context: &crate::ffi_types::HandleStandardTransient,
+        ent: &crate::ffi_types::Handle_Standard_Transient,
+        context: &crate::ffi_types::Handle_Standard_Transient,
     ) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -18194,10 +18189,10 @@ impl SignLevelNumber {
         }
     }
 
-    /// Inherited: **Source:** `MoniTool_SignText.hxx`:46 - `MoniTool_SignText::TextAlone()`
+    /// Inherited: **Source:** `MoniTool_SignText.hxx`:43 - `MoniTool_SignText::TextAlone()`
     pub fn text_alone(
         &self,
-        ent: &crate::ffi_types::HandleStandardTransient,
+        ent: &crate::ffi_types::Handle_Standard_Transient,
     ) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -18209,8 +18204,8 @@ impl SignLevelNumber {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_SignLevelNumber_inherited_IsInstance(
                 self as *const Self,
@@ -18219,8 +18214,8 @@ impl SignLevelNumber {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_SignLevelNumber_inherited_IsKind(
                 self as *const Self,
@@ -18229,7 +18224,7 @@ impl SignLevelNumber {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -18245,7 +18240,7 @@ impl SignLevelNumber {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_SignLevelNumber_inherited_GetRefCount(
@@ -18254,7 +18249,7 @@ impl SignLevelNumber {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_SignLevelNumber_inherited_IncrementRefCounter(
@@ -18263,7 +18258,7 @@ impl SignLevelNumber {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_SignLevelNumber_inherited_DecrementRefCounter(
@@ -18272,7 +18267,7 @@ impl SignLevelNumber {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_SignLevelNumber_inherited_Delete(
@@ -18282,40 +18277,44 @@ impl SignLevelNumber {
     }
 }
 
-pub use crate::ffi_types::HandleIGESSelectSignLevelNumber;
+pub use crate::ffi_types::Handle_IGESSelect_SignLevelNumber;
 
-unsafe impl crate::CppDeletable for HandleIGESSelectSignLevelNumber {
+unsafe impl crate::CppDeletable for Handle_IGESSelect_SignLevelNumber {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKDEIGES::HandleIGESSelectSignLevelNumber_destructor(ptr);
+            crate::ffi_extern_TKDEIGES::Handle_IGESSelect_SignLevelNumber_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleIGESSelectSignLevelNumber {
+unsafe impl crate::CppCopyable for Handle_IGESSelect_SignLevelNumber {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
         unsafe {
-            crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectSignLevelNumber_clone(
-                ptr,
-            ))
+            crate::check_result(
+                crate::ffi_extern_TKDEIGES::Handle_IGESSelect_SignLevelNumber_clone(ptr),
+            )
         }
     }
 }
 
-impl HandleIGESSelectSignLevelNumber {
+impl Handle_IGESSelect_SignLevelNumber {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
         unsafe {
-            crate::ffi_extern_TKDEIGES::HandleIGESSelectSignLevelNumber_is_null(self as *const Self)
+            crate::ffi_extern_TKDEIGES::Handle_IGESSelect_SignLevelNumber_is_null(
+                self as *const Self,
+            )
         }
     }
 
     /// Dereference this Handle to access the underlying IGESSelect_SignLevelNumber
     pub fn get(&self) -> &crate::ffi_types::IGESSelect_SignLevelNumber {
         unsafe {
-            &*crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectSignLevelNumber_get(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKDEIGES::Handle_IGESSelect_SignLevelNumber_get(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -18323,7 +18322,7 @@ impl HandleIGESSelectSignLevelNumber {
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::IGESSelect_SignLevelNumber {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi_extern_TKDEIGES::HandleIGESSelectSignLevelNumber_get_mut(
+                crate::ffi_extern_TKDEIGES::Handle_IGESSelect_SignLevelNumber_get_mut(
                     self as *mut Self,
                 ),
             )
@@ -18333,34 +18332,36 @@ impl HandleIGESSelectSignLevelNumber {
     /// Upcast Handle<IGESSelect_SignLevelNumber> to Handle<IFSelect_Signature>
     pub fn to_handle_signature(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleIFSelectSignature> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_IFSelect_Signature> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectSignLevelNumber_to_HandleIFSelectSignature(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::Handle_IGESSelect_SignLevelNumber_to_Handle_IFSelect_Signature(self as *const Self)))
         }
     }
 
     /// Upcast Handle<IGESSelect_SignLevelNumber> to Handle<Interface_SignType>
     pub fn to_handle_sign_type(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleInterfaceSignType> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Interface_SignType> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectSignLevelNumber_to_HandleInterfaceSignType(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::Handle_IGESSelect_SignLevelNumber_to_Handle_Interface_SignType(self as *const Self)))
         }
     }
 
     /// Upcast Handle<IGESSelect_SignLevelNumber> to Handle<MoniTool_SignText>
-    pub fn to_handle_sign_text(&self) -> crate::OwnedPtr<crate::ffi_types::HandleMoniToolSignText> {
+    pub fn to_handle_sign_text(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_MoniTool_SignText> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectSignLevelNumber_to_HandleMoniToolSignText(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::Handle_IGESSelect_SignLevelNumber_to_Handle_MoniTool_SignText(self as *const Self)))
         }
     }
 
     /// Upcast Handle<IGESSelect_SignLevelNumber> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectSignLevelNumber_to_HandleStandardTransient(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::Handle_IGESSelect_SignLevelNumber_to_Handle_Standard_Transient(self as *const Self)))
         }
     }
 }
@@ -18369,7 +18370,7 @@ impl HandleIGESSelectSignLevelNumber {
 // From IGESSelect_SignStatus.hxx
 // ========================
 
-/// **Source:** `IGESSelect_SignStatus.hxx`:46 - `IGESSelect_SignStatus`
+/// **Source:** `IGESSelect_SignStatus.hxx`:43 - `IGESSelect_SignStatus`
 /// Gives D.E. Status under the form i,j,k,l (4 figures)
 /// i for BlankStatus
 /// j for SubordinateStatus
@@ -18377,9 +18378,9 @@ impl HandleIGESSelectSignLevelNumber {
 /// l for Hierarchy
 ///
 /// For matching, allowed shortcuts
-/// B(Blanked) or V(Visible) are allowed instead of  i
+/// B(Blanked) or V(Visible) are allowed instead of i
 /// I(Independant=0), P(Physically Dep.=1), L(Logically Dep.=2) or
-/// D(Dependant=3) are allowed instead of  j
+/// D(Dependant=3) are allowed instead of j
 /// These letters must be given in their good position
 /// For non-exact matching :
 /// a letter (see above), no comma : only this status is checked
@@ -18395,7 +18396,7 @@ unsafe impl crate::CppDeletable for SignStatus {
 }
 
 impl SignStatus {
-    /// **Source:** `IGESSelect_SignStatus.hxx`:50 - `IGESSelect_SignStatus::IGESSelect_SignStatus()`
+    /// **Source:** `IGESSelect_SignStatus.hxx`:47 - `IGESSelect_SignStatus::IGESSelect_SignStatus()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -18404,12 +18405,12 @@ impl SignStatus {
         }
     }
 
-    /// **Source:** `IGESSelect_SignStatus.hxx`:54 - `IGESSelect_SignStatus::Value()`
+    /// **Source:** `IGESSelect_SignStatus.hxx`:50 - `IGESSelect_SignStatus::Value()`
     /// Returns the value (see above)
     pub fn value(
         &self,
-        ent: &crate::ffi_types::HandleStandardTransient,
-        model: &crate::ffi_types::HandleInterfaceInterfaceModel,
+        ent: &crate::ffi_types::Handle_Standard_Transient,
+        model: &crate::ffi_types::Handle_Interface_InterfaceModel,
     ) -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -18424,12 +18425,12 @@ impl SignStatus {
         .into_owned()
     }
 
-    /// **Source:** `IGESSelect_SignStatus.hxx`:58 - `IGESSelect_SignStatus::Matches()`
+    /// **Source:** `IGESSelect_SignStatus.hxx`:55 - `IGESSelect_SignStatus::Matches()`
     /// Performs the match rule (see above)
     pub fn matches(
         &self,
-        ent: &crate::ffi_types::HandleStandardTransient,
-        model: &crate::ffi_types::HandleInterfaceInterfaceModel,
+        ent: &crate::ffi_types::Handle_Standard_Transient,
+        model: &crate::ffi_types::Handle_Interface_InterfaceModel,
         text: &crate::t_collection::AsciiString,
         exact: bool,
     ) -> bool {
@@ -18444,8 +18445,8 @@ impl SignStatus {
         })
     }
 
-    /// **Source:** `IGESSelect_SignStatus.hxx`:64 - `IGESSelect_SignStatus::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `IGESSelect_SignStatus.hxx`:60 - `IGESSelect_SignStatus::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKDEIGES::IGESSelect_SignStatus_dynamic_type(
                 self as *const Self,
@@ -18453,7 +18454,7 @@ impl SignStatus {
         }
     }
 
-    /// **Source:** `IGESSelect_SignStatus.hxx`:64 - `IGESSelect_SignStatus::get_type_name()`
+    /// **Source:** `IGESSelect_SignStatus.hxx`:60 - `IGESSelect_SignStatus::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -18464,8 +18465,8 @@ impl SignStatus {
         .into_owned()
     }
 
-    /// **Source:** `IGESSelect_SignStatus.hxx`:64 - `IGESSelect_SignStatus::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    /// **Source:** `IGESSelect_SignStatus.hxx`:60 - `IGESSelect_SignStatus::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKDEIGES::IGESSelect_SignStatus_get_type_descriptor(),
@@ -18564,7 +18565,7 @@ impl SignStatus {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESSelectSignStatus> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_IGESSelect_SignStatus> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDEIGES::IGESSelect_SignStatus_to_handle(obj.into_raw()),
@@ -18572,7 +18573,7 @@ impl SignStatus {
         }
     }
 
-    /// Inherited: **Source:** `IFSelect_Signature.hxx`:46 - `IFSelect_Signature::SetIntCase()`
+    /// Inherited: **Source:** `IFSelect_Signature.hxx`:44 - `IFSelect_Signature::SetIntCase()`
     pub fn set_int_case(&mut self, hasmin: bool, valmin: i32, hasmax: bool, valmax: i32) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_SignStatus_inherited_SetIntCase(
@@ -18585,7 +18586,7 @@ impl SignStatus {
         })
     }
 
-    /// Inherited: **Source:** `IFSelect_Signature.hxx`:53 - `IFSelect_Signature::IsIntCase()`
+    /// Inherited: **Source:** `IFSelect_Signature.hxx`:51 - `IFSelect_Signature::IsIntCase()`
     pub fn is_int_case(
         &self,
         hasmin: &mut bool,
@@ -18604,10 +18605,11 @@ impl SignStatus {
         })
     }
 
-    /// Inherited: **Source:** `IFSelect_Signature.hxx`:69 - `IFSelect_Signature::CaseList()`
+    /// Inherited: **Source:** `IFSelect_Signature.hxx`:64 - `IFSelect_Signature::CaseList()`
     pub fn case_list(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleTColStdHSequenceOfAsciiString> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HSequence_TCollection_AsciiString>
+    {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDEIGES::IGESSelect_SignStatus_inherited_CaseList(
@@ -18617,7 +18619,7 @@ impl SignStatus {
         }
     }
 
-    /// Inherited: **Source:** `IFSelect_Signature.hxx`:81 - `IFSelect_Signature::Label()`
+    /// Inherited: **Source:** `IFSelect_Signature.hxx`:76 - `IFSelect_Signature::Label()`
     pub fn label(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -18628,11 +18630,11 @@ impl SignStatus {
         }
     }
 
-    /// Inherited: **Source:** `Interface_SignType.hxx`:42 - `Interface_SignType::Text()`
+    /// Inherited: **Source:** `Interface_SignType.hxx`:39 - `Interface_SignType::Text()`
     pub fn text(
         &self,
-        ent: &crate::ffi_types::HandleStandardTransient,
-        context: &crate::ffi_types::HandleStandardTransient,
+        ent: &crate::ffi_types::Handle_Standard_Transient,
+        context: &crate::ffi_types::Handle_Standard_Transient,
     ) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -18645,10 +18647,10 @@ impl SignStatus {
         }
     }
 
-    /// Inherited: **Source:** `MoniTool_SignText.hxx`:46 - `MoniTool_SignText::TextAlone()`
+    /// Inherited: **Source:** `MoniTool_SignText.hxx`:43 - `MoniTool_SignText::TextAlone()`
     pub fn text_alone(
         &self,
-        ent: &crate::ffi_types::HandleStandardTransient,
+        ent: &crate::ffi_types::Handle_Standard_Transient,
     ) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -18660,8 +18662,8 @@ impl SignStatus {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_SignStatus_inherited_IsInstance(
                 self as *const Self,
@@ -18670,8 +18672,8 @@ impl SignStatus {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_SignStatus_inherited_IsKind(
                 self as *const Self,
@@ -18680,7 +18682,7 @@ impl SignStatus {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -18696,7 +18698,7 @@ impl SignStatus {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_SignStatus_inherited_GetRefCount(
@@ -18705,7 +18707,7 @@ impl SignStatus {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_SignStatus_inherited_IncrementRefCounter(
@@ -18714,7 +18716,7 @@ impl SignStatus {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_SignStatus_inherited_DecrementRefCounter(
@@ -18723,7 +18725,7 @@ impl SignStatus {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_SignStatus_inherited_Delete(self as *const Self)
@@ -18731,36 +18733,36 @@ impl SignStatus {
     }
 }
 
-pub use crate::ffi_types::HandleIGESSelectSignStatus;
+pub use crate::ffi_types::Handle_IGESSelect_SignStatus;
 
-unsafe impl crate::CppDeletable for HandleIGESSelectSignStatus {
+unsafe impl crate::CppDeletable for Handle_IGESSelect_SignStatus {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKDEIGES::HandleIGESSelectSignStatus_destructor(ptr);
+            crate::ffi_extern_TKDEIGES::Handle_IGESSelect_SignStatus_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleIGESSelectSignStatus {
+unsafe impl crate::CppCopyable for Handle_IGESSelect_SignStatus {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
         unsafe {
-            crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectSignStatus_clone(ptr))
+            crate::check_result(crate::ffi_extern_TKDEIGES::Handle_IGESSelect_SignStatus_clone(ptr))
         }
     }
 }
 
-impl HandleIGESSelectSignStatus {
+impl Handle_IGESSelect_SignStatus {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
         unsafe {
-            crate::ffi_extern_TKDEIGES::HandleIGESSelectSignStatus_is_null(self as *const Self)
+            crate::ffi_extern_TKDEIGES::Handle_IGESSelect_SignStatus_is_null(self as *const Self)
         }
     }
 
     /// Dereference this Handle to access the underlying IGESSelect_SignStatus
     pub fn get(&self) -> &crate::ffi_types::IGESSelect_SignStatus {
         unsafe {
-            &*crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectSignStatus_get(
+            &*crate::check_result(crate::ffi_extern_TKDEIGES::Handle_IGESSelect_SignStatus_get(
                 self as *const Self,
             ))
         }
@@ -18770,7 +18772,7 @@ impl HandleIGESSelectSignStatus {
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::IGESSelect_SignStatus {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi_extern_TKDEIGES::HandleIGESSelectSignStatus_get_mut(self as *mut Self),
+                crate::ffi_extern_TKDEIGES::Handle_IGESSelect_SignStatus_get_mut(self as *mut Self),
             )
         }
     }
@@ -18778,50 +18780,36 @@ impl HandleIGESSelectSignStatus {
     /// Upcast Handle<IGESSelect_SignStatus> to Handle<IFSelect_Signature>
     pub fn to_handle_signature(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleIFSelectSignature> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_IFSelect_Signature> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKDEIGES::HandleIGESSelectSignStatus_to_HandleIFSelectSignature(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::Handle_IGESSelect_SignStatus_to_Handle_IFSelect_Signature(self as *const Self)))
         }
     }
 
     /// Upcast Handle<IGESSelect_SignStatus> to Handle<Interface_SignType>
     pub fn to_handle_sign_type(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleInterfaceSignType> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Interface_SignType> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKDEIGES::HandleIGESSelectSignStatus_to_HandleInterfaceSignType(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::Handle_IGESSelect_SignStatus_to_Handle_Interface_SignType(self as *const Self)))
         }
     }
 
     /// Upcast Handle<IGESSelect_SignStatus> to Handle<MoniTool_SignText>
-    pub fn to_handle_sign_text(&self) -> crate::OwnedPtr<crate::ffi_types::HandleMoniToolSignText> {
+    pub fn to_handle_sign_text(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_MoniTool_SignText> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKDEIGES::HandleIGESSelectSignStatus_to_HandleMoniToolSignText(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::Handle_IGESSelect_SignStatus_to_Handle_MoniTool_SignText(self as *const Self)))
         }
     }
 
     /// Upcast Handle<IGESSelect_SignStatus> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKDEIGES::HandleIGESSelectSignStatus_to_HandleStandardTransient(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::Handle_IGESSelect_SignStatus_to_Handle_Standard_Transient(self as *const Self)))
         }
     }
 }
@@ -18830,7 +18818,7 @@ impl HandleIGESSelectSignStatus {
 // From IGESSelect_SplineToBSpline.hxx
 // ========================
 
-/// **Source:** `IGESSelect_SplineToBSpline.hxx`:48 - `IGESSelect_SplineToBSpline`
+/// **Source:** `IGESSelect_SplineToBSpline.hxx`:45 - `IGESSelect_SplineToBSpline`
 /// This type of Transformer allows to convert Spline Curves (IGES
 /// type 112) and Surfaces (IGES Type 126) to BSpline Curves (IGES
 /// type 114) and Surfac (IGES Type 128). All other entities are
@@ -18855,7 +18843,7 @@ unsafe impl crate::CppDeletable for SplineToBSpline {
 }
 
 impl SplineToBSpline {
-    /// **Source:** `IGESSelect_SplineToBSpline.hxx`:54 - `IGESSelect_SplineToBSpline::IGESSelect_SplineToBSpline()`
+    /// **Source:** `IGESSelect_SplineToBSpline.hxx`:51 - `IGESSelect_SplineToBSpline::IGESSelect_SplineToBSpline()`
     /// Creates a Transformer SplineToBSpline. If <tryC2> is True,
     /// it will in addition try to upgrade continuity up to C2.
     pub fn new_bool(tryC2: bool) -> crate::OwnedPtr<Self> {
@@ -18866,7 +18854,7 @@ impl SplineToBSpline {
         }
     }
 
-    /// **Source:** `IGESSelect_SplineToBSpline.hxx`:57 - `IGESSelect_SplineToBSpline::OptionTryC2()`
+    /// **Source:** `IGESSelect_SplineToBSpline.hxx`:54 - `IGESSelect_SplineToBSpline::OptionTryC2()`
     /// Returns the option TryC2 given at creation time
     pub fn option_try_c2(&self) -> bool {
         crate::check_result(unsafe {
@@ -18876,15 +18864,15 @@ impl SplineToBSpline {
         })
     }
 
-    /// **Source:** `IGESSelect_SplineToBSpline.hxx`:61 - `IGESSelect_SplineToBSpline::Perform()`
+    /// **Source:** `IGESSelect_SplineToBSpline.hxx`:58 - `IGESSelect_SplineToBSpline::Perform()`
     /// Performs the transformation, if there is at least one Spline
     /// Curve (112) or Surface (126). Does nothing if there is none.
     pub fn perform(
         &mut self,
         G: &crate::interface::Graph,
-        protocol: &crate::ffi_types::HandleInterfaceProtocol,
+        protocol: &crate::ffi_types::Handle_Interface_Protocol,
         checks: &mut crate::interface::CheckIterator,
-        newmod: &mut crate::ffi_types::HandleInterfaceInterfaceModel,
+        newmod: &mut crate::ffi_types::Handle_Interface_InterfaceModel,
     ) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_SplineToBSpline_perform(
@@ -18897,7 +18885,7 @@ impl SplineToBSpline {
         })
     }
 
-    /// **Source:** `IGESSelect_SplineToBSpline.hxx`:75 - `IGESSelect_SplineToBSpline::Updated()`
+    /// **Source:** `IGESSelect_SplineToBSpline.hxx`:70 - `IGESSelect_SplineToBSpline::Updated()`
     /// Returns the transformed entities.
     /// If original data contained no Spline Curve or Surface,
     /// the result is identity : <entto> = <entfrom>
@@ -18907,8 +18895,8 @@ impl SplineToBSpline {
     /// by BSPlines replacing Splines).
     pub fn updated(
         &self,
-        entfrom: &crate::ffi_types::HandleStandardTransient,
-        entto: &mut crate::ffi_types::HandleStandardTransient,
+        entfrom: &crate::ffi_types::Handle_Standard_Transient,
+        entto: &mut crate::ffi_types::Handle_Standard_Transient,
     ) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_SplineToBSpline_updated(
@@ -18919,7 +18907,7 @@ impl SplineToBSpline {
         })
     }
 
-    /// **Source:** `IGESSelect_SplineToBSpline.hxx`:81 - `IGESSelect_SplineToBSpline::Label()`
+    /// **Source:** `IGESSelect_SplineToBSpline.hxx`:76 - `IGESSelect_SplineToBSpline::Label()`
     /// Returns a text which defines the way a Transformer works :
     /// "Conversion Spline to BSpline" and as opted,
     /// " trying to upgrade continuity"
@@ -18931,8 +18919,8 @@ impl SplineToBSpline {
         }
     }
 
-    /// **Source:** `IGESSelect_SplineToBSpline.hxx`:83 - `IGESSelect_SplineToBSpline::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `IGESSelect_SplineToBSpline.hxx`:78 - `IGESSelect_SplineToBSpline::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKDEIGES::IGESSelect_SplineToBSpline_dynamic_type(
@@ -18942,7 +18930,7 @@ impl SplineToBSpline {
         }
     }
 
-    /// **Source:** `IGESSelect_SplineToBSpline.hxx`:83 - `IGESSelect_SplineToBSpline::get_type_name()`
+    /// **Source:** `IGESSelect_SplineToBSpline.hxx`:78 - `IGESSelect_SplineToBSpline::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -18953,8 +18941,8 @@ impl SplineToBSpline {
         .into_owned()
     }
 
-    /// **Source:** `IGESSelect_SplineToBSpline.hxx`:83 - `IGESSelect_SplineToBSpline::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    /// **Source:** `IGESSelect_SplineToBSpline.hxx`:78 - `IGESSelect_SplineToBSpline::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKDEIGES::IGESSelect_SplineToBSpline_get_type_descriptor(),
@@ -19009,7 +18997,7 @@ impl SplineToBSpline {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESSelectSplineToBSpline> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_IGESSelect_SplineToBSpline> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDEIGES::IGESSelect_SplineToBSpline_to_handle(obj.into_raw()),
@@ -19017,10 +19005,10 @@ impl SplineToBSpline {
         }
     }
 
-    /// Inherited: **Source:** `IFSelect_Transformer.hxx`:84 - `IFSelect_Transformer::ChangeProtocol()`
+    /// Inherited: **Source:** `IFSelect_Transformer.hxx`:81 - `IFSelect_Transformer::ChangeProtocol()`
     pub fn change_protocol(
         &self,
-        newproto: &mut crate::ffi_types::HandleInterfaceProtocol,
+        newproto: &mut crate::ffi_types::Handle_Interface_Protocol,
     ) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_SplineToBSpline_inherited_ChangeProtocol(
@@ -19030,8 +19018,8 @@ impl SplineToBSpline {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_SplineToBSpline_inherited_IsInstance(
                 self as *const Self,
@@ -19040,8 +19028,8 @@ impl SplineToBSpline {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_SplineToBSpline_inherited_IsKind(
                 self as *const Self,
@@ -19050,7 +19038,7 @@ impl SplineToBSpline {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -19066,7 +19054,7 @@ impl SplineToBSpline {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_SplineToBSpline_inherited_GetRefCount(
@@ -19075,7 +19063,7 @@ impl SplineToBSpline {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_SplineToBSpline_inherited_IncrementRefCounter(
@@ -19084,7 +19072,7 @@ impl SplineToBSpline {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_SplineToBSpline_inherited_DecrementRefCounter(
@@ -19093,7 +19081,7 @@ impl SplineToBSpline {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_SplineToBSpline_inherited_Delete(
@@ -19103,40 +19091,44 @@ impl SplineToBSpline {
     }
 }
 
-pub use crate::ffi_types::HandleIGESSelectSplineToBSpline;
+pub use crate::ffi_types::Handle_IGESSelect_SplineToBSpline;
 
-unsafe impl crate::CppDeletable for HandleIGESSelectSplineToBSpline {
+unsafe impl crate::CppDeletable for Handle_IGESSelect_SplineToBSpline {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKDEIGES::HandleIGESSelectSplineToBSpline_destructor(ptr);
+            crate::ffi_extern_TKDEIGES::Handle_IGESSelect_SplineToBSpline_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleIGESSelectSplineToBSpline {
+unsafe impl crate::CppCopyable for Handle_IGESSelect_SplineToBSpline {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
         unsafe {
-            crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectSplineToBSpline_clone(
-                ptr,
-            ))
+            crate::check_result(
+                crate::ffi_extern_TKDEIGES::Handle_IGESSelect_SplineToBSpline_clone(ptr),
+            )
         }
     }
 }
 
-impl HandleIGESSelectSplineToBSpline {
+impl Handle_IGESSelect_SplineToBSpline {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
         unsafe {
-            crate::ffi_extern_TKDEIGES::HandleIGESSelectSplineToBSpline_is_null(self as *const Self)
+            crate::ffi_extern_TKDEIGES::Handle_IGESSelect_SplineToBSpline_is_null(
+                self as *const Self,
+            )
         }
     }
 
     /// Dereference this Handle to access the underlying IGESSelect_SplineToBSpline
     pub fn get(&self) -> &crate::ffi_types::IGESSelect_SplineToBSpline {
         unsafe {
-            &*crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectSplineToBSpline_get(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKDEIGES::Handle_IGESSelect_SplineToBSpline_get(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -19144,7 +19136,7 @@ impl HandleIGESSelectSplineToBSpline {
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::IGESSelect_SplineToBSpline {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi_extern_TKDEIGES::HandleIGESSelectSplineToBSpline_get_mut(
+                crate::ffi_extern_TKDEIGES::Handle_IGESSelect_SplineToBSpline_get_mut(
                     self as *mut Self,
                 ),
             )
@@ -19154,18 +19146,18 @@ impl HandleIGESSelectSplineToBSpline {
     /// Upcast Handle<IGESSelect_SplineToBSpline> to Handle<IFSelect_Transformer>
     pub fn to_handle_transformer(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleIFSelectTransformer> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_IFSelect_Transformer> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectSplineToBSpline_to_HandleIFSelectTransformer(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::Handle_IGESSelect_SplineToBSpline_to_Handle_IFSelect_Transformer(self as *const Self)))
         }
     }
 
     /// Upcast Handle<IGESSelect_SplineToBSpline> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectSplineToBSpline_to_HandleStandardTransient(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::Handle_IGESSelect_SplineToBSpline_to_Handle_Standard_Transient(self as *const Self)))
         }
     }
 }
@@ -19174,7 +19166,7 @@ impl HandleIGESSelectSplineToBSpline {
 // From IGESSelect_UpdateCreationDate.hxx
 // ========================
 
-/// **Source:** `IGESSelect_UpdateCreationDate.hxx`:37 - `IGESSelect_UpdateCreationDate`
+/// **Source:** `IGESSelect_UpdateCreationDate.hxx`:34 - `IGESSelect_UpdateCreationDate`
 /// Allows to Change the Creation Date indication in the Header
 /// (Global Section) of IGES File. It is taken from the operating
 /// system (time of application of the Modifier).
@@ -19191,7 +19183,7 @@ unsafe impl crate::CppDeletable for UpdateCreationDate {
 }
 
 impl UpdateCreationDate {
-    /// **Source:** `IGESSelect_UpdateCreationDate.hxx`:42 - `IGESSelect_UpdateCreationDate::IGESSelect_UpdateCreationDate()`
+    /// **Source:** `IGESSelect_UpdateCreationDate.hxx`:39 - `IGESSelect_UpdateCreationDate::IGESSelect_UpdateCreationDate()`
     /// Creates an UpdateCreationDate, which uses the system Date
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
@@ -19201,13 +19193,13 @@ impl UpdateCreationDate {
         }
     }
 
-    /// **Source:** `IGESSelect_UpdateCreationDate.hxx`:46 - `IGESSelect_UpdateCreationDate::Performing()`
+    /// **Source:** `IGESSelect_UpdateCreationDate.hxx`:43 - `IGESSelect_UpdateCreationDate::Performing()`
     /// Specific action : only <target> is used : the system Date
     /// is set to Global Section Item n0 18.
     pub fn performing(
         &self,
         ctx: &mut crate::if_select::ContextModif,
-        target: &crate::ffi_types::HandleIGESDataIGESModel,
+        target: &crate::ffi_types::Handle_IGESData_IGESModel,
         TC: &mut crate::interface::CopyTool,
     ) {
         crate::check_void_result(unsafe {
@@ -19220,7 +19212,7 @@ impl UpdateCreationDate {
         })
     }
 
-    /// **Source:** `IGESSelect_UpdateCreationDate.hxx`:52 - `IGESSelect_UpdateCreationDate::Label()`
+    /// **Source:** `IGESSelect_UpdateCreationDate.hxx`:49 - `IGESSelect_UpdateCreationDate::Label()`
     /// Returns a text which is
     /// "Update IGES Header Creation Date"
     pub fn label(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
@@ -19233,8 +19225,8 @@ impl UpdateCreationDate {
         }
     }
 
-    /// **Source:** `IGESSelect_UpdateCreationDate.hxx`:54 - `IGESSelect_UpdateCreationDate::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `IGESSelect_UpdateCreationDate.hxx`:51 - `IGESSelect_UpdateCreationDate::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKDEIGES::IGESSelect_UpdateCreationDate_dynamic_type(
@@ -19244,7 +19236,7 @@ impl UpdateCreationDate {
         }
     }
 
-    /// **Source:** `IGESSelect_UpdateCreationDate.hxx`:54 - `IGESSelect_UpdateCreationDate::get_type_name()`
+    /// **Source:** `IGESSelect_UpdateCreationDate.hxx`:51 - `IGESSelect_UpdateCreationDate::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -19255,8 +19247,8 @@ impl UpdateCreationDate {
         .into_owned()
     }
 
-    /// **Source:** `IGESSelect_UpdateCreationDate.hxx`:54 - `IGESSelect_UpdateCreationDate::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    /// **Source:** `IGESSelect_UpdateCreationDate.hxx`:51 - `IGESSelect_UpdateCreationDate::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKDEIGES::IGESSelect_UpdateCreationDate_get_type_descriptor(),
@@ -19339,7 +19331,7 @@ impl UpdateCreationDate {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESSelectUpdateCreationDate> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_IGESSelect_UpdateCreationDate> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDEIGES::IGESSelect_UpdateCreationDate_to_handle(obj.into_raw()),
@@ -19347,12 +19339,12 @@ impl UpdateCreationDate {
         }
     }
 
-    /// Inherited: **Source:** `IGESSelect_ModelModifier.hxx`:41 - `IGESSelect_ModelModifier::Perform()`
+    /// Inherited: **Source:** `IGESSelect_ModelModifier.hxx`:38 - `IGESSelect_ModelModifier::Perform()`
     pub fn perform(
         &self,
         ctx: &mut crate::if_select::ContextModif,
-        target: &crate::ffi_types::HandleInterfaceInterfaceModel,
-        protocol: &crate::ffi_types::HandleInterfaceProtocol,
+        target: &crate::ffi_types::Handle_Interface_InterfaceModel,
+        protocol: &crate::ffi_types::Handle_Interface_Protocol,
         TC: &mut crate::interface::CopyTool,
     ) {
         crate::check_void_result(unsafe {
@@ -19366,12 +19358,12 @@ impl UpdateCreationDate {
         })
     }
 
-    /// Inherited: **Source:** `IGESSelect_ModelModifier.hxx`:50 - `IGESSelect_ModelModifier::PerformProtocol()`
+    /// Inherited: **Source:** `IGESSelect_ModelModifier.hxx`:47 - `IGESSelect_ModelModifier::PerformProtocol()`
     pub fn perform_protocol(
         &self,
         ctx: &mut crate::if_select::ContextModif,
-        target: &crate::ffi_types::HandleIGESDataIGESModel,
-        proto: &crate::ffi_types::HandleIGESDataProtocol,
+        target: &crate::ffi_types::Handle_IGESData_IGESModel,
+        proto: &crate::ffi_types::Handle_IGESData_Protocol,
         TC: &mut crate::interface::CopyTool,
     ) {
         crate::check_void_result(unsafe {
@@ -19385,7 +19377,7 @@ impl UpdateCreationDate {
         })
     }
 
-    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:68 - `IFSelect_GeneralModifier::MayChangeGraph()`
+    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:65 - `IFSelect_GeneralModifier::MayChangeGraph()`
     pub fn may_change_graph(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_UpdateCreationDate_inherited_MayChangeGraph(
@@ -19394,8 +19386,8 @@ impl UpdateCreationDate {
         })
     }
 
-    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:72 - `IFSelect_GeneralModifier::SetDispatch()`
-    pub fn set_dispatch(&mut self, disp: &crate::ffi_types::HandleIFSelectDispatch) {
+    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:69 - `IFSelect_GeneralModifier::SetDispatch()`
+    pub fn set_dispatch(&mut self, disp: &crate::ffi_types::Handle_IFSelect_Dispatch) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_UpdateCreationDate_inherited_SetDispatch(
                 self as *mut Self,
@@ -19404,8 +19396,8 @@ impl UpdateCreationDate {
         })
     }
 
-    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:75 - `IFSelect_GeneralModifier::Dispatch()`
-    pub fn dispatch(&self) -> crate::OwnedPtr<crate::ffi_types::HandleIFSelectDispatch> {
+    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:72 - `IFSelect_GeneralModifier::Dispatch()`
+    pub fn dispatch(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_IFSelect_Dispatch> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDEIGES::IGESSelect_UpdateCreationDate_inherited_Dispatch(
@@ -19415,8 +19407,8 @@ impl UpdateCreationDate {
         }
     }
 
-    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:80 - `IFSelect_GeneralModifier::Applies()`
-    pub fn applies(&self, disp: &crate::ffi_types::HandleIFSelectDispatch) -> bool {
+    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:77 - `IFSelect_GeneralModifier::Applies()`
+    pub fn applies(&self, disp: &crate::ffi_types::Handle_IFSelect_Dispatch) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_UpdateCreationDate_inherited_Applies(
                 self as *const Self,
@@ -19425,8 +19417,8 @@ impl UpdateCreationDate {
         })
     }
 
-    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:84 - `IFSelect_GeneralModifier::SetSelection()`
-    pub fn set_selection(&mut self, sel: &crate::ffi_types::HandleIFSelectSelection) {
+    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:81 - `IFSelect_GeneralModifier::SetSelection()`
+    pub fn set_selection(&mut self, sel: &crate::ffi_types::Handle_IFSelect_Selection) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_UpdateCreationDate_inherited_SetSelection(
                 self as *mut Self,
@@ -19435,7 +19427,7 @@ impl UpdateCreationDate {
         })
     }
 
-    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:87 - `IFSelect_GeneralModifier::ResetSelection()`
+    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:84 - `IFSelect_GeneralModifier::ResetSelection()`
     pub fn reset_selection(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_UpdateCreationDate_inherited_ResetSelection(
@@ -19444,7 +19436,7 @@ impl UpdateCreationDate {
         })
     }
 
-    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:90 - `IFSelect_GeneralModifier::HasSelection()`
+    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:87 - `IFSelect_GeneralModifier::HasSelection()`
     pub fn has_selection(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_UpdateCreationDate_inherited_HasSelection(
@@ -19453,8 +19445,8 @@ impl UpdateCreationDate {
         })
     }
 
-    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:93 - `IFSelect_GeneralModifier::Selection()`
-    pub fn selection(&self) -> crate::OwnedPtr<crate::ffi_types::HandleIFSelectSelection> {
+    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:90 - `IFSelect_GeneralModifier::Selection()`
+    pub fn selection(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_IFSelect_Selection> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDEIGES::IGESSelect_UpdateCreationDate_inherited_Selection(
@@ -19464,8 +19456,8 @@ impl UpdateCreationDate {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_UpdateCreationDate_inherited_IsInstance(
                 self as *const Self,
@@ -19474,8 +19466,8 @@ impl UpdateCreationDate {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_UpdateCreationDate_inherited_IsKind(
                 self as *const Self,
@@ -19484,7 +19476,7 @@ impl UpdateCreationDate {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -19500,7 +19492,7 @@ impl UpdateCreationDate {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_UpdateCreationDate_inherited_GetRefCount(
@@ -19509,7 +19501,7 @@ impl UpdateCreationDate {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_UpdateCreationDate_inherited_IncrementRefCounter(
@@ -19518,7 +19510,7 @@ impl UpdateCreationDate {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_UpdateCreationDate_inherited_DecrementRefCounter(
@@ -19527,7 +19519,7 @@ impl UpdateCreationDate {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_UpdateCreationDate_inherited_Delete(
@@ -19537,31 +19529,31 @@ impl UpdateCreationDate {
     }
 }
 
-pub use crate::ffi_types::HandleIGESSelectUpdateCreationDate;
+pub use crate::ffi_types::Handle_IGESSelect_UpdateCreationDate;
 
-unsafe impl crate::CppDeletable for HandleIGESSelectUpdateCreationDate {
+unsafe impl crate::CppDeletable for Handle_IGESSelect_UpdateCreationDate {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKDEIGES::HandleIGESSelectUpdateCreationDate_destructor(ptr);
+            crate::ffi_extern_TKDEIGES::Handle_IGESSelect_UpdateCreationDate_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleIGESSelectUpdateCreationDate {
+unsafe impl crate::CppCopyable for Handle_IGESSelect_UpdateCreationDate {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
         unsafe {
             crate::check_result(
-                crate::ffi_extern_TKDEIGES::HandleIGESSelectUpdateCreationDate_clone(ptr),
+                crate::ffi_extern_TKDEIGES::Handle_IGESSelect_UpdateCreationDate_clone(ptr),
             )
         }
     }
 }
 
-impl HandleIGESSelectUpdateCreationDate {
+impl Handle_IGESSelect_UpdateCreationDate {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
         unsafe {
-            crate::ffi_extern_TKDEIGES::HandleIGESSelectUpdateCreationDate_is_null(
+            crate::ffi_extern_TKDEIGES::Handle_IGESSelect_UpdateCreationDate_is_null(
                 self as *const Self,
             )
         }
@@ -19571,7 +19563,7 @@ impl HandleIGESSelectUpdateCreationDate {
     pub fn get(&self) -> &crate::ffi_types::IGESSelect_UpdateCreationDate {
         unsafe {
             &*crate::check_result(
-                crate::ffi_extern_TKDEIGES::HandleIGESSelectUpdateCreationDate_get(
+                crate::ffi_extern_TKDEIGES::Handle_IGESSelect_UpdateCreationDate_get(
                     self as *const Self,
                 ),
             )
@@ -19582,7 +19574,7 @@ impl HandleIGESSelectUpdateCreationDate {
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::IGESSelect_UpdateCreationDate {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi_extern_TKDEIGES::HandleIGESSelectUpdateCreationDate_get_mut(
+                crate::ffi_extern_TKDEIGES::Handle_IGESSelect_UpdateCreationDate_get_mut(
                     self as *mut Self,
                 ),
             )
@@ -19592,34 +19584,36 @@ impl HandleIGESSelectUpdateCreationDate {
     /// Upcast Handle<IGESSelect_UpdateCreationDate> to Handle<IGESSelect_ModelModifier>
     pub fn to_handle_model_modifier(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESSelectModelModifier> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_IGESSelect_ModelModifier> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectUpdateCreationDate_to_HandleIGESSelectModelModifier(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::Handle_IGESSelect_UpdateCreationDate_to_Handle_IGESSelect_ModelModifier(self as *const Self)))
         }
     }
 
     /// Upcast Handle<IGESSelect_UpdateCreationDate> to Handle<IFSelect_Modifier>
-    pub fn to_handle_modifier(&self) -> crate::OwnedPtr<crate::ffi_types::HandleIFSelectModifier> {
+    pub fn to_handle_modifier(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_IFSelect_Modifier> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectUpdateCreationDate_to_HandleIFSelectModifier(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::Handle_IGESSelect_UpdateCreationDate_to_Handle_IFSelect_Modifier(self as *const Self)))
         }
     }
 
     /// Upcast Handle<IGESSelect_UpdateCreationDate> to Handle<IFSelect_GeneralModifier>
     pub fn to_handle_general_modifier(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleIFSelectGeneralModifier> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_IFSelect_GeneralModifier> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectUpdateCreationDate_to_HandleIFSelectGeneralModifier(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::Handle_IGESSelect_UpdateCreationDate_to_Handle_IFSelect_GeneralModifier(self as *const Self)))
         }
     }
 
     /// Upcast Handle<IGESSelect_UpdateCreationDate> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectUpdateCreationDate_to_HandleStandardTransient(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::Handle_IGESSelect_UpdateCreationDate_to_Handle_Standard_Transient(self as *const Self)))
         }
     }
 }
@@ -19628,7 +19622,7 @@ impl HandleIGESSelectUpdateCreationDate {
 // From IGESSelect_UpdateFileName.hxx
 // ========================
 
-/// **Source:** `IGESSelect_UpdateFileName.hxx`:39 - `IGESSelect_UpdateFileName`
+/// **Source:** `IGESSelect_UpdateFileName.hxx`:36 - `IGESSelect_UpdateFileName`
 /// Sets the File Name in Header to be the actual name of the file
 /// If new file name is unknown, the former one is kept
 /// Remark : this works well only when it is Applied and send time
@@ -19647,7 +19641,7 @@ unsafe impl crate::CppDeletable for UpdateFileName {
 }
 
 impl UpdateFileName {
-    /// **Source:** `IGESSelect_UpdateFileName.hxx`:44 - `IGESSelect_UpdateFileName::IGESSelect_UpdateFileName()`
+    /// **Source:** `IGESSelect_UpdateFileName.hxx`:41 - `IGESSelect_UpdateFileName::IGESSelect_UpdateFileName()`
     /// Creates an UpdateFileName, which uses the system Date
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
@@ -19657,13 +19651,13 @@ impl UpdateFileName {
         }
     }
 
-    /// **Source:** `IGESSelect_UpdateFileName.hxx`:48 - `IGESSelect_UpdateFileName::Performing()`
+    /// **Source:** `IGESSelect_UpdateFileName.hxx`:45 - `IGESSelect_UpdateFileName::Performing()`
     /// Specific action : only <target> is used : the system Date
     /// is set to Global Section Item n0 18.
     pub fn performing(
         &self,
         ctx: &mut crate::if_select::ContextModif,
-        target: &crate::ffi_types::HandleIGESDataIGESModel,
+        target: &crate::ffi_types::Handle_IGESData_IGESModel,
         TC: &mut crate::interface::CopyTool,
     ) {
         crate::check_void_result(unsafe {
@@ -19676,7 +19670,7 @@ impl UpdateFileName {
         })
     }
 
-    /// **Source:** `IGESSelect_UpdateFileName.hxx`:54 - `IGESSelect_UpdateFileName::Label()`
+    /// **Source:** `IGESSelect_UpdateFileName.hxx`:51 - `IGESSelect_UpdateFileName::Label()`
     /// Returns a text which is
     /// "Updates IGES File Name to new current one"
     pub fn label(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
@@ -19687,8 +19681,8 @@ impl UpdateFileName {
         }
     }
 
-    /// **Source:** `IGESSelect_UpdateFileName.hxx`:56 - `IGESSelect_UpdateFileName::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `IGESSelect_UpdateFileName.hxx`:53 - `IGESSelect_UpdateFileName::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKDEIGES::IGESSelect_UpdateFileName_dynamic_type(
@@ -19698,7 +19692,7 @@ impl UpdateFileName {
         }
     }
 
-    /// **Source:** `IGESSelect_UpdateFileName.hxx`:56 - `IGESSelect_UpdateFileName::get_type_name()`
+    /// **Source:** `IGESSelect_UpdateFileName.hxx`:53 - `IGESSelect_UpdateFileName::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -19709,8 +19703,8 @@ impl UpdateFileName {
         .into_owned()
     }
 
-    /// **Source:** `IGESSelect_UpdateFileName.hxx`:56 - `IGESSelect_UpdateFileName::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    /// **Source:** `IGESSelect_UpdateFileName.hxx`:53 - `IGESSelect_UpdateFileName::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKDEIGES::IGESSelect_UpdateFileName_get_type_descriptor(),
@@ -19801,7 +19795,7 @@ impl UpdateFileName {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESSelectUpdateFileName> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_IGESSelect_UpdateFileName> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDEIGES::IGESSelect_UpdateFileName_to_handle(obj.into_raw()),
@@ -19809,12 +19803,12 @@ impl UpdateFileName {
         }
     }
 
-    /// Inherited: **Source:** `IGESSelect_ModelModifier.hxx`:41 - `IGESSelect_ModelModifier::Perform()`
+    /// Inherited: **Source:** `IGESSelect_ModelModifier.hxx`:38 - `IGESSelect_ModelModifier::Perform()`
     pub fn perform(
         &self,
         ctx: &mut crate::if_select::ContextModif,
-        target: &crate::ffi_types::HandleInterfaceInterfaceModel,
-        protocol: &crate::ffi_types::HandleInterfaceProtocol,
+        target: &crate::ffi_types::Handle_Interface_InterfaceModel,
+        protocol: &crate::ffi_types::Handle_Interface_Protocol,
         TC: &mut crate::interface::CopyTool,
     ) {
         crate::check_void_result(unsafe {
@@ -19828,12 +19822,12 @@ impl UpdateFileName {
         })
     }
 
-    /// Inherited: **Source:** `IGESSelect_ModelModifier.hxx`:50 - `IGESSelect_ModelModifier::PerformProtocol()`
+    /// Inherited: **Source:** `IGESSelect_ModelModifier.hxx`:47 - `IGESSelect_ModelModifier::PerformProtocol()`
     pub fn perform_protocol(
         &self,
         ctx: &mut crate::if_select::ContextModif,
-        target: &crate::ffi_types::HandleIGESDataIGESModel,
-        proto: &crate::ffi_types::HandleIGESDataProtocol,
+        target: &crate::ffi_types::Handle_IGESData_IGESModel,
+        proto: &crate::ffi_types::Handle_IGESData_Protocol,
         TC: &mut crate::interface::CopyTool,
     ) {
         crate::check_void_result(unsafe {
@@ -19847,7 +19841,7 @@ impl UpdateFileName {
         })
     }
 
-    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:68 - `IFSelect_GeneralModifier::MayChangeGraph()`
+    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:65 - `IFSelect_GeneralModifier::MayChangeGraph()`
     pub fn may_change_graph(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_UpdateFileName_inherited_MayChangeGraph(
@@ -19856,8 +19850,8 @@ impl UpdateFileName {
         })
     }
 
-    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:72 - `IFSelect_GeneralModifier::SetDispatch()`
-    pub fn set_dispatch(&mut self, disp: &crate::ffi_types::HandleIFSelectDispatch) {
+    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:69 - `IFSelect_GeneralModifier::SetDispatch()`
+    pub fn set_dispatch(&mut self, disp: &crate::ffi_types::Handle_IFSelect_Dispatch) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_UpdateFileName_inherited_SetDispatch(
                 self as *mut Self,
@@ -19866,8 +19860,8 @@ impl UpdateFileName {
         })
     }
 
-    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:75 - `IFSelect_GeneralModifier::Dispatch()`
-    pub fn dispatch(&self) -> crate::OwnedPtr<crate::ffi_types::HandleIFSelectDispatch> {
+    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:72 - `IFSelect_GeneralModifier::Dispatch()`
+    pub fn dispatch(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_IFSelect_Dispatch> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDEIGES::IGESSelect_UpdateFileName_inherited_Dispatch(
@@ -19877,8 +19871,8 @@ impl UpdateFileName {
         }
     }
 
-    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:80 - `IFSelect_GeneralModifier::Applies()`
-    pub fn applies(&self, disp: &crate::ffi_types::HandleIFSelectDispatch) -> bool {
+    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:77 - `IFSelect_GeneralModifier::Applies()`
+    pub fn applies(&self, disp: &crate::ffi_types::Handle_IFSelect_Dispatch) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_UpdateFileName_inherited_Applies(
                 self as *const Self,
@@ -19887,8 +19881,8 @@ impl UpdateFileName {
         })
     }
 
-    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:84 - `IFSelect_GeneralModifier::SetSelection()`
-    pub fn set_selection(&mut self, sel: &crate::ffi_types::HandleIFSelectSelection) {
+    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:81 - `IFSelect_GeneralModifier::SetSelection()`
+    pub fn set_selection(&mut self, sel: &crate::ffi_types::Handle_IFSelect_Selection) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_UpdateFileName_inherited_SetSelection(
                 self as *mut Self,
@@ -19897,7 +19891,7 @@ impl UpdateFileName {
         })
     }
 
-    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:87 - `IFSelect_GeneralModifier::ResetSelection()`
+    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:84 - `IFSelect_GeneralModifier::ResetSelection()`
     pub fn reset_selection(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_UpdateFileName_inherited_ResetSelection(
@@ -19906,7 +19900,7 @@ impl UpdateFileName {
         })
     }
 
-    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:90 - `IFSelect_GeneralModifier::HasSelection()`
+    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:87 - `IFSelect_GeneralModifier::HasSelection()`
     pub fn has_selection(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_UpdateFileName_inherited_HasSelection(
@@ -19915,8 +19909,8 @@ impl UpdateFileName {
         })
     }
 
-    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:93 - `IFSelect_GeneralModifier::Selection()`
-    pub fn selection(&self) -> crate::OwnedPtr<crate::ffi_types::HandleIFSelectSelection> {
+    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:90 - `IFSelect_GeneralModifier::Selection()`
+    pub fn selection(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_IFSelect_Selection> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDEIGES::IGESSelect_UpdateFileName_inherited_Selection(
@@ -19926,8 +19920,8 @@ impl UpdateFileName {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_UpdateFileName_inherited_IsInstance(
                 self as *const Self,
@@ -19936,8 +19930,8 @@ impl UpdateFileName {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_UpdateFileName_inherited_IsKind(
                 self as *const Self,
@@ -19946,7 +19940,7 @@ impl UpdateFileName {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -19962,7 +19956,7 @@ impl UpdateFileName {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_UpdateFileName_inherited_GetRefCount(
@@ -19971,7 +19965,7 @@ impl UpdateFileName {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_UpdateFileName_inherited_IncrementRefCounter(
@@ -19980,7 +19974,7 @@ impl UpdateFileName {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_UpdateFileName_inherited_DecrementRefCounter(
@@ -19989,7 +19983,7 @@ impl UpdateFileName {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_UpdateFileName_inherited_Delete(
@@ -19999,38 +19993,40 @@ impl UpdateFileName {
     }
 }
 
-pub use crate::ffi_types::HandleIGESSelectUpdateFileName;
+pub use crate::ffi_types::Handle_IGESSelect_UpdateFileName;
 
-unsafe impl crate::CppDeletable for HandleIGESSelectUpdateFileName {
+unsafe impl crate::CppDeletable for Handle_IGESSelect_UpdateFileName {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKDEIGES::HandleIGESSelectUpdateFileName_destructor(ptr);
+            crate::ffi_extern_TKDEIGES::Handle_IGESSelect_UpdateFileName_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleIGESSelectUpdateFileName {
+unsafe impl crate::CppCopyable for Handle_IGESSelect_UpdateFileName {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
         unsafe {
-            crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectUpdateFileName_clone(
+            crate::check_result(crate::ffi_extern_TKDEIGES::Handle_IGESSelect_UpdateFileName_clone(
                 ptr,
             ))
         }
     }
 }
 
-impl HandleIGESSelectUpdateFileName {
+impl Handle_IGESSelect_UpdateFileName {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
         unsafe {
-            crate::ffi_extern_TKDEIGES::HandleIGESSelectUpdateFileName_is_null(self as *const Self)
+            crate::ffi_extern_TKDEIGES::Handle_IGESSelect_UpdateFileName_is_null(
+                self as *const Self,
+            )
         }
     }
 
     /// Dereference this Handle to access the underlying IGESSelect_UpdateFileName
     pub fn get(&self) -> &crate::ffi_types::IGESSelect_UpdateFileName {
         unsafe {
-            &*crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectUpdateFileName_get(
+            &*crate::check_result(crate::ffi_extern_TKDEIGES::Handle_IGESSelect_UpdateFileName_get(
                 self as *const Self,
             ))
         }
@@ -20040,7 +20036,7 @@ impl HandleIGESSelectUpdateFileName {
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::IGESSelect_UpdateFileName {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi_extern_TKDEIGES::HandleIGESSelectUpdateFileName_get_mut(
+                crate::ffi_extern_TKDEIGES::Handle_IGESSelect_UpdateFileName_get_mut(
                     self as *mut Self,
                 ),
             )
@@ -20050,34 +20046,36 @@ impl HandleIGESSelectUpdateFileName {
     /// Upcast Handle<IGESSelect_UpdateFileName> to Handle<IGESSelect_ModelModifier>
     pub fn to_handle_model_modifier(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESSelectModelModifier> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_IGESSelect_ModelModifier> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectUpdateFileName_to_HandleIGESSelectModelModifier(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::Handle_IGESSelect_UpdateFileName_to_Handle_IGESSelect_ModelModifier(self as *const Self)))
         }
     }
 
     /// Upcast Handle<IGESSelect_UpdateFileName> to Handle<IFSelect_Modifier>
-    pub fn to_handle_modifier(&self) -> crate::OwnedPtr<crate::ffi_types::HandleIFSelectModifier> {
+    pub fn to_handle_modifier(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_IFSelect_Modifier> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectUpdateFileName_to_HandleIFSelectModifier(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::Handle_IGESSelect_UpdateFileName_to_Handle_IFSelect_Modifier(self as *const Self)))
         }
     }
 
     /// Upcast Handle<IGESSelect_UpdateFileName> to Handle<IFSelect_GeneralModifier>
     pub fn to_handle_general_modifier(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleIFSelectGeneralModifier> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_IFSelect_GeneralModifier> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectUpdateFileName_to_HandleIFSelectGeneralModifier(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::Handle_IGESSelect_UpdateFileName_to_Handle_IFSelect_GeneralModifier(self as *const Self)))
         }
     }
 
     /// Upcast Handle<IGESSelect_UpdateFileName> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectUpdateFileName_to_HandleStandardTransient(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::Handle_IGESSelect_UpdateFileName_to_Handle_Standard_Transient(self as *const Self)))
         }
     }
 }
@@ -20086,7 +20084,7 @@ impl HandleIGESSelectUpdateFileName {
 // From IGESSelect_UpdateLastChange.hxx
 // ========================
 
-/// **Source:** `IGESSelect_UpdateLastChange.hxx`:39 - `IGESSelect_UpdateLastChange`
+/// **Source:** `IGESSelect_UpdateLastChange.hxx`:36 - `IGESSelect_UpdateLastChange`
 /// Allows to Change the Last Change Date indication in the Header
 /// (Global Section) of IGES File. It is taken from the operating
 /// system (time of application of the Modifier).
@@ -20105,7 +20103,7 @@ unsafe impl crate::CppDeletable for UpdateLastChange {
 }
 
 impl UpdateLastChange {
-    /// **Source:** `IGESSelect_UpdateLastChange.hxx`:44 - `IGESSelect_UpdateLastChange::IGESSelect_UpdateLastChange()`
+    /// **Source:** `IGESSelect_UpdateLastChange.hxx`:41 - `IGESSelect_UpdateLastChange::IGESSelect_UpdateLastChange()`
     /// Creates an UpdateLastChange, which uses the system Date
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
@@ -20115,14 +20113,14 @@ impl UpdateLastChange {
         }
     }
 
-    /// **Source:** `IGESSelect_UpdateLastChange.hxx`:49 - `IGESSelect_UpdateLastChange::Performing()`
+    /// **Source:** `IGESSelect_UpdateLastChange.hxx`:46 - `IGESSelect_UpdateLastChange::Performing()`
     /// Specific action : only <target> is used : the system Date
     /// is set to Global Section Item n0 25. Also sets IGES Version
     /// (Item n0 23) to IGES5 if it was older.
     pub fn performing(
         &self,
         ctx: &mut crate::if_select::ContextModif,
-        target: &crate::ffi_types::HandleIGESDataIGESModel,
+        target: &crate::ffi_types::Handle_IGESData_IGESModel,
         TC: &mut crate::interface::CopyTool,
     ) {
         crate::check_void_result(unsafe {
@@ -20135,7 +20133,7 @@ impl UpdateLastChange {
         })
     }
 
-    /// **Source:** `IGESSelect_UpdateLastChange.hxx`:55 - `IGESSelect_UpdateLastChange::Label()`
+    /// **Source:** `IGESSelect_UpdateLastChange.hxx`:52 - `IGESSelect_UpdateLastChange::Label()`
     /// Returns a text which is
     /// "Update IGES Header Last Change Date"
     pub fn label(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
@@ -20146,8 +20144,8 @@ impl UpdateLastChange {
         }
     }
 
-    /// **Source:** `IGESSelect_UpdateLastChange.hxx`:57 - `IGESSelect_UpdateLastChange::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `IGESSelect_UpdateLastChange.hxx`:54 - `IGESSelect_UpdateLastChange::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKDEIGES::IGESSelect_UpdateLastChange_dynamic_type(
@@ -20157,7 +20155,7 @@ impl UpdateLastChange {
         }
     }
 
-    /// **Source:** `IGESSelect_UpdateLastChange.hxx`:57 - `IGESSelect_UpdateLastChange::get_type_name()`
+    /// **Source:** `IGESSelect_UpdateLastChange.hxx`:54 - `IGESSelect_UpdateLastChange::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -20168,8 +20166,8 @@ impl UpdateLastChange {
         .into_owned()
     }
 
-    /// **Source:** `IGESSelect_UpdateLastChange.hxx`:57 - `IGESSelect_UpdateLastChange::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    /// **Source:** `IGESSelect_UpdateLastChange.hxx`:54 - `IGESSelect_UpdateLastChange::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKDEIGES::IGESSelect_UpdateLastChange_get_type_descriptor(),
@@ -20260,7 +20258,7 @@ impl UpdateLastChange {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESSelectUpdateLastChange> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_IGESSelect_UpdateLastChange> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDEIGES::IGESSelect_UpdateLastChange_to_handle(obj.into_raw()),
@@ -20268,12 +20266,12 @@ impl UpdateLastChange {
         }
     }
 
-    /// Inherited: **Source:** `IGESSelect_ModelModifier.hxx`:41 - `IGESSelect_ModelModifier::Perform()`
+    /// Inherited: **Source:** `IGESSelect_ModelModifier.hxx`:38 - `IGESSelect_ModelModifier::Perform()`
     pub fn perform(
         &self,
         ctx: &mut crate::if_select::ContextModif,
-        target: &crate::ffi_types::HandleInterfaceInterfaceModel,
-        protocol: &crate::ffi_types::HandleInterfaceProtocol,
+        target: &crate::ffi_types::Handle_Interface_InterfaceModel,
+        protocol: &crate::ffi_types::Handle_Interface_Protocol,
         TC: &mut crate::interface::CopyTool,
     ) {
         crate::check_void_result(unsafe {
@@ -20287,12 +20285,12 @@ impl UpdateLastChange {
         })
     }
 
-    /// Inherited: **Source:** `IGESSelect_ModelModifier.hxx`:50 - `IGESSelect_ModelModifier::PerformProtocol()`
+    /// Inherited: **Source:** `IGESSelect_ModelModifier.hxx`:47 - `IGESSelect_ModelModifier::PerformProtocol()`
     pub fn perform_protocol(
         &self,
         ctx: &mut crate::if_select::ContextModif,
-        target: &crate::ffi_types::HandleIGESDataIGESModel,
-        proto: &crate::ffi_types::HandleIGESDataProtocol,
+        target: &crate::ffi_types::Handle_IGESData_IGESModel,
+        proto: &crate::ffi_types::Handle_IGESData_Protocol,
         TC: &mut crate::interface::CopyTool,
     ) {
         crate::check_void_result(unsafe {
@@ -20306,7 +20304,7 @@ impl UpdateLastChange {
         })
     }
 
-    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:68 - `IFSelect_GeneralModifier::MayChangeGraph()`
+    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:65 - `IFSelect_GeneralModifier::MayChangeGraph()`
     pub fn may_change_graph(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_UpdateLastChange_inherited_MayChangeGraph(
@@ -20315,8 +20313,8 @@ impl UpdateLastChange {
         })
     }
 
-    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:72 - `IFSelect_GeneralModifier::SetDispatch()`
-    pub fn set_dispatch(&mut self, disp: &crate::ffi_types::HandleIFSelectDispatch) {
+    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:69 - `IFSelect_GeneralModifier::SetDispatch()`
+    pub fn set_dispatch(&mut self, disp: &crate::ffi_types::Handle_IFSelect_Dispatch) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_UpdateLastChange_inherited_SetDispatch(
                 self as *mut Self,
@@ -20325,8 +20323,8 @@ impl UpdateLastChange {
         })
     }
 
-    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:75 - `IFSelect_GeneralModifier::Dispatch()`
-    pub fn dispatch(&self) -> crate::OwnedPtr<crate::ffi_types::HandleIFSelectDispatch> {
+    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:72 - `IFSelect_GeneralModifier::Dispatch()`
+    pub fn dispatch(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_IFSelect_Dispatch> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDEIGES::IGESSelect_UpdateLastChange_inherited_Dispatch(
@@ -20336,8 +20334,8 @@ impl UpdateLastChange {
         }
     }
 
-    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:80 - `IFSelect_GeneralModifier::Applies()`
-    pub fn applies(&self, disp: &crate::ffi_types::HandleIFSelectDispatch) -> bool {
+    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:77 - `IFSelect_GeneralModifier::Applies()`
+    pub fn applies(&self, disp: &crate::ffi_types::Handle_IFSelect_Dispatch) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_UpdateLastChange_inherited_Applies(
                 self as *const Self,
@@ -20346,8 +20344,8 @@ impl UpdateLastChange {
         })
     }
 
-    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:84 - `IFSelect_GeneralModifier::SetSelection()`
-    pub fn set_selection(&mut self, sel: &crate::ffi_types::HandleIFSelectSelection) {
+    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:81 - `IFSelect_GeneralModifier::SetSelection()`
+    pub fn set_selection(&mut self, sel: &crate::ffi_types::Handle_IFSelect_Selection) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_UpdateLastChange_inherited_SetSelection(
                 self as *mut Self,
@@ -20356,7 +20354,7 @@ impl UpdateLastChange {
         })
     }
 
-    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:87 - `IFSelect_GeneralModifier::ResetSelection()`
+    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:84 - `IFSelect_GeneralModifier::ResetSelection()`
     pub fn reset_selection(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_UpdateLastChange_inherited_ResetSelection(
@@ -20365,7 +20363,7 @@ impl UpdateLastChange {
         })
     }
 
-    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:90 - `IFSelect_GeneralModifier::HasSelection()`
+    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:87 - `IFSelect_GeneralModifier::HasSelection()`
     pub fn has_selection(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_UpdateLastChange_inherited_HasSelection(
@@ -20374,8 +20372,8 @@ impl UpdateLastChange {
         })
     }
 
-    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:93 - `IFSelect_GeneralModifier::Selection()`
-    pub fn selection(&self) -> crate::OwnedPtr<crate::ffi_types::HandleIFSelectSelection> {
+    /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:90 - `IFSelect_GeneralModifier::Selection()`
+    pub fn selection(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_IFSelect_Selection> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDEIGES::IGESSelect_UpdateLastChange_inherited_Selection(
@@ -20385,8 +20383,8 @@ impl UpdateLastChange {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_UpdateLastChange_inherited_IsInstance(
                 self as *const Self,
@@ -20395,8 +20393,8 @@ impl UpdateLastChange {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_UpdateLastChange_inherited_IsKind(
                 self as *const Self,
@@ -20405,7 +20403,7 @@ impl UpdateLastChange {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -20421,7 +20419,7 @@ impl UpdateLastChange {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_UpdateLastChange_inherited_GetRefCount(
@@ -20430,7 +20428,7 @@ impl UpdateLastChange {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_UpdateLastChange_inherited_IncrementRefCounter(
@@ -20439,7 +20437,7 @@ impl UpdateLastChange {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_UpdateLastChange_inherited_DecrementRefCounter(
@@ -20448,7 +20446,7 @@ impl UpdateLastChange {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_UpdateLastChange_inherited_Delete(
@@ -20458,31 +20456,31 @@ impl UpdateLastChange {
     }
 }
 
-pub use crate::ffi_types::HandleIGESSelectUpdateLastChange;
+pub use crate::ffi_types::Handle_IGESSelect_UpdateLastChange;
 
-unsafe impl crate::CppDeletable for HandleIGESSelectUpdateLastChange {
+unsafe impl crate::CppDeletable for Handle_IGESSelect_UpdateLastChange {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKDEIGES::HandleIGESSelectUpdateLastChange_destructor(ptr);
+            crate::ffi_extern_TKDEIGES::Handle_IGESSelect_UpdateLastChange_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleIGESSelectUpdateLastChange {
+unsafe impl crate::CppCopyable for Handle_IGESSelect_UpdateLastChange {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
         unsafe {
-            crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectUpdateLastChange_clone(
-                ptr,
-            ))
+            crate::check_result(
+                crate::ffi_extern_TKDEIGES::Handle_IGESSelect_UpdateLastChange_clone(ptr),
+            )
         }
     }
 }
 
-impl HandleIGESSelectUpdateLastChange {
+impl Handle_IGESSelect_UpdateLastChange {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
         unsafe {
-            crate::ffi_extern_TKDEIGES::HandleIGESSelectUpdateLastChange_is_null(
+            crate::ffi_extern_TKDEIGES::Handle_IGESSelect_UpdateLastChange_is_null(
                 self as *const Self,
             )
         }
@@ -20491,9 +20489,11 @@ impl HandleIGESSelectUpdateLastChange {
     /// Dereference this Handle to access the underlying IGESSelect_UpdateLastChange
     pub fn get(&self) -> &crate::ffi_types::IGESSelect_UpdateLastChange {
         unsafe {
-            &*crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectUpdateLastChange_get(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKDEIGES::Handle_IGESSelect_UpdateLastChange_get(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -20501,7 +20501,7 @@ impl HandleIGESSelectUpdateLastChange {
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::IGESSelect_UpdateLastChange {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi_extern_TKDEIGES::HandleIGESSelectUpdateLastChange_get_mut(
+                crate::ffi_extern_TKDEIGES::Handle_IGESSelect_UpdateLastChange_get_mut(
                     self as *mut Self,
                 ),
             )
@@ -20511,34 +20511,36 @@ impl HandleIGESSelectUpdateLastChange {
     /// Upcast Handle<IGESSelect_UpdateLastChange> to Handle<IGESSelect_ModelModifier>
     pub fn to_handle_model_modifier(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESSelectModelModifier> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_IGESSelect_ModelModifier> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectUpdateLastChange_to_HandleIGESSelectModelModifier(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::Handle_IGESSelect_UpdateLastChange_to_Handle_IGESSelect_ModelModifier(self as *const Self)))
         }
     }
 
     /// Upcast Handle<IGESSelect_UpdateLastChange> to Handle<IFSelect_Modifier>
-    pub fn to_handle_modifier(&self) -> crate::OwnedPtr<crate::ffi_types::HandleIFSelectModifier> {
+    pub fn to_handle_modifier(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_IFSelect_Modifier> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectUpdateLastChange_to_HandleIFSelectModifier(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::Handle_IGESSelect_UpdateLastChange_to_Handle_IFSelect_Modifier(self as *const Self)))
         }
     }
 
     /// Upcast Handle<IGESSelect_UpdateLastChange> to Handle<IFSelect_GeneralModifier>
     pub fn to_handle_general_modifier(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleIFSelectGeneralModifier> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_IFSelect_GeneralModifier> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectUpdateLastChange_to_HandleIFSelectGeneralModifier(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::Handle_IGESSelect_UpdateLastChange_to_Handle_IFSelect_GeneralModifier(self as *const Self)))
         }
     }
 
     /// Upcast Handle<IGESSelect_UpdateLastChange> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectUpdateLastChange_to_HandleStandardTransient(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::Handle_IGESSelect_UpdateLastChange_to_Handle_Standard_Transient(self as *const Self)))
         }
     }
 }
@@ -20547,7 +20549,7 @@ impl HandleIGESSelectUpdateLastChange {
 // From IGESSelect_ViewSorter.hxx
 // ========================
 
-/// **Source:** `IGESSelect_ViewSorter.hxx`:45 - `IGESSelect_ViewSorter`
+/// **Source:** `IGESSelect_ViewSorter.hxx`:42 - `IGESSelect_ViewSorter`
 /// Sorts IGES Entities on the views and drawings.
 /// In a first step, it splits a set of entities according the
 /// different views they are attached to.
@@ -20567,7 +20569,7 @@ unsafe impl crate::CppDeletable for ViewSorter {
 }
 
 impl ViewSorter {
-    /// **Source:** `IGESSelect_ViewSorter.hxx`:50 - `IGESSelect_ViewSorter::IGESSelect_ViewSorter()`
+    /// **Source:** `IGESSelect_ViewSorter.hxx`:47 - `IGESSelect_ViewSorter::IGESSelect_ViewSorter()`
     /// Creates a ViewSorter, empty. SetModel remains to be called
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
@@ -20577,15 +20579,15 @@ impl ViewSorter {
         }
     }
 
-    /// **Source:** `IGESSelect_ViewSorter.hxx`:53 - `IGESSelect_ViewSorter::SetModel()`
+    /// **Source:** `IGESSelect_ViewSorter.hxx`:50 - `IGESSelect_ViewSorter::SetModel()`
     /// Sets the Model (for PacketList)
-    pub fn set_model(&mut self, model: &crate::ffi_types::HandleIGESDataIGESModel) {
+    pub fn set_model(&mut self, model: &crate::ffi_types::Handle_IGESData_IGESModel) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_ViewSorter_set_model(self as *mut Self, model)
         })
     }
 
-    /// **Source:** `IGESSelect_ViewSorter.hxx`:56 - `IGESSelect_ViewSorter::Clear()`
+    /// **Source:** `IGESSelect_ViewSorter.hxx`:53 - `IGESSelect_ViewSorter::Clear()`
     /// Clears recorded data
     pub fn clear(&mut self) {
         crate::check_void_result(unsafe {
@@ -20593,41 +20595,44 @@ impl ViewSorter {
         })
     }
 
-    /// **Source:** `IGESSelect_ViewSorter.hxx`:59 - `IGESSelect_ViewSorter::Add()`
+    /// **Source:** `IGESSelect_ViewSorter.hxx`:56 - `IGESSelect_ViewSorter::Add()`
     /// Adds an item according its type : AddEntity,AddList,AddModel
-    pub fn add(&mut self, ent: &crate::ffi_types::HandleStandardTransient) -> bool {
+    pub fn add(&mut self, ent: &crate::ffi_types::Handle_Standard_Transient) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_ViewSorter_add(self as *mut Self, ent)
         })
     }
 
-    /// **Source:** `IGESSelect_ViewSorter.hxx`:64 - `IGESSelect_ViewSorter::AddEntity()`
+    /// **Source:** `IGESSelect_ViewSorter.hxx`:61 - `IGESSelect_ViewSorter::AddEntity()`
     /// Adds an IGES entity. Records the view it is attached to.
     /// Records directly <ent> if it is a ViewKindEntity or a Drawing
     /// Returns True if added, False if already in the map
-    pub fn add_entity(&mut self, igesent: &crate::ffi_types::HandleIGESDataIGESEntity) -> bool {
+    pub fn add_entity(&mut self, igesent: &crate::ffi_types::Handle_IGESData_IGESEntity) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_ViewSorter_add_entity(self as *mut Self, igesent)
         })
     }
 
-    /// **Source:** `IGESSelect_ViewSorter.hxx`:67 - `IGESSelect_ViewSorter::AddList()`
+    /// **Source:** `IGESSelect_ViewSorter.hxx`:64 - `IGESSelect_ViewSorter::AddList()`
     /// Adds a list of entities by adding each of the items
-    pub fn add_list(&mut self, list: &crate::ffi_types::HandleTColStdHSequenceOfTransient) {
+    pub fn add_list(
+        &mut self,
+        list: &crate::ffi_types::Handle_NCollection_HSequence_opencascade_handle_Standard_Transient,
+    ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_ViewSorter_add_list(self as *mut Self, list)
         })
     }
 
-    /// **Source:** `IGESSelect_ViewSorter.hxx`:70 - `IGESSelect_ViewSorter::AddModel()`
+    /// **Source:** `IGESSelect_ViewSorter.hxx`:68 - `IGESSelect_ViewSorter::AddModel()`
     /// Adds all the entities contained in a Model
-    pub fn add_model(&mut self, model: &crate::ffi_types::HandleInterfaceInterfaceModel) {
+    pub fn add_model(&mut self, model: &crate::ffi_types::Handle_Interface_InterfaceModel) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_ViewSorter_add_model(self as *mut Self, model)
         })
     }
 
-    /// **Source:** `IGESSelect_ViewSorter.hxx`:73 - `IGESSelect_ViewSorter::NbEntities()`
+    /// **Source:** `IGESSelect_ViewSorter.hxx`:71 - `IGESSelect_ViewSorter::NbEntities()`
     /// Returns the count of already recorded
     pub fn nb_entities(&self) -> i32 {
         crate::check_result(unsafe {
@@ -20635,7 +20640,7 @@ impl ViewSorter {
         })
     }
 
-    /// **Source:** `IGESSelect_ViewSorter.hxx`:82 - `IGESSelect_ViewSorter::SortSingleViews()`
+    /// **Source:** `IGESSelect_ViewSorter.hxx`:80 - `IGESSelect_ViewSorter::SortSingleViews()`
     /// Prepares the result to keep only sets attached to Single Views
     /// If <alsoframes> is given True, it keeps also the Drawings as
     /// specific sets, in order to get their frames.
@@ -20652,7 +20657,7 @@ impl ViewSorter {
         })
     }
 
-    /// **Source:** `IGESSelect_ViewSorter.hxx`:93 - `IGESSelect_ViewSorter::SortDrawings()`
+    /// **Source:** `IGESSelect_ViewSorter.hxx`:91 - `IGESSelect_ViewSorter::SortDrawings()`
     /// Prepares the result to the sets attached to Drawings :
     /// All the single views referenced by a Drawing become bound to
     /// the set for this Drawing
@@ -20668,7 +20673,7 @@ impl ViewSorter {
         })
     }
 
-    /// **Source:** `IGESSelect_ViewSorter.hxx`:104 - `IGESSelect_ViewSorter::NbSets()`
+    /// **Source:** `IGESSelect_ViewSorter.hxx`:102 - `IGESSelect_ViewSorter::NbSets()`
     /// Returns the count of sets recorded, one per distinct item.
     /// The Remaining List is not counted.
     /// If <final> is False, the sets are attached to distinct views
@@ -20684,7 +20689,7 @@ impl ViewSorter {
         })
     }
 
-    /// **Source:** `IGESSelect_ViewSorter.hxx`:109 - `IGESSelect_ViewSorter::SetItem()`
+    /// **Source:** `IGESSelect_ViewSorter.hxx`:107 - `IGESSelect_ViewSorter::SetItem()`
     /// Returns the Item which is attached to a set of entities
     /// For <final> and definition of sets, see method NbSets.
     /// This item can be a kind of View or a Drawing
@@ -20692,7 +20697,7 @@ impl ViewSorter {
         &self,
         num: i32,
         final_: bool,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataIGESEntity> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_IGESData_IGESEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDEIGES::IGESSelect_ViewSorter_set_item(
@@ -20704,14 +20709,14 @@ impl ViewSorter {
         }
     }
 
-    /// **Source:** `IGESSelect_ViewSorter.hxx`:115 - `IGESSelect_ViewSorter::Sets()`
+    /// **Source:** `IGESSelect_ViewSorter.hxx`:112 - `IGESSelect_ViewSorter::Sets()`
     /// Returns the complete content of the determined Sets, which
     /// include Duplicated and Remaining (duplication 0) lists
     /// For <final> and definition of sets, see method NbSets.
     pub fn sets(
         &self,
         final_: bool,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleIFSelectPacketList> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_IFSelect_PacketList> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDEIGES::IGESSelect_ViewSorter_sets(self as *const Self, final_),
@@ -20719,8 +20724,8 @@ impl ViewSorter {
         }
     }
 
-    /// **Source:** `IGESSelect_ViewSorter.hxx`:117 - `IGESSelect_ViewSorter::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `IGESSelect_ViewSorter.hxx`:114 - `IGESSelect_ViewSorter::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKDEIGES::IGESSelect_ViewSorter_dynamic_type(
                 self as *const Self,
@@ -20728,7 +20733,7 @@ impl ViewSorter {
         }
     }
 
-    /// **Source:** `IGESSelect_ViewSorter.hxx`:117 - `IGESSelect_ViewSorter::get_type_name()`
+    /// **Source:** `IGESSelect_ViewSorter.hxx`:114 - `IGESSelect_ViewSorter::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -20739,8 +20744,8 @@ impl ViewSorter {
         .into_owned()
     }
 
-    /// **Source:** `IGESSelect_ViewSorter.hxx`:117 - `IGESSelect_ViewSorter::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    /// **Source:** `IGESSelect_ViewSorter.hxx`:114 - `IGESSelect_ViewSorter::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKDEIGES::IGESSelect_ViewSorter_get_type_descriptor(),
@@ -20773,7 +20778,7 @@ impl ViewSorter {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESSelectViewSorter> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_IGESSelect_ViewSorter> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDEIGES::IGESSelect_ViewSorter_to_handle(obj.into_raw()),
@@ -20781,8 +20786,8 @@ impl ViewSorter {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_ViewSorter_inherited_IsInstance(
                 self as *const Self,
@@ -20791,8 +20796,8 @@ impl ViewSorter {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_ViewSorter_inherited_IsKind(
                 self as *const Self,
@@ -20801,7 +20806,7 @@ impl ViewSorter {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -20817,7 +20822,7 @@ impl ViewSorter {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_ViewSorter_inherited_GetRefCount(
@@ -20826,7 +20831,7 @@ impl ViewSorter {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_ViewSorter_inherited_IncrementRefCounter(
@@ -20835,7 +20840,7 @@ impl ViewSorter {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_ViewSorter_inherited_DecrementRefCounter(
@@ -20844,7 +20849,7 @@ impl ViewSorter {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_ViewSorter_inherited_Delete(self as *const Self)
@@ -20852,36 +20857,36 @@ impl ViewSorter {
     }
 }
 
-pub use crate::ffi_types::HandleIGESSelectViewSorter;
+pub use crate::ffi_types::Handle_IGESSelect_ViewSorter;
 
-unsafe impl crate::CppDeletable for HandleIGESSelectViewSorter {
+unsafe impl crate::CppDeletable for Handle_IGESSelect_ViewSorter {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKDEIGES::HandleIGESSelectViewSorter_destructor(ptr);
+            crate::ffi_extern_TKDEIGES::Handle_IGESSelect_ViewSorter_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleIGESSelectViewSorter {
+unsafe impl crate::CppCopyable for Handle_IGESSelect_ViewSorter {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
         unsafe {
-            crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectViewSorter_clone(ptr))
+            crate::check_result(crate::ffi_extern_TKDEIGES::Handle_IGESSelect_ViewSorter_clone(ptr))
         }
     }
 }
 
-impl HandleIGESSelectViewSorter {
+impl Handle_IGESSelect_ViewSorter {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
         unsafe {
-            crate::ffi_extern_TKDEIGES::HandleIGESSelectViewSorter_is_null(self as *const Self)
+            crate::ffi_extern_TKDEIGES::Handle_IGESSelect_ViewSorter_is_null(self as *const Self)
         }
     }
 
     /// Dereference this Handle to access the underlying IGESSelect_ViewSorter
     pub fn get(&self) -> &crate::ffi_types::IGESSelect_ViewSorter {
         unsafe {
-            &*crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectViewSorter_get(
+            &*crate::check_result(crate::ffi_extern_TKDEIGES::Handle_IGESSelect_ViewSorter_get(
                 self as *const Self,
             ))
         }
@@ -20891,7 +20896,7 @@ impl HandleIGESSelectViewSorter {
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::IGESSelect_ViewSorter {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi_extern_TKDEIGES::HandleIGESSelectViewSorter_get_mut(self as *mut Self),
+                crate::ffi_extern_TKDEIGES::Handle_IGESSelect_ViewSorter_get_mut(self as *mut Self),
             )
         }
     }
@@ -20899,13 +20904,9 @@ impl HandleIGESSelectViewSorter {
     /// Upcast Handle<IGESSelect_ViewSorter> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKDEIGES::HandleIGESSelectViewSorter_to_HandleStandardTransient(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::Handle_IGESSelect_ViewSorter_to_Handle_Standard_Transient(self as *const Self)))
         }
     }
 }
@@ -20914,7 +20915,7 @@ impl HandleIGESSelectViewSorter {
 // From IGESSelect_WorkLibrary.hxx
 // ========================
 
-/// **Source:** `IGESSelect_WorkLibrary.hxx`:35 - `IGESSelect_WorkLibrary`
+/// **Source:** `IGESSelect_WorkLibrary.hxx`:32 - `IGESSelect_WorkLibrary`
 /// Performs Read and Write an IGES File with an IGES Model
 pub use crate::ffi_types::IGESSelect_WorkLibrary as WorkLibrary;
 
@@ -20927,7 +20928,7 @@ unsafe impl crate::CppDeletable for WorkLibrary {
 }
 
 impl WorkLibrary {
-    /// **Source:** `IGESSelect_WorkLibrary.hxx`:41 - `IGESSelect_WorkLibrary::IGESSelect_WorkLibrary()`
+    /// **Source:** `IGESSelect_WorkLibrary.hxx`:38 - `IGESSelect_WorkLibrary::IGESSelect_WorkLibrary()`
     /// Creates a IGES WorkLibrary
     /// If <modefnes> is given as True, it will work for FNES
     pub fn new_bool(modefnes: bool) -> crate::OwnedPtr<Self> {
@@ -20938,22 +20939,22 @@ impl WorkLibrary {
         }
     }
 
-    /// **Source:** `IGESSelect_WorkLibrary.hxx`:41 - `IGESSelect_WorkLibrary::IGESSelect_WorkLibrary()`
+    /// **Source:** `IGESSelect_WorkLibrary.hxx`:38 - `IGESSelect_WorkLibrary::IGESSelect_WorkLibrary()`
     /// Creates a IGES WorkLibrary
     /// If <modefnes> is given as True, it will work for FNES
     pub fn new() -> crate::OwnedPtr<Self> {
         Self::new_bool(false)
     }
 
-    /// **Source:** `IGESSelect_WorkLibrary.hxx`:47 - `IGESSelect_WorkLibrary::ReadFile()`
+    /// **Source:** `IGESSelect_WorkLibrary.hxx`:43 - `IGESSelect_WorkLibrary::ReadFile()`
     /// Reads a IGES File and returns a IGES Model (into <mod>),
     /// or lets <mod> "Null" in case of Error
     /// Returns 0 if OK, 1 if Read Error, -1 if File not opened
     pub fn read_file(
         &self,
         name: &str,
-        model: &mut crate::ffi_types::HandleInterfaceInterfaceModel,
-        protocol: &crate::ffi_types::HandleInterfaceProtocol,
+        model: &mut crate::ffi_types::Handle_Interface_InterfaceModel,
+        protocol: &crate::ffi_types::Handle_Interface_Protocol,
     ) -> i32 {
         let c_name = std::ffi::CString::new(name).unwrap();
         crate::check_result(unsafe {
@@ -20966,7 +20967,7 @@ impl WorkLibrary {
         })
     }
 
-    /// **Source:** `IGESSelect_WorkLibrary.hxx`:53 - `IGESSelect_WorkLibrary::WriteFile()`
+    /// **Source:** `IGESSelect_WorkLibrary.hxx`:49 - `IGESSelect_WorkLibrary::WriteFile()`
     /// Writes a File from a IGES Model (brought by <ctx>)
     /// Returns False (and writes no file) if <ctx> is not for IGES
     pub fn write_file(&self, ctx: &mut crate::if_select::ContextWrite) -> bool {
@@ -20975,14 +20976,14 @@ impl WorkLibrary {
         })
     }
 
-    /// **Source:** `IGESSelect_WorkLibrary.hxx`:61 - `IGESSelect_WorkLibrary::DumpEntity()`
+    /// **Source:** `IGESSelect_WorkLibrary.hxx`:57 - `IGESSelect_WorkLibrary::DumpEntity()`
     /// Dumps an IGES Entity with an IGES Dumper. <level> is the one
     /// used by IGESDumper.
     pub fn dump_entity(
         &self,
-        model: &crate::ffi_types::HandleInterfaceInterfaceModel,
-        protocol: &crate::ffi_types::HandleInterfaceProtocol,
-        entity: &crate::ffi_types::HandleStandardTransient,
+        model: &crate::ffi_types::Handle_Interface_InterfaceModel,
+        protocol: &crate::ffi_types::Handle_Interface_Protocol,
+        entity: &crate::ffi_types::Handle_Standard_Transient,
         S: &mut crate::ffi_types::Standard_OStream,
         level: i32,
     ) {
@@ -20998,8 +20999,8 @@ impl WorkLibrary {
         })
     }
 
-    /// **Source:** `IGESSelect_WorkLibrary.hxx`:67 - `IGESSelect_WorkLibrary::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `IGESSelect_WorkLibrary.hxx`:63 - `IGESSelect_WorkLibrary::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKDEIGES::IGESSelect_WorkLibrary_dynamic_type(
@@ -21009,10 +21010,10 @@ impl WorkLibrary {
         }
     }
 
-    /// **Source:** `IGESSelect_WorkLibrary.hxx`:57 - `IGESSelect_WorkLibrary::DefineProtocol()`
+    /// **Source:** `IGESSelect_WorkLibrary.hxx`:53 - `IGESSelect_WorkLibrary::DefineProtocol()`
     /// Defines a protocol to be adequate for IGES
     /// (encompasses ALL the IGES norm including IGESSolid, IGESAppli)
-    pub fn define_protocol() -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataProtocol> {
+    pub fn define_protocol() -> crate::OwnedPtr<crate::ffi_types::Handle_IGESData_Protocol> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDEIGES::IGESSelect_WorkLibrary_define_protocol(),
@@ -21020,7 +21021,7 @@ impl WorkLibrary {
         }
     }
 
-    /// **Source:** `IGESSelect_WorkLibrary.hxx`:67 - `IGESSelect_WorkLibrary::get_type_name()`
+    /// **Source:** `IGESSelect_WorkLibrary.hxx`:63 - `IGESSelect_WorkLibrary::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -21031,8 +21032,8 @@ impl WorkLibrary {
         .into_owned()
     }
 
-    /// **Source:** `IGESSelect_WorkLibrary.hxx`:67 - `IGESSelect_WorkLibrary::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    /// **Source:** `IGESSelect_WorkLibrary.hxx`:63 - `IGESSelect_WorkLibrary::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKDEIGES::IGESSelect_WorkLibrary_get_type_descriptor(),
@@ -21087,7 +21088,7 @@ impl WorkLibrary {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESSelectWorkLibrary> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_IGESSelect_WorkLibrary> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDEIGES::IGESSelect_WorkLibrary_to_handle(obj.into_raw()),
@@ -21095,11 +21096,11 @@ impl WorkLibrary {
         }
     }
 
-    /// Inherited: **Source:** `IFSelect_WorkLibrary.hxx`:103 - `IFSelect_WorkLibrary::CopyModel()`
+    /// Inherited: **Source:** `IFSelect_WorkLibrary.hxx`:100 - `IFSelect_WorkLibrary::CopyModel()`
     pub fn copy_model(
         &self,
-        original: &crate::ffi_types::HandleInterfaceInterfaceModel,
-        newmodel: &crate::ffi_types::HandleInterfaceInterfaceModel,
+        original: &crate::ffi_types::Handle_Interface_InterfaceModel,
+        newmodel: &crate::ffi_types::Handle_Interface_InterfaceModel,
         list: &crate::interface::EntityIterator,
         TC: &mut crate::interface::CopyTool,
     ) -> bool {
@@ -21114,7 +21115,7 @@ impl WorkLibrary {
         })
     }
 
-    /// Inherited: **Source:** `IFSelect_WorkLibrary.hxx`:128 - `IFSelect_WorkLibrary::SetDumpLevels()`
+    /// Inherited: **Source:** `IFSelect_WorkLibrary.hxx`:124 - `IFSelect_WorkLibrary::SetDumpLevels()`
     pub fn set_dump_levels(&mut self, def: i32, max: i32) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_WorkLibrary_inherited_SetDumpLevels(
@@ -21125,7 +21126,7 @@ impl WorkLibrary {
         })
     }
 
-    /// Inherited: **Source:** `IFSelect_WorkLibrary.hxx`:132 - `IFSelect_WorkLibrary::DumpLevels()`
+    /// Inherited: **Source:** `IFSelect_WorkLibrary.hxx`:128 - `IFSelect_WorkLibrary::DumpLevels()`
     pub fn dump_levels(&self, def: &mut i32, max: &mut i32) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_WorkLibrary_inherited_DumpLevels(
@@ -21136,8 +21137,8 @@ impl WorkLibrary {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_WorkLibrary_inherited_IsInstance(
                 self as *const Self,
@@ -21146,8 +21147,8 @@ impl WorkLibrary {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_WorkLibrary_inherited_IsKind(
                 self as *const Self,
@@ -21156,7 +21157,7 @@ impl WorkLibrary {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -21172,7 +21173,7 @@ impl WorkLibrary {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_WorkLibrary_inherited_GetRefCount(
@@ -21181,7 +21182,7 @@ impl WorkLibrary {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_WorkLibrary_inherited_IncrementRefCounter(
@@ -21190,7 +21191,7 @@ impl WorkLibrary {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_WorkLibrary_inherited_DecrementRefCounter(
@@ -21199,7 +21200,7 @@ impl WorkLibrary {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEIGES::IGESSelect_WorkLibrary_inherited_Delete(self as *const Self)
@@ -21207,36 +21208,38 @@ impl WorkLibrary {
     }
 }
 
-pub use crate::ffi_types::HandleIGESSelectWorkLibrary;
+pub use crate::ffi_types::Handle_IGESSelect_WorkLibrary;
 
-unsafe impl crate::CppDeletable for HandleIGESSelectWorkLibrary {
+unsafe impl crate::CppDeletable for Handle_IGESSelect_WorkLibrary {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKDEIGES::HandleIGESSelectWorkLibrary_destructor(ptr);
+            crate::ffi_extern_TKDEIGES::Handle_IGESSelect_WorkLibrary_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleIGESSelectWorkLibrary {
+unsafe impl crate::CppCopyable for Handle_IGESSelect_WorkLibrary {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
         unsafe {
-            crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectWorkLibrary_clone(ptr))
+            crate::check_result(crate::ffi_extern_TKDEIGES::Handle_IGESSelect_WorkLibrary_clone(
+                ptr,
+            ))
         }
     }
 }
 
-impl HandleIGESSelectWorkLibrary {
+impl Handle_IGESSelect_WorkLibrary {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
         unsafe {
-            crate::ffi_extern_TKDEIGES::HandleIGESSelectWorkLibrary_is_null(self as *const Self)
+            crate::ffi_extern_TKDEIGES::Handle_IGESSelect_WorkLibrary_is_null(self as *const Self)
         }
     }
 
     /// Dereference this Handle to access the underlying IGESSelect_WorkLibrary
     pub fn get(&self) -> &crate::ffi_types::IGESSelect_WorkLibrary {
         unsafe {
-            &*crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectWorkLibrary_get(
+            &*crate::check_result(crate::ffi_extern_TKDEIGES::Handle_IGESSelect_WorkLibrary_get(
                 self as *const Self,
             ))
         }
@@ -21246,7 +21249,9 @@ impl HandleIGESSelectWorkLibrary {
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::IGESSelect_WorkLibrary {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi_extern_TKDEIGES::HandleIGESSelectWorkLibrary_get_mut(self as *mut Self),
+                crate::ffi_extern_TKDEIGES::Handle_IGESSelect_WorkLibrary_get_mut(
+                    self as *mut Self,
+                ),
             )
         }
     }
@@ -21254,22 +21259,18 @@ impl HandleIGESSelectWorkLibrary {
     /// Upcast Handle<IGESSelect_WorkLibrary> to Handle<IFSelect_WorkLibrary>
     pub fn to_handle_work_library(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleIFSelectWorkLibrary> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_IFSelect_WorkLibrary> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESSelectWorkLibrary_to_HandleIFSelectWorkLibrary(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::Handle_IGESSelect_WorkLibrary_to_Handle_IFSelect_WorkLibrary(self as *const Self)))
         }
     }
 
     /// Upcast Handle<IGESSelect_WorkLibrary> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKDEIGES::HandleIGESSelectWorkLibrary_to_HandleStandardTransient(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::Handle_IGESSelect_WorkLibrary_to_Handle_Standard_Transient(self as *const Self)))
         }
     }
 }

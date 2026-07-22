@@ -108,7 +108,7 @@ fn main() {
 
     build
         .cpp(true)
-        .flag_if_supported("-std=c++14")
+        .flag_if_supported("-std=c++17")
         // Generated wrappers use extern "C" functions that return C++ reference types
         // (e.g. const TopoDS_Shape&). This is technically incompatible with C linkage
         // but works fine for Rust FFI where both sides agree on calling convention.
@@ -132,9 +132,16 @@ fn main() {
     // MSVC does not support -isystem; on GCC/Clang it is standard.
     if target.contains("msvc") {
         build.include(&occt_config.include_dir);
+        if let Some(ref bi) = occt_config.build_include_dir {
+            build.include(bi);
+        }
     } else {
         build.flag("-isystem");
         build.flag(occt_config.include_dir.to_str().unwrap());
+        if let Some(bi) = &occt_config.build_include_dir {
+            build.flag("-isystem");
+            build.flag(bi.to_str().unwrap());
+        }
     }
 
     build.compile("opencascade_sys_wrapper");
@@ -154,6 +161,9 @@ fn main() {
 
 struct OcctConfig {
     include_dir: PathBuf,
+    /// Optional build-time include directory containing generated `.pxx` headers
+    /// that are not part of the installed public headers.
+    build_include_dir: Option<PathBuf>,
     library_dir: PathBuf,
     is_dynamic: bool,
 }
@@ -179,11 +189,11 @@ impl OcctConfig {
             unsafe { std::env::set_var("DEP_OCCT_ROOT", builtin_occt_path.as_os_str()) };
 
             // With builtin feature, skip cmake detection and use built OCCT directly
-            // Headers can be in either build/include (during build) or include (after install)
-            let include_dir = if builtin_occt_path.join("build").join("include").exists() {
-                builtin_occt_path.join("build").join("include")
-            } else if builtin_occt_path.join("include").exists() {
+            // Prefer include/ (installed headers, complete set) over build/include
+            let include_dir = if builtin_occt_path.join("include").exists() {
                 builtin_occt_path.join("include")
+            } else if builtin_occt_path.join("build").join("include").exists() {
+                builtin_occt_path.join("build").join("include")
             } else {
                 panic!("Builtin OCCT include directory not found at {:?}", builtin_occt_path);
             };
@@ -196,8 +206,13 @@ impl OcctConfig {
                 panic!("Builtin OCCT library directory not found at {:?}", builtin_occt_path);
             };
 
+                        let build_include_dir = {
+                let p = builtin_occt_path.join("build").join("include");
+                if p.exists() { Some(p) } else { None }
+            };
             return Self {
                 include_dir,
+                build_include_dir,
                 library_dir,
                 is_dynamic: false  // Built OCCT is static
             };
@@ -243,7 +258,7 @@ impl OcctConfig {
                            version_major, version_minor, OCCT_VERSION.0, OCCT_VERSION.1);
                 }
 
-                Self { include_dir, library_dir, is_dynamic }
+                Self { include_dir, build_include_dir: None, library_dir, is_dynamic }
             } else {
                 panic!("OpenCASCADE library found but something wrong with config.");
             }

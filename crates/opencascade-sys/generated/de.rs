@@ -8,20 +8,19 @@
 
 // Handle type re-exports (targets of handle upcasts/downcasts)
 pub use crate::ffi_types::{
-    HandleDEBREPConfigurationNode, HandleDEBREPProvider, HandleDEGLTFConfigurationNode,
-    HandleDEGLTFProvider, HandleDEIGESConfigurationNode, HandleDEIGESProvider,
-    HandleDEOBJConfigurationNode, HandleDEOBJProvider, HandleDEPLYConfigurationNode,
-    HandleDEPLYProvider, HandleDESTEPConfigurationNode, HandleDESTEPProvider,
-    HandleDESTLConfigurationNode, HandleDESTLProvider, HandleDEVRMLConfigurationNode,
-    HandleDEVRMLProvider, HandleDEXCAFConfigurationNode, HandleDEXCAFProvider,
-    HandleStandardTransient,
+    Handle_DEBREP_ConfigurationNode, Handle_DEBREP_Provider, Handle_DEIGES_ConfigurationNode,
+    Handle_DEIGES_Provider, Handle_DEOBJ_ConfigurationNode, Handle_DEOBJ_Provider,
+    Handle_DEPLY_ConfigurationNode, Handle_DEPLY_Provider, Handle_DESTEP_ConfigurationNode,
+    Handle_DESTEP_Provider, Handle_DESTL_ConfigurationNode, Handle_DESTL_Provider,
+    Handle_DEVRML_ConfigurationNode, Handle_DEVRML_Provider, Handle_DEXCAF_ConfigurationNode,
+    Handle_DEXCAF_Provider, Handle_Standard_Transient,
 };
 
 // ========================
 // From DE_ConfigurationContext.hxx
 // ========================
 
-/// **Source:** `DE_ConfigurationContext.hxx`:28 - `DE_ConfigurationContext`
+/// **Source:** `DE_ConfigurationContext.hxx`:27 - `DE_ConfigurationContext`
 /// Provides convenient interface to resource file
 /// Allows loading of the resource file and getting attributes'
 /// values starting from some scope, for example
@@ -39,7 +38,7 @@ unsafe impl crate::CppDeletable for ConfigurationContext {
 }
 
 impl ConfigurationContext {
-    /// **Source:** `DE_ConfigurationContext.hxx`:34 - `DE_ConfigurationContext::DE_ConfigurationContext()`
+    /// **Source:** `DE_ConfigurationContext.hxx`:33 - `DE_ConfigurationContext::DE_ConfigurationContext()`
     /// Creates an empty tool
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
@@ -49,8 +48,8 @@ impl ConfigurationContext {
         }
     }
 
-    /// **Source:** `DE_ConfigurationContext.hxx`:31 - `DE_ConfigurationContext::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `DE_ConfigurationContext.hxx`:30 - `DE_ConfigurationContext::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKDE::DE_ConfigurationContext_dynamic_type(
                 self as *const Self,
@@ -58,7 +57,7 @@ impl ConfigurationContext {
         }
     }
 
-    /// **Source:** `DE_ConfigurationContext.hxx`:40 - `DE_ConfigurationContext::Load()`
+    /// **Source:** `DE_ConfigurationContext.hxx`:39 - `DE_ConfigurationContext::Load()`
     /// Import the custom configuration
     /// Save all parameters with their values.
     /// @param[in] theConfiguration path to configuration file or string value
@@ -72,7 +71,7 @@ impl ConfigurationContext {
         })
     }
 
-    /// **Source:** `DE_ConfigurationContext.hxx`:46 - `DE_ConfigurationContext::LoadFile()`
+    /// **Source:** `DE_ConfigurationContext.hxx`:45 - `DE_ConfigurationContext::LoadFile()`
     /// Import the resource file.
     /// Save all parameters with their values.
     /// @param[in] theFile path to the resource file
@@ -83,7 +82,7 @@ impl ConfigurationContext {
         })
     }
 
-    /// **Source:** `DE_ConfigurationContext.hxx`:52 - `DE_ConfigurationContext::LoadStr()`
+    /// **Source:** `DE_ConfigurationContext.hxx`:51 - `DE_ConfigurationContext::LoadStr()`
     /// Import the resource string.
     /// Save all parameters with their values.
     /// @param[in] theResource string with resource content
@@ -94,11 +93,11 @@ impl ConfigurationContext {
         })
     }
 
-    /// **Source:** `DE_ConfigurationContext.hxx`:58 - `DE_ConfigurationContext::IsParamSet()`
+    /// **Source:** `DE_ConfigurationContext.hxx`:57 - `DE_ConfigurationContext::IsParamSet()`
     /// Checks for existing the parameter name
     /// @param[in] theParam complex parameter name
     /// @param[in] theScope base parameter name
-    /// @return Standard_True if parameter is defined in the resource file
+    /// @return true if parameter is defined in the resource file
     pub fn is_param_set(
         &self,
         theParam: &crate::t_collection::AsciiString,
@@ -113,12 +112,12 @@ impl ConfigurationContext {
         })
     }
 
-    /// **Source:** `DE_ConfigurationContext.hxx`:66 - `DE_ConfigurationContext::GetReal()`
+    /// **Source:** `DE_ConfigurationContext.hxx`:65 - `DE_ConfigurationContext::GetReal()`
     /// Gets value of parameter as being of specific type
     /// @param[in] theParam complex parameter name
     /// @param[out] theValue value to get by parameter
     /// @param[in] theScope base parameter name
-    /// @return Standard_False if parameter is not defined or has a wrong type
+    /// @return false if parameter is not defined or has a wrong type
     pub fn get_real(
         &self,
         theParam: &crate::t_collection::AsciiString,
@@ -135,12 +134,12 @@ impl ConfigurationContext {
         })
     }
 
-    /// **Source:** `DE_ConfigurationContext.hxx`:75 - `DE_ConfigurationContext::GetInteger()`
+    /// **Source:** `DE_ConfigurationContext.hxx`:74 - `DE_ConfigurationContext::GetInteger()`
     /// Gets value of parameter as being of specific type
     /// @param[in] theParam complex parameter name
     /// @param[out] theValue value to get by parameter
     /// @param[in] theScope base parameter name
-    /// @return Standard_False if parameter is not defined or has a wrong type
+    /// @return false if parameter is not defined or has a wrong type
     pub fn get_integer(
         &self,
         theParam: &crate::t_collection::AsciiString,
@@ -157,12 +156,12 @@ impl ConfigurationContext {
         })
     }
 
-    /// **Source:** `DE_ConfigurationContext.hxx`:84 - `DE_ConfigurationContext::GetBoolean()`
+    /// **Source:** `DE_ConfigurationContext.hxx`:83 - `DE_ConfigurationContext::GetBoolean()`
     /// Gets value of parameter as being of specific type
     /// @param[in] theParam complex parameter name
     /// @param[out] theValue value to get by parameter
     /// @param[in] theScope base parameter name
-    /// @return Standard_False if parameter is not defined or has a wrong type
+    /// @return false if parameter is not defined or has a wrong type
     pub fn get_boolean(
         &self,
         theParam: &crate::t_collection::AsciiString,
@@ -179,12 +178,12 @@ impl ConfigurationContext {
         })
     }
 
-    /// **Source:** `DE_ConfigurationContext.hxx`:93 - `DE_ConfigurationContext::GetString()`
+    /// **Source:** `DE_ConfigurationContext.hxx`:92 - `DE_ConfigurationContext::GetString()`
     /// Gets value of parameter as being of specific type
     /// @param[in] theParam complex parameter name
     /// @param[out] theValue value to get by parameter
     /// @param[in] theScope base parameter name
-    /// @return Standard_False if parameter is not defined or has a wrong type
+    /// @return false if parameter is not defined or has a wrong type
     pub fn get_string(
         &self,
         theParam: &crate::t_collection::AsciiString,
@@ -201,16 +200,16 @@ impl ConfigurationContext {
         })
     }
 
-    /// **Source:** `DE_ConfigurationContext.hxx`:102 - `DE_ConfigurationContext::GetStringSeq()`
+    /// **Source:** `DE_ConfigurationContext.hxx`:101 - `DE_ConfigurationContext::GetStringSeq()`
     /// Gets value of parameter as being of specific type
     /// @param[in] theParam complex parameter name
     /// @param[out] theValue value to get by parameter
     /// @param[in] theScope base parameter name
-    /// @return Standard_False if parameter is not defined or has a wrong type
+    /// @return false if parameter is not defined or has a wrong type
     pub fn get_string_seq(
         &self,
         theParam: &crate::t_collection::AsciiString,
-        theValue: &mut crate::ffi_types::TColStd_ListOfAsciiString,
+        theValue: &mut crate::ffi_types::NCollection_List_TCollection_AsciiString,
         theScope: &crate::t_collection::AsciiString,
     ) -> bool {
         crate::check_result(unsafe {
@@ -223,7 +222,7 @@ impl ConfigurationContext {
         })
     }
 
-    /// **Source:** `DE_ConfigurationContext.hxx`:111 - `DE_ConfigurationContext::RealVal()`
+    /// **Source:** `DE_ConfigurationContext.hxx`:110 - `DE_ConfigurationContext::RealVal()`
     /// Gets value of parameter as being of specific type
     /// @param[in] theParam complex parameter name
     /// @param[in] theDefValue value by default if param is not found or has wrong type
@@ -245,7 +244,7 @@ impl ConfigurationContext {
         })
     }
 
-    /// **Source:** `DE_ConfigurationContext.hxx`:120 - `DE_ConfigurationContext::IntegerVal()`
+    /// **Source:** `DE_ConfigurationContext.hxx`:119 - `DE_ConfigurationContext::IntegerVal()`
     /// Gets value of parameter as being of specific type
     /// @param[in] theParam complex parameter name
     /// @param[in] theDefValue value by default if param is not found or has wrong type
@@ -267,7 +266,7 @@ impl ConfigurationContext {
         })
     }
 
-    /// **Source:** `DE_ConfigurationContext.hxx`:129 - `DE_ConfigurationContext::BooleanVal()`
+    /// **Source:** `DE_ConfigurationContext.hxx`:128 - `DE_ConfigurationContext::BooleanVal()`
     /// Gets value of parameter as being of specific type
     /// @param[in] theParam complex parameter name
     /// @param[in] theDefValue value by default if param is not found or has wrong type
@@ -289,7 +288,7 @@ impl ConfigurationContext {
         })
     }
 
-    /// **Source:** `DE_ConfigurationContext.hxx`:139 - `DE_ConfigurationContext::StringVal()`
+    /// **Source:** `DE_ConfigurationContext.hxx`:138 - `DE_ConfigurationContext::StringVal()`
     /// Gets value of parameter as being of specific type
     /// @param[in] theParam complex parameter name
     /// @param[in] theDefValue value by default if param is not found or has wrong type
@@ -316,7 +315,10 @@ impl ConfigurationContext {
     /// **Source:** `DE_ConfigurationContext.hxx`:145 - `DE_ConfigurationContext::GetInternalMap()`
     /// Gets internal resource map
     /// @return map with resource value
-    pub fn get_internal_map(&self) -> &crate::ffi_types::DE_ResourceMap {
+    pub fn get_internal_map(
+        &self,
+    ) -> &crate::ffi_types::NCollection_DataMap_TCollection_AsciiString_TCollection_AsciiString
+    {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKDE::DE_ConfigurationContext_get_internal_map(
@@ -326,7 +328,7 @@ impl ConfigurationContext {
         }
     }
 
-    /// **Source:** `DE_ConfigurationContext.hxx`:31 - `DE_ConfigurationContext::get_type_name()`
+    /// **Source:** `DE_ConfigurationContext.hxx`:30 - `DE_ConfigurationContext::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -337,8 +339,8 @@ impl ConfigurationContext {
         .into_owned()
     }
 
-    /// **Source:** `DE_ConfigurationContext.hxx`:31 - `DE_ConfigurationContext::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    /// **Source:** `DE_ConfigurationContext.hxx`:30 - `DE_ConfigurationContext::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKDE::DE_ConfigurationContext_get_type_descriptor(),
@@ -371,7 +373,7 @@ impl ConfigurationContext {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleDEConfigurationContext> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_DE_ConfigurationContext> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDE::DE_ConfigurationContext_to_handle(obj.into_raw()),
@@ -379,8 +381,8 @@ impl ConfigurationContext {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDE::DE_ConfigurationContext_inherited_IsInstance(
                 self as *const Self,
@@ -389,8 +391,8 @@ impl ConfigurationContext {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDE::DE_ConfigurationContext_inherited_IsKind(
                 self as *const Self,
@@ -399,7 +401,7 @@ impl ConfigurationContext {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -413,7 +415,7 @@ impl ConfigurationContext {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDE::DE_ConfigurationContext_inherited_GetRefCount(
@@ -422,7 +424,7 @@ impl ConfigurationContext {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDE::DE_ConfigurationContext_inherited_IncrementRefCounter(
@@ -431,7 +433,7 @@ impl ConfigurationContext {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDE::DE_ConfigurationContext_inherited_DecrementRefCounter(
@@ -440,7 +442,7 @@ impl ConfigurationContext {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDE::DE_ConfigurationContext_inherited_Delete(self as *const Self)
@@ -448,34 +450,36 @@ impl ConfigurationContext {
     }
 }
 
-pub use crate::ffi_types::HandleDEConfigurationContext;
+pub use crate::ffi_types::Handle_DE_ConfigurationContext;
 
-unsafe impl crate::CppDeletable for HandleDEConfigurationContext {
+unsafe impl crate::CppDeletable for Handle_DE_ConfigurationContext {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKDE::HandleDEConfigurationContext_destructor(ptr);
+            crate::ffi_extern_TKDE::Handle_DE_ConfigurationContext_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleDEConfigurationContext {
+unsafe impl crate::CppCopyable for Handle_DE_ConfigurationContext {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
         unsafe {
-            crate::check_result(crate::ffi_extern_TKDE::HandleDEConfigurationContext_clone(ptr))
+            crate::check_result(crate::ffi_extern_TKDE::Handle_DE_ConfigurationContext_clone(ptr))
         }
     }
 }
 
-impl HandleDEConfigurationContext {
+impl Handle_DE_ConfigurationContext {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
-        unsafe { crate::ffi_extern_TKDE::HandleDEConfigurationContext_is_null(self as *const Self) }
+        unsafe {
+            crate::ffi_extern_TKDE::Handle_DE_ConfigurationContext_is_null(self as *const Self)
+        }
     }
 
     /// Dereference this Handle to access the underlying DE_ConfigurationContext
     pub fn get(&self) -> &crate::ffi_types::DE_ConfigurationContext {
         unsafe {
-            &*crate::check_result(crate::ffi_extern_TKDE::HandleDEConfigurationContext_get(
+            &*crate::check_result(crate::ffi_extern_TKDE::Handle_DE_ConfigurationContext_get(
                 self as *const Self,
             ))
         }
@@ -484,19 +488,19 @@ impl HandleDEConfigurationContext {
     /// Dereference this Handle to mutably access the underlying DE_ConfigurationContext
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::DE_ConfigurationContext {
         unsafe {
-            &mut *crate::check_result(crate::ffi_extern_TKDE::HandleDEConfigurationContext_get_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKDE::Handle_DE_ConfigurationContext_get_mut(self as *mut Self),
+            )
         }
     }
 
     /// Upcast Handle<DE_ConfigurationContext> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKDE::HandleDEConfigurationContext_to_HandleStandardTransient(
+                crate::ffi_extern_TKDE::Handle_DE_ConfigurationContext_to_Handle_Standard_Transient(
                     self as *const Self,
                 ),
             ))
@@ -508,7 +512,7 @@ impl HandleDEConfigurationContext {
 // From DE_ConfigurationNode.hxx
 // ========================
 
-/// **Source:** `DE_ConfigurationNode.hxx`:49 - `DE_ConfigurationNode`
+/// **Source:** `DE_ConfigurationNode.hxx`:51 - `DE_ConfigurationNode`
 /// Base class to work with CAD transfer properties.
 /// Stores the necessary settings for a single Provider type.
 /// Configures and creates special provider to transfer CAD files.
@@ -546,8 +550,8 @@ unsafe impl crate::CppDeletable for ConfigurationNode {
 }
 
 impl ConfigurationNode {
-    /// **Source:** `DE_ConfigurationNode.hxx`:51 - `DE_ConfigurationNode::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `DE_ConfigurationNode.hxx`:53 - `DE_ConfigurationNode::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKDE::DE_ConfigurationNode_dynamic_type(
                 self as *const Self,
@@ -555,7 +559,7 @@ impl ConfigurationNode {
         }
     }
 
-    /// **Source:** `DE_ConfigurationNode.hxx`:63 - `DE_ConfigurationNode::Load()`
+    /// **Source:** `DE_ConfigurationNode.hxx`:66 - `DE_ConfigurationNode::Load()`
     /// Updates values according the resource file
     /// @param[in] theResourcePath file path to resource
     /// @return True if Load was successful
@@ -568,13 +572,13 @@ impl ConfigurationNode {
         })
     }
 
-    /// **Source:** `DE_ConfigurationNode.hxx`:68 - `DE_ConfigurationNode::Load()`
+    /// **Source:** `DE_ConfigurationNode.hxx`:71 - `DE_ConfigurationNode::Load()`
     /// Updates values according the resource
     /// @param[in] theResource input resource to use
     /// @return True if Load was successful
     pub fn load_handledeconfigurationcontext(
         &mut self,
-        theResource: &crate::ffi_types::HandleDEConfigurationContext,
+        theResource: &crate::ffi_types::Handle_DE_ConfigurationContext,
     ) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDE::DE_ConfigurationNode_load_handledeconfigurationcontext(
@@ -584,7 +588,7 @@ impl ConfigurationNode {
         })
     }
 
-    /// **Source:** `DE_ConfigurationNode.hxx`:73 - `DE_ConfigurationNode::Save()`
+    /// **Source:** `DE_ConfigurationNode.hxx`:76 - `DE_ConfigurationNode::Save()`
     /// Writes configuration to the resource file
     /// @param[in] theResourcePath file path to resource
     /// @return True if Save was successful
@@ -597,7 +601,7 @@ impl ConfigurationNode {
         })
     }
 
-    /// **Source:** `DE_ConfigurationNode.hxx`:77 - `DE_ConfigurationNode::Save()`
+    /// **Source:** `DE_ConfigurationNode.hxx`:80 - `DE_ConfigurationNode::Save()`
     /// Writes configuration to the string
     /// @return result resource string
     pub fn save(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
@@ -608,10 +612,10 @@ impl ConfigurationNode {
         }
     }
 
-    /// **Source:** `DE_ConfigurationNode.hxx`:81 - `DE_ConfigurationNode::BuildProvider()`
+    /// **Source:** `DE_ConfigurationNode.hxx`:84 - `DE_ConfigurationNode::BuildProvider()`
     /// Creates new provider for the own format
     /// @return new created provider
-    pub fn build_provider(&mut self) -> crate::OwnedPtr<crate::ffi_types::HandleDEProvider> {
+    pub fn build_provider(&mut self) -> crate::OwnedPtr<crate::ffi_types::Handle_DE_Provider> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDE::DE_ConfigurationNode_build_provider(self as *mut Self),
@@ -619,10 +623,10 @@ impl ConfigurationNode {
         }
     }
 
-    /// **Source:** `DE_ConfigurationNode.hxx`:85 - `DE_ConfigurationNode::Copy()`
+    /// **Source:** `DE_ConfigurationNode.hxx`:88 - `DE_ConfigurationNode::Copy()`
     /// Copies values of all fields
     /// @return new object with the same field values
-    pub fn copy(&self) -> crate::OwnedPtr<crate::ffi_types::HandleDEConfigurationNode> {
+    pub fn copy(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_DE_ConfigurationNode> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDE::DE_ConfigurationNode_copy(self as *const Self),
@@ -630,11 +634,11 @@ impl ConfigurationNode {
         }
     }
 
-    /// **Source:** `DE_ConfigurationNode.hxx`:91 - `DE_ConfigurationNode::UpdateLoad()`
+    /// **Source:** `DE_ConfigurationNode.hxx`:94 - `DE_ConfigurationNode::UpdateLoad()`
     /// Update loading status. Checking for the ability to read and write.
-    /// @param[in] theToImport flag to updates for import. Standard_True-import, Standard_False-export
+    /// @param[in] theToImport flag to updates for import. true-import, false-export
     /// @param[in] theToKeep flag to save update result
-    /// @return Standard_True, if node can be used
+    /// @return true, if node can be used
     pub fn update_load(&mut self, theToImport: bool, theToKeep: bool) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDE::DE_ConfigurationNode_update_load(
@@ -645,25 +649,34 @@ impl ConfigurationNode {
         })
     }
 
-    /// **Source:** `DE_ConfigurationNode.hxx`:97 - `DE_ConfigurationNode::IsImportSupported()`
-    /// Checks the import supporting
-    /// @return Standard_True if import is support
+    /// **Source:** `DE_ConfigurationNode.hxx`:99 - `DE_ConfigurationNode::IsImportSupported()`
+    /// Checks for import support.
+    /// @return true if import is supported
     pub fn is_import_supported(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDE::DE_ConfigurationNode_is_import_supported(self as *const Self)
         })
     }
 
-    /// **Source:** `DE_ConfigurationNode.hxx`:101 - `DE_ConfigurationNode::IsExportSupported()`
-    /// Checks the export supporting
-    /// @return Standard_True if export is support
+    /// **Source:** `DE_ConfigurationNode.hxx`:103 - `DE_ConfigurationNode::IsExportSupported()`
+    /// Checks for export support.
+    /// @return true if export is supported
     pub fn is_export_supported(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDE::DE_ConfigurationNode_is_export_supported(self as *const Self)
         })
     }
 
-    /// **Source:** `DE_ConfigurationNode.hxx`:105 - `DE_ConfigurationNode::GetFormat()`
+    /// **Source:** `DE_ConfigurationNode.hxx`:107 - `DE_ConfigurationNode::IsStreamSupported()`
+    /// Checks for stream support.
+    /// @return true if streams are supported
+    pub fn is_stream_supported(&self) -> bool {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKDE::DE_ConfigurationNode_is_stream_supported(self as *const Self)
+        })
+    }
+
+    /// **Source:** `DE_ConfigurationNode.hxx`:111 - `DE_ConfigurationNode::GetFormat()`
     /// Gets CAD format name of associated provider
     /// @return provider CAD format
     pub fn get_format(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
@@ -674,7 +687,7 @@ impl ConfigurationNode {
         }
     }
 
-    /// **Source:** `DE_ConfigurationNode.hxx`:109 - `DE_ConfigurationNode::GetVendor()`
+    /// **Source:** `DE_ConfigurationNode.hxx`:115 - `DE_ConfigurationNode::GetVendor()`
     /// Gets provider's vendor name of associated provider
     /// @return provider's vendor name
     pub fn get_vendor(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
@@ -685,10 +698,12 @@ impl ConfigurationNode {
         }
     }
 
-    /// **Source:** `DE_ConfigurationNode.hxx`:113 - `DE_ConfigurationNode::GetExtensions()`
+    /// **Source:** `DE_ConfigurationNode.hxx`:119 - `DE_ConfigurationNode::GetExtensions()`
     /// Gets list of supported file extensions
     /// @return list of extensions
-    pub fn get_extensions(&self) -> crate::OwnedPtr<crate::ffi_types::TColStd_ListOfAsciiString> {
+    pub fn get_extensions(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::NCollection_List_TCollection_AsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDE::DE_ConfigurationNode_get_extensions(self as *const Self),
@@ -696,10 +711,10 @@ impl ConfigurationNode {
         }
     }
 
-    /// **Source:** `DE_ConfigurationNode.hxx`:118 - `DE_ConfigurationNode::CheckExtension()`
+    /// **Source:** `DE_ConfigurationNode.hxx`:124 - `DE_ConfigurationNode::CheckExtension()`
     /// Checks the file extension to verify a format
     /// @param[in] theExtension input file extension
-    /// @return Standard_True if file is supported by a current provider
+    /// @return true if file is supported by a current provider
     pub fn check_extension(&self, theExtension: &crate::t_collection::AsciiString) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDE::DE_ConfigurationNode_check_extension(
@@ -709,11 +724,11 @@ impl ConfigurationNode {
         })
     }
 
-    /// **Source:** `DE_ConfigurationNode.hxx`:123 - `DE_ConfigurationNode::CheckContent()`
+    /// **Source:** `DE_ConfigurationNode.hxx`:129 - `DE_ConfigurationNode::CheckContent()`
     /// Checks the file content to verify a format
     /// @param[in] theBuffer read stream buffer to check content
-    /// @return Standard_True if file is supported by a current provider
-    pub fn check_content(&self, theBuffer: &crate::ffi_types::HandleNCollectionBuffer) -> bool {
+    /// @return true if file is supported by a current provider
+    pub fn check_content(&self, theBuffer: &crate::ffi_types::Handle_NCollection_Buffer) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDE::DE_ConfigurationNode_check_content(
                 self as *const Self,
@@ -722,16 +737,16 @@ impl ConfigurationNode {
         })
     }
 
-    /// **Source:** `DE_ConfigurationNode.hxx`:128 - `DE_ConfigurationNode::IsEnabled()`
+    /// **Source:** `DE_ConfigurationNode.hxx`:134 - `DE_ConfigurationNode::IsEnabled()`
     /// Gets the provider loading status
-    /// @return Standard_True if the load is correct
+    /// @return true if the load is correct
     pub fn is_enabled(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDE::DE_ConfigurationNode_is_enabled(self as *const Self)
         })
     }
 
-    /// **Source:** `DE_ConfigurationNode.hxx`:132 - `DE_ConfigurationNode::SetEnabled()`
+    /// **Source:** `DE_ConfigurationNode.hxx`:138 - `DE_ConfigurationNode::SetEnabled()`
     /// Sets the provider loading status
     /// @param[in] theIsLoaded input load status
     pub fn set_enabled(&mut self, theIsLoaded: bool) {
@@ -740,7 +755,7 @@ impl ConfigurationNode {
         })
     }
 
-    /// **Source:** `DE_ConfigurationNode.hxx`:141 - `DE_ConfigurationNode::CustomActivation()`
+    /// **Source:** `DE_ConfigurationNode.hxx`:147 - `DE_ConfigurationNode::CustomActivation()`
     /// Custom function to activate commercial DE component.
     /// The input is special sequence of values that described in
     /// specific component documentation. Order is important.
@@ -748,13 +763,37 @@ impl ConfigurationNode {
     ///
     /// The main goal - real-time loading plug-in activation.
     /// OpenSource components don't need to have activation process.
-    pub fn custom_activation(&mut self, arg0: &crate::ffi_types::TColStd_ListOfAsciiString) {
+    pub fn custom_activation(
+        &mut self,
+        arg0: &crate::ffi_types::NCollection_List_TCollection_AsciiString,
+    ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDE::DE_ConfigurationNode_custom_activation(self as *mut Self, arg0)
         })
     }
 
-    /// **Source:** `DE_ConfigurationNode.hxx`:51 - `DE_ConfigurationNode::get_type_name()`
+    /// **Source:** `DE_ConfigurationNode.hxx`:164 - `DE_ConfigurationNode::Register()`
+    /// Registers configuration node with the specified wrapper
+    /// @param[in] theWrapper wrapper to register with
+    pub fn register(&self, theWrapper: &crate::ffi_types::Handle_DE_Wrapper) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKDE::DE_ConfigurationNode_register(self as *const Self, theWrapper)
+        })
+    }
+
+    /// **Source:** `DE_ConfigurationNode.hxx`:168 - `DE_ConfigurationNode::UnRegister()`
+    /// Unregisters configuration node from the specified wrapper
+    /// @param[in] theWrapper wrapper to unregister from
+    pub fn un_register(&self, theWrapper: &crate::ffi_types::Handle_DE_Wrapper) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKDE::DE_ConfigurationNode_un_register(
+                self as *const Self,
+                theWrapper,
+            )
+        })
+    }
+
+    /// **Source:** `DE_ConfigurationNode.hxx`:53 - `DE_ConfigurationNode::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -765,8 +804,8 @@ impl ConfigurationNode {
         .into_owned()
     }
 
-    /// **Source:** `DE_ConfigurationNode.hxx`:51 - `DE_ConfigurationNode::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    /// **Source:** `DE_ConfigurationNode.hxx`:53 - `DE_ConfigurationNode::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKDE::DE_ConfigurationNode_get_type_descriptor(),
@@ -796,8 +835,8 @@ impl ConfigurationNode {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDE::DE_ConfigurationNode_inherited_IsInstance(
                 self as *const Self,
@@ -806,8 +845,8 @@ impl ConfigurationNode {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDE::DE_ConfigurationNode_inherited_IsKind(
                 self as *const Self,
@@ -816,7 +855,7 @@ impl ConfigurationNode {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -830,14 +869,14 @@ impl ConfigurationNode {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDE::DE_ConfigurationNode_inherited_GetRefCount(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDE::DE_ConfigurationNode_inherited_IncrementRefCounter(
@@ -846,7 +885,7 @@ impl ConfigurationNode {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDE::DE_ConfigurationNode_inherited_DecrementRefCounter(
@@ -855,7 +894,7 @@ impl ConfigurationNode {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDE::DE_ConfigurationNode_inherited_Delete(self as *const Self)
@@ -863,32 +902,34 @@ impl ConfigurationNode {
     }
 }
 
-pub use crate::ffi_types::HandleDEConfigurationNode;
+pub use crate::ffi_types::Handle_DE_ConfigurationNode;
 
-unsafe impl crate::CppDeletable for HandleDEConfigurationNode {
+unsafe impl crate::CppDeletable for Handle_DE_ConfigurationNode {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKDE::HandleDEConfigurationNode_destructor(ptr);
+            crate::ffi_extern_TKDE::Handle_DE_ConfigurationNode_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleDEConfigurationNode {
+unsafe impl crate::CppCopyable for Handle_DE_ConfigurationNode {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        unsafe { crate::check_result(crate::ffi_extern_TKDE::HandleDEConfigurationNode_clone(ptr)) }
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDE::Handle_DE_ConfigurationNode_clone(ptr))
+        }
     }
 }
 
-impl HandleDEConfigurationNode {
+impl Handle_DE_ConfigurationNode {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
-        unsafe { crate::ffi_extern_TKDE::HandleDEConfigurationNode_is_null(self as *const Self) }
+        unsafe { crate::ffi_extern_TKDE::Handle_DE_ConfigurationNode_is_null(self as *const Self) }
     }
 
     /// Dereference this Handle to access the underlying DE_ConfigurationNode
     pub fn get(&self) -> &crate::ffi_types::DE_ConfigurationNode {
         unsafe {
-            &*crate::check_result(crate::ffi_extern_TKDE::HandleDEConfigurationNode_get(
+            &*crate::check_result(crate::ffi_extern_TKDE::Handle_DE_ConfigurationNode_get(
                 self as *const Self,
             ))
         }
@@ -897,7 +938,7 @@ impl HandleDEConfigurationNode {
     /// Dereference this Handle to mutably access the underlying DE_ConfigurationNode
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::DE_ConfigurationNode {
         unsafe {
-            &mut *crate::check_result(crate::ffi_extern_TKDE::HandleDEConfigurationNode_get_mut(
+            &mut *crate::check_result(crate::ffi_extern_TKDE::Handle_DE_ConfigurationNode_get_mut(
                 self as *mut Self,
             ))
         }
@@ -906,10 +947,10 @@ impl HandleDEConfigurationNode {
     /// Upcast Handle<DE_ConfigurationNode> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKDE::HandleDEConfigurationNode_to_HandleStandardTransient(
+                crate::ffi_extern_TKDE::Handle_DE_ConfigurationNode_to_Handle_Standard_Transient(
                     self as *const Self,
                 ),
             ))
@@ -921,25 +962,9 @@ impl HandleDEConfigurationNode {
     /// Returns `None` if the handle does not point to a `DEBREP_ConfigurationNode` (or subclass).
     pub fn downcast_to_debrep_configuration_node(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleDEBREPConfigurationNode>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_DEBREP_ConfigurationNode>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKDE::HandleDEConfigurationNode_downcast_to_HandleDEBREPConfigurationNode(self as *const Self)
-        });
-        if __val.is_null() {
-            None
-        } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(__val) })
-        }
-    }
-
-    /// Downcast Handle<DE_ConfigurationNode> to Handle<DEGLTF_ConfigurationNode>
-    ///
-    /// Returns `None` if the handle does not point to a `DEGLTF_ConfigurationNode` (or subclass).
-    pub fn downcast_to_degltf_configuration_node(
-        &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleDEGLTFConfigurationNode>> {
-        let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKDE::HandleDEConfigurationNode_downcast_to_HandleDEGLTFConfigurationNode(self as *const Self)
+            crate::ffi_extern_TKDE::Handle_DE_ConfigurationNode_downcast_to_Handle_DEBREP_ConfigurationNode(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -953,9 +978,9 @@ impl HandleDEConfigurationNode {
     /// Returns `None` if the handle does not point to a `DEIGES_ConfigurationNode` (or subclass).
     pub fn downcast_to_deiges_configuration_node(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleDEIGESConfigurationNode>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_DEIGES_ConfigurationNode>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKDE::HandleDEConfigurationNode_downcast_to_HandleDEIGESConfigurationNode(self as *const Self)
+            crate::ffi_extern_TKDE::Handle_DE_ConfigurationNode_downcast_to_Handle_DEIGES_ConfigurationNode(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -969,9 +994,9 @@ impl HandleDEConfigurationNode {
     /// Returns `None` if the handle does not point to a `DEOBJ_ConfigurationNode` (or subclass).
     pub fn downcast_to_deobj_configuration_node(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleDEOBJConfigurationNode>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_DEOBJ_ConfigurationNode>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKDE::HandleDEConfigurationNode_downcast_to_HandleDEOBJConfigurationNode(self as *const Self)
+            crate::ffi_extern_TKDE::Handle_DE_ConfigurationNode_downcast_to_Handle_DEOBJ_ConfigurationNode(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -985,9 +1010,9 @@ impl HandleDEConfigurationNode {
     /// Returns `None` if the handle does not point to a `DEPLY_ConfigurationNode` (or subclass).
     pub fn downcast_to_deply_configuration_node(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleDEPLYConfigurationNode>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_DEPLY_ConfigurationNode>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKDE::HandleDEConfigurationNode_downcast_to_HandleDEPLYConfigurationNode(self as *const Self)
+            crate::ffi_extern_TKDE::Handle_DE_ConfigurationNode_downcast_to_Handle_DEPLY_ConfigurationNode(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -1001,9 +1026,9 @@ impl HandleDEConfigurationNode {
     /// Returns `None` if the handle does not point to a `DESTEP_ConfigurationNode` (or subclass).
     pub fn downcast_to_destep_configuration_node(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleDESTEPConfigurationNode>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_DESTEP_ConfigurationNode>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKDE::HandleDEConfigurationNode_downcast_to_HandleDESTEPConfigurationNode(self as *const Self)
+            crate::ffi_extern_TKDE::Handle_DE_ConfigurationNode_downcast_to_Handle_DESTEP_ConfigurationNode(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -1017,9 +1042,9 @@ impl HandleDEConfigurationNode {
     /// Returns `None` if the handle does not point to a `DESTL_ConfigurationNode` (or subclass).
     pub fn downcast_to_destl_configuration_node(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleDESTLConfigurationNode>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_DESTL_ConfigurationNode>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKDE::HandleDEConfigurationNode_downcast_to_HandleDESTLConfigurationNode(self as *const Self)
+            crate::ffi_extern_TKDE::Handle_DE_ConfigurationNode_downcast_to_Handle_DESTL_ConfigurationNode(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -1033,9 +1058,9 @@ impl HandleDEConfigurationNode {
     /// Returns `None` if the handle does not point to a `DEVRML_ConfigurationNode` (or subclass).
     pub fn downcast_to_devrml_configuration_node(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleDEVRMLConfigurationNode>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_DEVRML_ConfigurationNode>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKDE::HandleDEConfigurationNode_downcast_to_HandleDEVRMLConfigurationNode(self as *const Self)
+            crate::ffi_extern_TKDE::Handle_DE_ConfigurationNode_downcast_to_Handle_DEVRML_ConfigurationNode(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -1049,9 +1074,9 @@ impl HandleDEConfigurationNode {
     /// Returns `None` if the handle does not point to a `DEXCAF_ConfigurationNode` (or subclass).
     pub fn downcast_to_dexcaf_configuration_node(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleDEXCAFConfigurationNode>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_DEXCAF_ConfigurationNode>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKDE::HandleDEConfigurationNode_downcast_to_HandleDEXCAFConfigurationNode(self as *const Self)
+            crate::ffi_extern_TKDE::Handle_DE_ConfigurationNode_downcast_to_Handle_DEXCAF_ConfigurationNode(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -1065,9 +1090,9 @@ impl HandleDEConfigurationNode {
     /// Returns `None` if the handle does not point to a `DE_ShapeFixConfigurationNode` (or subclass).
     pub fn downcast_to_shape_fix_configuration_node(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleDEShapeFixConfigurationNode>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_DE_ShapeFixConfigurationNode>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKDE::HandleDEConfigurationNode_downcast_to_HandleDEShapeFixConfigurationNode(self as *const Self)
+            crate::ffi_extern_TKDE::Handle_DE_ConfigurationNode_downcast_to_Handle_DE_ShapeFixConfigurationNode(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -1077,7 +1102,7 @@ impl HandleDEConfigurationNode {
     }
 }
 
-/// **Source:** `DE_ConfigurationNode.hxx`:145 - `DE_ConfigurationNode_DE_SectionGlobal`
+/// **Source:** `DE_ConfigurationNode.hxx`:152 - `DE_ConfigurationNode_DE_SectionGlobal`
 pub use crate::ffi_types::DE_ConfigurationNode_DE_SectionGlobal as ConfigurationNode_DE_SectionGlobal;
 
 unsafe impl crate::CppDeletable for ConfigurationNode_DE_SectionGlobal {
@@ -1092,7 +1117,7 @@ unsafe impl crate::CppDeletable for ConfigurationNode_DE_SectionGlobal {
 // From DE_Provider.hxx
 // ========================
 
-/// **Source:** `DE_Provider.hxx`:41 - `DE_Provider`
+/// **Source:** `DE_Provider.hxx`:44 - `DE_Provider`
 /// Base class to make transfer process.
 /// Reads or Writes specialized CAD files into/from OCCT.
 /// Each operation needs the Configuration Node.
@@ -1121,8 +1146,8 @@ unsafe impl crate::CppDeletable for Provider {
 }
 
 impl Provider {
-    /// **Source:** `DE_Provider.hxx`:44 - `DE_Provider::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `DE_Provider.hxx`:47 - `DE_Provider::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKDE::DE_Provider_dynamic_type(
                 self as *const Self,
@@ -1130,7 +1155,7 @@ impl Provider {
         }
     }
 
-    /// **Source:** `DE_Provider.hxx`:62 - `DE_Provider::Read()`
+    /// **Source:** `DE_Provider.hxx`:104 - `DE_Provider::Read()`
     /// Reads a CAD file, according internal configuration
     /// @param[in] thePath path to the import CAD file
     /// @param[out] theDocument document to save result
@@ -1140,8 +1165,8 @@ impl Provider {
     pub fn read_asciistring_handletdocstddocument_handlexscontrolworksession_progressrange(
         &mut self,
         thePath: &crate::t_collection::AsciiString,
-        theDocument: &crate::ffi_types::HandleTDocStdDocument,
-        theWS: &mut crate::ffi_types::HandleXSControlWorkSession,
+        theDocument: &crate::ffi_types::Handle_TDocStd_Document,
+        theWS: &mut crate::ffi_types::Handle_XSControl_WorkSession,
         theProgress: &crate::message::ProgressRange,
     ) -> bool {
         crate::check_result(unsafe {
@@ -1149,7 +1174,7 @@ impl Provider {
         })
     }
 
-    /// **Source:** `DE_Provider.hxx`:74 - `DE_Provider::Write()`
+    /// **Source:** `DE_Provider.hxx`:116 - `DE_Provider::Write()`
     /// Writes a CAD file, according internal configuration
     /// @param[in] thePath path to the export CAD file
     /// @param[out] theDocument document to export
@@ -1159,8 +1184,8 @@ impl Provider {
     pub fn write_asciistring_handletdocstddocument_handlexscontrolworksession_progressrange(
         &mut self,
         thePath: &crate::t_collection::AsciiString,
-        theDocument: &crate::ffi_types::HandleTDocStdDocument,
-        theWS: &mut crate::ffi_types::HandleXSControlWorkSession,
+        theDocument: &crate::ffi_types::Handle_TDocStd_Document,
+        theWS: &mut crate::ffi_types::Handle_XSControl_WorkSession,
         theProgress: &crate::message::ProgressRange,
     ) -> bool {
         crate::check_result(unsafe {
@@ -1168,7 +1193,45 @@ impl Provider {
         })
     }
 
-    /// **Source:** `DE_Provider.hxx`:85 - `DE_Provider::Read()`
+    /// **Source:** `DE_Provider.hxx`:128 - `DE_Provider::Read()`
+    /// Reads streams according to internal configuration
+    /// @param[in] theStreams streams to read from
+    /// @param[out] theDocument document to save result
+    /// @param[in] theWS current work session
+    /// @param[in] theProgress progress indicator
+    /// @return True if Read was successful
+    pub fn read_readstreamlist_handletdocstddocument_handlexscontrolworksession_progressrange(
+        &mut self,
+        theStreams: &mut crate::ffi_types::DE_Provider_ReadStreamList,
+        theDocument: &crate::ffi_types::Handle_TDocStd_Document,
+        theWS: &mut crate::ffi_types::Handle_XSControl_WorkSession,
+        theProgress: &crate::message::ProgressRange,
+    ) -> bool {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKDE::DE_Provider_read_readstreamlist_handletdocstddocument_handlexscontrolworksession_progressrange(self as *mut Self, theStreams, theDocument, theWS, theProgress)
+        })
+    }
+
+    /// **Source:** `DE_Provider.hxx`:140 - `DE_Provider::Write()`
+    /// Writes streams according to internal configuration
+    /// @param[in] theStreams streams to write to
+    /// @param[out] theDocument document to export
+    /// @param[in] theWS current work session
+    /// @param[in] theProgress progress indicator
+    /// @return True if Write was successful
+    pub fn write_writestreamlist_handletdocstddocument_handlexscontrolworksession_progressrange(
+        &mut self,
+        theStreams: &mut crate::ffi_types::DE_Provider_WriteStreamList,
+        theDocument: &crate::ffi_types::Handle_TDocStd_Document,
+        theWS: &mut crate::ffi_types::Handle_XSControl_WorkSession,
+        theProgress: &crate::message::ProgressRange,
+    ) -> bool {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKDE::DE_Provider_write_writestreamlist_handletdocstddocument_handlexscontrolworksession_progressrange(self as *mut Self, theStreams, theDocument, theWS, theProgress)
+        })
+    }
+
+    /// **Source:** `DE_Provider.hxx`:151 - `DE_Provider::Read()`
     /// Reads a CAD file, according internal configuration
     /// @param[in] thePath path to the import CAD file
     /// @param[out] theDocument document to save result
@@ -1177,7 +1240,7 @@ impl Provider {
     pub fn read_asciistring_handletdocstddocument_progressrange(
         &mut self,
         thePath: &crate::t_collection::AsciiString,
-        theDocument: &crate::ffi_types::HandleTDocStdDocument,
+        theDocument: &crate::ffi_types::Handle_TDocStd_Document,
         theProgress: &crate::message::ProgressRange,
     ) -> bool {
         crate::check_result(unsafe {
@@ -1190,7 +1253,7 @@ impl Provider {
         })
     }
 
-    /// **Source:** `DE_Provider.hxx`:95 - `DE_Provider::Write()`
+    /// **Source:** `DE_Provider.hxx`:161 - `DE_Provider::Write()`
     /// Writes a CAD file, according internal configuration
     /// @param[in] thePath path to the export CAD file
     /// @param[out] theDocument document to export
@@ -1199,7 +1262,7 @@ impl Provider {
     pub fn write_asciistring_handletdocstddocument_progressrange(
         &mut self,
         thePath: &crate::t_collection::AsciiString,
-        theDocument: &crate::ffi_types::HandleTDocStdDocument,
+        theDocument: &crate::ffi_types::Handle_TDocStd_Document,
         theProgress: &crate::message::ProgressRange,
     ) -> bool {
         crate::check_result(unsafe {
@@ -1207,7 +1270,41 @@ impl Provider {
         })
     }
 
-    /// **Source:** `DE_Provider.hxx`:106 - `DE_Provider::Read()`
+    /// **Source:** `DE_Provider.hxx`:171 - `DE_Provider::Read()`
+    /// Reads streams according to internal configuration
+    /// @param[in] theStreams streams to read from
+    /// @param[out] theDocument document to save result
+    /// @param[in] theProgress progress indicator
+    /// @return True if Read was successful
+    pub fn read_readstreamlist_handletdocstddocument_progressrange(
+        &mut self,
+        theStreams: &mut crate::ffi_types::DE_Provider_ReadStreamList,
+        theDocument: &crate::ffi_types::Handle_TDocStd_Document,
+        theProgress: &crate::message::ProgressRange,
+    ) -> bool {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKDE::DE_Provider_read_readstreamlist_handletdocstddocument_progressrange(self as *mut Self, theStreams, theDocument, theProgress)
+        })
+    }
+
+    /// **Source:** `DE_Provider.hxx`:181 - `DE_Provider::Write()`
+    /// Writes streams according to internal configuration
+    /// @param[in] theStreams streams to write to
+    /// @param[out] theDocument document to export
+    /// @param[in] theProgress progress indicator
+    /// @return True if Write was successful
+    pub fn write_writestreamlist_handletdocstddocument_progressrange(
+        &mut self,
+        theStreams: &mut crate::ffi_types::DE_Provider_WriteStreamList,
+        theDocument: &crate::ffi_types::Handle_TDocStd_Document,
+        theProgress: &crate::message::ProgressRange,
+    ) -> bool {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKDE::DE_Provider_write_writestreamlist_handletdocstddocument_progressrange(self as *mut Self, theStreams, theDocument, theProgress)
+        })
+    }
+
+    /// **Source:** `DE_Provider.hxx`:192 - `DE_Provider::Read()`
     /// Reads a CAD file, according internal configuration
     /// @param[in] thePath path to the import CAD file
     /// @param[out] theShape shape to save result
@@ -1218,7 +1315,7 @@ impl Provider {
         &mut self,
         thePath: &crate::t_collection::AsciiString,
         theShape: &mut crate::topo_ds::Shape,
-        theWS: &mut crate::ffi_types::HandleXSControlWorkSession,
+        theWS: &mut crate::ffi_types::Handle_XSControl_WorkSession,
         theProgress: &crate::message::ProgressRange,
     ) -> bool {
         crate::check_result(unsafe {
@@ -1226,7 +1323,7 @@ impl Provider {
         })
     }
 
-    /// **Source:** `DE_Provider.hxx`:118 - `DE_Provider::Write()`
+    /// **Source:** `DE_Provider.hxx`:204 - `DE_Provider::Write()`
     /// Writes a CAD file, according internal configuration
     /// @param[in] thePath path to the export CAD file
     /// @param[out] theShape shape to export
@@ -1237,7 +1334,7 @@ impl Provider {
         &mut self,
         thePath: &crate::t_collection::AsciiString,
         theShape: &crate::topo_ds::Shape,
-        theWS: &mut crate::ffi_types::HandleXSControlWorkSession,
+        theWS: &mut crate::ffi_types::Handle_XSControl_WorkSession,
         theProgress: &crate::message::ProgressRange,
     ) -> bool {
         crate::check_result(unsafe {
@@ -1245,7 +1342,45 @@ impl Provider {
         })
     }
 
-    /// **Source:** `DE_Provider.hxx`:129 - `DE_Provider::Read()`
+    /// **Source:** `DE_Provider.hxx`:216 - `DE_Provider::Read()`
+    /// Reads streams according to internal configuration
+    /// @param[in] theStreams streams to read from
+    /// @param[out] theShape shape to save result
+    /// @param[in] theWS current work session
+    /// @param[in] theProgress progress indicator
+    /// @return True if Read was successful
+    pub fn read_readstreamlist_shape_handlexscontrolworksession_progressrange(
+        &mut self,
+        theStreams: &mut crate::ffi_types::DE_Provider_ReadStreamList,
+        theShape: &mut crate::topo_ds::Shape,
+        theWS: &mut crate::ffi_types::Handle_XSControl_WorkSession,
+        theProgress: &crate::message::ProgressRange,
+    ) -> bool {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKDE::DE_Provider_read_readstreamlist_shape_handlexscontrolworksession_progressrange(self as *mut Self, theStreams, theShape, theWS, theProgress)
+        })
+    }
+
+    /// **Source:** `DE_Provider.hxx`:228 - `DE_Provider::Write()`
+    /// Writes streams according to internal configuration
+    /// @param[in] theStreams streams to write to
+    /// @param[out] theShape shape to export
+    /// @param[in] theWS current work session
+    /// @param[in] theProgress progress indicator
+    /// @return True if Write was successful
+    pub fn write_writestreamlist_shape_handlexscontrolworksession_progressrange(
+        &mut self,
+        theStreams: &mut crate::ffi_types::DE_Provider_WriteStreamList,
+        theShape: &crate::topo_ds::Shape,
+        theWS: &mut crate::ffi_types::Handle_XSControl_WorkSession,
+        theProgress: &crate::message::ProgressRange,
+    ) -> bool {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKDE::DE_Provider_write_writestreamlist_shape_handlexscontrolworksession_progressrange(self as *mut Self, theStreams, theShape, theWS, theProgress)
+        })
+    }
+
+    /// **Source:** `DE_Provider.hxx`:239 - `DE_Provider::Read()`
     /// Reads a CAD file, according internal configuration
     /// @param[in] thePath path to the import CAD file
     /// @param[out] theShape shape to save result
@@ -1267,7 +1402,7 @@ impl Provider {
         })
     }
 
-    /// **Source:** `DE_Provider.hxx`:139 - `DE_Provider::Write()`
+    /// **Source:** `DE_Provider.hxx`:249 - `DE_Provider::Write()`
     /// Writes a CAD file, according internal configuration
     /// @param[in] thePath path to the export CAD file
     /// @param[out] theShape shape to export
@@ -1289,7 +1424,51 @@ impl Provider {
         })
     }
 
-    /// **Source:** `DE_Provider.hxx`:147 - `DE_Provider::GetFormat()`
+    /// **Source:** `DE_Provider.hxx`:259 - `DE_Provider::Read()`
+    /// Reads streams according to internal configuration
+    /// @param[in] theStreams streams to read from
+    /// @param[out] theShape shape to save result
+    /// @param[in] theProgress progress indicator
+    /// @return True if Read was successful
+    pub fn read_readstreamlist_shape_progressrange(
+        &mut self,
+        theStreams: &mut crate::ffi_types::DE_Provider_ReadStreamList,
+        theShape: &mut crate::topo_ds::Shape,
+        theProgress: &crate::message::ProgressRange,
+    ) -> bool {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKDE::DE_Provider_read_readstreamlist_shape_progressrange(
+                self as *mut Self,
+                theStreams,
+                theShape,
+                theProgress,
+            )
+        })
+    }
+
+    /// **Source:** `DE_Provider.hxx`:269 - `DE_Provider::Write()`
+    /// Writes streams according to internal configuration
+    /// @param[in] theStreams streams to write to
+    /// @param[out] theShape shape to export
+    /// @param[in] theProgress progress indicator
+    /// @return True if Write was successful
+    pub fn write_writestreamlist_shape_progressrange(
+        &mut self,
+        theStreams: &mut crate::ffi_types::DE_Provider_WriteStreamList,
+        theShape: &crate::topo_ds::Shape,
+        theProgress: &crate::message::ProgressRange,
+    ) -> bool {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKDE::DE_Provider_write_writestreamlist_shape_progressrange(
+                self as *mut Self,
+                theStreams,
+                theShape,
+                theProgress,
+            )
+        })
+    }
+
+    /// **Source:** `DE_Provider.hxx`:277 - `DE_Provider::GetFormat()`
     /// Gets CAD format name of associated provider
     /// @return provider CAD format
     pub fn get_format(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
@@ -1300,7 +1479,7 @@ impl Provider {
         }
     }
 
-    /// **Source:** `DE_Provider.hxx`:151 - `DE_Provider::GetVendor()`
+    /// **Source:** `DE_Provider.hxx`:281 - `DE_Provider::GetVendor()`
     /// Gets provider's vendor name of associated provider
     /// @return provider's vendor name
     pub fn get_vendor(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
@@ -1311,10 +1490,10 @@ impl Provider {
         }
     }
 
-    /// **Source:** `DE_Provider.hxx`:155 - `DE_Provider::GetNode()`
+    /// **Source:** `DE_Provider.hxx`:285 - `DE_Provider::GetNode()`
     /// Gets internal configuration node
     /// @return configuration node object
-    pub fn get_node(&self) -> crate::OwnedPtr<crate::ffi_types::HandleDEConfigurationNode> {
+    pub fn get_node(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_DE_ConfigurationNode> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDE::DE_Provider_get_node(self as *const Self),
@@ -1322,16 +1501,16 @@ impl Provider {
         }
     }
 
-    /// **Source:** `DE_Provider.hxx`:159 - `DE_Provider::SetNode()`
+    /// **Source:** `DE_Provider.hxx`:289 - `DE_Provider::SetNode()`
     /// Sets internal configuration node
     /// @param[in] theNode configuration node to set
-    pub fn set_node(&mut self, theNode: &crate::ffi_types::HandleDEConfigurationNode) {
+    pub fn set_node(&mut self, theNode: &crate::ffi_types::Handle_DE_ConfigurationNode) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDE::DE_Provider_set_node(self as *mut Self, theNode)
         })
     }
 
-    /// **Source:** `DE_Provider.hxx`:44 - `DE_Provider::get_type_name()`
+    /// **Source:** `DE_Provider.hxx`:47 - `DE_Provider::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -1342,8 +1521,8 @@ impl Provider {
         .into_owned()
     }
 
-    /// **Source:** `DE_Provider.hxx`:44 - `DE_Provider::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    /// **Source:** `DE_Provider.hxx`:47 - `DE_Provider::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKDE::DE_Provider_get_type_descriptor()))
         }
@@ -1367,21 +1546,21 @@ impl Provider {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDE::DE_Provider_inherited_IsInstance(self as *const Self, theType)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDE::DE_Provider_inherited_IsKind(self as *const Self, theType)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -1395,28 +1574,28 @@ impl Provider {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDE::DE_Provider_inherited_GetRefCount(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDE::DE_Provider_inherited_IncrementRefCounter(self as *mut Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDE::DE_Provider_inherited_DecrementRefCounter(self as *mut Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDE::DE_Provider_inherited_Delete(self as *const Self)
@@ -1424,39 +1603,41 @@ impl Provider {
     }
 }
 
-pub use crate::ffi_types::HandleDEProvider;
+pub use crate::ffi_types::Handle_DE_Provider;
 
-unsafe impl crate::CppDeletable for HandleDEProvider {
+unsafe impl crate::CppDeletable for Handle_DE_Provider {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKDE::HandleDEProvider_destructor(ptr);
+            crate::ffi_extern_TKDE::Handle_DE_Provider_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleDEProvider {
+unsafe impl crate::CppCopyable for Handle_DE_Provider {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        unsafe { crate::check_result(crate::ffi_extern_TKDE::HandleDEProvider_clone(ptr)) }
+        unsafe { crate::check_result(crate::ffi_extern_TKDE::Handle_DE_Provider_clone(ptr)) }
     }
 }
 
-impl HandleDEProvider {
+impl Handle_DE_Provider {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
-        unsafe { crate::ffi_extern_TKDE::HandleDEProvider_is_null(self as *const Self) }
+        unsafe { crate::ffi_extern_TKDE::Handle_DE_Provider_is_null(self as *const Self) }
     }
 
     /// Dereference this Handle to access the underlying DE_Provider
     pub fn get(&self) -> &crate::ffi_types::DE_Provider {
         unsafe {
-            &*crate::check_result(crate::ffi_extern_TKDE::HandleDEProvider_get(self as *const Self))
+            &*crate::check_result(crate::ffi_extern_TKDE::Handle_DE_Provider_get(
+                self as *const Self,
+            ))
         }
     }
 
     /// Dereference this Handle to mutably access the underlying DE_Provider
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::DE_Provider {
         unsafe {
-            &mut *crate::check_result(crate::ffi_extern_TKDE::HandleDEProvider_get_mut(
+            &mut *crate::check_result(crate::ffi_extern_TKDE::Handle_DE_Provider_get_mut(
                 self as *mut Self,
             ))
         }
@@ -1465,10 +1646,10 @@ impl HandleDEProvider {
     /// Upcast Handle<DE_Provider> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKDE::HandleDEProvider_to_HandleStandardTransient(
+                crate::ffi_extern_TKDE::Handle_DE_Provider_to_Handle_Standard_Transient(
                     self as *const Self,
                 ),
             ))
@@ -1480,27 +1661,9 @@ impl HandleDEProvider {
     /// Returns `None` if the handle does not point to a `DEBREP_Provider` (or subclass).
     pub fn downcast_to_debrep_provider(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleDEBREPProvider>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_DEBREP_Provider>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKDE::HandleDEProvider_downcast_to_HandleDEBREPProvider(
-                self as *const Self,
-            )
-        });
-        if __val.is_null() {
-            None
-        } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(__val) })
-        }
-    }
-
-    /// Downcast Handle<DE_Provider> to Handle<DEGLTF_Provider>
-    ///
-    /// Returns `None` if the handle does not point to a `DEGLTF_Provider` (or subclass).
-    pub fn downcast_to_degltf_provider(
-        &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleDEGLTFProvider>> {
-        let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKDE::HandleDEProvider_downcast_to_HandleDEGLTFProvider(
+            crate::ffi_extern_TKDE::Handle_DE_Provider_downcast_to_Handle_DEBREP_Provider(
                 self as *const Self,
             )
         });
@@ -1516,9 +1679,9 @@ impl HandleDEProvider {
     /// Returns `None` if the handle does not point to a `DEIGES_Provider` (or subclass).
     pub fn downcast_to_deiges_provider(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleDEIGESProvider>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_DEIGES_Provider>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKDE::HandleDEProvider_downcast_to_HandleDEIGESProvider(
+            crate::ffi_extern_TKDE::Handle_DE_Provider_downcast_to_Handle_DEIGES_Provider(
                 self as *const Self,
             )
         });
@@ -1534,9 +1697,9 @@ impl HandleDEProvider {
     /// Returns `None` if the handle does not point to a `DEOBJ_Provider` (or subclass).
     pub fn downcast_to_deobj_provider(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleDEOBJProvider>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_DEOBJ_Provider>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKDE::HandleDEProvider_downcast_to_HandleDEOBJProvider(
+            crate::ffi_extern_TKDE::Handle_DE_Provider_downcast_to_Handle_DEOBJ_Provider(
                 self as *const Self,
             )
         });
@@ -1552,9 +1715,9 @@ impl HandleDEProvider {
     /// Returns `None` if the handle does not point to a `DEPLY_Provider` (or subclass).
     pub fn downcast_to_deply_provider(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleDEPLYProvider>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_DEPLY_Provider>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKDE::HandleDEProvider_downcast_to_HandleDEPLYProvider(
+            crate::ffi_extern_TKDE::Handle_DE_Provider_downcast_to_Handle_DEPLY_Provider(
                 self as *const Self,
             )
         });
@@ -1570,9 +1733,9 @@ impl HandleDEProvider {
     /// Returns `None` if the handle does not point to a `DESTEP_Provider` (or subclass).
     pub fn downcast_to_destep_provider(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleDESTEPProvider>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_DESTEP_Provider>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKDE::HandleDEProvider_downcast_to_HandleDESTEPProvider(
+            crate::ffi_extern_TKDE::Handle_DE_Provider_downcast_to_Handle_DESTEP_Provider(
                 self as *const Self,
             )
         });
@@ -1588,9 +1751,9 @@ impl HandleDEProvider {
     /// Returns `None` if the handle does not point to a `DESTL_Provider` (or subclass).
     pub fn downcast_to_destl_provider(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleDESTLProvider>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_DESTL_Provider>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKDE::HandleDEProvider_downcast_to_HandleDESTLProvider(
+            crate::ffi_extern_TKDE::Handle_DE_Provider_downcast_to_Handle_DESTL_Provider(
                 self as *const Self,
             )
         });
@@ -1606,9 +1769,9 @@ impl HandleDEProvider {
     /// Returns `None` if the handle does not point to a `DEVRML_Provider` (or subclass).
     pub fn downcast_to_devrml_provider(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleDEVRMLProvider>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_DEVRML_Provider>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKDE::HandleDEProvider_downcast_to_HandleDEVRMLProvider(
+            crate::ffi_extern_TKDE::Handle_DE_Provider_downcast_to_Handle_DEVRML_Provider(
                 self as *const Self,
             )
         });
@@ -1624,9 +1787,9 @@ impl HandleDEProvider {
     /// Returns `None` if the handle does not point to a `DEXCAF_Provider` (or subclass).
     pub fn downcast_to_dexcaf_provider(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleDEXCAFProvider>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_DEXCAF_Provider>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKDE::HandleDEProvider_downcast_to_HandleDEXCAFProvider(
+            crate::ffi_extern_TKDE::Handle_DE_Provider_downcast_to_Handle_DEXCAF_Provider(
                 self as *const Self,
             )
         });
@@ -1638,11 +1801,71 @@ impl HandleDEProvider {
     }
 }
 
+/// **Source:** `DE_Provider.hxx`:51 - `DE_Provider_WriteStreamNode`
+/// Node to store write stream information
+/// Contains relative path and reference to output stream
+pub use crate::ffi_types::DE_Provider_WriteStreamNode as Provider_WriteStreamNode;
+
+unsafe impl crate::CppDeletable for Provider_WriteStreamNode {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            crate::ffi_extern_TKDE::DE_Provider_WriteStreamNode_destructor(ptr);
+        }
+    }
+}
+
+impl Provider_WriteStreamNode {
+    /// **Source:** `DE_Provider.hxx`:57 - `DE_Provider_WriteStreamNode::DE_Provider_WriteStreamNode()`
+    /// Constructor
+    pub fn new_asciistring_ostream(
+        thePath: &crate::t_collection::AsciiString,
+        theStream: &mut crate::ffi_types::Standard_OStream,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKDE::DE_Provider_WriteStreamNode_ctor_asciistring_ostream(
+                    thePath, theStream,
+                ),
+            ))
+        }
+    }
+}
+
+/// **Source:** `DE_Provider.hxx`:66 - `DE_Provider_ReadStreamNode`
+/// Node to store read stream information
+/// Contains relative path and reference to input stream
+pub use crate::ffi_types::DE_Provider_ReadStreamNode as Provider_ReadStreamNode;
+
+unsafe impl crate::CppDeletable for Provider_ReadStreamNode {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            crate::ffi_extern_TKDE::DE_Provider_ReadStreamNode_destructor(ptr);
+        }
+    }
+}
+
+impl Provider_ReadStreamNode {
+    /// **Source:** `DE_Provider.hxx`:72 - `DE_Provider_ReadStreamNode::DE_Provider_ReadStreamNode()`
+    /// Constructor
+    pub fn new_asciistring_istream(
+        thePath: &crate::t_collection::AsciiString,
+        theStream: &mut crate::ffi_types::Standard_IStream,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKDE::DE_Provider_ReadStreamNode_ctor_asciistring_istream(
+                    thePath, theStream,
+                ),
+            ))
+        }
+    }
+}
+
 // ========================
 // From DE_ShapeFixConfigurationNode.hxx
 // ========================
 
-/// **Source:** `DE_ShapeFixConfigurationNode.hxx`:24 - `DE_ShapeFixConfigurationNode`
+/// **Source:** `DE_ShapeFixConfigurationNode.hxx`:25 - `DE_ShapeFixConfigurationNode`
 /// Base class to work with shape healing parameters for child classes.
 pub use crate::ffi_types::DE_ShapeFixConfigurationNode as ShapeFixConfigurationNode;
 
@@ -1655,8 +1878,8 @@ unsafe impl crate::CppDeletable for ShapeFixConfigurationNode {
 }
 
 impl ShapeFixConfigurationNode {
-    /// **Source:** `DE_ShapeFixConfigurationNode.hxx`:26 - `DE_ShapeFixConfigurationNode::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `DE_ShapeFixConfigurationNode.hxx`:27 - `DE_ShapeFixConfigurationNode::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKDE::DE_ShapeFixConfigurationNode_dynamic_type(
@@ -1666,11 +1889,11 @@ impl ShapeFixConfigurationNode {
         }
     }
 
-    /// **Source:** `DE_ShapeFixConfigurationNode.hxx`:39 - `DE_ShapeFixConfigurationNode::Load()`
+    /// **Source:** `DE_ShapeFixConfigurationNode.hxx`:40 - `DE_ShapeFixConfigurationNode::Load()`
     /// Updates values according the resource
     /// @param[in] theResource input resource to use
     /// @return True if Load was successful
-    pub fn load(&mut self, theResource: &crate::ffi_types::HandleDEConfigurationContext) -> bool {
+    pub fn load(&mut self, theResource: &crate::ffi_types::Handle_DE_ConfigurationContext) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDE::DE_ShapeFixConfigurationNode_load(
                 self as *mut Self,
@@ -1690,7 +1913,7 @@ impl ShapeFixConfigurationNode {
         }
     }
 
-    /// **Source:** `DE_ShapeFixConfigurationNode.hxx`:26 - `DE_ShapeFixConfigurationNode::get_type_name()`
+    /// **Source:** `DE_ShapeFixConfigurationNode.hxx`:27 - `DE_ShapeFixConfigurationNode::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -1701,8 +1924,8 @@ impl ShapeFixConfigurationNode {
         .into_owned()
     }
 
-    /// **Source:** `DE_ShapeFixConfigurationNode.hxx`:26 - `DE_ShapeFixConfigurationNode::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    /// **Source:** `DE_ShapeFixConfigurationNode.hxx`:27 - `DE_ShapeFixConfigurationNode::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKDE::DE_ShapeFixConfigurationNode_get_type_descriptor(),
@@ -1754,8 +1977,8 @@ impl ShapeFixConfigurationNode {
         }
     }
 
-    /// Inherited: **Source:** `DE_ConfigurationNode.hxx`:81 - `DE_ConfigurationNode::BuildProvider()`
-    pub fn build_provider(&mut self) -> crate::OwnedPtr<crate::ffi_types::HandleDEProvider> {
+    /// Inherited: **Source:** `DE_ConfigurationNode.hxx`:84 - `DE_ConfigurationNode::BuildProvider()`
+    pub fn build_provider(&mut self) -> crate::OwnedPtr<crate::ffi_types::Handle_DE_Provider> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDE::DE_ShapeFixConfigurationNode_inherited_BuildProvider(
@@ -1765,8 +1988,8 @@ impl ShapeFixConfigurationNode {
         }
     }
 
-    /// Inherited: **Source:** `DE_ConfigurationNode.hxx`:85 - `DE_ConfigurationNode::Copy()`
-    pub fn copy(&self) -> crate::OwnedPtr<crate::ffi_types::HandleDEConfigurationNode> {
+    /// Inherited: **Source:** `DE_ConfigurationNode.hxx`:88 - `DE_ConfigurationNode::Copy()`
+    pub fn copy(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_DE_ConfigurationNode> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDE::DE_ShapeFixConfigurationNode_inherited_Copy(
@@ -1776,7 +1999,7 @@ impl ShapeFixConfigurationNode {
         }
     }
 
-    /// Inherited: **Source:** `DE_ConfigurationNode.hxx`:91 - `DE_ConfigurationNode::UpdateLoad()`
+    /// Inherited: **Source:** `DE_ConfigurationNode.hxx`:94 - `DE_ConfigurationNode::UpdateLoad()`
     pub fn update_load(&mut self, theToImport: bool, theToKeep: bool) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDE::DE_ShapeFixConfigurationNode_inherited_UpdateLoad(
@@ -1787,7 +2010,7 @@ impl ShapeFixConfigurationNode {
         })
     }
 
-    /// Inherited: **Source:** `DE_ConfigurationNode.hxx`:97 - `DE_ConfigurationNode::IsImportSupported()`
+    /// Inherited: **Source:** `DE_ConfigurationNode.hxx`:99 - `DE_ConfigurationNode::IsImportSupported()`
     pub fn is_import_supported(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDE::DE_ShapeFixConfigurationNode_inherited_IsImportSupported(
@@ -1796,7 +2019,7 @@ impl ShapeFixConfigurationNode {
         })
     }
 
-    /// Inherited: **Source:** `DE_ConfigurationNode.hxx`:101 - `DE_ConfigurationNode::IsExportSupported()`
+    /// Inherited: **Source:** `DE_ConfigurationNode.hxx`:103 - `DE_ConfigurationNode::IsExportSupported()`
     pub fn is_export_supported(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDE::DE_ShapeFixConfigurationNode_inherited_IsExportSupported(
@@ -1805,7 +2028,16 @@ impl ShapeFixConfigurationNode {
         })
     }
 
-    /// Inherited: **Source:** `DE_ConfigurationNode.hxx`:105 - `DE_ConfigurationNode::GetFormat()`
+    /// Inherited: **Source:** `DE_ConfigurationNode.hxx`:107 - `DE_ConfigurationNode::IsStreamSupported()`
+    pub fn is_stream_supported(&self) -> bool {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKDE::DE_ShapeFixConfigurationNode_inherited_IsStreamSupported(
+                self as *const Self,
+            )
+        })
+    }
+
+    /// Inherited: **Source:** `DE_ConfigurationNode.hxx`:111 - `DE_ConfigurationNode::GetFormat()`
     pub fn get_format(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -1816,7 +2048,7 @@ impl ShapeFixConfigurationNode {
         }
     }
 
-    /// Inherited: **Source:** `DE_ConfigurationNode.hxx`:109 - `DE_ConfigurationNode::GetVendor()`
+    /// Inherited: **Source:** `DE_ConfigurationNode.hxx`:115 - `DE_ConfigurationNode::GetVendor()`
     pub fn get_vendor(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -1827,8 +2059,10 @@ impl ShapeFixConfigurationNode {
         }
     }
 
-    /// Inherited: **Source:** `DE_ConfigurationNode.hxx`:113 - `DE_ConfigurationNode::GetExtensions()`
-    pub fn get_extensions(&self) -> crate::OwnedPtr<crate::ffi_types::TColStd_ListOfAsciiString> {
+    /// Inherited: **Source:** `DE_ConfigurationNode.hxx`:119 - `DE_ConfigurationNode::GetExtensions()`
+    pub fn get_extensions(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::NCollection_List_TCollection_AsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDE::DE_ShapeFixConfigurationNode_inherited_GetExtensions(
@@ -1838,7 +2072,7 @@ impl ShapeFixConfigurationNode {
         }
     }
 
-    /// Inherited: **Source:** `DE_ConfigurationNode.hxx`:118 - `DE_ConfigurationNode::CheckExtension()`
+    /// Inherited: **Source:** `DE_ConfigurationNode.hxx`:124 - `DE_ConfigurationNode::CheckExtension()`
     pub fn check_extension(&self, theExtension: &crate::t_collection::AsciiString) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDE::DE_ShapeFixConfigurationNode_inherited_CheckExtension(
@@ -1848,8 +2082,8 @@ impl ShapeFixConfigurationNode {
         })
     }
 
-    /// Inherited: **Source:** `DE_ConfigurationNode.hxx`:123 - `DE_ConfigurationNode::CheckContent()`
-    pub fn check_content(&self, theBuffer: &crate::ffi_types::HandleNCollectionBuffer) -> bool {
+    /// Inherited: **Source:** `DE_ConfigurationNode.hxx`:129 - `DE_ConfigurationNode::CheckContent()`
+    pub fn check_content(&self, theBuffer: &crate::ffi_types::Handle_NCollection_Buffer) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDE::DE_ShapeFixConfigurationNode_inherited_CheckContent(
                 self as *const Self,
@@ -1858,7 +2092,7 @@ impl ShapeFixConfigurationNode {
         })
     }
 
-    /// Inherited: **Source:** `DE_ConfigurationNode.hxx`:128 - `DE_ConfigurationNode::IsEnabled()`
+    /// Inherited: **Source:** `DE_ConfigurationNode.hxx`:134 - `DE_ConfigurationNode::IsEnabled()`
     pub fn is_enabled(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDE::DE_ShapeFixConfigurationNode_inherited_IsEnabled(
@@ -1867,7 +2101,7 @@ impl ShapeFixConfigurationNode {
         })
     }
 
-    /// Inherited: **Source:** `DE_ConfigurationNode.hxx`:132 - `DE_ConfigurationNode::SetEnabled()`
+    /// Inherited: **Source:** `DE_ConfigurationNode.hxx`:138 - `DE_ConfigurationNode::SetEnabled()`
     pub fn set_enabled(&mut self, theIsLoaded: bool) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDE::DE_ShapeFixConfigurationNode_inherited_SetEnabled(
@@ -1877,8 +2111,11 @@ impl ShapeFixConfigurationNode {
         })
     }
 
-    /// Inherited: **Source:** `DE_ConfigurationNode.hxx`:141 - `DE_ConfigurationNode::CustomActivation()`
-    pub fn custom_activation(&mut self, arg0: &crate::ffi_types::TColStd_ListOfAsciiString) {
+    /// Inherited: **Source:** `DE_ConfigurationNode.hxx`:147 - `DE_ConfigurationNode::CustomActivation()`
+    pub fn custom_activation(
+        &mut self,
+        arg0: &crate::ffi_types::NCollection_List_TCollection_AsciiString,
+    ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDE::DE_ShapeFixConfigurationNode_inherited_CustomActivation(
                 self as *mut Self,
@@ -1887,8 +2124,28 @@ impl ShapeFixConfigurationNode {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `DE_ConfigurationNode.hxx`:164 - `DE_ConfigurationNode::Register()`
+    pub fn register(&self, theWrapper: &crate::ffi_types::Handle_DE_Wrapper) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKDE::DE_ShapeFixConfigurationNode_inherited_Register(
+                self as *const Self,
+                theWrapper,
+            )
+        })
+    }
+
+    /// Inherited: **Source:** `DE_ConfigurationNode.hxx`:168 - `DE_ConfigurationNode::UnRegister()`
+    pub fn un_register(&self, theWrapper: &crate::ffi_types::Handle_DE_Wrapper) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKDE::DE_ShapeFixConfigurationNode_inherited_UnRegister(
+                self as *const Self,
+                theWrapper,
+            )
+        })
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDE::DE_ShapeFixConfigurationNode_inherited_IsInstance(
                 self as *const Self,
@@ -1897,8 +2154,8 @@ impl ShapeFixConfigurationNode {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDE::DE_ShapeFixConfigurationNode_inherited_IsKind(
                 self as *const Self,
@@ -1907,7 +2164,7 @@ impl ShapeFixConfigurationNode {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -1923,7 +2180,7 @@ impl ShapeFixConfigurationNode {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDE::DE_ShapeFixConfigurationNode_inherited_GetRefCount(
@@ -1932,7 +2189,7 @@ impl ShapeFixConfigurationNode {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDE::DE_ShapeFixConfigurationNode_inherited_IncrementRefCounter(
@@ -1941,7 +2198,7 @@ impl ShapeFixConfigurationNode {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDE::DE_ShapeFixConfigurationNode_inherited_DecrementRefCounter(
@@ -1950,7 +2207,7 @@ impl ShapeFixConfigurationNode {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDE::DE_ShapeFixConfigurationNode_inherited_Delete(
@@ -1960,38 +2217,38 @@ impl ShapeFixConfigurationNode {
     }
 }
 
-pub use crate::ffi_types::HandleDEShapeFixConfigurationNode;
+pub use crate::ffi_types::Handle_DE_ShapeFixConfigurationNode;
 
-unsafe impl crate::CppDeletable for HandleDEShapeFixConfigurationNode {
+unsafe impl crate::CppDeletable for Handle_DE_ShapeFixConfigurationNode {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKDE::HandleDEShapeFixConfigurationNode_destructor(ptr);
+            crate::ffi_extern_TKDE::Handle_DE_ShapeFixConfigurationNode_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleDEShapeFixConfigurationNode {
+unsafe impl crate::CppCopyable for Handle_DE_ShapeFixConfigurationNode {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
         unsafe {
-            crate::check_result(crate::ffi_extern_TKDE::HandleDEShapeFixConfigurationNode_clone(
+            crate::check_result(crate::ffi_extern_TKDE::Handle_DE_ShapeFixConfigurationNode_clone(
                 ptr,
             ))
         }
     }
 }
 
-impl HandleDEShapeFixConfigurationNode {
+impl Handle_DE_ShapeFixConfigurationNode {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
         unsafe {
-            crate::ffi_extern_TKDE::HandleDEShapeFixConfigurationNode_is_null(self as *const Self)
+            crate::ffi_extern_TKDE::Handle_DE_ShapeFixConfigurationNode_is_null(self as *const Self)
         }
     }
 
     /// Dereference this Handle to access the underlying DE_ShapeFixConfigurationNode
     pub fn get(&self) -> &crate::ffi_types::DE_ShapeFixConfigurationNode {
         unsafe {
-            &*crate::check_result(crate::ffi_extern_TKDE::HandleDEShapeFixConfigurationNode_get(
+            &*crate::check_result(crate::ffi_extern_TKDE::Handle_DE_ShapeFixConfigurationNode_get(
                 self as *const Self,
             ))
         }
@@ -2001,7 +2258,7 @@ impl HandleDEShapeFixConfigurationNode {
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::DE_ShapeFixConfigurationNode {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi_extern_TKDE::HandleDEShapeFixConfigurationNode_get_mut(
+                crate::ffi_extern_TKDE::Handle_DE_ShapeFixConfigurationNode_get_mut(
                     self as *mut Self,
                 ),
             )
@@ -2011,18 +2268,18 @@ impl HandleDEShapeFixConfigurationNode {
     /// Upcast Handle<DE_ShapeFixConfigurationNode> to Handle<DE_ConfigurationNode>
     pub fn to_handle_configuration_node(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleDEConfigurationNode> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_DE_ConfigurationNode> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDE::HandleDEShapeFixConfigurationNode_to_HandleDEConfigurationNode(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDE::Handle_DE_ShapeFixConfigurationNode_to_Handle_DE_ConfigurationNode(self as *const Self)))
         }
     }
 
     /// Upcast Handle<DE_ShapeFixConfigurationNode> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDE::HandleDEShapeFixConfigurationNode_to_HandleStandardTransient(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDE::Handle_DE_ShapeFixConfigurationNode_to_Handle_Standard_Transient(self as *const Self)))
         }
     }
 
@@ -2031,9 +2288,9 @@ impl HandleDEShapeFixConfigurationNode {
     /// Returns `None` if the handle does not point to a `DEIGES_ConfigurationNode` (or subclass).
     pub fn downcast_to_deiges_configuration_node(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleDEIGESConfigurationNode>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_DEIGES_ConfigurationNode>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKDE::HandleDEShapeFixConfigurationNode_downcast_to_HandleDEIGESConfigurationNode(self as *const Self)
+            crate::ffi_extern_TKDE::Handle_DE_ShapeFixConfigurationNode_downcast_to_Handle_DEIGES_ConfigurationNode(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -2047,9 +2304,9 @@ impl HandleDEShapeFixConfigurationNode {
     /// Returns `None` if the handle does not point to a `DESTEP_ConfigurationNode` (or subclass).
     pub fn downcast_to_destep_configuration_node(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleDESTEPConfigurationNode>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_DESTEP_ConfigurationNode>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKDE::HandleDEShapeFixConfigurationNode_downcast_to_HandleDESTEPConfigurationNode(self as *const Self)
+            crate::ffi_extern_TKDE::Handle_DE_ShapeFixConfigurationNode_downcast_to_Handle_DESTEP_ConfigurationNode(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -2088,10 +2345,211 @@ impl ShapeFixParameters {
 }
 
 // ========================
+// From DE_ValidationUtils.hxx
+// ========================
+
+/// **Source:** `DE_ValidationUtils.hxx`:26 - `DE_ValidationUtils`
+/// Utility class providing static methods for common validation operations
+/// used across DataExchange providers. Includes validation for configuration nodes,
+/// file paths, streams, and other common scenarios with optional verbose error reporting.
+pub use crate::ffi_types::DE_ValidationUtils as ValidationUtils;
+
+unsafe impl crate::CppDeletable for ValidationUtils {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            crate::ffi_extern_TKDE::DE_ValidationUtils_destructor(ptr);
+        }
+    }
+}
+
+impl ValidationUtils {
+    /// **Source:** `DE_ValidationUtils.hxx` - `DE_ValidationUtils::DE_ValidationUtils()`
+    /// Default constructor
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKDE::DE_ValidationUtils_ctor(),
+            ))
+        }
+    }
+
+    /// **Source:** `DE_ValidationUtils.hxx`:35 - `DE_ValidationUtils::ValidateConfigurationNode()`
+    /// Validates that configuration node is not null and matches expected type
+    /// @param[in] theNode configuration node to validate
+    /// @param[in] theExpectedType expected RTTI type
+    /// @param[in] theContext context string for error messages
+    /// @param[in] theIsVerbose if true, sends detailed error messages via Message::SendFail
+    /// @return true if node is valid, false otherwise
+    pub fn validate_configuration_node(
+        theNode: &crate::ffi_types::Handle_DE_ConfigurationNode,
+        theExpectedType: &crate::ffi_types::Handle_Standard_Type,
+        theContext: &crate::t_collection::AsciiString,
+        theIsVerbose: bool,
+    ) -> bool {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKDE::DE_ValidationUtils_validate_configuration_node(
+                theNode,
+                theExpectedType,
+                theContext,
+                theIsVerbose,
+            )
+        })
+    }
+
+    /// **Source:** `DE_ValidationUtils.hxx`:46 - `DE_ValidationUtils::ValidateFileForReading()`
+    /// Checks if file exists and is readable
+    /// @param[in] thePath file path to check
+    /// @param[in] theContext context string for error messages
+    /// @param[in] theIsVerbose if true, sends detailed error messages via Message::SendFail
+    /// @return true if file exists and is readable, false otherwise
+    pub fn validate_file_for_reading(
+        thePath: &crate::t_collection::AsciiString,
+        theContext: &crate::t_collection::AsciiString,
+        theIsVerbose: bool,
+    ) -> bool {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKDE::DE_ValidationUtils_validate_file_for_reading(
+                thePath,
+                theContext,
+                theIsVerbose,
+            )
+        })
+    }
+
+    /// **Source:** `DE_ValidationUtils.hxx`:55 - `DE_ValidationUtils::ValidateFileForWriting()`
+    /// Checks if file location is writable (file may or may not exist)
+    /// @param[in] thePath file path to check
+    /// @param[in] theContext context string for error messages
+    /// @param[in] theIsVerbose if true, sends detailed error messages via Message::SendFail
+    /// @return true if location is writable, false otherwise
+    pub fn validate_file_for_writing(
+        thePath: &crate::t_collection::AsciiString,
+        theContext: &crate::t_collection::AsciiString,
+        theIsVerbose: bool,
+    ) -> bool {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKDE::DE_ValidationUtils_validate_file_for_writing(
+                thePath,
+                theContext,
+                theIsVerbose,
+            )
+        })
+    }
+
+    /// **Source:** `DE_ValidationUtils.hxx`:64 - `DE_ValidationUtils::ValidateReadStreamList()`
+    /// Validates read stream list, warns if multiple streams
+    /// @param[in] theStreams read stream list to validate
+    /// @param[in] theContext context string for error messages
+    /// @param[in] theIsVerbose if true, sends detailed error/warning messages
+    /// @return true if stream list is valid, false otherwise
+    pub fn validate_read_stream_list(
+        theStreams: &crate::ffi_types::DE_Provider_ReadStreamList,
+        theContext: &crate::t_collection::AsciiString,
+        theIsVerbose: bool,
+    ) -> bool {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKDE::DE_ValidationUtils_validate_read_stream_list(
+                theStreams,
+                theContext,
+                theIsVerbose,
+            )
+        })
+    }
+
+    /// **Source:** `DE_ValidationUtils.hxx`:73 - `DE_ValidationUtils::ValidateWriteStreamList()`
+    /// Validates write stream list, warns if multiple streams
+    /// @param[in] theStreams write stream list to validate
+    /// @param[in] theContext context string for error messages
+    /// @param[in] theIsVerbose if true, sends detailed error/warning messages
+    /// @return true if stream list is valid, false otherwise
+    pub fn validate_write_stream_list(
+        theStreams: &mut crate::ffi_types::DE_Provider_WriteStreamList,
+        theContext: &crate::t_collection::AsciiString,
+        theIsVerbose: bool,
+    ) -> bool {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKDE::DE_ValidationUtils_validate_write_stream_list(
+                theStreams,
+                theContext,
+                theIsVerbose,
+            )
+        })
+    }
+
+    /// **Source:** `DE_ValidationUtils.hxx`:82 - `DE_ValidationUtils::ValidateDocument()`
+    /// Validates that TDocStd_Document handle is not null
+    /// @param[in] theDocument document to validate
+    /// @param[in] theContext context string for error messages
+    /// @param[in] theIsVerbose if true, sends detailed error messages via Message::SendFail
+    /// @return true if document is not null, false otherwise
+    pub fn validate_document(
+        theDocument: &crate::ffi_types::Handle_TDocStd_Document,
+        theContext: &crate::t_collection::AsciiString,
+        theIsVerbose: bool,
+    ) -> bool {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKDE::DE_ValidationUtils_validate_document(
+                theDocument,
+                theContext,
+                theIsVerbose,
+            )
+        })
+    }
+
+    /// **Source:** `DE_ValidationUtils.hxx`:91 - `DE_ValidationUtils::WarnLengthUnitNotSupported()`
+    /// Sends warning when format doesn't support length unit scaling
+    /// @param[in] theLengthUnit length unit value to check
+    /// @param[in] theContext context string for warning messages
+    /// @param[in] theIsVerbose if true, sends warning messages via Message::SendWarning
+    /// @return true always (this is just a warning)
+    pub fn warn_length_unit_not_supported(
+        theLengthUnit: f64,
+        theContext: &crate::t_collection::AsciiString,
+        theIsVerbose: bool,
+    ) -> bool {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKDE::DE_ValidationUtils_warn_length_unit_not_supported(
+                theLengthUnit,
+                theContext,
+                theIsVerbose,
+            )
+        })
+    }
+
+    /// **Source:** `DE_ValidationUtils.hxx`:99 - `DE_ValidationUtils::CreateContentBuffer()`
+    /// Creates buffer by reading from file stream for content checking
+    /// @param[in] thePath file path for reading
+    /// @param[out] theBuffer output buffer with file content
+    /// @return true if successful, false otherwise
+    pub fn create_content_buffer_asciistring_handlencollectionbuffer(
+        thePath: &crate::t_collection::AsciiString,
+        theBuffer: &mut crate::ffi_types::Handle_NCollection_Buffer,
+    ) -> bool {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKDE::DE_ValidationUtils_create_content_buffer_asciistring_handlencollectionbuffer(thePath, theBuffer)
+        })
+    }
+
+    /// **Source:** `DE_ValidationUtils.hxx`:106 - `DE_ValidationUtils::CreateContentBuffer()`
+    /// Creates buffer by reading from input stream for content checking
+    /// @param[in,out] theStream input stream to read from (position will be restored)
+    /// @param[out] theBuffer output buffer with stream content
+    /// @return true if successful, false otherwise
+    pub fn create_content_buffer_istream_handlencollectionbuffer(
+        theStream: &mut crate::ffi_types::Standard_IStream,
+        theBuffer: &mut crate::ffi_types::Handle_NCollection_Buffer,
+    ) -> bool {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKDE::DE_ValidationUtils_create_content_buffer_istream_handlencollectionbuffer(theStream, theBuffer)
+        })
+    }
+}
+
+// ========================
 // From DE_Wrapper.hxx
 // ========================
 
-/// **Source:** `DE_Wrapper.hxx`:54 - `DE_Wrapper`
+/// **Source:** `DE_Wrapper.hxx`:52 - `DE_Wrapper`
 /// The main class for working with CAD file exchange.
 /// Loads and Saves special CAD transfer property.
 /// Consolidates all supported Formats and Vendors.
@@ -2124,7 +2582,7 @@ unsafe impl crate::CppDeletable for Wrapper {
 }
 
 impl Wrapper {
-    /// **Source:** `DE_Wrapper.hxx`:60 - `DE_Wrapper::DE_Wrapper()`
+    /// **Source:** `DE_Wrapper.hxx`:58 - `DE_Wrapper::DE_Wrapper()`
     /// Initializes all field by default
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
@@ -2134,11 +2592,11 @@ impl Wrapper {
         }
     }
 
-    /// **Source:** `DE_Wrapper.hxx`:64 - `DE_Wrapper::DE_Wrapper()`
+    /// **Source:** `DE_Wrapper.hxx`:62 - `DE_Wrapper::DE_Wrapper()`
     /// Copies values of all fields
     /// @param[in] theWrapper object to copy
     pub fn new_handledewrapper(
-        theWrapper: &crate::ffi_types::HandleDEWrapper,
+        theWrapper: &crate::ffi_types::Handle_DE_Wrapper,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -2147,8 +2605,8 @@ impl Wrapper {
         }
     }
 
-    /// **Source:** `DE_Wrapper.hxx`:56 - `DE_Wrapper::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `DE_Wrapper.hxx`:54 - `DE_Wrapper::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKDE::DE_Wrapper_dynamic_type(
                 self as *const Self,
@@ -2156,7 +2614,7 @@ impl Wrapper {
         }
     }
 
-    /// **Source:** `DE_Wrapper.hxx`:85 - `DE_Wrapper::Read()`
+    /// **Source:** `DE_Wrapper.hxx`:82 - `DE_Wrapper::Read()`
     /// Reads a CAD file, according internal configuration
     /// @param[in] thePath path to the import CAD file
     /// @param[out] theDocument document to save result
@@ -2166,8 +2624,8 @@ impl Wrapper {
     pub fn read_asciistring_handletdocstddocument_handlexscontrolworksession_progressrange(
         &mut self,
         thePath: &crate::t_collection::AsciiString,
-        theDocument: &crate::ffi_types::HandleTDocStdDocument,
-        theWS: &mut crate::ffi_types::HandleXSControlWorkSession,
+        theDocument: &crate::ffi_types::Handle_TDocStd_Document,
+        theWS: &mut crate::ffi_types::Handle_XSControl_WorkSession,
         theProgress: &crate::message::ProgressRange,
     ) -> bool {
         crate::check_result(unsafe {
@@ -2175,7 +2633,7 @@ impl Wrapper {
         })
     }
 
-    /// **Source:** `DE_Wrapper.hxx`:97 - `DE_Wrapper::Write()`
+    /// **Source:** `DE_Wrapper.hxx`:93 - `DE_Wrapper::Write()`
     /// Writes a CAD file, according internal configuration
     /// @param[in] thePath path to the export CAD file
     /// @param[out] theDocument document to export
@@ -2185,8 +2643,8 @@ impl Wrapper {
     pub fn write_asciistring_handletdocstddocument_handlexscontrolworksession_progressrange(
         &mut self,
         thePath: &crate::t_collection::AsciiString,
-        theDocument: &crate::ffi_types::HandleTDocStdDocument,
-        theWS: &mut crate::ffi_types::HandleXSControlWorkSession,
+        theDocument: &crate::ffi_types::Handle_TDocStd_Document,
+        theWS: &mut crate::ffi_types::Handle_XSControl_WorkSession,
         theProgress: &crate::message::ProgressRange,
     ) -> bool {
         crate::check_result(unsafe {
@@ -2194,7 +2652,7 @@ impl Wrapper {
         })
     }
 
-    /// **Source:** `DE_Wrapper.hxx`:108 - `DE_Wrapper::Read()`
+    /// **Source:** `DE_Wrapper.hxx`:103 - `DE_Wrapper::Read()`
     /// Reads a CAD file, according internal configuration
     /// @param[in] thePath path to the import CAD file
     /// @param[out] theDocument document to save result
@@ -2203,7 +2661,7 @@ impl Wrapper {
     pub fn read_asciistring_handletdocstddocument_progressrange(
         &mut self,
         thePath: &crate::t_collection::AsciiString,
-        theDocument: &crate::ffi_types::HandleTDocStdDocument,
+        theDocument: &crate::ffi_types::Handle_TDocStd_Document,
         theProgress: &crate::message::ProgressRange,
     ) -> bool {
         crate::check_result(unsafe {
@@ -2216,7 +2674,7 @@ impl Wrapper {
         })
     }
 
-    /// **Source:** `DE_Wrapper.hxx`:118 - `DE_Wrapper::Write()`
+    /// **Source:** `DE_Wrapper.hxx`:112 - `DE_Wrapper::Write()`
     /// Writes a CAD file, according internal configuration
     /// @param[in] thePath path to the export CAD file
     /// @param[out] theDocument document to export
@@ -2225,7 +2683,7 @@ impl Wrapper {
     pub fn write_asciistring_handletdocstddocument_progressrange(
         &mut self,
         thePath: &crate::t_collection::AsciiString,
-        theDocument: &crate::ffi_types::HandleTDocStdDocument,
+        theDocument: &crate::ffi_types::Handle_TDocStd_Document,
         theProgress: &crate::message::ProgressRange,
     ) -> bool {
         crate::check_result(unsafe {
@@ -2238,7 +2696,7 @@ impl Wrapper {
         })
     }
 
-    /// **Source:** `DE_Wrapper.hxx`:129 - `DE_Wrapper::Read()`
+    /// **Source:** `DE_Wrapper.hxx`:122 - `DE_Wrapper::Read()`
     /// Reads a CAD file, according internal configuration
     /// @param[in] thePath path to the import CAD file
     /// @param[out] theShape shape to save result
@@ -2249,7 +2707,7 @@ impl Wrapper {
         &mut self,
         thePath: &crate::t_collection::AsciiString,
         theShape: &mut crate::topo_ds::Shape,
-        theWS: &mut crate::ffi_types::HandleXSControlWorkSession,
+        theWS: &mut crate::ffi_types::Handle_XSControl_WorkSession,
         theProgress: &crate::message::ProgressRange,
     ) -> bool {
         crate::check_result(unsafe {
@@ -2257,7 +2715,7 @@ impl Wrapper {
         })
     }
 
-    /// **Source:** `DE_Wrapper.hxx`:141 - `DE_Wrapper::Write()`
+    /// **Source:** `DE_Wrapper.hxx`:133 - `DE_Wrapper::Write()`
     /// Writes a CAD file, according internal configuration
     /// @param[in] thePath path to the export CAD file
     /// @param[out] theShape shape to export
@@ -2268,7 +2726,7 @@ impl Wrapper {
         &mut self,
         thePath: &crate::t_collection::AsciiString,
         theShape: &crate::topo_ds::Shape,
-        theWS: &mut crate::ffi_types::HandleXSControlWorkSession,
+        theWS: &mut crate::ffi_types::Handle_XSControl_WorkSession,
         theProgress: &crate::message::ProgressRange,
     ) -> bool {
         crate::check_result(unsafe {
@@ -2276,7 +2734,7 @@ impl Wrapper {
         })
     }
 
-    /// **Source:** `DE_Wrapper.hxx`:152 - `DE_Wrapper::Read()`
+    /// **Source:** `DE_Wrapper.hxx`:143 - `DE_Wrapper::Read()`
     /// Reads a CAD file, according internal configuration
     /// @param[in] thePath path to the import CAD file
     /// @param[out] theShape shape to save result
@@ -2298,7 +2756,7 @@ impl Wrapper {
         })
     }
 
-    /// **Source:** `DE_Wrapper.hxx`:162 - `DE_Wrapper::Write()`
+    /// **Source:** `DE_Wrapper.hxx`:152 - `DE_Wrapper::Write()`
     /// Writes a CAD file, according internal configuration
     /// @param[in] thePath path to the export CAD file
     /// @param[out] theShape shape to export
@@ -2320,7 +2778,161 @@ impl Wrapper {
         })
     }
 
-    /// **Source:** `DE_Wrapper.hxx`:171 - `DE_Wrapper::Load()`
+    /// **Source:** `DE_Wrapper.hxx`:162 - `DE_Wrapper::Read()`
+    /// Reads streams according to internal configuration
+    /// @param[in] theStreams streams to read from
+    /// @param[out] theDocument document to save result
+    /// @param[in] theWS current work session
+    /// @param[in] theProgress progress indicator
+    /// @return true if Read operation has ended correctly
+    pub fn read_readstreamlist_handletdocstddocument_handlexscontrolworksession_progressrange(
+        &mut self,
+        theStreams: &mut crate::ffi_types::DE_Provider_ReadStreamList,
+        theDocument: &crate::ffi_types::Handle_TDocStd_Document,
+        theWS: &mut crate::ffi_types::Handle_XSControl_WorkSession,
+        theProgress: &crate::message::ProgressRange,
+    ) -> bool {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKDE::DE_Wrapper_read_readstreamlist_handletdocstddocument_handlexscontrolworksession_progressrange(self as *mut Self, theStreams, theDocument, theWS, theProgress)
+        })
+    }
+
+    /// **Source:** `DE_Wrapper.hxx`:173 - `DE_Wrapper::Write()`
+    /// Writes streams according to internal configuration
+    /// @param[in] theStreams streams to write to
+    /// @param[out] theDocument document to export
+    /// @param[in] theWS current work session
+    /// @param[in] theProgress progress indicator
+    /// @return true if Write operation has ended correctly
+    pub fn write_writestreamlist_handletdocstddocument_handlexscontrolworksession_progressrange(
+        &mut self,
+        theStreams: &mut crate::ffi_types::DE_Provider_WriteStreamList,
+        theDocument: &crate::ffi_types::Handle_TDocStd_Document,
+        theWS: &mut crate::ffi_types::Handle_XSControl_WorkSession,
+        theProgress: &crate::message::ProgressRange,
+    ) -> bool {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKDE::DE_Wrapper_write_writestreamlist_handletdocstddocument_handlexscontrolworksession_progressrange(self as *mut Self, theStreams, theDocument, theWS, theProgress)
+        })
+    }
+
+    /// **Source:** `DE_Wrapper.hxx`:183 - `DE_Wrapper::Read()`
+    /// Reads streams according to internal configuration
+    /// @param[in] theStreams streams to read from
+    /// @param[out] theDocument document to save result
+    /// @param[in] theProgress progress indicator
+    /// @return true if Read operation has ended correctly
+    pub fn read_readstreamlist_handletdocstddocument_progressrange(
+        &mut self,
+        theStreams: &mut crate::ffi_types::DE_Provider_ReadStreamList,
+        theDocument: &crate::ffi_types::Handle_TDocStd_Document,
+        theProgress: &crate::message::ProgressRange,
+    ) -> bool {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKDE::DE_Wrapper_read_readstreamlist_handletdocstddocument_progressrange(self as *mut Self, theStreams, theDocument, theProgress)
+        })
+    }
+
+    /// **Source:** `DE_Wrapper.hxx`:192 - `DE_Wrapper::Write()`
+    /// Writes streams according to internal configuration
+    /// @param[in] theStreams streams to write to
+    /// @param[out] theDocument document to export
+    /// @param[in] theProgress progress indicator
+    /// @return true if Write operation has ended correctly
+    pub fn write_writestreamlist_handletdocstddocument_progressrange(
+        &mut self,
+        theStreams: &mut crate::ffi_types::DE_Provider_WriteStreamList,
+        theDocument: &crate::ffi_types::Handle_TDocStd_Document,
+        theProgress: &crate::message::ProgressRange,
+    ) -> bool {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKDE::DE_Wrapper_write_writestreamlist_handletdocstddocument_progressrange(self as *mut Self, theStreams, theDocument, theProgress)
+        })
+    }
+
+    /// **Source:** `DE_Wrapper.hxx`:202 - `DE_Wrapper::Read()`
+    /// Reads streams according to internal configuration
+    /// @param[in] theStreams streams to read from
+    /// @param[out] theShape shape to save result
+    /// @param[in] theWS current work session
+    /// @param[in] theProgress progress indicator
+    /// @return true if Read operation has ended correctly
+    pub fn read_readstreamlist_shape_handlexscontrolworksession_progressrange(
+        &mut self,
+        theStreams: &mut crate::ffi_types::DE_Provider_ReadStreamList,
+        theShape: &mut crate::topo_ds::Shape,
+        theWS: &mut crate::ffi_types::Handle_XSControl_WorkSession,
+        theProgress: &crate::message::ProgressRange,
+    ) -> bool {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKDE::DE_Wrapper_read_readstreamlist_shape_handlexscontrolworksession_progressrange(self as *mut Self, theStreams, theShape, theWS, theProgress)
+        })
+    }
+
+    /// **Source:** `DE_Wrapper.hxx`:213 - `DE_Wrapper::Write()`
+    /// Writes streams according to internal configuration
+    /// @param[in] theStreams streams to write to
+    /// @param[out] theShape shape to export
+    /// @param[in] theWS current work session
+    /// @param[in] theProgress progress indicator
+    /// @return true if Write operation has ended correctly
+    pub fn write_writestreamlist_shape_handlexscontrolworksession_progressrange(
+        &mut self,
+        theStreams: &mut crate::ffi_types::DE_Provider_WriteStreamList,
+        theShape: &crate::topo_ds::Shape,
+        theWS: &mut crate::ffi_types::Handle_XSControl_WorkSession,
+        theProgress: &crate::message::ProgressRange,
+    ) -> bool {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKDE::DE_Wrapper_write_writestreamlist_shape_handlexscontrolworksession_progressrange(self as *mut Self, theStreams, theShape, theWS, theProgress)
+        })
+    }
+
+    /// **Source:** `DE_Wrapper.hxx`:223 - `DE_Wrapper::Read()`
+    /// Reads streams according to internal configuration
+    /// @param[in] theStreams streams to read from
+    /// @param[out] theShape shape to save result
+    /// @param[in] theProgress progress indicator
+    /// @return true if Read operation has ended correctly
+    pub fn read_readstreamlist_shape_progressrange(
+        &mut self,
+        theStreams: &mut crate::ffi_types::DE_Provider_ReadStreamList,
+        theShape: &mut crate::topo_ds::Shape,
+        theProgress: &crate::message::ProgressRange,
+    ) -> bool {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKDE::DE_Wrapper_read_readstreamlist_shape_progressrange(
+                self as *mut Self,
+                theStreams,
+                theShape,
+                theProgress,
+            )
+        })
+    }
+
+    /// **Source:** `DE_Wrapper.hxx`:232 - `DE_Wrapper::Write()`
+    /// Writes streams according to internal configuration
+    /// @param[in] theStreams streams to write to
+    /// @param[out] theShape shape to export
+    /// @param[in] theProgress progress indicator
+    /// @return true if Write operation has ended correctly
+    pub fn write_writestreamlist_shape_progressrange(
+        &mut self,
+        theStreams: &mut crate::ffi_types::DE_Provider_WriteStreamList,
+        theShape: &crate::topo_ds::Shape,
+        theProgress: &crate::message::ProgressRange,
+    ) -> bool {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKDE::DE_Wrapper_write_writestreamlist_shape_progressrange(
+                self as *mut Self,
+                theStreams,
+                theShape,
+                theProgress,
+            )
+        })
+    }
+
+    /// **Source:** `DE_Wrapper.hxx`:241 - `DE_Wrapper::Load()`
     /// Updates values according the resource file
     /// @param[in] theResource file path to resource or resource value
     /// @param[in] theIsRecursive flag to update all nodes
@@ -2339,14 +2951,14 @@ impl Wrapper {
         })
     }
 
-    /// **Source:** `DE_Wrapper.hxx`:178 - `DE_Wrapper::Load()`
+    /// **Source:** `DE_Wrapper.hxx`:248 - `DE_Wrapper::Load()`
     /// Updates values according the resource
     /// @param[in] theResource input resource to use
     /// @param[in] theIsRecursive flag to update all nodes
     /// @return true if theResource has loaded correctly
     pub fn load_handledeconfigurationcontext_bool(
         &mut self,
-        theResource: &crate::ffi_types::HandleDEConfigurationContext,
+        theResource: &crate::ffi_types::Handle_DE_ConfigurationContext,
         theIsRecursive: bool,
     ) -> bool {
         crate::check_result(unsafe {
@@ -2358,22 +2970,22 @@ impl Wrapper {
         })
     }
 
-    /// **Source:** `DE_Wrapper.hxx`:188 - `DE_Wrapper::Save()`
+    /// **Source:** `DE_Wrapper.hxx`:257 - `DE_Wrapper::Save()`
     /// Writes configuration to the resource file
     /// @param[in] theResourcePath file path to resource
     /// @param[in] theIsRecursive flag to write values of all nodes
     /// @param[in] theFormats list of formats to save. If empty, saves all available
     /// @param[in] theVendors list of providers to save. If empty, saves all available
     /// @return true if the Configuration has saved correctly
-    pub fn save_asciistring_bool_listofasciistring2(
+    pub fn save_asciistring_bool_list_asciistring2(
         &mut self,
         theResourcePath: &crate::t_collection::AsciiString,
         theIsRecursive: bool,
-        theFormats: &crate::ffi_types::TColStd_ListOfAsciiString,
-        theVendors: &crate::ffi_types::TColStd_ListOfAsciiString,
+        theFormats: &crate::ffi_types::NCollection_List_TCollection_AsciiString,
+        theVendors: &crate::ffi_types::NCollection_List_TCollection_AsciiString,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi_extern_TKDE::DE_Wrapper_save_asciistring_bool_listofasciistring2(
+            crate::ffi_extern_TKDE::DE_Wrapper_save_asciistring_bool_list_asciistring2(
                 self as *mut Self,
                 theResourcePath,
                 theIsRecursive,
@@ -2383,21 +2995,21 @@ impl Wrapper {
         })
     }
 
-    /// **Source:** `DE_Wrapper.hxx`:199 - `DE_Wrapper::Save()`
+    /// **Source:** `DE_Wrapper.hxx`:270 - `DE_Wrapper::Save()`
     /// Writes configuration to the string
     /// @param[in] theIsRecursive flag to write values of all nodes
     /// @param[in] theFormats list of formats to save. If empty, saves all available
     /// @param[in] theVendors list of providers to save. If empty, saves all available
     /// @return result resource string
-    pub fn save_bool_listofasciistring2(
+    pub fn save_bool_list_asciistring2(
         &mut self,
         theIsRecursive: bool,
-        theFormats: &crate::ffi_types::TColStd_ListOfAsciiString,
-        theVendors: &crate::ffi_types::TColStd_ListOfAsciiString,
+        theFormats: &crate::ffi_types::NCollection_List_TCollection_AsciiString,
+        theVendors: &crate::ffi_types::NCollection_List_TCollection_AsciiString,
     ) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKDE::DE_Wrapper_save_bool_listofasciistring2(
+                crate::ffi_extern_TKDE::DE_Wrapper_save_bool_list_asciistring2(
                     self as *mut Self,
                     theIsRecursive,
                     theFormats,
@@ -2407,37 +3019,37 @@ impl Wrapper {
         }
     }
 
-    /// **Source:** `DE_Wrapper.hxx`:206 - `DE_Wrapper::Bind()`
+    /// **Source:** `DE_Wrapper.hxx`:279 - `DE_Wrapper::Bind()`
     /// Creates new node copy and adds to the map
     /// @param[in] theNode input node to copy
-    /// @return Standard_True if binded
-    pub fn bind(&mut self, theNode: &crate::ffi_types::HandleDEConfigurationNode) -> bool {
+    /// @return true if binded
+    pub fn bind(&mut self, theNode: &crate::ffi_types::Handle_DE_ConfigurationNode) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDE::DE_Wrapper_bind(self as *mut Self, theNode)
         })
     }
 
-    /// **Source:** `DE_Wrapper.hxx`:211 - `DE_Wrapper::UnBind()`
+    /// **Source:** `DE_Wrapper.hxx`:284 - `DE_Wrapper::UnBind()`
     /// Removes node with the same type from the map
     /// @param[in] theNode input node to remove the same
-    /// @return Standard_True if removed
-    pub fn un_bind(&mut self, theNode: &crate::ffi_types::HandleDEConfigurationNode) -> bool {
+    /// @return true if removed
+    pub fn un_bind(&mut self, theNode: &crate::ffi_types::Handle_DE_ConfigurationNode) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDE::DE_Wrapper_un_bind(self as *mut Self, theNode)
         })
     }
 
-    /// **Source:** `DE_Wrapper.hxx`:218 - `DE_Wrapper::Find()`
+    /// **Source:** `DE_Wrapper.hxx`:291 - `DE_Wrapper::Find()`
     /// Finds a node associated with input format and vendor
     /// @param[in] theFormat input node CAD format
     /// @param[in] theVendor input node vendor name
     /// @param[out] theNode output node
-    /// @return Standard_True if the node is found
+    /// @return true if the node is found
     pub fn find(
         &self,
         theFormat: &crate::t_collection::AsciiString,
         theVendor: &crate::t_collection::AsciiString,
-        theNode: &mut crate::ffi_types::HandleDEConfigurationNode,
+        theNode: &mut crate::ffi_types::Handle_DE_ConfigurationNode,
     ) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDE::DE_Wrapper_find(
@@ -2449,19 +3061,19 @@ impl Wrapper {
         })
     }
 
-    /// **Source:** `DE_Wrapper.hxx`:226 - `DE_Wrapper::ChangePriority()`
+    /// **Source:** `DE_Wrapper.hxx`:299 - `DE_Wrapper::ChangePriority()`
     /// Changes provider priority to one format if it exists
     /// @param[in] theFormat input node CAD format
     /// @param[in] theVendorPriority priority of work with vendors
     /// @param[in] theToDisable flag for disabling nodes that are not included in the priority
-    pub fn change_priority_asciistring_listofasciistring_bool(
+    pub fn change_priority_asciistring_list_asciistring_bool(
         &mut self,
         theFormat: &crate::t_collection::AsciiString,
-        theVendorPriority: &crate::ffi_types::TColStd_ListOfAsciiString,
+        theVendorPriority: &crate::ffi_types::NCollection_List_TCollection_AsciiString,
         theToDisable: bool,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi_extern_TKDE::DE_Wrapper_change_priority_asciistring_listofasciistring_bool(
+            crate::ffi_extern_TKDE::DE_Wrapper_change_priority_asciistring_list_asciistring_bool(
                 self as *mut Self,
                 theFormat,
                 theVendorPriority,
@@ -2470,17 +3082,17 @@ impl Wrapper {
         })
     }
 
-    /// **Source:** `DE_Wrapper.hxx`:233 - `DE_Wrapper::ChangePriority()`
+    /// **Source:** `DE_Wrapper.hxx`:307 - `DE_Wrapper::ChangePriority()`
     /// Changes provider priority to all loaded nodes
     /// @param[in] theVendorPriority priority of work with vendors
     /// @param[in] theToDisable flag for disabling nodes that are not included in the priority
-    pub fn change_priority_listofasciistring_bool(
+    pub fn change_priority_list_asciistring_bool(
         &mut self,
-        theVendorPriority: &crate::ffi_types::TColStd_ListOfAsciiString,
+        theVendorPriority: &crate::ffi_types::NCollection_List_TCollection_AsciiString,
         theToDisable: bool,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi_extern_TKDE::DE_Wrapper_change_priority_listofasciistring_bool(
+            crate::ffi_extern_TKDE::DE_Wrapper_change_priority_list_asciistring_bool(
                 self as *mut Self,
                 theVendorPriority,
                 theToDisable,
@@ -2488,18 +3100,18 @@ impl Wrapper {
         })
     }
 
-    /// **Source:** `DE_Wrapper.hxx`:242 - `DE_Wrapper::FindProvider()`
+    /// **Source:** `DE_Wrapper.hxx`:317 - `DE_Wrapper::FindProvider()`
     /// Find available provider from the configuration.
     /// If there are several providers, choose the one with the highest priority.
     /// @param[in] thePath path to the CAD file
-    /// @param[in] theToImport flag to finds for import. Standard_True-import, Standard_False-export
+    /// @param[in] theToImport flag to finds for import. true-import, false-export
     /// @param[out] theProvider created new provider
-    /// @return Standard_True if provider found and created
+    /// @return true if provider found and created
     pub fn find_provider(
         &self,
         thePath: &crate::t_collection::AsciiString,
         theToImport: bool,
-        theProvider: &mut crate::ffi_types::HandleDEProvider,
+        theProvider: &mut crate::ffi_types::Handle_DE_Provider,
     ) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDE::DE_Wrapper_find_provider(
@@ -2511,7 +3123,68 @@ impl Wrapper {
         })
     }
 
-    /// **Source:** `DE_Wrapper.hxx`:249 - `DE_Wrapper::UpdateLoad()`
+    /// **Source:** `DE_Wrapper.hxx`:327 - `DE_Wrapper::FindReadProvider()`
+    /// Find available read provider from the configuration for file-based operations.
+    /// If there are several providers, choose the one with the highest priority.
+    /// @param[in] thePath path to the CAD file (for extension and content checking)
+    /// @param[in] theCheckContent flag to enable content checking via file reading
+    /// @param[out] theProvider created new provider
+    /// @return true if provider found and created
+    pub fn find_read_provider_asciistring_bool_handledeprovider(
+        &self,
+        thePath: &crate::t_collection::AsciiString,
+        theCheckContent: bool,
+        theProvider: &mut crate::ffi_types::Handle_DE_Provider,
+    ) -> bool {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKDE::DE_Wrapper_find_read_provider_asciistring_bool_handledeprovider(
+                self as *const Self,
+                thePath,
+                theCheckContent,
+                theProvider,
+            )
+        })
+    }
+
+    /// **Source:** `DE_Wrapper.hxx`:337 - `DE_Wrapper::FindReadProvider()`
+    /// Find available read provider from the configuration for stream-based operations.
+    /// If there are several providers, choose the one with the highest priority.
+    /// @param[in] thePath path to the CAD file (for extension extraction)
+    /// @param[in] theStream input stream for content checking
+    /// @param[out] theProvider created new provider
+    /// @return true if provider found and created
+    pub fn find_read_provider_asciistring_istream_handledeprovider(
+        &self,
+        thePath: &crate::t_collection::AsciiString,
+        theStream: &mut crate::ffi_types::Standard_IStream,
+        theProvider: &mut crate::ffi_types::Handle_DE_Provider,
+    ) -> bool {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKDE::DE_Wrapper_find_read_provider_asciistring_istream_handledeprovider(self as *const Self, thePath, theStream, theProvider)
+        })
+    }
+
+    /// **Source:** `DE_Wrapper.hxx`:346 - `DE_Wrapper::FindWriteProvider()`
+    /// Find available write provider from the configuration.
+    /// If there are several providers, choose the one with the highest priority.
+    /// @param[in] thePath path to the CAD file (for extension checking only)
+    /// @param[out] theProvider created new provider
+    /// @return true if provider found and created
+    pub fn find_write_provider(
+        &self,
+        thePath: &crate::t_collection::AsciiString,
+        theProvider: &mut crate::ffi_types::Handle_DE_Provider,
+    ) -> bool {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKDE::DE_Wrapper_find_write_provider(
+                self as *const Self,
+                thePath,
+                theProvider,
+            )
+        })
+    }
+
+    /// **Source:** `DE_Wrapper.hxx`:352 - `DE_Wrapper::UpdateLoad()`
     /// Updates all registered nodes, all changes will be saved in nodes
     /// @param[in] theToForceUpdate flag that turns on/of nodes, according to updated ability to
     /// import/export
@@ -2521,7 +3194,7 @@ impl Wrapper {
         })
     }
 
-    /// **Source:** `DE_Wrapper.hxx`:252 - `DE_Wrapper::KeepUpdates()`
+    /// **Source:** `DE_Wrapper.hxx`:355 - `DE_Wrapper::KeepUpdates()`
     /// Gets flag that keeps changes on configuration nodes which are being updated, false by default
     pub fn keep_updates(&self) -> bool {
         crate::check_result(unsafe {
@@ -2529,7 +3202,7 @@ impl Wrapper {
         })
     }
 
-    /// **Source:** `DE_Wrapper.hxx`:255 - `DE_Wrapper::SetKeepUpdates()`
+    /// **Source:** `DE_Wrapper.hxx`:358 - `DE_Wrapper::SetKeepUpdates()`
     /// Sets flag that keeps changes on configuration nodes which are being updated, false by default
     pub fn set_keep_updates(&mut self, theToKeepUpdates: bool) {
         crate::check_void_result(unsafe {
@@ -2537,19 +3210,10 @@ impl Wrapper {
         })
     }
 
-    /// **Source:** `DE_Wrapper.hxx`:259 - `DE_Wrapper::Nodes()`
-    /// Gets format map, contains vendor map with nodes
-    /// @return internal map of formats
-    pub fn nodes(&self) -> &crate::ffi_types::DE_ConfigurationFormatMap {
-        unsafe {
-            &*(crate::check_result(crate::ffi_extern_TKDE::DE_Wrapper_nodes(self as *const Self)))
-        }
-    }
-
-    /// **Source:** `DE_Wrapper.hxx`:263 - `DE_Wrapper::Copy()`
+    /// **Source:** `DE_Wrapper.hxx`:369 - `DE_Wrapper::Copy()`
     /// Copies values of all fields
     /// @return new object with the same field values
-    pub fn copy(&self) -> crate::OwnedPtr<crate::ffi_types::HandleDEWrapper> {
+    pub fn copy(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_DE_Wrapper> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDE::DE_Wrapper_copy(
                 self as *const Self,
@@ -2557,7 +3221,7 @@ impl Wrapper {
         }
     }
 
-    /// **Source:** `DE_Wrapper.hxx`:56 - `DE_Wrapper::get_type_name()`
+    /// **Source:** `DE_Wrapper.hxx`:54 - `DE_Wrapper::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -2568,33 +3232,26 @@ impl Wrapper {
         .into_owned()
     }
 
-    /// **Source:** `DE_Wrapper.hxx`:56 - `DE_Wrapper::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    /// **Source:** `DE_Wrapper.hxx`:54 - `DE_Wrapper::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe { &*(crate::check_result(crate::ffi_extern_TKDE::DE_Wrapper_get_type_descriptor())) }
     }
 
-    /// **Source:** `DE_Wrapper.hxx`:69 - `DE_Wrapper::GlobalWrapper()`
+    /// **Source:** `DE_Wrapper.hxx`:67 - `DE_Wrapper::GlobalWrapper()`
     /// Gets global configuration singleton.
     /// If wrapper is not set, create it by default as base class object.
     /// @return point to global configuration
-    pub fn global_wrapper() -> &'static crate::ffi_types::HandleDEWrapper {
+    pub fn global_wrapper() -> &'static crate::ffi_types::Handle_DE_Wrapper {
         unsafe { &*(crate::check_result(crate::ffi_extern_TKDE::DE_Wrapper_global_wrapper())) }
     }
 
-    /// **Source:** `DE_Wrapper.hxx`:73 - `DE_Wrapper::SetGlobalWrapper()`
+    /// **Source:** `DE_Wrapper.hxx`:71 - `DE_Wrapper::SetGlobalWrapper()`
     /// Sets global configuration singleton
     /// @param[in] theWrapper object to set as global configuration
-    pub fn set_global_wrapper(theWrapper: &crate::ffi_types::HandleDEWrapper) {
+    pub fn set_global_wrapper(theWrapper: &crate::ffi_types::Handle_DE_Wrapper) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDE::DE_Wrapper_set_global_wrapper(theWrapper)
         })
-    }
-
-    /// **Source:** `DE_Wrapper.hxx`:75 - `DE_Wrapper::GlobalLoadMutex()`
-    pub fn global_load_mutex() -> &'static mut crate::standard::Mutex {
-        unsafe {
-            &mut *(crate::check_result(crate::ffi_extern_TKDE::DE_Wrapper_global_load_mutex()))
-        }
     }
 
     /// Upcast to Standard_Transient
@@ -2618,7 +3275,7 @@ impl Wrapper {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleDEWrapper> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_DE_Wrapper> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDE::DE_Wrapper_to_handle(obj.into_raw()),
@@ -2626,21 +3283,21 @@ impl Wrapper {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDE::DE_Wrapper_inherited_IsInstance(self as *const Self, theType)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDE::DE_Wrapper_inherited_IsKind(self as *const Self, theType)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -2654,28 +3311,28 @@ impl Wrapper {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDE::DE_Wrapper_inherited_GetRefCount(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDE::DE_Wrapper_inherited_IncrementRefCounter(self as *mut Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDE::DE_Wrapper_inherited_DecrementRefCounter(self as *mut Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDE::DE_Wrapper_inherited_Delete(self as *const Self)
@@ -2683,39 +3340,41 @@ impl Wrapper {
     }
 }
 
-pub use crate::ffi_types::HandleDEWrapper;
+pub use crate::ffi_types::Handle_DE_Wrapper;
 
-unsafe impl crate::CppDeletable for HandleDEWrapper {
+unsafe impl crate::CppDeletable for Handle_DE_Wrapper {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKDE::HandleDEWrapper_destructor(ptr);
+            crate::ffi_extern_TKDE::Handle_DE_Wrapper_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleDEWrapper {
+unsafe impl crate::CppCopyable for Handle_DE_Wrapper {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        unsafe { crate::check_result(crate::ffi_extern_TKDE::HandleDEWrapper_clone(ptr)) }
+        unsafe { crate::check_result(crate::ffi_extern_TKDE::Handle_DE_Wrapper_clone(ptr)) }
     }
 }
 
-impl HandleDEWrapper {
+impl Handle_DE_Wrapper {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
-        unsafe { crate::ffi_extern_TKDE::HandleDEWrapper_is_null(self as *const Self) }
+        unsafe { crate::ffi_extern_TKDE::Handle_DE_Wrapper_is_null(self as *const Self) }
     }
 
     /// Dereference this Handle to access the underlying DE_Wrapper
     pub fn get(&self) -> &crate::ffi_types::DE_Wrapper {
         unsafe {
-            &*crate::check_result(crate::ffi_extern_TKDE::HandleDEWrapper_get(self as *const Self))
+            &*crate::check_result(crate::ffi_extern_TKDE::Handle_DE_Wrapper_get(
+                self as *const Self,
+            ))
         }
     }
 
     /// Dereference this Handle to mutably access the underlying DE_Wrapper
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::DE_Wrapper {
         unsafe {
-            &mut *crate::check_result(crate::ffi_extern_TKDE::HandleDEWrapper_get_mut(
+            &mut *crate::check_result(crate::ffi_extern_TKDE::Handle_DE_Wrapper_get_mut(
                 self as *mut Self,
             ))
         }
@@ -2724,10 +3383,10 @@ impl HandleDEWrapper {
     /// Upcast Handle<DE_Wrapper> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKDE::HandleDEWrapper_to_HandleStandardTransient(
+                crate::ffi_extern_TKDE::Handle_DE_Wrapper_to_Handle_Standard_Transient(
                     self as *const Self,
                 ),
             ))
@@ -2735,10 +3394,14 @@ impl HandleDEWrapper {
     }
 }
 
-// ========================
-// Additional type re-exports
-// ========================
-
-pub use crate::ffi_types::{
-    DE_ConfigurationFormatMap as ConfigurationFormatMap, DE_ResourceMap as ResourceMap,
-};
+// ── Skipped symbols for Wrapper (2 total) ──
+// SKIPPED: **Source:** `DE_Wrapper.hxx`:365 - `DE_Wrapper::Nodes`
+//   method: Gets format map, contains vendor map with nodes
+//   method: @return internal map of formats
+//   Reason: has unbindable types: return: unresolved template type (NCollection_DataMap<TCollection_AsciiString, NCollection_IndexedDataMap<TCollection_AsciiString, occ::handle<DE_ConfigurationNode>>> const&)
+//   // pub fn nodes(&self) -> /* NCollection_DataMap<TCollection_AsciiString, NCollection_IndexedDataMap<TCollection_AsciiString, occ::handle<DE_ConfigurationNode>>> const& */;
+//
+// SKIPPED: **Source:** `DE_Wrapper.hxx`:73 - `DE_Wrapper::GlobalLoadMutex`
+//   Reason: return type 'std::mutex&' is unknown
+//   // pub fn global_load_mutex() -> &mut mutex;
+//

@@ -12,7 +12,7 @@
 
 /// **Source:** `Geom2dToIGES_Geom2dCurve.hxx`:42 - `Geom2dToIGES_Geom2dCurve`
 /// This class implements the transfer of the Curve Entity from Geom2d
-/// To IGES. These can be :
+/// To IGES. These can be:
 /// Curve
 /// . BoundedCurve
 /// * BSplineCurve
@@ -57,14 +57,14 @@ impl Geom2dCurve {
     }
 
     /// **Source:** `Geom2dToIGES_Geom2dCurve.hxx`:55 - `Geom2dToIGES_Geom2dCurve::Transfer2dCurve()`
-    /// Transfert  an Entity from Geom2d to IGES. If this
+    /// Transfer an Entity from Geom2d to IGES. If this
     /// Entity could not be converted, this member returns a NullEntity.
     pub fn transfer2d_curve(
         &mut self,
-        start: &crate::ffi_types::HandleGeom2dCurve,
+        start: &crate::ffi_types::Handle_Geom2d_Curve,
         Udeb: f64,
         Ufin: f64,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataIGESEntity> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_IGESData_IGESEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDEIGES::Geom2dToIGES_Geom2dCurve_transfer2d_curve(
@@ -96,7 +96,7 @@ impl Geom2dCurve {
     }
 
     /// Inherited: **Source:** `Geom2dToIGES_Geom2dEntity.hxx`:40 - `Geom2dToIGES_Geom2dEntity::SetModel()`
-    pub fn set_model(&mut self, model: &crate::ffi_types::HandleIGESDataIGESModel) {
+    pub fn set_model(&mut self, model: &crate::ffi_types::Handle_IGESData_IGESModel) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEIGES::Geom2dToIGES_Geom2dCurve_inherited_SetModel(
                 self as *mut Self,
@@ -106,7 +106,7 @@ impl Geom2dCurve {
     }
 
     /// Inherited: **Source:** `Geom2dToIGES_Geom2dEntity.hxx`:43 - `Geom2dToIGES_Geom2dEntity::GetModel()`
-    pub fn get_model(&self) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataIGESModel> {
+    pub fn get_model(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_IGESData_IGESModel> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDEIGES::Geom2dToIGES_Geom2dCurve_inherited_GetModel(
@@ -183,7 +183,7 @@ impl Geom2dEntity {
 
     /// **Source:** `Geom2dToIGES_Geom2dEntity.hxx`:40 - `Geom2dToIGES_Geom2dEntity::SetModel()`
     /// Set the value of "TheModel"
-    pub fn set_model(&mut self, model: &crate::ffi_types::HandleIGESDataIGESModel) {
+    pub fn set_model(&mut self, model: &crate::ffi_types::Handle_IGESData_IGESModel) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEIGES::Geom2dToIGES_Geom2dEntity_set_model(
                 self as *mut Self,
@@ -194,7 +194,7 @@ impl Geom2dEntity {
 
     /// **Source:** `Geom2dToIGES_Geom2dEntity.hxx`:43 - `Geom2dToIGES_Geom2dEntity::GetModel()`
     /// Returns the value of "TheModel"
-    pub fn get_model(&self) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataIGESModel> {
+    pub fn get_model(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_IGESData_IGESModel> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDEIGES::Geom2dToIGES_Geom2dEntity_get_model(
@@ -228,7 +228,7 @@ impl Geom2dEntity {
 
 /// **Source:** `Geom2dToIGES_Geom2dPoint.hxx`:33 - `Geom2dToIGES_Geom2dPoint`
 /// This class implements the transfer of the Point Entity from Geom2d
-/// to IGES . These are :
+/// to IGES. These are:
 /// . 2dPoint
 /// * 2dCartesianPoint
 pub use crate::ffi_types::Geom2dToIGES_Geom2dPoint as Geom2dPoint;
@@ -263,24 +263,24 @@ impl Geom2dPoint {
     }
 
     /// **Source:** `Geom2dToIGES_Geom2dPoint.hxx`:46 - `Geom2dToIGES_Geom2dPoint::Transfer2dPoint()`
-    /// Transfert  a  Point from Geom to IGES. If this
+    /// Transfer a Point from Geom to IGES. If this
     /// Entity could not be converted, this member returns a NullEntity.
     pub fn transfer2d_point_handlegeom2dpoint(
         &mut self,
-        start: &crate::ffi_types::HandleGeom2dPoint,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESGeomPoint> {
+        start: &crate::ffi_types::Handle_Geom2d_Point,
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_IGESGeom_Point> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::Geom2dToIGES_Geom2dPoint_transfer2d_point_handlegeom2dpoint(self as *mut Self, start)))
         }
     }
 
-    /// **Source:** `Geom2dToIGES_Geom2dPoint.hxx`:50 - `Geom2dToIGES_Geom2dPoint::Transfer2dPoint()`
-    /// Transfert  a  CartesianPoint from Geom to IGES. If this
+    /// **Source:** `Geom2dToIGES_Geom2dPoint.hxx`:51 - `Geom2dToIGES_Geom2dPoint::Transfer2dPoint()`
+    /// Transfer a CartesianPoint from Geom to IGES. If this
     /// Entity could not be converted, this member returns a NullEntity.
     pub fn transfer2d_point_handlegeom2dcartesianpoint(
         &mut self,
-        start: &crate::ffi_types::HandleGeom2dCartesianPoint,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESGeomPoint> {
+        start: &crate::ffi_types::Handle_Geom2d_CartesianPoint,
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_IGESGeom_Point> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::Geom2dToIGES_Geom2dPoint_transfer2d_point_handlegeom2dcartesianpoint(self as *mut Self, start)))
         }
@@ -305,7 +305,7 @@ impl Geom2dPoint {
     }
 
     /// Inherited: **Source:** `Geom2dToIGES_Geom2dEntity.hxx`:40 - `Geom2dToIGES_Geom2dEntity::SetModel()`
-    pub fn set_model(&mut self, model: &crate::ffi_types::HandleIGESDataIGESModel) {
+    pub fn set_model(&mut self, model: &crate::ffi_types::Handle_IGESData_IGESModel) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEIGES::Geom2dToIGES_Geom2dPoint_inherited_SetModel(
                 self as *mut Self,
@@ -315,7 +315,7 @@ impl Geom2dPoint {
     }
 
     /// Inherited: **Source:** `Geom2dToIGES_Geom2dEntity.hxx`:43 - `Geom2dToIGES_Geom2dEntity::GetModel()`
-    pub fn get_model(&self) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataIGESModel> {
+    pub fn get_model(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_IGESData_IGESModel> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDEIGES::Geom2dToIGES_Geom2dPoint_inherited_GetModel(
@@ -351,7 +351,7 @@ impl Geom2dPoint {
 
 /// **Source:** `Geom2dToIGES_Geom2dVector.hxx`:35 - `Geom2dToIGES_Geom2dVector`
 /// This class implements the transfer of the Vector from Geom2d
-/// to IGES . These can be :
+/// to IGES. These can be:
 /// . Vector
 /// * Direction
 /// * VectorWithMagnitude
@@ -387,33 +387,33 @@ impl Geom2dVector {
     }
 
     /// **Source:** `Geom2dToIGES_Geom2dVector.hxx`:49 - `Geom2dToIGES_Geom2dVector::Transfer2dVector()`
-    /// Transfert  a  GeometryEntity which  answer True  to  the
-    /// member : BRepToIGES::IsGeomVector(Geometry).  If this
+    /// Transfer a GeometryEntity which answer True to the
+    /// member : BRepToIGES::IsGeomVector(Geometry). If this
     /// Entity could not be converted, this member returns a NullEntity.
     pub fn transfer2d_vector_handlegeom2dvector(
         &mut self,
-        start: &crate::ffi_types::HandleGeom2dVector,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESGeomDirection> {
+        start: &crate::ffi_types::Handle_Geom2d_Vector,
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_IGESGeom_Direction> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::Geom2dToIGES_Geom2dVector_transfer2d_vector_handlegeom2dvector(self as *mut Self, start)))
         }
     }
 
-    /// **Source:** `Geom2dToIGES_Geom2dVector.hxx`:51 - `Geom2dToIGES_Geom2dVector::Transfer2dVector()`
+    /// **Source:** `Geom2dToIGES_Geom2dVector.hxx`:52 - `Geom2dToIGES_Geom2dVector::Transfer2dVector()`
     pub fn transfer2d_vector_handlegeom2dvectorwithmagnitude(
         &mut self,
-        start: &crate::ffi_types::HandleGeom2dVectorWithMagnitude,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESGeomDirection> {
+        start: &crate::ffi_types::Handle_Geom2d_VectorWithMagnitude,
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_IGESGeom_Direction> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::Geom2dToIGES_Geom2dVector_transfer2d_vector_handlegeom2dvectorwithmagnitude(self as *mut Self, start)))
         }
     }
 
-    /// **Source:** `Geom2dToIGES_Geom2dVector.hxx`:54 - `Geom2dToIGES_Geom2dVector::Transfer2dVector()`
+    /// **Source:** `Geom2dToIGES_Geom2dVector.hxx`:55 - `Geom2dToIGES_Geom2dVector::Transfer2dVector()`
     pub fn transfer2d_vector_handlegeom2ddirection(
         &mut self,
-        start: &crate::ffi_types::HandleGeom2dDirection,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESGeomDirection> {
+        start: &crate::ffi_types::Handle_Geom2d_Direction,
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_IGESGeom_Direction> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::Geom2dToIGES_Geom2dVector_transfer2d_vector_handlegeom2ddirection(self as *mut Self, start)))
         }
@@ -438,7 +438,7 @@ impl Geom2dVector {
     }
 
     /// Inherited: **Source:** `Geom2dToIGES_Geom2dEntity.hxx`:40 - `Geom2dToIGES_Geom2dEntity::SetModel()`
-    pub fn set_model(&mut self, model: &crate::ffi_types::HandleIGESDataIGESModel) {
+    pub fn set_model(&mut self, model: &crate::ffi_types::Handle_IGESData_IGESModel) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEIGES::Geom2dToIGES_Geom2dVector_inherited_SetModel(
                 self as *mut Self,
@@ -448,7 +448,7 @@ impl Geom2dVector {
     }
 
     /// Inherited: **Source:** `Geom2dToIGES_Geom2dEntity.hxx`:43 - `Geom2dToIGES_Geom2dEntity::GetModel()`
-    pub fn get_model(&self) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataIGESModel> {
+    pub fn get_model(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_IGESData_IGESModel> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDEIGES::Geom2dToIGES_Geom2dVector_inherited_GetModel(

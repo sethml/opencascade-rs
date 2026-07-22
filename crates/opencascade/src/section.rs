@@ -22,8 +22,7 @@ impl Section {
     pub fn section_edges(mut self) -> Vec<Shape> {
         let list = self.inner.section_edges();
         let mut shapes = Vec::new();
-        let mut iter = list.iter();
-        while let Some(shape) = iter.next() {
+        for shape in list.iter() {
             shapes.push(Shape::from_shape(&shape));
         }
         shapes

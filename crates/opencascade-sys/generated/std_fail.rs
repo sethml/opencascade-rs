@@ -6,16 +6,11 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 
-// Handle type re-exports (targets of handle upcasts/downcasts)
-pub use crate::ffi_types::{
-    HandleStandardDomainError, HandleStandardFailure, HandleStandardTransient,
-};
-
 // ========================
 // From StdFail_InfiniteSolutions.hxx
 // ========================
 
-/// **Source:** `StdFail_InfiniteSolutions.hxx`:36 - `StdFail_InfiniteSolutions`
+/// **Source:** `StdFail_InfiniteSolutions.hxx`:32 - `StdFail_InfiniteSolutions`
 pub use crate::ffi_types::StdFail_InfiniteSolutions as InfiniteSolutions;
 
 unsafe impl crate::CppDeletable for InfiniteSolutions {
@@ -27,16 +22,7 @@ unsafe impl crate::CppDeletable for InfiniteSolutions {
 }
 
 impl InfiniteSolutions {
-    /// **Source:** `StdFail_InfiniteSolutions.hxx`:36 - `StdFail_InfiniteSolutions::StdFail_InfiniteSolutions()`
-    pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKernel::StdFail_InfiniteSolutions_ctor(),
-            ))
-        }
-    }
-
-    /// **Source:** `StdFail_InfiniteSolutions.hxx`:36 - `StdFail_InfiniteSolutions::StdFail_InfiniteSolutions()`
+    /// **Source:** `StdFail_InfiniteSolutions.hxx`:32 - `StdFail_InfiniteSolutions::StdFail_InfiniteSolutions()`
     pub fn new_charptr(theMessage: &str) -> crate::OwnedPtr<Self> {
         let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
         unsafe {
@@ -48,7 +34,7 @@ impl InfiniteSolutions {
         }
     }
 
-    /// **Source:** `StdFail_InfiniteSolutions.hxx`:36 - `StdFail_InfiniteSolutions::StdFail_InfiniteSolutions()`
+    /// **Source:** `StdFail_InfiniteSolutions.hxx`:32 - `StdFail_InfiniteSolutions::StdFail_InfiniteSolutions()`
     pub fn new_charptr2(theMessage: &str, theStackTrace: &str) -> crate::OwnedPtr<Self> {
         let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
         let c_theStackTrace = std::ffi::CString::new(theStackTrace).unwrap();
@@ -62,83 +48,17 @@ impl InfiniteSolutions {
         }
     }
 
-    /// **Source:** `StdFail_InfiniteSolutions.hxx`:36 - `StdFail_InfiniteSolutions::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `StdFail_InfiniteSolutions.hxx`:32 - `StdFail_InfiniteSolutions::ExceptionType()`
+    pub fn exception_type(&self) -> std::string::String {
         unsafe {
-            &*(crate::check_result(
-                crate::ffi_extern_TKernel::StdFail_InfiniteSolutions_dynamic_type(
+            std::ffi::CStr::from_ptr(crate::check_result(
+                crate::ffi_extern_TKernel::StdFail_InfiniteSolutions_exception_type(
                     self as *const Self,
                 ),
             ))
         }
-    }
-
-    /// **Source:** `StdFail_InfiniteSolutions.hxx`:36 - `StdFail_InfiniteSolutions::Raise()`
-    pub fn raise_charptr(theMessage: &str) {
-        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKernel::StdFail_InfiniteSolutions_raise_charptr(
-                c_theMessage.as_ptr(),
-            )
-        })
-    }
-
-    /// **Source:** `StdFail_InfiniteSolutions.hxx`:36 - `StdFail_InfiniteSolutions::Raise()`
-    pub fn raise_sstream(theMessage: &mut crate::ffi_types::Standard_SStream) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKernel::StdFail_InfiniteSolutions_raise_sstream(theMessage)
-        })
-    }
-
-    /// **Source:** `StdFail_InfiniteSolutions.hxx`:36 - `StdFail_InfiniteSolutions::NewInstance()`
-    pub fn new_instance_charptr(
-        theMessage: &str,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStdFailInfiniteSolutions> {
-        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKernel::StdFail_InfiniteSolutions_new_instance_charptr(
-                    c_theMessage.as_ptr(),
-                ),
-            ))
-        }
-    }
-
-    /// **Source:** `StdFail_InfiniteSolutions.hxx`:36 - `StdFail_InfiniteSolutions::NewInstance()`
-    pub fn new_instance_charptr2(
-        theMessage: &str,
-        theStackTrace: &str,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStdFailInfiniteSolutions> {
-        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
-        let c_theStackTrace = std::ffi::CString::new(theStackTrace).unwrap();
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKernel::StdFail_InfiniteSolutions_new_instance_charptr2(
-                    c_theMessage.as_ptr(),
-                    c_theStackTrace.as_ptr(),
-                ),
-            ))
-        }
-    }
-
-    /// **Source:** `StdFail_InfiniteSolutions.hxx`:36 - `StdFail_InfiniteSolutions::get_type_name()`
-    pub fn get_type_name() -> std::string::String {
-        unsafe {
-            std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi_extern_TKernel::StdFail_InfiniteSolutions_get_type_name(),
-            ))
-        }
         .to_string_lossy()
         .into_owned()
-    }
-
-    /// **Source:** `StdFail_InfiniteSolutions.hxx`:36 - `StdFail_InfiniteSolutions::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
-        unsafe {
-            &*(crate::check_result(
-                crate::ffi_extern_TKernel::StdFail_InfiniteSolutions_get_type_descriptor(),
-            ))
-        }
     }
 
     /// Upcast to Standard_Failure
@@ -163,40 +83,7 @@ impl InfiniteSolutions {
         }
     }
 
-    /// Upcast to Standard_Transient
-    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        unsafe {
-            &*crate::check_result(
-                crate::ffi_extern_TKernel::StdFail_InfiniteSolutions_as_Standard_Transient(
-                    self as *const Self,
-                ),
-            )
-        }
-    }
-
-    /// Upcast to Standard_Transient (mutable)
-    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        unsafe {
-            &mut *crate::check_result(
-                crate::ffi_extern_TKernel::StdFail_InfiniteSolutions_as_Standard_Transient_mut(
-                    self as *mut Self,
-                ),
-            )
-        }
-    }
-
-    /// Wrap in a Handle (reference-counted smart pointer)
-    pub fn to_handle(
-        obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStdFailInfiniteSolutions> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKernel::StdFail_InfiniteSolutions_to_handle(obj.into_raw()),
-            ))
-        }
-    }
-
-    /// Inherited: **Source:** `Standard_Failure.hxx`:58 - `Standard_Failure::Print()`
+    /// Inherited: **Source:** `Standard_Failure.hxx`:73 - `Standard_Failure::Print()`
     pub fn print(&self, theStream: &mut crate::ffi_types::Standard_OStream) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKernel::StdFail_InfiniteSolutions_inherited_Print(
@@ -205,170 +92,13 @@ impl InfiniteSolutions {
             )
         })
     }
-
-    /// Inherited: **Source:** `Standard_Failure.hxx`:72 - `Standard_Failure::Reraise()`
-    pub fn reraise(&mut self) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKernel::StdFail_InfiniteSolutions_inherited_Reraise(
-                self as *mut Self,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Failure.hxx`:112 - `Standard_Failure::Jump()`
-    pub fn jump(&mut self) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKernel::StdFail_InfiniteSolutions_inherited_Jump(self as *mut Self)
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKernel::StdFail_InfiniteSolutions_inherited_IsInstance(
-                self as *const Self,
-                theType,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKernel::StdFail_InfiniteSolutions_inherited_IsKind(
-                self as *const Self,
-                theType,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
-    pub fn this(&self) -> Option<&crate::standard::Transient> {
-        {
-            let __val = crate::check_result(unsafe {
-                crate::ffi_extern_TKernel::StdFail_InfiniteSolutions_inherited_This(
-                    self as *const Self,
-                )
-            });
-            if __val.is_null() {
-                None
-            } else {
-                Some(unsafe { &*__val })
-            }
-        }
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
-    pub fn get_ref_count(&self) -> i32 {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKernel::StdFail_InfiniteSolutions_inherited_GetRefCount(
-                self as *const Self,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
-    pub fn increment_ref_counter(&mut self) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKernel::StdFail_InfiniteSolutions_inherited_IncrementRefCounter(
-                self as *mut Self,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
-    pub fn decrement_ref_counter(&mut self) -> i32 {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKernel::StdFail_InfiniteSolutions_inherited_DecrementRefCounter(
-                self as *mut Self,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
-    pub fn delete(&self) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKernel::StdFail_InfiniteSolutions_inherited_Delete(
-                self as *const Self,
-            )
-        })
-    }
-}
-
-pub use crate::ffi_types::HandleStdFailInfiniteSolutions;
-
-unsafe impl crate::CppDeletable for HandleStdFailInfiniteSolutions {
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            crate::ffi_extern_TKernel::HandleStdFailInfiniteSolutions_destructor(ptr);
-        }
-    }
-}
-
-unsafe impl crate::CppCopyable for HandleStdFailInfiniteSolutions {
-    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        unsafe {
-            crate::check_result(crate::ffi_extern_TKernel::HandleStdFailInfiniteSolutions_clone(
-                ptr,
-            ))
-        }
-    }
-}
-
-impl HandleStdFailInfiniteSolutions {
-    /// Returns `true` if this Handle is null (doesn't point to any object).
-    pub fn is_null(&self) -> bool {
-        unsafe {
-            crate::ffi_extern_TKernel::HandleStdFailInfiniteSolutions_is_null(self as *const Self)
-        }
-    }
-
-    /// Dereference this Handle to access the underlying StdFail_InfiniteSolutions
-    pub fn get(&self) -> &crate::ffi_types::StdFail_InfiniteSolutions {
-        unsafe {
-            &*crate::check_result(crate::ffi_extern_TKernel::HandleStdFailInfiniteSolutions_get(
-                self as *const Self,
-            ))
-        }
-    }
-
-    /// Dereference this Handle to mutably access the underlying StdFail_InfiniteSolutions
-    pub fn get_mut(&mut self) -> &mut crate::ffi_types::StdFail_InfiniteSolutions {
-        unsafe {
-            &mut *crate::check_result(
-                crate::ffi_extern_TKernel::HandleStdFailInfiniteSolutions_get_mut(
-                    self as *mut Self,
-                ),
-            )
-        }
-    }
-
-    /// Upcast Handle<StdFail_InfiniteSolutions> to Handle<Standard_Failure>
-    pub fn to_handle_failure(&self) -> crate::OwnedPtr<crate::ffi_types::HandleStandardFailure> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKernel::HandleStdFailInfiniteSolutions_to_HandleStandardFailure(
-                    self as *const Self,
-                ),
-            ))
-        }
-    }
-
-    /// Upcast Handle<StdFail_InfiniteSolutions> to Handle<Standard_Transient>
-    pub fn to_handle_transient(
-        &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKernel::HandleStdFailInfiniteSolutions_to_HandleStandardTransient(self as *const Self)))
-        }
-    }
 }
 
 // ========================
 // From StdFail_NotDone.hxx
 // ========================
 
-/// **Source:** `StdFail_NotDone.hxx`:36 - `StdFail_NotDone`
+/// **Source:** `StdFail_NotDone.hxx`:32 - `StdFail_NotDone`
 pub use crate::ffi_types::StdFail_NotDone as NotDone;
 
 unsafe impl crate::CppDeletable for NotDone {
@@ -380,16 +110,7 @@ unsafe impl crate::CppDeletable for NotDone {
 }
 
 impl NotDone {
-    /// **Source:** `StdFail_NotDone.hxx`:36 - `StdFail_NotDone::StdFail_NotDone()`
-    pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKernel::StdFail_NotDone_ctor(),
-            ))
-        }
-    }
-
-    /// **Source:** `StdFail_NotDone.hxx`:36 - `StdFail_NotDone::StdFail_NotDone()`
+    /// **Source:** `StdFail_NotDone.hxx`:32 - `StdFail_NotDone::StdFail_NotDone()`
     pub fn new_charptr(theMessage: &str) -> crate::OwnedPtr<Self> {
         let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
         unsafe {
@@ -399,7 +120,7 @@ impl NotDone {
         }
     }
 
-    /// **Source:** `StdFail_NotDone.hxx`:36 - `StdFail_NotDone::StdFail_NotDone()`
+    /// **Source:** `StdFail_NotDone.hxx`:32 - `StdFail_NotDone::StdFail_NotDone()`
     pub fn new_charptr2(theMessage: &str, theStackTrace: &str) -> crate::OwnedPtr<Self> {
         let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
         let c_theStackTrace = std::ffi::CString::new(theStackTrace).unwrap();
@@ -413,77 +134,15 @@ impl NotDone {
         }
     }
 
-    /// **Source:** `StdFail_NotDone.hxx`:36 - `StdFail_NotDone::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
-        unsafe {
-            &*(crate::check_result(crate::ffi_extern_TKernel::StdFail_NotDone_dynamic_type(
-                self as *const Self,
-            )))
-        }
-    }
-
-    /// **Source:** `StdFail_NotDone.hxx`:36 - `StdFail_NotDone::Raise()`
-    pub fn raise_charptr(theMessage: &str) {
-        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKernel::StdFail_NotDone_raise_charptr(c_theMessage.as_ptr())
-        })
-    }
-
-    /// **Source:** `StdFail_NotDone.hxx`:36 - `StdFail_NotDone::Raise()`
-    pub fn raise_sstream(theMessage: &mut crate::ffi_types::Standard_SStream) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKernel::StdFail_NotDone_raise_sstream(theMessage)
-        })
-    }
-
-    /// **Source:** `StdFail_NotDone.hxx`:36 - `StdFail_NotDone::NewInstance()`
-    pub fn new_instance_charptr(
-        theMessage: &str,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStdFailNotDone> {
-        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKernel::StdFail_NotDone_new_instance_charptr(
-                    c_theMessage.as_ptr(),
-                ),
-            ))
-        }
-    }
-
-    /// **Source:** `StdFail_NotDone.hxx`:36 - `StdFail_NotDone::NewInstance()`
-    pub fn new_instance_charptr2(
-        theMessage: &str,
-        theStackTrace: &str,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStdFailNotDone> {
-        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
-        let c_theStackTrace = std::ffi::CString::new(theStackTrace).unwrap();
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKernel::StdFail_NotDone_new_instance_charptr2(
-                    c_theMessage.as_ptr(),
-                    c_theStackTrace.as_ptr(),
-                ),
-            ))
-        }
-    }
-
-    /// **Source:** `StdFail_NotDone.hxx`:36 - `StdFail_NotDone::get_type_name()`
-    pub fn get_type_name() -> std::string::String {
+    /// **Source:** `StdFail_NotDone.hxx`:32 - `StdFail_NotDone::ExceptionType()`
+    pub fn exception_type(&self) -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi_extern_TKernel::StdFail_NotDone_get_type_name(),
+                crate::ffi_extern_TKernel::StdFail_NotDone_exception_type(self as *const Self),
             ))
         }
         .to_string_lossy()
         .into_owned()
-    }
-
-    /// **Source:** `StdFail_NotDone.hxx`:36 - `StdFail_NotDone::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
-        unsafe {
-            &*(crate::check_result(crate::ffi_extern_TKernel::StdFail_NotDone_get_type_descriptor()))
-        }
     }
 
     /// Upcast to Standard_Failure
@@ -506,38 +165,7 @@ impl NotDone {
         }
     }
 
-    /// Upcast to Standard_Transient
-    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        unsafe {
-            &*crate::check_result(crate::ffi_extern_TKernel::StdFail_NotDone_as_Standard_Transient(
-                self as *const Self,
-            ))
-        }
-    }
-
-    /// Upcast to Standard_Transient (mutable)
-    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        unsafe {
-            &mut *crate::check_result(
-                crate::ffi_extern_TKernel::StdFail_NotDone_as_Standard_Transient_mut(
-                    self as *mut Self,
-                ),
-            )
-        }
-    }
-
-    /// Wrap in a Handle (reference-counted smart pointer)
-    pub fn to_handle(
-        obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStdFailNotDone> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKernel::StdFail_NotDone_to_handle(obj.into_raw()),
-            ))
-        }
-    }
-
-    /// Inherited: **Source:** `Standard_Failure.hxx`:58 - `Standard_Failure::Print()`
+    /// Inherited: **Source:** `Standard_Failure.hxx`:73 - `Standard_Failure::Print()`
     pub fn print(&self, theStream: &mut crate::ffi_types::Standard_OStream) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKernel::StdFail_NotDone_inherited_Print(
@@ -546,158 +174,13 @@ impl NotDone {
             )
         })
     }
-
-    /// Inherited: **Source:** `Standard_Failure.hxx`:72 - `Standard_Failure::Reraise()`
-    pub fn reraise(&mut self) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKernel::StdFail_NotDone_inherited_Reraise(self as *mut Self)
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Failure.hxx`:112 - `Standard_Failure::Jump()`
-    pub fn jump(&mut self) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKernel::StdFail_NotDone_inherited_Jump(self as *mut Self)
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKernel::StdFail_NotDone_inherited_IsInstance(
-                self as *const Self,
-                theType,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKernel::StdFail_NotDone_inherited_IsKind(
-                self as *const Self,
-                theType,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
-    pub fn this(&self) -> Option<&crate::standard::Transient> {
-        {
-            let __val = crate::check_result(unsafe {
-                crate::ffi_extern_TKernel::StdFail_NotDone_inherited_This(self as *const Self)
-            });
-            if __val.is_null() {
-                None
-            } else {
-                Some(unsafe { &*__val })
-            }
-        }
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
-    pub fn get_ref_count(&self) -> i32 {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKernel::StdFail_NotDone_inherited_GetRefCount(self as *const Self)
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
-    pub fn increment_ref_counter(&mut self) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKernel::StdFail_NotDone_inherited_IncrementRefCounter(
-                self as *mut Self,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
-    pub fn decrement_ref_counter(&mut self) -> i32 {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKernel::StdFail_NotDone_inherited_DecrementRefCounter(
-                self as *mut Self,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
-    pub fn delete(&self) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKernel::StdFail_NotDone_inherited_Delete(self as *const Self)
-        })
-    }
-}
-
-pub use crate::ffi_types::HandleStdFailNotDone;
-
-unsafe impl crate::CppDeletable for HandleStdFailNotDone {
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            crate::ffi_extern_TKernel::HandleStdFailNotDone_destructor(ptr);
-        }
-    }
-}
-
-unsafe impl crate::CppCopyable for HandleStdFailNotDone {
-    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        unsafe { crate::check_result(crate::ffi_extern_TKernel::HandleStdFailNotDone_clone(ptr)) }
-    }
-}
-
-impl HandleStdFailNotDone {
-    /// Returns `true` if this Handle is null (doesn't point to any object).
-    pub fn is_null(&self) -> bool {
-        unsafe { crate::ffi_extern_TKernel::HandleStdFailNotDone_is_null(self as *const Self) }
-    }
-
-    /// Dereference this Handle to access the underlying StdFail_NotDone
-    pub fn get(&self) -> &crate::ffi_types::StdFail_NotDone {
-        unsafe {
-            &*crate::check_result(crate::ffi_extern_TKernel::HandleStdFailNotDone_get(
-                self as *const Self,
-            ))
-        }
-    }
-
-    /// Dereference this Handle to mutably access the underlying StdFail_NotDone
-    pub fn get_mut(&mut self) -> &mut crate::ffi_types::StdFail_NotDone {
-        unsafe {
-            &mut *crate::check_result(crate::ffi_extern_TKernel::HandleStdFailNotDone_get_mut(
-                self as *mut Self,
-            ))
-        }
-    }
-
-    /// Upcast Handle<StdFail_NotDone> to Handle<Standard_Failure>
-    pub fn to_handle_failure(&self) -> crate::OwnedPtr<crate::ffi_types::HandleStandardFailure> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKernel::HandleStdFailNotDone_to_HandleStandardFailure(
-                    self as *const Self,
-                ),
-            ))
-        }
-    }
-
-    /// Upcast Handle<StdFail_NotDone> to Handle<Standard_Transient>
-    pub fn to_handle_transient(
-        &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKernel::HandleStdFailNotDone_to_HandleStandardTransient(
-                    self as *const Self,
-                ),
-            ))
-        }
-    }
 }
 
 // ========================
 // From StdFail_Undefined.hxx
 // ========================
 
-/// **Source:** `StdFail_Undefined.hxx`:36 - `StdFail_Undefined`
+/// **Source:** `StdFail_Undefined.hxx`:32 - `StdFail_Undefined`
 pub use crate::ffi_types::StdFail_Undefined as Undefined;
 
 unsafe impl crate::CppDeletable for Undefined {
@@ -709,16 +192,7 @@ unsafe impl crate::CppDeletable for Undefined {
 }
 
 impl Undefined {
-    /// **Source:** `StdFail_Undefined.hxx`:36 - `StdFail_Undefined::StdFail_Undefined()`
-    pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKernel::StdFail_Undefined_ctor(),
-            ))
-        }
-    }
-
-    /// **Source:** `StdFail_Undefined.hxx`:36 - `StdFail_Undefined::StdFail_Undefined()`
+    /// **Source:** `StdFail_Undefined.hxx`:32 - `StdFail_Undefined::StdFail_Undefined()`
     pub fn new_charptr(theMessage: &str) -> crate::OwnedPtr<Self> {
         let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
         unsafe {
@@ -728,7 +202,7 @@ impl Undefined {
         }
     }
 
-    /// **Source:** `StdFail_Undefined.hxx`:36 - `StdFail_Undefined::StdFail_Undefined()`
+    /// **Source:** `StdFail_Undefined.hxx`:32 - `StdFail_Undefined::StdFail_Undefined()`
     pub fn new_charptr2(theMessage: &str, theStackTrace: &str) -> crate::OwnedPtr<Self> {
         let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
         let c_theStackTrace = std::ffi::CString::new(theStackTrace).unwrap();
@@ -742,79 +216,15 @@ impl Undefined {
         }
     }
 
-    /// **Source:** `StdFail_Undefined.hxx`:36 - `StdFail_Undefined::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
-        unsafe {
-            &*(crate::check_result(crate::ffi_extern_TKernel::StdFail_Undefined_dynamic_type(
-                self as *const Self,
-            )))
-        }
-    }
-
-    /// **Source:** `StdFail_Undefined.hxx`:36 - `StdFail_Undefined::Raise()`
-    pub fn raise_charptr(theMessage: &str) {
-        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKernel::StdFail_Undefined_raise_charptr(c_theMessage.as_ptr())
-        })
-    }
-
-    /// **Source:** `StdFail_Undefined.hxx`:36 - `StdFail_Undefined::Raise()`
-    pub fn raise_sstream(theMessage: &mut crate::ffi_types::Standard_SStream) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKernel::StdFail_Undefined_raise_sstream(theMessage)
-        })
-    }
-
-    /// **Source:** `StdFail_Undefined.hxx`:36 - `StdFail_Undefined::NewInstance()`
-    pub fn new_instance_charptr(
-        theMessage: &str,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStdFailUndefined> {
-        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKernel::StdFail_Undefined_new_instance_charptr(
-                    c_theMessage.as_ptr(),
-                ),
-            ))
-        }
-    }
-
-    /// **Source:** `StdFail_Undefined.hxx`:36 - `StdFail_Undefined::NewInstance()`
-    pub fn new_instance_charptr2(
-        theMessage: &str,
-        theStackTrace: &str,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStdFailUndefined> {
-        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
-        let c_theStackTrace = std::ffi::CString::new(theStackTrace).unwrap();
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKernel::StdFail_Undefined_new_instance_charptr2(
-                    c_theMessage.as_ptr(),
-                    c_theStackTrace.as_ptr(),
-                ),
-            ))
-        }
-    }
-
-    /// **Source:** `StdFail_Undefined.hxx`:36 - `StdFail_Undefined::get_type_name()`
-    pub fn get_type_name() -> std::string::String {
+    /// **Source:** `StdFail_Undefined.hxx`:32 - `StdFail_Undefined::ExceptionType()`
+    pub fn exception_type(&self) -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi_extern_TKernel::StdFail_Undefined_get_type_name(),
+                crate::ffi_extern_TKernel::StdFail_Undefined_exception_type(self as *const Self),
             ))
         }
         .to_string_lossy()
         .into_owned()
-    }
-
-    /// **Source:** `StdFail_Undefined.hxx`:36 - `StdFail_Undefined::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
-        unsafe {
-            &*(crate::check_result(
-                crate::ffi_extern_TKernel::StdFail_Undefined_get_type_descriptor(),
-            ))
-        }
     }
 
     /// Upcast to Standard_Failure
@@ -837,40 +247,7 @@ impl Undefined {
         }
     }
 
-    /// Upcast to Standard_Transient
-    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        unsafe {
-            &*crate::check_result(
-                crate::ffi_extern_TKernel::StdFail_Undefined_as_Standard_Transient(
-                    self as *const Self,
-                ),
-            )
-        }
-    }
-
-    /// Upcast to Standard_Transient (mutable)
-    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        unsafe {
-            &mut *crate::check_result(
-                crate::ffi_extern_TKernel::StdFail_Undefined_as_Standard_Transient_mut(
-                    self as *mut Self,
-                ),
-            )
-        }
-    }
-
-    /// Wrap in a Handle (reference-counted smart pointer)
-    pub fn to_handle(
-        obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStdFailUndefined> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKernel::StdFail_Undefined_to_handle(obj.into_raw()),
-            ))
-        }
-    }
-
-    /// Inherited: **Source:** `Standard_Failure.hxx`:58 - `Standard_Failure::Print()`
+    /// Inherited: **Source:** `Standard_Failure.hxx`:73 - `Standard_Failure::Print()`
     pub fn print(&self, theStream: &mut crate::ffi_types::Standard_OStream) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKernel::StdFail_Undefined_inherited_Print(
@@ -879,158 +256,13 @@ impl Undefined {
             )
         })
     }
-
-    /// Inherited: **Source:** `Standard_Failure.hxx`:72 - `Standard_Failure::Reraise()`
-    pub fn reraise(&mut self) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKernel::StdFail_Undefined_inherited_Reraise(self as *mut Self)
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Failure.hxx`:112 - `Standard_Failure::Jump()`
-    pub fn jump(&mut self) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKernel::StdFail_Undefined_inherited_Jump(self as *mut Self)
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKernel::StdFail_Undefined_inherited_IsInstance(
-                self as *const Self,
-                theType,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKernel::StdFail_Undefined_inherited_IsKind(
-                self as *const Self,
-                theType,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
-    pub fn this(&self) -> Option<&crate::standard::Transient> {
-        {
-            let __val = crate::check_result(unsafe {
-                crate::ffi_extern_TKernel::StdFail_Undefined_inherited_This(self as *const Self)
-            });
-            if __val.is_null() {
-                None
-            } else {
-                Some(unsafe { &*__val })
-            }
-        }
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
-    pub fn get_ref_count(&self) -> i32 {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKernel::StdFail_Undefined_inherited_GetRefCount(self as *const Self)
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
-    pub fn increment_ref_counter(&mut self) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKernel::StdFail_Undefined_inherited_IncrementRefCounter(
-                self as *mut Self,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
-    pub fn decrement_ref_counter(&mut self) -> i32 {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKernel::StdFail_Undefined_inherited_DecrementRefCounter(
-                self as *mut Self,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
-    pub fn delete(&self) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKernel::StdFail_Undefined_inherited_Delete(self as *const Self)
-        })
-    }
-}
-
-pub use crate::ffi_types::HandleStdFailUndefined;
-
-unsafe impl crate::CppDeletable for HandleStdFailUndefined {
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            crate::ffi_extern_TKernel::HandleStdFailUndefined_destructor(ptr);
-        }
-    }
-}
-
-unsafe impl crate::CppCopyable for HandleStdFailUndefined {
-    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        unsafe { crate::check_result(crate::ffi_extern_TKernel::HandleStdFailUndefined_clone(ptr)) }
-    }
-}
-
-impl HandleStdFailUndefined {
-    /// Returns `true` if this Handle is null (doesn't point to any object).
-    pub fn is_null(&self) -> bool {
-        unsafe { crate::ffi_extern_TKernel::HandleStdFailUndefined_is_null(self as *const Self) }
-    }
-
-    /// Dereference this Handle to access the underlying StdFail_Undefined
-    pub fn get(&self) -> &crate::ffi_types::StdFail_Undefined {
-        unsafe {
-            &*crate::check_result(crate::ffi_extern_TKernel::HandleStdFailUndefined_get(
-                self as *const Self,
-            ))
-        }
-    }
-
-    /// Dereference this Handle to mutably access the underlying StdFail_Undefined
-    pub fn get_mut(&mut self) -> &mut crate::ffi_types::StdFail_Undefined {
-        unsafe {
-            &mut *crate::check_result(crate::ffi_extern_TKernel::HandleStdFailUndefined_get_mut(
-                self as *mut Self,
-            ))
-        }
-    }
-
-    /// Upcast Handle<StdFail_Undefined> to Handle<Standard_Failure>
-    pub fn to_handle_failure(&self) -> crate::OwnedPtr<crate::ffi_types::HandleStandardFailure> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKernel::HandleStdFailUndefined_to_HandleStandardFailure(
-                    self as *const Self,
-                ),
-            ))
-        }
-    }
-
-    /// Upcast Handle<StdFail_Undefined> to Handle<Standard_Transient>
-    pub fn to_handle_transient(
-        &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKernel::HandleStdFailUndefined_to_HandleStandardTransient(
-                    self as *const Self,
-                ),
-            ))
-        }
-    }
 }
 
 // ========================
 // From StdFail_UndefinedDerivative.hxx
 // ========================
 
-/// **Source:** `StdFail_UndefinedDerivative.hxx`:36 - `StdFail_UndefinedDerivative`
+/// **Source:** `StdFail_UndefinedDerivative.hxx`:32 - `StdFail_UndefinedDerivative`
 pub use crate::ffi_types::StdFail_UndefinedDerivative as UndefinedDerivative;
 
 unsafe impl crate::CppDeletable for UndefinedDerivative {
@@ -1042,16 +274,7 @@ unsafe impl crate::CppDeletable for UndefinedDerivative {
 }
 
 impl UndefinedDerivative {
-    /// **Source:** `StdFail_UndefinedDerivative.hxx`:36 - `StdFail_UndefinedDerivative::StdFail_UndefinedDerivative()`
-    pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKernel::StdFail_UndefinedDerivative_ctor(),
-            ))
-        }
-    }
-
-    /// **Source:** `StdFail_UndefinedDerivative.hxx`:36 - `StdFail_UndefinedDerivative::StdFail_UndefinedDerivative()`
+    /// **Source:** `StdFail_UndefinedDerivative.hxx`:32 - `StdFail_UndefinedDerivative::StdFail_UndefinedDerivative()`
     pub fn new_charptr(theMessage: &str) -> crate::OwnedPtr<Self> {
         let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
         unsafe {
@@ -1063,7 +286,7 @@ impl UndefinedDerivative {
         }
     }
 
-    /// **Source:** `StdFail_UndefinedDerivative.hxx`:36 - `StdFail_UndefinedDerivative::StdFail_UndefinedDerivative()`
+    /// **Source:** `StdFail_UndefinedDerivative.hxx`:32 - `StdFail_UndefinedDerivative::StdFail_UndefinedDerivative()`
     pub fn new_charptr2(theMessage: &str, theStackTrace: &str) -> crate::OwnedPtr<Self> {
         let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
         let c_theStackTrace = std::ffi::CString::new(theStackTrace).unwrap();
@@ -1077,83 +300,17 @@ impl UndefinedDerivative {
         }
     }
 
-    /// **Source:** `StdFail_UndefinedDerivative.hxx`:36 - `StdFail_UndefinedDerivative::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `StdFail_UndefinedDerivative.hxx`:32 - `StdFail_UndefinedDerivative::ExceptionType()`
+    pub fn exception_type(&self) -> std::string::String {
         unsafe {
-            &*(crate::check_result(
-                crate::ffi_extern_TKernel::StdFail_UndefinedDerivative_dynamic_type(
+            std::ffi::CStr::from_ptr(crate::check_result(
+                crate::ffi_extern_TKernel::StdFail_UndefinedDerivative_exception_type(
                     self as *const Self,
                 ),
             ))
         }
-    }
-
-    /// **Source:** `StdFail_UndefinedDerivative.hxx`:36 - `StdFail_UndefinedDerivative::Raise()`
-    pub fn raise_charptr(theMessage: &str) {
-        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKernel::StdFail_UndefinedDerivative_raise_charptr(
-                c_theMessage.as_ptr(),
-            )
-        })
-    }
-
-    /// **Source:** `StdFail_UndefinedDerivative.hxx`:36 - `StdFail_UndefinedDerivative::Raise()`
-    pub fn raise_sstream(theMessage: &mut crate::ffi_types::Standard_SStream) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKernel::StdFail_UndefinedDerivative_raise_sstream(theMessage)
-        })
-    }
-
-    /// **Source:** `StdFail_UndefinedDerivative.hxx`:36 - `StdFail_UndefinedDerivative::NewInstance()`
-    pub fn new_instance_charptr(
-        theMessage: &str,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStdFailUndefinedDerivative> {
-        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKernel::StdFail_UndefinedDerivative_new_instance_charptr(
-                    c_theMessage.as_ptr(),
-                ),
-            ))
-        }
-    }
-
-    /// **Source:** `StdFail_UndefinedDerivative.hxx`:36 - `StdFail_UndefinedDerivative::NewInstance()`
-    pub fn new_instance_charptr2(
-        theMessage: &str,
-        theStackTrace: &str,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStdFailUndefinedDerivative> {
-        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
-        let c_theStackTrace = std::ffi::CString::new(theStackTrace).unwrap();
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKernel::StdFail_UndefinedDerivative_new_instance_charptr2(
-                    c_theMessage.as_ptr(),
-                    c_theStackTrace.as_ptr(),
-                ),
-            ))
-        }
-    }
-
-    /// **Source:** `StdFail_UndefinedDerivative.hxx`:36 - `StdFail_UndefinedDerivative::get_type_name()`
-    pub fn get_type_name() -> std::string::String {
-        unsafe {
-            std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi_extern_TKernel::StdFail_UndefinedDerivative_get_type_name(),
-            ))
-        }
         .to_string_lossy()
         .into_owned()
-    }
-
-    /// **Source:** `StdFail_UndefinedDerivative.hxx`:36 - `StdFail_UndefinedDerivative::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
-        unsafe {
-            &*(crate::check_result(
-                crate::ffi_extern_TKernel::StdFail_UndefinedDerivative_get_type_descriptor(),
-            ))
-        }
     }
 
     /// Upcast to Standard_DomainError
@@ -1200,40 +357,7 @@ impl UndefinedDerivative {
         }
     }
 
-    /// Upcast to Standard_Transient
-    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        unsafe {
-            &*crate::check_result(
-                crate::ffi_extern_TKernel::StdFail_UndefinedDerivative_as_Standard_Transient(
-                    self as *const Self,
-                ),
-            )
-        }
-    }
-
-    /// Upcast to Standard_Transient (mutable)
-    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        unsafe {
-            &mut *crate::check_result(
-                crate::ffi_extern_TKernel::StdFail_UndefinedDerivative_as_Standard_Transient_mut(
-                    self as *mut Self,
-                ),
-            )
-        }
-    }
-
-    /// Wrap in a Handle (reference-counted smart pointer)
-    pub fn to_handle(
-        obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStdFailUndefinedDerivative> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKernel::StdFail_UndefinedDerivative_to_handle(obj.into_raw()),
-            ))
-        }
-    }
-
-    /// Inherited: **Source:** `Standard_Failure.hxx`:58 - `Standard_Failure::Print()`
+    /// Inherited: **Source:** `Standard_Failure.hxx`:73 - `Standard_Failure::Print()`
     pub fn print(&self, theStream: &mut crate::ffi_types::Standard_OStream) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKernel::StdFail_UndefinedDerivative_inherited_Print(
@@ -1242,175 +366,13 @@ impl UndefinedDerivative {
             )
         })
     }
-
-    /// Inherited: **Source:** `Standard_Failure.hxx`:72 - `Standard_Failure::Reraise()`
-    pub fn reraise(&mut self) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKernel::StdFail_UndefinedDerivative_inherited_Reraise(
-                self as *mut Self,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Failure.hxx`:112 - `Standard_Failure::Jump()`
-    pub fn jump(&mut self) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKernel::StdFail_UndefinedDerivative_inherited_Jump(self as *mut Self)
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKernel::StdFail_UndefinedDerivative_inherited_IsInstance(
-                self as *const Self,
-                theType,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKernel::StdFail_UndefinedDerivative_inherited_IsKind(
-                self as *const Self,
-                theType,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
-    pub fn this(&self) -> Option<&crate::standard::Transient> {
-        {
-            let __val = crate::check_result(unsafe {
-                crate::ffi_extern_TKernel::StdFail_UndefinedDerivative_inherited_This(
-                    self as *const Self,
-                )
-            });
-            if __val.is_null() {
-                None
-            } else {
-                Some(unsafe { &*__val })
-            }
-        }
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
-    pub fn get_ref_count(&self) -> i32 {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKernel::StdFail_UndefinedDerivative_inherited_GetRefCount(
-                self as *const Self,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
-    pub fn increment_ref_counter(&mut self) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKernel::StdFail_UndefinedDerivative_inherited_IncrementRefCounter(
-                self as *mut Self,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
-    pub fn decrement_ref_counter(&mut self) -> i32 {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKernel::StdFail_UndefinedDerivative_inherited_DecrementRefCounter(
-                self as *mut Self,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
-    pub fn delete(&self) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKernel::StdFail_UndefinedDerivative_inherited_Delete(
-                self as *const Self,
-            )
-        })
-    }
-}
-
-pub use crate::ffi_types::HandleStdFailUndefinedDerivative;
-
-unsafe impl crate::CppDeletable for HandleStdFailUndefinedDerivative {
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            crate::ffi_extern_TKernel::HandleStdFailUndefinedDerivative_destructor(ptr);
-        }
-    }
-}
-
-unsafe impl crate::CppCopyable for HandleStdFailUndefinedDerivative {
-    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        unsafe {
-            crate::check_result(crate::ffi_extern_TKernel::HandleStdFailUndefinedDerivative_clone(
-                ptr,
-            ))
-        }
-    }
-}
-
-impl HandleStdFailUndefinedDerivative {
-    /// Returns `true` if this Handle is null (doesn't point to any object).
-    pub fn is_null(&self) -> bool {
-        unsafe {
-            crate::ffi_extern_TKernel::HandleStdFailUndefinedDerivative_is_null(self as *const Self)
-        }
-    }
-
-    /// Dereference this Handle to access the underlying StdFail_UndefinedDerivative
-    pub fn get(&self) -> &crate::ffi_types::StdFail_UndefinedDerivative {
-        unsafe {
-            &*crate::check_result(crate::ffi_extern_TKernel::HandleStdFailUndefinedDerivative_get(
-                self as *const Self,
-            ))
-        }
-    }
-
-    /// Dereference this Handle to mutably access the underlying StdFail_UndefinedDerivative
-    pub fn get_mut(&mut self) -> &mut crate::ffi_types::StdFail_UndefinedDerivative {
-        unsafe {
-            &mut *crate::check_result(
-                crate::ffi_extern_TKernel::HandleStdFailUndefinedDerivative_get_mut(
-                    self as *mut Self,
-                ),
-            )
-        }
-    }
-
-    /// Upcast Handle<StdFail_UndefinedDerivative> to Handle<Standard_DomainError>
-    pub fn to_handle_domain_error(
-        &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardDomainError> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKernel::HandleStdFailUndefinedDerivative_to_HandleStandardDomainError(self as *const Self)))
-        }
-    }
-
-    /// Upcast Handle<StdFail_UndefinedDerivative> to Handle<Standard_Failure>
-    pub fn to_handle_failure(&self) -> crate::OwnedPtr<crate::ffi_types::HandleStandardFailure> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKernel::HandleStdFailUndefinedDerivative_to_HandleStandardFailure(self as *const Self)))
-        }
-    }
-
-    /// Upcast Handle<StdFail_UndefinedDerivative> to Handle<Standard_Transient>
-    pub fn to_handle_transient(
-        &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKernel::HandleStdFailUndefinedDerivative_to_HandleStandardTransient(self as *const Self)))
-        }
-    }
 }
 
 // ========================
 // From StdFail_UndefinedValue.hxx
 // ========================
 
-/// **Source:** `StdFail_UndefinedValue.hxx`:36 - `StdFail_UndefinedValue`
+/// **Source:** `StdFail_UndefinedValue.hxx`:32 - `StdFail_UndefinedValue`
 pub use crate::ffi_types::StdFail_UndefinedValue as UndefinedValue;
 
 unsafe impl crate::CppDeletable for UndefinedValue {
@@ -1422,16 +384,7 @@ unsafe impl crate::CppDeletable for UndefinedValue {
 }
 
 impl UndefinedValue {
-    /// **Source:** `StdFail_UndefinedValue.hxx`:36 - `StdFail_UndefinedValue::StdFail_UndefinedValue()`
-    pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKernel::StdFail_UndefinedValue_ctor(),
-            ))
-        }
-    }
-
-    /// **Source:** `StdFail_UndefinedValue.hxx`:36 - `StdFail_UndefinedValue::StdFail_UndefinedValue()`
+    /// **Source:** `StdFail_UndefinedValue.hxx`:32 - `StdFail_UndefinedValue::StdFail_UndefinedValue()`
     pub fn new_charptr(theMessage: &str) -> crate::OwnedPtr<Self> {
         let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
         unsafe {
@@ -1443,7 +396,7 @@ impl UndefinedValue {
         }
     }
 
-    /// **Source:** `StdFail_UndefinedValue.hxx`:36 - `StdFail_UndefinedValue::StdFail_UndefinedValue()`
+    /// **Source:** `StdFail_UndefinedValue.hxx`:32 - `StdFail_UndefinedValue::StdFail_UndefinedValue()`
     pub fn new_charptr2(theMessage: &str, theStackTrace: &str) -> crate::OwnedPtr<Self> {
         let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
         let c_theStackTrace = std::ffi::CString::new(theStackTrace).unwrap();
@@ -1457,79 +410,17 @@ impl UndefinedValue {
         }
     }
 
-    /// **Source:** `StdFail_UndefinedValue.hxx`:36 - `StdFail_UndefinedValue::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
-        unsafe {
-            &*(crate::check_result(crate::ffi_extern_TKernel::StdFail_UndefinedValue_dynamic_type(
-                self as *const Self,
-            )))
-        }
-    }
-
-    /// **Source:** `StdFail_UndefinedValue.hxx`:36 - `StdFail_UndefinedValue::Raise()`
-    pub fn raise_charptr(theMessage: &str) {
-        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKernel::StdFail_UndefinedValue_raise_charptr(c_theMessage.as_ptr())
-        })
-    }
-
-    /// **Source:** `StdFail_UndefinedValue.hxx`:36 - `StdFail_UndefinedValue::Raise()`
-    pub fn raise_sstream(theMessage: &mut crate::ffi_types::Standard_SStream) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKernel::StdFail_UndefinedValue_raise_sstream(theMessage)
-        })
-    }
-
-    /// **Source:** `StdFail_UndefinedValue.hxx`:36 - `StdFail_UndefinedValue::NewInstance()`
-    pub fn new_instance_charptr(
-        theMessage: &str,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStdFailUndefinedValue> {
-        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKernel::StdFail_UndefinedValue_new_instance_charptr(
-                    c_theMessage.as_ptr(),
-                ),
-            ))
-        }
-    }
-
-    /// **Source:** `StdFail_UndefinedValue.hxx`:36 - `StdFail_UndefinedValue::NewInstance()`
-    pub fn new_instance_charptr2(
-        theMessage: &str,
-        theStackTrace: &str,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStdFailUndefinedValue> {
-        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
-        let c_theStackTrace = std::ffi::CString::new(theStackTrace).unwrap();
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKernel::StdFail_UndefinedValue_new_instance_charptr2(
-                    c_theMessage.as_ptr(),
-                    c_theStackTrace.as_ptr(),
-                ),
-            ))
-        }
-    }
-
-    /// **Source:** `StdFail_UndefinedValue.hxx`:36 - `StdFail_UndefinedValue::get_type_name()`
-    pub fn get_type_name() -> std::string::String {
+    /// **Source:** `StdFail_UndefinedValue.hxx`:32 - `StdFail_UndefinedValue::ExceptionType()`
+    pub fn exception_type(&self) -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi_extern_TKernel::StdFail_UndefinedValue_get_type_name(),
+                crate::ffi_extern_TKernel::StdFail_UndefinedValue_exception_type(
+                    self as *const Self,
+                ),
             ))
         }
         .to_string_lossy()
         .into_owned()
-    }
-
-    /// **Source:** `StdFail_UndefinedValue.hxx`:36 - `StdFail_UndefinedValue::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
-        unsafe {
-            &*(crate::check_result(
-                crate::ffi_extern_TKernel::StdFail_UndefinedValue_get_type_descriptor(),
-            ))
-        }
     }
 
     /// Upcast to Standard_DomainError
@@ -1576,40 +467,7 @@ impl UndefinedValue {
         }
     }
 
-    /// Upcast to Standard_Transient
-    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        unsafe {
-            &*crate::check_result(
-                crate::ffi_extern_TKernel::StdFail_UndefinedValue_as_Standard_Transient(
-                    self as *const Self,
-                ),
-            )
-        }
-    }
-
-    /// Upcast to Standard_Transient (mutable)
-    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        unsafe {
-            &mut *crate::check_result(
-                crate::ffi_extern_TKernel::StdFail_UndefinedValue_as_Standard_Transient_mut(
-                    self as *mut Self,
-                ),
-            )
-        }
-    }
-
-    /// Wrap in a Handle (reference-counted smart pointer)
-    pub fn to_handle(
-        obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStdFailUndefinedValue> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKernel::StdFail_UndefinedValue_to_handle(obj.into_raw()),
-            ))
-        }
-    }
-
-    /// Inherited: **Source:** `Standard_Failure.hxx`:58 - `Standard_Failure::Print()`
+    /// Inherited: **Source:** `Standard_Failure.hxx`:73 - `Standard_Failure::Print()`
     pub fn print(&self, theStream: &mut crate::ffi_types::Standard_OStream) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKernel::StdFail_UndefinedValue_inherited_Print(
@@ -1617,171 +475,5 @@ impl UndefinedValue {
                 theStream,
             )
         })
-    }
-
-    /// Inherited: **Source:** `Standard_Failure.hxx`:72 - `Standard_Failure::Reraise()`
-    pub fn reraise(&mut self) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKernel::StdFail_UndefinedValue_inherited_Reraise(self as *mut Self)
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Failure.hxx`:112 - `Standard_Failure::Jump()`
-    pub fn jump(&mut self) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKernel::StdFail_UndefinedValue_inherited_Jump(self as *mut Self)
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKernel::StdFail_UndefinedValue_inherited_IsInstance(
-                self as *const Self,
-                theType,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKernel::StdFail_UndefinedValue_inherited_IsKind(
-                self as *const Self,
-                theType,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
-    pub fn this(&self) -> Option<&crate::standard::Transient> {
-        {
-            let __val = crate::check_result(unsafe {
-                crate::ffi_extern_TKernel::StdFail_UndefinedValue_inherited_This(
-                    self as *const Self,
-                )
-            });
-            if __val.is_null() {
-                None
-            } else {
-                Some(unsafe { &*__val })
-            }
-        }
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
-    pub fn get_ref_count(&self) -> i32 {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKernel::StdFail_UndefinedValue_inherited_GetRefCount(
-                self as *const Self,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
-    pub fn increment_ref_counter(&mut self) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKernel::StdFail_UndefinedValue_inherited_IncrementRefCounter(
-                self as *mut Self,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
-    pub fn decrement_ref_counter(&mut self) -> i32 {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKernel::StdFail_UndefinedValue_inherited_DecrementRefCounter(
-                self as *mut Self,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
-    pub fn delete(&self) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKernel::StdFail_UndefinedValue_inherited_Delete(self as *const Self)
-        })
-    }
-}
-
-pub use crate::ffi_types::HandleStdFailUndefinedValue;
-
-unsafe impl crate::CppDeletable for HandleStdFailUndefinedValue {
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            crate::ffi_extern_TKernel::HandleStdFailUndefinedValue_destructor(ptr);
-        }
-    }
-}
-
-unsafe impl crate::CppCopyable for HandleStdFailUndefinedValue {
-    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        unsafe {
-            crate::check_result(crate::ffi_extern_TKernel::HandleStdFailUndefinedValue_clone(ptr))
-        }
-    }
-}
-
-impl HandleStdFailUndefinedValue {
-    /// Returns `true` if this Handle is null (doesn't point to any object).
-    pub fn is_null(&self) -> bool {
-        unsafe {
-            crate::ffi_extern_TKernel::HandleStdFailUndefinedValue_is_null(self as *const Self)
-        }
-    }
-
-    /// Dereference this Handle to access the underlying StdFail_UndefinedValue
-    pub fn get(&self) -> &crate::ffi_types::StdFail_UndefinedValue {
-        unsafe {
-            &*crate::check_result(crate::ffi_extern_TKernel::HandleStdFailUndefinedValue_get(
-                self as *const Self,
-            ))
-        }
-    }
-
-    /// Dereference this Handle to mutably access the underlying StdFail_UndefinedValue
-    pub fn get_mut(&mut self) -> &mut crate::ffi_types::StdFail_UndefinedValue {
-        unsafe {
-            &mut *crate::check_result(
-                crate::ffi_extern_TKernel::HandleStdFailUndefinedValue_get_mut(self as *mut Self),
-            )
-        }
-    }
-
-    /// Upcast Handle<StdFail_UndefinedValue> to Handle<Standard_DomainError>
-    pub fn to_handle_domain_error(
-        &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardDomainError> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKernel::HandleStdFailUndefinedValue_to_HandleStandardDomainError(
-                    self as *const Self,
-                ),
-            ))
-        }
-    }
-
-    /// Upcast Handle<StdFail_UndefinedValue> to Handle<Standard_Failure>
-    pub fn to_handle_failure(&self) -> crate::OwnedPtr<crate::ffi_types::HandleStandardFailure> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKernel::HandleStdFailUndefinedValue_to_HandleStandardFailure(
-                    self as *const Self,
-                ),
-            ))
-        }
-    }
-
-    /// Upcast Handle<StdFail_UndefinedValue> to Handle<Standard_Transient>
-    pub fn to_handle_transient(
-        &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKernel::HandleStdFailUndefinedValue_to_HandleStandardTransient(
-                    self as *const Self,
-                ),
-            ))
-        }
     }
 }

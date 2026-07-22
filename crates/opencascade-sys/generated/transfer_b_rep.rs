@@ -6,11 +6,11 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 
-/// **Source:** `TransferBRep.hxx`:53 - `TransferBRep::ShapeResult`
+/// **Source:** `TransferBRep.hxx`:54 - `TransferBRep::ShapeResult`
 /// Get the Shape recorded in a Binder
 /// If the Binder brings a multiple result, search for the Shape
 pub fn shape_result_handletransferbinder(
-    binder: &crate::ffi_types::HandleTransferBinder,
+    binder: &crate::ffi_types::Handle_Transfer_Binder,
 ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
     unsafe {
         crate::OwnedPtr::from_raw(crate::check_result(
@@ -18,39 +18,39 @@ pub fn shape_result_handletransferbinder(
         ))
     }
 }
-/// **Source:** `TransferBRep.hxx`:58 - `TransferBRep::ShapeResult`
+/// **Source:** `TransferBRep.hxx`:59 - `TransferBRep::ShapeResult`
 /// Get the Shape recorded in a TransientProcess as result of the
 /// Transfer of an entity. I.E. in the binder bound to that Entity
 /// If no result or result not a single Shape, returns a Null Shape
 pub fn shape_result_handletransfertransientprocess_handlestandardtransient(
-    TP: &crate::ffi_types::HandleTransferTransientProcess,
-    ent: &crate::ffi_types::HandleStandardTransient,
+    TP: &crate::ffi_types::Handle_Transfer_TransientProcess,
+    ent: &crate::ffi_types::Handle_Standard_Transient,
 ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
     unsafe {
         crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKXSBase::TransferBRep_shape_result_handletransfertransientprocess_handlestandardtransient(TP, ent)))
     }
 }
-/// **Source:** `TransferBRep.hxx`:64 - `TransferBRep::SetShapeResult`
+/// **Source:** `TransferBRep.hxx`:65 - `TransferBRep::SetShapeResult`
 /// Sets a Shape as a result for a starting entity <ent>
 /// (reverse of ShapeResult)
 /// It simply creates a ShapeBinder then binds it to the entity
 pub fn set_shape_result(
-    TP: &crate::ffi_types::HandleTransferTransientProcess,
-    ent: &crate::ffi_types::HandleStandardTransient,
+    TP: &crate::ffi_types::Handle_Transfer_TransientProcess,
+    ent: &crate::ffi_types::Handle_Standard_Transient,
     result: &crate::topo_ds::Shape,
 ) {
     crate::check_void_result(unsafe {
         crate::ffi_extern_TKXSBase::TransferBRep_set_shape_result(TP, ent, result)
     })
 }
-/// **Source:** `TransferBRep.hxx`:71 - `TransferBRep::Shapes`
+/// **Source:** `TransferBRep.hxx`:72 - `TransferBRep::Shapes`
 /// Gets the Shapes recorded in a TransientProcess as result of a
 /// Transfer, considers roots only or all results according
 /// <rootsonly>, returns them as a HSequence
 pub fn shapes_handletransfertransientprocess_bool(
-    TP: &crate::ffi_types::HandleTransferTransientProcess,
+    TP: &crate::ffi_types::Handle_Transfer_TransientProcess,
     rootsonly: bool,
-) -> crate::OwnedPtr<crate::ffi_types::HandleTopToolsHSequenceOfShape> {
+) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HSequence_TopoDS_Shape> {
     unsafe {
         crate::OwnedPtr::from_raw(crate::check_result(
             crate::ffi_extern_TKXSBase::TransferBRep_shapes_handletransfertransientprocess_bool(
@@ -59,26 +59,26 @@ pub fn shapes_handletransfertransientprocess_bool(
         ))
     }
 }
-/// **Source:** `TransferBRep.hxx`:78 - `TransferBRep::Shapes`
+/// **Source:** `TransferBRep.hxx`:79 - `TransferBRep::Shapes`
 /// Gets the Shapes recorded in a TransientProcess as result of a
 /// Transfer, for a given list of starting entities, returns
 /// the shapes as a HSequence
-pub fn shapes_handletransfertransientprocess_handletcolstdhsequenceoftransient(
-    TP: &crate::ffi_types::HandleTransferTransientProcess,
-    list: &crate::ffi_types::HandleTColStdHSequenceOfTransient,
-) -> crate::OwnedPtr<crate::ffi_types::HandleTopToolsHSequenceOfShape> {
+pub fn shapes_handletransfertransientprocess_handlencollectionhsequenceopencascadehandlestandardtransient(
+    TP: &crate::ffi_types::Handle_Transfer_TransientProcess,
+    list: &crate::ffi_types::Handle_NCollection_HSequence_opencascade_handle_Standard_Transient,
+) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HSequence_TopoDS_Shape> {
     unsafe {
-        crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKXSBase::TransferBRep_shapes_handletransfertransientprocess_handletcolstdhsequenceoftransient(TP, list)))
+        crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKXSBase::TransferBRep_shapes_handletransfertransientprocess_handlencollectionhsequenceopencascadehandlestandardtransient(TP, list)))
     }
 }
-/// **Source:** `TransferBRep.hxx`:87 - `TransferBRep::ShapeState`
+/// **Source:** `TransferBRep.hxx`:88 - `TransferBRep::ShapeState`
 /// Returns a Status regarding a Shape in a FinderProcess
 /// - FORWARD means bound with SAME Orientation
 /// - REVERSED means bound with REVERSE Orientation
 /// - EXTERNAL means NOT BOUND
 /// - INTERNAL is not used
 pub fn shape_state(
-    FP: &crate::ffi_types::HandleTransferFinderProcess,
+    FP: &crate::ffi_types::Handle_Transfer_FinderProcess,
     shape: &crate::topo_ds::Shape,
 ) -> crate::top_abs::Orientation {
     crate::top_abs::Orientation::try_from(crate::check_result(unsafe {
@@ -86,94 +86,94 @@ pub fn shape_state(
     }))
     .unwrap()
 }
-/// **Source:** `TransferBRep.hxx`:92 - `TransferBRep::ResultFromShape`
+/// **Source:** `TransferBRep.hxx`:94 - `TransferBRep::ResultFromShape`
 /// Returns the result (as a Binder) attached to a given Shape
 /// Null if none
 pub fn result_from_shape(
-    FP: &crate::ffi_types::HandleTransferFinderProcess,
+    FP: &crate::ffi_types::Handle_Transfer_FinderProcess,
     shape: &crate::topo_ds::Shape,
-) -> crate::OwnedPtr<crate::ffi_types::HandleTransferBinder> {
+) -> crate::OwnedPtr<crate::ffi_types::Handle_Transfer_Binder> {
     unsafe {
         crate::OwnedPtr::from_raw(crate::check_result(
             crate::ffi_extern_TKXSBase::TransferBRep_result_from_shape(FP, shape),
         ))
     }
 }
-/// **Source:** `TransferBRep.hxx`:98 - `TransferBRep::TransientFromShape`
+/// **Source:** `TransferBRep.hxx`:100 - `TransferBRep::TransientFromShape`
 /// Returns the result as pure Transient attached to a Shape
 /// first one if multiple result
 pub fn transient_from_shape(
-    FP: &crate::ffi_types::HandleTransferFinderProcess,
+    FP: &crate::ffi_types::Handle_Transfer_FinderProcess,
     shape: &crate::topo_ds::Shape,
-) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
     unsafe {
         crate::OwnedPtr::from_raw(crate::check_result(
             crate::ffi_extern_TKXSBase::TransferBRep_transient_from_shape(FP, shape),
         ))
     }
 }
-/// **Source:** `TransferBRep.hxx`:104 - `TransferBRep::SetTransientFromShape`
+/// **Source:** `TransferBRep.hxx`:106 - `TransferBRep::SetTransientFromShape`
 /// Binds a Transient Result to a Shape in a FinderProcess
 /// (as first result if multiple : does not add it to existing one)
 pub fn set_transient_from_shape(
-    FP: &crate::ffi_types::HandleTransferFinderProcess,
+    FP: &crate::ffi_types::Handle_Transfer_FinderProcess,
     shape: &crate::topo_ds::Shape,
-    result: &crate::ffi_types::HandleStandardTransient,
+    result: &crate::ffi_types::Handle_Standard_Transient,
 ) {
     crate::check_void_result(unsafe {
         crate::ffi_extern_TKXSBase::TransferBRep_set_transient_from_shape(FP, shape, result)
     })
 }
-/// **Source:** `TransferBRep.hxx`:112 - `TransferBRep::ShapeMapper`
+/// **Source:** `TransferBRep.hxx`:114 - `TransferBRep::ShapeMapper`
 /// Returns a ShapeMapper for a given Shape (location included)
 /// Either <shape> is already mapped, then its Mapper is returned
 /// Or it is not, then a new one is created then returned, BUT
 /// it is not mapped here (use Bind or FindElseBind to do this)
 pub fn shape_mapper(
-    FP: &crate::ffi_types::HandleTransferFinderProcess,
+    FP: &crate::ffi_types::Handle_Transfer_FinderProcess,
     shape: &crate::topo_ds::Shape,
-) -> crate::OwnedPtr<crate::ffi_types::HandleTransferBRepShapeMapper> {
+) -> crate::OwnedPtr<crate::ffi_types::Handle_TransferBRep_ShapeMapper> {
     unsafe {
         crate::OwnedPtr::from_raw(crate::check_result(
             crate::ffi_extern_TKXSBase::TransferBRep_shape_mapper(FP, shape),
         ))
     }
 }
-/// **Source:** `TransferBRep.hxx`:121 - `TransferBRep::TransferResultInfo`
+/// **Source:** `TransferBRep.hxx`:123 - `TransferBRep::TransferResultInfo`
 /// Fills sequence of TransferResultInfo for each type of entity
 /// given in the EntityTypes (entity are given as objects).
 /// Method IsKind applied to the entities in TP is used to
 /// compare with entities in EntityTypes.
 /// TopAbs_ShapeEnum).
-pub fn transfer_result_info_handletransfertransientprocess_handletcolstdhsequenceoftransient_handletransferbrephsequenceoftransferresultinfo(
-    TP: &crate::ffi_types::HandleTransferTransientProcess,
-    EntityTypes: &crate::ffi_types::HandleTColStdHSequenceOfTransient,
-    InfoSeq: &mut crate::ffi_types::HandleTransferBRepHSequenceOfTransferResultInfo,
+pub fn transfer_result_info_handletransfertransientprocess_handlencollectionhsequenceopencascadehandlestandardtransient_handlencollectionhsequenceopencascadehandletransferbreptransferresultinfo(
+    TP: &crate::ffi_types::Handle_Transfer_TransientProcess,
+    EntityTypes: &crate::ffi_types::Handle_NCollection_HSequence_opencascade_handle_Standard_Transient,
+    InfoSeq: &mut crate::ffi_types::Handle_NCollection_HSequence_opencascade_handle_TransferBRep_TransferResultInfo,
 ) {
     crate::check_void_result(unsafe {
-        crate::ffi_extern_TKXSBase::TransferBRep_transfer_result_info_handletransfertransientprocess_handletcolstdhsequenceoftransient_handletransferbrephsequenceoftransferresultinfo(TP, EntityTypes, InfoSeq)
+        crate::ffi_extern_TKXSBase::TransferBRep_transfer_result_info_handletransfertransientprocess_handlencollectionhsequenceopencascadehandlestandardtransient_handlencollectionhsequenceopencascadehandletransferbreptransferresultinfo(TP, EntityTypes, InfoSeq)
     })
 }
-/// **Source:** `TransferBRep.hxx`:130 - `TransferBRep::TransferResultInfo`
+/// **Source:** `TransferBRep.hxx`:132 - `TransferBRep::TransferResultInfo`
 /// Fills sequence of TransferResultInfo for each type of shape
 /// given in the ShapeTypes (which are in fact considered as
 /// TopAbs_ShapeEnum).
 /// The Finders in the FP are considered as ShapeMappers.
-pub fn transfer_result_info_handletransferfinderprocess_handletcolstdhsequenceofinteger_handletransferbrephsequenceoftransferresultinfo(
-    FP: &crate::ffi_types::HandleTransferFinderProcess,
-    ShapeTypes: &crate::ffi_types::HandleTColStdHSequenceOfInteger,
-    InfoSeq: &mut crate::ffi_types::HandleTransferBRepHSequenceOfTransferResultInfo,
+pub fn transfer_result_info_handletransferfinderprocess_hseq_int_handlencollectionhsequenceopencascadehandletransferbreptransferresultinfo(
+    FP: &crate::ffi_types::Handle_Transfer_FinderProcess,
+    ShapeTypes: &crate::ffi_types::Handle_NCollection_HSequence_int,
+    InfoSeq: &mut crate::ffi_types::Handle_NCollection_HSequence_opencascade_handle_TransferBRep_TransferResultInfo,
 ) {
     crate::check_void_result(unsafe {
-        crate::ffi_extern_TKXSBase::TransferBRep_transfer_result_info_handletransferfinderprocess_handletcolstdhsequenceofinteger_handletransferbrephsequenceoftransferresultinfo(FP, ShapeTypes, InfoSeq)
+        crate::ffi_extern_TKXSBase::TransferBRep_transfer_result_info_handletransferfinderprocess_hseq_int_handlencollectionhsequenceopencascadehandletransferbreptransferresultinfo(FP, ShapeTypes, InfoSeq)
     })
 }
-/// **Source:** `TransferBRep.hxx`:136 - `TransferBRep::PrintResultInfo`
+/// **Source:** `TransferBRep.hxx`:138 - `TransferBRep::PrintResultInfo`
 /// Prints the results of transfer to given priner with given header.
 pub fn print_result_info(
-    Printer: &crate::ffi_types::HandleMessagePrinter,
+    Printer: &crate::ffi_types::Handle_Message_Printer,
     Header: &crate::message::Msg,
-    ResultInfo: &crate::ffi_types::HandleTransferBRepTransferResultInfo,
+    ResultInfo: &crate::ffi_types::Handle_TransferBRep_TransferResultInfo,
     printEmpty: bool,
 ) {
     crate::check_void_result(unsafe {
@@ -182,7 +182,7 @@ pub fn print_result_info(
         )
     })
 }
-/// **Source:** `TransferBRep.hxx`:151 - `TransferBRep::BRepCheck`
+/// **Source:** `TransferBRep.hxx`:153 - `TransferBRep::BRepCheck`
 /// Performs a heavy check by calling the Analyser from BRepCheck
 /// This tool computes a lot of information about integrity of a
 /// Shape. This method uses it and converts its internal result
@@ -202,7 +202,7 @@ pub fn b_rep_check(
         ))
     }
 }
-/// **Source:** `TransferBRep.hxx`:161 - `TransferBRep::ResultCheckList`
+/// **Source:** `TransferBRep.hxx`:163 - `TransferBRep::ResultCheckList`
 /// Takes a starting CheckIterator which brings checks bound with
 /// starting objects (Shapes, Transient from an Imagine appli ...)
 /// and converts it to a CheckIterator in which checks are bound
@@ -212,8 +212,8 @@ pub fn b_rep_check(
 /// remain in their state
 pub fn result_check_list(
     chl: &crate::interface::CheckIterator,
-    FP: &crate::ffi_types::HandleTransferFinderProcess,
-    model: &crate::ffi_types::HandleInterfaceInterfaceModel,
+    FP: &crate::ffi_types::Handle_Transfer_FinderProcess,
+    model: &crate::ffi_types::Handle_Interface_InterfaceModel,
 ) -> crate::OwnedPtr<crate::interface::CheckIterator> {
     unsafe {
         crate::OwnedPtr::from_raw(crate::check_result(
@@ -221,7 +221,7 @@ pub fn result_check_list(
         ))
     }
 }
-/// **Source:** `TransferBRep.hxx`:171 - `TransferBRep::Checked`
+/// **Source:** `TransferBRep.hxx`:174 - `TransferBRep::Checked`
 /// Returns the list of objects to which a non-empty Check is
 /// bound in a check-list. Objects are transients, they can then
 /// be either Imagine objects entities for an Interface Norm.
@@ -230,33 +230,35 @@ pub fn result_check_list(
 pub fn checked(
     chl: &crate::interface::CheckIterator,
     alsoshapes: bool,
-) -> crate::OwnedPtr<crate::ffi_types::HandleTColStdHSequenceOfTransient> {
+) -> crate::OwnedPtr<
+    crate::ffi_types::Handle_NCollection_HSequence_opencascade_handle_Standard_Transient,
+> {
     unsafe {
         crate::OwnedPtr::from_raw(crate::check_result(
             crate::ffi_extern_TKXSBase::TransferBRep_checked(chl, alsoshapes),
         ))
     }
 }
-/// **Source:** `TransferBRep.hxx`:177 - `TransferBRep::CheckedShapes`
+/// **Source:** `TransferBRep.hxx`:178 - `TransferBRep::CheckedShapes`
 /// Returns the list of shapes to which a non-empty Check is bound
 /// in a check-list
 pub fn checked_shapes(
     chl: &crate::interface::CheckIterator,
-) -> crate::OwnedPtr<crate::ffi_types::HandleTopToolsHSequenceOfShape> {
+) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HSequence_TopoDS_Shape> {
     unsafe {
         crate::OwnedPtr::from_raw(crate::check_result(
             crate::ffi_extern_TKXSBase::TransferBRep_checked_shapes(chl),
         ))
     }
 }
-/// **Source:** `TransferBRep.hxx`:184 - `TransferBRep::CheckObject`
+/// **Source:** `TransferBRep.hxx`:185 - `TransferBRep::CheckObject`
 /// Returns the check-list bound to a given object, generally none
 /// (if OK) or one check. <obj> can be, either a true Transient
 /// object or entity, or a ShapeMapper, in that case the Shape is
 /// considered
 pub fn check_object(
     chl: &crate::interface::CheckIterator,
-    obj: &crate::ffi_types::HandleStandardTransient,
+    obj: &crate::ffi_types::Handle_Standard_Transient,
 ) -> crate::OwnedPtr<crate::interface::CheckIterator> {
     unsafe {
         crate::OwnedPtr::from_raw(crate::check_result(
@@ -266,13 +268,15 @@ pub fn check_object(
 }
 
 // Handle type re-exports (targets of handle upcasts/downcasts)
-pub use crate::ffi_types::{HandleStandardTransient, HandleTransferBinder, HandleTransferFinder};
+pub use crate::ffi_types::{
+    Handle_Standard_Transient, Handle_Transfer_Binder, Handle_Transfer_Finder,
+};
 
 // ========================
 // From TransferBRep_BinderOfShape.hxx
 // ========================
 
-/// **Source:** `TransferBRep_BinderOfShape.hxx`:40 - `TransferBRep_BinderOfShape`
+/// **Source:** `TransferBRep_BinderOfShape.hxx`:37 - `TransferBRep_BinderOfShape`
 /// Allows direct binding between a starting Object and the Result
 /// of its transfer when it is Unique.
 /// The Result itself is defined as a formal parameter <Shape from TopoDS>
@@ -294,7 +298,7 @@ unsafe impl crate::CppDeletable for BinderOfShape {
 }
 
 impl BinderOfShape {
-    /// **Source:** `TransferBRep_BinderOfShape.hxx`:45 - `TransferBRep_BinderOfShape::TransferBRep_BinderOfShape()`
+    /// **Source:** `TransferBRep_BinderOfShape.hxx`:42 - `TransferBRep_BinderOfShape::TransferBRep_BinderOfShape()`
     /// normal standard constructor, creates an empty BinderOfShape
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
@@ -304,7 +308,7 @@ impl BinderOfShape {
         }
     }
 
-    /// **Source:** `TransferBRep_BinderOfShape.hxx`:51 - `TransferBRep_BinderOfShape::TransferBRep_BinderOfShape()`
+    /// **Source:** `TransferBRep_BinderOfShape.hxx`:48 - `TransferBRep_BinderOfShape::TransferBRep_BinderOfShape()`
     /// constructor which in the same time defines the result
     /// Returns True if a starting object is bound with SEVERAL
     /// results : Here, returns always False
@@ -317,10 +321,10 @@ impl BinderOfShape {
         }
     }
 
-    /// **Source:** `TransferBRep_BinderOfShape.hxx`:55 - `TransferBRep_BinderOfShape::ResultType()`
+    /// **Source:** `TransferBRep_BinderOfShape.hxx`:52 - `TransferBRep_BinderOfShape::ResultType()`
     /// Returns the Type permitted for the Result, i.e. the Type
     /// of the Parameter Class <Shape from TopoDS> (statically defined)
-    pub fn result_type(&self) -> crate::OwnedPtr<crate::ffi_types::HandleStandardType> {
+    pub fn result_type(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Type> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKXSBase::TransferBRep_BinderOfShape_result_type(
@@ -330,7 +334,7 @@ impl BinderOfShape {
         }
     }
 
-    /// **Source:** `TransferBRep_BinderOfShape.hxx`:58 - `TransferBRep_BinderOfShape::ResultTypeName()`
+    /// **Source:** `TransferBRep_BinderOfShape.hxx`:55 - `TransferBRep_BinderOfShape::ResultTypeName()`
     /// Returns the Type Name computed for the Result (dynamic)
     pub fn result_type_name(&self) -> std::string::String {
         unsafe {
@@ -344,7 +348,7 @@ impl BinderOfShape {
         .into_owned()
     }
 
-    /// **Source:** `TransferBRep_BinderOfShape.hxx`:61 - `TransferBRep_BinderOfShape::SetResult()`
+    /// **Source:** `TransferBRep_BinderOfShape.hxx`:58 - `TransferBRep_BinderOfShape::SetResult()`
     /// Defines the Result
     pub fn set_result(&mut self, res: &crate::topo_ds::Shape) {
         crate::check_void_result(unsafe {
@@ -355,7 +359,7 @@ impl BinderOfShape {
         })
     }
 
-    /// **Source:** `TransferBRep_BinderOfShape.hxx`:64 - `TransferBRep_BinderOfShape::Result()`
+    /// **Source:** `TransferBRep_BinderOfShape.hxx`:61 - `TransferBRep_BinderOfShape::Result()`
     /// Returns the defined Result, if there is one
     pub fn result(&self) -> &crate::topo_ds::Shape {
         unsafe {
@@ -365,7 +369,7 @@ impl BinderOfShape {
         }
     }
 
-    /// **Source:** `TransferBRep_BinderOfShape.hxx`:70 - `TransferBRep_BinderOfShape::CResult()`
+    /// **Source:** `TransferBRep_BinderOfShape.hxx`:67 - `TransferBRep_BinderOfShape::CResult()`
     /// Returns the defined Result, if there is one, and allows to
     /// change it (avoids Result + SetResult).
     /// Admits that Result can be not yet defined
@@ -378,8 +382,8 @@ impl BinderOfShape {
         }
     }
 
-    /// **Source:** `TransferBRep_BinderOfShape.hxx`:72 - `TransferBRep_BinderOfShape::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `TransferBRep_BinderOfShape.hxx`:69 - `TransferBRep_BinderOfShape::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKXSBase::TransferBRep_BinderOfShape_dynamic_type(
@@ -389,7 +393,7 @@ impl BinderOfShape {
         }
     }
 
-    /// **Source:** `TransferBRep_BinderOfShape.hxx`:72 - `TransferBRep_BinderOfShape::get_type_name()`
+    /// **Source:** `TransferBRep_BinderOfShape.hxx`:69 - `TransferBRep_BinderOfShape::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -400,8 +404,8 @@ impl BinderOfShape {
         .into_owned()
     }
 
-    /// **Source:** `TransferBRep_BinderOfShape.hxx`:72 - `TransferBRep_BinderOfShape::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    /// **Source:** `TransferBRep_BinderOfShape.hxx`:69 - `TransferBRep_BinderOfShape::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKXSBase::TransferBRep_BinderOfShape_get_type_descriptor(),
@@ -456,7 +460,7 @@ impl BinderOfShape {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleTransferBRepBinderOfShape> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_TransferBRep_BinderOfShape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKXSBase::TransferBRep_BinderOfShape_to_handle(obj.into_raw()),
@@ -464,8 +468,8 @@ impl BinderOfShape {
         }
     }
 
-    /// Inherited: **Source:** `Transfer_Binder.hxx`:65 - `Transfer_Binder::Merge()`
-    pub fn merge(&mut self, other: &crate::ffi_types::HandleTransferBinder) {
+    /// Inherited: **Source:** `Transfer_Binder.hxx`:62 - `Transfer_Binder::Merge()`
+    pub fn merge(&mut self, other: &crate::ffi_types::Handle_Transfer_Binder) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKXSBase::TransferBRep_BinderOfShape_inherited_Merge(
                 self as *mut Self,
@@ -474,7 +478,7 @@ impl BinderOfShape {
         })
     }
 
-    /// Inherited: **Source:** `Transfer_Binder.hxx`:70 - `Transfer_Binder::IsMultiple()`
+    /// Inherited: **Source:** `Transfer_Binder.hxx`:67 - `Transfer_Binder::IsMultiple()`
     pub fn is_multiple(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKXSBase::TransferBRep_BinderOfShape_inherited_IsMultiple(
@@ -483,8 +487,8 @@ impl BinderOfShape {
         })
     }
 
-    /// Inherited: **Source:** `Transfer_Binder.hxx`:81 - `Transfer_Binder::AddResult()`
-    pub fn add_result(&mut self, next: &crate::ffi_types::HandleTransferBinder) {
+    /// Inherited: **Source:** `Transfer_Binder.hxx`:78 - `Transfer_Binder::AddResult()`
+    pub fn add_result(&mut self, next: &crate::ffi_types::Handle_Transfer_Binder) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKXSBase::TransferBRep_BinderOfShape_inherited_AddResult(
                 self as *mut Self,
@@ -493,8 +497,8 @@ impl BinderOfShape {
         })
     }
 
-    /// Inherited: **Source:** `Transfer_Binder.hxx`:84 - `Transfer_Binder::NextResult()`
-    pub fn next_result(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTransferBinder> {
+    /// Inherited: **Source:** `Transfer_Binder.hxx`:81 - `Transfer_Binder::NextResult()`
+    pub fn next_result(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_Transfer_Binder> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKXSBase::TransferBRep_BinderOfShape_inherited_NextResult(
@@ -504,7 +508,7 @@ impl BinderOfShape {
         }
     }
 
-    /// Inherited: **Source:** `Transfer_Binder.hxx`:91 - `Transfer_Binder::HasResult()`
+    /// Inherited: **Source:** `Transfer_Binder.hxx`:88 - `Transfer_Binder::HasResult()`
     pub fn has_result(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKXSBase::TransferBRep_BinderOfShape_inherited_HasResult(
@@ -513,7 +517,7 @@ impl BinderOfShape {
         })
     }
 
-    /// Inherited: **Source:** `Transfer_Binder.hxx`:95 - `Transfer_Binder::SetAlreadyUsed()`
+    /// Inherited: **Source:** `Transfer_Binder.hxx`:92 - `Transfer_Binder::SetAlreadyUsed()`
     pub fn set_already_used(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKXSBase::TransferBRep_BinderOfShape_inherited_SetAlreadyUsed(
@@ -522,7 +526,7 @@ impl BinderOfShape {
         })
     }
 
-    /// Inherited: **Source:** `Transfer_Binder.hxx`:100 - `Transfer_Binder::Status()`
+    /// Inherited: **Source:** `Transfer_Binder.hxx`:97 - `Transfer_Binder::Status()`
     pub fn status(&self) -> crate::transfer::StatusResult {
         crate::transfer::StatusResult::try_from(crate::check_result(unsafe {
             crate::ffi_extern_TKXSBase::TransferBRep_BinderOfShape_inherited_Status(
@@ -532,7 +536,7 @@ impl BinderOfShape {
         .unwrap()
     }
 
-    /// Inherited: **Source:** `Transfer_Binder.hxx`:103 - `Transfer_Binder::StatusExec()`
+    /// Inherited: **Source:** `Transfer_Binder.hxx`:100 - `Transfer_Binder::StatusExec()`
     pub fn status_exec(&self) -> crate::transfer::StatusExec {
         crate::transfer::StatusExec::try_from(crate::check_result(unsafe {
             crate::ffi_extern_TKXSBase::TransferBRep_BinderOfShape_inherited_StatusExec(
@@ -542,7 +546,7 @@ impl BinderOfShape {
         .unwrap()
     }
 
-    /// Inherited: **Source:** `Transfer_Binder.hxx`:107 - `Transfer_Binder::SetStatusExec()`
+    /// Inherited: **Source:** `Transfer_Binder.hxx`:104 - `Transfer_Binder::SetStatusExec()`
     pub fn set_status_exec(&mut self, stat: crate::transfer::StatusExec) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKXSBase::TransferBRep_BinderOfShape_inherited_SetStatusExec(
@@ -552,8 +556,8 @@ impl BinderOfShape {
         })
     }
 
-    /// Inherited: **Source:** `Transfer_Binder.hxx`:125 - `Transfer_Binder::Check()`
-    pub fn check(&self) -> crate::OwnedPtr<crate::ffi_types::HandleInterfaceCheck> {
+    /// Inherited: **Source:** `Transfer_Binder.hxx`:122 - `Transfer_Binder::Check()`
+    pub fn check(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_Interface_Check> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKXSBase::TransferBRep_BinderOfShape_inherited_Check(
@@ -563,8 +567,8 @@ impl BinderOfShape {
         }
     }
 
-    /// Inherited: **Source:** `Transfer_Binder.hxx`:129 - `Transfer_Binder::CCheck()`
-    pub fn c_check(&mut self) -> crate::OwnedPtr<crate::ffi_types::HandleInterfaceCheck> {
+    /// Inherited: **Source:** `Transfer_Binder.hxx`:126 - `Transfer_Binder::CCheck()`
+    pub fn c_check(&mut self) -> crate::OwnedPtr<crate::ffi_types::Handle_Interface_Check> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKXSBase::TransferBRep_BinderOfShape_inherited_CCheck(
@@ -574,8 +578,8 @@ impl BinderOfShape {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKXSBase::TransferBRep_BinderOfShape_inherited_IsInstance(
                 self as *const Self,
@@ -584,8 +588,8 @@ impl BinderOfShape {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKXSBase::TransferBRep_BinderOfShape_inherited_IsKind(
                 self as *const Self,
@@ -594,7 +598,7 @@ impl BinderOfShape {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -610,7 +614,7 @@ impl BinderOfShape {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKXSBase::TransferBRep_BinderOfShape_inherited_GetRefCount(
@@ -619,7 +623,7 @@ impl BinderOfShape {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKXSBase::TransferBRep_BinderOfShape_inherited_IncrementRefCounter(
@@ -628,7 +632,7 @@ impl BinderOfShape {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKXSBase::TransferBRep_BinderOfShape_inherited_DecrementRefCounter(
@@ -637,7 +641,7 @@ impl BinderOfShape {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKXSBase::TransferBRep_BinderOfShape_inherited_Delete(
@@ -647,40 +651,44 @@ impl BinderOfShape {
     }
 }
 
-pub use crate::ffi_types::HandleTransferBRepBinderOfShape;
+pub use crate::ffi_types::Handle_TransferBRep_BinderOfShape;
 
-unsafe impl crate::CppDeletable for HandleTransferBRepBinderOfShape {
+unsafe impl crate::CppDeletable for Handle_TransferBRep_BinderOfShape {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKXSBase::HandleTransferBRepBinderOfShape_destructor(ptr);
+            crate::ffi_extern_TKXSBase::Handle_TransferBRep_BinderOfShape_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleTransferBRepBinderOfShape {
+unsafe impl crate::CppCopyable for Handle_TransferBRep_BinderOfShape {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
         unsafe {
-            crate::check_result(crate::ffi_extern_TKXSBase::HandleTransferBRepBinderOfShape_clone(
-                ptr,
-            ))
+            crate::check_result(
+                crate::ffi_extern_TKXSBase::Handle_TransferBRep_BinderOfShape_clone(ptr),
+            )
         }
     }
 }
 
-impl HandleTransferBRepBinderOfShape {
+impl Handle_TransferBRep_BinderOfShape {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
         unsafe {
-            crate::ffi_extern_TKXSBase::HandleTransferBRepBinderOfShape_is_null(self as *const Self)
+            crate::ffi_extern_TKXSBase::Handle_TransferBRep_BinderOfShape_is_null(
+                self as *const Self,
+            )
         }
     }
 
     /// Dereference this Handle to access the underlying TransferBRep_BinderOfShape
     pub fn get(&self) -> &crate::ffi_types::TransferBRep_BinderOfShape {
         unsafe {
-            &*crate::check_result(crate::ffi_extern_TKXSBase::HandleTransferBRepBinderOfShape_get(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKXSBase::Handle_TransferBRep_BinderOfShape_get(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -688,7 +696,7 @@ impl HandleTransferBRepBinderOfShape {
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::TransferBRep_BinderOfShape {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi_extern_TKXSBase::HandleTransferBRepBinderOfShape_get_mut(
+                crate::ffi_extern_TKXSBase::Handle_TransferBRep_BinderOfShape_get_mut(
                     self as *mut Self,
                 ),
             )
@@ -696,22 +704,18 @@ impl HandleTransferBRepBinderOfShape {
     }
 
     /// Upcast Handle<TransferBRep_BinderOfShape> to Handle<Transfer_Binder>
-    pub fn to_handle_binder(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTransferBinder> {
+    pub fn to_handle_binder(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_Transfer_Binder> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKXSBase::HandleTransferBRepBinderOfShape_to_HandleTransferBinder(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKXSBase::Handle_TransferBRep_BinderOfShape_to_Handle_Transfer_Binder(self as *const Self)))
         }
     }
 
     /// Upcast Handle<TransferBRep_BinderOfShape> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKXSBase::HandleTransferBRepBinderOfShape_to_HandleStandardTransient(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKXSBase::Handle_TransferBRep_BinderOfShape_to_Handle_Standard_Transient(self as *const Self)))
         }
     }
 
@@ -720,9 +724,9 @@ impl HandleTransferBRepBinderOfShape {
     /// Returns `None` if the handle does not point to a `TransferBRep_ShapeBinder` (or subclass).
     pub fn downcast_to_shape_binder(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleTransferBRepShapeBinder>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_TransferBRep_ShapeBinder>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKXSBase::HandleTransferBRepBinderOfShape_downcast_to_HandleTransferBRepShapeBinder(self as *const Self)
+            crate::ffi_extern_TKXSBase::Handle_TransferBRep_BinderOfShape_downcast_to_Handle_TransferBRep_ShapeBinder(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -733,262 +737,10 @@ impl HandleTransferBRepBinderOfShape {
 }
 
 // ========================
-// From TransferBRep_HSequenceOfTransferResultInfo.hxx
-// ========================
-
-/// **Source:** `TransferBRep_HSequenceOfTransferResultInfo.hxx`:23 - `TransferBRep_HSequenceOfTransferResultInfo`
-pub use crate::ffi_types::TransferBRep_HSequenceOfTransferResultInfo as HSequenceOfTransferResultInfo;
-
-unsafe impl crate::CppDeletable for HSequenceOfTransferResultInfo {
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            crate::ffi_extern_TKXSBase::TransferBRep_HSequenceOfTransferResultInfo_destructor(ptr);
-        }
-    }
-}
-
-impl HSequenceOfTransferResultInfo {
-    /// **Source:** `TransferBRep_HSequenceOfTransferResultInfo.hxx`:23 - `TransferBRep_HSequenceOfTransferResultInfo::TransferBRep_HSequenceOfTransferResultInfo()`
-    pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKXSBase::TransferBRep_HSequenceOfTransferResultInfo_ctor(),
-            ))
-        }
-    }
-
-    /// **Source:** `TransferBRep_HSequenceOfTransferResultInfo.hxx`:23 - `TransferBRep_HSequenceOfTransferResultInfo::TransferBRep_HSequenceOfTransferResultInfo()`
-    pub fn new_sequenceoftransferresultinfo(
-        theOther: &crate::ffi_types::TransferBRep_SequenceOfTransferResultInfo,
-    ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKXSBase::TransferBRep_HSequenceOfTransferResultInfo_ctor_sequenceoftransferresultinfo(theOther)))
-        }
-    }
-
-    /// **Source:** `TransferBRep_HSequenceOfTransferResultInfo.hxx`:23 - `TransferBRep_HSequenceOfTransferResultInfo::Sequence()`
-    pub fn sequence(&self) -> &crate::ffi_types::TransferBRep_SequenceOfTransferResultInfo {
-        unsafe {
-            &*(crate::check_result(
-                crate::ffi_extern_TKXSBase::TransferBRep_HSequenceOfTransferResultInfo_sequence(
-                    self as *const Self,
-                ),
-            ))
-        }
-    }
-
-    /// **Source:** `TransferBRep_HSequenceOfTransferResultInfo.hxx`:23 - `TransferBRep_HSequenceOfTransferResultInfo::Append()`
-    pub fn append_handletransferbreptransferresultinfo(
-        &mut self,
-        theItem: &crate::ffi_types::HandleTransferBRepTransferResultInfo,
-    ) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKXSBase::TransferBRep_HSequenceOfTransferResultInfo_append_handletransferbreptransferresultinfo(self as *mut Self, theItem)
-        })
-    }
-
-    /// **Source:** `TransferBRep_HSequenceOfTransferResultInfo.hxx`:23 - `TransferBRep_HSequenceOfTransferResultInfo::Append()`
-    pub fn append_sequenceoftransferresultinfo(
-        &mut self,
-        theSequence: &mut crate::ffi_types::TransferBRep_SequenceOfTransferResultInfo,
-    ) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKXSBase::TransferBRep_HSequenceOfTransferResultInfo_append_sequenceoftransferresultinfo(self as *mut Self, theSequence)
-        })
-    }
-
-    /// **Source:** `TransferBRep_HSequenceOfTransferResultInfo.hxx`:23 - `TransferBRep_HSequenceOfTransferResultInfo::ChangeSequence()`
-    pub fn change_sequence(
-        &mut self,
-    ) -> &mut crate::ffi_types::TransferBRep_SequenceOfTransferResultInfo {
-        unsafe {
-            &mut *(crate::check_result(crate::ffi_extern_TKXSBase::TransferBRep_HSequenceOfTransferResultInfo_change_sequence(self as *mut Self)))
-        }
-    }
-
-    /// **Source:** `TransferBRep_HSequenceOfTransferResultInfo.hxx`:23 - `TransferBRep_HSequenceOfTransferResultInfo::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
-        unsafe {
-            &*(crate::check_result(
-                crate::ffi_extern_TKXSBase::TransferBRep_HSequenceOfTransferResultInfo_dynamic_type(
-                    self as *const Self,
-                ),
-            ))
-        }
-    }
-
-    /// **Source:** `TransferBRep_HSequenceOfTransferResultInfo.hxx`:23 - `TransferBRep_HSequenceOfTransferResultInfo::get_type_name()`
-    pub fn get_type_name() -> std::string::String {
-        unsafe { std::ffi::CStr::from_ptr(crate::check_result(crate::ffi_extern_TKXSBase::TransferBRep_HSequenceOfTransferResultInfo_get_type_name())) }.to_string_lossy().into_owned()
-    }
-
-    /// **Source:** `TransferBRep_HSequenceOfTransferResultInfo.hxx`:23 - `TransferBRep_HSequenceOfTransferResultInfo::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
-        unsafe {
-            &*(crate::check_result(crate::ffi_extern_TKXSBase::TransferBRep_HSequenceOfTransferResultInfo_get_type_descriptor()))
-        }
-    }
-
-    /// Upcast to Standard_Transient
-    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        unsafe {
-            &*crate::check_result(crate::ffi_extern_TKXSBase::TransferBRep_HSequenceOfTransferResultInfo_as_Standard_Transient(self as *const Self))
-        }
-    }
-
-    /// Upcast to Standard_Transient (mutable)
-    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        unsafe {
-            &mut *crate::check_result(crate::ffi_extern_TKXSBase::TransferBRep_HSequenceOfTransferResultInfo_as_Standard_Transient_mut(self as *mut Self))
-        }
-    }
-
-    /// Wrap in a Handle (reference-counted smart pointer)
-    pub fn to_handle(
-        obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleTransferBRepHSequenceOfTransferResultInfo> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKXSBase::TransferBRep_HSequenceOfTransferResultInfo_to_handle(
-                    obj.into_raw(),
-                ),
-            ))
-        }
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKXSBase::TransferBRep_HSequenceOfTransferResultInfo_inherited_IsInstance(self as *const Self, theType)
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKXSBase::TransferBRep_HSequenceOfTransferResultInfo_inherited_IsKind(
-                self as *const Self,
-                theType,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
-    pub fn this(&self) -> Option<&crate::standard::Transient> {
-        {
-            let __val = crate::check_result(unsafe {
-                crate::ffi_extern_TKXSBase::TransferBRep_HSequenceOfTransferResultInfo_inherited_This(self as *const Self)
-            });
-            if __val.is_null() {
-                None
-            } else {
-                Some(unsafe { &*__val })
-            }
-        }
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
-    pub fn get_ref_count(&self) -> i32 {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKXSBase::TransferBRep_HSequenceOfTransferResultInfo_inherited_GetRefCount(self as *const Self)
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
-    pub fn increment_ref_counter(&mut self) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKXSBase::TransferBRep_HSequenceOfTransferResultInfo_inherited_IncrementRefCounter(self as *mut Self)
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
-    pub fn decrement_ref_counter(&mut self) -> i32 {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKXSBase::TransferBRep_HSequenceOfTransferResultInfo_inherited_DecrementRefCounter(self as *mut Self)
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
-    pub fn delete(&self) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKXSBase::TransferBRep_HSequenceOfTransferResultInfo_inherited_Delete(
-                self as *const Self,
-            )
-        })
-    }
-}
-
-pub use crate::ffi_types::HandleTransferBRepHSequenceOfTransferResultInfo;
-
-unsafe impl crate::CppDeletable for HandleTransferBRepHSequenceOfTransferResultInfo {
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            crate::ffi_extern_TKXSBase::HandleTransferBRepHSequenceOfTransferResultInfo_destructor(
-                ptr,
-            );
-        }
-    }
-}
-
-unsafe impl crate::CppCopyable for HandleTransferBRepHSequenceOfTransferResultInfo {
-    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        unsafe {
-            crate::check_result(
-                crate::ffi_extern_TKXSBase::HandleTransferBRepHSequenceOfTransferResultInfo_clone(
-                    ptr,
-                ),
-            )
-        }
-    }
-}
-
-impl HandleTransferBRepHSequenceOfTransferResultInfo {
-    /// Returns `true` if this Handle is null (doesn't point to any object).
-    pub fn is_null(&self) -> bool {
-        unsafe {
-            crate::ffi_extern_TKXSBase::HandleTransferBRepHSequenceOfTransferResultInfo_is_null(
-                self as *const Self,
-            )
-        }
-    }
-
-    /// Dereference this Handle to access the underlying TransferBRep_HSequenceOfTransferResultInfo
-    pub fn get(&self) -> &crate::ffi_types::TransferBRep_HSequenceOfTransferResultInfo {
-        unsafe {
-            &*crate::check_result(
-                crate::ffi_extern_TKXSBase::HandleTransferBRepHSequenceOfTransferResultInfo_get(
-                    self as *const Self,
-                ),
-            )
-        }
-    }
-
-    /// Dereference this Handle to mutably access the underlying TransferBRep_HSequenceOfTransferResultInfo
-    pub fn get_mut(&mut self) -> &mut crate::ffi_types::TransferBRep_HSequenceOfTransferResultInfo {
-        unsafe {
-            &mut *crate::check_result(
-                crate::ffi_extern_TKXSBase::HandleTransferBRepHSequenceOfTransferResultInfo_get_mut(
-                    self as *mut Self,
-                ),
-            )
-        }
-    }
-
-    /// Upcast Handle<TransferBRep_HSequenceOfTransferResultInfo> to Handle<Standard_Transient>
-    pub fn to_handle_transient(
-        &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKXSBase::HandleTransferBRepHSequenceOfTransferResultInfo_to_HandleStandardTransient(self as *const Self)))
-        }
-    }
-}
-
-// ========================
 // From TransferBRep_Reader.hxx
 // ========================
 
-/// **Source:** `TransferBRep_Reader.hxx`:42 - `TransferBRep_Reader`
+/// **Source:** `TransferBRep_Reader.hxx`:44 - `TransferBRep_Reader`
 /// This class offers a simple, easy to call, way of transferring
 /// data from interface files to Shapes from CasCade
 /// It must be specialized according to each norm/protocol, by :
@@ -1005,7 +757,7 @@ unsafe impl crate::CppDeletable for Reader {
 }
 
 impl Reader {
-    /// **Source:** `TransferBRep_Reader.hxx`:50 - `TransferBRep_Reader::TransferBRep_Reader()`
+    /// **Source:** `TransferBRep_Reader.hxx`:52 - `TransferBRep_Reader::TransferBRep_Reader()`
     /// Initializes a non-specialised Reader. Typically, for each norm
     /// or protocol, is will be required to define a specific Create
     /// to load a file and transfer it
@@ -1017,9 +769,9 @@ impl Reader {
         }
     }
 
-    /// **Source:** `TransferBRep_Reader.hxx`:53 - `TransferBRep_Reader::SetProtocol()`
+    /// **Source:** `TransferBRep_Reader.hxx`:55 - `TransferBRep_Reader::SetProtocol()`
     /// Records the protocol to be used for read and transfer roots
-    pub fn set_protocol(&mut self, protocol: &crate::ffi_types::HandleInterfaceProtocol) {
+    pub fn set_protocol(&mut self, protocol: &crate::ffi_types::Handle_Interface_Protocol) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKXSBase::TransferBRep_Reader_set_protocol(
                 self as *mut Self,
@@ -1028,9 +780,9 @@ impl Reader {
         })
     }
 
-    /// **Source:** `TransferBRep_Reader.hxx`:56 - `TransferBRep_Reader::Protocol()`
+    /// **Source:** `TransferBRep_Reader.hxx`:58 - `TransferBRep_Reader::Protocol()`
     /// Returns the recorded Protocol
-    pub fn protocol(&self) -> crate::OwnedPtr<crate::ffi_types::HandleInterfaceProtocol> {
+    pub fn protocol(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_Interface_Protocol> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKXSBase::TransferBRep_Reader_protocol(self as *const Self),
@@ -1038,19 +790,19 @@ impl Reader {
         }
     }
 
-    /// **Source:** `TransferBRep_Reader.hxx`:59 - `TransferBRep_Reader::SetActor()`
+    /// **Source:** `TransferBRep_Reader.hxx`:61 - `TransferBRep_Reader::SetActor()`
     /// Records the actor to be used for transfers
-    pub fn set_actor(&mut self, actor: &crate::ffi_types::HandleTransferActorOfTransientProcess) {
+    pub fn set_actor(&mut self, actor: &crate::ffi_types::Handle_Transfer_ActorOfTransientProcess) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKXSBase::TransferBRep_Reader_set_actor(self as *mut Self, actor)
         })
     }
 
-    /// **Source:** `TransferBRep_Reader.hxx`:62 - `TransferBRep_Reader::Actor()`
+    /// **Source:** `TransferBRep_Reader.hxx`:64 - `TransferBRep_Reader::Actor()`
     /// Returns the recorded Actor
     pub fn actor(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleTransferActorOfTransientProcess> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Transfer_ActorOfTransientProcess> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKXSBase::TransferBRep_Reader_actor(self as *const Self),
@@ -1058,7 +810,7 @@ impl Reader {
         }
     }
 
-    /// **Source:** `TransferBRep_Reader.hxx`:68 - `TransferBRep_Reader::SetFileStatus()`
+    /// **Source:** `TransferBRep_Reader.hxx`:70 - `TransferBRep_Reader::SetFileStatus()`
     /// Sets File Status to be interpreted as follows :
     /// = 0 OK
     /// < 0 file not found
@@ -1072,7 +824,7 @@ impl Reader {
         })
     }
 
-    /// **Source:** `TransferBRep_Reader.hxx`:71 - `TransferBRep_Reader::FileStatus()`
+    /// **Source:** `TransferBRep_Reader.hxx`:73 - `TransferBRep_Reader::FileStatus()`
     /// Returns the File Status
     pub fn file_status(&self) -> i32 {
         crate::check_result(unsafe {
@@ -1080,7 +832,7 @@ impl Reader {
         })
     }
 
-    /// **Source:** `TransferBRep_Reader.hxx`:74 - `TransferBRep_Reader::FileNotFound()`
+    /// **Source:** `TransferBRep_Reader.hxx`:76 - `TransferBRep_Reader::FileNotFound()`
     /// Returns True if FileStatus is for FileNotFound
     pub fn file_not_found(&self) -> bool {
         crate::check_result(unsafe {
@@ -1088,7 +840,7 @@ impl Reader {
         })
     }
 
-    /// **Source:** `TransferBRep_Reader.hxx`:78 - `TransferBRep_Reader::SyntaxError()`
+    /// **Source:** `TransferBRep_Reader.hxx`:80 - `TransferBRep_Reader::SyntaxError()`
     /// Returns True if FileStatus is for Error during read
     /// (major error; for local error, see CheckModel)
     pub fn syntax_error(&self) -> bool {
@@ -1097,18 +849,18 @@ impl Reader {
         })
     }
 
-    /// **Source:** `TransferBRep_Reader.hxx`:82 - `TransferBRep_Reader::SetModel()`
+    /// **Source:** `TransferBRep_Reader.hxx`:84 - `TransferBRep_Reader::SetModel()`
     /// Specifies a Model to work on
     /// Also clears the result and Done status
-    pub fn set_model(&mut self, model: &crate::ffi_types::HandleInterfaceInterfaceModel) {
+    pub fn set_model(&mut self, model: &crate::ffi_types::Handle_Interface_InterfaceModel) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKXSBase::TransferBRep_Reader_set_model(self as *mut Self, model)
         })
     }
 
-    /// **Source:** `TransferBRep_Reader.hxx`:85 - `TransferBRep_Reader::Model()`
+    /// **Source:** `TransferBRep_Reader.hxx`:87 - `TransferBRep_Reader::Model()`
     /// Returns the Model to be worked on
-    pub fn model(&self) -> crate::OwnedPtr<crate::ffi_types::HandleInterfaceInterfaceModel> {
+    pub fn model(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_Interface_InterfaceModel> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKXSBase::TransferBRep_Reader_model(self as *const Self),
@@ -1116,7 +868,7 @@ impl Reader {
         }
     }
 
-    /// **Source:** `TransferBRep_Reader.hxx`:88 - `TransferBRep_Reader::Clear()`
+    /// **Source:** `TransferBRep_Reader.hxx`:90 - `TransferBRep_Reader::Clear()`
     /// clears the result and Done status. But not the Model.
     pub fn clear(&mut self) {
         crate::check_void_result(unsafe {
@@ -1124,7 +876,7 @@ impl Reader {
         })
     }
 
-    /// **Source:** `TransferBRep_Reader.hxx`:93 - `TransferBRep_Reader::CheckStatusModel()`
+    /// **Source:** `TransferBRep_Reader.hxx`:95 - `TransferBRep_Reader::CheckStatusModel()`
     /// Checks the Model. Returns True if there is NO FAIL at all
     /// (regardless Warnings)
     /// If <withprint> is True, also sends Checks on standard output
@@ -1137,7 +889,7 @@ impl Reader {
         })
     }
 
-    /// **Source:** `TransferBRep_Reader.hxx`:97 - `TransferBRep_Reader::CheckListModel()`
+    /// **Source:** `TransferBRep_Reader.hxx`:99 - `TransferBRep_Reader::CheckListModel()`
     /// Checks the Model (complete : syntax + semantic) and returns
     /// the produced Check List
     pub fn check_list_model(&self) -> crate::OwnedPtr<crate::interface::CheckIterator> {
@@ -1150,7 +902,7 @@ impl Reader {
         }
     }
 
-    /// **Source:** `TransferBRep_Reader.hxx`:103 - `TransferBRep_Reader::ModeNewTransfer()`
+    /// **Source:** `TransferBRep_Reader.hxx`:105 - `TransferBRep_Reader::ModeNewTransfer()`
     /// Returns (by Reference, hence can be changed) the Mode for new
     /// Transfer : True (D) means that each new Transfer produces a
     /// new TransferProcess. Else keeps the original one but each
@@ -1165,7 +917,7 @@ impl Reader {
         }
     }
 
-    /// **Source:** `TransferBRep_Reader.hxx`:108 - `TransferBRep_Reader::BeginTransfer()`
+    /// **Source:** `TransferBRep_Reader.hxx`:110 - `TransferBRep_Reader::BeginTransfer()`
     /// Initializes the Reader for a Transfer (one,roots, or list)
     /// Also calls PrepareTransfer
     /// Returns True when done, False if could not be done
@@ -1175,7 +927,7 @@ impl Reader {
         })
     }
 
-    /// **Source:** `TransferBRep_Reader.hxx`:111 - `TransferBRep_Reader::EndTransfer()`
+    /// **Source:** `TransferBRep_Reader.hxx`:113 - `TransferBRep_Reader::EndTransfer()`
     /// Ebds a Transfer (one, roots or list) by recording its result
     pub fn end_transfer(&mut self) {
         crate::check_void_result(unsafe {
@@ -1183,7 +935,7 @@ impl Reader {
         })
     }
 
-    /// **Source:** `TransferBRep_Reader.hxx`:117 - `TransferBRep_Reader::PrepareTransfer()`
+    /// **Source:** `TransferBRep_Reader.hxx`:119 - `TransferBRep_Reader::PrepareTransfer()`
     /// Prepares the Transfer. Also can act on the Actor or change the
     /// TransientProcess if required.
     /// Should not set the Actor into the TransientProcess, it is done
@@ -1194,7 +946,7 @@ impl Reader {
         })
     }
 
-    /// **Source:** `TransferBRep_Reader.hxx`:123 - `TransferBRep_Reader::TransferRoots()`
+    /// **Source:** `TransferBRep_Reader.hxx`:125 - `TransferBRep_Reader::TransferRoots()`
     /// Transfers all Root Entities which are recognized as Geom-Topol
     /// The result will be a list of Shapes.
     /// This method calls user redefinable PrepareTransfer
@@ -1208,7 +960,7 @@ impl Reader {
         })
     }
 
-    /// **Source:** `TransferBRep_Reader.hxx`:129 - `TransferBRep_Reader::Transfer()`
+    /// **Source:** `TransferBRep_Reader.hxx`:131 - `TransferBRep_Reader::Transfer()`
     /// Transfers an Entity given its rank in the Model (Root or not)
     /// Returns True if it is recognized as Geom-Topol.
     /// (But it can have failed : see IsDone)
@@ -1222,12 +974,12 @@ impl Reader {
         })
     }
 
-    /// **Source:** `TransferBRep_Reader.hxx`:135 - `TransferBRep_Reader::TransferList()`
+    /// **Source:** `TransferBRep_Reader.hxx`:137 - `TransferBRep_Reader::TransferList()`
     /// Transfers a list of Entities (only the ones also in the Model)
     /// Remark : former result is cleared
     pub fn transfer_list(
         &mut self,
-        list: &crate::ffi_types::HandleTColStdHSequenceOfTransient,
+        list: &crate::ffi_types::Handle_NCollection_HSequence_opencascade_handle_Standard_Transient,
         theProgress: &crate::message::ProgressRange,
     ) {
         crate::check_void_result(unsafe {
@@ -1239,7 +991,7 @@ impl Reader {
         })
     }
 
-    /// **Source:** `TransferBRep_Reader.hxx`:140 - `TransferBRep_Reader::IsDone()`
+    /// **Source:** `TransferBRep_Reader.hxx`:142 - `TransferBRep_Reader::IsDone()`
     /// Returns True if the LAST Transfer/TransferRoots was a success
     pub fn is_done(&self) -> bool {
         crate::check_result(unsafe {
@@ -1247,7 +999,7 @@ impl Reader {
         })
     }
 
-    /// **Source:** `TransferBRep_Reader.hxx`:143 - `TransferBRep_Reader::NbShapes()`
+    /// **Source:** `TransferBRep_Reader.hxx`:145 - `TransferBRep_Reader::NbShapes()`
     /// Returns the count of produced Shapes (roots)
     pub fn nb_shapes(&self) -> i32 {
         crate::check_result(unsafe {
@@ -1255,9 +1007,11 @@ impl Reader {
         })
     }
 
-    /// **Source:** `TransferBRep_Reader.hxx`:146 - `TransferBRep_Reader::Shapes()`
+    /// **Source:** `TransferBRep_Reader.hxx`:148 - `TransferBRep_Reader::Shapes()`
     /// Returns the complete list of produced Shapes
-    pub fn shapes(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTopToolsHSequenceOfShape> {
+    pub fn shapes(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HSequence_TopoDS_Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKXSBase::TransferBRep_Reader_shapes(self as *const Self),
@@ -1265,7 +1019,7 @@ impl Reader {
         }
     }
 
-    /// **Source:** `TransferBRep_Reader.hxx`:149 - `TransferBRep_Reader::Shape()`
+    /// **Source:** `TransferBRep_Reader.hxx`:151 - `TransferBRep_Reader::Shape()`
     /// Returns a Shape given its rank, by default the first one
     pub fn shape(&self, num: i32) -> &crate::topo_ds::Shape {
         unsafe {
@@ -1276,14 +1030,14 @@ impl Reader {
         }
     }
 
-    /// **Source:** `TransferBRep_Reader.hxx`:155 - `TransferBRep_Reader::ShapeResult()`
+    /// **Source:** `TransferBRep_Reader.hxx`:157 - `TransferBRep_Reader::ShapeResult()`
     /// Returns a Shape produced from a given entity (if it was
     /// individually transferred or if an intermediate result is
     /// known). If no Shape is bound with <ent>, returns a Null Shape
     /// Warning : Runs on the last call to Transfer,TransferRoots,TransferList
     pub fn shape_result(
         &self,
-        ent: &crate::ffi_types::HandleStandardTransient,
+        ent: &crate::ffi_types::Handle_Standard_Transient,
     ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -1295,7 +1049,7 @@ impl Reader {
         }
     }
 
-    /// **Source:** `TransferBRep_Reader.hxx`:161 - `TransferBRep_Reader::OneShape()`
+    /// **Source:** `TransferBRep_Reader.hxx`:163 - `TransferBRep_Reader::OneShape()`
     /// Returns a unique Shape for the result :
     /// - a void Shape (type = SHAPE) if result is empty
     /// - a simple Shape if result has only one : returns this one
@@ -1308,7 +1062,7 @@ impl Reader {
         }
     }
 
-    /// **Source:** `TransferBRep_Reader.hxx`:164 - `TransferBRep_Reader::NbTransients()`
+    /// **Source:** `TransferBRep_Reader.hxx`:166 - `TransferBRep_Reader::NbTransients()`
     /// Returns the count of produced Transient Results (roots)
     pub fn nb_transients(&self) -> i32 {
         crate::check_result(unsafe {
@@ -1316,11 +1070,13 @@ impl Reader {
         })
     }
 
-    /// **Source:** `TransferBRep_Reader.hxx`:167 - `TransferBRep_Reader::Transients()`
+    /// **Source:** `TransferBRep_Reader.hxx`:169 - `TransferBRep_Reader::Transients()`
     /// Returns the complete list of produced Transient Results
     pub fn transients(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleTColStdHSequenceOfTransient> {
+    ) -> crate::OwnedPtr<
+        crate::ffi_types::Handle_NCollection_HSequence_opencascade_handle_Standard_Transient,
+    > {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKXSBase::TransferBRep_Reader_transients(self as *const Self),
@@ -1328,13 +1084,13 @@ impl Reader {
         }
     }
 
-    /// **Source:** `TransferBRep_Reader.hxx`:171 - `TransferBRep_Reader::Transient()`
+    /// **Source:** `TransferBRep_Reader.hxx`:174 - `TransferBRep_Reader::Transient()`
     /// Returns a Transient Root Result, given its rank (by default
     /// the first one)
     pub fn transient(
         &self,
         num: i32,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKXSBase::TransferBRep_Reader_transient(self as *const Self, num),
@@ -1342,7 +1098,7 @@ impl Reader {
         }
     }
 
-    /// **Source:** `TransferBRep_Reader.hxx`:176 - `TransferBRep_Reader::CheckStatusResult()`
+    /// **Source:** `TransferBRep_Reader.hxx`:179 - `TransferBRep_Reader::CheckStatusResult()`
     /// Checks the Result of last Transfer (individual or roots, no
     /// cumulation on several transfers). Returns True if NO fail
     /// occurred during Transfer (queries the TransientProcess)
@@ -1355,7 +1111,7 @@ impl Reader {
         })
     }
 
-    /// **Source:** `TransferBRep_Reader.hxx`:180 - `TransferBRep_Reader::CheckListResult()`
+    /// **Source:** `TransferBRep_Reader.hxx`:183 - `TransferBRep_Reader::CheckListResult()`
     /// Checks the Result of last Transfer (individual or roots, no
     /// cumulation on several transfers) and returns the produced list
     pub fn check_list_result(&self) -> crate::OwnedPtr<crate::interface::CheckIterator> {
@@ -1368,13 +1124,13 @@ impl Reader {
         }
     }
 
-    /// **Source:** `TransferBRep_Reader.hxx`:185 - `TransferBRep_Reader::TransientProcess()`
+    /// **Source:** `TransferBRep_Reader.hxx`:188 - `TransferBRep_Reader::TransientProcess()`
     /// Returns the TransientProcess. It records information about
     /// the very last transfer done. Null if no transfer yet done.
     /// Can be used for queries more accurate than the default ones.
     pub fn transient_process(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleTransferTransientProcess> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Transfer_TransientProcess> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKXSBase::TransferBRep_Reader_transient_process(
@@ -1389,7 +1145,7 @@ impl Reader {
 // From TransferBRep_ShapeBinder.hxx
 // ========================
 
-/// **Source:** `TransferBRep_ShapeBinder.hxx`:40 - `TransferBRep_ShapeBinder`
+/// **Source:** `TransferBRep_ShapeBinder.hxx`:37 - `TransferBRep_ShapeBinder`
 /// A ShapeBinder is a BinderOfShape with some additional services
 /// to cast the Result under various kinds of Shapes
 pub use crate::ffi_types::TransferBRep_ShapeBinder as ShapeBinder;
@@ -1403,7 +1159,7 @@ unsafe impl crate::CppDeletable for ShapeBinder {
 }
 
 impl ShapeBinder {
-    /// **Source:** `TransferBRep_ShapeBinder.hxx`:45 - `TransferBRep_ShapeBinder::TransferBRep_ShapeBinder()`
+    /// **Source:** `TransferBRep_ShapeBinder.hxx`:42 - `TransferBRep_ShapeBinder::TransferBRep_ShapeBinder()`
     /// Creates an empty ShapeBinder
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
@@ -1413,7 +1169,7 @@ impl ShapeBinder {
         }
     }
 
-    /// **Source:** `TransferBRep_ShapeBinder.hxx`:48 - `TransferBRep_ShapeBinder::TransferBRep_ShapeBinder()`
+    /// **Source:** `TransferBRep_ShapeBinder.hxx`:45 - `TransferBRep_ShapeBinder::TransferBRep_ShapeBinder()`
     /// Creates a ShapeBinder with a result
     pub fn new_shape(res: &crate::topo_ds::Shape) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -1423,7 +1179,7 @@ impl ShapeBinder {
         }
     }
 
-    /// **Source:** `TransferBRep_ShapeBinder.hxx`:51 - `TransferBRep_ShapeBinder::ShapeType()`
+    /// **Source:** `TransferBRep_ShapeBinder.hxx`:48 - `TransferBRep_ShapeBinder::ShapeType()`
     /// Returns the Type of the Shape Result (under TopAbs form)
     pub fn shape_type(&self) -> crate::top_abs::ShapeEnum {
         crate::top_abs::ShapeEnum::try_from(crate::check_result(unsafe {
@@ -1432,7 +1188,7 @@ impl ShapeBinder {
         .unwrap()
     }
 
-    /// **Source:** `TransferBRep_ShapeBinder.hxx`:53 - `TransferBRep_ShapeBinder::Vertex()`
+    /// **Source:** `TransferBRep_ShapeBinder.hxx`:50 - `TransferBRep_ShapeBinder::Vertex()`
     pub fn vertex(&self) -> crate::OwnedPtr<crate::topo_ds::Vertex> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -1441,7 +1197,7 @@ impl ShapeBinder {
         }
     }
 
-    /// **Source:** `TransferBRep_ShapeBinder.hxx`:55 - `TransferBRep_ShapeBinder::Edge()`
+    /// **Source:** `TransferBRep_ShapeBinder.hxx`:52 - `TransferBRep_ShapeBinder::Edge()`
     pub fn edge(&self) -> crate::OwnedPtr<crate::topo_ds::Edge> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -1450,7 +1206,7 @@ impl ShapeBinder {
         }
     }
 
-    /// **Source:** `TransferBRep_ShapeBinder.hxx`:57 - `TransferBRep_ShapeBinder::Wire()`
+    /// **Source:** `TransferBRep_ShapeBinder.hxx`:54 - `TransferBRep_ShapeBinder::Wire()`
     pub fn wire(&self) -> crate::OwnedPtr<crate::topo_ds::Wire> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -1459,7 +1215,7 @@ impl ShapeBinder {
         }
     }
 
-    /// **Source:** `TransferBRep_ShapeBinder.hxx`:59 - `TransferBRep_ShapeBinder::Face()`
+    /// **Source:** `TransferBRep_ShapeBinder.hxx`:56 - `TransferBRep_ShapeBinder::Face()`
     pub fn face(&self) -> crate::OwnedPtr<crate::topo_ds::Face> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -1468,7 +1224,7 @@ impl ShapeBinder {
         }
     }
 
-    /// **Source:** `TransferBRep_ShapeBinder.hxx`:61 - `TransferBRep_ShapeBinder::Shell()`
+    /// **Source:** `TransferBRep_ShapeBinder.hxx`:58 - `TransferBRep_ShapeBinder::Shell()`
     pub fn shell(&self) -> crate::OwnedPtr<crate::topo_ds::Shell> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -1477,7 +1233,7 @@ impl ShapeBinder {
         }
     }
 
-    /// **Source:** `TransferBRep_ShapeBinder.hxx`:63 - `TransferBRep_ShapeBinder::Solid()`
+    /// **Source:** `TransferBRep_ShapeBinder.hxx`:60 - `TransferBRep_ShapeBinder::Solid()`
     pub fn solid(&self) -> crate::OwnedPtr<crate::topo_ds::Solid> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -1486,7 +1242,7 @@ impl ShapeBinder {
         }
     }
 
-    /// **Source:** `TransferBRep_ShapeBinder.hxx`:65 - `TransferBRep_ShapeBinder::CompSolid()`
+    /// **Source:** `TransferBRep_ShapeBinder.hxx`:62 - `TransferBRep_ShapeBinder::CompSolid()`
     pub fn comp_solid(&self) -> crate::OwnedPtr<crate::topo_ds::CompSolid> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -1497,7 +1253,7 @@ impl ShapeBinder {
         }
     }
 
-    /// **Source:** `TransferBRep_ShapeBinder.hxx`:67 - `TransferBRep_ShapeBinder::Compound()`
+    /// **Source:** `TransferBRep_ShapeBinder.hxx`:64 - `TransferBRep_ShapeBinder::Compound()`
     pub fn compound(&self) -> crate::OwnedPtr<crate::topo_ds::Compound> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -1506,8 +1262,8 @@ impl ShapeBinder {
         }
     }
 
-    /// **Source:** `TransferBRep_ShapeBinder.hxx`:69 - `TransferBRep_ShapeBinder::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `TransferBRep_ShapeBinder.hxx`:66 - `TransferBRep_ShapeBinder::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKXSBase::TransferBRep_ShapeBinder_dynamic_type(
@@ -1517,7 +1273,7 @@ impl ShapeBinder {
         }
     }
 
-    /// **Source:** `TransferBRep_ShapeBinder.hxx`:69 - `TransferBRep_ShapeBinder::get_type_name()`
+    /// **Source:** `TransferBRep_ShapeBinder.hxx`:66 - `TransferBRep_ShapeBinder::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -1528,8 +1284,8 @@ impl ShapeBinder {
         .into_owned()
     }
 
-    /// **Source:** `TransferBRep_ShapeBinder.hxx`:69 - `TransferBRep_ShapeBinder::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    /// **Source:** `TransferBRep_ShapeBinder.hxx`:66 - `TransferBRep_ShapeBinder::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKXSBase::TransferBRep_ShapeBinder_get_type_descriptor(),
@@ -1602,7 +1358,7 @@ impl ShapeBinder {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleTransferBRepShapeBinder> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_TransferBRep_ShapeBinder> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKXSBase::TransferBRep_ShapeBinder_to_handle(obj.into_raw()),
@@ -1610,8 +1366,8 @@ impl ShapeBinder {
         }
     }
 
-    /// Inherited: **Source:** `TransferBRep_BinderOfShape.hxx`:55 - `TransferBRep_BinderOfShape::ResultType()`
-    pub fn result_type(&self) -> crate::OwnedPtr<crate::ffi_types::HandleStandardType> {
+    /// Inherited: **Source:** `TransferBRep_BinderOfShape.hxx`:52 - `TransferBRep_BinderOfShape::ResultType()`
+    pub fn result_type(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Type> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKXSBase::TransferBRep_ShapeBinder_inherited_ResultType(
@@ -1621,7 +1377,7 @@ impl ShapeBinder {
         }
     }
 
-    /// Inherited: **Source:** `TransferBRep_BinderOfShape.hxx`:61 - `TransferBRep_BinderOfShape::SetResult()`
+    /// Inherited: **Source:** `TransferBRep_BinderOfShape.hxx`:58 - `TransferBRep_BinderOfShape::SetResult()`
     pub fn set_result(&mut self, res: &crate::topo_ds::Shape) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKXSBase::TransferBRep_ShapeBinder_inherited_SetResult(
@@ -1631,7 +1387,7 @@ impl ShapeBinder {
         })
     }
 
-    /// Inherited: **Source:** `TransferBRep_BinderOfShape.hxx`:64 - `TransferBRep_BinderOfShape::Result()`
+    /// Inherited: **Source:** `TransferBRep_BinderOfShape.hxx`:61 - `TransferBRep_BinderOfShape::Result()`
     pub fn result(&self) -> &crate::topo_ds::Shape {
         unsafe {
             &*(crate::check_result(
@@ -1642,7 +1398,7 @@ impl ShapeBinder {
         }
     }
 
-    /// Inherited: **Source:** `TransferBRep_BinderOfShape.hxx`:70 - `TransferBRep_BinderOfShape::CResult()`
+    /// Inherited: **Source:** `TransferBRep_BinderOfShape.hxx`:67 - `TransferBRep_BinderOfShape::CResult()`
     pub fn c_result(&mut self) -> &mut crate::topo_ds::Shape {
         unsafe {
             &mut *(crate::check_result(
@@ -1653,8 +1409,8 @@ impl ShapeBinder {
         }
     }
 
-    /// Inherited: **Source:** `Transfer_Binder.hxx`:65 - `Transfer_Binder::Merge()`
-    pub fn merge(&mut self, other: &crate::ffi_types::HandleTransferBinder) {
+    /// Inherited: **Source:** `Transfer_Binder.hxx`:62 - `Transfer_Binder::Merge()`
+    pub fn merge(&mut self, other: &crate::ffi_types::Handle_Transfer_Binder) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKXSBase::TransferBRep_ShapeBinder_inherited_Merge(
                 self as *mut Self,
@@ -1663,7 +1419,7 @@ impl ShapeBinder {
         })
     }
 
-    /// Inherited: **Source:** `Transfer_Binder.hxx`:70 - `Transfer_Binder::IsMultiple()`
+    /// Inherited: **Source:** `Transfer_Binder.hxx`:67 - `Transfer_Binder::IsMultiple()`
     pub fn is_multiple(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKXSBase::TransferBRep_ShapeBinder_inherited_IsMultiple(
@@ -1672,8 +1428,8 @@ impl ShapeBinder {
         })
     }
 
-    /// Inherited: **Source:** `Transfer_Binder.hxx`:81 - `Transfer_Binder::AddResult()`
-    pub fn add_result(&mut self, next: &crate::ffi_types::HandleTransferBinder) {
+    /// Inherited: **Source:** `Transfer_Binder.hxx`:78 - `Transfer_Binder::AddResult()`
+    pub fn add_result(&mut self, next: &crate::ffi_types::Handle_Transfer_Binder) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKXSBase::TransferBRep_ShapeBinder_inherited_AddResult(
                 self as *mut Self,
@@ -1682,8 +1438,8 @@ impl ShapeBinder {
         })
     }
 
-    /// Inherited: **Source:** `Transfer_Binder.hxx`:84 - `Transfer_Binder::NextResult()`
-    pub fn next_result(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTransferBinder> {
+    /// Inherited: **Source:** `Transfer_Binder.hxx`:81 - `Transfer_Binder::NextResult()`
+    pub fn next_result(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_Transfer_Binder> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKXSBase::TransferBRep_ShapeBinder_inherited_NextResult(
@@ -1693,7 +1449,7 @@ impl ShapeBinder {
         }
     }
 
-    /// Inherited: **Source:** `Transfer_Binder.hxx`:91 - `Transfer_Binder::HasResult()`
+    /// Inherited: **Source:** `Transfer_Binder.hxx`:88 - `Transfer_Binder::HasResult()`
     pub fn has_result(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKXSBase::TransferBRep_ShapeBinder_inherited_HasResult(
@@ -1702,7 +1458,7 @@ impl ShapeBinder {
         })
     }
 
-    /// Inherited: **Source:** `Transfer_Binder.hxx`:95 - `Transfer_Binder::SetAlreadyUsed()`
+    /// Inherited: **Source:** `Transfer_Binder.hxx`:92 - `Transfer_Binder::SetAlreadyUsed()`
     pub fn set_already_used(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKXSBase::TransferBRep_ShapeBinder_inherited_SetAlreadyUsed(
@@ -1711,7 +1467,7 @@ impl ShapeBinder {
         })
     }
 
-    /// Inherited: **Source:** `Transfer_Binder.hxx`:100 - `Transfer_Binder::Status()`
+    /// Inherited: **Source:** `Transfer_Binder.hxx`:97 - `Transfer_Binder::Status()`
     pub fn status(&self) -> crate::transfer::StatusResult {
         crate::transfer::StatusResult::try_from(crate::check_result(unsafe {
             crate::ffi_extern_TKXSBase::TransferBRep_ShapeBinder_inherited_Status(
@@ -1721,7 +1477,7 @@ impl ShapeBinder {
         .unwrap()
     }
 
-    /// Inherited: **Source:** `Transfer_Binder.hxx`:103 - `Transfer_Binder::StatusExec()`
+    /// Inherited: **Source:** `Transfer_Binder.hxx`:100 - `Transfer_Binder::StatusExec()`
     pub fn status_exec(&self) -> crate::transfer::StatusExec {
         crate::transfer::StatusExec::try_from(crate::check_result(unsafe {
             crate::ffi_extern_TKXSBase::TransferBRep_ShapeBinder_inherited_StatusExec(
@@ -1731,7 +1487,7 @@ impl ShapeBinder {
         .unwrap()
     }
 
-    /// Inherited: **Source:** `Transfer_Binder.hxx`:107 - `Transfer_Binder::SetStatusExec()`
+    /// Inherited: **Source:** `Transfer_Binder.hxx`:104 - `Transfer_Binder::SetStatusExec()`
     pub fn set_status_exec(&mut self, stat: crate::transfer::StatusExec) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKXSBase::TransferBRep_ShapeBinder_inherited_SetStatusExec(
@@ -1741,8 +1497,8 @@ impl ShapeBinder {
         })
     }
 
-    /// Inherited: **Source:** `Transfer_Binder.hxx`:125 - `Transfer_Binder::Check()`
-    pub fn check(&self) -> crate::OwnedPtr<crate::ffi_types::HandleInterfaceCheck> {
+    /// Inherited: **Source:** `Transfer_Binder.hxx`:122 - `Transfer_Binder::Check()`
+    pub fn check(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_Interface_Check> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKXSBase::TransferBRep_ShapeBinder_inherited_Check(
@@ -1752,8 +1508,8 @@ impl ShapeBinder {
         }
     }
 
-    /// Inherited: **Source:** `Transfer_Binder.hxx`:129 - `Transfer_Binder::CCheck()`
-    pub fn c_check(&mut self) -> crate::OwnedPtr<crate::ffi_types::HandleInterfaceCheck> {
+    /// Inherited: **Source:** `Transfer_Binder.hxx`:126 - `Transfer_Binder::CCheck()`
+    pub fn c_check(&mut self) -> crate::OwnedPtr<crate::ffi_types::Handle_Interface_Check> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKXSBase::TransferBRep_ShapeBinder_inherited_CCheck(
@@ -1763,8 +1519,8 @@ impl ShapeBinder {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKXSBase::TransferBRep_ShapeBinder_inherited_IsInstance(
                 self as *const Self,
@@ -1773,8 +1529,8 @@ impl ShapeBinder {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKXSBase::TransferBRep_ShapeBinder_inherited_IsKind(
                 self as *const Self,
@@ -1783,7 +1539,7 @@ impl ShapeBinder {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -1799,7 +1555,7 @@ impl ShapeBinder {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKXSBase::TransferBRep_ShapeBinder_inherited_GetRefCount(
@@ -1808,7 +1564,7 @@ impl ShapeBinder {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKXSBase::TransferBRep_ShapeBinder_inherited_IncrementRefCounter(
@@ -1817,7 +1573,7 @@ impl ShapeBinder {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKXSBase::TransferBRep_ShapeBinder_inherited_DecrementRefCounter(
@@ -1826,7 +1582,7 @@ impl ShapeBinder {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKXSBase::TransferBRep_ShapeBinder_inherited_Delete(
@@ -1836,38 +1592,38 @@ impl ShapeBinder {
     }
 }
 
-pub use crate::ffi_types::HandleTransferBRepShapeBinder;
+pub use crate::ffi_types::Handle_TransferBRep_ShapeBinder;
 
-unsafe impl crate::CppDeletable for HandleTransferBRepShapeBinder {
+unsafe impl crate::CppDeletable for Handle_TransferBRep_ShapeBinder {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKXSBase::HandleTransferBRepShapeBinder_destructor(ptr);
+            crate::ffi_extern_TKXSBase::Handle_TransferBRep_ShapeBinder_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleTransferBRepShapeBinder {
+unsafe impl crate::CppCopyable for Handle_TransferBRep_ShapeBinder {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
         unsafe {
-            crate::check_result(crate::ffi_extern_TKXSBase::HandleTransferBRepShapeBinder_clone(
+            crate::check_result(crate::ffi_extern_TKXSBase::Handle_TransferBRep_ShapeBinder_clone(
                 ptr,
             ))
         }
     }
 }
 
-impl HandleTransferBRepShapeBinder {
+impl Handle_TransferBRep_ShapeBinder {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
         unsafe {
-            crate::ffi_extern_TKXSBase::HandleTransferBRepShapeBinder_is_null(self as *const Self)
+            crate::ffi_extern_TKXSBase::Handle_TransferBRep_ShapeBinder_is_null(self as *const Self)
         }
     }
 
     /// Dereference this Handle to access the underlying TransferBRep_ShapeBinder
     pub fn get(&self) -> &crate::ffi_types::TransferBRep_ShapeBinder {
         unsafe {
-            &*crate::check_result(crate::ffi_extern_TKXSBase::HandleTransferBRepShapeBinder_get(
+            &*crate::check_result(crate::ffi_extern_TKXSBase::Handle_TransferBRep_ShapeBinder_get(
                 self as *const Self,
             ))
         }
@@ -1877,7 +1633,7 @@ impl HandleTransferBRepShapeBinder {
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::TransferBRep_ShapeBinder {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi_extern_TKXSBase::HandleTransferBRepShapeBinder_get_mut(
+                crate::ffi_extern_TKXSBase::Handle_TransferBRep_ShapeBinder_get_mut(
                     self as *mut Self,
                 ),
             )
@@ -1887,29 +1643,25 @@ impl HandleTransferBRepShapeBinder {
     /// Upcast Handle<TransferBRep_ShapeBinder> to Handle<TransferBRep_BinderOfShape>
     pub fn to_handle_binder_of_shape(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleTransferBRepBinderOfShape> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_TransferBRep_BinderOfShape> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKXSBase::HandleTransferBRepShapeBinder_to_HandleTransferBRepBinderOfShape(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKXSBase::Handle_TransferBRep_ShapeBinder_to_Handle_TransferBRep_BinderOfShape(self as *const Self)))
         }
     }
 
     /// Upcast Handle<TransferBRep_ShapeBinder> to Handle<Transfer_Binder>
-    pub fn to_handle_binder(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTransferBinder> {
+    pub fn to_handle_binder(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_Transfer_Binder> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKXSBase::HandleTransferBRepShapeBinder_to_HandleTransferBinder(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKXSBase::Handle_TransferBRep_ShapeBinder_to_Handle_Transfer_Binder(self as *const Self)))
         }
     }
 
     /// Upcast Handle<TransferBRep_ShapeBinder> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKXSBase::HandleTransferBRepShapeBinder_to_HandleStandardTransient(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKXSBase::Handle_TransferBRep_ShapeBinder_to_Handle_Standard_Transient(self as *const Self)))
         }
     }
 }
@@ -1947,7 +1699,7 @@ impl ShapeInfo {
     /// Here, TShape (Shape has no Dynamic Type)
     pub fn type_(
         ent: &crate::topo_ds::Shape,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardType> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Type> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKXSBase::TransferBRep_ShapeInfo_type_(ent),
@@ -1973,7 +1725,7 @@ impl ShapeInfo {
 // From TransferBRep_ShapeListBinder.hxx
 // ========================
 
-/// **Source:** `TransferBRep_ShapeListBinder.hxx`:44 - `TransferBRep_ShapeListBinder`
+/// **Source:** `TransferBRep_ShapeListBinder.hxx`:43 - `TransferBRep_ShapeListBinder`
 /// This binder binds several (a list of) shapes with a starting
 /// entity, when this entity itself corresponds to a simple list
 /// of shapes. Each part is not seen as a sub-result of an
@@ -1989,7 +1741,7 @@ unsafe impl crate::CppDeletable for ShapeListBinder {
 }
 
 impl ShapeListBinder {
-    /// **Source:** `TransferBRep_ShapeListBinder.hxx`:48 - `TransferBRep_ShapeListBinder::TransferBRep_ShapeListBinder()`
+    /// **Source:** `TransferBRep_ShapeListBinder.hxx`:47 - `TransferBRep_ShapeListBinder::TransferBRep_ShapeListBinder()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -1998,12 +1750,14 @@ impl ShapeListBinder {
         }
     }
 
-    /// **Source:** `TransferBRep_ShapeListBinder.hxx`:50 - `TransferBRep_ShapeListBinder::TransferBRep_ShapeListBinder()`
-    pub fn new_handletoptoolshsequenceofshape(
-        list: &crate::ffi_types::HandleTopToolsHSequenceOfShape,
+    /// **Source:** `TransferBRep_ShapeListBinder.hxx`:49 - `TransferBRep_ShapeListBinder::TransferBRep_ShapeListBinder()`
+    pub fn new_hseq_shape(
+        list: &crate::ffi_types::Handle_NCollection_HSequence_TopoDS_Shape,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKXSBase::TransferBRep_ShapeListBinder_ctor_handletoptoolshsequenceofshape(list)))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKXSBase::TransferBRep_ShapeListBinder_ctor_hseq_shape(list),
+            ))
         }
     }
 
@@ -2017,7 +1771,7 @@ impl ShapeListBinder {
     }
 
     /// **Source:** `TransferBRep_ShapeListBinder.hxx`:54 - `TransferBRep_ShapeListBinder::ResultType()`
-    pub fn result_type(&self) -> crate::OwnedPtr<crate::ffi_types::HandleStandardType> {
+    pub fn result_type(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Type> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKXSBase::TransferBRep_ShapeListBinder_result_type(
@@ -2052,7 +1806,9 @@ impl ShapeListBinder {
     }
 
     /// **Source:** `TransferBRep_ShapeListBinder.hxx`:61 - `TransferBRep_ShapeListBinder::Result()`
-    pub fn result(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTopToolsHSequenceOfShape> {
+    pub fn result(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HSequence_TopoDS_Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKXSBase::TransferBRep_ShapeListBinder_result(
@@ -2199,7 +1955,7 @@ impl ShapeListBinder {
     }
 
     /// **Source:** `TransferBRep_ShapeListBinder.hxx`:88 - `TransferBRep_ShapeListBinder::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKXSBase::TransferBRep_ShapeListBinder_dynamic_type(
@@ -2221,7 +1977,7 @@ impl ShapeListBinder {
     }
 
     /// **Source:** `TransferBRep_ShapeListBinder.hxx`:88 - `TransferBRep_ShapeListBinder::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKXSBase::TransferBRep_ShapeListBinder_get_type_descriptor(),
@@ -2276,7 +2032,7 @@ impl ShapeListBinder {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleTransferBRepShapeListBinder> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_TransferBRep_ShapeListBinder> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKXSBase::TransferBRep_ShapeListBinder_to_handle(obj.into_raw()),
@@ -2284,8 +2040,8 @@ impl ShapeListBinder {
         }
     }
 
-    /// Inherited: **Source:** `Transfer_Binder.hxx`:65 - `Transfer_Binder::Merge()`
-    pub fn merge(&mut self, other: &crate::ffi_types::HandleTransferBinder) {
+    /// Inherited: **Source:** `Transfer_Binder.hxx`:62 - `Transfer_Binder::Merge()`
+    pub fn merge(&mut self, other: &crate::ffi_types::Handle_Transfer_Binder) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKXSBase::TransferBRep_ShapeListBinder_inherited_Merge(
                 self as *mut Self,
@@ -2294,8 +2050,8 @@ impl ShapeListBinder {
         })
     }
 
-    /// Inherited: **Source:** `Transfer_Binder.hxx`:84 - `Transfer_Binder::NextResult()`
-    pub fn next_result(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTransferBinder> {
+    /// Inherited: **Source:** `Transfer_Binder.hxx`:81 - `Transfer_Binder::NextResult()`
+    pub fn next_result(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_Transfer_Binder> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKXSBase::TransferBRep_ShapeListBinder_inherited_NextResult(
@@ -2305,7 +2061,7 @@ impl ShapeListBinder {
         }
     }
 
-    /// Inherited: **Source:** `Transfer_Binder.hxx`:91 - `Transfer_Binder::HasResult()`
+    /// Inherited: **Source:** `Transfer_Binder.hxx`:88 - `Transfer_Binder::HasResult()`
     pub fn has_result(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKXSBase::TransferBRep_ShapeListBinder_inherited_HasResult(
@@ -2314,7 +2070,7 @@ impl ShapeListBinder {
         })
     }
 
-    /// Inherited: **Source:** `Transfer_Binder.hxx`:95 - `Transfer_Binder::SetAlreadyUsed()`
+    /// Inherited: **Source:** `Transfer_Binder.hxx`:92 - `Transfer_Binder::SetAlreadyUsed()`
     pub fn set_already_used(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKXSBase::TransferBRep_ShapeListBinder_inherited_SetAlreadyUsed(
@@ -2323,7 +2079,7 @@ impl ShapeListBinder {
         })
     }
 
-    /// Inherited: **Source:** `Transfer_Binder.hxx`:100 - `Transfer_Binder::Status()`
+    /// Inherited: **Source:** `Transfer_Binder.hxx`:97 - `Transfer_Binder::Status()`
     pub fn status(&self) -> crate::transfer::StatusResult {
         crate::transfer::StatusResult::try_from(crate::check_result(unsafe {
             crate::ffi_extern_TKXSBase::TransferBRep_ShapeListBinder_inherited_Status(
@@ -2333,7 +2089,7 @@ impl ShapeListBinder {
         .unwrap()
     }
 
-    /// Inherited: **Source:** `Transfer_Binder.hxx`:103 - `Transfer_Binder::StatusExec()`
+    /// Inherited: **Source:** `Transfer_Binder.hxx`:100 - `Transfer_Binder::StatusExec()`
     pub fn status_exec(&self) -> crate::transfer::StatusExec {
         crate::transfer::StatusExec::try_from(crate::check_result(unsafe {
             crate::ffi_extern_TKXSBase::TransferBRep_ShapeListBinder_inherited_StatusExec(
@@ -2343,7 +2099,7 @@ impl ShapeListBinder {
         .unwrap()
     }
 
-    /// Inherited: **Source:** `Transfer_Binder.hxx`:107 - `Transfer_Binder::SetStatusExec()`
+    /// Inherited: **Source:** `Transfer_Binder.hxx`:104 - `Transfer_Binder::SetStatusExec()`
     pub fn set_status_exec(&mut self, stat: crate::transfer::StatusExec) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKXSBase::TransferBRep_ShapeListBinder_inherited_SetStatusExec(
@@ -2353,8 +2109,8 @@ impl ShapeListBinder {
         })
     }
 
-    /// Inherited: **Source:** `Transfer_Binder.hxx`:125 - `Transfer_Binder::Check()`
-    pub fn check(&self) -> crate::OwnedPtr<crate::ffi_types::HandleInterfaceCheck> {
+    /// Inherited: **Source:** `Transfer_Binder.hxx`:122 - `Transfer_Binder::Check()`
+    pub fn check(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_Interface_Check> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKXSBase::TransferBRep_ShapeListBinder_inherited_Check(
@@ -2364,8 +2120,8 @@ impl ShapeListBinder {
         }
     }
 
-    /// Inherited: **Source:** `Transfer_Binder.hxx`:129 - `Transfer_Binder::CCheck()`
-    pub fn c_check(&mut self) -> crate::OwnedPtr<crate::ffi_types::HandleInterfaceCheck> {
+    /// Inherited: **Source:** `Transfer_Binder.hxx`:126 - `Transfer_Binder::CCheck()`
+    pub fn c_check(&mut self) -> crate::OwnedPtr<crate::ffi_types::Handle_Interface_Check> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKXSBase::TransferBRep_ShapeListBinder_inherited_CCheck(
@@ -2375,8 +2131,8 @@ impl ShapeListBinder {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKXSBase::TransferBRep_ShapeListBinder_inherited_IsInstance(
                 self as *const Self,
@@ -2385,8 +2141,8 @@ impl ShapeListBinder {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKXSBase::TransferBRep_ShapeListBinder_inherited_IsKind(
                 self as *const Self,
@@ -2395,7 +2151,7 @@ impl ShapeListBinder {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -2411,7 +2167,7 @@ impl ShapeListBinder {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKXSBase::TransferBRep_ShapeListBinder_inherited_GetRefCount(
@@ -2420,7 +2176,7 @@ impl ShapeListBinder {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKXSBase::TransferBRep_ShapeListBinder_inherited_IncrementRefCounter(
@@ -2429,7 +2185,7 @@ impl ShapeListBinder {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKXSBase::TransferBRep_ShapeListBinder_inherited_DecrementRefCounter(
@@ -2438,7 +2194,7 @@ impl ShapeListBinder {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKXSBase::TransferBRep_ShapeListBinder_inherited_Delete(
@@ -2448,31 +2204,31 @@ impl ShapeListBinder {
     }
 }
 
-pub use crate::ffi_types::HandleTransferBRepShapeListBinder;
+pub use crate::ffi_types::Handle_TransferBRep_ShapeListBinder;
 
-unsafe impl crate::CppDeletable for HandleTransferBRepShapeListBinder {
+unsafe impl crate::CppDeletable for Handle_TransferBRep_ShapeListBinder {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKXSBase::HandleTransferBRepShapeListBinder_destructor(ptr);
+            crate::ffi_extern_TKXSBase::Handle_TransferBRep_ShapeListBinder_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleTransferBRepShapeListBinder {
+unsafe impl crate::CppCopyable for Handle_TransferBRep_ShapeListBinder {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
         unsafe {
             crate::check_result(
-                crate::ffi_extern_TKXSBase::HandleTransferBRepShapeListBinder_clone(ptr),
+                crate::ffi_extern_TKXSBase::Handle_TransferBRep_ShapeListBinder_clone(ptr),
             )
         }
     }
 }
 
-impl HandleTransferBRepShapeListBinder {
+impl Handle_TransferBRep_ShapeListBinder {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
         unsafe {
-            crate::ffi_extern_TKXSBase::HandleTransferBRepShapeListBinder_is_null(
+            crate::ffi_extern_TKXSBase::Handle_TransferBRep_ShapeListBinder_is_null(
                 self as *const Self,
             )
         }
@@ -2482,7 +2238,7 @@ impl HandleTransferBRepShapeListBinder {
     pub fn get(&self) -> &crate::ffi_types::TransferBRep_ShapeListBinder {
         unsafe {
             &*crate::check_result(
-                crate::ffi_extern_TKXSBase::HandleTransferBRepShapeListBinder_get(
+                crate::ffi_extern_TKXSBase::Handle_TransferBRep_ShapeListBinder_get(
                     self as *const Self,
                 ),
             )
@@ -2493,7 +2249,7 @@ impl HandleTransferBRepShapeListBinder {
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::TransferBRep_ShapeListBinder {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi_extern_TKXSBase::HandleTransferBRepShapeListBinder_get_mut(
+                crate::ffi_extern_TKXSBase::Handle_TransferBRep_ShapeListBinder_get_mut(
                     self as *mut Self,
                 ),
             )
@@ -2501,18 +2257,18 @@ impl HandleTransferBRepShapeListBinder {
     }
 
     /// Upcast Handle<TransferBRep_ShapeListBinder> to Handle<Transfer_Binder>
-    pub fn to_handle_binder(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTransferBinder> {
+    pub fn to_handle_binder(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_Transfer_Binder> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKXSBase::HandleTransferBRepShapeListBinder_to_HandleTransferBinder(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKXSBase::Handle_TransferBRep_ShapeListBinder_to_Handle_Transfer_Binder(self as *const Self)))
         }
     }
 
     /// Upcast Handle<TransferBRep_ShapeListBinder> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKXSBase::HandleTransferBRepShapeListBinder_to_HandleStandardTransient(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKXSBase::Handle_TransferBRep_ShapeListBinder_to_Handle_Standard_Transient(self as *const Self)))
         }
     }
 }
@@ -2521,7 +2277,7 @@ impl HandleTransferBRepShapeListBinder {
 // From TransferBRep_ShapeMapper.hxx
 // ========================
 
-/// **Source:** `TransferBRep_ShapeMapper.hxx`:33 - `TransferBRep_ShapeMapper`
+/// **Source:** `TransferBRep_ShapeMapper.hxx`:30 - `TransferBRep_ShapeMapper`
 pub use crate::ffi_types::TransferBRep_ShapeMapper as ShapeMapper;
 
 unsafe impl crate::CppDeletable for ShapeMapper {
@@ -2533,7 +2289,7 @@ unsafe impl crate::CppDeletable for ShapeMapper {
 }
 
 impl ShapeMapper {
-    /// **Source:** `TransferBRep_ShapeMapper.hxx`:40 - `TransferBRep_ShapeMapper::TransferBRep_ShapeMapper()`
+    /// **Source:** `TransferBRep_ShapeMapper.hxx`:37 - `TransferBRep_ShapeMapper::TransferBRep_ShapeMapper()`
     /// Creates a Mapper with a Value. This Value can then not be
     /// changed. It is used by the Hasher to compute the HashCode,
     /// which will then be stored for an immediate reading.
@@ -2545,7 +2301,7 @@ impl ShapeMapper {
         }
     }
 
-    /// **Source:** `TransferBRep_ShapeMapper.hxx`:43 - `TransferBRep_ShapeMapper::Value()`
+    /// **Source:** `TransferBRep_ShapeMapper.hxx`:40 - `TransferBRep_ShapeMapper::Value()`
     /// Returns the contained value
     pub fn value(&self) -> &crate::topo_ds::Shape {
         unsafe {
@@ -2555,20 +2311,20 @@ impl ShapeMapper {
         }
     }
 
-    /// **Source:** `TransferBRep_ShapeMapper.hxx`:49 - `TransferBRep_ShapeMapper::Equates()`
-    /// Specific testof equality : defined as False if <other> has
+    /// **Source:** `TransferBRep_ShapeMapper.hxx`:45 - `TransferBRep_ShapeMapper::Equates()`
+    /// Specific test of equality : defined as False if <other> has
     /// not the same true Type, else contents are compared (by
     /// C++ operator ==)
-    pub fn equates(&self, other: &crate::ffi_types::HandleTransferFinder) -> bool {
+    pub fn equates(&self, other: &crate::ffi_types::Handle_Transfer_Finder) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKXSBase::TransferBRep_ShapeMapper_equates(self as *const Self, other)
         })
     }
 
-    /// **Source:** `TransferBRep_ShapeMapper.hxx`:53 - `TransferBRep_ShapeMapper::ValueType()`
+    /// **Source:** `TransferBRep_ShapeMapper.hxx`:49 - `TransferBRep_ShapeMapper::ValueType()`
     /// Returns the Type of the Value. By default, returns the
     /// DynamicType of <me>, but can be redefined
-    pub fn value_type(&self) -> crate::OwnedPtr<crate::ffi_types::HandleStandardType> {
+    pub fn value_type(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Type> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKXSBase::TransferBRep_ShapeMapper_value_type(
@@ -2578,7 +2334,7 @@ impl ShapeMapper {
         }
     }
 
-    /// **Source:** `TransferBRep_ShapeMapper.hxx`:57 - `TransferBRep_ShapeMapper::ValueTypeName()`
+    /// **Source:** `TransferBRep_ShapeMapper.hxx`:53 - `TransferBRep_ShapeMapper::ValueTypeName()`
     /// Returns the name of the Type of the Value. Default is name
     /// of ValueType, unless it is for a non-handled object
     pub fn value_type_name(&self) -> std::string::String {
@@ -2593,8 +2349,8 @@ impl ShapeMapper {
         .into_owned()
     }
 
-    /// **Source:** `TransferBRep_ShapeMapper.hxx`:59 - `TransferBRep_ShapeMapper::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `TransferBRep_ShapeMapper.hxx`:55 - `TransferBRep_ShapeMapper::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKXSBase::TransferBRep_ShapeMapper_dynamic_type(
@@ -2604,7 +2360,7 @@ impl ShapeMapper {
         }
     }
 
-    /// **Source:** `TransferBRep_ShapeMapper.hxx`:59 - `TransferBRep_ShapeMapper::get_type_name()`
+    /// **Source:** `TransferBRep_ShapeMapper.hxx`:55 - `TransferBRep_ShapeMapper::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -2615,8 +2371,8 @@ impl ShapeMapper {
         .into_owned()
     }
 
-    /// **Source:** `TransferBRep_ShapeMapper.hxx`:59 - `TransferBRep_ShapeMapper::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    /// **Source:** `TransferBRep_ShapeMapper.hxx`:55 - `TransferBRep_ShapeMapper::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKXSBase::TransferBRep_ShapeMapper_get_type_descriptor(),
@@ -2671,7 +2427,7 @@ impl ShapeMapper {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleTransferBRepShapeMapper> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_TransferBRep_ShapeMapper> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKXSBase::TransferBRep_ShapeMapper_to_handle(obj.into_raw()),
@@ -2679,7 +2435,7 @@ impl ShapeMapper {
         }
     }
 
-    /// Inherited: **Source:** `Transfer_Finder.hxx`:44 - `Transfer_Finder::GetHashCode()`
+    /// Inherited: **Source:** `Transfer_Finder.hxx`:41 - `Transfer_Finder::GetHashCode()`
     pub fn get_hash_code(&self) -> usize {
         crate::check_result(unsafe {
             crate::ffi_extern_TKXSBase::TransferBRep_ShapeMapper_inherited_GetHashCode(
@@ -2688,7 +2444,7 @@ impl ShapeMapper {
         })
     }
 
-    /// Inherited: **Source:** `Transfer_Finder.hxx`:126 - `Transfer_Finder::AttrList()`
+    /// Inherited: **Source:** `Transfer_Finder.hxx`:120 - `Transfer_Finder::AttrList()`
     pub fn attr_list(&mut self) -> &mut crate::ffi_types::XSControl_WorkSessionMap {
         unsafe {
             &mut *(crate::check_result(
@@ -2699,8 +2455,8 @@ impl ShapeMapper {
         }
     }
 
-    /// Inherited: **Source:** `Transfer_Finder.hxx`:132 - `Transfer_Finder::SameAttributes()`
-    pub fn same_attributes(&mut self, other: &crate::ffi_types::HandleTransferFinder) {
+    /// Inherited: **Source:** `Transfer_Finder.hxx`:126 - `Transfer_Finder::SameAttributes()`
+    pub fn same_attributes(&mut self, other: &crate::ffi_types::Handle_Transfer_Finder) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKXSBase::TransferBRep_ShapeMapper_inherited_SameAttributes(
                 self as *mut Self,
@@ -2709,8 +2465,8 @@ impl ShapeMapper {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKXSBase::TransferBRep_ShapeMapper_inherited_IsInstance(
                 self as *const Self,
@@ -2719,8 +2475,8 @@ impl ShapeMapper {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKXSBase::TransferBRep_ShapeMapper_inherited_IsKind(
                 self as *const Self,
@@ -2729,7 +2485,7 @@ impl ShapeMapper {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -2745,7 +2501,7 @@ impl ShapeMapper {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKXSBase::TransferBRep_ShapeMapper_inherited_GetRefCount(
@@ -2754,7 +2510,7 @@ impl ShapeMapper {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKXSBase::TransferBRep_ShapeMapper_inherited_IncrementRefCounter(
@@ -2763,7 +2519,7 @@ impl ShapeMapper {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKXSBase::TransferBRep_ShapeMapper_inherited_DecrementRefCounter(
@@ -2772,7 +2528,7 @@ impl ShapeMapper {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKXSBase::TransferBRep_ShapeMapper_inherited_Delete(
@@ -2782,38 +2538,38 @@ impl ShapeMapper {
     }
 }
 
-pub use crate::ffi_types::HandleTransferBRepShapeMapper;
+pub use crate::ffi_types::Handle_TransferBRep_ShapeMapper;
 
-unsafe impl crate::CppDeletable for HandleTransferBRepShapeMapper {
+unsafe impl crate::CppDeletable for Handle_TransferBRep_ShapeMapper {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKXSBase::HandleTransferBRepShapeMapper_destructor(ptr);
+            crate::ffi_extern_TKXSBase::Handle_TransferBRep_ShapeMapper_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleTransferBRepShapeMapper {
+unsafe impl crate::CppCopyable for Handle_TransferBRep_ShapeMapper {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
         unsafe {
-            crate::check_result(crate::ffi_extern_TKXSBase::HandleTransferBRepShapeMapper_clone(
+            crate::check_result(crate::ffi_extern_TKXSBase::Handle_TransferBRep_ShapeMapper_clone(
                 ptr,
             ))
         }
     }
 }
 
-impl HandleTransferBRepShapeMapper {
+impl Handle_TransferBRep_ShapeMapper {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
         unsafe {
-            crate::ffi_extern_TKXSBase::HandleTransferBRepShapeMapper_is_null(self as *const Self)
+            crate::ffi_extern_TKXSBase::Handle_TransferBRep_ShapeMapper_is_null(self as *const Self)
         }
     }
 
     /// Dereference this Handle to access the underlying TransferBRep_ShapeMapper
     pub fn get(&self) -> &crate::ffi_types::TransferBRep_ShapeMapper {
         unsafe {
-            &*crate::check_result(crate::ffi_extern_TKXSBase::HandleTransferBRepShapeMapper_get(
+            &*crate::check_result(crate::ffi_extern_TKXSBase::Handle_TransferBRep_ShapeMapper_get(
                 self as *const Self,
             ))
         }
@@ -2823,7 +2579,7 @@ impl HandleTransferBRepShapeMapper {
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::TransferBRep_ShapeMapper {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi_extern_TKXSBase::HandleTransferBRepShapeMapper_get_mut(
+                crate::ffi_extern_TKXSBase::Handle_TransferBRep_ShapeMapper_get_mut(
                     self as *mut Self,
                 ),
             )
@@ -2831,22 +2587,18 @@ impl HandleTransferBRepShapeMapper {
     }
 
     /// Upcast Handle<TransferBRep_ShapeMapper> to Handle<Transfer_Finder>
-    pub fn to_handle_finder(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTransferFinder> {
+    pub fn to_handle_finder(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_Transfer_Finder> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKXSBase::HandleTransferBRepShapeMapper_to_HandleTransferFinder(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKXSBase::Handle_TransferBRep_ShapeMapper_to_Handle_Transfer_Finder(self as *const Self)))
         }
     }
 
     /// Upcast Handle<TransferBRep_ShapeMapper> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKXSBase::HandleTransferBRepShapeMapper_to_HandleStandardTransient(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKXSBase::Handle_TransferBRep_ShapeMapper_to_Handle_Standard_Transient(self as *const Self)))
         }
     }
 }
@@ -2855,7 +2607,7 @@ impl HandleTransferBRepShapeMapper {
 // From TransferBRep_TransferResultInfo.hxx
 // ========================
 
-/// **Source:** `TransferBRep_TransferResultInfo.hxx`:39 - `TransferBRep_TransferResultInfo`
+/// **Source:** `TransferBRep_TransferResultInfo.hxx`:36 - `TransferBRep_TransferResultInfo`
 /// Data structure for storing information on transfer result.
 /// At the moment it dispatches information for the following types:
 /// - result,
@@ -2877,7 +2629,7 @@ unsafe impl crate::CppDeletable for TransferResultInfo {
 }
 
 impl TransferResultInfo {
-    /// **Source:** `TransferBRep_TransferResultInfo.hxx`:44 - `TransferBRep_TransferResultInfo::TransferBRep_TransferResultInfo()`
+    /// **Source:** `TransferBRep_TransferResultInfo.hxx`:41 - `TransferBRep_TransferResultInfo::TransferBRep_TransferResultInfo()`
     /// Creates object with all fields nullified.
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
@@ -2887,7 +2639,7 @@ impl TransferResultInfo {
         }
     }
 
-    /// **Source:** `TransferBRep_TransferResultInfo.hxx`:47 - `TransferBRep_TransferResultInfo::Clear()`
+    /// **Source:** `TransferBRep_TransferResultInfo.hxx`:44 - `TransferBRep_TransferResultInfo::Clear()`
     /// Resets all the fields.
     pub fn clear(&mut self) {
         crate::check_void_result(unsafe {
@@ -2895,7 +2647,7 @@ impl TransferResultInfo {
         })
     }
 
-    /// **Source:** `TransferBRep_TransferResultInfo.hxx`:49 - `TransferBRep_TransferResultInfo::Result()`
+    /// **Source:** `TransferBRep_TransferResultInfo.hxx`:46 - `TransferBRep_TransferResultInfo::Result()`
     pub fn result(&mut self) -> &mut i32 {
         unsafe {
             &mut *(crate::check_result(
@@ -2906,7 +2658,7 @@ impl TransferResultInfo {
         }
     }
 
-    /// **Source:** `TransferBRep_TransferResultInfo.hxx`:51 - `TransferBRep_TransferResultInfo::ResultWarning()`
+    /// **Source:** `TransferBRep_TransferResultInfo.hxx`:48 - `TransferBRep_TransferResultInfo::ResultWarning()`
     pub fn result_warning(&mut self) -> &mut i32 {
         unsafe {
             &mut *(crate::check_result(
@@ -2917,7 +2669,7 @@ impl TransferResultInfo {
         }
     }
 
-    /// **Source:** `TransferBRep_TransferResultInfo.hxx`:53 - `TransferBRep_TransferResultInfo::ResultFail()`
+    /// **Source:** `TransferBRep_TransferResultInfo.hxx`:50 - `TransferBRep_TransferResultInfo::ResultFail()`
     pub fn result_fail(&mut self) -> &mut i32 {
         unsafe {
             &mut *(crate::check_result(
@@ -2928,7 +2680,7 @@ impl TransferResultInfo {
         }
     }
 
-    /// **Source:** `TransferBRep_TransferResultInfo.hxx`:55 - `TransferBRep_TransferResultInfo::ResultWarningFail()`
+    /// **Source:** `TransferBRep_TransferResultInfo.hxx`:52 - `TransferBRep_TransferResultInfo::ResultWarningFail()`
     pub fn result_warning_fail(&mut self) -> &mut i32 {
         unsafe {
             &mut *(crate::check_result(
@@ -2939,7 +2691,7 @@ impl TransferResultInfo {
         }
     }
 
-    /// **Source:** `TransferBRep_TransferResultInfo.hxx`:57 - `TransferBRep_TransferResultInfo::NoResult()`
+    /// **Source:** `TransferBRep_TransferResultInfo.hxx`:54 - `TransferBRep_TransferResultInfo::NoResult()`
     pub fn no_result(&mut self) -> &mut i32 {
         unsafe {
             &mut *(crate::check_result(
@@ -2950,7 +2702,7 @@ impl TransferResultInfo {
         }
     }
 
-    /// **Source:** `TransferBRep_TransferResultInfo.hxx`:59 - `TransferBRep_TransferResultInfo::NoResultWarning()`
+    /// **Source:** `TransferBRep_TransferResultInfo.hxx`:56 - `TransferBRep_TransferResultInfo::NoResultWarning()`
     pub fn no_result_warning(&mut self) -> &mut i32 {
         unsafe {
             &mut *(crate::check_result(
@@ -2961,7 +2713,7 @@ impl TransferResultInfo {
         }
     }
 
-    /// **Source:** `TransferBRep_TransferResultInfo.hxx`:61 - `TransferBRep_TransferResultInfo::NoResultFail()`
+    /// **Source:** `TransferBRep_TransferResultInfo.hxx`:58 - `TransferBRep_TransferResultInfo::NoResultFail()`
     pub fn no_result_fail(&mut self) -> &mut i32 {
         unsafe {
             &mut *(crate::check_result(
@@ -2972,7 +2724,7 @@ impl TransferResultInfo {
         }
     }
 
-    /// **Source:** `TransferBRep_TransferResultInfo.hxx`:63 - `TransferBRep_TransferResultInfo::NoResultWarningFail()`
+    /// **Source:** `TransferBRep_TransferResultInfo.hxx`:60 - `TransferBRep_TransferResultInfo::NoResultWarningFail()`
     pub fn no_result_warning_fail(&mut self) -> &mut i32 {
         unsafe {
             &mut *(crate::check_result(
@@ -2983,8 +2735,8 @@ impl TransferResultInfo {
         }
     }
 
-    /// **Source:** `TransferBRep_TransferResultInfo.hxx`:65 - `TransferBRep_TransferResultInfo::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `TransferBRep_TransferResultInfo.hxx`:62 - `TransferBRep_TransferResultInfo::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKXSBase::TransferBRep_TransferResultInfo_dynamic_type(
@@ -2994,7 +2746,7 @@ impl TransferResultInfo {
         }
     }
 
-    /// **Source:** `TransferBRep_TransferResultInfo.hxx`:65 - `TransferBRep_TransferResultInfo::get_type_name()`
+    /// **Source:** `TransferBRep_TransferResultInfo.hxx`:62 - `TransferBRep_TransferResultInfo::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -3005,8 +2757,8 @@ impl TransferResultInfo {
         .into_owned()
     }
 
-    /// **Source:** `TransferBRep_TransferResultInfo.hxx`:65 - `TransferBRep_TransferResultInfo::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    /// **Source:** `TransferBRep_TransferResultInfo.hxx`:62 - `TransferBRep_TransferResultInfo::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKXSBase::TransferBRep_TransferResultInfo_get_type_descriptor(),
@@ -3035,7 +2787,7 @@ impl TransferResultInfo {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleTransferBRepTransferResultInfo> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_TransferBRep_TransferResultInfo> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKXSBase::TransferBRep_TransferResultInfo_to_handle(
@@ -3045,8 +2797,8 @@ impl TransferResultInfo {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKXSBase::TransferBRep_TransferResultInfo_inherited_IsInstance(
                 self as *const Self,
@@ -3055,8 +2807,8 @@ impl TransferResultInfo {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKXSBase::TransferBRep_TransferResultInfo_inherited_IsKind(
                 self as *const Self,
@@ -3065,7 +2817,7 @@ impl TransferResultInfo {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -3081,7 +2833,7 @@ impl TransferResultInfo {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKXSBase::TransferBRep_TransferResultInfo_inherited_GetRefCount(
@@ -3090,21 +2842,21 @@ impl TransferResultInfo {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKXSBase::TransferBRep_TransferResultInfo_inherited_IncrementRefCounter(self as *mut Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKXSBase::TransferBRep_TransferResultInfo_inherited_DecrementRefCounter(self as *mut Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKXSBase::TransferBRep_TransferResultInfo_inherited_Delete(
@@ -3114,31 +2866,31 @@ impl TransferResultInfo {
     }
 }
 
-pub use crate::ffi_types::HandleTransferBRepTransferResultInfo;
+pub use crate::ffi_types::Handle_TransferBRep_TransferResultInfo;
 
-unsafe impl crate::CppDeletable for HandleTransferBRepTransferResultInfo {
+unsafe impl crate::CppDeletable for Handle_TransferBRep_TransferResultInfo {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKXSBase::HandleTransferBRepTransferResultInfo_destructor(ptr);
+            crate::ffi_extern_TKXSBase::Handle_TransferBRep_TransferResultInfo_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleTransferBRepTransferResultInfo {
+unsafe impl crate::CppCopyable for Handle_TransferBRep_TransferResultInfo {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
         unsafe {
             crate::check_result(
-                crate::ffi_extern_TKXSBase::HandleTransferBRepTransferResultInfo_clone(ptr),
+                crate::ffi_extern_TKXSBase::Handle_TransferBRep_TransferResultInfo_clone(ptr),
             )
         }
     }
 }
 
-impl HandleTransferBRepTransferResultInfo {
+impl Handle_TransferBRep_TransferResultInfo {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
         unsafe {
-            crate::ffi_extern_TKXSBase::HandleTransferBRepTransferResultInfo_is_null(
+            crate::ffi_extern_TKXSBase::Handle_TransferBRep_TransferResultInfo_is_null(
                 self as *const Self,
             )
         }
@@ -3148,7 +2900,7 @@ impl HandleTransferBRepTransferResultInfo {
     pub fn get(&self) -> &crate::ffi_types::TransferBRep_TransferResultInfo {
         unsafe {
             &*crate::check_result(
-                crate::ffi_extern_TKXSBase::HandleTransferBRepTransferResultInfo_get(
+                crate::ffi_extern_TKXSBase::Handle_TransferBRep_TransferResultInfo_get(
                     self as *const Self,
                 ),
             )
@@ -3159,7 +2911,7 @@ impl HandleTransferBRepTransferResultInfo {
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::TransferBRep_TransferResultInfo {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi_extern_TKXSBase::HandleTransferBRepTransferResultInfo_get_mut(
+                crate::ffi_extern_TKXSBase::Handle_TransferBRep_TransferResultInfo_get_mut(
                     self as *mut Self,
                 ),
             )
@@ -3169,15 +2921,9 @@ impl HandleTransferBRepTransferResultInfo {
     /// Upcast Handle<TransferBRep_TransferResultInfo> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKXSBase::HandleTransferBRepTransferResultInfo_to_HandleStandardTransient(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKXSBase::Handle_TransferBRep_TransferResultInfo_to_Handle_Standard_Transient(self as *const Self)))
         }
     }
 }
-
-// ========================
-// Additional type re-exports
-// ========================
-
-pub use crate::ffi_types::TransferBRep_SequenceOfTransferResultInfo as SequenceOfTransferResultInfo;

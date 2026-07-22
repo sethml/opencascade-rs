@@ -7,7 +7,7 @@
 #![allow(non_snake_case)]
 
 /// **Source:** `IntImpParGen.hxx`:46 - `IntImpParGen::DetermineTransition`
-/// Template class for an implicit  curve.
+/// Template class for an implicit curve.
 /// Math function, instantiated inside the Intersector.
 /// Tool used by the package IntCurve and IntImpParGen
 pub fn determine_transition_position_vec2d2_transition_position_vec2d2_transition_real(

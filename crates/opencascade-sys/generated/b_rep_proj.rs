@@ -10,11 +10,11 @@
 // From BRepProj_Projection.hxx
 // ========================
 
-/// **Source:** `BRepProj_Projection.hxx`:36 - `BRepProj_Projection`
-/// The  Projection   class provides  conical  and
-/// cylindrical projections of  Edge  or  Wire  on
+/// **Source:** `BRepProj_Projection.hxx`:37 - `BRepProj_Projection`
+/// The Projection class provides conical and
+/// cylindrical projections of Edge or Wire on
 /// a Shape from TopoDS. The result will be a Edge
-/// or  Wire  from  TopoDS.
+/// or Wire from TopoDS.
 pub use crate::ffi_types::BRepProj_Projection as Projection;
 
 unsafe impl crate::CppDeletable for Projection {
@@ -26,7 +26,7 @@ unsafe impl crate::CppDeletable for Projection {
 }
 
 impl Projection {
-    /// **Source:** `BRepProj_Projection.hxx`:42 - `BRepProj_Projection::BRepProj_Projection()`
+    /// **Source:** `BRepProj_Projection.hxx`:43 - `BRepProj_Projection::BRepProj_Projection()`
     /// Makes a Cylindrical projection of Wire om Shape
     pub fn new_shape2_dir(
         Wire: &crate::topo_ds::Shape,
@@ -40,7 +40,7 @@ impl Projection {
         }
     }
 
-    /// **Source:** `BRepProj_Projection.hxx`:47 - `BRepProj_Projection::BRepProj_Projection()`
+    /// **Source:** `BRepProj_Projection.hxx`:48 - `BRepProj_Projection::BRepProj_Projection()`
     /// Makes a Conical projection of Wire om Shape
     pub fn new_shape2_pnt(
         Wire: &crate::topo_ds::Shape,
@@ -54,7 +54,7 @@ impl Projection {
         }
     }
 
-    /// **Source:** `BRepProj_Projection.hxx`:52 - `BRepProj_Projection::IsDone()`
+    /// **Source:** `BRepProj_Projection.hxx`:53 - `BRepProj_Projection::IsDone()`
     /// returns False if the section failed
     pub fn is_done(&self) -> bool {
         crate::check_result(unsafe {
@@ -62,7 +62,7 @@ impl Projection {
         })
     }
 
-    /// **Source:** `BRepProj_Projection.hxx`:55 - `BRepProj_Projection::Init()`
+    /// **Source:** `BRepProj_Projection.hxx`:56 - `BRepProj_Projection::Init()`
     /// Resets the iterator by resulting wires.
     pub fn init(&mut self) {
         crate::check_void_result(unsafe {
@@ -70,7 +70,7 @@ impl Projection {
         })
     }
 
-    /// **Source:** `BRepProj_Projection.hxx`:58 - `BRepProj_Projection::More()`
+    /// **Source:** `BRepProj_Projection.hxx`:59 - `BRepProj_Projection::More()`
     /// Returns True if there is a current result wire
     pub fn more(&self) -> bool {
         crate::check_result(unsafe {
@@ -78,7 +78,7 @@ impl Projection {
         })
     }
 
-    /// **Source:** `BRepProj_Projection.hxx`:61 - `BRepProj_Projection::Next()`
+    /// **Source:** `BRepProj_Projection.hxx`:62 - `BRepProj_Projection::Next()`
     /// Move to the next result wire.
     pub fn next(&mut self) {
         crate::check_void_result(unsafe {
@@ -86,7 +86,7 @@ impl Projection {
         })
     }
 
-    /// **Source:** `BRepProj_Projection.hxx`:64 - `BRepProj_Projection::Current()`
+    /// **Source:** `BRepProj_Projection.hxx`:65 - `BRepProj_Projection::Current()`
     /// Returns the current result wire.
     pub fn current(&self) -> crate::OwnedPtr<crate::topo_ds::Wire> {
         unsafe {
@@ -96,7 +96,7 @@ impl Projection {
         }
     }
 
-    /// **Source:** `BRepProj_Projection.hxx`:67 - `BRepProj_Projection::Shape()`
+    /// **Source:** `BRepProj_Projection.hxx`:68 - `BRepProj_Projection::Shape()`
     /// Returns the complete result as compound of wires.
     pub fn shape(&self) -> crate::OwnedPtr<crate::topo_ds::Compound> {
         unsafe {

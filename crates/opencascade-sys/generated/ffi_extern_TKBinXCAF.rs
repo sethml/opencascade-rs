@@ -12,38 +12,31 @@ unsafe extern "C" {
     pub fn BinMXCAFDoc_AssemblyItemRefDriver_destructor(
         self_: *mut BinMXCAFDoc_AssemblyItemRefDriver,
     );
-    /// **Source:** `BinMXCAFDoc_AssemblyItemRefDriver.hxx`:36 - `BinMXCAFDoc_AssemblyItemRefDriver::BinMXCAFDoc_AssemblyItemRefDriver()`
+    /// **Source:** `BinMXCAFDoc_AssemblyItemRefDriver.hxx`:34 - `BinMXCAFDoc_AssemblyItemRefDriver::BinMXCAFDoc_AssemblyItemRefDriver()`
     pub fn BinMXCAFDoc_AssemblyItemRefDriver_ctor_handlemessagemessenger(
-        theMsgDriver: *const HandleMessageMessenger,
+        theMsgDriver: *const Handle_Message_Messenger,
     ) -> crate::OcctResult<*mut BinMXCAFDoc_AssemblyItemRefDriver>;
-    /// **Source:** `BinMXCAFDoc_AssemblyItemRefDriver.hxx`:38 - `BinMXCAFDoc_AssemblyItemRefDriver::NewEmpty()`
+    /// **Source:** `BinMXCAFDoc_AssemblyItemRefDriver.hxx`:37 - `BinMXCAFDoc_AssemblyItemRefDriver::NewEmpty()`
     pub fn BinMXCAFDoc_AssemblyItemRefDriver_new_empty(
         self_: *const BinMXCAFDoc_AssemblyItemRefDriver,
-    ) -> crate::OcctResult<*mut HandleTDFAttribute>;
-    /// **Source:** `BinMXCAFDoc_AssemblyItemRefDriver.hxx`:41 - `BinMXCAFDoc_AssemblyItemRefDriver::Paste()`
-    pub fn BinMXCAFDoc_AssemblyItemRefDriver_paste_persistent_handletdfattribute_rrelocationtable(
+    ) -> crate::OcctResult<*mut Handle_TDF_Attribute>;
+    /// **Source:** `BinMXCAFDoc_AssemblyItemRefDriver.hxx`:39 - `BinMXCAFDoc_AssemblyItemRefDriver::Paste()`
+    pub fn BinMXCAFDoc_AssemblyItemRefDriver_paste(
         self_: *const BinMXCAFDoc_AssemblyItemRefDriver,
         theSource: *const BinObjMgt_Persistent,
-        theTarget: *const HandleTDFAttribute,
+        theTarget: *const Handle_TDF_Attribute,
         theRelocTable: *mut BinObjMgt_RRelocationTable,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BinMXCAFDoc_AssemblyItemRefDriver.hxx`:45 - `BinMXCAFDoc_AssemblyItemRefDriver::Paste()`
-    pub fn BinMXCAFDoc_AssemblyItemRefDriver_paste_handletdfattribute_persistent_indexedmapoftransient(
-        self_: *const BinMXCAFDoc_AssemblyItemRefDriver,
-        theSource: *const HandleTDFAttribute,
-        theTarget: *mut BinObjMgt_Persistent,
-        theRelocTable: *mut TColStd_IndexedMapOfTransient,
-    ) -> *const std::ffi::c_char;
-    /// **Source:** `BinMXCAFDoc_AssemblyItemRefDriver.hxx`:49 - `BinMXCAFDoc_AssemblyItemRefDriver::DynamicType()`
+    /// **Source:** `BinMXCAFDoc_AssemblyItemRefDriver.hxx`:48 - `BinMXCAFDoc_AssemblyItemRefDriver::DynamicType()`
     pub fn BinMXCAFDoc_AssemblyItemRefDriver_dynamic_type(
         self_: *const BinMXCAFDoc_AssemblyItemRefDriver,
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// **Source:** `BinMXCAFDoc_AssemblyItemRefDriver.hxx`:49 - `BinMXCAFDoc_AssemblyItemRefDriver::get_type_name()`
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
+    /// **Source:** `BinMXCAFDoc_AssemblyItemRefDriver.hxx`:48 - `BinMXCAFDoc_AssemblyItemRefDriver::get_type_name()`
     pub fn BinMXCAFDoc_AssemblyItemRefDriver_get_type_name(
     ) -> crate::OcctResult<*const std::ffi::c_char>;
-    /// **Source:** `BinMXCAFDoc_AssemblyItemRefDriver.hxx`:49 - `BinMXCAFDoc_AssemblyItemRefDriver::get_type_descriptor()`
+    /// **Source:** `BinMXCAFDoc_AssemblyItemRefDriver.hxx`:48 - `BinMXCAFDoc_AssemblyItemRefDriver::get_type_descriptor()`
     pub fn BinMXCAFDoc_AssemblyItemRefDriver_get_type_descriptor(
-    ) -> crate::OcctResult<*const HandleStandardType>;
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast BinMXCAFDoc_AssemblyItemRefDriver to BinMDF_ADriver
     pub fn BinMXCAFDoc_AssemblyItemRefDriver_as_BinMDF_ADriver(
         self_: *const BinMXCAFDoc_AssemblyItemRefDriver,
@@ -63,110 +56,103 @@ unsafe extern "C" {
     /// Wrap BinMXCAFDoc_AssemblyItemRefDriver in a Handle
     pub fn BinMXCAFDoc_AssemblyItemRefDriver_to_handle(
         obj: *mut BinMXCAFDoc_AssemblyItemRefDriver,
-    ) -> crate::OcctResult<*mut HandleBinMXCAFDocAssemblyItemRefDriver>;
+    ) -> crate::OcctResult<*mut Handle_BinMXCAFDoc_AssemblyItemRefDriver>;
     /// Destroy Handle<BinMXCAFDoc_AssemblyItemRefDriver>
-    pub fn HandleBinMXCAFDocAssemblyItemRefDriver_destructor(
-        self_: *mut HandleBinMXCAFDocAssemblyItemRefDriver,
+    pub fn Handle_BinMXCAFDoc_AssemblyItemRefDriver_destructor(
+        self_: *mut Handle_BinMXCAFDoc_AssemblyItemRefDriver,
     );
     /// Clone Handle<BinMXCAFDoc_AssemblyItemRefDriver> (increments reference count)
-    pub fn HandleBinMXCAFDocAssemblyItemRefDriver_clone(
-        self_: *const HandleBinMXCAFDocAssemblyItemRefDriver,
-    ) -> crate::OcctResult<*mut HandleBinMXCAFDocAssemblyItemRefDriver>;
+    pub fn Handle_BinMXCAFDoc_AssemblyItemRefDriver_clone(
+        self_: *const Handle_BinMXCAFDoc_AssemblyItemRefDriver,
+    ) -> crate::OcctResult<*mut Handle_BinMXCAFDoc_AssemblyItemRefDriver>;
     /// Check if Handle<BinMXCAFDoc_AssemblyItemRefDriver> is null
-    pub fn HandleBinMXCAFDocAssemblyItemRefDriver_is_null(
-        self_: *const HandleBinMXCAFDocAssemblyItemRefDriver,
+    pub fn Handle_BinMXCAFDoc_AssemblyItemRefDriver_is_null(
+        self_: *const Handle_BinMXCAFDoc_AssemblyItemRefDriver,
     ) -> bool;
     /// Dereference Handle to get *const BinMXCAFDoc_AssemblyItemRefDriver
-    pub fn HandleBinMXCAFDocAssemblyItemRefDriver_get(
-        handle: *const HandleBinMXCAFDocAssemblyItemRefDriver,
+    pub fn Handle_BinMXCAFDoc_AssemblyItemRefDriver_get(
+        handle: *const Handle_BinMXCAFDoc_AssemblyItemRefDriver,
     ) -> crate::OcctResult<*const BinMXCAFDoc_AssemblyItemRefDriver>;
     /// Dereference Handle to get *mut BinMXCAFDoc_AssemblyItemRefDriver
-    pub fn HandleBinMXCAFDocAssemblyItemRefDriver_get_mut(
-        handle: *mut HandleBinMXCAFDocAssemblyItemRefDriver,
+    pub fn Handle_BinMXCAFDoc_AssemblyItemRefDriver_get_mut(
+        handle: *mut Handle_BinMXCAFDoc_AssemblyItemRefDriver,
     ) -> crate::OcctResult<*mut BinMXCAFDoc_AssemblyItemRefDriver>;
     /// Upcast Handle<BinMXCAFDoc_AssemblyItemRefDriver> to Handle<BinMDF_ADriver>
-    pub fn HandleBinMXCAFDocAssemblyItemRefDriver_to_HandleBinMDFADriver(
-        self_: *const HandleBinMXCAFDocAssemblyItemRefDriver,
-    ) -> crate::OcctResult<*mut HandleBinMDFADriver>;
+    pub fn Handle_BinMXCAFDoc_AssemblyItemRefDriver_to_Handle_BinMDF_ADriver(
+        self_: *const Handle_BinMXCAFDoc_AssemblyItemRefDriver,
+    ) -> crate::OcctResult<*mut Handle_BinMDF_ADriver>;
     /// Upcast Handle<BinMXCAFDoc_AssemblyItemRefDriver> to Handle<Standard_Transient>
-    pub fn HandleBinMXCAFDocAssemblyItemRefDriver_to_HandleStandardTransient(
-        self_: *const HandleBinMXCAFDocAssemblyItemRefDriver,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
-    /// Inherited: **Source:** `BinMDF_ADriver.hxx`:41 - `BinMDF_ADriver::SourceType()`
+    pub fn Handle_BinMXCAFDoc_AssemblyItemRefDriver_to_Handle_Standard_Transient(
+        self_: *const Handle_BinMXCAFDoc_AssemblyItemRefDriver,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
+    /// Inherited: **Source:** `BinMDF_ADriver.hxx`:38 - `BinMDF_ADriver::SourceType()`
     pub fn BinMXCAFDoc_AssemblyItemRefDriver_inherited_SourceType(
         self_: *const BinMXCAFDoc_AssemblyItemRefDriver,
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// Inherited: **Source:** `BinMDF_ADriver.hxx`:44 - `BinMDF_ADriver::TypeName()`
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
+    /// Inherited: **Source:** `BinMDF_ADriver.hxx`:41 - `BinMDF_ADriver::TypeName()`
     pub fn BinMXCAFDoc_AssemblyItemRefDriver_inherited_TypeName(
         self_: *const BinMXCAFDoc_AssemblyItemRefDriver,
     ) -> crate::OcctResult<*const TCollection_AsciiString>;
-    /// Inherited: **Source:** `BinMDF_ADriver.hxx`:61 - `BinMDF_ADriver::MessageDriver()`
+    /// Inherited: **Source:** `BinMDF_ADriver.hxx`:59 - `BinMDF_ADriver::MessageDriver()`
     pub fn BinMXCAFDoc_AssemblyItemRefDriver_inherited_MessageDriver(
         self_: *const BinMXCAFDoc_AssemblyItemRefDriver,
-    ) -> crate::OcctResult<*const HandleMessageMessenger>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    ) -> crate::OcctResult<*const Handle_Message_Messenger>;
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn BinMXCAFDoc_AssemblyItemRefDriver_inherited_IsInstance(
         self_: *const BinMXCAFDoc_AssemblyItemRefDriver,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn BinMXCAFDoc_AssemblyItemRefDriver_inherited_IsKind(
         self_: *const BinMXCAFDoc_AssemblyItemRefDriver,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn BinMXCAFDoc_AssemblyItemRefDriver_inherited_This(
         self_: *const BinMXCAFDoc_AssemblyItemRefDriver,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn BinMXCAFDoc_AssemblyItemRefDriver_inherited_GetRefCount(
         self_: *const BinMXCAFDoc_AssemblyItemRefDriver,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn BinMXCAFDoc_AssemblyItemRefDriver_inherited_IncrementRefCounter(
         self_: *mut BinMXCAFDoc_AssemblyItemRefDriver,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn BinMXCAFDoc_AssemblyItemRefDriver_inherited_DecrementRefCounter(
         self_: *mut BinMXCAFDoc_AssemblyItemRefDriver,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn BinMXCAFDoc_AssemblyItemRefDriver_inherited_Delete(
         self_: *const BinMXCAFDoc_AssemblyItemRefDriver,
     ) -> *const std::ffi::c_char;
     // ======================== BinMXCAFDoc_CentroidDriver ========================
     pub fn BinMXCAFDoc_CentroidDriver_destructor(self_: *mut BinMXCAFDoc_CentroidDriver);
-    /// **Source:** `BinMXCAFDoc_CentroidDriver.hxx`:35 - `BinMXCAFDoc_CentroidDriver::BinMXCAFDoc_CentroidDriver()`
+    /// **Source:** `BinMXCAFDoc_CentroidDriver.hxx`:33 - `BinMXCAFDoc_CentroidDriver::BinMXCAFDoc_CentroidDriver()`
     pub fn BinMXCAFDoc_CentroidDriver_ctor_handlemessagemessenger(
-        theMsgDriver: *const HandleMessageMessenger,
+        theMsgDriver: *const Handle_Message_Messenger,
     ) -> crate::OcctResult<*mut BinMXCAFDoc_CentroidDriver>;
-    /// **Source:** `BinMXCAFDoc_CentroidDriver.hxx`:37 - `BinMXCAFDoc_CentroidDriver::NewEmpty()`
+    /// **Source:** `BinMXCAFDoc_CentroidDriver.hxx`:35 - `BinMXCAFDoc_CentroidDriver::NewEmpty()`
     pub fn BinMXCAFDoc_CentroidDriver_new_empty(
         self_: *const BinMXCAFDoc_CentroidDriver,
-    ) -> crate::OcctResult<*mut HandleTDFAttribute>;
-    /// **Source:** `BinMXCAFDoc_CentroidDriver.hxx`:39 - `BinMXCAFDoc_CentroidDriver::Paste()`
-    pub fn BinMXCAFDoc_CentroidDriver_paste_persistent_handletdfattribute_rrelocationtable(
+    ) -> crate::OcctResult<*mut Handle_TDF_Attribute>;
+    /// **Source:** `BinMXCAFDoc_CentroidDriver.hxx`:37 - `BinMXCAFDoc_CentroidDriver::Paste()`
+    pub fn BinMXCAFDoc_CentroidDriver_paste(
         self_: *const BinMXCAFDoc_CentroidDriver,
         theSource: *const BinObjMgt_Persistent,
-        theTarget: *const HandleTDFAttribute,
+        theTarget: *const Handle_TDF_Attribute,
         theRelocTable: *mut BinObjMgt_RRelocationTable,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BinMXCAFDoc_CentroidDriver.hxx`:44 - `BinMXCAFDoc_CentroidDriver::Paste()`
-    pub fn BinMXCAFDoc_CentroidDriver_paste_handletdfattribute_persistent_indexedmapoftransient(
-        self_: *const BinMXCAFDoc_CentroidDriver,
-        theSource: *const HandleTDFAttribute,
-        theTarget: *mut BinObjMgt_Persistent,
-        theRelocTable: *mut TColStd_IndexedMapOfTransient,
-    ) -> *const std::ffi::c_char;
-    /// **Source:** `BinMXCAFDoc_CentroidDriver.hxx`:49 - `BinMXCAFDoc_CentroidDriver::DynamicType()`
+    /// **Source:** `BinMXCAFDoc_CentroidDriver.hxx`:46 - `BinMXCAFDoc_CentroidDriver::DynamicType()`
     pub fn BinMXCAFDoc_CentroidDriver_dynamic_type(
         self_: *const BinMXCAFDoc_CentroidDriver,
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// **Source:** `BinMXCAFDoc_CentroidDriver.hxx`:49 - `BinMXCAFDoc_CentroidDriver::get_type_name()`
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
+    /// **Source:** `BinMXCAFDoc_CentroidDriver.hxx`:46 - `BinMXCAFDoc_CentroidDriver::get_type_name()`
     pub fn BinMXCAFDoc_CentroidDriver_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
-    /// **Source:** `BinMXCAFDoc_CentroidDriver.hxx`:49 - `BinMXCAFDoc_CentroidDriver::get_type_descriptor()`
+    /// **Source:** `BinMXCAFDoc_CentroidDriver.hxx`:46 - `BinMXCAFDoc_CentroidDriver::get_type_descriptor()`
     pub fn BinMXCAFDoc_CentroidDriver_get_type_descriptor(
-    ) -> crate::OcctResult<*const HandleStandardType>;
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast BinMXCAFDoc_CentroidDriver to BinMDF_ADriver
     pub fn BinMXCAFDoc_CentroidDriver_as_BinMDF_ADriver(
         self_: *const BinMXCAFDoc_CentroidDriver,
@@ -186,108 +172,103 @@ unsafe extern "C" {
     /// Wrap BinMXCAFDoc_CentroidDriver in a Handle
     pub fn BinMXCAFDoc_CentroidDriver_to_handle(
         obj: *mut BinMXCAFDoc_CentroidDriver,
-    ) -> crate::OcctResult<*mut HandleBinMXCAFDocCentroidDriver>;
+    ) -> crate::OcctResult<*mut Handle_BinMXCAFDoc_CentroidDriver>;
     /// Destroy Handle<BinMXCAFDoc_CentroidDriver>
-    pub fn HandleBinMXCAFDocCentroidDriver_destructor(self_: *mut HandleBinMXCAFDocCentroidDriver);
+    pub fn Handle_BinMXCAFDoc_CentroidDriver_destructor(
+        self_: *mut Handle_BinMXCAFDoc_CentroidDriver,
+    );
     /// Clone Handle<BinMXCAFDoc_CentroidDriver> (increments reference count)
-    pub fn HandleBinMXCAFDocCentroidDriver_clone(
-        self_: *const HandleBinMXCAFDocCentroidDriver,
-    ) -> crate::OcctResult<*mut HandleBinMXCAFDocCentroidDriver>;
+    pub fn Handle_BinMXCAFDoc_CentroidDriver_clone(
+        self_: *const Handle_BinMXCAFDoc_CentroidDriver,
+    ) -> crate::OcctResult<*mut Handle_BinMXCAFDoc_CentroidDriver>;
     /// Check if Handle<BinMXCAFDoc_CentroidDriver> is null
-    pub fn HandleBinMXCAFDocCentroidDriver_is_null(
-        self_: *const HandleBinMXCAFDocCentroidDriver,
+    pub fn Handle_BinMXCAFDoc_CentroidDriver_is_null(
+        self_: *const Handle_BinMXCAFDoc_CentroidDriver,
     ) -> bool;
     /// Dereference Handle to get *const BinMXCAFDoc_CentroidDriver
-    pub fn HandleBinMXCAFDocCentroidDriver_get(
-        handle: *const HandleBinMXCAFDocCentroidDriver,
+    pub fn Handle_BinMXCAFDoc_CentroidDriver_get(
+        handle: *const Handle_BinMXCAFDoc_CentroidDriver,
     ) -> crate::OcctResult<*const BinMXCAFDoc_CentroidDriver>;
     /// Dereference Handle to get *mut BinMXCAFDoc_CentroidDriver
-    pub fn HandleBinMXCAFDocCentroidDriver_get_mut(
-        handle: *mut HandleBinMXCAFDocCentroidDriver,
+    pub fn Handle_BinMXCAFDoc_CentroidDriver_get_mut(
+        handle: *mut Handle_BinMXCAFDoc_CentroidDriver,
     ) -> crate::OcctResult<*mut BinMXCAFDoc_CentroidDriver>;
     /// Upcast Handle<BinMXCAFDoc_CentroidDriver> to Handle<BinMDF_ADriver>
-    pub fn HandleBinMXCAFDocCentroidDriver_to_HandleBinMDFADriver(
-        self_: *const HandleBinMXCAFDocCentroidDriver,
-    ) -> crate::OcctResult<*mut HandleBinMDFADriver>;
+    pub fn Handle_BinMXCAFDoc_CentroidDriver_to_Handle_BinMDF_ADriver(
+        self_: *const Handle_BinMXCAFDoc_CentroidDriver,
+    ) -> crate::OcctResult<*mut Handle_BinMDF_ADriver>;
     /// Upcast Handle<BinMXCAFDoc_CentroidDriver> to Handle<Standard_Transient>
-    pub fn HandleBinMXCAFDocCentroidDriver_to_HandleStandardTransient(
-        self_: *const HandleBinMXCAFDocCentroidDriver,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
-    /// Inherited: **Source:** `BinMDF_ADriver.hxx`:41 - `BinMDF_ADriver::SourceType()`
+    pub fn Handle_BinMXCAFDoc_CentroidDriver_to_Handle_Standard_Transient(
+        self_: *const Handle_BinMXCAFDoc_CentroidDriver,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
+    /// Inherited: **Source:** `BinMDF_ADriver.hxx`:38 - `BinMDF_ADriver::SourceType()`
     pub fn BinMXCAFDoc_CentroidDriver_inherited_SourceType(
         self_: *const BinMXCAFDoc_CentroidDriver,
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// Inherited: **Source:** `BinMDF_ADriver.hxx`:44 - `BinMDF_ADriver::TypeName()`
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
+    /// Inherited: **Source:** `BinMDF_ADriver.hxx`:41 - `BinMDF_ADriver::TypeName()`
     pub fn BinMXCAFDoc_CentroidDriver_inherited_TypeName(
         self_: *const BinMXCAFDoc_CentroidDriver,
     ) -> crate::OcctResult<*const TCollection_AsciiString>;
-    /// Inherited: **Source:** `BinMDF_ADriver.hxx`:61 - `BinMDF_ADriver::MessageDriver()`
+    /// Inherited: **Source:** `BinMDF_ADriver.hxx`:59 - `BinMDF_ADriver::MessageDriver()`
     pub fn BinMXCAFDoc_CentroidDriver_inherited_MessageDriver(
         self_: *const BinMXCAFDoc_CentroidDriver,
-    ) -> crate::OcctResult<*const HandleMessageMessenger>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    ) -> crate::OcctResult<*const Handle_Message_Messenger>;
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn BinMXCAFDoc_CentroidDriver_inherited_IsInstance(
         self_: *const BinMXCAFDoc_CentroidDriver,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn BinMXCAFDoc_CentroidDriver_inherited_IsKind(
         self_: *const BinMXCAFDoc_CentroidDriver,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn BinMXCAFDoc_CentroidDriver_inherited_This(
         self_: *const BinMXCAFDoc_CentroidDriver,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn BinMXCAFDoc_CentroidDriver_inherited_GetRefCount(
         self_: *const BinMXCAFDoc_CentroidDriver,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn BinMXCAFDoc_CentroidDriver_inherited_IncrementRefCounter(
         self_: *mut BinMXCAFDoc_CentroidDriver,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn BinMXCAFDoc_CentroidDriver_inherited_DecrementRefCounter(
         self_: *mut BinMXCAFDoc_CentroidDriver,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn BinMXCAFDoc_CentroidDriver_inherited_Delete(
         self_: *const BinMXCAFDoc_CentroidDriver,
     ) -> *const std::ffi::c_char;
     // ======================== BinMXCAFDoc_ColorDriver ========================
     pub fn BinMXCAFDoc_ColorDriver_destructor(self_: *mut BinMXCAFDoc_ColorDriver);
-    /// **Source:** `BinMXCAFDoc_ColorDriver.hxx`:35 - `BinMXCAFDoc_ColorDriver::BinMXCAFDoc_ColorDriver()`
+    /// **Source:** `BinMXCAFDoc_ColorDriver.hxx`:33 - `BinMXCAFDoc_ColorDriver::BinMXCAFDoc_ColorDriver()`
     pub fn BinMXCAFDoc_ColorDriver_ctor_handlemessagemessenger(
-        theMsgDriver: *const HandleMessageMessenger,
+        theMsgDriver: *const Handle_Message_Messenger,
     ) -> crate::OcctResult<*mut BinMXCAFDoc_ColorDriver>;
-    /// **Source:** `BinMXCAFDoc_ColorDriver.hxx`:37 - `BinMXCAFDoc_ColorDriver::NewEmpty()`
+    /// **Source:** `BinMXCAFDoc_ColorDriver.hxx`:35 - `BinMXCAFDoc_ColorDriver::NewEmpty()`
     pub fn BinMXCAFDoc_ColorDriver_new_empty(
         self_: *const BinMXCAFDoc_ColorDriver,
-    ) -> crate::OcctResult<*mut HandleTDFAttribute>;
-    /// **Source:** `BinMXCAFDoc_ColorDriver.hxx`:39 - `BinMXCAFDoc_ColorDriver::Paste()`
-    pub fn BinMXCAFDoc_ColorDriver_paste_persistent_handletdfattribute_rrelocationtable(
+    ) -> crate::OcctResult<*mut Handle_TDF_Attribute>;
+    /// **Source:** `BinMXCAFDoc_ColorDriver.hxx`:37 - `BinMXCAFDoc_ColorDriver::Paste()`
+    pub fn BinMXCAFDoc_ColorDriver_paste(
         self_: *const BinMXCAFDoc_ColorDriver,
         theSource: *const BinObjMgt_Persistent,
-        theTarget: *const HandleTDFAttribute,
+        theTarget: *const Handle_TDF_Attribute,
         theRelocTable: *mut BinObjMgt_RRelocationTable,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BinMXCAFDoc_ColorDriver.hxx`:44 - `BinMXCAFDoc_ColorDriver::Paste()`
-    pub fn BinMXCAFDoc_ColorDriver_paste_handletdfattribute_persistent_indexedmapoftransient(
-        self_: *const BinMXCAFDoc_ColorDriver,
-        theSource: *const HandleTDFAttribute,
-        theTarget: *mut BinObjMgt_Persistent,
-        theRelocTable: *mut TColStd_IndexedMapOfTransient,
-    ) -> *const std::ffi::c_char;
-    /// **Source:** `BinMXCAFDoc_ColorDriver.hxx`:49 - `BinMXCAFDoc_ColorDriver::DynamicType()`
+    /// **Source:** `BinMXCAFDoc_ColorDriver.hxx`:46 - `BinMXCAFDoc_ColorDriver::DynamicType()`
     pub fn BinMXCAFDoc_ColorDriver_dynamic_type(
         self_: *const BinMXCAFDoc_ColorDriver,
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// **Source:** `BinMXCAFDoc_ColorDriver.hxx`:49 - `BinMXCAFDoc_ColorDriver::get_type_name()`
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
+    /// **Source:** `BinMXCAFDoc_ColorDriver.hxx`:46 - `BinMXCAFDoc_ColorDriver::get_type_name()`
     pub fn BinMXCAFDoc_ColorDriver_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
-    /// **Source:** `BinMXCAFDoc_ColorDriver.hxx`:49 - `BinMXCAFDoc_ColorDriver::get_type_descriptor()`
+    /// **Source:** `BinMXCAFDoc_ColorDriver.hxx`:46 - `BinMXCAFDoc_ColorDriver::get_type_descriptor()`
     pub fn BinMXCAFDoc_ColorDriver_get_type_descriptor(
-    ) -> crate::OcctResult<*const HandleStandardType>;
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast BinMXCAFDoc_ColorDriver to BinMDF_ADriver
     pub fn BinMXCAFDoc_ColorDriver_as_BinMDF_ADriver(
         self_: *const BinMXCAFDoc_ColorDriver,
@@ -307,107 +288,101 @@ unsafe extern "C" {
     /// Wrap BinMXCAFDoc_ColorDriver in a Handle
     pub fn BinMXCAFDoc_ColorDriver_to_handle(
         obj: *mut BinMXCAFDoc_ColorDriver,
-    ) -> crate::OcctResult<*mut HandleBinMXCAFDocColorDriver>;
+    ) -> crate::OcctResult<*mut Handle_BinMXCAFDoc_ColorDriver>;
     /// Destroy Handle<BinMXCAFDoc_ColorDriver>
-    pub fn HandleBinMXCAFDocColorDriver_destructor(self_: *mut HandleBinMXCAFDocColorDriver);
+    pub fn Handle_BinMXCAFDoc_ColorDriver_destructor(self_: *mut Handle_BinMXCAFDoc_ColorDriver);
     /// Clone Handle<BinMXCAFDoc_ColorDriver> (increments reference count)
-    pub fn HandleBinMXCAFDocColorDriver_clone(
-        self_: *const HandleBinMXCAFDocColorDriver,
-    ) -> crate::OcctResult<*mut HandleBinMXCAFDocColorDriver>;
+    pub fn Handle_BinMXCAFDoc_ColorDriver_clone(
+        self_: *const Handle_BinMXCAFDoc_ColorDriver,
+    ) -> crate::OcctResult<*mut Handle_BinMXCAFDoc_ColorDriver>;
     /// Check if Handle<BinMXCAFDoc_ColorDriver> is null
-    pub fn HandleBinMXCAFDocColorDriver_is_null(self_: *const HandleBinMXCAFDocColorDriver)
-        -> bool;
+    pub fn Handle_BinMXCAFDoc_ColorDriver_is_null(
+        self_: *const Handle_BinMXCAFDoc_ColorDriver,
+    ) -> bool;
     /// Dereference Handle to get *const BinMXCAFDoc_ColorDriver
-    pub fn HandleBinMXCAFDocColorDriver_get(
-        handle: *const HandleBinMXCAFDocColorDriver,
+    pub fn Handle_BinMXCAFDoc_ColorDriver_get(
+        handle: *const Handle_BinMXCAFDoc_ColorDriver,
     ) -> crate::OcctResult<*const BinMXCAFDoc_ColorDriver>;
     /// Dereference Handle to get *mut BinMXCAFDoc_ColorDriver
-    pub fn HandleBinMXCAFDocColorDriver_get_mut(
-        handle: *mut HandleBinMXCAFDocColorDriver,
+    pub fn Handle_BinMXCAFDoc_ColorDriver_get_mut(
+        handle: *mut Handle_BinMXCAFDoc_ColorDriver,
     ) -> crate::OcctResult<*mut BinMXCAFDoc_ColorDriver>;
     /// Upcast Handle<BinMXCAFDoc_ColorDriver> to Handle<BinMDF_ADriver>
-    pub fn HandleBinMXCAFDocColorDriver_to_HandleBinMDFADriver(
-        self_: *const HandleBinMXCAFDocColorDriver,
-    ) -> crate::OcctResult<*mut HandleBinMDFADriver>;
+    pub fn Handle_BinMXCAFDoc_ColorDriver_to_Handle_BinMDF_ADriver(
+        self_: *const Handle_BinMXCAFDoc_ColorDriver,
+    ) -> crate::OcctResult<*mut Handle_BinMDF_ADriver>;
     /// Upcast Handle<BinMXCAFDoc_ColorDriver> to Handle<Standard_Transient>
-    pub fn HandleBinMXCAFDocColorDriver_to_HandleStandardTransient(
-        self_: *const HandleBinMXCAFDocColorDriver,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
-    /// Inherited: **Source:** `BinMDF_ADriver.hxx`:41 - `BinMDF_ADriver::SourceType()`
+    pub fn Handle_BinMXCAFDoc_ColorDriver_to_Handle_Standard_Transient(
+        self_: *const Handle_BinMXCAFDoc_ColorDriver,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
+    /// Inherited: **Source:** `BinMDF_ADriver.hxx`:38 - `BinMDF_ADriver::SourceType()`
     pub fn BinMXCAFDoc_ColorDriver_inherited_SourceType(
         self_: *const BinMXCAFDoc_ColorDriver,
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// Inherited: **Source:** `BinMDF_ADriver.hxx`:44 - `BinMDF_ADriver::TypeName()`
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
+    /// Inherited: **Source:** `BinMDF_ADriver.hxx`:41 - `BinMDF_ADriver::TypeName()`
     pub fn BinMXCAFDoc_ColorDriver_inherited_TypeName(
         self_: *const BinMXCAFDoc_ColorDriver,
     ) -> crate::OcctResult<*const TCollection_AsciiString>;
-    /// Inherited: **Source:** `BinMDF_ADriver.hxx`:61 - `BinMDF_ADriver::MessageDriver()`
+    /// Inherited: **Source:** `BinMDF_ADriver.hxx`:59 - `BinMDF_ADriver::MessageDriver()`
     pub fn BinMXCAFDoc_ColorDriver_inherited_MessageDriver(
         self_: *const BinMXCAFDoc_ColorDriver,
-    ) -> crate::OcctResult<*const HandleMessageMessenger>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    ) -> crate::OcctResult<*const Handle_Message_Messenger>;
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn BinMXCAFDoc_ColorDriver_inherited_IsInstance(
         self_: *const BinMXCAFDoc_ColorDriver,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn BinMXCAFDoc_ColorDriver_inherited_IsKind(
         self_: *const BinMXCAFDoc_ColorDriver,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn BinMXCAFDoc_ColorDriver_inherited_This(
         self_: *const BinMXCAFDoc_ColorDriver,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn BinMXCAFDoc_ColorDriver_inherited_GetRefCount(
         self_: *const BinMXCAFDoc_ColorDriver,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn BinMXCAFDoc_ColorDriver_inherited_IncrementRefCounter(
         self_: *mut BinMXCAFDoc_ColorDriver,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn BinMXCAFDoc_ColorDriver_inherited_DecrementRefCounter(
         self_: *mut BinMXCAFDoc_ColorDriver,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn BinMXCAFDoc_ColorDriver_inherited_Delete(
         self_: *const BinMXCAFDoc_ColorDriver,
     ) -> *const std::ffi::c_char;
     // ======================== BinMXCAFDoc_DatumDriver ========================
     pub fn BinMXCAFDoc_DatumDriver_destructor(self_: *mut BinMXCAFDoc_DatumDriver);
-    /// **Source:** `BinMXCAFDoc_DatumDriver.hxx`:35 - `BinMXCAFDoc_DatumDriver::BinMXCAFDoc_DatumDriver()`
+    /// **Source:** `BinMXCAFDoc_DatumDriver.hxx`:33 - `BinMXCAFDoc_DatumDriver::BinMXCAFDoc_DatumDriver()`
     pub fn BinMXCAFDoc_DatumDriver_ctor_handlemessagemessenger(
-        theMsgDriver: *const HandleMessageMessenger,
+        theMsgDriver: *const Handle_Message_Messenger,
     ) -> crate::OcctResult<*mut BinMXCAFDoc_DatumDriver>;
-    /// **Source:** `BinMXCAFDoc_DatumDriver.hxx`:37 - `BinMXCAFDoc_DatumDriver::NewEmpty()`
+    /// **Source:** `BinMXCAFDoc_DatumDriver.hxx`:35 - `BinMXCAFDoc_DatumDriver::NewEmpty()`
     pub fn BinMXCAFDoc_DatumDriver_new_empty(
         self_: *const BinMXCAFDoc_DatumDriver,
-    ) -> crate::OcctResult<*mut HandleTDFAttribute>;
-    /// **Source:** `BinMXCAFDoc_DatumDriver.hxx`:39 - `BinMXCAFDoc_DatumDriver::Paste()`
-    pub fn BinMXCAFDoc_DatumDriver_paste_persistent_handletdfattribute_rrelocationtable(
+    ) -> crate::OcctResult<*mut Handle_TDF_Attribute>;
+    /// **Source:** `BinMXCAFDoc_DatumDriver.hxx`:37 - `BinMXCAFDoc_DatumDriver::Paste()`
+    pub fn BinMXCAFDoc_DatumDriver_paste(
         self_: *const BinMXCAFDoc_DatumDriver,
         theSource: *const BinObjMgt_Persistent,
-        theTarget: *const HandleTDFAttribute,
+        theTarget: *const Handle_TDF_Attribute,
         theRelocTable: *mut BinObjMgt_RRelocationTable,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BinMXCAFDoc_DatumDriver.hxx`:44 - `BinMXCAFDoc_DatumDriver::Paste()`
-    pub fn BinMXCAFDoc_DatumDriver_paste_handletdfattribute_persistent_indexedmapoftransient(
-        self_: *const BinMXCAFDoc_DatumDriver,
-        theSource: *const HandleTDFAttribute,
-        theTarget: *mut BinObjMgt_Persistent,
-        theRelocTable: *mut TColStd_IndexedMapOfTransient,
-    ) -> *const std::ffi::c_char;
-    /// **Source:** `BinMXCAFDoc_DatumDriver.hxx`:49 - `BinMXCAFDoc_DatumDriver::DynamicType()`
+    /// **Source:** `BinMXCAFDoc_DatumDriver.hxx`:46 - `BinMXCAFDoc_DatumDriver::DynamicType()`
     pub fn BinMXCAFDoc_DatumDriver_dynamic_type(
         self_: *const BinMXCAFDoc_DatumDriver,
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// **Source:** `BinMXCAFDoc_DatumDriver.hxx`:49 - `BinMXCAFDoc_DatumDriver::get_type_name()`
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
+    /// **Source:** `BinMXCAFDoc_DatumDriver.hxx`:46 - `BinMXCAFDoc_DatumDriver::get_type_name()`
     pub fn BinMXCAFDoc_DatumDriver_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
-    /// **Source:** `BinMXCAFDoc_DatumDriver.hxx`:49 - `BinMXCAFDoc_DatumDriver::get_type_descriptor()`
+    /// **Source:** `BinMXCAFDoc_DatumDriver.hxx`:46 - `BinMXCAFDoc_DatumDriver::get_type_descriptor()`
     pub fn BinMXCAFDoc_DatumDriver_get_type_descriptor(
-    ) -> crate::OcctResult<*const HandleStandardType>;
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast BinMXCAFDoc_DatumDriver to BinMDF_ADriver
     pub fn BinMXCAFDoc_DatumDriver_as_BinMDF_ADriver(
         self_: *const BinMXCAFDoc_DatumDriver,
@@ -427,107 +402,101 @@ unsafe extern "C" {
     /// Wrap BinMXCAFDoc_DatumDriver in a Handle
     pub fn BinMXCAFDoc_DatumDriver_to_handle(
         obj: *mut BinMXCAFDoc_DatumDriver,
-    ) -> crate::OcctResult<*mut HandleBinMXCAFDocDatumDriver>;
+    ) -> crate::OcctResult<*mut Handle_BinMXCAFDoc_DatumDriver>;
     /// Destroy Handle<BinMXCAFDoc_DatumDriver>
-    pub fn HandleBinMXCAFDocDatumDriver_destructor(self_: *mut HandleBinMXCAFDocDatumDriver);
+    pub fn Handle_BinMXCAFDoc_DatumDriver_destructor(self_: *mut Handle_BinMXCAFDoc_DatumDriver);
     /// Clone Handle<BinMXCAFDoc_DatumDriver> (increments reference count)
-    pub fn HandleBinMXCAFDocDatumDriver_clone(
-        self_: *const HandleBinMXCAFDocDatumDriver,
-    ) -> crate::OcctResult<*mut HandleBinMXCAFDocDatumDriver>;
+    pub fn Handle_BinMXCAFDoc_DatumDriver_clone(
+        self_: *const Handle_BinMXCAFDoc_DatumDriver,
+    ) -> crate::OcctResult<*mut Handle_BinMXCAFDoc_DatumDriver>;
     /// Check if Handle<BinMXCAFDoc_DatumDriver> is null
-    pub fn HandleBinMXCAFDocDatumDriver_is_null(self_: *const HandleBinMXCAFDocDatumDriver)
-        -> bool;
+    pub fn Handle_BinMXCAFDoc_DatumDriver_is_null(
+        self_: *const Handle_BinMXCAFDoc_DatumDriver,
+    ) -> bool;
     /// Dereference Handle to get *const BinMXCAFDoc_DatumDriver
-    pub fn HandleBinMXCAFDocDatumDriver_get(
-        handle: *const HandleBinMXCAFDocDatumDriver,
+    pub fn Handle_BinMXCAFDoc_DatumDriver_get(
+        handle: *const Handle_BinMXCAFDoc_DatumDriver,
     ) -> crate::OcctResult<*const BinMXCAFDoc_DatumDriver>;
     /// Dereference Handle to get *mut BinMXCAFDoc_DatumDriver
-    pub fn HandleBinMXCAFDocDatumDriver_get_mut(
-        handle: *mut HandleBinMXCAFDocDatumDriver,
+    pub fn Handle_BinMXCAFDoc_DatumDriver_get_mut(
+        handle: *mut Handle_BinMXCAFDoc_DatumDriver,
     ) -> crate::OcctResult<*mut BinMXCAFDoc_DatumDriver>;
     /// Upcast Handle<BinMXCAFDoc_DatumDriver> to Handle<BinMDF_ADriver>
-    pub fn HandleBinMXCAFDocDatumDriver_to_HandleBinMDFADriver(
-        self_: *const HandleBinMXCAFDocDatumDriver,
-    ) -> crate::OcctResult<*mut HandleBinMDFADriver>;
+    pub fn Handle_BinMXCAFDoc_DatumDriver_to_Handle_BinMDF_ADriver(
+        self_: *const Handle_BinMXCAFDoc_DatumDriver,
+    ) -> crate::OcctResult<*mut Handle_BinMDF_ADriver>;
     /// Upcast Handle<BinMXCAFDoc_DatumDriver> to Handle<Standard_Transient>
-    pub fn HandleBinMXCAFDocDatumDriver_to_HandleStandardTransient(
-        self_: *const HandleBinMXCAFDocDatumDriver,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
-    /// Inherited: **Source:** `BinMDF_ADriver.hxx`:41 - `BinMDF_ADriver::SourceType()`
+    pub fn Handle_BinMXCAFDoc_DatumDriver_to_Handle_Standard_Transient(
+        self_: *const Handle_BinMXCAFDoc_DatumDriver,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
+    /// Inherited: **Source:** `BinMDF_ADriver.hxx`:38 - `BinMDF_ADriver::SourceType()`
     pub fn BinMXCAFDoc_DatumDriver_inherited_SourceType(
         self_: *const BinMXCAFDoc_DatumDriver,
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// Inherited: **Source:** `BinMDF_ADriver.hxx`:44 - `BinMDF_ADriver::TypeName()`
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
+    /// Inherited: **Source:** `BinMDF_ADriver.hxx`:41 - `BinMDF_ADriver::TypeName()`
     pub fn BinMXCAFDoc_DatumDriver_inherited_TypeName(
         self_: *const BinMXCAFDoc_DatumDriver,
     ) -> crate::OcctResult<*const TCollection_AsciiString>;
-    /// Inherited: **Source:** `BinMDF_ADriver.hxx`:61 - `BinMDF_ADriver::MessageDriver()`
+    /// Inherited: **Source:** `BinMDF_ADriver.hxx`:59 - `BinMDF_ADriver::MessageDriver()`
     pub fn BinMXCAFDoc_DatumDriver_inherited_MessageDriver(
         self_: *const BinMXCAFDoc_DatumDriver,
-    ) -> crate::OcctResult<*const HandleMessageMessenger>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    ) -> crate::OcctResult<*const Handle_Message_Messenger>;
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn BinMXCAFDoc_DatumDriver_inherited_IsInstance(
         self_: *const BinMXCAFDoc_DatumDriver,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn BinMXCAFDoc_DatumDriver_inherited_IsKind(
         self_: *const BinMXCAFDoc_DatumDriver,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn BinMXCAFDoc_DatumDriver_inherited_This(
         self_: *const BinMXCAFDoc_DatumDriver,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn BinMXCAFDoc_DatumDriver_inherited_GetRefCount(
         self_: *const BinMXCAFDoc_DatumDriver,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn BinMXCAFDoc_DatumDriver_inherited_IncrementRefCounter(
         self_: *mut BinMXCAFDoc_DatumDriver,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn BinMXCAFDoc_DatumDriver_inherited_DecrementRefCounter(
         self_: *mut BinMXCAFDoc_DatumDriver,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn BinMXCAFDoc_DatumDriver_inherited_Delete(
         self_: *const BinMXCAFDoc_DatumDriver,
     ) -> *const std::ffi::c_char;
     // ======================== BinMXCAFDoc_DimTolDriver ========================
     pub fn BinMXCAFDoc_DimTolDriver_destructor(self_: *mut BinMXCAFDoc_DimTolDriver);
-    /// **Source:** `BinMXCAFDoc_DimTolDriver.hxx`:35 - `BinMXCAFDoc_DimTolDriver::BinMXCAFDoc_DimTolDriver()`
+    /// **Source:** `BinMXCAFDoc_DimTolDriver.hxx`:33 - `BinMXCAFDoc_DimTolDriver::BinMXCAFDoc_DimTolDriver()`
     pub fn BinMXCAFDoc_DimTolDriver_ctor_handlemessagemessenger(
-        theMsgDriver: *const HandleMessageMessenger,
+        theMsgDriver: *const Handle_Message_Messenger,
     ) -> crate::OcctResult<*mut BinMXCAFDoc_DimTolDriver>;
-    /// **Source:** `BinMXCAFDoc_DimTolDriver.hxx`:37 - `BinMXCAFDoc_DimTolDriver::NewEmpty()`
+    /// **Source:** `BinMXCAFDoc_DimTolDriver.hxx`:35 - `BinMXCAFDoc_DimTolDriver::NewEmpty()`
     pub fn BinMXCAFDoc_DimTolDriver_new_empty(
         self_: *const BinMXCAFDoc_DimTolDriver,
-    ) -> crate::OcctResult<*mut HandleTDFAttribute>;
-    /// **Source:** `BinMXCAFDoc_DimTolDriver.hxx`:39 - `BinMXCAFDoc_DimTolDriver::Paste()`
-    pub fn BinMXCAFDoc_DimTolDriver_paste_persistent_handletdfattribute_rrelocationtable(
+    ) -> crate::OcctResult<*mut Handle_TDF_Attribute>;
+    /// **Source:** `BinMXCAFDoc_DimTolDriver.hxx`:37 - `BinMXCAFDoc_DimTolDriver::Paste()`
+    pub fn BinMXCAFDoc_DimTolDriver_paste(
         self_: *const BinMXCAFDoc_DimTolDriver,
         theSource: *const BinObjMgt_Persistent,
-        theTarget: *const HandleTDFAttribute,
+        theTarget: *const Handle_TDF_Attribute,
         theRelocTable: *mut BinObjMgt_RRelocationTable,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BinMXCAFDoc_DimTolDriver.hxx`:44 - `BinMXCAFDoc_DimTolDriver::Paste()`
-    pub fn BinMXCAFDoc_DimTolDriver_paste_handletdfattribute_persistent_indexedmapoftransient(
-        self_: *const BinMXCAFDoc_DimTolDriver,
-        theSource: *const HandleTDFAttribute,
-        theTarget: *mut BinObjMgt_Persistent,
-        theRelocTable: *mut TColStd_IndexedMapOfTransient,
-    ) -> *const std::ffi::c_char;
-    /// **Source:** `BinMXCAFDoc_DimTolDriver.hxx`:49 - `BinMXCAFDoc_DimTolDriver::DynamicType()`
+    /// **Source:** `BinMXCAFDoc_DimTolDriver.hxx`:46 - `BinMXCAFDoc_DimTolDriver::DynamicType()`
     pub fn BinMXCAFDoc_DimTolDriver_dynamic_type(
         self_: *const BinMXCAFDoc_DimTolDriver,
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// **Source:** `BinMXCAFDoc_DimTolDriver.hxx`:49 - `BinMXCAFDoc_DimTolDriver::get_type_name()`
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
+    /// **Source:** `BinMXCAFDoc_DimTolDriver.hxx`:46 - `BinMXCAFDoc_DimTolDriver::get_type_name()`
     pub fn BinMXCAFDoc_DimTolDriver_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
-    /// **Source:** `BinMXCAFDoc_DimTolDriver.hxx`:49 - `BinMXCAFDoc_DimTolDriver::get_type_descriptor()`
+    /// **Source:** `BinMXCAFDoc_DimTolDriver.hxx`:46 - `BinMXCAFDoc_DimTolDriver::get_type_descriptor()`
     pub fn BinMXCAFDoc_DimTolDriver_get_type_descriptor(
-    ) -> crate::OcctResult<*const HandleStandardType>;
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast BinMXCAFDoc_DimTolDriver to BinMDF_ADriver
     pub fn BinMXCAFDoc_DimTolDriver_as_BinMDF_ADriver(
         self_: *const BinMXCAFDoc_DimTolDriver,
@@ -547,108 +516,101 @@ unsafe extern "C" {
     /// Wrap BinMXCAFDoc_DimTolDriver in a Handle
     pub fn BinMXCAFDoc_DimTolDriver_to_handle(
         obj: *mut BinMXCAFDoc_DimTolDriver,
-    ) -> crate::OcctResult<*mut HandleBinMXCAFDocDimTolDriver>;
+    ) -> crate::OcctResult<*mut Handle_BinMXCAFDoc_DimTolDriver>;
     /// Destroy Handle<BinMXCAFDoc_DimTolDriver>
-    pub fn HandleBinMXCAFDocDimTolDriver_destructor(self_: *mut HandleBinMXCAFDocDimTolDriver);
+    pub fn Handle_BinMXCAFDoc_DimTolDriver_destructor(self_: *mut Handle_BinMXCAFDoc_DimTolDriver);
     /// Clone Handle<BinMXCAFDoc_DimTolDriver> (increments reference count)
-    pub fn HandleBinMXCAFDocDimTolDriver_clone(
-        self_: *const HandleBinMXCAFDocDimTolDriver,
-    ) -> crate::OcctResult<*mut HandleBinMXCAFDocDimTolDriver>;
+    pub fn Handle_BinMXCAFDoc_DimTolDriver_clone(
+        self_: *const Handle_BinMXCAFDoc_DimTolDriver,
+    ) -> crate::OcctResult<*mut Handle_BinMXCAFDoc_DimTolDriver>;
     /// Check if Handle<BinMXCAFDoc_DimTolDriver> is null
-    pub fn HandleBinMXCAFDocDimTolDriver_is_null(
-        self_: *const HandleBinMXCAFDocDimTolDriver,
+    pub fn Handle_BinMXCAFDoc_DimTolDriver_is_null(
+        self_: *const Handle_BinMXCAFDoc_DimTolDriver,
     ) -> bool;
     /// Dereference Handle to get *const BinMXCAFDoc_DimTolDriver
-    pub fn HandleBinMXCAFDocDimTolDriver_get(
-        handle: *const HandleBinMXCAFDocDimTolDriver,
+    pub fn Handle_BinMXCAFDoc_DimTolDriver_get(
+        handle: *const Handle_BinMXCAFDoc_DimTolDriver,
     ) -> crate::OcctResult<*const BinMXCAFDoc_DimTolDriver>;
     /// Dereference Handle to get *mut BinMXCAFDoc_DimTolDriver
-    pub fn HandleBinMXCAFDocDimTolDriver_get_mut(
-        handle: *mut HandleBinMXCAFDocDimTolDriver,
+    pub fn Handle_BinMXCAFDoc_DimTolDriver_get_mut(
+        handle: *mut Handle_BinMXCAFDoc_DimTolDriver,
     ) -> crate::OcctResult<*mut BinMXCAFDoc_DimTolDriver>;
     /// Upcast Handle<BinMXCAFDoc_DimTolDriver> to Handle<BinMDF_ADriver>
-    pub fn HandleBinMXCAFDocDimTolDriver_to_HandleBinMDFADriver(
-        self_: *const HandleBinMXCAFDocDimTolDriver,
-    ) -> crate::OcctResult<*mut HandleBinMDFADriver>;
+    pub fn Handle_BinMXCAFDoc_DimTolDriver_to_Handle_BinMDF_ADriver(
+        self_: *const Handle_BinMXCAFDoc_DimTolDriver,
+    ) -> crate::OcctResult<*mut Handle_BinMDF_ADriver>;
     /// Upcast Handle<BinMXCAFDoc_DimTolDriver> to Handle<Standard_Transient>
-    pub fn HandleBinMXCAFDocDimTolDriver_to_HandleStandardTransient(
-        self_: *const HandleBinMXCAFDocDimTolDriver,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
-    /// Inherited: **Source:** `BinMDF_ADriver.hxx`:41 - `BinMDF_ADriver::SourceType()`
+    pub fn Handle_BinMXCAFDoc_DimTolDriver_to_Handle_Standard_Transient(
+        self_: *const Handle_BinMXCAFDoc_DimTolDriver,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
+    /// Inherited: **Source:** `BinMDF_ADriver.hxx`:38 - `BinMDF_ADriver::SourceType()`
     pub fn BinMXCAFDoc_DimTolDriver_inherited_SourceType(
         self_: *const BinMXCAFDoc_DimTolDriver,
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// Inherited: **Source:** `BinMDF_ADriver.hxx`:44 - `BinMDF_ADriver::TypeName()`
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
+    /// Inherited: **Source:** `BinMDF_ADriver.hxx`:41 - `BinMDF_ADriver::TypeName()`
     pub fn BinMXCAFDoc_DimTolDriver_inherited_TypeName(
         self_: *const BinMXCAFDoc_DimTolDriver,
     ) -> crate::OcctResult<*const TCollection_AsciiString>;
-    /// Inherited: **Source:** `BinMDF_ADriver.hxx`:61 - `BinMDF_ADriver::MessageDriver()`
+    /// Inherited: **Source:** `BinMDF_ADriver.hxx`:59 - `BinMDF_ADriver::MessageDriver()`
     pub fn BinMXCAFDoc_DimTolDriver_inherited_MessageDriver(
         self_: *const BinMXCAFDoc_DimTolDriver,
-    ) -> crate::OcctResult<*const HandleMessageMessenger>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    ) -> crate::OcctResult<*const Handle_Message_Messenger>;
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn BinMXCAFDoc_DimTolDriver_inherited_IsInstance(
         self_: *const BinMXCAFDoc_DimTolDriver,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn BinMXCAFDoc_DimTolDriver_inherited_IsKind(
         self_: *const BinMXCAFDoc_DimTolDriver,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn BinMXCAFDoc_DimTolDriver_inherited_This(
         self_: *const BinMXCAFDoc_DimTolDriver,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn BinMXCAFDoc_DimTolDriver_inherited_GetRefCount(
         self_: *const BinMXCAFDoc_DimTolDriver,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn BinMXCAFDoc_DimTolDriver_inherited_IncrementRefCounter(
         self_: *mut BinMXCAFDoc_DimTolDriver,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn BinMXCAFDoc_DimTolDriver_inherited_DecrementRefCounter(
         self_: *mut BinMXCAFDoc_DimTolDriver,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn BinMXCAFDoc_DimTolDriver_inherited_Delete(
         self_: *const BinMXCAFDoc_DimTolDriver,
     ) -> *const std::ffi::c_char;
     // ======================== BinMXCAFDoc_GraphNodeDriver ========================
     pub fn BinMXCAFDoc_GraphNodeDriver_destructor(self_: *mut BinMXCAFDoc_GraphNodeDriver);
-    /// **Source:** `BinMXCAFDoc_GraphNodeDriver.hxx`:35 - `BinMXCAFDoc_GraphNodeDriver::BinMXCAFDoc_GraphNodeDriver()`
+    /// **Source:** `BinMXCAFDoc_GraphNodeDriver.hxx`:33 - `BinMXCAFDoc_GraphNodeDriver::BinMXCAFDoc_GraphNodeDriver()`
     pub fn BinMXCAFDoc_GraphNodeDriver_ctor_handlemessagemessenger(
-        theMsgDriver: *const HandleMessageMessenger,
+        theMsgDriver: *const Handle_Message_Messenger,
     ) -> crate::OcctResult<*mut BinMXCAFDoc_GraphNodeDriver>;
-    /// **Source:** `BinMXCAFDoc_GraphNodeDriver.hxx`:37 - `BinMXCAFDoc_GraphNodeDriver::NewEmpty()`
+    /// **Source:** `BinMXCAFDoc_GraphNodeDriver.hxx`:35 - `BinMXCAFDoc_GraphNodeDriver::NewEmpty()`
     pub fn BinMXCAFDoc_GraphNodeDriver_new_empty(
         self_: *const BinMXCAFDoc_GraphNodeDriver,
-    ) -> crate::OcctResult<*mut HandleTDFAttribute>;
-    /// **Source:** `BinMXCAFDoc_GraphNodeDriver.hxx`:39 - `BinMXCAFDoc_GraphNodeDriver::Paste()`
-    pub fn BinMXCAFDoc_GraphNodeDriver_paste_persistent_handletdfattribute_rrelocationtable(
+    ) -> crate::OcctResult<*mut Handle_TDF_Attribute>;
+    /// **Source:** `BinMXCAFDoc_GraphNodeDriver.hxx`:37 - `BinMXCAFDoc_GraphNodeDriver::Paste()`
+    pub fn BinMXCAFDoc_GraphNodeDriver_paste(
         self_: *const BinMXCAFDoc_GraphNodeDriver,
         theSource: *const BinObjMgt_Persistent,
-        theTarget: *const HandleTDFAttribute,
+        theTarget: *const Handle_TDF_Attribute,
         theRelocTable: *mut BinObjMgt_RRelocationTable,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BinMXCAFDoc_GraphNodeDriver.hxx`:44 - `BinMXCAFDoc_GraphNodeDriver::Paste()`
-    pub fn BinMXCAFDoc_GraphNodeDriver_paste_handletdfattribute_persistent_indexedmapoftransient(
-        self_: *const BinMXCAFDoc_GraphNodeDriver,
-        theSource: *const HandleTDFAttribute,
-        theTarget: *mut BinObjMgt_Persistent,
-        theRelocTable: *mut TColStd_IndexedMapOfTransient,
-    ) -> *const std::ffi::c_char;
-    /// **Source:** `BinMXCAFDoc_GraphNodeDriver.hxx`:49 - `BinMXCAFDoc_GraphNodeDriver::DynamicType()`
+    /// **Source:** `BinMXCAFDoc_GraphNodeDriver.hxx`:46 - `BinMXCAFDoc_GraphNodeDriver::DynamicType()`
     pub fn BinMXCAFDoc_GraphNodeDriver_dynamic_type(
         self_: *const BinMXCAFDoc_GraphNodeDriver,
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// **Source:** `BinMXCAFDoc_GraphNodeDriver.hxx`:49 - `BinMXCAFDoc_GraphNodeDriver::get_type_name()`
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
+    /// **Source:** `BinMXCAFDoc_GraphNodeDriver.hxx`:46 - `BinMXCAFDoc_GraphNodeDriver::get_type_name()`
     pub fn BinMXCAFDoc_GraphNodeDriver_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
-    /// **Source:** `BinMXCAFDoc_GraphNodeDriver.hxx`:49 - `BinMXCAFDoc_GraphNodeDriver::get_type_descriptor()`
+    /// **Source:** `BinMXCAFDoc_GraphNodeDriver.hxx`:46 - `BinMXCAFDoc_GraphNodeDriver::get_type_descriptor()`
     pub fn BinMXCAFDoc_GraphNodeDriver_get_type_descriptor(
-    ) -> crate::OcctResult<*const HandleStandardType>;
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast BinMXCAFDoc_GraphNodeDriver to BinMDF_ADriver
     pub fn BinMXCAFDoc_GraphNodeDriver_as_BinMDF_ADriver(
         self_: *const BinMXCAFDoc_GraphNodeDriver,
@@ -668,110 +630,103 @@ unsafe extern "C" {
     /// Wrap BinMXCAFDoc_GraphNodeDriver in a Handle
     pub fn BinMXCAFDoc_GraphNodeDriver_to_handle(
         obj: *mut BinMXCAFDoc_GraphNodeDriver,
-    ) -> crate::OcctResult<*mut HandleBinMXCAFDocGraphNodeDriver>;
+    ) -> crate::OcctResult<*mut Handle_BinMXCAFDoc_GraphNodeDriver>;
     /// Destroy Handle<BinMXCAFDoc_GraphNodeDriver>
-    pub fn HandleBinMXCAFDocGraphNodeDriver_destructor(
-        self_: *mut HandleBinMXCAFDocGraphNodeDriver,
+    pub fn Handle_BinMXCAFDoc_GraphNodeDriver_destructor(
+        self_: *mut Handle_BinMXCAFDoc_GraphNodeDriver,
     );
     /// Clone Handle<BinMXCAFDoc_GraphNodeDriver> (increments reference count)
-    pub fn HandleBinMXCAFDocGraphNodeDriver_clone(
-        self_: *const HandleBinMXCAFDocGraphNodeDriver,
-    ) -> crate::OcctResult<*mut HandleBinMXCAFDocGraphNodeDriver>;
+    pub fn Handle_BinMXCAFDoc_GraphNodeDriver_clone(
+        self_: *const Handle_BinMXCAFDoc_GraphNodeDriver,
+    ) -> crate::OcctResult<*mut Handle_BinMXCAFDoc_GraphNodeDriver>;
     /// Check if Handle<BinMXCAFDoc_GraphNodeDriver> is null
-    pub fn HandleBinMXCAFDocGraphNodeDriver_is_null(
-        self_: *const HandleBinMXCAFDocGraphNodeDriver,
+    pub fn Handle_BinMXCAFDoc_GraphNodeDriver_is_null(
+        self_: *const Handle_BinMXCAFDoc_GraphNodeDriver,
     ) -> bool;
     /// Dereference Handle to get *const BinMXCAFDoc_GraphNodeDriver
-    pub fn HandleBinMXCAFDocGraphNodeDriver_get(
-        handle: *const HandleBinMXCAFDocGraphNodeDriver,
+    pub fn Handle_BinMXCAFDoc_GraphNodeDriver_get(
+        handle: *const Handle_BinMXCAFDoc_GraphNodeDriver,
     ) -> crate::OcctResult<*const BinMXCAFDoc_GraphNodeDriver>;
     /// Dereference Handle to get *mut BinMXCAFDoc_GraphNodeDriver
-    pub fn HandleBinMXCAFDocGraphNodeDriver_get_mut(
-        handle: *mut HandleBinMXCAFDocGraphNodeDriver,
+    pub fn Handle_BinMXCAFDoc_GraphNodeDriver_get_mut(
+        handle: *mut Handle_BinMXCAFDoc_GraphNodeDriver,
     ) -> crate::OcctResult<*mut BinMXCAFDoc_GraphNodeDriver>;
     /// Upcast Handle<BinMXCAFDoc_GraphNodeDriver> to Handle<BinMDF_ADriver>
-    pub fn HandleBinMXCAFDocGraphNodeDriver_to_HandleBinMDFADriver(
-        self_: *const HandleBinMXCAFDocGraphNodeDriver,
-    ) -> crate::OcctResult<*mut HandleBinMDFADriver>;
+    pub fn Handle_BinMXCAFDoc_GraphNodeDriver_to_Handle_BinMDF_ADriver(
+        self_: *const Handle_BinMXCAFDoc_GraphNodeDriver,
+    ) -> crate::OcctResult<*mut Handle_BinMDF_ADriver>;
     /// Upcast Handle<BinMXCAFDoc_GraphNodeDriver> to Handle<Standard_Transient>
-    pub fn HandleBinMXCAFDocGraphNodeDriver_to_HandleStandardTransient(
-        self_: *const HandleBinMXCAFDocGraphNodeDriver,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
-    /// Inherited: **Source:** `BinMDF_ADriver.hxx`:41 - `BinMDF_ADriver::SourceType()`
+    pub fn Handle_BinMXCAFDoc_GraphNodeDriver_to_Handle_Standard_Transient(
+        self_: *const Handle_BinMXCAFDoc_GraphNodeDriver,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
+    /// Inherited: **Source:** `BinMDF_ADriver.hxx`:38 - `BinMDF_ADriver::SourceType()`
     pub fn BinMXCAFDoc_GraphNodeDriver_inherited_SourceType(
         self_: *const BinMXCAFDoc_GraphNodeDriver,
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// Inherited: **Source:** `BinMDF_ADriver.hxx`:44 - `BinMDF_ADriver::TypeName()`
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
+    /// Inherited: **Source:** `BinMDF_ADriver.hxx`:41 - `BinMDF_ADriver::TypeName()`
     pub fn BinMXCAFDoc_GraphNodeDriver_inherited_TypeName(
         self_: *const BinMXCAFDoc_GraphNodeDriver,
     ) -> crate::OcctResult<*const TCollection_AsciiString>;
-    /// Inherited: **Source:** `BinMDF_ADriver.hxx`:61 - `BinMDF_ADriver::MessageDriver()`
+    /// Inherited: **Source:** `BinMDF_ADriver.hxx`:59 - `BinMDF_ADriver::MessageDriver()`
     pub fn BinMXCAFDoc_GraphNodeDriver_inherited_MessageDriver(
         self_: *const BinMXCAFDoc_GraphNodeDriver,
-    ) -> crate::OcctResult<*const HandleMessageMessenger>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    ) -> crate::OcctResult<*const Handle_Message_Messenger>;
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn BinMXCAFDoc_GraphNodeDriver_inherited_IsInstance(
         self_: *const BinMXCAFDoc_GraphNodeDriver,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn BinMXCAFDoc_GraphNodeDriver_inherited_IsKind(
         self_: *const BinMXCAFDoc_GraphNodeDriver,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn BinMXCAFDoc_GraphNodeDriver_inherited_This(
         self_: *const BinMXCAFDoc_GraphNodeDriver,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn BinMXCAFDoc_GraphNodeDriver_inherited_GetRefCount(
         self_: *const BinMXCAFDoc_GraphNodeDriver,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn BinMXCAFDoc_GraphNodeDriver_inherited_IncrementRefCounter(
         self_: *mut BinMXCAFDoc_GraphNodeDriver,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn BinMXCAFDoc_GraphNodeDriver_inherited_DecrementRefCounter(
         self_: *mut BinMXCAFDoc_GraphNodeDriver,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn BinMXCAFDoc_GraphNodeDriver_inherited_Delete(
         self_: *const BinMXCAFDoc_GraphNodeDriver,
     ) -> *const std::ffi::c_char;
     // ======================== BinMXCAFDoc_LengthUnitDriver ========================
     pub fn BinMXCAFDoc_LengthUnitDriver_destructor(self_: *mut BinMXCAFDoc_LengthUnitDriver);
-    /// **Source:** `BinMXCAFDoc_LengthUnitDriver.hxx`:34 - `BinMXCAFDoc_LengthUnitDriver::BinMXCAFDoc_LengthUnitDriver()`
+    /// **Source:** `BinMXCAFDoc_LengthUnitDriver.hxx`:32 - `BinMXCAFDoc_LengthUnitDriver::BinMXCAFDoc_LengthUnitDriver()`
     pub fn BinMXCAFDoc_LengthUnitDriver_ctor_handlemessagemessenger(
-        theMsgDriver: *const HandleMessageMessenger,
+        theMsgDriver: *const Handle_Message_Messenger,
     ) -> crate::OcctResult<*mut BinMXCAFDoc_LengthUnitDriver>;
-    /// **Source:** `BinMXCAFDoc_LengthUnitDriver.hxx`:36 - `BinMXCAFDoc_LengthUnitDriver::NewEmpty()`
+    /// **Source:** `BinMXCAFDoc_LengthUnitDriver.hxx`:34 - `BinMXCAFDoc_LengthUnitDriver::NewEmpty()`
     pub fn BinMXCAFDoc_LengthUnitDriver_new_empty(
         self_: *const BinMXCAFDoc_LengthUnitDriver,
-    ) -> crate::OcctResult<*mut HandleTDFAttribute>;
-    /// **Source:** `BinMXCAFDoc_LengthUnitDriver.hxx`:38 - `BinMXCAFDoc_LengthUnitDriver::Paste()`
-    pub fn BinMXCAFDoc_LengthUnitDriver_paste_persistent_handletdfattribute_rrelocationtable(
+    ) -> crate::OcctResult<*mut Handle_TDF_Attribute>;
+    /// **Source:** `BinMXCAFDoc_LengthUnitDriver.hxx`:36 - `BinMXCAFDoc_LengthUnitDriver::Paste()`
+    pub fn BinMXCAFDoc_LengthUnitDriver_paste(
         self_: *const BinMXCAFDoc_LengthUnitDriver,
         theSource: *const BinObjMgt_Persistent,
-        theTarget: *const HandleTDFAttribute,
+        theTarget: *const Handle_TDF_Attribute,
         theRelocTable: *mut BinObjMgt_RRelocationTable,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BinMXCAFDoc_LengthUnitDriver.hxx`:43 - `BinMXCAFDoc_LengthUnitDriver::Paste()`
-    pub fn BinMXCAFDoc_LengthUnitDriver_paste_handletdfattribute_persistent_indexedmapoftransient(
-        self_: *const BinMXCAFDoc_LengthUnitDriver,
-        theSource: *const HandleTDFAttribute,
-        theTarget: *mut BinObjMgt_Persistent,
-        theRelocTable: *mut TColStd_IndexedMapOfTransient,
-    ) -> *const std::ffi::c_char;
-    /// **Source:** `BinMXCAFDoc_LengthUnitDriver.hxx`:48 - `BinMXCAFDoc_LengthUnitDriver::DynamicType()`
+    /// **Source:** `BinMXCAFDoc_LengthUnitDriver.hxx`:45 - `BinMXCAFDoc_LengthUnitDriver::DynamicType()`
     pub fn BinMXCAFDoc_LengthUnitDriver_dynamic_type(
         self_: *const BinMXCAFDoc_LengthUnitDriver,
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// **Source:** `BinMXCAFDoc_LengthUnitDriver.hxx`:48 - `BinMXCAFDoc_LengthUnitDriver::get_type_name()`
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
+    /// **Source:** `BinMXCAFDoc_LengthUnitDriver.hxx`:45 - `BinMXCAFDoc_LengthUnitDriver::get_type_name()`
     pub fn BinMXCAFDoc_LengthUnitDriver_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
-    /// **Source:** `BinMXCAFDoc_LengthUnitDriver.hxx`:48 - `BinMXCAFDoc_LengthUnitDriver::get_type_descriptor()`
+    /// **Source:** `BinMXCAFDoc_LengthUnitDriver.hxx`:45 - `BinMXCAFDoc_LengthUnitDriver::get_type_descriptor()`
     pub fn BinMXCAFDoc_LengthUnitDriver_get_type_descriptor(
-    ) -> crate::OcctResult<*const HandleStandardType>;
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast BinMXCAFDoc_LengthUnitDriver to BinMDF_ADriver
     pub fn BinMXCAFDoc_LengthUnitDriver_as_BinMDF_ADriver(
         self_: *const BinMXCAFDoc_LengthUnitDriver,
@@ -791,129 +746,115 @@ unsafe extern "C" {
     /// Wrap BinMXCAFDoc_LengthUnitDriver in a Handle
     pub fn BinMXCAFDoc_LengthUnitDriver_to_handle(
         obj: *mut BinMXCAFDoc_LengthUnitDriver,
-    ) -> crate::OcctResult<*mut HandleBinMXCAFDocLengthUnitDriver>;
+    ) -> crate::OcctResult<*mut Handle_BinMXCAFDoc_LengthUnitDriver>;
     /// Destroy Handle<BinMXCAFDoc_LengthUnitDriver>
-    pub fn HandleBinMXCAFDocLengthUnitDriver_destructor(
-        self_: *mut HandleBinMXCAFDocLengthUnitDriver,
+    pub fn Handle_BinMXCAFDoc_LengthUnitDriver_destructor(
+        self_: *mut Handle_BinMXCAFDoc_LengthUnitDriver,
     );
     /// Clone Handle<BinMXCAFDoc_LengthUnitDriver> (increments reference count)
-    pub fn HandleBinMXCAFDocLengthUnitDriver_clone(
-        self_: *const HandleBinMXCAFDocLengthUnitDriver,
-    ) -> crate::OcctResult<*mut HandleBinMXCAFDocLengthUnitDriver>;
+    pub fn Handle_BinMXCAFDoc_LengthUnitDriver_clone(
+        self_: *const Handle_BinMXCAFDoc_LengthUnitDriver,
+    ) -> crate::OcctResult<*mut Handle_BinMXCAFDoc_LengthUnitDriver>;
     /// Check if Handle<BinMXCAFDoc_LengthUnitDriver> is null
-    pub fn HandleBinMXCAFDocLengthUnitDriver_is_null(
-        self_: *const HandleBinMXCAFDocLengthUnitDriver,
+    pub fn Handle_BinMXCAFDoc_LengthUnitDriver_is_null(
+        self_: *const Handle_BinMXCAFDoc_LengthUnitDriver,
     ) -> bool;
     /// Dereference Handle to get *const BinMXCAFDoc_LengthUnitDriver
-    pub fn HandleBinMXCAFDocLengthUnitDriver_get(
-        handle: *const HandleBinMXCAFDocLengthUnitDriver,
+    pub fn Handle_BinMXCAFDoc_LengthUnitDriver_get(
+        handle: *const Handle_BinMXCAFDoc_LengthUnitDriver,
     ) -> crate::OcctResult<*const BinMXCAFDoc_LengthUnitDriver>;
     /// Dereference Handle to get *mut BinMXCAFDoc_LengthUnitDriver
-    pub fn HandleBinMXCAFDocLengthUnitDriver_get_mut(
-        handle: *mut HandleBinMXCAFDocLengthUnitDriver,
+    pub fn Handle_BinMXCAFDoc_LengthUnitDriver_get_mut(
+        handle: *mut Handle_BinMXCAFDoc_LengthUnitDriver,
     ) -> crate::OcctResult<*mut BinMXCAFDoc_LengthUnitDriver>;
     /// Upcast Handle<BinMXCAFDoc_LengthUnitDriver> to Handle<BinMDF_ADriver>
-    pub fn HandleBinMXCAFDocLengthUnitDriver_to_HandleBinMDFADriver(
-        self_: *const HandleBinMXCAFDocLengthUnitDriver,
-    ) -> crate::OcctResult<*mut HandleBinMDFADriver>;
+    pub fn Handle_BinMXCAFDoc_LengthUnitDriver_to_Handle_BinMDF_ADriver(
+        self_: *const Handle_BinMXCAFDoc_LengthUnitDriver,
+    ) -> crate::OcctResult<*mut Handle_BinMDF_ADriver>;
     /// Upcast Handle<BinMXCAFDoc_LengthUnitDriver> to Handle<Standard_Transient>
-    pub fn HandleBinMXCAFDocLengthUnitDriver_to_HandleStandardTransient(
-        self_: *const HandleBinMXCAFDocLengthUnitDriver,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
-    /// Inherited: **Source:** `BinMDF_ADriver.hxx`:41 - `BinMDF_ADriver::SourceType()`
+    pub fn Handle_BinMXCAFDoc_LengthUnitDriver_to_Handle_Standard_Transient(
+        self_: *const Handle_BinMXCAFDoc_LengthUnitDriver,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
+    /// Inherited: **Source:** `BinMDF_ADriver.hxx`:38 - `BinMDF_ADriver::SourceType()`
     pub fn BinMXCAFDoc_LengthUnitDriver_inherited_SourceType(
         self_: *const BinMXCAFDoc_LengthUnitDriver,
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// Inherited: **Source:** `BinMDF_ADriver.hxx`:44 - `BinMDF_ADriver::TypeName()`
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
+    /// Inherited: **Source:** `BinMDF_ADriver.hxx`:41 - `BinMDF_ADriver::TypeName()`
     pub fn BinMXCAFDoc_LengthUnitDriver_inherited_TypeName(
         self_: *const BinMXCAFDoc_LengthUnitDriver,
     ) -> crate::OcctResult<*const TCollection_AsciiString>;
-    /// Inherited: **Source:** `BinMDF_ADriver.hxx`:61 - `BinMDF_ADriver::MessageDriver()`
+    /// Inherited: **Source:** `BinMDF_ADriver.hxx`:59 - `BinMDF_ADriver::MessageDriver()`
     pub fn BinMXCAFDoc_LengthUnitDriver_inherited_MessageDriver(
         self_: *const BinMXCAFDoc_LengthUnitDriver,
-    ) -> crate::OcctResult<*const HandleMessageMessenger>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    ) -> crate::OcctResult<*const Handle_Message_Messenger>;
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn BinMXCAFDoc_LengthUnitDriver_inherited_IsInstance(
         self_: *const BinMXCAFDoc_LengthUnitDriver,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn BinMXCAFDoc_LengthUnitDriver_inherited_IsKind(
         self_: *const BinMXCAFDoc_LengthUnitDriver,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn BinMXCAFDoc_LengthUnitDriver_inherited_This(
         self_: *const BinMXCAFDoc_LengthUnitDriver,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn BinMXCAFDoc_LengthUnitDriver_inherited_GetRefCount(
         self_: *const BinMXCAFDoc_LengthUnitDriver,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn BinMXCAFDoc_LengthUnitDriver_inherited_IncrementRefCounter(
         self_: *mut BinMXCAFDoc_LengthUnitDriver,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn BinMXCAFDoc_LengthUnitDriver_inherited_DecrementRefCounter(
         self_: *mut BinMXCAFDoc_LengthUnitDriver,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn BinMXCAFDoc_LengthUnitDriver_inherited_Delete(
         self_: *const BinMXCAFDoc_LengthUnitDriver,
     ) -> *const std::ffi::c_char;
     // ======================== BinMXCAFDoc_LocationDriver ========================
     pub fn BinMXCAFDoc_LocationDriver_destructor(self_: *mut BinMXCAFDoc_LocationDriver);
-    /// **Source:** `BinMXCAFDoc_LocationDriver.hxx`:38 - `BinMXCAFDoc_LocationDriver::BinMXCAFDoc_LocationDriver()`
+    /// **Source:** `BinMXCAFDoc_LocationDriver.hxx`:36 - `BinMXCAFDoc_LocationDriver::BinMXCAFDoc_LocationDriver()`
     pub fn BinMXCAFDoc_LocationDriver_ctor_handlemessagemessenger(
-        theMsgDriver: *const HandleMessageMessenger,
+        theMsgDriver: *const Handle_Message_Messenger,
     ) -> crate::OcctResult<*mut BinMXCAFDoc_LocationDriver>;
-    /// **Source:** `BinMXCAFDoc_LocationDriver.hxx`:40 - `BinMXCAFDoc_LocationDriver::NewEmpty()`
+    /// **Source:** `BinMXCAFDoc_LocationDriver.hxx`:38 - `BinMXCAFDoc_LocationDriver::NewEmpty()`
     pub fn BinMXCAFDoc_LocationDriver_new_empty(
         self_: *const BinMXCAFDoc_LocationDriver,
-    ) -> crate::OcctResult<*mut HandleTDFAttribute>;
-    /// **Source:** `BinMXCAFDoc_LocationDriver.hxx`:42 - `BinMXCAFDoc_LocationDriver::Paste()`
-    pub fn BinMXCAFDoc_LocationDriver_paste_persistent_handletdfattribute_rrelocationtable(
+    ) -> crate::OcctResult<*mut Handle_TDF_Attribute>;
+    /// **Source:** `BinMXCAFDoc_LocationDriver.hxx`:40 - `BinMXCAFDoc_LocationDriver::Paste()`
+    pub fn BinMXCAFDoc_LocationDriver_paste(
         self_: *const BinMXCAFDoc_LocationDriver,
         theSource: *const BinObjMgt_Persistent,
-        theTarget: *const HandleTDFAttribute,
+        theTarget: *const Handle_TDF_Attribute,
         theRelocTable: *mut BinObjMgt_RRelocationTable,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BinMXCAFDoc_LocationDriver.hxx`:47 - `BinMXCAFDoc_LocationDriver::Paste()`
-    pub fn BinMXCAFDoc_LocationDriver_paste_handletdfattribute_persistent_indexedmapoftransient(
-        self_: *const BinMXCAFDoc_LocationDriver,
-        theSource: *const HandleTDFAttribute,
-        theTarget: *mut BinObjMgt_Persistent,
-        theRelocTable: *mut TColStd_IndexedMapOfTransient,
-    ) -> *const std::ffi::c_char;
-    /// **Source:** `BinMXCAFDoc_LocationDriver.hxx`:52 - `BinMXCAFDoc_LocationDriver::Translate()`
-    pub fn BinMXCAFDoc_LocationDriver_translate_persistent_location_rrelocationtable(
+    /// **Source:** `BinMXCAFDoc_LocationDriver.hxx`:49 - `BinMXCAFDoc_LocationDriver::Translate()`
+    pub fn BinMXCAFDoc_LocationDriver_translate(
         self_: *const BinMXCAFDoc_LocationDriver,
         theSource: *const BinObjMgt_Persistent,
         theLoc: *mut TopLoc_Location,
         theMap: *mut BinObjMgt_RRelocationTable,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BinMXCAFDoc_LocationDriver.hxx`:57 - `BinMXCAFDoc_LocationDriver::Translate()`
-    pub fn BinMXCAFDoc_LocationDriver_translate_location_persistent_indexedmapoftransient(
-        self_: *const BinMXCAFDoc_LocationDriver,
-        theLoc: *const TopLoc_Location,
-        theTarget: *mut BinObjMgt_Persistent,
-        theMap: *mut TColStd_IndexedMapOfTransient,
-    ) -> *const std::ffi::c_char;
-    /// **Source:** `BinMXCAFDoc_LocationDriver.hxx`:61 - `BinMXCAFDoc_LocationDriver::SetNSDriver()`
+    /// **Source:** `BinMXCAFDoc_LocationDriver.hxx`:59 - `BinMXCAFDoc_LocationDriver::SetNSDriver()`
     pub fn BinMXCAFDoc_LocationDriver_set_ns_driver(
         self_: *mut BinMXCAFDoc_LocationDriver,
-        theNSDriver: *const HandleBinMNamingNamedShapeDriver,
+        theNSDriver: *const Handle_BinMNaming_NamedShapeDriver,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BinMXCAFDoc_LocationDriver.hxx`:66 - `BinMXCAFDoc_LocationDriver::DynamicType()`
+    /// **Source:** `BinMXCAFDoc_LocationDriver.hxx`:64 - `BinMXCAFDoc_LocationDriver::DynamicType()`
     pub fn BinMXCAFDoc_LocationDriver_dynamic_type(
         self_: *const BinMXCAFDoc_LocationDriver,
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// **Source:** `BinMXCAFDoc_LocationDriver.hxx`:66 - `BinMXCAFDoc_LocationDriver::get_type_name()`
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
+    /// **Source:** `BinMXCAFDoc_LocationDriver.hxx`:64 - `BinMXCAFDoc_LocationDriver::get_type_name()`
     pub fn BinMXCAFDoc_LocationDriver_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
-    /// **Source:** `BinMXCAFDoc_LocationDriver.hxx`:66 - `BinMXCAFDoc_LocationDriver::get_type_descriptor()`
+    /// **Source:** `BinMXCAFDoc_LocationDriver.hxx`:64 - `BinMXCAFDoc_LocationDriver::get_type_descriptor()`
     pub fn BinMXCAFDoc_LocationDriver_get_type_descriptor(
-    ) -> crate::OcctResult<*const HandleStandardType>;
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast BinMXCAFDoc_LocationDriver to BinMDF_ADriver
     pub fn BinMXCAFDoc_LocationDriver_as_BinMDF_ADriver(
         self_: *const BinMXCAFDoc_LocationDriver,
@@ -933,108 +874,103 @@ unsafe extern "C" {
     /// Wrap BinMXCAFDoc_LocationDriver in a Handle
     pub fn BinMXCAFDoc_LocationDriver_to_handle(
         obj: *mut BinMXCAFDoc_LocationDriver,
-    ) -> crate::OcctResult<*mut HandleBinMXCAFDocLocationDriver>;
+    ) -> crate::OcctResult<*mut Handle_BinMXCAFDoc_LocationDriver>;
     /// Destroy Handle<BinMXCAFDoc_LocationDriver>
-    pub fn HandleBinMXCAFDocLocationDriver_destructor(self_: *mut HandleBinMXCAFDocLocationDriver);
+    pub fn Handle_BinMXCAFDoc_LocationDriver_destructor(
+        self_: *mut Handle_BinMXCAFDoc_LocationDriver,
+    );
     /// Clone Handle<BinMXCAFDoc_LocationDriver> (increments reference count)
-    pub fn HandleBinMXCAFDocLocationDriver_clone(
-        self_: *const HandleBinMXCAFDocLocationDriver,
-    ) -> crate::OcctResult<*mut HandleBinMXCAFDocLocationDriver>;
+    pub fn Handle_BinMXCAFDoc_LocationDriver_clone(
+        self_: *const Handle_BinMXCAFDoc_LocationDriver,
+    ) -> crate::OcctResult<*mut Handle_BinMXCAFDoc_LocationDriver>;
     /// Check if Handle<BinMXCAFDoc_LocationDriver> is null
-    pub fn HandleBinMXCAFDocLocationDriver_is_null(
-        self_: *const HandleBinMXCAFDocLocationDriver,
+    pub fn Handle_BinMXCAFDoc_LocationDriver_is_null(
+        self_: *const Handle_BinMXCAFDoc_LocationDriver,
     ) -> bool;
     /// Dereference Handle to get *const BinMXCAFDoc_LocationDriver
-    pub fn HandleBinMXCAFDocLocationDriver_get(
-        handle: *const HandleBinMXCAFDocLocationDriver,
+    pub fn Handle_BinMXCAFDoc_LocationDriver_get(
+        handle: *const Handle_BinMXCAFDoc_LocationDriver,
     ) -> crate::OcctResult<*const BinMXCAFDoc_LocationDriver>;
     /// Dereference Handle to get *mut BinMXCAFDoc_LocationDriver
-    pub fn HandleBinMXCAFDocLocationDriver_get_mut(
-        handle: *mut HandleBinMXCAFDocLocationDriver,
+    pub fn Handle_BinMXCAFDoc_LocationDriver_get_mut(
+        handle: *mut Handle_BinMXCAFDoc_LocationDriver,
     ) -> crate::OcctResult<*mut BinMXCAFDoc_LocationDriver>;
     /// Upcast Handle<BinMXCAFDoc_LocationDriver> to Handle<BinMDF_ADriver>
-    pub fn HandleBinMXCAFDocLocationDriver_to_HandleBinMDFADriver(
-        self_: *const HandleBinMXCAFDocLocationDriver,
-    ) -> crate::OcctResult<*mut HandleBinMDFADriver>;
+    pub fn Handle_BinMXCAFDoc_LocationDriver_to_Handle_BinMDF_ADriver(
+        self_: *const Handle_BinMXCAFDoc_LocationDriver,
+    ) -> crate::OcctResult<*mut Handle_BinMDF_ADriver>;
     /// Upcast Handle<BinMXCAFDoc_LocationDriver> to Handle<Standard_Transient>
-    pub fn HandleBinMXCAFDocLocationDriver_to_HandleStandardTransient(
-        self_: *const HandleBinMXCAFDocLocationDriver,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
-    /// Inherited: **Source:** `BinMDF_ADriver.hxx`:41 - `BinMDF_ADriver::SourceType()`
+    pub fn Handle_BinMXCAFDoc_LocationDriver_to_Handle_Standard_Transient(
+        self_: *const Handle_BinMXCAFDoc_LocationDriver,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
+    /// Inherited: **Source:** `BinMDF_ADriver.hxx`:38 - `BinMDF_ADriver::SourceType()`
     pub fn BinMXCAFDoc_LocationDriver_inherited_SourceType(
         self_: *const BinMXCAFDoc_LocationDriver,
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// Inherited: **Source:** `BinMDF_ADriver.hxx`:44 - `BinMDF_ADriver::TypeName()`
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
+    /// Inherited: **Source:** `BinMDF_ADriver.hxx`:41 - `BinMDF_ADriver::TypeName()`
     pub fn BinMXCAFDoc_LocationDriver_inherited_TypeName(
         self_: *const BinMXCAFDoc_LocationDriver,
     ) -> crate::OcctResult<*const TCollection_AsciiString>;
-    /// Inherited: **Source:** `BinMDF_ADriver.hxx`:61 - `BinMDF_ADriver::MessageDriver()`
+    /// Inherited: **Source:** `BinMDF_ADriver.hxx`:59 - `BinMDF_ADriver::MessageDriver()`
     pub fn BinMXCAFDoc_LocationDriver_inherited_MessageDriver(
         self_: *const BinMXCAFDoc_LocationDriver,
-    ) -> crate::OcctResult<*const HandleMessageMessenger>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    ) -> crate::OcctResult<*const Handle_Message_Messenger>;
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn BinMXCAFDoc_LocationDriver_inherited_IsInstance(
         self_: *const BinMXCAFDoc_LocationDriver,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn BinMXCAFDoc_LocationDriver_inherited_IsKind(
         self_: *const BinMXCAFDoc_LocationDriver,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn BinMXCAFDoc_LocationDriver_inherited_This(
         self_: *const BinMXCAFDoc_LocationDriver,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn BinMXCAFDoc_LocationDriver_inherited_GetRefCount(
         self_: *const BinMXCAFDoc_LocationDriver,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn BinMXCAFDoc_LocationDriver_inherited_IncrementRefCounter(
         self_: *mut BinMXCAFDoc_LocationDriver,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn BinMXCAFDoc_LocationDriver_inherited_DecrementRefCounter(
         self_: *mut BinMXCAFDoc_LocationDriver,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn BinMXCAFDoc_LocationDriver_inherited_Delete(
         self_: *const BinMXCAFDoc_LocationDriver,
     ) -> *const std::ffi::c_char;
     // ======================== BinMXCAFDoc_MaterialDriver ========================
     pub fn BinMXCAFDoc_MaterialDriver_destructor(self_: *mut BinMXCAFDoc_MaterialDriver);
-    /// **Source:** `BinMXCAFDoc_MaterialDriver.hxx`:35 - `BinMXCAFDoc_MaterialDriver::BinMXCAFDoc_MaterialDriver()`
+    /// **Source:** `BinMXCAFDoc_MaterialDriver.hxx`:33 - `BinMXCAFDoc_MaterialDriver::BinMXCAFDoc_MaterialDriver()`
     pub fn BinMXCAFDoc_MaterialDriver_ctor_handlemessagemessenger(
-        theMsgDriver: *const HandleMessageMessenger,
+        theMsgDriver: *const Handle_Message_Messenger,
     ) -> crate::OcctResult<*mut BinMXCAFDoc_MaterialDriver>;
-    /// **Source:** `BinMXCAFDoc_MaterialDriver.hxx`:37 - `BinMXCAFDoc_MaterialDriver::NewEmpty()`
+    /// **Source:** `BinMXCAFDoc_MaterialDriver.hxx`:35 - `BinMXCAFDoc_MaterialDriver::NewEmpty()`
     pub fn BinMXCAFDoc_MaterialDriver_new_empty(
         self_: *const BinMXCAFDoc_MaterialDriver,
-    ) -> crate::OcctResult<*mut HandleTDFAttribute>;
-    /// **Source:** `BinMXCAFDoc_MaterialDriver.hxx`:39 - `BinMXCAFDoc_MaterialDriver::Paste()`
-    pub fn BinMXCAFDoc_MaterialDriver_paste_persistent_handletdfattribute_rrelocationtable(
+    ) -> crate::OcctResult<*mut Handle_TDF_Attribute>;
+    /// **Source:** `BinMXCAFDoc_MaterialDriver.hxx`:37 - `BinMXCAFDoc_MaterialDriver::Paste()`
+    pub fn BinMXCAFDoc_MaterialDriver_paste(
         self_: *const BinMXCAFDoc_MaterialDriver,
         theSource: *const BinObjMgt_Persistent,
-        theTarget: *const HandleTDFAttribute,
+        theTarget: *const Handle_TDF_Attribute,
         theRelocTable: *mut BinObjMgt_RRelocationTable,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BinMXCAFDoc_MaterialDriver.hxx`:44 - `BinMXCAFDoc_MaterialDriver::Paste()`
-    pub fn BinMXCAFDoc_MaterialDriver_paste_handletdfattribute_persistent_indexedmapoftransient(
-        self_: *const BinMXCAFDoc_MaterialDriver,
-        theSource: *const HandleTDFAttribute,
-        theTarget: *mut BinObjMgt_Persistent,
-        theRelocTable: *mut TColStd_IndexedMapOfTransient,
-    ) -> *const std::ffi::c_char;
-    /// **Source:** `BinMXCAFDoc_MaterialDriver.hxx`:49 - `BinMXCAFDoc_MaterialDriver::DynamicType()`
+    /// **Source:** `BinMXCAFDoc_MaterialDriver.hxx`:46 - `BinMXCAFDoc_MaterialDriver::DynamicType()`
     pub fn BinMXCAFDoc_MaterialDriver_dynamic_type(
         self_: *const BinMXCAFDoc_MaterialDriver,
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// **Source:** `BinMXCAFDoc_MaterialDriver.hxx`:49 - `BinMXCAFDoc_MaterialDriver::get_type_name()`
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
+    /// **Source:** `BinMXCAFDoc_MaterialDriver.hxx`:46 - `BinMXCAFDoc_MaterialDriver::get_type_name()`
     pub fn BinMXCAFDoc_MaterialDriver_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
-    /// **Source:** `BinMXCAFDoc_MaterialDriver.hxx`:49 - `BinMXCAFDoc_MaterialDriver::get_type_descriptor()`
+    /// **Source:** `BinMXCAFDoc_MaterialDriver.hxx`:46 - `BinMXCAFDoc_MaterialDriver::get_type_descriptor()`
     pub fn BinMXCAFDoc_MaterialDriver_get_type_descriptor(
-    ) -> crate::OcctResult<*const HandleStandardType>;
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast BinMXCAFDoc_MaterialDriver to BinMDF_ADriver
     pub fn BinMXCAFDoc_MaterialDriver_as_BinMDF_ADriver(
         self_: *const BinMXCAFDoc_MaterialDriver,
@@ -1054,109 +990,104 @@ unsafe extern "C" {
     /// Wrap BinMXCAFDoc_MaterialDriver in a Handle
     pub fn BinMXCAFDoc_MaterialDriver_to_handle(
         obj: *mut BinMXCAFDoc_MaterialDriver,
-    ) -> crate::OcctResult<*mut HandleBinMXCAFDocMaterialDriver>;
+    ) -> crate::OcctResult<*mut Handle_BinMXCAFDoc_MaterialDriver>;
     /// Destroy Handle<BinMXCAFDoc_MaterialDriver>
-    pub fn HandleBinMXCAFDocMaterialDriver_destructor(self_: *mut HandleBinMXCAFDocMaterialDriver);
+    pub fn Handle_BinMXCAFDoc_MaterialDriver_destructor(
+        self_: *mut Handle_BinMXCAFDoc_MaterialDriver,
+    );
     /// Clone Handle<BinMXCAFDoc_MaterialDriver> (increments reference count)
-    pub fn HandleBinMXCAFDocMaterialDriver_clone(
-        self_: *const HandleBinMXCAFDocMaterialDriver,
-    ) -> crate::OcctResult<*mut HandleBinMXCAFDocMaterialDriver>;
+    pub fn Handle_BinMXCAFDoc_MaterialDriver_clone(
+        self_: *const Handle_BinMXCAFDoc_MaterialDriver,
+    ) -> crate::OcctResult<*mut Handle_BinMXCAFDoc_MaterialDriver>;
     /// Check if Handle<BinMXCAFDoc_MaterialDriver> is null
-    pub fn HandleBinMXCAFDocMaterialDriver_is_null(
-        self_: *const HandleBinMXCAFDocMaterialDriver,
+    pub fn Handle_BinMXCAFDoc_MaterialDriver_is_null(
+        self_: *const Handle_BinMXCAFDoc_MaterialDriver,
     ) -> bool;
     /// Dereference Handle to get *const BinMXCAFDoc_MaterialDriver
-    pub fn HandleBinMXCAFDocMaterialDriver_get(
-        handle: *const HandleBinMXCAFDocMaterialDriver,
+    pub fn Handle_BinMXCAFDoc_MaterialDriver_get(
+        handle: *const Handle_BinMXCAFDoc_MaterialDriver,
     ) -> crate::OcctResult<*const BinMXCAFDoc_MaterialDriver>;
     /// Dereference Handle to get *mut BinMXCAFDoc_MaterialDriver
-    pub fn HandleBinMXCAFDocMaterialDriver_get_mut(
-        handle: *mut HandleBinMXCAFDocMaterialDriver,
+    pub fn Handle_BinMXCAFDoc_MaterialDriver_get_mut(
+        handle: *mut Handle_BinMXCAFDoc_MaterialDriver,
     ) -> crate::OcctResult<*mut BinMXCAFDoc_MaterialDriver>;
     /// Upcast Handle<BinMXCAFDoc_MaterialDriver> to Handle<BinMDF_ADriver>
-    pub fn HandleBinMXCAFDocMaterialDriver_to_HandleBinMDFADriver(
-        self_: *const HandleBinMXCAFDocMaterialDriver,
-    ) -> crate::OcctResult<*mut HandleBinMDFADriver>;
+    pub fn Handle_BinMXCAFDoc_MaterialDriver_to_Handle_BinMDF_ADriver(
+        self_: *const Handle_BinMXCAFDoc_MaterialDriver,
+    ) -> crate::OcctResult<*mut Handle_BinMDF_ADriver>;
     /// Upcast Handle<BinMXCAFDoc_MaterialDriver> to Handle<Standard_Transient>
-    pub fn HandleBinMXCAFDocMaterialDriver_to_HandleStandardTransient(
-        self_: *const HandleBinMXCAFDocMaterialDriver,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
-    /// Inherited: **Source:** `BinMDF_ADriver.hxx`:41 - `BinMDF_ADriver::SourceType()`
+    pub fn Handle_BinMXCAFDoc_MaterialDriver_to_Handle_Standard_Transient(
+        self_: *const Handle_BinMXCAFDoc_MaterialDriver,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
+    /// Inherited: **Source:** `BinMDF_ADriver.hxx`:38 - `BinMDF_ADriver::SourceType()`
     pub fn BinMXCAFDoc_MaterialDriver_inherited_SourceType(
         self_: *const BinMXCAFDoc_MaterialDriver,
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// Inherited: **Source:** `BinMDF_ADriver.hxx`:44 - `BinMDF_ADriver::TypeName()`
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
+    /// Inherited: **Source:** `BinMDF_ADriver.hxx`:41 - `BinMDF_ADriver::TypeName()`
     pub fn BinMXCAFDoc_MaterialDriver_inherited_TypeName(
         self_: *const BinMXCAFDoc_MaterialDriver,
     ) -> crate::OcctResult<*const TCollection_AsciiString>;
-    /// Inherited: **Source:** `BinMDF_ADriver.hxx`:61 - `BinMDF_ADriver::MessageDriver()`
+    /// Inherited: **Source:** `BinMDF_ADriver.hxx`:59 - `BinMDF_ADriver::MessageDriver()`
     pub fn BinMXCAFDoc_MaterialDriver_inherited_MessageDriver(
         self_: *const BinMXCAFDoc_MaterialDriver,
-    ) -> crate::OcctResult<*const HandleMessageMessenger>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    ) -> crate::OcctResult<*const Handle_Message_Messenger>;
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn BinMXCAFDoc_MaterialDriver_inherited_IsInstance(
         self_: *const BinMXCAFDoc_MaterialDriver,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn BinMXCAFDoc_MaterialDriver_inherited_IsKind(
         self_: *const BinMXCAFDoc_MaterialDriver,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn BinMXCAFDoc_MaterialDriver_inherited_This(
         self_: *const BinMXCAFDoc_MaterialDriver,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn BinMXCAFDoc_MaterialDriver_inherited_GetRefCount(
         self_: *const BinMXCAFDoc_MaterialDriver,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn BinMXCAFDoc_MaterialDriver_inherited_IncrementRefCounter(
         self_: *mut BinMXCAFDoc_MaterialDriver,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn BinMXCAFDoc_MaterialDriver_inherited_DecrementRefCounter(
         self_: *mut BinMXCAFDoc_MaterialDriver,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn BinMXCAFDoc_MaterialDriver_inherited_Delete(
         self_: *const BinMXCAFDoc_MaterialDriver,
     ) -> *const std::ffi::c_char;
     // ======================== BinMXCAFDoc_NoteBinDataDriver ========================
     pub fn BinMXCAFDoc_NoteBinDataDriver_destructor(self_: *mut BinMXCAFDoc_NoteBinDataDriver);
-    /// **Source:** `BinMXCAFDoc_NoteBinDataDriver.hxx`:27 - `BinMXCAFDoc_NoteBinDataDriver::BinMXCAFDoc_NoteBinDataDriver()`
+    /// **Source:** `BinMXCAFDoc_NoteBinDataDriver.hxx`:24 - `BinMXCAFDoc_NoteBinDataDriver::BinMXCAFDoc_NoteBinDataDriver()`
     pub fn BinMXCAFDoc_NoteBinDataDriver_ctor_handlemessagemessenger(
-        theMsgDriver: *const HandleMessageMessenger,
+        theMsgDriver: *const Handle_Message_Messenger,
     ) -> crate::OcctResult<*mut BinMXCAFDoc_NoteBinDataDriver>;
-    /// **Source:** `BinMXCAFDoc_NoteBinDataDriver.hxx`:29 - `BinMXCAFDoc_NoteBinDataDriver::NewEmpty()`
+    /// **Source:** `BinMXCAFDoc_NoteBinDataDriver.hxx`:26 - `BinMXCAFDoc_NoteBinDataDriver::NewEmpty()`
     pub fn BinMXCAFDoc_NoteBinDataDriver_new_empty(
         self_: *const BinMXCAFDoc_NoteBinDataDriver,
-    ) -> crate::OcctResult<*mut HandleTDFAttribute>;
-    /// **Source:** `BinMXCAFDoc_NoteBinDataDriver.hxx`:32 - `BinMXCAFDoc_NoteBinDataDriver::Paste()`
-    pub fn BinMXCAFDoc_NoteBinDataDriver_paste_persistent_handletdfattribute_rrelocationtable(
+    ) -> crate::OcctResult<*mut Handle_TDF_Attribute>;
+    /// **Source:** `BinMXCAFDoc_NoteBinDataDriver.hxx`:28 - `BinMXCAFDoc_NoteBinDataDriver::Paste()`
+    pub fn BinMXCAFDoc_NoteBinDataDriver_paste(
         self_: *const BinMXCAFDoc_NoteBinDataDriver,
         theSource: *const BinObjMgt_Persistent,
-        theTarget: *const HandleTDFAttribute,
+        theTarget: *const Handle_TDF_Attribute,
         theRelocTable: *mut BinObjMgt_RRelocationTable,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BinMXCAFDoc_NoteBinDataDriver.hxx`:36 - `BinMXCAFDoc_NoteBinDataDriver::Paste()`
-    pub fn BinMXCAFDoc_NoteBinDataDriver_paste_handletdfattribute_persistent_indexedmapoftransient(
-        self_: *const BinMXCAFDoc_NoteBinDataDriver,
-        theSource: *const HandleTDFAttribute,
-        theTarget: *mut BinObjMgt_Persistent,
-        theRelocTable: *mut TColStd_IndexedMapOfTransient,
-    ) -> *const std::ffi::c_char;
-    /// **Source:** `BinMXCAFDoc_NoteBinDataDriver.hxx`:40 - `BinMXCAFDoc_NoteBinDataDriver::DynamicType()`
+    /// **Source:** `BinMXCAFDoc_NoteBinDataDriver.hxx`:37 - `BinMXCAFDoc_NoteBinDataDriver::DynamicType()`
     pub fn BinMXCAFDoc_NoteBinDataDriver_dynamic_type(
         self_: *const BinMXCAFDoc_NoteBinDataDriver,
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// **Source:** `BinMXCAFDoc_NoteBinDataDriver.hxx`:40 - `BinMXCAFDoc_NoteBinDataDriver::get_type_name()`
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
+    /// **Source:** `BinMXCAFDoc_NoteBinDataDriver.hxx`:37 - `BinMXCAFDoc_NoteBinDataDriver::get_type_name()`
     pub fn BinMXCAFDoc_NoteBinDataDriver_get_type_name(
     ) -> crate::OcctResult<*const std::ffi::c_char>;
-    /// **Source:** `BinMXCAFDoc_NoteBinDataDriver.hxx`:40 - `BinMXCAFDoc_NoteBinDataDriver::get_type_descriptor()`
+    /// **Source:** `BinMXCAFDoc_NoteBinDataDriver.hxx`:37 - `BinMXCAFDoc_NoteBinDataDriver::get_type_descriptor()`
     pub fn BinMXCAFDoc_NoteBinDataDriver_get_type_descriptor(
-    ) -> crate::OcctResult<*const HandleStandardType>;
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast BinMXCAFDoc_NoteBinDataDriver to BinMXCAFDoc_NoteDriver
     pub fn BinMXCAFDoc_NoteBinDataDriver_as_BinMXCAFDoc_NoteDriver(
         self_: *const BinMXCAFDoc_NoteBinDataDriver,
@@ -1184,115 +1115,108 @@ unsafe extern "C" {
     /// Wrap BinMXCAFDoc_NoteBinDataDriver in a Handle
     pub fn BinMXCAFDoc_NoteBinDataDriver_to_handle(
         obj: *mut BinMXCAFDoc_NoteBinDataDriver,
-    ) -> crate::OcctResult<*mut HandleBinMXCAFDocNoteBinDataDriver>;
+    ) -> crate::OcctResult<*mut Handle_BinMXCAFDoc_NoteBinDataDriver>;
     /// Destroy Handle<BinMXCAFDoc_NoteBinDataDriver>
-    pub fn HandleBinMXCAFDocNoteBinDataDriver_destructor(
-        self_: *mut HandleBinMXCAFDocNoteBinDataDriver,
+    pub fn Handle_BinMXCAFDoc_NoteBinDataDriver_destructor(
+        self_: *mut Handle_BinMXCAFDoc_NoteBinDataDriver,
     );
     /// Clone Handle<BinMXCAFDoc_NoteBinDataDriver> (increments reference count)
-    pub fn HandleBinMXCAFDocNoteBinDataDriver_clone(
-        self_: *const HandleBinMXCAFDocNoteBinDataDriver,
-    ) -> crate::OcctResult<*mut HandleBinMXCAFDocNoteBinDataDriver>;
+    pub fn Handle_BinMXCAFDoc_NoteBinDataDriver_clone(
+        self_: *const Handle_BinMXCAFDoc_NoteBinDataDriver,
+    ) -> crate::OcctResult<*mut Handle_BinMXCAFDoc_NoteBinDataDriver>;
     /// Check if Handle<BinMXCAFDoc_NoteBinDataDriver> is null
-    pub fn HandleBinMXCAFDocNoteBinDataDriver_is_null(
-        self_: *const HandleBinMXCAFDocNoteBinDataDriver,
+    pub fn Handle_BinMXCAFDoc_NoteBinDataDriver_is_null(
+        self_: *const Handle_BinMXCAFDoc_NoteBinDataDriver,
     ) -> bool;
     /// Dereference Handle to get *const BinMXCAFDoc_NoteBinDataDriver
-    pub fn HandleBinMXCAFDocNoteBinDataDriver_get(
-        handle: *const HandleBinMXCAFDocNoteBinDataDriver,
+    pub fn Handle_BinMXCAFDoc_NoteBinDataDriver_get(
+        handle: *const Handle_BinMXCAFDoc_NoteBinDataDriver,
     ) -> crate::OcctResult<*const BinMXCAFDoc_NoteBinDataDriver>;
     /// Dereference Handle to get *mut BinMXCAFDoc_NoteBinDataDriver
-    pub fn HandleBinMXCAFDocNoteBinDataDriver_get_mut(
-        handle: *mut HandleBinMXCAFDocNoteBinDataDriver,
+    pub fn Handle_BinMXCAFDoc_NoteBinDataDriver_get_mut(
+        handle: *mut Handle_BinMXCAFDoc_NoteBinDataDriver,
     ) -> crate::OcctResult<*mut BinMXCAFDoc_NoteBinDataDriver>;
     /// Upcast Handle<BinMXCAFDoc_NoteBinDataDriver> to Handle<BinMXCAFDoc_NoteDriver>
-    pub fn HandleBinMXCAFDocNoteBinDataDriver_to_HandleBinMXCAFDocNoteDriver(
-        self_: *const HandleBinMXCAFDocNoteBinDataDriver,
-    ) -> crate::OcctResult<*mut HandleBinMXCAFDocNoteDriver>;
+    pub fn Handle_BinMXCAFDoc_NoteBinDataDriver_to_Handle_BinMXCAFDoc_NoteDriver(
+        self_: *const Handle_BinMXCAFDoc_NoteBinDataDriver,
+    ) -> crate::OcctResult<*mut Handle_BinMXCAFDoc_NoteDriver>;
     /// Upcast Handle<BinMXCAFDoc_NoteBinDataDriver> to Handle<BinMDF_ADriver>
-    pub fn HandleBinMXCAFDocNoteBinDataDriver_to_HandleBinMDFADriver(
-        self_: *const HandleBinMXCAFDocNoteBinDataDriver,
-    ) -> crate::OcctResult<*mut HandleBinMDFADriver>;
+    pub fn Handle_BinMXCAFDoc_NoteBinDataDriver_to_Handle_BinMDF_ADriver(
+        self_: *const Handle_BinMXCAFDoc_NoteBinDataDriver,
+    ) -> crate::OcctResult<*mut Handle_BinMDF_ADriver>;
     /// Upcast Handle<BinMXCAFDoc_NoteBinDataDriver> to Handle<Standard_Transient>
-    pub fn HandleBinMXCAFDocNoteBinDataDriver_to_HandleStandardTransient(
-        self_: *const HandleBinMXCAFDocNoteBinDataDriver,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
-    /// Inherited: **Source:** `BinMDF_ADriver.hxx`:41 - `BinMDF_ADriver::SourceType()`
+    pub fn Handle_BinMXCAFDoc_NoteBinDataDriver_to_Handle_Standard_Transient(
+        self_: *const Handle_BinMXCAFDoc_NoteBinDataDriver,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
+    /// Inherited: **Source:** `BinMDF_ADriver.hxx`:38 - `BinMDF_ADriver::SourceType()`
     pub fn BinMXCAFDoc_NoteBinDataDriver_inherited_SourceType(
         self_: *const BinMXCAFDoc_NoteBinDataDriver,
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// Inherited: **Source:** `BinMDF_ADriver.hxx`:44 - `BinMDF_ADriver::TypeName()`
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
+    /// Inherited: **Source:** `BinMDF_ADriver.hxx`:41 - `BinMDF_ADriver::TypeName()`
     pub fn BinMXCAFDoc_NoteBinDataDriver_inherited_TypeName(
         self_: *const BinMXCAFDoc_NoteBinDataDriver,
     ) -> crate::OcctResult<*const TCollection_AsciiString>;
-    /// Inherited: **Source:** `BinMDF_ADriver.hxx`:61 - `BinMDF_ADriver::MessageDriver()`
+    /// Inherited: **Source:** `BinMDF_ADriver.hxx`:59 - `BinMDF_ADriver::MessageDriver()`
     pub fn BinMXCAFDoc_NoteBinDataDriver_inherited_MessageDriver(
         self_: *const BinMXCAFDoc_NoteBinDataDriver,
-    ) -> crate::OcctResult<*const HandleMessageMessenger>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    ) -> crate::OcctResult<*const Handle_Message_Messenger>;
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn BinMXCAFDoc_NoteBinDataDriver_inherited_IsInstance(
         self_: *const BinMXCAFDoc_NoteBinDataDriver,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn BinMXCAFDoc_NoteBinDataDriver_inherited_IsKind(
         self_: *const BinMXCAFDoc_NoteBinDataDriver,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn BinMXCAFDoc_NoteBinDataDriver_inherited_This(
         self_: *const BinMXCAFDoc_NoteBinDataDriver,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn BinMXCAFDoc_NoteBinDataDriver_inherited_GetRefCount(
         self_: *const BinMXCAFDoc_NoteBinDataDriver,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn BinMXCAFDoc_NoteBinDataDriver_inherited_IncrementRefCounter(
         self_: *mut BinMXCAFDoc_NoteBinDataDriver,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn BinMXCAFDoc_NoteBinDataDriver_inherited_DecrementRefCounter(
         self_: *mut BinMXCAFDoc_NoteBinDataDriver,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn BinMXCAFDoc_NoteBinDataDriver_inherited_Delete(
         self_: *const BinMXCAFDoc_NoteBinDataDriver,
     ) -> *const std::ffi::c_char;
     // ======================== BinMXCAFDoc_NoteCommentDriver ========================
     pub fn BinMXCAFDoc_NoteCommentDriver_destructor(self_: *mut BinMXCAFDoc_NoteCommentDriver);
-    /// **Source:** `BinMXCAFDoc_NoteCommentDriver.hxx`:27 - `BinMXCAFDoc_NoteCommentDriver::BinMXCAFDoc_NoteCommentDriver()`
+    /// **Source:** `BinMXCAFDoc_NoteCommentDriver.hxx`:24 - `BinMXCAFDoc_NoteCommentDriver::BinMXCAFDoc_NoteCommentDriver()`
     pub fn BinMXCAFDoc_NoteCommentDriver_ctor_handlemessagemessenger(
-        theMsgDriver: *const HandleMessageMessenger,
+        theMsgDriver: *const Handle_Message_Messenger,
     ) -> crate::OcctResult<*mut BinMXCAFDoc_NoteCommentDriver>;
-    /// **Source:** `BinMXCAFDoc_NoteCommentDriver.hxx`:29 - `BinMXCAFDoc_NoteCommentDriver::NewEmpty()`
+    /// **Source:** `BinMXCAFDoc_NoteCommentDriver.hxx`:26 - `BinMXCAFDoc_NoteCommentDriver::NewEmpty()`
     pub fn BinMXCAFDoc_NoteCommentDriver_new_empty(
         self_: *const BinMXCAFDoc_NoteCommentDriver,
-    ) -> crate::OcctResult<*mut HandleTDFAttribute>;
-    /// **Source:** `BinMXCAFDoc_NoteCommentDriver.hxx`:32 - `BinMXCAFDoc_NoteCommentDriver::Paste()`
-    pub fn BinMXCAFDoc_NoteCommentDriver_paste_persistent_handletdfattribute_rrelocationtable(
+    ) -> crate::OcctResult<*mut Handle_TDF_Attribute>;
+    /// **Source:** `BinMXCAFDoc_NoteCommentDriver.hxx`:28 - `BinMXCAFDoc_NoteCommentDriver::Paste()`
+    pub fn BinMXCAFDoc_NoteCommentDriver_paste(
         self_: *const BinMXCAFDoc_NoteCommentDriver,
         theSource: *const BinObjMgt_Persistent,
-        theTarget: *const HandleTDFAttribute,
+        theTarget: *const Handle_TDF_Attribute,
         theRelocTable: *mut BinObjMgt_RRelocationTable,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BinMXCAFDoc_NoteCommentDriver.hxx`:36 - `BinMXCAFDoc_NoteCommentDriver::Paste()`
-    pub fn BinMXCAFDoc_NoteCommentDriver_paste_handletdfattribute_persistent_indexedmapoftransient(
-        self_: *const BinMXCAFDoc_NoteCommentDriver,
-        theSource: *const HandleTDFAttribute,
-        theTarget: *mut BinObjMgt_Persistent,
-        theRelocTable: *mut TColStd_IndexedMapOfTransient,
-    ) -> *const std::ffi::c_char;
-    /// **Source:** `BinMXCAFDoc_NoteCommentDriver.hxx`:40 - `BinMXCAFDoc_NoteCommentDriver::DynamicType()`
+    /// **Source:** `BinMXCAFDoc_NoteCommentDriver.hxx`:37 - `BinMXCAFDoc_NoteCommentDriver::DynamicType()`
     pub fn BinMXCAFDoc_NoteCommentDriver_dynamic_type(
         self_: *const BinMXCAFDoc_NoteCommentDriver,
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// **Source:** `BinMXCAFDoc_NoteCommentDriver.hxx`:40 - `BinMXCAFDoc_NoteCommentDriver::get_type_name()`
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
+    /// **Source:** `BinMXCAFDoc_NoteCommentDriver.hxx`:37 - `BinMXCAFDoc_NoteCommentDriver::get_type_name()`
     pub fn BinMXCAFDoc_NoteCommentDriver_get_type_name(
     ) -> crate::OcctResult<*const std::ffi::c_char>;
-    /// **Source:** `BinMXCAFDoc_NoteCommentDriver.hxx`:40 - `BinMXCAFDoc_NoteCommentDriver::get_type_descriptor()`
+    /// **Source:** `BinMXCAFDoc_NoteCommentDriver.hxx`:37 - `BinMXCAFDoc_NoteCommentDriver::get_type_descriptor()`
     pub fn BinMXCAFDoc_NoteCommentDriver_get_type_descriptor(
-    ) -> crate::OcctResult<*const HandleStandardType>;
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast BinMXCAFDoc_NoteCommentDriver to BinMXCAFDoc_NoteDriver
     pub fn BinMXCAFDoc_NoteCommentDriver_as_BinMXCAFDoc_NoteDriver(
         self_: *const BinMXCAFDoc_NoteCommentDriver,
@@ -1320,106 +1244,99 @@ unsafe extern "C" {
     /// Wrap BinMXCAFDoc_NoteCommentDriver in a Handle
     pub fn BinMXCAFDoc_NoteCommentDriver_to_handle(
         obj: *mut BinMXCAFDoc_NoteCommentDriver,
-    ) -> crate::OcctResult<*mut HandleBinMXCAFDocNoteCommentDriver>;
+    ) -> crate::OcctResult<*mut Handle_BinMXCAFDoc_NoteCommentDriver>;
     /// Destroy Handle<BinMXCAFDoc_NoteCommentDriver>
-    pub fn HandleBinMXCAFDocNoteCommentDriver_destructor(
-        self_: *mut HandleBinMXCAFDocNoteCommentDriver,
+    pub fn Handle_BinMXCAFDoc_NoteCommentDriver_destructor(
+        self_: *mut Handle_BinMXCAFDoc_NoteCommentDriver,
     );
     /// Clone Handle<BinMXCAFDoc_NoteCommentDriver> (increments reference count)
-    pub fn HandleBinMXCAFDocNoteCommentDriver_clone(
-        self_: *const HandleBinMXCAFDocNoteCommentDriver,
-    ) -> crate::OcctResult<*mut HandleBinMXCAFDocNoteCommentDriver>;
+    pub fn Handle_BinMXCAFDoc_NoteCommentDriver_clone(
+        self_: *const Handle_BinMXCAFDoc_NoteCommentDriver,
+    ) -> crate::OcctResult<*mut Handle_BinMXCAFDoc_NoteCommentDriver>;
     /// Check if Handle<BinMXCAFDoc_NoteCommentDriver> is null
-    pub fn HandleBinMXCAFDocNoteCommentDriver_is_null(
-        self_: *const HandleBinMXCAFDocNoteCommentDriver,
+    pub fn Handle_BinMXCAFDoc_NoteCommentDriver_is_null(
+        self_: *const Handle_BinMXCAFDoc_NoteCommentDriver,
     ) -> bool;
     /// Dereference Handle to get *const BinMXCAFDoc_NoteCommentDriver
-    pub fn HandleBinMXCAFDocNoteCommentDriver_get(
-        handle: *const HandleBinMXCAFDocNoteCommentDriver,
+    pub fn Handle_BinMXCAFDoc_NoteCommentDriver_get(
+        handle: *const Handle_BinMXCAFDoc_NoteCommentDriver,
     ) -> crate::OcctResult<*const BinMXCAFDoc_NoteCommentDriver>;
     /// Dereference Handle to get *mut BinMXCAFDoc_NoteCommentDriver
-    pub fn HandleBinMXCAFDocNoteCommentDriver_get_mut(
-        handle: *mut HandleBinMXCAFDocNoteCommentDriver,
+    pub fn Handle_BinMXCAFDoc_NoteCommentDriver_get_mut(
+        handle: *mut Handle_BinMXCAFDoc_NoteCommentDriver,
     ) -> crate::OcctResult<*mut BinMXCAFDoc_NoteCommentDriver>;
     /// Upcast Handle<BinMXCAFDoc_NoteCommentDriver> to Handle<BinMXCAFDoc_NoteDriver>
-    pub fn HandleBinMXCAFDocNoteCommentDriver_to_HandleBinMXCAFDocNoteDriver(
-        self_: *const HandleBinMXCAFDocNoteCommentDriver,
-    ) -> crate::OcctResult<*mut HandleBinMXCAFDocNoteDriver>;
+    pub fn Handle_BinMXCAFDoc_NoteCommentDriver_to_Handle_BinMXCAFDoc_NoteDriver(
+        self_: *const Handle_BinMXCAFDoc_NoteCommentDriver,
+    ) -> crate::OcctResult<*mut Handle_BinMXCAFDoc_NoteDriver>;
     /// Upcast Handle<BinMXCAFDoc_NoteCommentDriver> to Handle<BinMDF_ADriver>
-    pub fn HandleBinMXCAFDocNoteCommentDriver_to_HandleBinMDFADriver(
-        self_: *const HandleBinMXCAFDocNoteCommentDriver,
-    ) -> crate::OcctResult<*mut HandleBinMDFADriver>;
+    pub fn Handle_BinMXCAFDoc_NoteCommentDriver_to_Handle_BinMDF_ADriver(
+        self_: *const Handle_BinMXCAFDoc_NoteCommentDriver,
+    ) -> crate::OcctResult<*mut Handle_BinMDF_ADriver>;
     /// Upcast Handle<BinMXCAFDoc_NoteCommentDriver> to Handle<Standard_Transient>
-    pub fn HandleBinMXCAFDocNoteCommentDriver_to_HandleStandardTransient(
-        self_: *const HandleBinMXCAFDocNoteCommentDriver,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
-    /// Inherited: **Source:** `BinMDF_ADriver.hxx`:41 - `BinMDF_ADriver::SourceType()`
+    pub fn Handle_BinMXCAFDoc_NoteCommentDriver_to_Handle_Standard_Transient(
+        self_: *const Handle_BinMXCAFDoc_NoteCommentDriver,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
+    /// Inherited: **Source:** `BinMDF_ADriver.hxx`:38 - `BinMDF_ADriver::SourceType()`
     pub fn BinMXCAFDoc_NoteCommentDriver_inherited_SourceType(
         self_: *const BinMXCAFDoc_NoteCommentDriver,
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// Inherited: **Source:** `BinMDF_ADriver.hxx`:44 - `BinMDF_ADriver::TypeName()`
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
+    /// Inherited: **Source:** `BinMDF_ADriver.hxx`:41 - `BinMDF_ADriver::TypeName()`
     pub fn BinMXCAFDoc_NoteCommentDriver_inherited_TypeName(
         self_: *const BinMXCAFDoc_NoteCommentDriver,
     ) -> crate::OcctResult<*const TCollection_AsciiString>;
-    /// Inherited: **Source:** `BinMDF_ADriver.hxx`:61 - `BinMDF_ADriver::MessageDriver()`
+    /// Inherited: **Source:** `BinMDF_ADriver.hxx`:59 - `BinMDF_ADriver::MessageDriver()`
     pub fn BinMXCAFDoc_NoteCommentDriver_inherited_MessageDriver(
         self_: *const BinMXCAFDoc_NoteCommentDriver,
-    ) -> crate::OcctResult<*const HandleMessageMessenger>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    ) -> crate::OcctResult<*const Handle_Message_Messenger>;
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn BinMXCAFDoc_NoteCommentDriver_inherited_IsInstance(
         self_: *const BinMXCAFDoc_NoteCommentDriver,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn BinMXCAFDoc_NoteCommentDriver_inherited_IsKind(
         self_: *const BinMXCAFDoc_NoteCommentDriver,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn BinMXCAFDoc_NoteCommentDriver_inherited_This(
         self_: *const BinMXCAFDoc_NoteCommentDriver,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn BinMXCAFDoc_NoteCommentDriver_inherited_GetRefCount(
         self_: *const BinMXCAFDoc_NoteCommentDriver,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn BinMXCAFDoc_NoteCommentDriver_inherited_IncrementRefCounter(
         self_: *mut BinMXCAFDoc_NoteCommentDriver,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn BinMXCAFDoc_NoteCommentDriver_inherited_DecrementRefCounter(
         self_: *mut BinMXCAFDoc_NoteCommentDriver,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn BinMXCAFDoc_NoteCommentDriver_inherited_Delete(
         self_: *const BinMXCAFDoc_NoteCommentDriver,
     ) -> *const std::ffi::c_char;
     // ======================== BinMXCAFDoc_NoteDriver ========================
     pub fn BinMXCAFDoc_NoteDriver_destructor(self_: *mut BinMXCAFDoc_NoteDriver);
-    /// **Source:** `BinMXCAFDoc_NoteDriver.hxx`:37 - `BinMXCAFDoc_NoteDriver::Paste()`
-    pub fn BinMXCAFDoc_NoteDriver_paste_persistent_handletdfattribute_rrelocationtable(
+    /// **Source:** `BinMXCAFDoc_NoteDriver.hxx`:34 - `BinMXCAFDoc_NoteDriver::Paste()`
+    pub fn BinMXCAFDoc_NoteDriver_paste(
         self_: *const BinMXCAFDoc_NoteDriver,
         theSource: *const BinObjMgt_Persistent,
-        theTarget: *const HandleTDFAttribute,
+        theTarget: *const Handle_TDF_Attribute,
         theRelocTable: *mut BinObjMgt_RRelocationTable,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BinMXCAFDoc_NoteDriver.hxx`:41 - `BinMXCAFDoc_NoteDriver::Paste()`
-    pub fn BinMXCAFDoc_NoteDriver_paste_handletdfattribute_persistent_indexedmapoftransient(
-        self_: *const BinMXCAFDoc_NoteDriver,
-        theSource: *const HandleTDFAttribute,
-        theTarget: *mut BinObjMgt_Persistent,
-        theRelocTable: *mut TColStd_IndexedMapOfTransient,
-    ) -> *const std::ffi::c_char;
-    /// **Source:** `BinMXCAFDoc_NoteDriver.hxx`:45 - `BinMXCAFDoc_NoteDriver::DynamicType()`
+    /// **Source:** `BinMXCAFDoc_NoteDriver.hxx`:43 - `BinMXCAFDoc_NoteDriver::DynamicType()`
     pub fn BinMXCAFDoc_NoteDriver_dynamic_type(
         self_: *const BinMXCAFDoc_NoteDriver,
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// **Source:** `BinMXCAFDoc_NoteDriver.hxx`:45 - `BinMXCAFDoc_NoteDriver::get_type_name()`
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
+    /// **Source:** `BinMXCAFDoc_NoteDriver.hxx`:43 - `BinMXCAFDoc_NoteDriver::get_type_name()`
     pub fn BinMXCAFDoc_NoteDriver_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
-    /// **Source:** `BinMXCAFDoc_NoteDriver.hxx`:45 - `BinMXCAFDoc_NoteDriver::get_type_descriptor()`
+    /// **Source:** `BinMXCAFDoc_NoteDriver.hxx`:43 - `BinMXCAFDoc_NoteDriver::get_type_descriptor()`
     pub fn BinMXCAFDoc_NoteDriver_get_type_descriptor(
-    ) -> crate::OcctResult<*const HandleStandardType>;
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast BinMXCAFDoc_NoteDriver to BinMDF_ADriver
     pub fn BinMXCAFDoc_NoteDriver_as_BinMDF_ADriver(
         self_: *const BinMXCAFDoc_NoteDriver,
@@ -1437,117 +1354,112 @@ unsafe extern "C" {
         self_: *mut BinMXCAFDoc_NoteDriver,
     ) -> crate::OcctResult<*mut Standard_Transient>;
     /// Destroy Handle<BinMXCAFDoc_NoteDriver>
-    pub fn HandleBinMXCAFDocNoteDriver_destructor(self_: *mut HandleBinMXCAFDocNoteDriver);
+    pub fn Handle_BinMXCAFDoc_NoteDriver_destructor(self_: *mut Handle_BinMXCAFDoc_NoteDriver);
     /// Clone Handle<BinMXCAFDoc_NoteDriver> (increments reference count)
-    pub fn HandleBinMXCAFDocNoteDriver_clone(
-        self_: *const HandleBinMXCAFDocNoteDriver,
-    ) -> crate::OcctResult<*mut HandleBinMXCAFDocNoteDriver>;
+    pub fn Handle_BinMXCAFDoc_NoteDriver_clone(
+        self_: *const Handle_BinMXCAFDoc_NoteDriver,
+    ) -> crate::OcctResult<*mut Handle_BinMXCAFDoc_NoteDriver>;
     /// Check if Handle<BinMXCAFDoc_NoteDriver> is null
-    pub fn HandleBinMXCAFDocNoteDriver_is_null(self_: *const HandleBinMXCAFDocNoteDriver) -> bool;
+    pub fn Handle_BinMXCAFDoc_NoteDriver_is_null(
+        self_: *const Handle_BinMXCAFDoc_NoteDriver,
+    ) -> bool;
     /// Dereference Handle to get *const BinMXCAFDoc_NoteDriver
-    pub fn HandleBinMXCAFDocNoteDriver_get(
-        handle: *const HandleBinMXCAFDocNoteDriver,
+    pub fn Handle_BinMXCAFDoc_NoteDriver_get(
+        handle: *const Handle_BinMXCAFDoc_NoteDriver,
     ) -> crate::OcctResult<*const BinMXCAFDoc_NoteDriver>;
     /// Dereference Handle to get *mut BinMXCAFDoc_NoteDriver
-    pub fn HandleBinMXCAFDocNoteDriver_get_mut(
-        handle: *mut HandleBinMXCAFDocNoteDriver,
+    pub fn Handle_BinMXCAFDoc_NoteDriver_get_mut(
+        handle: *mut Handle_BinMXCAFDoc_NoteDriver,
     ) -> crate::OcctResult<*mut BinMXCAFDoc_NoteDriver>;
     /// Upcast Handle<BinMXCAFDoc_NoteDriver> to Handle<BinMDF_ADriver>
-    pub fn HandleBinMXCAFDocNoteDriver_to_HandleBinMDFADriver(
-        self_: *const HandleBinMXCAFDocNoteDriver,
-    ) -> crate::OcctResult<*mut HandleBinMDFADriver>;
+    pub fn Handle_BinMXCAFDoc_NoteDriver_to_Handle_BinMDF_ADriver(
+        self_: *const Handle_BinMXCAFDoc_NoteDriver,
+    ) -> crate::OcctResult<*mut Handle_BinMDF_ADriver>;
     /// Upcast Handle<BinMXCAFDoc_NoteDriver> to Handle<Standard_Transient>
-    pub fn HandleBinMXCAFDocNoteDriver_to_HandleStandardTransient(
-        self_: *const HandleBinMXCAFDocNoteDriver,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
+    pub fn Handle_BinMXCAFDoc_NoteDriver_to_Handle_Standard_Transient(
+        self_: *const Handle_BinMXCAFDoc_NoteDriver,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
     /// Downcast Handle<BinMXCAFDoc_NoteDriver> to Handle<BinMXCAFDoc_NoteBinDataDriver> (returns null on failure)
-    pub fn HandleBinMXCAFDocNoteDriver_downcast_to_HandleBinMXCAFDocNoteBinDataDriver(
-        self_: *const HandleBinMXCAFDocNoteDriver,
-    ) -> crate::OcctResult<*mut HandleBinMXCAFDocNoteBinDataDriver>;
+    pub fn Handle_BinMXCAFDoc_NoteDriver_downcast_to_Handle_BinMXCAFDoc_NoteBinDataDriver(
+        self_: *const Handle_BinMXCAFDoc_NoteDriver,
+    ) -> crate::OcctResult<*mut Handle_BinMXCAFDoc_NoteBinDataDriver>;
     /// Downcast Handle<BinMXCAFDoc_NoteDriver> to Handle<BinMXCAFDoc_NoteCommentDriver> (returns null on failure)
-    pub fn HandleBinMXCAFDocNoteDriver_downcast_to_HandleBinMXCAFDocNoteCommentDriver(
-        self_: *const HandleBinMXCAFDocNoteDriver,
-    ) -> crate::OcctResult<*mut HandleBinMXCAFDocNoteCommentDriver>;
-    /// Inherited: **Source:** `BinMDF_ADriver.hxx`:37 - `BinMDF_ADriver::NewEmpty()`
+    pub fn Handle_BinMXCAFDoc_NoteDriver_downcast_to_Handle_BinMXCAFDoc_NoteCommentDriver(
+        self_: *const Handle_BinMXCAFDoc_NoteDriver,
+    ) -> crate::OcctResult<*mut Handle_BinMXCAFDoc_NoteCommentDriver>;
+    /// Inherited: **Source:** `BinMDF_ADriver.hxx`:34 - `BinMDF_ADriver::NewEmpty()`
     pub fn BinMXCAFDoc_NoteDriver_inherited_NewEmpty(
         self_: *const BinMXCAFDoc_NoteDriver,
-    ) -> crate::OcctResult<*mut HandleTDFAttribute>;
-    /// Inherited: **Source:** `BinMDF_ADriver.hxx`:41 - `BinMDF_ADriver::SourceType()`
+    ) -> crate::OcctResult<*mut Handle_TDF_Attribute>;
+    /// Inherited: **Source:** `BinMDF_ADriver.hxx`:38 - `BinMDF_ADriver::SourceType()`
     pub fn BinMXCAFDoc_NoteDriver_inherited_SourceType(
         self_: *const BinMXCAFDoc_NoteDriver,
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// Inherited: **Source:** `BinMDF_ADriver.hxx`:44 - `BinMDF_ADriver::TypeName()`
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
+    /// Inherited: **Source:** `BinMDF_ADriver.hxx`:41 - `BinMDF_ADriver::TypeName()`
     pub fn BinMXCAFDoc_NoteDriver_inherited_TypeName(
         self_: *const BinMXCAFDoc_NoteDriver,
     ) -> crate::OcctResult<*const TCollection_AsciiString>;
-    /// Inherited: **Source:** `BinMDF_ADriver.hxx`:61 - `BinMDF_ADriver::MessageDriver()`
+    /// Inherited: **Source:** `BinMDF_ADriver.hxx`:59 - `BinMDF_ADriver::MessageDriver()`
     pub fn BinMXCAFDoc_NoteDriver_inherited_MessageDriver(
         self_: *const BinMXCAFDoc_NoteDriver,
-    ) -> crate::OcctResult<*const HandleMessageMessenger>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    ) -> crate::OcctResult<*const Handle_Message_Messenger>;
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn BinMXCAFDoc_NoteDriver_inherited_IsInstance(
         self_: *const BinMXCAFDoc_NoteDriver,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn BinMXCAFDoc_NoteDriver_inherited_IsKind(
         self_: *const BinMXCAFDoc_NoteDriver,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn BinMXCAFDoc_NoteDriver_inherited_This(
         self_: *const BinMXCAFDoc_NoteDriver,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn BinMXCAFDoc_NoteDriver_inherited_GetRefCount(
         self_: *const BinMXCAFDoc_NoteDriver,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn BinMXCAFDoc_NoteDriver_inherited_IncrementRefCounter(
         self_: *mut BinMXCAFDoc_NoteDriver,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn BinMXCAFDoc_NoteDriver_inherited_DecrementRefCounter(
         self_: *mut BinMXCAFDoc_NoteDriver,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn BinMXCAFDoc_NoteDriver_inherited_Delete(
         self_: *const BinMXCAFDoc_NoteDriver,
     ) -> *const std::ffi::c_char;
     // ======================== BinMXCAFDoc_VisMaterialDriver ========================
     pub fn BinMXCAFDoc_VisMaterialDriver_destructor(self_: *mut BinMXCAFDoc_VisMaterialDriver);
-    /// **Source:** `BinMXCAFDoc_VisMaterialDriver.hxx`:42 - `BinMXCAFDoc_VisMaterialDriver::BinMXCAFDoc_VisMaterialDriver()`
+    /// **Source:** `BinMXCAFDoc_VisMaterialDriver.hxx`:41 - `BinMXCAFDoc_VisMaterialDriver::BinMXCAFDoc_VisMaterialDriver()`
     pub fn BinMXCAFDoc_VisMaterialDriver_ctor_handlemessagemessenger(
-        theMsgDriver: *const HandleMessageMessenger,
+        theMsgDriver: *const Handle_Message_Messenger,
     ) -> crate::OcctResult<*mut BinMXCAFDoc_VisMaterialDriver>;
-    /// **Source:** `BinMXCAFDoc_VisMaterialDriver.hxx`:27 - `BinMXCAFDoc_VisMaterialDriver::DynamicType()`
+    /// **Source:** `BinMXCAFDoc_VisMaterialDriver.hxx`:26 - `BinMXCAFDoc_VisMaterialDriver::DynamicType()`
     pub fn BinMXCAFDoc_VisMaterialDriver_dynamic_type(
         self_: *const BinMXCAFDoc_VisMaterialDriver,
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// **Source:** `BinMXCAFDoc_VisMaterialDriver.hxx`:45 - `BinMXCAFDoc_VisMaterialDriver::NewEmpty()`
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
+    /// **Source:** `BinMXCAFDoc_VisMaterialDriver.hxx`:44 - `BinMXCAFDoc_VisMaterialDriver::NewEmpty()`
     pub fn BinMXCAFDoc_VisMaterialDriver_new_empty(
         self_: *const BinMXCAFDoc_VisMaterialDriver,
-    ) -> crate::OcctResult<*mut HandleTDFAttribute>;
-    /// **Source:** `BinMXCAFDoc_VisMaterialDriver.hxx`:48 - `BinMXCAFDoc_VisMaterialDriver::Paste()`
-    pub fn BinMXCAFDoc_VisMaterialDriver_paste_persistent_handletdfattribute_rrelocationtable(
+    ) -> crate::OcctResult<*mut Handle_TDF_Attribute>;
+    /// **Source:** `BinMXCAFDoc_VisMaterialDriver.hxx`:47 - `BinMXCAFDoc_VisMaterialDriver::Paste()`
+    pub fn BinMXCAFDoc_VisMaterialDriver_paste(
         self_: *const BinMXCAFDoc_VisMaterialDriver,
         theSource: *const BinObjMgt_Persistent,
-        theTarget: *const HandleTDFAttribute,
+        theTarget: *const Handle_TDF_Attribute,
         theRelocTable: *mut BinObjMgt_RRelocationTable,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BinMXCAFDoc_VisMaterialDriver.hxx`:54 - `BinMXCAFDoc_VisMaterialDriver::Paste()`
-    pub fn BinMXCAFDoc_VisMaterialDriver_paste_handletdfattribute_persistent_indexedmapoftransient(
-        self_: *const BinMXCAFDoc_VisMaterialDriver,
-        theSource: *const HandleTDFAttribute,
-        theTarget: *mut BinObjMgt_Persistent,
-        theRelocTable: *mut TColStd_IndexedMapOfTransient,
-    ) -> *const std::ffi::c_char;
-    /// **Source:** `BinMXCAFDoc_VisMaterialDriver.hxx`:27 - `BinMXCAFDoc_VisMaterialDriver::get_type_name()`
+    /// **Source:** `BinMXCAFDoc_VisMaterialDriver.hxx`:26 - `BinMXCAFDoc_VisMaterialDriver::get_type_name()`
     pub fn BinMXCAFDoc_VisMaterialDriver_get_type_name(
     ) -> crate::OcctResult<*const std::ffi::c_char>;
-    /// **Source:** `BinMXCAFDoc_VisMaterialDriver.hxx`:27 - `BinMXCAFDoc_VisMaterialDriver::get_type_descriptor()`
+    /// **Source:** `BinMXCAFDoc_VisMaterialDriver.hxx`:26 - `BinMXCAFDoc_VisMaterialDriver::get_type_descriptor()`
     pub fn BinMXCAFDoc_VisMaterialDriver_get_type_descriptor(
-    ) -> crate::OcctResult<*const HandleStandardType>;
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast BinMXCAFDoc_VisMaterialDriver to BinMDF_ADriver
     pub fn BinMXCAFDoc_VisMaterialDriver_as_BinMDF_ADriver(
         self_: *const BinMXCAFDoc_VisMaterialDriver,
@@ -1567,74 +1479,74 @@ unsafe extern "C" {
     /// Wrap BinMXCAFDoc_VisMaterialDriver in a Handle
     pub fn BinMXCAFDoc_VisMaterialDriver_to_handle(
         obj: *mut BinMXCAFDoc_VisMaterialDriver,
-    ) -> crate::OcctResult<*mut HandleBinMXCAFDocVisMaterialDriver>;
+    ) -> crate::OcctResult<*mut Handle_BinMXCAFDoc_VisMaterialDriver>;
     /// Destroy Handle<BinMXCAFDoc_VisMaterialDriver>
-    pub fn HandleBinMXCAFDocVisMaterialDriver_destructor(
-        self_: *mut HandleBinMXCAFDocVisMaterialDriver,
+    pub fn Handle_BinMXCAFDoc_VisMaterialDriver_destructor(
+        self_: *mut Handle_BinMXCAFDoc_VisMaterialDriver,
     );
     /// Clone Handle<BinMXCAFDoc_VisMaterialDriver> (increments reference count)
-    pub fn HandleBinMXCAFDocVisMaterialDriver_clone(
-        self_: *const HandleBinMXCAFDocVisMaterialDriver,
-    ) -> crate::OcctResult<*mut HandleBinMXCAFDocVisMaterialDriver>;
+    pub fn Handle_BinMXCAFDoc_VisMaterialDriver_clone(
+        self_: *const Handle_BinMXCAFDoc_VisMaterialDriver,
+    ) -> crate::OcctResult<*mut Handle_BinMXCAFDoc_VisMaterialDriver>;
     /// Check if Handle<BinMXCAFDoc_VisMaterialDriver> is null
-    pub fn HandleBinMXCAFDocVisMaterialDriver_is_null(
-        self_: *const HandleBinMXCAFDocVisMaterialDriver,
+    pub fn Handle_BinMXCAFDoc_VisMaterialDriver_is_null(
+        self_: *const Handle_BinMXCAFDoc_VisMaterialDriver,
     ) -> bool;
     /// Dereference Handle to get *const BinMXCAFDoc_VisMaterialDriver
-    pub fn HandleBinMXCAFDocVisMaterialDriver_get(
-        handle: *const HandleBinMXCAFDocVisMaterialDriver,
+    pub fn Handle_BinMXCAFDoc_VisMaterialDriver_get(
+        handle: *const Handle_BinMXCAFDoc_VisMaterialDriver,
     ) -> crate::OcctResult<*const BinMXCAFDoc_VisMaterialDriver>;
     /// Dereference Handle to get *mut BinMXCAFDoc_VisMaterialDriver
-    pub fn HandleBinMXCAFDocVisMaterialDriver_get_mut(
-        handle: *mut HandleBinMXCAFDocVisMaterialDriver,
+    pub fn Handle_BinMXCAFDoc_VisMaterialDriver_get_mut(
+        handle: *mut Handle_BinMXCAFDoc_VisMaterialDriver,
     ) -> crate::OcctResult<*mut BinMXCAFDoc_VisMaterialDriver>;
     /// Upcast Handle<BinMXCAFDoc_VisMaterialDriver> to Handle<BinMDF_ADriver>
-    pub fn HandleBinMXCAFDocVisMaterialDriver_to_HandleBinMDFADriver(
-        self_: *const HandleBinMXCAFDocVisMaterialDriver,
-    ) -> crate::OcctResult<*mut HandleBinMDFADriver>;
+    pub fn Handle_BinMXCAFDoc_VisMaterialDriver_to_Handle_BinMDF_ADriver(
+        self_: *const Handle_BinMXCAFDoc_VisMaterialDriver,
+    ) -> crate::OcctResult<*mut Handle_BinMDF_ADriver>;
     /// Upcast Handle<BinMXCAFDoc_VisMaterialDriver> to Handle<Standard_Transient>
-    pub fn HandleBinMXCAFDocVisMaterialDriver_to_HandleStandardTransient(
-        self_: *const HandleBinMXCAFDocVisMaterialDriver,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
-    /// Inherited: **Source:** `BinMDF_ADriver.hxx`:41 - `BinMDF_ADriver::SourceType()`
+    pub fn Handle_BinMXCAFDoc_VisMaterialDriver_to_Handle_Standard_Transient(
+        self_: *const Handle_BinMXCAFDoc_VisMaterialDriver,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
+    /// Inherited: **Source:** `BinMDF_ADriver.hxx`:38 - `BinMDF_ADriver::SourceType()`
     pub fn BinMXCAFDoc_VisMaterialDriver_inherited_SourceType(
         self_: *const BinMXCAFDoc_VisMaterialDriver,
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// Inherited: **Source:** `BinMDF_ADriver.hxx`:44 - `BinMDF_ADriver::TypeName()`
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
+    /// Inherited: **Source:** `BinMDF_ADriver.hxx`:41 - `BinMDF_ADriver::TypeName()`
     pub fn BinMXCAFDoc_VisMaterialDriver_inherited_TypeName(
         self_: *const BinMXCAFDoc_VisMaterialDriver,
     ) -> crate::OcctResult<*const TCollection_AsciiString>;
-    /// Inherited: **Source:** `BinMDF_ADriver.hxx`:61 - `BinMDF_ADriver::MessageDriver()`
+    /// Inherited: **Source:** `BinMDF_ADriver.hxx`:59 - `BinMDF_ADriver::MessageDriver()`
     pub fn BinMXCAFDoc_VisMaterialDriver_inherited_MessageDriver(
         self_: *const BinMXCAFDoc_VisMaterialDriver,
-    ) -> crate::OcctResult<*const HandleMessageMessenger>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    ) -> crate::OcctResult<*const Handle_Message_Messenger>;
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn BinMXCAFDoc_VisMaterialDriver_inherited_IsInstance(
         self_: *const BinMXCAFDoc_VisMaterialDriver,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn BinMXCAFDoc_VisMaterialDriver_inherited_IsKind(
         self_: *const BinMXCAFDoc_VisMaterialDriver,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn BinMXCAFDoc_VisMaterialDriver_inherited_This(
         self_: *const BinMXCAFDoc_VisMaterialDriver,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn BinMXCAFDoc_VisMaterialDriver_inherited_GetRefCount(
         self_: *const BinMXCAFDoc_VisMaterialDriver,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn BinMXCAFDoc_VisMaterialDriver_inherited_IncrementRefCounter(
         self_: *mut BinMXCAFDoc_VisMaterialDriver,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn BinMXCAFDoc_VisMaterialDriver_inherited_DecrementRefCounter(
         self_: *mut BinMXCAFDoc_VisMaterialDriver,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn BinMXCAFDoc_VisMaterialDriver_inherited_Delete(
         self_: *const BinMXCAFDoc_VisMaterialDriver,
     ) -> *const std::ffi::c_char;
@@ -1642,38 +1554,31 @@ unsafe extern "C" {
     pub fn BinMXCAFDoc_VisMaterialToolDriver_destructor(
         self_: *mut BinMXCAFDoc_VisMaterialToolDriver,
     );
-    /// **Source:** `BinMXCAFDoc_VisMaterialToolDriver.hxx`:27 - `BinMXCAFDoc_VisMaterialToolDriver::BinMXCAFDoc_VisMaterialToolDriver()`
+    /// **Source:** `BinMXCAFDoc_VisMaterialToolDriver.hxx`:25 - `BinMXCAFDoc_VisMaterialToolDriver::BinMXCAFDoc_VisMaterialToolDriver()`
     pub fn BinMXCAFDoc_VisMaterialToolDriver_ctor_handlemessagemessenger(
-        theMsgDriver: *const HandleMessageMessenger,
+        theMsgDriver: *const Handle_Message_Messenger,
     ) -> crate::OcctResult<*mut BinMXCAFDoc_VisMaterialToolDriver>;
-    /// **Source:** `BinMXCAFDoc_VisMaterialToolDriver.hxx`:24 - `BinMXCAFDoc_VisMaterialToolDriver::DynamicType()`
+    /// **Source:** `BinMXCAFDoc_VisMaterialToolDriver.hxx`:22 - `BinMXCAFDoc_VisMaterialToolDriver::DynamicType()`
     pub fn BinMXCAFDoc_VisMaterialToolDriver_dynamic_type(
         self_: *const BinMXCAFDoc_VisMaterialToolDriver,
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// **Source:** `BinMXCAFDoc_VisMaterialToolDriver.hxx`:30 - `BinMXCAFDoc_VisMaterialToolDriver::NewEmpty()`
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
+    /// **Source:** `BinMXCAFDoc_VisMaterialToolDriver.hxx`:29 - `BinMXCAFDoc_VisMaterialToolDriver::NewEmpty()`
     pub fn BinMXCAFDoc_VisMaterialToolDriver_new_empty(
         self_: *const BinMXCAFDoc_VisMaterialToolDriver,
-    ) -> crate::OcctResult<*mut HandleTDFAttribute>;
-    /// **Source:** `BinMXCAFDoc_VisMaterialToolDriver.hxx`:33 - `BinMXCAFDoc_VisMaterialToolDriver::Paste()`
-    pub fn BinMXCAFDoc_VisMaterialToolDriver_paste_persistent_handletdfattribute_rrelocationtable(
+    ) -> crate::OcctResult<*mut Handle_TDF_Attribute>;
+    /// **Source:** `BinMXCAFDoc_VisMaterialToolDriver.hxx`:32 - `BinMXCAFDoc_VisMaterialToolDriver::Paste()`
+    pub fn BinMXCAFDoc_VisMaterialToolDriver_paste(
         self_: *const BinMXCAFDoc_VisMaterialToolDriver,
         theSource: *const BinObjMgt_Persistent,
-        theTarget: *const HandleTDFAttribute,
+        theTarget: *const Handle_TDF_Attribute,
         theRelocTable: *mut BinObjMgt_RRelocationTable,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BinMXCAFDoc_VisMaterialToolDriver.hxx`:39 - `BinMXCAFDoc_VisMaterialToolDriver::Paste()`
-    pub fn BinMXCAFDoc_VisMaterialToolDriver_paste_handletdfattribute_persistent_indexedmapoftransient(
-        self_: *const BinMXCAFDoc_VisMaterialToolDriver,
-        theSource: *const HandleTDFAttribute,
-        theTarget: *mut BinObjMgt_Persistent,
-        theRelocTable: *mut TColStd_IndexedMapOfTransient,
-    ) -> *const std::ffi::c_char;
-    /// **Source:** `BinMXCAFDoc_VisMaterialToolDriver.hxx`:24 - `BinMXCAFDoc_VisMaterialToolDriver::get_type_name()`
+    /// **Source:** `BinMXCAFDoc_VisMaterialToolDriver.hxx`:22 - `BinMXCAFDoc_VisMaterialToolDriver::get_type_name()`
     pub fn BinMXCAFDoc_VisMaterialToolDriver_get_type_name(
     ) -> crate::OcctResult<*const std::ffi::c_char>;
-    /// **Source:** `BinMXCAFDoc_VisMaterialToolDriver.hxx`:24 - `BinMXCAFDoc_VisMaterialToolDriver::get_type_descriptor()`
+    /// **Source:** `BinMXCAFDoc_VisMaterialToolDriver.hxx`:22 - `BinMXCAFDoc_VisMaterialToolDriver::get_type_descriptor()`
     pub fn BinMXCAFDoc_VisMaterialToolDriver_get_type_descriptor(
-    ) -> crate::OcctResult<*const HandleStandardType>;
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast BinMXCAFDoc_VisMaterialToolDriver to BinMDF_ADriver
     pub fn BinMXCAFDoc_VisMaterialToolDriver_as_BinMDF_ADriver(
         self_: *const BinMXCAFDoc_VisMaterialToolDriver,
@@ -1693,74 +1598,74 @@ unsafe extern "C" {
     /// Wrap BinMXCAFDoc_VisMaterialToolDriver in a Handle
     pub fn BinMXCAFDoc_VisMaterialToolDriver_to_handle(
         obj: *mut BinMXCAFDoc_VisMaterialToolDriver,
-    ) -> crate::OcctResult<*mut HandleBinMXCAFDocVisMaterialToolDriver>;
+    ) -> crate::OcctResult<*mut Handle_BinMXCAFDoc_VisMaterialToolDriver>;
     /// Destroy Handle<BinMXCAFDoc_VisMaterialToolDriver>
-    pub fn HandleBinMXCAFDocVisMaterialToolDriver_destructor(
-        self_: *mut HandleBinMXCAFDocVisMaterialToolDriver,
+    pub fn Handle_BinMXCAFDoc_VisMaterialToolDriver_destructor(
+        self_: *mut Handle_BinMXCAFDoc_VisMaterialToolDriver,
     );
     /// Clone Handle<BinMXCAFDoc_VisMaterialToolDriver> (increments reference count)
-    pub fn HandleBinMXCAFDocVisMaterialToolDriver_clone(
-        self_: *const HandleBinMXCAFDocVisMaterialToolDriver,
-    ) -> crate::OcctResult<*mut HandleBinMXCAFDocVisMaterialToolDriver>;
+    pub fn Handle_BinMXCAFDoc_VisMaterialToolDriver_clone(
+        self_: *const Handle_BinMXCAFDoc_VisMaterialToolDriver,
+    ) -> crate::OcctResult<*mut Handle_BinMXCAFDoc_VisMaterialToolDriver>;
     /// Check if Handle<BinMXCAFDoc_VisMaterialToolDriver> is null
-    pub fn HandleBinMXCAFDocVisMaterialToolDriver_is_null(
-        self_: *const HandleBinMXCAFDocVisMaterialToolDriver,
+    pub fn Handle_BinMXCAFDoc_VisMaterialToolDriver_is_null(
+        self_: *const Handle_BinMXCAFDoc_VisMaterialToolDriver,
     ) -> bool;
     /// Dereference Handle to get *const BinMXCAFDoc_VisMaterialToolDriver
-    pub fn HandleBinMXCAFDocVisMaterialToolDriver_get(
-        handle: *const HandleBinMXCAFDocVisMaterialToolDriver,
+    pub fn Handle_BinMXCAFDoc_VisMaterialToolDriver_get(
+        handle: *const Handle_BinMXCAFDoc_VisMaterialToolDriver,
     ) -> crate::OcctResult<*const BinMXCAFDoc_VisMaterialToolDriver>;
     /// Dereference Handle to get *mut BinMXCAFDoc_VisMaterialToolDriver
-    pub fn HandleBinMXCAFDocVisMaterialToolDriver_get_mut(
-        handle: *mut HandleBinMXCAFDocVisMaterialToolDriver,
+    pub fn Handle_BinMXCAFDoc_VisMaterialToolDriver_get_mut(
+        handle: *mut Handle_BinMXCAFDoc_VisMaterialToolDriver,
     ) -> crate::OcctResult<*mut BinMXCAFDoc_VisMaterialToolDriver>;
     /// Upcast Handle<BinMXCAFDoc_VisMaterialToolDriver> to Handle<BinMDF_ADriver>
-    pub fn HandleBinMXCAFDocVisMaterialToolDriver_to_HandleBinMDFADriver(
-        self_: *const HandleBinMXCAFDocVisMaterialToolDriver,
-    ) -> crate::OcctResult<*mut HandleBinMDFADriver>;
+    pub fn Handle_BinMXCAFDoc_VisMaterialToolDriver_to_Handle_BinMDF_ADriver(
+        self_: *const Handle_BinMXCAFDoc_VisMaterialToolDriver,
+    ) -> crate::OcctResult<*mut Handle_BinMDF_ADriver>;
     /// Upcast Handle<BinMXCAFDoc_VisMaterialToolDriver> to Handle<Standard_Transient>
-    pub fn HandleBinMXCAFDocVisMaterialToolDriver_to_HandleStandardTransient(
-        self_: *const HandleBinMXCAFDocVisMaterialToolDriver,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
-    /// Inherited: **Source:** `BinMDF_ADriver.hxx`:41 - `BinMDF_ADriver::SourceType()`
+    pub fn Handle_BinMXCAFDoc_VisMaterialToolDriver_to_Handle_Standard_Transient(
+        self_: *const Handle_BinMXCAFDoc_VisMaterialToolDriver,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
+    /// Inherited: **Source:** `BinMDF_ADriver.hxx`:38 - `BinMDF_ADriver::SourceType()`
     pub fn BinMXCAFDoc_VisMaterialToolDriver_inherited_SourceType(
         self_: *const BinMXCAFDoc_VisMaterialToolDriver,
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// Inherited: **Source:** `BinMDF_ADriver.hxx`:44 - `BinMDF_ADriver::TypeName()`
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
+    /// Inherited: **Source:** `BinMDF_ADriver.hxx`:41 - `BinMDF_ADriver::TypeName()`
     pub fn BinMXCAFDoc_VisMaterialToolDriver_inherited_TypeName(
         self_: *const BinMXCAFDoc_VisMaterialToolDriver,
     ) -> crate::OcctResult<*const TCollection_AsciiString>;
-    /// Inherited: **Source:** `BinMDF_ADriver.hxx`:61 - `BinMDF_ADriver::MessageDriver()`
+    /// Inherited: **Source:** `BinMDF_ADriver.hxx`:59 - `BinMDF_ADriver::MessageDriver()`
     pub fn BinMXCAFDoc_VisMaterialToolDriver_inherited_MessageDriver(
         self_: *const BinMXCAFDoc_VisMaterialToolDriver,
-    ) -> crate::OcctResult<*const HandleMessageMessenger>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    ) -> crate::OcctResult<*const Handle_Message_Messenger>;
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn BinMXCAFDoc_VisMaterialToolDriver_inherited_IsInstance(
         self_: *const BinMXCAFDoc_VisMaterialToolDriver,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn BinMXCAFDoc_VisMaterialToolDriver_inherited_IsKind(
         self_: *const BinMXCAFDoc_VisMaterialToolDriver,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn BinMXCAFDoc_VisMaterialToolDriver_inherited_This(
         self_: *const BinMXCAFDoc_VisMaterialToolDriver,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn BinMXCAFDoc_VisMaterialToolDriver_inherited_GetRefCount(
         self_: *const BinMXCAFDoc_VisMaterialToolDriver,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn BinMXCAFDoc_VisMaterialToolDriver_inherited_IncrementRefCounter(
         self_: *mut BinMXCAFDoc_VisMaterialToolDriver,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn BinMXCAFDoc_VisMaterialToolDriver_inherited_DecrementRefCounter(
         self_: *mut BinMXCAFDoc_VisMaterialToolDriver,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn BinMXCAFDoc_VisMaterialToolDriver_inherited_Delete(
         self_: *const BinMXCAFDoc_VisMaterialToolDriver,
     ) -> *const std::ffi::c_char;
@@ -1768,24 +1673,24 @@ unsafe extern "C" {
     pub fn BinXCAFDrivers_DocumentRetrievalDriver_destructor(
         self_: *mut BinXCAFDrivers_DocumentRetrievalDriver,
     );
-    /// **Source:** `BinXCAFDrivers_DocumentRetrievalDriver.hxx`:34 - `BinXCAFDrivers_DocumentRetrievalDriver::BinXCAFDrivers_DocumentRetrievalDriver()`
+    /// **Source:** `BinXCAFDrivers_DocumentRetrievalDriver.hxx`:31 - `BinXCAFDrivers_DocumentRetrievalDriver::BinXCAFDrivers_DocumentRetrievalDriver()`
     pub fn BinXCAFDrivers_DocumentRetrievalDriver_ctor(
     ) -> crate::OcctResult<*mut BinXCAFDrivers_DocumentRetrievalDriver>;
-    /// **Source:** `BinXCAFDrivers_DocumentRetrievalDriver.hxx`:36 - `BinXCAFDrivers_DocumentRetrievalDriver::AttributeDrivers()`
+    /// **Source:** `BinXCAFDrivers_DocumentRetrievalDriver.hxx`:33 - `BinXCAFDrivers_DocumentRetrievalDriver::AttributeDrivers()`
     pub fn BinXCAFDrivers_DocumentRetrievalDriver_attribute_drivers(
         self_: *mut BinXCAFDrivers_DocumentRetrievalDriver,
-        theMsgDriver: *const HandleMessageMessenger,
-    ) -> crate::OcctResult<*mut HandleBinMDFADriverTable>;
-    /// **Source:** `BinXCAFDrivers_DocumentRetrievalDriver.hxx`:39 - `BinXCAFDrivers_DocumentRetrievalDriver::DynamicType()`
+        theMsgDriver: *const Handle_Message_Messenger,
+    ) -> crate::OcctResult<*mut Handle_BinMDF_ADriverTable>;
+    /// **Source:** `BinXCAFDrivers_DocumentRetrievalDriver.hxx`:36 - `BinXCAFDrivers_DocumentRetrievalDriver::DynamicType()`
     pub fn BinXCAFDrivers_DocumentRetrievalDriver_dynamic_type(
         self_: *const BinXCAFDrivers_DocumentRetrievalDriver,
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// **Source:** `BinXCAFDrivers_DocumentRetrievalDriver.hxx`:39 - `BinXCAFDrivers_DocumentRetrievalDriver::get_type_name()`
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
+    /// **Source:** `BinXCAFDrivers_DocumentRetrievalDriver.hxx`:36 - `BinXCAFDrivers_DocumentRetrievalDriver::get_type_name()`
     pub fn BinXCAFDrivers_DocumentRetrievalDriver_get_type_name(
     ) -> crate::OcctResult<*const std::ffi::c_char>;
-    /// **Source:** `BinXCAFDrivers_DocumentRetrievalDriver.hxx`:39 - `BinXCAFDrivers_DocumentRetrievalDriver::get_type_descriptor()`
+    /// **Source:** `BinXCAFDrivers_DocumentRetrievalDriver.hxx`:36 - `BinXCAFDrivers_DocumentRetrievalDriver::get_type_descriptor()`
     pub fn BinXCAFDrivers_DocumentRetrievalDriver_get_type_descriptor(
-    ) -> crate::OcctResult<*const HandleStandardType>;
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast BinXCAFDrivers_DocumentRetrievalDriver to BinDrivers_DocumentRetrievalDriver
     pub fn BinXCAFDrivers_DocumentRetrievalDriver_as_BinDrivers_DocumentRetrievalDriver(
         self_: *const BinXCAFDrivers_DocumentRetrievalDriver,
@@ -1829,48 +1734,48 @@ unsafe extern "C" {
     /// Wrap BinXCAFDrivers_DocumentRetrievalDriver in a Handle
     pub fn BinXCAFDrivers_DocumentRetrievalDriver_to_handle(
         obj: *mut BinXCAFDrivers_DocumentRetrievalDriver,
-    ) -> crate::OcctResult<*mut HandleBinXCAFDriversDocumentRetrievalDriver>;
+    ) -> crate::OcctResult<*mut Handle_BinXCAFDrivers_DocumentRetrievalDriver>;
     /// Destroy Handle<BinXCAFDrivers_DocumentRetrievalDriver>
-    pub fn HandleBinXCAFDriversDocumentRetrievalDriver_destructor(
-        self_: *mut HandleBinXCAFDriversDocumentRetrievalDriver,
+    pub fn Handle_BinXCAFDrivers_DocumentRetrievalDriver_destructor(
+        self_: *mut Handle_BinXCAFDrivers_DocumentRetrievalDriver,
     );
     /// Clone Handle<BinXCAFDrivers_DocumentRetrievalDriver> (increments reference count)
-    pub fn HandleBinXCAFDriversDocumentRetrievalDriver_clone(
-        self_: *const HandleBinXCAFDriversDocumentRetrievalDriver,
-    ) -> crate::OcctResult<*mut HandleBinXCAFDriversDocumentRetrievalDriver>;
+    pub fn Handle_BinXCAFDrivers_DocumentRetrievalDriver_clone(
+        self_: *const Handle_BinXCAFDrivers_DocumentRetrievalDriver,
+    ) -> crate::OcctResult<*mut Handle_BinXCAFDrivers_DocumentRetrievalDriver>;
     /// Check if Handle<BinXCAFDrivers_DocumentRetrievalDriver> is null
-    pub fn HandleBinXCAFDriversDocumentRetrievalDriver_is_null(
-        self_: *const HandleBinXCAFDriversDocumentRetrievalDriver,
+    pub fn Handle_BinXCAFDrivers_DocumentRetrievalDriver_is_null(
+        self_: *const Handle_BinXCAFDrivers_DocumentRetrievalDriver,
     ) -> bool;
     /// Dereference Handle to get *const BinXCAFDrivers_DocumentRetrievalDriver
-    pub fn HandleBinXCAFDriversDocumentRetrievalDriver_get(
-        handle: *const HandleBinXCAFDriversDocumentRetrievalDriver,
+    pub fn Handle_BinXCAFDrivers_DocumentRetrievalDriver_get(
+        handle: *const Handle_BinXCAFDrivers_DocumentRetrievalDriver,
     ) -> crate::OcctResult<*const BinXCAFDrivers_DocumentRetrievalDriver>;
     /// Dereference Handle to get *mut BinXCAFDrivers_DocumentRetrievalDriver
-    pub fn HandleBinXCAFDriversDocumentRetrievalDriver_get_mut(
-        handle: *mut HandleBinXCAFDriversDocumentRetrievalDriver,
+    pub fn Handle_BinXCAFDrivers_DocumentRetrievalDriver_get_mut(
+        handle: *mut Handle_BinXCAFDrivers_DocumentRetrievalDriver,
     ) -> crate::OcctResult<*mut BinXCAFDrivers_DocumentRetrievalDriver>;
     /// Upcast Handle<BinXCAFDrivers_DocumentRetrievalDriver> to Handle<BinDrivers_DocumentRetrievalDriver>
-    pub fn HandleBinXCAFDriversDocumentRetrievalDriver_to_HandleBinDriversDocumentRetrievalDriver(
-        self_: *const HandleBinXCAFDriversDocumentRetrievalDriver,
-    ) -> crate::OcctResult<*mut HandleBinDriversDocumentRetrievalDriver>;
+    pub fn Handle_BinXCAFDrivers_DocumentRetrievalDriver_to_Handle_BinDrivers_DocumentRetrievalDriver(
+        self_: *const Handle_BinXCAFDrivers_DocumentRetrievalDriver,
+    ) -> crate::OcctResult<*mut Handle_BinDrivers_DocumentRetrievalDriver>;
     /// Upcast Handle<BinXCAFDrivers_DocumentRetrievalDriver> to Handle<BinLDrivers_DocumentRetrievalDriver>
-    pub fn HandleBinXCAFDriversDocumentRetrievalDriver_to_HandleBinLDriversDocumentRetrievalDriver(
-        self_: *const HandleBinXCAFDriversDocumentRetrievalDriver,
-    ) -> crate::OcctResult<*mut HandleBinLDriversDocumentRetrievalDriver>;
+    pub fn Handle_BinXCAFDrivers_DocumentRetrievalDriver_to_Handle_BinLDrivers_DocumentRetrievalDriver(
+        self_: *const Handle_BinXCAFDrivers_DocumentRetrievalDriver,
+    ) -> crate::OcctResult<*mut Handle_BinLDrivers_DocumentRetrievalDriver>;
     /// Upcast Handle<BinXCAFDrivers_DocumentRetrievalDriver> to Handle<PCDM_RetrievalDriver>
-    pub fn HandleBinXCAFDriversDocumentRetrievalDriver_to_HandlePCDMRetrievalDriver(
-        self_: *const HandleBinXCAFDriversDocumentRetrievalDriver,
-    ) -> crate::OcctResult<*mut HandlePCDMRetrievalDriver>;
+    pub fn Handle_BinXCAFDrivers_DocumentRetrievalDriver_to_Handle_PCDM_RetrievalDriver(
+        self_: *const Handle_BinXCAFDrivers_DocumentRetrievalDriver,
+    ) -> crate::OcctResult<*mut Handle_PCDM_RetrievalDriver>;
     /// Upcast Handle<BinXCAFDrivers_DocumentRetrievalDriver> to Handle<PCDM_Reader>
-    pub fn HandleBinXCAFDriversDocumentRetrievalDriver_to_HandlePCDMReader(
-        self_: *const HandleBinXCAFDriversDocumentRetrievalDriver,
-    ) -> crate::OcctResult<*mut HandlePCDMReader>;
+    pub fn Handle_BinXCAFDrivers_DocumentRetrievalDriver_to_Handle_PCDM_Reader(
+        self_: *const Handle_BinXCAFDrivers_DocumentRetrievalDriver,
+    ) -> crate::OcctResult<*mut Handle_PCDM_Reader>;
     /// Upcast Handle<BinXCAFDrivers_DocumentRetrievalDriver> to Handle<Standard_Transient>
-    pub fn HandleBinXCAFDriversDocumentRetrievalDriver_to_HandleStandardTransient(
-        self_: *const HandleBinXCAFDriversDocumentRetrievalDriver,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
-    /// Inherited: **Source:** `BinDrivers_DocumentRetrievalDriver.hxx`:42 - `BinDrivers_DocumentRetrievalDriver::ReadShapeSection()`
+    pub fn Handle_BinXCAFDrivers_DocumentRetrievalDriver_to_Handle_Standard_Transient(
+        self_: *const Handle_BinXCAFDrivers_DocumentRetrievalDriver,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
+    /// Inherited: **Source:** `BinDrivers_DocumentRetrievalDriver.hxx`:39 - `BinDrivers_DocumentRetrievalDriver::ReadShapeSection()`
     pub fn BinXCAFDrivers_DocumentRetrievalDriver_inherited_ReadShapeSection(
         self_: *mut BinXCAFDrivers_DocumentRetrievalDriver,
         theSection: *mut BinLDrivers_DocumentSection,
@@ -1878,71 +1783,71 @@ unsafe extern "C" {
         isMess: bool,
         theRange: *const Message_ProgressRange,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BinDrivers_DocumentRetrievalDriver.hxx`:48 - `BinDrivers_DocumentRetrievalDriver::CheckShapeSection()`
+    /// Inherited: **Source:** `BinDrivers_DocumentRetrievalDriver.hxx`:45 - `BinDrivers_DocumentRetrievalDriver::CheckShapeSection()`
     pub fn BinXCAFDrivers_DocumentRetrievalDriver_inherited_CheckShapeSection(
         self_: *mut BinXCAFDrivers_DocumentRetrievalDriver,
         thePos: *const std::ffi::c_long,
         theIS: *mut Standard_IStream,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BinDrivers_DocumentRetrievalDriver.hxx`:52 - `BinDrivers_DocumentRetrievalDriver::Clear()`
+    /// Inherited: **Source:** `BinDrivers_DocumentRetrievalDriver.hxx`:49 - `BinDrivers_DocumentRetrievalDriver::Clear()`
     pub fn BinXCAFDrivers_DocumentRetrievalDriver_inherited_Clear(
         self_: *mut BinXCAFDrivers_DocumentRetrievalDriver,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BinDrivers_DocumentRetrievalDriver.hxx`:55 - `BinDrivers_DocumentRetrievalDriver::EnableQuickPartReading()`
+    /// Inherited: **Source:** `BinDrivers_DocumentRetrievalDriver.hxx`:52 - `BinDrivers_DocumentRetrievalDriver::EnableQuickPartReading()`
     pub fn BinXCAFDrivers_DocumentRetrievalDriver_inherited_EnableQuickPartReading(
         self_: *mut BinXCAFDrivers_DocumentRetrievalDriver,
-        theMessageDriver: *const HandleMessageMessenger,
+        theMessageDriver: *const Handle_Message_Messenger,
         theValue: bool,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BinLDrivers_DocumentRetrievalDriver.hxx`:50 - `BinLDrivers_DocumentRetrievalDriver::Read()`
+    /// Inherited: **Source:** `BinLDrivers_DocumentRetrievalDriver.hxx`:48 - `BinLDrivers_DocumentRetrievalDriver::Read()`
     pub fn BinXCAFDrivers_DocumentRetrievalDriver_inherited_Read(
         self_: *mut BinXCAFDrivers_DocumentRetrievalDriver,
         theFileName: *const TCollection_ExtendedString,
-        theNewDocument: *const HandleCDMDocument,
-        theApplication: *const HandleCDMApplication,
-        theFilter: *const HandlePCDMReaderFilter,
+        theNewDocument: *const Handle_CDM_Document,
+        theApplication: *const Handle_CDM_Application,
+        theFilter: *const Handle_PCDM_ReaderFilter,
         theProgress: *const Message_ProgressRange,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `PCDM_RetrievalDriver.hxx`:46 - `PCDM_RetrievalDriver::SetFormat()`
+    /// Inherited: **Source:** `PCDM_RetrievalDriver.hxx`:43 - `PCDM_RetrievalDriver::SetFormat()`
     pub fn BinXCAFDrivers_DocumentRetrievalDriver_inherited_SetFormat(
         self_: *mut BinXCAFDrivers_DocumentRetrievalDriver,
         aformat: *const TCollection_ExtendedString,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `PCDM_RetrievalDriver.hxx`:48 - `PCDM_RetrievalDriver::GetFormat()`
+    /// Inherited: **Source:** `PCDM_RetrievalDriver.hxx`:45 - `PCDM_RetrievalDriver::GetFormat()`
     pub fn BinXCAFDrivers_DocumentRetrievalDriver_inherited_GetFormat(
         self_: *const BinXCAFDrivers_DocumentRetrievalDriver,
     ) -> crate::OcctResult<*mut TCollection_ExtendedString>;
-    /// Inherited: **Source:** `PCDM_Reader.hxx`:57 - `PCDM_Reader::GetStatus()`
+    /// Inherited: **Source:** `PCDM_Reader.hxx`:54 - `PCDM_Reader::GetStatus()`
     pub fn BinXCAFDrivers_DocumentRetrievalDriver_inherited_GetStatus(
         self_: *const BinXCAFDrivers_DocumentRetrievalDriver,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn BinXCAFDrivers_DocumentRetrievalDriver_inherited_IsInstance(
         self_: *const BinXCAFDrivers_DocumentRetrievalDriver,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn BinXCAFDrivers_DocumentRetrievalDriver_inherited_IsKind(
         self_: *const BinXCAFDrivers_DocumentRetrievalDriver,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn BinXCAFDrivers_DocumentRetrievalDriver_inherited_This(
         self_: *const BinXCAFDrivers_DocumentRetrievalDriver,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn BinXCAFDrivers_DocumentRetrievalDriver_inherited_GetRefCount(
         self_: *const BinXCAFDrivers_DocumentRetrievalDriver,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn BinXCAFDrivers_DocumentRetrievalDriver_inherited_IncrementRefCounter(
         self_: *mut BinXCAFDrivers_DocumentRetrievalDriver,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn BinXCAFDrivers_DocumentRetrievalDriver_inherited_DecrementRefCounter(
         self_: *mut BinXCAFDrivers_DocumentRetrievalDriver,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn BinXCAFDrivers_DocumentRetrievalDriver_inherited_Delete(
         self_: *const BinXCAFDrivers_DocumentRetrievalDriver,
     ) -> *const std::ffi::c_char;
@@ -1950,24 +1855,24 @@ unsafe extern "C" {
     pub fn BinXCAFDrivers_DocumentStorageDriver_destructor(
         self_: *mut BinXCAFDrivers_DocumentStorageDriver,
     );
-    /// **Source:** `BinXCAFDrivers_DocumentStorageDriver.hxx`:34 - `BinXCAFDrivers_DocumentStorageDriver::BinXCAFDrivers_DocumentStorageDriver()`
+    /// **Source:** `BinXCAFDrivers_DocumentStorageDriver.hxx`:31 - `BinXCAFDrivers_DocumentStorageDriver::BinXCAFDrivers_DocumentStorageDriver()`
     pub fn BinXCAFDrivers_DocumentStorageDriver_ctor(
     ) -> crate::OcctResult<*mut BinXCAFDrivers_DocumentStorageDriver>;
-    /// **Source:** `BinXCAFDrivers_DocumentStorageDriver.hxx`:36 - `BinXCAFDrivers_DocumentStorageDriver::AttributeDrivers()`
+    /// **Source:** `BinXCAFDrivers_DocumentStorageDriver.hxx`:33 - `BinXCAFDrivers_DocumentStorageDriver::AttributeDrivers()`
     pub fn BinXCAFDrivers_DocumentStorageDriver_attribute_drivers(
         self_: *mut BinXCAFDrivers_DocumentStorageDriver,
-        theMsgDriver: *const HandleMessageMessenger,
-    ) -> crate::OcctResult<*mut HandleBinMDFADriverTable>;
-    /// **Source:** `BinXCAFDrivers_DocumentStorageDriver.hxx`:39 - `BinXCAFDrivers_DocumentStorageDriver::DynamicType()`
+        theMsgDriver: *const Handle_Message_Messenger,
+    ) -> crate::OcctResult<*mut Handle_BinMDF_ADriverTable>;
+    /// **Source:** `BinXCAFDrivers_DocumentStorageDriver.hxx`:36 - `BinXCAFDrivers_DocumentStorageDriver::DynamicType()`
     pub fn BinXCAFDrivers_DocumentStorageDriver_dynamic_type(
         self_: *const BinXCAFDrivers_DocumentStorageDriver,
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// **Source:** `BinXCAFDrivers_DocumentStorageDriver.hxx`:39 - `BinXCAFDrivers_DocumentStorageDriver::get_type_name()`
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
+    /// **Source:** `BinXCAFDrivers_DocumentStorageDriver.hxx`:36 - `BinXCAFDrivers_DocumentStorageDriver::get_type_name()`
     pub fn BinXCAFDrivers_DocumentStorageDriver_get_type_name(
     ) -> crate::OcctResult<*const std::ffi::c_char>;
-    /// **Source:** `BinXCAFDrivers_DocumentStorageDriver.hxx`:39 - `BinXCAFDrivers_DocumentStorageDriver::get_type_descriptor()`
+    /// **Source:** `BinXCAFDrivers_DocumentStorageDriver.hxx`:36 - `BinXCAFDrivers_DocumentStorageDriver::get_type_descriptor()`
     pub fn BinXCAFDrivers_DocumentStorageDriver_get_type_descriptor(
-    ) -> crate::OcctResult<*const HandleStandardType>;
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast BinXCAFDrivers_DocumentStorageDriver to BinDrivers_DocumentStorageDriver
     pub fn BinXCAFDrivers_DocumentStorageDriver_as_BinDrivers_DocumentStorageDriver(
         self_: *const BinXCAFDrivers_DocumentStorageDriver,
@@ -2011,48 +1916,48 @@ unsafe extern "C" {
     /// Wrap BinXCAFDrivers_DocumentStorageDriver in a Handle
     pub fn BinXCAFDrivers_DocumentStorageDriver_to_handle(
         obj: *mut BinXCAFDrivers_DocumentStorageDriver,
-    ) -> crate::OcctResult<*mut HandleBinXCAFDriversDocumentStorageDriver>;
+    ) -> crate::OcctResult<*mut Handle_BinXCAFDrivers_DocumentStorageDriver>;
     /// Destroy Handle<BinXCAFDrivers_DocumentStorageDriver>
-    pub fn HandleBinXCAFDriversDocumentStorageDriver_destructor(
-        self_: *mut HandleBinXCAFDriversDocumentStorageDriver,
+    pub fn Handle_BinXCAFDrivers_DocumentStorageDriver_destructor(
+        self_: *mut Handle_BinXCAFDrivers_DocumentStorageDriver,
     );
     /// Clone Handle<BinXCAFDrivers_DocumentStorageDriver> (increments reference count)
-    pub fn HandleBinXCAFDriversDocumentStorageDriver_clone(
-        self_: *const HandleBinXCAFDriversDocumentStorageDriver,
-    ) -> crate::OcctResult<*mut HandleBinXCAFDriversDocumentStorageDriver>;
+    pub fn Handle_BinXCAFDrivers_DocumentStorageDriver_clone(
+        self_: *const Handle_BinXCAFDrivers_DocumentStorageDriver,
+    ) -> crate::OcctResult<*mut Handle_BinXCAFDrivers_DocumentStorageDriver>;
     /// Check if Handle<BinXCAFDrivers_DocumentStorageDriver> is null
-    pub fn HandleBinXCAFDriversDocumentStorageDriver_is_null(
-        self_: *const HandleBinXCAFDriversDocumentStorageDriver,
+    pub fn Handle_BinXCAFDrivers_DocumentStorageDriver_is_null(
+        self_: *const Handle_BinXCAFDrivers_DocumentStorageDriver,
     ) -> bool;
     /// Dereference Handle to get *const BinXCAFDrivers_DocumentStorageDriver
-    pub fn HandleBinXCAFDriversDocumentStorageDriver_get(
-        handle: *const HandleBinXCAFDriversDocumentStorageDriver,
+    pub fn Handle_BinXCAFDrivers_DocumentStorageDriver_get(
+        handle: *const Handle_BinXCAFDrivers_DocumentStorageDriver,
     ) -> crate::OcctResult<*const BinXCAFDrivers_DocumentStorageDriver>;
     /// Dereference Handle to get *mut BinXCAFDrivers_DocumentStorageDriver
-    pub fn HandleBinXCAFDriversDocumentStorageDriver_get_mut(
-        handle: *mut HandleBinXCAFDriversDocumentStorageDriver,
+    pub fn Handle_BinXCAFDrivers_DocumentStorageDriver_get_mut(
+        handle: *mut Handle_BinXCAFDrivers_DocumentStorageDriver,
     ) -> crate::OcctResult<*mut BinXCAFDrivers_DocumentStorageDriver>;
     /// Upcast Handle<BinXCAFDrivers_DocumentStorageDriver> to Handle<BinDrivers_DocumentStorageDriver>
-    pub fn HandleBinXCAFDriversDocumentStorageDriver_to_HandleBinDriversDocumentStorageDriver(
-        self_: *const HandleBinXCAFDriversDocumentStorageDriver,
-    ) -> crate::OcctResult<*mut HandleBinDriversDocumentStorageDriver>;
+    pub fn Handle_BinXCAFDrivers_DocumentStorageDriver_to_Handle_BinDrivers_DocumentStorageDriver(
+        self_: *const Handle_BinXCAFDrivers_DocumentStorageDriver,
+    ) -> crate::OcctResult<*mut Handle_BinDrivers_DocumentStorageDriver>;
     /// Upcast Handle<BinXCAFDrivers_DocumentStorageDriver> to Handle<BinLDrivers_DocumentStorageDriver>
-    pub fn HandleBinXCAFDriversDocumentStorageDriver_to_HandleBinLDriversDocumentStorageDriver(
-        self_: *const HandleBinXCAFDriversDocumentStorageDriver,
-    ) -> crate::OcctResult<*mut HandleBinLDriversDocumentStorageDriver>;
+    pub fn Handle_BinXCAFDrivers_DocumentStorageDriver_to_Handle_BinLDrivers_DocumentStorageDriver(
+        self_: *const Handle_BinXCAFDrivers_DocumentStorageDriver,
+    ) -> crate::OcctResult<*mut Handle_BinLDrivers_DocumentStorageDriver>;
     /// Upcast Handle<BinXCAFDrivers_DocumentStorageDriver> to Handle<PCDM_StorageDriver>
-    pub fn HandleBinXCAFDriversDocumentStorageDriver_to_HandlePCDMStorageDriver(
-        self_: *const HandleBinXCAFDriversDocumentStorageDriver,
-    ) -> crate::OcctResult<*mut HandlePCDMStorageDriver>;
+    pub fn Handle_BinXCAFDrivers_DocumentStorageDriver_to_Handle_PCDM_StorageDriver(
+        self_: *const Handle_BinXCAFDrivers_DocumentStorageDriver,
+    ) -> crate::OcctResult<*mut Handle_PCDM_StorageDriver>;
     /// Upcast Handle<BinXCAFDrivers_DocumentStorageDriver> to Handle<PCDM_Writer>
-    pub fn HandleBinXCAFDriversDocumentStorageDriver_to_HandlePCDMWriter(
-        self_: *const HandleBinXCAFDriversDocumentStorageDriver,
-    ) -> crate::OcctResult<*mut HandlePCDMWriter>;
+    pub fn Handle_BinXCAFDrivers_DocumentStorageDriver_to_Handle_PCDM_Writer(
+        self_: *const Handle_BinXCAFDrivers_DocumentStorageDriver,
+    ) -> crate::OcctResult<*mut Handle_PCDM_Writer>;
     /// Upcast Handle<BinXCAFDrivers_DocumentStorageDriver> to Handle<Standard_Transient>
-    pub fn HandleBinXCAFDriversDocumentStorageDriver_to_HandleStandardTransient(
-        self_: *const HandleBinXCAFDriversDocumentStorageDriver,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
-    /// Inherited: **Source:** `BinDrivers_DocumentStorageDriver.hxx`:42 - `BinDrivers_DocumentStorageDriver::WriteShapeSection()`
+    pub fn Handle_BinXCAFDrivers_DocumentStorageDriver_to_Handle_Standard_Transient(
+        self_: *const Handle_BinXCAFDrivers_DocumentStorageDriver,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
+    /// Inherited: **Source:** `BinDrivers_DocumentStorageDriver.hxx`:39 - `BinDrivers_DocumentStorageDriver::WriteShapeSection()`
     pub fn BinXCAFDrivers_DocumentStorageDriver_inherited_WriteShapeSection(
         self_: *mut BinXCAFDrivers_DocumentStorageDriver,
         theDocSection: *mut BinLDrivers_DocumentSection,
@@ -2060,113 +1965,113 @@ unsafe extern "C" {
         theDocVer: i32,
         theRange: *const Message_ProgressRange,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BinDrivers_DocumentStorageDriver.hxx`:49 - `BinDrivers_DocumentStorageDriver::IsWithTriangles()`
+    /// Inherited: **Source:** `BinDrivers_DocumentStorageDriver.hxx`:46 - `BinDrivers_DocumentStorageDriver::IsWithTriangles()`
     pub fn BinXCAFDrivers_DocumentStorageDriver_inherited_IsWithTriangles(
         self_: *const BinXCAFDrivers_DocumentStorageDriver,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `BinDrivers_DocumentStorageDriver.hxx`:51 - `BinDrivers_DocumentStorageDriver::IsWithNormals()`
+    /// Inherited: **Source:** `BinDrivers_DocumentStorageDriver.hxx`:48 - `BinDrivers_DocumentStorageDriver::IsWithNormals()`
     pub fn BinXCAFDrivers_DocumentStorageDriver_inherited_IsWithNormals(
         self_: *const BinXCAFDrivers_DocumentStorageDriver,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `BinDrivers_DocumentStorageDriver.hxx`:54 - `BinDrivers_DocumentStorageDriver::SetWithTriangles()`
+    /// Inherited: **Source:** `BinDrivers_DocumentStorageDriver.hxx`:51 - `BinDrivers_DocumentStorageDriver::SetWithTriangles()`
     pub fn BinXCAFDrivers_DocumentStorageDriver_inherited_SetWithTriangles(
         self_: *mut BinXCAFDrivers_DocumentStorageDriver,
-        theMessageDriver: *const HandleMessageMessenger,
+        theMessageDriver: *const Handle_Message_Messenger,
         theWithTriangulation: bool,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BinDrivers_DocumentStorageDriver.hxx`:57 - `BinDrivers_DocumentStorageDriver::SetWithNormals()`
+    /// Inherited: **Source:** `BinDrivers_DocumentStorageDriver.hxx`:54 - `BinDrivers_DocumentStorageDriver::SetWithNormals()`
     pub fn BinXCAFDrivers_DocumentStorageDriver_inherited_SetWithNormals(
         self_: *mut BinXCAFDrivers_DocumentStorageDriver,
-        theMessageDriver: *const HandleMessageMessenger,
+        theMessageDriver: *const Handle_Message_Messenger,
         theWithTriangulation: bool,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BinDrivers_DocumentStorageDriver.hxx`:61 - `BinDrivers_DocumentStorageDriver::EnableQuickPartWriting()`
+    /// Inherited: **Source:** `BinDrivers_DocumentStorageDriver.hxx`:58 - `BinDrivers_DocumentStorageDriver::EnableQuickPartWriting()`
     pub fn BinXCAFDrivers_DocumentStorageDriver_inherited_EnableQuickPartWriting(
         self_: *mut BinXCAFDrivers_DocumentStorageDriver,
-        theMessageDriver: *const HandleMessageMessenger,
+        theMessageDriver: *const Handle_Message_Messenger,
         theValue: bool,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BinDrivers_DocumentStorageDriver.hxx`:65 - `BinDrivers_DocumentStorageDriver::Clear()`
+    /// Inherited: **Source:** `BinDrivers_DocumentStorageDriver.hxx`:63 - `BinDrivers_DocumentStorageDriver::Clear()`
     pub fn BinXCAFDrivers_DocumentStorageDriver_inherited_Clear(
         self_: *mut BinXCAFDrivers_DocumentStorageDriver,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BinLDrivers_DocumentStorageDriver.hxx`:51 - `BinLDrivers_DocumentStorageDriver::Write()`
+    /// Inherited: **Source:** `BinLDrivers_DocumentStorageDriver.hxx`:50 - `BinLDrivers_DocumentStorageDriver::Write()`
     pub fn BinXCAFDrivers_DocumentStorageDriver_inherited_Write(
         self_: *mut BinXCAFDrivers_DocumentStorageDriver,
-        theDocument: *const HandleCDMDocument,
+        theDocument: *const Handle_CDM_Document,
         theFileName: *const TCollection_ExtendedString,
         theRange: *const Message_ProgressRange,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BinLDrivers_DocumentStorageDriver.hxx`:66 - `BinLDrivers_DocumentStorageDriver::AddSection()`
+    /// Inherited: **Source:** `BinLDrivers_DocumentStorageDriver.hxx`:65 - `BinLDrivers_DocumentStorageDriver::AddSection()`
     pub fn BinXCAFDrivers_DocumentStorageDriver_inherited_AddSection(
         self_: *mut BinXCAFDrivers_DocumentStorageDriver,
         theName: *const TCollection_AsciiString,
         isPostRead: bool,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BinLDrivers_DocumentStorageDriver.hxx`:70 - `BinLDrivers_DocumentStorageDriver::IsQuickPart()`
+    /// Inherited: **Source:** `BinLDrivers_DocumentStorageDriver.hxx`:69 - `BinLDrivers_DocumentStorageDriver::IsQuickPart()`
     pub fn BinXCAFDrivers_DocumentStorageDriver_inherited_IsQuickPart(
         self_: *const BinXCAFDrivers_DocumentStorageDriver,
         theVersion: i32,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `PCDM_StorageDriver.hxx`:52 - `PCDM_StorageDriver::Make()`
+    /// Inherited: **Source:** `PCDM_StorageDriver.hxx`:50 - `PCDM_StorageDriver::Make()`
     pub fn BinXCAFDrivers_DocumentStorageDriver_inherited_Make(
         self_: *mut BinXCAFDrivers_DocumentStorageDriver,
-        aDocument: *const HandleCDMDocument,
-    ) -> crate::OcctResult<*mut HandlePCDMDocument>;
-    /// Inherited: **Source:** `PCDM_StorageDriver.hxx`:76 - `PCDM_StorageDriver::SetFormat()`
+        aDocument: *const Handle_CDM_Document,
+    ) -> crate::OcctResult<*mut Handle_PCDM_Document>;
+    /// Inherited: **Source:** `PCDM_StorageDriver.hxx`:75 - `PCDM_StorageDriver::SetFormat()`
     pub fn BinXCAFDrivers_DocumentStorageDriver_inherited_SetFormat(
         self_: *mut BinXCAFDrivers_DocumentStorageDriver,
         aformat: *const TCollection_ExtendedString,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `PCDM_StorageDriver.hxx`:78 - `PCDM_StorageDriver::GetFormat()`
+    /// Inherited: **Source:** `PCDM_StorageDriver.hxx`:77 - `PCDM_StorageDriver::GetFormat()`
     pub fn BinXCAFDrivers_DocumentStorageDriver_inherited_GetFormat(
         self_: *const BinXCAFDrivers_DocumentStorageDriver,
     ) -> crate::OcctResult<*mut TCollection_ExtendedString>;
-    /// Inherited: **Source:** `PCDM_StorageDriver.hxx`:80 - `PCDM_StorageDriver::IsError()`
+    /// Inherited: **Source:** `PCDM_StorageDriver.hxx`:79 - `PCDM_StorageDriver::IsError()`
     pub fn BinXCAFDrivers_DocumentStorageDriver_inherited_IsError(
         self_: *const BinXCAFDrivers_DocumentStorageDriver,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `PCDM_StorageDriver.hxx`:82 - `PCDM_StorageDriver::SetIsError()`
+    /// Inherited: **Source:** `PCDM_StorageDriver.hxx`:81 - `PCDM_StorageDriver::SetIsError()`
     pub fn BinXCAFDrivers_DocumentStorageDriver_inherited_SetIsError(
         self_: *mut BinXCAFDrivers_DocumentStorageDriver,
         theIsError: bool,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `PCDM_StorageDriver.hxx`:84 - `PCDM_StorageDriver::GetStoreStatus()`
+    /// Inherited: **Source:** `PCDM_StorageDriver.hxx`:83 - `PCDM_StorageDriver::GetStoreStatus()`
     pub fn BinXCAFDrivers_DocumentStorageDriver_inherited_GetStoreStatus(
         self_: *const BinXCAFDrivers_DocumentStorageDriver,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `PCDM_StorageDriver.hxx`:86 - `PCDM_StorageDriver::SetStoreStatus()`
+    /// Inherited: **Source:** `PCDM_StorageDriver.hxx`:85 - `PCDM_StorageDriver::SetStoreStatus()`
     pub fn BinXCAFDrivers_DocumentStorageDriver_inherited_SetStoreStatus(
         self_: *mut BinXCAFDrivers_DocumentStorageDriver,
         theStoreStatus: i32,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn BinXCAFDrivers_DocumentStorageDriver_inherited_IsInstance(
         self_: *const BinXCAFDrivers_DocumentStorageDriver,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn BinXCAFDrivers_DocumentStorageDriver_inherited_IsKind(
         self_: *const BinXCAFDrivers_DocumentStorageDriver,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn BinXCAFDrivers_DocumentStorageDriver_inherited_This(
         self_: *const BinXCAFDrivers_DocumentStorageDriver,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn BinXCAFDrivers_DocumentStorageDriver_inherited_GetRefCount(
         self_: *const BinXCAFDrivers_DocumentStorageDriver,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn BinXCAFDrivers_DocumentStorageDriver_inherited_IncrementRefCounter(
         self_: *mut BinXCAFDrivers_DocumentStorageDriver,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn BinXCAFDrivers_DocumentStorageDriver_inherited_DecrementRefCounter(
         self_: *mut BinXCAFDrivers_DocumentStorageDriver,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn BinXCAFDrivers_DocumentStorageDriver_inherited_Delete(
         self_: *const BinXCAFDrivers_DocumentStorageDriver,
     ) -> *const std::ffi::c_char;
@@ -2174,19 +2079,19 @@ unsafe extern "C" {
     // Free functions
     /// **Source:** `BinMXCAFDoc.hxx`:32 - `BinMXCAFDoc::AddDrivers`
     pub fn BinMXCAFDoc_add_drivers_handlebinmdfadrivertable_handlemessagemessenger_7(
-        theDriverTable: *const HandleBinMDFADriverTable,
-        theMsgDrv: *const HandleMessageMessenger,
+        theDriverTable: *const Handle_BinMDF_ADriverTable,
+        theMsgDrv: *const Handle_Message_Messenger,
     ) -> *const std::ffi::c_char;
     /// **Source:** `BinXCAFDrivers.hxx`:30 - `BinXCAFDrivers::Factory`
     pub fn BinXCAFDrivers_factory(
         theGUID: *const Standard_GUID,
-    ) -> crate::OcctResult<*const HandleStandardTransient>;
-    /// **Source:** `BinXCAFDrivers.hxx`:34 - `BinXCAFDrivers::DefineFormat`
+    ) -> crate::OcctResult<*const Handle_Standard_Transient>;
+    /// **Source:** `BinXCAFDrivers.hxx`:35 - `BinXCAFDrivers::DefineFormat`
     pub fn BinXCAFDrivers_define_format(
-        theApp: *const HandleTDocStdApplication,
+        theApp: *const Handle_TDocStd_Application,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BinXCAFDrivers.hxx`:37 - `BinXCAFDrivers::AttributeDrivers`
+    /// **Source:** `BinXCAFDrivers.hxx`:38 - `BinXCAFDrivers::AttributeDrivers`
     pub fn BinXCAFDrivers_attribute_drivers(
-        MsgDrv: *const HandleMessageMessenger,
-    ) -> crate::OcctResult<*mut HandleBinMDFADriverTable>;
+        MsgDrv: *const Handle_Message_Messenger,
+    ) -> crate::OcctResult<*mut Handle_BinMDF_ADriverTable>;
 }

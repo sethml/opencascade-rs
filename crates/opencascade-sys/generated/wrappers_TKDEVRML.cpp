@@ -3,40 +3,24 @@
 
 #include "occt_preamble.hxx"
 
-#include <Adaptor3d_Curve.hxx>
 #include <Aspect_TypeOfDeflection.hxx>
 #include <BRepAdaptor_Surface.hxx>
-#include <Bnd_B3f.hxx>
 #include <DEVRML_ConfigurationNode.hxx>
 #include <DEVRML_Provider.hxx>
 #include <DE_ConfigurationContext.hxx>
 #include <DE_ConfigurationNode.hxx>
 #include <DE_Provider.hxx>
 #include <HLRAlgo_Projector.hxx>
-#include <Interface_IndexedMapOfAsciiString.hxx>
 #include <Message_ProgressRange.hxx>
 #include <NCollection_IncAllocator.hxx>
 #include <Poly_Connect.hxx>
-#include <Quantity_Color.hxx>
-#include <Quantity_HArray1OfColor.hxx>
 #include <RWMesh_CafReader.hxx>
 #include <RWMesh_CoordinateSystemConverter.hxx>
 #include <Standard_Handle.hxx>
 #include <Standard_IStream.hxx>
 #include <Standard_OStream.hxx>
 #include <Standard_Type.hxx>
-#include <TColStd_HArray1OfAsciiString.hxx>
-#include <TColStd_HArray1OfInteger.hxx>
-#include <TColStd_HArray1OfReal.hxx>
-#include <TColStd_IndexedDataMapOfStringString.hxx>
-#include <TColStd_ListOfAsciiString.hxx>
-#include <TColgp_Array1OfDir.hxx>
-#include <TColgp_HArray1OfVec.hxx>
-#include <TColgp_HArray1OfVec2d.hxx>
-#include <TCollection_ExtendedString.hxx>
-#include <TDataStd_ListIteratorOfListOfExtendedString.hxx>
 #include <TDocStd_Document.hxx>
-#include <TopTools_Array1OfShape.hxx>
 #include <TopoDS_Face.hxx>
 #include <TopoDS_TShape.hxx>
 #include <Vrml.hxx>
@@ -67,7 +51,6 @@
 #include <VrmlData_Cone.hxx>
 #include <VrmlData_Coordinate.hxx>
 #include <VrmlData_Cylinder.hxx>
-#include <VrmlData_DataMapOfShapeAppearance.hxx>
 #include <VrmlData_ErrorStatus.hxx>
 #include <VrmlData_Faceted.hxx>
 #include <VrmlData_Geometry.hxx>
@@ -76,7 +59,6 @@
 #include <VrmlData_InBuffer.hxx>
 #include <VrmlData_IndexedFaceSet.hxx>
 #include <VrmlData_IndexedLineSet.hxx>
-#include <VrmlData_MapOfNode.hxx>
 #include <VrmlData_Material.hxx>
 #include <VrmlData_Node.hxx>
 #include <VrmlData_Normal.hxx>
@@ -143,318 +125,314 @@
 #include <Vrml_WWWInline.hxx>
 #include <XSControl_WorkSession.hxx>
 #include <gp_Ax3.hxx>
-#include <gp_Trsf.hxx>
-#include <gp_Vec.hxx>
-#include <gp_Vec2d.hxx>
-#include <gp_XY.hxx>
 
 // Handle type aliases
-typedef opencascade::handle<BRepAdaptor_Surface> HandleBRepAdaptorSurface;
-typedef opencascade::handle<DEVRML_ConfigurationNode> HandleDEVRMLConfigurationNode;
-typedef opencascade::handle<DEVRML_Provider> HandleDEVRMLProvider;
-typedef opencascade::handle<DE_ConfigurationContext> HandleDEConfigurationContext;
-typedef opencascade::handle<DE_ConfigurationNode> HandleDEConfigurationNode;
-typedef opencascade::handle<DE_Provider> HandleDEProvider;
-typedef opencascade::handle<NCollection_IncAllocator> HandleNCollectionIncAllocator;
-typedef opencascade::handle<Quantity_HArray1OfColor> HandleQuantityHArray1OfColor;
-typedef opencascade::handle<RWMesh_CafReader> HandleRWMeshCafReader;
-typedef opencascade::handle<Standard_Transient> HandleStandardTransient;
-typedef opencascade::handle<Standard_Type> HandleStandardType;
-typedef opencascade::handle<TColStd_HArray1OfAsciiString> HandleTColStdHArray1OfAsciiString;
-typedef opencascade::handle<TColStd_HArray1OfInteger> HandleTColStdHArray1OfInteger;
-typedef opencascade::handle<TColStd_HArray1OfReal> HandleTColStdHArray1OfReal;
-typedef opencascade::handle<TColgp_HArray1OfVec> HandleTColgpHArray1OfVec;
-typedef opencascade::handle<TColgp_HArray1OfVec2d> HandleTColgpHArray1OfVec2d;
-typedef opencascade::handle<TDocStd_Document> HandleTDocStdDocument;
-typedef opencascade::handle<TopoDS_TShape> HandleTopoDSTShape;
-typedef opencascade::handle<VrmlAPI_CafReader> HandleVrmlAPICafReader;
-typedef opencascade::handle<VrmlConverter_Drawer> HandleVrmlConverterDrawer;
-typedef opencascade::handle<VrmlConverter_IsoAspect> HandleVrmlConverterIsoAspect;
-typedef opencascade::handle<VrmlConverter_LineAspect> HandleVrmlConverterLineAspect;
-typedef opencascade::handle<VrmlConverter_PointAspect> HandleVrmlConverterPointAspect;
-typedef opencascade::handle<VrmlConverter_Projector> HandleVrmlConverterProjector;
-typedef opencascade::handle<VrmlConverter_ShadingAspect> HandleVrmlConverterShadingAspect;
-typedef opencascade::handle<VrmlData_Appearance> HandleVrmlDataAppearance;
-typedef opencascade::handle<VrmlData_ArrayVec3d> HandleVrmlDataArrayVec3d;
-typedef opencascade::handle<VrmlData_Box> HandleVrmlDataBox;
-typedef opencascade::handle<VrmlData_Color> HandleVrmlDataColor;
-typedef opencascade::handle<VrmlData_Cone> HandleVrmlDataCone;
-typedef opencascade::handle<VrmlData_Coordinate> HandleVrmlDataCoordinate;
-typedef opencascade::handle<VrmlData_Cylinder> HandleVrmlDataCylinder;
-typedef opencascade::handle<VrmlData_Faceted> HandleVrmlDataFaceted;
-typedef opencascade::handle<VrmlData_Geometry> HandleVrmlDataGeometry;
-typedef opencascade::handle<VrmlData_Group> HandleVrmlDataGroup;
-typedef opencascade::handle<VrmlData_ImageTexture> HandleVrmlDataImageTexture;
-typedef opencascade::handle<VrmlData_IndexedFaceSet> HandleVrmlDataIndexedFaceSet;
-typedef opencascade::handle<VrmlData_IndexedLineSet> HandleVrmlDataIndexedLineSet;
-typedef opencascade::handle<VrmlData_Material> HandleVrmlDataMaterial;
-typedef opencascade::handle<VrmlData_Node> HandleVrmlDataNode;
-typedef opencascade::handle<VrmlData_Normal> HandleVrmlDataNormal;
-typedef opencascade::handle<VrmlData_ShapeNode> HandleVrmlDataShapeNode;
-typedef opencascade::handle<VrmlData_Sphere> HandleVrmlDataSphere;
-typedef opencascade::handle<VrmlData_Texture> HandleVrmlDataTexture;
-typedef opencascade::handle<VrmlData_TextureCoordinate> HandleVrmlDataTextureCoordinate;
-typedef opencascade::handle<VrmlData_TextureTransform> HandleVrmlDataTextureTransform;
-typedef opencascade::handle<VrmlData_UnknownNode> HandleVrmlDataUnknownNode;
-typedef opencascade::handle<VrmlData_WorldInfo> HandleVrmlDataWorldInfo;
-typedef opencascade::handle<Vrml_AsciiText> HandleVrmlAsciiText;
-typedef opencascade::handle<Vrml_Coordinate3> HandleVrmlCoordinate3;
-typedef opencascade::handle<Vrml_IndexedFaceSet> HandleVrmlIndexedFaceSet;
-typedef opencascade::handle<Vrml_IndexedLineSet> HandleVrmlIndexedLineSet;
-typedef opencascade::handle<Vrml_LOD> HandleVrmlLOD;
-typedef opencascade::handle<Vrml_Material> HandleVrmlMaterial;
-typedef opencascade::handle<Vrml_Normal> HandleVrmlNormal;
-typedef opencascade::handle<Vrml_SFImage> HandleVrmlSFImage;
-typedef opencascade::handle<Vrml_TextureCoordinate2> HandleVrmlTextureCoordinate2;
-typedef opencascade::handle<XSControl_WorkSession> HandleXSControlWorkSession;
+typedef opencascade::handle<BRepAdaptor_Surface> Handle_BRepAdaptor_Surface;
+typedef opencascade::handle<DEVRML_ConfigurationNode> Handle_DEVRML_ConfigurationNode;
+typedef opencascade::handle<DEVRML_Provider> Handle_DEVRML_Provider;
+typedef opencascade::handle<DE_ConfigurationContext> Handle_DE_ConfigurationContext;
+typedef opencascade::handle<DE_ConfigurationNode> Handle_DE_ConfigurationNode;
+typedef opencascade::handle<DE_Provider> Handle_DE_Provider;
+typedef opencascade::handle<NCollection_HArray1_Quantity_Color> Handle_NCollection_HArray1_Quantity_Color;
+typedef opencascade::handle<NCollection_HArray1_TCollection_AsciiString> Handle_NCollection_HArray1_TCollection_AsciiString;
+typedef opencascade::handle<NCollection_HArray1_double> Handle_NCollection_HArray1_double;
+typedef opencascade::handle<NCollection_HArray1_gp_Vec> Handle_NCollection_HArray1_gp_Vec;
+typedef opencascade::handle<NCollection_HArray1_gp_Vec2d> Handle_NCollection_HArray1_gp_Vec2d;
+typedef opencascade::handle<NCollection_HArray1_int> Handle_NCollection_HArray1_int;
+typedef opencascade::handle<NCollection_IncAllocator> Handle_NCollection_IncAllocator;
+typedef opencascade::handle<RWMesh_CafReader> Handle_RWMesh_CafReader;
+typedef opencascade::handle<Standard_Transient> Handle_Standard_Transient;
+typedef opencascade::handle<Standard_Type> Handle_Standard_Type;
+typedef opencascade::handle<TDocStd_Document> Handle_TDocStd_Document;
+typedef opencascade::handle<TopoDS_TShape> Handle_TopoDS_TShape;
+typedef opencascade::handle<VrmlAPI_CafReader> Handle_VrmlAPI_CafReader;
+typedef opencascade::handle<VrmlConverter_Drawer> Handle_VrmlConverter_Drawer;
+typedef opencascade::handle<VrmlConverter_IsoAspect> Handle_VrmlConverter_IsoAspect;
+typedef opencascade::handle<VrmlConverter_LineAspect> Handle_VrmlConverter_LineAspect;
+typedef opencascade::handle<VrmlConverter_PointAspect> Handle_VrmlConverter_PointAspect;
+typedef opencascade::handle<VrmlConverter_Projector> Handle_VrmlConverter_Projector;
+typedef opencascade::handle<VrmlConverter_ShadingAspect> Handle_VrmlConverter_ShadingAspect;
+typedef opencascade::handle<VrmlData_Appearance> Handle_VrmlData_Appearance;
+typedef opencascade::handle<VrmlData_ArrayVec3d> Handle_VrmlData_ArrayVec3d;
+typedef opencascade::handle<VrmlData_Box> Handle_VrmlData_Box;
+typedef opencascade::handle<VrmlData_Color> Handle_VrmlData_Color;
+typedef opencascade::handle<VrmlData_Cone> Handle_VrmlData_Cone;
+typedef opencascade::handle<VrmlData_Coordinate> Handle_VrmlData_Coordinate;
+typedef opencascade::handle<VrmlData_Cylinder> Handle_VrmlData_Cylinder;
+typedef opencascade::handle<VrmlData_Faceted> Handle_VrmlData_Faceted;
+typedef opencascade::handle<VrmlData_Geometry> Handle_VrmlData_Geometry;
+typedef opencascade::handle<VrmlData_Group> Handle_VrmlData_Group;
+typedef opencascade::handle<VrmlData_ImageTexture> Handle_VrmlData_ImageTexture;
+typedef opencascade::handle<VrmlData_IndexedFaceSet> Handle_VrmlData_IndexedFaceSet;
+typedef opencascade::handle<VrmlData_IndexedLineSet> Handle_VrmlData_IndexedLineSet;
+typedef opencascade::handle<VrmlData_Material> Handle_VrmlData_Material;
+typedef opencascade::handle<VrmlData_Node> Handle_VrmlData_Node;
+typedef opencascade::handle<VrmlData_Normal> Handle_VrmlData_Normal;
+typedef opencascade::handle<VrmlData_ShapeNode> Handle_VrmlData_ShapeNode;
+typedef opencascade::handle<VrmlData_Sphere> Handle_VrmlData_Sphere;
+typedef opencascade::handle<VrmlData_Texture> Handle_VrmlData_Texture;
+typedef opencascade::handle<VrmlData_TextureCoordinate> Handle_VrmlData_TextureCoordinate;
+typedef opencascade::handle<VrmlData_TextureTransform> Handle_VrmlData_TextureTransform;
+typedef opencascade::handle<VrmlData_UnknownNode> Handle_VrmlData_UnknownNode;
+typedef opencascade::handle<VrmlData_WorldInfo> Handle_VrmlData_WorldInfo;
+typedef opencascade::handle<Vrml_AsciiText> Handle_Vrml_AsciiText;
+typedef opencascade::handle<Vrml_Coordinate3> Handle_Vrml_Coordinate3;
+typedef opencascade::handle<Vrml_IndexedFaceSet> Handle_Vrml_IndexedFaceSet;
+typedef opencascade::handle<Vrml_IndexedLineSet> Handle_Vrml_IndexedLineSet;
+typedef opencascade::handle<Vrml_LOD> Handle_Vrml_LOD;
+typedef opencascade::handle<Vrml_Material> Handle_Vrml_Material;
+typedef opencascade::handle<Vrml_Normal> Handle_Vrml_Normal;
+typedef opencascade::handle<Vrml_SFImage> Handle_Vrml_SFImage;
+typedef opencascade::handle<Vrml_TextureCoordinate2> Handle_Vrml_TextureCoordinate2;
+typedef opencascade::handle<XSControl_WorkSession> Handle_XSControl_WorkSession;
 
 // Handle type destructors, clone, and is_null functions
-extern "C" void HandleDEVRMLConfigurationNode_destructor(HandleDEVRMLConfigurationNode* self_) { delete self_; }
-extern "C" OcctResult<HandleDEVRMLConfigurationNode*> HandleDEVRMLConfigurationNode_clone(const HandleDEVRMLConfigurationNode* self_) {
-    try { return {new HandleDEVRMLConfigurationNode(*self_), nullptr}; }
+extern "C" void Handle_DEVRML_ConfigurationNode_destructor(Handle_DEVRML_ConfigurationNode* self_) { delete self_; }
+extern "C" OcctResult<Handle_DEVRML_ConfigurationNode*> Handle_DEVRML_ConfigurationNode_clone(const Handle_DEVRML_ConfigurationNode* self_) {
+    try { return {new Handle_DEVRML_ConfigurationNode(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleDEVRMLConfigurationNode_is_null(const HandleDEVRMLConfigurationNode* self_) { return self_->IsNull(); }
-extern "C" void HandleDEVRMLProvider_destructor(HandleDEVRMLProvider* self_) { delete self_; }
-extern "C" OcctResult<HandleDEVRMLProvider*> HandleDEVRMLProvider_clone(const HandleDEVRMLProvider* self_) {
-    try { return {new HandleDEVRMLProvider(*self_), nullptr}; }
+extern "C" bool Handle_DEVRML_ConfigurationNode_is_null(const Handle_DEVRML_ConfigurationNode* self_) { return self_->IsNull(); }
+extern "C" void Handle_DEVRML_Provider_destructor(Handle_DEVRML_Provider* self_) { delete self_; }
+extern "C" OcctResult<Handle_DEVRML_Provider*> Handle_DEVRML_Provider_clone(const Handle_DEVRML_Provider* self_) {
+    try { return {new Handle_DEVRML_Provider(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleDEVRMLProvider_is_null(const HandleDEVRMLProvider* self_) { return self_->IsNull(); }
-extern "C" void HandleVrmlAPICafReader_destructor(HandleVrmlAPICafReader* self_) { delete self_; }
-extern "C" OcctResult<HandleVrmlAPICafReader*> HandleVrmlAPICafReader_clone(const HandleVrmlAPICafReader* self_) {
-    try { return {new HandleVrmlAPICafReader(*self_), nullptr}; }
+extern "C" bool Handle_DEVRML_Provider_is_null(const Handle_DEVRML_Provider* self_) { return self_->IsNull(); }
+extern "C" void Handle_VrmlAPI_CafReader_destructor(Handle_VrmlAPI_CafReader* self_) { delete self_; }
+extern "C" OcctResult<Handle_VrmlAPI_CafReader*> Handle_VrmlAPI_CafReader_clone(const Handle_VrmlAPI_CafReader* self_) {
+    try { return {new Handle_VrmlAPI_CafReader(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleVrmlAPICafReader_is_null(const HandleVrmlAPICafReader* self_) { return self_->IsNull(); }
-extern "C" void HandleVrmlConverterDrawer_destructor(HandleVrmlConverterDrawer* self_) { delete self_; }
-extern "C" OcctResult<HandleVrmlConverterDrawer*> HandleVrmlConverterDrawer_clone(const HandleVrmlConverterDrawer* self_) {
-    try { return {new HandleVrmlConverterDrawer(*self_), nullptr}; }
+extern "C" bool Handle_VrmlAPI_CafReader_is_null(const Handle_VrmlAPI_CafReader* self_) { return self_->IsNull(); }
+extern "C" void Handle_VrmlConverter_Drawer_destructor(Handle_VrmlConverter_Drawer* self_) { delete self_; }
+extern "C" OcctResult<Handle_VrmlConverter_Drawer*> Handle_VrmlConverter_Drawer_clone(const Handle_VrmlConverter_Drawer* self_) {
+    try { return {new Handle_VrmlConverter_Drawer(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleVrmlConverterDrawer_is_null(const HandleVrmlConverterDrawer* self_) { return self_->IsNull(); }
-extern "C" void HandleVrmlConverterIsoAspect_destructor(HandleVrmlConverterIsoAspect* self_) { delete self_; }
-extern "C" OcctResult<HandleVrmlConverterIsoAspect*> HandleVrmlConverterIsoAspect_clone(const HandleVrmlConverterIsoAspect* self_) {
-    try { return {new HandleVrmlConverterIsoAspect(*self_), nullptr}; }
+extern "C" bool Handle_VrmlConverter_Drawer_is_null(const Handle_VrmlConverter_Drawer* self_) { return self_->IsNull(); }
+extern "C" void Handle_VrmlConverter_IsoAspect_destructor(Handle_VrmlConverter_IsoAspect* self_) { delete self_; }
+extern "C" OcctResult<Handle_VrmlConverter_IsoAspect*> Handle_VrmlConverter_IsoAspect_clone(const Handle_VrmlConverter_IsoAspect* self_) {
+    try { return {new Handle_VrmlConverter_IsoAspect(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleVrmlConverterIsoAspect_is_null(const HandleVrmlConverterIsoAspect* self_) { return self_->IsNull(); }
-extern "C" void HandleVrmlConverterLineAspect_destructor(HandleVrmlConverterLineAspect* self_) { delete self_; }
-extern "C" OcctResult<HandleVrmlConverterLineAspect*> HandleVrmlConverterLineAspect_clone(const HandleVrmlConverterLineAspect* self_) {
-    try { return {new HandleVrmlConverterLineAspect(*self_), nullptr}; }
+extern "C" bool Handle_VrmlConverter_IsoAspect_is_null(const Handle_VrmlConverter_IsoAspect* self_) { return self_->IsNull(); }
+extern "C" void Handle_VrmlConverter_LineAspect_destructor(Handle_VrmlConverter_LineAspect* self_) { delete self_; }
+extern "C" OcctResult<Handle_VrmlConverter_LineAspect*> Handle_VrmlConverter_LineAspect_clone(const Handle_VrmlConverter_LineAspect* self_) {
+    try { return {new Handle_VrmlConverter_LineAspect(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleVrmlConverterLineAspect_is_null(const HandleVrmlConverterLineAspect* self_) { return self_->IsNull(); }
-extern "C" void HandleVrmlConverterPointAspect_destructor(HandleVrmlConverterPointAspect* self_) { delete self_; }
-extern "C" OcctResult<HandleVrmlConverterPointAspect*> HandleVrmlConverterPointAspect_clone(const HandleVrmlConverterPointAspect* self_) {
-    try { return {new HandleVrmlConverterPointAspect(*self_), nullptr}; }
+extern "C" bool Handle_VrmlConverter_LineAspect_is_null(const Handle_VrmlConverter_LineAspect* self_) { return self_->IsNull(); }
+extern "C" void Handle_VrmlConverter_PointAspect_destructor(Handle_VrmlConverter_PointAspect* self_) { delete self_; }
+extern "C" OcctResult<Handle_VrmlConverter_PointAspect*> Handle_VrmlConverter_PointAspect_clone(const Handle_VrmlConverter_PointAspect* self_) {
+    try { return {new Handle_VrmlConverter_PointAspect(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleVrmlConverterPointAspect_is_null(const HandleVrmlConverterPointAspect* self_) { return self_->IsNull(); }
-extern "C" void HandleVrmlConverterProjector_destructor(HandleVrmlConverterProjector* self_) { delete self_; }
-extern "C" OcctResult<HandleVrmlConverterProjector*> HandleVrmlConverterProjector_clone(const HandleVrmlConverterProjector* self_) {
-    try { return {new HandleVrmlConverterProjector(*self_), nullptr}; }
+extern "C" bool Handle_VrmlConverter_PointAspect_is_null(const Handle_VrmlConverter_PointAspect* self_) { return self_->IsNull(); }
+extern "C" void Handle_VrmlConverter_Projector_destructor(Handle_VrmlConverter_Projector* self_) { delete self_; }
+extern "C" OcctResult<Handle_VrmlConverter_Projector*> Handle_VrmlConverter_Projector_clone(const Handle_VrmlConverter_Projector* self_) {
+    try { return {new Handle_VrmlConverter_Projector(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleVrmlConverterProjector_is_null(const HandleVrmlConverterProjector* self_) { return self_->IsNull(); }
-extern "C" void HandleVrmlConverterShadingAspect_destructor(HandleVrmlConverterShadingAspect* self_) { delete self_; }
-extern "C" OcctResult<HandleVrmlConverterShadingAspect*> HandleVrmlConverterShadingAspect_clone(const HandleVrmlConverterShadingAspect* self_) {
-    try { return {new HandleVrmlConverterShadingAspect(*self_), nullptr}; }
+extern "C" bool Handle_VrmlConverter_Projector_is_null(const Handle_VrmlConverter_Projector* self_) { return self_->IsNull(); }
+extern "C" void Handle_VrmlConverter_ShadingAspect_destructor(Handle_VrmlConverter_ShadingAspect* self_) { delete self_; }
+extern "C" OcctResult<Handle_VrmlConverter_ShadingAspect*> Handle_VrmlConverter_ShadingAspect_clone(const Handle_VrmlConverter_ShadingAspect* self_) {
+    try { return {new Handle_VrmlConverter_ShadingAspect(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleVrmlConverterShadingAspect_is_null(const HandleVrmlConverterShadingAspect* self_) { return self_->IsNull(); }
-extern "C" void HandleVrmlDataAppearance_destructor(HandleVrmlDataAppearance* self_) { delete self_; }
-extern "C" OcctResult<HandleVrmlDataAppearance*> HandleVrmlDataAppearance_clone(const HandleVrmlDataAppearance* self_) {
-    try { return {new HandleVrmlDataAppearance(*self_), nullptr}; }
+extern "C" bool Handle_VrmlConverter_ShadingAspect_is_null(const Handle_VrmlConverter_ShadingAspect* self_) { return self_->IsNull(); }
+extern "C" void Handle_VrmlData_Appearance_destructor(Handle_VrmlData_Appearance* self_) { delete self_; }
+extern "C" OcctResult<Handle_VrmlData_Appearance*> Handle_VrmlData_Appearance_clone(const Handle_VrmlData_Appearance* self_) {
+    try { return {new Handle_VrmlData_Appearance(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleVrmlDataAppearance_is_null(const HandleVrmlDataAppearance* self_) { return self_->IsNull(); }
-extern "C" void HandleVrmlDataArrayVec3d_destructor(HandleVrmlDataArrayVec3d* self_) { delete self_; }
-extern "C" OcctResult<HandleVrmlDataArrayVec3d*> HandleVrmlDataArrayVec3d_clone(const HandleVrmlDataArrayVec3d* self_) {
-    try { return {new HandleVrmlDataArrayVec3d(*self_), nullptr}; }
+extern "C" bool Handle_VrmlData_Appearance_is_null(const Handle_VrmlData_Appearance* self_) { return self_->IsNull(); }
+extern "C" void Handle_VrmlData_ArrayVec3d_destructor(Handle_VrmlData_ArrayVec3d* self_) { delete self_; }
+extern "C" OcctResult<Handle_VrmlData_ArrayVec3d*> Handle_VrmlData_ArrayVec3d_clone(const Handle_VrmlData_ArrayVec3d* self_) {
+    try { return {new Handle_VrmlData_ArrayVec3d(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleVrmlDataArrayVec3d_is_null(const HandleVrmlDataArrayVec3d* self_) { return self_->IsNull(); }
-extern "C" void HandleVrmlDataBox_destructor(HandleVrmlDataBox* self_) { delete self_; }
-extern "C" OcctResult<HandleVrmlDataBox*> HandleVrmlDataBox_clone(const HandleVrmlDataBox* self_) {
-    try { return {new HandleVrmlDataBox(*self_), nullptr}; }
+extern "C" bool Handle_VrmlData_ArrayVec3d_is_null(const Handle_VrmlData_ArrayVec3d* self_) { return self_->IsNull(); }
+extern "C" void Handle_VrmlData_Box_destructor(Handle_VrmlData_Box* self_) { delete self_; }
+extern "C" OcctResult<Handle_VrmlData_Box*> Handle_VrmlData_Box_clone(const Handle_VrmlData_Box* self_) {
+    try { return {new Handle_VrmlData_Box(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleVrmlDataBox_is_null(const HandleVrmlDataBox* self_) { return self_->IsNull(); }
-extern "C" void HandleVrmlDataColor_destructor(HandleVrmlDataColor* self_) { delete self_; }
-extern "C" OcctResult<HandleVrmlDataColor*> HandleVrmlDataColor_clone(const HandleVrmlDataColor* self_) {
-    try { return {new HandleVrmlDataColor(*self_), nullptr}; }
+extern "C" bool Handle_VrmlData_Box_is_null(const Handle_VrmlData_Box* self_) { return self_->IsNull(); }
+extern "C" void Handle_VrmlData_Color_destructor(Handle_VrmlData_Color* self_) { delete self_; }
+extern "C" OcctResult<Handle_VrmlData_Color*> Handle_VrmlData_Color_clone(const Handle_VrmlData_Color* self_) {
+    try { return {new Handle_VrmlData_Color(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleVrmlDataColor_is_null(const HandleVrmlDataColor* self_) { return self_->IsNull(); }
-extern "C" void HandleVrmlDataCone_destructor(HandleVrmlDataCone* self_) { delete self_; }
-extern "C" OcctResult<HandleVrmlDataCone*> HandleVrmlDataCone_clone(const HandleVrmlDataCone* self_) {
-    try { return {new HandleVrmlDataCone(*self_), nullptr}; }
+extern "C" bool Handle_VrmlData_Color_is_null(const Handle_VrmlData_Color* self_) { return self_->IsNull(); }
+extern "C" void Handle_VrmlData_Cone_destructor(Handle_VrmlData_Cone* self_) { delete self_; }
+extern "C" OcctResult<Handle_VrmlData_Cone*> Handle_VrmlData_Cone_clone(const Handle_VrmlData_Cone* self_) {
+    try { return {new Handle_VrmlData_Cone(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleVrmlDataCone_is_null(const HandleVrmlDataCone* self_) { return self_->IsNull(); }
-extern "C" void HandleVrmlDataCoordinate_destructor(HandleVrmlDataCoordinate* self_) { delete self_; }
-extern "C" OcctResult<HandleVrmlDataCoordinate*> HandleVrmlDataCoordinate_clone(const HandleVrmlDataCoordinate* self_) {
-    try { return {new HandleVrmlDataCoordinate(*self_), nullptr}; }
+extern "C" bool Handle_VrmlData_Cone_is_null(const Handle_VrmlData_Cone* self_) { return self_->IsNull(); }
+extern "C" void Handle_VrmlData_Coordinate_destructor(Handle_VrmlData_Coordinate* self_) { delete self_; }
+extern "C" OcctResult<Handle_VrmlData_Coordinate*> Handle_VrmlData_Coordinate_clone(const Handle_VrmlData_Coordinate* self_) {
+    try { return {new Handle_VrmlData_Coordinate(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleVrmlDataCoordinate_is_null(const HandleVrmlDataCoordinate* self_) { return self_->IsNull(); }
-extern "C" void HandleVrmlDataCylinder_destructor(HandleVrmlDataCylinder* self_) { delete self_; }
-extern "C" OcctResult<HandleVrmlDataCylinder*> HandleVrmlDataCylinder_clone(const HandleVrmlDataCylinder* self_) {
-    try { return {new HandleVrmlDataCylinder(*self_), nullptr}; }
+extern "C" bool Handle_VrmlData_Coordinate_is_null(const Handle_VrmlData_Coordinate* self_) { return self_->IsNull(); }
+extern "C" void Handle_VrmlData_Cylinder_destructor(Handle_VrmlData_Cylinder* self_) { delete self_; }
+extern "C" OcctResult<Handle_VrmlData_Cylinder*> Handle_VrmlData_Cylinder_clone(const Handle_VrmlData_Cylinder* self_) {
+    try { return {new Handle_VrmlData_Cylinder(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleVrmlDataCylinder_is_null(const HandleVrmlDataCylinder* self_) { return self_->IsNull(); }
-extern "C" void HandleVrmlDataFaceted_destructor(HandleVrmlDataFaceted* self_) { delete self_; }
-extern "C" OcctResult<HandleVrmlDataFaceted*> HandleVrmlDataFaceted_clone(const HandleVrmlDataFaceted* self_) {
-    try { return {new HandleVrmlDataFaceted(*self_), nullptr}; }
+extern "C" bool Handle_VrmlData_Cylinder_is_null(const Handle_VrmlData_Cylinder* self_) { return self_->IsNull(); }
+extern "C" void Handle_VrmlData_Faceted_destructor(Handle_VrmlData_Faceted* self_) { delete self_; }
+extern "C" OcctResult<Handle_VrmlData_Faceted*> Handle_VrmlData_Faceted_clone(const Handle_VrmlData_Faceted* self_) {
+    try { return {new Handle_VrmlData_Faceted(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleVrmlDataFaceted_is_null(const HandleVrmlDataFaceted* self_) { return self_->IsNull(); }
-extern "C" void HandleVrmlDataGeometry_destructor(HandleVrmlDataGeometry* self_) { delete self_; }
-extern "C" OcctResult<HandleVrmlDataGeometry*> HandleVrmlDataGeometry_clone(const HandleVrmlDataGeometry* self_) {
-    try { return {new HandleVrmlDataGeometry(*self_), nullptr}; }
+extern "C" bool Handle_VrmlData_Faceted_is_null(const Handle_VrmlData_Faceted* self_) { return self_->IsNull(); }
+extern "C" void Handle_VrmlData_Geometry_destructor(Handle_VrmlData_Geometry* self_) { delete self_; }
+extern "C" OcctResult<Handle_VrmlData_Geometry*> Handle_VrmlData_Geometry_clone(const Handle_VrmlData_Geometry* self_) {
+    try { return {new Handle_VrmlData_Geometry(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleVrmlDataGeometry_is_null(const HandleVrmlDataGeometry* self_) { return self_->IsNull(); }
-extern "C" void HandleVrmlDataGroup_destructor(HandleVrmlDataGroup* self_) { delete self_; }
-extern "C" OcctResult<HandleVrmlDataGroup*> HandleVrmlDataGroup_clone(const HandleVrmlDataGroup* self_) {
-    try { return {new HandleVrmlDataGroup(*self_), nullptr}; }
+extern "C" bool Handle_VrmlData_Geometry_is_null(const Handle_VrmlData_Geometry* self_) { return self_->IsNull(); }
+extern "C" void Handle_VrmlData_Group_destructor(Handle_VrmlData_Group* self_) { delete self_; }
+extern "C" OcctResult<Handle_VrmlData_Group*> Handle_VrmlData_Group_clone(const Handle_VrmlData_Group* self_) {
+    try { return {new Handle_VrmlData_Group(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleVrmlDataGroup_is_null(const HandleVrmlDataGroup* self_) { return self_->IsNull(); }
-extern "C" void HandleVrmlDataImageTexture_destructor(HandleVrmlDataImageTexture* self_) { delete self_; }
-extern "C" OcctResult<HandleVrmlDataImageTexture*> HandleVrmlDataImageTexture_clone(const HandleVrmlDataImageTexture* self_) {
-    try { return {new HandleVrmlDataImageTexture(*self_), nullptr}; }
+extern "C" bool Handle_VrmlData_Group_is_null(const Handle_VrmlData_Group* self_) { return self_->IsNull(); }
+extern "C" void Handle_VrmlData_ImageTexture_destructor(Handle_VrmlData_ImageTexture* self_) { delete self_; }
+extern "C" OcctResult<Handle_VrmlData_ImageTexture*> Handle_VrmlData_ImageTexture_clone(const Handle_VrmlData_ImageTexture* self_) {
+    try { return {new Handle_VrmlData_ImageTexture(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleVrmlDataImageTexture_is_null(const HandleVrmlDataImageTexture* self_) { return self_->IsNull(); }
-extern "C" void HandleVrmlDataIndexedFaceSet_destructor(HandleVrmlDataIndexedFaceSet* self_) { delete self_; }
-extern "C" OcctResult<HandleVrmlDataIndexedFaceSet*> HandleVrmlDataIndexedFaceSet_clone(const HandleVrmlDataIndexedFaceSet* self_) {
-    try { return {new HandleVrmlDataIndexedFaceSet(*self_), nullptr}; }
+extern "C" bool Handle_VrmlData_ImageTexture_is_null(const Handle_VrmlData_ImageTexture* self_) { return self_->IsNull(); }
+extern "C" void Handle_VrmlData_IndexedFaceSet_destructor(Handle_VrmlData_IndexedFaceSet* self_) { delete self_; }
+extern "C" OcctResult<Handle_VrmlData_IndexedFaceSet*> Handle_VrmlData_IndexedFaceSet_clone(const Handle_VrmlData_IndexedFaceSet* self_) {
+    try { return {new Handle_VrmlData_IndexedFaceSet(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleVrmlDataIndexedFaceSet_is_null(const HandleVrmlDataIndexedFaceSet* self_) { return self_->IsNull(); }
-extern "C" void HandleVrmlDataIndexedLineSet_destructor(HandleVrmlDataIndexedLineSet* self_) { delete self_; }
-extern "C" OcctResult<HandleVrmlDataIndexedLineSet*> HandleVrmlDataIndexedLineSet_clone(const HandleVrmlDataIndexedLineSet* self_) {
-    try { return {new HandleVrmlDataIndexedLineSet(*self_), nullptr}; }
+extern "C" bool Handle_VrmlData_IndexedFaceSet_is_null(const Handle_VrmlData_IndexedFaceSet* self_) { return self_->IsNull(); }
+extern "C" void Handle_VrmlData_IndexedLineSet_destructor(Handle_VrmlData_IndexedLineSet* self_) { delete self_; }
+extern "C" OcctResult<Handle_VrmlData_IndexedLineSet*> Handle_VrmlData_IndexedLineSet_clone(const Handle_VrmlData_IndexedLineSet* self_) {
+    try { return {new Handle_VrmlData_IndexedLineSet(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleVrmlDataIndexedLineSet_is_null(const HandleVrmlDataIndexedLineSet* self_) { return self_->IsNull(); }
-extern "C" void HandleVrmlDataMaterial_destructor(HandleVrmlDataMaterial* self_) { delete self_; }
-extern "C" OcctResult<HandleVrmlDataMaterial*> HandleVrmlDataMaterial_clone(const HandleVrmlDataMaterial* self_) {
-    try { return {new HandleVrmlDataMaterial(*self_), nullptr}; }
+extern "C" bool Handle_VrmlData_IndexedLineSet_is_null(const Handle_VrmlData_IndexedLineSet* self_) { return self_->IsNull(); }
+extern "C" void Handle_VrmlData_Material_destructor(Handle_VrmlData_Material* self_) { delete self_; }
+extern "C" OcctResult<Handle_VrmlData_Material*> Handle_VrmlData_Material_clone(const Handle_VrmlData_Material* self_) {
+    try { return {new Handle_VrmlData_Material(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleVrmlDataMaterial_is_null(const HandleVrmlDataMaterial* self_) { return self_->IsNull(); }
-extern "C" void HandleVrmlDataNode_destructor(HandleVrmlDataNode* self_) { delete self_; }
-extern "C" OcctResult<HandleVrmlDataNode*> HandleVrmlDataNode_clone(const HandleVrmlDataNode* self_) {
-    try { return {new HandleVrmlDataNode(*self_), nullptr}; }
+extern "C" bool Handle_VrmlData_Material_is_null(const Handle_VrmlData_Material* self_) { return self_->IsNull(); }
+extern "C" void Handle_VrmlData_Node_destructor(Handle_VrmlData_Node* self_) { delete self_; }
+extern "C" OcctResult<Handle_VrmlData_Node*> Handle_VrmlData_Node_clone(const Handle_VrmlData_Node* self_) {
+    try { return {new Handle_VrmlData_Node(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleVrmlDataNode_is_null(const HandleVrmlDataNode* self_) { return self_->IsNull(); }
-extern "C" void HandleVrmlDataNormal_destructor(HandleVrmlDataNormal* self_) { delete self_; }
-extern "C" OcctResult<HandleVrmlDataNormal*> HandleVrmlDataNormal_clone(const HandleVrmlDataNormal* self_) {
-    try { return {new HandleVrmlDataNormal(*self_), nullptr}; }
+extern "C" bool Handle_VrmlData_Node_is_null(const Handle_VrmlData_Node* self_) { return self_->IsNull(); }
+extern "C" void Handle_VrmlData_Normal_destructor(Handle_VrmlData_Normal* self_) { delete self_; }
+extern "C" OcctResult<Handle_VrmlData_Normal*> Handle_VrmlData_Normal_clone(const Handle_VrmlData_Normal* self_) {
+    try { return {new Handle_VrmlData_Normal(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleVrmlDataNormal_is_null(const HandleVrmlDataNormal* self_) { return self_->IsNull(); }
-extern "C" void HandleVrmlDataShapeNode_destructor(HandleVrmlDataShapeNode* self_) { delete self_; }
-extern "C" OcctResult<HandleVrmlDataShapeNode*> HandleVrmlDataShapeNode_clone(const HandleVrmlDataShapeNode* self_) {
-    try { return {new HandleVrmlDataShapeNode(*self_), nullptr}; }
+extern "C" bool Handle_VrmlData_Normal_is_null(const Handle_VrmlData_Normal* self_) { return self_->IsNull(); }
+extern "C" void Handle_VrmlData_ShapeNode_destructor(Handle_VrmlData_ShapeNode* self_) { delete self_; }
+extern "C" OcctResult<Handle_VrmlData_ShapeNode*> Handle_VrmlData_ShapeNode_clone(const Handle_VrmlData_ShapeNode* self_) {
+    try { return {new Handle_VrmlData_ShapeNode(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleVrmlDataShapeNode_is_null(const HandleVrmlDataShapeNode* self_) { return self_->IsNull(); }
-extern "C" void HandleVrmlDataSphere_destructor(HandleVrmlDataSphere* self_) { delete self_; }
-extern "C" OcctResult<HandleVrmlDataSphere*> HandleVrmlDataSphere_clone(const HandleVrmlDataSphere* self_) {
-    try { return {new HandleVrmlDataSphere(*self_), nullptr}; }
+extern "C" bool Handle_VrmlData_ShapeNode_is_null(const Handle_VrmlData_ShapeNode* self_) { return self_->IsNull(); }
+extern "C" void Handle_VrmlData_Sphere_destructor(Handle_VrmlData_Sphere* self_) { delete self_; }
+extern "C" OcctResult<Handle_VrmlData_Sphere*> Handle_VrmlData_Sphere_clone(const Handle_VrmlData_Sphere* self_) {
+    try { return {new Handle_VrmlData_Sphere(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleVrmlDataSphere_is_null(const HandleVrmlDataSphere* self_) { return self_->IsNull(); }
-extern "C" void HandleVrmlDataTexture_destructor(HandleVrmlDataTexture* self_) { delete self_; }
-extern "C" OcctResult<HandleVrmlDataTexture*> HandleVrmlDataTexture_clone(const HandleVrmlDataTexture* self_) {
-    try { return {new HandleVrmlDataTexture(*self_), nullptr}; }
+extern "C" bool Handle_VrmlData_Sphere_is_null(const Handle_VrmlData_Sphere* self_) { return self_->IsNull(); }
+extern "C" void Handle_VrmlData_Texture_destructor(Handle_VrmlData_Texture* self_) { delete self_; }
+extern "C" OcctResult<Handle_VrmlData_Texture*> Handle_VrmlData_Texture_clone(const Handle_VrmlData_Texture* self_) {
+    try { return {new Handle_VrmlData_Texture(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleVrmlDataTexture_is_null(const HandleVrmlDataTexture* self_) { return self_->IsNull(); }
-extern "C" void HandleVrmlDataTextureCoordinate_destructor(HandleVrmlDataTextureCoordinate* self_) { delete self_; }
-extern "C" OcctResult<HandleVrmlDataTextureCoordinate*> HandleVrmlDataTextureCoordinate_clone(const HandleVrmlDataTextureCoordinate* self_) {
-    try { return {new HandleVrmlDataTextureCoordinate(*self_), nullptr}; }
+extern "C" bool Handle_VrmlData_Texture_is_null(const Handle_VrmlData_Texture* self_) { return self_->IsNull(); }
+extern "C" void Handle_VrmlData_TextureCoordinate_destructor(Handle_VrmlData_TextureCoordinate* self_) { delete self_; }
+extern "C" OcctResult<Handle_VrmlData_TextureCoordinate*> Handle_VrmlData_TextureCoordinate_clone(const Handle_VrmlData_TextureCoordinate* self_) {
+    try { return {new Handle_VrmlData_TextureCoordinate(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleVrmlDataTextureCoordinate_is_null(const HandleVrmlDataTextureCoordinate* self_) { return self_->IsNull(); }
-extern "C" void HandleVrmlDataTextureTransform_destructor(HandleVrmlDataTextureTransform* self_) { delete self_; }
-extern "C" OcctResult<HandleVrmlDataTextureTransform*> HandleVrmlDataTextureTransform_clone(const HandleVrmlDataTextureTransform* self_) {
-    try { return {new HandleVrmlDataTextureTransform(*self_), nullptr}; }
+extern "C" bool Handle_VrmlData_TextureCoordinate_is_null(const Handle_VrmlData_TextureCoordinate* self_) { return self_->IsNull(); }
+extern "C" void Handle_VrmlData_TextureTransform_destructor(Handle_VrmlData_TextureTransform* self_) { delete self_; }
+extern "C" OcctResult<Handle_VrmlData_TextureTransform*> Handle_VrmlData_TextureTransform_clone(const Handle_VrmlData_TextureTransform* self_) {
+    try { return {new Handle_VrmlData_TextureTransform(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleVrmlDataTextureTransform_is_null(const HandleVrmlDataTextureTransform* self_) { return self_->IsNull(); }
-extern "C" void HandleVrmlDataUnknownNode_destructor(HandleVrmlDataUnknownNode* self_) { delete self_; }
-extern "C" OcctResult<HandleVrmlDataUnknownNode*> HandleVrmlDataUnknownNode_clone(const HandleVrmlDataUnknownNode* self_) {
-    try { return {new HandleVrmlDataUnknownNode(*self_), nullptr}; }
+extern "C" bool Handle_VrmlData_TextureTransform_is_null(const Handle_VrmlData_TextureTransform* self_) { return self_->IsNull(); }
+extern "C" void Handle_VrmlData_UnknownNode_destructor(Handle_VrmlData_UnknownNode* self_) { delete self_; }
+extern "C" OcctResult<Handle_VrmlData_UnknownNode*> Handle_VrmlData_UnknownNode_clone(const Handle_VrmlData_UnknownNode* self_) {
+    try { return {new Handle_VrmlData_UnknownNode(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleVrmlDataUnknownNode_is_null(const HandleVrmlDataUnknownNode* self_) { return self_->IsNull(); }
-extern "C" void HandleVrmlDataWorldInfo_destructor(HandleVrmlDataWorldInfo* self_) { delete self_; }
-extern "C" OcctResult<HandleVrmlDataWorldInfo*> HandleVrmlDataWorldInfo_clone(const HandleVrmlDataWorldInfo* self_) {
-    try { return {new HandleVrmlDataWorldInfo(*self_), nullptr}; }
+extern "C" bool Handle_VrmlData_UnknownNode_is_null(const Handle_VrmlData_UnknownNode* self_) { return self_->IsNull(); }
+extern "C" void Handle_VrmlData_WorldInfo_destructor(Handle_VrmlData_WorldInfo* self_) { delete self_; }
+extern "C" OcctResult<Handle_VrmlData_WorldInfo*> Handle_VrmlData_WorldInfo_clone(const Handle_VrmlData_WorldInfo* self_) {
+    try { return {new Handle_VrmlData_WorldInfo(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleVrmlDataWorldInfo_is_null(const HandleVrmlDataWorldInfo* self_) { return self_->IsNull(); }
-extern "C" void HandleVrmlAsciiText_destructor(HandleVrmlAsciiText* self_) { delete self_; }
-extern "C" OcctResult<HandleVrmlAsciiText*> HandleVrmlAsciiText_clone(const HandleVrmlAsciiText* self_) {
-    try { return {new HandleVrmlAsciiText(*self_), nullptr}; }
+extern "C" bool Handle_VrmlData_WorldInfo_is_null(const Handle_VrmlData_WorldInfo* self_) { return self_->IsNull(); }
+extern "C" void Handle_Vrml_AsciiText_destructor(Handle_Vrml_AsciiText* self_) { delete self_; }
+extern "C" OcctResult<Handle_Vrml_AsciiText*> Handle_Vrml_AsciiText_clone(const Handle_Vrml_AsciiText* self_) {
+    try { return {new Handle_Vrml_AsciiText(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleVrmlAsciiText_is_null(const HandleVrmlAsciiText* self_) { return self_->IsNull(); }
-extern "C" void HandleVrmlCoordinate3_destructor(HandleVrmlCoordinate3* self_) { delete self_; }
-extern "C" OcctResult<HandleVrmlCoordinate3*> HandleVrmlCoordinate3_clone(const HandleVrmlCoordinate3* self_) {
-    try { return {new HandleVrmlCoordinate3(*self_), nullptr}; }
+extern "C" bool Handle_Vrml_AsciiText_is_null(const Handle_Vrml_AsciiText* self_) { return self_->IsNull(); }
+extern "C" void Handle_Vrml_Coordinate3_destructor(Handle_Vrml_Coordinate3* self_) { delete self_; }
+extern "C" OcctResult<Handle_Vrml_Coordinate3*> Handle_Vrml_Coordinate3_clone(const Handle_Vrml_Coordinate3* self_) {
+    try { return {new Handle_Vrml_Coordinate3(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleVrmlCoordinate3_is_null(const HandleVrmlCoordinate3* self_) { return self_->IsNull(); }
-extern "C" void HandleVrmlIndexedFaceSet_destructor(HandleVrmlIndexedFaceSet* self_) { delete self_; }
-extern "C" OcctResult<HandleVrmlIndexedFaceSet*> HandleVrmlIndexedFaceSet_clone(const HandleVrmlIndexedFaceSet* self_) {
-    try { return {new HandleVrmlIndexedFaceSet(*self_), nullptr}; }
+extern "C" bool Handle_Vrml_Coordinate3_is_null(const Handle_Vrml_Coordinate3* self_) { return self_->IsNull(); }
+extern "C" void Handle_Vrml_IndexedFaceSet_destructor(Handle_Vrml_IndexedFaceSet* self_) { delete self_; }
+extern "C" OcctResult<Handle_Vrml_IndexedFaceSet*> Handle_Vrml_IndexedFaceSet_clone(const Handle_Vrml_IndexedFaceSet* self_) {
+    try { return {new Handle_Vrml_IndexedFaceSet(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleVrmlIndexedFaceSet_is_null(const HandleVrmlIndexedFaceSet* self_) { return self_->IsNull(); }
-extern "C" void HandleVrmlIndexedLineSet_destructor(HandleVrmlIndexedLineSet* self_) { delete self_; }
-extern "C" OcctResult<HandleVrmlIndexedLineSet*> HandleVrmlIndexedLineSet_clone(const HandleVrmlIndexedLineSet* self_) {
-    try { return {new HandleVrmlIndexedLineSet(*self_), nullptr}; }
+extern "C" bool Handle_Vrml_IndexedFaceSet_is_null(const Handle_Vrml_IndexedFaceSet* self_) { return self_->IsNull(); }
+extern "C" void Handle_Vrml_IndexedLineSet_destructor(Handle_Vrml_IndexedLineSet* self_) { delete self_; }
+extern "C" OcctResult<Handle_Vrml_IndexedLineSet*> Handle_Vrml_IndexedLineSet_clone(const Handle_Vrml_IndexedLineSet* self_) {
+    try { return {new Handle_Vrml_IndexedLineSet(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleVrmlIndexedLineSet_is_null(const HandleVrmlIndexedLineSet* self_) { return self_->IsNull(); }
-extern "C" void HandleVrmlLOD_destructor(HandleVrmlLOD* self_) { delete self_; }
-extern "C" OcctResult<HandleVrmlLOD*> HandleVrmlLOD_clone(const HandleVrmlLOD* self_) {
-    try { return {new HandleVrmlLOD(*self_), nullptr}; }
+extern "C" bool Handle_Vrml_IndexedLineSet_is_null(const Handle_Vrml_IndexedLineSet* self_) { return self_->IsNull(); }
+extern "C" void Handle_Vrml_LOD_destructor(Handle_Vrml_LOD* self_) { delete self_; }
+extern "C" OcctResult<Handle_Vrml_LOD*> Handle_Vrml_LOD_clone(const Handle_Vrml_LOD* self_) {
+    try { return {new Handle_Vrml_LOD(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleVrmlLOD_is_null(const HandleVrmlLOD* self_) { return self_->IsNull(); }
-extern "C" void HandleVrmlMaterial_destructor(HandleVrmlMaterial* self_) { delete self_; }
-extern "C" OcctResult<HandleVrmlMaterial*> HandleVrmlMaterial_clone(const HandleVrmlMaterial* self_) {
-    try { return {new HandleVrmlMaterial(*self_), nullptr}; }
+extern "C" bool Handle_Vrml_LOD_is_null(const Handle_Vrml_LOD* self_) { return self_->IsNull(); }
+extern "C" void Handle_Vrml_Material_destructor(Handle_Vrml_Material* self_) { delete self_; }
+extern "C" OcctResult<Handle_Vrml_Material*> Handle_Vrml_Material_clone(const Handle_Vrml_Material* self_) {
+    try { return {new Handle_Vrml_Material(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleVrmlMaterial_is_null(const HandleVrmlMaterial* self_) { return self_->IsNull(); }
-extern "C" void HandleVrmlNormal_destructor(HandleVrmlNormal* self_) { delete self_; }
-extern "C" OcctResult<HandleVrmlNormal*> HandleVrmlNormal_clone(const HandleVrmlNormal* self_) {
-    try { return {new HandleVrmlNormal(*self_), nullptr}; }
+extern "C" bool Handle_Vrml_Material_is_null(const Handle_Vrml_Material* self_) { return self_->IsNull(); }
+extern "C" void Handle_Vrml_Normal_destructor(Handle_Vrml_Normal* self_) { delete self_; }
+extern "C" OcctResult<Handle_Vrml_Normal*> Handle_Vrml_Normal_clone(const Handle_Vrml_Normal* self_) {
+    try { return {new Handle_Vrml_Normal(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleVrmlNormal_is_null(const HandleVrmlNormal* self_) { return self_->IsNull(); }
-extern "C" void HandleVrmlSFImage_destructor(HandleVrmlSFImage* self_) { delete self_; }
-extern "C" OcctResult<HandleVrmlSFImage*> HandleVrmlSFImage_clone(const HandleVrmlSFImage* self_) {
-    try { return {new HandleVrmlSFImage(*self_), nullptr}; }
+extern "C" bool Handle_Vrml_Normal_is_null(const Handle_Vrml_Normal* self_) { return self_->IsNull(); }
+extern "C" void Handle_Vrml_SFImage_destructor(Handle_Vrml_SFImage* self_) { delete self_; }
+extern "C" OcctResult<Handle_Vrml_SFImage*> Handle_Vrml_SFImage_clone(const Handle_Vrml_SFImage* self_) {
+    try { return {new Handle_Vrml_SFImage(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleVrmlSFImage_is_null(const HandleVrmlSFImage* self_) { return self_->IsNull(); }
-extern "C" void HandleVrmlTextureCoordinate2_destructor(HandleVrmlTextureCoordinate2* self_) { delete self_; }
-extern "C" OcctResult<HandleVrmlTextureCoordinate2*> HandleVrmlTextureCoordinate2_clone(const HandleVrmlTextureCoordinate2* self_) {
-    try { return {new HandleVrmlTextureCoordinate2(*self_), nullptr}; }
+extern "C" bool Handle_Vrml_SFImage_is_null(const Handle_Vrml_SFImage* self_) { return self_->IsNull(); }
+extern "C" void Handle_Vrml_TextureCoordinate2_destructor(Handle_Vrml_TextureCoordinate2* self_) { delete self_; }
+extern "C" OcctResult<Handle_Vrml_TextureCoordinate2*> Handle_Vrml_TextureCoordinate2_clone(const Handle_Vrml_TextureCoordinate2* self_) {
+    try { return {new Handle_Vrml_TextureCoordinate2(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleVrmlTextureCoordinate2_is_null(const HandleVrmlTextureCoordinate2* self_) { return self_->IsNull(); }
+extern "C" bool Handle_Vrml_TextureCoordinate2_is_null(const Handle_Vrml_TextureCoordinate2* self_) { return self_->IsNull(); }
 
 // ========================
 // DEVRML_ConfigurationNode wrappers
@@ -488,8 +466,8 @@ extern "C" OcctResult<TCollection_AsciiString*> DEVRML_ConfigurationNode_get_ven
     try { return {new TCollection_AsciiString(self_->GetVendor()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TColStd_ListOfAsciiString*> DEVRML_ConfigurationNode_get_extensions(const DEVRML_ConfigurationNode* self_) {
-    try { return {new TColStd_ListOfAsciiString(self_->GetExtensions()), nullptr}; }
+extern "C" OcctResult<NCollection_List_TCollection_AsciiString*> DEVRML_ConfigurationNode_get_extensions(const DEVRML_ConfigurationNode* self_) {
+    try { return {new NCollection_List_TCollection_AsciiString(self_->GetExtensions()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(Standard_Type) const*> DEVRML_ConfigurationNode_dynamic_type(const DEVRML_ConfigurationNode* self_) {
@@ -508,6 +486,10 @@ extern "C" OcctResult<bool> DEVRML_ConfigurationNode_is_export_supported(const D
     try { return {self_->IsExportSupported(), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" OcctResult<bool> DEVRML_ConfigurationNode_is_stream_supported(const DEVRML_ConfigurationNode* self_) {
+    try { return {self_->IsStreamSupported(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" OcctResult<char const*> DEVRML_ConfigurationNode_get_type_name() {
     try { return {DEVRML_ConfigurationNode::get_type_name(), nullptr}; }
     OCCT_CATCH_RETURN
@@ -520,24 +502,24 @@ extern "C" OcctResult<const DE_ConfigurationNode*> DEVRML_ConfigurationNode_as_D
 extern "C" OcctResult<DE_ConfigurationNode*> DEVRML_ConfigurationNode_as_DE_ConfigurationNode_mut(DEVRML_ConfigurationNode* self_) { return {static_cast<DE_ConfigurationNode*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> DEVRML_ConfigurationNode_as_Standard_Transient(const DEVRML_ConfigurationNode* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> DEVRML_ConfigurationNode_as_Standard_Transient_mut(DEVRML_ConfigurationNode* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleDEVRMLConfigurationNode*> DEVRML_ConfigurationNode_to_handle(DEVRML_ConfigurationNode* obj) {
-    try { return {new HandleDEVRMLConfigurationNode(obj), nullptr}; }
+extern "C" OcctResult<Handle_DEVRML_ConfigurationNode*> DEVRML_ConfigurationNode_to_handle(DEVRML_ConfigurationNode* obj) {
+    try { return {new Handle_DEVRML_ConfigurationNode(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const DEVRML_ConfigurationNode*> HandleDEVRMLConfigurationNode_get(const HandleDEVRMLConfigurationNode* handle) {
+extern "C" OcctResult<const DEVRML_ConfigurationNode*> Handle_DEVRML_ConfigurationNode_get(const Handle_DEVRML_ConfigurationNode* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<DEVRML_ConfigurationNode*> HandleDEVRMLConfigurationNode_get_mut(HandleDEVRMLConfigurationNode* handle) {
+extern "C" OcctResult<DEVRML_ConfigurationNode*> Handle_DEVRML_ConfigurationNode_get_mut(Handle_DEVRML_ConfigurationNode* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleDEConfigurationNode*> HandleDEVRMLConfigurationNode_to_HandleDEConfigurationNode(const HandleDEVRMLConfigurationNode* self_) {
-    try { return {new HandleDEConfigurationNode(*self_), nullptr}; }
+extern "C" OcctResult<Handle_DE_ConfigurationNode*> Handle_DEVRML_ConfigurationNode_to_Handle_DE_ConfigurationNode(const Handle_DEVRML_ConfigurationNode* self_) {
+    try { return {new Handle_DE_ConfigurationNode(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleDEVRMLConfigurationNode_to_HandleStandardTransient(const HandleDEVRMLConfigurationNode* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_DEVRML_ConfigurationNode_to_Handle_Standard_Transient(const Handle_DEVRML_ConfigurationNode* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> DEVRML_ConfigurationNode_inherited_UpdateLoad(DEVRML_ConfigurationNode* self, bool theToImport, bool theToKeep) {
@@ -560,8 +542,16 @@ extern "C" const char* DEVRML_ConfigurationNode_inherited_SetEnabled(DEVRML_Conf
     try { self->SetEnabled(theIsLoaded); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* DEVRML_ConfigurationNode_inherited_CustomActivation(DEVRML_ConfigurationNode* self, TColStd_ListOfAsciiString const& arg0) {
+extern "C" const char* DEVRML_ConfigurationNode_inherited_CustomActivation(DEVRML_ConfigurationNode* self, NCollection_List_TCollection_AsciiString const& arg0) {
     try { self->CustomActivation(arg0); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* DEVRML_ConfigurationNode_inherited_Register(const DEVRML_ConfigurationNode* self, Handle(DE_Wrapper) const& theWrapper) {
+    try { self->Register(theWrapper); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* DEVRML_ConfigurationNode_inherited_UnRegister(const DEVRML_ConfigurationNode* self, Handle(DE_Wrapper) const& theWrapper) {
+    try { self->UnRegister(theWrapper); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
 extern "C" OcctResult<bool> DEVRML_ConfigurationNode_inherited_IsInstance(const DEVRML_ConfigurationNode* self, Handle(Standard_Type) const& theType) {
@@ -652,12 +642,44 @@ extern "C" OcctResult<bool> DEVRML_Provider_write_asciistring_shape_handlexscont
     try { return {self_->Write(*thePath, *theShape, *theWS, *theProgress), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" OcctResult<bool> DEVRML_Provider_read_readstreamlist_handletdocstddocument_handlexscontrolworksession_progressrange(DEVRML_Provider* self_, DE_Provider::ReadStreamList* theStreams, Handle(TDocStd_Document) const* theDocument, Handle(XSControl_WorkSession)* theWS, Message_ProgressRange const* theProgress) {
+    try { return {self_->Read(*theStreams, *theDocument, *theWS, *theProgress), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<bool> DEVRML_Provider_write_writestreamlist_handletdocstddocument_handlexscontrolworksession_progressrange(DEVRML_Provider* self_, DE_Provider::WriteStreamList* theStreams, Handle(TDocStd_Document) const* theDocument, Handle(XSControl_WorkSession)* theWS, Message_ProgressRange const* theProgress) {
+    try { return {self_->Write(*theStreams, *theDocument, *theWS, *theProgress), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<bool> DEVRML_Provider_read_readstreamlist_shape_handlexscontrolworksession_progressrange(DEVRML_Provider* self_, DE_Provider::ReadStreamList* theStreams, TopoDS_Shape* theShape, Handle(XSControl_WorkSession)* theWS, Message_ProgressRange const* theProgress) {
+    try { return {self_->Read(*theStreams, *theShape, *theWS, *theProgress), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<bool> DEVRML_Provider_write_writestreamlist_shape_handlexscontrolworksession_progressrange(DEVRML_Provider* self_, DE_Provider::WriteStreamList* theStreams, TopoDS_Shape const* theShape, Handle(XSControl_WorkSession)* theWS, Message_ProgressRange const* theProgress) {
+    try { return {self_->Write(*theStreams, *theShape, *theWS, *theProgress), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" OcctResult<bool> DEVRML_Provider_read_asciistring_shape_progressrange(DEVRML_Provider* self_, TCollection_AsciiString const* thePath, TopoDS_Shape* theShape, Message_ProgressRange const* theProgress) {
     try { return {self_->Read(*thePath, *theShape, *theProgress), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> DEVRML_Provider_write_asciistring_shape_progressrange(DEVRML_Provider* self_, TCollection_AsciiString const* thePath, TopoDS_Shape const* theShape, Message_ProgressRange const* theProgress) {
     try { return {self_->Write(*thePath, *theShape, *theProgress), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<bool> DEVRML_Provider_read_readstreamlist_handletdocstddocument_progressrange(DEVRML_Provider* self_, DE_Provider::ReadStreamList* theStreams, Handle(TDocStd_Document) const* theDocument, Message_ProgressRange const* theProgress) {
+    try { return {self_->Read(*theStreams, *theDocument, *theProgress), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<bool> DEVRML_Provider_write_writestreamlist_handletdocstddocument_progressrange(DEVRML_Provider* self_, DE_Provider::WriteStreamList* theStreams, Handle(TDocStd_Document) const* theDocument, Message_ProgressRange const* theProgress) {
+    try { return {self_->Write(*theStreams, *theDocument, *theProgress), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<bool> DEVRML_Provider_read_readstreamlist_shape_progressrange(DEVRML_Provider* self_, DE_Provider::ReadStreamList* theStreams, TopoDS_Shape* theShape, Message_ProgressRange const* theProgress) {
+    try { return {self_->Read(*theStreams, *theShape, *theProgress), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<bool> DEVRML_Provider_write_writestreamlist_shape_progressrange(DEVRML_Provider* self_, DE_Provider::WriteStreamList* theStreams, TopoDS_Shape const* theShape, Message_ProgressRange const* theProgress) {
+    try { return {self_->Write(*theStreams, *theShape, *theProgress), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<char const*> DEVRML_Provider_get_type_name() {
@@ -672,24 +694,24 @@ extern "C" OcctResult<const DE_Provider*> DEVRML_Provider_as_DE_Provider(const D
 extern "C" OcctResult<DE_Provider*> DEVRML_Provider_as_DE_Provider_mut(DEVRML_Provider* self_) { return {static_cast<DE_Provider*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> DEVRML_Provider_as_Standard_Transient(const DEVRML_Provider* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> DEVRML_Provider_as_Standard_Transient_mut(DEVRML_Provider* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleDEVRMLProvider*> DEVRML_Provider_to_handle(DEVRML_Provider* obj) {
-    try { return {new HandleDEVRMLProvider(obj), nullptr}; }
+extern "C" OcctResult<Handle_DEVRML_Provider*> DEVRML_Provider_to_handle(DEVRML_Provider* obj) {
+    try { return {new Handle_DEVRML_Provider(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const DEVRML_Provider*> HandleDEVRMLProvider_get(const HandleDEVRMLProvider* handle) {
+extern "C" OcctResult<const DEVRML_Provider*> Handle_DEVRML_Provider_get(const Handle_DEVRML_Provider* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<DEVRML_Provider*> HandleDEVRMLProvider_get_mut(HandleDEVRMLProvider* handle) {
+extern "C" OcctResult<DEVRML_Provider*> Handle_DEVRML_Provider_get_mut(Handle_DEVRML_Provider* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleDEProvider*> HandleDEVRMLProvider_to_HandleDEProvider(const HandleDEVRMLProvider* self_) {
-    try { return {new HandleDEProvider(*self_), nullptr}; }
+extern "C" OcctResult<Handle_DE_Provider*> Handle_DEVRML_Provider_to_Handle_DE_Provider(const Handle_DEVRML_Provider* self_) {
+    try { return {new Handle_DE_Provider(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleDEVRMLProvider_to_HandleStandardTransient(const HandleDEVRMLProvider* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_DEVRML_Provider_to_Handle_Standard_Transient(const Handle_DEVRML_Provider* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(DE_ConfigurationNode)*> DEVRML_Provider_inherited_GetNode(const DEVRML_Provider* self) {
@@ -738,15 +760,15 @@ extern "C" OcctResult<Vrml_AsciiText*> Vrml_AsciiText_ctor() {
     try { return {new Vrml_AsciiText(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Vrml_AsciiText*> Vrml_AsciiText_ctor_handletcolstdharray1ofasciistring_real_asciitextjustification_real(Handle(TColStd_HArray1OfAsciiString) const* aString, double aSpacing, int32_t aJustification, double aWidth) {
+extern "C" OcctResult<Vrml_AsciiText*> Vrml_AsciiText_ctor_harr1_asciistring_real_asciitextjustification_real(Handle(NCollection_HArray1_TCollection_AsciiString) const* aString, double aSpacing, int32_t aJustification, double aWidth) {
     try { return {new Vrml_AsciiText(*aString, aSpacing, static_cast<Vrml_AsciiTextJustification>(aJustification), aWidth), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(TColStd_HArray1OfAsciiString)*> Vrml_AsciiText_string(const Vrml_AsciiText* self_) {
-    try { return {new Handle(TColStd_HArray1OfAsciiString)(self_->String()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HArray1_TCollection_AsciiString)*> Vrml_AsciiText_string(const Vrml_AsciiText* self_) {
+    try { return {new Handle(NCollection_HArray1_TCollection_AsciiString)(self_->String()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* Vrml_AsciiText_set_string(Vrml_AsciiText* self_, Handle(TColStd_HArray1OfAsciiString) const* aString) {
+extern "C" const char* Vrml_AsciiText_set_string(Vrml_AsciiText* self_, Handle(NCollection_HArray1_TCollection_AsciiString) const* aString) {
     try { self_->SetString(*aString); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -792,20 +814,20 @@ extern "C" OcctResult<Handle(Standard_Type) const*> Vrml_AsciiText_get_type_desc
 }
 extern "C" OcctResult<const Standard_Transient*> Vrml_AsciiText_as_Standard_Transient(const Vrml_AsciiText* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> Vrml_AsciiText_as_Standard_Transient_mut(Vrml_AsciiText* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleVrmlAsciiText*> Vrml_AsciiText_to_handle(Vrml_AsciiText* obj) {
-    try { return {new HandleVrmlAsciiText(obj), nullptr}; }
+extern "C" OcctResult<Handle_Vrml_AsciiText*> Vrml_AsciiText_to_handle(Vrml_AsciiText* obj) {
+    try { return {new Handle_Vrml_AsciiText(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const Vrml_AsciiText*> HandleVrmlAsciiText_get(const HandleVrmlAsciiText* handle) {
+extern "C" OcctResult<const Vrml_AsciiText*> Handle_Vrml_AsciiText_get(const Handle_Vrml_AsciiText* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Vrml_AsciiText*> HandleVrmlAsciiText_get_mut(HandleVrmlAsciiText* handle) {
+extern "C" OcctResult<Vrml_AsciiText*> Handle_Vrml_AsciiText_get_mut(Handle_Vrml_AsciiText* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleVrmlAsciiText_to_HandleStandardTransient(const HandleVrmlAsciiText* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_Vrml_AsciiText_to_Handle_Standard_Transient(const Handle_Vrml_AsciiText* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> Vrml_AsciiText_inherited_IsInstance(const Vrml_AsciiText* self, Handle(Standard_Type) const& theType) {
@@ -880,7 +902,7 @@ extern "C" void Vrml_Cone_destructor(Vrml_Cone* self_) { delete self_; }
 // Vrml_Coordinate3 wrappers
 // ========================
 
-extern "C" OcctResult<Vrml_Coordinate3*> Vrml_Coordinate3_ctor_handletcolgpharray1ofvec(Handle(TColgp_HArray1OfVec) const* aPoint) {
+extern "C" OcctResult<Vrml_Coordinate3*> Vrml_Coordinate3_ctor_harr1_vec(Handle(NCollection_HArray1_gp_Vec) const* aPoint) {
     try { return {new Vrml_Coordinate3(*aPoint), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -888,11 +910,11 @@ extern "C" OcctResult<Vrml_Coordinate3*> Vrml_Coordinate3_ctor() {
     try { return {new Vrml_Coordinate3(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(TColgp_HArray1OfVec)*> Vrml_Coordinate3_point(const Vrml_Coordinate3* self_) {
-    try { return {new Handle(TColgp_HArray1OfVec)(self_->Point()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HArray1_gp_Vec)*> Vrml_Coordinate3_point(const Vrml_Coordinate3* self_) {
+    try { return {new Handle(NCollection_HArray1_gp_Vec)(self_->Point()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* Vrml_Coordinate3_set_point(Vrml_Coordinate3* self_, Handle(TColgp_HArray1OfVec) const* aPoint) {
+extern "C" const char* Vrml_Coordinate3_set_point(Vrml_Coordinate3* self_, Handle(NCollection_HArray1_gp_Vec) const* aPoint) {
     try { self_->SetPoint(*aPoint); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -914,20 +936,20 @@ extern "C" OcctResult<Handle(Standard_Type) const*> Vrml_Coordinate3_get_type_de
 }
 extern "C" OcctResult<const Standard_Transient*> Vrml_Coordinate3_as_Standard_Transient(const Vrml_Coordinate3* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> Vrml_Coordinate3_as_Standard_Transient_mut(Vrml_Coordinate3* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleVrmlCoordinate3*> Vrml_Coordinate3_to_handle(Vrml_Coordinate3* obj) {
-    try { return {new HandleVrmlCoordinate3(obj), nullptr}; }
+extern "C" OcctResult<Handle_Vrml_Coordinate3*> Vrml_Coordinate3_to_handle(Vrml_Coordinate3* obj) {
+    try { return {new Handle_Vrml_Coordinate3(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const Vrml_Coordinate3*> HandleVrmlCoordinate3_get(const HandleVrmlCoordinate3* handle) {
+extern "C" OcctResult<const Vrml_Coordinate3*> Handle_Vrml_Coordinate3_get(const Handle_Vrml_Coordinate3* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Vrml_Coordinate3*> HandleVrmlCoordinate3_get_mut(HandleVrmlCoordinate3* handle) {
+extern "C" OcctResult<Vrml_Coordinate3*> Handle_Vrml_Coordinate3_get_mut(Handle_Vrml_Coordinate3* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleVrmlCoordinate3_to_HandleStandardTransient(const HandleVrmlCoordinate3* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_Vrml_Coordinate3_to_Handle_Standard_Transient(const Handle_Vrml_Coordinate3* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> Vrml_Coordinate3_inherited_IsInstance(const Vrml_Coordinate3* self, Handle(Standard_Type) const& theType) {
@@ -1142,7 +1164,7 @@ extern "C" void Vrml_Group_destructor(Vrml_Group* self_) { delete self_; }
 // Vrml_IndexedFaceSet wrappers
 // ========================
 
-extern "C" OcctResult<Vrml_IndexedFaceSet*> Vrml_IndexedFaceSet_ctor_handletcolstdharray1ofinteger4(Handle(TColStd_HArray1OfInteger) const* aCoordIndex, Handle(TColStd_HArray1OfInteger) const* aMaterialIndex, Handle(TColStd_HArray1OfInteger) const* aNormalIndex, Handle(TColStd_HArray1OfInteger) const* aTextureCoordIndex) {
+extern "C" OcctResult<Vrml_IndexedFaceSet*> Vrml_IndexedFaceSet_ctor_harr1_int4(Handle(NCollection_HArray1_int) const* aCoordIndex, Handle(NCollection_HArray1_int) const* aMaterialIndex, Handle(NCollection_HArray1_int) const* aNormalIndex, Handle(NCollection_HArray1_int) const* aTextureCoordIndex) {
     try { return {new Vrml_IndexedFaceSet(*aCoordIndex, *aMaterialIndex, *aNormalIndex, *aTextureCoordIndex), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -1150,35 +1172,35 @@ extern "C" OcctResult<Vrml_IndexedFaceSet*> Vrml_IndexedFaceSet_ctor() {
     try { return {new Vrml_IndexedFaceSet(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(TColStd_HArray1OfInteger)*> Vrml_IndexedFaceSet_coord_index(const Vrml_IndexedFaceSet* self_) {
-    try { return {new Handle(TColStd_HArray1OfInteger)(self_->CoordIndex()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HArray1_int)*> Vrml_IndexedFaceSet_coord_index(const Vrml_IndexedFaceSet* self_) {
+    try { return {new Handle(NCollection_HArray1_int)(self_->CoordIndex()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(TColStd_HArray1OfInteger)*> Vrml_IndexedFaceSet_material_index(const Vrml_IndexedFaceSet* self_) {
-    try { return {new Handle(TColStd_HArray1OfInteger)(self_->MaterialIndex()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HArray1_int)*> Vrml_IndexedFaceSet_material_index(const Vrml_IndexedFaceSet* self_) {
+    try { return {new Handle(NCollection_HArray1_int)(self_->MaterialIndex()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(TColStd_HArray1OfInteger)*> Vrml_IndexedFaceSet_normal_index(const Vrml_IndexedFaceSet* self_) {
-    try { return {new Handle(TColStd_HArray1OfInteger)(self_->NormalIndex()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HArray1_int)*> Vrml_IndexedFaceSet_normal_index(const Vrml_IndexedFaceSet* self_) {
+    try { return {new Handle(NCollection_HArray1_int)(self_->NormalIndex()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(TColStd_HArray1OfInteger)*> Vrml_IndexedFaceSet_texture_coord_index(const Vrml_IndexedFaceSet* self_) {
-    try { return {new Handle(TColStd_HArray1OfInteger)(self_->TextureCoordIndex()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HArray1_int)*> Vrml_IndexedFaceSet_texture_coord_index(const Vrml_IndexedFaceSet* self_) {
+    try { return {new Handle(NCollection_HArray1_int)(self_->TextureCoordIndex()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* Vrml_IndexedFaceSet_set_coord_index(Vrml_IndexedFaceSet* self_, Handle(TColStd_HArray1OfInteger) const* aCoordIndex) {
+extern "C" const char* Vrml_IndexedFaceSet_set_coord_index(Vrml_IndexedFaceSet* self_, Handle(NCollection_HArray1_int) const* aCoordIndex) {
     try { self_->SetCoordIndex(*aCoordIndex); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* Vrml_IndexedFaceSet_set_material_index(Vrml_IndexedFaceSet* self_, Handle(TColStd_HArray1OfInteger) const* aMaterialIndex) {
+extern "C" const char* Vrml_IndexedFaceSet_set_material_index(Vrml_IndexedFaceSet* self_, Handle(NCollection_HArray1_int) const* aMaterialIndex) {
     try { self_->SetMaterialIndex(*aMaterialIndex); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* Vrml_IndexedFaceSet_set_normal_index(Vrml_IndexedFaceSet* self_, Handle(TColStd_HArray1OfInteger) const* aNormalIndex) {
+extern "C" const char* Vrml_IndexedFaceSet_set_normal_index(Vrml_IndexedFaceSet* self_, Handle(NCollection_HArray1_int) const* aNormalIndex) {
     try { self_->SetNormalIndex(*aNormalIndex); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* Vrml_IndexedFaceSet_set_texture_coord_index(Vrml_IndexedFaceSet* self_, Handle(TColStd_HArray1OfInteger) const* aTextureCoordIndex) {
+extern "C" const char* Vrml_IndexedFaceSet_set_texture_coord_index(Vrml_IndexedFaceSet* self_, Handle(NCollection_HArray1_int) const* aTextureCoordIndex) {
     try { self_->SetTextureCoordIndex(*aTextureCoordIndex); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -1200,20 +1222,20 @@ extern "C" OcctResult<Handle(Standard_Type) const*> Vrml_IndexedFaceSet_get_type
 }
 extern "C" OcctResult<const Standard_Transient*> Vrml_IndexedFaceSet_as_Standard_Transient(const Vrml_IndexedFaceSet* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> Vrml_IndexedFaceSet_as_Standard_Transient_mut(Vrml_IndexedFaceSet* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleVrmlIndexedFaceSet*> Vrml_IndexedFaceSet_to_handle(Vrml_IndexedFaceSet* obj) {
-    try { return {new HandleVrmlIndexedFaceSet(obj), nullptr}; }
+extern "C" OcctResult<Handle_Vrml_IndexedFaceSet*> Vrml_IndexedFaceSet_to_handle(Vrml_IndexedFaceSet* obj) {
+    try { return {new Handle_Vrml_IndexedFaceSet(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const Vrml_IndexedFaceSet*> HandleVrmlIndexedFaceSet_get(const HandleVrmlIndexedFaceSet* handle) {
+extern "C" OcctResult<const Vrml_IndexedFaceSet*> Handle_Vrml_IndexedFaceSet_get(const Handle_Vrml_IndexedFaceSet* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Vrml_IndexedFaceSet*> HandleVrmlIndexedFaceSet_get_mut(HandleVrmlIndexedFaceSet* handle) {
+extern "C" OcctResult<Vrml_IndexedFaceSet*> Handle_Vrml_IndexedFaceSet_get_mut(Handle_Vrml_IndexedFaceSet* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleVrmlIndexedFaceSet_to_HandleStandardTransient(const HandleVrmlIndexedFaceSet* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_Vrml_IndexedFaceSet_to_Handle_Standard_Transient(const Handle_Vrml_IndexedFaceSet* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> Vrml_IndexedFaceSet_inherited_IsInstance(const Vrml_IndexedFaceSet* self, Handle(Standard_Type) const& theType) {
@@ -1250,7 +1272,7 @@ extern "C" void Vrml_IndexedFaceSet_destructor(Vrml_IndexedFaceSet* self_) { del
 // Vrml_IndexedLineSet wrappers
 // ========================
 
-extern "C" OcctResult<Vrml_IndexedLineSet*> Vrml_IndexedLineSet_ctor_handletcolstdharray1ofinteger4(Handle(TColStd_HArray1OfInteger) const* aCoordIndex, Handle(TColStd_HArray1OfInteger) const* aMaterialIndex, Handle(TColStd_HArray1OfInteger) const* aNormalIndex, Handle(TColStd_HArray1OfInteger) const* aTextureCoordIndex) {
+extern "C" OcctResult<Vrml_IndexedLineSet*> Vrml_IndexedLineSet_ctor_harr1_int4(Handle(NCollection_HArray1_int) const* aCoordIndex, Handle(NCollection_HArray1_int) const* aMaterialIndex, Handle(NCollection_HArray1_int) const* aNormalIndex, Handle(NCollection_HArray1_int) const* aTextureCoordIndex) {
     try { return {new Vrml_IndexedLineSet(*aCoordIndex, *aMaterialIndex, *aNormalIndex, *aTextureCoordIndex), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -1258,35 +1280,35 @@ extern "C" OcctResult<Vrml_IndexedLineSet*> Vrml_IndexedLineSet_ctor() {
     try { return {new Vrml_IndexedLineSet(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(TColStd_HArray1OfInteger)*> Vrml_IndexedLineSet_coord_index(const Vrml_IndexedLineSet* self_) {
-    try { return {new Handle(TColStd_HArray1OfInteger)(self_->CoordIndex()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HArray1_int)*> Vrml_IndexedLineSet_coord_index(const Vrml_IndexedLineSet* self_) {
+    try { return {new Handle(NCollection_HArray1_int)(self_->CoordIndex()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(TColStd_HArray1OfInteger)*> Vrml_IndexedLineSet_material_index(const Vrml_IndexedLineSet* self_) {
-    try { return {new Handle(TColStd_HArray1OfInteger)(self_->MaterialIndex()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HArray1_int)*> Vrml_IndexedLineSet_material_index(const Vrml_IndexedLineSet* self_) {
+    try { return {new Handle(NCollection_HArray1_int)(self_->MaterialIndex()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(TColStd_HArray1OfInteger)*> Vrml_IndexedLineSet_normal_index(const Vrml_IndexedLineSet* self_) {
-    try { return {new Handle(TColStd_HArray1OfInteger)(self_->NormalIndex()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HArray1_int)*> Vrml_IndexedLineSet_normal_index(const Vrml_IndexedLineSet* self_) {
+    try { return {new Handle(NCollection_HArray1_int)(self_->NormalIndex()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(TColStd_HArray1OfInteger)*> Vrml_IndexedLineSet_texture_coord_index(const Vrml_IndexedLineSet* self_) {
-    try { return {new Handle(TColStd_HArray1OfInteger)(self_->TextureCoordIndex()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HArray1_int)*> Vrml_IndexedLineSet_texture_coord_index(const Vrml_IndexedLineSet* self_) {
+    try { return {new Handle(NCollection_HArray1_int)(self_->TextureCoordIndex()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* Vrml_IndexedLineSet_set_coord_index(Vrml_IndexedLineSet* self_, Handle(TColStd_HArray1OfInteger) const* aCoordIndex) {
+extern "C" const char* Vrml_IndexedLineSet_set_coord_index(Vrml_IndexedLineSet* self_, Handle(NCollection_HArray1_int) const* aCoordIndex) {
     try { self_->SetCoordIndex(*aCoordIndex); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* Vrml_IndexedLineSet_set_material_index(Vrml_IndexedLineSet* self_, Handle(TColStd_HArray1OfInteger) const* aMaterialIndex) {
+extern "C" const char* Vrml_IndexedLineSet_set_material_index(Vrml_IndexedLineSet* self_, Handle(NCollection_HArray1_int) const* aMaterialIndex) {
     try { self_->SetMaterialIndex(*aMaterialIndex); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* Vrml_IndexedLineSet_set_normal_index(Vrml_IndexedLineSet* self_, Handle(TColStd_HArray1OfInteger) const* aNormalIndex) {
+extern "C" const char* Vrml_IndexedLineSet_set_normal_index(Vrml_IndexedLineSet* self_, Handle(NCollection_HArray1_int) const* aNormalIndex) {
     try { self_->SetNormalIndex(*aNormalIndex); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* Vrml_IndexedLineSet_set_texture_coord_index(Vrml_IndexedLineSet* self_, Handle(TColStd_HArray1OfInteger) const* aTextureCoordIndex) {
+extern "C" const char* Vrml_IndexedLineSet_set_texture_coord_index(Vrml_IndexedLineSet* self_, Handle(NCollection_HArray1_int) const* aTextureCoordIndex) {
     try { self_->SetTextureCoordIndex(*aTextureCoordIndex); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -1308,20 +1330,20 @@ extern "C" OcctResult<Handle(Standard_Type) const*> Vrml_IndexedLineSet_get_type
 }
 extern "C" OcctResult<const Standard_Transient*> Vrml_IndexedLineSet_as_Standard_Transient(const Vrml_IndexedLineSet* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> Vrml_IndexedLineSet_as_Standard_Transient_mut(Vrml_IndexedLineSet* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleVrmlIndexedLineSet*> Vrml_IndexedLineSet_to_handle(Vrml_IndexedLineSet* obj) {
-    try { return {new HandleVrmlIndexedLineSet(obj), nullptr}; }
+extern "C" OcctResult<Handle_Vrml_IndexedLineSet*> Vrml_IndexedLineSet_to_handle(Vrml_IndexedLineSet* obj) {
+    try { return {new Handle_Vrml_IndexedLineSet(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const Vrml_IndexedLineSet*> HandleVrmlIndexedLineSet_get(const HandleVrmlIndexedLineSet* handle) {
+extern "C" OcctResult<const Vrml_IndexedLineSet*> Handle_Vrml_IndexedLineSet_get(const Handle_Vrml_IndexedLineSet* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Vrml_IndexedLineSet*> HandleVrmlIndexedLineSet_get_mut(HandleVrmlIndexedLineSet* handle) {
+extern "C" OcctResult<Vrml_IndexedLineSet*> Handle_Vrml_IndexedLineSet_get_mut(Handle_Vrml_IndexedLineSet* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleVrmlIndexedLineSet_to_HandleStandardTransient(const HandleVrmlIndexedLineSet* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_Vrml_IndexedLineSet_to_Handle_Standard_Transient(const Handle_Vrml_IndexedLineSet* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> Vrml_IndexedLineSet_inherited_IsInstance(const Vrml_IndexedLineSet* self, Handle(Standard_Type) const& theType) {
@@ -1402,19 +1424,19 @@ extern "C" OcctResult<Vrml_LOD*> Vrml_LOD_ctor() {
     try { return {new Vrml_LOD(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Vrml_LOD*> Vrml_LOD_ctor_handletcolstdharray1ofreal_vec(Handle(TColStd_HArray1OfReal) const* aRange, gp_Vec const* aCenter) {
+extern "C" OcctResult<Vrml_LOD*> Vrml_LOD_ctor_harr1_double_vec(Handle(NCollection_HArray1_double) const* aRange, gp_Vec const* aCenter) {
     try { return {new Vrml_LOD(*aRange, *aCenter), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(TColStd_HArray1OfReal)*> Vrml_LOD_range(const Vrml_LOD* self_) {
-    try { return {new Handle(TColStd_HArray1OfReal)(self_->Range()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HArray1_double)*> Vrml_LOD_range(const Vrml_LOD* self_) {
+    try { return {new Handle(NCollection_HArray1_double)(self_->Range()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<gp_Vec*> Vrml_LOD_center(const Vrml_LOD* self_) {
     try { return {new gp_Vec(self_->Center()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* Vrml_LOD_set_range(Vrml_LOD* self_, Handle(TColStd_HArray1OfReal) const* aRange) {
+extern "C" const char* Vrml_LOD_set_range(Vrml_LOD* self_, Handle(NCollection_HArray1_double) const* aRange) {
     try { self_->SetRange(*aRange); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -1440,20 +1462,20 @@ extern "C" OcctResult<Handle(Standard_Type) const*> Vrml_LOD_get_type_descriptor
 }
 extern "C" OcctResult<const Standard_Transient*> Vrml_LOD_as_Standard_Transient(const Vrml_LOD* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> Vrml_LOD_as_Standard_Transient_mut(Vrml_LOD* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleVrmlLOD*> Vrml_LOD_to_handle(Vrml_LOD* obj) {
-    try { return {new HandleVrmlLOD(obj), nullptr}; }
+extern "C" OcctResult<Handle_Vrml_LOD*> Vrml_LOD_to_handle(Vrml_LOD* obj) {
+    try { return {new Handle_Vrml_LOD(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const Vrml_LOD*> HandleVrmlLOD_get(const HandleVrmlLOD* handle) {
+extern "C" OcctResult<const Vrml_LOD*> Handle_Vrml_LOD_get(const Handle_Vrml_LOD* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Vrml_LOD*> HandleVrmlLOD_get_mut(HandleVrmlLOD* handle) {
+extern "C" OcctResult<Vrml_LOD*> Handle_Vrml_LOD_get_mut(Handle_Vrml_LOD* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleVrmlLOD_to_HandleStandardTransient(const HandleVrmlLOD* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_Vrml_LOD_to_Handle_Standard_Transient(const Handle_Vrml_LOD* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> Vrml_LOD_inherited_IsInstance(const Vrml_LOD* self, Handle(Standard_Type) const& theType) {
@@ -1490,7 +1512,7 @@ extern "C" void Vrml_LOD_destructor(Vrml_LOD* self_) { delete self_; }
 // Vrml_Material wrappers
 // ========================
 
-extern "C" OcctResult<Vrml_Material*> Vrml_Material_ctor_handlequantityharray1ofcolor4_handletcolstdharray1ofreal2(Handle(Quantity_HArray1OfColor) const* aAmbientColor, Handle(Quantity_HArray1OfColor) const* aDiffuseColor, Handle(Quantity_HArray1OfColor) const* aSpecularColor, Handle(Quantity_HArray1OfColor) const* aEmissiveColor, Handle(TColStd_HArray1OfReal) const* aShininess, Handle(TColStd_HArray1OfReal) const* aTransparency) {
+extern "C" OcctResult<Vrml_Material*> Vrml_Material_ctor_harr1_color4_harr1_double2(Handle(NCollection_HArray1_Quantity_Color) const* aAmbientColor, Handle(NCollection_HArray1_Quantity_Color) const* aDiffuseColor, Handle(NCollection_HArray1_Quantity_Color) const* aSpecularColor, Handle(NCollection_HArray1_Quantity_Color) const* aEmissiveColor, Handle(NCollection_HArray1_double) const* aShininess, Handle(NCollection_HArray1_double) const* aTransparency) {
     try { return {new Vrml_Material(*aAmbientColor, *aDiffuseColor, *aSpecularColor, *aEmissiveColor, *aShininess, *aTransparency), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -1498,51 +1520,51 @@ extern "C" OcctResult<Vrml_Material*> Vrml_Material_ctor() {
     try { return {new Vrml_Material(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(Quantity_HArray1OfColor)*> Vrml_Material_ambient_color(const Vrml_Material* self_) {
-    try { return {new Handle(Quantity_HArray1OfColor)(self_->AmbientColor()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HArray1_Quantity_Color)*> Vrml_Material_ambient_color(const Vrml_Material* self_) {
+    try { return {new Handle(NCollection_HArray1_Quantity_Color)(self_->AmbientColor()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(Quantity_HArray1OfColor)*> Vrml_Material_diffuse_color(const Vrml_Material* self_) {
-    try { return {new Handle(Quantity_HArray1OfColor)(self_->DiffuseColor()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HArray1_Quantity_Color)*> Vrml_Material_diffuse_color(const Vrml_Material* self_) {
+    try { return {new Handle(NCollection_HArray1_Quantity_Color)(self_->DiffuseColor()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(Quantity_HArray1OfColor)*> Vrml_Material_specular_color(const Vrml_Material* self_) {
-    try { return {new Handle(Quantity_HArray1OfColor)(self_->SpecularColor()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HArray1_Quantity_Color)*> Vrml_Material_specular_color(const Vrml_Material* self_) {
+    try { return {new Handle(NCollection_HArray1_Quantity_Color)(self_->SpecularColor()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(Quantity_HArray1OfColor)*> Vrml_Material_emissive_color(const Vrml_Material* self_) {
-    try { return {new Handle(Quantity_HArray1OfColor)(self_->EmissiveColor()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HArray1_Quantity_Color)*> Vrml_Material_emissive_color(const Vrml_Material* self_) {
+    try { return {new Handle(NCollection_HArray1_Quantity_Color)(self_->EmissiveColor()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(TColStd_HArray1OfReal)*> Vrml_Material_shininess(const Vrml_Material* self_) {
-    try { return {new Handle(TColStd_HArray1OfReal)(self_->Shininess()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HArray1_double)*> Vrml_Material_shininess(const Vrml_Material* self_) {
+    try { return {new Handle(NCollection_HArray1_double)(self_->Shininess()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(TColStd_HArray1OfReal)*> Vrml_Material_transparency(const Vrml_Material* self_) {
-    try { return {new Handle(TColStd_HArray1OfReal)(self_->Transparency()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HArray1_double)*> Vrml_Material_transparency(const Vrml_Material* self_) {
+    try { return {new Handle(NCollection_HArray1_double)(self_->Transparency()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* Vrml_Material_set_ambient_color(Vrml_Material* self_, Handle(Quantity_HArray1OfColor) const* aAmbientColor) {
+extern "C" const char* Vrml_Material_set_ambient_color(Vrml_Material* self_, Handle(NCollection_HArray1_Quantity_Color) const* aAmbientColor) {
     try { self_->SetAmbientColor(*aAmbientColor); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* Vrml_Material_set_diffuse_color(Vrml_Material* self_, Handle(Quantity_HArray1OfColor) const* aDiffuseColor) {
+extern "C" const char* Vrml_Material_set_diffuse_color(Vrml_Material* self_, Handle(NCollection_HArray1_Quantity_Color) const* aDiffuseColor) {
     try { self_->SetDiffuseColor(*aDiffuseColor); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* Vrml_Material_set_specular_color(Vrml_Material* self_, Handle(Quantity_HArray1OfColor) const* aSpecularColor) {
+extern "C" const char* Vrml_Material_set_specular_color(Vrml_Material* self_, Handle(NCollection_HArray1_Quantity_Color) const* aSpecularColor) {
     try { self_->SetSpecularColor(*aSpecularColor); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* Vrml_Material_set_emissive_color(Vrml_Material* self_, Handle(Quantity_HArray1OfColor) const* aEmissiveColor) {
+extern "C" const char* Vrml_Material_set_emissive_color(Vrml_Material* self_, Handle(NCollection_HArray1_Quantity_Color) const* aEmissiveColor) {
     try { self_->SetEmissiveColor(*aEmissiveColor); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* Vrml_Material_set_shininess(Vrml_Material* self_, Handle(TColStd_HArray1OfReal) const* aShininess) {
+extern "C" const char* Vrml_Material_set_shininess(Vrml_Material* self_, Handle(NCollection_HArray1_double) const* aShininess) {
     try { self_->SetShininess(*aShininess); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* Vrml_Material_set_transparency(Vrml_Material* self_, Handle(TColStd_HArray1OfReal) const* aTransparency) {
+extern "C" const char* Vrml_Material_set_transparency(Vrml_Material* self_, Handle(NCollection_HArray1_double) const* aTransparency) {
     try { self_->SetTransparency(*aTransparency); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -1564,20 +1586,20 @@ extern "C" OcctResult<Handle(Standard_Type) const*> Vrml_Material_get_type_descr
 }
 extern "C" OcctResult<const Standard_Transient*> Vrml_Material_as_Standard_Transient(const Vrml_Material* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> Vrml_Material_as_Standard_Transient_mut(Vrml_Material* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleVrmlMaterial*> Vrml_Material_to_handle(Vrml_Material* obj) {
-    try { return {new HandleVrmlMaterial(obj), nullptr}; }
+extern "C" OcctResult<Handle_Vrml_Material*> Vrml_Material_to_handle(Vrml_Material* obj) {
+    try { return {new Handle_Vrml_Material(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const Vrml_Material*> HandleVrmlMaterial_get(const HandleVrmlMaterial* handle) {
+extern "C" OcctResult<const Vrml_Material*> Handle_Vrml_Material_get(const Handle_Vrml_Material* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Vrml_Material*> HandleVrmlMaterial_get_mut(HandleVrmlMaterial* handle) {
+extern "C" OcctResult<Vrml_Material*> Handle_Vrml_Material_get_mut(Handle_Vrml_Material* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleVrmlMaterial_to_HandleStandardTransient(const HandleVrmlMaterial* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_Vrml_Material_to_Handle_Standard_Transient(const Handle_Vrml_Material* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> Vrml_Material_inherited_IsInstance(const Vrml_Material* self, Handle(Standard_Type) const& theType) {
@@ -1666,7 +1688,7 @@ extern "C" void Vrml_MatrixTransform_destructor(Vrml_MatrixTransform* self_) { d
 // Vrml_Normal wrappers
 // ========================
 
-extern "C" OcctResult<Vrml_Normal*> Vrml_Normal_ctor_handletcolgpharray1ofvec(Handle(TColgp_HArray1OfVec) const* aVector) {
+extern "C" OcctResult<Vrml_Normal*> Vrml_Normal_ctor_harr1_vec(Handle(NCollection_HArray1_gp_Vec) const* aVector) {
     try { return {new Vrml_Normal(*aVector), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -1674,11 +1696,11 @@ extern "C" OcctResult<Vrml_Normal*> Vrml_Normal_ctor() {
     try { return {new Vrml_Normal(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(TColgp_HArray1OfVec)*> Vrml_Normal_vector(const Vrml_Normal* self_) {
-    try { return {new Handle(TColgp_HArray1OfVec)(self_->Vector()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HArray1_gp_Vec)*> Vrml_Normal_vector(const Vrml_Normal* self_) {
+    try { return {new Handle(NCollection_HArray1_gp_Vec)(self_->Vector()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* Vrml_Normal_set_vector(Vrml_Normal* self_, Handle(TColgp_HArray1OfVec) const* aVector) {
+extern "C" const char* Vrml_Normal_set_vector(Vrml_Normal* self_, Handle(NCollection_HArray1_gp_Vec) const* aVector) {
     try { self_->SetVector(*aVector); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -1700,20 +1722,20 @@ extern "C" OcctResult<Handle(Standard_Type) const*> Vrml_Normal_get_type_descrip
 }
 extern "C" OcctResult<const Standard_Transient*> Vrml_Normal_as_Standard_Transient(const Vrml_Normal* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> Vrml_Normal_as_Standard_Transient_mut(Vrml_Normal* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleVrmlNormal*> Vrml_Normal_to_handle(Vrml_Normal* obj) {
-    try { return {new HandleVrmlNormal(obj), nullptr}; }
+extern "C" OcctResult<Handle_Vrml_Normal*> Vrml_Normal_to_handle(Vrml_Normal* obj) {
+    try { return {new Handle_Vrml_Normal(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const Vrml_Normal*> HandleVrmlNormal_get(const HandleVrmlNormal* handle) {
+extern "C" OcctResult<const Vrml_Normal*> Handle_Vrml_Normal_get(const Handle_Vrml_Normal* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Vrml_Normal*> HandleVrmlNormal_get_mut(HandleVrmlNormal* handle) {
+extern "C" OcctResult<Vrml_Normal*> Handle_Vrml_Normal_get_mut(Handle_Vrml_Normal* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleVrmlNormal_to_HandleStandardTransient(const HandleVrmlNormal* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_Vrml_Normal_to_Handle_Standard_Transient(const Handle_Vrml_Normal* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> Vrml_Normal_inherited_IsInstance(const Vrml_Normal* self, Handle(Standard_Type) const& theType) {
@@ -1986,12 +2008,12 @@ extern "C" OcctResult<Vrml_SFImage*> Vrml_SFImage_ctor() {
     try { return {new Vrml_SFImage(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Vrml_SFImage*> Vrml_SFImage_ctor_int2_sfimagenumber_handletcolstdharray1ofinteger(int32_t aWidth, int32_t aHeight, int32_t aNumber, Handle(TColStd_HArray1OfInteger) const* anArray) {
+extern "C" OcctResult<Vrml_SFImage*> Vrml_SFImage_ctor_int2_sfimagenumber_harr1_int(int32_t aWidth, int32_t aHeight, int32_t aNumber, Handle(NCollection_HArray1_int) const* anArray) {
     try { return {new Vrml_SFImage(aWidth, aHeight, static_cast<Vrml_SFImageNumber>(aNumber), *anArray), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(TColStd_HArray1OfInteger)*> Vrml_SFImage_array(const Vrml_SFImage* self_) {
-    try { return {new Handle(TColStd_HArray1OfInteger)(self_->Array()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HArray1_int)*> Vrml_SFImage_array(const Vrml_SFImage* self_) {
+    try { return {new Handle(NCollection_HArray1_int)(self_->Array()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" const char* Vrml_SFImage_set_width(Vrml_SFImage* self_, int32_t aWidth) {
@@ -2018,7 +2040,7 @@ extern "C" OcctResult<int32_t> Vrml_SFImage_number(const Vrml_SFImage* self_) {
     try { return {static_cast<int32_t>(self_->Number()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* Vrml_SFImage_set_array(Vrml_SFImage* self_, Handle(TColStd_HArray1OfInteger) const* anArray) {
+extern "C" const char* Vrml_SFImage_set_array(Vrml_SFImage* self_, Handle(NCollection_HArray1_int) const* anArray) {
     try { self_->SetArray(*anArray); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -2040,20 +2062,20 @@ extern "C" OcctResult<Handle(Standard_Type) const*> Vrml_SFImage_get_type_descri
 }
 extern "C" OcctResult<const Standard_Transient*> Vrml_SFImage_as_Standard_Transient(const Vrml_SFImage* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> Vrml_SFImage_as_Standard_Transient_mut(Vrml_SFImage* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleVrmlSFImage*> Vrml_SFImage_to_handle(Vrml_SFImage* obj) {
-    try { return {new HandleVrmlSFImage(obj), nullptr}; }
+extern "C" OcctResult<Handle_Vrml_SFImage*> Vrml_SFImage_to_handle(Vrml_SFImage* obj) {
+    try { return {new Handle_Vrml_SFImage(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const Vrml_SFImage*> HandleVrmlSFImage_get(const HandleVrmlSFImage* handle) {
+extern "C" OcctResult<const Vrml_SFImage*> Handle_Vrml_SFImage_get(const Handle_Vrml_SFImage* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Vrml_SFImage*> HandleVrmlSFImage_get_mut(HandleVrmlSFImage* handle) {
+extern "C" OcctResult<Vrml_SFImage*> Handle_Vrml_SFImage_get_mut(Handle_Vrml_SFImage* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleVrmlSFImage_to_HandleStandardTransient(const HandleVrmlSFImage* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_Vrml_SFImage_to_Handle_Standard_Transient(const Handle_Vrml_SFImage* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> Vrml_SFImage_inherited_IsInstance(const Vrml_SFImage* self, Handle(Standard_Type) const& theType) {
@@ -2456,15 +2478,15 @@ extern "C" OcctResult<Vrml_TextureCoordinate2*> Vrml_TextureCoordinate2_ctor() {
     try { return {new Vrml_TextureCoordinate2(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Vrml_TextureCoordinate2*> Vrml_TextureCoordinate2_ctor_handletcolgpharray1ofvec2d(Handle(TColgp_HArray1OfVec2d) const* aPoint) {
+extern "C" OcctResult<Vrml_TextureCoordinate2*> Vrml_TextureCoordinate2_ctor_harr1_vec2d(Handle(NCollection_HArray1_gp_Vec2d) const* aPoint) {
     try { return {new Vrml_TextureCoordinate2(*aPoint), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(TColgp_HArray1OfVec2d)*> Vrml_TextureCoordinate2_point(const Vrml_TextureCoordinate2* self_) {
-    try { return {new Handle(TColgp_HArray1OfVec2d)(self_->Point()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HArray1_gp_Vec2d)*> Vrml_TextureCoordinate2_point(const Vrml_TextureCoordinate2* self_) {
+    try { return {new Handle(NCollection_HArray1_gp_Vec2d)(self_->Point()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* Vrml_TextureCoordinate2_set_point(Vrml_TextureCoordinate2* self_, Handle(TColgp_HArray1OfVec2d) const* aPoint) {
+extern "C" const char* Vrml_TextureCoordinate2_set_point(Vrml_TextureCoordinate2* self_, Handle(NCollection_HArray1_gp_Vec2d) const* aPoint) {
     try { self_->SetPoint(*aPoint); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -2486,20 +2508,20 @@ extern "C" OcctResult<Handle(Standard_Type) const*> Vrml_TextureCoordinate2_get_
 }
 extern "C" OcctResult<const Standard_Transient*> Vrml_TextureCoordinate2_as_Standard_Transient(const Vrml_TextureCoordinate2* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> Vrml_TextureCoordinate2_as_Standard_Transient_mut(Vrml_TextureCoordinate2* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleVrmlTextureCoordinate2*> Vrml_TextureCoordinate2_to_handle(Vrml_TextureCoordinate2* obj) {
-    try { return {new HandleVrmlTextureCoordinate2(obj), nullptr}; }
+extern "C" OcctResult<Handle_Vrml_TextureCoordinate2*> Vrml_TextureCoordinate2_to_handle(Vrml_TextureCoordinate2* obj) {
+    try { return {new Handle_Vrml_TextureCoordinate2(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const Vrml_TextureCoordinate2*> HandleVrmlTextureCoordinate2_get(const HandleVrmlTextureCoordinate2* handle) {
+extern "C" OcctResult<const Vrml_TextureCoordinate2*> Handle_Vrml_TextureCoordinate2_get(const Handle_Vrml_TextureCoordinate2* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Vrml_TextureCoordinate2*> HandleVrmlTextureCoordinate2_get_mut(HandleVrmlTextureCoordinate2* handle) {
+extern "C" OcctResult<Vrml_TextureCoordinate2*> Handle_Vrml_TextureCoordinate2_get_mut(Handle_Vrml_TextureCoordinate2* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleVrmlTextureCoordinate2_to_HandleStandardTransient(const HandleVrmlTextureCoordinate2* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_Vrml_TextureCoordinate2_to_Handle_Standard_Transient(const Handle_Vrml_TextureCoordinate2* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> Vrml_TextureCoordinate2_inherited_IsInstance(const Vrml_TextureCoordinate2* self, Handle(Standard_Type) const& theType) {
@@ -2734,24 +2756,24 @@ extern "C" OcctResult<const RWMesh_CafReader*> VrmlAPI_CafReader_as_RWMesh_CafRe
 extern "C" OcctResult<RWMesh_CafReader*> VrmlAPI_CafReader_as_RWMesh_CafReader_mut(VrmlAPI_CafReader* self_) { return {static_cast<RWMesh_CafReader*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> VrmlAPI_CafReader_as_Standard_Transient(const VrmlAPI_CafReader* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> VrmlAPI_CafReader_as_Standard_Transient_mut(VrmlAPI_CafReader* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleVrmlAPICafReader*> VrmlAPI_CafReader_to_handle(VrmlAPI_CafReader* obj) {
-    try { return {new HandleVrmlAPICafReader(obj), nullptr}; }
+extern "C" OcctResult<Handle_VrmlAPI_CafReader*> VrmlAPI_CafReader_to_handle(VrmlAPI_CafReader* obj) {
+    try { return {new Handle_VrmlAPI_CafReader(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const VrmlAPI_CafReader*> HandleVrmlAPICafReader_get(const HandleVrmlAPICafReader* handle) {
+extern "C" OcctResult<const VrmlAPI_CafReader*> Handle_VrmlAPI_CafReader_get(const Handle_VrmlAPI_CafReader* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<VrmlAPI_CafReader*> HandleVrmlAPICafReader_get_mut(HandleVrmlAPICafReader* handle) {
+extern "C" OcctResult<VrmlAPI_CafReader*> Handle_VrmlAPI_CafReader_get_mut(Handle_VrmlAPI_CafReader* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleRWMeshCafReader*> HandleVrmlAPICafReader_to_HandleRWMeshCafReader(const HandleVrmlAPICafReader* self_) {
-    try { return {new HandleRWMeshCafReader(*self_), nullptr}; }
+extern "C" OcctResult<Handle_RWMesh_CafReader*> Handle_VrmlAPI_CafReader_to_Handle_RWMesh_CafReader(const Handle_VrmlAPI_CafReader* self_) {
+    try { return {new Handle_RWMesh_CafReader(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleVrmlAPICafReader_to_HandleStandardTransient(const HandleVrmlAPICafReader* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_VrmlAPI_CafReader_to_Handle_Standard_Transient(const Handle_VrmlAPI_CafReader* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(TDocStd_Document) const*> VrmlAPI_CafReader_inherited_Document(const VrmlAPI_CafReader* self) {
@@ -2846,11 +2868,11 @@ extern "C" OcctResult<TopoDS_Shape*> VrmlAPI_CafReader_inherited_SingleShape(con
     try { return {new TopoDS_Shape(self->SingleShape()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Interface_IndexedMapOfAsciiString const*> VrmlAPI_CafReader_inherited_ExternalFiles(const VrmlAPI_CafReader* self) {
+extern "C" OcctResult<NCollection_IndexedMap_TCollection_AsciiString const*> VrmlAPI_CafReader_inherited_ExternalFiles(const VrmlAPI_CafReader* self) {
     try { return {&(self->ExternalFiles()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TColStd_IndexedDataMapOfStringString const*> VrmlAPI_CafReader_inherited_Metadata(const VrmlAPI_CafReader* self) {
+extern "C" OcctResult<NCollection_IndexedDataMap_TCollection_AsciiString_TCollection_AsciiString const*> VrmlAPI_CafReader_inherited_Metadata(const VrmlAPI_CafReader* self) {
     try { return {&(self->Metadata()), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -2944,40 +2966,24 @@ extern "C" const char* VrmlAPI_Writer_set_representation(VrmlAPI_Writer* self_, 
     try { self_->SetRepresentation(static_cast<VrmlAPI_RepresentationOfShape>(aRep)); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* VrmlAPI_Writer_set_transparency_to_material(VrmlAPI_Writer* self_, Handle(Vrml_Material)* aMaterial, double aTransparency) {
-    try { self_->SetTransparencyToMaterial(*aMaterial, aTransparency); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* VrmlAPI_Writer_set_shininess_to_material(VrmlAPI_Writer* self_, Handle(Vrml_Material)* aMaterial, double aShininess) {
-    try { self_->SetShininessToMaterial(*aMaterial, aShininess); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* VrmlAPI_Writer_set_ambient_color_to_material(VrmlAPI_Writer* self_, Handle(Vrml_Material)* aMaterial, Handle(Quantity_HArray1OfColor) const* Color) {
-    try { self_->SetAmbientColorToMaterial(*aMaterial, *Color); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* VrmlAPI_Writer_set_diffuse_color_to_material(VrmlAPI_Writer* self_, Handle(Vrml_Material)* aMaterial, Handle(Quantity_HArray1OfColor) const* Color) {
-    try { self_->SetDiffuseColorToMaterial(*aMaterial, *Color); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* VrmlAPI_Writer_set_specular_color_to_material(VrmlAPI_Writer* self_, Handle(Vrml_Material)* aMaterial, Handle(Quantity_HArray1OfColor) const* Color) {
-    try { self_->SetSpecularColorToMaterial(*aMaterial, *Color); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* VrmlAPI_Writer_set_emissive_color_to_material(VrmlAPI_Writer* self_, Handle(Vrml_Material)* aMaterial, Handle(Quantity_HArray1OfColor) const* Color) {
-    try { self_->SetEmissiveColorToMaterial(*aMaterial, *Color); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
 extern "C" OcctResult<int32_t> VrmlAPI_Writer_get_representation(const VrmlAPI_Writer* self_) {
     try { return {static_cast<int32_t>(self_->GetRepresentation()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<bool> VrmlAPI_Writer_write(const VrmlAPI_Writer* self_, TopoDS_Shape const* aShape, const char* aFile, int32_t aVersion) {
+extern "C" OcctResult<bool> VrmlAPI_Writer_write_shape_charptr_int(const VrmlAPI_Writer* self_, TopoDS_Shape const* aShape, const char* aFile, int32_t aVersion) {
     try { return {self_->Write(*aShape, aFile, aVersion), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<bool> VrmlAPI_Writer_write_doc(const VrmlAPI_Writer* self_, Handle(TDocStd_Document) const* theDoc, const char* theFile, double theScale) {
+extern "C" OcctResult<bool> VrmlAPI_Writer_write_doc_handletdocstddocument_charptr_real(const VrmlAPI_Writer* self_, Handle(TDocStd_Document) const* theDoc, const char* theFile, double theScale) {
     try { return {self_->WriteDoc(*theDoc, theFile, theScale), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<bool> VrmlAPI_Writer_write_shape_ostream_int(const VrmlAPI_Writer* self_, TopoDS_Shape const* aShape, Standard_OStream* theOStream, int32_t aVersion) {
+    try { return {self_->Write(*aShape, *theOStream, aVersion), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<bool> VrmlAPI_Writer_write_doc_handletdocstddocument_ostream_real(const VrmlAPI_Writer* self_, Handle(TDocStd_Document) const* theDoc, Standard_OStream* theOStream, double theScale) {
+    try { return {self_->WriteDoc(*theDoc, *theOStream, theScale), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" void VrmlAPI_Writer_destructor(VrmlAPI_Writer* self_) { delete self_; }
@@ -3032,7 +3038,7 @@ extern "C" const char* VrmlConverter_DeflectionCurve_add_ostream_curve_real3(Sta
     try { VrmlConverter_DeflectionCurve::Add(*anOStream, *aCurve, U1, U2, aDeflection); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* VrmlConverter_DeflectionCurve_add_ostream_curve_handletcolstdharray1ofreal_int_handlevrmlconverterdrawer(Standard_OStream* anOStream, Adaptor3d_Curve const* aCurve, Handle(TColStd_HArray1OfReal) const* aParams, int32_t aNbNodes, Handle(VrmlConverter_Drawer) const* aDrawer) {
+extern "C" const char* VrmlConverter_DeflectionCurve_add_ostream_curve_harr1_double_int_handlevrmlconverterdrawer(Standard_OStream* anOStream, Adaptor3d_Curve const* aCurve, Handle(NCollection_HArray1_double) const* aParams, int32_t aNbNodes, Handle(VrmlConverter_Drawer) const* aDrawer) {
     try { VrmlConverter_DeflectionCurve::Add(*anOStream, *aCurve, *aParams, aNbNodes, *aDrawer); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -3084,14 +3090,6 @@ extern "C" OcctResult<Handle(VrmlConverter_LineAspect)*> VrmlConverter_Drawer_hi
 }
 extern "C" OcctResult<Handle(VrmlConverter_LineAspect)*> VrmlConverter_Drawer_seen_line_aspect(VrmlConverter_Drawer* self_) {
     try { return {new Handle(VrmlConverter_LineAspect)(self_->SeenLineAspect()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* VrmlConverter_Drawer_set_type_of_deflection(VrmlConverter_Drawer* self_, int32_t aTypeOfDeflection) {
-    try { self_->SetTypeOfDeflection(static_cast<Aspect_TypeOfDeflection>(aTypeOfDeflection)); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<int32_t> VrmlConverter_Drawer_type_of_deflection(const VrmlConverter_Drawer* self_) {
-    try { return {static_cast<int32_t>(self_->TypeOfDeflection()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" const char* VrmlConverter_Drawer_set_maximal_chordial_deviation(VrmlConverter_Drawer* self_, double aChordialDeviation) {
@@ -3224,20 +3222,20 @@ extern "C" OcctResult<Handle(Standard_Type) const*> VrmlConverter_Drawer_get_typ
 }
 extern "C" OcctResult<const Standard_Transient*> VrmlConverter_Drawer_as_Standard_Transient(const VrmlConverter_Drawer* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> VrmlConverter_Drawer_as_Standard_Transient_mut(VrmlConverter_Drawer* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleVrmlConverterDrawer*> VrmlConverter_Drawer_to_handle(VrmlConverter_Drawer* obj) {
-    try { return {new HandleVrmlConverterDrawer(obj), nullptr}; }
+extern "C" OcctResult<Handle_VrmlConverter_Drawer*> VrmlConverter_Drawer_to_handle(VrmlConverter_Drawer* obj) {
+    try { return {new Handle_VrmlConverter_Drawer(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const VrmlConverter_Drawer*> HandleVrmlConverterDrawer_get(const HandleVrmlConverterDrawer* handle) {
+extern "C" OcctResult<const VrmlConverter_Drawer*> Handle_VrmlConverter_Drawer_get(const Handle_VrmlConverter_Drawer* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<VrmlConverter_Drawer*> HandleVrmlConverterDrawer_get_mut(HandleVrmlConverterDrawer* handle) {
+extern "C" OcctResult<VrmlConverter_Drawer*> Handle_VrmlConverter_Drawer_get_mut(Handle_VrmlConverter_Drawer* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleVrmlConverterDrawer_to_HandleStandardTransient(const HandleVrmlConverterDrawer* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_VrmlConverter_Drawer_to_Handle_Standard_Transient(const Handle_VrmlConverter_Drawer* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> VrmlConverter_Drawer_inherited_IsInstance(const VrmlConverter_Drawer* self, Handle(Standard_Type) const& theType) {
@@ -3320,24 +3318,24 @@ extern "C" OcctResult<const VrmlConverter_LineAspect*> VrmlConverter_IsoAspect_a
 extern "C" OcctResult<VrmlConverter_LineAspect*> VrmlConverter_IsoAspect_as_VrmlConverter_LineAspect_mut(VrmlConverter_IsoAspect* self_) { return {static_cast<VrmlConverter_LineAspect*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> VrmlConverter_IsoAspect_as_Standard_Transient(const VrmlConverter_IsoAspect* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> VrmlConverter_IsoAspect_as_Standard_Transient_mut(VrmlConverter_IsoAspect* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleVrmlConverterIsoAspect*> VrmlConverter_IsoAspect_to_handle(VrmlConverter_IsoAspect* obj) {
-    try { return {new HandleVrmlConverterIsoAspect(obj), nullptr}; }
+extern "C" OcctResult<Handle_VrmlConverter_IsoAspect*> VrmlConverter_IsoAspect_to_handle(VrmlConverter_IsoAspect* obj) {
+    try { return {new Handle_VrmlConverter_IsoAspect(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const VrmlConverter_IsoAspect*> HandleVrmlConverterIsoAspect_get(const HandleVrmlConverterIsoAspect* handle) {
+extern "C" OcctResult<const VrmlConverter_IsoAspect*> Handle_VrmlConverter_IsoAspect_get(const Handle_VrmlConverter_IsoAspect* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<VrmlConverter_IsoAspect*> HandleVrmlConverterIsoAspect_get_mut(HandleVrmlConverterIsoAspect* handle) {
+extern "C" OcctResult<VrmlConverter_IsoAspect*> Handle_VrmlConverter_IsoAspect_get_mut(Handle_VrmlConverter_IsoAspect* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleVrmlConverterLineAspect*> HandleVrmlConverterIsoAspect_to_HandleVrmlConverterLineAspect(const HandleVrmlConverterIsoAspect* self_) {
-    try { return {new HandleVrmlConverterLineAspect(*self_), nullptr}; }
+extern "C" OcctResult<Handle_VrmlConverter_LineAspect*> Handle_VrmlConverter_IsoAspect_to_Handle_VrmlConverter_LineAspect(const Handle_VrmlConverter_IsoAspect* self_) {
+    try { return {new Handle_VrmlConverter_LineAspect(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleVrmlConverterIsoAspect_to_HandleStandardTransient(const HandleVrmlConverterIsoAspect* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_VrmlConverter_IsoAspect_to_Handle_Standard_Transient(const Handle_VrmlConverter_IsoAspect* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" const char* VrmlConverter_IsoAspect_inherited_SetMaterial(VrmlConverter_IsoAspect* self, Handle(Vrml_Material) const& aMaterial) {
@@ -3428,27 +3426,27 @@ extern "C" OcctResult<Handle(Standard_Type) const*> VrmlConverter_LineAspect_get
 }
 extern "C" OcctResult<const Standard_Transient*> VrmlConverter_LineAspect_as_Standard_Transient(const VrmlConverter_LineAspect* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> VrmlConverter_LineAspect_as_Standard_Transient_mut(VrmlConverter_LineAspect* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleVrmlConverterLineAspect*> VrmlConverter_LineAspect_to_handle(VrmlConverter_LineAspect* obj) {
-    try { return {new HandleVrmlConverterLineAspect(obj), nullptr}; }
+extern "C" OcctResult<Handle_VrmlConverter_LineAspect*> VrmlConverter_LineAspect_to_handle(VrmlConverter_LineAspect* obj) {
+    try { return {new Handle_VrmlConverter_LineAspect(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const VrmlConverter_LineAspect*> HandleVrmlConverterLineAspect_get(const HandleVrmlConverterLineAspect* handle) {
+extern "C" OcctResult<const VrmlConverter_LineAspect*> Handle_VrmlConverter_LineAspect_get(const Handle_VrmlConverter_LineAspect* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<VrmlConverter_LineAspect*> HandleVrmlConverterLineAspect_get_mut(HandleVrmlConverterLineAspect* handle) {
+extern "C" OcctResult<VrmlConverter_LineAspect*> Handle_VrmlConverter_LineAspect_get_mut(Handle_VrmlConverter_LineAspect* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleVrmlConverterLineAspect_to_HandleStandardTransient(const HandleVrmlConverterLineAspect* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_VrmlConverter_LineAspect_to_Handle_Standard_Transient(const Handle_VrmlConverter_LineAspect* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleVrmlConverterIsoAspect*> HandleVrmlConverterLineAspect_downcast_to_HandleVrmlConverterIsoAspect(const HandleVrmlConverterLineAspect* self_) {
+extern "C" OcctResult<Handle_VrmlConverter_IsoAspect*> Handle_VrmlConverter_LineAspect_downcast_to_Handle_VrmlConverter_IsoAspect(const Handle_VrmlConverter_LineAspect* self_) {
     try {
     opencascade::handle<VrmlConverter_IsoAspect> result = opencascade::handle<VrmlConverter_IsoAspect>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleVrmlConverterIsoAspect(result), nullptr};
+    return {new Handle_VrmlConverter_IsoAspect(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
@@ -3524,20 +3522,20 @@ extern "C" OcctResult<Handle(Standard_Type) const*> VrmlConverter_PointAspect_ge
 }
 extern "C" OcctResult<const Standard_Transient*> VrmlConverter_PointAspect_as_Standard_Transient(const VrmlConverter_PointAspect* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> VrmlConverter_PointAspect_as_Standard_Transient_mut(VrmlConverter_PointAspect* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleVrmlConverterPointAspect*> VrmlConverter_PointAspect_to_handle(VrmlConverter_PointAspect* obj) {
-    try { return {new HandleVrmlConverterPointAspect(obj), nullptr}; }
+extern "C" OcctResult<Handle_VrmlConverter_PointAspect*> VrmlConverter_PointAspect_to_handle(VrmlConverter_PointAspect* obj) {
+    try { return {new Handle_VrmlConverter_PointAspect(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const VrmlConverter_PointAspect*> HandleVrmlConverterPointAspect_get(const HandleVrmlConverterPointAspect* handle) {
+extern "C" OcctResult<const VrmlConverter_PointAspect*> Handle_VrmlConverter_PointAspect_get(const Handle_VrmlConverter_PointAspect* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<VrmlConverter_PointAspect*> HandleVrmlConverterPointAspect_get_mut(HandleVrmlConverterPointAspect* handle) {
+extern "C" OcctResult<VrmlConverter_PointAspect*> Handle_VrmlConverter_PointAspect_get_mut(Handle_VrmlConverter_PointAspect* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleVrmlConverterPointAspect_to_HandleStandardTransient(const HandleVrmlConverterPointAspect* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_VrmlConverter_PointAspect_to_Handle_Standard_Transient(const Handle_VrmlConverter_PointAspect* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> VrmlConverter_PointAspect_inherited_IsInstance(const VrmlConverter_PointAspect* self, Handle(Standard_Type) const& theType) {
@@ -3574,7 +3572,7 @@ extern "C" void VrmlConverter_PointAspect_destructor(VrmlConverter_PointAspect* 
 // VrmlConverter_Projector wrappers
 // ========================
 
-extern "C" OcctResult<VrmlConverter_Projector*> VrmlConverter_Projector_ctor_array1ofshape_real7_typeofcamera_typeoflight(TopTools_Array1OfShape const* Shapes, double Focus, double DX, double DY, double DZ, double XUp, double YUp, double ZUp, int32_t Camera, int32_t Light) {
+extern "C" OcctResult<VrmlConverter_Projector*> VrmlConverter_Projector_ctor_arr1_shape_real7_typeofcamera_typeoflight(NCollection_Array1_TopoDS_Shape const* Shapes, double Focus, double DX, double DY, double DZ, double XUp, double YUp, double ZUp, int32_t Camera, int32_t Light) {
     try { return {new VrmlConverter_Projector(*Shapes, Focus, DX, DY, DZ, XUp, YUp, ZUp, static_cast<VrmlConverter_TypeOfCamera>(Camera), static_cast<VrmlConverter_TypeOfLight>(Light)), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -3616,20 +3614,20 @@ extern "C" OcctResult<Handle(Standard_Type) const*> VrmlConverter_Projector_get_
 }
 extern "C" OcctResult<const Standard_Transient*> VrmlConverter_Projector_as_Standard_Transient(const VrmlConverter_Projector* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> VrmlConverter_Projector_as_Standard_Transient_mut(VrmlConverter_Projector* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleVrmlConverterProjector*> VrmlConverter_Projector_to_handle(VrmlConverter_Projector* obj) {
-    try { return {new HandleVrmlConverterProjector(obj), nullptr}; }
+extern "C" OcctResult<Handle_VrmlConverter_Projector*> VrmlConverter_Projector_to_handle(VrmlConverter_Projector* obj) {
+    try { return {new Handle_VrmlConverter_Projector(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const VrmlConverter_Projector*> HandleVrmlConverterProjector_get(const HandleVrmlConverterProjector* handle) {
+extern "C" OcctResult<const VrmlConverter_Projector*> Handle_VrmlConverter_Projector_get(const Handle_VrmlConverter_Projector* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<VrmlConverter_Projector*> HandleVrmlConverterProjector_get_mut(HandleVrmlConverterProjector* handle) {
+extern "C" OcctResult<VrmlConverter_Projector*> Handle_VrmlConverter_Projector_get_mut(Handle_VrmlConverter_Projector* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleVrmlConverterProjector_to_HandleStandardTransient(const HandleVrmlConverterProjector* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_VrmlConverter_Projector_to_Handle_Standard_Transient(const Handle_VrmlConverter_Projector* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> VrmlConverter_Projector_inherited_IsInstance(const VrmlConverter_Projector* self, Handle(Standard_Type) const& theType) {
@@ -3674,7 +3672,7 @@ extern "C" const char* VrmlConverter_ShadedShape_add(Standard_OStream* anOStream
     try { VrmlConverter_ShadedShape::Add(*anOStream, *aShape, *aDrawer); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* VrmlConverter_ShadedShape_compute_normal(TopoDS_Face const* aFace, Poly_Connect* pc, TColgp_Array1OfDir* Nor) {
+extern "C" const char* VrmlConverter_ShadedShape_compute_normal(TopoDS_Face const* aFace, Poly_Connect* pc, NCollection_Array1_gp_Dir* Nor) {
     try { VrmlConverter_ShadedShape::ComputeNormal(*aFace, *pc, *Nor); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -3734,20 +3732,20 @@ extern "C" OcctResult<Handle(Standard_Type) const*> VrmlConverter_ShadingAspect_
 }
 extern "C" OcctResult<const Standard_Transient*> VrmlConverter_ShadingAspect_as_Standard_Transient(const VrmlConverter_ShadingAspect* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> VrmlConverter_ShadingAspect_as_Standard_Transient_mut(VrmlConverter_ShadingAspect* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleVrmlConverterShadingAspect*> VrmlConverter_ShadingAspect_to_handle(VrmlConverter_ShadingAspect* obj) {
-    try { return {new HandleVrmlConverterShadingAspect(obj), nullptr}; }
+extern "C" OcctResult<Handle_VrmlConverter_ShadingAspect*> VrmlConverter_ShadingAspect_to_handle(VrmlConverter_ShadingAspect* obj) {
+    try { return {new Handle_VrmlConverter_ShadingAspect(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const VrmlConverter_ShadingAspect*> HandleVrmlConverterShadingAspect_get(const HandleVrmlConverterShadingAspect* handle) {
+extern "C" OcctResult<const VrmlConverter_ShadingAspect*> Handle_VrmlConverter_ShadingAspect_get(const Handle_VrmlConverter_ShadingAspect* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<VrmlConverter_ShadingAspect*> HandleVrmlConverterShadingAspect_get_mut(HandleVrmlConverterShadingAspect* handle) {
+extern "C" OcctResult<VrmlConverter_ShadingAspect*> Handle_VrmlConverter_ShadingAspect_get_mut(Handle_VrmlConverter_ShadingAspect* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleVrmlConverterShadingAspect_to_HandleStandardTransient(const HandleVrmlConverterShadingAspect* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_VrmlConverter_ShadingAspect_to_Handle_Standard_Transient(const Handle_VrmlConverter_ShadingAspect* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> VrmlConverter_ShadingAspect_inherited_IsInstance(const VrmlConverter_ShadingAspect* self, Handle(Standard_Type) const& theType) {
@@ -3928,24 +3926,24 @@ extern "C" OcctResult<const VrmlData_Node*> VrmlData_Appearance_as_VrmlData_Node
 extern "C" OcctResult<VrmlData_Node*> VrmlData_Appearance_as_VrmlData_Node_mut(VrmlData_Appearance* self_) { return {static_cast<VrmlData_Node*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> VrmlData_Appearance_as_Standard_Transient(const VrmlData_Appearance* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> VrmlData_Appearance_as_Standard_Transient_mut(VrmlData_Appearance* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleVrmlDataAppearance*> VrmlData_Appearance_to_handle(VrmlData_Appearance* obj) {
-    try { return {new HandleVrmlDataAppearance(obj), nullptr}; }
+extern "C" OcctResult<Handle_VrmlData_Appearance*> VrmlData_Appearance_to_handle(VrmlData_Appearance* obj) {
+    try { return {new Handle_VrmlData_Appearance(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const VrmlData_Appearance*> HandleVrmlDataAppearance_get(const HandleVrmlDataAppearance* handle) {
+extern "C" OcctResult<const VrmlData_Appearance*> Handle_VrmlData_Appearance_get(const Handle_VrmlData_Appearance* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<VrmlData_Appearance*> HandleVrmlDataAppearance_get_mut(HandleVrmlDataAppearance* handle) {
+extern "C" OcctResult<VrmlData_Appearance*> Handle_VrmlData_Appearance_get_mut(Handle_VrmlData_Appearance* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleVrmlDataNode*> HandleVrmlDataAppearance_to_HandleVrmlDataNode(const HandleVrmlDataAppearance* self_) {
-    try { return {new HandleVrmlDataNode(*self_), nullptr}; }
+extern "C" OcctResult<Handle_VrmlData_Node*> Handle_VrmlData_Appearance_to_Handle_VrmlData_Node(const Handle_VrmlData_Appearance* self_) {
+    try { return {new Handle_VrmlData_Node(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleVrmlDataAppearance_to_HandleStandardTransient(const HandleVrmlDataAppearance* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_VrmlData_Appearance_to_Handle_Standard_Transient(const Handle_VrmlData_Appearance* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<VrmlData_Scene const*> VrmlData_Appearance_inherited_Scene(const VrmlData_Appearance* self) {
@@ -4038,43 +4036,43 @@ extern "C" OcctResult<const VrmlData_Node*> VrmlData_ArrayVec3d_as_VrmlData_Node
 extern "C" OcctResult<VrmlData_Node*> VrmlData_ArrayVec3d_as_VrmlData_Node_mut(VrmlData_ArrayVec3d* self_) { return {static_cast<VrmlData_Node*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> VrmlData_ArrayVec3d_as_Standard_Transient(const VrmlData_ArrayVec3d* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> VrmlData_ArrayVec3d_as_Standard_Transient_mut(VrmlData_ArrayVec3d* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<const VrmlData_ArrayVec3d*> HandleVrmlDataArrayVec3d_get(const HandleVrmlDataArrayVec3d* handle) {
+extern "C" OcctResult<const VrmlData_ArrayVec3d*> Handle_VrmlData_ArrayVec3d_get(const Handle_VrmlData_ArrayVec3d* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<VrmlData_ArrayVec3d*> HandleVrmlDataArrayVec3d_get_mut(HandleVrmlDataArrayVec3d* handle) {
+extern "C" OcctResult<VrmlData_ArrayVec3d*> Handle_VrmlData_ArrayVec3d_get_mut(Handle_VrmlData_ArrayVec3d* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleVrmlDataNode*> HandleVrmlDataArrayVec3d_to_HandleVrmlDataNode(const HandleVrmlDataArrayVec3d* self_) {
-    try { return {new HandleVrmlDataNode(*self_), nullptr}; }
+extern "C" OcctResult<Handle_VrmlData_Node*> Handle_VrmlData_ArrayVec3d_to_Handle_VrmlData_Node(const Handle_VrmlData_ArrayVec3d* self_) {
+    try { return {new Handle_VrmlData_Node(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleVrmlDataArrayVec3d_to_HandleStandardTransient(const HandleVrmlDataArrayVec3d* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_VrmlData_ArrayVec3d_to_Handle_Standard_Transient(const Handle_VrmlData_ArrayVec3d* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleVrmlDataColor*> HandleVrmlDataArrayVec3d_downcast_to_HandleVrmlDataColor(const HandleVrmlDataArrayVec3d* self_) {
+extern "C" OcctResult<Handle_VrmlData_Color*> Handle_VrmlData_ArrayVec3d_downcast_to_Handle_VrmlData_Color(const Handle_VrmlData_ArrayVec3d* self_) {
     try {
     opencascade::handle<VrmlData_Color> result = opencascade::handle<VrmlData_Color>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleVrmlDataColor(result), nullptr};
+    return {new Handle_VrmlData_Color(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleVrmlDataCoordinate*> HandleVrmlDataArrayVec3d_downcast_to_HandleVrmlDataCoordinate(const HandleVrmlDataArrayVec3d* self_) {
+extern "C" OcctResult<Handle_VrmlData_Coordinate*> Handle_VrmlData_ArrayVec3d_downcast_to_Handle_VrmlData_Coordinate(const Handle_VrmlData_ArrayVec3d* self_) {
     try {
     opencascade::handle<VrmlData_Coordinate> result = opencascade::handle<VrmlData_Coordinate>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleVrmlDataCoordinate(result), nullptr};
+    return {new Handle_VrmlData_Coordinate(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleVrmlDataNormal*> HandleVrmlDataArrayVec3d_downcast_to_HandleVrmlDataNormal(const HandleVrmlDataArrayVec3d* self_) {
+extern "C" OcctResult<Handle_VrmlData_Normal*> Handle_VrmlData_ArrayVec3d_downcast_to_Handle_VrmlData_Normal(const Handle_VrmlData_ArrayVec3d* self_) {
     try {
     opencascade::handle<VrmlData_Normal> result = opencascade::handle<VrmlData_Normal>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleVrmlDataNormal(result), nullptr};
+    return {new Handle_VrmlData_Normal(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
@@ -4182,28 +4180,28 @@ extern "C" OcctResult<const VrmlData_Node*> VrmlData_Box_as_VrmlData_Node(const 
 extern "C" OcctResult<VrmlData_Node*> VrmlData_Box_as_VrmlData_Node_mut(VrmlData_Box* self_) { return {static_cast<VrmlData_Node*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> VrmlData_Box_as_Standard_Transient(const VrmlData_Box* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> VrmlData_Box_as_Standard_Transient_mut(VrmlData_Box* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleVrmlDataBox*> VrmlData_Box_to_handle(VrmlData_Box* obj) {
-    try { return {new HandleVrmlDataBox(obj), nullptr}; }
+extern "C" OcctResult<Handle_VrmlData_Box*> VrmlData_Box_to_handle(VrmlData_Box* obj) {
+    try { return {new Handle_VrmlData_Box(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const VrmlData_Box*> HandleVrmlDataBox_get(const HandleVrmlDataBox* handle) {
+extern "C" OcctResult<const VrmlData_Box*> Handle_VrmlData_Box_get(const Handle_VrmlData_Box* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<VrmlData_Box*> HandleVrmlDataBox_get_mut(HandleVrmlDataBox* handle) {
+extern "C" OcctResult<VrmlData_Box*> Handle_VrmlData_Box_get_mut(Handle_VrmlData_Box* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleVrmlDataGeometry*> HandleVrmlDataBox_to_HandleVrmlDataGeometry(const HandleVrmlDataBox* self_) {
-    try { return {new HandleVrmlDataGeometry(*self_), nullptr}; }
+extern "C" OcctResult<Handle_VrmlData_Geometry*> Handle_VrmlData_Box_to_Handle_VrmlData_Geometry(const Handle_VrmlData_Box* self_) {
+    try { return {new Handle_VrmlData_Geometry(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleVrmlDataNode*> HandleVrmlDataBox_to_HandleVrmlDataNode(const HandleVrmlDataBox* self_) {
-    try { return {new HandleVrmlDataNode(*self_), nullptr}; }
+extern "C" OcctResult<Handle_VrmlData_Node*> Handle_VrmlData_Box_to_Handle_VrmlData_Node(const Handle_VrmlData_Box* self_) {
+    try { return {new Handle_VrmlData_Node(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleVrmlDataBox_to_HandleStandardTransient(const HandleVrmlDataBox* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_VrmlData_Box_to_Handle_Standard_Transient(const Handle_VrmlData_Box* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<VrmlData_Scene const*> VrmlData_Box_inherited_Scene(const VrmlData_Box* self) {
@@ -4302,28 +4300,28 @@ extern "C" OcctResult<const VrmlData_Node*> VrmlData_Color_as_VrmlData_Node(cons
 extern "C" OcctResult<VrmlData_Node*> VrmlData_Color_as_VrmlData_Node_mut(VrmlData_Color* self_) { return {static_cast<VrmlData_Node*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> VrmlData_Color_as_Standard_Transient(const VrmlData_Color* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> VrmlData_Color_as_Standard_Transient_mut(VrmlData_Color* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleVrmlDataColor*> VrmlData_Color_to_handle(VrmlData_Color* obj) {
-    try { return {new HandleVrmlDataColor(obj), nullptr}; }
+extern "C" OcctResult<Handle_VrmlData_Color*> VrmlData_Color_to_handle(VrmlData_Color* obj) {
+    try { return {new Handle_VrmlData_Color(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const VrmlData_Color*> HandleVrmlDataColor_get(const HandleVrmlDataColor* handle) {
+extern "C" OcctResult<const VrmlData_Color*> Handle_VrmlData_Color_get(const Handle_VrmlData_Color* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<VrmlData_Color*> HandleVrmlDataColor_get_mut(HandleVrmlDataColor* handle) {
+extern "C" OcctResult<VrmlData_Color*> Handle_VrmlData_Color_get_mut(Handle_VrmlData_Color* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleVrmlDataArrayVec3d*> HandleVrmlDataColor_to_HandleVrmlDataArrayVec3d(const HandleVrmlDataColor* self_) {
-    try { return {new HandleVrmlDataArrayVec3d(*self_), nullptr}; }
+extern "C" OcctResult<Handle_VrmlData_ArrayVec3d*> Handle_VrmlData_Color_to_Handle_VrmlData_ArrayVec3d(const Handle_VrmlData_Color* self_) {
+    try { return {new Handle_VrmlData_ArrayVec3d(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleVrmlDataNode*> HandleVrmlDataColor_to_HandleVrmlDataNode(const HandleVrmlDataColor* self_) {
-    try { return {new HandleVrmlDataNode(*self_), nullptr}; }
+extern "C" OcctResult<Handle_VrmlData_Node*> Handle_VrmlData_Color_to_Handle_VrmlData_Node(const Handle_VrmlData_Color* self_) {
+    try { return {new Handle_VrmlData_Node(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleVrmlDataColor_to_HandleStandardTransient(const HandleVrmlDataColor* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_VrmlData_Color_to_Handle_Standard_Transient(const Handle_VrmlData_Color* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<size_t> VrmlData_Color_inherited_Length(const VrmlData_Color* self) {
@@ -4462,28 +4460,28 @@ extern "C" OcctResult<const VrmlData_Node*> VrmlData_Cone_as_VrmlData_Node(const
 extern "C" OcctResult<VrmlData_Node*> VrmlData_Cone_as_VrmlData_Node_mut(VrmlData_Cone* self_) { return {static_cast<VrmlData_Node*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> VrmlData_Cone_as_Standard_Transient(const VrmlData_Cone* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> VrmlData_Cone_as_Standard_Transient_mut(VrmlData_Cone* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleVrmlDataCone*> VrmlData_Cone_to_handle(VrmlData_Cone* obj) {
-    try { return {new HandleVrmlDataCone(obj), nullptr}; }
+extern "C" OcctResult<Handle_VrmlData_Cone*> VrmlData_Cone_to_handle(VrmlData_Cone* obj) {
+    try { return {new Handle_VrmlData_Cone(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const VrmlData_Cone*> HandleVrmlDataCone_get(const HandleVrmlDataCone* handle) {
+extern "C" OcctResult<const VrmlData_Cone*> Handle_VrmlData_Cone_get(const Handle_VrmlData_Cone* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<VrmlData_Cone*> HandleVrmlDataCone_get_mut(HandleVrmlDataCone* handle) {
+extern "C" OcctResult<VrmlData_Cone*> Handle_VrmlData_Cone_get_mut(Handle_VrmlData_Cone* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleVrmlDataGeometry*> HandleVrmlDataCone_to_HandleVrmlDataGeometry(const HandleVrmlDataCone* self_) {
-    try { return {new HandleVrmlDataGeometry(*self_), nullptr}; }
+extern "C" OcctResult<Handle_VrmlData_Geometry*> Handle_VrmlData_Cone_to_Handle_VrmlData_Geometry(const Handle_VrmlData_Cone* self_) {
+    try { return {new Handle_VrmlData_Geometry(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleVrmlDataNode*> HandleVrmlDataCone_to_HandleVrmlDataNode(const HandleVrmlDataCone* self_) {
-    try { return {new HandleVrmlDataNode(*self_), nullptr}; }
+extern "C" OcctResult<Handle_VrmlData_Node*> Handle_VrmlData_Cone_to_Handle_VrmlData_Node(const Handle_VrmlData_Cone* self_) {
+    try { return {new Handle_VrmlData_Node(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleVrmlDataCone_to_HandleStandardTransient(const HandleVrmlDataCone* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_VrmlData_Cone_to_Handle_Standard_Transient(const Handle_VrmlData_Cone* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<VrmlData_Scene const*> VrmlData_Cone_inherited_Scene(const VrmlData_Cone* self) {
@@ -4578,28 +4576,28 @@ extern "C" OcctResult<const VrmlData_Node*> VrmlData_Coordinate_as_VrmlData_Node
 extern "C" OcctResult<VrmlData_Node*> VrmlData_Coordinate_as_VrmlData_Node_mut(VrmlData_Coordinate* self_) { return {static_cast<VrmlData_Node*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> VrmlData_Coordinate_as_Standard_Transient(const VrmlData_Coordinate* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> VrmlData_Coordinate_as_Standard_Transient_mut(VrmlData_Coordinate* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleVrmlDataCoordinate*> VrmlData_Coordinate_to_handle(VrmlData_Coordinate* obj) {
-    try { return {new HandleVrmlDataCoordinate(obj), nullptr}; }
+extern "C" OcctResult<Handle_VrmlData_Coordinate*> VrmlData_Coordinate_to_handle(VrmlData_Coordinate* obj) {
+    try { return {new Handle_VrmlData_Coordinate(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const VrmlData_Coordinate*> HandleVrmlDataCoordinate_get(const HandleVrmlDataCoordinate* handle) {
+extern "C" OcctResult<const VrmlData_Coordinate*> Handle_VrmlData_Coordinate_get(const Handle_VrmlData_Coordinate* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<VrmlData_Coordinate*> HandleVrmlDataCoordinate_get_mut(HandleVrmlDataCoordinate* handle) {
+extern "C" OcctResult<VrmlData_Coordinate*> Handle_VrmlData_Coordinate_get_mut(Handle_VrmlData_Coordinate* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleVrmlDataArrayVec3d*> HandleVrmlDataCoordinate_to_HandleVrmlDataArrayVec3d(const HandleVrmlDataCoordinate* self_) {
-    try { return {new HandleVrmlDataArrayVec3d(*self_), nullptr}; }
+extern "C" OcctResult<Handle_VrmlData_ArrayVec3d*> Handle_VrmlData_Coordinate_to_Handle_VrmlData_ArrayVec3d(const Handle_VrmlData_Coordinate* self_) {
+    try { return {new Handle_VrmlData_ArrayVec3d(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleVrmlDataNode*> HandleVrmlDataCoordinate_to_HandleVrmlDataNode(const HandleVrmlDataCoordinate* self_) {
-    try { return {new HandleVrmlDataNode(*self_), nullptr}; }
+extern "C" OcctResult<Handle_VrmlData_Node*> Handle_VrmlData_Coordinate_to_Handle_VrmlData_Node(const Handle_VrmlData_Coordinate* self_) {
+    try { return {new Handle_VrmlData_Node(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleVrmlDataCoordinate_to_HandleStandardTransient(const HandleVrmlDataCoordinate* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_VrmlData_Coordinate_to_Handle_Standard_Transient(const Handle_VrmlData_Coordinate* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<size_t> VrmlData_Coordinate_inherited_Length(const VrmlData_Coordinate* self) {
@@ -4742,28 +4740,28 @@ extern "C" OcctResult<const VrmlData_Node*> VrmlData_Cylinder_as_VrmlData_Node(c
 extern "C" OcctResult<VrmlData_Node*> VrmlData_Cylinder_as_VrmlData_Node_mut(VrmlData_Cylinder* self_) { return {static_cast<VrmlData_Node*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> VrmlData_Cylinder_as_Standard_Transient(const VrmlData_Cylinder* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> VrmlData_Cylinder_as_Standard_Transient_mut(VrmlData_Cylinder* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleVrmlDataCylinder*> VrmlData_Cylinder_to_handle(VrmlData_Cylinder* obj) {
-    try { return {new HandleVrmlDataCylinder(obj), nullptr}; }
+extern "C" OcctResult<Handle_VrmlData_Cylinder*> VrmlData_Cylinder_to_handle(VrmlData_Cylinder* obj) {
+    try { return {new Handle_VrmlData_Cylinder(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const VrmlData_Cylinder*> HandleVrmlDataCylinder_get(const HandleVrmlDataCylinder* handle) {
+extern "C" OcctResult<const VrmlData_Cylinder*> Handle_VrmlData_Cylinder_get(const Handle_VrmlData_Cylinder* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<VrmlData_Cylinder*> HandleVrmlDataCylinder_get_mut(HandleVrmlDataCylinder* handle) {
+extern "C" OcctResult<VrmlData_Cylinder*> Handle_VrmlData_Cylinder_get_mut(Handle_VrmlData_Cylinder* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleVrmlDataGeometry*> HandleVrmlDataCylinder_to_HandleVrmlDataGeometry(const HandleVrmlDataCylinder* self_) {
-    try { return {new HandleVrmlDataGeometry(*self_), nullptr}; }
+extern "C" OcctResult<Handle_VrmlData_Geometry*> Handle_VrmlData_Cylinder_to_Handle_VrmlData_Geometry(const Handle_VrmlData_Cylinder* self_) {
+    try { return {new Handle_VrmlData_Geometry(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleVrmlDataNode*> HandleVrmlDataCylinder_to_HandleVrmlDataNode(const HandleVrmlDataCylinder* self_) {
-    try { return {new HandleVrmlDataNode(*self_), nullptr}; }
+extern "C" OcctResult<Handle_VrmlData_Node*> Handle_VrmlData_Cylinder_to_Handle_VrmlData_Node(const Handle_VrmlData_Cylinder* self_) {
+    try { return {new Handle_VrmlData_Node(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleVrmlDataCylinder_to_HandleStandardTransient(const HandleVrmlDataCylinder* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_VrmlData_Cylinder_to_Handle_Standard_Transient(const Handle_VrmlData_Cylinder* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<VrmlData_Scene const*> VrmlData_Cylinder_inherited_Scene(const VrmlData_Cylinder* self) {
@@ -4866,31 +4864,31 @@ extern "C" OcctResult<const VrmlData_Node*> VrmlData_Faceted_as_VrmlData_Node(co
 extern "C" OcctResult<VrmlData_Node*> VrmlData_Faceted_as_VrmlData_Node_mut(VrmlData_Faceted* self_) { return {static_cast<VrmlData_Node*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> VrmlData_Faceted_as_Standard_Transient(const VrmlData_Faceted* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> VrmlData_Faceted_as_Standard_Transient_mut(VrmlData_Faceted* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<const VrmlData_Faceted*> HandleVrmlDataFaceted_get(const HandleVrmlDataFaceted* handle) {
+extern "C" OcctResult<const VrmlData_Faceted*> Handle_VrmlData_Faceted_get(const Handle_VrmlData_Faceted* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<VrmlData_Faceted*> HandleVrmlDataFaceted_get_mut(HandleVrmlDataFaceted* handle) {
+extern "C" OcctResult<VrmlData_Faceted*> Handle_VrmlData_Faceted_get_mut(Handle_VrmlData_Faceted* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleVrmlDataGeometry*> HandleVrmlDataFaceted_to_HandleVrmlDataGeometry(const HandleVrmlDataFaceted* self_) {
-    try { return {new HandleVrmlDataGeometry(*self_), nullptr}; }
+extern "C" OcctResult<Handle_VrmlData_Geometry*> Handle_VrmlData_Faceted_to_Handle_VrmlData_Geometry(const Handle_VrmlData_Faceted* self_) {
+    try { return {new Handle_VrmlData_Geometry(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleVrmlDataNode*> HandleVrmlDataFaceted_to_HandleVrmlDataNode(const HandleVrmlDataFaceted* self_) {
-    try { return {new HandleVrmlDataNode(*self_), nullptr}; }
+extern "C" OcctResult<Handle_VrmlData_Node*> Handle_VrmlData_Faceted_to_Handle_VrmlData_Node(const Handle_VrmlData_Faceted* self_) {
+    try { return {new Handle_VrmlData_Node(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleVrmlDataFaceted_to_HandleStandardTransient(const HandleVrmlDataFaceted* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_VrmlData_Faceted_to_Handle_Standard_Transient(const Handle_VrmlData_Faceted* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleVrmlDataIndexedFaceSet*> HandleVrmlDataFaceted_downcast_to_HandleVrmlDataIndexedFaceSet(const HandleVrmlDataFaceted* self_) {
+extern "C" OcctResult<Handle_VrmlData_IndexedFaceSet*> Handle_VrmlData_Faceted_downcast_to_Handle_VrmlData_IndexedFaceSet(const Handle_VrmlData_Faceted* self_) {
     try {
     opencascade::handle<VrmlData_IndexedFaceSet> result = opencascade::handle<VrmlData_IndexedFaceSet>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleVrmlDataIndexedFaceSet(result), nullptr};
+    return {new Handle_VrmlData_IndexedFaceSet(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
@@ -4976,75 +4974,75 @@ extern "C" OcctResult<const VrmlData_Node*> VrmlData_Geometry_as_VrmlData_Node(c
 extern "C" OcctResult<VrmlData_Node*> VrmlData_Geometry_as_VrmlData_Node_mut(VrmlData_Geometry* self_) { return {static_cast<VrmlData_Node*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> VrmlData_Geometry_as_Standard_Transient(const VrmlData_Geometry* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> VrmlData_Geometry_as_Standard_Transient_mut(VrmlData_Geometry* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<const VrmlData_Geometry*> HandleVrmlDataGeometry_get(const HandleVrmlDataGeometry* handle) {
+extern "C" OcctResult<const VrmlData_Geometry*> Handle_VrmlData_Geometry_get(const Handle_VrmlData_Geometry* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<VrmlData_Geometry*> HandleVrmlDataGeometry_get_mut(HandleVrmlDataGeometry* handle) {
+extern "C" OcctResult<VrmlData_Geometry*> Handle_VrmlData_Geometry_get_mut(Handle_VrmlData_Geometry* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleVrmlDataNode*> HandleVrmlDataGeometry_to_HandleVrmlDataNode(const HandleVrmlDataGeometry* self_) {
-    try { return {new HandleVrmlDataNode(*self_), nullptr}; }
+extern "C" OcctResult<Handle_VrmlData_Node*> Handle_VrmlData_Geometry_to_Handle_VrmlData_Node(const Handle_VrmlData_Geometry* self_) {
+    try { return {new Handle_VrmlData_Node(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleVrmlDataGeometry_to_HandleStandardTransient(const HandleVrmlDataGeometry* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_VrmlData_Geometry_to_Handle_Standard_Transient(const Handle_VrmlData_Geometry* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleVrmlDataBox*> HandleVrmlDataGeometry_downcast_to_HandleVrmlDataBox(const HandleVrmlDataGeometry* self_) {
+extern "C" OcctResult<Handle_VrmlData_Box*> Handle_VrmlData_Geometry_downcast_to_Handle_VrmlData_Box(const Handle_VrmlData_Geometry* self_) {
     try {
     opencascade::handle<VrmlData_Box> result = opencascade::handle<VrmlData_Box>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleVrmlDataBox(result), nullptr};
+    return {new Handle_VrmlData_Box(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleVrmlDataCone*> HandleVrmlDataGeometry_downcast_to_HandleVrmlDataCone(const HandleVrmlDataGeometry* self_) {
+extern "C" OcctResult<Handle_VrmlData_Cone*> Handle_VrmlData_Geometry_downcast_to_Handle_VrmlData_Cone(const Handle_VrmlData_Geometry* self_) {
     try {
     opencascade::handle<VrmlData_Cone> result = opencascade::handle<VrmlData_Cone>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleVrmlDataCone(result), nullptr};
+    return {new Handle_VrmlData_Cone(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleVrmlDataCylinder*> HandleVrmlDataGeometry_downcast_to_HandleVrmlDataCylinder(const HandleVrmlDataGeometry* self_) {
+extern "C" OcctResult<Handle_VrmlData_Cylinder*> Handle_VrmlData_Geometry_downcast_to_Handle_VrmlData_Cylinder(const Handle_VrmlData_Geometry* self_) {
     try {
     opencascade::handle<VrmlData_Cylinder> result = opencascade::handle<VrmlData_Cylinder>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleVrmlDataCylinder(result), nullptr};
+    return {new Handle_VrmlData_Cylinder(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleVrmlDataFaceted*> HandleVrmlDataGeometry_downcast_to_HandleVrmlDataFaceted(const HandleVrmlDataGeometry* self_) {
+extern "C" OcctResult<Handle_VrmlData_Faceted*> Handle_VrmlData_Geometry_downcast_to_Handle_VrmlData_Faceted(const Handle_VrmlData_Geometry* self_) {
     try {
     opencascade::handle<VrmlData_Faceted> result = opencascade::handle<VrmlData_Faceted>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleVrmlDataFaceted(result), nullptr};
+    return {new Handle_VrmlData_Faceted(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleVrmlDataIndexedFaceSet*> HandleVrmlDataGeometry_downcast_to_HandleVrmlDataIndexedFaceSet(const HandleVrmlDataGeometry* self_) {
+extern "C" OcctResult<Handle_VrmlData_IndexedFaceSet*> Handle_VrmlData_Geometry_downcast_to_Handle_VrmlData_IndexedFaceSet(const Handle_VrmlData_Geometry* self_) {
     try {
     opencascade::handle<VrmlData_IndexedFaceSet> result = opencascade::handle<VrmlData_IndexedFaceSet>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleVrmlDataIndexedFaceSet(result), nullptr};
+    return {new Handle_VrmlData_IndexedFaceSet(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleVrmlDataIndexedLineSet*> HandleVrmlDataGeometry_downcast_to_HandleVrmlDataIndexedLineSet(const HandleVrmlDataGeometry* self_) {
+extern "C" OcctResult<Handle_VrmlData_IndexedLineSet*> Handle_VrmlData_Geometry_downcast_to_Handle_VrmlData_IndexedLineSet(const Handle_VrmlData_Geometry* self_) {
     try {
     opencascade::handle<VrmlData_IndexedLineSet> result = opencascade::handle<VrmlData_IndexedLineSet>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleVrmlDataIndexedLineSet(result), nullptr};
+    return {new Handle_VrmlData_IndexedLineSet(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleVrmlDataSphere*> HandleVrmlDataGeometry_downcast_to_HandleVrmlDataSphere(const HandleVrmlDataGeometry* self_) {
+extern "C" OcctResult<Handle_VrmlData_Sphere*> Handle_VrmlData_Geometry_downcast_to_Handle_VrmlData_Sphere(const Handle_VrmlData_Geometry* self_) {
     try {
     opencascade::handle<VrmlData_Sphere> result = opencascade::handle<VrmlData_Sphere>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleVrmlDataSphere(result), nullptr};
+    return {new Handle_VrmlData_Sphere(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
@@ -5162,10 +5160,6 @@ extern "C" OcctResult<int32_t> VrmlData_Group_write(const VrmlData_Group* self_,
     try { return {static_cast<int32_t>(self_->Write(thePrefix)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* VrmlData_Group_shape(VrmlData_Group* self_, TopoDS_Shape* theShape, VrmlData_DataMapOfShapeAppearance* pMapApp) {
-    try { self_->Shape(*theShape, pMapApp); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
 extern "C" OcctResult<Handle(Standard_Type) const*> VrmlData_Group_dynamic_type(const VrmlData_Group* self_) {
     try { return {&(self_->DynamicType()), nullptr}; }
     OCCT_CATCH_RETURN
@@ -5182,24 +5176,24 @@ extern "C" OcctResult<const VrmlData_Node*> VrmlData_Group_as_VrmlData_Node(cons
 extern "C" OcctResult<VrmlData_Node*> VrmlData_Group_as_VrmlData_Node_mut(VrmlData_Group* self_) { return {static_cast<VrmlData_Node*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> VrmlData_Group_as_Standard_Transient(const VrmlData_Group* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> VrmlData_Group_as_Standard_Transient_mut(VrmlData_Group* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleVrmlDataGroup*> VrmlData_Group_to_handle(VrmlData_Group* obj) {
-    try { return {new HandleVrmlDataGroup(obj), nullptr}; }
+extern "C" OcctResult<Handle_VrmlData_Group*> VrmlData_Group_to_handle(VrmlData_Group* obj) {
+    try { return {new Handle_VrmlData_Group(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const VrmlData_Group*> HandleVrmlDataGroup_get(const HandleVrmlDataGroup* handle) {
+extern "C" OcctResult<const VrmlData_Group*> Handle_VrmlData_Group_get(const Handle_VrmlData_Group* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<VrmlData_Group*> HandleVrmlDataGroup_get_mut(HandleVrmlDataGroup* handle) {
+extern "C" OcctResult<VrmlData_Group*> Handle_VrmlData_Group_get_mut(Handle_VrmlData_Group* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleVrmlDataNode*> HandleVrmlDataGroup_to_HandleVrmlDataNode(const HandleVrmlDataGroup* self_) {
-    try { return {new HandleVrmlDataNode(*self_), nullptr}; }
+extern "C" OcctResult<Handle_VrmlData_Node*> Handle_VrmlData_Group_to_Handle_VrmlData_Node(const Handle_VrmlData_Group* self_) {
+    try { return {new Handle_VrmlData_Node(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleVrmlDataGroup_to_HandleStandardTransient(const HandleVrmlDataGroup* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_VrmlData_Group_to_Handle_Standard_Transient(const Handle_VrmlData_Group* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<VrmlData_Scene const*> VrmlData_Group_inherited_Scene(const VrmlData_Group* self) {
@@ -5264,7 +5258,7 @@ extern "C" OcctResult<Handle(VrmlData_Node)*> VrmlData_ImageTexture_clone(const 
     try { return {new Handle(VrmlData_Node)(self_->Clone(*theOther)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TColStd_ListOfAsciiString const*> VrmlData_ImageTexture_url(const VrmlData_ImageTexture* self_) {
+extern "C" OcctResult<NCollection_List_TCollection_AsciiString const*> VrmlData_ImageTexture_url(const VrmlData_ImageTexture* self_) {
     try { return {&(self_->URL()), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -5294,28 +5288,28 @@ extern "C" OcctResult<const VrmlData_Node*> VrmlData_ImageTexture_as_VrmlData_No
 extern "C" OcctResult<VrmlData_Node*> VrmlData_ImageTexture_as_VrmlData_Node_mut(VrmlData_ImageTexture* self_) { return {static_cast<VrmlData_Node*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> VrmlData_ImageTexture_as_Standard_Transient(const VrmlData_ImageTexture* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> VrmlData_ImageTexture_as_Standard_Transient_mut(VrmlData_ImageTexture* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleVrmlDataImageTexture*> VrmlData_ImageTexture_to_handle(VrmlData_ImageTexture* obj) {
-    try { return {new HandleVrmlDataImageTexture(obj), nullptr}; }
+extern "C" OcctResult<Handle_VrmlData_ImageTexture*> VrmlData_ImageTexture_to_handle(VrmlData_ImageTexture* obj) {
+    try { return {new Handle_VrmlData_ImageTexture(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const VrmlData_ImageTexture*> HandleVrmlDataImageTexture_get(const HandleVrmlDataImageTexture* handle) {
+extern "C" OcctResult<const VrmlData_ImageTexture*> Handle_VrmlData_ImageTexture_get(const Handle_VrmlData_ImageTexture* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<VrmlData_ImageTexture*> HandleVrmlDataImageTexture_get_mut(HandleVrmlDataImageTexture* handle) {
+extern "C" OcctResult<VrmlData_ImageTexture*> Handle_VrmlData_ImageTexture_get_mut(Handle_VrmlData_ImageTexture* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleVrmlDataTexture*> HandleVrmlDataImageTexture_to_HandleVrmlDataTexture(const HandleVrmlDataImageTexture* self_) {
-    try { return {new HandleVrmlDataTexture(*self_), nullptr}; }
+extern "C" OcctResult<Handle_VrmlData_Texture*> Handle_VrmlData_ImageTexture_to_Handle_VrmlData_Texture(const Handle_VrmlData_ImageTexture* self_) {
+    try { return {new Handle_VrmlData_Texture(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleVrmlDataNode*> HandleVrmlDataImageTexture_to_HandleVrmlDataNode(const HandleVrmlDataImageTexture* self_) {
-    try { return {new HandleVrmlDataNode(*self_), nullptr}; }
+extern "C" OcctResult<Handle_VrmlData_Node*> Handle_VrmlData_ImageTexture_to_Handle_VrmlData_Node(const Handle_VrmlData_ImageTexture* self_) {
+    try { return {new Handle_VrmlData_Node(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleVrmlDataImageTexture_to_HandleStandardTransient(const HandleVrmlDataImageTexture* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_VrmlData_ImageTexture_to_Handle_Standard_Transient(const Handle_VrmlData_ImageTexture* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> VrmlData_ImageTexture_inherited_RepeatS(const VrmlData_ImageTexture* self) {
@@ -5530,32 +5524,32 @@ extern "C" OcctResult<const VrmlData_Node*> VrmlData_IndexedFaceSet_as_VrmlData_
 extern "C" OcctResult<VrmlData_Node*> VrmlData_IndexedFaceSet_as_VrmlData_Node_mut(VrmlData_IndexedFaceSet* self_) { return {static_cast<VrmlData_Node*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> VrmlData_IndexedFaceSet_as_Standard_Transient(const VrmlData_IndexedFaceSet* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> VrmlData_IndexedFaceSet_as_Standard_Transient_mut(VrmlData_IndexedFaceSet* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleVrmlDataIndexedFaceSet*> VrmlData_IndexedFaceSet_to_handle(VrmlData_IndexedFaceSet* obj) {
-    try { return {new HandleVrmlDataIndexedFaceSet(obj), nullptr}; }
+extern "C" OcctResult<Handle_VrmlData_IndexedFaceSet*> VrmlData_IndexedFaceSet_to_handle(VrmlData_IndexedFaceSet* obj) {
+    try { return {new Handle_VrmlData_IndexedFaceSet(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const VrmlData_IndexedFaceSet*> HandleVrmlDataIndexedFaceSet_get(const HandleVrmlDataIndexedFaceSet* handle) {
+extern "C" OcctResult<const VrmlData_IndexedFaceSet*> Handle_VrmlData_IndexedFaceSet_get(const Handle_VrmlData_IndexedFaceSet* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<VrmlData_IndexedFaceSet*> HandleVrmlDataIndexedFaceSet_get_mut(HandleVrmlDataIndexedFaceSet* handle) {
+extern "C" OcctResult<VrmlData_IndexedFaceSet*> Handle_VrmlData_IndexedFaceSet_get_mut(Handle_VrmlData_IndexedFaceSet* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleVrmlDataFaceted*> HandleVrmlDataIndexedFaceSet_to_HandleVrmlDataFaceted(const HandleVrmlDataIndexedFaceSet* self_) {
-    try { return {new HandleVrmlDataFaceted(*self_), nullptr}; }
+extern "C" OcctResult<Handle_VrmlData_Faceted*> Handle_VrmlData_IndexedFaceSet_to_Handle_VrmlData_Faceted(const Handle_VrmlData_IndexedFaceSet* self_) {
+    try { return {new Handle_VrmlData_Faceted(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleVrmlDataGeometry*> HandleVrmlDataIndexedFaceSet_to_HandleVrmlDataGeometry(const HandleVrmlDataIndexedFaceSet* self_) {
-    try { return {new HandleVrmlDataGeometry(*self_), nullptr}; }
+extern "C" OcctResult<Handle_VrmlData_Geometry*> Handle_VrmlData_IndexedFaceSet_to_Handle_VrmlData_Geometry(const Handle_VrmlData_IndexedFaceSet* self_) {
+    try { return {new Handle_VrmlData_Geometry(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleVrmlDataNode*> HandleVrmlDataIndexedFaceSet_to_HandleVrmlDataNode(const HandleVrmlDataIndexedFaceSet* self_) {
-    try { return {new HandleVrmlDataNode(*self_), nullptr}; }
+extern "C" OcctResult<Handle_VrmlData_Node*> Handle_VrmlData_IndexedFaceSet_to_Handle_VrmlData_Node(const Handle_VrmlData_IndexedFaceSet* self_) {
+    try { return {new Handle_VrmlData_Node(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleVrmlDataIndexedFaceSet_to_HandleStandardTransient(const HandleVrmlDataIndexedFaceSet* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_VrmlData_IndexedFaceSet_to_Handle_Standard_Transient(const Handle_VrmlData_IndexedFaceSet* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> VrmlData_IndexedFaceSet_inherited_IsCCW(const VrmlData_IndexedFaceSet* self) {
@@ -5726,28 +5720,28 @@ extern "C" OcctResult<const VrmlData_Node*> VrmlData_IndexedLineSet_as_VrmlData_
 extern "C" OcctResult<VrmlData_Node*> VrmlData_IndexedLineSet_as_VrmlData_Node_mut(VrmlData_IndexedLineSet* self_) { return {static_cast<VrmlData_Node*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> VrmlData_IndexedLineSet_as_Standard_Transient(const VrmlData_IndexedLineSet* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> VrmlData_IndexedLineSet_as_Standard_Transient_mut(VrmlData_IndexedLineSet* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleVrmlDataIndexedLineSet*> VrmlData_IndexedLineSet_to_handle(VrmlData_IndexedLineSet* obj) {
-    try { return {new HandleVrmlDataIndexedLineSet(obj), nullptr}; }
+extern "C" OcctResult<Handle_VrmlData_IndexedLineSet*> VrmlData_IndexedLineSet_to_handle(VrmlData_IndexedLineSet* obj) {
+    try { return {new Handle_VrmlData_IndexedLineSet(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const VrmlData_IndexedLineSet*> HandleVrmlDataIndexedLineSet_get(const HandleVrmlDataIndexedLineSet* handle) {
+extern "C" OcctResult<const VrmlData_IndexedLineSet*> Handle_VrmlData_IndexedLineSet_get(const Handle_VrmlData_IndexedLineSet* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<VrmlData_IndexedLineSet*> HandleVrmlDataIndexedLineSet_get_mut(HandleVrmlDataIndexedLineSet* handle) {
+extern "C" OcctResult<VrmlData_IndexedLineSet*> Handle_VrmlData_IndexedLineSet_get_mut(Handle_VrmlData_IndexedLineSet* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleVrmlDataGeometry*> HandleVrmlDataIndexedLineSet_to_HandleVrmlDataGeometry(const HandleVrmlDataIndexedLineSet* self_) {
-    try { return {new HandleVrmlDataGeometry(*self_), nullptr}; }
+extern "C" OcctResult<Handle_VrmlData_Geometry*> Handle_VrmlData_IndexedLineSet_to_Handle_VrmlData_Geometry(const Handle_VrmlData_IndexedLineSet* self_) {
+    try { return {new Handle_VrmlData_Geometry(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleVrmlDataNode*> HandleVrmlDataIndexedLineSet_to_HandleVrmlDataNode(const HandleVrmlDataIndexedLineSet* self_) {
-    try { return {new HandleVrmlDataNode(*self_), nullptr}; }
+extern "C" OcctResult<Handle_VrmlData_Node*> Handle_VrmlData_IndexedLineSet_to_Handle_VrmlData_Node(const Handle_VrmlData_IndexedLineSet* self_) {
+    try { return {new Handle_VrmlData_Node(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleVrmlDataIndexedLineSet_to_HandleStandardTransient(const HandleVrmlDataIndexedLineSet* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_VrmlData_IndexedLineSet_to_Handle_Standard_Transient(const Handle_VrmlData_IndexedLineSet* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<VrmlData_Scene const*> VrmlData_IndexedLineSet_inherited_Scene(const VrmlData_IndexedLineSet* self) {
@@ -5892,24 +5886,24 @@ extern "C" OcctResult<const VrmlData_Node*> VrmlData_Material_as_VrmlData_Node(c
 extern "C" OcctResult<VrmlData_Node*> VrmlData_Material_as_VrmlData_Node_mut(VrmlData_Material* self_) { return {static_cast<VrmlData_Node*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> VrmlData_Material_as_Standard_Transient(const VrmlData_Material* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> VrmlData_Material_as_Standard_Transient_mut(VrmlData_Material* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleVrmlDataMaterial*> VrmlData_Material_to_handle(VrmlData_Material* obj) {
-    try { return {new HandleVrmlDataMaterial(obj), nullptr}; }
+extern "C" OcctResult<Handle_VrmlData_Material*> VrmlData_Material_to_handle(VrmlData_Material* obj) {
+    try { return {new Handle_VrmlData_Material(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const VrmlData_Material*> HandleVrmlDataMaterial_get(const HandleVrmlDataMaterial* handle) {
+extern "C" OcctResult<const VrmlData_Material*> Handle_VrmlData_Material_get(const Handle_VrmlData_Material* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<VrmlData_Material*> HandleVrmlDataMaterial_get_mut(HandleVrmlDataMaterial* handle) {
+extern "C" OcctResult<VrmlData_Material*> Handle_VrmlData_Material_get_mut(Handle_VrmlData_Material* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleVrmlDataNode*> HandleVrmlDataMaterial_to_HandleVrmlDataNode(const HandleVrmlDataMaterial* self_) {
-    try { return {new HandleVrmlDataNode(*self_), nullptr}; }
+extern "C" OcctResult<Handle_VrmlData_Node*> Handle_VrmlData_Material_to_Handle_VrmlData_Node(const Handle_VrmlData_Material* self_) {
+    try { return {new Handle_VrmlData_Node(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleVrmlDataMaterial_to_HandleStandardTransient(const HandleVrmlDataMaterial* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_VrmlData_Material_to_Handle_Standard_Transient(const Handle_VrmlData_Material* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<VrmlData_Scene const*> VrmlData_Material_inherited_Scene(const VrmlData_Material* self) {
@@ -6002,7 +5996,7 @@ extern "C" OcctResult<int32_t> VrmlData_Node_read_string(VrmlData_InBuffer* theB
     try { return {static_cast<int32_t>(VrmlData_Node::ReadString(*theBuffer, *theRes)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<int32_t> VrmlData_Node_read_multi_string(VrmlData_InBuffer* theBuffer, TColStd_ListOfAsciiString* theRes) {
+extern "C" OcctResult<int32_t> VrmlData_Node_read_multi_string(VrmlData_InBuffer* theBuffer, NCollection_List_TCollection_AsciiString* theRes) {
     try { return {static_cast<int32_t>(VrmlData_Node::ReadMultiString(*theBuffer, *theRes)), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -6037,183 +6031,183 @@ extern "C" OcctResult<Handle(Standard_Type) const*> VrmlData_Node_get_type_descr
 }
 extern "C" OcctResult<const Standard_Transient*> VrmlData_Node_as_Standard_Transient(const VrmlData_Node* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> VrmlData_Node_as_Standard_Transient_mut(VrmlData_Node* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<const VrmlData_Node*> HandleVrmlDataNode_get(const HandleVrmlDataNode* handle) {
+extern "C" OcctResult<const VrmlData_Node*> Handle_VrmlData_Node_get(const Handle_VrmlData_Node* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<VrmlData_Node*> HandleVrmlDataNode_get_mut(HandleVrmlDataNode* handle) {
+extern "C" OcctResult<VrmlData_Node*> Handle_VrmlData_Node_get_mut(Handle_VrmlData_Node* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleVrmlDataNode_to_HandleStandardTransient(const HandleVrmlDataNode* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_VrmlData_Node_to_Handle_Standard_Transient(const Handle_VrmlData_Node* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleVrmlDataAppearance*> HandleVrmlDataNode_downcast_to_HandleVrmlDataAppearance(const HandleVrmlDataNode* self_) {
+extern "C" OcctResult<Handle_VrmlData_Appearance*> Handle_VrmlData_Node_downcast_to_Handle_VrmlData_Appearance(const Handle_VrmlData_Node* self_) {
     try {
     opencascade::handle<VrmlData_Appearance> result = opencascade::handle<VrmlData_Appearance>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleVrmlDataAppearance(result), nullptr};
+    return {new Handle_VrmlData_Appearance(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleVrmlDataArrayVec3d*> HandleVrmlDataNode_downcast_to_HandleVrmlDataArrayVec3d(const HandleVrmlDataNode* self_) {
+extern "C" OcctResult<Handle_VrmlData_ArrayVec3d*> Handle_VrmlData_Node_downcast_to_Handle_VrmlData_ArrayVec3d(const Handle_VrmlData_Node* self_) {
     try {
     opencascade::handle<VrmlData_ArrayVec3d> result = opencascade::handle<VrmlData_ArrayVec3d>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleVrmlDataArrayVec3d(result), nullptr};
+    return {new Handle_VrmlData_ArrayVec3d(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleVrmlDataBox*> HandleVrmlDataNode_downcast_to_HandleVrmlDataBox(const HandleVrmlDataNode* self_) {
+extern "C" OcctResult<Handle_VrmlData_Box*> Handle_VrmlData_Node_downcast_to_Handle_VrmlData_Box(const Handle_VrmlData_Node* self_) {
     try {
     opencascade::handle<VrmlData_Box> result = opencascade::handle<VrmlData_Box>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleVrmlDataBox(result), nullptr};
+    return {new Handle_VrmlData_Box(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleVrmlDataColor*> HandleVrmlDataNode_downcast_to_HandleVrmlDataColor(const HandleVrmlDataNode* self_) {
+extern "C" OcctResult<Handle_VrmlData_Color*> Handle_VrmlData_Node_downcast_to_Handle_VrmlData_Color(const Handle_VrmlData_Node* self_) {
     try {
     opencascade::handle<VrmlData_Color> result = opencascade::handle<VrmlData_Color>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleVrmlDataColor(result), nullptr};
+    return {new Handle_VrmlData_Color(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleVrmlDataCone*> HandleVrmlDataNode_downcast_to_HandleVrmlDataCone(const HandleVrmlDataNode* self_) {
+extern "C" OcctResult<Handle_VrmlData_Cone*> Handle_VrmlData_Node_downcast_to_Handle_VrmlData_Cone(const Handle_VrmlData_Node* self_) {
     try {
     opencascade::handle<VrmlData_Cone> result = opencascade::handle<VrmlData_Cone>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleVrmlDataCone(result), nullptr};
+    return {new Handle_VrmlData_Cone(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleVrmlDataCoordinate*> HandleVrmlDataNode_downcast_to_HandleVrmlDataCoordinate(const HandleVrmlDataNode* self_) {
+extern "C" OcctResult<Handle_VrmlData_Coordinate*> Handle_VrmlData_Node_downcast_to_Handle_VrmlData_Coordinate(const Handle_VrmlData_Node* self_) {
     try {
     opencascade::handle<VrmlData_Coordinate> result = opencascade::handle<VrmlData_Coordinate>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleVrmlDataCoordinate(result), nullptr};
+    return {new Handle_VrmlData_Coordinate(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleVrmlDataCylinder*> HandleVrmlDataNode_downcast_to_HandleVrmlDataCylinder(const HandleVrmlDataNode* self_) {
+extern "C" OcctResult<Handle_VrmlData_Cylinder*> Handle_VrmlData_Node_downcast_to_Handle_VrmlData_Cylinder(const Handle_VrmlData_Node* self_) {
     try {
     opencascade::handle<VrmlData_Cylinder> result = opencascade::handle<VrmlData_Cylinder>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleVrmlDataCylinder(result), nullptr};
+    return {new Handle_VrmlData_Cylinder(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleVrmlDataFaceted*> HandleVrmlDataNode_downcast_to_HandleVrmlDataFaceted(const HandleVrmlDataNode* self_) {
+extern "C" OcctResult<Handle_VrmlData_Faceted*> Handle_VrmlData_Node_downcast_to_Handle_VrmlData_Faceted(const Handle_VrmlData_Node* self_) {
     try {
     opencascade::handle<VrmlData_Faceted> result = opencascade::handle<VrmlData_Faceted>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleVrmlDataFaceted(result), nullptr};
+    return {new Handle_VrmlData_Faceted(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleVrmlDataGroup*> HandleVrmlDataNode_downcast_to_HandleVrmlDataGroup(const HandleVrmlDataNode* self_) {
+extern "C" OcctResult<Handle_VrmlData_Group*> Handle_VrmlData_Node_downcast_to_Handle_VrmlData_Group(const Handle_VrmlData_Node* self_) {
     try {
     opencascade::handle<VrmlData_Group> result = opencascade::handle<VrmlData_Group>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleVrmlDataGroup(result), nullptr};
+    return {new Handle_VrmlData_Group(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleVrmlDataImageTexture*> HandleVrmlDataNode_downcast_to_HandleVrmlDataImageTexture(const HandleVrmlDataNode* self_) {
+extern "C" OcctResult<Handle_VrmlData_ImageTexture*> Handle_VrmlData_Node_downcast_to_Handle_VrmlData_ImageTexture(const Handle_VrmlData_Node* self_) {
     try {
     opencascade::handle<VrmlData_ImageTexture> result = opencascade::handle<VrmlData_ImageTexture>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleVrmlDataImageTexture(result), nullptr};
+    return {new Handle_VrmlData_ImageTexture(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleVrmlDataIndexedFaceSet*> HandleVrmlDataNode_downcast_to_HandleVrmlDataIndexedFaceSet(const HandleVrmlDataNode* self_) {
+extern "C" OcctResult<Handle_VrmlData_IndexedFaceSet*> Handle_VrmlData_Node_downcast_to_Handle_VrmlData_IndexedFaceSet(const Handle_VrmlData_Node* self_) {
     try {
     opencascade::handle<VrmlData_IndexedFaceSet> result = opencascade::handle<VrmlData_IndexedFaceSet>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleVrmlDataIndexedFaceSet(result), nullptr};
+    return {new Handle_VrmlData_IndexedFaceSet(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleVrmlDataIndexedLineSet*> HandleVrmlDataNode_downcast_to_HandleVrmlDataIndexedLineSet(const HandleVrmlDataNode* self_) {
+extern "C" OcctResult<Handle_VrmlData_IndexedLineSet*> Handle_VrmlData_Node_downcast_to_Handle_VrmlData_IndexedLineSet(const Handle_VrmlData_Node* self_) {
     try {
     opencascade::handle<VrmlData_IndexedLineSet> result = opencascade::handle<VrmlData_IndexedLineSet>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleVrmlDataIndexedLineSet(result), nullptr};
+    return {new Handle_VrmlData_IndexedLineSet(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleVrmlDataMaterial*> HandleVrmlDataNode_downcast_to_HandleVrmlDataMaterial(const HandleVrmlDataNode* self_) {
+extern "C" OcctResult<Handle_VrmlData_Material*> Handle_VrmlData_Node_downcast_to_Handle_VrmlData_Material(const Handle_VrmlData_Node* self_) {
     try {
     opencascade::handle<VrmlData_Material> result = opencascade::handle<VrmlData_Material>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleVrmlDataMaterial(result), nullptr};
+    return {new Handle_VrmlData_Material(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleVrmlDataNormal*> HandleVrmlDataNode_downcast_to_HandleVrmlDataNormal(const HandleVrmlDataNode* self_) {
+extern "C" OcctResult<Handle_VrmlData_Normal*> Handle_VrmlData_Node_downcast_to_Handle_VrmlData_Normal(const Handle_VrmlData_Node* self_) {
     try {
     opencascade::handle<VrmlData_Normal> result = opencascade::handle<VrmlData_Normal>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleVrmlDataNormal(result), nullptr};
+    return {new Handle_VrmlData_Normal(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleVrmlDataShapeNode*> HandleVrmlDataNode_downcast_to_HandleVrmlDataShapeNode(const HandleVrmlDataNode* self_) {
+extern "C" OcctResult<Handle_VrmlData_ShapeNode*> Handle_VrmlData_Node_downcast_to_Handle_VrmlData_ShapeNode(const Handle_VrmlData_Node* self_) {
     try {
     opencascade::handle<VrmlData_ShapeNode> result = opencascade::handle<VrmlData_ShapeNode>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleVrmlDataShapeNode(result), nullptr};
+    return {new Handle_VrmlData_ShapeNode(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleVrmlDataSphere*> HandleVrmlDataNode_downcast_to_HandleVrmlDataSphere(const HandleVrmlDataNode* self_) {
+extern "C" OcctResult<Handle_VrmlData_Sphere*> Handle_VrmlData_Node_downcast_to_Handle_VrmlData_Sphere(const Handle_VrmlData_Node* self_) {
     try {
     opencascade::handle<VrmlData_Sphere> result = opencascade::handle<VrmlData_Sphere>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleVrmlDataSphere(result), nullptr};
+    return {new Handle_VrmlData_Sphere(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleVrmlDataTexture*> HandleVrmlDataNode_downcast_to_HandleVrmlDataTexture(const HandleVrmlDataNode* self_) {
+extern "C" OcctResult<Handle_VrmlData_Texture*> Handle_VrmlData_Node_downcast_to_Handle_VrmlData_Texture(const Handle_VrmlData_Node* self_) {
     try {
     opencascade::handle<VrmlData_Texture> result = opencascade::handle<VrmlData_Texture>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleVrmlDataTexture(result), nullptr};
+    return {new Handle_VrmlData_Texture(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleVrmlDataTextureCoordinate*> HandleVrmlDataNode_downcast_to_HandleVrmlDataTextureCoordinate(const HandleVrmlDataNode* self_) {
+extern "C" OcctResult<Handle_VrmlData_TextureCoordinate*> Handle_VrmlData_Node_downcast_to_Handle_VrmlData_TextureCoordinate(const Handle_VrmlData_Node* self_) {
     try {
     opencascade::handle<VrmlData_TextureCoordinate> result = opencascade::handle<VrmlData_TextureCoordinate>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleVrmlDataTextureCoordinate(result), nullptr};
+    return {new Handle_VrmlData_TextureCoordinate(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleVrmlDataTextureTransform*> HandleVrmlDataNode_downcast_to_HandleVrmlDataTextureTransform(const HandleVrmlDataNode* self_) {
+extern "C" OcctResult<Handle_VrmlData_TextureTransform*> Handle_VrmlData_Node_downcast_to_Handle_VrmlData_TextureTransform(const Handle_VrmlData_Node* self_) {
     try {
     opencascade::handle<VrmlData_TextureTransform> result = opencascade::handle<VrmlData_TextureTransform>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleVrmlDataTextureTransform(result), nullptr};
+    return {new Handle_VrmlData_TextureTransform(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleVrmlDataUnknownNode*> HandleVrmlDataNode_downcast_to_HandleVrmlDataUnknownNode(const HandleVrmlDataNode* self_) {
+extern "C" OcctResult<Handle_VrmlData_UnknownNode*> Handle_VrmlData_Node_downcast_to_Handle_VrmlData_UnknownNode(const Handle_VrmlData_Node* self_) {
     try {
     opencascade::handle<VrmlData_UnknownNode> result = opencascade::handle<VrmlData_UnknownNode>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleVrmlDataUnknownNode(result), nullptr};
+    return {new Handle_VrmlData_UnknownNode(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleVrmlDataWorldInfo*> HandleVrmlDataNode_downcast_to_HandleVrmlDataWorldInfo(const HandleVrmlDataNode* self_) {
+extern "C" OcctResult<Handle_VrmlData_WorldInfo*> Handle_VrmlData_Node_downcast_to_Handle_VrmlData_WorldInfo(const Handle_VrmlData_Node* self_) {
     try {
     opencascade::handle<VrmlData_WorldInfo> result = opencascade::handle<VrmlData_WorldInfo>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleVrmlDataWorldInfo(result), nullptr};
+    return {new Handle_VrmlData_WorldInfo(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
@@ -6293,28 +6287,28 @@ extern "C" OcctResult<const VrmlData_Node*> VrmlData_Normal_as_VrmlData_Node(con
 extern "C" OcctResult<VrmlData_Node*> VrmlData_Normal_as_VrmlData_Node_mut(VrmlData_Normal* self_) { return {static_cast<VrmlData_Node*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> VrmlData_Normal_as_Standard_Transient(const VrmlData_Normal* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> VrmlData_Normal_as_Standard_Transient_mut(VrmlData_Normal* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleVrmlDataNormal*> VrmlData_Normal_to_handle(VrmlData_Normal* obj) {
-    try { return {new HandleVrmlDataNormal(obj), nullptr}; }
+extern "C" OcctResult<Handle_VrmlData_Normal*> VrmlData_Normal_to_handle(VrmlData_Normal* obj) {
+    try { return {new Handle_VrmlData_Normal(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const VrmlData_Normal*> HandleVrmlDataNormal_get(const HandleVrmlDataNormal* handle) {
+extern "C" OcctResult<const VrmlData_Normal*> Handle_VrmlData_Normal_get(const Handle_VrmlData_Normal* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<VrmlData_Normal*> HandleVrmlDataNormal_get_mut(HandleVrmlDataNormal* handle) {
+extern "C" OcctResult<VrmlData_Normal*> Handle_VrmlData_Normal_get_mut(Handle_VrmlData_Normal* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleVrmlDataArrayVec3d*> HandleVrmlDataNormal_to_HandleVrmlDataArrayVec3d(const HandleVrmlDataNormal* self_) {
-    try { return {new HandleVrmlDataArrayVec3d(*self_), nullptr}; }
+extern "C" OcctResult<Handle_VrmlData_ArrayVec3d*> Handle_VrmlData_Normal_to_Handle_VrmlData_ArrayVec3d(const Handle_VrmlData_Normal* self_) {
+    try { return {new Handle_VrmlData_ArrayVec3d(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleVrmlDataNode*> HandleVrmlDataNormal_to_HandleVrmlDataNode(const HandleVrmlDataNormal* self_) {
-    try { return {new HandleVrmlDataNode(*self_), nullptr}; }
+extern "C" OcctResult<Handle_VrmlData_Node*> Handle_VrmlData_Normal_to_Handle_VrmlData_Node(const Handle_VrmlData_Normal* self_) {
+    try { return {new Handle_VrmlData_Node(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleVrmlDataNormal_to_HandleStandardTransient(const HandleVrmlDataNormal* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_VrmlData_Normal_to_Handle_Standard_Transient(const Handle_VrmlData_Normal* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<size_t> VrmlData_Normal_inherited_Length(const VrmlData_Normal* self) {
@@ -6387,16 +6381,8 @@ extern "C" OcctResult<VrmlData_Scene*> VrmlData_Scene_ctor_handlencollectioninca
     try { return {new VrmlData_Scene(*arg0), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TDataStd_ListIteratorOfListOfExtendedString*> VrmlData_Scene_vrml_dir_iterator(const VrmlData_Scene* self_) {
-    try { return {new TDataStd_ListIteratorOfListOfExtendedString(self_->VrmlDirIterator()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
 extern "C" OcctResult<VrmlData_Scene::Iterator*> VrmlData_Scene_get_iterator(const VrmlData_Scene* self_) {
     try { return {new VrmlData_Scene::Iterator(self_->GetIterator()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<VrmlData_MapOfNode::Iterator*> VrmlData_Scene_named_nodes_iterator(const VrmlData_Scene* self_) {
-    try { return {new VrmlData_MapOfNode::Iterator(self_->NamedNodesIterator()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(VrmlData_Node)*> VrmlData_Scene_find_node_charptr_handlestandardtype(const VrmlData_Scene* self_, const char* theName, Handle(Standard_Type) const* theType) {
@@ -6405,10 +6391,6 @@ extern "C" OcctResult<Handle(VrmlData_Node)*> VrmlData_Scene_find_node_charptr_h
 }
 extern "C" OcctResult<Handle(VrmlData_Node)*> VrmlData_Scene_find_node_charptr_trsf(const VrmlData_Scene* self_, const char* theName, gp_Trsf* theLocation) {
     try { return {new Handle(VrmlData_Node)(self_->FindNode(theName, *theLocation)), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<TopoDS_Shape*> VrmlData_Scene_get_shape(VrmlData_Scene* self_, VrmlData_DataMapOfShapeAppearance* M) {
-    try { return {new TopoDS_Shape(self_->GetShape(*M)), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<int32_t> VrmlData_Scene_status(const VrmlData_Scene* self_) {
@@ -6585,24 +6567,24 @@ extern "C" OcctResult<const VrmlData_Node*> VrmlData_ShapeNode_as_VrmlData_Node(
 extern "C" OcctResult<VrmlData_Node*> VrmlData_ShapeNode_as_VrmlData_Node_mut(VrmlData_ShapeNode* self_) { return {static_cast<VrmlData_Node*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> VrmlData_ShapeNode_as_Standard_Transient(const VrmlData_ShapeNode* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> VrmlData_ShapeNode_as_Standard_Transient_mut(VrmlData_ShapeNode* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleVrmlDataShapeNode*> VrmlData_ShapeNode_to_handle(VrmlData_ShapeNode* obj) {
-    try { return {new HandleVrmlDataShapeNode(obj), nullptr}; }
+extern "C" OcctResult<Handle_VrmlData_ShapeNode*> VrmlData_ShapeNode_to_handle(VrmlData_ShapeNode* obj) {
+    try { return {new Handle_VrmlData_ShapeNode(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const VrmlData_ShapeNode*> HandleVrmlDataShapeNode_get(const HandleVrmlDataShapeNode* handle) {
+extern "C" OcctResult<const VrmlData_ShapeNode*> Handle_VrmlData_ShapeNode_get(const Handle_VrmlData_ShapeNode* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<VrmlData_ShapeNode*> HandleVrmlDataShapeNode_get_mut(HandleVrmlDataShapeNode* handle) {
+extern "C" OcctResult<VrmlData_ShapeNode*> Handle_VrmlData_ShapeNode_get_mut(Handle_VrmlData_ShapeNode* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleVrmlDataNode*> HandleVrmlDataShapeNode_to_HandleVrmlDataNode(const HandleVrmlDataShapeNode* self_) {
-    try { return {new HandleVrmlDataNode(*self_), nullptr}; }
+extern "C" OcctResult<Handle_VrmlData_Node*> Handle_VrmlData_ShapeNode_to_Handle_VrmlData_Node(const Handle_VrmlData_ShapeNode* self_) {
+    try { return {new Handle_VrmlData_Node(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleVrmlDataShapeNode_to_HandleStandardTransient(const HandleVrmlDataShapeNode* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_VrmlData_ShapeNode_to_Handle_Standard_Transient(const Handle_VrmlData_ShapeNode* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<VrmlData_Scene const*> VrmlData_ShapeNode_inherited_Scene(const VrmlData_ShapeNode* self) {
@@ -6701,28 +6683,28 @@ extern "C" OcctResult<const VrmlData_Node*> VrmlData_Sphere_as_VrmlData_Node(con
 extern "C" OcctResult<VrmlData_Node*> VrmlData_Sphere_as_VrmlData_Node_mut(VrmlData_Sphere* self_) { return {static_cast<VrmlData_Node*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> VrmlData_Sphere_as_Standard_Transient(const VrmlData_Sphere* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> VrmlData_Sphere_as_Standard_Transient_mut(VrmlData_Sphere* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleVrmlDataSphere*> VrmlData_Sphere_to_handle(VrmlData_Sphere* obj) {
-    try { return {new HandleVrmlDataSphere(obj), nullptr}; }
+extern "C" OcctResult<Handle_VrmlData_Sphere*> VrmlData_Sphere_to_handle(VrmlData_Sphere* obj) {
+    try { return {new Handle_VrmlData_Sphere(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const VrmlData_Sphere*> HandleVrmlDataSphere_get(const HandleVrmlDataSphere* handle) {
+extern "C" OcctResult<const VrmlData_Sphere*> Handle_VrmlData_Sphere_get(const Handle_VrmlData_Sphere* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<VrmlData_Sphere*> HandleVrmlDataSphere_get_mut(HandleVrmlDataSphere* handle) {
+extern "C" OcctResult<VrmlData_Sphere*> Handle_VrmlData_Sphere_get_mut(Handle_VrmlData_Sphere* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleVrmlDataGeometry*> HandleVrmlDataSphere_to_HandleVrmlDataGeometry(const HandleVrmlDataSphere* self_) {
-    try { return {new HandleVrmlDataGeometry(*self_), nullptr}; }
+extern "C" OcctResult<Handle_VrmlData_Geometry*> Handle_VrmlData_Sphere_to_Handle_VrmlData_Geometry(const Handle_VrmlData_Sphere* self_) {
+    try { return {new Handle_VrmlData_Geometry(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleVrmlDataNode*> HandleVrmlDataSphere_to_HandleVrmlDataNode(const HandleVrmlDataSphere* self_) {
-    try { return {new HandleVrmlDataNode(*self_), nullptr}; }
+extern "C" OcctResult<Handle_VrmlData_Node*> Handle_VrmlData_Sphere_to_Handle_VrmlData_Node(const Handle_VrmlData_Sphere* self_) {
+    try { return {new Handle_VrmlData_Node(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleVrmlDataSphere_to_HandleStandardTransient(const HandleVrmlDataSphere* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_VrmlData_Sphere_to_Handle_Standard_Transient(const Handle_VrmlData_Sphere* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<VrmlData_Scene const*> VrmlData_Sphere_inherited_Scene(const VrmlData_Sphere* self) {
@@ -6807,27 +6789,27 @@ extern "C" OcctResult<const VrmlData_Node*> VrmlData_Texture_as_VrmlData_Node(co
 extern "C" OcctResult<VrmlData_Node*> VrmlData_Texture_as_VrmlData_Node_mut(VrmlData_Texture* self_) { return {static_cast<VrmlData_Node*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> VrmlData_Texture_as_Standard_Transient(const VrmlData_Texture* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> VrmlData_Texture_as_Standard_Transient_mut(VrmlData_Texture* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<const VrmlData_Texture*> HandleVrmlDataTexture_get(const HandleVrmlDataTexture* handle) {
+extern "C" OcctResult<const VrmlData_Texture*> Handle_VrmlData_Texture_get(const Handle_VrmlData_Texture* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<VrmlData_Texture*> HandleVrmlDataTexture_get_mut(HandleVrmlDataTexture* handle) {
+extern "C" OcctResult<VrmlData_Texture*> Handle_VrmlData_Texture_get_mut(Handle_VrmlData_Texture* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleVrmlDataNode*> HandleVrmlDataTexture_to_HandleVrmlDataNode(const HandleVrmlDataTexture* self_) {
-    try { return {new HandleVrmlDataNode(*self_), nullptr}; }
+extern "C" OcctResult<Handle_VrmlData_Node*> Handle_VrmlData_Texture_to_Handle_VrmlData_Node(const Handle_VrmlData_Texture* self_) {
+    try { return {new Handle_VrmlData_Node(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleVrmlDataTexture_to_HandleStandardTransient(const HandleVrmlDataTexture* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_VrmlData_Texture_to_Handle_Standard_Transient(const Handle_VrmlData_Texture* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleVrmlDataImageTexture*> HandleVrmlDataTexture_downcast_to_HandleVrmlDataImageTexture(const HandleVrmlDataTexture* self_) {
+extern "C" OcctResult<Handle_VrmlData_ImageTexture*> Handle_VrmlData_Texture_downcast_to_Handle_VrmlData_ImageTexture(const Handle_VrmlData_Texture* self_) {
     try {
     opencascade::handle<VrmlData_ImageTexture> result = opencascade::handle<VrmlData_ImageTexture>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleVrmlDataImageTexture(result), nullptr};
+    return {new Handle_VrmlData_ImageTexture(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
@@ -6937,24 +6919,24 @@ extern "C" OcctResult<const VrmlData_Node*> VrmlData_TextureCoordinate_as_VrmlDa
 extern "C" OcctResult<VrmlData_Node*> VrmlData_TextureCoordinate_as_VrmlData_Node_mut(VrmlData_TextureCoordinate* self_) { return {static_cast<VrmlData_Node*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> VrmlData_TextureCoordinate_as_Standard_Transient(const VrmlData_TextureCoordinate* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> VrmlData_TextureCoordinate_as_Standard_Transient_mut(VrmlData_TextureCoordinate* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleVrmlDataTextureCoordinate*> VrmlData_TextureCoordinate_to_handle(VrmlData_TextureCoordinate* obj) {
-    try { return {new HandleVrmlDataTextureCoordinate(obj), nullptr}; }
+extern "C" OcctResult<Handle_VrmlData_TextureCoordinate*> VrmlData_TextureCoordinate_to_handle(VrmlData_TextureCoordinate* obj) {
+    try { return {new Handle_VrmlData_TextureCoordinate(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const VrmlData_TextureCoordinate*> HandleVrmlDataTextureCoordinate_get(const HandleVrmlDataTextureCoordinate* handle) {
+extern "C" OcctResult<const VrmlData_TextureCoordinate*> Handle_VrmlData_TextureCoordinate_get(const Handle_VrmlData_TextureCoordinate* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<VrmlData_TextureCoordinate*> HandleVrmlDataTextureCoordinate_get_mut(HandleVrmlDataTextureCoordinate* handle) {
+extern "C" OcctResult<VrmlData_TextureCoordinate*> Handle_VrmlData_TextureCoordinate_get_mut(Handle_VrmlData_TextureCoordinate* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleVrmlDataNode*> HandleVrmlDataTextureCoordinate_to_HandleVrmlDataNode(const HandleVrmlDataTextureCoordinate* self_) {
-    try { return {new HandleVrmlDataNode(*self_), nullptr}; }
+extern "C" OcctResult<Handle_VrmlData_Node*> Handle_VrmlData_TextureCoordinate_to_Handle_VrmlData_Node(const Handle_VrmlData_TextureCoordinate* self_) {
+    try { return {new Handle_VrmlData_Node(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleVrmlDataTextureCoordinate_to_HandleStandardTransient(const HandleVrmlDataTextureCoordinate* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_VrmlData_TextureCoordinate_to_Handle_Standard_Transient(const Handle_VrmlData_TextureCoordinate* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<VrmlData_Scene const*> VrmlData_TextureCoordinate_inherited_Scene(const VrmlData_TextureCoordinate* self) {
@@ -7055,20 +7037,20 @@ extern "C" OcctResult<const VrmlData_Node*> VrmlData_TextureTransform_as_VrmlDat
 extern "C" OcctResult<VrmlData_Node*> VrmlData_TextureTransform_as_VrmlData_Node_mut(VrmlData_TextureTransform* self_) { return {static_cast<VrmlData_Node*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> VrmlData_TextureTransform_as_Standard_Transient(const VrmlData_TextureTransform* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> VrmlData_TextureTransform_as_Standard_Transient_mut(VrmlData_TextureTransform* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<const VrmlData_TextureTransform*> HandleVrmlDataTextureTransform_get(const HandleVrmlDataTextureTransform* handle) {
+extern "C" OcctResult<const VrmlData_TextureTransform*> Handle_VrmlData_TextureTransform_get(const Handle_VrmlData_TextureTransform* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<VrmlData_TextureTransform*> HandleVrmlDataTextureTransform_get_mut(HandleVrmlDataTextureTransform* handle) {
+extern "C" OcctResult<VrmlData_TextureTransform*> Handle_VrmlData_TextureTransform_get_mut(Handle_VrmlData_TextureTransform* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleVrmlDataNode*> HandleVrmlDataTextureTransform_to_HandleVrmlDataNode(const HandleVrmlDataTextureTransform* self_) {
-    try { return {new HandleVrmlDataNode(*self_), nullptr}; }
+extern "C" OcctResult<Handle_VrmlData_Node*> Handle_VrmlData_TextureTransform_to_Handle_VrmlData_Node(const Handle_VrmlData_TextureTransform* self_) {
+    try { return {new Handle_VrmlData_Node(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleVrmlDataTextureTransform_to_HandleStandardTransient(const HandleVrmlDataTextureTransform* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_VrmlData_TextureTransform_to_Handle_Standard_Transient(const Handle_VrmlData_TextureTransform* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<VrmlData_Scene const*> VrmlData_TextureTransform_inherited_Scene(const VrmlData_TextureTransform* self) {
@@ -7165,24 +7147,24 @@ extern "C" OcctResult<const VrmlData_Node*> VrmlData_UnknownNode_as_VrmlData_Nod
 extern "C" OcctResult<VrmlData_Node*> VrmlData_UnknownNode_as_VrmlData_Node_mut(VrmlData_UnknownNode* self_) { return {static_cast<VrmlData_Node*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> VrmlData_UnknownNode_as_Standard_Transient(const VrmlData_UnknownNode* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> VrmlData_UnknownNode_as_Standard_Transient_mut(VrmlData_UnknownNode* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleVrmlDataUnknownNode*> VrmlData_UnknownNode_to_handle(VrmlData_UnknownNode* obj) {
-    try { return {new HandleVrmlDataUnknownNode(obj), nullptr}; }
+extern "C" OcctResult<Handle_VrmlData_UnknownNode*> VrmlData_UnknownNode_to_handle(VrmlData_UnknownNode* obj) {
+    try { return {new Handle_VrmlData_UnknownNode(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const VrmlData_UnknownNode*> HandleVrmlDataUnknownNode_get(const HandleVrmlDataUnknownNode* handle) {
+extern "C" OcctResult<const VrmlData_UnknownNode*> Handle_VrmlData_UnknownNode_get(const Handle_VrmlData_UnknownNode* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<VrmlData_UnknownNode*> HandleVrmlDataUnknownNode_get_mut(HandleVrmlDataUnknownNode* handle) {
+extern "C" OcctResult<VrmlData_UnknownNode*> Handle_VrmlData_UnknownNode_get_mut(Handle_VrmlData_UnknownNode* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleVrmlDataNode*> HandleVrmlDataUnknownNode_to_HandleVrmlDataNode(const HandleVrmlDataUnknownNode* self_) {
-    try { return {new HandleVrmlDataNode(*self_), nullptr}; }
+extern "C" OcctResult<Handle_VrmlData_Node*> Handle_VrmlData_UnknownNode_to_Handle_VrmlData_Node(const Handle_VrmlData_UnknownNode* self_) {
+    try { return {new Handle_VrmlData_Node(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleVrmlDataUnknownNode_to_HandleStandardTransient(const HandleVrmlDataUnknownNode* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_VrmlData_UnknownNode_to_Handle_Standard_Transient(const Handle_VrmlData_UnknownNode* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<VrmlData_Scene const*> VrmlData_UnknownNode_inherited_Scene(const VrmlData_UnknownNode* self) {
@@ -7287,24 +7269,24 @@ extern "C" OcctResult<const VrmlData_Node*> VrmlData_WorldInfo_as_VrmlData_Node(
 extern "C" OcctResult<VrmlData_Node*> VrmlData_WorldInfo_as_VrmlData_Node_mut(VrmlData_WorldInfo* self_) { return {static_cast<VrmlData_Node*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> VrmlData_WorldInfo_as_Standard_Transient(const VrmlData_WorldInfo* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> VrmlData_WorldInfo_as_Standard_Transient_mut(VrmlData_WorldInfo* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleVrmlDataWorldInfo*> VrmlData_WorldInfo_to_handle(VrmlData_WorldInfo* obj) {
-    try { return {new HandleVrmlDataWorldInfo(obj), nullptr}; }
+extern "C" OcctResult<Handle_VrmlData_WorldInfo*> VrmlData_WorldInfo_to_handle(VrmlData_WorldInfo* obj) {
+    try { return {new Handle_VrmlData_WorldInfo(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const VrmlData_WorldInfo*> HandleVrmlDataWorldInfo_get(const HandleVrmlDataWorldInfo* handle) {
+extern "C" OcctResult<const VrmlData_WorldInfo*> Handle_VrmlData_WorldInfo_get(const Handle_VrmlData_WorldInfo* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<VrmlData_WorldInfo*> HandleVrmlDataWorldInfo_get_mut(HandleVrmlDataWorldInfo* handle) {
+extern "C" OcctResult<VrmlData_WorldInfo*> Handle_VrmlData_WorldInfo_get_mut(Handle_VrmlData_WorldInfo* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleVrmlDataNode*> HandleVrmlDataWorldInfo_to_HandleVrmlDataNode(const HandleVrmlDataWorldInfo* self_) {
-    try { return {new HandleVrmlDataNode(*self_), nullptr}; }
+extern "C" OcctResult<Handle_VrmlData_Node*> Handle_VrmlData_WorldInfo_to_Handle_VrmlData_Node(const Handle_VrmlData_WorldInfo* self_) {
+    try { return {new Handle_VrmlData_Node(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleVrmlDataWorldInfo_to_HandleStandardTransient(const HandleVrmlDataWorldInfo* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_VrmlData_WorldInfo_to_Handle_Standard_Transient(const Handle_VrmlData_WorldInfo* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<VrmlData_Scene const*> VrmlData_WorldInfo_inherited_Scene(const VrmlData_WorldInfo* self) {
@@ -7371,7 +7353,5 @@ extern "C" OcctResult<bool> VrmlAPI_write_shape_charptr_int(TopoDS_Shape const* 
 
 
 // Nested type and typedef type destructors
-extern "C" void VrmlData_DataMapOfShapeAppearance_destructor(VrmlData_DataMapOfShapeAppearance* self_) { delete self_; }
 extern "C" void VrmlData_Group_Iterator_destructor(VrmlData_Group::Iterator* self_) { delete self_; }
-extern "C" void VrmlData_MapOfNode_Iterator_destructor(VrmlData_MapOfNode::Iterator* self_) { delete self_; }
 extern "C" void VrmlData_Scene_Iterator_destructor(VrmlData_Scene::Iterator* self_) { delete self_; }

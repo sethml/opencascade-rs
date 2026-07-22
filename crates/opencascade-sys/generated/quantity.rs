@@ -1117,11 +1117,6 @@ impl TryFrom<i32> for TypeOfColor {
     }
 }
 
-// Handle type re-exports (targets of handle upcasts/downcasts)
-pub use crate::ffi_types::{
-    HandleStandardDomainError, HandleStandardFailure, HandleStandardTransient,
-};
-
 // ========================
 // From Quantity_Color.hxx
 // ========================
@@ -1189,7 +1184,7 @@ impl Color {
 
     /// **Source:** `Quantity_Color.hxx`:62 - `Quantity_Color::Quantity_Color()`
     /// Define color from linear RGB values.
-    pub fn new_vec3f(theRgb: &crate::ffi_types::gp_Vec3f) -> crate::OwnedPtr<Self> {
+    pub fn new_vec3f(theRgb: &crate::ffi_types::BVH_Vec3f) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKernel::Quantity_Color_ctor_vec3f(theRgb),
@@ -1219,7 +1214,7 @@ impl Color {
 
     /// **Source:** `Quantity_Color.hxx`:74 - `Quantity_Color::Rgb()`
     /// Return the color as vector of 3 float elements.
-    pub fn rgb(&self) -> &crate::ffi_types::gp_Vec3f {
+    pub fn rgb(&self) -> &crate::ffi_types::BVH_Vec3f {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKernel::Quantity_Color_rgb(
                 self as *const Self,
@@ -1348,7 +1343,7 @@ impl Color {
         })
     }
 
-    /// **Source:** `Quantity_Color.hxx`:137 - `Quantity_Color::IsEqual()`
+    /// **Source:** `Quantity_Color.hxx`:134 - `Quantity_Color::IsEqual()`
     /// Returns TRUE if the distance between two colors is no greater than Epsilon().
     pub fn is_equal(&self, theOther: &Color) -> bool {
         crate::check_result(unsafe {
@@ -1356,7 +1351,7 @@ impl Color {
         })
     }
 
-    /// **Source:** `Quantity_Color.hxx`:147 - `Quantity_Color::Distance()`
+    /// **Source:** `Quantity_Color.hxx`:144 - `Quantity_Color::Distance()`
     /// Returns the distance between two colors. It's a value between 0 and the square root of 3 (the
     /// black/white distance).
     pub fn distance(&self, theColor: &Color) -> f64 {
@@ -1365,7 +1360,7 @@ impl Color {
         })
     }
 
-    /// **Source:** `Quantity_Color.hxx`:155 - `Quantity_Color::SquareDistance()`
+    /// **Source:** `Quantity_Color.hxx`:150 - `Quantity_Color::SquareDistance()`
     /// Returns the square of distance between two colors.
     pub fn square_distance(&self, theColor: &Color) -> f64 {
         crate::check_result(unsafe {
@@ -1373,7 +1368,7 @@ impl Color {
         })
     }
 
-    /// **Source:** `Quantity_Color.hxx`:167 - `Quantity_Color::Delta()`
+    /// **Source:** `Quantity_Color.hxx`:161 - `Quantity_Color::Delta()`
     /// Returns the percentage change of contrast and intensity between this and another color.
     /// <DC> and <DI> are percentages, either positive or negative.
     /// The calculation is with respect to this color.
@@ -1385,7 +1380,7 @@ impl Color {
         })
     }
 
-    /// **Source:** `Quantity_Color.hxx`:176 - `Quantity_Color::DeltaE2000()`
+    /// **Source:** `Quantity_Color.hxx`:168 - `Quantity_Color::DeltaE2000()`
     /// Returns the value of the perceptual difference between this color
     /// and @p theOther, computed using the CIEDE2000 formula.
     /// The difference is in range [0, 100.], with 1 approximately corresponding
@@ -1397,7 +1392,7 @@ impl Color {
         })
     }
 
-    /// **Source:** `Quantity_Color.hxx`:180 - `Quantity_Color::Name()`
+    /// **Source:** `Quantity_Color.hxx`:172 - `Quantity_Color::Name()`
     /// Returns the color from Quantity_NameOfColor enumeration nearest to specified RGB values.
     pub fn name_real3(theR: f64, theG: f64, theB: f64) -> crate::quantity::NameOfColor {
         crate::quantity::NameOfColor::try_from(crate::check_result(unsafe {
@@ -1406,7 +1401,7 @@ impl Color {
         .unwrap()
     }
 
-    /// **Source:** `Quantity_Color.hxx`:189 - `Quantity_Color::StringName()`
+    /// **Source:** `Quantity_Color.hxx`:179 - `Quantity_Color::StringName()`
     /// Returns the name of the color identified by the given Quantity_NameOfColor enumeration value.
     pub fn string_name(theColor: crate::quantity::NameOfColor) -> std::string::String {
         unsafe {
@@ -1418,7 +1413,7 @@ impl Color {
         .into_owned()
     }
 
-    /// **Source:** `Quantity_Color.hxx`:194 - `Quantity_Color::ColorFromName()`
+    /// **Source:** `Quantity_Color.hxx`:184 - `Quantity_Color::ColorFromName()`
     /// Finds color from predefined names.
     /// For example, the name of the color which corresponds to "BLACK" is Quantity_NOC_BLACK.
     /// Returns FALSE if name is unknown.
@@ -1438,7 +1433,7 @@ impl Color {
         result_
     }
 
-    /// **Source:** `Quantity_Color.hxx`:201 - `Quantity_Color::ColorFromName()`
+    /// **Source:** `Quantity_Color.hxx`:191 - `Quantity_Color::ColorFromName()`
     /// Finds color from predefined names.
     /// @param theColorNameString the color name
     /// @param theColor a found color
@@ -1453,7 +1448,7 @@ impl Color {
         })
     }
 
-    /// **Source:** `Quantity_Color.hxx`:221 - `Quantity_Color::ColorFromHex()`
+    /// **Source:** `Quantity_Color.hxx`:210 - `Quantity_Color::ColorFromHex()`
     /// Parses the string as a hex color (like "#FF0" for short sRGB color, or "#FFFF00" for sRGB
     /// color)
     /// @param theHexColorString the string to be parsed
@@ -1469,7 +1464,7 @@ impl Color {
         })
     }
 
-    /// **Source:** `Quantity_Color.hxx`:225 - `Quantity_Color::ColorToHex()`
+    /// **Source:** `Quantity_Color.hxx`:214 - `Quantity_Color::ColorToHex()`
     /// Returns hex sRGB string in format "#FFAAFF".
     pub fn color_to_hex(
         theColor: &Color,
@@ -1482,11 +1477,11 @@ impl Color {
         }
     }
 
-    /// **Source:** `Quantity_Color.hxx`:242 - `Quantity_Color::Convert_sRGB_To_HLS()`
+    /// **Source:** `Quantity_Color.hxx`:229 - `Quantity_Color::Convert_sRGB_To_HLS()`
     /// Converts sRGB components into HLS ones.
     pub fn convert_s_rgb_to_hls(
-        theRgb: &crate::ffi_types::gp_Vec3f,
-    ) -> crate::OwnedPtr<crate::ffi_types::gp_Vec3f> {
+        theRgb: &crate::ffi_types::BVH_Vec3f,
+    ) -> crate::OwnedPtr<crate::ffi_types::BVH_Vec3f> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKernel::Quantity_Color_convert_s_rgb_to_hls(theRgb),
@@ -1494,11 +1489,11 @@ impl Color {
         }
     }
 
-    /// **Source:** `Quantity_Color.hxx`:246 - `Quantity_Color::Convert_HLS_To_sRGB()`
+    /// **Source:** `Quantity_Color.hxx`:233 - `Quantity_Color::Convert_HLS_To_sRGB()`
     /// Converts HLS components into RGB ones.
     pub fn convert_hls_to_s_rgb(
-        theHls: &crate::ffi_types::gp_Vec3f,
-    ) -> crate::OwnedPtr<crate::ffi_types::gp_Vec3f> {
+        theHls: &crate::ffi_types::BVH_Vec3f,
+    ) -> crate::OwnedPtr<crate::ffi_types::BVH_Vec3f> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKernel::Quantity_Color_convert_hls_to_s_rgb(theHls),
@@ -1506,11 +1501,11 @@ impl Color {
         }
     }
 
-    /// **Source:** `Quantity_Color.hxx`:250 - `Quantity_Color::Convert_LinearRGB_To_HLS()`
+    /// **Source:** `Quantity_Color.hxx`:237 - `Quantity_Color::Convert_LinearRGB_To_HLS()`
     /// Converts Linear RGB components into HLS ones.
     pub fn convert_linear_rgb_to_hls(
-        theRgb: &crate::ffi_types::gp_Vec3f,
-    ) -> crate::OwnedPtr<crate::ffi_types::gp_Vec3f> {
+        theRgb: &crate::ffi_types::BVH_Vec3f,
+    ) -> crate::OwnedPtr<crate::ffi_types::BVH_Vec3f> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKernel::Quantity_Color_convert_linear_rgb_to_hls(theRgb),
@@ -1518,11 +1513,11 @@ impl Color {
         }
     }
 
-    /// **Source:** `Quantity_Color.hxx`:256 - `Quantity_Color::Convert_HLS_To_LinearRGB()`
+    /// **Source:** `Quantity_Color.hxx`:244 - `Quantity_Color::Convert_HLS_To_LinearRGB()`
     /// Converts HLS components into linear RGB ones.
     pub fn convert_hls_to_linear_rgb(
-        theHls: &crate::ffi_types::gp_Vec3f,
-    ) -> crate::OwnedPtr<crate::ffi_types::gp_Vec3f> {
+        theHls: &crate::ffi_types::BVH_Vec3f,
+    ) -> crate::OwnedPtr<crate::ffi_types::BVH_Vec3f> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKernel::Quantity_Color_convert_hls_to_linear_rgb(theHls),
@@ -1530,11 +1525,11 @@ impl Color {
         }
     }
 
-    /// **Source:** `Quantity_Color.hxx`:262 - `Quantity_Color::Convert_LinearRGB_To_Lab()`
+    /// **Source:** `Quantity_Color.hxx`:251 - `Quantity_Color::Convert_LinearRGB_To_Lab()`
     /// Converts linear RGB components into CIE Lab ones.
     pub fn convert_linear_rgb_to_lab(
-        theRgb: &crate::ffi_types::gp_Vec3f,
-    ) -> crate::OwnedPtr<crate::ffi_types::gp_Vec3f> {
+        theRgb: &crate::ffi_types::BVH_Vec3f,
+    ) -> crate::OwnedPtr<crate::ffi_types::BVH_Vec3f> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKernel::Quantity_Color_convert_linear_rgb_to_lab(theRgb),
@@ -1542,11 +1537,11 @@ impl Color {
         }
     }
 
-    /// **Source:** `Quantity_Color.hxx`:266 - `Quantity_Color::Convert_Lab_To_Lch()`
+    /// **Source:** `Quantity_Color.hxx`:255 - `Quantity_Color::Convert_Lab_To_Lch()`
     /// Converts CIE Lab components into CIE Lch ones.
     pub fn convert_lab_to_lch(
-        theLab: &crate::ffi_types::gp_Vec3f,
-    ) -> crate::OwnedPtr<crate::ffi_types::gp_Vec3f> {
+        theLab: &crate::ffi_types::BVH_Vec3f,
+    ) -> crate::OwnedPtr<crate::ffi_types::BVH_Vec3f> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKernel::Quantity_Color_convert_lab_to_lch(theLab),
@@ -1554,12 +1549,12 @@ impl Color {
         }
     }
 
-    /// **Source:** `Quantity_Color.hxx`:271 - `Quantity_Color::Convert_Lab_To_LinearRGB()`
+    /// **Source:** `Quantity_Color.hxx`:260 - `Quantity_Color::Convert_Lab_To_LinearRGB()`
     /// Converts CIE Lab components into linear RGB ones.
     /// Note that the resulting values may be out of the valid range for RGB.
     pub fn convert_lab_to_linear_rgb(
-        theLab: &crate::ffi_types::gp_Vec3f,
-    ) -> crate::OwnedPtr<crate::ffi_types::gp_Vec3f> {
+        theLab: &crate::ffi_types::BVH_Vec3f,
+    ) -> crate::OwnedPtr<crate::ffi_types::BVH_Vec3f> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKernel::Quantity_Color_convert_lab_to_linear_rgb(theLab),
@@ -1567,11 +1562,11 @@ impl Color {
         }
     }
 
-    /// **Source:** `Quantity_Color.hxx`:275 - `Quantity_Color::Convert_Lch_To_Lab()`
+    /// **Source:** `Quantity_Color.hxx`:264 - `Quantity_Color::Convert_Lch_To_Lab()`
     /// Converts CIE Lch components into CIE Lab ones.
     pub fn convert_lch_to_lab(
-        theLch: &crate::ffi_types::gp_Vec3f,
-    ) -> crate::OwnedPtr<crate::ffi_types::gp_Vec3f> {
+        theLch: &crate::ffi_types::BVH_Vec3f,
+    ) -> crate::OwnedPtr<crate::ffi_types::BVH_Vec3f> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKernel::Quantity_Color_convert_lch_to_lab(theLch),
@@ -1579,7 +1574,7 @@ impl Color {
         }
     }
 
-    /// **Source:** `Quantity_Color.hxx`:284 - `Quantity_Color::Color2argb()`
+    /// **Source:** `Quantity_Color.hxx`:273 - `Quantity_Color::Color2argb()`
     /// Convert the color value to ARGB integer value, with alpha equals to 0.
     /// So the output is formatted as 0x00RRGGBB.
     /// Note that this unpacking does NOT involve non-linear sRGB -> linear RGB conversion,
@@ -1592,7 +1587,7 @@ impl Color {
         })
     }
 
-    /// **Source:** `Quantity_Color.hxx`:296 - `Quantity_Color::Argb2color()`
+    /// **Source:** `Quantity_Color.hxx`:284 - `Quantity_Color::Argb2color()`
     /// Convert integer ARGB value to Color. Alpha bits are ignored.
     /// Note that this packing does NOT involve linear -> non-linear sRGB conversion,
     /// as would be usually expected to preserve higher (for human eye) color precision in 4 bytes.
@@ -1602,7 +1597,7 @@ impl Color {
         })
     }
 
-    /// **Source:** `Quantity_Color.hxx`:310 - `Quantity_Color::Convert_LinearRGB_To_sRGB()`
+    /// **Source:** `Quantity_Color.hxx`:297 - `Quantity_Color::Convert_LinearRGB_To_sRGB()`
     /// Convert linear RGB component into sRGB using OpenGL specs formula (double precision), also
     /// known as gamma correction.
     pub fn convert_linear_rgb_to_s_rgb_real(theLinearValue: f64) -> f64 {
@@ -1613,7 +1608,7 @@ impl Color {
         })
     }
 
-    /// **Source:** `Quantity_Color.hxx`:318 - `Quantity_Color::Convert_LinearRGB_To_sRGB()`
+    /// **Source:** `Quantity_Color.hxx`:305 - `Quantity_Color::Convert_LinearRGB_To_sRGB()`
     /// Convert linear RGB component into sRGB using OpenGL specs formula (single precision), also
     /// known as gamma correction.
     pub fn convert_linear_rgb_to_s_rgb_float(theLinearValue: f32) -> f32 {
@@ -1624,7 +1619,7 @@ impl Color {
         })
     }
 
-    /// **Source:** `Quantity_Color.hxx`:326 - `Quantity_Color::Convert_sRGB_To_LinearRGB()`
+    /// **Source:** `Quantity_Color.hxx`:313 - `Quantity_Color::Convert_sRGB_To_LinearRGB()`
     /// Convert sRGB component into linear RGB using OpenGL specs formula (double precision), also
     /// known as gamma correction.
     pub fn convert_s_rgb_to_linear_rgb_real(thesRGBValue: f64) -> f64 {
@@ -1633,7 +1628,7 @@ impl Color {
         })
     }
 
-    /// **Source:** `Quantity_Color.hxx`:334 - `Quantity_Color::Convert_sRGB_To_LinearRGB()`
+    /// **Source:** `Quantity_Color.hxx`:321 - `Quantity_Color::Convert_sRGB_To_LinearRGB()`
     /// Convert sRGB component into linear RGB using OpenGL specs formula (single precision), also
     /// known as gamma correction.
     pub fn convert_s_rgb_to_linear_rgb_float(thesRGBValue: f32) -> f32 {
@@ -1644,7 +1639,7 @@ impl Color {
         })
     }
 
-    /// **Source:** `Quantity_Color.hxx`:359 - `Quantity_Color::Convert_LinearRGB_To_sRGB_approx22()`
+    /// **Source:** `Quantity_Color.hxx`:346 - `Quantity_Color::Convert_LinearRGB_To_sRGB_approx22()`
     /// Convert linear RGB component into sRGB using approximated uniform gamma coefficient 2.2.
     pub fn convert_linear_rgb_to_s_rgb_approx22_float(theLinearValue: f32) -> f32 {
         crate::check_result(unsafe {
@@ -1654,7 +1649,7 @@ impl Color {
         })
     }
 
-    /// **Source:** `Quantity_Color.hxx`:365 - `Quantity_Color::Convert_sRGB_To_LinearRGB_approx22()`
+    /// **Source:** `Quantity_Color.hxx`:352 - `Quantity_Color::Convert_sRGB_To_LinearRGB_approx22()`
     /// Convert sRGB component into linear RGB using approximated uniform gamma coefficient 2.2
     pub fn convert_s_rgb_to_linear_rgb_approx22_float(thesRGBValue: f32) -> f32 {
         crate::check_result(unsafe {
@@ -1664,27 +1659,27 @@ impl Color {
         })
     }
 
-    /// **Source:** `Quantity_Color.hxx`:371 - `Quantity_Color::Convert_LinearRGB_To_sRGB_approx22()`
+    /// **Source:** `Quantity_Color.hxx`:358 - `Quantity_Color::Convert_LinearRGB_To_sRGB_approx22()`
     /// Convert linear RGB components into sRGB using approximated uniform gamma coefficient 2.2
     pub fn convert_linear_rgb_to_s_rgb_approx22_vec3f(
-        theRGB: &crate::ffi_types::gp_Vec3f,
-    ) -> crate::OwnedPtr<crate::ffi_types::gp_Vec3f> {
+        theRGB: &crate::ffi_types::BVH_Vec3f,
+    ) -> crate::OwnedPtr<crate::ffi_types::BVH_Vec3f> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKernel::Quantity_Color_convert_linear_rgb_to_s_rgb_approx22_vec3f(theRGB)))
         }
     }
 
-    /// **Source:** `Quantity_Color.hxx`:380 - `Quantity_Color::Convert_sRGB_To_LinearRGB_approx22()`
+    /// **Source:** `Quantity_Color.hxx`:367 - `Quantity_Color::Convert_sRGB_To_LinearRGB_approx22()`
     /// Convert sRGB components into linear RGB using approximated uniform gamma coefficient 2.2
     pub fn convert_s_rgb_to_linear_rgb_approx22_vec3f(
-        theRGB: &crate::ffi_types::gp_Vec3f,
-    ) -> crate::OwnedPtr<crate::ffi_types::gp_Vec3f> {
+        theRGB: &crate::ffi_types::BVH_Vec3f,
+    ) -> crate::OwnedPtr<crate::ffi_types::BVH_Vec3f> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKernel::Quantity_Color_convert_s_rgb_to_linear_rgb_approx22_vec3f(theRGB)))
         }
     }
 
-    /// **Source:** `Quantity_Color.hxx`:389 - `Quantity_Color::HlsRgb()`
+    /// **Source:** `Quantity_Color.hxx`:376 - `Quantity_Color::HlsRgb()`
     /// Converts HLS components into sRGB ones.
     pub fn hls_rgb(
         theH: f64,
@@ -1699,7 +1694,7 @@ impl Color {
         })
     }
 
-    /// **Source:** `Quantity_Color.hxx`:404 - `Quantity_Color::RgbHls()`
+    /// **Source:** `Quantity_Color.hxx`:391 - `Quantity_Color::RgbHls()`
     /// Converts sRGB components into HLS ones.
     pub fn rgb_hls(
         theR: f64,
@@ -1714,13 +1709,13 @@ impl Color {
         })
     }
 
-    /// **Source:** `Quantity_Color.hxx`:420 - `Quantity_Color::Epsilon()`
+    /// **Source:** `Quantity_Color.hxx`:407 - `Quantity_Color::Epsilon()`
     /// Returns the value used to compare two colors for equality; 0.0001 by default.
     pub fn epsilon() -> f64 {
         crate::check_result(unsafe { crate::ffi_extern_TKernel::Quantity_Color_epsilon() })
     }
 
-    /// **Source:** `Quantity_Color.hxx`:423 - `Quantity_Color::SetEpsilon()`
+    /// **Source:** `Quantity_Color.hxx`:410 - `Quantity_Color::SetEpsilon()`
     /// Set the value used to compare two colors for equality.
     pub fn set_epsilon(theEpsilon: f64) {
         crate::check_void_result(unsafe {
@@ -1861,7 +1856,7 @@ impl ColorRGBA {
         })
     }
 
-    /// **Source:** `Quantity_ColorRGBA.hxx`:84 - `Quantity_ColorRGBA::IsDifferent()`
+    /// **Source:** `Quantity_ColorRGBA.hxx`:87 - `Quantity_ColorRGBA::IsDifferent()`
     /// Returns true if the distance between colors is greater than Epsilon().
     pub fn is_different(&self, theOther: &ColorRGBA) -> bool {
         crate::check_result(unsafe {
@@ -1872,7 +1867,7 @@ impl ColorRGBA {
         })
     }
 
-    /// **Source:** `Quantity_ColorRGBA.hxx`:94 - `Quantity_ColorRGBA::IsEqual()`
+    /// **Source:** `Quantity_ColorRGBA.hxx`:100 - `Quantity_ColorRGBA::IsEqual()`
     /// Two colors are considered to be equal if their distance is no greater than Epsilon().
     pub fn is_equal(&self, theOther: &ColorRGBA) -> bool {
         crate::check_result(unsafe {
@@ -1880,7 +1875,7 @@ impl ColorRGBA {
         })
     }
 
-    /// **Source:** `Quantity_ColorRGBA.hxx`:110 - `Quantity_ColorRGBA::ColorFromName()`
+    /// **Source:** `Quantity_ColorRGBA.hxx`:116 - `Quantity_ColorRGBA::ColorFromName()`
     /// Finds color from predefined names.
     /// For example, the name of the color which corresponds to "BLACK" is Quantity_NOC_BLACK.
     /// An alpha component is set to 1.0.
@@ -1897,7 +1892,7 @@ impl ColorRGBA {
         })
     }
 
-    /// **Source:** `Quantity_ColorRGBA.hxx`:130 - `Quantity_ColorRGBA::ColorFromHex()`
+    /// **Source:** `Quantity_ColorRGBA.hxx`:136 - `Quantity_ColorRGBA::ColorFromHex()`
     /// Parses the string as a hex color (like "#FF0" for short sRGB color, "#FF0F" for short sRGBA
     /// color,
     /// "#FFFF00" for RGB color, or "#FFFF00FF" for RGBA color)
@@ -1921,7 +1916,7 @@ impl ColorRGBA {
         })
     }
 
-    /// **Source:** `Quantity_ColorRGBA.hxx`:135 - `Quantity_ColorRGBA::ColorToHex()`
+    /// **Source:** `Quantity_ColorRGBA.hxx`:141 - `Quantity_ColorRGBA::ColorToHex()`
     /// Returns hex sRGBA string in format "#RRGGBBAA".
     pub fn color_to_hex(
         theColor: &ColorRGBA,
@@ -1937,7 +1932,7 @@ impl ColorRGBA {
         }
     }
 
-    /// **Source:** `Quantity_ColorRGBA.hxx`:154 - `Quantity_ColorRGBA::Convert_LinearRGB_To_sRGB()`
+    /// **Source:** `Quantity_ColorRGBA.hxx`:158 - `Quantity_ColorRGBA::Convert_LinearRGB_To_sRGB()`
     /// Convert linear RGB components into sRGB using OpenGL specs formula.
     pub fn convert_linear_rgb_to_s_rgb(
         theRGB: &crate::ffi_types::BVH_Vec4f,
@@ -1949,7 +1944,7 @@ impl ColorRGBA {
         }
     }
 
-    /// **Source:** `Quantity_ColorRGBA.hxx`:163 - `Quantity_ColorRGBA::Convert_sRGB_To_LinearRGB()`
+    /// **Source:** `Quantity_ColorRGBA.hxx`:168 - `Quantity_ColorRGBA::Convert_sRGB_To_LinearRGB()`
     /// Convert sRGB components into linear RGB using OpenGL specs formula.
     pub fn convert_s_rgb_to_linear_rgb(
         theRGB: &crate::ffi_types::BVH_Vec4f,
@@ -1999,12 +1994,13 @@ impl Date {
         }
     }
 
-    /// **Source:** `Quantity_Date.hxx`:61 - `Quantity_Date::Quantity_Date()`
+    /// **Source:** `Quantity_Date.hxx`:62 - `Quantity_Date::Quantity_Date()`
     /// Constructs a date from the year yyyy, the
     /// month mm, the day dd, the hour hh, the minute
     /// mn, the second ss, the millisecond mis
-    /// (defaulted to 0) and the microsecond mics (defaulted to 0)..
-    /// With:      1 <= mm <= 12
+    /// (defaulted to 0) and the microsecond mics (defaulted to 0).
+    /// With:
+    /// 1 <= mm <= 12
     /// 1 <= dd <= max number of days of <mm>
     /// 1979 <= yyyy
     /// 0 <= hh <= 23
@@ -2034,12 +2030,13 @@ impl Date {
         }
     }
 
-    /// **Source:** `Quantity_Date.hxx`:61 - `Quantity_Date::Quantity_Date()`
+    /// **Source:** `Quantity_Date.hxx`:62 - `Quantity_Date::Quantity_Date()`
     /// Constructs a date from the year yyyy, the
     /// month mm, the day dd, the hour hh, the minute
     /// mn, the second ss, the millisecond mis
-    /// (defaulted to 0) and the microsecond mics (defaulted to 0)..
-    /// With:      1 <= mm <= 12
+    /// (defaulted to 0) and the microsecond mics (defaulted to 0).
+    /// With:
+    /// 1 <= mm <= 12
     /// 1 <= dd <= max number of days of <mm>
     /// 1979 <= yyyy
     /// 0 <= hh <= 23
@@ -2062,12 +2059,13 @@ impl Date {
         Self::new_int8(mm, dd, yyyy, hh, mn, ss, mis, 0)
     }
 
-    /// **Source:** `Quantity_Date.hxx`:61 - `Quantity_Date::Quantity_Date()`
+    /// **Source:** `Quantity_Date.hxx`:62 - `Quantity_Date::Quantity_Date()`
     /// Constructs a date from the year yyyy, the
     /// month mm, the day dd, the hour hh, the minute
     /// mn, the second ss, the millisecond mis
-    /// (defaulted to 0) and the microsecond mics (defaulted to 0)..
-    /// With:      1 <= mm <= 12
+    /// (defaulted to 0) and the microsecond mics (defaulted to 0).
+    /// With:
+    /// 1 <= mm <= 12
     /// 1 <= dd <= max number of days of <mm>
     /// 1979 <= yyyy
     /// 0 <= hh <= 23
@@ -2089,7 +2087,7 @@ impl Date {
         Self::new_int8(mm, dd, yyyy, hh, mn, ss, 0, 0)
     }
 
-    /// **Source:** `Quantity_Date.hxx`:79 - `Quantity_Date::Values()`
+    /// **Source:** `Quantity_Date.hxx`:80 - `Quantity_Date::Values()`
     /// Gets a complete Date.
     /// -   in mm - the month,
     /// -   in dd - the day,
@@ -2125,7 +2123,7 @@ impl Date {
         })
     }
 
-    /// **Source:** `Quantity_Date.hxx`:95 - `Quantity_Date::SetValues()`
+    /// **Source:** `Quantity_Date.hxx`:96 - `Quantity_Date::SetValues()`
     /// Assigns to this date the year yyyy, the month
     /// mm, the day dd, the hour hh, the minute mn, the
     /// second ss, the millisecond mis (defaulted to 0)
@@ -2159,7 +2157,7 @@ impl Date {
         })
     }
 
-    /// **Source:** `Quantity_Date.hxx`:108 - `Quantity_Date::Difference()`
+    /// **Source:** `Quantity_Date.hxx`:109 - `Quantity_Date::Difference()`
     /// Subtracts one Date from another one to find the period
     /// between and returns the value.
     /// The result is the absolute value between the difference
@@ -2172,7 +2170,7 @@ impl Date {
         }
     }
 
-    /// **Source:** `Quantity_Date.hxx`:113 - `Quantity_Date::Subtract()`
+    /// **Source:** `Quantity_Date.hxx`:114 - `Quantity_Date::Subtract()`
     /// Subtracts a period from a Date and returns the new Date.
     /// Raises an exception if the result date is anterior to
     /// Jan 1, 1979.
@@ -2184,7 +2182,7 @@ impl Date {
         }
     }
 
-    /// **Source:** `Quantity_Date.hxx`:118 - `Quantity_Date::Add()`
+    /// **Source:** `Quantity_Date.hxx`:119 - `Quantity_Date::Add()`
     /// Adds a Period to a Date and returns the new Date.
     pub fn add(&mut self, aPeriod: &Period) -> crate::OwnedPtr<Date> {
         unsafe {
@@ -2194,7 +2192,7 @@ impl Date {
         }
     }
 
-    /// **Source:** `Quantity_Date.hxx`:123 - `Quantity_Date::Year()`
+    /// **Source:** `Quantity_Date.hxx`:124 - `Quantity_Date::Year()`
     /// Returns year of a Date.
     pub fn year(&mut self) -> i32 {
         crate::check_result(unsafe {
@@ -2202,7 +2200,7 @@ impl Date {
         })
     }
 
-    /// **Source:** `Quantity_Date.hxx`:126 - `Quantity_Date::Month()`
+    /// **Source:** `Quantity_Date.hxx`:127 - `Quantity_Date::Month()`
     /// Returns month of a Date.
     pub fn month(&mut self) -> i32 {
         crate::check_result(unsafe {
@@ -2210,7 +2208,7 @@ impl Date {
         })
     }
 
-    /// **Source:** `Quantity_Date.hxx`:129 - `Quantity_Date::Day()`
+    /// **Source:** `Quantity_Date.hxx`:130 - `Quantity_Date::Day()`
     /// Returns Day of a Date.
     pub fn day(&mut self) -> i32 {
         crate::check_result(unsafe {
@@ -2218,7 +2216,7 @@ impl Date {
         })
     }
 
-    /// **Source:** `Quantity_Date.hxx`:132 - `Quantity_Date::Hour()`
+    /// **Source:** `Quantity_Date.hxx`:133 - `Quantity_Date::Hour()`
     /// Returns Hour of a Date.
     pub fn hour(&mut self) -> i32 {
         crate::check_result(unsafe {
@@ -2226,7 +2224,7 @@ impl Date {
         })
     }
 
-    /// **Source:** `Quantity_Date.hxx`:135 - `Quantity_Date::Minute()`
+    /// **Source:** `Quantity_Date.hxx`:136 - `Quantity_Date::Minute()`
     /// Returns minute of a Date.
     pub fn minute(&mut self) -> i32 {
         crate::check_result(unsafe {
@@ -2234,15 +2232,15 @@ impl Date {
         })
     }
 
-    /// **Source:** `Quantity_Date.hxx`:138 - `Quantity_Date::Second()`
-    /// Returns seconde of a Date.
+    /// **Source:** `Quantity_Date.hxx`:139 - `Quantity_Date::Second()`
+    /// Returns second of a Date.
     pub fn second(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKernel::Quantity_Date_second(self as *mut Self)
         })
     }
 
-    /// **Source:** `Quantity_Date.hxx`:141 - `Quantity_Date::MilliSecond()`
+    /// **Source:** `Quantity_Date.hxx`:142 - `Quantity_Date::MilliSecond()`
     /// Returns millisecond of a Date.
     pub fn milli_second(&mut self) -> i32 {
         crate::check_result(unsafe {
@@ -2250,7 +2248,7 @@ impl Date {
         })
     }
 
-    /// **Source:** `Quantity_Date.hxx`:144 - `Quantity_Date::MicroSecond()`
+    /// **Source:** `Quantity_Date.hxx`:145 - `Quantity_Date::MicroSecond()`
     /// Returns microsecond of a Date.
     pub fn micro_second(&mut self) -> i32 {
         crate::check_result(unsafe {
@@ -2258,7 +2256,7 @@ impl Date {
         })
     }
 
-    /// **Source:** `Quantity_Date.hxx`:148 - `Quantity_Date::IsEqual()`
+    /// **Source:** `Quantity_Date.hxx`:149 - `Quantity_Date::IsEqual()`
     /// Returns TRUE if both <me> and <other> are equal.
     /// This method is an alias of operator ==.
     pub fn is_equal(&self, anOther: &Date) -> bool {
@@ -2267,7 +2265,7 @@ impl Date {
         })
     }
 
-    /// **Source:** `Quantity_Date.hxx`:153 - `Quantity_Date::IsEarlier()`
+    /// **Source:** `Quantity_Date.hxx`:160 - `Quantity_Date::IsEarlier()`
     /// Returns TRUE if <me> is earlier than <other>.
     pub fn is_earlier(&self, anOther: &Date) -> bool {
         crate::check_result(unsafe {
@@ -2275,7 +2273,7 @@ impl Date {
         })
     }
 
-    /// **Source:** `Quantity_Date.hxx`:158 - `Quantity_Date::IsLater()`
+    /// **Source:** `Quantity_Date.hxx`:171 - `Quantity_Date::IsLater()`
     /// Returns TRUE if <me> is later then <other>.
     pub fn is_later(&self, anOther: &Date) -> bool {
         crate::check_result(unsafe {
@@ -2283,7 +2281,7 @@ impl Date {
         })
     }
 
-    /// **Source:** `Quantity_Date.hxx`:179 - `Quantity_Date::IsValid()`
+    /// **Source:** `Quantity_Date.hxx`:195 - `Quantity_Date::IsValid()`
     /// Checks the validity of a date - returns true if a
     /// date defined from the year yyyy, the month mm,
     /// the day dd, the hour hh, the minute mn, the
@@ -2316,7 +2314,7 @@ impl Date {
         })
     }
 
-    /// **Source:** `Quantity_Date.hxx`:191 - `Quantity_Date::IsLeap()`
+    /// **Source:** `Quantity_Date.hxx`:207 - `Quantity_Date::IsLeap()`
     /// Returns true if a year is a leap year.
     /// The leap years are divisible by 4 and not by 100 except
     /// the years divisible by 400.
@@ -2329,7 +2327,7 @@ impl Date {
 // From Quantity_DateDefinitionError.hxx
 // ========================
 
-/// **Source:** `Quantity_DateDefinitionError.hxx`:35 - `Quantity_DateDefinitionError`
+/// **Source:** `Quantity_DateDefinitionError.hxx`:31 - `Quantity_DateDefinitionError`
 pub use crate::ffi_types::Quantity_DateDefinitionError as DateDefinitionError;
 
 unsafe impl crate::CppDeletable for DateDefinitionError {
@@ -2341,16 +2339,7 @@ unsafe impl crate::CppDeletable for DateDefinitionError {
 }
 
 impl DateDefinitionError {
-    /// **Source:** `Quantity_DateDefinitionError.hxx`:35 - `Quantity_DateDefinitionError::Quantity_DateDefinitionError()`
-    pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKernel::Quantity_DateDefinitionError_ctor(),
-            ))
-        }
-    }
-
-    /// **Source:** `Quantity_DateDefinitionError.hxx`:35 - `Quantity_DateDefinitionError::Quantity_DateDefinitionError()`
+    /// **Source:** `Quantity_DateDefinitionError.hxx`:31 - `Quantity_DateDefinitionError::Quantity_DateDefinitionError()`
     pub fn new_charptr(theMessage: &str) -> crate::OwnedPtr<Self> {
         let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
         unsafe {
@@ -2362,7 +2351,7 @@ impl DateDefinitionError {
         }
     }
 
-    /// **Source:** `Quantity_DateDefinitionError.hxx`:35 - `Quantity_DateDefinitionError::Quantity_DateDefinitionError()`
+    /// **Source:** `Quantity_DateDefinitionError.hxx`:31 - `Quantity_DateDefinitionError::Quantity_DateDefinitionError()`
     pub fn new_charptr2(theMessage: &str, theStackTrace: &str) -> crate::OwnedPtr<Self> {
         let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
         let c_theStackTrace = std::ffi::CString::new(theStackTrace).unwrap();
@@ -2376,83 +2365,17 @@ impl DateDefinitionError {
         }
     }
 
-    /// **Source:** `Quantity_DateDefinitionError.hxx`:35 - `Quantity_DateDefinitionError::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `Quantity_DateDefinitionError.hxx`:31 - `Quantity_DateDefinitionError::ExceptionType()`
+    pub fn exception_type(&self) -> std::string::String {
         unsafe {
-            &*(crate::check_result(
-                crate::ffi_extern_TKernel::Quantity_DateDefinitionError_dynamic_type(
+            std::ffi::CStr::from_ptr(crate::check_result(
+                crate::ffi_extern_TKernel::Quantity_DateDefinitionError_exception_type(
                     self as *const Self,
                 ),
             ))
         }
-    }
-
-    /// **Source:** `Quantity_DateDefinitionError.hxx`:35 - `Quantity_DateDefinitionError::Raise()`
-    pub fn raise_charptr(theMessage: &str) {
-        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKernel::Quantity_DateDefinitionError_raise_charptr(
-                c_theMessage.as_ptr(),
-            )
-        })
-    }
-
-    /// **Source:** `Quantity_DateDefinitionError.hxx`:35 - `Quantity_DateDefinitionError::Raise()`
-    pub fn raise_sstream(theMessage: &mut crate::ffi_types::Standard_SStream) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKernel::Quantity_DateDefinitionError_raise_sstream(theMessage)
-        })
-    }
-
-    /// **Source:** `Quantity_DateDefinitionError.hxx`:35 - `Quantity_DateDefinitionError::NewInstance()`
-    pub fn new_instance_charptr(
-        theMessage: &str,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleQuantityDateDefinitionError> {
-        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKernel::Quantity_DateDefinitionError_new_instance_charptr(
-                    c_theMessage.as_ptr(),
-                ),
-            ))
-        }
-    }
-
-    /// **Source:** `Quantity_DateDefinitionError.hxx`:35 - `Quantity_DateDefinitionError::NewInstance()`
-    pub fn new_instance_charptr2(
-        theMessage: &str,
-        theStackTrace: &str,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleQuantityDateDefinitionError> {
-        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
-        let c_theStackTrace = std::ffi::CString::new(theStackTrace).unwrap();
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKernel::Quantity_DateDefinitionError_new_instance_charptr2(
-                    c_theMessage.as_ptr(),
-                    c_theStackTrace.as_ptr(),
-                ),
-            ))
-        }
-    }
-
-    /// **Source:** `Quantity_DateDefinitionError.hxx`:35 - `Quantity_DateDefinitionError::get_type_name()`
-    pub fn get_type_name() -> std::string::String {
-        unsafe {
-            std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi_extern_TKernel::Quantity_DateDefinitionError_get_type_name(),
-            ))
-        }
         .to_string_lossy()
         .into_owned()
-    }
-
-    /// **Source:** `Quantity_DateDefinitionError.hxx`:35 - `Quantity_DateDefinitionError::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
-        unsafe {
-            &*(crate::check_result(
-                crate::ffi_extern_TKernel::Quantity_DateDefinitionError_get_type_descriptor(),
-            ))
-        }
     }
 
     /// Upcast to Standard_DomainError
@@ -2499,40 +2422,7 @@ impl DateDefinitionError {
         }
     }
 
-    /// Upcast to Standard_Transient
-    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        unsafe {
-            &*crate::check_result(
-                crate::ffi_extern_TKernel::Quantity_DateDefinitionError_as_Standard_Transient(
-                    self as *const Self,
-                ),
-            )
-        }
-    }
-
-    /// Upcast to Standard_Transient (mutable)
-    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        unsafe {
-            &mut *crate::check_result(
-                crate::ffi_extern_TKernel::Quantity_DateDefinitionError_as_Standard_Transient_mut(
-                    self as *mut Self,
-                ),
-            )
-        }
-    }
-
-    /// Wrap in a Handle (reference-counted smart pointer)
-    pub fn to_handle(
-        obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleQuantityDateDefinitionError> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKernel::Quantity_DateDefinitionError_to_handle(obj.into_raw()),
-            ))
-        }
-    }
-
-    /// Inherited: **Source:** `Standard_Failure.hxx`:58 - `Standard_Failure::Print()`
+    /// Inherited: **Source:** `Standard_Failure.hxx`:73 - `Standard_Failure::Print()`
     pub fn print(&self, theStream: &mut crate::ffi_types::Standard_OStream) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKernel::Quantity_DateDefinitionError_inherited_Print(
@@ -2540,455 +2430,6 @@ impl DateDefinitionError {
                 theStream,
             )
         })
-    }
-
-    /// Inherited: **Source:** `Standard_Failure.hxx`:72 - `Standard_Failure::Reraise()`
-    pub fn reraise(&mut self) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKernel::Quantity_DateDefinitionError_inherited_Reraise(
-                self as *mut Self,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Failure.hxx`:112 - `Standard_Failure::Jump()`
-    pub fn jump(&mut self) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKernel::Quantity_DateDefinitionError_inherited_Jump(
-                self as *mut Self,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKernel::Quantity_DateDefinitionError_inherited_IsInstance(
-                self as *const Self,
-                theType,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKernel::Quantity_DateDefinitionError_inherited_IsKind(
-                self as *const Self,
-                theType,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
-    pub fn this(&self) -> Option<&crate::standard::Transient> {
-        {
-            let __val = crate::check_result(unsafe {
-                crate::ffi_extern_TKernel::Quantity_DateDefinitionError_inherited_This(
-                    self as *const Self,
-                )
-            });
-            if __val.is_null() {
-                None
-            } else {
-                Some(unsafe { &*__val })
-            }
-        }
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
-    pub fn get_ref_count(&self) -> i32 {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKernel::Quantity_DateDefinitionError_inherited_GetRefCount(
-                self as *const Self,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
-    pub fn increment_ref_counter(&mut self) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKernel::Quantity_DateDefinitionError_inherited_IncrementRefCounter(
-                self as *mut Self,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
-    pub fn decrement_ref_counter(&mut self) -> i32 {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKernel::Quantity_DateDefinitionError_inherited_DecrementRefCounter(
-                self as *mut Self,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
-    pub fn delete(&self) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKernel::Quantity_DateDefinitionError_inherited_Delete(
-                self as *const Self,
-            )
-        })
-    }
-}
-
-pub use crate::ffi_types::HandleQuantityDateDefinitionError;
-
-unsafe impl crate::CppDeletable for HandleQuantityDateDefinitionError {
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            crate::ffi_extern_TKernel::HandleQuantityDateDefinitionError_destructor(ptr);
-        }
-    }
-}
-
-unsafe impl crate::CppCopyable for HandleQuantityDateDefinitionError {
-    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        unsafe {
-            crate::check_result(crate::ffi_extern_TKernel::HandleQuantityDateDefinitionError_clone(
-                ptr,
-            ))
-        }
-    }
-}
-
-impl HandleQuantityDateDefinitionError {
-    /// Returns `true` if this Handle is null (doesn't point to any object).
-    pub fn is_null(&self) -> bool {
-        unsafe {
-            crate::ffi_extern_TKernel::HandleQuantityDateDefinitionError_is_null(
-                self as *const Self,
-            )
-        }
-    }
-
-    /// Dereference this Handle to access the underlying Quantity_DateDefinitionError
-    pub fn get(&self) -> &crate::ffi_types::Quantity_DateDefinitionError {
-        unsafe {
-            &*crate::check_result(crate::ffi_extern_TKernel::HandleQuantityDateDefinitionError_get(
-                self as *const Self,
-            ))
-        }
-    }
-
-    /// Dereference this Handle to mutably access the underlying Quantity_DateDefinitionError
-    pub fn get_mut(&mut self) -> &mut crate::ffi_types::Quantity_DateDefinitionError {
-        unsafe {
-            &mut *crate::check_result(
-                crate::ffi_extern_TKernel::HandleQuantityDateDefinitionError_get_mut(
-                    self as *mut Self,
-                ),
-            )
-        }
-    }
-
-    /// Upcast Handle<Quantity_DateDefinitionError> to Handle<Standard_DomainError>
-    pub fn to_handle_domain_error(
-        &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardDomainError> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKernel::HandleQuantityDateDefinitionError_to_HandleStandardDomainError(self as *const Self)))
-        }
-    }
-
-    /// Upcast Handle<Quantity_DateDefinitionError> to Handle<Standard_Failure>
-    pub fn to_handle_failure(&self) -> crate::OwnedPtr<crate::ffi_types::HandleStandardFailure> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKernel::HandleQuantityDateDefinitionError_to_HandleStandardFailure(self as *const Self)))
-        }
-    }
-
-    /// Upcast Handle<Quantity_DateDefinitionError> to Handle<Standard_Transient>
-    pub fn to_handle_transient(
-        &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKernel::HandleQuantityDateDefinitionError_to_HandleStandardTransient(self as *const Self)))
-        }
-    }
-}
-
-// ========================
-// From Quantity_HArray1OfColor.hxx
-// ========================
-
-/// **Source:** `Quantity_HArray1OfColor.hxx`:23 - `Quantity_HArray1OfColor`
-pub use crate::ffi_types::Quantity_HArray1OfColor as HArray1OfColor;
-
-unsafe impl crate::CppDeletable for HArray1OfColor {
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            crate::ffi_extern_TKernel::Quantity_HArray1OfColor_destructor(ptr);
-        }
-    }
-}
-
-impl HArray1OfColor {
-    /// **Source:** `Quantity_HArray1OfColor.hxx`:23 - `Quantity_HArray1OfColor::Quantity_HArray1OfColor()`
-    pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKernel::Quantity_HArray1OfColor_ctor(),
-            ))
-        }
-    }
-
-    /// **Source:** `Quantity_HArray1OfColor.hxx`:23 - `Quantity_HArray1OfColor::Quantity_HArray1OfColor()`
-    pub fn new_int2(theLower: i32, theUpper: i32) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKernel::Quantity_HArray1OfColor_ctor_int2(theLower, theUpper),
-            ))
-        }
-    }
-
-    /// **Source:** `Quantity_HArray1OfColor.hxx`:23 - `Quantity_HArray1OfColor::Quantity_HArray1OfColor()`
-    pub fn new_int2_color(theLower: i32, theUpper: i32, theValue: &Color) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKernel::Quantity_HArray1OfColor_ctor_int2_color(
-                    theLower, theUpper, theValue,
-                ),
-            ))
-        }
-    }
-
-    /// **Source:** `Quantity_HArray1OfColor.hxx`:23 - `Quantity_HArray1OfColor::Quantity_HArray1OfColor()`
-    pub fn new_color_int2_bool(
-        theBegin: &Color,
-        theLower: i32,
-        theUpper: i32,
-        arg3: bool,
-    ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKernel::Quantity_HArray1OfColor_ctor_color_int2_bool(
-                    theBegin, theLower, theUpper, arg3,
-                ),
-            ))
-        }
-    }
-
-    /// **Source:** `Quantity_HArray1OfColor.hxx`:23 - `Quantity_HArray1OfColor::Quantity_HArray1OfColor()`
-    pub fn new_array1ofcolor(
-        theOther: &crate::ffi_types::Quantity_Array1OfColor,
-    ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKernel::Quantity_HArray1OfColor_ctor_array1ofcolor(theOther),
-            ))
-        }
-    }
-
-    /// **Source:** `Quantity_HArray1OfColor.hxx`:23 - `Quantity_HArray1OfColor::Array1()`
-    pub fn array1(&self) -> &crate::ffi_types::Quantity_Array1OfColor {
-        unsafe {
-            &*(crate::check_result(crate::ffi_extern_TKernel::Quantity_HArray1OfColor_array1(
-                self as *const Self,
-            )))
-        }
-    }
-
-    /// **Source:** `Quantity_HArray1OfColor.hxx`:23 - `Quantity_HArray1OfColor::ChangeArray1()`
-    pub fn change_array1(&mut self) -> &mut crate::ffi_types::Quantity_Array1OfColor {
-        unsafe {
-            &mut *(crate::check_result(
-                crate::ffi_extern_TKernel::Quantity_HArray1OfColor_change_array1(self as *mut Self),
-            ))
-        }
-    }
-
-    /// **Source:** `Quantity_HArray1OfColor.hxx`:23 - `Quantity_HArray1OfColor::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
-        unsafe {
-            &*(crate::check_result(
-                crate::ffi_extern_TKernel::Quantity_HArray1OfColor_dynamic_type(
-                    self as *const Self,
-                ),
-            ))
-        }
-    }
-
-    /// **Source:** `Quantity_HArray1OfColor.hxx`:23 - `Quantity_HArray1OfColor::get_type_name()`
-    pub fn get_type_name() -> std::string::String {
-        unsafe {
-            std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi_extern_TKernel::Quantity_HArray1OfColor_get_type_name(),
-            ))
-        }
-        .to_string_lossy()
-        .into_owned()
-    }
-
-    /// **Source:** `Quantity_HArray1OfColor.hxx`:23 - `Quantity_HArray1OfColor::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
-        unsafe {
-            &*(crate::check_result(
-                crate::ffi_extern_TKernel::Quantity_HArray1OfColor_get_type_descriptor(),
-            ))
-        }
-    }
-
-    /// Upcast to Standard_Transient
-    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        unsafe {
-            &*crate::check_result(
-                crate::ffi_extern_TKernel::Quantity_HArray1OfColor_as_Standard_Transient(
-                    self as *const Self,
-                ),
-            )
-        }
-    }
-
-    /// Upcast to Standard_Transient (mutable)
-    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        unsafe {
-            &mut *crate::check_result(
-                crate::ffi_extern_TKernel::Quantity_HArray1OfColor_as_Standard_Transient_mut(
-                    self as *mut Self,
-                ),
-            )
-        }
-    }
-
-    /// Wrap in a Handle (reference-counted smart pointer)
-    pub fn to_handle(
-        obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleQuantityHArray1OfColor> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKernel::Quantity_HArray1OfColor_to_handle(obj.into_raw()),
-            ))
-        }
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKernel::Quantity_HArray1OfColor_inherited_IsInstance(
-                self as *const Self,
-                theType,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKernel::Quantity_HArray1OfColor_inherited_IsKind(
-                self as *const Self,
-                theType,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
-    pub fn this(&self) -> Option<&crate::standard::Transient> {
-        {
-            let __val = crate::check_result(unsafe {
-                crate::ffi_extern_TKernel::Quantity_HArray1OfColor_inherited_This(
-                    self as *const Self,
-                )
-            });
-            if __val.is_null() {
-                None
-            } else {
-                Some(unsafe { &*__val })
-            }
-        }
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
-    pub fn get_ref_count(&self) -> i32 {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKernel::Quantity_HArray1OfColor_inherited_GetRefCount(
-                self as *const Self,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
-    pub fn increment_ref_counter(&mut self) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKernel::Quantity_HArray1OfColor_inherited_IncrementRefCounter(
-                self as *mut Self,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
-    pub fn decrement_ref_counter(&mut self) -> i32 {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKernel::Quantity_HArray1OfColor_inherited_DecrementRefCounter(
-                self as *mut Self,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
-    pub fn delete(&self) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKernel::Quantity_HArray1OfColor_inherited_Delete(self as *const Self)
-        })
-    }
-}
-
-pub use crate::ffi_types::HandleQuantityHArray1OfColor;
-
-unsafe impl crate::CppDeletable for HandleQuantityHArray1OfColor {
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            crate::ffi_extern_TKernel::HandleQuantityHArray1OfColor_destructor(ptr);
-        }
-    }
-}
-
-unsafe impl crate::CppCopyable for HandleQuantityHArray1OfColor {
-    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        unsafe {
-            crate::check_result(crate::ffi_extern_TKernel::HandleQuantityHArray1OfColor_clone(ptr))
-        }
-    }
-}
-
-impl HandleQuantityHArray1OfColor {
-    /// Returns `true` if this Handle is null (doesn't point to any object).
-    pub fn is_null(&self) -> bool {
-        unsafe {
-            crate::ffi_extern_TKernel::HandleQuantityHArray1OfColor_is_null(self as *const Self)
-        }
-    }
-
-    /// Dereference this Handle to access the underlying Quantity_HArray1OfColor
-    pub fn get(&self) -> &crate::ffi_types::Quantity_HArray1OfColor {
-        unsafe {
-            &*crate::check_result(crate::ffi_extern_TKernel::HandleQuantityHArray1OfColor_get(
-                self as *const Self,
-            ))
-        }
-    }
-
-    /// Dereference this Handle to mutably access the underlying Quantity_HArray1OfColor
-    pub fn get_mut(&mut self) -> &mut crate::ffi_types::Quantity_HArray1OfColor {
-        unsafe {
-            &mut *crate::check_result(
-                crate::ffi_extern_TKernel::HandleQuantityHArray1OfColor_get_mut(self as *mut Self),
-            )
-        }
-    }
-
-    /// Upcast Handle<Quantity_HArray1OfColor> to Handle<Standard_Transient>
-    pub fn to_handle_transient(
-        &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKernel::HandleQuantityHArray1OfColor_to_HandleStandardTransient(
-                    self as *const Self,
-                ),
-            ))
-        }
     }
 }
 
@@ -3011,9 +2452,10 @@ unsafe impl crate::CppDeletable for Period {
 }
 
 impl Period {
-    /// **Source:** `Quantity_Period.hxx`:41 - `Quantity_Period::Quantity_Period()`
+    /// **Source:** `Quantity_Period.hxx`:42 - `Quantity_Period::Quantity_Period()`
     /// Creates a Period
-    /// With:      0 <= dd
+    /// With:
+    /// 0 <= dd
     /// 0 <= hh
     /// 0 <= mn
     /// 0 <= ss
@@ -3034,7 +2476,7 @@ impl Period {
         }
     }
 
-    /// **Source:** `Quantity_Period.hxx`:59 - `Quantity_Period::Quantity_Period()`
+    /// **Source:** `Quantity_Period.hxx`:60 - `Quantity_Period::Quantity_Period()`
     /// Creates a Period with a number of seconds and microseconds.
     /// Exceptions
     /// Quantity_PeriodDefinitionError:
@@ -3054,9 +2496,10 @@ impl Period {
         }
     }
 
-    /// **Source:** `Quantity_Period.hxx`:41 - `Quantity_Period::Quantity_Period()`
+    /// **Source:** `Quantity_Period.hxx`:42 - `Quantity_Period::Quantity_Period()`
     /// Creates a Period
-    /// With:      0 <= dd
+    /// With:
+    /// 0 <= dd
     /// 0 <= hh
     /// 0 <= mn
     /// 0 <= ss
@@ -3066,9 +2509,10 @@ impl Period {
         Self::new_int6(dd, hh, mn, ss, mis, 0)
     }
 
-    /// **Source:** `Quantity_Period.hxx`:41 - `Quantity_Period::Quantity_Period()`
+    /// **Source:** `Quantity_Period.hxx`:42 - `Quantity_Period::Quantity_Period()`
     /// Creates a Period
-    /// With:      0 <= dd
+    /// With:
+    /// 0 <= dd
     /// 0 <= hh
     /// 0 <= mn
     /// 0 <= ss
@@ -3078,7 +2522,7 @@ impl Period {
         Self::new_int6(dd, hh, mn, ss, 0, 0)
     }
 
-    /// **Source:** `Quantity_Period.hxx`:59 - `Quantity_Period::Quantity_Period()`
+    /// **Source:** `Quantity_Period.hxx`:60 - `Quantity_Period::Quantity_Period()`
     /// Creates a Period with a number of seconds and microseconds.
     /// Exceptions
     /// Quantity_PeriodDefinitionError:
@@ -3094,7 +2538,7 @@ impl Period {
         Self::new_int2(ss, 0)
     }
 
-    /// **Source:** `Quantity_Period.hxx`:66 - `Quantity_Period::Values()`
+    /// **Source:** `Quantity_Period.hxx`:67 - `Quantity_Period::Values()`
     /// Decomposes this period into a number of days,hours,
     /// minutes,seconds,milliseconds and microseconds
     /// Example of return values:
@@ -3122,7 +2566,7 @@ impl Period {
         })
     }
 
-    /// **Source:** `Quantity_Period.hxx`:76 - `Quantity_Period::Values()`
+    /// **Source:** `Quantity_Period.hxx`:72 - `Quantity_Period::Values()`
     /// Returns the number of seconds in Ss and the
     /// number of remainding microseconds in Mics of this period.
     /// Example of return values: 3600 seconds and 0 microseconds
@@ -3132,7 +2576,7 @@ impl Period {
         })
     }
 
-    /// **Source:** `Quantity_Period.hxx`:82 - `Quantity_Period::SetValues()`
+    /// **Source:** `Quantity_Period.hxx`:78 - `Quantity_Period::SetValues()`
     /// Assigns to this period the time interval defined
     /// -   with dd days, hh hours, mn minutes, ss
     /// seconds, mis (defaulted to 0) milliseconds and
@@ -3151,7 +2595,7 @@ impl Period {
         })
     }
 
-    /// **Source:** `Quantity_Period.hxx`:101 - `Quantity_Period::SetValues()`
+    /// **Source:** `Quantity_Period.hxx`:97 - `Quantity_Period::SetValues()`
     /// Assigns to this period the time interval defined
     /// -   with Ss seconds and Mics (defaulted to 0) microseconds.
     /// Exceptions
@@ -3170,7 +2614,7 @@ impl Period {
         })
     }
 
-    /// **Source:** `Quantity_Period.hxx`:104 - `Quantity_Period::Subtract()`
+    /// **Source:** `Quantity_Period.hxx`:100 - `Quantity_Period::Subtract()`
     /// Subtracts one Period from another and returns the difference.
     pub fn subtract(&self, anOther: &Period) -> crate::OwnedPtr<Period> {
         unsafe {
@@ -3180,7 +2624,7 @@ impl Period {
         }
     }
 
-    /// **Source:** `Quantity_Period.hxx`:109 - `Quantity_Period::Add()`
+    /// **Source:** `Quantity_Period.hxx`:105 - `Quantity_Period::Add()`
     /// Adds one Period to another one.
     pub fn add(&self, anOther: &Period) -> crate::OwnedPtr<Period> {
         unsafe {
@@ -3190,7 +2634,7 @@ impl Period {
         }
     }
 
-    /// **Source:** `Quantity_Period.hxx`:114 - `Quantity_Period::IsEqual()`
+    /// **Source:** `Quantity_Period.hxx`:110 - `Quantity_Period::IsEqual()`
     /// Returns TRUE if both <me> and <other> are equal.
     pub fn is_equal(&self, anOther: &Period) -> bool {
         crate::check_result(unsafe {
@@ -3198,7 +2642,7 @@ impl Period {
         })
     }
 
-    /// **Source:** `Quantity_Period.hxx`:119 - `Quantity_Period::IsShorter()`
+    /// **Source:** `Quantity_Period.hxx`:121 - `Quantity_Period::IsShorter()`
     /// Returns TRUE if <me> is shorter than <other>.
     pub fn is_shorter(&self, anOther: &Period) -> bool {
         crate::check_result(unsafe {
@@ -3206,7 +2650,7 @@ impl Period {
         })
     }
 
-    /// **Source:** `Quantity_Period.hxx`:124 - `Quantity_Period::IsLonger()`
+    /// **Source:** `Quantity_Period.hxx`:132 - `Quantity_Period::IsLonger()`
     /// Returns TRUE if <me> is longer then <other>.
     pub fn is_longer(&self, anOther: &Period) -> bool {
         crate::check_result(unsafe {
@@ -3214,9 +2658,10 @@ impl Period {
         })
     }
 
-    /// **Source:** `Quantity_Period.hxx`:135 - `Quantity_Period::IsValid()`
+    /// **Source:** `Quantity_Period.hxx`:150 - `Quantity_Period::IsValid()`
     /// Checks the validity of a Period in form (dd,hh,mn,ss,mil,mic)
-    /// With:      0 <= dd
+    /// With:
+    /// 0 <= dd
     /// 0 <= hh
     /// 0 <= mn
     /// 0 <= ss
@@ -3228,9 +2673,10 @@ impl Period {
         })
     }
 
-    /// **Source:** `Quantity_Period.hxx`:145 - `Quantity_Period::IsValid()`
+    /// **Source:** `Quantity_Period.hxx`:161 - `Quantity_Period::IsValid()`
     /// Checks the validity of a Period in form (ss,mic)
-    /// With:      0 <= ss
+    /// With:
+    /// 0 <= ss
     /// 0 <= mics
     pub fn is_valid_int2(ss: i32, mics: i32) -> bool {
         crate::check_result(unsafe {
@@ -3243,7 +2689,7 @@ impl Period {
 // From Quantity_PeriodDefinitionError.hxx
 // ========================
 
-/// **Source:** `Quantity_PeriodDefinitionError.hxx`:35 - `Quantity_PeriodDefinitionError`
+/// **Source:** `Quantity_PeriodDefinitionError.hxx`:31 - `Quantity_PeriodDefinitionError`
 pub use crate::ffi_types::Quantity_PeriodDefinitionError as PeriodDefinitionError;
 
 unsafe impl crate::CppDeletable for PeriodDefinitionError {
@@ -3255,16 +2701,7 @@ unsafe impl crate::CppDeletable for PeriodDefinitionError {
 }
 
 impl PeriodDefinitionError {
-    /// **Source:** `Quantity_PeriodDefinitionError.hxx`:35 - `Quantity_PeriodDefinitionError::Quantity_PeriodDefinitionError()`
-    pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKernel::Quantity_PeriodDefinitionError_ctor(),
-            ))
-        }
-    }
-
-    /// **Source:** `Quantity_PeriodDefinitionError.hxx`:35 - `Quantity_PeriodDefinitionError::Quantity_PeriodDefinitionError()`
+    /// **Source:** `Quantity_PeriodDefinitionError.hxx`:31 - `Quantity_PeriodDefinitionError::Quantity_PeriodDefinitionError()`
     pub fn new_charptr(theMessage: &str) -> crate::OwnedPtr<Self> {
         let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
         unsafe {
@@ -3276,7 +2713,7 @@ impl PeriodDefinitionError {
         }
     }
 
-    /// **Source:** `Quantity_PeriodDefinitionError.hxx`:35 - `Quantity_PeriodDefinitionError::Quantity_PeriodDefinitionError()`
+    /// **Source:** `Quantity_PeriodDefinitionError.hxx`:31 - `Quantity_PeriodDefinitionError::Quantity_PeriodDefinitionError()`
     pub fn new_charptr2(theMessage: &str, theStackTrace: &str) -> crate::OwnedPtr<Self> {
         let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
         let c_theStackTrace = std::ffi::CString::new(theStackTrace).unwrap();
@@ -3290,83 +2727,17 @@ impl PeriodDefinitionError {
         }
     }
 
-    /// **Source:** `Quantity_PeriodDefinitionError.hxx`:35 - `Quantity_PeriodDefinitionError::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `Quantity_PeriodDefinitionError.hxx`:31 - `Quantity_PeriodDefinitionError::ExceptionType()`
+    pub fn exception_type(&self) -> std::string::String {
         unsafe {
-            &*(crate::check_result(
-                crate::ffi_extern_TKernel::Quantity_PeriodDefinitionError_dynamic_type(
+            std::ffi::CStr::from_ptr(crate::check_result(
+                crate::ffi_extern_TKernel::Quantity_PeriodDefinitionError_exception_type(
                     self as *const Self,
                 ),
             ))
         }
-    }
-
-    /// **Source:** `Quantity_PeriodDefinitionError.hxx`:35 - `Quantity_PeriodDefinitionError::Raise()`
-    pub fn raise_charptr(theMessage: &str) {
-        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKernel::Quantity_PeriodDefinitionError_raise_charptr(
-                c_theMessage.as_ptr(),
-            )
-        })
-    }
-
-    /// **Source:** `Quantity_PeriodDefinitionError.hxx`:35 - `Quantity_PeriodDefinitionError::Raise()`
-    pub fn raise_sstream(theMessage: &mut crate::ffi_types::Standard_SStream) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKernel::Quantity_PeriodDefinitionError_raise_sstream(theMessage)
-        })
-    }
-
-    /// **Source:** `Quantity_PeriodDefinitionError.hxx`:35 - `Quantity_PeriodDefinitionError::NewInstance()`
-    pub fn new_instance_charptr(
-        theMessage: &str,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleQuantityPeriodDefinitionError> {
-        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKernel::Quantity_PeriodDefinitionError_new_instance_charptr(
-                    c_theMessage.as_ptr(),
-                ),
-            ))
-        }
-    }
-
-    /// **Source:** `Quantity_PeriodDefinitionError.hxx`:35 - `Quantity_PeriodDefinitionError::NewInstance()`
-    pub fn new_instance_charptr2(
-        theMessage: &str,
-        theStackTrace: &str,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleQuantityPeriodDefinitionError> {
-        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
-        let c_theStackTrace = std::ffi::CString::new(theStackTrace).unwrap();
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKernel::Quantity_PeriodDefinitionError_new_instance_charptr2(
-                    c_theMessage.as_ptr(),
-                    c_theStackTrace.as_ptr(),
-                ),
-            ))
-        }
-    }
-
-    /// **Source:** `Quantity_PeriodDefinitionError.hxx`:35 - `Quantity_PeriodDefinitionError::get_type_name()`
-    pub fn get_type_name() -> std::string::String {
-        unsafe {
-            std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi_extern_TKernel::Quantity_PeriodDefinitionError_get_type_name(),
-            ))
-        }
         .to_string_lossy()
         .into_owned()
-    }
-
-    /// **Source:** `Quantity_PeriodDefinitionError.hxx`:35 - `Quantity_PeriodDefinitionError::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
-        unsafe {
-            &*(crate::check_result(
-                crate::ffi_extern_TKernel::Quantity_PeriodDefinitionError_get_type_descriptor(),
-            ))
-        }
     }
 
     /// Upcast to Standard_DomainError
@@ -3409,40 +2780,7 @@ impl PeriodDefinitionError {
         }
     }
 
-    /// Upcast to Standard_Transient
-    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        unsafe {
-            &*crate::check_result(
-                crate::ffi_extern_TKernel::Quantity_PeriodDefinitionError_as_Standard_Transient(
-                    self as *const Self,
-                ),
-            )
-        }
-    }
-
-    /// Upcast to Standard_Transient (mutable)
-    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        unsafe {
-            &mut *crate::check_result(
-                crate::ffi_extern_TKernel::Quantity_PeriodDefinitionError_as_Standard_Transient_mut(
-                    self as *mut Self,
-                ),
-            )
-        }
-    }
-
-    /// Wrap in a Handle (reference-counted smart pointer)
-    pub fn to_handle(
-        obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleQuantityPeriodDefinitionError> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKernel::Quantity_PeriodDefinitionError_to_handle(obj.into_raw()),
-            ))
-        }
-    }
-
-    /// Inherited: **Source:** `Standard_Failure.hxx`:58 - `Standard_Failure::Print()`
+    /// Inherited: **Source:** `Standard_Failure.hxx`:73 - `Standard_Failure::Print()`
     pub fn print(&self, theStream: &mut crate::ffi_types::Standard_OStream) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKernel::Quantity_PeriodDefinitionError_inherited_Print(
@@ -3451,178 +2789,4 @@ impl PeriodDefinitionError {
             )
         })
     }
-
-    /// Inherited: **Source:** `Standard_Failure.hxx`:72 - `Standard_Failure::Reraise()`
-    pub fn reraise(&mut self) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKernel::Quantity_PeriodDefinitionError_inherited_Reraise(
-                self as *mut Self,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Failure.hxx`:112 - `Standard_Failure::Jump()`
-    pub fn jump(&mut self) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKernel::Quantity_PeriodDefinitionError_inherited_Jump(
-                self as *mut Self,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKernel::Quantity_PeriodDefinitionError_inherited_IsInstance(
-                self as *const Self,
-                theType,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKernel::Quantity_PeriodDefinitionError_inherited_IsKind(
-                self as *const Self,
-                theType,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
-    pub fn this(&self) -> Option<&crate::standard::Transient> {
-        {
-            let __val = crate::check_result(unsafe {
-                crate::ffi_extern_TKernel::Quantity_PeriodDefinitionError_inherited_This(
-                    self as *const Self,
-                )
-            });
-            if __val.is_null() {
-                None
-            } else {
-                Some(unsafe { &*__val })
-            }
-        }
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
-    pub fn get_ref_count(&self) -> i32 {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKernel::Quantity_PeriodDefinitionError_inherited_GetRefCount(
-                self as *const Self,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
-    pub fn increment_ref_counter(&mut self) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKernel::Quantity_PeriodDefinitionError_inherited_IncrementRefCounter(
-                self as *mut Self,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
-    pub fn decrement_ref_counter(&mut self) -> i32 {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKernel::Quantity_PeriodDefinitionError_inherited_DecrementRefCounter(
-                self as *mut Self,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
-    pub fn delete(&self) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKernel::Quantity_PeriodDefinitionError_inherited_Delete(
-                self as *const Self,
-            )
-        })
-    }
 }
-
-pub use crate::ffi_types::HandleQuantityPeriodDefinitionError;
-
-unsafe impl crate::CppDeletable for HandleQuantityPeriodDefinitionError {
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            crate::ffi_extern_TKernel::HandleQuantityPeriodDefinitionError_destructor(ptr);
-        }
-    }
-}
-
-unsafe impl crate::CppCopyable for HandleQuantityPeriodDefinitionError {
-    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        unsafe {
-            crate::check_result(
-                crate::ffi_extern_TKernel::HandleQuantityPeriodDefinitionError_clone(ptr),
-            )
-        }
-    }
-}
-
-impl HandleQuantityPeriodDefinitionError {
-    /// Returns `true` if this Handle is null (doesn't point to any object).
-    pub fn is_null(&self) -> bool {
-        unsafe {
-            crate::ffi_extern_TKernel::HandleQuantityPeriodDefinitionError_is_null(
-                self as *const Self,
-            )
-        }
-    }
-
-    /// Dereference this Handle to access the underlying Quantity_PeriodDefinitionError
-    pub fn get(&self) -> &crate::ffi_types::Quantity_PeriodDefinitionError {
-        unsafe {
-            &*crate::check_result(
-                crate::ffi_extern_TKernel::HandleQuantityPeriodDefinitionError_get(
-                    self as *const Self,
-                ),
-            )
-        }
-    }
-
-    /// Dereference this Handle to mutably access the underlying Quantity_PeriodDefinitionError
-    pub fn get_mut(&mut self) -> &mut crate::ffi_types::Quantity_PeriodDefinitionError {
-        unsafe {
-            &mut *crate::check_result(
-                crate::ffi_extern_TKernel::HandleQuantityPeriodDefinitionError_get_mut(
-                    self as *mut Self,
-                ),
-            )
-        }
-    }
-
-    /// Upcast Handle<Quantity_PeriodDefinitionError> to Handle<Standard_DomainError>
-    pub fn to_handle_domain_error(
-        &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardDomainError> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKernel::HandleQuantityPeriodDefinitionError_to_HandleStandardDomainError(self as *const Self)))
-        }
-    }
-
-    /// Upcast Handle<Quantity_PeriodDefinitionError> to Handle<Standard_Failure>
-    pub fn to_handle_failure(&self) -> crate::OwnedPtr<crate::ffi_types::HandleStandardFailure> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKernel::HandleQuantityPeriodDefinitionError_to_HandleStandardFailure(self as *const Self)))
-        }
-    }
-
-    /// Upcast Handle<Quantity_PeriodDefinitionError> to Handle<Standard_Transient>
-    pub fn to_handle_transient(
-        &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKernel::HandleQuantityPeriodDefinitionError_to_HandleStandardTransient(self as *const Self)))
-        }
-    }
-}
-
-// ========================
-// Additional type re-exports
-// ========================
-
-pub use crate::ffi_types::Quantity_Array1OfColor as Array1OfColor;

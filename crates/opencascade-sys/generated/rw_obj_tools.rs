@@ -6,7 +6,7 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 
-/// **Source:** `RWObj_Tools.hxx`:38 - `RWObj_Tools::ReadVec3`
+/// **Source:** `RWObj_Tools.hxx`:39 - `RWObj_Tools::ReadVec3`
 /// Read 3 double values.
 pub unsafe fn read_vec3(
     thePos: &str,
@@ -18,7 +18,7 @@ pub unsafe fn read_vec3(
         crate::ffi_extern_misc::RWObj_Tools_read_vec3(c_thePos.as_ptr(), theNext, theVec)
     })
 }
-/// **Source:** `RWObj_Tools.hxx`:50 - `RWObj_Tools::ReadName`
+/// **Source:** `RWObj_Tools.hxx`:51 - `RWObj_Tools::ReadName`
 /// Read string.
 pub fn read_name(thePos: &str, theName: &mut crate::t_collection::AsciiString) -> bool {
     let c_thePos = std::ffi::CString::new(thePos).unwrap();
@@ -26,7 +26,7 @@ pub fn read_name(thePos: &str, theName: &mut crate::t_collection::AsciiString) -
         crate::ffi_extern_misc::RWObj_Tools_read_name(c_thePos.as_ptr(), theName)
     })
 }
-/// **Source:** `RWObj_Tools.hxx`:78 - `RWObj_Tools::isSpaceChar`
+/// **Source:** `RWObj_Tools.hxx`:79 - `RWObj_Tools::isSpaceChar`
 /// Return true if specified char is a white space.
 pub fn is_space_char(theChar: std::ffi::c_char) -> bool {
     crate::check_result(unsafe { crate::ffi_extern_misc::RWObj_Tools_is_space_char(theChar) })

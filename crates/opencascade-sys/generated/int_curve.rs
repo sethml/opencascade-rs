@@ -124,7 +124,7 @@ impl IConicTool {
     }
 
     /// **Source:** `IntCurve_IConicTool.hxx`:63 - `IntCurve_IConicTool::Distance()`
-    /// Computes the value of the signed  distance between
+    /// Computes the value of the signed distance between
     /// the point P and the implicit curve.
     pub fn distance(&self, P: &crate::gp::Pnt2d) -> f64 {
         crate::check_result(unsafe {
@@ -133,8 +133,8 @@ impl IConicTool {
     }
 
     /// **Source:** `IntCurve_IConicTool.hxx`:68 - `IntCurve_IConicTool::GradDistance()`
-    /// Computes  the   Gradient  of  the  Signed Distance
-    /// between  a  point and  the  implicit curve, at the
+    /// Computes the Gradient of the Signed Distance
+    /// between a point and the implicit curve, at the
     /// point P.
     pub fn grad_distance(&self, P: &crate::gp::Pnt2d) -> crate::OwnedPtr<crate::gp::Vec2d> {
         unsafe {
@@ -164,11 +164,11 @@ impl IConicTool {
 
 /// **Source:** `IntCurve_IntConicConic.hxx`:39 - `IntCurve_IntConicConic`
 /// Provides methods to intersect two conics.
-/// The exception ConstructionError is raised  in constructors
-/// or in Perform methods  when a domain  (Domain from IntRes2d)
-/// is not correct, i-e when a Circle (Circ2d from  gp) or
-/// an Ellipse (i-e Elips2d from  gp) do not have a closed
-/// domain (use the  SetEquivalentParameters method for a domain
+/// The exception ConstructionError is raised in constructors
+/// or in Perform methods when a domain (Domain from IntRes2d)
+/// is not correct, i-e when a Circle (Circ2d from gp) or
+/// an Ellipse (i-e Elips2d from gp) do not have a closed
+/// domain (use the SetEquivalentParameters method for a domain
 /// on a circle or an ellipse).
 pub use crate::ffi_types::IntCurve_IntConicConic as IntConicConic;
 
@@ -714,7 +714,7 @@ impl IntConicConic {
         }
     }
 
-    /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:39 - `IntRes2d_Intersection::IsDone()`
+    /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:40 - `IntRes2d_Intersection::IsDone()`
     pub fn is_done(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::IntCurve_IntConicConic_inherited_IsDone(
@@ -723,7 +723,7 @@ impl IntConicConic {
         })
     }
 
-    /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:44 - `IntRes2d_Intersection::IsEmpty()`
+    /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:45 - `IntRes2d_Intersection::IsEmpty()`
     pub fn is_empty(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::IntCurve_IntConicConic_inherited_IsEmpty(
@@ -732,7 +732,7 @@ impl IntConicConic {
         })
     }
 
-    /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:49 - `IntRes2d_Intersection::NbPoints()`
+    /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:50 - `IntRes2d_Intersection::NbPoints()`
     pub fn nb_points(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::IntCurve_IntConicConic_inherited_NbPoints(
@@ -741,7 +741,7 @@ impl IntConicConic {
         })
     }
 
-    /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:56 - `IntRes2d_Intersection::Point()`
+    /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:57 - `IntRes2d_Intersection::Point()`
     pub fn point(&self, N: i32) -> &crate::int_res2d::IntersectionPoint {
         unsafe {
             &*(crate::check_result(
@@ -753,7 +753,7 @@ impl IntConicConic {
         }
     }
 
-    /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:61 - `IntRes2d_Intersection::NbSegments()`
+    /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:62 - `IntRes2d_Intersection::NbSegments()`
     pub fn nb_segments(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::IntCurve_IntConicConic_inherited_NbSegments(
@@ -762,7 +762,7 @@ impl IntConicConic {
         })
     }
 
-    /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:68 - `IntRes2d_Intersection::Segment()`
+    /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:69 - `IntRes2d_Intersection::Segment()`
     pub fn segment(&self, N: i32) -> &crate::int_res2d::IntersectionSegment {
         unsafe {
             &*(crate::check_result(
@@ -774,7 +774,7 @@ impl IntConicConic {
         }
     }
 
-    /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:70 - `IntRes2d_Intersection::SetReversedParameters()`
+    /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:71 - `IntRes2d_Intersection::SetReversedParameters()`
     pub fn set_reversed_parameters(&mut self, Reverseflag: bool) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::IntCurve_IntConicConic_inherited_SetReversedParameters(
@@ -800,7 +800,7 @@ unsafe impl crate::CppDeletable for Interval {
     }
 }
 
-/// **Source:** `IntCurve_IntConicConic_Tool.hxx`:70 - `PeriodicInterval`
+/// **Source:** `IntCurve_IntConicConic_Tool.hxx`:67 - `PeriodicInterval`
 pub use crate::ffi_types::PeriodicInterval;
 
 unsafe impl crate::CppDeletable for PeriodicInterval {
@@ -938,10 +938,10 @@ impl IntImpConicParConic {
         TheImpCurveDomain: &crate::int_res2d::Domain,
         TheParCurveDomain: &crate::int_res2d::Domain,
         NbResultats: &mut i32,
-        Inter2_And_Domain2: &mut crate::ffi_types::TColStd_Array1OfReal,
-        Inter1: &mut crate::ffi_types::TColStd_Array1OfReal,
-        Resultat1: &mut crate::ffi_types::TColStd_Array1OfReal,
-        Resultat2: &mut crate::ffi_types::TColStd_Array1OfReal,
+        Inter2_And_Domain2: &mut crate::ffi_types::NCollection_Array1_double,
+        Inter1: &mut crate::ffi_types::NCollection_Array1_double,
+        Resultat1: &mut crate::ffi_types::NCollection_Array1_double,
+        Resultat2: &mut crate::ffi_types::NCollection_Array1_double,
         EpsNul: f64,
     ) {
         crate::check_void_result(unsafe {
@@ -967,7 +967,7 @@ impl IntImpConicParConic {
         }
     }
 
-    /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:39 - `IntRes2d_Intersection::IsDone()`
+    /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:40 - `IntRes2d_Intersection::IsDone()`
     pub fn is_done(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::IntCurve_IntImpConicParConic_inherited_IsDone(
@@ -976,7 +976,7 @@ impl IntImpConicParConic {
         })
     }
 
-    /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:44 - `IntRes2d_Intersection::IsEmpty()`
+    /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:45 - `IntRes2d_Intersection::IsEmpty()`
     pub fn is_empty(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::IntCurve_IntImpConicParConic_inherited_IsEmpty(
@@ -985,7 +985,7 @@ impl IntImpConicParConic {
         })
     }
 
-    /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:49 - `IntRes2d_Intersection::NbPoints()`
+    /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:50 - `IntRes2d_Intersection::NbPoints()`
     pub fn nb_points(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::IntCurve_IntImpConicParConic_inherited_NbPoints(
@@ -994,7 +994,7 @@ impl IntImpConicParConic {
         })
     }
 
-    /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:56 - `IntRes2d_Intersection::Point()`
+    /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:57 - `IntRes2d_Intersection::Point()`
     pub fn point(&self, N: i32) -> &crate::int_res2d::IntersectionPoint {
         unsafe {
             &*(crate::check_result(
@@ -1006,7 +1006,7 @@ impl IntImpConicParConic {
         }
     }
 
-    /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:61 - `IntRes2d_Intersection::NbSegments()`
+    /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:62 - `IntRes2d_Intersection::NbSegments()`
     pub fn nb_segments(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::IntCurve_IntImpConicParConic_inherited_NbSegments(
@@ -1015,7 +1015,7 @@ impl IntImpConicParConic {
         })
     }
 
-    /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:68 - `IntRes2d_Intersection::Segment()`
+    /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:69 - `IntRes2d_Intersection::Segment()`
     pub fn segment(&self, N: i32) -> &crate::int_res2d::IntersectionSegment {
         unsafe {
             &*(crate::check_result(
@@ -1027,7 +1027,7 @@ impl IntImpConicParConic {
         }
     }
 
-    /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:70 - `IntRes2d_Intersection::SetReversedParameters()`
+    /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:71 - `IntRes2d_Intersection::SetReversedParameters()`
     pub fn set_reversed_parameters(&mut self, Reverseflag: bool) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::IntCurve_IntImpConicParConic_inherited_SetReversedParameters(self as *mut Self, Reverseflag)
@@ -1075,7 +1075,7 @@ impl MyImpParToolOfIntImpConicParConic {
         })
     }
 
-    /// **Source:** `IntCurve_MyImpParToolOfIntImpConicParConic.hxx`:48 - `IntCurve_MyImpParToolOfIntImpConicParConic::Derivative()`
+    /// **Source:** `IntCurve_MyImpParToolOfIntImpConicParConic.hxx`:47 - `IntCurve_MyImpParToolOfIntImpConicParConic::Derivative()`
     /// Computes the derivative of the previous function at
     /// parameter Param.
     pub fn derivative(&mut self, Param: f64, D: &mut f64) -> bool {
@@ -1088,7 +1088,7 @@ impl MyImpParToolOfIntImpConicParConic {
         })
     }
 
-    /// **Source:** `IntCurve_MyImpParToolOfIntImpConicParConic.hxx`:52 - `IntCurve_MyImpParToolOfIntImpConicParConic::Values()`
+    /// **Source:** `IntCurve_MyImpParToolOfIntImpConicParConic.hxx`:50 - `IntCurve_MyImpParToolOfIntImpConicParConic::Values()`
     /// Computes the value and the derivative of the function.
     pub fn values(&mut self, Param: f64, F: &mut f64, D: &mut f64) -> bool {
         crate::check_result(unsafe {
@@ -1334,7 +1334,7 @@ impl PConicTool {
         })
     }
 
-    /// **Source:** `IntCurve_PConicTool.hxx`:43 - `IntCurve_PConicTool::Value()`
+    /// **Source:** `IntCurve_PConicTool.hxx`:41 - `IntCurve_PConicTool::Value()`
     pub fn value(C: &PConic, X: f64) -> crate::OwnedPtr<crate::gp::Pnt2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -1343,14 +1343,14 @@ impl PConicTool {
         }
     }
 
-    /// **Source:** `IntCurve_PConicTool.hxx`:45 - `IntCurve_PConicTool::D1()`
+    /// **Source:** `IntCurve_PConicTool.hxx`:43 - `IntCurve_PConicTool::D1()`
     pub fn d1(C: &PConic, U: f64, P: &mut crate::gp::Pnt2d, T: &mut crate::gp::Vec2d) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::IntCurve_PConicTool_d1(C, U, P, T)
         })
     }
 
-    /// **Source:** `IntCurve_PConicTool.hxx`:50 - `IntCurve_PConicTool::D2()`
+    /// **Source:** `IntCurve_PConicTool.hxx`:48 - `IntCurve_PConicTool::D2()`
     pub fn d2(
         C: &PConic,
         U: f64,
@@ -1393,15 +1393,15 @@ impl ProjectOnPConicTool {
     }
 
     /// **Source:** `IntCurve_ProjectOnPConicTool.hxx`:43 - `IntCurve_ProjectOnPConicTool::FindParameter()`
-    /// Returns  the parameter V  of the  point   on the
-    /// parametric  curve corresponding to  the  Point  Pnt.   The
-    /// Correspondence between  Pnt  and the  point   P(V) on  the
-    /// parametric    curve  must  be  coherent with    the way of
-    /// determination  of the signed  distance between a point and
-    /// the implicit curve.  Tol is the tolerance on  the distance
-    /// between a point and the parametrised curve.  In that case,
-    /// no bounds are given.  The research  of the right parameter
-    /// has to  be  made  on the natural  parametric domain of the
+    /// Returns the parameter V of the point on the
+    /// parametric curve corresponding to the Point Pnt. The
+    /// Correspondence between Pnt and the point P(V) on the
+    /// parametric curve must be coherent with the way of
+    /// determination of the signed distance between a point and
+    /// the implicit curve. Tol is the tolerance on the distance
+    /// between a point and the parametrised curve. In that case,
+    /// no bounds are given. The research of the right parameter
+    /// has to be made on the natural parametric domain of the
     /// curve.
     pub fn find_parameter_pconic_pnt2d_real(C: &PConic, Pnt: &crate::gp::Pnt2d, Tol: f64) -> f64 {
         crate::check_result(unsafe {
@@ -1410,17 +1410,17 @@ impl ProjectOnPConicTool {
     }
 
     /// **Source:** `IntCurve_ProjectOnPConicTool.hxx`:59 - `IntCurve_ProjectOnPConicTool::FindParameter()`
-    /// Returns the  parameter  V of the   point  on the
-    /// parametric  curve corresponding  to  the   Point Pnt.  The
-    /// Correspondence  between Pnt and  the   point  P(V) on  the
-    /// parametric  curve  must  be  coherent   with the  way   of
-    /// determination of the  signed distance between  a point and
-    /// the implicit curve.  Tol  is the tolerance on the distance
-    /// between a point and the  parametrised curve.  LowParameter
-    /// and HighParameter give the  boundaries of the interval  in
-    /// which the parameter certainly  lies.  These parameters are
-    /// given to implement a  more efficient  algorithm. So,  it is
-    /// not necessary to check   that the returned value  verifies
+    /// Returns the parameter V of the point on the
+    /// parametric curve corresponding to the Point Pnt. The
+    /// Correspondence between Pnt and the point P(V) on the
+    /// parametric curve must be coherent with the way of
+    /// determination of the signed distance between a point and
+    /// the implicit curve. Tol is the tolerance on the distance
+    /// between a point and the parametrised curve. LowParameter
+    /// and HighParameter give the boundaries of the interval in
+    /// which the parameter certainly lies. These parameters are
+    /// given to implement a more efficient algorithm. So, it is
+    /// not necessary to check that the returned value verifies
     /// LowParameter <= Value <= HighParameter.
     pub fn find_parameter_pconic_pnt2d_real3(
         C: &PConic,

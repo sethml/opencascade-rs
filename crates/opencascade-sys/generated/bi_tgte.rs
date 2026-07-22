@@ -41,13 +41,13 @@ impl TryFrom<i32> for ContactType {
 }
 
 // Handle type re-exports (targets of handle upcasts/downcasts)
-pub use crate::ffi_types::{HandleAdaptor3dCurve, HandleStandardTransient};
+pub use crate::ffi_types::{Handle_Adaptor3d_Curve, Handle_Standard_Transient};
 
 // ========================
 // From BiTgte_Blend.hxx
 // ========================
 
-/// **Source:** `BiTgte_Blend.hxx`:45 - `BiTgte_Blend`
+/// **Source:** `BiTgte_Blend.hxx`:47 - `BiTgte_Blend`
 /// Root class
 pub use crate::ffi_types::BiTgte_Blend as Blend;
 
@@ -60,7 +60,7 @@ unsafe impl crate::CppDeletable for Blend {
 }
 
 impl Blend {
-    /// **Source:** `BiTgte_Blend.hxx`:50 - `BiTgte_Blend::BiTgte_Blend()`
+    /// **Source:** `BiTgte_Blend.hxx`:52 - `BiTgte_Blend::BiTgte_Blend()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -69,11 +69,11 @@ impl Blend {
         }
     }
 
-    /// **Source:** `BiTgte_Blend.hxx`:57 - `BiTgte_Blend::BiTgte_Blend()`
+    /// **Source:** `BiTgte_Blend.hxx`:59 - `BiTgte_Blend::BiTgte_Blend()`
     /// <S>: Shape to be rounded
     /// <Radius>: radius of the fillet
     /// <Tol>: Tol3d used in approximations
-    /// <NUBS>: if true,  generate only NUBS surfaces,
+    /// <NUBS>: if true, generate only NUBS surfaces,
     /// if false, generate analytical surfaces if possible
     pub fn new_shape_real2_bool(
         S: &crate::topo_ds::Shape,
@@ -90,14 +90,14 @@ impl Blend {
         }
     }
 
-    /// **Source:** `BiTgte_Blend.hxx`:62 - `BiTgte_Blend::Init()`
+    /// **Source:** `BiTgte_Blend.hxx`:64 - `BiTgte_Blend::Init()`
     pub fn init(&mut self, S: &crate::topo_ds::Shape, Radius: f64, Tol: f64, NUBS: bool) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKOffset::BiTgte_Blend_init(self as *mut Self, S, Radius, Tol, NUBS)
         })
     }
 
-    /// **Source:** `BiTgte_Blend.hxx`:68 - `BiTgte_Blend::Clear()`
+    /// **Source:** `BiTgte_Blend.hxx`:70 - `BiTgte_Blend::Clear()`
     /// Clear all the Fields.
     pub fn clear(&mut self) {
         crate::check_void_result(unsafe {
@@ -105,8 +105,8 @@ impl Blend {
         })
     }
 
-    /// **Source:** `BiTgte_Blend.hxx`:72 - `BiTgte_Blend::SetFaces()`
-    /// Set two faces   of <myShape> on which the  Sphere
+    /// **Source:** `BiTgte_Blend.hxx`:74 - `BiTgte_Blend::SetFaces()`
+    /// Set two faces of <myShape> on which the Sphere
     /// must roll.
     pub fn set_faces(&mut self, F1: &crate::topo_ds::Face, F2: &crate::topo_ds::Face) {
         crate::check_void_result(unsafe {
@@ -114,7 +114,7 @@ impl Blend {
         })
     }
 
-    /// **Source:** `BiTgte_Blend.hxx`:75 - `BiTgte_Blend::SetEdge()`
+    /// **Source:** `BiTgte_Blend.hxx`:77 - `BiTgte_Blend::SetEdge()`
     /// Set an edge of <myShape> to be rounded.
     pub fn set_edge(&mut self, Edge: &crate::topo_ds::Edge) {
         crate::check_void_result(unsafe {
@@ -122,7 +122,7 @@ impl Blend {
         })
     }
 
-    /// **Source:** `BiTgte_Blend.hxx`:78 - `BiTgte_Blend::SetStoppingFace()`
+    /// **Source:** `BiTgte_Blend.hxx`:80 - `BiTgte_Blend::SetStoppingFace()`
     /// Set a face on which the fillet must stop.
     pub fn set_stopping_face(&mut self, Face: &crate::topo_ds::Face) {
         crate::check_void_result(unsafe {
@@ -130,7 +130,7 @@ impl Blend {
         })
     }
 
-    /// **Source:** `BiTgte_Blend.hxx`:83 - `BiTgte_Blend::Perform()`
+    /// **Source:** `BiTgte_Blend.hxx`:85 - `BiTgte_Blend::Perform()`
     /// Compute the generated surfaces.
     /// If <BuildShape> is true, compute the resulting Shape.
     /// If false, only the blending surfaces are computed.
@@ -140,14 +140,14 @@ impl Blend {
         })
     }
 
-    /// **Source:** `BiTgte_Blend.hxx`:85 - `BiTgte_Blend::IsDone()`
+    /// **Source:** `BiTgte_Blend.hxx`:87 - `BiTgte_Blend::IsDone()`
     pub fn is_done(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKOffset::BiTgte_Blend_is_done(self as *const Self)
         })
     }
 
-    /// **Source:** `BiTgte_Blend.hxx`:88 - `BiTgte_Blend::Shape()`
+    /// **Source:** `BiTgte_Blend.hxx`:90 - `BiTgte_Blend::Shape()`
     /// returns the result
     pub fn shape(&self) -> &crate::topo_ds::Shape {
         unsafe {
@@ -157,7 +157,7 @@ impl Blend {
         }
     }
 
-    /// **Source:** `BiTgte_Blend.hxx`:91 - `BiTgte_Blend::NbSurfaces()`
+    /// **Source:** `BiTgte_Blend.hxx`:93 - `BiTgte_Blend::NbSurfaces()`
     /// returns the Number of generated surfaces.
     pub fn nb_surfaces(&self) -> i32 {
         crate::check_result(unsafe {
@@ -165,9 +165,12 @@ impl Blend {
         })
     }
 
-    /// **Source:** `BiTgte_Blend.hxx`:94 - `BiTgte_Blend::Surface()`
+    /// **Source:** `BiTgte_Blend.hxx`:96 - `BiTgte_Blend::Surface()`
     /// returns the surface of range Index
-    pub fn surface_int(&self, Index: i32) -> crate::OwnedPtr<crate::ffi_types::HandleGeomSurface> {
+    pub fn surface_int(
+        &self,
+        Index: i32,
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Geom_Surface> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKOffset::BiTgte_Blend_surface_int(self as *const Self, Index),
@@ -175,7 +178,7 @@ impl Blend {
         }
     }
 
-    /// **Source:** `BiTgte_Blend.hxx`:97 - `BiTgte_Blend::Face()`
+    /// **Source:** `BiTgte_Blend.hxx`:99 - `BiTgte_Blend::Face()`
     /// returns the surface of range Index
     pub fn face_int(&self, Index: i32) -> &crate::topo_ds::Face {
         unsafe {
@@ -186,16 +189,16 @@ impl Blend {
         }
     }
 
-    /// **Source:** `BiTgte_Blend.hxx`:100 - `BiTgte_Blend::CenterLines()`
+    /// **Source:** `BiTgte_Blend.hxx`:102 - `BiTgte_Blend::CenterLines()`
     /// set in <LC> all the center lines
-    pub fn center_lines(&self, LC: &mut crate::ffi_types::TopTools_ListOfShape) {
+    pub fn center_lines(&self, LC: &mut crate::ffi_types::NCollection_List_TopoDS_Shape) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKOffset::BiTgte_Blend_center_lines(self as *const Self, LC)
         })
     }
 
-    /// **Source:** `BiTgte_Blend.hxx`:108 - `BiTgte_Blend::Surface()`
-    /// returns  the surface generated  by the centerline.
+    /// **Source:** `BiTgte_Blend.hxx`:110 - `BiTgte_Blend::Surface()`
+    /// returns the surface generated by the centerline.
     /// <CenterLine> may be
     /// - an edge  : generate a pipe.
     /// - a vertex : generate a sphere.
@@ -204,7 +207,7 @@ impl Blend {
     pub fn surface_shape(
         &self,
         CenterLine: &crate::topo_ds::Shape,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleGeomSurface> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Geom_Surface> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKOffset::BiTgte_Blend_surface_shape(
@@ -215,8 +218,8 @@ impl Blend {
         }
     }
 
-    /// **Source:** `BiTgte_Blend.hxx`:116 - `BiTgte_Blend::Face()`
-    /// returns  the face generated  by the centerline.
+    /// **Source:** `BiTgte_Blend.hxx`:118 - `BiTgte_Blend::Face()`
+    /// returns the face generated by the centerline.
     /// <CenterLine> may be
     /// - an edge  : generate a pipe.
     /// - a vertex : generate a sphere.
@@ -237,7 +240,7 @@ impl Blend {
         }
     }
 
-    /// **Source:** `BiTgte_Blend.hxx`:119 - `BiTgte_Blend::ContactType()`
+    /// **Source:** `BiTgte_Blend.hxx`:121 - `BiTgte_Blend::ContactType()`
     /// returns the type of contact
     pub fn contact_type(&self, Index: i32) -> crate::bi_tgte::ContactType {
         crate::bi_tgte::ContactType::try_from(crate::check_result(unsafe {
@@ -246,7 +249,7 @@ impl Blend {
         .unwrap()
     }
 
-    /// **Source:** `BiTgte_Blend.hxx`:123 - `BiTgte_Blend::SupportShape1()`
+    /// **Source:** `BiTgte_Blend.hxx`:125 - `BiTgte_Blend::SupportShape1()`
     /// gives the first support shape relative to
     /// SurfaceFillet(Index);
     pub fn support_shape1(&self, Index: i32) -> &crate::topo_ds::Shape {
@@ -258,7 +261,7 @@ impl Blend {
         }
     }
 
-    /// **Source:** `BiTgte_Blend.hxx`:127 - `BiTgte_Blend::SupportShape2()`
+    /// **Source:** `BiTgte_Blend.hxx`:129 - `BiTgte_Blend::SupportShape2()`
     /// gives the second support shape relative to
     /// SurfaceFillet(Index);
     pub fn support_shape2(&self, Index: i32) -> &crate::topo_ds::Shape {
@@ -270,13 +273,13 @@ impl Blend {
         }
     }
 
-    /// **Source:** `BiTgte_Blend.hxx`:131 - `BiTgte_Blend::CurveOnShape1()`
+    /// **Source:** `BiTgte_Blend.hxx`:133 - `BiTgte_Blend::CurveOnShape1()`
     /// gives the 3d curve of SurfaceFillet(Index)
     /// on SupportShape1(Index)
     pub fn curve_on_shape1(
         &self,
         Index: i32,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleGeomCurve> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Geom_Curve> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKOffset::BiTgte_Blend_curve_on_shape1(
@@ -287,13 +290,13 @@ impl Blend {
         }
     }
 
-    /// **Source:** `BiTgte_Blend.hxx`:135 - `BiTgte_Blend::CurveOnShape2()`
+    /// **Source:** `BiTgte_Blend.hxx`:137 - `BiTgte_Blend::CurveOnShape2()`
     /// gives the 3d curve of SurfaceFillet(Index)
     /// on SupportShape2(Index)
     pub fn curve_on_shape2(
         &self,
         Index: i32,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleGeomCurve> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Geom_Curve> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKOffset::BiTgte_Blend_curve_on_shape2(
@@ -304,14 +307,14 @@ impl Blend {
         }
     }
 
-    /// **Source:** `BiTgte_Blend.hxx`:140 - `BiTgte_Blend::PCurveOnFace1()`
+    /// **Source:** `BiTgte_Blend.hxx`:142 - `BiTgte_Blend::PCurveOnFace1()`
     /// gives the PCurve associated to CurvOnShape1(Index)
     /// on the support face
     /// Warning: returns a Null Handle if SupportShape1 is not a Face
     pub fn p_curve_on_face1(
         &self,
         Index: i32,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleGeom2dCurve> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Geom2d_Curve> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKOffset::BiTgte_Blend_p_curve_on_face1(
@@ -322,13 +325,13 @@ impl Blend {
         }
     }
 
-    /// **Source:** `BiTgte_Blend.hxx`:144 - `BiTgte_Blend::PCurve1OnFillet()`
+    /// **Source:** `BiTgte_Blend.hxx`:146 - `BiTgte_Blend::PCurve1OnFillet()`
     /// gives the PCurve associated to CurveOnShape1(Index)
     /// on the Fillet
     pub fn p_curve1_on_fillet(
         &self,
         Index: i32,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleGeom2dCurve> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Geom2d_Curve> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKOffset::BiTgte_Blend_p_curve1_on_fillet(
@@ -339,14 +342,14 @@ impl Blend {
         }
     }
 
-    /// **Source:** `BiTgte_Blend.hxx`:149 - `BiTgte_Blend::PCurveOnFace2()`
-    /// gives the PCurve  associated to CurveOnShape2(Index)
-    /// on the  support face
+    /// **Source:** `BiTgte_Blend.hxx`:151 - `BiTgte_Blend::PCurveOnFace2()`
+    /// gives the PCurve associated to CurveOnShape2(Index)
+    /// on the support face
     /// Warning: returns a Null Handle if SupportShape2 is not a Face
     pub fn p_curve_on_face2(
         &self,
         Index: i32,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleGeom2dCurve> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Geom2d_Curve> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKOffset::BiTgte_Blend_p_curve_on_face2(
@@ -357,13 +360,13 @@ impl Blend {
         }
     }
 
-    /// **Source:** `BiTgte_Blend.hxx`:153 - `BiTgte_Blend::PCurve2OnFillet()`
+    /// **Source:** `BiTgte_Blend.hxx`:155 - `BiTgte_Blend::PCurve2OnFillet()`
     /// gives the PCurve associated to CurveOnShape2(Index)
     /// on the fillet
     pub fn p_curve2_on_fillet(
         &self,
         Index: i32,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleGeom2dCurve> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Geom2d_Curve> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKOffset::BiTgte_Blend_p_curve2_on_fillet(
@@ -374,15 +377,15 @@ impl Blend {
         }
     }
 
-    /// **Source:** `BiTgte_Blend.hxx`:155 - `BiTgte_Blend::NbBranches()`
+    /// **Source:** `BiTgte_Blend.hxx`:157 - `BiTgte_Blend::NbBranches()`
     pub fn nb_branches(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKOffset::BiTgte_Blend_nb_branches(self as *mut Self)
         })
     }
 
-    /// **Source:** `BiTgte_Blend.hxx`:161 - `BiTgte_Blend::IndicesOfBranche()`
-    /// Set in <From>,<To>   the indices of the faces  of
+    /// **Source:** `BiTgte_Blend.hxx`:163 - `BiTgte_Blend::IndicesOfBranche()`
+    /// Set in <From>,<To> the indices of the faces of
     /// the branche <Index>.
     ///
     /// i.e: Branche<Index> = Face(From) + Face(From+1) + ..+ Face(To)
@@ -410,8 +413,8 @@ impl Blend {
 // From BiTgte_CurveOnEdge.hxx
 // ========================
 
-/// **Source:** `BiTgte_CurveOnEdge.hxx`:45 - `BiTgte_CurveOnEdge`
-/// private class used  to create a filler rolling  on
+/// **Source:** `BiTgte_CurveOnEdge.hxx`:43 - `BiTgte_CurveOnEdge`
+/// private class used to create a filler rolling on
 /// an edge.
 pub use crate::ffi_types::BiTgte_CurveOnEdge as CurveOnEdge;
 
@@ -424,7 +427,7 @@ unsafe impl crate::CppDeletable for CurveOnEdge {
 }
 
 impl CurveOnEdge {
-    /// **Source:** `BiTgte_CurveOnEdge.hxx`:49 - `BiTgte_CurveOnEdge::BiTgte_CurveOnEdge()`
+    /// **Source:** `BiTgte_CurveOnEdge.hxx`:47 - `BiTgte_CurveOnEdge::BiTgte_CurveOnEdge()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -433,7 +436,7 @@ impl CurveOnEdge {
         }
     }
 
-    /// **Source:** `BiTgte_CurveOnEdge.hxx`:51 - `BiTgte_CurveOnEdge::BiTgte_CurveOnEdge()`
+    /// **Source:** `BiTgte_CurveOnEdge.hxx`:49 - `BiTgte_CurveOnEdge::BiTgte_CurveOnEdge()`
     pub fn new_edge2(
         EonF: &crate::topo_ds::Edge,
         Edge: &crate::topo_ds::Edge,
@@ -445,8 +448,8 @@ impl CurveOnEdge {
         }
     }
 
-    /// **Source:** `BiTgte_CurveOnEdge.hxx`:47 - `BiTgte_CurveOnEdge::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `BiTgte_CurveOnEdge.hxx`:45 - `BiTgte_CurveOnEdge::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKOffset::BiTgte_CurveOnEdge_dynamic_type(
                 self as *const Self,
@@ -454,9 +457,9 @@ impl CurveOnEdge {
         }
     }
 
-    /// **Source:** `BiTgte_CurveOnEdge.hxx`:54 - `BiTgte_CurveOnEdge::ShallowCopy()`
+    /// **Source:** `BiTgte_CurveOnEdge.hxx`:52 - `BiTgte_CurveOnEdge::ShallowCopy()`
     /// Shallow copy of adaptor
-    pub fn shallow_copy(&self) -> crate::OwnedPtr<crate::ffi_types::HandleAdaptor3dCurve> {
+    pub fn shallow_copy(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_Adaptor3d_Curve> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKOffset::BiTgte_CurveOnEdge_shallow_copy(self as *const Self),
@@ -464,28 +467,28 @@ impl CurveOnEdge {
         }
     }
 
-    /// **Source:** `BiTgte_CurveOnEdge.hxx`:56 - `BiTgte_CurveOnEdge::Init()`
+    /// **Source:** `BiTgte_CurveOnEdge.hxx`:54 - `BiTgte_CurveOnEdge::Init()`
     pub fn init(&mut self, EonF: &crate::topo_ds::Edge, Edge: &crate::topo_ds::Edge) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKOffset::BiTgte_CurveOnEdge_init(self as *mut Self, EonF, Edge)
         })
     }
 
-    /// **Source:** `BiTgte_CurveOnEdge.hxx`:58 - `BiTgte_CurveOnEdge::FirstParameter()`
+    /// **Source:** `BiTgte_CurveOnEdge.hxx`:56 - `BiTgte_CurveOnEdge::FirstParameter()`
     pub fn first_parameter(&self) -> f64 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKOffset::BiTgte_CurveOnEdge_first_parameter(self as *const Self)
         })
     }
 
-    /// **Source:** `BiTgte_CurveOnEdge.hxx`:60 - `BiTgte_CurveOnEdge::LastParameter()`
+    /// **Source:** `BiTgte_CurveOnEdge.hxx`:58 - `BiTgte_CurveOnEdge::LastParameter()`
     pub fn last_parameter(&self) -> f64 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKOffset::BiTgte_CurveOnEdge_last_parameter(self as *const Self)
         })
     }
 
-    /// **Source:** `BiTgte_CurveOnEdge.hxx`:62 - `BiTgte_CurveOnEdge::Continuity()`
+    /// **Source:** `BiTgte_CurveOnEdge.hxx`:60 - `BiTgte_CurveOnEdge::Continuity()`
     pub fn continuity(&self) -> crate::geom_abs::Shape {
         crate::geom_abs::Shape::try_from(crate::check_result(unsafe {
             crate::ffi_extern_TKOffset::BiTgte_CurveOnEdge_continuity(self as *const Self)
@@ -493,8 +496,8 @@ impl CurveOnEdge {
         .unwrap()
     }
 
-    /// **Source:** `BiTgte_CurveOnEdge.hxx`:66 - `BiTgte_CurveOnEdge::NbIntervals()`
-    /// Returns  the number  of  intervals for  continuity
+    /// **Source:** `BiTgte_CurveOnEdge.hxx`:64 - `BiTgte_CurveOnEdge::NbIntervals()`
+    /// Returns the number of intervals for continuity
     /// <S>. May be one if Continuity(me) >= <S>
     pub fn nb_intervals(&self, S: crate::geom_abs::Shape) -> i32 {
         crate::check_result(unsafe {
@@ -505,15 +508,15 @@ impl CurveOnEdge {
         })
     }
 
-    /// **Source:** `BiTgte_CurveOnEdge.hxx`:73 - `BiTgte_CurveOnEdge::Intervals()`
-    /// Stores in <T> the  parameters bounding the intervals
+    /// **Source:** `BiTgte_CurveOnEdge.hxx`:71 - `BiTgte_CurveOnEdge::Intervals()`
+    /// Stores in <T> the parameters bounding the intervals
     /// of continuity <S>.
     ///
-    /// The array must provide  enough room to  accommodate
+    /// The array must provide enough room to accommodate
     /// for the parameters. i.e. T.Length() > NbIntervals()
     pub fn intervals(
         &self,
-        T: &mut crate::ffi_types::TColStd_Array1OfReal,
+        T: &mut crate::ffi_types::NCollection_Array1_double,
         S: crate::geom_abs::Shape,
     ) {
         crate::check_void_result(unsafe {
@@ -525,9 +528,9 @@ impl CurveOnEdge {
         })
     }
 
-    /// **Source:** `BiTgte_CurveOnEdge.hxx`:80 - `BiTgte_CurveOnEdge::Trim()`
-    /// Returns    a  curve equivalent   of  <me>  between
-    /// parameters <First>  and <Last>. <Tol>  is used  to
+    /// **Source:** `BiTgte_CurveOnEdge.hxx`:78 - `BiTgte_CurveOnEdge::Trim()`
+    /// Returns a curve equivalent of <me> between
+    /// parameters <First> and <Last>. <Tol> is used to
     /// test for 3d points confusion.
     /// If <First> >= <Last>
     pub fn trim(
@@ -535,7 +538,7 @@ impl CurveOnEdge {
         First: f64,
         Last: f64,
         Tol: f64,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleAdaptor3dCurve> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Adaptor3d_Curve> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKOffset::BiTgte_CurveOnEdge_trim(
@@ -548,107 +551,83 @@ impl CurveOnEdge {
         }
     }
 
-    /// **Source:** `BiTgte_CurveOnEdge.hxx`:84 - `BiTgte_CurveOnEdge::IsClosed()`
+    /// **Source:** `BiTgte_CurveOnEdge.hxx`:82 - `BiTgte_CurveOnEdge::IsClosed()`
     pub fn is_closed(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKOffset::BiTgte_CurveOnEdge_is_closed(self as *const Self)
         })
     }
 
-    /// **Source:** `BiTgte_CurveOnEdge.hxx`:86 - `BiTgte_CurveOnEdge::IsPeriodic()`
+    /// **Source:** `BiTgte_CurveOnEdge.hxx`:84 - `BiTgte_CurveOnEdge::IsPeriodic()`
     pub fn is_periodic(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKOffset::BiTgte_CurveOnEdge_is_periodic(self as *const Self)
         })
     }
 
-    /// **Source:** `BiTgte_CurveOnEdge.hxx`:88 - `BiTgte_CurveOnEdge::Period()`
+    /// **Source:** `BiTgte_CurveOnEdge.hxx`:86 - `BiTgte_CurveOnEdge::Period()`
     pub fn period(&self) -> f64 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKOffset::BiTgte_CurveOnEdge_period(self as *const Self)
         })
     }
 
-    /// **Source:** `BiTgte_CurveOnEdge.hxx`:91 - `BiTgte_CurveOnEdge::Value()`
-    /// Computes the point of parameter U on the curve.
-    pub fn value(&self, U: f64) -> crate::OwnedPtr<crate::gp::Pnt> {
+    /// **Source:** `BiTgte_CurveOnEdge.hxx`:89 - `BiTgte_CurveOnEdge::EvalD0()`
+    /// Computes the point of parameter theU on the curve.
+    pub fn eval_d0(&self, theU: f64) -> crate::OwnedPtr<crate::gp::Pnt> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKOffset::BiTgte_CurveOnEdge_value(self as *const Self, U),
+                crate::ffi_extern_TKOffset::BiTgte_CurveOnEdge_eval_d0(self as *const Self, theU),
             ))
         }
     }
 
-    /// **Source:** `BiTgte_CurveOnEdge.hxx`:94 - `BiTgte_CurveOnEdge::D0()`
-    /// Computes the point of parameter U on the curve.
-    pub fn d0(&self, U: f64, P: &mut crate::gp::Pnt) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKOffset::BiTgte_CurveOnEdge_d0(self as *const Self, U, P)
-        })
-    }
-
-    /// **Source:** `BiTgte_CurveOnEdge.hxx`:100 - `BiTgte_CurveOnEdge::D1()`
-    /// Computes the point of parameter U on the curve with its
-    /// first derivative.
-    /// Raised if the continuity of the current interval
-    /// is not C1.
-    pub fn d1(&self, U: f64, P: &mut crate::gp::Pnt, V: &mut crate::gp::Vec) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKOffset::BiTgte_CurveOnEdge_d1(self as *const Self, U, P, V)
-        })
-    }
-
-    /// **Source:** `BiTgte_CurveOnEdge.hxx`:106 - `BiTgte_CurveOnEdge::D2()`
-    /// Returns the point P of parameter U, the first and second
-    /// derivatives V1 and V2.
-    /// Raised if the continuity of the current interval
-    /// is not C2.
-    pub fn d2(
-        &self,
-        U: f64,
-        P: &mut crate::gp::Pnt,
-        V1: &mut crate::gp::Vec,
-        V2: &mut crate::gp::Vec,
-    ) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKOffset::BiTgte_CurveOnEdge_d2(self as *const Self, U, P, V1, V2)
-        })
-    }
-
-    /// **Source:** `BiTgte_CurveOnEdge.hxx`:115 - `BiTgte_CurveOnEdge::D3()`
-    /// Returns the point P of parameter U, the first, the second
-    /// and the third derivative.
-    /// Raised if the continuity of the current interval
-    /// is not C3.
-    pub fn d3(
-        &self,
-        U: f64,
-        P: &mut crate::gp::Pnt,
-        V1: &mut crate::gp::Vec,
-        V2: &mut crate::gp::Vec,
-        V3: &mut crate::gp::Vec,
-    ) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKOffset::BiTgte_CurveOnEdge_d3(self as *const Self, U, P, V1, V2, V3)
-        })
-    }
-
-    /// **Source:** `BiTgte_CurveOnEdge.hxx`:126 - `BiTgte_CurveOnEdge::DN()`
-    /// The returned vector gives the value of the derivative for the
-    /// order of derivation N.
-    /// Raised if the continuity of the current interval
-    /// is not CN.
-    /// Raised if N < 1.
-    pub fn dn(&self, U: f64, N: i32) -> crate::OwnedPtr<crate::gp::Vec> {
+    /// **Source:** `BiTgte_CurveOnEdge.hxx`:92 - `BiTgte_CurveOnEdge::EvalD1()`
+    /// Computes the point and first derivative at parameter theU.
+    pub fn eval_d1(&self, theU: f64) -> crate::OwnedPtr<crate::geom::Curve_ResD1> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKOffset::BiTgte_CurveOnEdge_dn(self as *const Self, U, N),
+                crate::ffi_extern_TKOffset::BiTgte_CurveOnEdge_eval_d1(self as *const Self, theU),
             ))
         }
     }
 
-    /// **Source:** `BiTgte_CurveOnEdge.hxx`:131 - `BiTgte_CurveOnEdge::Resolution()`
-    /// Returns the parametric  resolution corresponding
+    /// **Source:** `BiTgte_CurveOnEdge.hxx`:95 - `BiTgte_CurveOnEdge::EvalD2()`
+    /// Computes the point and first two derivatives at parameter theU.
+    pub fn eval_d2(&self, theU: f64) -> crate::OwnedPtr<crate::geom::Curve_ResD2> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKOffset::BiTgte_CurveOnEdge_eval_d2(self as *const Self, theU),
+            ))
+        }
+    }
+
+    /// **Source:** `BiTgte_CurveOnEdge.hxx`:98 - `BiTgte_CurveOnEdge::EvalD3()`
+    /// Computes the point and first three derivatives at parameter theU.
+    pub fn eval_d3(&self, theU: f64) -> crate::OwnedPtr<crate::geom::Curve_ResD3> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKOffset::BiTgte_CurveOnEdge_eval_d3(self as *const Self, theU),
+            ))
+        }
+    }
+
+    /// **Source:** `BiTgte_CurveOnEdge.hxx`:101 - `BiTgte_CurveOnEdge::EvalDN()`
+    /// Returns the derivative of order theN at parameter theU.
+    pub fn eval_dn(&self, theU: f64, theN: i32) -> crate::OwnedPtr<crate::gp::Vec> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKOffset::BiTgte_CurveOnEdge_eval_dn(
+                    self as *const Self,
+                    theU,
+                    theN,
+                ),
+            ))
+        }
+    }
+
+    /// **Source:** `BiTgte_CurveOnEdge.hxx`:105 - `BiTgte_CurveOnEdge::Resolution()`
+    /// Returns the parametric resolution corresponding
     /// to the real space resolution <R3d>.
     pub fn resolution(&self, R3d: f64) -> f64 {
         crate::check_result(unsafe {
@@ -656,9 +635,9 @@ impl CurveOnEdge {
         })
     }
 
-    /// **Source:** `BiTgte_CurveOnEdge.hxx`:136 - `BiTgte_CurveOnEdge::GetType()`
-    /// Returns  the  type of the   curve  in the  current
-    /// interval :   Line,   Circle,   Ellipse, Hyperbola,
+    /// **Source:** `BiTgte_CurveOnEdge.hxx`:110 - `BiTgte_CurveOnEdge::GetType()`
+    /// Returns the type of the curve in the current
+    /// interval: Line, Circle, Ellipse, Hyperbola,
     /// Parabola, BezierCurve, BSplineCurve, OtherCurve.
     pub fn get_type(&self) -> crate::geom_abs::CurveType {
         crate::geom_abs::CurveType::try_from(crate::check_result(unsafe {
@@ -667,7 +646,7 @@ impl CurveOnEdge {
         .unwrap()
     }
 
-    /// **Source:** `BiTgte_CurveOnEdge.hxx`:138 - `BiTgte_CurveOnEdge::Line()`
+    /// **Source:** `BiTgte_CurveOnEdge.hxx`:112 - `BiTgte_CurveOnEdge::Line()`
     pub fn line(&self) -> crate::OwnedPtr<crate::gp::Lin> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -676,7 +655,7 @@ impl CurveOnEdge {
         }
     }
 
-    /// **Source:** `BiTgte_CurveOnEdge.hxx`:140 - `BiTgte_CurveOnEdge::Circle()`
+    /// **Source:** `BiTgte_CurveOnEdge.hxx`:114 - `BiTgte_CurveOnEdge::Circle()`
     pub fn circle(&self) -> crate::OwnedPtr<crate::gp::Circ> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -685,7 +664,7 @@ impl CurveOnEdge {
         }
     }
 
-    /// **Source:** `BiTgte_CurveOnEdge.hxx`:142 - `BiTgte_CurveOnEdge::Ellipse()`
+    /// **Source:** `BiTgte_CurveOnEdge.hxx`:116 - `BiTgte_CurveOnEdge::Ellipse()`
     pub fn ellipse(&self) -> crate::OwnedPtr<crate::gp::Elips> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -694,7 +673,7 @@ impl CurveOnEdge {
         }
     }
 
-    /// **Source:** `BiTgte_CurveOnEdge.hxx`:144 - `BiTgte_CurveOnEdge::Hyperbola()`
+    /// **Source:** `BiTgte_CurveOnEdge.hxx`:118 - `BiTgte_CurveOnEdge::Hyperbola()`
     pub fn hyperbola(&self) -> crate::OwnedPtr<crate::gp::Hypr> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -703,7 +682,7 @@ impl CurveOnEdge {
         }
     }
 
-    /// **Source:** `BiTgte_CurveOnEdge.hxx`:146 - `BiTgte_CurveOnEdge::Parabola()`
+    /// **Source:** `BiTgte_CurveOnEdge.hxx`:120 - `BiTgte_CurveOnEdge::Parabola()`
     pub fn parabola(&self) -> crate::OwnedPtr<crate::gp::Parab> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -712,36 +691,36 @@ impl CurveOnEdge {
         }
     }
 
-    /// **Source:** `BiTgte_CurveOnEdge.hxx`:148 - `BiTgte_CurveOnEdge::Degree()`
+    /// **Source:** `BiTgte_CurveOnEdge.hxx`:122 - `BiTgte_CurveOnEdge::Degree()`
     pub fn degree(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKOffset::BiTgte_CurveOnEdge_degree(self as *const Self)
         })
     }
 
-    /// **Source:** `BiTgte_CurveOnEdge.hxx`:150 - `BiTgte_CurveOnEdge::IsRational()`
+    /// **Source:** `BiTgte_CurveOnEdge.hxx`:124 - `BiTgte_CurveOnEdge::IsRational()`
     pub fn is_rational(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKOffset::BiTgte_CurveOnEdge_is_rational(self as *const Self)
         })
     }
 
-    /// **Source:** `BiTgte_CurveOnEdge.hxx`:152 - `BiTgte_CurveOnEdge::NbPoles()`
+    /// **Source:** `BiTgte_CurveOnEdge.hxx`:126 - `BiTgte_CurveOnEdge::NbPoles()`
     pub fn nb_poles(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKOffset::BiTgte_CurveOnEdge_nb_poles(self as *const Self)
         })
     }
 
-    /// **Source:** `BiTgte_CurveOnEdge.hxx`:154 - `BiTgte_CurveOnEdge::NbKnots()`
+    /// **Source:** `BiTgte_CurveOnEdge.hxx`:128 - `BiTgte_CurveOnEdge::NbKnots()`
     pub fn nb_knots(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKOffset::BiTgte_CurveOnEdge_nb_knots(self as *const Self)
         })
     }
 
-    /// **Source:** `BiTgte_CurveOnEdge.hxx`:156 - `BiTgte_CurveOnEdge::Bezier()`
-    pub fn bezier(&self) -> crate::OwnedPtr<crate::ffi_types::HandleGeomBezierCurve> {
+    /// **Source:** `BiTgte_CurveOnEdge.hxx`:130 - `BiTgte_CurveOnEdge::Bezier()`
+    pub fn bezier(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_Geom_BezierCurve> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKOffset::BiTgte_CurveOnEdge_bezier(self as *const Self),
@@ -749,8 +728,8 @@ impl CurveOnEdge {
         }
     }
 
-    /// **Source:** `BiTgte_CurveOnEdge.hxx`:158 - `BiTgte_CurveOnEdge::BSpline()`
-    pub fn b_spline(&self) -> crate::OwnedPtr<crate::ffi_types::HandleGeomBSplineCurve> {
+    /// **Source:** `BiTgte_CurveOnEdge.hxx`:132 - `BiTgte_CurveOnEdge::BSpline()`
+    pub fn b_spline(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_Geom_BSplineCurve> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKOffset::BiTgte_CurveOnEdge_b_spline(self as *const Self),
@@ -758,7 +737,7 @@ impl CurveOnEdge {
         }
     }
 
-    /// **Source:** `BiTgte_CurveOnEdge.hxx`:47 - `BiTgte_CurveOnEdge::get_type_name()`
+    /// **Source:** `BiTgte_CurveOnEdge.hxx`:45 - `BiTgte_CurveOnEdge::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -769,8 +748,8 @@ impl CurveOnEdge {
         .into_owned()
     }
 
-    /// **Source:** `BiTgte_CurveOnEdge.hxx`:47 - `BiTgte_CurveOnEdge::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    /// **Source:** `BiTgte_CurveOnEdge.hxx`:45 - `BiTgte_CurveOnEdge::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKOffset::BiTgte_CurveOnEdge_get_type_descriptor(),
@@ -825,7 +804,7 @@ impl CurveOnEdge {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleBiTgteCurveOnEdge> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_BiTgte_CurveOnEdge> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKOffset::BiTgte_CurveOnEdge_to_handle(obj.into_raw()),
@@ -833,8 +812,96 @@ impl CurveOnEdge {
         }
     }
 
-    /// Inherited: **Source:** `Adaptor3d_Curve.hxx`:156 - `Adaptor3d_Curve::OffsetCurve()`
-    pub fn offset_curve(&self) -> crate::OwnedPtr<crate::ffi_types::HandleGeomOffsetCurve> {
+    /// Inherited: **Source:** `Adaptor3d_Curve.hxx`:89 - `Adaptor3d_Curve::Value()`
+    pub fn value(&self, theU: f64) -> crate::OwnedPtr<crate::gp::Pnt> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKOffset::BiTgte_CurveOnEdge_inherited_Value(
+                    self as *const Self,
+                    theU,
+                ),
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `Adaptor3d_Curve.hxx`:92 - `Adaptor3d_Curve::D0()`
+    pub fn d0(&self, theU: f64, theP: &mut crate::gp::Pnt) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKOffset::BiTgte_CurveOnEdge_inherited_D0(
+                self as *const Self,
+                theU,
+                theP,
+            )
+        })
+    }
+
+    /// Inherited: **Source:** `Adaptor3d_Curve.hxx`:98 - `Adaptor3d_Curve::D1()`
+    pub fn d1(&self, theU: f64, theP: &mut crate::gp::Pnt, theV: &mut crate::gp::Vec) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKOffset::BiTgte_CurveOnEdge_inherited_D1(
+                self as *const Self,
+                theU,
+                theP,
+                theV,
+            )
+        })
+    }
+
+    /// Inherited: **Source:** `Adaptor3d_Curve.hxx`:109 - `Adaptor3d_Curve::D2()`
+    pub fn d2(
+        &self,
+        theU: f64,
+        theP: &mut crate::gp::Pnt,
+        theV1: &mut crate::gp::Vec,
+        theV2: &mut crate::gp::Vec,
+    ) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKOffset::BiTgte_CurveOnEdge_inherited_D2(
+                self as *const Self,
+                theU,
+                theP,
+                theV1,
+                theV2,
+            )
+        })
+    }
+
+    /// Inherited: **Source:** `Adaptor3d_Curve.hxx`:121 - `Adaptor3d_Curve::D3()`
+    pub fn d3(
+        &self,
+        theU: f64,
+        theP: &mut crate::gp::Pnt,
+        theV1: &mut crate::gp::Vec,
+        theV2: &mut crate::gp::Vec,
+        theV3: &mut crate::gp::Vec,
+    ) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKOffset::BiTgte_CurveOnEdge_inherited_D3(
+                self as *const Self,
+                theU,
+                theP,
+                theV1,
+                theV2,
+                theV3,
+            )
+        })
+    }
+
+    /// Inherited: **Source:** `Adaptor3d_Curve.hxx`:135 - `Adaptor3d_Curve::DN()`
+    pub fn dn(&self, theU: f64, theN: i32) -> crate::OwnedPtr<crate::gp::Vec> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKOffset::BiTgte_CurveOnEdge_inherited_DN(
+                    self as *const Self,
+                    theU,
+                    theN,
+                ),
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `Adaptor3d_Curve.hxx`:168 - `Adaptor3d_Curve::OffsetCurve()`
+    pub fn offset_curve(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_Geom_OffsetCurve> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKOffset::BiTgte_CurveOnEdge_inherited_OffsetCurve(
@@ -844,8 +911,8 @@ impl CurveOnEdge {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKOffset::BiTgte_CurveOnEdge_inherited_IsInstance(
                 self as *const Self,
@@ -854,8 +921,8 @@ impl CurveOnEdge {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKOffset::BiTgte_CurveOnEdge_inherited_IsKind(
                 self as *const Self,
@@ -864,7 +931,7 @@ impl CurveOnEdge {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -878,7 +945,7 @@ impl CurveOnEdge {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKOffset::BiTgte_CurveOnEdge_inherited_GetRefCount(
@@ -887,7 +954,7 @@ impl CurveOnEdge {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKOffset::BiTgte_CurveOnEdge_inherited_IncrementRefCounter(
@@ -896,7 +963,7 @@ impl CurveOnEdge {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKOffset::BiTgte_CurveOnEdge_inherited_DecrementRefCounter(
@@ -905,7 +972,7 @@ impl CurveOnEdge {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKOffset::BiTgte_CurveOnEdge_inherited_Delete(self as *const Self)
@@ -913,34 +980,36 @@ impl CurveOnEdge {
     }
 }
 
-pub use crate::ffi_types::HandleBiTgteCurveOnEdge;
+pub use crate::ffi_types::Handle_BiTgte_CurveOnEdge;
 
-unsafe impl crate::CppDeletable for HandleBiTgteCurveOnEdge {
+unsafe impl crate::CppDeletable for Handle_BiTgte_CurveOnEdge {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKOffset::HandleBiTgteCurveOnEdge_destructor(ptr);
+            crate::ffi_extern_TKOffset::Handle_BiTgte_CurveOnEdge_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleBiTgteCurveOnEdge {
+unsafe impl crate::CppCopyable for Handle_BiTgte_CurveOnEdge {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
         unsafe {
-            crate::check_result(crate::ffi_extern_TKOffset::HandleBiTgteCurveOnEdge_clone(ptr))
+            crate::check_result(crate::ffi_extern_TKOffset::Handle_BiTgte_CurveOnEdge_clone(ptr))
         }
     }
 }
 
-impl HandleBiTgteCurveOnEdge {
+impl Handle_BiTgte_CurveOnEdge {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
-        unsafe { crate::ffi_extern_TKOffset::HandleBiTgteCurveOnEdge_is_null(self as *const Self) }
+        unsafe {
+            crate::ffi_extern_TKOffset::Handle_BiTgte_CurveOnEdge_is_null(self as *const Self)
+        }
     }
 
     /// Dereference this Handle to access the underlying BiTgte_CurveOnEdge
     pub fn get(&self) -> &crate::ffi_types::BiTgte_CurveOnEdge {
         unsafe {
-            &*crate::check_result(crate::ffi_extern_TKOffset::HandleBiTgteCurveOnEdge_get(
+            &*crate::check_result(crate::ffi_extern_TKOffset::Handle_BiTgte_CurveOnEdge_get(
                 self as *const Self,
             ))
         }
@@ -949,17 +1018,17 @@ impl HandleBiTgteCurveOnEdge {
     /// Dereference this Handle to mutably access the underlying BiTgte_CurveOnEdge
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::BiTgte_CurveOnEdge {
         unsafe {
-            &mut *crate::check_result(crate::ffi_extern_TKOffset::HandleBiTgteCurveOnEdge_get_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKOffset::Handle_BiTgte_CurveOnEdge_get_mut(self as *mut Self),
+            )
         }
     }
 
     /// Upcast Handle<BiTgte_CurveOnEdge> to Handle<Adaptor3d_Curve>
-    pub fn to_handle_curve(&self) -> crate::OwnedPtr<crate::ffi_types::HandleAdaptor3dCurve> {
+    pub fn to_handle_curve(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_Adaptor3d_Curve> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKOffset::HandleBiTgteCurveOnEdge_to_HandleAdaptor3dCurve(
+                crate::ffi_extern_TKOffset::Handle_BiTgte_CurveOnEdge_to_Handle_Adaptor3d_Curve(
                     self as *const Self,
                 ),
             ))
@@ -969,10 +1038,10 @@ impl HandleBiTgteCurveOnEdge {
     /// Upcast Handle<BiTgte_CurveOnEdge> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKOffset::HandleBiTgteCurveOnEdge_to_HandleStandardTransient(
+                crate::ffi_extern_TKOffset::Handle_BiTgte_CurveOnEdge_to_Handle_Standard_Transient(
                     self as *const Self,
                 ),
             ))
@@ -984,8 +1053,8 @@ impl HandleBiTgteCurveOnEdge {
 // From BiTgte_CurveOnVertex.hxx
 // ========================
 
-/// **Source:** `BiTgte_CurveOnVertex.hxx`:45 - `BiTgte_CurveOnVertex`
-/// private class used  to create a filler rolling  on
+/// **Source:** `BiTgte_CurveOnVertex.hxx`:44 - `BiTgte_CurveOnVertex`
+/// private class used to create a filler rolling on
 /// an edge.
 pub use crate::ffi_types::BiTgte_CurveOnVertex as CurveOnVertex;
 
@@ -998,7 +1067,7 @@ unsafe impl crate::CppDeletable for CurveOnVertex {
 }
 
 impl CurveOnVertex {
-    /// **Source:** `BiTgte_CurveOnVertex.hxx`:49 - `BiTgte_CurveOnVertex::BiTgte_CurveOnVertex()`
+    /// **Source:** `BiTgte_CurveOnVertex.hxx`:48 - `BiTgte_CurveOnVertex::BiTgte_CurveOnVertex()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -1007,7 +1076,7 @@ impl CurveOnVertex {
         }
     }
 
-    /// **Source:** `BiTgte_CurveOnVertex.hxx`:51 - `BiTgte_CurveOnVertex::BiTgte_CurveOnVertex()`
+    /// **Source:** `BiTgte_CurveOnVertex.hxx`:50 - `BiTgte_CurveOnVertex::BiTgte_CurveOnVertex()`
     pub fn new_edge_vertex(
         EonF: &crate::topo_ds::Edge,
         V: &crate::topo_ds::Vertex,
@@ -1019,8 +1088,8 @@ impl CurveOnVertex {
         }
     }
 
-    /// **Source:** `BiTgte_CurveOnVertex.hxx`:47 - `BiTgte_CurveOnVertex::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `BiTgte_CurveOnVertex.hxx`:46 - `BiTgte_CurveOnVertex::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKOffset::BiTgte_CurveOnVertex_dynamic_type(
                 self as *const Self,
@@ -1028,28 +1097,28 @@ impl CurveOnVertex {
         }
     }
 
-    /// **Source:** `BiTgte_CurveOnVertex.hxx`:53 - `BiTgte_CurveOnVertex::Init()`
+    /// **Source:** `BiTgte_CurveOnVertex.hxx`:52 - `BiTgte_CurveOnVertex::Init()`
     pub fn init(&mut self, EonF: &crate::topo_ds::Edge, V: &crate::topo_ds::Vertex) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKOffset::BiTgte_CurveOnVertex_init(self as *mut Self, EonF, V)
         })
     }
 
-    /// **Source:** `BiTgte_CurveOnVertex.hxx`:55 - `BiTgte_CurveOnVertex::FirstParameter()`
+    /// **Source:** `BiTgte_CurveOnVertex.hxx`:54 - `BiTgte_CurveOnVertex::FirstParameter()`
     pub fn first_parameter(&self) -> f64 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKOffset::BiTgte_CurveOnVertex_first_parameter(self as *const Self)
         })
     }
 
-    /// **Source:** `BiTgte_CurveOnVertex.hxx`:57 - `BiTgte_CurveOnVertex::LastParameter()`
+    /// **Source:** `BiTgte_CurveOnVertex.hxx`:56 - `BiTgte_CurveOnVertex::LastParameter()`
     pub fn last_parameter(&self) -> f64 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKOffset::BiTgte_CurveOnVertex_last_parameter(self as *const Self)
         })
     }
 
-    /// **Source:** `BiTgte_CurveOnVertex.hxx`:59 - `BiTgte_CurveOnVertex::Continuity()`
+    /// **Source:** `BiTgte_CurveOnVertex.hxx`:58 - `BiTgte_CurveOnVertex::Continuity()`
     pub fn continuity(&self) -> crate::geom_abs::Shape {
         crate::geom_abs::Shape::try_from(crate::check_result(unsafe {
             crate::ffi_extern_TKOffset::BiTgte_CurveOnVertex_continuity(self as *const Self)
@@ -1057,8 +1126,8 @@ impl CurveOnVertex {
         .unwrap()
     }
 
-    /// **Source:** `BiTgte_CurveOnVertex.hxx`:63 - `BiTgte_CurveOnVertex::NbIntervals()`
-    /// Returns  the number  of  intervals for  continuity
+    /// **Source:** `BiTgte_CurveOnVertex.hxx`:62 - `BiTgte_CurveOnVertex::NbIntervals()`
+    /// Returns the number of intervals for continuity
     /// <S>. May be one if Continuity(me) >= <S>
     pub fn nb_intervals(&self, S: crate::geom_abs::Shape) -> i32 {
         crate::check_result(unsafe {
@@ -1069,15 +1138,15 @@ impl CurveOnVertex {
         })
     }
 
-    /// **Source:** `BiTgte_CurveOnVertex.hxx`:70 - `BiTgte_CurveOnVertex::Intervals()`
-    /// Stores in <T> the  parameters bounding the intervals
+    /// **Source:** `BiTgte_CurveOnVertex.hxx`:69 - `BiTgte_CurveOnVertex::Intervals()`
+    /// Stores in <T> the parameters bounding the intervals
     /// of continuity <S>.
     ///
-    /// The array must provide  enough room to  accommodate
+    /// The array must provide enough room to accommodate
     /// for the parameters. i.e. T.Length() > NbIntervals()
     pub fn intervals(
         &self,
-        T: &mut crate::ffi_types::TColStd_Array1OfReal,
+        T: &mut crate::ffi_types::NCollection_Array1_double,
         S: crate::geom_abs::Shape,
     ) {
         crate::check_void_result(unsafe {
@@ -1089,9 +1158,9 @@ impl CurveOnVertex {
         })
     }
 
-    /// **Source:** `BiTgte_CurveOnVertex.hxx`:77 - `BiTgte_CurveOnVertex::Trim()`
-    /// Returns    a  curve equivalent   of  <me>  between
-    /// parameters <First>  and <Last>. <Tol>  is used  to
+    /// **Source:** `BiTgte_CurveOnVertex.hxx`:76 - `BiTgte_CurveOnVertex::Trim()`
+    /// Returns a curve equivalent of <me> between
+    /// parameters <First> and <Last>. <Tol> is used to
     /// test for 3d points confusion.
     /// If <First> >= <Last>
     pub fn trim(
@@ -1099,7 +1168,7 @@ impl CurveOnVertex {
         First: f64,
         Last: f64,
         Tol: f64,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleAdaptor3dCurve> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Adaptor3d_Curve> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKOffset::BiTgte_CurveOnVertex_trim(
@@ -1112,114 +1181,83 @@ impl CurveOnVertex {
         }
     }
 
-    /// **Source:** `BiTgte_CurveOnVertex.hxx`:81 - `BiTgte_CurveOnVertex::IsClosed()`
+    /// **Source:** `BiTgte_CurveOnVertex.hxx`:80 - `BiTgte_CurveOnVertex::IsClosed()`
     pub fn is_closed(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKOffset::BiTgte_CurveOnVertex_is_closed(self as *const Self)
         })
     }
 
-    /// **Source:** `BiTgte_CurveOnVertex.hxx`:83 - `BiTgte_CurveOnVertex::IsPeriodic()`
+    /// **Source:** `BiTgte_CurveOnVertex.hxx`:82 - `BiTgte_CurveOnVertex::IsPeriodic()`
     pub fn is_periodic(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKOffset::BiTgte_CurveOnVertex_is_periodic(self as *const Self)
         })
     }
 
-    /// **Source:** `BiTgte_CurveOnVertex.hxx`:85 - `BiTgte_CurveOnVertex::Period()`
+    /// **Source:** `BiTgte_CurveOnVertex.hxx`:84 - `BiTgte_CurveOnVertex::Period()`
     pub fn period(&self) -> f64 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKOffset::BiTgte_CurveOnVertex_period(self as *const Self)
         })
     }
 
-    /// **Source:** `BiTgte_CurveOnVertex.hxx`:88 - `BiTgte_CurveOnVertex::Value()`
-    /// Computes the point of parameter U on the curve.
-    pub fn value(&self, U: f64) -> crate::OwnedPtr<crate::gp::Pnt> {
+    /// **Source:** `BiTgte_CurveOnVertex.hxx`:87 - `BiTgte_CurveOnVertex::EvalD0()`
+    /// Computes the point of parameter theU on the curve.
+    pub fn eval_d0(&self, theU: f64) -> crate::OwnedPtr<crate::gp::Pnt> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKOffset::BiTgte_CurveOnVertex_value(self as *const Self, U),
+                crate::ffi_extern_TKOffset::BiTgte_CurveOnVertex_eval_d0(self as *const Self, theU),
             ))
         }
     }
 
-    /// **Source:** `BiTgte_CurveOnVertex.hxx`:91 - `BiTgte_CurveOnVertex::D0()`
-    /// Computes the point of parameter U on the curve.
-    pub fn d0(&self, U: f64, P: &mut crate::gp::Pnt) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKOffset::BiTgte_CurveOnVertex_d0(self as *const Self, U, P)
-        })
-    }
-
-    /// **Source:** `BiTgte_CurveOnVertex.hxx`:97 - `BiTgte_CurveOnVertex::D1()`
-    /// Computes the point of parameter U on the curve with its
-    /// first derivative.
-    /// Raised if the continuity of the current interval
-    /// is not C1.
-    pub fn d1(&self, U: f64, P: &mut crate::gp::Pnt, V: &mut crate::gp::Vec) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKOffset::BiTgte_CurveOnVertex_d1(self as *const Self, U, P, V)
-        })
-    }
-
-    /// **Source:** `BiTgte_CurveOnVertex.hxx`:103 - `BiTgte_CurveOnVertex::D2()`
-    /// Returns the point P of parameter U, the first and second
-    /// derivatives V1 and V2.
-    /// Raised if the continuity of the current interval
-    /// is not C2.
-    pub fn d2(
-        &self,
-        U: f64,
-        P: &mut crate::gp::Pnt,
-        V1: &mut crate::gp::Vec,
-        V2: &mut crate::gp::Vec,
-    ) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKOffset::BiTgte_CurveOnVertex_d2(self as *const Self, U, P, V1, V2)
-        })
-    }
-
-    /// **Source:** `BiTgte_CurveOnVertex.hxx`:112 - `BiTgte_CurveOnVertex::D3()`
-    /// Returns the point P of parameter U, the first, the second
-    /// and the third derivative.
-    /// Raised if the continuity of the current interval
-    /// is not C3.
-    pub fn d3(
-        &self,
-        U: f64,
-        P: &mut crate::gp::Pnt,
-        V1: &mut crate::gp::Vec,
-        V2: &mut crate::gp::Vec,
-        V3: &mut crate::gp::Vec,
-    ) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKOffset::BiTgte_CurveOnVertex_d3(
-                self as *const Self,
-                U,
-                P,
-                V1,
-                V2,
-                V3,
-            )
-        })
-    }
-
-    /// **Source:** `BiTgte_CurveOnVertex.hxx`:123 - `BiTgte_CurveOnVertex::DN()`
-    /// The returned vector gives the value of the derivative for the
-    /// order of derivation N.
-    /// Raised if the continuity of the current interval
-    /// is not CN.
-    /// Raised if N < 1.
-    pub fn dn(&self, U: f64, N: i32) -> crate::OwnedPtr<crate::gp::Vec> {
+    /// **Source:** `BiTgte_CurveOnVertex.hxx`:90 - `BiTgte_CurveOnVertex::EvalD1()`
+    /// Computes the point and first derivative at parameter theU.
+    pub fn eval_d1(&self, theU: f64) -> crate::OwnedPtr<crate::geom::Curve_ResD1> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKOffset::BiTgte_CurveOnVertex_dn(self as *const Self, U, N),
+                crate::ffi_extern_TKOffset::BiTgte_CurveOnVertex_eval_d1(self as *const Self, theU),
             ))
         }
     }
 
-    /// **Source:** `BiTgte_CurveOnVertex.hxx`:128 - `BiTgte_CurveOnVertex::Resolution()`
-    /// Returns the parametric  resolution corresponding
+    /// **Source:** `BiTgte_CurveOnVertex.hxx`:93 - `BiTgte_CurveOnVertex::EvalD2()`
+    /// Computes the point and first two derivatives at parameter theU.
+    pub fn eval_d2(&self, theU: f64) -> crate::OwnedPtr<crate::geom::Curve_ResD2> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKOffset::BiTgte_CurveOnVertex_eval_d2(self as *const Self, theU),
+            ))
+        }
+    }
+
+    /// **Source:** `BiTgte_CurveOnVertex.hxx`:96 - `BiTgte_CurveOnVertex::EvalD3()`
+    /// Computes the point and first three derivatives at parameter theU.
+    pub fn eval_d3(&self, theU: f64) -> crate::OwnedPtr<crate::geom::Curve_ResD3> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKOffset::BiTgte_CurveOnVertex_eval_d3(self as *const Self, theU),
+            ))
+        }
+    }
+
+    /// **Source:** `BiTgte_CurveOnVertex.hxx`:99 - `BiTgte_CurveOnVertex::EvalDN()`
+    /// Returns the derivative of order theN at parameter theU.
+    pub fn eval_dn(&self, theU: f64, theN: i32) -> crate::OwnedPtr<crate::gp::Vec> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKOffset::BiTgte_CurveOnVertex_eval_dn(
+                    self as *const Self,
+                    theU,
+                    theN,
+                ),
+            ))
+        }
+    }
+
+    /// **Source:** `BiTgte_CurveOnVertex.hxx`:103 - `BiTgte_CurveOnVertex::Resolution()`
+    /// Returns the parametric resolution corresponding
     /// to the real space resolution <R3d>.
     pub fn resolution(&self, R3d: f64) -> f64 {
         crate::check_result(unsafe {
@@ -1227,9 +1265,9 @@ impl CurveOnVertex {
         })
     }
 
-    /// **Source:** `BiTgte_CurveOnVertex.hxx`:133 - `BiTgte_CurveOnVertex::GetType()`
-    /// Returns  the  type of the   curve  in the  current
-    /// interval :   Line,   Circle,   Ellipse, Hyperbola,
+    /// **Source:** `BiTgte_CurveOnVertex.hxx`:108 - `BiTgte_CurveOnVertex::GetType()`
+    /// Returns the type of the curve in the current
+    /// interval: Line, Circle, Ellipse, Hyperbola,
     /// Parabola, BezierCurve, BSplineCurve, OtherCurve.
     pub fn get_type(&self) -> crate::geom_abs::CurveType {
         crate::geom_abs::CurveType::try_from(crate::check_result(unsafe {
@@ -1238,7 +1276,7 @@ impl CurveOnVertex {
         .unwrap()
     }
 
-    /// **Source:** `BiTgte_CurveOnVertex.hxx`:135 - `BiTgte_CurveOnVertex::Line()`
+    /// **Source:** `BiTgte_CurveOnVertex.hxx`:110 - `BiTgte_CurveOnVertex::Line()`
     pub fn line(&self) -> crate::OwnedPtr<crate::gp::Lin> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -1247,7 +1285,7 @@ impl CurveOnVertex {
         }
     }
 
-    /// **Source:** `BiTgte_CurveOnVertex.hxx`:137 - `BiTgte_CurveOnVertex::Circle()`
+    /// **Source:** `BiTgte_CurveOnVertex.hxx`:112 - `BiTgte_CurveOnVertex::Circle()`
     pub fn circle(&self) -> crate::OwnedPtr<crate::gp::Circ> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -1256,7 +1294,7 @@ impl CurveOnVertex {
         }
     }
 
-    /// **Source:** `BiTgte_CurveOnVertex.hxx`:139 - `BiTgte_CurveOnVertex::Ellipse()`
+    /// **Source:** `BiTgte_CurveOnVertex.hxx`:114 - `BiTgte_CurveOnVertex::Ellipse()`
     pub fn ellipse(&self) -> crate::OwnedPtr<crate::gp::Elips> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -1265,7 +1303,7 @@ impl CurveOnVertex {
         }
     }
 
-    /// **Source:** `BiTgte_CurveOnVertex.hxx`:141 - `BiTgte_CurveOnVertex::Hyperbola()`
+    /// **Source:** `BiTgte_CurveOnVertex.hxx`:116 - `BiTgte_CurveOnVertex::Hyperbola()`
     pub fn hyperbola(&self) -> crate::OwnedPtr<crate::gp::Hypr> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -1274,7 +1312,7 @@ impl CurveOnVertex {
         }
     }
 
-    /// **Source:** `BiTgte_CurveOnVertex.hxx`:143 - `BiTgte_CurveOnVertex::Parabola()`
+    /// **Source:** `BiTgte_CurveOnVertex.hxx`:118 - `BiTgte_CurveOnVertex::Parabola()`
     pub fn parabola(&self) -> crate::OwnedPtr<crate::gp::Parab> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -1283,36 +1321,36 @@ impl CurveOnVertex {
         }
     }
 
-    /// **Source:** `BiTgte_CurveOnVertex.hxx`:145 - `BiTgte_CurveOnVertex::Degree()`
+    /// **Source:** `BiTgte_CurveOnVertex.hxx`:120 - `BiTgte_CurveOnVertex::Degree()`
     pub fn degree(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKOffset::BiTgte_CurveOnVertex_degree(self as *const Self)
         })
     }
 
-    /// **Source:** `BiTgte_CurveOnVertex.hxx`:147 - `BiTgte_CurveOnVertex::IsRational()`
+    /// **Source:** `BiTgte_CurveOnVertex.hxx`:122 - `BiTgte_CurveOnVertex::IsRational()`
     pub fn is_rational(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKOffset::BiTgte_CurveOnVertex_is_rational(self as *const Self)
         })
     }
 
-    /// **Source:** `BiTgte_CurveOnVertex.hxx`:149 - `BiTgte_CurveOnVertex::NbPoles()`
+    /// **Source:** `BiTgte_CurveOnVertex.hxx`:124 - `BiTgte_CurveOnVertex::NbPoles()`
     pub fn nb_poles(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKOffset::BiTgte_CurveOnVertex_nb_poles(self as *const Self)
         })
     }
 
-    /// **Source:** `BiTgte_CurveOnVertex.hxx`:151 - `BiTgte_CurveOnVertex::NbKnots()`
+    /// **Source:** `BiTgte_CurveOnVertex.hxx`:126 - `BiTgte_CurveOnVertex::NbKnots()`
     pub fn nb_knots(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKOffset::BiTgte_CurveOnVertex_nb_knots(self as *const Self)
         })
     }
 
-    /// **Source:** `BiTgte_CurveOnVertex.hxx`:153 - `BiTgte_CurveOnVertex::Bezier()`
-    pub fn bezier(&self) -> crate::OwnedPtr<crate::ffi_types::HandleGeomBezierCurve> {
+    /// **Source:** `BiTgte_CurveOnVertex.hxx`:128 - `BiTgte_CurveOnVertex::Bezier()`
+    pub fn bezier(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_Geom_BezierCurve> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKOffset::BiTgte_CurveOnVertex_bezier(self as *const Self),
@@ -1320,8 +1358,8 @@ impl CurveOnVertex {
         }
     }
 
-    /// **Source:** `BiTgte_CurveOnVertex.hxx`:155 - `BiTgte_CurveOnVertex::BSpline()`
-    pub fn b_spline(&self) -> crate::OwnedPtr<crate::ffi_types::HandleGeomBSplineCurve> {
+    /// **Source:** `BiTgte_CurveOnVertex.hxx`:130 - `BiTgte_CurveOnVertex::BSpline()`
+    pub fn b_spline(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_Geom_BSplineCurve> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKOffset::BiTgte_CurveOnVertex_b_spline(self as *const Self),
@@ -1329,7 +1367,7 @@ impl CurveOnVertex {
         }
     }
 
-    /// **Source:** `BiTgte_CurveOnVertex.hxx`:47 - `BiTgte_CurveOnVertex::get_type_name()`
+    /// **Source:** `BiTgte_CurveOnVertex.hxx`:46 - `BiTgte_CurveOnVertex::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -1340,8 +1378,8 @@ impl CurveOnVertex {
         .into_owned()
     }
 
-    /// **Source:** `BiTgte_CurveOnVertex.hxx`:47 - `BiTgte_CurveOnVertex::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    /// **Source:** `BiTgte_CurveOnVertex.hxx`:46 - `BiTgte_CurveOnVertex::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKOffset::BiTgte_CurveOnVertex_get_type_descriptor(),
@@ -1396,7 +1434,7 @@ impl CurveOnVertex {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleBiTgteCurveOnVertex> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_BiTgte_CurveOnVertex> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKOffset::BiTgte_CurveOnVertex_to_handle(obj.into_raw()),
@@ -1404,8 +1442,8 @@ impl CurveOnVertex {
         }
     }
 
-    /// Inherited: **Source:** `Adaptor3d_Curve.hxx`:57 - `Adaptor3d_Curve::ShallowCopy()`
-    pub fn shallow_copy(&self) -> crate::OwnedPtr<crate::ffi_types::HandleAdaptor3dCurve> {
+    /// Inherited: **Source:** `Adaptor3d_Curve.hxx`:54 - `Adaptor3d_Curve::ShallowCopy()`
+    pub fn shallow_copy(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_Adaptor3d_Curve> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKOffset::BiTgte_CurveOnVertex_inherited_ShallowCopy(
@@ -1415,8 +1453,96 @@ impl CurveOnVertex {
         }
     }
 
-    /// Inherited: **Source:** `Adaptor3d_Curve.hxx`:156 - `Adaptor3d_Curve::OffsetCurve()`
-    pub fn offset_curve(&self) -> crate::OwnedPtr<crate::ffi_types::HandleGeomOffsetCurve> {
+    /// Inherited: **Source:** `Adaptor3d_Curve.hxx`:89 - `Adaptor3d_Curve::Value()`
+    pub fn value(&self, theU: f64) -> crate::OwnedPtr<crate::gp::Pnt> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKOffset::BiTgte_CurveOnVertex_inherited_Value(
+                    self as *const Self,
+                    theU,
+                ),
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `Adaptor3d_Curve.hxx`:92 - `Adaptor3d_Curve::D0()`
+    pub fn d0(&self, theU: f64, theP: &mut crate::gp::Pnt) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKOffset::BiTgte_CurveOnVertex_inherited_D0(
+                self as *const Self,
+                theU,
+                theP,
+            )
+        })
+    }
+
+    /// Inherited: **Source:** `Adaptor3d_Curve.hxx`:98 - `Adaptor3d_Curve::D1()`
+    pub fn d1(&self, theU: f64, theP: &mut crate::gp::Pnt, theV: &mut crate::gp::Vec) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKOffset::BiTgte_CurveOnVertex_inherited_D1(
+                self as *const Self,
+                theU,
+                theP,
+                theV,
+            )
+        })
+    }
+
+    /// Inherited: **Source:** `Adaptor3d_Curve.hxx`:109 - `Adaptor3d_Curve::D2()`
+    pub fn d2(
+        &self,
+        theU: f64,
+        theP: &mut crate::gp::Pnt,
+        theV1: &mut crate::gp::Vec,
+        theV2: &mut crate::gp::Vec,
+    ) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKOffset::BiTgte_CurveOnVertex_inherited_D2(
+                self as *const Self,
+                theU,
+                theP,
+                theV1,
+                theV2,
+            )
+        })
+    }
+
+    /// Inherited: **Source:** `Adaptor3d_Curve.hxx`:121 - `Adaptor3d_Curve::D3()`
+    pub fn d3(
+        &self,
+        theU: f64,
+        theP: &mut crate::gp::Pnt,
+        theV1: &mut crate::gp::Vec,
+        theV2: &mut crate::gp::Vec,
+        theV3: &mut crate::gp::Vec,
+    ) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKOffset::BiTgte_CurveOnVertex_inherited_D3(
+                self as *const Self,
+                theU,
+                theP,
+                theV1,
+                theV2,
+                theV3,
+            )
+        })
+    }
+
+    /// Inherited: **Source:** `Adaptor3d_Curve.hxx`:135 - `Adaptor3d_Curve::DN()`
+    pub fn dn(&self, theU: f64, theN: i32) -> crate::OwnedPtr<crate::gp::Vec> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKOffset::BiTgte_CurveOnVertex_inherited_DN(
+                    self as *const Self,
+                    theU,
+                    theN,
+                ),
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `Adaptor3d_Curve.hxx`:168 - `Adaptor3d_Curve::OffsetCurve()`
+    pub fn offset_curve(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_Geom_OffsetCurve> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKOffset::BiTgte_CurveOnVertex_inherited_OffsetCurve(
@@ -1426,8 +1552,8 @@ impl CurveOnVertex {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKOffset::BiTgte_CurveOnVertex_inherited_IsInstance(
                 self as *const Self,
@@ -1436,8 +1562,8 @@ impl CurveOnVertex {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKOffset::BiTgte_CurveOnVertex_inherited_IsKind(
                 self as *const Self,
@@ -1446,7 +1572,7 @@ impl CurveOnVertex {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -1460,7 +1586,7 @@ impl CurveOnVertex {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKOffset::BiTgte_CurveOnVertex_inherited_GetRefCount(
@@ -1469,7 +1595,7 @@ impl CurveOnVertex {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKOffset::BiTgte_CurveOnVertex_inherited_IncrementRefCounter(
@@ -1478,7 +1604,7 @@ impl CurveOnVertex {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKOffset::BiTgte_CurveOnVertex_inherited_DecrementRefCounter(
@@ -1487,7 +1613,7 @@ impl CurveOnVertex {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKOffset::BiTgte_CurveOnVertex_inherited_Delete(self as *const Self)
@@ -1495,36 +1621,36 @@ impl CurveOnVertex {
     }
 }
 
-pub use crate::ffi_types::HandleBiTgteCurveOnVertex;
+pub use crate::ffi_types::Handle_BiTgte_CurveOnVertex;
 
-unsafe impl crate::CppDeletable for HandleBiTgteCurveOnVertex {
+unsafe impl crate::CppDeletable for Handle_BiTgte_CurveOnVertex {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKOffset::HandleBiTgteCurveOnVertex_destructor(ptr);
+            crate::ffi_extern_TKOffset::Handle_BiTgte_CurveOnVertex_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleBiTgteCurveOnVertex {
+unsafe impl crate::CppCopyable for Handle_BiTgte_CurveOnVertex {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
         unsafe {
-            crate::check_result(crate::ffi_extern_TKOffset::HandleBiTgteCurveOnVertex_clone(ptr))
+            crate::check_result(crate::ffi_extern_TKOffset::Handle_BiTgte_CurveOnVertex_clone(ptr))
         }
     }
 }
 
-impl HandleBiTgteCurveOnVertex {
+impl Handle_BiTgte_CurveOnVertex {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
         unsafe {
-            crate::ffi_extern_TKOffset::HandleBiTgteCurveOnVertex_is_null(self as *const Self)
+            crate::ffi_extern_TKOffset::Handle_BiTgte_CurveOnVertex_is_null(self as *const Self)
         }
     }
 
     /// Dereference this Handle to access the underlying BiTgte_CurveOnVertex
     pub fn get(&self) -> &crate::ffi_types::BiTgte_CurveOnVertex {
         unsafe {
-            &*crate::check_result(crate::ffi_extern_TKOffset::HandleBiTgteCurveOnVertex_get(
+            &*crate::check_result(crate::ffi_extern_TKOffset::Handle_BiTgte_CurveOnVertex_get(
                 self as *const Self,
             ))
         }
@@ -1534,16 +1660,16 @@ impl HandleBiTgteCurveOnVertex {
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::BiTgte_CurveOnVertex {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi_extern_TKOffset::HandleBiTgteCurveOnVertex_get_mut(self as *mut Self),
+                crate::ffi_extern_TKOffset::Handle_BiTgte_CurveOnVertex_get_mut(self as *mut Self),
             )
         }
     }
 
     /// Upcast Handle<BiTgte_CurveOnVertex> to Handle<Adaptor3d_Curve>
-    pub fn to_handle_curve(&self) -> crate::OwnedPtr<crate::ffi_types::HandleAdaptor3dCurve> {
+    pub fn to_handle_curve(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_Adaptor3d_Curve> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKOffset::HandleBiTgteCurveOnVertex_to_HandleAdaptor3dCurve(
+                crate::ffi_extern_TKOffset::Handle_BiTgte_CurveOnVertex_to_Handle_Adaptor3d_Curve(
                     self as *const Self,
                 ),
             ))
@@ -1553,13 +1679,9 @@ impl HandleBiTgteCurveOnVertex {
     /// Upcast Handle<BiTgte_CurveOnVertex> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKOffset::HandleBiTgteCurveOnVertex_to_HandleStandardTransient(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKOffset::Handle_BiTgte_CurveOnVertex_to_Handle_Standard_Transient(self as *const Self)))
         }
     }
 }

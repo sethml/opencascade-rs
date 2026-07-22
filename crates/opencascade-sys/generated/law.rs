@@ -6,52 +6,56 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 
-/// **Source:** `Law.hxx`:47 - `Law::MixBnd`
+/// **Source:** `Law.hxx`:46 - `Law::MixBnd`
 /// This algorithm searches the knot values corresponding to the
-/// splitting of a given B-spline law into  several arcs with
+/// splitting of a given B-spline law into several arcs with
 /// the same continuity. The continuity order is given at the
 /// construction time.
-/// Builds a 1d bspline that   is near from Lin with  null
+/// Builds a 1d bspline that is near from Lin with null
 /// derivatives at the extremities.
 pub fn mix_bnd_handlelawlinear(
-    Lin: &crate::ffi_types::HandleLawLinear,
-) -> crate::OwnedPtr<crate::ffi_types::HandleLawBSpFunc> {
+    Lin: &crate::ffi_types::Handle_Law_Linear,
+) -> crate::OwnedPtr<crate::ffi_types::Handle_Law_BSpFunc> {
     unsafe {
         crate::OwnedPtr::from_raw(crate::check_result(
             crate::ffi_extern_TKGeomAlgo::Law_mix_bnd_handlelawlinear(Lin),
         ))
     }
 }
-/// **Source:** `Law.hxx`:51 - `Law::MixBnd`
-/// Builds  the poles of the 1d  bspline that is near from
+/// **Source:** `Law.hxx`:50 - `Law::MixBnd`
+/// Builds the poles of the 1d bspline that is near from
 /// Lin with null derivatives at the extremities.
-pub fn mix_bnd_int_array1ofreal_array1ofinteger_handlelawlinear(
+pub fn mix_bnd_int_arr1_double_arr1_int_handlelawlinear(
     Degree: i32,
-    Knots: &crate::ffi_types::TColStd_Array1OfReal,
-    Mults: &crate::ffi_types::TColStd_Array1OfInteger,
-    Lin: &crate::ffi_types::HandleLawLinear,
-) -> crate::OwnedPtr<crate::ffi_types::HandleTColStdHArray1OfReal> {
+    Knots: &crate::ffi_types::NCollection_Array1_double,
+    Mults: &crate::ffi_types::NCollection_Array1_int,
+    Lin: &crate::ffi_types::Handle_Law_Linear,
+) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HArray1_double> {
     unsafe {
-        crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomAlgo::Law_mix_bnd_int_array1ofreal_array1ofinteger_handlelawlinear(Degree, Knots, Mults, Lin)))
+        crate::OwnedPtr::from_raw(crate::check_result(
+            crate::ffi_extern_TKGeomAlgo::Law_mix_bnd_int_arr1_double_arr1_int_handlelawlinear(
+                Degree, Knots, Mults, Lin,
+            ),
+        ))
     }
 }
 /// **Source:** `Law.hxx`:65 - `Law::MixTgt`
 /// Builds the poles of the 1d bspline that is null on the
-/// right    side   of   Knots(Index)  (on  the    left if
-/// NulOnTheRight  is  false)    and   that is     like  a
-/// t*(1-t)(1-t) curve  on the  left side of  Knots(Index)
-/// (on the right  if NulOnTheRight is false).  The result
-/// curve is  C1 with  a derivative  equal  to 1. at first
-/// parameter (-1 at last  parameter  if  NulOnTheRight is
+/// right side of Knots(Index) (on the left if
+/// NulOnTheRight is false) and that is like a
+/// t*(1-t)(1-t) curve on the left side of Knots(Index)
+/// (on the right if NulOnTheRight is false). The result
+/// curve is C1 with a derivative equal to 1. at first
+/// parameter (-1 at last parameter if NulOnTheRight is
 /// false).
 /// Warning: Mults(Index) must greater or equal to degree-1.
 pub fn mix_tgt(
     Degree: i32,
-    Knots: &crate::ffi_types::TColStd_Array1OfReal,
-    Mults: &crate::ffi_types::TColStd_Array1OfInteger,
+    Knots: &crate::ffi_types::NCollection_Array1_double,
+    Mults: &crate::ffi_types::NCollection_Array1_int,
     NulOnTheRight: bool,
     Index: i32,
-) -> crate::OwnedPtr<crate::ffi_types::HandleTColStdHArray1OfReal> {
+) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HArray1_double> {
     unsafe {
         crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomAlgo::Law_mix_tgt(
             Degree,
@@ -62,9 +66,9 @@ pub fn mix_tgt(
         )))
     }
 }
-/// **Source:** `Law.hxx`:74 - `Law::Reparametrize`
-/// Computes a 1 d curve to  reparametrize a curve. Its an
-/// interpolation of NbPoints  points calculated  at quasi
+/// **Source:** `Law.hxx`:75 - `Law::Reparametrize`
+/// Computes a 1d curve to reparametrize a curve. Its an
+/// interpolation of NbPoints points calculated at quasi
 /// constant abscissa.
 pub fn reparametrize_curve_real2_bool2_real2_bool_int(
     Curve: &crate::adaptor3d::Curve,
@@ -76,7 +80,7 @@ pub fn reparametrize_curve_real2_bool2_real2_bool_int(
     DLast: f64,
     Rev: bool,
     NbPoints: i32,
-) -> crate::OwnedPtr<crate::ffi_types::HandleLawBSpline> {
+) -> crate::OwnedPtr<crate::ffi_types::Handle_Law_BSpline> {
     unsafe {
         crate::OwnedPtr::from_raw(crate::check_result(
             crate::ffi_extern_TKGeomAlgo::Law_reparametrize_curve_real2_bool2_real2_bool_int(
@@ -85,8 +89,8 @@ pub fn reparametrize_curve_real2_bool2_real2_bool_int(
         ))
     }
 }
-/// **Source:** `Law.hxx`:96 - `Law::Scale`
-/// Computes a 1  d curve to  scale  a field of  tangency.
+/// **Source:** `Law.hxx`:97 - `Law::Scale`
+/// Computes a 1d curve to scale a field of tangency.
 /// Value is 1. for t = (First+Last)/2 .
 /// If HasFirst value for t = First is VFirst (null derivative).
 /// If HasLast value for t = Last is VLast (null derivative).
@@ -105,14 +109,14 @@ pub fn scale(
     HasL: bool,
     VFirst: f64,
     VLast: f64,
-) -> crate::OwnedPtr<crate::ffi_types::HandleLawBSpline> {
+) -> crate::OwnedPtr<crate::ffi_types::Handle_Law_BSpline> {
     unsafe {
         crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomAlgo::Law_scale(
             First, Last, HasF, HasL, VFirst, VLast,
         )))
     }
 }
-/// **Source:** `Law.hxx`:103 - `Law::ScaleCub`
+/// **Source:** `Law.hxx`:104 - `Law::ScaleCub`
 pub fn scale_cub(
     First: f64,
     Last: f64,
@@ -120,7 +124,7 @@ pub fn scale_cub(
     HasL: bool,
     VFirst: f64,
     VLast: f64,
-) -> crate::OwnedPtr<crate::ffi_types::HandleLawBSpline> {
+) -> crate::OwnedPtr<crate::ffi_types::Handle_Law_BSpline> {
     unsafe {
         crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomAlgo::Law_scale_cub(
             First, Last, HasF, HasL, VFirst, VLast,
@@ -129,16 +133,16 @@ pub fn scale_cub(
 }
 
 // Handle type re-exports (targets of handle upcasts/downcasts)
-pub use crate::ffi_types::HandleStandardTransient;
+pub use crate::ffi_types::Handle_Standard_Transient;
 
 // ========================
 // From Law_BSpFunc.hxx
 // ========================
 
-/// **Source:** `Law_BSpFunc.hxx`:36 - `Law_BSpFunc`
-/// Law Function based on a BSpline curve 1d.  Package
+/// **Source:** `Law_BSpFunc.hxx`:33 - `Law_BSpFunc`
+/// Law Function based on a BSpline curve 1d. Package
 /// methods and classes are implemented in package Law
-/// to    construct  the  basis    curve with  several
+/// to construct the basis curve with several
 /// constraints.
 pub use crate::ffi_types::Law_BSpFunc as BSpFunc;
 
@@ -151,7 +155,7 @@ unsafe impl crate::CppDeletable for BSpFunc {
 }
 
 impl BSpFunc {
-    /// **Source:** `Law_BSpFunc.hxx`:40 - `Law_BSpFunc::Law_BSpFunc()`
+    /// **Source:** `Law_BSpFunc.hxx`:37 - `Law_BSpFunc::Law_BSpFunc()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -160,9 +164,9 @@ impl BSpFunc {
         }
     }
 
-    /// **Source:** `Law_BSpFunc.hxx`:42 - `Law_BSpFunc::Law_BSpFunc()`
+    /// **Source:** `Law_BSpFunc.hxx`:39 - `Law_BSpFunc::Law_BSpFunc()`
     pub fn new_handlelawbspline_real2(
-        C: &crate::ffi_types::HandleLawBSpline,
+        C: &crate::ffi_types::Handle_Law_BSpline,
         First: f64,
         Last: f64,
     ) -> crate::OwnedPtr<Self> {
@@ -175,7 +179,7 @@ impl BSpFunc {
         }
     }
 
-    /// **Source:** `Law_BSpFunc.hxx`:46 - `Law_BSpFunc::Continuity()`
+    /// **Source:** `Law_BSpFunc.hxx`:43 - `Law_BSpFunc::Continuity()`
     pub fn continuity(&self) -> crate::geom_abs::Shape {
         crate::geom_abs::Shape::try_from(crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::Law_BSpFunc_continuity(self as *const Self)
@@ -183,8 +187,8 @@ impl BSpFunc {
         .unwrap()
     }
 
-    /// **Source:** `Law_BSpFunc.hxx`:50 - `Law_BSpFunc::NbIntervals()`
-    /// Returns  the number  of  intervals for  continuity
+    /// **Source:** `Law_BSpFunc.hxx`:47 - `Law_BSpFunc::NbIntervals()`
+    /// Returns the number of intervals for continuity
     /// <S>. May be one if Continuity(me) >= <S>
     pub fn nb_intervals(&self, S: crate::geom_abs::Shape) -> i32 {
         crate::check_result(unsafe {
@@ -192,13 +196,13 @@ impl BSpFunc {
         })
     }
 
-    /// **Source:** `Law_BSpFunc.hxx`:55 - `Law_BSpFunc::Intervals()`
+    /// **Source:** `Law_BSpFunc.hxx`:52 - `Law_BSpFunc::Intervals()`
     /// Stores in <T> the parameters bounding the intervals of continuity <S>.
     /// The array must provide enough room to accommodate for the parameters, i.e. T.Length() >
     /// NbIntervals()
     pub fn intervals(
         &self,
-        T: &mut crate::ffi_types::TColStd_Array1OfReal,
+        T: &mut crate::ffi_types::NCollection_Array1_double,
         S: crate::geom_abs::Shape,
     ) {
         crate::check_void_result(unsafe {
@@ -206,30 +210,30 @@ impl BSpFunc {
         })
     }
 
-    /// **Source:** `Law_BSpFunc.hxx`:58 - `Law_BSpFunc::Value()`
+    /// **Source:** `Law_BSpFunc.hxx`:55 - `Law_BSpFunc::Value()`
     pub fn value(&mut self, X: f64) -> f64 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::Law_BSpFunc_value(self as *mut Self, X)
         })
     }
 
-    /// **Source:** `Law_BSpFunc.hxx`:60 - `Law_BSpFunc::D1()`
+    /// **Source:** `Law_BSpFunc.hxx`:57 - `Law_BSpFunc::D1()`
     pub fn d1(&mut self, X: f64, F: &mut f64, D: &mut f64) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::Law_BSpFunc_d1(self as *mut Self, X, F, D)
         })
     }
 
-    /// **Source:** `Law_BSpFunc.hxx`:64 - `Law_BSpFunc::D2()`
+    /// **Source:** `Law_BSpFunc.hxx`:59 - `Law_BSpFunc::D2()`
     pub fn d2(&mut self, X: f64, F: &mut f64, D: &mut f64, D2: &mut f64) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::Law_BSpFunc_d2(self as *mut Self, X, F, D, D2)
         })
     }
 
-    /// **Source:** `Law_BSpFunc.hxx`:75 - `Law_BSpFunc::Trim()`
-    /// Returns a  law equivalent of  <me>  between
-    /// parameters <First>  and <Last>. <Tol>  is used  to
+    /// **Source:** `Law_BSpFunc.hxx`:67 - `Law_BSpFunc::Trim()`
+    /// Returns a law equivalent of <me> between
+    /// parameters <First> and <Last>. <Tol> is used to
     /// test for 3d points confusion.
     /// It is usfule to determines the derivatives
     /// in these values <First> and <Last> if
@@ -239,7 +243,7 @@ impl BSpFunc {
         PFirst: f64,
         PLast: f64,
         Tol: f64,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleLawFunction> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Law_Function> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKGeomAlgo::Law_BSpFunc_trim(
@@ -252,15 +256,15 @@ impl BSpFunc {
         }
     }
 
-    /// **Source:** `Law_BSpFunc.hxx`:79 - `Law_BSpFunc::Bounds()`
+    /// **Source:** `Law_BSpFunc.hxx`:71 - `Law_BSpFunc::Bounds()`
     pub fn bounds(&mut self, PFirst: &mut f64, PLast: &mut f64) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::Law_BSpFunc_bounds(self as *mut Self, PFirst, PLast)
         })
     }
 
-    /// **Source:** `Law_BSpFunc.hxx`:81 - `Law_BSpFunc::Curve()`
-    pub fn curve(&self) -> crate::OwnedPtr<crate::ffi_types::HandleLawBSpline> {
+    /// **Source:** `Law_BSpFunc.hxx`:73 - `Law_BSpFunc::Curve()`
+    pub fn curve(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_Law_BSpline> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKGeomAlgo::Law_BSpFunc_curve(self as *const Self),
@@ -268,15 +272,15 @@ impl BSpFunc {
         }
     }
 
-    /// **Source:** `Law_BSpFunc.hxx`:83 - `Law_BSpFunc::SetCurve()`
-    pub fn set_curve(&mut self, C: &crate::ffi_types::HandleLawBSpline) {
+    /// **Source:** `Law_BSpFunc.hxx`:75 - `Law_BSpFunc::SetCurve()`
+    pub fn set_curve(&mut self, C: &crate::ffi_types::Handle_Law_BSpline) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::Law_BSpFunc_set_curve(self as *mut Self, C)
         })
     }
 
-    /// **Source:** `Law_BSpFunc.hxx`:85 - `Law_BSpFunc::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `Law_BSpFunc.hxx`:77 - `Law_BSpFunc::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKGeomAlgo::Law_BSpFunc_dynamic_type(
                 self as *const Self,
@@ -284,7 +288,7 @@ impl BSpFunc {
         }
     }
 
-    /// **Source:** `Law_BSpFunc.hxx`:85 - `Law_BSpFunc::get_type_name()`
+    /// **Source:** `Law_BSpFunc.hxx`:77 - `Law_BSpFunc::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -295,8 +299,8 @@ impl BSpFunc {
         .into_owned()
     }
 
-    /// **Source:** `Law_BSpFunc.hxx`:85 - `Law_BSpFunc::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    /// **Source:** `Law_BSpFunc.hxx`:77 - `Law_BSpFunc::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKGeomAlgo::Law_BSpFunc_get_type_descriptor()))
         }
@@ -343,7 +347,7 @@ impl BSpFunc {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleLawBSpFunc> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Law_BSpFunc> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKGeomAlgo::Law_BSpFunc_to_handle(obj.into_raw()),
@@ -351,8 +355,8 @@ impl BSpFunc {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::Law_BSpFunc_inherited_IsInstance(
                 self as *const Self,
@@ -361,14 +365,14 @@ impl BSpFunc {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::Law_BSpFunc_inherited_IsKind(self as *const Self, theType)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -382,14 +386,14 @@ impl BSpFunc {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::Law_BSpFunc_inherited_GetRefCount(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::Law_BSpFunc_inherited_IncrementRefCounter(
@@ -398,7 +402,7 @@ impl BSpFunc {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::Law_BSpFunc_inherited_DecrementRefCounter(
@@ -407,7 +411,7 @@ impl BSpFunc {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::Law_BSpFunc_inherited_Delete(self as *const Self)
@@ -415,32 +419,32 @@ impl BSpFunc {
     }
 }
 
-pub use crate::ffi_types::HandleLawBSpFunc;
+pub use crate::ffi_types::Handle_Law_BSpFunc;
 
-unsafe impl crate::CppDeletable for HandleLawBSpFunc {
+unsafe impl crate::CppDeletable for Handle_Law_BSpFunc {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKGeomAlgo::HandleLawBSpFunc_destructor(ptr);
+            crate::ffi_extern_TKGeomAlgo::Handle_Law_BSpFunc_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleLawBSpFunc {
+unsafe impl crate::CppCopyable for Handle_Law_BSpFunc {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        unsafe { crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleLawBSpFunc_clone(ptr)) }
+        unsafe { crate::check_result(crate::ffi_extern_TKGeomAlgo::Handle_Law_BSpFunc_clone(ptr)) }
     }
 }
 
-impl HandleLawBSpFunc {
+impl Handle_Law_BSpFunc {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
-        unsafe { crate::ffi_extern_TKGeomAlgo::HandleLawBSpFunc_is_null(self as *const Self) }
+        unsafe { crate::ffi_extern_TKGeomAlgo::Handle_Law_BSpFunc_is_null(self as *const Self) }
     }
 
     /// Dereference this Handle to access the underlying Law_BSpFunc
     pub fn get(&self) -> &crate::ffi_types::Law_BSpFunc {
         unsafe {
-            &*crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleLawBSpFunc_get(
+            &*crate::check_result(crate::ffi_extern_TKGeomAlgo::Handle_Law_BSpFunc_get(
                 self as *const Self,
             ))
         }
@@ -449,17 +453,17 @@ impl HandleLawBSpFunc {
     /// Dereference this Handle to mutably access the underlying Law_BSpFunc
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::Law_BSpFunc {
         unsafe {
-            &mut *crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleLawBSpFunc_get_mut(
+            &mut *crate::check_result(crate::ffi_extern_TKGeomAlgo::Handle_Law_BSpFunc_get_mut(
                 self as *mut Self,
             ))
         }
     }
 
     /// Upcast Handle<Law_BSpFunc> to Handle<Law_Function>
-    pub fn to_handle_function(&self) -> crate::OwnedPtr<crate::ffi_types::HandleLawFunction> {
+    pub fn to_handle_function(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_Law_Function> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKGeomAlgo::HandleLawBSpFunc_to_HandleLawFunction(
+                crate::ffi_extern_TKGeomAlgo::Handle_Law_BSpFunc_to_Handle_Law_Function(
                     self as *const Self,
                 ),
             ))
@@ -469,10 +473,10 @@ impl HandleLawBSpFunc {
     /// Upcast Handle<Law_BSpFunc> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKGeomAlgo::HandleLawBSpFunc_to_HandleStandardTransient(
+                crate::ffi_extern_TKGeomAlgo::Handle_Law_BSpFunc_to_Handle_Standard_Transient(
                     self as *const Self,
                 ),
             ))
@@ -484,9 +488,9 @@ impl HandleLawBSpFunc {
     /// Returns `None` if the handle does not point to a `Law_Interpol` (or subclass).
     pub fn downcast_to_interpol(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleLawInterpol>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_Law_Interpol>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKGeomAlgo::HandleLawBSpFunc_downcast_to_HandleLawInterpol(
+            crate::ffi_extern_TKGeomAlgo::Handle_Law_BSpFunc_downcast_to_Handle_Law_Interpol(
                 self as *const Self,
             )
         });
@@ -500,9 +504,9 @@ impl HandleLawBSpFunc {
     /// Downcast Handle<Law_BSpFunc> to Handle<Law_S>
     ///
     /// Returns `None` if the handle does not point to a `Law_S` (or subclass).
-    pub fn downcast_to_s(&self) -> Option<crate::OwnedPtr<crate::ffi_types::HandleLawS>> {
+    pub fn downcast_to_s(&self) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_Law_S>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKGeomAlgo::HandleLawBSpFunc_downcast_to_HandleLawS(
+            crate::ffi_extern_TKGeomAlgo::Handle_Law_BSpFunc_downcast_to_Handle_Law_S(
                 self as *const Self,
             )
         });
@@ -518,36 +522,36 @@ impl HandleLawBSpFunc {
 // From Law_BSpline.hxx
 // ========================
 
-/// **Source:** `Law_BSpline.hxx`:87 - `Law_BSpline`
+/// **Source:** `Law_BSpline.hxx`:82 - `Law_BSpline`
 /// Definition of the 1D B_spline curve.
 ///
 /// Uniform  or non-uniform
 /// Rational or non-rational
 /// Periodic or non-periodic
 ///
-/// a b-spline curve is defined by :
+/// A b-spline curve is defined by:
 ///
 /// The Degree (up to 25)
 ///
-/// The Poles  (and the weights if it is rational)
+/// The Poles (and the weights if it is rational)
 ///
 /// The Knots and Multiplicities
 ///
-/// The knot vector   is an  increasing  sequence  of
-/// reals without  repetition. The multiplicities are
+/// The knot vector is an increasing sequence of
+/// reals without repetition. The multiplicities are
 /// the repetition of the knots.
 ///
 /// If the knots are regularly spaced (the difference
-/// of two  consecutive  knots  is a   constant), the
-/// knots repartition is :
+/// of two consecutive knots is a constant), the
+/// knots repartition is:
 ///
 /// - Uniform if all multiplicities are 1.
 ///
-/// -  Quasi-uniform if  all multiplicities are  1
+/// - Quasi-uniform if all multiplicities are 1
 /// but the first and the last which are Degree+1.
 ///
-/// -   PiecewiseBezier if  all multiplicities are
-/// Degree but the   first and the  last which are
+/// - PiecewiseBezier if all multiplicities are
+/// Degree but the first and the last which are
 /// Degree+1.
 ///
 /// The curve may be periodic.
@@ -555,7 +559,7 @@ impl HandleLawBSpFunc {
 /// On a periodic curve if there are k knots and p
 /// poles. the period is knot(k) - knot(1)
 ///
-/// the poles and knots are infinite vectors with :
+/// the poles and knots are infinite vectors with:
 ///
 /// knot(i+k) = knot(i) + period
 ///
@@ -582,66 +586,77 @@ unsafe impl crate::CppDeletable for BSpline {
 }
 
 impl BSpline {
-    /// **Source:** `Law_BSpline.hxx`:93 - `Law_BSpline::Law_BSpline()`
-    /// Creates a  non-rational B_spline curve   on  the
+    /// **Source:** `Law_BSpline.hxx`:88 - `Law_BSpline::Law_BSpline()`
+    /// Creates a non-rational B_spline curve on the
     /// basis <Knots, Multiplicities> of degree <Degree>.
-    pub fn new_array1ofreal2_array1ofinteger_int_bool(
-        Poles: &crate::ffi_types::TColStd_Array1OfReal,
-        Knots: &crate::ffi_types::TColStd_Array1OfReal,
-        Multiplicities: &crate::ffi_types::TColStd_Array1OfInteger,
+    pub fn new_arr1_double2_arr1_int_int_bool(
+        Poles: &crate::ffi_types::NCollection_Array1_double,
+        Knots: &crate::ffi_types::NCollection_Array1_double,
+        Multiplicities: &crate::ffi_types::NCollection_Array1_int,
         Degree: i32,
         Periodic: bool,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomAlgo::Law_BSpline_ctor_array1ofreal2_array1ofinteger_int_bool(Poles, Knots, Multiplicities, Degree, Periodic)))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::Law_BSpline_ctor_arr1_double2_arr1_int_int_bool(
+                    Poles,
+                    Knots,
+                    Multiplicities,
+                    Degree,
+                    Periodic,
+                ),
+            ))
         }
     }
 
-    /// **Source:** `Law_BSpline.hxx`:101 - `Law_BSpline::Law_BSpline()`
-    /// Creates  a rational B_spline  curve  on the basis
+    /// **Source:** `Law_BSpline.hxx`:96 - `Law_BSpline::Law_BSpline()`
+    /// Creates a rational B_spline curve on the basis
     /// <Knots, Multiplicities> of degree <Degree>.
-    pub fn new_array1ofreal3_array1ofinteger_int_bool(
-        Poles: &crate::ffi_types::TColStd_Array1OfReal,
-        Weights: &crate::ffi_types::TColStd_Array1OfReal,
-        Knots: &crate::ffi_types::TColStd_Array1OfReal,
-        Multiplicities: &crate::ffi_types::TColStd_Array1OfInteger,
+    pub fn new_arr1_double3_arr1_int_int_bool(
+        Poles: &crate::ffi_types::NCollection_Array1_double,
+        Weights: &crate::ffi_types::NCollection_Array1_double,
+        Knots: &crate::ffi_types::NCollection_Array1_double,
+        Multiplicities: &crate::ffi_types::NCollection_Array1_int,
         Degree: i32,
         Periodic: bool,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomAlgo::Law_BSpline_ctor_array1ofreal3_array1ofinteger_int_bool(Poles, Weights, Knots, Multiplicities, Degree, Periodic)))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::Law_BSpline_ctor_arr1_double3_arr1_int_int_bool(
+                    Poles,
+                    Weights,
+                    Knots,
+                    Multiplicities,
+                    Degree,
+                    Periodic,
+                ),
+            ))
         }
     }
 
-    /// **Source:** `Law_BSpline.hxx`:93 - `Law_BSpline::Law_BSpline()`
-    /// Creates a  non-rational B_spline curve   on  the
+    /// **Source:** `Law_BSpline.hxx`:88 - `Law_BSpline::Law_BSpline()`
+    /// Creates a non-rational B_spline curve on the
     /// basis <Knots, Multiplicities> of degree <Degree>.
-    pub fn new_array1ofreal2_array1ofinteger_int(
-        Poles: &crate::ffi_types::TColStd_Array1OfReal,
-        Knots: &crate::ffi_types::TColStd_Array1OfReal,
-        Multiplicities: &crate::ffi_types::TColStd_Array1OfInteger,
+    pub fn new_arr1_double2_arr1_int_int(
+        Poles: &crate::ffi_types::NCollection_Array1_double,
+        Knots: &crate::ffi_types::NCollection_Array1_double,
+        Multiplicities: &crate::ffi_types::NCollection_Array1_int,
         Degree: i32,
     ) -> crate::OwnedPtr<Self> {
-        Self::new_array1ofreal2_array1ofinteger_int_bool(
-            Poles,
-            Knots,
-            Multiplicities,
-            Degree,
-            false,
-        )
+        Self::new_arr1_double2_arr1_int_int_bool(Poles, Knots, Multiplicities, Degree, false)
     }
 
-    /// **Source:** `Law_BSpline.hxx`:101 - `Law_BSpline::Law_BSpline()`
-    /// Creates  a rational B_spline  curve  on the basis
+    /// **Source:** `Law_BSpline.hxx`:96 - `Law_BSpline::Law_BSpline()`
+    /// Creates a rational B_spline curve on the basis
     /// <Knots, Multiplicities> of degree <Degree>.
-    pub fn new_array1ofreal3_array1ofinteger_int(
-        Poles: &crate::ffi_types::TColStd_Array1OfReal,
-        Weights: &crate::ffi_types::TColStd_Array1OfReal,
-        Knots: &crate::ffi_types::TColStd_Array1OfReal,
-        Multiplicities: &crate::ffi_types::TColStd_Array1OfInteger,
+    pub fn new_arr1_double3_arr1_int_int(
+        Poles: &crate::ffi_types::NCollection_Array1_double,
+        Weights: &crate::ffi_types::NCollection_Array1_double,
+        Knots: &crate::ffi_types::NCollection_Array1_double,
+        Multiplicities: &crate::ffi_types::NCollection_Array1_int,
         Degree: i32,
     ) -> crate::OwnedPtr<Self> {
-        Self::new_array1ofreal3_array1ofinteger_int_bool(
+        Self::new_arr1_double3_arr1_int_int_bool(
             Poles,
             Weights,
             Knots,
@@ -651,9 +666,9 @@ impl BSpline {
         )
     }
 
-    /// **Source:** `Law_BSpline.hxx`:111 - `Law_BSpline::IncreaseDegree()`
-    /// Increase the degree to  <Degree>. Nothing is  done
-    /// if  <Degree>   is lower or  equal  to the  current
+    /// **Source:** `Law_BSpline.hxx`:106 - `Law_BSpline::IncreaseDegree()`
+    /// Increase the degree to <Degree>. Nothing is done
+    /// if <Degree> is lower or equal to the current
     /// degree.
     pub fn increase_degree(&mut self, Degree: i32) {
         crate::check_void_result(unsafe {
@@ -661,13 +676,13 @@ impl BSpline {
         })
     }
 
-    /// **Source:** `Law_BSpline.hxx`:120 - `Law_BSpline::IncreaseMultiplicity()`
-    /// Increases the multiplicity  of the knot <Index> to
+    /// **Source:** `Law_BSpline.hxx`:115 - `Law_BSpline::IncreaseMultiplicity()`
+    /// Increases the multiplicity of the knot <Index> to
     /// <M>.
     ///
-    /// If   <M>   is   lower   or  equal   to  the current
-    /// multiplicity nothing is done. If <M> is higher than
-    /// the degree the degree is used.
+    /// If <M> is lower or equal to the current multiplicity
+    /// nothing is done. If <M> is higher than the degree
+    /// the degree is used.
     /// If <Index> is not in [FirstUKnotIndex, LastUKnotIndex]
     pub fn increase_multiplicity_int2(&mut self, Index: i32, M: i32) {
         crate::check_void_result(unsafe {
@@ -679,12 +694,12 @@ impl BSpline {
         })
     }
 
-    /// **Source:** `Law_BSpline.hxx`:129 - `Law_BSpline::IncreaseMultiplicity()`
-    /// Increases  the  multiplicities   of  the knots  in
+    /// **Source:** `Law_BSpline.hxx`:124 - `Law_BSpline::IncreaseMultiplicity()`
+    /// Increases the multiplicities of the knots in
     /// [I1,I2] to <M>.
     ///
-    /// For each knot if  <M>  is  lower  or equal  to  the
-    /// current multiplicity  nothing  is  done. If <M>  is
+    /// For each knot if <M> is lower or equal to the
+    /// current multiplicity nothing is done. If <M> is
     /// higher than the degree the degree is used.
     /// If <I1,I2> are not in [FirstUKnotIndex, LastUKnotIndex]
     pub fn increase_multiplicity_int3(&mut self, I1: i32, I2: i32, M: i32) {
@@ -698,13 +713,13 @@ impl BSpline {
         })
     }
 
-    /// **Source:** `Law_BSpline.hxx`:141 - `Law_BSpline::IncrementMultiplicity()`
-    /// Increment  the  multiplicities   of  the knots  in
+    /// **Source:** `Law_BSpline.hxx`:134 - `Law_BSpline::IncrementMultiplicity()`
+    /// Increment the multiplicities of the knots in
     /// [I1,I2] by <M>.
     ///
-    /// If <M> is not positive nithing is done.
+    /// If <M> is not positive nothing is done.
     ///
-    /// For   each  knot   the resulting   multiplicity  is
+    /// For each knot the resulting multiplicity is
     /// limited to the Degree.
     /// If <I1,I2> are not in [FirstUKnotIndex, LastUKnotIndex]
     pub fn increment_multiplicity(&mut self, I1: i32, I2: i32, M: i32) {
@@ -718,19 +733,19 @@ impl BSpline {
         })
     }
 
-    /// **Source:** `Law_BSpline.hxx`:158 - `Law_BSpline::InsertKnot()`
-    /// Inserts a knot value in the sequence of knots.  If
-    /// <U>  is an  existing knot     the multiplicity  is
+    /// **Source:** `Law_BSpline.hxx`:149 - `Law_BSpline::InsertKnot()`
+    /// Inserts a knot value in the sequence of knots.
+    /// If <U> is an existing knot the multiplicity is
     /// increased by <M>.
     ///
-    /// If U  is  not  on the parameter  range  nothing is
+    /// If U is not on the parameter range nothing is
     /// done.
     ///
     /// If the multiplicity is negative or null nothing is
-    /// done. The  new   multiplicity  is limited  to  the
+    /// done. The new multiplicity is limited to the
     /// degree.
     ///
-    /// The  tolerance criterion  for  knots  equality  is
+    /// The tolerance criterion for knots equality is
     /// the max of Epsilon(U) and ParametricTolerance.
     pub fn insert_knot(&mut self, U: f64, M: i32, ParametricTolerance: f64, Add: bool) {
         crate::check_void_result(unsafe {
@@ -744,29 +759,29 @@ impl BSpline {
         })
     }
 
-    /// **Source:** `Law_BSpline.hxx`:181 - `Law_BSpline::InsertKnots()`
-    /// Inserts a set of knots  values in  the sequence of
+    /// **Source:** `Law_BSpline.hxx`:172 - `Law_BSpline::InsertKnots()`
+    /// Inserts a set of knots values in the sequence of
     /// knots.
     ///
     /// For each U = Knots(i), M = Mults(i)
     ///
-    /// If <U>  is an existing  knot  the  multiplicity is
-    /// increased by  <M> if  <Add>  is True, increased to
+    /// If <U> is an existing knot the multiplicity is
+    /// increased by <M> if <Add> is True, increased to
     /// <M> if <Add> is False.
     ///
-    /// If U  is  not  on the parameter  range  nothing is
+    /// If U is not on the parameter range nothing is
     /// done.
     ///
     /// If the multiplicity is negative or null nothing is
-    /// done. The  new   multiplicity  is limited  to  the
+    /// done. The new multiplicity is limited to the
     /// degree.
     ///
-    /// The  tolerance criterion  for  knots  equality  is
+    /// The tolerance criterion for knots equality is
     /// the max of Epsilon(U) and ParametricTolerance.
     pub fn insert_knots(
         &mut self,
-        Knots: &crate::ffi_types::TColStd_Array1OfReal,
-        Mults: &crate::ffi_types::TColStd_Array1OfInteger,
+        Knots: &crate::ffi_types::NCollection_Array1_double,
+        Mults: &crate::ffi_types::NCollection_Array1_int,
         ParametricTolerance: f64,
         Add: bool,
     ) {
@@ -781,13 +796,13 @@ impl BSpline {
         })
     }
 
-    /// **Source:** `Law_BSpline.hxx`:206 - `Law_BSpline::RemoveKnot()`
-    /// Decrement the knots multiplicity to <M>. If  M is
-    /// 0 the knot   is  removed. The  Poles  sequence   is
+    /// **Source:** `Law_BSpline.hxx`:197 - `Law_BSpline::RemoveKnot()`
+    /// Decrement the knots multiplicity to <M>. If M is
+    /// 0 the knot is removed. The Poles sequence is
     /// modified.
     ///
-    /// As there are two ways to  compute the new poles the
-    /// average is  computed if  the distance is lower than
+    /// As there are two ways to compute the new poles the
+    /// average is computed if the distance is lower than
     /// the <Tolerance>, else False is returned.
     ///
     /// A low tolerance is used to prevent the modification
@@ -799,7 +814,7 @@ impl BSpline {
     /// [FirstUKnotIndex, LastUKnotIndex]
     /// pole insertion and pole removing
     /// this operation is limited to the Uniform or QuasiUniform
-    /// BSplineCurve. The knot values are modified . If the BSpline is
+    /// BSplineCurve. The knot values are modified. If the BSpline is
     /// NonUniform or Piecewise Bezier an exception Construction error
     /// is raised.
     pub fn remove_knot(&mut self, Index: i32, M: i32, Tolerance: f64) -> bool {
@@ -813,7 +828,7 @@ impl BSpline {
         })
     }
 
-    /// **Source:** `Law_BSpline.hxx`:216 - `Law_BSpline::Reverse()`
+    /// **Source:** `Law_BSpline.hxx`:205 - `Law_BSpline::Reverse()`
     /// Changes the direction of parametrization of <me>. The Knot
     /// sequence is modified, the FirstParameter and the
     /// LastParameter are not modified. The StartPoint of the
@@ -826,8 +841,8 @@ impl BSpline {
         })
     }
 
-    /// **Source:** `Law_BSpline.hxx`:222 - `Law_BSpline::ReversedParameter()`
-    /// Returns the  parameter on the  reversed  curve for
+    /// **Source:** `Law_BSpline.hxx`:211 - `Law_BSpline::ReversedParameter()`
+    /// Returns the parameter on the reversed curve for
     /// the point of parameter U on <me>.
     ///
     /// returns UFirst + ULast - U
@@ -837,7 +852,7 @@ impl BSpline {
         })
     }
 
-    /// **Source:** `Law_BSpline.hxx`:233 - `Law_BSpline::Segment()`
+    /// **Source:** `Law_BSpline.hxx`:222 - `Law_BSpline::Segment()`
     /// Segments the curve between U1 and U2.
     /// The control points are modified, the first and the last point
     /// are not the same.
@@ -853,7 +868,7 @@ impl BSpline {
         })
     }
 
-    /// **Source:** `Law_BSpline.hxx`:239 - `Law_BSpline::SetKnot()`
+    /// **Source:** `Law_BSpline.hxx`:228 - `Law_BSpline::SetKnot()`
     /// Changes the knot of range Index.
     /// The multiplicity of the knot is not modified.
     /// Raised if K >= Knots(Index+1) or K <= Knots(Index-1).
@@ -864,20 +879,20 @@ impl BSpline {
         })
     }
 
-    /// **Source:** `Law_BSpline.hxx`:247 - `Law_BSpline::SetKnots()`
+    /// **Source:** `Law_BSpline.hxx`:236 - `Law_BSpline::SetKnots()`
     /// Changes all the knots of the curve
     /// The multiplicity of the knots are not modified.
     ///
     /// Raised if there is an index such that K (Index+1) <= K (Index).
     ///
-    /// Raised if  K.Lower() < 1 or K.Upper() > NbKnots
-    pub fn set_knots(&mut self, K: &crate::ffi_types::TColStd_Array1OfReal) {
+    /// Raised if K.Lower() < 1 or K.Upper() > NbKnots
+    pub fn set_knots(&mut self, K: &crate::ffi_types::NCollection_Array1_double) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::Law_BSpline_set_knots(self as *mut Self, K)
         })
     }
 
-    /// **Source:** `Law_BSpline.hxx`:257 - `Law_BSpline::SetKnot()`
+    /// **Source:** `Law_BSpline.hxx`:246 - `Law_BSpline::SetKnot()`
     /// Changes the knot of range Index with its multiplicity.
     /// You can increase the multiplicity of a knot but it is
     /// not allowed to decrease the multiplicity of an existing knot.
@@ -897,7 +912,7 @@ impl BSpline {
         })
     }
 
-    /// **Source:** `Law_BSpline.hxx`:264 - `Law_BSpline::PeriodicNormalization()`
+    /// **Source:** `Law_BSpline.hxx`:251 - `Law_BSpline::PeriodicNormalization()`
     /// returns the parameter normalized within
     /// the period if the curve is periodic : otherwise
     /// does not do anything
@@ -907,7 +922,7 @@ impl BSpline {
         })
     }
 
-    /// **Source:** `Law_BSpline.hxx`:273 - `Law_BSpline::SetPeriodic()`
+    /// **Source:** `Law_BSpline.hxx`:260 - `Law_BSpline::SetPeriodic()`
     /// Makes a closed B-spline into a periodic curve. The curve is
     /// periodic if the knot sequence is periodic and if the curve is
     /// closed (The tolerance criterion is Resolution from gp).
@@ -921,7 +936,7 @@ impl BSpline {
         })
     }
 
-    /// **Source:** `Law_BSpline.hxx`:280 - `Law_BSpline::SetOrigin()`
+    /// **Source:** `Law_BSpline.hxx`:267 - `Law_BSpline::SetOrigin()`
     /// Set the origin of a periodic curve at Knot(index)
     /// KnotVector and poles are modified.
     /// Raised if the curve is not periodic
@@ -933,7 +948,7 @@ impl BSpline {
         })
     }
 
-    /// **Source:** `Law_BSpline.hxx`:284 - `Law_BSpline::SetNotPeriodic()`
+    /// **Source:** `Law_BSpline.hxx`:271 - `Law_BSpline::SetNotPeriodic()`
     /// Makes a non periodic curve. If the curve was non periodic
     /// the curve is not modified.
     pub fn set_not_periodic(&mut self) {
@@ -942,7 +957,7 @@ impl BSpline {
         })
     }
 
-    /// **Source:** `Law_BSpline.hxx`:289 - `Law_BSpline::SetPole()`
+    /// **Source:** `Law_BSpline.hxx`:276 - `Law_BSpline::SetPole()`
     /// Substitutes the Pole of range Index with P.
     ///
     /// Raised if Index < 1 || Index > NbPoles
@@ -952,7 +967,7 @@ impl BSpline {
         })
     }
 
-    /// **Source:** `Law_BSpline.hxx`:297 - `Law_BSpline::SetPole()`
+    /// **Source:** `Law_BSpline.hxx`:284 - `Law_BSpline::SetPole()`
     /// Substitutes the pole and the weight of range Index.
     /// If the curve <me> is not rational it can become rational
     /// If the curve was rational it can become non rational
@@ -970,7 +985,7 @@ impl BSpline {
         })
     }
 
-    /// **Source:** `Law_BSpline.hxx`:307 - `Law_BSpline::SetWeight()`
+    /// **Source:** `Law_BSpline.hxx`:292 - `Law_BSpline::SetWeight()`
     /// Changes the weight for the pole of range Index.
     /// If the curve was non rational it can become rational.
     /// If the curve was rational it can become non rational.
@@ -983,7 +998,7 @@ impl BSpline {
         })
     }
 
-    /// **Source:** `Law_BSpline.hxx`:311 - `Law_BSpline::IsCN()`
+    /// **Source:** `Law_BSpline.hxx`:296 - `Law_BSpline::IsCN()`
     /// Returns the continuity of the curve, the curve is at least C0.
     /// Raised if N < 0.
     pub fn is_cn(&self, N: i32) -> bool {
@@ -992,7 +1007,7 @@ impl BSpline {
         })
     }
 
-    /// **Source:** `Law_BSpline.hxx`:319 - `Law_BSpline::IsClosed()`
+    /// **Source:** `Law_BSpline.hxx`:304 - `Law_BSpline::IsClosed()`
     /// Returns true if the distance between the first point and the
     /// last point of the curve is lower or equal to Resolution
     /// from package gp.
@@ -1005,7 +1020,7 @@ impl BSpline {
         })
     }
 
-    /// **Source:** `Law_BSpline.hxx`:322 - `Law_BSpline::IsPeriodic()`
+    /// **Source:** `Law_BSpline.hxx`:307 - `Law_BSpline::IsPeriodic()`
     /// Returns True if the curve is periodic.
     pub fn is_periodic(&self) -> bool {
         crate::check_result(unsafe {
@@ -1013,7 +1028,7 @@ impl BSpline {
         })
     }
 
-    /// **Source:** `Law_BSpline.hxx`:326 - `Law_BSpline::IsRational()`
+    /// **Source:** `Law_BSpline.hxx`:311 - `Law_BSpline::IsRational()`
     /// Returns True if the weights are not identical.
     /// The tolerance criterion is Epsilon of the class Real.
     pub fn is_rational(&self) -> bool {
@@ -1022,7 +1037,7 @@ impl BSpline {
         })
     }
 
-    /// **Source:** `Law_BSpline.hxx`:340 - `Law_BSpline::Continuity()`
+    /// **Source:** `Law_BSpline.hxx`:325 - `Law_BSpline::Continuity()`
     /// Returns the global continuity of the curve :
     /// C0 : only geometric continuity,
     /// C1 : continuity of the first derivative all along the Curve,
@@ -1042,7 +1057,7 @@ impl BSpline {
         .unwrap()
     }
 
-    /// **Source:** `Law_BSpline.hxx`:343 - `Law_BSpline::Degree()`
+    /// **Source:** `Law_BSpline.hxx`:328 - `Law_BSpline::Degree()`
     /// Computation of value and derivatives
     pub fn degree(&self) -> i32 {
         crate::check_result(unsafe {
@@ -1050,52 +1065,52 @@ impl BSpline {
         })
     }
 
-    /// **Source:** `Law_BSpline.hxx`:345 - `Law_BSpline::Value()`
+    /// **Source:** `Law_BSpline.hxx`:330 - `Law_BSpline::Value()`
     pub fn value(&self, U: f64) -> f64 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::Law_BSpline_value(self as *const Self, U)
         })
     }
 
-    /// **Source:** `Law_BSpline.hxx`:347 - `Law_BSpline::D0()`
+    /// **Source:** `Law_BSpline.hxx`:332 - `Law_BSpline::D0()`
     pub fn d0(&self, U: f64, P: &mut f64) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::Law_BSpline_d0(self as *const Self, U, P)
         })
     }
 
-    /// **Source:** `Law_BSpline.hxx`:349 - `Law_BSpline::D1()`
+    /// **Source:** `Law_BSpline.hxx`:334 - `Law_BSpline::D1()`
     pub fn d1(&self, U: f64, P: &mut f64, V1: &mut f64) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::Law_BSpline_d1(self as *const Self, U, P, V1)
         })
     }
 
-    /// **Source:** `Law_BSpline.hxx`:351 - `Law_BSpline::D2()`
+    /// **Source:** `Law_BSpline.hxx`:336 - `Law_BSpline::D2()`
     pub fn d2(&self, U: f64, P: &mut f64, V1: &mut f64, V2: &mut f64) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::Law_BSpline_d2(self as *const Self, U, P, V1, V2)
         })
     }
 
-    /// **Source:** `Law_BSpline.hxx`:356 - `Law_BSpline::D3()`
+    /// **Source:** `Law_BSpline.hxx`:338 - `Law_BSpline::D3()`
     pub fn d3(&self, U: f64, P: &mut f64, V1: &mut f64, V2: &mut f64, V3: &mut f64) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::Law_BSpline_d3(self as *const Self, U, P, V1, V2, V3)
         })
     }
 
-    /// **Source:** `Law_BSpline.hxx`:373 - `Law_BSpline::DN()`
-    /// The following functions computes the point  of parameter U and
-    /// the  derivatives at   this  point on  the  B-spline curve  arc
-    /// defined between the knot FromK1  and the knot  ToK2.  U can be
-    /// out of bounds   [Knot  (FromK1), Knot   (ToK2)] but   for  the
-    /// computation we only  use  the definition of the  curve between
-    /// these  two  knots. This  method is  useful  to  compute  local
-    /// derivative,  if the order of  continuity of the whole curve is
-    /// not   greater  enough.   Inside   the parametric   domain Knot
-    /// (FromK1), Knot (ToK2)  the evaluations are the  same as if  we
-    /// consider  the whole  definition of the  curve.   Of course the
+    /// **Source:** `Law_BSpline.hxx`:351 - `Law_BSpline::DN()`
+    /// The following functions computes the point of parameter U and
+    /// the derivatives at this point on the B-spline curve arc
+    /// defined between the knot FromK1 and the knot ToK2. U can be
+    /// out of bounds [Knot (FromK1), Knot (ToK2)] but for the
+    /// computation we only use the definition of the curve between
+    /// these two knots. This method is useful to compute local
+    /// derivative, if the order of continuity of the whole curve is
+    /// not greater enough. Inside the parametric domain Knot
+    /// (FromK1), Knot (ToK2) the evaluations are the same as if we
+    /// consider the whole definition of the curve. Of course the
     /// evaluations are different outside this parametric domain.
     pub fn dn(&self, U: f64, N: i32) -> f64 {
         crate::check_result(unsafe {
@@ -1103,7 +1118,7 @@ impl BSpline {
         })
     }
 
-    /// **Source:** `Law_BSpline.hxx`:375 - `Law_BSpline::LocalValue()`
+    /// **Source:** `Law_BSpline.hxx`:353 - `Law_BSpline::LocalValue()`
     pub fn local_value(&self, U: f64, FromK1: i32, ToK2: i32) -> f64 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::Law_BSpline_local_value(
@@ -1115,7 +1130,7 @@ impl BSpline {
         })
     }
 
-    /// **Source:** `Law_BSpline.hxx`:379 - `Law_BSpline::LocalD0()`
+    /// **Source:** `Law_BSpline.hxx`:355 - `Law_BSpline::LocalD0()`
     pub fn local_d0(&self, U: f64, FromK1: i32, ToK2: i32, P: &mut f64) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::Law_BSpline_local_d0(
@@ -1128,7 +1143,7 @@ impl BSpline {
         })
     }
 
-    /// **Source:** `Law_BSpline.hxx`:384 - `Law_BSpline::LocalD1()`
+    /// **Source:** `Law_BSpline.hxx`:357 - `Law_BSpline::LocalD1()`
     pub fn local_d1(&self, U: f64, FromK1: i32, ToK2: i32, P: &mut f64, V1: &mut f64) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::Law_BSpline_local_d1(
@@ -1142,7 +1157,7 @@ impl BSpline {
         })
     }
 
-    /// **Source:** `Law_BSpline.hxx`:390 - `Law_BSpline::LocalD2()`
+    /// **Source:** `Law_BSpline.hxx`:363 - `Law_BSpline::LocalD2()`
     pub fn local_d2(
         &self,
         U: f64,
@@ -1165,7 +1180,7 @@ impl BSpline {
         })
     }
 
-    /// **Source:** `Law_BSpline.hxx`:397 - `Law_BSpline::LocalD3()`
+    /// **Source:** `Law_BSpline.hxx`:370 - `Law_BSpline::LocalD3()`
     pub fn local_d3(
         &self,
         U: f64,
@@ -1190,7 +1205,7 @@ impl BSpline {
         })
     }
 
-    /// **Source:** `Law_BSpline.hxx`:405 - `Law_BSpline::LocalDN()`
+    /// **Source:** `Law_BSpline.hxx`:378 - `Law_BSpline::LocalDN()`
     pub fn local_dn(&self, U: f64, FromK1: i32, ToK2: i32, N: i32) -> f64 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::Law_BSpline_local_dn(
@@ -1203,7 +1218,7 @@ impl BSpline {
         })
     }
 
-    /// **Source:** `Law_BSpline.hxx`:415 - `Law_BSpline::EndPoint()`
+    /// **Source:** `Law_BSpline.hxx`:388 - `Law_BSpline::EndPoint()`
     /// Returns the last point of the curve.
     /// Warnings :
     /// The last point of the curve is different from the last
@@ -1215,7 +1230,7 @@ impl BSpline {
         })
     }
 
-    /// **Source:** `Law_BSpline.hxx`:422 - `Law_BSpline::FirstUKnotIndex()`
+    /// **Source:** `Law_BSpline.hxx`:395 - `Law_BSpline::FirstUKnotIndex()`
     /// For a B-spline curve the first parameter (which gives the start
     /// point of the curve) is a knot value but if the multiplicity of
     /// the first knot index is lower than Degree + 1 it is not the
@@ -1227,7 +1242,7 @@ impl BSpline {
         })
     }
 
-    /// **Source:** `Law_BSpline.hxx`:426 - `Law_BSpline::FirstParameter()`
+    /// **Source:** `Law_BSpline.hxx`:399 - `Law_BSpline::FirstParameter()`
     /// Computes the parametric value of the start point of the curve.
     /// It is a knot value.
     pub fn first_parameter(&self) -> f64 {
@@ -1236,7 +1251,7 @@ impl BSpline {
         })
     }
 
-    /// **Source:** `Law_BSpline.hxx`:433 - `Law_BSpline::Knot()`
+    /// **Source:** `Law_BSpline.hxx`:406 - `Law_BSpline::Knot()`
     /// Returns the knot of range Index. When there is a knot
     /// with a multiplicity greater than 1 the knot is not repeated.
     /// The method Multiplicity can be used to get the multiplicity
@@ -1248,17 +1263,17 @@ impl BSpline {
         })
     }
 
-    /// **Source:** `Law_BSpline.hxx`:438 - `Law_BSpline::Knots()`
+    /// **Source:** `Law_BSpline.hxx`:411 - `Law_BSpline::Knots()`
     /// returns the knot values of the B-spline curve;
     ///
     /// Raised if the length of K is not equal to the number of knots.
-    pub fn knots(&self, K: &mut crate::ffi_types::TColStd_Array1OfReal) {
+    pub fn knots(&self, K: &mut crate::ffi_types::NCollection_Array1_double) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::Law_BSpline_knots(self as *const Self, K)
         })
     }
 
-    /// **Source:** `Law_BSpline.hxx`:447 - `Law_BSpline::KnotSequence()`
+    /// **Source:** `Law_BSpline.hxx`:420 - `Law_BSpline::KnotSequence()`
     /// Returns the knots sequence.
     /// In this sequence the knots with a multiplicity greater than 1
     /// are repeated.
@@ -1266,13 +1281,13 @@ impl BSpline {
     /// K = {k1, k1, k1, k2, k3, k3, k4, k4, k4}
     ///
     /// Raised if the length of K is not equal to NbPoles + Degree + 1
-    pub fn knot_sequence(&self, K: &mut crate::ffi_types::TColStd_Array1OfReal) {
+    pub fn knot_sequence(&self, K: &mut crate::ffi_types::NCollection_Array1_double) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::Law_BSpline_knot_sequence(self as *const Self, K)
         })
     }
 
-    /// **Source:** `Law_BSpline.hxx`:460 - `Law_BSpline::KnotDistribution()`
+    /// **Source:** `Law_BSpline.hxx`:433 - `Law_BSpline::KnotDistribution()`
     /// Returns NonUniform or Uniform or QuasiUniform or PiecewiseBezier.
     /// If all the knots differ by a positive constant from the
     /// preceding knot the BSpline Curve can be :
@@ -1291,7 +1306,7 @@ impl BSpline {
         .unwrap()
     }
 
-    /// **Source:** `Law_BSpline.hxx`:468 - `Law_BSpline::LastUKnotIndex()`
+    /// **Source:** `Law_BSpline.hxx`:441 - `Law_BSpline::LastUKnotIndex()`
     /// For a BSpline curve the last parameter (which gives the
     /// end point of the curve) is a knot value but if the
     /// multiplicity of the last knot index is lower than
@@ -1304,7 +1319,7 @@ impl BSpline {
         })
     }
 
-    /// **Source:** `Law_BSpline.hxx`:472 - `Law_BSpline::LastParameter()`
+    /// **Source:** `Law_BSpline.hxx`:445 - `Law_BSpline::LastParameter()`
     /// Computes the parametric value of the end point of the curve.
     /// It is a knot value.
     pub fn last_parameter(&self) -> f64 {
@@ -1313,17 +1328,17 @@ impl BSpline {
         })
     }
 
-    /// **Source:** `Law_BSpline.hxx`:484 - `Law_BSpline::LocateU()`
+    /// **Source:** `Law_BSpline.hxx`:457 - `Law_BSpline::LocateU()`
     /// Locates the parametric value U in the sequence of knots.
     /// If "WithKnotRepetition" is True we consider the knot's
     /// representation with repetition of multiple knot value,
-    /// otherwise  we consider the knot's representation with
+    /// otherwise we consider the knot's representation with
     /// no repetition of multiple knot values.
     /// Knots (I1) <= U <= Knots (I2)
-    /// . if I1 = I2  U is a knot value (the tolerance criterion
+    /// . if I1 = I2 U is a knot value (the tolerance criterion
     /// ParametricTolerance is used).
-    /// . if I1 < 1  => U < Knots (1) - Abs(ParametricTolerance)
-    /// . if I2 > NbKnots => U > Knots (NbKnots) + Abs(ParametricTolerance)
+    /// . if I1 < 1 => U < Knots (1) - std::abs(ParametricTolerance)
+    /// . if I2 > NbKnots => U > Knots (NbKnots) + std::abs(ParametricTolerance)
     pub fn locate_u(
         &self,
         U: f64,
@@ -1344,7 +1359,7 @@ impl BSpline {
         })
     }
 
-    /// **Source:** `Law_BSpline.hxx`:492 - `Law_BSpline::Multiplicity()`
+    /// **Source:** `Law_BSpline.hxx`:465 - `Law_BSpline::Multiplicity()`
     /// Returns the multiplicity of the knots of range Index.
     /// Raised if Index < 1 or Index > NbKnots
     pub fn multiplicity(&self, Index: i32) -> i32 {
@@ -1353,17 +1368,17 @@ impl BSpline {
         })
     }
 
-    /// **Source:** `Law_BSpline.hxx`:497 - `Law_BSpline::Multiplicities()`
+    /// **Source:** `Law_BSpline.hxx`:470 - `Law_BSpline::Multiplicities()`
     /// Returns the multiplicity of the knots of the curve.
     ///
     /// Raised if the length of M is not equal to NbKnots.
-    pub fn multiplicities(&self, M: &mut crate::ffi_types::TColStd_Array1OfInteger) {
+    pub fn multiplicities(&self, M: &mut crate::ffi_types::NCollection_Array1_int) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::Law_BSpline_multiplicities(self as *const Self, M)
         })
     }
 
-    /// **Source:** `Law_BSpline.hxx`:501 - `Law_BSpline::NbKnots()`
+    /// **Source:** `Law_BSpline.hxx`:474 - `Law_BSpline::NbKnots()`
     /// Returns the number of knots. This method returns the number of
     /// knot without repetition of multiple knots.
     pub fn nb_knots(&self) -> i32 {
@@ -1372,7 +1387,7 @@ impl BSpline {
         })
     }
 
-    /// **Source:** `Law_BSpline.hxx`:504 - `Law_BSpline::NbPoles()`
+    /// **Source:** `Law_BSpline.hxx`:477 - `Law_BSpline::NbPoles()`
     /// Returns the number of poles
     pub fn nb_poles(&self) -> i32 {
         crate::check_result(unsafe {
@@ -1380,7 +1395,7 @@ impl BSpline {
         })
     }
 
-    /// **Source:** `Law_BSpline.hxx`:508 - `Law_BSpline::Pole()`
+    /// **Source:** `Law_BSpline.hxx`:481 - `Law_BSpline::Pole()`
     /// Returns the pole of range Index.
     /// Raised if Index < 1 or Index > NbPoles.
     pub fn pole(&self, Index: i32) -> f64 {
@@ -1389,17 +1404,17 @@ impl BSpline {
         })
     }
 
-    /// **Source:** `Law_BSpline.hxx`:513 - `Law_BSpline::Poles()`
+    /// **Source:** `Law_BSpline.hxx`:486 - `Law_BSpline::Poles()`
     /// Returns the poles of the B-spline curve;
     ///
     /// Raised if the length of P is not equal to the number of poles.
-    pub fn poles(&self, P: &mut crate::ffi_types::TColStd_Array1OfReal) {
+    pub fn poles(&self, P: &mut crate::ffi_types::NCollection_Array1_double) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::Law_BSpline_poles(self as *const Self, P)
         })
     }
 
-    /// **Source:** `Law_BSpline.hxx`:519 - `Law_BSpline::StartPoint()`
+    /// **Source:** `Law_BSpline.hxx`:492 - `Law_BSpline::StartPoint()`
     /// Returns the start point of the curve.
     /// Warnings :
     /// This point is different from the first pole of the curve if the
@@ -1410,7 +1425,7 @@ impl BSpline {
         })
     }
 
-    /// **Source:** `Law_BSpline.hxx`:523 - `Law_BSpline::Weight()`
+    /// **Source:** `Law_BSpline.hxx`:496 - `Law_BSpline::Weight()`
     /// Returns the weight of the pole of range Index .
     /// Raised if Index < 1 or Index > NbPoles.
     pub fn weight(&self, Index: i32) -> f64 {
@@ -1419,17 +1434,17 @@ impl BSpline {
         })
     }
 
-    /// **Source:** `Law_BSpline.hxx`:528 - `Law_BSpline::Weights()`
+    /// **Source:** `Law_BSpline.hxx`:501 - `Law_BSpline::Weights()`
     /// Returns the weights of the B-spline curve;
     ///
     /// Raised if the length of W is not equal to NbPoles.
-    pub fn weights(&self, W: &mut crate::ffi_types::TColStd_Array1OfReal) {
+    pub fn weights(&self, W: &mut crate::ffi_types::NCollection_Array1_double) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::Law_BSpline_weights(self as *const Self, W)
         })
     }
 
-    /// **Source:** `Law_BSpline.hxx`:545 - `Law_BSpline::MovePointAndTangent()`
+    /// **Source:** `Law_BSpline.hxx`:518 - `Law_BSpline::MovePointAndTangent()`
     /// Changes the value of the Law at parameter U to NewValue.
     /// and makes its derivative at U be derivative.
     /// StartingCondition = -1 means first can move
@@ -1465,7 +1480,7 @@ impl BSpline {
         })
     }
 
-    /// **Source:** `Law_BSpline.hxx`:557 - `Law_BSpline::Resolution()`
+    /// **Source:** `Law_BSpline.hxx`:530 - `Law_BSpline::Resolution()`
     /// given Tolerance3D returns UTolerance
     /// such that if f(t) is the curve we have
     /// | t1 - t0| < Utolerance ===>
@@ -1480,8 +1495,8 @@ impl BSpline {
         })
     }
 
-    /// **Source:** `Law_BSpline.hxx`:559 - `Law_BSpline::Copy()`
-    pub fn copy(&self) -> crate::OwnedPtr<crate::ffi_types::HandleLawBSpline> {
+    /// **Source:** `Law_BSpline.hxx`:532 - `Law_BSpline::Copy()`
+    pub fn copy(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_Law_BSpline> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKGeomAlgo::Law_BSpline_copy(self as *const Self),
@@ -1489,8 +1504,8 @@ impl BSpline {
         }
     }
 
-    /// **Source:** `Law_BSpline.hxx`:561 - `Law_BSpline::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `Law_BSpline.hxx`:534 - `Law_BSpline::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKGeomAlgo::Law_BSpline_dynamic_type(
                 self as *const Self,
@@ -1498,14 +1513,14 @@ impl BSpline {
         }
     }
 
-    /// **Source:** `Law_BSpline.hxx`:532 - `Law_BSpline::MaxDegree()`
+    /// **Source:** `Law_BSpline.hxx`:505 - `Law_BSpline::MaxDegree()`
     /// Returns the value of the maximum degree of the normalized
     /// B-spline basis functions in this package.
     pub fn max_degree() -> i32 {
         crate::check_result(unsafe { crate::ffi_extern_TKGeomAlgo::Law_BSpline_max_degree() })
     }
 
-    /// **Source:** `Law_BSpline.hxx`:561 - `Law_BSpline::get_type_name()`
+    /// **Source:** `Law_BSpline.hxx`:534 - `Law_BSpline::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -1516,8 +1531,8 @@ impl BSpline {
         .into_owned()
     }
 
-    /// **Source:** `Law_BSpline.hxx`:561 - `Law_BSpline::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    /// **Source:** `Law_BSpline.hxx`:534 - `Law_BSpline::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKGeomAlgo::Law_BSpline_get_type_descriptor()))
         }
@@ -1546,7 +1561,7 @@ impl BSpline {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleLawBSpline> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Law_BSpline> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKGeomAlgo::Law_BSpline_to_handle(obj.into_raw()),
@@ -1554,8 +1569,8 @@ impl BSpline {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::Law_BSpline_inherited_IsInstance(
                 self as *const Self,
@@ -1564,14 +1579,14 @@ impl BSpline {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::Law_BSpline_inherited_IsKind(self as *const Self, theType)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -1585,14 +1600,14 @@ impl BSpline {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::Law_BSpline_inherited_GetRefCount(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::Law_BSpline_inherited_IncrementRefCounter(
@@ -1601,7 +1616,7 @@ impl BSpline {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::Law_BSpline_inherited_DecrementRefCounter(
@@ -1610,7 +1625,7 @@ impl BSpline {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::Law_BSpline_inherited_Delete(self as *const Self)
@@ -1618,32 +1633,32 @@ impl BSpline {
     }
 }
 
-pub use crate::ffi_types::HandleLawBSpline;
+pub use crate::ffi_types::Handle_Law_BSpline;
 
-unsafe impl crate::CppDeletable for HandleLawBSpline {
+unsafe impl crate::CppDeletable for Handle_Law_BSpline {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKGeomAlgo::HandleLawBSpline_destructor(ptr);
+            crate::ffi_extern_TKGeomAlgo::Handle_Law_BSpline_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleLawBSpline {
+unsafe impl crate::CppCopyable for Handle_Law_BSpline {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        unsafe { crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleLawBSpline_clone(ptr)) }
+        unsafe { crate::check_result(crate::ffi_extern_TKGeomAlgo::Handle_Law_BSpline_clone(ptr)) }
     }
 }
 
-impl HandleLawBSpline {
+impl Handle_Law_BSpline {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
-        unsafe { crate::ffi_extern_TKGeomAlgo::HandleLawBSpline_is_null(self as *const Self) }
+        unsafe { crate::ffi_extern_TKGeomAlgo::Handle_Law_BSpline_is_null(self as *const Self) }
     }
 
     /// Dereference this Handle to access the underlying Law_BSpline
     pub fn get(&self) -> &crate::ffi_types::Law_BSpline {
         unsafe {
-            &*crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleLawBSpline_get(
+            &*crate::check_result(crate::ffi_extern_TKGeomAlgo::Handle_Law_BSpline_get(
                 self as *const Self,
             ))
         }
@@ -1652,7 +1667,7 @@ impl HandleLawBSpline {
     /// Dereference this Handle to mutably access the underlying Law_BSpline
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::Law_BSpline {
         unsafe {
-            &mut *crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleLawBSpline_get_mut(
+            &mut *crate::check_result(crate::ffi_extern_TKGeomAlgo::Handle_Law_BSpline_get_mut(
                 self as *mut Self,
             ))
         }
@@ -1661,10 +1676,10 @@ impl HandleLawBSpline {
     /// Upcast Handle<Law_BSpline> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKGeomAlgo::HandleLawBSpline_to_HandleStandardTransient(
+                crate::ffi_extern_TKGeomAlgo::Handle_Law_BSpline_to_Handle_Standard_Transient(
                     self as *const Self,
                 ),
             ))
@@ -1680,8 +1695,8 @@ impl HandleLawBSpline {
 /// For a B-spline curve the discontinuities are localised at the
 /// knot values and between two knots values the B-spline is
 /// infinitely continuously differentiable.
-/// At a knot of range index the continuity is equal to :
-/// Degree - Mult (Index)   where  Degree is the degree of the
+/// At a knot of range index the continuity is equal to:
+/// Degree - Mult (Index) where Degree is the degree of the
 /// basis B-spline functions and Mult the multiplicity of the knot
 /// of range Index.
 /// If for your computation you need to have B-spline curves with a
@@ -1713,7 +1728,7 @@ impl BSplineKnotSplitting {
     ///
     /// Raised if ContinuityRange is not greater or equal zero.
     pub fn new_handlelawbspline_int(
-        BasisLaw: &crate::ffi_types::HandleLawBSpline,
+        BasisLaw: &crate::ffi_types::Handle_Law_BSpline,
         ContinuityRange: i32,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -1739,7 +1754,7 @@ impl BSplineKnotSplitting {
     /// the splitting.
     ///
     /// Raised if the length of SplitValues is not equal to NbSPlit.
-    pub fn splitting(&self, SplitValues: &mut crate::ffi_types::TColStd_Array1OfInteger) {
+    pub fn splitting(&self, SplitValues: &mut crate::ffi_types::NCollection_Array1_int) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::Law_BSplineKnotSplitting_splitting(
                 self as *const Self,
@@ -1767,8 +1782,8 @@ impl BSplineKnotSplitting {
 // From Law_Composite.hxx
 // ========================
 
-/// **Source:** `Law_Composite.hxx`:41 - `Law_Composite`
-/// Loi  composite constituee  d une liste  de lois de
+/// **Source:** `Law_Composite.hxx`:38 - `Law_Composite`
+/// Loi composite constituee d une liste de lois de
 /// ranges consecutifs.
 /// Cette implementation un peu lourde permet de reunir
 /// en une seule loi des portions de loi construites de
@@ -1788,7 +1803,7 @@ unsafe impl crate::CppDeletable for Composite {
 }
 
 impl Composite {
-    /// **Source:** `Law_Composite.hxx`:46 - `Law_Composite::Law_Composite()`
+    /// **Source:** `Law_Composite.hxx`:43 - `Law_Composite::Law_Composite()`
     /// Construct an empty Law
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
@@ -1798,7 +1813,7 @@ impl Composite {
         }
     }
 
-    /// **Source:** `Law_Composite.hxx`:49 - `Law_Composite::Law_Composite()`
+    /// **Source:** `Law_Composite.hxx`:46 - `Law_Composite::Law_Composite()`
     /// Construct an empty, trimmed Law
     pub fn new_real3(First: f64, Last: f64, Tol: f64) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -1808,7 +1823,7 @@ impl Composite {
         }
     }
 
-    /// **Source:** `Law_Composite.hxx`:53 - `Law_Composite::Continuity()`
+    /// **Source:** `Law_Composite.hxx`:48 - `Law_Composite::Continuity()`
     pub fn continuity(&self) -> crate::geom_abs::Shape {
         crate::geom_abs::Shape::try_from(crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::Law_Composite_continuity(self as *const Self)
@@ -1816,8 +1831,8 @@ impl Composite {
         .unwrap()
     }
 
-    /// **Source:** `Law_Composite.hxx`:57 - `Law_Composite::NbIntervals()`
-    /// Returns  the number  of  intervals for  continuity
+    /// **Source:** `Law_Composite.hxx`:52 - `Law_Composite::NbIntervals()`
+    /// Returns the number of intervals for continuity
     /// <S>. May be one if Continuity(me) >= <S>
     pub fn nb_intervals(&self, S: crate::geom_abs::Shape) -> i32 {
         crate::check_result(unsafe {
@@ -1825,13 +1840,13 @@ impl Composite {
         })
     }
 
-    /// **Source:** `Law_Composite.hxx`:62 - `Law_Composite::Intervals()`
-    /// Stores in <T> the  parameters bounding the intervals of continuity <S>.
+    /// **Source:** `Law_Composite.hxx`:57 - `Law_Composite::Intervals()`
+    /// Stores in <T> the parameters bounding the intervals of continuity <S>.
     /// The array must provide enough room to accommodate for the parameters,
     /// i.e. T.Length() > NbIntervals()
     pub fn intervals(
         &self,
-        T: &mut crate::ffi_types::TColStd_Array1OfReal,
+        T: &mut crate::ffi_types::NCollection_Array1_double,
         S: crate::geom_abs::Shape,
     ) {
         crate::check_void_result(unsafe {
@@ -1839,7 +1854,7 @@ impl Composite {
         })
     }
 
-    /// **Source:** `Law_Composite.hxx`:66 - `Law_Composite::Value()`
+    /// **Source:** `Law_Composite.hxx`:61 - `Law_Composite::Value()`
     /// Returns the value at parameter X.
     pub fn value(&mut self, X: f64) -> f64 {
         crate::check_result(unsafe {
@@ -1847,7 +1862,7 @@ impl Composite {
         })
     }
 
-    /// **Source:** `Law_Composite.hxx`:69 - `Law_Composite::D1()`
+    /// **Source:** `Law_Composite.hxx`:64 - `Law_Composite::D1()`
     /// Returns the value and the first derivative at parameter X.
     pub fn d1(&mut self, X: f64, F: &mut f64, D: &mut f64) {
         crate::check_void_result(unsafe {
@@ -1855,7 +1870,7 @@ impl Composite {
         })
     }
 
-    /// **Source:** `Law_Composite.hxx`:75 - `Law_Composite::D2()`
+    /// **Source:** `Law_Composite.hxx`:68 - `Law_Composite::D2()`
     /// Returns the value, first and second derivatives
     /// at parameter X.
     pub fn d2(&mut self, X: f64, F: &mut f64, D: &mut f64, D2: &mut f64) {
@@ -1864,9 +1879,9 @@ impl Composite {
         })
     }
 
-    /// **Source:** `Law_Composite.hxx`:86 - `Law_Composite::Trim()`
-    /// Returns a  law equivalent of  <me>  between
-    /// parameters <First>  and <Last>. <Tol>  is used  to
+    /// **Source:** `Law_Composite.hxx`:76 - `Law_Composite::Trim()`
+    /// Returns a law equivalent of <me> between
+    /// parameters <First> and <Last>. <Tol> is used to
     /// test for 3d points confusion.
     /// It is usfule to determines the derivatives
     /// in these values <First> and <Last> if
@@ -1876,7 +1891,7 @@ impl Composite {
         PFirst: f64,
         PLast: f64,
         Tol: f64,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleLawFunction> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Law_Function> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKGeomAlgo::Law_Composite_trim(
@@ -1889,7 +1904,7 @@ impl Composite {
         }
     }
 
-    /// **Source:** `Law_Composite.hxx`:91 - `Law_Composite::Bounds()`
+    /// **Source:** `Law_Composite.hxx`:81 - `Law_Composite::Bounds()`
     /// Returns the parametric bounds of the function.
     pub fn bounds(&mut self, PFirst: &mut f64, PLast: &mut f64) {
         crate::check_void_result(unsafe {
@@ -1897,10 +1912,10 @@ impl Composite {
         })
     }
 
-    /// **Source:** `Law_Composite.hxx`:95 - `Law_Composite::ChangeElementaryLaw()`
-    /// Returns the elementary  function of the composite used
+    /// **Source:** `Law_Composite.hxx`:85 - `Law_Composite::ChangeElementaryLaw()`
+    /// Returns the elementary function of the composite used
     /// to compute at parameter W.
-    pub fn change_elementary_law(&mut self, W: f64) -> &mut crate::ffi_types::HandleLawFunction {
+    pub fn change_elementary_law(&mut self, W: f64) -> &mut crate::ffi_types::Handle_Law_Function {
         unsafe {
             &mut *(crate::check_result(
                 crate::ffi_extern_TKGeomAlgo::Law_Composite_change_elementary_law(
@@ -1911,31 +1926,22 @@ impl Composite {
         }
     }
 
-    /// **Source:** `Law_Composite.hxx`:97 - `Law_Composite::ChangeLaws()`
-    pub fn change_laws(&mut self) -> &mut crate::ffi_types::Law_Laws {
-        unsafe {
-            &mut *(crate::check_result(crate::ffi_extern_TKGeomAlgo::Law_Composite_change_laws(
-                self as *mut Self,
-            )))
-        }
-    }
-
-    /// **Source:** `Law_Composite.hxx`:99 - `Law_Composite::IsPeriodic()`
+    /// **Source:** `Law_Composite.hxx`:89 - `Law_Composite::IsPeriodic()`
     pub fn is_periodic(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::Law_Composite_is_periodic(self as *const Self)
         })
     }
 
-    /// **Source:** `Law_Composite.hxx`:101 - `Law_Composite::SetPeriodic()`
+    /// **Source:** `Law_Composite.hxx`:91 - `Law_Composite::SetPeriodic()`
     pub fn set_periodic(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::Law_Composite_set_periodic(self as *mut Self)
         })
     }
 
-    /// **Source:** `Law_Composite.hxx`:103 - `Law_Composite::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `Law_Composite.hxx`:93 - `Law_Composite::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKGeomAlgo::Law_Composite_dynamic_type(
                 self as *const Self,
@@ -1943,7 +1949,7 @@ impl Composite {
         }
     }
 
-    /// **Source:** `Law_Composite.hxx`:103 - `Law_Composite::get_type_name()`
+    /// **Source:** `Law_Composite.hxx`:93 - `Law_Composite::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -1954,8 +1960,8 @@ impl Composite {
         .into_owned()
     }
 
-    /// **Source:** `Law_Composite.hxx`:103 - `Law_Composite::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    /// **Source:** `Law_Composite.hxx`:93 - `Law_Composite::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKGeomAlgo::Law_Composite_get_type_descriptor(),
@@ -2006,7 +2012,7 @@ impl Composite {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleLawComposite> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Law_Composite> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKGeomAlgo::Law_Composite_to_handle(obj.into_raw()),
@@ -2014,8 +2020,8 @@ impl Composite {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::Law_Composite_inherited_IsInstance(
                 self as *const Self,
@@ -2024,8 +2030,8 @@ impl Composite {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::Law_Composite_inherited_IsKind(
                 self as *const Self,
@@ -2034,7 +2040,7 @@ impl Composite {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -2048,14 +2054,14 @@ impl Composite {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::Law_Composite_inherited_GetRefCount(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::Law_Composite_inherited_IncrementRefCounter(
@@ -2064,7 +2070,7 @@ impl Composite {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::Law_Composite_inherited_DecrementRefCounter(
@@ -2073,7 +2079,7 @@ impl Composite {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::Law_Composite_inherited_Delete(self as *const Self)
@@ -2081,32 +2087,34 @@ impl Composite {
     }
 }
 
-pub use crate::ffi_types::HandleLawComposite;
+pub use crate::ffi_types::Handle_Law_Composite;
 
-unsafe impl crate::CppDeletable for HandleLawComposite {
+unsafe impl crate::CppDeletable for Handle_Law_Composite {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKGeomAlgo::HandleLawComposite_destructor(ptr);
+            crate::ffi_extern_TKGeomAlgo::Handle_Law_Composite_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleLawComposite {
+unsafe impl crate::CppCopyable for Handle_Law_Composite {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        unsafe { crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleLawComposite_clone(ptr)) }
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKGeomAlgo::Handle_Law_Composite_clone(ptr))
+        }
     }
 }
 
-impl HandleLawComposite {
+impl Handle_Law_Composite {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
-        unsafe { crate::ffi_extern_TKGeomAlgo::HandleLawComposite_is_null(self as *const Self) }
+        unsafe { crate::ffi_extern_TKGeomAlgo::Handle_Law_Composite_is_null(self as *const Self) }
     }
 
     /// Dereference this Handle to access the underlying Law_Composite
     pub fn get(&self) -> &crate::ffi_types::Law_Composite {
         unsafe {
-            &*crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleLawComposite_get(
+            &*crate::check_result(crate::ffi_extern_TKGeomAlgo::Handle_Law_Composite_get(
                 self as *const Self,
             ))
         }
@@ -2115,17 +2123,17 @@ impl HandleLawComposite {
     /// Dereference this Handle to mutably access the underlying Law_Composite
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::Law_Composite {
         unsafe {
-            &mut *crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleLawComposite_get_mut(
+            &mut *crate::check_result(crate::ffi_extern_TKGeomAlgo::Handle_Law_Composite_get_mut(
                 self as *mut Self,
             ))
         }
     }
 
     /// Upcast Handle<Law_Composite> to Handle<Law_Function>
-    pub fn to_handle_function(&self) -> crate::OwnedPtr<crate::ffi_types::HandleLawFunction> {
+    pub fn to_handle_function(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_Law_Function> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKGeomAlgo::HandleLawComposite_to_HandleLawFunction(
+                crate::ffi_extern_TKGeomAlgo::Handle_Law_Composite_to_Handle_Law_Function(
                     self as *const Self,
                 ),
             ))
@@ -2135,10 +2143,10 @@ impl HandleLawComposite {
     /// Upcast Handle<Law_Composite> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKGeomAlgo::HandleLawComposite_to_HandleStandardTransient(
+                crate::ffi_extern_TKGeomAlgo::Handle_Law_Composite_to_Handle_Standard_Transient(
                     self as *const Self,
                 ),
             ))
@@ -2146,11 +2154,17 @@ impl HandleLawComposite {
     }
 }
 
+// ── Skipped symbols for Composite (1 total) ──
+// SKIPPED: **Source:** `Law_Composite.hxx`:87 - `Law_Composite::ChangeLaws`
+//   Reason: has unbindable types: return: unresolved template type (NCollection_List<occ::handle<Law_Function>>&)
+//   // pub fn change_laws(&mut self) -> /* NCollection_List<occ::handle<Law_Function>>& */;
+//
+
 // ========================
 // From Law_Constant.hxx
 // ========================
 
-/// **Source:** `Law_Constant.hxx`:33 - `Law_Constant`
+/// **Source:** `Law_Constant.hxx`:30 - `Law_Constant`
 /// Loi constante
 pub use crate::ffi_types::Law_Constant as Constant;
 
@@ -2163,7 +2177,7 @@ unsafe impl crate::CppDeletable for Constant {
 }
 
 impl Constant {
-    /// **Source:** `Law_Constant.hxx`:37 - `Law_Constant::Law_Constant()`
+    /// **Source:** `Law_Constant.hxx`:34 - `Law_Constant::Law_Constant()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -2172,7 +2186,7 @@ impl Constant {
         }
     }
 
-    /// **Source:** `Law_Constant.hxx`:40 - `Law_Constant::Set()`
+    /// **Source:** `Law_Constant.hxx`:37 - `Law_Constant::Set()`
     /// Set the radius and the range of the constant Law.
     pub fn set(&mut self, Radius: f64, PFirst: f64, PLast: f64) {
         crate::check_void_result(unsafe {
@@ -2180,7 +2194,7 @@ impl Constant {
         })
     }
 
-    /// **Source:** `Law_Constant.hxx`:45 - `Law_Constant::Continuity()`
+    /// **Source:** `Law_Constant.hxx`:40 - `Law_Constant::Continuity()`
     /// Returns GeomAbs_CN
     pub fn continuity(&self) -> crate::geom_abs::Shape {
         crate::geom_abs::Shape::try_from(crate::check_result(unsafe {
@@ -2189,18 +2203,18 @@ impl Constant {
         .unwrap()
     }
 
-    /// **Source:** `Law_Constant.hxx`:48 - `Law_Constant::NbIntervals()`
-    /// Returns  1
+    /// **Source:** `Law_Constant.hxx`:43 - `Law_Constant::NbIntervals()`
+    /// Returns 1
     pub fn nb_intervals(&self, S: crate::geom_abs::Shape) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::Law_Constant_nb_intervals(self as *const Self, S.into())
         })
     }
 
-    /// **Source:** `Law_Constant.hxx`:50 - `Law_Constant::Intervals()`
+    /// **Source:** `Law_Constant.hxx`:45 - `Law_Constant::Intervals()`
     pub fn intervals(
         &self,
-        T: &mut crate::ffi_types::TColStd_Array1OfReal,
+        T: &mut crate::ffi_types::NCollection_Array1_double,
         S: crate::geom_abs::Shape,
     ) {
         crate::check_void_result(unsafe {
@@ -2208,7 +2222,7 @@ impl Constant {
         })
     }
 
-    /// **Source:** `Law_Constant.hxx`:54 - `Law_Constant::Value()`
+    /// **Source:** `Law_Constant.hxx`:49 - `Law_Constant::Value()`
     /// Returns the value at parameter X.
     pub fn value(&mut self, X: f64) -> f64 {
         crate::check_result(unsafe {
@@ -2216,7 +2230,7 @@ impl Constant {
         })
     }
 
-    /// **Source:** `Law_Constant.hxx`:57 - `Law_Constant::D1()`
+    /// **Source:** `Law_Constant.hxx`:52 - `Law_Constant::D1()`
     /// Returns the value and the first derivative at parameter X.
     pub fn d1(&mut self, X: f64, F: &mut f64, D: &mut f64) {
         crate::check_void_result(unsafe {
@@ -2224,7 +2238,7 @@ impl Constant {
         })
     }
 
-    /// **Source:** `Law_Constant.hxx`:63 - `Law_Constant::D2()`
+    /// **Source:** `Law_Constant.hxx`:56 - `Law_Constant::D2()`
     /// Returns the value, first and second derivatives
     /// at parameter X.
     pub fn d2(&mut self, X: f64, F: &mut f64, D: &mut f64, D2: &mut f64) {
@@ -2233,13 +2247,13 @@ impl Constant {
         })
     }
 
-    /// **Source:** `Law_Constant.hxx`:68 - `Law_Constant::Trim()`
+    /// **Source:** `Law_Constant.hxx`:58 - `Law_Constant::Trim()`
     pub fn trim(
         &self,
         PFirst: f64,
         PLast: f64,
         Tol: f64,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleLawFunction> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Law_Function> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKGeomAlgo::Law_Constant_trim(
@@ -2252,7 +2266,7 @@ impl Constant {
         }
     }
 
-    /// **Source:** `Law_Constant.hxx`:73 - `Law_Constant::Bounds()`
+    /// **Source:** `Law_Constant.hxx`:63 - `Law_Constant::Bounds()`
     /// Returns the parametric bounds of the function.
     pub fn bounds(&mut self, PFirst: &mut f64, PLast: &mut f64) {
         crate::check_void_result(unsafe {
@@ -2260,8 +2274,8 @@ impl Constant {
         })
     }
 
-    /// **Source:** `Law_Constant.hxx`:75 - `Law_Constant::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `Law_Constant.hxx`:65 - `Law_Constant::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKGeomAlgo::Law_Constant_dynamic_type(
                 self as *const Self,
@@ -2269,7 +2283,7 @@ impl Constant {
         }
     }
 
-    /// **Source:** `Law_Constant.hxx`:75 - `Law_Constant::get_type_name()`
+    /// **Source:** `Law_Constant.hxx`:65 - `Law_Constant::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -2280,8 +2294,8 @@ impl Constant {
         .into_owned()
     }
 
-    /// **Source:** `Law_Constant.hxx`:75 - `Law_Constant::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    /// **Source:** `Law_Constant.hxx`:65 - `Law_Constant::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKGeomAlgo::Law_Constant_get_type_descriptor()))
         }
@@ -2328,7 +2342,7 @@ impl Constant {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleLawConstant> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Law_Constant> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKGeomAlgo::Law_Constant_to_handle(obj.into_raw()),
@@ -2336,8 +2350,8 @@ impl Constant {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::Law_Constant_inherited_IsInstance(
                 self as *const Self,
@@ -2346,8 +2360,8 @@ impl Constant {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::Law_Constant_inherited_IsKind(
                 self as *const Self,
@@ -2356,7 +2370,7 @@ impl Constant {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -2370,14 +2384,14 @@ impl Constant {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::Law_Constant_inherited_GetRefCount(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::Law_Constant_inherited_IncrementRefCounter(
@@ -2386,7 +2400,7 @@ impl Constant {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::Law_Constant_inherited_DecrementRefCounter(
@@ -2395,7 +2409,7 @@ impl Constant {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::Law_Constant_inherited_Delete(self as *const Self)
@@ -2403,32 +2417,32 @@ impl Constant {
     }
 }
 
-pub use crate::ffi_types::HandleLawConstant;
+pub use crate::ffi_types::Handle_Law_Constant;
 
-unsafe impl crate::CppDeletable for HandleLawConstant {
+unsafe impl crate::CppDeletable for Handle_Law_Constant {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKGeomAlgo::HandleLawConstant_destructor(ptr);
+            crate::ffi_extern_TKGeomAlgo::Handle_Law_Constant_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleLawConstant {
+unsafe impl crate::CppCopyable for Handle_Law_Constant {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        unsafe { crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleLawConstant_clone(ptr)) }
+        unsafe { crate::check_result(crate::ffi_extern_TKGeomAlgo::Handle_Law_Constant_clone(ptr)) }
     }
 }
 
-impl HandleLawConstant {
+impl Handle_Law_Constant {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
-        unsafe { crate::ffi_extern_TKGeomAlgo::HandleLawConstant_is_null(self as *const Self) }
+        unsafe { crate::ffi_extern_TKGeomAlgo::Handle_Law_Constant_is_null(self as *const Self) }
     }
 
     /// Dereference this Handle to access the underlying Law_Constant
     pub fn get(&self) -> &crate::ffi_types::Law_Constant {
         unsafe {
-            &*crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleLawConstant_get(
+            &*crate::check_result(crate::ffi_extern_TKGeomAlgo::Handle_Law_Constant_get(
                 self as *const Self,
             ))
         }
@@ -2437,17 +2451,17 @@ impl HandleLawConstant {
     /// Dereference this Handle to mutably access the underlying Law_Constant
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::Law_Constant {
         unsafe {
-            &mut *crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleLawConstant_get_mut(
+            &mut *crate::check_result(crate::ffi_extern_TKGeomAlgo::Handle_Law_Constant_get_mut(
                 self as *mut Self,
             ))
         }
     }
 
     /// Upcast Handle<Law_Constant> to Handle<Law_Function>
-    pub fn to_handle_function(&self) -> crate::OwnedPtr<crate::ffi_types::HandleLawFunction> {
+    pub fn to_handle_function(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_Law_Function> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKGeomAlgo::HandleLawConstant_to_HandleLawFunction(
+                crate::ffi_extern_TKGeomAlgo::Handle_Law_Constant_to_Handle_Law_Function(
                     self as *const Self,
                 ),
             ))
@@ -2457,10 +2471,10 @@ impl HandleLawConstant {
     /// Upcast Handle<Law_Constant> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKGeomAlgo::HandleLawConstant_to_HandleStandardTransient(
+                crate::ffi_extern_TKGeomAlgo::Handle_Law_Constant_to_Handle_Standard_Transient(
                     self as *const Self,
                 ),
             ))
@@ -2472,7 +2486,7 @@ impl HandleLawConstant {
 // From Law_Function.hxx
 // ========================
 
-/// **Source:** `Law_Function.hxx`:33 - `Law_Function`
+/// **Source:** `Law_Function.hxx`:30 - `Law_Function`
 /// Root class for evolution laws.
 pub use crate::ffi_types::Law_Function as Function;
 
@@ -2485,7 +2499,7 @@ unsafe impl crate::CppDeletable for Function {
 }
 
 impl Function {
-    /// **Source:** `Law_Function.hxx`:37 - `Law_Function::Continuity()`
+    /// **Source:** `Law_Function.hxx`:34 - `Law_Function::Continuity()`
     pub fn continuity(&self) -> crate::geom_abs::Shape {
         crate::geom_abs::Shape::try_from(crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::Law_Function_continuity(self as *const Self)
@@ -2493,8 +2507,8 @@ impl Function {
         .unwrap()
     }
 
-    /// **Source:** `Law_Function.hxx`:41 - `Law_Function::NbIntervals()`
-    /// Returns  the number  of  intervals for  continuity
+    /// **Source:** `Law_Function.hxx`:38 - `Law_Function::NbIntervals()`
+    /// Returns the number of intervals for continuity
     /// <S>. May be one if Continuity(me) >= <S>
     pub fn nb_intervals(&self, S: crate::geom_abs::Shape) -> i32 {
         crate::check_result(unsafe {
@@ -2502,13 +2516,13 @@ impl Function {
         })
     }
 
-    /// **Source:** `Law_Function.hxx`:46 - `Law_Function::Intervals()`
+    /// **Source:** `Law_Function.hxx`:43 - `Law_Function::Intervals()`
     /// Stores in <T> the parameters bounding the intervals of continuity <S>.
     /// The array must provide enough room to accommodate for the parameters,
     /// i.e. T.Length() > NbIntervals()
     pub fn intervals(
         &self,
-        T: &mut crate::ffi_types::TColStd_Array1OfReal,
+        T: &mut crate::ffi_types::NCollection_Array1_double,
         S: crate::geom_abs::Shape,
     ) {
         crate::check_void_result(unsafe {
@@ -2516,7 +2530,7 @@ impl Function {
         })
     }
 
-    /// **Source:** `Law_Function.hxx`:49 - `Law_Function::Value()`
+    /// **Source:** `Law_Function.hxx`:47 - `Law_Function::Value()`
     /// Returns the value of the function at the point of parameter X.
     pub fn value(&mut self, X: f64) -> f64 {
         crate::check_result(unsafe {
@@ -2524,7 +2538,7 @@ impl Function {
         })
     }
 
-    /// **Source:** `Law_Function.hxx`:53 - `Law_Function::D1()`
+    /// **Source:** `Law_Function.hxx`:51 - `Law_Function::D1()`
     /// Returns the value F and the first derivative D of the
     /// function at the point of parameter X.
     pub fn d1(&mut self, X: f64, F: &mut f64, D: &mut f64) {
@@ -2533,8 +2547,8 @@ impl Function {
         })
     }
 
-    /// **Source:** `Law_Function.hxx`:57 - `Law_Function::D2()`
-    /// Returns the value, first and seconde derivatives
+    /// **Source:** `Law_Function.hxx`:55 - `Law_Function::D2()`
+    /// Returns the value, first and second derivatives
     /// at parameter X.
     pub fn d2(&mut self, X: f64, F: &mut f64, D: &mut f64, D2: &mut f64) {
         crate::check_void_result(unsafe {
@@ -2542,9 +2556,9 @@ impl Function {
         })
     }
 
-    /// **Source:** `Law_Function.hxx`:68 - `Law_Function::Trim()`
-    /// Returns a  law equivalent of  <me>  between
-    /// parameters <First>  and <Last>. <Tol>  is used  to
+    /// **Source:** `Law_Function.hxx`:63 - `Law_Function::Trim()`
+    /// Returns a law equivalent of <me> between
+    /// parameters <First> and <Last>. <Tol> is used to
     /// test for 3d points confusion.
     /// It is usfule to determines the derivatives
     /// in these values <First> and <Last> if
@@ -2554,7 +2568,7 @@ impl Function {
         PFirst: f64,
         PLast: f64,
         Tol: f64,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleLawFunction> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Law_Function> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKGeomAlgo::Law_Function_trim(
@@ -2567,7 +2581,7 @@ impl Function {
         }
     }
 
-    /// **Source:** `Law_Function.hxx`:73 - `Law_Function::Bounds()`
+    /// **Source:** `Law_Function.hxx`:68 - `Law_Function::Bounds()`
     /// Returns the parametric bounds of the function.
     pub fn bounds(&mut self, PFirst: &mut f64, PLast: &mut f64) {
         crate::check_void_result(unsafe {
@@ -2575,8 +2589,8 @@ impl Function {
         })
     }
 
-    /// **Source:** `Law_Function.hxx`:75 - `Law_Function::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `Law_Function.hxx`:70 - `Law_Function::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKGeomAlgo::Law_Function_dynamic_type(
                 self as *const Self,
@@ -2584,7 +2598,7 @@ impl Function {
         }
     }
 
-    /// **Source:** `Law_Function.hxx`:75 - `Law_Function::get_type_name()`
+    /// **Source:** `Law_Function.hxx`:70 - `Law_Function::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -2595,8 +2609,8 @@ impl Function {
         .into_owned()
     }
 
-    /// **Source:** `Law_Function.hxx`:75 - `Law_Function::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    /// **Source:** `Law_Function.hxx`:70 - `Law_Function::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKGeomAlgo::Law_Function_get_type_descriptor()))
         }
@@ -2622,8 +2636,8 @@ impl Function {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::Law_Function_inherited_IsInstance(
                 self as *const Self,
@@ -2632,8 +2646,8 @@ impl Function {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::Law_Function_inherited_IsKind(
                 self as *const Self,
@@ -2642,7 +2656,7 @@ impl Function {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -2656,14 +2670,14 @@ impl Function {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::Law_Function_inherited_GetRefCount(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::Law_Function_inherited_IncrementRefCounter(
@@ -2672,7 +2686,7 @@ impl Function {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::Law_Function_inherited_DecrementRefCounter(
@@ -2681,7 +2695,7 @@ impl Function {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::Law_Function_inherited_Delete(self as *const Self)
@@ -2689,32 +2703,32 @@ impl Function {
     }
 }
 
-pub use crate::ffi_types::HandleLawFunction;
+pub use crate::ffi_types::Handle_Law_Function;
 
-unsafe impl crate::CppDeletable for HandleLawFunction {
+unsafe impl crate::CppDeletable for Handle_Law_Function {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKGeomAlgo::HandleLawFunction_destructor(ptr);
+            crate::ffi_extern_TKGeomAlgo::Handle_Law_Function_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleLawFunction {
+unsafe impl crate::CppCopyable for Handle_Law_Function {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        unsafe { crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleLawFunction_clone(ptr)) }
+        unsafe { crate::check_result(crate::ffi_extern_TKGeomAlgo::Handle_Law_Function_clone(ptr)) }
     }
 }
 
-impl HandleLawFunction {
+impl Handle_Law_Function {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
-        unsafe { crate::ffi_extern_TKGeomAlgo::HandleLawFunction_is_null(self as *const Self) }
+        unsafe { crate::ffi_extern_TKGeomAlgo::Handle_Law_Function_is_null(self as *const Self) }
     }
 
     /// Dereference this Handle to access the underlying Law_Function
     pub fn get(&self) -> &crate::ffi_types::Law_Function {
         unsafe {
-            &*crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleLawFunction_get(
+            &*crate::check_result(crate::ffi_extern_TKGeomAlgo::Handle_Law_Function_get(
                 self as *const Self,
             ))
         }
@@ -2723,7 +2737,7 @@ impl HandleLawFunction {
     /// Dereference this Handle to mutably access the underlying Law_Function
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::Law_Function {
         unsafe {
-            &mut *crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleLawFunction_get_mut(
+            &mut *crate::check_result(crate::ffi_extern_TKGeomAlgo::Handle_Law_Function_get_mut(
                 self as *mut Self,
             ))
         }
@@ -2732,10 +2746,10 @@ impl HandleLawFunction {
     /// Upcast Handle<Law_Function> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKGeomAlgo::HandleLawFunction_to_HandleStandardTransient(
+                crate::ffi_extern_TKGeomAlgo::Handle_Law_Function_to_Handle_Standard_Transient(
                     self as *const Self,
                 ),
             ))
@@ -2747,9 +2761,9 @@ impl HandleLawFunction {
     /// Returns `None` if the handle does not point to a `Law_BSpFunc` (or subclass).
     pub fn downcast_to_b_sp_func(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleLawBSpFunc>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_Law_BSpFunc>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKGeomAlgo::HandleLawFunction_downcast_to_HandleLawBSpFunc(
+            crate::ffi_extern_TKGeomAlgo::Handle_Law_Function_downcast_to_Handle_Law_BSpFunc(
                 self as *const Self,
             )
         });
@@ -2765,9 +2779,9 @@ impl HandleLawFunction {
     /// Returns `None` if the handle does not point to a `Law_Composite` (or subclass).
     pub fn downcast_to_composite(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleLawComposite>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_Law_Composite>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKGeomAlgo::HandleLawFunction_downcast_to_HandleLawComposite(
+            crate::ffi_extern_TKGeomAlgo::Handle_Law_Function_downcast_to_Handle_Law_Composite(
                 self as *const Self,
             )
         });
@@ -2783,9 +2797,9 @@ impl HandleLawFunction {
     /// Returns `None` if the handle does not point to a `Law_Constant` (or subclass).
     pub fn downcast_to_constant(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleLawConstant>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_Law_Constant>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKGeomAlgo::HandleLawFunction_downcast_to_HandleLawConstant(
+            crate::ffi_extern_TKGeomAlgo::Handle_Law_Function_downcast_to_Handle_Law_Constant(
                 self as *const Self,
             )
         });
@@ -2801,9 +2815,9 @@ impl HandleLawFunction {
     /// Returns `None` if the handle does not point to a `Law_Interpol` (or subclass).
     pub fn downcast_to_interpol(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleLawInterpol>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_Law_Interpol>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKGeomAlgo::HandleLawFunction_downcast_to_HandleLawInterpol(
+            crate::ffi_extern_TKGeomAlgo::Handle_Law_Function_downcast_to_Handle_Law_Interpol(
                 self as *const Self,
             )
         });
@@ -2817,9 +2831,11 @@ impl HandleLawFunction {
     /// Downcast Handle<Law_Function> to Handle<Law_Linear>
     ///
     /// Returns `None` if the handle does not point to a `Law_Linear` (or subclass).
-    pub fn downcast_to_linear(&self) -> Option<crate::OwnedPtr<crate::ffi_types::HandleLawLinear>> {
+    pub fn downcast_to_linear(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_Law_Linear>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKGeomAlgo::HandleLawFunction_downcast_to_HandleLawLinear(
+            crate::ffi_extern_TKGeomAlgo::Handle_Law_Function_downcast_to_Handle_Law_Linear(
                 self as *const Self,
             )
         });
@@ -2833,9 +2849,9 @@ impl HandleLawFunction {
     /// Downcast Handle<Law_Function> to Handle<Law_S>
     ///
     /// Returns `None` if the handle does not point to a `Law_S` (or subclass).
-    pub fn downcast_to_s(&self) -> Option<crate::OwnedPtr<crate::ffi_types::HandleLawS>> {
+    pub fn downcast_to_s(&self) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_Law_S>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKGeomAlgo::HandleLawFunction_downcast_to_HandleLawS(
+            crate::ffi_extern_TKGeomAlgo::Handle_Law_Function_downcast_to_Handle_Law_S(
                 self as *const Self,
             )
         });
@@ -2851,7 +2867,7 @@ impl HandleLawFunction {
 // From Law_Interpol.hxx
 // ========================
 
-/// **Source:** `Law_Interpol.hxx`:31 - `Law_Interpol`
+/// **Source:** `Law_Interpol.hxx`:29 - `Law_Interpol`
 /// Provides an evolution law that interpolates a set
 /// of parameter and value pairs (wi, radi)
 pub use crate::ffi_types::Law_Interpol as Interpol;
@@ -2865,7 +2881,7 @@ unsafe impl crate::CppDeletable for Interpol {
 }
 
 impl Interpol {
-    /// **Source:** `Law_Interpol.hxx`:37 - `Law_Interpol::Law_Interpol()`
+    /// **Source:** `Law_Interpol.hxx`:35 - `Law_Interpol::Law_Interpol()`
     /// Constructs an empty interpolative evolution law.
     /// The function Set is used to define the law.
     pub fn new() -> crate::OwnedPtr<Self> {
@@ -2876,7 +2892,7 @@ impl Interpol {
         }
     }
 
-    /// **Source:** `Law_Interpol.hxx`:52 - `Law_Interpol::Set()`
+    /// **Source:** `Law_Interpol.hxx`:50 - `Law_Interpol::Set()`
     /// Defines this evolution law by interpolating the set of 2D
     /// points ParAndRad. The Y coordinate of a point of
     /// ParAndRad is the value of the function at the parameter
@@ -2890,13 +2906,13 @@ impl Interpol {
     /// equal. In addition, with the second syntax, Dd and Df
     /// are also assumed to be equal. If this is not the case,
     /// Set uses the first value(s) as last value(s).
-    pub fn set_array1ofpnt2d_bool(
+    pub fn set_arr1_pnt2d_bool(
         &mut self,
-        ParAndRad: &crate::ffi_types::TColgp_Array1OfPnt2d,
+        ParAndRad: &crate::ffi_types::NCollection_Array1_gp_Pnt2d,
         Periodic: bool,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi_extern_TKGeomAlgo::Law_Interpol_set_array1ofpnt2d_bool(
+            crate::ffi_extern_TKGeomAlgo::Law_Interpol_set_arr1_pnt2d_bool(
                 self as *mut Self,
                 ParAndRad,
                 Periodic,
@@ -2904,16 +2920,16 @@ impl Interpol {
         })
     }
 
-    /// **Source:** `Law_Interpol.hxx`:55 - `Law_Interpol::SetInRelative()`
-    pub fn set_in_relative_array1ofpnt2d_real2_bool(
+    /// **Source:** `Law_Interpol.hxx`:53 - `Law_Interpol::SetInRelative()`
+    pub fn set_in_relative_arr1_pnt2d_real2_bool(
         &mut self,
-        ParAndRad: &crate::ffi_types::TColgp_Array1OfPnt2d,
+        ParAndRad: &crate::ffi_types::NCollection_Array1_gp_Pnt2d,
         Ud: f64,
         Uf: f64,
         Periodic: bool,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi_extern_TKGeomAlgo::Law_Interpol_set_in_relative_array1ofpnt2d_real2_bool(
+            crate::ffi_extern_TKGeomAlgo::Law_Interpol_set_in_relative_arr1_pnt2d_real2_bool(
                 self as *mut Self,
                 ParAndRad,
                 Ud,
@@ -2923,7 +2939,7 @@ impl Interpol {
         })
     }
 
-    /// **Source:** `Law_Interpol.hxx`:75 - `Law_Interpol::Set()`
+    /// **Source:** `Law_Interpol.hxx`:73 - `Law_Interpol::Set()`
     /// Defines this evolution law by interpolating the set of 2D
     /// points ParAndRad. The Y coordinate of a point of
     /// ParAndRad is the value of the function at the parameter
@@ -2939,15 +2955,15 @@ impl Interpol {
     /// equal. In addition, with the second syntax, Dd and Df
     /// are also assumed to be equal. If this is not the case,
     /// Set uses the first value(s) as last value(s).
-    pub fn set_array1ofpnt2d_real2_bool(
+    pub fn set_arr1_pnt2d_real2_bool(
         &mut self,
-        ParAndRad: &crate::ffi_types::TColgp_Array1OfPnt2d,
+        ParAndRad: &crate::ffi_types::NCollection_Array1_gp_Pnt2d,
         Dd: f64,
         Df: f64,
         Periodic: bool,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi_extern_TKGeomAlgo::Law_Interpol_set_array1ofpnt2d_real2_bool(
+            crate::ffi_extern_TKGeomAlgo::Law_Interpol_set_arr1_pnt2d_real2_bool(
                 self as *mut Self,
                 ParAndRad,
                 Dd,
@@ -2957,10 +2973,10 @@ impl Interpol {
         })
     }
 
-    /// **Source:** `Law_Interpol.hxx`:80 - `Law_Interpol::SetInRelative()`
-    pub fn set_in_relative_array1ofpnt2d_real4_bool(
+    /// **Source:** `Law_Interpol.hxx`:78 - `Law_Interpol::SetInRelative()`
+    pub fn set_in_relative_arr1_pnt2d_real4_bool(
         &mut self,
-        ParAndRad: &crate::ffi_types::TColgp_Array1OfPnt2d,
+        ParAndRad: &crate::ffi_types::NCollection_Array1_gp_Pnt2d,
         Ud: f64,
         Uf: f64,
         Dd: f64,
@@ -2968,7 +2984,7 @@ impl Interpol {
         Periodic: bool,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi_extern_TKGeomAlgo::Law_Interpol_set_in_relative_array1ofpnt2d_real4_bool(
+            crate::ffi_extern_TKGeomAlgo::Law_Interpol_set_in_relative_arr1_pnt2d_real4_bool(
                 self as *mut Self,
                 ParAndRad,
                 Ud,
@@ -2980,8 +2996,8 @@ impl Interpol {
         })
     }
 
-    /// **Source:** `Law_Interpol.hxx`:87 - `Law_Interpol::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `Law_Interpol.hxx`:85 - `Law_Interpol::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKGeomAlgo::Law_Interpol_dynamic_type(
                 self as *const Self,
@@ -2989,7 +3005,7 @@ impl Interpol {
         }
     }
 
-    /// **Source:** `Law_Interpol.hxx`:87 - `Law_Interpol::get_type_name()`
+    /// **Source:** `Law_Interpol.hxx`:85 - `Law_Interpol::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -3000,8 +3016,8 @@ impl Interpol {
         .into_owned()
     }
 
-    /// **Source:** `Law_Interpol.hxx`:87 - `Law_Interpol::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    /// **Source:** `Law_Interpol.hxx`:85 - `Law_Interpol::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKGeomAlgo::Law_Interpol_get_type_descriptor()))
         }
@@ -3066,7 +3082,7 @@ impl Interpol {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleLawInterpol> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Law_Interpol> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKGeomAlgo::Law_Interpol_to_handle(obj.into_raw()),
@@ -3074,7 +3090,7 @@ impl Interpol {
         }
     }
 
-    /// Inherited: **Source:** `Law_BSpFunc.hxx`:46 - `Law_BSpFunc::Continuity()`
+    /// Inherited: **Source:** `Law_BSpFunc.hxx`:43 - `Law_BSpFunc::Continuity()`
     pub fn continuity(&self) -> crate::geom_abs::Shape {
         crate::geom_abs::Shape::try_from(crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::Law_Interpol_inherited_Continuity(self as *const Self)
@@ -3082,7 +3098,7 @@ impl Interpol {
         .unwrap()
     }
 
-    /// Inherited: **Source:** `Law_BSpFunc.hxx`:50 - `Law_BSpFunc::NbIntervals()`
+    /// Inherited: **Source:** `Law_BSpFunc.hxx`:47 - `Law_BSpFunc::NbIntervals()`
     pub fn nb_intervals(&self, S: crate::geom_abs::Shape) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::Law_Interpol_inherited_NbIntervals(
@@ -3092,10 +3108,10 @@ impl Interpol {
         })
     }
 
-    /// Inherited: **Source:** `Law_BSpFunc.hxx`:55 - `Law_BSpFunc::Intervals()`
+    /// Inherited: **Source:** `Law_BSpFunc.hxx`:52 - `Law_BSpFunc::Intervals()`
     pub fn intervals(
         &self,
-        T: &mut crate::ffi_types::TColStd_Array1OfReal,
+        T: &mut crate::ffi_types::NCollection_Array1_double,
         S: crate::geom_abs::Shape,
     ) {
         crate::check_void_result(unsafe {
@@ -3107,34 +3123,34 @@ impl Interpol {
         })
     }
 
-    /// Inherited: **Source:** `Law_BSpFunc.hxx`:58 - `Law_BSpFunc::Value()`
+    /// Inherited: **Source:** `Law_BSpFunc.hxx`:55 - `Law_BSpFunc::Value()`
     pub fn value(&mut self, X: f64) -> f64 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::Law_Interpol_inherited_Value(self as *mut Self, X)
         })
     }
 
-    /// Inherited: **Source:** `Law_BSpFunc.hxx`:60 - `Law_BSpFunc::D1()`
+    /// Inherited: **Source:** `Law_BSpFunc.hxx`:57 - `Law_BSpFunc::D1()`
     pub fn d1(&mut self, X: f64, F: &mut f64, D: &mut f64) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::Law_Interpol_inherited_D1(self as *mut Self, X, F, D)
         })
     }
 
-    /// Inherited: **Source:** `Law_BSpFunc.hxx`:64 - `Law_BSpFunc::D2()`
+    /// Inherited: **Source:** `Law_BSpFunc.hxx`:59 - `Law_BSpFunc::D2()`
     pub fn d2(&mut self, X: f64, F: &mut f64, D: &mut f64, D2: &mut f64) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::Law_Interpol_inherited_D2(self as *mut Self, X, F, D, D2)
         })
     }
 
-    /// Inherited: **Source:** `Law_BSpFunc.hxx`:75 - `Law_BSpFunc::Trim()`
+    /// Inherited: **Source:** `Law_BSpFunc.hxx`:67 - `Law_BSpFunc::Trim()`
     pub fn trim(
         &self,
         PFirst: f64,
         PLast: f64,
         Tol: f64,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleLawFunction> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Law_Function> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKGeomAlgo::Law_Interpol_inherited_Trim(
@@ -3147,7 +3163,7 @@ impl Interpol {
         }
     }
 
-    /// Inherited: **Source:** `Law_BSpFunc.hxx`:79 - `Law_BSpFunc::Bounds()`
+    /// Inherited: **Source:** `Law_BSpFunc.hxx`:71 - `Law_BSpFunc::Bounds()`
     pub fn bounds(&mut self, PFirst: &mut f64, PLast: &mut f64) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::Law_Interpol_inherited_Bounds(
@@ -3158,8 +3174,8 @@ impl Interpol {
         })
     }
 
-    /// Inherited: **Source:** `Law_BSpFunc.hxx`:81 - `Law_BSpFunc::Curve()`
-    pub fn curve(&self) -> crate::OwnedPtr<crate::ffi_types::HandleLawBSpline> {
+    /// Inherited: **Source:** `Law_BSpFunc.hxx`:73 - `Law_BSpFunc::Curve()`
+    pub fn curve(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_Law_BSpline> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKGeomAlgo::Law_Interpol_inherited_Curve(self as *const Self),
@@ -3167,15 +3183,15 @@ impl Interpol {
         }
     }
 
-    /// Inherited: **Source:** `Law_BSpFunc.hxx`:83 - `Law_BSpFunc::SetCurve()`
-    pub fn set_curve(&mut self, C: &crate::ffi_types::HandleLawBSpline) {
+    /// Inherited: **Source:** `Law_BSpFunc.hxx`:75 - `Law_BSpFunc::SetCurve()`
+    pub fn set_curve(&mut self, C: &crate::ffi_types::Handle_Law_BSpline) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::Law_Interpol_inherited_SetCurve(self as *mut Self, C)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::Law_Interpol_inherited_IsInstance(
                 self as *const Self,
@@ -3184,8 +3200,8 @@ impl Interpol {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::Law_Interpol_inherited_IsKind(
                 self as *const Self,
@@ -3194,7 +3210,7 @@ impl Interpol {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -3208,14 +3224,14 @@ impl Interpol {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::Law_Interpol_inherited_GetRefCount(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::Law_Interpol_inherited_IncrementRefCounter(
@@ -3224,7 +3240,7 @@ impl Interpol {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::Law_Interpol_inherited_DecrementRefCounter(
@@ -3233,7 +3249,7 @@ impl Interpol {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::Law_Interpol_inherited_Delete(self as *const Self)
@@ -3241,32 +3257,32 @@ impl Interpol {
     }
 }
 
-pub use crate::ffi_types::HandleLawInterpol;
+pub use crate::ffi_types::Handle_Law_Interpol;
 
-unsafe impl crate::CppDeletable for HandleLawInterpol {
+unsafe impl crate::CppDeletable for Handle_Law_Interpol {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKGeomAlgo::HandleLawInterpol_destructor(ptr);
+            crate::ffi_extern_TKGeomAlgo::Handle_Law_Interpol_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleLawInterpol {
+unsafe impl crate::CppCopyable for Handle_Law_Interpol {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        unsafe { crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleLawInterpol_clone(ptr)) }
+        unsafe { crate::check_result(crate::ffi_extern_TKGeomAlgo::Handle_Law_Interpol_clone(ptr)) }
     }
 }
 
-impl HandleLawInterpol {
+impl Handle_Law_Interpol {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
-        unsafe { crate::ffi_extern_TKGeomAlgo::HandleLawInterpol_is_null(self as *const Self) }
+        unsafe { crate::ffi_extern_TKGeomAlgo::Handle_Law_Interpol_is_null(self as *const Self) }
     }
 
     /// Dereference this Handle to access the underlying Law_Interpol
     pub fn get(&self) -> &crate::ffi_types::Law_Interpol {
         unsafe {
-            &*crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleLawInterpol_get(
+            &*crate::check_result(crate::ffi_extern_TKGeomAlgo::Handle_Law_Interpol_get(
                 self as *const Self,
             ))
         }
@@ -3275,17 +3291,17 @@ impl HandleLawInterpol {
     /// Dereference this Handle to mutably access the underlying Law_Interpol
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::Law_Interpol {
         unsafe {
-            &mut *crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleLawInterpol_get_mut(
+            &mut *crate::check_result(crate::ffi_extern_TKGeomAlgo::Handle_Law_Interpol_get_mut(
                 self as *mut Self,
             ))
         }
     }
 
     /// Upcast Handle<Law_Interpol> to Handle<Law_BSpFunc>
-    pub fn to_handle_b_sp_func(&self) -> crate::OwnedPtr<crate::ffi_types::HandleLawBSpFunc> {
+    pub fn to_handle_b_sp_func(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_Law_BSpFunc> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKGeomAlgo::HandleLawInterpol_to_HandleLawBSpFunc(
+                crate::ffi_extern_TKGeomAlgo::Handle_Law_Interpol_to_Handle_Law_BSpFunc(
                     self as *const Self,
                 ),
             ))
@@ -3293,10 +3309,10 @@ impl HandleLawInterpol {
     }
 
     /// Upcast Handle<Law_Interpol> to Handle<Law_Function>
-    pub fn to_handle_function(&self) -> crate::OwnedPtr<crate::ffi_types::HandleLawFunction> {
+    pub fn to_handle_function(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_Law_Function> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKGeomAlgo::HandleLawInterpol_to_HandleLawFunction(
+                crate::ffi_extern_TKGeomAlgo::Handle_Law_Interpol_to_Handle_Law_Function(
                     self as *const Self,
                 ),
             ))
@@ -3306,10 +3322,10 @@ impl HandleLawInterpol {
     /// Upcast Handle<Law_Interpol> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKGeomAlgo::HandleLawInterpol_to_HandleStandardTransient(
+                crate::ffi_extern_TKGeomAlgo::Handle_Law_Interpol_to_Handle_Standard_Transient(
                     self as *const Self,
                 ),
             ))
@@ -3321,13 +3337,13 @@ impl HandleLawInterpol {
 // From Law_Interpolate.hxx
 // ========================
 
-/// **Source:** `Law_Interpolate.hxx`:36 - `Law_Interpolate`
-/// This  class   is used  to   interpolate a BsplineCurve
-/// passing through    an  array of  points,   with   a C2
-/// Continuity if tangency  is not requested at the point.
-/// If tangency is  requested at the  point the continuity
-/// will be C1.  If Perodicity is requested the curve will
-/// be  closed  and the junction will  be  the first point
+/// **Source:** `Law_Interpolate.hxx`:35 - `Law_Interpolate`
+/// This class is used to interpolate a BsplineCurve
+/// passing through an array of points, with a C2
+/// Continuity if tangency is not requested at the point.
+/// If tangency is requested at the point the continuity
+/// will be C1. If Perodicity is requested the curve will
+/// be closed and the junction will be the first point
 /// given. The curve will than be only C1
 pub use crate::ffi_types::Law_Interpolate as Interpolate;
 
@@ -3340,40 +3356,53 @@ unsafe impl crate::CppDeletable for Interpolate {
 }
 
 impl Interpolate {
-    /// **Source:** `Law_Interpolate.hxx`:46 - `Law_Interpolate::Law_Interpolate()`
-    /// Tolerance is to check if  the points are not too close
-    /// to one an  other.  It is  also  used to check   if the
-    /// tangent vector  is not too small.   There should be at
+    /// **Source:** `Law_Interpolate.hxx`:45 - `Law_Interpolate::Law_Interpolate()`
+    /// Tolerance is to check if the points are not too close
+    /// to one an other. It is also used to check if the
+    /// tangent vector is not too small. There should be at
     /// least 2 points. If PeriodicFlag is True then the curve
     /// will be periodic be periodic
-    pub fn new_handletcolstdharray1ofreal_bool_real(
-        Points: &crate::ffi_types::HandleTColStdHArray1OfReal,
+    pub fn new_harr1_double_bool_real(
+        Points: &crate::ffi_types::Handle_NCollection_HArray1_double,
         PeriodicFlag: bool,
         Tolerance: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomAlgo::Law_Interpolate_ctor_handletcolstdharray1ofreal_bool_real(Points, PeriodicFlag, Tolerance)))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::Law_Interpolate_ctor_harr1_double_bool_real(
+                    Points,
+                    PeriodicFlag,
+                    Tolerance,
+                ),
+            ))
         }
     }
 
-    /// **Source:** `Law_Interpolate.hxx`:55 - `Law_Interpolate::Law_Interpolate()`
-    /// Tolerance is to check if  the points are not too close
-    /// to one an  other.  It is  also  used to check   if the
-    /// tangent vector  is not too small.   There should be at
+    /// **Source:** `Law_Interpolate.hxx`:54 - `Law_Interpolate::Law_Interpolate()`
+    /// Tolerance is to check if the points are not too close
+    /// to one an other. It is also used to check if the
+    /// tangent vector is not too small. There should be at
     /// least 2 points. If PeriodicFlag is True then the curve
     /// will be periodic be periodic
-    pub fn new_handletcolstdharray1ofreal2_bool_real(
-        Points: &crate::ffi_types::HandleTColStdHArray1OfReal,
-        Parameters: &crate::ffi_types::HandleTColStdHArray1OfReal,
+    pub fn new_harr1_double2_bool_real(
+        Points: &crate::ffi_types::Handle_NCollection_HArray1_double,
+        Parameters: &crate::ffi_types::Handle_NCollection_HArray1_double,
         PeriodicFlag: bool,
         Tolerance: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomAlgo::Law_Interpolate_ctor_handletcolstdharray1ofreal2_bool_real(Points, Parameters, PeriodicFlag, Tolerance)))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::Law_Interpolate_ctor_harr1_double2_bool_real(
+                    Points,
+                    Parameters,
+                    PeriodicFlag,
+                    Tolerance,
+                ),
+            ))
         }
     }
 
-    /// **Source:** `Law_Interpolate.hxx`:61 - `Law_Interpolate::Load()`
+    /// **Source:** `Law_Interpolate.hxx`:60 - `Law_Interpolate::Load()`
     /// loads initial and final tangents if any.
     pub fn load_real2(&mut self, InitialTangent: f64, FinalTangent: f64) {
         crate::check_void_result(unsafe {
@@ -3385,22 +3414,26 @@ impl Interpolate {
         })
     }
 
-    /// **Source:** `Law_Interpolate.hxx`:67 - `Law_Interpolate::Load()`
+    /// **Source:** `Law_Interpolate.hxx`:66 - `Law_Interpolate::Load()`
     /// loads the tangents. We should have as many tangents as
-    /// they are points  in the array if TangentFlags.Value(i)
-    /// is    Standard_True  use the tangent Tangents.Value(i)
+    /// they are points in the array if TangentFlags.Value(i)
+    /// is true use the tangent Tangents.Value(i)
     /// otherwise the tangent is not constrained.
-    pub fn load_array1ofreal_handletcolstdharray1ofboolean(
+    pub fn load_arr1_double_harr1_bool(
         &mut self,
-        Tangents: &crate::ffi_types::TColStd_Array1OfReal,
-        TangentFlags: &crate::ffi_types::HandleTColStdHArray1OfBoolean,
+        Tangents: &crate::ffi_types::NCollection_Array1_double,
+        TangentFlags: &crate::ffi_types::Handle_NCollection_HArray1_bool,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi_extern_TKGeomAlgo::Law_Interpolate_load_array1ofreal_handletcolstdharray1ofboolean(self as *mut Self, Tangents, TangentFlags)
+            crate::ffi_extern_TKGeomAlgo::Law_Interpolate_load_arr1_double_harr1_bool(
+                self as *mut Self,
+                Tangents,
+                TangentFlags,
+            )
         })
     }
 
-    /// **Source:** `Law_Interpolate.hxx`:71 - `Law_Interpolate::ClearTangents()`
+    /// **Source:** `Law_Interpolate.hxx`:70 - `Law_Interpolate::ClearTangents()`
     /// Clears the tangents if any
     pub fn clear_tangents(&mut self) {
         crate::check_void_result(unsafe {
@@ -3408,7 +3441,7 @@ impl Interpolate {
         })
     }
 
-    /// **Source:** `Law_Interpolate.hxx`:74 - `Law_Interpolate::Perform()`
+    /// **Source:** `Law_Interpolate.hxx`:73 - `Law_Interpolate::Perform()`
     /// Makes the interpolation
     pub fn perform(&mut self) {
         crate::check_void_result(unsafe {
@@ -3416,8 +3449,8 @@ impl Interpolate {
         })
     }
 
-    /// **Source:** `Law_Interpolate.hxx`:76 - `Law_Interpolate::Curve()`
-    pub fn curve(&self) -> &crate::ffi_types::HandleLawBSpline {
+    /// **Source:** `Law_Interpolate.hxx`:75 - `Law_Interpolate::Curve()`
+    pub fn curve(&self) -> &crate::ffi_types::Handle_Law_BSpline {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKGeomAlgo::Law_Interpolate_curve(
                 self as *const Self,
@@ -3425,7 +3458,7 @@ impl Interpolate {
         }
     }
 
-    /// **Source:** `Law_Interpolate.hxx`:78 - `Law_Interpolate::IsDone()`
+    /// **Source:** `Law_Interpolate.hxx`:77 - `Law_Interpolate::IsDone()`
     pub fn is_done(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::Law_Interpolate_is_done(self as *const Self)
@@ -3437,7 +3470,7 @@ impl Interpolate {
 // From Law_Linear.hxx
 // ========================
 
-/// **Source:** `Law_Linear.hxx`:32 - `Law_Linear`
+/// **Source:** `Law_Linear.hxx`:29 - `Law_Linear`
 /// Describes an linear evolution law.
 pub use crate::ffi_types::Law_Linear as Linear;
 
@@ -3450,7 +3483,7 @@ unsafe impl crate::CppDeletable for Linear {
 }
 
 impl Linear {
-    /// **Source:** `Law_Linear.hxx`:37 - `Law_Linear::Law_Linear()`
+    /// **Source:** `Law_Linear.hxx`:34 - `Law_Linear::Law_Linear()`
     /// Constructs an empty linear evolution law.
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
@@ -3460,7 +3493,7 @@ impl Linear {
         }
     }
 
-    /// **Source:** `Law_Linear.hxx`:43 - `Law_Linear::Set()`
+    /// **Source:** `Law_Linear.hxx`:40 - `Law_Linear::Set()`
     /// Defines this linear evolution law by assigning both:
     /// -   the bounds Pdeb and Pfin of the parameter, and
     /// -   the values Valdeb and Valfin of the function at these
@@ -3477,7 +3510,7 @@ impl Linear {
         })
     }
 
-    /// **Source:** `Law_Linear.hxx`:49 - `Law_Linear::Continuity()`
+    /// **Source:** `Law_Linear.hxx`:46 - `Law_Linear::Continuity()`
     /// Returns GeomAbs_CN
     pub fn continuity(&self) -> crate::geom_abs::Shape {
         crate::geom_abs::Shape::try_from(crate::check_result(unsafe {
@@ -3486,18 +3519,18 @@ impl Linear {
         .unwrap()
     }
 
-    /// **Source:** `Law_Linear.hxx`:52 - `Law_Linear::NbIntervals()`
-    /// Returns  1
+    /// **Source:** `Law_Linear.hxx`:49 - `Law_Linear::NbIntervals()`
+    /// Returns 1
     pub fn nb_intervals(&self, S: crate::geom_abs::Shape) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::Law_Linear_nb_intervals(self as *const Self, S.into())
         })
     }
 
-    /// **Source:** `Law_Linear.hxx`:54 - `Law_Linear::Intervals()`
+    /// **Source:** `Law_Linear.hxx`:51 - `Law_Linear::Intervals()`
     pub fn intervals(
         &self,
-        T: &mut crate::ffi_types::TColStd_Array1OfReal,
+        T: &mut crate::ffi_types::NCollection_Array1_double,
         S: crate::geom_abs::Shape,
     ) {
         crate::check_void_result(unsafe {
@@ -3505,7 +3538,7 @@ impl Linear {
         })
     }
 
-    /// **Source:** `Law_Linear.hxx`:58 - `Law_Linear::Value()`
+    /// **Source:** `Law_Linear.hxx`:55 - `Law_Linear::Value()`
     /// Returns the value of this function at the point of parameter X.
     pub fn value(&mut self, X: f64) -> f64 {
         crate::check_result(unsafe {
@@ -3513,7 +3546,7 @@ impl Linear {
         })
     }
 
-    /// **Source:** `Law_Linear.hxx`:62 - `Law_Linear::D1()`
+    /// **Source:** `Law_Linear.hxx`:59 - `Law_Linear::D1()`
     /// Returns the value F and the first derivative D of this
     /// function at the point of parameter X.
     pub fn d1(&mut self, X: f64, F: &mut f64, D: &mut f64) {
@@ -3522,7 +3555,7 @@ impl Linear {
         })
     }
 
-    /// **Source:** `Law_Linear.hxx`:68 - `Law_Linear::D2()`
+    /// **Source:** `Law_Linear.hxx`:63 - `Law_Linear::D2()`
     /// Returns the value, first and second derivatives
     /// at parameter X.
     pub fn d2(&mut self, X: f64, F: &mut f64, D: &mut f64, D2: &mut f64) {
@@ -3531,9 +3564,9 @@ impl Linear {
         })
     }
 
-    /// **Source:** `Law_Linear.hxx`:79 - `Law_Linear::Trim()`
-    /// Returns a  law equivalent of  <me>  between
-    /// parameters <First>  and <Last>. <Tol>  is used  to
+    /// **Source:** `Law_Linear.hxx`:71 - `Law_Linear::Trim()`
+    /// Returns a law equivalent of <me> between
+    /// parameters <First> and <Last>. <Tol> is used to
     /// test for 3d points confusion.
     /// It is usfule to determines the derivatives
     /// in these values <First> and <Last> if
@@ -3543,7 +3576,7 @@ impl Linear {
         PFirst: f64,
         PLast: f64,
         Tol: f64,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleLawFunction> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Law_Function> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKGeomAlgo::Law_Linear_trim(
@@ -3556,7 +3589,7 @@ impl Linear {
         }
     }
 
-    /// **Source:** `Law_Linear.hxx`:84 - `Law_Linear::Bounds()`
+    /// **Source:** `Law_Linear.hxx`:76 - `Law_Linear::Bounds()`
     /// Returns the parametric bounds of the function.
     pub fn bounds(&mut self, PFirst: &mut f64, PLast: &mut f64) {
         crate::check_void_result(unsafe {
@@ -3564,8 +3597,8 @@ impl Linear {
         })
     }
 
-    /// **Source:** `Law_Linear.hxx`:86 - `Law_Linear::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `Law_Linear.hxx`:78 - `Law_Linear::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKGeomAlgo::Law_Linear_dynamic_type(
                 self as *const Self,
@@ -3573,7 +3606,7 @@ impl Linear {
         }
     }
 
-    /// **Source:** `Law_Linear.hxx`:86 - `Law_Linear::get_type_name()`
+    /// **Source:** `Law_Linear.hxx`:78 - `Law_Linear::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -3584,8 +3617,8 @@ impl Linear {
         .into_owned()
     }
 
-    /// **Source:** `Law_Linear.hxx`:86 - `Law_Linear::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    /// **Source:** `Law_Linear.hxx`:78 - `Law_Linear::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKGeomAlgo::Law_Linear_get_type_descriptor()))
         }
@@ -3632,7 +3665,7 @@ impl Linear {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleLawLinear> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Law_Linear> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKGeomAlgo::Law_Linear_to_handle(obj.into_raw()),
@@ -3640,8 +3673,8 @@ impl Linear {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::Law_Linear_inherited_IsInstance(
                 self as *const Self,
@@ -3650,14 +3683,14 @@ impl Linear {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::Law_Linear_inherited_IsKind(self as *const Self, theType)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -3671,14 +3704,14 @@ impl Linear {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::Law_Linear_inherited_GetRefCount(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::Law_Linear_inherited_IncrementRefCounter(
@@ -3687,7 +3720,7 @@ impl Linear {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::Law_Linear_inherited_DecrementRefCounter(
@@ -3696,7 +3729,7 @@ impl Linear {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::Law_Linear_inherited_Delete(self as *const Self)
@@ -3704,32 +3737,32 @@ impl Linear {
     }
 }
 
-pub use crate::ffi_types::HandleLawLinear;
+pub use crate::ffi_types::Handle_Law_Linear;
 
-unsafe impl crate::CppDeletable for HandleLawLinear {
+unsafe impl crate::CppDeletable for Handle_Law_Linear {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKGeomAlgo::HandleLawLinear_destructor(ptr);
+            crate::ffi_extern_TKGeomAlgo::Handle_Law_Linear_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleLawLinear {
+unsafe impl crate::CppCopyable for Handle_Law_Linear {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        unsafe { crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleLawLinear_clone(ptr)) }
+        unsafe { crate::check_result(crate::ffi_extern_TKGeomAlgo::Handle_Law_Linear_clone(ptr)) }
     }
 }
 
-impl HandleLawLinear {
+impl Handle_Law_Linear {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
-        unsafe { crate::ffi_extern_TKGeomAlgo::HandleLawLinear_is_null(self as *const Self) }
+        unsafe { crate::ffi_extern_TKGeomAlgo::Handle_Law_Linear_is_null(self as *const Self) }
     }
 
     /// Dereference this Handle to access the underlying Law_Linear
     pub fn get(&self) -> &crate::ffi_types::Law_Linear {
         unsafe {
-            &*crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleLawLinear_get(
+            &*crate::check_result(crate::ffi_extern_TKGeomAlgo::Handle_Law_Linear_get(
                 self as *const Self,
             ))
         }
@@ -3738,17 +3771,17 @@ impl HandleLawLinear {
     /// Dereference this Handle to mutably access the underlying Law_Linear
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::Law_Linear {
         unsafe {
-            &mut *crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleLawLinear_get_mut(
+            &mut *crate::check_result(crate::ffi_extern_TKGeomAlgo::Handle_Law_Linear_get_mut(
                 self as *mut Self,
             ))
         }
     }
 
     /// Upcast Handle<Law_Linear> to Handle<Law_Function>
-    pub fn to_handle_function(&self) -> crate::OwnedPtr<crate::ffi_types::HandleLawFunction> {
+    pub fn to_handle_function(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_Law_Function> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKGeomAlgo::HandleLawLinear_to_HandleLawFunction(
+                crate::ffi_extern_TKGeomAlgo::Handle_Law_Linear_to_Handle_Law_Function(
                     self as *const Self,
                 ),
             ))
@@ -3758,10 +3791,10 @@ impl HandleLawLinear {
     /// Upcast Handle<Law_Linear> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKGeomAlgo::HandleLawLinear_to_HandleStandardTransient(
+                crate::ffi_extern_TKGeomAlgo::Handle_Law_Linear_to_Handle_Standard_Transient(
                     self as *const Self,
                 ),
             ))
@@ -3773,7 +3806,7 @@ impl HandleLawLinear {
 // From Law_S.hxx
 // ========================
 
-/// **Source:** `Law_S.hxx`:29 - `Law_S`
+/// **Source:** `Law_S.hxx`:26 - `Law_S`
 /// Describes an "S" evolution law.
 pub use crate::ffi_types::Law_S as S;
 
@@ -3786,7 +3819,7 @@ unsafe impl crate::CppDeletable for S {
 }
 
 impl S {
-    /// **Source:** `Law_S.hxx`:34 - `Law_S::Law_S()`
+    /// **Source:** `Law_S.hxx`:31 - `Law_S::Law_S()`
     /// Constructs an empty "S" evolution law.
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
@@ -3796,7 +3829,7 @@ impl S {
         }
     }
 
-    /// **Source:** `Law_S.hxx`:42 - `Law_S::Set()`
+    /// **Source:** `Law_S.hxx`:39 - `Law_S::Set()`
     /// Defines this S evolution law by assigning both:
     /// -   the bounds Pdeb and Pfin of the parameter, and
     /// -   the values Valdeb and Valfin of the function at these
@@ -3815,7 +3848,7 @@ impl S {
         })
     }
 
-    /// **Source:** `Law_S.hxx`:53 - `Law_S::Set()`
+    /// **Source:** `Law_S.hxx`:50 - `Law_S::Set()`
     /// Defines this S evolution law by assigning
     /// -   the bounds Pdeb and Pfin of the parameter,
     /// -   the values Valdeb and Valfin of the function at these
@@ -3844,8 +3877,8 @@ impl S {
         })
     }
 
-    /// **Source:** `Law_S.hxx`:60 - `Law_S::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `Law_S.hxx`:57 - `Law_S::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKGeomAlgo::Law_S_dynamic_type(
                 self as *const Self,
@@ -3853,7 +3886,7 @@ impl S {
         }
     }
 
-    /// **Source:** `Law_S.hxx`:60 - `Law_S::get_type_name()`
+    /// **Source:** `Law_S.hxx`:57 - `Law_S::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -3864,8 +3897,8 @@ impl S {
         .into_owned()
     }
 
-    /// **Source:** `Law_S.hxx`:60 - `Law_S::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    /// **Source:** `Law_S.hxx`:57 - `Law_S::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKGeomAlgo::Law_S_get_type_descriptor()))
         }
@@ -3926,7 +3959,9 @@ impl S {
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
-    pub fn to_handle(obj: crate::OwnedPtr<Self>) -> crate::OwnedPtr<crate::ffi_types::HandleLawS> {
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Law_S> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKGeomAlgo::Law_S_to_handle(obj.into_raw()),
@@ -3934,7 +3969,7 @@ impl S {
         }
     }
 
-    /// Inherited: **Source:** `Law_BSpFunc.hxx`:46 - `Law_BSpFunc::Continuity()`
+    /// Inherited: **Source:** `Law_BSpFunc.hxx`:43 - `Law_BSpFunc::Continuity()`
     pub fn continuity(&self) -> crate::geom_abs::Shape {
         crate::geom_abs::Shape::try_from(crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::Law_S_inherited_Continuity(self as *const Self)
@@ -3942,17 +3977,17 @@ impl S {
         .unwrap()
     }
 
-    /// Inherited: **Source:** `Law_BSpFunc.hxx`:50 - `Law_BSpFunc::NbIntervals()`
+    /// Inherited: **Source:** `Law_BSpFunc.hxx`:47 - `Law_BSpFunc::NbIntervals()`
     pub fn nb_intervals(&self, S: crate::geom_abs::Shape) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::Law_S_inherited_NbIntervals(self as *const Self, S.into())
         })
     }
 
-    /// Inherited: **Source:** `Law_BSpFunc.hxx`:55 - `Law_BSpFunc::Intervals()`
+    /// Inherited: **Source:** `Law_BSpFunc.hxx`:52 - `Law_BSpFunc::Intervals()`
     pub fn intervals(
         &self,
-        T: &mut crate::ffi_types::TColStd_Array1OfReal,
+        T: &mut crate::ffi_types::NCollection_Array1_double,
         S: crate::geom_abs::Shape,
     ) {
         crate::check_void_result(unsafe {
@@ -3964,34 +3999,34 @@ impl S {
         })
     }
 
-    /// Inherited: **Source:** `Law_BSpFunc.hxx`:58 - `Law_BSpFunc::Value()`
+    /// Inherited: **Source:** `Law_BSpFunc.hxx`:55 - `Law_BSpFunc::Value()`
     pub fn value(&mut self, X: f64) -> f64 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::Law_S_inherited_Value(self as *mut Self, X)
         })
     }
 
-    /// Inherited: **Source:** `Law_BSpFunc.hxx`:60 - `Law_BSpFunc::D1()`
+    /// Inherited: **Source:** `Law_BSpFunc.hxx`:57 - `Law_BSpFunc::D1()`
     pub fn d1(&mut self, X: f64, F: &mut f64, D: &mut f64) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::Law_S_inherited_D1(self as *mut Self, X, F, D)
         })
     }
 
-    /// Inherited: **Source:** `Law_BSpFunc.hxx`:64 - `Law_BSpFunc::D2()`
+    /// Inherited: **Source:** `Law_BSpFunc.hxx`:59 - `Law_BSpFunc::D2()`
     pub fn d2(&mut self, X: f64, F: &mut f64, D: &mut f64, D2: &mut f64) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::Law_S_inherited_D2(self as *mut Self, X, F, D, D2)
         })
     }
 
-    /// Inherited: **Source:** `Law_BSpFunc.hxx`:75 - `Law_BSpFunc::Trim()`
+    /// Inherited: **Source:** `Law_BSpFunc.hxx`:67 - `Law_BSpFunc::Trim()`
     pub fn trim(
         &self,
         PFirst: f64,
         PLast: f64,
         Tol: f64,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleLawFunction> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Law_Function> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKGeomAlgo::Law_S_inherited_Trim(
@@ -4004,15 +4039,15 @@ impl S {
         }
     }
 
-    /// Inherited: **Source:** `Law_BSpFunc.hxx`:79 - `Law_BSpFunc::Bounds()`
+    /// Inherited: **Source:** `Law_BSpFunc.hxx`:71 - `Law_BSpFunc::Bounds()`
     pub fn bounds(&mut self, PFirst: &mut f64, PLast: &mut f64) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::Law_S_inherited_Bounds(self as *mut Self, PFirst, PLast)
         })
     }
 
-    /// Inherited: **Source:** `Law_BSpFunc.hxx`:81 - `Law_BSpFunc::Curve()`
-    pub fn curve(&self) -> crate::OwnedPtr<crate::ffi_types::HandleLawBSpline> {
+    /// Inherited: **Source:** `Law_BSpFunc.hxx`:73 - `Law_BSpFunc::Curve()`
+    pub fn curve(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_Law_BSpline> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKGeomAlgo::Law_S_inherited_Curve(self as *const Self),
@@ -4020,28 +4055,28 @@ impl S {
         }
     }
 
-    /// Inherited: **Source:** `Law_BSpFunc.hxx`:83 - `Law_BSpFunc::SetCurve()`
-    pub fn set_curve(&mut self, C: &crate::ffi_types::HandleLawBSpline) {
+    /// Inherited: **Source:** `Law_BSpFunc.hxx`:75 - `Law_BSpFunc::SetCurve()`
+    pub fn set_curve(&mut self, C: &crate::ffi_types::Handle_Law_BSpline) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::Law_S_inherited_SetCurve(self as *mut Self, C)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::Law_S_inherited_IsInstance(self as *const Self, theType)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::Law_S_inherited_IsKind(self as *const Self, theType)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -4055,28 +4090,28 @@ impl S {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::Law_S_inherited_GetRefCount(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::Law_S_inherited_IncrementRefCounter(self as *mut Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::Law_S_inherited_DecrementRefCounter(self as *mut Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::Law_S_inherited_Delete(self as *const Self)
@@ -4084,58 +4119,64 @@ impl S {
     }
 }
 
-pub use crate::ffi_types::HandleLawS;
+pub use crate::ffi_types::Handle_Law_S;
 
-unsafe impl crate::CppDeletable for HandleLawS {
+unsafe impl crate::CppDeletable for Handle_Law_S {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKGeomAlgo::HandleLawS_destructor(ptr);
+            crate::ffi_extern_TKGeomAlgo::Handle_Law_S_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleLawS {
+unsafe impl crate::CppCopyable for Handle_Law_S {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        unsafe { crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleLawS_clone(ptr)) }
+        unsafe { crate::check_result(crate::ffi_extern_TKGeomAlgo::Handle_Law_S_clone(ptr)) }
     }
 }
 
-impl HandleLawS {
+impl Handle_Law_S {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
-        unsafe { crate::ffi_extern_TKGeomAlgo::HandleLawS_is_null(self as *const Self) }
+        unsafe { crate::ffi_extern_TKGeomAlgo::Handle_Law_S_is_null(self as *const Self) }
     }
 
     /// Dereference this Handle to access the underlying Law_S
     pub fn get(&self) -> &crate::ffi_types::Law_S {
         unsafe {
-            &*crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleLawS_get(self as *const Self))
+            &*crate::check_result(crate::ffi_extern_TKGeomAlgo::Handle_Law_S_get(
+                self as *const Self,
+            ))
         }
     }
 
     /// Dereference this Handle to mutably access the underlying Law_S
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::Law_S {
         unsafe {
-            &mut *crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleLawS_get_mut(
+            &mut *crate::check_result(crate::ffi_extern_TKGeomAlgo::Handle_Law_S_get_mut(
                 self as *mut Self,
             ))
         }
     }
 
     /// Upcast Handle<Law_S> to Handle<Law_BSpFunc>
-    pub fn to_handle_b_sp_func(&self) -> crate::OwnedPtr<crate::ffi_types::HandleLawBSpFunc> {
+    pub fn to_handle_b_sp_func(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_Law_BSpFunc> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKGeomAlgo::HandleLawS_to_HandleLawBSpFunc(self as *const Self),
+                crate::ffi_extern_TKGeomAlgo::Handle_Law_S_to_Handle_Law_BSpFunc(
+                    self as *const Self,
+                ),
             ))
         }
     }
 
     /// Upcast Handle<Law_S> to Handle<Law_Function>
-    pub fn to_handle_function(&self) -> crate::OwnedPtr<crate::ffi_types::HandleLawFunction> {
+    pub fn to_handle_function(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_Law_Function> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKGeomAlgo::HandleLawS_to_HandleLawFunction(self as *const Self),
+                crate::ffi_extern_TKGeomAlgo::Handle_Law_S_to_Handle_Law_Function(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -4143,19 +4184,13 @@ impl HandleLawS {
     /// Upcast Handle<Law_S> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKGeomAlgo::HandleLawS_to_HandleStandardTransient(
+                crate::ffi_extern_TKGeomAlgo::Handle_Law_S_to_Handle_Standard_Transient(
                     self as *const Self,
                 ),
             ))
         }
     }
 }
-
-// ========================
-// Additional type re-exports
-// ========================
-
-pub use crate::ffi_types::Law_Laws as Laws;

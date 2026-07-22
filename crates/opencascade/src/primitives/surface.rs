@@ -1,9 +1,9 @@
 use crate::primitives::make_point;
 use glam::DVec3;
-use opencascade_sys::{geom, t_colgp};
+use opencascade_sys::{geom, n_collection};
 
 pub struct Surface {
-    pub(crate) inner: opencascade_sys::OwnedPtr<geom::HandleGeomSurface>,
+    pub(crate) inner: opencascade_sys::OwnedPtr<geom::Handle_Geom_Surface>,
 }
 
 impl Surface {
@@ -11,7 +11,7 @@ impl Surface {
         let poles: Vec<Vec<_>> =
             poles.into_iter().map(|poles| poles.into_iter().collect()).collect();
 
-        let mut pole_array = t_colgp::Array2OfPnt::new_int4(
+        let mut pole_array = n_collection::Array2_gp_Pnt::new_int4(
             0,
             poles.len() as i32 - 1,
             0,
@@ -25,7 +25,7 @@ impl Surface {
             }
         }
 
-        let bezier = geom::BezierSurface::new_array2ofpnt(&pole_array);
+        let bezier = geom::BezierSurface::new_arr2_pnt(&pole_array);
         let handle = geom::BezierSurface::to_handle(bezier);
         let inner = handle.to_handle_surface();
 

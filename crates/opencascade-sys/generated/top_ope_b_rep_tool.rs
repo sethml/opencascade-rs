@@ -6,11 +6,121 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 
-/// **Source:** `TopOpeBRepTool.hxx`:63 - `TopOpeBRepTool::CorrectONUVISO`
+/// **Source:** `TopOpeBRepTool.hxx`:54 - `TopOpeBRepTool::PurgeClosingEdges`
+/// Fuse edges (in a wire) of a shape where we have
+/// useless vertex.
+/// In case face <FF> is built on UV-non-connexed wires
+/// (with the two closing edges FORWARD and REVERSED, in
+/// spite of one only), we find out the faulty edge, add
+/// the faulty shapes (edge,wire,face) to <MshNOK>.
+/// <FF> is a face descendant of <F>.
+/// <MWisOld>(wire) = 1 if wire is wire of <F>
+/// 0 wire results from <F>'s wire split.
+/// returns false if purge fails
+pub fn purge_closing_edges_face2_dmap_shape_int_imap_shape(
+    F: &crate::topo_ds::Face,
+    FF: &crate::topo_ds::Face,
+    MWisOld: &crate::ffi_types::NCollection_DataMap_TopoDS_Shape_int_TopTools_ShapeMapHasher,
+    MshNOK: &mut crate::ffi_types::NCollection_IndexedMap_TopoDS_Shape,
+) -> bool {
+    crate::check_result(unsafe {
+        crate::ffi_extern_TKBool::TopOpeBRepTool_purge_closing_edges_face2_dmap_shape_int_imap_shape(
+            F, FF, MWisOld, MshNOK,
+        )
+    })
+}
+/// **Source:** `TopOpeBRepTool.hxx`:60 - `TopOpeBRepTool::PurgeClosingEdges`
+pub fn purge_closing_edges_face_list_shape_dmap_shape_int_imap_shape(
+    F: &crate::topo_ds::Face,
+    LOF: &crate::ffi_types::NCollection_List_TopoDS_Shape,
+    MWisOld: &crate::ffi_types::NCollection_DataMap_TopoDS_Shape_int_TopTools_ShapeMapHasher,
+    MshNOK: &mut crate::ffi_types::NCollection_IndexedMap_TopoDS_Shape,
+) -> bool {
+    crate::check_result(unsafe {
+        crate::ffi_extern_TKBool::TopOpeBRepTool_purge_closing_edges_face_list_shape_dmap_shape_int_imap_shape(F, LOF, MWisOld, MshNOK)
+    })
+}
+/// **Source:** `TopOpeBRepTool.hxx`:66 - `TopOpeBRepTool::CorrectONUVISO`
 pub fn correct_onuviso(F: &crate::topo_ds::Face, Fsp: &mut crate::topo_ds::Face) -> bool {
     crate::check_result(unsafe { crate::ffi_extern_TKBool::TopOpeBRepTool_correct_onuviso(F, Fsp) })
 }
-/// **Source:** `TopOpeBRepTool.hxx`:112 - `TopOpeBRepTool::Print`
+/// **Source:** `TopOpeBRepTool.hxx`:72 - `TopOpeBRepTool::MakeFaces`
+/// Builds up the correct list of faces <LOFF> from <LOF>, using
+/// faulty shapes from map <MshNOK>.
+/// <LOF> is the list of <F>'s descendant faces.
+/// returns false if building fails
+pub fn make_faces(
+    F: &crate::topo_ds::Face,
+    LOF: &crate::ffi_types::NCollection_List_TopoDS_Shape,
+    MshNOK: &crate::ffi_types::NCollection_IndexedMap_TopoDS_Shape,
+    LOFF: &mut crate::ffi_types::NCollection_List_TopoDS_Shape,
+) -> bool {
+    crate::check_result(unsafe {
+        crate::ffi_extern_TKBool::TopOpeBRepTool_make_faces(F, LOF, MshNOK, LOFF)
+    })
+}
+/// **Source:** `TopOpeBRepTool.hxx`:82 - `TopOpeBRepTool::Regularize`
+/// Returns <False> if the face is valid (the UV
+/// representation of the face is a set of pcurves
+/// connexed by points with connexity 2).
+/// Else, splits <aFace> in order to return a list of valid
+/// faces.
+pub fn regularize(
+    aFace: &crate::topo_ds::Face,
+    aListOfFaces: &mut crate::ffi_types::NCollection_List_TopoDS_Shape,
+    ESplits: &mut crate::ffi_types::NCollection_DataMap_TopoDS_Shape_NCollection_List_TopoDS_Shape_TopTools_ShapeMapHasher,
+) -> bool {
+    crate::check_result(unsafe {
+        crate::ffi_extern_TKBool::TopOpeBRepTool_regularize(aFace, aListOfFaces, ESplits)
+    })
+}
+/// **Source:** `TopOpeBRepTool.hxx`:94 - `TopOpeBRepTool::RegularizeWires`
+/// Returns <False> if the face is valid (the UV
+/// representation of the face is a set of pcurves
+/// connexed by points with connexity 2).
+/// Else, splits wires of the face, these are boundaries of the
+/// new faces to build up; <OldWiresNewWires> describes (wire,
+/// splits of wire); <ESplits> describes (edge, edge's splits)
+pub fn regularize_wires(
+    aFace: &crate::topo_ds::Face,
+    OldWiresNewWires: &mut crate::ffi_types::NCollection_DataMap_TopoDS_Shape_NCollection_List_TopoDS_Shape_TopTools_ShapeMapHasher,
+    ESplits: &mut crate::ffi_types::NCollection_DataMap_TopoDS_Shape_NCollection_List_TopoDS_Shape_TopTools_ShapeMapHasher,
+) -> bool {
+    crate::check_result(unsafe {
+        crate::ffi_extern_TKBool::TopOpeBRepTool_regularize_wires(aFace, OldWiresNewWires, ESplits)
+    })
+}
+/// **Source:** `TopOpeBRepTool.hxx`:103 - `TopOpeBRepTool::RegularizeFace`
+/// Classify wire's splits of map <OldWiresnewWires> in order to
+/// compute <aListOfFaces>, the splits of <aFace>.
+pub fn regularize_face(
+    aFace: &crate::topo_ds::Face,
+    OldWiresnewWires: &crate::ffi_types::NCollection_DataMap_TopoDS_Shape_NCollection_List_TopoDS_Shape_TopTools_ShapeMapHasher,
+    aListOfFaces: &mut crate::ffi_types::NCollection_List_TopoDS_Shape,
+) -> bool {
+    crate::check_result(unsafe {
+        crate::ffi_extern_TKBool::TopOpeBRepTool_regularize_face(
+            aFace,
+            OldWiresnewWires,
+            aListOfFaces,
+        )
+    })
+}
+/// **Source:** `TopOpeBRepTool.hxx`:114 - `TopOpeBRepTool::RegularizeShells`
+/// Returns <False> if the shell is valid (the solid is a set
+/// of faces connexed by edges with connexity 2).
+/// Else, splits faces of the shell; <OldFacesnewFaces> describes
+/// (face, splits of face).
+pub fn regularize_shells(
+    aSolid: &crate::topo_ds::Solid,
+    OldSheNewShe: &mut crate::ffi_types::NCollection_DataMap_TopoDS_Shape_NCollection_List_TopoDS_Shape_TopTools_ShapeMapHasher,
+    FSplits: &mut crate::ffi_types::NCollection_DataMap_TopoDS_Shape_NCollection_List_TopoDS_Shape_TopTools_ShapeMapHasher,
+) -> bool {
+    crate::check_result(unsafe {
+        crate::ffi_extern_TKBool::TopOpeBRepTool_regularize_shells(aSolid, OldSheNewShe, FSplits)
+    })
+}
+/// **Source:** `TopOpeBRepTool.hxx`:122 - `TopOpeBRepTool::Print`
 /// Prints <OCT> as string on stream <S>; returns <S>.
 pub fn print_outcurvetype_ostream(
     OCT: crate::top_ope_b_rep_tool::OutCurveType,
@@ -52,19 +162,19 @@ impl TryFrom<i32> for OutCurveType {
 }
 
 // Handle type re-exports (targets of handle upcasts/downcasts)
-pub use crate::ffi_types::HandleStandardTransient;
+pub use crate::ffi_types::Handle_Standard_Transient;
 
 // ========================
 // From TopOpeBRepTool_AncestorsTool.hxx
 // ========================
 
-/// **Source:** `TopOpeBRepTool_AncestorsTool.hxx`:34 - `TopOpeBRepTool_AncestorsTool`
+/// **Source:** `TopOpeBRepTool_AncestorsTool.hxx`:37 - `TopOpeBRepTool_AncestorsTool`
 /// Describes the ancestors tool needed by
 /// the class DSFiller from TopOpeInter.
 ///
 /// This class has been created because it is not possible
 /// to instantiate the argument TheAncestorsTool (of
-/// DSFiller from TopOpeInter) with a  package (TopExp)
+/// DSFiller from TopOpeInter) with a package (TopExp)
 /// giving services as package methods.
 pub use crate::ffi_types::TopOpeBRepTool_AncestorsTool as AncestorsTool;
 
@@ -87,13 +197,13 @@ impl AncestorsTool {
         }
     }
 
-    /// **Source:** `TopOpeBRepTool_AncestorsTool.hxx`:40 - `TopOpeBRepTool_AncestorsTool::MakeAncestors()`
+    /// **Source:** `TopOpeBRepTool_AncestorsTool.hxx`:43 - `TopOpeBRepTool_AncestorsTool::MakeAncestors()`
     /// same as package method TopExp::MapShapeListOfShapes()
     pub fn make_ancestors(
         S: &crate::topo_ds::Shape,
         TS: crate::top_abs::ShapeEnum,
         TA: crate::top_abs::ShapeEnum,
-        M: &mut crate::ffi_types::TopTools_IndexedDataMapOfShapeListOfShape,
+        M: &mut crate::ffi_types::NCollection_IndexedDataMap_TopoDS_Shape_NCollection_List_TopoDS_Shape_TopTools_ShapeMapHasher,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepTool_AncestorsTool_make_ancestors(
@@ -133,7 +243,7 @@ impl BoxSort {
 
     /// **Source:** `TopOpeBRepTool_BoxSort.hxx`:41 - `TopOpeBRepTool_BoxSort::TopOpeBRepTool_BoxSort()`
     pub fn new_handletopopebreptoolhboxtool(
-        T: &crate::ffi_types::HandleTopOpeBRepToolHBoxTool,
+        T: &crate::ffi_types::Handle_TopOpeBRepTool_HBoxTool,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -145,14 +255,14 @@ impl BoxSort {
     }
 
     /// **Source:** `TopOpeBRepTool_BoxSort.hxx`:43 - `TopOpeBRepTool_BoxSort::SetHBoxTool()`
-    pub fn set_h_box_tool(&mut self, T: &crate::ffi_types::HandleTopOpeBRepToolHBoxTool) {
+    pub fn set_h_box_tool(&mut self, T: &crate::ffi_types::Handle_TopOpeBRepTool_HBoxTool) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepTool_BoxSort_set_h_box_tool(self as *mut Self, T)
         })
     }
 
     /// **Source:** `TopOpeBRepTool_BoxSort.hxx`:45 - `TopOpeBRepTool_BoxSort::HBoxTool()`
-    pub fn h_box_tool(&self) -> &crate::ffi_types::HandleTopOpeBRepToolHBoxTool {
+    pub fn h_box_tool(&self) -> &crate::ffi_types::Handle_TopOpeBRepTool_HBoxTool {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKBool::TopOpeBRepTool_BoxSort_h_box_tool(
                 self as *const Self,
@@ -202,7 +312,7 @@ impl BoxSort {
     }
 
     /// **Source:** `TopOpeBRepTool_BoxSort.hxx`:57 - `TopOpeBRepTool_BoxSort::HAB()`
-    pub fn hab(&self) -> &crate::ffi_types::HandleBndHArray1OfBox {
+    pub fn hab(&self) -> &crate::ffi_types::Handle_NCollection_HArray1_Bnd_Box {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKBool::TopOpeBRepTool_BoxSort_hab(
                 self as *const Self,
@@ -210,7 +320,7 @@ impl BoxSort {
         }
     }
 
-    /// **Source:** `TopOpeBRepTool_BoxSort.hxx`:61 - `TopOpeBRepTool_BoxSort::HABShape()`
+    /// **Source:** `TopOpeBRepTool_BoxSort.hxx`:62 - `TopOpeBRepTool_BoxSort::HABShape()`
     pub fn hab_shape(&self, I: i32) -> &crate::topo_ds::Shape {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKBool::TopOpeBRepTool_BoxSort_hab_shape(
@@ -220,7 +330,7 @@ impl BoxSort {
         }
     }
 
-    /// **Source:** `TopOpeBRepTool_BoxSort.hxx`:63 - `TopOpeBRepTool_BoxSort::MakeCOB()`
+    /// **Source:** `TopOpeBRepTool_BoxSort.hxx`:64 - `TopOpeBRepTool_BoxSort::MakeCOB()`
     pub fn make_cob(
         &mut self,
         S: &crate::topo_ds::Shape,
@@ -237,7 +347,7 @@ impl BoxSort {
         })
     }
 
-    /// **Source:** `TopOpeBRepTool_BoxSort.hxx`:67 - `TopOpeBRepTool_BoxSort::AddBoxesMakeCOB()`
+    /// **Source:** `TopOpeBRepTool_BoxSort.hxx`:68 - `TopOpeBRepTool_BoxSort::AddBoxesMakeCOB()`
     pub fn add_boxes_make_cob(
         &mut self,
         S: &crate::topo_ds::Shape,
@@ -252,44 +362,6 @@ impl BoxSort {
                 TA.into(),
             )
         })
-    }
-
-    /// **Source:** `TopOpeBRepTool_BoxSort.hxx`:71 - `TopOpeBRepTool_BoxSort::Compare()`
-    ///
-    /// # Safety
-    ///
-    /// It is not known whether the returned reference borrows from `self` or from one
-    /// of the reference parameters. The caller must ensure the returned reference does
-    /// not outlive whichever source it actually borrows from.
-    pub unsafe fn compare(
-        &mut self,
-        S: &crate::topo_ds::Shape,
-    ) -> &crate::ffi_types::TColStd_ListIteratorOfListOfInteger {
-        unsafe {
-            &*(crate::check_result(crate::ffi_extern_TKBool::TopOpeBRepTool_BoxSort_compare(
-                self as *mut Self,
-                S,
-            )))
-        }
-    }
-
-    /// **Source:** `TopOpeBRepTool_BoxSort.hxx`:73 - `TopOpeBRepTool_BoxSort::TouchedShape()`
-    ///
-    /// # Safety
-    ///
-    /// It is not known whether the returned reference borrows from `self` or from one
-    /// of the reference parameters. The caller must ensure the returned reference does
-    /// not outlive whichever source it actually borrows from.
-    pub unsafe fn touched_shape(
-        &self,
-        I: &crate::ffi_types::TColStd_ListIteratorOfListOfInteger,
-    ) -> &crate::topo_ds::Shape {
-        unsafe {
-            &*(crate::check_result(crate::ffi_extern_TKBool::TopOpeBRepTool_BoxSort_touched_shape(
-                self as *const Self,
-                I,
-            )))
-        }
     }
 
     /// **Source:** `TopOpeBRepTool_BoxSort.hxx`:76 - `TopOpeBRepTool_BoxSort::Box()`
@@ -309,12 +381,25 @@ impl BoxSort {
     }
 
     /// **Source:** `TopOpeBRepTool_BoxSort.hxx`:59 - `TopOpeBRepTool_BoxSort::MakeHABCOB()`
-    pub fn make_habcob(HAB: &crate::ffi_types::HandleBndHArray1OfBox, COB: &mut crate::bnd::Box) {
+    pub fn make_habcob(
+        HAB: &crate::ffi_types::Handle_NCollection_HArray1_Bnd_Box,
+        COB: &mut crate::bnd::Box,
+    ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepTool_BoxSort_make_habcob(HAB, COB)
         })
     }
 }
+
+// ── Skipped symbols for BoxSort (2 total) ──
+// SKIPPED: **Source:** `TopOpeBRepTool_BoxSort.hxx`:72 - `TopOpeBRepTool_BoxSort::Compare`
+//   Reason: has unbindable types: return: unresolved template type (NCollection_List<int>::Iterator const&)
+//   // pub fn compare(&mut self, S: &Shape) -> /* NCollection_List<int>::Iterator const& */;
+//
+// SKIPPED: **Source:** `TopOpeBRepTool_BoxSort.hxx`:74 - `TopOpeBRepTool_BoxSort::TouchedShape`
+//   Reason: has unbindable types: param 'I': unresolved template type (NCollection_List<int>::Iterator const&)
+//   // pub fn touched_shape(&self, I: /* NCollection_List<int>::Iterator const& */) -> &Shape;
+//
 
 // ========================
 // From TopOpeBRepTool_C2DF.hxx
@@ -343,7 +428,7 @@ impl C2DF {
 
     /// **Source:** `TopOpeBRepTool_C2DF.hxx`:34 - `TopOpeBRepTool_C2DF::TopOpeBRepTool_C2DF()`
     pub fn new_handlegeom2dcurve_real3_face(
-        PC: &crate::ffi_types::HandleGeom2dCurve,
+        PC: &crate::ffi_types::Handle_Geom2d_Curve,
         f2d: f64,
         l2d: f64,
         tol: f64,
@@ -361,7 +446,7 @@ impl C2DF {
     /// **Source:** `TopOpeBRepTool_C2DF.hxx`:40 - `TopOpeBRepTool_C2DF::SetPC()`
     pub fn set_pc(
         &mut self,
-        PC: &crate::ffi_types::HandleGeom2dCurve,
+        PC: &crate::ffi_types::Handle_Geom2d_Curve,
         f2d: f64,
         l2d: f64,
         tol: f64,
@@ -396,7 +481,7 @@ impl C2DF {
         f2d: &mut f64,
         l2d: &mut f64,
         tol: &mut f64,
-    ) -> &crate::ffi_types::HandleGeom2dCurve {
+    ) -> &crate::ffi_types::Handle_Geom2d_Curve {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKBool::TopOpeBRepTool_C2DF_pc(
                 self as *const Self,
@@ -407,7 +492,7 @@ impl C2DF {
         }
     }
 
-    /// **Source:** `TopOpeBRepTool_C2DF.hxx`:51 - `TopOpeBRepTool_C2DF::Face()`
+    /// **Source:** `TopOpeBRepTool_C2DF.hxx`:49 - `TopOpeBRepTool_C2DF::Face()`
     pub fn face(&self) -> &crate::topo_ds::Face {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKBool::TopOpeBRepTool_C2DF_face(
@@ -416,14 +501,14 @@ impl C2DF {
         }
     }
 
-    /// **Source:** `TopOpeBRepTool_C2DF.hxx`:53 - `TopOpeBRepTool_C2DF::IsPC()`
-    pub fn is_pc(&self, PC: &crate::ffi_types::HandleGeom2dCurve) -> bool {
+    /// **Source:** `TopOpeBRepTool_C2DF.hxx`:51 - `TopOpeBRepTool_C2DF::IsPC()`
+    pub fn is_pc(&self, PC: &crate::ffi_types::Handle_Geom2d_Curve) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepTool_C2DF_is_pc(self as *const Self, PC)
         })
     }
 
-    /// **Source:** `TopOpeBRepTool_C2DF.hxx`:55 - `TopOpeBRepTool_C2DF::IsFace()`
+    /// **Source:** `TopOpeBRepTool_C2DF.hxx`:53 - `TopOpeBRepTool_C2DF::IsFace()`
     pub fn is_face(&self, F: &crate::topo_ds::Face) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepTool_C2DF_is_face(self as *const Self, F)
@@ -435,7 +520,7 @@ impl C2DF {
 // From TopOpeBRepTool_CLASSI.hxx
 // ========================
 
-/// **Source:** `TopOpeBRepTool_CLASSI.hxx`:33 - `TopOpeBRepTool_CLASSI`
+/// **Source:** `TopOpeBRepTool_CLASSI.hxx`:36 - `TopOpeBRepTool_CLASSI`
 pub use crate::ffi_types::TopOpeBRepTool_CLASSI as CLASSI;
 
 unsafe impl crate::CppDeletable for CLASSI {
@@ -447,7 +532,7 @@ unsafe impl crate::CppDeletable for CLASSI {
 }
 
 impl CLASSI {
-    /// **Source:** `TopOpeBRepTool_CLASSI.hxx`:38 - `TopOpeBRepTool_CLASSI::TopOpeBRepTool_CLASSI()`
+    /// **Source:** `TopOpeBRepTool_CLASSI.hxx`:41 - `TopOpeBRepTool_CLASSI::TopOpeBRepTool_CLASSI()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -456,35 +541,35 @@ impl CLASSI {
         }
     }
 
-    /// **Source:** `TopOpeBRepTool_CLASSI.hxx`:40 - `TopOpeBRepTool_CLASSI::Init2d()`
+    /// **Source:** `TopOpeBRepTool_CLASSI.hxx`:43 - `TopOpeBRepTool_CLASSI::Init2d()`
     pub fn init2d(&mut self, Fref: &crate::topo_ds::Face) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepTool_CLASSI_init2d(self as *mut Self, Fref)
         })
     }
 
-    /// **Source:** `TopOpeBRepTool_CLASSI.hxx`:42 - `TopOpeBRepTool_CLASSI::HasInit2d()`
+    /// **Source:** `TopOpeBRepTool_CLASSI.hxx`:45 - `TopOpeBRepTool_CLASSI::HasInit2d()`
     pub fn has_init2d(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepTool_CLASSI_has_init2d(self as *const Self)
         })
     }
 
-    /// **Source:** `TopOpeBRepTool_CLASSI.hxx`:44 - `TopOpeBRepTool_CLASSI::Add2d()`
+    /// **Source:** `TopOpeBRepTool_CLASSI.hxx`:47 - `TopOpeBRepTool_CLASSI::Add2d()`
     pub fn add2d(&mut self, S: &crate::topo_ds::Shape) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepTool_CLASSI_add2d(self as *mut Self, S)
         })
     }
 
-    /// **Source:** `TopOpeBRepTool_CLASSI.hxx`:46 - `TopOpeBRepTool_CLASSI::GetBox2d()`
+    /// **Source:** `TopOpeBRepTool_CLASSI.hxx`:49 - `TopOpeBRepTool_CLASSI::GetBox2d()`
     pub fn get_box2d(&mut self, S: &crate::topo_ds::Shape, Box2d: &mut crate::bnd::Box2d) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepTool_CLASSI_get_box2d(self as *mut Self, S, Box2d)
         })
     }
 
-    /// **Source:** `TopOpeBRepTool_CLASSI.hxx`:48 - `TopOpeBRepTool_CLASSI::ClassiBnd2d()`
+    /// **Source:** `TopOpeBRepTool_CLASSI.hxx`:51 - `TopOpeBRepTool_CLASSI::ClassiBnd2d()`
     pub fn classi_bnd2d(
         &mut self,
         S1: &crate::topo_ds::Shape,
@@ -503,7 +588,7 @@ impl CLASSI {
         })
     }
 
-    /// **Source:** `TopOpeBRepTool_CLASSI.hxx`:53 - `TopOpeBRepTool_CLASSI::Classip2d()`
+    /// **Source:** `TopOpeBRepTool_CLASSI.hxx`:56 - `TopOpeBRepTool_CLASSI::Classip2d()`
     pub fn classip2d(
         &mut self,
         S1: &crate::topo_ds::Shape,
@@ -520,18 +605,18 @@ impl CLASSI {
         })
     }
 
-    /// **Source:** `TopOpeBRepTool_CLASSI.hxx`:57 - `TopOpeBRepTool_CLASSI::Getface()`
+    /// **Source:** `TopOpeBRepTool_CLASSI.hxx`:60 - `TopOpeBRepTool_CLASSI::Getface()`
     pub fn getface(&self, S: &crate::topo_ds::Shape, fa: &mut face) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepTool_CLASSI_getface(self as *const Self, S, fa)
         })
     }
 
-    /// **Source:** `TopOpeBRepTool_CLASSI.hxx`:59 - `TopOpeBRepTool_CLASSI::Classilist()`
+    /// **Source:** `TopOpeBRepTool_CLASSI.hxx`:62 - `TopOpeBRepTool_CLASSI::Classilist()`
     pub fn classilist(
         &mut self,
-        lS: &crate::ffi_types::TopTools_ListOfShape,
-        mapgreasma: &mut crate::ffi_types::TopTools_DataMapOfShapeListOfShape,
+        lS: &crate::ffi_types::NCollection_List_TopoDS_Shape,
+        mapgreasma: &mut crate::ffi_types::NCollection_DataMap_TopoDS_Shape_NCollection_List_TopoDS_Shape_TopTools_ShapeMapHasher,
     ) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepTool_CLASSI_classilist(
@@ -547,7 +632,7 @@ impl CLASSI {
 // From TopOpeBRepTool_CORRISO.hxx
 // ========================
 
-/// **Source:** `TopOpeBRepTool_CORRISO.hxx`:48 - `TopOpeBRepTool_CORRISO`
+/// **Source:** `TopOpeBRepTool_CORRISO.hxx`:49 - `TopOpeBRepTool_CORRISO`
 /// Fref is built on x-periodic surface (x=u,v).
 /// S built on Fref's geometry, should be UVClosed.
 ///
@@ -573,7 +658,7 @@ unsafe impl crate::CppDeletable for CORRISO {
 }
 
 impl CORRISO {
-    /// **Source:** `TopOpeBRepTool_CORRISO.hxx`:53 - `TopOpeBRepTool_CORRISO::TopOpeBRepTool_CORRISO()`
+    /// **Source:** `TopOpeBRepTool_CORRISO.hxx`:54 - `TopOpeBRepTool_CORRISO::TopOpeBRepTool_CORRISO()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -582,7 +667,7 @@ impl CORRISO {
         }
     }
 
-    /// **Source:** `TopOpeBRepTool_CORRISO.hxx`:55 - `TopOpeBRepTool_CORRISO::TopOpeBRepTool_CORRISO()`
+    /// **Source:** `TopOpeBRepTool_CORRISO.hxx`:56 - `TopOpeBRepTool_CORRISO::TopOpeBRepTool_CORRISO()`
     pub fn new_face(FRef: &crate::topo_ds::Face) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -591,7 +676,7 @@ impl CORRISO {
         }
     }
 
-    /// **Source:** `TopOpeBRepTool_CORRISO.hxx`:57 - `TopOpeBRepTool_CORRISO::Fref()`
+    /// **Source:** `TopOpeBRepTool_CORRISO.hxx`:58 - `TopOpeBRepTool_CORRISO::Fref()`
     pub fn fref(&self) -> &crate::topo_ds::Face {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKBool::TopOpeBRepTool_CORRISO_fref(
@@ -600,7 +685,7 @@ impl CORRISO {
         }
     }
 
-    /// **Source:** `TopOpeBRepTool_CORRISO.hxx`:59 - `TopOpeBRepTool_CORRISO::GASref()`
+    /// **Source:** `TopOpeBRepTool_CORRISO.hxx`:60 - `TopOpeBRepTool_CORRISO::GASref()`
     pub fn ga_sref(&self) -> &crate::geom_adaptor::Surface {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKBool::TopOpeBRepTool_CORRISO_ga_sref(
@@ -609,7 +694,7 @@ impl CORRISO {
         }
     }
 
-    /// **Source:** `TopOpeBRepTool_CORRISO.hxx`:61 - `TopOpeBRepTool_CORRISO::Refclosed()`
+    /// **Source:** `TopOpeBRepTool_CORRISO.hxx`:62 - `TopOpeBRepTool_CORRISO::Refclosed()`
     pub fn refclosed(&self, x: i32, xperiod: &mut f64) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepTool_CORRISO_refclosed(
@@ -637,7 +722,7 @@ impl CORRISO {
     }
 
     /// **Source:** `TopOpeBRepTool_CORRISO.hxx`:68 - `TopOpeBRepTool_CORRISO::Eds()`
-    pub fn eds(&self) -> &crate::ffi_types::TopTools_ListOfShape {
+    pub fn eds(&self) -> &crate::ffi_types::NCollection_List_TopoDS_Shape {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKBool::TopOpeBRepTool_CORRISO_eds(
                 self as *const Self,
@@ -662,8 +747,8 @@ impl CORRISO {
     /// **Source:** `TopOpeBRepTool_CORRISO.hxx`:74 - `TopOpeBRepTool_CORRISO::PurgeFyClosingE()`
     pub fn purge_fy_closing_e(
         &self,
-        ClEds: &crate::ffi_types::TopTools_ListOfShape,
-        fyClEds: &mut crate::ffi_types::TopTools_ListOfShape,
+        ClEds: &crate::ffi_types::NCollection_List_TopoDS_Shape,
+        fyClEds: &mut crate::ffi_types::NCollection_List_TopoDS_Shape,
     ) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepTool_CORRISO_purge_fy_closing_e(
@@ -693,13 +778,13 @@ impl CORRISO {
         })
     }
 
-    /// **Source:** `TopOpeBRepTool_CORRISO.hxx`:83 - `TopOpeBRepTool_CORRISO::EdgesOUTofBoundsUV()`
+    /// **Source:** `TopOpeBRepTool_CORRISO.hxx`:82 - `TopOpeBRepTool_CORRISO::EdgesOUTofBoundsUV()`
     pub fn edges_ou_tof_bounds_uv(
         &self,
-        EdsToCheck: &crate::ffi_types::TopTools_ListOfShape,
+        EdsToCheck: &crate::ffi_types::NCollection_List_TopoDS_Shape,
         onU: bool,
         tolx: f64,
-        FyEds: &mut crate::ffi_types::TopTools_DataMapOfOrientedShapeInteger,
+        FyEds: &mut crate::ffi_types::NCollection_DataMap_TopoDS_Shape_int,
     ) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepTool_CORRISO_edges_ou_tof_bounds_uv(
@@ -712,7 +797,7 @@ impl CORRISO {
         })
     }
 
-    /// **Source:** `TopOpeBRepTool_CORRISO.hxx`:88 - `TopOpeBRepTool_CORRISO::EdgeWithFaultyUV()`
+    /// **Source:** `TopOpeBRepTool_CORRISO.hxx`:87 - `TopOpeBRepTool_CORRISO::EdgeWithFaultyUV()`
     pub fn edge_with_faulty_uv_edge_int(
         &self,
         E: &crate::topo_ds::Edge,
@@ -727,12 +812,12 @@ impl CORRISO {
         })
     }
 
-    /// **Source:** `TopOpeBRepTool_CORRISO.hxx`:92 - `TopOpeBRepTool_CORRISO::EdgesWithFaultyUV()`
+    /// **Source:** `TopOpeBRepTool_CORRISO.hxx`:89 - `TopOpeBRepTool_CORRISO::EdgesWithFaultyUV()`
     pub fn edges_with_faulty_uv(
         &self,
-        EdsToCheck: &crate::ffi_types::TopTools_ListOfShape,
+        EdsToCheck: &crate::ffi_types::NCollection_List_TopoDS_Shape,
         nfybounds: i32,
-        FyEds: &mut crate::ffi_types::TopTools_DataMapOfOrientedShapeInteger,
+        FyEds: &mut crate::ffi_types::NCollection_DataMap_TopoDS_Shape_int,
         stopatfirst: bool,
     ) -> bool {
         crate::check_result(unsafe {
@@ -746,67 +831,67 @@ impl CORRISO {
         })
     }
 
-    /// **Source:** `TopOpeBRepTool_CORRISO.hxx`:97 - `TopOpeBRepTool_CORRISO::EdgeWithFaultyUV()`
-    pub fn edge_with_faulty_uv_listofshape_int_shape_int(
+    /// **Source:** `TopOpeBRepTool_CORRISO.hxx`:94 - `TopOpeBRepTool_CORRISO::EdgeWithFaultyUV()`
+    pub fn edge_with_faulty_uv_list_shape_int_shape_int(
         &self,
-        EdsToCheck: &crate::ffi_types::TopTools_ListOfShape,
+        EdsToCheck: &crate::ffi_types::NCollection_List_TopoDS_Shape,
         nfybounds: i32,
         fyE: &mut crate::topo_ds::Shape,
         Ifaulty: &mut i32,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi_extern_TKBool::TopOpeBRepTool_CORRISO_edge_with_faulty_uv_listofshape_int_shape_int(self as *const Self, EdsToCheck, nfybounds, fyE, Ifaulty)
+            crate::ffi_extern_TKBool::TopOpeBRepTool_CORRISO_edge_with_faulty_uv_list_shape_int_shape_int(self as *const Self, EdsToCheck, nfybounds, fyE, Ifaulty)
         })
     }
 
-    /// **Source:** `TopOpeBRepTool_CORRISO.hxx`:102 - `TopOpeBRepTool_CORRISO::TrslUV()`
+    /// **Source:** `TopOpeBRepTool_CORRISO.hxx`:99 - `TopOpeBRepTool_CORRISO::TrslUV()`
     pub fn trsl_uv(
         &mut self,
         onU: bool,
-        FyEds: &crate::ffi_types::TopTools_DataMapOfOrientedShapeInteger,
+        FyEds: &crate::ffi_types::NCollection_DataMap_TopoDS_Shape_int,
     ) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepTool_CORRISO_trsl_uv(self as *mut Self, onU, FyEds)
         })
     }
 
-    /// **Source:** `TopOpeBRepTool_CORRISO.hxx`:105 - `TopOpeBRepTool_CORRISO::GetnewS()`
+    /// **Source:** `TopOpeBRepTool_CORRISO.hxx`:101 - `TopOpeBRepTool_CORRISO::GetnewS()`
     pub fn getnew_s(&self, newS: &mut crate::topo_ds::Face) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepTool_CORRISO_getnew_s(self as *const Self, newS)
         })
     }
 
-    /// **Source:** `TopOpeBRepTool_CORRISO.hxx`:107 - `TopOpeBRepTool_CORRISO::UVRep()`
+    /// **Source:** `TopOpeBRepTool_CORRISO.hxx`:103 - `TopOpeBRepTool_CORRISO::UVRep()`
     pub fn uv_rep(&self, E: &crate::topo_ds::Edge, C2DF: &mut C2DF) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepTool_CORRISO_uv_rep(self as *const Self, E, C2DF)
         })
     }
 
-    /// **Source:** `TopOpeBRepTool_CORRISO.hxx`:109 - `TopOpeBRepTool_CORRISO::SetUVRep()`
+    /// **Source:** `TopOpeBRepTool_CORRISO.hxx`:105 - `TopOpeBRepTool_CORRISO::SetUVRep()`
     pub fn set_uv_rep(&mut self, E: &crate::topo_ds::Edge, C2DF: &C2DF) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepTool_CORRISO_set_uv_rep(self as *mut Self, E, C2DF)
         })
     }
 
-    /// **Source:** `TopOpeBRepTool_CORRISO.hxx`:111 - `TopOpeBRepTool_CORRISO::Connexity()`
+    /// **Source:** `TopOpeBRepTool_CORRISO.hxx`:107 - `TopOpeBRepTool_CORRISO::Connexity()`
     pub fn connexity(
         &self,
         V: &crate::topo_ds::Vertex,
-        Eds: &mut crate::ffi_types::TopTools_ListOfShape,
+        Eds: &mut crate::ffi_types::NCollection_List_TopoDS_Shape,
     ) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepTool_CORRISO_connexity(self as *const Self, V, Eds)
         })
     }
 
-    /// **Source:** `TopOpeBRepTool_CORRISO.hxx`:114 - `TopOpeBRepTool_CORRISO::SetConnexity()`
+    /// **Source:** `TopOpeBRepTool_CORRISO.hxx`:109 - `TopOpeBRepTool_CORRISO::SetConnexity()`
     pub fn set_connexity(
         &mut self,
         V: &crate::topo_ds::Vertex,
-        Eds: &crate::ffi_types::TopTools_ListOfShape,
+        Eds: &crate::ffi_types::NCollection_List_TopoDS_Shape,
     ) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepTool_CORRISO_set_connexity(
@@ -817,7 +902,7 @@ impl CORRISO {
         })
     }
 
-    /// **Source:** `TopOpeBRepTool_CORRISO.hxx`:117 - `TopOpeBRepTool_CORRISO::AddNewConnexity()`
+    /// **Source:** `TopOpeBRepTool_CORRISO.hxx`:112 - `TopOpeBRepTool_CORRISO::AddNewConnexity()`
     pub fn add_new_connexity(
         &mut self,
         V: &crate::topo_ds::Vertex,
@@ -832,7 +917,7 @@ impl CORRISO {
         })
     }
 
-    /// **Source:** `TopOpeBRepTool_CORRISO.hxx`:119 - `TopOpeBRepTool_CORRISO::RemoveOldConnexity()`
+    /// **Source:** `TopOpeBRepTool_CORRISO.hxx`:114 - `TopOpeBRepTool_CORRISO::RemoveOldConnexity()`
     pub fn remove_old_connexity(
         &mut self,
         V: &crate::topo_ds::Vertex,
@@ -852,7 +937,7 @@ impl CORRISO {
 // From TopOpeBRepTool_CurveTool.hxx
 // ========================
 
-/// **Source:** `TopOpeBRepTool_CurveTool.hxx`:32 - `TopOpeBRepTool_CurveTool`
+/// **Source:** `TopOpeBRepTool_CurveTool.hxx`:33 - `TopOpeBRepTool_CurveTool`
 pub use crate::ffi_types::TopOpeBRepTool_CurveTool as CurveTool;
 
 unsafe impl crate::CppDeletable for CurveTool {
@@ -864,7 +949,7 @@ unsafe impl crate::CppDeletable for CurveTool {
 }
 
 impl CurveTool {
-    /// **Source:** `TopOpeBRepTool_CurveTool.hxx`:37 - `TopOpeBRepTool_CurveTool::TopOpeBRepTool_CurveTool()`
+    /// **Source:** `TopOpeBRepTool_CurveTool.hxx`:38 - `TopOpeBRepTool_CurveTool::TopOpeBRepTool_CurveTool()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -873,7 +958,7 @@ impl CurveTool {
         }
     }
 
-    /// **Source:** `TopOpeBRepTool_CurveTool.hxx`:39 - `TopOpeBRepTool_CurveTool::TopOpeBRepTool_CurveTool()`
+    /// **Source:** `TopOpeBRepTool_CurveTool.hxx`:40 - `TopOpeBRepTool_CurveTool::TopOpeBRepTool_CurveTool()`
     pub fn new_outcurvetype(OCT: crate::top_ope_b_rep_tool::OutCurveType) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -882,7 +967,7 @@ impl CurveTool {
         }
     }
 
-    /// **Source:** `TopOpeBRepTool_CurveTool.hxx`:41 - `TopOpeBRepTool_CurveTool::TopOpeBRepTool_CurveTool()`
+    /// **Source:** `TopOpeBRepTool_CurveTool.hxx`:42 - `TopOpeBRepTool_CurveTool::TopOpeBRepTool_CurveTool()`
     pub fn new_geomtool(GT: &GeomTool) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -891,7 +976,7 @@ impl CurveTool {
         }
     }
 
-    /// **Source:** `TopOpeBRepTool_CurveTool.hxx`:43 - `TopOpeBRepTool_CurveTool::ChangeGeomTool()`
+    /// **Source:** `TopOpeBRepTool_CurveTool.hxx`:44 - `TopOpeBRepTool_CurveTool::ChangeGeomTool()`
     pub fn change_geom_tool(&mut self) -> &mut GeomTool {
         unsafe {
             &mut *(crate::check_result(
@@ -902,7 +987,7 @@ impl CurveTool {
         }
     }
 
-    /// **Source:** `TopOpeBRepTool_CurveTool.hxx`:45 - `TopOpeBRepTool_CurveTool::GetGeomTool()`
+    /// **Source:** `TopOpeBRepTool_CurveTool.hxx`:46 - `TopOpeBRepTool_CurveTool::GetGeomTool()`
     pub fn get_geom_tool(&self) -> &GeomTool {
         unsafe {
             &*(crate::check_result(
@@ -913,28 +998,28 @@ impl CurveTool {
         }
     }
 
-    /// **Source:** `TopOpeBRepTool_CurveTool.hxx`:47 - `TopOpeBRepTool_CurveTool::SetGeomTool()`
+    /// **Source:** `TopOpeBRepTool_CurveTool.hxx`:48 - `TopOpeBRepTool_CurveTool::SetGeomTool()`
     pub fn set_geom_tool(&mut self, GT: &GeomTool) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepTool_CurveTool_set_geom_tool(self as *mut Self, GT)
         })
     }
 
-    /// **Source:** `TopOpeBRepTool_CurveTool.hxx`:51 - `TopOpeBRepTool_CurveTool::MakeCurves()`
+    /// **Source:** `TopOpeBRepTool_CurveTool.hxx`:52 - `TopOpeBRepTool_CurveTool::MakeCurves()`
     /// Approximates curves.
     /// Returns False in the case of failure
     pub fn make_curves(
         &self,
         min: f64,
         max: f64,
-        C3D: &crate::ffi_types::HandleGeomCurve,
-        PC1: &crate::ffi_types::HandleGeom2dCurve,
-        PC2: &crate::ffi_types::HandleGeom2dCurve,
+        C3D: &crate::ffi_types::Handle_Geom_Curve,
+        PC1: &crate::ffi_types::Handle_Geom2d_Curve,
+        PC2: &crate::ffi_types::Handle_Geom2d_Curve,
         S1: &crate::topo_ds::Shape,
         S2: &crate::topo_ds::Shape,
-        C3DN: &mut crate::ffi_types::HandleGeomCurve,
-        PC1N: &mut crate::ffi_types::HandleGeom2dCurve,
-        PC2N: &mut crate::ffi_types::HandleGeom2dCurve,
+        C3DN: &mut crate::ffi_types::Handle_Geom_Curve,
+        PC1N: &mut crate::ffi_types::Handle_Geom2d_Curve,
+        PC2N: &mut crate::ffi_types::Handle_Geom2d_Curve,
         Tol3d: &mut f64,
         Tol2d: &mut f64,
     ) -> bool {
@@ -957,10 +1042,10 @@ impl CurveTool {
         })
     }
 
-    /// **Source:** `TopOpeBRepTool_CurveTool.hxx`:64 - `TopOpeBRepTool_CurveTool::MakeBSpline1fromPnt()`
+    /// **Source:** `TopOpeBRepTool_CurveTool.hxx`:65 - `TopOpeBRepTool_CurveTool::MakeBSpline1fromPnt()`
     pub fn make_b_spline1from_pnt(
-        P: &crate::ffi_types::TColgp_Array1OfPnt,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleGeomCurve> {
+        P: &crate::ffi_types::NCollection_Array1_gp_Pnt,
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Geom_Curve> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKBool::TopOpeBRepTool_CurveTool_make_b_spline1from_pnt(P),
@@ -968,10 +1053,10 @@ impl CurveTool {
         }
     }
 
-    /// **Source:** `TopOpeBRepTool_CurveTool.hxx`:66 - `TopOpeBRepTool_CurveTool::MakeBSpline1fromPnt2d()`
+    /// **Source:** `TopOpeBRepTool_CurveTool.hxx`:68 - `TopOpeBRepTool_CurveTool::MakeBSpline1fromPnt2d()`
     pub fn make_b_spline1from_pnt2d(
-        P: &crate::ffi_types::TColgp_Array1OfPnt2d,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleGeom2dCurve> {
+        P: &crate::ffi_types::NCollection_Array1_gp_Pnt2d,
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Geom2d_Curve> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKBool::TopOpeBRepTool_CurveTool_make_b_spline1from_pnt2d(P),
@@ -979,24 +1064,24 @@ impl CurveTool {
         }
     }
 
-    /// **Source:** `TopOpeBRepTool_CurveTool.hxx`:68 - `TopOpeBRepTool_CurveTool::IsProjectable()`
+    /// **Source:** `TopOpeBRepTool_CurveTool.hxx`:71 - `TopOpeBRepTool_CurveTool::IsProjectable()`
     pub fn is_projectable(
         S: &crate::topo_ds::Shape,
-        C: &crate::ffi_types::HandleGeomCurve,
+        C: &crate::ffi_types::Handle_Geom_Curve,
     ) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepTool_CurveTool_is_projectable(S, C)
         })
     }
 
-    /// **Source:** `TopOpeBRepTool_CurveTool.hxx`:71 - `TopOpeBRepTool_CurveTool::MakePCurveOnFace()`
+    /// **Source:** `TopOpeBRepTool_CurveTool.hxx`:74 - `TopOpeBRepTool_CurveTool::MakePCurveOnFace()`
     pub fn make_p_curve_on_face(
         S: &crate::topo_ds::Shape,
-        C: &crate::ffi_types::HandleGeomCurve,
+        C: &crate::ffi_types::Handle_Geom_Curve,
         TolReached2d: &mut f64,
         first: f64,
         last: f64,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleGeom2dCurve> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Geom2d_Curve> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKBool::TopOpeBRepTool_CurveTool_make_p_curve_on_face(
@@ -1015,14 +1100,14 @@ impl CurveTool {
 // From TopOpeBRepTool_FuseEdges.hxx
 // ========================
 
-/// **Source:** `TopOpeBRepTool_FuseEdges.hxx`:44 - `TopOpeBRepTool_FuseEdges`
-/// This class can detect  vertices in a face that can
+/// **Source:** `TopOpeBRepTool_FuseEdges.hxx`:43 - `TopOpeBRepTool_FuseEdges`
+/// This class can detect vertices in a face that can
 /// be considered useless and then perform the fuse of
-/// the  edges and remove  the  useless vertices.  By
-/// useles vertices,  we mean :
-/// * vertices that  have  exactly two connex edges
+/// the edges and remove the useless vertices. By
+/// useles vertices, we mean:
+/// * vertices that have exactly two connex edges
 /// * the edges connex to the vertex must have
-/// exactly the same 2 connex faces .
+/// exactly the same 2 connex faces.
 /// * The edges connex to the vertex must have the
 /// same geometric support.
 pub use crate::ffi_types::TopOpeBRepTool_FuseEdges as FuseEdges;
@@ -1036,8 +1121,8 @@ unsafe impl crate::CppDeletable for FuseEdges {
 }
 
 impl FuseEdges {
-    /// **Source:** `TopOpeBRepTool_FuseEdges.hxx`:51 - `TopOpeBRepTool_FuseEdges::TopOpeBRepTool_FuseEdges()`
-    /// Initialise members  and build  construction of map
+    /// **Source:** `TopOpeBRepTool_FuseEdges.hxx`:50 - `TopOpeBRepTool_FuseEdges::TopOpeBRepTool_FuseEdges()`
+    /// Initialise members and build construction of map
     /// of ancestors.
     pub fn new_shape_bool(
         theShape: &crate::topo_ds::Shape,
@@ -1052,16 +1137,19 @@ impl FuseEdges {
         }
     }
 
-    /// **Source:** `TopOpeBRepTool_FuseEdges.hxx`:51 - `TopOpeBRepTool_FuseEdges::TopOpeBRepTool_FuseEdges()`
-    /// Initialise members  and build  construction of map
+    /// **Source:** `TopOpeBRepTool_FuseEdges.hxx`:50 - `TopOpeBRepTool_FuseEdges::TopOpeBRepTool_FuseEdges()`
+    /// Initialise members and build construction of map
     /// of ancestors.
     pub fn new_shape(theShape: &crate::topo_ds::Shape) -> crate::OwnedPtr<Self> {
         Self::new_shape_bool(theShape, false)
     }
 
-    /// **Source:** `TopOpeBRepTool_FuseEdges.hxx`:55 - `TopOpeBRepTool_FuseEdges::AvoidEdges()`
+    /// **Source:** `TopOpeBRepTool_FuseEdges.hxx`:54 - `TopOpeBRepTool_FuseEdges::AvoidEdges()`
     /// set edges to avoid being fused
-    pub fn avoid_edges(&mut self, theMapEdg: &crate::ffi_types::TopTools_IndexedMapOfShape) {
+    pub fn avoid_edges(
+        &mut self,
+        theMapEdg: &crate::ffi_types::NCollection_IndexedMap_TopoDS_Shape_TopTools_ShapeMapHasher,
+    ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepTool_FuseEdges_avoid_edges(
                 self as *mut Self,
@@ -1071,12 +1159,12 @@ impl FuseEdges {
     }
 
     /// **Source:** `TopOpeBRepTool_FuseEdges.hxx`:60 - `TopOpeBRepTool_FuseEdges::Edges()`
-    /// returns  all the list of edges to be fused
+    /// returns all the list of edges to be fused
     /// each list of the map represent a set of connex edges
     /// that can be fused.
     pub fn edges(
         &mut self,
-        theMapLstEdg: &mut crate::ffi_types::TopTools_DataMapOfIntegerListOfShape,
+        theMapLstEdg: &mut crate::ffi_types::NCollection_DataMap_int_NCollection_List_TopoDS_Shape,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepTool_FuseEdges_edges(
@@ -1086,15 +1174,15 @@ impl FuseEdges {
         })
     }
 
-    /// **Source:** `TopOpeBRepTool_FuseEdges.hxx`:67 - `TopOpeBRepTool_FuseEdges::ResultEdges()`
+    /// **Source:** `TopOpeBRepTool_FuseEdges.hxx`:68 - `TopOpeBRepTool_FuseEdges::ResultEdges()`
     /// returns all the fused edges. each integer entry in
-    /// the   map  corresponds  to  the  integer   in the
-    /// DataMapOfIntegerListOfShape  we    get in  method
-    /// Edges.   That is to say, to  the list  of edges in
+    /// the map corresponds to the integer in the
+    /// DataMapOfIntegerListOfShape we get in method
+    /// Edges. That is to say, to the list of edges in
     /// theMapLstEdg(i) corresponds the resulting edge theMapEdge(i)
     pub fn result_edges(
         &mut self,
-        theMapEdg: &mut crate::ffi_types::TopTools_DataMapOfIntegerShape,
+        theMapEdg: &mut crate::ffi_types::NCollection_DataMap_int_TopoDS_Shape,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepTool_FuseEdges_result_edges(
@@ -1104,15 +1192,18 @@ impl FuseEdges {
         })
     }
 
-    /// **Source:** `TopOpeBRepTool_FuseEdges.hxx`:70 - `TopOpeBRepTool_FuseEdges::Faces()`
+    /// **Source:** `TopOpeBRepTool_FuseEdges.hxx`:71 - `TopOpeBRepTool_FuseEdges::Faces()`
     /// returns the map of modified faces.
-    pub fn faces(&mut self, theMapFac: &mut crate::ffi_types::TopTools_DataMapOfShapeShape) {
+    pub fn faces(
+        &mut self,
+        theMapFac: &mut crate::ffi_types::NCollection_DataMap_TopoDS_Shape_TopoDS_Shape_TopTools_ShapeMapHasher,
+    ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepTool_FuseEdges_faces(self as *mut Self, theMapFac)
         })
     }
 
-    /// **Source:** `TopOpeBRepTool_FuseEdges.hxx`:74 - `TopOpeBRepTool_FuseEdges::Shape()`
+    /// **Source:** `TopOpeBRepTool_FuseEdges.hxx`:76 - `TopOpeBRepTool_FuseEdges::Shape()`
     /// returns myShape modified with the list of internal
     /// edges removed from it.
     pub fn shape(&mut self) -> &mut crate::topo_ds::Shape {
@@ -1123,7 +1214,7 @@ impl FuseEdges {
         }
     }
 
-    /// **Source:** `TopOpeBRepTool_FuseEdges.hxx`:77 - `TopOpeBRepTool_FuseEdges::NbVertices()`
+    /// **Source:** `TopOpeBRepTool_FuseEdges.hxx`:79 - `TopOpeBRepTool_FuseEdges::NbVertices()`
     /// returns the number of vertices candidate to be removed
     pub fn nb_vertices(&mut self) -> i32 {
         crate::check_result(unsafe {
@@ -1131,8 +1222,8 @@ impl FuseEdges {
         })
     }
 
-    /// **Source:** `TopOpeBRepTool_FuseEdges.hxx`:81 - `TopOpeBRepTool_FuseEdges::Perform()`
-    /// Using  map of list of connex  edges, fuse each list to
+    /// **Source:** `TopOpeBRepTool_FuseEdges.hxx`:83 - `TopOpeBRepTool_FuseEdges::Perform()`
+    /// Using map of list of connex edges, fuse each list to
     /// one edge and then update myShape
     pub fn perform(&mut self) {
         crate::check_void_result(unsafe {
@@ -1159,14 +1250,14 @@ unsafe impl crate::CppDeletable for GeomTool {
 impl GeomTool {
     /// **Source:** `TopOpeBRepTool_GeomTool.hxx`:42 - `TopOpeBRepTool_GeomTool::TopOpeBRepTool_GeomTool()`
     /// Boolean flags <CompC3D>, <CompPC1>, <CompPC2>
-    /// indicate whether  the  corresponding result curves
-    /// <C3D>, <PC1>, <PC2> of MakeCurves method  must or not
+    /// indicate whether the corresponding result curves
+    /// <C3D>, <PC1>, <PC2> of MakeCurves method must or not
     /// be computed from an intersection line <L>.
-    /// When  the line <L> is a walking one, <TypeC3D> is the
-    /// kind  of the 3D curve <C3D>  to  compute  :
-    /// - BSPLINE1 to compute  a BSpline of  degree 1 on the
-    /// walking   points  of  <L>,
-    /// - APPROX  to build  an  approximation curve on the
+    /// When the line <L> is a walking one, <TypeC3D> is the
+    /// kind of the 3D curve <C3D> to compute:
+    /// - BSPLINE1 to compute a BSpline of degree 1 on the
+    /// walking points of <L>,
+    /// - APPROX to build an approximation curve on the
     /// walking points of <L>.
     pub fn new_outcurvetype_bool3(
         TypeC3D: crate::top_ope_b_rep_tool::OutCurveType,
@@ -1188,14 +1279,14 @@ impl GeomTool {
 
     /// **Source:** `TopOpeBRepTool_GeomTool.hxx`:42 - `TopOpeBRepTool_GeomTool::TopOpeBRepTool_GeomTool()`
     /// Boolean flags <CompC3D>, <CompPC1>, <CompPC2>
-    /// indicate whether  the  corresponding result curves
-    /// <C3D>, <PC1>, <PC2> of MakeCurves method  must or not
+    /// indicate whether the corresponding result curves
+    /// <C3D>, <PC1>, <PC2> of MakeCurves method must or not
     /// be computed from an intersection line <L>.
-    /// When  the line <L> is a walking one, <TypeC3D> is the
-    /// kind  of the 3D curve <C3D>  to  compute  :
-    /// - BSPLINE1 to compute  a BSpline of  degree 1 on the
-    /// walking   points  of  <L>,
-    /// - APPROX  to build  an  approximation curve on the
+    /// When the line <L> is a walking one, <TypeC3D> is the
+    /// kind of the 3D curve <C3D> to compute:
+    /// - BSPLINE1 to compute a BSpline of degree 1 on the
+    /// walking points of <L>,
+    /// - APPROX to build an approximation curve on the
     /// walking points of <L>.
     pub fn new_outcurvetype_bool2(
         TypeC3D: crate::top_ope_b_rep_tool::OutCurveType,
@@ -1207,14 +1298,14 @@ impl GeomTool {
 
     /// **Source:** `TopOpeBRepTool_GeomTool.hxx`:42 - `TopOpeBRepTool_GeomTool::TopOpeBRepTool_GeomTool()`
     /// Boolean flags <CompC3D>, <CompPC1>, <CompPC2>
-    /// indicate whether  the  corresponding result curves
-    /// <C3D>, <PC1>, <PC2> of MakeCurves method  must or not
+    /// indicate whether the corresponding result curves
+    /// <C3D>, <PC1>, <PC2> of MakeCurves method must or not
     /// be computed from an intersection line <L>.
-    /// When  the line <L> is a walking one, <TypeC3D> is the
-    /// kind  of the 3D curve <C3D>  to  compute  :
-    /// - BSPLINE1 to compute  a BSpline of  degree 1 on the
-    /// walking   points  of  <L>,
-    /// - APPROX  to build  an  approximation curve on the
+    /// When the line <L> is a walking one, <TypeC3D> is the
+    /// kind of the 3D curve <C3D> to compute:
+    /// - BSPLINE1 to compute a BSpline of degree 1 on the
+    /// walking points of <L>,
+    /// - APPROX to build an approximation curve on the
     /// walking points of <L>.
     pub fn new_outcurvetype_bool(
         TypeC3D: crate::top_ope_b_rep_tool::OutCurveType,
@@ -1225,14 +1316,14 @@ impl GeomTool {
 
     /// **Source:** `TopOpeBRepTool_GeomTool.hxx`:42 - `TopOpeBRepTool_GeomTool::TopOpeBRepTool_GeomTool()`
     /// Boolean flags <CompC3D>, <CompPC1>, <CompPC2>
-    /// indicate whether  the  corresponding result curves
-    /// <C3D>, <PC1>, <PC2> of MakeCurves method  must or not
+    /// indicate whether the corresponding result curves
+    /// <C3D>, <PC1>, <PC2> of MakeCurves method must or not
     /// be computed from an intersection line <L>.
-    /// When  the line <L> is a walking one, <TypeC3D> is the
-    /// kind  of the 3D curve <C3D>  to  compute  :
-    /// - BSPLINE1 to compute  a BSpline of  degree 1 on the
-    /// walking   points  of  <L>,
-    /// - APPROX  to build  an  approximation curve on the
+    /// When the line <L> is a walking one, <TypeC3D> is the
+    /// kind of the 3D curve <C3D> to compute:
+    /// - BSPLINE1 to compute a BSpline of degree 1 on the
+    /// walking points of <L>,
+    /// - APPROX to build an approximation curve on the
     /// walking points of <L>.
     pub fn new_outcurvetype(
         TypeC3D: crate::top_ope_b_rep_tool::OutCurveType,
@@ -1379,7 +1470,7 @@ impl GeomTool {
 // From TopOpeBRepTool_HBoxTool.hxx
 // ========================
 
-/// **Source:** `TopOpeBRepTool_HBoxTool.hxx`:33 - `TopOpeBRepTool_HBoxTool`
+/// **Source:** `TopOpeBRepTool_HBoxTool.hxx`:32 - `TopOpeBRepTool_HBoxTool`
 pub use crate::ffi_types::TopOpeBRepTool_HBoxTool as HBoxTool;
 
 unsafe impl crate::CppDeletable for HBoxTool {
@@ -1391,7 +1482,7 @@ unsafe impl crate::CppDeletable for HBoxTool {
 }
 
 impl HBoxTool {
-    /// **Source:** `TopOpeBRepTool_HBoxTool.hxx`:37 - `TopOpeBRepTool_HBoxTool::TopOpeBRepTool_HBoxTool()`
+    /// **Source:** `TopOpeBRepTool_HBoxTool.hxx`:36 - `TopOpeBRepTool_HBoxTool::TopOpeBRepTool_HBoxTool()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -1400,14 +1491,14 @@ impl HBoxTool {
         }
     }
 
-    /// **Source:** `TopOpeBRepTool_HBoxTool.hxx`:39 - `TopOpeBRepTool_HBoxTool::Clear()`
+    /// **Source:** `TopOpeBRepTool_HBoxTool.hxx`:38 - `TopOpeBRepTool_HBoxTool::Clear()`
     pub fn clear(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepTool_HBoxTool_clear(self as *mut Self)
         })
     }
 
-    /// **Source:** `TopOpeBRepTool_HBoxTool.hxx`:41 - `TopOpeBRepTool_HBoxTool::AddBoxes()`
+    /// **Source:** `TopOpeBRepTool_HBoxTool.hxx`:40 - `TopOpeBRepTool_HBoxTool::AddBoxes()`
     pub fn add_boxes(
         &mut self,
         S: &crate::topo_ds::Shape,
@@ -1424,14 +1515,14 @@ impl HBoxTool {
         })
     }
 
-    /// **Source:** `TopOpeBRepTool_HBoxTool.hxx`:45 - `TopOpeBRepTool_HBoxTool::AddBox()`
+    /// **Source:** `TopOpeBRepTool_HBoxTool.hxx`:44 - `TopOpeBRepTool_HBoxTool::AddBox()`
     pub fn add_box(&mut self, S: &crate::topo_ds::Shape) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepTool_HBoxTool_add_box(self as *mut Self, S)
         })
     }
 
-    /// **Source:** `TopOpeBRepTool_HBoxTool.hxx`:53 - `TopOpeBRepTool_HBoxTool::Box()`
+    /// **Source:** `TopOpeBRepTool_HBoxTool.hxx`:52 - `TopOpeBRepTool_HBoxTool::Box()`
     ///
     /// # Safety
     ///
@@ -1447,7 +1538,7 @@ impl HBoxTool {
         }
     }
 
-    /// **Source:** `TopOpeBRepTool_HBoxTool.hxx`:55 - `TopOpeBRepTool_HBoxTool::Box()`
+    /// **Source:** `TopOpeBRepTool_HBoxTool.hxx`:54 - `TopOpeBRepTool_HBoxTool::Box()`
     pub fn box_int(&self, I: i32) -> &crate::bnd::Box {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKBool::TopOpeBRepTool_HBoxTool_box_int(
@@ -1457,14 +1548,14 @@ impl HBoxTool {
         }
     }
 
-    /// **Source:** `TopOpeBRepTool_HBoxTool.hxx`:57 - `TopOpeBRepTool_HBoxTool::HasBox()`
+    /// **Source:** `TopOpeBRepTool_HBoxTool.hxx`:56 - `TopOpeBRepTool_HBoxTool::HasBox()`
     pub fn has_box(&self, S: &crate::topo_ds::Shape) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepTool_HBoxTool_has_box(self as *const Self, S)
         })
     }
 
-    /// **Source:** `TopOpeBRepTool_HBoxTool.hxx`:59 - `TopOpeBRepTool_HBoxTool::Shape()`
+    /// **Source:** `TopOpeBRepTool_HBoxTool.hxx`:58 - `TopOpeBRepTool_HBoxTool::Shape()`
     pub fn shape(&self, I: i32) -> &crate::topo_ds::Shape {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKBool::TopOpeBRepTool_HBoxTool_shape(
@@ -1474,22 +1565,24 @@ impl HBoxTool {
         }
     }
 
-    /// **Source:** `TopOpeBRepTool_HBoxTool.hxx`:61 - `TopOpeBRepTool_HBoxTool::Index()`
+    /// **Source:** `TopOpeBRepTool_HBoxTool.hxx`:60 - `TopOpeBRepTool_HBoxTool::Index()`
     pub fn index(&self, S: &crate::topo_ds::Shape) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepTool_HBoxTool_index(self as *const Self, S)
         })
     }
 
-    /// **Source:** `TopOpeBRepTool_HBoxTool.hxx`:63 - `TopOpeBRepTool_HBoxTool::Extent()`
+    /// **Source:** `TopOpeBRepTool_HBoxTool.hxx`:62 - `TopOpeBRepTool_HBoxTool::Extent()`
     pub fn extent(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepTool_HBoxTool_extent(self as *const Self)
         })
     }
 
-    /// **Source:** `TopOpeBRepTool_HBoxTool.hxx`:65 - `TopOpeBRepTool_HBoxTool::ChangeIMS()`
-    pub fn change_ims(&mut self) -> &mut crate::ffi_types::TopOpeBRepTool_IndexedDataMapOfShapeBox {
+    /// **Source:** `TopOpeBRepTool_HBoxTool.hxx`:64 - `TopOpeBRepTool_HBoxTool::ChangeIMS()`
+    pub fn change_ims(
+        &mut self,
+    ) -> &mut crate::ffi_types::NCollection_IndexedDataMap_TopoDS_Shape_Bnd_Box {
         unsafe {
             &mut *(crate::check_result(
                 crate::ffi_extern_TKBool::TopOpeBRepTool_HBoxTool_change_ims(self as *mut Self),
@@ -1497,8 +1590,8 @@ impl HBoxTool {
         }
     }
 
-    /// **Source:** `TopOpeBRepTool_HBoxTool.hxx`:67 - `TopOpeBRepTool_HBoxTool::IMS()`
-    pub fn ims(&self) -> &crate::ffi_types::TopOpeBRepTool_IndexedDataMapOfShapeBox {
+    /// **Source:** `TopOpeBRepTool_HBoxTool.hxx`:66 - `TopOpeBRepTool_HBoxTool::IMS()`
+    pub fn ims(&self) -> &crate::ffi_types::NCollection_IndexedDataMap_TopoDS_Shape_Bnd_Box {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKBool::TopOpeBRepTool_HBoxTool_ims(
                 self as *const Self,
@@ -1506,8 +1599,8 @@ impl HBoxTool {
         }
     }
 
-    /// **Source:** `TopOpeBRepTool_HBoxTool.hxx`:69 - `TopOpeBRepTool_HBoxTool::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `TopOpeBRepTool_HBoxTool.hxx`:68 - `TopOpeBRepTool_HBoxTool::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKBool::TopOpeBRepTool_HBoxTool_dynamic_type(
                 self as *const Self,
@@ -1515,28 +1608,28 @@ impl HBoxTool {
         }
     }
 
-    /// **Source:** `TopOpeBRepTool_HBoxTool.hxx`:47 - `TopOpeBRepTool_HBoxTool::ComputeBox()`
+    /// **Source:** `TopOpeBRepTool_HBoxTool.hxx`:46 - `TopOpeBRepTool_HBoxTool::ComputeBox()`
     pub fn compute_box(S: &crate::topo_ds::Shape, B: &mut crate::bnd::Box) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepTool_HBoxTool_compute_box(S, B)
         })
     }
 
-    /// **Source:** `TopOpeBRepTool_HBoxTool.hxx`:49 - `TopOpeBRepTool_HBoxTool::ComputeBoxOnVertices()`
+    /// **Source:** `TopOpeBRepTool_HBoxTool.hxx`:48 - `TopOpeBRepTool_HBoxTool::ComputeBoxOnVertices()`
     pub fn compute_box_on_vertices(S: &crate::topo_ds::Shape, B: &mut crate::bnd::Box) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepTool_HBoxTool_compute_box_on_vertices(S, B)
         })
     }
 
-    /// **Source:** `TopOpeBRepTool_HBoxTool.hxx`:51 - `TopOpeBRepTool_HBoxTool::DumpB()`
+    /// **Source:** `TopOpeBRepTool_HBoxTool.hxx`:50 - `TopOpeBRepTool_HBoxTool::DumpB()`
     pub fn dump_b(B: &crate::bnd::Box) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepTool_HBoxTool_dump_b(B)
         })
     }
 
-    /// **Source:** `TopOpeBRepTool_HBoxTool.hxx`:69 - `TopOpeBRepTool_HBoxTool::get_type_name()`
+    /// **Source:** `TopOpeBRepTool_HBoxTool.hxx`:68 - `TopOpeBRepTool_HBoxTool::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -1547,8 +1640,8 @@ impl HBoxTool {
         .into_owned()
     }
 
-    /// **Source:** `TopOpeBRepTool_HBoxTool.hxx`:69 - `TopOpeBRepTool_HBoxTool::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    /// **Source:** `TopOpeBRepTool_HBoxTool.hxx`:68 - `TopOpeBRepTool_HBoxTool::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKBool::TopOpeBRepTool_HBoxTool_get_type_descriptor(),
@@ -1581,7 +1674,7 @@ impl HBoxTool {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleTopOpeBRepToolHBoxTool> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_TopOpeBRepTool_HBoxTool> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKBool::TopOpeBRepTool_HBoxTool_to_handle(obj.into_raw()),
@@ -1589,8 +1682,8 @@ impl HBoxTool {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepTool_HBoxTool_inherited_IsInstance(
                 self as *const Self,
@@ -1599,8 +1692,8 @@ impl HBoxTool {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepTool_HBoxTool_inherited_IsKind(
                 self as *const Self,
@@ -1609,7 +1702,7 @@ impl HBoxTool {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -1625,7 +1718,7 @@ impl HBoxTool {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepTool_HBoxTool_inherited_GetRefCount(
@@ -1634,7 +1727,7 @@ impl HBoxTool {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepTool_HBoxTool_inherited_IncrementRefCounter(
@@ -1643,7 +1736,7 @@ impl HBoxTool {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepTool_HBoxTool_inherited_DecrementRefCounter(
@@ -1652,7 +1745,7 @@ impl HBoxTool {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepTool_HBoxTool_inherited_Delete(self as *const Self)
@@ -1660,36 +1753,36 @@ impl HBoxTool {
     }
 }
 
-pub use crate::ffi_types::HandleTopOpeBRepToolHBoxTool;
+pub use crate::ffi_types::Handle_TopOpeBRepTool_HBoxTool;
 
-unsafe impl crate::CppDeletable for HandleTopOpeBRepToolHBoxTool {
+unsafe impl crate::CppDeletable for Handle_TopOpeBRepTool_HBoxTool {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKBool::HandleTopOpeBRepToolHBoxTool_destructor(ptr);
+            crate::ffi_extern_TKBool::Handle_TopOpeBRepTool_HBoxTool_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleTopOpeBRepToolHBoxTool {
+unsafe impl crate::CppCopyable for Handle_TopOpeBRepTool_HBoxTool {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
         unsafe {
-            crate::check_result(crate::ffi_extern_TKBool::HandleTopOpeBRepToolHBoxTool_clone(ptr))
+            crate::check_result(crate::ffi_extern_TKBool::Handle_TopOpeBRepTool_HBoxTool_clone(ptr))
         }
     }
 }
 
-impl HandleTopOpeBRepToolHBoxTool {
+impl Handle_TopOpeBRepTool_HBoxTool {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
         unsafe {
-            crate::ffi_extern_TKBool::HandleTopOpeBRepToolHBoxTool_is_null(self as *const Self)
+            crate::ffi_extern_TKBool::Handle_TopOpeBRepTool_HBoxTool_is_null(self as *const Self)
         }
     }
 
     /// Dereference this Handle to access the underlying TopOpeBRepTool_HBoxTool
     pub fn get(&self) -> &crate::ffi_types::TopOpeBRepTool_HBoxTool {
         unsafe {
-            &*crate::check_result(crate::ffi_extern_TKBool::HandleTopOpeBRepToolHBoxTool_get(
+            &*crate::check_result(crate::ffi_extern_TKBool::Handle_TopOpeBRepTool_HBoxTool_get(
                 self as *const Self,
             ))
         }
@@ -1699,7 +1792,7 @@ impl HandleTopOpeBRepToolHBoxTool {
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::TopOpeBRepTool_HBoxTool {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi_extern_TKBool::HandleTopOpeBRepToolHBoxTool_get_mut(self as *mut Self),
+                crate::ffi_extern_TKBool::Handle_TopOpeBRepTool_HBoxTool_get_mut(self as *mut Self),
             )
         }
     }
@@ -1707,13 +1800,9 @@ impl HandleTopOpeBRepToolHBoxTool {
     /// Upcast Handle<TopOpeBRepTool_HBoxTool> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKBool::HandleTopOpeBRepToolHBoxTool_to_HandleStandardTransient(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKBool::Handle_TopOpeBRepTool_HBoxTool_to_Handle_Standard_Transient(self as *const Self)))
         }
     }
 }
@@ -1722,19 +1811,18 @@ impl HandleTopOpeBRepToolHBoxTool {
 // From TopOpeBRepTool_PurgeInternalEdges.hxx
 // ========================
 
-/// **Source:** `TopOpeBRepTool_PurgeInternalEdges.hxx`:40 - `TopOpeBRepTool_PurgeInternalEdges`
-/// remove from  a shape, the  internal edges that are
-/// not  connected to any face in  the shape.   We can
-/// get  the    list   of      the    edges  as   a
+/// **Source:** `TopOpeBRepTool_PurgeInternalEdges.hxx`:41 - `TopOpeBRepTool_PurgeInternalEdges`
+/// remove from a shape, the internal edges that are
+/// not connected to any face in the shape. We can
+/// get the list of the edges as a
 /// DataMapOfShapeListOfShape with a Face of the Shape
-/// as  the key and  a  list of internal  edges as the
-/// value.  The list   of internal edges  means edges
-/// that are  not connected to any  face in the shape.
+/// as the key and a list of internal edges as the
+/// value. The list of internal edges means edges
+/// that are not connected to any face in the shape.
 ///
-/// Example of use          :
-/// TopTools_DataMapOfShapeListOfShape     mymap;
-/// TopOpeBRepTool_PurgeInternalEdges
-/// mypurgealgo(mysolid); mypurgealgo.GetFaces(mymap);
+/// Example of use:
+/// NCollection_DataMap<TopoDS_Shape, NCollection_List<TopoDS_Shape>, TopTools_ShapeMapHasher>
+/// mymap; TopOpeBRepTool_PurgeInternalEdges mypurgealgo(mysolid); mypurgealgo.GetFaces(mymap);
 pub use crate::ffi_types::TopOpeBRepTool_PurgeInternalEdges as PurgeInternalEdges;
 
 unsafe impl crate::CppDeletable for PurgeInternalEdges {
@@ -1746,8 +1834,8 @@ unsafe impl crate::CppDeletable for PurgeInternalEdges {
 }
 
 impl PurgeInternalEdges {
-    /// **Source:** `TopOpeBRepTool_PurgeInternalEdges.hxx`:47 - `TopOpeBRepTool_PurgeInternalEdges::TopOpeBRepTool_PurgeInternalEdges()`
-    /// Initialize   members and  begin  exploration   of  shape
+    /// **Source:** `TopOpeBRepTool_PurgeInternalEdges.hxx`:48 - `TopOpeBRepTool_PurgeInternalEdges::TopOpeBRepTool_PurgeInternalEdges()`
+    /// Initialize members and begin exploration of shape
     /// depending of the value of PerformNow
     pub fn new_shape_bool(
         theShape: &crate::topo_ds::Shape,
@@ -1762,21 +1850,21 @@ impl PurgeInternalEdges {
         }
     }
 
-    /// **Source:** `TopOpeBRepTool_PurgeInternalEdges.hxx`:47 - `TopOpeBRepTool_PurgeInternalEdges::TopOpeBRepTool_PurgeInternalEdges()`
-    /// Initialize   members and  begin  exploration   of  shape
+    /// **Source:** `TopOpeBRepTool_PurgeInternalEdges.hxx`:48 - `TopOpeBRepTool_PurgeInternalEdges::TopOpeBRepTool_PurgeInternalEdges()`
+    /// Initialize members and begin exploration of shape
     /// depending of the value of PerformNow
     pub fn new_shape(theShape: &crate::topo_ds::Shape) -> crate::OwnedPtr<Self> {
         Self::new_shape_bool(theShape, true)
     }
 
     /// **Source:** `TopOpeBRepTool_PurgeInternalEdges.hxx`:55 - `TopOpeBRepTool_PurgeInternalEdges::Faces()`
-    /// returns  the list  internal edges associated  with
-    /// the faces of the  myShape. If PerformNow was False
+    /// returns the list internal edges associated with
+    /// the faces of the myShape. If PerformNow was False
     /// when created, then call the private Perform method
     /// that do the main job.
     pub fn faces(
         &mut self,
-        theMapFacLstEdg: &mut crate::ffi_types::TopTools_DataMapOfShapeListOfShape,
+        theMapFacLstEdg: &mut crate::ffi_types::NCollection_DataMap_TopoDS_Shape_NCollection_List_TopoDS_Shape_TopTools_ShapeMapHasher,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepTool_PurgeInternalEdges_faces(
@@ -1786,7 +1874,7 @@ impl PurgeInternalEdges {
         })
     }
 
-    /// **Source:** `TopOpeBRepTool_PurgeInternalEdges.hxx`:59 - `TopOpeBRepTool_PurgeInternalEdges::Shape()`
+    /// **Source:** `TopOpeBRepTool_PurgeInternalEdges.hxx`:61 - `TopOpeBRepTool_PurgeInternalEdges::Shape()`
     /// returns myShape modified with the list of internal
     /// edges removed from it.
     pub fn shape(&mut self) -> &mut crate::topo_ds::Shape {
@@ -1799,7 +1887,7 @@ impl PurgeInternalEdges {
         }
     }
 
-    /// **Source:** `TopOpeBRepTool_PurgeInternalEdges.hxx`:62 - `TopOpeBRepTool_PurgeInternalEdges::NbEdges()`
+    /// **Source:** `TopOpeBRepTool_PurgeInternalEdges.hxx`:64 - `TopOpeBRepTool_PurgeInternalEdges::NbEdges()`
     /// returns the number of edges candidate to be removed
     pub fn nb_edges(&self) -> i32 {
         crate::check_result(unsafe {
@@ -1809,8 +1897,8 @@ impl PurgeInternalEdges {
         })
     }
 
-    /// **Source:** `TopOpeBRepTool_PurgeInternalEdges.hxx`:66 - `TopOpeBRepTool_PurgeInternalEdges::IsDone()`
-    /// returns False  if the list  of internal  edges has
+    /// **Source:** `TopOpeBRepTool_PurgeInternalEdges.hxx`:68 - `TopOpeBRepTool_PurgeInternalEdges::IsDone()`
+    /// returns False if the list of internal edges has
     /// not been extracted
     pub fn is_done(&self) -> bool {
         crate::check_result(unsafe {
@@ -1818,7 +1906,7 @@ impl PurgeInternalEdges {
         })
     }
 
-    /// **Source:** `TopOpeBRepTool_PurgeInternalEdges.hxx`:70 - `TopOpeBRepTool_PurgeInternalEdges::Perform()`
+    /// **Source:** `TopOpeBRepTool_PurgeInternalEdges.hxx`:72 - `TopOpeBRepTool_PurgeInternalEdges::Perform()`
     /// Using the list of internal edges from each face,
     /// rebuild myShape by removing those edges.
     pub fn perform(&mut self) {
@@ -1832,7 +1920,7 @@ impl PurgeInternalEdges {
 // From TopOpeBRepTool_REGUS.hxx
 // ========================
 
-/// **Source:** `TopOpeBRepTool_REGUS.hxx`:32 - `TopOpeBRepTool_REGUS`
+/// **Source:** `TopOpeBRepTool_REGUS.hxx`:33 - `TopOpeBRepTool_REGUS`
 pub use crate::ffi_types::TopOpeBRepTool_REGUS as REGUS;
 
 unsafe impl crate::CppDeletable for REGUS {
@@ -1844,7 +1932,7 @@ unsafe impl crate::CppDeletable for REGUS {
 }
 
 impl REGUS {
-    /// **Source:** `TopOpeBRepTool_REGUS.hxx`:37 - `TopOpeBRepTool_REGUS::TopOpeBRepTool_REGUS()`
+    /// **Source:** `TopOpeBRepTool_REGUS.hxx`:38 - `TopOpeBRepTool_REGUS::TopOpeBRepTool_REGUS()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -1853,14 +1941,14 @@ impl REGUS {
         }
     }
 
-    /// **Source:** `TopOpeBRepTool_REGUS.hxx`:39 - `TopOpeBRepTool_REGUS::Init()`
+    /// **Source:** `TopOpeBRepTool_REGUS.hxx`:40 - `TopOpeBRepTool_REGUS::Init()`
     pub fn init(&mut self, S: &crate::topo_ds::Shape) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepTool_REGUS_init(self as *mut Self, S)
         })
     }
 
-    /// **Source:** `TopOpeBRepTool_REGUS.hxx`:41 - `TopOpeBRepTool_REGUS::S()`
+    /// **Source:** `TopOpeBRepTool_REGUS.hxx`:42 - `TopOpeBRepTool_REGUS::S()`
     pub fn s(&self) -> &crate::topo_ds::Shape {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKBool::TopOpeBRepTool_REGUS_s(
@@ -1869,80 +1957,86 @@ impl REGUS {
         }
     }
 
-    /// **Source:** `TopOpeBRepTool_REGUS.hxx`:43 - `TopOpeBRepTool_REGUS::MapS()`
+    /// **Source:** `TopOpeBRepTool_REGUS.hxx`:44 - `TopOpeBRepTool_REGUS::MapS()`
     pub fn map_s(&mut self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepTool_REGUS_map_s(self as *mut Self)
         })
     }
 
-    /// **Source:** `TopOpeBRepTool_REGUS.hxx`:52 - `TopOpeBRepTool_REGUS::SplitFaces()`
+    /// **Source:** `TopOpeBRepTool_REGUS.hxx`:53 - `TopOpeBRepTool_REGUS::SplitFaces()`
     pub fn split_faces(&mut self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepTool_REGUS_split_faces(self as *mut Self)
         })
     }
 
-    /// **Source:** `TopOpeBRepTool_REGUS.hxx`:54 - `TopOpeBRepTool_REGUS::REGU()`
+    /// **Source:** `TopOpeBRepTool_REGUS.hxx`:55 - `TopOpeBRepTool_REGUS::REGU()`
     pub fn regu(&mut self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepTool_REGUS_regu(self as *mut Self)
         })
     }
 
-    /// **Source:** `TopOpeBRepTool_REGUS.hxx`:56 - `TopOpeBRepTool_REGUS::SetFsplits()`
+    /// **Source:** `TopOpeBRepTool_REGUS.hxx`:57 - `TopOpeBRepTool_REGUS::SetFsplits()`
     pub fn set_fsplits(
         &mut self,
-        Fsplits: &mut crate::ffi_types::TopTools_DataMapOfShapeListOfShape,
+        Fsplits: &mut crate::ffi_types::NCollection_DataMap_TopoDS_Shape_NCollection_List_TopoDS_Shape_TopTools_ShapeMapHasher,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepTool_REGUS_set_fsplits(self as *mut Self, Fsplits)
         })
     }
 
-    /// **Source:** `TopOpeBRepTool_REGUS.hxx`:58 - `TopOpeBRepTool_REGUS::GetFsplits()`
-    pub fn get_fsplits(&self, Fsplits: &mut crate::ffi_types::TopTools_DataMapOfShapeListOfShape) {
+    /// **Source:** `TopOpeBRepTool_REGUS.hxx`:61 - `TopOpeBRepTool_REGUS::GetFsplits()`
+    pub fn get_fsplits(
+        &self,
+        Fsplits: &mut crate::ffi_types::NCollection_DataMap_TopoDS_Shape_NCollection_List_TopoDS_Shape_TopTools_ShapeMapHasher,
+    ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepTool_REGUS_get_fsplits(self as *const Self, Fsplits)
         })
     }
 
-    /// **Source:** `TopOpeBRepTool_REGUS.hxx`:60 - `TopOpeBRepTool_REGUS::SetOshNsh()`
+    /// **Source:** `TopOpeBRepTool_REGUS.hxx`:65 - `TopOpeBRepTool_REGUS::SetOshNsh()`
     pub fn set_osh_nsh(
         &mut self,
-        OshNsh: &mut crate::ffi_types::TopTools_DataMapOfShapeListOfShape,
+        OshNsh: &mut crate::ffi_types::NCollection_DataMap_TopoDS_Shape_NCollection_List_TopoDS_Shape_TopTools_ShapeMapHasher,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepTool_REGUS_set_osh_nsh(self as *mut Self, OshNsh)
         })
     }
 
-    /// **Source:** `TopOpeBRepTool_REGUS.hxx`:62 - `TopOpeBRepTool_REGUS::GetOshNsh()`
-    pub fn get_osh_nsh(&self, OshNsh: &mut crate::ffi_types::TopTools_DataMapOfShapeListOfShape) {
+    /// **Source:** `TopOpeBRepTool_REGUS.hxx`:69 - `TopOpeBRepTool_REGUS::GetOshNsh()`
+    pub fn get_osh_nsh(
+        &self,
+        OshNsh: &mut crate::ffi_types::NCollection_DataMap_TopoDS_Shape_NCollection_List_TopoDS_Shape_TopTools_ShapeMapHasher,
+    ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepTool_REGUS_get_osh_nsh(self as *const Self, OshNsh)
         })
     }
 
-    /// **Source:** `TopOpeBRepTool_REGUS.hxx`:64 - `TopOpeBRepTool_REGUS::InitBlock()`
+    /// **Source:** `TopOpeBRepTool_REGUS.hxx`:73 - `TopOpeBRepTool_REGUS::InitBlock()`
     pub fn init_block(&mut self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepTool_REGUS_init_block(self as *mut Self)
         })
     }
 
-    /// **Source:** `TopOpeBRepTool_REGUS.hxx`:66 - `TopOpeBRepTool_REGUS::NextinBlock()`
+    /// **Source:** `TopOpeBRepTool_REGUS.hxx`:75 - `TopOpeBRepTool_REGUS::NextinBlock()`
     pub fn nextin_block(&mut self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepTool_REGUS_nextin_block(self as *mut Self)
         })
     }
 
-    /// **Source:** `TopOpeBRepTool_REGUS.hxx`:68 - `TopOpeBRepTool_REGUS::NearestF()`
+    /// **Source:** `TopOpeBRepTool_REGUS.hxx`:77 - `TopOpeBRepTool_REGUS::NearestF()`
     pub fn nearest_f(
         &self,
         e: &crate::topo_ds::Edge,
-        lof: &crate::ffi_types::TopTools_ListOfShape,
+        lof: &crate::ffi_types::NCollection_List_TopoDS_Shape,
         ffound: &mut crate::topo_ds::Face,
     ) -> bool {
         crate::check_result(unsafe {
@@ -1955,21 +2049,21 @@ impl REGUS {
         })
     }
 
-    /// **Source:** `TopOpeBRepTool_REGUS.hxx`:45 - `TopOpeBRepTool_REGUS::WireToFace()`
+    /// **Source:** `TopOpeBRepTool_REGUS.hxx`:46 - `TopOpeBRepTool_REGUS::WireToFace()`
     pub fn wire_to_face(
         Fanc: &crate::topo_ds::Face,
-        nWs: &crate::ffi_types::TopTools_ListOfShape,
-        nFs: &mut crate::ffi_types::TopTools_ListOfShape,
+        nWs: &crate::ffi_types::NCollection_List_TopoDS_Shape,
+        nFs: &mut crate::ffi_types::NCollection_List_TopoDS_Shape,
     ) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepTool_REGUS_wire_to_face(Fanc, nWs, nFs)
         })
     }
 
-    /// **Source:** `TopOpeBRepTool_REGUS.hxx`:49 - `TopOpeBRepTool_REGUS::SplitF()`
+    /// **Source:** `TopOpeBRepTool_REGUS.hxx`:50 - `TopOpeBRepTool_REGUS::SplitF()`
     pub fn split_f(
         Fanc: &crate::topo_ds::Face,
-        FSplits: &mut crate::ffi_types::TopTools_ListOfShape,
+        FSplits: &mut crate::ffi_types::NCollection_List_TopoDS_Shape,
     ) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepTool_REGUS_split_f(Fanc, FSplits)
@@ -1981,7 +2075,7 @@ impl REGUS {
 // From TopOpeBRepTool_REGUW.hxx
 // ========================
 
-/// **Source:** `TopOpeBRepTool_REGUW.hxx`:37 - `TopOpeBRepTool_REGUW`
+/// **Source:** `TopOpeBRepTool_REGUW.hxx`:39 - `TopOpeBRepTool_REGUW`
 pub use crate::ffi_types::TopOpeBRepTool_REGUW as REGUW;
 
 unsafe impl crate::CppDeletable for REGUW {
@@ -1993,7 +2087,7 @@ unsafe impl crate::CppDeletable for REGUW {
 }
 
 impl REGUW {
-    /// **Source:** `TopOpeBRepTool_REGUW.hxx`:42 - `TopOpeBRepTool_REGUW::TopOpeBRepTool_REGUW()`
+    /// **Source:** `TopOpeBRepTool_REGUW.hxx`:44 - `TopOpeBRepTool_REGUW::TopOpeBRepTool_REGUW()`
     pub fn new_face(FRef: &crate::topo_ds::Face) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -2002,7 +2096,7 @@ impl REGUW {
         }
     }
 
-    /// **Source:** `TopOpeBRepTool_REGUW.hxx`:44 - `TopOpeBRepTool_REGUW::Fref()`
+    /// **Source:** `TopOpeBRepTool_REGUW.hxx`:46 - `TopOpeBRepTool_REGUW::Fref()`
     pub fn fref(&self) -> &crate::topo_ds::Face {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKBool::TopOpeBRepTool_REGUW_fref(
@@ -2011,52 +2105,61 @@ impl REGUW {
         }
     }
 
-    /// **Source:** `TopOpeBRepTool_REGUW.hxx`:46 - `TopOpeBRepTool_REGUW::SetEsplits()`
+    /// **Source:** `TopOpeBRepTool_REGUW.hxx`:48 - `TopOpeBRepTool_REGUW::SetEsplits()`
     pub fn set_esplits(
         &mut self,
-        Esplits: &mut crate::ffi_types::TopTools_DataMapOfShapeListOfShape,
+        Esplits: &mut crate::ffi_types::NCollection_DataMap_TopoDS_Shape_NCollection_List_TopoDS_Shape_TopTools_ShapeMapHasher,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepTool_REGUW_set_esplits(self as *mut Self, Esplits)
         })
     }
 
-    /// **Source:** `TopOpeBRepTool_REGUW.hxx`:48 - `TopOpeBRepTool_REGUW::GetEsplits()`
-    pub fn get_esplits(&self, Esplits: &mut crate::ffi_types::TopTools_DataMapOfShapeListOfShape) {
+    /// **Source:** `TopOpeBRepTool_REGUW.hxx`:52 - `TopOpeBRepTool_REGUW::GetEsplits()`
+    pub fn get_esplits(
+        &self,
+        Esplits: &mut crate::ffi_types::NCollection_DataMap_TopoDS_Shape_NCollection_List_TopoDS_Shape_TopTools_ShapeMapHasher,
+    ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepTool_REGUW_get_esplits(self as *const Self, Esplits)
         })
     }
 
-    /// **Source:** `TopOpeBRepTool_REGUW.hxx`:50 - `TopOpeBRepTool_REGUW::SetOwNw()`
-    pub fn set_ow_nw(&mut self, OwNw: &mut crate::ffi_types::TopTools_DataMapOfShapeListOfShape) {
+    /// **Source:** `TopOpeBRepTool_REGUW.hxx`:56 - `TopOpeBRepTool_REGUW::SetOwNw()`
+    pub fn set_ow_nw(
+        &mut self,
+        OwNw: &mut crate::ffi_types::NCollection_DataMap_TopoDS_Shape_NCollection_List_TopoDS_Shape_TopTools_ShapeMapHasher,
+    ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepTool_REGUW_set_ow_nw(self as *mut Self, OwNw)
         })
     }
 
-    /// **Source:** `TopOpeBRepTool_REGUW.hxx`:52 - `TopOpeBRepTool_REGUW::GetOwNw()`
-    pub fn get_ow_nw(&self, OwNw: &mut crate::ffi_types::TopTools_DataMapOfShapeListOfShape) {
+    /// **Source:** `TopOpeBRepTool_REGUW.hxx`:60 - `TopOpeBRepTool_REGUW::GetOwNw()`
+    pub fn get_ow_nw(
+        &self,
+        OwNw: &mut crate::ffi_types::NCollection_DataMap_TopoDS_Shape_NCollection_List_TopoDS_Shape_TopTools_ShapeMapHasher,
+    ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepTool_REGUW_get_ow_nw(self as *const Self, OwNw)
         })
     }
 
-    /// **Source:** `TopOpeBRepTool_REGUW.hxx`:54 - `TopOpeBRepTool_REGUW::SplitEds()`
+    /// **Source:** `TopOpeBRepTool_REGUW.hxx`:64 - `TopOpeBRepTool_REGUW::SplitEds()`
     pub fn split_eds(&mut self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepTool_REGUW_split_eds(self as *mut Self)
         })
     }
 
-    /// **Source:** `TopOpeBRepTool_REGUW.hxx`:56 - `TopOpeBRepTool_REGUW::Init()`
+    /// **Source:** `TopOpeBRepTool_REGUW.hxx`:66 - `TopOpeBRepTool_REGUW::Init()`
     pub fn init(&mut self, S: &crate::topo_ds::Shape) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepTool_REGUW_init(self as *mut Self, S)
         })
     }
 
-    /// **Source:** `TopOpeBRepTool_REGUW.hxx`:58 - `TopOpeBRepTool_REGUW::S()`
+    /// **Source:** `TopOpeBRepTool_REGUW.hxx`:68 - `TopOpeBRepTool_REGUW::S()`
     pub fn s(&self) -> &crate::topo_ds::Shape {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKBool::TopOpeBRepTool_REGUW_s(
@@ -2065,29 +2168,29 @@ impl REGUW {
         }
     }
 
-    /// **Source:** `TopOpeBRepTool_REGUW.hxx`:60 - `TopOpeBRepTool_REGUW::HasInit()`
+    /// **Source:** `TopOpeBRepTool_REGUW.hxx`:70 - `TopOpeBRepTool_REGUW::HasInit()`
     pub fn has_init(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepTool_REGUW_has_init(self as *const Self)
         })
     }
 
-    /// **Source:** `TopOpeBRepTool_REGUW.hxx`:62 - `TopOpeBRepTool_REGUW::MapS()`
+    /// **Source:** `TopOpeBRepTool_REGUW.hxx`:72 - `TopOpeBRepTool_REGUW::MapS()`
     pub fn map_s(&mut self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepTool_REGUW_map_s(self as *mut Self)
         })
     }
 
-    /// **Source:** `TopOpeBRepTool_REGUW.hxx`:64 - `TopOpeBRepTool_REGUW::REGU()`
-    pub fn regu_int_shape_listofshape(
+    /// **Source:** `TopOpeBRepTool_REGUW.hxx`:74 - `TopOpeBRepTool_REGUW::REGU()`
+    pub fn regu_int_shape_list_shape(
         &mut self,
         istep: i32,
         Scur: &crate::topo_ds::Shape,
-        Splits: &mut crate::ffi_types::TopTools_ListOfShape,
+        Splits: &mut crate::ffi_types::NCollection_List_TopoDS_Shape,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi_extern_TKBool::TopOpeBRepTool_REGUW_regu_int_shape_listofshape(
+            crate::ffi_extern_TKBool::TopOpeBRepTool_REGUW_regu_int_shape_list_shape(
                 self as *mut Self,
                 istep,
                 Scur,
@@ -2096,38 +2199,38 @@ impl REGUW {
         })
     }
 
-    /// **Source:** `TopOpeBRepTool_REGUW.hxx`:68 - `TopOpeBRepTool_REGUW::REGU()`
+    /// **Source:** `TopOpeBRepTool_REGUW.hxx`:78 - `TopOpeBRepTool_REGUW::REGU()`
     pub fn regu(&mut self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepTool_REGUW_regu(self as *mut Self)
         })
     }
 
-    /// **Source:** `TopOpeBRepTool_REGUW.hxx`:70 - `TopOpeBRepTool_REGUW::GetSplits()`
-    pub fn get_splits(&self, Splits: &mut crate::ffi_types::TopTools_ListOfShape) -> bool {
+    /// **Source:** `TopOpeBRepTool_REGUW.hxx`:80 - `TopOpeBRepTool_REGUW::GetSplits()`
+    pub fn get_splits(&self, Splits: &mut crate::ffi_types::NCollection_List_TopoDS_Shape) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepTool_REGUW_get_splits(self as *const Self, Splits)
         })
     }
 
-    /// **Source:** `TopOpeBRepTool_REGUW.hxx`:72 - `TopOpeBRepTool_REGUW::InitBlock()`
+    /// **Source:** `TopOpeBRepTool_REGUW.hxx`:82 - `TopOpeBRepTool_REGUW::InitBlock()`
     pub fn init_block(&mut self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepTool_REGUW_init_block(self as *mut Self)
         })
     }
 
-    /// **Source:** `TopOpeBRepTool_REGUW.hxx`:74 - `TopOpeBRepTool_REGUW::NextinBlock()`
+    /// **Source:** `TopOpeBRepTool_REGUW.hxx`:84 - `TopOpeBRepTool_REGUW::NextinBlock()`
     pub fn nextin_block(&mut self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepTool_REGUW_nextin_block(self as *mut Self)
         })
     }
 
-    /// **Source:** `TopOpeBRepTool_REGUW.hxx`:76 - `TopOpeBRepTool_REGUW::NearestE()`
+    /// **Source:** `TopOpeBRepTool_REGUW.hxx`:86 - `TopOpeBRepTool_REGUW::NearestE()`
     pub fn nearest_e(
         &self,
-        loe: &crate::ffi_types::TopTools_ListOfShape,
+        loe: &crate::ffi_types::NCollection_List_TopoDS_Shape,
         efound: &mut crate::topo_ds::Edge,
     ) -> bool {
         crate::check_result(unsafe {
@@ -2139,14 +2242,14 @@ impl REGUW {
         })
     }
 
-    /// **Source:** `TopOpeBRepTool_REGUW.hxx`:79 - `TopOpeBRepTool_REGUW::Connexity()`
+    /// **Source:** `TopOpeBRepTool_REGUW.hxx`:89 - `TopOpeBRepTool_REGUW::Connexity()`
     pub fn connexity(&self, v: &crate::topo_ds::Vertex, co: &mut connexity) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepTool_REGUW_connexity(self as *const Self, v, co)
         })
     }
 
-    /// **Source:** `TopOpeBRepTool_REGUW.hxx`:82 - `TopOpeBRepTool_REGUW::AddNewConnexity()`
+    /// **Source:** `TopOpeBRepTool_REGUW.hxx`:91 - `TopOpeBRepTool_REGUW::AddNewConnexity()`
     pub fn add_new_connexity(
         &mut self,
         v: &crate::topo_ds::Vertex,
@@ -2163,7 +2266,7 @@ impl REGUW {
         })
     }
 
-    /// **Source:** `TopOpeBRepTool_REGUW.hxx`:86 - `TopOpeBRepTool_REGUW::RemoveOldConnexity()`
+    /// **Source:** `TopOpeBRepTool_REGUW.hxx`:95 - `TopOpeBRepTool_REGUW::RemoveOldConnexity()`
     pub fn remove_old_connexity(
         &mut self,
         v: &crate::topo_ds::Vertex,
@@ -2180,7 +2283,7 @@ impl REGUW {
         })
     }
 
-    /// **Source:** `TopOpeBRepTool_REGUW.hxx`:90 - `TopOpeBRepTool_REGUW::UpdateMultiple()`
+    /// **Source:** `TopOpeBRepTool_REGUW.hxx`:99 - `TopOpeBRepTool_REGUW::UpdateMultiple()`
     pub fn update_multiple(&mut self, v: &crate::topo_ds::Vertex) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepTool_REGUW_update_multiple(self as *mut Self, v)
@@ -2192,7 +2295,7 @@ impl REGUW {
 // From TopOpeBRepTool_ShapeClassifier.hxx
 // ========================
 
-/// **Source:** `TopOpeBRepTool_ShapeClassifier.hxx`:34 - `TopOpeBRepTool_ShapeClassifier`
+/// **Source:** `TopOpeBRepTool_ShapeClassifier.hxx`:35 - `TopOpeBRepTool_ShapeClassifier`
 pub use crate::ffi_types::TopOpeBRepTool_ShapeClassifier as ShapeClassifier;
 
 unsafe impl crate::CppDeletable for ShapeClassifier {
@@ -2204,7 +2307,7 @@ unsafe impl crate::CppDeletable for ShapeClassifier {
 }
 
 impl ShapeClassifier {
-    /// **Source:** `TopOpeBRepTool_ShapeClassifier.hxx`:39 - `TopOpeBRepTool_ShapeClassifier::TopOpeBRepTool_ShapeClassifier()`
+    /// **Source:** `TopOpeBRepTool_ShapeClassifier.hxx`:40 - `TopOpeBRepTool_ShapeClassifier::TopOpeBRepTool_ShapeClassifier()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -2213,7 +2316,7 @@ impl ShapeClassifier {
         }
     }
 
-    /// **Source:** `TopOpeBRepTool_ShapeClassifier.hxx`:43 - `TopOpeBRepTool_ShapeClassifier::TopOpeBRepTool_ShapeClassifier()`
+    /// **Source:** `TopOpeBRepTool_ShapeClassifier.hxx`:44 - `TopOpeBRepTool_ShapeClassifier::TopOpeBRepTool_ShapeClassifier()`
     /// SRef is the reference shape.
     /// StateShapeShape(S) calls will classify S with SRef.
     pub fn new_shape(SRef: &crate::topo_ds::Shape) -> crate::OwnedPtr<Self> {
@@ -2224,7 +2327,7 @@ impl ShapeClassifier {
         }
     }
 
-    /// **Source:** `TopOpeBRepTool_ShapeClassifier.hxx`:46 - `TopOpeBRepTool_ShapeClassifier::ClearAll()`
+    /// **Source:** `TopOpeBRepTool_ShapeClassifier.hxx`:47 - `TopOpeBRepTool_ShapeClassifier::ClearAll()`
     /// reset all internal data (SolidClassifier included)
     pub fn clear_all(&mut self) {
         crate::check_void_result(unsafe {
@@ -2232,7 +2335,7 @@ impl ShapeClassifier {
         })
     }
 
-    /// **Source:** `TopOpeBRepTool_ShapeClassifier.hxx`:49 - `TopOpeBRepTool_ShapeClassifier::ClearCurrent()`
+    /// **Source:** `TopOpeBRepTool_ShapeClassifier.hxx`:50 - `TopOpeBRepTool_ShapeClassifier::ClearCurrent()`
     /// reset all internal data (except SolidClassified)
     pub fn clear_current(&mut self) {
         crate::check_void_result(unsafe {
@@ -2242,7 +2345,7 @@ impl ShapeClassifier {
         })
     }
 
-    /// **Source:** `TopOpeBRepTool_ShapeClassifier.hxx`:53 - `TopOpeBRepTool_ShapeClassifier::SetReference()`
+    /// **Source:** `TopOpeBRepTool_ShapeClassifier.hxx`:54 - `TopOpeBRepTool_ShapeClassifier::SetReference()`
     /// Set SRef as reference shape
     /// the next StateShapeReference(S,AvoidS) calls will classify S with SRef.
     pub fn set_reference(&mut self, SRef: &crate::topo_ds::Shape) {
@@ -2254,7 +2357,7 @@ impl ShapeClassifier {
         })
     }
 
-    /// **Source:** `TopOpeBRepTool_ShapeClassifier.hxx`:58 - `TopOpeBRepTool_ShapeClassifier::StateShapeShape()`
+    /// **Source:** `TopOpeBRepTool_ShapeClassifier.hxx`:59 - `TopOpeBRepTool_ShapeClassifier::StateShapeShape()`
     /// classify shape S compared with shape SRef.
     /// samedomain = 0 : S1,S2 are not same domain
     /// samedomain = 1 : S1,S2 are same domain
@@ -2275,7 +2378,7 @@ impl ShapeClassifier {
         .unwrap()
     }
 
-    /// **Source:** `TopOpeBRepTool_ShapeClassifier.hxx`:62 - `TopOpeBRepTool_ShapeClassifier::SameDomain()`
+    /// **Source:** `TopOpeBRepTool_ShapeClassifier.hxx`:63 - `TopOpeBRepTool_ShapeClassifier::SameDomain()`
     pub fn same_domain(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepTool_ShapeClassifier_same_domain(
@@ -2284,7 +2387,7 @@ impl ShapeClassifier {
         })
     }
 
-    /// **Source:** `TopOpeBRepTool_ShapeClassifier.hxx`:70 - `TopOpeBRepTool_ShapeClassifier::SameDomain()`
+    /// **Source:** `TopOpeBRepTool_ShapeClassifier.hxx`:71 - `TopOpeBRepTool_ShapeClassifier::SameDomain()`
     /// set mode for next StateShapeShape call
     /// samedomain = true --> S,Sref are same domain --> point
     /// on restriction (ON S) is used to classify S.
@@ -2300,7 +2403,7 @@ impl ShapeClassifier {
         })
     }
 
-    /// **Source:** `TopOpeBRepTool_ShapeClassifier.hxx`:75 - `TopOpeBRepTool_ShapeClassifier::StateShapeShape()`
+    /// **Source:** `TopOpeBRepTool_ShapeClassifier.hxx`:76 - `TopOpeBRepTool_ShapeClassifier::StateShapeShape()`
     /// classify shape S compared with shape SRef.
     /// AvoidS is not used in classification; AvoidS may be IsNull().
     /// (useful to avoid ON or UNKNOWN state in special cases)
@@ -2321,21 +2424,21 @@ impl ShapeClassifier {
         .unwrap()
     }
 
-    /// **Source:** `TopOpeBRepTool_ShapeClassifier.hxx`:83 - `TopOpeBRepTool_ShapeClassifier::StateShapeShape()`
+    /// **Source:** `TopOpeBRepTool_ShapeClassifier.hxx`:84 - `TopOpeBRepTool_ShapeClassifier::StateShapeShape()`
     /// classify shape S compared with shape SRef.
     /// LAvoidS is list of S subshapes to avoid in classification
     /// AvoidS is not used in classification; AvoidS may be IsNull().
     /// (useful to avoid ON or UNKNOWN state in special cases)
-    pub fn state_shape_shape_shape_listofshape_shape(
+    pub fn state_shape_shape_shape_list_shape_shape(
         &mut self,
         S: &crate::topo_ds::Shape,
-        LAvoidS: &crate::ffi_types::TopTools_ListOfShape,
+        LAvoidS: &crate::ffi_types::NCollection_List_TopoDS_Shape,
         SRef: &crate::topo_ds::Shape,
     ) -> crate::top_abs::State {
-        crate::top_abs::State::try_from(crate::check_result(unsafe { crate::ffi_extern_TKBool::TopOpeBRepTool_ShapeClassifier_state_shape_shape_shape_listofshape_shape(self as *mut Self, S, LAvoidS, SRef) })).unwrap()
+        crate::top_abs::State::try_from(crate::check_result(unsafe { crate::ffi_extern_TKBool::TopOpeBRepTool_ShapeClassifier_state_shape_shape_shape_list_shape_shape(self as *mut Self, S, LAvoidS, SRef) })).unwrap()
     }
 
-    /// **Source:** `TopOpeBRepTool_ShapeClassifier.hxx`:90 - `TopOpeBRepTool_ShapeClassifier::StateShapeReference()`
+    /// **Source:** `TopOpeBRepTool_ShapeClassifier.hxx`:91 - `TopOpeBRepTool_ShapeClassifier::StateShapeReference()`
     /// classify shape S compared with reference shape.
     /// AvoidS is not used in classification; AvoidS may be IsNull().
     /// (useful to avoid ON or UNKNOWN state in special cases)
@@ -2354,19 +2457,19 @@ impl ShapeClassifier {
         .unwrap()
     }
 
-    /// **Source:** `TopOpeBRepTool_ShapeClassifier.hxx`:96 - `TopOpeBRepTool_ShapeClassifier::StateShapeReference()`
+    /// **Source:** `TopOpeBRepTool_ShapeClassifier.hxx`:97 - `TopOpeBRepTool_ShapeClassifier::StateShapeReference()`
     /// classify shape S compared with reference shape.
     /// LAvoidS is list of S subshapes to avoid in classification
     /// (useful to avoid ON or UNKNOWN state in special cases)
-    pub fn state_shape_reference_shape_listofshape(
+    pub fn state_shape_reference_shape_list_shape(
         &mut self,
         S: &crate::topo_ds::Shape,
-        LAvoidS: &crate::ffi_types::TopTools_ListOfShape,
+        LAvoidS: &crate::ffi_types::NCollection_List_TopoDS_Shape,
     ) -> crate::top_abs::State {
-        crate::top_abs::State::try_from(crate::check_result(unsafe { crate::ffi_extern_TKBool::TopOpeBRepTool_ShapeClassifier_state_shape_reference_shape_listofshape(self as *mut Self, S, LAvoidS) })).unwrap()
+        crate::top_abs::State::try_from(crate::check_result(unsafe { crate::ffi_extern_TKBool::TopOpeBRepTool_ShapeClassifier_state_shape_reference_shape_list_shape(self as *mut Self, S, LAvoidS) })).unwrap()
     }
 
-    /// **Source:** `TopOpeBRepTool_ShapeClassifier.hxx`:99 - `TopOpeBRepTool_ShapeClassifier::ChangeSolidClassifier()`
+    /// **Source:** `TopOpeBRepTool_ShapeClassifier.hxx`:100 - `TopOpeBRepTool_ShapeClassifier::ChangeSolidClassifier()`
     pub fn change_solid_classifier(&mut self) -> &mut SolidClassifier {
         unsafe {
             &mut *(crate::check_result(
@@ -2377,7 +2480,7 @@ impl ShapeClassifier {
         }
     }
 
-    /// **Source:** `TopOpeBRepTool_ShapeClassifier.hxx`:102 - `TopOpeBRepTool_ShapeClassifier::StateP2DReference()`
+    /// **Source:** `TopOpeBRepTool_ShapeClassifier.hxx`:103 - `TopOpeBRepTool_ShapeClassifier::StateP2DReference()`
     /// classify point P2D with myRef
     pub fn state_p2d_reference(&mut self, P2D: &crate::gp::Pnt2d) {
         crate::check_void_result(unsafe {
@@ -2388,7 +2491,7 @@ impl ShapeClassifier {
         })
     }
 
-    /// **Source:** `TopOpeBRepTool_ShapeClassifier.hxx`:105 - `TopOpeBRepTool_ShapeClassifier::StateP3DReference()`
+    /// **Source:** `TopOpeBRepTool_ShapeClassifier.hxx`:106 - `TopOpeBRepTool_ShapeClassifier::StateP3DReference()`
     /// classify point P3D with myRef
     pub fn state_p3d_reference(&mut self, P3D: &crate::gp::Pnt) {
         crate::check_void_result(unsafe {
@@ -2399,7 +2502,7 @@ impl ShapeClassifier {
         })
     }
 
-    /// **Source:** `TopOpeBRepTool_ShapeClassifier.hxx`:108 - `TopOpeBRepTool_ShapeClassifier::State()`
+    /// **Source:** `TopOpeBRepTool_ShapeClassifier.hxx`:109 - `TopOpeBRepTool_ShapeClassifier::State()`
     /// return field myState
     pub fn state(&self) -> crate::top_abs::State {
         crate::top_abs::State::try_from(crate::check_result(unsafe {
@@ -2408,7 +2511,7 @@ impl ShapeClassifier {
         .unwrap()
     }
 
-    /// **Source:** `TopOpeBRepTool_ShapeClassifier.hxx`:110 - `TopOpeBRepTool_ShapeClassifier::P2D()`
+    /// **Source:** `TopOpeBRepTool_ShapeClassifier.hxx`:111 - `TopOpeBRepTool_ShapeClassifier::P2D()`
     pub fn p2d(&self) -> &crate::gp::Pnt2d {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKBool::TopOpeBRepTool_ShapeClassifier_p2d(
@@ -2417,7 +2520,7 @@ impl ShapeClassifier {
         }
     }
 
-    /// **Source:** `TopOpeBRepTool_ShapeClassifier.hxx`:112 - `TopOpeBRepTool_ShapeClassifier::P3D()`
+    /// **Source:** `TopOpeBRepTool_ShapeClassifier.hxx`:113 - `TopOpeBRepTool_ShapeClassifier::P3D()`
     pub fn p3d(&self) -> &crate::gp::Pnt {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKBool::TopOpeBRepTool_ShapeClassifier_p3d(
@@ -2461,9 +2564,9 @@ impl ShapeExplorer {
     /// <ToFind> is the type of shapes to search.
     /// TopAbs_VERTEX, TopAbs_EDGE, ...
     ///
-    /// <ToAvoid>   is the type   of shape to  skip in the
-    /// exploration.   If   <ToAvoid>  is  equal  or  less
-    /// complex than <ToFind> or if  <ToAVoid> is SHAPE it
+    /// <ToAvoid> is the type of shape to skip in the
+    /// exploration. If <ToAvoid> is equal or less
+    /// complex than <ToFind> or if <ToAVoid> is SHAPE it
     /// has no effect on the exploration.
     pub fn new_shape_shapeenum2(
         S: &crate::topo_ds::Shape,
@@ -2558,7 +2661,7 @@ impl ShapeExplorer {
         }
     }
 
-    /// Inherited: **Source:** `TopExp_Explorer.hxx`:113 - `TopExp_Explorer::More()`
+    /// Inherited: **Source:** `TopExp_Explorer.hxx`:115 - `TopExp_Explorer::More()`
     pub fn more(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepTool_ShapeExplorer_inherited_More(
@@ -2567,7 +2670,7 @@ impl ShapeExplorer {
         })
     }
 
-    /// Inherited: **Source:** `TopExp_Explorer.hxx`:123 - `TopExp_Explorer::Value()`
+    /// Inherited: **Source:** `TopExp_Explorer.hxx`:121 - `TopExp_Explorer::Value()`
     pub fn value(&self) -> &crate::topo_ds::Shape {
         unsafe {
             &*(crate::check_result(
@@ -2578,7 +2681,7 @@ impl ShapeExplorer {
         }
     }
 
-    /// Inherited: **Source:** `TopExp_Explorer.hxx`:128 - `TopExp_Explorer::Current()`
+    /// Inherited: **Source:** `TopExp_Explorer.hxx`:124 - `TopExp_Explorer::Current()`
     pub fn current(&self) -> &crate::topo_ds::Shape {
         unsafe {
             &*(crate::check_result(
@@ -2589,7 +2692,7 @@ impl ShapeExplorer {
         }
     }
 
-    /// Inherited: **Source:** `TopExp_Explorer.hxx`:131 - `TopExp_Explorer::ReInit()`
+    /// Inherited: **Source:** `TopExp_Explorer.hxx`:127 - `TopExp_Explorer::ReInit()`
     pub fn re_init(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepTool_ShapeExplorer_inherited_ReInit(
@@ -2598,7 +2701,7 @@ impl ShapeExplorer {
         })
     }
 
-    /// Inherited: **Source:** `TopExp_Explorer.hxx`:134 - `TopExp_Explorer::ExploredShape()`
+    /// Inherited: **Source:** `TopExp_Explorer.hxx`:130 - `TopExp_Explorer::ExploredShape()`
     pub fn explored_shape(&self) -> &crate::topo_ds::Shape {
         unsafe {
             &*(crate::check_result(
@@ -2609,7 +2712,7 @@ impl ShapeExplorer {
         }
     }
 
-    /// Inherited: **Source:** `TopExp_Explorer.hxx`:138 - `TopExp_Explorer::Depth()`
+    /// Inherited: **Source:** `TopExp_Explorer.hxx`:134 - `TopExp_Explorer::Depth()`
     pub fn depth(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepTool_ShapeExplorer_inherited_Depth(
@@ -2618,7 +2721,7 @@ impl ShapeExplorer {
         })
     }
 
-    /// Inherited: **Source:** `TopExp_Explorer.hxx`:142 - `TopExp_Explorer::Clear()`
+    /// Inherited: **Source:** `TopExp_Explorer.hxx`:137 - `TopExp_Explorer::Clear()`
     pub fn clear(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepTool_ShapeExplorer_inherited_Clear(
@@ -2675,8 +2778,8 @@ impl ShapeTool {
 
     /// **Source:** `TopOpeBRepTool_ShapeTool.hxx`:46 - `TopOpeBRepTool_ShapeTool::BASISCURVE()`
     pub fn basiscurve_handlegeomcurve(
-        C: &crate::ffi_types::HandleGeomCurve,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleGeomCurve> {
+        C: &crate::ffi_types::Handle_Geom_Curve,
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Geom_Curve> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKBool::TopOpeBRepTool_ShapeTool_basiscurve_handlegeomcurve(C),
@@ -2687,7 +2790,7 @@ impl ShapeTool {
     /// **Source:** `TopOpeBRepTool_ShapeTool.hxx`:48 - `TopOpeBRepTool_ShapeTool::BASISCURVE()`
     pub fn basiscurve_edge(
         E: &crate::topo_ds::Edge,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleGeomCurve> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Geom_Curve> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKBool::TopOpeBRepTool_ShapeTool_basiscurve_edge(E),
@@ -2697,8 +2800,8 @@ impl ShapeTool {
 
     /// **Source:** `TopOpeBRepTool_ShapeTool.hxx`:50 - `TopOpeBRepTool_ShapeTool::BASISSURFACE()`
     pub fn basissurface_handlegeomsurface(
-        S: &crate::ffi_types::HandleGeomSurface,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleGeomSurface> {
+        S: &crate::ffi_types::Handle_Geom_Surface,
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Geom_Surface> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKBool::TopOpeBRepTool_ShapeTool_basissurface_handlegeomsurface(
@@ -2711,7 +2814,7 @@ impl ShapeTool {
     /// **Source:** `TopOpeBRepTool_ShapeTool.hxx`:52 - `TopOpeBRepTool_ShapeTool::BASISSURFACE()`
     pub fn basissurface_face(
         F: &crate::topo_ds::Face,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleGeomSurface> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Geom_Surface> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKBool::TopOpeBRepTool_ShapeTool_basissurface_face(F),
@@ -2721,7 +2824,7 @@ impl ShapeTool {
 
     /// **Source:** `TopOpeBRepTool_ShapeTool.hxx`:54 - `TopOpeBRepTool_ShapeTool::UVBOUNDS()`
     pub fn uvbounds_handlegeomsurface_bool2_real4(
-        S: &crate::ffi_types::HandleGeomSurface,
+        S: &crate::ffi_types::Handle_Geom_Surface,
         UPeri: &mut bool,
         VPeri: &mut bool,
         Umin: &mut f64,
@@ -2764,7 +2867,7 @@ impl ShapeTool {
         })
     }
 
-    /// **Source:** `TopOpeBRepTool_ShapeTool.hxx`:81 - `TopOpeBRepTool_ShapeTool::Closed()`
+    /// **Source:** `TopOpeBRepTool_ShapeTool.hxx`:79 - `TopOpeBRepTool_ShapeTool::Closed()`
     /// indicates whether shape S1 is a closing shape on S2 or not.
     pub fn closed(S1: &crate::topo_ds::Shape, S2: &crate::topo_ds::Shape) -> bool {
         crate::check_result(unsafe {
@@ -2772,7 +2875,7 @@ impl ShapeTool {
         })
     }
 
-    /// **Source:** `TopOpeBRepTool_ShapeTool.hxx`:83 - `TopOpeBRepTool_ShapeTool::PeriodizeParameter()`
+    /// **Source:** `TopOpeBRepTool_ShapeTool.hxx`:81 - `TopOpeBRepTool_ShapeTool::PeriodizeParameter()`
     pub fn periodize_parameter(
         par: f64,
         EE: &crate::topo_ds::Shape,
@@ -2783,14 +2886,14 @@ impl ShapeTool {
         })
     }
 
-    /// **Source:** `TopOpeBRepTool_ShapeTool.hxx`:87 - `TopOpeBRepTool_ShapeTool::ShapesSameOriented()`
+    /// **Source:** `TopOpeBRepTool_ShapeTool.hxx`:85 - `TopOpeBRepTool_ShapeTool::ShapesSameOriented()`
     pub fn shapes_same_oriented(S1: &crate::topo_ds::Shape, S2: &crate::topo_ds::Shape) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepTool_ShapeTool_shapes_same_oriented(S1, S2)
         })
     }
 
-    /// **Source:** `TopOpeBRepTool_ShapeTool.hxx`:90 - `TopOpeBRepTool_ShapeTool::SurfacesSameOriented()`
+    /// **Source:** `TopOpeBRepTool_ShapeTool.hxx`:87 - `TopOpeBRepTool_ShapeTool::SurfacesSameOriented()`
     pub fn surfaces_same_oriented(
         S1: &crate::b_rep_adaptor::Surface,
         S2: &crate::b_rep_adaptor::Surface,
@@ -2800,14 +2903,14 @@ impl ShapeTool {
         })
     }
 
-    /// **Source:** `TopOpeBRepTool_ShapeTool.hxx`:93 - `TopOpeBRepTool_ShapeTool::FacesSameOriented()`
+    /// **Source:** `TopOpeBRepTool_ShapeTool.hxx`:90 - `TopOpeBRepTool_ShapeTool::FacesSameOriented()`
     pub fn faces_same_oriented(F1: &crate::topo_ds::Shape, F2: &crate::topo_ds::Shape) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepTool_ShapeTool_faces_same_oriented(F1, F2)
         })
     }
 
-    /// **Source:** `TopOpeBRepTool_ShapeTool.hxx`:96 - `TopOpeBRepTool_ShapeTool::CurvesSameOriented()`
+    /// **Source:** `TopOpeBRepTool_ShapeTool.hxx`:92 - `TopOpeBRepTool_ShapeTool::CurvesSameOriented()`
     pub fn curves_same_oriented(
         C1: &crate::b_rep_adaptor::Curve,
         C2: &crate::b_rep_adaptor::Curve,
@@ -2817,14 +2920,14 @@ impl ShapeTool {
         })
     }
 
-    /// **Source:** `TopOpeBRepTool_ShapeTool.hxx`:99 - `TopOpeBRepTool_ShapeTool::EdgesSameOriented()`
+    /// **Source:** `TopOpeBRepTool_ShapeTool.hxx`:95 - `TopOpeBRepTool_ShapeTool::EdgesSameOriented()`
     pub fn edges_same_oriented(E1: &crate::topo_ds::Shape, E2: &crate::topo_ds::Shape) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepTool_ShapeTool_edges_same_oriented(E1, E2)
         })
     }
 
-    /// **Source:** `TopOpeBRepTool_ShapeTool.hxx`:104 - `TopOpeBRepTool_ShapeTool::EdgeData()`
+    /// **Source:** `TopOpeBRepTool_ShapeTool.hxx`:99 - `TopOpeBRepTool_ShapeTool::EdgeData()`
     /// Compute tangent T, normal N, curvature C at point of parameter
     /// P on curve BRAC. Returns the tolerance indicating if T,N are null.
     pub fn edge_data_curve_real_dir2_real(
@@ -2841,7 +2944,7 @@ impl ShapeTool {
         })
     }
 
-    /// **Source:** `TopOpeBRepTool_ShapeTool.hxx`:111 - `TopOpeBRepTool_ShapeTool::EdgeData()`
+    /// **Source:** `TopOpeBRepTool_ShapeTool.hxx`:106 - `TopOpeBRepTool_ShapeTool::EdgeData()`
     /// Same as previous on edge E.
     pub fn edge_data_shape_real_dir2_real(
         E: &crate::topo_ds::Shape,
@@ -2857,23 +2960,23 @@ impl ShapeTool {
         })
     }
 
-    /// **Source:** `TopOpeBRepTool_ShapeTool.hxx`:117 - `TopOpeBRepTool_ShapeTool::Resolution3dU()`
-    pub fn resolution3d_u(SU: &crate::ffi_types::HandleGeomSurface, Tol2d: f64) -> f64 {
+    /// **Source:** `TopOpeBRepTool_ShapeTool.hxx`:112 - `TopOpeBRepTool_ShapeTool::Resolution3dU()`
+    pub fn resolution3d_u(SU: &crate::ffi_types::Handle_Geom_Surface, Tol2d: f64) -> f64 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepTool_ShapeTool_resolution3d_u(SU, Tol2d)
         })
     }
 
-    /// **Source:** `TopOpeBRepTool_ShapeTool.hxx`:120 - `TopOpeBRepTool_ShapeTool::Resolution3dV()`
-    pub fn resolution3d_v(SU: &crate::ffi_types::HandleGeomSurface, Tol2d: f64) -> f64 {
+    /// **Source:** `TopOpeBRepTool_ShapeTool.hxx`:115 - `TopOpeBRepTool_ShapeTool::Resolution3dV()`
+    pub fn resolution3d_v(SU: &crate::ffi_types::Handle_Geom_Surface, Tol2d: f64) -> f64 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepTool_ShapeTool_resolution3d_v(SU, Tol2d)
         })
     }
 
-    /// **Source:** `TopOpeBRepTool_ShapeTool.hxx`:123 - `TopOpeBRepTool_ShapeTool::Resolution3d()`
+    /// **Source:** `TopOpeBRepTool_ShapeTool.hxx`:118 - `TopOpeBRepTool_ShapeTool::Resolution3d()`
     pub fn resolution3d_handlegeomsurface_real(
-        SU: &crate::ffi_types::HandleGeomSurface,
+        SU: &crate::ffi_types::Handle_Geom_Surface,
         Tol2d: f64,
     ) -> f64 {
         crate::check_result(unsafe {
@@ -2883,7 +2986,7 @@ impl ShapeTool {
         })
     }
 
-    /// **Source:** `TopOpeBRepTool_ShapeTool.hxx`:126 - `TopOpeBRepTool_ShapeTool::Resolution3d()`
+    /// **Source:** `TopOpeBRepTool_ShapeTool.hxx`:121 - `TopOpeBRepTool_ShapeTool::Resolution3d()`
     pub fn resolution3d_face_real(F: &crate::topo_ds::Face, Tol2d: f64) -> f64 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepTool_ShapeTool_resolution3d_face_real(F, Tol2d)
@@ -2895,7 +2998,7 @@ impl ShapeTool {
 // From TopOpeBRepTool_SolidClassifier.hxx
 // ========================
 
-/// **Source:** `TopOpeBRepTool_SolidClassifier.hxx`:29 - `TopOpeBRepTool_SolidClassifier`
+/// **Source:** `TopOpeBRepTool_SolidClassifier.hxx`:31 - `TopOpeBRepTool_SolidClassifier`
 pub use crate::ffi_types::TopOpeBRepTool_SolidClassifier as SolidClassifier;
 
 unsafe impl crate::CppDeletable for SolidClassifier {
@@ -2907,7 +3010,7 @@ unsafe impl crate::CppDeletable for SolidClassifier {
 }
 
 impl SolidClassifier {
-    /// **Source:** `TopOpeBRepTool_SolidClassifier.hxx`:34 - `TopOpeBRepTool_SolidClassifier::TopOpeBRepTool_SolidClassifier()`
+    /// **Source:** `TopOpeBRepTool_SolidClassifier.hxx`:36 - `TopOpeBRepTool_SolidClassifier::TopOpeBRepTool_SolidClassifier()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -2916,14 +3019,14 @@ impl SolidClassifier {
         }
     }
 
-    /// **Source:** `TopOpeBRepTool_SolidClassifier.hxx`:36 - `TopOpeBRepTool_SolidClassifier::Clear()`
+    /// **Source:** `TopOpeBRepTool_SolidClassifier.hxx`:38 - `TopOpeBRepTool_SolidClassifier::Clear()`
     pub fn clear(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepTool_SolidClassifier_clear(self as *mut Self)
         })
     }
 
-    /// **Source:** `TopOpeBRepTool_SolidClassifier.hxx`:40 - `TopOpeBRepTool_SolidClassifier::LoadSolid()`
+    /// **Source:** `TopOpeBRepTool_SolidClassifier.hxx`:42 - `TopOpeBRepTool_SolidClassifier::LoadSolid()`
     pub fn load_solid(&mut self, S: &crate::topo_ds::Solid) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepTool_SolidClassifier_load_solid(
@@ -2933,7 +3036,7 @@ impl SolidClassifier {
         })
     }
 
-    /// **Source:** `TopOpeBRepTool_SolidClassifier.hxx`:44 - `TopOpeBRepTool_SolidClassifier::Classify()`
+    /// **Source:** `TopOpeBRepTool_SolidClassifier.hxx`:46 - `TopOpeBRepTool_SolidClassifier::Classify()`
     /// compute the position of point <P> regarding with the
     /// geometric domain of the solid <S>.
     pub fn classify_solid_pnt_real(
@@ -2983,7 +3086,7 @@ impl SolidClassifier {
         .unwrap()
     }
 
-    /// **Source:** `TopOpeBRepTool_SolidClassifier.hxx`:56 - `TopOpeBRepTool_SolidClassifier::State()`
+    /// **Source:** `TopOpeBRepTool_SolidClassifier.hxx`:54 - `TopOpeBRepTool_SolidClassifier::State()`
     pub fn state(&self) -> crate::top_abs::State {
         crate::top_abs::State::try_from(crate::check_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepTool_SolidClassifier_state(self as *const Self)
@@ -2996,7 +3099,7 @@ impl SolidClassifier {
 // From TopOpeBRepTool_TOOL.hxx
 // ========================
 
-/// **Source:** `TopOpeBRepTool_TOOL.hxx`:43 - `TopOpeBRepTool_TOOL`
+/// **Source:** `TopOpeBRepTool_TOOL.hxx`:45 - `TopOpeBRepTool_TOOL`
 pub use crate::ffi_types::TopOpeBRepTool_TOOL as TOOL;
 
 unsafe impl crate::CppDeletable for TOOL {
@@ -3018,7 +3121,7 @@ impl TOOL {
         }
     }
 
-    /// **Source:** `TopOpeBRepTool_TOOL.hxx`:48 - `TopOpeBRepTool_TOOL::OriinSor()`
+    /// **Source:** `TopOpeBRepTool_TOOL.hxx`:50 - `TopOpeBRepTool_TOOL::OriinSor()`
     pub fn oriin_sor(
         sub: &crate::topo_ds::Shape,
         S: &crate::topo_ds::Shape,
@@ -3029,7 +3132,7 @@ impl TOOL {
         })
     }
 
-    /// **Source:** `TopOpeBRepTool_TOOL.hxx`:53 - `TopOpeBRepTool_TOOL::OriinSorclosed()`
+    /// **Source:** `TopOpeBRepTool_TOOL.hxx`:54 - `TopOpeBRepTool_TOOL::OriinSorclosed()`
     pub fn oriin_sorclosed(sub: &crate::topo_ds::Shape, S: &crate::topo_ds::Shape) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepTool_TOOL_oriin_sorclosed(sub, S)
@@ -3067,13 +3170,16 @@ impl TOOL {
     }
 
     /// **Source:** `TopOpeBRepTool_TOOL.hxx`:66 - `TopOpeBRepTool_TOOL::Vertices()`
-    pub fn vertices(E: &crate::topo_ds::Edge, Vces: &mut crate::ffi_types::TopTools_Array1OfShape) {
+    pub fn vertices(
+        E: &crate::topo_ds::Edge,
+        Vces: &mut crate::ffi_types::NCollection_Array1_TopoDS_Shape,
+    ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepTool_TOOL_vertices(E, Vces)
         })
     }
 
-    /// **Source:** `TopOpeBRepTool_TOOL.hxx`:68 - `TopOpeBRepTool_TOOL::Vertex()`
+    /// **Source:** `TopOpeBRepTool_TOOL.hxx`:69 - `TopOpeBRepTool_TOOL::Vertex()`
     pub fn vertex(Iv: i32, E: &crate::topo_ds::Edge) -> crate::OwnedPtr<crate::topo_ds::Vertex> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -3082,19 +3188,19 @@ impl TOOL {
         }
     }
 
-    /// **Source:** `TopOpeBRepTool_TOOL.hxx`:70 - `TopOpeBRepTool_TOOL::ParE()`
+    /// **Source:** `TopOpeBRepTool_TOOL.hxx`:71 - `TopOpeBRepTool_TOOL::ParE()`
     pub fn par_e(Iv: i32, E: &crate::topo_ds::Edge) -> f64 {
         crate::check_result(unsafe { crate::ffi_extern_TKBool::TopOpeBRepTool_TOOL_par_e(Iv, E) })
     }
 
-    /// **Source:** `TopOpeBRepTool_TOOL.hxx`:72 - `TopOpeBRepTool_TOOL::OnBoundary()`
+    /// **Source:** `TopOpeBRepTool_TOOL.hxx`:73 - `TopOpeBRepTool_TOOL::OnBoundary()`
     pub fn on_boundary(par: f64, E: &crate::topo_ds::Edge) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepTool_TOOL_on_boundary(par, E)
         })
     }
 
-    /// **Source:** `TopOpeBRepTool_TOOL.hxx`:74 - `TopOpeBRepTool_TOOL::UVF()`
+    /// **Source:** `TopOpeBRepTool_TOOL.hxx`:75 - `TopOpeBRepTool_TOOL::UVF()`
     pub fn uvf(par: f64, C2DF: &C2DF) -> crate::OwnedPtr<crate::gp::Pnt2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -3103,7 +3209,7 @@ impl TOOL {
         }
     }
 
-    /// **Source:** `TopOpeBRepTool_TOOL.hxx`:76 - `TopOpeBRepTool_TOOL::ParISO()`
+    /// **Source:** `TopOpeBRepTool_TOOL.hxx`:77 - `TopOpeBRepTool_TOOL::ParISO()`
     pub fn par_iso(
         p2d: &crate::gp::Pnt2d,
         e: &crate::topo_ds::Edge,
@@ -3115,7 +3221,7 @@ impl TOOL {
         })
     }
 
-    /// **Source:** `TopOpeBRepTool_TOOL.hxx`:81 - `TopOpeBRepTool_TOOL::ParE2d()`
+    /// **Source:** `TopOpeBRepTool_TOOL.hxx`:82 - `TopOpeBRepTool_TOOL::ParE2d()`
     pub fn par_e2d(
         p2d: &crate::gp::Pnt2d,
         e: &crate::topo_ds::Edge,
@@ -3128,7 +3234,7 @@ impl TOOL {
         })
     }
 
-    /// **Source:** `TopOpeBRepTool_TOOL.hxx`:87 - `TopOpeBRepTool_TOOL::Getduv()`
+    /// **Source:** `TopOpeBRepTool_TOOL.hxx`:88 - `TopOpeBRepTool_TOOL::Getduv()`
     pub fn getduv(
         f: &crate::topo_ds::Face,
         uv: &crate::gp::Pnt2d,
@@ -3141,7 +3247,7 @@ impl TOOL {
         })
     }
 
-    /// **Source:** `TopOpeBRepTool_TOOL.hxx`:93 - `TopOpeBRepTool_TOOL::uvApp()`
+    /// **Source:** `TopOpeBRepTool_TOOL.hxx`:94 - `TopOpeBRepTool_TOOL::uvApp()`
     pub fn uv_app(
         f: &crate::topo_ds::Face,
         e: &crate::topo_ds::Edge,
@@ -3154,38 +3260,38 @@ impl TOOL {
         })
     }
 
-    /// **Source:** `TopOpeBRepTool_TOOL.hxx`:99 - `TopOpeBRepTool_TOOL::TolUV()`
+    /// **Source:** `TopOpeBRepTool_TOOL.hxx`:100 - `TopOpeBRepTool_TOOL::TolUV()`
     pub fn tol_uv(F: &crate::topo_ds::Face, tol3d: f64) -> f64 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepTool_TOOL_tol_uv(F, tol3d)
         })
     }
 
-    /// **Source:** `TopOpeBRepTool_TOOL.hxx`:101 - `TopOpeBRepTool_TOOL::TolP()`
+    /// **Source:** `TopOpeBRepTool_TOOL.hxx`:102 - `TopOpeBRepTool_TOOL::TolP()`
     pub fn tol_p(E: &crate::topo_ds::Edge, F: &crate::topo_ds::Face) -> f64 {
         crate::check_result(unsafe { crate::ffi_extern_TKBool::TopOpeBRepTool_TOOL_tol_p(E, F) })
     }
 
-    /// **Source:** `TopOpeBRepTool_TOOL.hxx`:103 - `TopOpeBRepTool_TOOL::minDUV()`
+    /// **Source:** `TopOpeBRepTool_TOOL.hxx`:104 - `TopOpeBRepTool_TOOL::minDUV()`
     pub fn min_duv(F: &crate::topo_ds::Face) -> f64 {
         crate::check_result(unsafe { crate::ffi_extern_TKBool::TopOpeBRepTool_TOOL_min_duv(F) })
     }
 
-    /// **Source:** `TopOpeBRepTool_TOOL.hxx`:105 - `TopOpeBRepTool_TOOL::outUVbounds()`
+    /// **Source:** `TopOpeBRepTool_TOOL.hxx`:106 - `TopOpeBRepTool_TOOL::outUVbounds()`
     pub fn out_u_vbounds(uv: &crate::gp::Pnt2d, F: &crate::topo_ds::Face) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepTool_TOOL_out_u_vbounds(uv, F)
         })
     }
 
-    /// **Source:** `TopOpeBRepTool_TOOL.hxx`:107 - `TopOpeBRepTool_TOOL::stuvF()`
+    /// **Source:** `TopOpeBRepTool_TOOL.hxx`:108 - `TopOpeBRepTool_TOOL::stuvF()`
     pub fn stuv_f(uv: &crate::gp::Pnt2d, F: &crate::topo_ds::Face, onU: &mut i32, onV: &mut i32) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepTool_TOOL_stuv_f(uv, F, onU, onV)
         })
     }
 
-    /// **Source:** `TopOpeBRepTool_TOOL.hxx`:112 - `TopOpeBRepTool_TOOL::TggeomE()`
+    /// **Source:** `TopOpeBRepTool_TOOL.hxx`:110 - `TopOpeBRepTool_TOOL::TggeomE()`
     pub fn tggeom_e_real_curve_vec(
         par: f64,
         BC: &crate::b_rep_adaptor::Curve,
@@ -3196,7 +3302,7 @@ impl TOOL {
         })
     }
 
-    /// **Source:** `TopOpeBRepTool_TOOL.hxx`:116 - `TopOpeBRepTool_TOOL::TggeomE()`
+    /// **Source:** `TopOpeBRepTool_TOOL.hxx`:112 - `TopOpeBRepTool_TOOL::TggeomE()`
     pub fn tggeom_e_real_edge_vec(
         par: f64,
         E: &crate::topo_ds::Edge,
@@ -3207,7 +3313,7 @@ impl TOOL {
         })
     }
 
-    /// **Source:** `TopOpeBRepTool_TOOL.hxx`:120 - `TopOpeBRepTool_TOOL::TgINSIDE()`
+    /// **Source:** `TopOpeBRepTool_TOOL.hxx`:114 - `TopOpeBRepTool_TOOL::TgINSIDE()`
     pub fn tg_inside(
         v: &crate::topo_ds::Vertex,
         E: &crate::topo_ds::Edge,
@@ -3219,7 +3325,7 @@ impl TOOL {
         })
     }
 
-    /// **Source:** `TopOpeBRepTool_TOOL.hxx`:125 - `TopOpeBRepTool_TOOL::Tg2d()`
+    /// **Source:** `TopOpeBRepTool_TOOL.hxx`:119 - `TopOpeBRepTool_TOOL::Tg2d()`
     pub fn tg2d(
         iv: i32,
         E: &crate::topo_ds::Edge,
@@ -3232,7 +3338,7 @@ impl TOOL {
         }
     }
 
-    /// **Source:** `TopOpeBRepTool_TOOL.hxx`:129 - `TopOpeBRepTool_TOOL::Tg2dApp()`
+    /// **Source:** `TopOpeBRepTool_TOOL.hxx`:123 - `TopOpeBRepTool_TOOL::Tg2dApp()`
     pub fn tg2d_app(
         iv: i32,
         E: &crate::topo_ds::Edge,
@@ -3246,7 +3352,7 @@ impl TOOL {
         }
     }
 
-    /// **Source:** `TopOpeBRepTool_TOOL.hxx`:134 - `TopOpeBRepTool_TOOL::tryTg2dApp()`
+    /// **Source:** `TopOpeBRepTool_TOOL.hxx`:128 - `TopOpeBRepTool_TOOL::tryTg2dApp()`
     pub fn try_tg2d_app(
         iv: i32,
         E: &crate::topo_ds::Edge,
@@ -3260,7 +3366,7 @@ impl TOOL {
         }
     }
 
-    /// **Source:** `TopOpeBRepTool_TOOL.hxx`:139 - `TopOpeBRepTool_TOOL::XX()`
+    /// **Source:** `TopOpeBRepTool_TOOL.hxx`:133 - `TopOpeBRepTool_TOOL::XX()`
     pub fn xx(
         uv: &crate::gp::Pnt2d,
         f: &crate::topo_ds::Face,
@@ -3273,14 +3379,14 @@ impl TOOL {
         })
     }
 
-    /// **Source:** `TopOpeBRepTool_TOOL.hxx`:145 - `TopOpeBRepTool_TOOL::Nt()`
+    /// **Source:** `TopOpeBRepTool_TOOL.hxx`:139 - `TopOpeBRepTool_TOOL::Nt()`
     pub fn nt(uv: &crate::gp::Pnt2d, f: &crate::topo_ds::Face, normt: &mut crate::gp::Dir) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepTool_TOOL_nt(uv, f, normt)
         })
     }
 
-    /// **Source:** `TopOpeBRepTool_TOOL.hxx`:149 - `TopOpeBRepTool_TOOL::NggeomF()`
+    /// **Source:** `TopOpeBRepTool_TOOL.hxx`:141 - `TopOpeBRepTool_TOOL::NggeomF()`
     pub fn nggeom_f(
         uv: &crate::gp::Pnt2d,
         F: &crate::topo_ds::Face,
@@ -3291,7 +3397,7 @@ impl TOOL {
         })
     }
 
-    /// **Source:** `TopOpeBRepTool_TOOL.hxx`:153 - `TopOpeBRepTool_TOOL::NgApp()`
+    /// **Source:** `TopOpeBRepTool_TOOL.hxx`:143 - `TopOpeBRepTool_TOOL::NgApp()`
     pub fn ng_app(
         par: f64,
         E: &crate::topo_ds::Edge,
@@ -3304,7 +3410,7 @@ impl TOOL {
         })
     }
 
-    /// **Source:** `TopOpeBRepTool_TOOL.hxx`:159 - `TopOpeBRepTool_TOOL::tryNgApp()`
+    /// **Source:** `TopOpeBRepTool_TOOL.hxx`:149 - `TopOpeBRepTool_TOOL::tryNgApp()`
     pub fn try_ng_app(
         par: f64,
         E: &crate::topo_ds::Edge,
@@ -3317,28 +3423,28 @@ impl TOOL {
         })
     }
 
-    /// **Source:** `TopOpeBRepTool_TOOL.hxx`:165 - `TopOpeBRepTool_TOOL::tryOriEinF()`
+    /// **Source:** `TopOpeBRepTool_TOOL.hxx`:155 - `TopOpeBRepTool_TOOL::tryOriEinF()`
     pub fn try_ori_ein_f(par: f64, E: &crate::topo_ds::Edge, F: &crate::topo_ds::Face) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepTool_TOOL_try_ori_ein_f(par, E, F)
         })
     }
 
-    /// **Source:** `TopOpeBRepTool_TOOL.hxx`:169 - `TopOpeBRepTool_TOOL::IsQuad()`
+    /// **Source:** `TopOpeBRepTool_TOOL.hxx`:159 - `TopOpeBRepTool_TOOL::IsQuad()`
     pub fn is_quad_edge(E: &crate::topo_ds::Edge) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepTool_TOOL_is_quad_edge(E)
         })
     }
 
-    /// **Source:** `TopOpeBRepTool_TOOL.hxx`:171 - `TopOpeBRepTool_TOOL::IsQuad()`
+    /// **Source:** `TopOpeBRepTool_TOOL.hxx`:161 - `TopOpeBRepTool_TOOL::IsQuad()`
     pub fn is_quad_face(F: &crate::topo_ds::Face) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepTool_TOOL_is_quad_face(F)
         })
     }
 
-    /// **Source:** `TopOpeBRepTool_TOOL.hxx`:173 - `TopOpeBRepTool_TOOL::CurvE()`
+    /// **Source:** `TopOpeBRepTool_TOOL.hxx`:163 - `TopOpeBRepTool_TOOL::CurvE()`
     pub fn curv_e(
         E: &crate::topo_ds::Edge,
         par: f64,
@@ -3350,7 +3456,7 @@ impl TOOL {
         })
     }
 
-    /// **Source:** `TopOpeBRepTool_TOOL.hxx`:178 - `TopOpeBRepTool_TOOL::CurvF()`
+    /// **Source:** `TopOpeBRepTool_TOOL.hxx`:168 - `TopOpeBRepTool_TOOL::CurvF()`
     pub fn curv_f(
         F: &crate::topo_ds::Face,
         uv: &crate::gp::Pnt2d,
@@ -3363,9 +3469,9 @@ impl TOOL {
         })
     }
 
-    /// **Source:** `TopOpeBRepTool_TOOL.hxx`:184 - `TopOpeBRepTool_TOOL::UVISO()`
+    /// **Source:** `TopOpeBRepTool_TOOL.hxx`:174 - `TopOpeBRepTool_TOOL::UVISO()`
     pub fn uviso_handlegeom2dcurve_bool2_dir2d_pnt2d(
-        PC: &crate::ffi_types::HandleGeom2dCurve,
+        PC: &crate::ffi_types::Handle_Geom2d_Curve,
         isou: &mut bool,
         isov: &mut bool,
         d2d: &mut crate::gp::Dir2d,
@@ -3378,7 +3484,7 @@ impl TOOL {
         })
     }
 
-    /// **Source:** `TopOpeBRepTool_TOOL.hxx`:190 - `TopOpeBRepTool_TOOL::UVISO()`
+    /// **Source:** `TopOpeBRepTool_TOOL.hxx`:180 - `TopOpeBRepTool_TOOL::UVISO()`
     pub fn uviso_c2df_bool2_dir2d_pnt2d(
         C2DF: &C2DF,
         isou: &mut bool,
@@ -3393,7 +3499,7 @@ impl TOOL {
         })
     }
 
-    /// **Source:** `TopOpeBRepTool_TOOL.hxx`:196 - `TopOpeBRepTool_TOOL::UVISO()`
+    /// **Source:** `TopOpeBRepTool_TOOL.hxx`:186 - `TopOpeBRepTool_TOOL::UVISO()`
     pub fn uviso_edge_face_bool2_dir2d_pnt2d(
         E: &crate::topo_ds::Edge,
         F: &crate::topo_ds::Face,
@@ -3409,9 +3515,9 @@ impl TOOL {
         })
     }
 
-    /// **Source:** `TopOpeBRepTool_TOOL.hxx`:203 - `TopOpeBRepTool_TOOL::IsonCLO()`
+    /// **Source:** `TopOpeBRepTool_TOOL.hxx`:193 - `TopOpeBRepTool_TOOL::IsonCLO()`
     pub fn ison_clo_handlegeom2dcurve_bool_real3(
-        PC: &crate::ffi_types::HandleGeom2dCurve,
+        PC: &crate::ffi_types::Handle_Geom2d_Curve,
         onU: bool,
         xfirst: f64,
         xperiod: f64,
@@ -3424,7 +3530,7 @@ impl TOOL {
         })
     }
 
-    /// **Source:** `TopOpeBRepTool_TOOL.hxx`:209 - `TopOpeBRepTool_TOOL::IsonCLO()`
+    /// **Source:** `TopOpeBRepTool_TOOL.hxx`:199 - `TopOpeBRepTool_TOOL::IsonCLO()`
     pub fn ison_clo_c2df_bool_real3(
         C2DF: &C2DF,
         onU: bool,
@@ -3439,14 +3545,14 @@ impl TOOL {
         })
     }
 
-    /// **Source:** `TopOpeBRepTool_TOOL.hxx`:215 - `TopOpeBRepTool_TOOL::TrslUV()`
+    /// **Source:** `TopOpeBRepTool_TOOL.hxx`:205 - `TopOpeBRepTool_TOOL::TrslUV()`
     pub fn trsl_uv(t2d: &crate::gp::Vec2d, C2DF: &mut C2DF) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepTool_TOOL_trsl_uv(t2d, C2DF)
         })
     }
 
-    /// **Source:** `TopOpeBRepTool_TOOL.hxx`:217 - `TopOpeBRepTool_TOOL::TrslUVModifE()`
+    /// **Source:** `TopOpeBRepTool_TOOL.hxx`:207 - `TopOpeBRepTool_TOOL::TrslUVModifE()`
     pub fn trsl_uv_modif_e(
         t2d: &crate::gp::Vec2d,
         F: &crate::topo_ds::Face,
@@ -3457,21 +3563,21 @@ impl TOOL {
         })
     }
 
-    /// **Source:** `TopOpeBRepTool_TOOL.hxx`:221 - `TopOpeBRepTool_TOOL::Matter()`
+    /// **Source:** `TopOpeBRepTool_TOOL.hxx`:211 - `TopOpeBRepTool_TOOL::Matter()`
     pub fn matter_vec3(d1: &crate::gp::Vec, d2: &crate::gp::Vec, ref_: &crate::gp::Vec) -> f64 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepTool_TOOL_matter_vec3(d1, d2, ref_)
         })
     }
 
-    /// **Source:** `TopOpeBRepTool_TOOL.hxx`:225 - `TopOpeBRepTool_TOOL::Matter()`
+    /// **Source:** `TopOpeBRepTool_TOOL.hxx`:213 - `TopOpeBRepTool_TOOL::Matter()`
     pub fn matter_vec2d2(d1: &crate::gp::Vec2d, d2: &crate::gp::Vec2d) -> f64 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepTool_TOOL_matter_vec2d2(d1, d2)
         })
     }
 
-    /// **Source:** `TopOpeBRepTool_TOOL.hxx`:227 - `TopOpeBRepTool_TOOL::Matter()`
+    /// **Source:** `TopOpeBRepTool_TOOL.hxx`:215 - `TopOpeBRepTool_TOOL::Matter()`
     pub fn matter_dir4_real2(
         xx1: &crate::gp::Dir,
         nt1: &crate::gp::Dir,
@@ -3487,7 +3593,7 @@ impl TOOL {
         })
     }
 
-    /// **Source:** `TopOpeBRepTool_TOOL.hxx`:234 - `TopOpeBRepTool_TOOL::Matter()`
+    /// **Source:** `TopOpeBRepTool_TOOL.hxx`:222 - `TopOpeBRepTool_TOOL::Matter()`
     pub fn matter_face2_edge_real3(
         f1: &crate::topo_ds::Face,
         f2: &crate::topo_ds::Face,
@@ -3503,7 +3609,7 @@ impl TOOL {
         })
     }
 
-    /// **Source:** `TopOpeBRepTool_TOOL.hxx`:241 - `TopOpeBRepTool_TOOL::MatterKPtg()`
+    /// **Source:** `TopOpeBRepTool_TOOL.hxx`:229 - `TopOpeBRepTool_TOOL::MatterKPtg()`
     pub fn matter_k_ptg(
         f1: &crate::topo_ds::Face,
         f2: &crate::topo_ds::Face,
@@ -3515,7 +3621,7 @@ impl TOOL {
         })
     }
 
-    /// **Source:** `TopOpeBRepTool_TOOL.hxx`:246 - `TopOpeBRepTool_TOOL::Getstp3dF()`
+    /// **Source:** `TopOpeBRepTool_TOOL.hxx`:234 - `TopOpeBRepTool_TOOL::Getstp3dF()`
     pub fn getstp3d_f(
         p: &crate::gp::Pnt,
         f: &crate::topo_ds::Face,
@@ -3530,26 +3636,29 @@ impl TOOL {
         result_
     }
 
-    /// **Source:** `TopOpeBRepTool_TOOL.hxx`:251 - `TopOpeBRepTool_TOOL::SplitE()`
+    /// **Source:** `TopOpeBRepTool_TOOL.hxx`:239 - `TopOpeBRepTool_TOOL::SplitE()`
     pub fn split_e(
         Eanc: &crate::topo_ds::Edge,
-        Splits: &mut crate::ffi_types::TopTools_ListOfShape,
+        Splits: &mut crate::ffi_types::NCollection_List_TopoDS_Shape,
     ) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepTool_TOOL_split_e(Eanc, Splits)
         })
     }
 
-    /// **Source:** `TopOpeBRepTool_TOOL.hxx`:254 - `TopOpeBRepTool_TOOL::MkShell()`
-    pub fn mk_shell(lF: &crate::ffi_types::TopTools_ListOfShape, She: &mut crate::topo_ds::Shape) {
+    /// **Source:** `TopOpeBRepTool_TOOL.hxx`:242 - `TopOpeBRepTool_TOOL::MkShell()`
+    pub fn mk_shell(
+        lF: &crate::ffi_types::NCollection_List_TopoDS_Shape,
+        She: &mut crate::topo_ds::Shape,
+    ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepTool_TOOL_mk_shell(lF, She)
         })
     }
 
-    /// **Source:** `TopOpeBRepTool_TOOL.hxx`:256 - `TopOpeBRepTool_TOOL::Remove()`
+    /// **Source:** `TopOpeBRepTool_TOOL.hxx`:244 - `TopOpeBRepTool_TOOL::Remove()`
     pub fn remove(
-        loS: &mut crate::ffi_types::TopTools_ListOfShape,
+        loS: &mut crate::ffi_types::NCollection_List_TopoDS_Shape,
         toremove: &crate::topo_ds::Shape,
     ) -> bool {
         crate::check_result(unsafe {
@@ -3557,18 +3666,18 @@ impl TOOL {
         })
     }
 
-    /// **Source:** `TopOpeBRepTool_TOOL.hxx`:259 - `TopOpeBRepTool_TOOL::WireToFace()`
+    /// **Source:** `TopOpeBRepTool_TOOL.hxx`:247 - `TopOpeBRepTool_TOOL::WireToFace()`
     pub fn wire_to_face(
         Fref: &crate::topo_ds::Face,
-        mapWlow: &crate::ffi_types::TopTools_DataMapOfShapeListOfShape,
-        lFs: &mut crate::ffi_types::TopTools_ListOfShape,
+        mapWlow: &crate::ffi_types::NCollection_DataMap_TopoDS_Shape_NCollection_List_TopoDS_Shape_TopTools_ShapeMapHasher,
+        lFs: &mut crate::ffi_types::NCollection_List_TopoDS_Shape,
     ) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepTool_TOOL_wire_to_face(Fref, mapWlow, lFs)
         })
     }
 
-    /// **Source:** `TopOpeBRepTool_TOOL.hxx`:264 - `TopOpeBRepTool_TOOL::EdgeONFace()`
+    /// **Source:** `TopOpeBRepTool_TOOL.hxx`:254 - `TopOpeBRepTool_TOOL::EdgeONFace()`
     pub fn edge_on_face(
         par: f64,
         ed: &crate::topo_ds::Edge,
@@ -3633,7 +3742,11 @@ impl connexity {
     }
 
     /// **Source:** `TopOpeBRepTool_connexity.hxx`:42 - `TopOpeBRepTool_connexity::Item()`
-    pub fn item(&self, OriKey: i32, Item: &mut crate::ffi_types::TopTools_ListOfShape) -> i32 {
+    pub fn item(
+        &self,
+        OriKey: i32,
+        Item: &mut crate::ffi_types::NCollection_List_TopoDS_Shape,
+    ) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepTool_connexity_item(
                 self as *const Self,
@@ -3643,21 +3756,21 @@ impl connexity {
         })
     }
 
-    /// **Source:** `TopOpeBRepTool_connexity.hxx`:45 - `TopOpeBRepTool_connexity::AllItems()`
-    pub fn all_items(&self, Item: &mut crate::ffi_types::TopTools_ListOfShape) -> i32 {
+    /// **Source:** `TopOpeBRepTool_connexity.hxx`:44 - `TopOpeBRepTool_connexity::AllItems()`
+    pub fn all_items(&self, Item: &mut crate::ffi_types::NCollection_List_TopoDS_Shape) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepTool_connexity_all_items(self as *const Self, Item)
         })
     }
 
-    /// **Source:** `TopOpeBRepTool_connexity.hxx`:47 - `TopOpeBRepTool_connexity::AddItem()`
-    pub fn add_item_int_listofshape(
+    /// **Source:** `TopOpeBRepTool_connexity.hxx`:46 - `TopOpeBRepTool_connexity::AddItem()`
+    pub fn add_item_int_list_shape(
         &mut self,
         OriKey: i32,
-        Item: &crate::ffi_types::TopTools_ListOfShape,
+        Item: &crate::ffi_types::NCollection_List_TopoDS_Shape,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi_extern_TKBool::TopOpeBRepTool_connexity_add_item_int_listofshape(
+            crate::ffi_extern_TKBool::TopOpeBRepTool_connexity_add_item_int_list_shape(
                 self as *mut Self,
                 OriKey,
                 Item,
@@ -3665,7 +3778,7 @@ impl connexity {
         })
     }
 
-    /// **Source:** `TopOpeBRepTool_connexity.hxx`:49 - `TopOpeBRepTool_connexity::AddItem()`
+    /// **Source:** `TopOpeBRepTool_connexity.hxx`:48 - `TopOpeBRepTool_connexity::AddItem()`
     pub fn add_item_int_shape(&mut self, OriKey: i32, Item: &crate::topo_ds::Shape) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepTool_connexity_add_item_int_shape(
@@ -3676,7 +3789,7 @@ impl connexity {
         })
     }
 
-    /// **Source:** `TopOpeBRepTool_connexity.hxx`:51 - `TopOpeBRepTool_connexity::RemoveItem()`
+    /// **Source:** `TopOpeBRepTool_connexity.hxx`:50 - `TopOpeBRepTool_connexity::RemoveItem()`
     pub fn remove_item_int_shape(&mut self, OriKey: i32, Item: &crate::topo_ds::Shape) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepTool_connexity_remove_item_int_shape(
@@ -3687,7 +3800,7 @@ impl connexity {
         })
     }
 
-    /// **Source:** `TopOpeBRepTool_connexity.hxx`:54 - `TopOpeBRepTool_connexity::RemoveItem()`
+    /// **Source:** `TopOpeBRepTool_connexity.hxx`:52 - `TopOpeBRepTool_connexity::RemoveItem()`
     pub fn remove_item_shape(&mut self, Item: &crate::topo_ds::Shape) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepTool_connexity_remove_item_shape(
@@ -3697,8 +3810,11 @@ impl connexity {
         })
     }
 
-    /// **Source:** `TopOpeBRepTool_connexity.hxx`:56 - `TopOpeBRepTool_connexity::ChangeItem()`
-    pub fn change_item(&mut self, OriKey: i32) -> &mut crate::ffi_types::TopTools_ListOfShape {
+    /// **Source:** `TopOpeBRepTool_connexity.hxx`:54 - `TopOpeBRepTool_connexity::ChangeItem()`
+    pub fn change_item(
+        &mut self,
+        OriKey: i32,
+    ) -> &mut crate::ffi_types::NCollection_List_TopoDS_Shape {
         unsafe {
             &mut *(crate::check_result(
                 crate::ffi_extern_TKBool::TopOpeBRepTool_connexity_change_item(
@@ -3709,22 +3825,22 @@ impl connexity {
         }
     }
 
-    /// **Source:** `TopOpeBRepTool_connexity.hxx`:58 - `TopOpeBRepTool_connexity::IsMultiple()`
+    /// **Source:** `TopOpeBRepTool_connexity.hxx`:56 - `TopOpeBRepTool_connexity::IsMultiple()`
     pub fn is_multiple(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepTool_connexity_is_multiple(self as *const Self)
         })
     }
 
-    /// **Source:** `TopOpeBRepTool_connexity.hxx`:60 - `TopOpeBRepTool_connexity::IsFaulty()`
+    /// **Source:** `TopOpeBRepTool_connexity.hxx`:58 - `TopOpeBRepTool_connexity::IsFaulty()`
     pub fn is_faulty(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepTool_connexity_is_faulty(self as *const Self)
         })
     }
 
-    /// **Source:** `TopOpeBRepTool_connexity.hxx`:62 - `TopOpeBRepTool_connexity::IsInternal()`
-    pub fn is_internal(&self, Item: &mut crate::ffi_types::TopTools_ListOfShape) -> i32 {
+    /// **Source:** `TopOpeBRepTool_connexity.hxx`:60 - `TopOpeBRepTool_connexity::IsInternal()`
+    pub fn is_internal(&self, Item: &mut crate::ffi_types::NCollection_List_TopoDS_Shape) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepTool_connexity_is_internal(
                 self as *const Self,
@@ -3985,7 +4101,7 @@ impl makeTransition {
 // From TopOpeBRepTool_mkTondgE.hxx
 // ========================
 
-/// **Source:** `TopOpeBRepTool_mkTondgE.hxx`:31 - `TopOpeBRepTool_mkTondgE`
+/// **Source:** `TopOpeBRepTool_mkTondgE.hxx`:33 - `TopOpeBRepTool_mkTondgE`
 pub use crate::ffi_types::TopOpeBRepTool_mkTondgE as mkTondgE;
 
 unsafe impl crate::CppDeletable for mkTondgE {
@@ -3997,7 +4113,7 @@ unsafe impl crate::CppDeletable for mkTondgE {
 }
 
 impl mkTondgE {
-    /// **Source:** `TopOpeBRepTool_mkTondgE.hxx`:36 - `TopOpeBRepTool_mkTondgE::TopOpeBRepTool_mkTondgE()`
+    /// **Source:** `TopOpeBRepTool_mkTondgE.hxx`:38 - `TopOpeBRepTool_mkTondgE::TopOpeBRepTool_mkTondgE()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -4006,7 +4122,7 @@ impl mkTondgE {
         }
     }
 
-    /// **Source:** `TopOpeBRepTool_mkTondgE.hxx`:38 - `TopOpeBRepTool_mkTondgE::Initialize()`
+    /// **Source:** `TopOpeBRepTool_mkTondgE.hxx`:40 - `TopOpeBRepTool_mkTondgE::Initialize()`
     pub fn initialize(
         &mut self,
         dgE: &crate::topo_ds::Edge,
@@ -4025,35 +4141,38 @@ impl mkTondgE {
         })
     }
 
-    /// **Source:** `TopOpeBRepTool_mkTondgE.hxx`:43 - `TopOpeBRepTool_mkTondgE::SetclE()`
+    /// **Source:** `TopOpeBRepTool_mkTondgE.hxx`:45 - `TopOpeBRepTool_mkTondgE::SetclE()`
     pub fn setcl_e(&mut self, clE: &crate::topo_ds::Edge) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepTool_mkTondgE_setcl_e(self as *mut Self, clE)
         })
     }
 
-    /// **Source:** `TopOpeBRepTool_mkTondgE.hxx`:45 - `TopOpeBRepTool_mkTondgE::IsT2d()`
+    /// **Source:** `TopOpeBRepTool_mkTondgE.hxx`:47 - `TopOpeBRepTool_mkTondgE::IsT2d()`
     pub fn is_t2d(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepTool_mkTondgE_is_t2d(self as *const Self)
         })
     }
 
-    /// **Source:** `TopOpeBRepTool_mkTondgE.hxx`:47 - `TopOpeBRepTool_mkTondgE::SetRest()`
+    /// **Source:** `TopOpeBRepTool_mkTondgE.hxx`:49 - `TopOpeBRepTool_mkTondgE::SetRest()`
     pub fn set_rest(&mut self, pari: f64, Ei: &crate::topo_ds::Edge) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepTool_mkTondgE_set_rest(self as *mut Self, pari, Ei)
         })
     }
 
-    /// **Source:** `TopOpeBRepTool_mkTondgE.hxx`:49 - `TopOpeBRepTool_mkTondgE::GetAllRest()`
-    pub fn get_all_rest(&mut self, lEi: &mut crate::ffi_types::TopTools_ListOfShape) -> i32 {
+    /// **Source:** `TopOpeBRepTool_mkTondgE.hxx`:51 - `TopOpeBRepTool_mkTondgE::GetAllRest()`
+    pub fn get_all_rest(
+        &mut self,
+        lEi: &mut crate::ffi_types::NCollection_List_TopoDS_Shape,
+    ) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepTool_mkTondgE_get_all_rest(self as *mut Self, lEi)
         })
     }
 
-    /// **Source:** `TopOpeBRepTool_mkTondgE.hxx`:51 - `TopOpeBRepTool_mkTondgE::MkTonE()`
+    /// **Source:** `TopOpeBRepTool_mkTondgE.hxx`:53 - `TopOpeBRepTool_mkTondgE::MkTonE()`
     pub fn mk_ton_e_int_real2(&mut self, mkT: &mut i32, par1: &mut f64, par2: &mut f64) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBool::TopOpeBRepTool_mkTondgE_mk_ton_e_int_real2(
@@ -4084,9 +4203,3 @@ impl mkTondgE {
         })
     }
 }
-
-// ========================
-// Additional type re-exports
-// ========================
-
-pub use crate::ffi_types::TopOpeBRepTool_IndexedDataMapOfShapeBox as IndexedDataMapOfShapeBox;

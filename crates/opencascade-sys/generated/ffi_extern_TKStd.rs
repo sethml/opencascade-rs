@@ -12,102 +12,6 @@ unsafe extern "C" {
     pub fn ShapePersistent_BRep_destructor(self_: *mut ShapePersistent_BRep);
     /// **Source:** `ShapePersistent_BRep.hxx` - `ShapePersistent_BRep::ShapePersistent_BRep()`
     pub fn ShapePersistent_BRep_ctor() -> crate::OcctResult<*mut ShapePersistent_BRep>;
-    /// **Source:** `ShapePersistent_BRep.hxx`:518 - `ShapePersistent_BRep::Translate()`
-    pub fn ShapePersistent_BRep_translate_real_handlegeomcurve_location_transientpersistentmap(
-        theParam: f64,
-        theCurve: *const HandleGeomCurve,
-        theLoc: *const TopLoc_Location,
-        theMap: *mut StdObjMgt_TransientPersistentMap,
-    ) -> crate::OcctResult<*mut HandleShapePersistentBRepPointOnCurve>;
-    /// **Source:** `ShapePersistent_BRep.hxx`:523 - `ShapePersistent_BRep::Translate()`
-    pub fn ShapePersistent_BRep_translate_real_handlegeom2dcurve_handlegeomsurface_location_transientpersistentmap(
-        theParam: f64,
-        theCurve: *const HandleGeom2dCurve,
-        theSurf: *const HandleGeomSurface,
-        theLoc: *const TopLoc_Location,
-        theMap: *mut StdObjMgt_TransientPersistentMap,
-    ) -> crate::OcctResult<*mut HandleShapePersistentBRepPointOnCurveOnSurface>;
-    /// **Source:** `ShapePersistent_BRep.hxx`:530 - `ShapePersistent_BRep::Translate()`
-    pub fn ShapePersistent_BRep_translate_real2_handlegeomsurface_location_transientpersistentmap(
-        theParam: f64,
-        theParam2: f64,
-        theSurf: *const HandleGeomSurface,
-        theLoc: *const TopLoc_Location,
-        theMap: *mut StdObjMgt_TransientPersistentMap,
-    ) -> crate::OcctResult<*mut HandleShapePersistentBRepPointOnSurface>;
-    /// **Source:** `ShapePersistent_BRep.hxx`:536 - `ShapePersistent_BRep::Translate()`
-    pub fn ShapePersistent_BRep_translate_handlegeom2dcurve_real2_handlegeomsurface_location_transientpersistentmap(
-        theCurve: *const HandleGeom2dCurve,
-        theFirstParam: f64,
-        theLastParam: f64,
-        theSurf: *const HandleGeomSurface,
-        theLoc: *const TopLoc_Location,
-        theMap: *mut StdObjMgt_TransientPersistentMap,
-    ) -> crate::OcctResult<*mut HandleShapePersistentBRepCurveOnSurface>;
-    /// **Source:** `ShapePersistent_BRep.hxx`:543 - `ShapePersistent_BRep::Translate()`
-    pub fn ShapePersistent_BRep_translate_handlegeom2dcurve2_real2_handlegeomsurface_location_shape_transientpersistentmap(
-        theCurve: *const HandleGeom2dCurve,
-        theCurve2: *const HandleGeom2dCurve,
-        theFirstParam: f64,
-        theLastParam: f64,
-        theSurf: *const HandleGeomSurface,
-        theLoc: *const TopLoc_Location,
-        theContinuity: i32,
-        theMap: *mut StdObjMgt_TransientPersistentMap,
-    ) -> crate::OcctResult<*mut HandleShapePersistentBRepCurveOnClosedSurface>;
-    /// **Source:** `ShapePersistent_BRep.hxx`:553 - `ShapePersistent_BRep::Translate()`
-    pub fn ShapePersistent_BRep_translate_handlegeomsurface2_location2_shape_transientpersistentmap(
-        theSurf: *const HandleGeomSurface,
-        theSurf2: *const HandleGeomSurface,
-        theLoc: *const TopLoc_Location,
-        theLoc2: *const TopLoc_Location,
-        theContinuity: i32,
-        theMap: *mut StdObjMgt_TransientPersistentMap,
-    ) -> crate::OcctResult<*mut HandleShapePersistentBRepCurveOn2Surfaces>;
-    /// **Source:** `ShapePersistent_BRep.hxx`:561 - `ShapePersistent_BRep::Translate()`
-    pub fn ShapePersistent_BRep_translate_handlegeomcurve_real2_location_transientpersistentmap(
-        theCurve: *const HandleGeomCurve,
-        theFirstParam: f64,
-        theLastParam: f64,
-        theLoc: *const TopLoc_Location,
-        theMap: *mut StdObjMgt_TransientPersistentMap,
-    ) -> crate::OcctResult<*mut HandleShapePersistentBRepCurve3D>;
-    /// **Source:** `ShapePersistent_BRep.hxx`:567 - `ShapePersistent_BRep::Translate()`
-    pub fn ShapePersistent_BRep_translate_handlepolypolygon3d_location_transientpersistentmap(
-        thePoly: *const HandlePolyPolygon3D,
-        theLoc: *const TopLoc_Location,
-        theMap: *mut StdObjMgt_TransientPersistentMap,
-    ) -> crate::OcctResult<*mut HandleShapePersistentBRepPolygon3D>;
-    /// **Source:** `ShapePersistent_BRep.hxx`:571 - `ShapePersistent_BRep::Translate()`
-    pub fn ShapePersistent_BRep_translate_handlepolypolygon2d2_handlegeomsurface_location_transientpersistentmap(
-        thePoly: *const HandlePolyPolygon2D,
-        thePoly2: *const HandlePolyPolygon2D,
-        theSurf: *const HandleGeomSurface,
-        theLoc: *const TopLoc_Location,
-        theMap: *mut StdObjMgt_TransientPersistentMap,
-    ) -> crate::OcctResult<*mut HandleShapePersistentBRepPolygonOnClosedSurface>;
-    /// **Source:** `ShapePersistent_BRep.hxx`:578 - `ShapePersistent_BRep::Translate()`
-    pub fn ShapePersistent_BRep_translate_handlepolypolygon2d_handlegeomsurface_location_transientpersistentmap(
-        thePoly: *const HandlePolyPolygon2D,
-        theSurf: *const HandleGeomSurface,
-        theLoc: *const TopLoc_Location,
-        theMap: *mut StdObjMgt_TransientPersistentMap,
-    ) -> crate::OcctResult<*mut HandleShapePersistentBRepPolygonOnSurface>;
-    /// **Source:** `ShapePersistent_BRep.hxx`:584 - `ShapePersistent_BRep::Translate()`
-    pub fn ShapePersistent_BRep_translate_handlepolypolygonontriangulation2_handlepolytriangulation_location_transientpersistentmap(
-        thePolyOnTriang: *const HandlePolyPolygonOnTriangulation,
-        thePolyOnTriang2: *const HandlePolyPolygonOnTriangulation,
-        thePolyTriang: *const HandlePolyTriangulation,
-        theLoc: *const TopLoc_Location,
-        theMap: *mut StdObjMgt_TransientPersistentMap,
-    ) -> crate::OcctResult<*mut HandleShapePersistentBRepPolygonOnClosedTriangulation>;
-    /// **Source:** `ShapePersistent_BRep.hxx`:591 - `ShapePersistent_BRep::Translate()`
-    pub fn ShapePersistent_BRep_translate_handlepolypolygonontriangulation_handlepolytriangulation_location_transientpersistentmap(
-        thePolyOnTriang: *const HandlePolyPolygonOnTriangulation,
-        thePolyTriang: *const HandlePolyTriangulation,
-        theLoc: *const TopLoc_Location,
-        theMap: *mut StdObjMgt_TransientPersistentMap,
-    ) -> crate::OcctResult<*mut HandleShapePersistentBRepPolygonOnTriangulation>;
     /// Upcast ShapePersistent_BRep to ShapePersistent_TopoDS
     pub fn ShapePersistent_BRep_as_ShapePersistent_TopoDS(
         self_: *const ShapePersistent_BRep,
@@ -120,33 +24,28 @@ unsafe extern "C" {
     pub fn ShapePersistent_BRep_PointRepresentation_destructor(
         self_: *mut ShapePersistent_BRep_PointRepresentation,
     );
-    /// **Source:** `ShapePersistent_BRep.hxx`:45 - `ShapePersistent_BRep_PointRepresentation::ShapePersistent_BRep_PointRepresentation()`
+    /// **Source:** `ShapePersistent_BRep.hxx`:48 - `ShapePersistent_BRep_PointRepresentation::ShapePersistent_BRep_PointRepresentation()`
     pub fn ShapePersistent_BRep_PointRepresentation_ctor(
     ) -> crate::OcctResult<*mut ShapePersistent_BRep_PointRepresentation>;
-    /// **Source:** `ShapePersistent_BRep.hxx`:51 - `ShapePersistent_BRep_PointRepresentation::Read()`
+    /// **Source:** `ShapePersistent_BRep.hxx`:54 - `ShapePersistent_BRep_PointRepresentation::Read()`
     pub fn ShapePersistent_BRep_PointRepresentation_read(
         self_: *mut ShapePersistent_BRep_PointRepresentation,
         theReadData: *mut StdObjMgt_ReadData,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `ShapePersistent_BRep.hxx`:53 - `ShapePersistent_BRep_PointRepresentation::Write()`
+    /// **Source:** `ShapePersistent_BRep.hxx`:56 - `ShapePersistent_BRep_PointRepresentation::Write()`
     pub fn ShapePersistent_BRep_PointRepresentation_write(
         self_: *const ShapePersistent_BRep_PointRepresentation,
         theWriteData: *mut StdObjMgt_WriteData,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `ShapePersistent_BRep.hxx`:55 - `ShapePersistent_BRep_PointRepresentation::PChildren()`
+    /// **Source:** `ShapePersistent_BRep.hxx`:58 - `ShapePersistent_BRep_PointRepresentation::PChildren()`
     pub fn ShapePersistent_BRep_PointRepresentation_p_children(
         self_: *const ShapePersistent_BRep_PointRepresentation,
         theChildren: *mut StdObjMgt_Persistent_SequenceOfPersistent,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `ShapePersistent_BRep.hxx`:58 - `ShapePersistent_BRep_PointRepresentation::PName()`
+    /// **Source:** `ShapePersistent_BRep.hxx`:61 - `ShapePersistent_BRep_PointRepresentation::PName()`
     pub fn ShapePersistent_BRep_PointRepresentation_p_name(
         self_: *const ShapePersistent_BRep_PointRepresentation,
     ) -> crate::OcctResult<*const std::ffi::c_char>;
-    /// **Source:** `ShapePersistent_BRep.hxx`:61 - `ShapePersistent_BRep_PointRepresentation::Import()`
-    pub fn ShapePersistent_BRep_PointRepresentation_import(
-        self_: *const ShapePersistent_BRep_PointRepresentation,
-        thePoints: *mut BRep_ListOfPointRepresentation,
-    ) -> *const std::ffi::c_char;
     /// Upcast ShapePersistent_BRep_PointRepresentation to StdObjMgt_Persistent
     pub fn ShapePersistent_BRep_PointRepresentation_as_StdObjMgt_Persistent(
         self_: *const ShapePersistent_BRep_PointRepresentation,
@@ -166,104 +65,104 @@ unsafe extern "C" {
     /// Wrap ShapePersistent_BRep_PointRepresentation in a Handle
     pub fn ShapePersistent_BRep_PointRepresentation_to_handle(
         obj: *mut ShapePersistent_BRep_PointRepresentation,
-    ) -> crate::OcctResult<*mut HandleShapePersistentBRepPointRepresentation>;
+    ) -> crate::OcctResult<*mut Handle_ShapePersistent_BRep_PointRepresentation>;
     /// Destroy Handle<ShapePersistent_BRep_PointRepresentation>
-    pub fn HandleShapePersistentBRepPointRepresentation_destructor(
-        self_: *mut HandleShapePersistentBRepPointRepresentation,
+    pub fn Handle_ShapePersistent_BRep_PointRepresentation_destructor(
+        self_: *mut Handle_ShapePersistent_BRep_PointRepresentation,
     );
     /// Clone Handle<ShapePersistent_BRep_PointRepresentation> (increments reference count)
-    pub fn HandleShapePersistentBRepPointRepresentation_clone(
-        self_: *const HandleShapePersistentBRepPointRepresentation,
-    ) -> crate::OcctResult<*mut HandleShapePersistentBRepPointRepresentation>;
+    pub fn Handle_ShapePersistent_BRep_PointRepresentation_clone(
+        self_: *const Handle_ShapePersistent_BRep_PointRepresentation,
+    ) -> crate::OcctResult<*mut Handle_ShapePersistent_BRep_PointRepresentation>;
     /// Check if Handle<ShapePersistent_BRep_PointRepresentation> is null
-    pub fn HandleShapePersistentBRepPointRepresentation_is_null(
-        self_: *const HandleShapePersistentBRepPointRepresentation,
+    pub fn Handle_ShapePersistent_BRep_PointRepresentation_is_null(
+        self_: *const Handle_ShapePersistent_BRep_PointRepresentation,
     ) -> bool;
     /// Dereference Handle to get *const ShapePersistent_BRep_PointRepresentation
-    pub fn HandleShapePersistentBRepPointRepresentation_get(
-        handle: *const HandleShapePersistentBRepPointRepresentation,
+    pub fn Handle_ShapePersistent_BRep_PointRepresentation_get(
+        handle: *const Handle_ShapePersistent_BRep_PointRepresentation,
     ) -> crate::OcctResult<*const ShapePersistent_BRep_PointRepresentation>;
     /// Dereference Handle to get *mut ShapePersistent_BRep_PointRepresentation
-    pub fn HandleShapePersistentBRepPointRepresentation_get_mut(
-        handle: *mut HandleShapePersistentBRepPointRepresentation,
+    pub fn Handle_ShapePersistent_BRep_PointRepresentation_get_mut(
+        handle: *mut Handle_ShapePersistent_BRep_PointRepresentation,
     ) -> crate::OcctResult<*mut ShapePersistent_BRep_PointRepresentation>;
     /// Upcast Handle<ShapePersistent_BRep_PointRepresentation> to Handle<StdObjMgt_Persistent>
-    pub fn HandleShapePersistentBRepPointRepresentation_to_HandleStdObjMgtPersistent(
-        self_: *const HandleShapePersistentBRepPointRepresentation,
-    ) -> crate::OcctResult<*mut HandleStdObjMgtPersistent>;
+    pub fn Handle_ShapePersistent_BRep_PointRepresentation_to_Handle_StdObjMgt_Persistent(
+        self_: *const Handle_ShapePersistent_BRep_PointRepresentation,
+    ) -> crate::OcctResult<*mut Handle_StdObjMgt_Persistent>;
     /// Upcast Handle<ShapePersistent_BRep_PointRepresentation> to Handle<Standard_Transient>
-    pub fn HandleShapePersistentBRepPointRepresentation_to_HandleStandardTransient(
-        self_: *const HandleShapePersistentBRepPointRepresentation,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
+    pub fn Handle_ShapePersistent_BRep_PointRepresentation_to_Handle_Standard_Transient(
+        self_: *const Handle_ShapePersistent_BRep_PointRepresentation,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
     /// Inherited: **Source:** `StdObjMgt_Persistent.hxx`:66 - `StdObjMgt_Persistent::ImportDocument()`
     pub fn ShapePersistent_BRep_PointRepresentation_inherited_ImportDocument(
         self_: *const ShapePersistent_BRep_PointRepresentation,
-        theDocument: *const HandleTDocStdDocument,
+        theDocument: *const Handle_TDocStd_Document,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `StdObjMgt_Persistent.hxx`:71 - `StdObjMgt_Persistent::CreateAttribute()`
+    /// Inherited: **Source:** `StdObjMgt_Persistent.hxx`:72 - `StdObjMgt_Persistent::CreateAttribute()`
     pub fn ShapePersistent_BRep_PointRepresentation_inherited_CreateAttribute(
         self_: *mut ShapePersistent_BRep_PointRepresentation,
-    ) -> crate::OcctResult<*mut HandleTDFAttribute>;
-    /// Inherited: **Source:** `StdObjMgt_Persistent.hxx`:76 - `StdObjMgt_Persistent::GetAttribute()`
+    ) -> crate::OcctResult<*mut Handle_TDF_Attribute>;
+    /// Inherited: **Source:** `StdObjMgt_Persistent.hxx`:77 - `StdObjMgt_Persistent::GetAttribute()`
     pub fn ShapePersistent_BRep_PointRepresentation_inherited_GetAttribute(
         self_: *const ShapePersistent_BRep_PointRepresentation,
-    ) -> crate::OcctResult<*mut HandleTDFAttribute>;
-    /// Inherited: **Source:** `StdObjMgt_Persistent.hxx`:81 - `StdObjMgt_Persistent::ImportAttribute()`
+    ) -> crate::OcctResult<*mut Handle_TDF_Attribute>;
+    /// Inherited: **Source:** `StdObjMgt_Persistent.hxx`:82 - `StdObjMgt_Persistent::ImportAttribute()`
     pub fn ShapePersistent_BRep_PointRepresentation_inherited_ImportAttribute(
         self_: *mut ShapePersistent_BRep_PointRepresentation,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `StdObjMgt_Persistent.hxx`:86 - `StdObjMgt_Persistent::AsciiString()`
+    /// Inherited: **Source:** `StdObjMgt_Persistent.hxx`:87 - `StdObjMgt_Persistent::AsciiString()`
     pub fn ShapePersistent_BRep_PointRepresentation_inherited_AsciiString(
         self_: *const ShapePersistent_BRep_PointRepresentation,
-    ) -> crate::OcctResult<*mut HandleTCollectionHAsciiString>;
-    /// Inherited: **Source:** `StdObjMgt_Persistent.hxx`:91 - `StdObjMgt_Persistent::ExtString()`
+    ) -> crate::OcctResult<*mut Handle_TCollection_HAsciiString>;
+    /// Inherited: **Source:** `StdObjMgt_Persistent.hxx`:92 - `StdObjMgt_Persistent::ExtString()`
     pub fn ShapePersistent_BRep_PointRepresentation_inherited_ExtString(
         self_: *const ShapePersistent_BRep_PointRepresentation,
-    ) -> crate::OcctResult<*mut HandleTCollectionHExtendedString>;
-    /// Inherited: **Source:** `StdObjMgt_Persistent.hxx`:96 - `StdObjMgt_Persistent::Label()`
+    ) -> crate::OcctResult<*mut Handle_TCollection_HExtendedString>;
+    /// Inherited: **Source:** `StdObjMgt_Persistent.hxx`:97 - `StdObjMgt_Persistent::Label()`
     pub fn ShapePersistent_BRep_PointRepresentation_inherited_Label(
         self_: *const ShapePersistent_BRep_PointRepresentation,
-        theDF: *const HandleTDFData,
+        theDF: *const Handle_TDF_Data,
     ) -> crate::OcctResult<*mut TDF_Label>;
-    /// Inherited: **Source:** `StdObjMgt_Persistent.hxx`:99 - `StdObjMgt_Persistent::TypeNum()`
+    /// Inherited: **Source:** `StdObjMgt_Persistent.hxx`:100 - `StdObjMgt_Persistent::TypeNum()`
     pub fn ShapePersistent_BRep_PointRepresentation_inherited_TypeNum(
         self_: *const ShapePersistent_BRep_PointRepresentation,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `StdObjMgt_Persistent.hxx`:105 - `StdObjMgt_Persistent::RefNum()`
+    /// Inherited: **Source:** `StdObjMgt_Persistent.hxx`:106 - `StdObjMgt_Persistent::RefNum()`
     pub fn ShapePersistent_BRep_PointRepresentation_inherited_RefNum(
         self_: *const ShapePersistent_BRep_PointRepresentation,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:71 - `Standard_Transient::DynamicType()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:79 - `Standard_Transient::DynamicType()`
     pub fn ShapePersistent_BRep_PointRepresentation_inherited_DynamicType(
         self_: *const ShapePersistent_BRep_PointRepresentation,
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn ShapePersistent_BRep_PointRepresentation_inherited_IsInstance(
         self_: *const ShapePersistent_BRep_PointRepresentation,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn ShapePersistent_BRep_PointRepresentation_inherited_IsKind(
         self_: *const ShapePersistent_BRep_PointRepresentation,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn ShapePersistent_BRep_PointRepresentation_inherited_This(
         self_: *const ShapePersistent_BRep_PointRepresentation,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn ShapePersistent_BRep_PointRepresentation_inherited_GetRefCount(
         self_: *const ShapePersistent_BRep_PointRepresentation,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn ShapePersistent_BRep_PointRepresentation_inherited_IncrementRefCounter(
         self_: *mut ShapePersistent_BRep_PointRepresentation,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn ShapePersistent_BRep_PointRepresentation_inherited_DecrementRefCounter(
         self_: *mut ShapePersistent_BRep_PointRepresentation,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn ShapePersistent_BRep_PointRepresentation_inherited_Delete(
         self_: *const ShapePersistent_BRep_PointRepresentation,
     ) -> *const std::ffi::c_char;
@@ -274,52 +173,52 @@ unsafe extern "C" {
     /// **Source:** `ShapePersistent_BRep.hxx` - `ShapePersistent_BRep_PointOnCurve::ShapePersistent_BRep_PointOnCurve()`
     pub fn ShapePersistent_BRep_PointOnCurve_ctor(
     ) -> crate::OcctResult<*mut ShapePersistent_BRep_PointOnCurve>;
-    /// **Source:** `ShapePersistent_BRep.hxx`:79 - `ShapePersistent_BRep_PointOnCurve::Read()`
+    /// **Source:** `ShapePersistent_BRep.hxx`:83 - `ShapePersistent_BRep_PointOnCurve::Read()`
     pub fn ShapePersistent_BRep_PointOnCurve_read(
         self_: *mut ShapePersistent_BRep_PointOnCurve,
         theReadData: *mut StdObjMgt_ReadData,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `ShapePersistent_BRep.hxx`:80 - `ShapePersistent_BRep_PointOnCurve::Write()`
+    /// **Source:** `ShapePersistent_BRep.hxx`:84 - `ShapePersistent_BRep_PointOnCurve::Write()`
     pub fn ShapePersistent_BRep_PointOnCurve_write(
         self_: *const ShapePersistent_BRep_PointOnCurve,
         theWriteData: *mut StdObjMgt_WriteData,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `ShapePersistent_BRep.hxx`:81 - `ShapePersistent_BRep_PointOnCurve::PChildren()`
+    /// **Source:** `ShapePersistent_BRep.hxx`:85 - `ShapePersistent_BRep_PointOnCurve::PChildren()`
     pub fn ShapePersistent_BRep_PointOnCurve_p_children(
         self_: *const ShapePersistent_BRep_PointOnCurve,
         theChildren: *mut StdObjMgt_Persistent_SequenceOfPersistent,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `ShapePersistent_BRep.hxx`:83 - `ShapePersistent_BRep_PointOnCurve::PName()`
+    /// **Source:** `ShapePersistent_BRep.hxx`:87 - `ShapePersistent_BRep_PointOnCurve::PName()`
     pub fn ShapePersistent_BRep_PointOnCurve_p_name(
         self_: *const ShapePersistent_BRep_PointOnCurve,
     ) -> crate::OcctResult<*const std::ffi::c_char>;
-    /// **Source:** `ShapePersistent_BRep.hxx`:85 - `ShapePersistent_BRep_PointOnCurve::import()`
+    /// **Source:** `ShapePersistent_BRep.hxx`:89 - `ShapePersistent_BRep_PointOnCurve::import()`
     pub fn ShapePersistent_BRep_PointOnCurve_import(
         self_: *const ShapePersistent_BRep_PointOnCurve,
-    ) -> crate::OcctResult<*mut HandleBRepPointRepresentation>;
+    ) -> crate::OcctResult<*mut Handle_BRep_PointRepresentation>;
     /// Wrap ShapePersistent_BRep_PointOnCurve in a Handle
     pub fn ShapePersistent_BRep_PointOnCurve_to_handle(
         obj: *mut ShapePersistent_BRep_PointOnCurve,
-    ) -> crate::OcctResult<*mut HandleShapePersistentBRepPointOnCurve>;
+    ) -> crate::OcctResult<*mut Handle_ShapePersistent_BRep_PointOnCurve>;
     /// Destroy Handle<ShapePersistent_BRep_PointOnCurve>
-    pub fn HandleShapePersistentBRepPointOnCurve_destructor(
-        self_: *mut HandleShapePersistentBRepPointOnCurve,
+    pub fn Handle_ShapePersistent_BRep_PointOnCurve_destructor(
+        self_: *mut Handle_ShapePersistent_BRep_PointOnCurve,
     );
     /// Clone Handle<ShapePersistent_BRep_PointOnCurve> (increments reference count)
-    pub fn HandleShapePersistentBRepPointOnCurve_clone(
-        self_: *const HandleShapePersistentBRepPointOnCurve,
-    ) -> crate::OcctResult<*mut HandleShapePersistentBRepPointOnCurve>;
+    pub fn Handle_ShapePersistent_BRep_PointOnCurve_clone(
+        self_: *const Handle_ShapePersistent_BRep_PointOnCurve,
+    ) -> crate::OcctResult<*mut Handle_ShapePersistent_BRep_PointOnCurve>;
     /// Check if Handle<ShapePersistent_BRep_PointOnCurve> is null
-    pub fn HandleShapePersistentBRepPointOnCurve_is_null(
-        self_: *const HandleShapePersistentBRepPointOnCurve,
+    pub fn Handle_ShapePersistent_BRep_PointOnCurve_is_null(
+        self_: *const Handle_ShapePersistent_BRep_PointOnCurve,
     ) -> bool;
     /// Dereference Handle to get *const ShapePersistent_BRep_PointOnCurve
-    pub fn HandleShapePersistentBRepPointOnCurve_get(
-        handle: *const HandleShapePersistentBRepPointOnCurve,
+    pub fn Handle_ShapePersistent_BRep_PointOnCurve_get(
+        handle: *const Handle_ShapePersistent_BRep_PointOnCurve,
     ) -> crate::OcctResult<*const ShapePersistent_BRep_PointOnCurve>;
     /// Dereference Handle to get *mut ShapePersistent_BRep_PointOnCurve
-    pub fn HandleShapePersistentBRepPointOnCurve_get_mut(
-        handle: *mut HandleShapePersistentBRepPointOnCurve,
+    pub fn Handle_ShapePersistent_BRep_PointOnCurve_get_mut(
+        handle: *mut Handle_ShapePersistent_BRep_PointOnCurve,
     ) -> crate::OcctResult<*mut ShapePersistent_BRep_PointOnCurve>;
     // ======================== ShapePersistent_BRep_PointsOnSurface ========================
     pub fn ShapePersistent_BRep_PointsOnSurface_destructor(
@@ -328,22 +227,22 @@ unsafe extern "C" {
     /// **Source:** `ShapePersistent_BRep.hxx` - `ShapePersistent_BRep_PointsOnSurface::ShapePersistent_BRep_PointsOnSurface()`
     pub fn ShapePersistent_BRep_PointsOnSurface_ctor(
     ) -> crate::OcctResult<*mut ShapePersistent_BRep_PointsOnSurface>;
-    /// **Source:** `ShapePersistent_BRep.hxx`:96 - `ShapePersistent_BRep_PointsOnSurface::Read()`
+    /// **Source:** `ShapePersistent_BRep.hxx`:100 - `ShapePersistent_BRep_PointsOnSurface::Read()`
     pub fn ShapePersistent_BRep_PointsOnSurface_read(
         self_: *mut ShapePersistent_BRep_PointsOnSurface,
         theReadData: *mut StdObjMgt_ReadData,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `ShapePersistent_BRep.hxx`:97 - `ShapePersistent_BRep_PointsOnSurface::Write()`
+    /// **Source:** `ShapePersistent_BRep.hxx`:101 - `ShapePersistent_BRep_PointsOnSurface::Write()`
     pub fn ShapePersistent_BRep_PointsOnSurface_write(
         self_: *const ShapePersistent_BRep_PointsOnSurface,
         theWriteData: *mut StdObjMgt_WriteData,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `ShapePersistent_BRep.hxx`:98 - `ShapePersistent_BRep_PointsOnSurface::PChildren()`
+    /// **Source:** `ShapePersistent_BRep.hxx`:102 - `ShapePersistent_BRep_PointsOnSurface::PChildren()`
     pub fn ShapePersistent_BRep_PointsOnSurface_p_children(
         self_: *const ShapePersistent_BRep_PointsOnSurface,
         theChildren: *mut StdObjMgt_Persistent_SequenceOfPersistent,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `ShapePersistent_BRep.hxx`:100 - `ShapePersistent_BRep_PointsOnSurface::PName()`
+    /// **Source:** `ShapePersistent_BRep.hxx`:104 - `ShapePersistent_BRep_PointsOnSurface::PName()`
     pub fn ShapePersistent_BRep_PointsOnSurface_p_name(
         self_: *const ShapePersistent_BRep_PointsOnSurface,
     ) -> crate::OcctResult<*const std::ffi::c_char>;
@@ -354,101 +253,101 @@ unsafe extern "C" {
     /// **Source:** `ShapePersistent_BRep.hxx` - `ShapePersistent_BRep_PointOnCurveOnSurface::ShapePersistent_BRep_PointOnCurveOnSurface()`
     pub fn ShapePersistent_BRep_PointOnCurveOnSurface_ctor(
     ) -> crate::OcctResult<*mut ShapePersistent_BRep_PointOnCurveOnSurface>;
-    /// **Source:** `ShapePersistent_BRep.hxx`:111 - `ShapePersistent_BRep_PointOnCurveOnSurface::Read()`
+    /// **Source:** `ShapePersistent_BRep.hxx`:115 - `ShapePersistent_BRep_PointOnCurveOnSurface::Read()`
     pub fn ShapePersistent_BRep_PointOnCurveOnSurface_read(
         self_: *mut ShapePersistent_BRep_PointOnCurveOnSurface,
         theReadData: *mut StdObjMgt_ReadData,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `ShapePersistent_BRep.hxx`:112 - `ShapePersistent_BRep_PointOnCurveOnSurface::Write()`
+    /// **Source:** `ShapePersistent_BRep.hxx`:116 - `ShapePersistent_BRep_PointOnCurveOnSurface::Write()`
     pub fn ShapePersistent_BRep_PointOnCurveOnSurface_write(
         self_: *const ShapePersistent_BRep_PointOnCurveOnSurface,
         theWriteData: *mut StdObjMgt_WriteData,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `ShapePersistent_BRep.hxx`:113 - `ShapePersistent_BRep_PointOnCurveOnSurface::PChildren()`
+    /// **Source:** `ShapePersistent_BRep.hxx`:117 - `ShapePersistent_BRep_PointOnCurveOnSurface::PChildren()`
     pub fn ShapePersistent_BRep_PointOnCurveOnSurface_p_children(
         self_: *const ShapePersistent_BRep_PointOnCurveOnSurface,
         theChildren: *mut StdObjMgt_Persistent_SequenceOfPersistent,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `ShapePersistent_BRep.hxx`:115 - `ShapePersistent_BRep_PointOnCurveOnSurface::PName()`
+    /// **Source:** `ShapePersistent_BRep.hxx`:119 - `ShapePersistent_BRep_PointOnCurveOnSurface::PName()`
     pub fn ShapePersistent_BRep_PointOnCurveOnSurface_p_name(
         self_: *const ShapePersistent_BRep_PointOnCurveOnSurface,
     ) -> crate::OcctResult<*const std::ffi::c_char>;
-    /// **Source:** `ShapePersistent_BRep.hxx`:117 - `ShapePersistent_BRep_PointOnCurveOnSurface::import()`
+    /// **Source:** `ShapePersistent_BRep.hxx`:121 - `ShapePersistent_BRep_PointOnCurveOnSurface::import()`
     pub fn ShapePersistent_BRep_PointOnCurveOnSurface_import(
         self_: *const ShapePersistent_BRep_PointOnCurveOnSurface,
-    ) -> crate::OcctResult<*mut HandleBRepPointRepresentation>;
+    ) -> crate::OcctResult<*mut Handle_BRep_PointRepresentation>;
     /// Wrap ShapePersistent_BRep_PointOnCurveOnSurface in a Handle
     pub fn ShapePersistent_BRep_PointOnCurveOnSurface_to_handle(
         obj: *mut ShapePersistent_BRep_PointOnCurveOnSurface,
-    ) -> crate::OcctResult<*mut HandleShapePersistentBRepPointOnCurveOnSurface>;
+    ) -> crate::OcctResult<*mut Handle_ShapePersistent_BRep_PointOnCurveOnSurface>;
     /// Destroy Handle<ShapePersistent_BRep_PointOnCurveOnSurface>
-    pub fn HandleShapePersistentBRepPointOnCurveOnSurface_destructor(
-        self_: *mut HandleShapePersistentBRepPointOnCurveOnSurface,
+    pub fn Handle_ShapePersistent_BRep_PointOnCurveOnSurface_destructor(
+        self_: *mut Handle_ShapePersistent_BRep_PointOnCurveOnSurface,
     );
     /// Clone Handle<ShapePersistent_BRep_PointOnCurveOnSurface> (increments reference count)
-    pub fn HandleShapePersistentBRepPointOnCurveOnSurface_clone(
-        self_: *const HandleShapePersistentBRepPointOnCurveOnSurface,
-    ) -> crate::OcctResult<*mut HandleShapePersistentBRepPointOnCurveOnSurface>;
+    pub fn Handle_ShapePersistent_BRep_PointOnCurveOnSurface_clone(
+        self_: *const Handle_ShapePersistent_BRep_PointOnCurveOnSurface,
+    ) -> crate::OcctResult<*mut Handle_ShapePersistent_BRep_PointOnCurveOnSurface>;
     /// Check if Handle<ShapePersistent_BRep_PointOnCurveOnSurface> is null
-    pub fn HandleShapePersistentBRepPointOnCurveOnSurface_is_null(
-        self_: *const HandleShapePersistentBRepPointOnCurveOnSurface,
+    pub fn Handle_ShapePersistent_BRep_PointOnCurveOnSurface_is_null(
+        self_: *const Handle_ShapePersistent_BRep_PointOnCurveOnSurface,
     ) -> bool;
     /// Dereference Handle to get *const ShapePersistent_BRep_PointOnCurveOnSurface
-    pub fn HandleShapePersistentBRepPointOnCurveOnSurface_get(
-        handle: *const HandleShapePersistentBRepPointOnCurveOnSurface,
+    pub fn Handle_ShapePersistent_BRep_PointOnCurveOnSurface_get(
+        handle: *const Handle_ShapePersistent_BRep_PointOnCurveOnSurface,
     ) -> crate::OcctResult<*const ShapePersistent_BRep_PointOnCurveOnSurface>;
     /// Dereference Handle to get *mut ShapePersistent_BRep_PointOnCurveOnSurface
-    pub fn HandleShapePersistentBRepPointOnCurveOnSurface_get_mut(
-        handle: *mut HandleShapePersistentBRepPointOnCurveOnSurface,
+    pub fn Handle_ShapePersistent_BRep_PointOnCurveOnSurface_get_mut(
+        handle: *mut Handle_ShapePersistent_BRep_PointOnCurveOnSurface,
     ) -> crate::OcctResult<*mut ShapePersistent_BRep_PointOnCurveOnSurface>;
     // ======================== ShapePersistent_BRep_PointOnSurface ========================
     pub fn ShapePersistent_BRep_PointOnSurface_destructor(
         self_: *mut ShapePersistent_BRep_PointOnSurface,
     );
-    /// **Source:** `ShapePersistent_BRep.hxx`:128 - `ShapePersistent_BRep_PointOnSurface::ShapePersistent_BRep_PointOnSurface()`
+    /// **Source:** `ShapePersistent_BRep.hxx`:132 - `ShapePersistent_BRep_PointOnSurface::ShapePersistent_BRep_PointOnSurface()`
     pub fn ShapePersistent_BRep_PointOnSurface_ctor(
     ) -> crate::OcctResult<*mut ShapePersistent_BRep_PointOnSurface>;
-    /// **Source:** `ShapePersistent_BRep.hxx`:133 - `ShapePersistent_BRep_PointOnSurface::Read()`
+    /// **Source:** `ShapePersistent_BRep.hxx`:137 - `ShapePersistent_BRep_PointOnSurface::Read()`
     pub fn ShapePersistent_BRep_PointOnSurface_read(
         self_: *mut ShapePersistent_BRep_PointOnSurface,
         theReadData: *mut StdObjMgt_ReadData,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `ShapePersistent_BRep.hxx`:134 - `ShapePersistent_BRep_PointOnSurface::Write()`
+    /// **Source:** `ShapePersistent_BRep.hxx`:138 - `ShapePersistent_BRep_PointOnSurface::Write()`
     pub fn ShapePersistent_BRep_PointOnSurface_write(
         self_: *const ShapePersistent_BRep_PointOnSurface,
         theWriteData: *mut StdObjMgt_WriteData,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `ShapePersistent_BRep.hxx`:136 - `ShapePersistent_BRep_PointOnSurface::PName()`
+    /// **Source:** `ShapePersistent_BRep.hxx`:140 - `ShapePersistent_BRep_PointOnSurface::PName()`
     pub fn ShapePersistent_BRep_PointOnSurface_p_name(
         self_: *const ShapePersistent_BRep_PointOnSurface,
     ) -> crate::OcctResult<*const std::ffi::c_char>;
-    /// **Source:** `ShapePersistent_BRep.hxx`:138 - `ShapePersistent_BRep_PointOnSurface::import()`
+    /// **Source:** `ShapePersistent_BRep.hxx`:142 - `ShapePersistent_BRep_PointOnSurface::import()`
     pub fn ShapePersistent_BRep_PointOnSurface_import(
         self_: *const ShapePersistent_BRep_PointOnSurface,
-    ) -> crate::OcctResult<*mut HandleBRepPointRepresentation>;
+    ) -> crate::OcctResult<*mut Handle_BRep_PointRepresentation>;
     /// Wrap ShapePersistent_BRep_PointOnSurface in a Handle
     pub fn ShapePersistent_BRep_PointOnSurface_to_handle(
         obj: *mut ShapePersistent_BRep_PointOnSurface,
-    ) -> crate::OcctResult<*mut HandleShapePersistentBRepPointOnSurface>;
+    ) -> crate::OcctResult<*mut Handle_ShapePersistent_BRep_PointOnSurface>;
     /// Destroy Handle<ShapePersistent_BRep_PointOnSurface>
-    pub fn HandleShapePersistentBRepPointOnSurface_destructor(
-        self_: *mut HandleShapePersistentBRepPointOnSurface,
+    pub fn Handle_ShapePersistent_BRep_PointOnSurface_destructor(
+        self_: *mut Handle_ShapePersistent_BRep_PointOnSurface,
     );
     /// Clone Handle<ShapePersistent_BRep_PointOnSurface> (increments reference count)
-    pub fn HandleShapePersistentBRepPointOnSurface_clone(
-        self_: *const HandleShapePersistentBRepPointOnSurface,
-    ) -> crate::OcctResult<*mut HandleShapePersistentBRepPointOnSurface>;
+    pub fn Handle_ShapePersistent_BRep_PointOnSurface_clone(
+        self_: *const Handle_ShapePersistent_BRep_PointOnSurface,
+    ) -> crate::OcctResult<*mut Handle_ShapePersistent_BRep_PointOnSurface>;
     /// Check if Handle<ShapePersistent_BRep_PointOnSurface> is null
-    pub fn HandleShapePersistentBRepPointOnSurface_is_null(
-        self_: *const HandleShapePersistentBRepPointOnSurface,
+    pub fn Handle_ShapePersistent_BRep_PointOnSurface_is_null(
+        self_: *const Handle_ShapePersistent_BRep_PointOnSurface,
     ) -> bool;
     /// Dereference Handle to get *const ShapePersistent_BRep_PointOnSurface
-    pub fn HandleShapePersistentBRepPointOnSurface_get(
-        handle: *const HandleShapePersistentBRepPointOnSurface,
+    pub fn Handle_ShapePersistent_BRep_PointOnSurface_get(
+        handle: *const Handle_ShapePersistent_BRep_PointOnSurface,
     ) -> crate::OcctResult<*const ShapePersistent_BRep_PointOnSurface>;
     /// Dereference Handle to get *mut ShapePersistent_BRep_PointOnSurface
-    pub fn HandleShapePersistentBRepPointOnSurface_get_mut(
-        handle: *mut HandleShapePersistentBRepPointOnSurface,
+    pub fn Handle_ShapePersistent_BRep_PointOnSurface_get_mut(
+        handle: *mut Handle_ShapePersistent_BRep_PointOnSurface,
     ) -> crate::OcctResult<*mut ShapePersistent_BRep_PointOnSurface>;
     // ======================== ShapePersistent_BRep_CurveRepresentation ========================
     pub fn ShapePersistent_BRep_CurveRepresentation_destructor(
@@ -457,30 +356,25 @@ unsafe extern "C" {
     /// **Source:** `ShapePersistent_BRep.hxx` - `ShapePersistent_BRep_CurveRepresentation::ShapePersistent_BRep_CurveRepresentation()`
     pub fn ShapePersistent_BRep_CurveRepresentation_ctor(
     ) -> crate::OcctResult<*mut ShapePersistent_BRep_CurveRepresentation>;
-    /// **Source:** `ShapePersistent_BRep.hxx`:150 - `ShapePersistent_BRep_CurveRepresentation::Read()`
+    /// **Source:** `ShapePersistent_BRep.hxx`:154 - `ShapePersistent_BRep_CurveRepresentation::Read()`
     pub fn ShapePersistent_BRep_CurveRepresentation_read(
         self_: *mut ShapePersistent_BRep_CurveRepresentation,
         theReadData: *mut StdObjMgt_ReadData,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `ShapePersistent_BRep.hxx`:152 - `ShapePersistent_BRep_CurveRepresentation::Write()`
+    /// **Source:** `ShapePersistent_BRep.hxx`:156 - `ShapePersistent_BRep_CurveRepresentation::Write()`
     pub fn ShapePersistent_BRep_CurveRepresentation_write(
         self_: *const ShapePersistent_BRep_CurveRepresentation,
         theWriteData: *mut StdObjMgt_WriteData,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `ShapePersistent_BRep.hxx`:154 - `ShapePersistent_BRep_CurveRepresentation::PChildren()`
+    /// **Source:** `ShapePersistent_BRep.hxx`:158 - `ShapePersistent_BRep_CurveRepresentation::PChildren()`
     pub fn ShapePersistent_BRep_CurveRepresentation_p_children(
         self_: *const ShapePersistent_BRep_CurveRepresentation,
         theChildren: *mut StdObjMgt_Persistent_SequenceOfPersistent,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `ShapePersistent_BRep.hxx`:157 - `ShapePersistent_BRep_CurveRepresentation::PName()`
+    /// **Source:** `ShapePersistent_BRep.hxx`:161 - `ShapePersistent_BRep_CurveRepresentation::PName()`
     pub fn ShapePersistent_BRep_CurveRepresentation_p_name(
         self_: *const ShapePersistent_BRep_CurveRepresentation,
     ) -> crate::OcctResult<*const std::ffi::c_char>;
-    /// **Source:** `ShapePersistent_BRep.hxx`:160 - `ShapePersistent_BRep_CurveRepresentation::Import()`
-    pub fn ShapePersistent_BRep_CurveRepresentation_import(
-        self_: *const ShapePersistent_BRep_CurveRepresentation,
-        theCurves: *mut BRep_ListOfCurveRepresentation,
-    ) -> *const std::ffi::c_char;
     /// Upcast ShapePersistent_BRep_CurveRepresentation to StdObjMgt_Persistent
     pub fn ShapePersistent_BRep_CurveRepresentation_as_StdObjMgt_Persistent(
         self_: *const ShapePersistent_BRep_CurveRepresentation,
@@ -500,122 +394,122 @@ unsafe extern "C" {
     /// Wrap ShapePersistent_BRep_CurveRepresentation in a Handle
     pub fn ShapePersistent_BRep_CurveRepresentation_to_handle(
         obj: *mut ShapePersistent_BRep_CurveRepresentation,
-    ) -> crate::OcctResult<*mut HandleShapePersistentBRepCurveRepresentation>;
+    ) -> crate::OcctResult<*mut Handle_ShapePersistent_BRep_CurveRepresentation>;
     /// Destroy Handle<ShapePersistent_BRep_CurveRepresentation>
-    pub fn HandleShapePersistentBRepCurveRepresentation_destructor(
-        self_: *mut HandleShapePersistentBRepCurveRepresentation,
+    pub fn Handle_ShapePersistent_BRep_CurveRepresentation_destructor(
+        self_: *mut Handle_ShapePersistent_BRep_CurveRepresentation,
     );
     /// Clone Handle<ShapePersistent_BRep_CurveRepresentation> (increments reference count)
-    pub fn HandleShapePersistentBRepCurveRepresentation_clone(
-        self_: *const HandleShapePersistentBRepCurveRepresentation,
-    ) -> crate::OcctResult<*mut HandleShapePersistentBRepCurveRepresentation>;
+    pub fn Handle_ShapePersistent_BRep_CurveRepresentation_clone(
+        self_: *const Handle_ShapePersistent_BRep_CurveRepresentation,
+    ) -> crate::OcctResult<*mut Handle_ShapePersistent_BRep_CurveRepresentation>;
     /// Check if Handle<ShapePersistent_BRep_CurveRepresentation> is null
-    pub fn HandleShapePersistentBRepCurveRepresentation_is_null(
-        self_: *const HandleShapePersistentBRepCurveRepresentation,
+    pub fn Handle_ShapePersistent_BRep_CurveRepresentation_is_null(
+        self_: *const Handle_ShapePersistent_BRep_CurveRepresentation,
     ) -> bool;
     /// Dereference Handle to get *const ShapePersistent_BRep_CurveRepresentation
-    pub fn HandleShapePersistentBRepCurveRepresentation_get(
-        handle: *const HandleShapePersistentBRepCurveRepresentation,
+    pub fn Handle_ShapePersistent_BRep_CurveRepresentation_get(
+        handle: *const Handle_ShapePersistent_BRep_CurveRepresentation,
     ) -> crate::OcctResult<*const ShapePersistent_BRep_CurveRepresentation>;
     /// Dereference Handle to get *mut ShapePersistent_BRep_CurveRepresentation
-    pub fn HandleShapePersistentBRepCurveRepresentation_get_mut(
-        handle: *mut HandleShapePersistentBRepCurveRepresentation,
+    pub fn Handle_ShapePersistent_BRep_CurveRepresentation_get_mut(
+        handle: *mut Handle_ShapePersistent_BRep_CurveRepresentation,
     ) -> crate::OcctResult<*mut ShapePersistent_BRep_CurveRepresentation>;
     /// Upcast Handle<ShapePersistent_BRep_CurveRepresentation> to Handle<StdObjMgt_Persistent>
-    pub fn HandleShapePersistentBRepCurveRepresentation_to_HandleStdObjMgtPersistent(
-        self_: *const HandleShapePersistentBRepCurveRepresentation,
-    ) -> crate::OcctResult<*mut HandleStdObjMgtPersistent>;
+    pub fn Handle_ShapePersistent_BRep_CurveRepresentation_to_Handle_StdObjMgt_Persistent(
+        self_: *const Handle_ShapePersistent_BRep_CurveRepresentation,
+    ) -> crate::OcctResult<*mut Handle_StdObjMgt_Persistent>;
     /// Upcast Handle<ShapePersistent_BRep_CurveRepresentation> to Handle<Standard_Transient>
-    pub fn HandleShapePersistentBRepCurveRepresentation_to_HandleStandardTransient(
-        self_: *const HandleShapePersistentBRepCurveRepresentation,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
+    pub fn Handle_ShapePersistent_BRep_CurveRepresentation_to_Handle_Standard_Transient(
+        self_: *const Handle_ShapePersistent_BRep_CurveRepresentation,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
     /// Inherited: **Source:** `StdObjMgt_Persistent.hxx`:66 - `StdObjMgt_Persistent::ImportDocument()`
     pub fn ShapePersistent_BRep_CurveRepresentation_inherited_ImportDocument(
         self_: *const ShapePersistent_BRep_CurveRepresentation,
-        theDocument: *const HandleTDocStdDocument,
+        theDocument: *const Handle_TDocStd_Document,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `StdObjMgt_Persistent.hxx`:71 - `StdObjMgt_Persistent::CreateAttribute()`
+    /// Inherited: **Source:** `StdObjMgt_Persistent.hxx`:72 - `StdObjMgt_Persistent::CreateAttribute()`
     pub fn ShapePersistent_BRep_CurveRepresentation_inherited_CreateAttribute(
         self_: *mut ShapePersistent_BRep_CurveRepresentation,
-    ) -> crate::OcctResult<*mut HandleTDFAttribute>;
-    /// Inherited: **Source:** `StdObjMgt_Persistent.hxx`:76 - `StdObjMgt_Persistent::GetAttribute()`
+    ) -> crate::OcctResult<*mut Handle_TDF_Attribute>;
+    /// Inherited: **Source:** `StdObjMgt_Persistent.hxx`:77 - `StdObjMgt_Persistent::GetAttribute()`
     pub fn ShapePersistent_BRep_CurveRepresentation_inherited_GetAttribute(
         self_: *const ShapePersistent_BRep_CurveRepresentation,
-    ) -> crate::OcctResult<*mut HandleTDFAttribute>;
-    /// Inherited: **Source:** `StdObjMgt_Persistent.hxx`:81 - `StdObjMgt_Persistent::ImportAttribute()`
+    ) -> crate::OcctResult<*mut Handle_TDF_Attribute>;
+    /// Inherited: **Source:** `StdObjMgt_Persistent.hxx`:82 - `StdObjMgt_Persistent::ImportAttribute()`
     pub fn ShapePersistent_BRep_CurveRepresentation_inherited_ImportAttribute(
         self_: *mut ShapePersistent_BRep_CurveRepresentation,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `StdObjMgt_Persistent.hxx`:86 - `StdObjMgt_Persistent::AsciiString()`
+    /// Inherited: **Source:** `StdObjMgt_Persistent.hxx`:87 - `StdObjMgt_Persistent::AsciiString()`
     pub fn ShapePersistent_BRep_CurveRepresentation_inherited_AsciiString(
         self_: *const ShapePersistent_BRep_CurveRepresentation,
-    ) -> crate::OcctResult<*mut HandleTCollectionHAsciiString>;
-    /// Inherited: **Source:** `StdObjMgt_Persistent.hxx`:91 - `StdObjMgt_Persistent::ExtString()`
+    ) -> crate::OcctResult<*mut Handle_TCollection_HAsciiString>;
+    /// Inherited: **Source:** `StdObjMgt_Persistent.hxx`:92 - `StdObjMgt_Persistent::ExtString()`
     pub fn ShapePersistent_BRep_CurveRepresentation_inherited_ExtString(
         self_: *const ShapePersistent_BRep_CurveRepresentation,
-    ) -> crate::OcctResult<*mut HandleTCollectionHExtendedString>;
-    /// Inherited: **Source:** `StdObjMgt_Persistent.hxx`:96 - `StdObjMgt_Persistent::Label()`
+    ) -> crate::OcctResult<*mut Handle_TCollection_HExtendedString>;
+    /// Inherited: **Source:** `StdObjMgt_Persistent.hxx`:97 - `StdObjMgt_Persistent::Label()`
     pub fn ShapePersistent_BRep_CurveRepresentation_inherited_Label(
         self_: *const ShapePersistent_BRep_CurveRepresentation,
-        theDF: *const HandleTDFData,
+        theDF: *const Handle_TDF_Data,
     ) -> crate::OcctResult<*mut TDF_Label>;
-    /// Inherited: **Source:** `StdObjMgt_Persistent.hxx`:99 - `StdObjMgt_Persistent::TypeNum()`
+    /// Inherited: **Source:** `StdObjMgt_Persistent.hxx`:100 - `StdObjMgt_Persistent::TypeNum()`
     pub fn ShapePersistent_BRep_CurveRepresentation_inherited_TypeNum(
         self_: *const ShapePersistent_BRep_CurveRepresentation,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `StdObjMgt_Persistent.hxx`:105 - `StdObjMgt_Persistent::RefNum()`
+    /// Inherited: **Source:** `StdObjMgt_Persistent.hxx`:106 - `StdObjMgt_Persistent::RefNum()`
     pub fn ShapePersistent_BRep_CurveRepresentation_inherited_RefNum(
         self_: *const ShapePersistent_BRep_CurveRepresentation,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:71 - `Standard_Transient::DynamicType()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:79 - `Standard_Transient::DynamicType()`
     pub fn ShapePersistent_BRep_CurveRepresentation_inherited_DynamicType(
         self_: *const ShapePersistent_BRep_CurveRepresentation,
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn ShapePersistent_BRep_CurveRepresentation_inherited_IsInstance(
         self_: *const ShapePersistent_BRep_CurveRepresentation,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn ShapePersistent_BRep_CurveRepresentation_inherited_IsKind(
         self_: *const ShapePersistent_BRep_CurveRepresentation,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn ShapePersistent_BRep_CurveRepresentation_inherited_This(
         self_: *const ShapePersistent_BRep_CurveRepresentation,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn ShapePersistent_BRep_CurveRepresentation_inherited_GetRefCount(
         self_: *const ShapePersistent_BRep_CurveRepresentation,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn ShapePersistent_BRep_CurveRepresentation_inherited_IncrementRefCounter(
         self_: *mut ShapePersistent_BRep_CurveRepresentation,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn ShapePersistent_BRep_CurveRepresentation_inherited_DecrementRefCounter(
         self_: *mut ShapePersistent_BRep_CurveRepresentation,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn ShapePersistent_BRep_CurveRepresentation_inherited_Delete(
         self_: *const ShapePersistent_BRep_CurveRepresentation,
     ) -> *const std::ffi::c_char;
     // ======================== ShapePersistent_BRep_GCurve ========================
     pub fn ShapePersistent_BRep_GCurve_destructor(self_: *mut ShapePersistent_BRep_GCurve);
-    /// **Source:** `ShapePersistent_BRep.hxx`:177 - `ShapePersistent_BRep_GCurve::ShapePersistent_BRep_GCurve()`
+    /// **Source:** `ShapePersistent_BRep.hxx`:182 - `ShapePersistent_BRep_GCurve::ShapePersistent_BRep_GCurve()`
     pub fn ShapePersistent_BRep_GCurve_ctor() -> crate::OcctResult<*mut ShapePersistent_BRep_GCurve>;
-    /// **Source:** `ShapePersistent_BRep.hxx`:183 - `ShapePersistent_BRep_GCurve::Read()`
+    /// **Source:** `ShapePersistent_BRep.hxx`:188 - `ShapePersistent_BRep_GCurve::Read()`
     pub fn ShapePersistent_BRep_GCurve_read(
         self_: *mut ShapePersistent_BRep_GCurve,
         theReadData: *mut StdObjMgt_ReadData,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `ShapePersistent_BRep.hxx`:184 - `ShapePersistent_BRep_GCurve::Write()`
+    /// **Source:** `ShapePersistent_BRep.hxx`:189 - `ShapePersistent_BRep_GCurve::Write()`
     pub fn ShapePersistent_BRep_GCurve_write(
         self_: *const ShapePersistent_BRep_GCurve,
         theWriteData: *mut StdObjMgt_WriteData,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `ShapePersistent_BRep.hxx`:186 - `ShapePersistent_BRep_GCurve::PName()`
+    /// **Source:** `ShapePersistent_BRep.hxx`:191 - `ShapePersistent_BRep_GCurve::PName()`
     pub fn ShapePersistent_BRep_GCurve_p_name(
         self_: *const ShapePersistent_BRep_GCurve,
     ) -> crate::OcctResult<*const std::ffi::c_char>;
@@ -624,52 +518,52 @@ unsafe extern "C" {
     /// **Source:** `ShapePersistent_BRep.hxx` - `ShapePersistent_BRep_Curve3D::ShapePersistent_BRep_Curve3D()`
     pub fn ShapePersistent_BRep_Curve3D_ctor(
     ) -> crate::OcctResult<*mut ShapePersistent_BRep_Curve3D>;
-    /// **Source:** `ShapePersistent_BRep.hxx`:198 - `ShapePersistent_BRep_Curve3D::Read()`
+    /// **Source:** `ShapePersistent_BRep.hxx`:203 - `ShapePersistent_BRep_Curve3D::Read()`
     pub fn ShapePersistent_BRep_Curve3D_read(
         self_: *mut ShapePersistent_BRep_Curve3D,
         theReadData: *mut StdObjMgt_ReadData,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `ShapePersistent_BRep.hxx`:199 - `ShapePersistent_BRep_Curve3D::Write()`
+    /// **Source:** `ShapePersistent_BRep.hxx`:204 - `ShapePersistent_BRep_Curve3D::Write()`
     pub fn ShapePersistent_BRep_Curve3D_write(
         self_: *const ShapePersistent_BRep_Curve3D,
         theWriteData: *mut StdObjMgt_WriteData,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `ShapePersistent_BRep.hxx`:200 - `ShapePersistent_BRep_Curve3D::PChildren()`
+    /// **Source:** `ShapePersistent_BRep.hxx`:205 - `ShapePersistent_BRep_Curve3D::PChildren()`
     pub fn ShapePersistent_BRep_Curve3D_p_children(
         self_: *const ShapePersistent_BRep_Curve3D,
         theChildren: *mut StdObjMgt_Persistent_SequenceOfPersistent,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `ShapePersistent_BRep.hxx`:202 - `ShapePersistent_BRep_Curve3D::PName()`
+    /// **Source:** `ShapePersistent_BRep.hxx`:207 - `ShapePersistent_BRep_Curve3D::PName()`
     pub fn ShapePersistent_BRep_Curve3D_p_name(
         self_: *const ShapePersistent_BRep_Curve3D,
     ) -> crate::OcctResult<*const std::ffi::c_char>;
-    /// **Source:** `ShapePersistent_BRep.hxx`:204 - `ShapePersistent_BRep_Curve3D::import()`
+    /// **Source:** `ShapePersistent_BRep.hxx`:209 - `ShapePersistent_BRep_Curve3D::import()`
     pub fn ShapePersistent_BRep_Curve3D_import(
         self_: *const ShapePersistent_BRep_Curve3D,
-    ) -> crate::OcctResult<*mut HandleBRepCurveRepresentation>;
+    ) -> crate::OcctResult<*mut Handle_BRep_CurveRepresentation>;
     /// Wrap ShapePersistent_BRep_Curve3D in a Handle
     pub fn ShapePersistent_BRep_Curve3D_to_handle(
         obj: *mut ShapePersistent_BRep_Curve3D,
-    ) -> crate::OcctResult<*mut HandleShapePersistentBRepCurve3D>;
+    ) -> crate::OcctResult<*mut Handle_ShapePersistent_BRep_Curve3D>;
     /// Destroy Handle<ShapePersistent_BRep_Curve3D>
-    pub fn HandleShapePersistentBRepCurve3D_destructor(
-        self_: *mut HandleShapePersistentBRepCurve3D,
+    pub fn Handle_ShapePersistent_BRep_Curve3D_destructor(
+        self_: *mut Handle_ShapePersistent_BRep_Curve3D,
     );
     /// Clone Handle<ShapePersistent_BRep_Curve3D> (increments reference count)
-    pub fn HandleShapePersistentBRepCurve3D_clone(
-        self_: *const HandleShapePersistentBRepCurve3D,
-    ) -> crate::OcctResult<*mut HandleShapePersistentBRepCurve3D>;
+    pub fn Handle_ShapePersistent_BRep_Curve3D_clone(
+        self_: *const Handle_ShapePersistent_BRep_Curve3D,
+    ) -> crate::OcctResult<*mut Handle_ShapePersistent_BRep_Curve3D>;
     /// Check if Handle<ShapePersistent_BRep_Curve3D> is null
-    pub fn HandleShapePersistentBRepCurve3D_is_null(
-        self_: *const HandleShapePersistentBRepCurve3D,
+    pub fn Handle_ShapePersistent_BRep_Curve3D_is_null(
+        self_: *const Handle_ShapePersistent_BRep_Curve3D,
     ) -> bool;
     /// Dereference Handle to get *const ShapePersistent_BRep_Curve3D
-    pub fn HandleShapePersistentBRepCurve3D_get(
-        handle: *const HandleShapePersistentBRepCurve3D,
+    pub fn Handle_ShapePersistent_BRep_Curve3D_get(
+        handle: *const Handle_ShapePersistent_BRep_Curve3D,
     ) -> crate::OcctResult<*const ShapePersistent_BRep_Curve3D>;
     /// Dereference Handle to get *mut ShapePersistent_BRep_Curve3D
-    pub fn HandleShapePersistentBRepCurve3D_get_mut(
-        handle: *mut HandleShapePersistentBRepCurve3D,
+    pub fn Handle_ShapePersistent_BRep_Curve3D_get_mut(
+        handle: *mut Handle_ShapePersistent_BRep_Curve3D,
     ) -> crate::OcctResult<*mut ShapePersistent_BRep_Curve3D>;
     // ======================== ShapePersistent_BRep_CurveOnSurface ========================
     pub fn ShapePersistent_BRep_CurveOnSurface_destructor(
@@ -678,158 +572,158 @@ unsafe extern "C" {
     /// **Source:** `ShapePersistent_BRep.hxx` - `ShapePersistent_BRep_CurveOnSurface::ShapePersistent_BRep_CurveOnSurface()`
     pub fn ShapePersistent_BRep_CurveOnSurface_ctor(
     ) -> crate::OcctResult<*mut ShapePersistent_BRep_CurveOnSurface>;
-    /// **Source:** `ShapePersistent_BRep.hxx`:215 - `ShapePersistent_BRep_CurveOnSurface::Read()`
+    /// **Source:** `ShapePersistent_BRep.hxx`:220 - `ShapePersistent_BRep_CurveOnSurface::Read()`
     pub fn ShapePersistent_BRep_CurveOnSurface_read(
         self_: *mut ShapePersistent_BRep_CurveOnSurface,
         theReadData: *mut StdObjMgt_ReadData,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `ShapePersistent_BRep.hxx`:216 - `ShapePersistent_BRep_CurveOnSurface::Write()`
+    /// **Source:** `ShapePersistent_BRep.hxx`:221 - `ShapePersistent_BRep_CurveOnSurface::Write()`
     pub fn ShapePersistent_BRep_CurveOnSurface_write(
         self_: *const ShapePersistent_BRep_CurveOnSurface,
         theWriteData: *mut StdObjMgt_WriteData,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `ShapePersistent_BRep.hxx`:217 - `ShapePersistent_BRep_CurveOnSurface::PChildren()`
+    /// **Source:** `ShapePersistent_BRep.hxx`:222 - `ShapePersistent_BRep_CurveOnSurface::PChildren()`
     pub fn ShapePersistent_BRep_CurveOnSurface_p_children(
         self_: *const ShapePersistent_BRep_CurveOnSurface,
         theChildren: *mut StdObjMgt_Persistent_SequenceOfPersistent,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `ShapePersistent_BRep.hxx`:219 - `ShapePersistent_BRep_CurveOnSurface::PName()`
+    /// **Source:** `ShapePersistent_BRep.hxx`:224 - `ShapePersistent_BRep_CurveOnSurface::PName()`
     pub fn ShapePersistent_BRep_CurveOnSurface_p_name(
         self_: *const ShapePersistent_BRep_CurveOnSurface,
     ) -> crate::OcctResult<*const std::ffi::c_char>;
-    /// **Source:** `ShapePersistent_BRep.hxx`:221 - `ShapePersistent_BRep_CurveOnSurface::import()`
+    /// **Source:** `ShapePersistent_BRep.hxx`:226 - `ShapePersistent_BRep_CurveOnSurface::import()`
     pub fn ShapePersistent_BRep_CurveOnSurface_import(
         self_: *const ShapePersistent_BRep_CurveOnSurface,
-    ) -> crate::OcctResult<*mut HandleBRepCurveRepresentation>;
+    ) -> crate::OcctResult<*mut Handle_BRep_CurveRepresentation>;
     /// Wrap ShapePersistent_BRep_CurveOnSurface in a Handle
     pub fn ShapePersistent_BRep_CurveOnSurface_to_handle(
         obj: *mut ShapePersistent_BRep_CurveOnSurface,
-    ) -> crate::OcctResult<*mut HandleShapePersistentBRepCurveOnSurface>;
+    ) -> crate::OcctResult<*mut Handle_ShapePersistent_BRep_CurveOnSurface>;
     /// Destroy Handle<ShapePersistent_BRep_CurveOnSurface>
-    pub fn HandleShapePersistentBRepCurveOnSurface_destructor(
-        self_: *mut HandleShapePersistentBRepCurveOnSurface,
+    pub fn Handle_ShapePersistent_BRep_CurveOnSurface_destructor(
+        self_: *mut Handle_ShapePersistent_BRep_CurveOnSurface,
     );
     /// Clone Handle<ShapePersistent_BRep_CurveOnSurface> (increments reference count)
-    pub fn HandleShapePersistentBRepCurveOnSurface_clone(
-        self_: *const HandleShapePersistentBRepCurveOnSurface,
-    ) -> crate::OcctResult<*mut HandleShapePersistentBRepCurveOnSurface>;
+    pub fn Handle_ShapePersistent_BRep_CurveOnSurface_clone(
+        self_: *const Handle_ShapePersistent_BRep_CurveOnSurface,
+    ) -> crate::OcctResult<*mut Handle_ShapePersistent_BRep_CurveOnSurface>;
     /// Check if Handle<ShapePersistent_BRep_CurveOnSurface> is null
-    pub fn HandleShapePersistentBRepCurveOnSurface_is_null(
-        self_: *const HandleShapePersistentBRepCurveOnSurface,
+    pub fn Handle_ShapePersistent_BRep_CurveOnSurface_is_null(
+        self_: *const Handle_ShapePersistent_BRep_CurveOnSurface,
     ) -> bool;
     /// Dereference Handle to get *const ShapePersistent_BRep_CurveOnSurface
-    pub fn HandleShapePersistentBRepCurveOnSurface_get(
-        handle: *const HandleShapePersistentBRepCurveOnSurface,
+    pub fn Handle_ShapePersistent_BRep_CurveOnSurface_get(
+        handle: *const Handle_ShapePersistent_BRep_CurveOnSurface,
     ) -> crate::OcctResult<*const ShapePersistent_BRep_CurveOnSurface>;
     /// Dereference Handle to get *mut ShapePersistent_BRep_CurveOnSurface
-    pub fn HandleShapePersistentBRepCurveOnSurface_get_mut(
-        handle: *mut HandleShapePersistentBRepCurveOnSurface,
+    pub fn Handle_ShapePersistent_BRep_CurveOnSurface_get_mut(
+        handle: *mut Handle_ShapePersistent_BRep_CurveOnSurface,
     ) -> crate::OcctResult<*mut ShapePersistent_BRep_CurveOnSurface>;
     // ======================== ShapePersistent_BRep_CurveOnClosedSurface ========================
     pub fn ShapePersistent_BRep_CurveOnClosedSurface_destructor(
         self_: *mut ShapePersistent_BRep_CurveOnClosedSurface,
     );
-    /// **Source:** `ShapePersistent_BRep.hxx`:235 - `ShapePersistent_BRep_CurveOnClosedSurface::ShapePersistent_BRep_CurveOnClosedSurface()`
+    /// **Source:** `ShapePersistent_BRep.hxx`:240 - `ShapePersistent_BRep_CurveOnClosedSurface::ShapePersistent_BRep_CurveOnClosedSurface()`
     pub fn ShapePersistent_BRep_CurveOnClosedSurface_ctor(
     ) -> crate::OcctResult<*mut ShapePersistent_BRep_CurveOnClosedSurface>;
-    /// **Source:** `ShapePersistent_BRep.hxx`:240 - `ShapePersistent_BRep_CurveOnClosedSurface::Read()`
+    /// **Source:** `ShapePersistent_BRep.hxx`:245 - `ShapePersistent_BRep_CurveOnClosedSurface::Read()`
     pub fn ShapePersistent_BRep_CurveOnClosedSurface_read(
         self_: *mut ShapePersistent_BRep_CurveOnClosedSurface,
         theReadData: *mut StdObjMgt_ReadData,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `ShapePersistent_BRep.hxx`:241 - `ShapePersistent_BRep_CurveOnClosedSurface::Write()`
+    /// **Source:** `ShapePersistent_BRep.hxx`:246 - `ShapePersistent_BRep_CurveOnClosedSurface::Write()`
     pub fn ShapePersistent_BRep_CurveOnClosedSurface_write(
         self_: *const ShapePersistent_BRep_CurveOnClosedSurface,
         theWriteData: *mut StdObjMgt_WriteData,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `ShapePersistent_BRep.hxx`:242 - `ShapePersistent_BRep_CurveOnClosedSurface::PChildren()`
+    /// **Source:** `ShapePersistent_BRep.hxx`:247 - `ShapePersistent_BRep_CurveOnClosedSurface::PChildren()`
     pub fn ShapePersistent_BRep_CurveOnClosedSurface_p_children(
         self_: *const ShapePersistent_BRep_CurveOnClosedSurface,
         theChildren: *mut StdObjMgt_Persistent_SequenceOfPersistent,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `ShapePersistent_BRep.hxx`:244 - `ShapePersistent_BRep_CurveOnClosedSurface::PName()`
+    /// **Source:** `ShapePersistent_BRep.hxx`:249 - `ShapePersistent_BRep_CurveOnClosedSurface::PName()`
     pub fn ShapePersistent_BRep_CurveOnClosedSurface_p_name(
         self_: *const ShapePersistent_BRep_CurveOnClosedSurface,
     ) -> crate::OcctResult<*const std::ffi::c_char>;
-    /// **Source:** `ShapePersistent_BRep.hxx`:246 - `ShapePersistent_BRep_CurveOnClosedSurface::import()`
+    /// **Source:** `ShapePersistent_BRep.hxx`:251 - `ShapePersistent_BRep_CurveOnClosedSurface::import()`
     pub fn ShapePersistent_BRep_CurveOnClosedSurface_import(
         self_: *const ShapePersistent_BRep_CurveOnClosedSurface,
-    ) -> crate::OcctResult<*mut HandleBRepCurveRepresentation>;
+    ) -> crate::OcctResult<*mut Handle_BRep_CurveRepresentation>;
     /// Wrap ShapePersistent_BRep_CurveOnClosedSurface in a Handle
     pub fn ShapePersistent_BRep_CurveOnClosedSurface_to_handle(
         obj: *mut ShapePersistent_BRep_CurveOnClosedSurface,
-    ) -> crate::OcctResult<*mut HandleShapePersistentBRepCurveOnClosedSurface>;
+    ) -> crate::OcctResult<*mut Handle_ShapePersistent_BRep_CurveOnClosedSurface>;
     /// Destroy Handle<ShapePersistent_BRep_CurveOnClosedSurface>
-    pub fn HandleShapePersistentBRepCurveOnClosedSurface_destructor(
-        self_: *mut HandleShapePersistentBRepCurveOnClosedSurface,
+    pub fn Handle_ShapePersistent_BRep_CurveOnClosedSurface_destructor(
+        self_: *mut Handle_ShapePersistent_BRep_CurveOnClosedSurface,
     );
     /// Clone Handle<ShapePersistent_BRep_CurveOnClosedSurface> (increments reference count)
-    pub fn HandleShapePersistentBRepCurveOnClosedSurface_clone(
-        self_: *const HandleShapePersistentBRepCurveOnClosedSurface,
-    ) -> crate::OcctResult<*mut HandleShapePersistentBRepCurveOnClosedSurface>;
+    pub fn Handle_ShapePersistent_BRep_CurveOnClosedSurface_clone(
+        self_: *const Handle_ShapePersistent_BRep_CurveOnClosedSurface,
+    ) -> crate::OcctResult<*mut Handle_ShapePersistent_BRep_CurveOnClosedSurface>;
     /// Check if Handle<ShapePersistent_BRep_CurveOnClosedSurface> is null
-    pub fn HandleShapePersistentBRepCurveOnClosedSurface_is_null(
-        self_: *const HandleShapePersistentBRepCurveOnClosedSurface,
+    pub fn Handle_ShapePersistent_BRep_CurveOnClosedSurface_is_null(
+        self_: *const Handle_ShapePersistent_BRep_CurveOnClosedSurface,
     ) -> bool;
     /// Dereference Handle to get *const ShapePersistent_BRep_CurveOnClosedSurface
-    pub fn HandleShapePersistentBRepCurveOnClosedSurface_get(
-        handle: *const HandleShapePersistentBRepCurveOnClosedSurface,
+    pub fn Handle_ShapePersistent_BRep_CurveOnClosedSurface_get(
+        handle: *const Handle_ShapePersistent_BRep_CurveOnClosedSurface,
     ) -> crate::OcctResult<*const ShapePersistent_BRep_CurveOnClosedSurface>;
     /// Dereference Handle to get *mut ShapePersistent_BRep_CurveOnClosedSurface
-    pub fn HandleShapePersistentBRepCurveOnClosedSurface_get_mut(
-        handle: *mut HandleShapePersistentBRepCurveOnClosedSurface,
+    pub fn Handle_ShapePersistent_BRep_CurveOnClosedSurface_get_mut(
+        handle: *mut Handle_ShapePersistent_BRep_CurveOnClosedSurface,
     ) -> crate::OcctResult<*mut ShapePersistent_BRep_CurveOnClosedSurface>;
     // ======================== ShapePersistent_BRep_Polygon3D ========================
     pub fn ShapePersistent_BRep_Polygon3D_destructor(self_: *mut ShapePersistent_BRep_Polygon3D);
     /// **Source:** `ShapePersistent_BRep.hxx` - `ShapePersistent_BRep_Polygon3D::ShapePersistent_BRep_Polygon3D()`
     pub fn ShapePersistent_BRep_Polygon3D_ctor(
     ) -> crate::OcctResult<*mut ShapePersistent_BRep_Polygon3D>;
-    /// **Source:** `ShapePersistent_BRep.hxx`:260 - `ShapePersistent_BRep_Polygon3D::Read()`
+    /// **Source:** `ShapePersistent_BRep.hxx`:265 - `ShapePersistent_BRep_Polygon3D::Read()`
     pub fn ShapePersistent_BRep_Polygon3D_read(
         self_: *mut ShapePersistent_BRep_Polygon3D,
         theReadData: *mut StdObjMgt_ReadData,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `ShapePersistent_BRep.hxx`:261 - `ShapePersistent_BRep_Polygon3D::Write()`
+    /// **Source:** `ShapePersistent_BRep.hxx`:266 - `ShapePersistent_BRep_Polygon3D::Write()`
     pub fn ShapePersistent_BRep_Polygon3D_write(
         self_: *const ShapePersistent_BRep_Polygon3D,
         theWriteData: *mut StdObjMgt_WriteData,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `ShapePersistent_BRep.hxx`:262 - `ShapePersistent_BRep_Polygon3D::PChildren()`
+    /// **Source:** `ShapePersistent_BRep.hxx`:267 - `ShapePersistent_BRep_Polygon3D::PChildren()`
     pub fn ShapePersistent_BRep_Polygon3D_p_children(
         self_: *const ShapePersistent_BRep_Polygon3D,
         theChildren: *mut StdObjMgt_Persistent_SequenceOfPersistent,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `ShapePersistent_BRep.hxx`:264 - `ShapePersistent_BRep_Polygon3D::PName()`
+    /// **Source:** `ShapePersistent_BRep.hxx`:269 - `ShapePersistent_BRep_Polygon3D::PName()`
     pub fn ShapePersistent_BRep_Polygon3D_p_name(
         self_: *const ShapePersistent_BRep_Polygon3D,
     ) -> crate::OcctResult<*const std::ffi::c_char>;
-    /// **Source:** `ShapePersistent_BRep.hxx`:266 - `ShapePersistent_BRep_Polygon3D::import()`
+    /// **Source:** `ShapePersistent_BRep.hxx`:271 - `ShapePersistent_BRep_Polygon3D::import()`
     pub fn ShapePersistent_BRep_Polygon3D_import(
         self_: *const ShapePersistent_BRep_Polygon3D,
-    ) -> crate::OcctResult<*mut HandleBRepCurveRepresentation>;
+    ) -> crate::OcctResult<*mut Handle_BRep_CurveRepresentation>;
     /// Wrap ShapePersistent_BRep_Polygon3D in a Handle
     pub fn ShapePersistent_BRep_Polygon3D_to_handle(
         obj: *mut ShapePersistent_BRep_Polygon3D,
-    ) -> crate::OcctResult<*mut HandleShapePersistentBRepPolygon3D>;
+    ) -> crate::OcctResult<*mut Handle_ShapePersistent_BRep_Polygon3D>;
     /// Destroy Handle<ShapePersistent_BRep_Polygon3D>
-    pub fn HandleShapePersistentBRepPolygon3D_destructor(
-        self_: *mut HandleShapePersistentBRepPolygon3D,
+    pub fn Handle_ShapePersistent_BRep_Polygon3D_destructor(
+        self_: *mut Handle_ShapePersistent_BRep_Polygon3D,
     );
     /// Clone Handle<ShapePersistent_BRep_Polygon3D> (increments reference count)
-    pub fn HandleShapePersistentBRepPolygon3D_clone(
-        self_: *const HandleShapePersistentBRepPolygon3D,
-    ) -> crate::OcctResult<*mut HandleShapePersistentBRepPolygon3D>;
+    pub fn Handle_ShapePersistent_BRep_Polygon3D_clone(
+        self_: *const Handle_ShapePersistent_BRep_Polygon3D,
+    ) -> crate::OcctResult<*mut Handle_ShapePersistent_BRep_Polygon3D>;
     /// Check if Handle<ShapePersistent_BRep_Polygon3D> is null
-    pub fn HandleShapePersistentBRepPolygon3D_is_null(
-        self_: *const HandleShapePersistentBRepPolygon3D,
+    pub fn Handle_ShapePersistent_BRep_Polygon3D_is_null(
+        self_: *const Handle_ShapePersistent_BRep_Polygon3D,
     ) -> bool;
     /// Dereference Handle to get *const ShapePersistent_BRep_Polygon3D
-    pub fn HandleShapePersistentBRepPolygon3D_get(
-        handle: *const HandleShapePersistentBRepPolygon3D,
+    pub fn Handle_ShapePersistent_BRep_Polygon3D_get(
+        handle: *const Handle_ShapePersistent_BRep_Polygon3D,
     ) -> crate::OcctResult<*const ShapePersistent_BRep_Polygon3D>;
     /// Dereference Handle to get *mut ShapePersistent_BRep_Polygon3D
-    pub fn HandleShapePersistentBRepPolygon3D_get_mut(
-        handle: *mut HandleShapePersistentBRepPolygon3D,
+    pub fn Handle_ShapePersistent_BRep_Polygon3D_get_mut(
+        handle: *mut Handle_ShapePersistent_BRep_Polygon3D,
     ) -> crate::OcctResult<*mut ShapePersistent_BRep_Polygon3D>;
     // ======================== ShapePersistent_BRep_PolygonOnTriangulation ========================
     pub fn ShapePersistent_BRep_PolygonOnTriangulation_destructor(
@@ -838,52 +732,52 @@ unsafe extern "C" {
     /// **Source:** `ShapePersistent_BRep.hxx` - `ShapePersistent_BRep_PolygonOnTriangulation::ShapePersistent_BRep_PolygonOnTriangulation()`
     pub fn ShapePersistent_BRep_PolygonOnTriangulation_ctor(
     ) -> crate::OcctResult<*mut ShapePersistent_BRep_PolygonOnTriangulation>;
-    /// **Source:** `ShapePersistent_BRep.hxx`:277 - `ShapePersistent_BRep_PolygonOnTriangulation::Read()`
+    /// **Source:** `ShapePersistent_BRep.hxx`:282 - `ShapePersistent_BRep_PolygonOnTriangulation::Read()`
     pub fn ShapePersistent_BRep_PolygonOnTriangulation_read(
         self_: *mut ShapePersistent_BRep_PolygonOnTriangulation,
         theReadData: *mut StdObjMgt_ReadData,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `ShapePersistent_BRep.hxx`:278 - `ShapePersistent_BRep_PolygonOnTriangulation::Write()`
+    /// **Source:** `ShapePersistent_BRep.hxx`:283 - `ShapePersistent_BRep_PolygonOnTriangulation::Write()`
     pub fn ShapePersistent_BRep_PolygonOnTriangulation_write(
         self_: *const ShapePersistent_BRep_PolygonOnTriangulation,
         theWriteData: *mut StdObjMgt_WriteData,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `ShapePersistent_BRep.hxx`:279 - `ShapePersistent_BRep_PolygonOnTriangulation::PChildren()`
+    /// **Source:** `ShapePersistent_BRep.hxx`:284 - `ShapePersistent_BRep_PolygonOnTriangulation::PChildren()`
     pub fn ShapePersistent_BRep_PolygonOnTriangulation_p_children(
         self_: *const ShapePersistent_BRep_PolygonOnTriangulation,
         theChildren: *mut StdObjMgt_Persistent_SequenceOfPersistent,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `ShapePersistent_BRep.hxx`:281 - `ShapePersistent_BRep_PolygonOnTriangulation::PName()`
+    /// **Source:** `ShapePersistent_BRep.hxx`:286 - `ShapePersistent_BRep_PolygonOnTriangulation::PName()`
     pub fn ShapePersistent_BRep_PolygonOnTriangulation_p_name(
         self_: *const ShapePersistent_BRep_PolygonOnTriangulation,
     ) -> crate::OcctResult<*const std::ffi::c_char>;
-    /// **Source:** `ShapePersistent_BRep.hxx`:283 - `ShapePersistent_BRep_PolygonOnTriangulation::import()`
+    /// **Source:** `ShapePersistent_BRep.hxx`:288 - `ShapePersistent_BRep_PolygonOnTriangulation::import()`
     pub fn ShapePersistent_BRep_PolygonOnTriangulation_import(
         self_: *const ShapePersistent_BRep_PolygonOnTriangulation,
-    ) -> crate::OcctResult<*mut HandleBRepCurveRepresentation>;
+    ) -> crate::OcctResult<*mut Handle_BRep_CurveRepresentation>;
     /// Wrap ShapePersistent_BRep_PolygonOnTriangulation in a Handle
     pub fn ShapePersistent_BRep_PolygonOnTriangulation_to_handle(
         obj: *mut ShapePersistent_BRep_PolygonOnTriangulation,
-    ) -> crate::OcctResult<*mut HandleShapePersistentBRepPolygonOnTriangulation>;
+    ) -> crate::OcctResult<*mut Handle_ShapePersistent_BRep_PolygonOnTriangulation>;
     /// Destroy Handle<ShapePersistent_BRep_PolygonOnTriangulation>
-    pub fn HandleShapePersistentBRepPolygonOnTriangulation_destructor(
-        self_: *mut HandleShapePersistentBRepPolygonOnTriangulation,
+    pub fn Handle_ShapePersistent_BRep_PolygonOnTriangulation_destructor(
+        self_: *mut Handle_ShapePersistent_BRep_PolygonOnTriangulation,
     );
     /// Clone Handle<ShapePersistent_BRep_PolygonOnTriangulation> (increments reference count)
-    pub fn HandleShapePersistentBRepPolygonOnTriangulation_clone(
-        self_: *const HandleShapePersistentBRepPolygonOnTriangulation,
-    ) -> crate::OcctResult<*mut HandleShapePersistentBRepPolygonOnTriangulation>;
+    pub fn Handle_ShapePersistent_BRep_PolygonOnTriangulation_clone(
+        self_: *const Handle_ShapePersistent_BRep_PolygonOnTriangulation,
+    ) -> crate::OcctResult<*mut Handle_ShapePersistent_BRep_PolygonOnTriangulation>;
     /// Check if Handle<ShapePersistent_BRep_PolygonOnTriangulation> is null
-    pub fn HandleShapePersistentBRepPolygonOnTriangulation_is_null(
-        self_: *const HandleShapePersistentBRepPolygonOnTriangulation,
+    pub fn Handle_ShapePersistent_BRep_PolygonOnTriangulation_is_null(
+        self_: *const Handle_ShapePersistent_BRep_PolygonOnTriangulation,
     ) -> bool;
     /// Dereference Handle to get *const ShapePersistent_BRep_PolygonOnTriangulation
-    pub fn HandleShapePersistentBRepPolygonOnTriangulation_get(
-        handle: *const HandleShapePersistentBRepPolygonOnTriangulation,
+    pub fn Handle_ShapePersistent_BRep_PolygonOnTriangulation_get(
+        handle: *const Handle_ShapePersistent_BRep_PolygonOnTriangulation,
     ) -> crate::OcctResult<*const ShapePersistent_BRep_PolygonOnTriangulation>;
     /// Dereference Handle to get *mut ShapePersistent_BRep_PolygonOnTriangulation
-    pub fn HandleShapePersistentBRepPolygonOnTriangulation_get_mut(
-        handle: *mut HandleShapePersistentBRepPolygonOnTriangulation,
+    pub fn Handle_ShapePersistent_BRep_PolygonOnTriangulation_get_mut(
+        handle: *mut Handle_ShapePersistent_BRep_PolygonOnTriangulation,
     ) -> crate::OcctResult<*mut ShapePersistent_BRep_PolygonOnTriangulation>;
     // ======================== ShapePersistent_BRep_PolygonOnClosedTriangulation ========================
     pub fn ShapePersistent_BRep_PolygonOnClosedTriangulation_destructor(
@@ -892,52 +786,52 @@ unsafe extern "C" {
     /// **Source:** `ShapePersistent_BRep.hxx` - `ShapePersistent_BRep_PolygonOnClosedTriangulation::ShapePersistent_BRep_PolygonOnClosedTriangulation()`
     pub fn ShapePersistent_BRep_PolygonOnClosedTriangulation_ctor(
     ) -> crate::OcctResult<*mut ShapePersistent_BRep_PolygonOnClosedTriangulation>;
-    /// **Source:** `ShapePersistent_BRep.hxx`:295 - `ShapePersistent_BRep_PolygonOnClosedTriangulation::Read()`
+    /// **Source:** `ShapePersistent_BRep.hxx`:300 - `ShapePersistent_BRep_PolygonOnClosedTriangulation::Read()`
     pub fn ShapePersistent_BRep_PolygonOnClosedTriangulation_read(
         self_: *mut ShapePersistent_BRep_PolygonOnClosedTriangulation,
         theReadData: *mut StdObjMgt_ReadData,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `ShapePersistent_BRep.hxx`:296 - `ShapePersistent_BRep_PolygonOnClosedTriangulation::Write()`
+    /// **Source:** `ShapePersistent_BRep.hxx`:301 - `ShapePersistent_BRep_PolygonOnClosedTriangulation::Write()`
     pub fn ShapePersistent_BRep_PolygonOnClosedTriangulation_write(
         self_: *const ShapePersistent_BRep_PolygonOnClosedTriangulation,
         theWriteData: *mut StdObjMgt_WriteData,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `ShapePersistent_BRep.hxx`:297 - `ShapePersistent_BRep_PolygonOnClosedTriangulation::PChildren()`
+    /// **Source:** `ShapePersistent_BRep.hxx`:302 - `ShapePersistent_BRep_PolygonOnClosedTriangulation::PChildren()`
     pub fn ShapePersistent_BRep_PolygonOnClosedTriangulation_p_children(
         self_: *const ShapePersistent_BRep_PolygonOnClosedTriangulation,
         theChildren: *mut StdObjMgt_Persistent_SequenceOfPersistent,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `ShapePersistent_BRep.hxx`:299 - `ShapePersistent_BRep_PolygonOnClosedTriangulation::PName()`
+    /// **Source:** `ShapePersistent_BRep.hxx`:304 - `ShapePersistent_BRep_PolygonOnClosedTriangulation::PName()`
     pub fn ShapePersistent_BRep_PolygonOnClosedTriangulation_p_name(
         self_: *const ShapePersistent_BRep_PolygonOnClosedTriangulation,
     ) -> crate::OcctResult<*const std::ffi::c_char>;
-    /// **Source:** `ShapePersistent_BRep.hxx`:301 - `ShapePersistent_BRep_PolygonOnClosedTriangulation::import()`
+    /// **Source:** `ShapePersistent_BRep.hxx`:306 - `ShapePersistent_BRep_PolygonOnClosedTriangulation::import()`
     pub fn ShapePersistent_BRep_PolygonOnClosedTriangulation_import(
         self_: *const ShapePersistent_BRep_PolygonOnClosedTriangulation,
-    ) -> crate::OcctResult<*mut HandleBRepCurveRepresentation>;
+    ) -> crate::OcctResult<*mut Handle_BRep_CurveRepresentation>;
     /// Wrap ShapePersistent_BRep_PolygonOnClosedTriangulation in a Handle
     pub fn ShapePersistent_BRep_PolygonOnClosedTriangulation_to_handle(
         obj: *mut ShapePersistent_BRep_PolygonOnClosedTriangulation,
-    ) -> crate::OcctResult<*mut HandleShapePersistentBRepPolygonOnClosedTriangulation>;
+    ) -> crate::OcctResult<*mut Handle_ShapePersistent_BRep_PolygonOnClosedTriangulation>;
     /// Destroy Handle<ShapePersistent_BRep_PolygonOnClosedTriangulation>
-    pub fn HandleShapePersistentBRepPolygonOnClosedTriangulation_destructor(
-        self_: *mut HandleShapePersistentBRepPolygonOnClosedTriangulation,
+    pub fn Handle_ShapePersistent_BRep_PolygonOnClosedTriangulation_destructor(
+        self_: *mut Handle_ShapePersistent_BRep_PolygonOnClosedTriangulation,
     );
     /// Clone Handle<ShapePersistent_BRep_PolygonOnClosedTriangulation> (increments reference count)
-    pub fn HandleShapePersistentBRepPolygonOnClosedTriangulation_clone(
-        self_: *const HandleShapePersistentBRepPolygonOnClosedTriangulation,
-    ) -> crate::OcctResult<*mut HandleShapePersistentBRepPolygonOnClosedTriangulation>;
+    pub fn Handle_ShapePersistent_BRep_PolygonOnClosedTriangulation_clone(
+        self_: *const Handle_ShapePersistent_BRep_PolygonOnClosedTriangulation,
+    ) -> crate::OcctResult<*mut Handle_ShapePersistent_BRep_PolygonOnClosedTriangulation>;
     /// Check if Handle<ShapePersistent_BRep_PolygonOnClosedTriangulation> is null
-    pub fn HandleShapePersistentBRepPolygonOnClosedTriangulation_is_null(
-        self_: *const HandleShapePersistentBRepPolygonOnClosedTriangulation,
+    pub fn Handle_ShapePersistent_BRep_PolygonOnClosedTriangulation_is_null(
+        self_: *const Handle_ShapePersistent_BRep_PolygonOnClosedTriangulation,
     ) -> bool;
     /// Dereference Handle to get *const ShapePersistent_BRep_PolygonOnClosedTriangulation
-    pub fn HandleShapePersistentBRepPolygonOnClosedTriangulation_get(
-        handle: *const HandleShapePersistentBRepPolygonOnClosedTriangulation,
+    pub fn Handle_ShapePersistent_BRep_PolygonOnClosedTriangulation_get(
+        handle: *const Handle_ShapePersistent_BRep_PolygonOnClosedTriangulation,
     ) -> crate::OcctResult<*const ShapePersistent_BRep_PolygonOnClosedTriangulation>;
     /// Dereference Handle to get *mut ShapePersistent_BRep_PolygonOnClosedTriangulation
-    pub fn HandleShapePersistentBRepPolygonOnClosedTriangulation_get_mut(
-        handle: *mut HandleShapePersistentBRepPolygonOnClosedTriangulation,
+    pub fn Handle_ShapePersistent_BRep_PolygonOnClosedTriangulation_get_mut(
+        handle: *mut Handle_ShapePersistent_BRep_PolygonOnClosedTriangulation,
     ) -> crate::OcctResult<*mut ShapePersistent_BRep_PolygonOnClosedTriangulation>;
     // ======================== ShapePersistent_BRep_PolygonOnSurface ========================
     pub fn ShapePersistent_BRep_PolygonOnSurface_destructor(
@@ -946,52 +840,52 @@ unsafe extern "C" {
     /// **Source:** `ShapePersistent_BRep.hxx` - `ShapePersistent_BRep_PolygonOnSurface::ShapePersistent_BRep_PolygonOnSurface()`
     pub fn ShapePersistent_BRep_PolygonOnSurface_ctor(
     ) -> crate::OcctResult<*mut ShapePersistent_BRep_PolygonOnSurface>;
-    /// **Source:** `ShapePersistent_BRep.hxx`:312 - `ShapePersistent_BRep_PolygonOnSurface::Read()`
+    /// **Source:** `ShapePersistent_BRep.hxx`:317 - `ShapePersistent_BRep_PolygonOnSurface::Read()`
     pub fn ShapePersistent_BRep_PolygonOnSurface_read(
         self_: *mut ShapePersistent_BRep_PolygonOnSurface,
         theReadData: *mut StdObjMgt_ReadData,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `ShapePersistent_BRep.hxx`:313 - `ShapePersistent_BRep_PolygonOnSurface::Write()`
+    /// **Source:** `ShapePersistent_BRep.hxx`:318 - `ShapePersistent_BRep_PolygonOnSurface::Write()`
     pub fn ShapePersistent_BRep_PolygonOnSurface_write(
         self_: *const ShapePersistent_BRep_PolygonOnSurface,
         theWriteData: *mut StdObjMgt_WriteData,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `ShapePersistent_BRep.hxx`:314 - `ShapePersistent_BRep_PolygonOnSurface::PChildren()`
+    /// **Source:** `ShapePersistent_BRep.hxx`:319 - `ShapePersistent_BRep_PolygonOnSurface::PChildren()`
     pub fn ShapePersistent_BRep_PolygonOnSurface_p_children(
         self_: *const ShapePersistent_BRep_PolygonOnSurface,
         theChildren: *mut StdObjMgt_Persistent_SequenceOfPersistent,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `ShapePersistent_BRep.hxx`:316 - `ShapePersistent_BRep_PolygonOnSurface::PName()`
+    /// **Source:** `ShapePersistent_BRep.hxx`:321 - `ShapePersistent_BRep_PolygonOnSurface::PName()`
     pub fn ShapePersistent_BRep_PolygonOnSurface_p_name(
         self_: *const ShapePersistent_BRep_PolygonOnSurface,
     ) -> crate::OcctResult<*const std::ffi::c_char>;
-    /// **Source:** `ShapePersistent_BRep.hxx`:318 - `ShapePersistent_BRep_PolygonOnSurface::import()`
+    /// **Source:** `ShapePersistent_BRep.hxx`:323 - `ShapePersistent_BRep_PolygonOnSurface::import()`
     pub fn ShapePersistent_BRep_PolygonOnSurface_import(
         self_: *const ShapePersistent_BRep_PolygonOnSurface,
-    ) -> crate::OcctResult<*mut HandleBRepCurveRepresentation>;
+    ) -> crate::OcctResult<*mut Handle_BRep_CurveRepresentation>;
     /// Wrap ShapePersistent_BRep_PolygonOnSurface in a Handle
     pub fn ShapePersistent_BRep_PolygonOnSurface_to_handle(
         obj: *mut ShapePersistent_BRep_PolygonOnSurface,
-    ) -> crate::OcctResult<*mut HandleShapePersistentBRepPolygonOnSurface>;
+    ) -> crate::OcctResult<*mut Handle_ShapePersistent_BRep_PolygonOnSurface>;
     /// Destroy Handle<ShapePersistent_BRep_PolygonOnSurface>
-    pub fn HandleShapePersistentBRepPolygonOnSurface_destructor(
-        self_: *mut HandleShapePersistentBRepPolygonOnSurface,
+    pub fn Handle_ShapePersistent_BRep_PolygonOnSurface_destructor(
+        self_: *mut Handle_ShapePersistent_BRep_PolygonOnSurface,
     );
     /// Clone Handle<ShapePersistent_BRep_PolygonOnSurface> (increments reference count)
-    pub fn HandleShapePersistentBRepPolygonOnSurface_clone(
-        self_: *const HandleShapePersistentBRepPolygonOnSurface,
-    ) -> crate::OcctResult<*mut HandleShapePersistentBRepPolygonOnSurface>;
+    pub fn Handle_ShapePersistent_BRep_PolygonOnSurface_clone(
+        self_: *const Handle_ShapePersistent_BRep_PolygonOnSurface,
+    ) -> crate::OcctResult<*mut Handle_ShapePersistent_BRep_PolygonOnSurface>;
     /// Check if Handle<ShapePersistent_BRep_PolygonOnSurface> is null
-    pub fn HandleShapePersistentBRepPolygonOnSurface_is_null(
-        self_: *const HandleShapePersistentBRepPolygonOnSurface,
+    pub fn Handle_ShapePersistent_BRep_PolygonOnSurface_is_null(
+        self_: *const Handle_ShapePersistent_BRep_PolygonOnSurface,
     ) -> bool;
     /// Dereference Handle to get *const ShapePersistent_BRep_PolygonOnSurface
-    pub fn HandleShapePersistentBRepPolygonOnSurface_get(
-        handle: *const HandleShapePersistentBRepPolygonOnSurface,
+    pub fn Handle_ShapePersistent_BRep_PolygonOnSurface_get(
+        handle: *const Handle_ShapePersistent_BRep_PolygonOnSurface,
     ) -> crate::OcctResult<*const ShapePersistent_BRep_PolygonOnSurface>;
     /// Dereference Handle to get *mut ShapePersistent_BRep_PolygonOnSurface
-    pub fn HandleShapePersistentBRepPolygonOnSurface_get_mut(
-        handle: *mut HandleShapePersistentBRepPolygonOnSurface,
+    pub fn Handle_ShapePersistent_BRep_PolygonOnSurface_get_mut(
+        handle: *mut Handle_ShapePersistent_BRep_PolygonOnSurface,
     ) -> crate::OcctResult<*mut ShapePersistent_BRep_PolygonOnSurface>;
     // ======================== ShapePersistent_BRep_PolygonOnClosedSurface ========================
     pub fn ShapePersistent_BRep_PolygonOnClosedSurface_destructor(
@@ -1000,142 +894,132 @@ unsafe extern "C" {
     /// **Source:** `ShapePersistent_BRep.hxx` - `ShapePersistent_BRep_PolygonOnClosedSurface::ShapePersistent_BRep_PolygonOnClosedSurface()`
     pub fn ShapePersistent_BRep_PolygonOnClosedSurface_ctor(
     ) -> crate::OcctResult<*mut ShapePersistent_BRep_PolygonOnClosedSurface>;
-    /// **Source:** `ShapePersistent_BRep.hxx`:330 - `ShapePersistent_BRep_PolygonOnClosedSurface::Read()`
+    /// **Source:** `ShapePersistent_BRep.hxx`:335 - `ShapePersistent_BRep_PolygonOnClosedSurface::Read()`
     pub fn ShapePersistent_BRep_PolygonOnClosedSurface_read(
         self_: *mut ShapePersistent_BRep_PolygonOnClosedSurface,
         theReadData: *mut StdObjMgt_ReadData,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `ShapePersistent_BRep.hxx`:331 - `ShapePersistent_BRep_PolygonOnClosedSurface::Write()`
+    /// **Source:** `ShapePersistent_BRep.hxx`:336 - `ShapePersistent_BRep_PolygonOnClosedSurface::Write()`
     pub fn ShapePersistent_BRep_PolygonOnClosedSurface_write(
         self_: *const ShapePersistent_BRep_PolygonOnClosedSurface,
         theWriteData: *mut StdObjMgt_WriteData,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `ShapePersistent_BRep.hxx`:332 - `ShapePersistent_BRep_PolygonOnClosedSurface::PChildren()`
+    /// **Source:** `ShapePersistent_BRep.hxx`:337 - `ShapePersistent_BRep_PolygonOnClosedSurface::PChildren()`
     pub fn ShapePersistent_BRep_PolygonOnClosedSurface_p_children(
         self_: *const ShapePersistent_BRep_PolygonOnClosedSurface,
         theChildren: *mut StdObjMgt_Persistent_SequenceOfPersistent,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `ShapePersistent_BRep.hxx`:334 - `ShapePersistent_BRep_PolygonOnClosedSurface::PName()`
+    /// **Source:** `ShapePersistent_BRep.hxx`:339 - `ShapePersistent_BRep_PolygonOnClosedSurface::PName()`
     pub fn ShapePersistent_BRep_PolygonOnClosedSurface_p_name(
         self_: *const ShapePersistent_BRep_PolygonOnClosedSurface,
     ) -> crate::OcctResult<*const std::ffi::c_char>;
-    /// **Source:** `ShapePersistent_BRep.hxx`:336 - `ShapePersistent_BRep_PolygonOnClosedSurface::import()`
+    /// **Source:** `ShapePersistent_BRep.hxx`:341 - `ShapePersistent_BRep_PolygonOnClosedSurface::import()`
     pub fn ShapePersistent_BRep_PolygonOnClosedSurface_import(
         self_: *const ShapePersistent_BRep_PolygonOnClosedSurface,
-    ) -> crate::OcctResult<*mut HandleBRepCurveRepresentation>;
+    ) -> crate::OcctResult<*mut Handle_BRep_CurveRepresentation>;
     /// Wrap ShapePersistent_BRep_PolygonOnClosedSurface in a Handle
     pub fn ShapePersistent_BRep_PolygonOnClosedSurface_to_handle(
         obj: *mut ShapePersistent_BRep_PolygonOnClosedSurface,
-    ) -> crate::OcctResult<*mut HandleShapePersistentBRepPolygonOnClosedSurface>;
+    ) -> crate::OcctResult<*mut Handle_ShapePersistent_BRep_PolygonOnClosedSurface>;
     /// Destroy Handle<ShapePersistent_BRep_PolygonOnClosedSurface>
-    pub fn HandleShapePersistentBRepPolygonOnClosedSurface_destructor(
-        self_: *mut HandleShapePersistentBRepPolygonOnClosedSurface,
+    pub fn Handle_ShapePersistent_BRep_PolygonOnClosedSurface_destructor(
+        self_: *mut Handle_ShapePersistent_BRep_PolygonOnClosedSurface,
     );
     /// Clone Handle<ShapePersistent_BRep_PolygonOnClosedSurface> (increments reference count)
-    pub fn HandleShapePersistentBRepPolygonOnClosedSurface_clone(
-        self_: *const HandleShapePersistentBRepPolygonOnClosedSurface,
-    ) -> crate::OcctResult<*mut HandleShapePersistentBRepPolygonOnClosedSurface>;
+    pub fn Handle_ShapePersistent_BRep_PolygonOnClosedSurface_clone(
+        self_: *const Handle_ShapePersistent_BRep_PolygonOnClosedSurface,
+    ) -> crate::OcctResult<*mut Handle_ShapePersistent_BRep_PolygonOnClosedSurface>;
     /// Check if Handle<ShapePersistent_BRep_PolygonOnClosedSurface> is null
-    pub fn HandleShapePersistentBRepPolygonOnClosedSurface_is_null(
-        self_: *const HandleShapePersistentBRepPolygonOnClosedSurface,
+    pub fn Handle_ShapePersistent_BRep_PolygonOnClosedSurface_is_null(
+        self_: *const Handle_ShapePersistent_BRep_PolygonOnClosedSurface,
     ) -> bool;
     /// Dereference Handle to get *const ShapePersistent_BRep_PolygonOnClosedSurface
-    pub fn HandleShapePersistentBRepPolygonOnClosedSurface_get(
-        handle: *const HandleShapePersistentBRepPolygonOnClosedSurface,
+    pub fn Handle_ShapePersistent_BRep_PolygonOnClosedSurface_get(
+        handle: *const Handle_ShapePersistent_BRep_PolygonOnClosedSurface,
     ) -> crate::OcctResult<*const ShapePersistent_BRep_PolygonOnClosedSurface>;
     /// Dereference Handle to get *mut ShapePersistent_BRep_PolygonOnClosedSurface
-    pub fn HandleShapePersistentBRepPolygonOnClosedSurface_get_mut(
-        handle: *mut HandleShapePersistentBRepPolygonOnClosedSurface,
+    pub fn Handle_ShapePersistent_BRep_PolygonOnClosedSurface_get_mut(
+        handle: *mut Handle_ShapePersistent_BRep_PolygonOnClosedSurface,
     ) -> crate::OcctResult<*mut ShapePersistent_BRep_PolygonOnClosedSurface>;
     // ======================== ShapePersistent_BRep_CurveOn2Surfaces ========================
     pub fn ShapePersistent_BRep_CurveOn2Surfaces_destructor(
         self_: *mut ShapePersistent_BRep_CurveOn2Surfaces,
     );
-    /// **Source:** `ShapePersistent_BRep.hxx`:347 - `ShapePersistent_BRep_CurveOn2Surfaces::ShapePersistent_BRep_CurveOn2Surfaces()`
+    /// **Source:** `ShapePersistent_BRep.hxx`:352 - `ShapePersistent_BRep_CurveOn2Surfaces::ShapePersistent_BRep_CurveOn2Surfaces()`
     pub fn ShapePersistent_BRep_CurveOn2Surfaces_ctor(
     ) -> crate::OcctResult<*mut ShapePersistent_BRep_CurveOn2Surfaces>;
-    /// **Source:** `ShapePersistent_BRep.hxx`:352 - `ShapePersistent_BRep_CurveOn2Surfaces::Read()`
+    /// **Source:** `ShapePersistent_BRep.hxx`:357 - `ShapePersistent_BRep_CurveOn2Surfaces::Read()`
     pub fn ShapePersistent_BRep_CurveOn2Surfaces_read(
         self_: *mut ShapePersistent_BRep_CurveOn2Surfaces,
         theReadData: *mut StdObjMgt_ReadData,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `ShapePersistent_BRep.hxx`:353 - `ShapePersistent_BRep_CurveOn2Surfaces::Write()`
+    /// **Source:** `ShapePersistent_BRep.hxx`:358 - `ShapePersistent_BRep_CurveOn2Surfaces::Write()`
     pub fn ShapePersistent_BRep_CurveOn2Surfaces_write(
         self_: *const ShapePersistent_BRep_CurveOn2Surfaces,
         theWriteData: *mut StdObjMgt_WriteData,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `ShapePersistent_BRep.hxx`:354 - `ShapePersistent_BRep_CurveOn2Surfaces::PChildren()`
+    /// **Source:** `ShapePersistent_BRep.hxx`:359 - `ShapePersistent_BRep_CurveOn2Surfaces::PChildren()`
     pub fn ShapePersistent_BRep_CurveOn2Surfaces_p_children(
         self_: *const ShapePersistent_BRep_CurveOn2Surfaces,
         theChildren: *mut StdObjMgt_Persistent_SequenceOfPersistent,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `ShapePersistent_BRep.hxx`:356 - `ShapePersistent_BRep_CurveOn2Surfaces::PName()`
+    /// **Source:** `ShapePersistent_BRep.hxx`:361 - `ShapePersistent_BRep_CurveOn2Surfaces::PName()`
     pub fn ShapePersistent_BRep_CurveOn2Surfaces_p_name(
         self_: *const ShapePersistent_BRep_CurveOn2Surfaces,
     ) -> crate::OcctResult<*const std::ffi::c_char>;
-    /// **Source:** `ShapePersistent_BRep.hxx`:358 - `ShapePersistent_BRep_CurveOn2Surfaces::import()`
+    /// **Source:** `ShapePersistent_BRep.hxx`:363 - `ShapePersistent_BRep_CurveOn2Surfaces::import()`
     pub fn ShapePersistent_BRep_CurveOn2Surfaces_import(
         self_: *const ShapePersistent_BRep_CurveOn2Surfaces,
-    ) -> crate::OcctResult<*mut HandleBRepCurveRepresentation>;
+    ) -> crate::OcctResult<*mut Handle_BRep_CurveRepresentation>;
     /// Wrap ShapePersistent_BRep_CurveOn2Surfaces in a Handle
     pub fn ShapePersistent_BRep_CurveOn2Surfaces_to_handle(
         obj: *mut ShapePersistent_BRep_CurveOn2Surfaces,
-    ) -> crate::OcctResult<*mut HandleShapePersistentBRepCurveOn2Surfaces>;
+    ) -> crate::OcctResult<*mut Handle_ShapePersistent_BRep_CurveOn2Surfaces>;
     /// Destroy Handle<ShapePersistent_BRep_CurveOn2Surfaces>
-    pub fn HandleShapePersistentBRepCurveOn2Surfaces_destructor(
-        self_: *mut HandleShapePersistentBRepCurveOn2Surfaces,
+    pub fn Handle_ShapePersistent_BRep_CurveOn2Surfaces_destructor(
+        self_: *mut Handle_ShapePersistent_BRep_CurveOn2Surfaces,
     );
     /// Clone Handle<ShapePersistent_BRep_CurveOn2Surfaces> (increments reference count)
-    pub fn HandleShapePersistentBRepCurveOn2Surfaces_clone(
-        self_: *const HandleShapePersistentBRepCurveOn2Surfaces,
-    ) -> crate::OcctResult<*mut HandleShapePersistentBRepCurveOn2Surfaces>;
+    pub fn Handle_ShapePersistent_BRep_CurveOn2Surfaces_clone(
+        self_: *const Handle_ShapePersistent_BRep_CurveOn2Surfaces,
+    ) -> crate::OcctResult<*mut Handle_ShapePersistent_BRep_CurveOn2Surfaces>;
     /// Check if Handle<ShapePersistent_BRep_CurveOn2Surfaces> is null
-    pub fn HandleShapePersistentBRepCurveOn2Surfaces_is_null(
-        self_: *const HandleShapePersistentBRepCurveOn2Surfaces,
+    pub fn Handle_ShapePersistent_BRep_CurveOn2Surfaces_is_null(
+        self_: *const Handle_ShapePersistent_BRep_CurveOn2Surfaces,
     ) -> bool;
     /// Dereference Handle to get *const ShapePersistent_BRep_CurveOn2Surfaces
-    pub fn HandleShapePersistentBRepCurveOn2Surfaces_get(
-        handle: *const HandleShapePersistentBRepCurveOn2Surfaces,
+    pub fn Handle_ShapePersistent_BRep_CurveOn2Surfaces_get(
+        handle: *const Handle_ShapePersistent_BRep_CurveOn2Surfaces,
     ) -> crate::OcctResult<*const ShapePersistent_BRep_CurveOn2Surfaces>;
     /// Dereference Handle to get *mut ShapePersistent_BRep_CurveOn2Surfaces
-    pub fn HandleShapePersistentBRepCurveOn2Surfaces_get_mut(
-        handle: *mut HandleShapePersistentBRepCurveOn2Surfaces,
+    pub fn Handle_ShapePersistent_BRep_CurveOn2Surfaces_get_mut(
+        handle: *mut Handle_ShapePersistent_BRep_CurveOn2Surfaces,
     ) -> crate::OcctResult<*mut ShapePersistent_BRep_CurveOn2Surfaces>;
     // ======================== ShapePersistent_Geom ========================
     pub fn ShapePersistent_Geom_destructor(self_: *mut ShapePersistent_Geom);
     /// **Source:** `ShapePersistent_Geom.hxx` - `ShapePersistent_Geom::ShapePersistent_Geom()`
     pub fn ShapePersistent_Geom_ctor() -> crate::OcctResult<*mut ShapePersistent_Geom>;
-    /// **Source:** `ShapePersistent_Geom.hxx`:181 - `ShapePersistent_Geom::Translate()`
-    pub fn ShapePersistent_Geom_translate_handlegeomcurve_transientpersistentmap(
-        theCurve: *const HandleGeomCurve,
-        theMap: *mut StdObjMgt_TransientPersistentMap,
-    ) -> crate::OcctResult<*mut HandleShapePersistentGeomCurve>;
-    /// **Source:** `ShapePersistent_Geom.hxx`:184 - `ShapePersistent_Geom::Translate()`
-    pub fn ShapePersistent_Geom_translate_handlegeomsurface_transientpersistentmap(
-        theSurf: *const HandleGeomSurface,
-        theMap: *mut StdObjMgt_TransientPersistentMap,
-    ) -> crate::OcctResult<*mut HandleShapePersistentGeomSurface>;
     // ======================== ShapePersistent_Geom_Geometry ========================
     pub fn ShapePersistent_Geom_Geometry_destructor(self_: *mut ShapePersistent_Geom_Geometry);
     /// **Source:** `ShapePersistent_Geom.hxx` - `ShapePersistent_Geom_Geometry::ShapePersistent_Geom_Geometry()`
     pub fn ShapePersistent_Geom_Geometry_ctor(
     ) -> crate::OcctResult<*mut ShapePersistent_Geom_Geometry>;
-    /// **Source:** `ShapePersistent_Geom.hxx`:42 - `ShapePersistent_Geom_Geometry::Read()`
+    /// **Source:** `ShapePersistent_Geom.hxx`:44 - `ShapePersistent_Geom_Geometry::Read()`
     pub fn ShapePersistent_Geom_Geometry_read(
         self_: *mut ShapePersistent_Geom_Geometry,
         theReadData: *mut StdObjMgt_ReadData,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `ShapePersistent_Geom.hxx`:44 - `ShapePersistent_Geom_Geometry::Write()`
+    /// **Source:** `ShapePersistent_Geom.hxx`:46 - `ShapePersistent_Geom_Geometry::Write()`
     pub fn ShapePersistent_Geom_Geometry_write(
         self_: *const ShapePersistent_Geom_Geometry,
         theWriteData: *mut StdObjMgt_WriteData,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `ShapePersistent_Geom.hxx`:46 - `ShapePersistent_Geom_Geometry::PChildren()`
+    /// **Source:** `ShapePersistent_Geom.hxx`:48 - `ShapePersistent_Geom_Geometry::PChildren()`
     pub fn ShapePersistent_Geom_Geometry_p_children(
         self_: *const ShapePersistent_Geom_Geometry,
         theChildren: *mut StdObjMgt_Persistent_SequenceOfPersistent,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `ShapePersistent_Geom.hxx`:49 - `ShapePersistent_Geom_Geometry::PName()`
+    /// **Source:** `ShapePersistent_Geom.hxx`:51 - `ShapePersistent_Geom_Geometry::PName()`
     pub fn ShapePersistent_Geom_Geometry_p_name(
         self_: *const ShapePersistent_Geom_Geometry,
     ) -> crate::OcctResult<*const std::ffi::c_char>;
@@ -1158,104 +1042,104 @@ unsafe extern "C" {
     /// Wrap ShapePersistent_Geom_Geometry in a Handle
     pub fn ShapePersistent_Geom_Geometry_to_handle(
         obj: *mut ShapePersistent_Geom_Geometry,
-    ) -> crate::OcctResult<*mut HandleShapePersistentGeomGeometry>;
+    ) -> crate::OcctResult<*mut Handle_ShapePersistent_Geom_Geometry>;
     /// Destroy Handle<ShapePersistent_Geom_Geometry>
-    pub fn HandleShapePersistentGeomGeometry_destructor(
-        self_: *mut HandleShapePersistentGeomGeometry,
+    pub fn Handle_ShapePersistent_Geom_Geometry_destructor(
+        self_: *mut Handle_ShapePersistent_Geom_Geometry,
     );
     /// Clone Handle<ShapePersistent_Geom_Geometry> (increments reference count)
-    pub fn HandleShapePersistentGeomGeometry_clone(
-        self_: *const HandleShapePersistentGeomGeometry,
-    ) -> crate::OcctResult<*mut HandleShapePersistentGeomGeometry>;
+    pub fn Handle_ShapePersistent_Geom_Geometry_clone(
+        self_: *const Handle_ShapePersistent_Geom_Geometry,
+    ) -> crate::OcctResult<*mut Handle_ShapePersistent_Geom_Geometry>;
     /// Check if Handle<ShapePersistent_Geom_Geometry> is null
-    pub fn HandleShapePersistentGeomGeometry_is_null(
-        self_: *const HandleShapePersistentGeomGeometry,
+    pub fn Handle_ShapePersistent_Geom_Geometry_is_null(
+        self_: *const Handle_ShapePersistent_Geom_Geometry,
     ) -> bool;
     /// Dereference Handle to get *const ShapePersistent_Geom_Geometry
-    pub fn HandleShapePersistentGeomGeometry_get(
-        handle: *const HandleShapePersistentGeomGeometry,
+    pub fn Handle_ShapePersistent_Geom_Geometry_get(
+        handle: *const Handle_ShapePersistent_Geom_Geometry,
     ) -> crate::OcctResult<*const ShapePersistent_Geom_Geometry>;
     /// Dereference Handle to get *mut ShapePersistent_Geom_Geometry
-    pub fn HandleShapePersistentGeomGeometry_get_mut(
-        handle: *mut HandleShapePersistentGeomGeometry,
+    pub fn Handle_ShapePersistent_Geom_Geometry_get_mut(
+        handle: *mut Handle_ShapePersistent_Geom_Geometry,
     ) -> crate::OcctResult<*mut ShapePersistent_Geom_Geometry>;
     /// Upcast Handle<ShapePersistent_Geom_Geometry> to Handle<StdObjMgt_Persistent>
-    pub fn HandleShapePersistentGeomGeometry_to_HandleStdObjMgtPersistent(
-        self_: *const HandleShapePersistentGeomGeometry,
-    ) -> crate::OcctResult<*mut HandleStdObjMgtPersistent>;
+    pub fn Handle_ShapePersistent_Geom_Geometry_to_Handle_StdObjMgt_Persistent(
+        self_: *const Handle_ShapePersistent_Geom_Geometry,
+    ) -> crate::OcctResult<*mut Handle_StdObjMgt_Persistent>;
     /// Upcast Handle<ShapePersistent_Geom_Geometry> to Handle<Standard_Transient>
-    pub fn HandleShapePersistentGeomGeometry_to_HandleStandardTransient(
-        self_: *const HandleShapePersistentGeomGeometry,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
+    pub fn Handle_ShapePersistent_Geom_Geometry_to_Handle_Standard_Transient(
+        self_: *const Handle_ShapePersistent_Geom_Geometry,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
     /// Inherited: **Source:** `StdObjMgt_Persistent.hxx`:66 - `StdObjMgt_Persistent::ImportDocument()`
     pub fn ShapePersistent_Geom_Geometry_inherited_ImportDocument(
         self_: *const ShapePersistent_Geom_Geometry,
-        theDocument: *const HandleTDocStdDocument,
+        theDocument: *const Handle_TDocStd_Document,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `StdObjMgt_Persistent.hxx`:71 - `StdObjMgt_Persistent::CreateAttribute()`
+    /// Inherited: **Source:** `StdObjMgt_Persistent.hxx`:72 - `StdObjMgt_Persistent::CreateAttribute()`
     pub fn ShapePersistent_Geom_Geometry_inherited_CreateAttribute(
         self_: *mut ShapePersistent_Geom_Geometry,
-    ) -> crate::OcctResult<*mut HandleTDFAttribute>;
-    /// Inherited: **Source:** `StdObjMgt_Persistent.hxx`:76 - `StdObjMgt_Persistent::GetAttribute()`
+    ) -> crate::OcctResult<*mut Handle_TDF_Attribute>;
+    /// Inherited: **Source:** `StdObjMgt_Persistent.hxx`:77 - `StdObjMgt_Persistent::GetAttribute()`
     pub fn ShapePersistent_Geom_Geometry_inherited_GetAttribute(
         self_: *const ShapePersistent_Geom_Geometry,
-    ) -> crate::OcctResult<*mut HandleTDFAttribute>;
-    /// Inherited: **Source:** `StdObjMgt_Persistent.hxx`:81 - `StdObjMgt_Persistent::ImportAttribute()`
+    ) -> crate::OcctResult<*mut Handle_TDF_Attribute>;
+    /// Inherited: **Source:** `StdObjMgt_Persistent.hxx`:82 - `StdObjMgt_Persistent::ImportAttribute()`
     pub fn ShapePersistent_Geom_Geometry_inherited_ImportAttribute(
         self_: *mut ShapePersistent_Geom_Geometry,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `StdObjMgt_Persistent.hxx`:86 - `StdObjMgt_Persistent::AsciiString()`
+    /// Inherited: **Source:** `StdObjMgt_Persistent.hxx`:87 - `StdObjMgt_Persistent::AsciiString()`
     pub fn ShapePersistent_Geom_Geometry_inherited_AsciiString(
         self_: *const ShapePersistent_Geom_Geometry,
-    ) -> crate::OcctResult<*mut HandleTCollectionHAsciiString>;
-    /// Inherited: **Source:** `StdObjMgt_Persistent.hxx`:91 - `StdObjMgt_Persistent::ExtString()`
+    ) -> crate::OcctResult<*mut Handle_TCollection_HAsciiString>;
+    /// Inherited: **Source:** `StdObjMgt_Persistent.hxx`:92 - `StdObjMgt_Persistent::ExtString()`
     pub fn ShapePersistent_Geom_Geometry_inherited_ExtString(
         self_: *const ShapePersistent_Geom_Geometry,
-    ) -> crate::OcctResult<*mut HandleTCollectionHExtendedString>;
-    /// Inherited: **Source:** `StdObjMgt_Persistent.hxx`:96 - `StdObjMgt_Persistent::Label()`
+    ) -> crate::OcctResult<*mut Handle_TCollection_HExtendedString>;
+    /// Inherited: **Source:** `StdObjMgt_Persistent.hxx`:97 - `StdObjMgt_Persistent::Label()`
     pub fn ShapePersistent_Geom_Geometry_inherited_Label(
         self_: *const ShapePersistent_Geom_Geometry,
-        theDF: *const HandleTDFData,
+        theDF: *const Handle_TDF_Data,
     ) -> crate::OcctResult<*mut TDF_Label>;
-    /// Inherited: **Source:** `StdObjMgt_Persistent.hxx`:99 - `StdObjMgt_Persistent::TypeNum()`
+    /// Inherited: **Source:** `StdObjMgt_Persistent.hxx`:100 - `StdObjMgt_Persistent::TypeNum()`
     pub fn ShapePersistent_Geom_Geometry_inherited_TypeNum(
         self_: *const ShapePersistent_Geom_Geometry,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `StdObjMgt_Persistent.hxx`:105 - `StdObjMgt_Persistent::RefNum()`
+    /// Inherited: **Source:** `StdObjMgt_Persistent.hxx`:106 - `StdObjMgt_Persistent::RefNum()`
     pub fn ShapePersistent_Geom_Geometry_inherited_RefNum(
         self_: *const ShapePersistent_Geom_Geometry,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:71 - `Standard_Transient::DynamicType()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:79 - `Standard_Transient::DynamicType()`
     pub fn ShapePersistent_Geom_Geometry_inherited_DynamicType(
         self_: *const ShapePersistent_Geom_Geometry,
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn ShapePersistent_Geom_Geometry_inherited_IsInstance(
         self_: *const ShapePersistent_Geom_Geometry,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn ShapePersistent_Geom_Geometry_inherited_IsKind(
         self_: *const ShapePersistent_Geom_Geometry,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn ShapePersistent_Geom_Geometry_inherited_This(
         self_: *const ShapePersistent_Geom_Geometry,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn ShapePersistent_Geom_Geometry_inherited_GetRefCount(
         self_: *const ShapePersistent_Geom_Geometry,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn ShapePersistent_Geom_Geometry_inherited_IncrementRefCounter(
         self_: *mut ShapePersistent_Geom_Geometry,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn ShapePersistent_Geom_Geometry_inherited_DecrementRefCounter(
         self_: *mut ShapePersistent_Geom_Geometry,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn ShapePersistent_Geom_Geometry_inherited_Delete(
         self_: *const ShapePersistent_Geom_Geometry,
     ) -> *const std::ffi::c_char;
@@ -1263,11 +1147,6 @@ unsafe extern "C" {
     pub fn ShapePersistent_Geom2d_destructor(self_: *mut ShapePersistent_Geom2d);
     /// **Source:** `ShapePersistent_Geom2d.hxx` - `ShapePersistent_Geom2d::ShapePersistent_Geom2d()`
     pub fn ShapePersistent_Geom2d_ctor() -> crate::OcctResult<*mut ShapePersistent_Geom2d>;
-    /// **Source:** `ShapePersistent_Geom2d.hxx`:49 - `ShapePersistent_Geom2d::Translate()`
-    pub fn ShapePersistent_Geom2d_translate(
-        theCurve: *const HandleGeom2dCurve,
-        theMap: *mut StdObjMgt_TransientPersistentMap,
-    ) -> crate::OcctResult<*mut HandleShapePersistentGeom2dCurve>;
     /// Upcast ShapePersistent_Geom2d to ShapePersistent_Geom
     pub fn ShapePersistent_Geom2d_as_ShapePersistent_Geom(
         self_: *const ShapePersistent_Geom2d,
@@ -1281,51 +1160,6 @@ unsafe extern "C" {
     /// **Source:** `ShapePersistent_Geom2d_Curve.hxx` - `ShapePersistent_Geom2d_Curve::ShapePersistent_Geom2d_Curve()`
     pub fn ShapePersistent_Geom2d_Curve_ctor(
     ) -> crate::OcctResult<*mut ShapePersistent_Geom2d_Curve>;
-    /// **Source:** `ShapePersistent_Geom2d_Curve.hxx`:212 - `ShapePersistent_Geom2d_Curve::Translate()`
-    pub fn ShapePersistent_Geom2d_Curve_translate_handlegeom2dline_transientpersistentmap(
-        theCurve: *const HandleGeom2dLine,
-        theMap: *mut StdObjMgt_TransientPersistentMap,
-    ) -> crate::OcctResult<*mut HandleShapePersistentGeom2dCurve>;
-    /// **Source:** `ShapePersistent_Geom2d_Curve.hxx`:215 - `ShapePersistent_Geom2d_Curve::Translate()`
-    pub fn ShapePersistent_Geom2d_Curve_translate_handlegeom2dcircle_transientpersistentmap(
-        theCurve: *const HandleGeom2dCircle,
-        theMap: *mut StdObjMgt_TransientPersistentMap,
-    ) -> crate::OcctResult<*mut HandleShapePersistentGeom2dCurve>;
-    /// **Source:** `ShapePersistent_Geom2d_Curve.hxx`:218 - `ShapePersistent_Geom2d_Curve::Translate()`
-    pub fn ShapePersistent_Geom2d_Curve_translate_handlegeom2dellipse_transientpersistentmap(
-        theCurve: *const HandleGeom2dEllipse,
-        theMap: *mut StdObjMgt_TransientPersistentMap,
-    ) -> crate::OcctResult<*mut HandleShapePersistentGeom2dCurve>;
-    /// **Source:** `ShapePersistent_Geom2d_Curve.hxx`:221 - `ShapePersistent_Geom2d_Curve::Translate()`
-    pub fn ShapePersistent_Geom2d_Curve_translate_handlegeom2dhyperbola_transientpersistentmap(
-        theCurve: *const HandleGeom2dHyperbola,
-        theMap: *mut StdObjMgt_TransientPersistentMap,
-    ) -> crate::OcctResult<*mut HandleShapePersistentGeom2dCurve>;
-    /// **Source:** `ShapePersistent_Geom2d_Curve.hxx`:224 - `ShapePersistent_Geom2d_Curve::Translate()`
-    pub fn ShapePersistent_Geom2d_Curve_translate_handlegeom2dparabola_transientpersistentmap(
-        theCurve: *const HandleGeom2dParabola,
-        theMap: *mut StdObjMgt_TransientPersistentMap,
-    ) -> crate::OcctResult<*mut HandleShapePersistentGeom2dCurve>;
-    /// **Source:** `ShapePersistent_Geom2d_Curve.hxx`:227 - `ShapePersistent_Geom2d_Curve::Translate()`
-    pub fn ShapePersistent_Geom2d_Curve_translate_handlegeom2dbeziercurve_transientpersistentmap(
-        theCurve: *const HandleGeom2dBezierCurve,
-        theMap: *mut StdObjMgt_TransientPersistentMap,
-    ) -> crate::OcctResult<*mut HandleShapePersistentGeom2dCurve>;
-    /// **Source:** `ShapePersistent_Geom2d_Curve.hxx`:230 - `ShapePersistent_Geom2d_Curve::Translate()`
-    pub fn ShapePersistent_Geom2d_Curve_translate_handlegeom2dbsplinecurve_transientpersistentmap(
-        theCurve: *const HandleGeom2dBSplineCurve,
-        theMap: *mut StdObjMgt_TransientPersistentMap,
-    ) -> crate::OcctResult<*mut HandleShapePersistentGeom2dCurve>;
-    /// **Source:** `ShapePersistent_Geom2d_Curve.hxx`:233 - `ShapePersistent_Geom2d_Curve::Translate()`
-    pub fn ShapePersistent_Geom2d_Curve_translate_handlegeom2dtrimmedcurve_transientpersistentmap(
-        theCurve: *const HandleGeom2dTrimmedCurve,
-        theMap: *mut StdObjMgt_TransientPersistentMap,
-    ) -> crate::OcctResult<*mut HandleShapePersistentGeom2dCurve>;
-    /// **Source:** `ShapePersistent_Geom2d_Curve.hxx`:236 - `ShapePersistent_Geom2d_Curve::Translate()`
-    pub fn ShapePersistent_Geom2d_Curve_translate_handlegeom2doffsetcurve_transientpersistentmap(
-        theCurve: *const HandleGeom2dOffsetCurve,
-        theMap: *mut StdObjMgt_TransientPersistentMap,
-    ) -> crate::OcctResult<*mut HandleShapePersistentGeom2dCurve>;
     /// Upcast ShapePersistent_Geom2d_Curve to ShapePersistent_Geom2d
     pub fn ShapePersistent_Geom2d_Curve_as_ShapePersistent_Geom2d(
         self_: *const ShapePersistent_Geom2d_Curve,
@@ -1346,111 +1180,11 @@ unsafe extern "C" {
     pub fn ShapePersistent_Geom_Curve_destructor(self_: *mut ShapePersistent_Geom_Curve);
     /// **Source:** `ShapePersistent_Geom_Curve.hxx` - `ShapePersistent_Geom_Curve::ShapePersistent_Geom_Curve()`
     pub fn ShapePersistent_Geom_Curve_ctor() -> crate::OcctResult<*mut ShapePersistent_Geom_Curve>;
-    /// **Source:** `ShapePersistent_Geom_Curve.hxx`:215 - `ShapePersistent_Geom_Curve::Translate()`
-    pub fn ShapePersistent_Geom_Curve_translate_handlegeomline_transientpersistentmap(
-        theCurve: *const HandleGeomLine,
-        theMap: *mut StdObjMgt_TransientPersistentMap,
-    ) -> crate::OcctResult<*mut HandleShapePersistentGeomCurve>;
-    /// **Source:** `ShapePersistent_Geom_Curve.hxx`:218 - `ShapePersistent_Geom_Curve::Translate()`
-    pub fn ShapePersistent_Geom_Curve_translate_handlegeomcircle_transientpersistentmap(
-        theCurve: *const HandleGeomCircle,
-        theMap: *mut StdObjMgt_TransientPersistentMap,
-    ) -> crate::OcctResult<*mut HandleShapePersistentGeomCurve>;
-    /// **Source:** `ShapePersistent_Geom_Curve.hxx`:221 - `ShapePersistent_Geom_Curve::Translate()`
-    pub fn ShapePersistent_Geom_Curve_translate_handlegeomellipse_transientpersistentmap(
-        theCurve: *const HandleGeomEllipse,
-        theMap: *mut StdObjMgt_TransientPersistentMap,
-    ) -> crate::OcctResult<*mut HandleShapePersistentGeomCurve>;
-    /// **Source:** `ShapePersistent_Geom_Curve.hxx`:224 - `ShapePersistent_Geom_Curve::Translate()`
-    pub fn ShapePersistent_Geom_Curve_translate_handlegeomhyperbola_transientpersistentmap(
-        theCurve: *const HandleGeomHyperbola,
-        theMap: *mut StdObjMgt_TransientPersistentMap,
-    ) -> crate::OcctResult<*mut HandleShapePersistentGeomCurve>;
-    /// **Source:** `ShapePersistent_Geom_Curve.hxx`:227 - `ShapePersistent_Geom_Curve::Translate()`
-    pub fn ShapePersistent_Geom_Curve_translate_handlegeomparabola_transientpersistentmap(
-        theCurve: *const HandleGeomParabola,
-        theMap: *mut StdObjMgt_TransientPersistentMap,
-    ) -> crate::OcctResult<*mut HandleShapePersistentGeomCurve>;
-    /// **Source:** `ShapePersistent_Geom_Curve.hxx`:230 - `ShapePersistent_Geom_Curve::Translate()`
-    pub fn ShapePersistent_Geom_Curve_translate_handlegeombeziercurve_transientpersistentmap(
-        theCurve: *const HandleGeomBezierCurve,
-        theMap: *mut StdObjMgt_TransientPersistentMap,
-    ) -> crate::OcctResult<*mut HandleShapePersistentGeomCurve>;
-    /// **Source:** `ShapePersistent_Geom_Curve.hxx`:233 - `ShapePersistent_Geom_Curve::Translate()`
-    pub fn ShapePersistent_Geom_Curve_translate_handlegeombsplinecurve_transientpersistentmap(
-        theCurve: *const HandleGeomBSplineCurve,
-        theMap: *mut StdObjMgt_TransientPersistentMap,
-    ) -> crate::OcctResult<*mut HandleShapePersistentGeomCurve>;
-    /// **Source:** `ShapePersistent_Geom_Curve.hxx`:236 - `ShapePersistent_Geom_Curve::Translate()`
-    pub fn ShapePersistent_Geom_Curve_translate_handlegeomtrimmedcurve_transientpersistentmap(
-        theCurve: *const HandleGeomTrimmedCurve,
-        theMap: *mut StdObjMgt_TransientPersistentMap,
-    ) -> crate::OcctResult<*mut HandleShapePersistentGeomCurve>;
-    /// **Source:** `ShapePersistent_Geom_Curve.hxx`:239 - `ShapePersistent_Geom_Curve::Translate()`
-    pub fn ShapePersistent_Geom_Curve_translate_handlegeomoffsetcurve_transientpersistentmap(
-        theCurve: *const HandleGeomOffsetCurve,
-        theMap: *mut StdObjMgt_TransientPersistentMap,
-    ) -> crate::OcctResult<*mut HandleShapePersistentGeomCurve>;
     // ======================== ShapePersistent_Geom_Surface ========================
     pub fn ShapePersistent_Geom_Surface_destructor(self_: *mut ShapePersistent_Geom_Surface);
     /// **Source:** `ShapePersistent_Geom_Surface.hxx` - `ShapePersistent_Geom_Surface::ShapePersistent_Geom_Surface()`
     pub fn ShapePersistent_Geom_Surface_ctor(
     ) -> crate::OcctResult<*mut ShapePersistent_Geom_Surface>;
-    /// **Source:** `ShapePersistent_Geom_Surface.hxx`:311 - `ShapePersistent_Geom_Surface::Translate()`
-    pub fn ShapePersistent_Geom_Surface_translate_handlegeomplane_transientpersistentmap(
-        theSurf: *const HandleGeomPlane,
-        theMap: *mut StdObjMgt_TransientPersistentMap,
-    ) -> crate::OcctResult<*mut HandleShapePersistentGeomSurface>;
-    /// **Source:** `ShapePersistent_Geom_Surface.hxx`:314 - `ShapePersistent_Geom_Surface::Translate()`
-    pub fn ShapePersistent_Geom_Surface_translate_handlegeomcylindricalsurface_transientpersistentmap(
-        theSurf: *const HandleGeomCylindricalSurface,
-        theMap: *mut StdObjMgt_TransientPersistentMap,
-    ) -> crate::OcctResult<*mut HandleShapePersistentGeomSurface>;
-    /// **Source:** `ShapePersistent_Geom_Surface.hxx`:317 - `ShapePersistent_Geom_Surface::Translate()`
-    pub fn ShapePersistent_Geom_Surface_translate_handlegeomconicalsurface_transientpersistentmap(
-        theSurf: *const HandleGeomConicalSurface,
-        theMap: *mut StdObjMgt_TransientPersistentMap,
-    ) -> crate::OcctResult<*mut HandleShapePersistentGeomSurface>;
-    /// **Source:** `ShapePersistent_Geom_Surface.hxx`:320 - `ShapePersistent_Geom_Surface::Translate()`
-    pub fn ShapePersistent_Geom_Surface_translate_handlegeomsphericalsurface_transientpersistentmap(
-        theSurf: *const HandleGeomSphericalSurface,
-        theMap: *mut StdObjMgt_TransientPersistentMap,
-    ) -> crate::OcctResult<*mut HandleShapePersistentGeomSurface>;
-    /// **Source:** `ShapePersistent_Geom_Surface.hxx`:323 - `ShapePersistent_Geom_Surface::Translate()`
-    pub fn ShapePersistent_Geom_Surface_translate_handlegeomtoroidalsurface_transientpersistentmap(
-        theSurf: *const HandleGeomToroidalSurface,
-        theMap: *mut StdObjMgt_TransientPersistentMap,
-    ) -> crate::OcctResult<*mut HandleShapePersistentGeomSurface>;
-    /// **Source:** `ShapePersistent_Geom_Surface.hxx`:326 - `ShapePersistent_Geom_Surface::Translate()`
-    pub fn ShapePersistent_Geom_Surface_translate_handlegeomsurfaceoflinearextrusion_transientpersistentmap(
-        theSurf: *const HandleGeomSurfaceOfLinearExtrusion,
-        theMap: *mut StdObjMgt_TransientPersistentMap,
-    ) -> crate::OcctResult<*mut HandleShapePersistentGeomSurface>;
-    /// **Source:** `ShapePersistent_Geom_Surface.hxx`:330 - `ShapePersistent_Geom_Surface::Translate()`
-    pub fn ShapePersistent_Geom_Surface_translate_handlegeomsurfaceofrevolution_transientpersistentmap(
-        theSurf: *const HandleGeomSurfaceOfRevolution,
-        theMap: *mut StdObjMgt_TransientPersistentMap,
-    ) -> crate::OcctResult<*mut HandleShapePersistentGeomSurface>;
-    /// **Source:** `ShapePersistent_Geom_Surface.hxx`:333 - `ShapePersistent_Geom_Surface::Translate()`
-    pub fn ShapePersistent_Geom_Surface_translate_handlegeombeziersurface_transientpersistentmap(
-        theSurf: *const HandleGeomBezierSurface,
-        theMap: *mut StdObjMgt_TransientPersistentMap,
-    ) -> crate::OcctResult<*mut HandleShapePersistentGeomSurface>;
-    /// **Source:** `ShapePersistent_Geom_Surface.hxx`:336 - `ShapePersistent_Geom_Surface::Translate()`
-    pub fn ShapePersistent_Geom_Surface_translate_handlegeombsplinesurface_transientpersistentmap(
-        theSurf: *const HandleGeomBSplineSurface,
-        theMap: *mut StdObjMgt_TransientPersistentMap,
-    ) -> crate::OcctResult<*mut HandleShapePersistentGeomSurface>;
-    /// **Source:** `ShapePersistent_Geom_Surface.hxx`:339 - `ShapePersistent_Geom_Surface::Translate()`
-    pub fn ShapePersistent_Geom_Surface_translate_handlegeomrectangulartrimmedsurface_transientpersistentmap(
-        theSurf: *const HandleGeomRectangularTrimmedSurface,
-        theMap: *mut StdObjMgt_TransientPersistentMap,
-    ) -> crate::OcctResult<*mut HandleShapePersistentGeomSurface>;
-    /// **Source:** `ShapePersistent_Geom_Surface.hxx`:343 - `ShapePersistent_Geom_Surface::Translate()`
-    pub fn ShapePersistent_Geom_Surface_translate_handlegeomoffsetsurface_transientpersistentmap(
-        theSurf: *const HandleGeomOffsetSurface,
-        theMap: *mut StdObjMgt_TransientPersistentMap,
-    ) -> crate::OcctResult<*mut HandleShapePersistentGeomSurface>;
     // ======================== ShapePersistent_Poly ========================
     pub fn ShapePersistent_Poly_destructor(self_: *mut ShapePersistent_Poly);
     /// **Source:** `ShapePersistent_Poly.hxx` - `ShapePersistent_Poly::ShapePersistent_Poly()`
@@ -1459,33 +1193,27 @@ unsafe extern "C" {
     pub fn ShapePersistent_TopoDS_destructor(self_: *mut ShapePersistent_TopoDS);
     /// **Source:** `ShapePersistent_TopoDS.hxx` - `ShapePersistent_TopoDS::ShapePersistent_TopoDS()`
     pub fn ShapePersistent_TopoDS_ctor() -> crate::OcctResult<*mut ShapePersistent_TopoDS>;
-    /// **Source:** `ShapePersistent_TopoDS.hxx`:131 - `ShapePersistent_TopoDS::Translate()`
-    pub fn ShapePersistent_TopoDS_translate(
-        theShape: *const TopoDS_Shape,
-        theMap: *mut StdObjMgt_TransientPersistentMap,
-        theTriangleMode: i32,
-    ) -> crate::OcctResult<*mut HandleShapePersistentTopoDSHShape>;
     // ======================== ShapePersistent_TopoDS_HShape ========================
     pub fn ShapePersistent_TopoDS_HShape_destructor(self_: *mut ShapePersistent_TopoDS_HShape);
     /// **Source:** `ShapePersistent_TopoDS.hxx` - `ShapePersistent_TopoDS_HShape::ShapePersistent_TopoDS_HShape()`
     pub fn ShapePersistent_TopoDS_HShape_ctor(
     ) -> crate::OcctResult<*mut ShapePersistent_TopoDS_HShape>;
-    /// **Source:** `ShapePersistent_TopoDS.hxx`:37 - `ShapePersistent_TopoDS_HShape::Read()`
+    /// **Source:** `ShapePersistent_TopoDS.hxx`:39 - `ShapePersistent_TopoDS_HShape::Read()`
     pub fn ShapePersistent_TopoDS_HShape_read(
         self_: *mut ShapePersistent_TopoDS_HShape,
         theReadData: *mut StdObjMgt_ReadData,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `ShapePersistent_TopoDS.hxx`:39 - `ShapePersistent_TopoDS_HShape::Write()`
+    /// **Source:** `ShapePersistent_TopoDS.hxx`:41 - `ShapePersistent_TopoDS_HShape::Write()`
     pub fn ShapePersistent_TopoDS_HShape_write(
         self_: *const ShapePersistent_TopoDS_HShape,
         theWriteData: *mut StdObjMgt_WriteData,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `ShapePersistent_TopoDS.hxx`:41 - `ShapePersistent_TopoDS_HShape::PChildren()`
+    /// **Source:** `ShapePersistent_TopoDS.hxx`:43 - `ShapePersistent_TopoDS_HShape::PChildren()`
     pub fn ShapePersistent_TopoDS_HShape_p_children(
         self_: *const ShapePersistent_TopoDS_HShape,
         theChildren: *mut StdObjMgt_Persistent_SequenceOfPersistent,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `ShapePersistent_TopoDS.hxx`:44 - `ShapePersistent_TopoDS_HShape::PName()`
+    /// **Source:** `ShapePersistent_TopoDS.hxx`:46 - `ShapePersistent_TopoDS_HShape::PName()`
     pub fn ShapePersistent_TopoDS_HShape_p_name(
         self_: *const ShapePersistent_TopoDS_HShape,
     ) -> crate::OcctResult<*const std::ffi::c_char>;
@@ -1516,70 +1244,70 @@ unsafe extern "C" {
     /// Wrap ShapePersistent_TopoDS_HShape in a Handle
     pub fn ShapePersistent_TopoDS_HShape_to_handle(
         obj: *mut ShapePersistent_TopoDS_HShape,
-    ) -> crate::OcctResult<*mut HandleShapePersistentTopoDSHShape>;
+    ) -> crate::OcctResult<*mut Handle_ShapePersistent_TopoDS_HShape>;
     /// Destroy Handle<ShapePersistent_TopoDS_HShape>
-    pub fn HandleShapePersistentTopoDSHShape_destructor(
-        self_: *mut HandleShapePersistentTopoDSHShape,
+    pub fn Handle_ShapePersistent_TopoDS_HShape_destructor(
+        self_: *mut Handle_ShapePersistent_TopoDS_HShape,
     );
     /// Clone Handle<ShapePersistent_TopoDS_HShape> (increments reference count)
-    pub fn HandleShapePersistentTopoDSHShape_clone(
-        self_: *const HandleShapePersistentTopoDSHShape,
-    ) -> crate::OcctResult<*mut HandleShapePersistentTopoDSHShape>;
+    pub fn Handle_ShapePersistent_TopoDS_HShape_clone(
+        self_: *const Handle_ShapePersistent_TopoDS_HShape,
+    ) -> crate::OcctResult<*mut Handle_ShapePersistent_TopoDS_HShape>;
     /// Check if Handle<ShapePersistent_TopoDS_HShape> is null
-    pub fn HandleShapePersistentTopoDSHShape_is_null(
-        self_: *const HandleShapePersistentTopoDSHShape,
+    pub fn Handle_ShapePersistent_TopoDS_HShape_is_null(
+        self_: *const Handle_ShapePersistent_TopoDS_HShape,
     ) -> bool;
     /// Dereference Handle to get *const ShapePersistent_TopoDS_HShape
-    pub fn HandleShapePersistentTopoDSHShape_get(
-        handle: *const HandleShapePersistentTopoDSHShape,
+    pub fn Handle_ShapePersistent_TopoDS_HShape_get(
+        handle: *const Handle_ShapePersistent_TopoDS_HShape,
     ) -> crate::OcctResult<*const ShapePersistent_TopoDS_HShape>;
     /// Dereference Handle to get *mut ShapePersistent_TopoDS_HShape
-    pub fn HandleShapePersistentTopoDSHShape_get_mut(
-        handle: *mut HandleShapePersistentTopoDSHShape,
+    pub fn Handle_ShapePersistent_TopoDS_HShape_get_mut(
+        handle: *mut Handle_ShapePersistent_TopoDS_HShape,
     ) -> crate::OcctResult<*mut ShapePersistent_TopoDS_HShape>;
     /// Upcast Handle<ShapePersistent_TopoDS_HShape> to Handle<StdObjMgt_Persistent>
-    pub fn HandleShapePersistentTopoDSHShape_to_HandleStdObjMgtPersistent(
-        self_: *const HandleShapePersistentTopoDSHShape,
-    ) -> crate::OcctResult<*mut HandleStdObjMgtPersistent>;
+    pub fn Handle_ShapePersistent_TopoDS_HShape_to_Handle_StdObjMgt_Persistent(
+        self_: *const Handle_ShapePersistent_TopoDS_HShape,
+    ) -> crate::OcctResult<*mut Handle_StdObjMgt_Persistent>;
     /// Upcast Handle<ShapePersistent_TopoDS_HShape> to Handle<Standard_Transient>
-    pub fn HandleShapePersistentTopoDSHShape_to_HandleStandardTransient(
-        self_: *const HandleShapePersistentTopoDSHShape,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
+    pub fn Handle_ShapePersistent_TopoDS_HShape_to_Handle_Standard_Transient(
+        self_: *const Handle_ShapePersistent_TopoDS_HShape,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
     /// Inherited: **Source:** `StdObjMgt_Persistent.hxx`:66 - `StdObjMgt_Persistent::ImportDocument()`
     pub fn ShapePersistent_TopoDS_HShape_inherited_ImportDocument(
         self_: *const ShapePersistent_TopoDS_HShape,
-        theDocument: *const HandleTDocStdDocument,
+        theDocument: *const Handle_TDocStd_Document,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `StdObjMgt_Persistent.hxx`:71 - `StdObjMgt_Persistent::CreateAttribute()`
+    /// Inherited: **Source:** `StdObjMgt_Persistent.hxx`:72 - `StdObjMgt_Persistent::CreateAttribute()`
     pub fn ShapePersistent_TopoDS_HShape_inherited_CreateAttribute(
         self_: *mut ShapePersistent_TopoDS_HShape,
-    ) -> crate::OcctResult<*mut HandleTDFAttribute>;
-    /// Inherited: **Source:** `StdObjMgt_Persistent.hxx`:76 - `StdObjMgt_Persistent::GetAttribute()`
+    ) -> crate::OcctResult<*mut Handle_TDF_Attribute>;
+    /// Inherited: **Source:** `StdObjMgt_Persistent.hxx`:77 - `StdObjMgt_Persistent::GetAttribute()`
     pub fn ShapePersistent_TopoDS_HShape_inherited_GetAttribute(
         self_: *const ShapePersistent_TopoDS_HShape,
-    ) -> crate::OcctResult<*mut HandleTDFAttribute>;
-    /// Inherited: **Source:** `StdObjMgt_Persistent.hxx`:81 - `StdObjMgt_Persistent::ImportAttribute()`
+    ) -> crate::OcctResult<*mut Handle_TDF_Attribute>;
+    /// Inherited: **Source:** `StdObjMgt_Persistent.hxx`:82 - `StdObjMgt_Persistent::ImportAttribute()`
     pub fn ShapePersistent_TopoDS_HShape_inherited_ImportAttribute(
         self_: *mut ShapePersistent_TopoDS_HShape,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `StdObjMgt_Persistent.hxx`:86 - `StdObjMgt_Persistent::AsciiString()`
+    /// Inherited: **Source:** `StdObjMgt_Persistent.hxx`:87 - `StdObjMgt_Persistent::AsciiString()`
     pub fn ShapePersistent_TopoDS_HShape_inherited_AsciiString(
         self_: *const ShapePersistent_TopoDS_HShape,
-    ) -> crate::OcctResult<*mut HandleTCollectionHAsciiString>;
-    /// Inherited: **Source:** `StdObjMgt_Persistent.hxx`:91 - `StdObjMgt_Persistent::ExtString()`
+    ) -> crate::OcctResult<*mut Handle_TCollection_HAsciiString>;
+    /// Inherited: **Source:** `StdObjMgt_Persistent.hxx`:92 - `StdObjMgt_Persistent::ExtString()`
     pub fn ShapePersistent_TopoDS_HShape_inherited_ExtString(
         self_: *const ShapePersistent_TopoDS_HShape,
-    ) -> crate::OcctResult<*mut HandleTCollectionHExtendedString>;
-    /// Inherited: **Source:** `StdObjMgt_Persistent.hxx`:96 - `StdObjMgt_Persistent::Label()`
+    ) -> crate::OcctResult<*mut Handle_TCollection_HExtendedString>;
+    /// Inherited: **Source:** `StdObjMgt_Persistent.hxx`:97 - `StdObjMgt_Persistent::Label()`
     pub fn ShapePersistent_TopoDS_HShape_inherited_Label(
         self_: *const ShapePersistent_TopoDS_HShape,
-        theDF: *const HandleTDFData,
+        theDF: *const Handle_TDF_Data,
     ) -> crate::OcctResult<*mut TDF_Label>;
-    /// Inherited: **Source:** `StdObjMgt_Persistent.hxx`:99 - `StdObjMgt_Persistent::TypeNum()`
+    /// Inherited: **Source:** `StdObjMgt_Persistent.hxx`:100 - `StdObjMgt_Persistent::TypeNum()`
     pub fn ShapePersistent_TopoDS_HShape_inherited_TypeNum(
         self_: *const ShapePersistent_TopoDS_HShape,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `StdObjMgt_Persistent.hxx`:105 - `StdObjMgt_Persistent::RefNum()`
+    /// Inherited: **Source:** `StdObjMgt_Persistent.hxx`:106 - `StdObjMgt_Persistent::RefNum()`
     pub fn ShapePersistent_TopoDS_HShape_inherited_RefNum(
         self_: *const ShapePersistent_TopoDS_HShape,
     ) -> crate::OcctResult<i32>;
@@ -1587,37 +1315,37 @@ unsafe extern "C" {
     pub fn ShapePersistent_TopoDS_HShape_inherited_Import(
         self_: *const ShapePersistent_TopoDS_HShape,
     ) -> crate::OcctResult<*mut TopoDS_Shape>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:71 - `Standard_Transient::DynamicType()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:79 - `Standard_Transient::DynamicType()`
     pub fn ShapePersistent_TopoDS_HShape_inherited_DynamicType(
         self_: *const ShapePersistent_TopoDS_HShape,
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn ShapePersistent_TopoDS_HShape_inherited_IsInstance(
         self_: *const ShapePersistent_TopoDS_HShape,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn ShapePersistent_TopoDS_HShape_inherited_IsKind(
         self_: *const ShapePersistent_TopoDS_HShape,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn ShapePersistent_TopoDS_HShape_inherited_This(
         self_: *const ShapePersistent_TopoDS_HShape,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn ShapePersistent_TopoDS_HShape_inherited_GetRefCount(
         self_: *const ShapePersistent_TopoDS_HShape,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn ShapePersistent_TopoDS_HShape_inherited_IncrementRefCounter(
         self_: *mut ShapePersistent_TopoDS_HShape,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn ShapePersistent_TopoDS_HShape_inherited_DecrementRefCounter(
         self_: *mut ShapePersistent_TopoDS_HShape,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn ShapePersistent_TopoDS_HShape_inherited_Delete(
         self_: *const ShapePersistent_TopoDS_HShape,
     ) -> *const std::ffi::c_char;
@@ -1631,13 +1359,13 @@ unsafe extern "C" {
     /// **Source:** `StdDrivers_DocumentRetrievalDriver.hxx`:23 - `StdDrivers_DocumentRetrievalDriver::DynamicType()`
     pub fn StdDrivers_DocumentRetrievalDriver_dynamic_type(
         self_: *const StdDrivers_DocumentRetrievalDriver,
-    ) -> crate::OcctResult<*const HandleStandardType>;
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// **Source:** `StdDrivers_DocumentRetrievalDriver.hxx`:23 - `StdDrivers_DocumentRetrievalDriver::get_type_name()`
     pub fn StdDrivers_DocumentRetrievalDriver_get_type_name(
     ) -> crate::OcctResult<*const std::ffi::c_char>;
     /// **Source:** `StdDrivers_DocumentRetrievalDriver.hxx`:23 - `StdDrivers_DocumentRetrievalDriver::get_type_descriptor()`
     pub fn StdDrivers_DocumentRetrievalDriver_get_type_descriptor(
-    ) -> crate::OcctResult<*const HandleStandardType>;
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast StdDrivers_DocumentRetrievalDriver to StdLDrivers_DocumentRetrievalDriver
     pub fn StdDrivers_DocumentRetrievalDriver_as_StdLDrivers_DocumentRetrievalDriver(
         self_: *const StdDrivers_DocumentRetrievalDriver,
@@ -1673,92 +1401,92 @@ unsafe extern "C" {
     /// Wrap StdDrivers_DocumentRetrievalDriver in a Handle
     pub fn StdDrivers_DocumentRetrievalDriver_to_handle(
         obj: *mut StdDrivers_DocumentRetrievalDriver,
-    ) -> crate::OcctResult<*mut HandleStdDriversDocumentRetrievalDriver>;
+    ) -> crate::OcctResult<*mut Handle_StdDrivers_DocumentRetrievalDriver>;
     /// Destroy Handle<StdDrivers_DocumentRetrievalDriver>
-    pub fn HandleStdDriversDocumentRetrievalDriver_destructor(
-        self_: *mut HandleStdDriversDocumentRetrievalDriver,
+    pub fn Handle_StdDrivers_DocumentRetrievalDriver_destructor(
+        self_: *mut Handle_StdDrivers_DocumentRetrievalDriver,
     );
     /// Clone Handle<StdDrivers_DocumentRetrievalDriver> (increments reference count)
-    pub fn HandleStdDriversDocumentRetrievalDriver_clone(
-        self_: *const HandleStdDriversDocumentRetrievalDriver,
-    ) -> crate::OcctResult<*mut HandleStdDriversDocumentRetrievalDriver>;
+    pub fn Handle_StdDrivers_DocumentRetrievalDriver_clone(
+        self_: *const Handle_StdDrivers_DocumentRetrievalDriver,
+    ) -> crate::OcctResult<*mut Handle_StdDrivers_DocumentRetrievalDriver>;
     /// Check if Handle<StdDrivers_DocumentRetrievalDriver> is null
-    pub fn HandleStdDriversDocumentRetrievalDriver_is_null(
-        self_: *const HandleStdDriversDocumentRetrievalDriver,
+    pub fn Handle_StdDrivers_DocumentRetrievalDriver_is_null(
+        self_: *const Handle_StdDrivers_DocumentRetrievalDriver,
     ) -> bool;
     /// Dereference Handle to get *const StdDrivers_DocumentRetrievalDriver
-    pub fn HandleStdDriversDocumentRetrievalDriver_get(
-        handle: *const HandleStdDriversDocumentRetrievalDriver,
+    pub fn Handle_StdDrivers_DocumentRetrievalDriver_get(
+        handle: *const Handle_StdDrivers_DocumentRetrievalDriver,
     ) -> crate::OcctResult<*const StdDrivers_DocumentRetrievalDriver>;
     /// Dereference Handle to get *mut StdDrivers_DocumentRetrievalDriver
-    pub fn HandleStdDriversDocumentRetrievalDriver_get_mut(
-        handle: *mut HandleStdDriversDocumentRetrievalDriver,
+    pub fn Handle_StdDrivers_DocumentRetrievalDriver_get_mut(
+        handle: *mut Handle_StdDrivers_DocumentRetrievalDriver,
     ) -> crate::OcctResult<*mut StdDrivers_DocumentRetrievalDriver>;
     /// Upcast Handle<StdDrivers_DocumentRetrievalDriver> to Handle<StdLDrivers_DocumentRetrievalDriver>
-    pub fn HandleStdDriversDocumentRetrievalDriver_to_HandleStdLDriversDocumentRetrievalDriver(
-        self_: *const HandleStdDriversDocumentRetrievalDriver,
-    ) -> crate::OcctResult<*mut HandleStdLDriversDocumentRetrievalDriver>;
+    pub fn Handle_StdDrivers_DocumentRetrievalDriver_to_Handle_StdLDrivers_DocumentRetrievalDriver(
+        self_: *const Handle_StdDrivers_DocumentRetrievalDriver,
+    ) -> crate::OcctResult<*mut Handle_StdLDrivers_DocumentRetrievalDriver>;
     /// Upcast Handle<StdDrivers_DocumentRetrievalDriver> to Handle<PCDM_RetrievalDriver>
-    pub fn HandleStdDriversDocumentRetrievalDriver_to_HandlePCDMRetrievalDriver(
-        self_: *const HandleStdDriversDocumentRetrievalDriver,
-    ) -> crate::OcctResult<*mut HandlePCDMRetrievalDriver>;
+    pub fn Handle_StdDrivers_DocumentRetrievalDriver_to_Handle_PCDM_RetrievalDriver(
+        self_: *const Handle_StdDrivers_DocumentRetrievalDriver,
+    ) -> crate::OcctResult<*mut Handle_PCDM_RetrievalDriver>;
     /// Upcast Handle<StdDrivers_DocumentRetrievalDriver> to Handle<PCDM_Reader>
-    pub fn HandleStdDriversDocumentRetrievalDriver_to_HandlePCDMReader(
-        self_: *const HandleStdDriversDocumentRetrievalDriver,
-    ) -> crate::OcctResult<*mut HandlePCDMReader>;
+    pub fn Handle_StdDrivers_DocumentRetrievalDriver_to_Handle_PCDM_Reader(
+        self_: *const Handle_StdDrivers_DocumentRetrievalDriver,
+    ) -> crate::OcctResult<*mut Handle_PCDM_Reader>;
     /// Upcast Handle<StdDrivers_DocumentRetrievalDriver> to Handle<Standard_Transient>
-    pub fn HandleStdDriversDocumentRetrievalDriver_to_HandleStandardTransient(
-        self_: *const HandleStdDriversDocumentRetrievalDriver,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
+    pub fn Handle_StdDrivers_DocumentRetrievalDriver_to_Handle_Standard_Transient(
+        self_: *const Handle_StdDrivers_DocumentRetrievalDriver,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
     /// Inherited: **Source:** `StdLDrivers_DocumentRetrievalDriver.hxx`:28 - `StdLDrivers_DocumentRetrievalDriver::Read()`
     pub fn StdDrivers_DocumentRetrievalDriver_inherited_Read(
         self_: *mut StdDrivers_DocumentRetrievalDriver,
         theFileName: *const TCollection_ExtendedString,
-        theNewDocument: *const HandleCDMDocument,
-        theApplication: *const HandleCDMApplication,
-        theFilter: *const HandlePCDMReaderFilter,
+        theNewDocument: *const Handle_CDM_Document,
+        theApplication: *const Handle_CDM_Application,
+        theFilter: *const Handle_PCDM_ReaderFilter,
         theRange: *const Message_ProgressRange,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `PCDM_RetrievalDriver.hxx`:46 - `PCDM_RetrievalDriver::SetFormat()`
+    /// Inherited: **Source:** `PCDM_RetrievalDriver.hxx`:43 - `PCDM_RetrievalDriver::SetFormat()`
     pub fn StdDrivers_DocumentRetrievalDriver_inherited_SetFormat(
         self_: *mut StdDrivers_DocumentRetrievalDriver,
         aformat: *const TCollection_ExtendedString,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `PCDM_RetrievalDriver.hxx`:48 - `PCDM_RetrievalDriver::GetFormat()`
+    /// Inherited: **Source:** `PCDM_RetrievalDriver.hxx`:45 - `PCDM_RetrievalDriver::GetFormat()`
     pub fn StdDrivers_DocumentRetrievalDriver_inherited_GetFormat(
         self_: *const StdDrivers_DocumentRetrievalDriver,
     ) -> crate::OcctResult<*mut TCollection_ExtendedString>;
-    /// Inherited: **Source:** `PCDM_Reader.hxx`:57 - `PCDM_Reader::GetStatus()`
+    /// Inherited: **Source:** `PCDM_Reader.hxx`:54 - `PCDM_Reader::GetStatus()`
     pub fn StdDrivers_DocumentRetrievalDriver_inherited_GetStatus(
         self_: *const StdDrivers_DocumentRetrievalDriver,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn StdDrivers_DocumentRetrievalDriver_inherited_IsInstance(
         self_: *const StdDrivers_DocumentRetrievalDriver,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn StdDrivers_DocumentRetrievalDriver_inherited_IsKind(
         self_: *const StdDrivers_DocumentRetrievalDriver,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn StdDrivers_DocumentRetrievalDriver_inherited_This(
         self_: *const StdDrivers_DocumentRetrievalDriver,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn StdDrivers_DocumentRetrievalDriver_inherited_GetRefCount(
         self_: *const StdDrivers_DocumentRetrievalDriver,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn StdDrivers_DocumentRetrievalDriver_inherited_IncrementRefCounter(
         self_: *mut StdDrivers_DocumentRetrievalDriver,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn StdDrivers_DocumentRetrievalDriver_inherited_DecrementRefCounter(
         self_: *mut StdDrivers_DocumentRetrievalDriver,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn StdDrivers_DocumentRetrievalDriver_inherited_Delete(
         self_: *const StdDrivers_DocumentRetrievalDriver,
     ) -> *const std::ffi::c_char;
@@ -1766,20 +1494,15 @@ unsafe extern "C" {
     pub fn StdObject_Location_destructor(self_: *mut StdObject_Location);
     /// **Source:** `StdObject_Location.hxx` - `StdObject_Location::StdObject_Location()`
     pub fn StdObject_Location_ctor() -> crate::OcctResult<*mut StdObject_Location>;
-    /// **Source:** `StdObject_Location.hxx`:28 - `StdObject_Location::PChildren()`
+    /// **Source:** `StdObject_Location.hxx`:30 - `StdObject_Location::PChildren()`
     pub fn StdObject_Location_p_children(
         self_: *const StdObject_Location,
         theChildren: *mut StdObjMgt_Persistent_SequenceOfPersistent,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `StdObject_Location.hxx`:31 - `StdObject_Location::Import()`
+    /// **Source:** `StdObject_Location.hxx`:33 - `StdObject_Location::Import()`
     pub fn StdObject_Location_import(
         self_: *const StdObject_Location,
     ) -> crate::OcctResult<*mut TopLoc_Location>;
-    /// **Source:** `StdObject_Location.hxx`:34 - `StdObject_Location::Translate()`
-    pub fn StdObject_Location_translate(
-        theLoc: *const TopLoc_Location,
-        theMap: *mut StdObjMgt_TransientPersistentMap,
-    ) -> crate::OcctResult<*mut StdObject_Location>;
     // ======================== StdObject_Shape ========================
     pub fn StdObject_Shape_destructor(self_: *mut StdObject_Shape);
     /// **Source:** `StdObject_Shape.hxx`:28 - `StdObject_Shape::StdObject_Shape()`
@@ -1844,7 +1567,7 @@ unsafe extern "C" {
     /// **Source:** `StdPersistent_DataXtd_Constraint.hxx`:51 - `StdPersistent_DataXtd_Constraint::Import()`
     pub fn StdPersistent_DataXtd_Constraint_import(
         self_: *const StdPersistent_DataXtd_Constraint,
-        theAttribute: *const HandleTDataXtdConstraint,
+        theAttribute: *const Handle_TDataXtd_Constraint,
     ) -> *const std::ffi::c_char;
     // ======================== StdPersistent_DataXtd_PatternStd ========================
     pub fn StdPersistent_DataXtd_PatternStd_destructor(
@@ -1875,118 +1598,7 @@ unsafe extern "C" {
     /// **Source:** `StdPersistent_DataXtd_PatternStd.hxx`:54 - `StdPersistent_DataXtd_PatternStd::Import()`
     pub fn StdPersistent_DataXtd_PatternStd_import(
         self_: *const StdPersistent_DataXtd_PatternStd,
-        theAttribute: *const HandleTDataXtdPatternStd,
-    ) -> *const std::ffi::c_char;
-    // ======================== StdPersistent_HArray1OfShape1 ========================
-    pub fn StdPersistent_HArray1OfShape1_destructor(self_: *mut StdPersistent_HArray1OfShape1);
-    /// **Source:** `StdPersistent_HArray1.hxx`:22 - `StdPersistent_HArray1OfShape1::StdPersistent_HArray1OfShape1()`
-    pub fn StdPersistent_HArray1OfShape1_ctor(
-    ) -> crate::OcctResult<*mut StdPersistent_HArray1OfShape1>;
-    /// **Source:** `StdPersistent_HArray1.hxx`:22 - `StdPersistent_HArray1OfShape1::StdPersistent_HArray1OfShape1()`
-    pub fn StdPersistent_HArray1OfShape1_ctor_int2(
-        theLower: i32,
-        theUpper: i32,
-    ) -> crate::OcctResult<*mut StdPersistent_HArray1OfShape1>;
-    /// **Source:** `StdPersistent_HArray1.hxx`:22 - `StdPersistent_HArray1OfShape1::StdPersistent_HArray1OfShape1()`
-    pub fn StdPersistent_HArray1OfShape1_ctor_int2_shape(
-        theLower: i32,
-        theUpper: i32,
-        theValue: *const StdObject_Shape,
-    ) -> crate::OcctResult<*mut StdPersistent_HArray1OfShape1>;
-    /// **Source:** `StdPersistent_HArray1.hxx`:22 - `StdPersistent_HArray1OfShape1::StdPersistent_HArray1OfShape1()`
-    pub fn StdPersistent_HArray1OfShape1_ctor_shape_int2_bool(
-        theBegin: *const StdObject_Shape,
-        theLower: i32,
-        theUpper: i32,
-        arg3: bool,
-    ) -> crate::OcctResult<*mut StdPersistent_HArray1OfShape1>;
-    /// **Source:** `StdPersistent_HArray1.hxx`:22 - `StdPersistent_HArray1OfShape1::StdPersistent_HArray1OfShape1()`
-    pub fn StdPersistent_HArray1OfShape1_ctor_array1_stdobject_shape(
-        theOther: *const NCollection_Array1_StdObject_Shape,
-    ) -> crate::OcctResult<*mut StdPersistent_HArray1OfShape1>;
-    /// **Source:** `StdPersistent_HArray1.hxx`:22 - `StdPersistent_HArray1OfShape1::Array1()`
-    pub fn StdPersistent_HArray1OfShape1_array1(
-        self_: *const StdPersistent_HArray1OfShape1,
-    ) -> crate::OcctResult<*const NCollection_Array1_StdObject_Shape>;
-    /// **Source:** `StdPersistent_HArray1.hxx`:22 - `StdPersistent_HArray1OfShape1::ChangeArray1()`
-    pub fn StdPersistent_HArray1OfShape1_change_array1(
-        self_: *mut StdPersistent_HArray1OfShape1,
-    ) -> crate::OcctResult<*mut NCollection_Array1_StdObject_Shape>;
-    /// **Source:** `StdPersistent_HArray1.hxx`:22 - `StdPersistent_HArray1OfShape1::DynamicType()`
-    pub fn StdPersistent_HArray1OfShape1_dynamic_type(
-        self_: *const StdPersistent_HArray1OfShape1,
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// **Source:** `StdPersistent_HArray1.hxx`:22 - `StdPersistent_HArray1OfShape1::get_type_name()`
-    pub fn StdPersistent_HArray1OfShape1_get_type_name(
-    ) -> crate::OcctResult<*const std::ffi::c_char>;
-    /// **Source:** `StdPersistent_HArray1.hxx`:22 - `StdPersistent_HArray1OfShape1::get_type_descriptor()`
-    pub fn StdPersistent_HArray1OfShape1_get_type_descriptor(
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// Upcast StdPersistent_HArray1OfShape1 to Standard_Transient
-    pub fn StdPersistent_HArray1OfShape1_as_Standard_Transient(
-        self_: *const StdPersistent_HArray1OfShape1,
-    ) -> crate::OcctResult<*const Standard_Transient>;
-    /// Upcast StdPersistent_HArray1OfShape1 to Standard_Transient (mutable)
-    pub fn StdPersistent_HArray1OfShape1_as_Standard_Transient_mut(
-        self_: *mut StdPersistent_HArray1OfShape1,
-    ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Wrap StdPersistent_HArray1OfShape1 in a Handle
-    pub fn StdPersistent_HArray1OfShape1_to_handle(
-        obj: *mut StdPersistent_HArray1OfShape1,
-    ) -> crate::OcctResult<*mut HandleStdPersistentHArray1OfShape1>;
-    /// Destroy Handle<StdPersistent_HArray1OfShape1>
-    pub fn HandleStdPersistentHArray1OfShape1_destructor(
-        self_: *mut HandleStdPersistentHArray1OfShape1,
-    );
-    /// Clone Handle<StdPersistent_HArray1OfShape1> (increments reference count)
-    pub fn HandleStdPersistentHArray1OfShape1_clone(
-        self_: *const HandleStdPersistentHArray1OfShape1,
-    ) -> crate::OcctResult<*mut HandleStdPersistentHArray1OfShape1>;
-    /// Check if Handle<StdPersistent_HArray1OfShape1> is null
-    pub fn HandleStdPersistentHArray1OfShape1_is_null(
-        self_: *const HandleStdPersistentHArray1OfShape1,
-    ) -> bool;
-    /// Dereference Handle to get *const StdPersistent_HArray1OfShape1
-    pub fn HandleStdPersistentHArray1OfShape1_get(
-        handle: *const HandleStdPersistentHArray1OfShape1,
-    ) -> crate::OcctResult<*const StdPersistent_HArray1OfShape1>;
-    /// Dereference Handle to get *mut StdPersistent_HArray1OfShape1
-    pub fn HandleStdPersistentHArray1OfShape1_get_mut(
-        handle: *mut HandleStdPersistentHArray1OfShape1,
-    ) -> crate::OcctResult<*mut StdPersistent_HArray1OfShape1>;
-    /// Upcast Handle<StdPersistent_HArray1OfShape1> to Handle<Standard_Transient>
-    pub fn HandleStdPersistentHArray1OfShape1_to_HandleStandardTransient(
-        self_: *const HandleStdPersistentHArray1OfShape1,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn StdPersistent_HArray1OfShape1_inherited_IsInstance(
-        self_: *const StdPersistent_HArray1OfShape1,
-        theType: *const HandleStandardType,
-    ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn StdPersistent_HArray1OfShape1_inherited_IsKind(
-        self_: *const StdPersistent_HArray1OfShape1,
-        theType: *const HandleStandardType,
-    ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
-    pub fn StdPersistent_HArray1OfShape1_inherited_This(
-        self_: *const StdPersistent_HArray1OfShape1,
-    ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
-    pub fn StdPersistent_HArray1OfShape1_inherited_GetRefCount(
-        self_: *const StdPersistent_HArray1OfShape1,
-    ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
-    pub fn StdPersistent_HArray1OfShape1_inherited_IncrementRefCounter(
-        self_: *mut StdPersistent_HArray1OfShape1,
-    ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
-    pub fn StdPersistent_HArray1OfShape1_inherited_DecrementRefCounter(
-        self_: *mut StdPersistent_HArray1OfShape1,
-    ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
-    pub fn StdPersistent_HArray1OfShape1_inherited_Delete(
-        self_: *const StdPersistent_HArray1OfShape1,
+        theAttribute: *const Handle_TDataXtd_PatternStd,
     ) -> *const std::ffi::c_char;
     // ======================== StdPersistent_Naming ========================
     pub fn StdPersistent_Naming_destructor(self_: *mut StdPersistent_Naming);
@@ -2019,7 +1631,7 @@ unsafe extern "C" {
     /// **Source:** `StdPersistent_Naming.hxx`:58 - `StdPersistent_Naming_NamedShape::Import()`
     pub fn StdPersistent_Naming_NamedShape_import(
         self_: *const StdPersistent_Naming_NamedShape,
-        theAttribute: *const HandleTNamingNamedShape,
+        theAttribute: *const Handle_TNaming_NamedShape,
     ) -> *const std::ffi::c_char;
     // ======================== StdPersistent_Naming_Name ========================
     pub fn StdPersistent_Naming_Name_destructor(self_: *mut StdPersistent_Naming_Name);
@@ -2048,7 +1660,7 @@ unsafe extern "C" {
     pub fn StdPersistent_Naming_Name_import(
         self_: *const StdPersistent_Naming_Name,
         theName: *mut TNaming_Name,
-        theDF: *const HandleTDFData,
+        theDF: *const Handle_TDF_Data,
     ) -> *const std::ffi::c_char;
     /// Upcast StdPersistent_Naming_Name to StdObjMgt_Persistent
     pub fn StdPersistent_Naming_Name_as_StdObjMgt_Persistent(
@@ -2069,102 +1681,104 @@ unsafe extern "C" {
     /// Wrap StdPersistent_Naming_Name in a Handle
     pub fn StdPersistent_Naming_Name_to_handle(
         obj: *mut StdPersistent_Naming_Name,
-    ) -> crate::OcctResult<*mut HandleStdPersistentNamingName>;
+    ) -> crate::OcctResult<*mut Handle_StdPersistent_Naming_Name>;
     /// Destroy Handle<StdPersistent_Naming_Name>
-    pub fn HandleStdPersistentNamingName_destructor(self_: *mut HandleStdPersistentNamingName);
+    pub fn Handle_StdPersistent_Naming_Name_destructor(
+        self_: *mut Handle_StdPersistent_Naming_Name,
+    );
     /// Clone Handle<StdPersistent_Naming_Name> (increments reference count)
-    pub fn HandleStdPersistentNamingName_clone(
-        self_: *const HandleStdPersistentNamingName,
-    ) -> crate::OcctResult<*mut HandleStdPersistentNamingName>;
+    pub fn Handle_StdPersistent_Naming_Name_clone(
+        self_: *const Handle_StdPersistent_Naming_Name,
+    ) -> crate::OcctResult<*mut Handle_StdPersistent_Naming_Name>;
     /// Check if Handle<StdPersistent_Naming_Name> is null
-    pub fn HandleStdPersistentNamingName_is_null(
-        self_: *const HandleStdPersistentNamingName,
+    pub fn Handle_StdPersistent_Naming_Name_is_null(
+        self_: *const Handle_StdPersistent_Naming_Name,
     ) -> bool;
     /// Dereference Handle to get *const StdPersistent_Naming_Name
-    pub fn HandleStdPersistentNamingName_get(
-        handle: *const HandleStdPersistentNamingName,
+    pub fn Handle_StdPersistent_Naming_Name_get(
+        handle: *const Handle_StdPersistent_Naming_Name,
     ) -> crate::OcctResult<*const StdPersistent_Naming_Name>;
     /// Dereference Handle to get *mut StdPersistent_Naming_Name
-    pub fn HandleStdPersistentNamingName_get_mut(
-        handle: *mut HandleStdPersistentNamingName,
+    pub fn Handle_StdPersistent_Naming_Name_get_mut(
+        handle: *mut Handle_StdPersistent_Naming_Name,
     ) -> crate::OcctResult<*mut StdPersistent_Naming_Name>;
     /// Upcast Handle<StdPersistent_Naming_Name> to Handle<StdObjMgt_Persistent>
-    pub fn HandleStdPersistentNamingName_to_HandleStdObjMgtPersistent(
-        self_: *const HandleStdPersistentNamingName,
-    ) -> crate::OcctResult<*mut HandleStdObjMgtPersistent>;
+    pub fn Handle_StdPersistent_Naming_Name_to_Handle_StdObjMgt_Persistent(
+        self_: *const Handle_StdPersistent_Naming_Name,
+    ) -> crate::OcctResult<*mut Handle_StdObjMgt_Persistent>;
     /// Upcast Handle<StdPersistent_Naming_Name> to Handle<Standard_Transient>
-    pub fn HandleStdPersistentNamingName_to_HandleStandardTransient(
-        self_: *const HandleStdPersistentNamingName,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
+    pub fn Handle_StdPersistent_Naming_Name_to_Handle_Standard_Transient(
+        self_: *const Handle_StdPersistent_Naming_Name,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
     /// Inherited: **Source:** `StdObjMgt_Persistent.hxx`:66 - `StdObjMgt_Persistent::ImportDocument()`
     pub fn StdPersistent_Naming_Name_inherited_ImportDocument(
         self_: *const StdPersistent_Naming_Name,
-        theDocument: *const HandleTDocStdDocument,
+        theDocument: *const Handle_TDocStd_Document,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `StdObjMgt_Persistent.hxx`:71 - `StdObjMgt_Persistent::CreateAttribute()`
+    /// Inherited: **Source:** `StdObjMgt_Persistent.hxx`:72 - `StdObjMgt_Persistent::CreateAttribute()`
     pub fn StdPersistent_Naming_Name_inherited_CreateAttribute(
         self_: *mut StdPersistent_Naming_Name,
-    ) -> crate::OcctResult<*mut HandleTDFAttribute>;
-    /// Inherited: **Source:** `StdObjMgt_Persistent.hxx`:76 - `StdObjMgt_Persistent::GetAttribute()`
+    ) -> crate::OcctResult<*mut Handle_TDF_Attribute>;
+    /// Inherited: **Source:** `StdObjMgt_Persistent.hxx`:77 - `StdObjMgt_Persistent::GetAttribute()`
     pub fn StdPersistent_Naming_Name_inherited_GetAttribute(
         self_: *const StdPersistent_Naming_Name,
-    ) -> crate::OcctResult<*mut HandleTDFAttribute>;
-    /// Inherited: **Source:** `StdObjMgt_Persistent.hxx`:81 - `StdObjMgt_Persistent::ImportAttribute()`
+    ) -> crate::OcctResult<*mut Handle_TDF_Attribute>;
+    /// Inherited: **Source:** `StdObjMgt_Persistent.hxx`:82 - `StdObjMgt_Persistent::ImportAttribute()`
     pub fn StdPersistent_Naming_Name_inherited_ImportAttribute(
         self_: *mut StdPersistent_Naming_Name,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `StdObjMgt_Persistent.hxx`:86 - `StdObjMgt_Persistent::AsciiString()`
+    /// Inherited: **Source:** `StdObjMgt_Persistent.hxx`:87 - `StdObjMgt_Persistent::AsciiString()`
     pub fn StdPersistent_Naming_Name_inherited_AsciiString(
         self_: *const StdPersistent_Naming_Name,
-    ) -> crate::OcctResult<*mut HandleTCollectionHAsciiString>;
-    /// Inherited: **Source:** `StdObjMgt_Persistent.hxx`:91 - `StdObjMgt_Persistent::ExtString()`
+    ) -> crate::OcctResult<*mut Handle_TCollection_HAsciiString>;
+    /// Inherited: **Source:** `StdObjMgt_Persistent.hxx`:92 - `StdObjMgt_Persistent::ExtString()`
     pub fn StdPersistent_Naming_Name_inherited_ExtString(
         self_: *const StdPersistent_Naming_Name,
-    ) -> crate::OcctResult<*mut HandleTCollectionHExtendedString>;
-    /// Inherited: **Source:** `StdObjMgt_Persistent.hxx`:96 - `StdObjMgt_Persistent::Label()`
+    ) -> crate::OcctResult<*mut Handle_TCollection_HExtendedString>;
+    /// Inherited: **Source:** `StdObjMgt_Persistent.hxx`:97 - `StdObjMgt_Persistent::Label()`
     pub fn StdPersistent_Naming_Name_inherited_Label(
         self_: *const StdPersistent_Naming_Name,
-        theDF: *const HandleTDFData,
+        theDF: *const Handle_TDF_Data,
     ) -> crate::OcctResult<*mut TDF_Label>;
-    /// Inherited: **Source:** `StdObjMgt_Persistent.hxx`:99 - `StdObjMgt_Persistent::TypeNum()`
+    /// Inherited: **Source:** `StdObjMgt_Persistent.hxx`:100 - `StdObjMgt_Persistent::TypeNum()`
     pub fn StdPersistent_Naming_Name_inherited_TypeNum(
         self_: *const StdPersistent_Naming_Name,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `StdObjMgt_Persistent.hxx`:105 - `StdObjMgt_Persistent::RefNum()`
+    /// Inherited: **Source:** `StdObjMgt_Persistent.hxx`:106 - `StdObjMgt_Persistent::RefNum()`
     pub fn StdPersistent_Naming_Name_inherited_RefNum(
         self_: *const StdPersistent_Naming_Name,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:71 - `Standard_Transient::DynamicType()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:79 - `Standard_Transient::DynamicType()`
     pub fn StdPersistent_Naming_Name_inherited_DynamicType(
         self_: *const StdPersistent_Naming_Name,
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn StdPersistent_Naming_Name_inherited_IsInstance(
         self_: *const StdPersistent_Naming_Name,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn StdPersistent_Naming_Name_inherited_IsKind(
         self_: *const StdPersistent_Naming_Name,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn StdPersistent_Naming_Name_inherited_This(
         self_: *const StdPersistent_Naming_Name,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn StdPersistent_Naming_Name_inherited_GetRefCount(
         self_: *const StdPersistent_Naming_Name,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn StdPersistent_Naming_Name_inherited_IncrementRefCounter(
         self_: *mut StdPersistent_Naming_Name,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn StdPersistent_Naming_Name_inherited_DecrementRefCounter(
         self_: *mut StdPersistent_Naming_Name,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn StdPersistent_Naming_Name_inherited_Delete(
         self_: *const StdPersistent_Naming_Name,
     ) -> *const std::ffi::c_char;
@@ -2172,65 +1786,65 @@ unsafe extern "C" {
     pub fn StdPersistent_Naming_Name_1_destructor(self_: *mut StdPersistent_Naming_Name_1);
     /// **Source:** `StdPersistent_Naming.hxx` - `StdPersistent_Naming_Name_1::StdPersistent_Naming_Name_1()`
     pub fn StdPersistent_Naming_Name_1_ctor() -> crate::OcctResult<*mut StdPersistent_Naming_Name_1>;
-    /// **Source:** `StdPersistent_Naming.hxx`:102 - `StdPersistent_Naming_Name_1::Read()`
+    /// **Source:** `StdPersistent_Naming.hxx`:103 - `StdPersistent_Naming_Name_1::Read()`
     pub fn StdPersistent_Naming_Name_1_read(
         self_: *mut StdPersistent_Naming_Name_1,
         theReadData: *mut StdObjMgt_ReadData,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `StdPersistent_Naming.hxx`:104 - `StdPersistent_Naming_Name_1::Write()`
+    /// **Source:** `StdPersistent_Naming.hxx`:105 - `StdPersistent_Naming_Name_1::Write()`
     pub fn StdPersistent_Naming_Name_1_write(
         self_: *const StdPersistent_Naming_Name_1,
         theWriteData: *mut StdObjMgt_WriteData,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `StdPersistent_Naming.hxx`:107 - `StdPersistent_Naming_Name_1::PChildren()`
+    /// **Source:** `StdPersistent_Naming.hxx`:108 - `StdPersistent_Naming_Name_1::PChildren()`
     pub fn StdPersistent_Naming_Name_1_p_children(
         self_: *const StdPersistent_Naming_Name_1,
         theChildren: *mut StdObjMgt_Persistent_SequenceOfPersistent,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `StdPersistent_Naming.hxx`:115 - `StdPersistent_Naming_Name_1::PName()`
+    /// **Source:** `StdPersistent_Naming.hxx`:116 - `StdPersistent_Naming_Name_1::PName()`
     pub fn StdPersistent_Naming_Name_1_p_name(
         self_: *const StdPersistent_Naming_Name_1,
     ) -> crate::OcctResult<*const std::ffi::c_char>;
-    /// **Source:** `StdPersistent_Naming.hxx`:118 - `StdPersistent_Naming_Name_1::Import()`
+    /// **Source:** `StdPersistent_Naming.hxx`:119 - `StdPersistent_Naming_Name_1::Import()`
     pub fn StdPersistent_Naming_Name_1_import(
         self_: *const StdPersistent_Naming_Name_1,
         theName: *mut TNaming_Name,
-        theDF: *const HandleTDFData,
+        theDF: *const Handle_TDF_Data,
     ) -> *const std::ffi::c_char;
     // ======================== StdPersistent_Naming_Name_2 ========================
     pub fn StdPersistent_Naming_Name_2_destructor(self_: *mut StdPersistent_Naming_Name_2);
     /// **Source:** `StdPersistent_Naming.hxx` - `StdPersistent_Naming_Name_2::StdPersistent_Naming_Name_2()`
     pub fn StdPersistent_Naming_Name_2_ctor() -> crate::OcctResult<*mut StdPersistent_Naming_Name_2>;
-    /// **Source:** `StdPersistent_Naming.hxx`:128 - `StdPersistent_Naming_Name_2::Read()`
+    /// **Source:** `StdPersistent_Naming.hxx`:130 - `StdPersistent_Naming_Name_2::Read()`
     pub fn StdPersistent_Naming_Name_2_read(
         self_: *mut StdPersistent_Naming_Name_2,
         theReadData: *mut StdObjMgt_ReadData,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `StdPersistent_Naming.hxx`:130 - `StdPersistent_Naming_Name_2::Write()`
+    /// **Source:** `StdPersistent_Naming.hxx`:132 - `StdPersistent_Naming_Name_2::Write()`
     pub fn StdPersistent_Naming_Name_2_write(
         self_: *const StdPersistent_Naming_Name_2,
         theWriteData: *mut StdObjMgt_WriteData,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `StdPersistent_Naming.hxx`:133 - `StdPersistent_Naming_Name_2::PChildren()`
+    /// **Source:** `StdPersistent_Naming.hxx`:135 - `StdPersistent_Naming_Name_2::PChildren()`
     pub fn StdPersistent_Naming_Name_2_p_children(
         self_: *const StdPersistent_Naming_Name_2,
         theChildren: *mut StdObjMgt_Persistent_SequenceOfPersistent,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `StdPersistent_Naming.hxx`:139 - `StdPersistent_Naming_Name_2::PName()`
+    /// **Source:** `StdPersistent_Naming.hxx`:141 - `StdPersistent_Naming_Name_2::PName()`
     pub fn StdPersistent_Naming_Name_2_p_name(
         self_: *const StdPersistent_Naming_Name_2,
     ) -> crate::OcctResult<*const std::ffi::c_char>;
-    /// **Source:** `StdPersistent_Naming.hxx`:142 - `StdPersistent_Naming_Name_2::Import()`
+    /// **Source:** `StdPersistent_Naming.hxx`:144 - `StdPersistent_Naming_Name_2::Import()`
     pub fn StdPersistent_Naming_Name_2_import(
         self_: *const StdPersistent_Naming_Name_2,
         theName: *mut TNaming_Name,
-        theDF: *const HandleTDFData,
+        theDF: *const Handle_TDF_Data,
     ) -> *const std::ffi::c_char;
     // ======================== StdPersistent_Naming_Naming ========================
     pub fn StdPersistent_Naming_Naming_destructor(self_: *mut StdPersistent_Naming_Naming);
     /// **Source:** `StdPersistent_Naming.hxx` - `StdPersistent_Naming_Naming::StdPersistent_Naming_Naming()`
     pub fn StdPersistent_Naming_Naming_ctor() -> crate::OcctResult<*mut StdPersistent_Naming_Naming>;
-    /// **Source:** `StdPersistent_Naming.hxx`:152 - `StdPersistent_Naming_Naming::ImportAttribute()`
+    /// **Source:** `StdPersistent_Naming.hxx`:155 - `StdPersistent_Naming_Naming::ImportAttribute()`
     pub fn StdPersistent_Naming_Naming_import_attribute(
         self_: *mut StdPersistent_Naming_Naming,
     ) -> *const std::ffi::c_char;
@@ -2239,7 +1853,7 @@ unsafe extern "C" {
     /// **Source:** `StdPersistent_Naming.hxx` - `StdPersistent_Naming_Naming_1::StdPersistent_Naming_Naming_1()`
     pub fn StdPersistent_Naming_Naming_1_ctor(
     ) -> crate::OcctResult<*mut StdPersistent_Naming_Naming_1>;
-    /// **Source:** `StdPersistent_Naming.hxx`:159 - `StdPersistent_Naming_Naming_1::ImportAttribute()`
+    /// **Source:** `StdPersistent_Naming.hxx`:162 - `StdPersistent_Naming_Naming_1::ImportAttribute()`
     pub fn StdPersistent_Naming_Naming_1_import_attribute(
         self_: *mut StdPersistent_Naming_Naming_1,
     ) -> *const std::ffi::c_char;
@@ -2276,7 +1890,7 @@ unsafe extern "C" {
     /// **Source:** `StdPersistent_PPrsStd.hxx`:52 - `StdPersistent_PPrsStd_AISPresentation::Import()`
     pub fn StdPersistent_PPrsStd_AISPresentation_import(
         self_: *const StdPersistent_PPrsStd_AISPresentation,
-        theAttribute: *const HandleTDataXtdPresentation,
+        theAttribute: *const Handle_TDataXtd_Presentation,
     ) -> *const std::ffi::c_char;
     // ======================== StdPersistent_PPrsStd_AISPresentation_1 ========================
     pub fn StdPersistent_PPrsStd_AISPresentation_1_destructor(
@@ -2302,69 +1916,59 @@ unsafe extern "C" {
     /// **Source:** `StdPersistent_PPrsStd.hxx`:84 - `StdPersistent_PPrsStd_AISPresentation_1::Import()`
     pub fn StdPersistent_PPrsStd_AISPresentation_1_import(
         self_: *const StdPersistent_PPrsStd_AISPresentation_1,
-        theAttribute: *const HandleTDataXtdPresentation,
+        theAttribute: *const Handle_TDataXtd_Presentation,
     ) -> *const std::ffi::c_char;
     // ======================== StdPersistent_TopLoc ========================
     pub fn StdPersistent_TopLoc_destructor(self_: *mut StdPersistent_TopLoc);
     /// **Source:** `StdPersistent_TopLoc.hxx` - `StdPersistent_TopLoc::StdPersistent_TopLoc()`
     pub fn StdPersistent_TopLoc_ctor() -> crate::OcctResult<*mut StdPersistent_TopLoc>;
-    /// **Source:** `StdPersistent_TopLoc.hxx`:68 - `StdPersistent_TopLoc::Translate()`
-    pub fn StdPersistent_TopLoc_translate_location_transientpersistentmap(
-        theLoc: *const TopLoc_Location,
-        theMap: *mut StdObjMgt_TransientPersistentMap,
-    ) -> crate::OcctResult<*mut HandleStdPersistentTopLocItemLocation>;
-    /// **Source:** `StdPersistent_TopLoc.hxx`:70 - `StdPersistent_TopLoc::Translate()`
-    pub fn StdPersistent_TopLoc_translate_handletoplocdatum3d_transientpersistentmap(
-        theDatum: *const HandleTopLocDatum3D,
-        theMap: *mut StdObjMgt_TransientPersistentMap,
-    ) -> crate::OcctResult<*mut HandleStdPersistentTopLocDatum3D>;
     // ======================== StdPersistent_TopLoc_Datum3D ========================
     pub fn StdPersistent_TopLoc_Datum3D_destructor(self_: *mut StdPersistent_TopLoc_Datum3D);
     /// **Source:** `StdPersistent_TopLoc.hxx` - `StdPersistent_TopLoc_Datum3D::StdPersistent_TopLoc_Datum3D()`
     pub fn StdPersistent_TopLoc_Datum3D_ctor(
     ) -> crate::OcctResult<*mut StdPersistent_TopLoc_Datum3D>;
-    /// **Source:** `StdPersistent_TopLoc.hxx`:32 - `StdPersistent_TopLoc_Datum3D::Read()`
+    /// **Source:** `StdPersistent_TopLoc.hxx`:34 - `StdPersistent_TopLoc_Datum3D::Read()`
     pub fn StdPersistent_TopLoc_Datum3D_read(
         self_: *mut StdPersistent_TopLoc_Datum3D,
         theReadData: *mut StdObjMgt_ReadData,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `StdPersistent_TopLoc.hxx`:34 - `StdPersistent_TopLoc_Datum3D::Write()`
+    /// **Source:** `StdPersistent_TopLoc.hxx`:36 - `StdPersistent_TopLoc_Datum3D::Write()`
     pub fn StdPersistent_TopLoc_Datum3D_write(
         self_: *const StdPersistent_TopLoc_Datum3D,
         theWriteData: *mut StdObjMgt_WriteData,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `StdPersistent_TopLoc.hxx`:37 - `StdPersistent_TopLoc_Datum3D::PChildren()`
+    /// **Source:** `StdPersistent_TopLoc.hxx`:39 - `StdPersistent_TopLoc_Datum3D::PChildren()`
     pub fn StdPersistent_TopLoc_Datum3D_p_children(
         self_: *const StdPersistent_TopLoc_Datum3D,
         arg0: *mut StdObjMgt_Persistent_SequenceOfPersistent,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `StdPersistent_TopLoc.hxx`:40 - `StdPersistent_TopLoc_Datum3D::PName()`
+    /// **Source:** `StdPersistent_TopLoc.hxx`:42 - `StdPersistent_TopLoc_Datum3D::PName()`
     pub fn StdPersistent_TopLoc_Datum3D_p_name(
         self_: *const StdPersistent_TopLoc_Datum3D,
     ) -> crate::OcctResult<*const std::ffi::c_char>;
     /// Wrap StdPersistent_TopLoc_Datum3D in a Handle
     pub fn StdPersistent_TopLoc_Datum3D_to_handle(
         obj: *mut StdPersistent_TopLoc_Datum3D,
-    ) -> crate::OcctResult<*mut HandleStdPersistentTopLocDatum3D>;
+    ) -> crate::OcctResult<*mut Handle_StdPersistent_TopLoc_Datum3D>;
     /// Destroy Handle<StdPersistent_TopLoc_Datum3D>
-    pub fn HandleStdPersistentTopLocDatum3D_destructor(
-        self_: *mut HandleStdPersistentTopLocDatum3D,
+    pub fn Handle_StdPersistent_TopLoc_Datum3D_destructor(
+        self_: *mut Handle_StdPersistent_TopLoc_Datum3D,
     );
     /// Clone Handle<StdPersistent_TopLoc_Datum3D> (increments reference count)
-    pub fn HandleStdPersistentTopLocDatum3D_clone(
-        self_: *const HandleStdPersistentTopLocDatum3D,
-    ) -> crate::OcctResult<*mut HandleStdPersistentTopLocDatum3D>;
+    pub fn Handle_StdPersistent_TopLoc_Datum3D_clone(
+        self_: *const Handle_StdPersistent_TopLoc_Datum3D,
+    ) -> crate::OcctResult<*mut Handle_StdPersistent_TopLoc_Datum3D>;
     /// Check if Handle<StdPersistent_TopLoc_Datum3D> is null
-    pub fn HandleStdPersistentTopLocDatum3D_is_null(
-        self_: *const HandleStdPersistentTopLocDatum3D,
+    pub fn Handle_StdPersistent_TopLoc_Datum3D_is_null(
+        self_: *const Handle_StdPersistent_TopLoc_Datum3D,
     ) -> bool;
     /// Dereference Handle to get *const StdPersistent_TopLoc_Datum3D
-    pub fn HandleStdPersistentTopLocDatum3D_get(
-        handle: *const HandleStdPersistentTopLocDatum3D,
+    pub fn Handle_StdPersistent_TopLoc_Datum3D_get(
+        handle: *const Handle_StdPersistent_TopLoc_Datum3D,
     ) -> crate::OcctResult<*const StdPersistent_TopLoc_Datum3D>;
     /// Dereference Handle to get *mut StdPersistent_TopLoc_Datum3D
-    pub fn HandleStdPersistentTopLocDatum3D_get_mut(
-        handle: *mut HandleStdPersistentTopLocDatum3D,
+    pub fn Handle_StdPersistent_TopLoc_Datum3D_get_mut(
+        handle: *mut Handle_StdPersistent_TopLoc_Datum3D,
     ) -> crate::OcctResult<*mut StdPersistent_TopLoc_Datum3D>;
     // ======================== StdPersistent_TopLoc_ItemLocation ========================
     pub fn StdPersistent_TopLoc_ItemLocation_destructor(
@@ -2373,26 +1977,26 @@ unsafe extern "C" {
     /// **Source:** `StdPersistent_TopLoc.hxx` - `StdPersistent_TopLoc_ItemLocation::StdPersistent_TopLoc_ItemLocation()`
     pub fn StdPersistent_TopLoc_ItemLocation_ctor(
     ) -> crate::OcctResult<*mut StdPersistent_TopLoc_ItemLocation>;
-    /// **Source:** `StdPersistent_TopLoc.hxx`:49 - `StdPersistent_TopLoc_ItemLocation::Read()`
+    /// **Source:** `StdPersistent_TopLoc.hxx`:51 - `StdPersistent_TopLoc_ItemLocation::Read()`
     pub fn StdPersistent_TopLoc_ItemLocation_read(
         self_: *mut StdPersistent_TopLoc_ItemLocation,
         theReadData: *mut StdObjMgt_ReadData,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `StdPersistent_TopLoc.hxx`:51 - `StdPersistent_TopLoc_ItemLocation::Write()`
+    /// **Source:** `StdPersistent_TopLoc.hxx`:53 - `StdPersistent_TopLoc_ItemLocation::Write()`
     pub fn StdPersistent_TopLoc_ItemLocation_write(
         self_: *const StdPersistent_TopLoc_ItemLocation,
         theWriteData: *mut StdObjMgt_WriteData,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `StdPersistent_TopLoc.hxx`:53 - `StdPersistent_TopLoc_ItemLocation::PChildren()`
+    /// **Source:** `StdPersistent_TopLoc.hxx`:55 - `StdPersistent_TopLoc_ItemLocation::PChildren()`
     pub fn StdPersistent_TopLoc_ItemLocation_p_children(
         self_: *const StdPersistent_TopLoc_ItemLocation,
         theChildren: *mut StdObjMgt_Persistent_SequenceOfPersistent,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `StdPersistent_TopLoc.hxx`:56 - `StdPersistent_TopLoc_ItemLocation::PName()`
+    /// **Source:** `StdPersistent_TopLoc.hxx`:58 - `StdPersistent_TopLoc_ItemLocation::PName()`
     pub fn StdPersistent_TopLoc_ItemLocation_p_name(
         self_: *const StdPersistent_TopLoc_ItemLocation,
     ) -> crate::OcctResult<*const std::ffi::c_char>;
-    /// **Source:** `StdPersistent_TopLoc.hxx`:59 - `StdPersistent_TopLoc_ItemLocation::Import()`
+    /// **Source:** `StdPersistent_TopLoc.hxx`:61 - `StdPersistent_TopLoc_ItemLocation::Import()`
     pub fn StdPersistent_TopLoc_ItemLocation_import(
         self_: *const StdPersistent_TopLoc_ItemLocation,
     ) -> crate::OcctResult<*mut TopLoc_Location>;
@@ -2415,104 +2019,104 @@ unsafe extern "C" {
     /// Wrap StdPersistent_TopLoc_ItemLocation in a Handle
     pub fn StdPersistent_TopLoc_ItemLocation_to_handle(
         obj: *mut StdPersistent_TopLoc_ItemLocation,
-    ) -> crate::OcctResult<*mut HandleStdPersistentTopLocItemLocation>;
+    ) -> crate::OcctResult<*mut Handle_StdPersistent_TopLoc_ItemLocation>;
     /// Destroy Handle<StdPersistent_TopLoc_ItemLocation>
-    pub fn HandleStdPersistentTopLocItemLocation_destructor(
-        self_: *mut HandleStdPersistentTopLocItemLocation,
+    pub fn Handle_StdPersistent_TopLoc_ItemLocation_destructor(
+        self_: *mut Handle_StdPersistent_TopLoc_ItemLocation,
     );
     /// Clone Handle<StdPersistent_TopLoc_ItemLocation> (increments reference count)
-    pub fn HandleStdPersistentTopLocItemLocation_clone(
-        self_: *const HandleStdPersistentTopLocItemLocation,
-    ) -> crate::OcctResult<*mut HandleStdPersistentTopLocItemLocation>;
+    pub fn Handle_StdPersistent_TopLoc_ItemLocation_clone(
+        self_: *const Handle_StdPersistent_TopLoc_ItemLocation,
+    ) -> crate::OcctResult<*mut Handle_StdPersistent_TopLoc_ItemLocation>;
     /// Check if Handle<StdPersistent_TopLoc_ItemLocation> is null
-    pub fn HandleStdPersistentTopLocItemLocation_is_null(
-        self_: *const HandleStdPersistentTopLocItemLocation,
+    pub fn Handle_StdPersistent_TopLoc_ItemLocation_is_null(
+        self_: *const Handle_StdPersistent_TopLoc_ItemLocation,
     ) -> bool;
     /// Dereference Handle to get *const StdPersistent_TopLoc_ItemLocation
-    pub fn HandleStdPersistentTopLocItemLocation_get(
-        handle: *const HandleStdPersistentTopLocItemLocation,
+    pub fn Handle_StdPersistent_TopLoc_ItemLocation_get(
+        handle: *const Handle_StdPersistent_TopLoc_ItemLocation,
     ) -> crate::OcctResult<*const StdPersistent_TopLoc_ItemLocation>;
     /// Dereference Handle to get *mut StdPersistent_TopLoc_ItemLocation
-    pub fn HandleStdPersistentTopLocItemLocation_get_mut(
-        handle: *mut HandleStdPersistentTopLocItemLocation,
+    pub fn Handle_StdPersistent_TopLoc_ItemLocation_get_mut(
+        handle: *mut Handle_StdPersistent_TopLoc_ItemLocation,
     ) -> crate::OcctResult<*mut StdPersistent_TopLoc_ItemLocation>;
     /// Upcast Handle<StdPersistent_TopLoc_ItemLocation> to Handle<StdObjMgt_Persistent>
-    pub fn HandleStdPersistentTopLocItemLocation_to_HandleStdObjMgtPersistent(
-        self_: *const HandleStdPersistentTopLocItemLocation,
-    ) -> crate::OcctResult<*mut HandleStdObjMgtPersistent>;
+    pub fn Handle_StdPersistent_TopLoc_ItemLocation_to_Handle_StdObjMgt_Persistent(
+        self_: *const Handle_StdPersistent_TopLoc_ItemLocation,
+    ) -> crate::OcctResult<*mut Handle_StdObjMgt_Persistent>;
     /// Upcast Handle<StdPersistent_TopLoc_ItemLocation> to Handle<Standard_Transient>
-    pub fn HandleStdPersistentTopLocItemLocation_to_HandleStandardTransient(
-        self_: *const HandleStdPersistentTopLocItemLocation,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
+    pub fn Handle_StdPersistent_TopLoc_ItemLocation_to_Handle_Standard_Transient(
+        self_: *const Handle_StdPersistent_TopLoc_ItemLocation,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
     /// Inherited: **Source:** `StdObjMgt_Persistent.hxx`:66 - `StdObjMgt_Persistent::ImportDocument()`
     pub fn StdPersistent_TopLoc_ItemLocation_inherited_ImportDocument(
         self_: *const StdPersistent_TopLoc_ItemLocation,
-        theDocument: *const HandleTDocStdDocument,
+        theDocument: *const Handle_TDocStd_Document,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `StdObjMgt_Persistent.hxx`:71 - `StdObjMgt_Persistent::CreateAttribute()`
+    /// Inherited: **Source:** `StdObjMgt_Persistent.hxx`:72 - `StdObjMgt_Persistent::CreateAttribute()`
     pub fn StdPersistent_TopLoc_ItemLocation_inherited_CreateAttribute(
         self_: *mut StdPersistent_TopLoc_ItemLocation,
-    ) -> crate::OcctResult<*mut HandleTDFAttribute>;
-    /// Inherited: **Source:** `StdObjMgt_Persistent.hxx`:76 - `StdObjMgt_Persistent::GetAttribute()`
+    ) -> crate::OcctResult<*mut Handle_TDF_Attribute>;
+    /// Inherited: **Source:** `StdObjMgt_Persistent.hxx`:77 - `StdObjMgt_Persistent::GetAttribute()`
     pub fn StdPersistent_TopLoc_ItemLocation_inherited_GetAttribute(
         self_: *const StdPersistent_TopLoc_ItemLocation,
-    ) -> crate::OcctResult<*mut HandleTDFAttribute>;
-    /// Inherited: **Source:** `StdObjMgt_Persistent.hxx`:81 - `StdObjMgt_Persistent::ImportAttribute()`
+    ) -> crate::OcctResult<*mut Handle_TDF_Attribute>;
+    /// Inherited: **Source:** `StdObjMgt_Persistent.hxx`:82 - `StdObjMgt_Persistent::ImportAttribute()`
     pub fn StdPersistent_TopLoc_ItemLocation_inherited_ImportAttribute(
         self_: *mut StdPersistent_TopLoc_ItemLocation,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `StdObjMgt_Persistent.hxx`:86 - `StdObjMgt_Persistent::AsciiString()`
+    /// Inherited: **Source:** `StdObjMgt_Persistent.hxx`:87 - `StdObjMgt_Persistent::AsciiString()`
     pub fn StdPersistent_TopLoc_ItemLocation_inherited_AsciiString(
         self_: *const StdPersistent_TopLoc_ItemLocation,
-    ) -> crate::OcctResult<*mut HandleTCollectionHAsciiString>;
-    /// Inherited: **Source:** `StdObjMgt_Persistent.hxx`:91 - `StdObjMgt_Persistent::ExtString()`
+    ) -> crate::OcctResult<*mut Handle_TCollection_HAsciiString>;
+    /// Inherited: **Source:** `StdObjMgt_Persistent.hxx`:92 - `StdObjMgt_Persistent::ExtString()`
     pub fn StdPersistent_TopLoc_ItemLocation_inherited_ExtString(
         self_: *const StdPersistent_TopLoc_ItemLocation,
-    ) -> crate::OcctResult<*mut HandleTCollectionHExtendedString>;
-    /// Inherited: **Source:** `StdObjMgt_Persistent.hxx`:96 - `StdObjMgt_Persistent::Label()`
+    ) -> crate::OcctResult<*mut Handle_TCollection_HExtendedString>;
+    /// Inherited: **Source:** `StdObjMgt_Persistent.hxx`:97 - `StdObjMgt_Persistent::Label()`
     pub fn StdPersistent_TopLoc_ItemLocation_inherited_Label(
         self_: *const StdPersistent_TopLoc_ItemLocation,
-        theDF: *const HandleTDFData,
+        theDF: *const Handle_TDF_Data,
     ) -> crate::OcctResult<*mut TDF_Label>;
-    /// Inherited: **Source:** `StdObjMgt_Persistent.hxx`:99 - `StdObjMgt_Persistent::TypeNum()`
+    /// Inherited: **Source:** `StdObjMgt_Persistent.hxx`:100 - `StdObjMgt_Persistent::TypeNum()`
     pub fn StdPersistent_TopLoc_ItemLocation_inherited_TypeNum(
         self_: *const StdPersistent_TopLoc_ItemLocation,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `StdObjMgt_Persistent.hxx`:105 - `StdObjMgt_Persistent::RefNum()`
+    /// Inherited: **Source:** `StdObjMgt_Persistent.hxx`:106 - `StdObjMgt_Persistent::RefNum()`
     pub fn StdPersistent_TopLoc_ItemLocation_inherited_RefNum(
         self_: *const StdPersistent_TopLoc_ItemLocation,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:71 - `Standard_Transient::DynamicType()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:79 - `Standard_Transient::DynamicType()`
     pub fn StdPersistent_TopLoc_ItemLocation_inherited_DynamicType(
         self_: *const StdPersistent_TopLoc_ItemLocation,
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn StdPersistent_TopLoc_ItemLocation_inherited_IsInstance(
         self_: *const StdPersistent_TopLoc_ItemLocation,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn StdPersistent_TopLoc_ItemLocation_inherited_IsKind(
         self_: *const StdPersistent_TopLoc_ItemLocation,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn StdPersistent_TopLoc_ItemLocation_inherited_This(
         self_: *const StdPersistent_TopLoc_ItemLocation,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn StdPersistent_TopLoc_ItemLocation_inherited_GetRefCount(
         self_: *const StdPersistent_TopLoc_ItemLocation,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn StdPersistent_TopLoc_ItemLocation_inherited_IncrementRefCounter(
         self_: *mut StdPersistent_TopLoc_ItemLocation,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn StdPersistent_TopLoc_ItemLocation_inherited_DecrementRefCounter(
         self_: *mut StdPersistent_TopLoc_ItemLocation,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn StdPersistent_TopLoc_ItemLocation_inherited_Delete(
         self_: *const StdPersistent_TopLoc_ItemLocation,
     ) -> *const std::ffi::c_char;
@@ -2533,48 +2137,48 @@ unsafe extern "C" {
         theBucketSize: i32,
         theBucketNumber: i32,
     ) -> crate::OcctResult<*mut StdStorage_BucketOfPersistent>;
-    /// **Source:** `StdStorage_BacketOfPersistent.hxx`:75 - `StdStorage_BucketOfPersistent::Length()`
+    /// **Source:** `StdStorage_BacketOfPersistent.hxx`:74 - `StdStorage_BucketOfPersistent::Length()`
     pub fn StdStorage_BucketOfPersistent_length(
         self_: *const StdStorage_BucketOfPersistent,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `StdStorage_BacketOfPersistent.hxx`:77 - `StdStorage_BucketOfPersistent::Append()`
+    /// **Source:** `StdStorage_BacketOfPersistent.hxx`:76 - `StdStorage_BucketOfPersistent::Append()`
     pub fn StdStorage_BucketOfPersistent_append(
         self_: *mut StdStorage_BucketOfPersistent,
-        sp: *const HandleStdObjMgtPersistent,
+        sp: *const Handle_StdObjMgt_Persistent,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `StdStorage_BacketOfPersistent.hxx`:79 - `StdStorage_BucketOfPersistent::Value()`
+    /// **Source:** `StdStorage_BacketOfPersistent.hxx`:78 - `StdStorage_BucketOfPersistent::Value()`
     pub fn StdStorage_BucketOfPersistent_value(
         self_: *mut StdStorage_BucketOfPersistent,
         theIndex: i32,
     ) -> crate::OcctResult<*mut StdObjMgt_Persistent>;
-    /// **Source:** `StdStorage_BacketOfPersistent.hxx`:81 - `StdStorage_BucketOfPersistent::Clear()`
+    /// **Source:** `StdStorage_BacketOfPersistent.hxx`:80 - `StdStorage_BucketOfPersistent::Clear()`
     pub fn StdStorage_BucketOfPersistent_clear(
         self_: *mut StdStorage_BucketOfPersistent,
     ) -> *const std::ffi::c_char;
     // ======================== StdStorage_BucketIterator ========================
     pub fn StdStorage_BucketIterator_destructor(self_: *mut StdStorage_BucketIterator);
-    /// **Source:** `StdStorage_BacketOfPersistent.hxx`:96 - `StdStorage_BucketIterator::StdStorage_BucketIterator()`
+    /// **Source:** `StdStorage_BacketOfPersistent.hxx`:95 - `StdStorage_BucketIterator::StdStorage_BucketIterator()`
     pub fn StdStorage_BucketIterator_ctor_bucketofpersistentptr(
         arg0: *mut StdStorage_BucketOfPersistent,
     ) -> crate::OcctResult<*mut StdStorage_BucketIterator>;
-    /// **Source:** `StdStorage_BacketOfPersistent.hxx`:98 - `StdStorage_BucketIterator::Init()`
+    /// **Source:** `StdStorage_BacketOfPersistent.hxx`:97 - `StdStorage_BucketIterator::Init()`
     pub fn StdStorage_BucketIterator_init(
         self_: *mut StdStorage_BucketIterator,
         arg0: *mut StdStorage_BucketOfPersistent,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `StdStorage_BacketOfPersistent.hxx`:99 - `StdStorage_BucketIterator::Reset()`
+    /// **Source:** `StdStorage_BacketOfPersistent.hxx`:98 - `StdStorage_BucketIterator::Reset()`
     pub fn StdStorage_BucketIterator_reset(
         self_: *mut StdStorage_BucketIterator,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `StdStorage_BacketOfPersistent.hxx`:101 - `StdStorage_BucketIterator::Value()`
+    /// **Source:** `StdStorage_BacketOfPersistent.hxx`:100 - `StdStorage_BucketIterator::Value()`
     pub fn StdStorage_BucketIterator_value(
         self_: *const StdStorage_BucketIterator,
     ) -> crate::OcctResult<*mut StdObjMgt_Persistent>;
-    /// **Source:** `StdStorage_BacketOfPersistent.hxx`:111 - `StdStorage_BucketIterator::More()`
+    /// **Source:** `StdStorage_BacketOfPersistent.hxx`:110 - `StdStorage_BucketIterator::More()`
     pub fn StdStorage_BucketIterator_more(
         self_: *const StdStorage_BucketIterator,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `StdStorage_BacketOfPersistent.hxx`:113 - `StdStorage_BucketIterator::Next()`
+    /// **Source:** `StdStorage_BacketOfPersistent.hxx`:112 - `StdStorage_BucketIterator::Next()`
     pub fn StdStorage_BucketIterator_next(
         self_: *mut StdStorage_BucketIterator,
     ) -> *const std::ffi::c_char;
@@ -2587,15 +2191,15 @@ unsafe extern "C" {
     /// **Source:** `StdStorage_Data.hxx`:74 - `StdStorage_Data::HeaderData()`
     pub fn StdStorage_Data_header_data(
         self_: *mut StdStorage_Data,
-    ) -> crate::OcctResult<*mut HandleStdStorageHeaderData>;
+    ) -> crate::OcctResult<*mut Handle_StdStorage_HeaderData>;
     /// **Source:** `StdStorage_Data.hxx`:77 - `StdStorage_Data::TypeData()`
     pub fn StdStorage_Data_type_data(
         self_: *mut StdStorage_Data,
-    ) -> crate::OcctResult<*mut HandleStdStorageTypeData>;
+    ) -> crate::OcctResult<*mut Handle_StdStorage_TypeData>;
     /// **Source:** `StdStorage_Data.hxx`:80 - `StdStorage_Data::RootData()`
     pub fn StdStorage_Data_root_data(
         self_: *mut StdStorage_Data,
-    ) -> crate::OcctResult<*mut HandleStdStorageRootData>;
+    ) -> crate::OcctResult<*mut Handle_StdStorage_RootData>;
     /// Upcast StdStorage_Data to Standard_Transient
     pub fn StdStorage_Data_as_Standard_Transient(
         self_: *const StdStorage_Data,
@@ -2607,281 +2211,180 @@ unsafe extern "C" {
     /// Wrap StdStorage_Data in a Handle
     pub fn StdStorage_Data_to_handle(
         obj: *mut StdStorage_Data,
-    ) -> crate::OcctResult<*mut HandleStdStorageData>;
+    ) -> crate::OcctResult<*mut Handle_StdStorage_Data>;
     /// Destroy Handle<StdStorage_Data>
-    pub fn HandleStdStorageData_destructor(self_: *mut HandleStdStorageData);
+    pub fn Handle_StdStorage_Data_destructor(self_: *mut Handle_StdStorage_Data);
     /// Clone Handle<StdStorage_Data> (increments reference count)
-    pub fn HandleStdStorageData_clone(
-        self_: *const HandleStdStorageData,
-    ) -> crate::OcctResult<*mut HandleStdStorageData>;
+    pub fn Handle_StdStorage_Data_clone(
+        self_: *const Handle_StdStorage_Data,
+    ) -> crate::OcctResult<*mut Handle_StdStorage_Data>;
     /// Check if Handle<StdStorage_Data> is null
-    pub fn HandleStdStorageData_is_null(self_: *const HandleStdStorageData) -> bool;
+    pub fn Handle_StdStorage_Data_is_null(self_: *const Handle_StdStorage_Data) -> bool;
     /// Dereference Handle to get *const StdStorage_Data
-    pub fn HandleStdStorageData_get(
-        handle: *const HandleStdStorageData,
+    pub fn Handle_StdStorage_Data_get(
+        handle: *const Handle_StdStorage_Data,
     ) -> crate::OcctResult<*const StdStorage_Data>;
     /// Dereference Handle to get *mut StdStorage_Data
-    pub fn HandleStdStorageData_get_mut(
-        handle: *mut HandleStdStorageData,
+    pub fn Handle_StdStorage_Data_get_mut(
+        handle: *mut Handle_StdStorage_Data,
     ) -> crate::OcctResult<*mut StdStorage_Data>;
     /// Upcast Handle<StdStorage_Data> to Handle<Standard_Transient>
-    pub fn HandleStdStorageData_to_HandleStandardTransient(
-        self_: *const HandleStdStorageData,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:71 - `Standard_Transient::DynamicType()`
+    pub fn Handle_StdStorage_Data_to_Handle_Standard_Transient(
+        self_: *const Handle_StdStorage_Data,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
+    /// Inherited: **Source:** `Standard_Transient.hxx`:79 - `Standard_Transient::DynamicType()`
     pub fn StdStorage_Data_inherited_DynamicType(
         self_: *const StdStorage_Data,
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn StdStorage_Data_inherited_IsInstance(
         self_: *const StdStorage_Data,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn StdStorage_Data_inherited_IsKind(
         self_: *const StdStorage_Data,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn StdStorage_Data_inherited_This(
         self_: *const StdStorage_Data,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn StdStorage_Data_inherited_GetRefCount(
         self_: *const StdStorage_Data,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn StdStorage_Data_inherited_IncrementRefCounter(
         self_: *mut StdStorage_Data,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn StdStorage_Data_inherited_DecrementRefCounter(
         self_: *mut StdStorage_Data,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn StdStorage_Data_inherited_Delete(
         self_: *const StdStorage_Data,
     ) -> *const std::ffi::c_char;
-    // ======================== StdStorage_HSequenceOfRoots ========================
-    pub fn StdStorage_HSequenceOfRoots_destructor(self_: *mut StdStorage_HSequenceOfRoots);
-    /// **Source:** `StdStorage_HSequenceOfRoots.hxx`:20 - `StdStorage_HSequenceOfRoots::StdStorage_HSequenceOfRoots()`
-    pub fn StdStorage_HSequenceOfRoots_ctor() -> crate::OcctResult<*mut StdStorage_HSequenceOfRoots>;
-    /// **Source:** `StdStorage_HSequenceOfRoots.hxx`:20 - `StdStorage_HSequenceOfRoots::StdStorage_HSequenceOfRoots()`
-    pub fn StdStorage_HSequenceOfRoots_ctor_sequenceofroots(
-        theOther: *const StdStorage_SequenceOfRoots,
-    ) -> crate::OcctResult<*mut StdStorage_HSequenceOfRoots>;
-    /// **Source:** `StdStorage_HSequenceOfRoots.hxx`:20 - `StdStorage_HSequenceOfRoots::Sequence()`
-    pub fn StdStorage_HSequenceOfRoots_sequence(
-        self_: *const StdStorage_HSequenceOfRoots,
-    ) -> crate::OcctResult<*const StdStorage_SequenceOfRoots>;
-    /// **Source:** `StdStorage_HSequenceOfRoots.hxx`:20 - `StdStorage_HSequenceOfRoots::Append()`
-    pub fn StdStorage_HSequenceOfRoots_append_handlestdstorageroot(
-        self_: *mut StdStorage_HSequenceOfRoots,
-        theItem: *const HandleStdStorageRoot,
-    ) -> *const std::ffi::c_char;
-    /// **Source:** `StdStorage_HSequenceOfRoots.hxx`:20 - `StdStorage_HSequenceOfRoots::Append()`
-    pub fn StdStorage_HSequenceOfRoots_append_sequenceofroots(
-        self_: *mut StdStorage_HSequenceOfRoots,
-        theSequence: *mut StdStorage_SequenceOfRoots,
-    ) -> *const std::ffi::c_char;
-    /// **Source:** `StdStorage_HSequenceOfRoots.hxx`:20 - `StdStorage_HSequenceOfRoots::ChangeSequence()`
-    pub fn StdStorage_HSequenceOfRoots_change_sequence(
-        self_: *mut StdStorage_HSequenceOfRoots,
-    ) -> crate::OcctResult<*mut StdStorage_SequenceOfRoots>;
-    /// **Source:** `StdStorage_HSequenceOfRoots.hxx`:20 - `StdStorage_HSequenceOfRoots::DynamicType()`
-    pub fn StdStorage_HSequenceOfRoots_dynamic_type(
-        self_: *const StdStorage_HSequenceOfRoots,
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// **Source:** `StdStorage_HSequenceOfRoots.hxx`:20 - `StdStorage_HSequenceOfRoots::get_type_name()`
-    pub fn StdStorage_HSequenceOfRoots_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
-    /// **Source:** `StdStorage_HSequenceOfRoots.hxx`:20 - `StdStorage_HSequenceOfRoots::get_type_descriptor()`
-    pub fn StdStorage_HSequenceOfRoots_get_type_descriptor(
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// Upcast StdStorage_HSequenceOfRoots to Standard_Transient
-    pub fn StdStorage_HSequenceOfRoots_as_Standard_Transient(
-        self_: *const StdStorage_HSequenceOfRoots,
-    ) -> crate::OcctResult<*const Standard_Transient>;
-    /// Upcast StdStorage_HSequenceOfRoots to Standard_Transient (mutable)
-    pub fn StdStorage_HSequenceOfRoots_as_Standard_Transient_mut(
-        self_: *mut StdStorage_HSequenceOfRoots,
-    ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Wrap StdStorage_HSequenceOfRoots in a Handle
-    pub fn StdStorage_HSequenceOfRoots_to_handle(
-        obj: *mut StdStorage_HSequenceOfRoots,
-    ) -> crate::OcctResult<*mut HandleStdStorageHSequenceOfRoots>;
-    /// Destroy Handle<StdStorage_HSequenceOfRoots>
-    pub fn HandleStdStorageHSequenceOfRoots_destructor(
-        self_: *mut HandleStdStorageHSequenceOfRoots,
-    );
-    /// Clone Handle<StdStorage_HSequenceOfRoots> (increments reference count)
-    pub fn HandleStdStorageHSequenceOfRoots_clone(
-        self_: *const HandleStdStorageHSequenceOfRoots,
-    ) -> crate::OcctResult<*mut HandleStdStorageHSequenceOfRoots>;
-    /// Check if Handle<StdStorage_HSequenceOfRoots> is null
-    pub fn HandleStdStorageHSequenceOfRoots_is_null(
-        self_: *const HandleStdStorageHSequenceOfRoots,
-    ) -> bool;
-    /// Dereference Handle to get *const StdStorage_HSequenceOfRoots
-    pub fn HandleStdStorageHSequenceOfRoots_get(
-        handle: *const HandleStdStorageHSequenceOfRoots,
-    ) -> crate::OcctResult<*const StdStorage_HSequenceOfRoots>;
-    /// Dereference Handle to get *mut StdStorage_HSequenceOfRoots
-    pub fn HandleStdStorageHSequenceOfRoots_get_mut(
-        handle: *mut HandleStdStorageHSequenceOfRoots,
-    ) -> crate::OcctResult<*mut StdStorage_HSequenceOfRoots>;
-    /// Upcast Handle<StdStorage_HSequenceOfRoots> to Handle<Standard_Transient>
-    pub fn HandleStdStorageHSequenceOfRoots_to_HandleStandardTransient(
-        self_: *const HandleStdStorageHSequenceOfRoots,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn StdStorage_HSequenceOfRoots_inherited_IsInstance(
-        self_: *const StdStorage_HSequenceOfRoots,
-        theType: *const HandleStandardType,
-    ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn StdStorage_HSequenceOfRoots_inherited_IsKind(
-        self_: *const StdStorage_HSequenceOfRoots,
-        theType: *const HandleStandardType,
-    ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
-    pub fn StdStorage_HSequenceOfRoots_inherited_This(
-        self_: *const StdStorage_HSequenceOfRoots,
-    ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
-    pub fn StdStorage_HSequenceOfRoots_inherited_GetRefCount(
-        self_: *const StdStorage_HSequenceOfRoots,
-    ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
-    pub fn StdStorage_HSequenceOfRoots_inherited_IncrementRefCounter(
-        self_: *mut StdStorage_HSequenceOfRoots,
-    ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
-    pub fn StdStorage_HSequenceOfRoots_inherited_DecrementRefCounter(
-        self_: *mut StdStorage_HSequenceOfRoots,
-    ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
-    pub fn StdStorage_HSequenceOfRoots_inherited_Delete(
-        self_: *const StdStorage_HSequenceOfRoots,
-    ) -> *const std::ffi::c_char;
     // ======================== StdStorage_HeaderData ========================
     pub fn StdStorage_HeaderData_destructor(self_: *mut StdStorage_HeaderData);
-    /// **Source:** `StdStorage_HeaderData.hxx`:38 - `StdStorage_HeaderData::DynamicType()`
+    /// **Source:** `StdStorage_HeaderData.hxx`:36 - `StdStorage_HeaderData::DynamicType()`
     pub fn StdStorage_HeaderData_dynamic_type(
         self_: *const StdStorage_HeaderData,
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// **Source:** `StdStorage_HeaderData.hxx`:44 - `StdStorage_HeaderData::Read()`
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
+    /// **Source:** `StdStorage_HeaderData.hxx`:42 - `StdStorage_HeaderData::Read()`
     pub fn StdStorage_HeaderData_read(
         self_: *mut StdStorage_HeaderData,
-        theDriver: *const HandleStorageBaseDriver,
+        theDriver: *const Handle_Storage_BaseDriver,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `StdStorage_HeaderData.hxx`:50 - `StdStorage_HeaderData::Write()`
+    /// **Source:** `StdStorage_HeaderData.hxx`:48 - `StdStorage_HeaderData::Write()`
     pub fn StdStorage_HeaderData_write(
         self_: *mut StdStorage_HeaderData,
-        theDriver: *const HandleStorageBaseDriver,
+        theDriver: *const Handle_Storage_BaseDriver,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `StdStorage_HeaderData.hxx`:53 - `StdStorage_HeaderData::CreationDate()`
+    /// **Source:** `StdStorage_HeaderData.hxx`:51 - `StdStorage_HeaderData::CreationDate()`
     pub fn StdStorage_HeaderData_creation_date(
         self_: *const StdStorage_HeaderData,
     ) -> crate::OcctResult<*mut TCollection_AsciiString>;
-    /// **Source:** `StdStorage_HeaderData.hxx`:56 - `StdStorage_HeaderData::StorageVersion()`
+    /// **Source:** `StdStorage_HeaderData.hxx`:54 - `StdStorage_HeaderData::StorageVersion()`
     pub fn StdStorage_HeaderData_storage_version(
         self_: *const StdStorage_HeaderData,
     ) -> crate::OcctResult<*mut TCollection_AsciiString>;
-    /// **Source:** `StdStorage_HeaderData.hxx`:59 - `StdStorage_HeaderData::SchemaVersion()`
+    /// **Source:** `StdStorage_HeaderData.hxx`:57 - `StdStorage_HeaderData::SchemaVersion()`
     pub fn StdStorage_HeaderData_schema_version(
         self_: *const StdStorage_HeaderData,
     ) -> crate::OcctResult<*mut TCollection_AsciiString>;
-    /// **Source:** `StdStorage_HeaderData.hxx`:62 - `StdStorage_HeaderData::SetApplicationVersion()`
+    /// **Source:** `StdStorage_HeaderData.hxx`:60 - `StdStorage_HeaderData::SetApplicationVersion()`
     pub fn StdStorage_HeaderData_set_application_version(
         self_: *mut StdStorage_HeaderData,
         aVersion: *const TCollection_AsciiString,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `StdStorage_HeaderData.hxx`:65 - `StdStorage_HeaderData::ApplicationVersion()`
+    /// **Source:** `StdStorage_HeaderData.hxx`:63 - `StdStorage_HeaderData::ApplicationVersion()`
     pub fn StdStorage_HeaderData_application_version(
         self_: *const StdStorage_HeaderData,
     ) -> crate::OcctResult<*mut TCollection_AsciiString>;
-    /// **Source:** `StdStorage_HeaderData.hxx`:68 - `StdStorage_HeaderData::SetApplicationName()`
+    /// **Source:** `StdStorage_HeaderData.hxx`:66 - `StdStorage_HeaderData::SetApplicationName()`
     pub fn StdStorage_HeaderData_set_application_name(
         self_: *mut StdStorage_HeaderData,
         aName: *const TCollection_ExtendedString,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `StdStorage_HeaderData.hxx`:71 - `StdStorage_HeaderData::ApplicationName()`
+    /// **Source:** `StdStorage_HeaderData.hxx`:69 - `StdStorage_HeaderData::ApplicationName()`
     pub fn StdStorage_HeaderData_application_name(
         self_: *const StdStorage_HeaderData,
     ) -> crate::OcctResult<*mut TCollection_ExtendedString>;
-    /// **Source:** `StdStorage_HeaderData.hxx`:74 - `StdStorage_HeaderData::SetDataType()`
+    /// **Source:** `StdStorage_HeaderData.hxx`:72 - `StdStorage_HeaderData::SetDataType()`
     pub fn StdStorage_HeaderData_set_data_type(
         self_: *mut StdStorage_HeaderData,
         aType: *const TCollection_ExtendedString,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `StdStorage_HeaderData.hxx`:77 - `StdStorage_HeaderData::DataType()`
+    /// **Source:** `StdStorage_HeaderData.hxx`:75 - `StdStorage_HeaderData::DataType()`
     pub fn StdStorage_HeaderData_data_type(
         self_: *const StdStorage_HeaderData,
     ) -> crate::OcctResult<*mut TCollection_ExtendedString>;
-    /// **Source:** `StdStorage_HeaderData.hxx`:80 - `StdStorage_HeaderData::AddToUserInfo()`
+    /// **Source:** `StdStorage_HeaderData.hxx`:78 - `StdStorage_HeaderData::AddToUserInfo()`
     pub fn StdStorage_HeaderData_add_to_user_info(
         self_: *mut StdStorage_HeaderData,
         theUserInfo: *const TCollection_AsciiString,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `StdStorage_HeaderData.hxx`:83 - `StdStorage_HeaderData::UserInfo()`
+    /// **Source:** `StdStorage_HeaderData.hxx`:81 - `StdStorage_HeaderData::UserInfo()`
     pub fn StdStorage_HeaderData_user_info(
         self_: *const StdStorage_HeaderData,
-    ) -> crate::OcctResult<*const TColStd_SequenceOfAsciiString>;
-    /// **Source:** `StdStorage_HeaderData.hxx`:86 - `StdStorage_HeaderData::AddToComments()`
+    ) -> crate::OcctResult<*const NCollection_Sequence_TCollection_AsciiString>;
+    /// **Source:** `StdStorage_HeaderData.hxx`:84 - `StdStorage_HeaderData::AddToComments()`
     pub fn StdStorage_HeaderData_add_to_comments(
         self_: *mut StdStorage_HeaderData,
         aComment: *const TCollection_ExtendedString,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `StdStorage_HeaderData.hxx`:89 - `StdStorage_HeaderData::Comments()`
+    /// **Source:** `StdStorage_HeaderData.hxx`:87 - `StdStorage_HeaderData::Comments()`
     pub fn StdStorage_HeaderData_comments(
         self_: *const StdStorage_HeaderData,
-    ) -> crate::OcctResult<*const TColStd_SequenceOfExtendedString>;
-    /// **Source:** `StdStorage_HeaderData.hxx`:92 - `StdStorage_HeaderData::NumberOfObjects()`
+    ) -> crate::OcctResult<*const NCollection_Sequence_TCollection_ExtendedString>;
+    /// **Source:** `StdStorage_HeaderData.hxx`:90 - `StdStorage_HeaderData::NumberOfObjects()`
     pub fn StdStorage_HeaderData_number_of_objects(
         self_: *const StdStorage_HeaderData,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `StdStorage_HeaderData.hxx`:95 - `StdStorage_HeaderData::ErrorStatus()`
+    /// **Source:** `StdStorage_HeaderData.hxx`:93 - `StdStorage_HeaderData::ErrorStatus()`
     pub fn StdStorage_HeaderData_error_status(
         self_: *const StdStorage_HeaderData,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `StdStorage_HeaderData.hxx`:98 - `StdStorage_HeaderData::ErrorStatusExtension()`
+    /// **Source:** `StdStorage_HeaderData.hxx`:96 - `StdStorage_HeaderData::ErrorStatusExtension()`
     pub fn StdStorage_HeaderData_error_status_extension(
         self_: *const StdStorage_HeaderData,
     ) -> crate::OcctResult<*mut TCollection_AsciiString>;
-    /// **Source:** `StdStorage_HeaderData.hxx`:101 - `StdStorage_HeaderData::ClearErrorStatus()`
+    /// **Source:** `StdStorage_HeaderData.hxx`:99 - `StdStorage_HeaderData::ClearErrorStatus()`
     pub fn StdStorage_HeaderData_clear_error_status(
         self_: *mut StdStorage_HeaderData,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `StdStorage_HeaderData.hxx`:103 - `StdStorage_HeaderData::SetNumberOfObjects()`
+    /// **Source:** `StdStorage_HeaderData.hxx`:101 - `StdStorage_HeaderData::SetNumberOfObjects()`
     pub fn StdStorage_HeaderData_set_number_of_objects(
         self_: *mut StdStorage_HeaderData,
         anObjectNumber: i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `StdStorage_HeaderData.hxx`:105 - `StdStorage_HeaderData::SetStorageVersion()`
+    /// **Source:** `StdStorage_HeaderData.hxx`:103 - `StdStorage_HeaderData::SetStorageVersion()`
     pub fn StdStorage_HeaderData_set_storage_version(
         self_: *mut StdStorage_HeaderData,
         aVersion: *const TCollection_AsciiString,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `StdStorage_HeaderData.hxx`:107 - `StdStorage_HeaderData::SetCreationDate()`
+    /// **Source:** `StdStorage_HeaderData.hxx`:105 - `StdStorage_HeaderData::SetCreationDate()`
     pub fn StdStorage_HeaderData_set_creation_date(
         self_: *mut StdStorage_HeaderData,
         aDate: *const TCollection_AsciiString,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `StdStorage_HeaderData.hxx`:109 - `StdStorage_HeaderData::SetSchemaVersion()`
+    /// **Source:** `StdStorage_HeaderData.hxx`:107 - `StdStorage_HeaderData::SetSchemaVersion()`
     pub fn StdStorage_HeaderData_set_schema_version(
         self_: *mut StdStorage_HeaderData,
         aVersion: *const TCollection_AsciiString,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `StdStorage_HeaderData.hxx`:111 - `StdStorage_HeaderData::SetSchemaName()`
+    /// **Source:** `StdStorage_HeaderData.hxx`:109 - `StdStorage_HeaderData::SetSchemaName()`
     pub fn StdStorage_HeaderData_set_schema_name(
         self_: *mut StdStorage_HeaderData,
         aName: *const TCollection_AsciiString,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `StdStorage_HeaderData.hxx`:38 - `StdStorage_HeaderData::get_type_name()`
+    /// **Source:** `StdStorage_HeaderData.hxx`:36 - `StdStorage_HeaderData::get_type_name()`
     pub fn StdStorage_HeaderData_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
-    /// **Source:** `StdStorage_HeaderData.hxx`:38 - `StdStorage_HeaderData::get_type_descriptor()`
+    /// **Source:** `StdStorage_HeaderData.hxx`:36 - `StdStorage_HeaderData::get_type_descriptor()`
     pub fn StdStorage_HeaderData_get_type_descriptor(
-    ) -> crate::OcctResult<*const HandleStandardType>;
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast StdStorage_HeaderData to Standard_Transient
     pub fn StdStorage_HeaderData_as_Standard_Transient(
         self_: *const StdStorage_HeaderData,
@@ -2893,103 +2396,104 @@ unsafe extern "C" {
     /// Wrap StdStorage_HeaderData in a Handle
     pub fn StdStorage_HeaderData_to_handle(
         obj: *mut StdStorage_HeaderData,
-    ) -> crate::OcctResult<*mut HandleStdStorageHeaderData>;
+    ) -> crate::OcctResult<*mut Handle_StdStorage_HeaderData>;
     /// Destroy Handle<StdStorage_HeaderData>
-    pub fn HandleStdStorageHeaderData_destructor(self_: *mut HandleStdStorageHeaderData);
+    pub fn Handle_StdStorage_HeaderData_destructor(self_: *mut Handle_StdStorage_HeaderData);
     /// Clone Handle<StdStorage_HeaderData> (increments reference count)
-    pub fn HandleStdStorageHeaderData_clone(
-        self_: *const HandleStdStorageHeaderData,
-    ) -> crate::OcctResult<*mut HandleStdStorageHeaderData>;
+    pub fn Handle_StdStorage_HeaderData_clone(
+        self_: *const Handle_StdStorage_HeaderData,
+    ) -> crate::OcctResult<*mut Handle_StdStorage_HeaderData>;
     /// Check if Handle<StdStorage_HeaderData> is null
-    pub fn HandleStdStorageHeaderData_is_null(self_: *const HandleStdStorageHeaderData) -> bool;
+    pub fn Handle_StdStorage_HeaderData_is_null(self_: *const Handle_StdStorage_HeaderData)
+        -> bool;
     /// Dereference Handle to get *const StdStorage_HeaderData
-    pub fn HandleStdStorageHeaderData_get(
-        handle: *const HandleStdStorageHeaderData,
+    pub fn Handle_StdStorage_HeaderData_get(
+        handle: *const Handle_StdStorage_HeaderData,
     ) -> crate::OcctResult<*const StdStorage_HeaderData>;
     /// Dereference Handle to get *mut StdStorage_HeaderData
-    pub fn HandleStdStorageHeaderData_get_mut(
-        handle: *mut HandleStdStorageHeaderData,
+    pub fn Handle_StdStorage_HeaderData_get_mut(
+        handle: *mut Handle_StdStorage_HeaderData,
     ) -> crate::OcctResult<*mut StdStorage_HeaderData>;
     /// Upcast Handle<StdStorage_HeaderData> to Handle<Standard_Transient>
-    pub fn HandleStdStorageHeaderData_to_HandleStandardTransient(
-        self_: *const HandleStdStorageHeaderData,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn Handle_StdStorage_HeaderData_to_Handle_Standard_Transient(
+        self_: *const Handle_StdStorage_HeaderData,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn StdStorage_HeaderData_inherited_IsInstance(
         self_: *const StdStorage_HeaderData,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn StdStorage_HeaderData_inherited_IsKind(
         self_: *const StdStorage_HeaderData,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn StdStorage_HeaderData_inherited_This(
         self_: *const StdStorage_HeaderData,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn StdStorage_HeaderData_inherited_GetRefCount(
         self_: *const StdStorage_HeaderData,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn StdStorage_HeaderData_inherited_IncrementRefCounter(
         self_: *mut StdStorage_HeaderData,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn StdStorage_HeaderData_inherited_DecrementRefCounter(
         self_: *mut StdStorage_HeaderData,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn StdStorage_HeaderData_inherited_Delete(
         self_: *const StdStorage_HeaderData,
     ) -> *const std::ffi::c_char;
     // ======================== StdStorage_Root ========================
     pub fn StdStorage_Root_destructor(self_: *mut StdStorage_Root);
-    /// **Source:** `StdStorage_Root.hxx`:36 - `StdStorage_Root::StdStorage_Root()`
+    /// **Source:** `StdStorage_Root.hxx`:34 - `StdStorage_Root::StdStorage_Root()`
     pub fn StdStorage_Root_ctor() -> crate::OcctResult<*mut StdStorage_Root>;
-    /// **Source:** `StdStorage_Root.hxx`:39 - `StdStorage_Root::StdStorage_Root()`
+    /// **Source:** `StdStorage_Root.hxx`:37 - `StdStorage_Root::StdStorage_Root()`
     pub fn StdStorage_Root_ctor_asciistring_handlestdobjmgtpersistent(
         theName: *const TCollection_AsciiString,
-        theObject: *const HandleStdObjMgtPersistent,
+        theObject: *const Handle_StdObjMgt_Persistent,
     ) -> crate::OcctResult<*mut StdStorage_Root>;
-    /// **Source:** `StdStorage_Root.hxx`:33 - `StdStorage_Root::DynamicType()`
+    /// **Source:** `StdStorage_Root.hxx`:31 - `StdStorage_Root::DynamicType()`
     pub fn StdStorage_Root_dynamic_type(
         self_: *const StdStorage_Root,
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// **Source:** `StdStorage_Root.hxx`:43 - `StdStorage_Root::Name()`
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
+    /// **Source:** `StdStorage_Root.hxx`:41 - `StdStorage_Root::Name()`
     pub fn StdStorage_Root_name(
         self_: *const StdStorage_Root,
     ) -> crate::OcctResult<*mut TCollection_AsciiString>;
-    /// **Source:** `StdStorage_Root.hxx`:46 - `StdStorage_Root::SetName()`
+    /// **Source:** `StdStorage_Root.hxx`:44 - `StdStorage_Root::SetName()`
     pub fn StdStorage_Root_set_name(
         self_: *mut StdStorage_Root,
         theName: *const TCollection_AsciiString,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `StdStorage_Root.hxx`:49 - `StdStorage_Root::Object()`
+    /// **Source:** `StdStorage_Root.hxx`:47 - `StdStorage_Root::Object()`
     pub fn StdStorage_Root_object(
         self_: *const StdStorage_Root,
-    ) -> crate::OcctResult<*mut HandleStdObjMgtPersistent>;
-    /// **Source:** `StdStorage_Root.hxx`:52 - `StdStorage_Root::SetObject()`
+    ) -> crate::OcctResult<*mut Handle_StdObjMgt_Persistent>;
+    /// **Source:** `StdStorage_Root.hxx`:50 - `StdStorage_Root::SetObject()`
     pub fn StdStorage_Root_set_object(
         self_: *mut StdStorage_Root,
-        anObject: *const HandleStdObjMgtPersistent,
+        anObject: *const Handle_StdObjMgt_Persistent,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `StdStorage_Root.hxx`:55 - `StdStorage_Root::Type()`
+    /// **Source:** `StdStorage_Root.hxx`:53 - `StdStorage_Root::Type()`
     pub fn StdStorage_Root_type_(
         self_: *const StdStorage_Root,
     ) -> crate::OcctResult<*mut TCollection_AsciiString>;
-    /// **Source:** `StdStorage_Root.hxx`:58 - `StdStorage_Root::SetType()`
+    /// **Source:** `StdStorage_Root.hxx`:56 - `StdStorage_Root::SetType()`
     pub fn StdStorage_Root_set_type(
         self_: *mut StdStorage_Root,
         aType: *const TCollection_AsciiString,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `StdStorage_Root.hxx`:61 - `StdStorage_Root::Reference()`
+    /// **Source:** `StdStorage_Root.hxx`:59 - `StdStorage_Root::Reference()`
     pub fn StdStorage_Root_reference(self_: *const StdStorage_Root) -> crate::OcctResult<i32>;
-    /// **Source:** `StdStorage_Root.hxx`:33 - `StdStorage_Root::get_type_name()`
+    /// **Source:** `StdStorage_Root.hxx`:31 - `StdStorage_Root::get_type_name()`
     pub fn StdStorage_Root_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
-    /// **Source:** `StdStorage_Root.hxx`:33 - `StdStorage_Root::get_type_descriptor()`
-    pub fn StdStorage_Root_get_type_descriptor() -> crate::OcctResult<*const HandleStandardType>;
+    /// **Source:** `StdStorage_Root.hxx`:31 - `StdStorage_Root::get_type_descriptor()`
+    pub fn StdStorage_Root_get_type_descriptor() -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast StdStorage_Root to Standard_Transient
     pub fn StdStorage_Root_as_Standard_Transient(
         self_: *const StdStorage_Root,
@@ -3001,119 +2505,120 @@ unsafe extern "C" {
     /// Wrap StdStorage_Root in a Handle
     pub fn StdStorage_Root_to_handle(
         obj: *mut StdStorage_Root,
-    ) -> crate::OcctResult<*mut HandleStdStorageRoot>;
+    ) -> crate::OcctResult<*mut Handle_StdStorage_Root>;
     /// Destroy Handle<StdStorage_Root>
-    pub fn HandleStdStorageRoot_destructor(self_: *mut HandleStdStorageRoot);
+    pub fn Handle_StdStorage_Root_destructor(self_: *mut Handle_StdStorage_Root);
     /// Clone Handle<StdStorage_Root> (increments reference count)
-    pub fn HandleStdStorageRoot_clone(
-        self_: *const HandleStdStorageRoot,
-    ) -> crate::OcctResult<*mut HandleStdStorageRoot>;
+    pub fn Handle_StdStorage_Root_clone(
+        self_: *const Handle_StdStorage_Root,
+    ) -> crate::OcctResult<*mut Handle_StdStorage_Root>;
     /// Check if Handle<StdStorage_Root> is null
-    pub fn HandleStdStorageRoot_is_null(self_: *const HandleStdStorageRoot) -> bool;
+    pub fn Handle_StdStorage_Root_is_null(self_: *const Handle_StdStorage_Root) -> bool;
     /// Dereference Handle to get *const StdStorage_Root
-    pub fn HandleStdStorageRoot_get(
-        handle: *const HandleStdStorageRoot,
+    pub fn Handle_StdStorage_Root_get(
+        handle: *const Handle_StdStorage_Root,
     ) -> crate::OcctResult<*const StdStorage_Root>;
     /// Dereference Handle to get *mut StdStorage_Root
-    pub fn HandleStdStorageRoot_get_mut(
-        handle: *mut HandleStdStorageRoot,
+    pub fn Handle_StdStorage_Root_get_mut(
+        handle: *mut Handle_StdStorage_Root,
     ) -> crate::OcctResult<*mut StdStorage_Root>;
     /// Upcast Handle<StdStorage_Root> to Handle<Standard_Transient>
-    pub fn HandleStdStorageRoot_to_HandleStandardTransient(
-        self_: *const HandleStdStorageRoot,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn Handle_StdStorage_Root_to_Handle_Standard_Transient(
+        self_: *const Handle_StdStorage_Root,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn StdStorage_Root_inherited_IsInstance(
         self_: *const StdStorage_Root,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn StdStorage_Root_inherited_IsKind(
         self_: *const StdStorage_Root,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn StdStorage_Root_inherited_This(
         self_: *const StdStorage_Root,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn StdStorage_Root_inherited_GetRefCount(
         self_: *const StdStorage_Root,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn StdStorage_Root_inherited_IncrementRefCounter(
         self_: *mut StdStorage_Root,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn StdStorage_Root_inherited_DecrementRefCounter(
         self_: *mut StdStorage_Root,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn StdStorage_Root_inherited_Delete(
         self_: *const StdStorage_Root,
     ) -> *const std::ffi::c_char;
     // ======================== StdStorage_RootData ========================
     pub fn StdStorage_RootData_destructor(self_: *mut StdStorage_RootData);
-    /// **Source:** `StdStorage_RootData.hxx`:38 - `StdStorage_RootData::DynamicType()`
+    /// **Source:** `StdStorage_RootData.hxx`:37 - `StdStorage_RootData::DynamicType()`
     pub fn StdStorage_RootData_dynamic_type(
         self_: *const StdStorage_RootData,
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// **Source:** `StdStorage_RootData.hxx`:44 - `StdStorage_RootData::Read()`
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
+    /// **Source:** `StdStorage_RootData.hxx`:43 - `StdStorage_RootData::Read()`
     pub fn StdStorage_RootData_read(
         self_: *mut StdStorage_RootData,
-        theDriver: *const HandleStorageBaseDriver,
+        theDriver: *const Handle_Storage_BaseDriver,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `StdStorage_RootData.hxx`:50 - `StdStorage_RootData::Write()`
+    /// **Source:** `StdStorage_RootData.hxx`:49 - `StdStorage_RootData::Write()`
     pub fn StdStorage_RootData_write(
         self_: *mut StdStorage_RootData,
-        theDriver: *const HandleStorageBaseDriver,
+        theDriver: *const Handle_Storage_BaseDriver,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `StdStorage_RootData.hxx`:53 - `StdStorage_RootData::NumberOfRoots()`
+    /// **Source:** `StdStorage_RootData.hxx`:52 - `StdStorage_RootData::NumberOfRoots()`
     pub fn StdStorage_RootData_number_of_roots(
         self_: *const StdStorage_RootData,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `StdStorage_RootData.hxx`:57 - `StdStorage_RootData::AddRoot()`
+    /// **Source:** `StdStorage_RootData.hxx`:56 - `StdStorage_RootData::AddRoot()`
     pub fn StdStorage_RootData_add_root(
         self_: *mut StdStorage_RootData,
-        aRoot: *const HandleStdStorageRoot,
+        aRoot: *const Handle_StdStorage_Root,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `StdStorage_RootData.hxx`:60 - `StdStorage_RootData::Roots()`
+    /// **Source:** `StdStorage_RootData.hxx`:59 - `StdStorage_RootData::Roots()`
     pub fn StdStorage_RootData_roots(
         self_: *const StdStorage_RootData,
-    ) -> crate::OcctResult<*mut HandleStdStorageHSequenceOfRoots>;
-    /// **Source:** `StdStorage_RootData.hxx`:63 - `StdStorage_RootData::Find()`
+    ) -> crate::OcctResult<*mut Handle_NCollection_HSequence_opencascade_handle_StdStorage_Root>;
+    /// **Source:** `StdStorage_RootData.hxx`:62 - `StdStorage_RootData::Find()`
     pub fn StdStorage_RootData_find(
         self_: *const StdStorage_RootData,
         aName: *const TCollection_AsciiString,
-    ) -> crate::OcctResult<*mut HandleStdStorageRoot>;
-    /// **Source:** `StdStorage_RootData.hxx`:66 - `StdStorage_RootData::IsRoot()`
+    ) -> crate::OcctResult<*mut Handle_StdStorage_Root>;
+    /// **Source:** `StdStorage_RootData.hxx`:65 - `StdStorage_RootData::IsRoot()`
     pub fn StdStorage_RootData_is_root(
         self_: *const StdStorage_RootData,
         aName: *const TCollection_AsciiString,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `StdStorage_RootData.hxx`:69 - `StdStorage_RootData::RemoveRoot()`
+    /// **Source:** `StdStorage_RootData.hxx`:68 - `StdStorage_RootData::RemoveRoot()`
     pub fn StdStorage_RootData_remove_root(
         self_: *mut StdStorage_RootData,
         aName: *const TCollection_AsciiString,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `StdStorage_RootData.hxx`:72 - `StdStorage_RootData::ErrorStatus()`
+    /// **Source:** `StdStorage_RootData.hxx`:71 - `StdStorage_RootData::ErrorStatus()`
     pub fn StdStorage_RootData_error_status(
         self_: *const StdStorage_RootData,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `StdStorage_RootData.hxx`:75 - `StdStorage_RootData::ErrorStatusExtension()`
+    /// **Source:** `StdStorage_RootData.hxx`:74 - `StdStorage_RootData::ErrorStatusExtension()`
     pub fn StdStorage_RootData_error_status_extension(
         self_: *const StdStorage_RootData,
     ) -> crate::OcctResult<*mut TCollection_AsciiString>;
-    /// **Source:** `StdStorage_RootData.hxx`:78 - `StdStorage_RootData::ClearErrorStatus()`
+    /// **Source:** `StdStorage_RootData.hxx`:77 - `StdStorage_RootData::ClearErrorStatus()`
     pub fn StdStorage_RootData_clear_error_status(
         self_: *mut StdStorage_RootData,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `StdStorage_RootData.hxx`:81 - `StdStorage_RootData::Clear()`
+    /// **Source:** `StdStorage_RootData.hxx`:80 - `StdStorage_RootData::Clear()`
     pub fn StdStorage_RootData_clear(self_: *mut StdStorage_RootData) -> *const std::ffi::c_char;
-    /// **Source:** `StdStorage_RootData.hxx`:38 - `StdStorage_RootData::get_type_name()`
+    /// **Source:** `StdStorage_RootData.hxx`:37 - `StdStorage_RootData::get_type_name()`
     pub fn StdStorage_RootData_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
-    /// **Source:** `StdStorage_RootData.hxx`:38 - `StdStorage_RootData::get_type_descriptor()`
-    pub fn StdStorage_RootData_get_type_descriptor() -> crate::OcctResult<*const HandleStandardType>;
+    /// **Source:** `StdStorage_RootData.hxx`:37 - `StdStorage_RootData::get_type_descriptor()`
+    pub fn StdStorage_RootData_get_type_descriptor(
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast StdStorage_RootData to Standard_Transient
     pub fn StdStorage_RootData_as_Standard_Transient(
         self_: *const StdStorage_RootData,
@@ -3125,130 +2630,131 @@ unsafe extern "C" {
     /// Wrap StdStorage_RootData in a Handle
     pub fn StdStorage_RootData_to_handle(
         obj: *mut StdStorage_RootData,
-    ) -> crate::OcctResult<*mut HandleStdStorageRootData>;
+    ) -> crate::OcctResult<*mut Handle_StdStorage_RootData>;
     /// Destroy Handle<StdStorage_RootData>
-    pub fn HandleStdStorageRootData_destructor(self_: *mut HandleStdStorageRootData);
+    pub fn Handle_StdStorage_RootData_destructor(self_: *mut Handle_StdStorage_RootData);
     /// Clone Handle<StdStorage_RootData> (increments reference count)
-    pub fn HandleStdStorageRootData_clone(
-        self_: *const HandleStdStorageRootData,
-    ) -> crate::OcctResult<*mut HandleStdStorageRootData>;
+    pub fn Handle_StdStorage_RootData_clone(
+        self_: *const Handle_StdStorage_RootData,
+    ) -> crate::OcctResult<*mut Handle_StdStorage_RootData>;
     /// Check if Handle<StdStorage_RootData> is null
-    pub fn HandleStdStorageRootData_is_null(self_: *const HandleStdStorageRootData) -> bool;
+    pub fn Handle_StdStorage_RootData_is_null(self_: *const Handle_StdStorage_RootData) -> bool;
     /// Dereference Handle to get *const StdStorage_RootData
-    pub fn HandleStdStorageRootData_get(
-        handle: *const HandleStdStorageRootData,
+    pub fn Handle_StdStorage_RootData_get(
+        handle: *const Handle_StdStorage_RootData,
     ) -> crate::OcctResult<*const StdStorage_RootData>;
     /// Dereference Handle to get *mut StdStorage_RootData
-    pub fn HandleStdStorageRootData_get_mut(
-        handle: *mut HandleStdStorageRootData,
+    pub fn Handle_StdStorage_RootData_get_mut(
+        handle: *mut Handle_StdStorage_RootData,
     ) -> crate::OcctResult<*mut StdStorage_RootData>;
     /// Upcast Handle<StdStorage_RootData> to Handle<Standard_Transient>
-    pub fn HandleStdStorageRootData_to_HandleStandardTransient(
-        self_: *const HandleStdStorageRootData,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn Handle_StdStorage_RootData_to_Handle_Standard_Transient(
+        self_: *const Handle_StdStorage_RootData,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn StdStorage_RootData_inherited_IsInstance(
         self_: *const StdStorage_RootData,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn StdStorage_RootData_inherited_IsKind(
         self_: *const StdStorage_RootData,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn StdStorage_RootData_inherited_This(
         self_: *const StdStorage_RootData,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn StdStorage_RootData_inherited_GetRefCount(
         self_: *const StdStorage_RootData,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn StdStorage_RootData_inherited_IncrementRefCounter(
         self_: *mut StdStorage_RootData,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn StdStorage_RootData_inherited_DecrementRefCounter(
         self_: *mut StdStorage_RootData,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn StdStorage_RootData_inherited_Delete(
         self_: *const StdStorage_RootData,
     ) -> *const std::ffi::c_char;
     // ======================== StdStorage_TypeData ========================
     pub fn StdStorage_TypeData_destructor(self_: *mut StdStorage_TypeData);
-    /// **Source:** `StdStorage_TypeData.hxx`:39 - `StdStorage_TypeData::DynamicType()`
+    /// **Source:** `StdStorage_TypeData.hxx`:37 - `StdStorage_TypeData::DynamicType()`
     pub fn StdStorage_TypeData_dynamic_type(
         self_: *const StdStorage_TypeData,
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// **Source:** `StdStorage_TypeData.hxx`:45 - `StdStorage_TypeData::Read()`
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
+    /// **Source:** `StdStorage_TypeData.hxx`:43 - `StdStorage_TypeData::Read()`
     pub fn StdStorage_TypeData_read(
         self_: *mut StdStorage_TypeData,
-        theDriver: *const HandleStorageBaseDriver,
+        theDriver: *const Handle_Storage_BaseDriver,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `StdStorage_TypeData.hxx`:51 - `StdStorage_TypeData::Write()`
+    /// **Source:** `StdStorage_TypeData.hxx`:49 - `StdStorage_TypeData::Write()`
     pub fn StdStorage_TypeData_write(
         self_: *mut StdStorage_TypeData,
-        theDriver: *const HandleStorageBaseDriver,
+        theDriver: *const Handle_Storage_BaseDriver,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `StdStorage_TypeData.hxx`:54 - `StdStorage_TypeData::NumberOfTypes()`
+    /// **Source:** `StdStorage_TypeData.hxx`:52 - `StdStorage_TypeData::NumberOfTypes()`
     pub fn StdStorage_TypeData_number_of_types(
         self_: *const StdStorage_TypeData,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `StdStorage_TypeData.hxx`:57 - `StdStorage_TypeData::AddType()`
+    /// **Source:** `StdStorage_TypeData.hxx`:55 - `StdStorage_TypeData::AddType()`
     pub fn StdStorage_TypeData_add_type_asciistring_int(
         self_: *mut StdStorage_TypeData,
         aTypeName: *const TCollection_AsciiString,
         aTypeNum: i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `StdStorage_TypeData.hxx`:61 - `StdStorage_TypeData::AddType()`
+    /// **Source:** `StdStorage_TypeData.hxx`:58 - `StdStorage_TypeData::AddType()`
     pub fn StdStorage_TypeData_add_type_handlestdobjmgtpersistent(
         self_: *mut StdStorage_TypeData,
-        aPObj: *const HandleStdObjMgtPersistent,
+        aPObj: *const Handle_StdObjMgt_Persistent,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `StdStorage_TypeData.hxx`:64 - `StdStorage_TypeData::Type()`
+    /// **Source:** `StdStorage_TypeData.hxx`:61 - `StdStorage_TypeData::Type()`
     pub fn StdStorage_TypeData_type_int(
         self_: *const StdStorage_TypeData,
         aTypeNum: i32,
     ) -> crate::OcctResult<*mut TCollection_AsciiString>;
-    /// **Source:** `StdStorage_TypeData.hxx`:67 - `StdStorage_TypeData::Type()`
+    /// **Source:** `StdStorage_TypeData.hxx`:64 - `StdStorage_TypeData::Type()`
     pub fn StdStorage_TypeData_type_asciistring(
         self_: *const StdStorage_TypeData,
         aTypeName: *const TCollection_AsciiString,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `StdStorage_TypeData.hxx`:70 - `StdStorage_TypeData::Instantiator()`
+    /// **Source:** `StdStorage_TypeData.hxx`:67 - `StdStorage_TypeData::Instantiator()`
     pub fn StdStorage_TypeData_instantiator(
         self_: *const StdStorage_TypeData,
         aTypeNum: i32,
     ) -> crate::OcctResult<*mut StdObjMgt_Persistent_Instantiator>;
-    /// **Source:** `StdStorage_TypeData.hxx`:74 - `StdStorage_TypeData::IsType()`
+    /// **Source:** `StdStorage_TypeData.hxx`:70 - `StdStorage_TypeData::IsType()`
     pub fn StdStorage_TypeData_is_type(
         self_: *const StdStorage_TypeData,
         aName: *const TCollection_AsciiString,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `StdStorage_TypeData.hxx`:77 - `StdStorage_TypeData::Types()`
+    /// **Source:** `StdStorage_TypeData.hxx`:73 - `StdStorage_TypeData::Types()`
     pub fn StdStorage_TypeData_types(
         self_: *const StdStorage_TypeData,
-    ) -> crate::OcctResult<*mut HandleTColStdHSequenceOfAsciiString>;
-    /// **Source:** `StdStorage_TypeData.hxx`:80 - `StdStorage_TypeData::ErrorStatus()`
+    ) -> crate::OcctResult<*mut Handle_NCollection_HSequence_TCollection_AsciiString>;
+    /// **Source:** `StdStorage_TypeData.hxx`:76 - `StdStorage_TypeData::ErrorStatus()`
     pub fn StdStorage_TypeData_error_status(
         self_: *const StdStorage_TypeData,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `StdStorage_TypeData.hxx`:83 - `StdStorage_TypeData::ErrorStatusExtension()`
+    /// **Source:** `StdStorage_TypeData.hxx`:79 - `StdStorage_TypeData::ErrorStatusExtension()`
     pub fn StdStorage_TypeData_error_status_extension(
         self_: *const StdStorage_TypeData,
     ) -> crate::OcctResult<*mut TCollection_AsciiString>;
-    /// **Source:** `StdStorage_TypeData.hxx`:86 - `StdStorage_TypeData::ClearErrorStatus()`
+    /// **Source:** `StdStorage_TypeData.hxx`:82 - `StdStorage_TypeData::ClearErrorStatus()`
     pub fn StdStorage_TypeData_clear_error_status(
         self_: *mut StdStorage_TypeData,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `StdStorage_TypeData.hxx`:89 - `StdStorage_TypeData::Clear()`
+    /// **Source:** `StdStorage_TypeData.hxx`:85 - `StdStorage_TypeData::Clear()`
     pub fn StdStorage_TypeData_clear(self_: *mut StdStorage_TypeData) -> *const std::ffi::c_char;
-    /// **Source:** `StdStorage_TypeData.hxx`:39 - `StdStorage_TypeData::get_type_name()`
+    /// **Source:** `StdStorage_TypeData.hxx`:37 - `StdStorage_TypeData::get_type_name()`
     pub fn StdStorage_TypeData_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
-    /// **Source:** `StdStorage_TypeData.hxx`:39 - `StdStorage_TypeData::get_type_descriptor()`
-    pub fn StdStorage_TypeData_get_type_descriptor() -> crate::OcctResult<*const HandleStandardType>;
+    /// **Source:** `StdStorage_TypeData.hxx`:37 - `StdStorage_TypeData::get_type_descriptor()`
+    pub fn StdStorage_TypeData_get_type_descriptor(
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast StdStorage_TypeData to Standard_Transient
     pub fn StdStorage_TypeData_as_Standard_Transient(
         self_: *const StdStorage_TypeData,
@@ -3260,54 +2766,54 @@ unsafe extern "C" {
     /// Wrap StdStorage_TypeData in a Handle
     pub fn StdStorage_TypeData_to_handle(
         obj: *mut StdStorage_TypeData,
-    ) -> crate::OcctResult<*mut HandleStdStorageTypeData>;
+    ) -> crate::OcctResult<*mut Handle_StdStorage_TypeData>;
     /// Destroy Handle<StdStorage_TypeData>
-    pub fn HandleStdStorageTypeData_destructor(self_: *mut HandleStdStorageTypeData);
+    pub fn Handle_StdStorage_TypeData_destructor(self_: *mut Handle_StdStorage_TypeData);
     /// Clone Handle<StdStorage_TypeData> (increments reference count)
-    pub fn HandleStdStorageTypeData_clone(
-        self_: *const HandleStdStorageTypeData,
-    ) -> crate::OcctResult<*mut HandleStdStorageTypeData>;
+    pub fn Handle_StdStorage_TypeData_clone(
+        self_: *const Handle_StdStorage_TypeData,
+    ) -> crate::OcctResult<*mut Handle_StdStorage_TypeData>;
     /// Check if Handle<StdStorage_TypeData> is null
-    pub fn HandleStdStorageTypeData_is_null(self_: *const HandleStdStorageTypeData) -> bool;
+    pub fn Handle_StdStorage_TypeData_is_null(self_: *const Handle_StdStorage_TypeData) -> bool;
     /// Dereference Handle to get *const StdStorage_TypeData
-    pub fn HandleStdStorageTypeData_get(
-        handle: *const HandleStdStorageTypeData,
+    pub fn Handle_StdStorage_TypeData_get(
+        handle: *const Handle_StdStorage_TypeData,
     ) -> crate::OcctResult<*const StdStorage_TypeData>;
     /// Dereference Handle to get *mut StdStorage_TypeData
-    pub fn HandleStdStorageTypeData_get_mut(
-        handle: *mut HandleStdStorageTypeData,
+    pub fn Handle_StdStorage_TypeData_get_mut(
+        handle: *mut Handle_StdStorage_TypeData,
     ) -> crate::OcctResult<*mut StdStorage_TypeData>;
     /// Upcast Handle<StdStorage_TypeData> to Handle<Standard_Transient>
-    pub fn HandleStdStorageTypeData_to_HandleStandardTransient(
-        self_: *const HandleStdStorageTypeData,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn Handle_StdStorage_TypeData_to_Handle_Standard_Transient(
+        self_: *const Handle_StdStorage_TypeData,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn StdStorage_TypeData_inherited_IsInstance(
         self_: *const StdStorage_TypeData,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn StdStorage_TypeData_inherited_IsKind(
         self_: *const StdStorage_TypeData,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn StdStorage_TypeData_inherited_This(
         self_: *const StdStorage_TypeData,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn StdStorage_TypeData_inherited_GetRefCount(
         self_: *const StdStorage_TypeData,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn StdStorage_TypeData_inherited_IncrementRefCounter(
         self_: *mut StdStorage_TypeData,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn StdStorage_TypeData_inherited_DecrementRefCounter(
         self_: *mut StdStorage_TypeData,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn StdStorage_TypeData_inherited_Delete(
         self_: *const StdStorage_TypeData,
     ) -> *const std::ffi::c_char;
@@ -3316,29 +2822,26 @@ unsafe extern "C" {
     /// **Source:** `StdDrivers.hxx`:29 - `StdDrivers::Factory`
     pub fn StdDrivers_factory(
         aGUID: *const Standard_GUID,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
     /// **Source:** `StdDrivers.hxx`:33 - `StdDrivers::DefineFormat`
     pub fn StdDrivers_define_format(
-        theApp: *const HandleTDocStdApplication,
+        theApp: *const Handle_TDocStd_Application,
     ) -> *const std::ffi::c_char;
     /// **Source:** `StdStorage.hxx`:44 - `StdStorage::Version`
     pub fn StdStorage_version() -> crate::OcctResult<*mut TCollection_AsciiString>;
     /// **Source:** `StdStorage.hxx`:51 - `StdStorage::Read`
     pub fn StdStorage_read_asciistring_handlestdstoragedata(
         theFileName: *const TCollection_AsciiString,
-        theData: *mut HandleStdStorageData,
+        theData: *mut Handle_StdStorage_Data,
     ) -> crate::OcctResult<i32>;
     /// **Source:** `StdStorage.hxx`:59 - `StdStorage::Read`
     pub fn StdStorage_read_handlestoragebasedriver_handlestdstoragedata(
-        theDriver: *const HandleStorageBaseDriver,
-        theData: *mut HandleStdStorageData,
+        theDriver: *const Handle_Storage_BaseDriver,
+        theData: *mut Handle_StdStorage_Data,
     ) -> crate::OcctResult<i32>;
     /// **Source:** `StdStorage.hxx`:66 - `StdStorage::Write`
     pub fn StdStorage_write_handlestoragebasedriver_handlestdstoragedata(
-        theDriver: *const HandleStorageBaseDriver,
-        theData: *const HandleStdStorageData,
+        theDriver: *const Handle_Storage_BaseDriver,
+        theData: *const Handle_StdStorage_Data,
     ) -> crate::OcctResult<i32>;
-
-    // Nested type & typedef type destructors
-    pub fn StdStorage_SequenceOfRoots_destructor(self_: *mut StdStorage_SequenceOfRoots);
 }

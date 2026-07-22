@@ -8,7 +8,7 @@
 
 /// **Source:** `Vrml.hxx`:43 - `Vrml::VrmlHeaderWriter`
 /// Writes a header in anOStream (VRML file).
-/// Writes one line of commentary in  anOStream (VRML file).
+/// Writes one line of commentary in anOStream (VRML file).
 pub fn vrml_header_writer(
     anOStream: &mut crate::ffi_types::Standard_OStream,
 ) -> &mut crate::ffi_types::Standard_OStream {
@@ -410,23 +410,23 @@ impl TryFrom<i32> for WWWAnchorMap {
 }
 
 // Handle type re-exports (targets of handle upcasts/downcasts)
-pub use crate::ffi_types::HandleStandardTransient;
+pub use crate::ffi_types::Handle_Standard_Transient;
 
 // ========================
 // From Vrml_AsciiText.hxx
 // ========================
 
-/// **Source:** `Vrml_AsciiText.hxx`:41 - `Vrml_AsciiText`
+/// **Source:** `Vrml_AsciiText.hxx`:40 - `Vrml_AsciiText`
 /// defines a AsciiText node of VRML specifying geometry shapes.
-/// This  node  represents  strings  of  text  characters  from  ASCII  coded
-/// character  set. All subsequent strings advance y by -( size * spacing).
+/// This node represents strings of text characters from ASCII coded
+/// character set. All subsequent strings advance y by -( size * spacing).
 /// The justification field determines the placement of the strings in the x
 /// dimension. LEFT (the default) places the left edge of each string at x=0.
 /// CENTER places the center of each string at x=0. RIGHT places the right edge
 /// of each string at x=0. Text is rendered from left to right, top to
 /// bottom in the font set by FontStyle.
-/// The  default  value  for  the  wigth  field  indicates  the  natural  width
-/// should  be  used  for  that  string.
+/// The default value for the wigth field indicates the natural width
+/// should be used for that string.
 pub use crate::ffi_types::Vrml_AsciiText as AsciiText;
 
 unsafe impl crate::CppDeletable for AsciiText {
@@ -438,7 +438,7 @@ unsafe impl crate::CppDeletable for AsciiText {
 }
 
 impl AsciiText {
-    /// **Source:** `Vrml_AsciiText.hxx`:45 - `Vrml_AsciiText::Vrml_AsciiText()`
+    /// **Source:** `Vrml_AsciiText.hxx`:44 - `Vrml_AsciiText::Vrml_AsciiText()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -447,27 +447,32 @@ impl AsciiText {
         }
     }
 
-    /// **Source:** `Vrml_AsciiText.hxx`:47 - `Vrml_AsciiText::Vrml_AsciiText()`
-    pub fn new_handletcolstdharray1ofasciistring_real_asciitextjustification_real(
-        aString: &crate::ffi_types::HandleTColStdHArray1OfAsciiString,
+    /// **Source:** `Vrml_AsciiText.hxx`:46 - `Vrml_AsciiText::Vrml_AsciiText()`
+    pub fn new_harr1_asciistring_real_asciitextjustification_real(
+        aString: &crate::ffi_types::Handle_NCollection_HArray1_TCollection_AsciiString,
         aSpacing: f64,
         aJustification: crate::vrml::AsciiTextJustification,
         aWidth: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEVRML::Vrml_AsciiText_ctor_handletcolstdharray1ofasciistring_real_asciitextjustification_real(aString, aSpacing, aJustification.into(), aWidth)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEVRML::Vrml_AsciiText_ctor_harr1_asciistring_real_asciitextjustification_real(aString, aSpacing, aJustification.into(), aWidth)))
         }
     }
 
     /// **Source:** `Vrml_AsciiText.hxx`:52 - `Vrml_AsciiText::SetString()`
-    pub fn set_string(&mut self, aString: &crate::ffi_types::HandleTColStdHArray1OfAsciiString) {
+    pub fn set_string(
+        &mut self,
+        aString: &crate::ffi_types::Handle_NCollection_HArray1_TCollection_AsciiString,
+    ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEVRML::Vrml_AsciiText_set_string(self as *mut Self, aString)
         })
     }
 
-    /// **Source:** `Vrml_AsciiText.hxx`:54 - `Vrml_AsciiText::String()`
-    pub fn string(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTColStdHArray1OfAsciiString> {
+    /// **Source:** `Vrml_AsciiText.hxx`:55 - `Vrml_AsciiText::String()`
+    pub fn string(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HArray1_TCollection_AsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDEVRML::Vrml_AsciiText_string(self as *const Self),
@@ -475,21 +480,21 @@ impl AsciiText {
         }
     }
 
-    /// **Source:** `Vrml_AsciiText.hxx`:56 - `Vrml_AsciiText::SetSpacing()`
+    /// **Source:** `Vrml_AsciiText.hxx`:57 - `Vrml_AsciiText::SetSpacing()`
     pub fn set_spacing(&mut self, aSpacing: f64) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEVRML::Vrml_AsciiText_set_spacing(self as *mut Self, aSpacing)
         })
     }
 
-    /// **Source:** `Vrml_AsciiText.hxx`:58 - `Vrml_AsciiText::Spacing()`
+    /// **Source:** `Vrml_AsciiText.hxx`:59 - `Vrml_AsciiText::Spacing()`
     pub fn spacing(&self) -> f64 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEVRML::Vrml_AsciiText_spacing(self as *const Self)
         })
     }
 
-    /// **Source:** `Vrml_AsciiText.hxx`:60 - `Vrml_AsciiText::SetJustification()`
+    /// **Source:** `Vrml_AsciiText.hxx`:61 - `Vrml_AsciiText::SetJustification()`
     pub fn set_justification(&mut self, aJustification: crate::vrml::AsciiTextJustification) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEVRML::Vrml_AsciiText_set_justification(
@@ -499,7 +504,7 @@ impl AsciiText {
         })
     }
 
-    /// **Source:** `Vrml_AsciiText.hxx`:62 - `Vrml_AsciiText::Justification()`
+    /// **Source:** `Vrml_AsciiText.hxx`:63 - `Vrml_AsciiText::Justification()`
     pub fn justification(&self) -> crate::vrml::AsciiTextJustification {
         crate::vrml::AsciiTextJustification::try_from(crate::check_result(unsafe {
             crate::ffi_extern_TKDEVRML::Vrml_AsciiText_justification(self as *const Self)
@@ -507,21 +512,21 @@ impl AsciiText {
         .unwrap()
     }
 
-    /// **Source:** `Vrml_AsciiText.hxx`:64 - `Vrml_AsciiText::SetWidth()`
+    /// **Source:** `Vrml_AsciiText.hxx`:65 - `Vrml_AsciiText::SetWidth()`
     pub fn set_width(&mut self, aWidth: f64) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEVRML::Vrml_AsciiText_set_width(self as *mut Self, aWidth)
         })
     }
 
-    /// **Source:** `Vrml_AsciiText.hxx`:66 - `Vrml_AsciiText::Width()`
+    /// **Source:** `Vrml_AsciiText.hxx`:67 - `Vrml_AsciiText::Width()`
     pub fn width(&self) -> f64 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEVRML::Vrml_AsciiText_width(self as *const Self)
         })
     }
 
-    /// **Source:** `Vrml_AsciiText.hxx`:68 - `Vrml_AsciiText::Print()`
+    /// **Source:** `Vrml_AsciiText.hxx`:69 - `Vrml_AsciiText::Print()`
     ///
     /// # Safety
     ///
@@ -540,8 +545,8 @@ impl AsciiText {
         }
     }
 
-    /// **Source:** `Vrml_AsciiText.hxx`:70 - `Vrml_AsciiText::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `Vrml_AsciiText.hxx`:71 - `Vrml_AsciiText::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKDEVRML::Vrml_AsciiText_dynamic_type(
                 self as *const Self,
@@ -549,7 +554,7 @@ impl AsciiText {
         }
     }
 
-    /// **Source:** `Vrml_AsciiText.hxx`:70 - `Vrml_AsciiText::get_type_name()`
+    /// **Source:** `Vrml_AsciiText.hxx`:71 - `Vrml_AsciiText::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -560,8 +565,8 @@ impl AsciiText {
         .into_owned()
     }
 
-    /// **Source:** `Vrml_AsciiText.hxx`:70 - `Vrml_AsciiText::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    /// **Source:** `Vrml_AsciiText.hxx`:71 - `Vrml_AsciiText::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKDEVRML::Vrml_AsciiText_get_type_descriptor()))
         }
@@ -590,7 +595,7 @@ impl AsciiText {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleVrmlAsciiText> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Vrml_AsciiText> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDEVRML::Vrml_AsciiText_to_handle(obj.into_raw()),
@@ -598,8 +603,8 @@ impl AsciiText {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEVRML::Vrml_AsciiText_inherited_IsInstance(
                 self as *const Self,
@@ -608,8 +613,8 @@ impl AsciiText {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEVRML::Vrml_AsciiText_inherited_IsKind(
                 self as *const Self,
@@ -618,7 +623,7 @@ impl AsciiText {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -632,14 +637,14 @@ impl AsciiText {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEVRML::Vrml_AsciiText_inherited_GetRefCount(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEVRML::Vrml_AsciiText_inherited_IncrementRefCounter(
@@ -648,7 +653,7 @@ impl AsciiText {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEVRML::Vrml_AsciiText_inherited_DecrementRefCounter(
@@ -657,7 +662,7 @@ impl AsciiText {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEVRML::Vrml_AsciiText_inherited_Delete(self as *const Self)
@@ -665,32 +670,32 @@ impl AsciiText {
     }
 }
 
-pub use crate::ffi_types::HandleVrmlAsciiText;
+pub use crate::ffi_types::Handle_Vrml_AsciiText;
 
-unsafe impl crate::CppDeletable for HandleVrmlAsciiText {
+unsafe impl crate::CppDeletable for Handle_Vrml_AsciiText {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKDEVRML::HandleVrmlAsciiText_destructor(ptr);
+            crate::ffi_extern_TKDEVRML::Handle_Vrml_AsciiText_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleVrmlAsciiText {
+unsafe impl crate::CppCopyable for Handle_Vrml_AsciiText {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        unsafe { crate::check_result(crate::ffi_extern_TKDEVRML::HandleVrmlAsciiText_clone(ptr)) }
+        unsafe { crate::check_result(crate::ffi_extern_TKDEVRML::Handle_Vrml_AsciiText_clone(ptr)) }
     }
 }
 
-impl HandleVrmlAsciiText {
+impl Handle_Vrml_AsciiText {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
-        unsafe { crate::ffi_extern_TKDEVRML::HandleVrmlAsciiText_is_null(self as *const Self) }
+        unsafe { crate::ffi_extern_TKDEVRML::Handle_Vrml_AsciiText_is_null(self as *const Self) }
     }
 
     /// Dereference this Handle to access the underlying Vrml_AsciiText
     pub fn get(&self) -> &crate::ffi_types::Vrml_AsciiText {
         unsafe {
-            &*crate::check_result(crate::ffi_extern_TKDEVRML::HandleVrmlAsciiText_get(
+            &*crate::check_result(crate::ffi_extern_TKDEVRML::Handle_Vrml_AsciiText_get(
                 self as *const Self,
             ))
         }
@@ -699,7 +704,7 @@ impl HandleVrmlAsciiText {
     /// Dereference this Handle to mutably access the underlying Vrml_AsciiText
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::Vrml_AsciiText {
         unsafe {
-            &mut *crate::check_result(crate::ffi_extern_TKDEVRML::HandleVrmlAsciiText_get_mut(
+            &mut *crate::check_result(crate::ffi_extern_TKDEVRML::Handle_Vrml_AsciiText_get_mut(
                 self as *mut Self,
             ))
         }
@@ -708,10 +713,10 @@ impl HandleVrmlAsciiText {
     /// Upcast Handle<Vrml_AsciiText> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKDEVRML::HandleVrmlAsciiText_to_HandleStandardTransient(
+                crate::ffi_extern_TKDEVRML::Handle_Vrml_AsciiText_to_Handle_Standard_Transient(
                     self as *const Self,
                 ),
             ))
@@ -725,12 +730,12 @@ impl HandleVrmlAsciiText {
 
 /// **Source:** `Vrml_Cone.hxx`:35 - `Vrml_Cone`
 /// defines a Cone node of VRML specifying geometry shapes.
-/// This  node  represents  a  simple  cone,  whose  central  axis  is  aligned
-/// with  the  y-axis.  By  default ,  the  cone  is  centred  at  (0,0,0)
-/// and  has  size  of  -1  to  +1  in  the  all  three  directions.
-/// the  cone  has  a  radius  of  1  at  the  bottom  and  height  of  2,
-/// with  its  apex  at  1  and  its  bottom  at  -1.  The  cone  has  two  parts:
-/// the  sides  and  the  bottom
+/// This node represents a simple cone, whose central axis is aligned
+/// with the y-axis. By default, the cone is centred at (0,0,0)
+/// and has size of -1 to +1 in the all three directions.
+/// the cone has a radius of 1 at the bottom and height of 2,
+/// with its apex at 1 and its bottom at -1. The cone has two parts:
+/// the sides and the bottom
 pub use crate::ffi_types::Vrml_Cone as Cone;
 
 unsafe impl crate::CppDeletable for Cone {
@@ -842,7 +847,7 @@ impl Cone {
 // From Vrml_Coordinate3.hxx
 // ========================
 
-/// **Source:** `Vrml_Coordinate3.hxx`:36 - `Vrml_Coordinate3`
+/// **Source:** `Vrml_Coordinate3.hxx`:35 - `Vrml_Coordinate3`
 /// defines a Coordinate3 node of VRML specifying
 /// properties of geometry and its appearance.
 /// This node defines a set of 3D coordinates to be used by a subsequent IndexedFaceSet,
@@ -860,18 +865,18 @@ unsafe impl crate::CppDeletable for Coordinate3 {
 }
 
 impl Coordinate3 {
-    /// **Source:** `Vrml_Coordinate3.hxx`:40 - `Vrml_Coordinate3::Vrml_Coordinate3()`
-    pub fn new_handletcolgpharray1ofvec(
-        aPoint: &crate::ffi_types::HandleTColgpHArray1OfVec,
+    /// **Source:** `Vrml_Coordinate3.hxx`:39 - `Vrml_Coordinate3::Vrml_Coordinate3()`
+    pub fn new_harr1_vec(
+        aPoint: &crate::ffi_types::Handle_NCollection_HArray1_gp_Vec,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKDEVRML::Vrml_Coordinate3_ctor_handletcolgpharray1ofvec(aPoint),
+                crate::ffi_extern_TKDEVRML::Vrml_Coordinate3_ctor_harr1_vec(aPoint),
             ))
         }
     }
 
-    /// **Source:** `Vrml_Coordinate3.hxx`:42 - `Vrml_Coordinate3::Vrml_Coordinate3()`
+    /// **Source:** `Vrml_Coordinate3.hxx`:41 - `Vrml_Coordinate3::Vrml_Coordinate3()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -880,15 +885,15 @@ impl Coordinate3 {
         }
     }
 
-    /// **Source:** `Vrml_Coordinate3.hxx`:44 - `Vrml_Coordinate3::SetPoint()`
-    pub fn set_point(&mut self, aPoint: &crate::ffi_types::HandleTColgpHArray1OfVec) {
+    /// **Source:** `Vrml_Coordinate3.hxx`:43 - `Vrml_Coordinate3::SetPoint()`
+    pub fn set_point(&mut self, aPoint: &crate::ffi_types::Handle_NCollection_HArray1_gp_Vec) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEVRML::Vrml_Coordinate3_set_point(self as *mut Self, aPoint)
         })
     }
 
-    /// **Source:** `Vrml_Coordinate3.hxx`:46 - `Vrml_Coordinate3::Point()`
-    pub fn point(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTColgpHArray1OfVec> {
+    /// **Source:** `Vrml_Coordinate3.hxx`:45 - `Vrml_Coordinate3::Point()`
+    pub fn point(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HArray1_gp_Vec> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDEVRML::Vrml_Coordinate3_point(self as *const Self),
@@ -896,7 +901,7 @@ impl Coordinate3 {
         }
     }
 
-    /// **Source:** `Vrml_Coordinate3.hxx`:48 - `Vrml_Coordinate3::Print()`
+    /// **Source:** `Vrml_Coordinate3.hxx`:47 - `Vrml_Coordinate3::Print()`
     ///
     /// # Safety
     ///
@@ -915,8 +920,8 @@ impl Coordinate3 {
         }
     }
 
-    /// **Source:** `Vrml_Coordinate3.hxx`:50 - `Vrml_Coordinate3::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `Vrml_Coordinate3.hxx`:49 - `Vrml_Coordinate3::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKDEVRML::Vrml_Coordinate3_dynamic_type(
                 self as *const Self,
@@ -924,7 +929,7 @@ impl Coordinate3 {
         }
     }
 
-    /// **Source:** `Vrml_Coordinate3.hxx`:50 - `Vrml_Coordinate3::get_type_name()`
+    /// **Source:** `Vrml_Coordinate3.hxx`:49 - `Vrml_Coordinate3::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -935,8 +940,8 @@ impl Coordinate3 {
         .into_owned()
     }
 
-    /// **Source:** `Vrml_Coordinate3.hxx`:50 - `Vrml_Coordinate3::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    /// **Source:** `Vrml_Coordinate3.hxx`:49 - `Vrml_Coordinate3::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKDEVRML::Vrml_Coordinate3_get_type_descriptor(),
@@ -969,7 +974,7 @@ impl Coordinate3 {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleVrmlCoordinate3> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Vrml_Coordinate3> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDEVRML::Vrml_Coordinate3_to_handle(obj.into_raw()),
@@ -977,8 +982,8 @@ impl Coordinate3 {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEVRML::Vrml_Coordinate3_inherited_IsInstance(
                 self as *const Self,
@@ -987,8 +992,8 @@ impl Coordinate3 {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEVRML::Vrml_Coordinate3_inherited_IsKind(
                 self as *const Self,
@@ -997,7 +1002,7 @@ impl Coordinate3 {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -1011,14 +1016,14 @@ impl Coordinate3 {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEVRML::Vrml_Coordinate3_inherited_GetRefCount(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEVRML::Vrml_Coordinate3_inherited_IncrementRefCounter(
@@ -1027,7 +1032,7 @@ impl Coordinate3 {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEVRML::Vrml_Coordinate3_inherited_DecrementRefCounter(
@@ -1036,7 +1041,7 @@ impl Coordinate3 {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEVRML::Vrml_Coordinate3_inherited_Delete(self as *const Self)
@@ -1044,32 +1049,34 @@ impl Coordinate3 {
     }
 }
 
-pub use crate::ffi_types::HandleVrmlCoordinate3;
+pub use crate::ffi_types::Handle_Vrml_Coordinate3;
 
-unsafe impl crate::CppDeletable for HandleVrmlCoordinate3 {
+unsafe impl crate::CppDeletable for Handle_Vrml_Coordinate3 {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKDEVRML::HandleVrmlCoordinate3_destructor(ptr);
+            crate::ffi_extern_TKDEVRML::Handle_Vrml_Coordinate3_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleVrmlCoordinate3 {
+unsafe impl crate::CppCopyable for Handle_Vrml_Coordinate3 {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        unsafe { crate::check_result(crate::ffi_extern_TKDEVRML::HandleVrmlCoordinate3_clone(ptr)) }
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDEVRML::Handle_Vrml_Coordinate3_clone(ptr))
+        }
     }
 }
 
-impl HandleVrmlCoordinate3 {
+impl Handle_Vrml_Coordinate3 {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
-        unsafe { crate::ffi_extern_TKDEVRML::HandleVrmlCoordinate3_is_null(self as *const Self) }
+        unsafe { crate::ffi_extern_TKDEVRML::Handle_Vrml_Coordinate3_is_null(self as *const Self) }
     }
 
     /// Dereference this Handle to access the underlying Vrml_Coordinate3
     pub fn get(&self) -> &crate::ffi_types::Vrml_Coordinate3 {
         unsafe {
-            &*crate::check_result(crate::ffi_extern_TKDEVRML::HandleVrmlCoordinate3_get(
+            &*crate::check_result(crate::ffi_extern_TKDEVRML::Handle_Vrml_Coordinate3_get(
                 self as *const Self,
             ))
         }
@@ -1078,7 +1085,7 @@ impl HandleVrmlCoordinate3 {
     /// Dereference this Handle to mutably access the underlying Vrml_Coordinate3
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::Vrml_Coordinate3 {
         unsafe {
-            &mut *crate::check_result(crate::ffi_extern_TKDEVRML::HandleVrmlCoordinate3_get_mut(
+            &mut *crate::check_result(crate::ffi_extern_TKDEVRML::Handle_Vrml_Coordinate3_get_mut(
                 self as *mut Self,
             ))
         }
@@ -1087,10 +1094,10 @@ impl HandleVrmlCoordinate3 {
     /// Upcast Handle<Vrml_Coordinate3> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKDEVRML::HandleVrmlCoordinate3_to_HandleStandardTransient(
+                crate::ffi_extern_TKDEVRML::Handle_Vrml_Coordinate3_to_Handle_Standard_Transient(
                     self as *const Self,
                 ),
             ))
@@ -1104,9 +1111,9 @@ impl HandleVrmlCoordinate3 {
 
 /// **Source:** `Vrml_Cube.hxx`:34 - `Vrml_Cube`
 /// defines a Cube node of VRML specifying geometry shapes.
-/// This  node  represents  a  cuboid aligned with  the coordinate  axes.
-/// By  default ,  the  cube  is  centred  at  (0,0,0) and  measures  2  units
-/// in  each  dimension, from -1  to  +1.
+/// This node represents a cuboid aligned with the coordinate axes.
+/// By default, the cube is centred at (0,0,0) and measures 2 units
+/// in each dimension, from -1 to +1.
 /// A cube's width is its extent along its object-space X axis, its height is
 /// its extent along the object-space Y axis, and its depth is its extent along its
 /// object-space Z axis.
@@ -1213,11 +1220,11 @@ impl Cube {
 
 /// **Source:** `Vrml_Cylinder.hxx`:34 - `Vrml_Cylinder`
 /// defines a Cylinder node of VRML specifying geometry shapes.
-/// This  node  represents  a  simple  capped  cylinder  centred  around the  y-axis.
-/// By  default ,  the  cylinder  is  centred  at  (0,0,0)
-/// and  has  size  of  -1  to  +1  in  the  all  three  dimensions.
-/// The  cylinder  has  three  parts:
-/// the  sides,  the  top  (y=+1)  and  the  bottom (y=-1)
+/// This node represents a simple capped cylinder centred around the y-axis.
+/// By default, the cylinder is centred at (0,0,0)
+/// and has size of -1 to +1 in the all three dimensions.
+/// The cylinder has three parts:
+/// the sides, the top (y=+1) and the bottom (y=-1)
 pub use crate::ffi_types::Vrml_Cylinder as Cylinder;
 
 unsafe impl crate::CppDeletable for Cylinder {
@@ -1327,11 +1334,11 @@ impl Cylinder {
 // ========================
 
 /// **Source:** `Vrml_DirectionalLight.hxx`:34 - `Vrml_DirectionalLight`
-/// defines a directional  light node of VRML specifying
+/// defines a directional light node of VRML specifying
 /// properties of lights.
-/// This  node  defines  a  directional  light  source  that  illuminates
-/// along  rays  parallel  to  a  given  3-dimensional  vector
-/// Color is  written  as  an  RGB  triple.
+/// This node defines a directional light source that illuminates
+/// along rays parallel to a given 3-dimensional vector
+/// Color is written as an RGB triple.
 /// Light intensity must be in the range 0.0 to 1.0, inclusive.
 pub use crate::ffi_types::Vrml_DirectionalLight as DirectionalLight;
 
@@ -1462,9 +1469,9 @@ impl DirectionalLight {
 /// **Source:** `Vrml_FontStyle.hxx`:34 - `Vrml_FontStyle`
 /// defines a FontStyle node of VRML of properties of geometry
 /// and its appearance.
-/// The  size  field  specifies  the  height  (in  object  space  units)
-/// of  glyphs  rendered  and  determines  the  vertical  spacing  of
-/// adjacent  lines  of  text.
+/// The size field specifies the height (in object space units)
+/// of glyphs rendered and determines the vertical spacing of
+/// adjacent lines of text.
 pub use crate::ffi_types::Vrml_FontStyle as FontStyle;
 
 unsafe impl crate::CppDeletable for FontStyle {
@@ -1613,7 +1620,7 @@ impl Group {
 // From Vrml_IndexedFaceSet.hxx
 // ========================
 
-/// **Source:** `Vrml_IndexedFaceSet.hxx`:35 - `Vrml_IndexedFaceSet`
+/// **Source:** `Vrml_IndexedFaceSet.hxx`:34 - `Vrml_IndexedFaceSet`
 /// defines a IndexedFaceSet node of VRML specifying geometry shapes.
 /// This node represents a 3D shape formed by constructing faces (polygons) from
 /// vertices located at the current coordinates. IndexedFaceSet uses the indices
@@ -1630,16 +1637,16 @@ unsafe impl crate::CppDeletable for IndexedFaceSet {
 }
 
 impl IndexedFaceSet {
-    /// **Source:** `Vrml_IndexedFaceSet.hxx`:39 - `Vrml_IndexedFaceSet::Vrml_IndexedFaceSet()`
-    pub fn new_handletcolstdharray1ofinteger4(
-        aCoordIndex: &crate::ffi_types::HandleTColStdHArray1OfInteger,
-        aMaterialIndex: &crate::ffi_types::HandleTColStdHArray1OfInteger,
-        aNormalIndex: &crate::ffi_types::HandleTColStdHArray1OfInteger,
-        aTextureCoordIndex: &crate::ffi_types::HandleTColStdHArray1OfInteger,
+    /// **Source:** `Vrml_IndexedFaceSet.hxx`:38 - `Vrml_IndexedFaceSet::Vrml_IndexedFaceSet()`
+    pub fn new_harr1_int4(
+        aCoordIndex: &crate::ffi_types::Handle_NCollection_HArray1_int,
+        aMaterialIndex: &crate::ffi_types::Handle_NCollection_HArray1_int,
+        aNormalIndex: &crate::ffi_types::Handle_NCollection_HArray1_int,
+        aTextureCoordIndex: &crate::ffi_types::Handle_NCollection_HArray1_int,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKDEVRML::Vrml_IndexedFaceSet_ctor_handletcolstdharray1ofinteger4(
+                crate::ffi_extern_TKDEVRML::Vrml_IndexedFaceSet_ctor_harr1_int4(
                     aCoordIndex,
                     aMaterialIndex,
                     aNormalIndex,
@@ -1661,7 +1668,7 @@ impl IndexedFaceSet {
     /// **Source:** `Vrml_IndexedFaceSet.hxx`:46 - `Vrml_IndexedFaceSet::SetCoordIndex()`
     pub fn set_coord_index(
         &mut self,
-        aCoordIndex: &crate::ffi_types::HandleTColStdHArray1OfInteger,
+        aCoordIndex: &crate::ffi_types::Handle_NCollection_HArray1_int,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEVRML::Vrml_IndexedFaceSet_set_coord_index(
@@ -1672,7 +1679,7 @@ impl IndexedFaceSet {
     }
 
     /// **Source:** `Vrml_IndexedFaceSet.hxx`:48 - `Vrml_IndexedFaceSet::CoordIndex()`
-    pub fn coord_index(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTColStdHArray1OfInteger> {
+    pub fn coord_index(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HArray1_int> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDEVRML::Vrml_IndexedFaceSet_coord_index(self as *const Self),
@@ -1683,7 +1690,7 @@ impl IndexedFaceSet {
     /// **Source:** `Vrml_IndexedFaceSet.hxx`:50 - `Vrml_IndexedFaceSet::SetMaterialIndex()`
     pub fn set_material_index(
         &mut self,
-        aMaterialIndex: &crate::ffi_types::HandleTColStdHArray1OfInteger,
+        aMaterialIndex: &crate::ffi_types::Handle_NCollection_HArray1_int,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEVRML::Vrml_IndexedFaceSet_set_material_index(
@@ -1693,10 +1700,10 @@ impl IndexedFaceSet {
         })
     }
 
-    /// **Source:** `Vrml_IndexedFaceSet.hxx`:52 - `Vrml_IndexedFaceSet::MaterialIndex()`
+    /// **Source:** `Vrml_IndexedFaceSet.hxx`:53 - `Vrml_IndexedFaceSet::MaterialIndex()`
     pub fn material_index(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleTColStdHArray1OfInteger> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HArray1_int> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDEVRML::Vrml_IndexedFaceSet_material_index(self as *const Self),
@@ -1704,10 +1711,10 @@ impl IndexedFaceSet {
         }
     }
 
-    /// **Source:** `Vrml_IndexedFaceSet.hxx`:54 - `Vrml_IndexedFaceSet::SetNormalIndex()`
+    /// **Source:** `Vrml_IndexedFaceSet.hxx`:55 - `Vrml_IndexedFaceSet::SetNormalIndex()`
     pub fn set_normal_index(
         &mut self,
-        aNormalIndex: &crate::ffi_types::HandleTColStdHArray1OfInteger,
+        aNormalIndex: &crate::ffi_types::Handle_NCollection_HArray1_int,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEVRML::Vrml_IndexedFaceSet_set_normal_index(
@@ -1717,8 +1724,10 @@ impl IndexedFaceSet {
         })
     }
 
-    /// **Source:** `Vrml_IndexedFaceSet.hxx`:56 - `Vrml_IndexedFaceSet::NormalIndex()`
-    pub fn normal_index(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTColStdHArray1OfInteger> {
+    /// **Source:** `Vrml_IndexedFaceSet.hxx`:57 - `Vrml_IndexedFaceSet::NormalIndex()`
+    pub fn normal_index(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HArray1_int> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDEVRML::Vrml_IndexedFaceSet_normal_index(self as *const Self),
@@ -1726,10 +1735,10 @@ impl IndexedFaceSet {
         }
     }
 
-    /// **Source:** `Vrml_IndexedFaceSet.hxx`:58 - `Vrml_IndexedFaceSet::SetTextureCoordIndex()`
+    /// **Source:** `Vrml_IndexedFaceSet.hxx`:59 - `Vrml_IndexedFaceSet::SetTextureCoordIndex()`
     pub fn set_texture_coord_index(
         &mut self,
-        aTextureCoordIndex: &crate::ffi_types::HandleTColStdHArray1OfInteger,
+        aTextureCoordIndex: &crate::ffi_types::Handle_NCollection_HArray1_int,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEVRML::Vrml_IndexedFaceSet_set_texture_coord_index(
@@ -1739,10 +1748,10 @@ impl IndexedFaceSet {
         })
     }
 
-    /// **Source:** `Vrml_IndexedFaceSet.hxx`:61 - `Vrml_IndexedFaceSet::TextureCoordIndex()`
+    /// **Source:** `Vrml_IndexedFaceSet.hxx`:62 - `Vrml_IndexedFaceSet::TextureCoordIndex()`
     pub fn texture_coord_index(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleTColStdHArray1OfInteger> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HArray1_int> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDEVRML::Vrml_IndexedFaceSet_texture_coord_index(
@@ -1752,7 +1761,7 @@ impl IndexedFaceSet {
         }
     }
 
-    /// **Source:** `Vrml_IndexedFaceSet.hxx`:63 - `Vrml_IndexedFaceSet::Print()`
+    /// **Source:** `Vrml_IndexedFaceSet.hxx`:64 - `Vrml_IndexedFaceSet::Print()`
     ///
     /// # Safety
     ///
@@ -1771,8 +1780,8 @@ impl IndexedFaceSet {
         }
     }
 
-    /// **Source:** `Vrml_IndexedFaceSet.hxx`:65 - `Vrml_IndexedFaceSet::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `Vrml_IndexedFaceSet.hxx`:66 - `Vrml_IndexedFaceSet::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKDEVRML::Vrml_IndexedFaceSet_dynamic_type(
                 self as *const Self,
@@ -1780,7 +1789,7 @@ impl IndexedFaceSet {
         }
     }
 
-    /// **Source:** `Vrml_IndexedFaceSet.hxx`:65 - `Vrml_IndexedFaceSet::get_type_name()`
+    /// **Source:** `Vrml_IndexedFaceSet.hxx`:66 - `Vrml_IndexedFaceSet::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -1791,8 +1800,8 @@ impl IndexedFaceSet {
         .into_owned()
     }
 
-    /// **Source:** `Vrml_IndexedFaceSet.hxx`:65 - `Vrml_IndexedFaceSet::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    /// **Source:** `Vrml_IndexedFaceSet.hxx`:66 - `Vrml_IndexedFaceSet::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKDEVRML::Vrml_IndexedFaceSet_get_type_descriptor(),
@@ -1825,7 +1834,7 @@ impl IndexedFaceSet {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleVrmlIndexedFaceSet> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Vrml_IndexedFaceSet> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDEVRML::Vrml_IndexedFaceSet_to_handle(obj.into_raw()),
@@ -1833,8 +1842,8 @@ impl IndexedFaceSet {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEVRML::Vrml_IndexedFaceSet_inherited_IsInstance(
                 self as *const Self,
@@ -1843,8 +1852,8 @@ impl IndexedFaceSet {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEVRML::Vrml_IndexedFaceSet_inherited_IsKind(
                 self as *const Self,
@@ -1853,7 +1862,7 @@ impl IndexedFaceSet {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -1867,7 +1876,7 @@ impl IndexedFaceSet {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEVRML::Vrml_IndexedFaceSet_inherited_GetRefCount(
@@ -1876,7 +1885,7 @@ impl IndexedFaceSet {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEVRML::Vrml_IndexedFaceSet_inherited_IncrementRefCounter(
@@ -1885,7 +1894,7 @@ impl IndexedFaceSet {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEVRML::Vrml_IndexedFaceSet_inherited_DecrementRefCounter(
@@ -1894,7 +1903,7 @@ impl IndexedFaceSet {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEVRML::Vrml_IndexedFaceSet_inherited_Delete(self as *const Self)
@@ -1902,34 +1911,36 @@ impl IndexedFaceSet {
     }
 }
 
-pub use crate::ffi_types::HandleVrmlIndexedFaceSet;
+pub use crate::ffi_types::Handle_Vrml_IndexedFaceSet;
 
-unsafe impl crate::CppDeletable for HandleVrmlIndexedFaceSet {
+unsafe impl crate::CppDeletable for Handle_Vrml_IndexedFaceSet {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKDEVRML::HandleVrmlIndexedFaceSet_destructor(ptr);
+            crate::ffi_extern_TKDEVRML::Handle_Vrml_IndexedFaceSet_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleVrmlIndexedFaceSet {
+unsafe impl crate::CppCopyable for Handle_Vrml_IndexedFaceSet {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
         unsafe {
-            crate::check_result(crate::ffi_extern_TKDEVRML::HandleVrmlIndexedFaceSet_clone(ptr))
+            crate::check_result(crate::ffi_extern_TKDEVRML::Handle_Vrml_IndexedFaceSet_clone(ptr))
         }
     }
 }
 
-impl HandleVrmlIndexedFaceSet {
+impl Handle_Vrml_IndexedFaceSet {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
-        unsafe { crate::ffi_extern_TKDEVRML::HandleVrmlIndexedFaceSet_is_null(self as *const Self) }
+        unsafe {
+            crate::ffi_extern_TKDEVRML::Handle_Vrml_IndexedFaceSet_is_null(self as *const Self)
+        }
     }
 
     /// Dereference this Handle to access the underlying Vrml_IndexedFaceSet
     pub fn get(&self) -> &crate::ffi_types::Vrml_IndexedFaceSet {
         unsafe {
-            &*crate::check_result(crate::ffi_extern_TKDEVRML::HandleVrmlIndexedFaceSet_get(
+            &*crate::check_result(crate::ffi_extern_TKDEVRML::Handle_Vrml_IndexedFaceSet_get(
                 self as *const Self,
             ))
         }
@@ -1938,19 +1949,19 @@ impl HandleVrmlIndexedFaceSet {
     /// Dereference this Handle to mutably access the underlying Vrml_IndexedFaceSet
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::Vrml_IndexedFaceSet {
         unsafe {
-            &mut *crate::check_result(crate::ffi_extern_TKDEVRML::HandleVrmlIndexedFaceSet_get_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKDEVRML::Handle_Vrml_IndexedFaceSet_get_mut(self as *mut Self),
+            )
         }
     }
 
     /// Upcast Handle<Vrml_IndexedFaceSet> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKDEVRML::HandleVrmlIndexedFaceSet_to_HandleStandardTransient(
+                crate::ffi_extern_TKDEVRML::Handle_Vrml_IndexedFaceSet_to_Handle_Standard_Transient(
                     self as *const Self,
                 ),
             ))
@@ -1962,7 +1973,7 @@ impl HandleVrmlIndexedFaceSet {
 // From Vrml_IndexedLineSet.hxx
 // ========================
 
-/// **Source:** `Vrml_IndexedLineSet.hxx`:43 - `Vrml_IndexedLineSet`
+/// **Source:** `Vrml_IndexedLineSet.hxx`:42 - `Vrml_IndexedLineSet`
 /// defines a IndexedLineSet node of VRML specifying geometry shapes.
 /// This node represents a 3D shape formed by constructing polylines from vertices
 /// located at the current coordinates. IndexedLineSet uses the indices in its coordIndex
@@ -1973,7 +1984,7 @@ impl HandleVrmlIndexedFaceSet {
 /// specifies a material or normal for each polyline. PER_VERTEX specifies a material or
 /// normal for each vertex. The corresponding _INDEXED bindings are the same, but use
 /// the materialIndex or normalIndex indices. The DEFAULT material binding is equal
-/// to OVERALL. The DEFAULT normal binding is equal to  PER_VERTEX_INDEXED;
+/// to OVERALL. The DEFAULT normal binding is equal to PER_VERTEX_INDEXED;
 /// if insufficient normals exist in the state, the lines will be drawn unlit. The same
 /// rules for texture coordinate generation as IndexedFaceSet are used.
 pub use crate::ffi_types::Vrml_IndexedLineSet as IndexedLineSet;
@@ -1987,16 +1998,16 @@ unsafe impl crate::CppDeletable for IndexedLineSet {
 }
 
 impl IndexedLineSet {
-    /// **Source:** `Vrml_IndexedLineSet.hxx`:47 - `Vrml_IndexedLineSet::Vrml_IndexedLineSet()`
-    pub fn new_handletcolstdharray1ofinteger4(
-        aCoordIndex: &crate::ffi_types::HandleTColStdHArray1OfInteger,
-        aMaterialIndex: &crate::ffi_types::HandleTColStdHArray1OfInteger,
-        aNormalIndex: &crate::ffi_types::HandleTColStdHArray1OfInteger,
-        aTextureCoordIndex: &crate::ffi_types::HandleTColStdHArray1OfInteger,
+    /// **Source:** `Vrml_IndexedLineSet.hxx`:46 - `Vrml_IndexedLineSet::Vrml_IndexedLineSet()`
+    pub fn new_harr1_int4(
+        aCoordIndex: &crate::ffi_types::Handle_NCollection_HArray1_int,
+        aMaterialIndex: &crate::ffi_types::Handle_NCollection_HArray1_int,
+        aNormalIndex: &crate::ffi_types::Handle_NCollection_HArray1_int,
+        aTextureCoordIndex: &crate::ffi_types::Handle_NCollection_HArray1_int,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKDEVRML::Vrml_IndexedLineSet_ctor_handletcolstdharray1ofinteger4(
+                crate::ffi_extern_TKDEVRML::Vrml_IndexedLineSet_ctor_harr1_int4(
                     aCoordIndex,
                     aMaterialIndex,
                     aNormalIndex,
@@ -2018,7 +2029,7 @@ impl IndexedLineSet {
     /// **Source:** `Vrml_IndexedLineSet.hxx`:54 - `Vrml_IndexedLineSet::SetCoordIndex()`
     pub fn set_coord_index(
         &mut self,
-        aCoordIndex: &crate::ffi_types::HandleTColStdHArray1OfInteger,
+        aCoordIndex: &crate::ffi_types::Handle_NCollection_HArray1_int,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEVRML::Vrml_IndexedLineSet_set_coord_index(
@@ -2029,7 +2040,7 @@ impl IndexedLineSet {
     }
 
     /// **Source:** `Vrml_IndexedLineSet.hxx`:56 - `Vrml_IndexedLineSet::CoordIndex()`
-    pub fn coord_index(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTColStdHArray1OfInteger> {
+    pub fn coord_index(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HArray1_int> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDEVRML::Vrml_IndexedLineSet_coord_index(self as *const Self),
@@ -2040,7 +2051,7 @@ impl IndexedLineSet {
     /// **Source:** `Vrml_IndexedLineSet.hxx`:58 - `Vrml_IndexedLineSet::SetMaterialIndex()`
     pub fn set_material_index(
         &mut self,
-        aMaterialIndex: &crate::ffi_types::HandleTColStdHArray1OfInteger,
+        aMaterialIndex: &crate::ffi_types::Handle_NCollection_HArray1_int,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEVRML::Vrml_IndexedLineSet_set_material_index(
@@ -2050,10 +2061,10 @@ impl IndexedLineSet {
         })
     }
 
-    /// **Source:** `Vrml_IndexedLineSet.hxx`:60 - `Vrml_IndexedLineSet::MaterialIndex()`
+    /// **Source:** `Vrml_IndexedLineSet.hxx`:61 - `Vrml_IndexedLineSet::MaterialIndex()`
     pub fn material_index(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleTColStdHArray1OfInteger> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HArray1_int> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDEVRML::Vrml_IndexedLineSet_material_index(self as *const Self),
@@ -2061,10 +2072,10 @@ impl IndexedLineSet {
         }
     }
 
-    /// **Source:** `Vrml_IndexedLineSet.hxx`:62 - `Vrml_IndexedLineSet::SetNormalIndex()`
+    /// **Source:** `Vrml_IndexedLineSet.hxx`:63 - `Vrml_IndexedLineSet::SetNormalIndex()`
     pub fn set_normal_index(
         &mut self,
-        aNormalIndex: &crate::ffi_types::HandleTColStdHArray1OfInteger,
+        aNormalIndex: &crate::ffi_types::Handle_NCollection_HArray1_int,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEVRML::Vrml_IndexedLineSet_set_normal_index(
@@ -2074,8 +2085,10 @@ impl IndexedLineSet {
         })
     }
 
-    /// **Source:** `Vrml_IndexedLineSet.hxx`:64 - `Vrml_IndexedLineSet::NormalIndex()`
-    pub fn normal_index(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTColStdHArray1OfInteger> {
+    /// **Source:** `Vrml_IndexedLineSet.hxx`:65 - `Vrml_IndexedLineSet::NormalIndex()`
+    pub fn normal_index(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HArray1_int> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDEVRML::Vrml_IndexedLineSet_normal_index(self as *const Self),
@@ -2083,10 +2096,10 @@ impl IndexedLineSet {
         }
     }
 
-    /// **Source:** `Vrml_IndexedLineSet.hxx`:66 - `Vrml_IndexedLineSet::SetTextureCoordIndex()`
+    /// **Source:** `Vrml_IndexedLineSet.hxx`:67 - `Vrml_IndexedLineSet::SetTextureCoordIndex()`
     pub fn set_texture_coord_index(
         &mut self,
-        aTextureCoordIndex: &crate::ffi_types::HandleTColStdHArray1OfInteger,
+        aTextureCoordIndex: &crate::ffi_types::Handle_NCollection_HArray1_int,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEVRML::Vrml_IndexedLineSet_set_texture_coord_index(
@@ -2096,10 +2109,10 @@ impl IndexedLineSet {
         })
     }
 
-    /// **Source:** `Vrml_IndexedLineSet.hxx`:69 - `Vrml_IndexedLineSet::TextureCoordIndex()`
+    /// **Source:** `Vrml_IndexedLineSet.hxx`:70 - `Vrml_IndexedLineSet::TextureCoordIndex()`
     pub fn texture_coord_index(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleTColStdHArray1OfInteger> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HArray1_int> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDEVRML::Vrml_IndexedLineSet_texture_coord_index(
@@ -2109,7 +2122,7 @@ impl IndexedLineSet {
         }
     }
 
-    /// **Source:** `Vrml_IndexedLineSet.hxx`:71 - `Vrml_IndexedLineSet::Print()`
+    /// **Source:** `Vrml_IndexedLineSet.hxx`:72 - `Vrml_IndexedLineSet::Print()`
     ///
     /// # Safety
     ///
@@ -2128,8 +2141,8 @@ impl IndexedLineSet {
         }
     }
 
-    /// **Source:** `Vrml_IndexedLineSet.hxx`:73 - `Vrml_IndexedLineSet::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `Vrml_IndexedLineSet.hxx`:74 - `Vrml_IndexedLineSet::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKDEVRML::Vrml_IndexedLineSet_dynamic_type(
                 self as *const Self,
@@ -2137,7 +2150,7 @@ impl IndexedLineSet {
         }
     }
 
-    /// **Source:** `Vrml_IndexedLineSet.hxx`:73 - `Vrml_IndexedLineSet::get_type_name()`
+    /// **Source:** `Vrml_IndexedLineSet.hxx`:74 - `Vrml_IndexedLineSet::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -2148,8 +2161,8 @@ impl IndexedLineSet {
         .into_owned()
     }
 
-    /// **Source:** `Vrml_IndexedLineSet.hxx`:73 - `Vrml_IndexedLineSet::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    /// **Source:** `Vrml_IndexedLineSet.hxx`:74 - `Vrml_IndexedLineSet::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKDEVRML::Vrml_IndexedLineSet_get_type_descriptor(),
@@ -2182,7 +2195,7 @@ impl IndexedLineSet {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleVrmlIndexedLineSet> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Vrml_IndexedLineSet> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDEVRML::Vrml_IndexedLineSet_to_handle(obj.into_raw()),
@@ -2190,8 +2203,8 @@ impl IndexedLineSet {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEVRML::Vrml_IndexedLineSet_inherited_IsInstance(
                 self as *const Self,
@@ -2200,8 +2213,8 @@ impl IndexedLineSet {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEVRML::Vrml_IndexedLineSet_inherited_IsKind(
                 self as *const Self,
@@ -2210,7 +2223,7 @@ impl IndexedLineSet {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -2224,7 +2237,7 @@ impl IndexedLineSet {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEVRML::Vrml_IndexedLineSet_inherited_GetRefCount(
@@ -2233,7 +2246,7 @@ impl IndexedLineSet {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEVRML::Vrml_IndexedLineSet_inherited_IncrementRefCounter(
@@ -2242,7 +2255,7 @@ impl IndexedLineSet {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEVRML::Vrml_IndexedLineSet_inherited_DecrementRefCounter(
@@ -2251,7 +2264,7 @@ impl IndexedLineSet {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEVRML::Vrml_IndexedLineSet_inherited_Delete(self as *const Self)
@@ -2259,34 +2272,36 @@ impl IndexedLineSet {
     }
 }
 
-pub use crate::ffi_types::HandleVrmlIndexedLineSet;
+pub use crate::ffi_types::Handle_Vrml_IndexedLineSet;
 
-unsafe impl crate::CppDeletable for HandleVrmlIndexedLineSet {
+unsafe impl crate::CppDeletable for Handle_Vrml_IndexedLineSet {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKDEVRML::HandleVrmlIndexedLineSet_destructor(ptr);
+            crate::ffi_extern_TKDEVRML::Handle_Vrml_IndexedLineSet_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleVrmlIndexedLineSet {
+unsafe impl crate::CppCopyable for Handle_Vrml_IndexedLineSet {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
         unsafe {
-            crate::check_result(crate::ffi_extern_TKDEVRML::HandleVrmlIndexedLineSet_clone(ptr))
+            crate::check_result(crate::ffi_extern_TKDEVRML::Handle_Vrml_IndexedLineSet_clone(ptr))
         }
     }
 }
 
-impl HandleVrmlIndexedLineSet {
+impl Handle_Vrml_IndexedLineSet {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
-        unsafe { crate::ffi_extern_TKDEVRML::HandleVrmlIndexedLineSet_is_null(self as *const Self) }
+        unsafe {
+            crate::ffi_extern_TKDEVRML::Handle_Vrml_IndexedLineSet_is_null(self as *const Self)
+        }
     }
 
     /// Dereference this Handle to access the underlying Vrml_IndexedLineSet
     pub fn get(&self) -> &crate::ffi_types::Vrml_IndexedLineSet {
         unsafe {
-            &*crate::check_result(crate::ffi_extern_TKDEVRML::HandleVrmlIndexedLineSet_get(
+            &*crate::check_result(crate::ffi_extern_TKDEVRML::Handle_Vrml_IndexedLineSet_get(
                 self as *const Self,
             ))
         }
@@ -2295,19 +2310,19 @@ impl HandleVrmlIndexedLineSet {
     /// Dereference this Handle to mutably access the underlying Vrml_IndexedLineSet
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::Vrml_IndexedLineSet {
         unsafe {
-            &mut *crate::check_result(crate::ffi_extern_TKDEVRML::HandleVrmlIndexedLineSet_get_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKDEVRML::Handle_Vrml_IndexedLineSet_get_mut(self as *mut Self),
+            )
         }
     }
 
     /// Upcast Handle<Vrml_IndexedLineSet> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKDEVRML::HandleVrmlIndexedLineSet_to_HandleStandardTransient(
+                crate::ffi_extern_TKDEVRML::Handle_Vrml_IndexedLineSet_to_Handle_Standard_Transient(
                     self as *const Self,
                 ),
             ))
@@ -2322,9 +2337,9 @@ impl HandleVrmlIndexedLineSet {
 /// **Source:** `Vrml_Info.hxx`:32 - `Vrml_Info`
 /// defines a Info node of VRML specifying properties of geometry
 /// and its appearance.
-/// It  is  used  to  store  information  in  the  scene  graph,
-/// Typically  for  application-specific  purposes,  copyright  messages,
-/// or  other  strings.
+/// It is used to store information in the scene graph,
+/// Typically for application-specific purposes, copyright messages,
+/// or other strings.
 pub use crate::ffi_types::Vrml_Info as Info;
 
 unsafe impl crate::CppDeletable for Info {
@@ -2386,16 +2401,16 @@ impl Info {
 // ========================
 
 /// **Source:** `Vrml_Instancing.hxx`:37 - `Vrml_Instancing`
-/// defines  "instancing" - using  the  same  instance  of  a  node
-/// multiple  times.
-/// It  is  accomplished  by  using  the  "DEF"  and  "USE"  keywords.
-/// The  DEF  keyword  both  defines  a  named  node,  and  creates  a  single
-/// instance  of  it.
-/// The  USE  keyword  indicates  that  the  most  recently  defined  instance
-/// should  be  used  again.
-/// If  several  nades  were  given  the  same  name,  then  the  last  DEF
-/// encountered  during  parsing  "wins".
-/// DEF/USE  is  limited  to  a  single  file.
+/// defines "instancing" - using the same instance of a node
+/// multiple times.
+/// It is accomplished by using the "DEF" and "USE" keywords.
+/// The DEF keyword both defines a named node, and creates a single
+/// instance of it.
+/// The USE keyword indicates that the most recently defined instance
+/// should be used again.
+/// If several nades were given the same name, then the last DEF
+/// encountered during parsing "wins".
+/// DEF/USE is limited to a single file.
 pub use crate::ffi_types::Vrml_Instancing as Instancing;
 
 unsafe impl crate::CppDeletable for Instancing {
@@ -2408,7 +2423,7 @@ unsafe impl crate::CppDeletable for Instancing {
 
 impl Instancing {
     /// **Source:** `Vrml_Instancing.hxx`:43 - `Vrml_Instancing::Vrml_Instancing()`
-    /// Adds "DEF  <myName>" in  anOStream  (VRML  file).
+    /// Adds "DEF <myName>" in anOStream (VRML file).
     pub fn new_asciistring(aString: &crate::t_collection::AsciiString) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -2418,7 +2433,7 @@ impl Instancing {
     }
 
     /// **Source:** `Vrml_Instancing.hxx`:46 - `Vrml_Instancing::DEF()`
-    /// Adds "USE  <myName>" in  anOStream (VRML  file).
+    /// Adds "USE <myName>" in anOStream (VRML file).
     ///
     /// # Safety
     ///
@@ -2461,28 +2476,28 @@ impl Instancing {
 // From Vrml_LOD.hxx
 // ========================
 
-/// **Source:** `Vrml_LOD.hxx`:52 - `Vrml_LOD`
+/// **Source:** `Vrml_LOD.hxx`:50 - `Vrml_LOD`
 /// defines a LOD (level of detailization) node of VRML specifying properties
-/// of geometry  and its appearance.
-/// This  group  node  is  used  to  allow  applications  to  switch  between
-/// various  representations  of  objects  automatically. The  children  of  this
-/// node  typically  represent  the  same  object  or  objects  at  the  varying
-/// of  Levels  Of  Detail  (LOD),  from  highest  detail  to  lowest.
+/// of geometry and its appearance.
+/// This group node is used to allow applications to switch between
+/// various representations of objects automatically. The children of this
+/// node typically represent the same object or objects at the varying
+/// of Levels Of Detail (LOD), from highest detail to lowest.
 ///
-/// The  specified  center  point  of  the  LOD  is  transformed  by  current
-/// transformation  into  world  space,  and  the  distance from  the  transformed
-/// center  to  the  world-space  eye  point  is  calculated.
-/// If  thedistance  is  less  than  the  first  value  in  the  ranges  array,
-/// than  the  first  child  of  the  LOD  group  is  drawn.  If  between
-/// the  first  and  second  values  in  the  range  array,  the  second  child
-/// is  drawn,  etc.
-/// If  there  are  N  values  in  the  range  array,  the  LOD  group  should
-/// have  N+1  children.
-/// Specifying  too  few  children  will  result  in  the  last  child  being
-/// used  repeatedly  for  the  lowest  lewels  of  detail;  if  too  many  children
-/// are  specified,  the  extra  children  w ll  be  ignored.
-/// Each  value  in  the  ranges  array  should  be  greater  than  the previous
-/// value,  otherwise  results  are  undefined.
+/// The specified center point of the LOD is transformed by current
+/// transformation into world space, and the distance from the transformed
+/// center to the world-space eye point is calculated.
+/// If thedistance is less than the first value in the ranges array,
+/// than the first child of the LOD group is drawn. If between
+/// the first and second values in the range array, the second child
+/// is drawn, etc.
+/// If there are N values in the range array, the LOD group should
+/// have N+1 children.
+/// Specifying too few children will result in the last child being
+/// used repeatedly for the lowest levels of detail; if too many children
+/// are specified, the extra children will be ignored.
+/// Each value in the ranges array should be greater than the previous
+/// value, otherwise results are undefined.
 pub use crate::ffi_types::Vrml_LOD as LOD;
 
 unsafe impl crate::CppDeletable for LOD {
@@ -2494,7 +2509,7 @@ unsafe impl crate::CppDeletable for LOD {
 }
 
 impl LOD {
-    /// **Source:** `Vrml_LOD.hxx`:56 - `Vrml_LOD::Vrml_LOD()`
+    /// **Source:** `Vrml_LOD.hxx`:54 - `Vrml_LOD::Vrml_LOD()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -2503,29 +2518,27 @@ impl LOD {
         }
     }
 
-    /// **Source:** `Vrml_LOD.hxx`:58 - `Vrml_LOD::Vrml_LOD()`
-    pub fn new_handletcolstdharray1ofreal_vec(
-        aRange: &crate::ffi_types::HandleTColStdHArray1OfReal,
+    /// **Source:** `Vrml_LOD.hxx`:56 - `Vrml_LOD::Vrml_LOD()`
+    pub fn new_harr1_double_vec(
+        aRange: &crate::ffi_types::Handle_NCollection_HArray1_double,
         aCenter: &crate::gp::Vec,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKDEVRML::Vrml_LOD_ctor_handletcolstdharray1ofreal_vec(
-                    aRange, aCenter,
-                ),
+                crate::ffi_extern_TKDEVRML::Vrml_LOD_ctor_harr1_double_vec(aRange, aCenter),
             ))
         }
     }
 
-    /// **Source:** `Vrml_LOD.hxx`:60 - `Vrml_LOD::SetRange()`
-    pub fn set_range(&mut self, aRange: &crate::ffi_types::HandleTColStdHArray1OfReal) {
+    /// **Source:** `Vrml_LOD.hxx`:59 - `Vrml_LOD::SetRange()`
+    pub fn set_range(&mut self, aRange: &crate::ffi_types::Handle_NCollection_HArray1_double) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEVRML::Vrml_LOD_set_range(self as *mut Self, aRange)
         })
     }
 
-    /// **Source:** `Vrml_LOD.hxx`:62 - `Vrml_LOD::Range()`
-    pub fn range(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTColStdHArray1OfReal> {
+    /// **Source:** `Vrml_LOD.hxx`:61 - `Vrml_LOD::Range()`
+    pub fn range(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HArray1_double> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDEVRML::Vrml_LOD_range(self as *const Self),
@@ -2533,14 +2546,14 @@ impl LOD {
         }
     }
 
-    /// **Source:** `Vrml_LOD.hxx`:64 - `Vrml_LOD::SetCenter()`
+    /// **Source:** `Vrml_LOD.hxx`:63 - `Vrml_LOD::SetCenter()`
     pub fn set_center(&mut self, aCenter: &crate::gp::Vec) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEVRML::Vrml_LOD_set_center(self as *mut Self, aCenter)
         })
     }
 
-    /// **Source:** `Vrml_LOD.hxx`:66 - `Vrml_LOD::Center()`
+    /// **Source:** `Vrml_LOD.hxx`:65 - `Vrml_LOD::Center()`
     pub fn center(&self) -> crate::OwnedPtr<crate::gp::Vec> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -2549,7 +2562,7 @@ impl LOD {
         }
     }
 
-    /// **Source:** `Vrml_LOD.hxx`:68 - `Vrml_LOD::Print()`
+    /// **Source:** `Vrml_LOD.hxx`:67 - `Vrml_LOD::Print()`
     ///
     /// # Safety
     ///
@@ -2568,8 +2581,8 @@ impl LOD {
         }
     }
 
-    /// **Source:** `Vrml_LOD.hxx`:70 - `Vrml_LOD::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `Vrml_LOD.hxx`:69 - `Vrml_LOD::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKDEVRML::Vrml_LOD_dynamic_type(
                 self as *const Self,
@@ -2577,7 +2590,7 @@ impl LOD {
         }
     }
 
-    /// **Source:** `Vrml_LOD.hxx`:70 - `Vrml_LOD::get_type_name()`
+    /// **Source:** `Vrml_LOD.hxx`:69 - `Vrml_LOD::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -2588,8 +2601,8 @@ impl LOD {
         .into_owned()
     }
 
-    /// **Source:** `Vrml_LOD.hxx`:70 - `Vrml_LOD::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    /// **Source:** `Vrml_LOD.hxx`:69 - `Vrml_LOD::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKDEVRML::Vrml_LOD_get_type_descriptor()))
         }
@@ -2616,7 +2629,7 @@ impl LOD {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleVrmlLOD> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Vrml_LOD> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDEVRML::Vrml_LOD_to_handle(obj.into_raw()),
@@ -2624,21 +2637,21 @@ impl LOD {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEVRML::Vrml_LOD_inherited_IsInstance(self as *const Self, theType)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEVRML::Vrml_LOD_inherited_IsKind(self as *const Self, theType)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -2652,28 +2665,28 @@ impl LOD {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEVRML::Vrml_LOD_inherited_GetRefCount(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEVRML::Vrml_LOD_inherited_IncrementRefCounter(self as *mut Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEVRML::Vrml_LOD_inherited_DecrementRefCounter(self as *mut Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEVRML::Vrml_LOD_inherited_Delete(self as *const Self)
@@ -2681,32 +2694,32 @@ impl LOD {
     }
 }
 
-pub use crate::ffi_types::HandleVrmlLOD;
+pub use crate::ffi_types::Handle_Vrml_LOD;
 
-unsafe impl crate::CppDeletable for HandleVrmlLOD {
+unsafe impl crate::CppDeletable for Handle_Vrml_LOD {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKDEVRML::HandleVrmlLOD_destructor(ptr);
+            crate::ffi_extern_TKDEVRML::Handle_Vrml_LOD_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleVrmlLOD {
+unsafe impl crate::CppCopyable for Handle_Vrml_LOD {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        unsafe { crate::check_result(crate::ffi_extern_TKDEVRML::HandleVrmlLOD_clone(ptr)) }
+        unsafe { crate::check_result(crate::ffi_extern_TKDEVRML::Handle_Vrml_LOD_clone(ptr)) }
     }
 }
 
-impl HandleVrmlLOD {
+impl Handle_Vrml_LOD {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
-        unsafe { crate::ffi_extern_TKDEVRML::HandleVrmlLOD_is_null(self as *const Self) }
+        unsafe { crate::ffi_extern_TKDEVRML::Handle_Vrml_LOD_is_null(self as *const Self) }
     }
 
     /// Dereference this Handle to access the underlying Vrml_LOD
     pub fn get(&self) -> &crate::ffi_types::Vrml_LOD {
         unsafe {
-            &*crate::check_result(crate::ffi_extern_TKDEVRML::HandleVrmlLOD_get(
+            &*crate::check_result(crate::ffi_extern_TKDEVRML::Handle_Vrml_LOD_get(
                 self as *const Self,
             ))
         }
@@ -2715,7 +2728,7 @@ impl HandleVrmlLOD {
     /// Dereference this Handle to mutably access the underlying Vrml_LOD
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::Vrml_LOD {
         unsafe {
-            &mut *crate::check_result(crate::ffi_extern_TKDEVRML::HandleVrmlLOD_get_mut(
+            &mut *crate::check_result(crate::ffi_extern_TKDEVRML::Handle_Vrml_LOD_get_mut(
                 self as *mut Self,
             ))
         }
@@ -2724,10 +2737,10 @@ impl HandleVrmlLOD {
     /// Upcast Handle<Vrml_LOD> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKDEVRML::HandleVrmlLOD_to_HandleStandardTransient(
+                crate::ffi_extern_TKDEVRML::Handle_Vrml_LOD_to_Handle_Standard_Transient(
                     self as *const Self,
                 ),
             ))
@@ -2739,7 +2752,7 @@ impl HandleVrmlLOD {
 // From Vrml_Material.hxx
 // ========================
 
-/// **Source:** `Vrml_Material.hxx`:37 - `Vrml_Material`
+/// **Source:** `Vrml_Material.hxx`:35 - `Vrml_Material`
 /// defines a Material node of VRML specifying properties of geometry
 /// and its appearance.
 /// This node defines the current surface material properties for all subsequent shapes.
@@ -2757,21 +2770,30 @@ unsafe impl crate::CppDeletable for Material {
 }
 
 impl Material {
-    /// **Source:** `Vrml_Material.hxx`:41 - `Vrml_Material::Vrml_Material()`
-    pub fn new_handlequantityharray1ofcolor4_handletcolstdharray1ofreal2(
-        aAmbientColor: &crate::ffi_types::HandleQuantityHArray1OfColor,
-        aDiffuseColor: &crate::ffi_types::HandleQuantityHArray1OfColor,
-        aSpecularColor: &crate::ffi_types::HandleQuantityHArray1OfColor,
-        aEmissiveColor: &crate::ffi_types::HandleQuantityHArray1OfColor,
-        aShininess: &crate::ffi_types::HandleTColStdHArray1OfReal,
-        aTransparency: &crate::ffi_types::HandleTColStdHArray1OfReal,
+    /// **Source:** `Vrml_Material.hxx`:39 - `Vrml_Material::Vrml_Material()`
+    pub fn new_harr1_color4_harr1_double2(
+        aAmbientColor: &crate::ffi_types::Handle_NCollection_HArray1_Quantity_Color,
+        aDiffuseColor: &crate::ffi_types::Handle_NCollection_HArray1_Quantity_Color,
+        aSpecularColor: &crate::ffi_types::Handle_NCollection_HArray1_Quantity_Color,
+        aEmissiveColor: &crate::ffi_types::Handle_NCollection_HArray1_Quantity_Color,
+        aShininess: &crate::ffi_types::Handle_NCollection_HArray1_double,
+        aTransparency: &crate::ffi_types::Handle_NCollection_HArray1_double,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEVRML::Vrml_Material_ctor_handlequantityharray1ofcolor4_handletcolstdharray1ofreal2(aAmbientColor, aDiffuseColor, aSpecularColor, aEmissiveColor, aShininess, aTransparency)))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKDEVRML::Vrml_Material_ctor_harr1_color4_harr1_double2(
+                    aAmbientColor,
+                    aDiffuseColor,
+                    aSpecularColor,
+                    aEmissiveColor,
+                    aShininess,
+                    aTransparency,
+                ),
+            ))
         }
     }
 
-    /// **Source:** `Vrml_Material.hxx`:48 - `Vrml_Material::Vrml_Material()`
+    /// **Source:** `Vrml_Material.hxx`:47 - `Vrml_Material::Vrml_Material()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -2780,10 +2802,10 @@ impl Material {
         }
     }
 
-    /// **Source:** `Vrml_Material.hxx`:50 - `Vrml_Material::SetAmbientColor()`
+    /// **Source:** `Vrml_Material.hxx`:49 - `Vrml_Material::SetAmbientColor()`
     pub fn set_ambient_color(
         &mut self,
-        aAmbientColor: &crate::ffi_types::HandleQuantityHArray1OfColor,
+        aAmbientColor: &crate::ffi_types::Handle_NCollection_HArray1_Quantity_Color,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEVRML::Vrml_Material_set_ambient_color(
@@ -2794,7 +2816,9 @@ impl Material {
     }
 
     /// **Source:** `Vrml_Material.hxx`:52 - `Vrml_Material::AmbientColor()`
-    pub fn ambient_color(&self) -> crate::OwnedPtr<crate::ffi_types::HandleQuantityHArray1OfColor> {
+    pub fn ambient_color(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HArray1_Quantity_Color> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDEVRML::Vrml_Material_ambient_color(self as *const Self),
@@ -2805,7 +2829,7 @@ impl Material {
     /// **Source:** `Vrml_Material.hxx`:54 - `Vrml_Material::SetDiffuseColor()`
     pub fn set_diffuse_color(
         &mut self,
-        aDiffuseColor: &crate::ffi_types::HandleQuantityHArray1OfColor,
+        aDiffuseColor: &crate::ffi_types::Handle_NCollection_HArray1_Quantity_Color,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEVRML::Vrml_Material_set_diffuse_color(
@@ -2815,8 +2839,10 @@ impl Material {
         })
     }
 
-    /// **Source:** `Vrml_Material.hxx`:56 - `Vrml_Material::DiffuseColor()`
-    pub fn diffuse_color(&self) -> crate::OwnedPtr<crate::ffi_types::HandleQuantityHArray1OfColor> {
+    /// **Source:** `Vrml_Material.hxx`:57 - `Vrml_Material::DiffuseColor()`
+    pub fn diffuse_color(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HArray1_Quantity_Color> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDEVRML::Vrml_Material_diffuse_color(self as *const Self),
@@ -2824,10 +2850,10 @@ impl Material {
         }
     }
 
-    /// **Source:** `Vrml_Material.hxx`:58 - `Vrml_Material::SetSpecularColor()`
+    /// **Source:** `Vrml_Material.hxx`:59 - `Vrml_Material::SetSpecularColor()`
     pub fn set_specular_color(
         &mut self,
-        aSpecularColor: &crate::ffi_types::HandleQuantityHArray1OfColor,
+        aSpecularColor: &crate::ffi_types::Handle_NCollection_HArray1_Quantity_Color,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEVRML::Vrml_Material_set_specular_color(
@@ -2837,10 +2863,10 @@ impl Material {
         })
     }
 
-    /// **Source:** `Vrml_Material.hxx`:60 - `Vrml_Material::SpecularColor()`
+    /// **Source:** `Vrml_Material.hxx`:62 - `Vrml_Material::SpecularColor()`
     pub fn specular_color(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleQuantityHArray1OfColor> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HArray1_Quantity_Color> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDEVRML::Vrml_Material_specular_color(self as *const Self),
@@ -2848,10 +2874,10 @@ impl Material {
         }
     }
 
-    /// **Source:** `Vrml_Material.hxx`:62 - `Vrml_Material::SetEmissiveColor()`
+    /// **Source:** `Vrml_Material.hxx`:64 - `Vrml_Material::SetEmissiveColor()`
     pub fn set_emissive_color(
         &mut self,
-        aEmissiveColor: &crate::ffi_types::HandleQuantityHArray1OfColor,
+        aEmissiveColor: &crate::ffi_types::Handle_NCollection_HArray1_Quantity_Color,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEVRML::Vrml_Material_set_emissive_color(
@@ -2861,10 +2887,10 @@ impl Material {
         })
     }
 
-    /// **Source:** `Vrml_Material.hxx`:64 - `Vrml_Material::EmissiveColor()`
+    /// **Source:** `Vrml_Material.hxx`:67 - `Vrml_Material::EmissiveColor()`
     pub fn emissive_color(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleQuantityHArray1OfColor> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HArray1_Quantity_Color> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDEVRML::Vrml_Material_emissive_color(self as *const Self),
@@ -2872,15 +2898,20 @@ impl Material {
         }
     }
 
-    /// **Source:** `Vrml_Material.hxx`:66 - `Vrml_Material::SetShininess()`
-    pub fn set_shininess(&mut self, aShininess: &crate::ffi_types::HandleTColStdHArray1OfReal) {
+    /// **Source:** `Vrml_Material.hxx`:69 - `Vrml_Material::SetShininess()`
+    pub fn set_shininess(
+        &mut self,
+        aShininess: &crate::ffi_types::Handle_NCollection_HArray1_double,
+    ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEVRML::Vrml_Material_set_shininess(self as *mut Self, aShininess)
         })
     }
 
-    /// **Source:** `Vrml_Material.hxx`:68 - `Vrml_Material::Shininess()`
-    pub fn shininess(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTColStdHArray1OfReal> {
+    /// **Source:** `Vrml_Material.hxx`:71 - `Vrml_Material::Shininess()`
+    pub fn shininess(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HArray1_double> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDEVRML::Vrml_Material_shininess(self as *const Self),
@@ -2888,10 +2919,10 @@ impl Material {
         }
     }
 
-    /// **Source:** `Vrml_Material.hxx`:70 - `Vrml_Material::SetTransparency()`
+    /// **Source:** `Vrml_Material.hxx`:73 - `Vrml_Material::SetTransparency()`
     pub fn set_transparency(
         &mut self,
-        aTransparency: &crate::ffi_types::HandleTColStdHArray1OfReal,
+        aTransparency: &crate::ffi_types::Handle_NCollection_HArray1_double,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEVRML::Vrml_Material_set_transparency(
@@ -2901,8 +2932,10 @@ impl Material {
         })
     }
 
-    /// **Source:** `Vrml_Material.hxx`:72 - `Vrml_Material::Transparency()`
-    pub fn transparency(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTColStdHArray1OfReal> {
+    /// **Source:** `Vrml_Material.hxx`:76 - `Vrml_Material::Transparency()`
+    pub fn transparency(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HArray1_double> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDEVRML::Vrml_Material_transparency(self as *const Self),
@@ -2910,7 +2943,7 @@ impl Material {
         }
     }
 
-    /// **Source:** `Vrml_Material.hxx`:74 - `Vrml_Material::Print()`
+    /// **Source:** `Vrml_Material.hxx`:78 - `Vrml_Material::Print()`
     ///
     /// # Safety
     ///
@@ -2929,8 +2962,8 @@ impl Material {
         }
     }
 
-    /// **Source:** `Vrml_Material.hxx`:76 - `Vrml_Material::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `Vrml_Material.hxx`:80 - `Vrml_Material::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKDEVRML::Vrml_Material_dynamic_type(
                 self as *const Self,
@@ -2938,7 +2971,7 @@ impl Material {
         }
     }
 
-    /// **Source:** `Vrml_Material.hxx`:76 - `Vrml_Material::get_type_name()`
+    /// **Source:** `Vrml_Material.hxx`:80 - `Vrml_Material::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -2949,8 +2982,8 @@ impl Material {
         .into_owned()
     }
 
-    /// **Source:** `Vrml_Material.hxx`:76 - `Vrml_Material::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    /// **Source:** `Vrml_Material.hxx`:80 - `Vrml_Material::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKDEVRML::Vrml_Material_get_type_descriptor()))
         }
@@ -2979,7 +3012,7 @@ impl Material {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleVrmlMaterial> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Vrml_Material> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDEVRML::Vrml_Material_to_handle(obj.into_raw()),
@@ -2987,8 +3020,8 @@ impl Material {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEVRML::Vrml_Material_inherited_IsInstance(
                 self as *const Self,
@@ -2997,14 +3030,14 @@ impl Material {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEVRML::Vrml_Material_inherited_IsKind(self as *const Self, theType)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -3018,14 +3051,14 @@ impl Material {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEVRML::Vrml_Material_inherited_GetRefCount(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEVRML::Vrml_Material_inherited_IncrementRefCounter(
@@ -3034,7 +3067,7 @@ impl Material {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEVRML::Vrml_Material_inherited_DecrementRefCounter(
@@ -3043,7 +3076,7 @@ impl Material {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEVRML::Vrml_Material_inherited_Delete(self as *const Self)
@@ -3051,32 +3084,32 @@ impl Material {
     }
 }
 
-pub use crate::ffi_types::HandleVrmlMaterial;
+pub use crate::ffi_types::Handle_Vrml_Material;
 
-unsafe impl crate::CppDeletable for HandleVrmlMaterial {
+unsafe impl crate::CppDeletable for Handle_Vrml_Material {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKDEVRML::HandleVrmlMaterial_destructor(ptr);
+            crate::ffi_extern_TKDEVRML::Handle_Vrml_Material_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleVrmlMaterial {
+unsafe impl crate::CppCopyable for Handle_Vrml_Material {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        unsafe { crate::check_result(crate::ffi_extern_TKDEVRML::HandleVrmlMaterial_clone(ptr)) }
+        unsafe { crate::check_result(crate::ffi_extern_TKDEVRML::Handle_Vrml_Material_clone(ptr)) }
     }
 }
 
-impl HandleVrmlMaterial {
+impl Handle_Vrml_Material {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
-        unsafe { crate::ffi_extern_TKDEVRML::HandleVrmlMaterial_is_null(self as *const Self) }
+        unsafe { crate::ffi_extern_TKDEVRML::Handle_Vrml_Material_is_null(self as *const Self) }
     }
 
     /// Dereference this Handle to access the underlying Vrml_Material
     pub fn get(&self) -> &crate::ffi_types::Vrml_Material {
         unsafe {
-            &*crate::check_result(crate::ffi_extern_TKDEVRML::HandleVrmlMaterial_get(
+            &*crate::check_result(crate::ffi_extern_TKDEVRML::Handle_Vrml_Material_get(
                 self as *const Self,
             ))
         }
@@ -3085,7 +3118,7 @@ impl HandleVrmlMaterial {
     /// Dereference this Handle to mutably access the underlying Vrml_Material
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::Vrml_Material {
         unsafe {
-            &mut *crate::check_result(crate::ffi_extern_TKDEVRML::HandleVrmlMaterial_get_mut(
+            &mut *crate::check_result(crate::ffi_extern_TKDEVRML::Handle_Vrml_Material_get_mut(
                 self as *mut Self,
             ))
         }
@@ -3094,10 +3127,10 @@ impl HandleVrmlMaterial {
     /// Upcast Handle<Vrml_Material> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKDEVRML::HandleVrmlMaterial_to_HandleStandardTransient(
+                crate::ffi_extern_TKDEVRML::Handle_Vrml_Material_to_Handle_Standard_Transient(
                     self as *const Self,
                 ),
             ))
@@ -3192,15 +3225,15 @@ impl MaterialBinding {
 /// **Source:** `Vrml_MatrixTransform.hxx`:38 - `Vrml_MatrixTransform`
 /// defines a MatrixTransform node of VRML specifying matrix and transform
 /// properties.
-/// This  node  defines  3D  transformation  with  a  4  by  4  matrix.
-/// By  default  :
+/// This node defines 3D transformation with a 4 by 4 matrix.
+/// By default:
 /// a11=1  a12=0  a13=0  a14=0
 /// a21=0  a22=1  a23=0  a24=0
 /// a31=0  a32=0  a33=1  a34=0
 /// a41=0  a42=0  a43=0  a44=1
-/// It  is  written  to  the  file  in  row-major  order  as  16  Real numbers
-/// separated  by  whitespace.  For  example ,  matrix  expressing  a  translation
-/// of  7.3  units  along  the  X  axis  is  written  as:
+/// It is written to the file in row-major order as 16 Real numbers
+/// separated by whitespace. For example , matrix expressing a translation
+/// of 7.3 units along the X axis is written as:
 /// 1  0  0  0   0  1  0  0   0  0  1  0   7.3 0  0  1
 pub use crate::ffi_types::Vrml_MatrixTransform as MatrixTransform;
 
@@ -3271,7 +3304,7 @@ impl MatrixTransform {
 // From Vrml_Normal.hxx
 // ========================
 
-/// **Source:** `Vrml_Normal.hxx`:37 - `Vrml_Normal`
+/// **Source:** `Vrml_Normal.hxx`:36 - `Vrml_Normal`
 /// defines a Normal node of VRML specifying properties of geometry
 /// and its appearance.
 /// This node defines a set of 3D surface normal vectors to be used by vertex-based shape
@@ -3290,18 +3323,18 @@ unsafe impl crate::CppDeletable for Normal {
 }
 
 impl Normal {
-    /// **Source:** `Vrml_Normal.hxx`:41 - `Vrml_Normal::Vrml_Normal()`
-    pub fn new_handletcolgpharray1ofvec(
-        aVector: &crate::ffi_types::HandleTColgpHArray1OfVec,
+    /// **Source:** `Vrml_Normal.hxx`:40 - `Vrml_Normal::Vrml_Normal()`
+    pub fn new_harr1_vec(
+        aVector: &crate::ffi_types::Handle_NCollection_HArray1_gp_Vec,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKDEVRML::Vrml_Normal_ctor_handletcolgpharray1ofvec(aVector),
+                crate::ffi_extern_TKDEVRML::Vrml_Normal_ctor_harr1_vec(aVector),
             ))
         }
     }
 
-    /// **Source:** `Vrml_Normal.hxx`:43 - `Vrml_Normal::Vrml_Normal()`
+    /// **Source:** `Vrml_Normal.hxx`:42 - `Vrml_Normal::Vrml_Normal()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -3310,15 +3343,15 @@ impl Normal {
         }
     }
 
-    /// **Source:** `Vrml_Normal.hxx`:45 - `Vrml_Normal::SetVector()`
-    pub fn set_vector(&mut self, aVector: &crate::ffi_types::HandleTColgpHArray1OfVec) {
+    /// **Source:** `Vrml_Normal.hxx`:44 - `Vrml_Normal::SetVector()`
+    pub fn set_vector(&mut self, aVector: &crate::ffi_types::Handle_NCollection_HArray1_gp_Vec) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEVRML::Vrml_Normal_set_vector(self as *mut Self, aVector)
         })
     }
 
-    /// **Source:** `Vrml_Normal.hxx`:47 - `Vrml_Normal::Vector()`
-    pub fn vector(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTColgpHArray1OfVec> {
+    /// **Source:** `Vrml_Normal.hxx`:46 - `Vrml_Normal::Vector()`
+    pub fn vector(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HArray1_gp_Vec> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDEVRML::Vrml_Normal_vector(self as *const Self),
@@ -3326,7 +3359,7 @@ impl Normal {
         }
     }
 
-    /// **Source:** `Vrml_Normal.hxx`:49 - `Vrml_Normal::Print()`
+    /// **Source:** `Vrml_Normal.hxx`:48 - `Vrml_Normal::Print()`
     ///
     /// # Safety
     ///
@@ -3345,8 +3378,8 @@ impl Normal {
         }
     }
 
-    /// **Source:** `Vrml_Normal.hxx`:51 - `Vrml_Normal::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `Vrml_Normal.hxx`:50 - `Vrml_Normal::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKDEVRML::Vrml_Normal_dynamic_type(
                 self as *const Self,
@@ -3354,7 +3387,7 @@ impl Normal {
         }
     }
 
-    /// **Source:** `Vrml_Normal.hxx`:51 - `Vrml_Normal::get_type_name()`
+    /// **Source:** `Vrml_Normal.hxx`:50 - `Vrml_Normal::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -3365,8 +3398,8 @@ impl Normal {
         .into_owned()
     }
 
-    /// **Source:** `Vrml_Normal.hxx`:51 - `Vrml_Normal::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    /// **Source:** `Vrml_Normal.hxx`:50 - `Vrml_Normal::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKDEVRML::Vrml_Normal_get_type_descriptor()))
         }
@@ -3395,7 +3428,7 @@ impl Normal {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleVrmlNormal> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Vrml_Normal> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDEVRML::Vrml_Normal_to_handle(obj.into_raw()),
@@ -3403,8 +3436,8 @@ impl Normal {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEVRML::Vrml_Normal_inherited_IsInstance(
                 self as *const Self,
@@ -3413,14 +3446,14 @@ impl Normal {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEVRML::Vrml_Normal_inherited_IsKind(self as *const Self, theType)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -3434,28 +3467,28 @@ impl Normal {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEVRML::Vrml_Normal_inherited_GetRefCount(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEVRML::Vrml_Normal_inherited_IncrementRefCounter(self as *mut Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEVRML::Vrml_Normal_inherited_DecrementRefCounter(self as *mut Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEVRML::Vrml_Normal_inherited_Delete(self as *const Self)
@@ -3463,32 +3496,32 @@ impl Normal {
     }
 }
 
-pub use crate::ffi_types::HandleVrmlNormal;
+pub use crate::ffi_types::Handle_Vrml_Normal;
 
-unsafe impl crate::CppDeletable for HandleVrmlNormal {
+unsafe impl crate::CppDeletable for Handle_Vrml_Normal {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKDEVRML::HandleVrmlNormal_destructor(ptr);
+            crate::ffi_extern_TKDEVRML::Handle_Vrml_Normal_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleVrmlNormal {
+unsafe impl crate::CppCopyable for Handle_Vrml_Normal {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        unsafe { crate::check_result(crate::ffi_extern_TKDEVRML::HandleVrmlNormal_clone(ptr)) }
+        unsafe { crate::check_result(crate::ffi_extern_TKDEVRML::Handle_Vrml_Normal_clone(ptr)) }
     }
 }
 
-impl HandleVrmlNormal {
+impl Handle_Vrml_Normal {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
-        unsafe { crate::ffi_extern_TKDEVRML::HandleVrmlNormal_is_null(self as *const Self) }
+        unsafe { crate::ffi_extern_TKDEVRML::Handle_Vrml_Normal_is_null(self as *const Self) }
     }
 
     /// Dereference this Handle to access the underlying Vrml_Normal
     pub fn get(&self) -> &crate::ffi_types::Vrml_Normal {
         unsafe {
-            &*crate::check_result(crate::ffi_extern_TKDEVRML::HandleVrmlNormal_get(
+            &*crate::check_result(crate::ffi_extern_TKDEVRML::Handle_Vrml_Normal_get(
                 self as *const Self,
             ))
         }
@@ -3497,7 +3530,7 @@ impl HandleVrmlNormal {
     /// Dereference this Handle to mutably access the underlying Vrml_Normal
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::Vrml_Normal {
         unsafe {
-            &mut *crate::check_result(crate::ffi_extern_TKDEVRML::HandleVrmlNormal_get_mut(
+            &mut *crate::check_result(crate::ffi_extern_TKDEVRML::Handle_Vrml_Normal_get_mut(
                 self as *mut Self,
             ))
         }
@@ -3506,10 +3539,10 @@ impl HandleVrmlNormal {
     /// Upcast Handle<Vrml_Normal> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKDEVRML::HandleVrmlNormal_to_HandleStandardTransient(
+                crate::ffi_extern_TKDEVRML::Handle_Vrml_Normal_to_Handle_Standard_Transient(
                     self as *const Self,
                 ),
             ))
@@ -3887,12 +3920,12 @@ impl PerspectiveCamera {
 // ========================
 
 /// **Source:** `Vrml_PointLight.hxx`:35 - `Vrml_PointLight`
-/// defines a point  light node of VRML specifying
+/// defines a point light node of VRML specifying
 /// properties of lights.
-/// This  node  defines  a  point  light  source   at  a  fixed  3D  location
-/// A  point  source  illuminates equally  in  all  directions;
-/// that  is  omni-directional.
-/// Color is  written  as  an  RGB  triple.
+/// This node defines a point light source at a fixed 3D location
+/// A point source illuminates equally in all directions;
+/// that is omni-directional.
+/// Color is written as an RGB triple.
 /// Light intensity must be in the range 0.0 to 1.0, inclusive.
 pub use crate::ffi_types::Vrml_PointLight as PointLight;
 
@@ -4046,7 +4079,7 @@ impl PointSet {
         Self::new_int2(0, -1)
     }
 
-    /// **Source:** `Vrml_PointSet.hxx`:35 - `Vrml_PointSet::SetStartIndex()`
+    /// **Source:** `Vrml_PointSet.hxx`:34 - `Vrml_PointSet::SetStartIndex()`
     pub fn set_start_index(&mut self, aStartIndex: i32) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEVRML::Vrml_PointSet_set_start_index(
@@ -4056,28 +4089,28 @@ impl PointSet {
         })
     }
 
-    /// **Source:** `Vrml_PointSet.hxx`:37 - `Vrml_PointSet::StartIndex()`
+    /// **Source:** `Vrml_PointSet.hxx`:36 - `Vrml_PointSet::StartIndex()`
     pub fn start_index(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEVRML::Vrml_PointSet_start_index(self as *const Self)
         })
     }
 
-    /// **Source:** `Vrml_PointSet.hxx`:39 - `Vrml_PointSet::SetNumPoints()`
+    /// **Source:** `Vrml_PointSet.hxx`:38 - `Vrml_PointSet::SetNumPoints()`
     pub fn set_num_points(&mut self, aNumPoints: i32) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEVRML::Vrml_PointSet_set_num_points(self as *mut Self, aNumPoints)
         })
     }
 
-    /// **Source:** `Vrml_PointSet.hxx`:41 - `Vrml_PointSet::NumPoints()`
+    /// **Source:** `Vrml_PointSet.hxx`:40 - `Vrml_PointSet::NumPoints()`
     pub fn num_points(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEVRML::Vrml_PointSet_num_points(self as *const Self)
         })
     }
 
-    /// **Source:** `Vrml_PointSet.hxx`:43 - `Vrml_PointSet::Print()`
+    /// **Source:** `Vrml_PointSet.hxx`:42 - `Vrml_PointSet::Print()`
     ///
     /// # Safety
     ///
@@ -4103,8 +4136,8 @@ impl PointSet {
 
 /// **Source:** `Vrml_Rotation.hxx`:30 - `Vrml_Rotation`
 /// defines a Rotation node of VRML specifying matrix and transform properties.
-/// This  node  defines  a  3D  rotation  about  an  arbitrary  axis  through  the  origin.
-/// By  default  :  myRotation  =  (0 0 1 0)
+/// This node defines a 3D rotation about an arbitrary axis through the origin.
+/// Bydefault: myRotation = (0 0 1 0)
 pub use crate::ffi_types::Vrml_Rotation as Rotation;
 
 unsafe impl crate::CppDeletable for Rotation {
@@ -4174,7 +4207,7 @@ impl Rotation {
 // From Vrml_SFImage.hxx
 // ========================
 
-/// **Source:** `Vrml_SFImage.hxx`:32 - `Vrml_SFImage`
+/// **Source:** `Vrml_SFImage.hxx`:30 - `Vrml_SFImage`
 /// defines SFImage type of VRML field types.
 pub use crate::ffi_types::Vrml_SFImage as SFImage;
 
@@ -4187,7 +4220,7 @@ unsafe impl crate::CppDeletable for SFImage {
 }
 
 impl SFImage {
-    /// **Source:** `Vrml_SFImage.hxx`:36 - `Vrml_SFImage::Vrml_SFImage()`
+    /// **Source:** `Vrml_SFImage.hxx`:34 - `Vrml_SFImage::Vrml_SFImage()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -4196,54 +4229,61 @@ impl SFImage {
         }
     }
 
-    /// **Source:** `Vrml_SFImage.hxx`:38 - `Vrml_SFImage::Vrml_SFImage()`
-    pub fn new_int2_sfimagenumber_handletcolstdharray1ofinteger(
+    /// **Source:** `Vrml_SFImage.hxx`:36 - `Vrml_SFImage::Vrml_SFImage()`
+    pub fn new_int2_sfimagenumber_harr1_int(
         aWidth: i32,
         aHeight: i32,
         aNumber: crate::vrml::SFImageNumber,
-        anArray: &crate::ffi_types::HandleTColStdHArray1OfInteger,
+        anArray: &crate::ffi_types::Handle_NCollection_HArray1_int,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEVRML::Vrml_SFImage_ctor_int2_sfimagenumber_handletcolstdharray1ofinteger(aWidth, aHeight, aNumber.into(), anArray)))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKDEVRML::Vrml_SFImage_ctor_int2_sfimagenumber_harr1_int(
+                    aWidth,
+                    aHeight,
+                    aNumber.into(),
+                    anArray,
+                ),
+            ))
         }
     }
 
-    /// **Source:** `Vrml_SFImage.hxx`:43 - `Vrml_SFImage::SetWidth()`
+    /// **Source:** `Vrml_SFImage.hxx`:41 - `Vrml_SFImage::SetWidth()`
     pub fn set_width(&mut self, aWidth: i32) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEVRML::Vrml_SFImage_set_width(self as *mut Self, aWidth)
         })
     }
 
-    /// **Source:** `Vrml_SFImage.hxx`:45 - `Vrml_SFImage::Width()`
+    /// **Source:** `Vrml_SFImage.hxx`:43 - `Vrml_SFImage::Width()`
     pub fn width(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEVRML::Vrml_SFImage_width(self as *const Self)
         })
     }
 
-    /// **Source:** `Vrml_SFImage.hxx`:47 - `Vrml_SFImage::SetHeight()`
+    /// **Source:** `Vrml_SFImage.hxx`:45 - `Vrml_SFImage::SetHeight()`
     pub fn set_height(&mut self, aHeight: i32) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEVRML::Vrml_SFImage_set_height(self as *mut Self, aHeight)
         })
     }
 
-    /// **Source:** `Vrml_SFImage.hxx`:49 - `Vrml_SFImage::Height()`
+    /// **Source:** `Vrml_SFImage.hxx`:47 - `Vrml_SFImage::Height()`
     pub fn height(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEVRML::Vrml_SFImage_height(self as *const Self)
         })
     }
 
-    /// **Source:** `Vrml_SFImage.hxx`:51 - `Vrml_SFImage::SetNumber()`
+    /// **Source:** `Vrml_SFImage.hxx`:49 - `Vrml_SFImage::SetNumber()`
     pub fn set_number(&mut self, aNumber: crate::vrml::SFImageNumber) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEVRML::Vrml_SFImage_set_number(self as *mut Self, aNumber.into())
         })
     }
 
-    /// **Source:** `Vrml_SFImage.hxx`:53 - `Vrml_SFImage::Number()`
+    /// **Source:** `Vrml_SFImage.hxx`:51 - `Vrml_SFImage::Number()`
     pub fn number(&self) -> crate::vrml::SFImageNumber {
         crate::vrml::SFImageNumber::try_from(crate::check_result(unsafe {
             crate::ffi_extern_TKDEVRML::Vrml_SFImage_number(self as *const Self)
@@ -4251,15 +4291,15 @@ impl SFImage {
         .unwrap()
     }
 
-    /// **Source:** `Vrml_SFImage.hxx`:55 - `Vrml_SFImage::SetArray()`
-    pub fn set_array(&mut self, anArray: &crate::ffi_types::HandleTColStdHArray1OfInteger) {
+    /// **Source:** `Vrml_SFImage.hxx`:53 - `Vrml_SFImage::SetArray()`
+    pub fn set_array(&mut self, anArray: &crate::ffi_types::Handle_NCollection_HArray1_int) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEVRML::Vrml_SFImage_set_array(self as *mut Self, anArray)
         })
     }
 
-    /// **Source:** `Vrml_SFImage.hxx`:57 - `Vrml_SFImage::Array()`
-    pub fn array(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTColStdHArray1OfInteger> {
+    /// **Source:** `Vrml_SFImage.hxx`:55 - `Vrml_SFImage::Array()`
+    pub fn array(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HArray1_int> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDEVRML::Vrml_SFImage_array(self as *const Self),
@@ -4267,15 +4307,15 @@ impl SFImage {
         }
     }
 
-    /// **Source:** `Vrml_SFImage.hxx`:59 - `Vrml_SFImage::ArrayFlag()`
+    /// **Source:** `Vrml_SFImage.hxx`:57 - `Vrml_SFImage::ArrayFlag()`
     pub fn array_flag(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEVRML::Vrml_SFImage_array_flag(self as *const Self)
         })
     }
 
-    /// **Source:** `Vrml_SFImage.hxx`:61 - `Vrml_SFImage::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `Vrml_SFImage.hxx`:59 - `Vrml_SFImage::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKDEVRML::Vrml_SFImage_dynamic_type(
                 self as *const Self,
@@ -4283,7 +4323,7 @@ impl SFImage {
         }
     }
 
-    /// **Source:** `Vrml_SFImage.hxx`:61 - `Vrml_SFImage::get_type_name()`
+    /// **Source:** `Vrml_SFImage.hxx`:59 - `Vrml_SFImage::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -4294,8 +4334,8 @@ impl SFImage {
         .into_owned()
     }
 
-    /// **Source:** `Vrml_SFImage.hxx`:61 - `Vrml_SFImage::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    /// **Source:** `Vrml_SFImage.hxx`:59 - `Vrml_SFImage::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKDEVRML::Vrml_SFImage_get_type_descriptor()))
         }
@@ -4324,7 +4364,7 @@ impl SFImage {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleVrmlSFImage> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Vrml_SFImage> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDEVRML::Vrml_SFImage_to_handle(obj.into_raw()),
@@ -4332,8 +4372,8 @@ impl SFImage {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEVRML::Vrml_SFImage_inherited_IsInstance(
                 self as *const Self,
@@ -4342,14 +4382,14 @@ impl SFImage {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEVRML::Vrml_SFImage_inherited_IsKind(self as *const Self, theType)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -4363,14 +4403,14 @@ impl SFImage {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEVRML::Vrml_SFImage_inherited_GetRefCount(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEVRML::Vrml_SFImage_inherited_IncrementRefCounter(
@@ -4379,7 +4419,7 @@ impl SFImage {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEVRML::Vrml_SFImage_inherited_DecrementRefCounter(
@@ -4388,7 +4428,7 @@ impl SFImage {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEVRML::Vrml_SFImage_inherited_Delete(self as *const Self)
@@ -4396,32 +4436,32 @@ impl SFImage {
     }
 }
 
-pub use crate::ffi_types::HandleVrmlSFImage;
+pub use crate::ffi_types::Handle_Vrml_SFImage;
 
-unsafe impl crate::CppDeletable for HandleVrmlSFImage {
+unsafe impl crate::CppDeletable for Handle_Vrml_SFImage {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKDEVRML::HandleVrmlSFImage_destructor(ptr);
+            crate::ffi_extern_TKDEVRML::Handle_Vrml_SFImage_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleVrmlSFImage {
+unsafe impl crate::CppCopyable for Handle_Vrml_SFImage {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        unsafe { crate::check_result(crate::ffi_extern_TKDEVRML::HandleVrmlSFImage_clone(ptr)) }
+        unsafe { crate::check_result(crate::ffi_extern_TKDEVRML::Handle_Vrml_SFImage_clone(ptr)) }
     }
 }
 
-impl HandleVrmlSFImage {
+impl Handle_Vrml_SFImage {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
-        unsafe { crate::ffi_extern_TKDEVRML::HandleVrmlSFImage_is_null(self as *const Self) }
+        unsafe { crate::ffi_extern_TKDEVRML::Handle_Vrml_SFImage_is_null(self as *const Self) }
     }
 
     /// Dereference this Handle to access the underlying Vrml_SFImage
     pub fn get(&self) -> &crate::ffi_types::Vrml_SFImage {
         unsafe {
-            &*crate::check_result(crate::ffi_extern_TKDEVRML::HandleVrmlSFImage_get(
+            &*crate::check_result(crate::ffi_extern_TKDEVRML::Handle_Vrml_SFImage_get(
                 self as *const Self,
             ))
         }
@@ -4430,7 +4470,7 @@ impl HandleVrmlSFImage {
     /// Dereference this Handle to mutably access the underlying Vrml_SFImage
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::Vrml_SFImage {
         unsafe {
-            &mut *crate::check_result(crate::ffi_extern_TKDEVRML::HandleVrmlSFImage_get_mut(
+            &mut *crate::check_result(crate::ffi_extern_TKDEVRML::Handle_Vrml_SFImage_get_mut(
                 self as *mut Self,
             ))
         }
@@ -4439,10 +4479,10 @@ impl HandleVrmlSFImage {
     /// Upcast Handle<Vrml_SFImage> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKDEVRML::HandleVrmlSFImage_to_HandleStandardTransient(
+                crate::ffi_extern_TKDEVRML::Handle_Vrml_SFImage_to_Handle_Standard_Transient(
                     self as *const Self,
                 ),
             ))
@@ -4456,8 +4496,8 @@ impl HandleVrmlSFImage {
 
 /// **Source:** `Vrml_SFRotation.hxx`:29 - `Vrml_SFRotation`
 /// defines SFRotation type of VRML field types.
-/// The  4  values  represent  an  axis  of  rotation  followed  by  amount  of
-/// right-handed  rotation  about  the  that  axis, in  radians.
+/// The 4 values represent an axis of rotation followed by amount of
+/// right-handed rotation about the that axis, in radians.
 pub use crate::ffi_types::Vrml_SFRotation as SFRotation;
 
 unsafe impl crate::CppDeletable for SFRotation {
@@ -4567,9 +4607,9 @@ impl SFRotation {
 /// **Source:** `Vrml_Scale.hxx`:32 - `Vrml_Scale`
 /// defines a Scale node of VRML specifying transform
 /// properties.
-/// This  node  defines  a  3D  scaling  about  the  origin.
-/// By  default  :
-/// myRotation  =  (1 1 1)
+/// This node defines a 3D scaling about the origin.
+/// By default:
+/// myRotation = (1 1 1)
 pub use crate::ffi_types::Vrml_Scale as Scale;
 
 unsafe impl crate::CppDeletable for Scale {
@@ -4877,8 +4917,8 @@ impl ShapeHints {
 
 /// **Source:** `Vrml_Sphere.hxx`:30 - `Vrml_Sphere`
 /// defines a Sphere node of VRML specifying geometry shapes.
-/// This  node  represents  a  sphere.
-/// By  default ,  the  sphere  is  centred  at  (0,0,0) and  has  a  radius  of  1.
+/// This node represents a sphere.
+/// By default, the sphere is centred at (0,0,0) and has a radius of 1.
 pub use crate::ffi_types::Vrml_Sphere as Sphere;
 
 unsafe impl crate::CppDeletable for Sphere {
@@ -4945,15 +4985,15 @@ impl Sphere {
 /// **Source:** `Vrml_SpotLight.hxx`:40 - `Vrml_SpotLight`
 /// specifies a spot light node of VRML nodes specifying
 /// properties of lights.
-/// This  node  defines  a  spotlight  light  source.
-/// A  spotlight  is  placed  at  a  fixed  location  in  3D-space
-/// and  illuminates in  a  cone  along  a  particular  direction.
-/// The  intensity  of  the  illumination  drops  off  exponentially
-/// as  a  ray  of  light  diverges  from  this  direction  toward
-/// the  edges  of  cone.
-/// The  rate  of  drop-off  and  agle  of  the  cone  are  controlled
-/// by  the  dropOfRate  and  cutOffAngle
-/// Color is  written  as  an  RGB  triple.
+/// This node defines a spotlight light source.
+/// A spotlight is placed at a fixed location in 3D-space
+/// and illuminates in a cone along a particular direction.
+/// The intensity of the illumination drops off exponentially
+/// as a ray of light diverges from this direction toward
+/// the edges of cone.
+/// The rate of drop-off and agle of the cone are controlled
+/// by the dropOfRate and cutOffAngle
+/// Color is written as an RGB triple.
 /// Light intensity must be in the range 0.0 to 1.0, inclusive.
 pub use crate::ffi_types::Vrml_SpotLight as SpotLight;
 
@@ -5136,14 +5176,14 @@ impl SpotLight {
 
 /// **Source:** `Vrml_Switch.hxx`:35 - `Vrml_Switch`
 /// defines a Switch node of VRML specifying group properties.
-/// This  group  node  traverses  one,  none,  or  all  of  its  children.
-/// One  can  use  this  node  to  switch  on  and  off  the  effects  of  some
-/// properties  or  to  switch  between  different  properties.
-/// The  whichChild  field  specifies  the  index  of  the  child  to  traverse,
-/// where  the  first  child  has  index  0.
-/// A  value  of  -1  (the  default)  means  do  not  traverse  any  children.
-/// A  value  of  -3  traverses  all  children,  making  the  switch  behave  exactly
-/// like  a  regular  Group.
+/// This group node traverses one, none, or all of its children.
+/// One can use this node to switch on and off the effects of some
+/// properties or to switch between different properties.
+/// The whichChild field specifies the index of the child to traverse,
+/// where the first child has index 0.
+/// A value of -1 (the default) means do not traverse any children.
+/// A value of -3 traverses all children, making the switch behave exactly
+/// like a regular Group.
 pub use crate::ffi_types::Vrml_Switch as Switch;
 
 unsafe impl crate::CppDeletable for Switch {
@@ -5210,12 +5250,12 @@ impl Switch {
 /// **Source:** `Vrml_Texture2.hxx`:41 - `Vrml_Texture2`
 /// defines a Texture2 node of VRML specifying properties of geometry
 /// and its appearance.
-/// This  property  node  defines  a  texture  map  and  parameters  for  that  map
-/// The  texture  can  be  read  from  the  URL  specified  by  the  filename  field.
-/// To  turn  off  texturing,  set  the  filename  field  to  an  empty  string  ("").
-/// Textures  can  alsobe  specified  inline  by  setting  the  image  field
-/// to  contain  the  texture  data.
-/// By  default  :
+/// This property node defines a texture map and parameters for that map
+/// The texture can be read from the URL specified by the filename field.
+/// To turn off texturing, set the filename field to an empty string ("").
+/// Textures can alsobe specified inline by setting the image field
+/// to contain the texture data.
+/// By default:
 /// myFilename ("")
 /// myImage (0 0 0)
 /// myWrapS (Vrml_REPEAT)
@@ -5243,7 +5283,7 @@ impl Texture2 {
     /// **Source:** `Vrml_Texture2.hxx`:48 - `Vrml_Texture2::Vrml_Texture2()`
     pub fn new_asciistring_handlevrmlsfimage_texture2wrap2(
         aFilename: &crate::t_collection::AsciiString,
-        aImage: &crate::ffi_types::HandleVrmlSFImage,
+        aImage: &crate::ffi_types::Handle_Vrml_SFImage,
         aWrapS: crate::vrml::Texture2Wrap,
         aWrapT: crate::vrml::Texture2Wrap,
     ) -> crate::OwnedPtr<Self> {
@@ -5269,14 +5309,14 @@ impl Texture2 {
     }
 
     /// **Source:** `Vrml_Texture2.hxx`:57 - `Vrml_Texture2::SetImage()`
-    pub fn set_image(&mut self, aImage: &crate::ffi_types::HandleVrmlSFImage) {
+    pub fn set_image(&mut self, aImage: &crate::ffi_types::Handle_Vrml_SFImage) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEVRML::Vrml_Texture2_set_image(self as *mut Self, aImage)
         })
     }
 
     /// **Source:** `Vrml_Texture2.hxx`:59 - `Vrml_Texture2::Image()`
-    pub fn image(&self) -> crate::OwnedPtr<crate::ffi_types::HandleVrmlSFImage> {
+    pub fn image(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_Vrml_SFImage> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDEVRML::Vrml_Texture2_image(self as *const Self),
@@ -5341,14 +5381,14 @@ impl Texture2 {
 /// **Source:** `Vrml_Texture2Transform.hxx`:41 - `Vrml_Texture2Transform`
 /// defines a Texture2Transform node of VRML specifying properties of geometry
 /// and its appearance.
-/// This  node  defines  a 2D  transformation  applied  to  texture  coordinates.
-/// This  affect  the  way  textures  are  applied  to  the  surfaces  of  subsequent
+/// This node defines a 2D transformation applied to texture coordinates.
+/// This affect the way textures are applied to the surfaces of subsequent
 /// shapes.
-/// Transformation  consisits  of(in  order)  a  non-uniform  scale  about  an
-/// arbitrary  center  point,  a  rotation  about  that  same  point,  and
-/// a  translation.  This  allows  a  user  to  change  the  size  and  position  of
-/// the  textures  on  the  shape.
-/// By  default  :
+/// Transformation consisits of (in order) a non-uniform scale about an
+/// arbitrary center point, a rotation about that same point, and
+/// a translation. This allows a user to change the size and position of
+/// the textures on the shape.
+/// By default:
 /// myTranslation (0 0)
 /// myRotation (0)
 /// myScaleFactor (1 1)
@@ -5492,17 +5532,17 @@ impl Texture2Transform {
 // From Vrml_TextureCoordinate2.hxx
 // ========================
 
-/// **Source:** `Vrml_TextureCoordinate2.hxx`:41 - `Vrml_TextureCoordinate2`
+/// **Source:** `Vrml_TextureCoordinate2.hxx`:40 - `Vrml_TextureCoordinate2`
 /// defines a TextureCoordinate2 node of VRML specifying properties of geometry
 /// and its appearance.
-/// This  node  defines  a  set  of  2D  coordinates  to  be  used  to  map  textures
-/// to  the  vertices  of  subsequent  PointSet,  IndexedLineSet,  or  IndexedFaceSet
-/// objects.  It  replaces  the  current  texture  coordinates  in  the  rendering
-/// state  for  the  shapes  to  use.
-/// Texture  coordinates  range  from  0  to  1  across  the  texture.
-/// The  horizontal  coordinate,  called  S,  is  specified  first,  followed
-/// by  vertical  coordinate,  T.
-/// By  default  :
+/// This node defines a set of 2D coordinates to be used to map textures
+/// to the vertices of subsequent PointSet, IndexedLineSet, or IndexedFaceSet
+/// objects. It replaces the current texture coordinates in the rendering
+/// state for the shapes to use.
+/// Texture coordinates range from 0 to 1 across the texture.
+/// The horizontal coordinate, called S, is specified first, followed
+/// by vertical coordinate, T.
+/// By default:
 /// myPoint (0 0)
 pub use crate::ffi_types::Vrml_TextureCoordinate2 as TextureCoordinate2;
 
@@ -5515,7 +5555,7 @@ unsafe impl crate::CppDeletable for TextureCoordinate2 {
 }
 
 impl TextureCoordinate2 {
-    /// **Source:** `Vrml_TextureCoordinate2.hxx`:45 - `Vrml_TextureCoordinate2::Vrml_TextureCoordinate2()`
+    /// **Source:** `Vrml_TextureCoordinate2.hxx`:44 - `Vrml_TextureCoordinate2::Vrml_TextureCoordinate2()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -5524,28 +5564,26 @@ impl TextureCoordinate2 {
         }
     }
 
-    /// **Source:** `Vrml_TextureCoordinate2.hxx`:47 - `Vrml_TextureCoordinate2::Vrml_TextureCoordinate2()`
-    pub fn new_handletcolgpharray1ofvec2d(
-        aPoint: &crate::ffi_types::HandleTColgpHArray1OfVec2d,
+    /// **Source:** `Vrml_TextureCoordinate2.hxx`:46 - `Vrml_TextureCoordinate2::Vrml_TextureCoordinate2()`
+    pub fn new_harr1_vec2d(
+        aPoint: &crate::ffi_types::Handle_NCollection_HArray1_gp_Vec2d,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKDEVRML::Vrml_TextureCoordinate2_ctor_handletcolgpharray1ofvec2d(
-                    aPoint,
-                ),
+                crate::ffi_extern_TKDEVRML::Vrml_TextureCoordinate2_ctor_harr1_vec2d(aPoint),
             ))
         }
     }
 
-    /// **Source:** `Vrml_TextureCoordinate2.hxx`:49 - `Vrml_TextureCoordinate2::SetPoint()`
-    pub fn set_point(&mut self, aPoint: &crate::ffi_types::HandleTColgpHArray1OfVec2d) {
+    /// **Source:** `Vrml_TextureCoordinate2.hxx`:48 - `Vrml_TextureCoordinate2::SetPoint()`
+    pub fn set_point(&mut self, aPoint: &crate::ffi_types::Handle_NCollection_HArray1_gp_Vec2d) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEVRML::Vrml_TextureCoordinate2_set_point(self as *mut Self, aPoint)
         })
     }
 
-    /// **Source:** `Vrml_TextureCoordinate2.hxx`:51 - `Vrml_TextureCoordinate2::Point()`
-    pub fn point(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTColgpHArray1OfVec2d> {
+    /// **Source:** `Vrml_TextureCoordinate2.hxx`:50 - `Vrml_TextureCoordinate2::Point()`
+    pub fn point(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HArray1_gp_Vec2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDEVRML::Vrml_TextureCoordinate2_point(self as *const Self),
@@ -5553,7 +5591,7 @@ impl TextureCoordinate2 {
         }
     }
 
-    /// **Source:** `Vrml_TextureCoordinate2.hxx`:53 - `Vrml_TextureCoordinate2::Print()`
+    /// **Source:** `Vrml_TextureCoordinate2.hxx`:52 - `Vrml_TextureCoordinate2::Print()`
     ///
     /// # Safety
     ///
@@ -5572,8 +5610,8 @@ impl TextureCoordinate2 {
         }
     }
 
-    /// **Source:** `Vrml_TextureCoordinate2.hxx`:55 - `Vrml_TextureCoordinate2::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `Vrml_TextureCoordinate2.hxx`:54 - `Vrml_TextureCoordinate2::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKDEVRML::Vrml_TextureCoordinate2_dynamic_type(
@@ -5583,7 +5621,7 @@ impl TextureCoordinate2 {
         }
     }
 
-    /// **Source:** `Vrml_TextureCoordinate2.hxx`:55 - `Vrml_TextureCoordinate2::get_type_name()`
+    /// **Source:** `Vrml_TextureCoordinate2.hxx`:54 - `Vrml_TextureCoordinate2::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -5594,8 +5632,8 @@ impl TextureCoordinate2 {
         .into_owned()
     }
 
-    /// **Source:** `Vrml_TextureCoordinate2.hxx`:55 - `Vrml_TextureCoordinate2::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    /// **Source:** `Vrml_TextureCoordinate2.hxx`:54 - `Vrml_TextureCoordinate2::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKDEVRML::Vrml_TextureCoordinate2_get_type_descriptor(),
@@ -5628,7 +5666,7 @@ impl TextureCoordinate2 {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleVrmlTextureCoordinate2> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Vrml_TextureCoordinate2> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDEVRML::Vrml_TextureCoordinate2_to_handle(obj.into_raw()),
@@ -5636,8 +5674,8 @@ impl TextureCoordinate2 {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEVRML::Vrml_TextureCoordinate2_inherited_IsInstance(
                 self as *const Self,
@@ -5646,8 +5684,8 @@ impl TextureCoordinate2 {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEVRML::Vrml_TextureCoordinate2_inherited_IsKind(
                 self as *const Self,
@@ -5656,7 +5694,7 @@ impl TextureCoordinate2 {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -5672,7 +5710,7 @@ impl TextureCoordinate2 {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEVRML::Vrml_TextureCoordinate2_inherited_GetRefCount(
@@ -5681,7 +5719,7 @@ impl TextureCoordinate2 {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEVRML::Vrml_TextureCoordinate2_inherited_IncrementRefCounter(
@@ -5690,7 +5728,7 @@ impl TextureCoordinate2 {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEVRML::Vrml_TextureCoordinate2_inherited_DecrementRefCounter(
@@ -5699,7 +5737,7 @@ impl TextureCoordinate2 {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEVRML::Vrml_TextureCoordinate2_inherited_Delete(
@@ -5709,36 +5747,38 @@ impl TextureCoordinate2 {
     }
 }
 
-pub use crate::ffi_types::HandleVrmlTextureCoordinate2;
+pub use crate::ffi_types::Handle_Vrml_TextureCoordinate2;
 
-unsafe impl crate::CppDeletable for HandleVrmlTextureCoordinate2 {
+unsafe impl crate::CppDeletable for Handle_Vrml_TextureCoordinate2 {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKDEVRML::HandleVrmlTextureCoordinate2_destructor(ptr);
+            crate::ffi_extern_TKDEVRML::Handle_Vrml_TextureCoordinate2_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleVrmlTextureCoordinate2 {
+unsafe impl crate::CppCopyable for Handle_Vrml_TextureCoordinate2 {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
         unsafe {
-            crate::check_result(crate::ffi_extern_TKDEVRML::HandleVrmlTextureCoordinate2_clone(ptr))
+            crate::check_result(crate::ffi_extern_TKDEVRML::Handle_Vrml_TextureCoordinate2_clone(
+                ptr,
+            ))
         }
     }
 }
 
-impl HandleVrmlTextureCoordinate2 {
+impl Handle_Vrml_TextureCoordinate2 {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
         unsafe {
-            crate::ffi_extern_TKDEVRML::HandleVrmlTextureCoordinate2_is_null(self as *const Self)
+            crate::ffi_extern_TKDEVRML::Handle_Vrml_TextureCoordinate2_is_null(self as *const Self)
         }
     }
 
     /// Dereference this Handle to access the underlying Vrml_TextureCoordinate2
     pub fn get(&self) -> &crate::ffi_types::Vrml_TextureCoordinate2 {
         unsafe {
-            &*crate::check_result(crate::ffi_extern_TKDEVRML::HandleVrmlTextureCoordinate2_get(
+            &*crate::check_result(crate::ffi_extern_TKDEVRML::Handle_Vrml_TextureCoordinate2_get(
                 self as *const Self,
             ))
         }
@@ -5748,7 +5788,9 @@ impl HandleVrmlTextureCoordinate2 {
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::Vrml_TextureCoordinate2 {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi_extern_TKDEVRML::HandleVrmlTextureCoordinate2_get_mut(self as *mut Self),
+                crate::ffi_extern_TKDEVRML::Handle_Vrml_TextureCoordinate2_get_mut(
+                    self as *mut Self,
+                ),
             )
         }
     }
@@ -5756,13 +5798,9 @@ impl HandleVrmlTextureCoordinate2 {
     /// Upcast Handle<Vrml_TextureCoordinate2> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKDEVRML::HandleVrmlTextureCoordinate2_to_HandleStandardTransient(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEVRML::Handle_Vrml_TextureCoordinate2_to_Handle_Standard_Transient(self as *const Self)))
         }
     }
 }
@@ -5774,10 +5812,10 @@ impl HandleVrmlTextureCoordinate2 {
 /// **Source:** `Vrml_Transform.hxx`:39 - `Vrml_Transform`
 /// defines a Transform of VRML specifying transform
 /// properties.
-/// This  node  defines  a  geometric  3D  transformation   consisting   of  (in  order)
-/// a  (possibly)  non-uniform  scale  about  an  arbitrary  point,  a  rotation  about
-/// an arbitrary point  and  axis  and  translation.
-/// By  default  :
+/// This node defines a geometric 3D transformation consisting of (in order)
+/// a (possibly) non-uniform scale about an arbitrary point, a rotation about
+/// an arbitrary point and axis and translation.
+/// By default:
 /// myTranslation (0,0,0)
 /// myRotation  (0,0,1,0)
 /// myScaleFactor (1,1,1)
@@ -5939,10 +5977,10 @@ impl Transform {
 
 /// **Source:** `Vrml_TransformSeparator.hxx`:32 - `Vrml_TransformSeparator`
 /// defines a TransformSeparator node of VRML specifying group properties.
-/// This  group  node  is  similar  to  separator  node  in  that it  saves state
-/// before  traversing  its  children  and  restores  it  afterwards.
-/// This  node  can  be  used  to  isolate  transformations  to  light  sources
-/// or  objects.
+/// This group node is similar to separator node in that it saves state
+/// before traversing its children and restores it afterwards.
+/// This node can be used to isolate transformations to light sources
+/// or objects.
 pub use crate::ffi_types::Vrml_TransformSeparator as TransformSeparator;
 
 unsafe impl crate::CppDeletable for TransformSeparator {
@@ -5990,8 +6028,8 @@ impl TransformSeparator {
 /// **Source:** `Vrml_Translation.hxx`:32 - `Vrml_Translation`
 /// defines a Translation of VRML specifying transform
 /// properties.
-/// This  node  defines  a  translation  by  3D  vector.
-/// By  default  :
+/// This node defines a translation by 3D vector.
+/// By default:
 /// myTranslation (0,0,0)
 pub use crate::ffi_types::Vrml_Translation as Translation;
 
@@ -6067,13 +6105,13 @@ impl Translation {
 
 /// **Source:** `Vrml_WWWAnchor.hxx`:36 - `Vrml_WWWAnchor`
 /// defines a WWWAnchor node of VRML specifying group properties.
-/// The  WWWAnchor  group  node  loads  a  new  scene  into  a  VRML  browser
-/// when  one  of  its  children  is  closen.  Exactly  how  a  user  "chooses"
-/// a  child  of  the  WWWAnchor  is  up  to  the  VRML browser.
-/// WWWAnchor  with  an  empty  ("")  name  does  nothing  when  its
-/// children  are  chosen.
-/// WWWAnchor  behaves  like  a  Separator,  pushing  the  traversal  state
-/// before  traversing  its  children  and  popping  it  afterwards.
+/// The WWWAnchor group node loads a new scene into a VRML browser
+/// when one of its children is closen. Exactly how a user "chooses"
+/// a child of the WWWAnchor is up to the VRML browser.
+/// WWWAnchor with an empty ("") name does nothing when its
+/// children are chosen.
+/// WWWAnchor behaves like a Separator, pushing the traversal state
+/// before traversing its children and popping it afterwards.
 pub use crate::ffi_types::Vrml_WWWAnchor as WWWAnchor;
 
 unsafe impl crate::CppDeletable for WWWAnchor {
@@ -6178,15 +6216,15 @@ impl WWWAnchor {
 
 /// **Source:** `Vrml_WWWInline.hxx`:40 - `Vrml_WWWInline`
 /// defines a WWWInline node of VRML specifying group properties.
-/// The  WWWInline  group  node  reads  its  children  from  anywhere  in  the
-/// World  Wide  Web.
-/// Exactly  when  its  children  are  read  is  not  defined;
-/// reading  the  children  may  be  delayed  until  the  WWWInline  is  actually
+/// The WWWInline group node reads its children from anywhere in the
+/// World Wide Web.
+/// Exactly when its children are read is not defined;
+/// reading the children may be delayed until the WWWInline is actually
 /// displayed.
-/// WWWInline  with  an  empty  ("")  name  does  nothing.
-/// WWWInline  behaves  like  a  Separator,  pushing  the  traversal  state
-/// before  traversing  its  children  and  popping  it  afterwards.
-/// By  defaults:
+/// WWWInline with an empty ("") name does nothing.
+/// WWWInline behaves like a Separator, pushing the traversal state
+/// before traversing its children and popping it afterwards.
+/// By defaults:
 /// myName  ("")
 /// myBboxSize (0,0,0)
 /// myBboxCenter  (0,0,0)

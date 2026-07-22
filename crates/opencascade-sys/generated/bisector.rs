@@ -7,12 +7,14 @@
 #![allow(non_snake_case)]
 
 /// **Source:** `Bisector.hxx`:35 - `Bisector::IsConvex`
-pub fn is_convex(Cu: &crate::ffi_types::HandleGeom2dCurve, Sign: f64) -> bool {
+pub fn is_convex(Cu: &crate::ffi_types::Handle_Geom2d_Curve, Sign: f64) -> bool {
     crate::check_result(unsafe { crate::ffi_extern_TKTopAlgo::Bisector_is_convex(Cu, Sign) })
 }
 
 // Handle type re-exports (targets of handle upcasts/downcasts)
-pub use crate::ffi_types::{HandleGeom2dCurve, HandleGeom2dGeometry, HandleStandardTransient};
+pub use crate::ffi_types::{
+    Handle_Geom2d_Curve, Handle_Geom2d_Geometry, Handle_Standard_Transient,
+};
 
 // ========================
 // From Bisector_Bisec.hxx
@@ -24,9 +26,9 @@ pub use crate::ffi_types::{HandleGeom2dCurve, HandleGeom2dGeometry, HandleStanda
 /// defined by the two vectors <V1>, <V2> and <Sense>.
 ///
 /// Definition of the domain:
-/// if <Sense>  is  true the bisecting line is contained in the sector
+/// if <Sense> is true the bisecting line is contained in the sector
 /// defined by <-V1> and <-V2> in the sense indirect.
-/// if <Sense>  is  false the bisecting line is contained in the sector
+/// if <Sense> is false the bisecting line is contained in the sector
 /// defined by <-V1> and <-V2> in the sense direct.
 ///
 /// <Tolerance> is used to define degenerate bisector.
@@ -36,7 +38,7 @@ pub use crate::ffi_types::{HandleGeom2dCurve, HandleGeom2dGeometry, HandleStanda
 /// if the bisector is a parabola on the focal length is smaller than
 /// <Tolerance>, the bisector is replaced by a semi_line corresponding
 /// to the axe of symmetry of the parabola.
-/// if the bisector is an ellipse  and the minor radius is smaller than
+/// if the bisector is an ellipse and the minor radius is smaller than
 /// <Tolerance>, the bisector is replaced by a segment corresponding
 /// to the great axe of the ellipse.
 pub use crate::ffi_types::Bisector_Bisec as Bisec;
@@ -60,14 +62,14 @@ impl Bisec {
     }
 
     /// **Source:** `Bisector_Bisec.hxx`:62 - `Bisector_Bisec::Perform()`
-    /// Performs  the bisecting line  between the  curves
+    /// Performs the bisecting line between the curves
     /// <Cu1> and <Cu2>.
     /// <oncurve> is True if the point <P> is common to <Cu1>
     /// and <Cu2>.
     pub fn perform_handlegeom2dcurve2_pnt2d_vec2d2_real_jointype_real_bool(
         &mut self,
-        Cu1: &crate::ffi_types::HandleGeom2dCurve,
-        Cu2: &crate::ffi_types::HandleGeom2dCurve,
+        Cu1: &crate::ffi_types::Handle_Geom2d_Curve,
+        Cu2: &crate::ffi_types::Handle_Geom2d_Curve,
         P: &crate::gp::Pnt2d,
         V1: &crate::gp::Vec2d,
         V2: &crate::gp::Vec2d,
@@ -82,13 +84,13 @@ impl Bisec {
     }
 
     /// **Source:** `Bisector_Bisec.hxx`:75 - `Bisector_Bisec::Perform()`
-    /// Performs  the bisecting line  between the  curve
+    /// Performs the bisecting line between the curve
     /// <Cu1> and the point <Pnt>.
     /// <oncurve> is True if the point <P> is the point <Pnt>.
     pub fn perform_handlegeom2dcurve_handlegeom2dpoint_pnt2d_vec2d2_real2_bool(
         &mut self,
-        Cu: &crate::ffi_types::HandleGeom2dCurve,
-        Pnt: &crate::ffi_types::HandleGeom2dPoint,
+        Cu: &crate::ffi_types::Handle_Geom2d_Curve,
+        Pnt: &crate::ffi_types::Handle_Geom2d_Point,
         P: &crate::gp::Pnt2d,
         V1: &crate::gp::Vec2d,
         V2: &crate::gp::Vec2d,
@@ -102,13 +104,13 @@ impl Bisec {
     }
 
     /// **Source:** `Bisector_Bisec.hxx`:87 - `Bisector_Bisec::Perform()`
-    /// Performs  the bisecting line  between the  curve
+    /// Performs the bisecting line between the curve
     /// <Cu> and the point <Pnt>.
     /// <oncurve> is True if the point <P> is the point <Pnt>.
     pub fn perform_handlegeom2dpoint_handlegeom2dcurve_pnt2d_vec2d2_real2_bool(
         &mut self,
-        Pnt: &crate::ffi_types::HandleGeom2dPoint,
-        Cu: &crate::ffi_types::HandleGeom2dCurve,
+        Pnt: &crate::ffi_types::Handle_Geom2d_Point,
+        Cu: &crate::ffi_types::Handle_Geom2d_Curve,
         P: &crate::gp::Pnt2d,
         V1: &crate::gp::Vec2d,
         V2: &crate::gp::Vec2d,
@@ -122,12 +124,12 @@ impl Bisec {
     }
 
     /// **Source:** `Bisector_Bisec.hxx`:98 - `Bisector_Bisec::Perform()`
-    /// Performs  the bisecting line  between the two points
-    /// <Pnt1>  and <Pnt2>.
+    /// Performs the bisecting line between the two points
+    /// <Pnt1> and <Pnt2>.
     pub fn perform_handlegeom2dpoint2_pnt2d_vec2d2_real2_bool(
         &mut self,
-        Pnt1: &crate::ffi_types::HandleGeom2dPoint,
-        Pnt2: &crate::ffi_types::HandleGeom2dPoint,
+        Pnt1: &crate::ffi_types::Handle_Geom2d_Point,
+        Pnt2: &crate::ffi_types::Handle_Geom2d_Point,
         P: &crate::gp::Pnt2d,
         V1: &crate::gp::Vec2d,
         V2: &crate::gp::Vec2d,
@@ -142,7 +144,7 @@ impl Bisec {
 
     /// **Source:** `Bisector_Bisec.hxx`:108 - `Bisector_Bisec::Value()`
     /// Returns the Curve of <me>.
-    pub fn value(&self) -> &crate::ffi_types::HandleGeom2dTrimmedCurve {
+    pub fn value(&self) -> &crate::ffi_types::Handle_Geom2d_TrimmedCurve {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKTopAlgo::Bisector_Bisec_value(
                 self as *const Self,
@@ -152,7 +154,7 @@ impl Bisec {
 
     /// **Source:** `Bisector_Bisec.hxx`:111 - `Bisector_Bisec::ChangeValue()`
     /// Returns the Curve of <me>.
-    pub fn change_value(&mut self) -> &crate::ffi_types::HandleGeom2dTrimmedCurve {
+    pub fn change_value(&mut self) -> &crate::ffi_types::Handle_Geom2d_TrimmedCurve {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKTopAlgo::Bisector_Bisec_change_value(
                 self as *mut Self,
@@ -165,7 +167,7 @@ impl Bisec {
 // From Bisector_BisecAna.hxx
 // ========================
 
-/// **Source:** `Bisector_BisecAna.hxx`:43 - `Bisector_BisecAna`
+/// **Source:** `Bisector_BisecAna.hxx`:40 - `Bisector_BisecAna`
 /// This class provides the bisecting line between two
 /// geometric elements.The elements are Circles,Lines or
 /// Points.
@@ -180,7 +182,7 @@ unsafe impl crate::CppDeletable for BisecAna {
 }
 
 impl BisecAna {
-    /// **Source:** `Bisector_BisecAna.hxx`:47 - `Bisector_BisecAna::Bisector_BisecAna()`
+    /// **Source:** `Bisector_BisecAna.hxx`:44 - `Bisector_BisecAna::Bisector_BisecAna()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -189,15 +191,15 @@ impl BisecAna {
         }
     }
 
-    /// **Source:** `Bisector_BisecAna.hxx`:53 - `Bisector_BisecAna::Perform()`
-    /// Performs  the bisecting line  between the  curves
+    /// **Source:** `Bisector_BisecAna.hxx`:50 - `Bisector_BisecAna::Perform()`
+    /// Performs the bisecting line between the curves
     /// <Cu1> and <Cu2>.
     /// <oncurve> is True if the point <P> is common to <Cu1>
     /// and <Cu2>.
     pub fn perform_handlegeom2dcurve2_pnt2d_vec2d2_real_jointype_real_bool(
         &mut self,
-        Cu1: &crate::ffi_types::HandleGeom2dCurve,
-        Cu2: &crate::ffi_types::HandleGeom2dCurve,
+        Cu1: &crate::ffi_types::Handle_Geom2d_Curve,
+        Cu2: &crate::ffi_types::Handle_Geom2d_Curve,
         P: &crate::gp::Pnt2d,
         V1: &crate::gp::Vec2d,
         V2: &crate::gp::Vec2d,
@@ -211,14 +213,14 @@ impl BisecAna {
         })
     }
 
-    /// **Source:** `Bisector_BisecAna.hxx`:66 - `Bisector_BisecAna::Perform()`
-    /// Performs  the bisecting line  between the  curve
+    /// **Source:** `Bisector_BisecAna.hxx`:63 - `Bisector_BisecAna::Perform()`
+    /// Performs the bisecting line between the curve
     /// <Cu1> and the point <Pnt>.
     /// <oncurve> is True if the point <P> is the point <Pnt>.
     pub fn perform_handlegeom2dcurve_handlegeom2dpoint_pnt2d_vec2d2_real2_bool(
         &mut self,
-        Cu: &crate::ffi_types::HandleGeom2dCurve,
-        Pnt: &crate::ffi_types::HandleGeom2dPoint,
+        Cu: &crate::ffi_types::Handle_Geom2d_Curve,
+        Pnt: &crate::ffi_types::Handle_Geom2d_Point,
         P: &crate::gp::Pnt2d,
         V1: &crate::gp::Vec2d,
         V2: &crate::gp::Vec2d,
@@ -231,14 +233,14 @@ impl BisecAna {
         })
     }
 
-    /// **Source:** `Bisector_BisecAna.hxx`:78 - `Bisector_BisecAna::Perform()`
-    /// Performs  the bisecting line  between the  curve
+    /// **Source:** `Bisector_BisecAna.hxx`:75 - `Bisector_BisecAna::Perform()`
+    /// Performs the bisecting line between the curve
     /// <Cu> and the point <Pnt>.
     /// <oncurve> is True if the point <P> is the point <Pnt>.
     pub fn perform_handlegeom2dpoint_handlegeom2dcurve_pnt2d_vec2d2_real2_bool(
         &mut self,
-        Pnt: &crate::ffi_types::HandleGeom2dPoint,
-        Cu: &crate::ffi_types::HandleGeom2dCurve,
+        Pnt: &crate::ffi_types::Handle_Geom2d_Point,
+        Cu: &crate::ffi_types::Handle_Geom2d_Curve,
         P: &crate::gp::Pnt2d,
         V1: &crate::gp::Vec2d,
         V2: &crate::gp::Vec2d,
@@ -251,13 +253,13 @@ impl BisecAna {
         })
     }
 
-    /// **Source:** `Bisector_BisecAna.hxx`:89 - `Bisector_BisecAna::Perform()`
-    /// Performs  the bisecting line  between the two points
-    /// <Pnt1>  and <Pnt2>.
+    /// **Source:** `Bisector_BisecAna.hxx`:86 - `Bisector_BisecAna::Perform()`
+    /// Performs the bisecting line between the two points
+    /// <Pnt1> and <Pnt2>.
     pub fn perform_handlegeom2dpoint2_pnt2d_vec2d2_real2_bool(
         &mut self,
-        Pnt1: &crate::ffi_types::HandleGeom2dPoint,
-        Pnt2: &crate::ffi_types::HandleGeom2dPoint,
+        Pnt1: &crate::ffi_types::Handle_Geom2d_Point,
+        Pnt2: &crate::ffi_types::Handle_Geom2d_Point,
         P: &crate::gp::Pnt2d,
         V1: &crate::gp::Vec2d,
         V2: &crate::gp::Vec2d,
@@ -270,32 +272,32 @@ impl BisecAna {
         })
     }
 
-    /// **Source:** `Bisector_BisecAna.hxx`:98 - `Bisector_BisecAna::Init()`
-    pub fn init(&mut self, bisector: &crate::ffi_types::HandleGeom2dTrimmedCurve) {
+    /// **Source:** `Bisector_BisecAna.hxx`:95 - `Bisector_BisecAna::Init()`
+    pub fn init(&mut self, bisector: &crate::ffi_types::Handle_Geom2d_TrimmedCurve) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKTopAlgo::Bisector_BisecAna_init(self as *mut Self, bisector)
         })
     }
 
-    /// **Source:** `Bisector_BisecAna.hxx`:100 - `Bisector_BisecAna::IsExtendAtStart()`
+    /// **Source:** `Bisector_BisecAna.hxx`:97 - `Bisector_BisecAna::IsExtendAtStart()`
     pub fn is_extend_at_start(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKTopAlgo::Bisector_BisecAna_is_extend_at_start(self as *const Self)
         })
     }
 
-    /// **Source:** `Bisector_BisecAna.hxx`:102 - `Bisector_BisecAna::IsExtendAtEnd()`
+    /// **Source:** `Bisector_BisecAna.hxx`:99 - `Bisector_BisecAna::IsExtendAtEnd()`
     pub fn is_extend_at_end(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKTopAlgo::Bisector_BisecAna_is_extend_at_end(self as *const Self)
         })
     }
 
-    /// **Source:** `Bisector_BisecAna.hxx`:107 - `Bisector_BisecAna::SetTrim()`
+    /// **Source:** `Bisector_BisecAna.hxx`:104 - `Bisector_BisecAna::SetTrim()`
     /// Trim <me> by a domain defined by the curve <Cu>.
     /// This domain is the set of the points which are
     /// nearest from <Cu> than the extremitis of <Cu>.
-    pub fn set_trim_handlegeom2dcurve(&mut self, Cu: &crate::ffi_types::HandleGeom2dCurve) {
+    pub fn set_trim_handlegeom2dcurve(&mut self, Cu: &crate::ffi_types::Handle_Geom2d_Curve) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKTopAlgo::Bisector_BisecAna_set_trim_handlegeom2dcurve(
                 self as *mut Self,
@@ -304,22 +306,22 @@ impl BisecAna {
         })
     }
 
-    /// **Source:** `Bisector_BisecAna.hxx`:110 - `Bisector_BisecAna::SetTrim()`
-    /// Trim <me> by a domain defined by uf  and  ul
+    /// **Source:** `Bisector_BisecAna.hxx`:107 - `Bisector_BisecAna::SetTrim()`
+    /// Trim <me> by a domain defined by uf and ul
     pub fn set_trim_real2(&mut self, uf: f64, ul: f64) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKTopAlgo::Bisector_BisecAna_set_trim_real2(self as *mut Self, uf, ul)
         })
     }
 
-    /// **Source:** `Bisector_BisecAna.hxx`:112 - `Bisector_BisecAna::Reverse()`
+    /// **Source:** `Bisector_BisecAna.hxx`:109 - `Bisector_BisecAna::Reverse()`
     pub fn reverse(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKTopAlgo::Bisector_BisecAna_reverse(self as *mut Self)
         })
     }
 
-    /// **Source:** `Bisector_BisecAna.hxx`:114 - `Bisector_BisecAna::ReversedParameter()`
+    /// **Source:** `Bisector_BisecAna.hxx`:111 - `Bisector_BisecAna::ReversedParameter()`
     pub fn reversed_parameter(&self, U: f64) -> f64 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKTopAlgo::Bisector_BisecAna_reversed_parameter(
@@ -329,7 +331,7 @@ impl BisecAna {
         })
     }
 
-    /// **Source:** `Bisector_BisecAna.hxx`:118 - `Bisector_BisecAna::IsCN()`
+    /// **Source:** `Bisector_BisecAna.hxx`:115 - `Bisector_BisecAna::IsCN()`
     /// Returns the order of continuity of the curve.
     /// Raised if N < 0.
     pub fn is_cn(&self, N: i32) -> bool {
@@ -338,8 +340,8 @@ impl BisecAna {
         })
     }
 
-    /// **Source:** `Bisector_BisecAna.hxx`:120 - `Bisector_BisecAna::Copy()`
-    pub fn copy(&self) -> crate::OwnedPtr<crate::ffi_types::HandleGeom2dGeometry> {
+    /// **Source:** `Bisector_BisecAna.hxx`:117 - `Bisector_BisecAna::Copy()`
+    pub fn copy(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_Geom2d_Geometry> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKTopAlgo::Bisector_BisecAna_copy(self as *const Self),
@@ -347,42 +349,42 @@ impl BisecAna {
         }
     }
 
-    /// **Source:** `Bisector_BisecAna.hxx`:122 - `Bisector_BisecAna::Transform()`
+    /// **Source:** `Bisector_BisecAna.hxx`:119 - `Bisector_BisecAna::Transform()`
     pub fn transform(&mut self, T: &crate::gp::Trsf2d) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKTopAlgo::Bisector_BisecAna_transform(self as *mut Self, T)
         })
     }
 
-    /// **Source:** `Bisector_BisecAna.hxx`:124 - `Bisector_BisecAna::FirstParameter()`
+    /// **Source:** `Bisector_BisecAna.hxx`:121 - `Bisector_BisecAna::FirstParameter()`
     pub fn first_parameter(&self) -> f64 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKTopAlgo::Bisector_BisecAna_first_parameter(self as *const Self)
         })
     }
 
-    /// **Source:** `Bisector_BisecAna.hxx`:126 - `Bisector_BisecAna::LastParameter()`
+    /// **Source:** `Bisector_BisecAna.hxx`:123 - `Bisector_BisecAna::LastParameter()`
     pub fn last_parameter(&self) -> f64 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKTopAlgo::Bisector_BisecAna_last_parameter(self as *const Self)
         })
     }
 
-    /// **Source:** `Bisector_BisecAna.hxx`:128 - `Bisector_BisecAna::IsClosed()`
+    /// **Source:** `Bisector_BisecAna.hxx`:125 - `Bisector_BisecAna::IsClosed()`
     pub fn is_closed(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKTopAlgo::Bisector_BisecAna_is_closed(self as *const Self)
         })
     }
 
-    /// **Source:** `Bisector_BisecAna.hxx`:130 - `Bisector_BisecAna::IsPeriodic()`
+    /// **Source:** `Bisector_BisecAna.hxx`:127 - `Bisector_BisecAna::IsPeriodic()`
     pub fn is_periodic(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKTopAlgo::Bisector_BisecAna_is_periodic(self as *const Self)
         })
     }
 
-    /// **Source:** `Bisector_BisecAna.hxx`:132 - `Bisector_BisecAna::Continuity()`
+    /// **Source:** `Bisector_BisecAna.hxx`:129 - `Bisector_BisecAna::Continuity()`
     pub fn continuity(&self) -> crate::geom_abs::Shape {
         crate::geom_abs::Shape::try_from(crate::check_result(unsafe {
             crate::ffi_extern_TKTopAlgo::Bisector_BisecAna_continuity(self as *const Self)
@@ -390,58 +392,53 @@ impl BisecAna {
         .unwrap()
     }
 
-    /// **Source:** `Bisector_BisecAna.hxx`:134 - `Bisector_BisecAna::D0()`
-    pub fn d0(&self, U: f64, P: &mut crate::gp::Pnt2d) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKTopAlgo::Bisector_BisecAna_d0(self as *const Self, U, P)
-        })
-    }
-
-    /// **Source:** `Bisector_BisecAna.hxx`:136 - `Bisector_BisecAna::D1()`
-    pub fn d1(&self, U: f64, P: &mut crate::gp::Pnt2d, V1: &mut crate::gp::Vec2d) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKTopAlgo::Bisector_BisecAna_d1(self as *const Self, U, P, V1)
-        })
-    }
-
-    /// **Source:** `Bisector_BisecAna.hxx`:138 - `Bisector_BisecAna::D2()`
-    pub fn d2(
-        &self,
-        U: f64,
-        P: &mut crate::gp::Pnt2d,
-        V1: &mut crate::gp::Vec2d,
-        V2: &mut crate::gp::Vec2d,
-    ) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKTopAlgo::Bisector_BisecAna_d2(self as *const Self, U, P, V1, V2)
-        })
-    }
-
-    /// **Source:** `Bisector_BisecAna.hxx`:143 - `Bisector_BisecAna::D3()`
-    pub fn d3(
-        &self,
-        U: f64,
-        P: &mut crate::gp::Pnt2d,
-        V1: &mut crate::gp::Vec2d,
-        V2: &mut crate::gp::Vec2d,
-        V3: &mut crate::gp::Vec2d,
-    ) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKTopAlgo::Bisector_BisecAna_d3(self as *const Self, U, P, V1, V2, V3)
-        })
-    }
-
-    /// **Source:** `Bisector_BisecAna.hxx`:149 - `Bisector_BisecAna::DN()`
-    pub fn dn(&self, U: f64, N: i32) -> crate::OwnedPtr<crate::gp::Vec2d> {
+    /// **Source:** `Bisector_BisecAna.hxx`:131 - `Bisector_BisecAna::EvalD0()`
+    pub fn eval_d0(&self, U: f64) -> crate::OwnedPtr<crate::gp::Pnt2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKTopAlgo::Bisector_BisecAna_dn(self as *const Self, U, N),
+                crate::ffi_extern_TKTopAlgo::Bisector_BisecAna_eval_d0(self as *const Self, U),
             ))
         }
     }
 
-    /// **Source:** `Bisector_BisecAna.hxx`:152 - `Bisector_BisecAna::Geom2dCurve()`
-    pub fn geom2d_curve(&self) -> crate::OwnedPtr<crate::ffi_types::HandleGeom2dCurve> {
+    /// **Source:** `Bisector_BisecAna.hxx`:133 - `Bisector_BisecAna::EvalD1()`
+    pub fn eval_d1(&self, U: f64) -> crate::OwnedPtr<crate::geom2d::Curve_ResD1> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKTopAlgo::Bisector_BisecAna_eval_d1(self as *const Self, U),
+            ))
+        }
+    }
+
+    /// **Source:** `Bisector_BisecAna.hxx`:135 - `Bisector_BisecAna::EvalD2()`
+    pub fn eval_d2(&self, U: f64) -> crate::OwnedPtr<crate::geom2d::Curve_ResD2> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKTopAlgo::Bisector_BisecAna_eval_d2(self as *const Self, U),
+            ))
+        }
+    }
+
+    /// **Source:** `Bisector_BisecAna.hxx`:137 - `Bisector_BisecAna::EvalD3()`
+    pub fn eval_d3(&self, U: f64) -> crate::OwnedPtr<crate::geom2d::Curve_ResD3> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKTopAlgo::Bisector_BisecAna_eval_d3(self as *const Self, U),
+            ))
+        }
+    }
+
+    /// **Source:** `Bisector_BisecAna.hxx`:139 - `Bisector_BisecAna::EvalDN()`
+    pub fn eval_dn(&self, U: f64, N: i32) -> crate::OwnedPtr<crate::gp::Vec2d> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKTopAlgo::Bisector_BisecAna_eval_dn(self as *const Self, U, N),
+            ))
+        }
+    }
+
+    /// **Source:** `Bisector_BisecAna.hxx`:141 - `Bisector_BisecAna::Geom2dCurve()`
+    pub fn geom2d_curve(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_Geom2d_Curve> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKTopAlgo::Bisector_BisecAna_geom2d_curve(self as *const Self),
@@ -449,14 +446,14 @@ impl BisecAna {
         }
     }
 
-    /// **Source:** `Bisector_BisecAna.hxx`:154 - `Bisector_BisecAna::Parameter()`
+    /// **Source:** `Bisector_BisecAna.hxx`:143 - `Bisector_BisecAna::Parameter()`
     pub fn parameter(&self, P: &crate::gp::Pnt2d) -> f64 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKTopAlgo::Bisector_BisecAna_parameter(self as *const Self, P)
         })
     }
 
-    /// **Source:** `Bisector_BisecAna.hxx`:156 - `Bisector_BisecAna::ParameterOfStartPoint()`
+    /// **Source:** `Bisector_BisecAna.hxx`:145 - `Bisector_BisecAna::ParameterOfStartPoint()`
     pub fn parameter_of_start_point(&self) -> f64 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKTopAlgo::Bisector_BisecAna_parameter_of_start_point(
@@ -465,7 +462,7 @@ impl BisecAna {
         })
     }
 
-    /// **Source:** `Bisector_BisecAna.hxx`:158 - `Bisector_BisecAna::ParameterOfEndPoint()`
+    /// **Source:** `Bisector_BisecAna.hxx`:147 - `Bisector_BisecAna::ParameterOfEndPoint()`
     pub fn parameter_of_end_point(&self) -> f64 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKTopAlgo::Bisector_BisecAna_parameter_of_end_point(
@@ -474,9 +471,9 @@ impl BisecAna {
         })
     }
 
-    /// **Source:** `Bisector_BisecAna.hxx`:163 - `Bisector_BisecAna::NbIntervals()`
-    /// If necessary,  breaks the  curve in  intervals  of
-    /// continuity  <C1>.    And  returns   the number   of
+    /// **Source:** `Bisector_BisecAna.hxx`:152 - `Bisector_BisecAna::NbIntervals()`
+    /// If necessary, breaks the curve in intervals of
+    /// continuity <C1>. And returns the number of
     /// intervals.
     pub fn nb_intervals(&self) -> i32 {
         crate::check_result(unsafe {
@@ -484,8 +481,8 @@ impl BisecAna {
         })
     }
 
-    /// **Source:** `Bisector_BisecAna.hxx`:167 - `Bisector_BisecAna::IntervalFirst()`
-    /// Returns  the  first  parameter    of  the  current
+    /// **Source:** `Bisector_BisecAna.hxx`:156 - `Bisector_BisecAna::IntervalFirst()`
+    /// Returns the first parameter of the current
     /// interval.
     pub fn interval_first(&self, Index: i32) -> f64 {
         crate::check_result(unsafe {
@@ -496,8 +493,8 @@ impl BisecAna {
         })
     }
 
-    /// **Source:** `Bisector_BisecAna.hxx`:171 - `Bisector_BisecAna::IntervalLast()`
-    /// Returns  the  last  parameter    of  the  current
+    /// **Source:** `Bisector_BisecAna.hxx`:160 - `Bisector_BisecAna::IntervalLast()`
+    /// Returns the last parameter of the current
     /// interval.
     pub fn interval_last(&self, Index: i32) -> f64 {
         crate::check_result(unsafe {
@@ -505,15 +502,15 @@ impl BisecAna {
         })
     }
 
-    /// **Source:** `Bisector_BisecAna.hxx`:173 - `Bisector_BisecAna::Dump()`
+    /// **Source:** `Bisector_BisecAna.hxx`:162 - `Bisector_BisecAna::Dump()`
     pub fn dump(&self, Deep: i32, Offset: i32) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKTopAlgo::Bisector_BisecAna_dump(self as *const Self, Deep, Offset)
         })
     }
 
-    /// **Source:** `Bisector_BisecAna.hxx`:176 - `Bisector_BisecAna::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `Bisector_BisecAna.hxx`:164 - `Bisector_BisecAna::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKTopAlgo::Bisector_BisecAna_dynamic_type(
                 self as *const Self,
@@ -521,7 +518,7 @@ impl BisecAna {
         }
     }
 
-    /// **Source:** `Bisector_BisecAna.hxx`:176 - `Bisector_BisecAna::get_type_name()`
+    /// **Source:** `Bisector_BisecAna.hxx`:164 - `Bisector_BisecAna::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -532,8 +529,8 @@ impl BisecAna {
         .into_owned()
     }
 
-    /// **Source:** `Bisector_BisecAna.hxx`:176 - `Bisector_BisecAna::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    /// **Source:** `Bisector_BisecAna.hxx`:164 - `Bisector_BisecAna::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKTopAlgo::Bisector_BisecAna_get_type_descriptor(),
@@ -628,7 +625,7 @@ impl BisecAna {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleBisectorBisecAna> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Bisector_BisecAna> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKTopAlgo::Bisector_BisecAna_to_handle(obj.into_raw()),
@@ -636,7 +633,7 @@ impl BisecAna {
         }
     }
 
-    /// Inherited: **Source:** `Geom2d_Curve.hxx`:83 - `Geom2d_Curve::TransformedParameter()`
+    /// Inherited: **Source:** `Geom2d_Curve.hxx`:105 - `Geom2d_Curve::TransformedParameter()`
     pub fn transformed_parameter(&self, U: f64, T: &crate::gp::Trsf2d) -> f64 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKTopAlgo::Bisector_BisecAna_inherited_TransformedParameter(
@@ -647,7 +644,7 @@ impl BisecAna {
         })
     }
 
-    /// Inherited: **Source:** `Geom2d_Curve.hxx`:94 - `Geom2d_Curve::ParametricTransformation()`
+    /// Inherited: **Source:** `Geom2d_Curve.hxx`:115 - `Geom2d_Curve::ParametricTransformation()`
     pub fn parametric_transformation(&self, T: &crate::gp::Trsf2d) -> f64 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKTopAlgo::Bisector_BisecAna_inherited_ParametricTransformation(
@@ -657,8 +654,8 @@ impl BisecAna {
         })
     }
 
-    /// Inherited: **Source:** `Geom2d_Curve.hxx`:105 - `Geom2d_Curve::Reversed()`
-    pub fn reversed(&self) -> crate::OwnedPtr<crate::ffi_types::HandleGeom2dCurve> {
+    /// Inherited: **Source:** `Geom2d_Curve.hxx`:126 - `Geom2d_Curve::Reversed()`
+    pub fn reversed(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_Geom2d_Curve> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKTopAlgo::Bisector_BisecAna_inherited_Reversed(
@@ -668,14 +665,86 @@ impl BisecAna {
         }
     }
 
-    /// Inherited: **Source:** `Geom2d_Curve.hxx`:149 - `Geom2d_Curve::Period()`
+    /// Inherited: **Source:** `Geom2d_Curve.hxx`:170 - `Geom2d_Curve::Period()`
     pub fn period(&self) -> f64 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKTopAlgo::Bisector_BisecAna_inherited_Period(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `Geom2d_Curve.hxx`:219 - `Geom2d_Curve::Value()`
+    /// Inherited: **Source:** `Geom2d_Curve.hxx`:207 - `Geom2d_Curve::D0()`
+    pub fn d0(&self, U: f64, P: &mut crate::gp::Pnt2d) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKTopAlgo::Bisector_BisecAna_inherited_D0(self as *const Self, U, P)
+        })
+    }
+
+    /// Inherited: **Source:** `Geom2d_Curve.hxx`:210 - `Geom2d_Curve::D1()`
+    pub fn d1(&self, U: f64, P: &mut crate::gp::Pnt2d, V1: &mut crate::gp::Vec2d) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKTopAlgo::Bisector_BisecAna_inherited_D1(
+                self as *const Self,
+                U,
+                P,
+                V1,
+            )
+        })
+    }
+
+    /// Inherited: **Source:** `Geom2d_Curve.hxx`:218 - `Geom2d_Curve::D2()`
+    pub fn d2(
+        &self,
+        U: f64,
+        P: &mut crate::gp::Pnt2d,
+        V1: &mut crate::gp::Vec2d,
+        V2: &mut crate::gp::Vec2d,
+    ) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKTopAlgo::Bisector_BisecAna_inherited_D2(
+                self as *const Self,
+                U,
+                P,
+                V1,
+                V2,
+            )
+        })
+    }
+
+    /// Inherited: **Source:** `Geom2d_Curve.hxx`:227 - `Geom2d_Curve::D3()`
+    pub fn d3(
+        &self,
+        U: f64,
+        P: &mut crate::gp::Pnt2d,
+        V1: &mut crate::gp::Vec2d,
+        V2: &mut crate::gp::Vec2d,
+        V3: &mut crate::gp::Vec2d,
+    ) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKTopAlgo::Bisector_BisecAna_inherited_D3(
+                self as *const Self,
+                U,
+                P,
+                V1,
+                V2,
+                V3,
+            )
+        })
+    }
+
+    /// Inherited: **Source:** `Geom2d_Curve.hxx`:237 - `Geom2d_Curve::DN()`
+    pub fn dn(&self, U: f64, N: i32) -> crate::OwnedPtr<crate::gp::Vec2d> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKTopAlgo::Bisector_BisecAna_inherited_DN(
+                    self as *const Self,
+                    U,
+                    N,
+                ),
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `Geom2d_Curve.hxx`:240 - `Geom2d_Curve::Value()`
     pub fn value(&self, U: f64) -> crate::OwnedPtr<crate::gp::Pnt2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -687,14 +756,14 @@ impl BisecAna {
         }
     }
 
-    /// Inherited: **Source:** `Geom2d_Geometry.hxx`:63 - `Geom2d_Geometry::Mirror()`
+    /// Inherited: **Source:** `Geom2d_Geometry.hxx`:60 - `Geom2d_Geometry::Mirror()`
     pub fn mirror(&mut self, P: &crate::gp::Pnt2d) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKTopAlgo::Bisector_BisecAna_inherited_Mirror(self as *mut Self, P)
         })
     }
 
-    /// Inherited: **Source:** `Geom2d_Geometry.hxx`:71 - `Geom2d_Geometry::Rotate()`
+    /// Inherited: **Source:** `Geom2d_Geometry.hxx`:68 - `Geom2d_Geometry::Rotate()`
     pub fn rotate(&mut self, P: &crate::gp::Pnt2d, Ang: f64) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKTopAlgo::Bisector_BisecAna_inherited_Rotate(
@@ -705,25 +774,25 @@ impl BisecAna {
         })
     }
 
-    /// Inherited: **Source:** `Geom2d_Geometry.hxx`:74 - `Geom2d_Geometry::Scale()`
+    /// Inherited: **Source:** `Geom2d_Geometry.hxx`:71 - `Geom2d_Geometry::Scale()`
     pub fn scale(&mut self, P: &crate::gp::Pnt2d, S: f64) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKTopAlgo::Bisector_BisecAna_inherited_Scale(self as *mut Self, P, S)
         })
     }
 
-    /// Inherited: **Source:** `Geom2d_Geometry.hxx`:77 - `Geom2d_Geometry::Translate()`
+    /// Inherited: **Source:** `Geom2d_Geometry.hxx`:74 - `Geom2d_Geometry::Translate()`
     pub fn translate(&mut self, V: &crate::gp::Vec2d) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKTopAlgo::Bisector_BisecAna_inherited_Translate(self as *mut Self, V)
         })
     }
 
-    /// Inherited: **Source:** `Geom2d_Geometry.hxx`:92 - `Geom2d_Geometry::Mirrored()`
+    /// Inherited: **Source:** `Geom2d_Geometry.hxx`:89 - `Geom2d_Geometry::Mirrored()`
     pub fn mirrored(
         &self,
         P: &crate::gp::Pnt2d,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleGeom2dGeometry> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Geom2d_Geometry> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKTopAlgo::Bisector_BisecAna_inherited_Mirrored(
@@ -734,12 +803,12 @@ impl BisecAna {
         }
     }
 
-    /// Inherited: **Source:** `Geom2d_Geometry.hxx`:96 - `Geom2d_Geometry::Rotated()`
+    /// Inherited: **Source:** `Geom2d_Geometry.hxx`:93 - `Geom2d_Geometry::Rotated()`
     pub fn rotated(
         &self,
         P: &crate::gp::Pnt2d,
         Ang: f64,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleGeom2dGeometry> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Geom2d_Geometry> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKTopAlgo::Bisector_BisecAna_inherited_Rotated(
@@ -751,12 +820,12 @@ impl BisecAna {
         }
     }
 
-    /// Inherited: **Source:** `Geom2d_Geometry.hxx`:99 - `Geom2d_Geometry::Scaled()`
+    /// Inherited: **Source:** `Geom2d_Geometry.hxx`:96 - `Geom2d_Geometry::Scaled()`
     pub fn scaled(
         &self,
         P: &crate::gp::Pnt2d,
         S: f64,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleGeom2dGeometry> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Geom2d_Geometry> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKTopAlgo::Bisector_BisecAna_inherited_Scaled(
@@ -768,11 +837,11 @@ impl BisecAna {
         }
     }
 
-    /// Inherited: **Source:** `Geom2d_Geometry.hxx`:102 - `Geom2d_Geometry::Transformed()`
+    /// Inherited: **Source:** `Geom2d_Geometry.hxx`:99 - `Geom2d_Geometry::Transformed()`
     pub fn transformed(
         &self,
         T: &crate::gp::Trsf2d,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleGeom2dGeometry> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Geom2d_Geometry> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKTopAlgo::Bisector_BisecAna_inherited_Transformed(
@@ -783,11 +852,11 @@ impl BisecAna {
         }
     }
 
-    /// Inherited: **Source:** `Geom2d_Geometry.hxx`:104 - `Geom2d_Geometry::Translated()`
+    /// Inherited: **Source:** `Geom2d_Geometry.hxx`:101 - `Geom2d_Geometry::Translated()`
     pub fn translated(
         &self,
         V: &crate::gp::Vec2d,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleGeom2dGeometry> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Geom2d_Geometry> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKTopAlgo::Bisector_BisecAna_inherited_Translated(
@@ -798,8 +867,8 @@ impl BisecAna {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKTopAlgo::Bisector_BisecAna_inherited_IsInstance(
                 self as *const Self,
@@ -808,8 +877,8 @@ impl BisecAna {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKTopAlgo::Bisector_BisecAna_inherited_IsKind(
                 self as *const Self,
@@ -818,7 +887,7 @@ impl BisecAna {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -832,7 +901,7 @@ impl BisecAna {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKTopAlgo::Bisector_BisecAna_inherited_GetRefCount(
@@ -841,7 +910,7 @@ impl BisecAna {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKTopAlgo::Bisector_BisecAna_inherited_IncrementRefCounter(
@@ -850,7 +919,7 @@ impl BisecAna {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKTopAlgo::Bisector_BisecAna_inherited_DecrementRefCounter(
@@ -859,7 +928,7 @@ impl BisecAna {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKTopAlgo::Bisector_BisecAna_inherited_Delete(self as *const Self)
@@ -867,34 +936,36 @@ impl BisecAna {
     }
 }
 
-pub use crate::ffi_types::HandleBisectorBisecAna;
+pub use crate::ffi_types::Handle_Bisector_BisecAna;
 
-unsafe impl crate::CppDeletable for HandleBisectorBisecAna {
+unsafe impl crate::CppDeletable for Handle_Bisector_BisecAna {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKTopAlgo::HandleBisectorBisecAna_destructor(ptr);
+            crate::ffi_extern_TKTopAlgo::Handle_Bisector_BisecAna_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleBisectorBisecAna {
+unsafe impl crate::CppCopyable for Handle_Bisector_BisecAna {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
         unsafe {
-            crate::check_result(crate::ffi_extern_TKTopAlgo::HandleBisectorBisecAna_clone(ptr))
+            crate::check_result(crate::ffi_extern_TKTopAlgo::Handle_Bisector_BisecAna_clone(ptr))
         }
     }
 }
 
-impl HandleBisectorBisecAna {
+impl Handle_Bisector_BisecAna {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
-        unsafe { crate::ffi_extern_TKTopAlgo::HandleBisectorBisecAna_is_null(self as *const Self) }
+        unsafe {
+            crate::ffi_extern_TKTopAlgo::Handle_Bisector_BisecAna_is_null(self as *const Self)
+        }
     }
 
     /// Dereference this Handle to access the underlying Bisector_BisecAna
     pub fn get(&self) -> &crate::ffi_types::Bisector_BisecAna {
         unsafe {
-            &*crate::check_result(crate::ffi_extern_TKTopAlgo::HandleBisectorBisecAna_get(
+            &*crate::check_result(crate::ffi_extern_TKTopAlgo::Handle_Bisector_BisecAna_get(
                 self as *const Self,
             ))
         }
@@ -903,19 +974,19 @@ impl HandleBisectorBisecAna {
     /// Dereference this Handle to mutably access the underlying Bisector_BisecAna
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::Bisector_BisecAna {
         unsafe {
-            &mut *crate::check_result(crate::ffi_extern_TKTopAlgo::HandleBisectorBisecAna_get_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKTopAlgo::Handle_Bisector_BisecAna_get_mut(self as *mut Self),
+            )
         }
     }
 
     /// Upcast Handle<Bisector_BisecAna> to Handle<Bisector_Curve>
     pub fn to_handle_bisector_curve(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleBisectorCurve> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Bisector_Curve> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKTopAlgo::HandleBisectorBisecAna_to_HandleBisectorCurve(
+                crate::ffi_extern_TKTopAlgo::Handle_Bisector_BisecAna_to_Handle_Bisector_Curve(
                     self as *const Self,
                 ),
             ))
@@ -923,10 +994,10 @@ impl HandleBisectorBisecAna {
     }
 
     /// Upcast Handle<Bisector_BisecAna> to Handle<Geom2d_Curve>
-    pub fn to_handle_geom2d_curve(&self) -> crate::OwnedPtr<crate::ffi_types::HandleGeom2dCurve> {
+    pub fn to_handle_geom2d_curve(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_Geom2d_Curve> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKTopAlgo::HandleBisectorBisecAna_to_HandleGeom2dCurve(
+                crate::ffi_extern_TKTopAlgo::Handle_Bisector_BisecAna_to_Handle_Geom2d_Curve(
                     self as *const Self,
                 ),
             ))
@@ -934,10 +1005,10 @@ impl HandleBisectorBisecAna {
     }
 
     /// Upcast Handle<Bisector_BisecAna> to Handle<Geom2d_Geometry>
-    pub fn to_handle_geometry(&self) -> crate::OwnedPtr<crate::ffi_types::HandleGeom2dGeometry> {
+    pub fn to_handle_geometry(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_Geom2d_Geometry> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKTopAlgo::HandleBisectorBisecAna_to_HandleGeom2dGeometry(
+                crate::ffi_extern_TKTopAlgo::Handle_Bisector_BisecAna_to_Handle_Geom2d_Geometry(
                     self as *const Self,
                 ),
             ))
@@ -947,10 +1018,10 @@ impl HandleBisectorBisecAna {
     /// Upcast Handle<Bisector_BisecAna> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKTopAlgo::HandleBisectorBisecAna_to_HandleStandardTransient(
+                crate::ffi_extern_TKTopAlgo::Handle_Bisector_BisecAna_to_Handle_Standard_Transient(
                     self as *const Self,
                 ),
             ))
@@ -962,7 +1033,7 @@ impl HandleBisectorBisecAna {
 // From Bisector_BisecCC.hxx
 // ========================
 
-/// **Source:** `Bisector_BisecCC.hxx`:38 - `Bisector_BisecCC`
+/// **Source:** `Bisector_BisecCC.hxx`:35 - `Bisector_BisecCC`
 /// Construct the bisector between two curves.
 /// The curves can intersect only in their extremities.
 pub use crate::ffi_types::Bisector_BisecCC as BisecCC;
@@ -976,7 +1047,7 @@ unsafe impl crate::CppDeletable for BisecCC {
 }
 
 impl BisecCC {
-    /// **Source:** `Bisector_BisecCC.hxx`:42 - `Bisector_BisecCC::Bisector_BisecCC()`
+    /// **Source:** `Bisector_BisecCC.hxx`:39 - `Bisector_BisecCC::Bisector_BisecCC()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -985,11 +1056,11 @@ impl BisecCC {
         }
     }
 
-    /// **Source:** `Bisector_BisecCC.hxx`:55 - `Bisector_BisecCC::Bisector_BisecCC()`
-    /// Constructs  the bisector  between the  curves <Cu1>
+    /// **Source:** `Bisector_BisecCC.hxx`:52 - `Bisector_BisecCC::Bisector_BisecCC()`
+    /// Constructs the bisector between the curves <Cu1>
     /// and <Cu2>.
     ///
-    /// <Side1>  (resp <Side2>) = 1   if the
+    /// <Side1> (resp <Side2>) = 1 if the
     /// bisector curve is on the left of <Cu1> (resp <Cu2>)
     /// else <Side1> (resp <Side2>) = -1.
     ///
@@ -998,8 +1069,8 @@ impl BisecCC {
     /// between the points of the bisector and <Cu> is smaller
     /// than <DistMax>.
     pub fn new_handlegeom2dcurve2_real2_pnt2d_real(
-        Cu1: &crate::ffi_types::HandleGeom2dCurve,
-        Cu2: &crate::ffi_types::HandleGeom2dCurve,
+        Cu1: &crate::ffi_types::Handle_Geom2d_Curve,
+        Cu2: &crate::ffi_types::Handle_Geom2d_Curve,
         Side1: f64,
         Side2: f64,
         Origin: &crate::gp::Pnt2d,
@@ -1010,11 +1081,11 @@ impl BisecCC {
         }
     }
 
-    /// **Source:** `Bisector_BisecCC.hxx`:55 - `Bisector_BisecCC::Bisector_BisecCC()`
-    /// Constructs  the bisector  between the  curves <Cu1>
+    /// **Source:** `Bisector_BisecCC.hxx`:52 - `Bisector_BisecCC::Bisector_BisecCC()`
+    /// Constructs the bisector between the curves <Cu1>
     /// and <Cu2>.
     ///
-    /// <Side1>  (resp <Side2>) = 1   if the
+    /// <Side1> (resp <Side2>) = 1 if the
     /// bisector curve is on the left of <Cu1> (resp <Cu2>)
     /// else <Side1> (resp <Side2>) = -1.
     ///
@@ -1023,8 +1094,8 @@ impl BisecCC {
     /// between the points of the bisector and <Cu> is smaller
     /// than <DistMax>.
     pub fn new_handlegeom2dcurve2_real2_pnt2d(
-        Cu1: &crate::ffi_types::HandleGeom2dCurve,
-        Cu2: &crate::ffi_types::HandleGeom2dCurve,
+        Cu1: &crate::ffi_types::Handle_Geom2d_Curve,
+        Cu2: &crate::ffi_types::Handle_Geom2d_Curve,
         Side1: f64,
         Side2: f64,
         Origin: &crate::gp::Pnt2d,
@@ -1032,11 +1103,11 @@ impl BisecCC {
         Self::new_handlegeom2dcurve2_real2_pnt2d_real(Cu1, Cu2, Side1, Side2, Origin, 500.0)
     }
 
-    /// **Source:** `Bisector_BisecCC.hxx`:74 - `Bisector_BisecCC::Perform()`
-    /// Computes the bisector  between the  curves <Cu1>
+    /// **Source:** `Bisector_BisecCC.hxx`:71 - `Bisector_BisecCC::Perform()`
+    /// Computes the bisector between the curves <Cu1>
     /// and <Cu2>.
     ///
-    /// <Side1>  (resp <Side2>) = 1   if the
+    /// <Side1> (resp <Side2>) = 1 if the
     /// bisector curve is on the left of <Cu1> (resp <Cu2>)
     /// else <Side1> (resp <Side2>) = -1.
     ///
@@ -1047,8 +1118,8 @@ impl BisecCC {
     /// than <DistMax>.
     pub fn perform(
         &mut self,
-        Cu1: &crate::ffi_types::HandleGeom2dCurve,
-        Cu2: &crate::ffi_types::HandleGeom2dCurve,
+        Cu1: &crate::ffi_types::Handle_Geom2d_Curve,
+        Cu2: &crate::ffi_types::Handle_Geom2d_Curve,
         Side1: f64,
         Side2: f64,
         Origin: &crate::gp::Pnt2d,
@@ -1067,35 +1138,35 @@ impl BisecCC {
         })
     }
 
-    /// **Source:** `Bisector_BisecCC.hxx`:81 - `Bisector_BisecCC::IsExtendAtStart()`
+    /// **Source:** `Bisector_BisecCC.hxx`:78 - `Bisector_BisecCC::IsExtendAtStart()`
     pub fn is_extend_at_start(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKTopAlgo::Bisector_BisecCC_is_extend_at_start(self as *const Self)
         })
     }
 
-    /// **Source:** `Bisector_BisecCC.hxx`:83 - `Bisector_BisecCC::IsExtendAtEnd()`
+    /// **Source:** `Bisector_BisecCC.hxx`:80 - `Bisector_BisecCC::IsExtendAtEnd()`
     pub fn is_extend_at_end(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKTopAlgo::Bisector_BisecCC_is_extend_at_end(self as *const Self)
         })
     }
 
-    /// **Source:** `Bisector_BisecCC.hxx`:85 - `Bisector_BisecCC::Reverse()`
+    /// **Source:** `Bisector_BisecCC.hxx`:82 - `Bisector_BisecCC::Reverse()`
     pub fn reverse(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKTopAlgo::Bisector_BisecCC_reverse(self as *mut Self)
         })
     }
 
-    /// **Source:** `Bisector_BisecCC.hxx`:87 - `Bisector_BisecCC::ReversedParameter()`
+    /// **Source:** `Bisector_BisecCC.hxx`:84 - `Bisector_BisecCC::ReversedParameter()`
     pub fn reversed_parameter(&self, U: f64) -> f64 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKTopAlgo::Bisector_BisecCC_reversed_parameter(self as *const Self, U)
         })
     }
 
-    /// **Source:** `Bisector_BisecCC.hxx`:91 - `Bisector_BisecCC::IsCN()`
+    /// **Source:** `Bisector_BisecCC.hxx`:88 - `Bisector_BisecCC::IsCN()`
     /// Returns the order of continuity of the curve.
     /// Raised if N < 0.
     pub fn is_cn(&self, N: i32) -> bool {
@@ -1104,11 +1175,11 @@ impl BisecCC {
         })
     }
 
-    /// **Source:** `Bisector_BisecCC.hxx`:96 - `Bisector_BisecCC::ChangeGuide()`
-    /// The parameter  on <me> is linked to  the parameter
+    /// **Source:** `Bisector_BisecCC.hxx`:93 - `Bisector_BisecCC::ChangeGuide()`
+    /// The parameter on <me> is linked to the parameter
     /// on the first curve. This method creates the same bisector
     /// where the curves are inversed.
-    pub fn change_guide(&self) -> crate::OwnedPtr<crate::ffi_types::HandleBisectorBisecCC> {
+    pub fn change_guide(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_Bisector_BisecCC> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKTopAlgo::Bisector_BisecCC_change_guide(self as *const Self),
@@ -1116,8 +1187,8 @@ impl BisecCC {
         }
     }
 
-    /// **Source:** `Bisector_BisecCC.hxx`:98 - `Bisector_BisecCC::Copy()`
-    pub fn copy(&self) -> crate::OwnedPtr<crate::ffi_types::HandleGeom2dGeometry> {
+    /// **Source:** `Bisector_BisecCC.hxx`:95 - `Bisector_BisecCC::Copy()`
+    pub fn copy(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_Geom2d_Geometry> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKTopAlgo::Bisector_BisecCC_copy(self as *const Self),
@@ -1125,7 +1196,7 @@ impl BisecCC {
         }
     }
 
-    /// **Source:** `Bisector_BisecCC.hxx`:104 - `Bisector_BisecCC::Transform()`
+    /// **Source:** `Bisector_BisecCC.hxx`:101 - `Bisector_BisecCC::Transform()`
     /// Transformation of a geometric object. This transformation
     /// can be a translation, a rotation, a symmetry, a scaling
     /// or a complex transformation obtained by combination of
@@ -1136,21 +1207,21 @@ impl BisecCC {
         })
     }
 
-    /// **Source:** `Bisector_BisecCC.hxx`:106 - `Bisector_BisecCC::FirstParameter()`
+    /// **Source:** `Bisector_BisecCC.hxx`:103 - `Bisector_BisecCC::FirstParameter()`
     pub fn first_parameter(&self) -> f64 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKTopAlgo::Bisector_BisecCC_first_parameter(self as *const Self)
         })
     }
 
-    /// **Source:** `Bisector_BisecCC.hxx`:108 - `Bisector_BisecCC::LastParameter()`
+    /// **Source:** `Bisector_BisecCC.hxx`:105 - `Bisector_BisecCC::LastParameter()`
     pub fn last_parameter(&self) -> f64 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKTopAlgo::Bisector_BisecCC_last_parameter(self as *const Self)
         })
     }
 
-    /// **Source:** `Bisector_BisecCC.hxx`:110 - `Bisector_BisecCC::Continuity()`
+    /// **Source:** `Bisector_BisecCC.hxx`:107 - `Bisector_BisecCC::Continuity()`
     pub fn continuity(&self) -> crate::geom_abs::Shape {
         crate::geom_abs::Shape::try_from(crate::check_result(unsafe {
             crate::ffi_extern_TKTopAlgo::Bisector_BisecCC_continuity(self as *const Self)
@@ -1158,9 +1229,9 @@ impl BisecCC {
         .unwrap()
     }
 
-    /// **Source:** `Bisector_BisecCC.hxx`:115 - `Bisector_BisecCC::NbIntervals()`
-    /// If necessary,  breaks the  curve in  intervals  of
-    /// continuity  <C1>.    And  returns   the number   of
+    /// **Source:** `Bisector_BisecCC.hxx`:112 - `Bisector_BisecCC::NbIntervals()`
+    /// If necessary, breaks the curve in intervals of
+    /// continuity <C1>. And returns the number of
     /// intervals.
     pub fn nb_intervals(&self) -> i32 {
         crate::check_result(unsafe {
@@ -1168,8 +1239,8 @@ impl BisecCC {
         })
     }
 
-    /// **Source:** `Bisector_BisecCC.hxx`:119 - `Bisector_BisecCC::IntervalFirst()`
-    /// Returns  the  first  parameter    of  the  current
+    /// **Source:** `Bisector_BisecCC.hxx`:116 - `Bisector_BisecCC::IntervalFirst()`
+    /// Returns the first parameter of the current
     /// interval.
     pub fn interval_first(&self, Index: i32) -> f64 {
         crate::check_result(unsafe {
@@ -1177,8 +1248,8 @@ impl BisecCC {
         })
     }
 
-    /// **Source:** `Bisector_BisecCC.hxx`:123 - `Bisector_BisecCC::IntervalLast()`
-    /// Returns  the  last  parameter    of  the  current
+    /// **Source:** `Bisector_BisecCC.hxx`:120 - `Bisector_BisecCC::IntervalLast()`
+    /// Returns the last parameter of the current
     /// interval.
     pub fn interval_last(&self, Index: i32) -> f64 {
         crate::check_result(unsafe {
@@ -1186,7 +1257,7 @@ impl BisecCC {
         })
     }
 
-    /// **Source:** `Bisector_BisecCC.hxx`:125 - `Bisector_BisecCC::IntervalContinuity()`
+    /// **Source:** `Bisector_BisecCC.hxx`:122 - `Bisector_BisecCC::IntervalContinuity()`
     pub fn interval_continuity(&self) -> crate::geom_abs::Shape {
         crate::geom_abs::Shape::try_from(crate::check_result(unsafe {
             crate::ffi_extern_TKTopAlgo::Bisector_BisecCC_interval_continuity(self as *const Self)
@@ -1194,21 +1265,21 @@ impl BisecCC {
         .unwrap()
     }
 
-    /// **Source:** `Bisector_BisecCC.hxx`:127 - `Bisector_BisecCC::IsClosed()`
+    /// **Source:** `Bisector_BisecCC.hxx`:124 - `Bisector_BisecCC::IsClosed()`
     pub fn is_closed(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKTopAlgo::Bisector_BisecCC_is_closed(self as *const Self)
         })
     }
 
-    /// **Source:** `Bisector_BisecCC.hxx`:129 - `Bisector_BisecCC::IsPeriodic()`
+    /// **Source:** `Bisector_BisecCC.hxx`:126 - `Bisector_BisecCC::IsPeriodic()`
     pub fn is_periodic(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKTopAlgo::Bisector_BisecCC_is_periodic(self as *const Self)
         })
     }
 
-    /// **Source:** `Bisector_BisecCC.hxx`:136 - `Bisector_BisecCC::ValueAndDist()`
+    /// **Source:** `Bisector_BisecCC.hxx`:133 - `Bisector_BisecCC::ValueAndDist()`
     /// Returns the point of parameter U.
     /// Computes the distance between the current point and
     /// the two curves I separate.
@@ -1234,7 +1305,7 @@ impl BisecCC {
         }
     }
 
-    /// **Source:** `Bisector_BisecCC.hxx`:146 - `Bisector_BisecCC::ValueByInt()`
+    /// **Source:** `Bisector_BisecCC.hxx`:143 - `Bisector_BisecCC::ValueByInt()`
     /// Returns the point of parameter U.
     /// Computes the distance between the current point and
     /// the two curves I separate.
@@ -1260,64 +1331,59 @@ impl BisecCC {
         }
     }
 
-    /// **Source:** `Bisector_BisecCC.hxx`:151 - `Bisector_BisecCC::D0()`
-    pub fn d0(&self, U: f64, P: &mut crate::gp::Pnt2d) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKTopAlgo::Bisector_BisecCC_d0(self as *const Self, U, P)
-        })
-    }
-
-    /// **Source:** `Bisector_BisecCC.hxx`:153 - `Bisector_BisecCC::D1()`
-    pub fn d1(&self, U: f64, P: &mut crate::gp::Pnt2d, V: &mut crate::gp::Vec2d) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKTopAlgo::Bisector_BisecCC_d1(self as *const Self, U, P, V)
-        })
-    }
-
-    /// **Source:** `Bisector_BisecCC.hxx`:155 - `Bisector_BisecCC::D2()`
-    pub fn d2(
-        &self,
-        U: f64,
-        P: &mut crate::gp::Pnt2d,
-        V1: &mut crate::gp::Vec2d,
-        V2: &mut crate::gp::Vec2d,
-    ) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKTopAlgo::Bisector_BisecCC_d2(self as *const Self, U, P, V1, V2)
-        })
-    }
-
-    /// **Source:** `Bisector_BisecCC.hxx`:160 - `Bisector_BisecCC::D3()`
-    pub fn d3(
-        &self,
-        U: f64,
-        P: &mut crate::gp::Pnt2d,
-        V1: &mut crate::gp::Vec2d,
-        V2: &mut crate::gp::Vec2d,
-        V3: &mut crate::gp::Vec2d,
-    ) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKTopAlgo::Bisector_BisecCC_d3(self as *const Self, U, P, V1, V2, V3)
-        })
-    }
-
-    /// **Source:** `Bisector_BisecCC.hxx`:166 - `Bisector_BisecCC::DN()`
-    pub fn dn(&self, U: f64, N: i32) -> crate::OwnedPtr<crate::gp::Vec2d> {
+    /// **Source:** `Bisector_BisecCC.hxx`:148 - `Bisector_BisecCC::EvalD0()`
+    pub fn eval_d0(&self, U: f64) -> crate::OwnedPtr<crate::gp::Pnt2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKTopAlgo::Bisector_BisecCC_dn(self as *const Self, U, N),
+                crate::ffi_extern_TKTopAlgo::Bisector_BisecCC_eval_d0(self as *const Self, U),
             ))
         }
     }
 
-    /// **Source:** `Bisector_BisecCC.hxx`:169 - `Bisector_BisecCC::IsEmpty()`
+    /// **Source:** `Bisector_BisecCC.hxx`:150 - `Bisector_BisecCC::EvalD1()`
+    pub fn eval_d1(&self, U: f64) -> crate::OwnedPtr<crate::geom2d::Curve_ResD1> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKTopAlgo::Bisector_BisecCC_eval_d1(self as *const Self, U),
+            ))
+        }
+    }
+
+    /// **Source:** `Bisector_BisecCC.hxx`:152 - `Bisector_BisecCC::EvalD2()`
+    pub fn eval_d2(&self, U: f64) -> crate::OwnedPtr<crate::geom2d::Curve_ResD2> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKTopAlgo::Bisector_BisecCC_eval_d2(self as *const Self, U),
+            ))
+        }
+    }
+
+    /// **Source:** `Bisector_BisecCC.hxx`:154 - `Bisector_BisecCC::EvalD3()`
+    pub fn eval_d3(&self, U: f64) -> crate::OwnedPtr<crate::geom2d::Curve_ResD3> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKTopAlgo::Bisector_BisecCC_eval_d3(self as *const Self, U),
+            ))
+        }
+    }
+
+    /// **Source:** `Bisector_BisecCC.hxx`:156 - `Bisector_BisecCC::EvalDN()`
+    pub fn eval_dn(&self, U: f64, N: i32) -> crate::OwnedPtr<crate::gp::Vec2d> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKTopAlgo::Bisector_BisecCC_eval_dn(self as *const Self, U, N),
+            ))
+        }
+    }
+
+    /// **Source:** `Bisector_BisecCC.hxx`:158 - `Bisector_BisecCC::IsEmpty()`
     pub fn is_empty(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKTopAlgo::Bisector_BisecCC_is_empty(self as *const Self)
         })
     }
 
-    /// **Source:** `Bisector_BisecCC.hxx`:173 - `Bisector_BisecCC::LinkBisCurve()`
+    /// **Source:** `Bisector_BisecCC.hxx`:162 - `Bisector_BisecCC::LinkBisCurve()`
     /// Returns the parameter on the curve1 of the projection
     /// of the point of parameter U on <me>.
     pub fn link_bis_curve(&self, U: f64) -> f64 {
@@ -1326,7 +1392,7 @@ impl BisecCC {
         })
     }
 
-    /// **Source:** `Bisector_BisecCC.hxx`:176 - `Bisector_BisecCC::LinkCurveBis()`
+    /// **Source:** `Bisector_BisecCC.hxx`:165 - `Bisector_BisecCC::LinkCurveBis()`
     /// Returns the reciproque of LinkBisCurve.
     pub fn link_curve_bis(&self, U: f64) -> f64 {
         crate::check_result(unsafe {
@@ -1334,15 +1400,15 @@ impl BisecCC {
         })
     }
 
-    /// **Source:** `Bisector_BisecCC.hxx`:178 - `Bisector_BisecCC::Parameter()`
+    /// **Source:** `Bisector_BisecCC.hxx`:167 - `Bisector_BisecCC::Parameter()`
     pub fn parameter(&self, P: &crate::gp::Pnt2d) -> f64 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKTopAlgo::Bisector_BisecCC_parameter(self as *const Self, P)
         })
     }
 
-    /// **Source:** `Bisector_BisecCC.hxx`:180 - `Bisector_BisecCC::Curve()`
-    pub fn curve(&self, IndCurve: i32) -> crate::OwnedPtr<crate::ffi_types::HandleGeom2dCurve> {
+    /// **Source:** `Bisector_BisecCC.hxx`:169 - `Bisector_BisecCC::Curve()`
+    pub fn curve(&self, IndCurve: i32) -> crate::OwnedPtr<crate::ffi_types::Handle_Geom2d_Curve> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKTopAlgo::Bisector_BisecCC_curve(self as *const Self, IndCurve),
@@ -1350,7 +1416,7 @@ impl BisecCC {
         }
     }
 
-    /// **Source:** `Bisector_BisecCC.hxx`:182 - `Bisector_BisecCC::Polygon()`
+    /// **Source:** `Bisector_BisecCC.hxx`:171 - `Bisector_BisecCC::Polygon()`
     pub fn polygon(&self) -> &PolyBis {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKTopAlgo::Bisector_BisecCC_polygon(
@@ -1359,15 +1425,15 @@ impl BisecCC {
         }
     }
 
-    /// **Source:** `Bisector_BisecCC.hxx`:184 - `Bisector_BisecCC::Dump()`
+    /// **Source:** `Bisector_BisecCC.hxx`:173 - `Bisector_BisecCC::Dump()`
     pub fn dump(&self, Deep: i32, Offset: i32) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKTopAlgo::Bisector_BisecCC_dump(self as *const Self, Deep, Offset)
         })
     }
 
-    /// **Source:** `Bisector_BisecCC.hxx`:187 - `Bisector_BisecCC::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `Bisector_BisecCC.hxx`:175 - `Bisector_BisecCC::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKTopAlgo::Bisector_BisecCC_dynamic_type(
                 self as *const Self,
@@ -1375,7 +1441,7 @@ impl BisecCC {
         }
     }
 
-    /// **Source:** `Bisector_BisecCC.hxx`:187 - `Bisector_BisecCC::get_type_name()`
+    /// **Source:** `Bisector_BisecCC.hxx`:175 - `Bisector_BisecCC::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -1386,8 +1452,8 @@ impl BisecCC {
         .into_owned()
     }
 
-    /// **Source:** `Bisector_BisecCC.hxx`:187 - `Bisector_BisecCC::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    /// **Source:** `Bisector_BisecCC.hxx`:175 - `Bisector_BisecCC::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKTopAlgo::Bisector_BisecCC_get_type_descriptor(),
@@ -1480,7 +1546,7 @@ impl BisecCC {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleBisectorBisecCC> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Bisector_BisecCC> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKTopAlgo::Bisector_BisecCC_to_handle(obj.into_raw()),
@@ -1488,7 +1554,7 @@ impl BisecCC {
         }
     }
 
-    /// Inherited: **Source:** `Geom2d_Curve.hxx`:83 - `Geom2d_Curve::TransformedParameter()`
+    /// Inherited: **Source:** `Geom2d_Curve.hxx`:105 - `Geom2d_Curve::TransformedParameter()`
     pub fn transformed_parameter(&self, U: f64, T: &crate::gp::Trsf2d) -> f64 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKTopAlgo::Bisector_BisecCC_inherited_TransformedParameter(
@@ -1499,7 +1565,7 @@ impl BisecCC {
         })
     }
 
-    /// Inherited: **Source:** `Geom2d_Curve.hxx`:94 - `Geom2d_Curve::ParametricTransformation()`
+    /// Inherited: **Source:** `Geom2d_Curve.hxx`:115 - `Geom2d_Curve::ParametricTransformation()`
     pub fn parametric_transformation(&self, T: &crate::gp::Trsf2d) -> f64 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKTopAlgo::Bisector_BisecCC_inherited_ParametricTransformation(
@@ -1509,8 +1575,8 @@ impl BisecCC {
         })
     }
 
-    /// Inherited: **Source:** `Geom2d_Curve.hxx`:105 - `Geom2d_Curve::Reversed()`
-    pub fn reversed(&self) -> crate::OwnedPtr<crate::ffi_types::HandleGeom2dCurve> {
+    /// Inherited: **Source:** `Geom2d_Curve.hxx`:126 - `Geom2d_Curve::Reversed()`
+    pub fn reversed(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_Geom2d_Curve> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKTopAlgo::Bisector_BisecCC_inherited_Reversed(
@@ -1520,14 +1586,86 @@ impl BisecCC {
         }
     }
 
-    /// Inherited: **Source:** `Geom2d_Curve.hxx`:149 - `Geom2d_Curve::Period()`
+    /// Inherited: **Source:** `Geom2d_Curve.hxx`:170 - `Geom2d_Curve::Period()`
     pub fn period(&self) -> f64 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKTopAlgo::Bisector_BisecCC_inherited_Period(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `Geom2d_Curve.hxx`:219 - `Geom2d_Curve::Value()`
+    /// Inherited: **Source:** `Geom2d_Curve.hxx`:207 - `Geom2d_Curve::D0()`
+    pub fn d0(&self, U: f64, P: &mut crate::gp::Pnt2d) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKTopAlgo::Bisector_BisecCC_inherited_D0(self as *const Self, U, P)
+        })
+    }
+
+    /// Inherited: **Source:** `Geom2d_Curve.hxx`:210 - `Geom2d_Curve::D1()`
+    pub fn d1(&self, U: f64, P: &mut crate::gp::Pnt2d, V1: &mut crate::gp::Vec2d) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKTopAlgo::Bisector_BisecCC_inherited_D1(
+                self as *const Self,
+                U,
+                P,
+                V1,
+            )
+        })
+    }
+
+    /// Inherited: **Source:** `Geom2d_Curve.hxx`:218 - `Geom2d_Curve::D2()`
+    pub fn d2(
+        &self,
+        U: f64,
+        P: &mut crate::gp::Pnt2d,
+        V1: &mut crate::gp::Vec2d,
+        V2: &mut crate::gp::Vec2d,
+    ) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKTopAlgo::Bisector_BisecCC_inherited_D2(
+                self as *const Self,
+                U,
+                P,
+                V1,
+                V2,
+            )
+        })
+    }
+
+    /// Inherited: **Source:** `Geom2d_Curve.hxx`:227 - `Geom2d_Curve::D3()`
+    pub fn d3(
+        &self,
+        U: f64,
+        P: &mut crate::gp::Pnt2d,
+        V1: &mut crate::gp::Vec2d,
+        V2: &mut crate::gp::Vec2d,
+        V3: &mut crate::gp::Vec2d,
+    ) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKTopAlgo::Bisector_BisecCC_inherited_D3(
+                self as *const Self,
+                U,
+                P,
+                V1,
+                V2,
+                V3,
+            )
+        })
+    }
+
+    /// Inherited: **Source:** `Geom2d_Curve.hxx`:237 - `Geom2d_Curve::DN()`
+    pub fn dn(&self, U: f64, N: i32) -> crate::OwnedPtr<crate::gp::Vec2d> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKTopAlgo::Bisector_BisecCC_inherited_DN(
+                    self as *const Self,
+                    U,
+                    N,
+                ),
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `Geom2d_Curve.hxx`:240 - `Geom2d_Curve::Value()`
     pub fn value(&self, U: f64) -> crate::OwnedPtr<crate::gp::Pnt2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -1539,14 +1677,14 @@ impl BisecCC {
         }
     }
 
-    /// Inherited: **Source:** `Geom2d_Geometry.hxx`:63 - `Geom2d_Geometry::Mirror()`
+    /// Inherited: **Source:** `Geom2d_Geometry.hxx`:60 - `Geom2d_Geometry::Mirror()`
     pub fn mirror(&mut self, P: &crate::gp::Pnt2d) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKTopAlgo::Bisector_BisecCC_inherited_Mirror(self as *mut Self, P)
         })
     }
 
-    /// Inherited: **Source:** `Geom2d_Geometry.hxx`:71 - `Geom2d_Geometry::Rotate()`
+    /// Inherited: **Source:** `Geom2d_Geometry.hxx`:68 - `Geom2d_Geometry::Rotate()`
     pub fn rotate(&mut self, P: &crate::gp::Pnt2d, Ang: f64) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKTopAlgo::Bisector_BisecCC_inherited_Rotate(
@@ -1557,25 +1695,25 @@ impl BisecCC {
         })
     }
 
-    /// Inherited: **Source:** `Geom2d_Geometry.hxx`:74 - `Geom2d_Geometry::Scale()`
+    /// Inherited: **Source:** `Geom2d_Geometry.hxx`:71 - `Geom2d_Geometry::Scale()`
     pub fn scale(&mut self, P: &crate::gp::Pnt2d, S: f64) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKTopAlgo::Bisector_BisecCC_inherited_Scale(self as *mut Self, P, S)
         })
     }
 
-    /// Inherited: **Source:** `Geom2d_Geometry.hxx`:77 - `Geom2d_Geometry::Translate()`
+    /// Inherited: **Source:** `Geom2d_Geometry.hxx`:74 - `Geom2d_Geometry::Translate()`
     pub fn translate(&mut self, V: &crate::gp::Vec2d) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKTopAlgo::Bisector_BisecCC_inherited_Translate(self as *mut Self, V)
         })
     }
 
-    /// Inherited: **Source:** `Geom2d_Geometry.hxx`:92 - `Geom2d_Geometry::Mirrored()`
+    /// Inherited: **Source:** `Geom2d_Geometry.hxx`:89 - `Geom2d_Geometry::Mirrored()`
     pub fn mirrored(
         &self,
         P: &crate::gp::Pnt2d,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleGeom2dGeometry> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Geom2d_Geometry> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKTopAlgo::Bisector_BisecCC_inherited_Mirrored(
@@ -1586,12 +1724,12 @@ impl BisecCC {
         }
     }
 
-    /// Inherited: **Source:** `Geom2d_Geometry.hxx`:96 - `Geom2d_Geometry::Rotated()`
+    /// Inherited: **Source:** `Geom2d_Geometry.hxx`:93 - `Geom2d_Geometry::Rotated()`
     pub fn rotated(
         &self,
         P: &crate::gp::Pnt2d,
         Ang: f64,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleGeom2dGeometry> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Geom2d_Geometry> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKTopAlgo::Bisector_BisecCC_inherited_Rotated(
@@ -1603,12 +1741,12 @@ impl BisecCC {
         }
     }
 
-    /// Inherited: **Source:** `Geom2d_Geometry.hxx`:99 - `Geom2d_Geometry::Scaled()`
+    /// Inherited: **Source:** `Geom2d_Geometry.hxx`:96 - `Geom2d_Geometry::Scaled()`
     pub fn scaled(
         &self,
         P: &crate::gp::Pnt2d,
         S: f64,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleGeom2dGeometry> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Geom2d_Geometry> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKTopAlgo::Bisector_BisecCC_inherited_Scaled(
@@ -1620,11 +1758,11 @@ impl BisecCC {
         }
     }
 
-    /// Inherited: **Source:** `Geom2d_Geometry.hxx`:102 - `Geom2d_Geometry::Transformed()`
+    /// Inherited: **Source:** `Geom2d_Geometry.hxx`:99 - `Geom2d_Geometry::Transformed()`
     pub fn transformed(
         &self,
         T: &crate::gp::Trsf2d,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleGeom2dGeometry> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Geom2d_Geometry> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKTopAlgo::Bisector_BisecCC_inherited_Transformed(
@@ -1635,11 +1773,11 @@ impl BisecCC {
         }
     }
 
-    /// Inherited: **Source:** `Geom2d_Geometry.hxx`:104 - `Geom2d_Geometry::Translated()`
+    /// Inherited: **Source:** `Geom2d_Geometry.hxx`:101 - `Geom2d_Geometry::Translated()`
     pub fn translated(
         &self,
         V: &crate::gp::Vec2d,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleGeom2dGeometry> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Geom2d_Geometry> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKTopAlgo::Bisector_BisecCC_inherited_Translated(
@@ -1650,8 +1788,8 @@ impl BisecCC {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKTopAlgo::Bisector_BisecCC_inherited_IsInstance(
                 self as *const Self,
@@ -1660,8 +1798,8 @@ impl BisecCC {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKTopAlgo::Bisector_BisecCC_inherited_IsKind(
                 self as *const Self,
@@ -1670,7 +1808,7 @@ impl BisecCC {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -1684,14 +1822,14 @@ impl BisecCC {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKTopAlgo::Bisector_BisecCC_inherited_GetRefCount(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKTopAlgo::Bisector_BisecCC_inherited_IncrementRefCounter(
@@ -1700,7 +1838,7 @@ impl BisecCC {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKTopAlgo::Bisector_BisecCC_inherited_DecrementRefCounter(
@@ -1709,7 +1847,7 @@ impl BisecCC {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKTopAlgo::Bisector_BisecCC_inherited_Delete(self as *const Self)
@@ -1717,34 +1855,34 @@ impl BisecCC {
     }
 }
 
-pub use crate::ffi_types::HandleBisectorBisecCC;
+pub use crate::ffi_types::Handle_Bisector_BisecCC;
 
-unsafe impl crate::CppDeletable for HandleBisectorBisecCC {
+unsafe impl crate::CppDeletable for Handle_Bisector_BisecCC {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKTopAlgo::HandleBisectorBisecCC_destructor(ptr);
+            crate::ffi_extern_TKTopAlgo::Handle_Bisector_BisecCC_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleBisectorBisecCC {
+unsafe impl crate::CppCopyable for Handle_Bisector_BisecCC {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
         unsafe {
-            crate::check_result(crate::ffi_extern_TKTopAlgo::HandleBisectorBisecCC_clone(ptr))
+            crate::check_result(crate::ffi_extern_TKTopAlgo::Handle_Bisector_BisecCC_clone(ptr))
         }
     }
 }
 
-impl HandleBisectorBisecCC {
+impl Handle_Bisector_BisecCC {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
-        unsafe { crate::ffi_extern_TKTopAlgo::HandleBisectorBisecCC_is_null(self as *const Self) }
+        unsafe { crate::ffi_extern_TKTopAlgo::Handle_Bisector_BisecCC_is_null(self as *const Self) }
     }
 
     /// Dereference this Handle to access the underlying Bisector_BisecCC
     pub fn get(&self) -> &crate::ffi_types::Bisector_BisecCC {
         unsafe {
-            &*crate::check_result(crate::ffi_extern_TKTopAlgo::HandleBisectorBisecCC_get(
+            &*crate::check_result(crate::ffi_extern_TKTopAlgo::Handle_Bisector_BisecCC_get(
                 self as *const Self,
             ))
         }
@@ -1753,7 +1891,7 @@ impl HandleBisectorBisecCC {
     /// Dereference this Handle to mutably access the underlying Bisector_BisecCC
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::Bisector_BisecCC {
         unsafe {
-            &mut *crate::check_result(crate::ffi_extern_TKTopAlgo::HandleBisectorBisecCC_get_mut(
+            &mut *crate::check_result(crate::ffi_extern_TKTopAlgo::Handle_Bisector_BisecCC_get_mut(
                 self as *mut Self,
             ))
         }
@@ -1762,10 +1900,10 @@ impl HandleBisectorBisecCC {
     /// Upcast Handle<Bisector_BisecCC> to Handle<Bisector_Curve>
     pub fn to_handle_bisector_curve(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleBisectorCurve> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Bisector_Curve> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKTopAlgo::HandleBisectorBisecCC_to_HandleBisectorCurve(
+                crate::ffi_extern_TKTopAlgo::Handle_Bisector_BisecCC_to_Handle_Bisector_Curve(
                     self as *const Self,
                 ),
             ))
@@ -1773,10 +1911,10 @@ impl HandleBisectorBisecCC {
     }
 
     /// Upcast Handle<Bisector_BisecCC> to Handle<Geom2d_Curve>
-    pub fn to_handle_geom2d_curve(&self) -> crate::OwnedPtr<crate::ffi_types::HandleGeom2dCurve> {
+    pub fn to_handle_geom2d_curve(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_Geom2d_Curve> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKTopAlgo::HandleBisectorBisecCC_to_HandleGeom2dCurve(
+                crate::ffi_extern_TKTopAlgo::Handle_Bisector_BisecCC_to_Handle_Geom2d_Curve(
                     self as *const Self,
                 ),
             ))
@@ -1784,10 +1922,10 @@ impl HandleBisectorBisecCC {
     }
 
     /// Upcast Handle<Bisector_BisecCC> to Handle<Geom2d_Geometry>
-    pub fn to_handle_geometry(&self) -> crate::OwnedPtr<crate::ffi_types::HandleGeom2dGeometry> {
+    pub fn to_handle_geometry(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_Geom2d_Geometry> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKTopAlgo::HandleBisectorBisecCC_to_HandleGeom2dGeometry(
+                crate::ffi_extern_TKTopAlgo::Handle_Bisector_BisecCC_to_Handle_Geom2d_Geometry(
                     self as *const Self,
                 ),
             ))
@@ -1797,10 +1935,10 @@ impl HandleBisectorBisecCC {
     /// Upcast Handle<Bisector_BisecCC> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKTopAlgo::HandleBisectorBisecCC_to_HandleStandardTransient(
+                crate::ffi_extern_TKTopAlgo::Handle_Bisector_BisecCC_to_Handle_Standard_Transient(
                     self as *const Self,
                 ),
             ))
@@ -1812,7 +1950,7 @@ impl HandleBisectorBisecCC {
 // From Bisector_BisecPC.hxx
 // ========================
 
-/// **Source:** `Bisector_BisecPC.hxx`:38 - `Bisector_BisecPC`
+/// **Source:** `Bisector_BisecPC.hxx`:35 - `Bisector_BisecPC`
 /// Provides the bisector between a point and a curve.
 /// the curvature on the curve has to be monoton.
 /// the point can't be on the curve except at the extremities.
@@ -1827,7 +1965,7 @@ unsafe impl crate::CppDeletable for BisecPC {
 }
 
 impl BisecPC {
-    /// **Source:** `Bisector_BisecPC.hxx`:42 - `Bisector_BisecPC::Bisector_BisecPC()`
+    /// **Source:** `Bisector_BisecPC.hxx`:39 - `Bisector_BisecPC::Bisector_BisecPC()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -1836,7 +1974,7 @@ impl BisecPC {
         }
     }
 
-    /// **Source:** `Bisector_BisecPC.hxx`:51 - `Bisector_BisecPC::Bisector_BisecPC()`
+    /// **Source:** `Bisector_BisecPC.hxx`:48 - `Bisector_BisecPC::Bisector_BisecPC()`
     /// Constructs the bisector between the point <P> and
     /// the curve <Cu>.
     /// <Side> = 1. if the bisector curve is on the Left of <Cu>
@@ -1845,7 +1983,7 @@ impl BisecPC {
     /// between the points of the bisector and <Cu> is smaller
     /// than <DistMax>.
     pub fn new_handlegeom2dcurve_pnt2d_real2(
-        Cu: &crate::ffi_types::HandleGeom2dCurve,
+        Cu: &crate::ffi_types::Handle_Geom2d_Curve,
         P: &crate::gp::Pnt2d,
         Side: f64,
         DistMax: f64,
@@ -1859,7 +1997,7 @@ impl BisecPC {
         }
     }
 
-    /// **Source:** `Bisector_BisecPC.hxx`:62 - `Bisector_BisecPC::Bisector_BisecPC()`
+    /// **Source:** `Bisector_BisecPC.hxx`:59 - `Bisector_BisecPC::Bisector_BisecPC()`
     /// Constructs the bisector between the point <P> and
     /// the curve <Cu> Trimmed by <UMin> and <UMax>
     /// <Side> = 1. if the bisector curve is on the Left of <Cu>
@@ -1867,7 +2005,7 @@ impl BisecPC {
     /// Warning: the bisector is supposed all over defined between
     /// <UMin> and <UMax>.
     pub fn new_handlegeom2dcurve_pnt2d_real3(
-        Cu: &crate::ffi_types::HandleGeom2dCurve,
+        Cu: &crate::ffi_types::Handle_Geom2d_Curve,
         P: &crate::gp::Pnt2d,
         Side: f64,
         UMin: f64,
@@ -1882,7 +2020,7 @@ impl BisecPC {
         }
     }
 
-    /// **Source:** `Bisector_BisecPC.hxx`:51 - `Bisector_BisecPC::Bisector_BisecPC()`
+    /// **Source:** `Bisector_BisecPC.hxx`:48 - `Bisector_BisecPC::Bisector_BisecPC()`
     /// Constructs the bisector between the point <P> and
     /// the curve <Cu>.
     /// <Side> = 1. if the bisector curve is on the Left of <Cu>
@@ -1891,14 +2029,14 @@ impl BisecPC {
     /// between the points of the bisector and <Cu> is smaller
     /// than <DistMax>.
     pub fn new_handlegeom2dcurve_pnt2d_real(
-        Cu: &crate::ffi_types::HandleGeom2dCurve,
+        Cu: &crate::ffi_types::Handle_Geom2d_Curve,
         P: &crate::gp::Pnt2d,
         Side: f64,
     ) -> crate::OwnedPtr<Self> {
         Self::new_handlegeom2dcurve_pnt2d_real2(Cu, P, Side, 500.0)
     }
 
-    /// **Source:** `Bisector_BisecPC.hxx`:75 - `Bisector_BisecPC::Perform()`
+    /// **Source:** `Bisector_BisecPC.hxx`:72 - `Bisector_BisecPC::Perform()`
     /// Construct the bisector between the point <P> and
     /// the curve <Cu>.
     /// <Side> = 1. if the bisector curve is on the Left of <Cu>
@@ -1908,7 +2046,7 @@ impl BisecPC {
     /// than <DistMax>.
     pub fn perform(
         &mut self,
-        Cu: &crate::ffi_types::HandleGeom2dCurve,
+        Cu: &crate::ffi_types::Handle_Geom2d_Curve,
         P: &crate::gp::Pnt2d,
         Side: f64,
         DistMax: f64,
@@ -1924,7 +2062,7 @@ impl BisecPC {
         })
     }
 
-    /// **Source:** `Bisector_BisecPC.hxx`:81 - `Bisector_BisecPC::IsExtendAtStart()`
+    /// **Source:** `Bisector_BisecPC.hxx`:78 - `Bisector_BisecPC::IsExtendAtStart()`
     /// Returns True if the bisector is extended at start.
     pub fn is_extend_at_start(&self) -> bool {
         crate::check_result(unsafe {
@@ -1932,7 +2070,7 @@ impl BisecPC {
         })
     }
 
-    /// **Source:** `Bisector_BisecPC.hxx`:84 - `Bisector_BisecPC::IsExtendAtEnd()`
+    /// **Source:** `Bisector_BisecPC.hxx`:81 - `Bisector_BisecPC::IsExtendAtEnd()`
     /// Returns True if the bisector is extended at end.
     pub fn is_extend_at_end(&self) -> bool {
         crate::check_result(unsafe {
@@ -1940,11 +2078,11 @@ impl BisecPC {
         })
     }
 
-    /// **Source:** `Bisector_BisecPC.hxx`:91 - `Bisector_BisecPC::Reverse()`
+    /// **Source:** `Bisector_BisecPC.hxx`:88 - `Bisector_BisecPC::Reverse()`
     /// Changes the direction of parametrization of <me>.
-    /// The orientation  of the curve is modified. If the curve
+    /// The orientation of the curve is modified. If the curve
     /// is bounded the StartPoint of the initial curve becomes the
-    /// EndPoint of the reversed curve  and the EndPoint of the initial
+    /// EndPoint of the reversed curve and the EndPoint of the initial
     /// curve becomes the StartPoint of the reversed curve.
     pub fn reverse(&mut self) {
         crate::check_void_result(unsafe {
@@ -1952,8 +2090,8 @@ impl BisecPC {
         })
     }
 
-    /// **Source:** `Bisector_BisecPC.hxx`:95 - `Bisector_BisecPC::ReversedParameter()`
-    /// Returns the  parameter on the  reversed  curve for
+    /// **Source:** `Bisector_BisecPC.hxx`:92 - `Bisector_BisecPC::ReversedParameter()`
+    /// Returns the parameter on the reversed curve for
     /// the point of parameter U on <me>.
     pub fn reversed_parameter(&self, U: f64) -> f64 {
         crate::check_result(unsafe {
@@ -1961,8 +2099,8 @@ impl BisecPC {
         })
     }
 
-    /// **Source:** `Bisector_BisecPC.hxx`:97 - `Bisector_BisecPC::Copy()`
-    pub fn copy(&self) -> crate::OwnedPtr<crate::ffi_types::HandleGeom2dGeometry> {
+    /// **Source:** `Bisector_BisecPC.hxx`:94 - `Bisector_BisecPC::Copy()`
+    pub fn copy(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_Geom2d_Geometry> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKTopAlgo::Bisector_BisecPC_copy(self as *const Self),
@@ -1970,7 +2108,7 @@ impl BisecPC {
         }
     }
 
-    /// **Source:** `Bisector_BisecPC.hxx`:103 - `Bisector_BisecPC::Transform()`
+    /// **Source:** `Bisector_BisecPC.hxx`:100 - `Bisector_BisecPC::Transform()`
     /// Transformation of a geometric object. This transformation
     /// can be a translation, a rotation, a symmetry, a scaling
     /// or a complex transformation obtained by combination of
@@ -1981,7 +2119,7 @@ impl BisecPC {
         })
     }
 
-    /// **Source:** `Bisector_BisecPC.hxx`:107 - `Bisector_BisecPC::IsCN()`
+    /// **Source:** `Bisector_BisecPC.hxx`:104 - `Bisector_BisecPC::IsCN()`
     /// Returns the order of continuity of the curve.
     /// Raised if N < 0.
     pub fn is_cn(&self, N: i32) -> bool {
@@ -1990,7 +2128,7 @@ impl BisecPC {
         })
     }
 
-    /// **Source:** `Bisector_BisecPC.hxx`:110 - `Bisector_BisecPC::FirstParameter()`
+    /// **Source:** `Bisector_BisecPC.hxx`:107 - `Bisector_BisecPC::FirstParameter()`
     /// Value of the first parameter.
     pub fn first_parameter(&self) -> f64 {
         crate::check_result(unsafe {
@@ -1998,7 +2136,7 @@ impl BisecPC {
         })
     }
 
-    /// **Source:** `Bisector_BisecPC.hxx`:113 - `Bisector_BisecPC::LastParameter()`
+    /// **Source:** `Bisector_BisecPC.hxx`:110 - `Bisector_BisecPC::LastParameter()`
     /// Value of the last parameter.
     pub fn last_parameter(&self) -> f64 {
         crate::check_result(unsafe {
@@ -2006,7 +2144,7 @@ impl BisecPC {
         })
     }
 
-    /// **Source:** `Bisector_BisecPC.hxx`:115 - `Bisector_BisecPC::Continuity()`
+    /// **Source:** `Bisector_BisecPC.hxx`:112 - `Bisector_BisecPC::Continuity()`
     pub fn continuity(&self) -> crate::geom_abs::Shape {
         crate::geom_abs::Shape::try_from(crate::check_result(unsafe {
             crate::ffi_extern_TKTopAlgo::Bisector_BisecPC_continuity(self as *const Self)
@@ -2014,9 +2152,9 @@ impl BisecPC {
         .unwrap()
     }
 
-    /// **Source:** `Bisector_BisecPC.hxx`:120 - `Bisector_BisecPC::NbIntervals()`
-    /// If necessary,  breaks the  curve in  intervals  of
-    /// continuity  <C1>.    And  returns   the number   of
+    /// **Source:** `Bisector_BisecPC.hxx`:117 - `Bisector_BisecPC::NbIntervals()`
+    /// If necessary, breaks the curve in intervals of
+    /// continuity <C1>. And returns the number of
     /// intervals.
     pub fn nb_intervals(&self) -> i32 {
         crate::check_result(unsafe {
@@ -2024,8 +2162,8 @@ impl BisecPC {
         })
     }
 
-    /// **Source:** `Bisector_BisecPC.hxx`:124 - `Bisector_BisecPC::IntervalFirst()`
-    /// Returns  the  first  parameter    of  the  current
+    /// **Source:** `Bisector_BisecPC.hxx`:121 - `Bisector_BisecPC::IntervalFirst()`
+    /// Returns the first parameter of the current
     /// interval.
     pub fn interval_first(&self, Index: i32) -> f64 {
         crate::check_result(unsafe {
@@ -2033,8 +2171,8 @@ impl BisecPC {
         })
     }
 
-    /// **Source:** `Bisector_BisecPC.hxx`:128 - `Bisector_BisecPC::IntervalLast()`
-    /// Returns  the  last  parameter    of  the  current
+    /// **Source:** `Bisector_BisecPC.hxx`:125 - `Bisector_BisecPC::IntervalLast()`
+    /// Returns the last parameter of the current
     /// interval.
     pub fn interval_last(&self, Index: i32) -> f64 {
         crate::check_result(unsafe {
@@ -2042,7 +2180,7 @@ impl BisecPC {
         })
     }
 
-    /// **Source:** `Bisector_BisecPC.hxx`:130 - `Bisector_BisecPC::IntervalContinuity()`
+    /// **Source:** `Bisector_BisecPC.hxx`:127 - `Bisector_BisecPC::IntervalContinuity()`
     pub fn interval_continuity(&self) -> crate::geom_abs::Shape {
         crate::geom_abs::Shape::try_from(crate::check_result(unsafe {
             crate::ffi_extern_TKTopAlgo::Bisector_BisecPC_interval_continuity(self as *const Self)
@@ -2050,22 +2188,22 @@ impl BisecPC {
         .unwrap()
     }
 
-    /// **Source:** `Bisector_BisecPC.hxx`:132 - `Bisector_BisecPC::IsClosed()`
+    /// **Source:** `Bisector_BisecPC.hxx`:129 - `Bisector_BisecPC::IsClosed()`
     pub fn is_closed(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKTopAlgo::Bisector_BisecPC_is_closed(self as *const Self)
         })
     }
 
-    /// **Source:** `Bisector_BisecPC.hxx`:134 - `Bisector_BisecPC::IsPeriodic()`
+    /// **Source:** `Bisector_BisecPC.hxx`:131 - `Bisector_BisecPC::IsPeriodic()`
     pub fn is_periodic(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKTopAlgo::Bisector_BisecPC_is_periodic(self as *const Self)
         })
     }
 
-    /// **Source:** `Bisector_BisecPC.hxx`:138 - `Bisector_BisecPC::Distance()`
-    /// Returns   the   distance   between  the  point  of
+    /// **Source:** `Bisector_BisecPC.hxx`:135 - `Bisector_BisecPC::Distance()`
+    /// Returns the distance between the point of
     /// parameter U on <me> and my point or my curve.
     pub fn distance(&self, U: f64) -> f64 {
         crate::check_result(unsafe {
@@ -2073,64 +2211,59 @@ impl BisecPC {
         })
     }
 
-    /// **Source:** `Bisector_BisecPC.hxx`:140 - `Bisector_BisecPC::D0()`
-    pub fn d0(&self, U: f64, P: &mut crate::gp::Pnt2d) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKTopAlgo::Bisector_BisecPC_d0(self as *const Self, U, P)
-        })
-    }
-
-    /// **Source:** `Bisector_BisecPC.hxx`:142 - `Bisector_BisecPC::D1()`
-    pub fn d1(&self, U: f64, P: &mut crate::gp::Pnt2d, V: &mut crate::gp::Vec2d) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKTopAlgo::Bisector_BisecPC_d1(self as *const Self, U, P, V)
-        })
-    }
-
-    /// **Source:** `Bisector_BisecPC.hxx`:144 - `Bisector_BisecPC::D2()`
-    pub fn d2(
-        &self,
-        U: f64,
-        P: &mut crate::gp::Pnt2d,
-        V1: &mut crate::gp::Vec2d,
-        V2: &mut crate::gp::Vec2d,
-    ) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKTopAlgo::Bisector_BisecPC_d2(self as *const Self, U, P, V1, V2)
-        })
-    }
-
-    /// **Source:** `Bisector_BisecPC.hxx`:149 - `Bisector_BisecPC::D3()`
-    pub fn d3(
-        &self,
-        U: f64,
-        P: &mut crate::gp::Pnt2d,
-        V1: &mut crate::gp::Vec2d,
-        V2: &mut crate::gp::Vec2d,
-        V3: &mut crate::gp::Vec2d,
-    ) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKTopAlgo::Bisector_BisecPC_d3(self as *const Self, U, P, V1, V2, V3)
-        })
-    }
-
-    /// **Source:** `Bisector_BisecPC.hxx`:155 - `Bisector_BisecPC::DN()`
-    pub fn dn(&self, U: f64, N: i32) -> crate::OwnedPtr<crate::gp::Vec2d> {
+    /// **Source:** `Bisector_BisecPC.hxx`:137 - `Bisector_BisecPC::EvalD0()`
+    pub fn eval_d0(&self, U: f64) -> crate::OwnedPtr<crate::gp::Pnt2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKTopAlgo::Bisector_BisecPC_dn(self as *const Self, U, N),
+                crate::ffi_extern_TKTopAlgo::Bisector_BisecPC_eval_d0(self as *const Self, U),
             ))
         }
     }
 
-    /// **Source:** `Bisector_BisecPC.hxx`:158 - `Bisector_BisecPC::Dump()`
+    /// **Source:** `Bisector_BisecPC.hxx`:139 - `Bisector_BisecPC::EvalD1()`
+    pub fn eval_d1(&self, U: f64) -> crate::OwnedPtr<crate::geom2d::Curve_ResD1> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKTopAlgo::Bisector_BisecPC_eval_d1(self as *const Self, U),
+            ))
+        }
+    }
+
+    /// **Source:** `Bisector_BisecPC.hxx`:141 - `Bisector_BisecPC::EvalD2()`
+    pub fn eval_d2(&self, U: f64) -> crate::OwnedPtr<crate::geom2d::Curve_ResD2> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKTopAlgo::Bisector_BisecPC_eval_d2(self as *const Self, U),
+            ))
+        }
+    }
+
+    /// **Source:** `Bisector_BisecPC.hxx`:143 - `Bisector_BisecPC::EvalD3()`
+    pub fn eval_d3(&self, U: f64) -> crate::OwnedPtr<crate::geom2d::Curve_ResD3> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKTopAlgo::Bisector_BisecPC_eval_d3(self as *const Self, U),
+            ))
+        }
+    }
+
+    /// **Source:** `Bisector_BisecPC.hxx`:145 - `Bisector_BisecPC::EvalDN()`
+    pub fn eval_dn(&self, U: f64, N: i32) -> crate::OwnedPtr<crate::gp::Vec2d> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKTopAlgo::Bisector_BisecPC_eval_dn(self as *const Self, U, N),
+            ))
+        }
+    }
+
+    /// **Source:** `Bisector_BisecPC.hxx`:147 - `Bisector_BisecPC::Dump()`
     pub fn dump(&self, Deep: i32, Offset: i32) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKTopAlgo::Bisector_BisecPC_dump(self as *const Self, Deep, Offset)
         })
     }
 
-    /// **Source:** `Bisector_BisecPC.hxx`:163 - `Bisector_BisecPC::LinkBisCurve()`
+    /// **Source:** `Bisector_BisecPC.hxx`:151 - `Bisector_BisecPC::LinkBisCurve()`
     /// Returns the parameter on the curve1 of the projection
     /// of the point of parameter U on <me>.
     pub fn link_bis_curve(&self, U: f64) -> f64 {
@@ -2139,7 +2272,7 @@ impl BisecPC {
         })
     }
 
-    /// **Source:** `Bisector_BisecPC.hxx`:166 - `Bisector_BisecPC::LinkCurveBis()`
+    /// **Source:** `Bisector_BisecPC.hxx`:154 - `Bisector_BisecPC::LinkCurveBis()`
     /// Returns the reciproque of LinkBisCurve.
     pub fn link_curve_bis(&self, U: f64) -> f64 {
         crate::check_result(unsafe {
@@ -2147,7 +2280,7 @@ impl BisecPC {
         })
     }
 
-    /// **Source:** `Bisector_BisecPC.hxx`:169 - `Bisector_BisecPC::Parameter()`
+    /// **Source:** `Bisector_BisecPC.hxx`:157 - `Bisector_BisecPC::Parameter()`
     /// Returns the parameter on <me> corresponding to <P>.
     pub fn parameter(&self, P: &crate::gp::Pnt2d) -> f64 {
         crate::check_result(unsafe {
@@ -2155,7 +2288,7 @@ impl BisecPC {
         })
     }
 
-    /// **Source:** `Bisector_BisecPC.hxx`:172 - `Bisector_BisecPC::IsEmpty()`
+    /// **Source:** `Bisector_BisecPC.hxx`:160 - `Bisector_BisecPC::IsEmpty()`
     /// Returns <True> if the bisector is empty.
     pub fn is_empty(&self) -> bool {
         crate::check_result(unsafe {
@@ -2163,8 +2296,8 @@ impl BisecPC {
         })
     }
 
-    /// **Source:** `Bisector_BisecPC.hxx`:174 - `Bisector_BisecPC::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `Bisector_BisecPC.hxx`:162 - `Bisector_BisecPC::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKTopAlgo::Bisector_BisecPC_dynamic_type(
                 self as *const Self,
@@ -2172,7 +2305,7 @@ impl BisecPC {
         }
     }
 
-    /// **Source:** `Bisector_BisecPC.hxx`:174 - `Bisector_BisecPC::get_type_name()`
+    /// **Source:** `Bisector_BisecPC.hxx`:162 - `Bisector_BisecPC::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -2183,8 +2316,8 @@ impl BisecPC {
         .into_owned()
     }
 
-    /// **Source:** `Bisector_BisecPC.hxx`:174 - `Bisector_BisecPC::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    /// **Source:** `Bisector_BisecPC.hxx`:162 - `Bisector_BisecPC::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKTopAlgo::Bisector_BisecPC_get_type_descriptor(),
@@ -2277,7 +2410,7 @@ impl BisecPC {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleBisectorBisecPC> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Bisector_BisecPC> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKTopAlgo::Bisector_BisecPC_to_handle(obj.into_raw()),
@@ -2285,7 +2418,7 @@ impl BisecPC {
         }
     }
 
-    /// Inherited: **Source:** `Geom2d_Curve.hxx`:83 - `Geom2d_Curve::TransformedParameter()`
+    /// Inherited: **Source:** `Geom2d_Curve.hxx`:105 - `Geom2d_Curve::TransformedParameter()`
     pub fn transformed_parameter(&self, U: f64, T: &crate::gp::Trsf2d) -> f64 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKTopAlgo::Bisector_BisecPC_inherited_TransformedParameter(
@@ -2296,7 +2429,7 @@ impl BisecPC {
         })
     }
 
-    /// Inherited: **Source:** `Geom2d_Curve.hxx`:94 - `Geom2d_Curve::ParametricTransformation()`
+    /// Inherited: **Source:** `Geom2d_Curve.hxx`:115 - `Geom2d_Curve::ParametricTransformation()`
     pub fn parametric_transformation(&self, T: &crate::gp::Trsf2d) -> f64 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKTopAlgo::Bisector_BisecPC_inherited_ParametricTransformation(
@@ -2306,8 +2439,8 @@ impl BisecPC {
         })
     }
 
-    /// Inherited: **Source:** `Geom2d_Curve.hxx`:105 - `Geom2d_Curve::Reversed()`
-    pub fn reversed(&self) -> crate::OwnedPtr<crate::ffi_types::HandleGeom2dCurve> {
+    /// Inherited: **Source:** `Geom2d_Curve.hxx`:126 - `Geom2d_Curve::Reversed()`
+    pub fn reversed(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_Geom2d_Curve> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKTopAlgo::Bisector_BisecPC_inherited_Reversed(
@@ -2317,14 +2450,86 @@ impl BisecPC {
         }
     }
 
-    /// Inherited: **Source:** `Geom2d_Curve.hxx`:149 - `Geom2d_Curve::Period()`
+    /// Inherited: **Source:** `Geom2d_Curve.hxx`:170 - `Geom2d_Curve::Period()`
     pub fn period(&self) -> f64 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKTopAlgo::Bisector_BisecPC_inherited_Period(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `Geom2d_Curve.hxx`:219 - `Geom2d_Curve::Value()`
+    /// Inherited: **Source:** `Geom2d_Curve.hxx`:207 - `Geom2d_Curve::D0()`
+    pub fn d0(&self, U: f64, P: &mut crate::gp::Pnt2d) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKTopAlgo::Bisector_BisecPC_inherited_D0(self as *const Self, U, P)
+        })
+    }
+
+    /// Inherited: **Source:** `Geom2d_Curve.hxx`:210 - `Geom2d_Curve::D1()`
+    pub fn d1(&self, U: f64, P: &mut crate::gp::Pnt2d, V1: &mut crate::gp::Vec2d) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKTopAlgo::Bisector_BisecPC_inherited_D1(
+                self as *const Self,
+                U,
+                P,
+                V1,
+            )
+        })
+    }
+
+    /// Inherited: **Source:** `Geom2d_Curve.hxx`:218 - `Geom2d_Curve::D2()`
+    pub fn d2(
+        &self,
+        U: f64,
+        P: &mut crate::gp::Pnt2d,
+        V1: &mut crate::gp::Vec2d,
+        V2: &mut crate::gp::Vec2d,
+    ) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKTopAlgo::Bisector_BisecPC_inherited_D2(
+                self as *const Self,
+                U,
+                P,
+                V1,
+                V2,
+            )
+        })
+    }
+
+    /// Inherited: **Source:** `Geom2d_Curve.hxx`:227 - `Geom2d_Curve::D3()`
+    pub fn d3(
+        &self,
+        U: f64,
+        P: &mut crate::gp::Pnt2d,
+        V1: &mut crate::gp::Vec2d,
+        V2: &mut crate::gp::Vec2d,
+        V3: &mut crate::gp::Vec2d,
+    ) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKTopAlgo::Bisector_BisecPC_inherited_D3(
+                self as *const Self,
+                U,
+                P,
+                V1,
+                V2,
+                V3,
+            )
+        })
+    }
+
+    /// Inherited: **Source:** `Geom2d_Curve.hxx`:237 - `Geom2d_Curve::DN()`
+    pub fn dn(&self, U: f64, N: i32) -> crate::OwnedPtr<crate::gp::Vec2d> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKTopAlgo::Bisector_BisecPC_inherited_DN(
+                    self as *const Self,
+                    U,
+                    N,
+                ),
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `Geom2d_Curve.hxx`:240 - `Geom2d_Curve::Value()`
     pub fn value(&self, U: f64) -> crate::OwnedPtr<crate::gp::Pnt2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -2336,14 +2541,14 @@ impl BisecPC {
         }
     }
 
-    /// Inherited: **Source:** `Geom2d_Geometry.hxx`:63 - `Geom2d_Geometry::Mirror()`
+    /// Inherited: **Source:** `Geom2d_Geometry.hxx`:60 - `Geom2d_Geometry::Mirror()`
     pub fn mirror(&mut self, P: &crate::gp::Pnt2d) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKTopAlgo::Bisector_BisecPC_inherited_Mirror(self as *mut Self, P)
         })
     }
 
-    /// Inherited: **Source:** `Geom2d_Geometry.hxx`:71 - `Geom2d_Geometry::Rotate()`
+    /// Inherited: **Source:** `Geom2d_Geometry.hxx`:68 - `Geom2d_Geometry::Rotate()`
     pub fn rotate(&mut self, P: &crate::gp::Pnt2d, Ang: f64) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKTopAlgo::Bisector_BisecPC_inherited_Rotate(
@@ -2354,25 +2559,25 @@ impl BisecPC {
         })
     }
 
-    /// Inherited: **Source:** `Geom2d_Geometry.hxx`:74 - `Geom2d_Geometry::Scale()`
+    /// Inherited: **Source:** `Geom2d_Geometry.hxx`:71 - `Geom2d_Geometry::Scale()`
     pub fn scale(&mut self, P: &crate::gp::Pnt2d, S: f64) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKTopAlgo::Bisector_BisecPC_inherited_Scale(self as *mut Self, P, S)
         })
     }
 
-    /// Inherited: **Source:** `Geom2d_Geometry.hxx`:77 - `Geom2d_Geometry::Translate()`
+    /// Inherited: **Source:** `Geom2d_Geometry.hxx`:74 - `Geom2d_Geometry::Translate()`
     pub fn translate(&mut self, V: &crate::gp::Vec2d) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKTopAlgo::Bisector_BisecPC_inherited_Translate(self as *mut Self, V)
         })
     }
 
-    /// Inherited: **Source:** `Geom2d_Geometry.hxx`:92 - `Geom2d_Geometry::Mirrored()`
+    /// Inherited: **Source:** `Geom2d_Geometry.hxx`:89 - `Geom2d_Geometry::Mirrored()`
     pub fn mirrored(
         &self,
         P: &crate::gp::Pnt2d,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleGeom2dGeometry> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Geom2d_Geometry> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKTopAlgo::Bisector_BisecPC_inherited_Mirrored(
@@ -2383,12 +2588,12 @@ impl BisecPC {
         }
     }
 
-    /// Inherited: **Source:** `Geom2d_Geometry.hxx`:96 - `Geom2d_Geometry::Rotated()`
+    /// Inherited: **Source:** `Geom2d_Geometry.hxx`:93 - `Geom2d_Geometry::Rotated()`
     pub fn rotated(
         &self,
         P: &crate::gp::Pnt2d,
         Ang: f64,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleGeom2dGeometry> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Geom2d_Geometry> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKTopAlgo::Bisector_BisecPC_inherited_Rotated(
@@ -2400,12 +2605,12 @@ impl BisecPC {
         }
     }
 
-    /// Inherited: **Source:** `Geom2d_Geometry.hxx`:99 - `Geom2d_Geometry::Scaled()`
+    /// Inherited: **Source:** `Geom2d_Geometry.hxx`:96 - `Geom2d_Geometry::Scaled()`
     pub fn scaled(
         &self,
         P: &crate::gp::Pnt2d,
         S: f64,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleGeom2dGeometry> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Geom2d_Geometry> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKTopAlgo::Bisector_BisecPC_inherited_Scaled(
@@ -2417,11 +2622,11 @@ impl BisecPC {
         }
     }
 
-    /// Inherited: **Source:** `Geom2d_Geometry.hxx`:102 - `Geom2d_Geometry::Transformed()`
+    /// Inherited: **Source:** `Geom2d_Geometry.hxx`:99 - `Geom2d_Geometry::Transformed()`
     pub fn transformed(
         &self,
         T: &crate::gp::Trsf2d,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleGeom2dGeometry> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Geom2d_Geometry> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKTopAlgo::Bisector_BisecPC_inherited_Transformed(
@@ -2432,11 +2637,11 @@ impl BisecPC {
         }
     }
 
-    /// Inherited: **Source:** `Geom2d_Geometry.hxx`:104 - `Geom2d_Geometry::Translated()`
+    /// Inherited: **Source:** `Geom2d_Geometry.hxx`:101 - `Geom2d_Geometry::Translated()`
     pub fn translated(
         &self,
         V: &crate::gp::Vec2d,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleGeom2dGeometry> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Geom2d_Geometry> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKTopAlgo::Bisector_BisecPC_inherited_Translated(
@@ -2447,8 +2652,8 @@ impl BisecPC {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKTopAlgo::Bisector_BisecPC_inherited_IsInstance(
                 self as *const Self,
@@ -2457,8 +2662,8 @@ impl BisecPC {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKTopAlgo::Bisector_BisecPC_inherited_IsKind(
                 self as *const Self,
@@ -2467,7 +2672,7 @@ impl BisecPC {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -2481,14 +2686,14 @@ impl BisecPC {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKTopAlgo::Bisector_BisecPC_inherited_GetRefCount(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKTopAlgo::Bisector_BisecPC_inherited_IncrementRefCounter(
@@ -2497,7 +2702,7 @@ impl BisecPC {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKTopAlgo::Bisector_BisecPC_inherited_DecrementRefCounter(
@@ -2506,7 +2711,7 @@ impl BisecPC {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKTopAlgo::Bisector_BisecPC_inherited_Delete(self as *const Self)
@@ -2514,34 +2719,34 @@ impl BisecPC {
     }
 }
 
-pub use crate::ffi_types::HandleBisectorBisecPC;
+pub use crate::ffi_types::Handle_Bisector_BisecPC;
 
-unsafe impl crate::CppDeletable for HandleBisectorBisecPC {
+unsafe impl crate::CppDeletable for Handle_Bisector_BisecPC {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKTopAlgo::HandleBisectorBisecPC_destructor(ptr);
+            crate::ffi_extern_TKTopAlgo::Handle_Bisector_BisecPC_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleBisectorBisecPC {
+unsafe impl crate::CppCopyable for Handle_Bisector_BisecPC {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
         unsafe {
-            crate::check_result(crate::ffi_extern_TKTopAlgo::HandleBisectorBisecPC_clone(ptr))
+            crate::check_result(crate::ffi_extern_TKTopAlgo::Handle_Bisector_BisecPC_clone(ptr))
         }
     }
 }
 
-impl HandleBisectorBisecPC {
+impl Handle_Bisector_BisecPC {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
-        unsafe { crate::ffi_extern_TKTopAlgo::HandleBisectorBisecPC_is_null(self as *const Self) }
+        unsafe { crate::ffi_extern_TKTopAlgo::Handle_Bisector_BisecPC_is_null(self as *const Self) }
     }
 
     /// Dereference this Handle to access the underlying Bisector_BisecPC
     pub fn get(&self) -> &crate::ffi_types::Bisector_BisecPC {
         unsafe {
-            &*crate::check_result(crate::ffi_extern_TKTopAlgo::HandleBisectorBisecPC_get(
+            &*crate::check_result(crate::ffi_extern_TKTopAlgo::Handle_Bisector_BisecPC_get(
                 self as *const Self,
             ))
         }
@@ -2550,7 +2755,7 @@ impl HandleBisectorBisecPC {
     /// Dereference this Handle to mutably access the underlying Bisector_BisecPC
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::Bisector_BisecPC {
         unsafe {
-            &mut *crate::check_result(crate::ffi_extern_TKTopAlgo::HandleBisectorBisecPC_get_mut(
+            &mut *crate::check_result(crate::ffi_extern_TKTopAlgo::Handle_Bisector_BisecPC_get_mut(
                 self as *mut Self,
             ))
         }
@@ -2559,10 +2764,10 @@ impl HandleBisectorBisecPC {
     /// Upcast Handle<Bisector_BisecPC> to Handle<Bisector_Curve>
     pub fn to_handle_bisector_curve(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleBisectorCurve> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Bisector_Curve> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKTopAlgo::HandleBisectorBisecPC_to_HandleBisectorCurve(
+                crate::ffi_extern_TKTopAlgo::Handle_Bisector_BisecPC_to_Handle_Bisector_Curve(
                     self as *const Self,
                 ),
             ))
@@ -2570,10 +2775,10 @@ impl HandleBisectorBisecPC {
     }
 
     /// Upcast Handle<Bisector_BisecPC> to Handle<Geom2d_Curve>
-    pub fn to_handle_geom2d_curve(&self) -> crate::OwnedPtr<crate::ffi_types::HandleGeom2dCurve> {
+    pub fn to_handle_geom2d_curve(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_Geom2d_Curve> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKTopAlgo::HandleBisectorBisecPC_to_HandleGeom2dCurve(
+                crate::ffi_extern_TKTopAlgo::Handle_Bisector_BisecPC_to_Handle_Geom2d_Curve(
                     self as *const Self,
                 ),
             ))
@@ -2581,10 +2786,10 @@ impl HandleBisectorBisecPC {
     }
 
     /// Upcast Handle<Bisector_BisecPC> to Handle<Geom2d_Geometry>
-    pub fn to_handle_geometry(&self) -> crate::OwnedPtr<crate::ffi_types::HandleGeom2dGeometry> {
+    pub fn to_handle_geometry(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_Geom2d_Geometry> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKTopAlgo::HandleBisectorBisecPC_to_HandleGeom2dGeometry(
+                crate::ffi_extern_TKTopAlgo::Handle_Bisector_BisecPC_to_Handle_Geom2d_Geometry(
                     self as *const Self,
                 ),
             ))
@@ -2594,10 +2799,10 @@ impl HandleBisectorBisecPC {
     /// Upcast Handle<Bisector_BisecPC> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKTopAlgo::HandleBisectorBisecPC_to_HandleStandardTransient(
+                crate::ffi_extern_TKTopAlgo::Handle_Bisector_BisecPC_to_Handle_Standard_Transient(
                     self as *const Self,
                 ),
             ))
@@ -2609,7 +2814,7 @@ impl HandleBisectorBisecPC {
 // From Bisector_Curve.hxx
 // ========================
 
-/// **Source:** `Bisector_Curve.hxx`:31 - `Bisector_Curve`
+/// **Source:** `Bisector_Curve.hxx`:28 - `Bisector_Curve`
 pub use crate::ffi_types::Bisector_Curve as Curve;
 
 unsafe impl crate::CppDeletable for Curve {
@@ -2621,30 +2826,30 @@ unsafe impl crate::CppDeletable for Curve {
 }
 
 impl Curve {
-    /// **Source:** `Bisector_Curve.hxx`:35 - `Bisector_Curve::Parameter()`
+    /// **Source:** `Bisector_Curve.hxx`:32 - `Bisector_Curve::Parameter()`
     pub fn parameter(&self, P: &crate::gp::Pnt2d) -> f64 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKTopAlgo::Bisector_Curve_parameter(self as *const Self, P)
         })
     }
 
-    /// **Source:** `Bisector_Curve.hxx`:37 - `Bisector_Curve::IsExtendAtStart()`
+    /// **Source:** `Bisector_Curve.hxx`:34 - `Bisector_Curve::IsExtendAtStart()`
     pub fn is_extend_at_start(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKTopAlgo::Bisector_Curve_is_extend_at_start(self as *const Self)
         })
     }
 
-    /// **Source:** `Bisector_Curve.hxx`:39 - `Bisector_Curve::IsExtendAtEnd()`
+    /// **Source:** `Bisector_Curve.hxx`:36 - `Bisector_Curve::IsExtendAtEnd()`
     pub fn is_extend_at_end(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKTopAlgo::Bisector_Curve_is_extend_at_end(self as *const Self)
         })
     }
 
-    /// **Source:** `Bisector_Curve.hxx`:44 - `Bisector_Curve::NbIntervals()`
-    /// If necessary,  breaks the  curve in  intervals  of
-    /// continuity  <C1>.    And  returns   the number   of
+    /// **Source:** `Bisector_Curve.hxx`:41 - `Bisector_Curve::NbIntervals()`
+    /// If necessary, breaks the curve in intervals of
+    /// continuity <C1>. And returns the number of
     /// intervals.
     pub fn nb_intervals(&self) -> i32 {
         crate::check_result(unsafe {
@@ -2652,8 +2857,8 @@ impl Curve {
         })
     }
 
-    /// **Source:** `Bisector_Curve.hxx`:48 - `Bisector_Curve::IntervalFirst()`
-    /// Returns  the  first  parameter    of  the  current
+    /// **Source:** `Bisector_Curve.hxx`:45 - `Bisector_Curve::IntervalFirst()`
+    /// Returns the first parameter of the current
     /// interval.
     pub fn interval_first(&self, Index: i32) -> f64 {
         crate::check_result(unsafe {
@@ -2661,8 +2866,8 @@ impl Curve {
         })
     }
 
-    /// **Source:** `Bisector_Curve.hxx`:52 - `Bisector_Curve::IntervalLast()`
-    /// Returns  the  last  parameter    of  the  current
+    /// **Source:** `Bisector_Curve.hxx`:49 - `Bisector_Curve::IntervalLast()`
+    /// Returns the last parameter of the current
     /// interval.
     pub fn interval_last(&self, Index: i32) -> f64 {
         crate::check_result(unsafe {
@@ -2670,8 +2875,8 @@ impl Curve {
         })
     }
 
-    /// **Source:** `Bisector_Curve.hxx`:54 - `Bisector_Curve::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `Bisector_Curve.hxx`:51 - `Bisector_Curve::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKTopAlgo::Bisector_Curve_dynamic_type(
                 self as *const Self,
@@ -2679,7 +2884,7 @@ impl Curve {
         }
     }
 
-    /// **Source:** `Bisector_Curve.hxx`:54 - `Bisector_Curve::get_type_name()`
+    /// **Source:** `Bisector_Curve.hxx`:51 - `Bisector_Curve::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -2690,8 +2895,8 @@ impl Curve {
         .into_owned()
     }
 
-    /// **Source:** `Bisector_Curve.hxx`:54 - `Bisector_Curve::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    /// **Source:** `Bisector_Curve.hxx`:51 - `Bisector_Curve::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKTopAlgo::Bisector_Curve_get_type_descriptor(),
@@ -2759,14 +2964,14 @@ impl Curve {
         }
     }
 
-    /// Inherited: **Source:** `Geom2d_Curve.hxx`:70 - `Geom2d_Curve::Reverse()`
+    /// Inherited: **Source:** `Geom2d_Curve.hxx`:92 - `Geom2d_Curve::Reverse()`
     pub fn reverse(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKTopAlgo::Bisector_Curve_inherited_Reverse(self as *mut Self)
         })
     }
 
-    /// Inherited: **Source:** `Geom2d_Curve.hxx`:77 - `Geom2d_Curve::ReversedParameter()`
+    /// Inherited: **Source:** `Geom2d_Curve.hxx`:99 - `Geom2d_Curve::ReversedParameter()`
     pub fn reversed_parameter(&self, U: f64) -> f64 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKTopAlgo::Bisector_Curve_inherited_ReversedParameter(
@@ -2776,7 +2981,7 @@ impl Curve {
         })
     }
 
-    /// Inherited: **Source:** `Geom2d_Curve.hxx`:83 - `Geom2d_Curve::TransformedParameter()`
+    /// Inherited: **Source:** `Geom2d_Curve.hxx`:105 - `Geom2d_Curve::TransformedParameter()`
     pub fn transformed_parameter(&self, U: f64, T: &crate::gp::Trsf2d) -> f64 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKTopAlgo::Bisector_Curve_inherited_TransformedParameter(
@@ -2787,7 +2992,7 @@ impl Curve {
         })
     }
 
-    /// Inherited: **Source:** `Geom2d_Curve.hxx`:94 - `Geom2d_Curve::ParametricTransformation()`
+    /// Inherited: **Source:** `Geom2d_Curve.hxx`:115 - `Geom2d_Curve::ParametricTransformation()`
     pub fn parametric_transformation(&self, T: &crate::gp::Trsf2d) -> f64 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKTopAlgo::Bisector_Curve_inherited_ParametricTransformation(
@@ -2797,8 +3002,8 @@ impl Curve {
         })
     }
 
-    /// Inherited: **Source:** `Geom2d_Curve.hxx`:105 - `Geom2d_Curve::Reversed()`
-    pub fn reversed(&self) -> crate::OwnedPtr<crate::ffi_types::HandleGeom2dCurve> {
+    /// Inherited: **Source:** `Geom2d_Curve.hxx`:126 - `Geom2d_Curve::Reversed()`
+    pub fn reversed(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_Geom2d_Curve> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKTopAlgo::Bisector_Curve_inherited_Reversed(self as *const Self),
@@ -2806,7 +3011,7 @@ impl Curve {
         }
     }
 
-    /// Inherited: **Source:** `Geom2d_Curve.hxx`:111 - `Geom2d_Curve::FirstParameter()`
+    /// Inherited: **Source:** `Geom2d_Curve.hxx`:132 - `Geom2d_Curve::FirstParameter()`
     pub fn first_parameter(&self) -> f64 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKTopAlgo::Bisector_Curve_inherited_FirstParameter(
@@ -2815,35 +3020,35 @@ impl Curve {
         })
     }
 
-    /// Inherited: **Source:** `Geom2d_Curve.hxx`:117 - `Geom2d_Curve::LastParameter()`
+    /// Inherited: **Source:** `Geom2d_Curve.hxx`:138 - `Geom2d_Curve::LastParameter()`
     pub fn last_parameter(&self) -> f64 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKTopAlgo::Bisector_Curve_inherited_LastParameter(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `Geom2d_Curve.hxx`:128 - `Geom2d_Curve::IsClosed()`
+    /// Inherited: **Source:** `Geom2d_Curve.hxx`:149 - `Geom2d_Curve::IsClosed()`
     pub fn is_closed(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKTopAlgo::Bisector_Curve_inherited_IsClosed(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `Geom2d_Curve.hxx`:145 - `Geom2d_Curve::IsPeriodic()`
+    /// Inherited: **Source:** `Geom2d_Curve.hxx`:166 - `Geom2d_Curve::IsPeriodic()`
     pub fn is_periodic(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKTopAlgo::Bisector_Curve_inherited_IsPeriodic(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `Geom2d_Curve.hxx`:149 - `Geom2d_Curve::Period()`
+    /// Inherited: **Source:** `Geom2d_Curve.hxx`:170 - `Geom2d_Curve::Period()`
     pub fn period(&self) -> f64 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKTopAlgo::Bisector_Curve_inherited_Period(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `Geom2d_Curve.hxx`:159 - `Geom2d_Curve::Continuity()`
+    /// Inherited: **Source:** `Geom2d_Curve.hxx`:180 - `Geom2d_Curve::Continuity()`
     pub fn continuity(&self) -> crate::geom_abs::Shape {
         crate::geom_abs::Shape::try_from(crate::check_result(unsafe {
             crate::ffi_extern_TKTopAlgo::Bisector_Curve_inherited_Continuity(self as *const Self)
@@ -2851,28 +3056,89 @@ impl Curve {
         .unwrap()
     }
 
-    /// Inherited: **Source:** `Geom2d_Curve.hxx`:163 - `Geom2d_Curve::IsCN()`
+    /// Inherited: **Source:** `Geom2d_Curve.hxx`:184 - `Geom2d_Curve::IsCN()`
     pub fn is_cn(&self, N: i32) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKTopAlgo::Bisector_Curve_inherited_IsCN(self as *const Self, N)
         })
     }
 
-    /// Inherited: **Source:** `Geom2d_Curve.hxx`:174 - `Geom2d_Curve::D0()`
+    /// Inherited: **Source:** `Geom2d_Curve.hxx`:188 - `Geom2d_Curve::EvalD0()`
+    pub fn eval_d0(&self, U: f64) -> crate::OwnedPtr<crate::gp::Pnt2d> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKTopAlgo::Bisector_Curve_inherited_EvalD0(
+                    self as *const Self,
+                    U,
+                ),
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `Geom2d_Curve.hxx`:192 - `Geom2d_Curve::EvalD1()`
+    pub fn eval_d1(&self, U: f64) -> crate::OwnedPtr<crate::geom2d::Curve_ResD1> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKTopAlgo::Bisector_Curve_inherited_EvalD1(
+                    self as *const Self,
+                    U,
+                ),
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `Geom2d_Curve.hxx`:196 - `Geom2d_Curve::EvalD2()`
+    pub fn eval_d2(&self, U: f64) -> crate::OwnedPtr<crate::geom2d::Curve_ResD2> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKTopAlgo::Bisector_Curve_inherited_EvalD2(
+                    self as *const Self,
+                    U,
+                ),
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `Geom2d_Curve.hxx`:200 - `Geom2d_Curve::EvalD3()`
+    pub fn eval_d3(&self, U: f64) -> crate::OwnedPtr<crate::geom2d::Curve_ResD3> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKTopAlgo::Bisector_Curve_inherited_EvalD3(
+                    self as *const Self,
+                    U,
+                ),
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `Geom2d_Curve.hxx`:204 - `Geom2d_Curve::EvalDN()`
+    pub fn eval_dn(&self, U: f64, N: i32) -> crate::OwnedPtr<crate::gp::Vec2d> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKTopAlgo::Bisector_Curve_inherited_EvalDN(
+                    self as *const Self,
+                    U,
+                    N,
+                ),
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `Geom2d_Curve.hxx`:207 - `Geom2d_Curve::D0()`
     pub fn d0(&self, U: f64, P: &mut crate::gp::Pnt2d) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKTopAlgo::Bisector_Curve_inherited_D0(self as *const Self, U, P)
         })
     }
 
-    /// Inherited: **Source:** `Geom2d_Curve.hxx`:178 - `Geom2d_Curve::D1()`
+    /// Inherited: **Source:** `Geom2d_Curve.hxx`:210 - `Geom2d_Curve::D1()`
     pub fn d1(&self, U: f64, P: &mut crate::gp::Pnt2d, V1: &mut crate::gp::Vec2d) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKTopAlgo::Bisector_Curve_inherited_D1(self as *const Self, U, P, V1)
         })
     }
 
-    /// Inherited: **Source:** `Geom2d_Curve.hxx`:183 - `Geom2d_Curve::D2()`
+    /// Inherited: **Source:** `Geom2d_Curve.hxx`:218 - `Geom2d_Curve::D2()`
     pub fn d2(
         &self,
         U: f64,
@@ -2891,7 +3157,7 @@ impl Curve {
         })
     }
 
-    /// Inherited: **Source:** `Geom2d_Curve.hxx`:191 - `Geom2d_Curve::D3()`
+    /// Inherited: **Source:** `Geom2d_Curve.hxx`:227 - `Geom2d_Curve::D3()`
     pub fn d3(
         &self,
         U: f64,
@@ -2912,7 +3178,7 @@ impl Curve {
         })
     }
 
-    /// Inherited: **Source:** `Geom2d_Curve.hxx`:206 - `Geom2d_Curve::DN()`
+    /// Inherited: **Source:** `Geom2d_Curve.hxx`:237 - `Geom2d_Curve::DN()`
     pub fn dn(&self, U: f64, N: i32) -> crate::OwnedPtr<crate::gp::Vec2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -2921,7 +3187,7 @@ impl Curve {
         }
     }
 
-    /// Inherited: **Source:** `Geom2d_Curve.hxx`:219 - `Geom2d_Curve::Value()`
+    /// Inherited: **Source:** `Geom2d_Curve.hxx`:240 - `Geom2d_Curve::Value()`
     pub fn value(&self, U: f64) -> crate::OwnedPtr<crate::gp::Pnt2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -2930,46 +3196,46 @@ impl Curve {
         }
     }
 
-    /// Inherited: **Source:** `Geom2d_Geometry.hxx`:63 - `Geom2d_Geometry::Mirror()`
+    /// Inherited: **Source:** `Geom2d_Geometry.hxx`:60 - `Geom2d_Geometry::Mirror()`
     pub fn mirror(&mut self, P: &crate::gp::Pnt2d) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKTopAlgo::Bisector_Curve_inherited_Mirror(self as *mut Self, P)
         })
     }
 
-    /// Inherited: **Source:** `Geom2d_Geometry.hxx`:71 - `Geom2d_Geometry::Rotate()`
+    /// Inherited: **Source:** `Geom2d_Geometry.hxx`:68 - `Geom2d_Geometry::Rotate()`
     pub fn rotate(&mut self, P: &crate::gp::Pnt2d, Ang: f64) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKTopAlgo::Bisector_Curve_inherited_Rotate(self as *mut Self, P, Ang)
         })
     }
 
-    /// Inherited: **Source:** `Geom2d_Geometry.hxx`:74 - `Geom2d_Geometry::Scale()`
+    /// Inherited: **Source:** `Geom2d_Geometry.hxx`:71 - `Geom2d_Geometry::Scale()`
     pub fn scale(&mut self, P: &crate::gp::Pnt2d, S: f64) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKTopAlgo::Bisector_Curve_inherited_Scale(self as *mut Self, P, S)
         })
     }
 
-    /// Inherited: **Source:** `Geom2d_Geometry.hxx`:77 - `Geom2d_Geometry::Translate()`
+    /// Inherited: **Source:** `Geom2d_Geometry.hxx`:74 - `Geom2d_Geometry::Translate()`
     pub fn translate(&mut self, V: &crate::gp::Vec2d) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKTopAlgo::Bisector_Curve_inherited_Translate(self as *mut Self, V)
         })
     }
 
-    /// Inherited: **Source:** `Geom2d_Geometry.hxx`:90 - `Geom2d_Geometry::Transform()`
+    /// Inherited: **Source:** `Geom2d_Geometry.hxx`:87 - `Geom2d_Geometry::Transform()`
     pub fn transform(&mut self, T: &crate::gp::Trsf2d) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKTopAlgo::Bisector_Curve_inherited_Transform(self as *mut Self, T)
         })
     }
 
-    /// Inherited: **Source:** `Geom2d_Geometry.hxx`:92 - `Geom2d_Geometry::Mirrored()`
+    /// Inherited: **Source:** `Geom2d_Geometry.hxx`:89 - `Geom2d_Geometry::Mirrored()`
     pub fn mirrored(
         &self,
         P: &crate::gp::Pnt2d,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleGeom2dGeometry> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Geom2d_Geometry> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKTopAlgo::Bisector_Curve_inherited_Mirrored(
@@ -2980,12 +3246,12 @@ impl Curve {
         }
     }
 
-    /// Inherited: **Source:** `Geom2d_Geometry.hxx`:96 - `Geom2d_Geometry::Rotated()`
+    /// Inherited: **Source:** `Geom2d_Geometry.hxx`:93 - `Geom2d_Geometry::Rotated()`
     pub fn rotated(
         &self,
         P: &crate::gp::Pnt2d,
         Ang: f64,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleGeom2dGeometry> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Geom2d_Geometry> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKTopAlgo::Bisector_Curve_inherited_Rotated(
@@ -2997,12 +3263,12 @@ impl Curve {
         }
     }
 
-    /// Inherited: **Source:** `Geom2d_Geometry.hxx`:99 - `Geom2d_Geometry::Scaled()`
+    /// Inherited: **Source:** `Geom2d_Geometry.hxx`:96 - `Geom2d_Geometry::Scaled()`
     pub fn scaled(
         &self,
         P: &crate::gp::Pnt2d,
         S: f64,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleGeom2dGeometry> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Geom2d_Geometry> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKTopAlgo::Bisector_Curve_inherited_Scaled(
@@ -3014,11 +3280,11 @@ impl Curve {
         }
     }
 
-    /// Inherited: **Source:** `Geom2d_Geometry.hxx`:102 - `Geom2d_Geometry::Transformed()`
+    /// Inherited: **Source:** `Geom2d_Geometry.hxx`:99 - `Geom2d_Geometry::Transformed()`
     pub fn transformed(
         &self,
         T: &crate::gp::Trsf2d,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleGeom2dGeometry> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Geom2d_Geometry> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKTopAlgo::Bisector_Curve_inherited_Transformed(
@@ -3029,11 +3295,11 @@ impl Curve {
         }
     }
 
-    /// Inherited: **Source:** `Geom2d_Geometry.hxx`:104 - `Geom2d_Geometry::Translated()`
+    /// Inherited: **Source:** `Geom2d_Geometry.hxx`:101 - `Geom2d_Geometry::Translated()`
     pub fn translated(
         &self,
         V: &crate::gp::Vec2d,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleGeom2dGeometry> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Geom2d_Geometry> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKTopAlgo::Bisector_Curve_inherited_Translated(
@@ -3044,8 +3310,8 @@ impl Curve {
         }
     }
 
-    /// Inherited: **Source:** `Geom2d_Geometry.hxx`:109 - `Geom2d_Geometry::Copy()`
-    pub fn copy(&self) -> crate::OwnedPtr<crate::ffi_types::HandleGeom2dGeometry> {
+    /// Inherited: **Source:** `Geom2d_Geometry.hxx`:106 - `Geom2d_Geometry::Copy()`
+    pub fn copy(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_Geom2d_Geometry> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKTopAlgo::Bisector_Curve_inherited_Copy(self as *const Self),
@@ -3053,8 +3319,8 @@ impl Curve {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKTopAlgo::Bisector_Curve_inherited_IsInstance(
                 self as *const Self,
@@ -3063,8 +3329,8 @@ impl Curve {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKTopAlgo::Bisector_Curve_inherited_IsKind(
                 self as *const Self,
@@ -3073,7 +3339,7 @@ impl Curve {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -3087,14 +3353,14 @@ impl Curve {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKTopAlgo::Bisector_Curve_inherited_GetRefCount(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKTopAlgo::Bisector_Curve_inherited_IncrementRefCounter(
@@ -3103,7 +3369,7 @@ impl Curve {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKTopAlgo::Bisector_Curve_inherited_DecrementRefCounter(
@@ -3112,7 +3378,7 @@ impl Curve {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKTopAlgo::Bisector_Curve_inherited_Delete(self as *const Self)
@@ -3120,32 +3386,34 @@ impl Curve {
     }
 }
 
-pub use crate::ffi_types::HandleBisectorCurve;
+pub use crate::ffi_types::Handle_Bisector_Curve;
 
-unsafe impl crate::CppDeletable for HandleBisectorCurve {
+unsafe impl crate::CppDeletable for Handle_Bisector_Curve {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKTopAlgo::HandleBisectorCurve_destructor(ptr);
+            crate::ffi_extern_TKTopAlgo::Handle_Bisector_Curve_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleBisectorCurve {
+unsafe impl crate::CppCopyable for Handle_Bisector_Curve {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        unsafe { crate::check_result(crate::ffi_extern_TKTopAlgo::HandleBisectorCurve_clone(ptr)) }
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKTopAlgo::Handle_Bisector_Curve_clone(ptr))
+        }
     }
 }
 
-impl HandleBisectorCurve {
+impl Handle_Bisector_Curve {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
-        unsafe { crate::ffi_extern_TKTopAlgo::HandleBisectorCurve_is_null(self as *const Self) }
+        unsafe { crate::ffi_extern_TKTopAlgo::Handle_Bisector_Curve_is_null(self as *const Self) }
     }
 
     /// Dereference this Handle to access the underlying Bisector_Curve
     pub fn get(&self) -> &crate::ffi_types::Bisector_Curve {
         unsafe {
-            &*crate::check_result(crate::ffi_extern_TKTopAlgo::HandleBisectorCurve_get(
+            &*crate::check_result(crate::ffi_extern_TKTopAlgo::Handle_Bisector_Curve_get(
                 self as *const Self,
             ))
         }
@@ -3154,17 +3422,17 @@ impl HandleBisectorCurve {
     /// Dereference this Handle to mutably access the underlying Bisector_Curve
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::Bisector_Curve {
         unsafe {
-            &mut *crate::check_result(crate::ffi_extern_TKTopAlgo::HandleBisectorCurve_get_mut(
+            &mut *crate::check_result(crate::ffi_extern_TKTopAlgo::Handle_Bisector_Curve_get_mut(
                 self as *mut Self,
             ))
         }
     }
 
     /// Upcast Handle<Bisector_Curve> to Handle<Geom2d_Curve>
-    pub fn to_handle_curve(&self) -> crate::OwnedPtr<crate::ffi_types::HandleGeom2dCurve> {
+    pub fn to_handle_curve(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_Geom2d_Curve> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKTopAlgo::HandleBisectorCurve_to_HandleGeom2dCurve(
+                crate::ffi_extern_TKTopAlgo::Handle_Bisector_Curve_to_Handle_Geom2d_Curve(
                     self as *const Self,
                 ),
             ))
@@ -3172,10 +3440,10 @@ impl HandleBisectorCurve {
     }
 
     /// Upcast Handle<Bisector_Curve> to Handle<Geom2d_Geometry>
-    pub fn to_handle_geometry(&self) -> crate::OwnedPtr<crate::ffi_types::HandleGeom2dGeometry> {
+    pub fn to_handle_geometry(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_Geom2d_Geometry> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKTopAlgo::HandleBisectorCurve_to_HandleGeom2dGeometry(
+                crate::ffi_extern_TKTopAlgo::Handle_Bisector_Curve_to_Handle_Geom2d_Geometry(
                     self as *const Self,
                 ),
             ))
@@ -3185,10 +3453,10 @@ impl HandleBisectorCurve {
     /// Upcast Handle<Bisector_Curve> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKTopAlgo::HandleBisectorCurve_to_HandleStandardTransient(
+                crate::ffi_extern_TKTopAlgo::Handle_Bisector_Curve_to_Handle_Standard_Transient(
                     self as *const Self,
                 ),
             ))
@@ -3200,9 +3468,9 @@ impl HandleBisectorCurve {
     /// Returns `None` if the handle does not point to a `Bisector_BisecAna` (or subclass).
     pub fn downcast_to_bisec_ana(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleBisectorBisecAna>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_Bisector_BisecAna>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKTopAlgo::HandleBisectorCurve_downcast_to_HandleBisectorBisecAna(
+            crate::ffi_extern_TKTopAlgo::Handle_Bisector_Curve_downcast_to_Handle_Bisector_BisecAna(
                 self as *const Self,
             )
         });
@@ -3218,9 +3486,9 @@ impl HandleBisectorCurve {
     /// Returns `None` if the handle does not point to a `Bisector_BisecCC` (or subclass).
     pub fn downcast_to_bisec_cc(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleBisectorBisecCC>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_Bisector_BisecCC>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKTopAlgo::HandleBisectorCurve_downcast_to_HandleBisectorBisecCC(
+            crate::ffi_extern_TKTopAlgo::Handle_Bisector_Curve_downcast_to_Handle_Bisector_BisecCC(
                 self as *const Self,
             )
         });
@@ -3236,9 +3504,9 @@ impl HandleBisectorCurve {
     /// Returns `None` if the handle does not point to a `Bisector_BisecPC` (or subclass).
     pub fn downcast_to_bisec_pc(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleBisectorBisecPC>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_Bisector_BisecPC>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKTopAlgo::HandleBisectorCurve_downcast_to_HandleBisectorBisecPC(
+            crate::ffi_extern_TKTopAlgo::Handle_Bisector_Curve_downcast_to_Handle_Bisector_BisecPC(
                 self as *const Self,
             )
         });
@@ -3255,7 +3523,7 @@ impl HandleBisectorCurve {
 // ========================
 
 /// **Source:** `Bisector_FunctionH.hxx`:34 - `Bisector_FunctionH`
-/// H(v) = (T1  .P2(v) - P1) * ||T(v)||  -
+/// H(v) = (T1.P2(v) - P1) * ||T(v)|| -
 /// 2         2
 /// (T(v).P2(v) - P1) * ||T1||
 pub use crate::ffi_types::Bisector_FunctionH as FunctionH;
@@ -3271,7 +3539,7 @@ unsafe impl crate::CppDeletable for FunctionH {
 impl FunctionH {
     /// **Source:** `Bisector_FunctionH.hxx`:39 - `Bisector_FunctionH::Bisector_FunctionH()`
     pub fn new_handlegeom2dcurve_pnt2d_vec2d(
-        C2: &crate::ffi_types::HandleGeom2dCurve,
+        C2: &crate::ffi_types::Handle_Geom2d_Curve,
         P1: &crate::gp::Pnt2d,
         T1: &crate::gp::Vec2d,
     ) -> crate::OwnedPtr<Self> {
@@ -3368,7 +3636,7 @@ impl FunctionH {
 
 /// **Source:** `Bisector_FunctionInter.hxx`:30 - `Bisector_FunctionInter`
 /// 2                      2
-/// F(u) =  (PC(u) - PBis1(u))   + (PC(u) - PBis2(u))
+/// F(u) = (PC(u) - PBis1(u)) + (PC(u) - PBis2(u))
 pub use crate::ffi_types::Bisector_FunctionInter as FunctionInter;
 
 unsafe impl crate::CppDeletable for FunctionInter {
@@ -3391,9 +3659,9 @@ impl FunctionInter {
 
     /// **Source:** `Bisector_FunctionInter.hxx`:37 - `Bisector_FunctionInter::Bisector_FunctionInter()`
     pub fn new_handlegeom2dcurve_handlebisectorcurve2(
-        C: &crate::ffi_types::HandleGeom2dCurve,
-        Bis1: &crate::ffi_types::HandleBisectorCurve,
-        Bis2: &crate::ffi_types::HandleBisectorCurve,
+        C: &crate::ffi_types::Handle_Geom2d_Curve,
+        Bis1: &crate::ffi_types::Handle_Bisector_Curve,
+        Bis2: &crate::ffi_types::Handle_Bisector_Curve,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKTopAlgo::Bisector_FunctionInter_ctor_handlegeom2dcurve_handlebisectorcurve2(C, Bis1, Bis2)))
@@ -3403,9 +3671,9 @@ impl FunctionInter {
     /// **Source:** `Bisector_FunctionInter.hxx`:41 - `Bisector_FunctionInter::Perform()`
     pub fn perform(
         &mut self,
-        C: &crate::ffi_types::HandleGeom2dCurve,
-        Bis1: &crate::ffi_types::HandleBisectorCurve,
-        Bis2: &crate::ffi_types::HandleBisectorCurve,
+        C: &crate::ffi_types::Handle_Geom2d_Curve,
+        Bis1: &crate::ffi_types::Handle_Bisector_Curve,
+        Bis2: &crate::ffi_types::Handle_Bisector_Curve,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKTopAlgo::Bisector_FunctionInter_perform(
@@ -3593,28 +3861,28 @@ impl Inter {
         }
     }
 
-    /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:39 - `IntRes2d_Intersection::IsDone()`
+    /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:40 - `IntRes2d_Intersection::IsDone()`
     pub fn is_done(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKTopAlgo::Bisector_Inter_inherited_IsDone(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:44 - `IntRes2d_Intersection::IsEmpty()`
+    /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:45 - `IntRes2d_Intersection::IsEmpty()`
     pub fn is_empty(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKTopAlgo::Bisector_Inter_inherited_IsEmpty(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:49 - `IntRes2d_Intersection::NbPoints()`
+    /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:50 - `IntRes2d_Intersection::NbPoints()`
     pub fn nb_points(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKTopAlgo::Bisector_Inter_inherited_NbPoints(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:56 - `IntRes2d_Intersection::Point()`
+    /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:57 - `IntRes2d_Intersection::Point()`
     pub fn point(&self, N: i32) -> &crate::int_res2d::IntersectionPoint {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKTopAlgo::Bisector_Inter_inherited_Point(
@@ -3624,14 +3892,14 @@ impl Inter {
         }
     }
 
-    /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:61 - `IntRes2d_Intersection::NbSegments()`
+    /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:62 - `IntRes2d_Intersection::NbSegments()`
     pub fn nb_segments(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKTopAlgo::Bisector_Inter_inherited_NbSegments(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:68 - `IntRes2d_Intersection::Segment()`
+    /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:69 - `IntRes2d_Intersection::Segment()`
     pub fn segment(&self, N: i32) -> &crate::int_res2d::IntersectionSegment {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKTopAlgo::Bisector_Inter_inherited_Segment(
@@ -3641,7 +3909,7 @@ impl Inter {
         }
     }
 
-    /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:70 - `IntRes2d_Intersection::SetReversedParameters()`
+    /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:71 - `IntRes2d_Intersection::SetReversedParameters()`
     pub fn set_reversed_parameters(&mut self, Reverseflag: bool) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKTopAlgo::Bisector_Inter_inherited_SetReversedParameters(

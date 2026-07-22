@@ -3,7 +3,7 @@
 
 #include "occt_preamble.hxx"
 
-#include <BRepClass3d_MapOfInter.hxx>
+#include <BRepGraph_LayerParametric.hxx>
 #include <BSplCLib.hxx>
 #include <BSplCLib_Cache.hxx>
 #include <BSplCLib_CacheParams.hxx>
@@ -17,19 +17,9 @@
 #include <BVH_BuildThread.hxx>
 #include <BVH_Object.hxx>
 #include <BVH_Properties.hxx>
-#include <Bnd_Array1OfBox.hxx>
-#include <Bnd_Array1OfBox2d.hxx>
-#include <Bnd_Array1OfSphere.hxx>
-#include <Bnd_B2d.hxx>
-#include <Bnd_B2f.hxx>
-#include <Bnd_B3d.hxx>
-#include <Bnd_B3f.hxx>
+#include <BVH_Types.hxx>
 #include <Bnd_BoundSortBox.hxx>
-#include <Bnd_Box.hxx>
 #include <Bnd_Box2d.hxx>
-#include <Bnd_HArray1OfBox.hxx>
-#include <Bnd_HArray1OfBox2d.hxx>
-#include <Bnd_HArray1OfSphere.hxx>
 #include <Bnd_OBB.hxx>
 #include <Bnd_Sphere.hxx>
 #include <Bnd_Tools.hxx>
@@ -55,15 +45,11 @@
 #include <ElSLib.hxx>
 #include <GeomAbs_Shape.hxx>
 #include <Message_ProgressRange.hxx>
-#include <NCollection_BaseAllocator.hxx>
 #include <OSD_FileSystem.hxx>
 #include <PLib.hxx>
-#include <PLib_Base.hxx>
-#include <PLib_DoubleJacobiPolynomial.hxx>
 #include <PLib_HermitJacobi.hxx>
 #include <PLib_JacobiPolynomial.hxx>
 #include <Poly.hxx>
-#include <Poly_Array1OfTriangle.hxx>
 #include <Poly_ArrayOfNodes.hxx>
 #include <Poly_ArrayOfUVNodes.hxx>
 #include <Poly_CoherentLink.hxx>
@@ -72,94 +58,22 @@
 #include <Poly_CoherentTriangle.hxx>
 #include <Poly_CoherentTriangulation.hxx>
 #include <Poly_Connect.hxx>
-#include <Poly_HArray1OfTriangle.hxx>
-#include <Poly_ListOfTriangulation.hxx>
 #include <Poly_MakeLoops.hxx>
 #include <Poly_MergeNodesTool.hxx>
 #include <Poly_Polygon2D.hxx>
 #include <Poly_Polygon3D.hxx>
 #include <Poly_PolygonOnTriangulation.hxx>
+#include <Poly_Triangulation.hxx>
 #include <Poly_TriangulationParameters.hxx>
-#include <RWGltf_GltfLatePrimitiveArray.hxx>
 #include <RWMesh_TriangulationSource.hxx>
 #include <Select3D_BndBox3d.hxx>
-#include <Standard_DimensionError.hxx>
-#include <Standard_DomainError.hxx>
-#include <Standard_Failure.hxx>
 #include <Standard_Handle.hxx>
 #include <Standard_IStream.hxx>
 #include <Standard_OStream.hxx>
-#include <Standard_SStream.hxx>
 #include <Standard_Type.hxx>
-#include <Standard_TypeDef.hxx>
-#include <TColStd_Array1OfInteger.hxx>
-#include <TColStd_Array1OfReal.hxx>
-#include <TColStd_Array2OfReal.hxx>
-#include <TColStd_HArray1OfInteger.hxx>
-#include <TColStd_HArray1OfReal.hxx>
-#include <TColStd_HArray2OfInteger.hxx>
-#include <TColStd_HArray2OfReal.hxx>
-#include <TColStd_ListOfInteger.hxx>
-#include <TColgp_Array1OfCirc2d.hxx>
-#include <TColgp_Array1OfDir.hxx>
-#include <TColgp_Array1OfDir2d.hxx>
-#include <TColgp_Array1OfLin2d.hxx>
-#include <TColgp_Array1OfPnt.hxx>
-#include <TColgp_Array1OfPnt2d.hxx>
-#include <TColgp_Array1OfVec.hxx>
-#include <TColgp_Array1OfVec2d.hxx>
-#include <TColgp_Array1OfXY.hxx>
-#include <TColgp_Array1OfXYZ.hxx>
-#include <TColgp_Array2OfCirc2d.hxx>
-#include <TColgp_Array2OfDir.hxx>
-#include <TColgp_Array2OfDir2d.hxx>
-#include <TColgp_Array2OfLin2d.hxx>
-#include <TColgp_Array2OfPnt.hxx>
-#include <TColgp_Array2OfPnt2d.hxx>
-#include <TColgp_Array2OfVec.hxx>
-#include <TColgp_Array2OfVec2d.hxx>
-#include <TColgp_Array2OfXY.hxx>
-#include <TColgp_Array2OfXYZ.hxx>
-#include <TColgp_HArray1OfCirc2d.hxx>
-#include <TColgp_HArray1OfDir.hxx>
-#include <TColgp_HArray1OfDir2d.hxx>
-#include <TColgp_HArray1OfLin2d.hxx>
-#include <TColgp_HArray1OfPnt.hxx>
-#include <TColgp_HArray1OfPnt2d.hxx>
-#include <TColgp_HArray1OfVec.hxx>
-#include <TColgp_HArray1OfVec2d.hxx>
-#include <TColgp_HArray1OfXY.hxx>
-#include <TColgp_HArray1OfXYZ.hxx>
-#include <TColgp_HArray2OfCirc2d.hxx>
-#include <TColgp_HArray2OfDir.hxx>
-#include <TColgp_HArray2OfDir2d.hxx>
-#include <TColgp_HArray2OfLin2d.hxx>
-#include <TColgp_HArray2OfPnt.hxx>
-#include <TColgp_HArray2OfPnt2d.hxx>
-#include <TColgp_HArray2OfVec.hxx>
-#include <TColgp_HArray2OfVec2d.hxx>
-#include <TColgp_HArray2OfXY.hxx>
-#include <TColgp_HArray2OfXYZ.hxx>
-#include <TColgp_HSequenceOfDir.hxx>
-#include <TColgp_HSequenceOfDir2d.hxx>
-#include <TColgp_HSequenceOfPnt.hxx>
-#include <TColgp_HSequenceOfPnt2d.hxx>
-#include <TColgp_HSequenceOfVec.hxx>
-#include <TColgp_HSequenceOfVec2d.hxx>
-#include <TColgp_HSequenceOfXY.hxx>
-#include <TColgp_HSequenceOfXYZ.hxx>
-#include <TColgp_SequenceOfDir.hxx>
-#include <TColgp_SequenceOfDir2d.hxx>
-#include <TColgp_SequenceOfPnt.hxx>
-#include <TColgp_SequenceOfPnt2d.hxx>
-#include <TColgp_SequenceOfVec.hxx>
-#include <TColgp_SequenceOfVec2d.hxx>
-#include <TColgp_SequenceOfXY.hxx>
-#include <TColgp_SequenceOfXYZ.hxx>
-#include <TShort_HArray1OfShortReal.hxx>
+#include <TDF_HAllocator.hxx>
 #include <TopLoc_Datum3D.hxx>
 #include <TopLoc_ItemLocation.hxx>
-#include <TopLoc_Location.hxx>
 #include <TopLoc_SListNodeOfItemLocation.hxx>
 #include <TopLoc_SListOfItemLocation.hxx>
 #include <gp.hxx>
@@ -168,11 +82,9 @@
 #include <gp_Ax22d.hxx>
 #include <gp_Ax2d.hxx>
 #include <gp_Ax3.hxx>
-#include <gp_Circ.hxx>
 #include <gp_Circ2d.hxx>
 #include <gp_Cone.hxx>
 #include <gp_Cylinder.hxx>
-#include <gp_Dir.hxx>
 #include <gp_Dir2d.hxx>
 #include <gp_Elips.hxx>
 #include <gp_Elips2d.hxx>
@@ -181,7 +93,6 @@
 #include <gp_GTrsf2d.hxx>
 #include <gp_Hypr.hxx>
 #include <gp_Hypr2d.hxx>
-#include <gp_Lin.hxx>
 #include <gp_Lin2d.hxx>
 #include <gp_Mat.hxx>
 #include <gp_Mat2d.hxx>
@@ -193,14 +104,9 @@
 #include <gp_QuaternionSLerp.hxx>
 #include <gp_Sphere.hxx>
 #include <gp_Torus.hxx>
-#include <gp_Trsf.hxx>
 #include <gp_Trsf2d.hxx>
 #include <gp_TrsfForm.hxx>
-#include <gp_Vec.hxx>
-#include <gp_Vec2d.hxx>
-#include <gp_Vec2f.hxx>
 #include <gp_VectorWithNullMagnitude.hxx>
-#include <gp_XY.hxx>
 #include <math.hxx>
 #include <math_BFGS.hxx>
 #include <math_BissecNewton.hxx>
@@ -255,410 +161,143 @@
 #include <math_Vector.hxx>
 
 // Handle type aliases
-typedef opencascade::handle<BSplCLib_Cache> HandleBSplCLibCache;
-typedef opencascade::handle<BSplSLib_Cache> HandleBSplSLibCache;
-typedef opencascade::handle<BVH_BuildThread> HandleBVHBuildThread;
-typedef opencascade::handle<BVH_BuilderTransient> HandleBVHBuilderTransient;
-typedef opencascade::handle<BVH_ObjectTransient> HandleBVHObjectTransient;
-typedef opencascade::handle<BVH_Properties> HandleBVHProperties;
-typedef opencascade::handle<BVH_TreeBaseTransient> HandleBVHTreeBaseTransient;
-typedef opencascade::handle<Bnd_HArray1OfBox> HandleBndHArray1OfBox;
-typedef opencascade::handle<Bnd_HArray1OfBox2d> HandleBndHArray1OfBox2d;
-typedef opencascade::handle<Bnd_HArray1OfSphere> HandleBndHArray1OfSphere;
-typedef opencascade::handle<NCollection_BaseAllocator> HandleNCollectionBaseAllocator;
-typedef opencascade::handle<OSD_FileSystem> HandleOSDFileSystem;
-typedef opencascade::handle<PLib_Base> HandlePLibBase;
-typedef opencascade::handle<PLib_HermitJacobi> HandlePLibHermitJacobi;
-typedef opencascade::handle<PLib_JacobiPolynomial> HandlePLibJacobiPolynomial;
-typedef opencascade::handle<Poly_CoherentTriangulation> HandlePolyCoherentTriangulation;
-typedef opencascade::handle<Poly_HArray1OfTriangle> HandlePolyHArray1OfTriangle;
-typedef opencascade::handle<Poly_MergeNodesTool> HandlePolyMergeNodesTool;
-typedef opencascade::handle<Poly_Polygon2D> HandlePolyPolygon2D;
-typedef opencascade::handle<Poly_Polygon3D> HandlePolyPolygon3D;
-typedef opencascade::handle<Poly_PolygonOnTriangulation> HandlePolyPolygonOnTriangulation;
-typedef opencascade::handle<Poly_Triangulation> HandlePolyTriangulation;
-typedef opencascade::handle<Poly_TriangulationParameters> HandlePolyTriangulationParameters;
-typedef opencascade::handle<RWGltf_GltfLatePrimitiveArray> HandleRWGltfGltfLatePrimitiveArray;
-typedef opencascade::handle<RWMesh_TriangulationSource> HandleRWMeshTriangulationSource;
-typedef opencascade::handle<Standard_DimensionError> HandleStandardDimensionError;
-typedef opencascade::handle<Standard_DomainError> HandleStandardDomainError;
-typedef opencascade::handle<Standard_Failure> HandleStandardFailure;
-typedef opencascade::handle<Standard_Transient> HandleStandardTransient;
-typedef opencascade::handle<Standard_Type> HandleStandardType;
-typedef opencascade::handle<TColStd_HArray1OfInteger> HandleTColStdHArray1OfInteger;
-typedef opencascade::handle<TColStd_HArray1OfReal> HandleTColStdHArray1OfReal;
-typedef opencascade::handle<TColStd_HArray2OfInteger> HandleTColStdHArray2OfInteger;
-typedef opencascade::handle<TColStd_HArray2OfReal> HandleTColStdHArray2OfReal;
-typedef opencascade::handle<TColgp_HArray1OfCirc2d> HandleTColgpHArray1OfCirc2d;
-typedef opencascade::handle<TColgp_HArray1OfDir> HandleTColgpHArray1OfDir;
-typedef opencascade::handle<TColgp_HArray1OfDir2d> HandleTColgpHArray1OfDir2d;
-typedef opencascade::handle<TColgp_HArray1OfLin2d> HandleTColgpHArray1OfLin2d;
-typedef opencascade::handle<TColgp_HArray1OfPnt> HandleTColgpHArray1OfPnt;
-typedef opencascade::handle<TColgp_HArray1OfPnt2d> HandleTColgpHArray1OfPnt2d;
-typedef opencascade::handle<TColgp_HArray1OfVec> HandleTColgpHArray1OfVec;
-typedef opencascade::handle<TColgp_HArray1OfVec2d> HandleTColgpHArray1OfVec2d;
-typedef opencascade::handle<TColgp_HArray1OfXY> HandleTColgpHArray1OfXY;
-typedef opencascade::handle<TColgp_HArray1OfXYZ> HandleTColgpHArray1OfXYZ;
-typedef opencascade::handle<TColgp_HArray2OfCirc2d> HandleTColgpHArray2OfCirc2d;
-typedef opencascade::handle<TColgp_HArray2OfDir> HandleTColgpHArray2OfDir;
-typedef opencascade::handle<TColgp_HArray2OfDir2d> HandleTColgpHArray2OfDir2d;
-typedef opencascade::handle<TColgp_HArray2OfLin2d> HandleTColgpHArray2OfLin2d;
-typedef opencascade::handle<TColgp_HArray2OfPnt> HandleTColgpHArray2OfPnt;
-typedef opencascade::handle<TColgp_HArray2OfPnt2d> HandleTColgpHArray2OfPnt2d;
-typedef opencascade::handle<TColgp_HArray2OfVec> HandleTColgpHArray2OfVec;
-typedef opencascade::handle<TColgp_HArray2OfVec2d> HandleTColgpHArray2OfVec2d;
-typedef opencascade::handle<TColgp_HArray2OfXY> HandleTColgpHArray2OfXY;
-typedef opencascade::handle<TColgp_HArray2OfXYZ> HandleTColgpHArray2OfXYZ;
-typedef opencascade::handle<TColgp_HSequenceOfDir> HandleTColgpHSequenceOfDir;
-typedef opencascade::handle<TColgp_HSequenceOfDir2d> HandleTColgpHSequenceOfDir2d;
-typedef opencascade::handle<TColgp_HSequenceOfPnt> HandleTColgpHSequenceOfPnt;
-typedef opencascade::handle<TColgp_HSequenceOfPnt2d> HandleTColgpHSequenceOfPnt2d;
-typedef opencascade::handle<TColgp_HSequenceOfVec> HandleTColgpHSequenceOfVec;
-typedef opencascade::handle<TColgp_HSequenceOfVec2d> HandleTColgpHSequenceOfVec2d;
-typedef opencascade::handle<TColgp_HSequenceOfXY> HandleTColgpHSequenceOfXY;
-typedef opencascade::handle<TColgp_HSequenceOfXYZ> HandleTColgpHSequenceOfXYZ;
-typedef opencascade::handle<TShort_HArray1OfShortReal> HandleTShortHArray1OfShortReal;
-typedef opencascade::handle<TopLoc_Datum3D> HandleTopLocDatum3D;
-typedef opencascade::handle<TopLoc_SListNodeOfItemLocation> HandleTopLocSListNodeOfItemLocation;
-typedef opencascade::handle<gp_VectorWithNullMagnitude> HandlegpVectorWithNullMagnitude;
-typedef opencascade::handle<math_NotSquare> HandlemathNotSquare;
-typedef opencascade::handle<math_SingularMatrix> HandlemathSingularMatrix;
+typedef opencascade::handle<BSplCLib_Cache> Handle_BSplCLib_Cache;
+typedef opencascade::handle<BSplSLib_Cache> Handle_BSplSLib_Cache;
+typedef opencascade::handle<BVH_BuildThread> Handle_BVH_BuildThread;
+typedef opencascade::handle<BVH_BuilderTransient> Handle_BVH_BuilderTransient;
+typedef opencascade::handle<BVH_ObjectTransient> Handle_BVH_ObjectTransient;
+typedef opencascade::handle<BVH_Properties> Handle_BVH_Properties;
+typedef opencascade::handle<BVH_TreeBaseTransient> Handle_BVH_TreeBaseTransient;
+typedef opencascade::handle<NCollection_HArray1_Bnd_Box> Handle_NCollection_HArray1_Bnd_Box;
+typedef opencascade::handle<NCollection_HArray1_Poly_Triangle> Handle_NCollection_HArray1_Poly_Triangle;
+typedef opencascade::handle<NCollection_HArray1_double> Handle_NCollection_HArray1_double;
+typedef opencascade::handle<NCollection_HArray1_float> Handle_NCollection_HArray1_float;
+typedef opencascade::handle<NCollection_HArray1_gp_Pnt> Handle_NCollection_HArray1_gp_Pnt;
+typedef opencascade::handle<NCollection_HArray1_gp_Pnt2d> Handle_NCollection_HArray1_gp_Pnt2d;
+typedef opencascade::handle<NCollection_HArray1_int> Handle_NCollection_HArray1_int;
+typedef opencascade::handle<NCollection_HArray2_double> Handle_NCollection_HArray2_double;
+typedef opencascade::handle<NCollection_HArray2_int> Handle_NCollection_HArray2_int;
+typedef opencascade::handle<OSD_FileSystem> Handle_OSD_FileSystem;
+typedef opencascade::handle<Poly_CoherentTriangulation> Handle_Poly_CoherentTriangulation;
+typedef opencascade::handle<Poly_MergeNodesTool> Handle_Poly_MergeNodesTool;
+typedef opencascade::handle<Poly_Polygon2D> Handle_Poly_Polygon2D;
+typedef opencascade::handle<Poly_Polygon3D> Handle_Poly_Polygon3D;
+typedef opencascade::handle<Poly_PolygonOnTriangulation> Handle_Poly_PolygonOnTriangulation;
+typedef opencascade::handle<Poly_Triangulation> Handle_Poly_Triangulation;
+typedef opencascade::handle<Poly_TriangulationParameters> Handle_Poly_TriangulationParameters;
+typedef opencascade::handle<RWMesh_TriangulationSource> Handle_RWMesh_TriangulationSource;
+typedef opencascade::handle<Standard_Transient> Handle_Standard_Transient;
+typedef opencascade::handle<Standard_Type> Handle_Standard_Type;
+typedef opencascade::handle<TopLoc_Datum3D> Handle_TopLoc_Datum3D;
+typedef opencascade::handle<TopLoc_SListNodeOfItemLocation> Handle_TopLoc_SListNodeOfItemLocation;
 
 // Handle type destructors, clone, and is_null functions
-extern "C" void HandleBSplCLibCache_destructor(HandleBSplCLibCache* self_) { delete self_; }
-extern "C" OcctResult<HandleBSplCLibCache*> HandleBSplCLibCache_clone(const HandleBSplCLibCache* self_) {
-    try { return {new HandleBSplCLibCache(*self_), nullptr}; }
+extern "C" void Handle_BSplCLib_Cache_destructor(Handle_BSplCLib_Cache* self_) { delete self_; }
+extern "C" OcctResult<Handle_BSplCLib_Cache*> Handle_BSplCLib_Cache_clone(const Handle_BSplCLib_Cache* self_) {
+    try { return {new Handle_BSplCLib_Cache(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleBSplCLibCache_is_null(const HandleBSplCLibCache* self_) { return self_->IsNull(); }
-extern "C" void HandleBSplSLibCache_destructor(HandleBSplSLibCache* self_) { delete self_; }
-extern "C" OcctResult<HandleBSplSLibCache*> HandleBSplSLibCache_clone(const HandleBSplSLibCache* self_) {
-    try { return {new HandleBSplSLibCache(*self_), nullptr}; }
+extern "C" bool Handle_BSplCLib_Cache_is_null(const Handle_BSplCLib_Cache* self_) { return self_->IsNull(); }
+extern "C" void Handle_BSplSLib_Cache_destructor(Handle_BSplSLib_Cache* self_) { delete self_; }
+extern "C" OcctResult<Handle_BSplSLib_Cache*> Handle_BSplSLib_Cache_clone(const Handle_BSplSLib_Cache* self_) {
+    try { return {new Handle_BSplSLib_Cache(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleBSplSLibCache_is_null(const HandleBSplSLibCache* self_) { return self_->IsNull(); }
-extern "C" void HandleBVHBuildThread_destructor(HandleBVHBuildThread* self_) { delete self_; }
-extern "C" OcctResult<HandleBVHBuildThread*> HandleBVHBuildThread_clone(const HandleBVHBuildThread* self_) {
-    try { return {new HandleBVHBuildThread(*self_), nullptr}; }
+extern "C" bool Handle_BSplSLib_Cache_is_null(const Handle_BSplSLib_Cache* self_) { return self_->IsNull(); }
+extern "C" void Handle_BVH_BuildThread_destructor(Handle_BVH_BuildThread* self_) { delete self_; }
+extern "C" OcctResult<Handle_BVH_BuildThread*> Handle_BVH_BuildThread_clone(const Handle_BVH_BuildThread* self_) {
+    try { return {new Handle_BVH_BuildThread(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleBVHBuildThread_is_null(const HandleBVHBuildThread* self_) { return self_->IsNull(); }
-extern "C" void HandleBVHBuilderTransient_destructor(HandleBVHBuilderTransient* self_) { delete self_; }
-extern "C" OcctResult<HandleBVHBuilderTransient*> HandleBVHBuilderTransient_clone(const HandleBVHBuilderTransient* self_) {
-    try { return {new HandleBVHBuilderTransient(*self_), nullptr}; }
+extern "C" bool Handle_BVH_BuildThread_is_null(const Handle_BVH_BuildThread* self_) { return self_->IsNull(); }
+extern "C" void Handle_BVH_BuilderTransient_destructor(Handle_BVH_BuilderTransient* self_) { delete self_; }
+extern "C" OcctResult<Handle_BVH_BuilderTransient*> Handle_BVH_BuilderTransient_clone(const Handle_BVH_BuilderTransient* self_) {
+    try { return {new Handle_BVH_BuilderTransient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleBVHBuilderTransient_is_null(const HandleBVHBuilderTransient* self_) { return self_->IsNull(); }
-extern "C" void HandleBVHObjectTransient_destructor(HandleBVHObjectTransient* self_) { delete self_; }
-extern "C" OcctResult<HandleBVHObjectTransient*> HandleBVHObjectTransient_clone(const HandleBVHObjectTransient* self_) {
-    try { return {new HandleBVHObjectTransient(*self_), nullptr}; }
+extern "C" bool Handle_BVH_BuilderTransient_is_null(const Handle_BVH_BuilderTransient* self_) { return self_->IsNull(); }
+extern "C" void Handle_BVH_ObjectTransient_destructor(Handle_BVH_ObjectTransient* self_) { delete self_; }
+extern "C" OcctResult<Handle_BVH_ObjectTransient*> Handle_BVH_ObjectTransient_clone(const Handle_BVH_ObjectTransient* self_) {
+    try { return {new Handle_BVH_ObjectTransient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleBVHObjectTransient_is_null(const HandleBVHObjectTransient* self_) { return self_->IsNull(); }
-extern "C" void HandleBVHProperties_destructor(HandleBVHProperties* self_) { delete self_; }
-extern "C" OcctResult<HandleBVHProperties*> HandleBVHProperties_clone(const HandleBVHProperties* self_) {
-    try { return {new HandleBVHProperties(*self_), nullptr}; }
+extern "C" bool Handle_BVH_ObjectTransient_is_null(const Handle_BVH_ObjectTransient* self_) { return self_->IsNull(); }
+extern "C" void Handle_BVH_Properties_destructor(Handle_BVH_Properties* self_) { delete self_; }
+extern "C" OcctResult<Handle_BVH_Properties*> Handle_BVH_Properties_clone(const Handle_BVH_Properties* self_) {
+    try { return {new Handle_BVH_Properties(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleBVHProperties_is_null(const HandleBVHProperties* self_) { return self_->IsNull(); }
-extern "C" void HandleBVHTreeBaseTransient_destructor(HandleBVHTreeBaseTransient* self_) { delete self_; }
-extern "C" OcctResult<HandleBVHTreeBaseTransient*> HandleBVHTreeBaseTransient_clone(const HandleBVHTreeBaseTransient* self_) {
-    try { return {new HandleBVHTreeBaseTransient(*self_), nullptr}; }
+extern "C" bool Handle_BVH_Properties_is_null(const Handle_BVH_Properties* self_) { return self_->IsNull(); }
+extern "C" void Handle_BVH_TreeBaseTransient_destructor(Handle_BVH_TreeBaseTransient* self_) { delete self_; }
+extern "C" OcctResult<Handle_BVH_TreeBaseTransient*> Handle_BVH_TreeBaseTransient_clone(const Handle_BVH_TreeBaseTransient* self_) {
+    try { return {new Handle_BVH_TreeBaseTransient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleBVHTreeBaseTransient_is_null(const HandleBVHTreeBaseTransient* self_) { return self_->IsNull(); }
-extern "C" void HandleBndHArray1OfBox_destructor(HandleBndHArray1OfBox* self_) { delete self_; }
-extern "C" OcctResult<HandleBndHArray1OfBox*> HandleBndHArray1OfBox_clone(const HandleBndHArray1OfBox* self_) {
-    try { return {new HandleBndHArray1OfBox(*self_), nullptr}; }
+extern "C" bool Handle_BVH_TreeBaseTransient_is_null(const Handle_BVH_TreeBaseTransient* self_) { return self_->IsNull(); }
+extern "C" void Handle_Poly_CoherentTriangulation_destructor(Handle_Poly_CoherentTriangulation* self_) { delete self_; }
+extern "C" OcctResult<Handle_Poly_CoherentTriangulation*> Handle_Poly_CoherentTriangulation_clone(const Handle_Poly_CoherentTriangulation* self_) {
+    try { return {new Handle_Poly_CoherentTriangulation(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleBndHArray1OfBox_is_null(const HandleBndHArray1OfBox* self_) { return self_->IsNull(); }
-extern "C" void HandleBndHArray1OfBox2d_destructor(HandleBndHArray1OfBox2d* self_) { delete self_; }
-extern "C" OcctResult<HandleBndHArray1OfBox2d*> HandleBndHArray1OfBox2d_clone(const HandleBndHArray1OfBox2d* self_) {
-    try { return {new HandleBndHArray1OfBox2d(*self_), nullptr}; }
+extern "C" bool Handle_Poly_CoherentTriangulation_is_null(const Handle_Poly_CoherentTriangulation* self_) { return self_->IsNull(); }
+extern "C" void Handle_Poly_MergeNodesTool_destructor(Handle_Poly_MergeNodesTool* self_) { delete self_; }
+extern "C" OcctResult<Handle_Poly_MergeNodesTool*> Handle_Poly_MergeNodesTool_clone(const Handle_Poly_MergeNodesTool* self_) {
+    try { return {new Handle_Poly_MergeNodesTool(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleBndHArray1OfBox2d_is_null(const HandleBndHArray1OfBox2d* self_) { return self_->IsNull(); }
-extern "C" void HandleBndHArray1OfSphere_destructor(HandleBndHArray1OfSphere* self_) { delete self_; }
-extern "C" OcctResult<HandleBndHArray1OfSphere*> HandleBndHArray1OfSphere_clone(const HandleBndHArray1OfSphere* self_) {
-    try { return {new HandleBndHArray1OfSphere(*self_), nullptr}; }
+extern "C" bool Handle_Poly_MergeNodesTool_is_null(const Handle_Poly_MergeNodesTool* self_) { return self_->IsNull(); }
+extern "C" void Handle_Poly_Polygon2D_destructor(Handle_Poly_Polygon2D* self_) { delete self_; }
+extern "C" OcctResult<Handle_Poly_Polygon2D*> Handle_Poly_Polygon2D_clone(const Handle_Poly_Polygon2D* self_) {
+    try { return {new Handle_Poly_Polygon2D(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleBndHArray1OfSphere_is_null(const HandleBndHArray1OfSphere* self_) { return self_->IsNull(); }
-extern "C" void HandlePLibBase_destructor(HandlePLibBase* self_) { delete self_; }
-extern "C" OcctResult<HandlePLibBase*> HandlePLibBase_clone(const HandlePLibBase* self_) {
-    try { return {new HandlePLibBase(*self_), nullptr}; }
+extern "C" bool Handle_Poly_Polygon2D_is_null(const Handle_Poly_Polygon2D* self_) { return self_->IsNull(); }
+extern "C" void Handle_Poly_Polygon3D_destructor(Handle_Poly_Polygon3D* self_) { delete self_; }
+extern "C" OcctResult<Handle_Poly_Polygon3D*> Handle_Poly_Polygon3D_clone(const Handle_Poly_Polygon3D* self_) {
+    try { return {new Handle_Poly_Polygon3D(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandlePLibBase_is_null(const HandlePLibBase* self_) { return self_->IsNull(); }
-extern "C" void HandlePLibHermitJacobi_destructor(HandlePLibHermitJacobi* self_) { delete self_; }
-extern "C" OcctResult<HandlePLibHermitJacobi*> HandlePLibHermitJacobi_clone(const HandlePLibHermitJacobi* self_) {
-    try { return {new HandlePLibHermitJacobi(*self_), nullptr}; }
+extern "C" bool Handle_Poly_Polygon3D_is_null(const Handle_Poly_Polygon3D* self_) { return self_->IsNull(); }
+extern "C" void Handle_Poly_PolygonOnTriangulation_destructor(Handle_Poly_PolygonOnTriangulation* self_) { delete self_; }
+extern "C" OcctResult<Handle_Poly_PolygonOnTriangulation*> Handle_Poly_PolygonOnTriangulation_clone(const Handle_Poly_PolygonOnTriangulation* self_) {
+    try { return {new Handle_Poly_PolygonOnTriangulation(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandlePLibHermitJacobi_is_null(const HandlePLibHermitJacobi* self_) { return self_->IsNull(); }
-extern "C" void HandlePLibJacobiPolynomial_destructor(HandlePLibJacobiPolynomial* self_) { delete self_; }
-extern "C" OcctResult<HandlePLibJacobiPolynomial*> HandlePLibJacobiPolynomial_clone(const HandlePLibJacobiPolynomial* self_) {
-    try { return {new HandlePLibJacobiPolynomial(*self_), nullptr}; }
+extern "C" bool Handle_Poly_PolygonOnTriangulation_is_null(const Handle_Poly_PolygonOnTriangulation* self_) { return self_->IsNull(); }
+extern "C" void Handle_Poly_Triangulation_destructor(Handle_Poly_Triangulation* self_) { delete self_; }
+extern "C" OcctResult<Handle_Poly_Triangulation*> Handle_Poly_Triangulation_clone(const Handle_Poly_Triangulation* self_) {
+    try { return {new Handle_Poly_Triangulation(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandlePLibJacobiPolynomial_is_null(const HandlePLibJacobiPolynomial* self_) { return self_->IsNull(); }
-extern "C" void HandlePolyCoherentTriangulation_destructor(HandlePolyCoherentTriangulation* self_) { delete self_; }
-extern "C" OcctResult<HandlePolyCoherentTriangulation*> HandlePolyCoherentTriangulation_clone(const HandlePolyCoherentTriangulation* self_) {
-    try { return {new HandlePolyCoherentTriangulation(*self_), nullptr}; }
+extern "C" bool Handle_Poly_Triangulation_is_null(const Handle_Poly_Triangulation* self_) { return self_->IsNull(); }
+extern "C" void Handle_Poly_TriangulationParameters_destructor(Handle_Poly_TriangulationParameters* self_) { delete self_; }
+extern "C" OcctResult<Handle_Poly_TriangulationParameters*> Handle_Poly_TriangulationParameters_clone(const Handle_Poly_TriangulationParameters* self_) {
+    try { return {new Handle_Poly_TriangulationParameters(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandlePolyCoherentTriangulation_is_null(const HandlePolyCoherentTriangulation* self_) { return self_->IsNull(); }
-extern "C" void HandlePolyHArray1OfTriangle_destructor(HandlePolyHArray1OfTriangle* self_) { delete self_; }
-extern "C" OcctResult<HandlePolyHArray1OfTriangle*> HandlePolyHArray1OfTriangle_clone(const HandlePolyHArray1OfTriangle* self_) {
-    try { return {new HandlePolyHArray1OfTriangle(*self_), nullptr}; }
+extern "C" bool Handle_Poly_TriangulationParameters_is_null(const Handle_Poly_TriangulationParameters* self_) { return self_->IsNull(); }
+extern "C" void Handle_TopLoc_Datum3D_destructor(Handle_TopLoc_Datum3D* self_) { delete self_; }
+extern "C" OcctResult<Handle_TopLoc_Datum3D*> Handle_TopLoc_Datum3D_clone(const Handle_TopLoc_Datum3D* self_) {
+    try { return {new Handle_TopLoc_Datum3D(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandlePolyHArray1OfTriangle_is_null(const HandlePolyHArray1OfTriangle* self_) { return self_->IsNull(); }
-extern "C" void HandlePolyMergeNodesTool_destructor(HandlePolyMergeNodesTool* self_) { delete self_; }
-extern "C" OcctResult<HandlePolyMergeNodesTool*> HandlePolyMergeNodesTool_clone(const HandlePolyMergeNodesTool* self_) {
-    try { return {new HandlePolyMergeNodesTool(*self_), nullptr}; }
+extern "C" bool Handle_TopLoc_Datum3D_is_null(const Handle_TopLoc_Datum3D* self_) { return self_->IsNull(); }
+extern "C" void Handle_TopLoc_SListNodeOfItemLocation_destructor(Handle_TopLoc_SListNodeOfItemLocation* self_) { delete self_; }
+extern "C" OcctResult<Handle_TopLoc_SListNodeOfItemLocation*> Handle_TopLoc_SListNodeOfItemLocation_clone(const Handle_TopLoc_SListNodeOfItemLocation* self_) {
+    try { return {new Handle_TopLoc_SListNodeOfItemLocation(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandlePolyMergeNodesTool_is_null(const HandlePolyMergeNodesTool* self_) { return self_->IsNull(); }
-extern "C" void HandlePolyPolygon2D_destructor(HandlePolyPolygon2D* self_) { delete self_; }
-extern "C" OcctResult<HandlePolyPolygon2D*> HandlePolyPolygon2D_clone(const HandlePolyPolygon2D* self_) {
-    try { return {new HandlePolyPolygon2D(*self_), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" bool HandlePolyPolygon2D_is_null(const HandlePolyPolygon2D* self_) { return self_->IsNull(); }
-extern "C" void HandlePolyPolygon3D_destructor(HandlePolyPolygon3D* self_) { delete self_; }
-extern "C" OcctResult<HandlePolyPolygon3D*> HandlePolyPolygon3D_clone(const HandlePolyPolygon3D* self_) {
-    try { return {new HandlePolyPolygon3D(*self_), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" bool HandlePolyPolygon3D_is_null(const HandlePolyPolygon3D* self_) { return self_->IsNull(); }
-extern "C" void HandlePolyPolygonOnTriangulation_destructor(HandlePolyPolygonOnTriangulation* self_) { delete self_; }
-extern "C" OcctResult<HandlePolyPolygonOnTriangulation*> HandlePolyPolygonOnTriangulation_clone(const HandlePolyPolygonOnTriangulation* self_) {
-    try { return {new HandlePolyPolygonOnTriangulation(*self_), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" bool HandlePolyPolygonOnTriangulation_is_null(const HandlePolyPolygonOnTriangulation* self_) { return self_->IsNull(); }
-extern "C" void HandlePolyTriangulation_destructor(HandlePolyTriangulation* self_) { delete self_; }
-extern "C" OcctResult<HandlePolyTriangulation*> HandlePolyTriangulation_clone(const HandlePolyTriangulation* self_) {
-    try { return {new HandlePolyTriangulation(*self_), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" bool HandlePolyTriangulation_is_null(const HandlePolyTriangulation* self_) { return self_->IsNull(); }
-extern "C" void HandlePolyTriangulationParameters_destructor(HandlePolyTriangulationParameters* self_) { delete self_; }
-extern "C" OcctResult<HandlePolyTriangulationParameters*> HandlePolyTriangulationParameters_clone(const HandlePolyTriangulationParameters* self_) {
-    try { return {new HandlePolyTriangulationParameters(*self_), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" bool HandlePolyTriangulationParameters_is_null(const HandlePolyTriangulationParameters* self_) { return self_->IsNull(); }
-extern "C" void HandleTColgpHArray1OfCirc2d_destructor(HandleTColgpHArray1OfCirc2d* self_) { delete self_; }
-extern "C" OcctResult<HandleTColgpHArray1OfCirc2d*> HandleTColgpHArray1OfCirc2d_clone(const HandleTColgpHArray1OfCirc2d* self_) {
-    try { return {new HandleTColgpHArray1OfCirc2d(*self_), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" bool HandleTColgpHArray1OfCirc2d_is_null(const HandleTColgpHArray1OfCirc2d* self_) { return self_->IsNull(); }
-extern "C" void HandleTColgpHArray1OfDir_destructor(HandleTColgpHArray1OfDir* self_) { delete self_; }
-extern "C" OcctResult<HandleTColgpHArray1OfDir*> HandleTColgpHArray1OfDir_clone(const HandleTColgpHArray1OfDir* self_) {
-    try { return {new HandleTColgpHArray1OfDir(*self_), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" bool HandleTColgpHArray1OfDir_is_null(const HandleTColgpHArray1OfDir* self_) { return self_->IsNull(); }
-extern "C" void HandleTColgpHArray1OfDir2d_destructor(HandleTColgpHArray1OfDir2d* self_) { delete self_; }
-extern "C" OcctResult<HandleTColgpHArray1OfDir2d*> HandleTColgpHArray1OfDir2d_clone(const HandleTColgpHArray1OfDir2d* self_) {
-    try { return {new HandleTColgpHArray1OfDir2d(*self_), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" bool HandleTColgpHArray1OfDir2d_is_null(const HandleTColgpHArray1OfDir2d* self_) { return self_->IsNull(); }
-extern "C" void HandleTColgpHArray1OfLin2d_destructor(HandleTColgpHArray1OfLin2d* self_) { delete self_; }
-extern "C" OcctResult<HandleTColgpHArray1OfLin2d*> HandleTColgpHArray1OfLin2d_clone(const HandleTColgpHArray1OfLin2d* self_) {
-    try { return {new HandleTColgpHArray1OfLin2d(*self_), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" bool HandleTColgpHArray1OfLin2d_is_null(const HandleTColgpHArray1OfLin2d* self_) { return self_->IsNull(); }
-extern "C" void HandleTColgpHArray1OfPnt_destructor(HandleTColgpHArray1OfPnt* self_) { delete self_; }
-extern "C" OcctResult<HandleTColgpHArray1OfPnt*> HandleTColgpHArray1OfPnt_clone(const HandleTColgpHArray1OfPnt* self_) {
-    try { return {new HandleTColgpHArray1OfPnt(*self_), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" bool HandleTColgpHArray1OfPnt_is_null(const HandleTColgpHArray1OfPnt* self_) { return self_->IsNull(); }
-extern "C" void HandleTColgpHArray1OfPnt2d_destructor(HandleTColgpHArray1OfPnt2d* self_) { delete self_; }
-extern "C" OcctResult<HandleTColgpHArray1OfPnt2d*> HandleTColgpHArray1OfPnt2d_clone(const HandleTColgpHArray1OfPnt2d* self_) {
-    try { return {new HandleTColgpHArray1OfPnt2d(*self_), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" bool HandleTColgpHArray1OfPnt2d_is_null(const HandleTColgpHArray1OfPnt2d* self_) { return self_->IsNull(); }
-extern "C" void HandleTColgpHArray1OfVec_destructor(HandleTColgpHArray1OfVec* self_) { delete self_; }
-extern "C" OcctResult<HandleTColgpHArray1OfVec*> HandleTColgpHArray1OfVec_clone(const HandleTColgpHArray1OfVec* self_) {
-    try { return {new HandleTColgpHArray1OfVec(*self_), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" bool HandleTColgpHArray1OfVec_is_null(const HandleTColgpHArray1OfVec* self_) { return self_->IsNull(); }
-extern "C" void HandleTColgpHArray1OfVec2d_destructor(HandleTColgpHArray1OfVec2d* self_) { delete self_; }
-extern "C" OcctResult<HandleTColgpHArray1OfVec2d*> HandleTColgpHArray1OfVec2d_clone(const HandleTColgpHArray1OfVec2d* self_) {
-    try { return {new HandleTColgpHArray1OfVec2d(*self_), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" bool HandleTColgpHArray1OfVec2d_is_null(const HandleTColgpHArray1OfVec2d* self_) { return self_->IsNull(); }
-extern "C" void HandleTColgpHArray1OfXY_destructor(HandleTColgpHArray1OfXY* self_) { delete self_; }
-extern "C" OcctResult<HandleTColgpHArray1OfXY*> HandleTColgpHArray1OfXY_clone(const HandleTColgpHArray1OfXY* self_) {
-    try { return {new HandleTColgpHArray1OfXY(*self_), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" bool HandleTColgpHArray1OfXY_is_null(const HandleTColgpHArray1OfXY* self_) { return self_->IsNull(); }
-extern "C" void HandleTColgpHArray1OfXYZ_destructor(HandleTColgpHArray1OfXYZ* self_) { delete self_; }
-extern "C" OcctResult<HandleTColgpHArray1OfXYZ*> HandleTColgpHArray1OfXYZ_clone(const HandleTColgpHArray1OfXYZ* self_) {
-    try { return {new HandleTColgpHArray1OfXYZ(*self_), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" bool HandleTColgpHArray1OfXYZ_is_null(const HandleTColgpHArray1OfXYZ* self_) { return self_->IsNull(); }
-extern "C" void HandleTColgpHArray2OfCirc2d_destructor(HandleTColgpHArray2OfCirc2d* self_) { delete self_; }
-extern "C" OcctResult<HandleTColgpHArray2OfCirc2d*> HandleTColgpHArray2OfCirc2d_clone(const HandleTColgpHArray2OfCirc2d* self_) {
-    try { return {new HandleTColgpHArray2OfCirc2d(*self_), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" bool HandleTColgpHArray2OfCirc2d_is_null(const HandleTColgpHArray2OfCirc2d* self_) { return self_->IsNull(); }
-extern "C" void HandleTColgpHArray2OfDir_destructor(HandleTColgpHArray2OfDir* self_) { delete self_; }
-extern "C" OcctResult<HandleTColgpHArray2OfDir*> HandleTColgpHArray2OfDir_clone(const HandleTColgpHArray2OfDir* self_) {
-    try { return {new HandleTColgpHArray2OfDir(*self_), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" bool HandleTColgpHArray2OfDir_is_null(const HandleTColgpHArray2OfDir* self_) { return self_->IsNull(); }
-extern "C" void HandleTColgpHArray2OfDir2d_destructor(HandleTColgpHArray2OfDir2d* self_) { delete self_; }
-extern "C" OcctResult<HandleTColgpHArray2OfDir2d*> HandleTColgpHArray2OfDir2d_clone(const HandleTColgpHArray2OfDir2d* self_) {
-    try { return {new HandleTColgpHArray2OfDir2d(*self_), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" bool HandleTColgpHArray2OfDir2d_is_null(const HandleTColgpHArray2OfDir2d* self_) { return self_->IsNull(); }
-extern "C" void HandleTColgpHArray2OfLin2d_destructor(HandleTColgpHArray2OfLin2d* self_) { delete self_; }
-extern "C" OcctResult<HandleTColgpHArray2OfLin2d*> HandleTColgpHArray2OfLin2d_clone(const HandleTColgpHArray2OfLin2d* self_) {
-    try { return {new HandleTColgpHArray2OfLin2d(*self_), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" bool HandleTColgpHArray2OfLin2d_is_null(const HandleTColgpHArray2OfLin2d* self_) { return self_->IsNull(); }
-extern "C" void HandleTColgpHArray2OfPnt_destructor(HandleTColgpHArray2OfPnt* self_) { delete self_; }
-extern "C" OcctResult<HandleTColgpHArray2OfPnt*> HandleTColgpHArray2OfPnt_clone(const HandleTColgpHArray2OfPnt* self_) {
-    try { return {new HandleTColgpHArray2OfPnt(*self_), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" bool HandleTColgpHArray2OfPnt_is_null(const HandleTColgpHArray2OfPnt* self_) { return self_->IsNull(); }
-extern "C" void HandleTColgpHArray2OfPnt2d_destructor(HandleTColgpHArray2OfPnt2d* self_) { delete self_; }
-extern "C" OcctResult<HandleTColgpHArray2OfPnt2d*> HandleTColgpHArray2OfPnt2d_clone(const HandleTColgpHArray2OfPnt2d* self_) {
-    try { return {new HandleTColgpHArray2OfPnt2d(*self_), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" bool HandleTColgpHArray2OfPnt2d_is_null(const HandleTColgpHArray2OfPnt2d* self_) { return self_->IsNull(); }
-extern "C" void HandleTColgpHArray2OfVec_destructor(HandleTColgpHArray2OfVec* self_) { delete self_; }
-extern "C" OcctResult<HandleTColgpHArray2OfVec*> HandleTColgpHArray2OfVec_clone(const HandleTColgpHArray2OfVec* self_) {
-    try { return {new HandleTColgpHArray2OfVec(*self_), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" bool HandleTColgpHArray2OfVec_is_null(const HandleTColgpHArray2OfVec* self_) { return self_->IsNull(); }
-extern "C" void HandleTColgpHArray2OfVec2d_destructor(HandleTColgpHArray2OfVec2d* self_) { delete self_; }
-extern "C" OcctResult<HandleTColgpHArray2OfVec2d*> HandleTColgpHArray2OfVec2d_clone(const HandleTColgpHArray2OfVec2d* self_) {
-    try { return {new HandleTColgpHArray2OfVec2d(*self_), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" bool HandleTColgpHArray2OfVec2d_is_null(const HandleTColgpHArray2OfVec2d* self_) { return self_->IsNull(); }
-extern "C" void HandleTColgpHArray2OfXY_destructor(HandleTColgpHArray2OfXY* self_) { delete self_; }
-extern "C" OcctResult<HandleTColgpHArray2OfXY*> HandleTColgpHArray2OfXY_clone(const HandleTColgpHArray2OfXY* self_) {
-    try { return {new HandleTColgpHArray2OfXY(*self_), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" bool HandleTColgpHArray2OfXY_is_null(const HandleTColgpHArray2OfXY* self_) { return self_->IsNull(); }
-extern "C" void HandleTColgpHArray2OfXYZ_destructor(HandleTColgpHArray2OfXYZ* self_) { delete self_; }
-extern "C" OcctResult<HandleTColgpHArray2OfXYZ*> HandleTColgpHArray2OfXYZ_clone(const HandleTColgpHArray2OfXYZ* self_) {
-    try { return {new HandleTColgpHArray2OfXYZ(*self_), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" bool HandleTColgpHArray2OfXYZ_is_null(const HandleTColgpHArray2OfXYZ* self_) { return self_->IsNull(); }
-extern "C" void HandleTColgpHSequenceOfDir_destructor(HandleTColgpHSequenceOfDir* self_) { delete self_; }
-extern "C" OcctResult<HandleTColgpHSequenceOfDir*> HandleTColgpHSequenceOfDir_clone(const HandleTColgpHSequenceOfDir* self_) {
-    try { return {new HandleTColgpHSequenceOfDir(*self_), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" bool HandleTColgpHSequenceOfDir_is_null(const HandleTColgpHSequenceOfDir* self_) { return self_->IsNull(); }
-extern "C" void HandleTColgpHSequenceOfDir2d_destructor(HandleTColgpHSequenceOfDir2d* self_) { delete self_; }
-extern "C" OcctResult<HandleTColgpHSequenceOfDir2d*> HandleTColgpHSequenceOfDir2d_clone(const HandleTColgpHSequenceOfDir2d* self_) {
-    try { return {new HandleTColgpHSequenceOfDir2d(*self_), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" bool HandleTColgpHSequenceOfDir2d_is_null(const HandleTColgpHSequenceOfDir2d* self_) { return self_->IsNull(); }
-extern "C" void HandleTColgpHSequenceOfPnt_destructor(HandleTColgpHSequenceOfPnt* self_) { delete self_; }
-extern "C" OcctResult<HandleTColgpHSequenceOfPnt*> HandleTColgpHSequenceOfPnt_clone(const HandleTColgpHSequenceOfPnt* self_) {
-    try { return {new HandleTColgpHSequenceOfPnt(*self_), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" bool HandleTColgpHSequenceOfPnt_is_null(const HandleTColgpHSequenceOfPnt* self_) { return self_->IsNull(); }
-extern "C" void HandleTColgpHSequenceOfPnt2d_destructor(HandleTColgpHSequenceOfPnt2d* self_) { delete self_; }
-extern "C" OcctResult<HandleTColgpHSequenceOfPnt2d*> HandleTColgpHSequenceOfPnt2d_clone(const HandleTColgpHSequenceOfPnt2d* self_) {
-    try { return {new HandleTColgpHSequenceOfPnt2d(*self_), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" bool HandleTColgpHSequenceOfPnt2d_is_null(const HandleTColgpHSequenceOfPnt2d* self_) { return self_->IsNull(); }
-extern "C" void HandleTColgpHSequenceOfVec_destructor(HandleTColgpHSequenceOfVec* self_) { delete self_; }
-extern "C" OcctResult<HandleTColgpHSequenceOfVec*> HandleTColgpHSequenceOfVec_clone(const HandleTColgpHSequenceOfVec* self_) {
-    try { return {new HandleTColgpHSequenceOfVec(*self_), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" bool HandleTColgpHSequenceOfVec_is_null(const HandleTColgpHSequenceOfVec* self_) { return self_->IsNull(); }
-extern "C" void HandleTColgpHSequenceOfVec2d_destructor(HandleTColgpHSequenceOfVec2d* self_) { delete self_; }
-extern "C" OcctResult<HandleTColgpHSequenceOfVec2d*> HandleTColgpHSequenceOfVec2d_clone(const HandleTColgpHSequenceOfVec2d* self_) {
-    try { return {new HandleTColgpHSequenceOfVec2d(*self_), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" bool HandleTColgpHSequenceOfVec2d_is_null(const HandleTColgpHSequenceOfVec2d* self_) { return self_->IsNull(); }
-extern "C" void HandleTColgpHSequenceOfXY_destructor(HandleTColgpHSequenceOfXY* self_) { delete self_; }
-extern "C" OcctResult<HandleTColgpHSequenceOfXY*> HandleTColgpHSequenceOfXY_clone(const HandleTColgpHSequenceOfXY* self_) {
-    try { return {new HandleTColgpHSequenceOfXY(*self_), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" bool HandleTColgpHSequenceOfXY_is_null(const HandleTColgpHSequenceOfXY* self_) { return self_->IsNull(); }
-extern "C" void HandleTColgpHSequenceOfXYZ_destructor(HandleTColgpHSequenceOfXYZ* self_) { delete self_; }
-extern "C" OcctResult<HandleTColgpHSequenceOfXYZ*> HandleTColgpHSequenceOfXYZ_clone(const HandleTColgpHSequenceOfXYZ* self_) {
-    try { return {new HandleTColgpHSequenceOfXYZ(*self_), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" bool HandleTColgpHSequenceOfXYZ_is_null(const HandleTColgpHSequenceOfXYZ* self_) { return self_->IsNull(); }
-extern "C" void HandleTopLocDatum3D_destructor(HandleTopLocDatum3D* self_) { delete self_; }
-extern "C" OcctResult<HandleTopLocDatum3D*> HandleTopLocDatum3D_clone(const HandleTopLocDatum3D* self_) {
-    try { return {new HandleTopLocDatum3D(*self_), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" bool HandleTopLocDatum3D_is_null(const HandleTopLocDatum3D* self_) { return self_->IsNull(); }
-extern "C" void HandleTopLocSListNodeOfItemLocation_destructor(HandleTopLocSListNodeOfItemLocation* self_) { delete self_; }
-extern "C" OcctResult<HandleTopLocSListNodeOfItemLocation*> HandleTopLocSListNodeOfItemLocation_clone(const HandleTopLocSListNodeOfItemLocation* self_) {
-    try { return {new HandleTopLocSListNodeOfItemLocation(*self_), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" bool HandleTopLocSListNodeOfItemLocation_is_null(const HandleTopLocSListNodeOfItemLocation* self_) { return self_->IsNull(); }
-extern "C" void HandlegpVectorWithNullMagnitude_destructor(HandlegpVectorWithNullMagnitude* self_) { delete self_; }
-extern "C" OcctResult<HandlegpVectorWithNullMagnitude*> HandlegpVectorWithNullMagnitude_clone(const HandlegpVectorWithNullMagnitude* self_) {
-    try { return {new HandlegpVectorWithNullMagnitude(*self_), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" bool HandlegpVectorWithNullMagnitude_is_null(const HandlegpVectorWithNullMagnitude* self_) { return self_->IsNull(); }
-extern "C" void HandlemathNotSquare_destructor(HandlemathNotSquare* self_) { delete self_; }
-extern "C" OcctResult<HandlemathNotSquare*> HandlemathNotSquare_clone(const HandlemathNotSquare* self_) {
-    try { return {new HandlemathNotSquare(*self_), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" bool HandlemathNotSquare_is_null(const HandlemathNotSquare* self_) { return self_->IsNull(); }
-extern "C" void HandlemathSingularMatrix_destructor(HandlemathSingularMatrix* self_) { delete self_; }
-extern "C" OcctResult<HandlemathSingularMatrix*> HandlemathSingularMatrix_clone(const HandlemathSingularMatrix* self_) {
-    try { return {new HandlemathSingularMatrix(*self_), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" bool HandlemathSingularMatrix_is_null(const HandlemathSingularMatrix* self_) { return self_->IsNull(); }
+extern "C" bool Handle_TopLoc_SListNodeOfItemLocation_is_null(const Handle_TopLoc_SListNodeOfItemLocation* self_) { return self_->IsNull(); }
 
 // ========================
 // BSplCLib_Cache wrappers
 // ========================
 
-extern "C" OcctResult<BSplCLib_Cache*> BSplCLib_Cache_ctor_int_bool_array1ofreal_array1ofpnt2d_array1ofrealptr(int32_t const* theDegree, bool const* thePeriodic, TColStd_Array1OfReal const* theFlatKnots, TColgp_Array1OfPnt2d const* thePoles2d, const TColStd_Array1OfReal* theWeights) {
+extern "C" OcctResult<BSplCLib_Cache*> BSplCLib_Cache_ctor_int_bool_arr1_double_arr1_pnt2d_arr1_doubleptr(int32_t const* theDegree, bool const* thePeriodic, NCollection_Array1_double const* theFlatKnots, NCollection_Array1_gp_Pnt2d const* thePoles2d, const NCollection_Array1_double* theWeights) {
     try { return {new BSplCLib_Cache(*theDegree, *thePeriodic, *theFlatKnots, *thePoles2d, theWeights), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<BSplCLib_Cache*> BSplCLib_Cache_ctor_int_bool_array1ofreal_array1ofpnt_array1ofrealptr(int32_t const* theDegree, bool const* thePeriodic, TColStd_Array1OfReal const* theFlatKnots, TColgp_Array1OfPnt const* thePoles, const TColStd_Array1OfReal* theWeights) {
+extern "C" OcctResult<BSplCLib_Cache*> BSplCLib_Cache_ctor_int_bool_arr1_double_arr1_pnt_arr1_doubleptr(int32_t const* theDegree, bool const* thePeriodic, NCollection_Array1_double const* theFlatKnots, NCollection_Array1_gp_Pnt const* thePoles, const NCollection_Array1_double* theWeights) {
     try { return {new BSplCLib_Cache(*theDegree, *thePeriodic, *theFlatKnots, *thePoles, theWeights), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -666,11 +305,11 @@ extern "C" OcctResult<bool> BSplCLib_Cache_is_cache_valid(const BSplCLib_Cache* 
     try { return {self_->IsCacheValid(theParameter), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* BSplCLib_Cache_build_cache_real_array1ofreal_array1ofpnt2d_array1ofrealptr(BSplCLib_Cache* self_, double const* theParameter, TColStd_Array1OfReal const* theFlatKnots, TColgp_Array1OfPnt2d const* thePoles2d, const TColStd_Array1OfReal* theWeights) {
+extern "C" const char* BSplCLib_Cache_build_cache_real_arr1_double_arr1_pnt2d_arr1_doubleptr(BSplCLib_Cache* self_, double const* theParameter, NCollection_Array1_double const* theFlatKnots, NCollection_Array1_gp_Pnt2d const* thePoles2d, const NCollection_Array1_double* theWeights) {
     try { self_->BuildCache(*theParameter, *theFlatKnots, *thePoles2d, theWeights); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* BSplCLib_Cache_build_cache_real_array1ofreal_array1ofpnt_array1ofrealptr(BSplCLib_Cache* self_, double const* theParameter, TColStd_Array1OfReal const* theFlatKnots, TColgp_Array1OfPnt const* thePoles, const TColStd_Array1OfReal* theWeights) {
+extern "C" const char* BSplCLib_Cache_build_cache_real_arr1_double_arr1_pnt_arr1_doubleptr(BSplCLib_Cache* self_, double const* theParameter, NCollection_Array1_double const* theFlatKnots, NCollection_Array1_gp_Pnt const* thePoles, const NCollection_Array1_double* theWeights) {
     try { self_->BuildCache(*theParameter, *theFlatKnots, *thePoles, theWeights); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -706,6 +345,38 @@ extern "C" const char* BSplCLib_Cache_d3_real_pnt_vec3(const BSplCLib_Cache* sel
     try { self_->D3(*theParameter, *thePoint, *theTangent, *theCurvature, *theTorsion); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
+extern "C" const char* BSplCLib_Cache_d0_local_real_pnt(const BSplCLib_Cache* self_, double theLocalParam, gp_Pnt* thePoint) {
+    try { self_->D0Local(theLocalParam, *thePoint); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* BSplCLib_Cache_d1_local_real_pnt_vec(const BSplCLib_Cache* self_, double theLocalParam, gp_Pnt* thePoint, gp_Vec* theTangent) {
+    try { self_->D1Local(theLocalParam, *thePoint, *theTangent); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* BSplCLib_Cache_d2_local_real_pnt_vec2(const BSplCLib_Cache* self_, double theLocalParam, gp_Pnt* thePoint, gp_Vec* theTangent, gp_Vec* theCurvature) {
+    try { self_->D2Local(theLocalParam, *thePoint, *theTangent, *theCurvature); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* BSplCLib_Cache_d3_local_real_pnt_vec3(const BSplCLib_Cache* self_, double theLocalParam, gp_Pnt* thePoint, gp_Vec* theTangent, gp_Vec* theCurvature, gp_Vec* theTorsion) {
+    try { self_->D3Local(theLocalParam, *thePoint, *theTangent, *theCurvature, *theTorsion); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* BSplCLib_Cache_d0_local_real_pnt2d(const BSplCLib_Cache* self_, double theLocalParam, gp_Pnt2d* thePoint) {
+    try { self_->D0Local(theLocalParam, *thePoint); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* BSplCLib_Cache_d1_local_real_pnt2d_vec2d(const BSplCLib_Cache* self_, double theLocalParam, gp_Pnt2d* thePoint, gp_Vec2d* theTangent) {
+    try { self_->D1Local(theLocalParam, *thePoint, *theTangent); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* BSplCLib_Cache_d2_local_real_pnt2d_vec2d2(const BSplCLib_Cache* self_, double theLocalParam, gp_Pnt2d* thePoint, gp_Vec2d* theTangent, gp_Vec2d* theCurvature) {
+    try { self_->D2Local(theLocalParam, *thePoint, *theTangent, *theCurvature); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* BSplCLib_Cache_d3_local_real_pnt2d_vec2d3(const BSplCLib_Cache* self_, double theLocalParam, gp_Pnt2d* thePoint, gp_Vec2d* theTangent, gp_Vec2d* theCurvature, gp_Vec2d* theTorsion) {
+    try { self_->D3Local(theLocalParam, *thePoint, *theTangent, *theCurvature, *theTorsion); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
 extern "C" OcctResult<Handle(Standard_Type) const*> BSplCLib_Cache_dynamic_type(const BSplCLib_Cache* self_) {
     try { return {&(self_->DynamicType()), nullptr}; }
     OCCT_CATCH_RETURN
@@ -720,20 +391,20 @@ extern "C" OcctResult<Handle(Standard_Type) const*> BSplCLib_Cache_get_type_desc
 }
 extern "C" OcctResult<const Standard_Transient*> BSplCLib_Cache_as_Standard_Transient(const BSplCLib_Cache* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> BSplCLib_Cache_as_Standard_Transient_mut(BSplCLib_Cache* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleBSplCLibCache*> BSplCLib_Cache_to_handle(BSplCLib_Cache* obj) {
-    try { return {new HandleBSplCLibCache(obj), nullptr}; }
+extern "C" OcctResult<Handle_BSplCLib_Cache*> BSplCLib_Cache_to_handle(BSplCLib_Cache* obj) {
+    try { return {new Handle_BSplCLib_Cache(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const BSplCLib_Cache*> HandleBSplCLibCache_get(const HandleBSplCLibCache* handle) {
+extern "C" OcctResult<const BSplCLib_Cache*> Handle_BSplCLib_Cache_get(const Handle_BSplCLib_Cache* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<BSplCLib_Cache*> HandleBSplCLibCache_get_mut(HandleBSplCLibCache* handle) {
+extern "C" OcctResult<BSplCLib_Cache*> Handle_BSplCLib_Cache_get_mut(Handle_BSplCLib_Cache* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleBSplCLibCache_to_HandleStandardTransient(const HandleBSplCLibCache* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_BSplCLib_Cache_to_Handle_Standard_Transient(const Handle_BSplCLib_Cache* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> BSplCLib_Cache_inherited_IsInstance(const BSplCLib_Cache* self, Handle(Standard_Type) const& theType) {
@@ -784,7 +455,7 @@ extern "C" void BSplCLib_EvaluatorFunction_destructor(BSplCLib_EvaluatorFunction
 // BSplSLib_Cache wrappers
 // ========================
 
-extern "C" OcctResult<BSplSLib_Cache*> BSplSLib_Cache_ctor_int_bool_array1ofreal_int_bool_array1ofreal_array2ofrealptr(int32_t const* theDegreeU, bool const* thePeriodicU, TColStd_Array1OfReal const* theFlatKnotsU, int32_t const* theDegreeV, bool const* thePeriodicV, TColStd_Array1OfReal const* theFlatKnotsV, const TColStd_Array2OfReal* theWeights) {
+extern "C" OcctResult<BSplSLib_Cache*> BSplSLib_Cache_ctor_int_bool_arr1_double_int_bool_arr1_double_arr2_doubleptr(int32_t const* theDegreeU, bool const* thePeriodicU, NCollection_Array1_double const* theFlatKnotsU, int32_t const* theDegreeV, bool const* thePeriodicV, NCollection_Array1_double const* theFlatKnotsV, const NCollection_Array2_double* theWeights) {
     try { return {new BSplSLib_Cache(*theDegreeU, *thePeriodicU, *theFlatKnotsU, *theDegreeV, *thePeriodicV, *theFlatKnotsV, theWeights), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -792,7 +463,7 @@ extern "C" OcctResult<bool> BSplSLib_Cache_is_cache_valid(const BSplSLib_Cache* 
     try { return {self_->IsCacheValid(theParameterU, theParameterV), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* BSplSLib_Cache_build_cache(BSplSLib_Cache* self_, double const* theParameterU, double const* theParameterV, TColStd_Array1OfReal const* theFlatKnotsU, TColStd_Array1OfReal const* theFlatKnotsV, TColgp_Array2OfPnt const* thePoles, const TColStd_Array2OfReal* theWeights) {
+extern "C" const char* BSplSLib_Cache_build_cache(BSplSLib_Cache* self_, double const* theParameterU, double const* theParameterV, NCollection_Array1_double const* theFlatKnotsU, NCollection_Array1_double const* theFlatKnotsV, NCollection_Array2_gp_Pnt const* thePoles, const NCollection_Array2_double* theWeights) {
     try { self_->BuildCache(*theParameterU, *theParameterV, *theFlatKnotsU, *theFlatKnotsV, *thePoles, theWeights); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -806,6 +477,18 @@ extern "C" const char* BSplSLib_Cache_d1(const BSplSLib_Cache* self_, double con
 }
 extern "C" const char* BSplSLib_Cache_d2(const BSplSLib_Cache* self_, double const* theU, double const* theV, gp_Pnt* thePoint, gp_Vec* theTangentU, gp_Vec* theTangentV, gp_Vec* theCurvatureU, gp_Vec* theCurvatureV, gp_Vec* theCurvatureUV) {
     try { self_->D2(*theU, *theV, *thePoint, *theTangentU, *theTangentV, *theCurvatureU, *theCurvatureV, *theCurvatureUV); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* BSplSLib_Cache_d0_local(const BSplSLib_Cache* self_, double theLocalU, double theLocalV, gp_Pnt* thePoint) {
+    try { self_->D0Local(theLocalU, theLocalV, *thePoint); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* BSplSLib_Cache_d1_local(const BSplSLib_Cache* self_, double theLocalU, double theLocalV, gp_Pnt* thePoint, gp_Vec* theTangentU, gp_Vec* theTangentV) {
+    try { self_->D1Local(theLocalU, theLocalV, *thePoint, *theTangentU, *theTangentV); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* BSplSLib_Cache_d2_local(const BSplSLib_Cache* self_, double theLocalU, double theLocalV, gp_Pnt* thePoint, gp_Vec* theTangentU, gp_Vec* theTangentV, gp_Vec* theCurvatureU, gp_Vec* theCurvatureV, gp_Vec* theCurvatureUV) {
+    try { self_->D2Local(theLocalU, theLocalV, *thePoint, *theTangentU, *theTangentV, *theCurvatureU, *theCurvatureV, *theCurvatureUV); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
 extern "C" OcctResult<Handle(Standard_Type) const*> BSplSLib_Cache_dynamic_type(const BSplSLib_Cache* self_) {
@@ -822,20 +505,20 @@ extern "C" OcctResult<Handle(Standard_Type) const*> BSplSLib_Cache_get_type_desc
 }
 extern "C" OcctResult<const Standard_Transient*> BSplSLib_Cache_as_Standard_Transient(const BSplSLib_Cache* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> BSplSLib_Cache_as_Standard_Transient_mut(BSplSLib_Cache* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleBSplSLibCache*> BSplSLib_Cache_to_handle(BSplSLib_Cache* obj) {
-    try { return {new HandleBSplSLibCache(obj), nullptr}; }
+extern "C" OcctResult<Handle_BSplSLib_Cache*> BSplSLib_Cache_to_handle(BSplSLib_Cache* obj) {
+    try { return {new Handle_BSplSLib_Cache(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const BSplSLib_Cache*> HandleBSplSLibCache_get(const HandleBSplSLibCache* handle) {
+extern "C" OcctResult<const BSplSLib_Cache*> Handle_BSplSLib_Cache_get(const Handle_BSplSLib_Cache* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<BSplSLib_Cache*> HandleBSplSLibCache_get_mut(HandleBSplSLibCache* handle) {
+extern "C" OcctResult<BSplSLib_Cache*> Handle_BSplSLib_Cache_get_mut(Handle_BSplSLib_Cache* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleBSplSLibCache_to_HandleStandardTransient(const HandleBSplSLibCache* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_BSplSLib_Cache_to_Handle_Standard_Transient(const Handle_BSplSLib_Cache* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> BSplSLib_Cache_inherited_IsInstance(const BSplSLib_Cache* self, Handle(Standard_Type) const& theType) {
@@ -886,19 +569,19 @@ extern "C" OcctResult<BVH_BuildQueue*> BVH_BuildQueue_ctor() {
     try { return {new BVH_BuildQueue(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<int32_t> BVH_BuildQueue_size(BVH_BuildQueue* self_) {
+extern "C" OcctResult<int32_t> BVH_BuildQueue_size(const BVH_BuildQueue* self_) {
     try { return {self_->Size(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* BVH_BuildQueue_enqueue(BVH_BuildQueue* self_, int32_t const* theNode) {
-    try { self_->Enqueue(*theNode); return nullptr; }
+extern "C" const char* BVH_BuildQueue_enqueue(BVH_BuildQueue* self_, int32_t theWorkItem) {
+    try { self_->Enqueue(theWorkItem); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
 extern "C" OcctResult<int32_t> BVH_BuildQueue_fetch(BVH_BuildQueue* self_, bool* wasBusy) {
     try { return {self_->Fetch(*wasBusy), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<bool> BVH_BuildQueue_has_busy_threads(BVH_BuildQueue* self_) {
+extern "C" OcctResult<bool> BVH_BuildQueue_has_busy_threads(const BVH_BuildQueue* self_) {
     try { return {self_->HasBusyThreads(), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -944,20 +627,20 @@ extern "C" OcctResult<Handle(Standard_Type) const*> BVH_BuildThread_get_type_des
 }
 extern "C" OcctResult<const Standard_Transient*> BVH_BuildThread_as_Standard_Transient(const BVH_BuildThread* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> BVH_BuildThread_as_Standard_Transient_mut(BVH_BuildThread* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleBVHBuildThread*> BVH_BuildThread_to_handle(BVH_BuildThread* obj) {
-    try { return {new HandleBVHBuildThread(obj), nullptr}; }
+extern "C" OcctResult<Handle_BVH_BuildThread*> BVH_BuildThread_to_handle(BVH_BuildThread* obj) {
+    try { return {new Handle_BVH_BuildThread(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const BVH_BuildThread*> HandleBVHBuildThread_get(const HandleBVHBuildThread* handle) {
+extern "C" OcctResult<const BVH_BuildThread*> Handle_BVH_BuildThread_get(const Handle_BVH_BuildThread* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<BVH_BuildThread*> HandleBVHBuildThread_get_mut(HandleBVHBuildThread* handle) {
+extern "C" OcctResult<BVH_BuildThread*> Handle_BVH_BuildThread_get_mut(Handle_BVH_BuildThread* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleBVHBuildThread_to_HandleStandardTransient(const HandleBVHBuildThread* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_BVH_BuildThread_to_Handle_Standard_Transient(const Handle_BVH_BuildThread* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> BVH_BuildThread_inherited_IsInstance(const BVH_BuildThread* self, Handle(Standard_Type) const& theType) {
@@ -1024,20 +707,20 @@ extern "C" OcctResult<Handle(Standard_Type) const*> BVH_BuilderTransient_get_typ
 }
 extern "C" OcctResult<const Standard_Transient*> BVH_BuilderTransient_as_Standard_Transient(const BVH_BuilderTransient* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> BVH_BuilderTransient_as_Standard_Transient_mut(BVH_BuilderTransient* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleBVHBuilderTransient*> BVH_BuilderTransient_to_handle(BVH_BuilderTransient* obj) {
-    try { return {new HandleBVHBuilderTransient(obj), nullptr}; }
+extern "C" OcctResult<Handle_BVH_BuilderTransient*> BVH_BuilderTransient_to_handle(BVH_BuilderTransient* obj) {
+    try { return {new Handle_BVH_BuilderTransient(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const BVH_BuilderTransient*> HandleBVHBuilderTransient_get(const HandleBVHBuilderTransient* handle) {
+extern "C" OcctResult<const BVH_BuilderTransient*> Handle_BVH_BuilderTransient_get(const Handle_BVH_BuilderTransient* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<BVH_BuilderTransient*> HandleBVHBuilderTransient_get_mut(HandleBVHBuilderTransient* handle) {
+extern "C" OcctResult<BVH_BuilderTransient*> Handle_BVH_BuilderTransient_get_mut(Handle_BVH_BuilderTransient* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleBVHBuilderTransient_to_HandleStandardTransient(const HandleBVHBuilderTransient* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_BVH_BuilderTransient_to_Handle_Standard_Transient(const Handle_BVH_BuilderTransient* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> BVH_BuilderTransient_inherited_IsInstance(const BVH_BuilderTransient* self, Handle(Standard_Type) const& theType) {
@@ -1104,20 +787,20 @@ extern "C" OcctResult<Handle(Standard_Type) const*> BVH_ObjectTransient_get_type
 }
 extern "C" OcctResult<const Standard_Transient*> BVH_ObjectTransient_as_Standard_Transient(const BVH_ObjectTransient* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> BVH_ObjectTransient_as_Standard_Transient_mut(BVH_ObjectTransient* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleBVHObjectTransient*> BVH_ObjectTransient_to_handle(BVH_ObjectTransient* obj) {
-    try { return {new HandleBVHObjectTransient(obj), nullptr}; }
+extern "C" OcctResult<Handle_BVH_ObjectTransient*> BVH_ObjectTransient_to_handle(BVH_ObjectTransient* obj) {
+    try { return {new Handle_BVH_ObjectTransient(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const BVH_ObjectTransient*> HandleBVHObjectTransient_get(const HandleBVHObjectTransient* handle) {
+extern "C" OcctResult<const BVH_ObjectTransient*> Handle_BVH_ObjectTransient_get(const Handle_BVH_ObjectTransient* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<BVH_ObjectTransient*> HandleBVHObjectTransient_get_mut(HandleBVHObjectTransient* handle) {
+extern "C" OcctResult<BVH_ObjectTransient*> Handle_BVH_ObjectTransient_get_mut(Handle_BVH_ObjectTransient* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleBVHObjectTransient_to_HandleStandardTransient(const HandleBVHObjectTransient* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_BVH_ObjectTransient_to_Handle_Standard_Transient(const Handle_BVH_ObjectTransient* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> BVH_ObjectTransient_inherited_IsInstance(const BVH_ObjectTransient* self, Handle(Standard_Type) const& theType) {
@@ -1168,16 +851,16 @@ extern "C" OcctResult<Handle(Standard_Type) const*> BVH_Properties_get_type_desc
 }
 extern "C" OcctResult<const Standard_Transient*> BVH_Properties_as_Standard_Transient(const BVH_Properties* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> BVH_Properties_as_Standard_Transient_mut(BVH_Properties* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<const BVH_Properties*> HandleBVHProperties_get(const HandleBVHProperties* handle) {
+extern "C" OcctResult<const BVH_Properties*> Handle_BVH_Properties_get(const Handle_BVH_Properties* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<BVH_Properties*> HandleBVHProperties_get_mut(HandleBVHProperties* handle) {
+extern "C" OcctResult<BVH_Properties*> Handle_BVH_Properties_get_mut(Handle_BVH_Properties* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleBVHProperties_to_HandleStandardTransient(const HandleBVHProperties* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_BVH_Properties_to_Handle_Standard_Transient(const Handle_BVH_Properties* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> BVH_Properties_inherited_IsInstance(const BVH_Properties* self, Handle(Standard_Type) const& theType) {
@@ -1228,20 +911,20 @@ extern "C" OcctResult<Handle(Standard_Type) const*> BVH_TreeBaseTransient_get_ty
 }
 extern "C" OcctResult<const Standard_Transient*> BVH_TreeBaseTransient_as_Standard_Transient(const BVH_TreeBaseTransient* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> BVH_TreeBaseTransient_as_Standard_Transient_mut(BVH_TreeBaseTransient* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleBVHTreeBaseTransient*> BVH_TreeBaseTransient_to_handle(BVH_TreeBaseTransient* obj) {
-    try { return {new HandleBVHTreeBaseTransient(obj), nullptr}; }
+extern "C" OcctResult<Handle_BVH_TreeBaseTransient*> BVH_TreeBaseTransient_to_handle(BVH_TreeBaseTransient* obj) {
+    try { return {new Handle_BVH_TreeBaseTransient(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const BVH_TreeBaseTransient*> HandleBVHTreeBaseTransient_get(const HandleBVHTreeBaseTransient* handle) {
+extern "C" OcctResult<const BVH_TreeBaseTransient*> Handle_BVH_TreeBaseTransient_get(const Handle_BVH_TreeBaseTransient* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<BVH_TreeBaseTransient*> HandleBVHTreeBaseTransient_get_mut(HandleBVHTreeBaseTransient* handle) {
+extern "C" OcctResult<BVH_TreeBaseTransient*> Handle_BVH_TreeBaseTransient_get_mut(Handle_BVH_TreeBaseTransient* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleBVHTreeBaseTransient_to_HandleStandardTransient(const HandleBVHTreeBaseTransient* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_BVH_TreeBaseTransient_to_Handle_Standard_Transient(const Handle_BVH_TreeBaseTransient* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> BVH_TreeBaseTransient_inherited_IsInstance(const BVH_TreeBaseTransient* self, Handle(Standard_Type) const& theType) {
@@ -1275,414 +958,6 @@ extern "C" const char* BVH_TreeBaseTransient_inherited_Delete(const BVH_TreeBase
 extern "C" void BVH_TreeBaseTransient_destructor(BVH_TreeBaseTransient* self_) { delete self_; }
 
 // ========================
-// Bnd_B2d wrappers
-// ========================
-
-extern "C" OcctResult<Bnd_B2d*> Bnd_B2d_ctor() {
-    try { return {new Bnd_B2d(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Bnd_B2d*> Bnd_B2d_ctor_xy2(gp_XY const* theCenter, gp_XY const* theHSize) {
-    try { return {new Bnd_B2d(*theCenter, *theHSize), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<gp_XY*> Bnd_B2d_corner_min(const Bnd_B2d* self_) {
-    try { return {new gp_XY(self_->CornerMin()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<gp_XY*> Bnd_B2d_corner_max(const Bnd_B2d* self_) {
-    try { return {new gp_XY(self_->CornerMax()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Bnd_B2d*> Bnd_B2d_transformed(const Bnd_B2d* self_, gp_Trsf2d const* theTrsf) {
-    try { return {new Bnd_B2d(self_->Transformed(*theTrsf)), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<bool> Bnd_B2d_is_void(const Bnd_B2d* self_) {
-    try { return {self_->IsVoid(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* Bnd_B2d_clear(Bnd_B2d* self_) {
-    try { self_->Clear(); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* Bnd_B2d_add_xy(Bnd_B2d* self_, gp_XY const* thePnt) {
-    try { self_->Add(*thePnt); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* Bnd_B2d_add_pnt2d(Bnd_B2d* self_, gp_Pnt2d const* thePnt) {
-    try { self_->Add(*thePnt); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* Bnd_B2d_add_b2d(Bnd_B2d* self_, Bnd_B2d const* theBox) {
-    try { self_->Add(*theBox); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<double> Bnd_B2d_square_extent(const Bnd_B2d* self_) {
-    try { return {self_->SquareExtent(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* Bnd_B2d_enlarge(Bnd_B2d* self_, double theDiff) {
-    try { self_->Enlarge(theDiff); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<bool> Bnd_B2d_limit(Bnd_B2d* self_, Bnd_B2d const* theOtherBox) {
-    try { return {self_->Limit(*theOtherBox), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<bool> Bnd_B2d_is_out_xy(const Bnd_B2d* self_, gp_XY const* thePnt) {
-    try { return {self_->IsOut(*thePnt), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<bool> Bnd_B2d_is_out_xy_real_bool(const Bnd_B2d* self_, gp_XY const* theCenter, double theRadius, bool isCircleHollow) {
-    try { return {self_->IsOut(*theCenter, theRadius, isCircleHollow), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<bool> Bnd_B2d_is_out_b2d(const Bnd_B2d* self_, Bnd_B2d const* theOtherBox) {
-    try { return {self_->IsOut(*theOtherBox), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<bool> Bnd_B2d_is_out_b2d_trsf2d(const Bnd_B2d* self_, Bnd_B2d const* theOtherBox, gp_Trsf2d const* theTrsf) {
-    try { return {self_->IsOut(*theOtherBox, *theTrsf), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<bool> Bnd_B2d_is_out_ax2d(const Bnd_B2d* self_, gp_Ax2d const* theLine) {
-    try { return {self_->IsOut(*theLine), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<bool> Bnd_B2d_is_out_xy2(const Bnd_B2d* self_, gp_XY const* theP0, gp_XY const* theP1) {
-    try { return {self_->IsOut(*theP0, *theP1), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<bool> Bnd_B2d_is_in_b2d(const Bnd_B2d* self_, Bnd_B2d const* theBox) {
-    try { return {self_->IsIn(*theBox), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<bool> Bnd_B2d_is_in_b2d_trsf2d(const Bnd_B2d* self_, Bnd_B2d const* theBox, gp_Trsf2d const* theTrsf) {
-    try { return {self_->IsIn(*theBox, *theTrsf), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* Bnd_B2d_set_center(Bnd_B2d* self_, gp_XY const* theCenter) {
-    try { self_->SetCenter(*theCenter); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* Bnd_B2d_set_h_size(Bnd_B2d* self_, gp_XY const* theHSize) {
-    try { self_->SetHSize(*theHSize); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<Bnd_B2d*> Bnd_B2d_clone(const Bnd_B2d* self_) {
-    try { return {new Bnd_B2d(*self_), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" void Bnd_B2d_destructor(Bnd_B2d* self_) { delete self_; }
-
-// ========================
-// Bnd_B2f wrappers
-// ========================
-
-extern "C" OcctResult<Bnd_B2f*> Bnd_B2f_ctor() {
-    try { return {new Bnd_B2f(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Bnd_B2f*> Bnd_B2f_ctor_xy2(gp_XY const* theCenter, gp_XY const* theHSize) {
-    try { return {new Bnd_B2f(*theCenter, *theHSize), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<gp_XY*> Bnd_B2f_corner_min(const Bnd_B2f* self_) {
-    try { return {new gp_XY(self_->CornerMin()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<gp_XY*> Bnd_B2f_corner_max(const Bnd_B2f* self_) {
-    try { return {new gp_XY(self_->CornerMax()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Bnd_B2f*> Bnd_B2f_transformed(const Bnd_B2f* self_, gp_Trsf2d const* theTrsf) {
-    try { return {new Bnd_B2f(self_->Transformed(*theTrsf)), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<bool> Bnd_B2f_is_void(const Bnd_B2f* self_) {
-    try { return {self_->IsVoid(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* Bnd_B2f_clear(Bnd_B2f* self_) {
-    try { self_->Clear(); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* Bnd_B2f_add_xy(Bnd_B2f* self_, gp_XY const* thePnt) {
-    try { self_->Add(*thePnt); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* Bnd_B2f_add_pnt2d(Bnd_B2f* self_, gp_Pnt2d const* thePnt) {
-    try { self_->Add(*thePnt); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* Bnd_B2f_add_b2f(Bnd_B2f* self_, Bnd_B2f const* theBox) {
-    try { self_->Add(*theBox); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<double> Bnd_B2f_square_extent(const Bnd_B2f* self_) {
-    try { return {self_->SquareExtent(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* Bnd_B2f_enlarge(Bnd_B2f* self_, double theDiff) {
-    try { self_->Enlarge(theDiff); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<bool> Bnd_B2f_limit(Bnd_B2f* self_, Bnd_B2f const* theOtherBox) {
-    try { return {self_->Limit(*theOtherBox), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<bool> Bnd_B2f_is_out_xy(const Bnd_B2f* self_, gp_XY const* thePnt) {
-    try { return {self_->IsOut(*thePnt), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<bool> Bnd_B2f_is_out_xy_real_bool(const Bnd_B2f* self_, gp_XY const* theCenter, double theRadius, bool isCircleHollow) {
-    try { return {self_->IsOut(*theCenter, theRadius, isCircleHollow), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<bool> Bnd_B2f_is_out_b2f(const Bnd_B2f* self_, Bnd_B2f const* theOtherBox) {
-    try { return {self_->IsOut(*theOtherBox), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<bool> Bnd_B2f_is_out_b2f_trsf2d(const Bnd_B2f* self_, Bnd_B2f const* theOtherBox, gp_Trsf2d const* theTrsf) {
-    try { return {self_->IsOut(*theOtherBox, *theTrsf), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<bool> Bnd_B2f_is_out_ax2d(const Bnd_B2f* self_, gp_Ax2d const* theLine) {
-    try { return {self_->IsOut(*theLine), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<bool> Bnd_B2f_is_out_xy2(const Bnd_B2f* self_, gp_XY const* theP0, gp_XY const* theP1) {
-    try { return {self_->IsOut(*theP0, *theP1), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<bool> Bnd_B2f_is_in_b2f(const Bnd_B2f* self_, Bnd_B2f const* theBox) {
-    try { return {self_->IsIn(*theBox), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<bool> Bnd_B2f_is_in_b2f_trsf2d(const Bnd_B2f* self_, Bnd_B2f const* theBox, gp_Trsf2d const* theTrsf) {
-    try { return {self_->IsIn(*theBox, *theTrsf), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* Bnd_B2f_set_center(Bnd_B2f* self_, gp_XY const* theCenter) {
-    try { self_->SetCenter(*theCenter); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* Bnd_B2f_set_h_size(Bnd_B2f* self_, gp_XY const* theHSize) {
-    try { self_->SetHSize(*theHSize); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<Bnd_B2f*> Bnd_B2f_clone(const Bnd_B2f* self_) {
-    try { return {new Bnd_B2f(*self_), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" void Bnd_B2f_destructor(Bnd_B2f* self_) { delete self_; }
-
-// ========================
-// Bnd_B3d wrappers
-// ========================
-
-extern "C" OcctResult<Bnd_B3d*> Bnd_B3d_ctor() {
-    try { return {new Bnd_B3d(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Bnd_B3d*> Bnd_B3d_ctor_xyz2(gp_XYZ const* theCenter, gp_XYZ const* theHSize) {
-    try { return {new Bnd_B3d(*theCenter, *theHSize), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<gp_XYZ*> Bnd_B3d_corner_min(const Bnd_B3d* self_) {
-    try { return {new gp_XYZ(self_->CornerMin()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<gp_XYZ*> Bnd_B3d_corner_max(const Bnd_B3d* self_) {
-    try { return {new gp_XYZ(self_->CornerMax()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Bnd_B3d*> Bnd_B3d_transformed(const Bnd_B3d* self_, gp_Trsf const* theTrsf) {
-    try { return {new Bnd_B3d(self_->Transformed(*theTrsf)), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<bool> Bnd_B3d_is_void(const Bnd_B3d* self_) {
-    try { return {self_->IsVoid(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* Bnd_B3d_clear(Bnd_B3d* self_) {
-    try { self_->Clear(); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* Bnd_B3d_add_xyz(Bnd_B3d* self_, gp_XYZ const* thePnt) {
-    try { self_->Add(*thePnt); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* Bnd_B3d_add_pnt(Bnd_B3d* self_, gp_Pnt const* thePnt) {
-    try { self_->Add(*thePnt); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* Bnd_B3d_add_b3d(Bnd_B3d* self_, Bnd_B3d const* theBox) {
-    try { self_->Add(*theBox); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<double> Bnd_B3d_square_extent(const Bnd_B3d* self_) {
-    try { return {self_->SquareExtent(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* Bnd_B3d_enlarge(Bnd_B3d* self_, double theDiff) {
-    try { self_->Enlarge(theDiff); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<bool> Bnd_B3d_limit(Bnd_B3d* self_, Bnd_B3d const* theOtherBox) {
-    try { return {self_->Limit(*theOtherBox), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<bool> Bnd_B3d_is_out_xyz(const Bnd_B3d* self_, gp_XYZ const* thePnt) {
-    try { return {self_->IsOut(*thePnt), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<bool> Bnd_B3d_is_out_xyz_real_bool(const Bnd_B3d* self_, gp_XYZ const* theCenter, double theRadius, bool isSphereHollow) {
-    try { return {self_->IsOut(*theCenter, theRadius, isSphereHollow), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<bool> Bnd_B3d_is_out_b3d(const Bnd_B3d* self_, Bnd_B3d const* theOtherBox) {
-    try { return {self_->IsOut(*theOtherBox), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<bool> Bnd_B3d_is_out_b3d_trsf(const Bnd_B3d* self_, Bnd_B3d const* theOtherBox, gp_Trsf const* theTrsf) {
-    try { return {self_->IsOut(*theOtherBox, *theTrsf), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<bool> Bnd_B3d_is_out_ax1_bool_real(const Bnd_B3d* self_, gp_Ax1 const* theLine, bool isRay, double theOverthickness) {
-    try { return {self_->IsOut(*theLine, isRay, theOverthickness), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<bool> Bnd_B3d_is_out_ax3(const Bnd_B3d* self_, gp_Ax3 const* thePlane) {
-    try { return {self_->IsOut(*thePlane), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<bool> Bnd_B3d_is_in_b3d(const Bnd_B3d* self_, Bnd_B3d const* theBox) {
-    try { return {self_->IsIn(*theBox), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<bool> Bnd_B3d_is_in_b3d_trsf(const Bnd_B3d* self_, Bnd_B3d const* theBox, gp_Trsf const* theTrsf) {
-    try { return {self_->IsIn(*theBox, *theTrsf), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* Bnd_B3d_set_center(Bnd_B3d* self_, gp_XYZ const* theCenter) {
-    try { self_->SetCenter(*theCenter); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* Bnd_B3d_set_h_size(Bnd_B3d* self_, gp_XYZ const* theHSize) {
-    try { self_->SetHSize(*theHSize); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<Bnd_B3d*> Bnd_B3d_clone(const Bnd_B3d* self_) {
-    try { return {new Bnd_B3d(*self_), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" void Bnd_B3d_destructor(Bnd_B3d* self_) { delete self_; }
-
-// ========================
-// Bnd_B3f wrappers
-// ========================
-
-extern "C" OcctResult<Bnd_B3f*> Bnd_B3f_ctor() {
-    try { return {new Bnd_B3f(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Bnd_B3f*> Bnd_B3f_ctor_xyz2(gp_XYZ const* theCenter, gp_XYZ const* theHSize) {
-    try { return {new Bnd_B3f(*theCenter, *theHSize), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<gp_XYZ*> Bnd_B3f_corner_min(const Bnd_B3f* self_) {
-    try { return {new gp_XYZ(self_->CornerMin()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<gp_XYZ*> Bnd_B3f_corner_max(const Bnd_B3f* self_) {
-    try { return {new gp_XYZ(self_->CornerMax()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Bnd_B3f*> Bnd_B3f_transformed(const Bnd_B3f* self_, gp_Trsf const* theTrsf) {
-    try { return {new Bnd_B3f(self_->Transformed(*theTrsf)), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<bool> Bnd_B3f_is_void(const Bnd_B3f* self_) {
-    try { return {self_->IsVoid(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* Bnd_B3f_clear(Bnd_B3f* self_) {
-    try { self_->Clear(); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* Bnd_B3f_add_xyz(Bnd_B3f* self_, gp_XYZ const* thePnt) {
-    try { self_->Add(*thePnt); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* Bnd_B3f_add_pnt(Bnd_B3f* self_, gp_Pnt const* thePnt) {
-    try { self_->Add(*thePnt); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* Bnd_B3f_add_b3f(Bnd_B3f* self_, Bnd_B3f const* theBox) {
-    try { self_->Add(*theBox); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<double> Bnd_B3f_square_extent(const Bnd_B3f* self_) {
-    try { return {self_->SquareExtent(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* Bnd_B3f_enlarge(Bnd_B3f* self_, double theDiff) {
-    try { self_->Enlarge(theDiff); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<bool> Bnd_B3f_limit(Bnd_B3f* self_, Bnd_B3f const* theOtherBox) {
-    try { return {self_->Limit(*theOtherBox), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<bool> Bnd_B3f_is_out_xyz(const Bnd_B3f* self_, gp_XYZ const* thePnt) {
-    try { return {self_->IsOut(*thePnt), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<bool> Bnd_B3f_is_out_xyz_real_bool(const Bnd_B3f* self_, gp_XYZ const* theCenter, double theRadius, bool isSphereHollow) {
-    try { return {self_->IsOut(*theCenter, theRadius, isSphereHollow), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<bool> Bnd_B3f_is_out_b3f(const Bnd_B3f* self_, Bnd_B3f const* theOtherBox) {
-    try { return {self_->IsOut(*theOtherBox), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<bool> Bnd_B3f_is_out_b3f_trsf(const Bnd_B3f* self_, Bnd_B3f const* theOtherBox, gp_Trsf const* theTrsf) {
-    try { return {self_->IsOut(*theOtherBox, *theTrsf), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<bool> Bnd_B3f_is_out_ax1_bool_real(const Bnd_B3f* self_, gp_Ax1 const* theLine, bool isRay, double theOverthickness) {
-    try { return {self_->IsOut(*theLine, isRay, theOverthickness), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<bool> Bnd_B3f_is_out_ax3(const Bnd_B3f* self_, gp_Ax3 const* thePlane) {
-    try { return {self_->IsOut(*thePlane), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<bool> Bnd_B3f_is_in_b3f(const Bnd_B3f* self_, Bnd_B3f const* theBox) {
-    try { return {self_->IsIn(*theBox), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<bool> Bnd_B3f_is_in_b3f_trsf(const Bnd_B3f* self_, Bnd_B3f const* theBox, gp_Trsf const* theTrsf) {
-    try { return {self_->IsIn(*theBox, *theTrsf), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* Bnd_B3f_set_center(Bnd_B3f* self_, gp_XYZ const* theCenter) {
-    try { self_->SetCenter(*theCenter); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* Bnd_B3f_set_h_size(Bnd_B3f* self_, gp_XYZ const* theHSize) {
-    try { self_->SetHSize(*theHSize); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<Bnd_B3f*> Bnd_B3f_clone(const Bnd_B3f* self_) {
-    try { return {new Bnd_B3f(*self_), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" void Bnd_B3f_destructor(Bnd_B3f* self_) { delete self_; }
-
-// ========================
 // Bnd_BoundSortBox wrappers
 // ========================
 
@@ -1690,37 +965,29 @@ extern "C" OcctResult<Bnd_BoundSortBox*> Bnd_BoundSortBox_ctor() {
     try { return {new Bnd_BoundSortBox(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* Bnd_BoundSortBox_initialize_box_handlebndharray1ofbox(Bnd_BoundSortBox* self_, Bnd_Box const* CompleteBox, Handle(Bnd_HArray1OfBox) const* SetOfBox) {
-    try { self_->Initialize(*CompleteBox, *SetOfBox); return nullptr; }
+extern "C" const char* Bnd_BoundSortBox_initialize_harr1_box(Bnd_BoundSortBox* self_, Handle(NCollection_HArray1_Bnd_Box) const* theSetOfBoxes) {
+    try { self_->Initialize(*theSetOfBoxes); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* Bnd_BoundSortBox_initialize_handlebndharray1ofbox(Bnd_BoundSortBox* self_, Handle(Bnd_HArray1OfBox) const* SetOfBox) {
-    try { self_->Initialize(*SetOfBox); return nullptr; }
+extern "C" const char* Bnd_BoundSortBox_initialize_box_harr1_box(Bnd_BoundSortBox* self_, Bnd_Box const* theEnclosingBox, Handle(NCollection_HArray1_Bnd_Box) const* theSetOfBoxes) {
+    try { self_->Initialize(*theEnclosingBox, *theSetOfBoxes); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* Bnd_BoundSortBox_initialize_box_int(Bnd_BoundSortBox* self_, Bnd_Box const* CompleteBox, int32_t nbComponents) {
-    try { self_->Initialize(*CompleteBox, nbComponents); return nullptr; }
+extern "C" const char* Bnd_BoundSortBox_initialize_box_int(Bnd_BoundSortBox* self_, Bnd_Box const* theEnclosingBox, int32_t theNbBoxes) {
+    try { self_->Initialize(*theEnclosingBox, theNbBoxes); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* Bnd_BoundSortBox_add(Bnd_BoundSortBox* self_, Bnd_Box const* theBox, int32_t boxIndex) {
-    try { self_->Add(*theBox, boxIndex); return nullptr; }
+extern "C" const char* Bnd_BoundSortBox_add(Bnd_BoundSortBox* self_, Bnd_Box const* theBox, int32_t theIndex) {
+    try { self_->Add(*theBox, theIndex); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<TColStd_ListOfInteger const*> Bnd_BoundSortBox_compare_box(Bnd_BoundSortBox* self_, Bnd_Box const* theBox) {
+extern "C" OcctResult<NCollection_List_int const*> Bnd_BoundSortBox_compare_box(Bnd_BoundSortBox* self_, Bnd_Box const* theBox) {
     try { return {&(self_->Compare(*theBox)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TColStd_ListOfInteger const*> Bnd_BoundSortBox_compare_pln(Bnd_BoundSortBox* self_, gp_Pln const* P) {
-    try { return {&(self_->Compare(*P)), nullptr}; }
+extern "C" OcctResult<NCollection_List_int const*> Bnd_BoundSortBox_compare_pln(Bnd_BoundSortBox* self_, gp_Pln const* thePlane) {
+    try { return {&(self_->Compare(*thePlane)), nullptr}; }
     OCCT_CATCH_RETURN
-}
-extern "C" const char* Bnd_BoundSortBox_dump(const Bnd_BoundSortBox* self_) {
-    try { self_->Dump(); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* Bnd_BoundSortBox_destroy(Bnd_BoundSortBox* self_) {
-    try { self_->Destroy(); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
 }
 extern "C" OcctResult<Bnd_BoundSortBox*> Bnd_BoundSortBox_clone(const Bnd_BoundSortBox* self_) {
     try { return {new Bnd_BoundSortBox(*self_), nullptr}; }
@@ -1738,6 +1005,10 @@ extern "C" OcctResult<Bnd_Box*> Bnd_Box_ctor() {
 }
 extern "C" OcctResult<Bnd_Box*> Bnd_Box_ctor_pnt2(gp_Pnt const* theMin, gp_Pnt const* theMax) {
     try { return {new Bnd_Box(*theMin, *theMax), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Bnd_Box::Limits*> Bnd_Box_get(const Bnd_Box* self_) {
+    try { return {new Bnd_Box::Limits(self_->Get()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<gp_Pnt*> Bnd_Box_corner_min(const Bnd_Box* self_) {
@@ -1792,9 +1063,33 @@ extern "C" const char* Bnd_Box_enlarge(Bnd_Box* self_, double Tol) {
     try { self_->Enlarge(Tol); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* Bnd_Box_get(const Bnd_Box* self_, double* theXmin, double* theYmin, double* theZmin, double* theXmax, double* theYmax, double* theZmax) {
+extern "C" const char* Bnd_Box_get_real6(const Bnd_Box* self_, double* theXmin, double* theYmin, double* theZmin, double* theXmax, double* theYmax, double* theZmax) {
     try { self_->Get(*theXmin, *theYmin, *theZmin, *theXmax, *theYmax, *theZmax); return nullptr; }
     OCCT_CATCH_RETURN_VOID
+}
+extern "C" OcctResult<double> Bnd_Box_get_x_min(const Bnd_Box* self_) {
+    try { return {self_->GetXMin(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<double> Bnd_Box_get_x_max(const Bnd_Box* self_) {
+    try { return {self_->GetXMax(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<double> Bnd_Box_get_y_min(const Bnd_Box* self_) {
+    try { return {self_->GetYMin(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<double> Bnd_Box_get_y_max(const Bnd_Box* self_) {
+    try { return {self_->GetYMax(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<double> Bnd_Box_get_z_min(const Bnd_Box* self_) {
+    try { return {self_->GetZMin(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<double> Bnd_Box_get_z_max(const Bnd_Box* self_) {
+    try { return {self_->GetZMax(), nullptr}; }
+    OCCT_CATCH_RETURN
 }
 extern "C" const char* Bnd_Box_open_xmin(Bnd_Box* self_) {
     try { self_->OpenXmin(); return nullptr; }
@@ -1916,6 +1211,14 @@ extern "C" OcctResult<bool> Bnd_Box_is_out_pnt2_dir(const Bnd_Box* self_, gp_Pnt
     try { return {self_->IsOut(*P1, *P2, *D), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" OcctResult<bool> Bnd_Box_contains(const Bnd_Box* self_, gp_Pnt const* theP) {
+    try { return {self_->Contains(*theP), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<bool> Bnd_Box_intersects(const Bnd_Box* self_, Bnd_Box const* theOther) {
+    try { return {self_->Intersects(*theOther), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" OcctResult<double> Bnd_Box_distance(const Bnd_Box* self_, Bnd_Box const* Other) {
     try { return {self_->Distance(*Other), nullptr}; }
     OCCT_CATCH_RETURN
@@ -1938,12 +1241,20 @@ extern "C" OcctResult<Bnd_Box*> Bnd_Box_clone(const Bnd_Box* self_) {
 }
 extern "C" void Bnd_Box_destructor(Bnd_Box* self_) { delete self_; }
 
+// sizeof helper for POD struct Bnd_Box::Limits
+extern "C" size_t Bnd_Box_Limits_sizeof() { return sizeof(Bnd_Box::Limits); }
+extern "C" void Bnd_Box_Limits_destructor(Bnd_Box::Limits* self_) { delete self_; }
+
 // ========================
 // Bnd_Box2d wrappers
 // ========================
 
 extern "C" OcctResult<Bnd_Box2d*> Bnd_Box2d_ctor() {
     try { return {new Bnd_Box2d(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Bnd_Box2d::Limits*> Bnd_Box2d_get(const Bnd_Box2d* self_) {
+    try { return {new Bnd_Box2d::Limits(self_->Get()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Bnd_Box2d*> Bnd_Box2d_transformed(const Bnd_Box2d* self_, gp_Trsf2d const* T) {
@@ -1986,9 +1297,25 @@ extern "C" const char* Bnd_Box2d_enlarge(Bnd_Box2d* self_, double theTol) {
     try { self_->Enlarge(theTol); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* Bnd_Box2d_get(const Bnd_Box2d* self_, double* aXmin, double* aYmin, double* aXmax, double* aYmax) {
+extern "C" const char* Bnd_Box2d_get_real4(const Bnd_Box2d* self_, double* aXmin, double* aYmin, double* aXmax, double* aYmax) {
     try { self_->Get(*aXmin, *aYmin, *aXmax, *aYmax); return nullptr; }
     OCCT_CATCH_RETURN_VOID
+}
+extern "C" OcctResult<double> Bnd_Box2d_get_x_min(const Bnd_Box2d* self_) {
+    try { return {self_->GetXMin(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<double> Bnd_Box2d_get_x_max(const Bnd_Box2d* self_) {
+    try { return {self_->GetXMax(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<double> Bnd_Box2d_get_y_min(const Bnd_Box2d* self_) {
+    try { return {self_->GetYMin(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<double> Bnd_Box2d_get_y_max(const Bnd_Box2d* self_) {
+    try { return {self_->GetYMax(), nullptr}; }
+    OCCT_CATCH_RETURN
 }
 extern "C" const char* Bnd_Box2d_open_xmin(Bnd_Box2d* self_) {
     try { self_->OpenXmin(); return nullptr; }
@@ -2062,6 +1389,18 @@ extern "C" OcctResult<bool> Bnd_Box2d_is_out_box2d(const Bnd_Box2d* self_, Bnd_B
     try { return {self_->IsOut(*Other), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" OcctResult<bool> Bnd_Box2d_contains(const Bnd_Box2d* self_, gp_Pnt2d const* theP) {
+    try { return {self_->Contains(*theP), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<bool> Bnd_Box2d_intersects(const Bnd_Box2d* self_, Bnd_Box2d const* theOther) {
+    try { return {self_->Intersects(*theOther), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<double> Bnd_Box2d_distance(const Bnd_Box2d* self_, Bnd_Box2d const* theOther) {
+    try { return {self_->Distance(*theOther), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" OcctResult<bool> Bnd_Box2d_is_out_box2d_trsf2d(const Bnd_Box2d* self_, Bnd_Box2d const* theOther, gp_Trsf2d const* theTrsf) {
     try { return {self_->IsOut(*theOther, *theTrsf), nullptr}; }
     OCCT_CATCH_RETURN
@@ -2084,281 +1423,9 @@ extern "C" OcctResult<Bnd_Box2d*> Bnd_Box2d_clone(const Bnd_Box2d* self_) {
 }
 extern "C" void Bnd_Box2d_destructor(Bnd_Box2d* self_) { delete self_; }
 
-// ========================
-// Bnd_HArray1OfBox wrappers
-// ========================
-
-extern "C" OcctResult<Bnd_HArray1OfBox*> Bnd_HArray1OfBox_ctor() {
-    try { return {new Bnd_HArray1OfBox(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Bnd_HArray1OfBox*> Bnd_HArray1OfBox_ctor_int2(int32_t theLower, int32_t theUpper) {
-    try { return {new Bnd_HArray1OfBox(theLower, theUpper), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Bnd_HArray1OfBox*> Bnd_HArray1OfBox_ctor_int2_box(int32_t theLower, int32_t theUpper, Bnd_Box const* theValue) {
-    try { return {new Bnd_HArray1OfBox(theLower, theUpper, *theValue), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Bnd_HArray1OfBox*> Bnd_HArray1OfBox_ctor_box_int2_bool(Bnd_Box const* theBegin, int32_t theLower, int32_t theUpper, bool arg3) {
-    try { return {new Bnd_HArray1OfBox(*theBegin, theLower, theUpper, arg3), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Bnd_HArray1OfBox*> Bnd_HArray1OfBox_ctor_array1ofbox(Bnd_Array1OfBox const* theOther) {
-    try { return {new Bnd_HArray1OfBox(*theOther), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Bnd_Array1OfBox const*> Bnd_HArray1OfBox_array1(const Bnd_HArray1OfBox* self_) {
-    try { return {&(self_->Array1()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Bnd_Array1OfBox*> Bnd_HArray1OfBox_change_array1(Bnd_HArray1OfBox* self_) {
-    try { return {&(self_->ChangeArray1()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Handle(Standard_Type) const*> Bnd_HArray1OfBox_dynamic_type(const Bnd_HArray1OfBox* self_) {
-    try { return {&(self_->DynamicType()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<char const*> Bnd_HArray1OfBox_get_type_name() {
-    try { return {Bnd_HArray1OfBox::get_type_name(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Handle(Standard_Type) const*> Bnd_HArray1OfBox_get_type_descriptor() {
-    try { return {&(Bnd_HArray1OfBox::get_type_descriptor()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<const Standard_Transient*> Bnd_HArray1OfBox_as_Standard_Transient(const Bnd_HArray1OfBox* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<Standard_Transient*> Bnd_HArray1OfBox_as_Standard_Transient_mut(Bnd_HArray1OfBox* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleBndHArray1OfBox*> Bnd_HArray1OfBox_to_handle(Bnd_HArray1OfBox* obj) {
-    try { return {new HandleBndHArray1OfBox(obj), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<const Bnd_HArray1OfBox*> HandleBndHArray1OfBox_get(const HandleBndHArray1OfBox* handle) {
-    try { return {(*handle).get(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Bnd_HArray1OfBox*> HandleBndHArray1OfBox_get_mut(HandleBndHArray1OfBox* handle) {
-    try { return {(*handle).get(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<HandleStandardTransient*> HandleBndHArray1OfBox_to_HandleStandardTransient(const HandleBndHArray1OfBox* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<bool> Bnd_HArray1OfBox_inherited_IsInstance(const Bnd_HArray1OfBox* self, Handle(Standard_Type) const& theType) {
-    try { return {self->IsInstance(theType), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<bool> Bnd_HArray1OfBox_inherited_IsKind(const Bnd_HArray1OfBox* self, Handle(Standard_Type) const& theType) {
-    try { return {self->IsKind(theType), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Standard_Transient*> Bnd_HArray1OfBox_inherited_This(const Bnd_HArray1OfBox* self) {
-    try { return {self->This(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<int32_t> Bnd_HArray1OfBox_inherited_GetRefCount(const Bnd_HArray1OfBox* self) {
-    try { return {self->GetRefCount(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* Bnd_HArray1OfBox_inherited_IncrementRefCounter(Bnd_HArray1OfBox* self) {
-    try { self->IncrementRefCounter(); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<int32_t> Bnd_HArray1OfBox_inherited_DecrementRefCounter(Bnd_HArray1OfBox* self) {
-    try { return {self->DecrementRefCounter(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* Bnd_HArray1OfBox_inherited_Delete(const Bnd_HArray1OfBox* self) {
-    try { self->Delete(); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" void Bnd_HArray1OfBox_destructor(Bnd_HArray1OfBox* self_) { delete self_; }
-
-// ========================
-// Bnd_HArray1OfBox2d wrappers
-// ========================
-
-extern "C" OcctResult<Bnd_HArray1OfBox2d*> Bnd_HArray1OfBox2d_ctor() {
-    try { return {new Bnd_HArray1OfBox2d(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Bnd_HArray1OfBox2d*> Bnd_HArray1OfBox2d_ctor_int2(int32_t theLower, int32_t theUpper) {
-    try { return {new Bnd_HArray1OfBox2d(theLower, theUpper), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Bnd_HArray1OfBox2d*> Bnd_HArray1OfBox2d_ctor_int2_box2d(int32_t theLower, int32_t theUpper, Bnd_Box2d const* theValue) {
-    try { return {new Bnd_HArray1OfBox2d(theLower, theUpper, *theValue), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Bnd_HArray1OfBox2d*> Bnd_HArray1OfBox2d_ctor_box2d_int2_bool(Bnd_Box2d const* theBegin, int32_t theLower, int32_t theUpper, bool arg3) {
-    try { return {new Bnd_HArray1OfBox2d(*theBegin, theLower, theUpper, arg3), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Bnd_HArray1OfBox2d*> Bnd_HArray1OfBox2d_ctor_array1ofbox2d(Bnd_Array1OfBox2d const* theOther) {
-    try { return {new Bnd_HArray1OfBox2d(*theOther), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Bnd_Array1OfBox2d const*> Bnd_HArray1OfBox2d_array1(const Bnd_HArray1OfBox2d* self_) {
-    try { return {&(self_->Array1()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Bnd_Array1OfBox2d*> Bnd_HArray1OfBox2d_change_array1(Bnd_HArray1OfBox2d* self_) {
-    try { return {&(self_->ChangeArray1()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Handle(Standard_Type) const*> Bnd_HArray1OfBox2d_dynamic_type(const Bnd_HArray1OfBox2d* self_) {
-    try { return {&(self_->DynamicType()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<char const*> Bnd_HArray1OfBox2d_get_type_name() {
-    try { return {Bnd_HArray1OfBox2d::get_type_name(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Handle(Standard_Type) const*> Bnd_HArray1OfBox2d_get_type_descriptor() {
-    try { return {&(Bnd_HArray1OfBox2d::get_type_descriptor()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<const Standard_Transient*> Bnd_HArray1OfBox2d_as_Standard_Transient(const Bnd_HArray1OfBox2d* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<Standard_Transient*> Bnd_HArray1OfBox2d_as_Standard_Transient_mut(Bnd_HArray1OfBox2d* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleBndHArray1OfBox2d*> Bnd_HArray1OfBox2d_to_handle(Bnd_HArray1OfBox2d* obj) {
-    try { return {new HandleBndHArray1OfBox2d(obj), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<const Bnd_HArray1OfBox2d*> HandleBndHArray1OfBox2d_get(const HandleBndHArray1OfBox2d* handle) {
-    try { return {(*handle).get(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Bnd_HArray1OfBox2d*> HandleBndHArray1OfBox2d_get_mut(HandleBndHArray1OfBox2d* handle) {
-    try { return {(*handle).get(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<HandleStandardTransient*> HandleBndHArray1OfBox2d_to_HandleStandardTransient(const HandleBndHArray1OfBox2d* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<bool> Bnd_HArray1OfBox2d_inherited_IsInstance(const Bnd_HArray1OfBox2d* self, Handle(Standard_Type) const& theType) {
-    try { return {self->IsInstance(theType), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<bool> Bnd_HArray1OfBox2d_inherited_IsKind(const Bnd_HArray1OfBox2d* self, Handle(Standard_Type) const& theType) {
-    try { return {self->IsKind(theType), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Standard_Transient*> Bnd_HArray1OfBox2d_inherited_This(const Bnd_HArray1OfBox2d* self) {
-    try { return {self->This(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<int32_t> Bnd_HArray1OfBox2d_inherited_GetRefCount(const Bnd_HArray1OfBox2d* self) {
-    try { return {self->GetRefCount(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* Bnd_HArray1OfBox2d_inherited_IncrementRefCounter(Bnd_HArray1OfBox2d* self) {
-    try { self->IncrementRefCounter(); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<int32_t> Bnd_HArray1OfBox2d_inherited_DecrementRefCounter(Bnd_HArray1OfBox2d* self) {
-    try { return {self->DecrementRefCounter(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* Bnd_HArray1OfBox2d_inherited_Delete(const Bnd_HArray1OfBox2d* self) {
-    try { self->Delete(); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" void Bnd_HArray1OfBox2d_destructor(Bnd_HArray1OfBox2d* self_) { delete self_; }
-
-// ========================
-// Bnd_HArray1OfSphere wrappers
-// ========================
-
-extern "C" OcctResult<Bnd_HArray1OfSphere*> Bnd_HArray1OfSphere_ctor() {
-    try { return {new Bnd_HArray1OfSphere(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Bnd_HArray1OfSphere*> Bnd_HArray1OfSphere_ctor_int2(int32_t theLower, int32_t theUpper) {
-    try { return {new Bnd_HArray1OfSphere(theLower, theUpper), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Bnd_HArray1OfSphere*> Bnd_HArray1OfSphere_ctor_int2_sphere(int32_t theLower, int32_t theUpper, Bnd_Sphere const* theValue) {
-    try { return {new Bnd_HArray1OfSphere(theLower, theUpper, *theValue), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Bnd_HArray1OfSphere*> Bnd_HArray1OfSphere_ctor_sphere_int2_bool(Bnd_Sphere const* theBegin, int32_t theLower, int32_t theUpper, bool arg3) {
-    try { return {new Bnd_HArray1OfSphere(*theBegin, theLower, theUpper, arg3), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Bnd_HArray1OfSphere*> Bnd_HArray1OfSphere_ctor_array1ofsphere(Bnd_Array1OfSphere const* theOther) {
-    try { return {new Bnd_HArray1OfSphere(*theOther), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Bnd_Array1OfSphere const*> Bnd_HArray1OfSphere_array1(const Bnd_HArray1OfSphere* self_) {
-    try { return {&(self_->Array1()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Bnd_Array1OfSphere*> Bnd_HArray1OfSphere_change_array1(Bnd_HArray1OfSphere* self_) {
-    try { return {&(self_->ChangeArray1()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Handle(Standard_Type) const*> Bnd_HArray1OfSphere_dynamic_type(const Bnd_HArray1OfSphere* self_) {
-    try { return {&(self_->DynamicType()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<char const*> Bnd_HArray1OfSphere_get_type_name() {
-    try { return {Bnd_HArray1OfSphere::get_type_name(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Handle(Standard_Type) const*> Bnd_HArray1OfSphere_get_type_descriptor() {
-    try { return {&(Bnd_HArray1OfSphere::get_type_descriptor()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<const Standard_Transient*> Bnd_HArray1OfSphere_as_Standard_Transient(const Bnd_HArray1OfSphere* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<Standard_Transient*> Bnd_HArray1OfSphere_as_Standard_Transient_mut(Bnd_HArray1OfSphere* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleBndHArray1OfSphere*> Bnd_HArray1OfSphere_to_handle(Bnd_HArray1OfSphere* obj) {
-    try { return {new HandleBndHArray1OfSphere(obj), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<const Bnd_HArray1OfSphere*> HandleBndHArray1OfSphere_get(const HandleBndHArray1OfSphere* handle) {
-    try { return {(*handle).get(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Bnd_HArray1OfSphere*> HandleBndHArray1OfSphere_get_mut(HandleBndHArray1OfSphere* handle) {
-    try { return {(*handle).get(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<HandleStandardTransient*> HandleBndHArray1OfSphere_to_HandleStandardTransient(const HandleBndHArray1OfSphere* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<bool> Bnd_HArray1OfSphere_inherited_IsInstance(const Bnd_HArray1OfSphere* self, Handle(Standard_Type) const& theType) {
-    try { return {self->IsInstance(theType), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<bool> Bnd_HArray1OfSphere_inherited_IsKind(const Bnd_HArray1OfSphere* self, Handle(Standard_Type) const& theType) {
-    try { return {self->IsKind(theType), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Standard_Transient*> Bnd_HArray1OfSphere_inherited_This(const Bnd_HArray1OfSphere* self) {
-    try { return {self->This(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<int32_t> Bnd_HArray1OfSphere_inherited_GetRefCount(const Bnd_HArray1OfSphere* self) {
-    try { return {self->GetRefCount(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* Bnd_HArray1OfSphere_inherited_IncrementRefCounter(Bnd_HArray1OfSphere* self) {
-    try { self->IncrementRefCounter(); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<int32_t> Bnd_HArray1OfSphere_inherited_DecrementRefCounter(Bnd_HArray1OfSphere* self) {
-    try { return {self->DecrementRefCounter(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* Bnd_HArray1OfSphere_inherited_Delete(const Bnd_HArray1OfSphere* self) {
-    try { self->Delete(); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" void Bnd_HArray1OfSphere_destructor(Bnd_HArray1OfSphere* self_) { delete self_; }
+// sizeof helper for POD struct Bnd_Box2d::Limits
+extern "C" size_t Bnd_Box2d_Limits_sizeof() { return sizeof(Bnd_Box2d::Limits); }
+extern "C" void Bnd_Box2d_Limits_destructor(Bnd_Box2d::Limits* self_) { delete self_; }
 
 // ========================
 // Bnd_OBB wrappers
@@ -2380,7 +1447,11 @@ extern "C" OcctResult<gp_Ax3*> Bnd_OBB_position(const Bnd_OBB* self_) {
     try { return {new gp_Ax3(self_->Position()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* Bnd_OBB_re_build(Bnd_OBB* self_, TColgp_Array1OfPnt const* theListOfPoints, const TColStd_Array1OfReal* theListOfTolerances, bool theIsOptimal) {
+extern "C" OcctResult<Bnd_OBB::HalfSizes*> Bnd_OBB_get_half_sizes(const Bnd_OBB* self_) {
+    try { return {new Bnd_OBB::HalfSizes(self_->GetHalfSizes()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" const char* Bnd_OBB_re_build(Bnd_OBB* self_, NCollection_Array1_gp_Pnt const* theListOfPoints, const NCollection_Array1_double* theListOfTolerances, bool theIsOptimal) {
     try { self_->ReBuild(*theListOfPoints, theListOfTolerances, theIsOptimal); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -2464,6 +1535,14 @@ extern "C" OcctResult<bool> Bnd_OBB_is_out_pnt(const Bnd_OBB* self_, gp_Pnt cons
     try { return {self_->IsOut(*theP), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" OcctResult<bool> Bnd_OBB_contains(const Bnd_OBB* self_, gp_Pnt const* theP) {
+    try { return {self_->Contains(*theP), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<bool> Bnd_OBB_intersects(const Bnd_OBB* self_, Bnd_OBB const* theOther) {
+    try { return {self_->Intersects(*theOther), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" OcctResult<bool> Bnd_OBB_is_completely_inside(const Bnd_OBB* self_, Bnd_OBB const* theOther) {
     try { return {self_->IsCompletelyInside(*theOther), nullptr}; }
     OCCT_CATCH_RETURN
@@ -2482,6 +1561,10 @@ extern "C" OcctResult<Bnd_OBB*> Bnd_OBB_clone(const Bnd_OBB* self_) {
 }
 extern "C" void Bnd_OBB_destructor(Bnd_OBB* self_) { delete self_; }
 
+// sizeof helper for POD struct Bnd_OBB::HalfSizes
+extern "C" size_t Bnd_OBB_HalfSizes_sizeof() { return sizeof(Bnd_OBB::HalfSizes); }
+extern "C" void Bnd_OBB_HalfSizes_destructor(Bnd_OBB::HalfSizes* self_) { delete self_; }
+
 // ========================
 // Bnd_Range wrappers
 // ========================
@@ -2492,6 +1575,10 @@ extern "C" OcctResult<Bnd_Range*> Bnd_Range_ctor() {
 }
 extern "C" OcctResult<Bnd_Range*> Bnd_Range_ctor_real2(double theMin, double theMax) {
     try { return {new Bnd_Range(theMin, theMax), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Bnd_Range::IntersectStatus*> Bnd_Range_is_intersected(const Bnd_Range* self_, double theVal, double thePeriod) {
+    try { return {new Bnd_Range::IntersectStatus(self_->IsIntersected(theVal, thePeriod)), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Bnd_Range*> Bnd_Range_shifted(const Bnd_Range* self_, double theVal) {
@@ -2509,10 +1596,6 @@ extern "C" OcctResult<bool> Bnd_Range_union(Bnd_Range* self_, Bnd_Range const* t
 extern "C" const char* Bnd_Range_split(const Bnd_Range* self_, double theVal, NCollection_List_Bnd_Range* theList, double thePeriod) {
     try { self_->Split(theVal, *theList, thePeriod); return nullptr; }
     OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<int32_t> Bnd_Range_is_intersected(const Bnd_Range* self_, double theVal, double thePeriod) {
-    try { return {self_->IsIntersected(theVal, thePeriod), nullptr}; }
-    OCCT_CATCH_RETURN
 }
 extern "C" const char* Bnd_Range_add_real(Bnd_Range* self_, double theParameter) {
     try { self_->Add(theParameter); return nullptr; }
@@ -2574,11 +1657,23 @@ extern "C" OcctResult<bool> Bnd_Range_is_out_range(const Bnd_Range* self_, Bnd_R
     try { return {self_->IsOut(*theRange), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" OcctResult<bool> Bnd_Range_contains(const Bnd_Range* self_, double theValue) {
+    try { return {self_->Contains(theValue), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<bool> Bnd_Range_intersects(const Bnd_Range* self_, Bnd_Range const* theRange) {
+    try { return {self_->Intersects(*theRange), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" OcctResult<Bnd_Range*> Bnd_Range_clone(const Bnd_Range* self_) {
     try { return {new Bnd_Range(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" void Bnd_Range_destructor(Bnd_Range* self_) { delete self_; }
+
+// sizeof helper for POD struct Bnd_Range::Bounds
+extern "C" size_t Bnd_Range_Bounds_sizeof() { return sizeof(Bnd_Range::Bounds); }
+extern "C" void Bnd_Range_Bounds_destructor(Bnd_Range::Bounds* self_) { delete self_; }
 
 // ========================
 // Bnd_Sphere wrappers
@@ -2666,8 +1761,8 @@ extern "C" OcctResult<Bnd_Tools*> Bnd_Tools_ctor() {
     try { return {new Bnd_Tools(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<BVH_Box_Standard_Real_2*> Bnd_Tools_bnd2_bvh_box2d(Bnd_Box2d const* theBox) {
-    try { return {new BVH_Box_Standard_Real_2(Bnd_Tools::Bnd2BVH(*theBox)), nullptr}; }
+extern "C" OcctResult<BVH_Box_double_2*> Bnd_Tools_bnd2_bvh_box2d(Bnd_Box2d const* theBox) {
+    try { return {new BVH_Box_double_2(Bnd_Tools::Bnd2BVH(*theBox)), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Select3D_BndBox3d*> Bnd_Tools_bnd2_bvh_box(Bnd_Box const* theBox) {
@@ -2684,28 +1779,28 @@ extern "C" void Bnd_Tools_destructor(Bnd_Tools* self_) { delete self_; }
 // CSLib_Class2d wrappers
 // ========================
 
-extern "C" OcctResult<CSLib_Class2d*> CSLib_Class2d_ctor_array1ofpnt2d_real6(TColgp_Array1OfPnt2d const* thePnts2d, double theTolU, double theTolV, double theUMin, double theVMin, double theUMax, double theVMax) {
+extern "C" OcctResult<CSLib_Class2d*> CSLib_Class2d_ctor() {
+    try { return {new CSLib_Class2d(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<CSLib_Class2d*> CSLib_Class2d_ctor_arr1_pnt2d_real6(NCollection_Array1_gp_Pnt2d const* thePnts2d, double theTolU, double theTolV, double theUMin, double theVMin, double theUMax, double theVMax) {
     try { return {new CSLib_Class2d(*thePnts2d, theTolU, theTolV, theUMin, theVMin, theUMax, theVMax), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<CSLib_Class2d*> CSLib_Class2d_ctor_sequenceofpnt2d_real6(TColgp_SequenceOfPnt2d const* thePnts2d, double theTolU, double theTolV, double theUMin, double theVMin, double theUMax, double theVMax) {
+extern "C" OcctResult<CSLib_Class2d*> CSLib_Class2d_ctor_seq_pnt2d_real6(NCollection_Sequence_gp_Pnt2d const* thePnts2d, double theTolU, double theTolV, double theUMin, double theVMin, double theUMax, double theVMax) {
     try { return {new CSLib_Class2d(*thePnts2d, theTolU, theTolV, theUMin, theVMin, theUMax, theVMax), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<int32_t> CSLib_Class2d_si_dans(const CSLib_Class2d* self_, gp_Pnt2d const* P) {
-    try { return {self_->SiDans(*P), nullptr}; }
+extern "C" OcctResult<CSLib_Class2d*> CSLib_Class2d_ctor_dynamicarray_gp_pnt2d_real6(NCollection_DynamicArray_gp_Pnt2d const* thePnts2d, double theTolU, double theTolV, double theUMin, double theVMin, double theUMax, double theVMax) {
+    try { return {new CSLib_Class2d(*thePnts2d, theTolU, theTolV, theUMin, theVMin, theUMax, theVMax), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<int32_t> CSLib_Class2d_si_dans_on_mode(const CSLib_Class2d* self_, gp_Pnt2d const* P, double Tol) {
-    try { return {self_->SiDans_OnMode(*P, Tol), nullptr}; }
+extern "C" OcctResult<CSLib_Class2d::Result*> CSLib_Class2d_si_dans(const CSLib_Class2d* self_, gp_Pnt2d const* thePoint) {
+    try { return {new CSLib_Class2d::Result(self_->SiDans(*thePoint)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<int32_t> CSLib_Class2d_internal_si_dans(const CSLib_Class2d* self_, double X, double Y) {
-    try { return {self_->InternalSiDans(X, Y), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<int32_t> CSLib_Class2d_internal_si_dans_ou_on(const CSLib_Class2d* self_, double X, double Y) {
-    try { return {self_->InternalSiDansOuOn(X, Y), nullptr}; }
+extern "C" OcctResult<CSLib_Class2d::Result*> CSLib_Class2d_si_dans_on_mode(const CSLib_Class2d* self_, gp_Pnt2d const* thePoint, double theTol) {
+    try { return {new CSLib_Class2d::Result(self_->SiDans_OnMode(*thePoint, theTol)), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" void CSLib_Class2d_destructor(CSLib_Class2d* self_) { delete self_; }
@@ -2714,20 +1809,20 @@ extern "C" void CSLib_Class2d_destructor(CSLib_Class2d* self_) { delete self_; }
 // CSLib_NormalPolyDef wrappers
 // ========================
 
-extern "C" OcctResult<CSLib_NormalPolyDef*> CSLib_NormalPolyDef_ctor_int_array1ofreal(int32_t k0, TColStd_Array1OfReal const* li) {
-    try { return {new CSLib_NormalPolyDef(k0, *li), nullptr}; }
+extern "C" OcctResult<CSLib_NormalPolyDef*> CSLib_NormalPolyDef_ctor_int_arr1_double(int32_t theK0, NCollection_Array1_double const* theLi) {
+    try { return {new CSLib_NormalPolyDef(theK0, *theLi), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<bool> CSLib_NormalPolyDef_value(CSLib_NormalPolyDef* self_, double X, double* F) {
-    try { return {self_->Value(X, *F), nullptr}; }
+extern "C" OcctResult<bool> CSLib_NormalPolyDef_value(CSLib_NormalPolyDef* self_, double theX, double* theF) {
+    try { return {self_->Value(theX, *theF), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<bool> CSLib_NormalPolyDef_derivative(CSLib_NormalPolyDef* self_, double X, double* D) {
-    try { return {self_->Derivative(X, *D), nullptr}; }
+extern "C" OcctResult<bool> CSLib_NormalPolyDef_derivative(CSLib_NormalPolyDef* self_, double theX, double* theD) {
+    try { return {self_->Derivative(theX, *theD), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<bool> CSLib_NormalPolyDef_values(CSLib_NormalPolyDef* self_, double X, double* F, double* D) {
-    try { return {self_->Values(X, *F, *D), nullptr}; }
+extern "C" OcctResult<bool> CSLib_NormalPolyDef_values(CSLib_NormalPolyDef* self_, double theX, double* theF, double* theD) {
+    try { return {self_->Values(theX, *theF, *theD), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<const math_FunctionWithDerivative*> CSLib_NormalPolyDef_as_math_FunctionWithDerivative(const CSLib_NormalPolyDef* self_) { return {static_cast<const math_FunctionWithDerivative*>(self_), nullptr}; }
@@ -2770,25 +1865,21 @@ extern "C" OcctResult<bool> Convert_CircleToBSplineCurve_inherited_IsPeriodic(co
     try { return {self->IsPeriodic(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<gp_Pnt2d*> Convert_CircleToBSplineCurve_inherited_Pole(const Convert_CircleToBSplineCurve* self, int32_t Index) {
-    try { return {new gp_Pnt2d(self->Pole(Index)), nullptr}; }
+extern "C" OcctResult<NCollection_Array1_gp_Pnt2d const*> Convert_CircleToBSplineCurve_inherited_Poles(const Convert_CircleToBSplineCurve* self) {
+    try { return {&(self->Poles()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<double> Convert_CircleToBSplineCurve_inherited_Weight(const Convert_CircleToBSplineCurve* self, int32_t Index) {
-    try { return {self->Weight(Index), nullptr}; }
+extern "C" OcctResult<NCollection_Array1_double const*> Convert_CircleToBSplineCurve_inherited_Weights(const Convert_CircleToBSplineCurve* self) {
+    try { return {&(self->Weights()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<double> Convert_CircleToBSplineCurve_inherited_Knot(const Convert_CircleToBSplineCurve* self, int32_t Index) {
-    try { return {self->Knot(Index), nullptr}; }
+extern "C" OcctResult<NCollection_Array1_double const*> Convert_CircleToBSplineCurve_inherited_Knots(const Convert_CircleToBSplineCurve* self) {
+    try { return {&(self->Knots()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<int32_t> Convert_CircleToBSplineCurve_inherited_Multiplicity(const Convert_CircleToBSplineCurve* self, int32_t Index) {
-    try { return {self->Multiplicity(Index), nullptr}; }
+extern "C" OcctResult<NCollection_Array1_int const*> Convert_CircleToBSplineCurve_inherited_Multiplicities(const Convert_CircleToBSplineCurve* self) {
+    try { return {&(self->Multiplicities()), nullptr}; }
     OCCT_CATCH_RETURN
-}
-extern "C" const char* Convert_CircleToBSplineCurve_inherited_BuildCosAndSin(const Convert_CircleToBSplineCurve* self, int32_t Parametrisation, Handle(TColStd_HArray1OfReal)& CosNumerator, Handle(TColStd_HArray1OfReal)& SinNumerator, Handle(TColStd_HArray1OfReal)& Denominator, int32_t& Degree, Handle(TColStd_HArray1OfReal)& Knots, Handle(TColStd_HArray1OfInteger)& Mults) {
-    try { self->BuildCosAndSin(static_cast<Convert_ParameterisationType>(Parametrisation), CosNumerator, SinNumerator, Denominator, Degree, Knots, Mults); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
 }
 extern "C" void Convert_CircleToBSplineCurve_destructor(Convert_CircleToBSplineCurve* self_) { delete self_; }
 
@@ -2796,37 +1887,9 @@ extern "C" void Convert_CircleToBSplineCurve_destructor(Convert_CircleToBSplineC
 // Convert_CompBezierCurves2dToBSplineCurve2d wrappers
 // ========================
 
-extern "C" OcctResult<Convert_CompBezierCurves2dToBSplineCurve2d*> Convert_CompBezierCurves2dToBSplineCurve2d_ctor_real(double AngularTolerance) {
-    try { return {new Convert_CompBezierCurves2dToBSplineCurve2d(AngularTolerance), nullptr}; }
+extern "C" OcctResult<Convert_CompBezierCurves2dToBSplineCurve2d*> Convert_CompBezierCurves2dToBSplineCurve2d_ctor_real(double theAngularTolerance) {
+    try { return {new Convert_CompBezierCurves2dToBSplineCurve2d(theAngularTolerance), nullptr}; }
     OCCT_CATCH_RETURN
-}
-extern "C" const char* Convert_CompBezierCurves2dToBSplineCurve2d_add_curve(Convert_CompBezierCurves2dToBSplineCurve2d* self_, TColgp_Array1OfPnt2d const* Poles) {
-    try { self_->AddCurve(*Poles); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* Convert_CompBezierCurves2dToBSplineCurve2d_perform(Convert_CompBezierCurves2dToBSplineCurve2d* self_) {
-    try { self_->Perform(); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<int32_t> Convert_CompBezierCurves2dToBSplineCurve2d_degree(const Convert_CompBezierCurves2dToBSplineCurve2d* self_) {
-    try { return {self_->Degree(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<int32_t> Convert_CompBezierCurves2dToBSplineCurve2d_nb_poles(const Convert_CompBezierCurves2dToBSplineCurve2d* self_) {
-    try { return {self_->NbPoles(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* Convert_CompBezierCurves2dToBSplineCurve2d_poles(const Convert_CompBezierCurves2dToBSplineCurve2d* self_, TColgp_Array1OfPnt2d* Poles) {
-    try { self_->Poles(*Poles); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<int32_t> Convert_CompBezierCurves2dToBSplineCurve2d_nb_knots(const Convert_CompBezierCurves2dToBSplineCurve2d* self_) {
-    try { return {self_->NbKnots(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* Convert_CompBezierCurves2dToBSplineCurve2d_knots_and_mults(const Convert_CompBezierCurves2dToBSplineCurve2d* self_, TColStd_Array1OfReal* Knots, TColStd_Array1OfInteger* Mults) {
-    try { self_->KnotsAndMults(*Knots, *Mults); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
 }
 extern "C" void Convert_CompBezierCurves2dToBSplineCurve2d_destructor(Convert_CompBezierCurves2dToBSplineCurve2d* self_) { delete self_; }
 
@@ -2834,37 +1897,9 @@ extern "C" void Convert_CompBezierCurves2dToBSplineCurve2d_destructor(Convert_Co
 // Convert_CompBezierCurvesToBSplineCurve wrappers
 // ========================
 
-extern "C" OcctResult<Convert_CompBezierCurvesToBSplineCurve*> Convert_CompBezierCurvesToBSplineCurve_ctor_real(double AngularTolerance) {
-    try { return {new Convert_CompBezierCurvesToBSplineCurve(AngularTolerance), nullptr}; }
+extern "C" OcctResult<Convert_CompBezierCurvesToBSplineCurve*> Convert_CompBezierCurvesToBSplineCurve_ctor_real(double theAngularTolerance) {
+    try { return {new Convert_CompBezierCurvesToBSplineCurve(theAngularTolerance), nullptr}; }
     OCCT_CATCH_RETURN
-}
-extern "C" const char* Convert_CompBezierCurvesToBSplineCurve_add_curve(Convert_CompBezierCurvesToBSplineCurve* self_, TColgp_Array1OfPnt const* Poles) {
-    try { self_->AddCurve(*Poles); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* Convert_CompBezierCurvesToBSplineCurve_perform(Convert_CompBezierCurvesToBSplineCurve* self_) {
-    try { self_->Perform(); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<int32_t> Convert_CompBezierCurvesToBSplineCurve_degree(const Convert_CompBezierCurvesToBSplineCurve* self_) {
-    try { return {self_->Degree(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<int32_t> Convert_CompBezierCurvesToBSplineCurve_nb_poles(const Convert_CompBezierCurvesToBSplineCurve* self_) {
-    try { return {self_->NbPoles(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* Convert_CompBezierCurvesToBSplineCurve_poles(const Convert_CompBezierCurvesToBSplineCurve* self_, TColgp_Array1OfPnt* Poles) {
-    try { self_->Poles(*Poles); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<int32_t> Convert_CompBezierCurvesToBSplineCurve_nb_knots(const Convert_CompBezierCurvesToBSplineCurve* self_) {
-    try { return {self_->NbKnots(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* Convert_CompBezierCurvesToBSplineCurve_knots_and_mults(const Convert_CompBezierCurvesToBSplineCurve* self_, TColStd_Array1OfReal* Knots, TColStd_Array1OfInteger* Mults) {
-    try { self_->KnotsAndMults(*Knots, *Mults); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
 }
 extern "C" void Convert_CompBezierCurvesToBSplineCurve_destructor(Convert_CompBezierCurvesToBSplineCurve* self_) { delete self_; }
 
@@ -2872,15 +1907,15 @@ extern "C" void Convert_CompBezierCurvesToBSplineCurve_destructor(Convert_CompBe
 // Convert_CompPolynomialToPoles wrappers
 // ========================
 
-extern "C" OcctResult<Convert_CompPolynomialToPoles*> Convert_CompPolynomialToPoles_ctor_int4_handletcolstdharray1ofinteger_handletcolstdharray1ofreal_handletcolstdharray2ofreal_handletcolstdharray1ofreal(int32_t NumCurves, int32_t Continuity, int32_t Dimension, int32_t MaxDegree, Handle(TColStd_HArray1OfInteger) const* NumCoeffPerCurve, Handle(TColStd_HArray1OfReal) const* Coefficients, Handle(TColStd_HArray2OfReal) const* PolynomialIntervals, Handle(TColStd_HArray1OfReal) const* TrueIntervals) {
+extern "C" OcctResult<Convert_CompPolynomialToPoles*> Convert_CompPolynomialToPoles_ctor_int4_harr1_int_harr1_double_handlencollectionharray2double_harr1_double(int32_t NumCurves, int32_t Continuity, int32_t Dimension, int32_t MaxDegree, Handle(NCollection_HArray1_int) const* NumCoeffPerCurve, Handle(NCollection_HArray1_double) const* Coefficients, Handle(NCollection_HArray2_double) const* PolynomialIntervals, Handle(NCollection_HArray1_double) const* TrueIntervals) {
     try { return {new Convert_CompPolynomialToPoles(NumCurves, Continuity, Dimension, MaxDegree, *NumCoeffPerCurve, *Coefficients, *PolynomialIntervals, *TrueIntervals), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Convert_CompPolynomialToPoles*> Convert_CompPolynomialToPoles_ctor_int3_array1ofinteger2_array1ofreal_array2ofreal_array1ofreal(int32_t NumCurves, int32_t Dimension, int32_t MaxDegree, TColStd_Array1OfInteger const* Continuity, TColStd_Array1OfInteger const* NumCoeffPerCurve, TColStd_Array1OfReal const* Coefficients, TColStd_Array2OfReal const* PolynomialIntervals, TColStd_Array1OfReal const* TrueIntervals) {
+extern "C" OcctResult<Convert_CompPolynomialToPoles*> Convert_CompPolynomialToPoles_ctor_int3_arr1_int2_arr1_double_arr2_double_arr1_double(int32_t NumCurves, int32_t Dimension, int32_t MaxDegree, NCollection_Array1_int const* Continuity, NCollection_Array1_int const* NumCoeffPerCurve, NCollection_Array1_double const* Coefficients, NCollection_Array2_double const* PolynomialIntervals, NCollection_Array1_double const* TrueIntervals) {
     try { return {new Convert_CompPolynomialToPoles(NumCurves, Dimension, MaxDegree, *Continuity, *NumCoeffPerCurve, *Coefficients, *PolynomialIntervals, *TrueIntervals), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Convert_CompPolynomialToPoles*> Convert_CompPolynomialToPoles_ctor_int3_array1ofreal3(int32_t Dimension, int32_t MaxDegree, int32_t Degree, TColStd_Array1OfReal const* Coefficients, TColStd_Array1OfReal const* PolynomialIntervals, TColStd_Array1OfReal const* TrueIntervals) {
+extern "C" OcctResult<Convert_CompPolynomialToPoles*> Convert_CompPolynomialToPoles_ctor_int3_arr1_double3(int32_t Dimension, int32_t MaxDegree, int32_t Degree, NCollection_Array1_double const* Coefficients, NCollection_Array1_double const* PolynomialIntervals, NCollection_Array1_double const* TrueIntervals) {
     try { return {new Convert_CompPolynomialToPoles(Dimension, MaxDegree, Degree, *Coefficients, *PolynomialIntervals, *TrueIntervals), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -2888,9 +1923,9 @@ extern "C" OcctResult<int32_t> Convert_CompPolynomialToPoles_nb_poles(const Conv
     try { return {self_->NbPoles(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* Convert_CompPolynomialToPoles_poles(const Convert_CompPolynomialToPoles* self_, Handle(TColStd_HArray2OfReal)* Poles) {
-    try { self_->Poles(*Poles); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
+extern "C" OcctResult<NCollection_Array2_double const*> Convert_CompPolynomialToPoles_poles(const Convert_CompPolynomialToPoles* self_) {
+    try { return {&(self_->Poles()), nullptr}; }
+    OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<int32_t> Convert_CompPolynomialToPoles_degree(const Convert_CompPolynomialToPoles* self_) {
     try { return {self_->Degree(), nullptr}; }
@@ -2900,13 +1935,13 @@ extern "C" OcctResult<int32_t> Convert_CompPolynomialToPoles_nb_knots(const Conv
     try { return {self_->NbKnots(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* Convert_CompPolynomialToPoles_knots(const Convert_CompPolynomialToPoles* self_, Handle(TColStd_HArray1OfReal)* K) {
-    try { self_->Knots(*K); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
+extern "C" OcctResult<NCollection_Array1_double const*> Convert_CompPolynomialToPoles_knots(const Convert_CompPolynomialToPoles* self_) {
+    try { return {&(self_->Knots()), nullptr}; }
+    OCCT_CATCH_RETURN
 }
-extern "C" const char* Convert_CompPolynomialToPoles_multiplicities(const Convert_CompPolynomialToPoles* self_, Handle(TColStd_HArray1OfInteger)* M) {
-    try { self_->Multiplicities(*M); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
+extern "C" OcctResult<NCollection_Array1_int const*> Convert_CompPolynomialToPoles_multiplicities(const Convert_CompPolynomialToPoles* self_) {
+    try { return {&(self_->Multiplicities()), nullptr}; }
+    OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> Convert_CompPolynomialToPoles_is_done(const Convert_CompPolynomialToPoles* self_) {
     try { return {self_->IsDone(), nullptr}; }
@@ -2960,28 +1995,28 @@ extern "C" OcctResult<bool> Convert_ConeToBSplineSurface_inherited_IsVPeriodic(c
     try { return {self->IsVPeriodic(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<gp_Pnt*> Convert_ConeToBSplineSurface_inherited_Pole(const Convert_ConeToBSplineSurface* self, int32_t UIndex, int32_t VIndex) {
-    try { return {new gp_Pnt(self->Pole(UIndex, VIndex)), nullptr}; }
+extern "C" OcctResult<NCollection_Array2_gp_Pnt const*> Convert_ConeToBSplineSurface_inherited_Poles(const Convert_ConeToBSplineSurface* self) {
+    try { return {&(self->Poles()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<double> Convert_ConeToBSplineSurface_inherited_Weight(const Convert_ConeToBSplineSurface* self, int32_t UIndex, int32_t VIndex) {
-    try { return {self->Weight(UIndex, VIndex), nullptr}; }
+extern "C" OcctResult<NCollection_Array2_double const*> Convert_ConeToBSplineSurface_inherited_Weights(const Convert_ConeToBSplineSurface* self) {
+    try { return {&(self->Weights()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<double> Convert_ConeToBSplineSurface_inherited_UKnot(const Convert_ConeToBSplineSurface* self, int32_t UIndex) {
-    try { return {self->UKnot(UIndex), nullptr}; }
+extern "C" OcctResult<NCollection_Array1_double const*> Convert_ConeToBSplineSurface_inherited_UKnots(const Convert_ConeToBSplineSurface* self) {
+    try { return {&(self->UKnots()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<double> Convert_ConeToBSplineSurface_inherited_VKnot(const Convert_ConeToBSplineSurface* self, int32_t UIndex) {
-    try { return {self->VKnot(UIndex), nullptr}; }
+extern "C" OcctResult<NCollection_Array1_double const*> Convert_ConeToBSplineSurface_inherited_VKnots(const Convert_ConeToBSplineSurface* self) {
+    try { return {&(self->VKnots()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<int32_t> Convert_ConeToBSplineSurface_inherited_UMultiplicity(const Convert_ConeToBSplineSurface* self, int32_t UIndex) {
-    try { return {self->UMultiplicity(UIndex), nullptr}; }
+extern "C" OcctResult<NCollection_Array1_int const*> Convert_ConeToBSplineSurface_inherited_UMultiplicities(const Convert_ConeToBSplineSurface* self) {
+    try { return {&(self->UMultiplicities()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<int32_t> Convert_ConeToBSplineSurface_inherited_VMultiplicity(const Convert_ConeToBSplineSurface* self, int32_t VIndex) {
-    try { return {self->VMultiplicity(VIndex), nullptr}; }
+extern "C" OcctResult<NCollection_Array1_int const*> Convert_ConeToBSplineSurface_inherited_VMultiplicities(const Convert_ConeToBSplineSurface* self) {
+    try { return {&(self->VMultiplicities()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" void Convert_ConeToBSplineSurface_destructor(Convert_ConeToBSplineSurface* self_) { delete self_; }
@@ -2990,10 +2025,6 @@ extern "C" void Convert_ConeToBSplineSurface_destructor(Convert_ConeToBSplineSur
 // Convert_ConicToBSplineCurve wrappers
 // ========================
 
-extern "C" OcctResult<gp_Pnt2d*> Convert_ConicToBSplineCurve_pole(const Convert_ConicToBSplineCurve* self_, int32_t Index) {
-    try { return {new gp_Pnt2d(self_->Pole(Index)), nullptr}; }
-    OCCT_CATCH_RETURN
-}
 extern "C" OcctResult<int32_t> Convert_ConicToBSplineCurve_degree(const Convert_ConicToBSplineCurve* self_) {
     try { return {self_->Degree(), nullptr}; }
     OCCT_CATCH_RETURN
@@ -3010,25 +2041,21 @@ extern "C" OcctResult<bool> Convert_ConicToBSplineCurve_is_periodic(const Conver
     try { return {self_->IsPeriodic(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<double> Convert_ConicToBSplineCurve_weight(const Convert_ConicToBSplineCurve* self_, int32_t Index) {
-    try { return {self_->Weight(Index), nullptr}; }
+extern "C" OcctResult<NCollection_Array1_gp_Pnt2d const*> Convert_ConicToBSplineCurve_poles(const Convert_ConicToBSplineCurve* self_) {
+    try { return {&(self_->Poles()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<double> Convert_ConicToBSplineCurve_knot(const Convert_ConicToBSplineCurve* self_, int32_t Index) {
-    try { return {self_->Knot(Index), nullptr}; }
+extern "C" OcctResult<NCollection_Array1_double const*> Convert_ConicToBSplineCurve_weights(const Convert_ConicToBSplineCurve* self_) {
+    try { return {&(self_->Weights()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<int32_t> Convert_ConicToBSplineCurve_multiplicity(const Convert_ConicToBSplineCurve* self_, int32_t Index) {
-    try { return {self_->Multiplicity(Index), nullptr}; }
+extern "C" OcctResult<NCollection_Array1_double const*> Convert_ConicToBSplineCurve_knots(const Convert_ConicToBSplineCurve* self_) {
+    try { return {&(self_->Knots()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* Convert_ConicToBSplineCurve_build_cos_and_sin_parameterisationtype_handletcolstdharray1ofreal3_int_handletcolstdharray1ofreal_handletcolstdharray1ofinteger(const Convert_ConicToBSplineCurve* self_, int32_t Parametrisation, Handle(TColStd_HArray1OfReal)* CosNumerator, Handle(TColStd_HArray1OfReal)* SinNumerator, Handle(TColStd_HArray1OfReal)* Denominator, int32_t* Degree, Handle(TColStd_HArray1OfReal)* Knots, Handle(TColStd_HArray1OfInteger)* Mults) {
-    try { self_->BuildCosAndSin(static_cast<Convert_ParameterisationType>(Parametrisation), *CosNumerator, *SinNumerator, *Denominator, *Degree, *Knots, *Mults); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* Convert_ConicToBSplineCurve_build_cos_and_sin_parameterisationtype_real2_handletcolstdharray1ofreal3_int_handletcolstdharray1ofreal_handletcolstdharray1ofinteger(const Convert_ConicToBSplineCurve* self_, int32_t Parametrisation, double UFirst, double ULast, Handle(TColStd_HArray1OfReal)* CosNumerator, Handle(TColStd_HArray1OfReal)* SinNumerator, Handle(TColStd_HArray1OfReal)* Denominator, int32_t* Degree, Handle(TColStd_HArray1OfReal)* Knots, Handle(TColStd_HArray1OfInteger)* Mults) {
-    try { self_->BuildCosAndSin(static_cast<Convert_ParameterisationType>(Parametrisation), UFirst, ULast, *CosNumerator, *SinNumerator, *Denominator, *Degree, *Knots, *Mults); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
+extern "C" OcctResult<NCollection_Array1_int const*> Convert_ConicToBSplineCurve_multiplicities(const Convert_ConicToBSplineCurve* self_) {
+    try { return {&(self_->Multiplicities()), nullptr}; }
+    OCCT_CATCH_RETURN
 }
 extern "C" void Convert_ConicToBSplineCurve_destructor(Convert_ConicToBSplineCurve* self_) { delete self_; }
 
@@ -3078,28 +2105,28 @@ extern "C" OcctResult<bool> Convert_CylinderToBSplineSurface_inherited_IsVPeriod
     try { return {self->IsVPeriodic(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<gp_Pnt*> Convert_CylinderToBSplineSurface_inherited_Pole(const Convert_CylinderToBSplineSurface* self, int32_t UIndex, int32_t VIndex) {
-    try { return {new gp_Pnt(self->Pole(UIndex, VIndex)), nullptr}; }
+extern "C" OcctResult<NCollection_Array2_gp_Pnt const*> Convert_CylinderToBSplineSurface_inherited_Poles(const Convert_CylinderToBSplineSurface* self) {
+    try { return {&(self->Poles()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<double> Convert_CylinderToBSplineSurface_inherited_Weight(const Convert_CylinderToBSplineSurface* self, int32_t UIndex, int32_t VIndex) {
-    try { return {self->Weight(UIndex, VIndex), nullptr}; }
+extern "C" OcctResult<NCollection_Array2_double const*> Convert_CylinderToBSplineSurface_inherited_Weights(const Convert_CylinderToBSplineSurface* self) {
+    try { return {&(self->Weights()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<double> Convert_CylinderToBSplineSurface_inherited_UKnot(const Convert_CylinderToBSplineSurface* self, int32_t UIndex) {
-    try { return {self->UKnot(UIndex), nullptr}; }
+extern "C" OcctResult<NCollection_Array1_double const*> Convert_CylinderToBSplineSurface_inherited_UKnots(const Convert_CylinderToBSplineSurface* self) {
+    try { return {&(self->UKnots()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<double> Convert_CylinderToBSplineSurface_inherited_VKnot(const Convert_CylinderToBSplineSurface* self, int32_t UIndex) {
-    try { return {self->VKnot(UIndex), nullptr}; }
+extern "C" OcctResult<NCollection_Array1_double const*> Convert_CylinderToBSplineSurface_inherited_VKnots(const Convert_CylinderToBSplineSurface* self) {
+    try { return {&(self->VKnots()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<int32_t> Convert_CylinderToBSplineSurface_inherited_UMultiplicity(const Convert_CylinderToBSplineSurface* self, int32_t UIndex) {
-    try { return {self->UMultiplicity(UIndex), nullptr}; }
+extern "C" OcctResult<NCollection_Array1_int const*> Convert_CylinderToBSplineSurface_inherited_UMultiplicities(const Convert_CylinderToBSplineSurface* self) {
+    try { return {&(self->UMultiplicities()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<int32_t> Convert_CylinderToBSplineSurface_inherited_VMultiplicity(const Convert_CylinderToBSplineSurface* self, int32_t VIndex) {
-    try { return {self->VMultiplicity(VIndex), nullptr}; }
+extern "C" OcctResult<NCollection_Array1_int const*> Convert_CylinderToBSplineSurface_inherited_VMultiplicities(const Convert_CylinderToBSplineSurface* self) {
+    try { return {&(self->VMultiplicities()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" void Convert_CylinderToBSplineSurface_destructor(Convert_CylinderToBSplineSurface* self_) { delete self_; }
@@ -3108,10 +2135,6 @@ extern "C" void Convert_CylinderToBSplineSurface_destructor(Convert_CylinderToBS
 // Convert_ElementarySurfaceToBSplineSurface wrappers
 // ========================
 
-extern "C" OcctResult<gp_Pnt*> Convert_ElementarySurfaceToBSplineSurface_pole(const Convert_ElementarySurfaceToBSplineSurface* self_, int32_t UIndex, int32_t VIndex) {
-    try { return {new gp_Pnt(self_->Pole(UIndex, VIndex)), nullptr}; }
-    OCCT_CATCH_RETURN
-}
 extern "C" OcctResult<int32_t> Convert_ElementarySurfaceToBSplineSurface_u_degree(const Convert_ElementarySurfaceToBSplineSurface* self_) {
     try { return {self_->UDegree(), nullptr}; }
     OCCT_CATCH_RETURN
@@ -3144,24 +2167,28 @@ extern "C" OcctResult<bool> Convert_ElementarySurfaceToBSplineSurface_is_v_perio
     try { return {self_->IsVPeriodic(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<double> Convert_ElementarySurfaceToBSplineSurface_weight(const Convert_ElementarySurfaceToBSplineSurface* self_, int32_t UIndex, int32_t VIndex) {
-    try { return {self_->Weight(UIndex, VIndex), nullptr}; }
+extern "C" OcctResult<NCollection_Array2_gp_Pnt const*> Convert_ElementarySurfaceToBSplineSurface_poles(const Convert_ElementarySurfaceToBSplineSurface* self_) {
+    try { return {&(self_->Poles()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<double> Convert_ElementarySurfaceToBSplineSurface_u_knot(const Convert_ElementarySurfaceToBSplineSurface* self_, int32_t UIndex) {
-    try { return {self_->UKnot(UIndex), nullptr}; }
+extern "C" OcctResult<NCollection_Array2_double const*> Convert_ElementarySurfaceToBSplineSurface_weights(const Convert_ElementarySurfaceToBSplineSurface* self_) {
+    try { return {&(self_->Weights()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<double> Convert_ElementarySurfaceToBSplineSurface_v_knot(const Convert_ElementarySurfaceToBSplineSurface* self_, int32_t UIndex) {
-    try { return {self_->VKnot(UIndex), nullptr}; }
+extern "C" OcctResult<NCollection_Array1_double const*> Convert_ElementarySurfaceToBSplineSurface_u_knots(const Convert_ElementarySurfaceToBSplineSurface* self_) {
+    try { return {&(self_->UKnots()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<int32_t> Convert_ElementarySurfaceToBSplineSurface_u_multiplicity(const Convert_ElementarySurfaceToBSplineSurface* self_, int32_t UIndex) {
-    try { return {self_->UMultiplicity(UIndex), nullptr}; }
+extern "C" OcctResult<NCollection_Array1_double const*> Convert_ElementarySurfaceToBSplineSurface_v_knots(const Convert_ElementarySurfaceToBSplineSurface* self_) {
+    try { return {&(self_->VKnots()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<int32_t> Convert_ElementarySurfaceToBSplineSurface_v_multiplicity(const Convert_ElementarySurfaceToBSplineSurface* self_, int32_t VIndex) {
-    try { return {self_->VMultiplicity(VIndex), nullptr}; }
+extern "C" OcctResult<NCollection_Array1_int const*> Convert_ElementarySurfaceToBSplineSurface_u_multiplicities(const Convert_ElementarySurfaceToBSplineSurface* self_) {
+    try { return {&(self_->UMultiplicities()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<NCollection_Array1_int const*> Convert_ElementarySurfaceToBSplineSurface_v_multiplicities(const Convert_ElementarySurfaceToBSplineSurface* self_) {
+    try { return {&(self_->VMultiplicities()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" void Convert_ElementarySurfaceToBSplineSurface_destructor(Convert_ElementarySurfaceToBSplineSurface* self_) { delete self_; }
@@ -3196,25 +2223,21 @@ extern "C" OcctResult<bool> Convert_EllipseToBSplineCurve_inherited_IsPeriodic(c
     try { return {self->IsPeriodic(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<gp_Pnt2d*> Convert_EllipseToBSplineCurve_inherited_Pole(const Convert_EllipseToBSplineCurve* self, int32_t Index) {
-    try { return {new gp_Pnt2d(self->Pole(Index)), nullptr}; }
+extern "C" OcctResult<NCollection_Array1_gp_Pnt2d const*> Convert_EllipseToBSplineCurve_inherited_Poles(const Convert_EllipseToBSplineCurve* self) {
+    try { return {&(self->Poles()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<double> Convert_EllipseToBSplineCurve_inherited_Weight(const Convert_EllipseToBSplineCurve* self, int32_t Index) {
-    try { return {self->Weight(Index), nullptr}; }
+extern "C" OcctResult<NCollection_Array1_double const*> Convert_EllipseToBSplineCurve_inherited_Weights(const Convert_EllipseToBSplineCurve* self) {
+    try { return {&(self->Weights()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<double> Convert_EllipseToBSplineCurve_inherited_Knot(const Convert_EllipseToBSplineCurve* self, int32_t Index) {
-    try { return {self->Knot(Index), nullptr}; }
+extern "C" OcctResult<NCollection_Array1_double const*> Convert_EllipseToBSplineCurve_inherited_Knots(const Convert_EllipseToBSplineCurve* self) {
+    try { return {&(self->Knots()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<int32_t> Convert_EllipseToBSplineCurve_inherited_Multiplicity(const Convert_EllipseToBSplineCurve* self, int32_t Index) {
-    try { return {self->Multiplicity(Index), nullptr}; }
+extern "C" OcctResult<NCollection_Array1_int const*> Convert_EllipseToBSplineCurve_inherited_Multiplicities(const Convert_EllipseToBSplineCurve* self) {
+    try { return {&(self->Multiplicities()), nullptr}; }
     OCCT_CATCH_RETURN
-}
-extern "C" const char* Convert_EllipseToBSplineCurve_inherited_BuildCosAndSin(const Convert_EllipseToBSplineCurve* self, int32_t Parametrisation, Handle(TColStd_HArray1OfReal)& CosNumerator, Handle(TColStd_HArray1OfReal)& SinNumerator, Handle(TColStd_HArray1OfReal)& Denominator, int32_t& Degree, Handle(TColStd_HArray1OfReal)& Knots, Handle(TColStd_HArray1OfInteger)& Mults) {
-    try { self->BuildCosAndSin(static_cast<Convert_ParameterisationType>(Parametrisation), CosNumerator, SinNumerator, Denominator, Degree, Knots, Mults); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
 }
 extern "C" void Convert_EllipseToBSplineCurve_destructor(Convert_EllipseToBSplineCurve* self_) { delete self_; }
 
@@ -3222,17 +2245,21 @@ extern "C" void Convert_EllipseToBSplineCurve_destructor(Convert_EllipseToBSplin
 // Convert_GridPolynomialToPoles wrappers
 // ========================
 
-extern "C" OcctResult<Convert_GridPolynomialToPoles*> Convert_GridPolynomialToPoles_ctor_int2_handletcolstdharray1ofinteger_handletcolstdharray1ofreal3(int32_t MaxUDegree, int32_t MaxVDegree, Handle(TColStd_HArray1OfInteger) const* NumCoeff, Handle(TColStd_HArray1OfReal) const* Coefficients, Handle(TColStd_HArray1OfReal) const* PolynomialUIntervals, Handle(TColStd_HArray1OfReal) const* PolynomialVIntervals) {
-    try { return {new Convert_GridPolynomialToPoles(MaxUDegree, MaxVDegree, *NumCoeff, *Coefficients, *PolynomialUIntervals, *PolynomialVIntervals), nullptr}; }
+extern "C" OcctResult<Convert_GridPolynomialToPoles*> Convert_GridPolynomialToPoles_ctor_int2_arr1_int_arr1_double3(int32_t theMaxUDegree, int32_t theMaxVDegree, NCollection_Array1_int const* theNumCoeff, NCollection_Array1_double const* theCoefficients, NCollection_Array1_double const* thePolynomialUIntervals, NCollection_Array1_double const* thePolynomialVIntervals) {
+    try { return {new Convert_GridPolynomialToPoles(theMaxUDegree, theMaxVDegree, *theNumCoeff, *theCoefficients, *thePolynomialUIntervals, *thePolynomialVIntervals), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Convert_GridPolynomialToPoles*> Convert_GridPolynomialToPoles_ctor_int6_handletcolstdharray2ofinteger_handletcolstdharray1ofreal5(int32_t NbUSurfaces, int32_t NBVSurfaces, int32_t UContinuity, int32_t VContinuity, int32_t MaxUDegree, int32_t MaxVDegree, Handle(TColStd_HArray2OfInteger) const* NumCoeffPerSurface, Handle(TColStd_HArray1OfReal) const* Coefficients, Handle(TColStd_HArray1OfReal) const* PolynomialUIntervals, Handle(TColStd_HArray1OfReal) const* PolynomialVIntervals, Handle(TColStd_HArray1OfReal) const* TrueUIntervals, Handle(TColStd_HArray1OfReal) const* TrueVIntervals) {
-    try { return {new Convert_GridPolynomialToPoles(NbUSurfaces, NBVSurfaces, UContinuity, VContinuity, MaxUDegree, MaxVDegree, *NumCoeffPerSurface, *Coefficients, *PolynomialUIntervals, *PolynomialVIntervals, *TrueUIntervals, *TrueVIntervals), nullptr}; }
+extern "C" OcctResult<Convert_GridPolynomialToPoles*> Convert_GridPolynomialToPoles_ctor_int2_harr1_int_harr1_double3(int32_t theMaxUDegree, int32_t theMaxVDegree, Handle(NCollection_HArray1_int) const* theNumCoeff, Handle(NCollection_HArray1_double) const* theCoefficients, Handle(NCollection_HArray1_double) const* thePolynomialUIntervals, Handle(NCollection_HArray1_double) const* thePolynomialVIntervals) {
+    try { return {new Convert_GridPolynomialToPoles(theMaxUDegree, theMaxVDegree, *theNumCoeff, *theCoefficients, *thePolynomialUIntervals, *thePolynomialVIntervals), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* Convert_GridPolynomialToPoles_perform(Convert_GridPolynomialToPoles* self_, int32_t UContinuity, int32_t VContinuity, int32_t MaxUDegree, int32_t MaxVDegree, Handle(TColStd_HArray2OfInteger) const* NumCoeffPerSurface, Handle(TColStd_HArray1OfReal) const* Coefficients, Handle(TColStd_HArray1OfReal) const* PolynomialUIntervals, Handle(TColStd_HArray1OfReal) const* PolynomialVIntervals, Handle(TColStd_HArray1OfReal) const* TrueUIntervals, Handle(TColStd_HArray1OfReal) const* TrueVIntervals) {
-    try { self_->Perform(UContinuity, VContinuity, MaxUDegree, MaxVDegree, *NumCoeffPerSurface, *Coefficients, *PolynomialUIntervals, *PolynomialVIntervals, *TrueUIntervals, *TrueVIntervals); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
+extern "C" OcctResult<Convert_GridPolynomialToPoles*> Convert_GridPolynomialToPoles_ctor_int6_arr2_int_arr1_double5(int32_t theNbUSurfaces, int32_t theNbVSurfaces, int32_t theUContinuity, int32_t theVContinuity, int32_t theMaxUDegree, int32_t theMaxVDegree, NCollection_Array2_int const* theNumCoeffPerSurface, NCollection_Array1_double const* theCoefficients, NCollection_Array1_double const* thePolynomialUIntervals, NCollection_Array1_double const* thePolynomialVIntervals, NCollection_Array1_double const* theTrueUIntervals, NCollection_Array1_double const* theTrueVIntervals) {
+    try { return {new Convert_GridPolynomialToPoles(theNbUSurfaces, theNbVSurfaces, theUContinuity, theVContinuity, theMaxUDegree, theMaxVDegree, *theNumCoeffPerSurface, *theCoefficients, *thePolynomialUIntervals, *thePolynomialVIntervals, *theTrueUIntervals, *theTrueVIntervals), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Convert_GridPolynomialToPoles*> Convert_GridPolynomialToPoles_ctor_int6_handlencollectionharray2int_harr1_double5(int32_t theNbUSurfaces, int32_t theNbVSurfaces, int32_t theUContinuity, int32_t theVContinuity, int32_t theMaxUDegree, int32_t theMaxVDegree, Handle(NCollection_HArray2_int) const* theNumCoeffPerSurface, Handle(NCollection_HArray1_double) const* theCoefficients, Handle(NCollection_HArray1_double) const* thePolynomialUIntervals, Handle(NCollection_HArray1_double) const* thePolynomialVIntervals, Handle(NCollection_HArray1_double) const* theTrueUIntervals, Handle(NCollection_HArray1_double) const* theTrueVIntervals) {
+    try { return {new Convert_GridPolynomialToPoles(theNbUSurfaces, theNbVSurfaces, theUContinuity, theVContinuity, theMaxUDegree, theMaxVDegree, *theNumCoeffPerSurface, *theCoefficients, *thePolynomialUIntervals, *thePolynomialVIntervals, *theTrueUIntervals, *theTrueVIntervals), nullptr}; }
+    OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<int32_t> Convert_GridPolynomialToPoles_nb_u_poles(const Convert_GridPolynomialToPoles* self_) {
     try { return {self_->NbUPoles(), nullptr}; }
@@ -3242,7 +2269,7 @@ extern "C" OcctResult<int32_t> Convert_GridPolynomialToPoles_nb_v_poles(const Co
     try { return {self_->NbVPoles(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(TColgp_HArray2OfPnt) const*> Convert_GridPolynomialToPoles_poles(const Convert_GridPolynomialToPoles* self_) {
+extern "C" OcctResult<NCollection_Array2_gp_Pnt const*> Convert_GridPolynomialToPoles_poles(const Convert_GridPolynomialToPoles* self_) {
     try { return {&(self_->Poles()), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -3262,19 +2289,19 @@ extern "C" OcctResult<int32_t> Convert_GridPolynomialToPoles_nb_v_knots(const Co
     try { return {self_->NbVKnots(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(TColStd_HArray1OfReal) const*> Convert_GridPolynomialToPoles_u_knots(const Convert_GridPolynomialToPoles* self_) {
+extern "C" OcctResult<NCollection_Array1_double const*> Convert_GridPolynomialToPoles_u_knots(const Convert_GridPolynomialToPoles* self_) {
     try { return {&(self_->UKnots()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(TColStd_HArray1OfReal) const*> Convert_GridPolynomialToPoles_v_knots(const Convert_GridPolynomialToPoles* self_) {
+extern "C" OcctResult<NCollection_Array1_double const*> Convert_GridPolynomialToPoles_v_knots(const Convert_GridPolynomialToPoles* self_) {
     try { return {&(self_->VKnots()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(TColStd_HArray1OfInteger) const*> Convert_GridPolynomialToPoles_u_multiplicities(const Convert_GridPolynomialToPoles* self_) {
+extern "C" OcctResult<NCollection_Array1_int const*> Convert_GridPolynomialToPoles_u_multiplicities(const Convert_GridPolynomialToPoles* self_) {
     try { return {&(self_->UMultiplicities()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(TColStd_HArray1OfInteger) const*> Convert_GridPolynomialToPoles_v_multiplicities(const Convert_GridPolynomialToPoles* self_) {
+extern "C" OcctResult<NCollection_Array1_int const*> Convert_GridPolynomialToPoles_v_multiplicities(const Convert_GridPolynomialToPoles* self_) {
     try { return {&(self_->VMultiplicities()), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -3310,25 +2337,21 @@ extern "C" OcctResult<bool> Convert_HyperbolaToBSplineCurve_inherited_IsPeriodic
     try { return {self->IsPeriodic(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<gp_Pnt2d*> Convert_HyperbolaToBSplineCurve_inherited_Pole(const Convert_HyperbolaToBSplineCurve* self, int32_t Index) {
-    try { return {new gp_Pnt2d(self->Pole(Index)), nullptr}; }
+extern "C" OcctResult<NCollection_Array1_gp_Pnt2d const*> Convert_HyperbolaToBSplineCurve_inherited_Poles(const Convert_HyperbolaToBSplineCurve* self) {
+    try { return {&(self->Poles()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<double> Convert_HyperbolaToBSplineCurve_inherited_Weight(const Convert_HyperbolaToBSplineCurve* self, int32_t Index) {
-    try { return {self->Weight(Index), nullptr}; }
+extern "C" OcctResult<NCollection_Array1_double const*> Convert_HyperbolaToBSplineCurve_inherited_Weights(const Convert_HyperbolaToBSplineCurve* self) {
+    try { return {&(self->Weights()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<double> Convert_HyperbolaToBSplineCurve_inherited_Knot(const Convert_HyperbolaToBSplineCurve* self, int32_t Index) {
-    try { return {self->Knot(Index), nullptr}; }
+extern "C" OcctResult<NCollection_Array1_double const*> Convert_HyperbolaToBSplineCurve_inherited_Knots(const Convert_HyperbolaToBSplineCurve* self) {
+    try { return {&(self->Knots()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<int32_t> Convert_HyperbolaToBSplineCurve_inherited_Multiplicity(const Convert_HyperbolaToBSplineCurve* self, int32_t Index) {
-    try { return {self->Multiplicity(Index), nullptr}; }
+extern "C" OcctResult<NCollection_Array1_int const*> Convert_HyperbolaToBSplineCurve_inherited_Multiplicities(const Convert_HyperbolaToBSplineCurve* self) {
+    try { return {&(self->Multiplicities()), nullptr}; }
     OCCT_CATCH_RETURN
-}
-extern "C" const char* Convert_HyperbolaToBSplineCurve_inherited_BuildCosAndSin(const Convert_HyperbolaToBSplineCurve* self, int32_t Parametrisation, Handle(TColStd_HArray1OfReal)& CosNumerator, Handle(TColStd_HArray1OfReal)& SinNumerator, Handle(TColStd_HArray1OfReal)& Denominator, int32_t& Degree, Handle(TColStd_HArray1OfReal)& Knots, Handle(TColStd_HArray1OfInteger)& Mults) {
-    try { self->BuildCosAndSin(static_cast<Convert_ParameterisationType>(Parametrisation), CosNumerator, SinNumerator, Denominator, Degree, Knots, Mults); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
 }
 extern "C" void Convert_HyperbolaToBSplineCurve_destructor(Convert_HyperbolaToBSplineCurve* self_) { delete self_; }
 
@@ -3358,25 +2381,21 @@ extern "C" OcctResult<bool> Convert_ParabolaToBSplineCurve_inherited_IsPeriodic(
     try { return {self->IsPeriodic(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<gp_Pnt2d*> Convert_ParabolaToBSplineCurve_inherited_Pole(const Convert_ParabolaToBSplineCurve* self, int32_t Index) {
-    try { return {new gp_Pnt2d(self->Pole(Index)), nullptr}; }
+extern "C" OcctResult<NCollection_Array1_gp_Pnt2d const*> Convert_ParabolaToBSplineCurve_inherited_Poles(const Convert_ParabolaToBSplineCurve* self) {
+    try { return {&(self->Poles()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<double> Convert_ParabolaToBSplineCurve_inherited_Weight(const Convert_ParabolaToBSplineCurve* self, int32_t Index) {
-    try { return {self->Weight(Index), nullptr}; }
+extern "C" OcctResult<NCollection_Array1_double const*> Convert_ParabolaToBSplineCurve_inherited_Weights(const Convert_ParabolaToBSplineCurve* self) {
+    try { return {&(self->Weights()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<double> Convert_ParabolaToBSplineCurve_inherited_Knot(const Convert_ParabolaToBSplineCurve* self, int32_t Index) {
-    try { return {self->Knot(Index), nullptr}; }
+extern "C" OcctResult<NCollection_Array1_double const*> Convert_ParabolaToBSplineCurve_inherited_Knots(const Convert_ParabolaToBSplineCurve* self) {
+    try { return {&(self->Knots()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<int32_t> Convert_ParabolaToBSplineCurve_inherited_Multiplicity(const Convert_ParabolaToBSplineCurve* self, int32_t Index) {
-    try { return {self->Multiplicity(Index), nullptr}; }
+extern "C" OcctResult<NCollection_Array1_int const*> Convert_ParabolaToBSplineCurve_inherited_Multiplicities(const Convert_ParabolaToBSplineCurve* self) {
+    try { return {&(self->Multiplicities()), nullptr}; }
     OCCT_CATCH_RETURN
-}
-extern "C" const char* Convert_ParabolaToBSplineCurve_inherited_BuildCosAndSin(const Convert_ParabolaToBSplineCurve* self, int32_t Parametrisation, Handle(TColStd_HArray1OfReal)& CosNumerator, Handle(TColStd_HArray1OfReal)& SinNumerator, Handle(TColStd_HArray1OfReal)& Denominator, int32_t& Degree, Handle(TColStd_HArray1OfReal)& Knots, Handle(TColStd_HArray1OfInteger)& Mults) {
-    try { self->BuildCosAndSin(static_cast<Convert_ParameterisationType>(Parametrisation), CosNumerator, SinNumerator, Denominator, Degree, Knots, Mults); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
 }
 extern "C" void Convert_ParabolaToBSplineCurve_destructor(Convert_ParabolaToBSplineCurve* self_) { delete self_; }
 
@@ -3430,28 +2449,28 @@ extern "C" OcctResult<bool> Convert_SphereToBSplineSurface_inherited_IsVPeriodic
     try { return {self->IsVPeriodic(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<gp_Pnt*> Convert_SphereToBSplineSurface_inherited_Pole(const Convert_SphereToBSplineSurface* self, int32_t UIndex, int32_t VIndex) {
-    try { return {new gp_Pnt(self->Pole(UIndex, VIndex)), nullptr}; }
+extern "C" OcctResult<NCollection_Array2_gp_Pnt const*> Convert_SphereToBSplineSurface_inherited_Poles(const Convert_SphereToBSplineSurface* self) {
+    try { return {&(self->Poles()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<double> Convert_SphereToBSplineSurface_inherited_Weight(const Convert_SphereToBSplineSurface* self, int32_t UIndex, int32_t VIndex) {
-    try { return {self->Weight(UIndex, VIndex), nullptr}; }
+extern "C" OcctResult<NCollection_Array2_double const*> Convert_SphereToBSplineSurface_inherited_Weights(const Convert_SphereToBSplineSurface* self) {
+    try { return {&(self->Weights()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<double> Convert_SphereToBSplineSurface_inherited_UKnot(const Convert_SphereToBSplineSurface* self, int32_t UIndex) {
-    try { return {self->UKnot(UIndex), nullptr}; }
+extern "C" OcctResult<NCollection_Array1_double const*> Convert_SphereToBSplineSurface_inherited_UKnots(const Convert_SphereToBSplineSurface* self) {
+    try { return {&(self->UKnots()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<double> Convert_SphereToBSplineSurface_inherited_VKnot(const Convert_SphereToBSplineSurface* self, int32_t UIndex) {
-    try { return {self->VKnot(UIndex), nullptr}; }
+extern "C" OcctResult<NCollection_Array1_double const*> Convert_SphereToBSplineSurface_inherited_VKnots(const Convert_SphereToBSplineSurface* self) {
+    try { return {&(self->VKnots()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<int32_t> Convert_SphereToBSplineSurface_inherited_UMultiplicity(const Convert_SphereToBSplineSurface* self, int32_t UIndex) {
-    try { return {self->UMultiplicity(UIndex), nullptr}; }
+extern "C" OcctResult<NCollection_Array1_int const*> Convert_SphereToBSplineSurface_inherited_UMultiplicities(const Convert_SphereToBSplineSurface* self) {
+    try { return {&(self->UMultiplicities()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<int32_t> Convert_SphereToBSplineSurface_inherited_VMultiplicity(const Convert_SphereToBSplineSurface* self, int32_t VIndex) {
-    try { return {self->VMultiplicity(VIndex), nullptr}; }
+extern "C" OcctResult<NCollection_Array1_int const*> Convert_SphereToBSplineSurface_inherited_VMultiplicities(const Convert_SphereToBSplineSurface* self) {
+    try { return {&(self->VMultiplicities()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" void Convert_SphereToBSplineSurface_destructor(Convert_SphereToBSplineSurface* self_) { delete self_; }
@@ -3506,189 +2525,31 @@ extern "C" OcctResult<bool> Convert_TorusToBSplineSurface_inherited_IsVPeriodic(
     try { return {self->IsVPeriodic(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<gp_Pnt*> Convert_TorusToBSplineSurface_inherited_Pole(const Convert_TorusToBSplineSurface* self, int32_t UIndex, int32_t VIndex) {
-    try { return {new gp_Pnt(self->Pole(UIndex, VIndex)), nullptr}; }
+extern "C" OcctResult<NCollection_Array2_gp_Pnt const*> Convert_TorusToBSplineSurface_inherited_Poles(const Convert_TorusToBSplineSurface* self) {
+    try { return {&(self->Poles()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<double> Convert_TorusToBSplineSurface_inherited_Weight(const Convert_TorusToBSplineSurface* self, int32_t UIndex, int32_t VIndex) {
-    try { return {self->Weight(UIndex, VIndex), nullptr}; }
+extern "C" OcctResult<NCollection_Array2_double const*> Convert_TorusToBSplineSurface_inherited_Weights(const Convert_TorusToBSplineSurface* self) {
+    try { return {&(self->Weights()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<double> Convert_TorusToBSplineSurface_inherited_UKnot(const Convert_TorusToBSplineSurface* self, int32_t UIndex) {
-    try { return {self->UKnot(UIndex), nullptr}; }
+extern "C" OcctResult<NCollection_Array1_double const*> Convert_TorusToBSplineSurface_inherited_UKnots(const Convert_TorusToBSplineSurface* self) {
+    try { return {&(self->UKnots()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<double> Convert_TorusToBSplineSurface_inherited_VKnot(const Convert_TorusToBSplineSurface* self, int32_t UIndex) {
-    try { return {self->VKnot(UIndex), nullptr}; }
+extern "C" OcctResult<NCollection_Array1_double const*> Convert_TorusToBSplineSurface_inherited_VKnots(const Convert_TorusToBSplineSurface* self) {
+    try { return {&(self->VKnots()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<int32_t> Convert_TorusToBSplineSurface_inherited_UMultiplicity(const Convert_TorusToBSplineSurface* self, int32_t UIndex) {
-    try { return {self->UMultiplicity(UIndex), nullptr}; }
+extern "C" OcctResult<NCollection_Array1_int const*> Convert_TorusToBSplineSurface_inherited_UMultiplicities(const Convert_TorusToBSplineSurface* self) {
+    try { return {&(self->UMultiplicities()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<int32_t> Convert_TorusToBSplineSurface_inherited_VMultiplicity(const Convert_TorusToBSplineSurface* self, int32_t VIndex) {
-    try { return {self->VMultiplicity(VIndex), nullptr}; }
+extern "C" OcctResult<NCollection_Array1_int const*> Convert_TorusToBSplineSurface_inherited_VMultiplicities(const Convert_TorusToBSplineSurface* self) {
+    try { return {&(self->VMultiplicities()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" void Convert_TorusToBSplineSurface_destructor(Convert_TorusToBSplineSurface* self_) { delete self_; }
-
-// ========================
-// PLib_Base wrappers
-// ========================
-
-extern "C" const char* PLib_Base_to_coefficients(const PLib_Base* self_, int32_t Dimension, int32_t Degree, TColStd_Array1OfReal const* CoeffinBase, TColStd_Array1OfReal* Coefficients) {
-    try { self_->ToCoefficients(Dimension, Degree, *CoeffinBase, *Coefficients); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* PLib_Base_d0(PLib_Base* self_, double U, TColStd_Array1OfReal* BasisValue) {
-    try { self_->D0(U, *BasisValue); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* PLib_Base_d1(PLib_Base* self_, double U, TColStd_Array1OfReal* BasisValue, TColStd_Array1OfReal* BasisD1) {
-    try { self_->D1(U, *BasisValue, *BasisD1); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* PLib_Base_d2(PLib_Base* self_, double U, TColStd_Array1OfReal* BasisValue, TColStd_Array1OfReal* BasisD1, TColStd_Array1OfReal* BasisD2) {
-    try { self_->D2(U, *BasisValue, *BasisD1, *BasisD2); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* PLib_Base_d3(PLib_Base* self_, double U, TColStd_Array1OfReal* BasisValue, TColStd_Array1OfReal* BasisD1, TColStd_Array1OfReal* BasisD2, TColStd_Array1OfReal* BasisD3) {
-    try { self_->D3(U, *BasisValue, *BasisD1, *BasisD2, *BasisD3); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<int32_t> PLib_Base_work_degree(const PLib_Base* self_) {
-    try { return {self_->WorkDegree(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* PLib_Base_reduce_degree(const PLib_Base* self_, int32_t Dimension, int32_t MaxDegree, double Tol, double* BaseCoeff, int32_t* NewDegree, double* MaxError) {
-    try { self_->ReduceDegree(Dimension, MaxDegree, Tol, *BaseCoeff, *NewDegree, *MaxError); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<Handle(Standard_Type) const*> PLib_Base_dynamic_type(const PLib_Base* self_) {
-    try { return {&(self_->DynamicType()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<char const*> PLib_Base_get_type_name() {
-    try { return {PLib_Base::get_type_name(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Handle(Standard_Type) const*> PLib_Base_get_type_descriptor() {
-    try { return {&(PLib_Base::get_type_descriptor()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<const Standard_Transient*> PLib_Base_as_Standard_Transient(const PLib_Base* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<Standard_Transient*> PLib_Base_as_Standard_Transient_mut(PLib_Base* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<const PLib_Base*> HandlePLibBase_get(const HandlePLibBase* handle) {
-    try { return {(*handle).get(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<PLib_Base*> HandlePLibBase_get_mut(HandlePLibBase* handle) {
-    try { return {(*handle).get(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<HandleStandardTransient*> HandlePLibBase_to_HandleStandardTransient(const HandlePLibBase* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<HandlePLibHermitJacobi*> HandlePLibBase_downcast_to_HandlePLibHermitJacobi(const HandlePLibBase* self_) {
-    try {
-    opencascade::handle<PLib_HermitJacobi> result = opencascade::handle<PLib_HermitJacobi>::DownCast(*self_);
-    if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandlePLibHermitJacobi(result), nullptr};
-    }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<HandlePLibJacobiPolynomial*> HandlePLibBase_downcast_to_HandlePLibJacobiPolynomial(const HandlePLibBase* self_) {
-    try {
-    opencascade::handle<PLib_JacobiPolynomial> result = opencascade::handle<PLib_JacobiPolynomial>::DownCast(*self_);
-    if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandlePLibJacobiPolynomial(result), nullptr};
-    }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<bool> PLib_Base_inherited_IsInstance(const PLib_Base* self, Handle(Standard_Type) const& theType) {
-    try { return {self->IsInstance(theType), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<bool> PLib_Base_inherited_IsKind(const PLib_Base* self, Handle(Standard_Type) const& theType) {
-    try { return {self->IsKind(theType), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Standard_Transient*> PLib_Base_inherited_This(const PLib_Base* self) {
-    try { return {self->This(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<int32_t> PLib_Base_inherited_GetRefCount(const PLib_Base* self) {
-    try { return {self->GetRefCount(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* PLib_Base_inherited_IncrementRefCounter(PLib_Base* self) {
-    try { self->IncrementRefCounter(); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<int32_t> PLib_Base_inherited_DecrementRefCounter(PLib_Base* self) {
-    try { return {self->DecrementRefCounter(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* PLib_Base_inherited_Delete(const PLib_Base* self) {
-    try { self->Delete(); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" void PLib_Base_destructor(PLib_Base* self_) { delete self_; }
-
-// ========================
-// PLib_DoubleJacobiPolynomial wrappers
-// ========================
-
-extern "C" OcctResult<PLib_DoubleJacobiPolynomial*> PLib_DoubleJacobiPolynomial_ctor() {
-    try { return {new PLib_DoubleJacobiPolynomial(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<PLib_DoubleJacobiPolynomial*> PLib_DoubleJacobiPolynomial_ctor_handleplibjacobipolynomial2(Handle(PLib_JacobiPolynomial) const* JacPolU, Handle(PLib_JacobiPolynomial) const* JacPolV) {
-    try { return {new PLib_DoubleJacobiPolynomial(*JacPolU, *JacPolV), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Handle(PLib_JacobiPolynomial)*> PLib_DoubleJacobiPolynomial_u(const PLib_DoubleJacobiPolynomial* self_) {
-    try { return {new Handle(PLib_JacobiPolynomial)(self_->U()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Handle(PLib_JacobiPolynomial)*> PLib_DoubleJacobiPolynomial_v(const PLib_DoubleJacobiPolynomial* self_) {
-    try { return {new Handle(PLib_JacobiPolynomial)(self_->V()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Handle(TColStd_HArray1OfReal)*> PLib_DoubleJacobiPolynomial_tab_max_u(const PLib_DoubleJacobiPolynomial* self_) {
-    try { return {new Handle(TColStd_HArray1OfReal)(self_->TabMaxU()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Handle(TColStd_HArray1OfReal)*> PLib_DoubleJacobiPolynomial_tab_max_v(const PLib_DoubleJacobiPolynomial* self_) {
-    try { return {new Handle(TColStd_HArray1OfReal)(self_->TabMaxV()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<double> PLib_DoubleJacobiPolynomial_max_error_u(const PLib_DoubleJacobiPolynomial* self_, int32_t Dimension, int32_t DegreeU, int32_t DegreeV, int32_t dJacCoeff, TColStd_Array1OfReal const* JacCoeff) {
-    try { return {self_->MaxErrorU(Dimension, DegreeU, DegreeV, dJacCoeff, *JacCoeff), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<double> PLib_DoubleJacobiPolynomial_max_error_v(const PLib_DoubleJacobiPolynomial* self_, int32_t Dimension, int32_t DegreeU, int32_t DegreeV, int32_t dJacCoeff, TColStd_Array1OfReal const* JacCoeff) {
-    try { return {self_->MaxErrorV(Dimension, DegreeU, DegreeV, dJacCoeff, *JacCoeff), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<double> PLib_DoubleJacobiPolynomial_max_error(const PLib_DoubleJacobiPolynomial* self_, int32_t Dimension, int32_t MinDegreeU, int32_t MaxDegreeU, int32_t MinDegreeV, int32_t MaxDegreeV, int32_t dJacCoeff, TColStd_Array1OfReal const* JacCoeff, double Error) {
-    try { return {self_->MaxError(Dimension, MinDegreeU, MaxDegreeU, MinDegreeV, MaxDegreeV, dJacCoeff, *JacCoeff, Error), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* PLib_DoubleJacobiPolynomial_reduce_degree(const PLib_DoubleJacobiPolynomial* self_, int32_t Dimension, int32_t MinDegreeU, int32_t MaxDegreeU, int32_t MinDegreeV, int32_t MaxDegreeV, int32_t dJacCoeff, TColStd_Array1OfReal const* JacCoeff, double EpmsCut, double* MaxError, int32_t* NewDegreeU, int32_t* NewDegreeV) {
-    try { self_->ReduceDegree(Dimension, MinDegreeU, MaxDegreeU, MinDegreeV, MaxDegreeV, dJacCoeff, *JacCoeff, EpmsCut, *MaxError, *NewDegreeU, *NewDegreeV); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<double> PLib_DoubleJacobiPolynomial_average_error(const PLib_DoubleJacobiPolynomial* self_, int32_t Dimension, int32_t DegreeU, int32_t DegreeV, int32_t dJacCoeff, TColStd_Array1OfReal const* JacCoeff) {
-    try { return {self_->AverageError(Dimension, DegreeU, DegreeV, dJacCoeff, *JacCoeff), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* PLib_DoubleJacobiPolynomial_w_double_jacobi_to_coefficients(const PLib_DoubleJacobiPolynomial* self_, int32_t Dimension, int32_t DegreeU, int32_t DegreeV, TColStd_Array1OfReal const* JacCoeff, TColStd_Array1OfReal* Coefficients) {
-    try { self_->WDoubleJacobiToCoefficients(Dimension, DegreeU, DegreeV, *JacCoeff, *Coefficients); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" void PLib_DoubleJacobiPolynomial_destructor(PLib_DoubleJacobiPolynomial* self_) { delete self_; }
 
 // ========================
 // PLib_HermitJacobi wrappers
@@ -3710,23 +2571,23 @@ extern "C" OcctResult<double> PLib_HermitJacobi_average_error(const PLib_HermitJ
     try { return {self_->AverageError(Dimension, *HermJacCoeff, NewDegree), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* PLib_HermitJacobi_to_coefficients(const PLib_HermitJacobi* self_, int32_t Dimension, int32_t Degree, TColStd_Array1OfReal const* HermJacCoeff, TColStd_Array1OfReal* Coefficients) {
+extern "C" const char* PLib_HermitJacobi_to_coefficients(const PLib_HermitJacobi* self_, int32_t Dimension, int32_t Degree, NCollection_Array1_double const* HermJacCoeff, NCollection_Array1_double* Coefficients) {
     try { self_->ToCoefficients(Dimension, Degree, *HermJacCoeff, *Coefficients); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* PLib_HermitJacobi_d0(PLib_HermitJacobi* self_, double U, TColStd_Array1OfReal* BasisValue) {
+extern "C" const char* PLib_HermitJacobi_d0(const PLib_HermitJacobi* self_, double U, NCollection_Array1_double* BasisValue) {
     try { self_->D0(U, *BasisValue); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* PLib_HermitJacobi_d1(PLib_HermitJacobi* self_, double U, TColStd_Array1OfReal* BasisValue, TColStd_Array1OfReal* BasisD1) {
+extern "C" const char* PLib_HermitJacobi_d1(const PLib_HermitJacobi* self_, double U, NCollection_Array1_double* BasisValue, NCollection_Array1_double* BasisD1) {
     try { self_->D1(U, *BasisValue, *BasisD1); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* PLib_HermitJacobi_d2(PLib_HermitJacobi* self_, double U, TColStd_Array1OfReal* BasisValue, TColStd_Array1OfReal* BasisD1, TColStd_Array1OfReal* BasisD2) {
+extern "C" const char* PLib_HermitJacobi_d2(const PLib_HermitJacobi* self_, double U, NCollection_Array1_double* BasisValue, NCollection_Array1_double* BasisD1, NCollection_Array1_double* BasisD2) {
     try { self_->D2(U, *BasisValue, *BasisD1, *BasisD2); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* PLib_HermitJacobi_d3(PLib_HermitJacobi* self_, double U, TColStd_Array1OfReal* BasisValue, TColStd_Array1OfReal* BasisD1, TColStd_Array1OfReal* BasisD2, TColStd_Array1OfReal* BasisD3) {
+extern "C" const char* PLib_HermitJacobi_d3(const PLib_HermitJacobi* self_, double U, NCollection_Array1_double* BasisValue, NCollection_Array1_double* BasisD1, NCollection_Array1_double* BasisD2, NCollection_Array1_double* BasisD3) {
     try { self_->D3(U, *BasisValue, *BasisD1, *BasisD2, *BasisD3); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -3738,122 +2599,58 @@ extern "C" OcctResult<int32_t> PLib_HermitJacobi_niv_constr(const PLib_HermitJac
     try { return {self_->NivConstr(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(Standard_Type) const*> PLib_HermitJacobi_dynamic_type(const PLib_HermitJacobi* self_) {
-    try { return {&(self_->DynamicType()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<char const*> PLib_HermitJacobi_get_type_name() {
-    try { return {PLib_HermitJacobi::get_type_name(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Handle(Standard_Type) const*> PLib_HermitJacobi_get_type_descriptor() {
-    try { return {&(PLib_HermitJacobi::get_type_descriptor()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<const PLib_Base*> PLib_HermitJacobi_as_PLib_Base(const PLib_HermitJacobi* self_) { return {static_cast<const PLib_Base*>(self_), nullptr}; }
-extern "C" OcctResult<PLib_Base*> PLib_HermitJacobi_as_PLib_Base_mut(PLib_HermitJacobi* self_) { return {static_cast<PLib_Base*>(self_), nullptr}; }
-extern "C" OcctResult<const Standard_Transient*> PLib_HermitJacobi_as_Standard_Transient(const PLib_HermitJacobi* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<Standard_Transient*> PLib_HermitJacobi_as_Standard_Transient_mut(PLib_HermitJacobi* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandlePLibHermitJacobi*> PLib_HermitJacobi_to_handle(PLib_HermitJacobi* obj) {
-    try { return {new HandlePLibHermitJacobi(obj), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<const PLib_HermitJacobi*> HandlePLibHermitJacobi_get(const HandlePLibHermitJacobi* handle) {
-    try { return {(*handle).get(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<PLib_HermitJacobi*> HandlePLibHermitJacobi_get_mut(HandlePLibHermitJacobi* handle) {
-    try { return {(*handle).get(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<HandlePLibBase*> HandlePLibHermitJacobi_to_HandlePLibBase(const HandlePLibHermitJacobi* self_) {
-    try { return {new HandlePLibBase(*self_), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<HandleStandardTransient*> HandlePLibHermitJacobi_to_HandleStandardTransient(const HandlePLibHermitJacobi* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<bool> PLib_HermitJacobi_inherited_IsInstance(const PLib_HermitJacobi* self, Handle(Standard_Type) const& theType) {
-    try { return {self->IsInstance(theType), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<bool> PLib_HermitJacobi_inherited_IsKind(const PLib_HermitJacobi* self, Handle(Standard_Type) const& theType) {
-    try { return {self->IsKind(theType), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Standard_Transient*> PLib_HermitJacobi_inherited_This(const PLib_HermitJacobi* self) {
-    try { return {self->This(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<int32_t> PLib_HermitJacobi_inherited_GetRefCount(const PLib_HermitJacobi* self) {
-    try { return {self->GetRefCount(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* PLib_HermitJacobi_inherited_IncrementRefCounter(PLib_HermitJacobi* self) {
-    try { self->IncrementRefCounter(); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<int32_t> PLib_HermitJacobi_inherited_DecrementRefCounter(PLib_HermitJacobi* self) {
-    try { return {self->DecrementRefCounter(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* PLib_HermitJacobi_inherited_Delete(const PLib_HermitJacobi* self) {
-    try { self->Delete(); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
 extern "C" void PLib_HermitJacobi_destructor(PLib_HermitJacobi* self_) { delete self_; }
 
 // ========================
 // PLib_JacobiPolynomial wrappers
 // ========================
 
-extern "C" OcctResult<PLib_JacobiPolynomial*> PLib_JacobiPolynomial_ctor_int_shape(int32_t WorkDegree, int32_t ConstraintOrder) {
-    try { return {new PLib_JacobiPolynomial(WorkDegree, static_cast<GeomAbs_Shape>(ConstraintOrder)), nullptr}; }
+extern "C" OcctResult<PLib_JacobiPolynomial*> PLib_JacobiPolynomial_ctor_int_shape(int32_t theWorkDegree, int32_t theConstraintOrder) {
+    try { return {new PLib_JacobiPolynomial(theWorkDegree, static_cast<GeomAbs_Shape>(theConstraintOrder)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* PLib_JacobiPolynomial_points(const PLib_JacobiPolynomial* self_, int32_t NbGaussPoints, TColStd_Array1OfReal* TabPoints) {
-    try { self_->Points(NbGaussPoints, *TabPoints); return nullptr; }
+extern "C" const char* PLib_JacobiPolynomial_points(const PLib_JacobiPolynomial* self_, int32_t theNbGaussPoints, NCollection_Array1_double* theTabPoints) {
+    try { self_->Points(theNbGaussPoints, *theTabPoints); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* PLib_JacobiPolynomial_weights(const PLib_JacobiPolynomial* self_, int32_t NbGaussPoints, TColStd_Array2OfReal* TabWeights) {
-    try { self_->Weights(NbGaussPoints, *TabWeights); return nullptr; }
+extern "C" const char* PLib_JacobiPolynomial_weights(const PLib_JacobiPolynomial* self_, int32_t theNbGaussPoints, NCollection_Array2_double* theTabWeights) {
+    try { self_->Weights(theNbGaussPoints, *theTabWeights); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* PLib_JacobiPolynomial_max_value(const PLib_JacobiPolynomial* self_, TColStd_Array1OfReal* TabMax) {
-    try { self_->MaxValue(*TabMax); return nullptr; }
+extern "C" const char* PLib_JacobiPolynomial_max_value(const PLib_JacobiPolynomial* self_, NCollection_Array1_double* theTabMax) {
+    try { self_->MaxValue(*theTabMax); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<double> PLib_JacobiPolynomial_max_error(const PLib_JacobiPolynomial* self_, int32_t Dimension, double* JacCoeff, int32_t NewDegree) {
-    try { return {self_->MaxError(Dimension, *JacCoeff, NewDegree), nullptr}; }
+extern "C" OcctResult<double> PLib_JacobiPolynomial_max_error(const PLib_JacobiPolynomial* self_, int32_t theDimension, double* theJacCoeff, int32_t theNewDegree) {
+    try { return {self_->MaxError(theDimension, *theJacCoeff, theNewDegree), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* PLib_JacobiPolynomial_reduce_degree(const PLib_JacobiPolynomial* self_, int32_t Dimension, int32_t MaxDegree, double Tol, double* JacCoeff, int32_t* NewDegree, double* MaxError) {
-    try { self_->ReduceDegree(Dimension, MaxDegree, Tol, *JacCoeff, *NewDegree, *MaxError); return nullptr; }
+extern "C" const char* PLib_JacobiPolynomial_reduce_degree(const PLib_JacobiPolynomial* self_, int32_t theDimension, int32_t theMaxDegree, double theTol, double* theJacCoeff, int32_t* theNewDegree, double* theMaxError) {
+    try { self_->ReduceDegree(theDimension, theMaxDegree, theTol, *theJacCoeff, *theNewDegree, *theMaxError); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<double> PLib_JacobiPolynomial_average_error(const PLib_JacobiPolynomial* self_, int32_t Dimension, double* JacCoeff, int32_t NewDegree) {
-    try { return {self_->AverageError(Dimension, *JacCoeff, NewDegree), nullptr}; }
+extern "C" OcctResult<double> PLib_JacobiPolynomial_average_error(const PLib_JacobiPolynomial* self_, int32_t theDimension, double* theJacCoeff, int32_t theNewDegree) {
+    try { return {self_->AverageError(theDimension, *theJacCoeff, theNewDegree), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* PLib_JacobiPolynomial_to_coefficients(const PLib_JacobiPolynomial* self_, int32_t Dimension, int32_t Degree, TColStd_Array1OfReal const* JacCoeff, TColStd_Array1OfReal* Coefficients) {
-    try { self_->ToCoefficients(Dimension, Degree, *JacCoeff, *Coefficients); return nullptr; }
+extern "C" const char* PLib_JacobiPolynomial_to_coefficients(const PLib_JacobiPolynomial* self_, int32_t theDimension, int32_t theDegree, NCollection_Array1_double const* theJacCoeff, NCollection_Array1_double* theCoefficients) {
+    try { self_->ToCoefficients(theDimension, theDegree, *theJacCoeff, *theCoefficients); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* PLib_JacobiPolynomial_d0(PLib_JacobiPolynomial* self_, double U, TColStd_Array1OfReal* BasisValue) {
-    try { self_->D0(U, *BasisValue); return nullptr; }
+extern "C" const char* PLib_JacobiPolynomial_d0(const PLib_JacobiPolynomial* self_, double theU, NCollection_Array1_double* theBasisValue) {
+    try { self_->D0(theU, *theBasisValue); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* PLib_JacobiPolynomial_d1(PLib_JacobiPolynomial* self_, double U, TColStd_Array1OfReal* BasisValue, TColStd_Array1OfReal* BasisD1) {
-    try { self_->D1(U, *BasisValue, *BasisD1); return nullptr; }
+extern "C" const char* PLib_JacobiPolynomial_d1(const PLib_JacobiPolynomial* self_, double theU, NCollection_Array1_double* theBasisValue, NCollection_Array1_double* theBasisD1) {
+    try { self_->D1(theU, *theBasisValue, *theBasisD1); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* PLib_JacobiPolynomial_d2(PLib_JacobiPolynomial* self_, double U, TColStd_Array1OfReal* BasisValue, TColStd_Array1OfReal* BasisD1, TColStd_Array1OfReal* BasisD2) {
-    try { self_->D2(U, *BasisValue, *BasisD1, *BasisD2); return nullptr; }
+extern "C" const char* PLib_JacobiPolynomial_d2(const PLib_JacobiPolynomial* self_, double theU, NCollection_Array1_double* theBasisValue, NCollection_Array1_double* theBasisD1, NCollection_Array1_double* theBasisD2) {
+    try { self_->D2(theU, *theBasisValue, *theBasisD1, *theBasisD2); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* PLib_JacobiPolynomial_d3(PLib_JacobiPolynomial* self_, double U, TColStd_Array1OfReal* BasisValue, TColStd_Array1OfReal* BasisD1, TColStd_Array1OfReal* BasisD2, TColStd_Array1OfReal* BasisD3) {
-    try { self_->D3(U, *BasisValue, *BasisD1, *BasisD2, *BasisD3); return nullptr; }
+extern "C" const char* PLib_JacobiPolynomial_d3(const PLib_JacobiPolynomial* self_, double theU, NCollection_Array1_double* theBasisValue, NCollection_Array1_double* theBasisD1, NCollection_Array1_double* theBasisD2, NCollection_Array1_double* theBasisD3) {
+    try { self_->D3(theU, *theBasisValue, *theBasisD1, *theBasisD2, *theBasisD3); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
 extern "C" OcctResult<int32_t> PLib_JacobiPolynomial_work_degree(const PLib_JacobiPolynomial* self_) {
@@ -3863,70 +2660,6 @@ extern "C" OcctResult<int32_t> PLib_JacobiPolynomial_work_degree(const PLib_Jaco
 extern "C" OcctResult<int32_t> PLib_JacobiPolynomial_niv_constr(const PLib_JacobiPolynomial* self_) {
     try { return {self_->NivConstr(), nullptr}; }
     OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Handle(Standard_Type) const*> PLib_JacobiPolynomial_dynamic_type(const PLib_JacobiPolynomial* self_) {
-    try { return {&(self_->DynamicType()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<char const*> PLib_JacobiPolynomial_get_type_name() {
-    try { return {PLib_JacobiPolynomial::get_type_name(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Handle(Standard_Type) const*> PLib_JacobiPolynomial_get_type_descriptor() {
-    try { return {&(PLib_JacobiPolynomial::get_type_descriptor()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<const PLib_Base*> PLib_JacobiPolynomial_as_PLib_Base(const PLib_JacobiPolynomial* self_) { return {static_cast<const PLib_Base*>(self_), nullptr}; }
-extern "C" OcctResult<PLib_Base*> PLib_JacobiPolynomial_as_PLib_Base_mut(PLib_JacobiPolynomial* self_) { return {static_cast<PLib_Base*>(self_), nullptr}; }
-extern "C" OcctResult<const Standard_Transient*> PLib_JacobiPolynomial_as_Standard_Transient(const PLib_JacobiPolynomial* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<Standard_Transient*> PLib_JacobiPolynomial_as_Standard_Transient_mut(PLib_JacobiPolynomial* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandlePLibJacobiPolynomial*> PLib_JacobiPolynomial_to_handle(PLib_JacobiPolynomial* obj) {
-    try { return {new HandlePLibJacobiPolynomial(obj), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<const PLib_JacobiPolynomial*> HandlePLibJacobiPolynomial_get(const HandlePLibJacobiPolynomial* handle) {
-    try { return {(*handle).get(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<PLib_JacobiPolynomial*> HandlePLibJacobiPolynomial_get_mut(HandlePLibJacobiPolynomial* handle) {
-    try { return {(*handle).get(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<HandlePLibBase*> HandlePLibJacobiPolynomial_to_HandlePLibBase(const HandlePLibJacobiPolynomial* self_) {
-    try { return {new HandlePLibBase(*self_), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<HandleStandardTransient*> HandlePLibJacobiPolynomial_to_HandleStandardTransient(const HandlePLibJacobiPolynomial* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<bool> PLib_JacobiPolynomial_inherited_IsInstance(const PLib_JacobiPolynomial* self, Handle(Standard_Type) const& theType) {
-    try { return {self->IsInstance(theType), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<bool> PLib_JacobiPolynomial_inherited_IsKind(const PLib_JacobiPolynomial* self, Handle(Standard_Type) const& theType) {
-    try { return {self->IsKind(theType), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Standard_Transient*> PLib_JacobiPolynomial_inherited_This(const PLib_JacobiPolynomial* self) {
-    try { return {self->This(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<int32_t> PLib_JacobiPolynomial_inherited_GetRefCount(const PLib_JacobiPolynomial* self) {
-    try { return {self->GetRefCount(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* PLib_JacobiPolynomial_inherited_IncrementRefCounter(PLib_JacobiPolynomial* self) {
-    try { self->IncrementRefCounter(); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<int32_t> PLib_JacobiPolynomial_inherited_DecrementRefCounter(PLib_JacobiPolynomial* self) {
-    try { return {self->DecrementRefCounter(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* PLib_JacobiPolynomial_inherited_Delete(const PLib_JacobiPolynomial* self) {
-    try { self->Delete(); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
 }
 extern "C" void PLib_JacobiPolynomial_destructor(PLib_JacobiPolynomial* self_) { delete self_; }
 
@@ -3946,11 +2679,15 @@ extern "C" OcctResult<Poly_ArrayOfNodes*> Poly_ArrayOfNodes_ctor_pnt_int(gp_Pnt 
     try { return {new Poly_ArrayOfNodes(*theBegin, theLength), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Poly_ArrayOfNodes*> Poly_ArrayOfNodes_ctor_vec3f_int(gp_Vec3f const* theBegin, int32_t theLength) {
+extern "C" OcctResult<Poly_ArrayOfNodes*> Poly_ArrayOfNodes_ctor_vec3f_int(BVH_Vec3f const* theBegin, int32_t theLength) {
     try { return {new Poly_ArrayOfNodes(*theBegin, theLength), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<gp_Pnt*> Poly_ArrayOfNodes_value(const Poly_ArrayOfNodes* self_, int32_t theIndex) {
+extern "C" OcctResult<gp_Pnt*> Poly_ArrayOfNodes_value_int(const Poly_ArrayOfNodes* self_, int32_t theIndex) {
+    try { return {new gp_Pnt(self_->Value(theIndex)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<gp_Pnt*> Poly_ArrayOfNodes_value_size(const Poly_ArrayOfNodes* self_, size_t theIndex) {
     try { return {new gp_Pnt(self_->Value(theIndex)), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -3970,7 +2707,11 @@ extern "C" OcctResult<Poly_ArrayOfNodes*> Poly_ArrayOfNodes_move_(Poly_ArrayOfNo
     try { return {&(self_->Move(*theOther)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* Poly_ArrayOfNodes_set_value(Poly_ArrayOfNodes* self_, int32_t theIndex, gp_Pnt const* theValue) {
+extern "C" const char* Poly_ArrayOfNodes_set_value_int_pnt(Poly_ArrayOfNodes* self_, int32_t theIndex, gp_Pnt const* theValue) {
+    try { self_->SetValue(theIndex, *theValue); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* Poly_ArrayOfNodes_set_value_size_pnt(Poly_ArrayOfNodes* self_, size_t theIndex, gp_Pnt const* theValue) {
     try { self_->SetValue(theIndex, *theValue); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -3996,11 +2737,15 @@ extern "C" OcctResult<Poly_ArrayOfUVNodes*> Poly_ArrayOfUVNodes_ctor_pnt2d_int(g
     try { return {new Poly_ArrayOfUVNodes(*theBegin, theLength), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Poly_ArrayOfUVNodes*> Poly_ArrayOfUVNodes_ctor_vec2f_int(gp_Vec2f const* theBegin, int32_t theLength) {
+extern "C" OcctResult<Poly_ArrayOfUVNodes*> Poly_ArrayOfUVNodes_ctor_vec2f_int(BVH_Vec2f const* theBegin, int32_t theLength) {
     try { return {new Poly_ArrayOfUVNodes(*theBegin, theLength), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<gp_Pnt2d*> Poly_ArrayOfUVNodes_value(const Poly_ArrayOfUVNodes* self_, int32_t theIndex) {
+extern "C" OcctResult<gp_Pnt2d*> Poly_ArrayOfUVNodes_value_int(const Poly_ArrayOfUVNodes* self_, int32_t theIndex) {
+    try { return {new gp_Pnt2d(self_->Value(theIndex)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<gp_Pnt2d*> Poly_ArrayOfUVNodes_value_size(const Poly_ArrayOfUVNodes* self_, size_t theIndex) {
     try { return {new gp_Pnt2d(self_->Value(theIndex)), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -4020,7 +2765,11 @@ extern "C" OcctResult<Poly_ArrayOfUVNodes*> Poly_ArrayOfUVNodes_move_(Poly_Array
     try { return {&(self_->Move(*theOther)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* Poly_ArrayOfUVNodes_set_value(Poly_ArrayOfUVNodes* self_, int32_t theIndex, gp_Pnt2d const* theValue) {
+extern "C" const char* Poly_ArrayOfUVNodes_set_value_int_pnt2d(Poly_ArrayOfUVNodes* self_, int32_t theIndex, gp_Pnt2d const* theValue) {
+    try { self_->SetValue(theIndex, *theValue); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* Poly_ArrayOfUVNodes_set_value_size_pnt2d(Poly_ArrayOfUVNodes* self_, size_t theIndex, gp_Pnt2d const* theValue) {
     try { self_->SetValue(theIndex, *theValue); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -4046,10 +2795,6 @@ extern "C" OcctResult<Poly_CoherentLink*> Poly_CoherentLink_ctor_coherenttriangl
     try { return {new Poly_CoherentLink(*theTri, iSide), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Standard_Address*> Poly_CoherentLink_get_attribute(const Poly_CoherentLink* self_) {
-    try { return {new Standard_Address(self_->GetAttribute()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
 extern "C" OcctResult<int32_t> Poly_CoherentLink_node(const Poly_CoherentLink* self_, int32_t ind) {
     try { return {self_->Node(ind), nullptr}; }
     OCCT_CATCH_RETURN
@@ -4058,7 +2803,11 @@ extern "C" OcctResult<int32_t> Poly_CoherentLink_opposite_node(const Poly_Cohere
     try { return {self_->OppositeNode(ind), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* Poly_CoherentLink_set_attribute(Poly_CoherentLink* self_, Standard_Address theAtt) {
+extern "C" OcctResult<void*> Poly_CoherentLink_get_attribute(const Poly_CoherentLink* self_) {
+    try { return {self_->GetAttribute(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" const char* Poly_CoherentLink_set_attribute(Poly_CoherentLink* self_, void* theAtt) {
     try { self_->SetAttribute(theAtt); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -4124,15 +2873,15 @@ extern "C" OcctResult<bool> Poly_CoherentNode_is_free_node(const Poly_CoherentNo
     try { return {self_->IsFreeNode(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* Poly_CoherentNode_clear(Poly_CoherentNode* self_, Handle(NCollection_BaseAllocator) const* arg0) {
+extern "C" const char* Poly_CoherentNode_clear(Poly_CoherentNode* self_, TDF_HAllocator const* arg0) {
     try { self_->Clear(*arg0); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* Poly_CoherentNode_add_triangle(Poly_CoherentNode* self_, Poly_CoherentTriangle const* theTri, Handle(NCollection_BaseAllocator) const* theA) {
+extern "C" const char* Poly_CoherentNode_add_triangle(Poly_CoherentNode* self_, Poly_CoherentTriangle const* theTri, TDF_HAllocator const* theA) {
     try { self_->AddTriangle(*theTri, *theA); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<bool> Poly_CoherentNode_remove_triangle(Poly_CoherentNode* self_, Poly_CoherentTriangle const* theTri, Handle(NCollection_BaseAllocator) const* theA) {
+extern "C" OcctResult<bool> Poly_CoherentNode_remove_triangle(Poly_CoherentNode* self_, Poly_CoherentTriangle const* theTri, TDF_HAllocator const* theA) {
     try { return {self_->RemoveTriangle(*theTri, *theA), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -4280,38 +3029,6 @@ extern "C" void Poly_CoherentNode_destructor(Poly_CoherentNode* self_) { delete 
 // Poly_CoherentTriPtr wrappers
 // ========================
 
-extern "C" OcctResult<Poly_CoherentTriangle const*> Poly_CoherentTriPtr_get_triangle(const Poly_CoherentTriPtr* self_) {
-    try { return {&(self_->GetTriangle()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* Poly_CoherentTriPtr_set_triangle(Poly_CoherentTriPtr* self_, const Poly_CoherentTriangle* pTri) {
-    try { self_->SetTriangle(pTri); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<Poly_CoherentTriPtr*> Poly_CoherentTriPtr_next(Poly_CoherentTriPtr* self_) {
-    try { return {&(self_->Next()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Poly_CoherentTriPtr*> Poly_CoherentTriPtr_previous(Poly_CoherentTriPtr* self_) {
-    try { return {&(self_->Previous()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* Poly_CoherentTriPtr_append(Poly_CoherentTriPtr* self_, const Poly_CoherentTriangle* pTri, Handle(NCollection_BaseAllocator) const* theA) {
-    try { self_->Append(pTri, *theA); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* Poly_CoherentTriPtr_prepend(Poly_CoherentTriPtr* self_, const Poly_CoherentTriangle* pTri, Handle(NCollection_BaseAllocator) const* theA) {
-    try { self_->Prepend(pTri, *theA); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* Poly_CoherentTriPtr_remove(Poly_CoherentTriPtr* thePtr, Handle(NCollection_BaseAllocator) const* theA) {
-    try { Poly_CoherentTriPtr::Remove(thePtr, *theA); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* Poly_CoherentTriPtr_remove_list(Poly_CoherentTriPtr* thePtr, Handle(NCollection_BaseAllocator) const* arg1) {
-    try { Poly_CoherentTriPtr::RemoveList(thePtr, *arg1); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
 
 // ========================
 // Poly_CoherentTriPtr::Iterator wrappers
@@ -4413,11 +3130,11 @@ extern "C" void Poly_CoherentTriangle_destructor(Poly_CoherentTriangle* self_) {
 // Poly_CoherentTriangulation wrappers
 // ========================
 
-extern "C" OcctResult<Poly_CoherentTriangulation*> Poly_CoherentTriangulation_ctor_handlencollectionbaseallocator(Handle(NCollection_BaseAllocator) const* theAlloc) {
+extern "C" OcctResult<Poly_CoherentTriangulation*> Poly_CoherentTriangulation_ctor_hallocator(TDF_HAllocator const* theAlloc) {
     try { return {new Poly_CoherentTriangulation(*theAlloc), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Poly_CoherentTriangulation*> Poly_CoherentTriangulation_ctor_handlepolytriangulation_handlencollectionbaseallocator(Handle(Poly_Triangulation) const* theTriangulation, Handle(NCollection_BaseAllocator) const* theAlloc) {
+extern "C" OcctResult<Poly_CoherentTriangulation*> Poly_CoherentTriangulation_ctor_handlepolytriangulation_hallocator(Handle(Poly_Triangulation) const* theTriangulation, TDF_HAllocator const* theAlloc) {
     try { return {new Poly_CoherentTriangulation(*theTriangulation, *theAlloc), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -4425,11 +3142,11 @@ extern "C" OcctResult<Handle(Poly_Triangulation)*> Poly_CoherentTriangulation_ge
     try { return {new Handle(Poly_Triangulation)(self_->GetTriangulation()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(Poly_CoherentTriangulation)*> Poly_CoherentTriangulation_clone(const Poly_CoherentTriangulation* self_, Handle(NCollection_BaseAllocator) const* theAlloc) {
+extern "C" OcctResult<Handle(Poly_CoherentTriangulation)*> Poly_CoherentTriangulation_clone(const Poly_CoherentTriangulation* self_, TDF_HAllocator const* theAlloc) {
     try { return {new Handle(Poly_CoherentTriangulation)(self_->Clone(*theAlloc)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<bool> Poly_CoherentTriangulation_get_free_nodes(const Poly_CoherentTriangulation* self_, TColStd_ListOfInteger* lstNodes) {
+extern "C" OcctResult<bool> Poly_CoherentTriangulation_get_free_nodes(const Poly_CoherentTriangulation* self_, NCollection_List_int* lstNodes) {
     try { return {self_->GetFreeNodes(*lstNodes), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -4509,7 +3226,7 @@ extern "C" const char* Poly_CoherentTriangulation_clear_links(Poly_CoherentTrian
     try { self_->ClearLinks(); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<Handle(NCollection_BaseAllocator) const*> Poly_CoherentTriangulation_allocator(const Poly_CoherentTriangulation* self_) {
+extern "C" OcctResult<TDF_HAllocator const*> Poly_CoherentTriangulation_allocator(const Poly_CoherentTriangulation* self_) {
     try { return {&(self_->Allocator()), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -4531,20 +3248,20 @@ extern "C" OcctResult<Handle(Standard_Type) const*> Poly_CoherentTriangulation_g
 }
 extern "C" OcctResult<const Standard_Transient*> Poly_CoherentTriangulation_as_Standard_Transient(const Poly_CoherentTriangulation* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> Poly_CoherentTriangulation_as_Standard_Transient_mut(Poly_CoherentTriangulation* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandlePolyCoherentTriangulation*> Poly_CoherentTriangulation_to_handle(Poly_CoherentTriangulation* obj) {
-    try { return {new HandlePolyCoherentTriangulation(obj), nullptr}; }
+extern "C" OcctResult<Handle_Poly_CoherentTriangulation*> Poly_CoherentTriangulation_to_handle(Poly_CoherentTriangulation* obj) {
+    try { return {new Handle_Poly_CoherentTriangulation(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const Poly_CoherentTriangulation*> HandlePolyCoherentTriangulation_get(const HandlePolyCoherentTriangulation* handle) {
+extern "C" OcctResult<const Poly_CoherentTriangulation*> Handle_Poly_CoherentTriangulation_get(const Handle_Poly_CoherentTriangulation* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Poly_CoherentTriangulation*> HandlePolyCoherentTriangulation_get_mut(HandlePolyCoherentTriangulation* handle) {
+extern "C" OcctResult<Poly_CoherentTriangulation*> Handle_Poly_CoherentTriangulation_get_mut(Handle_Poly_CoherentTriangulation* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandlePolyCoherentTriangulation_to_HandleStandardTransient(const HandlePolyCoherentTriangulation* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_Poly_CoherentTriangulation_to_Handle_Standard_Transient(const Handle_Poly_CoherentTriangulation* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> Poly_CoherentTriangulation_inherited_IsInstance(const Poly_CoherentTriangulation* self, Handle(Standard_Type) const& theType) {
@@ -4674,98 +3391,6 @@ extern "C" OcctResult<int32_t> Poly_Connect_value(const Poly_Connect* self_) {
 extern "C" void Poly_Connect_destructor(Poly_Connect* self_) { delete self_; }
 
 // ========================
-// Poly_HArray1OfTriangle wrappers
-// ========================
-
-extern "C" OcctResult<Poly_HArray1OfTriangle*> Poly_HArray1OfTriangle_ctor() {
-    try { return {new Poly_HArray1OfTriangle(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Poly_HArray1OfTriangle*> Poly_HArray1OfTriangle_ctor_int2(int32_t theLower, int32_t theUpper) {
-    try { return {new Poly_HArray1OfTriangle(theLower, theUpper), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Poly_HArray1OfTriangle*> Poly_HArray1OfTriangle_ctor_int2_triangle(int32_t theLower, int32_t theUpper, Poly_Triangle const* theValue) {
-    try { return {new Poly_HArray1OfTriangle(theLower, theUpper, *theValue), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Poly_HArray1OfTriangle*> Poly_HArray1OfTriangle_ctor_triangle_int2_bool(Poly_Triangle const* theBegin, int32_t theLower, int32_t theUpper, bool arg3) {
-    try { return {new Poly_HArray1OfTriangle(*theBegin, theLower, theUpper, arg3), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Poly_HArray1OfTriangle*> Poly_HArray1OfTriangle_ctor_array1oftriangle(Poly_Array1OfTriangle const* theOther) {
-    try { return {new Poly_HArray1OfTriangle(*theOther), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Poly_Array1OfTriangle const*> Poly_HArray1OfTriangle_array1(const Poly_HArray1OfTriangle* self_) {
-    try { return {&(self_->Array1()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Poly_Array1OfTriangle*> Poly_HArray1OfTriangle_change_array1(Poly_HArray1OfTriangle* self_) {
-    try { return {&(self_->ChangeArray1()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Handle(Standard_Type) const*> Poly_HArray1OfTriangle_dynamic_type(const Poly_HArray1OfTriangle* self_) {
-    try { return {&(self_->DynamicType()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<char const*> Poly_HArray1OfTriangle_get_type_name() {
-    try { return {Poly_HArray1OfTriangle::get_type_name(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Handle(Standard_Type) const*> Poly_HArray1OfTriangle_get_type_descriptor() {
-    try { return {&(Poly_HArray1OfTriangle::get_type_descriptor()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<const Standard_Transient*> Poly_HArray1OfTriangle_as_Standard_Transient(const Poly_HArray1OfTriangle* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<Standard_Transient*> Poly_HArray1OfTriangle_as_Standard_Transient_mut(Poly_HArray1OfTriangle* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandlePolyHArray1OfTriangle*> Poly_HArray1OfTriangle_to_handle(Poly_HArray1OfTriangle* obj) {
-    try { return {new HandlePolyHArray1OfTriangle(obj), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<const Poly_HArray1OfTriangle*> HandlePolyHArray1OfTriangle_get(const HandlePolyHArray1OfTriangle* handle) {
-    try { return {(*handle).get(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Poly_HArray1OfTriangle*> HandlePolyHArray1OfTriangle_get_mut(HandlePolyHArray1OfTriangle* handle) {
-    try { return {(*handle).get(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<HandleStandardTransient*> HandlePolyHArray1OfTriangle_to_HandleStandardTransient(const HandlePolyHArray1OfTriangle* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<bool> Poly_HArray1OfTriangle_inherited_IsInstance(const Poly_HArray1OfTriangle* self, Handle(Standard_Type) const& theType) {
-    try { return {self->IsInstance(theType), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<bool> Poly_HArray1OfTriangle_inherited_IsKind(const Poly_HArray1OfTriangle* self, Handle(Standard_Type) const& theType) {
-    try { return {self->IsKind(theType), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Standard_Transient*> Poly_HArray1OfTriangle_inherited_This(const Poly_HArray1OfTriangle* self) {
-    try { return {self->This(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<int32_t> Poly_HArray1OfTriangle_inherited_GetRefCount(const Poly_HArray1OfTriangle* self) {
-    try { return {self->GetRefCount(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* Poly_HArray1OfTriangle_inherited_IncrementRefCounter(Poly_HArray1OfTriangle* self) {
-    try { self->IncrementRefCounter(); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<int32_t> Poly_HArray1OfTriangle_inherited_DecrementRefCounter(Poly_HArray1OfTriangle* self) {
-    try { return {self->DecrementRefCounter(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* Poly_HArray1OfTriangle_inherited_Delete(const Poly_HArray1OfTriangle* self) {
-    try { self->Delete(); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" void Poly_HArray1OfTriangle_destructor(Poly_HArray1OfTriangle* self_) { delete self_; }
-
-// ========================
 // Poly_MakeLoops wrappers
 // ========================
 
@@ -4777,7 +3402,7 @@ extern "C" OcctResult<Poly_MakeLoops::Link*> Poly_MakeLoops_find_link(const Poly
     try { return {new Poly_MakeLoops::Link(self_->FindLink(*theLink)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* Poly_MakeLoops_reset(Poly_MakeLoops* self_, const Poly_MakeLoops::Helper* theHelper, Handle(NCollection_BaseAllocator) const* theAlloc) {
+extern "C" const char* Poly_MakeLoops_reset(Poly_MakeLoops* self_, const Poly_MakeLoops::Helper* theHelper, TDF_HAllocator const* theAlloc) {
     try { self_->Reset(theHelper, *theAlloc); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -4867,13 +3492,13 @@ extern "C" void Poly_MakeLoops_HeapOfInteger_destructor(Poly_MakeLoops::HeapOfIn
 // Poly_MakeLoops3D wrappers
 // ========================
 
-extern "C" OcctResult<Poly_MakeLoops3D*> Poly_MakeLoops3D_ctor_helperptr_handlencollectionbaseallocator(const Poly_MakeLoops3D::Helper* theHelper, Handle(NCollection_BaseAllocator) const* theAlloc) {
+extern "C" OcctResult<Poly_MakeLoops3D*> Poly_MakeLoops3D_ctor_helperptr_hallocator(const Poly_MakeLoops3D::Helper* theHelper, TDF_HAllocator const* theAlloc) {
     try { return {new Poly_MakeLoops3D(theHelper, *theAlloc), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<const Poly_MakeLoops*> Poly_MakeLoops3D_as_Poly_MakeLoops(const Poly_MakeLoops3D* self_) { return {static_cast<const Poly_MakeLoops*>(self_), nullptr}; }
 extern "C" OcctResult<Poly_MakeLoops*> Poly_MakeLoops3D_as_Poly_MakeLoops_mut(Poly_MakeLoops3D* self_) { return {static_cast<Poly_MakeLoops*>(self_), nullptr}; }
-extern "C" const char* Poly_MakeLoops3D_inherited_Reset(Poly_MakeLoops3D* self, const Poly_MakeLoops::Helper* theHelper, Handle(NCollection_BaseAllocator) const& theAlloc) {
+extern "C" const char* Poly_MakeLoops3D_inherited_Reset(Poly_MakeLoops3D* self, const Poly_MakeLoops::Helper* theHelper, TDF_HAllocator const& theAlloc) {
     try { self->Reset(theHelper, theAlloc); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -4947,13 +3572,13 @@ extern "C" void Poly_MakeLoops3D_Helper_destructor(Poly_MakeLoops3D::Helper* sel
 // Poly_MakeLoops2D wrappers
 // ========================
 
-extern "C" OcctResult<Poly_MakeLoops2D*> Poly_MakeLoops2D_ctor_bool_helperptr_handlencollectionbaseallocator(bool theLeftWay, const Poly_MakeLoops2D::Helper* theHelper, Handle(NCollection_BaseAllocator) const* theAlloc) {
+extern "C" OcctResult<Poly_MakeLoops2D*> Poly_MakeLoops2D_ctor_bool_helperptr_hallocator(bool theLeftWay, const Poly_MakeLoops2D::Helper* theHelper, TDF_HAllocator const* theAlloc) {
     try { return {new Poly_MakeLoops2D(theLeftWay, theHelper, *theAlloc), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<const Poly_MakeLoops*> Poly_MakeLoops2D_as_Poly_MakeLoops(const Poly_MakeLoops2D* self_) { return {static_cast<const Poly_MakeLoops*>(self_), nullptr}; }
 extern "C" OcctResult<Poly_MakeLoops*> Poly_MakeLoops2D_as_Poly_MakeLoops_mut(Poly_MakeLoops2D* self_) { return {static_cast<Poly_MakeLoops*>(self_), nullptr}; }
-extern "C" const char* Poly_MakeLoops2D_inherited_Reset(Poly_MakeLoops2D* self, const Poly_MakeLoops::Helper* theHelper, Handle(NCollection_BaseAllocator) const& theAlloc) {
+extern "C" const char* Poly_MakeLoops2D_inherited_Reset(Poly_MakeLoops2D* self, const Poly_MakeLoops::Helper* theHelper, TDF_HAllocator const& theAlloc) {
     try { self->Reset(theHelper, theAlloc); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -5027,8 +3652,8 @@ extern "C" OcctResult<Poly_MergeNodesTool*> Poly_MergeNodesTool_ctor_real2_int(d
     try { return {new Poly_MergeNodesTool(theSmoothAngle, theMergeTolerance, theNbFacets), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<gp_Vec3f*> Poly_MergeNodesTool_compute_tri_normal(const Poly_MergeNodesTool* self_) {
-    try { return {new gp_Vec3f(self_->computeTriNormal()), nullptr}; }
+extern "C" OcctResult<BVH_Vec3f*> Poly_MergeNodesTool_compute_tri_normal(const Poly_MergeNodesTool* self_) {
+    try { return {new BVH_Vec3f(self_->computeTriNormal()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(Poly_Triangulation)*> Poly_MergeNodesTool_result(Poly_MergeNodesTool* self_) {
@@ -5153,20 +3778,20 @@ extern "C" OcctResult<Handle(Poly_Triangulation)*> Poly_MergeNodesTool_merge_nod
 }
 extern "C" OcctResult<const Standard_Transient*> Poly_MergeNodesTool_as_Standard_Transient(const Poly_MergeNodesTool* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> Poly_MergeNodesTool_as_Standard_Transient_mut(Poly_MergeNodesTool* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandlePolyMergeNodesTool*> Poly_MergeNodesTool_to_handle(Poly_MergeNodesTool* obj) {
-    try { return {new HandlePolyMergeNodesTool(obj), nullptr}; }
+extern "C" OcctResult<Handle_Poly_MergeNodesTool*> Poly_MergeNodesTool_to_handle(Poly_MergeNodesTool* obj) {
+    try { return {new Handle_Poly_MergeNodesTool(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const Poly_MergeNodesTool*> HandlePolyMergeNodesTool_get(const HandlePolyMergeNodesTool* handle) {
+extern "C" OcctResult<const Poly_MergeNodesTool*> Handle_Poly_MergeNodesTool_get(const Handle_Poly_MergeNodesTool* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Poly_MergeNodesTool*> HandlePolyMergeNodesTool_get_mut(HandlePolyMergeNodesTool* handle) {
+extern "C" OcctResult<Poly_MergeNodesTool*> Handle_Poly_MergeNodesTool_get_mut(Handle_Poly_MergeNodesTool* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandlePolyMergeNodesTool_to_HandleStandardTransient(const HandlePolyMergeNodesTool* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_Poly_MergeNodesTool_to_Handle_Standard_Transient(const Handle_Poly_MergeNodesTool* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> Poly_MergeNodesTool_inherited_IsInstance(const Poly_MergeNodesTool* self, Handle(Standard_Type) const& theType) {
@@ -5207,8 +3832,12 @@ extern "C" OcctResult<Poly_Polygon2D*> Poly_Polygon2D_ctor_int(int32_t theNbNode
     try { return {new Poly_Polygon2D(theNbNodes), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Poly_Polygon2D*> Poly_Polygon2D_ctor_array1ofpnt2d(TColgp_Array1OfPnt2d const* Nodes) {
+extern "C" OcctResult<Poly_Polygon2D*> Poly_Polygon2D_ctor_arr1_pnt2d(NCollection_Array1_gp_Pnt2d const* Nodes) {
     try { return {new Poly_Polygon2D(*Nodes), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<Handle(Poly_Polygon2D)*> Poly_Polygon2D_copy(const Poly_Polygon2D* self_) {
+    try { return {new Handle(Poly_Polygon2D)(self_->Copy()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<double> Poly_Polygon2D_deflection(const Poly_Polygon2D* self_) {
@@ -5223,11 +3852,11 @@ extern "C" OcctResult<int32_t> Poly_Polygon2D_nb_nodes(const Poly_Polygon2D* sel
     try { return {self_->NbNodes(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TColgp_Array1OfPnt2d const*> Poly_Polygon2D_nodes(const Poly_Polygon2D* self_) {
+extern "C" OcctResult<NCollection_Array1_gp_Pnt2d const*> Poly_Polygon2D_nodes(const Poly_Polygon2D* self_) {
     try { return {&(self_->Nodes()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TColgp_Array1OfPnt2d*> Poly_Polygon2D_change_nodes(Poly_Polygon2D* self_) {
+extern "C" OcctResult<NCollection_Array1_gp_Pnt2d*> Poly_Polygon2D_change_nodes(Poly_Polygon2D* self_) {
     try { return {&(self_->ChangeNodes()), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -5245,20 +3874,20 @@ extern "C" OcctResult<Handle(Standard_Type) const*> Poly_Polygon2D_get_type_desc
 }
 extern "C" OcctResult<const Standard_Transient*> Poly_Polygon2D_as_Standard_Transient(const Poly_Polygon2D* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> Poly_Polygon2D_as_Standard_Transient_mut(Poly_Polygon2D* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandlePolyPolygon2D*> Poly_Polygon2D_to_handle(Poly_Polygon2D* obj) {
-    try { return {new HandlePolyPolygon2D(obj), nullptr}; }
+extern "C" OcctResult<Handle_Poly_Polygon2D*> Poly_Polygon2D_to_handle(Poly_Polygon2D* obj) {
+    try { return {new Handle_Poly_Polygon2D(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const Poly_Polygon2D*> HandlePolyPolygon2D_get(const HandlePolyPolygon2D* handle) {
+extern "C" OcctResult<const Poly_Polygon2D*> Handle_Poly_Polygon2D_get(const Handle_Poly_Polygon2D* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Poly_Polygon2D*> HandlePolyPolygon2D_get_mut(HandlePolyPolygon2D* handle) {
+extern "C" OcctResult<Poly_Polygon2D*> Handle_Poly_Polygon2D_get_mut(Handle_Poly_Polygon2D* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandlePolyPolygon2D_to_HandleStandardTransient(const HandlePolyPolygon2D* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_Poly_Polygon2D_to_Handle_Standard_Transient(const Handle_Poly_Polygon2D* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> Poly_Polygon2D_inherited_IsInstance(const Poly_Polygon2D* self, Handle(Standard_Type) const& theType) {
@@ -5299,11 +3928,11 @@ extern "C" OcctResult<Poly_Polygon3D*> Poly_Polygon3D_ctor_int_bool(int32_t theN
     try { return {new Poly_Polygon3D(theNbNodes, theHasParams), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Poly_Polygon3D*> Poly_Polygon3D_ctor_array1ofpnt(TColgp_Array1OfPnt const* Nodes) {
+extern "C" OcctResult<Poly_Polygon3D*> Poly_Polygon3D_ctor_arr1_pnt(NCollection_Array1_gp_Pnt const* Nodes) {
     try { return {new Poly_Polygon3D(*Nodes), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Poly_Polygon3D*> Poly_Polygon3D_ctor_array1ofpnt_array1ofreal(TColgp_Array1OfPnt const* Nodes, TColStd_Array1OfReal const* Parameters) {
+extern "C" OcctResult<Poly_Polygon3D*> Poly_Polygon3D_ctor_arr1_pnt_arr1_double(NCollection_Array1_gp_Pnt const* Nodes, NCollection_Array1_double const* Parameters) {
     try { return {new Poly_Polygon3D(*Nodes, *Parameters), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -5323,11 +3952,11 @@ extern "C" OcctResult<int32_t> Poly_Polygon3D_nb_nodes(const Poly_Polygon3D* sel
     try { return {self_->NbNodes(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TColgp_Array1OfPnt const*> Poly_Polygon3D_nodes(const Poly_Polygon3D* self_) {
+extern "C" OcctResult<NCollection_Array1_gp_Pnt const*> Poly_Polygon3D_nodes(const Poly_Polygon3D* self_) {
     try { return {&(self_->Nodes()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TColgp_Array1OfPnt*> Poly_Polygon3D_change_nodes(Poly_Polygon3D* self_) {
+extern "C" OcctResult<NCollection_Array1_gp_Pnt*> Poly_Polygon3D_change_nodes(Poly_Polygon3D* self_) {
     try { return {&(self_->ChangeNodes()), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -5335,11 +3964,11 @@ extern "C" OcctResult<bool> Poly_Polygon3D_has_parameters(const Poly_Polygon3D* 
     try { return {self_->HasParameters(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TColStd_Array1OfReal const*> Poly_Polygon3D_parameters(const Poly_Polygon3D* self_) {
+extern "C" OcctResult<NCollection_Array1_double const*> Poly_Polygon3D_parameters(const Poly_Polygon3D* self_) {
     try { return {&(self_->Parameters()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TColStd_Array1OfReal*> Poly_Polygon3D_change_parameters(Poly_Polygon3D* self_) {
+extern "C" OcctResult<NCollection_Array1_double*> Poly_Polygon3D_change_parameters(Poly_Polygon3D* self_) {
     try { return {&(self_->ChangeParameters()), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -5357,20 +3986,20 @@ extern "C" OcctResult<Handle(Standard_Type) const*> Poly_Polygon3D_get_type_desc
 }
 extern "C" OcctResult<const Standard_Transient*> Poly_Polygon3D_as_Standard_Transient(const Poly_Polygon3D* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> Poly_Polygon3D_as_Standard_Transient_mut(Poly_Polygon3D* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandlePolyPolygon3D*> Poly_Polygon3D_to_handle(Poly_Polygon3D* obj) {
-    try { return {new HandlePolyPolygon3D(obj), nullptr}; }
+extern "C" OcctResult<Handle_Poly_Polygon3D*> Poly_Polygon3D_to_handle(Poly_Polygon3D* obj) {
+    try { return {new Handle_Poly_Polygon3D(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const Poly_Polygon3D*> HandlePolyPolygon3D_get(const HandlePolyPolygon3D* handle) {
+extern "C" OcctResult<const Poly_Polygon3D*> Handle_Poly_Polygon3D_get(const Handle_Poly_Polygon3D* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Poly_Polygon3D*> HandlePolyPolygon3D_get_mut(HandlePolyPolygon3D* handle) {
+extern "C" OcctResult<Poly_Polygon3D*> Handle_Poly_Polygon3D_get_mut(Handle_Poly_Polygon3D* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandlePolyPolygon3D_to_HandleStandardTransient(const HandlePolyPolygon3D* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_Poly_Polygon3D_to_Handle_Standard_Transient(const Handle_Poly_Polygon3D* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> Poly_Polygon3D_inherited_IsInstance(const Poly_Polygon3D* self, Handle(Standard_Type) const& theType) {
@@ -5411,11 +4040,11 @@ extern "C" OcctResult<Poly_PolygonOnTriangulation*> Poly_PolygonOnTriangulation_
     try { return {new Poly_PolygonOnTriangulation(theNbNodes, theHasParams), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Poly_PolygonOnTriangulation*> Poly_PolygonOnTriangulation_ctor_array1ofinteger(TColStd_Array1OfInteger const* Nodes) {
+extern "C" OcctResult<Poly_PolygonOnTriangulation*> Poly_PolygonOnTriangulation_ctor_arr1_int(NCollection_Array1_int const* Nodes) {
     try { return {new Poly_PolygonOnTriangulation(*Nodes), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Poly_PolygonOnTriangulation*> Poly_PolygonOnTriangulation_ctor_array1ofinteger_array1ofreal(TColStd_Array1OfInteger const* Nodes, TColStd_Array1OfReal const* Parameters) {
+extern "C" OcctResult<Poly_PolygonOnTriangulation*> Poly_PolygonOnTriangulation_ctor_arr1_int_arr1_double(NCollection_Array1_int const* Nodes, NCollection_Array1_double const* Parameters) {
     try { return {new Poly_PolygonOnTriangulation(*Nodes, *Parameters), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -5443,6 +4072,10 @@ extern "C" OcctResult<int32_t> Poly_PolygonOnTriangulation_node(const Poly_Polyg
     try { return {self_->Node(theIndex), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" OcctResult<NCollection_Array1_int*> Poly_PolygonOnTriangulation_change_node_array(Poly_PolygonOnTriangulation* self_) {
+    try { return {&(self_->ChangeNodeArray()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" const char* Poly_PolygonOnTriangulation_set_node(Poly_PolygonOnTriangulation* self_, int32_t theIndex, int32_t theNode) {
     try { self_->SetNode(theIndex, theNode); return nullptr; }
     OCCT_CATCH_RETURN_VOID
@@ -5459,15 +4092,19 @@ extern "C" const char* Poly_PolygonOnTriangulation_set_parameter(Poly_PolygonOnT
     try { self_->SetParameter(theIndex, theValue); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* Poly_PolygonOnTriangulation_set_parameters(Poly_PolygonOnTriangulation* self_, Handle(TColStd_HArray1OfReal) const* theParameters) {
+extern "C" OcctResult<NCollection_Array1_double*> Poly_PolygonOnTriangulation_change_parameter_array(Poly_PolygonOnTriangulation* self_) {
+    try { return {&(self_->ChangeParameterArray()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" const char* Poly_PolygonOnTriangulation_set_parameters(Poly_PolygonOnTriangulation* self_, Handle(NCollection_HArray1_double) const* theParameters) {
     try { self_->SetParameters(*theParameters); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<TColStd_Array1OfInteger const*> Poly_PolygonOnTriangulation_nodes(const Poly_PolygonOnTriangulation* self_) {
+extern "C" OcctResult<NCollection_Array1_int const*> Poly_PolygonOnTriangulation_nodes(const Poly_PolygonOnTriangulation* self_) {
     try { return {&(self_->Nodes()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(TColStd_HArray1OfReal) const*> Poly_PolygonOnTriangulation_parameters(const Poly_PolygonOnTriangulation* self_) {
+extern "C" OcctResult<Handle(NCollection_HArray1_double) const*> Poly_PolygonOnTriangulation_parameters(const Poly_PolygonOnTriangulation* self_) {
     try { return {&(self_->Parameters()), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -5481,20 +4118,20 @@ extern "C" OcctResult<Handle(Standard_Type) const*> Poly_PolygonOnTriangulation_
 }
 extern "C" OcctResult<const Standard_Transient*> Poly_PolygonOnTriangulation_as_Standard_Transient(const Poly_PolygonOnTriangulation* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> Poly_PolygonOnTriangulation_as_Standard_Transient_mut(Poly_PolygonOnTriangulation* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandlePolyPolygonOnTriangulation*> Poly_PolygonOnTriangulation_to_handle(Poly_PolygonOnTriangulation* obj) {
-    try { return {new HandlePolyPolygonOnTriangulation(obj), nullptr}; }
+extern "C" OcctResult<Handle_Poly_PolygonOnTriangulation*> Poly_PolygonOnTriangulation_to_handle(Poly_PolygonOnTriangulation* obj) {
+    try { return {new Handle_Poly_PolygonOnTriangulation(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const Poly_PolygonOnTriangulation*> HandlePolyPolygonOnTriangulation_get(const HandlePolyPolygonOnTriangulation* handle) {
+extern "C" OcctResult<const Poly_PolygonOnTriangulation*> Handle_Poly_PolygonOnTriangulation_get(const Handle_Poly_PolygonOnTriangulation* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Poly_PolygonOnTriangulation*> HandlePolyPolygonOnTriangulation_get_mut(HandlePolyPolygonOnTriangulation* handle) {
+extern "C" OcctResult<Poly_PolygonOnTriangulation*> Handle_Poly_PolygonOnTriangulation_get_mut(Handle_Poly_PolygonOnTriangulation* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandlePolyPolygonOnTriangulation_to_HandleStandardTransient(const HandlePolyPolygonOnTriangulation* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_Poly_PolygonOnTriangulation_to_Handle_Standard_Transient(const Handle_Poly_PolygonOnTriangulation* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> Poly_PolygonOnTriangulation_inherited_IsInstance(const Poly_PolygonOnTriangulation* self, Handle(Standard_Type) const& theType) {
@@ -5573,11 +4210,11 @@ extern "C" OcctResult<Poly_Triangulation*> Poly_Triangulation_ctor_int2_bool2(in
     try { return {new Poly_Triangulation(theNbNodes, theNbTriangles, theHasUVNodes, theHasNormals), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Poly_Triangulation*> Poly_Triangulation_ctor_array1ofpnt_array1oftriangle(TColgp_Array1OfPnt const* Nodes, Poly_Array1OfTriangle const* Triangles) {
+extern "C" OcctResult<Poly_Triangulation*> Poly_Triangulation_ctor_arr1_pnt_arr1_triangle(NCollection_Array1_gp_Pnt const* Nodes, NCollection_Array1_Poly_Triangle const* Triangles) {
     try { return {new Poly_Triangulation(*Nodes, *Triangles), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Poly_Triangulation*> Poly_Triangulation_ctor_array1ofpnt_array1ofpnt2d_array1oftriangle(TColgp_Array1OfPnt const* Nodes, TColgp_Array1OfPnt2d const* UVNodes, Poly_Array1OfTriangle const* Triangles) {
+extern "C" OcctResult<Poly_Triangulation*> Poly_Triangulation_ctor_arr1_pnt_arr1_pnt2d_arr1_triangle(NCollection_Array1_gp_Pnt const* Nodes, NCollection_Array1_gp_Pnt2d const* UVNodes, NCollection_Array1_Poly_Triangle const* Triangles) {
     try { return {new Poly_Triangulation(*Nodes, *UVNodes, *Triangles), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -5601,20 +4238,20 @@ extern "C" OcctResult<gp_Dir*> Poly_Triangulation_normal_int(const Poly_Triangul
     try { return {new gp_Dir(self_->Normal(theIndex)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(TColgp_HArray1OfPnt)*> Poly_Triangulation_map_node_array(const Poly_Triangulation* self_) {
-    try { return {new Handle(TColgp_HArray1OfPnt)(self_->MapNodeArray()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HArray1_gp_Pnt)*> Poly_Triangulation_map_node_array(const Poly_Triangulation* self_) {
+    try { return {new Handle(NCollection_HArray1_gp_Pnt)(self_->MapNodeArray()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(Poly_HArray1OfTriangle)*> Poly_Triangulation_map_triangle_array(const Poly_Triangulation* self_) {
-    try { return {new Handle(Poly_HArray1OfTriangle)(self_->MapTriangleArray()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HArray1_Poly_Triangle)*> Poly_Triangulation_map_triangle_array(const Poly_Triangulation* self_) {
+    try { return {new Handle(NCollection_HArray1_Poly_Triangle)(self_->MapTriangleArray()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(TColgp_HArray1OfPnt2d)*> Poly_Triangulation_map_uv_node_array(const Poly_Triangulation* self_) {
-    try { return {new Handle(TColgp_HArray1OfPnt2d)(self_->MapUVNodeArray()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HArray1_gp_Pnt2d)*> Poly_Triangulation_map_uv_node_array(const Poly_Triangulation* self_) {
+    try { return {new Handle(NCollection_HArray1_gp_Pnt2d)(self_->MapUVNodeArray()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(TShort_HArray1OfShortReal)*> Poly_Triangulation_map_normal_array(const Poly_Triangulation* self_) {
-    try { return {new Handle(TShort_HArray1OfShortReal)(self_->MapNormalArray()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HArray1_float)*> Poly_Triangulation_map_normal_array(const Poly_Triangulation* self_) {
+    try { return {new Handle(NCollection_HArray1_float)(self_->MapNormalArray()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(Poly_Triangulation)*> Poly_Triangulation_detached_load_deferred_data(const Poly_Triangulation* self_, Handle(OSD_FileSystem) const* theFileSystem) {
@@ -5681,11 +4318,11 @@ extern "C" const char* Poly_Triangulation_set_triangle(Poly_Triangulation* self_
     try { self_->SetTriangle(theIndex, *theTriangle); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* Poly_Triangulation_normal_int_vec3f(const Poly_Triangulation* self_, int32_t theIndex, gp_Vec3f* theVec3) {
+extern "C" const char* Poly_Triangulation_normal_int_vec3f(const Poly_Triangulation* self_, int32_t theIndex, BVH_Vec3f* theVec3) {
     try { self_->Normal(theIndex, *theVec3); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* Poly_Triangulation_set_normal_int_vec3f(Poly_Triangulation* self_, int32_t theIndex, gp_Vec3f const* theNormal) {
+extern "C" const char* Poly_Triangulation_set_normal_int_vec3f(Poly_Triangulation* self_, int32_t theIndex, BVH_Vec3f const* theNormal) {
     try { self_->SetNormal(theIndex, *theNormal); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -5757,7 +4394,7 @@ extern "C" const char* Poly_Triangulation_compute_normals(Poly_Triangulation* se
     try { self_->ComputeNormals(); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<Poly_Array1OfTriangle*> Poly_Triangulation_internal_triangles(Poly_Triangulation* self_) {
+extern "C" OcctResult<NCollection_Array1_Poly_Triangle*> Poly_Triangulation_internal_triangles(Poly_Triangulation* self_) {
     try { return {&(self_->InternalTriangles()), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -5769,7 +4406,7 @@ extern "C" OcctResult<Poly_ArrayOfUVNodes*> Poly_Triangulation_internal_uv_nodes
     try { return {&(self_->InternalUVNodes()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<NCollection_Array1_gp_Vec3f*> Poly_Triangulation_internal_normals(Poly_Triangulation* self_) {
+extern "C" OcctResult<NCollection_Array1_NCollection_Vec3_float*> Poly_Triangulation_internal_normals(Poly_Triangulation* self_) {
     try { return {&(self_->InternalNormals()), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -5803,35 +4440,27 @@ extern "C" OcctResult<Handle(Standard_Type) const*> Poly_Triangulation_get_type_
 }
 extern "C" OcctResult<const Standard_Transient*> Poly_Triangulation_as_Standard_Transient(const Poly_Triangulation* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> Poly_Triangulation_as_Standard_Transient_mut(Poly_Triangulation* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandlePolyTriangulation*> Poly_Triangulation_to_handle(Poly_Triangulation* obj) {
-    try { return {new HandlePolyTriangulation(obj), nullptr}; }
+extern "C" OcctResult<Handle_Poly_Triangulation*> Poly_Triangulation_to_handle(Poly_Triangulation* obj) {
+    try { return {new Handle_Poly_Triangulation(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const Poly_Triangulation*> HandlePolyTriangulation_get(const HandlePolyTriangulation* handle) {
+extern "C" OcctResult<const Poly_Triangulation*> Handle_Poly_Triangulation_get(const Handle_Poly_Triangulation* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Poly_Triangulation*> HandlePolyTriangulation_get_mut(HandlePolyTriangulation* handle) {
+extern "C" OcctResult<Poly_Triangulation*> Handle_Poly_Triangulation_get_mut(Handle_Poly_Triangulation* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandlePolyTriangulation_to_HandleStandardTransient(const HandlePolyTriangulation* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_Poly_Triangulation_to_Handle_Standard_Transient(const Handle_Poly_Triangulation* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleRWGltfGltfLatePrimitiveArray*> HandlePolyTriangulation_downcast_to_HandleRWGltfGltfLatePrimitiveArray(const HandlePolyTriangulation* self_) {
-    try {
-    opencascade::handle<RWGltf_GltfLatePrimitiveArray> result = opencascade::handle<RWGltf_GltfLatePrimitiveArray>::DownCast(*self_);
-    if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleRWGltfGltfLatePrimitiveArray(result), nullptr};
-    }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<HandleRWMeshTriangulationSource*> HandlePolyTriangulation_downcast_to_HandleRWMeshTriangulationSource(const HandlePolyTriangulation* self_) {
+extern "C" OcctResult<Handle_RWMesh_TriangulationSource*> Handle_Poly_Triangulation_downcast_to_Handle_RWMesh_TriangulationSource(const Handle_Poly_Triangulation* self_) {
     try {
     opencascade::handle<RWMesh_TriangulationSource> result = opencascade::handle<RWMesh_TriangulationSource>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleRWMeshTriangulationSource(result), nullptr};
+    return {new Handle_RWMesh_TriangulationSource(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
@@ -5873,6 +4502,10 @@ extern "C" OcctResult<Poly_TriangulationParameters*> Poly_TriangulationParameter
     try { return {new Poly_TriangulationParameters(theDeflection, theAngle, theMinSize), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" OcctResult<Handle(Poly_TriangulationParameters)*> Poly_TriangulationParameters_copy(const Poly_TriangulationParameters* self_) {
+    try { return {new Handle(Poly_TriangulationParameters)(self_->Copy()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" OcctResult<bool> Poly_TriangulationParameters_has_deflection(const Poly_TriangulationParameters* self_) {
     try { return {self_->HasDeflection(), nullptr}; }
     OCCT_CATCH_RETURN
@@ -5911,20 +4544,20 @@ extern "C" OcctResult<Handle(Standard_Type) const*> Poly_TriangulationParameters
 }
 extern "C" OcctResult<const Standard_Transient*> Poly_TriangulationParameters_as_Standard_Transient(const Poly_TriangulationParameters* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> Poly_TriangulationParameters_as_Standard_Transient_mut(Poly_TriangulationParameters* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandlePolyTriangulationParameters*> Poly_TriangulationParameters_to_handle(Poly_TriangulationParameters* obj) {
-    try { return {new HandlePolyTriangulationParameters(obj), nullptr}; }
+extern "C" OcctResult<Handle_Poly_TriangulationParameters*> Poly_TriangulationParameters_to_handle(Poly_TriangulationParameters* obj) {
+    try { return {new Handle_Poly_TriangulationParameters(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const Poly_TriangulationParameters*> HandlePolyTriangulationParameters_get(const HandlePolyTriangulationParameters* handle) {
+extern "C" OcctResult<const Poly_TriangulationParameters*> Handle_Poly_TriangulationParameters_get(const Handle_Poly_TriangulationParameters* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Poly_TriangulationParameters*> HandlePolyTriangulationParameters_get_mut(HandlePolyTriangulationParameters* handle) {
+extern "C" OcctResult<Poly_TriangulationParameters*> Handle_Poly_TriangulationParameters_get_mut(Handle_Poly_TriangulationParameters* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandlePolyTriangulationParameters_to_HandleStandardTransient(const HandlePolyTriangulationParameters* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_Poly_TriangulationParameters_to_Handle_Standard_Transient(const Handle_Poly_TriangulationParameters* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> Poly_TriangulationParameters_inherited_IsInstance(const Poly_TriangulationParameters* self, Handle(Standard_Type) const& theType) {
@@ -5956,2510 +4589,6 @@ extern "C" const char* Poly_TriangulationParameters_inherited_Delete(const Poly_
     OCCT_CATCH_RETURN_VOID
 }
 extern "C" void Poly_TriangulationParameters_destructor(Poly_TriangulationParameters* self_) { delete self_; }
-
-// ========================
-// TColgp_HArray1OfCirc2d wrappers
-// ========================
-
-extern "C" OcctResult<TColgp_HArray1OfCirc2d*> TColgp_HArray1OfCirc2d_ctor() {
-    try { return {new TColgp_HArray1OfCirc2d(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<TColgp_HArray1OfCirc2d*> TColgp_HArray1OfCirc2d_ctor_int2(int32_t theLower, int32_t theUpper) {
-    try { return {new TColgp_HArray1OfCirc2d(theLower, theUpper), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<TColgp_HArray1OfCirc2d*> TColgp_HArray1OfCirc2d_ctor_int2_type(int32_t theLower, int32_t theUpper, TColgp_Array1OfCirc2d::value_type const* theValue) {
-    try { return {new TColgp_HArray1OfCirc2d(theLower, theUpper, *theValue), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<TColgp_HArray1OfCirc2d*> TColgp_HArray1OfCirc2d_ctor_type_int2_bool(TColgp_Array1OfCirc2d::value_type const* theBegin, int32_t theLower, int32_t theUpper, bool arg3) {
-    try { return {new TColgp_HArray1OfCirc2d(*theBegin, theLower, theUpper, arg3), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<TColgp_HArray1OfCirc2d*> TColgp_HArray1OfCirc2d_ctor_array1ofcirc2d(TColgp_Array1OfCirc2d const* theOther) {
-    try { return {new TColgp_HArray1OfCirc2d(*theOther), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<TColgp_Array1OfCirc2d const*> TColgp_HArray1OfCirc2d_array1(const TColgp_HArray1OfCirc2d* self_) {
-    try { return {&(self_->Array1()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<TColgp_Array1OfCirc2d*> TColgp_HArray1OfCirc2d_change_array1(TColgp_HArray1OfCirc2d* self_) {
-    try { return {&(self_->ChangeArray1()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Handle(Standard_Type) const*> TColgp_HArray1OfCirc2d_dynamic_type(const TColgp_HArray1OfCirc2d* self_) {
-    try { return {&(self_->DynamicType()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<char const*> TColgp_HArray1OfCirc2d_get_type_name() {
-    try { return {TColgp_HArray1OfCirc2d::get_type_name(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Handle(Standard_Type) const*> TColgp_HArray1OfCirc2d_get_type_descriptor() {
-    try { return {&(TColgp_HArray1OfCirc2d::get_type_descriptor()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<const TColgp_Array1OfCirc2d*> TColgp_HArray1OfCirc2d_as_TColgp_Array1OfCirc2d(const TColgp_HArray1OfCirc2d* self_) { return {static_cast<const TColgp_Array1OfCirc2d*>(self_), nullptr}; }
-extern "C" OcctResult<TColgp_Array1OfCirc2d*> TColgp_HArray1OfCirc2d_as_TColgp_Array1OfCirc2d_mut(TColgp_HArray1OfCirc2d* self_) { return {static_cast<TColgp_Array1OfCirc2d*>(self_), nullptr}; }
-extern "C" OcctResult<const Standard_Transient*> TColgp_HArray1OfCirc2d_as_Standard_Transient(const TColgp_HArray1OfCirc2d* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<Standard_Transient*> TColgp_HArray1OfCirc2d_as_Standard_Transient_mut(TColgp_HArray1OfCirc2d* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleTColgpHArray1OfCirc2d*> TColgp_HArray1OfCirc2d_to_handle(TColgp_HArray1OfCirc2d* obj) {
-    try { return {new HandleTColgpHArray1OfCirc2d(obj), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<const TColgp_HArray1OfCirc2d*> HandleTColgpHArray1OfCirc2d_get(const HandleTColgpHArray1OfCirc2d* handle) {
-    try { return {(*handle).get(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<TColgp_HArray1OfCirc2d*> HandleTColgpHArray1OfCirc2d_get_mut(HandleTColgpHArray1OfCirc2d* handle) {
-    try { return {(*handle).get(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<HandleStandardTransient*> HandleTColgpHArray1OfCirc2d_to_HandleStandardTransient(const HandleTColgpHArray1OfCirc2d* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<bool> TColgp_HArray1OfCirc2d_inherited_IsInstance(const TColgp_HArray1OfCirc2d* self, Handle(Standard_Type) const& theType) {
-    try { return {self->IsInstance(theType), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<bool> TColgp_HArray1OfCirc2d_inherited_IsKind(const TColgp_HArray1OfCirc2d* self, Handle(Standard_Type) const& theType) {
-    try { return {self->IsKind(theType), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Standard_Transient*> TColgp_HArray1OfCirc2d_inherited_This(const TColgp_HArray1OfCirc2d* self) {
-    try { return {self->This(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<int32_t> TColgp_HArray1OfCirc2d_inherited_GetRefCount(const TColgp_HArray1OfCirc2d* self) {
-    try { return {self->GetRefCount(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* TColgp_HArray1OfCirc2d_inherited_IncrementRefCounter(TColgp_HArray1OfCirc2d* self) {
-    try { self->IncrementRefCounter(); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<int32_t> TColgp_HArray1OfCirc2d_inherited_DecrementRefCounter(TColgp_HArray1OfCirc2d* self) {
-    try { return {self->DecrementRefCounter(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* TColgp_HArray1OfCirc2d_inherited_Delete(const TColgp_HArray1OfCirc2d* self) {
-    try { self->Delete(); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" void TColgp_HArray1OfCirc2d_destructor(TColgp_HArray1OfCirc2d* self_) { delete self_; }
-
-// ========================
-// TColgp_HArray1OfDir wrappers
-// ========================
-
-extern "C" OcctResult<TColgp_HArray1OfDir*> TColgp_HArray1OfDir_ctor() {
-    try { return {new TColgp_HArray1OfDir(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<TColgp_HArray1OfDir*> TColgp_HArray1OfDir_ctor_int2(int32_t theLower, int32_t theUpper) {
-    try { return {new TColgp_HArray1OfDir(theLower, theUpper), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<TColgp_HArray1OfDir*> TColgp_HArray1OfDir_ctor_int2_type(int32_t theLower, int32_t theUpper, TColgp_Array1OfDir::value_type const* theValue) {
-    try { return {new TColgp_HArray1OfDir(theLower, theUpper, *theValue), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<TColgp_HArray1OfDir*> TColgp_HArray1OfDir_ctor_type_int2_bool(TColgp_Array1OfDir::value_type const* theBegin, int32_t theLower, int32_t theUpper, bool arg3) {
-    try { return {new TColgp_HArray1OfDir(*theBegin, theLower, theUpper, arg3), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<TColgp_HArray1OfDir*> TColgp_HArray1OfDir_ctor_array1ofdir(TColgp_Array1OfDir const* theOther) {
-    try { return {new TColgp_HArray1OfDir(*theOther), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<TColgp_Array1OfDir const*> TColgp_HArray1OfDir_array1(const TColgp_HArray1OfDir* self_) {
-    try { return {&(self_->Array1()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<TColgp_Array1OfDir*> TColgp_HArray1OfDir_change_array1(TColgp_HArray1OfDir* self_) {
-    try { return {&(self_->ChangeArray1()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Handle(Standard_Type) const*> TColgp_HArray1OfDir_dynamic_type(const TColgp_HArray1OfDir* self_) {
-    try { return {&(self_->DynamicType()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<char const*> TColgp_HArray1OfDir_get_type_name() {
-    try { return {TColgp_HArray1OfDir::get_type_name(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Handle(Standard_Type) const*> TColgp_HArray1OfDir_get_type_descriptor() {
-    try { return {&(TColgp_HArray1OfDir::get_type_descriptor()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<const TColgp_Array1OfDir*> TColgp_HArray1OfDir_as_TColgp_Array1OfDir(const TColgp_HArray1OfDir* self_) { return {static_cast<const TColgp_Array1OfDir*>(self_), nullptr}; }
-extern "C" OcctResult<TColgp_Array1OfDir*> TColgp_HArray1OfDir_as_TColgp_Array1OfDir_mut(TColgp_HArray1OfDir* self_) { return {static_cast<TColgp_Array1OfDir*>(self_), nullptr}; }
-extern "C" OcctResult<const Standard_Transient*> TColgp_HArray1OfDir_as_Standard_Transient(const TColgp_HArray1OfDir* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<Standard_Transient*> TColgp_HArray1OfDir_as_Standard_Transient_mut(TColgp_HArray1OfDir* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleTColgpHArray1OfDir*> TColgp_HArray1OfDir_to_handle(TColgp_HArray1OfDir* obj) {
-    try { return {new HandleTColgpHArray1OfDir(obj), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<const TColgp_HArray1OfDir*> HandleTColgpHArray1OfDir_get(const HandleTColgpHArray1OfDir* handle) {
-    try { return {(*handle).get(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<TColgp_HArray1OfDir*> HandleTColgpHArray1OfDir_get_mut(HandleTColgpHArray1OfDir* handle) {
-    try { return {(*handle).get(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<HandleStandardTransient*> HandleTColgpHArray1OfDir_to_HandleStandardTransient(const HandleTColgpHArray1OfDir* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<bool> TColgp_HArray1OfDir_inherited_IsInstance(const TColgp_HArray1OfDir* self, Handle(Standard_Type) const& theType) {
-    try { return {self->IsInstance(theType), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<bool> TColgp_HArray1OfDir_inherited_IsKind(const TColgp_HArray1OfDir* self, Handle(Standard_Type) const& theType) {
-    try { return {self->IsKind(theType), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Standard_Transient*> TColgp_HArray1OfDir_inherited_This(const TColgp_HArray1OfDir* self) {
-    try { return {self->This(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<int32_t> TColgp_HArray1OfDir_inherited_GetRefCount(const TColgp_HArray1OfDir* self) {
-    try { return {self->GetRefCount(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* TColgp_HArray1OfDir_inherited_IncrementRefCounter(TColgp_HArray1OfDir* self) {
-    try { self->IncrementRefCounter(); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<int32_t> TColgp_HArray1OfDir_inherited_DecrementRefCounter(TColgp_HArray1OfDir* self) {
-    try { return {self->DecrementRefCounter(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* TColgp_HArray1OfDir_inherited_Delete(const TColgp_HArray1OfDir* self) {
-    try { self->Delete(); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" void TColgp_HArray1OfDir_destructor(TColgp_HArray1OfDir* self_) { delete self_; }
-
-// ========================
-// TColgp_HArray1OfDir2d wrappers
-// ========================
-
-extern "C" OcctResult<TColgp_HArray1OfDir2d*> TColgp_HArray1OfDir2d_ctor() {
-    try { return {new TColgp_HArray1OfDir2d(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<TColgp_HArray1OfDir2d*> TColgp_HArray1OfDir2d_ctor_int2(int32_t theLower, int32_t theUpper) {
-    try { return {new TColgp_HArray1OfDir2d(theLower, theUpper), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<TColgp_HArray1OfDir2d*> TColgp_HArray1OfDir2d_ctor_int2_type(int32_t theLower, int32_t theUpper, TColgp_Array1OfDir2d::value_type const* theValue) {
-    try { return {new TColgp_HArray1OfDir2d(theLower, theUpper, *theValue), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<TColgp_HArray1OfDir2d*> TColgp_HArray1OfDir2d_ctor_type_int2_bool(TColgp_Array1OfDir2d::value_type const* theBegin, int32_t theLower, int32_t theUpper, bool arg3) {
-    try { return {new TColgp_HArray1OfDir2d(*theBegin, theLower, theUpper, arg3), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<TColgp_HArray1OfDir2d*> TColgp_HArray1OfDir2d_ctor_array1ofdir2d(TColgp_Array1OfDir2d const* theOther) {
-    try { return {new TColgp_HArray1OfDir2d(*theOther), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<TColgp_Array1OfDir2d const*> TColgp_HArray1OfDir2d_array1(const TColgp_HArray1OfDir2d* self_) {
-    try { return {&(self_->Array1()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<TColgp_Array1OfDir2d*> TColgp_HArray1OfDir2d_change_array1(TColgp_HArray1OfDir2d* self_) {
-    try { return {&(self_->ChangeArray1()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Handle(Standard_Type) const*> TColgp_HArray1OfDir2d_dynamic_type(const TColgp_HArray1OfDir2d* self_) {
-    try { return {&(self_->DynamicType()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<char const*> TColgp_HArray1OfDir2d_get_type_name() {
-    try { return {TColgp_HArray1OfDir2d::get_type_name(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Handle(Standard_Type) const*> TColgp_HArray1OfDir2d_get_type_descriptor() {
-    try { return {&(TColgp_HArray1OfDir2d::get_type_descriptor()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<const TColgp_Array1OfDir2d*> TColgp_HArray1OfDir2d_as_TColgp_Array1OfDir2d(const TColgp_HArray1OfDir2d* self_) { return {static_cast<const TColgp_Array1OfDir2d*>(self_), nullptr}; }
-extern "C" OcctResult<TColgp_Array1OfDir2d*> TColgp_HArray1OfDir2d_as_TColgp_Array1OfDir2d_mut(TColgp_HArray1OfDir2d* self_) { return {static_cast<TColgp_Array1OfDir2d*>(self_), nullptr}; }
-extern "C" OcctResult<const Standard_Transient*> TColgp_HArray1OfDir2d_as_Standard_Transient(const TColgp_HArray1OfDir2d* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<Standard_Transient*> TColgp_HArray1OfDir2d_as_Standard_Transient_mut(TColgp_HArray1OfDir2d* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleTColgpHArray1OfDir2d*> TColgp_HArray1OfDir2d_to_handle(TColgp_HArray1OfDir2d* obj) {
-    try { return {new HandleTColgpHArray1OfDir2d(obj), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<const TColgp_HArray1OfDir2d*> HandleTColgpHArray1OfDir2d_get(const HandleTColgpHArray1OfDir2d* handle) {
-    try { return {(*handle).get(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<TColgp_HArray1OfDir2d*> HandleTColgpHArray1OfDir2d_get_mut(HandleTColgpHArray1OfDir2d* handle) {
-    try { return {(*handle).get(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<HandleStandardTransient*> HandleTColgpHArray1OfDir2d_to_HandleStandardTransient(const HandleTColgpHArray1OfDir2d* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<bool> TColgp_HArray1OfDir2d_inherited_IsInstance(const TColgp_HArray1OfDir2d* self, Handle(Standard_Type) const& theType) {
-    try { return {self->IsInstance(theType), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<bool> TColgp_HArray1OfDir2d_inherited_IsKind(const TColgp_HArray1OfDir2d* self, Handle(Standard_Type) const& theType) {
-    try { return {self->IsKind(theType), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Standard_Transient*> TColgp_HArray1OfDir2d_inherited_This(const TColgp_HArray1OfDir2d* self) {
-    try { return {self->This(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<int32_t> TColgp_HArray1OfDir2d_inherited_GetRefCount(const TColgp_HArray1OfDir2d* self) {
-    try { return {self->GetRefCount(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* TColgp_HArray1OfDir2d_inherited_IncrementRefCounter(TColgp_HArray1OfDir2d* self) {
-    try { self->IncrementRefCounter(); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<int32_t> TColgp_HArray1OfDir2d_inherited_DecrementRefCounter(TColgp_HArray1OfDir2d* self) {
-    try { return {self->DecrementRefCounter(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* TColgp_HArray1OfDir2d_inherited_Delete(const TColgp_HArray1OfDir2d* self) {
-    try { self->Delete(); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" void TColgp_HArray1OfDir2d_destructor(TColgp_HArray1OfDir2d* self_) { delete self_; }
-
-// ========================
-// TColgp_HArray1OfLin2d wrappers
-// ========================
-
-extern "C" OcctResult<TColgp_HArray1OfLin2d*> TColgp_HArray1OfLin2d_ctor() {
-    try { return {new TColgp_HArray1OfLin2d(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<TColgp_HArray1OfLin2d*> TColgp_HArray1OfLin2d_ctor_int2(int32_t theLower, int32_t theUpper) {
-    try { return {new TColgp_HArray1OfLin2d(theLower, theUpper), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<TColgp_HArray1OfLin2d*> TColgp_HArray1OfLin2d_ctor_int2_type(int32_t theLower, int32_t theUpper, TColgp_Array1OfLin2d::value_type const* theValue) {
-    try { return {new TColgp_HArray1OfLin2d(theLower, theUpper, *theValue), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<TColgp_HArray1OfLin2d*> TColgp_HArray1OfLin2d_ctor_type_int2_bool(TColgp_Array1OfLin2d::value_type const* theBegin, int32_t theLower, int32_t theUpper, bool arg3) {
-    try { return {new TColgp_HArray1OfLin2d(*theBegin, theLower, theUpper, arg3), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<TColgp_HArray1OfLin2d*> TColgp_HArray1OfLin2d_ctor_array1oflin2d(TColgp_Array1OfLin2d const* theOther) {
-    try { return {new TColgp_HArray1OfLin2d(*theOther), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<TColgp_Array1OfLin2d const*> TColgp_HArray1OfLin2d_array1(const TColgp_HArray1OfLin2d* self_) {
-    try { return {&(self_->Array1()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<TColgp_Array1OfLin2d*> TColgp_HArray1OfLin2d_change_array1(TColgp_HArray1OfLin2d* self_) {
-    try { return {&(self_->ChangeArray1()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Handle(Standard_Type) const*> TColgp_HArray1OfLin2d_dynamic_type(const TColgp_HArray1OfLin2d* self_) {
-    try { return {&(self_->DynamicType()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<char const*> TColgp_HArray1OfLin2d_get_type_name() {
-    try { return {TColgp_HArray1OfLin2d::get_type_name(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Handle(Standard_Type) const*> TColgp_HArray1OfLin2d_get_type_descriptor() {
-    try { return {&(TColgp_HArray1OfLin2d::get_type_descriptor()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<const TColgp_Array1OfLin2d*> TColgp_HArray1OfLin2d_as_TColgp_Array1OfLin2d(const TColgp_HArray1OfLin2d* self_) { return {static_cast<const TColgp_Array1OfLin2d*>(self_), nullptr}; }
-extern "C" OcctResult<TColgp_Array1OfLin2d*> TColgp_HArray1OfLin2d_as_TColgp_Array1OfLin2d_mut(TColgp_HArray1OfLin2d* self_) { return {static_cast<TColgp_Array1OfLin2d*>(self_), nullptr}; }
-extern "C" OcctResult<const Standard_Transient*> TColgp_HArray1OfLin2d_as_Standard_Transient(const TColgp_HArray1OfLin2d* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<Standard_Transient*> TColgp_HArray1OfLin2d_as_Standard_Transient_mut(TColgp_HArray1OfLin2d* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleTColgpHArray1OfLin2d*> TColgp_HArray1OfLin2d_to_handle(TColgp_HArray1OfLin2d* obj) {
-    try { return {new HandleTColgpHArray1OfLin2d(obj), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<const TColgp_HArray1OfLin2d*> HandleTColgpHArray1OfLin2d_get(const HandleTColgpHArray1OfLin2d* handle) {
-    try { return {(*handle).get(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<TColgp_HArray1OfLin2d*> HandleTColgpHArray1OfLin2d_get_mut(HandleTColgpHArray1OfLin2d* handle) {
-    try { return {(*handle).get(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<HandleStandardTransient*> HandleTColgpHArray1OfLin2d_to_HandleStandardTransient(const HandleTColgpHArray1OfLin2d* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<bool> TColgp_HArray1OfLin2d_inherited_IsInstance(const TColgp_HArray1OfLin2d* self, Handle(Standard_Type) const& theType) {
-    try { return {self->IsInstance(theType), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<bool> TColgp_HArray1OfLin2d_inherited_IsKind(const TColgp_HArray1OfLin2d* self, Handle(Standard_Type) const& theType) {
-    try { return {self->IsKind(theType), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Standard_Transient*> TColgp_HArray1OfLin2d_inherited_This(const TColgp_HArray1OfLin2d* self) {
-    try { return {self->This(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<int32_t> TColgp_HArray1OfLin2d_inherited_GetRefCount(const TColgp_HArray1OfLin2d* self) {
-    try { return {self->GetRefCount(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* TColgp_HArray1OfLin2d_inherited_IncrementRefCounter(TColgp_HArray1OfLin2d* self) {
-    try { self->IncrementRefCounter(); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<int32_t> TColgp_HArray1OfLin2d_inherited_DecrementRefCounter(TColgp_HArray1OfLin2d* self) {
-    try { return {self->DecrementRefCounter(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* TColgp_HArray1OfLin2d_inherited_Delete(const TColgp_HArray1OfLin2d* self) {
-    try { self->Delete(); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" void TColgp_HArray1OfLin2d_destructor(TColgp_HArray1OfLin2d* self_) { delete self_; }
-
-// ========================
-// TColgp_HArray1OfPnt wrappers
-// ========================
-
-extern "C" OcctResult<TColgp_HArray1OfPnt*> TColgp_HArray1OfPnt_ctor() {
-    try { return {new TColgp_HArray1OfPnt(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<TColgp_HArray1OfPnt*> TColgp_HArray1OfPnt_ctor_int2(int32_t theLower, int32_t theUpper) {
-    try { return {new TColgp_HArray1OfPnt(theLower, theUpper), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<TColgp_HArray1OfPnt*> TColgp_HArray1OfPnt_ctor_int2_type(int32_t theLower, int32_t theUpper, TColgp_Array1OfPnt::value_type const* theValue) {
-    try { return {new TColgp_HArray1OfPnt(theLower, theUpper, *theValue), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<TColgp_HArray1OfPnt*> TColgp_HArray1OfPnt_ctor_type_int2_bool(TColgp_Array1OfPnt::value_type const* theBegin, int32_t theLower, int32_t theUpper, bool arg3) {
-    try { return {new TColgp_HArray1OfPnt(*theBegin, theLower, theUpper, arg3), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<TColgp_HArray1OfPnt*> TColgp_HArray1OfPnt_ctor_array1ofpnt(TColgp_Array1OfPnt const* theOther) {
-    try { return {new TColgp_HArray1OfPnt(*theOther), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<TColgp_Array1OfPnt const*> TColgp_HArray1OfPnt_array1(const TColgp_HArray1OfPnt* self_) {
-    try { return {&(self_->Array1()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<TColgp_Array1OfPnt*> TColgp_HArray1OfPnt_change_array1(TColgp_HArray1OfPnt* self_) {
-    try { return {&(self_->ChangeArray1()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Handle(Standard_Type) const*> TColgp_HArray1OfPnt_dynamic_type(const TColgp_HArray1OfPnt* self_) {
-    try { return {&(self_->DynamicType()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<char const*> TColgp_HArray1OfPnt_get_type_name() {
-    try { return {TColgp_HArray1OfPnt::get_type_name(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Handle(Standard_Type) const*> TColgp_HArray1OfPnt_get_type_descriptor() {
-    try { return {&(TColgp_HArray1OfPnt::get_type_descriptor()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<const TColgp_Array1OfPnt*> TColgp_HArray1OfPnt_as_TColgp_Array1OfPnt(const TColgp_HArray1OfPnt* self_) { return {static_cast<const TColgp_Array1OfPnt*>(self_), nullptr}; }
-extern "C" OcctResult<TColgp_Array1OfPnt*> TColgp_HArray1OfPnt_as_TColgp_Array1OfPnt_mut(TColgp_HArray1OfPnt* self_) { return {static_cast<TColgp_Array1OfPnt*>(self_), nullptr}; }
-extern "C" OcctResult<const Standard_Transient*> TColgp_HArray1OfPnt_as_Standard_Transient(const TColgp_HArray1OfPnt* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<Standard_Transient*> TColgp_HArray1OfPnt_as_Standard_Transient_mut(TColgp_HArray1OfPnt* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleTColgpHArray1OfPnt*> TColgp_HArray1OfPnt_to_handle(TColgp_HArray1OfPnt* obj) {
-    try { return {new HandleTColgpHArray1OfPnt(obj), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<const TColgp_HArray1OfPnt*> HandleTColgpHArray1OfPnt_get(const HandleTColgpHArray1OfPnt* handle) {
-    try { return {(*handle).get(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<TColgp_HArray1OfPnt*> HandleTColgpHArray1OfPnt_get_mut(HandleTColgpHArray1OfPnt* handle) {
-    try { return {(*handle).get(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<HandleStandardTransient*> HandleTColgpHArray1OfPnt_to_HandleStandardTransient(const HandleTColgpHArray1OfPnt* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<bool> TColgp_HArray1OfPnt_inherited_IsInstance(const TColgp_HArray1OfPnt* self, Handle(Standard_Type) const& theType) {
-    try { return {self->IsInstance(theType), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<bool> TColgp_HArray1OfPnt_inherited_IsKind(const TColgp_HArray1OfPnt* self, Handle(Standard_Type) const& theType) {
-    try { return {self->IsKind(theType), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Standard_Transient*> TColgp_HArray1OfPnt_inherited_This(const TColgp_HArray1OfPnt* self) {
-    try { return {self->This(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<int32_t> TColgp_HArray1OfPnt_inherited_GetRefCount(const TColgp_HArray1OfPnt* self) {
-    try { return {self->GetRefCount(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* TColgp_HArray1OfPnt_inherited_IncrementRefCounter(TColgp_HArray1OfPnt* self) {
-    try { self->IncrementRefCounter(); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<int32_t> TColgp_HArray1OfPnt_inherited_DecrementRefCounter(TColgp_HArray1OfPnt* self) {
-    try { return {self->DecrementRefCounter(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* TColgp_HArray1OfPnt_inherited_Delete(const TColgp_HArray1OfPnt* self) {
-    try { self->Delete(); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" void TColgp_HArray1OfPnt_destructor(TColgp_HArray1OfPnt* self_) { delete self_; }
-
-// ========================
-// TColgp_HArray1OfPnt2d wrappers
-// ========================
-
-extern "C" OcctResult<TColgp_HArray1OfPnt2d*> TColgp_HArray1OfPnt2d_ctor() {
-    try { return {new TColgp_HArray1OfPnt2d(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<TColgp_HArray1OfPnt2d*> TColgp_HArray1OfPnt2d_ctor_int2(int32_t theLower, int32_t theUpper) {
-    try { return {new TColgp_HArray1OfPnt2d(theLower, theUpper), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<TColgp_HArray1OfPnt2d*> TColgp_HArray1OfPnt2d_ctor_int2_type(int32_t theLower, int32_t theUpper, TColgp_Array1OfPnt2d::value_type const* theValue) {
-    try { return {new TColgp_HArray1OfPnt2d(theLower, theUpper, *theValue), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<TColgp_HArray1OfPnt2d*> TColgp_HArray1OfPnt2d_ctor_type_int2_bool(TColgp_Array1OfPnt2d::value_type const* theBegin, int32_t theLower, int32_t theUpper, bool arg3) {
-    try { return {new TColgp_HArray1OfPnt2d(*theBegin, theLower, theUpper, arg3), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<TColgp_HArray1OfPnt2d*> TColgp_HArray1OfPnt2d_ctor_array1ofpnt2d(TColgp_Array1OfPnt2d const* theOther) {
-    try { return {new TColgp_HArray1OfPnt2d(*theOther), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<TColgp_Array1OfPnt2d const*> TColgp_HArray1OfPnt2d_array1(const TColgp_HArray1OfPnt2d* self_) {
-    try { return {&(self_->Array1()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<TColgp_Array1OfPnt2d*> TColgp_HArray1OfPnt2d_change_array1(TColgp_HArray1OfPnt2d* self_) {
-    try { return {&(self_->ChangeArray1()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Handle(Standard_Type) const*> TColgp_HArray1OfPnt2d_dynamic_type(const TColgp_HArray1OfPnt2d* self_) {
-    try { return {&(self_->DynamicType()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<char const*> TColgp_HArray1OfPnt2d_get_type_name() {
-    try { return {TColgp_HArray1OfPnt2d::get_type_name(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Handle(Standard_Type) const*> TColgp_HArray1OfPnt2d_get_type_descriptor() {
-    try { return {&(TColgp_HArray1OfPnt2d::get_type_descriptor()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<const TColgp_Array1OfPnt2d*> TColgp_HArray1OfPnt2d_as_TColgp_Array1OfPnt2d(const TColgp_HArray1OfPnt2d* self_) { return {static_cast<const TColgp_Array1OfPnt2d*>(self_), nullptr}; }
-extern "C" OcctResult<TColgp_Array1OfPnt2d*> TColgp_HArray1OfPnt2d_as_TColgp_Array1OfPnt2d_mut(TColgp_HArray1OfPnt2d* self_) { return {static_cast<TColgp_Array1OfPnt2d*>(self_), nullptr}; }
-extern "C" OcctResult<const Standard_Transient*> TColgp_HArray1OfPnt2d_as_Standard_Transient(const TColgp_HArray1OfPnt2d* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<Standard_Transient*> TColgp_HArray1OfPnt2d_as_Standard_Transient_mut(TColgp_HArray1OfPnt2d* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleTColgpHArray1OfPnt2d*> TColgp_HArray1OfPnt2d_to_handle(TColgp_HArray1OfPnt2d* obj) {
-    try { return {new HandleTColgpHArray1OfPnt2d(obj), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<const TColgp_HArray1OfPnt2d*> HandleTColgpHArray1OfPnt2d_get(const HandleTColgpHArray1OfPnt2d* handle) {
-    try { return {(*handle).get(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<TColgp_HArray1OfPnt2d*> HandleTColgpHArray1OfPnt2d_get_mut(HandleTColgpHArray1OfPnt2d* handle) {
-    try { return {(*handle).get(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<HandleStandardTransient*> HandleTColgpHArray1OfPnt2d_to_HandleStandardTransient(const HandleTColgpHArray1OfPnt2d* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<bool> TColgp_HArray1OfPnt2d_inherited_IsInstance(const TColgp_HArray1OfPnt2d* self, Handle(Standard_Type) const& theType) {
-    try { return {self->IsInstance(theType), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<bool> TColgp_HArray1OfPnt2d_inherited_IsKind(const TColgp_HArray1OfPnt2d* self, Handle(Standard_Type) const& theType) {
-    try { return {self->IsKind(theType), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Standard_Transient*> TColgp_HArray1OfPnt2d_inherited_This(const TColgp_HArray1OfPnt2d* self) {
-    try { return {self->This(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<int32_t> TColgp_HArray1OfPnt2d_inherited_GetRefCount(const TColgp_HArray1OfPnt2d* self) {
-    try { return {self->GetRefCount(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* TColgp_HArray1OfPnt2d_inherited_IncrementRefCounter(TColgp_HArray1OfPnt2d* self) {
-    try { self->IncrementRefCounter(); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<int32_t> TColgp_HArray1OfPnt2d_inherited_DecrementRefCounter(TColgp_HArray1OfPnt2d* self) {
-    try { return {self->DecrementRefCounter(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* TColgp_HArray1OfPnt2d_inherited_Delete(const TColgp_HArray1OfPnt2d* self) {
-    try { self->Delete(); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" void TColgp_HArray1OfPnt2d_destructor(TColgp_HArray1OfPnt2d* self_) { delete self_; }
-
-// ========================
-// TColgp_HArray1OfVec wrappers
-// ========================
-
-extern "C" OcctResult<TColgp_HArray1OfVec*> TColgp_HArray1OfVec_ctor() {
-    try { return {new TColgp_HArray1OfVec(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<TColgp_HArray1OfVec*> TColgp_HArray1OfVec_ctor_int2(int32_t theLower, int32_t theUpper) {
-    try { return {new TColgp_HArray1OfVec(theLower, theUpper), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<TColgp_HArray1OfVec*> TColgp_HArray1OfVec_ctor_int2_type(int32_t theLower, int32_t theUpper, TColgp_Array1OfVec::value_type const* theValue) {
-    try { return {new TColgp_HArray1OfVec(theLower, theUpper, *theValue), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<TColgp_HArray1OfVec*> TColgp_HArray1OfVec_ctor_type_int2_bool(TColgp_Array1OfVec::value_type const* theBegin, int32_t theLower, int32_t theUpper, bool arg3) {
-    try { return {new TColgp_HArray1OfVec(*theBegin, theLower, theUpper, arg3), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<TColgp_HArray1OfVec*> TColgp_HArray1OfVec_ctor_array1ofvec(TColgp_Array1OfVec const* theOther) {
-    try { return {new TColgp_HArray1OfVec(*theOther), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<TColgp_Array1OfVec const*> TColgp_HArray1OfVec_array1(const TColgp_HArray1OfVec* self_) {
-    try { return {&(self_->Array1()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<TColgp_Array1OfVec*> TColgp_HArray1OfVec_change_array1(TColgp_HArray1OfVec* self_) {
-    try { return {&(self_->ChangeArray1()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Handle(Standard_Type) const*> TColgp_HArray1OfVec_dynamic_type(const TColgp_HArray1OfVec* self_) {
-    try { return {&(self_->DynamicType()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<char const*> TColgp_HArray1OfVec_get_type_name() {
-    try { return {TColgp_HArray1OfVec::get_type_name(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Handle(Standard_Type) const*> TColgp_HArray1OfVec_get_type_descriptor() {
-    try { return {&(TColgp_HArray1OfVec::get_type_descriptor()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<const TColgp_Array1OfVec*> TColgp_HArray1OfVec_as_TColgp_Array1OfVec(const TColgp_HArray1OfVec* self_) { return {static_cast<const TColgp_Array1OfVec*>(self_), nullptr}; }
-extern "C" OcctResult<TColgp_Array1OfVec*> TColgp_HArray1OfVec_as_TColgp_Array1OfVec_mut(TColgp_HArray1OfVec* self_) { return {static_cast<TColgp_Array1OfVec*>(self_), nullptr}; }
-extern "C" OcctResult<const Standard_Transient*> TColgp_HArray1OfVec_as_Standard_Transient(const TColgp_HArray1OfVec* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<Standard_Transient*> TColgp_HArray1OfVec_as_Standard_Transient_mut(TColgp_HArray1OfVec* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleTColgpHArray1OfVec*> TColgp_HArray1OfVec_to_handle(TColgp_HArray1OfVec* obj) {
-    try { return {new HandleTColgpHArray1OfVec(obj), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<const TColgp_HArray1OfVec*> HandleTColgpHArray1OfVec_get(const HandleTColgpHArray1OfVec* handle) {
-    try { return {(*handle).get(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<TColgp_HArray1OfVec*> HandleTColgpHArray1OfVec_get_mut(HandleTColgpHArray1OfVec* handle) {
-    try { return {(*handle).get(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<HandleStandardTransient*> HandleTColgpHArray1OfVec_to_HandleStandardTransient(const HandleTColgpHArray1OfVec* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<bool> TColgp_HArray1OfVec_inherited_IsInstance(const TColgp_HArray1OfVec* self, Handle(Standard_Type) const& theType) {
-    try { return {self->IsInstance(theType), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<bool> TColgp_HArray1OfVec_inherited_IsKind(const TColgp_HArray1OfVec* self, Handle(Standard_Type) const& theType) {
-    try { return {self->IsKind(theType), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Standard_Transient*> TColgp_HArray1OfVec_inherited_This(const TColgp_HArray1OfVec* self) {
-    try { return {self->This(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<int32_t> TColgp_HArray1OfVec_inherited_GetRefCount(const TColgp_HArray1OfVec* self) {
-    try { return {self->GetRefCount(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* TColgp_HArray1OfVec_inherited_IncrementRefCounter(TColgp_HArray1OfVec* self) {
-    try { self->IncrementRefCounter(); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<int32_t> TColgp_HArray1OfVec_inherited_DecrementRefCounter(TColgp_HArray1OfVec* self) {
-    try { return {self->DecrementRefCounter(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* TColgp_HArray1OfVec_inherited_Delete(const TColgp_HArray1OfVec* self) {
-    try { self->Delete(); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" void TColgp_HArray1OfVec_destructor(TColgp_HArray1OfVec* self_) { delete self_; }
-
-// ========================
-// TColgp_HArray1OfVec2d wrappers
-// ========================
-
-extern "C" OcctResult<TColgp_HArray1OfVec2d*> TColgp_HArray1OfVec2d_ctor() {
-    try { return {new TColgp_HArray1OfVec2d(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<TColgp_HArray1OfVec2d*> TColgp_HArray1OfVec2d_ctor_int2(int32_t theLower, int32_t theUpper) {
-    try { return {new TColgp_HArray1OfVec2d(theLower, theUpper), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<TColgp_HArray1OfVec2d*> TColgp_HArray1OfVec2d_ctor_int2_type(int32_t theLower, int32_t theUpper, TColgp_Array1OfVec2d::value_type const* theValue) {
-    try { return {new TColgp_HArray1OfVec2d(theLower, theUpper, *theValue), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<TColgp_HArray1OfVec2d*> TColgp_HArray1OfVec2d_ctor_type_int2_bool(TColgp_Array1OfVec2d::value_type const* theBegin, int32_t theLower, int32_t theUpper, bool arg3) {
-    try { return {new TColgp_HArray1OfVec2d(*theBegin, theLower, theUpper, arg3), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<TColgp_HArray1OfVec2d*> TColgp_HArray1OfVec2d_ctor_array1ofvec2d(TColgp_Array1OfVec2d const* theOther) {
-    try { return {new TColgp_HArray1OfVec2d(*theOther), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<TColgp_Array1OfVec2d const*> TColgp_HArray1OfVec2d_array1(const TColgp_HArray1OfVec2d* self_) {
-    try { return {&(self_->Array1()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<TColgp_Array1OfVec2d*> TColgp_HArray1OfVec2d_change_array1(TColgp_HArray1OfVec2d* self_) {
-    try { return {&(self_->ChangeArray1()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Handle(Standard_Type) const*> TColgp_HArray1OfVec2d_dynamic_type(const TColgp_HArray1OfVec2d* self_) {
-    try { return {&(self_->DynamicType()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<char const*> TColgp_HArray1OfVec2d_get_type_name() {
-    try { return {TColgp_HArray1OfVec2d::get_type_name(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Handle(Standard_Type) const*> TColgp_HArray1OfVec2d_get_type_descriptor() {
-    try { return {&(TColgp_HArray1OfVec2d::get_type_descriptor()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<const TColgp_Array1OfVec2d*> TColgp_HArray1OfVec2d_as_TColgp_Array1OfVec2d(const TColgp_HArray1OfVec2d* self_) { return {static_cast<const TColgp_Array1OfVec2d*>(self_), nullptr}; }
-extern "C" OcctResult<TColgp_Array1OfVec2d*> TColgp_HArray1OfVec2d_as_TColgp_Array1OfVec2d_mut(TColgp_HArray1OfVec2d* self_) { return {static_cast<TColgp_Array1OfVec2d*>(self_), nullptr}; }
-extern "C" OcctResult<const Standard_Transient*> TColgp_HArray1OfVec2d_as_Standard_Transient(const TColgp_HArray1OfVec2d* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<Standard_Transient*> TColgp_HArray1OfVec2d_as_Standard_Transient_mut(TColgp_HArray1OfVec2d* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleTColgpHArray1OfVec2d*> TColgp_HArray1OfVec2d_to_handle(TColgp_HArray1OfVec2d* obj) {
-    try { return {new HandleTColgpHArray1OfVec2d(obj), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<const TColgp_HArray1OfVec2d*> HandleTColgpHArray1OfVec2d_get(const HandleTColgpHArray1OfVec2d* handle) {
-    try { return {(*handle).get(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<TColgp_HArray1OfVec2d*> HandleTColgpHArray1OfVec2d_get_mut(HandleTColgpHArray1OfVec2d* handle) {
-    try { return {(*handle).get(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<HandleStandardTransient*> HandleTColgpHArray1OfVec2d_to_HandleStandardTransient(const HandleTColgpHArray1OfVec2d* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<bool> TColgp_HArray1OfVec2d_inherited_IsInstance(const TColgp_HArray1OfVec2d* self, Handle(Standard_Type) const& theType) {
-    try { return {self->IsInstance(theType), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<bool> TColgp_HArray1OfVec2d_inherited_IsKind(const TColgp_HArray1OfVec2d* self, Handle(Standard_Type) const& theType) {
-    try { return {self->IsKind(theType), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Standard_Transient*> TColgp_HArray1OfVec2d_inherited_This(const TColgp_HArray1OfVec2d* self) {
-    try { return {self->This(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<int32_t> TColgp_HArray1OfVec2d_inherited_GetRefCount(const TColgp_HArray1OfVec2d* self) {
-    try { return {self->GetRefCount(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* TColgp_HArray1OfVec2d_inherited_IncrementRefCounter(TColgp_HArray1OfVec2d* self) {
-    try { self->IncrementRefCounter(); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<int32_t> TColgp_HArray1OfVec2d_inherited_DecrementRefCounter(TColgp_HArray1OfVec2d* self) {
-    try { return {self->DecrementRefCounter(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* TColgp_HArray1OfVec2d_inherited_Delete(const TColgp_HArray1OfVec2d* self) {
-    try { self->Delete(); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" void TColgp_HArray1OfVec2d_destructor(TColgp_HArray1OfVec2d* self_) { delete self_; }
-
-// ========================
-// TColgp_HArray1OfXY wrappers
-// ========================
-
-extern "C" OcctResult<TColgp_HArray1OfXY*> TColgp_HArray1OfXY_ctor() {
-    try { return {new TColgp_HArray1OfXY(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<TColgp_HArray1OfXY*> TColgp_HArray1OfXY_ctor_int2(int32_t theLower, int32_t theUpper) {
-    try { return {new TColgp_HArray1OfXY(theLower, theUpper), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<TColgp_HArray1OfXY*> TColgp_HArray1OfXY_ctor_int2_type(int32_t theLower, int32_t theUpper, TColgp_Array1OfXY::value_type const* theValue) {
-    try { return {new TColgp_HArray1OfXY(theLower, theUpper, *theValue), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<TColgp_HArray1OfXY*> TColgp_HArray1OfXY_ctor_type_int2_bool(TColgp_Array1OfXY::value_type const* theBegin, int32_t theLower, int32_t theUpper, bool arg3) {
-    try { return {new TColgp_HArray1OfXY(*theBegin, theLower, theUpper, arg3), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<TColgp_HArray1OfXY*> TColgp_HArray1OfXY_ctor_array1ofxy(TColgp_Array1OfXY const* theOther) {
-    try { return {new TColgp_HArray1OfXY(*theOther), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<TColgp_Array1OfXY const*> TColgp_HArray1OfXY_array1(const TColgp_HArray1OfXY* self_) {
-    try { return {&(self_->Array1()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<TColgp_Array1OfXY*> TColgp_HArray1OfXY_change_array1(TColgp_HArray1OfXY* self_) {
-    try { return {&(self_->ChangeArray1()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Handle(Standard_Type) const*> TColgp_HArray1OfXY_dynamic_type(const TColgp_HArray1OfXY* self_) {
-    try { return {&(self_->DynamicType()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<char const*> TColgp_HArray1OfXY_get_type_name() {
-    try { return {TColgp_HArray1OfXY::get_type_name(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Handle(Standard_Type) const*> TColgp_HArray1OfXY_get_type_descriptor() {
-    try { return {&(TColgp_HArray1OfXY::get_type_descriptor()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<const TColgp_Array1OfXY*> TColgp_HArray1OfXY_as_TColgp_Array1OfXY(const TColgp_HArray1OfXY* self_) { return {static_cast<const TColgp_Array1OfXY*>(self_), nullptr}; }
-extern "C" OcctResult<TColgp_Array1OfXY*> TColgp_HArray1OfXY_as_TColgp_Array1OfXY_mut(TColgp_HArray1OfXY* self_) { return {static_cast<TColgp_Array1OfXY*>(self_), nullptr}; }
-extern "C" OcctResult<const Standard_Transient*> TColgp_HArray1OfXY_as_Standard_Transient(const TColgp_HArray1OfXY* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<Standard_Transient*> TColgp_HArray1OfXY_as_Standard_Transient_mut(TColgp_HArray1OfXY* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleTColgpHArray1OfXY*> TColgp_HArray1OfXY_to_handle(TColgp_HArray1OfXY* obj) {
-    try { return {new HandleTColgpHArray1OfXY(obj), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<const TColgp_HArray1OfXY*> HandleTColgpHArray1OfXY_get(const HandleTColgpHArray1OfXY* handle) {
-    try { return {(*handle).get(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<TColgp_HArray1OfXY*> HandleTColgpHArray1OfXY_get_mut(HandleTColgpHArray1OfXY* handle) {
-    try { return {(*handle).get(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<HandleStandardTransient*> HandleTColgpHArray1OfXY_to_HandleStandardTransient(const HandleTColgpHArray1OfXY* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<bool> TColgp_HArray1OfXY_inherited_IsInstance(const TColgp_HArray1OfXY* self, Handle(Standard_Type) const& theType) {
-    try { return {self->IsInstance(theType), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<bool> TColgp_HArray1OfXY_inherited_IsKind(const TColgp_HArray1OfXY* self, Handle(Standard_Type) const& theType) {
-    try { return {self->IsKind(theType), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Standard_Transient*> TColgp_HArray1OfXY_inherited_This(const TColgp_HArray1OfXY* self) {
-    try { return {self->This(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<int32_t> TColgp_HArray1OfXY_inherited_GetRefCount(const TColgp_HArray1OfXY* self) {
-    try { return {self->GetRefCount(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* TColgp_HArray1OfXY_inherited_IncrementRefCounter(TColgp_HArray1OfXY* self) {
-    try { self->IncrementRefCounter(); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<int32_t> TColgp_HArray1OfXY_inherited_DecrementRefCounter(TColgp_HArray1OfXY* self) {
-    try { return {self->DecrementRefCounter(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* TColgp_HArray1OfXY_inherited_Delete(const TColgp_HArray1OfXY* self) {
-    try { self->Delete(); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" void TColgp_HArray1OfXY_destructor(TColgp_HArray1OfXY* self_) { delete self_; }
-
-// ========================
-// TColgp_HArray1OfXYZ wrappers
-// ========================
-
-extern "C" OcctResult<TColgp_HArray1OfXYZ*> TColgp_HArray1OfXYZ_ctor() {
-    try { return {new TColgp_HArray1OfXYZ(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<TColgp_HArray1OfXYZ*> TColgp_HArray1OfXYZ_ctor_int2(int32_t theLower, int32_t theUpper) {
-    try { return {new TColgp_HArray1OfXYZ(theLower, theUpper), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<TColgp_HArray1OfXYZ*> TColgp_HArray1OfXYZ_ctor_int2_type(int32_t theLower, int32_t theUpper, TColgp_Array1OfXYZ::value_type const* theValue) {
-    try { return {new TColgp_HArray1OfXYZ(theLower, theUpper, *theValue), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<TColgp_HArray1OfXYZ*> TColgp_HArray1OfXYZ_ctor_type_int2_bool(TColgp_Array1OfXYZ::value_type const* theBegin, int32_t theLower, int32_t theUpper, bool arg3) {
-    try { return {new TColgp_HArray1OfXYZ(*theBegin, theLower, theUpper, arg3), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<TColgp_HArray1OfXYZ*> TColgp_HArray1OfXYZ_ctor_array1ofxyz(TColgp_Array1OfXYZ const* theOther) {
-    try { return {new TColgp_HArray1OfXYZ(*theOther), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<TColgp_Array1OfXYZ const*> TColgp_HArray1OfXYZ_array1(const TColgp_HArray1OfXYZ* self_) {
-    try { return {&(self_->Array1()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<TColgp_Array1OfXYZ*> TColgp_HArray1OfXYZ_change_array1(TColgp_HArray1OfXYZ* self_) {
-    try { return {&(self_->ChangeArray1()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Handle(Standard_Type) const*> TColgp_HArray1OfXYZ_dynamic_type(const TColgp_HArray1OfXYZ* self_) {
-    try { return {&(self_->DynamicType()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<char const*> TColgp_HArray1OfXYZ_get_type_name() {
-    try { return {TColgp_HArray1OfXYZ::get_type_name(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Handle(Standard_Type) const*> TColgp_HArray1OfXYZ_get_type_descriptor() {
-    try { return {&(TColgp_HArray1OfXYZ::get_type_descriptor()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<const TColgp_Array1OfXYZ*> TColgp_HArray1OfXYZ_as_TColgp_Array1OfXYZ(const TColgp_HArray1OfXYZ* self_) { return {static_cast<const TColgp_Array1OfXYZ*>(self_), nullptr}; }
-extern "C" OcctResult<TColgp_Array1OfXYZ*> TColgp_HArray1OfXYZ_as_TColgp_Array1OfXYZ_mut(TColgp_HArray1OfXYZ* self_) { return {static_cast<TColgp_Array1OfXYZ*>(self_), nullptr}; }
-extern "C" OcctResult<const Standard_Transient*> TColgp_HArray1OfXYZ_as_Standard_Transient(const TColgp_HArray1OfXYZ* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<Standard_Transient*> TColgp_HArray1OfXYZ_as_Standard_Transient_mut(TColgp_HArray1OfXYZ* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleTColgpHArray1OfXYZ*> TColgp_HArray1OfXYZ_to_handle(TColgp_HArray1OfXYZ* obj) {
-    try { return {new HandleTColgpHArray1OfXYZ(obj), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<const TColgp_HArray1OfXYZ*> HandleTColgpHArray1OfXYZ_get(const HandleTColgpHArray1OfXYZ* handle) {
-    try { return {(*handle).get(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<TColgp_HArray1OfXYZ*> HandleTColgpHArray1OfXYZ_get_mut(HandleTColgpHArray1OfXYZ* handle) {
-    try { return {(*handle).get(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<HandleStandardTransient*> HandleTColgpHArray1OfXYZ_to_HandleStandardTransient(const HandleTColgpHArray1OfXYZ* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<bool> TColgp_HArray1OfXYZ_inherited_IsInstance(const TColgp_HArray1OfXYZ* self, Handle(Standard_Type) const& theType) {
-    try { return {self->IsInstance(theType), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<bool> TColgp_HArray1OfXYZ_inherited_IsKind(const TColgp_HArray1OfXYZ* self, Handle(Standard_Type) const& theType) {
-    try { return {self->IsKind(theType), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Standard_Transient*> TColgp_HArray1OfXYZ_inherited_This(const TColgp_HArray1OfXYZ* self) {
-    try { return {self->This(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<int32_t> TColgp_HArray1OfXYZ_inherited_GetRefCount(const TColgp_HArray1OfXYZ* self) {
-    try { return {self->GetRefCount(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* TColgp_HArray1OfXYZ_inherited_IncrementRefCounter(TColgp_HArray1OfXYZ* self) {
-    try { self->IncrementRefCounter(); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<int32_t> TColgp_HArray1OfXYZ_inherited_DecrementRefCounter(TColgp_HArray1OfXYZ* self) {
-    try { return {self->DecrementRefCounter(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* TColgp_HArray1OfXYZ_inherited_Delete(const TColgp_HArray1OfXYZ* self) {
-    try { self->Delete(); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" void TColgp_HArray1OfXYZ_destructor(TColgp_HArray1OfXYZ* self_) { delete self_; }
-
-// ========================
-// TColgp_HArray2OfCirc2d wrappers
-// ========================
-
-extern "C" OcctResult<TColgp_HArray2OfCirc2d*> TColgp_HArray2OfCirc2d_ctor_int4(int32_t theRowLow, int32_t theRowUpp, int32_t theColLow, int32_t theColUpp) {
-    try { return {new TColgp_HArray2OfCirc2d(theRowLow, theRowUpp, theColLow, theColUpp), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<TColgp_HArray2OfCirc2d*> TColgp_HArray2OfCirc2d_ctor_int4_type(int32_t theRowLow, int32_t theRowUpp, int32_t theColLow, int32_t theColUpp, TColgp_Array2OfCirc2d::value_type const* theValue) {
-    try { return {new TColgp_HArray2OfCirc2d(theRowLow, theRowUpp, theColLow, theColUpp, *theValue), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<TColgp_HArray2OfCirc2d*> TColgp_HArray2OfCirc2d_ctor_array2ofcirc2d(TColgp_Array2OfCirc2d const* theOther) {
-    try { return {new TColgp_HArray2OfCirc2d(*theOther), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<TColgp_Array2OfCirc2d const*> TColgp_HArray2OfCirc2d_array2(const TColgp_HArray2OfCirc2d* self_) {
-    try { return {&(self_->Array2()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<TColgp_Array2OfCirc2d*> TColgp_HArray2OfCirc2d_change_array2(TColgp_HArray2OfCirc2d* self_) {
-    try { return {&(self_->ChangeArray2()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Handle(Standard_Type) const*> TColgp_HArray2OfCirc2d_dynamic_type(const TColgp_HArray2OfCirc2d* self_) {
-    try { return {&(self_->DynamicType()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<char const*> TColgp_HArray2OfCirc2d_get_type_name() {
-    try { return {TColgp_HArray2OfCirc2d::get_type_name(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Handle(Standard_Type) const*> TColgp_HArray2OfCirc2d_get_type_descriptor() {
-    try { return {&(TColgp_HArray2OfCirc2d::get_type_descriptor()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<const TColgp_Array2OfCirc2d*> TColgp_HArray2OfCirc2d_as_TColgp_Array2OfCirc2d(const TColgp_HArray2OfCirc2d* self_) { return {static_cast<const TColgp_Array2OfCirc2d*>(self_), nullptr}; }
-extern "C" OcctResult<TColgp_Array2OfCirc2d*> TColgp_HArray2OfCirc2d_as_TColgp_Array2OfCirc2d_mut(TColgp_HArray2OfCirc2d* self_) { return {static_cast<TColgp_Array2OfCirc2d*>(self_), nullptr}; }
-extern "C" OcctResult<const Standard_Transient*> TColgp_HArray2OfCirc2d_as_Standard_Transient(const TColgp_HArray2OfCirc2d* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<Standard_Transient*> TColgp_HArray2OfCirc2d_as_Standard_Transient_mut(TColgp_HArray2OfCirc2d* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleTColgpHArray2OfCirc2d*> TColgp_HArray2OfCirc2d_to_handle(TColgp_HArray2OfCirc2d* obj) {
-    try { return {new HandleTColgpHArray2OfCirc2d(obj), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<const TColgp_HArray2OfCirc2d*> HandleTColgpHArray2OfCirc2d_get(const HandleTColgpHArray2OfCirc2d* handle) {
-    try { return {(*handle).get(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<TColgp_HArray2OfCirc2d*> HandleTColgpHArray2OfCirc2d_get_mut(HandleTColgpHArray2OfCirc2d* handle) {
-    try { return {(*handle).get(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<HandleStandardTransient*> HandleTColgpHArray2OfCirc2d_to_HandleStandardTransient(const HandleTColgpHArray2OfCirc2d* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<bool> TColgp_HArray2OfCirc2d_inherited_IsInstance(const TColgp_HArray2OfCirc2d* self, Handle(Standard_Type) const& theType) {
-    try { return {self->IsInstance(theType), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<bool> TColgp_HArray2OfCirc2d_inherited_IsKind(const TColgp_HArray2OfCirc2d* self, Handle(Standard_Type) const& theType) {
-    try { return {self->IsKind(theType), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Standard_Transient*> TColgp_HArray2OfCirc2d_inherited_This(const TColgp_HArray2OfCirc2d* self) {
-    try { return {self->This(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<int32_t> TColgp_HArray2OfCirc2d_inherited_GetRefCount(const TColgp_HArray2OfCirc2d* self) {
-    try { return {self->GetRefCount(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* TColgp_HArray2OfCirc2d_inherited_IncrementRefCounter(TColgp_HArray2OfCirc2d* self) {
-    try { self->IncrementRefCounter(); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<int32_t> TColgp_HArray2OfCirc2d_inherited_DecrementRefCounter(TColgp_HArray2OfCirc2d* self) {
-    try { return {self->DecrementRefCounter(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* TColgp_HArray2OfCirc2d_inherited_Delete(const TColgp_HArray2OfCirc2d* self) {
-    try { self->Delete(); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" void TColgp_HArray2OfCirc2d_destructor(TColgp_HArray2OfCirc2d* self_) { delete self_; }
-
-// ========================
-// TColgp_HArray2OfDir wrappers
-// ========================
-
-extern "C" OcctResult<TColgp_HArray2OfDir*> TColgp_HArray2OfDir_ctor_int4(int32_t theRowLow, int32_t theRowUpp, int32_t theColLow, int32_t theColUpp) {
-    try { return {new TColgp_HArray2OfDir(theRowLow, theRowUpp, theColLow, theColUpp), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<TColgp_HArray2OfDir*> TColgp_HArray2OfDir_ctor_int4_type(int32_t theRowLow, int32_t theRowUpp, int32_t theColLow, int32_t theColUpp, TColgp_Array2OfDir::value_type const* theValue) {
-    try { return {new TColgp_HArray2OfDir(theRowLow, theRowUpp, theColLow, theColUpp, *theValue), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<TColgp_HArray2OfDir*> TColgp_HArray2OfDir_ctor_array2ofdir(TColgp_Array2OfDir const* theOther) {
-    try { return {new TColgp_HArray2OfDir(*theOther), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<TColgp_Array2OfDir const*> TColgp_HArray2OfDir_array2(const TColgp_HArray2OfDir* self_) {
-    try { return {&(self_->Array2()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<TColgp_Array2OfDir*> TColgp_HArray2OfDir_change_array2(TColgp_HArray2OfDir* self_) {
-    try { return {&(self_->ChangeArray2()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Handle(Standard_Type) const*> TColgp_HArray2OfDir_dynamic_type(const TColgp_HArray2OfDir* self_) {
-    try { return {&(self_->DynamicType()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<char const*> TColgp_HArray2OfDir_get_type_name() {
-    try { return {TColgp_HArray2OfDir::get_type_name(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Handle(Standard_Type) const*> TColgp_HArray2OfDir_get_type_descriptor() {
-    try { return {&(TColgp_HArray2OfDir::get_type_descriptor()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<const TColgp_Array2OfDir*> TColgp_HArray2OfDir_as_TColgp_Array2OfDir(const TColgp_HArray2OfDir* self_) { return {static_cast<const TColgp_Array2OfDir*>(self_), nullptr}; }
-extern "C" OcctResult<TColgp_Array2OfDir*> TColgp_HArray2OfDir_as_TColgp_Array2OfDir_mut(TColgp_HArray2OfDir* self_) { return {static_cast<TColgp_Array2OfDir*>(self_), nullptr}; }
-extern "C" OcctResult<const Standard_Transient*> TColgp_HArray2OfDir_as_Standard_Transient(const TColgp_HArray2OfDir* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<Standard_Transient*> TColgp_HArray2OfDir_as_Standard_Transient_mut(TColgp_HArray2OfDir* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleTColgpHArray2OfDir*> TColgp_HArray2OfDir_to_handle(TColgp_HArray2OfDir* obj) {
-    try { return {new HandleTColgpHArray2OfDir(obj), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<const TColgp_HArray2OfDir*> HandleTColgpHArray2OfDir_get(const HandleTColgpHArray2OfDir* handle) {
-    try { return {(*handle).get(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<TColgp_HArray2OfDir*> HandleTColgpHArray2OfDir_get_mut(HandleTColgpHArray2OfDir* handle) {
-    try { return {(*handle).get(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<HandleStandardTransient*> HandleTColgpHArray2OfDir_to_HandleStandardTransient(const HandleTColgpHArray2OfDir* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<bool> TColgp_HArray2OfDir_inherited_IsInstance(const TColgp_HArray2OfDir* self, Handle(Standard_Type) const& theType) {
-    try { return {self->IsInstance(theType), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<bool> TColgp_HArray2OfDir_inherited_IsKind(const TColgp_HArray2OfDir* self, Handle(Standard_Type) const& theType) {
-    try { return {self->IsKind(theType), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Standard_Transient*> TColgp_HArray2OfDir_inherited_This(const TColgp_HArray2OfDir* self) {
-    try { return {self->This(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<int32_t> TColgp_HArray2OfDir_inherited_GetRefCount(const TColgp_HArray2OfDir* self) {
-    try { return {self->GetRefCount(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* TColgp_HArray2OfDir_inherited_IncrementRefCounter(TColgp_HArray2OfDir* self) {
-    try { self->IncrementRefCounter(); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<int32_t> TColgp_HArray2OfDir_inherited_DecrementRefCounter(TColgp_HArray2OfDir* self) {
-    try { return {self->DecrementRefCounter(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* TColgp_HArray2OfDir_inherited_Delete(const TColgp_HArray2OfDir* self) {
-    try { self->Delete(); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" void TColgp_HArray2OfDir_destructor(TColgp_HArray2OfDir* self_) { delete self_; }
-
-// ========================
-// TColgp_HArray2OfDir2d wrappers
-// ========================
-
-extern "C" OcctResult<TColgp_HArray2OfDir2d*> TColgp_HArray2OfDir2d_ctor_int4(int32_t theRowLow, int32_t theRowUpp, int32_t theColLow, int32_t theColUpp) {
-    try { return {new TColgp_HArray2OfDir2d(theRowLow, theRowUpp, theColLow, theColUpp), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<TColgp_HArray2OfDir2d*> TColgp_HArray2OfDir2d_ctor_int4_type(int32_t theRowLow, int32_t theRowUpp, int32_t theColLow, int32_t theColUpp, TColgp_Array2OfDir2d::value_type const* theValue) {
-    try { return {new TColgp_HArray2OfDir2d(theRowLow, theRowUpp, theColLow, theColUpp, *theValue), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<TColgp_HArray2OfDir2d*> TColgp_HArray2OfDir2d_ctor_array2ofdir2d(TColgp_Array2OfDir2d const* theOther) {
-    try { return {new TColgp_HArray2OfDir2d(*theOther), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<TColgp_Array2OfDir2d const*> TColgp_HArray2OfDir2d_array2(const TColgp_HArray2OfDir2d* self_) {
-    try { return {&(self_->Array2()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<TColgp_Array2OfDir2d*> TColgp_HArray2OfDir2d_change_array2(TColgp_HArray2OfDir2d* self_) {
-    try { return {&(self_->ChangeArray2()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Handle(Standard_Type) const*> TColgp_HArray2OfDir2d_dynamic_type(const TColgp_HArray2OfDir2d* self_) {
-    try { return {&(self_->DynamicType()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<char const*> TColgp_HArray2OfDir2d_get_type_name() {
-    try { return {TColgp_HArray2OfDir2d::get_type_name(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Handle(Standard_Type) const*> TColgp_HArray2OfDir2d_get_type_descriptor() {
-    try { return {&(TColgp_HArray2OfDir2d::get_type_descriptor()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<const TColgp_Array2OfDir2d*> TColgp_HArray2OfDir2d_as_TColgp_Array2OfDir2d(const TColgp_HArray2OfDir2d* self_) { return {static_cast<const TColgp_Array2OfDir2d*>(self_), nullptr}; }
-extern "C" OcctResult<TColgp_Array2OfDir2d*> TColgp_HArray2OfDir2d_as_TColgp_Array2OfDir2d_mut(TColgp_HArray2OfDir2d* self_) { return {static_cast<TColgp_Array2OfDir2d*>(self_), nullptr}; }
-extern "C" OcctResult<const Standard_Transient*> TColgp_HArray2OfDir2d_as_Standard_Transient(const TColgp_HArray2OfDir2d* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<Standard_Transient*> TColgp_HArray2OfDir2d_as_Standard_Transient_mut(TColgp_HArray2OfDir2d* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleTColgpHArray2OfDir2d*> TColgp_HArray2OfDir2d_to_handle(TColgp_HArray2OfDir2d* obj) {
-    try { return {new HandleTColgpHArray2OfDir2d(obj), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<const TColgp_HArray2OfDir2d*> HandleTColgpHArray2OfDir2d_get(const HandleTColgpHArray2OfDir2d* handle) {
-    try { return {(*handle).get(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<TColgp_HArray2OfDir2d*> HandleTColgpHArray2OfDir2d_get_mut(HandleTColgpHArray2OfDir2d* handle) {
-    try { return {(*handle).get(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<HandleStandardTransient*> HandleTColgpHArray2OfDir2d_to_HandleStandardTransient(const HandleTColgpHArray2OfDir2d* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<bool> TColgp_HArray2OfDir2d_inherited_IsInstance(const TColgp_HArray2OfDir2d* self, Handle(Standard_Type) const& theType) {
-    try { return {self->IsInstance(theType), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<bool> TColgp_HArray2OfDir2d_inherited_IsKind(const TColgp_HArray2OfDir2d* self, Handle(Standard_Type) const& theType) {
-    try { return {self->IsKind(theType), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Standard_Transient*> TColgp_HArray2OfDir2d_inherited_This(const TColgp_HArray2OfDir2d* self) {
-    try { return {self->This(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<int32_t> TColgp_HArray2OfDir2d_inherited_GetRefCount(const TColgp_HArray2OfDir2d* self) {
-    try { return {self->GetRefCount(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* TColgp_HArray2OfDir2d_inherited_IncrementRefCounter(TColgp_HArray2OfDir2d* self) {
-    try { self->IncrementRefCounter(); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<int32_t> TColgp_HArray2OfDir2d_inherited_DecrementRefCounter(TColgp_HArray2OfDir2d* self) {
-    try { return {self->DecrementRefCounter(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* TColgp_HArray2OfDir2d_inherited_Delete(const TColgp_HArray2OfDir2d* self) {
-    try { self->Delete(); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" void TColgp_HArray2OfDir2d_destructor(TColgp_HArray2OfDir2d* self_) { delete self_; }
-
-// ========================
-// TColgp_HArray2OfLin2d wrappers
-// ========================
-
-extern "C" OcctResult<TColgp_HArray2OfLin2d*> TColgp_HArray2OfLin2d_ctor_int4(int32_t theRowLow, int32_t theRowUpp, int32_t theColLow, int32_t theColUpp) {
-    try { return {new TColgp_HArray2OfLin2d(theRowLow, theRowUpp, theColLow, theColUpp), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<TColgp_HArray2OfLin2d*> TColgp_HArray2OfLin2d_ctor_int4_type(int32_t theRowLow, int32_t theRowUpp, int32_t theColLow, int32_t theColUpp, TColgp_Array2OfLin2d::value_type const* theValue) {
-    try { return {new TColgp_HArray2OfLin2d(theRowLow, theRowUpp, theColLow, theColUpp, *theValue), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<TColgp_HArray2OfLin2d*> TColgp_HArray2OfLin2d_ctor_array2oflin2d(TColgp_Array2OfLin2d const* theOther) {
-    try { return {new TColgp_HArray2OfLin2d(*theOther), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<TColgp_Array2OfLin2d const*> TColgp_HArray2OfLin2d_array2(const TColgp_HArray2OfLin2d* self_) {
-    try { return {&(self_->Array2()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<TColgp_Array2OfLin2d*> TColgp_HArray2OfLin2d_change_array2(TColgp_HArray2OfLin2d* self_) {
-    try { return {&(self_->ChangeArray2()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Handle(Standard_Type) const*> TColgp_HArray2OfLin2d_dynamic_type(const TColgp_HArray2OfLin2d* self_) {
-    try { return {&(self_->DynamicType()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<char const*> TColgp_HArray2OfLin2d_get_type_name() {
-    try { return {TColgp_HArray2OfLin2d::get_type_name(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Handle(Standard_Type) const*> TColgp_HArray2OfLin2d_get_type_descriptor() {
-    try { return {&(TColgp_HArray2OfLin2d::get_type_descriptor()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<const TColgp_Array2OfLin2d*> TColgp_HArray2OfLin2d_as_TColgp_Array2OfLin2d(const TColgp_HArray2OfLin2d* self_) { return {static_cast<const TColgp_Array2OfLin2d*>(self_), nullptr}; }
-extern "C" OcctResult<TColgp_Array2OfLin2d*> TColgp_HArray2OfLin2d_as_TColgp_Array2OfLin2d_mut(TColgp_HArray2OfLin2d* self_) { return {static_cast<TColgp_Array2OfLin2d*>(self_), nullptr}; }
-extern "C" OcctResult<const Standard_Transient*> TColgp_HArray2OfLin2d_as_Standard_Transient(const TColgp_HArray2OfLin2d* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<Standard_Transient*> TColgp_HArray2OfLin2d_as_Standard_Transient_mut(TColgp_HArray2OfLin2d* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleTColgpHArray2OfLin2d*> TColgp_HArray2OfLin2d_to_handle(TColgp_HArray2OfLin2d* obj) {
-    try { return {new HandleTColgpHArray2OfLin2d(obj), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<const TColgp_HArray2OfLin2d*> HandleTColgpHArray2OfLin2d_get(const HandleTColgpHArray2OfLin2d* handle) {
-    try { return {(*handle).get(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<TColgp_HArray2OfLin2d*> HandleTColgpHArray2OfLin2d_get_mut(HandleTColgpHArray2OfLin2d* handle) {
-    try { return {(*handle).get(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<HandleStandardTransient*> HandleTColgpHArray2OfLin2d_to_HandleStandardTransient(const HandleTColgpHArray2OfLin2d* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<bool> TColgp_HArray2OfLin2d_inherited_IsInstance(const TColgp_HArray2OfLin2d* self, Handle(Standard_Type) const& theType) {
-    try { return {self->IsInstance(theType), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<bool> TColgp_HArray2OfLin2d_inherited_IsKind(const TColgp_HArray2OfLin2d* self, Handle(Standard_Type) const& theType) {
-    try { return {self->IsKind(theType), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Standard_Transient*> TColgp_HArray2OfLin2d_inherited_This(const TColgp_HArray2OfLin2d* self) {
-    try { return {self->This(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<int32_t> TColgp_HArray2OfLin2d_inherited_GetRefCount(const TColgp_HArray2OfLin2d* self) {
-    try { return {self->GetRefCount(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* TColgp_HArray2OfLin2d_inherited_IncrementRefCounter(TColgp_HArray2OfLin2d* self) {
-    try { self->IncrementRefCounter(); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<int32_t> TColgp_HArray2OfLin2d_inherited_DecrementRefCounter(TColgp_HArray2OfLin2d* self) {
-    try { return {self->DecrementRefCounter(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* TColgp_HArray2OfLin2d_inherited_Delete(const TColgp_HArray2OfLin2d* self) {
-    try { self->Delete(); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" void TColgp_HArray2OfLin2d_destructor(TColgp_HArray2OfLin2d* self_) { delete self_; }
-
-// ========================
-// TColgp_HArray2OfPnt wrappers
-// ========================
-
-extern "C" OcctResult<TColgp_HArray2OfPnt*> TColgp_HArray2OfPnt_ctor_int4(int32_t theRowLow, int32_t theRowUpp, int32_t theColLow, int32_t theColUpp) {
-    try { return {new TColgp_HArray2OfPnt(theRowLow, theRowUpp, theColLow, theColUpp), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<TColgp_HArray2OfPnt*> TColgp_HArray2OfPnt_ctor_int4_type(int32_t theRowLow, int32_t theRowUpp, int32_t theColLow, int32_t theColUpp, TColgp_Array2OfPnt::value_type const* theValue) {
-    try { return {new TColgp_HArray2OfPnt(theRowLow, theRowUpp, theColLow, theColUpp, *theValue), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<TColgp_HArray2OfPnt*> TColgp_HArray2OfPnt_ctor_array2ofpnt(TColgp_Array2OfPnt const* theOther) {
-    try { return {new TColgp_HArray2OfPnt(*theOther), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<TColgp_Array2OfPnt const*> TColgp_HArray2OfPnt_array2(const TColgp_HArray2OfPnt* self_) {
-    try { return {&(self_->Array2()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<TColgp_Array2OfPnt*> TColgp_HArray2OfPnt_change_array2(TColgp_HArray2OfPnt* self_) {
-    try { return {&(self_->ChangeArray2()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Handle(Standard_Type) const*> TColgp_HArray2OfPnt_dynamic_type(const TColgp_HArray2OfPnt* self_) {
-    try { return {&(self_->DynamicType()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<char const*> TColgp_HArray2OfPnt_get_type_name() {
-    try { return {TColgp_HArray2OfPnt::get_type_name(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Handle(Standard_Type) const*> TColgp_HArray2OfPnt_get_type_descriptor() {
-    try { return {&(TColgp_HArray2OfPnt::get_type_descriptor()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<const TColgp_Array2OfPnt*> TColgp_HArray2OfPnt_as_TColgp_Array2OfPnt(const TColgp_HArray2OfPnt* self_) { return {static_cast<const TColgp_Array2OfPnt*>(self_), nullptr}; }
-extern "C" OcctResult<TColgp_Array2OfPnt*> TColgp_HArray2OfPnt_as_TColgp_Array2OfPnt_mut(TColgp_HArray2OfPnt* self_) { return {static_cast<TColgp_Array2OfPnt*>(self_), nullptr}; }
-extern "C" OcctResult<const Standard_Transient*> TColgp_HArray2OfPnt_as_Standard_Transient(const TColgp_HArray2OfPnt* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<Standard_Transient*> TColgp_HArray2OfPnt_as_Standard_Transient_mut(TColgp_HArray2OfPnt* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleTColgpHArray2OfPnt*> TColgp_HArray2OfPnt_to_handle(TColgp_HArray2OfPnt* obj) {
-    try { return {new HandleTColgpHArray2OfPnt(obj), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<const TColgp_HArray2OfPnt*> HandleTColgpHArray2OfPnt_get(const HandleTColgpHArray2OfPnt* handle) {
-    try { return {(*handle).get(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<TColgp_HArray2OfPnt*> HandleTColgpHArray2OfPnt_get_mut(HandleTColgpHArray2OfPnt* handle) {
-    try { return {(*handle).get(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<HandleStandardTransient*> HandleTColgpHArray2OfPnt_to_HandleStandardTransient(const HandleTColgpHArray2OfPnt* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<bool> TColgp_HArray2OfPnt_inherited_IsInstance(const TColgp_HArray2OfPnt* self, Handle(Standard_Type) const& theType) {
-    try { return {self->IsInstance(theType), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<bool> TColgp_HArray2OfPnt_inherited_IsKind(const TColgp_HArray2OfPnt* self, Handle(Standard_Type) const& theType) {
-    try { return {self->IsKind(theType), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Standard_Transient*> TColgp_HArray2OfPnt_inherited_This(const TColgp_HArray2OfPnt* self) {
-    try { return {self->This(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<int32_t> TColgp_HArray2OfPnt_inherited_GetRefCount(const TColgp_HArray2OfPnt* self) {
-    try { return {self->GetRefCount(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* TColgp_HArray2OfPnt_inherited_IncrementRefCounter(TColgp_HArray2OfPnt* self) {
-    try { self->IncrementRefCounter(); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<int32_t> TColgp_HArray2OfPnt_inherited_DecrementRefCounter(TColgp_HArray2OfPnt* self) {
-    try { return {self->DecrementRefCounter(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* TColgp_HArray2OfPnt_inherited_Delete(const TColgp_HArray2OfPnt* self) {
-    try { self->Delete(); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" void TColgp_HArray2OfPnt_destructor(TColgp_HArray2OfPnt* self_) { delete self_; }
-
-// ========================
-// TColgp_HArray2OfPnt2d wrappers
-// ========================
-
-extern "C" OcctResult<TColgp_HArray2OfPnt2d*> TColgp_HArray2OfPnt2d_ctor_int4(int32_t theRowLow, int32_t theRowUpp, int32_t theColLow, int32_t theColUpp) {
-    try { return {new TColgp_HArray2OfPnt2d(theRowLow, theRowUpp, theColLow, theColUpp), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<TColgp_HArray2OfPnt2d*> TColgp_HArray2OfPnt2d_ctor_int4_type(int32_t theRowLow, int32_t theRowUpp, int32_t theColLow, int32_t theColUpp, TColgp_Array2OfPnt2d::value_type const* theValue) {
-    try { return {new TColgp_HArray2OfPnt2d(theRowLow, theRowUpp, theColLow, theColUpp, *theValue), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<TColgp_HArray2OfPnt2d*> TColgp_HArray2OfPnt2d_ctor_array2ofpnt2d(TColgp_Array2OfPnt2d const* theOther) {
-    try { return {new TColgp_HArray2OfPnt2d(*theOther), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<TColgp_Array2OfPnt2d const*> TColgp_HArray2OfPnt2d_array2(const TColgp_HArray2OfPnt2d* self_) {
-    try { return {&(self_->Array2()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<TColgp_Array2OfPnt2d*> TColgp_HArray2OfPnt2d_change_array2(TColgp_HArray2OfPnt2d* self_) {
-    try { return {&(self_->ChangeArray2()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Handle(Standard_Type) const*> TColgp_HArray2OfPnt2d_dynamic_type(const TColgp_HArray2OfPnt2d* self_) {
-    try { return {&(self_->DynamicType()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<char const*> TColgp_HArray2OfPnt2d_get_type_name() {
-    try { return {TColgp_HArray2OfPnt2d::get_type_name(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Handle(Standard_Type) const*> TColgp_HArray2OfPnt2d_get_type_descriptor() {
-    try { return {&(TColgp_HArray2OfPnt2d::get_type_descriptor()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<const TColgp_Array2OfPnt2d*> TColgp_HArray2OfPnt2d_as_TColgp_Array2OfPnt2d(const TColgp_HArray2OfPnt2d* self_) { return {static_cast<const TColgp_Array2OfPnt2d*>(self_), nullptr}; }
-extern "C" OcctResult<TColgp_Array2OfPnt2d*> TColgp_HArray2OfPnt2d_as_TColgp_Array2OfPnt2d_mut(TColgp_HArray2OfPnt2d* self_) { return {static_cast<TColgp_Array2OfPnt2d*>(self_), nullptr}; }
-extern "C" OcctResult<const Standard_Transient*> TColgp_HArray2OfPnt2d_as_Standard_Transient(const TColgp_HArray2OfPnt2d* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<Standard_Transient*> TColgp_HArray2OfPnt2d_as_Standard_Transient_mut(TColgp_HArray2OfPnt2d* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleTColgpHArray2OfPnt2d*> TColgp_HArray2OfPnt2d_to_handle(TColgp_HArray2OfPnt2d* obj) {
-    try { return {new HandleTColgpHArray2OfPnt2d(obj), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<const TColgp_HArray2OfPnt2d*> HandleTColgpHArray2OfPnt2d_get(const HandleTColgpHArray2OfPnt2d* handle) {
-    try { return {(*handle).get(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<TColgp_HArray2OfPnt2d*> HandleTColgpHArray2OfPnt2d_get_mut(HandleTColgpHArray2OfPnt2d* handle) {
-    try { return {(*handle).get(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<HandleStandardTransient*> HandleTColgpHArray2OfPnt2d_to_HandleStandardTransient(const HandleTColgpHArray2OfPnt2d* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<bool> TColgp_HArray2OfPnt2d_inherited_IsInstance(const TColgp_HArray2OfPnt2d* self, Handle(Standard_Type) const& theType) {
-    try { return {self->IsInstance(theType), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<bool> TColgp_HArray2OfPnt2d_inherited_IsKind(const TColgp_HArray2OfPnt2d* self, Handle(Standard_Type) const& theType) {
-    try { return {self->IsKind(theType), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Standard_Transient*> TColgp_HArray2OfPnt2d_inherited_This(const TColgp_HArray2OfPnt2d* self) {
-    try { return {self->This(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<int32_t> TColgp_HArray2OfPnt2d_inherited_GetRefCount(const TColgp_HArray2OfPnt2d* self) {
-    try { return {self->GetRefCount(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* TColgp_HArray2OfPnt2d_inherited_IncrementRefCounter(TColgp_HArray2OfPnt2d* self) {
-    try { self->IncrementRefCounter(); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<int32_t> TColgp_HArray2OfPnt2d_inherited_DecrementRefCounter(TColgp_HArray2OfPnt2d* self) {
-    try { return {self->DecrementRefCounter(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* TColgp_HArray2OfPnt2d_inherited_Delete(const TColgp_HArray2OfPnt2d* self) {
-    try { self->Delete(); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" void TColgp_HArray2OfPnt2d_destructor(TColgp_HArray2OfPnt2d* self_) { delete self_; }
-
-// ========================
-// TColgp_HArray2OfVec wrappers
-// ========================
-
-extern "C" OcctResult<TColgp_HArray2OfVec*> TColgp_HArray2OfVec_ctor_int4(int32_t theRowLow, int32_t theRowUpp, int32_t theColLow, int32_t theColUpp) {
-    try { return {new TColgp_HArray2OfVec(theRowLow, theRowUpp, theColLow, theColUpp), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<TColgp_HArray2OfVec*> TColgp_HArray2OfVec_ctor_int4_type(int32_t theRowLow, int32_t theRowUpp, int32_t theColLow, int32_t theColUpp, TColgp_Array2OfVec::value_type const* theValue) {
-    try { return {new TColgp_HArray2OfVec(theRowLow, theRowUpp, theColLow, theColUpp, *theValue), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<TColgp_HArray2OfVec*> TColgp_HArray2OfVec_ctor_array2ofvec(TColgp_Array2OfVec const* theOther) {
-    try { return {new TColgp_HArray2OfVec(*theOther), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<TColgp_Array2OfVec const*> TColgp_HArray2OfVec_array2(const TColgp_HArray2OfVec* self_) {
-    try { return {&(self_->Array2()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<TColgp_Array2OfVec*> TColgp_HArray2OfVec_change_array2(TColgp_HArray2OfVec* self_) {
-    try { return {&(self_->ChangeArray2()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Handle(Standard_Type) const*> TColgp_HArray2OfVec_dynamic_type(const TColgp_HArray2OfVec* self_) {
-    try { return {&(self_->DynamicType()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<char const*> TColgp_HArray2OfVec_get_type_name() {
-    try { return {TColgp_HArray2OfVec::get_type_name(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Handle(Standard_Type) const*> TColgp_HArray2OfVec_get_type_descriptor() {
-    try { return {&(TColgp_HArray2OfVec::get_type_descriptor()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<const TColgp_Array2OfVec*> TColgp_HArray2OfVec_as_TColgp_Array2OfVec(const TColgp_HArray2OfVec* self_) { return {static_cast<const TColgp_Array2OfVec*>(self_), nullptr}; }
-extern "C" OcctResult<TColgp_Array2OfVec*> TColgp_HArray2OfVec_as_TColgp_Array2OfVec_mut(TColgp_HArray2OfVec* self_) { return {static_cast<TColgp_Array2OfVec*>(self_), nullptr}; }
-extern "C" OcctResult<const Standard_Transient*> TColgp_HArray2OfVec_as_Standard_Transient(const TColgp_HArray2OfVec* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<Standard_Transient*> TColgp_HArray2OfVec_as_Standard_Transient_mut(TColgp_HArray2OfVec* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleTColgpHArray2OfVec*> TColgp_HArray2OfVec_to_handle(TColgp_HArray2OfVec* obj) {
-    try { return {new HandleTColgpHArray2OfVec(obj), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<const TColgp_HArray2OfVec*> HandleTColgpHArray2OfVec_get(const HandleTColgpHArray2OfVec* handle) {
-    try { return {(*handle).get(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<TColgp_HArray2OfVec*> HandleTColgpHArray2OfVec_get_mut(HandleTColgpHArray2OfVec* handle) {
-    try { return {(*handle).get(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<HandleStandardTransient*> HandleTColgpHArray2OfVec_to_HandleStandardTransient(const HandleTColgpHArray2OfVec* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<bool> TColgp_HArray2OfVec_inherited_IsInstance(const TColgp_HArray2OfVec* self, Handle(Standard_Type) const& theType) {
-    try { return {self->IsInstance(theType), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<bool> TColgp_HArray2OfVec_inherited_IsKind(const TColgp_HArray2OfVec* self, Handle(Standard_Type) const& theType) {
-    try { return {self->IsKind(theType), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Standard_Transient*> TColgp_HArray2OfVec_inherited_This(const TColgp_HArray2OfVec* self) {
-    try { return {self->This(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<int32_t> TColgp_HArray2OfVec_inherited_GetRefCount(const TColgp_HArray2OfVec* self) {
-    try { return {self->GetRefCount(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* TColgp_HArray2OfVec_inherited_IncrementRefCounter(TColgp_HArray2OfVec* self) {
-    try { self->IncrementRefCounter(); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<int32_t> TColgp_HArray2OfVec_inherited_DecrementRefCounter(TColgp_HArray2OfVec* self) {
-    try { return {self->DecrementRefCounter(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* TColgp_HArray2OfVec_inherited_Delete(const TColgp_HArray2OfVec* self) {
-    try { self->Delete(); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" void TColgp_HArray2OfVec_destructor(TColgp_HArray2OfVec* self_) { delete self_; }
-
-// ========================
-// TColgp_HArray2OfVec2d wrappers
-// ========================
-
-extern "C" OcctResult<TColgp_HArray2OfVec2d*> TColgp_HArray2OfVec2d_ctor_int4(int32_t theRowLow, int32_t theRowUpp, int32_t theColLow, int32_t theColUpp) {
-    try { return {new TColgp_HArray2OfVec2d(theRowLow, theRowUpp, theColLow, theColUpp), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<TColgp_HArray2OfVec2d*> TColgp_HArray2OfVec2d_ctor_int4_type(int32_t theRowLow, int32_t theRowUpp, int32_t theColLow, int32_t theColUpp, TColgp_Array2OfVec2d::value_type const* theValue) {
-    try { return {new TColgp_HArray2OfVec2d(theRowLow, theRowUpp, theColLow, theColUpp, *theValue), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<TColgp_HArray2OfVec2d*> TColgp_HArray2OfVec2d_ctor_array2ofvec2d(TColgp_Array2OfVec2d const* theOther) {
-    try { return {new TColgp_HArray2OfVec2d(*theOther), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<TColgp_Array2OfVec2d const*> TColgp_HArray2OfVec2d_array2(const TColgp_HArray2OfVec2d* self_) {
-    try { return {&(self_->Array2()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<TColgp_Array2OfVec2d*> TColgp_HArray2OfVec2d_change_array2(TColgp_HArray2OfVec2d* self_) {
-    try { return {&(self_->ChangeArray2()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Handle(Standard_Type) const*> TColgp_HArray2OfVec2d_dynamic_type(const TColgp_HArray2OfVec2d* self_) {
-    try { return {&(self_->DynamicType()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<char const*> TColgp_HArray2OfVec2d_get_type_name() {
-    try { return {TColgp_HArray2OfVec2d::get_type_name(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Handle(Standard_Type) const*> TColgp_HArray2OfVec2d_get_type_descriptor() {
-    try { return {&(TColgp_HArray2OfVec2d::get_type_descriptor()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<const TColgp_Array2OfVec2d*> TColgp_HArray2OfVec2d_as_TColgp_Array2OfVec2d(const TColgp_HArray2OfVec2d* self_) { return {static_cast<const TColgp_Array2OfVec2d*>(self_), nullptr}; }
-extern "C" OcctResult<TColgp_Array2OfVec2d*> TColgp_HArray2OfVec2d_as_TColgp_Array2OfVec2d_mut(TColgp_HArray2OfVec2d* self_) { return {static_cast<TColgp_Array2OfVec2d*>(self_), nullptr}; }
-extern "C" OcctResult<const Standard_Transient*> TColgp_HArray2OfVec2d_as_Standard_Transient(const TColgp_HArray2OfVec2d* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<Standard_Transient*> TColgp_HArray2OfVec2d_as_Standard_Transient_mut(TColgp_HArray2OfVec2d* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleTColgpHArray2OfVec2d*> TColgp_HArray2OfVec2d_to_handle(TColgp_HArray2OfVec2d* obj) {
-    try { return {new HandleTColgpHArray2OfVec2d(obj), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<const TColgp_HArray2OfVec2d*> HandleTColgpHArray2OfVec2d_get(const HandleTColgpHArray2OfVec2d* handle) {
-    try { return {(*handle).get(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<TColgp_HArray2OfVec2d*> HandleTColgpHArray2OfVec2d_get_mut(HandleTColgpHArray2OfVec2d* handle) {
-    try { return {(*handle).get(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<HandleStandardTransient*> HandleTColgpHArray2OfVec2d_to_HandleStandardTransient(const HandleTColgpHArray2OfVec2d* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<bool> TColgp_HArray2OfVec2d_inherited_IsInstance(const TColgp_HArray2OfVec2d* self, Handle(Standard_Type) const& theType) {
-    try { return {self->IsInstance(theType), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<bool> TColgp_HArray2OfVec2d_inherited_IsKind(const TColgp_HArray2OfVec2d* self, Handle(Standard_Type) const& theType) {
-    try { return {self->IsKind(theType), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Standard_Transient*> TColgp_HArray2OfVec2d_inherited_This(const TColgp_HArray2OfVec2d* self) {
-    try { return {self->This(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<int32_t> TColgp_HArray2OfVec2d_inherited_GetRefCount(const TColgp_HArray2OfVec2d* self) {
-    try { return {self->GetRefCount(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* TColgp_HArray2OfVec2d_inherited_IncrementRefCounter(TColgp_HArray2OfVec2d* self) {
-    try { self->IncrementRefCounter(); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<int32_t> TColgp_HArray2OfVec2d_inherited_DecrementRefCounter(TColgp_HArray2OfVec2d* self) {
-    try { return {self->DecrementRefCounter(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* TColgp_HArray2OfVec2d_inherited_Delete(const TColgp_HArray2OfVec2d* self) {
-    try { self->Delete(); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" void TColgp_HArray2OfVec2d_destructor(TColgp_HArray2OfVec2d* self_) { delete self_; }
-
-// ========================
-// TColgp_HArray2OfXY wrappers
-// ========================
-
-extern "C" OcctResult<TColgp_HArray2OfXY*> TColgp_HArray2OfXY_ctor_int4(int32_t theRowLow, int32_t theRowUpp, int32_t theColLow, int32_t theColUpp) {
-    try { return {new TColgp_HArray2OfXY(theRowLow, theRowUpp, theColLow, theColUpp), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<TColgp_HArray2OfXY*> TColgp_HArray2OfXY_ctor_int4_type(int32_t theRowLow, int32_t theRowUpp, int32_t theColLow, int32_t theColUpp, TColgp_Array2OfXY::value_type const* theValue) {
-    try { return {new TColgp_HArray2OfXY(theRowLow, theRowUpp, theColLow, theColUpp, *theValue), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<TColgp_HArray2OfXY*> TColgp_HArray2OfXY_ctor_array2ofxy(TColgp_Array2OfXY const* theOther) {
-    try { return {new TColgp_HArray2OfXY(*theOther), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<TColgp_Array2OfXY const*> TColgp_HArray2OfXY_array2(const TColgp_HArray2OfXY* self_) {
-    try { return {&(self_->Array2()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<TColgp_Array2OfXY*> TColgp_HArray2OfXY_change_array2(TColgp_HArray2OfXY* self_) {
-    try { return {&(self_->ChangeArray2()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Handle(Standard_Type) const*> TColgp_HArray2OfXY_dynamic_type(const TColgp_HArray2OfXY* self_) {
-    try { return {&(self_->DynamicType()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<char const*> TColgp_HArray2OfXY_get_type_name() {
-    try { return {TColgp_HArray2OfXY::get_type_name(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Handle(Standard_Type) const*> TColgp_HArray2OfXY_get_type_descriptor() {
-    try { return {&(TColgp_HArray2OfXY::get_type_descriptor()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<const TColgp_Array2OfXY*> TColgp_HArray2OfXY_as_TColgp_Array2OfXY(const TColgp_HArray2OfXY* self_) { return {static_cast<const TColgp_Array2OfXY*>(self_), nullptr}; }
-extern "C" OcctResult<TColgp_Array2OfXY*> TColgp_HArray2OfXY_as_TColgp_Array2OfXY_mut(TColgp_HArray2OfXY* self_) { return {static_cast<TColgp_Array2OfXY*>(self_), nullptr}; }
-extern "C" OcctResult<const Standard_Transient*> TColgp_HArray2OfXY_as_Standard_Transient(const TColgp_HArray2OfXY* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<Standard_Transient*> TColgp_HArray2OfXY_as_Standard_Transient_mut(TColgp_HArray2OfXY* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleTColgpHArray2OfXY*> TColgp_HArray2OfXY_to_handle(TColgp_HArray2OfXY* obj) {
-    try { return {new HandleTColgpHArray2OfXY(obj), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<const TColgp_HArray2OfXY*> HandleTColgpHArray2OfXY_get(const HandleTColgpHArray2OfXY* handle) {
-    try { return {(*handle).get(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<TColgp_HArray2OfXY*> HandleTColgpHArray2OfXY_get_mut(HandleTColgpHArray2OfXY* handle) {
-    try { return {(*handle).get(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<HandleStandardTransient*> HandleTColgpHArray2OfXY_to_HandleStandardTransient(const HandleTColgpHArray2OfXY* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<bool> TColgp_HArray2OfXY_inherited_IsInstance(const TColgp_HArray2OfXY* self, Handle(Standard_Type) const& theType) {
-    try { return {self->IsInstance(theType), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<bool> TColgp_HArray2OfXY_inherited_IsKind(const TColgp_HArray2OfXY* self, Handle(Standard_Type) const& theType) {
-    try { return {self->IsKind(theType), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Standard_Transient*> TColgp_HArray2OfXY_inherited_This(const TColgp_HArray2OfXY* self) {
-    try { return {self->This(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<int32_t> TColgp_HArray2OfXY_inherited_GetRefCount(const TColgp_HArray2OfXY* self) {
-    try { return {self->GetRefCount(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* TColgp_HArray2OfXY_inherited_IncrementRefCounter(TColgp_HArray2OfXY* self) {
-    try { self->IncrementRefCounter(); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<int32_t> TColgp_HArray2OfXY_inherited_DecrementRefCounter(TColgp_HArray2OfXY* self) {
-    try { return {self->DecrementRefCounter(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* TColgp_HArray2OfXY_inherited_Delete(const TColgp_HArray2OfXY* self) {
-    try { self->Delete(); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" void TColgp_HArray2OfXY_destructor(TColgp_HArray2OfXY* self_) { delete self_; }
-
-// ========================
-// TColgp_HArray2OfXYZ wrappers
-// ========================
-
-extern "C" OcctResult<TColgp_HArray2OfXYZ*> TColgp_HArray2OfXYZ_ctor_int4(int32_t theRowLow, int32_t theRowUpp, int32_t theColLow, int32_t theColUpp) {
-    try { return {new TColgp_HArray2OfXYZ(theRowLow, theRowUpp, theColLow, theColUpp), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<TColgp_HArray2OfXYZ*> TColgp_HArray2OfXYZ_ctor_int4_type(int32_t theRowLow, int32_t theRowUpp, int32_t theColLow, int32_t theColUpp, TColgp_Array2OfXYZ::value_type const* theValue) {
-    try { return {new TColgp_HArray2OfXYZ(theRowLow, theRowUpp, theColLow, theColUpp, *theValue), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<TColgp_HArray2OfXYZ*> TColgp_HArray2OfXYZ_ctor_array2ofxyz(TColgp_Array2OfXYZ const* theOther) {
-    try { return {new TColgp_HArray2OfXYZ(*theOther), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<TColgp_Array2OfXYZ const*> TColgp_HArray2OfXYZ_array2(const TColgp_HArray2OfXYZ* self_) {
-    try { return {&(self_->Array2()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<TColgp_Array2OfXYZ*> TColgp_HArray2OfXYZ_change_array2(TColgp_HArray2OfXYZ* self_) {
-    try { return {&(self_->ChangeArray2()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Handle(Standard_Type) const*> TColgp_HArray2OfXYZ_dynamic_type(const TColgp_HArray2OfXYZ* self_) {
-    try { return {&(self_->DynamicType()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<char const*> TColgp_HArray2OfXYZ_get_type_name() {
-    try { return {TColgp_HArray2OfXYZ::get_type_name(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Handle(Standard_Type) const*> TColgp_HArray2OfXYZ_get_type_descriptor() {
-    try { return {&(TColgp_HArray2OfXYZ::get_type_descriptor()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<const TColgp_Array2OfXYZ*> TColgp_HArray2OfXYZ_as_TColgp_Array2OfXYZ(const TColgp_HArray2OfXYZ* self_) { return {static_cast<const TColgp_Array2OfXYZ*>(self_), nullptr}; }
-extern "C" OcctResult<TColgp_Array2OfXYZ*> TColgp_HArray2OfXYZ_as_TColgp_Array2OfXYZ_mut(TColgp_HArray2OfXYZ* self_) { return {static_cast<TColgp_Array2OfXYZ*>(self_), nullptr}; }
-extern "C" OcctResult<const Standard_Transient*> TColgp_HArray2OfXYZ_as_Standard_Transient(const TColgp_HArray2OfXYZ* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<Standard_Transient*> TColgp_HArray2OfXYZ_as_Standard_Transient_mut(TColgp_HArray2OfXYZ* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleTColgpHArray2OfXYZ*> TColgp_HArray2OfXYZ_to_handle(TColgp_HArray2OfXYZ* obj) {
-    try { return {new HandleTColgpHArray2OfXYZ(obj), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<const TColgp_HArray2OfXYZ*> HandleTColgpHArray2OfXYZ_get(const HandleTColgpHArray2OfXYZ* handle) {
-    try { return {(*handle).get(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<TColgp_HArray2OfXYZ*> HandleTColgpHArray2OfXYZ_get_mut(HandleTColgpHArray2OfXYZ* handle) {
-    try { return {(*handle).get(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<HandleStandardTransient*> HandleTColgpHArray2OfXYZ_to_HandleStandardTransient(const HandleTColgpHArray2OfXYZ* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<bool> TColgp_HArray2OfXYZ_inherited_IsInstance(const TColgp_HArray2OfXYZ* self, Handle(Standard_Type) const& theType) {
-    try { return {self->IsInstance(theType), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<bool> TColgp_HArray2OfXYZ_inherited_IsKind(const TColgp_HArray2OfXYZ* self, Handle(Standard_Type) const& theType) {
-    try { return {self->IsKind(theType), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Standard_Transient*> TColgp_HArray2OfXYZ_inherited_This(const TColgp_HArray2OfXYZ* self) {
-    try { return {self->This(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<int32_t> TColgp_HArray2OfXYZ_inherited_GetRefCount(const TColgp_HArray2OfXYZ* self) {
-    try { return {self->GetRefCount(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* TColgp_HArray2OfXYZ_inherited_IncrementRefCounter(TColgp_HArray2OfXYZ* self) {
-    try { self->IncrementRefCounter(); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<int32_t> TColgp_HArray2OfXYZ_inherited_DecrementRefCounter(TColgp_HArray2OfXYZ* self) {
-    try { return {self->DecrementRefCounter(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* TColgp_HArray2OfXYZ_inherited_Delete(const TColgp_HArray2OfXYZ* self) {
-    try { self->Delete(); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" void TColgp_HArray2OfXYZ_destructor(TColgp_HArray2OfXYZ* self_) { delete self_; }
-
-// ========================
-// TColgp_HSequenceOfDir wrappers
-// ========================
-
-extern "C" OcctResult<TColgp_HSequenceOfDir*> TColgp_HSequenceOfDir_ctor() {
-    try { return {new TColgp_HSequenceOfDir(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<TColgp_HSequenceOfDir*> TColgp_HSequenceOfDir_ctor_sequenceofdir(TColgp_SequenceOfDir const* theOther) {
-    try { return {new TColgp_HSequenceOfDir(*theOther), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<TColgp_SequenceOfDir const*> TColgp_HSequenceOfDir_sequence(const TColgp_HSequenceOfDir* self_) {
-    try { return {&(self_->Sequence()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* TColgp_HSequenceOfDir_append_type(TColgp_HSequenceOfDir* self_, TColgp_SequenceOfDir::value_type const* theItem) {
-    try { self_->Append(*theItem); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* TColgp_HSequenceOfDir_append_sequenceofdir(TColgp_HSequenceOfDir* self_, TColgp_SequenceOfDir* theSequence) {
-    try { self_->Append(*theSequence); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<TColgp_SequenceOfDir*> TColgp_HSequenceOfDir_change_sequence(TColgp_HSequenceOfDir* self_) {
-    try { return {&(self_->ChangeSequence()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Handle(Standard_Type) const*> TColgp_HSequenceOfDir_dynamic_type(const TColgp_HSequenceOfDir* self_) {
-    try { return {&(self_->DynamicType()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<char const*> TColgp_HSequenceOfDir_get_type_name() {
-    try { return {TColgp_HSequenceOfDir::get_type_name(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Handle(Standard_Type) const*> TColgp_HSequenceOfDir_get_type_descriptor() {
-    try { return {&(TColgp_HSequenceOfDir::get_type_descriptor()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<const Standard_Transient*> TColgp_HSequenceOfDir_as_Standard_Transient(const TColgp_HSequenceOfDir* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<Standard_Transient*> TColgp_HSequenceOfDir_as_Standard_Transient_mut(TColgp_HSequenceOfDir* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleTColgpHSequenceOfDir*> TColgp_HSequenceOfDir_to_handle(TColgp_HSequenceOfDir* obj) {
-    try { return {new HandleTColgpHSequenceOfDir(obj), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<const TColgp_HSequenceOfDir*> HandleTColgpHSequenceOfDir_get(const HandleTColgpHSequenceOfDir* handle) {
-    try { return {(*handle).get(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<TColgp_HSequenceOfDir*> HandleTColgpHSequenceOfDir_get_mut(HandleTColgpHSequenceOfDir* handle) {
-    try { return {(*handle).get(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<HandleStandardTransient*> HandleTColgpHSequenceOfDir_to_HandleStandardTransient(const HandleTColgpHSequenceOfDir* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<bool> TColgp_HSequenceOfDir_inherited_IsInstance(const TColgp_HSequenceOfDir* self, Handle(Standard_Type) const& theType) {
-    try { return {self->IsInstance(theType), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<bool> TColgp_HSequenceOfDir_inherited_IsKind(const TColgp_HSequenceOfDir* self, Handle(Standard_Type) const& theType) {
-    try { return {self->IsKind(theType), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Standard_Transient*> TColgp_HSequenceOfDir_inherited_This(const TColgp_HSequenceOfDir* self) {
-    try { return {self->This(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<int32_t> TColgp_HSequenceOfDir_inherited_GetRefCount(const TColgp_HSequenceOfDir* self) {
-    try { return {self->GetRefCount(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* TColgp_HSequenceOfDir_inherited_IncrementRefCounter(TColgp_HSequenceOfDir* self) {
-    try { self->IncrementRefCounter(); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<int32_t> TColgp_HSequenceOfDir_inherited_DecrementRefCounter(TColgp_HSequenceOfDir* self) {
-    try { return {self->DecrementRefCounter(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* TColgp_HSequenceOfDir_inherited_Delete(const TColgp_HSequenceOfDir* self) {
-    try { self->Delete(); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" void TColgp_HSequenceOfDir_destructor(TColgp_HSequenceOfDir* self_) { delete self_; }
-
-// ========================
-// TColgp_HSequenceOfDir2d wrappers
-// ========================
-
-extern "C" OcctResult<TColgp_HSequenceOfDir2d*> TColgp_HSequenceOfDir2d_ctor() {
-    try { return {new TColgp_HSequenceOfDir2d(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<TColgp_HSequenceOfDir2d*> TColgp_HSequenceOfDir2d_ctor_sequenceofdir2d(TColgp_SequenceOfDir2d const* theOther) {
-    try { return {new TColgp_HSequenceOfDir2d(*theOther), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<TColgp_SequenceOfDir2d const*> TColgp_HSequenceOfDir2d_sequence(const TColgp_HSequenceOfDir2d* self_) {
-    try { return {&(self_->Sequence()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* TColgp_HSequenceOfDir2d_append_type(TColgp_HSequenceOfDir2d* self_, TColgp_SequenceOfDir2d::value_type const* theItem) {
-    try { self_->Append(*theItem); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* TColgp_HSequenceOfDir2d_append_sequenceofdir2d(TColgp_HSequenceOfDir2d* self_, TColgp_SequenceOfDir2d* theSequence) {
-    try { self_->Append(*theSequence); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<TColgp_SequenceOfDir2d*> TColgp_HSequenceOfDir2d_change_sequence(TColgp_HSequenceOfDir2d* self_) {
-    try { return {&(self_->ChangeSequence()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Handle(Standard_Type) const*> TColgp_HSequenceOfDir2d_dynamic_type(const TColgp_HSequenceOfDir2d* self_) {
-    try { return {&(self_->DynamicType()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<char const*> TColgp_HSequenceOfDir2d_get_type_name() {
-    try { return {TColgp_HSequenceOfDir2d::get_type_name(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Handle(Standard_Type) const*> TColgp_HSequenceOfDir2d_get_type_descriptor() {
-    try { return {&(TColgp_HSequenceOfDir2d::get_type_descriptor()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<const Standard_Transient*> TColgp_HSequenceOfDir2d_as_Standard_Transient(const TColgp_HSequenceOfDir2d* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<Standard_Transient*> TColgp_HSequenceOfDir2d_as_Standard_Transient_mut(TColgp_HSequenceOfDir2d* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleTColgpHSequenceOfDir2d*> TColgp_HSequenceOfDir2d_to_handle(TColgp_HSequenceOfDir2d* obj) {
-    try { return {new HandleTColgpHSequenceOfDir2d(obj), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<const TColgp_HSequenceOfDir2d*> HandleTColgpHSequenceOfDir2d_get(const HandleTColgpHSequenceOfDir2d* handle) {
-    try { return {(*handle).get(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<TColgp_HSequenceOfDir2d*> HandleTColgpHSequenceOfDir2d_get_mut(HandleTColgpHSequenceOfDir2d* handle) {
-    try { return {(*handle).get(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<HandleStandardTransient*> HandleTColgpHSequenceOfDir2d_to_HandleStandardTransient(const HandleTColgpHSequenceOfDir2d* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<bool> TColgp_HSequenceOfDir2d_inherited_IsInstance(const TColgp_HSequenceOfDir2d* self, Handle(Standard_Type) const& theType) {
-    try { return {self->IsInstance(theType), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<bool> TColgp_HSequenceOfDir2d_inherited_IsKind(const TColgp_HSequenceOfDir2d* self, Handle(Standard_Type) const& theType) {
-    try { return {self->IsKind(theType), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Standard_Transient*> TColgp_HSequenceOfDir2d_inherited_This(const TColgp_HSequenceOfDir2d* self) {
-    try { return {self->This(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<int32_t> TColgp_HSequenceOfDir2d_inherited_GetRefCount(const TColgp_HSequenceOfDir2d* self) {
-    try { return {self->GetRefCount(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* TColgp_HSequenceOfDir2d_inherited_IncrementRefCounter(TColgp_HSequenceOfDir2d* self) {
-    try { self->IncrementRefCounter(); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<int32_t> TColgp_HSequenceOfDir2d_inherited_DecrementRefCounter(TColgp_HSequenceOfDir2d* self) {
-    try { return {self->DecrementRefCounter(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* TColgp_HSequenceOfDir2d_inherited_Delete(const TColgp_HSequenceOfDir2d* self) {
-    try { self->Delete(); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" void TColgp_HSequenceOfDir2d_destructor(TColgp_HSequenceOfDir2d* self_) { delete self_; }
-
-// ========================
-// TColgp_HSequenceOfPnt wrappers
-// ========================
-
-extern "C" OcctResult<TColgp_HSequenceOfPnt*> TColgp_HSequenceOfPnt_ctor() {
-    try { return {new TColgp_HSequenceOfPnt(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<TColgp_HSequenceOfPnt*> TColgp_HSequenceOfPnt_ctor_sequenceofpnt(TColgp_SequenceOfPnt const* theOther) {
-    try { return {new TColgp_HSequenceOfPnt(*theOther), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<TColgp_SequenceOfPnt const*> TColgp_HSequenceOfPnt_sequence(const TColgp_HSequenceOfPnt* self_) {
-    try { return {&(self_->Sequence()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* TColgp_HSequenceOfPnt_append_type(TColgp_HSequenceOfPnt* self_, TColgp_SequenceOfPnt::value_type const* theItem) {
-    try { self_->Append(*theItem); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* TColgp_HSequenceOfPnt_append_sequenceofpnt(TColgp_HSequenceOfPnt* self_, TColgp_SequenceOfPnt* theSequence) {
-    try { self_->Append(*theSequence); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<TColgp_SequenceOfPnt*> TColgp_HSequenceOfPnt_change_sequence(TColgp_HSequenceOfPnt* self_) {
-    try { return {&(self_->ChangeSequence()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Handle(Standard_Type) const*> TColgp_HSequenceOfPnt_dynamic_type(const TColgp_HSequenceOfPnt* self_) {
-    try { return {&(self_->DynamicType()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<char const*> TColgp_HSequenceOfPnt_get_type_name() {
-    try { return {TColgp_HSequenceOfPnt::get_type_name(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Handle(Standard_Type) const*> TColgp_HSequenceOfPnt_get_type_descriptor() {
-    try { return {&(TColgp_HSequenceOfPnt::get_type_descriptor()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<const Standard_Transient*> TColgp_HSequenceOfPnt_as_Standard_Transient(const TColgp_HSequenceOfPnt* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<Standard_Transient*> TColgp_HSequenceOfPnt_as_Standard_Transient_mut(TColgp_HSequenceOfPnt* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleTColgpHSequenceOfPnt*> TColgp_HSequenceOfPnt_to_handle(TColgp_HSequenceOfPnt* obj) {
-    try { return {new HandleTColgpHSequenceOfPnt(obj), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<const TColgp_HSequenceOfPnt*> HandleTColgpHSequenceOfPnt_get(const HandleTColgpHSequenceOfPnt* handle) {
-    try { return {(*handle).get(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<TColgp_HSequenceOfPnt*> HandleTColgpHSequenceOfPnt_get_mut(HandleTColgpHSequenceOfPnt* handle) {
-    try { return {(*handle).get(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<HandleStandardTransient*> HandleTColgpHSequenceOfPnt_to_HandleStandardTransient(const HandleTColgpHSequenceOfPnt* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<bool> TColgp_HSequenceOfPnt_inherited_IsInstance(const TColgp_HSequenceOfPnt* self, Handle(Standard_Type) const& theType) {
-    try { return {self->IsInstance(theType), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<bool> TColgp_HSequenceOfPnt_inherited_IsKind(const TColgp_HSequenceOfPnt* self, Handle(Standard_Type) const& theType) {
-    try { return {self->IsKind(theType), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Standard_Transient*> TColgp_HSequenceOfPnt_inherited_This(const TColgp_HSequenceOfPnt* self) {
-    try { return {self->This(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<int32_t> TColgp_HSequenceOfPnt_inherited_GetRefCount(const TColgp_HSequenceOfPnt* self) {
-    try { return {self->GetRefCount(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* TColgp_HSequenceOfPnt_inherited_IncrementRefCounter(TColgp_HSequenceOfPnt* self) {
-    try { self->IncrementRefCounter(); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<int32_t> TColgp_HSequenceOfPnt_inherited_DecrementRefCounter(TColgp_HSequenceOfPnt* self) {
-    try { return {self->DecrementRefCounter(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* TColgp_HSequenceOfPnt_inherited_Delete(const TColgp_HSequenceOfPnt* self) {
-    try { self->Delete(); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" void TColgp_HSequenceOfPnt_destructor(TColgp_HSequenceOfPnt* self_) { delete self_; }
-
-// ========================
-// TColgp_HSequenceOfPnt2d wrappers
-// ========================
-
-extern "C" OcctResult<TColgp_HSequenceOfPnt2d*> TColgp_HSequenceOfPnt2d_ctor() {
-    try { return {new TColgp_HSequenceOfPnt2d(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<TColgp_HSequenceOfPnt2d*> TColgp_HSequenceOfPnt2d_ctor_sequenceofpnt2d(TColgp_SequenceOfPnt2d const* theOther) {
-    try { return {new TColgp_HSequenceOfPnt2d(*theOther), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<TColgp_SequenceOfPnt2d const*> TColgp_HSequenceOfPnt2d_sequence(const TColgp_HSequenceOfPnt2d* self_) {
-    try { return {&(self_->Sequence()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* TColgp_HSequenceOfPnt2d_append_type(TColgp_HSequenceOfPnt2d* self_, TColgp_SequenceOfPnt2d::value_type const* theItem) {
-    try { self_->Append(*theItem); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* TColgp_HSequenceOfPnt2d_append_sequenceofpnt2d(TColgp_HSequenceOfPnt2d* self_, TColgp_SequenceOfPnt2d* theSequence) {
-    try { self_->Append(*theSequence); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<TColgp_SequenceOfPnt2d*> TColgp_HSequenceOfPnt2d_change_sequence(TColgp_HSequenceOfPnt2d* self_) {
-    try { return {&(self_->ChangeSequence()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Handle(Standard_Type) const*> TColgp_HSequenceOfPnt2d_dynamic_type(const TColgp_HSequenceOfPnt2d* self_) {
-    try { return {&(self_->DynamicType()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<char const*> TColgp_HSequenceOfPnt2d_get_type_name() {
-    try { return {TColgp_HSequenceOfPnt2d::get_type_name(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Handle(Standard_Type) const*> TColgp_HSequenceOfPnt2d_get_type_descriptor() {
-    try { return {&(TColgp_HSequenceOfPnt2d::get_type_descriptor()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<const Standard_Transient*> TColgp_HSequenceOfPnt2d_as_Standard_Transient(const TColgp_HSequenceOfPnt2d* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<Standard_Transient*> TColgp_HSequenceOfPnt2d_as_Standard_Transient_mut(TColgp_HSequenceOfPnt2d* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleTColgpHSequenceOfPnt2d*> TColgp_HSequenceOfPnt2d_to_handle(TColgp_HSequenceOfPnt2d* obj) {
-    try { return {new HandleTColgpHSequenceOfPnt2d(obj), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<const TColgp_HSequenceOfPnt2d*> HandleTColgpHSequenceOfPnt2d_get(const HandleTColgpHSequenceOfPnt2d* handle) {
-    try { return {(*handle).get(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<TColgp_HSequenceOfPnt2d*> HandleTColgpHSequenceOfPnt2d_get_mut(HandleTColgpHSequenceOfPnt2d* handle) {
-    try { return {(*handle).get(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<HandleStandardTransient*> HandleTColgpHSequenceOfPnt2d_to_HandleStandardTransient(const HandleTColgpHSequenceOfPnt2d* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<bool> TColgp_HSequenceOfPnt2d_inherited_IsInstance(const TColgp_HSequenceOfPnt2d* self, Handle(Standard_Type) const& theType) {
-    try { return {self->IsInstance(theType), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<bool> TColgp_HSequenceOfPnt2d_inherited_IsKind(const TColgp_HSequenceOfPnt2d* self, Handle(Standard_Type) const& theType) {
-    try { return {self->IsKind(theType), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Standard_Transient*> TColgp_HSequenceOfPnt2d_inherited_This(const TColgp_HSequenceOfPnt2d* self) {
-    try { return {self->This(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<int32_t> TColgp_HSequenceOfPnt2d_inherited_GetRefCount(const TColgp_HSequenceOfPnt2d* self) {
-    try { return {self->GetRefCount(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* TColgp_HSequenceOfPnt2d_inherited_IncrementRefCounter(TColgp_HSequenceOfPnt2d* self) {
-    try { self->IncrementRefCounter(); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<int32_t> TColgp_HSequenceOfPnt2d_inherited_DecrementRefCounter(TColgp_HSequenceOfPnt2d* self) {
-    try { return {self->DecrementRefCounter(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* TColgp_HSequenceOfPnt2d_inherited_Delete(const TColgp_HSequenceOfPnt2d* self) {
-    try { self->Delete(); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" void TColgp_HSequenceOfPnt2d_destructor(TColgp_HSequenceOfPnt2d* self_) { delete self_; }
-
-// ========================
-// TColgp_HSequenceOfVec wrappers
-// ========================
-
-extern "C" OcctResult<TColgp_HSequenceOfVec*> TColgp_HSequenceOfVec_ctor() {
-    try { return {new TColgp_HSequenceOfVec(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<TColgp_HSequenceOfVec*> TColgp_HSequenceOfVec_ctor_sequenceofvec(TColgp_SequenceOfVec const* theOther) {
-    try { return {new TColgp_HSequenceOfVec(*theOther), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<TColgp_SequenceOfVec const*> TColgp_HSequenceOfVec_sequence(const TColgp_HSequenceOfVec* self_) {
-    try { return {&(self_->Sequence()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* TColgp_HSequenceOfVec_append_type(TColgp_HSequenceOfVec* self_, TColgp_SequenceOfVec::value_type const* theItem) {
-    try { self_->Append(*theItem); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* TColgp_HSequenceOfVec_append_sequenceofvec(TColgp_HSequenceOfVec* self_, TColgp_SequenceOfVec* theSequence) {
-    try { self_->Append(*theSequence); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<TColgp_SequenceOfVec*> TColgp_HSequenceOfVec_change_sequence(TColgp_HSequenceOfVec* self_) {
-    try { return {&(self_->ChangeSequence()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Handle(Standard_Type) const*> TColgp_HSequenceOfVec_dynamic_type(const TColgp_HSequenceOfVec* self_) {
-    try { return {&(self_->DynamicType()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<char const*> TColgp_HSequenceOfVec_get_type_name() {
-    try { return {TColgp_HSequenceOfVec::get_type_name(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Handle(Standard_Type) const*> TColgp_HSequenceOfVec_get_type_descriptor() {
-    try { return {&(TColgp_HSequenceOfVec::get_type_descriptor()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<const Standard_Transient*> TColgp_HSequenceOfVec_as_Standard_Transient(const TColgp_HSequenceOfVec* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<Standard_Transient*> TColgp_HSequenceOfVec_as_Standard_Transient_mut(TColgp_HSequenceOfVec* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleTColgpHSequenceOfVec*> TColgp_HSequenceOfVec_to_handle(TColgp_HSequenceOfVec* obj) {
-    try { return {new HandleTColgpHSequenceOfVec(obj), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<const TColgp_HSequenceOfVec*> HandleTColgpHSequenceOfVec_get(const HandleTColgpHSequenceOfVec* handle) {
-    try { return {(*handle).get(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<TColgp_HSequenceOfVec*> HandleTColgpHSequenceOfVec_get_mut(HandleTColgpHSequenceOfVec* handle) {
-    try { return {(*handle).get(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<HandleStandardTransient*> HandleTColgpHSequenceOfVec_to_HandleStandardTransient(const HandleTColgpHSequenceOfVec* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<bool> TColgp_HSequenceOfVec_inherited_IsInstance(const TColgp_HSequenceOfVec* self, Handle(Standard_Type) const& theType) {
-    try { return {self->IsInstance(theType), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<bool> TColgp_HSequenceOfVec_inherited_IsKind(const TColgp_HSequenceOfVec* self, Handle(Standard_Type) const& theType) {
-    try { return {self->IsKind(theType), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Standard_Transient*> TColgp_HSequenceOfVec_inherited_This(const TColgp_HSequenceOfVec* self) {
-    try { return {self->This(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<int32_t> TColgp_HSequenceOfVec_inherited_GetRefCount(const TColgp_HSequenceOfVec* self) {
-    try { return {self->GetRefCount(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* TColgp_HSequenceOfVec_inherited_IncrementRefCounter(TColgp_HSequenceOfVec* self) {
-    try { self->IncrementRefCounter(); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<int32_t> TColgp_HSequenceOfVec_inherited_DecrementRefCounter(TColgp_HSequenceOfVec* self) {
-    try { return {self->DecrementRefCounter(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* TColgp_HSequenceOfVec_inherited_Delete(const TColgp_HSequenceOfVec* self) {
-    try { self->Delete(); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" void TColgp_HSequenceOfVec_destructor(TColgp_HSequenceOfVec* self_) { delete self_; }
-
-// ========================
-// TColgp_HSequenceOfVec2d wrappers
-// ========================
-
-extern "C" OcctResult<TColgp_HSequenceOfVec2d*> TColgp_HSequenceOfVec2d_ctor() {
-    try { return {new TColgp_HSequenceOfVec2d(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<TColgp_HSequenceOfVec2d*> TColgp_HSequenceOfVec2d_ctor_sequenceofvec2d(TColgp_SequenceOfVec2d const* theOther) {
-    try { return {new TColgp_HSequenceOfVec2d(*theOther), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<TColgp_SequenceOfVec2d const*> TColgp_HSequenceOfVec2d_sequence(const TColgp_HSequenceOfVec2d* self_) {
-    try { return {&(self_->Sequence()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* TColgp_HSequenceOfVec2d_append_type(TColgp_HSequenceOfVec2d* self_, TColgp_SequenceOfVec2d::value_type const* theItem) {
-    try { self_->Append(*theItem); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* TColgp_HSequenceOfVec2d_append_sequenceofvec2d(TColgp_HSequenceOfVec2d* self_, TColgp_SequenceOfVec2d* theSequence) {
-    try { self_->Append(*theSequence); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<TColgp_SequenceOfVec2d*> TColgp_HSequenceOfVec2d_change_sequence(TColgp_HSequenceOfVec2d* self_) {
-    try { return {&(self_->ChangeSequence()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Handle(Standard_Type) const*> TColgp_HSequenceOfVec2d_dynamic_type(const TColgp_HSequenceOfVec2d* self_) {
-    try { return {&(self_->DynamicType()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<char const*> TColgp_HSequenceOfVec2d_get_type_name() {
-    try { return {TColgp_HSequenceOfVec2d::get_type_name(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Handle(Standard_Type) const*> TColgp_HSequenceOfVec2d_get_type_descriptor() {
-    try { return {&(TColgp_HSequenceOfVec2d::get_type_descriptor()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<const Standard_Transient*> TColgp_HSequenceOfVec2d_as_Standard_Transient(const TColgp_HSequenceOfVec2d* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<Standard_Transient*> TColgp_HSequenceOfVec2d_as_Standard_Transient_mut(TColgp_HSequenceOfVec2d* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleTColgpHSequenceOfVec2d*> TColgp_HSequenceOfVec2d_to_handle(TColgp_HSequenceOfVec2d* obj) {
-    try { return {new HandleTColgpHSequenceOfVec2d(obj), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<const TColgp_HSequenceOfVec2d*> HandleTColgpHSequenceOfVec2d_get(const HandleTColgpHSequenceOfVec2d* handle) {
-    try { return {(*handle).get(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<TColgp_HSequenceOfVec2d*> HandleTColgpHSequenceOfVec2d_get_mut(HandleTColgpHSequenceOfVec2d* handle) {
-    try { return {(*handle).get(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<HandleStandardTransient*> HandleTColgpHSequenceOfVec2d_to_HandleStandardTransient(const HandleTColgpHSequenceOfVec2d* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<bool> TColgp_HSequenceOfVec2d_inherited_IsInstance(const TColgp_HSequenceOfVec2d* self, Handle(Standard_Type) const& theType) {
-    try { return {self->IsInstance(theType), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<bool> TColgp_HSequenceOfVec2d_inherited_IsKind(const TColgp_HSequenceOfVec2d* self, Handle(Standard_Type) const& theType) {
-    try { return {self->IsKind(theType), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Standard_Transient*> TColgp_HSequenceOfVec2d_inherited_This(const TColgp_HSequenceOfVec2d* self) {
-    try { return {self->This(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<int32_t> TColgp_HSequenceOfVec2d_inherited_GetRefCount(const TColgp_HSequenceOfVec2d* self) {
-    try { return {self->GetRefCount(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* TColgp_HSequenceOfVec2d_inherited_IncrementRefCounter(TColgp_HSequenceOfVec2d* self) {
-    try { self->IncrementRefCounter(); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<int32_t> TColgp_HSequenceOfVec2d_inherited_DecrementRefCounter(TColgp_HSequenceOfVec2d* self) {
-    try { return {self->DecrementRefCounter(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* TColgp_HSequenceOfVec2d_inherited_Delete(const TColgp_HSequenceOfVec2d* self) {
-    try { self->Delete(); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" void TColgp_HSequenceOfVec2d_destructor(TColgp_HSequenceOfVec2d* self_) { delete self_; }
-
-// ========================
-// TColgp_HSequenceOfXY wrappers
-// ========================
-
-extern "C" OcctResult<TColgp_HSequenceOfXY*> TColgp_HSequenceOfXY_ctor() {
-    try { return {new TColgp_HSequenceOfXY(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<TColgp_HSequenceOfXY*> TColgp_HSequenceOfXY_ctor_sequenceofxy(TColgp_SequenceOfXY const* theOther) {
-    try { return {new TColgp_HSequenceOfXY(*theOther), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<TColgp_SequenceOfXY const*> TColgp_HSequenceOfXY_sequence(const TColgp_HSequenceOfXY* self_) {
-    try { return {&(self_->Sequence()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* TColgp_HSequenceOfXY_append_type(TColgp_HSequenceOfXY* self_, TColgp_SequenceOfXY::value_type const* theItem) {
-    try { self_->Append(*theItem); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* TColgp_HSequenceOfXY_append_sequenceofxy(TColgp_HSequenceOfXY* self_, TColgp_SequenceOfXY* theSequence) {
-    try { self_->Append(*theSequence); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<TColgp_SequenceOfXY*> TColgp_HSequenceOfXY_change_sequence(TColgp_HSequenceOfXY* self_) {
-    try { return {&(self_->ChangeSequence()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Handle(Standard_Type) const*> TColgp_HSequenceOfXY_dynamic_type(const TColgp_HSequenceOfXY* self_) {
-    try { return {&(self_->DynamicType()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<char const*> TColgp_HSequenceOfXY_get_type_name() {
-    try { return {TColgp_HSequenceOfXY::get_type_name(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Handle(Standard_Type) const*> TColgp_HSequenceOfXY_get_type_descriptor() {
-    try { return {&(TColgp_HSequenceOfXY::get_type_descriptor()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<const Standard_Transient*> TColgp_HSequenceOfXY_as_Standard_Transient(const TColgp_HSequenceOfXY* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<Standard_Transient*> TColgp_HSequenceOfXY_as_Standard_Transient_mut(TColgp_HSequenceOfXY* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleTColgpHSequenceOfXY*> TColgp_HSequenceOfXY_to_handle(TColgp_HSequenceOfXY* obj) {
-    try { return {new HandleTColgpHSequenceOfXY(obj), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<const TColgp_HSequenceOfXY*> HandleTColgpHSequenceOfXY_get(const HandleTColgpHSequenceOfXY* handle) {
-    try { return {(*handle).get(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<TColgp_HSequenceOfXY*> HandleTColgpHSequenceOfXY_get_mut(HandleTColgpHSequenceOfXY* handle) {
-    try { return {(*handle).get(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<HandleStandardTransient*> HandleTColgpHSequenceOfXY_to_HandleStandardTransient(const HandleTColgpHSequenceOfXY* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<bool> TColgp_HSequenceOfXY_inherited_IsInstance(const TColgp_HSequenceOfXY* self, Handle(Standard_Type) const& theType) {
-    try { return {self->IsInstance(theType), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<bool> TColgp_HSequenceOfXY_inherited_IsKind(const TColgp_HSequenceOfXY* self, Handle(Standard_Type) const& theType) {
-    try { return {self->IsKind(theType), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Standard_Transient*> TColgp_HSequenceOfXY_inherited_This(const TColgp_HSequenceOfXY* self) {
-    try { return {self->This(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<int32_t> TColgp_HSequenceOfXY_inherited_GetRefCount(const TColgp_HSequenceOfXY* self) {
-    try { return {self->GetRefCount(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* TColgp_HSequenceOfXY_inherited_IncrementRefCounter(TColgp_HSequenceOfXY* self) {
-    try { self->IncrementRefCounter(); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<int32_t> TColgp_HSequenceOfXY_inherited_DecrementRefCounter(TColgp_HSequenceOfXY* self) {
-    try { return {self->DecrementRefCounter(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* TColgp_HSequenceOfXY_inherited_Delete(const TColgp_HSequenceOfXY* self) {
-    try { self->Delete(); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" void TColgp_HSequenceOfXY_destructor(TColgp_HSequenceOfXY* self_) { delete self_; }
-
-// ========================
-// TColgp_HSequenceOfXYZ wrappers
-// ========================
-
-extern "C" OcctResult<TColgp_HSequenceOfXYZ*> TColgp_HSequenceOfXYZ_ctor() {
-    try { return {new TColgp_HSequenceOfXYZ(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<TColgp_HSequenceOfXYZ*> TColgp_HSequenceOfXYZ_ctor_sequenceofxyz(TColgp_SequenceOfXYZ const* theOther) {
-    try { return {new TColgp_HSequenceOfXYZ(*theOther), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<TColgp_SequenceOfXYZ const*> TColgp_HSequenceOfXYZ_sequence(const TColgp_HSequenceOfXYZ* self_) {
-    try { return {&(self_->Sequence()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* TColgp_HSequenceOfXYZ_append_type(TColgp_HSequenceOfXYZ* self_, TColgp_SequenceOfXYZ::value_type const* theItem) {
-    try { self_->Append(*theItem); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* TColgp_HSequenceOfXYZ_append_sequenceofxyz(TColgp_HSequenceOfXYZ* self_, TColgp_SequenceOfXYZ* theSequence) {
-    try { self_->Append(*theSequence); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<TColgp_SequenceOfXYZ*> TColgp_HSequenceOfXYZ_change_sequence(TColgp_HSequenceOfXYZ* self_) {
-    try { return {&(self_->ChangeSequence()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Handle(Standard_Type) const*> TColgp_HSequenceOfXYZ_dynamic_type(const TColgp_HSequenceOfXYZ* self_) {
-    try { return {&(self_->DynamicType()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<char const*> TColgp_HSequenceOfXYZ_get_type_name() {
-    try { return {TColgp_HSequenceOfXYZ::get_type_name(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Handle(Standard_Type) const*> TColgp_HSequenceOfXYZ_get_type_descriptor() {
-    try { return {&(TColgp_HSequenceOfXYZ::get_type_descriptor()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<const Standard_Transient*> TColgp_HSequenceOfXYZ_as_Standard_Transient(const TColgp_HSequenceOfXYZ* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<Standard_Transient*> TColgp_HSequenceOfXYZ_as_Standard_Transient_mut(TColgp_HSequenceOfXYZ* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleTColgpHSequenceOfXYZ*> TColgp_HSequenceOfXYZ_to_handle(TColgp_HSequenceOfXYZ* obj) {
-    try { return {new HandleTColgpHSequenceOfXYZ(obj), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<const TColgp_HSequenceOfXYZ*> HandleTColgpHSequenceOfXYZ_get(const HandleTColgpHSequenceOfXYZ* handle) {
-    try { return {(*handle).get(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<TColgp_HSequenceOfXYZ*> HandleTColgpHSequenceOfXYZ_get_mut(HandleTColgpHSequenceOfXYZ* handle) {
-    try { return {(*handle).get(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<HandleStandardTransient*> HandleTColgpHSequenceOfXYZ_to_HandleStandardTransient(const HandleTColgpHSequenceOfXYZ* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<bool> TColgp_HSequenceOfXYZ_inherited_IsInstance(const TColgp_HSequenceOfXYZ* self, Handle(Standard_Type) const& theType) {
-    try { return {self->IsInstance(theType), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<bool> TColgp_HSequenceOfXYZ_inherited_IsKind(const TColgp_HSequenceOfXYZ* self, Handle(Standard_Type) const& theType) {
-    try { return {self->IsKind(theType), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Standard_Transient*> TColgp_HSequenceOfXYZ_inherited_This(const TColgp_HSequenceOfXYZ* self) {
-    try { return {self->This(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<int32_t> TColgp_HSequenceOfXYZ_inherited_GetRefCount(const TColgp_HSequenceOfXYZ* self) {
-    try { return {self->GetRefCount(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* TColgp_HSequenceOfXYZ_inherited_IncrementRefCounter(TColgp_HSequenceOfXYZ* self) {
-    try { self->IncrementRefCounter(); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<int32_t> TColgp_HSequenceOfXYZ_inherited_DecrementRefCounter(TColgp_HSequenceOfXYZ* self) {
-    try { return {self->DecrementRefCounter(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* TColgp_HSequenceOfXYZ_inherited_Delete(const TColgp_HSequenceOfXYZ* self) {
-    try { self->Delete(); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" void TColgp_HSequenceOfXYZ_destructor(TColgp_HSequenceOfXYZ* self_) { delete self_; }
 
 // ========================
 // TopLoc_Datum3D wrappers
@@ -8503,20 +4632,20 @@ extern "C" OcctResult<Handle(Standard_Type) const*> TopLoc_Datum3D_get_type_desc
 }
 extern "C" OcctResult<const Standard_Transient*> TopLoc_Datum3D_as_Standard_Transient(const TopLoc_Datum3D* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> TopLoc_Datum3D_as_Standard_Transient_mut(TopLoc_Datum3D* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleTopLocDatum3D*> TopLoc_Datum3D_to_handle(TopLoc_Datum3D* obj) {
-    try { return {new HandleTopLocDatum3D(obj), nullptr}; }
+extern "C" OcctResult<Handle_TopLoc_Datum3D*> TopLoc_Datum3D_to_handle(TopLoc_Datum3D* obj) {
+    try { return {new Handle_TopLoc_Datum3D(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const TopLoc_Datum3D*> HandleTopLocDatum3D_get(const HandleTopLocDatum3D* handle) {
+extern "C" OcctResult<const TopLoc_Datum3D*> Handle_TopLoc_Datum3D_get(const Handle_TopLoc_Datum3D* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TopLoc_Datum3D*> HandleTopLocDatum3D_get_mut(HandleTopLocDatum3D* handle) {
+extern "C" OcctResult<TopLoc_Datum3D*> Handle_TopLoc_Datum3D_get_mut(Handle_TopLoc_Datum3D* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleTopLocDatum3D_to_HandleStandardTransient(const HandleTopLocDatum3D* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_TopLoc_Datum3D_to_Handle_Standard_Transient(const Handle_TopLoc_Datum3D* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> TopLoc_Datum3D_inherited_IsInstance(const TopLoc_Datum3D* self, Handle(Standard_Type) const& theType) {
@@ -8627,12 +4756,12 @@ extern "C" OcctResult<size_t> TopLoc_Location_hash_code(const TopLoc_Location* s
     try { return {self_->HashCode(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<bool> TopLoc_Location_is_equal(const TopLoc_Location* self_, TopLoc_Location const* Other) {
-    try { return {self_->IsEqual(*Other), nullptr}; }
+extern "C" OcctResult<bool> TopLoc_Location_is_equal(const TopLoc_Location* self_, TopLoc_Location const* theOther) {
+    try { return {self_->IsEqual(*theOther), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<bool> TopLoc_Location_is_different(const TopLoc_Location* self_, TopLoc_Location const* Other) {
-    try { return {self_->IsDifferent(*Other), nullptr}; }
+extern "C" OcctResult<bool> TopLoc_Location_is_different(const TopLoc_Location* self_, TopLoc_Location const* theOther) {
+    try { return {self_->IsDifferent(*theOther), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" const char* TopLoc_Location_shallow_dump(const TopLoc_Location* self_, Standard_OStream* S) {
@@ -8683,20 +4812,20 @@ extern "C" OcctResult<Handle(Standard_Type) const*> TopLoc_SListNodeOfItemLocati
 }
 extern "C" OcctResult<const Standard_Transient*> TopLoc_SListNodeOfItemLocation_as_Standard_Transient(const TopLoc_SListNodeOfItemLocation* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> TopLoc_SListNodeOfItemLocation_as_Standard_Transient_mut(TopLoc_SListNodeOfItemLocation* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleTopLocSListNodeOfItemLocation*> TopLoc_SListNodeOfItemLocation_to_handle(TopLoc_SListNodeOfItemLocation* obj) {
-    try { return {new HandleTopLocSListNodeOfItemLocation(obj), nullptr}; }
+extern "C" OcctResult<Handle_TopLoc_SListNodeOfItemLocation*> TopLoc_SListNodeOfItemLocation_to_handle(TopLoc_SListNodeOfItemLocation* obj) {
+    try { return {new Handle_TopLoc_SListNodeOfItemLocation(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const TopLoc_SListNodeOfItemLocation*> HandleTopLocSListNodeOfItemLocation_get(const HandleTopLocSListNodeOfItemLocation* handle) {
+extern "C" OcctResult<const TopLoc_SListNodeOfItemLocation*> Handle_TopLoc_SListNodeOfItemLocation_get(const Handle_TopLoc_SListNodeOfItemLocation* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TopLoc_SListNodeOfItemLocation*> HandleTopLocSListNodeOfItemLocation_get_mut(HandleTopLocSListNodeOfItemLocation* handle) {
+extern "C" OcctResult<TopLoc_SListNodeOfItemLocation*> Handle_TopLoc_SListNodeOfItemLocation_get_mut(Handle_TopLoc_SListNodeOfItemLocation* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleTopLocSListNodeOfItemLocation_to_HandleStandardTransient(const HandleTopLocSListNodeOfItemLocation* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_TopLoc_SListNodeOfItemLocation_to_Handle_Standard_Transient(const Handle_TopLoc_SListNodeOfItemLocation* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> TopLoc_SListNodeOfItemLocation_inherited_IsInstance(const TopLoc_SListNodeOfItemLocation* self, Handle(Standard_Type) const& theType) {
@@ -8793,6 +4922,14 @@ extern "C" OcctResult<gp_Ax1*> gp_Ax1_ctor() {
 }
 extern "C" OcctResult<gp_Ax1*> gp_Ax1_ctor_pnt_dir(gp_Pnt const* theP, gp_Dir const* theV) {
     try { return {new gp_Ax1(*theP, *theV), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<gp_Ax1*> gp_Ax1_ctor_pnt_d(gp_Pnt const* theP, gp_Dir::D const* theDir) {
+    try { return {new gp_Ax1(*theP, *theDir), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<gp_Ax1*> gp_Ax1_ctor_d(gp_Dir::D const* theDir) {
+    try { return {new gp_Ax1(*theDir), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<gp_Ax1*> gp_Ax1_reversed(const gp_Ax1* self_) {
@@ -8921,8 +5058,20 @@ extern "C" OcctResult<gp_Ax2*> gp_Ax2_ctor_pnt_dir2(gp_Pnt const* P, gp_Dir cons
     try { return {new gp_Ax2(*P, *N, *Vx), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" OcctResult<gp_Ax2*> gp_Ax2_ctor_pnt_d2(gp_Pnt const* theP, gp_Dir::D const* theN, gp_Dir::D const* theVx) {
+    try { return {new gp_Ax2(*theP, *theN, *theVx), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" OcctResult<gp_Ax2*> gp_Ax2_ctor_pnt_dir(gp_Pnt const* P, gp_Dir const* V) {
     try { return {new gp_Ax2(*P, *V), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<gp_Ax2*> gp_Ax2_ctor_pnt_d(gp_Pnt const* theP, gp_Dir::D const* theV) {
+    try { return {new gp_Ax2(*theP, *theV), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<gp_Ax2*> gp_Ax2_ctor_d(gp_Dir::D const* theV) {
+    try { return {new gp_Ax2(*theV), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<gp_Ax2*> gp_Ax2_mirrored_pnt(const gp_Ax2* self_, gp_Pnt const* P) {
@@ -9185,6 +5334,14 @@ extern "C" OcctResult<gp_Ax2d*> gp_Ax2d_ctor_pnt2d_dir2d(gp_Pnt2d const* theP, g
     try { return {new gp_Ax2d(*theP, *theV), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" OcctResult<gp_Ax2d*> gp_Ax2d_ctor_pnt2d_d(gp_Pnt2d const* theP, gp_Dir2d::D const* theDir) {
+    try { return {new gp_Ax2d(*theP, *theDir), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<gp_Ax2d*> gp_Ax2d_ctor_d(gp_Dir2d::D const* theDir) {
+    try { return {new gp_Ax2d(*theDir), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" OcctResult<gp_Ax2d*> gp_Ax2d_reversed(const gp_Ax2d* self_) {
     try { return {new gp_Ax2d(self_->Reversed()), nullptr}; }
     OCCT_CATCH_RETURN
@@ -9307,8 +5464,20 @@ extern "C" OcctResult<gp_Ax3*> gp_Ax3_ctor_pnt_dir2(gp_Pnt const* theP, gp_Dir c
     try { return {new gp_Ax3(*theP, *theN, *theVx), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" OcctResult<gp_Ax3*> gp_Ax3_ctor_pnt_d2(gp_Pnt const* theP, gp_Dir::D const* theN, gp_Dir::D const* theVx) {
+    try { return {new gp_Ax3(*theP, *theN, *theVx), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" OcctResult<gp_Ax3*> gp_Ax3_ctor_pnt_dir(gp_Pnt const* theP, gp_Dir const* theV) {
     try { return {new gp_Ax3(*theP, *theV), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<gp_Ax3*> gp_Ax3_ctor_pnt_d(gp_Pnt const* theP, gp_Dir::D const* theV) {
+    try { return {new gp_Ax3(*theP, *theV), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<gp_Ax3*> gp_Ax3_ctor_d(gp_Dir::D const* theV) {
+    try { return {new gp_Ax3(*theV), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<gp_Ax2*> gp_Ax3_ax2(const gp_Ax3* self_) {
@@ -10049,6 +6218,10 @@ extern "C" OcctResult<gp_Dir*> gp_Dir_ctor() {
     try { return {new gp_Dir(), nullptr}; }
     OCCT_CATCH_RETURN
 }
+extern "C" OcctResult<gp_Dir*> gp_Dir_ctor_d(gp_Dir::D const* theDir) {
+    try { return {new gp_Dir(*theDir), nullptr}; }
+    OCCT_CATCH_RETURN
+}
 extern "C" OcctResult<gp_Dir*> gp_Dir_ctor_vec(gp_Vec const* theV) {
     try { return {new gp_Dir(*theV), nullptr}; }
     OCCT_CATCH_RETURN
@@ -10217,6 +6390,10 @@ extern "C" void gp_Dir_destructor(gp_Dir* self_) { delete self_; }
 
 extern "C" OcctResult<gp_Dir2d*> gp_Dir2d_ctor() {
     try { return {new gp_Dir2d(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<gp_Dir2d*> gp_Dir2d_ctor_d(gp_Dir2d::D const* theDir) {
+    try { return {new gp_Dir2d(*theDir), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<gp_Dir2d*> gp_Dir2d_ctor_vec2d(gp_Vec2d const* theV) {
@@ -12043,16 +8220,8 @@ extern "C" OcctResult<gp_Pnt2d*> gp_Parab2d_focus(const gp_Parab2d* self_) {
     try { return {new gp_Pnt2d(self_->Focus()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<gp_Pnt2d*> gp_Parab2d_location(const gp_Parab2d* self_) {
-    try { return {new gp_Pnt2d(self_->Location()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
 extern "C" OcctResult<gp_Ax2d*> gp_Parab2d_mirror_axis(const gp_Parab2d* self_) {
     try { return {new gp_Ax2d(self_->MirrorAxis()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<gp_Ax22d*> gp_Parab2d_axis(const gp_Parab2d* self_) {
-    try { return {new gp_Ax22d(self_->Axis()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<gp_Parab2d*> gp_Parab2d_reversed(const gp_Parab2d* self_) {
@@ -12109,6 +8278,14 @@ extern "C" const char* gp_Parab2d_coefficients(const gp_Parab2d* self_, double* 
 }
 extern "C" OcctResult<double> gp_Parab2d_focal(const gp_Parab2d* self_) {
     try { return {self_->Focal(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<gp_Pnt2d const*> gp_Parab2d_location(const gp_Parab2d* self_) {
+    try { return {&(self_->Location()), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<gp_Ax22d const*> gp_Parab2d_axis(const gp_Parab2d* self_) {
+    try { return {&(self_->Axis()), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<double> gp_Parab2d_parameter(const gp_Parab2d* self_) {
@@ -12267,6 +8444,18 @@ extern "C" OcctResult<double> gp_Pln_distance_lin(const gp_Pln* self_, gp_Lin co
 }
 extern "C" OcctResult<double> gp_Pln_distance_pln(const gp_Pln* self_, gp_Pln const* theOther) {
     try { return {self_->Distance(*theOther), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<double> gp_Pln_signed_distance_pnt(const gp_Pln* self_, gp_Pnt const* theP) {
+    try { return {self_->SignedDistance(*theP), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<double> gp_Pln_signed_distance_lin(const gp_Pln* self_, gp_Lin const* theL) {
+    try { return {self_->SignedDistance(*theL), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<double> gp_Pln_signed_distance_pln(const gp_Pln* self_, gp_Pln const* theOther) {
+    try { return {self_->SignedDistance(*theOther), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<double> gp_Pln_square_distance_pnt(const gp_Pln* self_, gp_Pnt const* theP) {
@@ -13103,7 +9292,7 @@ extern "C" OcctResult<gp_Ax1 const*> gp_Torus_axis(const gp_Torus* self_) {
     try { return {&(self_->Axis()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* gp_Torus_coefficients(const gp_Torus* self_, TColStd_Array1OfReal* theCoef) {
+extern "C" const char* gp_Torus_coefficients(const gp_Torus* self_, NCollection_Array1_double* theCoef) {
     try { self_->Coefficients(*theCoef); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -13941,10 +10130,6 @@ extern "C" void gp_Vec2d_destructor(gp_Vec2d* self_) { delete self_; }
 // gp_VectorWithNullMagnitude wrappers
 // ========================
 
-extern "C" OcctResult<gp_VectorWithNullMagnitude*> gp_VectorWithNullMagnitude_ctor() {
-    try { return {new gp_VectorWithNullMagnitude(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
 extern "C" OcctResult<gp_VectorWithNullMagnitude*> gp_VectorWithNullMagnitude_ctor_charptr(const char* theMessage) {
     try { return {new gp_VectorWithNullMagnitude(theMessage), nullptr}; }
     OCCT_CATCH_RETURN
@@ -13953,102 +10138,20 @@ extern "C" OcctResult<gp_VectorWithNullMagnitude*> gp_VectorWithNullMagnitude_ct
     try { return {new gp_VectorWithNullMagnitude(theMessage, theStackTrace), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(Standard_Type) const*> gp_VectorWithNullMagnitude_dynamic_type(const gp_VectorWithNullMagnitude* self_) {
-    try { return {&(self_->DynamicType()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* gp_VectorWithNullMagnitude_raise_charptr(const char* theMessage) {
-    try { gp_VectorWithNullMagnitude::Raise(theMessage); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* gp_VectorWithNullMagnitude_raise_sstream(Standard_SStream* theMessage) {
-    try { gp_VectorWithNullMagnitude::Raise(*theMessage); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<Handle(gp_VectorWithNullMagnitude)*> gp_VectorWithNullMagnitude_new_instance_charptr(const char* theMessage) {
-    try { return {new Handle(gp_VectorWithNullMagnitude)(gp_VectorWithNullMagnitude::NewInstance(theMessage)), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Handle(gp_VectorWithNullMagnitude)*> gp_VectorWithNullMagnitude_new_instance_charptr2(const char* theMessage, const char* theStackTrace) {
-    try { return {new Handle(gp_VectorWithNullMagnitude)(gp_VectorWithNullMagnitude::NewInstance(theMessage, theStackTrace)), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<char const*> gp_VectorWithNullMagnitude_get_type_name() {
-    try { return {gp_VectorWithNullMagnitude::get_type_name(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Handle(Standard_Type) const*> gp_VectorWithNullMagnitude_get_type_descriptor() {
-    try { return {&(gp_VectorWithNullMagnitude::get_type_descriptor()), nullptr}; }
+extern "C" OcctResult<char const*> gp_VectorWithNullMagnitude_exception_type(const gp_VectorWithNullMagnitude* self_) {
+    try { return {self_->ExceptionType(), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<const Standard_DomainError*> gp_VectorWithNullMagnitude_as_Standard_DomainError(const gp_VectorWithNullMagnitude* self_) { return {static_cast<const Standard_DomainError*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_DomainError*> gp_VectorWithNullMagnitude_as_Standard_DomainError_mut(gp_VectorWithNullMagnitude* self_) { return {static_cast<Standard_DomainError*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Failure*> gp_VectorWithNullMagnitude_as_Standard_Failure(const gp_VectorWithNullMagnitude* self_) { return {static_cast<const Standard_Failure*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Failure*> gp_VectorWithNullMagnitude_as_Standard_Failure_mut(gp_VectorWithNullMagnitude* self_) { return {static_cast<Standard_Failure*>(self_), nullptr}; }
-extern "C" OcctResult<const Standard_Transient*> gp_VectorWithNullMagnitude_as_Standard_Transient(const gp_VectorWithNullMagnitude* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<Standard_Transient*> gp_VectorWithNullMagnitude_as_Standard_Transient_mut(gp_VectorWithNullMagnitude* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandlegpVectorWithNullMagnitude*> gp_VectorWithNullMagnitude_to_handle(gp_VectorWithNullMagnitude* obj) {
-    try { return {new HandlegpVectorWithNullMagnitude(obj), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<const gp_VectorWithNullMagnitude*> HandlegpVectorWithNullMagnitude_get(const HandlegpVectorWithNullMagnitude* handle) {
-    try { return {(*handle).get(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<gp_VectorWithNullMagnitude*> HandlegpVectorWithNullMagnitude_get_mut(HandlegpVectorWithNullMagnitude* handle) {
-    try { return {(*handle).get(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<HandleStandardDomainError*> HandlegpVectorWithNullMagnitude_to_HandleStandardDomainError(const HandlegpVectorWithNullMagnitude* self_) {
-    try { return {new HandleStandardDomainError(*self_), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<HandleStandardFailure*> HandlegpVectorWithNullMagnitude_to_HandleStandardFailure(const HandlegpVectorWithNullMagnitude* self_) {
-    try { return {new HandleStandardFailure(*self_), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<HandleStandardTransient*> HandlegpVectorWithNullMagnitude_to_HandleStandardTransient(const HandlegpVectorWithNullMagnitude* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<gp_VectorWithNullMagnitude*> gp_VectorWithNullMagnitude_clone(const gp_VectorWithNullMagnitude* self_) {
+    try { return {new gp_VectorWithNullMagnitude(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" const char* gp_VectorWithNullMagnitude_inherited_Print(const gp_VectorWithNullMagnitude* self, Standard_OStream& theStream) {
     try { self->Print(theStream); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* gp_VectorWithNullMagnitude_inherited_Reraise(gp_VectorWithNullMagnitude* self) {
-    try { self->Reraise(); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* gp_VectorWithNullMagnitude_inherited_Jump(gp_VectorWithNullMagnitude* self) {
-    try { self->Jump(); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<bool> gp_VectorWithNullMagnitude_inherited_IsInstance(const gp_VectorWithNullMagnitude* self, Handle(Standard_Type) const& theType) {
-    try { return {self->IsInstance(theType), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<bool> gp_VectorWithNullMagnitude_inherited_IsKind(const gp_VectorWithNullMagnitude* self, Handle(Standard_Type) const& theType) {
-    try { return {self->IsKind(theType), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Standard_Transient*> gp_VectorWithNullMagnitude_inherited_This(const gp_VectorWithNullMagnitude* self) {
-    try { return {self->This(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<int32_t> gp_VectorWithNullMagnitude_inherited_GetRefCount(const gp_VectorWithNullMagnitude* self) {
-    try { return {self->GetRefCount(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* gp_VectorWithNullMagnitude_inherited_IncrementRefCounter(gp_VectorWithNullMagnitude* self) {
-    try { self->IncrementRefCounter(); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<int32_t> gp_VectorWithNullMagnitude_inherited_DecrementRefCounter(gp_VectorWithNullMagnitude* self) {
-    try { return {self->DecrementRefCounter(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* gp_VectorWithNullMagnitude_inherited_Delete(const gp_VectorWithNullMagnitude* self) {
-    try { self->Delete(); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
 extern "C" void gp_VectorWithNullMagnitude_destructor(gp_VectorWithNullMagnitude* self_) { delete self_; }
@@ -14739,20 +10842,20 @@ extern "C" void math_Crout_destructor(math_Crout* self_) { delete self_; }
 // math_DirectPolynomialRoots wrappers
 // ========================
 
-extern "C" OcctResult<math_DirectPolynomialRoots*> math_DirectPolynomialRoots_ctor_real5(double A, double B, double C, double D, double E) {
-    try { return {new math_DirectPolynomialRoots(A, B, C, D, E), nullptr}; }
+extern "C" OcctResult<math_DirectPolynomialRoots*> math_DirectPolynomialRoots_ctor_real5(double theA, double theB, double theC, double theD, double theE) {
+    try { return {new math_DirectPolynomialRoots(theA, theB, theC, theD, theE), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<math_DirectPolynomialRoots*> math_DirectPolynomialRoots_ctor_real4(double A, double B, double C, double D) {
-    try { return {new math_DirectPolynomialRoots(A, B, C, D), nullptr}; }
+extern "C" OcctResult<math_DirectPolynomialRoots*> math_DirectPolynomialRoots_ctor_real4(double theA, double theB, double theC, double theD) {
+    try { return {new math_DirectPolynomialRoots(theA, theB, theC, theD), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<math_DirectPolynomialRoots*> math_DirectPolynomialRoots_ctor_real3(double A, double B, double C) {
-    try { return {new math_DirectPolynomialRoots(A, B, C), nullptr}; }
+extern "C" OcctResult<math_DirectPolynomialRoots*> math_DirectPolynomialRoots_ctor_real3(double theA, double theB, double theC) {
+    try { return {new math_DirectPolynomialRoots(theA, theB, theC), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<math_DirectPolynomialRoots*> math_DirectPolynomialRoots_ctor_real2(double A, double B) {
-    try { return {new math_DirectPolynomialRoots(A, B), nullptr}; }
+extern "C" OcctResult<math_DirectPolynomialRoots*> math_DirectPolynomialRoots_ctor_real2(double theA, double theB) {
+    try { return {new math_DirectPolynomialRoots(theA, theB), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> math_DirectPolynomialRoots_is_done(const math_DirectPolynomialRoots* self_) {
@@ -14767,12 +10870,12 @@ extern "C" OcctResult<int32_t> math_DirectPolynomialRoots_nb_solutions(const mat
     try { return {self_->NbSolutions(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<double> math_DirectPolynomialRoots_value(const math_DirectPolynomialRoots* self_, int32_t Nieme) {
-    try { return {self_->Value(Nieme), nullptr}; }
+extern "C" OcctResult<double> math_DirectPolynomialRoots_value(const math_DirectPolynomialRoots* self_, int32_t theIndex) {
+    try { return {self_->Value(theIndex), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* math_DirectPolynomialRoots_dump(const math_DirectPolynomialRoots* self_, Standard_OStream* o) {
-    try { self_->Dump(*o); return nullptr; }
+extern "C" const char* math_DirectPolynomialRoots_dump(const math_DirectPolynomialRoots* self_, Standard_OStream* theStream) {
+    try { self_->Dump(*theStream); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
 extern "C" void math_DirectPolynomialRoots_destructor(math_DirectPolynomialRoots* self_) { delete self_; }
@@ -14781,37 +10884,65 @@ extern "C" void math_DirectPolynomialRoots_destructor(math_DirectPolynomialRoots
 // math_DoubleTab wrappers
 // ========================
 
-extern "C" OcctResult<math_DoubleTab*> math_DoubleTab_ctor_int4(int32_t LowerRow, int32_t UpperRow, int32_t LowerCol, int32_t UpperCol) {
-    try { return {new math_DoubleTab(LowerRow, UpperRow, LowerCol, UpperCol), nullptr}; }
+extern "C" OcctResult<math_DoubleTab*> math_DoubleTab_ctor_int4(int32_t theLowerRow, int32_t theUpperRow, int32_t theLowerCol, int32_t theUpperCol) {
+    try { return {new math_DoubleTab(theLowerRow, theUpperRow, theLowerCol, theUpperCol), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<math_DoubleTab*> math_DoubleTab_ctor_address_int4(Standard_Address Tab, int32_t LowerRow, int32_t UpperRow, int32_t LowerCol, int32_t UpperCol) {
-    try { return {new math_DoubleTab(Tab, LowerRow, UpperRow, LowerCol, UpperCol), nullptr}; }
+extern "C" OcctResult<math_DoubleTab*> math_DoubleTab_ctor_voidptr_int4(void* theTab, int32_t theLowerRow, int32_t theUpperRow, int32_t theLowerCol, int32_t theUpperCol) {
+    try { return {new math_DoubleTab(theTab, theLowerRow, theUpperRow, theLowerCol, theUpperCol), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* math_DoubleTab_init(math_DoubleTab* self_, double InitValue) {
-    try { self_->Init(InitValue); return nullptr; }
+extern "C" const char* math_DoubleTab_init(math_DoubleTab* self_, double theInitValue) {
+    try { self_->Init(theInitValue); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* math_DoubleTab_copy(const math_DoubleTab* self_, math_DoubleTab* Other) {
-    try { self_->Copy(*Other); return nullptr; }
+extern "C" const char* math_DoubleTab_copy(const math_DoubleTab* self_, math_DoubleTab* theOther) {
+    try { self_->Copy(*theOther); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* math_DoubleTab_set_lower_row(math_DoubleTab* self_, int32_t LowerRow) {
-    try { self_->SetLowerRow(LowerRow); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* math_DoubleTab_set_lower_col(math_DoubleTab* self_, int32_t LowerCol) {
-    try { self_->SetLowerCol(LowerCol); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<double*> math_DoubleTab_value(math_DoubleTab* self_, int32_t RowIndex, int32_t ColIndex) {
-    try { return {&(self_->Value(RowIndex, ColIndex)), nullptr}; }
+extern "C" OcctResult<bool> math_DoubleTab_is_deletable(const math_DoubleTab* self_) {
+    try { return {self_->IsDeletable(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* math_DoubleTab_free(math_DoubleTab* self_) {
-    try { self_->Free(); return nullptr; }
+extern "C" const char* math_DoubleTab_set_lower_row(math_DoubleTab* self_, int32_t theLowerRow) {
+    try { self_->SetLowerRow(theLowerRow); return nullptr; }
     OCCT_CATCH_RETURN_VOID
+}
+extern "C" const char* math_DoubleTab_set_lower_col(math_DoubleTab* self_, int32_t theLowerCol) {
+    try { self_->SetLowerCol(theLowerCol); return nullptr; }
+    OCCT_CATCH_RETURN_VOID
+}
+extern "C" OcctResult<int32_t> math_DoubleTab_lower_row(const math_DoubleTab* self_) {
+    try { return {self_->LowerRow(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<int32_t> math_DoubleTab_upper_row(const math_DoubleTab* self_) {
+    try { return {self_->UpperRow(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<int32_t> math_DoubleTab_lower_col(const math_DoubleTab* self_) {
+    try { return {self_->LowerCol(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<int32_t> math_DoubleTab_upper_col(const math_DoubleTab* self_) {
+    try { return {self_->UpperCol(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<int32_t> math_DoubleTab_nb_rows(const math_DoubleTab* self_) {
+    try { return {self_->NbRows(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<int32_t> math_DoubleTab_nb_columns(const math_DoubleTab* self_) {
+    try { return {self_->NbColumns(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<double const*> math_DoubleTab_value_int2(const math_DoubleTab* self_, int32_t theRowIndex, int32_t theColIndex) {
+    try { return {&(self_->Value(theRowIndex, theColIndex)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<double*> math_DoubleTab_value_int2_mut(math_DoubleTab* self_, int32_t theRowIndex, int32_t theColIndex) {
+    try { return {&(self_->Value(theRowIndex, theColIndex)), nullptr}; }
+    OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<math_DoubleTab*> math_DoubleTab_clone(const math_DoubleTab* self_) {
     try { return {new math_DoubleTab(*self_), nullptr}; }
@@ -14823,12 +10954,12 @@ extern "C" void math_DoubleTab_destructor(math_DoubleTab* self_) { delete self_;
 // math_EigenValuesSearcher wrappers
 // ========================
 
-extern "C" OcctResult<math_EigenValuesSearcher*> math_EigenValuesSearcher_ctor_array1ofreal2(TColStd_Array1OfReal const* Diagonal, TColStd_Array1OfReal const* Subdiagonal) {
-    try { return {new math_EigenValuesSearcher(*Diagonal, *Subdiagonal), nullptr}; }
+extern "C" OcctResult<math_EigenValuesSearcher*> math_EigenValuesSearcher_ctor_arr1_double2(NCollection_Array1_double const* theDiagonal, NCollection_Array1_double const* theSubdiagonal) {
+    try { return {new math_EigenValuesSearcher(*theDiagonal, *theSubdiagonal), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<math_Vector*> math_EigenValuesSearcher_eigen_vector(const math_EigenValuesSearcher* self_, int32_t Index) {
-    try { return {new math_Vector(self_->EigenVector(Index)), nullptr}; }
+extern "C" OcctResult<math_Vector*> math_EigenValuesSearcher_eigen_vector(const math_EigenValuesSearcher* self_, int32_t theIndex) {
+    try { return {new math_Vector(self_->EigenVector(theIndex)), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> math_EigenValuesSearcher_is_done(const math_EigenValuesSearcher* self_) {
@@ -14839,8 +10970,8 @@ extern "C" OcctResult<int32_t> math_EigenValuesSearcher_dimension(const math_Eig
     try { return {self_->Dimension(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<double> math_EigenValuesSearcher_eigen_value(const math_EigenValuesSearcher* self_, int32_t Index) {
-    try { return {self_->EigenValue(Index), nullptr}; }
+extern "C" OcctResult<double> math_EigenValuesSearcher_eigen_value(const math_EigenValuesSearcher* self_, int32_t theIndex) {
+    try { return {self_->EigenValue(theIndex), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" void math_EigenValuesSearcher_destructor(math_EigenValuesSearcher* self_) { delete self_; }
@@ -15531,7 +11662,7 @@ extern "C" OcctResult<math_Matrix*> math_Matrix_ctor_int4_real(int32_t LowerRow,
     try { return {new math_Matrix(LowerRow, UpperRow, LowerCol, UpperCol, InitialValue), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<math_Matrix*> math_Matrix_ctor_address_int4(Standard_Address Tab, int32_t LowerRow, int32_t UpperRow, int32_t LowerCol, int32_t UpperCol) {
+extern "C" OcctResult<math_Matrix*> math_Matrix_ctor_voidptr_int4(void* Tab, int32_t LowerRow, int32_t UpperRow, int32_t LowerCol, int32_t UpperCol) {
     try { return {new math_Matrix(Tab, LowerRow, UpperRow, LowerCol, UpperCol), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -15583,7 +11714,7 @@ extern "C" OcctResult<math_Vector*> math_Matrix_multiplied_vector(const math_Mat
     try { return {new math_Vector(self_->Multiplied(*Right)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<math_Matrix*> math_Matrix_opposite(math_Matrix* self_) {
+extern "C" OcctResult<math_Matrix*> math_Matrix_opposite(const math_Matrix* self_) {
     try { return {new math_Matrix(self_->Opposite()), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -15687,7 +11818,11 @@ extern "C" const char* math_Matrix_subtract_matrix2(math_Matrix* self_, math_Mat
     try { self_->Subtract(*Left, *Right); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<double*> math_Matrix_value(math_Matrix* self_, int32_t Row, int32_t Col) {
+extern "C" OcctResult<double const*> math_Matrix_value_int2(const math_Matrix* self_, int32_t Row, int32_t Col) {
+    try { return {&(self_->Value(Row, Col)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<double*> math_Matrix_value_int2_mut(math_Matrix* self_, int32_t Row, int32_t Col) {
     try { return {&(self_->Value(Row, Col)), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -15839,8 +11974,8 @@ extern "C" void math_NewtonFunctionRoot_destructor(math_NewtonFunctionRoot* self
 // math_NewtonFunctionSetRoot wrappers
 // ========================
 
-extern "C" OcctResult<math_NewtonFunctionSetRoot*> math_NewtonFunctionSetRoot_ctor_functionsetwithderivatives_vector_real_int(math_FunctionSetWithDerivatives* theFunction, math_Vector const* theXTolerance, double theFTolerance, int32_t tehNbIterations) {
-    try { return {new math_NewtonFunctionSetRoot(*theFunction, *theXTolerance, theFTolerance, tehNbIterations), nullptr}; }
+extern "C" OcctResult<math_NewtonFunctionSetRoot*> math_NewtonFunctionSetRoot_ctor_functionsetwithderivatives_vector_real_int(math_FunctionSetWithDerivatives* theFunction, math_Vector const* theXTolerance, double theFTolerance, int32_t theNbIterations) {
+    try { return {new math_NewtonFunctionSetRoot(*theFunction, *theXTolerance, theFTolerance, theNbIterations), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<math_NewtonFunctionSetRoot*> math_NewtonFunctionSetRoot_ctor_functionsetwithderivatives_real_int(math_FunctionSetWithDerivatives* theFunction, double theFTolerance, int32_t theNbIterations) {
@@ -15971,10 +12106,6 @@ extern "C" void math_NewtonMinimum_destructor(math_NewtonMinimum* self_) { delet
 // math_NotSquare wrappers
 // ========================
 
-extern "C" OcctResult<math_NotSquare*> math_NotSquare_ctor() {
-    try { return {new math_NotSquare(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
 extern "C" OcctResult<math_NotSquare*> math_NotSquare_ctor_charptr(const char* theMessage) {
     try { return {new math_NotSquare(theMessage), nullptr}; }
     OCCT_CATCH_RETURN
@@ -15983,32 +12114,8 @@ extern "C" OcctResult<math_NotSquare*> math_NotSquare_ctor_charptr2(const char* 
     try { return {new math_NotSquare(theMessage, theStackTrace), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(Standard_Type) const*> math_NotSquare_dynamic_type(const math_NotSquare* self_) {
-    try { return {&(self_->DynamicType()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* math_NotSquare_raise_charptr(const char* theMessage) {
-    try { math_NotSquare::Raise(theMessage); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* math_NotSquare_raise_sstream(Standard_SStream* theMessage) {
-    try { math_NotSquare::Raise(*theMessage); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<Handle(math_NotSquare)*> math_NotSquare_new_instance_charptr(const char* theMessage) {
-    try { return {new Handle(math_NotSquare)(math_NotSquare::NewInstance(theMessage)), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Handle(math_NotSquare)*> math_NotSquare_new_instance_charptr2(const char* theMessage, const char* theStackTrace) {
-    try { return {new Handle(math_NotSquare)(math_NotSquare::NewInstance(theMessage, theStackTrace)), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<char const*> math_NotSquare_get_type_name() {
-    try { return {math_NotSquare::get_type_name(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Handle(Standard_Type) const*> math_NotSquare_get_type_descriptor() {
-    try { return {&(math_NotSquare::get_type_descriptor()), nullptr}; }
+extern "C" OcctResult<char const*> math_NotSquare_exception_type(const math_NotSquare* self_) {
+    try { return {self_->ExceptionType(), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<const Standard_DimensionError*> math_NotSquare_as_Standard_DimensionError(const math_NotSquare* self_) { return {static_cast<const Standard_DimensionError*>(self_), nullptr}; }
@@ -16017,74 +12124,8 @@ extern "C" OcctResult<const Standard_DomainError*> math_NotSquare_as_Standard_Do
 extern "C" OcctResult<Standard_DomainError*> math_NotSquare_as_Standard_DomainError_mut(math_NotSquare* self_) { return {static_cast<Standard_DomainError*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Failure*> math_NotSquare_as_Standard_Failure(const math_NotSquare* self_) { return {static_cast<const Standard_Failure*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Failure*> math_NotSquare_as_Standard_Failure_mut(math_NotSquare* self_) { return {static_cast<Standard_Failure*>(self_), nullptr}; }
-extern "C" OcctResult<const Standard_Transient*> math_NotSquare_as_Standard_Transient(const math_NotSquare* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<Standard_Transient*> math_NotSquare_as_Standard_Transient_mut(math_NotSquare* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandlemathNotSquare*> math_NotSquare_to_handle(math_NotSquare* obj) {
-    try { return {new HandlemathNotSquare(obj), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<const math_NotSquare*> HandlemathNotSquare_get(const HandlemathNotSquare* handle) {
-    try { return {(*handle).get(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<math_NotSquare*> HandlemathNotSquare_get_mut(HandlemathNotSquare* handle) {
-    try { return {(*handle).get(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<HandleStandardDimensionError*> HandlemathNotSquare_to_HandleStandardDimensionError(const HandlemathNotSquare* self_) {
-    try { return {new HandleStandardDimensionError(*self_), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<HandleStandardDomainError*> HandlemathNotSquare_to_HandleStandardDomainError(const HandlemathNotSquare* self_) {
-    try { return {new HandleStandardDomainError(*self_), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<HandleStandardFailure*> HandlemathNotSquare_to_HandleStandardFailure(const HandlemathNotSquare* self_) {
-    try { return {new HandleStandardFailure(*self_), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<HandleStandardTransient*> HandlemathNotSquare_to_HandleStandardTransient(const HandlemathNotSquare* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
-    OCCT_CATCH_RETURN
-}
 extern "C" const char* math_NotSquare_inherited_Print(const math_NotSquare* self, Standard_OStream& theStream) {
     try { self->Print(theStream); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* math_NotSquare_inherited_Reraise(math_NotSquare* self) {
-    try { self->Reraise(); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* math_NotSquare_inherited_Jump(math_NotSquare* self) {
-    try { self->Jump(); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<bool> math_NotSquare_inherited_IsInstance(const math_NotSquare* self, Handle(Standard_Type) const& theType) {
-    try { return {self->IsInstance(theType), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<bool> math_NotSquare_inherited_IsKind(const math_NotSquare* self, Handle(Standard_Type) const& theType) {
-    try { return {self->IsKind(theType), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Standard_Transient*> math_NotSquare_inherited_This(const math_NotSquare* self) {
-    try { return {self->This(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<int32_t> math_NotSquare_inherited_GetRefCount(const math_NotSquare* self) {
-    try { return {self->GetRefCount(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* math_NotSquare_inherited_IncrementRefCounter(math_NotSquare* self) {
-    try { self->IncrementRefCounter(); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<int32_t> math_NotSquare_inherited_DecrementRefCounter(math_NotSquare* self) {
-    try { return {self->DecrementRefCounter(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* math_NotSquare_inherited_Delete(const math_NotSquare* self) {
-    try { self->Delete(); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
 extern "C" void math_NotSquare_destructor(math_NotSquare* self_) { delete self_; }
@@ -16211,10 +12252,6 @@ extern "C" void math_SVD_destructor(math_SVD* self_) { delete self_; }
 // math_SingularMatrix wrappers
 // ========================
 
-extern "C" OcctResult<math_SingularMatrix*> math_SingularMatrix_ctor() {
-    try { return {new math_SingularMatrix(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
 extern "C" OcctResult<math_SingularMatrix*> math_SingularMatrix_ctor_charptr(const char* theMessage) {
     try { return {new math_SingularMatrix(theMessage), nullptr}; }
     OCCT_CATCH_RETURN
@@ -16223,96 +12260,14 @@ extern "C" OcctResult<math_SingularMatrix*> math_SingularMatrix_ctor_charptr2(co
     try { return {new math_SingularMatrix(theMessage, theStackTrace), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(Standard_Type) const*> math_SingularMatrix_dynamic_type(const math_SingularMatrix* self_) {
-    try { return {&(self_->DynamicType()), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* math_SingularMatrix_raise_charptr(const char* theMessage) {
-    try { math_SingularMatrix::Raise(theMessage); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* math_SingularMatrix_raise_sstream(Standard_SStream* theMessage) {
-    try { math_SingularMatrix::Raise(*theMessage); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<Handle(math_SingularMatrix)*> math_SingularMatrix_new_instance_charptr(const char* theMessage) {
-    try { return {new Handle(math_SingularMatrix)(math_SingularMatrix::NewInstance(theMessage)), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Handle(math_SingularMatrix)*> math_SingularMatrix_new_instance_charptr2(const char* theMessage, const char* theStackTrace) {
-    try { return {new Handle(math_SingularMatrix)(math_SingularMatrix::NewInstance(theMessage, theStackTrace)), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<char const*> math_SingularMatrix_get_type_name() {
-    try { return {math_SingularMatrix::get_type_name(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Handle(Standard_Type) const*> math_SingularMatrix_get_type_descriptor() {
-    try { return {&(math_SingularMatrix::get_type_descriptor()), nullptr}; }
+extern "C" OcctResult<char const*> math_SingularMatrix_exception_type(const math_SingularMatrix* self_) {
+    try { return {self_->ExceptionType(), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<const Standard_Failure*> math_SingularMatrix_as_Standard_Failure(const math_SingularMatrix* self_) { return {static_cast<const Standard_Failure*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Failure*> math_SingularMatrix_as_Standard_Failure_mut(math_SingularMatrix* self_) { return {static_cast<Standard_Failure*>(self_), nullptr}; }
-extern "C" OcctResult<const Standard_Transient*> math_SingularMatrix_as_Standard_Transient(const math_SingularMatrix* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<Standard_Transient*> math_SingularMatrix_as_Standard_Transient_mut(math_SingularMatrix* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandlemathSingularMatrix*> math_SingularMatrix_to_handle(math_SingularMatrix* obj) {
-    try { return {new HandlemathSingularMatrix(obj), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<const math_SingularMatrix*> HandlemathSingularMatrix_get(const HandlemathSingularMatrix* handle) {
-    try { return {(*handle).get(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<math_SingularMatrix*> HandlemathSingularMatrix_get_mut(HandlemathSingularMatrix* handle) {
-    try { return {(*handle).get(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<HandleStandardFailure*> HandlemathSingularMatrix_to_HandleStandardFailure(const HandlemathSingularMatrix* self_) {
-    try { return {new HandleStandardFailure(*self_), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<HandleStandardTransient*> HandlemathSingularMatrix_to_HandleStandardTransient(const HandlemathSingularMatrix* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
-    OCCT_CATCH_RETURN
-}
 extern "C" const char* math_SingularMatrix_inherited_Print(const math_SingularMatrix* self, Standard_OStream& theStream) {
     try { self->Print(theStream); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* math_SingularMatrix_inherited_Reraise(math_SingularMatrix* self) {
-    try { self->Reraise(); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" const char* math_SingularMatrix_inherited_Jump(math_SingularMatrix* self) {
-    try { self->Jump(); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<bool> math_SingularMatrix_inherited_IsInstance(const math_SingularMatrix* self, Handle(Standard_Type) const& theType) {
-    try { return {self->IsInstance(theType), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<bool> math_SingularMatrix_inherited_IsKind(const math_SingularMatrix* self, Handle(Standard_Type) const& theType) {
-    try { return {self->IsKind(theType), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<Standard_Transient*> math_SingularMatrix_inherited_This(const math_SingularMatrix* self) {
-    try { return {self->This(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<int32_t> math_SingularMatrix_inherited_GetRefCount(const math_SingularMatrix* self) {
-    try { return {self->GetRefCount(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* math_SingularMatrix_inherited_IncrementRefCounter(math_SingularMatrix* self) {
-    try { self->IncrementRefCounter(); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
-}
-extern "C" OcctResult<int32_t> math_SingularMatrix_inherited_DecrementRefCounter(math_SingularMatrix* self) {
-    try { return {self->DecrementRefCounter(), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" const char* math_SingularMatrix_inherited_Delete(const math_SingularMatrix* self) {
-    try { self->Delete(); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
 extern "C" void math_SingularMatrix_destructor(math_SingularMatrix* self_) { delete self_; }
@@ -16456,99 +12411,99 @@ extern "C" void math_ValueAndWeight_destructor(math_ValueAndWeight* self_) { del
 // ========================
 // BSplCLib namespace functions
 // ========================
-extern "C" const char* BSplCLib_hunt(TColStd_Array1OfReal const* theArray, double theX, int32_t* theXPos) {
+extern "C" const char* BSplCLib_hunt(NCollection_Array1_double const* theArray, double theX, int32_t* theXPos) {
     try { BSplCLib::Hunt(*theArray, theX, *theXPos); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<int32_t> BSplCLib_first_u_knot_index(int32_t Degree, TColStd_Array1OfInteger const* Mults) {
+extern "C" OcctResult<int32_t> BSplCLib_first_u_knot_index(int32_t Degree, NCollection_Array1_int const* Mults) {
     try { return {BSplCLib::FirstUKnotIndex(Degree, *Mults), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<int32_t> BSplCLib_last_u_knot_index(int32_t Degree, TColStd_Array1OfInteger const* Mults) {
+extern "C" OcctResult<int32_t> BSplCLib_last_u_knot_index(int32_t Degree, NCollection_Array1_int const* Mults) {
     try { return {BSplCLib::LastUKnotIndex(Degree, *Mults), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<int32_t> BSplCLib_flat_index(int32_t Degree, int32_t Index, TColStd_Array1OfInteger const* Mults, bool Periodic) {
+extern "C" OcctResult<int32_t> BSplCLib_flat_index(int32_t Degree, int32_t Index, NCollection_Array1_int const* Mults, bool Periodic) {
     try { return {BSplCLib::FlatIndex(Degree, Index, *Mults, Periodic), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* BSplCLib_locate_parameter_int_array1ofreal_array1ofinteger_real_bool_int3_real(int32_t Degree, TColStd_Array1OfReal const* Knots, TColStd_Array1OfInteger const* Mults, double U, bool IsPeriodic, int32_t FromK1, int32_t ToK2, int32_t* KnotIndex, double* NewU) {
+extern "C" const char* BSplCLib_locate_parameter_int_arr1_double_arr1_int_real_bool_int3_real(int32_t Degree, NCollection_Array1_double const* Knots, NCollection_Array1_int const* Mults, double U, bool IsPeriodic, int32_t FromK1, int32_t ToK2, int32_t* KnotIndex, double* NewU) {
     try { BSplCLib::LocateParameter(Degree, *Knots, *Mults, U, IsPeriodic, FromK1, ToK2, *KnotIndex, *NewU); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* BSplCLib_locate_parameter_int_array1ofreal_real_bool_int3_real(int32_t Degree, TColStd_Array1OfReal const* Knots, double U, bool IsPeriodic, int32_t FromK1, int32_t ToK2, int32_t* KnotIndex, double* NewU) {
+extern "C" const char* BSplCLib_locate_parameter_int_arr1_double_real_bool_int3_real(int32_t Degree, NCollection_Array1_double const* Knots, double U, bool IsPeriodic, int32_t FromK1, int32_t ToK2, int32_t* KnotIndex, double* NewU) {
     try { BSplCLib::LocateParameter(Degree, *Knots, U, IsPeriodic, FromK1, ToK2, *KnotIndex, *NewU); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* BSplCLib_locate_parameter_int_array1ofreal_array1ofintegerptr_real_bool_int_real(int32_t Degree, TColStd_Array1OfReal const* Knots, const TColStd_Array1OfInteger* Mults, double U, bool Periodic, int32_t* Index, double* NewU) {
+extern "C" const char* BSplCLib_locate_parameter_int_arr1_double_arr1_intptr_real_bool_int_real(int32_t Degree, NCollection_Array1_double const* Knots, const NCollection_Array1_int* Mults, double U, bool Periodic, int32_t* Index, double* NewU) {
     try { BSplCLib::LocateParameter(Degree, *Knots, Mults, U, Periodic, *Index, *NewU); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<int32_t> BSplCLib_max_knot_mult(TColStd_Array1OfInteger const* Mults, int32_t K1, int32_t K2) {
+extern "C" OcctResult<int32_t> BSplCLib_max_knot_mult(NCollection_Array1_int const* Mults, int32_t K1, int32_t K2) {
     try { return {BSplCLib::MaxKnotMult(*Mults, K1, K2), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<int32_t> BSplCLib_min_knot_mult(TColStd_Array1OfInteger const* Mults, int32_t K1, int32_t K2) {
+extern "C" OcctResult<int32_t> BSplCLib_min_knot_mult(NCollection_Array1_int const* Mults, int32_t K1, int32_t K2) {
     try { return {BSplCLib::MinKnotMult(*Mults, K1, K2), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<int32_t> BSplCLib_nb_poles(int32_t Degree, bool Periodic, TColStd_Array1OfInteger const* Mults) {
+extern "C" OcctResult<int32_t> BSplCLib_nb_poles(int32_t Degree, bool Periodic, NCollection_Array1_int const* Mults) {
     try { return {BSplCLib::NbPoles(Degree, Periodic, *Mults), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<int32_t> BSplCLib_knot_sequence_length(TColStd_Array1OfInteger const* Mults, int32_t Degree, bool Periodic) {
+extern "C" OcctResult<int32_t> BSplCLib_knot_sequence_length(NCollection_Array1_int const* Mults, int32_t Degree, bool Periodic) {
     try { return {BSplCLib::KnotSequenceLength(*Mults, Degree, Periodic), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* BSplCLib_knot_sequence_array1ofreal_array1ofinteger_array1ofreal_bool(TColStd_Array1OfReal const* Knots, TColStd_Array1OfInteger const* Mults, TColStd_Array1OfReal* KnotSeq, bool Periodic) {
+extern "C" const char* BSplCLib_knot_sequence_arr1_double_arr1_int_arr1_double_bool(NCollection_Array1_double const* Knots, NCollection_Array1_int const* Mults, NCollection_Array1_double* KnotSeq, bool Periodic) {
     try { BSplCLib::KnotSequence(*Knots, *Mults, *KnotSeq, Periodic); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* BSplCLib_knot_sequence_array1ofreal_array1ofinteger_int_bool_array1ofreal(TColStd_Array1OfReal const* Knots, TColStd_Array1OfInteger const* Mults, int32_t Degree, bool Periodic, TColStd_Array1OfReal* KnotSeq) {
+extern "C" const char* BSplCLib_knot_sequence_arr1_double_arr1_int_int_bool_arr1_double(NCollection_Array1_double const* Knots, NCollection_Array1_int const* Mults, int32_t Degree, bool Periodic, NCollection_Array1_double* KnotSeq) {
     try { BSplCLib::KnotSequence(*Knots, *Mults, Degree, Periodic, *KnotSeq); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<int32_t> BSplCLib_knots_length(TColStd_Array1OfReal const* KnotSeq, bool Periodic) {
+extern "C" OcctResult<int32_t> BSplCLib_knots_length(NCollection_Array1_double const* KnotSeq, bool Periodic) {
     try { return {BSplCLib::KnotsLength(*KnotSeq, Periodic), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* BSplCLib_knots_array1ofreal2_array1ofinteger_bool(TColStd_Array1OfReal const* KnotSeq, TColStd_Array1OfReal* Knots, TColStd_Array1OfInteger* Mults, bool Periodic) {
+extern "C" const char* BSplCLib_knots_arr1_double2_arr1_int_bool(NCollection_Array1_double const* KnotSeq, NCollection_Array1_double* Knots, NCollection_Array1_int* Mults, bool Periodic) {
     try { BSplCLib::Knots(*KnotSeq, *Knots, *Mults, Periodic); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<int32_t> BSplCLib_knot_form(TColStd_Array1OfReal const* Knots, int32_t FromK1, int32_t ToK2) {
+extern "C" OcctResult<int32_t> BSplCLib_knot_form(NCollection_Array1_double const* Knots, int32_t FromK1, int32_t ToK2) {
     try { return {static_cast<int32_t>(BSplCLib::KnotForm(*Knots, FromK1, ToK2)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<int32_t> BSplCLib_mult_form(TColStd_Array1OfInteger const* Mults, int32_t FromK1, int32_t ToK2) {
+extern "C" OcctResult<int32_t> BSplCLib_mult_form(NCollection_Array1_int const* Mults, int32_t FromK1, int32_t ToK2) {
     try { return {static_cast<int32_t>(BSplCLib::MultForm(*Mults, FromK1, ToK2)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* BSplCLib_reparametrize_real2_array1ofreal(double U1, double U2, TColStd_Array1OfReal* Knots) {
+extern "C" const char* BSplCLib_reparametrize_real2_arr1_double(double U1, double U2, NCollection_Array1_double* Knots) {
     try { BSplCLib::Reparametrize(U1, U2, *Knots); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* BSplCLib_reverse_array1ofreal(TColStd_Array1OfReal* Knots) {
+extern "C" const char* BSplCLib_reverse_arr1_double(NCollection_Array1_double* Knots) {
     try { BSplCLib::Reverse(*Knots); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* BSplCLib_reverse_array1ofinteger(TColStd_Array1OfInteger* Mults) {
+extern "C" const char* BSplCLib_reverse_arr1_int(NCollection_Array1_int* Mults) {
     try { BSplCLib::Reverse(*Mults); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* BSplCLib_reverse_array1ofpnt_int(TColgp_Array1OfPnt* Poles, int32_t Last) {
+extern "C" const char* BSplCLib_reverse_arr1_pnt_int(NCollection_Array1_gp_Pnt* Poles, int32_t Last) {
     try { BSplCLib::Reverse(*Poles, Last); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* BSplCLib_reverse_array1ofpnt2d_int(TColgp_Array1OfPnt2d* Poles, int32_t Last) {
+extern "C" const char* BSplCLib_reverse_arr1_pnt2d_int(NCollection_Array1_gp_Pnt2d* Poles, int32_t Last) {
     try { BSplCLib::Reverse(*Poles, Last); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* BSplCLib_reverse_array1ofreal_int(TColStd_Array1OfReal* Weights, int32_t Last) {
+extern "C" const char* BSplCLib_reverse_arr1_double_int(NCollection_Array1_double* Weights, int32_t Last) {
     try { BSplCLib::Reverse(*Weights, Last); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<bool> BSplCLib_is_rational_array1ofreal_int2_real(TColStd_Array1OfReal const* Weights, int32_t I1, int32_t I2, double Epsilon) {
+extern "C" OcctResult<bool> BSplCLib_is_rational_arr1_double_int2_real(NCollection_Array1_double const* Weights, int32_t I1, int32_t I2, double Epsilon) {
     try { return {BSplCLib::IsRational(*Weights, I1, I2, Epsilon), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -16576,35 +12531,47 @@ extern "C" const char* BSplCLib_bohm(double U, int32_t Degree, int32_t N, double
     try { BSplCLib::Bohm(U, Degree, N, *Knots, Dimension, *Poles); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<TColStd_Array1OfReal*> BSplCLib_no_weights() {
+extern "C" OcctResult<NCollection_Array1_double*> BSplCLib_no_weights() {
     try { return {BSplCLib::NoWeights(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TColStd_Array1OfInteger*> BSplCLib_no_mults() {
+extern "C" OcctResult<NCollection_Array1_int*> BSplCLib_no_mults() {
     try { return {BSplCLib::NoMults(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* BSplCLib_build_knots(int32_t Degree, int32_t Index, bool Periodic, TColStd_Array1OfReal const* Knots, const TColStd_Array1OfInteger* Mults, double* LK) {
+extern "C" OcctResult<int32_t> BSplCLib_max_unit_weights_size() {
+    try { return {BSplCLib::MaxUnitWeightsSize(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<NCollection_Array1_double*> BSplCLib_unit_weights_int(int32_t theNbElems) {
+    try { return {new NCollection_Array1_double(BSplCLib::UnitWeights(theNbElems)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" OcctResult<double const*> BSplCLib_unit_weights_data() {
+    try { return {BSplCLib::UnitWeightsData(), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+extern "C" const char* BSplCLib_build_knots(int32_t Degree, int32_t Index, bool Periodic, NCollection_Array1_double const* Knots, const NCollection_Array1_int* Mults, double* LK) {
     try { BSplCLib::BuildKnots(Degree, Index, Periodic, *Knots, Mults, *LK); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<int32_t> BSplCLib_pole_index(int32_t Degree, int32_t Index, bool Periodic, TColStd_Array1OfInteger const* Mults) {
+extern "C" OcctResult<int32_t> BSplCLib_pole_index(int32_t Degree, int32_t Index, bool Periodic, NCollection_Array1_int const* Mults) {
     try { return {BSplCLib::PoleIndex(Degree, Index, Periodic, *Mults), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* BSplCLib_build_eval_int2_array1ofreal_array1ofrealptr_real(int32_t Degree, int32_t Index, TColStd_Array1OfReal const* Poles, const TColStd_Array1OfReal* Weights, double* LP) {
+extern "C" const char* BSplCLib_build_eval_int2_arr1_double_arr1_doubleptr_real(int32_t Degree, int32_t Index, NCollection_Array1_double const* Poles, const NCollection_Array1_double* Weights, double* LP) {
     try { BSplCLib::BuildEval(Degree, Index, *Poles, Weights, *LP); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* BSplCLib_build_eval_int2_array1ofpnt_array1ofrealptr_real(int32_t Degree, int32_t Index, TColgp_Array1OfPnt const* Poles, const TColStd_Array1OfReal* Weights, double* LP) {
+extern "C" const char* BSplCLib_build_eval_int2_arr1_pnt_arr1_doubleptr_real(int32_t Degree, int32_t Index, NCollection_Array1_gp_Pnt const* Poles, const NCollection_Array1_double* Weights, double* LP) {
     try { BSplCLib::BuildEval(Degree, Index, *Poles, Weights, *LP); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* BSplCLib_build_eval_int2_array1ofpnt2d_array1ofrealptr_real(int32_t Degree, int32_t Index, TColgp_Array1OfPnt2d const* Poles, const TColStd_Array1OfReal* Weights, double* LP) {
+extern "C" const char* BSplCLib_build_eval_int2_arr1_pnt2d_arr1_doubleptr_real(int32_t Degree, int32_t Index, NCollection_Array1_gp_Pnt2d const* Poles, const NCollection_Array1_double* Weights, double* LP) {
     try { BSplCLib::BuildEval(Degree, Index, *Poles, Weights, *LP); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* BSplCLib_build_boor(int32_t Index, int32_t Length, int32_t Dimension, TColStd_Array1OfReal const* Poles, double* LP) {
+extern "C" const char* BSplCLib_build_boor(int32_t Index, int32_t Length, int32_t Dimension, NCollection_Array1_double const* Poles, double* LP) {
     try { BSplCLib::BuildBoor(Index, Length, Dimension, *Poles, *LP); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -16612,215 +12579,215 @@ extern "C" OcctResult<int32_t> BSplCLib_boor_index(int32_t Index, int32_t Length
     try { return {BSplCLib::BoorIndex(Index, Length, Depth), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* BSplCLib_get_pole(int32_t Index, int32_t Length, int32_t Depth, int32_t Dimension, double* LocPoles, int32_t* Position, TColStd_Array1OfReal* Pole) {
+extern "C" const char* BSplCLib_get_pole(int32_t Index, int32_t Length, int32_t Depth, int32_t Dimension, double* LocPoles, int32_t* Position, NCollection_Array1_double* Pole) {
     try { BSplCLib::GetPole(Index, Length, Depth, Dimension, *LocPoles, *Position, *Pole); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<bool> BSplCLib_prepare_insert_knots(int32_t Degree, bool Periodic, TColStd_Array1OfReal const* Knots, TColStd_Array1OfInteger const* Mults, TColStd_Array1OfReal const* AddKnots, const TColStd_Array1OfInteger* AddMults, int32_t* NbPoles, int32_t* NbKnots, double Epsilon, bool Add) {
+extern "C" OcctResult<bool> BSplCLib_prepare_insert_knots(int32_t Degree, bool Periodic, NCollection_Array1_double const* Knots, NCollection_Array1_int const* Mults, NCollection_Array1_double const* AddKnots, const NCollection_Array1_int* AddMults, int32_t* NbPoles, int32_t* NbKnots, double Epsilon, bool Add) {
     try { return {BSplCLib::PrepareInsertKnots(Degree, Periodic, *Knots, *Mults, *AddKnots, AddMults, *NbPoles, *NbKnots, Epsilon, Add), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* BSplCLib_insert_knots_int_bool_int_array1ofreal2_array1ofinteger_array1ofreal_array1ofintegerptr_array1ofreal2_array1ofinteger_real_bool(int32_t Degree, bool Periodic, int32_t Dimension, TColStd_Array1OfReal const* Poles, TColStd_Array1OfReal const* Knots, TColStd_Array1OfInteger const* Mults, TColStd_Array1OfReal const* AddKnots, const TColStd_Array1OfInteger* AddMults, TColStd_Array1OfReal* NewPoles, TColStd_Array1OfReal* NewKnots, TColStd_Array1OfInteger* NewMults, double Epsilon, bool Add) {
+extern "C" const char* BSplCLib_insert_knots_int_bool_int_arr1_double2_arr1_int_arr1_double_arr1_intptr_arr1_double2_arr1_int_real_bool(int32_t Degree, bool Periodic, int32_t Dimension, NCollection_Array1_double const* Poles, NCollection_Array1_double const* Knots, NCollection_Array1_int const* Mults, NCollection_Array1_double const* AddKnots, const NCollection_Array1_int* AddMults, NCollection_Array1_double* NewPoles, NCollection_Array1_double* NewKnots, NCollection_Array1_int* NewMults, double Epsilon, bool Add) {
     try { BSplCLib::InsertKnots(Degree, Periodic, Dimension, *Poles, *Knots, *Mults, *AddKnots, AddMults, *NewPoles, *NewKnots, *NewMults, Epsilon, Add); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* BSplCLib_insert_knots_int_bool_array1ofpnt_array1ofrealptr_array1ofreal_array1ofinteger_array1ofreal_array1ofintegerptr_array1ofpnt_array1ofrealptr_array1ofreal_array1ofinteger_real_bool(int32_t Degree, bool Periodic, TColgp_Array1OfPnt const* Poles, const TColStd_Array1OfReal* Weights, TColStd_Array1OfReal const* Knots, TColStd_Array1OfInteger const* Mults, TColStd_Array1OfReal const* AddKnots, const TColStd_Array1OfInteger* AddMults, TColgp_Array1OfPnt* NewPoles, TColStd_Array1OfReal* NewWeights, TColStd_Array1OfReal* NewKnots, TColStd_Array1OfInteger* NewMults, double Epsilon, bool Add) {
+extern "C" const char* BSplCLib_insert_knots_int_bool_arr1_pnt_arr1_doubleptr_arr1_double_arr1_int_arr1_double_arr1_intptr_arr1_pnt_arr1_doubleptr_arr1_double_arr1_int_real_bool(int32_t Degree, bool Periodic, NCollection_Array1_gp_Pnt const* Poles, const NCollection_Array1_double* Weights, NCollection_Array1_double const* Knots, NCollection_Array1_int const* Mults, NCollection_Array1_double const* AddKnots, const NCollection_Array1_int* AddMults, NCollection_Array1_gp_Pnt* NewPoles, NCollection_Array1_double* NewWeights, NCollection_Array1_double* NewKnots, NCollection_Array1_int* NewMults, double Epsilon, bool Add) {
     try { BSplCLib::InsertKnots(Degree, Periodic, *Poles, Weights, *Knots, *Mults, *AddKnots, AddMults, *NewPoles, NewWeights, *NewKnots, *NewMults, Epsilon, Add); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* BSplCLib_insert_knots_int_bool_array1ofpnt2d_array1ofrealptr_array1ofreal_array1ofinteger_array1ofreal_array1ofintegerptr_array1ofpnt2d_array1ofrealptr_array1ofreal_array1ofinteger_real_bool(int32_t Degree, bool Periodic, TColgp_Array1OfPnt2d const* Poles, const TColStd_Array1OfReal* Weights, TColStd_Array1OfReal const* Knots, TColStd_Array1OfInteger const* Mults, TColStd_Array1OfReal const* AddKnots, const TColStd_Array1OfInteger* AddMults, TColgp_Array1OfPnt2d* NewPoles, TColStd_Array1OfReal* NewWeights, TColStd_Array1OfReal* NewKnots, TColStd_Array1OfInteger* NewMults, double Epsilon, bool Add) {
+extern "C" const char* BSplCLib_insert_knots_int_bool_arr1_pnt2d_arr1_doubleptr_arr1_double_arr1_int_arr1_double_arr1_intptr_arr1_pnt2d_arr1_doubleptr_arr1_double_arr1_int_real_bool(int32_t Degree, bool Periodic, NCollection_Array1_gp_Pnt2d const* Poles, const NCollection_Array1_double* Weights, NCollection_Array1_double const* Knots, NCollection_Array1_int const* Mults, NCollection_Array1_double const* AddKnots, const NCollection_Array1_int* AddMults, NCollection_Array1_gp_Pnt2d* NewPoles, NCollection_Array1_double* NewWeights, NCollection_Array1_double* NewKnots, NCollection_Array1_int* NewMults, double Epsilon, bool Add) {
     try { BSplCLib::InsertKnots(Degree, Periodic, *Poles, Weights, *Knots, *Mults, *AddKnots, AddMults, *NewPoles, NewWeights, *NewKnots, *NewMults, Epsilon, Add); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* BSplCLib_insert_knot_int_real_int2_bool_array1ofpnt_array1ofrealptr_array1ofreal_array1ofinteger_array1ofpnt_array1ofrealptr(int32_t UIndex, double U, int32_t UMult, int32_t Degree, bool Periodic, TColgp_Array1OfPnt const* Poles, const TColStd_Array1OfReal* Weights, TColStd_Array1OfReal const* Knots, TColStd_Array1OfInteger const* Mults, TColgp_Array1OfPnt* NewPoles, TColStd_Array1OfReal* NewWeights) {
+extern "C" const char* BSplCLib_insert_knot_int_real_int2_bool_arr1_pnt_arr1_doubleptr_arr1_double_arr1_int_arr1_pnt_arr1_doubleptr(int32_t UIndex, double U, int32_t UMult, int32_t Degree, bool Periodic, NCollection_Array1_gp_Pnt const* Poles, const NCollection_Array1_double* Weights, NCollection_Array1_double const* Knots, NCollection_Array1_int const* Mults, NCollection_Array1_gp_Pnt* NewPoles, NCollection_Array1_double* NewWeights) {
     try { BSplCLib::InsertKnot(UIndex, U, UMult, Degree, Periodic, *Poles, Weights, *Knots, *Mults, *NewPoles, NewWeights); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* BSplCLib_insert_knot_int_real_int2_bool_array1ofpnt2d_array1ofrealptr_array1ofreal_array1ofinteger_array1ofpnt2d_array1ofrealptr(int32_t UIndex, double U, int32_t UMult, int32_t Degree, bool Periodic, TColgp_Array1OfPnt2d const* Poles, const TColStd_Array1OfReal* Weights, TColStd_Array1OfReal const* Knots, TColStd_Array1OfInteger const* Mults, TColgp_Array1OfPnt2d* NewPoles, TColStd_Array1OfReal* NewWeights) {
+extern "C" const char* BSplCLib_insert_knot_int_real_int2_bool_arr1_pnt2d_arr1_doubleptr_arr1_double_arr1_int_arr1_pnt2d_arr1_doubleptr(int32_t UIndex, double U, int32_t UMult, int32_t Degree, bool Periodic, NCollection_Array1_gp_Pnt2d const* Poles, const NCollection_Array1_double* Weights, NCollection_Array1_double const* Knots, NCollection_Array1_int const* Mults, NCollection_Array1_gp_Pnt2d* NewPoles, NCollection_Array1_double* NewWeights) {
     try { BSplCLib::InsertKnot(UIndex, U, UMult, Degree, Periodic, *Poles, Weights, *Knots, *Mults, *NewPoles, NewWeights); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* BSplCLib_raise_multiplicity_int3_bool_array1ofpnt_array1ofrealptr_array1ofreal_array1ofinteger_array1ofpnt_array1ofrealptr(int32_t KnotIndex, int32_t Mult, int32_t Degree, bool Periodic, TColgp_Array1OfPnt const* Poles, const TColStd_Array1OfReal* Weights, TColStd_Array1OfReal const* Knots, TColStd_Array1OfInteger const* Mults, TColgp_Array1OfPnt* NewPoles, TColStd_Array1OfReal* NewWeights) {
+extern "C" const char* BSplCLib_raise_multiplicity_int3_bool_arr1_pnt_arr1_doubleptr_arr1_double_arr1_int_arr1_pnt_arr1_doubleptr(int32_t KnotIndex, int32_t Mult, int32_t Degree, bool Periodic, NCollection_Array1_gp_Pnt const* Poles, const NCollection_Array1_double* Weights, NCollection_Array1_double const* Knots, NCollection_Array1_int const* Mults, NCollection_Array1_gp_Pnt* NewPoles, NCollection_Array1_double* NewWeights) {
     try { BSplCLib::RaiseMultiplicity(KnotIndex, Mult, Degree, Periodic, *Poles, Weights, *Knots, *Mults, *NewPoles, NewWeights); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* BSplCLib_raise_multiplicity_int3_bool_array1ofpnt2d_array1ofrealptr_array1ofreal_array1ofinteger_array1ofpnt2d_array1ofrealptr(int32_t KnotIndex, int32_t Mult, int32_t Degree, bool Periodic, TColgp_Array1OfPnt2d const* Poles, const TColStd_Array1OfReal* Weights, TColStd_Array1OfReal const* Knots, TColStd_Array1OfInteger const* Mults, TColgp_Array1OfPnt2d* NewPoles, TColStd_Array1OfReal* NewWeights) {
+extern "C" const char* BSplCLib_raise_multiplicity_int3_bool_arr1_pnt2d_arr1_doubleptr_arr1_double_arr1_int_arr1_pnt2d_arr1_doubleptr(int32_t KnotIndex, int32_t Mult, int32_t Degree, bool Periodic, NCollection_Array1_gp_Pnt2d const* Poles, const NCollection_Array1_double* Weights, NCollection_Array1_double const* Knots, NCollection_Array1_int const* Mults, NCollection_Array1_gp_Pnt2d* NewPoles, NCollection_Array1_double* NewWeights) {
     try { BSplCLib::RaiseMultiplicity(KnotIndex, Mult, Degree, Periodic, *Poles, Weights, *Knots, *Mults, *NewPoles, NewWeights); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<bool> BSplCLib_remove_knot_int3_bool_int_array1ofreal2_array1ofinteger_array1ofreal2_array1ofinteger_real(int32_t Index, int32_t Mult, int32_t Degree, bool Periodic, int32_t Dimension, TColStd_Array1OfReal const* Poles, TColStd_Array1OfReal const* Knots, TColStd_Array1OfInteger const* Mults, TColStd_Array1OfReal* NewPoles, TColStd_Array1OfReal* NewKnots, TColStd_Array1OfInteger* NewMults, double Tolerance) {
+extern "C" OcctResult<bool> BSplCLib_remove_knot_int3_bool_int_arr1_double2_arr1_int_arr1_double2_arr1_int_real(int32_t Index, int32_t Mult, int32_t Degree, bool Periodic, int32_t Dimension, NCollection_Array1_double const* Poles, NCollection_Array1_double const* Knots, NCollection_Array1_int const* Mults, NCollection_Array1_double* NewPoles, NCollection_Array1_double* NewKnots, NCollection_Array1_int* NewMults, double Tolerance) {
     try { return {BSplCLib::RemoveKnot(Index, Mult, Degree, Periodic, Dimension, *Poles, *Knots, *Mults, *NewPoles, *NewKnots, *NewMults, Tolerance), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<bool> BSplCLib_remove_knot_int3_bool_array1ofpnt_array1ofrealptr_array1ofreal_array1ofinteger_array1ofpnt_array1ofrealptr_array1ofreal_array1ofinteger_real(int32_t Index, int32_t Mult, int32_t Degree, bool Periodic, TColgp_Array1OfPnt const* Poles, const TColStd_Array1OfReal* Weights, TColStd_Array1OfReal const* Knots, TColStd_Array1OfInteger const* Mults, TColgp_Array1OfPnt* NewPoles, TColStd_Array1OfReal* NewWeights, TColStd_Array1OfReal* NewKnots, TColStd_Array1OfInteger* NewMults, double Tolerance) {
+extern "C" OcctResult<bool> BSplCLib_remove_knot_int3_bool_arr1_pnt_arr1_doubleptr_arr1_double_arr1_int_arr1_pnt_arr1_doubleptr_arr1_double_arr1_int_real(int32_t Index, int32_t Mult, int32_t Degree, bool Periodic, NCollection_Array1_gp_Pnt const* Poles, const NCollection_Array1_double* Weights, NCollection_Array1_double const* Knots, NCollection_Array1_int const* Mults, NCollection_Array1_gp_Pnt* NewPoles, NCollection_Array1_double* NewWeights, NCollection_Array1_double* NewKnots, NCollection_Array1_int* NewMults, double Tolerance) {
     try { return {BSplCLib::RemoveKnot(Index, Mult, Degree, Periodic, *Poles, Weights, *Knots, *Mults, *NewPoles, NewWeights, *NewKnots, *NewMults, Tolerance), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<bool> BSplCLib_remove_knot_int3_bool_array1ofpnt2d_array1ofrealptr_array1ofreal_array1ofinteger_array1ofpnt2d_array1ofrealptr_array1ofreal_array1ofinteger_real(int32_t Index, int32_t Mult, int32_t Degree, bool Periodic, TColgp_Array1OfPnt2d const* Poles, const TColStd_Array1OfReal* Weights, TColStd_Array1OfReal const* Knots, TColStd_Array1OfInteger const* Mults, TColgp_Array1OfPnt2d* NewPoles, TColStd_Array1OfReal* NewWeights, TColStd_Array1OfReal* NewKnots, TColStd_Array1OfInteger* NewMults, double Tolerance) {
+extern "C" OcctResult<bool> BSplCLib_remove_knot_int3_bool_arr1_pnt2d_arr1_doubleptr_arr1_double_arr1_int_arr1_pnt2d_arr1_doubleptr_arr1_double_arr1_int_real(int32_t Index, int32_t Mult, int32_t Degree, bool Periodic, NCollection_Array1_gp_Pnt2d const* Poles, const NCollection_Array1_double* Weights, NCollection_Array1_double const* Knots, NCollection_Array1_int const* Mults, NCollection_Array1_gp_Pnt2d* NewPoles, NCollection_Array1_double* NewWeights, NCollection_Array1_double* NewKnots, NCollection_Array1_int* NewMults, double Tolerance) {
     try { return {BSplCLib::RemoveKnot(Index, Mult, Degree, Periodic, *Poles, Weights, *Knots, *Mults, *NewPoles, NewWeights, *NewKnots, *NewMults, Tolerance), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<int32_t> BSplCLib_increase_degree_count_knots(int32_t Degree, int32_t NewDegree, bool Periodic, TColStd_Array1OfInteger const* Mults) {
+extern "C" OcctResult<int32_t> BSplCLib_increase_degree_count_knots(int32_t Degree, int32_t NewDegree, bool Periodic, NCollection_Array1_int const* Mults) {
     try { return {BSplCLib::IncreaseDegreeCountKnots(Degree, NewDegree, Periodic, *Mults), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* BSplCLib_increase_degree_int2_bool_int_array1ofreal2_array1ofinteger_array1ofreal2_array1ofinteger(int32_t Degree, int32_t NewDegree, bool Periodic, int32_t Dimension, TColStd_Array1OfReal const* Poles, TColStd_Array1OfReal const* Knots, TColStd_Array1OfInteger const* Mults, TColStd_Array1OfReal* NewPoles, TColStd_Array1OfReal* NewKnots, TColStd_Array1OfInteger* NewMults) {
+extern "C" const char* BSplCLib_increase_degree_int2_bool_int_arr1_double2_arr1_int_arr1_double2_arr1_int(int32_t Degree, int32_t NewDegree, bool Periodic, int32_t Dimension, NCollection_Array1_double const* Poles, NCollection_Array1_double const* Knots, NCollection_Array1_int const* Mults, NCollection_Array1_double* NewPoles, NCollection_Array1_double* NewKnots, NCollection_Array1_int* NewMults) {
     try { BSplCLib::IncreaseDegree(Degree, NewDegree, Periodic, Dimension, *Poles, *Knots, *Mults, *NewPoles, *NewKnots, *NewMults); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* BSplCLib_increase_degree_int2_bool_array1ofpnt_array1ofrealptr_array1ofreal_array1ofinteger_array1ofpnt_array1ofrealptr_array1ofreal_array1ofinteger(int32_t Degree, int32_t NewDegree, bool Periodic, TColgp_Array1OfPnt const* Poles, const TColStd_Array1OfReal* Weights, TColStd_Array1OfReal const* Knots, TColStd_Array1OfInteger const* Mults, TColgp_Array1OfPnt* NewPoles, TColStd_Array1OfReal* NewWeights, TColStd_Array1OfReal* NewKnots, TColStd_Array1OfInteger* NewMults) {
+extern "C" const char* BSplCLib_increase_degree_int2_bool_arr1_pnt_arr1_doubleptr_arr1_double_arr1_int_arr1_pnt_arr1_doubleptr_arr1_double_arr1_int(int32_t Degree, int32_t NewDegree, bool Periodic, NCollection_Array1_gp_Pnt const* Poles, const NCollection_Array1_double* Weights, NCollection_Array1_double const* Knots, NCollection_Array1_int const* Mults, NCollection_Array1_gp_Pnt* NewPoles, NCollection_Array1_double* NewWeights, NCollection_Array1_double* NewKnots, NCollection_Array1_int* NewMults) {
     try { BSplCLib::IncreaseDegree(Degree, NewDegree, Periodic, *Poles, Weights, *Knots, *Mults, *NewPoles, NewWeights, *NewKnots, *NewMults); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* BSplCLib_increase_degree_int2_bool_array1ofpnt2d_array1ofrealptr_array1ofreal_array1ofinteger_array1ofpnt2d_array1ofrealptr_array1ofreal_array1ofinteger(int32_t Degree, int32_t NewDegree, bool Periodic, TColgp_Array1OfPnt2d const* Poles, const TColStd_Array1OfReal* Weights, TColStd_Array1OfReal const* Knots, TColStd_Array1OfInteger const* Mults, TColgp_Array1OfPnt2d* NewPoles, TColStd_Array1OfReal* NewWeights, TColStd_Array1OfReal* NewKnots, TColStd_Array1OfInteger* NewMults) {
+extern "C" const char* BSplCLib_increase_degree_int2_bool_arr1_pnt2d_arr1_doubleptr_arr1_double_arr1_int_arr1_pnt2d_arr1_doubleptr_arr1_double_arr1_int(int32_t Degree, int32_t NewDegree, bool Periodic, NCollection_Array1_gp_Pnt2d const* Poles, const NCollection_Array1_double* Weights, NCollection_Array1_double const* Knots, NCollection_Array1_int const* Mults, NCollection_Array1_gp_Pnt2d* NewPoles, NCollection_Array1_double* NewWeights, NCollection_Array1_double* NewKnots, NCollection_Array1_int* NewMults) {
     try { BSplCLib::IncreaseDegree(Degree, NewDegree, Periodic, *Poles, Weights, *Knots, *Mults, *NewPoles, NewWeights, *NewKnots, *NewMults); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* BSplCLib_increase_degree_int_array1ofpnt_array1ofrealptr_array1ofpnt_array1ofrealptr(int32_t NewDegree, TColgp_Array1OfPnt const* Poles, const TColStd_Array1OfReal* Weights, TColgp_Array1OfPnt* NewPoles, TColStd_Array1OfReal* NewWeights) {
+extern "C" const char* BSplCLib_increase_degree_int_arr1_pnt_arr1_doubleptr_arr1_pnt_arr1_doubleptr(int32_t NewDegree, NCollection_Array1_gp_Pnt const* Poles, const NCollection_Array1_double* Weights, NCollection_Array1_gp_Pnt* NewPoles, NCollection_Array1_double* NewWeights) {
     try { BSplCLib::IncreaseDegree(NewDegree, *Poles, Weights, *NewPoles, NewWeights); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* BSplCLib_increase_degree_int_array1ofpnt2d_array1ofrealptr_array1ofpnt2d_array1ofrealptr(int32_t theNewDegree, TColgp_Array1OfPnt2d const* thePoles, const TColStd_Array1OfReal* theWeights, TColgp_Array1OfPnt2d* theNewPoles, TColStd_Array1OfReal* theNewWeights) {
+extern "C" const char* BSplCLib_increase_degree_int_arr1_pnt2d_arr1_doubleptr_arr1_pnt2d_arr1_doubleptr(int32_t theNewDegree, NCollection_Array1_gp_Pnt2d const* thePoles, const NCollection_Array1_double* theWeights, NCollection_Array1_gp_Pnt2d* theNewPoles, NCollection_Array1_double* theNewWeights) {
     try { BSplCLib::IncreaseDegree(theNewDegree, *thePoles, theWeights, *theNewPoles, theNewWeights); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* BSplCLib_prepare_unperiodize(int32_t Degree, TColStd_Array1OfInteger const* Mults, int32_t* NbKnots, int32_t* NbPoles) {
+extern "C" const char* BSplCLib_prepare_unperiodize(int32_t Degree, NCollection_Array1_int const* Mults, int32_t* NbKnots, int32_t* NbPoles) {
     try { BSplCLib::PrepareUnperiodize(Degree, *Mults, *NbKnots, *NbPoles); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* BSplCLib_unperiodize_int2_array1ofinteger_array1ofreal2_array1ofinteger_array1ofreal2(int32_t Degree, int32_t Dimension, TColStd_Array1OfInteger const* Mults, TColStd_Array1OfReal const* Knots, TColStd_Array1OfReal const* Poles, TColStd_Array1OfInteger* NewMults, TColStd_Array1OfReal* NewKnots, TColStd_Array1OfReal* NewPoles) {
+extern "C" const char* BSplCLib_unperiodize_int2_arr1_int_arr1_double2_arr1_int_arr1_double2(int32_t Degree, int32_t Dimension, NCollection_Array1_int const* Mults, NCollection_Array1_double const* Knots, NCollection_Array1_double const* Poles, NCollection_Array1_int* NewMults, NCollection_Array1_double* NewKnots, NCollection_Array1_double* NewPoles) {
     try { BSplCLib::Unperiodize(Degree, Dimension, *Mults, *Knots, *Poles, *NewMults, *NewKnots, *NewPoles); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* BSplCLib_unperiodize_int_array1ofinteger_array1ofreal_array1ofpnt_array1ofrealptr_array1ofinteger_array1ofreal_array1ofpnt_array1ofrealptr(int32_t Degree, TColStd_Array1OfInteger const* Mults, TColStd_Array1OfReal const* Knots, TColgp_Array1OfPnt const* Poles, const TColStd_Array1OfReal* Weights, TColStd_Array1OfInteger* NewMults, TColStd_Array1OfReal* NewKnots, TColgp_Array1OfPnt* NewPoles, TColStd_Array1OfReal* NewWeights) {
+extern "C" const char* BSplCLib_unperiodize_int_arr1_int_arr1_double_arr1_pnt_arr1_doubleptr_arr1_int_arr1_double_arr1_pnt_arr1_doubleptr(int32_t Degree, NCollection_Array1_int const* Mults, NCollection_Array1_double const* Knots, NCollection_Array1_gp_Pnt const* Poles, const NCollection_Array1_double* Weights, NCollection_Array1_int* NewMults, NCollection_Array1_double* NewKnots, NCollection_Array1_gp_Pnt* NewPoles, NCollection_Array1_double* NewWeights) {
     try { BSplCLib::Unperiodize(Degree, *Mults, *Knots, *Poles, Weights, *NewMults, *NewKnots, *NewPoles, NewWeights); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* BSplCLib_unperiodize_int_array1ofinteger_array1ofreal_array1ofpnt2d_array1ofrealptr_array1ofinteger_array1ofreal_array1ofpnt2d_array1ofrealptr(int32_t Degree, TColStd_Array1OfInteger const* Mults, TColStd_Array1OfReal const* Knots, TColgp_Array1OfPnt2d const* Poles, const TColStd_Array1OfReal* Weights, TColStd_Array1OfInteger* NewMults, TColStd_Array1OfReal* NewKnots, TColgp_Array1OfPnt2d* NewPoles, TColStd_Array1OfReal* NewWeights) {
+extern "C" const char* BSplCLib_unperiodize_int_arr1_int_arr1_double_arr1_pnt2d_arr1_doubleptr_arr1_int_arr1_double_arr1_pnt2d_arr1_doubleptr(int32_t Degree, NCollection_Array1_int const* Mults, NCollection_Array1_double const* Knots, NCollection_Array1_gp_Pnt2d const* Poles, const NCollection_Array1_double* Weights, NCollection_Array1_int* NewMults, NCollection_Array1_double* NewKnots, NCollection_Array1_gp_Pnt2d* NewPoles, NCollection_Array1_double* NewWeights) {
     try { BSplCLib::Unperiodize(Degree, *Mults, *Knots, *Poles, Weights, *NewMults, *NewKnots, *NewPoles, NewWeights); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* BSplCLib_prepare_trimming(int32_t Degree, bool Periodic, TColStd_Array1OfReal const* Knots, TColStd_Array1OfInteger const* Mults, double U1, double U2, int32_t* NbKnots, int32_t* NbPoles) {
+extern "C" const char* BSplCLib_prepare_trimming(int32_t Degree, bool Periodic, NCollection_Array1_double const* Knots, NCollection_Array1_int const* Mults, double U1, double U2, int32_t* NbKnots, int32_t* NbPoles) {
     try { BSplCLib::PrepareTrimming(Degree, Periodic, *Knots, *Mults, U1, U2, *NbKnots, *NbPoles); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* BSplCLib_trimming_int_bool_int_array1ofreal_array1ofinteger_array1ofreal_real2_array1ofreal_array1ofinteger_array1ofreal(int32_t Degree, bool Periodic, int32_t Dimension, TColStd_Array1OfReal const* Knots, TColStd_Array1OfInteger const* Mults, TColStd_Array1OfReal const* Poles, double U1, double U2, TColStd_Array1OfReal* NewKnots, TColStd_Array1OfInteger* NewMults, TColStd_Array1OfReal* NewPoles) {
+extern "C" const char* BSplCLib_trimming_int_bool_int_arr1_double_arr1_int_arr1_double_real2_arr1_double_arr1_int_arr1_double(int32_t Degree, bool Periodic, int32_t Dimension, NCollection_Array1_double const* Knots, NCollection_Array1_int const* Mults, NCollection_Array1_double const* Poles, double U1, double U2, NCollection_Array1_double* NewKnots, NCollection_Array1_int* NewMults, NCollection_Array1_double* NewPoles) {
     try { BSplCLib::Trimming(Degree, Periodic, Dimension, *Knots, *Mults, *Poles, U1, U2, *NewKnots, *NewMults, *NewPoles); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* BSplCLib_trimming_int_bool_array1ofreal_array1ofinteger_array1ofpnt_array1ofrealptr_real2_array1ofreal_array1ofinteger_array1ofpnt_array1ofrealptr(int32_t Degree, bool Periodic, TColStd_Array1OfReal const* Knots, TColStd_Array1OfInteger const* Mults, TColgp_Array1OfPnt const* Poles, const TColStd_Array1OfReal* Weights, double U1, double U2, TColStd_Array1OfReal* NewKnots, TColStd_Array1OfInteger* NewMults, TColgp_Array1OfPnt* NewPoles, TColStd_Array1OfReal* NewWeights) {
+extern "C" const char* BSplCLib_trimming_int_bool_arr1_double_arr1_int_arr1_pnt_arr1_doubleptr_real2_arr1_double_arr1_int_arr1_pnt_arr1_doubleptr(int32_t Degree, bool Periodic, NCollection_Array1_double const* Knots, NCollection_Array1_int const* Mults, NCollection_Array1_gp_Pnt const* Poles, const NCollection_Array1_double* Weights, double U1, double U2, NCollection_Array1_double* NewKnots, NCollection_Array1_int* NewMults, NCollection_Array1_gp_Pnt* NewPoles, NCollection_Array1_double* NewWeights) {
     try { BSplCLib::Trimming(Degree, Periodic, *Knots, *Mults, *Poles, Weights, U1, U2, *NewKnots, *NewMults, *NewPoles, NewWeights); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* BSplCLib_trimming_int_bool_array1ofreal_array1ofinteger_array1ofpnt2d_array1ofrealptr_real2_array1ofreal_array1ofinteger_array1ofpnt2d_array1ofrealptr(int32_t Degree, bool Periodic, TColStd_Array1OfReal const* Knots, TColStd_Array1OfInteger const* Mults, TColgp_Array1OfPnt2d const* Poles, const TColStd_Array1OfReal* Weights, double U1, double U2, TColStd_Array1OfReal* NewKnots, TColStd_Array1OfInteger* NewMults, TColgp_Array1OfPnt2d* NewPoles, TColStd_Array1OfReal* NewWeights) {
+extern "C" const char* BSplCLib_trimming_int_bool_arr1_double_arr1_int_arr1_pnt2d_arr1_doubleptr_real2_arr1_double_arr1_int_arr1_pnt2d_arr1_doubleptr(int32_t Degree, bool Periodic, NCollection_Array1_double const* Knots, NCollection_Array1_int const* Mults, NCollection_Array1_gp_Pnt2d const* Poles, const NCollection_Array1_double* Weights, double U1, double U2, NCollection_Array1_double* NewKnots, NCollection_Array1_int* NewMults, NCollection_Array1_gp_Pnt2d* NewPoles, NCollection_Array1_double* NewWeights) {
     try { BSplCLib::Trimming(Degree, Periodic, *Knots, *Mults, *Poles, Weights, U1, U2, *NewKnots, *NewMults, *NewPoles, NewWeights); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* BSplCLib_d0_real_int2_bool_array1ofreal_array1ofrealptr_array1ofreal_array1ofintegerptr_real(double U, int32_t Index, int32_t Degree, bool Periodic, TColStd_Array1OfReal const* Poles, const TColStd_Array1OfReal* Weights, TColStd_Array1OfReal const* Knots, const TColStd_Array1OfInteger* Mults, double* P) {
+extern "C" const char* BSplCLib_d0_real_int2_bool_arr1_double_arr1_doubleptr_arr1_double_arr1_intptr_real(double U, int32_t Index, int32_t Degree, bool Periodic, NCollection_Array1_double const* Poles, const NCollection_Array1_double* Weights, NCollection_Array1_double const* Knots, const NCollection_Array1_int* Mults, double* P) {
     try { BSplCLib::D0(U, Index, Degree, Periodic, *Poles, Weights, *Knots, Mults, *P); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* BSplCLib_d0_real_int2_bool_array1ofpnt_array1ofrealptr_array1ofreal_array1ofintegerptr_pnt(double U, int32_t Index, int32_t Degree, bool Periodic, TColgp_Array1OfPnt const* Poles, const TColStd_Array1OfReal* Weights, TColStd_Array1OfReal const* Knots, const TColStd_Array1OfInteger* Mults, gp_Pnt* P) {
+extern "C" const char* BSplCLib_d0_real_int2_bool_arr1_pnt_arr1_doubleptr_arr1_double_arr1_intptr_pnt(double U, int32_t Index, int32_t Degree, bool Periodic, NCollection_Array1_gp_Pnt const* Poles, const NCollection_Array1_double* Weights, NCollection_Array1_double const* Knots, const NCollection_Array1_int* Mults, gp_Pnt* P) {
     try { BSplCLib::D0(U, Index, Degree, Periodic, *Poles, Weights, *Knots, Mults, *P); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* BSplCLib_d0_real_int2_bool_array1ofpnt2d_array1ofrealptr_array1ofreal_array1ofintegerptr_pnt2d(double U, int32_t UIndex, int32_t Degree, bool Periodic, TColgp_Array1OfPnt2d const* Poles, const TColStd_Array1OfReal* Weights, TColStd_Array1OfReal const* Knots, const TColStd_Array1OfInteger* Mults, gp_Pnt2d* P) {
+extern "C" const char* BSplCLib_d0_real_int2_bool_arr1_pnt2d_arr1_doubleptr_arr1_double_arr1_intptr_pnt2d(double U, int32_t UIndex, int32_t Degree, bool Periodic, NCollection_Array1_gp_Pnt2d const* Poles, const NCollection_Array1_double* Weights, NCollection_Array1_double const* Knots, const NCollection_Array1_int* Mults, gp_Pnt2d* P) {
     try { BSplCLib::D0(U, UIndex, Degree, Periodic, *Poles, Weights, *Knots, Mults, *P); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* BSplCLib_d0_real_array1ofpnt_array1ofrealptr_pnt(double U, TColgp_Array1OfPnt const* Poles, const TColStd_Array1OfReal* Weights, gp_Pnt* P) {
+extern "C" const char* BSplCLib_d0_real_arr1_pnt_arr1_doubleptr_pnt(double U, NCollection_Array1_gp_Pnt const* Poles, const NCollection_Array1_double* Weights, gp_Pnt* P) {
     try { BSplCLib::D0(U, *Poles, Weights, *P); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* BSplCLib_d0_real_array1ofpnt2d_array1ofrealptr_pnt2d(double U, TColgp_Array1OfPnt2d const* Poles, const TColStd_Array1OfReal* Weights, gp_Pnt2d* P) {
+extern "C" const char* BSplCLib_d0_real_arr1_pnt2d_arr1_doubleptr_pnt2d(double U, NCollection_Array1_gp_Pnt2d const* Poles, const NCollection_Array1_double* Weights, gp_Pnt2d* P) {
     try { BSplCLib::D0(U, *Poles, Weights, *P); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* BSplCLib_d1_real_int2_bool_array1ofreal_array1ofrealptr_array1ofreal_array1ofintegerptr_real2(double U, int32_t Index, int32_t Degree, bool Periodic, TColStd_Array1OfReal const* Poles, const TColStd_Array1OfReal* Weights, TColStd_Array1OfReal const* Knots, const TColStd_Array1OfInteger* Mults, double* P, double* V) {
+extern "C" const char* BSplCLib_d1_real_int2_bool_arr1_double_arr1_doubleptr_arr1_double_arr1_intptr_real2(double U, int32_t Index, int32_t Degree, bool Periodic, NCollection_Array1_double const* Poles, const NCollection_Array1_double* Weights, NCollection_Array1_double const* Knots, const NCollection_Array1_int* Mults, double* P, double* V) {
     try { BSplCLib::D1(U, Index, Degree, Periodic, *Poles, Weights, *Knots, Mults, *P, *V); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* BSplCLib_d1_real_int2_bool_array1ofpnt_array1ofrealptr_array1ofreal_array1ofintegerptr_pnt_vec(double U, int32_t Index, int32_t Degree, bool Periodic, TColgp_Array1OfPnt const* Poles, const TColStd_Array1OfReal* Weights, TColStd_Array1OfReal const* Knots, const TColStd_Array1OfInteger* Mults, gp_Pnt* P, gp_Vec* V) {
+extern "C" const char* BSplCLib_d1_real_int2_bool_arr1_pnt_arr1_doubleptr_arr1_double_arr1_intptr_pnt_vec(double U, int32_t Index, int32_t Degree, bool Periodic, NCollection_Array1_gp_Pnt const* Poles, const NCollection_Array1_double* Weights, NCollection_Array1_double const* Knots, const NCollection_Array1_int* Mults, gp_Pnt* P, gp_Vec* V) {
     try { BSplCLib::D1(U, Index, Degree, Periodic, *Poles, Weights, *Knots, Mults, *P, *V); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* BSplCLib_d1_real_int2_bool_array1ofpnt2d_array1ofrealptr_array1ofreal_array1ofintegerptr_pnt2d_vec2d(double U, int32_t UIndex, int32_t Degree, bool Periodic, TColgp_Array1OfPnt2d const* Poles, const TColStd_Array1OfReal* Weights, TColStd_Array1OfReal const* Knots, const TColStd_Array1OfInteger* Mults, gp_Pnt2d* P, gp_Vec2d* V) {
+extern "C" const char* BSplCLib_d1_real_int2_bool_arr1_pnt2d_arr1_doubleptr_arr1_double_arr1_intptr_pnt2d_vec2d(double U, int32_t UIndex, int32_t Degree, bool Periodic, NCollection_Array1_gp_Pnt2d const* Poles, const NCollection_Array1_double* Weights, NCollection_Array1_double const* Knots, const NCollection_Array1_int* Mults, gp_Pnt2d* P, gp_Vec2d* V) {
     try { BSplCLib::D1(U, UIndex, Degree, Periodic, *Poles, Weights, *Knots, Mults, *P, *V); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* BSplCLib_d1_real_array1ofpnt_array1ofrealptr_pnt_vec(double U, TColgp_Array1OfPnt const* Poles, const TColStd_Array1OfReal* Weights, gp_Pnt* P, gp_Vec* V) {
+extern "C" const char* BSplCLib_d1_real_arr1_pnt_arr1_doubleptr_pnt_vec(double U, NCollection_Array1_gp_Pnt const* Poles, const NCollection_Array1_double* Weights, gp_Pnt* P, gp_Vec* V) {
     try { BSplCLib::D1(U, *Poles, Weights, *P, *V); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* BSplCLib_d1_real_array1ofpnt2d_array1ofrealptr_pnt2d_vec2d(double U, TColgp_Array1OfPnt2d const* Poles, const TColStd_Array1OfReal* Weights, gp_Pnt2d* P, gp_Vec2d* V) {
+extern "C" const char* BSplCLib_d1_real_arr1_pnt2d_arr1_doubleptr_pnt2d_vec2d(double U, NCollection_Array1_gp_Pnt2d const* Poles, const NCollection_Array1_double* Weights, gp_Pnt2d* P, gp_Vec2d* V) {
     try { BSplCLib::D1(U, *Poles, Weights, *P, *V); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* BSplCLib_d2_real_int2_bool_array1ofreal_array1ofrealptr_array1ofreal_array1ofintegerptr_real3(double U, int32_t Index, int32_t Degree, bool Periodic, TColStd_Array1OfReal const* Poles, const TColStd_Array1OfReal* Weights, TColStd_Array1OfReal const* Knots, const TColStd_Array1OfInteger* Mults, double* P, double* V1, double* V2) {
+extern "C" const char* BSplCLib_d2_real_int2_bool_arr1_double_arr1_doubleptr_arr1_double_arr1_intptr_real3(double U, int32_t Index, int32_t Degree, bool Periodic, NCollection_Array1_double const* Poles, const NCollection_Array1_double* Weights, NCollection_Array1_double const* Knots, const NCollection_Array1_int* Mults, double* P, double* V1, double* V2) {
     try { BSplCLib::D2(U, Index, Degree, Periodic, *Poles, Weights, *Knots, Mults, *P, *V1, *V2); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* BSplCLib_d2_real_int2_bool_array1ofpnt_array1ofrealptr_array1ofreal_array1ofintegerptr_pnt_vec2(double U, int32_t Index, int32_t Degree, bool Periodic, TColgp_Array1OfPnt const* Poles, const TColStd_Array1OfReal* Weights, TColStd_Array1OfReal const* Knots, const TColStd_Array1OfInteger* Mults, gp_Pnt* P, gp_Vec* V1, gp_Vec* V2) {
+extern "C" const char* BSplCLib_d2_real_int2_bool_arr1_pnt_arr1_doubleptr_arr1_double_arr1_intptr_pnt_vec2(double U, int32_t Index, int32_t Degree, bool Periodic, NCollection_Array1_gp_Pnt const* Poles, const NCollection_Array1_double* Weights, NCollection_Array1_double const* Knots, const NCollection_Array1_int* Mults, gp_Pnt* P, gp_Vec* V1, gp_Vec* V2) {
     try { BSplCLib::D2(U, Index, Degree, Periodic, *Poles, Weights, *Knots, Mults, *P, *V1, *V2); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* BSplCLib_d2_real_int2_bool_array1ofpnt2d_array1ofrealptr_array1ofreal_array1ofintegerptr_pnt2d_vec2d2(double U, int32_t UIndex, int32_t Degree, bool Periodic, TColgp_Array1OfPnt2d const* Poles, const TColStd_Array1OfReal* Weights, TColStd_Array1OfReal const* Knots, const TColStd_Array1OfInteger* Mults, gp_Pnt2d* P, gp_Vec2d* V1, gp_Vec2d* V2) {
+extern "C" const char* BSplCLib_d2_real_int2_bool_arr1_pnt2d_arr1_doubleptr_arr1_double_arr1_intptr_pnt2d_vec2d2(double U, int32_t UIndex, int32_t Degree, bool Periodic, NCollection_Array1_gp_Pnt2d const* Poles, const NCollection_Array1_double* Weights, NCollection_Array1_double const* Knots, const NCollection_Array1_int* Mults, gp_Pnt2d* P, gp_Vec2d* V1, gp_Vec2d* V2) {
     try { BSplCLib::D2(U, UIndex, Degree, Periodic, *Poles, Weights, *Knots, Mults, *P, *V1, *V2); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* BSplCLib_d2_real_array1ofpnt_array1ofrealptr_pnt_vec2(double U, TColgp_Array1OfPnt const* Poles, const TColStd_Array1OfReal* Weights, gp_Pnt* P, gp_Vec* V1, gp_Vec* V2) {
+extern "C" const char* BSplCLib_d2_real_arr1_pnt_arr1_doubleptr_pnt_vec2(double U, NCollection_Array1_gp_Pnt const* Poles, const NCollection_Array1_double* Weights, gp_Pnt* P, gp_Vec* V1, gp_Vec* V2) {
     try { BSplCLib::D2(U, *Poles, Weights, *P, *V1, *V2); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* BSplCLib_d2_real_array1ofpnt2d_array1ofrealptr_pnt2d_vec2d2(double U, TColgp_Array1OfPnt2d const* Poles, const TColStd_Array1OfReal* Weights, gp_Pnt2d* P, gp_Vec2d* V1, gp_Vec2d* V2) {
+extern "C" const char* BSplCLib_d2_real_arr1_pnt2d_arr1_doubleptr_pnt2d_vec2d2(double U, NCollection_Array1_gp_Pnt2d const* Poles, const NCollection_Array1_double* Weights, gp_Pnt2d* P, gp_Vec2d* V1, gp_Vec2d* V2) {
     try { BSplCLib::D2(U, *Poles, Weights, *P, *V1, *V2); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* BSplCLib_d3_real_int2_bool_array1ofreal_array1ofrealptr_array1ofreal_array1ofintegerptr_real4(double U, int32_t Index, int32_t Degree, bool Periodic, TColStd_Array1OfReal const* Poles, const TColStd_Array1OfReal* Weights, TColStd_Array1OfReal const* Knots, const TColStd_Array1OfInteger* Mults, double* P, double* V1, double* V2, double* V3) {
+extern "C" const char* BSplCLib_d3_real_int2_bool_arr1_double_arr1_doubleptr_arr1_double_arr1_intptr_real4(double U, int32_t Index, int32_t Degree, bool Periodic, NCollection_Array1_double const* Poles, const NCollection_Array1_double* Weights, NCollection_Array1_double const* Knots, const NCollection_Array1_int* Mults, double* P, double* V1, double* V2, double* V3) {
     try { BSplCLib::D3(U, Index, Degree, Periodic, *Poles, Weights, *Knots, Mults, *P, *V1, *V2, *V3); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* BSplCLib_d3_real_int2_bool_array1ofpnt_array1ofrealptr_array1ofreal_array1ofintegerptr_pnt_vec3(double U, int32_t Index, int32_t Degree, bool Periodic, TColgp_Array1OfPnt const* Poles, const TColStd_Array1OfReal* Weights, TColStd_Array1OfReal const* Knots, const TColStd_Array1OfInteger* Mults, gp_Pnt* P, gp_Vec* V1, gp_Vec* V2, gp_Vec* V3) {
+extern "C" const char* BSplCLib_d3_real_int2_bool_arr1_pnt_arr1_doubleptr_arr1_double_arr1_intptr_pnt_vec3(double U, int32_t Index, int32_t Degree, bool Periodic, NCollection_Array1_gp_Pnt const* Poles, const NCollection_Array1_double* Weights, NCollection_Array1_double const* Knots, const NCollection_Array1_int* Mults, gp_Pnt* P, gp_Vec* V1, gp_Vec* V2, gp_Vec* V3) {
     try { BSplCLib::D3(U, Index, Degree, Periodic, *Poles, Weights, *Knots, Mults, *P, *V1, *V2, *V3); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* BSplCLib_d3_real_int2_bool_array1ofpnt2d_array1ofrealptr_array1ofreal_array1ofintegerptr_pnt2d_vec2d3(double U, int32_t UIndex, int32_t Degree, bool Periodic, TColgp_Array1OfPnt2d const* Poles, const TColStd_Array1OfReal* Weights, TColStd_Array1OfReal const* Knots, const TColStd_Array1OfInteger* Mults, gp_Pnt2d* P, gp_Vec2d* V1, gp_Vec2d* V2, gp_Vec2d* V3) {
+extern "C" const char* BSplCLib_d3_real_int2_bool_arr1_pnt2d_arr1_doubleptr_arr1_double_arr1_intptr_pnt2d_vec2d3(double U, int32_t UIndex, int32_t Degree, bool Periodic, NCollection_Array1_gp_Pnt2d const* Poles, const NCollection_Array1_double* Weights, NCollection_Array1_double const* Knots, const NCollection_Array1_int* Mults, gp_Pnt2d* P, gp_Vec2d* V1, gp_Vec2d* V2, gp_Vec2d* V3) {
     try { BSplCLib::D3(U, UIndex, Degree, Periodic, *Poles, Weights, *Knots, Mults, *P, *V1, *V2, *V3); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* BSplCLib_d3_real_array1ofpnt_array1ofrealptr_pnt_vec3(double U, TColgp_Array1OfPnt const* Poles, const TColStd_Array1OfReal* Weights, gp_Pnt* P, gp_Vec* V1, gp_Vec* V2, gp_Vec* V3) {
+extern "C" const char* BSplCLib_d3_real_arr1_pnt_arr1_doubleptr_pnt_vec3(double U, NCollection_Array1_gp_Pnt const* Poles, const NCollection_Array1_double* Weights, gp_Pnt* P, gp_Vec* V1, gp_Vec* V2, gp_Vec* V3) {
     try { BSplCLib::D3(U, *Poles, Weights, *P, *V1, *V2, *V3); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* BSplCLib_d3_real_array1ofpnt2d_array1ofrealptr_pnt2d_vec2d3(double U, TColgp_Array1OfPnt2d const* Poles, const TColStd_Array1OfReal* Weights, gp_Pnt2d* P, gp_Vec2d* V1, gp_Vec2d* V2, gp_Vec2d* V3) {
+extern "C" const char* BSplCLib_d3_real_arr1_pnt2d_arr1_doubleptr_pnt2d_vec2d3(double U, NCollection_Array1_gp_Pnt2d const* Poles, const NCollection_Array1_double* Weights, gp_Pnt2d* P, gp_Vec2d* V1, gp_Vec2d* V2, gp_Vec2d* V3) {
     try { BSplCLib::D3(U, *Poles, Weights, *P, *V1, *V2, *V3); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* BSplCLib_dn_real_int3_bool_array1ofreal_array1ofrealptr_array1ofreal_array1ofintegerptr_real(double U, int32_t N, int32_t Index, int32_t Degree, bool Periodic, TColStd_Array1OfReal const* Poles, const TColStd_Array1OfReal* Weights, TColStd_Array1OfReal const* Knots, const TColStd_Array1OfInteger* Mults, double* VN) {
+extern "C" const char* BSplCLib_dn_real_int3_bool_arr1_double_arr1_doubleptr_arr1_double_arr1_intptr_real(double U, int32_t N, int32_t Index, int32_t Degree, bool Periodic, NCollection_Array1_double const* Poles, const NCollection_Array1_double* Weights, NCollection_Array1_double const* Knots, const NCollection_Array1_int* Mults, double* VN) {
     try { BSplCLib::DN(U, N, Index, Degree, Periodic, *Poles, Weights, *Knots, Mults, *VN); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* BSplCLib_dn_real_int3_bool_array1ofpnt_array1ofrealptr_array1ofreal_array1ofintegerptr_vec(double U, int32_t N, int32_t Index, int32_t Degree, bool Periodic, TColgp_Array1OfPnt const* Poles, const TColStd_Array1OfReal* Weights, TColStd_Array1OfReal const* Knots, const TColStd_Array1OfInteger* Mults, gp_Vec* VN) {
+extern "C" const char* BSplCLib_dn_real_int3_bool_arr1_pnt_arr1_doubleptr_arr1_double_arr1_intptr_vec(double U, int32_t N, int32_t Index, int32_t Degree, bool Periodic, NCollection_Array1_gp_Pnt const* Poles, const NCollection_Array1_double* Weights, NCollection_Array1_double const* Knots, const NCollection_Array1_int* Mults, gp_Vec* VN) {
     try { BSplCLib::DN(U, N, Index, Degree, Periodic, *Poles, Weights, *Knots, Mults, *VN); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* BSplCLib_dn_real_int3_bool_array1ofpnt2d_array1ofrealptr_array1ofreal_array1ofintegerptr_vec2d(double U, int32_t N, int32_t UIndex, int32_t Degree, bool Periodic, TColgp_Array1OfPnt2d const* Poles, const TColStd_Array1OfReal* Weights, TColStd_Array1OfReal const* Knots, const TColStd_Array1OfInteger* Mults, gp_Vec2d* V) {
+extern "C" const char* BSplCLib_dn_real_int3_bool_arr1_pnt2d_arr1_doubleptr_arr1_double_arr1_intptr_vec2d(double U, int32_t N, int32_t UIndex, int32_t Degree, bool Periodic, NCollection_Array1_gp_Pnt2d const* Poles, const NCollection_Array1_double* Weights, NCollection_Array1_double const* Knots, const NCollection_Array1_int* Mults, gp_Vec2d* V) {
     try { BSplCLib::DN(U, N, UIndex, Degree, Periodic, *Poles, Weights, *Knots, Mults, *V); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* BSplCLib_dn_real_int_array1ofpnt_array1ofreal_pnt_vec(double U, int32_t N, TColgp_Array1OfPnt const* Poles, TColStd_Array1OfReal const* Weights, gp_Pnt* P, gp_Vec* VN) {
+extern "C" const char* BSplCLib_dn_real_int_arr1_pnt_arr1_double_pnt_vec(double U, int32_t N, NCollection_Array1_gp_Pnt const* Poles, NCollection_Array1_double const* Weights, gp_Pnt* P, gp_Vec* VN) {
     try { BSplCLib::DN(U, N, *Poles, *Weights, *P, *VN); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* BSplCLib_dn_real_int_array1ofpnt2d_array1ofreal_pnt2d_vec2d(double U, int32_t N, TColgp_Array1OfPnt2d const* Poles, TColStd_Array1OfReal const* Weights, gp_Pnt2d* P, gp_Vec2d* VN) {
+extern "C" const char* BSplCLib_dn_real_int_arr1_pnt2d_arr1_double_pnt2d_vec2d(double U, int32_t N, NCollection_Array1_gp_Pnt2d const* Poles, NCollection_Array1_double const* Weights, gp_Pnt2d* P, gp_Vec2d* VN) {
     try { BSplCLib::DN(U, N, *Poles, *Weights, *P, *VN); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<int32_t> BSplCLib_eval_bspline_basis(int32_t DerivativeOrder, int32_t Order, TColStd_Array1OfReal const* FlatKnots, double Parameter, int32_t* FirstNonZeroBsplineIndex, math_Matrix* BsplineBasis, bool isPeriodic) {
+extern "C" OcctResult<int32_t> BSplCLib_eval_bspline_basis(int32_t DerivativeOrder, int32_t Order, NCollection_Array1_double const* FlatKnots, double Parameter, int32_t* FirstNonZeroBsplineIndex, math_Matrix* BsplineBasis, bool isPeriodic) {
     try { return {BSplCLib::EvalBsplineBasis(DerivativeOrder, Order, *FlatKnots, Parameter, *FirstNonZeroBsplineIndex, *BsplineBasis, isPeriodic), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<int32_t> BSplCLib_build_b_sp_matrix(TColStd_Array1OfReal const* Parameters, TColStd_Array1OfInteger const* OrderArray, TColStd_Array1OfReal const* FlatKnots, int32_t Degree, math_Matrix* Matrix, int32_t* UpperBandWidth, int32_t* LowerBandWidth) {
+extern "C" OcctResult<int32_t> BSplCLib_build_b_sp_matrix(NCollection_Array1_double const* Parameters, NCollection_Array1_int const* OrderArray, NCollection_Array1_double const* FlatKnots, int32_t Degree, math_Matrix* Matrix, int32_t* UpperBandWidth, int32_t* LowerBandWidth) {
     try { return {BSplCLib::BuildBSpMatrix(*Parameters, *OrderArray, *FlatKnots, Degree, *Matrix, *UpperBandWidth, *LowerBandWidth), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -16832,11 +12799,11 @@ extern "C" OcctResult<int32_t> BSplCLib_solve_banded_system_matrix_int3_real(mat
     try { return {BSplCLib::SolveBandedSystem(*Matrix, UpperBandWidth, LowerBandWidth, ArrayDimension, *Array), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<int32_t> BSplCLib_solve_banded_system_matrix_int2_array1ofpnt2d(math_Matrix const* Matrix, int32_t UpperBandWidth, int32_t LowerBandWidth, TColgp_Array1OfPnt2d* Array) {
+extern "C" OcctResult<int32_t> BSplCLib_solve_banded_system_matrix_int2_arr1_pnt2d(math_Matrix const* Matrix, int32_t UpperBandWidth, int32_t LowerBandWidth, NCollection_Array1_gp_Pnt2d* Array) {
     try { return {BSplCLib::SolveBandedSystem(*Matrix, UpperBandWidth, LowerBandWidth, *Array), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<int32_t> BSplCLib_solve_banded_system_matrix_int2_array1ofpnt(math_Matrix const* Matrix, int32_t UpperBandWidth, int32_t LowerBandWidth, TColgp_Array1OfPnt* Array) {
+extern "C" OcctResult<int32_t> BSplCLib_solve_banded_system_matrix_int2_arr1_pnt(math_Matrix const* Matrix, int32_t UpperBandWidth, int32_t LowerBandWidth, NCollection_Array1_gp_Pnt* Array) {
     try { return {BSplCLib::SolveBandedSystem(*Matrix, UpperBandWidth, LowerBandWidth, *Array), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -16844,163 +12811,163 @@ extern "C" OcctResult<int32_t> BSplCLib_solve_banded_system_matrix_int2_bool_int
     try { return {BSplCLib::SolveBandedSystem(*Matrix, UpperBandWidth, LowerBandWidth, HomogenousFlag, ArrayDimension, *Array, *Weights), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<int32_t> BSplCLib_solve_banded_system_matrix_int2_bool_array1ofpnt2d_array1ofreal(math_Matrix const* Matrix, int32_t UpperBandWidth, int32_t LowerBandWidth, bool HomogenousFlag, TColgp_Array1OfPnt2d* Array, TColStd_Array1OfReal* Weights) {
+extern "C" OcctResult<int32_t> BSplCLib_solve_banded_system_matrix_int2_bool_arr1_pnt2d_arr1_double(math_Matrix const* Matrix, int32_t UpperBandWidth, int32_t LowerBandWidth, bool HomogenousFlag, NCollection_Array1_gp_Pnt2d* Array, NCollection_Array1_double* Weights) {
     try { return {BSplCLib::SolveBandedSystem(*Matrix, UpperBandWidth, LowerBandWidth, HomogenousFlag, *Array, *Weights), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<int32_t> BSplCLib_solve_banded_system_matrix_int2_bool_array1ofpnt_array1ofreal(math_Matrix const* Matrix, int32_t UpperBandWidth, int32_t LowerBandWidth, bool HomogeneousFlag, TColgp_Array1OfPnt* Array, TColStd_Array1OfReal* Weights) {
+extern "C" OcctResult<int32_t> BSplCLib_solve_banded_system_matrix_int2_bool_arr1_pnt_arr1_double(math_Matrix const* Matrix, int32_t UpperBandWidth, int32_t LowerBandWidth, bool HomogeneousFlag, NCollection_Array1_gp_Pnt* Array, NCollection_Array1_double* Weights) {
     try { return {BSplCLib::SolveBandedSystem(*Matrix, UpperBandWidth, LowerBandWidth, HomogeneousFlag, *Array, *Weights), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* BSplCLib_merge_b_spline_knots(double Tolerance, double StartValue, double EndValue, int32_t Degree1, TColStd_Array1OfReal const* Knots1, TColStd_Array1OfInteger const* Mults1, int32_t Degree2, TColStd_Array1OfReal const* Knots2, TColStd_Array1OfInteger const* Mults2, int32_t* NumPoles, Handle(TColStd_HArray1OfReal)* NewKnots, Handle(TColStd_HArray1OfInteger)* NewMults) {
+extern "C" const char* BSplCLib_merge_b_spline_knots(double Tolerance, double StartValue, double EndValue, int32_t Degree1, NCollection_Array1_double const* Knots1, NCollection_Array1_int const* Mults1, int32_t Degree2, NCollection_Array1_double const* Knots2, NCollection_Array1_int const* Mults2, int32_t* NumPoles, Handle(NCollection_HArray1_double)* NewKnots, Handle(NCollection_HArray1_int)* NewMults) {
     try { BSplCLib::MergeBSplineKnots(Tolerance, StartValue, EndValue, Degree1, *Knots1, *Mults1, Degree2, *Knots2, *Mults2, *NumPoles, *NewKnots, *NewMults); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* BSplCLib_function_reparameterise_evaluatorfunction_int_array1ofreal_int_real_array1ofreal_int_real_int(BSplCLib_EvaluatorFunction const* Function, int32_t BSplineDegree, TColStd_Array1OfReal const* BSplineFlatKnots, int32_t PolesDimension, double* Poles, TColStd_Array1OfReal const* FlatKnots, int32_t NewDegree, double* NewPoles, int32_t* theStatus) {
+extern "C" const char* BSplCLib_function_reparameterise_evaluatorfunction_int_arr1_double_int_real_arr1_double_int_real_int(BSplCLib_EvaluatorFunction const* Function, int32_t BSplineDegree, NCollection_Array1_double const* BSplineFlatKnots, int32_t PolesDimension, double* Poles, NCollection_Array1_double const* FlatKnots, int32_t NewDegree, double* NewPoles, int32_t* theStatus) {
     try { BSplCLib::FunctionReparameterise(*Function, BSplineDegree, *BSplineFlatKnots, PolesDimension, *Poles, *FlatKnots, NewDegree, *NewPoles, *theStatus); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* BSplCLib_function_reparameterise_evaluatorfunction_int_array1ofreal3_int_array1ofreal_int(BSplCLib_EvaluatorFunction const* Function, int32_t BSplineDegree, TColStd_Array1OfReal const* BSplineFlatKnots, TColStd_Array1OfReal const* Poles, TColStd_Array1OfReal const* FlatKnots, int32_t NewDegree, TColStd_Array1OfReal* NewPoles, int32_t* theStatus) {
+extern "C" const char* BSplCLib_function_reparameterise_evaluatorfunction_int_arr1_double3_int_arr1_double_int(BSplCLib_EvaluatorFunction const* Function, int32_t BSplineDegree, NCollection_Array1_double const* BSplineFlatKnots, NCollection_Array1_double const* Poles, NCollection_Array1_double const* FlatKnots, int32_t NewDegree, NCollection_Array1_double* NewPoles, int32_t* theStatus) {
     try { BSplCLib::FunctionReparameterise(*Function, BSplineDegree, *BSplineFlatKnots, *Poles, *FlatKnots, NewDegree, *NewPoles, *theStatus); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* BSplCLib_function_reparameterise_evaluatorfunction_int_array1ofreal_array1ofpnt_array1ofreal_int_array1ofpnt_int(BSplCLib_EvaluatorFunction const* Function, int32_t BSplineDegree, TColStd_Array1OfReal const* BSplineFlatKnots, TColgp_Array1OfPnt const* Poles, TColStd_Array1OfReal const* FlatKnots, int32_t NewDegree, TColgp_Array1OfPnt* NewPoles, int32_t* theStatus) {
+extern "C" const char* BSplCLib_function_reparameterise_evaluatorfunction_int_arr1_double_arr1_pnt_arr1_double_int_arr1_pnt_int(BSplCLib_EvaluatorFunction const* Function, int32_t BSplineDegree, NCollection_Array1_double const* BSplineFlatKnots, NCollection_Array1_gp_Pnt const* Poles, NCollection_Array1_double const* FlatKnots, int32_t NewDegree, NCollection_Array1_gp_Pnt* NewPoles, int32_t* theStatus) {
     try { BSplCLib::FunctionReparameterise(*Function, BSplineDegree, *BSplineFlatKnots, *Poles, *FlatKnots, NewDegree, *NewPoles, *theStatus); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* BSplCLib_function_reparameterise_evaluatorfunction_int_array1ofreal_array1ofpnt2d_array1ofreal_int_array1ofpnt2d_int(BSplCLib_EvaluatorFunction const* Function, int32_t BSplineDegree, TColStd_Array1OfReal const* BSplineFlatKnots, TColgp_Array1OfPnt2d const* Poles, TColStd_Array1OfReal const* FlatKnots, int32_t NewDegree, TColgp_Array1OfPnt2d* NewPoles, int32_t* theStatus) {
+extern "C" const char* BSplCLib_function_reparameterise_evaluatorfunction_int_arr1_double_arr1_pnt2d_arr1_double_int_arr1_pnt2d_int(BSplCLib_EvaluatorFunction const* Function, int32_t BSplineDegree, NCollection_Array1_double const* BSplineFlatKnots, NCollection_Array1_gp_Pnt2d const* Poles, NCollection_Array1_double const* FlatKnots, int32_t NewDegree, NCollection_Array1_gp_Pnt2d* NewPoles, int32_t* theStatus) {
     try { BSplCLib::FunctionReparameterise(*Function, BSplineDegree, *BSplineFlatKnots, *Poles, *FlatKnots, NewDegree, *NewPoles, *theStatus); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* BSplCLib_function_multiply_evaluatorfunction_int_array1ofreal_int_real_array1ofreal_int_real_int(BSplCLib_EvaluatorFunction const* Function, int32_t BSplineDegree, TColStd_Array1OfReal const* BSplineFlatKnots, int32_t PolesDimension, double* Poles, TColStd_Array1OfReal const* FlatKnots, int32_t NewDegree, double* NewPoles, int32_t* theStatus) {
+extern "C" const char* BSplCLib_function_multiply_evaluatorfunction_int_arr1_double_int_real_arr1_double_int_real_int(BSplCLib_EvaluatorFunction const* Function, int32_t BSplineDegree, NCollection_Array1_double const* BSplineFlatKnots, int32_t PolesDimension, double* Poles, NCollection_Array1_double const* FlatKnots, int32_t NewDegree, double* NewPoles, int32_t* theStatus) {
     try { BSplCLib::FunctionMultiply(*Function, BSplineDegree, *BSplineFlatKnots, PolesDimension, *Poles, *FlatKnots, NewDegree, *NewPoles, *theStatus); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* BSplCLib_function_multiply_evaluatorfunction_int_array1ofreal3_int_array1ofreal_int(BSplCLib_EvaluatorFunction const* Function, int32_t BSplineDegree, TColStd_Array1OfReal const* BSplineFlatKnots, TColStd_Array1OfReal const* Poles, TColStd_Array1OfReal const* FlatKnots, int32_t NewDegree, TColStd_Array1OfReal* NewPoles, int32_t* theStatus) {
+extern "C" const char* BSplCLib_function_multiply_evaluatorfunction_int_arr1_double3_int_arr1_double_int(BSplCLib_EvaluatorFunction const* Function, int32_t BSplineDegree, NCollection_Array1_double const* BSplineFlatKnots, NCollection_Array1_double const* Poles, NCollection_Array1_double const* FlatKnots, int32_t NewDegree, NCollection_Array1_double* NewPoles, int32_t* theStatus) {
     try { BSplCLib::FunctionMultiply(*Function, BSplineDegree, *BSplineFlatKnots, *Poles, *FlatKnots, NewDegree, *NewPoles, *theStatus); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* BSplCLib_function_multiply_evaluatorfunction_int_array1ofreal_array1ofpnt2d_array1ofreal_int_array1ofpnt2d_int(BSplCLib_EvaluatorFunction const* Function, int32_t BSplineDegree, TColStd_Array1OfReal const* BSplineFlatKnots, TColgp_Array1OfPnt2d const* Poles, TColStd_Array1OfReal const* FlatKnots, int32_t NewDegree, TColgp_Array1OfPnt2d* NewPoles, int32_t* theStatus) {
+extern "C" const char* BSplCLib_function_multiply_evaluatorfunction_int_arr1_double_arr1_pnt2d_arr1_double_int_arr1_pnt2d_int(BSplCLib_EvaluatorFunction const* Function, int32_t BSplineDegree, NCollection_Array1_double const* BSplineFlatKnots, NCollection_Array1_gp_Pnt2d const* Poles, NCollection_Array1_double const* FlatKnots, int32_t NewDegree, NCollection_Array1_gp_Pnt2d* NewPoles, int32_t* theStatus) {
     try { BSplCLib::FunctionMultiply(*Function, BSplineDegree, *BSplineFlatKnots, *Poles, *FlatKnots, NewDegree, *NewPoles, *theStatus); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* BSplCLib_function_multiply_evaluatorfunction_int_array1ofreal_array1ofpnt_array1ofreal_int_array1ofpnt_int(BSplCLib_EvaluatorFunction const* Function, int32_t BSplineDegree, TColStd_Array1OfReal const* BSplineFlatKnots, TColgp_Array1OfPnt const* Poles, TColStd_Array1OfReal const* FlatKnots, int32_t NewDegree, TColgp_Array1OfPnt* NewPoles, int32_t* theStatus) {
+extern "C" const char* BSplCLib_function_multiply_evaluatorfunction_int_arr1_double_arr1_pnt_arr1_double_int_arr1_pnt_int(BSplCLib_EvaluatorFunction const* Function, int32_t BSplineDegree, NCollection_Array1_double const* BSplineFlatKnots, NCollection_Array1_gp_Pnt const* Poles, NCollection_Array1_double const* FlatKnots, int32_t NewDegree, NCollection_Array1_gp_Pnt* NewPoles, int32_t* theStatus) {
     try { BSplCLib::FunctionMultiply(*Function, BSplineDegree, *BSplineFlatKnots, *Poles, *FlatKnots, NewDegree, *NewPoles, *theStatus); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* BSplCLib_eval_real_bool_int3_array1ofreal_int_real2(double U, bool PeriodicFlag, int32_t DerivativeRequest, int32_t* ExtrapMode, int32_t Degree, TColStd_Array1OfReal const* FlatKnots, int32_t ArrayDimension, double* Poles, double* Result) {
+extern "C" const char* BSplCLib_eval_real_bool_int3_arr1_double_int_real2(double U, bool PeriodicFlag, int32_t DerivativeRequest, int32_t* ExtrapMode, int32_t Degree, NCollection_Array1_double const* FlatKnots, int32_t ArrayDimension, double* Poles, double* Result) {
     try { BSplCLib::Eval(U, PeriodicFlag, DerivativeRequest, *ExtrapMode, Degree, *FlatKnots, ArrayDimension, *Poles, *Result); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* BSplCLib_eval_real_bool_int3_array1ofreal_int_real4(double U, bool PeriodicFlag, int32_t DerivativeRequest, int32_t* ExtrapMode, int32_t Degree, TColStd_Array1OfReal const* FlatKnots, int32_t ArrayDimension, double* Poles, double* Weights, double* PolesResult, double* WeightsResult) {
+extern "C" const char* BSplCLib_eval_real_bool_int3_arr1_double_int_real4(double U, bool PeriodicFlag, int32_t DerivativeRequest, int32_t* ExtrapMode, int32_t Degree, NCollection_Array1_double const* FlatKnots, int32_t ArrayDimension, double* Poles, double* Weights, double* PolesResult, double* WeightsResult) {
     try { BSplCLib::Eval(U, PeriodicFlag, DerivativeRequest, *ExtrapMode, Degree, *FlatKnots, ArrayDimension, *Poles, *Weights, *PolesResult, *WeightsResult); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* BSplCLib_eval_real_bool2_int2_array1ofreal_array1ofpnt_array1ofreal_pnt_real(double U, bool PeriodicFlag, bool HomogeneousFlag, int32_t* ExtrapMode, int32_t Degree, TColStd_Array1OfReal const* FlatKnots, TColgp_Array1OfPnt const* Poles, TColStd_Array1OfReal const* Weights, gp_Pnt* Point, double* Weight) {
+extern "C" const char* BSplCLib_eval_real_bool2_int2_arr1_double_arr1_pnt_arr1_double_pnt_real(double U, bool PeriodicFlag, bool HomogeneousFlag, int32_t* ExtrapMode, int32_t Degree, NCollection_Array1_double const* FlatKnots, NCollection_Array1_gp_Pnt const* Poles, NCollection_Array1_double const* Weights, gp_Pnt* Point, double* Weight) {
     try { BSplCLib::Eval(U, PeriodicFlag, HomogeneousFlag, *ExtrapMode, Degree, *FlatKnots, *Poles, *Weights, *Point, *Weight); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* BSplCLib_eval_real_bool2_int2_array1ofreal_array1ofpnt2d_array1ofreal_pnt2d_real(double U, bool PeriodicFlag, bool HomogeneousFlag, int32_t* ExtrapMode, int32_t Degree, TColStd_Array1OfReal const* FlatKnots, TColgp_Array1OfPnt2d const* Poles, TColStd_Array1OfReal const* Weights, gp_Pnt2d* Point, double* Weight) {
+extern "C" const char* BSplCLib_eval_real_bool2_int2_arr1_double_arr1_pnt2d_arr1_double_pnt2d_real(double U, bool PeriodicFlag, bool HomogeneousFlag, int32_t* ExtrapMode, int32_t Degree, NCollection_Array1_double const* FlatKnots, NCollection_Array1_gp_Pnt2d const* Poles, NCollection_Array1_double const* Weights, gp_Pnt2d* Point, double* Weight) {
     try { BSplCLib::Eval(U, PeriodicFlag, HomogeneousFlag, *ExtrapMode, Degree, *FlatKnots, *Poles, *Weights, *Point, *Weight); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* BSplCLib_tang_extend_to_constraint(TColStd_Array1OfReal const* FlatKnots, double C1Coefficient, int32_t NumPoles, double* Poles, int32_t Dimension, int32_t Degree, TColStd_Array1OfReal const* ConstraintPoint, int32_t Continuity, bool After, int32_t* NbPolesResult, int32_t* NbKnotsRsult, double* KnotsResult, double* PolesResult) {
+extern "C" const char* BSplCLib_tang_extend_to_constraint(NCollection_Array1_double const* FlatKnots, double C1Coefficient, int32_t NumPoles, double* Poles, int32_t Dimension, int32_t Degree, NCollection_Array1_double const* ConstraintPoint, int32_t Continuity, bool After, int32_t* NbPolesResult, int32_t* NbKnotsRsult, double* KnotsResult, double* PolesResult) {
     try { BSplCLib::TangExtendToConstraint(*FlatKnots, C1Coefficient, NumPoles, *Poles, Dimension, Degree, *ConstraintPoint, Continuity, After, *NbPolesResult, *NbKnotsRsult, *KnotsResult, *PolesResult); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* BSplCLib_cache_d0_real_int_real2_array1ofpnt_array1ofrealptr_pnt(double U, int32_t Degree, double CacheParameter, double SpanLenght, TColgp_Array1OfPnt const* Poles, const TColStd_Array1OfReal* Weights, gp_Pnt* Point) {
+extern "C" const char* BSplCLib_cache_d0_real_int_real2_arr1_pnt_arr1_doubleptr_pnt(double U, int32_t Degree, double CacheParameter, double SpanLenght, NCollection_Array1_gp_Pnt const* Poles, const NCollection_Array1_double* Weights, gp_Pnt* Point) {
     try { BSplCLib::CacheD0(U, Degree, CacheParameter, SpanLenght, *Poles, Weights, *Point); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* BSplCLib_cache_d0_real_int_real2_array1ofpnt2d_array1ofrealptr_pnt2d(double U, int32_t Degree, double CacheParameter, double SpanLenght, TColgp_Array1OfPnt2d const* Poles, const TColStd_Array1OfReal* Weights, gp_Pnt2d* Point) {
+extern "C" const char* BSplCLib_cache_d0_real_int_real2_arr1_pnt2d_arr1_doubleptr_pnt2d(double U, int32_t Degree, double CacheParameter, double SpanLenght, NCollection_Array1_gp_Pnt2d const* Poles, const NCollection_Array1_double* Weights, gp_Pnt2d* Point) {
     try { BSplCLib::CacheD0(U, Degree, CacheParameter, SpanLenght, *Poles, Weights, *Point); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* BSplCLib_coefs_d0_real_array1ofpnt_array1ofrealptr_pnt(double U, TColgp_Array1OfPnt const* Poles, const TColStd_Array1OfReal* Weights, gp_Pnt* Point) {
+extern "C" const char* BSplCLib_coefs_d0_real_arr1_pnt_arr1_doubleptr_pnt(double U, NCollection_Array1_gp_Pnt const* Poles, const NCollection_Array1_double* Weights, gp_Pnt* Point) {
     try { BSplCLib::CoefsD0(U, *Poles, Weights, *Point); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* BSplCLib_coefs_d0_real_array1ofpnt2d_array1ofrealptr_pnt2d(double U, TColgp_Array1OfPnt2d const* Poles, const TColStd_Array1OfReal* Weights, gp_Pnt2d* Point) {
+extern "C" const char* BSplCLib_coefs_d0_real_arr1_pnt2d_arr1_doubleptr_pnt2d(double U, NCollection_Array1_gp_Pnt2d const* Poles, const NCollection_Array1_double* Weights, gp_Pnt2d* Point) {
     try { BSplCLib::CoefsD0(U, *Poles, Weights, *Point); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* BSplCLib_cache_d1_real_int_real2_array1ofpnt_array1ofrealptr_pnt_vec(double U, int32_t Degree, double CacheParameter, double SpanLenght, TColgp_Array1OfPnt const* Poles, const TColStd_Array1OfReal* Weights, gp_Pnt* Point, gp_Vec* Vec) {
+extern "C" const char* BSplCLib_cache_d1_real_int_real2_arr1_pnt_arr1_doubleptr_pnt_vec(double U, int32_t Degree, double CacheParameter, double SpanLenght, NCollection_Array1_gp_Pnt const* Poles, const NCollection_Array1_double* Weights, gp_Pnt* Point, gp_Vec* Vec) {
     try { BSplCLib::CacheD1(U, Degree, CacheParameter, SpanLenght, *Poles, Weights, *Point, *Vec); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* BSplCLib_cache_d1_real_int_real2_array1ofpnt2d_array1ofrealptr_pnt2d_vec2d(double U, int32_t Degree, double CacheParameter, double SpanLenght, TColgp_Array1OfPnt2d const* Poles, const TColStd_Array1OfReal* Weights, gp_Pnt2d* Point, gp_Vec2d* Vec) {
+extern "C" const char* BSplCLib_cache_d1_real_int_real2_arr1_pnt2d_arr1_doubleptr_pnt2d_vec2d(double U, int32_t Degree, double CacheParameter, double SpanLenght, NCollection_Array1_gp_Pnt2d const* Poles, const NCollection_Array1_double* Weights, gp_Pnt2d* Point, gp_Vec2d* Vec) {
     try { BSplCLib::CacheD1(U, Degree, CacheParameter, SpanLenght, *Poles, Weights, *Point, *Vec); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* BSplCLib_coefs_d1_real_array1ofpnt_array1ofrealptr_pnt_vec(double U, TColgp_Array1OfPnt const* Poles, const TColStd_Array1OfReal* Weights, gp_Pnt* Point, gp_Vec* Vec) {
+extern "C" const char* BSplCLib_coefs_d1_real_arr1_pnt_arr1_doubleptr_pnt_vec(double U, NCollection_Array1_gp_Pnt const* Poles, const NCollection_Array1_double* Weights, gp_Pnt* Point, gp_Vec* Vec) {
     try { BSplCLib::CoefsD1(U, *Poles, Weights, *Point, *Vec); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* BSplCLib_coefs_d1_real_array1ofpnt2d_array1ofrealptr_pnt2d_vec2d(double U, TColgp_Array1OfPnt2d const* Poles, const TColStd_Array1OfReal* Weights, gp_Pnt2d* Point, gp_Vec2d* Vec) {
+extern "C" const char* BSplCLib_coefs_d1_real_arr1_pnt2d_arr1_doubleptr_pnt2d_vec2d(double U, NCollection_Array1_gp_Pnt2d const* Poles, const NCollection_Array1_double* Weights, gp_Pnt2d* Point, gp_Vec2d* Vec) {
     try { BSplCLib::CoefsD1(U, *Poles, Weights, *Point, *Vec); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* BSplCLib_cache_d2_real_int_real2_array1ofpnt_array1ofrealptr_pnt_vec2(double U, int32_t Degree, double CacheParameter, double SpanLenght, TColgp_Array1OfPnt const* Poles, const TColStd_Array1OfReal* Weights, gp_Pnt* Point, gp_Vec* Vec1, gp_Vec* Vec2) {
+extern "C" const char* BSplCLib_cache_d2_real_int_real2_arr1_pnt_arr1_doubleptr_pnt_vec2(double U, int32_t Degree, double CacheParameter, double SpanLenght, NCollection_Array1_gp_Pnt const* Poles, const NCollection_Array1_double* Weights, gp_Pnt* Point, gp_Vec* Vec1, gp_Vec* Vec2) {
     try { BSplCLib::CacheD2(U, Degree, CacheParameter, SpanLenght, *Poles, Weights, *Point, *Vec1, *Vec2); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* BSplCLib_cache_d2_real_int_real2_array1ofpnt2d_array1ofrealptr_pnt2d_vec2d2(double U, int32_t Degree, double CacheParameter, double SpanLenght, TColgp_Array1OfPnt2d const* Poles, const TColStd_Array1OfReal* Weights, gp_Pnt2d* Point, gp_Vec2d* Vec1, gp_Vec2d* Vec2) {
+extern "C" const char* BSplCLib_cache_d2_real_int_real2_arr1_pnt2d_arr1_doubleptr_pnt2d_vec2d2(double U, int32_t Degree, double CacheParameter, double SpanLenght, NCollection_Array1_gp_Pnt2d const* Poles, const NCollection_Array1_double* Weights, gp_Pnt2d* Point, gp_Vec2d* Vec1, gp_Vec2d* Vec2) {
     try { BSplCLib::CacheD2(U, Degree, CacheParameter, SpanLenght, *Poles, Weights, *Point, *Vec1, *Vec2); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* BSplCLib_coefs_d2_real_array1ofpnt_array1ofrealptr_pnt_vec2(double U, TColgp_Array1OfPnt const* Poles, const TColStd_Array1OfReal* Weights, gp_Pnt* Point, gp_Vec* Vec1, gp_Vec* Vec2) {
+extern "C" const char* BSplCLib_coefs_d2_real_arr1_pnt_arr1_doubleptr_pnt_vec2(double U, NCollection_Array1_gp_Pnt const* Poles, const NCollection_Array1_double* Weights, gp_Pnt* Point, gp_Vec* Vec1, gp_Vec* Vec2) {
     try { BSplCLib::CoefsD2(U, *Poles, Weights, *Point, *Vec1, *Vec2); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* BSplCLib_coefs_d2_real_array1ofpnt2d_array1ofrealptr_pnt2d_vec2d2(double U, TColgp_Array1OfPnt2d const* Poles, const TColStd_Array1OfReal* Weights, gp_Pnt2d* Point, gp_Vec2d* Vec1, gp_Vec2d* Vec2) {
+extern "C" const char* BSplCLib_coefs_d2_real_arr1_pnt2d_arr1_doubleptr_pnt2d_vec2d2(double U, NCollection_Array1_gp_Pnt2d const* Poles, const NCollection_Array1_double* Weights, gp_Pnt2d* Point, gp_Vec2d* Vec1, gp_Vec2d* Vec2) {
     try { BSplCLib::CoefsD2(U, *Poles, Weights, *Point, *Vec1, *Vec2); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* BSplCLib_cache_d3_real_int_real2_array1ofpnt_array1ofrealptr_pnt_vec3(double U, int32_t Degree, double CacheParameter, double SpanLenght, TColgp_Array1OfPnt const* Poles, const TColStd_Array1OfReal* Weights, gp_Pnt* Point, gp_Vec* Vec1, gp_Vec* Vec2, gp_Vec* Vec3) {
+extern "C" const char* BSplCLib_cache_d3_real_int_real2_arr1_pnt_arr1_doubleptr_pnt_vec3(double U, int32_t Degree, double CacheParameter, double SpanLenght, NCollection_Array1_gp_Pnt const* Poles, const NCollection_Array1_double* Weights, gp_Pnt* Point, gp_Vec* Vec1, gp_Vec* Vec2, gp_Vec* Vec3) {
     try { BSplCLib::CacheD3(U, Degree, CacheParameter, SpanLenght, *Poles, Weights, *Point, *Vec1, *Vec2, *Vec3); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* BSplCLib_cache_d3_real_int_real2_array1ofpnt2d_array1ofrealptr_pnt2d_vec2d3(double U, int32_t Degree, double CacheParameter, double SpanLenght, TColgp_Array1OfPnt2d const* Poles, const TColStd_Array1OfReal* Weights, gp_Pnt2d* Point, gp_Vec2d* Vec1, gp_Vec2d* Vec2, gp_Vec2d* Vec3) {
+extern "C" const char* BSplCLib_cache_d3_real_int_real2_arr1_pnt2d_arr1_doubleptr_pnt2d_vec2d3(double U, int32_t Degree, double CacheParameter, double SpanLenght, NCollection_Array1_gp_Pnt2d const* Poles, const NCollection_Array1_double* Weights, gp_Pnt2d* Point, gp_Vec2d* Vec1, gp_Vec2d* Vec2, gp_Vec2d* Vec3) {
     try { BSplCLib::CacheD3(U, Degree, CacheParameter, SpanLenght, *Poles, Weights, *Point, *Vec1, *Vec2, *Vec3); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* BSplCLib_coefs_d3_real_array1ofpnt_array1ofrealptr_pnt_vec3(double U, TColgp_Array1OfPnt const* Poles, const TColStd_Array1OfReal* Weights, gp_Pnt* Point, gp_Vec* Vec1, gp_Vec* Vec2, gp_Vec* Vec3) {
+extern "C" const char* BSplCLib_coefs_d3_real_arr1_pnt_arr1_doubleptr_pnt_vec3(double U, NCollection_Array1_gp_Pnt const* Poles, const NCollection_Array1_double* Weights, gp_Pnt* Point, gp_Vec* Vec1, gp_Vec* Vec2, gp_Vec* Vec3) {
     try { BSplCLib::CoefsD3(U, *Poles, Weights, *Point, *Vec1, *Vec2, *Vec3); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* BSplCLib_coefs_d3_real_array1ofpnt2d_array1ofrealptr_pnt2d_vec2d3(double U, TColgp_Array1OfPnt2d const* Poles, const TColStd_Array1OfReal* Weights, gp_Pnt2d* Point, gp_Vec2d* Vec1, gp_Vec2d* Vec2, gp_Vec2d* Vec3) {
+extern "C" const char* BSplCLib_coefs_d3_real_arr1_pnt2d_arr1_doubleptr_pnt2d_vec2d3(double U, NCollection_Array1_gp_Pnt2d const* Poles, const NCollection_Array1_double* Weights, gp_Pnt2d* Point, gp_Vec2d* Vec1, gp_Vec2d* Vec2, gp_Vec2d* Vec3) {
     try { BSplCLib::CoefsD3(U, *Poles, Weights, *Point, *Vec1, *Vec2, *Vec3); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* BSplCLib_build_cache_real2_bool_int_array1ofreal_array1ofpnt_array1ofrealptr_array1ofpnt_array1ofrealptr(double U, double InverseOfSpanDomain, bool PeriodicFlag, int32_t Degree, TColStd_Array1OfReal const* FlatKnots, TColgp_Array1OfPnt const* Poles, const TColStd_Array1OfReal* Weights, TColgp_Array1OfPnt* CachePoles, TColStd_Array1OfReal* CacheWeights) {
+extern "C" const char* BSplCLib_build_cache_real2_bool_int_arr1_double_arr1_pnt_arr1_doubleptr_arr1_pnt_arr1_doubleptr(double U, double InverseOfSpanDomain, bool PeriodicFlag, int32_t Degree, NCollection_Array1_double const* FlatKnots, NCollection_Array1_gp_Pnt const* Poles, const NCollection_Array1_double* Weights, NCollection_Array1_gp_Pnt* CachePoles, NCollection_Array1_double* CacheWeights) {
     try { BSplCLib::BuildCache(U, InverseOfSpanDomain, PeriodicFlag, Degree, *FlatKnots, *Poles, Weights, *CachePoles, CacheWeights); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* BSplCLib_build_cache_real2_bool_int_array1ofreal_array1ofpnt2d_array1ofrealptr_array1ofpnt2d_array1ofrealptr(double U, double InverseOfSpanDomain, bool PeriodicFlag, int32_t Degree, TColStd_Array1OfReal const* FlatKnots, TColgp_Array1OfPnt2d const* Poles, const TColStd_Array1OfReal* Weights, TColgp_Array1OfPnt2d* CachePoles, TColStd_Array1OfReal* CacheWeights) {
+extern "C" const char* BSplCLib_build_cache_real2_bool_int_arr1_double_arr1_pnt2d_arr1_doubleptr_arr1_pnt2d_arr1_doubleptr(double U, double InverseOfSpanDomain, bool PeriodicFlag, int32_t Degree, NCollection_Array1_double const* FlatKnots, NCollection_Array1_gp_Pnt2d const* Poles, const NCollection_Array1_double* Weights, NCollection_Array1_gp_Pnt2d* CachePoles, NCollection_Array1_double* CacheWeights) {
     try { BSplCLib::BuildCache(U, InverseOfSpanDomain, PeriodicFlag, Degree, *FlatKnots, *Poles, Weights, *CachePoles, CacheWeights); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* BSplCLib_build_cache_real2_bool_int2_array1ofreal_array1ofpnt_array1ofrealptr_array2ofreal(double theParameter, double theSpanDomain, bool thePeriodicFlag, int32_t theDegree, int32_t theSpanIndex, TColStd_Array1OfReal const* theFlatKnots, TColgp_Array1OfPnt const* thePoles, const TColStd_Array1OfReal* theWeights, TColStd_Array2OfReal* theCacheArray) {
+extern "C" const char* BSplCLib_build_cache_real2_bool_int2_arr1_double_arr1_pnt_arr1_doubleptr_arr2_double(double theParameter, double theSpanDomain, bool thePeriodicFlag, int32_t theDegree, int32_t theSpanIndex, NCollection_Array1_double const* theFlatKnots, NCollection_Array1_gp_Pnt const* thePoles, const NCollection_Array1_double* theWeights, NCollection_Array2_double* theCacheArray) {
     try { BSplCLib::BuildCache(theParameter, theSpanDomain, thePeriodicFlag, theDegree, theSpanIndex, *theFlatKnots, *thePoles, theWeights, *theCacheArray); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* BSplCLib_build_cache_real2_bool_int2_array1ofreal_array1ofpnt2d_array1ofrealptr_array2ofreal(double theParameter, double theSpanDomain, bool thePeriodicFlag, int32_t theDegree, int32_t theSpanIndex, TColStd_Array1OfReal const* theFlatKnots, TColgp_Array1OfPnt2d const* thePoles, const TColStd_Array1OfReal* theWeights, TColStd_Array2OfReal* theCacheArray) {
+extern "C" const char* BSplCLib_build_cache_real2_bool_int2_arr1_double_arr1_pnt2d_arr1_doubleptr_arr2_double(double theParameter, double theSpanDomain, bool thePeriodicFlag, int32_t theDegree, int32_t theSpanIndex, NCollection_Array1_double const* theFlatKnots, NCollection_Array1_gp_Pnt2d const* thePoles, const NCollection_Array1_double* theWeights, NCollection_Array2_double* theCacheArray) {
     try { BSplCLib::BuildCache(theParameter, theSpanDomain, thePeriodicFlag, theDegree, theSpanIndex, *theFlatKnots, *thePoles, theWeights, *theCacheArray); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* BSplCLib_poles_coefficients_array1ofpnt2d2(TColgp_Array1OfPnt2d const* Poles, TColgp_Array1OfPnt2d* CachePoles) {
+extern "C" const char* BSplCLib_poles_coefficients_arr1_pnt2d2(NCollection_Array1_gp_Pnt2d const* Poles, NCollection_Array1_gp_Pnt2d* CachePoles) {
     try { BSplCLib::PolesCoefficients(*Poles, *CachePoles); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* BSplCLib_poles_coefficients_array1ofpnt2d_array1ofrealptr_array1ofpnt2d_array1ofrealptr(TColgp_Array1OfPnt2d const* Poles, const TColStd_Array1OfReal* Weights, TColgp_Array1OfPnt2d* CachePoles, TColStd_Array1OfReal* CacheWeights) {
+extern "C" const char* BSplCLib_poles_coefficients_arr1_pnt2d_arr1_doubleptr_arr1_pnt2d_arr1_doubleptr(NCollection_Array1_gp_Pnt2d const* Poles, const NCollection_Array1_double* Weights, NCollection_Array1_gp_Pnt2d* CachePoles, NCollection_Array1_double* CacheWeights) {
     try { BSplCLib::PolesCoefficients(*Poles, Weights, *CachePoles, CacheWeights); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* BSplCLib_poles_coefficients_array1ofpnt2(TColgp_Array1OfPnt const* Poles, TColgp_Array1OfPnt* CachePoles) {
+extern "C" const char* BSplCLib_poles_coefficients_arr1_pnt2(NCollection_Array1_gp_Pnt const* Poles, NCollection_Array1_gp_Pnt* CachePoles) {
     try { BSplCLib::PolesCoefficients(*Poles, *CachePoles); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* BSplCLib_poles_coefficients_array1ofpnt_array1ofrealptr_array1ofpnt_array1ofrealptr(TColgp_Array1OfPnt const* Poles, const TColStd_Array1OfReal* Weights, TColgp_Array1OfPnt* CachePoles, TColStd_Array1OfReal* CacheWeights) {
+extern "C" const char* BSplCLib_poles_coefficients_arr1_pnt_arr1_doubleptr_arr1_pnt_arr1_doubleptr(NCollection_Array1_gp_Pnt const* Poles, const NCollection_Array1_double* Weights, NCollection_Array1_gp_Pnt* CachePoles, NCollection_Array1_double* CacheWeights) {
     try { BSplCLib::PolesCoefficients(*Poles, Weights, *CachePoles, CacheWeights); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -17008,67 +12975,67 @@ extern "C" OcctResult<double> BSplCLib_flat_bezier_knots(int32_t Degree) {
     try { return {BSplCLib::FlatBezierKnots(Degree), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* BSplCLib_build_schoenberg_points(int32_t Degree, TColStd_Array1OfReal const* FlatKnots, TColStd_Array1OfReal* Parameters) {
+extern "C" const char* BSplCLib_build_schoenberg_points(int32_t Degree, NCollection_Array1_double const* FlatKnots, NCollection_Array1_double* Parameters) {
     try { BSplCLib::BuildSchoenbergPoints(Degree, *FlatKnots, *Parameters); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* BSplCLib_interpolate_int_array1ofreal2_array1ofinteger_array1ofpnt_int(int32_t Degree, TColStd_Array1OfReal const* FlatKnots, TColStd_Array1OfReal const* Parameters, TColStd_Array1OfInteger const* ContactOrderArray, TColgp_Array1OfPnt* Poles, int32_t* InversionProblem) {
+extern "C" const char* BSplCLib_interpolate_int_arr1_double2_arr1_int_arr1_pnt_int(int32_t Degree, NCollection_Array1_double const* FlatKnots, NCollection_Array1_double const* Parameters, NCollection_Array1_int const* ContactOrderArray, NCollection_Array1_gp_Pnt* Poles, int32_t* InversionProblem) {
     try { BSplCLib::Interpolate(Degree, *FlatKnots, *Parameters, *ContactOrderArray, *Poles, *InversionProblem); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* BSplCLib_interpolate_int_array1ofreal2_array1ofinteger_array1ofpnt2d_int(int32_t Degree, TColStd_Array1OfReal const* FlatKnots, TColStd_Array1OfReal const* Parameters, TColStd_Array1OfInteger const* ContactOrderArray, TColgp_Array1OfPnt2d* Poles, int32_t* InversionProblem) {
+extern "C" const char* BSplCLib_interpolate_int_arr1_double2_arr1_int_arr1_pnt2d_int(int32_t Degree, NCollection_Array1_double const* FlatKnots, NCollection_Array1_double const* Parameters, NCollection_Array1_int const* ContactOrderArray, NCollection_Array1_gp_Pnt2d* Poles, int32_t* InversionProblem) {
     try { BSplCLib::Interpolate(Degree, *FlatKnots, *Parameters, *ContactOrderArray, *Poles, *InversionProblem); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* BSplCLib_interpolate_int_array1ofreal2_array1ofinteger_array1ofpnt_array1ofreal_int(int32_t Degree, TColStd_Array1OfReal const* FlatKnots, TColStd_Array1OfReal const* Parameters, TColStd_Array1OfInteger const* ContactOrderArray, TColgp_Array1OfPnt* Poles, TColStd_Array1OfReal* Weights, int32_t* InversionProblem) {
+extern "C" const char* BSplCLib_interpolate_int_arr1_double2_arr1_int_arr1_pnt_arr1_double_int(int32_t Degree, NCollection_Array1_double const* FlatKnots, NCollection_Array1_double const* Parameters, NCollection_Array1_int const* ContactOrderArray, NCollection_Array1_gp_Pnt* Poles, NCollection_Array1_double* Weights, int32_t* InversionProblem) {
     try { BSplCLib::Interpolate(Degree, *FlatKnots, *Parameters, *ContactOrderArray, *Poles, *Weights, *InversionProblem); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* BSplCLib_interpolate_int_array1ofreal2_array1ofinteger_array1ofpnt2d_array1ofreal_int(int32_t Degree, TColStd_Array1OfReal const* FlatKnots, TColStd_Array1OfReal const* Parameters, TColStd_Array1OfInteger const* ContactOrderArray, TColgp_Array1OfPnt2d* Poles, TColStd_Array1OfReal* Weights, int32_t* InversionProblem) {
+extern "C" const char* BSplCLib_interpolate_int_arr1_double2_arr1_int_arr1_pnt2d_arr1_double_int(int32_t Degree, NCollection_Array1_double const* FlatKnots, NCollection_Array1_double const* Parameters, NCollection_Array1_int const* ContactOrderArray, NCollection_Array1_gp_Pnt2d* Poles, NCollection_Array1_double* Weights, int32_t* InversionProblem) {
     try { BSplCLib::Interpolate(Degree, *FlatKnots, *Parameters, *ContactOrderArray, *Poles, *Weights, *InversionProblem); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* BSplCLib_interpolate_int_array1ofreal2_array1ofinteger_int_real_int(int32_t Degree, TColStd_Array1OfReal const* FlatKnots, TColStd_Array1OfReal const* Parameters, TColStd_Array1OfInteger const* ContactOrderArray, int32_t ArrayDimension, double* Poles, int32_t* InversionProblem) {
+extern "C" const char* BSplCLib_interpolate_int_arr1_double2_arr1_int_int_real_int(int32_t Degree, NCollection_Array1_double const* FlatKnots, NCollection_Array1_double const* Parameters, NCollection_Array1_int const* ContactOrderArray, int32_t ArrayDimension, double* Poles, int32_t* InversionProblem) {
     try { BSplCLib::Interpolate(Degree, *FlatKnots, *Parameters, *ContactOrderArray, ArrayDimension, *Poles, *InversionProblem); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* BSplCLib_interpolate_int_array1ofreal2_array1ofinteger_int_real2_int(int32_t Degree, TColStd_Array1OfReal const* FlatKnots, TColStd_Array1OfReal const* Parameters, TColStd_Array1OfInteger const* ContactOrderArray, int32_t ArrayDimension, double* Poles, double* Weights, int32_t* InversionProblem) {
+extern "C" const char* BSplCLib_interpolate_int_arr1_double2_arr1_int_int_real2_int(int32_t Degree, NCollection_Array1_double const* FlatKnots, NCollection_Array1_double const* Parameters, NCollection_Array1_int const* ContactOrderArray, int32_t ArrayDimension, double* Poles, double* Weights, int32_t* InversionProblem) {
     try { BSplCLib::Interpolate(Degree, *FlatKnots, *Parameters, *ContactOrderArray, ArrayDimension, *Poles, *Weights, *InversionProblem); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* BSplCLib_move_point_real_vec2d_int3_array1ofpnt2d_array1ofrealptr_array1ofreal_int2_array1ofpnt2d(double U, gp_Vec2d const* Displ, int32_t Index1, int32_t Index2, int32_t Degree, TColgp_Array1OfPnt2d const* Poles, const TColStd_Array1OfReal* Weights, TColStd_Array1OfReal const* FlatKnots, int32_t* FirstIndex, int32_t* LastIndex, TColgp_Array1OfPnt2d* NewPoles) {
+extern "C" const char* BSplCLib_move_point_real_vec2d_int3_arr1_pnt2d_arr1_doubleptr_arr1_double_int2_arr1_pnt2d(double U, gp_Vec2d const* Displ, int32_t Index1, int32_t Index2, int32_t Degree, NCollection_Array1_gp_Pnt2d const* Poles, const NCollection_Array1_double* Weights, NCollection_Array1_double const* FlatKnots, int32_t* FirstIndex, int32_t* LastIndex, NCollection_Array1_gp_Pnt2d* NewPoles) {
     try { BSplCLib::MovePoint(U, *Displ, Index1, Index2, Degree, *Poles, Weights, *FlatKnots, *FirstIndex, *LastIndex, *NewPoles); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* BSplCLib_move_point_real_vec_int3_array1ofpnt_array1ofrealptr_array1ofreal_int2_array1ofpnt(double U, gp_Vec const* Displ, int32_t Index1, int32_t Index2, int32_t Degree, TColgp_Array1OfPnt const* Poles, const TColStd_Array1OfReal* Weights, TColStd_Array1OfReal const* FlatKnots, int32_t* FirstIndex, int32_t* LastIndex, TColgp_Array1OfPnt* NewPoles) {
+extern "C" const char* BSplCLib_move_point_real_vec_int3_arr1_pnt_arr1_doubleptr_arr1_double_int2_arr1_pnt(double U, gp_Vec const* Displ, int32_t Index1, int32_t Index2, int32_t Degree, NCollection_Array1_gp_Pnt const* Poles, const NCollection_Array1_double* Weights, NCollection_Array1_double const* FlatKnots, int32_t* FirstIndex, int32_t* LastIndex, NCollection_Array1_gp_Pnt* NewPoles) {
     try { BSplCLib::MovePoint(U, *Displ, Index1, Index2, Degree, *Poles, Weights, *FlatKnots, *FirstIndex, *LastIndex, *NewPoles); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* BSplCLib_move_point_and_tangent_real_int_real3_int3_real_array1ofrealptr_array1ofreal_real_int(double U, int32_t ArrayDimension, double* Delta, double* DeltaDerivative, double Tolerance, int32_t Degree, int32_t StartingCondition, int32_t EndingCondition, double* Poles, const TColStd_Array1OfReal* Weights, TColStd_Array1OfReal const* FlatKnots, double* NewPoles, int32_t* ErrorStatus) {
+extern "C" const char* BSplCLib_move_point_and_tangent_real_int_real3_int3_real_arr1_doubleptr_arr1_double_real_int(double U, int32_t ArrayDimension, double* Delta, double* DeltaDerivative, double Tolerance, int32_t Degree, int32_t StartingCondition, int32_t EndingCondition, double* Poles, const NCollection_Array1_double* Weights, NCollection_Array1_double const* FlatKnots, double* NewPoles, int32_t* ErrorStatus) {
     try { BSplCLib::MovePointAndTangent(U, ArrayDimension, *Delta, *DeltaDerivative, Tolerance, Degree, StartingCondition, EndingCondition, *Poles, Weights, *FlatKnots, *NewPoles, *ErrorStatus); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* BSplCLib_move_point_and_tangent_real_vec2_real_int3_array1ofpnt_array1ofrealptr_array1ofreal_array1ofpnt_int(double U, gp_Vec const* Delta, gp_Vec const* DeltaDerivative, double Tolerance, int32_t Degree, int32_t StartingCondition, int32_t EndingCondition, TColgp_Array1OfPnt const* Poles, const TColStd_Array1OfReal* Weights, TColStd_Array1OfReal const* FlatKnots, TColgp_Array1OfPnt* NewPoles, int32_t* ErrorStatus) {
+extern "C" const char* BSplCLib_move_point_and_tangent_real_vec2_real_int3_arr1_pnt_arr1_doubleptr_arr1_double_arr1_pnt_int(double U, gp_Vec const* Delta, gp_Vec const* DeltaDerivative, double Tolerance, int32_t Degree, int32_t StartingCondition, int32_t EndingCondition, NCollection_Array1_gp_Pnt const* Poles, const NCollection_Array1_double* Weights, NCollection_Array1_double const* FlatKnots, NCollection_Array1_gp_Pnt* NewPoles, int32_t* ErrorStatus) {
     try { BSplCLib::MovePointAndTangent(U, *Delta, *DeltaDerivative, Tolerance, Degree, StartingCondition, EndingCondition, *Poles, Weights, *FlatKnots, *NewPoles, *ErrorStatus); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* BSplCLib_move_point_and_tangent_real_vec2d2_real_int3_array1ofpnt2d_array1ofrealptr_array1ofreal_array1ofpnt2d_int(double U, gp_Vec2d const* Delta, gp_Vec2d const* DeltaDerivative, double Tolerance, int32_t Degree, int32_t StartingCondition, int32_t EndingCondition, TColgp_Array1OfPnt2d const* Poles, const TColStd_Array1OfReal* Weights, TColStd_Array1OfReal const* FlatKnots, TColgp_Array1OfPnt2d* NewPoles, int32_t* ErrorStatus) {
+extern "C" const char* BSplCLib_move_point_and_tangent_real_vec2d2_real_int3_arr1_pnt2d_arr1_doubleptr_arr1_double_arr1_pnt2d_int(double U, gp_Vec2d const* Delta, gp_Vec2d const* DeltaDerivative, double Tolerance, int32_t Degree, int32_t StartingCondition, int32_t EndingCondition, NCollection_Array1_gp_Pnt2d const* Poles, const NCollection_Array1_double* Weights, NCollection_Array1_double const* FlatKnots, NCollection_Array1_gp_Pnt2d* NewPoles, int32_t* ErrorStatus) {
     try { BSplCLib::MovePointAndTangent(U, *Delta, *DeltaDerivative, Tolerance, Degree, StartingCondition, EndingCondition, *Poles, Weights, *FlatKnots, *NewPoles, *ErrorStatus); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* BSplCLib_resolution_real_int2_array1ofrealptr_array1ofreal_int_real2(double* PolesArray, int32_t ArrayDimension, int32_t NumPoles, const TColStd_Array1OfReal* Weights, TColStd_Array1OfReal const* FlatKnots, int32_t Degree, double Tolerance3D, double* UTolerance) {
+extern "C" const char* BSplCLib_resolution_real_int2_arr1_doubleptr_arr1_double_int_real2(double* PolesArray, int32_t ArrayDimension, int32_t NumPoles, const NCollection_Array1_double* Weights, NCollection_Array1_double const* FlatKnots, int32_t Degree, double Tolerance3D, double* UTolerance) {
     try { BSplCLib::Resolution(*PolesArray, ArrayDimension, NumPoles, Weights, *FlatKnots, Degree, Tolerance3D, *UTolerance); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* BSplCLib_resolution_array1ofpnt_array1ofrealptr_int_array1ofreal_int_real2(TColgp_Array1OfPnt const* Poles, const TColStd_Array1OfReal* Weights, int32_t NumPoles, TColStd_Array1OfReal const* FlatKnots, int32_t Degree, double Tolerance3D, double* UTolerance) {
+extern "C" const char* BSplCLib_resolution_arr1_pnt_arr1_doubleptr_int_arr1_double_int_real2(NCollection_Array1_gp_Pnt const* Poles, const NCollection_Array1_double* Weights, int32_t NumPoles, NCollection_Array1_double const* FlatKnots, int32_t Degree, double Tolerance3D, double* UTolerance) {
     try { BSplCLib::Resolution(*Poles, Weights, NumPoles, *FlatKnots, Degree, Tolerance3D, *UTolerance); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* BSplCLib_resolution_array1ofpnt2d_array1ofrealptr_int_array1ofreal_int_real2(TColgp_Array1OfPnt2d const* Poles, const TColStd_Array1OfReal* Weights, int32_t NumPoles, TColStd_Array1OfReal const* FlatKnots, int32_t Degree, double Tolerance3D, double* UTolerance) {
+extern "C" const char* BSplCLib_resolution_arr1_pnt2d_arr1_doubleptr_int_arr1_double_int_real2(NCollection_Array1_gp_Pnt2d const* Poles, const NCollection_Array1_double* Weights, int32_t NumPoles, NCollection_Array1_double const* FlatKnots, int32_t Degree, double Tolerance3D, double* UTolerance) {
     try { BSplCLib::Resolution(*Poles, Weights, NumPoles, *FlatKnots, Degree, Tolerance3D, *UTolerance); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<int32_t> BSplCLib_intervals(TColStd_Array1OfReal const* theKnots, TColStd_Array1OfInteger const* theMults, int32_t theDegree, bool isPeriodic, int32_t theContinuity, double theFirst, double theLast, double theTolerance, TColStd_Array1OfReal* theIntervals) {
+extern "C" OcctResult<int32_t> BSplCLib_intervals(NCollection_Array1_double const* theKnots, NCollection_Array1_int const* theMults, int32_t theDegree, bool isPeriodic, int32_t theContinuity, double theFirst, double theLast, double theTolerance, NCollection_Array1_double* theIntervals) {
     try { return {BSplCLib::Intervals(*theKnots, *theMults, theDegree, isPeriodic, theContinuity, theFirst, theLast, theTolerance, theIntervals), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -17080,160 +13047,172 @@ extern "C" const char* BSplSLib_rational_derivative_int4_real2_bool(int32_t UDeg
     try { BSplSLib::RationalDerivative(UDeg, VDeg, N, M, *Ders, *RDers, All); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* BSplSLib_d0_real2_int2_array2ofpnt_array2ofrealptr_array1ofreal2_array1ofintegerptr2_int2_bool4_pnt(double U, double V, int32_t UIndex, int32_t VIndex, TColgp_Array2OfPnt const* Poles, const TColStd_Array2OfReal* Weights, TColStd_Array1OfReal const* UKnots, TColStd_Array1OfReal const* VKnots, const TColStd_Array1OfInteger* UMults, const TColStd_Array1OfInteger* VMults, int32_t UDegree, int32_t VDegree, bool URat, bool VRat, bool UPer, bool VPer, gp_Pnt* P) {
+extern "C" const char* BSplSLib_d0_real2_int2_arr2_pnt_arr2_doubleptr_arr1_double2_arr1_intptr2_int2_bool4_pnt(double U, double V, int32_t UIndex, int32_t VIndex, NCollection_Array2_gp_Pnt const* Poles, const NCollection_Array2_double* Weights, NCollection_Array1_double const* UKnots, NCollection_Array1_double const* VKnots, const NCollection_Array1_int* UMults, const NCollection_Array1_int* VMults, int32_t UDegree, int32_t VDegree, bool URat, bool VRat, bool UPer, bool VPer, gp_Pnt* P) {
     try { BSplSLib::D0(U, V, UIndex, VIndex, *Poles, Weights, *UKnots, *VKnots, UMults, VMults, UDegree, VDegree, URat, VRat, UPer, VPer, *P); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* BSplSLib_d1_real2_int2_array2ofpnt_array2ofrealptr_array1ofreal2_array1ofintegerptr2_int2_bool4_pnt_vec2(double U, double V, int32_t UIndex, int32_t VIndex, TColgp_Array2OfPnt const* Poles, const TColStd_Array2OfReal* Weights, TColStd_Array1OfReal const* UKnots, TColStd_Array1OfReal const* VKnots, const TColStd_Array1OfInteger* UMults, const TColStd_Array1OfInteger* VMults, int32_t Degree, int32_t VDegree, bool URat, bool VRat, bool UPer, bool VPer, gp_Pnt* P, gp_Vec* Vu, gp_Vec* Vv) {
+extern "C" const char* BSplSLib_d1_real2_int2_arr2_pnt_arr2_doubleptr_arr1_double2_arr1_intptr2_int2_bool4_pnt_vec2(double U, double V, int32_t UIndex, int32_t VIndex, NCollection_Array2_gp_Pnt const* Poles, const NCollection_Array2_double* Weights, NCollection_Array1_double const* UKnots, NCollection_Array1_double const* VKnots, const NCollection_Array1_int* UMults, const NCollection_Array1_int* VMults, int32_t Degree, int32_t VDegree, bool URat, bool VRat, bool UPer, bool VPer, gp_Pnt* P, gp_Vec* Vu, gp_Vec* Vv) {
     try { BSplSLib::D1(U, V, UIndex, VIndex, *Poles, Weights, *UKnots, *VKnots, UMults, VMults, Degree, VDegree, URat, VRat, UPer, VPer, *P, *Vu, *Vv); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* BSplSLib_d2_real2_int2_array2ofpnt_array2ofrealptr_array1ofreal2_array1ofintegerptr2_int2_bool4_pnt_vec5(double U, double V, int32_t UIndex, int32_t VIndex, TColgp_Array2OfPnt const* Poles, const TColStd_Array2OfReal* Weights, TColStd_Array1OfReal const* UKnots, TColStd_Array1OfReal const* VKnots, const TColStd_Array1OfInteger* UMults, const TColStd_Array1OfInteger* VMults, int32_t UDegree, int32_t VDegree, bool URat, bool VRat, bool UPer, bool VPer, gp_Pnt* P, gp_Vec* Vu, gp_Vec* Vv, gp_Vec* Vuu, gp_Vec* Vvv, gp_Vec* Vuv) {
+extern "C" const char* BSplSLib_d2_real2_int2_arr2_pnt_arr2_doubleptr_arr1_double2_arr1_intptr2_int2_bool4_pnt_vec5(double U, double V, int32_t UIndex, int32_t VIndex, NCollection_Array2_gp_Pnt const* Poles, const NCollection_Array2_double* Weights, NCollection_Array1_double const* UKnots, NCollection_Array1_double const* VKnots, const NCollection_Array1_int* UMults, const NCollection_Array1_int* VMults, int32_t UDegree, int32_t VDegree, bool URat, bool VRat, bool UPer, bool VPer, gp_Pnt* P, gp_Vec* Vu, gp_Vec* Vv, gp_Vec* Vuu, gp_Vec* Vvv, gp_Vec* Vuv) {
     try { BSplSLib::D2(U, V, UIndex, VIndex, *Poles, Weights, *UKnots, *VKnots, UMults, VMults, UDegree, VDegree, URat, VRat, UPer, VPer, *P, *Vu, *Vv, *Vuu, *Vvv, *Vuv); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* BSplSLib_d3_real2_int2_array2ofpnt_array2ofrealptr_array1ofreal2_array1ofintegerptr2_int2_bool4_pnt_vec9(double U, double V, int32_t UIndex, int32_t VIndex, TColgp_Array2OfPnt const* Poles, const TColStd_Array2OfReal* Weights, TColStd_Array1OfReal const* UKnots, TColStd_Array1OfReal const* VKnots, const TColStd_Array1OfInteger* UMults, const TColStd_Array1OfInteger* VMults, int32_t UDegree, int32_t VDegree, bool URat, bool VRat, bool UPer, bool VPer, gp_Pnt* P, gp_Vec* Vu, gp_Vec* Vv, gp_Vec* Vuu, gp_Vec* Vvv, gp_Vec* Vuv, gp_Vec* Vuuu, gp_Vec* Vvvv, gp_Vec* Vuuv, gp_Vec* Vuvv) {
+extern "C" const char* BSplSLib_d3_real2_int2_arr2_pnt_arr2_doubleptr_arr1_double2_arr1_intptr2_int2_bool4_pnt_vec9(double U, double V, int32_t UIndex, int32_t VIndex, NCollection_Array2_gp_Pnt const* Poles, const NCollection_Array2_double* Weights, NCollection_Array1_double const* UKnots, NCollection_Array1_double const* VKnots, const NCollection_Array1_int* UMults, const NCollection_Array1_int* VMults, int32_t UDegree, int32_t VDegree, bool URat, bool VRat, bool UPer, bool VPer, gp_Pnt* P, gp_Vec* Vu, gp_Vec* Vv, gp_Vec* Vuu, gp_Vec* Vvv, gp_Vec* Vuv, gp_Vec* Vuuu, gp_Vec* Vvvv, gp_Vec* Vuuv, gp_Vec* Vuvv) {
     try { BSplSLib::D3(U, V, UIndex, VIndex, *Poles, Weights, *UKnots, *VKnots, UMults, VMults, UDegree, VDegree, URat, VRat, UPer, VPer, *P, *Vu, *Vv, *Vuu, *Vvv, *Vuv, *Vuuu, *Vvvv, *Vuuv, *Vuvv); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* BSplSLib_dn_real2_int4_array2ofpnt_array2ofrealptr_array1ofreal2_array1ofintegerptr2_int2_bool4_vec(double U, double V, int32_t Nu, int32_t Nv, int32_t UIndex, int32_t VIndex, TColgp_Array2OfPnt const* Poles, const TColStd_Array2OfReal* Weights, TColStd_Array1OfReal const* UKnots, TColStd_Array1OfReal const* VKnots, const TColStd_Array1OfInteger* UMults, const TColStd_Array1OfInteger* VMults, int32_t UDegree, int32_t VDegree, bool URat, bool VRat, bool UPer, bool VPer, gp_Vec* Vn) {
+extern "C" const char* BSplSLib_dn_real2_int4_arr2_pnt_arr2_doubleptr_arr1_double2_arr1_intptr2_int2_bool4_vec(double U, double V, int32_t Nu, int32_t Nv, int32_t UIndex, int32_t VIndex, NCollection_Array2_gp_Pnt const* Poles, const NCollection_Array2_double* Weights, NCollection_Array1_double const* UKnots, NCollection_Array1_double const* VKnots, const NCollection_Array1_int* UMults, const NCollection_Array1_int* VMults, int32_t UDegree, int32_t VDegree, bool URat, bool VRat, bool UPer, bool VPer, gp_Vec* Vn) {
     try { BSplSLib::DN(U, V, Nu, Nv, UIndex, VIndex, *Poles, Weights, *UKnots, *VKnots, UMults, VMults, UDegree, VDegree, URat, VRat, UPer, VPer, *Vn); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* BSplSLib_iso(double Param, bool IsU, TColgp_Array2OfPnt const* Poles, const TColStd_Array2OfReal* Weights, TColStd_Array1OfReal const* Knots, const TColStd_Array1OfInteger* Mults, int32_t Degree, bool Periodic, TColgp_Array1OfPnt* CPoles, TColStd_Array1OfReal* CWeights) {
+extern "C" const char* BSplSLib_iso(double Param, bool IsU, NCollection_Array2_gp_Pnt const* Poles, const NCollection_Array2_double* Weights, NCollection_Array1_double const* Knots, const NCollection_Array1_int* Mults, int32_t Degree, bool Periodic, NCollection_Array1_gp_Pnt* CPoles, NCollection_Array1_double* CWeights) {
     try { BSplSLib::Iso(Param, IsU, *Poles, Weights, *Knots, Mults, Degree, Periodic, *CPoles, CWeights); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* BSplSLib_reverse_array2ofpnt_int_bool(TColgp_Array2OfPnt* Poles, int32_t Last, bool UDirection) {
+extern "C" const char* BSplSLib_reverse_arr2_pnt_int_bool(NCollection_Array2_gp_Pnt* Poles, int32_t Last, bool UDirection) {
     try { BSplSLib::Reverse(*Poles, Last, UDirection); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* BSplSLib_homogeneous_d0(double U, double V, int32_t UIndex, int32_t VIndex, TColgp_Array2OfPnt const* Poles, const TColStd_Array2OfReal* Weights, TColStd_Array1OfReal const* UKnots, TColStd_Array1OfReal const* VKnots, const TColStd_Array1OfInteger* UMults, const TColStd_Array1OfInteger* VMults, int32_t UDegree, int32_t VDegree, bool URat, bool VRat, bool UPer, bool VPer, double* W, gp_Pnt* P) {
+extern "C" const char* BSplSLib_homogeneous_d0(double U, double V, int32_t UIndex, int32_t VIndex, NCollection_Array2_gp_Pnt const* Poles, const NCollection_Array2_double* Weights, NCollection_Array1_double const* UKnots, NCollection_Array1_double const* VKnots, const NCollection_Array1_int* UMults, const NCollection_Array1_int* VMults, int32_t UDegree, int32_t VDegree, bool URat, bool VRat, bool UPer, bool VPer, double* W, gp_Pnt* P) {
     try { BSplSLib::HomogeneousD0(U, V, UIndex, VIndex, *Poles, Weights, *UKnots, *VKnots, UMults, VMults, UDegree, VDegree, URat, VRat, UPer, VPer, *W, *P); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* BSplSLib_homogeneous_d1(double U, double V, int32_t UIndex, int32_t VIndex, TColgp_Array2OfPnt const* Poles, const TColStd_Array2OfReal* Weights, TColStd_Array1OfReal const* UKnots, TColStd_Array1OfReal const* VKnots, const TColStd_Array1OfInteger* UMults, const TColStd_Array1OfInteger* VMults, int32_t UDegree, int32_t VDegree, bool URat, bool VRat, bool UPer, bool VPer, gp_Pnt* N, gp_Vec* Nu, gp_Vec* Nv, double* D, double* Du, double* Dv) {
+extern "C" const char* BSplSLib_homogeneous_d1(double U, double V, int32_t UIndex, int32_t VIndex, NCollection_Array2_gp_Pnt const* Poles, const NCollection_Array2_double* Weights, NCollection_Array1_double const* UKnots, NCollection_Array1_double const* VKnots, const NCollection_Array1_int* UMults, const NCollection_Array1_int* VMults, int32_t UDegree, int32_t VDegree, bool URat, bool VRat, bool UPer, bool VPer, gp_Pnt* N, gp_Vec* Nu, gp_Vec* Nv, double* D, double* Du, double* Dv) {
     try { BSplSLib::HomogeneousD1(U, V, UIndex, VIndex, *Poles, Weights, *UKnots, *VKnots, UMults, VMults, UDegree, VDegree, URat, VRat, UPer, VPer, *N, *Nu, *Nv, *D, *Du, *Dv); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* BSplSLib_reverse_array2ofreal_int_bool(TColStd_Array2OfReal* Weights, int32_t Last, bool UDirection) {
+extern "C" const char* BSplSLib_reverse_arr2_double_int_bool(NCollection_Array2_double* Weights, int32_t Last, bool UDirection) {
     try { BSplSLib::Reverse(*Weights, Last, UDirection); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<bool> BSplSLib_is_rational_array2ofreal_int4_real(TColStd_Array2OfReal const* Weights, int32_t I1, int32_t I2, int32_t J1, int32_t J2, double Epsilon) {
+extern "C" OcctResult<bool> BSplSLib_is_rational_arr2_double_int4_real(NCollection_Array2_double const* Weights, int32_t I1, int32_t I2, int32_t J1, int32_t J2, double Epsilon) {
     try { return {BSplSLib::IsRational(*Weights, I1, I2, J1, J2, Epsilon), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* BSplSLib_set_poles_array2ofpnt_array1ofreal_bool(TColgp_Array2OfPnt const* Poles, TColStd_Array1OfReal* FP, bool UDirection) {
+extern "C" const char* BSplSLib_set_poles_arr2_pnt_arr1_double_bool(NCollection_Array2_gp_Pnt const* Poles, NCollection_Array1_double* FP, bool UDirection) {
     try { BSplSLib::SetPoles(*Poles, *FP, UDirection); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* BSplSLib_set_poles_array2ofpnt_array2ofreal_array1ofreal_bool(TColgp_Array2OfPnt const* Poles, TColStd_Array2OfReal const* Weights, TColStd_Array1OfReal* FP, bool UDirection) {
+extern "C" const char* BSplSLib_set_poles_arr2_pnt_arr2_double_arr1_double_bool(NCollection_Array2_gp_Pnt const* Poles, NCollection_Array2_double const* Weights, NCollection_Array1_double* FP, bool UDirection) {
     try { BSplSLib::SetPoles(*Poles, *Weights, *FP, UDirection); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* BSplSLib_get_poles_array1ofreal_array2ofpnt_bool(TColStd_Array1OfReal const* FP, TColgp_Array2OfPnt* Poles, bool UDirection) {
+extern "C" const char* BSplSLib_get_poles_arr1_double_arr2_pnt_bool(NCollection_Array1_double const* FP, NCollection_Array2_gp_Pnt* Poles, bool UDirection) {
     try { BSplSLib::GetPoles(*FP, *Poles, UDirection); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* BSplSLib_get_poles_array1ofreal_array2ofpnt_array2ofreal_bool(TColStd_Array1OfReal const* FP, TColgp_Array2OfPnt* Poles, TColStd_Array2OfReal* Weights, bool UDirection) {
+extern "C" const char* BSplSLib_get_poles_arr1_double_arr2_pnt_arr2_double_bool(NCollection_Array1_double const* FP, NCollection_Array2_gp_Pnt* Poles, NCollection_Array2_double* Weights, bool UDirection) {
     try { BSplSLib::GetPoles(*FP, *Poles, *Weights, UDirection); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* BSplSLib_move_point_real2_vec_int6_bool_array2ofpnt_array2ofreal_array1ofreal2_int4_array2ofpnt(double U, double V, gp_Vec const* Displ, int32_t UIndex1, int32_t UIndex2, int32_t VIndex1, int32_t VIndex2, int32_t UDegree, int32_t VDegree, bool Rational, TColgp_Array2OfPnt const* Poles, TColStd_Array2OfReal const* Weights, TColStd_Array1OfReal const* UFlatKnots, TColStd_Array1OfReal const* VFlatKnots, int32_t* UFirstIndex, int32_t* ULastIndex, int32_t* VFirstIndex, int32_t* VLastIndex, TColgp_Array2OfPnt* NewPoles) {
+extern "C" const char* BSplSLib_move_point_real2_vec_int6_bool_arr2_pnt_arr2_double_arr1_double2_int4_arr2_pnt(double U, double V, gp_Vec const* Displ, int32_t UIndex1, int32_t UIndex2, int32_t VIndex1, int32_t VIndex2, int32_t UDegree, int32_t VDegree, bool Rational, NCollection_Array2_gp_Pnt const* Poles, NCollection_Array2_double const* Weights, NCollection_Array1_double const* UFlatKnots, NCollection_Array1_double const* VFlatKnots, int32_t* UFirstIndex, int32_t* ULastIndex, int32_t* VFirstIndex, int32_t* VLastIndex, NCollection_Array2_gp_Pnt* NewPoles) {
     try { BSplSLib::MovePoint(U, V, *Displ, UIndex1, UIndex2, VIndex1, VIndex2, UDegree, VDegree, Rational, *Poles, *Weights, *UFlatKnots, *VFlatKnots, *UFirstIndex, *ULastIndex, *VFirstIndex, *VLastIndex, *NewPoles); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* BSplSLib_insert_knots_bool_int_bool_array2ofpnt_array2ofrealptr_array1ofreal_array1ofinteger_array1ofreal_array1ofintegerptr_array2ofpnt_array2ofrealptr_array1ofreal_array1ofinteger_real_bool(bool UDirection, int32_t Degree, bool Periodic, TColgp_Array2OfPnt const* Poles, const TColStd_Array2OfReal* Weights, TColStd_Array1OfReal const* Knots, TColStd_Array1OfInteger const* Mults, TColStd_Array1OfReal const* AddKnots, const TColStd_Array1OfInteger* AddMults, TColgp_Array2OfPnt* NewPoles, TColStd_Array2OfReal* NewWeights, TColStd_Array1OfReal* NewKnots, TColStd_Array1OfInteger* NewMults, double Epsilon, bool Add) {
+extern "C" const char* BSplSLib_insert_knots_bool_int_bool_arr2_pnt_arr2_doubleptr_arr1_double_arr1_int_arr1_double_arr1_intptr_arr2_pnt_arr2_doubleptr_arr1_double_arr1_int_real_bool(bool UDirection, int32_t Degree, bool Periodic, NCollection_Array2_gp_Pnt const* Poles, const NCollection_Array2_double* Weights, NCollection_Array1_double const* Knots, NCollection_Array1_int const* Mults, NCollection_Array1_double const* AddKnots, const NCollection_Array1_int* AddMults, NCollection_Array2_gp_Pnt* NewPoles, NCollection_Array2_double* NewWeights, NCollection_Array1_double* NewKnots, NCollection_Array1_int* NewMults, double Epsilon, bool Add) {
     try { BSplSLib::InsertKnots(UDirection, Degree, Periodic, *Poles, Weights, *Knots, *Mults, *AddKnots, AddMults, *NewPoles, NewWeights, *NewKnots, *NewMults, Epsilon, Add); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<bool> BSplSLib_remove_knot_bool_int3_bool_array2ofpnt_array2ofrealptr_array1ofreal_array1ofinteger_array2ofpnt_array2ofrealptr_array1ofreal_array1ofinteger_real(bool UDirection, int32_t Index, int32_t Mult, int32_t Degree, bool Periodic, TColgp_Array2OfPnt const* Poles, const TColStd_Array2OfReal* Weights, TColStd_Array1OfReal const* Knots, TColStd_Array1OfInteger const* Mults, TColgp_Array2OfPnt* NewPoles, TColStd_Array2OfReal* NewWeights, TColStd_Array1OfReal* NewKnots, TColStd_Array1OfInteger* NewMults, double Tolerance) {
+extern "C" OcctResult<bool> BSplSLib_remove_knot_bool_int3_bool_arr2_pnt_arr2_doubleptr_arr1_double_arr1_int_arr2_pnt_arr2_doubleptr_arr1_double_arr1_int_real(bool UDirection, int32_t Index, int32_t Mult, int32_t Degree, bool Periodic, NCollection_Array2_gp_Pnt const* Poles, const NCollection_Array2_double* Weights, NCollection_Array1_double const* Knots, NCollection_Array1_int const* Mults, NCollection_Array2_gp_Pnt* NewPoles, NCollection_Array2_double* NewWeights, NCollection_Array1_double* NewKnots, NCollection_Array1_int* NewMults, double Tolerance) {
     try { return {BSplSLib::RemoveKnot(UDirection, Index, Mult, Degree, Periodic, *Poles, Weights, *Knots, *Mults, *NewPoles, NewWeights, *NewKnots, *NewMults, Tolerance), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* BSplSLib_increase_degree_bool_int2_bool_array2ofpnt_array2ofrealptr_array1ofreal_array1ofinteger_array2ofpnt_array2ofrealptr_array1ofreal_array1ofinteger(bool UDirection, int32_t Degree, int32_t NewDegree, bool Periodic, TColgp_Array2OfPnt const* Poles, const TColStd_Array2OfReal* Weights, TColStd_Array1OfReal const* Knots, TColStd_Array1OfInteger const* Mults, TColgp_Array2OfPnt* NewPoles, TColStd_Array2OfReal* NewWeights, TColStd_Array1OfReal* NewKnots, TColStd_Array1OfInteger* NewMults) {
+extern "C" const char* BSplSLib_increase_degree_bool_int2_bool_arr2_pnt_arr2_doubleptr_arr1_double_arr1_int_arr2_pnt_arr2_doubleptr_arr1_double_arr1_int(bool UDirection, int32_t Degree, int32_t NewDegree, bool Periodic, NCollection_Array2_gp_Pnt const* Poles, const NCollection_Array2_double* Weights, NCollection_Array1_double const* Knots, NCollection_Array1_int const* Mults, NCollection_Array2_gp_Pnt* NewPoles, NCollection_Array2_double* NewWeights, NCollection_Array1_double* NewKnots, NCollection_Array1_int* NewMults) {
     try { BSplSLib::IncreaseDegree(UDirection, Degree, NewDegree, Periodic, *Poles, Weights, *Knots, *Mults, *NewPoles, NewWeights, *NewKnots, *NewMults); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* BSplSLib_unperiodize_bool_int_array1ofinteger_array1ofreal_array2ofpnt_array2ofrealptr_array1ofinteger_array1ofreal_array2ofpnt_array2ofrealptr(bool UDirection, int32_t Degree, TColStd_Array1OfInteger const* Mults, TColStd_Array1OfReal const* Knots, TColgp_Array2OfPnt const* Poles, const TColStd_Array2OfReal* Weights, TColStd_Array1OfInteger* NewMults, TColStd_Array1OfReal* NewKnots, TColgp_Array2OfPnt* NewPoles, TColStd_Array2OfReal* NewWeights) {
+extern "C" const char* BSplSLib_unperiodize_bool_int_arr1_int_arr1_double_arr2_pnt_arr2_doubleptr_arr1_int_arr1_double_arr2_pnt_arr2_doubleptr(bool UDirection, int32_t Degree, NCollection_Array1_int const* Mults, NCollection_Array1_double const* Knots, NCollection_Array2_gp_Pnt const* Poles, const NCollection_Array2_double* Weights, NCollection_Array1_int* NewMults, NCollection_Array1_double* NewKnots, NCollection_Array2_gp_Pnt* NewPoles, NCollection_Array2_double* NewWeights) {
     try { BSplSLib::Unperiodize(UDirection, Degree, *Mults, *Knots, *Poles, Weights, *NewMults, *NewKnots, *NewPoles, NewWeights); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<TColStd_Array2OfReal*> BSplSLib_no_weights() {
+extern "C" OcctResult<NCollection_Array2_double*> BSplSLib_no_weights() {
     try { return {BSplSLib::NoWeights(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* BSplSLib_build_cache_real4_bool2_int4_array1ofreal2_array2ofpnt_array2ofrealptr_array2ofpnt_array2ofrealptr(double U, double V, double USpanDomain, double VSpanDomain, bool UPeriodicFlag, bool VPeriodicFlag, int32_t UDegree, int32_t VDegree, int32_t UIndex, int32_t VIndex, TColStd_Array1OfReal const* UFlatKnots, TColStd_Array1OfReal const* VFlatKnots, TColgp_Array2OfPnt const* Poles, const TColStd_Array2OfReal* Weights, TColgp_Array2OfPnt* CachePoles, TColStd_Array2OfReal* CacheWeights) {
+extern "C" const char* BSplSLib_build_cache_real4_bool2_int4_arr1_double2_arr2_pnt_arr2_doubleptr_arr2_pnt_arr2_doubleptr(double U, double V, double USpanDomain, double VSpanDomain, bool UPeriodicFlag, bool VPeriodicFlag, int32_t UDegree, int32_t VDegree, int32_t UIndex, int32_t VIndex, NCollection_Array1_double const* UFlatKnots, NCollection_Array1_double const* VFlatKnots, NCollection_Array2_gp_Pnt const* Poles, const NCollection_Array2_double* Weights, NCollection_Array2_gp_Pnt* CachePoles, NCollection_Array2_double* CacheWeights) {
     try { BSplSLib::BuildCache(U, V, USpanDomain, VSpanDomain, UPeriodicFlag, VPeriodicFlag, UDegree, VDegree, UIndex, VIndex, *UFlatKnots, *VFlatKnots, *Poles, Weights, *CachePoles, CacheWeights); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* BSplSLib_build_cache_real4_bool2_int4_array1ofreal2_array2ofpnt_array2ofrealptr_array2ofreal(double theU, double theV, double theUSpanDomain, double theVSpanDomain, bool theUPeriodic, bool theVPeriodic, int32_t theUDegree, int32_t theVDegree, int32_t theUIndex, int32_t theVIndex, TColStd_Array1OfReal const* theUFlatKnots, TColStd_Array1OfReal const* theVFlatKnots, TColgp_Array2OfPnt const* thePoles, const TColStd_Array2OfReal* theWeights, TColStd_Array2OfReal* theCacheArray) {
+extern "C" const char* BSplSLib_build_cache_real4_bool2_int4_arr1_double2_arr2_pnt_arr2_doubleptr_arr2_double(double theU, double theV, double theUSpanDomain, double theVSpanDomain, bool theUPeriodic, bool theVPeriodic, int32_t theUDegree, int32_t theVDegree, int32_t theUIndex, int32_t theVIndex, NCollection_Array1_double const* theUFlatKnots, NCollection_Array1_double const* theVFlatKnots, NCollection_Array2_gp_Pnt const* thePoles, const NCollection_Array2_double* theWeights, NCollection_Array2_double* theCacheArray) {
     try { BSplSLib::BuildCache(theU, theV, theUSpanDomain, theVSpanDomain, theUPeriodic, theVPeriodic, theUDegree, theVDegree, theUIndex, theVIndex, *theUFlatKnots, *theVFlatKnots, *thePoles, theWeights, *theCacheArray); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* BSplSLib_cache_d0_real2_int2_real4_array2ofpnt_array2ofrealptr_pnt(double U, double V, int32_t UDegree, int32_t VDegree, double UCacheParameter, double VCacheParameter, double USpanLenght, double VSpanLength, TColgp_Array2OfPnt const* Poles, const TColStd_Array2OfReal* Weights, gp_Pnt* Point) {
+extern "C" const char* BSplSLib_cache_d0_real2_int2_real4_arr2_pnt_arr2_doubleptr_pnt(double U, double V, int32_t UDegree, int32_t VDegree, double UCacheParameter, double VCacheParameter, double USpanLenght, double VSpanLength, NCollection_Array2_gp_Pnt const* Poles, const NCollection_Array2_double* Weights, gp_Pnt* Point) {
     try { BSplSLib::CacheD0(U, V, UDegree, VDegree, UCacheParameter, VCacheParameter, USpanLenght, VSpanLength, *Poles, Weights, *Point); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* BSplSLib_coefs_d0_real2_array2ofpnt_array2ofrealptr_pnt(double U, double V, TColgp_Array2OfPnt const* Poles, const TColStd_Array2OfReal* Weights, gp_Pnt* Point) {
+extern "C" const char* BSplSLib_coefs_d0_real2_arr2_pnt_arr2_doubleptr_pnt(double U, double V, NCollection_Array2_gp_Pnt const* Poles, const NCollection_Array2_double* Weights, gp_Pnt* Point) {
     try { BSplSLib::CoefsD0(U, V, *Poles, Weights, *Point); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* BSplSLib_cache_d1_real2_int2_real4_array2ofpnt_array2ofrealptr_pnt_vec2(double U, double V, int32_t UDegree, int32_t VDegree, double UCacheParameter, double VCacheParameter, double USpanLenght, double VSpanLength, TColgp_Array2OfPnt const* Poles, const TColStd_Array2OfReal* Weights, gp_Pnt* Point, gp_Vec* VecU, gp_Vec* VecV) {
+extern "C" const char* BSplSLib_cache_d1_real2_int2_real4_arr2_pnt_arr2_doubleptr_pnt_vec2(double U, double V, int32_t UDegree, int32_t VDegree, double UCacheParameter, double VCacheParameter, double USpanLenght, double VSpanLength, NCollection_Array2_gp_Pnt const* Poles, const NCollection_Array2_double* Weights, gp_Pnt* Point, gp_Vec* VecU, gp_Vec* VecV) {
     try { BSplSLib::CacheD1(U, V, UDegree, VDegree, UCacheParameter, VCacheParameter, USpanLenght, VSpanLength, *Poles, Weights, *Point, *VecU, *VecV); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* BSplSLib_coefs_d1_real2_array2ofpnt_array2ofrealptr_pnt_vec2(double U, double V, TColgp_Array2OfPnt const* Poles, const TColStd_Array2OfReal* Weights, gp_Pnt* Point, gp_Vec* VecU, gp_Vec* VecV) {
+extern "C" const char* BSplSLib_coefs_d1_real2_arr2_pnt_arr2_doubleptr_pnt_vec2(double U, double V, NCollection_Array2_gp_Pnt const* Poles, const NCollection_Array2_double* Weights, gp_Pnt* Point, gp_Vec* VecU, gp_Vec* VecV) {
     try { BSplSLib::CoefsD1(U, V, *Poles, Weights, *Point, *VecU, *VecV); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* BSplSLib_cache_d2_real2_int2_real4_array2ofpnt_array2ofrealptr_pnt_vec5(double U, double V, int32_t UDegree, int32_t VDegree, double UCacheParameter, double VCacheParameter, double USpanLenght, double VSpanLength, TColgp_Array2OfPnt const* Poles, const TColStd_Array2OfReal* Weights, gp_Pnt* Point, gp_Vec* VecU, gp_Vec* VecV, gp_Vec* VecUU, gp_Vec* VecUV, gp_Vec* VecVV) {
+extern "C" const char* BSplSLib_cache_d2_real2_int2_real4_arr2_pnt_arr2_doubleptr_pnt_vec5(double U, double V, int32_t UDegree, int32_t VDegree, double UCacheParameter, double VCacheParameter, double USpanLenght, double VSpanLength, NCollection_Array2_gp_Pnt const* Poles, const NCollection_Array2_double* Weights, gp_Pnt* Point, gp_Vec* VecU, gp_Vec* VecV, gp_Vec* VecUU, gp_Vec* VecUV, gp_Vec* VecVV) {
     try { BSplSLib::CacheD2(U, V, UDegree, VDegree, UCacheParameter, VCacheParameter, USpanLenght, VSpanLength, *Poles, Weights, *Point, *VecU, *VecV, *VecUU, *VecUV, *VecVV); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* BSplSLib_coefs_d2_real2_array2ofpnt_array2ofrealptr_pnt_vec5(double U, double V, TColgp_Array2OfPnt const* Poles, const TColStd_Array2OfReal* Weights, gp_Pnt* Point, gp_Vec* VecU, gp_Vec* VecV, gp_Vec* VecUU, gp_Vec* VecUV, gp_Vec* VecVV) {
+extern "C" const char* BSplSLib_coefs_d2_real2_arr2_pnt_arr2_doubleptr_pnt_vec5(double U, double V, NCollection_Array2_gp_Pnt const* Poles, const NCollection_Array2_double* Weights, gp_Pnt* Point, gp_Vec* VecU, gp_Vec* VecV, gp_Vec* VecUU, gp_Vec* VecUV, gp_Vec* VecVV) {
     try { BSplSLib::CoefsD2(U, V, *Poles, Weights, *Point, *VecU, *VecV, *VecUU, *VecUV, *VecVV); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* BSplSLib_poles_coefficients_array2ofpnt2(TColgp_Array2OfPnt const* Poles, TColgp_Array2OfPnt* CachePoles) {
+extern "C" const char* BSplSLib_poles_coefficients_arr2_pnt2(NCollection_Array2_gp_Pnt const* Poles, NCollection_Array2_gp_Pnt* CachePoles) {
     try { BSplSLib::PolesCoefficients(*Poles, *CachePoles); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* BSplSLib_poles_coefficients_array2ofpnt_array2ofrealptr_array2ofpnt_array2ofrealptr(TColgp_Array2OfPnt const* Poles, const TColStd_Array2OfReal* Weights, TColgp_Array2OfPnt* CachePoles, TColStd_Array2OfReal* CacheWeights) {
+extern "C" const char* BSplSLib_poles_coefficients_arr2_pnt_arr2_doubleptr_arr2_pnt_arr2_doubleptr(NCollection_Array2_gp_Pnt const* Poles, const NCollection_Array2_double* Weights, NCollection_Array2_gp_Pnt* CachePoles, NCollection_Array2_double* CacheWeights) {
     try { BSplSLib::PolesCoefficients(*Poles, Weights, *CachePoles, CacheWeights); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* BSplSLib_resolution_array2ofpnt_array2ofrealptr_array1ofreal2_array1ofinteger2_int2_bool4_real3(TColgp_Array2OfPnt const* Poles, const TColStd_Array2OfReal* Weights, TColStd_Array1OfReal const* UKnots, TColStd_Array1OfReal const* VKnots, TColStd_Array1OfInteger const* UMults, TColStd_Array1OfInteger const* VMults, int32_t UDegree, int32_t VDegree, bool URat, bool VRat, bool UPer, bool VPer, double Tolerance3D, double* UTolerance, double* VTolerance) {
+extern "C" const char* BSplSLib_resolution_arr2_pnt_arr2_doubleptr_arr1_double2_arr1_int2_int2_bool4_real3(NCollection_Array2_gp_Pnt const* Poles, const NCollection_Array2_double* Weights, NCollection_Array1_double const* UKnots, NCollection_Array1_double const* VKnots, NCollection_Array1_int const* UMults, NCollection_Array1_int const* VMults, int32_t UDegree, int32_t VDegree, bool URat, bool VRat, bool UPer, bool VPer, double Tolerance3D, double* UTolerance, double* VTolerance) {
     try { BSplSLib::Resolution(*Poles, Weights, *UKnots, *VKnots, *UMults, *VMults, UDegree, VDegree, URat, VRat, UPer, VPer, Tolerance3D, *UTolerance, *VTolerance); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* BSplSLib_interpolate_int2_array1ofreal4_array2ofpnt_array2ofreal_int(int32_t UDegree, int32_t VDegree, TColStd_Array1OfReal const* UFlatKnots, TColStd_Array1OfReal const* VFlatKnots, TColStd_Array1OfReal const* UParameters, TColStd_Array1OfReal const* VParameters, TColgp_Array2OfPnt* Poles, TColStd_Array2OfReal* Weights, int32_t* InversionProblem) {
+extern "C" const char* BSplSLib_interpolate_int2_arr1_double4_arr2_pnt_arr2_double_int(int32_t UDegree, int32_t VDegree, NCollection_Array1_double const* UFlatKnots, NCollection_Array1_double const* VFlatKnots, NCollection_Array1_double const* UParameters, NCollection_Array1_double const* VParameters, NCollection_Array2_gp_Pnt* Poles, NCollection_Array2_double* Weights, int32_t* InversionProblem) {
     try { BSplSLib::Interpolate(UDegree, VDegree, *UFlatKnots, *VFlatKnots, *UParameters, *VParameters, *Poles, *Weights, *InversionProblem); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* BSplSLib_interpolate_int2_array1ofreal4_array2ofpnt_int(int32_t UDegree, int32_t VDegree, TColStd_Array1OfReal const* UFlatKnots, TColStd_Array1OfReal const* VFlatKnots, TColStd_Array1OfReal const* UParameters, TColStd_Array1OfReal const* VParameters, TColgp_Array2OfPnt* Poles, int32_t* InversionProblem) {
+extern "C" const char* BSplSLib_interpolate_int2_arr1_double4_arr2_pnt_int(int32_t UDegree, int32_t VDegree, NCollection_Array1_double const* UFlatKnots, NCollection_Array1_double const* VFlatKnots, NCollection_Array1_double const* UParameters, NCollection_Array1_double const* VParameters, NCollection_Array2_gp_Pnt* Poles, int32_t* InversionProblem) {
     try { BSplSLib::Interpolate(UDegree, VDegree, *UFlatKnots, *VFlatKnots, *UParameters, *VParameters, *Poles, *InversionProblem); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* BSplSLib_function_multiply_evaluatorfunction_int2_array1ofreal2_array1ofintegerptr2_array2ofpnt_array2ofrealptr_array1ofreal2_int2_array2ofpnt_array2ofreal_int(BSplSLib_EvaluatorFunction const* Function, int32_t UBSplineDegree, int32_t VBSplineDegree, TColStd_Array1OfReal const* UBSplineKnots, TColStd_Array1OfReal const* VBSplineKnots, const TColStd_Array1OfInteger* UMults, const TColStd_Array1OfInteger* VMults, TColgp_Array2OfPnt const* Poles, const TColStd_Array2OfReal* Weights, TColStd_Array1OfReal const* UFlatKnots, TColStd_Array1OfReal const* VFlatKnots, int32_t UNewDegree, int32_t VNewDegree, TColgp_Array2OfPnt* NewNumerator, TColStd_Array2OfReal* NewDenominator, int32_t* theStatus) {
+extern "C" const char* BSplSLib_function_multiply_evaluatorfunction_int2_arr1_double2_arr1_intptr2_arr2_pnt_arr2_doubleptr_arr1_double2_int2_arr2_pnt_arr2_double_int(BSplSLib_EvaluatorFunction const* Function, int32_t UBSplineDegree, int32_t VBSplineDegree, NCollection_Array1_double const* UBSplineKnots, NCollection_Array1_double const* VBSplineKnots, const NCollection_Array1_int* UMults, const NCollection_Array1_int* VMults, NCollection_Array2_gp_Pnt const* Poles, const NCollection_Array2_double* Weights, NCollection_Array1_double const* UFlatKnots, NCollection_Array1_double const* VFlatKnots, int32_t UNewDegree, int32_t VNewDegree, NCollection_Array2_gp_Pnt* NewNumerator, NCollection_Array2_double* NewDenominator, int32_t* theStatus) {
     try { BSplSLib::FunctionMultiply(*Function, UBSplineDegree, VBSplineDegree, *UBSplineKnots, *VBSplineKnots, UMults, VMults, *Poles, Weights, *UFlatKnots, *VFlatKnots, UNewDegree, VNewDegree, *NewNumerator, *NewDenominator, *theStatus); return nullptr; }
     OCCT_CATCH_RETURN_VOID
+}
+extern "C" OcctResult<NCollection_Array2_double*> BSplSLib_unit_weights_int2(int32_t theNbUPoles, int32_t theNbVPoles) {
+    try { return {new NCollection_Array2_double(BSplSLib::UnitWeights(theNbUPoles, theNbVPoles)), nullptr}; }
+    OCCT_CATCH_RETURN
+}
+
+// ========================
+// BVH namespace functions
+// ========================
+extern "C" OcctResult<uint32_t> BVH_encode_morton_code(uint32_t theVoxelX, uint32_t theVoxelY, uint32_t theVoxelZ) {
+    try { return {BVH::EncodeMortonCode(theVoxelX, theVoxelY, theVoxelZ), nullptr}; }
+    OCCT_CATCH_RETURN
 }
 
 // ========================
 // CSLib namespace functions
 // ========================
-extern "C" OcctResult<gp_Vec*> CSLib_dnnuv_int2_array2ofvec(int32_t Nu, int32_t Nv, TColgp_Array2OfVec const* DerSurf) {
-    try { return {new gp_Vec(CSLib::DNNUV(Nu, Nv, *DerSurf)), nullptr}; }
+extern "C" OcctResult<gp_Vec*> CSLib_dnnuv_int2_arr2_vec(int32_t theNu, int32_t theNv, NCollection_Array2_gp_Vec const* theDerSurf) {
+    try { return {new gp_Vec(CSLib::DNNUV(theNu, theNv, *theDerSurf)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<gp_Vec*> CSLib_dnnuv_int2_array2ofvec2(int32_t Nu, int32_t Nv, TColgp_Array2OfVec const* DerSurf1, TColgp_Array2OfVec const* DerSurf2) {
-    try { return {new gp_Vec(CSLib::DNNUV(Nu, Nv, *DerSurf1, *DerSurf2)), nullptr}; }
+extern "C" OcctResult<gp_Vec*> CSLib_dnnuv_int2_arr2_vec2(int32_t theNu, int32_t theNv, NCollection_Array2_gp_Vec const* theDerSurf1, NCollection_Array2_gp_Vec const* theDerSurf2) {
+    try { return {new gp_Vec(CSLib::DNNUV(theNu, theNv, *theDerSurf1, *theDerSurf2)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<gp_Vec*> CSLib_dn_normal(int32_t Nu, int32_t Nv, TColgp_Array2OfVec const* DerNUV, int32_t Iduref, int32_t Idvref) {
-    try { return {new gp_Vec(CSLib::DNNormal(Nu, Nv, *DerNUV, Iduref, Idvref)), nullptr}; }
+extern "C" OcctResult<gp_Vec*> CSLib_dn_normal(int32_t theNu, int32_t theNv, NCollection_Array2_gp_Vec const* theDerNUV, int32_t theIduref, int32_t theIdvref) {
+    try { return {new gp_Vec(CSLib::DNNormal(theNu, theNv, *theDerNUV, theIduref, theIdvref)), nullptr}; }
     OCCT_CATCH_RETURN
 }
 
@@ -18032,43 +14011,43 @@ extern "C" OcctResult<gp_Circ*> ElSLib_torus_v_iso(gp_Ax3 const* Pos, double Maj
 // ========================
 // PLib namespace functions
 // ========================
-extern "C" OcctResult<TColStd_Array1OfReal*> PLib_no_weights() {
+extern "C" OcctResult<NCollection_Array1_double*> PLib_no_weights() {
     try { return {PLib::NoWeights(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TColStd_Array2OfReal*> PLib_no_weights2() {
+extern "C" OcctResult<NCollection_Array2_double*> PLib_no_weights2() {
     try { return {PLib::NoWeights2(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* PLib_set_poles_array1ofpnt_array1ofreal(TColgp_Array1OfPnt const* Poles, TColStd_Array1OfReal* FP) {
+extern "C" const char* PLib_set_poles_arr1_pnt_arr1_double(NCollection_Array1_gp_Pnt const* Poles, NCollection_Array1_double* FP) {
     try { PLib::SetPoles(*Poles, *FP); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* PLib_set_poles_array1ofpnt_array1ofreal2(TColgp_Array1OfPnt const* Poles, TColStd_Array1OfReal const* Weights, TColStd_Array1OfReal* FP) {
+extern "C" const char* PLib_set_poles_arr1_pnt_arr1_double2(NCollection_Array1_gp_Pnt const* Poles, NCollection_Array1_double const* Weights, NCollection_Array1_double* FP) {
     try { PLib::SetPoles(*Poles, *Weights, *FP); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* PLib_get_poles_array1ofreal_array1ofpnt(TColStd_Array1OfReal const* FP, TColgp_Array1OfPnt* Poles) {
+extern "C" const char* PLib_get_poles_arr1_double_arr1_pnt(NCollection_Array1_double const* FP, NCollection_Array1_gp_Pnt* Poles) {
     try { PLib::GetPoles(*FP, *Poles); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* PLib_get_poles_array1ofreal_array1ofpnt_array1ofreal(TColStd_Array1OfReal const* FP, TColgp_Array1OfPnt* Poles, TColStd_Array1OfReal* Weights) {
+extern "C" const char* PLib_get_poles_arr1_double_arr1_pnt_arr1_double(NCollection_Array1_double const* FP, NCollection_Array1_gp_Pnt* Poles, NCollection_Array1_double* Weights) {
     try { PLib::GetPoles(*FP, *Poles, *Weights); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* PLib_set_poles_array1ofpnt2d_array1ofreal(TColgp_Array1OfPnt2d const* Poles, TColStd_Array1OfReal* FP) {
+extern "C" const char* PLib_set_poles_arr1_pnt2d_arr1_double(NCollection_Array1_gp_Pnt2d const* Poles, NCollection_Array1_double* FP) {
     try { PLib::SetPoles(*Poles, *FP); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* PLib_set_poles_array1ofpnt2d_array1ofreal2(TColgp_Array1OfPnt2d const* Poles, TColStd_Array1OfReal const* Weights, TColStd_Array1OfReal* FP) {
+extern "C" const char* PLib_set_poles_arr1_pnt2d_arr1_double2(NCollection_Array1_gp_Pnt2d const* Poles, NCollection_Array1_double const* Weights, NCollection_Array1_double* FP) {
     try { PLib::SetPoles(*Poles, *Weights, *FP); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* PLib_get_poles_array1ofreal_array1ofpnt2d(TColStd_Array1OfReal const* FP, TColgp_Array1OfPnt2d* Poles) {
+extern "C" const char* PLib_get_poles_arr1_double_arr1_pnt2d(NCollection_Array1_double const* FP, NCollection_Array1_gp_Pnt2d* Poles) {
     try { PLib::GetPoles(*FP, *Poles); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* PLib_get_poles_array1ofreal_array1ofpnt2d_array1ofreal(TColStd_Array1OfReal const* FP, TColgp_Array1OfPnt2d* Poles, TColStd_Array1OfReal* Weights) {
+extern "C" const char* PLib_get_poles_arr1_double_arr1_pnt2d_arr1_double(NCollection_Array1_double const* FP, NCollection_Array1_gp_Pnt2d* Poles, NCollection_Array1_double* Weights) {
     try { PLib::GetPoles(*FP, *Poles, *Weights); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -18084,11 +14063,11 @@ extern "C" const char* PLib_rational_derivatives(int32_t DerivativesRequest, int
     try { PLib::RationalDerivatives(DerivativesRequest, Dimension, *PolesDerivatives, *WeightsDerivatives, *RationalDerivates); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* PLib_eval_polynomial(double U, int32_t DerivativeOrder, int32_t Degree, int32_t Dimension, double* PolynomialCoeff, double* Results) {
+extern "C" const char* PLib_eval_polynomial(double U, int32_t DerivativeOrder, int32_t Degree, int32_t Dimension, double const* PolynomialCoeff, double* Results) {
     try { PLib::EvalPolynomial(U, DerivativeOrder, Degree, Dimension, *PolynomialCoeff, *Results); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* PLib_no_derivative_eval_polynomial(double U, int32_t Degree, int32_t Dimension, int32_t DegreeDimension, double* PolynomialCoeff, double* Results) {
+extern "C" const char* PLib_no_derivative_eval_polynomial(double U, int32_t Degree, int32_t Dimension, int32_t DegreeDimension, double const* PolynomialCoeff, double* Results) {
     try { PLib::NoDerivativeEvalPolynomial(U, Degree, Dimension, DegreeDimension, *PolynomialCoeff, *Results); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -18108,51 +14087,51 @@ extern "C" OcctResult<bool> PLib_hermite_coefficients(double FirstParameter, dou
     try { return {PLib::HermiteCoefficients(FirstParameter, LastParameter, FirstOrder, LastOrder, *MatrixCoefs), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* PLib_coefficients_poles_array1ofpnt_array1ofrealptr_array1ofpnt_array1ofrealptr(TColgp_Array1OfPnt const* Coefs, const TColStd_Array1OfReal* WCoefs, TColgp_Array1OfPnt* Poles, TColStd_Array1OfReal* WPoles) {
+extern "C" const char* PLib_coefficients_poles_arr1_pnt_arr1_doubleptr_arr1_pnt_arr1_doubleptr(NCollection_Array1_gp_Pnt const* Coefs, const NCollection_Array1_double* WCoefs, NCollection_Array1_gp_Pnt* Poles, NCollection_Array1_double* WPoles) {
     try { PLib::CoefficientsPoles(*Coefs, WCoefs, *Poles, WPoles); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* PLib_coefficients_poles_array1ofpnt2d_array1ofrealptr_array1ofpnt2d_array1ofrealptr(TColgp_Array1OfPnt2d const* Coefs, const TColStd_Array1OfReal* WCoefs, TColgp_Array1OfPnt2d* Poles, TColStd_Array1OfReal* WPoles) {
+extern "C" const char* PLib_coefficients_poles_arr1_pnt2d_arr1_doubleptr_arr1_pnt2d_arr1_doubleptr(NCollection_Array1_gp_Pnt2d const* Coefs, const NCollection_Array1_double* WCoefs, NCollection_Array1_gp_Pnt2d* Poles, NCollection_Array1_double* WPoles) {
     try { PLib::CoefficientsPoles(*Coefs, WCoefs, *Poles, WPoles); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* PLib_coefficients_poles_array1ofreal_array1ofrealptr_array1ofreal_array1ofrealptr(TColStd_Array1OfReal const* Coefs, const TColStd_Array1OfReal* WCoefs, TColStd_Array1OfReal* Poles, TColStd_Array1OfReal* WPoles) {
+extern "C" const char* PLib_coefficients_poles_arr1_double_arr1_doubleptr_arr1_double_arr1_doubleptr(NCollection_Array1_double const* Coefs, const NCollection_Array1_double* WCoefs, NCollection_Array1_double* Poles, NCollection_Array1_double* WPoles) {
     try { PLib::CoefficientsPoles(*Coefs, WCoefs, *Poles, WPoles); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* PLib_coefficients_poles_int_array1ofreal_array1ofrealptr_array1ofreal_array1ofrealptr(int32_t dim, TColStd_Array1OfReal const* Coefs, const TColStd_Array1OfReal* WCoefs, TColStd_Array1OfReal* Poles, TColStd_Array1OfReal* WPoles) {
+extern "C" const char* PLib_coefficients_poles_int_arr1_double_arr1_doubleptr_arr1_double_arr1_doubleptr(int32_t dim, NCollection_Array1_double const* Coefs, const NCollection_Array1_double* WCoefs, NCollection_Array1_double* Poles, NCollection_Array1_double* WPoles) {
     try { PLib::CoefficientsPoles(dim, *Coefs, WCoefs, *Poles, WPoles); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* PLib_trimming_real2_array1ofpnt_array1ofrealptr(double U1, double U2, TColgp_Array1OfPnt* Coeffs, TColStd_Array1OfReal* WCoeffs) {
+extern "C" const char* PLib_trimming_real2_arr1_pnt_arr1_doubleptr(double U1, double U2, NCollection_Array1_gp_Pnt* Coeffs, NCollection_Array1_double* WCoeffs) {
     try { PLib::Trimming(U1, U2, *Coeffs, WCoeffs); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* PLib_trimming_real2_array1ofpnt2d_array1ofrealptr(double U1, double U2, TColgp_Array1OfPnt2d* Coeffs, TColStd_Array1OfReal* WCoeffs) {
+extern "C" const char* PLib_trimming_real2_arr1_pnt2d_arr1_doubleptr(double U1, double U2, NCollection_Array1_gp_Pnt2d* Coeffs, NCollection_Array1_double* WCoeffs) {
     try { PLib::Trimming(U1, U2, *Coeffs, WCoeffs); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* PLib_trimming_real2_array1ofreal_array1ofrealptr(double U1, double U2, TColStd_Array1OfReal* Coeffs, TColStd_Array1OfReal* WCoeffs) {
+extern "C" const char* PLib_trimming_real2_arr1_double_arr1_doubleptr(double U1, double U2, NCollection_Array1_double* Coeffs, NCollection_Array1_double* WCoeffs) {
     try { PLib::Trimming(U1, U2, *Coeffs, WCoeffs); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* PLib_trimming_real2_int_array1ofreal_array1ofrealptr(double U1, double U2, int32_t dim, TColStd_Array1OfReal* Coeffs, TColStd_Array1OfReal* WCoeffs) {
+extern "C" const char* PLib_trimming_real2_int_arr1_double_arr1_doubleptr(double U1, double U2, int32_t dim, NCollection_Array1_double* Coeffs, NCollection_Array1_double* WCoeffs) {
     try { PLib::Trimming(U1, U2, dim, *Coeffs, WCoeffs); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* PLib_coefficients_poles_array2ofpnt_array2ofrealptr_array2ofpnt_array2ofrealptr(TColgp_Array2OfPnt const* Coefs, const TColStd_Array2OfReal* WCoefs, TColgp_Array2OfPnt* Poles, TColStd_Array2OfReal* WPoles) {
+extern "C" const char* PLib_coefficients_poles_arr2_pnt_arr2_doubleptr_arr2_pnt_arr2_doubleptr(NCollection_Array2_gp_Pnt const* Coefs, const NCollection_Array2_double* WCoefs, NCollection_Array2_gp_Pnt* Poles, NCollection_Array2_double* WPoles) {
     try { PLib::CoefficientsPoles(*Coefs, WCoefs, *Poles, WPoles); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* PLib_u_trimming(double U1, double U2, TColgp_Array2OfPnt* Coeffs, TColStd_Array2OfReal* WCoeffs) {
+extern "C" const char* PLib_u_trimming(double U1, double U2, NCollection_Array2_gp_Pnt* Coeffs, NCollection_Array2_double* WCoeffs) {
     try { PLib::UTrimming(U1, U2, *Coeffs, WCoeffs); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* PLib_v_trimming(double V1, double V2, TColgp_Array2OfPnt* Coeffs, TColStd_Array2OfReal* WCoeffs) {
+extern "C" const char* PLib_v_trimming(double V1, double V2, NCollection_Array2_gp_Pnt* Coeffs, NCollection_Array2_double* WCoeffs) {
     try { PLib::VTrimming(V1, V2, *Coeffs, WCoeffs); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<bool> PLib_hermite_interpolate(int32_t Dimension, double FirstParameter, double LastParameter, int32_t FirstOrder, int32_t LastOrder, TColStd_Array2OfReal const* FirstConstr, TColStd_Array2OfReal const* LastConstr, TColStd_Array1OfReal* Coefficients) {
+extern "C" OcctResult<bool> PLib_hermite_interpolate(int32_t Dimension, double FirstParameter, double LastParameter, int32_t FirstOrder, int32_t LastOrder, NCollection_Array2_double const* FirstConstr, NCollection_Array2_double const* LastConstr, NCollection_Array1_double* Coefficients) {
     try { return {PLib::HermiteInterpolate(Dimension, FirstParameter, LastParameter, FirstOrder, LastOrder, *FirstConstr, *LastConstr, *Coefficients), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -18316,1143 +14295,22 @@ extern "C" OcctResult<int32_t> math_kronrod_points_max() {
 
 // Nested type and typedef type destructors
 extern "C" void BVH_Array3d_destructor(BVH_Array3d* self_) { delete self_; }
-extern "C" void BVH_Box_Standard_Real_2_destructor(BVH_Box_Standard_Real_2* self_) { delete self_; }
-extern "C" void BVH_Builder_double_3_destructor(BVH_Builder_double_3* self_) { delete self_; }
-extern "C" void BVH_Mat4d_destructor(BVH_Mat4d* self_) { delete self_; }
-extern "C" void BVH_Tree_double_3_destructor(BVH_Tree_double_3* self_) { delete self_; }
-extern "C" void BVH_Vec2i_destructor(BVH_Vec2i* self_) { delete self_; }
+extern "C" void BVH_Box_double_2_destructor(BVH_Box_double_2* self_) { delete self_; }
+extern "C" void BVH_Vec2f_destructor(BVH_Vec2f* self_) { delete self_; }
 extern "C" void BVH_Vec3d_destructor(BVH_Vec3d* self_) { delete self_; }
+extern "C" void BVH_Vec3f_destructor(BVH_Vec3f* self_) { delete self_; }
+extern "C" void BVH_Vec3i_destructor(BVH_Vec3i* self_) { delete self_; }
 extern "C" void BVH_Vec4f_destructor(BVH_Vec4f* self_) { delete self_; }
-extern "C" void Bnd_Array1OfBox_destructor(Bnd_Array1OfBox* self_) { delete self_; }
-extern "C" void Bnd_Array1OfBox2d_destructor(Bnd_Array1OfBox2d* self_) { delete self_; }
-extern "C" void Bnd_Array1OfSphere_destructor(Bnd_Array1OfSphere* self_) { delete self_; }
-extern "C" void Poly_Array1OfTriangle_destructor(Poly_Array1OfTriangle* self_) { delete self_; }
-extern "C" void Poly_ListOfTriangulation_destructor(Poly_ListOfTriangulation* self_) { delete self_; }
+extern "C" void BVH_Vec4i_destructor(BVH_Vec4i* self_) { delete self_; }
+extern "C" void Bnd_B3f_destructor(Bnd_B3f* self_) { delete self_; }
+extern "C" void Bnd_Range_IntersectStatus_destructor(Bnd_Range::IntersectStatus* self_) { delete self_; }
+extern "C" void CSLib_Class2d_Result_destructor(CSLib_Class2d::Result* self_) { delete self_; }
+extern "C" void MathUtils_Domain1D_destructor(MathUtils::Domain1D* self_) { delete self_; }
+extern "C" void MathUtils_PolyResult_destructor(MathUtils::PolyResult* self_) { delete self_; }
 extern "C" void Poly_MakeLoops_LinkFlag_destructor(Poly_MakeLoops::LinkFlag* self_) { delete self_; }
 extern "C" void Poly_MakeLoops_ListOfLink_destructor(Poly_MakeLoops::ListOfLink* self_) { delete self_; }
 extern "C" void Poly_MakeLoops_Loop_destructor(Poly_MakeLoops::Loop* self_) { delete self_; }
-extern "C" void TColgp_Array1OfCirc2d_value_type_destructor(TColgp_Array1OfCirc2d::value_type* self_) { delete self_; }
-extern "C" void TColgp_Array1OfDir2d_value_type_destructor(TColgp_Array1OfDir2d::value_type* self_) { delete self_; }
-extern "C" void TColgp_Array1OfDir_value_type_destructor(TColgp_Array1OfDir::value_type* self_) { delete self_; }
-extern "C" void TColgp_Array1OfLin2d_value_type_destructor(TColgp_Array1OfLin2d::value_type* self_) { delete self_; }
-extern "C" void TColgp_Array1OfPnt2d_value_type_destructor(TColgp_Array1OfPnt2d::value_type* self_) { delete self_; }
-extern "C" void TColgp_Array1OfPnt_value_type_destructor(TColgp_Array1OfPnt::value_type* self_) { delete self_; }
-extern "C" void TColgp_Array1OfVec2d_value_type_destructor(TColgp_Array1OfVec2d::value_type* self_) { delete self_; }
-extern "C" void TColgp_Array1OfVec_value_type_destructor(TColgp_Array1OfVec::value_type* self_) { delete self_; }
-extern "C" void TColgp_Array1OfXY_value_type_destructor(TColgp_Array1OfXY::value_type* self_) { delete self_; }
-extern "C" void TColgp_Array1OfXYZ_value_type_destructor(TColgp_Array1OfXYZ::value_type* self_) { delete self_; }
-extern "C" void TColgp_Array2OfCirc2d_value_type_destructor(TColgp_Array2OfCirc2d::value_type* self_) { delete self_; }
-extern "C" void TColgp_Array2OfDir2d_value_type_destructor(TColgp_Array2OfDir2d::value_type* self_) { delete self_; }
-extern "C" void TColgp_Array2OfDir_value_type_destructor(TColgp_Array2OfDir::value_type* self_) { delete self_; }
-extern "C" void TColgp_Array2OfLin2d_value_type_destructor(TColgp_Array2OfLin2d::value_type* self_) { delete self_; }
-extern "C" void TColgp_Array2OfPnt2d_value_type_destructor(TColgp_Array2OfPnt2d::value_type* self_) { delete self_; }
-extern "C" void TColgp_Array2OfPnt_value_type_destructor(TColgp_Array2OfPnt::value_type* self_) { delete self_; }
-extern "C" void TColgp_Array2OfVec2d_value_type_destructor(TColgp_Array2OfVec2d::value_type* self_) { delete self_; }
-extern "C" void TColgp_Array2OfVec_value_type_destructor(TColgp_Array2OfVec::value_type* self_) { delete self_; }
-extern "C" void TColgp_Array2OfXY_value_type_destructor(TColgp_Array2OfXY::value_type* self_) { delete self_; }
-extern "C" void TColgp_Array2OfXYZ_value_type_destructor(TColgp_Array2OfXYZ::value_type* self_) { delete self_; }
-extern "C" void TColgp_SequenceOfDir_destructor(TColgp_SequenceOfDir* self_) { delete self_; }
-extern "C" void TColgp_SequenceOfDir2d_destructor(TColgp_SequenceOfDir2d* self_) { delete self_; }
-extern "C" void TColgp_SequenceOfDir2d_value_type_destructor(TColgp_SequenceOfDir2d::value_type* self_) { delete self_; }
-extern "C" void TColgp_SequenceOfDir_value_type_destructor(TColgp_SequenceOfDir::value_type* self_) { delete self_; }
-extern "C" void TColgp_SequenceOfPnt_destructor(TColgp_SequenceOfPnt* self_) { delete self_; }
-extern "C" void TColgp_SequenceOfPnt2d_destructor(TColgp_SequenceOfPnt2d* self_) { delete self_; }
-extern "C" void TColgp_SequenceOfPnt2d_value_type_destructor(TColgp_SequenceOfPnt2d::value_type* self_) { delete self_; }
-extern "C" void TColgp_SequenceOfPnt_value_type_destructor(TColgp_SequenceOfPnt::value_type* self_) { delete self_; }
-extern "C" void TColgp_SequenceOfVec_destructor(TColgp_SequenceOfVec* self_) { delete self_; }
-extern "C" void TColgp_SequenceOfVec2d_destructor(TColgp_SequenceOfVec2d* self_) { delete self_; }
-extern "C" void TColgp_SequenceOfVec2d_value_type_destructor(TColgp_SequenceOfVec2d::value_type* self_) { delete self_; }
-extern "C" void TColgp_SequenceOfVec_value_type_destructor(TColgp_SequenceOfVec::value_type* self_) { delete self_; }
-extern "C" void TColgp_SequenceOfXY_destructor(TColgp_SequenceOfXY* self_) { delete self_; }
-extern "C" void TColgp_SequenceOfXY_value_type_destructor(TColgp_SequenceOfXY::value_type* self_) { delete self_; }
-extern "C" void TColgp_SequenceOfXYZ_destructor(TColgp_SequenceOfXYZ* self_) { delete self_; }
-extern "C" void TColgp_SequenceOfXYZ_value_type_destructor(TColgp_SequenceOfXYZ::value_type* self_) { delete self_; }
-extern "C" void gp_Vec2f_destructor(gp_Vec2f* self_) { delete self_; }
-extern "C" void gp_Vec3f_destructor(gp_Vec3f* self_) { delete self_; }
+extern "C" void gp_Dir2d_D_destructor(gp_Dir2d::D* self_) { delete self_; }
+extern "C" void gp_Dir_D_destructor(gp_Dir::D* self_) { delete self_; }
 extern "C" void math_IntegerVector_destructor(math_IntegerVector* self_) { delete self_; }
 extern "C" void math_Vector_destructor(math_Vector* self_) { delete self_; }
-
-// ========================
-// Collection type wrappers
-// ========================
-
-// ========================
-// TColgp_Array1OfCirc2d - Fixed-size 1D array (1-indexed)
-// ========================
-
-extern "C" TColgp_Array1OfCirc2d* TColgp_Array1OfCirc2d_new() {
-    return new TColgp_Array1OfCirc2d();
-}
-
-extern "C" void TColgp_Array1OfCirc2d_destructor(TColgp_Array1OfCirc2d* self_) {
-    delete self_;
-}
-
-extern "C" TColgp_Array1OfCirc2d* TColgp_Array1OfCirc2d_ctor_int2(Standard_Integer theLower, Standard_Integer theUpper) {
-    return new TColgp_Array1OfCirc2d(theLower, theUpper);
-}
-
-extern "C" TColgp_Array1OfCirc2d* TColgp_Array1OfCirc2d_ctor_int2_value(Standard_Integer theLower, Standard_Integer theUpper, const gp_Circ2d* theValue) {
-    auto arr = new TColgp_Array1OfCirc2d(theLower, theUpper);
-    arr->Init(*theValue);
-    return arr;
-}
-
-extern "C" Standard_Integer TColgp_Array1OfCirc2d_length(const TColgp_Array1OfCirc2d* arr) {
-    return arr->Length();
-}
-
-extern "C" Standard_Integer TColgp_Array1OfCirc2d_lower(const TColgp_Array1OfCirc2d* arr) {
-    return arr->Lower();
-}
-
-extern "C" Standard_Integer TColgp_Array1OfCirc2d_upper(const TColgp_Array1OfCirc2d* arr) {
-    return arr->Upper();
-}
-
-extern "C" const gp_Circ2d* TColgp_Array1OfCirc2d_value(const TColgp_Array1OfCirc2d* arr, Standard_Integer theIndex) {
-    return &arr->Value(theIndex);
-}
-
-extern "C" void TColgp_Array1OfCirc2d_set_value(TColgp_Array1OfCirc2d* arr, Standard_Integer theIndex, const gp_Circ2d* theItem) {
-    arr->SetValue(theIndex, *theItem);
-}
-
-extern "C" void TColgp_Array1OfCirc2d_init(TColgp_Array1OfCirc2d* arr, const gp_Circ2d* theValue) {
-    arr->Init(*theValue);
-}
-
-// ========================
-// TColgp_Array1OfDir - Fixed-size 1D array (1-indexed)
-// ========================
-
-extern "C" TColgp_Array1OfDir* TColgp_Array1OfDir_new() {
-    return new TColgp_Array1OfDir();
-}
-
-extern "C" void TColgp_Array1OfDir_destructor(TColgp_Array1OfDir* self_) {
-    delete self_;
-}
-
-extern "C" TColgp_Array1OfDir* TColgp_Array1OfDir_ctor_int2(Standard_Integer theLower, Standard_Integer theUpper) {
-    return new TColgp_Array1OfDir(theLower, theUpper);
-}
-
-extern "C" TColgp_Array1OfDir* TColgp_Array1OfDir_ctor_int2_value(Standard_Integer theLower, Standard_Integer theUpper, const gp_Dir* theValue) {
-    auto arr = new TColgp_Array1OfDir(theLower, theUpper);
-    arr->Init(*theValue);
-    return arr;
-}
-
-extern "C" Standard_Integer TColgp_Array1OfDir_length(const TColgp_Array1OfDir* arr) {
-    return arr->Length();
-}
-
-extern "C" Standard_Integer TColgp_Array1OfDir_lower(const TColgp_Array1OfDir* arr) {
-    return arr->Lower();
-}
-
-extern "C" Standard_Integer TColgp_Array1OfDir_upper(const TColgp_Array1OfDir* arr) {
-    return arr->Upper();
-}
-
-extern "C" const gp_Dir* TColgp_Array1OfDir_value(const TColgp_Array1OfDir* arr, Standard_Integer theIndex) {
-    return &arr->Value(theIndex);
-}
-
-extern "C" void TColgp_Array1OfDir_set_value(TColgp_Array1OfDir* arr, Standard_Integer theIndex, const gp_Dir* theItem) {
-    arr->SetValue(theIndex, *theItem);
-}
-
-extern "C" void TColgp_Array1OfDir_init(TColgp_Array1OfDir* arr, const gp_Dir* theValue) {
-    arr->Init(*theValue);
-}
-
-// ========================
-// TColgp_Array1OfDir2d - Fixed-size 1D array (1-indexed)
-// ========================
-
-extern "C" TColgp_Array1OfDir2d* TColgp_Array1OfDir2d_new() {
-    return new TColgp_Array1OfDir2d();
-}
-
-extern "C" void TColgp_Array1OfDir2d_destructor(TColgp_Array1OfDir2d* self_) {
-    delete self_;
-}
-
-extern "C" TColgp_Array1OfDir2d* TColgp_Array1OfDir2d_ctor_int2(Standard_Integer theLower, Standard_Integer theUpper) {
-    return new TColgp_Array1OfDir2d(theLower, theUpper);
-}
-
-extern "C" TColgp_Array1OfDir2d* TColgp_Array1OfDir2d_ctor_int2_value(Standard_Integer theLower, Standard_Integer theUpper, const gp_Dir2d* theValue) {
-    auto arr = new TColgp_Array1OfDir2d(theLower, theUpper);
-    arr->Init(*theValue);
-    return arr;
-}
-
-extern "C" Standard_Integer TColgp_Array1OfDir2d_length(const TColgp_Array1OfDir2d* arr) {
-    return arr->Length();
-}
-
-extern "C" Standard_Integer TColgp_Array1OfDir2d_lower(const TColgp_Array1OfDir2d* arr) {
-    return arr->Lower();
-}
-
-extern "C" Standard_Integer TColgp_Array1OfDir2d_upper(const TColgp_Array1OfDir2d* arr) {
-    return arr->Upper();
-}
-
-extern "C" const gp_Dir2d* TColgp_Array1OfDir2d_value(const TColgp_Array1OfDir2d* arr, Standard_Integer theIndex) {
-    return &arr->Value(theIndex);
-}
-
-extern "C" void TColgp_Array1OfDir2d_set_value(TColgp_Array1OfDir2d* arr, Standard_Integer theIndex, const gp_Dir2d* theItem) {
-    arr->SetValue(theIndex, *theItem);
-}
-
-extern "C" void TColgp_Array1OfDir2d_init(TColgp_Array1OfDir2d* arr, const gp_Dir2d* theValue) {
-    arr->Init(*theValue);
-}
-
-// ========================
-// TColgp_Array1OfLin2d - Fixed-size 1D array (1-indexed)
-// ========================
-
-extern "C" TColgp_Array1OfLin2d* TColgp_Array1OfLin2d_new() {
-    return new TColgp_Array1OfLin2d();
-}
-
-extern "C" void TColgp_Array1OfLin2d_destructor(TColgp_Array1OfLin2d* self_) {
-    delete self_;
-}
-
-extern "C" TColgp_Array1OfLin2d* TColgp_Array1OfLin2d_ctor_int2(Standard_Integer theLower, Standard_Integer theUpper) {
-    return new TColgp_Array1OfLin2d(theLower, theUpper);
-}
-
-extern "C" TColgp_Array1OfLin2d* TColgp_Array1OfLin2d_ctor_int2_value(Standard_Integer theLower, Standard_Integer theUpper, const gp_Lin2d* theValue) {
-    auto arr = new TColgp_Array1OfLin2d(theLower, theUpper);
-    arr->Init(*theValue);
-    return arr;
-}
-
-extern "C" Standard_Integer TColgp_Array1OfLin2d_length(const TColgp_Array1OfLin2d* arr) {
-    return arr->Length();
-}
-
-extern "C" Standard_Integer TColgp_Array1OfLin2d_lower(const TColgp_Array1OfLin2d* arr) {
-    return arr->Lower();
-}
-
-extern "C" Standard_Integer TColgp_Array1OfLin2d_upper(const TColgp_Array1OfLin2d* arr) {
-    return arr->Upper();
-}
-
-extern "C" const gp_Lin2d* TColgp_Array1OfLin2d_value(const TColgp_Array1OfLin2d* arr, Standard_Integer theIndex) {
-    return &arr->Value(theIndex);
-}
-
-extern "C" void TColgp_Array1OfLin2d_set_value(TColgp_Array1OfLin2d* arr, Standard_Integer theIndex, const gp_Lin2d* theItem) {
-    arr->SetValue(theIndex, *theItem);
-}
-
-extern "C" void TColgp_Array1OfLin2d_init(TColgp_Array1OfLin2d* arr, const gp_Lin2d* theValue) {
-    arr->Init(*theValue);
-}
-
-// ========================
-// TColgp_Array1OfPnt - Fixed-size 1D array (1-indexed)
-// ========================
-
-extern "C" TColgp_Array1OfPnt* TColgp_Array1OfPnt_new() {
-    return new TColgp_Array1OfPnt();
-}
-
-extern "C" void TColgp_Array1OfPnt_destructor(TColgp_Array1OfPnt* self_) {
-    delete self_;
-}
-
-extern "C" TColgp_Array1OfPnt* TColgp_Array1OfPnt_ctor_int2(Standard_Integer theLower, Standard_Integer theUpper) {
-    return new TColgp_Array1OfPnt(theLower, theUpper);
-}
-
-extern "C" TColgp_Array1OfPnt* TColgp_Array1OfPnt_ctor_int2_value(Standard_Integer theLower, Standard_Integer theUpper, const gp_Pnt* theValue) {
-    auto arr = new TColgp_Array1OfPnt(theLower, theUpper);
-    arr->Init(*theValue);
-    return arr;
-}
-
-extern "C" Standard_Integer TColgp_Array1OfPnt_length(const TColgp_Array1OfPnt* arr) {
-    return arr->Length();
-}
-
-extern "C" Standard_Integer TColgp_Array1OfPnt_lower(const TColgp_Array1OfPnt* arr) {
-    return arr->Lower();
-}
-
-extern "C" Standard_Integer TColgp_Array1OfPnt_upper(const TColgp_Array1OfPnt* arr) {
-    return arr->Upper();
-}
-
-extern "C" const gp_Pnt* TColgp_Array1OfPnt_value(const TColgp_Array1OfPnt* arr, Standard_Integer theIndex) {
-    return &arr->Value(theIndex);
-}
-
-extern "C" void TColgp_Array1OfPnt_set_value(TColgp_Array1OfPnt* arr, Standard_Integer theIndex, const gp_Pnt* theItem) {
-    arr->SetValue(theIndex, *theItem);
-}
-
-extern "C" void TColgp_Array1OfPnt_init(TColgp_Array1OfPnt* arr, const gp_Pnt* theValue) {
-    arr->Init(*theValue);
-}
-
-// ========================
-// TColgp_Array1OfPnt2d - Fixed-size 1D array (1-indexed)
-// ========================
-
-extern "C" TColgp_Array1OfPnt2d* TColgp_Array1OfPnt2d_new() {
-    return new TColgp_Array1OfPnt2d();
-}
-
-extern "C" void TColgp_Array1OfPnt2d_destructor(TColgp_Array1OfPnt2d* self_) {
-    delete self_;
-}
-
-extern "C" TColgp_Array1OfPnt2d* TColgp_Array1OfPnt2d_ctor_int2(Standard_Integer theLower, Standard_Integer theUpper) {
-    return new TColgp_Array1OfPnt2d(theLower, theUpper);
-}
-
-extern "C" TColgp_Array1OfPnt2d* TColgp_Array1OfPnt2d_ctor_int2_value(Standard_Integer theLower, Standard_Integer theUpper, const gp_Pnt2d* theValue) {
-    auto arr = new TColgp_Array1OfPnt2d(theLower, theUpper);
-    arr->Init(*theValue);
-    return arr;
-}
-
-extern "C" Standard_Integer TColgp_Array1OfPnt2d_length(const TColgp_Array1OfPnt2d* arr) {
-    return arr->Length();
-}
-
-extern "C" Standard_Integer TColgp_Array1OfPnt2d_lower(const TColgp_Array1OfPnt2d* arr) {
-    return arr->Lower();
-}
-
-extern "C" Standard_Integer TColgp_Array1OfPnt2d_upper(const TColgp_Array1OfPnt2d* arr) {
-    return arr->Upper();
-}
-
-extern "C" const gp_Pnt2d* TColgp_Array1OfPnt2d_value(const TColgp_Array1OfPnt2d* arr, Standard_Integer theIndex) {
-    return &arr->Value(theIndex);
-}
-
-extern "C" void TColgp_Array1OfPnt2d_set_value(TColgp_Array1OfPnt2d* arr, Standard_Integer theIndex, const gp_Pnt2d* theItem) {
-    arr->SetValue(theIndex, *theItem);
-}
-
-extern "C" void TColgp_Array1OfPnt2d_init(TColgp_Array1OfPnt2d* arr, const gp_Pnt2d* theValue) {
-    arr->Init(*theValue);
-}
-
-// ========================
-// TColgp_Array1OfVec - Fixed-size 1D array (1-indexed)
-// ========================
-
-extern "C" TColgp_Array1OfVec* TColgp_Array1OfVec_new() {
-    return new TColgp_Array1OfVec();
-}
-
-extern "C" void TColgp_Array1OfVec_destructor(TColgp_Array1OfVec* self_) {
-    delete self_;
-}
-
-extern "C" TColgp_Array1OfVec* TColgp_Array1OfVec_ctor_int2(Standard_Integer theLower, Standard_Integer theUpper) {
-    return new TColgp_Array1OfVec(theLower, theUpper);
-}
-
-extern "C" TColgp_Array1OfVec* TColgp_Array1OfVec_ctor_int2_value(Standard_Integer theLower, Standard_Integer theUpper, const gp_Vec* theValue) {
-    auto arr = new TColgp_Array1OfVec(theLower, theUpper);
-    arr->Init(*theValue);
-    return arr;
-}
-
-extern "C" Standard_Integer TColgp_Array1OfVec_length(const TColgp_Array1OfVec* arr) {
-    return arr->Length();
-}
-
-extern "C" Standard_Integer TColgp_Array1OfVec_lower(const TColgp_Array1OfVec* arr) {
-    return arr->Lower();
-}
-
-extern "C" Standard_Integer TColgp_Array1OfVec_upper(const TColgp_Array1OfVec* arr) {
-    return arr->Upper();
-}
-
-extern "C" const gp_Vec* TColgp_Array1OfVec_value(const TColgp_Array1OfVec* arr, Standard_Integer theIndex) {
-    return &arr->Value(theIndex);
-}
-
-extern "C" void TColgp_Array1OfVec_set_value(TColgp_Array1OfVec* arr, Standard_Integer theIndex, const gp_Vec* theItem) {
-    arr->SetValue(theIndex, *theItem);
-}
-
-extern "C" void TColgp_Array1OfVec_init(TColgp_Array1OfVec* arr, const gp_Vec* theValue) {
-    arr->Init(*theValue);
-}
-
-// ========================
-// TColgp_Array1OfVec2d - Fixed-size 1D array (1-indexed)
-// ========================
-
-extern "C" TColgp_Array1OfVec2d* TColgp_Array1OfVec2d_new() {
-    return new TColgp_Array1OfVec2d();
-}
-
-extern "C" void TColgp_Array1OfVec2d_destructor(TColgp_Array1OfVec2d* self_) {
-    delete self_;
-}
-
-extern "C" TColgp_Array1OfVec2d* TColgp_Array1OfVec2d_ctor_int2(Standard_Integer theLower, Standard_Integer theUpper) {
-    return new TColgp_Array1OfVec2d(theLower, theUpper);
-}
-
-extern "C" TColgp_Array1OfVec2d* TColgp_Array1OfVec2d_ctor_int2_value(Standard_Integer theLower, Standard_Integer theUpper, const gp_Vec2d* theValue) {
-    auto arr = new TColgp_Array1OfVec2d(theLower, theUpper);
-    arr->Init(*theValue);
-    return arr;
-}
-
-extern "C" Standard_Integer TColgp_Array1OfVec2d_length(const TColgp_Array1OfVec2d* arr) {
-    return arr->Length();
-}
-
-extern "C" Standard_Integer TColgp_Array1OfVec2d_lower(const TColgp_Array1OfVec2d* arr) {
-    return arr->Lower();
-}
-
-extern "C" Standard_Integer TColgp_Array1OfVec2d_upper(const TColgp_Array1OfVec2d* arr) {
-    return arr->Upper();
-}
-
-extern "C" const gp_Vec2d* TColgp_Array1OfVec2d_value(const TColgp_Array1OfVec2d* arr, Standard_Integer theIndex) {
-    return &arr->Value(theIndex);
-}
-
-extern "C" void TColgp_Array1OfVec2d_set_value(TColgp_Array1OfVec2d* arr, Standard_Integer theIndex, const gp_Vec2d* theItem) {
-    arr->SetValue(theIndex, *theItem);
-}
-
-extern "C" void TColgp_Array1OfVec2d_init(TColgp_Array1OfVec2d* arr, const gp_Vec2d* theValue) {
-    arr->Init(*theValue);
-}
-
-// ========================
-// TColgp_Array1OfXY - Fixed-size 1D array (1-indexed)
-// ========================
-
-extern "C" TColgp_Array1OfXY* TColgp_Array1OfXY_new() {
-    return new TColgp_Array1OfXY();
-}
-
-extern "C" void TColgp_Array1OfXY_destructor(TColgp_Array1OfXY* self_) {
-    delete self_;
-}
-
-extern "C" TColgp_Array1OfXY* TColgp_Array1OfXY_ctor_int2(Standard_Integer theLower, Standard_Integer theUpper) {
-    return new TColgp_Array1OfXY(theLower, theUpper);
-}
-
-extern "C" TColgp_Array1OfXY* TColgp_Array1OfXY_ctor_int2_value(Standard_Integer theLower, Standard_Integer theUpper, const gp_XY* theValue) {
-    auto arr = new TColgp_Array1OfXY(theLower, theUpper);
-    arr->Init(*theValue);
-    return arr;
-}
-
-extern "C" Standard_Integer TColgp_Array1OfXY_length(const TColgp_Array1OfXY* arr) {
-    return arr->Length();
-}
-
-extern "C" Standard_Integer TColgp_Array1OfXY_lower(const TColgp_Array1OfXY* arr) {
-    return arr->Lower();
-}
-
-extern "C" Standard_Integer TColgp_Array1OfXY_upper(const TColgp_Array1OfXY* arr) {
-    return arr->Upper();
-}
-
-extern "C" const gp_XY* TColgp_Array1OfXY_value(const TColgp_Array1OfXY* arr, Standard_Integer theIndex) {
-    return &arr->Value(theIndex);
-}
-
-extern "C" void TColgp_Array1OfXY_set_value(TColgp_Array1OfXY* arr, Standard_Integer theIndex, const gp_XY* theItem) {
-    arr->SetValue(theIndex, *theItem);
-}
-
-extern "C" void TColgp_Array1OfXY_init(TColgp_Array1OfXY* arr, const gp_XY* theValue) {
-    arr->Init(*theValue);
-}
-
-// ========================
-// TColgp_Array1OfXYZ - Fixed-size 1D array (1-indexed)
-// ========================
-
-extern "C" TColgp_Array1OfXYZ* TColgp_Array1OfXYZ_new() {
-    return new TColgp_Array1OfXYZ();
-}
-
-extern "C" void TColgp_Array1OfXYZ_destructor(TColgp_Array1OfXYZ* self_) {
-    delete self_;
-}
-
-extern "C" TColgp_Array1OfXYZ* TColgp_Array1OfXYZ_ctor_int2(Standard_Integer theLower, Standard_Integer theUpper) {
-    return new TColgp_Array1OfXYZ(theLower, theUpper);
-}
-
-extern "C" TColgp_Array1OfXYZ* TColgp_Array1OfXYZ_ctor_int2_value(Standard_Integer theLower, Standard_Integer theUpper, const gp_XYZ* theValue) {
-    auto arr = new TColgp_Array1OfXYZ(theLower, theUpper);
-    arr->Init(*theValue);
-    return arr;
-}
-
-extern "C" Standard_Integer TColgp_Array1OfXYZ_length(const TColgp_Array1OfXYZ* arr) {
-    return arr->Length();
-}
-
-extern "C" Standard_Integer TColgp_Array1OfXYZ_lower(const TColgp_Array1OfXYZ* arr) {
-    return arr->Lower();
-}
-
-extern "C" Standard_Integer TColgp_Array1OfXYZ_upper(const TColgp_Array1OfXYZ* arr) {
-    return arr->Upper();
-}
-
-extern "C" const gp_XYZ* TColgp_Array1OfXYZ_value(const TColgp_Array1OfXYZ* arr, Standard_Integer theIndex) {
-    return &arr->Value(theIndex);
-}
-
-extern "C" void TColgp_Array1OfXYZ_set_value(TColgp_Array1OfXYZ* arr, Standard_Integer theIndex, const gp_XYZ* theItem) {
-    arr->SetValue(theIndex, *theItem);
-}
-
-extern "C" void TColgp_Array1OfXYZ_init(TColgp_Array1OfXYZ* arr, const gp_XYZ* theValue) {
-    arr->Init(*theValue);
-}
-
-// ========================
-// TColgp_Array2OfCirc2d - Fixed-size 2D array (row/col indexed)
-// ========================
-
-extern "C" TColgp_Array2OfCirc2d* TColgp_Array2OfCirc2d_new() {
-    return new TColgp_Array2OfCirc2d();
-}
-
-extern "C" void TColgp_Array2OfCirc2d_destructor(TColgp_Array2OfCirc2d* self_) {
-    delete self_;
-}
-
-extern "C" TColgp_Array2OfCirc2d* TColgp_Array2OfCirc2d_ctor_int4(Standard_Integer theRowLower, Standard_Integer theRowUpper, Standard_Integer theColLower, Standard_Integer theColUpper) {
-    return new TColgp_Array2OfCirc2d(theRowLower, theRowUpper, theColLower, theColUpper);
-}
-
-extern "C" TColgp_Array2OfCirc2d* TColgp_Array2OfCirc2d_ctor_int4_value(Standard_Integer theRowLower, Standard_Integer theRowUpper, Standard_Integer theColLower, Standard_Integer theColUpper, const gp_Circ2d* theValue) {
-    auto arr = new TColgp_Array2OfCirc2d(theRowLower, theRowUpper, theColLower, theColUpper);
-    arr->Init(*theValue);
-    return arr;
-}
-
-extern "C" Standard_Integer TColgp_Array2OfCirc2d_nb_rows(const TColgp_Array2OfCirc2d* arr) {
-    return arr->NbRows();
-}
-
-extern "C" Standard_Integer TColgp_Array2OfCirc2d_nb_columns(const TColgp_Array2OfCirc2d* arr) {
-    return arr->NbColumns();
-}
-
-extern "C" Standard_Integer TColgp_Array2OfCirc2d_lower_row(const TColgp_Array2OfCirc2d* arr) {
-    return arr->LowerRow();
-}
-
-extern "C" Standard_Integer TColgp_Array2OfCirc2d_upper_row(const TColgp_Array2OfCirc2d* arr) {
-    return arr->UpperRow();
-}
-
-extern "C" Standard_Integer TColgp_Array2OfCirc2d_lower_col(const TColgp_Array2OfCirc2d* arr) {
-    return arr->LowerCol();
-}
-
-extern "C" Standard_Integer TColgp_Array2OfCirc2d_upper_col(const TColgp_Array2OfCirc2d* arr) {
-    return arr->UpperCol();
-}
-
-extern "C" Standard_Integer TColgp_Array2OfCirc2d_length(const TColgp_Array2OfCirc2d* arr) {
-    return arr->Length();
-}
-
-extern "C" const gp_Circ2d* TColgp_Array2OfCirc2d_value(const TColgp_Array2OfCirc2d* arr, Standard_Integer theRow, Standard_Integer theCol) {
-    return &arr->Value(theRow, theCol);
-}
-
-extern "C" void TColgp_Array2OfCirc2d_set_value(TColgp_Array2OfCirc2d* arr, Standard_Integer theRow, Standard_Integer theCol, const gp_Circ2d* theItem) {
-    arr->SetValue(theRow, theCol, *theItem);
-}
-
-extern "C" void TColgp_Array2OfCirc2d_init(TColgp_Array2OfCirc2d* arr, const gp_Circ2d* theValue) {
-    arr->Init(*theValue);
-}
-
-// ========================
-// TColgp_Array2OfDir - Fixed-size 2D array (row/col indexed)
-// ========================
-
-extern "C" TColgp_Array2OfDir* TColgp_Array2OfDir_new() {
-    return new TColgp_Array2OfDir();
-}
-
-extern "C" void TColgp_Array2OfDir_destructor(TColgp_Array2OfDir* self_) {
-    delete self_;
-}
-
-extern "C" TColgp_Array2OfDir* TColgp_Array2OfDir_ctor_int4(Standard_Integer theRowLower, Standard_Integer theRowUpper, Standard_Integer theColLower, Standard_Integer theColUpper) {
-    return new TColgp_Array2OfDir(theRowLower, theRowUpper, theColLower, theColUpper);
-}
-
-extern "C" TColgp_Array2OfDir* TColgp_Array2OfDir_ctor_int4_value(Standard_Integer theRowLower, Standard_Integer theRowUpper, Standard_Integer theColLower, Standard_Integer theColUpper, const gp_Dir* theValue) {
-    auto arr = new TColgp_Array2OfDir(theRowLower, theRowUpper, theColLower, theColUpper);
-    arr->Init(*theValue);
-    return arr;
-}
-
-extern "C" Standard_Integer TColgp_Array2OfDir_nb_rows(const TColgp_Array2OfDir* arr) {
-    return arr->NbRows();
-}
-
-extern "C" Standard_Integer TColgp_Array2OfDir_nb_columns(const TColgp_Array2OfDir* arr) {
-    return arr->NbColumns();
-}
-
-extern "C" Standard_Integer TColgp_Array2OfDir_lower_row(const TColgp_Array2OfDir* arr) {
-    return arr->LowerRow();
-}
-
-extern "C" Standard_Integer TColgp_Array2OfDir_upper_row(const TColgp_Array2OfDir* arr) {
-    return arr->UpperRow();
-}
-
-extern "C" Standard_Integer TColgp_Array2OfDir_lower_col(const TColgp_Array2OfDir* arr) {
-    return arr->LowerCol();
-}
-
-extern "C" Standard_Integer TColgp_Array2OfDir_upper_col(const TColgp_Array2OfDir* arr) {
-    return arr->UpperCol();
-}
-
-extern "C" Standard_Integer TColgp_Array2OfDir_length(const TColgp_Array2OfDir* arr) {
-    return arr->Length();
-}
-
-extern "C" const gp_Dir* TColgp_Array2OfDir_value(const TColgp_Array2OfDir* arr, Standard_Integer theRow, Standard_Integer theCol) {
-    return &arr->Value(theRow, theCol);
-}
-
-extern "C" void TColgp_Array2OfDir_set_value(TColgp_Array2OfDir* arr, Standard_Integer theRow, Standard_Integer theCol, const gp_Dir* theItem) {
-    arr->SetValue(theRow, theCol, *theItem);
-}
-
-extern "C" void TColgp_Array2OfDir_init(TColgp_Array2OfDir* arr, const gp_Dir* theValue) {
-    arr->Init(*theValue);
-}
-
-// ========================
-// TColgp_Array2OfDir2d - Fixed-size 2D array (row/col indexed)
-// ========================
-
-extern "C" TColgp_Array2OfDir2d* TColgp_Array2OfDir2d_new() {
-    return new TColgp_Array2OfDir2d();
-}
-
-extern "C" void TColgp_Array2OfDir2d_destructor(TColgp_Array2OfDir2d* self_) {
-    delete self_;
-}
-
-extern "C" TColgp_Array2OfDir2d* TColgp_Array2OfDir2d_ctor_int4(Standard_Integer theRowLower, Standard_Integer theRowUpper, Standard_Integer theColLower, Standard_Integer theColUpper) {
-    return new TColgp_Array2OfDir2d(theRowLower, theRowUpper, theColLower, theColUpper);
-}
-
-extern "C" TColgp_Array2OfDir2d* TColgp_Array2OfDir2d_ctor_int4_value(Standard_Integer theRowLower, Standard_Integer theRowUpper, Standard_Integer theColLower, Standard_Integer theColUpper, const gp_Dir2d* theValue) {
-    auto arr = new TColgp_Array2OfDir2d(theRowLower, theRowUpper, theColLower, theColUpper);
-    arr->Init(*theValue);
-    return arr;
-}
-
-extern "C" Standard_Integer TColgp_Array2OfDir2d_nb_rows(const TColgp_Array2OfDir2d* arr) {
-    return arr->NbRows();
-}
-
-extern "C" Standard_Integer TColgp_Array2OfDir2d_nb_columns(const TColgp_Array2OfDir2d* arr) {
-    return arr->NbColumns();
-}
-
-extern "C" Standard_Integer TColgp_Array2OfDir2d_lower_row(const TColgp_Array2OfDir2d* arr) {
-    return arr->LowerRow();
-}
-
-extern "C" Standard_Integer TColgp_Array2OfDir2d_upper_row(const TColgp_Array2OfDir2d* arr) {
-    return arr->UpperRow();
-}
-
-extern "C" Standard_Integer TColgp_Array2OfDir2d_lower_col(const TColgp_Array2OfDir2d* arr) {
-    return arr->LowerCol();
-}
-
-extern "C" Standard_Integer TColgp_Array2OfDir2d_upper_col(const TColgp_Array2OfDir2d* arr) {
-    return arr->UpperCol();
-}
-
-extern "C" Standard_Integer TColgp_Array2OfDir2d_length(const TColgp_Array2OfDir2d* arr) {
-    return arr->Length();
-}
-
-extern "C" const gp_Dir2d* TColgp_Array2OfDir2d_value(const TColgp_Array2OfDir2d* arr, Standard_Integer theRow, Standard_Integer theCol) {
-    return &arr->Value(theRow, theCol);
-}
-
-extern "C" void TColgp_Array2OfDir2d_set_value(TColgp_Array2OfDir2d* arr, Standard_Integer theRow, Standard_Integer theCol, const gp_Dir2d* theItem) {
-    arr->SetValue(theRow, theCol, *theItem);
-}
-
-extern "C" void TColgp_Array2OfDir2d_init(TColgp_Array2OfDir2d* arr, const gp_Dir2d* theValue) {
-    arr->Init(*theValue);
-}
-
-// ========================
-// TColgp_Array2OfLin2d - Fixed-size 2D array (row/col indexed)
-// ========================
-
-extern "C" TColgp_Array2OfLin2d* TColgp_Array2OfLin2d_new() {
-    return new TColgp_Array2OfLin2d();
-}
-
-extern "C" void TColgp_Array2OfLin2d_destructor(TColgp_Array2OfLin2d* self_) {
-    delete self_;
-}
-
-extern "C" TColgp_Array2OfLin2d* TColgp_Array2OfLin2d_ctor_int4(Standard_Integer theRowLower, Standard_Integer theRowUpper, Standard_Integer theColLower, Standard_Integer theColUpper) {
-    return new TColgp_Array2OfLin2d(theRowLower, theRowUpper, theColLower, theColUpper);
-}
-
-extern "C" TColgp_Array2OfLin2d* TColgp_Array2OfLin2d_ctor_int4_value(Standard_Integer theRowLower, Standard_Integer theRowUpper, Standard_Integer theColLower, Standard_Integer theColUpper, const gp_Lin2d* theValue) {
-    auto arr = new TColgp_Array2OfLin2d(theRowLower, theRowUpper, theColLower, theColUpper);
-    arr->Init(*theValue);
-    return arr;
-}
-
-extern "C" Standard_Integer TColgp_Array2OfLin2d_nb_rows(const TColgp_Array2OfLin2d* arr) {
-    return arr->NbRows();
-}
-
-extern "C" Standard_Integer TColgp_Array2OfLin2d_nb_columns(const TColgp_Array2OfLin2d* arr) {
-    return arr->NbColumns();
-}
-
-extern "C" Standard_Integer TColgp_Array2OfLin2d_lower_row(const TColgp_Array2OfLin2d* arr) {
-    return arr->LowerRow();
-}
-
-extern "C" Standard_Integer TColgp_Array2OfLin2d_upper_row(const TColgp_Array2OfLin2d* arr) {
-    return arr->UpperRow();
-}
-
-extern "C" Standard_Integer TColgp_Array2OfLin2d_lower_col(const TColgp_Array2OfLin2d* arr) {
-    return arr->LowerCol();
-}
-
-extern "C" Standard_Integer TColgp_Array2OfLin2d_upper_col(const TColgp_Array2OfLin2d* arr) {
-    return arr->UpperCol();
-}
-
-extern "C" Standard_Integer TColgp_Array2OfLin2d_length(const TColgp_Array2OfLin2d* arr) {
-    return arr->Length();
-}
-
-extern "C" const gp_Lin2d* TColgp_Array2OfLin2d_value(const TColgp_Array2OfLin2d* arr, Standard_Integer theRow, Standard_Integer theCol) {
-    return &arr->Value(theRow, theCol);
-}
-
-extern "C" void TColgp_Array2OfLin2d_set_value(TColgp_Array2OfLin2d* arr, Standard_Integer theRow, Standard_Integer theCol, const gp_Lin2d* theItem) {
-    arr->SetValue(theRow, theCol, *theItem);
-}
-
-extern "C" void TColgp_Array2OfLin2d_init(TColgp_Array2OfLin2d* arr, const gp_Lin2d* theValue) {
-    arr->Init(*theValue);
-}
-
-// ========================
-// TColgp_Array2OfPnt - Fixed-size 2D array (row/col indexed)
-// ========================
-
-extern "C" TColgp_Array2OfPnt* TColgp_Array2OfPnt_new() {
-    return new TColgp_Array2OfPnt();
-}
-
-extern "C" void TColgp_Array2OfPnt_destructor(TColgp_Array2OfPnt* self_) {
-    delete self_;
-}
-
-extern "C" TColgp_Array2OfPnt* TColgp_Array2OfPnt_ctor_int4(Standard_Integer theRowLower, Standard_Integer theRowUpper, Standard_Integer theColLower, Standard_Integer theColUpper) {
-    return new TColgp_Array2OfPnt(theRowLower, theRowUpper, theColLower, theColUpper);
-}
-
-extern "C" TColgp_Array2OfPnt* TColgp_Array2OfPnt_ctor_int4_value(Standard_Integer theRowLower, Standard_Integer theRowUpper, Standard_Integer theColLower, Standard_Integer theColUpper, const gp_Pnt* theValue) {
-    auto arr = new TColgp_Array2OfPnt(theRowLower, theRowUpper, theColLower, theColUpper);
-    arr->Init(*theValue);
-    return arr;
-}
-
-extern "C" Standard_Integer TColgp_Array2OfPnt_nb_rows(const TColgp_Array2OfPnt* arr) {
-    return arr->NbRows();
-}
-
-extern "C" Standard_Integer TColgp_Array2OfPnt_nb_columns(const TColgp_Array2OfPnt* arr) {
-    return arr->NbColumns();
-}
-
-extern "C" Standard_Integer TColgp_Array2OfPnt_lower_row(const TColgp_Array2OfPnt* arr) {
-    return arr->LowerRow();
-}
-
-extern "C" Standard_Integer TColgp_Array2OfPnt_upper_row(const TColgp_Array2OfPnt* arr) {
-    return arr->UpperRow();
-}
-
-extern "C" Standard_Integer TColgp_Array2OfPnt_lower_col(const TColgp_Array2OfPnt* arr) {
-    return arr->LowerCol();
-}
-
-extern "C" Standard_Integer TColgp_Array2OfPnt_upper_col(const TColgp_Array2OfPnt* arr) {
-    return arr->UpperCol();
-}
-
-extern "C" Standard_Integer TColgp_Array2OfPnt_length(const TColgp_Array2OfPnt* arr) {
-    return arr->Length();
-}
-
-extern "C" const gp_Pnt* TColgp_Array2OfPnt_value(const TColgp_Array2OfPnt* arr, Standard_Integer theRow, Standard_Integer theCol) {
-    return &arr->Value(theRow, theCol);
-}
-
-extern "C" void TColgp_Array2OfPnt_set_value(TColgp_Array2OfPnt* arr, Standard_Integer theRow, Standard_Integer theCol, const gp_Pnt* theItem) {
-    arr->SetValue(theRow, theCol, *theItem);
-}
-
-extern "C" void TColgp_Array2OfPnt_init(TColgp_Array2OfPnt* arr, const gp_Pnt* theValue) {
-    arr->Init(*theValue);
-}
-
-// ========================
-// TColgp_Array2OfPnt2d - Fixed-size 2D array (row/col indexed)
-// ========================
-
-extern "C" TColgp_Array2OfPnt2d* TColgp_Array2OfPnt2d_new() {
-    return new TColgp_Array2OfPnt2d();
-}
-
-extern "C" void TColgp_Array2OfPnt2d_destructor(TColgp_Array2OfPnt2d* self_) {
-    delete self_;
-}
-
-extern "C" TColgp_Array2OfPnt2d* TColgp_Array2OfPnt2d_ctor_int4(Standard_Integer theRowLower, Standard_Integer theRowUpper, Standard_Integer theColLower, Standard_Integer theColUpper) {
-    return new TColgp_Array2OfPnt2d(theRowLower, theRowUpper, theColLower, theColUpper);
-}
-
-extern "C" TColgp_Array2OfPnt2d* TColgp_Array2OfPnt2d_ctor_int4_value(Standard_Integer theRowLower, Standard_Integer theRowUpper, Standard_Integer theColLower, Standard_Integer theColUpper, const gp_Pnt2d* theValue) {
-    auto arr = new TColgp_Array2OfPnt2d(theRowLower, theRowUpper, theColLower, theColUpper);
-    arr->Init(*theValue);
-    return arr;
-}
-
-extern "C" Standard_Integer TColgp_Array2OfPnt2d_nb_rows(const TColgp_Array2OfPnt2d* arr) {
-    return arr->NbRows();
-}
-
-extern "C" Standard_Integer TColgp_Array2OfPnt2d_nb_columns(const TColgp_Array2OfPnt2d* arr) {
-    return arr->NbColumns();
-}
-
-extern "C" Standard_Integer TColgp_Array2OfPnt2d_lower_row(const TColgp_Array2OfPnt2d* arr) {
-    return arr->LowerRow();
-}
-
-extern "C" Standard_Integer TColgp_Array2OfPnt2d_upper_row(const TColgp_Array2OfPnt2d* arr) {
-    return arr->UpperRow();
-}
-
-extern "C" Standard_Integer TColgp_Array2OfPnt2d_lower_col(const TColgp_Array2OfPnt2d* arr) {
-    return arr->LowerCol();
-}
-
-extern "C" Standard_Integer TColgp_Array2OfPnt2d_upper_col(const TColgp_Array2OfPnt2d* arr) {
-    return arr->UpperCol();
-}
-
-extern "C" Standard_Integer TColgp_Array2OfPnt2d_length(const TColgp_Array2OfPnt2d* arr) {
-    return arr->Length();
-}
-
-extern "C" const gp_Pnt2d* TColgp_Array2OfPnt2d_value(const TColgp_Array2OfPnt2d* arr, Standard_Integer theRow, Standard_Integer theCol) {
-    return &arr->Value(theRow, theCol);
-}
-
-extern "C" void TColgp_Array2OfPnt2d_set_value(TColgp_Array2OfPnt2d* arr, Standard_Integer theRow, Standard_Integer theCol, const gp_Pnt2d* theItem) {
-    arr->SetValue(theRow, theCol, *theItem);
-}
-
-extern "C" void TColgp_Array2OfPnt2d_init(TColgp_Array2OfPnt2d* arr, const gp_Pnt2d* theValue) {
-    arr->Init(*theValue);
-}
-
-// ========================
-// TColgp_Array2OfVec - Fixed-size 2D array (row/col indexed)
-// ========================
-
-extern "C" TColgp_Array2OfVec* TColgp_Array2OfVec_new() {
-    return new TColgp_Array2OfVec();
-}
-
-extern "C" void TColgp_Array2OfVec_destructor(TColgp_Array2OfVec* self_) {
-    delete self_;
-}
-
-extern "C" TColgp_Array2OfVec* TColgp_Array2OfVec_ctor_int4(Standard_Integer theRowLower, Standard_Integer theRowUpper, Standard_Integer theColLower, Standard_Integer theColUpper) {
-    return new TColgp_Array2OfVec(theRowLower, theRowUpper, theColLower, theColUpper);
-}
-
-extern "C" TColgp_Array2OfVec* TColgp_Array2OfVec_ctor_int4_value(Standard_Integer theRowLower, Standard_Integer theRowUpper, Standard_Integer theColLower, Standard_Integer theColUpper, const gp_Vec* theValue) {
-    auto arr = new TColgp_Array2OfVec(theRowLower, theRowUpper, theColLower, theColUpper);
-    arr->Init(*theValue);
-    return arr;
-}
-
-extern "C" Standard_Integer TColgp_Array2OfVec_nb_rows(const TColgp_Array2OfVec* arr) {
-    return arr->NbRows();
-}
-
-extern "C" Standard_Integer TColgp_Array2OfVec_nb_columns(const TColgp_Array2OfVec* arr) {
-    return arr->NbColumns();
-}
-
-extern "C" Standard_Integer TColgp_Array2OfVec_lower_row(const TColgp_Array2OfVec* arr) {
-    return arr->LowerRow();
-}
-
-extern "C" Standard_Integer TColgp_Array2OfVec_upper_row(const TColgp_Array2OfVec* arr) {
-    return arr->UpperRow();
-}
-
-extern "C" Standard_Integer TColgp_Array2OfVec_lower_col(const TColgp_Array2OfVec* arr) {
-    return arr->LowerCol();
-}
-
-extern "C" Standard_Integer TColgp_Array2OfVec_upper_col(const TColgp_Array2OfVec* arr) {
-    return arr->UpperCol();
-}
-
-extern "C" Standard_Integer TColgp_Array2OfVec_length(const TColgp_Array2OfVec* arr) {
-    return arr->Length();
-}
-
-extern "C" const gp_Vec* TColgp_Array2OfVec_value(const TColgp_Array2OfVec* arr, Standard_Integer theRow, Standard_Integer theCol) {
-    return &arr->Value(theRow, theCol);
-}
-
-extern "C" void TColgp_Array2OfVec_set_value(TColgp_Array2OfVec* arr, Standard_Integer theRow, Standard_Integer theCol, const gp_Vec* theItem) {
-    arr->SetValue(theRow, theCol, *theItem);
-}
-
-extern "C" void TColgp_Array2OfVec_init(TColgp_Array2OfVec* arr, const gp_Vec* theValue) {
-    arr->Init(*theValue);
-}
-
-// ========================
-// TColgp_Array2OfVec2d - Fixed-size 2D array (row/col indexed)
-// ========================
-
-extern "C" TColgp_Array2OfVec2d* TColgp_Array2OfVec2d_new() {
-    return new TColgp_Array2OfVec2d();
-}
-
-extern "C" void TColgp_Array2OfVec2d_destructor(TColgp_Array2OfVec2d* self_) {
-    delete self_;
-}
-
-extern "C" TColgp_Array2OfVec2d* TColgp_Array2OfVec2d_ctor_int4(Standard_Integer theRowLower, Standard_Integer theRowUpper, Standard_Integer theColLower, Standard_Integer theColUpper) {
-    return new TColgp_Array2OfVec2d(theRowLower, theRowUpper, theColLower, theColUpper);
-}
-
-extern "C" TColgp_Array2OfVec2d* TColgp_Array2OfVec2d_ctor_int4_value(Standard_Integer theRowLower, Standard_Integer theRowUpper, Standard_Integer theColLower, Standard_Integer theColUpper, const gp_Vec2d* theValue) {
-    auto arr = new TColgp_Array2OfVec2d(theRowLower, theRowUpper, theColLower, theColUpper);
-    arr->Init(*theValue);
-    return arr;
-}
-
-extern "C" Standard_Integer TColgp_Array2OfVec2d_nb_rows(const TColgp_Array2OfVec2d* arr) {
-    return arr->NbRows();
-}
-
-extern "C" Standard_Integer TColgp_Array2OfVec2d_nb_columns(const TColgp_Array2OfVec2d* arr) {
-    return arr->NbColumns();
-}
-
-extern "C" Standard_Integer TColgp_Array2OfVec2d_lower_row(const TColgp_Array2OfVec2d* arr) {
-    return arr->LowerRow();
-}
-
-extern "C" Standard_Integer TColgp_Array2OfVec2d_upper_row(const TColgp_Array2OfVec2d* arr) {
-    return arr->UpperRow();
-}
-
-extern "C" Standard_Integer TColgp_Array2OfVec2d_lower_col(const TColgp_Array2OfVec2d* arr) {
-    return arr->LowerCol();
-}
-
-extern "C" Standard_Integer TColgp_Array2OfVec2d_upper_col(const TColgp_Array2OfVec2d* arr) {
-    return arr->UpperCol();
-}
-
-extern "C" Standard_Integer TColgp_Array2OfVec2d_length(const TColgp_Array2OfVec2d* arr) {
-    return arr->Length();
-}
-
-extern "C" const gp_Vec2d* TColgp_Array2OfVec2d_value(const TColgp_Array2OfVec2d* arr, Standard_Integer theRow, Standard_Integer theCol) {
-    return &arr->Value(theRow, theCol);
-}
-
-extern "C" void TColgp_Array2OfVec2d_set_value(TColgp_Array2OfVec2d* arr, Standard_Integer theRow, Standard_Integer theCol, const gp_Vec2d* theItem) {
-    arr->SetValue(theRow, theCol, *theItem);
-}
-
-extern "C" void TColgp_Array2OfVec2d_init(TColgp_Array2OfVec2d* arr, const gp_Vec2d* theValue) {
-    arr->Init(*theValue);
-}
-
-// ========================
-// TColgp_Array2OfXY - Fixed-size 2D array (row/col indexed)
-// ========================
-
-extern "C" TColgp_Array2OfXY* TColgp_Array2OfXY_new() {
-    return new TColgp_Array2OfXY();
-}
-
-extern "C" void TColgp_Array2OfXY_destructor(TColgp_Array2OfXY* self_) {
-    delete self_;
-}
-
-extern "C" TColgp_Array2OfXY* TColgp_Array2OfXY_ctor_int4(Standard_Integer theRowLower, Standard_Integer theRowUpper, Standard_Integer theColLower, Standard_Integer theColUpper) {
-    return new TColgp_Array2OfXY(theRowLower, theRowUpper, theColLower, theColUpper);
-}
-
-extern "C" TColgp_Array2OfXY* TColgp_Array2OfXY_ctor_int4_value(Standard_Integer theRowLower, Standard_Integer theRowUpper, Standard_Integer theColLower, Standard_Integer theColUpper, const gp_XY* theValue) {
-    auto arr = new TColgp_Array2OfXY(theRowLower, theRowUpper, theColLower, theColUpper);
-    arr->Init(*theValue);
-    return arr;
-}
-
-extern "C" Standard_Integer TColgp_Array2OfXY_nb_rows(const TColgp_Array2OfXY* arr) {
-    return arr->NbRows();
-}
-
-extern "C" Standard_Integer TColgp_Array2OfXY_nb_columns(const TColgp_Array2OfXY* arr) {
-    return arr->NbColumns();
-}
-
-extern "C" Standard_Integer TColgp_Array2OfXY_lower_row(const TColgp_Array2OfXY* arr) {
-    return arr->LowerRow();
-}
-
-extern "C" Standard_Integer TColgp_Array2OfXY_upper_row(const TColgp_Array2OfXY* arr) {
-    return arr->UpperRow();
-}
-
-extern "C" Standard_Integer TColgp_Array2OfXY_lower_col(const TColgp_Array2OfXY* arr) {
-    return arr->LowerCol();
-}
-
-extern "C" Standard_Integer TColgp_Array2OfXY_upper_col(const TColgp_Array2OfXY* arr) {
-    return arr->UpperCol();
-}
-
-extern "C" Standard_Integer TColgp_Array2OfXY_length(const TColgp_Array2OfXY* arr) {
-    return arr->Length();
-}
-
-extern "C" const gp_XY* TColgp_Array2OfXY_value(const TColgp_Array2OfXY* arr, Standard_Integer theRow, Standard_Integer theCol) {
-    return &arr->Value(theRow, theCol);
-}
-
-extern "C" void TColgp_Array2OfXY_set_value(TColgp_Array2OfXY* arr, Standard_Integer theRow, Standard_Integer theCol, const gp_XY* theItem) {
-    arr->SetValue(theRow, theCol, *theItem);
-}
-
-extern "C" void TColgp_Array2OfXY_init(TColgp_Array2OfXY* arr, const gp_XY* theValue) {
-    arr->Init(*theValue);
-}
-
-// ========================
-// TColgp_Array2OfXYZ - Fixed-size 2D array (row/col indexed)
-// ========================
-
-extern "C" TColgp_Array2OfXYZ* TColgp_Array2OfXYZ_new() {
-    return new TColgp_Array2OfXYZ();
-}
-
-extern "C" void TColgp_Array2OfXYZ_destructor(TColgp_Array2OfXYZ* self_) {
-    delete self_;
-}
-
-extern "C" TColgp_Array2OfXYZ* TColgp_Array2OfXYZ_ctor_int4(Standard_Integer theRowLower, Standard_Integer theRowUpper, Standard_Integer theColLower, Standard_Integer theColUpper) {
-    return new TColgp_Array2OfXYZ(theRowLower, theRowUpper, theColLower, theColUpper);
-}
-
-extern "C" TColgp_Array2OfXYZ* TColgp_Array2OfXYZ_ctor_int4_value(Standard_Integer theRowLower, Standard_Integer theRowUpper, Standard_Integer theColLower, Standard_Integer theColUpper, const gp_XYZ* theValue) {
-    auto arr = new TColgp_Array2OfXYZ(theRowLower, theRowUpper, theColLower, theColUpper);
-    arr->Init(*theValue);
-    return arr;
-}
-
-extern "C" Standard_Integer TColgp_Array2OfXYZ_nb_rows(const TColgp_Array2OfXYZ* arr) {
-    return arr->NbRows();
-}
-
-extern "C" Standard_Integer TColgp_Array2OfXYZ_nb_columns(const TColgp_Array2OfXYZ* arr) {
-    return arr->NbColumns();
-}
-
-extern "C" Standard_Integer TColgp_Array2OfXYZ_lower_row(const TColgp_Array2OfXYZ* arr) {
-    return arr->LowerRow();
-}
-
-extern "C" Standard_Integer TColgp_Array2OfXYZ_upper_row(const TColgp_Array2OfXYZ* arr) {
-    return arr->UpperRow();
-}
-
-extern "C" Standard_Integer TColgp_Array2OfXYZ_lower_col(const TColgp_Array2OfXYZ* arr) {
-    return arr->LowerCol();
-}
-
-extern "C" Standard_Integer TColgp_Array2OfXYZ_upper_col(const TColgp_Array2OfXYZ* arr) {
-    return arr->UpperCol();
-}
-
-extern "C" Standard_Integer TColgp_Array2OfXYZ_length(const TColgp_Array2OfXYZ* arr) {
-    return arr->Length();
-}
-
-extern "C" const gp_XYZ* TColgp_Array2OfXYZ_value(const TColgp_Array2OfXYZ* arr, Standard_Integer theRow, Standard_Integer theCol) {
-    return &arr->Value(theRow, theCol);
-}
-
-extern "C" void TColgp_Array2OfXYZ_set_value(TColgp_Array2OfXYZ* arr, Standard_Integer theRow, Standard_Integer theCol, const gp_XYZ* theItem) {
-    arr->SetValue(theRow, theCol, *theItem);
-}
-
-extern "C" void TColgp_Array2OfXYZ_init(TColgp_Array2OfXYZ* arr, const gp_XYZ* theValue) {
-    arr->Init(*theValue);
-}
-

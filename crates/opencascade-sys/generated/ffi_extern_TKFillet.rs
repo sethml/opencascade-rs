@@ -10,14 +10,14 @@ use crate::ffi_types::*;
 unsafe extern "C" {
     // ======================== BRepBlend_AppFunc ========================
     pub fn BRepBlend_AppFunc_destructor(self_: *mut BRepBlend_AppFunc);
-    /// **Source:** `BRepBlend_AppFunc.hxx`:39 - `BRepBlend_AppFunc::BRepBlend_AppFunc()`
+    /// **Source:** `BRepBlend_AppFunc.hxx`:36 - `BRepBlend_AppFunc::BRepBlend_AppFunc()`
     pub fn BRepBlend_AppFunc_ctor_handlebrepblendline_function_real2(
-        Line: *mut HandleBRepBlendLine,
+        Line: *mut Handle_BRepBlend_Line,
         Func: *mut Blend_Function,
         Tol3d: f64,
         Tol2d: f64,
     ) -> crate::OcctResult<*mut BRepBlend_AppFunc>;
-    /// **Source:** `BRepBlend_AppFunc.hxx`:44 - `BRepBlend_AppFunc::Point()`
+    /// **Source:** `BRepBlend_AppFunc.hxx`:41 - `BRepBlend_AppFunc::Point()`
     pub fn BRepBlend_AppFunc_point(
         self_: *const BRepBlend_AppFunc,
         Func: *const Blend_AppFunction,
@@ -25,20 +25,20 @@ unsafe extern "C" {
         Sol: *const math_Vector,
         Pnt: *mut Blend_Point,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepBlend_AppFunc.hxx`:49 - `BRepBlend_AppFunc::Vec()`
+    /// **Source:** `BRepBlend_AppFunc.hxx`:46 - `BRepBlend_AppFunc::Vec()`
     pub fn BRepBlend_AppFunc_vec(
         self_: *const BRepBlend_AppFunc,
         Sol: *mut math_Vector,
         Pnt: *const Blend_Point,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepBlend_AppFunc.hxx`:51 - `BRepBlend_AppFunc::DynamicType()`
+    /// **Source:** `BRepBlend_AppFunc.hxx`:48 - `BRepBlend_AppFunc::DynamicType()`
     pub fn BRepBlend_AppFunc_dynamic_type(
         self_: *const BRepBlend_AppFunc,
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// **Source:** `BRepBlend_AppFunc.hxx`:51 - `BRepBlend_AppFunc::get_type_name()`
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
+    /// **Source:** `BRepBlend_AppFunc.hxx`:48 - `BRepBlend_AppFunc::get_type_name()`
     pub fn BRepBlend_AppFunc_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
-    /// **Source:** `BRepBlend_AppFunc.hxx`:51 - `BRepBlend_AppFunc::get_type_descriptor()`
-    pub fn BRepBlend_AppFunc_get_type_descriptor() -> crate::OcctResult<*const HandleStandardType>;
+    /// **Source:** `BRepBlend_AppFunc.hxx`:48 - `BRepBlend_AppFunc::get_type_descriptor()`
+    pub fn BRepBlend_AppFunc_get_type_descriptor() -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast BRepBlend_AppFunc to BRepBlend_AppFuncRoot
     pub fn BRepBlend_AppFunc_as_BRepBlend_AppFuncRoot(
         self_: *const BRepBlend_AppFunc,
@@ -66,117 +66,117 @@ unsafe extern "C" {
     /// Wrap BRepBlend_AppFunc in a Handle
     pub fn BRepBlend_AppFunc_to_handle(
         obj: *mut BRepBlend_AppFunc,
-    ) -> crate::OcctResult<*mut HandleBRepBlendAppFunc>;
+    ) -> crate::OcctResult<*mut Handle_BRepBlend_AppFunc>;
     /// Destroy Handle<BRepBlend_AppFunc>
-    pub fn HandleBRepBlendAppFunc_destructor(self_: *mut HandleBRepBlendAppFunc);
+    pub fn Handle_BRepBlend_AppFunc_destructor(self_: *mut Handle_BRepBlend_AppFunc);
     /// Clone Handle<BRepBlend_AppFunc> (increments reference count)
-    pub fn HandleBRepBlendAppFunc_clone(
-        self_: *const HandleBRepBlendAppFunc,
-    ) -> crate::OcctResult<*mut HandleBRepBlendAppFunc>;
+    pub fn Handle_BRepBlend_AppFunc_clone(
+        self_: *const Handle_BRepBlend_AppFunc,
+    ) -> crate::OcctResult<*mut Handle_BRepBlend_AppFunc>;
     /// Check if Handle<BRepBlend_AppFunc> is null
-    pub fn HandleBRepBlendAppFunc_is_null(self_: *const HandleBRepBlendAppFunc) -> bool;
+    pub fn Handle_BRepBlend_AppFunc_is_null(self_: *const Handle_BRepBlend_AppFunc) -> bool;
     /// Dereference Handle to get *const BRepBlend_AppFunc
-    pub fn HandleBRepBlendAppFunc_get(
-        handle: *const HandleBRepBlendAppFunc,
+    pub fn Handle_BRepBlend_AppFunc_get(
+        handle: *const Handle_BRepBlend_AppFunc,
     ) -> crate::OcctResult<*const BRepBlend_AppFunc>;
     /// Dereference Handle to get *mut BRepBlend_AppFunc
-    pub fn HandleBRepBlendAppFunc_get_mut(
-        handle: *mut HandleBRepBlendAppFunc,
+    pub fn Handle_BRepBlend_AppFunc_get_mut(
+        handle: *mut Handle_BRepBlend_AppFunc,
     ) -> crate::OcctResult<*mut BRepBlend_AppFunc>;
     /// Upcast Handle<BRepBlend_AppFunc> to Handle<BRepBlend_AppFuncRoot>
-    pub fn HandleBRepBlendAppFunc_to_HandleBRepBlendAppFuncRoot(
-        self_: *const HandleBRepBlendAppFunc,
-    ) -> crate::OcctResult<*mut HandleBRepBlendAppFuncRoot>;
+    pub fn Handle_BRepBlend_AppFunc_to_Handle_BRepBlend_AppFuncRoot(
+        self_: *const Handle_BRepBlend_AppFunc,
+    ) -> crate::OcctResult<*mut Handle_BRepBlend_AppFuncRoot>;
     /// Upcast Handle<BRepBlend_AppFunc> to Handle<Approx_SweepFunction>
-    pub fn HandleBRepBlendAppFunc_to_HandleApproxSweepFunction(
-        self_: *const HandleBRepBlendAppFunc,
-    ) -> crate::OcctResult<*mut HandleApproxSweepFunction>;
+    pub fn Handle_BRepBlend_AppFunc_to_Handle_Approx_SweepFunction(
+        self_: *const Handle_BRepBlend_AppFunc,
+    ) -> crate::OcctResult<*mut Handle_Approx_SweepFunction>;
     /// Upcast Handle<BRepBlend_AppFunc> to Handle<Standard_Transient>
-    pub fn HandleBRepBlendAppFunc_to_HandleStandardTransient(
-        self_: *const HandleBRepBlendAppFunc,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
-    /// Inherited: **Source:** `BRepBlend_AppFuncRoot.hxx`:47 - `BRepBlend_AppFuncRoot::D0()`
+    pub fn Handle_BRepBlend_AppFunc_to_Handle_Standard_Transient(
+        self_: *const Handle_BRepBlend_AppFunc,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
+    /// Inherited: **Source:** `BRepBlend_AppFuncRoot.hxx`:46 - `BRepBlend_AppFuncRoot::D0()`
     pub fn BRepBlend_AppFunc_inherited_D0(
         self_: *mut BRepBlend_AppFunc,
         Param: f64,
         First: f64,
         Last: f64,
-        Poles: *mut TColgp_Array1OfPnt,
-        Poles2d: *mut TColgp_Array1OfPnt2d,
-        Weigths: *mut TColStd_Array1OfReal,
+        Poles: *mut NCollection_Array1_gp_Pnt,
+        Poles2d: *mut NCollection_Array1_gp_Pnt2d,
+        Weigths: *mut NCollection_Array1_double,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `BRepBlend_AppFuncRoot.hxx`:56 - `BRepBlend_AppFuncRoot::D1()`
+    /// Inherited: **Source:** `BRepBlend_AppFuncRoot.hxx`:55 - `BRepBlend_AppFuncRoot::D1()`
     pub fn BRepBlend_AppFunc_inherited_D1(
         self_: *mut BRepBlend_AppFunc,
         Param: f64,
         First: f64,
         Last: f64,
-        Poles: *mut TColgp_Array1OfPnt,
-        DPoles: *mut TColgp_Array1OfVec,
-        Poles2d: *mut TColgp_Array1OfPnt2d,
-        DPoles2d: *mut TColgp_Array1OfVec2d,
-        Weigths: *mut TColStd_Array1OfReal,
-        DWeigths: *mut TColStd_Array1OfReal,
+        Poles: *mut NCollection_Array1_gp_Pnt,
+        DPoles: *mut NCollection_Array1_gp_Vec,
+        Poles2d: *mut NCollection_Array1_gp_Pnt2d,
+        DPoles2d: *mut NCollection_Array1_gp_Vec2d,
+        Weigths: *mut NCollection_Array1_double,
+        DWeigths: *mut NCollection_Array1_double,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `BRepBlend_AppFuncRoot.hxx`:68 - `BRepBlend_AppFuncRoot::D2()`
+    /// Inherited: **Source:** `BRepBlend_AppFuncRoot.hxx`:67 - `BRepBlend_AppFuncRoot::D2()`
     pub fn BRepBlend_AppFunc_inherited_D2(
         self_: *mut BRepBlend_AppFunc,
         Param: f64,
         First: f64,
         Last: f64,
-        Poles: *mut TColgp_Array1OfPnt,
-        DPoles: *mut TColgp_Array1OfVec,
-        D2Poles: *mut TColgp_Array1OfVec,
-        Poles2d: *mut TColgp_Array1OfPnt2d,
-        DPoles2d: *mut TColgp_Array1OfVec2d,
-        D2Poles2d: *mut TColgp_Array1OfVec2d,
-        Weigths: *mut TColStd_Array1OfReal,
-        DWeigths: *mut TColStd_Array1OfReal,
-        D2Weigths: *mut TColStd_Array1OfReal,
+        Poles: *mut NCollection_Array1_gp_Pnt,
+        DPoles: *mut NCollection_Array1_gp_Vec,
+        D2Poles: *mut NCollection_Array1_gp_Vec,
+        Poles2d: *mut NCollection_Array1_gp_Pnt2d,
+        DPoles2d: *mut NCollection_Array1_gp_Vec2d,
+        D2Poles2d: *mut NCollection_Array1_gp_Vec2d,
+        Weigths: *mut NCollection_Array1_double,
+        DWeigths: *mut NCollection_Array1_double,
+        D2Weigths: *mut NCollection_Array1_double,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `BRepBlend_AppFuncRoot.hxx`:82 - `BRepBlend_AppFuncRoot::Nb2dCurves()`
+    /// Inherited: **Source:** `BRepBlend_AppFuncRoot.hxx`:81 - `BRepBlend_AppFuncRoot::Nb2dCurves()`
     pub fn BRepBlend_AppFunc_inherited_Nb2dCurves(
         self_: *const BRepBlend_AppFunc,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `BRepBlend_AppFuncRoot.hxx`:85 - `BRepBlend_AppFuncRoot::SectionShape()`
+    /// Inherited: **Source:** `BRepBlend_AppFuncRoot.hxx`:84 - `BRepBlend_AppFuncRoot::SectionShape()`
     pub fn BRepBlend_AppFunc_inherited_SectionShape(
         self_: *const BRepBlend_AppFunc,
         NbPoles: *mut i32,
         NbKnots: *mut i32,
         Degree: *mut i32,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BRepBlend_AppFuncRoot.hxx`:90 - `BRepBlend_AppFuncRoot::Knots()`
+    /// Inherited: **Source:** `BRepBlend_AppFuncRoot.hxx`:87 - `BRepBlend_AppFuncRoot::Knots()`
     pub fn BRepBlend_AppFunc_inherited_Knots(
         self_: *const BRepBlend_AppFunc,
-        TKnots: *mut TColStd_Array1OfReal,
+        TKnots: *mut NCollection_Array1_double,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BRepBlend_AppFuncRoot.hxx`:93 - `BRepBlend_AppFuncRoot::Mults()`
+    /// Inherited: **Source:** `BRepBlend_AppFuncRoot.hxx`:90 - `BRepBlend_AppFuncRoot::Mults()`
     pub fn BRepBlend_AppFunc_inherited_Mults(
         self_: *const BRepBlend_AppFunc,
-        TMults: *mut TColStd_Array1OfInteger,
+        TMults: *mut NCollection_Array1_int,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BRepBlend_AppFuncRoot.hxx`:96 - `BRepBlend_AppFuncRoot::IsRational()`
+    /// Inherited: **Source:** `BRepBlend_AppFuncRoot.hxx`:93 - `BRepBlend_AppFuncRoot::IsRational()`
     pub fn BRepBlend_AppFunc_inherited_IsRational(
         self_: *const BRepBlend_AppFunc,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `BRepBlend_AppFuncRoot.hxx`:100 - `BRepBlend_AppFuncRoot::NbIntervals()`
+    /// Inherited: **Source:** `BRepBlend_AppFuncRoot.hxx`:97 - `BRepBlend_AppFuncRoot::NbIntervals()`
     pub fn BRepBlend_AppFunc_inherited_NbIntervals(
         self_: *const BRepBlend_AppFunc,
         S: i32,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `BRepBlend_AppFuncRoot.hxx`:108 - `BRepBlend_AppFuncRoot::Intervals()`
+    /// Inherited: **Source:** `BRepBlend_AppFuncRoot.hxx`:104 - `BRepBlend_AppFuncRoot::Intervals()`
     pub fn BRepBlend_AppFunc_inherited_Intervals(
         self_: *const BRepBlend_AppFunc,
-        T: *mut TColStd_Array1OfReal,
+        T: *mut NCollection_Array1_double,
         S: i32,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BRepBlend_AppFuncRoot.hxx`:115 - `BRepBlend_AppFuncRoot::SetInterval()`
+    /// Inherited: **Source:** `BRepBlend_AppFuncRoot.hxx`:111 - `BRepBlend_AppFuncRoot::SetInterval()`
     pub fn BRepBlend_AppFunc_inherited_SetInterval(
         self_: *mut BRepBlend_AppFunc,
         First: f64,
         Last: f64,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BRepBlend_AppFuncRoot.hxx`:121 - `BRepBlend_AppFuncRoot::Resolution()`
+    /// Inherited: **Source:** `BRepBlend_AppFuncRoot.hxx`:116 - `BRepBlend_AppFuncRoot::Resolution()`
     pub fn BRepBlend_AppFunc_inherited_Resolution(
         self_: *const BRepBlend_AppFunc,
         Index: i32,
@@ -184,147 +184,147 @@ unsafe extern "C" {
         TolU: *mut f64,
         TolV: *mut f64,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BRepBlend_AppFuncRoot.hxx`:131 - `BRepBlend_AppFuncRoot::GetTolerance()`
+    /// Inherited: **Source:** `BRepBlend_AppFuncRoot.hxx`:126 - `BRepBlend_AppFuncRoot::GetTolerance()`
     pub fn BRepBlend_AppFunc_inherited_GetTolerance(
         self_: *const BRepBlend_AppFunc,
         BoundTol: f64,
         SurfTol: f64,
         AngleTol: f64,
-        Tol3d: *mut TColStd_Array1OfReal,
+        Tol3d: *mut NCollection_Array1_double,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BRepBlend_AppFuncRoot.hxx`:138 - `BRepBlend_AppFuncRoot::SetTolerance()`
+    /// Inherited: **Source:** `BRepBlend_AppFuncRoot.hxx`:133 - `BRepBlend_AppFuncRoot::SetTolerance()`
     pub fn BRepBlend_AppFunc_inherited_SetTolerance(
         self_: *mut BRepBlend_AppFunc,
         Tol3d: f64,
         Tol2d: f64,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BRepBlend_AppFuncRoot.hxx`:144 - `BRepBlend_AppFuncRoot::BarycentreOfSurf()`
+    /// Inherited: **Source:** `BRepBlend_AppFuncRoot.hxx`:138 - `BRepBlend_AppFuncRoot::BarycentreOfSurf()`
     pub fn BRepBlend_AppFunc_inherited_BarycentreOfSurf(
         self_: *const BRepBlend_AppFunc,
     ) -> crate::OcctResult<*mut gp_Pnt>;
-    /// Inherited: **Source:** `BRepBlend_AppFuncRoot.hxx`:149 - `BRepBlend_AppFuncRoot::MaximalSection()`
+    /// Inherited: **Source:** `BRepBlend_AppFuncRoot.hxx`:143 - `BRepBlend_AppFuncRoot::MaximalSection()`
     pub fn BRepBlend_AppFunc_inherited_MaximalSection(
         self_: *const BRepBlend_AppFunc,
     ) -> crate::OcctResult<f64>;
-    /// Inherited: **Source:** `BRepBlend_AppFuncRoot.hxx`:154 - `BRepBlend_AppFuncRoot::GetMinimalWeight()`
+    /// Inherited: **Source:** `BRepBlend_AppFuncRoot.hxx`:148 - `BRepBlend_AppFuncRoot::GetMinimalWeight()`
     pub fn BRepBlend_AppFunc_inherited_GetMinimalWeight(
         self_: *const BRepBlend_AppFunc,
-        Weigths: *mut TColStd_Array1OfReal,
+        Weigths: *mut NCollection_Array1_double,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn BRepBlend_AppFunc_inherited_IsInstance(
         self_: *const BRepBlend_AppFunc,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn BRepBlend_AppFunc_inherited_IsKind(
         self_: *const BRepBlend_AppFunc,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn BRepBlend_AppFunc_inherited_This(
         self_: *const BRepBlend_AppFunc,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn BRepBlend_AppFunc_inherited_GetRefCount(
         self_: *const BRepBlend_AppFunc,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn BRepBlend_AppFunc_inherited_IncrementRefCounter(
         self_: *mut BRepBlend_AppFunc,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn BRepBlend_AppFunc_inherited_DecrementRefCounter(
         self_: *mut BRepBlend_AppFunc,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn BRepBlend_AppFunc_inherited_Delete(
         self_: *const BRepBlend_AppFunc,
     ) -> *const std::ffi::c_char;
     // ======================== BRepBlend_AppFuncRoot ========================
     pub fn BRepBlend_AppFuncRoot_destructor(self_: *mut BRepBlend_AppFuncRoot);
-    /// **Source:** `BRepBlend_AppFuncRoot.hxx`:47 - `BRepBlend_AppFuncRoot::D0()`
+    /// **Source:** `BRepBlend_AppFuncRoot.hxx`:46 - `BRepBlend_AppFuncRoot::D0()`
     pub fn BRepBlend_AppFuncRoot_d0(
         self_: *mut BRepBlend_AppFuncRoot,
         Param: f64,
         First: f64,
         Last: f64,
-        Poles: *mut TColgp_Array1OfPnt,
-        Poles2d: *mut TColgp_Array1OfPnt2d,
-        Weigths: *mut TColStd_Array1OfReal,
+        Poles: *mut NCollection_Array1_gp_Pnt,
+        Poles2d: *mut NCollection_Array1_gp_Pnt2d,
+        Weigths: *mut NCollection_Array1_double,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BRepBlend_AppFuncRoot.hxx`:56 - `BRepBlend_AppFuncRoot::D1()`
+    /// **Source:** `BRepBlend_AppFuncRoot.hxx`:55 - `BRepBlend_AppFuncRoot::D1()`
     pub fn BRepBlend_AppFuncRoot_d1(
         self_: *mut BRepBlend_AppFuncRoot,
         Param: f64,
         First: f64,
         Last: f64,
-        Poles: *mut TColgp_Array1OfPnt,
-        DPoles: *mut TColgp_Array1OfVec,
-        Poles2d: *mut TColgp_Array1OfPnt2d,
-        DPoles2d: *mut TColgp_Array1OfVec2d,
-        Weigths: *mut TColStd_Array1OfReal,
-        DWeigths: *mut TColStd_Array1OfReal,
+        Poles: *mut NCollection_Array1_gp_Pnt,
+        DPoles: *mut NCollection_Array1_gp_Vec,
+        Poles2d: *mut NCollection_Array1_gp_Pnt2d,
+        DPoles2d: *mut NCollection_Array1_gp_Vec2d,
+        Weigths: *mut NCollection_Array1_double,
+        DWeigths: *mut NCollection_Array1_double,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BRepBlend_AppFuncRoot.hxx`:68 - `BRepBlend_AppFuncRoot::D2()`
+    /// **Source:** `BRepBlend_AppFuncRoot.hxx`:67 - `BRepBlend_AppFuncRoot::D2()`
     pub fn BRepBlend_AppFuncRoot_d2(
         self_: *mut BRepBlend_AppFuncRoot,
         Param: f64,
         First: f64,
         Last: f64,
-        Poles: *mut TColgp_Array1OfPnt,
-        DPoles: *mut TColgp_Array1OfVec,
-        D2Poles: *mut TColgp_Array1OfVec,
-        Poles2d: *mut TColgp_Array1OfPnt2d,
-        DPoles2d: *mut TColgp_Array1OfVec2d,
-        D2Poles2d: *mut TColgp_Array1OfVec2d,
-        Weigths: *mut TColStd_Array1OfReal,
-        DWeigths: *mut TColStd_Array1OfReal,
-        D2Weigths: *mut TColStd_Array1OfReal,
+        Poles: *mut NCollection_Array1_gp_Pnt,
+        DPoles: *mut NCollection_Array1_gp_Vec,
+        D2Poles: *mut NCollection_Array1_gp_Vec,
+        Poles2d: *mut NCollection_Array1_gp_Pnt2d,
+        DPoles2d: *mut NCollection_Array1_gp_Vec2d,
+        D2Poles2d: *mut NCollection_Array1_gp_Vec2d,
+        Weigths: *mut NCollection_Array1_double,
+        DWeigths: *mut NCollection_Array1_double,
+        D2Weigths: *mut NCollection_Array1_double,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BRepBlend_AppFuncRoot.hxx`:82 - `BRepBlend_AppFuncRoot::Nb2dCurves()`
+    /// **Source:** `BRepBlend_AppFuncRoot.hxx`:81 - `BRepBlend_AppFuncRoot::Nb2dCurves()`
     pub fn BRepBlend_AppFuncRoot_nb2d_curves(
         self_: *const BRepBlend_AppFuncRoot,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `BRepBlend_AppFuncRoot.hxx`:85 - `BRepBlend_AppFuncRoot::SectionShape()`
+    /// **Source:** `BRepBlend_AppFuncRoot.hxx`:84 - `BRepBlend_AppFuncRoot::SectionShape()`
     pub fn BRepBlend_AppFuncRoot_section_shape(
         self_: *const BRepBlend_AppFuncRoot,
         NbPoles: *mut i32,
         NbKnots: *mut i32,
         Degree: *mut i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepBlend_AppFuncRoot.hxx`:90 - `BRepBlend_AppFuncRoot::Knots()`
+    /// **Source:** `BRepBlend_AppFuncRoot.hxx`:87 - `BRepBlend_AppFuncRoot::Knots()`
     pub fn BRepBlend_AppFuncRoot_knots(
         self_: *const BRepBlend_AppFuncRoot,
-        TKnots: *mut TColStd_Array1OfReal,
+        TKnots: *mut NCollection_Array1_double,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepBlend_AppFuncRoot.hxx`:93 - `BRepBlend_AppFuncRoot::Mults()`
+    /// **Source:** `BRepBlend_AppFuncRoot.hxx`:90 - `BRepBlend_AppFuncRoot::Mults()`
     pub fn BRepBlend_AppFuncRoot_mults(
         self_: *const BRepBlend_AppFuncRoot,
-        TMults: *mut TColStd_Array1OfInteger,
+        TMults: *mut NCollection_Array1_int,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepBlend_AppFuncRoot.hxx`:96 - `BRepBlend_AppFuncRoot::IsRational()`
+    /// **Source:** `BRepBlend_AppFuncRoot.hxx`:93 - `BRepBlend_AppFuncRoot::IsRational()`
     pub fn BRepBlend_AppFuncRoot_is_rational(
         self_: *const BRepBlend_AppFuncRoot,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BRepBlend_AppFuncRoot.hxx`:100 - `BRepBlend_AppFuncRoot::NbIntervals()`
+    /// **Source:** `BRepBlend_AppFuncRoot.hxx`:97 - `BRepBlend_AppFuncRoot::NbIntervals()`
     pub fn BRepBlend_AppFuncRoot_nb_intervals(
         self_: *const BRepBlend_AppFuncRoot,
         S: i32,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `BRepBlend_AppFuncRoot.hxx`:108 - `BRepBlend_AppFuncRoot::Intervals()`
+    /// **Source:** `BRepBlend_AppFuncRoot.hxx`:104 - `BRepBlend_AppFuncRoot::Intervals()`
     pub fn BRepBlend_AppFuncRoot_intervals(
         self_: *const BRepBlend_AppFuncRoot,
-        T: *mut TColStd_Array1OfReal,
+        T: *mut NCollection_Array1_double,
         S: i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepBlend_AppFuncRoot.hxx`:115 - `BRepBlend_AppFuncRoot::SetInterval()`
+    /// **Source:** `BRepBlend_AppFuncRoot.hxx`:111 - `BRepBlend_AppFuncRoot::SetInterval()`
     pub fn BRepBlend_AppFuncRoot_set_interval(
         self_: *mut BRepBlend_AppFuncRoot,
         First: f64,
         Last: f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepBlend_AppFuncRoot.hxx`:121 - `BRepBlend_AppFuncRoot::Resolution()`
+    /// **Source:** `BRepBlend_AppFuncRoot.hxx`:116 - `BRepBlend_AppFuncRoot::Resolution()`
     pub fn BRepBlend_AppFuncRoot_resolution(
         self_: *const BRepBlend_AppFuncRoot,
         Index: i32,
@@ -332,34 +332,34 @@ unsafe extern "C" {
         TolU: *mut f64,
         TolV: *mut f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepBlend_AppFuncRoot.hxx`:131 - `BRepBlend_AppFuncRoot::GetTolerance()`
+    /// **Source:** `BRepBlend_AppFuncRoot.hxx`:126 - `BRepBlend_AppFuncRoot::GetTolerance()`
     pub fn BRepBlend_AppFuncRoot_get_tolerance(
         self_: *const BRepBlend_AppFuncRoot,
         BoundTol: f64,
         SurfTol: f64,
         AngleTol: f64,
-        Tol3d: *mut TColStd_Array1OfReal,
+        Tol3d: *mut NCollection_Array1_double,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepBlend_AppFuncRoot.hxx`:138 - `BRepBlend_AppFuncRoot::SetTolerance()`
+    /// **Source:** `BRepBlend_AppFuncRoot.hxx`:133 - `BRepBlend_AppFuncRoot::SetTolerance()`
     pub fn BRepBlend_AppFuncRoot_set_tolerance(
         self_: *mut BRepBlend_AppFuncRoot,
         Tol3d: f64,
         Tol2d: f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepBlend_AppFuncRoot.hxx`:144 - `BRepBlend_AppFuncRoot::BarycentreOfSurf()`
+    /// **Source:** `BRepBlend_AppFuncRoot.hxx`:138 - `BRepBlend_AppFuncRoot::BarycentreOfSurf()`
     pub fn BRepBlend_AppFuncRoot_barycentre_of_surf(
         self_: *const BRepBlend_AppFuncRoot,
     ) -> crate::OcctResult<*mut gp_Pnt>;
-    /// **Source:** `BRepBlend_AppFuncRoot.hxx`:149 - `BRepBlend_AppFuncRoot::MaximalSection()`
+    /// **Source:** `BRepBlend_AppFuncRoot.hxx`:143 - `BRepBlend_AppFuncRoot::MaximalSection()`
     pub fn BRepBlend_AppFuncRoot_maximal_section(
         self_: *const BRepBlend_AppFuncRoot,
     ) -> crate::OcctResult<f64>;
-    /// **Source:** `BRepBlend_AppFuncRoot.hxx`:154 - `BRepBlend_AppFuncRoot::GetMinimalWeight()`
+    /// **Source:** `BRepBlend_AppFuncRoot.hxx`:148 - `BRepBlend_AppFuncRoot::GetMinimalWeight()`
     pub fn BRepBlend_AppFuncRoot_get_minimal_weight(
         self_: *const BRepBlend_AppFuncRoot,
-        Weigths: *mut TColStd_Array1OfReal,
+        Weigths: *mut NCollection_Array1_double,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepBlend_AppFuncRoot.hxx`:157 - `BRepBlend_AppFuncRoot::Point()`
+    /// **Source:** `BRepBlend_AppFuncRoot.hxx`:150 - `BRepBlend_AppFuncRoot::Point()`
     pub fn BRepBlend_AppFuncRoot_point(
         self_: *const BRepBlend_AppFuncRoot,
         Func: *const Blend_AppFunction,
@@ -367,21 +367,21 @@ unsafe extern "C" {
         Sol: *const math_Vector,
         Pnt: *mut Blend_Point,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepBlend_AppFuncRoot.hxx`:162 - `BRepBlend_AppFuncRoot::Vec()`
+    /// **Source:** `BRepBlend_AppFuncRoot.hxx`:155 - `BRepBlend_AppFuncRoot::Vec()`
     pub fn BRepBlend_AppFuncRoot_vec(
         self_: *const BRepBlend_AppFuncRoot,
         Sol: *mut math_Vector,
         Pnt: *const Blend_Point,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepBlend_AppFuncRoot.hxx`:164 - `BRepBlend_AppFuncRoot::DynamicType()`
+    /// **Source:** `BRepBlend_AppFuncRoot.hxx`:157 - `BRepBlend_AppFuncRoot::DynamicType()`
     pub fn BRepBlend_AppFuncRoot_dynamic_type(
         self_: *const BRepBlend_AppFuncRoot,
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// **Source:** `BRepBlend_AppFuncRoot.hxx`:164 - `BRepBlend_AppFuncRoot::get_type_name()`
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
+    /// **Source:** `BRepBlend_AppFuncRoot.hxx`:157 - `BRepBlend_AppFuncRoot::get_type_name()`
     pub fn BRepBlend_AppFuncRoot_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
-    /// **Source:** `BRepBlend_AppFuncRoot.hxx`:164 - `BRepBlend_AppFuncRoot::get_type_descriptor()`
+    /// **Source:** `BRepBlend_AppFuncRoot.hxx`:157 - `BRepBlend_AppFuncRoot::get_type_descriptor()`
     pub fn BRepBlend_AppFuncRoot_get_type_descriptor(
-    ) -> crate::OcctResult<*const HandleStandardType>;
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast BRepBlend_AppFuncRoot to Approx_SweepFunction
     pub fn BRepBlend_AppFuncRoot_as_Approx_SweepFunction(
         self_: *const BRepBlend_AppFuncRoot,
@@ -399,81 +399,82 @@ unsafe extern "C" {
         self_: *mut BRepBlend_AppFuncRoot,
     ) -> crate::OcctResult<*mut Standard_Transient>;
     /// Destroy Handle<BRepBlend_AppFuncRoot>
-    pub fn HandleBRepBlendAppFuncRoot_destructor(self_: *mut HandleBRepBlendAppFuncRoot);
+    pub fn Handle_BRepBlend_AppFuncRoot_destructor(self_: *mut Handle_BRepBlend_AppFuncRoot);
     /// Clone Handle<BRepBlend_AppFuncRoot> (increments reference count)
-    pub fn HandleBRepBlendAppFuncRoot_clone(
-        self_: *const HandleBRepBlendAppFuncRoot,
-    ) -> crate::OcctResult<*mut HandleBRepBlendAppFuncRoot>;
+    pub fn Handle_BRepBlend_AppFuncRoot_clone(
+        self_: *const Handle_BRepBlend_AppFuncRoot,
+    ) -> crate::OcctResult<*mut Handle_BRepBlend_AppFuncRoot>;
     /// Check if Handle<BRepBlend_AppFuncRoot> is null
-    pub fn HandleBRepBlendAppFuncRoot_is_null(self_: *const HandleBRepBlendAppFuncRoot) -> bool;
+    pub fn Handle_BRepBlend_AppFuncRoot_is_null(self_: *const Handle_BRepBlend_AppFuncRoot)
+        -> bool;
     /// Dereference Handle to get *const BRepBlend_AppFuncRoot
-    pub fn HandleBRepBlendAppFuncRoot_get(
-        handle: *const HandleBRepBlendAppFuncRoot,
+    pub fn Handle_BRepBlend_AppFuncRoot_get(
+        handle: *const Handle_BRepBlend_AppFuncRoot,
     ) -> crate::OcctResult<*const BRepBlend_AppFuncRoot>;
     /// Dereference Handle to get *mut BRepBlend_AppFuncRoot
-    pub fn HandleBRepBlendAppFuncRoot_get_mut(
-        handle: *mut HandleBRepBlendAppFuncRoot,
+    pub fn Handle_BRepBlend_AppFuncRoot_get_mut(
+        handle: *mut Handle_BRepBlend_AppFuncRoot,
     ) -> crate::OcctResult<*mut BRepBlend_AppFuncRoot>;
     /// Upcast Handle<BRepBlend_AppFuncRoot> to Handle<Approx_SweepFunction>
-    pub fn HandleBRepBlendAppFuncRoot_to_HandleApproxSweepFunction(
-        self_: *const HandleBRepBlendAppFuncRoot,
-    ) -> crate::OcctResult<*mut HandleApproxSweepFunction>;
+    pub fn Handle_BRepBlend_AppFuncRoot_to_Handle_Approx_SweepFunction(
+        self_: *const Handle_BRepBlend_AppFuncRoot,
+    ) -> crate::OcctResult<*mut Handle_Approx_SweepFunction>;
     /// Upcast Handle<BRepBlend_AppFuncRoot> to Handle<Standard_Transient>
-    pub fn HandleBRepBlendAppFuncRoot_to_HandleStandardTransient(
-        self_: *const HandleBRepBlendAppFuncRoot,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
+    pub fn Handle_BRepBlend_AppFuncRoot_to_Handle_Standard_Transient(
+        self_: *const Handle_BRepBlend_AppFuncRoot,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
     /// Downcast Handle<BRepBlend_AppFuncRoot> to Handle<BRepBlend_AppFunc> (returns null on failure)
-    pub fn HandleBRepBlendAppFuncRoot_downcast_to_HandleBRepBlendAppFunc(
-        self_: *const HandleBRepBlendAppFuncRoot,
-    ) -> crate::OcctResult<*mut HandleBRepBlendAppFunc>;
+    pub fn Handle_BRepBlend_AppFuncRoot_downcast_to_Handle_BRepBlend_AppFunc(
+        self_: *const Handle_BRepBlend_AppFuncRoot,
+    ) -> crate::OcctResult<*mut Handle_BRepBlend_AppFunc>;
     /// Downcast Handle<BRepBlend_AppFuncRoot> to Handle<BRepBlend_AppFuncRst> (returns null on failure)
-    pub fn HandleBRepBlendAppFuncRoot_downcast_to_HandleBRepBlendAppFuncRst(
-        self_: *const HandleBRepBlendAppFuncRoot,
-    ) -> crate::OcctResult<*mut HandleBRepBlendAppFuncRst>;
+    pub fn Handle_BRepBlend_AppFuncRoot_downcast_to_Handle_BRepBlend_AppFuncRst(
+        self_: *const Handle_BRepBlend_AppFuncRoot,
+    ) -> crate::OcctResult<*mut Handle_BRepBlend_AppFuncRst>;
     /// Downcast Handle<BRepBlend_AppFuncRoot> to Handle<BRepBlend_AppFuncRstRst> (returns null on failure)
-    pub fn HandleBRepBlendAppFuncRoot_downcast_to_HandleBRepBlendAppFuncRstRst(
-        self_: *const HandleBRepBlendAppFuncRoot,
-    ) -> crate::OcctResult<*mut HandleBRepBlendAppFuncRstRst>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn Handle_BRepBlend_AppFuncRoot_downcast_to_Handle_BRepBlend_AppFuncRstRst(
+        self_: *const Handle_BRepBlend_AppFuncRoot,
+    ) -> crate::OcctResult<*mut Handle_BRepBlend_AppFuncRstRst>;
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn BRepBlend_AppFuncRoot_inherited_IsInstance(
         self_: *const BRepBlend_AppFuncRoot,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn BRepBlend_AppFuncRoot_inherited_IsKind(
         self_: *const BRepBlend_AppFuncRoot,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn BRepBlend_AppFuncRoot_inherited_This(
         self_: *const BRepBlend_AppFuncRoot,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn BRepBlend_AppFuncRoot_inherited_GetRefCount(
         self_: *const BRepBlend_AppFuncRoot,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn BRepBlend_AppFuncRoot_inherited_IncrementRefCounter(
         self_: *mut BRepBlend_AppFuncRoot,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn BRepBlend_AppFuncRoot_inherited_DecrementRefCounter(
         self_: *mut BRepBlend_AppFuncRoot,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn BRepBlend_AppFuncRoot_inherited_Delete(
         self_: *const BRepBlend_AppFuncRoot,
     ) -> *const std::ffi::c_char;
     // ======================== BRepBlend_AppFuncRst ========================
     pub fn BRepBlend_AppFuncRst_destructor(self_: *mut BRepBlend_AppFuncRst);
-    /// **Source:** `BRepBlend_AppFuncRst.hxx`:38 - `BRepBlend_AppFuncRst::BRepBlend_AppFuncRst()`
+    /// **Source:** `BRepBlend_AppFuncRst.hxx`:35 - `BRepBlend_AppFuncRst::BRepBlend_AppFuncRst()`
     pub fn BRepBlend_AppFuncRst_ctor_handlebrepblendline_surfrstfunction_real2(
-        Line: *mut HandleBRepBlendLine,
+        Line: *mut Handle_BRepBlend_Line,
         Func: *mut Blend_SurfRstFunction,
         Tol3d: f64,
         Tol2d: f64,
     ) -> crate::OcctResult<*mut BRepBlend_AppFuncRst>;
-    /// **Source:** `BRepBlend_AppFuncRst.hxx`:43 - `BRepBlend_AppFuncRst::Point()`
+    /// **Source:** `BRepBlend_AppFuncRst.hxx`:40 - `BRepBlend_AppFuncRst::Point()`
     pub fn BRepBlend_AppFuncRst_point(
         self_: *const BRepBlend_AppFuncRst,
         Func: *const Blend_AppFunction,
@@ -481,20 +482,21 @@ unsafe extern "C" {
         Sol: *const math_Vector,
         Pnt: *mut Blend_Point,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepBlend_AppFuncRst.hxx`:48 - `BRepBlend_AppFuncRst::Vec()`
+    /// **Source:** `BRepBlend_AppFuncRst.hxx`:45 - `BRepBlend_AppFuncRst::Vec()`
     pub fn BRepBlend_AppFuncRst_vec(
         self_: *const BRepBlend_AppFuncRst,
         Sol: *mut math_Vector,
         Pnt: *const Blend_Point,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepBlend_AppFuncRst.hxx`:50 - `BRepBlend_AppFuncRst::DynamicType()`
+    /// **Source:** `BRepBlend_AppFuncRst.hxx`:47 - `BRepBlend_AppFuncRst::DynamicType()`
     pub fn BRepBlend_AppFuncRst_dynamic_type(
         self_: *const BRepBlend_AppFuncRst,
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// **Source:** `BRepBlend_AppFuncRst.hxx`:50 - `BRepBlend_AppFuncRst::get_type_name()`
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
+    /// **Source:** `BRepBlend_AppFuncRst.hxx`:47 - `BRepBlend_AppFuncRst::get_type_name()`
     pub fn BRepBlend_AppFuncRst_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
-    /// **Source:** `BRepBlend_AppFuncRst.hxx`:50 - `BRepBlend_AppFuncRst::get_type_descriptor()`
-    pub fn BRepBlend_AppFuncRst_get_type_descriptor() -> crate::OcctResult<*const HandleStandardType>;
+    /// **Source:** `BRepBlend_AppFuncRst.hxx`:47 - `BRepBlend_AppFuncRst::get_type_descriptor()`
+    pub fn BRepBlend_AppFuncRst_get_type_descriptor(
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast BRepBlend_AppFuncRst to BRepBlend_AppFuncRoot
     pub fn BRepBlend_AppFuncRst_as_BRepBlend_AppFuncRoot(
         self_: *const BRepBlend_AppFuncRst,
@@ -522,117 +524,117 @@ unsafe extern "C" {
     /// Wrap BRepBlend_AppFuncRst in a Handle
     pub fn BRepBlend_AppFuncRst_to_handle(
         obj: *mut BRepBlend_AppFuncRst,
-    ) -> crate::OcctResult<*mut HandleBRepBlendAppFuncRst>;
+    ) -> crate::OcctResult<*mut Handle_BRepBlend_AppFuncRst>;
     /// Destroy Handle<BRepBlend_AppFuncRst>
-    pub fn HandleBRepBlendAppFuncRst_destructor(self_: *mut HandleBRepBlendAppFuncRst);
+    pub fn Handle_BRepBlend_AppFuncRst_destructor(self_: *mut Handle_BRepBlend_AppFuncRst);
     /// Clone Handle<BRepBlend_AppFuncRst> (increments reference count)
-    pub fn HandleBRepBlendAppFuncRst_clone(
-        self_: *const HandleBRepBlendAppFuncRst,
-    ) -> crate::OcctResult<*mut HandleBRepBlendAppFuncRst>;
+    pub fn Handle_BRepBlend_AppFuncRst_clone(
+        self_: *const Handle_BRepBlend_AppFuncRst,
+    ) -> crate::OcctResult<*mut Handle_BRepBlend_AppFuncRst>;
     /// Check if Handle<BRepBlend_AppFuncRst> is null
-    pub fn HandleBRepBlendAppFuncRst_is_null(self_: *const HandleBRepBlendAppFuncRst) -> bool;
+    pub fn Handle_BRepBlend_AppFuncRst_is_null(self_: *const Handle_BRepBlend_AppFuncRst) -> bool;
     /// Dereference Handle to get *const BRepBlend_AppFuncRst
-    pub fn HandleBRepBlendAppFuncRst_get(
-        handle: *const HandleBRepBlendAppFuncRst,
+    pub fn Handle_BRepBlend_AppFuncRst_get(
+        handle: *const Handle_BRepBlend_AppFuncRst,
     ) -> crate::OcctResult<*const BRepBlend_AppFuncRst>;
     /// Dereference Handle to get *mut BRepBlend_AppFuncRst
-    pub fn HandleBRepBlendAppFuncRst_get_mut(
-        handle: *mut HandleBRepBlendAppFuncRst,
+    pub fn Handle_BRepBlend_AppFuncRst_get_mut(
+        handle: *mut Handle_BRepBlend_AppFuncRst,
     ) -> crate::OcctResult<*mut BRepBlend_AppFuncRst>;
     /// Upcast Handle<BRepBlend_AppFuncRst> to Handle<BRepBlend_AppFuncRoot>
-    pub fn HandleBRepBlendAppFuncRst_to_HandleBRepBlendAppFuncRoot(
-        self_: *const HandleBRepBlendAppFuncRst,
-    ) -> crate::OcctResult<*mut HandleBRepBlendAppFuncRoot>;
+    pub fn Handle_BRepBlend_AppFuncRst_to_Handle_BRepBlend_AppFuncRoot(
+        self_: *const Handle_BRepBlend_AppFuncRst,
+    ) -> crate::OcctResult<*mut Handle_BRepBlend_AppFuncRoot>;
     /// Upcast Handle<BRepBlend_AppFuncRst> to Handle<Approx_SweepFunction>
-    pub fn HandleBRepBlendAppFuncRst_to_HandleApproxSweepFunction(
-        self_: *const HandleBRepBlendAppFuncRst,
-    ) -> crate::OcctResult<*mut HandleApproxSweepFunction>;
+    pub fn Handle_BRepBlend_AppFuncRst_to_Handle_Approx_SweepFunction(
+        self_: *const Handle_BRepBlend_AppFuncRst,
+    ) -> crate::OcctResult<*mut Handle_Approx_SweepFunction>;
     /// Upcast Handle<BRepBlend_AppFuncRst> to Handle<Standard_Transient>
-    pub fn HandleBRepBlendAppFuncRst_to_HandleStandardTransient(
-        self_: *const HandleBRepBlendAppFuncRst,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
-    /// Inherited: **Source:** `BRepBlend_AppFuncRoot.hxx`:47 - `BRepBlend_AppFuncRoot::D0()`
+    pub fn Handle_BRepBlend_AppFuncRst_to_Handle_Standard_Transient(
+        self_: *const Handle_BRepBlend_AppFuncRst,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
+    /// Inherited: **Source:** `BRepBlend_AppFuncRoot.hxx`:46 - `BRepBlend_AppFuncRoot::D0()`
     pub fn BRepBlend_AppFuncRst_inherited_D0(
         self_: *mut BRepBlend_AppFuncRst,
         Param: f64,
         First: f64,
         Last: f64,
-        Poles: *mut TColgp_Array1OfPnt,
-        Poles2d: *mut TColgp_Array1OfPnt2d,
-        Weigths: *mut TColStd_Array1OfReal,
+        Poles: *mut NCollection_Array1_gp_Pnt,
+        Poles2d: *mut NCollection_Array1_gp_Pnt2d,
+        Weigths: *mut NCollection_Array1_double,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `BRepBlend_AppFuncRoot.hxx`:56 - `BRepBlend_AppFuncRoot::D1()`
+    /// Inherited: **Source:** `BRepBlend_AppFuncRoot.hxx`:55 - `BRepBlend_AppFuncRoot::D1()`
     pub fn BRepBlend_AppFuncRst_inherited_D1(
         self_: *mut BRepBlend_AppFuncRst,
         Param: f64,
         First: f64,
         Last: f64,
-        Poles: *mut TColgp_Array1OfPnt,
-        DPoles: *mut TColgp_Array1OfVec,
-        Poles2d: *mut TColgp_Array1OfPnt2d,
-        DPoles2d: *mut TColgp_Array1OfVec2d,
-        Weigths: *mut TColStd_Array1OfReal,
-        DWeigths: *mut TColStd_Array1OfReal,
+        Poles: *mut NCollection_Array1_gp_Pnt,
+        DPoles: *mut NCollection_Array1_gp_Vec,
+        Poles2d: *mut NCollection_Array1_gp_Pnt2d,
+        DPoles2d: *mut NCollection_Array1_gp_Vec2d,
+        Weigths: *mut NCollection_Array1_double,
+        DWeigths: *mut NCollection_Array1_double,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `BRepBlend_AppFuncRoot.hxx`:68 - `BRepBlend_AppFuncRoot::D2()`
+    /// Inherited: **Source:** `BRepBlend_AppFuncRoot.hxx`:67 - `BRepBlend_AppFuncRoot::D2()`
     pub fn BRepBlend_AppFuncRst_inherited_D2(
         self_: *mut BRepBlend_AppFuncRst,
         Param: f64,
         First: f64,
         Last: f64,
-        Poles: *mut TColgp_Array1OfPnt,
-        DPoles: *mut TColgp_Array1OfVec,
-        D2Poles: *mut TColgp_Array1OfVec,
-        Poles2d: *mut TColgp_Array1OfPnt2d,
-        DPoles2d: *mut TColgp_Array1OfVec2d,
-        D2Poles2d: *mut TColgp_Array1OfVec2d,
-        Weigths: *mut TColStd_Array1OfReal,
-        DWeigths: *mut TColStd_Array1OfReal,
-        D2Weigths: *mut TColStd_Array1OfReal,
+        Poles: *mut NCollection_Array1_gp_Pnt,
+        DPoles: *mut NCollection_Array1_gp_Vec,
+        D2Poles: *mut NCollection_Array1_gp_Vec,
+        Poles2d: *mut NCollection_Array1_gp_Pnt2d,
+        DPoles2d: *mut NCollection_Array1_gp_Vec2d,
+        D2Poles2d: *mut NCollection_Array1_gp_Vec2d,
+        Weigths: *mut NCollection_Array1_double,
+        DWeigths: *mut NCollection_Array1_double,
+        D2Weigths: *mut NCollection_Array1_double,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `BRepBlend_AppFuncRoot.hxx`:82 - `BRepBlend_AppFuncRoot::Nb2dCurves()`
+    /// Inherited: **Source:** `BRepBlend_AppFuncRoot.hxx`:81 - `BRepBlend_AppFuncRoot::Nb2dCurves()`
     pub fn BRepBlend_AppFuncRst_inherited_Nb2dCurves(
         self_: *const BRepBlend_AppFuncRst,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `BRepBlend_AppFuncRoot.hxx`:85 - `BRepBlend_AppFuncRoot::SectionShape()`
+    /// Inherited: **Source:** `BRepBlend_AppFuncRoot.hxx`:84 - `BRepBlend_AppFuncRoot::SectionShape()`
     pub fn BRepBlend_AppFuncRst_inherited_SectionShape(
         self_: *const BRepBlend_AppFuncRst,
         NbPoles: *mut i32,
         NbKnots: *mut i32,
         Degree: *mut i32,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BRepBlend_AppFuncRoot.hxx`:90 - `BRepBlend_AppFuncRoot::Knots()`
+    /// Inherited: **Source:** `BRepBlend_AppFuncRoot.hxx`:87 - `BRepBlend_AppFuncRoot::Knots()`
     pub fn BRepBlend_AppFuncRst_inherited_Knots(
         self_: *const BRepBlend_AppFuncRst,
-        TKnots: *mut TColStd_Array1OfReal,
+        TKnots: *mut NCollection_Array1_double,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BRepBlend_AppFuncRoot.hxx`:93 - `BRepBlend_AppFuncRoot::Mults()`
+    /// Inherited: **Source:** `BRepBlend_AppFuncRoot.hxx`:90 - `BRepBlend_AppFuncRoot::Mults()`
     pub fn BRepBlend_AppFuncRst_inherited_Mults(
         self_: *const BRepBlend_AppFuncRst,
-        TMults: *mut TColStd_Array1OfInteger,
+        TMults: *mut NCollection_Array1_int,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BRepBlend_AppFuncRoot.hxx`:96 - `BRepBlend_AppFuncRoot::IsRational()`
+    /// Inherited: **Source:** `BRepBlend_AppFuncRoot.hxx`:93 - `BRepBlend_AppFuncRoot::IsRational()`
     pub fn BRepBlend_AppFuncRst_inherited_IsRational(
         self_: *const BRepBlend_AppFuncRst,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `BRepBlend_AppFuncRoot.hxx`:100 - `BRepBlend_AppFuncRoot::NbIntervals()`
+    /// Inherited: **Source:** `BRepBlend_AppFuncRoot.hxx`:97 - `BRepBlend_AppFuncRoot::NbIntervals()`
     pub fn BRepBlend_AppFuncRst_inherited_NbIntervals(
         self_: *const BRepBlend_AppFuncRst,
         S: i32,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `BRepBlend_AppFuncRoot.hxx`:108 - `BRepBlend_AppFuncRoot::Intervals()`
+    /// Inherited: **Source:** `BRepBlend_AppFuncRoot.hxx`:104 - `BRepBlend_AppFuncRoot::Intervals()`
     pub fn BRepBlend_AppFuncRst_inherited_Intervals(
         self_: *const BRepBlend_AppFuncRst,
-        T: *mut TColStd_Array1OfReal,
+        T: *mut NCollection_Array1_double,
         S: i32,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BRepBlend_AppFuncRoot.hxx`:115 - `BRepBlend_AppFuncRoot::SetInterval()`
+    /// Inherited: **Source:** `BRepBlend_AppFuncRoot.hxx`:111 - `BRepBlend_AppFuncRoot::SetInterval()`
     pub fn BRepBlend_AppFuncRst_inherited_SetInterval(
         self_: *mut BRepBlend_AppFuncRst,
         First: f64,
         Last: f64,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BRepBlend_AppFuncRoot.hxx`:121 - `BRepBlend_AppFuncRoot::Resolution()`
+    /// Inherited: **Source:** `BRepBlend_AppFuncRoot.hxx`:116 - `BRepBlend_AppFuncRoot::Resolution()`
     pub fn BRepBlend_AppFuncRst_inherited_Resolution(
         self_: *const BRepBlend_AppFuncRst,
         Index: i32,
@@ -640,73 +642,73 @@ unsafe extern "C" {
         TolU: *mut f64,
         TolV: *mut f64,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BRepBlend_AppFuncRoot.hxx`:131 - `BRepBlend_AppFuncRoot::GetTolerance()`
+    /// Inherited: **Source:** `BRepBlend_AppFuncRoot.hxx`:126 - `BRepBlend_AppFuncRoot::GetTolerance()`
     pub fn BRepBlend_AppFuncRst_inherited_GetTolerance(
         self_: *const BRepBlend_AppFuncRst,
         BoundTol: f64,
         SurfTol: f64,
         AngleTol: f64,
-        Tol3d: *mut TColStd_Array1OfReal,
+        Tol3d: *mut NCollection_Array1_double,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BRepBlend_AppFuncRoot.hxx`:138 - `BRepBlend_AppFuncRoot::SetTolerance()`
+    /// Inherited: **Source:** `BRepBlend_AppFuncRoot.hxx`:133 - `BRepBlend_AppFuncRoot::SetTolerance()`
     pub fn BRepBlend_AppFuncRst_inherited_SetTolerance(
         self_: *mut BRepBlend_AppFuncRst,
         Tol3d: f64,
         Tol2d: f64,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BRepBlend_AppFuncRoot.hxx`:144 - `BRepBlend_AppFuncRoot::BarycentreOfSurf()`
+    /// Inherited: **Source:** `BRepBlend_AppFuncRoot.hxx`:138 - `BRepBlend_AppFuncRoot::BarycentreOfSurf()`
     pub fn BRepBlend_AppFuncRst_inherited_BarycentreOfSurf(
         self_: *const BRepBlend_AppFuncRst,
     ) -> crate::OcctResult<*mut gp_Pnt>;
-    /// Inherited: **Source:** `BRepBlend_AppFuncRoot.hxx`:149 - `BRepBlend_AppFuncRoot::MaximalSection()`
+    /// Inherited: **Source:** `BRepBlend_AppFuncRoot.hxx`:143 - `BRepBlend_AppFuncRoot::MaximalSection()`
     pub fn BRepBlend_AppFuncRst_inherited_MaximalSection(
         self_: *const BRepBlend_AppFuncRst,
     ) -> crate::OcctResult<f64>;
-    /// Inherited: **Source:** `BRepBlend_AppFuncRoot.hxx`:154 - `BRepBlend_AppFuncRoot::GetMinimalWeight()`
+    /// Inherited: **Source:** `BRepBlend_AppFuncRoot.hxx`:148 - `BRepBlend_AppFuncRoot::GetMinimalWeight()`
     pub fn BRepBlend_AppFuncRst_inherited_GetMinimalWeight(
         self_: *const BRepBlend_AppFuncRst,
-        Weigths: *mut TColStd_Array1OfReal,
+        Weigths: *mut NCollection_Array1_double,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn BRepBlend_AppFuncRst_inherited_IsInstance(
         self_: *const BRepBlend_AppFuncRst,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn BRepBlend_AppFuncRst_inherited_IsKind(
         self_: *const BRepBlend_AppFuncRst,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn BRepBlend_AppFuncRst_inherited_This(
         self_: *const BRepBlend_AppFuncRst,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn BRepBlend_AppFuncRst_inherited_GetRefCount(
         self_: *const BRepBlend_AppFuncRst,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn BRepBlend_AppFuncRst_inherited_IncrementRefCounter(
         self_: *mut BRepBlend_AppFuncRst,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn BRepBlend_AppFuncRst_inherited_DecrementRefCounter(
         self_: *mut BRepBlend_AppFuncRst,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn BRepBlend_AppFuncRst_inherited_Delete(
         self_: *const BRepBlend_AppFuncRst,
     ) -> *const std::ffi::c_char;
     // ======================== BRepBlend_AppFuncRstRst ========================
     pub fn BRepBlend_AppFuncRstRst_destructor(self_: *mut BRepBlend_AppFuncRstRst);
-    /// **Source:** `BRepBlend_AppFuncRstRst.hxx`:38 - `BRepBlend_AppFuncRstRst::BRepBlend_AppFuncRstRst()`
+    /// **Source:** `BRepBlend_AppFuncRstRst.hxx`:35 - `BRepBlend_AppFuncRstRst::BRepBlend_AppFuncRstRst()`
     pub fn BRepBlend_AppFuncRstRst_ctor_handlebrepblendline_rstrstfunction_real2(
-        Line: *mut HandleBRepBlendLine,
+        Line: *mut Handle_BRepBlend_Line,
         Func: *mut Blend_RstRstFunction,
         Tol3d: f64,
         Tol2d: f64,
     ) -> crate::OcctResult<*mut BRepBlend_AppFuncRstRst>;
-    /// **Source:** `BRepBlend_AppFuncRstRst.hxx`:43 - `BRepBlend_AppFuncRstRst::Point()`
+    /// **Source:** `BRepBlend_AppFuncRstRst.hxx`:40 - `BRepBlend_AppFuncRstRst::Point()`
     pub fn BRepBlend_AppFuncRstRst_point(
         self_: *const BRepBlend_AppFuncRstRst,
         Func: *const Blend_AppFunction,
@@ -714,21 +716,21 @@ unsafe extern "C" {
         Sol: *const math_Vector,
         Pnt: *mut Blend_Point,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepBlend_AppFuncRstRst.hxx`:48 - `BRepBlend_AppFuncRstRst::Vec()`
+    /// **Source:** `BRepBlend_AppFuncRstRst.hxx`:45 - `BRepBlend_AppFuncRstRst::Vec()`
     pub fn BRepBlend_AppFuncRstRst_vec(
         self_: *const BRepBlend_AppFuncRstRst,
         Sol: *mut math_Vector,
         Pnt: *const Blend_Point,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepBlend_AppFuncRstRst.hxx`:50 - `BRepBlend_AppFuncRstRst::DynamicType()`
+    /// **Source:** `BRepBlend_AppFuncRstRst.hxx`:47 - `BRepBlend_AppFuncRstRst::DynamicType()`
     pub fn BRepBlend_AppFuncRstRst_dynamic_type(
         self_: *const BRepBlend_AppFuncRstRst,
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// **Source:** `BRepBlend_AppFuncRstRst.hxx`:50 - `BRepBlend_AppFuncRstRst::get_type_name()`
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
+    /// **Source:** `BRepBlend_AppFuncRstRst.hxx`:47 - `BRepBlend_AppFuncRstRst::get_type_name()`
     pub fn BRepBlend_AppFuncRstRst_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
-    /// **Source:** `BRepBlend_AppFuncRstRst.hxx`:50 - `BRepBlend_AppFuncRstRst::get_type_descriptor()`
+    /// **Source:** `BRepBlend_AppFuncRstRst.hxx`:47 - `BRepBlend_AppFuncRstRst::get_type_descriptor()`
     pub fn BRepBlend_AppFuncRstRst_get_type_descriptor(
-    ) -> crate::OcctResult<*const HandleStandardType>;
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast BRepBlend_AppFuncRstRst to BRepBlend_AppFuncRoot
     pub fn BRepBlend_AppFuncRstRst_as_BRepBlend_AppFuncRoot(
         self_: *const BRepBlend_AppFuncRstRst,
@@ -756,118 +758,119 @@ unsafe extern "C" {
     /// Wrap BRepBlend_AppFuncRstRst in a Handle
     pub fn BRepBlend_AppFuncRstRst_to_handle(
         obj: *mut BRepBlend_AppFuncRstRst,
-    ) -> crate::OcctResult<*mut HandleBRepBlendAppFuncRstRst>;
+    ) -> crate::OcctResult<*mut Handle_BRepBlend_AppFuncRstRst>;
     /// Destroy Handle<BRepBlend_AppFuncRstRst>
-    pub fn HandleBRepBlendAppFuncRstRst_destructor(self_: *mut HandleBRepBlendAppFuncRstRst);
+    pub fn Handle_BRepBlend_AppFuncRstRst_destructor(self_: *mut Handle_BRepBlend_AppFuncRstRst);
     /// Clone Handle<BRepBlend_AppFuncRstRst> (increments reference count)
-    pub fn HandleBRepBlendAppFuncRstRst_clone(
-        self_: *const HandleBRepBlendAppFuncRstRst,
-    ) -> crate::OcctResult<*mut HandleBRepBlendAppFuncRstRst>;
+    pub fn Handle_BRepBlend_AppFuncRstRst_clone(
+        self_: *const Handle_BRepBlend_AppFuncRstRst,
+    ) -> crate::OcctResult<*mut Handle_BRepBlend_AppFuncRstRst>;
     /// Check if Handle<BRepBlend_AppFuncRstRst> is null
-    pub fn HandleBRepBlendAppFuncRstRst_is_null(self_: *const HandleBRepBlendAppFuncRstRst)
-        -> bool;
+    pub fn Handle_BRepBlend_AppFuncRstRst_is_null(
+        self_: *const Handle_BRepBlend_AppFuncRstRst,
+    ) -> bool;
     /// Dereference Handle to get *const BRepBlend_AppFuncRstRst
-    pub fn HandleBRepBlendAppFuncRstRst_get(
-        handle: *const HandleBRepBlendAppFuncRstRst,
+    pub fn Handle_BRepBlend_AppFuncRstRst_get(
+        handle: *const Handle_BRepBlend_AppFuncRstRst,
     ) -> crate::OcctResult<*const BRepBlend_AppFuncRstRst>;
     /// Dereference Handle to get *mut BRepBlend_AppFuncRstRst
-    pub fn HandleBRepBlendAppFuncRstRst_get_mut(
-        handle: *mut HandleBRepBlendAppFuncRstRst,
+    pub fn Handle_BRepBlend_AppFuncRstRst_get_mut(
+        handle: *mut Handle_BRepBlend_AppFuncRstRst,
     ) -> crate::OcctResult<*mut BRepBlend_AppFuncRstRst>;
     /// Upcast Handle<BRepBlend_AppFuncRstRst> to Handle<BRepBlend_AppFuncRoot>
-    pub fn HandleBRepBlendAppFuncRstRst_to_HandleBRepBlendAppFuncRoot(
-        self_: *const HandleBRepBlendAppFuncRstRst,
-    ) -> crate::OcctResult<*mut HandleBRepBlendAppFuncRoot>;
+    pub fn Handle_BRepBlend_AppFuncRstRst_to_Handle_BRepBlend_AppFuncRoot(
+        self_: *const Handle_BRepBlend_AppFuncRstRst,
+    ) -> crate::OcctResult<*mut Handle_BRepBlend_AppFuncRoot>;
     /// Upcast Handle<BRepBlend_AppFuncRstRst> to Handle<Approx_SweepFunction>
-    pub fn HandleBRepBlendAppFuncRstRst_to_HandleApproxSweepFunction(
-        self_: *const HandleBRepBlendAppFuncRstRst,
-    ) -> crate::OcctResult<*mut HandleApproxSweepFunction>;
+    pub fn Handle_BRepBlend_AppFuncRstRst_to_Handle_Approx_SweepFunction(
+        self_: *const Handle_BRepBlend_AppFuncRstRst,
+    ) -> crate::OcctResult<*mut Handle_Approx_SweepFunction>;
     /// Upcast Handle<BRepBlend_AppFuncRstRst> to Handle<Standard_Transient>
-    pub fn HandleBRepBlendAppFuncRstRst_to_HandleStandardTransient(
-        self_: *const HandleBRepBlendAppFuncRstRst,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
-    /// Inherited: **Source:** `BRepBlend_AppFuncRoot.hxx`:47 - `BRepBlend_AppFuncRoot::D0()`
+    pub fn Handle_BRepBlend_AppFuncRstRst_to_Handle_Standard_Transient(
+        self_: *const Handle_BRepBlend_AppFuncRstRst,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
+    /// Inherited: **Source:** `BRepBlend_AppFuncRoot.hxx`:46 - `BRepBlend_AppFuncRoot::D0()`
     pub fn BRepBlend_AppFuncRstRst_inherited_D0(
         self_: *mut BRepBlend_AppFuncRstRst,
         Param: f64,
         First: f64,
         Last: f64,
-        Poles: *mut TColgp_Array1OfPnt,
-        Poles2d: *mut TColgp_Array1OfPnt2d,
-        Weigths: *mut TColStd_Array1OfReal,
+        Poles: *mut NCollection_Array1_gp_Pnt,
+        Poles2d: *mut NCollection_Array1_gp_Pnt2d,
+        Weigths: *mut NCollection_Array1_double,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `BRepBlend_AppFuncRoot.hxx`:56 - `BRepBlend_AppFuncRoot::D1()`
+    /// Inherited: **Source:** `BRepBlend_AppFuncRoot.hxx`:55 - `BRepBlend_AppFuncRoot::D1()`
     pub fn BRepBlend_AppFuncRstRst_inherited_D1(
         self_: *mut BRepBlend_AppFuncRstRst,
         Param: f64,
         First: f64,
         Last: f64,
-        Poles: *mut TColgp_Array1OfPnt,
-        DPoles: *mut TColgp_Array1OfVec,
-        Poles2d: *mut TColgp_Array1OfPnt2d,
-        DPoles2d: *mut TColgp_Array1OfVec2d,
-        Weigths: *mut TColStd_Array1OfReal,
-        DWeigths: *mut TColStd_Array1OfReal,
+        Poles: *mut NCollection_Array1_gp_Pnt,
+        DPoles: *mut NCollection_Array1_gp_Vec,
+        Poles2d: *mut NCollection_Array1_gp_Pnt2d,
+        DPoles2d: *mut NCollection_Array1_gp_Vec2d,
+        Weigths: *mut NCollection_Array1_double,
+        DWeigths: *mut NCollection_Array1_double,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `BRepBlend_AppFuncRoot.hxx`:68 - `BRepBlend_AppFuncRoot::D2()`
+    /// Inherited: **Source:** `BRepBlend_AppFuncRoot.hxx`:67 - `BRepBlend_AppFuncRoot::D2()`
     pub fn BRepBlend_AppFuncRstRst_inherited_D2(
         self_: *mut BRepBlend_AppFuncRstRst,
         Param: f64,
         First: f64,
         Last: f64,
-        Poles: *mut TColgp_Array1OfPnt,
-        DPoles: *mut TColgp_Array1OfVec,
-        D2Poles: *mut TColgp_Array1OfVec,
-        Poles2d: *mut TColgp_Array1OfPnt2d,
-        DPoles2d: *mut TColgp_Array1OfVec2d,
-        D2Poles2d: *mut TColgp_Array1OfVec2d,
-        Weigths: *mut TColStd_Array1OfReal,
-        DWeigths: *mut TColStd_Array1OfReal,
-        D2Weigths: *mut TColStd_Array1OfReal,
+        Poles: *mut NCollection_Array1_gp_Pnt,
+        DPoles: *mut NCollection_Array1_gp_Vec,
+        D2Poles: *mut NCollection_Array1_gp_Vec,
+        Poles2d: *mut NCollection_Array1_gp_Pnt2d,
+        DPoles2d: *mut NCollection_Array1_gp_Vec2d,
+        D2Poles2d: *mut NCollection_Array1_gp_Vec2d,
+        Weigths: *mut NCollection_Array1_double,
+        DWeigths: *mut NCollection_Array1_double,
+        D2Weigths: *mut NCollection_Array1_double,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `BRepBlend_AppFuncRoot.hxx`:82 - `BRepBlend_AppFuncRoot::Nb2dCurves()`
+    /// Inherited: **Source:** `BRepBlend_AppFuncRoot.hxx`:81 - `BRepBlend_AppFuncRoot::Nb2dCurves()`
     pub fn BRepBlend_AppFuncRstRst_inherited_Nb2dCurves(
         self_: *const BRepBlend_AppFuncRstRst,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `BRepBlend_AppFuncRoot.hxx`:85 - `BRepBlend_AppFuncRoot::SectionShape()`
+    /// Inherited: **Source:** `BRepBlend_AppFuncRoot.hxx`:84 - `BRepBlend_AppFuncRoot::SectionShape()`
     pub fn BRepBlend_AppFuncRstRst_inherited_SectionShape(
         self_: *const BRepBlend_AppFuncRstRst,
         NbPoles: *mut i32,
         NbKnots: *mut i32,
         Degree: *mut i32,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BRepBlend_AppFuncRoot.hxx`:90 - `BRepBlend_AppFuncRoot::Knots()`
+    /// Inherited: **Source:** `BRepBlend_AppFuncRoot.hxx`:87 - `BRepBlend_AppFuncRoot::Knots()`
     pub fn BRepBlend_AppFuncRstRst_inherited_Knots(
         self_: *const BRepBlend_AppFuncRstRst,
-        TKnots: *mut TColStd_Array1OfReal,
+        TKnots: *mut NCollection_Array1_double,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BRepBlend_AppFuncRoot.hxx`:93 - `BRepBlend_AppFuncRoot::Mults()`
+    /// Inherited: **Source:** `BRepBlend_AppFuncRoot.hxx`:90 - `BRepBlend_AppFuncRoot::Mults()`
     pub fn BRepBlend_AppFuncRstRst_inherited_Mults(
         self_: *const BRepBlend_AppFuncRstRst,
-        TMults: *mut TColStd_Array1OfInteger,
+        TMults: *mut NCollection_Array1_int,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BRepBlend_AppFuncRoot.hxx`:96 - `BRepBlend_AppFuncRoot::IsRational()`
+    /// Inherited: **Source:** `BRepBlend_AppFuncRoot.hxx`:93 - `BRepBlend_AppFuncRoot::IsRational()`
     pub fn BRepBlend_AppFuncRstRst_inherited_IsRational(
         self_: *const BRepBlend_AppFuncRstRst,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `BRepBlend_AppFuncRoot.hxx`:100 - `BRepBlend_AppFuncRoot::NbIntervals()`
+    /// Inherited: **Source:** `BRepBlend_AppFuncRoot.hxx`:97 - `BRepBlend_AppFuncRoot::NbIntervals()`
     pub fn BRepBlend_AppFuncRstRst_inherited_NbIntervals(
         self_: *const BRepBlend_AppFuncRstRst,
         S: i32,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `BRepBlend_AppFuncRoot.hxx`:108 - `BRepBlend_AppFuncRoot::Intervals()`
+    /// Inherited: **Source:** `BRepBlend_AppFuncRoot.hxx`:104 - `BRepBlend_AppFuncRoot::Intervals()`
     pub fn BRepBlend_AppFuncRstRst_inherited_Intervals(
         self_: *const BRepBlend_AppFuncRstRst,
-        T: *mut TColStd_Array1OfReal,
+        T: *mut NCollection_Array1_double,
         S: i32,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BRepBlend_AppFuncRoot.hxx`:115 - `BRepBlend_AppFuncRoot::SetInterval()`
+    /// Inherited: **Source:** `BRepBlend_AppFuncRoot.hxx`:111 - `BRepBlend_AppFuncRoot::SetInterval()`
     pub fn BRepBlend_AppFuncRstRst_inherited_SetInterval(
         self_: *mut BRepBlend_AppFuncRstRst,
         First: f64,
         Last: f64,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BRepBlend_AppFuncRoot.hxx`:121 - `BRepBlend_AppFuncRoot::Resolution()`
+    /// Inherited: **Source:** `BRepBlend_AppFuncRoot.hxx`:116 - `BRepBlend_AppFuncRoot::Resolution()`
     pub fn BRepBlend_AppFuncRstRst_inherited_Resolution(
         self_: *const BRepBlend_AppFuncRstRst,
         Index: i32,
@@ -875,68 +878,68 @@ unsafe extern "C" {
         TolU: *mut f64,
         TolV: *mut f64,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BRepBlend_AppFuncRoot.hxx`:131 - `BRepBlend_AppFuncRoot::GetTolerance()`
+    /// Inherited: **Source:** `BRepBlend_AppFuncRoot.hxx`:126 - `BRepBlend_AppFuncRoot::GetTolerance()`
     pub fn BRepBlend_AppFuncRstRst_inherited_GetTolerance(
         self_: *const BRepBlend_AppFuncRstRst,
         BoundTol: f64,
         SurfTol: f64,
         AngleTol: f64,
-        Tol3d: *mut TColStd_Array1OfReal,
+        Tol3d: *mut NCollection_Array1_double,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BRepBlend_AppFuncRoot.hxx`:138 - `BRepBlend_AppFuncRoot::SetTolerance()`
+    /// Inherited: **Source:** `BRepBlend_AppFuncRoot.hxx`:133 - `BRepBlend_AppFuncRoot::SetTolerance()`
     pub fn BRepBlend_AppFuncRstRst_inherited_SetTolerance(
         self_: *mut BRepBlend_AppFuncRstRst,
         Tol3d: f64,
         Tol2d: f64,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BRepBlend_AppFuncRoot.hxx`:144 - `BRepBlend_AppFuncRoot::BarycentreOfSurf()`
+    /// Inherited: **Source:** `BRepBlend_AppFuncRoot.hxx`:138 - `BRepBlend_AppFuncRoot::BarycentreOfSurf()`
     pub fn BRepBlend_AppFuncRstRst_inherited_BarycentreOfSurf(
         self_: *const BRepBlend_AppFuncRstRst,
     ) -> crate::OcctResult<*mut gp_Pnt>;
-    /// Inherited: **Source:** `BRepBlend_AppFuncRoot.hxx`:149 - `BRepBlend_AppFuncRoot::MaximalSection()`
+    /// Inherited: **Source:** `BRepBlend_AppFuncRoot.hxx`:143 - `BRepBlend_AppFuncRoot::MaximalSection()`
     pub fn BRepBlend_AppFuncRstRst_inherited_MaximalSection(
         self_: *const BRepBlend_AppFuncRstRst,
     ) -> crate::OcctResult<f64>;
-    /// Inherited: **Source:** `BRepBlend_AppFuncRoot.hxx`:154 - `BRepBlend_AppFuncRoot::GetMinimalWeight()`
+    /// Inherited: **Source:** `BRepBlend_AppFuncRoot.hxx`:148 - `BRepBlend_AppFuncRoot::GetMinimalWeight()`
     pub fn BRepBlend_AppFuncRstRst_inherited_GetMinimalWeight(
         self_: *const BRepBlend_AppFuncRstRst,
-        Weigths: *mut TColStd_Array1OfReal,
+        Weigths: *mut NCollection_Array1_double,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn BRepBlend_AppFuncRstRst_inherited_IsInstance(
         self_: *const BRepBlend_AppFuncRstRst,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn BRepBlend_AppFuncRstRst_inherited_IsKind(
         self_: *const BRepBlend_AppFuncRstRst,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn BRepBlend_AppFuncRstRst_inherited_This(
         self_: *const BRepBlend_AppFuncRstRst,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn BRepBlend_AppFuncRstRst_inherited_GetRefCount(
         self_: *const BRepBlend_AppFuncRstRst,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn BRepBlend_AppFuncRstRst_inherited_IncrementRefCounter(
         self_: *mut BRepBlend_AppFuncRstRst,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn BRepBlend_AppFuncRstRst_inherited_DecrementRefCounter(
         self_: *mut BRepBlend_AppFuncRstRst,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn BRepBlend_AppFuncRstRst_inherited_Delete(
         self_: *const BRepBlend_AppFuncRstRst,
     ) -> *const std::ffi::c_char;
     // ======================== BRepBlend_AppSurf ========================
     pub fn BRepBlend_AppSurf_destructor(self_: *mut BRepBlend_AppSurf);
-    /// **Source:** `BRepBlend_AppSurf.hxx`:51 - `BRepBlend_AppSurf::BRepBlend_AppSurf()`
+    /// **Source:** `BRepBlend_AppSurf.hxx`:48 - `BRepBlend_AppSurf::BRepBlend_AppSurf()`
     pub fn BRepBlend_AppSurf_ctor() -> crate::OcctResult<*mut BRepBlend_AppSurf>;
-    /// **Source:** `BRepBlend_AppSurf.hxx`:53 - `BRepBlend_AppSurf::BRepBlend_AppSurf()`
+    /// **Source:** `BRepBlend_AppSurf.hxx`:50 - `BRepBlend_AppSurf::BRepBlend_AppSurf()`
     pub fn BRepBlend_AppSurf_ctor_int2_real2_int_bool(
         Degmin: i32,
         Degmax: i32,
@@ -945,7 +948,7 @@ unsafe extern "C" {
         NbIt: i32,
         KnownParameters: bool,
     ) -> crate::OcctResult<*mut BRepBlend_AppSurf>;
-    /// **Source:** `BRepBlend_AppSurf.hxx`:60 - `BRepBlend_AppSurf::Init()`
+    /// **Source:** `BRepBlend_AppSurf.hxx`:57 - `BRepBlend_AppSurf::Init()`
     pub fn BRepBlend_AppSurf_init(
         self_: *mut BRepBlend_AppSurf,
         Degmin: i32,
@@ -955,57 +958,57 @@ unsafe extern "C" {
         NbIt: i32,
         KnownParameters: bool,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepBlend_AppSurf.hxx`:68 - `BRepBlend_AppSurf::SetParType()`
+    /// **Source:** `BRepBlend_AppSurf.hxx`:65 - `BRepBlend_AppSurf::SetParType()`
     pub fn BRepBlend_AppSurf_set_par_type(
         self_: *mut BRepBlend_AppSurf,
         ParType: i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepBlend_AppSurf.hxx`:71 - `BRepBlend_AppSurf::SetContinuity()`
+    /// **Source:** `BRepBlend_AppSurf.hxx`:68 - `BRepBlend_AppSurf::SetContinuity()`
     pub fn BRepBlend_AppSurf_set_continuity(
         self_: *mut BRepBlend_AppSurf,
         C: i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepBlend_AppSurf.hxx`:77 - `BRepBlend_AppSurf::SetCriteriumWeight()`
+    /// **Source:** `BRepBlend_AppSurf.hxx`:74 - `BRepBlend_AppSurf::SetCriteriumWeight()`
     pub fn BRepBlend_AppSurf_set_criterium_weight(
         self_: *mut BRepBlend_AppSurf,
         W1: f64,
         W2: f64,
         W3: f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepBlend_AppSurf.hxx`:82 - `BRepBlend_AppSurf::ParType()`
+    /// **Source:** `BRepBlend_AppSurf.hxx`:77 - `BRepBlend_AppSurf::ParType()`
     pub fn BRepBlend_AppSurf_par_type(self_: *const BRepBlend_AppSurf) -> crate::OcctResult<i32>;
-    /// **Source:** `BRepBlend_AppSurf.hxx`:85 - `BRepBlend_AppSurf::Continuity()`
+    /// **Source:** `BRepBlend_AppSurf.hxx`:80 - `BRepBlend_AppSurf::Continuity()`
     pub fn BRepBlend_AppSurf_continuity(self_: *const BRepBlend_AppSurf) -> crate::OcctResult<i32>;
-    /// **Source:** `BRepBlend_AppSurf.hxx`:89 - `BRepBlend_AppSurf::CriteriumWeight()`
+    /// **Source:** `BRepBlend_AppSurf.hxx`:84 - `BRepBlend_AppSurf::CriteriumWeight()`
     pub fn BRepBlend_AppSurf_criterium_weight(
         self_: *const BRepBlend_AppSurf,
         W1: *mut f64,
         W2: *mut f64,
         W3: *mut f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepBlend_AppSurf.hxx`:93 - `BRepBlend_AppSurf::Perform()`
+    /// **Source:** `BRepBlend_AppSurf.hxx`:86 - `BRepBlend_AppSurf::Perform()`
     pub fn BRepBlend_AppSurf_perform_handlebrepblendline_appfunction_bool(
         self_: *mut BRepBlend_AppSurf,
-        Lin: *const HandleBRepBlendLine,
+        Lin: *const Handle_BRepBlend_Line,
         SecGen: *mut Blend_AppFunction,
         SpApprox: bool,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepBlend_AppSurf.hxx`:97 - `BRepBlend_AppSurf::PerformSmoothing()`
+    /// **Source:** `BRepBlend_AppSurf.hxx`:90 - `BRepBlend_AppSurf::PerformSmoothing()`
     pub fn BRepBlend_AppSurf_perform_smoothing(
         self_: *mut BRepBlend_AppSurf,
-        Lin: *const HandleBRepBlendLine,
+        Lin: *const Handle_BRepBlend_Line,
         SecGen: *mut Blend_AppFunction,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepBlend_AppSurf.hxx`:100 - `BRepBlend_AppSurf::Perform()`
+    /// **Source:** `BRepBlend_AppSurf.hxx`:93 - `BRepBlend_AppSurf::Perform()`
     pub fn BRepBlend_AppSurf_perform_handlebrepblendline_appfunction_int(
         self_: *mut BRepBlend_AppSurf,
-        Lin: *const HandleBRepBlendLine,
+        Lin: *const Handle_BRepBlend_Line,
         SecGen: *mut Blend_AppFunction,
         NbMaxP: i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepBlend_AppSurf.hxx`:104 - `BRepBlend_AppSurf::IsDone()`
+    /// **Source:** `BRepBlend_AppSurf.hxx`:97 - `BRepBlend_AppSurf::IsDone()`
     pub fn BRepBlend_AppSurf_is_done(self_: *const BRepBlend_AppSurf) -> crate::OcctResult<bool>;
-    /// **Source:** `BRepBlend_AppSurf.hxx`:106 - `BRepBlend_AppSurf::SurfShape()`
+    /// **Source:** `BRepBlend_AppSurf.hxx`:99 - `BRepBlend_AppSurf::SurfShape()`
     pub fn BRepBlend_AppSurf_surf_shape(
         self_: *const BRepBlend_AppSurf,
         UDegree: *mut i32,
@@ -1015,86 +1018,86 @@ unsafe extern "C" {
         NbUKnots: *mut i32,
         NbVKnots: *mut i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepBlend_AppSurf.hxx`:113 - `BRepBlend_AppSurf::Surface()`
+    /// **Source:** `BRepBlend_AppSurf.hxx`:106 - `BRepBlend_AppSurf::Surface()`
     pub fn BRepBlend_AppSurf_surface(
         self_: *const BRepBlend_AppSurf,
-        TPoles: *mut TColgp_Array2OfPnt,
-        TWeights: *mut TColStd_Array2OfReal,
-        TUKnots: *mut TColStd_Array1OfReal,
-        TVKnots: *mut TColStd_Array1OfReal,
-        TUMults: *mut TColStd_Array1OfInteger,
-        TVMults: *mut TColStd_Array1OfInteger,
+        TPoles: *mut NCollection_Array2_gp_Pnt,
+        TWeights: *mut NCollection_Array2_double,
+        TUKnots: *mut NCollection_Array1_double,
+        TVKnots: *mut NCollection_Array1_double,
+        TUMults: *mut NCollection_Array1_int,
+        TVMults: *mut NCollection_Array1_int,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepBlend_AppSurf.hxx`:120 - `BRepBlend_AppSurf::UDegree()`
+    /// **Source:** `BRepBlend_AppSurf.hxx`:113 - `BRepBlend_AppSurf::UDegree()`
     pub fn BRepBlend_AppSurf_u_degree(self_: *const BRepBlend_AppSurf) -> crate::OcctResult<i32>;
-    /// **Source:** `BRepBlend_AppSurf.hxx`:122 - `BRepBlend_AppSurf::VDegree()`
+    /// **Source:** `BRepBlend_AppSurf.hxx`:115 - `BRepBlend_AppSurf::VDegree()`
     pub fn BRepBlend_AppSurf_v_degree(self_: *const BRepBlend_AppSurf) -> crate::OcctResult<i32>;
-    /// **Source:** `BRepBlend_AppSurf.hxx`:124 - `BRepBlend_AppSurf::SurfPoles()`
+    /// **Source:** `BRepBlend_AppSurf.hxx`:117 - `BRepBlend_AppSurf::SurfPoles()`
     pub fn BRepBlend_AppSurf_surf_poles(
         self_: *const BRepBlend_AppSurf,
-    ) -> crate::OcctResult<*const TColgp_Array2OfPnt>;
-    /// **Source:** `BRepBlend_AppSurf.hxx`:126 - `BRepBlend_AppSurf::SurfWeights()`
+    ) -> crate::OcctResult<*const NCollection_Array2_gp_Pnt>;
+    /// **Source:** `BRepBlend_AppSurf.hxx`:119 - `BRepBlend_AppSurf::SurfWeights()`
     pub fn BRepBlend_AppSurf_surf_weights(
         self_: *const BRepBlend_AppSurf,
-    ) -> crate::OcctResult<*const TColStd_Array2OfReal>;
-    /// **Source:** `BRepBlend_AppSurf.hxx`:128 - `BRepBlend_AppSurf::SurfUKnots()`
+    ) -> crate::OcctResult<*const NCollection_Array2_double>;
+    /// **Source:** `BRepBlend_AppSurf.hxx`:121 - `BRepBlend_AppSurf::SurfUKnots()`
     pub fn BRepBlend_AppSurf_surf_u_knots(
         self_: *const BRepBlend_AppSurf,
-    ) -> crate::OcctResult<*const TColStd_Array1OfReal>;
-    /// **Source:** `BRepBlend_AppSurf.hxx`:130 - `BRepBlend_AppSurf::SurfVKnots()`
+    ) -> crate::OcctResult<*const NCollection_Array1_double>;
+    /// **Source:** `BRepBlend_AppSurf.hxx`:123 - `BRepBlend_AppSurf::SurfVKnots()`
     pub fn BRepBlend_AppSurf_surf_v_knots(
         self_: *const BRepBlend_AppSurf,
-    ) -> crate::OcctResult<*const TColStd_Array1OfReal>;
-    /// **Source:** `BRepBlend_AppSurf.hxx`:132 - `BRepBlend_AppSurf::SurfUMults()`
+    ) -> crate::OcctResult<*const NCollection_Array1_double>;
+    /// **Source:** `BRepBlend_AppSurf.hxx`:125 - `BRepBlend_AppSurf::SurfUMults()`
     pub fn BRepBlend_AppSurf_surf_u_mults(
         self_: *const BRepBlend_AppSurf,
-    ) -> crate::OcctResult<*const TColStd_Array1OfInteger>;
-    /// **Source:** `BRepBlend_AppSurf.hxx`:134 - `BRepBlend_AppSurf::SurfVMults()`
+    ) -> crate::OcctResult<*const NCollection_Array1_int>;
+    /// **Source:** `BRepBlend_AppSurf.hxx`:127 - `BRepBlend_AppSurf::SurfVMults()`
     pub fn BRepBlend_AppSurf_surf_v_mults(
         self_: *const BRepBlend_AppSurf,
-    ) -> crate::OcctResult<*const TColStd_Array1OfInteger>;
-    /// **Source:** `BRepBlend_AppSurf.hxx`:136 - `BRepBlend_AppSurf::NbCurves2d()`
+    ) -> crate::OcctResult<*const NCollection_Array1_int>;
+    /// **Source:** `BRepBlend_AppSurf.hxx`:129 - `BRepBlend_AppSurf::NbCurves2d()`
     pub fn BRepBlend_AppSurf_nb_curves2d(self_: *const BRepBlend_AppSurf)
         -> crate::OcctResult<i32>;
-    /// **Source:** `BRepBlend_AppSurf.hxx`:138 - `BRepBlend_AppSurf::Curves2dShape()`
+    /// **Source:** `BRepBlend_AppSurf.hxx`:131 - `BRepBlend_AppSurf::Curves2dShape()`
     pub fn BRepBlend_AppSurf_curves2d_shape(
         self_: *const BRepBlend_AppSurf,
         Degree: *mut i32,
         NbPoles: *mut i32,
         NbKnots: *mut i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepBlend_AppSurf.hxx`:142 - `BRepBlend_AppSurf::Curve2d()`
+    /// **Source:** `BRepBlend_AppSurf.hxx`:133 - `BRepBlend_AppSurf::Curve2d()`
     pub fn BRepBlend_AppSurf_curve2d(
         self_: *const BRepBlend_AppSurf,
         Index: i32,
-        TPoles: *mut TColgp_Array1OfPnt2d,
-        TKnots: *mut TColStd_Array1OfReal,
-        TMults: *mut TColStd_Array1OfInteger,
+        TPoles: *mut NCollection_Array1_gp_Pnt2d,
+        TKnots: *mut NCollection_Array1_double,
+        TMults: *mut NCollection_Array1_int,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepBlend_AppSurf.hxx`:147 - `BRepBlend_AppSurf::Curves2dDegree()`
+    /// **Source:** `BRepBlend_AppSurf.hxx`:138 - `BRepBlend_AppSurf::Curves2dDegree()`
     pub fn BRepBlend_AppSurf_curves2d_degree(
         self_: *const BRepBlend_AppSurf,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `BRepBlend_AppSurf.hxx`:149 - `BRepBlend_AppSurf::Curve2dPoles()`
+    /// **Source:** `BRepBlend_AppSurf.hxx`:140 - `BRepBlend_AppSurf::Curve2dPoles()`
     pub fn BRepBlend_AppSurf_curve2d_poles(
         self_: *const BRepBlend_AppSurf,
         Index: i32,
-    ) -> crate::OcctResult<*const TColgp_Array1OfPnt2d>;
-    /// **Source:** `BRepBlend_AppSurf.hxx`:151 - `BRepBlend_AppSurf::Curves2dKnots()`
+    ) -> crate::OcctResult<*const NCollection_Array1_gp_Pnt2d>;
+    /// **Source:** `BRepBlend_AppSurf.hxx`:142 - `BRepBlend_AppSurf::Curves2dKnots()`
     pub fn BRepBlend_AppSurf_curves2d_knots(
         self_: *const BRepBlend_AppSurf,
-    ) -> crate::OcctResult<*const TColStd_Array1OfReal>;
-    /// **Source:** `BRepBlend_AppSurf.hxx`:153 - `BRepBlend_AppSurf::Curves2dMults()`
+    ) -> crate::OcctResult<*const NCollection_Array1_double>;
+    /// **Source:** `BRepBlend_AppSurf.hxx`:144 - `BRepBlend_AppSurf::Curves2dMults()`
     pub fn BRepBlend_AppSurf_curves2d_mults(
         self_: *const BRepBlend_AppSurf,
-    ) -> crate::OcctResult<*const TColStd_Array1OfInteger>;
-    /// **Source:** `BRepBlend_AppSurf.hxx`:155 - `BRepBlend_AppSurf::TolReached()`
+    ) -> crate::OcctResult<*const NCollection_Array1_int>;
+    /// **Source:** `BRepBlend_AppSurf.hxx`:146 - `BRepBlend_AppSurf::TolReached()`
     pub fn BRepBlend_AppSurf_tol_reached(
         self_: *const BRepBlend_AppSurf,
         Tol3d: *mut f64,
         Tol2d: *mut f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepBlend_AppSurf.hxx`:157 - `BRepBlend_AppSurf::TolCurveOnSurf()`
+    /// **Source:** `BRepBlend_AppSurf.hxx`:148 - `BRepBlend_AppSurf::TolCurveOnSurf()`
     pub fn BRepBlend_AppSurf_tol_curve_on_surf(
         self_: *const BRepBlend_AppSurf,
         Index: i32,
@@ -1109,9 +1112,9 @@ unsafe extern "C" {
     ) -> crate::OcctResult<*mut AppBlend_Approx>;
     // ======================== BRepBlend_AppSurface ========================
     pub fn BRepBlend_AppSurface_destructor(self_: *mut BRepBlend_AppSurface);
-    /// **Source:** `BRepBlend_AppSurface.hxx`:49 - `BRepBlend_AppSurface::BRepBlend_AppSurface()`
+    /// **Source:** `BRepBlend_AppSurface.hxx`:48 - `BRepBlend_AppSurface::BRepBlend_AppSurface()`
     pub fn BRepBlend_AppSurface_ctor_handleapproxsweepfunction_real5_shape_int2(
-        Funct: *const HandleApproxSweepFunction,
+        Funct: *const Handle_Approx_SweepFunction,
         First: f64,
         Last: f64,
         Tol3d: f64,
@@ -1121,11 +1124,11 @@ unsafe extern "C" {
         Degmax: i32,
         Segmax: i32,
     ) -> crate::OcctResult<*mut BRepBlend_AppSurface>;
-    /// **Source:** `BRepBlend_AppSurface.hxx`:59 - `BRepBlend_AppSurface::IsDone()`
+    /// **Source:** `BRepBlend_AppSurface.hxx`:58 - `BRepBlend_AppSurface::IsDone()`
     pub fn BRepBlend_AppSurface_is_done(
         self_: *const BRepBlend_AppSurface,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BRepBlend_AppSurface.hxx`:61 - `BRepBlend_AppSurface::SurfShape()`
+    /// **Source:** `BRepBlend_AppSurface.hxx`:60 - `BRepBlend_AppSurface::SurfShape()`
     pub fn BRepBlend_AppSurface_surf_shape(
         self_: *const BRepBlend_AppSurface,
         UDegree: *mut i32,
@@ -1135,105 +1138,105 @@ unsafe extern "C" {
         NbUKnots: *mut i32,
         NbVKnots: *mut i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepBlend_AppSurface.hxx`:68 - `BRepBlend_AppSurface::Surface()`
+    /// **Source:** `BRepBlend_AppSurface.hxx`:67 - `BRepBlend_AppSurface::Surface()`
     pub fn BRepBlend_AppSurface_surface(
         self_: *const BRepBlend_AppSurface,
-        TPoles: *mut TColgp_Array2OfPnt,
-        TWeights: *mut TColStd_Array2OfReal,
-        TUKnots: *mut TColStd_Array1OfReal,
-        TVKnots: *mut TColStd_Array1OfReal,
-        TUMults: *mut TColStd_Array1OfInteger,
-        TVMults: *mut TColStd_Array1OfInteger,
+        TPoles: *mut NCollection_Array2_gp_Pnt,
+        TWeights: *mut NCollection_Array2_double,
+        TUKnots: *mut NCollection_Array1_double,
+        TVKnots: *mut NCollection_Array1_double,
+        TUMults: *mut NCollection_Array1_int,
+        TVMults: *mut NCollection_Array1_int,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepBlend_AppSurface.hxx`:75 - `BRepBlend_AppSurface::UDegree()`
+    /// **Source:** `BRepBlend_AppSurface.hxx`:74 - `BRepBlend_AppSurface::UDegree()`
     pub fn BRepBlend_AppSurface_u_degree(
         self_: *const BRepBlend_AppSurface,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `BRepBlend_AppSurface.hxx`:77 - `BRepBlend_AppSurface::VDegree()`
+    /// **Source:** `BRepBlend_AppSurface.hxx`:76 - `BRepBlend_AppSurface::VDegree()`
     pub fn BRepBlend_AppSurface_v_degree(
         self_: *const BRepBlend_AppSurface,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `BRepBlend_AppSurface.hxx`:79 - `BRepBlend_AppSurface::SurfPoles()`
+    /// **Source:** `BRepBlend_AppSurface.hxx`:78 - `BRepBlend_AppSurface::SurfPoles()`
     pub fn BRepBlend_AppSurface_surf_poles(
         self_: *const BRepBlend_AppSurface,
-    ) -> crate::OcctResult<*const TColgp_Array2OfPnt>;
-    /// **Source:** `BRepBlend_AppSurface.hxx`:81 - `BRepBlend_AppSurface::SurfWeights()`
+    ) -> crate::OcctResult<*const NCollection_Array2_gp_Pnt>;
+    /// **Source:** `BRepBlend_AppSurface.hxx`:80 - `BRepBlend_AppSurface::SurfWeights()`
     pub fn BRepBlend_AppSurface_surf_weights(
         self_: *const BRepBlend_AppSurface,
-    ) -> crate::OcctResult<*const TColStd_Array2OfReal>;
-    /// **Source:** `BRepBlend_AppSurface.hxx`:83 - `BRepBlend_AppSurface::SurfUKnots()`
+    ) -> crate::OcctResult<*const NCollection_Array2_double>;
+    /// **Source:** `BRepBlend_AppSurface.hxx`:82 - `BRepBlend_AppSurface::SurfUKnots()`
     pub fn BRepBlend_AppSurface_surf_u_knots(
         self_: *const BRepBlend_AppSurface,
-    ) -> crate::OcctResult<*const TColStd_Array1OfReal>;
-    /// **Source:** `BRepBlend_AppSurface.hxx`:85 - `BRepBlend_AppSurface::SurfVKnots()`
+    ) -> crate::OcctResult<*const NCollection_Array1_double>;
+    /// **Source:** `BRepBlend_AppSurface.hxx`:84 - `BRepBlend_AppSurface::SurfVKnots()`
     pub fn BRepBlend_AppSurface_surf_v_knots(
         self_: *const BRepBlend_AppSurface,
-    ) -> crate::OcctResult<*const TColStd_Array1OfReal>;
-    /// **Source:** `BRepBlend_AppSurface.hxx`:87 - `BRepBlend_AppSurface::SurfUMults()`
+    ) -> crate::OcctResult<*const NCollection_Array1_double>;
+    /// **Source:** `BRepBlend_AppSurface.hxx`:86 - `BRepBlend_AppSurface::SurfUMults()`
     pub fn BRepBlend_AppSurface_surf_u_mults(
         self_: *const BRepBlend_AppSurface,
-    ) -> crate::OcctResult<*const TColStd_Array1OfInteger>;
-    /// **Source:** `BRepBlend_AppSurface.hxx`:89 - `BRepBlend_AppSurface::SurfVMults()`
+    ) -> crate::OcctResult<*const NCollection_Array1_int>;
+    /// **Source:** `BRepBlend_AppSurface.hxx`:88 - `BRepBlend_AppSurface::SurfVMults()`
     pub fn BRepBlend_AppSurface_surf_v_mults(
         self_: *const BRepBlend_AppSurface,
-    ) -> crate::OcctResult<*const TColStd_Array1OfInteger>;
-    /// **Source:** `BRepBlend_AppSurface.hxx`:92 - `BRepBlend_AppSurface::MaxErrorOnSurf()`
+    ) -> crate::OcctResult<*const NCollection_Array1_int>;
+    /// **Source:** `BRepBlend_AppSurface.hxx`:91 - `BRepBlend_AppSurface::MaxErrorOnSurf()`
     pub fn BRepBlend_AppSurface_max_error_on_surf(
         self_: *const BRepBlend_AppSurface,
     ) -> crate::OcctResult<f64>;
-    /// **Source:** `BRepBlend_AppSurface.hxx`:94 - `BRepBlend_AppSurface::NbCurves2d()`
+    /// **Source:** `BRepBlend_AppSurface.hxx`:93 - `BRepBlend_AppSurface::NbCurves2d()`
     pub fn BRepBlend_AppSurface_nb_curves2d(
         self_: *const BRepBlend_AppSurface,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `BRepBlend_AppSurface.hxx`:96 - `BRepBlend_AppSurface::Curves2dShape()`
+    /// **Source:** `BRepBlend_AppSurface.hxx`:95 - `BRepBlend_AppSurface::Curves2dShape()`
     pub fn BRepBlend_AppSurface_curves2d_shape(
         self_: *const BRepBlend_AppSurface,
         Degree: *mut i32,
         NbPoles: *mut i32,
         NbKnots: *mut i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepBlend_AppSurface.hxx`:100 - `BRepBlend_AppSurface::Curve2d()`
+    /// **Source:** `BRepBlend_AppSurface.hxx`:97 - `BRepBlend_AppSurface::Curve2d()`
     pub fn BRepBlend_AppSurface_curve2d(
         self_: *const BRepBlend_AppSurface,
         Index: i32,
-        TPoles: *mut TColgp_Array1OfPnt2d,
-        TKnots: *mut TColStd_Array1OfReal,
-        TMults: *mut TColStd_Array1OfInteger,
+        TPoles: *mut NCollection_Array1_gp_Pnt2d,
+        TKnots: *mut NCollection_Array1_double,
+        TMults: *mut NCollection_Array1_int,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepBlend_AppSurface.hxx`:105 - `BRepBlend_AppSurface::Curves2dDegree()`
+    /// **Source:** `BRepBlend_AppSurface.hxx`:102 - `BRepBlend_AppSurface::Curves2dDegree()`
     pub fn BRepBlend_AppSurface_curves2d_degree(
         self_: *const BRepBlend_AppSurface,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `BRepBlend_AppSurface.hxx`:107 - `BRepBlend_AppSurface::Curve2dPoles()`
+    /// **Source:** `BRepBlend_AppSurface.hxx`:104 - `BRepBlend_AppSurface::Curve2dPoles()`
     pub fn BRepBlend_AppSurface_curve2d_poles(
         self_: *const BRepBlend_AppSurface,
         Index: i32,
-    ) -> crate::OcctResult<*const TColgp_Array1OfPnt2d>;
-    /// **Source:** `BRepBlend_AppSurface.hxx`:109 - `BRepBlend_AppSurface::Curves2dKnots()`
+    ) -> crate::OcctResult<*const NCollection_Array1_gp_Pnt2d>;
+    /// **Source:** `BRepBlend_AppSurface.hxx`:106 - `BRepBlend_AppSurface::Curves2dKnots()`
     pub fn BRepBlend_AppSurface_curves2d_knots(
         self_: *const BRepBlend_AppSurface,
-    ) -> crate::OcctResult<*const TColStd_Array1OfReal>;
-    /// **Source:** `BRepBlend_AppSurface.hxx`:111 - `BRepBlend_AppSurface::Curves2dMults()`
+    ) -> crate::OcctResult<*const NCollection_Array1_double>;
+    /// **Source:** `BRepBlend_AppSurface.hxx`:108 - `BRepBlend_AppSurface::Curves2dMults()`
     pub fn BRepBlend_AppSurface_curves2d_mults(
         self_: *const BRepBlend_AppSurface,
-    ) -> crate::OcctResult<*const TColStd_Array1OfInteger>;
-    /// **Source:** `BRepBlend_AppSurface.hxx`:113 - `BRepBlend_AppSurface::TolReached()`
+    ) -> crate::OcctResult<*const NCollection_Array1_int>;
+    /// **Source:** `BRepBlend_AppSurface.hxx`:110 - `BRepBlend_AppSurface::TolReached()`
     pub fn BRepBlend_AppSurface_tol_reached(
         self_: *const BRepBlend_AppSurface,
         Tol3d: *mut f64,
         Tol2d: *mut f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepBlend_AppSurface.hxx`:116 - `BRepBlend_AppSurface::Max2dError()`
+    /// **Source:** `BRepBlend_AppSurface.hxx`:113 - `BRepBlend_AppSurface::Max2dError()`
     pub fn BRepBlend_AppSurface_max2d_error(
         self_: *const BRepBlend_AppSurface,
         Index: i32,
     ) -> crate::OcctResult<f64>;
-    /// **Source:** `BRepBlend_AppSurface.hxx`:118 - `BRepBlend_AppSurface::TolCurveOnSurf()`
+    /// **Source:** `BRepBlend_AppSurface.hxx`:115 - `BRepBlend_AppSurface::TolCurveOnSurf()`
     pub fn BRepBlend_AppSurface_tol_curve_on_surf(
         self_: *const BRepBlend_AppSurface,
         Index: i32,
     ) -> crate::OcctResult<f64>;
-    /// **Source:** `BRepBlend_AppSurface.hxx`:121 - `BRepBlend_AppSurface::Dump()`
+    /// **Source:** `BRepBlend_AppSurface.hxx`:118 - `BRepBlend_AppSurface::Dump()`
     pub fn BRepBlend_AppSurface_dump(
         self_: *const BRepBlend_AppSurface,
         o: *mut Standard_OStream,
@@ -1253,8 +1256,8 @@ unsafe extern "C" {
     /// **Source:** `BRepBlend_BlendTool.hxx`:38 - `BRepBlend_BlendTool::Project()`
     pub fn BRepBlend_BlendTool_project(
         P: *const gp_Pnt2d,
-        S: *const HandleAdaptor3dSurface,
-        C: *const HandleAdaptor2dCurve2d,
+        S: *const Handle_Adaptor3d_Surface,
+        C: *const Handle_Adaptor2d_Curve2d,
         Paramproj: *mut f64,
         Dist: *mut f64,
     ) -> crate::OcctResult<bool>;
@@ -1262,69 +1265,69 @@ unsafe extern "C" {
     pub fn BRepBlend_BlendTool_inters(
         P1: *const gp_Pnt2d,
         P2: *const gp_Pnt2d,
-        S: *const HandleAdaptor3dSurface,
-        C: *const HandleAdaptor2dCurve2d,
+        S: *const Handle_Adaptor3d_Surface,
+        C: *const Handle_Adaptor2d_Curve2d,
         Param: *mut f64,
         Dist: *mut f64,
     ) -> crate::OcctResult<bool>;
     /// **Source:** `BRepBlend_BlendTool.hxx`:52 - `BRepBlend_BlendTool::Parameter()`
     pub fn BRepBlend_BlendTool_parameter(
-        V: *const HandleAdaptor3dHVertex,
-        A: *const HandleAdaptor2dCurve2d,
+        V: *const Handle_Adaptor3d_HVertex,
+        A: *const Handle_Adaptor2d_Curve2d,
     ) -> crate::OcctResult<f64>;
     /// **Source:** `BRepBlend_BlendTool.hxx`:59 - `BRepBlend_BlendTool::Tolerance()`
     pub fn BRepBlend_BlendTool_tolerance(
-        V: *const HandleAdaptor3dHVertex,
-        A: *const HandleAdaptor2dCurve2d,
+        V: *const Handle_Adaptor3d_HVertex,
+        A: *const Handle_Adaptor2d_Curve2d,
     ) -> crate::OcctResult<f64>;
     /// **Source:** `BRepBlend_BlendTool.hxx`:62 - `BRepBlend_BlendTool::SingularOnUMin()`
     pub fn BRepBlend_BlendTool_singular_on_u_min(
-        S: *const HandleAdaptor3dSurface,
+        S: *const Handle_Adaptor3d_Surface,
     ) -> crate::OcctResult<bool>;
     /// **Source:** `BRepBlend_BlendTool.hxx`:64 - `BRepBlend_BlendTool::SingularOnUMax()`
     pub fn BRepBlend_BlendTool_singular_on_u_max(
-        S: *const HandleAdaptor3dSurface,
+        S: *const Handle_Adaptor3d_Surface,
     ) -> crate::OcctResult<bool>;
     /// **Source:** `BRepBlend_BlendTool.hxx`:66 - `BRepBlend_BlendTool::SingularOnVMin()`
     pub fn BRepBlend_BlendTool_singular_on_v_min(
-        S: *const HandleAdaptor3dSurface,
+        S: *const Handle_Adaptor3d_Surface,
     ) -> crate::OcctResult<bool>;
     /// **Source:** `BRepBlend_BlendTool.hxx`:68 - `BRepBlend_BlendTool::SingularOnVMax()`
     pub fn BRepBlend_BlendTool_singular_on_v_max(
-        S: *const HandleAdaptor3dSurface,
+        S: *const Handle_Adaptor3d_Surface,
     ) -> crate::OcctResult<bool>;
     /// **Source:** `BRepBlend_BlendTool.hxx`:70 - `BRepBlend_BlendTool::NbSamplesU()`
     pub fn BRepBlend_BlendTool_nb_samples_u(
-        S: *const HandleAdaptor3dSurface,
+        S: *const Handle_Adaptor3d_Surface,
         u1: f64,
         u2: f64,
     ) -> crate::OcctResult<i32>;
     /// **Source:** `BRepBlend_BlendTool.hxx`:74 - `BRepBlend_BlendTool::NbSamplesV()`
     pub fn BRepBlend_BlendTool_nb_samples_v(
-        S: *const HandleAdaptor3dSurface,
+        S: *const Handle_Adaptor3d_Surface,
         v1: f64,
         v2: f64,
     ) -> crate::OcctResult<i32>;
     /// **Source:** `BRepBlend_BlendTool.hxx`:82 - `BRepBlend_BlendTool::Bounds()`
     pub fn BRepBlend_BlendTool_bounds(
-        C: *const HandleAdaptor2dCurve2d,
+        C: *const Handle_Adaptor2d_Curve2d,
         Ufirst: *mut f64,
         Ulast: *mut f64,
     ) -> *const std::ffi::c_char;
     /// **Source:** `BRepBlend_BlendTool.hxx`:86 - `BRepBlend_BlendTool::CurveOnSurf()`
     pub fn BRepBlend_BlendTool_curve_on_surf(
-        C: *const HandleAdaptor2dCurve2d,
-        S: *const HandleAdaptor3dSurface,
-    ) -> crate::OcctResult<*mut HandleAdaptor2dCurve2d>;
+        C: *const Handle_Adaptor2d_Curve2d,
+        S: *const Handle_Adaptor3d_Surface,
+    ) -> crate::OcctResult<*mut Handle_Adaptor2d_Curve2d>;
     // ======================== BRepBlend_CSWalking ========================
     pub fn BRepBlend_CSWalking_destructor(self_: *mut BRepBlend_CSWalking);
-    /// **Source:** `BRepBlend_CSWalking.hxx`:48 - `BRepBlend_CSWalking::BRepBlend_CSWalking()`
+    /// **Source:** `BRepBlend_CSWalking.hxx`:50 - `BRepBlend_CSWalking::BRepBlend_CSWalking()`
     pub fn BRepBlend_CSWalking_ctor_handleadaptor3dcurve_handleadaptor3dsurface_handleadaptor3dtopoltool(
-        Curv: *const HandleAdaptor3dCurve,
-        Surf: *const HandleAdaptor3dSurface,
-        Domain: *const HandleAdaptor3dTopolTool,
+        Curv: *const Handle_Adaptor3d_Curve,
+        Surf: *const Handle_Adaptor3d_Surface,
+        Domain: *const Handle_Adaptor3d_TopolTool,
     ) -> crate::OcctResult<*mut BRepBlend_CSWalking>;
-    /// **Source:** `BRepBlend_CSWalking.hxx`:52 - `BRepBlend_CSWalking::Perform()`
+    /// **Source:** `BRepBlend_CSWalking.hxx`:54 - `BRepBlend_CSWalking::Perform()`
     pub fn BRepBlend_CSWalking_perform(
         self_: *mut BRepBlend_CSWalking,
         F: *mut Blend_CSFunction,
@@ -1337,26 +1340,26 @@ unsafe extern "C" {
         Fleche: f64,
         Appro: bool,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepBlend_CSWalking.hxx`:62 - `BRepBlend_CSWalking::Complete()`
+    /// **Source:** `BRepBlend_CSWalking.hxx`:64 - `BRepBlend_CSWalking::Complete()`
     pub fn BRepBlend_CSWalking_complete(
         self_: *mut BRepBlend_CSWalking,
         F: *mut Blend_CSFunction,
         Pmin: f64,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BRepBlend_CSWalking.hxx`:64 - `BRepBlend_CSWalking::IsDone()`
+    /// **Source:** `BRepBlend_CSWalking.hxx`:66 - `BRepBlend_CSWalking::IsDone()`
     pub fn BRepBlend_CSWalking_is_done(
         self_: *const BRepBlend_CSWalking,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BRepBlend_CSWalking.hxx`:66 - `BRepBlend_CSWalking::Line()`
+    /// **Source:** `BRepBlend_CSWalking.hxx`:68 - `BRepBlend_CSWalking::Line()`
     pub fn BRepBlend_CSWalking_line(
         self_: *const BRepBlend_CSWalking,
-    ) -> crate::OcctResult<*const HandleBRepBlendLine>;
+    ) -> crate::OcctResult<*const Handle_BRepBlend_Line>;
     // ======================== BRepBlend_CurvPointRadInv ========================
     pub fn BRepBlend_CurvPointRadInv_destructor(self_: *mut BRepBlend_CurvPointRadInv);
     /// **Source:** `BRepBlend_CurvPointRadInv.hxx`:46 - `BRepBlend_CurvPointRadInv::BRepBlend_CurvPointRadInv()`
     pub fn BRepBlend_CurvPointRadInv_ctor_handleadaptor3dcurve2(
-        C1: *const HandleAdaptor3dCurve,
-        C2: *const HandleAdaptor3dCurve,
+        C1: *const Handle_Adaptor3d_Curve,
+        C2: *const Handle_Adaptor3d_Curve,
     ) -> crate::OcctResult<*mut BRepBlend_CurvPointRadInv>;
     /// **Source:** `BRepBlend_CurvPointRadInv.hxx`:49 - `BRepBlend_CurvPointRadInv::Set()`
     pub fn BRepBlend_CurvPointRadInv_set_int(
@@ -1443,9 +1446,9 @@ unsafe extern "C" {
     ) -> crate::OcctResult<i32>;
     // ======================== BRepBlend_Extremity ========================
     pub fn BRepBlend_Extremity_destructor(self_: *mut BRepBlend_Extremity);
-    /// **Source:** `BRepBlend_Extremity.hxx`:39 - `BRepBlend_Extremity::BRepBlend_Extremity()`
+    /// **Source:** `BRepBlend_Extremity.hxx`:40 - `BRepBlend_Extremity::BRepBlend_Extremity()`
     pub fn BRepBlend_Extremity_ctor() -> crate::OcctResult<*mut BRepBlend_Extremity>;
-    /// **Source:** `BRepBlend_Extremity.hxx`:42 - `BRepBlend_Extremity::BRepBlend_Extremity()`
+    /// **Source:** `BRepBlend_Extremity.hxx`:43 - `BRepBlend_Extremity::BRepBlend_Extremity()`
     pub fn BRepBlend_Extremity_ctor_pnt_real4(
         P: *const gp_Pnt,
         U: f64,
@@ -1453,23 +1456,23 @@ unsafe extern "C" {
         Param: f64,
         Tol: f64,
     ) -> crate::OcctResult<*mut BRepBlend_Extremity>;
-    /// **Source:** `BRepBlend_Extremity.hxx`:50 - `BRepBlend_Extremity::BRepBlend_Extremity()`
+    /// **Source:** `BRepBlend_Extremity.hxx`:51 - `BRepBlend_Extremity::BRepBlend_Extremity()`
     pub fn BRepBlend_Extremity_ctor_pnt_real4_handleadaptor3dhvertex(
         P: *const gp_Pnt,
         U: f64,
         V: f64,
         Param: f64,
         Tol: f64,
-        Vtx: *const HandleAdaptor3dHVertex,
+        Vtx: *const Handle_Adaptor3d_HVertex,
     ) -> crate::OcctResult<*mut BRepBlend_Extremity>;
-    /// **Source:** `BRepBlend_Extremity.hxx`:58 - `BRepBlend_Extremity::BRepBlend_Extremity()`
+    /// **Source:** `BRepBlend_Extremity.hxx`:59 - `BRepBlend_Extremity::BRepBlend_Extremity()`
     pub fn BRepBlend_Extremity_ctor_pnt_real3(
         P: *const gp_Pnt,
         W: f64,
         Param: f64,
         Tol: f64,
     ) -> crate::OcctResult<*mut BRepBlend_Extremity>;
-    /// **Source:** `BRepBlend_Extremity.hxx`:64 - `BRepBlend_Extremity::SetValue()`
+    /// **Source:** `BRepBlend_Extremity.hxx`:65 - `BRepBlend_Extremity::SetValue()`
     pub fn BRepBlend_Extremity_set_value_pnt_real4(
         self_: *mut BRepBlend_Extremity,
         P: *const gp_Pnt,
@@ -1478,7 +1481,7 @@ unsafe extern "C" {
         Param: f64,
         Tol: f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepBlend_Extremity.hxx`:72 - `BRepBlend_Extremity::SetValue()`
+    /// **Source:** `BRepBlend_Extremity.hxx`:73 - `BRepBlend_Extremity::SetValue()`
     pub fn BRepBlend_Extremity_set_value_pnt_real4_handleadaptor3dhvertex(
         self_: *mut BRepBlend_Extremity,
         P: *const gp_Pnt,
@@ -1486,9 +1489,9 @@ unsafe extern "C" {
         V: f64,
         Param: f64,
         Tol: f64,
-        Vtx: *const HandleAdaptor3dHVertex,
+        Vtx: *const Handle_Adaptor3d_HVertex,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepBlend_Extremity.hxx`:80 - `BRepBlend_Extremity::SetValue()`
+    /// **Source:** `BRepBlend_Extremity.hxx`:81 - `BRepBlend_Extremity::SetValue()`
     pub fn BRepBlend_Extremity_set_value_pnt_real3(
         self_: *mut BRepBlend_Extremity,
         P: *const gp_Pnt,
@@ -1496,68 +1499,68 @@ unsafe extern "C" {
         Param: f64,
         Tol: f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepBlend_Extremity.hxx`:86 - `BRepBlend_Extremity::Value()`
+    /// **Source:** `BRepBlend_Extremity.hxx`:87 - `BRepBlend_Extremity::Value()`
     pub fn BRepBlend_Extremity_value(
         self_: *const BRepBlend_Extremity,
     ) -> crate::OcctResult<*const gp_Pnt>;
-    /// **Source:** `BRepBlend_Extremity.hxx`:90 - `BRepBlend_Extremity::SetTangent()`
+    /// **Source:** `BRepBlend_Extremity.hxx`:91 - `BRepBlend_Extremity::SetTangent()`
     pub fn BRepBlend_Extremity_set_tangent(
         self_: *mut BRepBlend_Extremity,
         Tangent: *const gp_Vec,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepBlend_Extremity.hxx`:93 - `BRepBlend_Extremity::HasTangent()`
+    /// **Source:** `BRepBlend_Extremity.hxx`:94 - `BRepBlend_Extremity::HasTangent()`
     pub fn BRepBlend_Extremity_has_tangent(
         self_: *const BRepBlend_Extremity,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BRepBlend_Extremity.hxx`:97 - `BRepBlend_Extremity::Tangent()`
+    /// **Source:** `BRepBlend_Extremity.hxx`:98 - `BRepBlend_Extremity::Tangent()`
     pub fn BRepBlend_Extremity_tangent(
         self_: *const BRepBlend_Extremity,
     ) -> crate::OcctResult<*const gp_Vec>;
-    /// **Source:** `BRepBlend_Extremity.hxx`:101 - `BRepBlend_Extremity::Tolerance()`
+    /// **Source:** `BRepBlend_Extremity.hxx`:102 - `BRepBlend_Extremity::Tolerance()`
     pub fn BRepBlend_Extremity_tolerance(
         self_: *const BRepBlend_Extremity,
     ) -> crate::OcctResult<f64>;
-    /// **Source:** `BRepBlend_Extremity.hxx`:104 - `BRepBlend_Extremity::SetVertex()`
+    /// **Source:** `BRepBlend_Extremity.hxx`:105 - `BRepBlend_Extremity::SetVertex()`
     pub fn BRepBlend_Extremity_set_vertex(
         self_: *mut BRepBlend_Extremity,
-        V: *const HandleAdaptor3dHVertex,
+        V: *const Handle_Adaptor3d_HVertex,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepBlend_Extremity.hxx`:108 - `BRepBlend_Extremity::AddArc()`
+    /// **Source:** `BRepBlend_Extremity.hxx`:109 - `BRepBlend_Extremity::AddArc()`
     pub fn BRepBlend_Extremity_add_arc(
         self_: *mut BRepBlend_Extremity,
-        A: *const HandleAdaptor2dCurve2d,
+        A: *const Handle_Adaptor2d_Curve2d,
         Param: f64,
         TLine: *const IntSurf_Transition,
         TArc: *const IntSurf_Transition,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepBlend_Extremity.hxx`:115 - `BRepBlend_Extremity::Parameters()`
+    /// **Source:** `BRepBlend_Extremity.hxx`:116 - `BRepBlend_Extremity::Parameters()`
     pub fn BRepBlend_Extremity_parameters(
         self_: *const BRepBlend_Extremity,
         U: *mut f64,
         V: *mut f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepBlend_Extremity.hxx`:119 - `BRepBlend_Extremity::IsVertex()`
+    /// **Source:** `BRepBlend_Extremity.hxx`:120 - `BRepBlend_Extremity::IsVertex()`
     pub fn BRepBlend_Extremity_is_vertex(
         self_: *const BRepBlend_Extremity,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BRepBlend_Extremity.hxx`:122 - `BRepBlend_Extremity::Vertex()`
+    /// **Source:** `BRepBlend_Extremity.hxx`:123 - `BRepBlend_Extremity::Vertex()`
     pub fn BRepBlend_Extremity_vertex(
         self_: *const BRepBlend_Extremity,
-    ) -> crate::OcctResult<*const HandleAdaptor3dHVertex>;
-    /// **Source:** `BRepBlend_Extremity.hxx`:131 - `BRepBlend_Extremity::NbPointOnRst()`
+    ) -> crate::OcctResult<*const Handle_Adaptor3d_HVertex>;
+    /// **Source:** `BRepBlend_Extremity.hxx`:132 - `BRepBlend_Extremity::NbPointOnRst()`
     pub fn BRepBlend_Extremity_nb_point_on_rst(
         self_: *const BRepBlend_Extremity,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `BRepBlend_Extremity.hxx`:133 - `BRepBlend_Extremity::PointOnRst()`
+    /// **Source:** `BRepBlend_Extremity.hxx`:134 - `BRepBlend_Extremity::PointOnRst()`
     pub fn BRepBlend_Extremity_point_on_rst(
         self_: *const BRepBlend_Extremity,
         Index: i32,
     ) -> crate::OcctResult<*const BRepBlend_PointOnRst>;
-    /// **Source:** `BRepBlend_Extremity.hxx`:135 - `BRepBlend_Extremity::Parameter()`
+    /// **Source:** `BRepBlend_Extremity.hxx`:136 - `BRepBlend_Extremity::Parameter()`
     pub fn BRepBlend_Extremity_parameter(
         self_: *const BRepBlend_Extremity,
     ) -> crate::OcctResult<f64>;
-    /// **Source:** `BRepBlend_Extremity.hxx`:137 - `BRepBlend_Extremity::ParameterOnGuide()`
+    /// **Source:** `BRepBlend_Extremity.hxx`:138 - `BRepBlend_Extremity::ParameterOnGuide()`
     pub fn BRepBlend_Extremity_parameter_on_guide(
         self_: *const BRepBlend_Extremity,
     ) -> crate::OcctResult<f64>;
@@ -1567,120 +1570,120 @@ unsafe extern "C" {
     pub fn BRepBlend_HCurve2dTool_ctor() -> crate::OcctResult<*mut BRepBlend_HCurve2dTool>;
     /// **Source:** `BRepBlend_HCurve2dTool.hxx`:37 - `BRepBlend_HCurve2dTool::FirstParameter()`
     pub fn BRepBlend_HCurve2dTool_first_parameter(
-        C: *const HandleAdaptor2dCurve2d,
+        C: *const Handle_Adaptor2d_Curve2d,
     ) -> crate::OcctResult<f64>;
     /// **Source:** `BRepBlend_HCurve2dTool.hxx`:39 - `BRepBlend_HCurve2dTool::LastParameter()`
     pub fn BRepBlend_HCurve2dTool_last_parameter(
-        C: *const HandleAdaptor2dCurve2d,
+        C: *const Handle_Adaptor2d_Curve2d,
     ) -> crate::OcctResult<f64>;
     /// **Source:** `BRepBlend_HCurve2dTool.hxx`:41 - `BRepBlend_HCurve2dTool::Continuity()`
     pub fn BRepBlend_HCurve2dTool_continuity(
-        C: *const HandleAdaptor2dCurve2d,
+        C: *const Handle_Adaptor2d_Curve2d,
     ) -> crate::OcctResult<i32>;
     /// **Source:** `BRepBlend_HCurve2dTool.hxx`:45 - `BRepBlend_HCurve2dTool::NbIntervals()`
     pub fn BRepBlend_HCurve2dTool_nb_intervals(
-        C: *const HandleAdaptor2dCurve2d,
+        C: *const Handle_Adaptor2d_Curve2d,
         S: i32,
     ) -> crate::OcctResult<i32>;
     /// **Source:** `BRepBlend_HCurve2dTool.hxx`:52 - `BRepBlend_HCurve2dTool::Intervals()`
     pub fn BRepBlend_HCurve2dTool_intervals(
-        C: *const HandleAdaptor2dCurve2d,
-        T: *mut TColStd_Array1OfReal,
+        C: *const Handle_Adaptor2d_Curve2d,
+        T: *mut NCollection_Array1_double,
         S: i32,
     ) -> *const std::ffi::c_char;
     /// **Source:** `BRepBlend_HCurve2dTool.hxx`:56 - `BRepBlend_HCurve2dTool::IsClosed()`
     pub fn BRepBlend_HCurve2dTool_is_closed(
-        C: *const HandleAdaptor2dCurve2d,
+        C: *const Handle_Adaptor2d_Curve2d,
     ) -> crate::OcctResult<bool>;
     /// **Source:** `BRepBlend_HCurve2dTool.hxx`:58 - `BRepBlend_HCurve2dTool::IsPeriodic()`
     pub fn BRepBlend_HCurve2dTool_is_periodic(
-        C: *const HandleAdaptor2dCurve2d,
+        C: *const Handle_Adaptor2d_Curve2d,
     ) -> crate::OcctResult<bool>;
     /// **Source:** `BRepBlend_HCurve2dTool.hxx`:60 - `BRepBlend_HCurve2dTool::Period()`
     pub fn BRepBlend_HCurve2dTool_period(
-        C: *const HandleAdaptor2dCurve2d,
+        C: *const Handle_Adaptor2d_Curve2d,
     ) -> crate::OcctResult<f64>;
     /// **Source:** `BRepBlend_HCurve2dTool.hxx`:63 - `BRepBlend_HCurve2dTool::Value()`
     pub fn BRepBlend_HCurve2dTool_value(
-        C: *const HandleAdaptor2dCurve2d,
+        C: *const Handle_Adaptor2d_Curve2d,
         U: f64,
     ) -> crate::OcctResult<*mut gp_Pnt2d>;
     /// **Source:** `BRepBlend_HCurve2dTool.hxx`:66 - `BRepBlend_HCurve2dTool::D0()`
     pub fn BRepBlend_HCurve2dTool_d0(
-        C: *const HandleAdaptor2dCurve2d,
+        C: *const Handle_Adaptor2d_Curve2d,
         U: f64,
         P: *mut gp_Pnt2d,
     ) -> *const std::ffi::c_char;
     /// **Source:** `BRepBlend_HCurve2dTool.hxx`:72 - `BRepBlend_HCurve2dTool::D1()`
     pub fn BRepBlend_HCurve2dTool_d1(
-        C: *const HandleAdaptor2dCurve2d,
+        C: *const Handle_Adaptor2d_Curve2d,
         U: f64,
         P: *mut gp_Pnt2d,
         V: *mut gp_Vec2d,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepBlend_HCurve2dTool.hxx`:81 - `BRepBlend_HCurve2dTool::D2()`
+    /// **Source:** `BRepBlend_HCurve2dTool.hxx`:78 - `BRepBlend_HCurve2dTool::D2()`
     pub fn BRepBlend_HCurve2dTool_d2(
-        C: *const HandleAdaptor2dCurve2d,
+        C: *const Handle_Adaptor2d_Curve2d,
         U: f64,
         P: *mut gp_Pnt2d,
         V1: *mut gp_Vec2d,
         V2: *mut gp_Vec2d,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepBlend_HCurve2dTool.hxx`:91 - `BRepBlend_HCurve2dTool::D3()`
+    /// **Source:** `BRepBlend_HCurve2dTool.hxx`:88 - `BRepBlend_HCurve2dTool::D3()`
     pub fn BRepBlend_HCurve2dTool_d3(
-        C: *const HandleAdaptor2dCurve2d,
+        C: *const Handle_Adaptor2d_Curve2d,
         U: f64,
         P: *mut gp_Pnt2d,
         V1: *mut gp_Vec2d,
         V2: *mut gp_Vec2d,
         V3: *mut gp_Vec2d,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepBlend_HCurve2dTool.hxx`:103 - `BRepBlend_HCurve2dTool::DN()`
+    /// **Source:** `BRepBlend_HCurve2dTool.hxx`:100 - `BRepBlend_HCurve2dTool::DN()`
     pub fn BRepBlend_HCurve2dTool_dn(
-        C: *const HandleAdaptor2dCurve2d,
+        C: *const Handle_Adaptor2d_Curve2d,
         U: f64,
         N: i32,
     ) -> crate::OcctResult<*mut gp_Vec2d>;
-    /// **Source:** `BRepBlend_HCurve2dTool.hxx`:109 - `BRepBlend_HCurve2dTool::Resolution()`
+    /// **Source:** `BRepBlend_HCurve2dTool.hxx`:104 - `BRepBlend_HCurve2dTool::Resolution()`
     pub fn BRepBlend_HCurve2dTool_resolution(
-        C: *const HandleAdaptor2dCurve2d,
+        C: *const Handle_Adaptor2d_Curve2d,
         R3d: f64,
     ) -> crate::OcctResult<f64>;
-    /// **Source:** `BRepBlend_HCurve2dTool.hxx`:114 - `BRepBlend_HCurve2dTool::GetType()`
+    /// **Source:** `BRepBlend_HCurve2dTool.hxx`:109 - `BRepBlend_HCurve2dTool::GetType()`
     pub fn BRepBlend_HCurve2dTool_get_type(
-        C: *const HandleAdaptor2dCurve2d,
+        C: *const Handle_Adaptor2d_Curve2d,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `BRepBlend_HCurve2dTool.hxx`:116 - `BRepBlend_HCurve2dTool::Line()`
+    /// **Source:** `BRepBlend_HCurve2dTool.hxx`:111 - `BRepBlend_HCurve2dTool::Line()`
     pub fn BRepBlend_HCurve2dTool_line(
-        C: *const HandleAdaptor2dCurve2d,
+        C: *const Handle_Adaptor2d_Curve2d,
     ) -> crate::OcctResult<*mut gp_Lin2d>;
-    /// **Source:** `BRepBlend_HCurve2dTool.hxx`:118 - `BRepBlend_HCurve2dTool::Circle()`
+    /// **Source:** `BRepBlend_HCurve2dTool.hxx`:113 - `BRepBlend_HCurve2dTool::Circle()`
     pub fn BRepBlend_HCurve2dTool_circle(
-        C: *const HandleAdaptor2dCurve2d,
+        C: *const Handle_Adaptor2d_Curve2d,
     ) -> crate::OcctResult<*mut gp_Circ2d>;
-    /// **Source:** `BRepBlend_HCurve2dTool.hxx`:120 - `BRepBlend_HCurve2dTool::Ellipse()`
+    /// **Source:** `BRepBlend_HCurve2dTool.hxx`:115 - `BRepBlend_HCurve2dTool::Ellipse()`
     pub fn BRepBlend_HCurve2dTool_ellipse(
-        C: *const HandleAdaptor2dCurve2d,
+        C: *const Handle_Adaptor2d_Curve2d,
     ) -> crate::OcctResult<*mut gp_Elips2d>;
-    /// **Source:** `BRepBlend_HCurve2dTool.hxx`:122 - `BRepBlend_HCurve2dTool::Hyperbola()`
+    /// **Source:** `BRepBlend_HCurve2dTool.hxx`:117 - `BRepBlend_HCurve2dTool::Hyperbola()`
     pub fn BRepBlend_HCurve2dTool_hyperbola(
-        C: *const HandleAdaptor2dCurve2d,
+        C: *const Handle_Adaptor2d_Curve2d,
     ) -> crate::OcctResult<*mut gp_Hypr2d>;
-    /// **Source:** `BRepBlend_HCurve2dTool.hxx`:124 - `BRepBlend_HCurve2dTool::Parabola()`
+    /// **Source:** `BRepBlend_HCurve2dTool.hxx`:119 - `BRepBlend_HCurve2dTool::Parabola()`
     pub fn BRepBlend_HCurve2dTool_parabola(
-        C: *const HandleAdaptor2dCurve2d,
+        C: *const Handle_Adaptor2d_Curve2d,
     ) -> crate::OcctResult<*mut gp_Parab2d>;
-    /// **Source:** `BRepBlend_HCurve2dTool.hxx`:126 - `BRepBlend_HCurve2dTool::Bezier()`
+    /// **Source:** `BRepBlend_HCurve2dTool.hxx`:121 - `BRepBlend_HCurve2dTool::Bezier()`
     pub fn BRepBlend_HCurve2dTool_bezier(
-        C: *const HandleAdaptor2dCurve2d,
-    ) -> crate::OcctResult<*mut HandleGeom2dBezierCurve>;
-    /// **Source:** `BRepBlend_HCurve2dTool.hxx`:128 - `BRepBlend_HCurve2dTool::BSpline()`
+        C: *const Handle_Adaptor2d_Curve2d,
+    ) -> crate::OcctResult<*mut Handle_Geom2d_BezierCurve>;
+    /// **Source:** `BRepBlend_HCurve2dTool.hxx`:123 - `BRepBlend_HCurve2dTool::BSpline()`
     pub fn BRepBlend_HCurve2dTool_b_spline(
-        C: *const HandleAdaptor2dCurve2d,
-    ) -> crate::OcctResult<*mut HandleGeom2dBSplineCurve>;
-    /// **Source:** `BRepBlend_HCurve2dTool.hxx`:130 - `BRepBlend_HCurve2dTool::NbSamples()`
+        C: *const Handle_Adaptor2d_Curve2d,
+    ) -> crate::OcctResult<*mut Handle_Geom2d_BSplineCurve>;
+    /// **Source:** `BRepBlend_HCurve2dTool.hxx`:125 - `BRepBlend_HCurve2dTool::NbSamples()`
     pub fn BRepBlend_HCurve2dTool_nb_samples(
-        C: *const HandleAdaptor2dCurve2d,
+        C: *const Handle_Adaptor2d_Curve2d,
         U0: f64,
         U1: f64,
     ) -> crate::OcctResult<i32>;
@@ -1690,58 +1693,58 @@ unsafe extern "C" {
     pub fn BRepBlend_HCurveTool_ctor() -> crate::OcctResult<*mut BRepBlend_HCurveTool>;
     /// **Source:** `BRepBlend_HCurveTool.hxx`:37 - `BRepBlend_HCurveTool::FirstParameter()`
     pub fn BRepBlend_HCurveTool_first_parameter(
-        C: *const HandleAdaptor3dCurve,
+        C: *const Handle_Adaptor3d_Curve,
     ) -> crate::OcctResult<f64>;
     /// **Source:** `BRepBlend_HCurveTool.hxx`:39 - `BRepBlend_HCurveTool::LastParameter()`
     pub fn BRepBlend_HCurveTool_last_parameter(
-        C: *const HandleAdaptor3dCurve,
+        C: *const Handle_Adaptor3d_Curve,
     ) -> crate::OcctResult<f64>;
     /// **Source:** `BRepBlend_HCurveTool.hxx`:41 - `BRepBlend_HCurveTool::Continuity()`
     pub fn BRepBlend_HCurveTool_continuity(
-        C: *const HandleAdaptor3dCurve,
+        C: *const Handle_Adaptor3d_Curve,
     ) -> crate::OcctResult<i32>;
     /// **Source:** `BRepBlend_HCurveTool.hxx`:45 - `BRepBlend_HCurveTool::NbIntervals()`
     pub fn BRepBlend_HCurveTool_nb_intervals(
-        C: *const HandleAdaptor3dCurve,
+        C: *const Handle_Adaptor3d_Curve,
         S: i32,
     ) -> crate::OcctResult<i32>;
     /// **Source:** `BRepBlend_HCurveTool.hxx`:52 - `BRepBlend_HCurveTool::Intervals()`
     pub fn BRepBlend_HCurveTool_intervals(
-        C: *const HandleAdaptor3dCurve,
-        T: *mut TColStd_Array1OfReal,
+        C: *const Handle_Adaptor3d_Curve,
+        T: *mut NCollection_Array1_double,
         S: i32,
     ) -> *const std::ffi::c_char;
     /// **Source:** `BRepBlend_HCurveTool.hxx`:56 - `BRepBlend_HCurveTool::IsClosed()`
     pub fn BRepBlend_HCurveTool_is_closed(
-        C: *const HandleAdaptor3dCurve,
+        C: *const Handle_Adaptor3d_Curve,
     ) -> crate::OcctResult<bool>;
     /// **Source:** `BRepBlend_HCurveTool.hxx`:58 - `BRepBlend_HCurveTool::IsPeriodic()`
     pub fn BRepBlend_HCurveTool_is_periodic(
-        C: *const HandleAdaptor3dCurve,
+        C: *const Handle_Adaptor3d_Curve,
     ) -> crate::OcctResult<bool>;
     /// **Source:** `BRepBlend_HCurveTool.hxx`:60 - `BRepBlend_HCurveTool::Period()`
-    pub fn BRepBlend_HCurveTool_period(C: *const HandleAdaptor3dCurve) -> crate::OcctResult<f64>;
+    pub fn BRepBlend_HCurveTool_period(C: *const Handle_Adaptor3d_Curve) -> crate::OcctResult<f64>;
     /// **Source:** `BRepBlend_HCurveTool.hxx`:63 - `BRepBlend_HCurveTool::Value()`
     pub fn BRepBlend_HCurveTool_value(
-        C: *const HandleAdaptor3dCurve,
+        C: *const Handle_Adaptor3d_Curve,
         U: f64,
     ) -> crate::OcctResult<*mut gp_Pnt>;
     /// **Source:** `BRepBlend_HCurveTool.hxx`:66 - `BRepBlend_HCurveTool::D0()`
     pub fn BRepBlend_HCurveTool_d0(
-        C: *const HandleAdaptor3dCurve,
+        C: *const Handle_Adaptor3d_Curve,
         U: f64,
         P: *mut gp_Pnt,
     ) -> *const std::ffi::c_char;
     /// **Source:** `BRepBlend_HCurveTool.hxx`:72 - `BRepBlend_HCurveTool::D1()`
     pub fn BRepBlend_HCurveTool_d1(
-        C: *const HandleAdaptor3dCurve,
+        C: *const Handle_Adaptor3d_Curve,
         U: f64,
         P: *mut gp_Pnt,
         V: *mut gp_Vec,
     ) -> *const std::ffi::c_char;
     /// **Source:** `BRepBlend_HCurveTool.hxx`:78 - `BRepBlend_HCurveTool::D2()`
     pub fn BRepBlend_HCurveTool_d2(
-        C: *const HandleAdaptor3dCurve,
+        C: *const Handle_Adaptor3d_Curve,
         U: f64,
         P: *mut gp_Pnt,
         V1: *mut gp_Vec,
@@ -1749,7 +1752,7 @@ unsafe extern "C" {
     ) -> *const std::ffi::c_char;
     /// **Source:** `BRepBlend_HCurveTool.hxx`:88 - `BRepBlend_HCurveTool::D3()`
     pub fn BRepBlend_HCurveTool_d3(
-        C: *const HandleAdaptor3dCurve,
+        C: *const Handle_Adaptor3d_Curve,
         U: f64,
         P: *mut gp_Pnt,
         V1: *mut gp_Vec,
@@ -1758,139 +1761,141 @@ unsafe extern "C" {
     ) -> *const std::ffi::c_char;
     /// **Source:** `BRepBlend_HCurveTool.hxx`:100 - `BRepBlend_HCurveTool::DN()`
     pub fn BRepBlend_HCurveTool_dn(
-        C: *const HandleAdaptor3dCurve,
+        C: *const Handle_Adaptor3d_Curve,
         U: f64,
         N: i32,
     ) -> crate::OcctResult<*mut gp_Vec>;
-    /// **Source:** `BRepBlend_HCurveTool.hxx`:106 - `BRepBlend_HCurveTool::Resolution()`
+    /// **Source:** `BRepBlend_HCurveTool.hxx`:104 - `BRepBlend_HCurveTool::Resolution()`
     pub fn BRepBlend_HCurveTool_resolution(
-        C: *const HandleAdaptor3dCurve,
+        C: *const Handle_Adaptor3d_Curve,
         R3d: f64,
     ) -> crate::OcctResult<f64>;
-    /// **Source:** `BRepBlend_HCurveTool.hxx`:111 - `BRepBlend_HCurveTool::GetType()`
-    pub fn BRepBlend_HCurveTool_get_type(C: *const HandleAdaptor3dCurve) -> crate::OcctResult<i32>;
-    /// **Source:** `BRepBlend_HCurveTool.hxx`:113 - `BRepBlend_HCurveTool::Line()`
+    /// **Source:** `BRepBlend_HCurveTool.hxx`:109 - `BRepBlend_HCurveTool::GetType()`
+    pub fn BRepBlend_HCurveTool_get_type(
+        C: *const Handle_Adaptor3d_Curve,
+    ) -> crate::OcctResult<i32>;
+    /// **Source:** `BRepBlend_HCurveTool.hxx`:111 - `BRepBlend_HCurveTool::Line()`
     pub fn BRepBlend_HCurveTool_line(
-        C: *const HandleAdaptor3dCurve,
+        C: *const Handle_Adaptor3d_Curve,
     ) -> crate::OcctResult<*mut gp_Lin>;
-    /// **Source:** `BRepBlend_HCurveTool.hxx`:115 - `BRepBlend_HCurveTool::Circle()`
+    /// **Source:** `BRepBlend_HCurveTool.hxx`:113 - `BRepBlend_HCurveTool::Circle()`
     pub fn BRepBlend_HCurveTool_circle(
-        C: *const HandleAdaptor3dCurve,
+        C: *const Handle_Adaptor3d_Curve,
     ) -> crate::OcctResult<*mut gp_Circ>;
-    /// **Source:** `BRepBlend_HCurveTool.hxx`:117 - `BRepBlend_HCurveTool::Ellipse()`
+    /// **Source:** `BRepBlend_HCurveTool.hxx`:115 - `BRepBlend_HCurveTool::Ellipse()`
     pub fn BRepBlend_HCurveTool_ellipse(
-        C: *const HandleAdaptor3dCurve,
+        C: *const Handle_Adaptor3d_Curve,
     ) -> crate::OcctResult<*mut gp_Elips>;
-    /// **Source:** `BRepBlend_HCurveTool.hxx`:119 - `BRepBlend_HCurveTool::Hyperbola()`
+    /// **Source:** `BRepBlend_HCurveTool.hxx`:117 - `BRepBlend_HCurveTool::Hyperbola()`
     pub fn BRepBlend_HCurveTool_hyperbola(
-        C: *const HandleAdaptor3dCurve,
+        C: *const Handle_Adaptor3d_Curve,
     ) -> crate::OcctResult<*mut gp_Hypr>;
-    /// **Source:** `BRepBlend_HCurveTool.hxx`:121 - `BRepBlend_HCurveTool::Parabola()`
+    /// **Source:** `BRepBlend_HCurveTool.hxx`:119 - `BRepBlend_HCurveTool::Parabola()`
     pub fn BRepBlend_HCurveTool_parabola(
-        C: *const HandleAdaptor3dCurve,
+        C: *const Handle_Adaptor3d_Curve,
     ) -> crate::OcctResult<*mut gp_Parab>;
-    /// **Source:** `BRepBlend_HCurveTool.hxx`:123 - `BRepBlend_HCurveTool::Bezier()`
+    /// **Source:** `BRepBlend_HCurveTool.hxx`:121 - `BRepBlend_HCurveTool::Bezier()`
     pub fn BRepBlend_HCurveTool_bezier(
-        C: *const HandleAdaptor3dCurve,
-    ) -> crate::OcctResult<*mut HandleGeomBezierCurve>;
-    /// **Source:** `BRepBlend_HCurveTool.hxx`:125 - `BRepBlend_HCurveTool::BSpline()`
+        C: *const Handle_Adaptor3d_Curve,
+    ) -> crate::OcctResult<*mut Handle_Geom_BezierCurve>;
+    /// **Source:** `BRepBlend_HCurveTool.hxx`:123 - `BRepBlend_HCurveTool::BSpline()`
     pub fn BRepBlend_HCurveTool_b_spline(
-        C: *const HandleAdaptor3dCurve,
-    ) -> crate::OcctResult<*mut HandleGeomBSplineCurve>;
-    /// **Source:** `BRepBlend_HCurveTool.hxx`:127 - `BRepBlend_HCurveTool::NbSamples()`
+        C: *const Handle_Adaptor3d_Curve,
+    ) -> crate::OcctResult<*mut Handle_Geom_BSplineCurve>;
+    /// **Source:** `BRepBlend_HCurveTool.hxx`:125 - `BRepBlend_HCurveTool::NbSamples()`
     pub fn BRepBlend_HCurveTool_nb_samples(
-        C: *const HandleAdaptor3dCurve,
+        C: *const Handle_Adaptor3d_Curve,
         U0: f64,
         U1: f64,
     ) -> crate::OcctResult<i32>;
     // ======================== BRepBlend_Line ========================
     pub fn BRepBlend_Line_destructor(self_: *mut BRepBlend_Line);
-    /// **Source:** `BRepBlend_Line.hxx`:34 - `BRepBlend_Line::BRepBlend_Line()`
+    /// **Source:** `BRepBlend_Line.hxx`:32 - `BRepBlend_Line::BRepBlend_Line()`
     pub fn BRepBlend_Line_ctor() -> crate::OcctResult<*mut BRepBlend_Line>;
-    /// **Source:** `BRepBlend_Line.hxx`:37 - `BRepBlend_Line::Clear()`
+    /// **Source:** `BRepBlend_Line.hxx`:35 - `BRepBlend_Line::Clear()`
     pub fn BRepBlend_Line_clear(self_: *mut BRepBlend_Line) -> *const std::ffi::c_char;
-    /// **Source:** `BRepBlend_Line.hxx`:40 - `BRepBlend_Line::Append()`
+    /// **Source:** `BRepBlend_Line.hxx`:38 - `BRepBlend_Line::Append()`
     pub fn BRepBlend_Line_append(
         self_: *mut BRepBlend_Line,
         P: *const Blend_Point,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepBlend_Line.hxx`:43 - `BRepBlend_Line::Prepend()`
+    /// **Source:** `BRepBlend_Line.hxx`:41 - `BRepBlend_Line::Prepend()`
     pub fn BRepBlend_Line_prepend(
         self_: *mut BRepBlend_Line,
         P: *const Blend_Point,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepBlend_Line.hxx`:46 - `BRepBlend_Line::InsertBefore()`
+    /// **Source:** `BRepBlend_Line.hxx`:44 - `BRepBlend_Line::InsertBefore()`
     pub fn BRepBlend_Line_insert_before(
         self_: *mut BRepBlend_Line,
         Index: i32,
         P: *const Blend_Point,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepBlend_Line.hxx`:51 - `BRepBlend_Line::Remove()`
+    /// **Source:** `BRepBlend_Line.hxx`:49 - `BRepBlend_Line::Remove()`
     pub fn BRepBlend_Line_remove(
         self_: *mut BRepBlend_Line,
         FromIndex: i32,
         ToIndex: i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepBlend_Line.hxx`:55 - `BRepBlend_Line::Set()`
+    /// **Source:** `BRepBlend_Line.hxx`:53 - `BRepBlend_Line::Set()`
     pub fn BRepBlend_Line_set_typetrans2(
         self_: *mut BRepBlend_Line,
         TranS1: i32,
         TranS2: i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepBlend_Line.hxx`:58 - `BRepBlend_Line::Set()`
+    /// **Source:** `BRepBlend_Line.hxx`:56 - `BRepBlend_Line::Set()`
     pub fn BRepBlend_Line_set_typetrans(
         self_: *mut BRepBlend_Line,
         Trans: i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepBlend_Line.hxx`:61 - `BRepBlend_Line::SetStartPoints()`
+    /// **Source:** `BRepBlend_Line.hxx`:59 - `BRepBlend_Line::SetStartPoints()`
     pub fn BRepBlend_Line_set_start_points(
         self_: *mut BRepBlend_Line,
         StartPt1: *const BRepBlend_Extremity,
         StartPt2: *const BRepBlend_Extremity,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepBlend_Line.hxx`:64 - `BRepBlend_Line::SetEndPoints()`
+    /// **Source:** `BRepBlend_Line.hxx`:62 - `BRepBlend_Line::SetEndPoints()`
     pub fn BRepBlend_Line_set_end_points(
         self_: *mut BRepBlend_Line,
         EndPt1: *const BRepBlend_Extremity,
         EndPt2: *const BRepBlend_Extremity,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepBlend_Line.hxx`:67 - `BRepBlend_Line::NbPoints()`
+    /// **Source:** `BRepBlend_Line.hxx`:65 - `BRepBlend_Line::NbPoints()`
     pub fn BRepBlend_Line_nb_points(self_: *const BRepBlend_Line) -> crate::OcctResult<i32>;
-    /// **Source:** `BRepBlend_Line.hxx`:70 - `BRepBlend_Line::Point()`
+    /// **Source:** `BRepBlend_Line.hxx`:68 - `BRepBlend_Line::Point()`
     pub fn BRepBlend_Line_point(
         self_: *const BRepBlend_Line,
         Index: i32,
     ) -> crate::OcctResult<*const Blend_Point>;
-    /// **Source:** `BRepBlend_Line.hxx`:84 - `BRepBlend_Line::TransitionOnS1()`
+    /// **Source:** `BRepBlend_Line.hxx`:82 - `BRepBlend_Line::TransitionOnS1()`
     pub fn BRepBlend_Line_transition_on_s1(self_: *const BRepBlend_Line) -> crate::OcctResult<i32>;
-    /// **Source:** `BRepBlend_Line.hxx`:89 - `BRepBlend_Line::TransitionOnS2()`
+    /// **Source:** `BRepBlend_Line.hxx`:87 - `BRepBlend_Line::TransitionOnS2()`
     pub fn BRepBlend_Line_transition_on_s2(self_: *const BRepBlend_Line) -> crate::OcctResult<i32>;
-    /// **Source:** `BRepBlend_Line.hxx`:92 - `BRepBlend_Line::StartPointOnFirst()`
+    /// **Source:** `BRepBlend_Line.hxx`:90 - `BRepBlend_Line::StartPointOnFirst()`
     pub fn BRepBlend_Line_start_point_on_first(
         self_: *const BRepBlend_Line,
     ) -> crate::OcctResult<*const BRepBlend_Extremity>;
-    /// **Source:** `BRepBlend_Line.hxx`:95 - `BRepBlend_Line::StartPointOnSecond()`
+    /// **Source:** `BRepBlend_Line.hxx`:93 - `BRepBlend_Line::StartPointOnSecond()`
     pub fn BRepBlend_Line_start_point_on_second(
         self_: *const BRepBlend_Line,
     ) -> crate::OcctResult<*const BRepBlend_Extremity>;
-    /// **Source:** `BRepBlend_Line.hxx`:98 - `BRepBlend_Line::EndPointOnFirst()`
+    /// **Source:** `BRepBlend_Line.hxx`:96 - `BRepBlend_Line::EndPointOnFirst()`
     pub fn BRepBlend_Line_end_point_on_first(
         self_: *const BRepBlend_Line,
     ) -> crate::OcctResult<*const BRepBlend_Extremity>;
-    /// **Source:** `BRepBlend_Line.hxx`:101 - `BRepBlend_Line::EndPointOnSecond()`
+    /// **Source:** `BRepBlend_Line.hxx`:99 - `BRepBlend_Line::EndPointOnSecond()`
     pub fn BRepBlend_Line_end_point_on_second(
         self_: *const BRepBlend_Line,
     ) -> crate::OcctResult<*const BRepBlend_Extremity>;
-    /// **Source:** `BRepBlend_Line.hxx`:105 - `BRepBlend_Line::TransitionOnS()`
+    /// **Source:** `BRepBlend_Line.hxx`:103 - `BRepBlend_Line::TransitionOnS()`
     pub fn BRepBlend_Line_transition_on_s(self_: *const BRepBlend_Line) -> crate::OcctResult<i32>;
-    /// **Source:** `BRepBlend_Line.hxx`:107 - `BRepBlend_Line::DynamicType()`
+    /// **Source:** `BRepBlend_Line.hxx`:105 - `BRepBlend_Line::DynamicType()`
     pub fn BRepBlend_Line_dynamic_type(
         self_: *const BRepBlend_Line,
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// **Source:** `BRepBlend_Line.hxx`:107 - `BRepBlend_Line::get_type_name()`
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
+    /// **Source:** `BRepBlend_Line.hxx`:105 - `BRepBlend_Line::get_type_name()`
     pub fn BRepBlend_Line_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
-    /// **Source:** `BRepBlend_Line.hxx`:107 - `BRepBlend_Line::get_type_descriptor()`
-    pub fn BRepBlend_Line_get_type_descriptor() -> crate::OcctResult<*const HandleStandardType>;
+    /// **Source:** `BRepBlend_Line.hxx`:105 - `BRepBlend_Line::get_type_descriptor()`
+    pub fn BRepBlend_Line_get_type_descriptor() -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast BRepBlend_Line to Standard_Transient
     pub fn BRepBlend_Line_as_Standard_Transient(
         self_: *const BRepBlend_Line,
@@ -1902,54 +1907,54 @@ unsafe extern "C" {
     /// Wrap BRepBlend_Line in a Handle
     pub fn BRepBlend_Line_to_handle(
         obj: *mut BRepBlend_Line,
-    ) -> crate::OcctResult<*mut HandleBRepBlendLine>;
+    ) -> crate::OcctResult<*mut Handle_BRepBlend_Line>;
     /// Destroy Handle<BRepBlend_Line>
-    pub fn HandleBRepBlendLine_destructor(self_: *mut HandleBRepBlendLine);
+    pub fn Handle_BRepBlend_Line_destructor(self_: *mut Handle_BRepBlend_Line);
     /// Clone Handle<BRepBlend_Line> (increments reference count)
-    pub fn HandleBRepBlendLine_clone(
-        self_: *const HandleBRepBlendLine,
-    ) -> crate::OcctResult<*mut HandleBRepBlendLine>;
+    pub fn Handle_BRepBlend_Line_clone(
+        self_: *const Handle_BRepBlend_Line,
+    ) -> crate::OcctResult<*mut Handle_BRepBlend_Line>;
     /// Check if Handle<BRepBlend_Line> is null
-    pub fn HandleBRepBlendLine_is_null(self_: *const HandleBRepBlendLine) -> bool;
+    pub fn Handle_BRepBlend_Line_is_null(self_: *const Handle_BRepBlend_Line) -> bool;
     /// Dereference Handle to get *const BRepBlend_Line
-    pub fn HandleBRepBlendLine_get(
-        handle: *const HandleBRepBlendLine,
+    pub fn Handle_BRepBlend_Line_get(
+        handle: *const Handle_BRepBlend_Line,
     ) -> crate::OcctResult<*const BRepBlend_Line>;
     /// Dereference Handle to get *mut BRepBlend_Line
-    pub fn HandleBRepBlendLine_get_mut(
-        handle: *mut HandleBRepBlendLine,
+    pub fn Handle_BRepBlend_Line_get_mut(
+        handle: *mut Handle_BRepBlend_Line,
     ) -> crate::OcctResult<*mut BRepBlend_Line>;
     /// Upcast Handle<BRepBlend_Line> to Handle<Standard_Transient>
-    pub fn HandleBRepBlendLine_to_HandleStandardTransient(
-        self_: *const HandleBRepBlendLine,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn Handle_BRepBlend_Line_to_Handle_Standard_Transient(
+        self_: *const Handle_BRepBlend_Line,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn BRepBlend_Line_inherited_IsInstance(
         self_: *const BRepBlend_Line,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn BRepBlend_Line_inherited_IsKind(
         self_: *const BRepBlend_Line,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn BRepBlend_Line_inherited_This(
         self_: *const BRepBlend_Line,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn BRepBlend_Line_inherited_GetRefCount(
         self_: *const BRepBlend_Line,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn BRepBlend_Line_inherited_IncrementRefCounter(
         self_: *mut BRepBlend_Line,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn BRepBlend_Line_inherited_DecrementRefCounter(
         self_: *mut BRepBlend_Line,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn BRepBlend_Line_inherited_Delete(self_: *const BRepBlend_Line)
         -> *const std::ffi::c_char;
     // ======================== BRepBlend_PointOnRst ========================
@@ -1958,7 +1963,7 @@ unsafe extern "C" {
     pub fn BRepBlend_PointOnRst_ctor() -> crate::OcctResult<*mut BRepBlend_PointOnRst>;
     /// **Source:** `BRepBlend_PointOnRst.hxx`:38 - `BRepBlend_PointOnRst::BRepBlend_PointOnRst()`
     pub fn BRepBlend_PointOnRst_ctor_handleadaptor2dcurve2d_real_transition2(
-        A: *const HandleAdaptor2dCurve2d,
+        A: *const Handle_Adaptor2d_Curve2d,
         Param: f64,
         TLine: *const IntSurf_Transition,
         TArc: *const IntSurf_Transition,
@@ -1966,7 +1971,7 @@ unsafe extern "C" {
     /// **Source:** `BRepBlend_PointOnRst.hxx`:45 - `BRepBlend_PointOnRst::SetArc()`
     pub fn BRepBlend_PointOnRst_set_arc(
         self_: *mut BRepBlend_PointOnRst,
-        A: *const HandleAdaptor2dCurve2d,
+        A: *const Handle_Adaptor2d_Curve2d,
         Param: f64,
         TLine: *const IntSurf_Transition,
         TArc: *const IntSurf_Transition,
@@ -1974,7 +1979,7 @@ unsafe extern "C" {
     /// **Source:** `BRepBlend_PointOnRst.hxx`:52 - `BRepBlend_PointOnRst::Arc()`
     pub fn BRepBlend_PointOnRst_arc(
         self_: *const BRepBlend_PointOnRst,
-    ) -> crate::OcctResult<*const HandleAdaptor2dCurve2d>;
+    ) -> crate::OcctResult<*const Handle_Adaptor2d_Curve2d>;
     /// **Source:** `BRepBlend_PointOnRst.hxx`:56 - `BRepBlend_PointOnRst::TransitionOnLine()`
     pub fn BRepBlend_PointOnRst_transition_on_line(
         self_: *const BRepBlend_PointOnRst,
@@ -1989,127 +1994,127 @@ unsafe extern "C" {
     ) -> crate::OcctResult<f64>;
     // ======================== BRepBlend_RstRstConstRad ========================
     pub fn BRepBlend_RstRstConstRad_destructor(self_: *mut BRepBlend_RstRstConstRad);
-    /// **Source:** `BRepBlend_RstRstConstRad.hxx`:50 - `BRepBlend_RstRstConstRad::BRepBlend_RstRstConstRad()`
+    /// **Source:** `BRepBlend_RstRstConstRad.hxx`:46 - `BRepBlend_RstRstConstRad::BRepBlend_RstRstConstRad()`
     pub fn BRepBlend_RstRstConstRad_ctor_handleadaptor3dsurface_handleadaptor2dcurve2d_handleadaptor3dsurface_handleadaptor2dcurve2d_handleadaptor3dcurve(
-        Surf1: *const HandleAdaptor3dSurface,
-        Rst1: *const HandleAdaptor2dCurve2d,
-        Surf2: *const HandleAdaptor3dSurface,
-        Rst2: *const HandleAdaptor2dCurve2d,
-        CGuide: *const HandleAdaptor3dCurve,
+        Surf1: *const Handle_Adaptor3d_Surface,
+        Rst1: *const Handle_Adaptor2d_Curve2d,
+        Surf2: *const Handle_Adaptor3d_Surface,
+        Rst2: *const Handle_Adaptor2d_Curve2d,
+        CGuide: *const Handle_Adaptor3d_Curve,
     ) -> crate::OcctResult<*mut BRepBlend_RstRstConstRad>;
-    /// **Source:** `BRepBlend_RstRstConstRad.hxx`:57 - `BRepBlend_RstRstConstRad::NbVariables()`
+    /// **Source:** `BRepBlend_RstRstConstRad.hxx`:53 - `BRepBlend_RstRstConstRad::NbVariables()`
     pub fn BRepBlend_RstRstConstRad_nb_variables(
         self_: *const BRepBlend_RstRstConstRad,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `BRepBlend_RstRstConstRad.hxx`:60 - `BRepBlend_RstRstConstRad::NbEquations()`
+    /// **Source:** `BRepBlend_RstRstConstRad.hxx`:56 - `BRepBlend_RstRstConstRad::NbEquations()`
     pub fn BRepBlend_RstRstConstRad_nb_equations(
         self_: *const BRepBlend_RstRstConstRad,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `BRepBlend_RstRstConstRad.hxx`:66 - `BRepBlend_RstRstConstRad::Value()`
+    /// **Source:** `BRepBlend_RstRstConstRad.hxx`:62 - `BRepBlend_RstRstConstRad::Value()`
     pub fn BRepBlend_RstRstConstRad_value(
         self_: *mut BRepBlend_RstRstConstRad,
         X: *const math_Vector,
         F: *mut math_Vector,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BRepBlend_RstRstConstRad.hxx`:72 - `BRepBlend_RstRstConstRad::Derivatives()`
+    /// **Source:** `BRepBlend_RstRstConstRad.hxx`:68 - `BRepBlend_RstRstConstRad::Derivatives()`
     pub fn BRepBlend_RstRstConstRad_derivatives(
         self_: *mut BRepBlend_RstRstConstRad,
         X: *const math_Vector,
         D: *mut math_Matrix,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BRepBlend_RstRstConstRad.hxx`:79 - `BRepBlend_RstRstConstRad::Values()`
+    /// **Source:** `BRepBlend_RstRstConstRad.hxx`:74 - `BRepBlend_RstRstConstRad::Values()`
     pub fn BRepBlend_RstRstConstRad_values(
         self_: *mut BRepBlend_RstRstConstRad,
         X: *const math_Vector,
         F: *mut math_Vector,
         D: *mut math_Matrix,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BRepBlend_RstRstConstRad.hxx`:83 - `BRepBlend_RstRstConstRad::Set()`
+    /// **Source:** `BRepBlend_RstRstConstRad.hxx`:76 - `BRepBlend_RstRstConstRad::Set()`
     pub fn BRepBlend_RstRstConstRad_set_handleadaptor3dsurface_handleadaptor2dcurve2d_handleadaptor3dsurface_handleadaptor2dcurve2d(
         self_: *mut BRepBlend_RstRstConstRad,
-        SurfRef1: *const HandleAdaptor3dSurface,
-        RstRef1: *const HandleAdaptor2dCurve2d,
-        SurfRef2: *const HandleAdaptor3dSurface,
-        RstRef2: *const HandleAdaptor2dCurve2d,
+        SurfRef1: *const Handle_Adaptor3d_Surface,
+        RstRef1: *const Handle_Adaptor2d_Curve2d,
+        SurfRef2: *const Handle_Adaptor3d_Surface,
+        RstRef2: *const Handle_Adaptor2d_Curve2d,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepBlend_RstRstConstRad.hxx`:88 - `BRepBlend_RstRstConstRad::Set()`
+    /// **Source:** `BRepBlend_RstRstConstRad.hxx`:81 - `BRepBlend_RstRstConstRad::Set()`
     pub fn BRepBlend_RstRstConstRad_set_real(
         self_: *mut BRepBlend_RstRstConstRad,
         Param: f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepBlend_RstRstConstRad.hxx`:94 - `BRepBlend_RstRstConstRad::Set()`
+    /// **Source:** `BRepBlend_RstRstConstRad.hxx`:87 - `BRepBlend_RstRstConstRad::Set()`
     pub fn BRepBlend_RstRstConstRad_set_real2(
         self_: *mut BRepBlend_RstRstConstRad,
         First: f64,
         Last: f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepBlend_RstRstConstRad.hxx`:96 - `BRepBlend_RstRstConstRad::GetTolerance()`
+    /// **Source:** `BRepBlend_RstRstConstRad.hxx`:89 - `BRepBlend_RstRstConstRad::GetTolerance()`
     pub fn BRepBlend_RstRstConstRad_get_tolerance_vector_real(
         self_: *const BRepBlend_RstRstConstRad,
         Tolerance: *mut math_Vector,
         Tol: f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepBlend_RstRstConstRad.hxx`:99 - `BRepBlend_RstRstConstRad::GetBounds()`
+    /// **Source:** `BRepBlend_RstRstConstRad.hxx`:91 - `BRepBlend_RstRstConstRad::GetBounds()`
     pub fn BRepBlend_RstRstConstRad_get_bounds(
         self_: *const BRepBlend_RstRstConstRad,
         InfBound: *mut math_Vector,
         SupBound: *mut math_Vector,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepBlend_RstRstConstRad.hxx`:102 - `BRepBlend_RstRstConstRad::IsSolution()`
+    /// **Source:** `BRepBlend_RstRstConstRad.hxx`:93 - `BRepBlend_RstRstConstRad::IsSolution()`
     pub fn BRepBlend_RstRstConstRad_is_solution(
         self_: *mut BRepBlend_RstRstConstRad,
         Sol: *const math_Vector,
         Tol: f64,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BRepBlend_RstRstConstRad.hxx`:107 - `BRepBlend_RstRstConstRad::GetMinimalDistance()`
+    /// **Source:** `BRepBlend_RstRstConstRad.hxx`:97 - `BRepBlend_RstRstConstRad::GetMinimalDistance()`
     pub fn BRepBlend_RstRstConstRad_get_minimal_distance(
         self_: *const BRepBlend_RstRstConstRad,
     ) -> crate::OcctResult<f64>;
-    /// **Source:** `BRepBlend_RstRstConstRad.hxx`:109 - `BRepBlend_RstRstConstRad::PointOnRst1()`
+    /// **Source:** `BRepBlend_RstRstConstRad.hxx`:99 - `BRepBlend_RstRstConstRad::PointOnRst1()`
     pub fn BRepBlend_RstRstConstRad_point_on_rst1(
         self_: *const BRepBlend_RstRstConstRad,
     ) -> crate::OcctResult<*const gp_Pnt>;
-    /// **Source:** `BRepBlend_RstRstConstRad.hxx`:111 - `BRepBlend_RstRstConstRad::PointOnRst2()`
+    /// **Source:** `BRepBlend_RstRstConstRad.hxx`:101 - `BRepBlend_RstRstConstRad::PointOnRst2()`
     pub fn BRepBlend_RstRstConstRad_point_on_rst2(
         self_: *const BRepBlend_RstRstConstRad,
     ) -> crate::OcctResult<*const gp_Pnt>;
-    /// **Source:** `BRepBlend_RstRstConstRad.hxx`:114 - `BRepBlend_RstRstConstRad::Pnt2dOnRst1()`
+    /// **Source:** `BRepBlend_RstRstConstRad.hxx`:104 - `BRepBlend_RstRstConstRad::Pnt2dOnRst1()`
     pub fn BRepBlend_RstRstConstRad_pnt2d_on_rst1(
         self_: *const BRepBlend_RstRstConstRad,
     ) -> crate::OcctResult<*const gp_Pnt2d>;
-    /// **Source:** `BRepBlend_RstRstConstRad.hxx`:118 - `BRepBlend_RstRstConstRad::Pnt2dOnRst2()`
+    /// **Source:** `BRepBlend_RstRstConstRad.hxx`:108 - `BRepBlend_RstRstConstRad::Pnt2dOnRst2()`
     pub fn BRepBlend_RstRstConstRad_pnt2d_on_rst2(
         self_: *const BRepBlend_RstRstConstRad,
     ) -> crate::OcctResult<*const gp_Pnt2d>;
-    /// **Source:** `BRepBlend_RstRstConstRad.hxx`:121 - `BRepBlend_RstRstConstRad::ParameterOnRst1()`
+    /// **Source:** `BRepBlend_RstRstConstRad.hxx`:111 - `BRepBlend_RstRstConstRad::ParameterOnRst1()`
     pub fn BRepBlend_RstRstConstRad_parameter_on_rst1(
         self_: *const BRepBlend_RstRstConstRad,
     ) -> crate::OcctResult<f64>;
-    /// **Source:** `BRepBlend_RstRstConstRad.hxx`:124 - `BRepBlend_RstRstConstRad::ParameterOnRst2()`
+    /// **Source:** `BRepBlend_RstRstConstRad.hxx`:114 - `BRepBlend_RstRstConstRad::ParameterOnRst2()`
     pub fn BRepBlend_RstRstConstRad_parameter_on_rst2(
         self_: *const BRepBlend_RstRstConstRad,
     ) -> crate::OcctResult<f64>;
-    /// **Source:** `BRepBlend_RstRstConstRad.hxx`:126 - `BRepBlend_RstRstConstRad::IsTangencyPoint()`
+    /// **Source:** `BRepBlend_RstRstConstRad.hxx`:116 - `BRepBlend_RstRstConstRad::IsTangencyPoint()`
     pub fn BRepBlend_RstRstConstRad_is_tangency_point(
         self_: *const BRepBlend_RstRstConstRad,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BRepBlend_RstRstConstRad.hxx`:128 - `BRepBlend_RstRstConstRad::TangentOnRst1()`
+    /// **Source:** `BRepBlend_RstRstConstRad.hxx`:118 - `BRepBlend_RstRstConstRad::TangentOnRst1()`
     pub fn BRepBlend_RstRstConstRad_tangent_on_rst1(
         self_: *const BRepBlend_RstRstConstRad,
     ) -> crate::OcctResult<*const gp_Vec>;
-    /// **Source:** `BRepBlend_RstRstConstRad.hxx`:130 - `BRepBlend_RstRstConstRad::Tangent2dOnRst1()`
+    /// **Source:** `BRepBlend_RstRstConstRad.hxx`:120 - `BRepBlend_RstRstConstRad::Tangent2dOnRst1()`
     pub fn BRepBlend_RstRstConstRad_tangent2d_on_rst1(
         self_: *const BRepBlend_RstRstConstRad,
     ) -> crate::OcctResult<*const gp_Vec2d>;
-    /// **Source:** `BRepBlend_RstRstConstRad.hxx`:132 - `BRepBlend_RstRstConstRad::TangentOnRst2()`
+    /// **Source:** `BRepBlend_RstRstConstRad.hxx`:122 - `BRepBlend_RstRstConstRad::TangentOnRst2()`
     pub fn BRepBlend_RstRstConstRad_tangent_on_rst2(
         self_: *const BRepBlend_RstRstConstRad,
     ) -> crate::OcctResult<*const gp_Vec>;
-    /// **Source:** `BRepBlend_RstRstConstRad.hxx`:134 - `BRepBlend_RstRstConstRad::Tangent2dOnRst2()`
+    /// **Source:** `BRepBlend_RstRstConstRad.hxx`:124 - `BRepBlend_RstRstConstRad::Tangent2dOnRst2()`
     pub fn BRepBlend_RstRstConstRad_tangent2d_on_rst2(
         self_: *const BRepBlend_RstRstConstRad,
     ) -> crate::OcctResult<*const gp_Vec2d>;
-    /// **Source:** `BRepBlend_RstRstConstRad.hxx`:138 - `BRepBlend_RstRstConstRad::Decroch()`
+    /// **Source:** `BRepBlend_RstRstConstRad.hxx`:128 - `BRepBlend_RstRstConstRad::Decroch()`
     pub fn BRepBlend_RstRstConstRad_decroch(
         self_: *const BRepBlend_RstRstConstRad,
         Sol: *const math_Vector,
@@ -2118,18 +2123,18 @@ unsafe extern "C" {
         NRst2: *mut gp_Vec,
         TgRst2: *mut gp_Vec,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `BRepBlend_RstRstConstRad.hxx`:144 - `BRepBlend_RstRstConstRad::Set()`
+    /// **Source:** `BRepBlend_RstRstConstRad.hxx`:134 - `BRepBlend_RstRstConstRad::Set()`
     pub fn BRepBlend_RstRstConstRad_set_real_int(
         self_: *mut BRepBlend_RstRstConstRad,
         Radius: f64,
         Choix: i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepBlend_RstRstConstRad.hxx`:148 - `BRepBlend_RstRstConstRad::Set()`
+    /// **Source:** `BRepBlend_RstRstConstRad.hxx`:138 - `BRepBlend_RstRstConstRad::Set()`
     pub fn BRepBlend_RstRstConstRad_set_sectionshape(
         self_: *mut BRepBlend_RstRstConstRad,
         TypeSection: i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepBlend_RstRstConstRad.hxx`:152 - `BRepBlend_RstRstConstRad::CenterCircleRst1Rst2()`
+    /// **Source:** `BRepBlend_RstRstConstRad.hxx`:142 - `BRepBlend_RstRstConstRad::CenterCircleRst1Rst2()`
     pub fn BRepBlend_RstRstConstRad_center_circle_rst1_rst2(
         self_: *const BRepBlend_RstRstConstRad,
         PtRst1: *const gp_Pnt,
@@ -2138,7 +2143,7 @@ unsafe extern "C" {
         Center: *mut gp_Pnt,
         VdMed: *mut gp_Vec,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BRepBlend_RstRstConstRad.hxx`:158 - `BRepBlend_RstRstConstRad::Section()`
+    /// **Source:** `BRepBlend_RstRstConstRad.hxx`:148 - `BRepBlend_RstRstConstRad::Section()`
     pub fn BRepBlend_RstRstConstRad_section_real5_circ(
         self_: *mut BRepBlend_RstRstConstRad,
         Param: f64,
@@ -2148,31 +2153,31 @@ unsafe extern "C" {
         Pfin: *mut f64,
         C: *mut gp_Circ,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepBlend_RstRstConstRad.hxx`:166 - `BRepBlend_RstRstConstRad::IsRational()`
+    /// **Source:** `BRepBlend_RstRstConstRad.hxx`:156 - `BRepBlend_RstRstConstRad::IsRational()`
     pub fn BRepBlend_RstRstConstRad_is_rational(
         self_: *const BRepBlend_RstRstConstRad,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BRepBlend_RstRstConstRad.hxx`:169 - `BRepBlend_RstRstConstRad::GetSectionSize()`
+    /// **Source:** `BRepBlend_RstRstConstRad.hxx`:159 - `BRepBlend_RstRstConstRad::GetSectionSize()`
     pub fn BRepBlend_RstRstConstRad_get_section_size(
         self_: *const BRepBlend_RstRstConstRad,
     ) -> crate::OcctResult<f64>;
-    /// **Source:** `BRepBlend_RstRstConstRad.hxx`:173 - `BRepBlend_RstRstConstRad::GetMinimalWeight()`
+    /// **Source:** `BRepBlend_RstRstConstRad.hxx`:163 - `BRepBlend_RstRstConstRad::GetMinimalWeight()`
     pub fn BRepBlend_RstRstConstRad_get_minimal_weight(
         self_: *const BRepBlend_RstRstConstRad,
-        Weigths: *mut TColStd_Array1OfReal,
+        Weigths: *mut NCollection_Array1_double,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepBlend_RstRstConstRad.hxx`:177 - `BRepBlend_RstRstConstRad::NbIntervals()`
+    /// **Source:** `BRepBlend_RstRstConstRad.hxx`:167 - `BRepBlend_RstRstConstRad::NbIntervals()`
     pub fn BRepBlend_RstRstConstRad_nb_intervals(
         self_: *const BRepBlend_RstRstConstRad,
         S: i32,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `BRepBlend_RstRstConstRad.hxx`:183 - `BRepBlend_RstRstConstRad::Intervals()`
+    /// **Source:** `BRepBlend_RstRstConstRad.hxx`:173 - `BRepBlend_RstRstConstRad::Intervals()`
     pub fn BRepBlend_RstRstConstRad_intervals(
         self_: *const BRepBlend_RstRstConstRad,
-        T: *mut TColStd_Array1OfReal,
+        T: *mut NCollection_Array1_double,
         S: i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepBlend_RstRstConstRad.hxx`:186 - `BRepBlend_RstRstConstRad::GetShape()`
+    /// **Source:** `BRepBlend_RstRstConstRad.hxx`:176 - `BRepBlend_RstRstConstRad::GetShape()`
     pub fn BRepBlend_RstRstConstRad_get_shape(
         self_: *mut BRepBlend_RstRstConstRad,
         NbPoles: *mut i32,
@@ -2180,7 +2185,7 @@ unsafe extern "C" {
         Degree: *mut i32,
         NbPoles2d: *mut i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepBlend_RstRstConstRad.hxx`:196 - `BRepBlend_RstRstConstRad::GetTolerance()`
+    /// **Source:** `BRepBlend_RstRstConstRad.hxx`:183 - `BRepBlend_RstRstConstRad::GetTolerance()`
     pub fn BRepBlend_RstRstConstRad_get_tolerance_real3_vector2(
         self_: *const BRepBlend_RstRstConstRad,
         BoundTol: f64,
@@ -2189,50 +2194,50 @@ unsafe extern "C" {
         Tol3d: *mut math_Vector,
         Tol1D: *mut math_Vector,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepBlend_RstRstConstRad.hxx`:202 - `BRepBlend_RstRstConstRad::Knots()`
+    /// **Source:** `BRepBlend_RstRstConstRad.hxx`:189 - `BRepBlend_RstRstConstRad::Knots()`
     pub fn BRepBlend_RstRstConstRad_knots(
         self_: *mut BRepBlend_RstRstConstRad,
-        TKnots: *mut TColStd_Array1OfReal,
+        TKnots: *mut NCollection_Array1_double,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepBlend_RstRstConstRad.hxx`:204 - `BRepBlend_RstRstConstRad::Mults()`
+    /// **Source:** `BRepBlend_RstRstConstRad.hxx`:191 - `BRepBlend_RstRstConstRad::Mults()`
     pub fn BRepBlend_RstRstConstRad_mults(
         self_: *mut BRepBlend_RstRstConstRad,
-        TMults: *mut TColStd_Array1OfInteger,
+        TMults: *mut NCollection_Array1_int,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepBlend_RstRstConstRad.hxx`:207 - `BRepBlend_RstRstConstRad::Section()`
-    pub fn BRepBlend_RstRstConstRad_section_point_array1ofpnt_array1ofvec_array1ofpnt2d_array1ofvec2d_array1ofreal2(
+    /// **Source:** `BRepBlend_RstRstConstRad.hxx`:194 - `BRepBlend_RstRstConstRad::Section()`
+    pub fn BRepBlend_RstRstConstRad_section_point_arr1_pnt_arr1_vec_arr1_pnt2d_arr1_vec2d_arr1_double2(
         self_: *mut BRepBlend_RstRstConstRad,
         P: *const Blend_Point,
-        Poles: *mut TColgp_Array1OfPnt,
-        DPoles: *mut TColgp_Array1OfVec,
-        Poles2d: *mut TColgp_Array1OfPnt2d,
-        DPoles2d: *mut TColgp_Array1OfVec2d,
-        Weigths: *mut TColStd_Array1OfReal,
-        DWeigths: *mut TColStd_Array1OfReal,
+        Poles: *mut NCollection_Array1_gp_Pnt,
+        DPoles: *mut NCollection_Array1_gp_Vec,
+        Poles2d: *mut NCollection_Array1_gp_Pnt2d,
+        DPoles2d: *mut NCollection_Array1_gp_Vec2d,
+        Weigths: *mut NCollection_Array1_double,
+        DWeigths: *mut NCollection_Array1_double,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BRepBlend_RstRstConstRad.hxx`:215 - `BRepBlend_RstRstConstRad::Section()`
-    pub fn BRepBlend_RstRstConstRad_section_point_array1ofpnt_array1ofpnt2d_array1ofreal(
+    /// **Source:** `BRepBlend_RstRstConstRad.hxx`:202 - `BRepBlend_RstRstConstRad::Section()`
+    pub fn BRepBlend_RstRstConstRad_section_point_arr1_pnt_arr1_pnt2d_arr1_double(
         self_: *mut BRepBlend_RstRstConstRad,
         P: *const Blend_Point,
-        Poles: *mut TColgp_Array1OfPnt,
-        Poles2d: *mut TColgp_Array1OfPnt2d,
-        Weigths: *mut TColStd_Array1OfReal,
+        Poles: *mut NCollection_Array1_gp_Pnt,
+        Poles2d: *mut NCollection_Array1_gp_Pnt2d,
+        Weigths: *mut NCollection_Array1_double,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepBlend_RstRstConstRad.hxx`:223 - `BRepBlend_RstRstConstRad::Section()`
-    pub fn BRepBlend_RstRstConstRad_section_point_array1ofpnt_array1ofvec2_array1ofpnt2d_array1ofvec2d2_array1ofreal3(
+    /// **Source:** `BRepBlend_RstRstConstRad.hxx`:210 - `BRepBlend_RstRstConstRad::Section()`
+    pub fn BRepBlend_RstRstConstRad_section_point_arr1_pnt_arr1_vec2_arr1_pnt2d_arr1_vec2d2_arr1_double3(
         self_: *mut BRepBlend_RstRstConstRad,
         P: *const Blend_Point,
-        Poles: *mut TColgp_Array1OfPnt,
-        DPoles: *mut TColgp_Array1OfVec,
-        D2Poles: *mut TColgp_Array1OfVec,
-        Poles2d: *mut TColgp_Array1OfPnt2d,
-        DPoles2d: *mut TColgp_Array1OfVec2d,
-        D2Poles2d: *mut TColgp_Array1OfVec2d,
-        Weigths: *mut TColStd_Array1OfReal,
-        DWeigths: *mut TColStd_Array1OfReal,
-        D2Weigths: *mut TColStd_Array1OfReal,
+        Poles: *mut NCollection_Array1_gp_Pnt,
+        DPoles: *mut NCollection_Array1_gp_Vec,
+        D2Poles: *mut NCollection_Array1_gp_Vec,
+        Poles2d: *mut NCollection_Array1_gp_Pnt2d,
+        DPoles2d: *mut NCollection_Array1_gp_Vec2d,
+        D2Poles2d: *mut NCollection_Array1_gp_Vec2d,
+        Weigths: *mut NCollection_Array1_double,
+        DWeigths: *mut NCollection_Array1_double,
+        D2Weigths: *mut NCollection_Array1_double,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BRepBlend_RstRstConstRad.hxx`:234 - `BRepBlend_RstRstConstRad::Resolution()`
+    /// **Source:** `BRepBlend_RstRstConstRad.hxx`:221 - `BRepBlend_RstRstConstRad::Resolution()`
     pub fn BRepBlend_RstRstConstRad_resolution(
         self_: *const BRepBlend_RstRstConstRad,
         IC2d: i32,
@@ -2272,15 +2277,15 @@ unsafe extern "C" {
     pub fn BRepBlend_RstRstConstRad_as_math_FunctionSet_mut(
         self_: *mut BRepBlend_RstRstConstRad,
     ) -> crate::OcctResult<*mut math_FunctionSet>;
-    /// Inherited: **Source:** `Blend_RstRstFunction.hxx`:112 - `Blend_RstRstFunction::Pnt1()`
+    /// Inherited: **Source:** `Blend_RstRstFunction.hxx`:108 - `Blend_RstRstFunction::Pnt1()`
     pub fn BRepBlend_RstRstConstRad_inherited_Pnt1(
         self_: *const BRepBlend_RstRstConstRad,
     ) -> crate::OcctResult<*const gp_Pnt>;
-    /// Inherited: **Source:** `Blend_RstRstFunction.hxx`:115 - `Blend_RstRstFunction::Pnt2()`
+    /// Inherited: **Source:** `Blend_RstRstFunction.hxx`:111 - `Blend_RstRstFunction::Pnt2()`
     pub fn BRepBlend_RstRstConstRad_inherited_Pnt2(
         self_: *const BRepBlend_RstRstConstRad,
     ) -> crate::OcctResult<*const gp_Pnt>;
-    /// Inherited: **Source:** `Blend_AppFunction.hxx`:195 - `Blend_AppFunction::Parameter()`
+    /// Inherited: **Source:** `Blend_AppFunction.hxx`:192 - `Blend_AppFunction::Parameter()`
     pub fn BRepBlend_RstRstConstRad_inherited_Parameter(
         self_: *const BRepBlend_RstRstConstRad,
         P: *const Blend_Point,
@@ -2291,128 +2296,128 @@ unsafe extern "C" {
     ) -> crate::OcctResult<i32>;
     // ======================== BRepBlend_RstRstEvolRad ========================
     pub fn BRepBlend_RstRstEvolRad_destructor(self_: *mut BRepBlend_RstRstEvolRad);
-    /// **Source:** `BRepBlend_RstRstEvolRad.hxx`:51 - `BRepBlend_RstRstEvolRad::BRepBlend_RstRstEvolRad()`
+    /// **Source:** `BRepBlend_RstRstEvolRad.hxx`:47 - `BRepBlend_RstRstEvolRad::BRepBlend_RstRstEvolRad()`
     pub fn BRepBlend_RstRstEvolRad_ctor_handleadaptor3dsurface_handleadaptor2dcurve2d_handleadaptor3dsurface_handleadaptor2dcurve2d_handleadaptor3dcurve_handlelawfunction(
-        Surf1: *const HandleAdaptor3dSurface,
-        Rst1: *const HandleAdaptor2dCurve2d,
-        Surf2: *const HandleAdaptor3dSurface,
-        Rst2: *const HandleAdaptor2dCurve2d,
-        CGuide: *const HandleAdaptor3dCurve,
-        Evol: *const HandleLawFunction,
+        Surf1: *const Handle_Adaptor3d_Surface,
+        Rst1: *const Handle_Adaptor2d_Curve2d,
+        Surf2: *const Handle_Adaptor3d_Surface,
+        Rst2: *const Handle_Adaptor2d_Curve2d,
+        CGuide: *const Handle_Adaptor3d_Curve,
+        Evol: *const Handle_Law_Function,
     ) -> crate::OcctResult<*mut BRepBlend_RstRstEvolRad>;
-    /// **Source:** `BRepBlend_RstRstEvolRad.hxx`:59 - `BRepBlend_RstRstEvolRad::NbVariables()`
+    /// **Source:** `BRepBlend_RstRstEvolRad.hxx`:55 - `BRepBlend_RstRstEvolRad::NbVariables()`
     pub fn BRepBlend_RstRstEvolRad_nb_variables(
         self_: *const BRepBlend_RstRstEvolRad,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `BRepBlend_RstRstEvolRad.hxx`:62 - `BRepBlend_RstRstEvolRad::NbEquations()`
+    /// **Source:** `BRepBlend_RstRstEvolRad.hxx`:58 - `BRepBlend_RstRstEvolRad::NbEquations()`
     pub fn BRepBlend_RstRstEvolRad_nb_equations(
         self_: *const BRepBlend_RstRstEvolRad,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `BRepBlend_RstRstEvolRad.hxx`:68 - `BRepBlend_RstRstEvolRad::Value()`
+    /// **Source:** `BRepBlend_RstRstEvolRad.hxx`:64 - `BRepBlend_RstRstEvolRad::Value()`
     pub fn BRepBlend_RstRstEvolRad_value(
         self_: *mut BRepBlend_RstRstEvolRad,
         X: *const math_Vector,
         F: *mut math_Vector,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BRepBlend_RstRstEvolRad.hxx`:74 - `BRepBlend_RstRstEvolRad::Derivatives()`
+    /// **Source:** `BRepBlend_RstRstEvolRad.hxx`:70 - `BRepBlend_RstRstEvolRad::Derivatives()`
     pub fn BRepBlend_RstRstEvolRad_derivatives(
         self_: *mut BRepBlend_RstRstEvolRad,
         X: *const math_Vector,
         D: *mut math_Matrix,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BRepBlend_RstRstEvolRad.hxx`:81 - `BRepBlend_RstRstEvolRad::Values()`
+    /// **Source:** `BRepBlend_RstRstEvolRad.hxx`:76 - `BRepBlend_RstRstEvolRad::Values()`
     pub fn BRepBlend_RstRstEvolRad_values(
         self_: *mut BRepBlend_RstRstEvolRad,
         X: *const math_Vector,
         F: *mut math_Vector,
         D: *mut math_Matrix,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BRepBlend_RstRstEvolRad.hxx`:85 - `BRepBlend_RstRstEvolRad::Set()`
+    /// **Source:** `BRepBlend_RstRstEvolRad.hxx`:78 - `BRepBlend_RstRstEvolRad::Set()`
     pub fn BRepBlend_RstRstEvolRad_set_handleadaptor3dsurface_handleadaptor2dcurve2d_handleadaptor3dsurface_handleadaptor2dcurve2d(
         self_: *mut BRepBlend_RstRstEvolRad,
-        SurfRef1: *const HandleAdaptor3dSurface,
-        RstRef1: *const HandleAdaptor2dCurve2d,
-        SurfRef2: *const HandleAdaptor3dSurface,
-        RstRef2: *const HandleAdaptor2dCurve2d,
+        SurfRef1: *const Handle_Adaptor3d_Surface,
+        RstRef1: *const Handle_Adaptor2d_Curve2d,
+        SurfRef2: *const Handle_Adaptor3d_Surface,
+        RstRef2: *const Handle_Adaptor2d_Curve2d,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepBlend_RstRstEvolRad.hxx`:90 - `BRepBlend_RstRstEvolRad::Set()`
+    /// **Source:** `BRepBlend_RstRstEvolRad.hxx`:83 - `BRepBlend_RstRstEvolRad::Set()`
     pub fn BRepBlend_RstRstEvolRad_set_real(
         self_: *mut BRepBlend_RstRstEvolRad,
         Param: f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepBlend_RstRstEvolRad.hxx`:96 - `BRepBlend_RstRstEvolRad::Set()`
+    /// **Source:** `BRepBlend_RstRstEvolRad.hxx`:89 - `BRepBlend_RstRstEvolRad::Set()`
     pub fn BRepBlend_RstRstEvolRad_set_real2(
         self_: *mut BRepBlend_RstRstEvolRad,
         First: f64,
         Last: f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepBlend_RstRstEvolRad.hxx`:98 - `BRepBlend_RstRstEvolRad::GetTolerance()`
+    /// **Source:** `BRepBlend_RstRstEvolRad.hxx`:91 - `BRepBlend_RstRstEvolRad::GetTolerance()`
     pub fn BRepBlend_RstRstEvolRad_get_tolerance_vector_real(
         self_: *const BRepBlend_RstRstEvolRad,
         Tolerance: *mut math_Vector,
         Tol: f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepBlend_RstRstEvolRad.hxx`:101 - `BRepBlend_RstRstEvolRad::GetBounds()`
+    /// **Source:** `BRepBlend_RstRstEvolRad.hxx`:93 - `BRepBlend_RstRstEvolRad::GetBounds()`
     pub fn BRepBlend_RstRstEvolRad_get_bounds(
         self_: *const BRepBlend_RstRstEvolRad,
         InfBound: *mut math_Vector,
         SupBound: *mut math_Vector,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepBlend_RstRstEvolRad.hxx`:104 - `BRepBlend_RstRstEvolRad::IsSolution()`
+    /// **Source:** `BRepBlend_RstRstEvolRad.hxx`:95 - `BRepBlend_RstRstEvolRad::IsSolution()`
     pub fn BRepBlend_RstRstEvolRad_is_solution(
         self_: *mut BRepBlend_RstRstEvolRad,
         Sol: *const math_Vector,
         Tol: f64,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BRepBlend_RstRstEvolRad.hxx`:109 - `BRepBlend_RstRstEvolRad::GetMinimalDistance()`
+    /// **Source:** `BRepBlend_RstRstEvolRad.hxx`:99 - `BRepBlend_RstRstEvolRad::GetMinimalDistance()`
     pub fn BRepBlend_RstRstEvolRad_get_minimal_distance(
         self_: *const BRepBlend_RstRstEvolRad,
     ) -> crate::OcctResult<f64>;
-    /// **Source:** `BRepBlend_RstRstEvolRad.hxx`:111 - `BRepBlend_RstRstEvolRad::PointOnRst1()`
+    /// **Source:** `BRepBlend_RstRstEvolRad.hxx`:101 - `BRepBlend_RstRstEvolRad::PointOnRst1()`
     pub fn BRepBlend_RstRstEvolRad_point_on_rst1(
         self_: *const BRepBlend_RstRstEvolRad,
     ) -> crate::OcctResult<*const gp_Pnt>;
-    /// **Source:** `BRepBlend_RstRstEvolRad.hxx`:113 - `BRepBlend_RstRstEvolRad::PointOnRst2()`
+    /// **Source:** `BRepBlend_RstRstEvolRad.hxx`:103 - `BRepBlend_RstRstEvolRad::PointOnRst2()`
     pub fn BRepBlend_RstRstEvolRad_point_on_rst2(
         self_: *const BRepBlend_RstRstEvolRad,
     ) -> crate::OcctResult<*const gp_Pnt>;
-    /// **Source:** `BRepBlend_RstRstEvolRad.hxx`:116 - `BRepBlend_RstRstEvolRad::Pnt2dOnRst1()`
+    /// **Source:** `BRepBlend_RstRstEvolRad.hxx`:106 - `BRepBlend_RstRstEvolRad::Pnt2dOnRst1()`
     pub fn BRepBlend_RstRstEvolRad_pnt2d_on_rst1(
         self_: *const BRepBlend_RstRstEvolRad,
     ) -> crate::OcctResult<*const gp_Pnt2d>;
-    /// **Source:** `BRepBlend_RstRstEvolRad.hxx`:120 - `BRepBlend_RstRstEvolRad::Pnt2dOnRst2()`
+    /// **Source:** `BRepBlend_RstRstEvolRad.hxx`:110 - `BRepBlend_RstRstEvolRad::Pnt2dOnRst2()`
     pub fn BRepBlend_RstRstEvolRad_pnt2d_on_rst2(
         self_: *const BRepBlend_RstRstEvolRad,
     ) -> crate::OcctResult<*const gp_Pnt2d>;
-    /// **Source:** `BRepBlend_RstRstEvolRad.hxx`:123 - `BRepBlend_RstRstEvolRad::ParameterOnRst1()`
+    /// **Source:** `BRepBlend_RstRstEvolRad.hxx`:113 - `BRepBlend_RstRstEvolRad::ParameterOnRst1()`
     pub fn BRepBlend_RstRstEvolRad_parameter_on_rst1(
         self_: *const BRepBlend_RstRstEvolRad,
     ) -> crate::OcctResult<f64>;
-    /// **Source:** `BRepBlend_RstRstEvolRad.hxx`:126 - `BRepBlend_RstRstEvolRad::ParameterOnRst2()`
+    /// **Source:** `BRepBlend_RstRstEvolRad.hxx`:116 - `BRepBlend_RstRstEvolRad::ParameterOnRst2()`
     pub fn BRepBlend_RstRstEvolRad_parameter_on_rst2(
         self_: *const BRepBlend_RstRstEvolRad,
     ) -> crate::OcctResult<f64>;
-    /// **Source:** `BRepBlend_RstRstEvolRad.hxx`:128 - `BRepBlend_RstRstEvolRad::IsTangencyPoint()`
+    /// **Source:** `BRepBlend_RstRstEvolRad.hxx`:118 - `BRepBlend_RstRstEvolRad::IsTangencyPoint()`
     pub fn BRepBlend_RstRstEvolRad_is_tangency_point(
         self_: *const BRepBlend_RstRstEvolRad,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BRepBlend_RstRstEvolRad.hxx`:130 - `BRepBlend_RstRstEvolRad::TangentOnRst1()`
+    /// **Source:** `BRepBlend_RstRstEvolRad.hxx`:120 - `BRepBlend_RstRstEvolRad::TangentOnRst1()`
     pub fn BRepBlend_RstRstEvolRad_tangent_on_rst1(
         self_: *const BRepBlend_RstRstEvolRad,
     ) -> crate::OcctResult<*const gp_Vec>;
-    /// **Source:** `BRepBlend_RstRstEvolRad.hxx`:132 - `BRepBlend_RstRstEvolRad::Tangent2dOnRst1()`
+    /// **Source:** `BRepBlend_RstRstEvolRad.hxx`:122 - `BRepBlend_RstRstEvolRad::Tangent2dOnRst1()`
     pub fn BRepBlend_RstRstEvolRad_tangent2d_on_rst1(
         self_: *const BRepBlend_RstRstEvolRad,
     ) -> crate::OcctResult<*const gp_Vec2d>;
-    /// **Source:** `BRepBlend_RstRstEvolRad.hxx`:134 - `BRepBlend_RstRstEvolRad::TangentOnRst2()`
+    /// **Source:** `BRepBlend_RstRstEvolRad.hxx`:124 - `BRepBlend_RstRstEvolRad::TangentOnRst2()`
     pub fn BRepBlend_RstRstEvolRad_tangent_on_rst2(
         self_: *const BRepBlend_RstRstEvolRad,
     ) -> crate::OcctResult<*const gp_Vec>;
-    /// **Source:** `BRepBlend_RstRstEvolRad.hxx`:136 - `BRepBlend_RstRstEvolRad::Tangent2dOnRst2()`
+    /// **Source:** `BRepBlend_RstRstEvolRad.hxx`:126 - `BRepBlend_RstRstEvolRad::Tangent2dOnRst2()`
     pub fn BRepBlend_RstRstEvolRad_tangent2d_on_rst2(
         self_: *const BRepBlend_RstRstEvolRad,
     ) -> crate::OcctResult<*const gp_Vec2d>;
-    /// **Source:** `BRepBlend_RstRstEvolRad.hxx`:140 - `BRepBlend_RstRstEvolRad::Decroch()`
+    /// **Source:** `BRepBlend_RstRstEvolRad.hxx`:130 - `BRepBlend_RstRstEvolRad::Decroch()`
     pub fn BRepBlend_RstRstEvolRad_decroch(
         self_: *const BRepBlend_RstRstEvolRad,
         Sol: *const math_Vector,
@@ -2421,17 +2426,17 @@ unsafe extern "C" {
         NRst2: *mut gp_Vec,
         TgRst2: *mut gp_Vec,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `BRepBlend_RstRstEvolRad.hxx`:146 - `BRepBlend_RstRstEvolRad::Set()`
+    /// **Source:** `BRepBlend_RstRstEvolRad.hxx`:136 - `BRepBlend_RstRstEvolRad::Set()`
     pub fn BRepBlend_RstRstEvolRad_set_int(
         self_: *mut BRepBlend_RstRstEvolRad,
         Choix: i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepBlend_RstRstEvolRad.hxx`:150 - `BRepBlend_RstRstEvolRad::Set()`
+    /// **Source:** `BRepBlend_RstRstEvolRad.hxx`:140 - `BRepBlend_RstRstEvolRad::Set()`
     pub fn BRepBlend_RstRstEvolRad_set_sectionshape(
         self_: *mut BRepBlend_RstRstEvolRad,
         TypeSection: i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepBlend_RstRstEvolRad.hxx`:154 - `BRepBlend_RstRstEvolRad::CenterCircleRst1Rst2()`
+    /// **Source:** `BRepBlend_RstRstEvolRad.hxx`:144 - `BRepBlend_RstRstEvolRad::CenterCircleRst1Rst2()`
     pub fn BRepBlend_RstRstEvolRad_center_circle_rst1_rst2(
         self_: *const BRepBlend_RstRstEvolRad,
         PtRst1: *const gp_Pnt,
@@ -2440,7 +2445,7 @@ unsafe extern "C" {
         Center: *mut gp_Pnt,
         VdMed: *mut gp_Vec,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BRepBlend_RstRstEvolRad.hxx`:160 - `BRepBlend_RstRstEvolRad::Section()`
+    /// **Source:** `BRepBlend_RstRstEvolRad.hxx`:150 - `BRepBlend_RstRstEvolRad::Section()`
     pub fn BRepBlend_RstRstEvolRad_section_real5_circ(
         self_: *mut BRepBlend_RstRstEvolRad,
         Param: f64,
@@ -2450,31 +2455,31 @@ unsafe extern "C" {
         Pfin: *mut f64,
         C: *mut gp_Circ,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepBlend_RstRstEvolRad.hxx`:168 - `BRepBlend_RstRstEvolRad::IsRational()`
+    /// **Source:** `BRepBlend_RstRstEvolRad.hxx`:158 - `BRepBlend_RstRstEvolRad::IsRational()`
     pub fn BRepBlend_RstRstEvolRad_is_rational(
         self_: *const BRepBlend_RstRstEvolRad,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BRepBlend_RstRstEvolRad.hxx`:171 - `BRepBlend_RstRstEvolRad::GetSectionSize()`
+    /// **Source:** `BRepBlend_RstRstEvolRad.hxx`:161 - `BRepBlend_RstRstEvolRad::GetSectionSize()`
     pub fn BRepBlend_RstRstEvolRad_get_section_size(
         self_: *const BRepBlend_RstRstEvolRad,
     ) -> crate::OcctResult<f64>;
-    /// **Source:** `BRepBlend_RstRstEvolRad.hxx`:175 - `BRepBlend_RstRstEvolRad::GetMinimalWeight()`
+    /// **Source:** `BRepBlend_RstRstEvolRad.hxx`:165 - `BRepBlend_RstRstEvolRad::GetMinimalWeight()`
     pub fn BRepBlend_RstRstEvolRad_get_minimal_weight(
         self_: *const BRepBlend_RstRstEvolRad,
-        Weigths: *mut TColStd_Array1OfReal,
+        Weigths: *mut NCollection_Array1_double,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepBlend_RstRstEvolRad.hxx`:179 - `BRepBlend_RstRstEvolRad::NbIntervals()`
+    /// **Source:** `BRepBlend_RstRstEvolRad.hxx`:169 - `BRepBlend_RstRstEvolRad::NbIntervals()`
     pub fn BRepBlend_RstRstEvolRad_nb_intervals(
         self_: *const BRepBlend_RstRstEvolRad,
         S: i32,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `BRepBlend_RstRstEvolRad.hxx`:185 - `BRepBlend_RstRstEvolRad::Intervals()`
+    /// **Source:** `BRepBlend_RstRstEvolRad.hxx`:175 - `BRepBlend_RstRstEvolRad::Intervals()`
     pub fn BRepBlend_RstRstEvolRad_intervals(
         self_: *const BRepBlend_RstRstEvolRad,
-        T: *mut TColStd_Array1OfReal,
+        T: *mut NCollection_Array1_double,
         S: i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepBlend_RstRstEvolRad.hxx`:188 - `BRepBlend_RstRstEvolRad::GetShape()`
+    /// **Source:** `BRepBlend_RstRstEvolRad.hxx`:178 - `BRepBlend_RstRstEvolRad::GetShape()`
     pub fn BRepBlend_RstRstEvolRad_get_shape(
         self_: *mut BRepBlend_RstRstEvolRad,
         NbPoles: *mut i32,
@@ -2482,7 +2487,7 @@ unsafe extern "C" {
         Degree: *mut i32,
         NbPoles2d: *mut i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepBlend_RstRstEvolRad.hxx`:198 - `BRepBlend_RstRstEvolRad::GetTolerance()`
+    /// **Source:** `BRepBlend_RstRstEvolRad.hxx`:185 - `BRepBlend_RstRstEvolRad::GetTolerance()`
     pub fn BRepBlend_RstRstEvolRad_get_tolerance_real3_vector2(
         self_: *const BRepBlend_RstRstEvolRad,
         BoundTol: f64,
@@ -2491,50 +2496,50 @@ unsafe extern "C" {
         Tol3d: *mut math_Vector,
         Tol1D: *mut math_Vector,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepBlend_RstRstEvolRad.hxx`:204 - `BRepBlend_RstRstEvolRad::Knots()`
+    /// **Source:** `BRepBlend_RstRstEvolRad.hxx`:191 - `BRepBlend_RstRstEvolRad::Knots()`
     pub fn BRepBlend_RstRstEvolRad_knots(
         self_: *mut BRepBlend_RstRstEvolRad,
-        TKnots: *mut TColStd_Array1OfReal,
+        TKnots: *mut NCollection_Array1_double,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepBlend_RstRstEvolRad.hxx`:206 - `BRepBlend_RstRstEvolRad::Mults()`
+    /// **Source:** `BRepBlend_RstRstEvolRad.hxx`:193 - `BRepBlend_RstRstEvolRad::Mults()`
     pub fn BRepBlend_RstRstEvolRad_mults(
         self_: *mut BRepBlend_RstRstEvolRad,
-        TMults: *mut TColStd_Array1OfInteger,
+        TMults: *mut NCollection_Array1_int,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepBlend_RstRstEvolRad.hxx`:209 - `BRepBlend_RstRstEvolRad::Section()`
-    pub fn BRepBlend_RstRstEvolRad_section_point_array1ofpnt_array1ofvec_array1ofpnt2d_array1ofvec2d_array1ofreal2(
+    /// **Source:** `BRepBlend_RstRstEvolRad.hxx`:196 - `BRepBlend_RstRstEvolRad::Section()`
+    pub fn BRepBlend_RstRstEvolRad_section_point_arr1_pnt_arr1_vec_arr1_pnt2d_arr1_vec2d_arr1_double2(
         self_: *mut BRepBlend_RstRstEvolRad,
         P: *const Blend_Point,
-        Poles: *mut TColgp_Array1OfPnt,
-        DPoles: *mut TColgp_Array1OfVec,
-        Poles2d: *mut TColgp_Array1OfPnt2d,
-        DPoles2d: *mut TColgp_Array1OfVec2d,
-        Weigths: *mut TColStd_Array1OfReal,
-        DWeigths: *mut TColStd_Array1OfReal,
+        Poles: *mut NCollection_Array1_gp_Pnt,
+        DPoles: *mut NCollection_Array1_gp_Vec,
+        Poles2d: *mut NCollection_Array1_gp_Pnt2d,
+        DPoles2d: *mut NCollection_Array1_gp_Vec2d,
+        Weigths: *mut NCollection_Array1_double,
+        DWeigths: *mut NCollection_Array1_double,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BRepBlend_RstRstEvolRad.hxx`:217 - `BRepBlend_RstRstEvolRad::Section()`
-    pub fn BRepBlend_RstRstEvolRad_section_point_array1ofpnt_array1ofpnt2d_array1ofreal(
+    /// **Source:** `BRepBlend_RstRstEvolRad.hxx`:204 - `BRepBlend_RstRstEvolRad::Section()`
+    pub fn BRepBlend_RstRstEvolRad_section_point_arr1_pnt_arr1_pnt2d_arr1_double(
         self_: *mut BRepBlend_RstRstEvolRad,
         P: *const Blend_Point,
-        Poles: *mut TColgp_Array1OfPnt,
-        Poles2d: *mut TColgp_Array1OfPnt2d,
-        Weigths: *mut TColStd_Array1OfReal,
+        Poles: *mut NCollection_Array1_gp_Pnt,
+        Poles2d: *mut NCollection_Array1_gp_Pnt2d,
+        Weigths: *mut NCollection_Array1_double,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepBlend_RstRstEvolRad.hxx`:225 - `BRepBlend_RstRstEvolRad::Section()`
-    pub fn BRepBlend_RstRstEvolRad_section_point_array1ofpnt_array1ofvec2_array1ofpnt2d_array1ofvec2d2_array1ofreal3(
+    /// **Source:** `BRepBlend_RstRstEvolRad.hxx`:212 - `BRepBlend_RstRstEvolRad::Section()`
+    pub fn BRepBlend_RstRstEvolRad_section_point_arr1_pnt_arr1_vec2_arr1_pnt2d_arr1_vec2d2_arr1_double3(
         self_: *mut BRepBlend_RstRstEvolRad,
         P: *const Blend_Point,
-        Poles: *mut TColgp_Array1OfPnt,
-        DPoles: *mut TColgp_Array1OfVec,
-        D2Poles: *mut TColgp_Array1OfVec,
-        Poles2d: *mut TColgp_Array1OfPnt2d,
-        DPoles2d: *mut TColgp_Array1OfVec2d,
-        D2Poles2d: *mut TColgp_Array1OfVec2d,
-        Weigths: *mut TColStd_Array1OfReal,
-        DWeigths: *mut TColStd_Array1OfReal,
-        D2Weigths: *mut TColStd_Array1OfReal,
+        Poles: *mut NCollection_Array1_gp_Pnt,
+        DPoles: *mut NCollection_Array1_gp_Vec,
+        D2Poles: *mut NCollection_Array1_gp_Vec,
+        Poles2d: *mut NCollection_Array1_gp_Pnt2d,
+        DPoles2d: *mut NCollection_Array1_gp_Vec2d,
+        D2Poles2d: *mut NCollection_Array1_gp_Vec2d,
+        Weigths: *mut NCollection_Array1_double,
+        DWeigths: *mut NCollection_Array1_double,
+        D2Weigths: *mut NCollection_Array1_double,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BRepBlend_RstRstEvolRad.hxx`:236 - `BRepBlend_RstRstEvolRad::Resolution()`
+    /// **Source:** `BRepBlend_RstRstEvolRad.hxx`:223 - `BRepBlend_RstRstEvolRad::Resolution()`
     pub fn BRepBlend_RstRstEvolRad_resolution(
         self_: *const BRepBlend_RstRstEvolRad,
         IC2d: i32,
@@ -2574,15 +2579,15 @@ unsafe extern "C" {
     pub fn BRepBlend_RstRstEvolRad_as_math_FunctionSet_mut(
         self_: *mut BRepBlend_RstRstEvolRad,
     ) -> crate::OcctResult<*mut math_FunctionSet>;
-    /// Inherited: **Source:** `Blend_RstRstFunction.hxx`:112 - `Blend_RstRstFunction::Pnt1()`
+    /// Inherited: **Source:** `Blend_RstRstFunction.hxx`:108 - `Blend_RstRstFunction::Pnt1()`
     pub fn BRepBlend_RstRstEvolRad_inherited_Pnt1(
         self_: *const BRepBlend_RstRstEvolRad,
     ) -> crate::OcctResult<*const gp_Pnt>;
-    /// Inherited: **Source:** `Blend_RstRstFunction.hxx`:115 - `Blend_RstRstFunction::Pnt2()`
+    /// Inherited: **Source:** `Blend_RstRstFunction.hxx`:111 - `Blend_RstRstFunction::Pnt2()`
     pub fn BRepBlend_RstRstEvolRad_inherited_Pnt2(
         self_: *const BRepBlend_RstRstEvolRad,
     ) -> crate::OcctResult<*const gp_Pnt>;
-    /// Inherited: **Source:** `Blend_AppFunction.hxx`:195 - `Blend_AppFunction::Parameter()`
+    /// Inherited: **Source:** `Blend_AppFunction.hxx`:192 - `Blend_AppFunction::Parameter()`
     pub fn BRepBlend_RstRstEvolRad_inherited_Parameter(
         self_: *const BRepBlend_RstRstEvolRad,
         P: *const Blend_Point,
@@ -2595,12 +2600,12 @@ unsafe extern "C" {
     pub fn BRepBlend_RstRstLineBuilder_destructor(self_: *mut BRepBlend_RstRstLineBuilder);
     /// **Source:** `BRepBlend_RstRstLineBuilder.hxx`:70 - `BRepBlend_RstRstLineBuilder::BRepBlend_RstRstLineBuilder()`
     pub fn BRepBlend_RstRstLineBuilder_ctor_handleadaptor3dsurface_handleadaptor2dcurve2d_handleadaptor3dtopoltool_handleadaptor3dsurface_handleadaptor2dcurve2d_handleadaptor3dtopoltool(
-        Surf1: *const HandleAdaptor3dSurface,
-        Rst1: *const HandleAdaptor2dCurve2d,
-        Domain1: *const HandleAdaptor3dTopolTool,
-        Surf2: *const HandleAdaptor3dSurface,
-        Rst2: *const HandleAdaptor2dCurve2d,
-        Domain2: *const HandleAdaptor3dTopolTool,
+        Surf1: *const Handle_Adaptor3d_Surface,
+        Rst1: *const Handle_Adaptor2d_Curve2d,
+        Domain1: *const Handle_Adaptor3d_TopolTool,
+        Surf2: *const Handle_Adaptor3d_Surface,
+        Rst2: *const Handle_Adaptor2d_Curve2d,
+        Domain2: *const Handle_Adaptor3d_TopolTool,
     ) -> crate::OcctResult<*mut BRepBlend_RstRstLineBuilder>;
     /// **Source:** `BRepBlend_RstRstLineBuilder.hxx`:77 - `BRepBlend_RstRstLineBuilder::Perform()`
     pub fn BRepBlend_RstRstLineBuilder_perform(
@@ -2656,7 +2661,7 @@ unsafe extern "C" {
     /// **Source:** `BRepBlend_RstRstLineBuilder.hxx`:117 - `BRepBlend_RstRstLineBuilder::Line()`
     pub fn BRepBlend_RstRstLineBuilder_line(
         self_: *const BRepBlend_RstRstLineBuilder,
-    ) -> crate::OcctResult<*const HandleBRepBlendLine>;
+    ) -> crate::OcctResult<*const Handle_BRepBlend_Line>;
     /// **Source:** `BRepBlend_RstRstLineBuilder.hxx`:119 - `BRepBlend_RstRstLineBuilder::Decroch1Start()`
     pub fn BRepBlend_RstRstLineBuilder_decroch1_start(
         self_: *const BRepBlend_RstRstLineBuilder,
@@ -2677,9 +2682,9 @@ unsafe extern "C" {
     pub fn BRepBlend_SurfCurvConstRadInv_destructor(self_: *mut BRepBlend_SurfCurvConstRadInv);
     /// **Source:** `BRepBlend_SurfCurvConstRadInv.hxx`:42 - `BRepBlend_SurfCurvConstRadInv::BRepBlend_SurfCurvConstRadInv()`
     pub fn BRepBlend_SurfCurvConstRadInv_ctor_handleadaptor3dsurface_handleadaptor3dcurve2(
-        S: *const HandleAdaptor3dSurface,
-        C: *const HandleAdaptor3dCurve,
-        Cg: *const HandleAdaptor3dCurve,
+        S: *const Handle_Adaptor3d_Surface,
+        C: *const Handle_Adaptor3d_Curve,
+        Cg: *const Handle_Adaptor3d_Curve,
     ) -> crate::OcctResult<*mut BRepBlend_SurfCurvConstRadInv>;
     /// **Source:** `BRepBlend_SurfCurvConstRadInv.hxx`:46 - `BRepBlend_SurfCurvConstRadInv::Set()`
     pub fn BRepBlend_SurfCurvConstRadInv_set_real_int(
@@ -2713,7 +2718,7 @@ unsafe extern "C" {
     /// **Source:** `BRepBlend_SurfCurvConstRadInv.hxx`:70 - `BRepBlend_SurfCurvConstRadInv::Set()`
     pub fn BRepBlend_SurfCurvConstRadInv_set_handleadaptor2dcurve2d(
         self_: *mut BRepBlend_SurfCurvConstRadInv,
-        Rst: *const HandleAdaptor2dCurve2d,
+        Rst: *const Handle_Adaptor2d_Curve2d,
     ) -> *const std::ffi::c_char;
     /// **Source:** `BRepBlend_SurfCurvConstRadInv.hxx`:75 - `BRepBlend_SurfCurvConstRadInv::GetTolerance()`
     pub fn BRepBlend_SurfCurvConstRadInv_get_tolerance(
@@ -2769,10 +2774,10 @@ unsafe extern "C" {
     pub fn BRepBlend_SurfCurvEvolRadInv_destructor(self_: *mut BRepBlend_SurfCurvEvolRadInv);
     /// **Source:** `BRepBlend_SurfCurvEvolRadInv.hxx`:43 - `BRepBlend_SurfCurvEvolRadInv::BRepBlend_SurfCurvEvolRadInv()`
     pub fn BRepBlend_SurfCurvEvolRadInv_ctor_handleadaptor3dsurface_handleadaptor3dcurve2_handlelawfunction(
-        S: *const HandleAdaptor3dSurface,
-        C: *const HandleAdaptor3dCurve,
-        Cg: *const HandleAdaptor3dCurve,
-        Evol: *const HandleLawFunction,
+        S: *const Handle_Adaptor3d_Surface,
+        C: *const Handle_Adaptor3d_Curve,
+        Cg: *const Handle_Adaptor3d_Curve,
+        Evol: *const Handle_Law_Function,
     ) -> crate::OcctResult<*mut BRepBlend_SurfCurvEvolRadInv>;
     /// **Source:** `BRepBlend_SurfCurvEvolRadInv.hxx`:48 - `BRepBlend_SurfCurvEvolRadInv::Set()`
     pub fn BRepBlend_SurfCurvEvolRadInv_set_int(
@@ -2805,7 +2810,7 @@ unsafe extern "C" {
     /// **Source:** `BRepBlend_SurfCurvEvolRadInv.hxx`:72 - `BRepBlend_SurfCurvEvolRadInv::Set()`
     pub fn BRepBlend_SurfCurvEvolRadInv_set_handleadaptor2dcurve2d(
         self_: *mut BRepBlend_SurfCurvEvolRadInv,
-        Rst: *const HandleAdaptor2dCurve2d,
+        Rst: *const Handle_Adaptor2d_Curve2d,
     ) -> *const std::ffi::c_char;
     /// **Source:** `BRepBlend_SurfCurvEvolRadInv.hxx`:77 - `BRepBlend_SurfCurvEvolRadInv::GetTolerance()`
     pub fn BRepBlend_SurfCurvEvolRadInv_get_tolerance(
@@ -2861,8 +2866,8 @@ unsafe extern "C" {
     pub fn BRepBlend_SurfPointConstRadInv_destructor(self_: *mut BRepBlend_SurfPointConstRadInv);
     /// **Source:** `BRepBlend_SurfPointConstRadInv.hxx`:41 - `BRepBlend_SurfPointConstRadInv::BRepBlend_SurfPointConstRadInv()`
     pub fn BRepBlend_SurfPointConstRadInv_ctor_handleadaptor3dsurface_handleadaptor3dcurve(
-        S: *const HandleAdaptor3dSurface,
-        C: *const HandleAdaptor3dCurve,
+        S: *const Handle_Adaptor3d_Surface,
+        C: *const Handle_Adaptor3d_Curve,
     ) -> crate::OcctResult<*mut BRepBlend_SurfPointConstRadInv>;
     /// **Source:** `BRepBlend_SurfPointConstRadInv.hxx`:44 - `BRepBlend_SurfPointConstRadInv::Set()`
     pub fn BRepBlend_SurfPointConstRadInv_set_real_int(
@@ -2952,9 +2957,9 @@ unsafe extern "C" {
     pub fn BRepBlend_SurfPointEvolRadInv_destructor(self_: *mut BRepBlend_SurfPointEvolRadInv);
     /// **Source:** `BRepBlend_SurfPointEvolRadInv.hxx`:42 - `BRepBlend_SurfPointEvolRadInv::BRepBlend_SurfPointEvolRadInv()`
     pub fn BRepBlend_SurfPointEvolRadInv_ctor_handleadaptor3dsurface_handleadaptor3dcurve_handlelawfunction(
-        S: *const HandleAdaptor3dSurface,
-        C: *const HandleAdaptor3dCurve,
-        Evol: *const HandleLawFunction,
+        S: *const Handle_Adaptor3d_Surface,
+        C: *const Handle_Adaptor3d_Curve,
+        Evol: *const Handle_Law_Function,
     ) -> crate::OcctResult<*mut BRepBlend_SurfPointEvolRadInv>;
     /// **Source:** `BRepBlend_SurfPointEvolRadInv.hxx`:46 - `BRepBlend_SurfPointEvolRadInv::Set()`
     pub fn BRepBlend_SurfPointEvolRadInv_set_int(
@@ -3041,138 +3046,138 @@ unsafe extern "C" {
     ) -> crate::OcctResult<i32>;
     // ======================== BRepBlend_SurfRstConstRad ========================
     pub fn BRepBlend_SurfRstConstRad_destructor(self_: *mut BRepBlend_SurfRstConstRad);
-    /// **Source:** `BRepBlend_SurfRstConstRad.hxx`:49 - `BRepBlend_SurfRstConstRad::BRepBlend_SurfRstConstRad()`
+    /// **Source:** `BRepBlend_SurfRstConstRad.hxx`:45 - `BRepBlend_SurfRstConstRad::BRepBlend_SurfRstConstRad()`
     pub fn BRepBlend_SurfRstConstRad_ctor_handleadaptor3dsurface2_handleadaptor2dcurve2d_handleadaptor3dcurve(
-        Surf: *const HandleAdaptor3dSurface,
-        SurfRst: *const HandleAdaptor3dSurface,
-        Rst: *const HandleAdaptor2dCurve2d,
-        CGuide: *const HandleAdaptor3dCurve,
+        Surf: *const Handle_Adaptor3d_Surface,
+        SurfRst: *const Handle_Adaptor3d_Surface,
+        Rst: *const Handle_Adaptor2d_Curve2d,
+        CGuide: *const Handle_Adaptor3d_Curve,
     ) -> crate::OcctResult<*mut BRepBlend_SurfRstConstRad>;
-    /// **Source:** `BRepBlend_SurfRstConstRad.hxx`:55 - `BRepBlend_SurfRstConstRad::NbVariables()`
+    /// **Source:** `BRepBlend_SurfRstConstRad.hxx`:51 - `BRepBlend_SurfRstConstRad::NbVariables()`
     pub fn BRepBlend_SurfRstConstRad_nb_variables(
         self_: *const BRepBlend_SurfRstConstRad,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `BRepBlend_SurfRstConstRad.hxx`:58 - `BRepBlend_SurfRstConstRad::NbEquations()`
+    /// **Source:** `BRepBlend_SurfRstConstRad.hxx`:54 - `BRepBlend_SurfRstConstRad::NbEquations()`
     pub fn BRepBlend_SurfRstConstRad_nb_equations(
         self_: *const BRepBlend_SurfRstConstRad,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `BRepBlend_SurfRstConstRad.hxx`:64 - `BRepBlend_SurfRstConstRad::Value()`
+    /// **Source:** `BRepBlend_SurfRstConstRad.hxx`:60 - `BRepBlend_SurfRstConstRad::Value()`
     pub fn BRepBlend_SurfRstConstRad_value(
         self_: *mut BRepBlend_SurfRstConstRad,
         X: *const math_Vector,
         F: *mut math_Vector,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BRepBlend_SurfRstConstRad.hxx`:70 - `BRepBlend_SurfRstConstRad::Derivatives()`
+    /// **Source:** `BRepBlend_SurfRstConstRad.hxx`:66 - `BRepBlend_SurfRstConstRad::Derivatives()`
     pub fn BRepBlend_SurfRstConstRad_derivatives(
         self_: *mut BRepBlend_SurfRstConstRad,
         X: *const math_Vector,
         D: *mut math_Matrix,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BRepBlend_SurfRstConstRad.hxx`:77 - `BRepBlend_SurfRstConstRad::Values()`
+    /// **Source:** `BRepBlend_SurfRstConstRad.hxx`:72 - `BRepBlend_SurfRstConstRad::Values()`
     pub fn BRepBlend_SurfRstConstRad_values(
         self_: *mut BRepBlend_SurfRstConstRad,
         X: *const math_Vector,
         F: *mut math_Vector,
         D: *mut math_Matrix,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BRepBlend_SurfRstConstRad.hxx`:81 - `BRepBlend_SurfRstConstRad::Set()`
+    /// **Source:** `BRepBlend_SurfRstConstRad.hxx`:74 - `BRepBlend_SurfRstConstRad::Set()`
     pub fn BRepBlend_SurfRstConstRad_set_handleadaptor3dsurface_handleadaptor2dcurve2d(
         self_: *mut BRepBlend_SurfRstConstRad,
-        SurfRef: *const HandleAdaptor3dSurface,
-        RstRef: *const HandleAdaptor2dCurve2d,
+        SurfRef: *const Handle_Adaptor3d_Surface,
+        RstRef: *const Handle_Adaptor2d_Curve2d,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepBlend_SurfRstConstRad.hxx`:84 - `BRepBlend_SurfRstConstRad::Set()`
+    /// **Source:** `BRepBlend_SurfRstConstRad.hxx`:77 - `BRepBlend_SurfRstConstRad::Set()`
     pub fn BRepBlend_SurfRstConstRad_set_real(
         self_: *mut BRepBlend_SurfRstConstRad,
         Param: f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepBlend_SurfRstConstRad.hxx`:90 - `BRepBlend_SurfRstConstRad::Set()`
+    /// **Source:** `BRepBlend_SurfRstConstRad.hxx`:83 - `BRepBlend_SurfRstConstRad::Set()`
     pub fn BRepBlend_SurfRstConstRad_set_real2(
         self_: *mut BRepBlend_SurfRstConstRad,
         First: f64,
         Last: f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepBlend_SurfRstConstRad.hxx`:92 - `BRepBlend_SurfRstConstRad::GetTolerance()`
+    /// **Source:** `BRepBlend_SurfRstConstRad.hxx`:85 - `BRepBlend_SurfRstConstRad::GetTolerance()`
     pub fn BRepBlend_SurfRstConstRad_get_tolerance_vector_real(
         self_: *const BRepBlend_SurfRstConstRad,
         Tolerance: *mut math_Vector,
         Tol: f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepBlend_SurfRstConstRad.hxx`:95 - `BRepBlend_SurfRstConstRad::GetBounds()`
+    /// **Source:** `BRepBlend_SurfRstConstRad.hxx`:87 - `BRepBlend_SurfRstConstRad::GetBounds()`
     pub fn BRepBlend_SurfRstConstRad_get_bounds(
         self_: *const BRepBlend_SurfRstConstRad,
         InfBound: *mut math_Vector,
         SupBound: *mut math_Vector,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepBlend_SurfRstConstRad.hxx`:98 - `BRepBlend_SurfRstConstRad::IsSolution()`
+    /// **Source:** `BRepBlend_SurfRstConstRad.hxx`:89 - `BRepBlend_SurfRstConstRad::IsSolution()`
     pub fn BRepBlend_SurfRstConstRad_is_solution(
         self_: *mut BRepBlend_SurfRstConstRad,
         Sol: *const math_Vector,
         Tol: f64,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BRepBlend_SurfRstConstRad.hxx`:103 - `BRepBlend_SurfRstConstRad::GetMinimalDistance()`
+    /// **Source:** `BRepBlend_SurfRstConstRad.hxx`:93 - `BRepBlend_SurfRstConstRad::GetMinimalDistance()`
     pub fn BRepBlend_SurfRstConstRad_get_minimal_distance(
         self_: *const BRepBlend_SurfRstConstRad,
     ) -> crate::OcctResult<f64>;
-    /// **Source:** `BRepBlend_SurfRstConstRad.hxx`:105 - `BRepBlend_SurfRstConstRad::PointOnS()`
+    /// **Source:** `BRepBlend_SurfRstConstRad.hxx`:95 - `BRepBlend_SurfRstConstRad::PointOnS()`
     pub fn BRepBlend_SurfRstConstRad_point_on_s(
         self_: *const BRepBlend_SurfRstConstRad,
     ) -> crate::OcctResult<*const gp_Pnt>;
-    /// **Source:** `BRepBlend_SurfRstConstRad.hxx`:107 - `BRepBlend_SurfRstConstRad::PointOnRst()`
+    /// **Source:** `BRepBlend_SurfRstConstRad.hxx`:97 - `BRepBlend_SurfRstConstRad::PointOnRst()`
     pub fn BRepBlend_SurfRstConstRad_point_on_rst(
         self_: *const BRepBlend_SurfRstConstRad,
     ) -> crate::OcctResult<*const gp_Pnt>;
-    /// **Source:** `BRepBlend_SurfRstConstRad.hxx`:110 - `BRepBlend_SurfRstConstRad::Pnt2dOnS()`
+    /// **Source:** `BRepBlend_SurfRstConstRad.hxx`:100 - `BRepBlend_SurfRstConstRad::Pnt2dOnS()`
     pub fn BRepBlend_SurfRstConstRad_pnt2d_on_s(
         self_: *const BRepBlend_SurfRstConstRad,
     ) -> crate::OcctResult<*const gp_Pnt2d>;
-    /// **Source:** `BRepBlend_SurfRstConstRad.hxx`:114 - `BRepBlend_SurfRstConstRad::Pnt2dOnRst()`
+    /// **Source:** `BRepBlend_SurfRstConstRad.hxx`:104 - `BRepBlend_SurfRstConstRad::Pnt2dOnRst()`
     pub fn BRepBlend_SurfRstConstRad_pnt2d_on_rst(
         self_: *const BRepBlend_SurfRstConstRad,
     ) -> crate::OcctResult<*const gp_Pnt2d>;
-    /// **Source:** `BRepBlend_SurfRstConstRad.hxx`:117 - `BRepBlend_SurfRstConstRad::ParameterOnRst()`
+    /// **Source:** `BRepBlend_SurfRstConstRad.hxx`:107 - `BRepBlend_SurfRstConstRad::ParameterOnRst()`
     pub fn BRepBlend_SurfRstConstRad_parameter_on_rst(
         self_: *const BRepBlend_SurfRstConstRad,
     ) -> crate::OcctResult<f64>;
-    /// **Source:** `BRepBlend_SurfRstConstRad.hxx`:119 - `BRepBlend_SurfRstConstRad::IsTangencyPoint()`
+    /// **Source:** `BRepBlend_SurfRstConstRad.hxx`:109 - `BRepBlend_SurfRstConstRad::IsTangencyPoint()`
     pub fn BRepBlend_SurfRstConstRad_is_tangency_point(
         self_: *const BRepBlend_SurfRstConstRad,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BRepBlend_SurfRstConstRad.hxx`:121 - `BRepBlend_SurfRstConstRad::TangentOnS()`
+    /// **Source:** `BRepBlend_SurfRstConstRad.hxx`:111 - `BRepBlend_SurfRstConstRad::TangentOnS()`
     pub fn BRepBlend_SurfRstConstRad_tangent_on_s(
         self_: *const BRepBlend_SurfRstConstRad,
     ) -> crate::OcctResult<*const gp_Vec>;
-    /// **Source:** `BRepBlend_SurfRstConstRad.hxx`:123 - `BRepBlend_SurfRstConstRad::Tangent2dOnS()`
+    /// **Source:** `BRepBlend_SurfRstConstRad.hxx`:113 - `BRepBlend_SurfRstConstRad::Tangent2dOnS()`
     pub fn BRepBlend_SurfRstConstRad_tangent2d_on_s(
         self_: *const BRepBlend_SurfRstConstRad,
     ) -> crate::OcctResult<*const gp_Vec2d>;
-    /// **Source:** `BRepBlend_SurfRstConstRad.hxx`:125 - `BRepBlend_SurfRstConstRad::TangentOnRst()`
+    /// **Source:** `BRepBlend_SurfRstConstRad.hxx`:115 - `BRepBlend_SurfRstConstRad::TangentOnRst()`
     pub fn BRepBlend_SurfRstConstRad_tangent_on_rst(
         self_: *const BRepBlend_SurfRstConstRad,
     ) -> crate::OcctResult<*const gp_Vec>;
-    /// **Source:** `BRepBlend_SurfRstConstRad.hxx`:127 - `BRepBlend_SurfRstConstRad::Tangent2dOnRst()`
+    /// **Source:** `BRepBlend_SurfRstConstRad.hxx`:117 - `BRepBlend_SurfRstConstRad::Tangent2dOnRst()`
     pub fn BRepBlend_SurfRstConstRad_tangent2d_on_rst(
         self_: *const BRepBlend_SurfRstConstRad,
     ) -> crate::OcctResult<*const gp_Vec2d>;
-    /// **Source:** `BRepBlend_SurfRstConstRad.hxx`:133 - `BRepBlend_SurfRstConstRad::Decroch()`
+    /// **Source:** `BRepBlend_SurfRstConstRad.hxx`:123 - `BRepBlend_SurfRstConstRad::Decroch()`
     pub fn BRepBlend_SurfRstConstRad_decroch(
         self_: *const BRepBlend_SurfRstConstRad,
         Sol: *const math_Vector,
         NS: *mut gp_Vec,
         TgS: *mut gp_Vec,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BRepBlend_SurfRstConstRad.hxx`:137 - `BRepBlend_SurfRstConstRad::Set()`
+    /// **Source:** `BRepBlend_SurfRstConstRad.hxx`:125 - `BRepBlend_SurfRstConstRad::Set()`
     pub fn BRepBlend_SurfRstConstRad_set_real_int(
         self_: *mut BRepBlend_SurfRstConstRad,
         Radius: f64,
         Choix: i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepBlend_SurfRstConstRad.hxx`:141 - `BRepBlend_SurfRstConstRad::Set()`
+    /// **Source:** `BRepBlend_SurfRstConstRad.hxx`:129 - `BRepBlend_SurfRstConstRad::Set()`
     pub fn BRepBlend_SurfRstConstRad_set_sectionshape(
         self_: *mut BRepBlend_SurfRstConstRad,
         TypeSection: i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepBlend_SurfRstConstRad.hxx`:143 - `BRepBlend_SurfRstConstRad::Section()`
+    /// **Source:** `BRepBlend_SurfRstConstRad.hxx`:131 - `BRepBlend_SurfRstConstRad::Section()`
     pub fn BRepBlend_SurfRstConstRad_section_real6_circ(
         self_: *mut BRepBlend_SurfRstConstRad,
         Param: f64,
@@ -3183,31 +3188,31 @@ unsafe extern "C" {
         Pfin: *mut f64,
         C: *mut gp_Circ,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepBlend_SurfRstConstRad.hxx`:152 - `BRepBlend_SurfRstConstRad::IsRational()`
+    /// **Source:** `BRepBlend_SurfRstConstRad.hxx`:140 - `BRepBlend_SurfRstConstRad::IsRational()`
     pub fn BRepBlend_SurfRstConstRad_is_rational(
         self_: *const BRepBlend_SurfRstConstRad,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BRepBlend_SurfRstConstRad.hxx`:155 - `BRepBlend_SurfRstConstRad::GetSectionSize()`
+    /// **Source:** `BRepBlend_SurfRstConstRad.hxx`:143 - `BRepBlend_SurfRstConstRad::GetSectionSize()`
     pub fn BRepBlend_SurfRstConstRad_get_section_size(
         self_: *const BRepBlend_SurfRstConstRad,
     ) -> crate::OcctResult<f64>;
-    /// **Source:** `BRepBlend_SurfRstConstRad.hxx`:159 - `BRepBlend_SurfRstConstRad::GetMinimalWeight()`
+    /// **Source:** `BRepBlend_SurfRstConstRad.hxx`:147 - `BRepBlend_SurfRstConstRad::GetMinimalWeight()`
     pub fn BRepBlend_SurfRstConstRad_get_minimal_weight(
         self_: *const BRepBlend_SurfRstConstRad,
-        Weigths: *mut TColStd_Array1OfReal,
+        Weigths: *mut NCollection_Array1_double,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepBlend_SurfRstConstRad.hxx`:163 - `BRepBlend_SurfRstConstRad::NbIntervals()`
+    /// **Source:** `BRepBlend_SurfRstConstRad.hxx`:151 - `BRepBlend_SurfRstConstRad::NbIntervals()`
     pub fn BRepBlend_SurfRstConstRad_nb_intervals(
         self_: *const BRepBlend_SurfRstConstRad,
         S: i32,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `BRepBlend_SurfRstConstRad.hxx`:169 - `BRepBlend_SurfRstConstRad::Intervals()`
+    /// **Source:** `BRepBlend_SurfRstConstRad.hxx`:157 - `BRepBlend_SurfRstConstRad::Intervals()`
     pub fn BRepBlend_SurfRstConstRad_intervals(
         self_: *const BRepBlend_SurfRstConstRad,
-        T: *mut TColStd_Array1OfReal,
+        T: *mut NCollection_Array1_double,
         S: i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepBlend_SurfRstConstRad.hxx`:172 - `BRepBlend_SurfRstConstRad::GetShape()`
+    /// **Source:** `BRepBlend_SurfRstConstRad.hxx`:160 - `BRepBlend_SurfRstConstRad::GetShape()`
     pub fn BRepBlend_SurfRstConstRad_get_shape(
         self_: *mut BRepBlend_SurfRstConstRad,
         NbPoles: *mut i32,
@@ -3215,7 +3220,7 @@ unsafe extern "C" {
         Degree: *mut i32,
         NbPoles2d: *mut i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepBlend_SurfRstConstRad.hxx`:182 - `BRepBlend_SurfRstConstRad::GetTolerance()`
+    /// **Source:** `BRepBlend_SurfRstConstRad.hxx`:167 - `BRepBlend_SurfRstConstRad::GetTolerance()`
     pub fn BRepBlend_SurfRstConstRad_get_tolerance_real3_vector2(
         self_: *const BRepBlend_SurfRstConstRad,
         BoundTol: f64,
@@ -3224,50 +3229,50 @@ unsafe extern "C" {
         Tol3d: *mut math_Vector,
         Tol1D: *mut math_Vector,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepBlend_SurfRstConstRad.hxx`:188 - `BRepBlend_SurfRstConstRad::Knots()`
+    /// **Source:** `BRepBlend_SurfRstConstRad.hxx`:173 - `BRepBlend_SurfRstConstRad::Knots()`
     pub fn BRepBlend_SurfRstConstRad_knots(
         self_: *mut BRepBlend_SurfRstConstRad,
-        TKnots: *mut TColStd_Array1OfReal,
+        TKnots: *mut NCollection_Array1_double,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepBlend_SurfRstConstRad.hxx`:190 - `BRepBlend_SurfRstConstRad::Mults()`
+    /// **Source:** `BRepBlend_SurfRstConstRad.hxx`:175 - `BRepBlend_SurfRstConstRad::Mults()`
     pub fn BRepBlend_SurfRstConstRad_mults(
         self_: *mut BRepBlend_SurfRstConstRad,
-        TMults: *mut TColStd_Array1OfInteger,
+        TMults: *mut NCollection_Array1_int,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepBlend_SurfRstConstRad.hxx`:193 - `BRepBlend_SurfRstConstRad::Section()`
-    pub fn BRepBlend_SurfRstConstRad_section_point_array1ofpnt_array1ofvec_array1ofpnt2d_array1ofvec2d_array1ofreal2(
+    /// **Source:** `BRepBlend_SurfRstConstRad.hxx`:178 - `BRepBlend_SurfRstConstRad::Section()`
+    pub fn BRepBlend_SurfRstConstRad_section_point_arr1_pnt_arr1_vec_arr1_pnt2d_arr1_vec2d_arr1_double2(
         self_: *mut BRepBlend_SurfRstConstRad,
         P: *const Blend_Point,
-        Poles: *mut TColgp_Array1OfPnt,
-        DPoles: *mut TColgp_Array1OfVec,
-        Poles2d: *mut TColgp_Array1OfPnt2d,
-        DPoles2d: *mut TColgp_Array1OfVec2d,
-        Weigths: *mut TColStd_Array1OfReal,
-        DWeigths: *mut TColStd_Array1OfReal,
+        Poles: *mut NCollection_Array1_gp_Pnt,
+        DPoles: *mut NCollection_Array1_gp_Vec,
+        Poles2d: *mut NCollection_Array1_gp_Pnt2d,
+        DPoles2d: *mut NCollection_Array1_gp_Vec2d,
+        Weigths: *mut NCollection_Array1_double,
+        DWeigths: *mut NCollection_Array1_double,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BRepBlend_SurfRstConstRad.hxx`:204 - `BRepBlend_SurfRstConstRad::Section()`
-    pub fn BRepBlend_SurfRstConstRad_section_point_array1ofpnt_array1ofvec2_array1ofpnt2d_array1ofvec2d2_array1ofreal3(
+    /// **Source:** `BRepBlend_SurfRstConstRad.hxx`:189 - `BRepBlend_SurfRstConstRad::Section()`
+    pub fn BRepBlend_SurfRstConstRad_section_point_arr1_pnt_arr1_vec2_arr1_pnt2d_arr1_vec2d2_arr1_double3(
         self_: *mut BRepBlend_SurfRstConstRad,
         P: *const Blend_Point,
-        Poles: *mut TColgp_Array1OfPnt,
-        DPoles: *mut TColgp_Array1OfVec,
-        D2Poles: *mut TColgp_Array1OfVec,
-        Poles2d: *mut TColgp_Array1OfPnt2d,
-        DPoles2d: *mut TColgp_Array1OfVec2d,
-        D2Poles2d: *mut TColgp_Array1OfVec2d,
-        Weigths: *mut TColStd_Array1OfReal,
-        DWeigths: *mut TColStd_Array1OfReal,
-        D2Weigths: *mut TColStd_Array1OfReal,
+        Poles: *mut NCollection_Array1_gp_Pnt,
+        DPoles: *mut NCollection_Array1_gp_Vec,
+        D2Poles: *mut NCollection_Array1_gp_Vec,
+        Poles2d: *mut NCollection_Array1_gp_Pnt2d,
+        DPoles2d: *mut NCollection_Array1_gp_Vec2d,
+        D2Poles2d: *mut NCollection_Array1_gp_Vec2d,
+        Weigths: *mut NCollection_Array1_double,
+        DWeigths: *mut NCollection_Array1_double,
+        D2Weigths: *mut NCollection_Array1_double,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BRepBlend_SurfRstConstRad.hxx`:215 - `BRepBlend_SurfRstConstRad::Section()`
-    pub fn BRepBlend_SurfRstConstRad_section_point_array1ofpnt_array1ofpnt2d_array1ofreal(
+    /// **Source:** `BRepBlend_SurfRstConstRad.hxx`:200 - `BRepBlend_SurfRstConstRad::Section()`
+    pub fn BRepBlend_SurfRstConstRad_section_point_arr1_pnt_arr1_pnt2d_arr1_double(
         self_: *mut BRepBlend_SurfRstConstRad,
         P: *const Blend_Point,
-        Poles: *mut TColgp_Array1OfPnt,
-        Poles2d: *mut TColgp_Array1OfPnt2d,
-        Weigths: *mut TColStd_Array1OfReal,
+        Poles: *mut NCollection_Array1_gp_Pnt,
+        Poles2d: *mut NCollection_Array1_gp_Pnt2d,
+        Weigths: *mut NCollection_Array1_double,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepBlend_SurfRstConstRad.hxx`:220 - `BRepBlend_SurfRstConstRad::Resolution()`
+    /// **Source:** `BRepBlend_SurfRstConstRad.hxx`:205 - `BRepBlend_SurfRstConstRad::Resolution()`
     pub fn BRepBlend_SurfRstConstRad_resolution(
         self_: *const BRepBlend_SurfRstConstRad,
         IC2d: i32,
@@ -3307,15 +3312,15 @@ unsafe extern "C" {
     pub fn BRepBlend_SurfRstConstRad_as_math_FunctionSet_mut(
         self_: *mut BRepBlend_SurfRstConstRad,
     ) -> crate::OcctResult<*mut math_FunctionSet>;
-    /// Inherited: **Source:** `Blend_SurfRstFunction.hxx`:111 - `Blend_SurfRstFunction::Pnt1()`
+    /// Inherited: **Source:** `Blend_SurfRstFunction.hxx`:107 - `Blend_SurfRstFunction::Pnt1()`
     pub fn BRepBlend_SurfRstConstRad_inherited_Pnt1(
         self_: *const BRepBlend_SurfRstConstRad,
     ) -> crate::OcctResult<*const gp_Pnt>;
-    /// Inherited: **Source:** `Blend_SurfRstFunction.hxx`:114 - `Blend_SurfRstFunction::Pnt2()`
+    /// Inherited: **Source:** `Blend_SurfRstFunction.hxx`:110 - `Blend_SurfRstFunction::Pnt2()`
     pub fn BRepBlend_SurfRstConstRad_inherited_Pnt2(
         self_: *const BRepBlend_SurfRstConstRad,
     ) -> crate::OcctResult<*const gp_Pnt>;
-    /// Inherited: **Source:** `Blend_AppFunction.hxx`:195 - `Blend_AppFunction::Parameter()`
+    /// Inherited: **Source:** `Blend_AppFunction.hxx`:192 - `Blend_AppFunction::Parameter()`
     pub fn BRepBlend_SurfRstConstRad_inherited_Parameter(
         self_: *const BRepBlend_SurfRstConstRad,
         P: *const Blend_Point,
@@ -3326,138 +3331,138 @@ unsafe extern "C" {
     ) -> crate::OcctResult<i32>;
     // ======================== BRepBlend_SurfRstEvolRad ========================
     pub fn BRepBlend_SurfRstEvolRad_destructor(self_: *mut BRepBlend_SurfRstEvolRad);
-    /// **Source:** `BRepBlend_SurfRstEvolRad.hxx`:50 - `BRepBlend_SurfRstEvolRad::BRepBlend_SurfRstEvolRad()`
+    /// **Source:** `BRepBlend_SurfRstEvolRad.hxx`:46 - `BRepBlend_SurfRstEvolRad::BRepBlend_SurfRstEvolRad()`
     pub fn BRepBlend_SurfRstEvolRad_ctor_handleadaptor3dsurface2_handleadaptor2dcurve2d_handleadaptor3dcurve_handlelawfunction(
-        Surf: *const HandleAdaptor3dSurface,
-        SurfRst: *const HandleAdaptor3dSurface,
-        Rst: *const HandleAdaptor2dCurve2d,
-        CGuide: *const HandleAdaptor3dCurve,
-        Evol: *const HandleLawFunction,
+        Surf: *const Handle_Adaptor3d_Surface,
+        SurfRst: *const Handle_Adaptor3d_Surface,
+        Rst: *const Handle_Adaptor2d_Curve2d,
+        CGuide: *const Handle_Adaptor3d_Curve,
+        Evol: *const Handle_Law_Function,
     ) -> crate::OcctResult<*mut BRepBlend_SurfRstEvolRad>;
-    /// **Source:** `BRepBlend_SurfRstEvolRad.hxx`:57 - `BRepBlend_SurfRstEvolRad::NbVariables()`
+    /// **Source:** `BRepBlend_SurfRstEvolRad.hxx`:53 - `BRepBlend_SurfRstEvolRad::NbVariables()`
     pub fn BRepBlend_SurfRstEvolRad_nb_variables(
         self_: *const BRepBlend_SurfRstEvolRad,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `BRepBlend_SurfRstEvolRad.hxx`:60 - `BRepBlend_SurfRstEvolRad::NbEquations()`
+    /// **Source:** `BRepBlend_SurfRstEvolRad.hxx`:56 - `BRepBlend_SurfRstEvolRad::NbEquations()`
     pub fn BRepBlend_SurfRstEvolRad_nb_equations(
         self_: *const BRepBlend_SurfRstEvolRad,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `BRepBlend_SurfRstEvolRad.hxx`:66 - `BRepBlend_SurfRstEvolRad::Value()`
+    /// **Source:** `BRepBlend_SurfRstEvolRad.hxx`:62 - `BRepBlend_SurfRstEvolRad::Value()`
     pub fn BRepBlend_SurfRstEvolRad_value(
         self_: *mut BRepBlend_SurfRstEvolRad,
         X: *const math_Vector,
         F: *mut math_Vector,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BRepBlend_SurfRstEvolRad.hxx`:72 - `BRepBlend_SurfRstEvolRad::Derivatives()`
+    /// **Source:** `BRepBlend_SurfRstEvolRad.hxx`:68 - `BRepBlend_SurfRstEvolRad::Derivatives()`
     pub fn BRepBlend_SurfRstEvolRad_derivatives(
         self_: *mut BRepBlend_SurfRstEvolRad,
         X: *const math_Vector,
         D: *mut math_Matrix,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BRepBlend_SurfRstEvolRad.hxx`:79 - `BRepBlend_SurfRstEvolRad::Values()`
+    /// **Source:** `BRepBlend_SurfRstEvolRad.hxx`:74 - `BRepBlend_SurfRstEvolRad::Values()`
     pub fn BRepBlend_SurfRstEvolRad_values(
         self_: *mut BRepBlend_SurfRstEvolRad,
         X: *const math_Vector,
         F: *mut math_Vector,
         D: *mut math_Matrix,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BRepBlend_SurfRstEvolRad.hxx`:83 - `BRepBlend_SurfRstEvolRad::Set()`
+    /// **Source:** `BRepBlend_SurfRstEvolRad.hxx`:76 - `BRepBlend_SurfRstEvolRad::Set()`
     pub fn BRepBlend_SurfRstEvolRad_set_handleadaptor3dsurface_handleadaptor2dcurve2d(
         self_: *mut BRepBlend_SurfRstEvolRad,
-        SurfRef: *const HandleAdaptor3dSurface,
-        RstRef: *const HandleAdaptor2dCurve2d,
+        SurfRef: *const Handle_Adaptor3d_Surface,
+        RstRef: *const Handle_Adaptor2d_Curve2d,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepBlend_SurfRstEvolRad.hxx`:86 - `BRepBlend_SurfRstEvolRad::Set()`
+    /// **Source:** `BRepBlend_SurfRstEvolRad.hxx`:79 - `BRepBlend_SurfRstEvolRad::Set()`
     pub fn BRepBlend_SurfRstEvolRad_set_real(
         self_: *mut BRepBlend_SurfRstEvolRad,
         Param: f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepBlend_SurfRstEvolRad.hxx`:92 - `BRepBlend_SurfRstEvolRad::Set()`
+    /// **Source:** `BRepBlend_SurfRstEvolRad.hxx`:85 - `BRepBlend_SurfRstEvolRad::Set()`
     pub fn BRepBlend_SurfRstEvolRad_set_real2(
         self_: *mut BRepBlend_SurfRstEvolRad,
         First: f64,
         Last: f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepBlend_SurfRstEvolRad.hxx`:94 - `BRepBlend_SurfRstEvolRad::GetTolerance()`
+    /// **Source:** `BRepBlend_SurfRstEvolRad.hxx`:87 - `BRepBlend_SurfRstEvolRad::GetTolerance()`
     pub fn BRepBlend_SurfRstEvolRad_get_tolerance_vector_real(
         self_: *const BRepBlend_SurfRstEvolRad,
         Tolerance: *mut math_Vector,
         Tol: f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepBlend_SurfRstEvolRad.hxx`:97 - `BRepBlend_SurfRstEvolRad::GetBounds()`
+    /// **Source:** `BRepBlend_SurfRstEvolRad.hxx`:89 - `BRepBlend_SurfRstEvolRad::GetBounds()`
     pub fn BRepBlend_SurfRstEvolRad_get_bounds(
         self_: *const BRepBlend_SurfRstEvolRad,
         InfBound: *mut math_Vector,
         SupBound: *mut math_Vector,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepBlend_SurfRstEvolRad.hxx`:100 - `BRepBlend_SurfRstEvolRad::IsSolution()`
+    /// **Source:** `BRepBlend_SurfRstEvolRad.hxx`:91 - `BRepBlend_SurfRstEvolRad::IsSolution()`
     pub fn BRepBlend_SurfRstEvolRad_is_solution(
         self_: *mut BRepBlend_SurfRstEvolRad,
         Sol: *const math_Vector,
         Tol: f64,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BRepBlend_SurfRstEvolRad.hxx`:105 - `BRepBlend_SurfRstEvolRad::GetMinimalDistance()`
+    /// **Source:** `BRepBlend_SurfRstEvolRad.hxx`:95 - `BRepBlend_SurfRstEvolRad::GetMinimalDistance()`
     pub fn BRepBlend_SurfRstEvolRad_get_minimal_distance(
         self_: *const BRepBlend_SurfRstEvolRad,
     ) -> crate::OcctResult<f64>;
-    /// **Source:** `BRepBlend_SurfRstEvolRad.hxx`:107 - `BRepBlend_SurfRstEvolRad::PointOnS()`
+    /// **Source:** `BRepBlend_SurfRstEvolRad.hxx`:97 - `BRepBlend_SurfRstEvolRad::PointOnS()`
     pub fn BRepBlend_SurfRstEvolRad_point_on_s(
         self_: *const BRepBlend_SurfRstEvolRad,
     ) -> crate::OcctResult<*const gp_Pnt>;
-    /// **Source:** `BRepBlend_SurfRstEvolRad.hxx`:109 - `BRepBlend_SurfRstEvolRad::PointOnRst()`
+    /// **Source:** `BRepBlend_SurfRstEvolRad.hxx`:99 - `BRepBlend_SurfRstEvolRad::PointOnRst()`
     pub fn BRepBlend_SurfRstEvolRad_point_on_rst(
         self_: *const BRepBlend_SurfRstEvolRad,
     ) -> crate::OcctResult<*const gp_Pnt>;
-    /// **Source:** `BRepBlend_SurfRstEvolRad.hxx`:112 - `BRepBlend_SurfRstEvolRad::Pnt2dOnS()`
+    /// **Source:** `BRepBlend_SurfRstEvolRad.hxx`:102 - `BRepBlend_SurfRstEvolRad::Pnt2dOnS()`
     pub fn BRepBlend_SurfRstEvolRad_pnt2d_on_s(
         self_: *const BRepBlend_SurfRstEvolRad,
     ) -> crate::OcctResult<*const gp_Pnt2d>;
-    /// **Source:** `BRepBlend_SurfRstEvolRad.hxx`:116 - `BRepBlend_SurfRstEvolRad::Pnt2dOnRst()`
+    /// **Source:** `BRepBlend_SurfRstEvolRad.hxx`:106 - `BRepBlend_SurfRstEvolRad::Pnt2dOnRst()`
     pub fn BRepBlend_SurfRstEvolRad_pnt2d_on_rst(
         self_: *const BRepBlend_SurfRstEvolRad,
     ) -> crate::OcctResult<*const gp_Pnt2d>;
-    /// **Source:** `BRepBlend_SurfRstEvolRad.hxx`:119 - `BRepBlend_SurfRstEvolRad::ParameterOnRst()`
+    /// **Source:** `BRepBlend_SurfRstEvolRad.hxx`:109 - `BRepBlend_SurfRstEvolRad::ParameterOnRst()`
     pub fn BRepBlend_SurfRstEvolRad_parameter_on_rst(
         self_: *const BRepBlend_SurfRstEvolRad,
     ) -> crate::OcctResult<f64>;
-    /// **Source:** `BRepBlend_SurfRstEvolRad.hxx`:121 - `BRepBlend_SurfRstEvolRad::IsTangencyPoint()`
+    /// **Source:** `BRepBlend_SurfRstEvolRad.hxx`:111 - `BRepBlend_SurfRstEvolRad::IsTangencyPoint()`
     pub fn BRepBlend_SurfRstEvolRad_is_tangency_point(
         self_: *const BRepBlend_SurfRstEvolRad,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BRepBlend_SurfRstEvolRad.hxx`:123 - `BRepBlend_SurfRstEvolRad::TangentOnS()`
+    /// **Source:** `BRepBlend_SurfRstEvolRad.hxx`:113 - `BRepBlend_SurfRstEvolRad::TangentOnS()`
     pub fn BRepBlend_SurfRstEvolRad_tangent_on_s(
         self_: *const BRepBlend_SurfRstEvolRad,
     ) -> crate::OcctResult<*const gp_Vec>;
-    /// **Source:** `BRepBlend_SurfRstEvolRad.hxx`:125 - `BRepBlend_SurfRstEvolRad::Tangent2dOnS()`
+    /// **Source:** `BRepBlend_SurfRstEvolRad.hxx`:115 - `BRepBlend_SurfRstEvolRad::Tangent2dOnS()`
     pub fn BRepBlend_SurfRstEvolRad_tangent2d_on_s(
         self_: *const BRepBlend_SurfRstEvolRad,
     ) -> crate::OcctResult<*const gp_Vec2d>;
-    /// **Source:** `BRepBlend_SurfRstEvolRad.hxx`:127 - `BRepBlend_SurfRstEvolRad::TangentOnRst()`
+    /// **Source:** `BRepBlend_SurfRstEvolRad.hxx`:117 - `BRepBlend_SurfRstEvolRad::TangentOnRst()`
     pub fn BRepBlend_SurfRstEvolRad_tangent_on_rst(
         self_: *const BRepBlend_SurfRstEvolRad,
     ) -> crate::OcctResult<*const gp_Vec>;
-    /// **Source:** `BRepBlend_SurfRstEvolRad.hxx`:129 - `BRepBlend_SurfRstEvolRad::Tangent2dOnRst()`
+    /// **Source:** `BRepBlend_SurfRstEvolRad.hxx`:119 - `BRepBlend_SurfRstEvolRad::Tangent2dOnRst()`
     pub fn BRepBlend_SurfRstEvolRad_tangent2d_on_rst(
         self_: *const BRepBlend_SurfRstEvolRad,
     ) -> crate::OcctResult<*const gp_Vec2d>;
-    /// **Source:** `BRepBlend_SurfRstEvolRad.hxx`:133 - `BRepBlend_SurfRstEvolRad::Decroch()`
+    /// **Source:** `BRepBlend_SurfRstEvolRad.hxx`:123 - `BRepBlend_SurfRstEvolRad::Decroch()`
     pub fn BRepBlend_SurfRstEvolRad_decroch(
         self_: *const BRepBlend_SurfRstEvolRad,
         Sol: *const math_Vector,
         NS: *mut gp_Vec,
         TgS: *mut gp_Vec,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BRepBlend_SurfRstEvolRad.hxx`:137 - `BRepBlend_SurfRstEvolRad::Set()`
+    /// **Source:** `BRepBlend_SurfRstEvolRad.hxx`:125 - `BRepBlend_SurfRstEvolRad::Set()`
     pub fn BRepBlend_SurfRstEvolRad_set_int(
         self_: *mut BRepBlend_SurfRstEvolRad,
         Choix: i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepBlend_SurfRstEvolRad.hxx`:141 - `BRepBlend_SurfRstEvolRad::Set()`
+    /// **Source:** `BRepBlend_SurfRstEvolRad.hxx`:129 - `BRepBlend_SurfRstEvolRad::Set()`
     pub fn BRepBlend_SurfRstEvolRad_set_sectionshape(
         self_: *mut BRepBlend_SurfRstEvolRad,
         TypeSection: i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepBlend_SurfRstEvolRad.hxx`:143 - `BRepBlend_SurfRstEvolRad::Section()`
+    /// **Source:** `BRepBlend_SurfRstEvolRad.hxx`:131 - `BRepBlend_SurfRstEvolRad::Section()`
     pub fn BRepBlend_SurfRstEvolRad_section_real6_circ(
         self_: *mut BRepBlend_SurfRstEvolRad,
         Param: f64,
@@ -3468,31 +3473,31 @@ unsafe extern "C" {
         Pfin: *mut f64,
         C: *mut gp_Circ,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepBlend_SurfRstEvolRad.hxx`:152 - `BRepBlend_SurfRstEvolRad::IsRational()`
+    /// **Source:** `BRepBlend_SurfRstEvolRad.hxx`:140 - `BRepBlend_SurfRstEvolRad::IsRational()`
     pub fn BRepBlend_SurfRstEvolRad_is_rational(
         self_: *const BRepBlend_SurfRstEvolRad,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BRepBlend_SurfRstEvolRad.hxx`:155 - `BRepBlend_SurfRstEvolRad::GetSectionSize()`
+    /// **Source:** `BRepBlend_SurfRstEvolRad.hxx`:143 - `BRepBlend_SurfRstEvolRad::GetSectionSize()`
     pub fn BRepBlend_SurfRstEvolRad_get_section_size(
         self_: *const BRepBlend_SurfRstEvolRad,
     ) -> crate::OcctResult<f64>;
-    /// **Source:** `BRepBlend_SurfRstEvolRad.hxx`:159 - `BRepBlend_SurfRstEvolRad::GetMinimalWeight()`
+    /// **Source:** `BRepBlend_SurfRstEvolRad.hxx`:147 - `BRepBlend_SurfRstEvolRad::GetMinimalWeight()`
     pub fn BRepBlend_SurfRstEvolRad_get_minimal_weight(
         self_: *const BRepBlend_SurfRstEvolRad,
-        Weigths: *mut TColStd_Array1OfReal,
+        Weigths: *mut NCollection_Array1_double,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepBlend_SurfRstEvolRad.hxx`:163 - `BRepBlend_SurfRstEvolRad::NbIntervals()`
+    /// **Source:** `BRepBlend_SurfRstEvolRad.hxx`:151 - `BRepBlend_SurfRstEvolRad::NbIntervals()`
     pub fn BRepBlend_SurfRstEvolRad_nb_intervals(
         self_: *const BRepBlend_SurfRstEvolRad,
         S: i32,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `BRepBlend_SurfRstEvolRad.hxx`:169 - `BRepBlend_SurfRstEvolRad::Intervals()`
+    /// **Source:** `BRepBlend_SurfRstEvolRad.hxx`:157 - `BRepBlend_SurfRstEvolRad::Intervals()`
     pub fn BRepBlend_SurfRstEvolRad_intervals(
         self_: *const BRepBlend_SurfRstEvolRad,
-        T: *mut TColStd_Array1OfReal,
+        T: *mut NCollection_Array1_double,
         S: i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepBlend_SurfRstEvolRad.hxx`:172 - `BRepBlend_SurfRstEvolRad::GetShape()`
+    /// **Source:** `BRepBlend_SurfRstEvolRad.hxx`:160 - `BRepBlend_SurfRstEvolRad::GetShape()`
     pub fn BRepBlend_SurfRstEvolRad_get_shape(
         self_: *mut BRepBlend_SurfRstEvolRad,
         NbPoles: *mut i32,
@@ -3500,7 +3505,7 @@ unsafe extern "C" {
         Degree: *mut i32,
         NbPoles2d: *mut i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepBlend_SurfRstEvolRad.hxx`:182 - `BRepBlend_SurfRstEvolRad::GetTolerance()`
+    /// **Source:** `BRepBlend_SurfRstEvolRad.hxx`:167 - `BRepBlend_SurfRstEvolRad::GetTolerance()`
     pub fn BRepBlend_SurfRstEvolRad_get_tolerance_real3_vector2(
         self_: *const BRepBlend_SurfRstEvolRad,
         BoundTol: f64,
@@ -3509,50 +3514,50 @@ unsafe extern "C" {
         Tol3d: *mut math_Vector,
         Tol1D: *mut math_Vector,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepBlend_SurfRstEvolRad.hxx`:188 - `BRepBlend_SurfRstEvolRad::Knots()`
+    /// **Source:** `BRepBlend_SurfRstEvolRad.hxx`:173 - `BRepBlend_SurfRstEvolRad::Knots()`
     pub fn BRepBlend_SurfRstEvolRad_knots(
         self_: *mut BRepBlend_SurfRstEvolRad,
-        TKnots: *mut TColStd_Array1OfReal,
+        TKnots: *mut NCollection_Array1_double,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepBlend_SurfRstEvolRad.hxx`:190 - `BRepBlend_SurfRstEvolRad::Mults()`
+    /// **Source:** `BRepBlend_SurfRstEvolRad.hxx`:175 - `BRepBlend_SurfRstEvolRad::Mults()`
     pub fn BRepBlend_SurfRstEvolRad_mults(
         self_: *mut BRepBlend_SurfRstEvolRad,
-        TMults: *mut TColStd_Array1OfInteger,
+        TMults: *mut NCollection_Array1_int,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepBlend_SurfRstEvolRad.hxx`:193 - `BRepBlend_SurfRstEvolRad::Section()`
-    pub fn BRepBlend_SurfRstEvolRad_section_point_array1ofpnt_array1ofvec_array1ofpnt2d_array1ofvec2d_array1ofreal2(
+    /// **Source:** `BRepBlend_SurfRstEvolRad.hxx`:178 - `BRepBlend_SurfRstEvolRad::Section()`
+    pub fn BRepBlend_SurfRstEvolRad_section_point_arr1_pnt_arr1_vec_arr1_pnt2d_arr1_vec2d_arr1_double2(
         self_: *mut BRepBlend_SurfRstEvolRad,
         P: *const Blend_Point,
-        Poles: *mut TColgp_Array1OfPnt,
-        DPoles: *mut TColgp_Array1OfVec,
-        Poles2d: *mut TColgp_Array1OfPnt2d,
-        DPoles2d: *mut TColgp_Array1OfVec2d,
-        Weigths: *mut TColStd_Array1OfReal,
-        DWeigths: *mut TColStd_Array1OfReal,
+        Poles: *mut NCollection_Array1_gp_Pnt,
+        DPoles: *mut NCollection_Array1_gp_Vec,
+        Poles2d: *mut NCollection_Array1_gp_Pnt2d,
+        DPoles2d: *mut NCollection_Array1_gp_Vec2d,
+        Weigths: *mut NCollection_Array1_double,
+        DWeigths: *mut NCollection_Array1_double,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BRepBlend_SurfRstEvolRad.hxx`:204 - `BRepBlend_SurfRstEvolRad::Section()`
-    pub fn BRepBlend_SurfRstEvolRad_section_point_array1ofpnt_array1ofvec2_array1ofpnt2d_array1ofvec2d2_array1ofreal3(
+    /// **Source:** `BRepBlend_SurfRstEvolRad.hxx`:189 - `BRepBlend_SurfRstEvolRad::Section()`
+    pub fn BRepBlend_SurfRstEvolRad_section_point_arr1_pnt_arr1_vec2_arr1_pnt2d_arr1_vec2d2_arr1_double3(
         self_: *mut BRepBlend_SurfRstEvolRad,
         P: *const Blend_Point,
-        Poles: *mut TColgp_Array1OfPnt,
-        DPoles: *mut TColgp_Array1OfVec,
-        D2Poles: *mut TColgp_Array1OfVec,
-        Poles2d: *mut TColgp_Array1OfPnt2d,
-        DPoles2d: *mut TColgp_Array1OfVec2d,
-        D2Poles2d: *mut TColgp_Array1OfVec2d,
-        Weigths: *mut TColStd_Array1OfReal,
-        DWeigths: *mut TColStd_Array1OfReal,
-        D2Weigths: *mut TColStd_Array1OfReal,
+        Poles: *mut NCollection_Array1_gp_Pnt,
+        DPoles: *mut NCollection_Array1_gp_Vec,
+        D2Poles: *mut NCollection_Array1_gp_Vec,
+        Poles2d: *mut NCollection_Array1_gp_Pnt2d,
+        DPoles2d: *mut NCollection_Array1_gp_Vec2d,
+        D2Poles2d: *mut NCollection_Array1_gp_Vec2d,
+        Weigths: *mut NCollection_Array1_double,
+        DWeigths: *mut NCollection_Array1_double,
+        D2Weigths: *mut NCollection_Array1_double,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BRepBlend_SurfRstEvolRad.hxx`:215 - `BRepBlend_SurfRstEvolRad::Section()`
-    pub fn BRepBlend_SurfRstEvolRad_section_point_array1ofpnt_array1ofpnt2d_array1ofreal(
+    /// **Source:** `BRepBlend_SurfRstEvolRad.hxx`:200 - `BRepBlend_SurfRstEvolRad::Section()`
+    pub fn BRepBlend_SurfRstEvolRad_section_point_arr1_pnt_arr1_pnt2d_arr1_double(
         self_: *mut BRepBlend_SurfRstEvolRad,
         P: *const Blend_Point,
-        Poles: *mut TColgp_Array1OfPnt,
-        Poles2d: *mut TColgp_Array1OfPnt2d,
-        Weigths: *mut TColStd_Array1OfReal,
+        Poles: *mut NCollection_Array1_gp_Pnt,
+        Poles2d: *mut NCollection_Array1_gp_Pnt2d,
+        Weigths: *mut NCollection_Array1_double,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepBlend_SurfRstEvolRad.hxx`:220 - `BRepBlend_SurfRstEvolRad::Resolution()`
+    /// **Source:** `BRepBlend_SurfRstEvolRad.hxx`:205 - `BRepBlend_SurfRstEvolRad::Resolution()`
     pub fn BRepBlend_SurfRstEvolRad_resolution(
         self_: *const BRepBlend_SurfRstEvolRad,
         IC2d: i32,
@@ -3592,15 +3597,15 @@ unsafe extern "C" {
     pub fn BRepBlend_SurfRstEvolRad_as_math_FunctionSet_mut(
         self_: *mut BRepBlend_SurfRstEvolRad,
     ) -> crate::OcctResult<*mut math_FunctionSet>;
-    /// Inherited: **Source:** `Blend_SurfRstFunction.hxx`:111 - `Blend_SurfRstFunction::Pnt1()`
+    /// Inherited: **Source:** `Blend_SurfRstFunction.hxx`:107 - `Blend_SurfRstFunction::Pnt1()`
     pub fn BRepBlend_SurfRstEvolRad_inherited_Pnt1(
         self_: *const BRepBlend_SurfRstEvolRad,
     ) -> crate::OcctResult<*const gp_Pnt>;
-    /// Inherited: **Source:** `Blend_SurfRstFunction.hxx`:114 - `Blend_SurfRstFunction::Pnt2()`
+    /// Inherited: **Source:** `Blend_SurfRstFunction.hxx`:110 - `Blend_SurfRstFunction::Pnt2()`
     pub fn BRepBlend_SurfRstEvolRad_inherited_Pnt2(
         self_: *const BRepBlend_SurfRstEvolRad,
     ) -> crate::OcctResult<*const gp_Pnt>;
-    /// Inherited: **Source:** `Blend_AppFunction.hxx`:195 - `Blend_AppFunction::Parameter()`
+    /// Inherited: **Source:** `Blend_AppFunction.hxx`:192 - `Blend_AppFunction::Parameter()`
     pub fn BRepBlend_SurfRstEvolRad_inherited_Parameter(
         self_: *const BRepBlend_SurfRstEvolRad,
         P: *const Blend_Point,
@@ -3613,11 +3618,11 @@ unsafe extern "C" {
     pub fn BRepBlend_SurfRstLineBuilder_destructor(self_: *mut BRepBlend_SurfRstLineBuilder);
     /// **Source:** `BRepBlend_SurfRstLineBuilder.hxx`:70 - `BRepBlend_SurfRstLineBuilder::BRepBlend_SurfRstLineBuilder()`
     pub fn BRepBlend_SurfRstLineBuilder_ctor_handleadaptor3dsurface_handleadaptor3dtopoltool_handleadaptor3dsurface_handleadaptor2dcurve2d_handleadaptor3dtopoltool(
-        Surf1: *const HandleAdaptor3dSurface,
-        Domain1: *const HandleAdaptor3dTopolTool,
-        Surf2: *const HandleAdaptor3dSurface,
-        Rst: *const HandleAdaptor2dCurve2d,
-        Domain2: *const HandleAdaptor3dTopolTool,
+        Surf1: *const Handle_Adaptor3d_Surface,
+        Domain1: *const Handle_Adaptor3d_TopolTool,
+        Surf2: *const Handle_Adaptor3d_Surface,
+        Rst: *const Handle_Adaptor2d_Curve2d,
+        Domain2: *const Handle_Adaptor3d_TopolTool,
     ) -> crate::OcctResult<*mut BRepBlend_SurfRstLineBuilder>;
     /// **Source:** `BRepBlend_SurfRstLineBuilder.hxx`:76 - `BRepBlend_SurfRstLineBuilder::Perform()`
     pub fn BRepBlend_SurfRstLineBuilder_perform(
@@ -3680,7 +3685,7 @@ unsafe extern "C" {
     /// **Source:** `BRepBlend_SurfRstLineBuilder.hxx`:120 - `BRepBlend_SurfRstLineBuilder::Line()`
     pub fn BRepBlend_SurfRstLineBuilder_line(
         self_: *const BRepBlend_SurfRstLineBuilder,
-    ) -> crate::OcctResult<*const HandleBRepBlendLine>;
+    ) -> crate::OcctResult<*const Handle_BRepBlend_Line>;
     /// **Source:** `BRepBlend_SurfRstLineBuilder.hxx`:122 - `BRepBlend_SurfRstLineBuilder::DecrochStart()`
     pub fn BRepBlend_SurfRstLineBuilder_decroch_start(
         self_: *const BRepBlend_SurfRstLineBuilder,
@@ -3693,17 +3698,17 @@ unsafe extern "C" {
     pub fn BRepBlend_Walking_destructor(self_: *mut BRepBlend_Walking);
     /// **Source:** `BRepBlend_Walking.hxx`:50 - `BRepBlend_Walking::BRepBlend_Walking()`
     pub fn BRepBlend_Walking_ctor_handleadaptor3dsurface2_handleadaptor3dtopoltool2_handlechfidselspine(
-        Surf1: *const HandleAdaptor3dSurface,
-        Surf2: *const HandleAdaptor3dSurface,
-        Domain1: *const HandleAdaptor3dTopolTool,
-        Domain2: *const HandleAdaptor3dTopolTool,
-        HGuide: *const HandleChFiDSElSpine,
+        Surf1: *const Handle_Adaptor3d_Surface,
+        Surf2: *const Handle_Adaptor3d_Surface,
+        Domain1: *const Handle_Adaptor3d_TopolTool,
+        Domain2: *const Handle_Adaptor3d_TopolTool,
+        HGuide: *const Handle_ChFiDS_ElSpine,
     ) -> crate::OcctResult<*mut BRepBlend_Walking>;
     /// **Source:** `BRepBlend_Walking.hxx`:57 - `BRepBlend_Walking::SetDomainsToRecadre()`
     pub fn BRepBlend_Walking_set_domains_to_recadre(
         self_: *mut BRepBlend_Walking,
-        RecDomain1: *const HandleAdaptor3dTopolTool,
-        RecDomain2: *const HandleAdaptor3dTopolTool,
+        RecDomain1: *const Handle_Adaptor3d_TopolTool,
+        RecDomain2: *const Handle_Adaptor3d_TopolTool,
     ) -> *const std::ffi::c_char;
     /// **Source:** `BRepBlend_Walking.hxx`:61 - `BRepBlend_Walking::AddSingularPoint()`
     pub fn BRepBlend_Walking_add_singular_point(
@@ -3757,7 +3762,7 @@ unsafe extern "C" {
         FInv: *mut Blend_FuncInv,
         P: f64,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BRepBlend_Walking.hxx`:98 - `BRepBlend_Walking::Continu()`
+    /// **Source:** `BRepBlend_Walking.hxx`:96 - `BRepBlend_Walking::Continu()`
     pub fn BRepBlend_Walking_continu_function_funcinv_real_bool(
         self_: *mut BRepBlend_Walking,
         F: *mut Blend_Function,
@@ -3765,100 +3770,100 @@ unsafe extern "C" {
         P: f64,
         OnS1: bool,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BRepBlend_Walking.hxx`:103 - `BRepBlend_Walking::Complete()`
+    /// **Source:** `BRepBlend_Walking.hxx`:101 - `BRepBlend_Walking::Complete()`
     pub fn BRepBlend_Walking_complete(
         self_: *mut BRepBlend_Walking,
         F: *mut Blend_Function,
         FInv: *mut Blend_FuncInv,
         Pmin: f64,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BRepBlend_Walking.hxx`:107 - `BRepBlend_Walking::ClassificationOnS1()`
+    /// **Source:** `BRepBlend_Walking.hxx`:103 - `BRepBlend_Walking::ClassificationOnS1()`
     pub fn BRepBlend_Walking_classification_on_s1(
         self_: *mut BRepBlend_Walking,
         C: bool,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepBlend_Walking.hxx`:109 - `BRepBlend_Walking::ClassificationOnS2()`
+    /// **Source:** `BRepBlend_Walking.hxx`:105 - `BRepBlend_Walking::ClassificationOnS2()`
     pub fn BRepBlend_Walking_classification_on_s2(
         self_: *mut BRepBlend_Walking,
         C: bool,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepBlend_Walking.hxx`:111 - `BRepBlend_Walking::Check2d()`
+    /// **Source:** `BRepBlend_Walking.hxx`:107 - `BRepBlend_Walking::Check2d()`
     pub fn BRepBlend_Walking_check2d(
         self_: *mut BRepBlend_Walking,
         C: bool,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepBlend_Walking.hxx`:113 - `BRepBlend_Walking::Check()`
+    /// **Source:** `BRepBlend_Walking.hxx`:109 - `BRepBlend_Walking::Check()`
     pub fn BRepBlend_Walking_check(
         self_: *mut BRepBlend_Walking,
         C: bool,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepBlend_Walking.hxx`:115 - `BRepBlend_Walking::TwistOnS1()`
+    /// **Source:** `BRepBlend_Walking.hxx`:111 - `BRepBlend_Walking::TwistOnS1()`
     pub fn BRepBlend_Walking_twist_on_s1(
         self_: *const BRepBlend_Walking,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BRepBlend_Walking.hxx`:117 - `BRepBlend_Walking::TwistOnS2()`
+    /// **Source:** `BRepBlend_Walking.hxx`:113 - `BRepBlend_Walking::TwistOnS2()`
     pub fn BRepBlend_Walking_twist_on_s2(
         self_: *const BRepBlend_Walking,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BRepBlend_Walking.hxx`:119 - `BRepBlend_Walking::IsDone()`
+    /// **Source:** `BRepBlend_Walking.hxx`:115 - `BRepBlend_Walking::IsDone()`
     pub fn BRepBlend_Walking_is_done(self_: *const BRepBlend_Walking) -> crate::OcctResult<bool>;
-    /// **Source:** `BRepBlend_Walking.hxx`:121 - `BRepBlend_Walking::Line()`
+    /// **Source:** `BRepBlend_Walking.hxx`:117 - `BRepBlend_Walking::Line()`
     pub fn BRepBlend_Walking_line(
         self_: *const BRepBlend_Walking,
-    ) -> crate::OcctResult<*const HandleBRepBlendLine>;
+    ) -> crate::OcctResult<*const Handle_BRepBlend_Line>;
     // ======================== BRepFilletAPI_LocalOperation ========================
     pub fn BRepFilletAPI_LocalOperation_destructor(self_: *mut BRepFilletAPI_LocalOperation);
-    /// **Source:** `BRepFilletAPI_LocalOperation.hxx`:38 - `BRepFilletAPI_LocalOperation::Add()`
+    /// **Source:** `BRepFilletAPI_LocalOperation.hxx`:40 - `BRepFilletAPI_LocalOperation::Add()`
     pub fn BRepFilletAPI_LocalOperation_add(
         self_: *mut BRepFilletAPI_LocalOperation,
         E: *const TopoDS_Edge,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepFilletAPI_LocalOperation.hxx`:42 - `BRepFilletAPI_LocalOperation::ResetContour()`
+    /// **Source:** `BRepFilletAPI_LocalOperation.hxx`:44 - `BRepFilletAPI_LocalOperation::ResetContour()`
     pub fn BRepFilletAPI_LocalOperation_reset_contour(
         self_: *mut BRepFilletAPI_LocalOperation,
         IC: i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepFilletAPI_LocalOperation.hxx`:45 - `BRepFilletAPI_LocalOperation::NbContours()`
+    /// **Source:** `BRepFilletAPI_LocalOperation.hxx`:47 - `BRepFilletAPI_LocalOperation::NbContours()`
     pub fn BRepFilletAPI_LocalOperation_nb_contours(
         self_: *const BRepFilletAPI_LocalOperation,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `BRepFilletAPI_LocalOperation.hxx`:49 - `BRepFilletAPI_LocalOperation::Contour()`
+    /// **Source:** `BRepFilletAPI_LocalOperation.hxx`:51 - `BRepFilletAPI_LocalOperation::Contour()`
     pub fn BRepFilletAPI_LocalOperation_contour(
         self_: *const BRepFilletAPI_LocalOperation,
         E: *const TopoDS_Edge,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `BRepFilletAPI_LocalOperation.hxx`:52 - `BRepFilletAPI_LocalOperation::NbEdges()`
+    /// **Source:** `BRepFilletAPI_LocalOperation.hxx`:54 - `BRepFilletAPI_LocalOperation::NbEdges()`
     pub fn BRepFilletAPI_LocalOperation_nb_edges(
         self_: *const BRepFilletAPI_LocalOperation,
         I: i32,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `BRepFilletAPI_LocalOperation.hxx`:55 - `BRepFilletAPI_LocalOperation::Edge()`
+    /// **Source:** `BRepFilletAPI_LocalOperation.hxx`:57 - `BRepFilletAPI_LocalOperation::Edge()`
     pub fn BRepFilletAPI_LocalOperation_edge(
         self_: *const BRepFilletAPI_LocalOperation,
         I: i32,
         J: i32,
     ) -> crate::OcctResult<*const TopoDS_Edge>;
-    /// **Source:** `BRepFilletAPI_LocalOperation.hxx`:59 - `BRepFilletAPI_LocalOperation::Remove()`
+    /// **Source:** `BRepFilletAPI_LocalOperation.hxx`:60 - `BRepFilletAPI_LocalOperation::Remove()`
     pub fn BRepFilletAPI_LocalOperation_remove(
         self_: *mut BRepFilletAPI_LocalOperation,
         E: *const TopoDS_Edge,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepFilletAPI_LocalOperation.hxx`:62 - `BRepFilletAPI_LocalOperation::Length()`
+    /// **Source:** `BRepFilletAPI_LocalOperation.hxx`:63 - `BRepFilletAPI_LocalOperation::Length()`
     pub fn BRepFilletAPI_LocalOperation_length(
         self_: *const BRepFilletAPI_LocalOperation,
         IC: i32,
     ) -> crate::OcctResult<f64>;
-    /// **Source:** `BRepFilletAPI_LocalOperation.hxx`:65 - `BRepFilletAPI_LocalOperation::FirstVertex()`
+    /// **Source:** `BRepFilletAPI_LocalOperation.hxx`:66 - `BRepFilletAPI_LocalOperation::FirstVertex()`
     pub fn BRepFilletAPI_LocalOperation_first_vertex(
         self_: *const BRepFilletAPI_LocalOperation,
         IC: i32,
     ) -> crate::OcctResult<*mut TopoDS_Vertex>;
-    /// **Source:** `BRepFilletAPI_LocalOperation.hxx`:68 - `BRepFilletAPI_LocalOperation::LastVertex()`
+    /// **Source:** `BRepFilletAPI_LocalOperation.hxx`:69 - `BRepFilletAPI_LocalOperation::LastVertex()`
     pub fn BRepFilletAPI_LocalOperation_last_vertex(
         self_: *const BRepFilletAPI_LocalOperation,
         IC: i32,
     ) -> crate::OcctResult<*mut TopoDS_Vertex>;
-    /// **Source:** `BRepFilletAPI_LocalOperation.hxx`:72 - `BRepFilletAPI_LocalOperation::Abscissa()`
+    /// **Source:** `BRepFilletAPI_LocalOperation.hxx`:73 - `BRepFilletAPI_LocalOperation::Abscissa()`
     pub fn BRepFilletAPI_LocalOperation_abscissa(
         self_: *const BRepFilletAPI_LocalOperation,
         IC: i32,
@@ -3870,36 +3875,36 @@ unsafe extern "C" {
         IC: i32,
         V: *const TopoDS_Vertex,
     ) -> crate::OcctResult<f64>;
-    /// **Source:** `BRepFilletAPI_LocalOperation.hxx`:82 - `BRepFilletAPI_LocalOperation::ClosedAndTangent()`
+    /// **Source:** `BRepFilletAPI_LocalOperation.hxx`:81 - `BRepFilletAPI_LocalOperation::ClosedAndTangent()`
     pub fn BRepFilletAPI_LocalOperation_closed_and_tangent(
         self_: *const BRepFilletAPI_LocalOperation,
         IC: i32,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BRepFilletAPI_LocalOperation.hxx`:85 - `BRepFilletAPI_LocalOperation::Closed()`
+    /// **Source:** `BRepFilletAPI_LocalOperation.hxx`:84 - `BRepFilletAPI_LocalOperation::Closed()`
     pub fn BRepFilletAPI_LocalOperation_closed(
         self_: *const BRepFilletAPI_LocalOperation,
         IC: i32,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BRepFilletAPI_LocalOperation.hxx`:91 - `BRepFilletAPI_LocalOperation::Reset()`
+    /// **Source:** `BRepFilletAPI_LocalOperation.hxx`:90 - `BRepFilletAPI_LocalOperation::Reset()`
     pub fn BRepFilletAPI_LocalOperation_reset(
         self_: *mut BRepFilletAPI_LocalOperation,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepFilletAPI_LocalOperation.hxx`:93 - `BRepFilletAPI_LocalOperation::Simulate()`
+    /// **Source:** `BRepFilletAPI_LocalOperation.hxx`:92 - `BRepFilletAPI_LocalOperation::Simulate()`
     pub fn BRepFilletAPI_LocalOperation_simulate(
         self_: *mut BRepFilletAPI_LocalOperation,
         IC: i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepFilletAPI_LocalOperation.hxx`:95 - `BRepFilletAPI_LocalOperation::NbSurf()`
+    /// **Source:** `BRepFilletAPI_LocalOperation.hxx`:94 - `BRepFilletAPI_LocalOperation::NbSurf()`
     pub fn BRepFilletAPI_LocalOperation_nb_surf(
         self_: *const BRepFilletAPI_LocalOperation,
         IC: i32,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `BRepFilletAPI_LocalOperation.hxx`:97 - `BRepFilletAPI_LocalOperation::Sect()`
+    /// **Source:** `BRepFilletAPI_LocalOperation.hxx`:96 - `BRepFilletAPI_LocalOperation::Sect()`
     pub fn BRepFilletAPI_LocalOperation_sect(
         self_: *const BRepFilletAPI_LocalOperation,
         IC: i32,
         IS: i32,
-    ) -> crate::OcctResult<*mut HandleChFiDSSecHArray1>;
+    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_ChFiDS_CircSection>;
     /// Upcast BRepFilletAPI_LocalOperation to BRepBuilderAPI_MakeShape
     pub fn BRepFilletAPI_LocalOperation_as_BRepBuilderAPI_MakeShape(
         self_: *const BRepFilletAPI_LocalOperation,
@@ -3940,35 +3945,35 @@ unsafe extern "C" {
     ) -> *const std::ffi::c_char;
     // ======================== BRepFilletAPI_MakeChamfer ========================
     pub fn BRepFilletAPI_MakeChamfer_destructor(self_: *mut BRepFilletAPI_MakeChamfer);
-    /// **Source:** `BRepFilletAPI_MakeChamfer.hxx`:51 - `BRepFilletAPI_MakeChamfer::BRepFilletAPI_MakeChamfer()`
+    /// **Source:** `BRepFilletAPI_MakeChamfer.hxx`:55 - `BRepFilletAPI_MakeChamfer::BRepFilletAPI_MakeChamfer()`
     pub fn BRepFilletAPI_MakeChamfer_ctor_shape(
         S: *const TopoDS_Shape,
     ) -> crate::OcctResult<*mut BRepFilletAPI_MakeChamfer>;
-    /// **Source:** `BRepFilletAPI_MakeChamfer.hxx`:56 - `BRepFilletAPI_MakeChamfer::Add()`
+    /// **Source:** `BRepFilletAPI_MakeChamfer.hxx`:60 - `BRepFilletAPI_MakeChamfer::Add()`
     pub fn BRepFilletAPI_MakeChamfer_add_edge(
         self_: *mut BRepFilletAPI_MakeChamfer,
         E: *const TopoDS_Edge,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepFilletAPI_MakeChamfer.hxx`:70 - `BRepFilletAPI_MakeChamfer::Add()`
+    /// **Source:** `BRepFilletAPI_MakeChamfer.hxx`:74 - `BRepFilletAPI_MakeChamfer::Add()`
     pub fn BRepFilletAPI_MakeChamfer_add_real_edge(
         self_: *mut BRepFilletAPI_MakeChamfer,
         Dis: f64,
         E: *const TopoDS_Edge,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepFilletAPI_MakeChamfer.hxx`:80 - `BRepFilletAPI_MakeChamfer::SetDist()`
+    /// **Source:** `BRepFilletAPI_MakeChamfer.hxx`:84 - `BRepFilletAPI_MakeChamfer::SetDist()`
     pub fn BRepFilletAPI_MakeChamfer_set_dist(
         self_: *mut BRepFilletAPI_MakeChamfer,
         Dis: f64,
         IC: i32,
         F: *const TopoDS_Face,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepFilletAPI_MakeChamfer.hxx`:84 - `BRepFilletAPI_MakeChamfer::GetDist()`
+    /// **Source:** `BRepFilletAPI_MakeChamfer.hxx`:86 - `BRepFilletAPI_MakeChamfer::GetDist()`
     pub fn BRepFilletAPI_MakeChamfer_get_dist(
         self_: *const BRepFilletAPI_MakeChamfer,
         IC: i32,
         Dis: *mut f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepFilletAPI_MakeChamfer.hxx`:99 - `BRepFilletAPI_MakeChamfer::Add()`
+    /// **Source:** `BRepFilletAPI_MakeChamfer.hxx`:101 - `BRepFilletAPI_MakeChamfer::Add()`
     pub fn BRepFilletAPI_MakeChamfer_add_real2_edge_face(
         self_: *mut BRepFilletAPI_MakeChamfer,
         Dis1: f64,
@@ -3976,7 +3981,7 @@ unsafe extern "C" {
         E: *const TopoDS_Edge,
         F: *const TopoDS_Face,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepFilletAPI_MakeChamfer.hxx`:112 - `BRepFilletAPI_MakeChamfer::SetDists()`
+    /// **Source:** `BRepFilletAPI_MakeChamfer.hxx`:114 - `BRepFilletAPI_MakeChamfer::SetDists()`
     pub fn BRepFilletAPI_MakeChamfer_set_dists(
         self_: *mut BRepFilletAPI_MakeChamfer,
         Dis1: f64,
@@ -3984,7 +3989,7 @@ unsafe extern "C" {
         IC: i32,
         F: *const TopoDS_Face,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepFilletAPI_MakeChamfer.hxx`:122 - `BRepFilletAPI_MakeChamfer::Dists()`
+    /// **Source:** `BRepFilletAPI_MakeChamfer.hxx`:124 - `BRepFilletAPI_MakeChamfer::Dists()`
     pub fn BRepFilletAPI_MakeChamfer_dists(
         self_: *const BRepFilletAPI_MakeChamfer,
         IC: i32,
@@ -4014,137 +4019,137 @@ unsafe extern "C" {
         Dis: *mut f64,
         Angle: *mut f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepFilletAPI_MakeChamfer.hxx`:150 - `BRepFilletAPI_MakeChamfer::SetMode()`
+    /// **Source:** `BRepFilletAPI_MakeChamfer.hxx`:148 - `BRepFilletAPI_MakeChamfer::SetMode()`
     pub fn BRepFilletAPI_MakeChamfer_set_mode(
         self_: *mut BRepFilletAPI_MakeChamfer,
         theMode: i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepFilletAPI_MakeChamfer.hxx`:153 - `BRepFilletAPI_MakeChamfer::IsSymetric()`
+    /// **Source:** `BRepFilletAPI_MakeChamfer.hxx`:151 - `BRepFilletAPI_MakeChamfer::IsSymetric()`
     pub fn BRepFilletAPI_MakeChamfer_is_symetric(
         self_: *const BRepFilletAPI_MakeChamfer,
         IC: i32,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BRepFilletAPI_MakeChamfer.hxx`:156 - `BRepFilletAPI_MakeChamfer::IsTwoDistances()`
+    /// **Source:** `BRepFilletAPI_MakeChamfer.hxx`:154 - `BRepFilletAPI_MakeChamfer::IsTwoDistances()`
     pub fn BRepFilletAPI_MakeChamfer_is_two_distances(
         self_: *const BRepFilletAPI_MakeChamfer,
         IC: i32,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BRepFilletAPI_MakeChamfer.hxx`:159 - `BRepFilletAPI_MakeChamfer::IsDistanceAngle()`
+    /// **Source:** `BRepFilletAPI_MakeChamfer.hxx`:157 - `BRepFilletAPI_MakeChamfer::IsDistanceAngle()`
     pub fn BRepFilletAPI_MakeChamfer_is_distance_angle(
         self_: *const BRepFilletAPI_MakeChamfer,
         IC: i32,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BRepFilletAPI_MakeChamfer.hxx`:166 - `BRepFilletAPI_MakeChamfer::ResetContour()`
+    /// **Source:** `BRepFilletAPI_MakeChamfer.hxx`:164 - `BRepFilletAPI_MakeChamfer::ResetContour()`
     pub fn BRepFilletAPI_MakeChamfer_reset_contour(
         self_: *mut BRepFilletAPI_MakeChamfer,
         IC: i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepFilletAPI_MakeChamfer.hxx`:170 - `BRepFilletAPI_MakeChamfer::NbContours()`
+    /// **Source:** `BRepFilletAPI_MakeChamfer.hxx`:168 - `BRepFilletAPI_MakeChamfer::NbContours()`
     pub fn BRepFilletAPI_MakeChamfer_nb_contours(
         self_: *const BRepFilletAPI_MakeChamfer,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `BRepFilletAPI_MakeChamfer.hxx`:178 - `BRepFilletAPI_MakeChamfer::Contour()`
+    /// **Source:** `BRepFilletAPI_MakeChamfer.hxx`:176 - `BRepFilletAPI_MakeChamfer::Contour()`
     pub fn BRepFilletAPI_MakeChamfer_contour(
         self_: *const BRepFilletAPI_MakeChamfer,
         E: *const TopoDS_Edge,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `BRepFilletAPI_MakeChamfer.hxx`:184 - `BRepFilletAPI_MakeChamfer::NbEdges()`
+    /// **Source:** `BRepFilletAPI_MakeChamfer.hxx`:182 - `BRepFilletAPI_MakeChamfer::NbEdges()`
     pub fn BRepFilletAPI_MakeChamfer_nb_edges(
         self_: *const BRepFilletAPI_MakeChamfer,
         I: i32,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `BRepFilletAPI_MakeChamfer.hxx`:192 - `BRepFilletAPI_MakeChamfer::Edge()`
+    /// **Source:** `BRepFilletAPI_MakeChamfer.hxx`:190 - `BRepFilletAPI_MakeChamfer::Edge()`
     pub fn BRepFilletAPI_MakeChamfer_edge(
         self_: *const BRepFilletAPI_MakeChamfer,
         I: i32,
         J: i32,
     ) -> crate::OcctResult<*const TopoDS_Edge>;
-    /// **Source:** `BRepFilletAPI_MakeChamfer.hxx`:200 - `BRepFilletAPI_MakeChamfer::Remove()`
+    /// **Source:** `BRepFilletAPI_MakeChamfer.hxx`:197 - `BRepFilletAPI_MakeChamfer::Remove()`
     pub fn BRepFilletAPI_MakeChamfer_remove(
         self_: *mut BRepFilletAPI_MakeChamfer,
         E: *const TopoDS_Edge,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepFilletAPI_MakeChamfer.hxx`:206 - `BRepFilletAPI_MakeChamfer::Length()`
+    /// **Source:** `BRepFilletAPI_MakeChamfer.hxx`:203 - `BRepFilletAPI_MakeChamfer::Length()`
     pub fn BRepFilletAPI_MakeChamfer_length(
         self_: *const BRepFilletAPI_MakeChamfer,
         IC: i32,
     ) -> crate::OcctResult<f64>;
-    /// **Source:** `BRepFilletAPI_MakeChamfer.hxx`:212 - `BRepFilletAPI_MakeChamfer::FirstVertex()`
+    /// **Source:** `BRepFilletAPI_MakeChamfer.hxx`:209 - `BRepFilletAPI_MakeChamfer::FirstVertex()`
     pub fn BRepFilletAPI_MakeChamfer_first_vertex(
         self_: *const BRepFilletAPI_MakeChamfer,
         IC: i32,
     ) -> crate::OcctResult<*mut TopoDS_Vertex>;
-    /// **Source:** `BRepFilletAPI_MakeChamfer.hxx`:218 - `BRepFilletAPI_MakeChamfer::LastVertex()`
+    /// **Source:** `BRepFilletAPI_MakeChamfer.hxx`:215 - `BRepFilletAPI_MakeChamfer::LastVertex()`
     pub fn BRepFilletAPI_MakeChamfer_last_vertex(
         self_: *const BRepFilletAPI_MakeChamfer,
         IC: i32,
     ) -> crate::OcctResult<*mut TopoDS_Vertex>;
-    /// **Source:** `BRepFilletAPI_MakeChamfer.hxx`:226 - `BRepFilletAPI_MakeChamfer::Abscissa()`
+    /// **Source:** `BRepFilletAPI_MakeChamfer.hxx`:223 - `BRepFilletAPI_MakeChamfer::Abscissa()`
     pub fn BRepFilletAPI_MakeChamfer_abscissa(
         self_: *const BRepFilletAPI_MakeChamfer,
         IC: i32,
         V: *const TopoDS_Vertex,
     ) -> crate::OcctResult<f64>;
-    /// **Source:** `BRepFilletAPI_MakeChamfer.hxx`:236 - `BRepFilletAPI_MakeChamfer::RelativeAbscissa()`
+    /// **Source:** `BRepFilletAPI_MakeChamfer.hxx`:232 - `BRepFilletAPI_MakeChamfer::RelativeAbscissa()`
     pub fn BRepFilletAPI_MakeChamfer_relative_abscissa(
         self_: *const BRepFilletAPI_MakeChamfer,
         IC: i32,
         V: *const TopoDS_Vertex,
     ) -> crate::OcctResult<f64>;
-    /// **Source:** `BRepFilletAPI_MakeChamfer.hxx`:244 - `BRepFilletAPI_MakeChamfer::ClosedAndTangent()`
+    /// **Source:** `BRepFilletAPI_MakeChamfer.hxx`:238 - `BRepFilletAPI_MakeChamfer::ClosedAndTangent()`
     pub fn BRepFilletAPI_MakeChamfer_closed_and_tangent(
         self_: *const BRepFilletAPI_MakeChamfer,
         IC: i32,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BRepFilletAPI_MakeChamfer.hxx`:250 - `BRepFilletAPI_MakeChamfer::Closed()`
+    /// **Source:** `BRepFilletAPI_MakeChamfer.hxx`:244 - `BRepFilletAPI_MakeChamfer::Closed()`
     pub fn BRepFilletAPI_MakeChamfer_closed(
         self_: *const BRepFilletAPI_MakeChamfer,
         IC: i32,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BRepFilletAPI_MakeChamfer.hxx`:270 - `BRepFilletAPI_MakeChamfer::Build()`
+    /// **Source:** `BRepFilletAPI_MakeChamfer.hxx`:264 - `BRepFilletAPI_MakeChamfer::Build()`
     pub fn BRepFilletAPI_MakeChamfer_build(
         self_: *mut BRepFilletAPI_MakeChamfer,
         theRange: *const Message_ProgressRange,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepFilletAPI_MakeChamfer.hxx`:276 - `BRepFilletAPI_MakeChamfer::Reset()`
+    /// **Source:** `BRepFilletAPI_MakeChamfer.hxx`:270 - `BRepFilletAPI_MakeChamfer::Reset()`
     pub fn BRepFilletAPI_MakeChamfer_reset(
         self_: *mut BRepFilletAPI_MakeChamfer,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepFilletAPI_MakeChamfer.hxx`:279 - `BRepFilletAPI_MakeChamfer::Builder()`
+    /// **Source:** `BRepFilletAPI_MakeChamfer.hxx`:273 - `BRepFilletAPI_MakeChamfer::Builder()`
     pub fn BRepFilletAPI_MakeChamfer_builder(
         self_: *const BRepFilletAPI_MakeChamfer,
-    ) -> crate::OcctResult<*mut HandleTopOpeBRepBuildHBuilder>;
-    /// **Source:** `BRepFilletAPI_MakeChamfer.hxx`:283 - `BRepFilletAPI_MakeChamfer::Generated()`
+    ) -> crate::OcctResult<*mut Handle_TopOpeBRepBuild_HBuilder>;
+    /// **Source:** `BRepFilletAPI_MakeChamfer.hxx`:277 - `BRepFilletAPI_MakeChamfer::Generated()`
     pub fn BRepFilletAPI_MakeChamfer_generated(
         self_: *mut BRepFilletAPI_MakeChamfer,
         EorV: *const TopoDS_Shape,
-    ) -> crate::OcctResult<*const TopTools_ListOfShape>;
-    /// **Source:** `BRepFilletAPI_MakeChamfer.hxx`:288 - `BRepFilletAPI_MakeChamfer::Modified()`
+    ) -> crate::OcctResult<*const NCollection_List_TopoDS_Shape>;
+    /// **Source:** `BRepFilletAPI_MakeChamfer.hxx`:282 - `BRepFilletAPI_MakeChamfer::Modified()`
     pub fn BRepFilletAPI_MakeChamfer_modified(
         self_: *mut BRepFilletAPI_MakeChamfer,
         F: *const TopoDS_Shape,
-    ) -> crate::OcctResult<*const TopTools_ListOfShape>;
-    /// **Source:** `BRepFilletAPI_MakeChamfer.hxx`:291 - `BRepFilletAPI_MakeChamfer::IsDeleted()`
+    ) -> crate::OcctResult<*const NCollection_List_TopoDS_Shape>;
+    /// **Source:** `BRepFilletAPI_MakeChamfer.hxx`:284 - `BRepFilletAPI_MakeChamfer::IsDeleted()`
     pub fn BRepFilletAPI_MakeChamfer_is_deleted(
         self_: *mut BRepFilletAPI_MakeChamfer,
         F: *const TopoDS_Shape,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BRepFilletAPI_MakeChamfer.hxx`:293 - `BRepFilletAPI_MakeChamfer::Simulate()`
+    /// **Source:** `BRepFilletAPI_MakeChamfer.hxx`:286 - `BRepFilletAPI_MakeChamfer::Simulate()`
     pub fn BRepFilletAPI_MakeChamfer_simulate(
         self_: *mut BRepFilletAPI_MakeChamfer,
         IC: i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepFilletAPI_MakeChamfer.hxx`:295 - `BRepFilletAPI_MakeChamfer::NbSurf()`
+    /// **Source:** `BRepFilletAPI_MakeChamfer.hxx`:288 - `BRepFilletAPI_MakeChamfer::NbSurf()`
     pub fn BRepFilletAPI_MakeChamfer_nb_surf(
         self_: *const BRepFilletAPI_MakeChamfer,
         IC: i32,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `BRepFilletAPI_MakeChamfer.hxx`:297 - `BRepFilletAPI_MakeChamfer::Sect()`
+    /// **Source:** `BRepFilletAPI_MakeChamfer.hxx`:290 - `BRepFilletAPI_MakeChamfer::Sect()`
     pub fn BRepFilletAPI_MakeChamfer_sect(
         self_: *const BRepFilletAPI_MakeChamfer,
         IC: i32,
         IS: i32,
-    ) -> crate::OcctResult<*mut HandleChFiDSSecHArray1>;
+    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_ChFiDS_CircSection>;
     /// Upcast BRepFilletAPI_MakeChamfer to BRepFilletAPI_LocalOperation
     pub fn BRepFilletAPI_MakeChamfer_as_BRepFilletAPI_LocalOperation(
         self_: *const BRepFilletAPI_MakeChamfer,
@@ -4183,12 +4188,12 @@ unsafe extern "C" {
     ) -> *const std::ffi::c_char;
     // ======================== BRepFilletAPI_MakeFillet ========================
     pub fn BRepFilletAPI_MakeFillet_destructor(self_: *mut BRepFilletAPI_MakeFillet);
-    /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:61 - `BRepFilletAPI_MakeFillet::BRepFilletAPI_MakeFillet()`
+    /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:65 - `BRepFilletAPI_MakeFillet::BRepFilletAPI_MakeFillet()`
     pub fn BRepFilletAPI_MakeFillet_ctor_shape_filletshape(
         S: *const TopoDS_Shape,
         FShape: i32,
     ) -> crate::OcctResult<*mut BRepFilletAPI_MakeFillet>;
-    /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:64 - `BRepFilletAPI_MakeFillet::SetParams()`
+    /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:68 - `BRepFilletAPI_MakeFillet::SetParams()`
     pub fn BRepFilletAPI_MakeFillet_set_params(
         self_: *mut BRepFilletAPI_MakeFillet,
         Tang: f64,
@@ -4198,50 +4203,50 @@ unsafe extern "C" {
         TolApp2d: f64,
         Fleche: f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:77 - `BRepFilletAPI_MakeFillet::SetContinuity()`
+    /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:81 - `BRepFilletAPI_MakeFillet::SetContinuity()`
     pub fn BRepFilletAPI_MakeFillet_set_continuity(
         self_: *mut BRepFilletAPI_MakeFillet,
         InternalContinuity: i32,
         AngularTolerance: f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:83 - `BRepFilletAPI_MakeFillet::Add()`
+    /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:87 - `BRepFilletAPI_MakeFillet::Add()`
     pub fn BRepFilletAPI_MakeFillet_add_edge(
         self_: *mut BRepFilletAPI_MakeFillet,
         E: *const TopoDS_Edge,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:88 - `BRepFilletAPI_MakeFillet::Add()`
+    /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:92 - `BRepFilletAPI_MakeFillet::Add()`
     pub fn BRepFilletAPI_MakeFillet_add_real_edge(
         self_: *mut BRepFilletAPI_MakeFillet,
         Radius: f64,
         E: *const TopoDS_Edge,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:94 - `BRepFilletAPI_MakeFillet::Add()`
+    /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:98 - `BRepFilletAPI_MakeFillet::Add()`
     pub fn BRepFilletAPI_MakeFillet_add_real2_edge(
         self_: *mut BRepFilletAPI_MakeFillet,
         R1: f64,
         R2: f64,
         E: *const TopoDS_Edge,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:99 - `BRepFilletAPI_MakeFillet::Add()`
+    /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:103 - `BRepFilletAPI_MakeFillet::Add()`
     pub fn BRepFilletAPI_MakeFillet_add_handlelawfunction_edge(
         self_: *mut BRepFilletAPI_MakeFillet,
-        L: *const HandleLawFunction,
+        L: *const Handle_Law_Function,
         E: *const TopoDS_Edge,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:108 - `BRepFilletAPI_MakeFillet::Add()`
-    pub fn BRepFilletAPI_MakeFillet_add_array1ofpnt2d_edge(
+    /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:112 - `BRepFilletAPI_MakeFillet::Add()`
+    pub fn BRepFilletAPI_MakeFillet_add_arr1_pnt2d_edge(
         self_: *mut BRepFilletAPI_MakeFillet,
-        UandR: *const TColgp_Array1OfPnt2d,
+        UandR: *const NCollection_Array1_gp_Pnt2d,
         E: *const TopoDS_Edge,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:114 - `BRepFilletAPI_MakeFillet::SetRadius()`
+    /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:118 - `BRepFilletAPI_MakeFillet::SetRadius()`
     pub fn BRepFilletAPI_MakeFillet_set_radius_real_int2(
         self_: *mut BRepFilletAPI_MakeFillet,
         Radius: f64,
         IC: i32,
         IinC: i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:123 - `BRepFilletAPI_MakeFillet::SetRadius()`
+    /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:125 - `BRepFilletAPI_MakeFillet::SetRadius()`
     pub fn BRepFilletAPI_MakeFillet_set_radius_real2_int2(
         self_: *mut BRepFilletAPI_MakeFillet,
         R1: f64,
@@ -4249,62 +4254,62 @@ unsafe extern "C" {
         IC: i32,
         IinC: i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:133 - `BRepFilletAPI_MakeFillet::SetRadius()`
+    /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:132 - `BRepFilletAPI_MakeFillet::SetRadius()`
     pub fn BRepFilletAPI_MakeFillet_set_radius_handlelawfunction_int2(
         self_: *mut BRepFilletAPI_MakeFillet,
-        L: *const HandleLawFunction,
+        L: *const Handle_Law_Function,
         IC: i32,
         IinC: i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:148 - `BRepFilletAPI_MakeFillet::SetRadius()`
-    pub fn BRepFilletAPI_MakeFillet_set_radius_array1ofpnt2d_int2(
+    /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:145 - `BRepFilletAPI_MakeFillet::SetRadius()`
+    pub fn BRepFilletAPI_MakeFillet_set_radius_arr1_pnt2d_int2(
         self_: *mut BRepFilletAPI_MakeFillet,
-        UandR: *const TColgp_Array1OfPnt2d,
+        UandR: *const NCollection_Array1_gp_Pnt2d,
         IC: i32,
         IinC: i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:157 - `BRepFilletAPI_MakeFillet::ResetContour()`
+    /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:154 - `BRepFilletAPI_MakeFillet::ResetContour()`
     pub fn BRepFilletAPI_MakeFillet_reset_contour(
         self_: *mut BRepFilletAPI_MakeFillet,
         IC: i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:164 - `BRepFilletAPI_MakeFillet::IsConstant()`
+    /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:161 - `BRepFilletAPI_MakeFillet::IsConstant()`
     pub fn BRepFilletAPI_MakeFillet_is_constant_int(
         self_: *mut BRepFilletAPI_MakeFillet,
         IC: i32,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:172 - `BRepFilletAPI_MakeFillet::Radius()`
+    /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:169 - `BRepFilletAPI_MakeFillet::Radius()`
     pub fn BRepFilletAPI_MakeFillet_radius_int(
         self_: *mut BRepFilletAPI_MakeFillet,
         IC: i32,
     ) -> crate::OcctResult<f64>;
-    /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:180 - `BRepFilletAPI_MakeFillet::IsConstant()`
+    /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:177 - `BRepFilletAPI_MakeFillet::IsConstant()`
     pub fn BRepFilletAPI_MakeFillet_is_constant_int_edge(
         self_: *mut BRepFilletAPI_MakeFillet,
         IC: i32,
         E: *const TopoDS_Edge,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:188 - `BRepFilletAPI_MakeFillet::Radius()`
+    /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:185 - `BRepFilletAPI_MakeFillet::Radius()`
     pub fn BRepFilletAPI_MakeFillet_radius_int_edge(
         self_: *mut BRepFilletAPI_MakeFillet,
         IC: i32,
         E: *const TopoDS_Edge,
     ) -> crate::OcctResult<f64>;
-    /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:191 - `BRepFilletAPI_MakeFillet::SetRadius()`
+    /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:188 - `BRepFilletAPI_MakeFillet::SetRadius()`
     pub fn BRepFilletAPI_MakeFillet_set_radius_real_int_edge(
         self_: *mut BRepFilletAPI_MakeFillet,
         Radius: f64,
         IC: i32,
         E: *const TopoDS_Edge,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:195 - `BRepFilletAPI_MakeFillet::SetRadius()`
+    /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:190 - `BRepFilletAPI_MakeFillet::SetRadius()`
     pub fn BRepFilletAPI_MakeFillet_set_radius_real_int_vertex(
         self_: *mut BRepFilletAPI_MakeFillet,
         Radius: f64,
         IC: i32,
         V: *const TopoDS_Vertex,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:199 - `BRepFilletAPI_MakeFillet::GetBounds()`
+    /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:192 - `BRepFilletAPI_MakeFillet::GetBounds()`
     pub fn BRepFilletAPI_MakeFillet_get_bounds(
         self_: *mut BRepFilletAPI_MakeFillet,
         IC: i32,
@@ -4312,181 +4317,181 @@ unsafe extern "C" {
         F: *mut f64,
         L: *mut f64,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:204 - `BRepFilletAPI_MakeFillet::GetLaw()`
+    /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:194 - `BRepFilletAPI_MakeFillet::GetLaw()`
     pub fn BRepFilletAPI_MakeFillet_get_law(
         self_: *mut BRepFilletAPI_MakeFillet,
         IC: i32,
         E: *const TopoDS_Edge,
-    ) -> crate::OcctResult<*mut HandleLawFunction>;
-    /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:206 - `BRepFilletAPI_MakeFillet::SetLaw()`
+    ) -> crate::OcctResult<*mut Handle_Law_Function>;
+    /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:196 - `BRepFilletAPI_MakeFillet::SetLaw()`
     pub fn BRepFilletAPI_MakeFillet_set_law(
         self_: *mut BRepFilletAPI_MakeFillet,
         IC: i32,
         E: *const TopoDS_Edge,
-        L: *const HandleLawFunction,
+        L: *const Handle_Law_Function,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:211 - `BRepFilletAPI_MakeFillet::SetFilletShape()`
+    /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:201 - `BRepFilletAPI_MakeFillet::SetFilletShape()`
     pub fn BRepFilletAPI_MakeFillet_set_fillet_shape(
         self_: *mut BRepFilletAPI_MakeFillet,
         FShape: i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:214 - `BRepFilletAPI_MakeFillet::GetFilletShape()`
+    /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:204 - `BRepFilletAPI_MakeFillet::GetFilletShape()`
     pub fn BRepFilletAPI_MakeFillet_get_fillet_shape(
         self_: *const BRepFilletAPI_MakeFillet,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:218 - `BRepFilletAPI_MakeFillet::NbContours()`
+    /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:208 - `BRepFilletAPI_MakeFillet::NbContours()`
     pub fn BRepFilletAPI_MakeFillet_nb_contours(
         self_: *const BRepFilletAPI_MakeFillet,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:226 - `BRepFilletAPI_MakeFillet::Contour()`
+    /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:216 - `BRepFilletAPI_MakeFillet::Contour()`
     pub fn BRepFilletAPI_MakeFillet_contour(
         self_: *const BRepFilletAPI_MakeFillet,
         E: *const TopoDS_Edge,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:232 - `BRepFilletAPI_MakeFillet::NbEdges()`
+    /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:222 - `BRepFilletAPI_MakeFillet::NbEdges()`
     pub fn BRepFilletAPI_MakeFillet_nb_edges(
         self_: *const BRepFilletAPI_MakeFillet,
         I: i32,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:240 - `BRepFilletAPI_MakeFillet::Edge()`
+    /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:230 - `BRepFilletAPI_MakeFillet::Edge()`
     pub fn BRepFilletAPI_MakeFillet_edge(
         self_: *const BRepFilletAPI_MakeFillet,
         I: i32,
         J: i32,
     ) -> crate::OcctResult<*const TopoDS_Edge>;
-    /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:248 - `BRepFilletAPI_MakeFillet::Remove()`
+    /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:237 - `BRepFilletAPI_MakeFillet::Remove()`
     pub fn BRepFilletAPI_MakeFillet_remove(
         self_: *mut BRepFilletAPI_MakeFillet,
         E: *const TopoDS_Edge,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:254 - `BRepFilletAPI_MakeFillet::Length()`
+    /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:243 - `BRepFilletAPI_MakeFillet::Length()`
     pub fn BRepFilletAPI_MakeFillet_length(
         self_: *const BRepFilletAPI_MakeFillet,
         IC: i32,
     ) -> crate::OcctResult<f64>;
-    /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:260 - `BRepFilletAPI_MakeFillet::FirstVertex()`
+    /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:249 - `BRepFilletAPI_MakeFillet::FirstVertex()`
     pub fn BRepFilletAPI_MakeFillet_first_vertex(
         self_: *const BRepFilletAPI_MakeFillet,
         IC: i32,
     ) -> crate::OcctResult<*mut TopoDS_Vertex>;
-    /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:266 - `BRepFilletAPI_MakeFillet::LastVertex()`
+    /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:255 - `BRepFilletAPI_MakeFillet::LastVertex()`
     pub fn BRepFilletAPI_MakeFillet_last_vertex(
         self_: *const BRepFilletAPI_MakeFillet,
         IC: i32,
     ) -> crate::OcctResult<*mut TopoDS_Vertex>;
-    /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:274 - `BRepFilletAPI_MakeFillet::Abscissa()`
+    /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:263 - `BRepFilletAPI_MakeFillet::Abscissa()`
     pub fn BRepFilletAPI_MakeFillet_abscissa(
         self_: *const BRepFilletAPI_MakeFillet,
         IC: i32,
         V: *const TopoDS_Vertex,
     ) -> crate::OcctResult<f64>;
-    /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:284 - `BRepFilletAPI_MakeFillet::RelativeAbscissa()`
+    /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:272 - `BRepFilletAPI_MakeFillet::RelativeAbscissa()`
     pub fn BRepFilletAPI_MakeFillet_relative_abscissa(
         self_: *const BRepFilletAPI_MakeFillet,
         IC: i32,
         V: *const TopoDS_Vertex,
     ) -> crate::OcctResult<f64>;
-    /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:293 - `BRepFilletAPI_MakeFillet::ClosedAndTangent()`
+    /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:279 - `BRepFilletAPI_MakeFillet::ClosedAndTangent()`
     pub fn BRepFilletAPI_MakeFillet_closed_and_tangent(
         self_: *const BRepFilletAPI_MakeFillet,
         IC: i32,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:299 - `BRepFilletAPI_MakeFillet::Closed()`
+    /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:285 - `BRepFilletAPI_MakeFillet::Closed()`
     pub fn BRepFilletAPI_MakeFillet_closed(
         self_: *const BRepFilletAPI_MakeFillet,
         IC: i32,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:319 - `BRepFilletAPI_MakeFillet::Build()`
+    /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:305 - `BRepFilletAPI_MakeFillet::Build()`
     pub fn BRepFilletAPI_MakeFillet_build(
         self_: *mut BRepFilletAPI_MakeFillet,
         theRange: *const Message_ProgressRange,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:325 - `BRepFilletAPI_MakeFillet::Reset()`
+    /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:311 - `BRepFilletAPI_MakeFillet::Reset()`
     pub fn BRepFilletAPI_MakeFillet_reset(
         self_: *mut BRepFilletAPI_MakeFillet,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:328 - `BRepFilletAPI_MakeFillet::Builder()`
+    /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:314 - `BRepFilletAPI_MakeFillet::Builder()`
     pub fn BRepFilletAPI_MakeFillet_builder(
         self_: *const BRepFilletAPI_MakeFillet,
-    ) -> crate::OcctResult<*mut HandleTopOpeBRepBuildHBuilder>;
-    /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:332 - `BRepFilletAPI_MakeFillet::Generated()`
+    ) -> crate::OcctResult<*mut Handle_TopOpeBRepBuild_HBuilder>;
+    /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:318 - `BRepFilletAPI_MakeFillet::Generated()`
     pub fn BRepFilletAPI_MakeFillet_generated(
         self_: *mut BRepFilletAPI_MakeFillet,
         EorV: *const TopoDS_Shape,
-    ) -> crate::OcctResult<*const TopTools_ListOfShape>;
-    /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:337 - `BRepFilletAPI_MakeFillet::Modified()`
+    ) -> crate::OcctResult<*const NCollection_List_TopoDS_Shape>;
+    /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:323 - `BRepFilletAPI_MakeFillet::Modified()`
     pub fn BRepFilletAPI_MakeFillet_modified(
         self_: *mut BRepFilletAPI_MakeFillet,
         F: *const TopoDS_Shape,
-    ) -> crate::OcctResult<*const TopTools_ListOfShape>;
-    /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:340 - `BRepFilletAPI_MakeFillet::IsDeleted()`
+    ) -> crate::OcctResult<*const NCollection_List_TopoDS_Shape>;
+    /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:325 - `BRepFilletAPI_MakeFillet::IsDeleted()`
     pub fn BRepFilletAPI_MakeFillet_is_deleted(
         self_: *mut BRepFilletAPI_MakeFillet,
         F: *const TopoDS_Shape,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:344 - `BRepFilletAPI_MakeFillet::NbSurfaces()`
+    /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:329 - `BRepFilletAPI_MakeFillet::NbSurfaces()`
     pub fn BRepFilletAPI_MakeFillet_nb_surfaces(
         self_: *const BRepFilletAPI_MakeFillet,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:347 - `BRepFilletAPI_MakeFillet::NewFaces()`
+    /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:332 - `BRepFilletAPI_MakeFillet::NewFaces()`
     pub fn BRepFilletAPI_MakeFillet_new_faces(
         self_: *mut BRepFilletAPI_MakeFillet,
         I: i32,
-    ) -> crate::OcctResult<*const TopTools_ListOfShape>;
-    /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:349 - `BRepFilletAPI_MakeFillet::Simulate()`
+    ) -> crate::OcctResult<*const NCollection_List_TopoDS_Shape>;
+    /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:334 - `BRepFilletAPI_MakeFillet::Simulate()`
     pub fn BRepFilletAPI_MakeFillet_simulate(
         self_: *mut BRepFilletAPI_MakeFillet,
         IC: i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:351 - `BRepFilletAPI_MakeFillet::NbSurf()`
+    /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:336 - `BRepFilletAPI_MakeFillet::NbSurf()`
     pub fn BRepFilletAPI_MakeFillet_nb_surf(
         self_: *const BRepFilletAPI_MakeFillet,
         IC: i32,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:353 - `BRepFilletAPI_MakeFillet::Sect()`
+    /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:338 - `BRepFilletAPI_MakeFillet::Sect()`
     pub fn BRepFilletAPI_MakeFillet_sect(
         self_: *const BRepFilletAPI_MakeFillet,
         IC: i32,
         IS: i32,
-    ) -> crate::OcctResult<*mut HandleChFiDSSecHArray1>;
-    /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:358 - `BRepFilletAPI_MakeFillet::NbFaultyContours()`
+    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_ChFiDS_CircSection>;
+    /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:344 - `BRepFilletAPI_MakeFillet::NbFaultyContours()`
     pub fn BRepFilletAPI_MakeFillet_nb_faulty_contours(
         self_: *const BRepFilletAPI_MakeFillet,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:364 - `BRepFilletAPI_MakeFillet::FaultyContour()`
+    /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:350 - `BRepFilletAPI_MakeFillet::FaultyContour()`
     pub fn BRepFilletAPI_MakeFillet_faulty_contour(
         self_: *const BRepFilletAPI_MakeFillet,
         I: i32,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:368 - `BRepFilletAPI_MakeFillet::NbComputedSurfaces()`
+    /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:354 - `BRepFilletAPI_MakeFillet::NbComputedSurfaces()`
     pub fn BRepFilletAPI_MakeFillet_nb_computed_surfaces(
         self_: *const BRepFilletAPI_MakeFillet,
         IC: i32,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:371 - `BRepFilletAPI_MakeFillet::ComputedSurface()`
+    /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:357 - `BRepFilletAPI_MakeFillet::ComputedSurface()`
     pub fn BRepFilletAPI_MakeFillet_computed_surface(
         self_: *const BRepFilletAPI_MakeFillet,
         IC: i32,
         IS: i32,
-    ) -> crate::OcctResult<*mut HandleGeomSurface>;
-    /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:375 - `BRepFilletAPI_MakeFillet::NbFaultyVertices()`
+    ) -> crate::OcctResult<*mut Handle_Geom_Surface>;
+    /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:360 - `BRepFilletAPI_MakeFillet::NbFaultyVertices()`
     pub fn BRepFilletAPI_MakeFillet_nb_faulty_vertices(
         self_: *const BRepFilletAPI_MakeFillet,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:378 - `BRepFilletAPI_MakeFillet::FaultyVertex()`
+    /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:363 - `BRepFilletAPI_MakeFillet::FaultyVertex()`
     pub fn BRepFilletAPI_MakeFillet_faulty_vertex(
         self_: *const BRepFilletAPI_MakeFillet,
         IV: i32,
     ) -> crate::OcctResult<*mut TopoDS_Vertex>;
-    /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:382 - `BRepFilletAPI_MakeFillet::HasResult()`
+    /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:367 - `BRepFilletAPI_MakeFillet::HasResult()`
     pub fn BRepFilletAPI_MakeFillet_has_result(
         self_: *const BRepFilletAPI_MakeFillet,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:385 - `BRepFilletAPI_MakeFillet::BadShape()`
+    /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:370 - `BRepFilletAPI_MakeFillet::BadShape()`
     pub fn BRepFilletAPI_MakeFillet_bad_shape(
         self_: *const BRepFilletAPI_MakeFillet,
     ) -> crate::OcctResult<*mut TopoDS_Shape>;
-    /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:395 - `BRepFilletAPI_MakeFillet::StripeStatus()`
+    /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:380 - `BRepFilletAPI_MakeFillet::StripeStatus()`
     pub fn BRepFilletAPI_MakeFillet_stripe_status(
         self_: *const BRepFilletAPI_MakeFillet,
         IC: i32,
@@ -4529,41 +4534,41 @@ unsafe extern "C" {
     ) -> *const std::ffi::c_char;
     // ======================== BRepFilletAPI_MakeFillet2d ========================
     pub fn BRepFilletAPI_MakeFillet2d_destructor(self_: *mut BRepFilletAPI_MakeFillet2d);
-    /// **Source:** `BRepFilletAPI_MakeFillet2d.hxx`:67 - `BRepFilletAPI_MakeFillet2d::BRepFilletAPI_MakeFillet2d()`
+    /// **Source:** `BRepFilletAPI_MakeFillet2d.hxx`:68 - `BRepFilletAPI_MakeFillet2d::BRepFilletAPI_MakeFillet2d()`
     pub fn BRepFilletAPI_MakeFillet2d_ctor() -> crate::OcctResult<*mut BRepFilletAPI_MakeFillet2d>;
-    /// **Source:** `BRepFilletAPI_MakeFillet2d.hxx`:78 - `BRepFilletAPI_MakeFillet2d::BRepFilletAPI_MakeFillet2d()`
+    /// **Source:** `BRepFilletAPI_MakeFillet2d.hxx`:79 - `BRepFilletAPI_MakeFillet2d::BRepFilletAPI_MakeFillet2d()`
     pub fn BRepFilletAPI_MakeFillet2d_ctor_face(
         F: *const TopoDS_Face,
     ) -> crate::OcctResult<*mut BRepFilletAPI_MakeFillet2d>;
-    /// **Source:** `BRepFilletAPI_MakeFillet2d.hxx`:88 - `BRepFilletAPI_MakeFillet2d::Init()`
+    /// **Source:** `BRepFilletAPI_MakeFillet2d.hxx`:89 - `BRepFilletAPI_MakeFillet2d::Init()`
     pub fn BRepFilletAPI_MakeFillet2d_init_face(
         self_: *mut BRepFilletAPI_MakeFillet2d,
         F: *const TopoDS_Face,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepFilletAPI_MakeFillet2d.hxx`:93 - `BRepFilletAPI_MakeFillet2d::Init()`
+    /// **Source:** `BRepFilletAPI_MakeFillet2d.hxx`:94 - `BRepFilletAPI_MakeFillet2d::Init()`
     pub fn BRepFilletAPI_MakeFillet2d_init_face2(
         self_: *mut BRepFilletAPI_MakeFillet2d,
         RefFace: *const TopoDS_Face,
         ModFace: *const TopoDS_Face,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepFilletAPI_MakeFillet2d.hxx`:113 - `BRepFilletAPI_MakeFillet2d::AddFillet()`
+    /// **Source:** `BRepFilletAPI_MakeFillet2d.hxx`:114 - `BRepFilletAPI_MakeFillet2d::AddFillet()`
     pub fn BRepFilletAPI_MakeFillet2d_add_fillet(
         self_: *mut BRepFilletAPI_MakeFillet2d,
         V: *const TopoDS_Vertex,
         Radius: f64,
     ) -> crate::OcctResult<*mut TopoDS_Edge>;
-    /// **Source:** `BRepFilletAPI_MakeFillet2d.hxx`:130 - `BRepFilletAPI_MakeFillet2d::ModifyFillet()`
+    /// **Source:** `BRepFilletAPI_MakeFillet2d.hxx`:131 - `BRepFilletAPI_MakeFillet2d::ModifyFillet()`
     pub fn BRepFilletAPI_MakeFillet2d_modify_fillet(
         self_: *mut BRepFilletAPI_MakeFillet2d,
         Fillet: *const TopoDS_Edge,
         Radius: f64,
     ) -> crate::OcctResult<*mut TopoDS_Edge>;
-    /// **Source:** `BRepFilletAPI_MakeFillet2d.hxx`:141 - `BRepFilletAPI_MakeFillet2d::RemoveFillet()`
+    /// **Source:** `BRepFilletAPI_MakeFillet2d.hxx`:142 - `BRepFilletAPI_MakeFillet2d::RemoveFillet()`
     pub fn BRepFilletAPI_MakeFillet2d_remove_fillet(
         self_: *mut BRepFilletAPI_MakeFillet2d,
         Fillet: *const TopoDS_Edge,
     ) -> crate::OcctResult<*mut TopoDS_Vertex>;
-    /// **Source:** `BRepFilletAPI_MakeFillet2d.hxx`:153 - `BRepFilletAPI_MakeFillet2d::AddChamfer()`
+    /// **Source:** `BRepFilletAPI_MakeFillet2d.hxx`:154 - `BRepFilletAPI_MakeFillet2d::AddChamfer()`
     pub fn BRepFilletAPI_MakeFillet2d_add_chamfer_edge2_real2(
         self_: *mut BRepFilletAPI_MakeFillet2d,
         E1: *const TopoDS_Edge,
@@ -4571,7 +4576,7 @@ unsafe extern "C" {
         D1: f64,
         D2: f64,
     ) -> crate::OcctResult<*mut TopoDS_Edge>;
-    /// **Source:** `BRepFilletAPI_MakeFillet2d.hxx`:185 - `BRepFilletAPI_MakeFillet2d::AddChamfer()`
+    /// **Source:** `BRepFilletAPI_MakeFillet2d.hxx`:186 - `BRepFilletAPI_MakeFillet2d::AddChamfer()`
     pub fn BRepFilletAPI_MakeFillet2d_add_chamfer_edge_vertex_real2(
         self_: *mut BRepFilletAPI_MakeFillet2d,
         E: *const TopoDS_Edge,
@@ -4579,7 +4584,7 @@ unsafe extern "C" {
         D: f64,
         Ang: f64,
     ) -> crate::OcctResult<*mut TopoDS_Edge>;
-    /// **Source:** `BRepFilletAPI_MakeFillet2d.hxx`:195 - `BRepFilletAPI_MakeFillet2d::ModifyChamfer()`
+    /// **Source:** `BRepFilletAPI_MakeFillet2d.hxx`:196 - `BRepFilletAPI_MakeFillet2d::ModifyChamfer()`
     pub fn BRepFilletAPI_MakeFillet2d_modify_chamfer_edge3_real2(
         self_: *mut BRepFilletAPI_MakeFillet2d,
         Chamfer: *const TopoDS_Edge,
@@ -4588,7 +4593,7 @@ unsafe extern "C" {
         D1: f64,
         D2: f64,
     ) -> crate::OcctResult<*mut TopoDS_Edge>;
-    /// **Source:** `BRepFilletAPI_MakeFillet2d.hxx`:228 - `BRepFilletAPI_MakeFillet2d::ModifyChamfer()`
+    /// **Source:** `BRepFilletAPI_MakeFillet2d.hxx`:229 - `BRepFilletAPI_MakeFillet2d::ModifyChamfer()`
     pub fn BRepFilletAPI_MakeFillet2d_modify_chamfer_edge2_real2(
         self_: *mut BRepFilletAPI_MakeFillet2d,
         Chamfer: *const TopoDS_Edge,
@@ -4596,37 +4601,37 @@ unsafe extern "C" {
         D: f64,
         Ang: f64,
     ) -> crate::OcctResult<*mut TopoDS_Edge>;
-    /// **Source:** `BRepFilletAPI_MakeFillet2d.hxx`:242 - `BRepFilletAPI_MakeFillet2d::RemoveChamfer()`
+    /// **Source:** `BRepFilletAPI_MakeFillet2d.hxx`:243 - `BRepFilletAPI_MakeFillet2d::RemoveChamfer()`
     pub fn BRepFilletAPI_MakeFillet2d_remove_chamfer(
         self_: *mut BRepFilletAPI_MakeFillet2d,
         Chamfer: *const TopoDS_Edge,
     ) -> crate::OcctResult<*mut TopoDS_Vertex>;
-    /// **Source:** `BRepFilletAPI_MakeFillet2d.hxx`:248 - `BRepFilletAPI_MakeFillet2d::IsModified()`
+    /// **Source:** `BRepFilletAPI_MakeFillet2d.hxx`:249 - `BRepFilletAPI_MakeFillet2d::IsModified()`
     pub fn BRepFilletAPI_MakeFillet2d_is_modified(
         self_: *const BRepFilletAPI_MakeFillet2d,
         E: *const TopoDS_Edge,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BRepFilletAPI_MakeFillet2d.hxx`:251 - `BRepFilletAPI_MakeFillet2d::FilletEdges()`
+    /// **Source:** `BRepFilletAPI_MakeFillet2d.hxx`:252 - `BRepFilletAPI_MakeFillet2d::FilletEdges()`
     pub fn BRepFilletAPI_MakeFillet2d_fillet_edges(
         self_: *const BRepFilletAPI_MakeFillet2d,
-    ) -> crate::OcctResult<*const TopTools_SequenceOfShape>;
-    /// **Source:** `BRepFilletAPI_MakeFillet2d.hxx`:254 - `BRepFilletAPI_MakeFillet2d::NbFillet()`
+    ) -> crate::OcctResult<*const NCollection_Sequence_TopoDS_Shape>;
+    /// **Source:** `BRepFilletAPI_MakeFillet2d.hxx`:255 - `BRepFilletAPI_MakeFillet2d::NbFillet()`
     pub fn BRepFilletAPI_MakeFillet2d_nb_fillet(
         self_: *const BRepFilletAPI_MakeFillet2d,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `BRepFilletAPI_MakeFillet2d.hxx`:257 - `BRepFilletAPI_MakeFillet2d::ChamferEdges()`
+    /// **Source:** `BRepFilletAPI_MakeFillet2d.hxx`:258 - `BRepFilletAPI_MakeFillet2d::ChamferEdges()`
     pub fn BRepFilletAPI_MakeFillet2d_chamfer_edges(
         self_: *const BRepFilletAPI_MakeFillet2d,
-    ) -> crate::OcctResult<*const TopTools_SequenceOfShape>;
-    /// **Source:** `BRepFilletAPI_MakeFillet2d.hxx`:260 - `BRepFilletAPI_MakeFillet2d::NbChamfer()`
+    ) -> crate::OcctResult<*const NCollection_Sequence_TopoDS_Shape>;
+    /// **Source:** `BRepFilletAPI_MakeFillet2d.hxx`:261 - `BRepFilletAPI_MakeFillet2d::NbChamfer()`
     pub fn BRepFilletAPI_MakeFillet2d_nb_chamfer(
         self_: *const BRepFilletAPI_MakeFillet2d,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `BRepFilletAPI_MakeFillet2d.hxx`:264 - `BRepFilletAPI_MakeFillet2d::Modified()`
+    /// **Source:** `BRepFilletAPI_MakeFillet2d.hxx`:265 - `BRepFilletAPI_MakeFillet2d::Modified()`
     pub fn BRepFilletAPI_MakeFillet2d_modified(
         self_: *mut BRepFilletAPI_MakeFillet2d,
         S: *const TopoDS_Shape,
-    ) -> crate::OcctResult<*const TopTools_ListOfShape>;
+    ) -> crate::OcctResult<*const NCollection_List_TopoDS_Shape>;
     /// **Source:** `BRepFilletAPI_MakeFillet2d.hxx`:269 - `BRepFilletAPI_MakeFillet2d::NbCurves()`
     pub fn BRepFilletAPI_MakeFillet2d_nb_curves(
         self_: *const BRepFilletAPI_MakeFillet2d,
@@ -4635,7 +4640,7 @@ unsafe extern "C" {
     pub fn BRepFilletAPI_MakeFillet2d_new_edges(
         self_: *mut BRepFilletAPI_MakeFillet2d,
         I: i32,
-    ) -> crate::OcctResult<*const TopTools_ListOfShape>;
+    ) -> crate::OcctResult<*const NCollection_List_TopoDS_Shape>;
     /// **Source:** `BRepFilletAPI_MakeFillet2d.hxx`:274 - `BRepFilletAPI_MakeFillet2d::HasDescendant()`
     pub fn BRepFilletAPI_MakeFillet2d_has_descendant(
         self_: *const BRepFilletAPI_MakeFillet2d,
@@ -4722,72 +4727,72 @@ unsafe extern "C" {
         F: *mut math_Vector,
         D: *mut math_Matrix,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `Blend_AppFunction.hxx`:78 - `Blend_AppFunction::Set()`
+    /// **Source:** `Blend_AppFunction.hxx`:76 - `Blend_AppFunction::Set()`
     pub fn Blend_AppFunction_set_real(
         self_: *mut Blend_AppFunction,
         Param: f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `Blend_AppFunction.hxx`:84 - `Blend_AppFunction::Set()`
+    /// **Source:** `Blend_AppFunction.hxx`:82 - `Blend_AppFunction::Set()`
     pub fn Blend_AppFunction_set_real2(
         self_: *mut Blend_AppFunction,
         First: f64,
         Last: f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `Blend_AppFunction.hxx`:89 - `Blend_AppFunction::GetTolerance()`
+    /// **Source:** `Blend_AppFunction.hxx`:87 - `Blend_AppFunction::GetTolerance()`
     pub fn Blend_AppFunction_get_tolerance_vector_real(
         self_: *const Blend_AppFunction,
         Tolerance: *mut math_Vector,
         Tol: f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `Blend_AppFunction.hxx`:96 - `Blend_AppFunction::GetBounds()`
+    /// **Source:** `Blend_AppFunction.hxx`:93 - `Blend_AppFunction::GetBounds()`
     pub fn Blend_AppFunction_get_bounds(
         self_: *const Blend_AppFunction,
         InfBound: *mut math_Vector,
         SupBound: *mut math_Vector,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `Blend_AppFunction.hxx`:102 - `Blend_AppFunction::IsSolution()`
+    /// **Source:** `Blend_AppFunction.hxx`:99 - `Blend_AppFunction::IsSolution()`
     pub fn Blend_AppFunction_is_solution(
         self_: *mut Blend_AppFunction,
         Sol: *const math_Vector,
         Tol: f64,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `Blend_AppFunction.hxx`:107 - `Blend_AppFunction::GetMinimalDistance()`
+    /// **Source:** `Blend_AppFunction.hxx`:103 - `Blend_AppFunction::GetMinimalDistance()`
     pub fn Blend_AppFunction_get_minimal_distance(
         self_: *const Blend_AppFunction,
     ) -> crate::OcctResult<f64>;
-    /// **Source:** `Blend_AppFunction.hxx`:110 - `Blend_AppFunction::Pnt1()`
+    /// **Source:** `Blend_AppFunction.hxx`:106 - `Blend_AppFunction::Pnt1()`
     pub fn Blend_AppFunction_pnt1(
         self_: *const Blend_AppFunction,
     ) -> crate::OcctResult<*const gp_Pnt>;
-    /// **Source:** `Blend_AppFunction.hxx`:113 - `Blend_AppFunction::Pnt2()`
+    /// **Source:** `Blend_AppFunction.hxx`:109 - `Blend_AppFunction::Pnt2()`
     pub fn Blend_AppFunction_pnt2(
         self_: *const Blend_AppFunction,
     ) -> crate::OcctResult<*const gp_Pnt>;
-    /// **Source:** `Blend_AppFunction.hxx`:116 - `Blend_AppFunction::IsRational()`
+    /// **Source:** `Blend_AppFunction.hxx`:112 - `Blend_AppFunction::IsRational()`
     pub fn Blend_AppFunction_is_rational(
         self_: *const Blend_AppFunction,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `Blend_AppFunction.hxx`:119 - `Blend_AppFunction::GetSectionSize()`
+    /// **Source:** `Blend_AppFunction.hxx`:115 - `Blend_AppFunction::GetSectionSize()`
     pub fn Blend_AppFunction_get_section_size(
         self_: *const Blend_AppFunction,
     ) -> crate::OcctResult<f64>;
-    /// **Source:** `Blend_AppFunction.hxx`:123 - `Blend_AppFunction::GetMinimalWeight()`
+    /// **Source:** `Blend_AppFunction.hxx`:119 - `Blend_AppFunction::GetMinimalWeight()`
     pub fn Blend_AppFunction_get_minimal_weight(
         self_: *const Blend_AppFunction,
-        Weigths: *mut TColStd_Array1OfReal,
+        Weigths: *mut NCollection_Array1_double,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `Blend_AppFunction.hxx`:127 - `Blend_AppFunction::NbIntervals()`
+    /// **Source:** `Blend_AppFunction.hxx`:123 - `Blend_AppFunction::NbIntervals()`
     pub fn Blend_AppFunction_nb_intervals(
         self_: *const Blend_AppFunction,
         S: i32,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `Blend_AppFunction.hxx`:136 - `Blend_AppFunction::Intervals()`
+    /// **Source:** `Blend_AppFunction.hxx`:132 - `Blend_AppFunction::Intervals()`
     pub fn Blend_AppFunction_intervals(
         self_: *const Blend_AppFunction,
-        T: *mut TColStd_Array1OfReal,
+        T: *mut NCollection_Array1_double,
         S: i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `Blend_AppFunction.hxx`:138 - `Blend_AppFunction::GetShape()`
+    /// **Source:** `Blend_AppFunction.hxx`:135 - `Blend_AppFunction::GetShape()`
     pub fn Blend_AppFunction_get_shape(
         self_: *mut Blend_AppFunction,
         NbPoles: *mut i32,
@@ -4795,7 +4800,7 @@ unsafe extern "C" {
         Degree: *mut i32,
         NbPoles2d: *mut i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `Blend_AppFunction.hxx`:148 - `Blend_AppFunction::GetTolerance()`
+    /// **Source:** `Blend_AppFunction.hxx`:145 - `Blend_AppFunction::GetTolerance()`
     pub fn Blend_AppFunction_get_tolerance_real3_vector2(
         self_: *const Blend_AppFunction,
         BoundTol: f64,
@@ -4804,50 +4809,50 @@ unsafe extern "C" {
         Tol3d: *mut math_Vector,
         Tol1D: *mut math_Vector,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `Blend_AppFunction.hxx`:154 - `Blend_AppFunction::Knots()`
+    /// **Source:** `Blend_AppFunction.hxx`:151 - `Blend_AppFunction::Knots()`
     pub fn Blend_AppFunction_knots(
         self_: *mut Blend_AppFunction,
-        TKnots: *mut TColStd_Array1OfReal,
+        TKnots: *mut NCollection_Array1_double,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `Blend_AppFunction.hxx`:156 - `Blend_AppFunction::Mults()`
+    /// **Source:** `Blend_AppFunction.hxx`:153 - `Blend_AppFunction::Mults()`
     pub fn Blend_AppFunction_mults(
         self_: *mut Blend_AppFunction,
-        TMults: *mut TColStd_Array1OfInteger,
+        TMults: *mut NCollection_Array1_int,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `Blend_AppFunction.hxx`:161 - `Blend_AppFunction::Section()`
-    pub fn Blend_AppFunction_section_point_array1ofpnt_array1ofvec_array1ofpnt2d_array1ofvec2d_array1ofreal2(
+    /// **Source:** `Blend_AppFunction.hxx`:158 - `Blend_AppFunction::Section()`
+    pub fn Blend_AppFunction_section_point_arr1_pnt_arr1_vec_arr1_pnt2d_arr1_vec2d_arr1_double2(
         self_: *mut Blend_AppFunction,
         P: *const Blend_Point,
-        Poles: *mut TColgp_Array1OfPnt,
-        DPoles: *mut TColgp_Array1OfVec,
-        Poles2d: *mut TColgp_Array1OfPnt2d,
-        DPoles2d: *mut TColgp_Array1OfVec2d,
-        Weigths: *mut TColStd_Array1OfReal,
-        DWeigths: *mut TColStd_Array1OfReal,
+        Poles: *mut NCollection_Array1_gp_Pnt,
+        DPoles: *mut NCollection_Array1_gp_Vec,
+        Poles2d: *mut NCollection_Array1_gp_Pnt2d,
+        DPoles2d: *mut NCollection_Array1_gp_Vec2d,
+        Weigths: *mut NCollection_Array1_double,
+        DWeigths: *mut NCollection_Array1_double,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `Blend_AppFunction.hxx`:169 - `Blend_AppFunction::Section()`
-    pub fn Blend_AppFunction_section_point_array1ofpnt_array1ofpnt2d_array1ofreal(
+    /// **Source:** `Blend_AppFunction.hxx`:166 - `Blend_AppFunction::Section()`
+    pub fn Blend_AppFunction_section_point_arr1_pnt_arr1_pnt2d_arr1_double(
         self_: *mut Blend_AppFunction,
         P: *const Blend_Point,
-        Poles: *mut TColgp_Array1OfPnt,
-        Poles2d: *mut TColgp_Array1OfPnt2d,
-        Weigths: *mut TColStd_Array1OfReal,
+        Poles: *mut NCollection_Array1_gp_Pnt,
+        Poles2d: *mut NCollection_Array1_gp_Pnt2d,
+        Weigths: *mut NCollection_Array1_double,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `Blend_AppFunction.hxx`:177 - `Blend_AppFunction::Section()`
-    pub fn Blend_AppFunction_section_point_array1ofpnt_array1ofvec2_array1ofpnt2d_array1ofvec2d2_array1ofreal3(
+    /// **Source:** `Blend_AppFunction.hxx`:174 - `Blend_AppFunction::Section()`
+    pub fn Blend_AppFunction_section_point_arr1_pnt_arr1_vec2_arr1_pnt2d_arr1_vec2d2_arr1_double3(
         self_: *mut Blend_AppFunction,
         P: *const Blend_Point,
-        Poles: *mut TColgp_Array1OfPnt,
-        DPoles: *mut TColgp_Array1OfVec,
-        D2Poles: *mut TColgp_Array1OfVec,
-        Poles2d: *mut TColgp_Array1OfPnt2d,
-        DPoles2d: *mut TColgp_Array1OfVec2d,
-        D2Poles2d: *mut TColgp_Array1OfVec2d,
-        Weigths: *mut TColStd_Array1OfReal,
-        DWeigths: *mut TColStd_Array1OfReal,
-        D2Weigths: *mut TColStd_Array1OfReal,
+        Poles: *mut NCollection_Array1_gp_Pnt,
+        DPoles: *mut NCollection_Array1_gp_Vec,
+        D2Poles: *mut NCollection_Array1_gp_Vec,
+        Poles2d: *mut NCollection_Array1_gp_Pnt2d,
+        DPoles2d: *mut NCollection_Array1_gp_Vec2d,
+        D2Poles2d: *mut NCollection_Array1_gp_Vec2d,
+        Weigths: *mut NCollection_Array1_double,
+        DWeigths: *mut NCollection_Array1_double,
+        D2Weigths: *mut NCollection_Array1_double,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `Blend_AppFunction.hxx`:188 - `Blend_AppFunction::Resolution()`
+    /// **Source:** `Blend_AppFunction.hxx`:185 - `Blend_AppFunction::Resolution()`
     pub fn Blend_AppFunction_resolution(
         self_: *const Blend_AppFunction,
         IC2d: i32,
@@ -4855,7 +4860,7 @@ unsafe extern "C" {
         TolU: *mut f64,
         TolV: *mut f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `Blend_AppFunction.hxx`:195 - `Blend_AppFunction::Parameter()`
+    /// **Source:** `Blend_AppFunction.hxx`:192 - `Blend_AppFunction::Parameter()`
     pub fn Blend_AppFunction_parameter(
         self_: *const Blend_AppFunction,
         P: *const Blend_Point,
@@ -4892,93 +4897,93 @@ unsafe extern "C" {
         X: *const math_Vector,
         F: *mut math_Vector,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `Blend_CSFunction.hxx`:68 - `Blend_CSFunction::Derivatives()`
+    /// **Source:** `Blend_CSFunction.hxx`:67 - `Blend_CSFunction::Derivatives()`
     pub fn Blend_CSFunction_derivatives(
         self_: *mut Blend_CSFunction,
         X: *const math_Vector,
         D: *mut math_Matrix,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `Blend_CSFunction.hxx`:75 - `Blend_CSFunction::Values()`
+    /// **Source:** `Blend_CSFunction.hxx`:73 - `Blend_CSFunction::Values()`
     pub fn Blend_CSFunction_values(
         self_: *mut Blend_CSFunction,
         X: *const math_Vector,
         F: *mut math_Vector,
         D: *mut math_Matrix,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `Blend_CSFunction.hxx`:82 - `Blend_CSFunction::Set()`
+    /// **Source:** `Blend_CSFunction.hxx`:78 - `Blend_CSFunction::Set()`
     pub fn Blend_CSFunction_set_real(
         self_: *mut Blend_CSFunction,
         Param: f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `Blend_CSFunction.hxx`:88 - `Blend_CSFunction::Set()`
+    /// **Source:** `Blend_CSFunction.hxx`:84 - `Blend_CSFunction::Set()`
     pub fn Blend_CSFunction_set_real2(
         self_: *mut Blend_CSFunction,
         First: f64,
         Last: f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `Blend_CSFunction.hxx`:94 - `Blend_CSFunction::GetTolerance()`
+    /// **Source:** `Blend_CSFunction.hxx`:89 - `Blend_CSFunction::GetTolerance()`
     pub fn Blend_CSFunction_get_tolerance_vector_real(
         self_: *const Blend_CSFunction,
         Tolerance: *mut math_Vector,
         Tol: f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `Blend_CSFunction.hxx`:101 - `Blend_CSFunction::GetBounds()`
+    /// **Source:** `Blend_CSFunction.hxx`:95 - `Blend_CSFunction::GetBounds()`
     pub fn Blend_CSFunction_get_bounds(
         self_: *const Blend_CSFunction,
         InfBound: *mut math_Vector,
         SupBound: *mut math_Vector,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `Blend_CSFunction.hxx`:108 - `Blend_CSFunction::IsSolution()`
+    /// **Source:** `Blend_CSFunction.hxx`:101 - `Blend_CSFunction::IsSolution()`
     pub fn Blend_CSFunction_is_solution(
         self_: *mut Blend_CSFunction,
         Sol: *const math_Vector,
         Tol: f64,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `Blend_CSFunction.hxx`:114 - `Blend_CSFunction::GetMinimalDistance()`
+    /// **Source:** `Blend_CSFunction.hxx`:105 - `Blend_CSFunction::GetMinimalDistance()`
     pub fn Blend_CSFunction_get_minimal_distance(
         self_: *const Blend_CSFunction,
     ) -> crate::OcctResult<f64>;
-    /// **Source:** `Blend_CSFunction.hxx`:117 - `Blend_CSFunction::Pnt1()`
+    /// **Source:** `Blend_CSFunction.hxx`:108 - `Blend_CSFunction::Pnt1()`
     pub fn Blend_CSFunction_pnt1(
         self_: *const Blend_CSFunction,
     ) -> crate::OcctResult<*const gp_Pnt>;
-    /// **Source:** `Blend_CSFunction.hxx`:120 - `Blend_CSFunction::Pnt2()`
+    /// **Source:** `Blend_CSFunction.hxx`:111 - `Blend_CSFunction::Pnt2()`
     pub fn Blend_CSFunction_pnt2(
         self_: *const Blend_CSFunction,
     ) -> crate::OcctResult<*const gp_Pnt>;
-    /// **Source:** `Blend_CSFunction.hxx`:123 - `Blend_CSFunction::PointOnS()`
+    /// **Source:** `Blend_CSFunction.hxx`:114 - `Blend_CSFunction::PointOnS()`
     pub fn Blend_CSFunction_point_on_s(
         self_: *const Blend_CSFunction,
     ) -> crate::OcctResult<*const gp_Pnt>;
-    /// **Source:** `Blend_CSFunction.hxx`:126 - `Blend_CSFunction::PointOnC()`
+    /// **Source:** `Blend_CSFunction.hxx`:117 - `Blend_CSFunction::PointOnC()`
     pub fn Blend_CSFunction_point_on_c(
         self_: *const Blend_CSFunction,
     ) -> crate::OcctResult<*const gp_Pnt>;
-    /// **Source:** `Blend_CSFunction.hxx`:129 - `Blend_CSFunction::Pnt2d()`
+    /// **Source:** `Blend_CSFunction.hxx`:120 - `Blend_CSFunction::Pnt2d()`
     pub fn Blend_CSFunction_pnt2d(
         self_: *const Blend_CSFunction,
     ) -> crate::OcctResult<*const gp_Pnt2d>;
-    /// **Source:** `Blend_CSFunction.hxx`:132 - `Blend_CSFunction::ParameterOnC()`
+    /// **Source:** `Blend_CSFunction.hxx`:123 - `Blend_CSFunction::ParameterOnC()`
     pub fn Blend_CSFunction_parameter_on_c(
         self_: *const Blend_CSFunction,
     ) -> crate::OcctResult<f64>;
-    /// **Source:** `Blend_CSFunction.hxx`:136 - `Blend_CSFunction::IsTangencyPoint()`
+    /// **Source:** `Blend_CSFunction.hxx`:127 - `Blend_CSFunction::IsTangencyPoint()`
     pub fn Blend_CSFunction_is_tangency_point(
         self_: *const Blend_CSFunction,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `Blend_CSFunction.hxx`:139 - `Blend_CSFunction::TangentOnS()`
+    /// **Source:** `Blend_CSFunction.hxx`:130 - `Blend_CSFunction::TangentOnS()`
     pub fn Blend_CSFunction_tangent_on_s(
         self_: *const Blend_CSFunction,
     ) -> crate::OcctResult<*const gp_Vec>;
-    /// **Source:** `Blend_CSFunction.hxx`:143 - `Blend_CSFunction::Tangent2d()`
+    /// **Source:** `Blend_CSFunction.hxx`:134 - `Blend_CSFunction::Tangent2d()`
     pub fn Blend_CSFunction_tangent2d(
         self_: *const Blend_CSFunction,
     ) -> crate::OcctResult<*const gp_Vec2d>;
-    /// **Source:** `Blend_CSFunction.hxx`:146 - `Blend_CSFunction::TangentOnC()`
+    /// **Source:** `Blend_CSFunction.hxx`:137 - `Blend_CSFunction::TangentOnC()`
     pub fn Blend_CSFunction_tangent_on_c(
         self_: *const Blend_CSFunction,
     ) -> crate::OcctResult<*const gp_Vec>;
-    /// **Source:** `Blend_CSFunction.hxx`:152 - `Blend_CSFunction::Tangent()`
+    /// **Source:** `Blend_CSFunction.hxx`:143 - `Blend_CSFunction::Tangent()`
     pub fn Blend_CSFunction_tangent(
         self_: *const Blend_CSFunction,
         U: f64,
@@ -4986,7 +4991,7 @@ unsafe extern "C" {
         TgS: *mut gp_Vec,
         NormS: *mut gp_Vec,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `Blend_CSFunction.hxx`:157 - `Blend_CSFunction::GetShape()`
+    /// **Source:** `Blend_CSFunction.hxx`:148 - `Blend_CSFunction::GetShape()`
     pub fn Blend_CSFunction_get_shape(
         self_: *mut Blend_CSFunction,
         NbPoles: *mut i32,
@@ -4994,7 +4999,7 @@ unsafe extern "C" {
         Degree: *mut i32,
         NbPoles2d: *mut i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `Blend_CSFunction.hxx`:167 - `Blend_CSFunction::GetTolerance()`
+    /// **Source:** `Blend_CSFunction.hxx`:158 - `Blend_CSFunction::GetTolerance()`
     pub fn Blend_CSFunction_get_tolerance_real3_vector2(
         self_: *const Blend_CSFunction,
         BoundTol: f64,
@@ -5003,48 +5008,48 @@ unsafe extern "C" {
         Tol3d: *mut math_Vector,
         Tol1D: *mut math_Vector,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `Blend_CSFunction.hxx`:173 - `Blend_CSFunction::Knots()`
+    /// **Source:** `Blend_CSFunction.hxx`:164 - `Blend_CSFunction::Knots()`
     pub fn Blend_CSFunction_knots(
         self_: *mut Blend_CSFunction,
-        TKnots: *mut TColStd_Array1OfReal,
+        TKnots: *mut NCollection_Array1_double,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `Blend_CSFunction.hxx`:175 - `Blend_CSFunction::Mults()`
+    /// **Source:** `Blend_CSFunction.hxx`:166 - `Blend_CSFunction::Mults()`
     pub fn Blend_CSFunction_mults(
         self_: *mut Blend_CSFunction,
-        TMults: *mut TColStd_Array1OfInteger,
+        TMults: *mut NCollection_Array1_int,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `Blend_CSFunction.hxx`:180 - `Blend_CSFunction::Section()`
-    pub fn Blend_CSFunction_section_point_array1ofpnt_array1ofvec_array1ofpnt2d_array1ofvec2d_array1ofreal2(
+    /// **Source:** `Blend_CSFunction.hxx`:171 - `Blend_CSFunction::Section()`
+    pub fn Blend_CSFunction_section_point_arr1_pnt_arr1_vec_arr1_pnt2d_arr1_vec2d_arr1_double2(
         self_: *mut Blend_CSFunction,
         P: *const Blend_Point,
-        Poles: *mut TColgp_Array1OfPnt,
-        DPoles: *mut TColgp_Array1OfVec,
-        Poles2d: *mut TColgp_Array1OfPnt2d,
-        DPoles2d: *mut TColgp_Array1OfVec2d,
-        Weigths: *mut TColStd_Array1OfReal,
-        DWeigths: *mut TColStd_Array1OfReal,
+        Poles: *mut NCollection_Array1_gp_Pnt,
+        DPoles: *mut NCollection_Array1_gp_Vec,
+        Poles2d: *mut NCollection_Array1_gp_Pnt2d,
+        DPoles2d: *mut NCollection_Array1_gp_Vec2d,
+        Weigths: *mut NCollection_Array1_double,
+        DWeigths: *mut NCollection_Array1_double,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `Blend_CSFunction.hxx`:189 - `Blend_CSFunction::Section()`
-    pub fn Blend_CSFunction_section_point_array1ofpnt_array1ofpnt2d_array1ofreal(
+    /// **Source:** `Blend_CSFunction.hxx`:179 - `Blend_CSFunction::Section()`
+    pub fn Blend_CSFunction_section_point_arr1_pnt_arr1_pnt2d_arr1_double(
         self_: *mut Blend_CSFunction,
         P: *const Blend_Point,
-        Poles: *mut TColgp_Array1OfPnt,
-        Poles2d: *mut TColgp_Array1OfPnt2d,
-        Weigths: *mut TColStd_Array1OfReal,
+        Poles: *mut NCollection_Array1_gp_Pnt,
+        Poles2d: *mut NCollection_Array1_gp_Pnt2d,
+        Weigths: *mut NCollection_Array1_double,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `Blend_CSFunction.hxx`:197 - `Blend_CSFunction::Section()`
-    pub fn Blend_CSFunction_section_point_array1ofpnt_array1ofvec2_array1ofpnt2d_array1ofvec2d2_array1ofreal3(
+    /// **Source:** `Blend_CSFunction.hxx`:187 - `Blend_CSFunction::Section()`
+    pub fn Blend_CSFunction_section_point_arr1_pnt_arr1_vec2_arr1_pnt2d_arr1_vec2d2_arr1_double3(
         self_: *mut Blend_CSFunction,
         P: *const Blend_Point,
-        Poles: *mut TColgp_Array1OfPnt,
-        DPoles: *mut TColgp_Array1OfVec,
-        D2Poles: *mut TColgp_Array1OfVec,
-        Poles2d: *mut TColgp_Array1OfPnt2d,
-        DPoles2d: *mut TColgp_Array1OfVec2d,
-        D2Poles2d: *mut TColgp_Array1OfVec2d,
-        Weigths: *mut TColStd_Array1OfReal,
-        DWeigths: *mut TColStd_Array1OfReal,
-        D2Weigths: *mut TColStd_Array1OfReal,
+        Poles: *mut NCollection_Array1_gp_Pnt,
+        DPoles: *mut NCollection_Array1_gp_Vec,
+        D2Poles: *mut NCollection_Array1_gp_Vec,
+        Poles2d: *mut NCollection_Array1_gp_Pnt2d,
+        DPoles2d: *mut NCollection_Array1_gp_Vec2d,
+        D2Poles2d: *mut NCollection_Array1_gp_Vec2d,
+        Weigths: *mut NCollection_Array1_double,
+        DWeigths: *mut NCollection_Array1_double,
+        D2Weigths: *mut NCollection_Array1_double,
     ) -> crate::OcctResult<bool>;
     /// Upcast Blend_CSFunction to Blend_AppFunction
     pub fn Blend_CSFunction_as_Blend_AppFunction(
@@ -5070,31 +5075,31 @@ unsafe extern "C" {
     pub fn Blend_CSFunction_as_math_FunctionSet_mut(
         self_: *mut Blend_CSFunction,
     ) -> crate::OcctResult<*mut math_FunctionSet>;
-    /// Inherited: **Source:** `Blend_AppFunction.hxx`:116 - `Blend_AppFunction::IsRational()`
+    /// Inherited: **Source:** `Blend_AppFunction.hxx`:112 - `Blend_AppFunction::IsRational()`
     pub fn Blend_CSFunction_inherited_IsRational(
         self_: *const Blend_CSFunction,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Blend_AppFunction.hxx`:119 - `Blend_AppFunction::GetSectionSize()`
+    /// Inherited: **Source:** `Blend_AppFunction.hxx`:115 - `Blend_AppFunction::GetSectionSize()`
     pub fn Blend_CSFunction_inherited_GetSectionSize(
         self_: *const Blend_CSFunction,
     ) -> crate::OcctResult<f64>;
-    /// Inherited: **Source:** `Blend_AppFunction.hxx`:123 - `Blend_AppFunction::GetMinimalWeight()`
+    /// Inherited: **Source:** `Blend_AppFunction.hxx`:119 - `Blend_AppFunction::GetMinimalWeight()`
     pub fn Blend_CSFunction_inherited_GetMinimalWeight(
         self_: *const Blend_CSFunction,
-        Weigths: *mut TColStd_Array1OfReal,
+        Weigths: *mut NCollection_Array1_double,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Blend_AppFunction.hxx`:127 - `Blend_AppFunction::NbIntervals()`
+    /// Inherited: **Source:** `Blend_AppFunction.hxx`:123 - `Blend_AppFunction::NbIntervals()`
     pub fn Blend_CSFunction_inherited_NbIntervals(
         self_: *const Blend_CSFunction,
         S: i32,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Blend_AppFunction.hxx`:136 - `Blend_AppFunction::Intervals()`
+    /// Inherited: **Source:** `Blend_AppFunction.hxx`:132 - `Blend_AppFunction::Intervals()`
     pub fn Blend_CSFunction_inherited_Intervals(
         self_: *const Blend_CSFunction,
-        T: *mut TColStd_Array1OfReal,
+        T: *mut NCollection_Array1_double,
         S: i32,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Blend_AppFunction.hxx`:188 - `Blend_AppFunction::Resolution()`
+    /// Inherited: **Source:** `Blend_AppFunction.hxx`:185 - `Blend_AppFunction::Resolution()`
     pub fn Blend_CSFunction_inherited_Resolution(
         self_: *const Blend_CSFunction,
         IC2d: i32,
@@ -5102,7 +5107,7 @@ unsafe extern "C" {
         TolU: *mut f64,
         TolV: *mut f64,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Blend_AppFunction.hxx`:195 - `Blend_AppFunction::Parameter()`
+    /// Inherited: **Source:** `Blend_AppFunction.hxx`:192 - `Blend_AppFunction::Parameter()`
     pub fn Blend_CSFunction_inherited_Parameter(
         self_: *const Blend_CSFunction,
         P: *const Blend_Point,
@@ -5140,24 +5145,24 @@ unsafe extern "C" {
         F: *mut math_Vector,
         D: *mut math_Matrix,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `Blend_CurvPointFuncInv.hxx`:71 - `Blend_CurvPointFuncInv::Set()`
+    /// **Source:** `Blend_CurvPointFuncInv.hxx`:69 - `Blend_CurvPointFuncInv::Set()`
     pub fn Blend_CurvPointFuncInv_set(
         self_: *mut Blend_CurvPointFuncInv,
         P: *const gp_Pnt,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `Blend_CurvPointFuncInv.hxx`:76 - `Blend_CurvPointFuncInv::GetTolerance()`
+    /// **Source:** `Blend_CurvPointFuncInv.hxx`:74 - `Blend_CurvPointFuncInv::GetTolerance()`
     pub fn Blend_CurvPointFuncInv_get_tolerance(
         self_: *const Blend_CurvPointFuncInv,
         Tolerance: *mut math_Vector,
         Tol: f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `Blend_CurvPointFuncInv.hxx`:83 - `Blend_CurvPointFuncInv::GetBounds()`
+    /// **Source:** `Blend_CurvPointFuncInv.hxx`:80 - `Blend_CurvPointFuncInv::GetBounds()`
     pub fn Blend_CurvPointFuncInv_get_bounds(
         self_: *const Blend_CurvPointFuncInv,
         InfBound: *mut math_Vector,
         SupBound: *mut math_Vector,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `Blend_CurvPointFuncInv.hxx`:87 - `Blend_CurvPointFuncInv::IsSolution()`
+    /// **Source:** `Blend_CurvPointFuncInv.hxx`:84 - `Blend_CurvPointFuncInv::IsSolution()`
     pub fn Blend_CurvPointFuncInv_is_solution(
         self_: *mut Blend_CurvPointFuncInv,
         Sol: *const math_Vector,
@@ -5208,25 +5213,25 @@ unsafe extern "C" {
         F: *mut math_Vector,
         D: *mut math_Matrix,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `Blend_FuncInv.hxx`:77 - `Blend_FuncInv::Set()`
+    /// **Source:** `Blend_FuncInv.hxx`:75 - `Blend_FuncInv::Set()`
     pub fn Blend_FuncInv_set(
         self_: *mut Blend_FuncInv,
         OnFirst: bool,
-        COnSurf: *const HandleAdaptor2dCurve2d,
+        COnSurf: *const Handle_Adaptor2d_Curve2d,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `Blend_FuncInv.hxx`:83 - `Blend_FuncInv::GetTolerance()`
+    /// **Source:** `Blend_FuncInv.hxx`:81 - `Blend_FuncInv::GetTolerance()`
     pub fn Blend_FuncInv_get_tolerance(
         self_: *const Blend_FuncInv,
         Tolerance: *mut math_Vector,
         Tol: f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `Blend_FuncInv.hxx`:90 - `Blend_FuncInv::GetBounds()`
+    /// **Source:** `Blend_FuncInv.hxx`:87 - `Blend_FuncInv::GetBounds()`
     pub fn Blend_FuncInv_get_bounds(
         self_: *const Blend_FuncInv,
         InfBound: *mut math_Vector,
         SupBound: *mut math_Vector,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `Blend_FuncInv.hxx`:94 - `Blend_FuncInv::IsSolution()`
+    /// **Source:** `Blend_FuncInv.hxx`:91 - `Blend_FuncInv::IsSolution()`
     pub fn Blend_FuncInv_is_solution(
         self_: *mut Blend_FuncInv,
         Sol: *const math_Vector,
@@ -5305,26 +5310,26 @@ unsafe extern "C" {
     /// **Source:** `Blend_Function.hxx`:99 - `Blend_Function::TwistOnS2()`
     pub fn Blend_Function_twist_on_s2(self_: *const Blend_Function) -> crate::OcctResult<bool>;
     /// **Source:** `Blend_Function.hxx`:101 - `Blend_Function::Section()`
-    pub fn Blend_Function_section_point_array1ofpnt_array1ofpnt2d_array1ofreal(
+    pub fn Blend_Function_section_point_arr1_pnt_arr1_pnt2d_arr1_double(
         self_: *mut Blend_Function,
         P: *const Blend_Point,
-        Poles: *mut TColgp_Array1OfPnt,
-        Poles2d: *mut TColgp_Array1OfPnt2d,
-        Weigths: *mut TColStd_Array1OfReal,
+        Poles: *mut NCollection_Array1_gp_Pnt,
+        Poles2d: *mut NCollection_Array1_gp_Pnt2d,
+        Weigths: *mut NCollection_Array1_double,
     ) -> *const std::ffi::c_char;
     /// **Source:** `Blend_Function.hxx`:109 - `Blend_Function::Section()`
-    pub fn Blend_Function_section_point_array1ofpnt_array1ofvec2_array1ofpnt2d_array1ofvec2d2_array1ofreal3(
+    pub fn Blend_Function_section_point_arr1_pnt_arr1_vec2_arr1_pnt2d_arr1_vec2d2_arr1_double3(
         self_: *mut Blend_Function,
         P: *const Blend_Point,
-        Poles: *mut TColgp_Array1OfPnt,
-        DPoles: *mut TColgp_Array1OfVec,
-        D2Poles: *mut TColgp_Array1OfVec,
-        Poles2d: *mut TColgp_Array1OfPnt2d,
-        DPoles2d: *mut TColgp_Array1OfVec2d,
-        D2Poles2d: *mut TColgp_Array1OfVec2d,
-        Weigths: *mut TColStd_Array1OfReal,
-        DWeigths: *mut TColStd_Array1OfReal,
-        D2Weigths: *mut TColStd_Array1OfReal,
+        Poles: *mut NCollection_Array1_gp_Pnt,
+        DPoles: *mut NCollection_Array1_gp_Vec,
+        D2Poles: *mut NCollection_Array1_gp_Vec,
+        Poles2d: *mut NCollection_Array1_gp_Pnt2d,
+        DPoles2d: *mut NCollection_Array1_gp_Vec2d,
+        D2Poles2d: *mut NCollection_Array1_gp_Vec2d,
+        Weigths: *mut NCollection_Array1_double,
+        DWeigths: *mut NCollection_Array1_double,
+        D2Weigths: *mut NCollection_Array1_double,
     ) -> crate::OcctResult<bool>;
     /// Upcast Blend_Function to Blend_AppFunction
     pub fn Blend_Function_as_Blend_AppFunction(
@@ -5373,58 +5378,58 @@ unsafe extern "C" {
         F: *mut math_Vector,
         D: *mut math_Matrix,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Blend_AppFunction.hxx`:78 - `Blend_AppFunction::Set()`
+    /// Inherited: **Source:** `Blend_AppFunction.hxx`:76 - `Blend_AppFunction::Set()`
     pub fn Blend_Function_inherited_Set(
         self_: *mut Blend_Function,
         Param: f64,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Blend_AppFunction.hxx`:89 - `Blend_AppFunction::GetTolerance()`
+    /// Inherited: **Source:** `Blend_AppFunction.hxx`:87 - `Blend_AppFunction::GetTolerance()`
     pub fn Blend_Function_inherited_GetTolerance(
         self_: *const Blend_Function,
         Tolerance: *mut math_Vector,
         Tol: f64,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Blend_AppFunction.hxx`:96 - `Blend_AppFunction::GetBounds()`
+    /// Inherited: **Source:** `Blend_AppFunction.hxx`:93 - `Blend_AppFunction::GetBounds()`
     pub fn Blend_Function_inherited_GetBounds(
         self_: *const Blend_Function,
         InfBound: *mut math_Vector,
         SupBound: *mut math_Vector,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Blend_AppFunction.hxx`:102 - `Blend_AppFunction::IsSolution()`
+    /// Inherited: **Source:** `Blend_AppFunction.hxx`:99 - `Blend_AppFunction::IsSolution()`
     pub fn Blend_Function_inherited_IsSolution(
         self_: *mut Blend_Function,
         Sol: *const math_Vector,
         Tol: f64,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Blend_AppFunction.hxx`:107 - `Blend_AppFunction::GetMinimalDistance()`
+    /// Inherited: **Source:** `Blend_AppFunction.hxx`:103 - `Blend_AppFunction::GetMinimalDistance()`
     pub fn Blend_Function_inherited_GetMinimalDistance(
         self_: *const Blend_Function,
     ) -> crate::OcctResult<f64>;
-    /// Inherited: **Source:** `Blend_AppFunction.hxx`:116 - `Blend_AppFunction::IsRational()`
+    /// Inherited: **Source:** `Blend_AppFunction.hxx`:112 - `Blend_AppFunction::IsRational()`
     pub fn Blend_Function_inherited_IsRational(
         self_: *const Blend_Function,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Blend_AppFunction.hxx`:119 - `Blend_AppFunction::GetSectionSize()`
+    /// Inherited: **Source:** `Blend_AppFunction.hxx`:115 - `Blend_AppFunction::GetSectionSize()`
     pub fn Blend_Function_inherited_GetSectionSize(
         self_: *const Blend_Function,
     ) -> crate::OcctResult<f64>;
-    /// Inherited: **Source:** `Blend_AppFunction.hxx`:123 - `Blend_AppFunction::GetMinimalWeight()`
+    /// Inherited: **Source:** `Blend_AppFunction.hxx`:119 - `Blend_AppFunction::GetMinimalWeight()`
     pub fn Blend_Function_inherited_GetMinimalWeight(
         self_: *const Blend_Function,
-        Weigths: *mut TColStd_Array1OfReal,
+        Weigths: *mut NCollection_Array1_double,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Blend_AppFunction.hxx`:127 - `Blend_AppFunction::NbIntervals()`
+    /// Inherited: **Source:** `Blend_AppFunction.hxx`:123 - `Blend_AppFunction::NbIntervals()`
     pub fn Blend_Function_inherited_NbIntervals(
         self_: *const Blend_Function,
         S: i32,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Blend_AppFunction.hxx`:136 - `Blend_AppFunction::Intervals()`
+    /// Inherited: **Source:** `Blend_AppFunction.hxx`:132 - `Blend_AppFunction::Intervals()`
     pub fn Blend_Function_inherited_Intervals(
         self_: *const Blend_Function,
-        T: *mut TColStd_Array1OfReal,
+        T: *mut NCollection_Array1_double,
         S: i32,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Blend_AppFunction.hxx`:138 - `Blend_AppFunction::GetShape()`
+    /// Inherited: **Source:** `Blend_AppFunction.hxx`:135 - `Blend_AppFunction::GetShape()`
     pub fn Blend_Function_inherited_GetShape(
         self_: *mut Blend_Function,
         NbPoles: *mut i32,
@@ -5432,17 +5437,17 @@ unsafe extern "C" {
         Degree: *mut i32,
         NbPoles2d: *mut i32,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Blend_AppFunction.hxx`:154 - `Blend_AppFunction::Knots()`
+    /// Inherited: **Source:** `Blend_AppFunction.hxx`:151 - `Blend_AppFunction::Knots()`
     pub fn Blend_Function_inherited_Knots(
         self_: *mut Blend_Function,
-        TKnots: *mut TColStd_Array1OfReal,
+        TKnots: *mut NCollection_Array1_double,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Blend_AppFunction.hxx`:156 - `Blend_AppFunction::Mults()`
+    /// Inherited: **Source:** `Blend_AppFunction.hxx`:153 - `Blend_AppFunction::Mults()`
     pub fn Blend_Function_inherited_Mults(
         self_: *mut Blend_Function,
-        TMults: *mut TColStd_Array1OfInteger,
+        TMults: *mut NCollection_Array1_int,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Blend_AppFunction.hxx`:188 - `Blend_AppFunction::Resolution()`
+    /// Inherited: **Source:** `Blend_AppFunction.hxx`:185 - `Blend_AppFunction::Resolution()`
     pub fn Blend_Function_inherited_Resolution(
         self_: *const Blend_Function,
         IC2d: i32,
@@ -5450,7 +5455,7 @@ unsafe extern "C" {
         TolU: *mut f64,
         TolV: *mut f64,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Blend_AppFunction.hxx`:195 - `Blend_AppFunction::Parameter()`
+    /// Inherited: **Source:** `Blend_AppFunction.hxx`:192 - `Blend_AppFunction::Parameter()`
     pub fn Blend_Function_inherited_Parameter(
         self_: *const Blend_Function,
         P: *const Blend_Point,
@@ -5778,92 +5783,92 @@ unsafe extern "C" {
         F: *mut math_Vector,
         D: *mut math_Matrix,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `Blend_RstRstFunction.hxx`:80 - `Blend_RstRstFunction::Set()`
+    /// **Source:** `Blend_RstRstFunction.hxx`:78 - `Blend_RstRstFunction::Set()`
     pub fn Blend_RstRstFunction_set_real(
         self_: *mut Blend_RstRstFunction,
         Param: f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `Blend_RstRstFunction.hxx`:86 - `Blend_RstRstFunction::Set()`
+    /// **Source:** `Blend_RstRstFunction.hxx`:84 - `Blend_RstRstFunction::Set()`
     pub fn Blend_RstRstFunction_set_real2(
         self_: *mut Blend_RstRstFunction,
         First: f64,
         Last: f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `Blend_RstRstFunction.hxx`:91 - `Blend_RstRstFunction::GetTolerance()`
+    /// **Source:** `Blend_RstRstFunction.hxx`:89 - `Blend_RstRstFunction::GetTolerance()`
     pub fn Blend_RstRstFunction_get_tolerance_vector_real(
         self_: *const Blend_RstRstFunction,
         Tolerance: *mut math_Vector,
         Tol: f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `Blend_RstRstFunction.hxx`:98 - `Blend_RstRstFunction::GetBounds()`
+    /// **Source:** `Blend_RstRstFunction.hxx`:95 - `Blend_RstRstFunction::GetBounds()`
     pub fn Blend_RstRstFunction_get_bounds(
         self_: *const Blend_RstRstFunction,
         InfBound: *mut math_Vector,
         SupBound: *mut math_Vector,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `Blend_RstRstFunction.hxx`:104 - `Blend_RstRstFunction::IsSolution()`
+    /// **Source:** `Blend_RstRstFunction.hxx`:101 - `Blend_RstRstFunction::IsSolution()`
     pub fn Blend_RstRstFunction_is_solution(
         self_: *mut Blend_RstRstFunction,
         Sol: *const math_Vector,
         Tol: f64,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `Blend_RstRstFunction.hxx`:109 - `Blend_RstRstFunction::GetMinimalDistance()`
+    /// **Source:** `Blend_RstRstFunction.hxx`:105 - `Blend_RstRstFunction::GetMinimalDistance()`
     pub fn Blend_RstRstFunction_get_minimal_distance(
         self_: *const Blend_RstRstFunction,
     ) -> crate::OcctResult<f64>;
-    /// **Source:** `Blend_RstRstFunction.hxx`:112 - `Blend_RstRstFunction::Pnt1()`
+    /// **Source:** `Blend_RstRstFunction.hxx`:108 - `Blend_RstRstFunction::Pnt1()`
     pub fn Blend_RstRstFunction_pnt1(
         self_: *const Blend_RstRstFunction,
     ) -> crate::OcctResult<*const gp_Pnt>;
-    /// **Source:** `Blend_RstRstFunction.hxx`:115 - `Blend_RstRstFunction::Pnt2()`
+    /// **Source:** `Blend_RstRstFunction.hxx`:111 - `Blend_RstRstFunction::Pnt2()`
     pub fn Blend_RstRstFunction_pnt2(
         self_: *const Blend_RstRstFunction,
     ) -> crate::OcctResult<*const gp_Pnt>;
-    /// **Source:** `Blend_RstRstFunction.hxx`:118 - `Blend_RstRstFunction::PointOnRst1()`
+    /// **Source:** `Blend_RstRstFunction.hxx`:114 - `Blend_RstRstFunction::PointOnRst1()`
     pub fn Blend_RstRstFunction_point_on_rst1(
         self_: *const Blend_RstRstFunction,
     ) -> crate::OcctResult<*const gp_Pnt>;
-    /// **Source:** `Blend_RstRstFunction.hxx`:121 - `Blend_RstRstFunction::PointOnRst2()`
+    /// **Source:** `Blend_RstRstFunction.hxx`:117 - `Blend_RstRstFunction::PointOnRst2()`
     pub fn Blend_RstRstFunction_point_on_rst2(
         self_: *const Blend_RstRstFunction,
     ) -> crate::OcctResult<*const gp_Pnt>;
-    /// **Source:** `Blend_RstRstFunction.hxx`:124 - `Blend_RstRstFunction::Pnt2dOnRst1()`
+    /// **Source:** `Blend_RstRstFunction.hxx`:120 - `Blend_RstRstFunction::Pnt2dOnRst1()`
     pub fn Blend_RstRstFunction_pnt2d_on_rst1(
         self_: *const Blend_RstRstFunction,
     ) -> crate::OcctResult<*const gp_Pnt2d>;
-    /// **Source:** `Blend_RstRstFunction.hxx`:128 - `Blend_RstRstFunction::Pnt2dOnRst2()`
+    /// **Source:** `Blend_RstRstFunction.hxx`:124 - `Blend_RstRstFunction::Pnt2dOnRst2()`
     pub fn Blend_RstRstFunction_pnt2d_on_rst2(
         self_: *const Blend_RstRstFunction,
     ) -> crate::OcctResult<*const gp_Pnt2d>;
-    /// **Source:** `Blend_RstRstFunction.hxx`:131 - `Blend_RstRstFunction::ParameterOnRst1()`
+    /// **Source:** `Blend_RstRstFunction.hxx`:127 - `Blend_RstRstFunction::ParameterOnRst1()`
     pub fn Blend_RstRstFunction_parameter_on_rst1(
         self_: *const Blend_RstRstFunction,
     ) -> crate::OcctResult<f64>;
-    /// **Source:** `Blend_RstRstFunction.hxx`:134 - `Blend_RstRstFunction::ParameterOnRst2()`
+    /// **Source:** `Blend_RstRstFunction.hxx`:130 - `Blend_RstRstFunction::ParameterOnRst2()`
     pub fn Blend_RstRstFunction_parameter_on_rst2(
         self_: *const Blend_RstRstFunction,
     ) -> crate::OcctResult<f64>;
-    /// **Source:** `Blend_RstRstFunction.hxx`:138 - `Blend_RstRstFunction::IsTangencyPoint()`
+    /// **Source:** `Blend_RstRstFunction.hxx`:134 - `Blend_RstRstFunction::IsTangencyPoint()`
     pub fn Blend_RstRstFunction_is_tangency_point(
         self_: *const Blend_RstRstFunction,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `Blend_RstRstFunction.hxx`:141 - `Blend_RstRstFunction::TangentOnRst1()`
+    /// **Source:** `Blend_RstRstFunction.hxx`:137 - `Blend_RstRstFunction::TangentOnRst1()`
     pub fn Blend_RstRstFunction_tangent_on_rst1(
         self_: *const Blend_RstRstFunction,
     ) -> crate::OcctResult<*const gp_Vec>;
-    /// **Source:** `Blend_RstRstFunction.hxx`:145 - `Blend_RstRstFunction::Tangent2dOnRst1()`
+    /// **Source:** `Blend_RstRstFunction.hxx`:141 - `Blend_RstRstFunction::Tangent2dOnRst1()`
     pub fn Blend_RstRstFunction_tangent2d_on_rst1(
         self_: *const Blend_RstRstFunction,
     ) -> crate::OcctResult<*const gp_Vec2d>;
-    /// **Source:** `Blend_RstRstFunction.hxx`:148 - `Blend_RstRstFunction::TangentOnRst2()`
+    /// **Source:** `Blend_RstRstFunction.hxx`:144 - `Blend_RstRstFunction::TangentOnRst2()`
     pub fn Blend_RstRstFunction_tangent_on_rst2(
         self_: *const Blend_RstRstFunction,
     ) -> crate::OcctResult<*const gp_Vec>;
-    /// **Source:** `Blend_RstRstFunction.hxx`:152 - `Blend_RstRstFunction::Tangent2dOnRst2()`
+    /// **Source:** `Blend_RstRstFunction.hxx`:148 - `Blend_RstRstFunction::Tangent2dOnRst2()`
     pub fn Blend_RstRstFunction_tangent2d_on_rst2(
         self_: *const Blend_RstRstFunction,
     ) -> crate::OcctResult<*const gp_Vec2d>;
-    /// **Source:** `Blend_RstRstFunction.hxx`:158 - `Blend_RstRstFunction::Decroch()`
+    /// **Source:** `Blend_RstRstFunction.hxx`:154 - `Blend_RstRstFunction::Decroch()`
     pub fn Blend_RstRstFunction_decroch(
         self_: *const Blend_RstRstFunction,
         Sol: *const math_Vector,
@@ -5872,31 +5877,31 @@ unsafe extern "C" {
         NRst2: *mut gp_Vec,
         TgRst2: *mut gp_Vec,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `Blend_RstRstFunction.hxx`:165 - `Blend_RstRstFunction::IsRational()`
+    /// **Source:** `Blend_RstRstFunction.hxx`:161 - `Blend_RstRstFunction::IsRational()`
     pub fn Blend_RstRstFunction_is_rational(
         self_: *const Blend_RstRstFunction,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `Blend_RstRstFunction.hxx`:168 - `Blend_RstRstFunction::GetSectionSize()`
+    /// **Source:** `Blend_RstRstFunction.hxx`:164 - `Blend_RstRstFunction::GetSectionSize()`
     pub fn Blend_RstRstFunction_get_section_size(
         self_: *const Blend_RstRstFunction,
     ) -> crate::OcctResult<f64>;
-    /// **Source:** `Blend_RstRstFunction.hxx`:172 - `Blend_RstRstFunction::GetMinimalWeight()`
+    /// **Source:** `Blend_RstRstFunction.hxx`:168 - `Blend_RstRstFunction::GetMinimalWeight()`
     pub fn Blend_RstRstFunction_get_minimal_weight(
         self_: *const Blend_RstRstFunction,
-        Weigths: *mut TColStd_Array1OfReal,
+        Weigths: *mut NCollection_Array1_double,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `Blend_RstRstFunction.hxx`:176 - `Blend_RstRstFunction::NbIntervals()`
+    /// **Source:** `Blend_RstRstFunction.hxx`:172 - `Blend_RstRstFunction::NbIntervals()`
     pub fn Blend_RstRstFunction_nb_intervals(
         self_: *const Blend_RstRstFunction,
         S: i32,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `Blend_RstRstFunction.hxx`:183 - `Blend_RstRstFunction::Intervals()`
+    /// **Source:** `Blend_RstRstFunction.hxx`:179 - `Blend_RstRstFunction::Intervals()`
     pub fn Blend_RstRstFunction_intervals(
         self_: *const Blend_RstRstFunction,
-        T: *mut TColStd_Array1OfReal,
+        T: *mut NCollection_Array1_double,
         S: i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `Blend_RstRstFunction.hxx`:185 - `Blend_RstRstFunction::GetShape()`
+    /// **Source:** `Blend_RstRstFunction.hxx`:182 - `Blend_RstRstFunction::GetShape()`
     pub fn Blend_RstRstFunction_get_shape(
         self_: *mut Blend_RstRstFunction,
         NbPoles: *mut i32,
@@ -5904,7 +5909,7 @@ unsafe extern "C" {
         Degree: *mut i32,
         NbPoles2d: *mut i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `Blend_RstRstFunction.hxx`:195 - `Blend_RstRstFunction::GetTolerance()`
+    /// **Source:** `Blend_RstRstFunction.hxx`:192 - `Blend_RstRstFunction::GetTolerance()`
     pub fn Blend_RstRstFunction_get_tolerance_real3_vector2(
         self_: *const Blend_RstRstFunction,
         BoundTol: f64,
@@ -5913,48 +5918,48 @@ unsafe extern "C" {
         Tol3d: *mut math_Vector,
         Tol1D: *mut math_Vector,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `Blend_RstRstFunction.hxx`:201 - `Blend_RstRstFunction::Knots()`
+    /// **Source:** `Blend_RstRstFunction.hxx`:198 - `Blend_RstRstFunction::Knots()`
     pub fn Blend_RstRstFunction_knots(
         self_: *mut Blend_RstRstFunction,
-        TKnots: *mut TColStd_Array1OfReal,
+        TKnots: *mut NCollection_Array1_double,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `Blend_RstRstFunction.hxx`:203 - `Blend_RstRstFunction::Mults()`
+    /// **Source:** `Blend_RstRstFunction.hxx`:200 - `Blend_RstRstFunction::Mults()`
     pub fn Blend_RstRstFunction_mults(
         self_: *mut Blend_RstRstFunction,
-        TMults: *mut TColStd_Array1OfInteger,
+        TMults: *mut NCollection_Array1_int,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `Blend_RstRstFunction.hxx`:205 - `Blend_RstRstFunction::Section()`
-    pub fn Blend_RstRstFunction_section_point_array1ofpnt_array1ofpnt2d_array1ofreal(
+    /// **Source:** `Blend_RstRstFunction.hxx`:202 - `Blend_RstRstFunction::Section()`
+    pub fn Blend_RstRstFunction_section_point_arr1_pnt_arr1_pnt2d_arr1_double(
         self_: *mut Blend_RstRstFunction,
         P: *const Blend_Point,
-        Poles: *mut TColgp_Array1OfPnt,
-        Poles2d: *mut TColgp_Array1OfPnt2d,
-        Weigths: *mut TColStd_Array1OfReal,
+        Poles: *mut NCollection_Array1_gp_Pnt,
+        Poles2d: *mut NCollection_Array1_gp_Pnt2d,
+        Weigths: *mut NCollection_Array1_double,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `Blend_RstRstFunction.hxx`:213 - `Blend_RstRstFunction::Section()`
-    pub fn Blend_RstRstFunction_section_point_array1ofpnt_array1ofvec_array1ofpnt2d_array1ofvec2d_array1ofreal2(
+    /// **Source:** `Blend_RstRstFunction.hxx`:210 - `Blend_RstRstFunction::Section()`
+    pub fn Blend_RstRstFunction_section_point_arr1_pnt_arr1_vec_arr1_pnt2d_arr1_vec2d_arr1_double2(
         self_: *mut Blend_RstRstFunction,
         P: *const Blend_Point,
-        Poles: *mut TColgp_Array1OfPnt,
-        DPoles: *mut TColgp_Array1OfVec,
-        Poles2d: *mut TColgp_Array1OfPnt2d,
-        DPoles2d: *mut TColgp_Array1OfVec2d,
-        Weigths: *mut TColStd_Array1OfReal,
-        DWeigths: *mut TColStd_Array1OfReal,
+        Poles: *mut NCollection_Array1_gp_Pnt,
+        DPoles: *mut NCollection_Array1_gp_Vec,
+        Poles2d: *mut NCollection_Array1_gp_Pnt2d,
+        DPoles2d: *mut NCollection_Array1_gp_Vec2d,
+        Weigths: *mut NCollection_Array1_double,
+        DWeigths: *mut NCollection_Array1_double,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `Blend_RstRstFunction.hxx`:224 - `Blend_RstRstFunction::Section()`
-    pub fn Blend_RstRstFunction_section_point_array1ofpnt_array1ofvec2_array1ofpnt2d_array1ofvec2d2_array1ofreal3(
+    /// **Source:** `Blend_RstRstFunction.hxx`:221 - `Blend_RstRstFunction::Section()`
+    pub fn Blend_RstRstFunction_section_point_arr1_pnt_arr1_vec2_arr1_pnt2d_arr1_vec2d2_arr1_double3(
         self_: *mut Blend_RstRstFunction,
         P: *const Blend_Point,
-        Poles: *mut TColgp_Array1OfPnt,
-        DPoles: *mut TColgp_Array1OfVec,
-        D2Poles: *mut TColgp_Array1OfVec,
-        Poles2d: *mut TColgp_Array1OfPnt2d,
-        DPoles2d: *mut TColgp_Array1OfVec2d,
-        D2Poles2d: *mut TColgp_Array1OfVec2d,
-        Weigths: *mut TColStd_Array1OfReal,
-        DWeigths: *mut TColStd_Array1OfReal,
-        D2Weigths: *mut TColStd_Array1OfReal,
+        Poles: *mut NCollection_Array1_gp_Pnt,
+        DPoles: *mut NCollection_Array1_gp_Vec,
+        D2Poles: *mut NCollection_Array1_gp_Vec,
+        Poles2d: *mut NCollection_Array1_gp_Pnt2d,
+        DPoles2d: *mut NCollection_Array1_gp_Vec2d,
+        D2Poles2d: *mut NCollection_Array1_gp_Vec2d,
+        Weigths: *mut NCollection_Array1_double,
+        DWeigths: *mut NCollection_Array1_double,
+        D2Weigths: *mut NCollection_Array1_double,
     ) -> crate::OcctResult<bool>;
     /// Upcast Blend_RstRstFunction to Blend_AppFunction
     pub fn Blend_RstRstFunction_as_Blend_AppFunction(
@@ -5980,7 +5985,7 @@ unsafe extern "C" {
     pub fn Blend_RstRstFunction_as_math_FunctionSet_mut(
         self_: *mut Blend_RstRstFunction,
     ) -> crate::OcctResult<*mut math_FunctionSet>;
-    /// Inherited: **Source:** `Blend_AppFunction.hxx`:188 - `Blend_AppFunction::Resolution()`
+    /// Inherited: **Source:** `Blend_AppFunction.hxx`:185 - `Blend_AppFunction::Resolution()`
     pub fn Blend_RstRstFunction_inherited_Resolution(
         self_: *const Blend_RstRstFunction,
         IC2d: i32,
@@ -5988,7 +5993,7 @@ unsafe extern "C" {
         TolU: *mut f64,
         TolV: *mut f64,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Blend_AppFunction.hxx`:195 - `Blend_AppFunction::Parameter()`
+    /// Inherited: **Source:** `Blend_AppFunction.hxx`:192 - `Blend_AppFunction::Parameter()`
     pub fn Blend_RstRstFunction_inherited_Parameter(
         self_: *const Blend_RstRstFunction,
         P: *const Blend_Point,
@@ -6026,24 +6031,24 @@ unsafe extern "C" {
         F: *mut math_Vector,
         D: *mut math_Matrix,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `Blend_SurfCurvFuncInv.hxx`:72 - `Blend_SurfCurvFuncInv::Set()`
+    /// **Source:** `Blend_SurfCurvFuncInv.hxx`:70 - `Blend_SurfCurvFuncInv::Set()`
     pub fn Blend_SurfCurvFuncInv_set(
         self_: *mut Blend_SurfCurvFuncInv,
-        Rst: *const HandleAdaptor2dCurve2d,
+        Rst: *const Handle_Adaptor2d_Curve2d,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `Blend_SurfCurvFuncInv.hxx`:77 - `Blend_SurfCurvFuncInv::GetTolerance()`
+    /// **Source:** `Blend_SurfCurvFuncInv.hxx`:75 - `Blend_SurfCurvFuncInv::GetTolerance()`
     pub fn Blend_SurfCurvFuncInv_get_tolerance(
         self_: *const Blend_SurfCurvFuncInv,
         Tolerance: *mut math_Vector,
         Tol: f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `Blend_SurfCurvFuncInv.hxx`:84 - `Blend_SurfCurvFuncInv::GetBounds()`
+    /// **Source:** `Blend_SurfCurvFuncInv.hxx`:81 - `Blend_SurfCurvFuncInv::GetBounds()`
     pub fn Blend_SurfCurvFuncInv_get_bounds(
         self_: *const Blend_SurfCurvFuncInv,
         InfBound: *mut math_Vector,
         SupBound: *mut math_Vector,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `Blend_SurfCurvFuncInv.hxx`:88 - `Blend_SurfCurvFuncInv::IsSolution()`
+    /// **Source:** `Blend_SurfCurvFuncInv.hxx`:85 - `Blend_SurfCurvFuncInv::IsSolution()`
     pub fn Blend_SurfCurvFuncInv_is_solution(
         self_: *mut Blend_SurfCurvFuncInv,
         Sol: *const math_Vector,
@@ -6098,24 +6103,24 @@ unsafe extern "C" {
         F: *mut math_Vector,
         D: *mut math_Matrix,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `Blend_SurfPointFuncInv.hxx`:72 - `Blend_SurfPointFuncInv::Set()`
+    /// **Source:** `Blend_SurfPointFuncInv.hxx`:70 - `Blend_SurfPointFuncInv::Set()`
     pub fn Blend_SurfPointFuncInv_set(
         self_: *mut Blend_SurfPointFuncInv,
         P: *const gp_Pnt,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `Blend_SurfPointFuncInv.hxx`:77 - `Blend_SurfPointFuncInv::GetTolerance()`
+    /// **Source:** `Blend_SurfPointFuncInv.hxx`:75 - `Blend_SurfPointFuncInv::GetTolerance()`
     pub fn Blend_SurfPointFuncInv_get_tolerance(
         self_: *const Blend_SurfPointFuncInv,
         Tolerance: *mut math_Vector,
         Tol: f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `Blend_SurfPointFuncInv.hxx`:84 - `Blend_SurfPointFuncInv::GetBounds()`
+    /// **Source:** `Blend_SurfPointFuncInv.hxx`:81 - `Blend_SurfPointFuncInv::GetBounds()`
     pub fn Blend_SurfPointFuncInv_get_bounds(
         self_: *const Blend_SurfPointFuncInv,
         InfBound: *mut math_Vector,
         SupBound: *mut math_Vector,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `Blend_SurfPointFuncInv.hxx`:88 - `Blend_SurfPointFuncInv::IsSolution()`
+    /// **Source:** `Blend_SurfPointFuncInv.hxx`:85 - `Blend_SurfPointFuncInv::IsSolution()`
     pub fn Blend_SurfPointFuncInv_is_solution(
         self_: *mut Blend_SurfPointFuncInv,
         Sol: *const math_Vector,
@@ -6170,119 +6175,119 @@ unsafe extern "C" {
         F: *mut math_Vector,
         D: *mut math_Matrix,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `Blend_SurfRstFunction.hxx`:79 - `Blend_SurfRstFunction::Set()`
+    /// **Source:** `Blend_SurfRstFunction.hxx`:77 - `Blend_SurfRstFunction::Set()`
     pub fn Blend_SurfRstFunction_set_real(
         self_: *mut Blend_SurfRstFunction,
         Param: f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `Blend_SurfRstFunction.hxx`:85 - `Blend_SurfRstFunction::Set()`
+    /// **Source:** `Blend_SurfRstFunction.hxx`:83 - `Blend_SurfRstFunction::Set()`
     pub fn Blend_SurfRstFunction_set_real2(
         self_: *mut Blend_SurfRstFunction,
         First: f64,
         Last: f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `Blend_SurfRstFunction.hxx`:90 - `Blend_SurfRstFunction::GetTolerance()`
+    /// **Source:** `Blend_SurfRstFunction.hxx`:88 - `Blend_SurfRstFunction::GetTolerance()`
     pub fn Blend_SurfRstFunction_get_tolerance_vector_real(
         self_: *const Blend_SurfRstFunction,
         Tolerance: *mut math_Vector,
         Tol: f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `Blend_SurfRstFunction.hxx`:97 - `Blend_SurfRstFunction::GetBounds()`
+    /// **Source:** `Blend_SurfRstFunction.hxx`:94 - `Blend_SurfRstFunction::GetBounds()`
     pub fn Blend_SurfRstFunction_get_bounds(
         self_: *const Blend_SurfRstFunction,
         InfBound: *mut math_Vector,
         SupBound: *mut math_Vector,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `Blend_SurfRstFunction.hxx`:103 - `Blend_SurfRstFunction::IsSolution()`
+    /// **Source:** `Blend_SurfRstFunction.hxx`:100 - `Blend_SurfRstFunction::IsSolution()`
     pub fn Blend_SurfRstFunction_is_solution(
         self_: *mut Blend_SurfRstFunction,
         Sol: *const math_Vector,
         Tol: f64,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `Blend_SurfRstFunction.hxx`:108 - `Blend_SurfRstFunction::GetMinimalDistance()`
+    /// **Source:** `Blend_SurfRstFunction.hxx`:104 - `Blend_SurfRstFunction::GetMinimalDistance()`
     pub fn Blend_SurfRstFunction_get_minimal_distance(
         self_: *const Blend_SurfRstFunction,
     ) -> crate::OcctResult<f64>;
-    /// **Source:** `Blend_SurfRstFunction.hxx`:111 - `Blend_SurfRstFunction::Pnt1()`
+    /// **Source:** `Blend_SurfRstFunction.hxx`:107 - `Blend_SurfRstFunction::Pnt1()`
     pub fn Blend_SurfRstFunction_pnt1(
         self_: *const Blend_SurfRstFunction,
     ) -> crate::OcctResult<*const gp_Pnt>;
-    /// **Source:** `Blend_SurfRstFunction.hxx`:114 - `Blend_SurfRstFunction::Pnt2()`
+    /// **Source:** `Blend_SurfRstFunction.hxx`:110 - `Blend_SurfRstFunction::Pnt2()`
     pub fn Blend_SurfRstFunction_pnt2(
         self_: *const Blend_SurfRstFunction,
     ) -> crate::OcctResult<*const gp_Pnt>;
-    /// **Source:** `Blend_SurfRstFunction.hxx`:117 - `Blend_SurfRstFunction::PointOnS()`
+    /// **Source:** `Blend_SurfRstFunction.hxx`:113 - `Blend_SurfRstFunction::PointOnS()`
     pub fn Blend_SurfRstFunction_point_on_s(
         self_: *const Blend_SurfRstFunction,
     ) -> crate::OcctResult<*const gp_Pnt>;
-    /// **Source:** `Blend_SurfRstFunction.hxx`:120 - `Blend_SurfRstFunction::PointOnRst()`
+    /// **Source:** `Blend_SurfRstFunction.hxx`:116 - `Blend_SurfRstFunction::PointOnRst()`
     pub fn Blend_SurfRstFunction_point_on_rst(
         self_: *const Blend_SurfRstFunction,
     ) -> crate::OcctResult<*const gp_Pnt>;
-    /// **Source:** `Blend_SurfRstFunction.hxx`:123 - `Blend_SurfRstFunction::Pnt2dOnS()`
+    /// **Source:** `Blend_SurfRstFunction.hxx`:119 - `Blend_SurfRstFunction::Pnt2dOnS()`
     pub fn Blend_SurfRstFunction_pnt2d_on_s(
         self_: *const Blend_SurfRstFunction,
     ) -> crate::OcctResult<*const gp_Pnt2d>;
-    /// **Source:** `Blend_SurfRstFunction.hxx`:127 - `Blend_SurfRstFunction::Pnt2dOnRst()`
+    /// **Source:** `Blend_SurfRstFunction.hxx`:123 - `Blend_SurfRstFunction::Pnt2dOnRst()`
     pub fn Blend_SurfRstFunction_pnt2d_on_rst(
         self_: *const Blend_SurfRstFunction,
     ) -> crate::OcctResult<*const gp_Pnt2d>;
-    /// **Source:** `Blend_SurfRstFunction.hxx`:130 - `Blend_SurfRstFunction::ParameterOnRst()`
+    /// **Source:** `Blend_SurfRstFunction.hxx`:126 - `Blend_SurfRstFunction::ParameterOnRst()`
     pub fn Blend_SurfRstFunction_parameter_on_rst(
         self_: *const Blend_SurfRstFunction,
     ) -> crate::OcctResult<f64>;
-    /// **Source:** `Blend_SurfRstFunction.hxx`:134 - `Blend_SurfRstFunction::IsTangencyPoint()`
+    /// **Source:** `Blend_SurfRstFunction.hxx`:130 - `Blend_SurfRstFunction::IsTangencyPoint()`
     pub fn Blend_SurfRstFunction_is_tangency_point(
         self_: *const Blend_SurfRstFunction,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `Blend_SurfRstFunction.hxx`:137 - `Blend_SurfRstFunction::TangentOnS()`
+    /// **Source:** `Blend_SurfRstFunction.hxx`:133 - `Blend_SurfRstFunction::TangentOnS()`
     pub fn Blend_SurfRstFunction_tangent_on_s(
         self_: *const Blend_SurfRstFunction,
     ) -> crate::OcctResult<*const gp_Vec>;
-    /// **Source:** `Blend_SurfRstFunction.hxx`:141 - `Blend_SurfRstFunction::Tangent2dOnS()`
+    /// **Source:** `Blend_SurfRstFunction.hxx`:137 - `Blend_SurfRstFunction::Tangent2dOnS()`
     pub fn Blend_SurfRstFunction_tangent2d_on_s(
         self_: *const Blend_SurfRstFunction,
     ) -> crate::OcctResult<*const gp_Vec2d>;
-    /// **Source:** `Blend_SurfRstFunction.hxx`:144 - `Blend_SurfRstFunction::TangentOnRst()`
+    /// **Source:** `Blend_SurfRstFunction.hxx`:140 - `Blend_SurfRstFunction::TangentOnRst()`
     pub fn Blend_SurfRstFunction_tangent_on_rst(
         self_: *const Blend_SurfRstFunction,
     ) -> crate::OcctResult<*const gp_Vec>;
-    /// **Source:** `Blend_SurfRstFunction.hxx`:148 - `Blend_SurfRstFunction::Tangent2dOnRst()`
+    /// **Source:** `Blend_SurfRstFunction.hxx`:144 - `Blend_SurfRstFunction::Tangent2dOnRst()`
     pub fn Blend_SurfRstFunction_tangent2d_on_rst(
         self_: *const Blend_SurfRstFunction,
     ) -> crate::OcctResult<*const gp_Vec2d>;
-    /// **Source:** `Blend_SurfRstFunction.hxx`:152 - `Blend_SurfRstFunction::Decroch()`
+    /// **Source:** `Blend_SurfRstFunction.hxx`:148 - `Blend_SurfRstFunction::Decroch()`
     pub fn Blend_SurfRstFunction_decroch(
         self_: *const Blend_SurfRstFunction,
         Sol: *const math_Vector,
         NS: *mut gp_Vec,
         TgS: *mut gp_Vec,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `Blend_SurfRstFunction.hxx`:157 - `Blend_SurfRstFunction::IsRational()`
+    /// **Source:** `Blend_SurfRstFunction.hxx`:151 - `Blend_SurfRstFunction::IsRational()`
     pub fn Blend_SurfRstFunction_is_rational(
         self_: *const Blend_SurfRstFunction,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `Blend_SurfRstFunction.hxx`:160 - `Blend_SurfRstFunction::GetSectionSize()`
+    /// **Source:** `Blend_SurfRstFunction.hxx`:154 - `Blend_SurfRstFunction::GetSectionSize()`
     pub fn Blend_SurfRstFunction_get_section_size(
         self_: *const Blend_SurfRstFunction,
     ) -> crate::OcctResult<f64>;
-    /// **Source:** `Blend_SurfRstFunction.hxx`:164 - `Blend_SurfRstFunction::GetMinimalWeight()`
+    /// **Source:** `Blend_SurfRstFunction.hxx`:158 - `Blend_SurfRstFunction::GetMinimalWeight()`
     pub fn Blend_SurfRstFunction_get_minimal_weight(
         self_: *const Blend_SurfRstFunction,
-        Weigths: *mut TColStd_Array1OfReal,
+        Weigths: *mut NCollection_Array1_double,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `Blend_SurfRstFunction.hxx`:168 - `Blend_SurfRstFunction::NbIntervals()`
+    /// **Source:** `Blend_SurfRstFunction.hxx`:162 - `Blend_SurfRstFunction::NbIntervals()`
     pub fn Blend_SurfRstFunction_nb_intervals(
         self_: *const Blend_SurfRstFunction,
         S: i32,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `Blend_SurfRstFunction.hxx`:175 - `Blend_SurfRstFunction::Intervals()`
+    /// **Source:** `Blend_SurfRstFunction.hxx`:169 - `Blend_SurfRstFunction::Intervals()`
     pub fn Blend_SurfRstFunction_intervals(
         self_: *const Blend_SurfRstFunction,
-        T: *mut TColStd_Array1OfReal,
+        T: *mut NCollection_Array1_double,
         S: i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `Blend_SurfRstFunction.hxx`:177 - `Blend_SurfRstFunction::GetShape()`
+    /// **Source:** `Blend_SurfRstFunction.hxx`:172 - `Blend_SurfRstFunction::GetShape()`
     pub fn Blend_SurfRstFunction_get_shape(
         self_: *mut Blend_SurfRstFunction,
         NbPoles: *mut i32,
@@ -6290,7 +6295,7 @@ unsafe extern "C" {
         Degree: *mut i32,
         NbPoles2d: *mut i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `Blend_SurfRstFunction.hxx`:187 - `Blend_SurfRstFunction::GetTolerance()`
+    /// **Source:** `Blend_SurfRstFunction.hxx`:182 - `Blend_SurfRstFunction::GetTolerance()`
     pub fn Blend_SurfRstFunction_get_tolerance_real3_vector2(
         self_: *const Blend_SurfRstFunction,
         BoundTol: f64,
@@ -6299,48 +6304,48 @@ unsafe extern "C" {
         Tol3d: *mut math_Vector,
         Tol1D: *mut math_Vector,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `Blend_SurfRstFunction.hxx`:193 - `Blend_SurfRstFunction::Knots()`
+    /// **Source:** `Blend_SurfRstFunction.hxx`:188 - `Blend_SurfRstFunction::Knots()`
     pub fn Blend_SurfRstFunction_knots(
         self_: *mut Blend_SurfRstFunction,
-        TKnots: *mut TColStd_Array1OfReal,
+        TKnots: *mut NCollection_Array1_double,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `Blend_SurfRstFunction.hxx`:195 - `Blend_SurfRstFunction::Mults()`
+    /// **Source:** `Blend_SurfRstFunction.hxx`:190 - `Blend_SurfRstFunction::Mults()`
     pub fn Blend_SurfRstFunction_mults(
         self_: *mut Blend_SurfRstFunction,
-        TMults: *mut TColStd_Array1OfInteger,
+        TMults: *mut NCollection_Array1_int,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `Blend_SurfRstFunction.hxx`:200 - `Blend_SurfRstFunction::Section()`
-    pub fn Blend_SurfRstFunction_section_point_array1ofpnt_array1ofvec_array1ofpnt2d_array1ofvec2d_array1ofreal2(
+    /// **Source:** `Blend_SurfRstFunction.hxx`:195 - `Blend_SurfRstFunction::Section()`
+    pub fn Blend_SurfRstFunction_section_point_arr1_pnt_arr1_vec_arr1_pnt2d_arr1_vec2d_arr1_double2(
         self_: *mut Blend_SurfRstFunction,
         P: *const Blend_Point,
-        Poles: *mut TColgp_Array1OfPnt,
-        DPoles: *mut TColgp_Array1OfVec,
-        Poles2d: *mut TColgp_Array1OfPnt2d,
-        DPoles2d: *mut TColgp_Array1OfVec2d,
-        Weigths: *mut TColStd_Array1OfReal,
-        DWeigths: *mut TColStd_Array1OfReal,
+        Poles: *mut NCollection_Array1_gp_Pnt,
+        DPoles: *mut NCollection_Array1_gp_Vec,
+        Poles2d: *mut NCollection_Array1_gp_Pnt2d,
+        DPoles2d: *mut NCollection_Array1_gp_Vec2d,
+        Weigths: *mut NCollection_Array1_double,
+        DWeigths: *mut NCollection_Array1_double,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `Blend_SurfRstFunction.hxx`:211 - `Blend_SurfRstFunction::Section()`
-    pub fn Blend_SurfRstFunction_section_point_array1ofpnt_array1ofvec2_array1ofpnt2d_array1ofvec2d2_array1ofreal3(
+    /// **Source:** `Blend_SurfRstFunction.hxx`:206 - `Blend_SurfRstFunction::Section()`
+    pub fn Blend_SurfRstFunction_section_point_arr1_pnt_arr1_vec2_arr1_pnt2d_arr1_vec2d2_arr1_double3(
         self_: *mut Blend_SurfRstFunction,
         P: *const Blend_Point,
-        Poles: *mut TColgp_Array1OfPnt,
-        DPoles: *mut TColgp_Array1OfVec,
-        D2Poles: *mut TColgp_Array1OfVec,
-        Poles2d: *mut TColgp_Array1OfPnt2d,
-        DPoles2d: *mut TColgp_Array1OfVec2d,
-        D2Poles2d: *mut TColgp_Array1OfVec2d,
-        Weigths: *mut TColStd_Array1OfReal,
-        DWeigths: *mut TColStd_Array1OfReal,
-        D2Weigths: *mut TColStd_Array1OfReal,
+        Poles: *mut NCollection_Array1_gp_Pnt,
+        DPoles: *mut NCollection_Array1_gp_Vec,
+        D2Poles: *mut NCollection_Array1_gp_Vec,
+        Poles2d: *mut NCollection_Array1_gp_Pnt2d,
+        DPoles2d: *mut NCollection_Array1_gp_Vec2d,
+        D2Poles2d: *mut NCollection_Array1_gp_Vec2d,
+        Weigths: *mut NCollection_Array1_double,
+        DWeigths: *mut NCollection_Array1_double,
+        D2Weigths: *mut NCollection_Array1_double,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `Blend_SurfRstFunction.hxx`:222 - `Blend_SurfRstFunction::Section()`
-    pub fn Blend_SurfRstFunction_section_point_array1ofpnt_array1ofpnt2d_array1ofreal(
+    /// **Source:** `Blend_SurfRstFunction.hxx`:217 - `Blend_SurfRstFunction::Section()`
+    pub fn Blend_SurfRstFunction_section_point_arr1_pnt_arr1_pnt2d_arr1_double(
         self_: *mut Blend_SurfRstFunction,
         P: *const Blend_Point,
-        Poles: *mut TColgp_Array1OfPnt,
-        Poles2d: *mut TColgp_Array1OfPnt2d,
-        Weigths: *mut TColStd_Array1OfReal,
+        Poles: *mut NCollection_Array1_gp_Pnt,
+        Poles2d: *mut NCollection_Array1_gp_Pnt2d,
+        Weigths: *mut NCollection_Array1_double,
     ) -> *const std::ffi::c_char;
     /// Upcast Blend_SurfRstFunction to Blend_AppFunction
     pub fn Blend_SurfRstFunction_as_Blend_AppFunction(
@@ -6366,7 +6371,7 @@ unsafe extern "C" {
     pub fn Blend_SurfRstFunction_as_math_FunctionSet_mut(
         self_: *mut Blend_SurfRstFunction,
     ) -> crate::OcctResult<*mut math_FunctionSet>;
-    /// Inherited: **Source:** `Blend_AppFunction.hxx`:188 - `Blend_AppFunction::Resolution()`
+    /// Inherited: **Source:** `Blend_AppFunction.hxx`:185 - `Blend_AppFunction::Resolution()`
     pub fn Blend_SurfRstFunction_inherited_Resolution(
         self_: *const Blend_SurfRstFunction,
         IC2d: i32,
@@ -6374,7 +6379,7 @@ unsafe extern "C" {
         TolU: *mut f64,
         TolV: *mut f64,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Blend_AppFunction.hxx`:195 - `Blend_AppFunction::Parameter()`
+    /// Inherited: **Source:** `Blend_AppFunction.hxx`:192 - `Blend_AppFunction::Parameter()`
     pub fn Blend_SurfRstFunction_inherited_Parameter(
         self_: *const Blend_SurfRstFunction,
         P: *const Blend_Point,
@@ -6385,102 +6390,102 @@ unsafe extern "C" {
     ) -> crate::OcctResult<i32>;
     // ======================== BlendFunc_CSCircular ========================
     pub fn BlendFunc_CSCircular_destructor(self_: *mut BlendFunc_CSCircular);
-    /// **Source:** `BlendFunc_CSCircular.hxx`:56 - `BlendFunc_CSCircular::BlendFunc_CSCircular()`
+    /// **Source:** `BlendFunc_CSCircular.hxx`:52 - `BlendFunc_CSCircular::BlendFunc_CSCircular()`
     pub fn BlendFunc_CSCircular_ctor_handleadaptor3dsurface_handleadaptor3dcurve2_handlelawfunction(
-        S: *const HandleAdaptor3dSurface,
-        C: *const HandleAdaptor3dCurve,
-        CGuide: *const HandleAdaptor3dCurve,
-        L: *const HandleLawFunction,
+        S: *const Handle_Adaptor3d_Surface,
+        C: *const Handle_Adaptor3d_Curve,
+        CGuide: *const Handle_Adaptor3d_Curve,
+        L: *const Handle_Law_Function,
     ) -> crate::OcctResult<*mut BlendFunc_CSCircular>;
-    /// **Source:** `BlendFunc_CSCircular.hxx`:61 - `BlendFunc_CSCircular::NbVariables()`
+    /// **Source:** `BlendFunc_CSCircular.hxx`:57 - `BlendFunc_CSCircular::NbVariables()`
     pub fn BlendFunc_CSCircular_nb_variables(
         self_: *const BlendFunc_CSCircular,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `BlendFunc_CSCircular.hxx`:64 - `BlendFunc_CSCircular::NbEquations()`
+    /// **Source:** `BlendFunc_CSCircular.hxx`:60 - `BlendFunc_CSCircular::NbEquations()`
     pub fn BlendFunc_CSCircular_nb_equations(
         self_: *const BlendFunc_CSCircular,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `BlendFunc_CSCircular.hxx`:70 - `BlendFunc_CSCircular::Value()`
+    /// **Source:** `BlendFunc_CSCircular.hxx`:66 - `BlendFunc_CSCircular::Value()`
     pub fn BlendFunc_CSCircular_value(
         self_: *mut BlendFunc_CSCircular,
         X: *const math_Vector,
         F: *mut math_Vector,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BlendFunc_CSCircular.hxx`:76 - `BlendFunc_CSCircular::Derivatives()`
+    /// **Source:** `BlendFunc_CSCircular.hxx`:72 - `BlendFunc_CSCircular::Derivatives()`
     pub fn BlendFunc_CSCircular_derivatives(
         self_: *mut BlendFunc_CSCircular,
         X: *const math_Vector,
         D: *mut math_Matrix,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BlendFunc_CSCircular.hxx`:83 - `BlendFunc_CSCircular::Values()`
+    /// **Source:** `BlendFunc_CSCircular.hxx`:78 - `BlendFunc_CSCircular::Values()`
     pub fn BlendFunc_CSCircular_values(
         self_: *mut BlendFunc_CSCircular,
         X: *const math_Vector,
         F: *mut math_Vector,
         D: *mut math_Matrix,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BlendFunc_CSCircular.hxx`:87 - `BlendFunc_CSCircular::Set()`
+    /// **Source:** `BlendFunc_CSCircular.hxx`:80 - `BlendFunc_CSCircular::Set()`
     pub fn BlendFunc_CSCircular_set_real(
         self_: *mut BlendFunc_CSCircular,
         Param: f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BlendFunc_CSCircular.hxx`:89 - `BlendFunc_CSCircular::Set()`
+    /// **Source:** `BlendFunc_CSCircular.hxx`:82 - `BlendFunc_CSCircular::Set()`
     pub fn BlendFunc_CSCircular_set_real2(
         self_: *mut BlendFunc_CSCircular,
         First: f64,
         Last: f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BlendFunc_CSCircular.hxx`:91 - `BlendFunc_CSCircular::GetTolerance()`
+    /// **Source:** `BlendFunc_CSCircular.hxx`:84 - `BlendFunc_CSCircular::GetTolerance()`
     pub fn BlendFunc_CSCircular_get_tolerance_vector_real(
         self_: *const BlendFunc_CSCircular,
         Tolerance: *mut math_Vector,
         Tol: f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BlendFunc_CSCircular.hxx`:94 - `BlendFunc_CSCircular::GetBounds()`
+    /// **Source:** `BlendFunc_CSCircular.hxx`:86 - `BlendFunc_CSCircular::GetBounds()`
     pub fn BlendFunc_CSCircular_get_bounds(
         self_: *const BlendFunc_CSCircular,
         InfBound: *mut math_Vector,
         SupBound: *mut math_Vector,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BlendFunc_CSCircular.hxx`:97 - `BlendFunc_CSCircular::IsSolution()`
+    /// **Source:** `BlendFunc_CSCircular.hxx`:88 - `BlendFunc_CSCircular::IsSolution()`
     pub fn BlendFunc_CSCircular_is_solution(
         self_: *mut BlendFunc_CSCircular,
         Sol: *const math_Vector,
         Tol: f64,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BlendFunc_CSCircular.hxx`:100 - `BlendFunc_CSCircular::PointOnS()`
+    /// **Source:** `BlendFunc_CSCircular.hxx`:90 - `BlendFunc_CSCircular::PointOnS()`
     pub fn BlendFunc_CSCircular_point_on_s(
         self_: *const BlendFunc_CSCircular,
     ) -> crate::OcctResult<*const gp_Pnt>;
-    /// **Source:** `BlendFunc_CSCircular.hxx`:102 - `BlendFunc_CSCircular::PointOnC()`
+    /// **Source:** `BlendFunc_CSCircular.hxx`:92 - `BlendFunc_CSCircular::PointOnC()`
     pub fn BlendFunc_CSCircular_point_on_c(
         self_: *const BlendFunc_CSCircular,
     ) -> crate::OcctResult<*const gp_Pnt>;
-    /// **Source:** `BlendFunc_CSCircular.hxx`:105 - `BlendFunc_CSCircular::Pnt2d()`
+    /// **Source:** `BlendFunc_CSCircular.hxx`:95 - `BlendFunc_CSCircular::Pnt2d()`
     pub fn BlendFunc_CSCircular_pnt2d(
         self_: *const BlendFunc_CSCircular,
     ) -> crate::OcctResult<*const gp_Pnt2d>;
-    /// **Source:** `BlendFunc_CSCircular.hxx`:108 - `BlendFunc_CSCircular::ParameterOnC()`
+    /// **Source:** `BlendFunc_CSCircular.hxx`:98 - `BlendFunc_CSCircular::ParameterOnC()`
     pub fn BlendFunc_CSCircular_parameter_on_c(
         self_: *const BlendFunc_CSCircular,
     ) -> crate::OcctResult<f64>;
-    /// **Source:** `BlendFunc_CSCircular.hxx`:110 - `BlendFunc_CSCircular::IsTangencyPoint()`
+    /// **Source:** `BlendFunc_CSCircular.hxx`:100 - `BlendFunc_CSCircular::IsTangencyPoint()`
     pub fn BlendFunc_CSCircular_is_tangency_point(
         self_: *const BlendFunc_CSCircular,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BlendFunc_CSCircular.hxx`:112 - `BlendFunc_CSCircular::TangentOnS()`
+    /// **Source:** `BlendFunc_CSCircular.hxx`:102 - `BlendFunc_CSCircular::TangentOnS()`
     pub fn BlendFunc_CSCircular_tangent_on_s(
         self_: *const BlendFunc_CSCircular,
     ) -> crate::OcctResult<*const gp_Vec>;
-    /// **Source:** `BlendFunc_CSCircular.hxx`:114 - `BlendFunc_CSCircular::Tangent2d()`
+    /// **Source:** `BlendFunc_CSCircular.hxx`:104 - `BlendFunc_CSCircular::Tangent2d()`
     pub fn BlendFunc_CSCircular_tangent2d(
         self_: *const BlendFunc_CSCircular,
     ) -> crate::OcctResult<*const gp_Vec2d>;
-    /// **Source:** `BlendFunc_CSCircular.hxx`:116 - `BlendFunc_CSCircular::TangentOnC()`
+    /// **Source:** `BlendFunc_CSCircular.hxx`:106 - `BlendFunc_CSCircular::TangentOnC()`
     pub fn BlendFunc_CSCircular_tangent_on_c(
         self_: *const BlendFunc_CSCircular,
     ) -> crate::OcctResult<*const gp_Vec>;
-    /// **Source:** `BlendFunc_CSCircular.hxx`:122 - `BlendFunc_CSCircular::Tangent()`
+    /// **Source:** `BlendFunc_CSCircular.hxx`:112 - `BlendFunc_CSCircular::Tangent()`
     pub fn BlendFunc_CSCircular_tangent(
         self_: *const BlendFunc_CSCircular,
         U: f64,
@@ -6488,18 +6493,18 @@ unsafe extern "C" {
         TgS: *mut gp_Vec,
         NormS: *mut gp_Vec,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BlendFunc_CSCircular.hxx`:127 - `BlendFunc_CSCircular::Set()`
+    /// **Source:** `BlendFunc_CSCircular.hxx`:117 - `BlendFunc_CSCircular::Set()`
     pub fn BlendFunc_CSCircular_set_real_int(
         self_: *mut BlendFunc_CSCircular,
         Radius: f64,
         Choix: i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BlendFunc_CSCircular.hxx`:131 - `BlendFunc_CSCircular::Set()`
+    /// **Source:** `BlendFunc_CSCircular.hxx`:121 - `BlendFunc_CSCircular::Set()`
     pub fn BlendFunc_CSCircular_set_sectionshape(
         self_: *mut BlendFunc_CSCircular,
         TypeSection: i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BlendFunc_CSCircular.hxx`:133 - `BlendFunc_CSCircular::Section()`
+    /// **Source:** `BlendFunc_CSCircular.hxx`:123 - `BlendFunc_CSCircular::Section()`
     pub fn BlendFunc_CSCircular_section_real6_circ(
         self_: *mut BlendFunc_CSCircular,
         Param: f64,
@@ -6510,55 +6515,55 @@ unsafe extern "C" {
         Pfin: *mut f64,
         C: *mut gp_Circ,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BlendFunc_CSCircular.hxx`:144 - `BlendFunc_CSCircular::Section()`
-    pub fn BlendFunc_CSCircular_section_point_array1ofpnt_array1ofvec2_array1ofpnt2d_array1ofvec2d2_array1ofreal3(
+    /// **Source:** `BlendFunc_CSCircular.hxx`:134 - `BlendFunc_CSCircular::Section()`
+    pub fn BlendFunc_CSCircular_section_point_arr1_pnt_arr1_vec2_arr1_pnt2d_arr1_vec2d2_arr1_double3(
         self_: *mut BlendFunc_CSCircular,
         P: *const Blend_Point,
-        Poles: *mut TColgp_Array1OfPnt,
-        DPoles: *mut TColgp_Array1OfVec,
-        D2Poles: *mut TColgp_Array1OfVec,
-        Poles2d: *mut TColgp_Array1OfPnt2d,
-        DPoles2d: *mut TColgp_Array1OfVec2d,
-        D2Poles2d: *mut TColgp_Array1OfVec2d,
-        Weigths: *mut TColStd_Array1OfReal,
-        DWeigths: *mut TColStd_Array1OfReal,
-        D2Weigths: *mut TColStd_Array1OfReal,
+        Poles: *mut NCollection_Array1_gp_Pnt,
+        DPoles: *mut NCollection_Array1_gp_Vec,
+        D2Poles: *mut NCollection_Array1_gp_Vec,
+        Poles2d: *mut NCollection_Array1_gp_Pnt2d,
+        DPoles2d: *mut NCollection_Array1_gp_Vec2d,
+        D2Poles2d: *mut NCollection_Array1_gp_Vec2d,
+        Weigths: *mut NCollection_Array1_double,
+        DWeigths: *mut NCollection_Array1_double,
+        D2Weigths: *mut NCollection_Array1_double,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BlendFunc_CSCircular.hxx`:156 - `BlendFunc_CSCircular::GetSection()`
+    /// **Source:** `BlendFunc_CSCircular.hxx`:145 - `BlendFunc_CSCircular::GetSection()`
     pub fn BlendFunc_CSCircular_get_section(
         self_: *mut BlendFunc_CSCircular,
         Param: f64,
         U: f64,
         V: f64,
         W: f64,
-        tabP: *mut TColgp_Array1OfPnt,
-        tabV: *mut TColgp_Array1OfVec,
+        tabP: *mut NCollection_Array1_gp_Pnt,
+        tabV: *mut NCollection_Array1_gp_Vec,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BlendFunc_CSCircular.hxx`:164 - `BlendFunc_CSCircular::IsRational()`
+    /// **Source:** `BlendFunc_CSCircular.hxx`:153 - `BlendFunc_CSCircular::IsRational()`
     pub fn BlendFunc_CSCircular_is_rational(
         self_: *const BlendFunc_CSCircular,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BlendFunc_CSCircular.hxx`:167 - `BlendFunc_CSCircular::GetSectionSize()`
+    /// **Source:** `BlendFunc_CSCircular.hxx`:156 - `BlendFunc_CSCircular::GetSectionSize()`
     pub fn BlendFunc_CSCircular_get_section_size(
         self_: *const BlendFunc_CSCircular,
     ) -> crate::OcctResult<f64>;
-    /// **Source:** `BlendFunc_CSCircular.hxx`:171 - `BlendFunc_CSCircular::GetMinimalWeight()`
+    /// **Source:** `BlendFunc_CSCircular.hxx`:160 - `BlendFunc_CSCircular::GetMinimalWeight()`
     pub fn BlendFunc_CSCircular_get_minimal_weight(
         self_: *const BlendFunc_CSCircular,
-        Weigths: *mut TColStd_Array1OfReal,
+        Weigths: *mut NCollection_Array1_double,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BlendFunc_CSCircular.hxx`:175 - `BlendFunc_CSCircular::NbIntervals()`
+    /// **Source:** `BlendFunc_CSCircular.hxx`:164 - `BlendFunc_CSCircular::NbIntervals()`
     pub fn BlendFunc_CSCircular_nb_intervals(
         self_: *const BlendFunc_CSCircular,
         S: i32,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `BlendFunc_CSCircular.hxx`:184 - `BlendFunc_CSCircular::Intervals()`
+    /// **Source:** `BlendFunc_CSCircular.hxx`:173 - `BlendFunc_CSCircular::Intervals()`
     pub fn BlendFunc_CSCircular_intervals(
         self_: *const BlendFunc_CSCircular,
-        T: *mut TColStd_Array1OfReal,
+        T: *mut NCollection_Array1_double,
         S: i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BlendFunc_CSCircular.hxx`:187 - `BlendFunc_CSCircular::GetShape()`
+    /// **Source:** `BlendFunc_CSCircular.hxx`:176 - `BlendFunc_CSCircular::GetShape()`
     pub fn BlendFunc_CSCircular_get_shape(
         self_: *mut BlendFunc_CSCircular,
         NbPoles: *mut i32,
@@ -6566,7 +6571,7 @@ unsafe extern "C" {
         Degree: *mut i32,
         NbPoles2d: *mut i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BlendFunc_CSCircular.hxx`:197 - `BlendFunc_CSCircular::GetTolerance()`
+    /// **Source:** `BlendFunc_CSCircular.hxx`:183 - `BlendFunc_CSCircular::GetTolerance()`
     pub fn BlendFunc_CSCircular_get_tolerance_real3_vector2(
         self_: *const BlendFunc_CSCircular,
         BoundTol: f64,
@@ -6575,36 +6580,36 @@ unsafe extern "C" {
         Tol3d: *mut math_Vector,
         Tol1D: *mut math_Vector,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BlendFunc_CSCircular.hxx`:203 - `BlendFunc_CSCircular::Knots()`
+    /// **Source:** `BlendFunc_CSCircular.hxx`:189 - `BlendFunc_CSCircular::Knots()`
     pub fn BlendFunc_CSCircular_knots(
         self_: *mut BlendFunc_CSCircular,
-        TKnots: *mut TColStd_Array1OfReal,
+        TKnots: *mut NCollection_Array1_double,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BlendFunc_CSCircular.hxx`:205 - `BlendFunc_CSCircular::Mults()`
+    /// **Source:** `BlendFunc_CSCircular.hxx`:191 - `BlendFunc_CSCircular::Mults()`
     pub fn BlendFunc_CSCircular_mults(
         self_: *mut BlendFunc_CSCircular,
-        TMults: *mut TColStd_Array1OfInteger,
+        TMults: *mut NCollection_Array1_int,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BlendFunc_CSCircular.hxx`:208 - `BlendFunc_CSCircular::Section()`
-    pub fn BlendFunc_CSCircular_section_point_array1ofpnt_array1ofvec_array1ofpnt2d_array1ofvec2d_array1ofreal2(
+    /// **Source:** `BlendFunc_CSCircular.hxx`:194 - `BlendFunc_CSCircular::Section()`
+    pub fn BlendFunc_CSCircular_section_point_arr1_pnt_arr1_vec_arr1_pnt2d_arr1_vec2d_arr1_double2(
         self_: *mut BlendFunc_CSCircular,
         P: *const Blend_Point,
-        Poles: *mut TColgp_Array1OfPnt,
-        DPoles: *mut TColgp_Array1OfVec,
-        Poles2d: *mut TColgp_Array1OfPnt2d,
-        DPoles2d: *mut TColgp_Array1OfVec2d,
-        Weigths: *mut TColStd_Array1OfReal,
-        DWeigths: *mut TColStd_Array1OfReal,
+        Poles: *mut NCollection_Array1_gp_Pnt,
+        DPoles: *mut NCollection_Array1_gp_Vec,
+        Poles2d: *mut NCollection_Array1_gp_Pnt2d,
+        DPoles2d: *mut NCollection_Array1_gp_Vec2d,
+        Weigths: *mut NCollection_Array1_double,
+        DWeigths: *mut NCollection_Array1_double,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BlendFunc_CSCircular.hxx`:216 - `BlendFunc_CSCircular::Section()`
-    pub fn BlendFunc_CSCircular_section_point_array1ofpnt_array1ofpnt2d_array1ofreal(
+    /// **Source:** `BlendFunc_CSCircular.hxx`:202 - `BlendFunc_CSCircular::Section()`
+    pub fn BlendFunc_CSCircular_section_point_arr1_pnt_arr1_pnt2d_arr1_double(
         self_: *mut BlendFunc_CSCircular,
         P: *const Blend_Point,
-        Poles: *mut TColgp_Array1OfPnt,
-        Poles2d: *mut TColgp_Array1OfPnt2d,
-        Weigths: *mut TColStd_Array1OfReal,
+        Poles: *mut NCollection_Array1_gp_Pnt,
+        Poles2d: *mut NCollection_Array1_gp_Pnt2d,
+        Weigths: *mut NCollection_Array1_double,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BlendFunc_CSCircular.hxx`:221 - `BlendFunc_CSCircular::Resolution()`
+    /// **Source:** `BlendFunc_CSCircular.hxx`:207 - `BlendFunc_CSCircular::Resolution()`
     pub fn BlendFunc_CSCircular_resolution(
         self_: *const BlendFunc_CSCircular,
         IC2d: i32,
@@ -6644,19 +6649,19 @@ unsafe extern "C" {
     pub fn BlendFunc_CSCircular_as_math_FunctionSet_mut(
         self_: *mut BlendFunc_CSCircular,
     ) -> crate::OcctResult<*mut math_FunctionSet>;
-    /// Inherited: **Source:** `Blend_CSFunction.hxx`:114 - `Blend_CSFunction::GetMinimalDistance()`
+    /// Inherited: **Source:** `Blend_CSFunction.hxx`:105 - `Blend_CSFunction::GetMinimalDistance()`
     pub fn BlendFunc_CSCircular_inherited_GetMinimalDistance(
         self_: *const BlendFunc_CSCircular,
     ) -> crate::OcctResult<f64>;
-    /// Inherited: **Source:** `Blend_CSFunction.hxx`:117 - `Blend_CSFunction::Pnt1()`
+    /// Inherited: **Source:** `Blend_CSFunction.hxx`:108 - `Blend_CSFunction::Pnt1()`
     pub fn BlendFunc_CSCircular_inherited_Pnt1(
         self_: *const BlendFunc_CSCircular,
     ) -> crate::OcctResult<*const gp_Pnt>;
-    /// Inherited: **Source:** `Blend_CSFunction.hxx`:120 - `Blend_CSFunction::Pnt2()`
+    /// Inherited: **Source:** `Blend_CSFunction.hxx`:111 - `Blend_CSFunction::Pnt2()`
     pub fn BlendFunc_CSCircular_inherited_Pnt2(
         self_: *const BlendFunc_CSCircular,
     ) -> crate::OcctResult<*const gp_Pnt>;
-    /// Inherited: **Source:** `Blend_AppFunction.hxx`:195 - `Blend_AppFunction::Parameter()`
+    /// Inherited: **Source:** `Blend_AppFunction.hxx`:192 - `Blend_AppFunction::Parameter()`
     pub fn BlendFunc_CSCircular_inherited_Parameter(
         self_: *const BlendFunc_CSCircular,
         P: *const Blend_Point,
@@ -6667,97 +6672,97 @@ unsafe extern "C" {
     ) -> crate::OcctResult<i32>;
     // ======================== BlendFunc_CSConstRad ========================
     pub fn BlendFunc_CSConstRad_destructor(self_: *mut BlendFunc_CSConstRad);
-    /// **Source:** `BlendFunc_CSConstRad.hxx`:46 - `BlendFunc_CSConstRad::BlendFunc_CSConstRad()`
+    /// **Source:** `BlendFunc_CSConstRad.hxx`:42 - `BlendFunc_CSConstRad::BlendFunc_CSConstRad()`
     pub fn BlendFunc_CSConstRad_ctor_handleadaptor3dsurface_handleadaptor3dcurve2(
-        S: *const HandleAdaptor3dSurface,
-        C: *const HandleAdaptor3dCurve,
-        CGuide: *const HandleAdaptor3dCurve,
+        S: *const Handle_Adaptor3d_Surface,
+        C: *const Handle_Adaptor3d_Curve,
+        CGuide: *const Handle_Adaptor3d_Curve,
     ) -> crate::OcctResult<*mut BlendFunc_CSConstRad>;
-    /// **Source:** `BlendFunc_CSConstRad.hxx`:51 - `BlendFunc_CSConstRad::NbEquations()`
+    /// **Source:** `BlendFunc_CSConstRad.hxx`:47 - `BlendFunc_CSConstRad::NbEquations()`
     pub fn BlendFunc_CSConstRad_nb_equations(
         self_: *const BlendFunc_CSConstRad,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `BlendFunc_CSConstRad.hxx`:57 - `BlendFunc_CSConstRad::Value()`
+    /// **Source:** `BlendFunc_CSConstRad.hxx`:53 - `BlendFunc_CSConstRad::Value()`
     pub fn BlendFunc_CSConstRad_value(
         self_: *mut BlendFunc_CSConstRad,
         X: *const math_Vector,
         F: *mut math_Vector,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BlendFunc_CSConstRad.hxx`:63 - `BlendFunc_CSConstRad::Derivatives()`
+    /// **Source:** `BlendFunc_CSConstRad.hxx`:59 - `BlendFunc_CSConstRad::Derivatives()`
     pub fn BlendFunc_CSConstRad_derivatives(
         self_: *mut BlendFunc_CSConstRad,
         X: *const math_Vector,
         D: *mut math_Matrix,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BlendFunc_CSConstRad.hxx`:70 - `BlendFunc_CSConstRad::Values()`
+    /// **Source:** `BlendFunc_CSConstRad.hxx`:65 - `BlendFunc_CSConstRad::Values()`
     pub fn BlendFunc_CSConstRad_values(
         self_: *mut BlendFunc_CSConstRad,
         X: *const math_Vector,
         F: *mut math_Vector,
         D: *mut math_Matrix,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BlendFunc_CSConstRad.hxx`:74 - `BlendFunc_CSConstRad::Set()`
+    /// **Source:** `BlendFunc_CSConstRad.hxx`:67 - `BlendFunc_CSConstRad::Set()`
     pub fn BlendFunc_CSConstRad_set_real(
         self_: *mut BlendFunc_CSConstRad,
         Param: f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BlendFunc_CSConstRad.hxx`:76 - `BlendFunc_CSConstRad::Set()`
+    /// **Source:** `BlendFunc_CSConstRad.hxx`:69 - `BlendFunc_CSConstRad::Set()`
     pub fn BlendFunc_CSConstRad_set_real2(
         self_: *mut BlendFunc_CSConstRad,
         First: f64,
         Last: f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BlendFunc_CSConstRad.hxx`:78 - `BlendFunc_CSConstRad::GetTolerance()`
+    /// **Source:** `BlendFunc_CSConstRad.hxx`:71 - `BlendFunc_CSConstRad::GetTolerance()`
     pub fn BlendFunc_CSConstRad_get_tolerance_vector_real(
         self_: *const BlendFunc_CSConstRad,
         Tolerance: *mut math_Vector,
         Tol: f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BlendFunc_CSConstRad.hxx`:81 - `BlendFunc_CSConstRad::GetBounds()`
+    /// **Source:** `BlendFunc_CSConstRad.hxx`:73 - `BlendFunc_CSConstRad::GetBounds()`
     pub fn BlendFunc_CSConstRad_get_bounds(
         self_: *const BlendFunc_CSConstRad,
         InfBound: *mut math_Vector,
         SupBound: *mut math_Vector,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BlendFunc_CSConstRad.hxx`:84 - `BlendFunc_CSConstRad::IsSolution()`
+    /// **Source:** `BlendFunc_CSConstRad.hxx`:75 - `BlendFunc_CSConstRad::IsSolution()`
     pub fn BlendFunc_CSConstRad_is_solution(
         self_: *mut BlendFunc_CSConstRad,
         Sol: *const math_Vector,
         Tol: f64,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BlendFunc_CSConstRad.hxx`:87 - `BlendFunc_CSConstRad::PointOnS()`
+    /// **Source:** `BlendFunc_CSConstRad.hxx`:77 - `BlendFunc_CSConstRad::PointOnS()`
     pub fn BlendFunc_CSConstRad_point_on_s(
         self_: *const BlendFunc_CSConstRad,
     ) -> crate::OcctResult<*const gp_Pnt>;
-    /// **Source:** `BlendFunc_CSConstRad.hxx`:89 - `BlendFunc_CSConstRad::PointOnC()`
+    /// **Source:** `BlendFunc_CSConstRad.hxx`:79 - `BlendFunc_CSConstRad::PointOnC()`
     pub fn BlendFunc_CSConstRad_point_on_c(
         self_: *const BlendFunc_CSConstRad,
     ) -> crate::OcctResult<*const gp_Pnt>;
-    /// **Source:** `BlendFunc_CSConstRad.hxx`:92 - `BlendFunc_CSConstRad::Pnt2d()`
+    /// **Source:** `BlendFunc_CSConstRad.hxx`:82 - `BlendFunc_CSConstRad::Pnt2d()`
     pub fn BlendFunc_CSConstRad_pnt2d(
         self_: *const BlendFunc_CSConstRad,
     ) -> crate::OcctResult<*const gp_Pnt2d>;
-    /// **Source:** `BlendFunc_CSConstRad.hxx`:95 - `BlendFunc_CSConstRad::ParameterOnC()`
+    /// **Source:** `BlendFunc_CSConstRad.hxx`:85 - `BlendFunc_CSConstRad::ParameterOnC()`
     pub fn BlendFunc_CSConstRad_parameter_on_c(
         self_: *const BlendFunc_CSConstRad,
     ) -> crate::OcctResult<f64>;
-    /// **Source:** `BlendFunc_CSConstRad.hxx`:97 - `BlendFunc_CSConstRad::IsTangencyPoint()`
+    /// **Source:** `BlendFunc_CSConstRad.hxx`:87 - `BlendFunc_CSConstRad::IsTangencyPoint()`
     pub fn BlendFunc_CSConstRad_is_tangency_point(
         self_: *const BlendFunc_CSConstRad,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BlendFunc_CSConstRad.hxx`:99 - `BlendFunc_CSConstRad::TangentOnS()`
+    /// **Source:** `BlendFunc_CSConstRad.hxx`:89 - `BlendFunc_CSConstRad::TangentOnS()`
     pub fn BlendFunc_CSConstRad_tangent_on_s(
         self_: *const BlendFunc_CSConstRad,
     ) -> crate::OcctResult<*const gp_Vec>;
-    /// **Source:** `BlendFunc_CSConstRad.hxx`:101 - `BlendFunc_CSConstRad::Tangent2d()`
+    /// **Source:** `BlendFunc_CSConstRad.hxx`:91 - `BlendFunc_CSConstRad::Tangent2d()`
     pub fn BlendFunc_CSConstRad_tangent2d(
         self_: *const BlendFunc_CSConstRad,
     ) -> crate::OcctResult<*const gp_Vec2d>;
-    /// **Source:** `BlendFunc_CSConstRad.hxx`:103 - `BlendFunc_CSConstRad::TangentOnC()`
+    /// **Source:** `BlendFunc_CSConstRad.hxx`:93 - `BlendFunc_CSConstRad::TangentOnC()`
     pub fn BlendFunc_CSConstRad_tangent_on_c(
         self_: *const BlendFunc_CSConstRad,
     ) -> crate::OcctResult<*const gp_Vec>;
-    /// **Source:** `BlendFunc_CSConstRad.hxx`:109 - `BlendFunc_CSConstRad::Tangent()`
+    /// **Source:** `BlendFunc_CSConstRad.hxx`:99 - `BlendFunc_CSConstRad::Tangent()`
     pub fn BlendFunc_CSConstRad_tangent(
         self_: *const BlendFunc_CSConstRad,
         U: f64,
@@ -6765,18 +6770,18 @@ unsafe extern "C" {
         TgS: *mut gp_Vec,
         NormS: *mut gp_Vec,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BlendFunc_CSConstRad.hxx`:114 - `BlendFunc_CSConstRad::Set()`
+    /// **Source:** `BlendFunc_CSConstRad.hxx`:104 - `BlendFunc_CSConstRad::Set()`
     pub fn BlendFunc_CSConstRad_set_real_int(
         self_: *mut BlendFunc_CSConstRad,
         Radius: f64,
         Choix: i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BlendFunc_CSConstRad.hxx`:118 - `BlendFunc_CSConstRad::Set()`
+    /// **Source:** `BlendFunc_CSConstRad.hxx`:108 - `BlendFunc_CSConstRad::Set()`
     pub fn BlendFunc_CSConstRad_set_sectionshape(
         self_: *mut BlendFunc_CSConstRad,
         TypeSection: i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BlendFunc_CSConstRad.hxx`:120 - `BlendFunc_CSConstRad::Section()`
+    /// **Source:** `BlendFunc_CSConstRad.hxx`:110 - `BlendFunc_CSConstRad::Section()`
     pub fn BlendFunc_CSConstRad_section_real6_circ(
         self_: *mut BlendFunc_CSConstRad,
         Param: f64,
@@ -6787,55 +6792,55 @@ unsafe extern "C" {
         Pfin: *mut f64,
         C: *mut gp_Circ,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BlendFunc_CSConstRad.hxx`:131 - `BlendFunc_CSConstRad::Section()`
-    pub fn BlendFunc_CSConstRad_section_point_array1ofpnt_array1ofvec2_array1ofpnt2d_array1ofvec2d2_array1ofreal3(
+    /// **Source:** `BlendFunc_CSConstRad.hxx`:121 - `BlendFunc_CSConstRad::Section()`
+    pub fn BlendFunc_CSConstRad_section_point_arr1_pnt_arr1_vec2_arr1_pnt2d_arr1_vec2d2_arr1_double3(
         self_: *mut BlendFunc_CSConstRad,
         P: *const Blend_Point,
-        Poles: *mut TColgp_Array1OfPnt,
-        DPoles: *mut TColgp_Array1OfVec,
-        D2Poles: *mut TColgp_Array1OfVec,
-        Poles2d: *mut TColgp_Array1OfPnt2d,
-        DPoles2d: *mut TColgp_Array1OfVec2d,
-        D2Poles2d: *mut TColgp_Array1OfVec2d,
-        Weigths: *mut TColStd_Array1OfReal,
-        DWeigths: *mut TColStd_Array1OfReal,
-        D2Weigths: *mut TColStd_Array1OfReal,
+        Poles: *mut NCollection_Array1_gp_Pnt,
+        DPoles: *mut NCollection_Array1_gp_Vec,
+        D2Poles: *mut NCollection_Array1_gp_Vec,
+        Poles2d: *mut NCollection_Array1_gp_Pnt2d,
+        DPoles2d: *mut NCollection_Array1_gp_Vec2d,
+        D2Poles2d: *mut NCollection_Array1_gp_Vec2d,
+        Weigths: *mut NCollection_Array1_double,
+        DWeigths: *mut NCollection_Array1_double,
+        D2Weigths: *mut NCollection_Array1_double,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BlendFunc_CSConstRad.hxx`:143 - `BlendFunc_CSConstRad::GetSection()`
+    /// **Source:** `BlendFunc_CSConstRad.hxx`:132 - `BlendFunc_CSConstRad::GetSection()`
     pub fn BlendFunc_CSConstRad_get_section(
         self_: *mut BlendFunc_CSConstRad,
         Param: f64,
         U: f64,
         V: f64,
         W: f64,
-        tabP: *mut TColgp_Array1OfPnt,
-        tabV: *mut TColgp_Array1OfVec,
+        tabP: *mut NCollection_Array1_gp_Pnt,
+        tabV: *mut NCollection_Array1_gp_Vec,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BlendFunc_CSConstRad.hxx`:151 - `BlendFunc_CSConstRad::IsRational()`
+    /// **Source:** `BlendFunc_CSConstRad.hxx`:140 - `BlendFunc_CSConstRad::IsRational()`
     pub fn BlendFunc_CSConstRad_is_rational(
         self_: *const BlendFunc_CSConstRad,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BlendFunc_CSConstRad.hxx`:154 - `BlendFunc_CSConstRad::GetSectionSize()`
+    /// **Source:** `BlendFunc_CSConstRad.hxx`:143 - `BlendFunc_CSConstRad::GetSectionSize()`
     pub fn BlendFunc_CSConstRad_get_section_size(
         self_: *const BlendFunc_CSConstRad,
     ) -> crate::OcctResult<f64>;
-    /// **Source:** `BlendFunc_CSConstRad.hxx`:158 - `BlendFunc_CSConstRad::GetMinimalWeight()`
+    /// **Source:** `BlendFunc_CSConstRad.hxx`:147 - `BlendFunc_CSConstRad::GetMinimalWeight()`
     pub fn BlendFunc_CSConstRad_get_minimal_weight(
         self_: *const BlendFunc_CSConstRad,
-        Weigths: *mut TColStd_Array1OfReal,
+        Weigths: *mut NCollection_Array1_double,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BlendFunc_CSConstRad.hxx`:162 - `BlendFunc_CSConstRad::NbIntervals()`
+    /// **Source:** `BlendFunc_CSConstRad.hxx`:151 - `BlendFunc_CSConstRad::NbIntervals()`
     pub fn BlendFunc_CSConstRad_nb_intervals(
         self_: *const BlendFunc_CSConstRad,
         S: i32,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `BlendFunc_CSConstRad.hxx`:170 - `BlendFunc_CSConstRad::Intervals()`
+    /// **Source:** `BlendFunc_CSConstRad.hxx`:159 - `BlendFunc_CSConstRad::Intervals()`
     pub fn BlendFunc_CSConstRad_intervals(
         self_: *const BlendFunc_CSConstRad,
-        T: *mut TColStd_Array1OfReal,
+        T: *mut NCollection_Array1_double,
         S: i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BlendFunc_CSConstRad.hxx`:173 - `BlendFunc_CSConstRad::GetShape()`
+    /// **Source:** `BlendFunc_CSConstRad.hxx`:162 - `BlendFunc_CSConstRad::GetShape()`
     pub fn BlendFunc_CSConstRad_get_shape(
         self_: *mut BlendFunc_CSConstRad,
         NbPoles: *mut i32,
@@ -6843,7 +6848,7 @@ unsafe extern "C" {
         Degree: *mut i32,
         NbPoles2d: *mut i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BlendFunc_CSConstRad.hxx`:183 - `BlendFunc_CSConstRad::GetTolerance()`
+    /// **Source:** `BlendFunc_CSConstRad.hxx`:169 - `BlendFunc_CSConstRad::GetTolerance()`
     pub fn BlendFunc_CSConstRad_get_tolerance_real3_vector2(
         self_: *const BlendFunc_CSConstRad,
         BoundTol: f64,
@@ -6852,36 +6857,36 @@ unsafe extern "C" {
         Tol3d: *mut math_Vector,
         Tol1D: *mut math_Vector,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BlendFunc_CSConstRad.hxx`:189 - `BlendFunc_CSConstRad::Knots()`
+    /// **Source:** `BlendFunc_CSConstRad.hxx`:175 - `BlendFunc_CSConstRad::Knots()`
     pub fn BlendFunc_CSConstRad_knots(
         self_: *mut BlendFunc_CSConstRad,
-        TKnots: *mut TColStd_Array1OfReal,
+        TKnots: *mut NCollection_Array1_double,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BlendFunc_CSConstRad.hxx`:191 - `BlendFunc_CSConstRad::Mults()`
+    /// **Source:** `BlendFunc_CSConstRad.hxx`:177 - `BlendFunc_CSConstRad::Mults()`
     pub fn BlendFunc_CSConstRad_mults(
         self_: *mut BlendFunc_CSConstRad,
-        TMults: *mut TColStd_Array1OfInteger,
+        TMults: *mut NCollection_Array1_int,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BlendFunc_CSConstRad.hxx`:194 - `BlendFunc_CSConstRad::Section()`
-    pub fn BlendFunc_CSConstRad_section_point_array1ofpnt_array1ofvec_array1ofpnt2d_array1ofvec2d_array1ofreal2(
+    /// **Source:** `BlendFunc_CSConstRad.hxx`:180 - `BlendFunc_CSConstRad::Section()`
+    pub fn BlendFunc_CSConstRad_section_point_arr1_pnt_arr1_vec_arr1_pnt2d_arr1_vec2d_arr1_double2(
         self_: *mut BlendFunc_CSConstRad,
         P: *const Blend_Point,
-        Poles: *mut TColgp_Array1OfPnt,
-        DPoles: *mut TColgp_Array1OfVec,
-        Poles2d: *mut TColgp_Array1OfPnt2d,
-        DPoles2d: *mut TColgp_Array1OfVec2d,
-        Weigths: *mut TColStd_Array1OfReal,
-        DWeigths: *mut TColStd_Array1OfReal,
+        Poles: *mut NCollection_Array1_gp_Pnt,
+        DPoles: *mut NCollection_Array1_gp_Vec,
+        Poles2d: *mut NCollection_Array1_gp_Pnt2d,
+        DPoles2d: *mut NCollection_Array1_gp_Vec2d,
+        Weigths: *mut NCollection_Array1_double,
+        DWeigths: *mut NCollection_Array1_double,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BlendFunc_CSConstRad.hxx`:202 - `BlendFunc_CSConstRad::Section()`
-    pub fn BlendFunc_CSConstRad_section_point_array1ofpnt_array1ofpnt2d_array1ofreal(
+    /// **Source:** `BlendFunc_CSConstRad.hxx`:188 - `BlendFunc_CSConstRad::Section()`
+    pub fn BlendFunc_CSConstRad_section_point_arr1_pnt_arr1_pnt2d_arr1_double(
         self_: *mut BlendFunc_CSConstRad,
         P: *const Blend_Point,
-        Poles: *mut TColgp_Array1OfPnt,
-        Poles2d: *mut TColgp_Array1OfPnt2d,
-        Weigths: *mut TColStd_Array1OfReal,
+        Poles: *mut NCollection_Array1_gp_Pnt,
+        Poles2d: *mut NCollection_Array1_gp_Pnt2d,
+        Weigths: *mut NCollection_Array1_double,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BlendFunc_CSConstRad.hxx`:207 - `BlendFunc_CSConstRad::Resolution()`
+    /// **Source:** `BlendFunc_CSConstRad.hxx`:193 - `BlendFunc_CSConstRad::Resolution()`
     pub fn BlendFunc_CSConstRad_resolution(
         self_: *const BlendFunc_CSConstRad,
         IC2d: i32,
@@ -6925,19 +6930,19 @@ unsafe extern "C" {
     pub fn BlendFunc_CSConstRad_inherited_NbVariables(
         self_: *const BlendFunc_CSConstRad,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Blend_CSFunction.hxx`:114 - `Blend_CSFunction::GetMinimalDistance()`
+    /// Inherited: **Source:** `Blend_CSFunction.hxx`:105 - `Blend_CSFunction::GetMinimalDistance()`
     pub fn BlendFunc_CSConstRad_inherited_GetMinimalDistance(
         self_: *const BlendFunc_CSConstRad,
     ) -> crate::OcctResult<f64>;
-    /// Inherited: **Source:** `Blend_CSFunction.hxx`:117 - `Blend_CSFunction::Pnt1()`
+    /// Inherited: **Source:** `Blend_CSFunction.hxx`:108 - `Blend_CSFunction::Pnt1()`
     pub fn BlendFunc_CSConstRad_inherited_Pnt1(
         self_: *const BlendFunc_CSConstRad,
     ) -> crate::OcctResult<*const gp_Pnt>;
-    /// Inherited: **Source:** `Blend_CSFunction.hxx`:120 - `Blend_CSFunction::Pnt2()`
+    /// Inherited: **Source:** `Blend_CSFunction.hxx`:111 - `Blend_CSFunction::Pnt2()`
     pub fn BlendFunc_CSConstRad_inherited_Pnt2(
         self_: *const BlendFunc_CSConstRad,
     ) -> crate::OcctResult<*const gp_Pnt>;
-    /// Inherited: **Source:** `Blend_AppFunction.hxx`:195 - `Blend_AppFunction::Parameter()`
+    /// Inherited: **Source:** `Blend_AppFunction.hxx`:192 - `Blend_AppFunction::Parameter()`
     pub fn BlendFunc_CSConstRad_inherited_Parameter(
         self_: *const BlendFunc_CSConstRad,
         P: *const Blend_Point,
@@ -6948,106 +6953,106 @@ unsafe extern "C" {
     ) -> crate::OcctResult<i32>;
     // ======================== BlendFunc_ChAsym ========================
     pub fn BlendFunc_ChAsym_destructor(self_: *mut BlendFunc_ChAsym);
-    /// **Source:** `BlendFunc_ChAsym.hxx`:42 - `BlendFunc_ChAsym::BlendFunc_ChAsym()`
+    /// **Source:** `BlendFunc_ChAsym.hxx`:39 - `BlendFunc_ChAsym::BlendFunc_ChAsym()`
     pub fn BlendFunc_ChAsym_ctor_handleadaptor3dsurface2_handleadaptor3dcurve(
-        S1: *const HandleAdaptor3dSurface,
-        S2: *const HandleAdaptor3dSurface,
-        C: *const HandleAdaptor3dCurve,
+        S1: *const Handle_Adaptor3d_Surface,
+        S2: *const Handle_Adaptor3d_Surface,
+        C: *const Handle_Adaptor3d_Curve,
     ) -> crate::OcctResult<*mut BlendFunc_ChAsym>;
-    /// **Source:** `BlendFunc_ChAsym.hxx`:47 - `BlendFunc_ChAsym::NbEquations()`
+    /// **Source:** `BlendFunc_ChAsym.hxx`:44 - `BlendFunc_ChAsym::NbEquations()`
     pub fn BlendFunc_ChAsym_nb_equations(self_: *const BlendFunc_ChAsym) -> crate::OcctResult<i32>;
-    /// **Source:** `BlendFunc_ChAsym.hxx`:49 - `BlendFunc_ChAsym::Set()`
+    /// **Source:** `BlendFunc_ChAsym.hxx`:46 - `BlendFunc_ChAsym::Set()`
     pub fn BlendFunc_ChAsym_set_real(
         self_: *mut BlendFunc_ChAsym,
         Param: f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BlendFunc_ChAsym.hxx`:51 - `BlendFunc_ChAsym::Set()`
+    /// **Source:** `BlendFunc_ChAsym.hxx`:48 - `BlendFunc_ChAsym::Set()`
     pub fn BlendFunc_ChAsym_set_real2(
         self_: *mut BlendFunc_ChAsym,
         First: f64,
         Last: f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BlendFunc_ChAsym.hxx`:53 - `BlendFunc_ChAsym::GetTolerance()`
+    /// **Source:** `BlendFunc_ChAsym.hxx`:50 - `BlendFunc_ChAsym::GetTolerance()`
     pub fn BlendFunc_ChAsym_get_tolerance_vector_real(
         self_: *const BlendFunc_ChAsym,
         Tolerance: *mut math_Vector,
         Tol: f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BlendFunc_ChAsym.hxx`:56 - `BlendFunc_ChAsym::GetBounds()`
+    /// **Source:** `BlendFunc_ChAsym.hxx`:52 - `BlendFunc_ChAsym::GetBounds()`
     pub fn BlendFunc_ChAsym_get_bounds(
         self_: *const BlendFunc_ChAsym,
         InfBound: *mut math_Vector,
         SupBound: *mut math_Vector,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BlendFunc_ChAsym.hxx`:59 - `BlendFunc_ChAsym::IsSolution()`
+    /// **Source:** `BlendFunc_ChAsym.hxx`:54 - `BlendFunc_ChAsym::IsSolution()`
     pub fn BlendFunc_ChAsym_is_solution(
         self_: *mut BlendFunc_ChAsym,
         Sol: *const math_Vector,
         Tol: f64,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BlendFunc_ChAsym.hxx`:64 - `BlendFunc_ChAsym::GetMinimalDistance()`
+    /// **Source:** `BlendFunc_ChAsym.hxx`:58 - `BlendFunc_ChAsym::GetMinimalDistance()`
     pub fn BlendFunc_ChAsym_get_minimal_distance(
         self_: *const BlendFunc_ChAsym,
     ) -> crate::OcctResult<f64>;
-    /// **Source:** `BlendFunc_ChAsym.hxx`:70 - `BlendFunc_ChAsym::ComputeValues()`
+    /// **Source:** `BlendFunc_ChAsym.hxx`:64 - `BlendFunc_ChAsym::ComputeValues()`
     pub fn BlendFunc_ChAsym_compute_values(
         self_: *mut BlendFunc_ChAsym,
         X: *const math_Vector,
         DegF: i32,
         DegL: i32,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BlendFunc_ChAsym.hxx`:78 - `BlendFunc_ChAsym::Value()`
+    /// **Source:** `BlendFunc_ChAsym.hxx`:70 - `BlendFunc_ChAsym::Value()`
     pub fn BlendFunc_ChAsym_value(
         self_: *mut BlendFunc_ChAsym,
         X: *const math_Vector,
         F: *mut math_Vector,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BlendFunc_ChAsym.hxx`:84 - `BlendFunc_ChAsym::Derivatives()`
+    /// **Source:** `BlendFunc_ChAsym.hxx`:76 - `BlendFunc_ChAsym::Derivatives()`
     pub fn BlendFunc_ChAsym_derivatives(
         self_: *mut BlendFunc_ChAsym,
         X: *const math_Vector,
         D: *mut math_Matrix,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BlendFunc_ChAsym.hxx`:91 - `BlendFunc_ChAsym::Values()`
+    /// **Source:** `BlendFunc_ChAsym.hxx`:82 - `BlendFunc_ChAsym::Values()`
     pub fn BlendFunc_ChAsym_values(
         self_: *mut BlendFunc_ChAsym,
         X: *const math_Vector,
         F: *mut math_Vector,
         D: *mut math_Matrix,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BlendFunc_ChAsym.hxx`:95 - `BlendFunc_ChAsym::PointOnS1()`
+    /// **Source:** `BlendFunc_ChAsym.hxx`:84 - `BlendFunc_ChAsym::PointOnS1()`
     pub fn BlendFunc_ChAsym_point_on_s1(
         self_: *const BlendFunc_ChAsym,
     ) -> crate::OcctResult<*const gp_Pnt>;
-    /// **Source:** `BlendFunc_ChAsym.hxx`:97 - `BlendFunc_ChAsym::PointOnS2()`
+    /// **Source:** `BlendFunc_ChAsym.hxx`:86 - `BlendFunc_ChAsym::PointOnS2()`
     pub fn BlendFunc_ChAsym_point_on_s2(
         self_: *const BlendFunc_ChAsym,
     ) -> crate::OcctResult<*const gp_Pnt>;
-    /// **Source:** `BlendFunc_ChAsym.hxx`:99 - `BlendFunc_ChAsym::IsTangencyPoint()`
+    /// **Source:** `BlendFunc_ChAsym.hxx`:88 - `BlendFunc_ChAsym::IsTangencyPoint()`
     pub fn BlendFunc_ChAsym_is_tangency_point(
         self_: *const BlendFunc_ChAsym,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BlendFunc_ChAsym.hxx`:101 - `BlendFunc_ChAsym::TangentOnS1()`
+    /// **Source:** `BlendFunc_ChAsym.hxx`:90 - `BlendFunc_ChAsym::TangentOnS1()`
     pub fn BlendFunc_ChAsym_tangent_on_s1(
         self_: *const BlendFunc_ChAsym,
     ) -> crate::OcctResult<*const gp_Vec>;
-    /// **Source:** `BlendFunc_ChAsym.hxx`:103 - `BlendFunc_ChAsym::Tangent2dOnS1()`
+    /// **Source:** `BlendFunc_ChAsym.hxx`:92 - `BlendFunc_ChAsym::Tangent2dOnS1()`
     pub fn BlendFunc_ChAsym_tangent2d_on_s1(
         self_: *const BlendFunc_ChAsym,
     ) -> crate::OcctResult<*const gp_Vec2d>;
-    /// **Source:** `BlendFunc_ChAsym.hxx`:105 - `BlendFunc_ChAsym::TangentOnS2()`
+    /// **Source:** `BlendFunc_ChAsym.hxx`:94 - `BlendFunc_ChAsym::TangentOnS2()`
     pub fn BlendFunc_ChAsym_tangent_on_s2(
         self_: *const BlendFunc_ChAsym,
     ) -> crate::OcctResult<*const gp_Vec>;
-    /// **Source:** `BlendFunc_ChAsym.hxx`:107 - `BlendFunc_ChAsym::Tangent2dOnS2()`
+    /// **Source:** `BlendFunc_ChAsym.hxx`:96 - `BlendFunc_ChAsym::Tangent2dOnS2()`
     pub fn BlendFunc_ChAsym_tangent2d_on_s2(
         self_: *const BlendFunc_ChAsym,
     ) -> crate::OcctResult<*const gp_Vec2d>;
-    /// **Source:** `BlendFunc_ChAsym.hxx`:109 - `BlendFunc_ChAsym::TwistOnS1()`
+    /// **Source:** `BlendFunc_ChAsym.hxx`:98 - `BlendFunc_ChAsym::TwistOnS1()`
     pub fn BlendFunc_ChAsym_twist_on_s1(self_: *const BlendFunc_ChAsym) -> crate::OcctResult<bool>;
-    /// **Source:** `BlendFunc_ChAsym.hxx`:111 - `BlendFunc_ChAsym::TwistOnS2()`
+    /// **Source:** `BlendFunc_ChAsym.hxx`:100 - `BlendFunc_ChAsym::TwistOnS2()`
     pub fn BlendFunc_ChAsym_twist_on_s2(self_: *const BlendFunc_ChAsym) -> crate::OcctResult<bool>;
-    /// **Source:** `BlendFunc_ChAsym.hxx`:117 - `BlendFunc_ChAsym::Tangent()`
+    /// **Source:** `BlendFunc_ChAsym.hxx`:106 - `BlendFunc_ChAsym::Tangent()`
     pub fn BlendFunc_ChAsym_tangent(
         self_: *const BlendFunc_ChAsym,
         U1: f64,
@@ -7059,7 +7064,7 @@ unsafe extern "C" {
         NormFirst: *mut gp_Vec,
         NormLast: *mut gp_Vec,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BlendFunc_ChAsym.hxx`:127 - `BlendFunc_ChAsym::Section()`
+    /// **Source:** `BlendFunc_ChAsym.hxx`:116 - `BlendFunc_ChAsym::Section()`
     pub fn BlendFunc_ChAsym_section_real7_lin(
         self_: *mut BlendFunc_ChAsym,
         Param: f64,
@@ -7071,29 +7076,29 @@ unsafe extern "C" {
         Pfin: *mut f64,
         C: *mut gp_Lin,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BlendFunc_ChAsym.hxx`:137 - `BlendFunc_ChAsym::IsRational()`
+    /// **Source:** `BlendFunc_ChAsym.hxx`:126 - `BlendFunc_ChAsym::IsRational()`
     pub fn BlendFunc_ChAsym_is_rational(self_: *const BlendFunc_ChAsym) -> crate::OcctResult<bool>;
-    /// **Source:** `BlendFunc_ChAsym.hxx`:140 - `BlendFunc_ChAsym::GetSectionSize()`
+    /// **Source:** `BlendFunc_ChAsym.hxx`:129 - `BlendFunc_ChAsym::GetSectionSize()`
     pub fn BlendFunc_ChAsym_get_section_size(
         self_: *const BlendFunc_ChAsym,
     ) -> crate::OcctResult<f64>;
-    /// **Source:** `BlendFunc_ChAsym.hxx`:144 - `BlendFunc_ChAsym::GetMinimalWeight()`
+    /// **Source:** `BlendFunc_ChAsym.hxx`:133 - `BlendFunc_ChAsym::GetMinimalWeight()`
     pub fn BlendFunc_ChAsym_get_minimal_weight(
         self_: *const BlendFunc_ChAsym,
-        Weigths: *mut TColStd_Array1OfReal,
+        Weigths: *mut NCollection_Array1_double,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BlendFunc_ChAsym.hxx`:148 - `BlendFunc_ChAsym::NbIntervals()`
+    /// **Source:** `BlendFunc_ChAsym.hxx`:137 - `BlendFunc_ChAsym::NbIntervals()`
     pub fn BlendFunc_ChAsym_nb_intervals(
         self_: *const BlendFunc_ChAsym,
         S: i32,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `BlendFunc_ChAsym.hxx`:155 - `BlendFunc_ChAsym::Intervals()`
+    /// **Source:** `BlendFunc_ChAsym.hxx`:144 - `BlendFunc_ChAsym::Intervals()`
     pub fn BlendFunc_ChAsym_intervals(
         self_: *const BlendFunc_ChAsym,
-        T: *mut TColStd_Array1OfReal,
+        T: *mut NCollection_Array1_double,
         S: i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BlendFunc_ChAsym.hxx`:158 - `BlendFunc_ChAsym::GetShape()`
+    /// **Source:** `BlendFunc_ChAsym.hxx`:147 - `BlendFunc_ChAsym::GetShape()`
     pub fn BlendFunc_ChAsym_get_shape(
         self_: *mut BlendFunc_ChAsym,
         NbPoles: *mut i32,
@@ -7101,7 +7106,7 @@ unsafe extern "C" {
         Degree: *mut i32,
         NbPoles2d: *mut i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BlendFunc_ChAsym.hxx`:168 - `BlendFunc_ChAsym::GetTolerance()`
+    /// **Source:** `BlendFunc_ChAsym.hxx`:154 - `BlendFunc_ChAsym::GetTolerance()`
     pub fn BlendFunc_ChAsym_get_tolerance_real3_vector2(
         self_: *const BlendFunc_ChAsym,
         BoundTol: f64,
@@ -7110,50 +7115,50 @@ unsafe extern "C" {
         Tol3d: *mut math_Vector,
         Tol1D: *mut math_Vector,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BlendFunc_ChAsym.hxx`:174 - `BlendFunc_ChAsym::Knots()`
+    /// **Source:** `BlendFunc_ChAsym.hxx`:160 - `BlendFunc_ChAsym::Knots()`
     pub fn BlendFunc_ChAsym_knots(
         self_: *mut BlendFunc_ChAsym,
-        TKnots: *mut TColStd_Array1OfReal,
+        TKnots: *mut NCollection_Array1_double,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BlendFunc_ChAsym.hxx`:176 - `BlendFunc_ChAsym::Mults()`
+    /// **Source:** `BlendFunc_ChAsym.hxx`:162 - `BlendFunc_ChAsym::Mults()`
     pub fn BlendFunc_ChAsym_mults(
         self_: *mut BlendFunc_ChAsym,
-        TMults: *mut TColStd_Array1OfInteger,
+        TMults: *mut NCollection_Array1_int,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BlendFunc_ChAsym.hxx`:178 - `BlendFunc_ChAsym::Section()`
-    pub fn BlendFunc_ChAsym_section_point_array1ofpnt_array1ofpnt2d_array1ofreal(
+    /// **Source:** `BlendFunc_ChAsym.hxx`:164 - `BlendFunc_ChAsym::Section()`
+    pub fn BlendFunc_ChAsym_section_point_arr1_pnt_arr1_pnt2d_arr1_double(
         self_: *mut BlendFunc_ChAsym,
         P: *const Blend_Point,
-        Poles: *mut TColgp_Array1OfPnt,
-        Poles2d: *mut TColgp_Array1OfPnt2d,
-        Weigths: *mut TColStd_Array1OfReal,
+        Poles: *mut NCollection_Array1_gp_Pnt,
+        Poles2d: *mut NCollection_Array1_gp_Pnt2d,
+        Weigths: *mut NCollection_Array1_double,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BlendFunc_ChAsym.hxx`:184 - `BlendFunc_ChAsym::Section()`
-    pub fn BlendFunc_ChAsym_section_point_array1ofpnt_array1ofvec_array1ofpnt2d_array1ofvec2d_array1ofreal2(
+    /// **Source:** `BlendFunc_ChAsym.hxx`:170 - `BlendFunc_ChAsym::Section()`
+    pub fn BlendFunc_ChAsym_section_point_arr1_pnt_arr1_vec_arr1_pnt2d_arr1_vec2d_arr1_double2(
         self_: *mut BlendFunc_ChAsym,
         P: *const Blend_Point,
-        Poles: *mut TColgp_Array1OfPnt,
-        DPoles: *mut TColgp_Array1OfVec,
-        Poles2d: *mut TColgp_Array1OfPnt2d,
-        DPoles2d: *mut TColgp_Array1OfVec2d,
-        Weigths: *mut TColStd_Array1OfReal,
-        DWeigths: *mut TColStd_Array1OfReal,
+        Poles: *mut NCollection_Array1_gp_Pnt,
+        DPoles: *mut NCollection_Array1_gp_Vec,
+        Poles2d: *mut NCollection_Array1_gp_Pnt2d,
+        DPoles2d: *mut NCollection_Array1_gp_Vec2d,
+        Weigths: *mut NCollection_Array1_double,
+        DWeigths: *mut NCollection_Array1_double,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BlendFunc_ChAsym.hxx`:194 - `BlendFunc_ChAsym::Section()`
-    pub fn BlendFunc_ChAsym_section_point_array1ofpnt_array1ofvec2_array1ofpnt2d_array1ofvec2d2_array1ofreal3(
+    /// **Source:** `BlendFunc_ChAsym.hxx`:179 - `BlendFunc_ChAsym::Section()`
+    pub fn BlendFunc_ChAsym_section_point_arr1_pnt_arr1_vec2_arr1_pnt2d_arr1_vec2d2_arr1_double3(
         self_: *mut BlendFunc_ChAsym,
         P: *const Blend_Point,
-        Poles: *mut TColgp_Array1OfPnt,
-        DPoles: *mut TColgp_Array1OfVec,
-        D2Poles: *mut TColgp_Array1OfVec,
-        Poles2d: *mut TColgp_Array1OfPnt2d,
-        DPoles2d: *mut TColgp_Array1OfVec2d,
-        D2Poles2d: *mut TColgp_Array1OfVec2d,
-        Weigths: *mut TColStd_Array1OfReal,
-        DWeigths: *mut TColStd_Array1OfReal,
-        D2Weigths: *mut TColStd_Array1OfReal,
+        Poles: *mut NCollection_Array1_gp_Pnt,
+        DPoles: *mut NCollection_Array1_gp_Vec,
+        D2Poles: *mut NCollection_Array1_gp_Vec,
+        Poles2d: *mut NCollection_Array1_gp_Pnt2d,
+        DPoles2d: *mut NCollection_Array1_gp_Vec2d,
+        D2Poles2d: *mut NCollection_Array1_gp_Vec2d,
+        Weigths: *mut NCollection_Array1_double,
+        DWeigths: *mut NCollection_Array1_double,
+        D2Weigths: *mut NCollection_Array1_double,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BlendFunc_ChAsym.hxx`:206 - `BlendFunc_ChAsym::Resolution()`
+    /// **Source:** `BlendFunc_ChAsym.hxx`:190 - `BlendFunc_ChAsym::Resolution()`
     pub fn BlendFunc_ChAsym_resolution(
         self_: *const BlendFunc_ChAsym,
         IC2d: i32,
@@ -7161,7 +7166,7 @@ unsafe extern "C" {
         TolU: *mut f64,
         TolV: *mut f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BlendFunc_ChAsym.hxx`:212 - `BlendFunc_ChAsym::Set()`
+    /// **Source:** `BlendFunc_ChAsym.hxx`:196 - `BlendFunc_ChAsym::Set()`
     pub fn BlendFunc_ChAsym_set_real2_int(
         self_: *mut BlendFunc_ChAsym,
         Dist1: f64,
@@ -7212,7 +7217,7 @@ unsafe extern "C" {
     pub fn BlendFunc_ChAsym_inherited_Pnt2(
         self_: *const BlendFunc_ChAsym,
     ) -> crate::OcctResult<*const gp_Pnt>;
-    /// Inherited: **Source:** `Blend_AppFunction.hxx`:195 - `Blend_AppFunction::Parameter()`
+    /// Inherited: **Source:** `Blend_AppFunction.hxx`:192 - `Blend_AppFunction::Parameter()`
     pub fn BlendFunc_ChAsym_inherited_Parameter(
         self_: *const BlendFunc_ChAsym,
         P: *const Blend_Point,
@@ -7225,15 +7230,15 @@ unsafe extern "C" {
     pub fn BlendFunc_ChAsymInv_destructor(self_: *mut BlendFunc_ChAsymInv);
     /// **Source:** `BlendFunc_ChAsymInv.hxx`:29 - `BlendFunc_ChAsymInv::BlendFunc_ChAsymInv()`
     pub fn BlendFunc_ChAsymInv_ctor_handleadaptor3dsurface2_handleadaptor3dcurve(
-        S1: *const HandleAdaptor3dSurface,
-        S2: *const HandleAdaptor3dSurface,
-        C: *const HandleAdaptor3dCurve,
+        S1: *const Handle_Adaptor3d_Surface,
+        S2: *const Handle_Adaptor3d_Surface,
+        C: *const Handle_Adaptor3d_Curve,
     ) -> crate::OcctResult<*mut BlendFunc_ChAsymInv>;
     /// **Source:** `BlendFunc_ChAsymInv.hxx`:33 - `BlendFunc_ChAsymInv::Set()`
     pub fn BlendFunc_ChAsymInv_set_bool_handleadaptor2dcurve2d(
         self_: *mut BlendFunc_ChAsymInv,
         OnFirst: bool,
-        COnSurf: *const HandleAdaptor2dCurve2d,
+        COnSurf: *const Handle_Adaptor2d_Curve2d,
     ) -> *const std::ffi::c_char;
     /// **Source:** `BlendFunc_ChAsymInv.hxx`:36 - `BlendFunc_ChAsymInv::GetTolerance()`
     pub fn BlendFunc_ChAsymInv_get_tolerance(
@@ -7241,49 +7246,49 @@ unsafe extern "C" {
         Tolerance: *mut math_Vector,
         Tol: f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BlendFunc_ChAsymInv.hxx`:39 - `BlendFunc_ChAsymInv::GetBounds()`
+    /// **Source:** `BlendFunc_ChAsymInv.hxx`:38 - `BlendFunc_ChAsymInv::GetBounds()`
     pub fn BlendFunc_ChAsymInv_get_bounds(
         self_: *const BlendFunc_ChAsymInv,
         InfBound: *mut math_Vector,
         SupBound: *mut math_Vector,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BlendFunc_ChAsymInv.hxx`:42 - `BlendFunc_ChAsymInv::IsSolution()`
+    /// **Source:** `BlendFunc_ChAsymInv.hxx`:40 - `BlendFunc_ChAsymInv::IsSolution()`
     pub fn BlendFunc_ChAsymInv_is_solution(
         self_: *mut BlendFunc_ChAsymInv,
         Sol: *const math_Vector,
         Tol: f64,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BlendFunc_ChAsymInv.hxx`:46 - `BlendFunc_ChAsymInv::NbEquations()`
+    /// **Source:** `BlendFunc_ChAsymInv.hxx`:43 - `BlendFunc_ChAsymInv::NbEquations()`
     pub fn BlendFunc_ChAsymInv_nb_equations(
         self_: *const BlendFunc_ChAsymInv,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `BlendFunc_ChAsymInv.hxx`:52 - `BlendFunc_ChAsymInv::ComputeValues()`
+    /// **Source:** `BlendFunc_ChAsymInv.hxx`:49 - `BlendFunc_ChAsymInv::ComputeValues()`
     pub fn BlendFunc_ChAsymInv_compute_values(
         self_: *mut BlendFunc_ChAsymInv,
         X: *const math_Vector,
         DegF: i32,
         DegL: i32,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BlendFunc_ChAsymInv.hxx`:60 - `BlendFunc_ChAsymInv::Value()`
+    /// **Source:** `BlendFunc_ChAsymInv.hxx`:55 - `BlendFunc_ChAsymInv::Value()`
     pub fn BlendFunc_ChAsymInv_value(
         self_: *mut BlendFunc_ChAsymInv,
         X: *const math_Vector,
         F: *mut math_Vector,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BlendFunc_ChAsymInv.hxx`:66 - `BlendFunc_ChAsymInv::Derivatives()`
+    /// **Source:** `BlendFunc_ChAsymInv.hxx`:61 - `BlendFunc_ChAsymInv::Derivatives()`
     pub fn BlendFunc_ChAsymInv_derivatives(
         self_: *mut BlendFunc_ChAsymInv,
         X: *const math_Vector,
         D: *mut math_Matrix,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BlendFunc_ChAsymInv.hxx`:73 - `BlendFunc_ChAsymInv::Values()`
+    /// **Source:** `BlendFunc_ChAsymInv.hxx`:67 - `BlendFunc_ChAsymInv::Values()`
     pub fn BlendFunc_ChAsymInv_values(
         self_: *mut BlendFunc_ChAsymInv,
         X: *const math_Vector,
         F: *mut math_Vector,
         D: *mut math_Matrix,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BlendFunc_ChAsymInv.hxx`:77 - `BlendFunc_ChAsymInv::Set()`
+    /// **Source:** `BlendFunc_ChAsymInv.hxx`:69 - `BlendFunc_ChAsymInv::Set()`
     pub fn BlendFunc_ChAsymInv_set_real2_int(
         self_: *mut BlendFunc_ChAsymInv,
         Dist1: f64,
@@ -7326,9 +7331,9 @@ unsafe extern "C" {
     pub fn BlendFunc_ChamfInv_destructor(self_: *mut BlendFunc_ChamfInv);
     /// **Source:** `BlendFunc_ChamfInv.hxx`:34 - `BlendFunc_ChamfInv::BlendFunc_ChamfInv()`
     pub fn BlendFunc_ChamfInv_ctor_handleadaptor3dsurface2_handleadaptor3dcurve(
-        S1: *const HandleAdaptor3dSurface,
-        S2: *const HandleAdaptor3dSurface,
-        C: *const HandleAdaptor3dCurve,
+        S1: *const Handle_Adaptor3d_Surface,
+        S2: *const Handle_Adaptor3d_Surface,
+        C: *const Handle_Adaptor3d_Curve,
     ) -> crate::OcctResult<*mut BlendFunc_ChamfInv>;
     /// **Source:** `BlendFunc_ChamfInv.hxx`:38 - `BlendFunc_ChamfInv::IsSolution()`
     pub fn BlendFunc_ChamfInv_is_solution(
@@ -7336,19 +7341,19 @@ unsafe extern "C" {
         Sol: *const math_Vector,
         Tol: f64,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BlendFunc_ChamfInv.hxx`:45 - `BlendFunc_ChamfInv::Value()`
+    /// **Source:** `BlendFunc_ChamfInv.hxx`:44 - `BlendFunc_ChamfInv::Value()`
     pub fn BlendFunc_ChamfInv_value(
         self_: *mut BlendFunc_ChamfInv,
         X: *const math_Vector,
         F: *mut math_Vector,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BlendFunc_ChamfInv.hxx`:51 - `BlendFunc_ChamfInv::Derivatives()`
+    /// **Source:** `BlendFunc_ChamfInv.hxx`:50 - `BlendFunc_ChamfInv::Derivatives()`
     pub fn BlendFunc_ChamfInv_derivatives(
         self_: *mut BlendFunc_ChamfInv,
         X: *const math_Vector,
         D: *mut math_Matrix,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BlendFunc_ChamfInv.hxx`:56 - `BlendFunc_ChamfInv::Set()`
+    /// **Source:** `BlendFunc_ChamfInv.hxx`:54 - `BlendFunc_ChamfInv::Set()`
     pub fn BlendFunc_ChamfInv_set(
         self_: *mut BlendFunc_ChamfInv,
         Dist1: f64,
@@ -7393,17 +7398,17 @@ unsafe extern "C" {
         Tolerance: *mut math_Vector,
         Tol: f64,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BlendFunc_GenChamfInv.hxx`:40 - `BlendFunc_GenChamfInv::GetBounds()`
+    /// Inherited: **Source:** `BlendFunc_GenChamfInv.hxx`:39 - `BlendFunc_GenChamfInv::GetBounds()`
     pub fn BlendFunc_ChamfInv_inherited_GetBounds(
         self_: *const BlendFunc_ChamfInv,
         InfBound: *mut math_Vector,
         SupBound: *mut math_Vector,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BlendFunc_GenChamfInv.hxx`:44 - `BlendFunc_GenChamfInv::NbEquations()`
+    /// Inherited: **Source:** `BlendFunc_GenChamfInv.hxx`:42 - `BlendFunc_GenChamfInv::NbEquations()`
     pub fn BlendFunc_ChamfInv_inherited_NbEquations(
         self_: *const BlendFunc_ChamfInv,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `BlendFunc_GenChamfInv.hxx`:50 - `BlendFunc_GenChamfInv::Values()`
+    /// Inherited: **Source:** `BlendFunc_GenChamfInv.hxx`:48 - `BlendFunc_GenChamfInv::Values()`
     pub fn BlendFunc_ChamfInv_inherited_Values(
         self_: *mut BlendFunc_ChamfInv,
         X: *const math_Vector,
@@ -7422,9 +7427,9 @@ unsafe extern "C" {
     pub fn BlendFunc_Chamfer_destructor(self_: *mut BlendFunc_Chamfer);
     /// **Source:** `BlendFunc_Chamfer.hxx`:38 - `BlendFunc_Chamfer::BlendFunc_Chamfer()`
     pub fn BlendFunc_Chamfer_ctor_handleadaptor3dsurface2_handleadaptor3dcurve(
-        S1: *const HandleAdaptor3dSurface,
-        S2: *const HandleAdaptor3dSurface,
-        CG: *const HandleAdaptor3dCurve,
+        S1: *const Handle_Adaptor3d_Surface,
+        S2: *const Handle_Adaptor3d_Surface,
+        CG: *const Handle_Adaptor3d_Curve,
     ) -> crate::OcctResult<*mut BlendFunc_Chamfer>;
     /// **Source:** `BlendFunc_Chamfer.hxx`:46 - `BlendFunc_Chamfer::Value()`
     pub fn BlendFunc_Chamfer_value(
@@ -7438,46 +7443,46 @@ unsafe extern "C" {
         X: *const math_Vector,
         D: *mut math_Matrix,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BlendFunc_Chamfer.hxx`:55 - `BlendFunc_Chamfer::Set()`
+    /// **Source:** `BlendFunc_Chamfer.hxx`:54 - `BlendFunc_Chamfer::Set()`
     pub fn BlendFunc_Chamfer_set_real(
         self_: *mut BlendFunc_Chamfer,
         Param: f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BlendFunc_Chamfer.hxx`:57 - `BlendFunc_Chamfer::IsSolution()`
+    /// **Source:** `BlendFunc_Chamfer.hxx`:56 - `BlendFunc_Chamfer::IsSolution()`
     pub fn BlendFunc_Chamfer_is_solution(
         self_: *mut BlendFunc_Chamfer,
         Sol: *const math_Vector,
         Tol: f64,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BlendFunc_Chamfer.hxx`:60 - `BlendFunc_Chamfer::PointOnS1()`
+    /// **Source:** `BlendFunc_Chamfer.hxx`:58 - `BlendFunc_Chamfer::PointOnS1()`
     pub fn BlendFunc_Chamfer_point_on_s1(
         self_: *const BlendFunc_Chamfer,
     ) -> crate::OcctResult<*const gp_Pnt>;
-    /// **Source:** `BlendFunc_Chamfer.hxx`:62 - `BlendFunc_Chamfer::PointOnS2()`
+    /// **Source:** `BlendFunc_Chamfer.hxx`:60 - `BlendFunc_Chamfer::PointOnS2()`
     pub fn BlendFunc_Chamfer_point_on_s2(
         self_: *const BlendFunc_Chamfer,
     ) -> crate::OcctResult<*const gp_Pnt>;
-    /// **Source:** `BlendFunc_Chamfer.hxx`:64 - `BlendFunc_Chamfer::IsTangencyPoint()`
+    /// **Source:** `BlendFunc_Chamfer.hxx`:62 - `BlendFunc_Chamfer::IsTangencyPoint()`
     pub fn BlendFunc_Chamfer_is_tangency_point(
         self_: *const BlendFunc_Chamfer,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BlendFunc_Chamfer.hxx`:66 - `BlendFunc_Chamfer::TangentOnS1()`
+    /// **Source:** `BlendFunc_Chamfer.hxx`:64 - `BlendFunc_Chamfer::TangentOnS1()`
     pub fn BlendFunc_Chamfer_tangent_on_s1(
         self_: *const BlendFunc_Chamfer,
     ) -> crate::OcctResult<*const gp_Vec>;
-    /// **Source:** `BlendFunc_Chamfer.hxx`:68 - `BlendFunc_Chamfer::Tangent2dOnS1()`
+    /// **Source:** `BlendFunc_Chamfer.hxx`:66 - `BlendFunc_Chamfer::Tangent2dOnS1()`
     pub fn BlendFunc_Chamfer_tangent2d_on_s1(
         self_: *const BlendFunc_Chamfer,
     ) -> crate::OcctResult<*const gp_Vec2d>;
-    /// **Source:** `BlendFunc_Chamfer.hxx`:70 - `BlendFunc_Chamfer::TangentOnS2()`
+    /// **Source:** `BlendFunc_Chamfer.hxx`:68 - `BlendFunc_Chamfer::TangentOnS2()`
     pub fn BlendFunc_Chamfer_tangent_on_s2(
         self_: *const BlendFunc_Chamfer,
     ) -> crate::OcctResult<*const gp_Vec>;
-    /// **Source:** `BlendFunc_Chamfer.hxx`:72 - `BlendFunc_Chamfer::Tangent2dOnS2()`
+    /// **Source:** `BlendFunc_Chamfer.hxx`:70 - `BlendFunc_Chamfer::Tangent2dOnS2()`
     pub fn BlendFunc_Chamfer_tangent2d_on_s2(
         self_: *const BlendFunc_Chamfer,
     ) -> crate::OcctResult<*const gp_Vec2d>;
-    /// **Source:** `BlendFunc_Chamfer.hxx`:78 - `BlendFunc_Chamfer::Tangent()`
+    /// **Source:** `BlendFunc_Chamfer.hxx`:76 - `BlendFunc_Chamfer::Tangent()`
     pub fn BlendFunc_Chamfer_tangent(
         self_: *const BlendFunc_Chamfer,
         U1: f64,
@@ -7489,14 +7494,14 @@ unsafe extern "C" {
         NormFirst: *mut gp_Vec,
         NormLast: *mut gp_Vec,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BlendFunc_Chamfer.hxx`:88 - `BlendFunc_Chamfer::Set()`
+    /// **Source:** `BlendFunc_Chamfer.hxx`:86 - `BlendFunc_Chamfer::Set()`
     pub fn BlendFunc_Chamfer_set_real2_int(
         self_: *mut BlendFunc_Chamfer,
         Dist1: f64,
         Dist2: f64,
         Choix: i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BlendFunc_Chamfer.hxx`:93 - `BlendFunc_Chamfer::GetSectionSize()`
+    /// **Source:** `BlendFunc_Chamfer.hxx`:89 - `BlendFunc_Chamfer::GetSectionSize()`
     pub fn BlendFunc_Chamfer_get_section_size(
         self_: *const BlendFunc_Chamfer,
     ) -> crate::OcctResult<f64>;
@@ -7551,43 +7556,43 @@ unsafe extern "C" {
         F: *mut math_Vector,
         D: *mut math_Matrix,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `BlendFunc_GenChamfer.hxx`:65 - `BlendFunc_GenChamfer::GetTolerance()`
+    /// Inherited: **Source:** `BlendFunc_GenChamfer.hxx`:63 - `BlendFunc_GenChamfer::GetTolerance()`
     pub fn BlendFunc_Chamfer_inherited_GetTolerance(
         self_: *const BlendFunc_Chamfer,
         Tolerance: *mut math_Vector,
         Tol: f64,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BlendFunc_GenChamfer.hxx`:68 - `BlendFunc_GenChamfer::GetBounds()`
+    /// Inherited: **Source:** `BlendFunc_GenChamfer.hxx`:65 - `BlendFunc_GenChamfer::GetBounds()`
     pub fn BlendFunc_Chamfer_inherited_GetBounds(
         self_: *const BlendFunc_Chamfer,
         InfBound: *mut math_Vector,
         SupBound: *mut math_Vector,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BlendFunc_GenChamfer.hxx`:73 - `BlendFunc_GenChamfer::GetMinimalDistance()`
+    /// Inherited: **Source:** `BlendFunc_GenChamfer.hxx`:69 - `BlendFunc_GenChamfer::GetMinimalDistance()`
     pub fn BlendFunc_Chamfer_inherited_GetMinimalDistance(
         self_: *const BlendFunc_Chamfer,
     ) -> crate::OcctResult<f64>;
-    /// Inherited: **Source:** `BlendFunc_GenChamfer.hxx`:81 - `BlendFunc_GenChamfer::IsRational()`
+    /// Inherited: **Source:** `BlendFunc_GenChamfer.hxx`:75 - `BlendFunc_GenChamfer::IsRational()`
     pub fn BlendFunc_Chamfer_inherited_IsRational(
         self_: *const BlendFunc_Chamfer,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `BlendFunc_GenChamfer.hxx`:85 - `BlendFunc_GenChamfer::GetMinimalWeight()`
+    /// Inherited: **Source:** `BlendFunc_GenChamfer.hxx`:79 - `BlendFunc_GenChamfer::GetMinimalWeight()`
     pub fn BlendFunc_Chamfer_inherited_GetMinimalWeight(
         self_: *const BlendFunc_Chamfer,
-        Weigths: *mut TColStd_Array1OfReal,
+        Weigths: *mut NCollection_Array1_double,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BlendFunc_GenChamfer.hxx`:89 - `BlendFunc_GenChamfer::NbIntervals()`
+    /// Inherited: **Source:** `BlendFunc_GenChamfer.hxx`:83 - `BlendFunc_GenChamfer::NbIntervals()`
     pub fn BlendFunc_Chamfer_inherited_NbIntervals(
         self_: *const BlendFunc_Chamfer,
         S: i32,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `BlendFunc_GenChamfer.hxx`:98 - `BlendFunc_GenChamfer::Intervals()`
+    /// Inherited: **Source:** `BlendFunc_GenChamfer.hxx`:92 - `BlendFunc_GenChamfer::Intervals()`
     pub fn BlendFunc_Chamfer_inherited_Intervals(
         self_: *const BlendFunc_Chamfer,
-        T: *mut TColStd_Array1OfReal,
+        T: *mut NCollection_Array1_double,
         S: i32,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BlendFunc_GenChamfer.hxx`:101 - `BlendFunc_GenChamfer::GetShape()`
+    /// Inherited: **Source:** `BlendFunc_GenChamfer.hxx`:95 - `BlendFunc_GenChamfer::GetShape()`
     pub fn BlendFunc_Chamfer_inherited_GetShape(
         self_: *mut BlendFunc_Chamfer,
         NbPoles: *mut i32,
@@ -7595,17 +7600,17 @@ unsafe extern "C" {
         Degree: *mut i32,
         NbPoles2d: *mut i32,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BlendFunc_GenChamfer.hxx`:117 - `BlendFunc_GenChamfer::Knots()`
+    /// Inherited: **Source:** `BlendFunc_GenChamfer.hxx`:108 - `BlendFunc_GenChamfer::Knots()`
     pub fn BlendFunc_Chamfer_inherited_Knots(
         self_: *mut BlendFunc_Chamfer,
-        TKnots: *mut TColStd_Array1OfReal,
+        TKnots: *mut NCollection_Array1_double,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BlendFunc_GenChamfer.hxx`:119 - `BlendFunc_GenChamfer::Mults()`
+    /// Inherited: **Source:** `BlendFunc_GenChamfer.hxx`:110 - `BlendFunc_GenChamfer::Mults()`
     pub fn BlendFunc_Chamfer_inherited_Mults(
         self_: *mut BlendFunc_Chamfer,
-        TMults: *mut TColStd_Array1OfInteger,
+        TMults: *mut NCollection_Array1_int,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BlendFunc_GenChamfer.hxx`:122 - `BlendFunc_GenChamfer::Section()`
+    /// Inherited: **Source:** `BlendFunc_GenChamfer.hxx`:113 - `BlendFunc_GenChamfer::Section()`
     pub fn BlendFunc_Chamfer_inherited_Section(
         self_: *mut BlendFunc_Chamfer,
         Param: f64,
@@ -7617,7 +7622,7 @@ unsafe extern "C" {
         Pfin: *mut f64,
         C: *mut gp_Lin,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BlendFunc_GenChamfer.hxx`:157 - `BlendFunc_GenChamfer::Resolution()`
+    /// Inherited: **Source:** `BlendFunc_GenChamfer.hxx`:148 - `BlendFunc_GenChamfer::Resolution()`
     pub fn BlendFunc_Chamfer_inherited_Resolution(
         self_: *const BlendFunc_Chamfer,
         IC2d: i32,
@@ -7645,7 +7650,7 @@ unsafe extern "C" {
     pub fn BlendFunc_Chamfer_inherited_TwistOnS2(
         self_: *const BlendFunc_Chamfer,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Blend_AppFunction.hxx`:195 - `Blend_AppFunction::Parameter()`
+    /// Inherited: **Source:** `Blend_AppFunction.hxx`:192 - `Blend_AppFunction::Parameter()`
     pub fn BlendFunc_Chamfer_inherited_Parameter(
         self_: *const BlendFunc_Chamfer,
         P: *const Blend_Point,
@@ -7656,97 +7661,97 @@ unsafe extern "C" {
     ) -> crate::OcctResult<i32>;
     // ======================== BlendFunc_ConstRad ========================
     pub fn BlendFunc_ConstRad_destructor(self_: *mut BlendFunc_ConstRad);
-    /// **Source:** `BlendFunc_ConstRad.hxx`:46 - `BlendFunc_ConstRad::BlendFunc_ConstRad()`
+    /// **Source:** `BlendFunc_ConstRad.hxx`:43 - `BlendFunc_ConstRad::BlendFunc_ConstRad()`
     pub fn BlendFunc_ConstRad_ctor_handleadaptor3dsurface2_handleadaptor3dcurve(
-        S1: *const HandleAdaptor3dSurface,
-        S2: *const HandleAdaptor3dSurface,
-        C: *const HandleAdaptor3dCurve,
+        S1: *const Handle_Adaptor3d_Surface,
+        S2: *const Handle_Adaptor3d_Surface,
+        C: *const Handle_Adaptor3d_Curve,
     ) -> crate::OcctResult<*mut BlendFunc_ConstRad>;
-    /// **Source:** `BlendFunc_ConstRad.hxx`:51 - `BlendFunc_ConstRad::NbEquations()`
+    /// **Source:** `BlendFunc_ConstRad.hxx`:48 - `BlendFunc_ConstRad::NbEquations()`
     pub fn BlendFunc_ConstRad_nb_equations(
         self_: *const BlendFunc_ConstRad,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `BlendFunc_ConstRad.hxx`:57 - `BlendFunc_ConstRad::Value()`
+    /// **Source:** `BlendFunc_ConstRad.hxx`:54 - `BlendFunc_ConstRad::Value()`
     pub fn BlendFunc_ConstRad_value(
         self_: *mut BlendFunc_ConstRad,
         X: *const math_Vector,
         F: *mut math_Vector,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BlendFunc_ConstRad.hxx`:63 - `BlendFunc_ConstRad::Derivatives()`
+    /// **Source:** `BlendFunc_ConstRad.hxx`:60 - `BlendFunc_ConstRad::Derivatives()`
     pub fn BlendFunc_ConstRad_derivatives(
         self_: *mut BlendFunc_ConstRad,
         X: *const math_Vector,
         D: *mut math_Matrix,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BlendFunc_ConstRad.hxx`:70 - `BlendFunc_ConstRad::Values()`
+    /// **Source:** `BlendFunc_ConstRad.hxx`:66 - `BlendFunc_ConstRad::Values()`
     pub fn BlendFunc_ConstRad_values(
         self_: *mut BlendFunc_ConstRad,
         X: *const math_Vector,
         F: *mut math_Vector,
         D: *mut math_Matrix,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BlendFunc_ConstRad.hxx`:74 - `BlendFunc_ConstRad::Set()`
+    /// **Source:** `BlendFunc_ConstRad.hxx`:68 - `BlendFunc_ConstRad::Set()`
     pub fn BlendFunc_ConstRad_set_real(
         self_: *mut BlendFunc_ConstRad,
         Param: f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BlendFunc_ConstRad.hxx`:76 - `BlendFunc_ConstRad::Set()`
+    /// **Source:** `BlendFunc_ConstRad.hxx`:70 - `BlendFunc_ConstRad::Set()`
     pub fn BlendFunc_ConstRad_set_real2(
         self_: *mut BlendFunc_ConstRad,
         First: f64,
         Last: f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BlendFunc_ConstRad.hxx`:78 - `BlendFunc_ConstRad::GetTolerance()`
+    /// **Source:** `BlendFunc_ConstRad.hxx`:72 - `BlendFunc_ConstRad::GetTolerance()`
     pub fn BlendFunc_ConstRad_get_tolerance_vector_real(
         self_: *const BlendFunc_ConstRad,
         Tolerance: *mut math_Vector,
         Tol: f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BlendFunc_ConstRad.hxx`:81 - `BlendFunc_ConstRad::GetBounds()`
+    /// **Source:** `BlendFunc_ConstRad.hxx`:74 - `BlendFunc_ConstRad::GetBounds()`
     pub fn BlendFunc_ConstRad_get_bounds(
         self_: *const BlendFunc_ConstRad,
         InfBound: *mut math_Vector,
         SupBound: *mut math_Vector,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BlendFunc_ConstRad.hxx`:84 - `BlendFunc_ConstRad::IsSolution()`
+    /// **Source:** `BlendFunc_ConstRad.hxx`:76 - `BlendFunc_ConstRad::IsSolution()`
     pub fn BlendFunc_ConstRad_is_solution(
         self_: *mut BlendFunc_ConstRad,
         Sol: *const math_Vector,
         Tol: f64,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BlendFunc_ConstRad.hxx`:89 - `BlendFunc_ConstRad::GetMinimalDistance()`
+    /// **Source:** `BlendFunc_ConstRad.hxx`:80 - `BlendFunc_ConstRad::GetMinimalDistance()`
     pub fn BlendFunc_ConstRad_get_minimal_distance(
         self_: *const BlendFunc_ConstRad,
     ) -> crate::OcctResult<f64>;
-    /// **Source:** `BlendFunc_ConstRad.hxx`:91 - `BlendFunc_ConstRad::PointOnS1()`
+    /// **Source:** `BlendFunc_ConstRad.hxx`:82 - `BlendFunc_ConstRad::PointOnS1()`
     pub fn BlendFunc_ConstRad_point_on_s1(
         self_: *const BlendFunc_ConstRad,
     ) -> crate::OcctResult<*const gp_Pnt>;
-    /// **Source:** `BlendFunc_ConstRad.hxx`:93 - `BlendFunc_ConstRad::PointOnS2()`
+    /// **Source:** `BlendFunc_ConstRad.hxx`:84 - `BlendFunc_ConstRad::PointOnS2()`
     pub fn BlendFunc_ConstRad_point_on_s2(
         self_: *const BlendFunc_ConstRad,
     ) -> crate::OcctResult<*const gp_Pnt>;
-    /// **Source:** `BlendFunc_ConstRad.hxx`:95 - `BlendFunc_ConstRad::IsTangencyPoint()`
+    /// **Source:** `BlendFunc_ConstRad.hxx`:86 - `BlendFunc_ConstRad::IsTangencyPoint()`
     pub fn BlendFunc_ConstRad_is_tangency_point(
         self_: *const BlendFunc_ConstRad,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BlendFunc_ConstRad.hxx`:97 - `BlendFunc_ConstRad::TangentOnS1()`
+    /// **Source:** `BlendFunc_ConstRad.hxx`:88 - `BlendFunc_ConstRad::TangentOnS1()`
     pub fn BlendFunc_ConstRad_tangent_on_s1(
         self_: *const BlendFunc_ConstRad,
     ) -> crate::OcctResult<*const gp_Vec>;
-    /// **Source:** `BlendFunc_ConstRad.hxx`:99 - `BlendFunc_ConstRad::Tangent2dOnS1()`
+    /// **Source:** `BlendFunc_ConstRad.hxx`:90 - `BlendFunc_ConstRad::Tangent2dOnS1()`
     pub fn BlendFunc_ConstRad_tangent2d_on_s1(
         self_: *const BlendFunc_ConstRad,
     ) -> crate::OcctResult<*const gp_Vec2d>;
-    /// **Source:** `BlendFunc_ConstRad.hxx`:101 - `BlendFunc_ConstRad::TangentOnS2()`
+    /// **Source:** `BlendFunc_ConstRad.hxx`:92 - `BlendFunc_ConstRad::TangentOnS2()`
     pub fn BlendFunc_ConstRad_tangent_on_s2(
         self_: *const BlendFunc_ConstRad,
     ) -> crate::OcctResult<*const gp_Vec>;
-    /// **Source:** `BlendFunc_ConstRad.hxx`:103 - `BlendFunc_ConstRad::Tangent2dOnS2()`
+    /// **Source:** `BlendFunc_ConstRad.hxx`:94 - `BlendFunc_ConstRad::Tangent2dOnS2()`
     pub fn BlendFunc_ConstRad_tangent2d_on_s2(
         self_: *const BlendFunc_ConstRad,
     ) -> crate::OcctResult<*const gp_Vec2d>;
-    /// **Source:** `BlendFunc_ConstRad.hxx`:109 - `BlendFunc_ConstRad::Tangent()`
+    /// **Source:** `BlendFunc_ConstRad.hxx`:100 - `BlendFunc_ConstRad::Tangent()`
     pub fn BlendFunc_ConstRad_tangent(
         self_: *const BlendFunc_ConstRad,
         U1: f64,
@@ -7758,26 +7763,26 @@ unsafe extern "C" {
         NormFirst: *mut gp_Vec,
         NormLast: *mut gp_Vec,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BlendFunc_ConstRad.hxx`:118 - `BlendFunc_ConstRad::TwistOnS1()`
+    /// **Source:** `BlendFunc_ConstRad.hxx`:109 - `BlendFunc_ConstRad::TwistOnS1()`
     pub fn BlendFunc_ConstRad_twist_on_s1(
         self_: *const BlendFunc_ConstRad,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BlendFunc_ConstRad.hxx`:120 - `BlendFunc_ConstRad::TwistOnS2()`
+    /// **Source:** `BlendFunc_ConstRad.hxx`:111 - `BlendFunc_ConstRad::TwistOnS2()`
     pub fn BlendFunc_ConstRad_twist_on_s2(
         self_: *const BlendFunc_ConstRad,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BlendFunc_ConstRad.hxx`:123 - `BlendFunc_ConstRad::Set()`
+    /// **Source:** `BlendFunc_ConstRad.hxx`:114 - `BlendFunc_ConstRad::Set()`
     pub fn BlendFunc_ConstRad_set_real_int(
         self_: *mut BlendFunc_ConstRad,
         Radius: f64,
         Choix: i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BlendFunc_ConstRad.hxx`:127 - `BlendFunc_ConstRad::Set()`
+    /// **Source:** `BlendFunc_ConstRad.hxx`:118 - `BlendFunc_ConstRad::Set()`
     pub fn BlendFunc_ConstRad_set_sectionshape(
         self_: *mut BlendFunc_ConstRad,
         TypeSection: i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BlendFunc_ConstRad.hxx`:130 - `BlendFunc_ConstRad::Section()`
+    /// **Source:** `BlendFunc_ConstRad.hxx`:121 - `BlendFunc_ConstRad::Section()`
     pub fn BlendFunc_ConstRad_section_real7_circ(
         self_: *mut BlendFunc_ConstRad,
         Param: f64,
@@ -7789,31 +7794,31 @@ unsafe extern "C" {
         Pfin: *mut f64,
         C: *mut gp_Circ,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BlendFunc_ConstRad.hxx`:140 - `BlendFunc_ConstRad::IsRational()`
+    /// **Source:** `BlendFunc_ConstRad.hxx`:131 - `BlendFunc_ConstRad::IsRational()`
     pub fn BlendFunc_ConstRad_is_rational(
         self_: *const BlendFunc_ConstRad,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BlendFunc_ConstRad.hxx`:143 - `BlendFunc_ConstRad::GetSectionSize()`
+    /// **Source:** `BlendFunc_ConstRad.hxx`:134 - `BlendFunc_ConstRad::GetSectionSize()`
     pub fn BlendFunc_ConstRad_get_section_size(
         self_: *const BlendFunc_ConstRad,
     ) -> crate::OcctResult<f64>;
-    /// **Source:** `BlendFunc_ConstRad.hxx`:147 - `BlendFunc_ConstRad::GetMinimalWeight()`
+    /// **Source:** `BlendFunc_ConstRad.hxx`:138 - `BlendFunc_ConstRad::GetMinimalWeight()`
     pub fn BlendFunc_ConstRad_get_minimal_weight(
         self_: *const BlendFunc_ConstRad,
-        Weigths: *mut TColStd_Array1OfReal,
+        Weigths: *mut NCollection_Array1_double,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BlendFunc_ConstRad.hxx`:151 - `BlendFunc_ConstRad::NbIntervals()`
+    /// **Source:** `BlendFunc_ConstRad.hxx`:142 - `BlendFunc_ConstRad::NbIntervals()`
     pub fn BlendFunc_ConstRad_nb_intervals(
         self_: *const BlendFunc_ConstRad,
         S: i32,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `BlendFunc_ConstRad.hxx`:158 - `BlendFunc_ConstRad::Intervals()`
+    /// **Source:** `BlendFunc_ConstRad.hxx`:149 - `BlendFunc_ConstRad::Intervals()`
     pub fn BlendFunc_ConstRad_intervals(
         self_: *const BlendFunc_ConstRad,
-        T: *mut TColStd_Array1OfReal,
+        T: *mut NCollection_Array1_double,
         S: i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BlendFunc_ConstRad.hxx`:161 - `BlendFunc_ConstRad::GetShape()`
+    /// **Source:** `BlendFunc_ConstRad.hxx`:152 - `BlendFunc_ConstRad::GetShape()`
     pub fn BlendFunc_ConstRad_get_shape(
         self_: *mut BlendFunc_ConstRad,
         NbPoles: *mut i32,
@@ -7821,7 +7826,7 @@ unsafe extern "C" {
         Degree: *mut i32,
         NbPoles2d: *mut i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BlendFunc_ConstRad.hxx`:171 - `BlendFunc_ConstRad::GetTolerance()`
+    /// **Source:** `BlendFunc_ConstRad.hxx`:159 - `BlendFunc_ConstRad::GetTolerance()`
     pub fn BlendFunc_ConstRad_get_tolerance_real3_vector2(
         self_: *const BlendFunc_ConstRad,
         BoundTol: f64,
@@ -7830,55 +7835,55 @@ unsafe extern "C" {
         Tol3d: *mut math_Vector,
         Tol1D: *mut math_Vector,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BlendFunc_ConstRad.hxx`:177 - `BlendFunc_ConstRad::Knots()`
+    /// **Source:** `BlendFunc_ConstRad.hxx`:165 - `BlendFunc_ConstRad::Knots()`
     pub fn BlendFunc_ConstRad_knots(
         self_: *mut BlendFunc_ConstRad,
-        TKnots: *mut TColStd_Array1OfReal,
+        TKnots: *mut NCollection_Array1_double,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BlendFunc_ConstRad.hxx`:179 - `BlendFunc_ConstRad::Mults()`
+    /// **Source:** `BlendFunc_ConstRad.hxx`:167 - `BlendFunc_ConstRad::Mults()`
     pub fn BlendFunc_ConstRad_mults(
         self_: *mut BlendFunc_ConstRad,
-        TMults: *mut TColStd_Array1OfInteger,
+        TMults: *mut NCollection_Array1_int,
     ) -> *const std::ffi::c_char;
+    /// **Source:** `BlendFunc_ConstRad.hxx`:170 - `BlendFunc_ConstRad::Section()`
+    pub fn BlendFunc_ConstRad_section_point_arr1_pnt_arr1_vec2_arr1_pnt2d_arr1_vec2d2_arr1_double3(
+        self_: *mut BlendFunc_ConstRad,
+        P: *const Blend_Point,
+        Poles: *mut NCollection_Array1_gp_Pnt,
+        DPoles: *mut NCollection_Array1_gp_Vec,
+        D2Poles: *mut NCollection_Array1_gp_Vec,
+        Poles2d: *mut NCollection_Array1_gp_Pnt2d,
+        DPoles2d: *mut NCollection_Array1_gp_Vec2d,
+        D2Poles2d: *mut NCollection_Array1_gp_Vec2d,
+        Weigths: *mut NCollection_Array1_double,
+        DWeigths: *mut NCollection_Array1_double,
+        D2Weigths: *mut NCollection_Array1_double,
+    ) -> crate::OcctResult<bool>;
     /// **Source:** `BlendFunc_ConstRad.hxx`:182 - `BlendFunc_ConstRad::Section()`
-    pub fn BlendFunc_ConstRad_section_point_array1ofpnt_array1ofvec2_array1ofpnt2d_array1ofvec2d2_array1ofreal3(
+    pub fn BlendFunc_ConstRad_section_point_arr1_pnt_arr1_vec_arr1_pnt2d_arr1_vec2d_arr1_double2(
         self_: *mut BlendFunc_ConstRad,
         P: *const Blend_Point,
-        Poles: *mut TColgp_Array1OfPnt,
-        DPoles: *mut TColgp_Array1OfVec,
-        D2Poles: *mut TColgp_Array1OfVec,
-        Poles2d: *mut TColgp_Array1OfPnt2d,
-        DPoles2d: *mut TColgp_Array1OfVec2d,
-        D2Poles2d: *mut TColgp_Array1OfVec2d,
-        Weigths: *mut TColStd_Array1OfReal,
-        DWeigths: *mut TColStd_Array1OfReal,
-        D2Weigths: *mut TColStd_Array1OfReal,
+        Poles: *mut NCollection_Array1_gp_Pnt,
+        DPoles: *mut NCollection_Array1_gp_Vec,
+        Poles2d: *mut NCollection_Array1_gp_Pnt2d,
+        DPoles2d: *mut NCollection_Array1_gp_Vec2d,
+        Weigths: *mut NCollection_Array1_double,
+        DWeigths: *mut NCollection_Array1_double,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BlendFunc_ConstRad.hxx`:195 - `BlendFunc_ConstRad::Section()`
-    pub fn BlendFunc_ConstRad_section_point_array1ofpnt_array1ofvec_array1ofpnt2d_array1ofvec2d_array1ofreal2(
+    /// **Source:** `BlendFunc_ConstRad.hxx`:190 - `BlendFunc_ConstRad::Section()`
+    pub fn BlendFunc_ConstRad_section_point_arr1_pnt_arr1_pnt2d_arr1_double(
         self_: *mut BlendFunc_ConstRad,
         P: *const Blend_Point,
-        Poles: *mut TColgp_Array1OfPnt,
-        DPoles: *mut TColgp_Array1OfVec,
-        Poles2d: *mut TColgp_Array1OfPnt2d,
-        DPoles2d: *mut TColgp_Array1OfVec2d,
-        Weigths: *mut TColStd_Array1OfReal,
-        DWeigths: *mut TColStd_Array1OfReal,
-    ) -> crate::OcctResult<bool>;
-    /// **Source:** `BlendFunc_ConstRad.hxx`:204 - `BlendFunc_ConstRad::Section()`
-    pub fn BlendFunc_ConstRad_section_point_array1ofpnt_array1ofpnt2d_array1ofreal(
-        self_: *mut BlendFunc_ConstRad,
-        P: *const Blend_Point,
-        Poles: *mut TColgp_Array1OfPnt,
-        Poles2d: *mut TColgp_Array1OfPnt2d,
-        Weigths: *mut TColStd_Array1OfReal,
+        Poles: *mut NCollection_Array1_gp_Pnt,
+        Poles2d: *mut NCollection_Array1_gp_Pnt2d,
+        Weigths: *mut NCollection_Array1_double,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BlendFunc_ConstRad.hxx`:209 - `BlendFunc_ConstRad::AxeRot()`
+    /// **Source:** `BlendFunc_ConstRad.hxx`:195 - `BlendFunc_ConstRad::AxeRot()`
     pub fn BlendFunc_ConstRad_axe_rot(
         self_: *mut BlendFunc_ConstRad,
         Prm: f64,
     ) -> crate::OcctResult<*mut gp_Ax1>;
-    /// **Source:** `BlendFunc_ConstRad.hxx`:211 - `BlendFunc_ConstRad::Resolution()`
+    /// **Source:** `BlendFunc_ConstRad.hxx`:197 - `BlendFunc_ConstRad::Resolution()`
     pub fn BlendFunc_ConstRad_resolution(
         self_: *const BlendFunc_ConstRad,
         IC2d: i32,
@@ -7930,7 +7935,7 @@ unsafe extern "C" {
     pub fn BlendFunc_ConstRad_inherited_Pnt2(
         self_: *const BlendFunc_ConstRad,
     ) -> crate::OcctResult<*const gp_Pnt>;
-    /// Inherited: **Source:** `Blend_AppFunction.hxx`:195 - `Blend_AppFunction::Parameter()`
+    /// Inherited: **Source:** `Blend_AppFunction.hxx`:192 - `Blend_AppFunction::Parameter()`
     pub fn BlendFunc_ConstRad_inherited_Parameter(
         self_: *const BlendFunc_ConstRad,
         P: *const Blend_Point,
@@ -7943,15 +7948,15 @@ unsafe extern "C" {
     pub fn BlendFunc_ConstRadInv_destructor(self_: *mut BlendFunc_ConstRadInv);
     /// **Source:** `BlendFunc_ConstRadInv.hxx`:31 - `BlendFunc_ConstRadInv::BlendFunc_ConstRadInv()`
     pub fn BlendFunc_ConstRadInv_ctor_handleadaptor3dsurface2_handleadaptor3dcurve(
-        S1: *const HandleAdaptor3dSurface,
-        S2: *const HandleAdaptor3dSurface,
-        C: *const HandleAdaptor3dCurve,
+        S1: *const Handle_Adaptor3d_Surface,
+        S2: *const Handle_Adaptor3d_Surface,
+        C: *const Handle_Adaptor3d_Curve,
     ) -> crate::OcctResult<*mut BlendFunc_ConstRadInv>;
     /// **Source:** `BlendFunc_ConstRadInv.hxx`:35 - `BlendFunc_ConstRadInv::Set()`
     pub fn BlendFunc_ConstRadInv_set_bool_handleadaptor2dcurve2d(
         self_: *mut BlendFunc_ConstRadInv,
         OnFirst: bool,
-        COnSurf: *const HandleAdaptor2dCurve2d,
+        COnSurf: *const Handle_Adaptor2d_Curve2d,
     ) -> *const std::ffi::c_char;
     /// **Source:** `BlendFunc_ConstRadInv.hxx`:38 - `BlendFunc_ConstRadInv::GetTolerance()`
     pub fn BlendFunc_ConstRadInv_get_tolerance(
@@ -7959,42 +7964,42 @@ unsafe extern "C" {
         Tolerance: *mut math_Vector,
         Tol: f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BlendFunc_ConstRadInv.hxx`:41 - `BlendFunc_ConstRadInv::GetBounds()`
+    /// **Source:** `BlendFunc_ConstRadInv.hxx`:40 - `BlendFunc_ConstRadInv::GetBounds()`
     pub fn BlendFunc_ConstRadInv_get_bounds(
         self_: *const BlendFunc_ConstRadInv,
         InfBound: *mut math_Vector,
         SupBound: *mut math_Vector,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BlendFunc_ConstRadInv.hxx`:44 - `BlendFunc_ConstRadInv::IsSolution()`
+    /// **Source:** `BlendFunc_ConstRadInv.hxx`:42 - `BlendFunc_ConstRadInv::IsSolution()`
     pub fn BlendFunc_ConstRadInv_is_solution(
         self_: *mut BlendFunc_ConstRadInv,
         Sol: *const math_Vector,
         Tol: f64,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BlendFunc_ConstRadInv.hxx`:48 - `BlendFunc_ConstRadInv::NbEquations()`
+    /// **Source:** `BlendFunc_ConstRadInv.hxx`:45 - `BlendFunc_ConstRadInv::NbEquations()`
     pub fn BlendFunc_ConstRadInv_nb_equations(
         self_: *const BlendFunc_ConstRadInv,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `BlendFunc_ConstRadInv.hxx`:54 - `BlendFunc_ConstRadInv::Value()`
+    /// **Source:** `BlendFunc_ConstRadInv.hxx`:51 - `BlendFunc_ConstRadInv::Value()`
     pub fn BlendFunc_ConstRadInv_value(
         self_: *mut BlendFunc_ConstRadInv,
         X: *const math_Vector,
         F: *mut math_Vector,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BlendFunc_ConstRadInv.hxx`:60 - `BlendFunc_ConstRadInv::Derivatives()`
+    /// **Source:** `BlendFunc_ConstRadInv.hxx`:57 - `BlendFunc_ConstRadInv::Derivatives()`
     pub fn BlendFunc_ConstRadInv_derivatives(
         self_: *mut BlendFunc_ConstRadInv,
         X: *const math_Vector,
         D: *mut math_Matrix,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BlendFunc_ConstRadInv.hxx`:67 - `BlendFunc_ConstRadInv::Values()`
+    /// **Source:** `BlendFunc_ConstRadInv.hxx`:63 - `BlendFunc_ConstRadInv::Values()`
     pub fn BlendFunc_ConstRadInv_values(
         self_: *mut BlendFunc_ConstRadInv,
         X: *const math_Vector,
         F: *mut math_Vector,
         D: *mut math_Matrix,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BlendFunc_ConstRadInv.hxx`:71 - `BlendFunc_ConstRadInv::Set()`
+    /// **Source:** `BlendFunc_ConstRadInv.hxx`:65 - `BlendFunc_ConstRadInv::Set()`
     pub fn BlendFunc_ConstRadInv_set_real_int(
         self_: *mut BlendFunc_ConstRadInv,
         R: f64,
@@ -8036,9 +8041,9 @@ unsafe extern "C" {
     pub fn BlendFunc_ConstThroat_destructor(self_: *mut BlendFunc_ConstThroat);
     /// **Source:** `BlendFunc_ConstThroat.hxx`:34 - `BlendFunc_ConstThroat::BlendFunc_ConstThroat()`
     pub fn BlendFunc_ConstThroat_ctor_handleadaptor3dsurface2_handleadaptor3dcurve(
-        S1: *const HandleAdaptor3dSurface,
-        S2: *const HandleAdaptor3dSurface,
-        C: *const HandleAdaptor3dCurve,
+        S1: *const Handle_Adaptor3d_Surface,
+        S2: *const Handle_Adaptor3d_Surface,
+        C: *const Handle_Adaptor3d_Curve,
     ) -> crate::OcctResult<*mut BlendFunc_ConstThroat>;
     /// **Source:** `BlendFunc_ConstThroat.hxx`:42 - `BlendFunc_ConstThroat::Value()`
     pub fn BlendFunc_ConstThroat_value(
@@ -8052,46 +8057,46 @@ unsafe extern "C" {
         X: *const math_Vector,
         D: *mut math_Matrix,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BlendFunc_ConstThroat.hxx`:51 - `BlendFunc_ConstThroat::Set()`
+    /// **Source:** `BlendFunc_ConstThroat.hxx`:50 - `BlendFunc_ConstThroat::Set()`
     pub fn BlendFunc_ConstThroat_set_real(
         self_: *mut BlendFunc_ConstThroat,
         Param: f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BlendFunc_ConstThroat.hxx`:53 - `BlendFunc_ConstThroat::IsSolution()`
+    /// **Source:** `BlendFunc_ConstThroat.hxx`:52 - `BlendFunc_ConstThroat::IsSolution()`
     pub fn BlendFunc_ConstThroat_is_solution(
         self_: *mut BlendFunc_ConstThroat,
         Sol: *const math_Vector,
         Tol: f64,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BlendFunc_ConstThroat.hxx`:56 - `BlendFunc_ConstThroat::PointOnS1()`
+    /// **Source:** `BlendFunc_ConstThroat.hxx`:54 - `BlendFunc_ConstThroat::PointOnS1()`
     pub fn BlendFunc_ConstThroat_point_on_s1(
         self_: *const BlendFunc_ConstThroat,
     ) -> crate::OcctResult<*const gp_Pnt>;
-    /// **Source:** `BlendFunc_ConstThroat.hxx`:58 - `BlendFunc_ConstThroat::PointOnS2()`
+    /// **Source:** `BlendFunc_ConstThroat.hxx`:56 - `BlendFunc_ConstThroat::PointOnS2()`
     pub fn BlendFunc_ConstThroat_point_on_s2(
         self_: *const BlendFunc_ConstThroat,
     ) -> crate::OcctResult<*const gp_Pnt>;
-    /// **Source:** `BlendFunc_ConstThroat.hxx`:60 - `BlendFunc_ConstThroat::IsTangencyPoint()`
+    /// **Source:** `BlendFunc_ConstThroat.hxx`:58 - `BlendFunc_ConstThroat::IsTangencyPoint()`
     pub fn BlendFunc_ConstThroat_is_tangency_point(
         self_: *const BlendFunc_ConstThroat,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BlendFunc_ConstThroat.hxx`:62 - `BlendFunc_ConstThroat::TangentOnS1()`
+    /// **Source:** `BlendFunc_ConstThroat.hxx`:60 - `BlendFunc_ConstThroat::TangentOnS1()`
     pub fn BlendFunc_ConstThroat_tangent_on_s1(
         self_: *const BlendFunc_ConstThroat,
     ) -> crate::OcctResult<*const gp_Vec>;
-    /// **Source:** `BlendFunc_ConstThroat.hxx`:64 - `BlendFunc_ConstThroat::Tangent2dOnS1()`
+    /// **Source:** `BlendFunc_ConstThroat.hxx`:62 - `BlendFunc_ConstThroat::Tangent2dOnS1()`
     pub fn BlendFunc_ConstThroat_tangent2d_on_s1(
         self_: *const BlendFunc_ConstThroat,
     ) -> crate::OcctResult<*const gp_Vec2d>;
-    /// **Source:** `BlendFunc_ConstThroat.hxx`:66 - `BlendFunc_ConstThroat::TangentOnS2()`
+    /// **Source:** `BlendFunc_ConstThroat.hxx`:64 - `BlendFunc_ConstThroat::TangentOnS2()`
     pub fn BlendFunc_ConstThroat_tangent_on_s2(
         self_: *const BlendFunc_ConstThroat,
     ) -> crate::OcctResult<*const gp_Vec>;
-    /// **Source:** `BlendFunc_ConstThroat.hxx`:68 - `BlendFunc_ConstThroat::Tangent2dOnS2()`
+    /// **Source:** `BlendFunc_ConstThroat.hxx`:66 - `BlendFunc_ConstThroat::Tangent2dOnS2()`
     pub fn BlendFunc_ConstThroat_tangent2d_on_s2(
         self_: *const BlendFunc_ConstThroat,
     ) -> crate::OcctResult<*const gp_Vec2d>;
-    /// **Source:** `BlendFunc_ConstThroat.hxx`:74 - `BlendFunc_ConstThroat::Tangent()`
+    /// **Source:** `BlendFunc_ConstThroat.hxx`:72 - `BlendFunc_ConstThroat::Tangent()`
     pub fn BlendFunc_ConstThroat_tangent(
         self_: *const BlendFunc_ConstThroat,
         U1: f64,
@@ -8103,14 +8108,14 @@ unsafe extern "C" {
         NormFirst: *mut gp_Vec,
         NormLast: *mut gp_Vec,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BlendFunc_ConstThroat.hxx`:84 - `BlendFunc_ConstThroat::Set()`
+    /// **Source:** `BlendFunc_ConstThroat.hxx`:82 - `BlendFunc_ConstThroat::Set()`
     pub fn BlendFunc_ConstThroat_set_real2_int(
         self_: *mut BlendFunc_ConstThroat,
         aThroat: f64,
         arg1: f64,
         Choix: i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BlendFunc_ConstThroat.hxx`:89 - `BlendFunc_ConstThroat::GetSectionSize()`
+    /// **Source:** `BlendFunc_ConstThroat.hxx`:85 - `BlendFunc_ConstThroat::GetSectionSize()`
     pub fn BlendFunc_ConstThroat_get_section_size(
         self_: *const BlendFunc_ConstThroat,
     ) -> crate::OcctResult<f64>;
@@ -8165,43 +8170,43 @@ unsafe extern "C" {
         F: *mut math_Vector,
         D: *mut math_Matrix,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `BlendFunc_GenChamfer.hxx`:65 - `BlendFunc_GenChamfer::GetTolerance()`
+    /// Inherited: **Source:** `BlendFunc_GenChamfer.hxx`:63 - `BlendFunc_GenChamfer::GetTolerance()`
     pub fn BlendFunc_ConstThroat_inherited_GetTolerance(
         self_: *const BlendFunc_ConstThroat,
         Tolerance: *mut math_Vector,
         Tol: f64,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BlendFunc_GenChamfer.hxx`:68 - `BlendFunc_GenChamfer::GetBounds()`
+    /// Inherited: **Source:** `BlendFunc_GenChamfer.hxx`:65 - `BlendFunc_GenChamfer::GetBounds()`
     pub fn BlendFunc_ConstThroat_inherited_GetBounds(
         self_: *const BlendFunc_ConstThroat,
         InfBound: *mut math_Vector,
         SupBound: *mut math_Vector,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BlendFunc_GenChamfer.hxx`:73 - `BlendFunc_GenChamfer::GetMinimalDistance()`
+    /// Inherited: **Source:** `BlendFunc_GenChamfer.hxx`:69 - `BlendFunc_GenChamfer::GetMinimalDistance()`
     pub fn BlendFunc_ConstThroat_inherited_GetMinimalDistance(
         self_: *const BlendFunc_ConstThroat,
     ) -> crate::OcctResult<f64>;
-    /// Inherited: **Source:** `BlendFunc_GenChamfer.hxx`:81 - `BlendFunc_GenChamfer::IsRational()`
+    /// Inherited: **Source:** `BlendFunc_GenChamfer.hxx`:75 - `BlendFunc_GenChamfer::IsRational()`
     pub fn BlendFunc_ConstThroat_inherited_IsRational(
         self_: *const BlendFunc_ConstThroat,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `BlendFunc_GenChamfer.hxx`:85 - `BlendFunc_GenChamfer::GetMinimalWeight()`
+    /// Inherited: **Source:** `BlendFunc_GenChamfer.hxx`:79 - `BlendFunc_GenChamfer::GetMinimalWeight()`
     pub fn BlendFunc_ConstThroat_inherited_GetMinimalWeight(
         self_: *const BlendFunc_ConstThroat,
-        Weigths: *mut TColStd_Array1OfReal,
+        Weigths: *mut NCollection_Array1_double,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BlendFunc_GenChamfer.hxx`:89 - `BlendFunc_GenChamfer::NbIntervals()`
+    /// Inherited: **Source:** `BlendFunc_GenChamfer.hxx`:83 - `BlendFunc_GenChamfer::NbIntervals()`
     pub fn BlendFunc_ConstThroat_inherited_NbIntervals(
         self_: *const BlendFunc_ConstThroat,
         S: i32,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `BlendFunc_GenChamfer.hxx`:98 - `BlendFunc_GenChamfer::Intervals()`
+    /// Inherited: **Source:** `BlendFunc_GenChamfer.hxx`:92 - `BlendFunc_GenChamfer::Intervals()`
     pub fn BlendFunc_ConstThroat_inherited_Intervals(
         self_: *const BlendFunc_ConstThroat,
-        T: *mut TColStd_Array1OfReal,
+        T: *mut NCollection_Array1_double,
         S: i32,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BlendFunc_GenChamfer.hxx`:101 - `BlendFunc_GenChamfer::GetShape()`
+    /// Inherited: **Source:** `BlendFunc_GenChamfer.hxx`:95 - `BlendFunc_GenChamfer::GetShape()`
     pub fn BlendFunc_ConstThroat_inherited_GetShape(
         self_: *mut BlendFunc_ConstThroat,
         NbPoles: *mut i32,
@@ -8209,17 +8214,17 @@ unsafe extern "C" {
         Degree: *mut i32,
         NbPoles2d: *mut i32,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BlendFunc_GenChamfer.hxx`:117 - `BlendFunc_GenChamfer::Knots()`
+    /// Inherited: **Source:** `BlendFunc_GenChamfer.hxx`:108 - `BlendFunc_GenChamfer::Knots()`
     pub fn BlendFunc_ConstThroat_inherited_Knots(
         self_: *mut BlendFunc_ConstThroat,
-        TKnots: *mut TColStd_Array1OfReal,
+        TKnots: *mut NCollection_Array1_double,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BlendFunc_GenChamfer.hxx`:119 - `BlendFunc_GenChamfer::Mults()`
+    /// Inherited: **Source:** `BlendFunc_GenChamfer.hxx`:110 - `BlendFunc_GenChamfer::Mults()`
     pub fn BlendFunc_ConstThroat_inherited_Mults(
         self_: *mut BlendFunc_ConstThroat,
-        TMults: *mut TColStd_Array1OfInteger,
+        TMults: *mut NCollection_Array1_int,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BlendFunc_GenChamfer.hxx`:122 - `BlendFunc_GenChamfer::Section()`
+    /// Inherited: **Source:** `BlendFunc_GenChamfer.hxx`:113 - `BlendFunc_GenChamfer::Section()`
     pub fn BlendFunc_ConstThroat_inherited_Section(
         self_: *mut BlendFunc_ConstThroat,
         Param: f64,
@@ -8231,7 +8236,7 @@ unsafe extern "C" {
         Pfin: *mut f64,
         C: *mut gp_Lin,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BlendFunc_GenChamfer.hxx`:157 - `BlendFunc_GenChamfer::Resolution()`
+    /// Inherited: **Source:** `BlendFunc_GenChamfer.hxx`:148 - `BlendFunc_GenChamfer::Resolution()`
     pub fn BlendFunc_ConstThroat_inherited_Resolution(
         self_: *const BlendFunc_ConstThroat,
         IC2d: i32,
@@ -8259,7 +8264,7 @@ unsafe extern "C" {
     pub fn BlendFunc_ConstThroat_inherited_TwistOnS2(
         self_: *const BlendFunc_ConstThroat,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Blend_AppFunction.hxx`:195 - `Blend_AppFunction::Parameter()`
+    /// Inherited: **Source:** `Blend_AppFunction.hxx`:192 - `Blend_AppFunction::Parameter()`
     pub fn BlendFunc_ConstThroat_inherited_Parameter(
         self_: *const BlendFunc_ConstThroat,
         P: *const Blend_Point,
@@ -8272,9 +8277,9 @@ unsafe extern "C" {
     pub fn BlendFunc_ConstThroatInv_destructor(self_: *mut BlendFunc_ConstThroatInv);
     /// **Source:** `BlendFunc_ConstThroatInv.hxx`:30 - `BlendFunc_ConstThroatInv::BlendFunc_ConstThroatInv()`
     pub fn BlendFunc_ConstThroatInv_ctor_handleadaptor3dsurface2_handleadaptor3dcurve(
-        S1: *const HandleAdaptor3dSurface,
-        S2: *const HandleAdaptor3dSurface,
-        C: *const HandleAdaptor3dCurve,
+        S1: *const Handle_Adaptor3d_Surface,
+        S2: *const Handle_Adaptor3d_Surface,
+        C: *const Handle_Adaptor3d_Curve,
     ) -> crate::OcctResult<*mut BlendFunc_ConstThroatInv>;
     /// **Source:** `BlendFunc_ConstThroatInv.hxx`:34 - `BlendFunc_ConstThroatInv::IsSolution()`
     pub fn BlendFunc_ConstThroatInv_is_solution(
@@ -8282,19 +8287,19 @@ unsafe extern "C" {
         Sol: *const math_Vector,
         Tol: f64,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BlendFunc_ConstThroatInv.hxx`:41 - `BlendFunc_ConstThroatInv::Value()`
+    /// **Source:** `BlendFunc_ConstThroatInv.hxx`:40 - `BlendFunc_ConstThroatInv::Value()`
     pub fn BlendFunc_ConstThroatInv_value(
         self_: *mut BlendFunc_ConstThroatInv,
         X: *const math_Vector,
         F: *mut math_Vector,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BlendFunc_ConstThroatInv.hxx`:47 - `BlendFunc_ConstThroatInv::Derivatives()`
+    /// **Source:** `BlendFunc_ConstThroatInv.hxx`:46 - `BlendFunc_ConstThroatInv::Derivatives()`
     pub fn BlendFunc_ConstThroatInv_derivatives(
         self_: *mut BlendFunc_ConstThroatInv,
         X: *const math_Vector,
         D: *mut math_Matrix,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BlendFunc_ConstThroatInv.hxx`:52 - `BlendFunc_ConstThroatInv::Set()`
+    /// **Source:** `BlendFunc_ConstThroatInv.hxx`:50 - `BlendFunc_ConstThroatInv::Set()`
     pub fn BlendFunc_ConstThroatInv_set(
         self_: *mut BlendFunc_ConstThroatInv,
         theThroat: f64,
@@ -8339,17 +8344,17 @@ unsafe extern "C" {
         Tolerance: *mut math_Vector,
         Tol: f64,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BlendFunc_GenChamfInv.hxx`:40 - `BlendFunc_GenChamfInv::GetBounds()`
+    /// Inherited: **Source:** `BlendFunc_GenChamfInv.hxx`:39 - `BlendFunc_GenChamfInv::GetBounds()`
     pub fn BlendFunc_ConstThroatInv_inherited_GetBounds(
         self_: *const BlendFunc_ConstThroatInv,
         InfBound: *mut math_Vector,
         SupBound: *mut math_Vector,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BlendFunc_GenChamfInv.hxx`:44 - `BlendFunc_GenChamfInv::NbEquations()`
+    /// Inherited: **Source:** `BlendFunc_GenChamfInv.hxx`:42 - `BlendFunc_GenChamfInv::NbEquations()`
     pub fn BlendFunc_ConstThroatInv_inherited_NbEquations(
         self_: *const BlendFunc_ConstThroatInv,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `BlendFunc_GenChamfInv.hxx`:50 - `BlendFunc_GenChamfInv::Values()`
+    /// Inherited: **Source:** `BlendFunc_GenChamfInv.hxx`:48 - `BlendFunc_GenChamfInv::Values()`
     pub fn BlendFunc_ConstThroatInv_inherited_Values(
         self_: *mut BlendFunc_ConstThroatInv,
         X: *const math_Vector,
@@ -8370,9 +8375,9 @@ unsafe extern "C" {
     );
     /// **Source:** `BlendFunc_ConstThroatWithPenetration.hxx`:38 - `BlendFunc_ConstThroatWithPenetration::BlendFunc_ConstThroatWithPenetration()`
     pub fn BlendFunc_ConstThroatWithPenetration_ctor_handleadaptor3dsurface2_handleadaptor3dcurve(
-        S1: *const HandleAdaptor3dSurface,
-        S2: *const HandleAdaptor3dSurface,
-        C: *const HandleAdaptor3dCurve,
+        S1: *const Handle_Adaptor3d_Surface,
+        S2: *const Handle_Adaptor3d_Surface,
+        C: *const Handle_Adaptor3d_Curve,
     ) -> crate::OcctResult<*mut BlendFunc_ConstThroatWithPenetration>;
     /// **Source:** `BlendFunc_ConstThroatWithPenetration.hxx`:46 - `BlendFunc_ConstThroatWithPenetration::Value()`
     pub fn BlendFunc_ConstThroatWithPenetration_value(
@@ -8386,29 +8391,29 @@ unsafe extern "C" {
         X: *const math_Vector,
         D: *mut math_Matrix,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BlendFunc_ConstThroatWithPenetration.hxx`:57 - `BlendFunc_ConstThroatWithPenetration::IsSolution()`
+    /// **Source:** `BlendFunc_ConstThroatWithPenetration.hxx`:56 - `BlendFunc_ConstThroatWithPenetration::IsSolution()`
     pub fn BlendFunc_ConstThroatWithPenetration_is_solution(
         self_: *mut BlendFunc_ConstThroatWithPenetration,
         Sol: *const math_Vector,
         Tol: f64,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BlendFunc_ConstThroatWithPenetration.hxx`:66 - `BlendFunc_ConstThroatWithPenetration::TangentOnS1()`
+    /// **Source:** `BlendFunc_ConstThroatWithPenetration.hxx`:64 - `BlendFunc_ConstThroatWithPenetration::TangentOnS1()`
     pub fn BlendFunc_ConstThroatWithPenetration_tangent_on_s1(
         self_: *const BlendFunc_ConstThroatWithPenetration,
     ) -> crate::OcctResult<*const gp_Vec>;
-    /// **Source:** `BlendFunc_ConstThroatWithPenetration.hxx`:68 - `BlendFunc_ConstThroatWithPenetration::Tangent2dOnS1()`
+    /// **Source:** `BlendFunc_ConstThroatWithPenetration.hxx`:66 - `BlendFunc_ConstThroatWithPenetration::Tangent2dOnS1()`
     pub fn BlendFunc_ConstThroatWithPenetration_tangent2d_on_s1(
         self_: *const BlendFunc_ConstThroatWithPenetration,
     ) -> crate::OcctResult<*const gp_Vec2d>;
-    /// **Source:** `BlendFunc_ConstThroatWithPenetration.hxx`:70 - `BlendFunc_ConstThroatWithPenetration::TangentOnS2()`
+    /// **Source:** `BlendFunc_ConstThroatWithPenetration.hxx`:68 - `BlendFunc_ConstThroatWithPenetration::TangentOnS2()`
     pub fn BlendFunc_ConstThroatWithPenetration_tangent_on_s2(
         self_: *const BlendFunc_ConstThroatWithPenetration,
     ) -> crate::OcctResult<*const gp_Vec>;
-    /// **Source:** `BlendFunc_ConstThroatWithPenetration.hxx`:72 - `BlendFunc_ConstThroatWithPenetration::Tangent2dOnS2()`
+    /// **Source:** `BlendFunc_ConstThroatWithPenetration.hxx`:70 - `BlendFunc_ConstThroatWithPenetration::Tangent2dOnS2()`
     pub fn BlendFunc_ConstThroatWithPenetration_tangent2d_on_s2(
         self_: *const BlendFunc_ConstThroatWithPenetration,
     ) -> crate::OcctResult<*const gp_Vec2d>;
-    /// **Source:** `BlendFunc_ConstThroatWithPenetration.hxx`:87 - `BlendFunc_ConstThroatWithPenetration::GetSectionSize()`
+    /// **Source:** `BlendFunc_ConstThroatWithPenetration.hxx`:85 - `BlendFunc_ConstThroatWithPenetration::GetSectionSize()`
     pub fn BlendFunc_ConstThroatWithPenetration_get_section_size(
         self_: *const BlendFunc_ConstThroatWithPenetration,
     ) -> crate::OcctResult<f64>;
@@ -8460,24 +8465,24 @@ unsafe extern "C" {
     pub fn BlendFunc_ConstThroatWithPenetration_as_math_FunctionSet_mut(
         self_: *mut BlendFunc_ConstThroatWithPenetration,
     ) -> crate::OcctResult<*mut math_FunctionSet>;
-    /// Inherited: **Source:** `BlendFunc_ConstThroat.hxx`:51 - `BlendFunc_ConstThroat::Set()`
+    /// Inherited: **Source:** `BlendFunc_ConstThroat.hxx`:50 - `BlendFunc_ConstThroat::Set()`
     pub fn BlendFunc_ConstThroatWithPenetration_inherited_Set(
         self_: *mut BlendFunc_ConstThroatWithPenetration,
         Param: f64,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BlendFunc_ConstThroat.hxx`:56 - `BlendFunc_ConstThroat::PointOnS1()`
+    /// Inherited: **Source:** `BlendFunc_ConstThroat.hxx`:54 - `BlendFunc_ConstThroat::PointOnS1()`
     pub fn BlendFunc_ConstThroatWithPenetration_inherited_PointOnS1(
         self_: *const BlendFunc_ConstThroatWithPenetration,
     ) -> crate::OcctResult<*const gp_Pnt>;
-    /// Inherited: **Source:** `BlendFunc_ConstThroat.hxx`:58 - `BlendFunc_ConstThroat::PointOnS2()`
+    /// Inherited: **Source:** `BlendFunc_ConstThroat.hxx`:56 - `BlendFunc_ConstThroat::PointOnS2()`
     pub fn BlendFunc_ConstThroatWithPenetration_inherited_PointOnS2(
         self_: *const BlendFunc_ConstThroatWithPenetration,
     ) -> crate::OcctResult<*const gp_Pnt>;
-    /// Inherited: **Source:** `BlendFunc_ConstThroat.hxx`:60 - `BlendFunc_ConstThroat::IsTangencyPoint()`
+    /// Inherited: **Source:** `BlendFunc_ConstThroat.hxx`:58 - `BlendFunc_ConstThroat::IsTangencyPoint()`
     pub fn BlendFunc_ConstThroatWithPenetration_inherited_IsTangencyPoint(
         self_: *const BlendFunc_ConstThroatWithPenetration,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `BlendFunc_ConstThroat.hxx`:74 - `BlendFunc_ConstThroat::Tangent()`
+    /// Inherited: **Source:** `BlendFunc_ConstThroat.hxx`:72 - `BlendFunc_ConstThroat::Tangent()`
     pub fn BlendFunc_ConstThroatWithPenetration_inherited_Tangent(
         self_: *const BlendFunc_ConstThroatWithPenetration,
         U1: f64,
@@ -8500,43 +8505,43 @@ unsafe extern "C" {
         F: *mut math_Vector,
         D: *mut math_Matrix,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `BlendFunc_GenChamfer.hxx`:65 - `BlendFunc_GenChamfer::GetTolerance()`
+    /// Inherited: **Source:** `BlendFunc_GenChamfer.hxx`:63 - `BlendFunc_GenChamfer::GetTolerance()`
     pub fn BlendFunc_ConstThroatWithPenetration_inherited_GetTolerance(
         self_: *const BlendFunc_ConstThroatWithPenetration,
         Tolerance: *mut math_Vector,
         Tol: f64,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BlendFunc_GenChamfer.hxx`:68 - `BlendFunc_GenChamfer::GetBounds()`
+    /// Inherited: **Source:** `BlendFunc_GenChamfer.hxx`:65 - `BlendFunc_GenChamfer::GetBounds()`
     pub fn BlendFunc_ConstThroatWithPenetration_inherited_GetBounds(
         self_: *const BlendFunc_ConstThroatWithPenetration,
         InfBound: *mut math_Vector,
         SupBound: *mut math_Vector,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BlendFunc_GenChamfer.hxx`:73 - `BlendFunc_GenChamfer::GetMinimalDistance()`
+    /// Inherited: **Source:** `BlendFunc_GenChamfer.hxx`:69 - `BlendFunc_GenChamfer::GetMinimalDistance()`
     pub fn BlendFunc_ConstThroatWithPenetration_inherited_GetMinimalDistance(
         self_: *const BlendFunc_ConstThroatWithPenetration,
     ) -> crate::OcctResult<f64>;
-    /// Inherited: **Source:** `BlendFunc_GenChamfer.hxx`:81 - `BlendFunc_GenChamfer::IsRational()`
+    /// Inherited: **Source:** `BlendFunc_GenChamfer.hxx`:75 - `BlendFunc_GenChamfer::IsRational()`
     pub fn BlendFunc_ConstThroatWithPenetration_inherited_IsRational(
         self_: *const BlendFunc_ConstThroatWithPenetration,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `BlendFunc_GenChamfer.hxx`:85 - `BlendFunc_GenChamfer::GetMinimalWeight()`
+    /// Inherited: **Source:** `BlendFunc_GenChamfer.hxx`:79 - `BlendFunc_GenChamfer::GetMinimalWeight()`
     pub fn BlendFunc_ConstThroatWithPenetration_inherited_GetMinimalWeight(
         self_: *const BlendFunc_ConstThroatWithPenetration,
-        Weigths: *mut TColStd_Array1OfReal,
+        Weigths: *mut NCollection_Array1_double,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BlendFunc_GenChamfer.hxx`:89 - `BlendFunc_GenChamfer::NbIntervals()`
+    /// Inherited: **Source:** `BlendFunc_GenChamfer.hxx`:83 - `BlendFunc_GenChamfer::NbIntervals()`
     pub fn BlendFunc_ConstThroatWithPenetration_inherited_NbIntervals(
         self_: *const BlendFunc_ConstThroatWithPenetration,
         S: i32,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `BlendFunc_GenChamfer.hxx`:98 - `BlendFunc_GenChamfer::Intervals()`
+    /// Inherited: **Source:** `BlendFunc_GenChamfer.hxx`:92 - `BlendFunc_GenChamfer::Intervals()`
     pub fn BlendFunc_ConstThroatWithPenetration_inherited_Intervals(
         self_: *const BlendFunc_ConstThroatWithPenetration,
-        T: *mut TColStd_Array1OfReal,
+        T: *mut NCollection_Array1_double,
         S: i32,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BlendFunc_GenChamfer.hxx`:101 - `BlendFunc_GenChamfer::GetShape()`
+    /// Inherited: **Source:** `BlendFunc_GenChamfer.hxx`:95 - `BlendFunc_GenChamfer::GetShape()`
     pub fn BlendFunc_ConstThroatWithPenetration_inherited_GetShape(
         self_: *mut BlendFunc_ConstThroatWithPenetration,
         NbPoles: *mut i32,
@@ -8544,17 +8549,17 @@ unsafe extern "C" {
         Degree: *mut i32,
         NbPoles2d: *mut i32,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BlendFunc_GenChamfer.hxx`:117 - `BlendFunc_GenChamfer::Knots()`
+    /// Inherited: **Source:** `BlendFunc_GenChamfer.hxx`:108 - `BlendFunc_GenChamfer::Knots()`
     pub fn BlendFunc_ConstThroatWithPenetration_inherited_Knots(
         self_: *mut BlendFunc_ConstThroatWithPenetration,
-        TKnots: *mut TColStd_Array1OfReal,
+        TKnots: *mut NCollection_Array1_double,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BlendFunc_GenChamfer.hxx`:119 - `BlendFunc_GenChamfer::Mults()`
+    /// Inherited: **Source:** `BlendFunc_GenChamfer.hxx`:110 - `BlendFunc_GenChamfer::Mults()`
     pub fn BlendFunc_ConstThroatWithPenetration_inherited_Mults(
         self_: *mut BlendFunc_ConstThroatWithPenetration,
-        TMults: *mut TColStd_Array1OfInteger,
+        TMults: *mut NCollection_Array1_int,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BlendFunc_GenChamfer.hxx`:122 - `BlendFunc_GenChamfer::Section()`
+    /// Inherited: **Source:** `BlendFunc_GenChamfer.hxx`:113 - `BlendFunc_GenChamfer::Section()`
     pub fn BlendFunc_ConstThroatWithPenetration_inherited_Section(
         self_: *mut BlendFunc_ConstThroatWithPenetration,
         Param: f64,
@@ -8566,7 +8571,7 @@ unsafe extern "C" {
         Pfin: *mut f64,
         C: *mut gp_Lin,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BlendFunc_GenChamfer.hxx`:157 - `BlendFunc_GenChamfer::Resolution()`
+    /// Inherited: **Source:** `BlendFunc_GenChamfer.hxx`:148 - `BlendFunc_GenChamfer::Resolution()`
     pub fn BlendFunc_ConstThroatWithPenetration_inherited_Resolution(
         self_: *const BlendFunc_ConstThroatWithPenetration,
         IC2d: i32,
@@ -8594,7 +8599,7 @@ unsafe extern "C" {
     pub fn BlendFunc_ConstThroatWithPenetration_inherited_TwistOnS2(
         self_: *const BlendFunc_ConstThroatWithPenetration,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Blend_AppFunction.hxx`:195 - `Blend_AppFunction::Parameter()`
+    /// Inherited: **Source:** `Blend_AppFunction.hxx`:192 - `Blend_AppFunction::Parameter()`
     pub fn BlendFunc_ConstThroatWithPenetration_inherited_Parameter(
         self_: *const BlendFunc_ConstThroatWithPenetration,
         P: *const Blend_Point,
@@ -8609,9 +8614,9 @@ unsafe extern "C" {
     );
     /// **Source:** `BlendFunc_ConstThroatWithPenetrationInv.hxx`:31 - `BlendFunc_ConstThroatWithPenetrationInv::BlendFunc_ConstThroatWithPenetrationInv()`
     pub fn BlendFunc_ConstThroatWithPenetrationInv_ctor_handleadaptor3dsurface2_handleadaptor3dcurve(
-        S1: *const HandleAdaptor3dSurface,
-        S2: *const HandleAdaptor3dSurface,
-        C: *const HandleAdaptor3dCurve,
+        S1: *const Handle_Adaptor3d_Surface,
+        S2: *const Handle_Adaptor3d_Surface,
+        C: *const Handle_Adaptor3d_Curve,
     ) -> crate::OcctResult<*mut BlendFunc_ConstThroatWithPenetrationInv>;
     /// **Source:** `BlendFunc_ConstThroatWithPenetrationInv.hxx`:35 - `BlendFunc_ConstThroatWithPenetrationInv::IsSolution()`
     pub fn BlendFunc_ConstThroatWithPenetrationInv_is_solution(
@@ -8619,13 +8624,13 @@ unsafe extern "C" {
         Sol: *const math_Vector,
         Tol: f64,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BlendFunc_ConstThroatWithPenetrationInv.hxx`:42 - `BlendFunc_ConstThroatWithPenetrationInv::Value()`
+    /// **Source:** `BlendFunc_ConstThroatWithPenetrationInv.hxx`:41 - `BlendFunc_ConstThroatWithPenetrationInv::Value()`
     pub fn BlendFunc_ConstThroatWithPenetrationInv_value(
         self_: *mut BlendFunc_ConstThroatWithPenetrationInv,
         X: *const math_Vector,
         F: *mut math_Vector,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BlendFunc_ConstThroatWithPenetrationInv.hxx`:48 - `BlendFunc_ConstThroatWithPenetrationInv::Derivatives()`
+    /// **Source:** `BlendFunc_ConstThroatWithPenetrationInv.hxx`:47 - `BlendFunc_ConstThroatWithPenetrationInv::Derivatives()`
     pub fn BlendFunc_ConstThroatWithPenetrationInv_derivatives(
         self_: *mut BlendFunc_ConstThroatWithPenetrationInv,
         X: *const math_Vector,
@@ -8671,7 +8676,7 @@ unsafe extern "C" {
     pub fn BlendFunc_ConstThroatWithPenetrationInv_as_math_FunctionSet_mut(
         self_: *mut BlendFunc_ConstThroatWithPenetrationInv,
     ) -> crate::OcctResult<*mut math_FunctionSet>;
-    /// Inherited: **Source:** `BlendFunc_ConstThroatInv.hxx`:52 - `BlendFunc_ConstThroatInv::Set()`
+    /// Inherited: **Source:** `BlendFunc_ConstThroatInv.hxx`:50 - `BlendFunc_ConstThroatInv::Set()`
     pub fn BlendFunc_ConstThroatWithPenetrationInv_inherited_Set(
         self_: *mut BlendFunc_ConstThroatWithPenetrationInv,
         theThroat: f64,
@@ -8684,17 +8689,17 @@ unsafe extern "C" {
         Tolerance: *mut math_Vector,
         Tol: f64,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BlendFunc_GenChamfInv.hxx`:40 - `BlendFunc_GenChamfInv::GetBounds()`
+    /// Inherited: **Source:** `BlendFunc_GenChamfInv.hxx`:39 - `BlendFunc_GenChamfInv::GetBounds()`
     pub fn BlendFunc_ConstThroatWithPenetrationInv_inherited_GetBounds(
         self_: *const BlendFunc_ConstThroatWithPenetrationInv,
         InfBound: *mut math_Vector,
         SupBound: *mut math_Vector,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BlendFunc_GenChamfInv.hxx`:44 - `BlendFunc_GenChamfInv::NbEquations()`
+    /// Inherited: **Source:** `BlendFunc_GenChamfInv.hxx`:42 - `BlendFunc_GenChamfInv::NbEquations()`
     pub fn BlendFunc_ConstThroatWithPenetrationInv_inherited_NbEquations(
         self_: *const BlendFunc_ConstThroatWithPenetrationInv,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `BlendFunc_GenChamfInv.hxx`:50 - `BlendFunc_GenChamfInv::Values()`
+    /// Inherited: **Source:** `BlendFunc_GenChamfInv.hxx`:48 - `BlendFunc_GenChamfInv::Values()`
     pub fn BlendFunc_ConstThroatWithPenetrationInv_inherited_Values(
         self_: *mut BlendFunc_ConstThroatWithPenetrationInv,
         X: *const math_Vector,
@@ -8713,8 +8718,8 @@ unsafe extern "C" {
     pub fn BlendFunc_Corde_destructor(self_: *mut BlendFunc_Corde);
     /// **Source:** `BlendFunc_Corde.hxx`:39 - `BlendFunc_Corde::BlendFunc_Corde()`
     pub fn BlendFunc_Corde_ctor_handleadaptor3dsurface_handleadaptor3dcurve(
-        S: *const HandleAdaptor3dSurface,
-        CGuide: *const HandleAdaptor3dCurve,
+        S: *const Handle_Adaptor3d_Surface,
+        CGuide: *const Handle_Adaptor3d_Curve,
     ) -> crate::OcctResult<*mut BlendFunc_Corde>;
     /// **Source:** `BlendFunc_Corde.hxx`:42 - `BlendFunc_Corde::SetParam()`
     pub fn BlendFunc_Corde_set_param(
@@ -8776,98 +8781,98 @@ unsafe extern "C" {
     ) -> crate::OcctResult<bool>;
     // ======================== BlendFunc_EvolRad ========================
     pub fn BlendFunc_EvolRad_destructor(self_: *mut BlendFunc_EvolRad);
-    /// **Source:** `BlendFunc_EvolRad.hxx`:46 - `BlendFunc_EvolRad::BlendFunc_EvolRad()`
+    /// **Source:** `BlendFunc_EvolRad.hxx`:43 - `BlendFunc_EvolRad::BlendFunc_EvolRad()`
     pub fn BlendFunc_EvolRad_ctor_handleadaptor3dsurface2_handleadaptor3dcurve_handlelawfunction(
-        S1: *const HandleAdaptor3dSurface,
-        S2: *const HandleAdaptor3dSurface,
-        C: *const HandleAdaptor3dCurve,
-        Law: *const HandleLawFunction,
+        S1: *const Handle_Adaptor3d_Surface,
+        S2: *const Handle_Adaptor3d_Surface,
+        C: *const Handle_Adaptor3d_Curve,
+        Law: *const Handle_Law_Function,
     ) -> crate::OcctResult<*mut BlendFunc_EvolRad>;
-    /// **Source:** `BlendFunc_EvolRad.hxx`:52 - `BlendFunc_EvolRad::NbEquations()`
+    /// **Source:** `BlendFunc_EvolRad.hxx`:49 - `BlendFunc_EvolRad::NbEquations()`
     pub fn BlendFunc_EvolRad_nb_equations(
         self_: *const BlendFunc_EvolRad,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `BlendFunc_EvolRad.hxx`:58 - `BlendFunc_EvolRad::Value()`
+    /// **Source:** `BlendFunc_EvolRad.hxx`:55 - `BlendFunc_EvolRad::Value()`
     pub fn BlendFunc_EvolRad_value(
         self_: *mut BlendFunc_EvolRad,
         X: *const math_Vector,
         F: *mut math_Vector,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BlendFunc_EvolRad.hxx`:64 - `BlendFunc_EvolRad::Derivatives()`
+    /// **Source:** `BlendFunc_EvolRad.hxx`:61 - `BlendFunc_EvolRad::Derivatives()`
     pub fn BlendFunc_EvolRad_derivatives(
         self_: *mut BlendFunc_EvolRad,
         X: *const math_Vector,
         D: *mut math_Matrix,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BlendFunc_EvolRad.hxx`:71 - `BlendFunc_EvolRad::Values()`
+    /// **Source:** `BlendFunc_EvolRad.hxx`:67 - `BlendFunc_EvolRad::Values()`
     pub fn BlendFunc_EvolRad_values(
         self_: *mut BlendFunc_EvolRad,
         X: *const math_Vector,
         F: *mut math_Vector,
         D: *mut math_Matrix,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BlendFunc_EvolRad.hxx`:75 - `BlendFunc_EvolRad::Set()`
+    /// **Source:** `BlendFunc_EvolRad.hxx`:69 - `BlendFunc_EvolRad::Set()`
     pub fn BlendFunc_EvolRad_set_real(
         self_: *mut BlendFunc_EvolRad,
         Param: f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BlendFunc_EvolRad.hxx`:77 - `BlendFunc_EvolRad::Set()`
+    /// **Source:** `BlendFunc_EvolRad.hxx`:71 - `BlendFunc_EvolRad::Set()`
     pub fn BlendFunc_EvolRad_set_real2(
         self_: *mut BlendFunc_EvolRad,
         First: f64,
         Last: f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BlendFunc_EvolRad.hxx`:79 - `BlendFunc_EvolRad::GetTolerance()`
+    /// **Source:** `BlendFunc_EvolRad.hxx`:73 - `BlendFunc_EvolRad::GetTolerance()`
     pub fn BlendFunc_EvolRad_get_tolerance_vector_real(
         self_: *const BlendFunc_EvolRad,
         Tolerance: *mut math_Vector,
         Tol: f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BlendFunc_EvolRad.hxx`:82 - `BlendFunc_EvolRad::GetBounds()`
+    /// **Source:** `BlendFunc_EvolRad.hxx`:75 - `BlendFunc_EvolRad::GetBounds()`
     pub fn BlendFunc_EvolRad_get_bounds(
         self_: *const BlendFunc_EvolRad,
         InfBound: *mut math_Vector,
         SupBound: *mut math_Vector,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BlendFunc_EvolRad.hxx`:85 - `BlendFunc_EvolRad::IsSolution()`
+    /// **Source:** `BlendFunc_EvolRad.hxx`:77 - `BlendFunc_EvolRad::IsSolution()`
     pub fn BlendFunc_EvolRad_is_solution(
         self_: *mut BlendFunc_EvolRad,
         Sol: *const math_Vector,
         Tol: f64,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BlendFunc_EvolRad.hxx`:90 - `BlendFunc_EvolRad::GetMinimalDistance()`
+    /// **Source:** `BlendFunc_EvolRad.hxx`:81 - `BlendFunc_EvolRad::GetMinimalDistance()`
     pub fn BlendFunc_EvolRad_get_minimal_distance(
         self_: *const BlendFunc_EvolRad,
     ) -> crate::OcctResult<f64>;
-    /// **Source:** `BlendFunc_EvolRad.hxx`:92 - `BlendFunc_EvolRad::PointOnS1()`
+    /// **Source:** `BlendFunc_EvolRad.hxx`:83 - `BlendFunc_EvolRad::PointOnS1()`
     pub fn BlendFunc_EvolRad_point_on_s1(
         self_: *const BlendFunc_EvolRad,
     ) -> crate::OcctResult<*const gp_Pnt>;
-    /// **Source:** `BlendFunc_EvolRad.hxx`:94 - `BlendFunc_EvolRad::PointOnS2()`
+    /// **Source:** `BlendFunc_EvolRad.hxx`:85 - `BlendFunc_EvolRad::PointOnS2()`
     pub fn BlendFunc_EvolRad_point_on_s2(
         self_: *const BlendFunc_EvolRad,
     ) -> crate::OcctResult<*const gp_Pnt>;
-    /// **Source:** `BlendFunc_EvolRad.hxx`:96 - `BlendFunc_EvolRad::IsTangencyPoint()`
+    /// **Source:** `BlendFunc_EvolRad.hxx`:87 - `BlendFunc_EvolRad::IsTangencyPoint()`
     pub fn BlendFunc_EvolRad_is_tangency_point(
         self_: *const BlendFunc_EvolRad,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BlendFunc_EvolRad.hxx`:98 - `BlendFunc_EvolRad::TangentOnS1()`
+    /// **Source:** `BlendFunc_EvolRad.hxx`:89 - `BlendFunc_EvolRad::TangentOnS1()`
     pub fn BlendFunc_EvolRad_tangent_on_s1(
         self_: *const BlendFunc_EvolRad,
     ) -> crate::OcctResult<*const gp_Vec>;
-    /// **Source:** `BlendFunc_EvolRad.hxx`:100 - `BlendFunc_EvolRad::Tangent2dOnS1()`
+    /// **Source:** `BlendFunc_EvolRad.hxx`:91 - `BlendFunc_EvolRad::Tangent2dOnS1()`
     pub fn BlendFunc_EvolRad_tangent2d_on_s1(
         self_: *const BlendFunc_EvolRad,
     ) -> crate::OcctResult<*const gp_Vec2d>;
-    /// **Source:** `BlendFunc_EvolRad.hxx`:102 - `BlendFunc_EvolRad::TangentOnS2()`
+    /// **Source:** `BlendFunc_EvolRad.hxx`:93 - `BlendFunc_EvolRad::TangentOnS2()`
     pub fn BlendFunc_EvolRad_tangent_on_s2(
         self_: *const BlendFunc_EvolRad,
     ) -> crate::OcctResult<*const gp_Vec>;
-    /// **Source:** `BlendFunc_EvolRad.hxx`:104 - `BlendFunc_EvolRad::Tangent2dOnS2()`
+    /// **Source:** `BlendFunc_EvolRad.hxx`:95 - `BlendFunc_EvolRad::Tangent2dOnS2()`
     pub fn BlendFunc_EvolRad_tangent2d_on_s2(
         self_: *const BlendFunc_EvolRad,
     ) -> crate::OcctResult<*const gp_Vec2d>;
-    /// **Source:** `BlendFunc_EvolRad.hxx`:110 - `BlendFunc_EvolRad::Tangent()`
+    /// **Source:** `BlendFunc_EvolRad.hxx`:101 - `BlendFunc_EvolRad::Tangent()`
     pub fn BlendFunc_EvolRad_tangent(
         self_: *const BlendFunc_EvolRad,
         U1: f64,
@@ -8879,25 +8884,25 @@ unsafe extern "C" {
         NormFirst: *mut gp_Vec,
         NormLast: *mut gp_Vec,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BlendFunc_EvolRad.hxx`:119 - `BlendFunc_EvolRad::TwistOnS1()`
+    /// **Source:** `BlendFunc_EvolRad.hxx`:110 - `BlendFunc_EvolRad::TwistOnS1()`
     pub fn BlendFunc_EvolRad_twist_on_s1(
         self_: *const BlendFunc_EvolRad,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BlendFunc_EvolRad.hxx`:121 - `BlendFunc_EvolRad::TwistOnS2()`
+    /// **Source:** `BlendFunc_EvolRad.hxx`:112 - `BlendFunc_EvolRad::TwistOnS2()`
     pub fn BlendFunc_EvolRad_twist_on_s2(
         self_: *const BlendFunc_EvolRad,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BlendFunc_EvolRad.hxx`:123 - `BlendFunc_EvolRad::Set()`
+    /// **Source:** `BlendFunc_EvolRad.hxx`:114 - `BlendFunc_EvolRad::Set()`
     pub fn BlendFunc_EvolRad_set_int(
         self_: *mut BlendFunc_EvolRad,
         Choix: i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BlendFunc_EvolRad.hxx`:127 - `BlendFunc_EvolRad::Set()`
+    /// **Source:** `BlendFunc_EvolRad.hxx`:118 - `BlendFunc_EvolRad::Set()`
     pub fn BlendFunc_EvolRad_set_sectionshape(
         self_: *mut BlendFunc_EvolRad,
         TypeSection: i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BlendFunc_EvolRad.hxx`:130 - `BlendFunc_EvolRad::Section()`
+    /// **Source:** `BlendFunc_EvolRad.hxx`:121 - `BlendFunc_EvolRad::Section()`
     pub fn BlendFunc_EvolRad_section_real7_circ(
         self_: *mut BlendFunc_EvolRad,
         Param: f64,
@@ -8909,31 +8914,31 @@ unsafe extern "C" {
         Pfin: *mut f64,
         C: *mut gp_Circ,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BlendFunc_EvolRad.hxx`:140 - `BlendFunc_EvolRad::IsRational()`
+    /// **Source:** `BlendFunc_EvolRad.hxx`:131 - `BlendFunc_EvolRad::IsRational()`
     pub fn BlendFunc_EvolRad_is_rational(
         self_: *const BlendFunc_EvolRad,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BlendFunc_EvolRad.hxx`:143 - `BlendFunc_EvolRad::GetSectionSize()`
+    /// **Source:** `BlendFunc_EvolRad.hxx`:134 - `BlendFunc_EvolRad::GetSectionSize()`
     pub fn BlendFunc_EvolRad_get_section_size(
         self_: *const BlendFunc_EvolRad,
     ) -> crate::OcctResult<f64>;
-    /// **Source:** `BlendFunc_EvolRad.hxx`:147 - `BlendFunc_EvolRad::GetMinimalWeight()`
+    /// **Source:** `BlendFunc_EvolRad.hxx`:138 - `BlendFunc_EvolRad::GetMinimalWeight()`
     pub fn BlendFunc_EvolRad_get_minimal_weight(
         self_: *const BlendFunc_EvolRad,
-        Weigths: *mut TColStd_Array1OfReal,
+        Weigths: *mut NCollection_Array1_double,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BlendFunc_EvolRad.hxx`:151 - `BlendFunc_EvolRad::NbIntervals()`
+    /// **Source:** `BlendFunc_EvolRad.hxx`:142 - `BlendFunc_EvolRad::NbIntervals()`
     pub fn BlendFunc_EvolRad_nb_intervals(
         self_: *const BlendFunc_EvolRad,
         S: i32,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `BlendFunc_EvolRad.hxx`:158 - `BlendFunc_EvolRad::Intervals()`
+    /// **Source:** `BlendFunc_EvolRad.hxx`:149 - `BlendFunc_EvolRad::Intervals()`
     pub fn BlendFunc_EvolRad_intervals(
         self_: *const BlendFunc_EvolRad,
-        T: *mut TColStd_Array1OfReal,
+        T: *mut NCollection_Array1_double,
         S: i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BlendFunc_EvolRad.hxx`:161 - `BlendFunc_EvolRad::GetShape()`
+    /// **Source:** `BlendFunc_EvolRad.hxx`:152 - `BlendFunc_EvolRad::GetShape()`
     pub fn BlendFunc_EvolRad_get_shape(
         self_: *mut BlendFunc_EvolRad,
         NbPoles: *mut i32,
@@ -8941,7 +8946,7 @@ unsafe extern "C" {
         Degree: *mut i32,
         NbPoles2d: *mut i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BlendFunc_EvolRad.hxx`:171 - `BlendFunc_EvolRad::GetTolerance()`
+    /// **Source:** `BlendFunc_EvolRad.hxx`:159 - `BlendFunc_EvolRad::GetTolerance()`
     pub fn BlendFunc_EvolRad_get_tolerance_real3_vector2(
         self_: *const BlendFunc_EvolRad,
         BoundTol: f64,
@@ -8950,50 +8955,50 @@ unsafe extern "C" {
         Tol3d: *mut math_Vector,
         Tol1D: *mut math_Vector,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BlendFunc_EvolRad.hxx`:177 - `BlendFunc_EvolRad::Knots()`
+    /// **Source:** `BlendFunc_EvolRad.hxx`:165 - `BlendFunc_EvolRad::Knots()`
     pub fn BlendFunc_EvolRad_knots(
         self_: *mut BlendFunc_EvolRad,
-        TKnots: *mut TColStd_Array1OfReal,
+        TKnots: *mut NCollection_Array1_double,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BlendFunc_EvolRad.hxx`:179 - `BlendFunc_EvolRad::Mults()`
+    /// **Source:** `BlendFunc_EvolRad.hxx`:167 - `BlendFunc_EvolRad::Mults()`
     pub fn BlendFunc_EvolRad_mults(
         self_: *mut BlendFunc_EvolRad,
-        TMults: *mut TColStd_Array1OfInteger,
+        TMults: *mut NCollection_Array1_int,
     ) -> *const std::ffi::c_char;
+    /// **Source:** `BlendFunc_EvolRad.hxx`:170 - `BlendFunc_EvolRad::Section()`
+    pub fn BlendFunc_EvolRad_section_point_arr1_pnt_arr1_vec2_arr1_pnt2d_arr1_vec2d2_arr1_double3(
+        self_: *mut BlendFunc_EvolRad,
+        P: *const Blend_Point,
+        Poles: *mut NCollection_Array1_gp_Pnt,
+        DPoles: *mut NCollection_Array1_gp_Vec,
+        D2Poles: *mut NCollection_Array1_gp_Vec,
+        Poles2d: *mut NCollection_Array1_gp_Pnt2d,
+        DPoles2d: *mut NCollection_Array1_gp_Vec2d,
+        D2Poles2d: *mut NCollection_Array1_gp_Vec2d,
+        Weigths: *mut NCollection_Array1_double,
+        DWeigths: *mut NCollection_Array1_double,
+        D2Weigths: *mut NCollection_Array1_double,
+    ) -> crate::OcctResult<bool>;
     /// **Source:** `BlendFunc_EvolRad.hxx`:182 - `BlendFunc_EvolRad::Section()`
-    pub fn BlendFunc_EvolRad_section_point_array1ofpnt_array1ofvec2_array1ofpnt2d_array1ofvec2d2_array1ofreal3(
+    pub fn BlendFunc_EvolRad_section_point_arr1_pnt_arr1_vec_arr1_pnt2d_arr1_vec2d_arr1_double2(
         self_: *mut BlendFunc_EvolRad,
         P: *const Blend_Point,
-        Poles: *mut TColgp_Array1OfPnt,
-        DPoles: *mut TColgp_Array1OfVec,
-        D2Poles: *mut TColgp_Array1OfVec,
-        Poles2d: *mut TColgp_Array1OfPnt2d,
-        DPoles2d: *mut TColgp_Array1OfVec2d,
-        D2Poles2d: *mut TColgp_Array1OfVec2d,
-        Weigths: *mut TColStd_Array1OfReal,
-        DWeigths: *mut TColStd_Array1OfReal,
-        D2Weigths: *mut TColStd_Array1OfReal,
+        Poles: *mut NCollection_Array1_gp_Pnt,
+        DPoles: *mut NCollection_Array1_gp_Vec,
+        Poles2d: *mut NCollection_Array1_gp_Pnt2d,
+        DPoles2d: *mut NCollection_Array1_gp_Vec2d,
+        Weigths: *mut NCollection_Array1_double,
+        DWeigths: *mut NCollection_Array1_double,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BlendFunc_EvolRad.hxx`:195 - `BlendFunc_EvolRad::Section()`
-    pub fn BlendFunc_EvolRad_section_point_array1ofpnt_array1ofvec_array1ofpnt2d_array1ofvec2d_array1ofreal2(
+    /// **Source:** `BlendFunc_EvolRad.hxx`:190 - `BlendFunc_EvolRad::Section()`
+    pub fn BlendFunc_EvolRad_section_point_arr1_pnt_arr1_pnt2d_arr1_double(
         self_: *mut BlendFunc_EvolRad,
         P: *const Blend_Point,
-        Poles: *mut TColgp_Array1OfPnt,
-        DPoles: *mut TColgp_Array1OfVec,
-        Poles2d: *mut TColgp_Array1OfPnt2d,
-        DPoles2d: *mut TColgp_Array1OfVec2d,
-        Weigths: *mut TColStd_Array1OfReal,
-        DWeigths: *mut TColStd_Array1OfReal,
-    ) -> crate::OcctResult<bool>;
-    /// **Source:** `BlendFunc_EvolRad.hxx`:204 - `BlendFunc_EvolRad::Section()`
-    pub fn BlendFunc_EvolRad_section_point_array1ofpnt_array1ofpnt2d_array1ofreal(
-        self_: *mut BlendFunc_EvolRad,
-        P: *const Blend_Point,
-        Poles: *mut TColgp_Array1OfPnt,
-        Poles2d: *mut TColgp_Array1OfPnt2d,
-        Weigths: *mut TColStd_Array1OfReal,
+        Poles: *mut NCollection_Array1_gp_Pnt,
+        Poles2d: *mut NCollection_Array1_gp_Pnt2d,
+        Weigths: *mut NCollection_Array1_double,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BlendFunc_EvolRad.hxx`:209 - `BlendFunc_EvolRad::Resolution()`
+    /// **Source:** `BlendFunc_EvolRad.hxx`:195 - `BlendFunc_EvolRad::Resolution()`
     pub fn BlendFunc_EvolRad_resolution(
         self_: *const BlendFunc_EvolRad,
         IC2d: i32,
@@ -9045,7 +9050,7 @@ unsafe extern "C" {
     pub fn BlendFunc_EvolRad_inherited_Pnt2(
         self_: *const BlendFunc_EvolRad,
     ) -> crate::OcctResult<*const gp_Pnt>;
-    /// Inherited: **Source:** `Blend_AppFunction.hxx`:195 - `Blend_AppFunction::Parameter()`
+    /// Inherited: **Source:** `Blend_AppFunction.hxx`:192 - `Blend_AppFunction::Parameter()`
     pub fn BlendFunc_EvolRad_inherited_Parameter(
         self_: *const BlendFunc_EvolRad,
         P: *const Blend_Point,
@@ -9058,16 +9063,16 @@ unsafe extern "C" {
     pub fn BlendFunc_EvolRadInv_destructor(self_: *mut BlendFunc_EvolRadInv);
     /// **Source:** `BlendFunc_EvolRadInv.hxx`:32 - `BlendFunc_EvolRadInv::BlendFunc_EvolRadInv()`
     pub fn BlendFunc_EvolRadInv_ctor_handleadaptor3dsurface2_handleadaptor3dcurve_handlelawfunction(
-        S1: *const HandleAdaptor3dSurface,
-        S2: *const HandleAdaptor3dSurface,
-        C: *const HandleAdaptor3dCurve,
-        Law: *const HandleLawFunction,
+        S1: *const Handle_Adaptor3d_Surface,
+        S2: *const Handle_Adaptor3d_Surface,
+        C: *const Handle_Adaptor3d_Curve,
+        Law: *const Handle_Law_Function,
     ) -> crate::OcctResult<*mut BlendFunc_EvolRadInv>;
     /// **Source:** `BlendFunc_EvolRadInv.hxx`:37 - `BlendFunc_EvolRadInv::Set()`
     pub fn BlendFunc_EvolRadInv_set_bool_handleadaptor2dcurve2d(
         self_: *mut BlendFunc_EvolRadInv,
         OnFirst: bool,
-        COnSurf: *const HandleAdaptor2dCurve2d,
+        COnSurf: *const Handle_Adaptor2d_Curve2d,
     ) -> *const std::ffi::c_char;
     /// **Source:** `BlendFunc_EvolRadInv.hxx`:40 - `BlendFunc_EvolRadInv::GetTolerance()`
     pub fn BlendFunc_EvolRadInv_get_tolerance(
@@ -9153,7 +9158,7 @@ unsafe extern "C" {
     pub fn BlendFunc_GenChamfInv_set_bool_handleadaptor2dcurve2d(
         self_: *mut BlendFunc_GenChamfInv,
         OnFirst: bool,
-        COnSurf: *const HandleAdaptor2dCurve2d,
+        COnSurf: *const Handle_Adaptor2d_Curve2d,
     ) -> *const std::ffi::c_char;
     /// **Source:** `BlendFunc_GenChamfInv.hxx`:37 - `BlendFunc_GenChamfInv::GetTolerance()`
     pub fn BlendFunc_GenChamfInv_get_tolerance(
@@ -9161,24 +9166,24 @@ unsafe extern "C" {
         Tolerance: *mut math_Vector,
         Tol: f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BlendFunc_GenChamfInv.hxx`:40 - `BlendFunc_GenChamfInv::GetBounds()`
+    /// **Source:** `BlendFunc_GenChamfInv.hxx`:39 - `BlendFunc_GenChamfInv::GetBounds()`
     pub fn BlendFunc_GenChamfInv_get_bounds(
         self_: *const BlendFunc_GenChamfInv,
         InfBound: *mut math_Vector,
         SupBound: *mut math_Vector,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BlendFunc_GenChamfInv.hxx`:44 - `BlendFunc_GenChamfInv::NbEquations()`
+    /// **Source:** `BlendFunc_GenChamfInv.hxx`:42 - `BlendFunc_GenChamfInv::NbEquations()`
     pub fn BlendFunc_GenChamfInv_nb_equations(
         self_: *const BlendFunc_GenChamfInv,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `BlendFunc_GenChamfInv.hxx`:50 - `BlendFunc_GenChamfInv::Values()`
+    /// **Source:** `BlendFunc_GenChamfInv.hxx`:48 - `BlendFunc_GenChamfInv::Values()`
     pub fn BlendFunc_GenChamfInv_values(
         self_: *mut BlendFunc_GenChamfInv,
         X: *const math_Vector,
         F: *mut math_Vector,
         D: *mut math_Matrix,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BlendFunc_GenChamfInv.hxx`:54 - `BlendFunc_GenChamfInv::Set()`
+    /// **Source:** `BlendFunc_GenChamfInv.hxx`:50 - `BlendFunc_GenChamfInv::Set()`
     pub fn BlendFunc_GenChamfInv_set_real2_int(
         self_: *mut BlendFunc_GenChamfInv,
         Dist1: f64,
@@ -9225,7 +9230,7 @@ unsafe extern "C" {
         X: *const math_Vector,
         D: *mut math_Matrix,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Blend_FuncInv.hxx`:94 - `Blend_FuncInv::IsSolution()`
+    /// Inherited: **Source:** `Blend_FuncInv.hxx`:91 - `Blend_FuncInv::IsSolution()`
     pub fn BlendFunc_GenChamfInv_inherited_IsSolution(
         self_: *mut BlendFunc_GenChamfInv,
         Sol: *const math_Vector,
@@ -9248,61 +9253,61 @@ unsafe extern "C" {
         F: *mut math_Vector,
         D: *mut math_Matrix,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BlendFunc_GenChamfer.hxx`:57 - `BlendFunc_GenChamfer::Set()`
+    /// **Source:** `BlendFunc_GenChamfer.hxx`:55 - `BlendFunc_GenChamfer::Set()`
     pub fn BlendFunc_GenChamfer_set_real(
         self_: *mut BlendFunc_GenChamfer,
         Param: f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BlendFunc_GenChamfer.hxx`:63 - `BlendFunc_GenChamfer::Set()`
+    /// **Source:** `BlendFunc_GenChamfer.hxx`:61 - `BlendFunc_GenChamfer::Set()`
     pub fn BlendFunc_GenChamfer_set_real2(
         self_: *mut BlendFunc_GenChamfer,
         First: f64,
         Last: f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BlendFunc_GenChamfer.hxx`:65 - `BlendFunc_GenChamfer::GetTolerance()`
+    /// **Source:** `BlendFunc_GenChamfer.hxx`:63 - `BlendFunc_GenChamfer::GetTolerance()`
     pub fn BlendFunc_GenChamfer_get_tolerance_vector_real(
         self_: *const BlendFunc_GenChamfer,
         Tolerance: *mut math_Vector,
         Tol: f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BlendFunc_GenChamfer.hxx`:68 - `BlendFunc_GenChamfer::GetBounds()`
+    /// **Source:** `BlendFunc_GenChamfer.hxx`:65 - `BlendFunc_GenChamfer::GetBounds()`
     pub fn BlendFunc_GenChamfer_get_bounds(
         self_: *const BlendFunc_GenChamfer,
         InfBound: *mut math_Vector,
         SupBound: *mut math_Vector,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BlendFunc_GenChamfer.hxx`:73 - `BlendFunc_GenChamfer::GetMinimalDistance()`
+    /// **Source:** `BlendFunc_GenChamfer.hxx`:69 - `BlendFunc_GenChamfer::GetMinimalDistance()`
     pub fn BlendFunc_GenChamfer_get_minimal_distance(
         self_: *const BlendFunc_GenChamfer,
     ) -> crate::OcctResult<f64>;
-    /// **Source:** `BlendFunc_GenChamfer.hxx`:76 - `BlendFunc_GenChamfer::Set()`
+    /// **Source:** `BlendFunc_GenChamfer.hxx`:72 - `BlendFunc_GenChamfer::Set()`
     pub fn BlendFunc_GenChamfer_set_real2_int(
         self_: *mut BlendFunc_GenChamfer,
         Dist1: f64,
         Dist2: f64,
         Choix: i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BlendFunc_GenChamfer.hxx`:81 - `BlendFunc_GenChamfer::IsRational()`
+    /// **Source:** `BlendFunc_GenChamfer.hxx`:75 - `BlendFunc_GenChamfer::IsRational()`
     pub fn BlendFunc_GenChamfer_is_rational(
         self_: *const BlendFunc_GenChamfer,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BlendFunc_GenChamfer.hxx`:85 - `BlendFunc_GenChamfer::GetMinimalWeight()`
+    /// **Source:** `BlendFunc_GenChamfer.hxx`:79 - `BlendFunc_GenChamfer::GetMinimalWeight()`
     pub fn BlendFunc_GenChamfer_get_minimal_weight(
         self_: *const BlendFunc_GenChamfer,
-        Weigths: *mut TColStd_Array1OfReal,
+        Weigths: *mut NCollection_Array1_double,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BlendFunc_GenChamfer.hxx`:89 - `BlendFunc_GenChamfer::NbIntervals()`
+    /// **Source:** `BlendFunc_GenChamfer.hxx`:83 - `BlendFunc_GenChamfer::NbIntervals()`
     pub fn BlendFunc_GenChamfer_nb_intervals(
         self_: *const BlendFunc_GenChamfer,
         S: i32,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `BlendFunc_GenChamfer.hxx`:98 - `BlendFunc_GenChamfer::Intervals()`
+    /// **Source:** `BlendFunc_GenChamfer.hxx`:92 - `BlendFunc_GenChamfer::Intervals()`
     pub fn BlendFunc_GenChamfer_intervals(
         self_: *const BlendFunc_GenChamfer,
-        T: *mut TColStd_Array1OfReal,
+        T: *mut NCollection_Array1_double,
         S: i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BlendFunc_GenChamfer.hxx`:101 - `BlendFunc_GenChamfer::GetShape()`
+    /// **Source:** `BlendFunc_GenChamfer.hxx`:95 - `BlendFunc_GenChamfer::GetShape()`
     pub fn BlendFunc_GenChamfer_get_shape(
         self_: *mut BlendFunc_GenChamfer,
         NbPoles: *mut i32,
@@ -9310,7 +9315,7 @@ unsafe extern "C" {
         Degree: *mut i32,
         NbPoles2d: *mut i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BlendFunc_GenChamfer.hxx`:111 - `BlendFunc_GenChamfer::GetTolerance()`
+    /// **Source:** `BlendFunc_GenChamfer.hxx`:102 - `BlendFunc_GenChamfer::GetTolerance()`
     pub fn BlendFunc_GenChamfer_get_tolerance_real3_vector2(
         self_: *const BlendFunc_GenChamfer,
         BoundTol: f64,
@@ -9319,17 +9324,17 @@ unsafe extern "C" {
         Tol3d: *mut math_Vector,
         Tol1D: *mut math_Vector,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BlendFunc_GenChamfer.hxx`:117 - `BlendFunc_GenChamfer::Knots()`
+    /// **Source:** `BlendFunc_GenChamfer.hxx`:108 - `BlendFunc_GenChamfer::Knots()`
     pub fn BlendFunc_GenChamfer_knots(
         self_: *mut BlendFunc_GenChamfer,
-        TKnots: *mut TColStd_Array1OfReal,
+        TKnots: *mut NCollection_Array1_double,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BlendFunc_GenChamfer.hxx`:119 - `BlendFunc_GenChamfer::Mults()`
+    /// **Source:** `BlendFunc_GenChamfer.hxx`:110 - `BlendFunc_GenChamfer::Mults()`
     pub fn BlendFunc_GenChamfer_mults(
         self_: *mut BlendFunc_GenChamfer,
-        TMults: *mut TColStd_Array1OfInteger,
+        TMults: *mut NCollection_Array1_int,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BlendFunc_GenChamfer.hxx`:122 - `BlendFunc_GenChamfer::Section()`
+    /// **Source:** `BlendFunc_GenChamfer.hxx`:113 - `BlendFunc_GenChamfer::Section()`
     pub fn BlendFunc_GenChamfer_section_real7_lin(
         self_: *mut BlendFunc_GenChamfer,
         Param: f64,
@@ -9341,40 +9346,40 @@ unsafe extern "C" {
         Pfin: *mut f64,
         C: *mut gp_Lin,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BlendFunc_GenChamfer.hxx`:132 - `BlendFunc_GenChamfer::Section()`
-    pub fn BlendFunc_GenChamfer_section_point_array1ofpnt_array1ofvec2_array1ofpnt2d_array1ofvec2d2_array1ofreal3(
+    /// **Source:** `BlendFunc_GenChamfer.hxx`:123 - `BlendFunc_GenChamfer::Section()`
+    pub fn BlendFunc_GenChamfer_section_point_arr1_pnt_arr1_vec2_arr1_pnt2d_arr1_vec2d2_arr1_double3(
         self_: *mut BlendFunc_GenChamfer,
         P: *const Blend_Point,
-        Poles: *mut TColgp_Array1OfPnt,
-        DPoles: *mut TColgp_Array1OfVec,
-        D2Poles: *mut TColgp_Array1OfVec,
-        Poles2d: *mut TColgp_Array1OfPnt2d,
-        DPoles2d: *mut TColgp_Array1OfVec2d,
-        D2Poles2d: *mut TColgp_Array1OfVec2d,
-        Weigths: *mut TColStd_Array1OfReal,
-        DWeigths: *mut TColStd_Array1OfReal,
-        D2Weigths: *mut TColStd_Array1OfReal,
+        Poles: *mut NCollection_Array1_gp_Pnt,
+        DPoles: *mut NCollection_Array1_gp_Vec,
+        D2Poles: *mut NCollection_Array1_gp_Vec,
+        Poles2d: *mut NCollection_Array1_gp_Pnt2d,
+        DPoles2d: *mut NCollection_Array1_gp_Vec2d,
+        D2Poles2d: *mut NCollection_Array1_gp_Vec2d,
+        Weigths: *mut NCollection_Array1_double,
+        DWeigths: *mut NCollection_Array1_double,
+        D2Weigths: *mut NCollection_Array1_double,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BlendFunc_GenChamfer.hxx`:144 - `BlendFunc_GenChamfer::Section()`
-    pub fn BlendFunc_GenChamfer_section_point_array1ofpnt_array1ofvec_array1ofpnt2d_array1ofvec2d_array1ofreal2(
+    /// **Source:** `BlendFunc_GenChamfer.hxx`:135 - `BlendFunc_GenChamfer::Section()`
+    pub fn BlendFunc_GenChamfer_section_point_arr1_pnt_arr1_vec_arr1_pnt2d_arr1_vec2d_arr1_double2(
         self_: *mut BlendFunc_GenChamfer,
         P: *const Blend_Point,
-        Poles: *mut TColgp_Array1OfPnt,
-        DPoles: *mut TColgp_Array1OfVec,
-        Poles2d: *mut TColgp_Array1OfPnt2d,
-        DPoles2d: *mut TColgp_Array1OfVec2d,
-        Weigths: *mut TColStd_Array1OfReal,
-        DWeigths: *mut TColStd_Array1OfReal,
+        Poles: *mut NCollection_Array1_gp_Pnt,
+        DPoles: *mut NCollection_Array1_gp_Vec,
+        Poles2d: *mut NCollection_Array1_gp_Pnt2d,
+        DPoles2d: *mut NCollection_Array1_gp_Vec2d,
+        Weigths: *mut NCollection_Array1_double,
+        DWeigths: *mut NCollection_Array1_double,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BlendFunc_GenChamfer.hxx`:152 - `BlendFunc_GenChamfer::Section()`
-    pub fn BlendFunc_GenChamfer_section_point_array1ofpnt_array1ofpnt2d_array1ofreal(
+    /// **Source:** `BlendFunc_GenChamfer.hxx`:143 - `BlendFunc_GenChamfer::Section()`
+    pub fn BlendFunc_GenChamfer_section_point_arr1_pnt_arr1_pnt2d_arr1_double(
         self_: *mut BlendFunc_GenChamfer,
         P: *const Blend_Point,
-        Poles: *mut TColgp_Array1OfPnt,
-        Poles2d: *mut TColgp_Array1OfPnt2d,
-        Weigths: *mut TColStd_Array1OfReal,
+        Poles: *mut NCollection_Array1_gp_Pnt,
+        Poles2d: *mut NCollection_Array1_gp_Pnt2d,
+        Weigths: *mut NCollection_Array1_double,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BlendFunc_GenChamfer.hxx`:157 - `BlendFunc_GenChamfer::Resolution()`
+    /// **Source:** `BlendFunc_GenChamfer.hxx`:148 - `BlendFunc_GenChamfer::Resolution()`
     pub fn BlendFunc_GenChamfer_resolution(
         self_: *const BlendFunc_GenChamfer,
         IC2d: i32,
@@ -9486,17 +9491,17 @@ unsafe extern "C" {
         X: *const math_Vector,
         D: *mut math_Matrix,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Blend_AppFunction.hxx`:102 - `Blend_AppFunction::IsSolution()`
+    /// Inherited: **Source:** `Blend_AppFunction.hxx`:99 - `Blend_AppFunction::IsSolution()`
     pub fn BlendFunc_GenChamfer_inherited_IsSolution(
         self_: *mut BlendFunc_GenChamfer,
         Sol: *const math_Vector,
         Tol: f64,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Blend_AppFunction.hxx`:119 - `Blend_AppFunction::GetSectionSize()`
+    /// Inherited: **Source:** `Blend_AppFunction.hxx`:115 - `Blend_AppFunction::GetSectionSize()`
     pub fn BlendFunc_GenChamfer_inherited_GetSectionSize(
         self_: *const BlendFunc_GenChamfer,
     ) -> crate::OcctResult<f64>;
-    /// Inherited: **Source:** `Blend_AppFunction.hxx`:195 - `Blend_AppFunction::Parameter()`
+    /// Inherited: **Source:** `Blend_AppFunction.hxx`:192 - `Blend_AppFunction::Parameter()`
     pub fn BlendFunc_GenChamfer_inherited_Parameter(
         self_: *const BlendFunc_GenChamfer,
         P: *const Blend_Point,
@@ -9507,95 +9512,95 @@ unsafe extern "C" {
     ) -> crate::OcctResult<i32>;
     // ======================== BlendFunc_Ruled ========================
     pub fn BlendFunc_Ruled_destructor(self_: *mut BlendFunc_Ruled);
-    /// **Source:** `BlendFunc_Ruled.hxx`:43 - `BlendFunc_Ruled::BlendFunc_Ruled()`
+    /// **Source:** `BlendFunc_Ruled.hxx`:40 - `BlendFunc_Ruled::BlendFunc_Ruled()`
     pub fn BlendFunc_Ruled_ctor_handleadaptor3dsurface2_handleadaptor3dcurve(
-        S1: *const HandleAdaptor3dSurface,
-        S2: *const HandleAdaptor3dSurface,
-        C: *const HandleAdaptor3dCurve,
+        S1: *const Handle_Adaptor3d_Surface,
+        S2: *const Handle_Adaptor3d_Surface,
+        C: *const Handle_Adaptor3d_Curve,
     ) -> crate::OcctResult<*mut BlendFunc_Ruled>;
-    /// **Source:** `BlendFunc_Ruled.hxx`:48 - `BlendFunc_Ruled::NbEquations()`
+    /// **Source:** `BlendFunc_Ruled.hxx`:45 - `BlendFunc_Ruled::NbEquations()`
     pub fn BlendFunc_Ruled_nb_equations(self_: *const BlendFunc_Ruled) -> crate::OcctResult<i32>;
-    /// **Source:** `BlendFunc_Ruled.hxx`:54 - `BlendFunc_Ruled::Value()`
+    /// **Source:** `BlendFunc_Ruled.hxx`:51 - `BlendFunc_Ruled::Value()`
     pub fn BlendFunc_Ruled_value(
         self_: *mut BlendFunc_Ruled,
         X: *const math_Vector,
         F: *mut math_Vector,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BlendFunc_Ruled.hxx`:60 - `BlendFunc_Ruled::Derivatives()`
+    /// **Source:** `BlendFunc_Ruled.hxx`:57 - `BlendFunc_Ruled::Derivatives()`
     pub fn BlendFunc_Ruled_derivatives(
         self_: *mut BlendFunc_Ruled,
         X: *const math_Vector,
         D: *mut math_Matrix,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BlendFunc_Ruled.hxx`:67 - `BlendFunc_Ruled::Values()`
+    /// **Source:** `BlendFunc_Ruled.hxx`:63 - `BlendFunc_Ruled::Values()`
     pub fn BlendFunc_Ruled_values(
         self_: *mut BlendFunc_Ruled,
         X: *const math_Vector,
         F: *mut math_Vector,
         D: *mut math_Matrix,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BlendFunc_Ruled.hxx`:71 - `BlendFunc_Ruled::Set()`
+    /// **Source:** `BlendFunc_Ruled.hxx`:65 - `BlendFunc_Ruled::Set()`
     pub fn BlendFunc_Ruled_set_real(
         self_: *mut BlendFunc_Ruled,
         Param: f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BlendFunc_Ruled.hxx`:73 - `BlendFunc_Ruled::Set()`
+    /// **Source:** `BlendFunc_Ruled.hxx`:67 - `BlendFunc_Ruled::Set()`
     pub fn BlendFunc_Ruled_set_real2(
         self_: *mut BlendFunc_Ruled,
         First: f64,
         Last: f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BlendFunc_Ruled.hxx`:75 - `BlendFunc_Ruled::GetTolerance()`
+    /// **Source:** `BlendFunc_Ruled.hxx`:69 - `BlendFunc_Ruled::GetTolerance()`
     pub fn BlendFunc_Ruled_get_tolerance_vector_real(
         self_: *const BlendFunc_Ruled,
         Tolerance: *mut math_Vector,
         Tol: f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BlendFunc_Ruled.hxx`:78 - `BlendFunc_Ruled::GetBounds()`
+    /// **Source:** `BlendFunc_Ruled.hxx`:71 - `BlendFunc_Ruled::GetBounds()`
     pub fn BlendFunc_Ruled_get_bounds(
         self_: *const BlendFunc_Ruled,
         InfBound: *mut math_Vector,
         SupBound: *mut math_Vector,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BlendFunc_Ruled.hxx`:81 - `BlendFunc_Ruled::IsSolution()`
+    /// **Source:** `BlendFunc_Ruled.hxx`:73 - `BlendFunc_Ruled::IsSolution()`
     pub fn BlendFunc_Ruled_is_solution(
         self_: *mut BlendFunc_Ruled,
         Sol: *const math_Vector,
         Tol: f64,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BlendFunc_Ruled.hxx`:86 - `BlendFunc_Ruled::GetMinimalDistance()`
+    /// **Source:** `BlendFunc_Ruled.hxx`:77 - `BlendFunc_Ruled::GetMinimalDistance()`
     pub fn BlendFunc_Ruled_get_minimal_distance(
         self_: *const BlendFunc_Ruled,
     ) -> crate::OcctResult<f64>;
-    /// **Source:** `BlendFunc_Ruled.hxx`:88 - `BlendFunc_Ruled::PointOnS1()`
+    /// **Source:** `BlendFunc_Ruled.hxx`:79 - `BlendFunc_Ruled::PointOnS1()`
     pub fn BlendFunc_Ruled_point_on_s1(
         self_: *const BlendFunc_Ruled,
     ) -> crate::OcctResult<*const gp_Pnt>;
-    /// **Source:** `BlendFunc_Ruled.hxx`:90 - `BlendFunc_Ruled::PointOnS2()`
+    /// **Source:** `BlendFunc_Ruled.hxx`:81 - `BlendFunc_Ruled::PointOnS2()`
     pub fn BlendFunc_Ruled_point_on_s2(
         self_: *const BlendFunc_Ruled,
     ) -> crate::OcctResult<*const gp_Pnt>;
-    /// **Source:** `BlendFunc_Ruled.hxx`:92 - `BlendFunc_Ruled::IsTangencyPoint()`
+    /// **Source:** `BlendFunc_Ruled.hxx`:83 - `BlendFunc_Ruled::IsTangencyPoint()`
     pub fn BlendFunc_Ruled_is_tangency_point(
         self_: *const BlendFunc_Ruled,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BlendFunc_Ruled.hxx`:94 - `BlendFunc_Ruled::TangentOnS1()`
+    /// **Source:** `BlendFunc_Ruled.hxx`:85 - `BlendFunc_Ruled::TangentOnS1()`
     pub fn BlendFunc_Ruled_tangent_on_s1(
         self_: *const BlendFunc_Ruled,
     ) -> crate::OcctResult<*const gp_Vec>;
-    /// **Source:** `BlendFunc_Ruled.hxx`:96 - `BlendFunc_Ruled::Tangent2dOnS1()`
+    /// **Source:** `BlendFunc_Ruled.hxx`:87 - `BlendFunc_Ruled::Tangent2dOnS1()`
     pub fn BlendFunc_Ruled_tangent2d_on_s1(
         self_: *const BlendFunc_Ruled,
     ) -> crate::OcctResult<*const gp_Vec2d>;
-    /// **Source:** `BlendFunc_Ruled.hxx`:98 - `BlendFunc_Ruled::TangentOnS2()`
+    /// **Source:** `BlendFunc_Ruled.hxx`:89 - `BlendFunc_Ruled::TangentOnS2()`
     pub fn BlendFunc_Ruled_tangent_on_s2(
         self_: *const BlendFunc_Ruled,
     ) -> crate::OcctResult<*const gp_Vec>;
-    /// **Source:** `BlendFunc_Ruled.hxx`:100 - `BlendFunc_Ruled::Tangent2dOnS2()`
+    /// **Source:** `BlendFunc_Ruled.hxx`:91 - `BlendFunc_Ruled::Tangent2dOnS2()`
     pub fn BlendFunc_Ruled_tangent2d_on_s2(
         self_: *const BlendFunc_Ruled,
     ) -> crate::OcctResult<*const gp_Vec2d>;
-    /// **Source:** `BlendFunc_Ruled.hxx`:106 - `BlendFunc_Ruled::Tangent()`
+    /// **Source:** `BlendFunc_Ruled.hxx`:97 - `BlendFunc_Ruled::Tangent()`
     pub fn BlendFunc_Ruled_tangent(
         self_: *const BlendFunc_Ruled,
         U1: f64,
@@ -9607,7 +9612,7 @@ unsafe extern "C" {
         NormFirst: *mut gp_Vec,
         NormLast: *mut gp_Vec,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BlendFunc_Ruled.hxx`:115 - `BlendFunc_Ruled::GetSection()`
+    /// **Source:** `BlendFunc_Ruled.hxx`:106 - `BlendFunc_Ruled::GetSection()`
     pub fn BlendFunc_Ruled_get_section(
         self_: *mut BlendFunc_Ruled,
         Param: f64,
@@ -9615,32 +9620,32 @@ unsafe extern "C" {
         V1: f64,
         U2: f64,
         V2: f64,
-        tabP: *mut TColgp_Array1OfPnt,
-        tabV: *mut TColgp_Array1OfVec,
+        tabP: *mut NCollection_Array1_gp_Pnt,
+        tabV: *mut NCollection_Array1_gp_Vec,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BlendFunc_Ruled.hxx`:124 - `BlendFunc_Ruled::IsRational()`
+    /// **Source:** `BlendFunc_Ruled.hxx`:115 - `BlendFunc_Ruled::IsRational()`
     pub fn BlendFunc_Ruled_is_rational(self_: *const BlendFunc_Ruled) -> crate::OcctResult<bool>;
-    /// **Source:** `BlendFunc_Ruled.hxx`:127 - `BlendFunc_Ruled::GetSectionSize()`
+    /// **Source:** `BlendFunc_Ruled.hxx`:118 - `BlendFunc_Ruled::GetSectionSize()`
     pub fn BlendFunc_Ruled_get_section_size(
         self_: *const BlendFunc_Ruled,
     ) -> crate::OcctResult<f64>;
-    /// **Source:** `BlendFunc_Ruled.hxx`:131 - `BlendFunc_Ruled::GetMinimalWeight()`
+    /// **Source:** `BlendFunc_Ruled.hxx`:122 - `BlendFunc_Ruled::GetMinimalWeight()`
     pub fn BlendFunc_Ruled_get_minimal_weight(
         self_: *const BlendFunc_Ruled,
-        Weigths: *mut TColStd_Array1OfReal,
+        Weigths: *mut NCollection_Array1_double,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BlendFunc_Ruled.hxx`:135 - `BlendFunc_Ruled::NbIntervals()`
+    /// **Source:** `BlendFunc_Ruled.hxx`:126 - `BlendFunc_Ruled::NbIntervals()`
     pub fn BlendFunc_Ruled_nb_intervals(
         self_: *const BlendFunc_Ruled,
         S: i32,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `BlendFunc_Ruled.hxx`:144 - `BlendFunc_Ruled::Intervals()`
+    /// **Source:** `BlendFunc_Ruled.hxx`:134 - `BlendFunc_Ruled::Intervals()`
     pub fn BlendFunc_Ruled_intervals(
         self_: *const BlendFunc_Ruled,
-        T: *mut TColStd_Array1OfReal,
+        T: *mut NCollection_Array1_double,
         S: i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BlendFunc_Ruled.hxx`:147 - `BlendFunc_Ruled::GetShape()`
+    /// **Source:** `BlendFunc_Ruled.hxx`:137 - `BlendFunc_Ruled::GetShape()`
     pub fn BlendFunc_Ruled_get_shape(
         self_: *mut BlendFunc_Ruled,
         NbPoles: *mut i32,
@@ -9648,7 +9653,7 @@ unsafe extern "C" {
         Degree: *mut i32,
         NbPoles2d: *mut i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BlendFunc_Ruled.hxx`:157 - `BlendFunc_Ruled::GetTolerance()`
+    /// **Source:** `BlendFunc_Ruled.hxx`:144 - `BlendFunc_Ruled::GetTolerance()`
     pub fn BlendFunc_Ruled_get_tolerance_real3_vector2(
         self_: *const BlendFunc_Ruled,
         BoundTol: f64,
@@ -9657,55 +9662,55 @@ unsafe extern "C" {
         Tol3d: *mut math_Vector,
         Tol1D: *mut math_Vector,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BlendFunc_Ruled.hxx`:163 - `BlendFunc_Ruled::Knots()`
+    /// **Source:** `BlendFunc_Ruled.hxx`:150 - `BlendFunc_Ruled::Knots()`
     pub fn BlendFunc_Ruled_knots(
         self_: *mut BlendFunc_Ruled,
-        TKnots: *mut TColStd_Array1OfReal,
+        TKnots: *mut NCollection_Array1_double,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BlendFunc_Ruled.hxx`:165 - `BlendFunc_Ruled::Mults()`
+    /// **Source:** `BlendFunc_Ruled.hxx`:152 - `BlendFunc_Ruled::Mults()`
     pub fn BlendFunc_Ruled_mults(
         self_: *mut BlendFunc_Ruled,
-        TMults: *mut TColStd_Array1OfInteger,
+        TMults: *mut NCollection_Array1_int,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BlendFunc_Ruled.hxx`:168 - `BlendFunc_Ruled::Section()`
-    pub fn BlendFunc_Ruled_section_point_array1ofpnt_array1ofvec2_array1ofpnt2d_array1ofvec2d2_array1ofreal3(
+    /// **Source:** `BlendFunc_Ruled.hxx`:155 - `BlendFunc_Ruled::Section()`
+    pub fn BlendFunc_Ruled_section_point_arr1_pnt_arr1_vec2_arr1_pnt2d_arr1_vec2d2_arr1_double3(
         self_: *mut BlendFunc_Ruled,
         P: *const Blend_Point,
-        Poles: *mut TColgp_Array1OfPnt,
-        DPoles: *mut TColgp_Array1OfVec,
-        D2Poles: *mut TColgp_Array1OfVec,
-        Poles2d: *mut TColgp_Array1OfPnt2d,
-        DPoles2d: *mut TColgp_Array1OfVec2d,
-        D2Poles2d: *mut TColgp_Array1OfVec2d,
-        Weigths: *mut TColStd_Array1OfReal,
-        DWeigths: *mut TColStd_Array1OfReal,
-        D2Weigths: *mut TColStd_Array1OfReal,
+        Poles: *mut NCollection_Array1_gp_Pnt,
+        DPoles: *mut NCollection_Array1_gp_Vec,
+        D2Poles: *mut NCollection_Array1_gp_Vec,
+        Poles2d: *mut NCollection_Array1_gp_Pnt2d,
+        DPoles2d: *mut NCollection_Array1_gp_Vec2d,
+        D2Poles2d: *mut NCollection_Array1_gp_Vec2d,
+        Weigths: *mut NCollection_Array1_double,
+        DWeigths: *mut NCollection_Array1_double,
+        D2Weigths: *mut NCollection_Array1_double,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BlendFunc_Ruled.hxx`:180 - `BlendFunc_Ruled::Section()`
-    pub fn BlendFunc_Ruled_section_point_array1ofpnt_array1ofvec_array1ofpnt2d_array1ofvec2d_array1ofreal2(
+    /// **Source:** `BlendFunc_Ruled.hxx`:167 - `BlendFunc_Ruled::Section()`
+    pub fn BlendFunc_Ruled_section_point_arr1_pnt_arr1_vec_arr1_pnt2d_arr1_vec2d_arr1_double2(
         self_: *mut BlendFunc_Ruled,
         P: *const Blend_Point,
-        Poles: *mut TColgp_Array1OfPnt,
-        DPoles: *mut TColgp_Array1OfVec,
-        Poles2d: *mut TColgp_Array1OfPnt2d,
-        DPoles2d: *mut TColgp_Array1OfVec2d,
-        Weigths: *mut TColStd_Array1OfReal,
-        DWeigths: *mut TColStd_Array1OfReal,
+        Poles: *mut NCollection_Array1_gp_Pnt,
+        DPoles: *mut NCollection_Array1_gp_Vec,
+        Poles2d: *mut NCollection_Array1_gp_Pnt2d,
+        DPoles2d: *mut NCollection_Array1_gp_Vec2d,
+        Weigths: *mut NCollection_Array1_double,
+        DWeigths: *mut NCollection_Array1_double,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BlendFunc_Ruled.hxx`:188 - `BlendFunc_Ruled::Section()`
-    pub fn BlendFunc_Ruled_section_point_array1ofpnt_array1ofpnt2d_array1ofreal(
+    /// **Source:** `BlendFunc_Ruled.hxx`:175 - `BlendFunc_Ruled::Section()`
+    pub fn BlendFunc_Ruled_section_point_arr1_pnt_arr1_pnt2d_arr1_double(
         self_: *mut BlendFunc_Ruled,
         P: *const Blend_Point,
-        Poles: *mut TColgp_Array1OfPnt,
-        Poles2d: *mut TColgp_Array1OfPnt2d,
-        Weigths: *mut TColStd_Array1OfReal,
+        Poles: *mut NCollection_Array1_gp_Pnt,
+        Poles2d: *mut NCollection_Array1_gp_Pnt2d,
+        Weigths: *mut NCollection_Array1_double,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BlendFunc_Ruled.hxx`:193 - `BlendFunc_Ruled::AxeRot()`
+    /// **Source:** `BlendFunc_Ruled.hxx`:180 - `BlendFunc_Ruled::AxeRot()`
     pub fn BlendFunc_Ruled_axe_rot(
         self_: *mut BlendFunc_Ruled,
         Prm: f64,
     ) -> crate::OcctResult<*mut gp_Ax1>;
-    /// **Source:** `BlendFunc_Ruled.hxx`:195 - `BlendFunc_Ruled::Resolution()`
+    /// **Source:** `BlendFunc_Ruled.hxx`:182 - `BlendFunc_Ruled::Resolution()`
     pub fn BlendFunc_Ruled_resolution(
         self_: *const BlendFunc_Ruled,
         IC2d: i32,
@@ -9765,7 +9770,7 @@ unsafe extern "C" {
     pub fn BlendFunc_Ruled_inherited_TwistOnS2(
         self_: *const BlendFunc_Ruled,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Blend_AppFunction.hxx`:195 - `Blend_AppFunction::Parameter()`
+    /// Inherited: **Source:** `Blend_AppFunction.hxx`:192 - `Blend_AppFunction::Parameter()`
     pub fn BlendFunc_Ruled_inherited_Parameter(
         self_: *const BlendFunc_Ruled,
         P: *const Blend_Point,
@@ -9778,15 +9783,15 @@ unsafe extern "C" {
     pub fn BlendFunc_RuledInv_destructor(self_: *mut BlendFunc_RuledInv);
     /// **Source:** `BlendFunc_RuledInv.hxx`:31 - `BlendFunc_RuledInv::BlendFunc_RuledInv()`
     pub fn BlendFunc_RuledInv_ctor_handleadaptor3dsurface2_handleadaptor3dcurve(
-        S1: *const HandleAdaptor3dSurface,
-        S2: *const HandleAdaptor3dSurface,
-        C: *const HandleAdaptor3dCurve,
+        S1: *const Handle_Adaptor3d_Surface,
+        S2: *const Handle_Adaptor3d_Surface,
+        C: *const Handle_Adaptor3d_Curve,
     ) -> crate::OcctResult<*mut BlendFunc_RuledInv>;
     /// **Source:** `BlendFunc_RuledInv.hxx`:35 - `BlendFunc_RuledInv::Set()`
     pub fn BlendFunc_RuledInv_set(
         self_: *mut BlendFunc_RuledInv,
         OnFirst: bool,
-        COnSurf: *const HandleAdaptor2dCurve2d,
+        COnSurf: *const Handle_Adaptor2d_Curve2d,
     ) -> *const std::ffi::c_char;
     /// **Source:** `BlendFunc_RuledInv.hxx`:38 - `BlendFunc_RuledInv::GetTolerance()`
     pub fn BlendFunc_RuledInv_get_tolerance(
@@ -9794,35 +9799,35 @@ unsafe extern "C" {
         Tolerance: *mut math_Vector,
         Tol: f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BlendFunc_RuledInv.hxx`:41 - `BlendFunc_RuledInv::GetBounds()`
+    /// **Source:** `BlendFunc_RuledInv.hxx`:40 - `BlendFunc_RuledInv::GetBounds()`
     pub fn BlendFunc_RuledInv_get_bounds(
         self_: *const BlendFunc_RuledInv,
         InfBound: *mut math_Vector,
         SupBound: *mut math_Vector,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BlendFunc_RuledInv.hxx`:44 - `BlendFunc_RuledInv::IsSolution()`
+    /// **Source:** `BlendFunc_RuledInv.hxx`:42 - `BlendFunc_RuledInv::IsSolution()`
     pub fn BlendFunc_RuledInv_is_solution(
         self_: *mut BlendFunc_RuledInv,
         Sol: *const math_Vector,
         Tol: f64,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BlendFunc_RuledInv.hxx`:48 - `BlendFunc_RuledInv::NbEquations()`
+    /// **Source:** `BlendFunc_RuledInv.hxx`:45 - `BlendFunc_RuledInv::NbEquations()`
     pub fn BlendFunc_RuledInv_nb_equations(
         self_: *const BlendFunc_RuledInv,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `BlendFunc_RuledInv.hxx`:54 - `BlendFunc_RuledInv::Value()`
+    /// **Source:** `BlendFunc_RuledInv.hxx`:51 - `BlendFunc_RuledInv::Value()`
     pub fn BlendFunc_RuledInv_value(
         self_: *mut BlendFunc_RuledInv,
         X: *const math_Vector,
         F: *mut math_Vector,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BlendFunc_RuledInv.hxx`:60 - `BlendFunc_RuledInv::Derivatives()`
+    /// **Source:** `BlendFunc_RuledInv.hxx`:57 - `BlendFunc_RuledInv::Derivatives()`
     pub fn BlendFunc_RuledInv_derivatives(
         self_: *mut BlendFunc_RuledInv,
         X: *const math_Vector,
         D: *mut math_Matrix,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BlendFunc_RuledInv.hxx`:67 - `BlendFunc_RuledInv::Values()`
+    /// **Source:** `BlendFunc_RuledInv.hxx`:63 - `BlendFunc_RuledInv::Values()`
     pub fn BlendFunc_RuledInv_values(
         self_: *mut BlendFunc_RuledInv,
         X: *const math_Vector,
@@ -9869,26 +9874,26 @@ unsafe extern "C" {
         NbCol: i32,
         NbMat: i32,
     ) -> crate::OcctResult<*mut BlendFunc_Tensor>;
-    /// **Source:** `BlendFunc_Tensor.hxx`:39 - `BlendFunc_Tensor::Init()`
+    /// **Source:** `BlendFunc_Tensor.hxx`:37 - `BlendFunc_Tensor::Init()`
     pub fn BlendFunc_Tensor_init(
         self_: *mut BlendFunc_Tensor,
         InitialValue: f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BlendFunc_Tensor.hxx`:45 - `BlendFunc_Tensor::Value()`
+    /// **Source:** `BlendFunc_Tensor.hxx`:43 - `BlendFunc_Tensor::Value()`
     pub fn BlendFunc_Tensor_value(
         self_: *const BlendFunc_Tensor,
         Row: i32,
         Col: i32,
         Mat: i32,
     ) -> crate::OcctResult<*const f64>;
-    /// **Source:** `BlendFunc_Tensor.hxx`:60 - `BlendFunc_Tensor::ChangeValue()`
+    /// **Source:** `BlendFunc_Tensor.hxx`:54 - `BlendFunc_Tensor::ChangeValue()`
     pub fn BlendFunc_Tensor_change_value(
         self_: *mut BlendFunc_Tensor,
         Row: i32,
         Col: i32,
         Mat: i32,
     ) -> crate::OcctResult<*mut f64>;
-    /// **Source:** `BlendFunc_Tensor.hxx`:71 - `BlendFunc_Tensor::Multiply()`
+    /// **Source:** `BlendFunc_Tensor.hxx`:61 - `BlendFunc_Tensor::Multiply()`
     pub fn BlendFunc_Tensor_multiply(
         self_: *const BlendFunc_Tensor,
         Right: *const math_Vector,
@@ -9935,41 +9940,41 @@ unsafe extern "C" {
     ) -> crate::OcctResult<*const TopoDS_Edge>;
     // ======================== ChFi2d_Builder ========================
     pub fn ChFi2d_Builder_destructor(self_: *mut ChFi2d_Builder);
-    /// **Source:** `ChFi2d_Builder.hxx`:44 - `ChFi2d_Builder::ChFi2d_Builder()`
+    /// **Source:** `ChFi2d_Builder.hxx`:46 - `ChFi2d_Builder::ChFi2d_Builder()`
     pub fn ChFi2d_Builder_ctor() -> crate::OcctResult<*mut ChFi2d_Builder>;
-    /// **Source:** `ChFi2d_Builder.hxx`:48 - `ChFi2d_Builder::ChFi2d_Builder()`
+    /// **Source:** `ChFi2d_Builder.hxx`:50 - `ChFi2d_Builder::ChFi2d_Builder()`
     pub fn ChFi2d_Builder_ctor_face(
         F: *const TopoDS_Face,
     ) -> crate::OcctResult<*mut ChFi2d_Builder>;
-    /// **Source:** `ChFi2d_Builder.hxx`:50 - `ChFi2d_Builder::Init()`
+    /// **Source:** `ChFi2d_Builder.hxx`:52 - `ChFi2d_Builder::Init()`
     pub fn ChFi2d_Builder_init_face(
         self_: *mut ChFi2d_Builder,
         F: *const TopoDS_Face,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `ChFi2d_Builder.hxx`:52 - `ChFi2d_Builder::Init()`
+    /// **Source:** `ChFi2d_Builder.hxx`:54 - `ChFi2d_Builder::Init()`
     pub fn ChFi2d_Builder_init_face2(
         self_: *mut ChFi2d_Builder,
         RefFace: *const TopoDS_Face,
         ModFace: *const TopoDS_Face,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `ChFi2d_Builder.hxx`:59 - `ChFi2d_Builder::AddFillet()`
+    /// **Source:** `ChFi2d_Builder.hxx`:61 - `ChFi2d_Builder::AddFillet()`
     pub fn ChFi2d_Builder_add_fillet(
         self_: *mut ChFi2d_Builder,
         V: *const TopoDS_Vertex,
         Radius: f64,
     ) -> crate::OcctResult<*mut TopoDS_Edge>;
-    /// **Source:** `ChFi2d_Builder.hxx`:64 - `ChFi2d_Builder::ModifyFillet()`
+    /// **Source:** `ChFi2d_Builder.hxx`:66 - `ChFi2d_Builder::ModifyFillet()`
     pub fn ChFi2d_Builder_modify_fillet(
         self_: *mut ChFi2d_Builder,
         Fillet: *const TopoDS_Edge,
         Radius: f64,
     ) -> crate::OcctResult<*mut TopoDS_Edge>;
-    /// **Source:** `ChFi2d_Builder.hxx`:68 - `ChFi2d_Builder::RemoveFillet()`
+    /// **Source:** `ChFi2d_Builder.hxx`:70 - `ChFi2d_Builder::RemoveFillet()`
     pub fn ChFi2d_Builder_remove_fillet(
         self_: *mut ChFi2d_Builder,
         Fillet: *const TopoDS_Edge,
     ) -> crate::OcctResult<*mut TopoDS_Vertex>;
-    /// **Source:** `ChFi2d_Builder.hxx`:74 - `ChFi2d_Builder::AddChamfer()`
+    /// **Source:** `ChFi2d_Builder.hxx`:76 - `ChFi2d_Builder::AddChamfer()`
     pub fn ChFi2d_Builder_add_chamfer_edge2_real2(
         self_: *mut ChFi2d_Builder,
         E1: *const TopoDS_Edge,
@@ -9977,7 +9982,7 @@ unsafe extern "C" {
         D1: f64,
         D2: f64,
     ) -> crate::OcctResult<*mut TopoDS_Edge>;
-    /// **Source:** `ChFi2d_Builder.hxx`:86 - `ChFi2d_Builder::AddChamfer()`
+    /// **Source:** `ChFi2d_Builder.hxx`:88 - `ChFi2d_Builder::AddChamfer()`
     pub fn ChFi2d_Builder_add_chamfer_edge_vertex_real2(
         self_: *mut ChFi2d_Builder,
         E: *const TopoDS_Edge,
@@ -9985,7 +9990,7 @@ unsafe extern "C" {
         D: f64,
         Ang: f64,
     ) -> crate::OcctResult<*mut TopoDS_Edge>;
-    /// **Source:** `ChFi2d_Builder.hxx`:95 - `ChFi2d_Builder::ModifyChamfer()`
+    /// **Source:** `ChFi2d_Builder.hxx`:97 - `ChFi2d_Builder::ModifyChamfer()`
     pub fn ChFi2d_Builder_modify_chamfer_edge3_real2(
         self_: *mut ChFi2d_Builder,
         Chamfer: *const TopoDS_Edge,
@@ -9994,7 +9999,7 @@ unsafe extern "C" {
         D1: f64,
         D2: f64,
     ) -> crate::OcctResult<*mut TopoDS_Edge>;
-    /// **Source:** `ChFi2d_Builder.hxx`:105 - `ChFi2d_Builder::ModifyChamfer()`
+    /// **Source:** `ChFi2d_Builder.hxx`:107 - `ChFi2d_Builder::ModifyChamfer()`
     pub fn ChFi2d_Builder_modify_chamfer_edge2_real2(
         self_: *mut ChFi2d_Builder,
         Chamfer: *const TopoDS_Edge,
@@ -10002,48 +10007,48 @@ unsafe extern "C" {
         D: f64,
         Ang: f64,
     ) -> crate::OcctResult<*mut TopoDS_Edge>;
-    /// **Source:** `ChFi2d_Builder.hxx`:113 - `ChFi2d_Builder::RemoveChamfer()`
+    /// **Source:** `ChFi2d_Builder.hxx`:115 - `ChFi2d_Builder::RemoveChamfer()`
     pub fn ChFi2d_Builder_remove_chamfer(
         self_: *mut ChFi2d_Builder,
         Chamfer: *const TopoDS_Edge,
     ) -> crate::OcctResult<*mut TopoDS_Vertex>;
-    /// **Source:** `ChFi2d_Builder.hxx`:116 - `ChFi2d_Builder::Result()`
+    /// **Source:** `ChFi2d_Builder.hxx`:118 - `ChFi2d_Builder::Result()`
     pub fn ChFi2d_Builder_result(
         self_: *const ChFi2d_Builder,
     ) -> crate::OcctResult<*mut TopoDS_Face>;
-    /// **Source:** `ChFi2d_Builder.hxx`:118 - `ChFi2d_Builder::IsModified()`
+    /// **Source:** `ChFi2d_Builder.hxx`:120 - `ChFi2d_Builder::IsModified()`
     pub fn ChFi2d_Builder_is_modified(
         self_: *const ChFi2d_Builder,
         E: *const TopoDS_Edge,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `ChFi2d_Builder.hxx`:121 - `ChFi2d_Builder::FilletEdges()`
+    /// **Source:** `ChFi2d_Builder.hxx`:123 - `ChFi2d_Builder::FilletEdges()`
     pub fn ChFi2d_Builder_fillet_edges(
         self_: *const ChFi2d_Builder,
-    ) -> crate::OcctResult<*const TopTools_SequenceOfShape>;
-    /// **Source:** `ChFi2d_Builder.hxx`:123 - `ChFi2d_Builder::NbFillet()`
+    ) -> crate::OcctResult<*const NCollection_Sequence_TopoDS_Shape>;
+    /// **Source:** `ChFi2d_Builder.hxx`:125 - `ChFi2d_Builder::NbFillet()`
     pub fn ChFi2d_Builder_nb_fillet(self_: *const ChFi2d_Builder) -> crate::OcctResult<i32>;
-    /// **Source:** `ChFi2d_Builder.hxx`:126 - `ChFi2d_Builder::ChamferEdges()`
+    /// **Source:** `ChFi2d_Builder.hxx`:128 - `ChFi2d_Builder::ChamferEdges()`
     pub fn ChFi2d_Builder_chamfer_edges(
         self_: *const ChFi2d_Builder,
-    ) -> crate::OcctResult<*const TopTools_SequenceOfShape>;
-    /// **Source:** `ChFi2d_Builder.hxx`:128 - `ChFi2d_Builder::NbChamfer()`
+    ) -> crate::OcctResult<*const NCollection_Sequence_TopoDS_Shape>;
+    /// **Source:** `ChFi2d_Builder.hxx`:130 - `ChFi2d_Builder::NbChamfer()`
     pub fn ChFi2d_Builder_nb_chamfer(self_: *const ChFi2d_Builder) -> crate::OcctResult<i32>;
-    /// **Source:** `ChFi2d_Builder.hxx`:130 - `ChFi2d_Builder::HasDescendant()`
+    /// **Source:** `ChFi2d_Builder.hxx`:132 - `ChFi2d_Builder::HasDescendant()`
     pub fn ChFi2d_Builder_has_descendant(
         self_: *const ChFi2d_Builder,
         E: *const TopoDS_Edge,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `ChFi2d_Builder.hxx`:134 - `ChFi2d_Builder::DescendantEdge()`
+    /// **Source:** `ChFi2d_Builder.hxx`:136 - `ChFi2d_Builder::DescendantEdge()`
     pub fn ChFi2d_Builder_descendant_edge(
         self_: *const ChFi2d_Builder,
         E: *const TopoDS_Edge,
     ) -> crate::OcctResult<*const TopoDS_Edge>;
-    /// **Source:** `ChFi2d_Builder.hxx`:139 - `ChFi2d_Builder::BasisEdge()`
+    /// **Source:** `ChFi2d_Builder.hxx`:141 - `ChFi2d_Builder::BasisEdge()`
     pub fn ChFi2d_Builder_basis_edge(
         self_: *const ChFi2d_Builder,
         E: *const TopoDS_Edge,
     ) -> crate::OcctResult<*const TopoDS_Edge>;
-    /// **Source:** `ChFi2d_Builder.hxx`:141 - `ChFi2d_Builder::Status()`
+    /// **Source:** `ChFi2d_Builder.hxx`:143 - `ChFi2d_Builder::Status()`
     pub fn ChFi2d_Builder_status(self_: *const ChFi2d_Builder) -> crate::OcctResult<i32>;
     // ======================== ChFi2d_ChamferAPI ========================
     pub fn ChFi2d_ChamferAPI_destructor(self_: *mut ChFi2d_ChamferAPI);
@@ -10127,43 +10132,43 @@ unsafe extern "C" {
     ) -> crate::OcctResult<*mut TopoDS_Edge>;
     // ======================== ChFi2d_FilletAlgo ========================
     pub fn ChFi2d_FilletAlgo_destructor(self_: *mut ChFi2d_FilletAlgo);
-    /// **Source:** `ChFi2d_FilletAlgo.hxx`:62 - `ChFi2d_FilletAlgo::ChFi2d_FilletAlgo()`
+    /// **Source:** `ChFi2d_FilletAlgo.hxx`:61 - `ChFi2d_FilletAlgo::ChFi2d_FilletAlgo()`
     pub fn ChFi2d_FilletAlgo_ctor() -> crate::OcctResult<*mut ChFi2d_FilletAlgo>;
-    /// **Source:** `ChFi2d_FilletAlgo.hxx`:65 - `ChFi2d_FilletAlgo::ChFi2d_FilletAlgo()`
+    /// **Source:** `ChFi2d_FilletAlgo.hxx`:64 - `ChFi2d_FilletAlgo::ChFi2d_FilletAlgo()`
     pub fn ChFi2d_FilletAlgo_ctor_wire_pln(
         theWire: *const TopoDS_Wire,
         thePlane: *const gp_Pln,
     ) -> crate::OcctResult<*mut ChFi2d_FilletAlgo>;
-    /// **Source:** `ChFi2d_FilletAlgo.hxx`:68 - `ChFi2d_FilletAlgo::ChFi2d_FilletAlgo()`
+    /// **Source:** `ChFi2d_FilletAlgo.hxx`:67 - `ChFi2d_FilletAlgo::ChFi2d_FilletAlgo()`
     pub fn ChFi2d_FilletAlgo_ctor_edge2_pln(
         theEdge1: *const TopoDS_Edge,
         theEdge2: *const TopoDS_Edge,
         thePlane: *const gp_Pln,
     ) -> crate::OcctResult<*mut ChFi2d_FilletAlgo>;
-    /// **Source:** `ChFi2d_FilletAlgo.hxx`:73 - `ChFi2d_FilletAlgo::Init()`
+    /// **Source:** `ChFi2d_FilletAlgo.hxx`:72 - `ChFi2d_FilletAlgo::Init()`
     pub fn ChFi2d_FilletAlgo_init_wire_pln(
         self_: *mut ChFi2d_FilletAlgo,
         theWire: *const TopoDS_Wire,
         thePlane: *const gp_Pln,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `ChFi2d_FilletAlgo.hxx`:76 - `ChFi2d_FilletAlgo::Init()`
+    /// **Source:** `ChFi2d_FilletAlgo.hxx`:75 - `ChFi2d_FilletAlgo::Init()`
     pub fn ChFi2d_FilletAlgo_init_edge2_pln(
         self_: *mut ChFi2d_FilletAlgo,
         theEdge1: *const TopoDS_Edge,
         theEdge2: *const TopoDS_Edge,
         thePlane: *const gp_Pln,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `ChFi2d_FilletAlgo.hxx`:82 - `ChFi2d_FilletAlgo::Perform()`
+    /// **Source:** `ChFi2d_FilletAlgo.hxx`:81 - `ChFi2d_FilletAlgo::Perform()`
     pub fn ChFi2d_FilletAlgo_perform(
         self_: *mut ChFi2d_FilletAlgo,
         theRadius: f64,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `ChFi2d_FilletAlgo.hxx`:88 - `ChFi2d_FilletAlgo::NbResults()`
+    /// **Source:** `ChFi2d_FilletAlgo.hxx`:87 - `ChFi2d_FilletAlgo::NbResults()`
     pub fn ChFi2d_FilletAlgo_nb_results(
         self_: *mut ChFi2d_FilletAlgo,
         thePoint: *const gp_Pnt,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `ChFi2d_FilletAlgo.hxx`:95 - `ChFi2d_FilletAlgo::Result()`
+    /// **Source:** `ChFi2d_FilletAlgo.hxx`:94 - `ChFi2d_FilletAlgo::Result()`
     pub fn ChFi2d_FilletAlgo_result(
         self_: *mut ChFi2d_FilletAlgo,
         thePoint: *const gp_Pnt,
@@ -10173,67 +10178,67 @@ unsafe extern "C" {
     ) -> crate::OcctResult<*mut TopoDS_Edge>;
     // ======================== FilletPoint ========================
     pub fn FilletPoint_destructor(self_: *mut FilletPoint);
-    /// **Source:** `ChFi2d_FilletAlgo.hxx`:145 - `FilletPoint::FilletPoint()`
+    /// **Source:** `ChFi2d_FilletAlgo.hxx`:144 - `FilletPoint::FilletPoint()`
     pub fn FilletPoint_ctor_real(theParam: f64) -> crate::OcctResult<*mut FilletPoint>;
-    /// **Source:** `ChFi2d_FilletAlgo.hxx`:148 - `FilletPoint::setParam()`
+    /// **Source:** `ChFi2d_FilletAlgo.hxx`:147 - `FilletPoint::setParam()`
     pub fn FilletPoint_set_param(self_: *mut FilletPoint, theParam: f64)
         -> *const std::ffi::c_char;
-    /// **Source:** `ChFi2d_FilletAlgo.hxx`:151 - `FilletPoint::getParam()`
+    /// **Source:** `ChFi2d_FilletAlgo.hxx`:150 - `FilletPoint::getParam()`
     pub fn FilletPoint_get_param(self_: *const FilletPoint) -> crate::OcctResult<f64>;
-    /// **Source:** `ChFi2d_FilletAlgo.hxx`:154 - `FilletPoint::getNBValues()`
+    /// **Source:** `ChFi2d_FilletAlgo.hxx`:153 - `FilletPoint::getNBValues()`
     pub fn FilletPoint_get_nb_values(self_: *mut FilletPoint) -> crate::OcctResult<i32>;
-    /// **Source:** `ChFi2d_FilletAlgo.hxx`:157 - `FilletPoint::getValue()`
+    /// **Source:** `ChFi2d_FilletAlgo.hxx`:156 - `FilletPoint::getValue()`
     pub fn FilletPoint_get_value(self_: *mut FilletPoint, theIndex: i32) -> crate::OcctResult<f64>;
-    /// **Source:** `ChFi2d_FilletAlgo.hxx`:160 - `FilletPoint::getDiff()`
+    /// **Source:** `ChFi2d_FilletAlgo.hxx`:159 - `FilletPoint::getDiff()`
     pub fn FilletPoint_get_diff(self_: *mut FilletPoint, theIndex: i32) -> crate::OcctResult<f64>;
-    /// **Source:** `ChFi2d_FilletAlgo.hxx`:163 - `FilletPoint::isValid()`
+    /// **Source:** `ChFi2d_FilletAlgo.hxx`:162 - `FilletPoint::isValid()`
     pub fn FilletPoint_is_valid(self_: *mut FilletPoint, theIndex: i32) -> crate::OcctResult<bool>;
-    /// **Source:** `ChFi2d_FilletAlgo.hxx`:166 - `FilletPoint::getNear()`
+    /// **Source:** `ChFi2d_FilletAlgo.hxx`:165 - `FilletPoint::getNear()`
     pub fn FilletPoint_get_near(self_: *mut FilletPoint, theIndex: i32) -> crate::OcctResult<i32>;
-    /// **Source:** `ChFi2d_FilletAlgo.hxx`:169 - `FilletPoint::setParam2()`
+    /// **Source:** `ChFi2d_FilletAlgo.hxx`:168 - `FilletPoint::setParam2()`
     pub fn FilletPoint_set_param2(
         self_: *mut FilletPoint,
         theParam2: f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `ChFi2d_FilletAlgo.hxx`:172 - `FilletPoint::getParam2()`
+    /// **Source:** `ChFi2d_FilletAlgo.hxx`:171 - `FilletPoint::getParam2()`
     pub fn FilletPoint_get_param2(self_: *mut FilletPoint) -> crate::OcctResult<f64>;
-    /// **Source:** `ChFi2d_FilletAlgo.hxx`:175 - `FilletPoint::setCenter()`
+    /// **Source:** `ChFi2d_FilletAlgo.hxx`:174 - `FilletPoint::setCenter()`
     pub fn FilletPoint_set_center(
         self_: *mut FilletPoint,
         thePoint: *const gp_Pnt2d,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `ChFi2d_FilletAlgo.hxx`:178 - `FilletPoint::getCenter()`
+    /// **Source:** `ChFi2d_FilletAlgo.hxx`:177 - `FilletPoint::getCenter()`
     pub fn FilletPoint_get_center(self_: *mut FilletPoint) -> crate::OcctResult<*mut gp_Pnt2d>;
-    /// **Source:** `ChFi2d_FilletAlgo.hxx`:181 - `FilletPoint::appendValue()`
+    /// **Source:** `ChFi2d_FilletAlgo.hxx`:180 - `FilletPoint::appendValue()`
     pub fn FilletPoint_append_value(
         self_: *mut FilletPoint,
         theValue: f64,
         theValid: bool,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `ChFi2d_FilletAlgo.hxx`:184 - `FilletPoint::calculateDiff()`
+    /// **Source:** `ChFi2d_FilletAlgo.hxx`:183 - `FilletPoint::calculateDiff()`
     pub fn FilletPoint_calculate_diff(
         self_: *mut FilletPoint,
         arg0: *mut FilletPoint,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `ChFi2d_FilletAlgo.hxx`:187 - `FilletPoint::FilterPoints()`
+    /// **Source:** `ChFi2d_FilletAlgo.hxx`:186 - `FilletPoint::FilterPoints()`
     pub fn FilletPoint_filter_points(
         self_: *mut FilletPoint,
         arg0: *mut FilletPoint,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `ChFi2d_FilletAlgo.hxx`:191 - `FilletPoint::Copy()`
+    /// **Source:** `ChFi2d_FilletAlgo.hxx`:190 - `FilletPoint::Copy()`
     pub fn FilletPoint_copy(self_: *mut FilletPoint) -> crate::OcctResult<*mut FilletPoint>;
-    /// **Source:** `ChFi2d_FilletAlgo.hxx`:194 - `FilletPoint::hasSolution()`
+    /// **Source:** `ChFi2d_FilletAlgo.hxx`:193 - `FilletPoint::hasSolution()`
     pub fn FilletPoint_has_solution(
         self_: *mut FilletPoint,
         theRadius: f64,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `ChFi2d_FilletAlgo.hxx`:197 - `FilletPoint::LowerValue()`
+    /// **Source:** `ChFi2d_FilletAlgo.hxx`:196 - `FilletPoint::LowerValue()`
     pub fn FilletPoint_lower_value(self_: *mut FilletPoint) -> crate::OcctResult<f64>;
-    /// **Source:** `ChFi2d_FilletAlgo.hxx`:213 - `FilletPoint::remove()`
+    /// **Source:** `ChFi2d_FilletAlgo.hxx`:212 - `FilletPoint::remove()`
     pub fn FilletPoint_remove(self_: *mut FilletPoint, theIndex: i32) -> *const std::ffi::c_char;
     // ======================== ChFi3d_Builder ========================
     pub fn ChFi3d_Builder_destructor(self_: *mut ChFi3d_Builder);
-    /// **Source:** `ChFi3d_Builder.hxx`:71 - `ChFi3d_Builder::SetParams()`
+    /// **Source:** `ChFi3d_Builder.hxx`:73 - `ChFi3d_Builder::SetParams()`
     pub fn ChFi3d_Builder_set_params(
         self_: *mut ChFi3d_Builder,
         Tang: f64,
@@ -10243,54 +10248,54 @@ unsafe extern "C" {
         TolApp2d: f64,
         Fleche: f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `ChFi3d_Builder.hxx`:78 - `ChFi3d_Builder::SetContinuity()`
+    /// **Source:** `ChFi3d_Builder.hxx`:80 - `ChFi3d_Builder::SetContinuity()`
     pub fn ChFi3d_Builder_set_continuity(
         self_: *mut ChFi3d_Builder,
         InternalContinuity: i32,
         AngularTolerance: f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `ChFi3d_Builder.hxx`:82 - `ChFi3d_Builder::Remove()`
+    /// **Source:** `ChFi3d_Builder.hxx`:84 - `ChFi3d_Builder::Remove()`
     pub fn ChFi3d_Builder_remove(
         self_: *mut ChFi3d_Builder,
         E: *const TopoDS_Edge,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `ChFi3d_Builder.hxx`:86 - `ChFi3d_Builder::Contains()`
+    /// **Source:** `ChFi3d_Builder.hxx`:88 - `ChFi3d_Builder::Contains()`
     pub fn ChFi3d_Builder_contains_edge(
         self_: *const ChFi3d_Builder,
         E: *const TopoDS_Edge,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `ChFi3d_Builder.hxx`:91 - `ChFi3d_Builder::Contains()`
+    /// **Source:** `ChFi3d_Builder.hxx`:93 - `ChFi3d_Builder::Contains()`
     pub fn ChFi3d_Builder_contains_edge_int(
         self_: *const ChFi3d_Builder,
         E: *const TopoDS_Edge,
         IndexInSpine: *mut i32,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `ChFi3d_Builder.hxx`:96 - `ChFi3d_Builder::NbElements()`
+    /// **Source:** `ChFi3d_Builder.hxx`:97 - `ChFi3d_Builder::NbElements()`
     pub fn ChFi3d_Builder_nb_elements(self_: *const ChFi3d_Builder) -> crate::OcctResult<i32>;
-    /// **Source:** `ChFi3d_Builder.hxx`:100 - `ChFi3d_Builder::Value()`
+    /// **Source:** `ChFi3d_Builder.hxx`:101 - `ChFi3d_Builder::Value()`
     pub fn ChFi3d_Builder_value(
         self_: *const ChFi3d_Builder,
         I: i32,
-    ) -> crate::OcctResult<*mut HandleChFiDSSpine>;
-    /// **Source:** `ChFi3d_Builder.hxx`:103 - `ChFi3d_Builder::Length()`
+    ) -> crate::OcctResult<*mut Handle_ChFiDS_Spine>;
+    /// **Source:** `ChFi3d_Builder.hxx`:104 - `ChFi3d_Builder::Length()`
     pub fn ChFi3d_Builder_length(self_: *const ChFi3d_Builder, IC: i32) -> crate::OcctResult<f64>;
-    /// **Source:** `ChFi3d_Builder.hxx`:107 - `ChFi3d_Builder::FirstVertex()`
+    /// **Source:** `ChFi3d_Builder.hxx`:108 - `ChFi3d_Builder::FirstVertex()`
     pub fn ChFi3d_Builder_first_vertex(
         self_: *const ChFi3d_Builder,
         IC: i32,
     ) -> crate::OcctResult<*mut TopoDS_Vertex>;
-    /// **Source:** `ChFi3d_Builder.hxx`:111 - `ChFi3d_Builder::LastVertex()`
+    /// **Source:** `ChFi3d_Builder.hxx`:112 - `ChFi3d_Builder::LastVertex()`
     pub fn ChFi3d_Builder_last_vertex(
         self_: *const ChFi3d_Builder,
         IC: i32,
     ) -> crate::OcctResult<*mut TopoDS_Vertex>;
-    /// **Source:** `ChFi3d_Builder.hxx`:115 - `ChFi3d_Builder::Abscissa()`
+    /// **Source:** `ChFi3d_Builder.hxx`:116 - `ChFi3d_Builder::Abscissa()`
     pub fn ChFi3d_Builder_abscissa(
         self_: *const ChFi3d_Builder,
         IC: i32,
         V: *const TopoDS_Vertex,
     ) -> crate::OcctResult<f64>;
-    /// **Source:** `ChFi3d_Builder.hxx`:119 - `ChFi3d_Builder::RelativeAbscissa()`
+    /// **Source:** `ChFi3d_Builder.hxx`:120 - `ChFi3d_Builder::RelativeAbscissa()`
     pub fn ChFi3d_Builder_relative_abscissa(
         self_: *const ChFi3d_Builder,
         IC: i32,
@@ -10315,7 +10320,7 @@ unsafe extern "C" {
     pub fn ChFi3d_Builder_generated(
         self_: *mut ChFi3d_Builder,
         EouV: *const TopoDS_Shape,
-    ) -> crate::OcctResult<*const TopTools_ListOfShape>;
+    ) -> crate::OcctResult<*const NCollection_List_TopoDS_Shape>;
     /// **Source:** `ChFi3d_Builder.hxx`:145 - `ChFi3d_Builder::NbFaultyContours()`
     pub fn ChFi3d_Builder_nb_faulty_contours(
         self_: *const ChFi3d_Builder,
@@ -10335,84 +10340,70 @@ unsafe extern "C" {
         self_: *const ChFi3d_Builder,
         IC: i32,
         IS: i32,
-    ) -> crate::OcctResult<*mut HandleGeomSurface>;
-    /// **Source:** `ChFi3d_Builder.hxx`:160 - `ChFi3d_Builder::NbFaultyVertices()`
+    ) -> crate::OcctResult<*mut Handle_Geom_Surface>;
+    /// **Source:** `ChFi3d_Builder.hxx`:159 - `ChFi3d_Builder::NbFaultyVertices()`
     pub fn ChFi3d_Builder_nb_faulty_vertices(
         self_: *const ChFi3d_Builder,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `ChFi3d_Builder.hxx`:163 - `ChFi3d_Builder::FaultyVertex()`
+    /// **Source:** `ChFi3d_Builder.hxx`:162 - `ChFi3d_Builder::FaultyVertex()`
     pub fn ChFi3d_Builder_faulty_vertex(
         self_: *const ChFi3d_Builder,
         IV: i32,
     ) -> crate::OcctResult<*mut TopoDS_Vertex>;
-    /// **Source:** `ChFi3d_Builder.hxx`:166 - `ChFi3d_Builder::HasResult()`
+    /// **Source:** `ChFi3d_Builder.hxx`:165 - `ChFi3d_Builder::HasResult()`
     pub fn ChFi3d_Builder_has_result(self_: *const ChFi3d_Builder) -> crate::OcctResult<bool>;
-    /// **Source:** `ChFi3d_Builder.hxx`:170 - `ChFi3d_Builder::BadShape()`
+    /// **Source:** `ChFi3d_Builder.hxx`:169 - `ChFi3d_Builder::BadShape()`
     pub fn ChFi3d_Builder_bad_shape(
         self_: *const ChFi3d_Builder,
     ) -> crate::OcctResult<*mut TopoDS_Shape>;
-    /// **Source:** `ChFi3d_Builder.hxx`:174 - `ChFi3d_Builder::StripeStatus()`
+    /// **Source:** `ChFi3d_Builder.hxx`:173 - `ChFi3d_Builder::StripeStatus()`
     pub fn ChFi3d_Builder_stripe_status(
         self_: *const ChFi3d_Builder,
         IC: i32,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `ChFi3d_Builder.hxx`:178 - `ChFi3d_Builder::Reset()`
+    /// **Source:** `ChFi3d_Builder.hxx`:177 - `ChFi3d_Builder::Reset()`
     pub fn ChFi3d_Builder_reset(self_: *mut ChFi3d_Builder) -> *const std::ffi::c_char;
-    /// **Source:** `ChFi3d_Builder.hxx`:181 - `ChFi3d_Builder::Builder()`
+    /// **Source:** `ChFi3d_Builder.hxx`:180 - `ChFi3d_Builder::Builder()`
     pub fn ChFi3d_Builder_builder(
         self_: *const ChFi3d_Builder,
-    ) -> crate::OcctResult<*mut HandleTopOpeBRepBuildHBuilder>;
-    /// **Source:** `ChFi3d_Builder.hxx`:186 - `ChFi3d_Builder::SplitKPart()`
-    pub fn ChFi3d_Builder_split_k_part(
-        self_: *mut ChFi3d_Builder,
-        Data: *const HandleChFiDSSurfData,
-        SetData: *mut ChFiDS_SequenceOfSurfData,
-        Spine: *const HandleChFiDSSpine,
-        Iedge: i32,
-        S1: *const HandleAdaptor3dSurface,
-        I1: *const HandleAdaptor3dTopolTool,
-        S2: *const HandleAdaptor3dSurface,
-        I2: *const HandleAdaptor3dTopolTool,
-        Intf: *mut bool,
-        Intl: *mut bool,
-    ) -> crate::OcctResult<bool>;
-    /// **Source:** `ChFi3d_Builder.hxx`:197 - `ChFi3d_Builder::PerformTwoCornerbyInter()`
+    ) -> crate::OcctResult<*mut Handle_TopOpeBRepBuild_HBuilder>;
+    /// **Source:** `ChFi3d_Builder.hxx`:196 - `ChFi3d_Builder::PerformTwoCornerbyInter()`
     pub fn ChFi3d_Builder_perform_two_cornerby_inter(
         self_: *mut ChFi3d_Builder,
         Index: i32,
     ) -> crate::OcctResult<bool>;
     // ======================== ChFi3d_ChBuilder ========================
     pub fn ChFi3d_ChBuilder_destructor(self_: *mut ChFi3d_ChBuilder);
-    /// **Source:** `ChFi3d_ChBuilder.hxx`:49 - `ChFi3d_ChBuilder::ChFi3d_ChBuilder()`
+    /// **Source:** `ChFi3d_ChBuilder.hxx`:53 - `ChFi3d_ChBuilder::ChFi3d_ChBuilder()`
     pub fn ChFi3d_ChBuilder_ctor_shape_real(
         S: *const TopoDS_Shape,
         Ta: f64,
     ) -> crate::OcctResult<*mut ChFi3d_ChBuilder>;
-    /// **Source:** `ChFi3d_ChBuilder.hxx`:56 - `ChFi3d_ChBuilder::Add()`
+    /// **Source:** `ChFi3d_ChBuilder.hxx`:60 - `ChFi3d_ChBuilder::Add()`
     pub fn ChFi3d_ChBuilder_add_edge(
         self_: *mut ChFi3d_ChBuilder,
         E: *const TopoDS_Edge,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `ChFi3d_ChBuilder.hxx`:62 - `ChFi3d_ChBuilder::Add()`
+    /// **Source:** `ChFi3d_ChBuilder.hxx`:66 - `ChFi3d_ChBuilder::Add()`
     pub fn ChFi3d_ChBuilder_add_real_edge(
         self_: *mut ChFi3d_ChBuilder,
         Dis: f64,
         E: *const TopoDS_Edge,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `ChFi3d_ChBuilder.hxx`:68 - `ChFi3d_ChBuilder::SetDist()`
+    /// **Source:** `ChFi3d_ChBuilder.hxx`:72 - `ChFi3d_ChBuilder::SetDist()`
     pub fn ChFi3d_ChBuilder_set_dist(
         self_: *mut ChFi3d_ChBuilder,
         Dis: f64,
         IC: i32,
         F: *const TopoDS_Face,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `ChFi3d_ChBuilder.hxx`:74 - `ChFi3d_ChBuilder::GetDist()`
+    /// **Source:** `ChFi3d_ChBuilder.hxx`:76 - `ChFi3d_ChBuilder::GetDist()`
     pub fn ChFi3d_ChBuilder_get_dist(
         self_: *const ChFi3d_ChBuilder,
         IC: i32,
         Dis: *mut f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `ChFi3d_ChBuilder.hxx`:80 - `ChFi3d_ChBuilder::Add()`
+    /// **Source:** `ChFi3d_ChBuilder.hxx`:82 - `ChFi3d_ChBuilder::Add()`
     pub fn ChFi3d_ChBuilder_add_real2_edge_face(
         self_: *mut ChFi3d_ChBuilder,
         Dis1: f64,
@@ -10420,7 +10411,7 @@ unsafe extern "C" {
         E: *const TopoDS_Edge,
         F: *const TopoDS_Face,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `ChFi3d_ChBuilder.hxx`:89 - `ChFi3d_ChBuilder::SetDists()`
+    /// **Source:** `ChFi3d_ChBuilder.hxx`:91 - `ChFi3d_ChBuilder::SetDists()`
     pub fn ChFi3d_ChBuilder_set_dists(
         self_: *mut ChFi3d_ChBuilder,
         Dis1: f64,
@@ -10428,7 +10419,7 @@ unsafe extern "C" {
         IC: i32,
         F: *const TopoDS_Face,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `ChFi3d_ChBuilder.hxx`:96 - `ChFi3d_ChBuilder::Dists()`
+    /// **Source:** `ChFi3d_ChBuilder.hxx`:98 - `ChFi3d_ChBuilder::Dists()`
     pub fn ChFi3d_ChBuilder_dists(
         self_: *const ChFi3d_ChBuilder,
         IC: i32,
@@ -10458,54 +10449,54 @@ unsafe extern "C" {
         Dis: *mut f64,
         Angle: *mut f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `ChFi3d_ChBuilder.hxx`:125 - `ChFi3d_ChBuilder::SetMode()`
+    /// **Source:** `ChFi3d_ChBuilder.hxx`:123 - `ChFi3d_ChBuilder::SetMode()`
     pub fn ChFi3d_ChBuilder_set_mode(
         self_: *mut ChFi3d_ChBuilder,
         theMode: i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `ChFi3d_ChBuilder.hxx`:128 - `ChFi3d_ChBuilder::IsChamfer()`
+    /// **Source:** `ChFi3d_ChBuilder.hxx`:126 - `ChFi3d_ChBuilder::IsChamfer()`
     pub fn ChFi3d_ChBuilder_is_chamfer(
         self_: *const ChFi3d_ChBuilder,
         IC: i32,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `ChFi3d_ChBuilder.hxx`:131 - `ChFi3d_ChBuilder::Mode()`
+    /// **Source:** `ChFi3d_ChBuilder.hxx`:129 - `ChFi3d_ChBuilder::Mode()`
     pub fn ChFi3d_ChBuilder_mode(self_: *const ChFi3d_ChBuilder) -> crate::OcctResult<i32>;
-    /// **Source:** `ChFi3d_ChBuilder.hxx`:134 - `ChFi3d_ChBuilder::ResetContour()`
+    /// **Source:** `ChFi3d_ChBuilder.hxx`:132 - `ChFi3d_ChBuilder::ResetContour()`
     pub fn ChFi3d_ChBuilder_reset_contour(
         self_: *mut ChFi3d_ChBuilder,
         IC: i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `ChFi3d_ChBuilder.hxx`:136 - `ChFi3d_ChBuilder::Simulate()`
+    /// **Source:** `ChFi3d_ChBuilder.hxx`:134 - `ChFi3d_ChBuilder::Simulate()`
     pub fn ChFi3d_ChBuilder_simulate(
         self_: *mut ChFi3d_ChBuilder,
         IC: i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `ChFi3d_ChBuilder.hxx`:138 - `ChFi3d_ChBuilder::NbSurf()`
+    /// **Source:** `ChFi3d_ChBuilder.hxx`:136 - `ChFi3d_ChBuilder::NbSurf()`
     pub fn ChFi3d_ChBuilder_nb_surf(
         self_: *const ChFi3d_ChBuilder,
         IC: i32,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `ChFi3d_ChBuilder.hxx`:140 - `ChFi3d_ChBuilder::Sect()`
+    /// **Source:** `ChFi3d_ChBuilder.hxx`:138 - `ChFi3d_ChBuilder::Sect()`
     pub fn ChFi3d_ChBuilder_sect(
         self_: *const ChFi3d_ChBuilder,
         IC: i32,
         IS: i32,
-    ) -> crate::OcctResult<*mut HandleChFiDSSecHArray1>;
-    /// **Source:** `ChFi3d_ChBuilder.hxx`:143 - `ChFi3d_ChBuilder::SimulSurf()`
+    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_ChFiDS_CircSection>;
+    /// **Source:** `ChFi3d_ChBuilder.hxx`:141 - `ChFi3d_ChBuilder::SimulSurf()`
     pub fn ChFi3d_ChBuilder_simul_surf_handlechfidssurfdata_handlechfidselspine_handlechfidsspine_int_handlebrepadaptorsurface_handleadaptor3dtopoltool_handlebrepadaptorcurve2d_handlebrepadaptorsurface_handlebrepadaptorcurve2d_bool_handlebrepadaptorsurface_handleadaptor3dtopoltool_orientation_real4_bool6_vector(
         self_: *mut ChFi3d_ChBuilder,
-        Data: *mut HandleChFiDSSurfData,
-        Guide: *const HandleChFiDSElSpine,
-        Spine: *const HandleChFiDSSpine,
+        Data: *mut Handle_ChFiDS_SurfData,
+        Guide: *const Handle_ChFiDS_ElSpine,
+        Spine: *const Handle_ChFiDS_Spine,
         Choix: i32,
-        S1: *const HandleBRepAdaptorSurface,
-        I1: *const HandleAdaptor3dTopolTool,
-        PC1: *const HandleBRepAdaptorCurve2d,
-        Sref1: *const HandleBRepAdaptorSurface,
-        PCref1: *const HandleBRepAdaptorCurve2d,
+        S1: *const Handle_BRepAdaptor_Surface,
+        I1: *const Handle_Adaptor3d_TopolTool,
+        PC1: *const Handle_BRepAdaptor_Curve2d,
+        Sref1: *const Handle_BRepAdaptor_Surface,
+        PCref1: *const Handle_BRepAdaptor_Curve2d,
         Decroch1: *mut bool,
-        S2: *const HandleBRepAdaptorSurface,
-        I2: *const HandleAdaptor3dTopolTool,
+        S2: *const Handle_BRepAdaptor_Surface,
+        I2: *const Handle_Adaptor3d_TopolTool,
         Or2: i32,
         Fleche: f64,
         TolGuide: f64,
@@ -10519,21 +10510,21 @@ unsafe extern "C" {
         RecRst: bool,
         Soldep: *const math_Vector,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `ChFi3d_ChBuilder.hxx`:168 - `ChFi3d_ChBuilder::SimulSurf()`
+    /// **Source:** `ChFi3d_ChBuilder.hxx`:166 - `ChFi3d_ChBuilder::SimulSurf()`
     pub fn ChFi3d_ChBuilder_simul_surf_handlechfidssurfdata_handlechfidselspine_handlechfidsspine_int_handlebrepadaptorsurface_handleadaptor3dtopoltool_orientation_handlebrepadaptorsurface_handleadaptor3dtopoltool_handlebrepadaptorcurve2d_handlebrepadaptorsurface_handlebrepadaptorcurve2d_bool_real4_bool6_vector(
         self_: *mut ChFi3d_ChBuilder,
-        Data: *mut HandleChFiDSSurfData,
-        Guide: *const HandleChFiDSElSpine,
-        Spine: *const HandleChFiDSSpine,
+        Data: *mut Handle_ChFiDS_SurfData,
+        Guide: *const Handle_ChFiDS_ElSpine,
+        Spine: *const Handle_ChFiDS_Spine,
         Choix: i32,
-        S1: *const HandleBRepAdaptorSurface,
-        I1: *const HandleAdaptor3dTopolTool,
+        S1: *const Handle_BRepAdaptor_Surface,
+        I1: *const Handle_Adaptor3d_TopolTool,
         Or1: i32,
-        S2: *const HandleBRepAdaptorSurface,
-        I2: *const HandleAdaptor3dTopolTool,
-        PC2: *const HandleBRepAdaptorCurve2d,
-        Sref2: *const HandleBRepAdaptorSurface,
-        PCref2: *const HandleBRepAdaptorCurve2d,
+        S2: *const Handle_BRepAdaptor_Surface,
+        I2: *const Handle_Adaptor3d_TopolTool,
+        PC2: *const Handle_BRepAdaptor_Curve2d,
+        Sref2: *const Handle_BRepAdaptor_Surface,
+        PCref2: *const Handle_BRepAdaptor_Curve2d,
         Decroch2: *mut bool,
         Fleche: f64,
         TolGuide: f64,
@@ -10547,145 +10538,27 @@ unsafe extern "C" {
         RecRst: bool,
         Soldep: *const math_Vector,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `ChFi3d_ChBuilder.hxx`:193 - `ChFi3d_ChBuilder::SimulSurf()`
+    /// **Source:** `ChFi3d_ChBuilder.hxx`:191 - `ChFi3d_ChBuilder::SimulSurf()`
     pub fn ChFi3d_ChBuilder_simul_surf_handlechfidssurfdata_handlechfidselspine_handlechfidsspine_int_handlebrepadaptorsurface_handleadaptor3dtopoltool_handlebrepadaptorcurve2d_handlebrepadaptorsurface_handlebrepadaptorcurve2d_bool_orientation_handlebrepadaptorsurface_handleadaptor3dtopoltool_handlebrepadaptorcurve2d_handlebrepadaptorsurface_handlebrepadaptorcurve2d_bool_orientation_real4_bool7_vector(
         self_: *mut ChFi3d_ChBuilder,
-        Data: *mut HandleChFiDSSurfData,
-        Guide: *const HandleChFiDSElSpine,
-        Spine: *const HandleChFiDSSpine,
+        Data: *mut Handle_ChFiDS_SurfData,
+        Guide: *const Handle_ChFiDS_ElSpine,
+        Spine: *const Handle_ChFiDS_Spine,
         Choix: i32,
-        S1: *const HandleBRepAdaptorSurface,
-        I1: *const HandleAdaptor3dTopolTool,
-        PC1: *const HandleBRepAdaptorCurve2d,
-        Sref1: *const HandleBRepAdaptorSurface,
-        PCref1: *const HandleBRepAdaptorCurve2d,
+        S1: *const Handle_BRepAdaptor_Surface,
+        I1: *const Handle_Adaptor3d_TopolTool,
+        PC1: *const Handle_BRepAdaptor_Curve2d,
+        Sref1: *const Handle_BRepAdaptor_Surface,
+        PCref1: *const Handle_BRepAdaptor_Curve2d,
         Decroch1: *mut bool,
         Or1: i32,
-        S2: *const HandleBRepAdaptorSurface,
-        I2: *const HandleAdaptor3dTopolTool,
-        PC2: *const HandleBRepAdaptorCurve2d,
-        Sref2: *const HandleBRepAdaptorSurface,
-        PCref2: *const HandleBRepAdaptorCurve2d,
+        S2: *const Handle_BRepAdaptor_Surface,
+        I2: *const Handle_Adaptor3d_TopolTool,
+        PC2: *const Handle_BRepAdaptor_Curve2d,
+        Sref2: *const Handle_BRepAdaptor_Surface,
+        PCref2: *const Handle_BRepAdaptor_Curve2d,
         Decroch2: *mut bool,
         Or2: i32,
-        Fleche: f64,
-        TolGuide: f64,
-        First: *mut f64,
-        Last: *mut f64,
-        Inside: bool,
-        Appro: bool,
-        Forward: bool,
-        RecP1: bool,
-        RecRst1: bool,
-        RecP2: bool,
-        RecRst2: bool,
-        Soldep: *const math_Vector,
-    ) -> *const std::ffi::c_char;
-    /// **Source:** `ChFi3d_ChBuilder.hxx`:227 - `ChFi3d_ChBuilder::PerformSurf()`
-    pub fn ChFi3d_ChBuilder_perform_surf_sequenceofsurfdata_handlechfidselspine_handlechfidsspine_int_handlebrepadaptorsurface_handleadaptor3dtopoltool_handlebrepadaptorsurface_handleadaptor3dtopoltool_real5_bool5_vector_int2(
-        self_: *mut ChFi3d_ChBuilder,
-        Data: *mut ChFiDS_SequenceOfSurfData,
-        Guide: *const HandleChFiDSElSpine,
-        Spine: *const HandleChFiDSSpine,
-        Choix: i32,
-        S1: *const HandleBRepAdaptorSurface,
-        I1: *const HandleAdaptor3dTopolTool,
-        S2: *const HandleBRepAdaptorSurface,
-        I2: *const HandleAdaptor3dTopolTool,
-        MaxStep: f64,
-        Fleche: f64,
-        TolGuide: f64,
-        First: *mut f64,
-        Last: *mut f64,
-        Inside: bool,
-        Appro: bool,
-        Forward: bool,
-        RecOnS1: bool,
-        RecOnS2: bool,
-        Soldep: *const math_Vector,
-        Intf: *mut i32,
-        Intl: *mut i32,
-    ) -> crate::OcctResult<bool>;
-    /// **Source:** `ChFi3d_ChBuilder.hxx`:252 - `ChFi3d_ChBuilder::PerformSurf()`
-    pub fn ChFi3d_ChBuilder_perform_surf_sequenceofsurfdata_handlechfidselspine_handlechfidsspine_int_handlebrepadaptorsurface_handleadaptor3dtopoltool_handlebrepadaptorcurve2d_handlebrepadaptorsurface_handlebrepadaptorcurve2d_bool_handlebrepadaptorsurface_handleadaptor3dtopoltool_orientation_real5_bool6_vector(
-        self_: *mut ChFi3d_ChBuilder,
-        Data: *mut ChFiDS_SequenceOfSurfData,
-        Guide: *const HandleChFiDSElSpine,
-        Spine: *const HandleChFiDSSpine,
-        Choix: i32,
-        S1: *const HandleBRepAdaptorSurface,
-        I1: *const HandleAdaptor3dTopolTool,
-        PC1: *const HandleBRepAdaptorCurve2d,
-        Sref1: *const HandleBRepAdaptorSurface,
-        PCref1: *const HandleBRepAdaptorCurve2d,
-        Decroch1: *mut bool,
-        S2: *const HandleBRepAdaptorSurface,
-        I2: *const HandleAdaptor3dTopolTool,
-        Or2: i32,
-        MaxStep: f64,
-        Fleche: f64,
-        TolGuide: f64,
-        First: *mut f64,
-        Last: *mut f64,
-        Inside: bool,
-        Appro: bool,
-        Forward: bool,
-        RecP: bool,
-        RecS: bool,
-        RecRst: bool,
-        Soldep: *const math_Vector,
-    ) -> *const std::ffi::c_char;
-    /// **Source:** `ChFi3d_ChBuilder.hxx`:281 - `ChFi3d_ChBuilder::PerformSurf()`
-    pub fn ChFi3d_ChBuilder_perform_surf_sequenceofsurfdata_handlechfidselspine_handlechfidsspine_int_handlebrepadaptorsurface_handleadaptor3dtopoltool_orientation_handlebrepadaptorsurface_handleadaptor3dtopoltool_handlebrepadaptorcurve2d_handlebrepadaptorsurface_handlebrepadaptorcurve2d_bool_real5_bool6_vector(
-        self_: *mut ChFi3d_ChBuilder,
-        Data: *mut ChFiDS_SequenceOfSurfData,
-        Guide: *const HandleChFiDSElSpine,
-        Spine: *const HandleChFiDSSpine,
-        Choix: i32,
-        S1: *const HandleBRepAdaptorSurface,
-        I1: *const HandleAdaptor3dTopolTool,
-        Or1: i32,
-        S2: *const HandleBRepAdaptorSurface,
-        I2: *const HandleAdaptor3dTopolTool,
-        PC2: *const HandleBRepAdaptorCurve2d,
-        Sref2: *const HandleBRepAdaptorSurface,
-        PCref2: *const HandleBRepAdaptorCurve2d,
-        Decroch2: *mut bool,
-        MaxStep: f64,
-        Fleche: f64,
-        TolGuide: f64,
-        First: *mut f64,
-        Last: *mut f64,
-        Inside: bool,
-        Appro: bool,
-        Forward: bool,
-        RecP: bool,
-        RecS: bool,
-        RecRst: bool,
-        Soldep: *const math_Vector,
-    ) -> *const std::ffi::c_char;
-    /// **Source:** `ChFi3d_ChBuilder.hxx`:310 - `ChFi3d_ChBuilder::PerformSurf()`
-    pub fn ChFi3d_ChBuilder_perform_surf_sequenceofsurfdata_handlechfidselspine_handlechfidsspine_int_handlebrepadaptorsurface_handleadaptor3dtopoltool_handlebrepadaptorcurve2d_handlebrepadaptorsurface_handlebrepadaptorcurve2d_bool_orientation_handlebrepadaptorsurface_handleadaptor3dtopoltool_handlebrepadaptorcurve2d_handlebrepadaptorsurface_handlebrepadaptorcurve2d_bool_orientation_real5_bool7_vector(
-        self_: *mut ChFi3d_ChBuilder,
-        Data: *mut ChFiDS_SequenceOfSurfData,
-        Guide: *const HandleChFiDSElSpine,
-        Spine: *const HandleChFiDSSpine,
-        Choix: i32,
-        S1: *const HandleBRepAdaptorSurface,
-        I1: *const HandleAdaptor3dTopolTool,
-        PC1: *const HandleBRepAdaptorCurve2d,
-        Sref1: *const HandleBRepAdaptorSurface,
-        PCref1: *const HandleBRepAdaptorCurve2d,
-        Decroch1: *mut bool,
-        Or1: i32,
-        S2: *const HandleBRepAdaptorSurface,
-        I2: *const HandleAdaptor3dTopolTool,
-        PC2: *const HandleBRepAdaptorCurve2d,
-        Sref2: *const HandleBRepAdaptorSurface,
-        PCref2: *const HandleBRepAdaptorCurve2d,
-        Decroch2: *mut bool,
-        Or2: i32,
-        MaxStep: f64,
         Fleche: f64,
         TolGuide: f64,
         First: *mut f64,
@@ -10707,7 +10580,7 @@ unsafe extern "C" {
     pub fn ChFi3d_ChBuilder_as_ChFi3d_Builder_mut(
         self_: *mut ChFi3d_ChBuilder,
     ) -> crate::OcctResult<*mut ChFi3d_Builder>;
-    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:71 - `ChFi3d_Builder::SetParams()`
+    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:73 - `ChFi3d_Builder::SetParams()`
     pub fn ChFi3d_ChBuilder_inherited_SetParams(
         self_: *mut ChFi3d_ChBuilder,
         Tang: f64,
@@ -10717,53 +10590,53 @@ unsafe extern "C" {
         TolApp2d: f64,
         Fleche: f64,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:78 - `ChFi3d_Builder::SetContinuity()`
+    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:80 - `ChFi3d_Builder::SetContinuity()`
     pub fn ChFi3d_ChBuilder_inherited_SetContinuity(
         self_: *mut ChFi3d_ChBuilder,
         InternalContinuity: i32,
         AngularTolerance: f64,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:82 - `ChFi3d_Builder::Remove()`
+    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:84 - `ChFi3d_Builder::Remove()`
     pub fn ChFi3d_ChBuilder_inherited_Remove(
         self_: *mut ChFi3d_ChBuilder,
         E: *const TopoDS_Edge,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:86 - `ChFi3d_Builder::Contains()`
+    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:88 - `ChFi3d_Builder::Contains()`
     pub fn ChFi3d_ChBuilder_inherited_Contains(
         self_: *const ChFi3d_ChBuilder,
         E: *const TopoDS_Edge,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:96 - `ChFi3d_Builder::NbElements()`
+    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:97 - `ChFi3d_Builder::NbElements()`
     pub fn ChFi3d_ChBuilder_inherited_NbElements(
         self_: *const ChFi3d_ChBuilder,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:100 - `ChFi3d_Builder::Value()`
+    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:101 - `ChFi3d_Builder::Value()`
     pub fn ChFi3d_ChBuilder_inherited_Value(
         self_: *const ChFi3d_ChBuilder,
         I: i32,
-    ) -> crate::OcctResult<*mut HandleChFiDSSpine>;
-    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:103 - `ChFi3d_Builder::Length()`
+    ) -> crate::OcctResult<*mut Handle_ChFiDS_Spine>;
+    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:104 - `ChFi3d_Builder::Length()`
     pub fn ChFi3d_ChBuilder_inherited_Length(
         self_: *const ChFi3d_ChBuilder,
         IC: i32,
     ) -> crate::OcctResult<f64>;
-    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:107 - `ChFi3d_Builder::FirstVertex()`
+    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:108 - `ChFi3d_Builder::FirstVertex()`
     pub fn ChFi3d_ChBuilder_inherited_FirstVertex(
         self_: *const ChFi3d_ChBuilder,
         IC: i32,
     ) -> crate::OcctResult<*mut TopoDS_Vertex>;
-    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:111 - `ChFi3d_Builder::LastVertex()`
+    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:112 - `ChFi3d_Builder::LastVertex()`
     pub fn ChFi3d_ChBuilder_inherited_LastVertex(
         self_: *const ChFi3d_ChBuilder,
         IC: i32,
     ) -> crate::OcctResult<*mut TopoDS_Vertex>;
-    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:115 - `ChFi3d_Builder::Abscissa()`
+    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:116 - `ChFi3d_Builder::Abscissa()`
     pub fn ChFi3d_ChBuilder_inherited_Abscissa(
         self_: *const ChFi3d_ChBuilder,
         IC: i32,
         V: *const TopoDS_Vertex,
     ) -> crate::OcctResult<f64>;
-    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:119 - `ChFi3d_Builder::RelativeAbscissa()`
+    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:120 - `ChFi3d_Builder::RelativeAbscissa()`
     pub fn ChFi3d_ChBuilder_inherited_RelativeAbscissa(
         self_: *const ChFi3d_ChBuilder,
         IC: i32,
@@ -10810,107 +10683,93 @@ unsafe extern "C" {
         self_: *const ChFi3d_ChBuilder,
         IC: i32,
         IS: i32,
-    ) -> crate::OcctResult<*mut HandleGeomSurface>;
-    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:160 - `ChFi3d_Builder::NbFaultyVertices()`
+    ) -> crate::OcctResult<*mut Handle_Geom_Surface>;
+    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:159 - `ChFi3d_Builder::NbFaultyVertices()`
     pub fn ChFi3d_ChBuilder_inherited_NbFaultyVertices(
         self_: *const ChFi3d_ChBuilder,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:163 - `ChFi3d_Builder::FaultyVertex()`
+    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:162 - `ChFi3d_Builder::FaultyVertex()`
     pub fn ChFi3d_ChBuilder_inherited_FaultyVertex(
         self_: *const ChFi3d_ChBuilder,
         IV: i32,
     ) -> crate::OcctResult<*mut TopoDS_Vertex>;
-    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:166 - `ChFi3d_Builder::HasResult()`
+    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:165 - `ChFi3d_Builder::HasResult()`
     pub fn ChFi3d_ChBuilder_inherited_HasResult(
         self_: *const ChFi3d_ChBuilder,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:170 - `ChFi3d_Builder::BadShape()`
+    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:169 - `ChFi3d_Builder::BadShape()`
     pub fn ChFi3d_ChBuilder_inherited_BadShape(
         self_: *const ChFi3d_ChBuilder,
     ) -> crate::OcctResult<*mut TopoDS_Shape>;
-    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:174 - `ChFi3d_Builder::StripeStatus()`
+    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:173 - `ChFi3d_Builder::StripeStatus()`
     pub fn ChFi3d_ChBuilder_inherited_StripeStatus(
         self_: *const ChFi3d_ChBuilder,
         IC: i32,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:178 - `ChFi3d_Builder::Reset()`
+    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:177 - `ChFi3d_Builder::Reset()`
     pub fn ChFi3d_ChBuilder_inherited_Reset(
         self_: *mut ChFi3d_ChBuilder,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:181 - `ChFi3d_Builder::Builder()`
+    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:180 - `ChFi3d_Builder::Builder()`
     pub fn ChFi3d_ChBuilder_inherited_Builder(
         self_: *const ChFi3d_ChBuilder,
-    ) -> crate::OcctResult<*mut HandleTopOpeBRepBuildHBuilder>;
-    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:186 - `ChFi3d_Builder::SplitKPart()`
-    pub fn ChFi3d_ChBuilder_inherited_SplitKPart(
-        self_: *mut ChFi3d_ChBuilder,
-        Data: *const HandleChFiDSSurfData,
-        SetData: *mut ChFiDS_SequenceOfSurfData,
-        Spine: *const HandleChFiDSSpine,
-        Iedge: i32,
-        S1: *const HandleAdaptor3dSurface,
-        I1: *const HandleAdaptor3dTopolTool,
-        S2: *const HandleAdaptor3dSurface,
-        I2: *const HandleAdaptor3dTopolTool,
-        Intf: *mut bool,
-        Intl: *mut bool,
-    ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:197 - `ChFi3d_Builder::PerformTwoCornerbyInter()`
+    ) -> crate::OcctResult<*mut Handle_TopOpeBRepBuild_HBuilder>;
+    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:196 - `ChFi3d_Builder::PerformTwoCornerbyInter()`
     pub fn ChFi3d_ChBuilder_inherited_PerformTwoCornerbyInter(
         self_: *mut ChFi3d_ChBuilder,
         Index: i32,
     ) -> crate::OcctResult<bool>;
     // ======================== ChFi3d_FilBuilder ========================
     pub fn ChFi3d_FilBuilder_destructor(self_: *mut ChFi3d_FilBuilder);
-    /// **Source:** `ChFi3d_FilBuilder.hxx`:49 - `ChFi3d_FilBuilder::ChFi3d_FilBuilder()`
+    /// **Source:** `ChFi3d_FilBuilder.hxx`:53 - `ChFi3d_FilBuilder::ChFi3d_FilBuilder()`
     pub fn ChFi3d_FilBuilder_ctor_shape_filletshape_real(
         S: *const TopoDS_Shape,
         FShape: i32,
         Ta: f64,
     ) -> crate::OcctResult<*mut ChFi3d_FilBuilder>;
-    /// **Source:** `ChFi3d_FilBuilder.hxx`:54 - `ChFi3d_FilBuilder::SetFilletShape()`
+    /// **Source:** `ChFi3d_FilBuilder.hxx`:58 - `ChFi3d_FilBuilder::SetFilletShape()`
     pub fn ChFi3d_FilBuilder_set_fillet_shape(
         self_: *mut ChFi3d_FilBuilder,
         FShape: i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `ChFi3d_FilBuilder.hxx`:57 - `ChFi3d_FilBuilder::GetFilletShape()`
+    /// **Source:** `ChFi3d_FilBuilder.hxx`:61 - `ChFi3d_FilBuilder::GetFilletShape()`
     pub fn ChFi3d_FilBuilder_get_fillet_shape(
         self_: *const ChFi3d_FilBuilder,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `ChFi3d_FilBuilder.hxx`:62 - `ChFi3d_FilBuilder::Add()`
+    /// **Source:** `ChFi3d_FilBuilder.hxx`:66 - `ChFi3d_FilBuilder::Add()`
     pub fn ChFi3d_FilBuilder_add_edge(
         self_: *mut ChFi3d_FilBuilder,
         E: *const TopoDS_Edge,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `ChFi3d_FilBuilder.hxx`:65 - `ChFi3d_FilBuilder::Add()`
+    /// **Source:** `ChFi3d_FilBuilder.hxx`:69 - `ChFi3d_FilBuilder::Add()`
     pub fn ChFi3d_FilBuilder_add_real_edge(
         self_: *mut ChFi3d_FilBuilder,
         Radius: f64,
         E: *const TopoDS_Edge,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `ChFi3d_FilBuilder.hxx`:68 - `ChFi3d_FilBuilder::SetRadius()`
+    /// **Source:** `ChFi3d_FilBuilder.hxx`:72 - `ChFi3d_FilBuilder::SetRadius()`
     pub fn ChFi3d_FilBuilder_set_radius_handlelawfunction_int2(
         self_: *mut ChFi3d_FilBuilder,
-        C: *const HandleLawFunction,
+        C: *const Handle_Law_Function,
         IC: i32,
         IinC: i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `ChFi3d_FilBuilder.hxx`:73 - `ChFi3d_FilBuilder::IsConstant()`
+    /// **Source:** `ChFi3d_FilBuilder.hxx`:75 - `ChFi3d_FilBuilder::IsConstant()`
     pub fn ChFi3d_FilBuilder_is_constant_int(
         self_: *mut ChFi3d_FilBuilder,
         IC: i32,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `ChFi3d_FilBuilder.hxx`:77 - `ChFi3d_FilBuilder::Radius()`
+    /// **Source:** `ChFi3d_FilBuilder.hxx`:79 - `ChFi3d_FilBuilder::Radius()`
     pub fn ChFi3d_FilBuilder_radius_int(
         self_: *mut ChFi3d_FilBuilder,
         IC: i32,
     ) -> crate::OcctResult<f64>;
-    /// **Source:** `ChFi3d_FilBuilder.hxx`:80 - `ChFi3d_FilBuilder::ResetContour()`
+    /// **Source:** `ChFi3d_FilBuilder.hxx`:82 - `ChFi3d_FilBuilder::ResetContour()`
     pub fn ChFi3d_FilBuilder_reset_contour(
         self_: *mut ChFi3d_FilBuilder,
         IC: i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `ChFi3d_FilBuilder.hxx`:84 - `ChFi3d_FilBuilder::SetRadius()`
+    /// **Source:** `ChFi3d_FilBuilder.hxx`:86 - `ChFi3d_FilBuilder::SetRadius()`
     pub fn ChFi3d_FilBuilder_set_radius_real_int_edge(
         self_: *mut ChFi3d_FilBuilder,
         Radius: f64,
@@ -10930,32 +10789,32 @@ unsafe extern "C" {
         IC: i32,
         V: *const TopoDS_Vertex,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `ChFi3d_FilBuilder.hxx`:97 - `ChFi3d_FilBuilder::UnSet()`
+    /// **Source:** `ChFi3d_FilBuilder.hxx`:95 - `ChFi3d_FilBuilder::UnSet()`
     pub fn ChFi3d_FilBuilder_un_set_int_vertex(
         self_: *mut ChFi3d_FilBuilder,
         IC: i32,
         V: *const TopoDS_Vertex,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `ChFi3d_FilBuilder.hxx`:101 - `ChFi3d_FilBuilder::SetRadius()`
+    /// **Source:** `ChFi3d_FilBuilder.hxx`:99 - `ChFi3d_FilBuilder::SetRadius()`
     pub fn ChFi3d_FilBuilder_set_radius_xy_int2(
         self_: *mut ChFi3d_FilBuilder,
         UandR: *const gp_XY,
         IC: i32,
         IinC: i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `ChFi3d_FilBuilder.hxx`:106 - `ChFi3d_FilBuilder::IsConstant()`
+    /// **Source:** `ChFi3d_FilBuilder.hxx`:102 - `ChFi3d_FilBuilder::IsConstant()`
     pub fn ChFi3d_FilBuilder_is_constant_int_edge(
         self_: *mut ChFi3d_FilBuilder,
         IC: i32,
         E: *const TopoDS_Edge,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `ChFi3d_FilBuilder.hxx`:109 - `ChFi3d_FilBuilder::Radius()`
+    /// **Source:** `ChFi3d_FilBuilder.hxx`:105 - `ChFi3d_FilBuilder::Radius()`
     pub fn ChFi3d_FilBuilder_radius_int_edge(
         self_: *mut ChFi3d_FilBuilder,
         IC: i32,
         E: *const TopoDS_Edge,
     ) -> crate::OcctResult<f64>;
-    /// **Source:** `ChFi3d_FilBuilder.hxx`:114 - `ChFi3d_FilBuilder::GetBounds()`
+    /// **Source:** `ChFi3d_FilBuilder.hxx`:110 - `ChFi3d_FilBuilder::GetBounds()`
     pub fn ChFi3d_FilBuilder_get_bounds(
         self_: *mut ChFi3d_FilBuilder,
         IC: i32,
@@ -10963,35 +10822,35 @@ unsafe extern "C" {
         First: *mut f64,
         Last: *mut f64,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `ChFi3d_FilBuilder.hxx`:122 - `ChFi3d_FilBuilder::GetLaw()`
+    /// **Source:** `ChFi3d_FilBuilder.hxx`:115 - `ChFi3d_FilBuilder::GetLaw()`
     pub fn ChFi3d_FilBuilder_get_law(
         self_: *mut ChFi3d_FilBuilder,
         IC: i32,
         E: *const TopoDS_Edge,
-    ) -> crate::OcctResult<*mut HandleLawFunction>;
-    /// **Source:** `ChFi3d_FilBuilder.hxx`:126 - `ChFi3d_FilBuilder::SetLaw()`
+    ) -> crate::OcctResult<*mut Handle_Law_Function>;
+    /// **Source:** `ChFi3d_FilBuilder.hxx`:119 - `ChFi3d_FilBuilder::SetLaw()`
     pub fn ChFi3d_FilBuilder_set_law(
         self_: *mut ChFi3d_FilBuilder,
         IC: i32,
         E: *const TopoDS_Edge,
-        L: *const HandleLawFunction,
+        L: *const Handle_Law_Function,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `ChFi3d_FilBuilder.hxx`:130 - `ChFi3d_FilBuilder::Simulate()`
+    /// **Source:** `ChFi3d_FilBuilder.hxx`:123 - `ChFi3d_FilBuilder::Simulate()`
     pub fn ChFi3d_FilBuilder_simulate(
         self_: *mut ChFi3d_FilBuilder,
         IC: i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `ChFi3d_FilBuilder.hxx`:132 - `ChFi3d_FilBuilder::NbSurf()`
+    /// **Source:** `ChFi3d_FilBuilder.hxx`:125 - `ChFi3d_FilBuilder::NbSurf()`
     pub fn ChFi3d_FilBuilder_nb_surf(
         self_: *const ChFi3d_FilBuilder,
         IC: i32,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `ChFi3d_FilBuilder.hxx`:134 - `ChFi3d_FilBuilder::Sect()`
+    /// **Source:** `ChFi3d_FilBuilder.hxx`:127 - `ChFi3d_FilBuilder::Sect()`
     pub fn ChFi3d_FilBuilder_sect(
         self_: *const ChFi3d_FilBuilder,
         IC: i32,
         IS: i32,
-    ) -> crate::OcctResult<*mut HandleChFiDSSecHArray1>;
+    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_ChFiDS_CircSection>;
     /// Upcast ChFi3d_FilBuilder to ChFi3d_Builder
     pub fn ChFi3d_FilBuilder_as_ChFi3d_Builder(
         self_: *const ChFi3d_FilBuilder,
@@ -11000,7 +10859,7 @@ unsafe extern "C" {
     pub fn ChFi3d_FilBuilder_as_ChFi3d_Builder_mut(
         self_: *mut ChFi3d_FilBuilder,
     ) -> crate::OcctResult<*mut ChFi3d_Builder>;
-    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:71 - `ChFi3d_Builder::SetParams()`
+    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:73 - `ChFi3d_Builder::SetParams()`
     pub fn ChFi3d_FilBuilder_inherited_SetParams(
         self_: *mut ChFi3d_FilBuilder,
         Tang: f64,
@@ -11010,53 +10869,53 @@ unsafe extern "C" {
         TolApp2d: f64,
         Fleche: f64,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:78 - `ChFi3d_Builder::SetContinuity()`
+    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:80 - `ChFi3d_Builder::SetContinuity()`
     pub fn ChFi3d_FilBuilder_inherited_SetContinuity(
         self_: *mut ChFi3d_FilBuilder,
         InternalContinuity: i32,
         AngularTolerance: f64,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:82 - `ChFi3d_Builder::Remove()`
+    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:84 - `ChFi3d_Builder::Remove()`
     pub fn ChFi3d_FilBuilder_inherited_Remove(
         self_: *mut ChFi3d_FilBuilder,
         E: *const TopoDS_Edge,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:86 - `ChFi3d_Builder::Contains()`
+    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:88 - `ChFi3d_Builder::Contains()`
     pub fn ChFi3d_FilBuilder_inherited_Contains(
         self_: *const ChFi3d_FilBuilder,
         E: *const TopoDS_Edge,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:96 - `ChFi3d_Builder::NbElements()`
+    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:97 - `ChFi3d_Builder::NbElements()`
     pub fn ChFi3d_FilBuilder_inherited_NbElements(
         self_: *const ChFi3d_FilBuilder,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:100 - `ChFi3d_Builder::Value()`
+    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:101 - `ChFi3d_Builder::Value()`
     pub fn ChFi3d_FilBuilder_inherited_Value(
         self_: *const ChFi3d_FilBuilder,
         I: i32,
-    ) -> crate::OcctResult<*mut HandleChFiDSSpine>;
-    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:103 - `ChFi3d_Builder::Length()`
+    ) -> crate::OcctResult<*mut Handle_ChFiDS_Spine>;
+    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:104 - `ChFi3d_Builder::Length()`
     pub fn ChFi3d_FilBuilder_inherited_Length(
         self_: *const ChFi3d_FilBuilder,
         IC: i32,
     ) -> crate::OcctResult<f64>;
-    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:107 - `ChFi3d_Builder::FirstVertex()`
+    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:108 - `ChFi3d_Builder::FirstVertex()`
     pub fn ChFi3d_FilBuilder_inherited_FirstVertex(
         self_: *const ChFi3d_FilBuilder,
         IC: i32,
     ) -> crate::OcctResult<*mut TopoDS_Vertex>;
-    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:111 - `ChFi3d_Builder::LastVertex()`
+    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:112 - `ChFi3d_Builder::LastVertex()`
     pub fn ChFi3d_FilBuilder_inherited_LastVertex(
         self_: *const ChFi3d_FilBuilder,
         IC: i32,
     ) -> crate::OcctResult<*mut TopoDS_Vertex>;
-    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:115 - `ChFi3d_Builder::Abscissa()`
+    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:116 - `ChFi3d_Builder::Abscissa()`
     pub fn ChFi3d_FilBuilder_inherited_Abscissa(
         self_: *const ChFi3d_FilBuilder,
         IC: i32,
         V: *const TopoDS_Vertex,
     ) -> crate::OcctResult<f64>;
-    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:119 - `ChFi3d_Builder::RelativeAbscissa()`
+    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:120 - `ChFi3d_Builder::RelativeAbscissa()`
     pub fn ChFi3d_FilBuilder_inherited_RelativeAbscissa(
         self_: *const ChFi3d_FilBuilder,
         IC: i32,
@@ -11103,52 +10962,38 @@ unsafe extern "C" {
         self_: *const ChFi3d_FilBuilder,
         IC: i32,
         IS: i32,
-    ) -> crate::OcctResult<*mut HandleGeomSurface>;
-    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:160 - `ChFi3d_Builder::NbFaultyVertices()`
+    ) -> crate::OcctResult<*mut Handle_Geom_Surface>;
+    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:159 - `ChFi3d_Builder::NbFaultyVertices()`
     pub fn ChFi3d_FilBuilder_inherited_NbFaultyVertices(
         self_: *const ChFi3d_FilBuilder,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:163 - `ChFi3d_Builder::FaultyVertex()`
+    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:162 - `ChFi3d_Builder::FaultyVertex()`
     pub fn ChFi3d_FilBuilder_inherited_FaultyVertex(
         self_: *const ChFi3d_FilBuilder,
         IV: i32,
     ) -> crate::OcctResult<*mut TopoDS_Vertex>;
-    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:166 - `ChFi3d_Builder::HasResult()`
+    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:165 - `ChFi3d_Builder::HasResult()`
     pub fn ChFi3d_FilBuilder_inherited_HasResult(
         self_: *const ChFi3d_FilBuilder,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:170 - `ChFi3d_Builder::BadShape()`
+    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:169 - `ChFi3d_Builder::BadShape()`
     pub fn ChFi3d_FilBuilder_inherited_BadShape(
         self_: *const ChFi3d_FilBuilder,
     ) -> crate::OcctResult<*mut TopoDS_Shape>;
-    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:174 - `ChFi3d_Builder::StripeStatus()`
+    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:173 - `ChFi3d_Builder::StripeStatus()`
     pub fn ChFi3d_FilBuilder_inherited_StripeStatus(
         self_: *const ChFi3d_FilBuilder,
         IC: i32,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:178 - `ChFi3d_Builder::Reset()`
+    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:177 - `ChFi3d_Builder::Reset()`
     pub fn ChFi3d_FilBuilder_inherited_Reset(
         self_: *mut ChFi3d_FilBuilder,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:181 - `ChFi3d_Builder::Builder()`
+    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:180 - `ChFi3d_Builder::Builder()`
     pub fn ChFi3d_FilBuilder_inherited_Builder(
         self_: *const ChFi3d_FilBuilder,
-    ) -> crate::OcctResult<*mut HandleTopOpeBRepBuildHBuilder>;
-    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:186 - `ChFi3d_Builder::SplitKPart()`
-    pub fn ChFi3d_FilBuilder_inherited_SplitKPart(
-        self_: *mut ChFi3d_FilBuilder,
-        Data: *const HandleChFiDSSurfData,
-        SetData: *mut ChFiDS_SequenceOfSurfData,
-        Spine: *const HandleChFiDSSpine,
-        Iedge: i32,
-        S1: *const HandleAdaptor3dSurface,
-        I1: *const HandleAdaptor3dTopolTool,
-        S2: *const HandleAdaptor3dSurface,
-        I2: *const HandleAdaptor3dTopolTool,
-        Intf: *mut bool,
-        Intl: *mut bool,
-    ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:197 - `ChFi3d_Builder::PerformTwoCornerbyInter()`
+    ) -> crate::OcctResult<*mut Handle_TopOpeBRepBuild_HBuilder>;
+    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:196 - `ChFi3d_Builder::PerformTwoCornerbyInter()`
     pub fn ChFi3d_FilBuilder_inherited_PerformTwoCornerbyInter(
         self_: *mut ChFi3d_FilBuilder,
         Index: i32,
@@ -11157,22 +11002,22 @@ unsafe extern "C" {
     pub fn ChFi3d_SearchSing_destructor(self_: *mut ChFi3d_SearchSing);
     /// **Source:** `ChFi3d_SearchSing.hxx`:36 - `ChFi3d_SearchSing::ChFi3d_SearchSing()`
     pub fn ChFi3d_SearchSing_ctor_handlegeomcurve2(
-        C1: *const HandleGeomCurve,
-        C2: *const HandleGeomCurve,
+        C1: *const Handle_Geom_Curve,
+        C2: *const Handle_Geom_Curve,
     ) -> crate::OcctResult<*mut ChFi3d_SearchSing>;
-    /// **Source:** `ChFi3d_SearchSing.hxx`:42 - `ChFi3d_SearchSing::Value()`
+    /// **Source:** `ChFi3d_SearchSing.hxx`:43 - `ChFi3d_SearchSing::Value()`
     pub fn ChFi3d_SearchSing_value(
         self_: *mut ChFi3d_SearchSing,
         X: f64,
         F: *mut f64,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `ChFi3d_SearchSing.hxx`:48 - `ChFi3d_SearchSing::Derivative()`
+    /// **Source:** `ChFi3d_SearchSing.hxx`:49 - `ChFi3d_SearchSing::Derivative()`
     pub fn ChFi3d_SearchSing_derivative(
         self_: *mut ChFi3d_SearchSing,
         X: f64,
         D: *mut f64,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `ChFi3d_SearchSing.hxx`:54 - `ChFi3d_SearchSing::Values()`
+    /// **Source:** `ChFi3d_SearchSing.hxx`:55 - `ChFi3d_SearchSing::Values()`
     pub fn ChFi3d_SearchSing_values(
         self_: *mut ChFi3d_SearchSing,
         X: f64,
@@ -11201,59 +11046,59 @@ unsafe extern "C" {
     ) -> crate::OcctResult<i32>;
     // ======================== ChFiDS_ChamfSpine ========================
     pub fn ChFiDS_ChamfSpine_destructor(self_: *mut ChFiDS_ChamfSpine);
-    /// **Source:** `ChFiDS_ChamfSpine.hxx`:35 - `ChFiDS_ChamfSpine::ChFiDS_ChamfSpine()`
+    /// **Source:** `ChFiDS_ChamfSpine.hxx`:32 - `ChFiDS_ChamfSpine::ChFiDS_ChamfSpine()`
     pub fn ChFiDS_ChamfSpine_ctor() -> crate::OcctResult<*mut ChFiDS_ChamfSpine>;
-    /// **Source:** `ChFiDS_ChamfSpine.hxx`:37 - `ChFiDS_ChamfSpine::ChFiDS_ChamfSpine()`
+    /// **Source:** `ChFiDS_ChamfSpine.hxx`:34 - `ChFiDS_ChamfSpine::ChFiDS_ChamfSpine()`
     pub fn ChFiDS_ChamfSpine_ctor_real(Tol: f64) -> crate::OcctResult<*mut ChFiDS_ChamfSpine>;
-    /// **Source:** `ChFiDS_ChamfSpine.hxx`:39 - `ChFiDS_ChamfSpine::SetDist()`
+    /// **Source:** `ChFiDS_ChamfSpine.hxx`:36 - `ChFiDS_ChamfSpine::SetDist()`
     pub fn ChFiDS_ChamfSpine_set_dist(
         self_: *mut ChFiDS_ChamfSpine,
         Dis: f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `ChFiDS_ChamfSpine.hxx`:41 - `ChFiDS_ChamfSpine::GetDist()`
+    /// **Source:** `ChFiDS_ChamfSpine.hxx`:38 - `ChFiDS_ChamfSpine::GetDist()`
     pub fn ChFiDS_ChamfSpine_get_dist(
         self_: *const ChFiDS_ChamfSpine,
         Dis: *mut f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `ChFiDS_ChamfSpine.hxx`:43 - `ChFiDS_ChamfSpine::SetDists()`
+    /// **Source:** `ChFiDS_ChamfSpine.hxx`:40 - `ChFiDS_ChamfSpine::SetDists()`
     pub fn ChFiDS_ChamfSpine_set_dists(
         self_: *mut ChFiDS_ChamfSpine,
         Dis1: f64,
         Dis2: f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `ChFiDS_ChamfSpine.hxx`:45 - `ChFiDS_ChamfSpine::Dists()`
+    /// **Source:** `ChFiDS_ChamfSpine.hxx`:42 - `ChFiDS_ChamfSpine::Dists()`
     pub fn ChFiDS_ChamfSpine_dists(
         self_: *const ChFiDS_ChamfSpine,
         Dis1: *mut f64,
         Dis2: *mut f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `ChFiDS_ChamfSpine.hxx`:47 - `ChFiDS_ChamfSpine::GetDistAngle()`
+    /// **Source:** `ChFiDS_ChamfSpine.hxx`:44 - `ChFiDS_ChamfSpine::GetDistAngle()`
     pub fn ChFiDS_ChamfSpine_get_dist_angle(
         self_: *const ChFiDS_ChamfSpine,
         Dis: *mut f64,
         Angle: *mut f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `ChFiDS_ChamfSpine.hxx`:49 - `ChFiDS_ChamfSpine::SetDistAngle()`
+    /// **Source:** `ChFiDS_ChamfSpine.hxx`:46 - `ChFiDS_ChamfSpine::SetDistAngle()`
     pub fn ChFiDS_ChamfSpine_set_dist_angle(
         self_: *mut ChFiDS_ChamfSpine,
         Dis: f64,
         Angle: f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `ChFiDS_ChamfSpine.hxx`:51 - `ChFiDS_ChamfSpine::SetMode()`
+    /// **Source:** `ChFiDS_ChamfSpine.hxx`:48 - `ChFiDS_ChamfSpine::SetMode()`
     pub fn ChFiDS_ChamfSpine_set_mode(
         self_: *mut ChFiDS_ChamfSpine,
         theMode: i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `ChFiDS_ChamfSpine.hxx`:54 - `ChFiDS_ChamfSpine::IsChamfer()`
+    /// **Source:** `ChFiDS_ChamfSpine.hxx`:51 - `ChFiDS_ChamfSpine::IsChamfer()`
     pub fn ChFiDS_ChamfSpine_is_chamfer(self_: *const ChFiDS_ChamfSpine) -> crate::OcctResult<i32>;
-    /// **Source:** `ChFiDS_ChamfSpine.hxx`:59 - `ChFiDS_ChamfSpine::DynamicType()`
+    /// **Source:** `ChFiDS_ChamfSpine.hxx`:56 - `ChFiDS_ChamfSpine::DynamicType()`
     pub fn ChFiDS_ChamfSpine_dynamic_type(
         self_: *const ChFiDS_ChamfSpine,
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// **Source:** `ChFiDS_ChamfSpine.hxx`:59 - `ChFiDS_ChamfSpine::get_type_name()`
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
+    /// **Source:** `ChFiDS_ChamfSpine.hxx`:56 - `ChFiDS_ChamfSpine::get_type_name()`
     pub fn ChFiDS_ChamfSpine_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
-    /// **Source:** `ChFiDS_ChamfSpine.hxx`:59 - `ChFiDS_ChamfSpine::get_type_descriptor()`
-    pub fn ChFiDS_ChamfSpine_get_type_descriptor() -> crate::OcctResult<*const HandleStandardType>;
+    /// **Source:** `ChFiDS_ChamfSpine.hxx`:56 - `ChFiDS_ChamfSpine::get_type_descriptor()`
+    pub fn ChFiDS_ChamfSpine_get_type_descriptor() -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast ChFiDS_ChamfSpine to ChFiDS_Spine
     pub fn ChFiDS_ChamfSpine_as_ChFiDS_Spine(
         self_: *const ChFiDS_ChamfSpine,
@@ -11273,182 +11118,174 @@ unsafe extern "C" {
     /// Wrap ChFiDS_ChamfSpine in a Handle
     pub fn ChFiDS_ChamfSpine_to_handle(
         obj: *mut ChFiDS_ChamfSpine,
-    ) -> crate::OcctResult<*mut HandleChFiDSChamfSpine>;
+    ) -> crate::OcctResult<*mut Handle_ChFiDS_ChamfSpine>;
     /// Destroy Handle<ChFiDS_ChamfSpine>
-    pub fn HandleChFiDSChamfSpine_destructor(self_: *mut HandleChFiDSChamfSpine);
+    pub fn Handle_ChFiDS_ChamfSpine_destructor(self_: *mut Handle_ChFiDS_ChamfSpine);
     /// Clone Handle<ChFiDS_ChamfSpine> (increments reference count)
-    pub fn HandleChFiDSChamfSpine_clone(
-        self_: *const HandleChFiDSChamfSpine,
-    ) -> crate::OcctResult<*mut HandleChFiDSChamfSpine>;
+    pub fn Handle_ChFiDS_ChamfSpine_clone(
+        self_: *const Handle_ChFiDS_ChamfSpine,
+    ) -> crate::OcctResult<*mut Handle_ChFiDS_ChamfSpine>;
     /// Check if Handle<ChFiDS_ChamfSpine> is null
-    pub fn HandleChFiDSChamfSpine_is_null(self_: *const HandleChFiDSChamfSpine) -> bool;
+    pub fn Handle_ChFiDS_ChamfSpine_is_null(self_: *const Handle_ChFiDS_ChamfSpine) -> bool;
     /// Dereference Handle to get *const ChFiDS_ChamfSpine
-    pub fn HandleChFiDSChamfSpine_get(
-        handle: *const HandleChFiDSChamfSpine,
+    pub fn Handle_ChFiDS_ChamfSpine_get(
+        handle: *const Handle_ChFiDS_ChamfSpine,
     ) -> crate::OcctResult<*const ChFiDS_ChamfSpine>;
     /// Dereference Handle to get *mut ChFiDS_ChamfSpine
-    pub fn HandleChFiDSChamfSpine_get_mut(
-        handle: *mut HandleChFiDSChamfSpine,
+    pub fn Handle_ChFiDS_ChamfSpine_get_mut(
+        handle: *mut Handle_ChFiDS_ChamfSpine,
     ) -> crate::OcctResult<*mut ChFiDS_ChamfSpine>;
     /// Upcast Handle<ChFiDS_ChamfSpine> to Handle<ChFiDS_Spine>
-    pub fn HandleChFiDSChamfSpine_to_HandleChFiDSSpine(
-        self_: *const HandleChFiDSChamfSpine,
-    ) -> crate::OcctResult<*mut HandleChFiDSSpine>;
+    pub fn Handle_ChFiDS_ChamfSpine_to_Handle_ChFiDS_Spine(
+        self_: *const Handle_ChFiDS_ChamfSpine,
+    ) -> crate::OcctResult<*mut Handle_ChFiDS_Spine>;
     /// Upcast Handle<ChFiDS_ChamfSpine> to Handle<Standard_Transient>
-    pub fn HandleChFiDSChamfSpine_to_HandleStandardTransient(
-        self_: *const HandleChFiDSChamfSpine,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
-    /// Inherited: **Source:** `ChFiDS_Spine.hxx`:78 - `ChFiDS_Spine::SetEdges()`
+    pub fn Handle_ChFiDS_ChamfSpine_to_Handle_Standard_Transient(
+        self_: *const Handle_ChFiDS_ChamfSpine,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
+    /// Inherited: **Source:** `ChFiDS_Spine.hxx`:77 - `ChFiDS_Spine::SetEdges()`
     pub fn ChFiDS_ChamfSpine_inherited_SetEdges(
         self_: *mut ChFiDS_ChamfSpine,
         E: *const TopoDS_Edge,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `ChFiDS_Spine.hxx`:81 - `ChFiDS_Spine::SetOffsetEdges()`
+    /// Inherited: **Source:** `ChFiDS_Spine.hxx`:80 - `ChFiDS_Spine::SetOffsetEdges()`
     pub fn ChFiDS_ChamfSpine_inherited_SetOffsetEdges(
         self_: *mut ChFiDS_ChamfSpine,
         E: *const TopoDS_Edge,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `ChFiDS_Spine.hxx`:84 - `ChFiDS_Spine::PutInFirst()`
+    /// Inherited: **Source:** `ChFiDS_Spine.hxx`:83 - `ChFiDS_Spine::PutInFirst()`
     pub fn ChFiDS_ChamfSpine_inherited_PutInFirst(
         self_: *mut ChFiDS_ChamfSpine,
         E: *const TopoDS_Edge,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `ChFiDS_Spine.hxx`:87 - `ChFiDS_Spine::PutInFirstOffset()`
+    /// Inherited: **Source:** `ChFiDS_Spine.hxx`:86 - `ChFiDS_Spine::PutInFirstOffset()`
     pub fn ChFiDS_ChamfSpine_inherited_PutInFirstOffset(
         self_: *mut ChFiDS_ChamfSpine,
         E: *const TopoDS_Edge,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `ChFiDS_Spine.hxx`:89 - `ChFiDS_Spine::NbEdges()`
+    /// Inherited: **Source:** `ChFiDS_Spine.hxx`:88 - `ChFiDS_Spine::NbEdges()`
     pub fn ChFiDS_ChamfSpine_inherited_NbEdges(
         self_: *const ChFiDS_ChamfSpine,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `ChFiDS_Spine.hxx`:91 - `ChFiDS_Spine::Edges()`
+    /// Inherited: **Source:** `ChFiDS_Spine.hxx`:90 - `ChFiDS_Spine::Edges()`
     pub fn ChFiDS_ChamfSpine_inherited_Edges(
         self_: *const ChFiDS_ChamfSpine,
         I: i32,
     ) -> crate::OcctResult<*const TopoDS_Edge>;
-    /// Inherited: **Source:** `ChFiDS_Spine.hxx`:93 - `ChFiDS_Spine::OffsetEdges()`
+    /// Inherited: **Source:** `ChFiDS_Spine.hxx`:92 - `ChFiDS_Spine::OffsetEdges()`
     pub fn ChFiDS_ChamfSpine_inherited_OffsetEdges(
         self_: *const ChFiDS_ChamfSpine,
         I: i32,
     ) -> crate::OcctResult<*const TopoDS_Edge>;
-    /// Inherited: **Source:** `ChFiDS_Spine.hxx`:97 - `ChFiDS_Spine::SetFirstStatus()`
+    /// Inherited: **Source:** `ChFiDS_Spine.hxx`:96 - `ChFiDS_Spine::SetFirstStatus()`
     pub fn ChFiDS_ChamfSpine_inherited_SetFirstStatus(
         self_: *mut ChFiDS_ChamfSpine,
         S: i32,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `ChFiDS_Spine.hxx`:101 - `ChFiDS_Spine::SetLastStatus()`
+    /// Inherited: **Source:** `ChFiDS_Spine.hxx`:100 - `ChFiDS_Spine::SetLastStatus()`
     pub fn ChFiDS_ChamfSpine_inherited_SetLastStatus(
         self_: *mut ChFiDS_ChamfSpine,
         S: i32,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `ChFiDS_Spine.hxx`:103 - `ChFiDS_Spine::AppendElSpine()`
+    /// Inherited: **Source:** `ChFiDS_Spine.hxx`:102 - `ChFiDS_Spine::AppendElSpine()`
     pub fn ChFiDS_ChamfSpine_inherited_AppendElSpine(
         self_: *mut ChFiDS_ChamfSpine,
-        Els: *const HandleChFiDSElSpine,
+        Els: *const Handle_ChFiDS_ElSpine,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `ChFiDS_Spine.hxx`:105 - `ChFiDS_Spine::AppendOffsetElSpine()`
+    /// Inherited: **Source:** `ChFiDS_Spine.hxx`:104 - `ChFiDS_Spine::AppendOffsetElSpine()`
     pub fn ChFiDS_ChamfSpine_inherited_AppendOffsetElSpine(
         self_: *mut ChFiDS_ChamfSpine,
-        Els: *const HandleChFiDSElSpine,
+        Els: *const Handle_ChFiDS_ElSpine,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `ChFiDS_Spine.hxx`:107 - `ChFiDS_Spine::ElSpine()`
+    /// Inherited: **Source:** `ChFiDS_Spine.hxx`:106 - `ChFiDS_Spine::ElSpine()`
     pub fn ChFiDS_ChamfSpine_inherited_ElSpine(
         self_: *const ChFiDS_ChamfSpine,
         IE: i32,
-    ) -> crate::OcctResult<*mut HandleChFiDSElSpine>;
-    /// Inherited: **Source:** `ChFiDS_Spine.hxx`:113 - `ChFiDS_Spine::ChangeElSpines()`
-    pub fn ChFiDS_ChamfSpine_inherited_ChangeElSpines(
-        self_: *mut ChFiDS_ChamfSpine,
-    ) -> crate::OcctResult<*mut ChFiDS_ListOfHElSpine>;
-    /// Inherited: **Source:** `ChFiDS_Spine.hxx`:115 - `ChFiDS_Spine::ChangeOffsetElSpines()`
-    pub fn ChFiDS_ChamfSpine_inherited_ChangeOffsetElSpines(
-        self_: *mut ChFiDS_ChamfSpine,
-    ) -> crate::OcctResult<*mut ChFiDS_ListOfHElSpine>;
-    /// Inherited: **Source:** `ChFiDS_Spine.hxx`:117 - `ChFiDS_Spine::Reset()`
+    ) -> crate::OcctResult<*mut Handle_ChFiDS_ElSpine>;
+    /// Inherited: **Source:** `ChFiDS_Spine.hxx`:116 - `ChFiDS_Spine::Reset()`
     pub fn ChFiDS_ChamfSpine_inherited_Reset(
         self_: *mut ChFiDS_ChamfSpine,
         AllData: bool,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `ChFiDS_Spine.hxx`:119 - `ChFiDS_Spine::SplitDone()`
+    /// Inherited: **Source:** `ChFiDS_Spine.hxx`:118 - `ChFiDS_Spine::SplitDone()`
     pub fn ChFiDS_ChamfSpine_inherited_SplitDone(
         self_: *const ChFiDS_ChamfSpine,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `ChFiDS_Spine.hxx`:129 - `ChFiDS_Spine::Load()`
+    /// Inherited: **Source:** `ChFiDS_Spine.hxx`:128 - `ChFiDS_Spine::Load()`
     pub fn ChFiDS_ChamfSpine_inherited_Load(
         self_: *mut ChFiDS_ChamfSpine,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `ChFiDS_Spine.hxx`:131 - `ChFiDS_Spine::Resolution()`
+    /// Inherited: **Source:** `ChFiDS_Spine.hxx`:130 - `ChFiDS_Spine::Resolution()`
     pub fn ChFiDS_ChamfSpine_inherited_Resolution(
         self_: *const ChFiDS_ChamfSpine,
         R3d: f64,
     ) -> crate::OcctResult<f64>;
-    /// Inherited: **Source:** `ChFiDS_Spine.hxx`:133 - `ChFiDS_Spine::IsClosed()`
+    /// Inherited: **Source:** `ChFiDS_Spine.hxx`:132 - `ChFiDS_Spine::IsClosed()`
     pub fn ChFiDS_ChamfSpine_inherited_IsClosed(
         self_: *const ChFiDS_ChamfSpine,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `ChFiDS_Spine.hxx`:135 - `ChFiDS_Spine::FirstParameter()`
+    /// Inherited: **Source:** `ChFiDS_Spine.hxx`:134 - `ChFiDS_Spine::FirstParameter()`
     pub fn ChFiDS_ChamfSpine_inherited_FirstParameter(
         self_: *const ChFiDS_ChamfSpine,
     ) -> crate::OcctResult<f64>;
-    /// Inherited: **Source:** `ChFiDS_Spine.hxx`:137 - `ChFiDS_Spine::LastParameter()`
+    /// Inherited: **Source:** `ChFiDS_Spine.hxx`:136 - `ChFiDS_Spine::LastParameter()`
     pub fn ChFiDS_ChamfSpine_inherited_LastParameter(
         self_: *const ChFiDS_ChamfSpine,
     ) -> crate::OcctResult<f64>;
-    /// Inherited: **Source:** `ChFiDS_Spine.hxx`:139 - `ChFiDS_Spine::SetFirstParameter()`
+    /// Inherited: **Source:** `ChFiDS_Spine.hxx`:138 - `ChFiDS_Spine::SetFirstParameter()`
     pub fn ChFiDS_ChamfSpine_inherited_SetFirstParameter(
         self_: *mut ChFiDS_ChamfSpine,
         Par: f64,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `ChFiDS_Spine.hxx`:141 - `ChFiDS_Spine::SetLastParameter()`
+    /// Inherited: **Source:** `ChFiDS_Spine.hxx`:140 - `ChFiDS_Spine::SetLastParameter()`
     pub fn ChFiDS_ChamfSpine_inherited_SetLastParameter(
         self_: *mut ChFiDS_ChamfSpine,
         Par: f64,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `ChFiDS_Spine.hxx`:152 - `ChFiDS_Spine::Length()`
+    /// Inherited: **Source:** `ChFiDS_Spine.hxx`:151 - `ChFiDS_Spine::Length()`
     pub fn ChFiDS_ChamfSpine_inherited_Length(
         self_: *const ChFiDS_ChamfSpine,
         IndexSpine: i32,
     ) -> crate::OcctResult<f64>;
-    /// Inherited: **Source:** `ChFiDS_Spine.hxx`:154 - `ChFiDS_Spine::IsPeriodic()`
+    /// Inherited: **Source:** `ChFiDS_Spine.hxx`:153 - `ChFiDS_Spine::IsPeriodic()`
     pub fn ChFiDS_ChamfSpine_inherited_IsPeriodic(
         self_: *const ChFiDS_ChamfSpine,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `ChFiDS_Spine.hxx`:156 - `ChFiDS_Spine::Period()`
+    /// Inherited: **Source:** `ChFiDS_Spine.hxx`:155 - `ChFiDS_Spine::Period()`
     pub fn ChFiDS_ChamfSpine_inherited_Period(
         self_: *const ChFiDS_ChamfSpine,
     ) -> crate::OcctResult<f64>;
-    /// Inherited: **Source:** `ChFiDS_Spine.hxx`:158 - `ChFiDS_Spine::Absc()`
+    /// Inherited: **Source:** `ChFiDS_Spine.hxx`:157 - `ChFiDS_Spine::Absc()`
     pub fn ChFiDS_ChamfSpine_inherited_Absc(
         self_: *mut ChFiDS_ChamfSpine,
         U: f64,
     ) -> crate::OcctResult<f64>;
-    /// Inherited: **Source:** `ChFiDS_Spine.hxx`:162 - `ChFiDS_Spine::Parameter()`
+    /// Inherited: **Source:** `ChFiDS_Spine.hxx`:161 - `ChFiDS_Spine::Parameter()`
     pub fn ChFiDS_ChamfSpine_inherited_Parameter(
         self_: *mut ChFiDS_ChamfSpine,
         AbsC: f64,
         U: *mut f64,
         Oriented: bool,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `ChFiDS_Spine.hxx`:171 - `ChFiDS_Spine::Value()`
+    /// Inherited: **Source:** `ChFiDS_Spine.hxx`:168 - `ChFiDS_Spine::Value()`
     pub fn ChFiDS_ChamfSpine_inherited_Value(
         self_: *mut ChFiDS_ChamfSpine,
         AbsC: f64,
     ) -> crate::OcctResult<*mut gp_Pnt>;
-    /// Inherited: **Source:** `ChFiDS_Spine.hxx`:173 - `ChFiDS_Spine::D0()`
+    /// Inherited: **Source:** `ChFiDS_Spine.hxx`:170 - `ChFiDS_Spine::D0()`
     pub fn ChFiDS_ChamfSpine_inherited_D0(
         self_: *mut ChFiDS_ChamfSpine,
         AbsC: f64,
         P: *mut gp_Pnt,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `ChFiDS_Spine.hxx`:175 - `ChFiDS_Spine::D1()`
+    /// Inherited: **Source:** `ChFiDS_Spine.hxx`:172 - `ChFiDS_Spine::D1()`
     pub fn ChFiDS_ChamfSpine_inherited_D1(
         self_: *mut ChFiDS_ChamfSpine,
         AbsC: f64,
         P: *mut gp_Pnt,
         V1: *mut gp_Vec,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `ChFiDS_Spine.hxx`:177 - `ChFiDS_Spine::D2()`
+    /// Inherited: **Source:** `ChFiDS_Spine.hxx`:174 - `ChFiDS_Spine::D2()`
     pub fn ChFiDS_ChamfSpine_inherited_D2(
         self_: *mut ChFiDS_ChamfSpine,
         AbsC: f64,
@@ -11456,156 +11293,156 @@ unsafe extern "C" {
         V1: *mut gp_Vec,
         V2: *mut gp_Vec,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `ChFiDS_Spine.hxx`:179 - `ChFiDS_Spine::SetCurrent()`
+    /// Inherited: **Source:** `ChFiDS_Spine.hxx`:176 - `ChFiDS_Spine::SetCurrent()`
     pub fn ChFiDS_ChamfSpine_inherited_SetCurrent(
         self_: *mut ChFiDS_ChamfSpine,
         Index: i32,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `ChFiDS_Spine.hxx`:182 - `ChFiDS_Spine::CurrentElementarySpine()`
+    /// Inherited: **Source:** `ChFiDS_Spine.hxx`:179 - `ChFiDS_Spine::CurrentElementarySpine()`
     pub fn ChFiDS_ChamfSpine_inherited_CurrentElementarySpine(
         self_: *mut ChFiDS_ChamfSpine,
         Index: i32,
     ) -> crate::OcctResult<*const BRepAdaptor_Curve>;
-    /// Inherited: **Source:** `ChFiDS_Spine.hxx`:184 - `ChFiDS_Spine::CurrentIndexOfElementarySpine()`
+    /// Inherited: **Source:** `ChFiDS_Spine.hxx`:181 - `ChFiDS_Spine::CurrentIndexOfElementarySpine()`
     pub fn ChFiDS_ChamfSpine_inherited_CurrentIndexOfElementarySpine(
         self_: *const ChFiDS_ChamfSpine,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `ChFiDS_Spine.hxx`:186 - `ChFiDS_Spine::GetType()`
+    /// Inherited: **Source:** `ChFiDS_Spine.hxx`:183 - `ChFiDS_Spine::GetType()`
     pub fn ChFiDS_ChamfSpine_inherited_GetType(
         self_: *const ChFiDS_ChamfSpine,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `ChFiDS_Spine.hxx`:188 - `ChFiDS_Spine::Line()`
+    /// Inherited: **Source:** `ChFiDS_Spine.hxx`:185 - `ChFiDS_Spine::Line()`
     pub fn ChFiDS_ChamfSpine_inherited_Line(
         self_: *const ChFiDS_ChamfSpine,
     ) -> crate::OcctResult<*mut gp_Lin>;
-    /// Inherited: **Source:** `ChFiDS_Spine.hxx`:190 - `ChFiDS_Spine::Circle()`
+    /// Inherited: **Source:** `ChFiDS_Spine.hxx`:187 - `ChFiDS_Spine::Circle()`
     pub fn ChFiDS_ChamfSpine_inherited_Circle(
         self_: *const ChFiDS_ChamfSpine,
     ) -> crate::OcctResult<*mut gp_Circ>;
-    /// Inherited: **Source:** `ChFiDS_Spine.hxx`:195 - `ChFiDS_Spine::FirstStatus()`
+    /// Inherited: **Source:** `ChFiDS_Spine.hxx`:192 - `ChFiDS_Spine::FirstStatus()`
     pub fn ChFiDS_ChamfSpine_inherited_FirstStatus(
         self_: *const ChFiDS_ChamfSpine,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `ChFiDS_Spine.hxx`:198 - `ChFiDS_Spine::LastStatus()`
+    /// Inherited: **Source:** `ChFiDS_Spine.hxx`:195 - `ChFiDS_Spine::LastStatus()`
     pub fn ChFiDS_ChamfSpine_inherited_LastStatus(
         self_: *const ChFiDS_ChamfSpine,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `ChFiDS_Spine.hxx`:200 - `ChFiDS_Spine::Status()`
+    /// Inherited: **Source:** `ChFiDS_Spine.hxx`:197 - `ChFiDS_Spine::Status()`
     pub fn ChFiDS_ChamfSpine_inherited_Status(
         self_: *const ChFiDS_ChamfSpine,
         IsFirst: bool,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `ChFiDS_Spine.hxx`:203 - `ChFiDS_Spine::GetTypeOfConcavity()`
+    /// Inherited: **Source:** `ChFiDS_Spine.hxx`:200 - `ChFiDS_Spine::GetTypeOfConcavity()`
     pub fn ChFiDS_ChamfSpine_inherited_GetTypeOfConcavity(
         self_: *const ChFiDS_ChamfSpine,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `ChFiDS_Spine.hxx`:205 - `ChFiDS_Spine::SetStatus()`
+    /// Inherited: **Source:** `ChFiDS_Spine.hxx`:202 - `ChFiDS_Spine::SetStatus()`
     pub fn ChFiDS_ChamfSpine_inherited_SetStatus(
         self_: *mut ChFiDS_ChamfSpine,
         S: i32,
         IsFirst: bool,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `ChFiDS_Spine.hxx`:208 - `ChFiDS_Spine::SetTypeOfConcavity()`
+    /// Inherited: **Source:** `ChFiDS_Spine.hxx`:205 - `ChFiDS_Spine::SetTypeOfConcavity()`
     pub fn ChFiDS_ChamfSpine_inherited_SetTypeOfConcavity(
         self_: *mut ChFiDS_ChamfSpine,
         theType: i32,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `ChFiDS_Spine.hxx`:212 - `ChFiDS_Spine::IsTangencyExtremity()`
+    /// Inherited: **Source:** `ChFiDS_Spine.hxx`:209 - `ChFiDS_Spine::IsTangencyExtremity()`
     pub fn ChFiDS_ChamfSpine_inherited_IsTangencyExtremity(
         self_: *const ChFiDS_ChamfSpine,
         IsFirst: bool,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `ChFiDS_Spine.hxx`:214 - `ChFiDS_Spine::SetTangencyExtremity()`
+    /// Inherited: **Source:** `ChFiDS_Spine.hxx`:211 - `ChFiDS_Spine::SetTangencyExtremity()`
     pub fn ChFiDS_ChamfSpine_inherited_SetTangencyExtremity(
         self_: *mut ChFiDS_ChamfSpine,
         IsTangency: bool,
         IsFirst: bool,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `ChFiDS_Spine.hxx`:218 - `ChFiDS_Spine::FirstVertex()`
+    /// Inherited: **Source:** `ChFiDS_Spine.hxx`:215 - `ChFiDS_Spine::FirstVertex()`
     pub fn ChFiDS_ChamfSpine_inherited_FirstVertex(
         self_: *const ChFiDS_ChamfSpine,
     ) -> crate::OcctResult<*mut TopoDS_Vertex>;
-    /// Inherited: **Source:** `ChFiDS_Spine.hxx`:220 - `ChFiDS_Spine::LastVertex()`
+    /// Inherited: **Source:** `ChFiDS_Spine.hxx`:217 - `ChFiDS_Spine::LastVertex()`
     pub fn ChFiDS_ChamfSpine_inherited_LastVertex(
         self_: *const ChFiDS_ChamfSpine,
     ) -> crate::OcctResult<*mut TopoDS_Vertex>;
-    /// Inherited: **Source:** `ChFiDS_Spine.hxx`:222 - `ChFiDS_Spine::SetFirstTgt()`
+    /// Inherited: **Source:** `ChFiDS_Spine.hxx`:219 - `ChFiDS_Spine::SetFirstTgt()`
     pub fn ChFiDS_ChamfSpine_inherited_SetFirstTgt(
         self_: *mut ChFiDS_ChamfSpine,
         W: f64,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `ChFiDS_Spine.hxx`:224 - `ChFiDS_Spine::SetLastTgt()`
+    /// Inherited: **Source:** `ChFiDS_Spine.hxx`:221 - `ChFiDS_Spine::SetLastTgt()`
     pub fn ChFiDS_ChamfSpine_inherited_SetLastTgt(
         self_: *mut ChFiDS_ChamfSpine,
         W: f64,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `ChFiDS_Spine.hxx`:226 - `ChFiDS_Spine::HasFirstTgt()`
+    /// Inherited: **Source:** `ChFiDS_Spine.hxx`:223 - `ChFiDS_Spine::HasFirstTgt()`
     pub fn ChFiDS_ChamfSpine_inherited_HasFirstTgt(
         self_: *const ChFiDS_ChamfSpine,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `ChFiDS_Spine.hxx`:228 - `ChFiDS_Spine::HasLastTgt()`
+    /// Inherited: **Source:** `ChFiDS_Spine.hxx`:225 - `ChFiDS_Spine::HasLastTgt()`
     pub fn ChFiDS_ChamfSpine_inherited_HasLastTgt(
         self_: *const ChFiDS_ChamfSpine,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `ChFiDS_Spine.hxx`:231 - `ChFiDS_Spine::SetReference()`
+    /// Inherited: **Source:** `ChFiDS_Spine.hxx`:228 - `ChFiDS_Spine::SetReference()`
     pub fn ChFiDS_ChamfSpine_inherited_SetReference(
         self_: *mut ChFiDS_ChamfSpine,
         W: f64,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `ChFiDS_Spine.hxx`:237 - `ChFiDS_Spine::Index()`
+    /// Inherited: **Source:** `ChFiDS_Spine.hxx`:234 - `ChFiDS_Spine::Index()`
     pub fn ChFiDS_ChamfSpine_inherited_Index(
         self_: *const ChFiDS_ChamfSpine,
         W: f64,
         Forward: bool,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `ChFiDS_Spine.hxx`:242 - `ChFiDS_Spine::UnsetReference()`
+    /// Inherited: **Source:** `ChFiDS_Spine.hxx`:238 - `ChFiDS_Spine::UnsetReference()`
     pub fn ChFiDS_ChamfSpine_inherited_UnsetReference(
         self_: *mut ChFiDS_ChamfSpine,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `ChFiDS_Spine.hxx`:244 - `ChFiDS_Spine::SetErrorStatus()`
+    /// Inherited: **Source:** `ChFiDS_Spine.hxx`:240 - `ChFiDS_Spine::SetErrorStatus()`
     pub fn ChFiDS_ChamfSpine_inherited_SetErrorStatus(
         self_: *mut ChFiDS_ChamfSpine,
         state: i32,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `ChFiDS_Spine.hxx`:246 - `ChFiDS_Spine::ErrorStatus()`
+    /// Inherited: **Source:** `ChFiDS_Spine.hxx`:242 - `ChFiDS_Spine::ErrorStatus()`
     pub fn ChFiDS_ChamfSpine_inherited_ErrorStatus(
         self_: *const ChFiDS_ChamfSpine,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `ChFiDS_Spine.hxx`:249 - `ChFiDS_Spine::Mode()`
+    /// Inherited: **Source:** `ChFiDS_Spine.hxx`:245 - `ChFiDS_Spine::Mode()`
     pub fn ChFiDS_ChamfSpine_inherited_Mode(
         self_: *const ChFiDS_ChamfSpine,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `ChFiDS_Spine.hxx`:252 - `ChFiDS_Spine::GetTolesp()`
+    /// Inherited: **Source:** `ChFiDS_Spine.hxx`:248 - `ChFiDS_Spine::GetTolesp()`
     pub fn ChFiDS_ChamfSpine_inherited_GetTolesp(
         self_: *const ChFiDS_ChamfSpine,
     ) -> crate::OcctResult<f64>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn ChFiDS_ChamfSpine_inherited_IsInstance(
         self_: *const ChFiDS_ChamfSpine,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn ChFiDS_ChamfSpine_inherited_IsKind(
         self_: *const ChFiDS_ChamfSpine,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn ChFiDS_ChamfSpine_inherited_This(
         self_: *const ChFiDS_ChamfSpine,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn ChFiDS_ChamfSpine_inherited_GetRefCount(
         self_: *const ChFiDS_ChamfSpine,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn ChFiDS_ChamfSpine_inherited_IncrementRefCounter(
         self_: *mut ChFiDS_ChamfSpine,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn ChFiDS_ChamfSpine_inherited_DecrementRefCounter(
         self_: *mut ChFiDS_ChamfSpine,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn ChFiDS_ChamfSpine_inherited_Delete(
         self_: *const ChFiDS_ChamfSpine,
     ) -> *const std::ffi::c_char;
@@ -11724,204 +11561,189 @@ unsafe extern "C" {
     ) -> crate::OcctResult<*const gp_Vec>;
     // ======================== ChFiDS_ElSpine ========================
     pub fn ChFiDS_ElSpine_destructor(self_: *mut ChFiDS_ElSpine);
-    /// **Source:** `ChFiDS_ElSpine.hxx`:51 - `ChFiDS_ElSpine::ChFiDS_ElSpine()`
+    /// **Source:** `ChFiDS_ElSpine.hxx`:50 - `ChFiDS_ElSpine::ChFiDS_ElSpine()`
     pub fn ChFiDS_ElSpine_ctor() -> crate::OcctResult<*mut ChFiDS_ElSpine>;
-    /// **Source:** `ChFiDS_ElSpine.hxx`:49 - `ChFiDS_ElSpine::DynamicType()`
+    /// **Source:** `ChFiDS_ElSpine.hxx`:48 - `ChFiDS_ElSpine::DynamicType()`
     pub fn ChFiDS_ElSpine_dynamic_type(
         self_: *const ChFiDS_ElSpine,
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// **Source:** `ChFiDS_ElSpine.hxx`:54 - `ChFiDS_ElSpine::ShallowCopy()`
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
+    /// **Source:** `ChFiDS_ElSpine.hxx`:53 - `ChFiDS_ElSpine::ShallowCopy()`
     pub fn ChFiDS_ElSpine_shallow_copy(
         self_: *const ChFiDS_ElSpine,
-    ) -> crate::OcctResult<*mut HandleAdaptor3dCurve>;
-    /// **Source:** `ChFiDS_ElSpine.hxx`:56 - `ChFiDS_ElSpine::FirstParameter()`
+    ) -> crate::OcctResult<*mut Handle_Adaptor3d_Curve>;
+    /// **Source:** `ChFiDS_ElSpine.hxx`:55 - `ChFiDS_ElSpine::FirstParameter()`
     pub fn ChFiDS_ElSpine_first_parameter(self_: *const ChFiDS_ElSpine) -> crate::OcctResult<f64>;
-    /// **Source:** `ChFiDS_ElSpine.hxx`:58 - `ChFiDS_ElSpine::LastParameter()`
+    /// **Source:** `ChFiDS_ElSpine.hxx`:57 - `ChFiDS_ElSpine::LastParameter()`
     pub fn ChFiDS_ElSpine_last_parameter(self_: *const ChFiDS_ElSpine) -> crate::OcctResult<f64>;
-    /// **Source:** `ChFiDS_ElSpine.hxx`:60 - `ChFiDS_ElSpine::GetSavedFirstParameter()`
+    /// **Source:** `ChFiDS_ElSpine.hxx`:59 - `ChFiDS_ElSpine::GetSavedFirstParameter()`
     pub fn ChFiDS_ElSpine_get_saved_first_parameter(
         self_: *const ChFiDS_ElSpine,
     ) -> crate::OcctResult<f64>;
-    /// **Source:** `ChFiDS_ElSpine.hxx`:62 - `ChFiDS_ElSpine::GetSavedLastParameter()`
+    /// **Source:** `ChFiDS_ElSpine.hxx`:61 - `ChFiDS_ElSpine::GetSavedLastParameter()`
     pub fn ChFiDS_ElSpine_get_saved_last_parameter(
         self_: *const ChFiDS_ElSpine,
     ) -> crate::OcctResult<f64>;
-    /// **Source:** `ChFiDS_ElSpine.hxx`:64 - `ChFiDS_ElSpine::Continuity()`
+    /// **Source:** `ChFiDS_ElSpine.hxx`:63 - `ChFiDS_ElSpine::Continuity()`
     pub fn ChFiDS_ElSpine_continuity(self_: *const ChFiDS_ElSpine) -> crate::OcctResult<i32>;
-    /// **Source:** `ChFiDS_ElSpine.hxx`:66 - `ChFiDS_ElSpine::NbIntervals()`
+    /// **Source:** `ChFiDS_ElSpine.hxx`:65 - `ChFiDS_ElSpine::NbIntervals()`
     pub fn ChFiDS_ElSpine_nb_intervals(
         self_: *const ChFiDS_ElSpine,
         S: i32,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `ChFiDS_ElSpine.hxx`:68 - `ChFiDS_ElSpine::Intervals()`
+    /// **Source:** `ChFiDS_ElSpine.hxx`:67 - `ChFiDS_ElSpine::Intervals()`
     pub fn ChFiDS_ElSpine_intervals(
         self_: *const ChFiDS_ElSpine,
-        T: *mut TColStd_Array1OfReal,
+        T: *mut NCollection_Array1_double,
         S: i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `ChFiDS_ElSpine.hxx`:74 - `ChFiDS_ElSpine::Trim()`
+    /// **Source:** `ChFiDS_ElSpine.hxx`:73 - `ChFiDS_ElSpine::Trim()`
     pub fn ChFiDS_ElSpine_trim(
         self_: *const ChFiDS_ElSpine,
         First: f64,
         Last: f64,
         Tol: f64,
-    ) -> crate::OcctResult<*mut HandleAdaptor3dCurve>;
-    /// **Source:** `ChFiDS_ElSpine.hxx`:79 - `ChFiDS_ElSpine::Resolution()`
+    ) -> crate::OcctResult<*mut Handle_Adaptor3d_Curve>;
+    /// **Source:** `ChFiDS_ElSpine.hxx`:77 - `ChFiDS_ElSpine::Resolution()`
     pub fn ChFiDS_ElSpine_resolution(
         self_: *const ChFiDS_ElSpine,
         R3d: f64,
     ) -> crate::OcctResult<f64>;
-    /// **Source:** `ChFiDS_ElSpine.hxx`:81 - `ChFiDS_ElSpine::GetType()`
+    /// **Source:** `ChFiDS_ElSpine.hxx`:79 - `ChFiDS_ElSpine::GetType()`
     pub fn ChFiDS_ElSpine_get_type(self_: *const ChFiDS_ElSpine) -> crate::OcctResult<i32>;
-    /// **Source:** `ChFiDS_ElSpine.hxx`:83 - `ChFiDS_ElSpine::IsPeriodic()`
+    /// **Source:** `ChFiDS_ElSpine.hxx`:81 - `ChFiDS_ElSpine::IsPeriodic()`
     pub fn ChFiDS_ElSpine_is_periodic(self_: *const ChFiDS_ElSpine) -> crate::OcctResult<bool>;
-    /// **Source:** `ChFiDS_ElSpine.hxx`:85 - `ChFiDS_ElSpine::SetPeriodic()`
+    /// **Source:** `ChFiDS_ElSpine.hxx`:83 - `ChFiDS_ElSpine::SetPeriodic()`
     pub fn ChFiDS_ElSpine_set_periodic(
         self_: *mut ChFiDS_ElSpine,
         I: bool,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `ChFiDS_ElSpine.hxx`:87 - `ChFiDS_ElSpine::Period()`
+    /// **Source:** `ChFiDS_ElSpine.hxx`:85 - `ChFiDS_ElSpine::Period()`
     pub fn ChFiDS_ElSpine_period(self_: *const ChFiDS_ElSpine) -> crate::OcctResult<f64>;
-    /// **Source:** `ChFiDS_ElSpine.hxx`:89 - `ChFiDS_ElSpine::Value()`
-    pub fn ChFiDS_ElSpine_value(
+    /// **Source:** `ChFiDS_ElSpine.hxx`:88 - `ChFiDS_ElSpine::EvalD0()`
+    pub fn ChFiDS_ElSpine_eval_d0(
         self_: *const ChFiDS_ElSpine,
-        AbsC: f64,
+        theAbsC: f64,
     ) -> crate::OcctResult<*mut gp_Pnt>;
-    /// **Source:** `ChFiDS_ElSpine.hxx`:91 - `ChFiDS_ElSpine::D0()`
-    pub fn ChFiDS_ElSpine_d0(
+    /// **Source:** `ChFiDS_ElSpine.hxx`:91 - `ChFiDS_ElSpine::EvalD1()`
+    pub fn ChFiDS_ElSpine_eval_d1(
         self_: *const ChFiDS_ElSpine,
-        AbsC: f64,
-        P: *mut gp_Pnt,
-    ) -> *const std::ffi::c_char;
-    /// **Source:** `ChFiDS_ElSpine.hxx`:93 - `ChFiDS_ElSpine::D1()`
-    pub fn ChFiDS_ElSpine_d1(
+        theAbsC: f64,
+    ) -> crate::OcctResult<*mut Geom_Curve_ResD1>;
+    /// **Source:** `ChFiDS_ElSpine.hxx`:94 - `ChFiDS_ElSpine::EvalD2()`
+    pub fn ChFiDS_ElSpine_eval_d2(
         self_: *const ChFiDS_ElSpine,
-        AbsC: f64,
-        P: *mut gp_Pnt,
-        V1: *mut gp_Vec,
-    ) -> *const std::ffi::c_char;
-    /// **Source:** `ChFiDS_ElSpine.hxx`:97 - `ChFiDS_ElSpine::D2()`
-    pub fn ChFiDS_ElSpine_d2(
+        theAbsC: f64,
+    ) -> crate::OcctResult<*mut Geom_Curve_ResD2>;
+    /// **Source:** `ChFiDS_ElSpine.hxx`:97 - `ChFiDS_ElSpine::EvalD3()`
+    pub fn ChFiDS_ElSpine_eval_d3(
         self_: *const ChFiDS_ElSpine,
-        AbsC: f64,
-        P: *mut gp_Pnt,
-        V1: *mut gp_Vec,
-        V2: *mut gp_Vec,
-    ) -> *const std::ffi::c_char;
-    /// **Source:** `ChFiDS_ElSpine.hxx`:102 - `ChFiDS_ElSpine::D3()`
-    pub fn ChFiDS_ElSpine_d3(
-        self_: *const ChFiDS_ElSpine,
-        AbsC: f64,
-        P: *mut gp_Pnt,
-        V1: *mut gp_Vec,
-        V2: *mut gp_Vec,
-        V3: *mut gp_Vec,
-    ) -> *const std::ffi::c_char;
-    /// **Source:** `ChFiDS_ElSpine.hxx`:108 - `ChFiDS_ElSpine::FirstParameter()`
+        theAbsC: f64,
+    ) -> crate::OcctResult<*mut Geom_Curve_ResD3>;
+    /// **Source:** `ChFiDS_ElSpine.hxx`:99 - `ChFiDS_ElSpine::FirstParameter()`
     pub fn ChFiDS_ElSpine_first_parameter_real(
         self_: *mut ChFiDS_ElSpine,
         P: f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `ChFiDS_ElSpine.hxx`:110 - `ChFiDS_ElSpine::LastParameter()`
+    /// **Source:** `ChFiDS_ElSpine.hxx`:101 - `ChFiDS_ElSpine::LastParameter()`
     pub fn ChFiDS_ElSpine_last_parameter_real(
         self_: *mut ChFiDS_ElSpine,
         P: f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `ChFiDS_ElSpine.hxx`:112 - `ChFiDS_ElSpine::SaveFirstParameter()`
+    /// **Source:** `ChFiDS_ElSpine.hxx`:103 - `ChFiDS_ElSpine::SaveFirstParameter()`
     pub fn ChFiDS_ElSpine_save_first_parameter(
         self_: *mut ChFiDS_ElSpine,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `ChFiDS_ElSpine.hxx`:114 - `ChFiDS_ElSpine::SaveLastParameter()`
+    /// **Source:** `ChFiDS_ElSpine.hxx`:105 - `ChFiDS_ElSpine::SaveLastParameter()`
     pub fn ChFiDS_ElSpine_save_last_parameter(
         self_: *mut ChFiDS_ElSpine,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `ChFiDS_ElSpine.hxx`:116 - `ChFiDS_ElSpine::SetOrigin()`
+    /// **Source:** `ChFiDS_ElSpine.hxx`:107 - `ChFiDS_ElSpine::SetOrigin()`
     pub fn ChFiDS_ElSpine_set_origin(self_: *mut ChFiDS_ElSpine, O: f64)
         -> *const std::ffi::c_char;
-    /// **Source:** `ChFiDS_ElSpine.hxx`:118 - `ChFiDS_ElSpine::FirstPointAndTgt()`
+    /// **Source:** `ChFiDS_ElSpine.hxx`:109 - `ChFiDS_ElSpine::FirstPointAndTgt()`
     pub fn ChFiDS_ElSpine_first_point_and_tgt(
         self_: *const ChFiDS_ElSpine,
         P: *mut gp_Pnt,
         T: *mut gp_Vec,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `ChFiDS_ElSpine.hxx`:120 - `ChFiDS_ElSpine::LastPointAndTgt()`
+    /// **Source:** `ChFiDS_ElSpine.hxx`:111 - `ChFiDS_ElSpine::LastPointAndTgt()`
     pub fn ChFiDS_ElSpine_last_point_and_tgt(
         self_: *const ChFiDS_ElSpine,
         P: *mut gp_Pnt,
         T: *mut gp_Vec,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `ChFiDS_ElSpine.hxx`:122 - `ChFiDS_ElSpine::NbVertices()`
+    /// **Source:** `ChFiDS_ElSpine.hxx`:113 - `ChFiDS_ElSpine::NbVertices()`
     pub fn ChFiDS_ElSpine_nb_vertices(self_: *const ChFiDS_ElSpine) -> crate::OcctResult<i32>;
-    /// **Source:** `ChFiDS_ElSpine.hxx`:124 - `ChFiDS_ElSpine::VertexWithTangent()`
+    /// **Source:** `ChFiDS_ElSpine.hxx`:115 - `ChFiDS_ElSpine::VertexWithTangent()`
     pub fn ChFiDS_ElSpine_vertex_with_tangent(
         self_: *const ChFiDS_ElSpine,
         Index: i32,
     ) -> crate::OcctResult<*const gp_Ax1>;
-    /// **Source:** `ChFiDS_ElSpine.hxx`:126 - `ChFiDS_ElSpine::SetFirstPointAndTgt()`
+    /// **Source:** `ChFiDS_ElSpine.hxx`:117 - `ChFiDS_ElSpine::SetFirstPointAndTgt()`
     pub fn ChFiDS_ElSpine_set_first_point_and_tgt(
         self_: *mut ChFiDS_ElSpine,
         P: *const gp_Pnt,
         T: *const gp_Vec,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `ChFiDS_ElSpine.hxx`:128 - `ChFiDS_ElSpine::SetLastPointAndTgt()`
+    /// **Source:** `ChFiDS_ElSpine.hxx`:119 - `ChFiDS_ElSpine::SetLastPointAndTgt()`
     pub fn ChFiDS_ElSpine_set_last_point_and_tgt(
         self_: *mut ChFiDS_ElSpine,
         P: *const gp_Pnt,
         T: *const gp_Vec,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `ChFiDS_ElSpine.hxx`:130 - `ChFiDS_ElSpine::AddVertexWithTangent()`
+    /// **Source:** `ChFiDS_ElSpine.hxx`:121 - `ChFiDS_ElSpine::AddVertexWithTangent()`
     pub fn ChFiDS_ElSpine_add_vertex_with_tangent(
         self_: *mut ChFiDS_ElSpine,
         anAx1: *const gp_Ax1,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `ChFiDS_ElSpine.hxx`:132 - `ChFiDS_ElSpine::SetCurve()`
+    /// **Source:** `ChFiDS_ElSpine.hxx`:123 - `ChFiDS_ElSpine::SetCurve()`
     pub fn ChFiDS_ElSpine_set_curve(
         self_: *mut ChFiDS_ElSpine,
-        C: *const HandleGeomCurve,
+        C: *const Handle_Geom_Curve,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `ChFiDS_ElSpine.hxx`:134 - `ChFiDS_ElSpine::Previous()`
+    /// **Source:** `ChFiDS_ElSpine.hxx`:125 - `ChFiDS_ElSpine::Previous()`
     pub fn ChFiDS_ElSpine_previous(
         self_: *const ChFiDS_ElSpine,
-    ) -> crate::OcctResult<*const HandleChFiDSSurfData>;
-    /// **Source:** `ChFiDS_ElSpine.hxx`:136 - `ChFiDS_ElSpine::ChangePrevious()`
+    ) -> crate::OcctResult<*const Handle_ChFiDS_SurfData>;
+    /// **Source:** `ChFiDS_ElSpine.hxx`:127 - `ChFiDS_ElSpine::ChangePrevious()`
     pub fn ChFiDS_ElSpine_change_previous(
         self_: *mut ChFiDS_ElSpine,
-    ) -> crate::OcctResult<*mut HandleChFiDSSurfData>;
-    /// **Source:** `ChFiDS_ElSpine.hxx`:138 - `ChFiDS_ElSpine::Next()`
+    ) -> crate::OcctResult<*mut Handle_ChFiDS_SurfData>;
+    /// **Source:** `ChFiDS_ElSpine.hxx`:129 - `ChFiDS_ElSpine::Next()`
     pub fn ChFiDS_ElSpine_next(
         self_: *const ChFiDS_ElSpine,
-    ) -> crate::OcctResult<*const HandleChFiDSSurfData>;
-    /// **Source:** `ChFiDS_ElSpine.hxx`:140 - `ChFiDS_ElSpine::ChangeNext()`
+    ) -> crate::OcctResult<*const Handle_ChFiDS_SurfData>;
+    /// **Source:** `ChFiDS_ElSpine.hxx`:131 - `ChFiDS_ElSpine::ChangeNext()`
     pub fn ChFiDS_ElSpine_change_next(
         self_: *mut ChFiDS_ElSpine,
-    ) -> crate::OcctResult<*mut HandleChFiDSSurfData>;
-    /// **Source:** `ChFiDS_ElSpine.hxx`:142 - `ChFiDS_ElSpine::Line()`
+    ) -> crate::OcctResult<*mut Handle_ChFiDS_SurfData>;
+    /// **Source:** `ChFiDS_ElSpine.hxx`:133 - `ChFiDS_ElSpine::Line()`
     pub fn ChFiDS_ElSpine_line(self_: *const ChFiDS_ElSpine) -> crate::OcctResult<*mut gp_Lin>;
-    /// **Source:** `ChFiDS_ElSpine.hxx`:144 - `ChFiDS_ElSpine::Circle()`
+    /// **Source:** `ChFiDS_ElSpine.hxx`:135 - `ChFiDS_ElSpine::Circle()`
     pub fn ChFiDS_ElSpine_circle(self_: *const ChFiDS_ElSpine) -> crate::OcctResult<*mut gp_Circ>;
-    /// **Source:** `ChFiDS_ElSpine.hxx`:146 - `ChFiDS_ElSpine::Ellipse()`
+    /// **Source:** `ChFiDS_ElSpine.hxx`:137 - `ChFiDS_ElSpine::Ellipse()`
     pub fn ChFiDS_ElSpine_ellipse(self_: *const ChFiDS_ElSpine)
         -> crate::OcctResult<*mut gp_Elips>;
-    /// **Source:** `ChFiDS_ElSpine.hxx`:148 - `ChFiDS_ElSpine::Hyperbola()`
+    /// **Source:** `ChFiDS_ElSpine.hxx`:139 - `ChFiDS_ElSpine::Hyperbola()`
     pub fn ChFiDS_ElSpine_hyperbola(
         self_: *const ChFiDS_ElSpine,
     ) -> crate::OcctResult<*mut gp_Hypr>;
-    /// **Source:** `ChFiDS_ElSpine.hxx`:150 - `ChFiDS_ElSpine::Parabola()`
+    /// **Source:** `ChFiDS_ElSpine.hxx`:141 - `ChFiDS_ElSpine::Parabola()`
     pub fn ChFiDS_ElSpine_parabola(
         self_: *const ChFiDS_ElSpine,
     ) -> crate::OcctResult<*mut gp_Parab>;
-    /// **Source:** `ChFiDS_ElSpine.hxx`:152 - `ChFiDS_ElSpine::Bezier()`
+    /// **Source:** `ChFiDS_ElSpine.hxx`:143 - `ChFiDS_ElSpine::Bezier()`
     pub fn ChFiDS_ElSpine_bezier(
         self_: *const ChFiDS_ElSpine,
-    ) -> crate::OcctResult<*mut HandleGeomBezierCurve>;
-    /// **Source:** `ChFiDS_ElSpine.hxx`:154 - `ChFiDS_ElSpine::BSpline()`
+    ) -> crate::OcctResult<*mut Handle_Geom_BezierCurve>;
+    /// **Source:** `ChFiDS_ElSpine.hxx`:145 - `ChFiDS_ElSpine::BSpline()`
     pub fn ChFiDS_ElSpine_b_spline(
         self_: *const ChFiDS_ElSpine,
-    ) -> crate::OcctResult<*mut HandleGeomBSplineCurve>;
-    /// **Source:** `ChFiDS_ElSpine.hxx`:49 - `ChFiDS_ElSpine::get_type_name()`
+    ) -> crate::OcctResult<*mut Handle_Geom_BSplineCurve>;
+    /// **Source:** `ChFiDS_ElSpine.hxx`:48 - `ChFiDS_ElSpine::get_type_name()`
     pub fn ChFiDS_ElSpine_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
-    /// **Source:** `ChFiDS_ElSpine.hxx`:49 - `ChFiDS_ElSpine::get_type_descriptor()`
-    pub fn ChFiDS_ElSpine_get_type_descriptor() -> crate::OcctResult<*const HandleStandardType>;
+    /// **Source:** `ChFiDS_ElSpine.hxx`:48 - `ChFiDS_ElSpine::get_type_descriptor()`
+    pub fn ChFiDS_ElSpine_get_type_descriptor() -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast ChFiDS_ElSpine to Adaptor3d_Curve
     pub fn ChFiDS_ElSpine_as_Adaptor3d_Curve(
         self_: *const ChFiDS_ElSpine,
@@ -11941,84 +11763,125 @@ unsafe extern "C" {
     /// Wrap ChFiDS_ElSpine in a Handle
     pub fn ChFiDS_ElSpine_to_handle(
         obj: *mut ChFiDS_ElSpine,
-    ) -> crate::OcctResult<*mut HandleChFiDSElSpine>;
+    ) -> crate::OcctResult<*mut Handle_ChFiDS_ElSpine>;
     /// Destroy Handle<ChFiDS_ElSpine>
-    pub fn HandleChFiDSElSpine_destructor(self_: *mut HandleChFiDSElSpine);
+    pub fn Handle_ChFiDS_ElSpine_destructor(self_: *mut Handle_ChFiDS_ElSpine);
     /// Clone Handle<ChFiDS_ElSpine> (increments reference count)
-    pub fn HandleChFiDSElSpine_clone(
-        self_: *const HandleChFiDSElSpine,
-    ) -> crate::OcctResult<*mut HandleChFiDSElSpine>;
+    pub fn Handle_ChFiDS_ElSpine_clone(
+        self_: *const Handle_ChFiDS_ElSpine,
+    ) -> crate::OcctResult<*mut Handle_ChFiDS_ElSpine>;
     /// Check if Handle<ChFiDS_ElSpine> is null
-    pub fn HandleChFiDSElSpine_is_null(self_: *const HandleChFiDSElSpine) -> bool;
+    pub fn Handle_ChFiDS_ElSpine_is_null(self_: *const Handle_ChFiDS_ElSpine) -> bool;
     /// Dereference Handle to get *const ChFiDS_ElSpine
-    pub fn HandleChFiDSElSpine_get(
-        handle: *const HandleChFiDSElSpine,
+    pub fn Handle_ChFiDS_ElSpine_get(
+        handle: *const Handle_ChFiDS_ElSpine,
     ) -> crate::OcctResult<*const ChFiDS_ElSpine>;
     /// Dereference Handle to get *mut ChFiDS_ElSpine
-    pub fn HandleChFiDSElSpine_get_mut(
-        handle: *mut HandleChFiDSElSpine,
+    pub fn Handle_ChFiDS_ElSpine_get_mut(
+        handle: *mut Handle_ChFiDS_ElSpine,
     ) -> crate::OcctResult<*mut ChFiDS_ElSpine>;
     /// Upcast Handle<ChFiDS_ElSpine> to Handle<Adaptor3d_Curve>
-    pub fn HandleChFiDSElSpine_to_HandleAdaptor3dCurve(
-        self_: *const HandleChFiDSElSpine,
-    ) -> crate::OcctResult<*mut HandleAdaptor3dCurve>;
+    pub fn Handle_ChFiDS_ElSpine_to_Handle_Adaptor3d_Curve(
+        self_: *const Handle_ChFiDS_ElSpine,
+    ) -> crate::OcctResult<*mut Handle_Adaptor3d_Curve>;
     /// Upcast Handle<ChFiDS_ElSpine> to Handle<Standard_Transient>
-    pub fn HandleChFiDSElSpine_to_HandleStandardTransient(
-        self_: *const HandleChFiDSElSpine,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
-    /// Inherited: **Source:** `Adaptor3d_Curve.hxx`:84 - `Adaptor3d_Curve::IsClosed()`
+    pub fn Handle_ChFiDS_ElSpine_to_Handle_Standard_Transient(
+        self_: *const Handle_ChFiDS_ElSpine,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
+    /// Inherited: **Source:** `Adaptor3d_Curve.hxx`:82 - `Adaptor3d_Curve::IsClosed()`
     pub fn ChFiDS_ElSpine_inherited_IsClosed(
         self_: *const ChFiDS_ElSpine,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Adaptor3d_Curve.hxx`:123 - `Adaptor3d_Curve::DN()`
+    /// Inherited: **Source:** `Adaptor3d_Curve.hxx`:89 - `Adaptor3d_Curve::Value()`
+    pub fn ChFiDS_ElSpine_inherited_Value(
+        self_: *const ChFiDS_ElSpine,
+        theU: f64,
+    ) -> crate::OcctResult<*mut gp_Pnt>;
+    /// Inherited: **Source:** `Adaptor3d_Curve.hxx`:92 - `Adaptor3d_Curve::D0()`
+    pub fn ChFiDS_ElSpine_inherited_D0(
+        self_: *const ChFiDS_ElSpine,
+        theU: f64,
+        theP: *mut gp_Pnt,
+    ) -> *const std::ffi::c_char;
+    /// Inherited: **Source:** `Adaptor3d_Curve.hxx`:98 - `Adaptor3d_Curve::D1()`
+    pub fn ChFiDS_ElSpine_inherited_D1(
+        self_: *const ChFiDS_ElSpine,
+        theU: f64,
+        theP: *mut gp_Pnt,
+        theV: *mut gp_Vec,
+    ) -> *const std::ffi::c_char;
+    /// Inherited: **Source:** `Adaptor3d_Curve.hxx`:109 - `Adaptor3d_Curve::D2()`
+    pub fn ChFiDS_ElSpine_inherited_D2(
+        self_: *const ChFiDS_ElSpine,
+        theU: f64,
+        theP: *mut gp_Pnt,
+        theV1: *mut gp_Vec,
+        theV2: *mut gp_Vec,
+    ) -> *const std::ffi::c_char;
+    /// Inherited: **Source:** `Adaptor3d_Curve.hxx`:121 - `Adaptor3d_Curve::D3()`
+    pub fn ChFiDS_ElSpine_inherited_D3(
+        self_: *const ChFiDS_ElSpine,
+        theU: f64,
+        theP: *mut gp_Pnt,
+        theV1: *mut gp_Vec,
+        theV2: *mut gp_Vec,
+        theV3: *mut gp_Vec,
+    ) -> *const std::ffi::c_char;
+    /// Inherited: **Source:** `Adaptor3d_Curve.hxx`:135 - `Adaptor3d_Curve::DN()`
     pub fn ChFiDS_ElSpine_inherited_DN(
         self_: *const ChFiDS_ElSpine,
-        U: f64,
-        N: i32,
+        theU: f64,
+        theN: i32,
     ) -> crate::OcctResult<*mut gp_Vec>;
-    /// Inherited: **Source:** `Adaptor3d_Curve.hxx`:144 - `Adaptor3d_Curve::Degree()`
+    /// Inherited: **Source:** `Adaptor3d_Curve.hxx`:156 - `Adaptor3d_Curve::Degree()`
     pub fn ChFiDS_ElSpine_inherited_Degree(self_: *const ChFiDS_ElSpine) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Adaptor3d_Curve.hxx`:146 - `Adaptor3d_Curve::IsRational()`
+    /// Inherited: **Source:** `Adaptor3d_Curve.hxx`:158 - `Adaptor3d_Curve::IsRational()`
     pub fn ChFiDS_ElSpine_inherited_IsRational(
         self_: *const ChFiDS_ElSpine,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Adaptor3d_Curve.hxx`:148 - `Adaptor3d_Curve::NbPoles()`
+    /// Inherited: **Source:** `Adaptor3d_Curve.hxx`:160 - `Adaptor3d_Curve::NbPoles()`
     pub fn ChFiDS_ElSpine_inherited_NbPoles(self_: *const ChFiDS_ElSpine)
         -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Adaptor3d_Curve.hxx`:150 - `Adaptor3d_Curve::NbKnots()`
+    /// Inherited: **Source:** `Adaptor3d_Curve.hxx`:162 - `Adaptor3d_Curve::NbKnots()`
     pub fn ChFiDS_ElSpine_inherited_NbKnots(self_: *const ChFiDS_ElSpine)
         -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Adaptor3d_Curve.hxx`:156 - `Adaptor3d_Curve::OffsetCurve()`
+    /// Inherited: **Source:** `Adaptor3d_Curve.hxx`:168 - `Adaptor3d_Curve::OffsetCurve()`
     pub fn ChFiDS_ElSpine_inherited_OffsetCurve(
         self_: *const ChFiDS_ElSpine,
-    ) -> crate::OcctResult<*mut HandleGeomOffsetCurve>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    ) -> crate::OcctResult<*mut Handle_Geom_OffsetCurve>;
+    /// Inherited: **Source:** `Adaptor3d_Curve.hxx`:188 - `Adaptor3d_Curve::EvalDN()`
+    pub fn ChFiDS_ElSpine_inherited_EvalDN(
+        self_: *const ChFiDS_ElSpine,
+        theU: f64,
+        theN: i32,
+    ) -> crate::OcctResult<*mut gp_Vec>;
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn ChFiDS_ElSpine_inherited_IsInstance(
         self_: *const ChFiDS_ElSpine,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn ChFiDS_ElSpine_inherited_IsKind(
         self_: *const ChFiDS_ElSpine,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn ChFiDS_ElSpine_inherited_This(
         self_: *const ChFiDS_ElSpine,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn ChFiDS_ElSpine_inherited_GetRefCount(
         self_: *const ChFiDS_ElSpine,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn ChFiDS_ElSpine_inherited_IncrementRefCounter(
         self_: *mut ChFiDS_ElSpine,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn ChFiDS_ElSpine_inherited_DecrementRefCounter(
         self_: *mut ChFiDS_ElSpine,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn ChFiDS_ElSpine_inherited_Delete(self_: *const ChFiDS_ElSpine)
         -> *const std::ffi::c_char;
     // ======================== ChFiDS_FaceInterference ========================
@@ -12030,8 +11893,8 @@ unsafe extern "C" {
         self_: *mut ChFiDS_FaceInterference,
         LineIndex: i32,
         Trans: i32,
-        PCurv1: *const HandleGeom2dCurve,
-        PCurv2: *const HandleGeom2dCurve,
+        PCurv1: *const Handle_Geom2d_Curve,
+        PCurv2: *const Handle_Geom2d_Curve,
     ) -> *const std::ffi::c_char;
     /// **Source:** `ChFiDS_FaceInterference.hxx`:43 - `ChFiDS_FaceInterference::SetTransition()`
     pub fn ChFiDS_FaceInterference_set_transition(
@@ -12070,19 +11933,19 @@ unsafe extern "C" {
     /// **Source:** `ChFiDS_FaceInterference.hxx`:57 - `ChFiDS_FaceInterference::PCurveOnFace()`
     pub fn ChFiDS_FaceInterference_p_curve_on_face(
         self_: *const ChFiDS_FaceInterference,
-    ) -> crate::OcctResult<*const HandleGeom2dCurve>;
+    ) -> crate::OcctResult<*const Handle_Geom2d_Curve>;
     /// **Source:** `ChFiDS_FaceInterference.hxx`:59 - `ChFiDS_FaceInterference::PCurveOnSurf()`
     pub fn ChFiDS_FaceInterference_p_curve_on_surf(
         self_: *const ChFiDS_FaceInterference,
-    ) -> crate::OcctResult<*const HandleGeom2dCurve>;
+    ) -> crate::OcctResult<*const Handle_Geom2d_Curve>;
     /// **Source:** `ChFiDS_FaceInterference.hxx`:61 - `ChFiDS_FaceInterference::ChangePCurveOnFace()`
     pub fn ChFiDS_FaceInterference_change_p_curve_on_face(
         self_: *mut ChFiDS_FaceInterference,
-    ) -> crate::OcctResult<*mut HandleGeom2dCurve>;
+    ) -> crate::OcctResult<*mut Handle_Geom2d_Curve>;
     /// **Source:** `ChFiDS_FaceInterference.hxx`:63 - `ChFiDS_FaceInterference::ChangePCurveOnSurf()`
     pub fn ChFiDS_FaceInterference_change_p_curve_on_surf(
         self_: *mut ChFiDS_FaceInterference,
-    ) -> crate::OcctResult<*mut HandleGeom2dCurve>;
+    ) -> crate::OcctResult<*mut Handle_Geom2d_Curve>;
     /// **Source:** `ChFiDS_FaceInterference.hxx`:65 - `ChFiDS_FaceInterference::FirstParameter()`
     pub fn ChFiDS_FaceInterference_first_parameter(
         self_: *const ChFiDS_FaceInterference,
@@ -12098,100 +11961,100 @@ unsafe extern "C" {
     ) -> crate::OcctResult<f64>;
     // ======================== ChFiDS_FilSpine ========================
     pub fn ChFiDS_FilSpine_destructor(self_: *mut ChFiDS_FilSpine);
-    /// **Source:** `ChFiDS_FilSpine.hxx`:40 - `ChFiDS_FilSpine::ChFiDS_FilSpine()`
+    /// **Source:** `ChFiDS_FilSpine.hxx`:39 - `ChFiDS_FilSpine::ChFiDS_FilSpine()`
     pub fn ChFiDS_FilSpine_ctor() -> crate::OcctResult<*mut ChFiDS_FilSpine>;
-    /// **Source:** `ChFiDS_FilSpine.hxx`:42 - `ChFiDS_FilSpine::ChFiDS_FilSpine()`
+    /// **Source:** `ChFiDS_FilSpine.hxx`:41 - `ChFiDS_FilSpine::ChFiDS_FilSpine()`
     pub fn ChFiDS_FilSpine_ctor_real(Tol: f64) -> crate::OcctResult<*mut ChFiDS_FilSpine>;
-    /// **Source:** `ChFiDS_FilSpine.hxx`:44 - `ChFiDS_FilSpine::Reset()`
+    /// **Source:** `ChFiDS_FilSpine.hxx`:43 - `ChFiDS_FilSpine::Reset()`
     pub fn ChFiDS_FilSpine_reset(
         self_: *mut ChFiDS_FilSpine,
         AllData: bool,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `ChFiDS_FilSpine.hxx`:48 - `ChFiDS_FilSpine::SetRadius()`
+    /// **Source:** `ChFiDS_FilSpine.hxx`:46 - `ChFiDS_FilSpine::SetRadius()`
     pub fn ChFiDS_FilSpine_set_radius_real_edge(
         self_: *mut ChFiDS_FilSpine,
         Radius: f64,
         E: *const TopoDS_Edge,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `ChFiDS_FilSpine.hxx`:51 - `ChFiDS_FilSpine::UnSetRadius()`
+    /// **Source:** `ChFiDS_FilSpine.hxx`:49 - `ChFiDS_FilSpine::UnSetRadius()`
     pub fn ChFiDS_FilSpine_un_set_radius_edge(
         self_: *mut ChFiDS_FilSpine,
         E: *const TopoDS_Edge,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `ChFiDS_FilSpine.hxx`:54 - `ChFiDS_FilSpine::SetRadius()`
+    /// **Source:** `ChFiDS_FilSpine.hxx`:52 - `ChFiDS_FilSpine::SetRadius()`
     pub fn ChFiDS_FilSpine_set_radius_real_vertex(
         self_: *mut ChFiDS_FilSpine,
         Radius: f64,
         V: *const TopoDS_Vertex,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `ChFiDS_FilSpine.hxx`:57 - `ChFiDS_FilSpine::UnSetRadius()`
+    /// **Source:** `ChFiDS_FilSpine.hxx`:55 - `ChFiDS_FilSpine::UnSetRadius()`
     pub fn ChFiDS_FilSpine_un_set_radius_vertex(
         self_: *mut ChFiDS_FilSpine,
         V: *const TopoDS_Vertex,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `ChFiDS_FilSpine.hxx`:60 - `ChFiDS_FilSpine::SetRadius()`
+    /// **Source:** `ChFiDS_FilSpine.hxx`:58 - `ChFiDS_FilSpine::SetRadius()`
     pub fn ChFiDS_FilSpine_set_radius_xy_int(
         self_: *mut ChFiDS_FilSpine,
         UandR: *const gp_XY,
         IinC: i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `ChFiDS_FilSpine.hxx`:63 - `ChFiDS_FilSpine::SetRadius()`
+    /// **Source:** `ChFiDS_FilSpine.hxx`:61 - `ChFiDS_FilSpine::SetRadius()`
     pub fn ChFiDS_FilSpine_set_radius_real(
         self_: *mut ChFiDS_FilSpine,
         Radius: f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `ChFiDS_FilSpine.hxx`:66 - `ChFiDS_FilSpine::SetRadius()`
+    /// **Source:** `ChFiDS_FilSpine.hxx`:64 - `ChFiDS_FilSpine::SetRadius()`
     pub fn ChFiDS_FilSpine_set_radius_handlelawfunction_int(
         self_: *mut ChFiDS_FilSpine,
-        C: *const HandleLawFunction,
+        C: *const Handle_Law_Function,
         IinC: i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `ChFiDS_FilSpine.hxx`:70 - `ChFiDS_FilSpine::IsConstant()`
+    /// **Source:** `ChFiDS_FilSpine.hxx`:68 - `ChFiDS_FilSpine::IsConstant()`
     pub fn ChFiDS_FilSpine_is_constant(self_: *const ChFiDS_FilSpine) -> crate::OcctResult<bool>;
-    /// **Source:** `ChFiDS_FilSpine.hxx`:74 - `ChFiDS_FilSpine::IsConstant()`
+    /// **Source:** `ChFiDS_FilSpine.hxx`:72 - `ChFiDS_FilSpine::IsConstant()`
     pub fn ChFiDS_FilSpine_is_constant_int(
         self_: *const ChFiDS_FilSpine,
         IE: i32,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `ChFiDS_FilSpine.hxx`:78 - `ChFiDS_FilSpine::Radius()`
+    /// **Source:** `ChFiDS_FilSpine.hxx`:76 - `ChFiDS_FilSpine::Radius()`
     pub fn ChFiDS_FilSpine_radius(self_: *const ChFiDS_FilSpine) -> crate::OcctResult<f64>;
-    /// **Source:** `ChFiDS_FilSpine.hxx`:82 - `ChFiDS_FilSpine::Radius()`
+    /// **Source:** `ChFiDS_FilSpine.hxx`:80 - `ChFiDS_FilSpine::Radius()`
     pub fn ChFiDS_FilSpine_radius_int(
         self_: *const ChFiDS_FilSpine,
         IE: i32,
     ) -> crate::OcctResult<f64>;
-    /// **Source:** `ChFiDS_FilSpine.hxx`:86 - `ChFiDS_FilSpine::Radius()`
+    /// **Source:** `ChFiDS_FilSpine.hxx`:84 - `ChFiDS_FilSpine::Radius()`
     pub fn ChFiDS_FilSpine_radius_edge(
         self_: *const ChFiDS_FilSpine,
         E: *const TopoDS_Edge,
     ) -> crate::OcctResult<f64>;
-    /// **Source:** `ChFiDS_FilSpine.hxx`:88 - `ChFiDS_FilSpine::AppendElSpine()`
+    /// **Source:** `ChFiDS_FilSpine.hxx`:86 - `ChFiDS_FilSpine::AppendElSpine()`
     pub fn ChFiDS_FilSpine_append_el_spine(
         self_: *mut ChFiDS_FilSpine,
-        Els: *const HandleChFiDSElSpine,
+        Els: *const Handle_ChFiDS_ElSpine,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `ChFiDS_FilSpine.hxx`:90 - `ChFiDS_FilSpine::Law()`
+    /// **Source:** `ChFiDS_FilSpine.hxx`:88 - `ChFiDS_FilSpine::Law()`
     pub fn ChFiDS_FilSpine_law(
         self_: *const ChFiDS_FilSpine,
-        Els: *const HandleChFiDSElSpine,
-    ) -> crate::OcctResult<*mut HandleLawComposite>;
-    /// **Source:** `ChFiDS_FilSpine.hxx`:93 - `ChFiDS_FilSpine::ChangeLaw()`
+        Els: *const Handle_ChFiDS_ElSpine,
+    ) -> crate::OcctResult<*mut Handle_Law_Composite>;
+    /// **Source:** `ChFiDS_FilSpine.hxx`:91 - `ChFiDS_FilSpine::ChangeLaw()`
     pub fn ChFiDS_FilSpine_change_law(
         self_: *mut ChFiDS_FilSpine,
         E: *const TopoDS_Edge,
-    ) -> crate::OcctResult<*mut HandleLawFunction>;
-    /// **Source:** `ChFiDS_FilSpine.hxx`:96 - `ChFiDS_FilSpine::MaxRadFromSeqAndLaws()`
+    ) -> crate::OcctResult<*mut Handle_Law_Function>;
+    /// **Source:** `ChFiDS_FilSpine.hxx`:94 - `ChFiDS_FilSpine::MaxRadFromSeqAndLaws()`
     pub fn ChFiDS_FilSpine_max_rad_from_seq_and_laws(
         self_: *const ChFiDS_FilSpine,
     ) -> crate::OcctResult<f64>;
-    /// **Source:** `ChFiDS_FilSpine.hxx`:98 - `ChFiDS_FilSpine::DynamicType()`
+    /// **Source:** `ChFiDS_FilSpine.hxx`:96 - `ChFiDS_FilSpine::DynamicType()`
     pub fn ChFiDS_FilSpine_dynamic_type(
         self_: *const ChFiDS_FilSpine,
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// **Source:** `ChFiDS_FilSpine.hxx`:98 - `ChFiDS_FilSpine::get_type_name()`
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
+    /// **Source:** `ChFiDS_FilSpine.hxx`:96 - `ChFiDS_FilSpine::get_type_name()`
     pub fn ChFiDS_FilSpine_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
-    /// **Source:** `ChFiDS_FilSpine.hxx`:98 - `ChFiDS_FilSpine::get_type_descriptor()`
-    pub fn ChFiDS_FilSpine_get_type_descriptor() -> crate::OcctResult<*const HandleStandardType>;
+    /// **Source:** `ChFiDS_FilSpine.hxx`:96 - `ChFiDS_FilSpine::get_type_descriptor()`
+    pub fn ChFiDS_FilSpine_get_type_descriptor() -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast ChFiDS_FilSpine to ChFiDS_Spine
     pub fn ChFiDS_FilSpine_as_ChFiDS_Spine(
         self_: *const ChFiDS_FilSpine,
@@ -12211,170 +12074,162 @@ unsafe extern "C" {
     /// Wrap ChFiDS_FilSpine in a Handle
     pub fn ChFiDS_FilSpine_to_handle(
         obj: *mut ChFiDS_FilSpine,
-    ) -> crate::OcctResult<*mut HandleChFiDSFilSpine>;
+    ) -> crate::OcctResult<*mut Handle_ChFiDS_FilSpine>;
     /// Destroy Handle<ChFiDS_FilSpine>
-    pub fn HandleChFiDSFilSpine_destructor(self_: *mut HandleChFiDSFilSpine);
+    pub fn Handle_ChFiDS_FilSpine_destructor(self_: *mut Handle_ChFiDS_FilSpine);
     /// Clone Handle<ChFiDS_FilSpine> (increments reference count)
-    pub fn HandleChFiDSFilSpine_clone(
-        self_: *const HandleChFiDSFilSpine,
-    ) -> crate::OcctResult<*mut HandleChFiDSFilSpine>;
+    pub fn Handle_ChFiDS_FilSpine_clone(
+        self_: *const Handle_ChFiDS_FilSpine,
+    ) -> crate::OcctResult<*mut Handle_ChFiDS_FilSpine>;
     /// Check if Handle<ChFiDS_FilSpine> is null
-    pub fn HandleChFiDSFilSpine_is_null(self_: *const HandleChFiDSFilSpine) -> bool;
+    pub fn Handle_ChFiDS_FilSpine_is_null(self_: *const Handle_ChFiDS_FilSpine) -> bool;
     /// Dereference Handle to get *const ChFiDS_FilSpine
-    pub fn HandleChFiDSFilSpine_get(
-        handle: *const HandleChFiDSFilSpine,
+    pub fn Handle_ChFiDS_FilSpine_get(
+        handle: *const Handle_ChFiDS_FilSpine,
     ) -> crate::OcctResult<*const ChFiDS_FilSpine>;
     /// Dereference Handle to get *mut ChFiDS_FilSpine
-    pub fn HandleChFiDSFilSpine_get_mut(
-        handle: *mut HandleChFiDSFilSpine,
+    pub fn Handle_ChFiDS_FilSpine_get_mut(
+        handle: *mut Handle_ChFiDS_FilSpine,
     ) -> crate::OcctResult<*mut ChFiDS_FilSpine>;
     /// Upcast Handle<ChFiDS_FilSpine> to Handle<ChFiDS_Spine>
-    pub fn HandleChFiDSFilSpine_to_HandleChFiDSSpine(
-        self_: *const HandleChFiDSFilSpine,
-    ) -> crate::OcctResult<*mut HandleChFiDSSpine>;
+    pub fn Handle_ChFiDS_FilSpine_to_Handle_ChFiDS_Spine(
+        self_: *const Handle_ChFiDS_FilSpine,
+    ) -> crate::OcctResult<*mut Handle_ChFiDS_Spine>;
     /// Upcast Handle<ChFiDS_FilSpine> to Handle<Standard_Transient>
-    pub fn HandleChFiDSFilSpine_to_HandleStandardTransient(
-        self_: *const HandleChFiDSFilSpine,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
-    /// Inherited: **Source:** `ChFiDS_Spine.hxx`:78 - `ChFiDS_Spine::SetEdges()`
+    pub fn Handle_ChFiDS_FilSpine_to_Handle_Standard_Transient(
+        self_: *const Handle_ChFiDS_FilSpine,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
+    /// Inherited: **Source:** `ChFiDS_Spine.hxx`:77 - `ChFiDS_Spine::SetEdges()`
     pub fn ChFiDS_FilSpine_inherited_SetEdges(
         self_: *mut ChFiDS_FilSpine,
         E: *const TopoDS_Edge,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `ChFiDS_Spine.hxx`:81 - `ChFiDS_Spine::SetOffsetEdges()`
+    /// Inherited: **Source:** `ChFiDS_Spine.hxx`:80 - `ChFiDS_Spine::SetOffsetEdges()`
     pub fn ChFiDS_FilSpine_inherited_SetOffsetEdges(
         self_: *mut ChFiDS_FilSpine,
         E: *const TopoDS_Edge,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `ChFiDS_Spine.hxx`:84 - `ChFiDS_Spine::PutInFirst()`
+    /// Inherited: **Source:** `ChFiDS_Spine.hxx`:83 - `ChFiDS_Spine::PutInFirst()`
     pub fn ChFiDS_FilSpine_inherited_PutInFirst(
         self_: *mut ChFiDS_FilSpine,
         E: *const TopoDS_Edge,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `ChFiDS_Spine.hxx`:87 - `ChFiDS_Spine::PutInFirstOffset()`
+    /// Inherited: **Source:** `ChFiDS_Spine.hxx`:86 - `ChFiDS_Spine::PutInFirstOffset()`
     pub fn ChFiDS_FilSpine_inherited_PutInFirstOffset(
         self_: *mut ChFiDS_FilSpine,
         E: *const TopoDS_Edge,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `ChFiDS_Spine.hxx`:89 - `ChFiDS_Spine::NbEdges()`
+    /// Inherited: **Source:** `ChFiDS_Spine.hxx`:88 - `ChFiDS_Spine::NbEdges()`
     pub fn ChFiDS_FilSpine_inherited_NbEdges(
         self_: *const ChFiDS_FilSpine,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `ChFiDS_Spine.hxx`:91 - `ChFiDS_Spine::Edges()`
+    /// Inherited: **Source:** `ChFiDS_Spine.hxx`:90 - `ChFiDS_Spine::Edges()`
     pub fn ChFiDS_FilSpine_inherited_Edges(
         self_: *const ChFiDS_FilSpine,
         I: i32,
     ) -> crate::OcctResult<*const TopoDS_Edge>;
-    /// Inherited: **Source:** `ChFiDS_Spine.hxx`:93 - `ChFiDS_Spine::OffsetEdges()`
+    /// Inherited: **Source:** `ChFiDS_Spine.hxx`:92 - `ChFiDS_Spine::OffsetEdges()`
     pub fn ChFiDS_FilSpine_inherited_OffsetEdges(
         self_: *const ChFiDS_FilSpine,
         I: i32,
     ) -> crate::OcctResult<*const TopoDS_Edge>;
-    /// Inherited: **Source:** `ChFiDS_Spine.hxx`:97 - `ChFiDS_Spine::SetFirstStatus()`
+    /// Inherited: **Source:** `ChFiDS_Spine.hxx`:96 - `ChFiDS_Spine::SetFirstStatus()`
     pub fn ChFiDS_FilSpine_inherited_SetFirstStatus(
         self_: *mut ChFiDS_FilSpine,
         S: i32,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `ChFiDS_Spine.hxx`:101 - `ChFiDS_Spine::SetLastStatus()`
+    /// Inherited: **Source:** `ChFiDS_Spine.hxx`:100 - `ChFiDS_Spine::SetLastStatus()`
     pub fn ChFiDS_FilSpine_inherited_SetLastStatus(
         self_: *mut ChFiDS_FilSpine,
         S: i32,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `ChFiDS_Spine.hxx`:105 - `ChFiDS_Spine::AppendOffsetElSpine()`
+    /// Inherited: **Source:** `ChFiDS_Spine.hxx`:104 - `ChFiDS_Spine::AppendOffsetElSpine()`
     pub fn ChFiDS_FilSpine_inherited_AppendOffsetElSpine(
         self_: *mut ChFiDS_FilSpine,
-        Els: *const HandleChFiDSElSpine,
+        Els: *const Handle_ChFiDS_ElSpine,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `ChFiDS_Spine.hxx`:107 - `ChFiDS_Spine::ElSpine()`
+    /// Inherited: **Source:** `ChFiDS_Spine.hxx`:106 - `ChFiDS_Spine::ElSpine()`
     pub fn ChFiDS_FilSpine_inherited_ElSpine(
         self_: *const ChFiDS_FilSpine,
         IE: i32,
-    ) -> crate::OcctResult<*mut HandleChFiDSElSpine>;
-    /// Inherited: **Source:** `ChFiDS_Spine.hxx`:113 - `ChFiDS_Spine::ChangeElSpines()`
-    pub fn ChFiDS_FilSpine_inherited_ChangeElSpines(
-        self_: *mut ChFiDS_FilSpine,
-    ) -> crate::OcctResult<*mut ChFiDS_ListOfHElSpine>;
-    /// Inherited: **Source:** `ChFiDS_Spine.hxx`:115 - `ChFiDS_Spine::ChangeOffsetElSpines()`
-    pub fn ChFiDS_FilSpine_inherited_ChangeOffsetElSpines(
-        self_: *mut ChFiDS_FilSpine,
-    ) -> crate::OcctResult<*mut ChFiDS_ListOfHElSpine>;
-    /// Inherited: **Source:** `ChFiDS_Spine.hxx`:119 - `ChFiDS_Spine::SplitDone()`
+    ) -> crate::OcctResult<*mut Handle_ChFiDS_ElSpine>;
+    /// Inherited: **Source:** `ChFiDS_Spine.hxx`:118 - `ChFiDS_Spine::SplitDone()`
     pub fn ChFiDS_FilSpine_inherited_SplitDone(
         self_: *const ChFiDS_FilSpine,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `ChFiDS_Spine.hxx`:129 - `ChFiDS_Spine::Load()`
+    /// Inherited: **Source:** `ChFiDS_Spine.hxx`:128 - `ChFiDS_Spine::Load()`
     pub fn ChFiDS_FilSpine_inherited_Load(self_: *mut ChFiDS_FilSpine) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `ChFiDS_Spine.hxx`:131 - `ChFiDS_Spine::Resolution()`
+    /// Inherited: **Source:** `ChFiDS_Spine.hxx`:130 - `ChFiDS_Spine::Resolution()`
     pub fn ChFiDS_FilSpine_inherited_Resolution(
         self_: *const ChFiDS_FilSpine,
         R3d: f64,
     ) -> crate::OcctResult<f64>;
-    /// Inherited: **Source:** `ChFiDS_Spine.hxx`:133 - `ChFiDS_Spine::IsClosed()`
+    /// Inherited: **Source:** `ChFiDS_Spine.hxx`:132 - `ChFiDS_Spine::IsClosed()`
     pub fn ChFiDS_FilSpine_inherited_IsClosed(
         self_: *const ChFiDS_FilSpine,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `ChFiDS_Spine.hxx`:135 - `ChFiDS_Spine::FirstParameter()`
+    /// Inherited: **Source:** `ChFiDS_Spine.hxx`:134 - `ChFiDS_Spine::FirstParameter()`
     pub fn ChFiDS_FilSpine_inherited_FirstParameter(
         self_: *const ChFiDS_FilSpine,
     ) -> crate::OcctResult<f64>;
-    /// Inherited: **Source:** `ChFiDS_Spine.hxx`:137 - `ChFiDS_Spine::LastParameter()`
+    /// Inherited: **Source:** `ChFiDS_Spine.hxx`:136 - `ChFiDS_Spine::LastParameter()`
     pub fn ChFiDS_FilSpine_inherited_LastParameter(
         self_: *const ChFiDS_FilSpine,
     ) -> crate::OcctResult<f64>;
-    /// Inherited: **Source:** `ChFiDS_Spine.hxx`:139 - `ChFiDS_Spine::SetFirstParameter()`
+    /// Inherited: **Source:** `ChFiDS_Spine.hxx`:138 - `ChFiDS_Spine::SetFirstParameter()`
     pub fn ChFiDS_FilSpine_inherited_SetFirstParameter(
         self_: *mut ChFiDS_FilSpine,
         Par: f64,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `ChFiDS_Spine.hxx`:141 - `ChFiDS_Spine::SetLastParameter()`
+    /// Inherited: **Source:** `ChFiDS_Spine.hxx`:140 - `ChFiDS_Spine::SetLastParameter()`
     pub fn ChFiDS_FilSpine_inherited_SetLastParameter(
         self_: *mut ChFiDS_FilSpine,
         Par: f64,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `ChFiDS_Spine.hxx`:152 - `ChFiDS_Spine::Length()`
+    /// Inherited: **Source:** `ChFiDS_Spine.hxx`:151 - `ChFiDS_Spine::Length()`
     pub fn ChFiDS_FilSpine_inherited_Length(
         self_: *const ChFiDS_FilSpine,
         IndexSpine: i32,
     ) -> crate::OcctResult<f64>;
-    /// Inherited: **Source:** `ChFiDS_Spine.hxx`:154 - `ChFiDS_Spine::IsPeriodic()`
+    /// Inherited: **Source:** `ChFiDS_Spine.hxx`:153 - `ChFiDS_Spine::IsPeriodic()`
     pub fn ChFiDS_FilSpine_inherited_IsPeriodic(
         self_: *const ChFiDS_FilSpine,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `ChFiDS_Spine.hxx`:156 - `ChFiDS_Spine::Period()`
+    /// Inherited: **Source:** `ChFiDS_Spine.hxx`:155 - `ChFiDS_Spine::Period()`
     pub fn ChFiDS_FilSpine_inherited_Period(
         self_: *const ChFiDS_FilSpine,
     ) -> crate::OcctResult<f64>;
-    /// Inherited: **Source:** `ChFiDS_Spine.hxx`:158 - `ChFiDS_Spine::Absc()`
+    /// Inherited: **Source:** `ChFiDS_Spine.hxx`:157 - `ChFiDS_Spine::Absc()`
     pub fn ChFiDS_FilSpine_inherited_Absc(
         self_: *mut ChFiDS_FilSpine,
         U: f64,
     ) -> crate::OcctResult<f64>;
-    /// Inherited: **Source:** `ChFiDS_Spine.hxx`:162 - `ChFiDS_Spine::Parameter()`
+    /// Inherited: **Source:** `ChFiDS_Spine.hxx`:161 - `ChFiDS_Spine::Parameter()`
     pub fn ChFiDS_FilSpine_inherited_Parameter(
         self_: *mut ChFiDS_FilSpine,
         AbsC: f64,
         U: *mut f64,
         Oriented: bool,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `ChFiDS_Spine.hxx`:171 - `ChFiDS_Spine::Value()`
+    /// Inherited: **Source:** `ChFiDS_Spine.hxx`:168 - `ChFiDS_Spine::Value()`
     pub fn ChFiDS_FilSpine_inherited_Value(
         self_: *mut ChFiDS_FilSpine,
         AbsC: f64,
     ) -> crate::OcctResult<*mut gp_Pnt>;
-    /// Inherited: **Source:** `ChFiDS_Spine.hxx`:173 - `ChFiDS_Spine::D0()`
+    /// Inherited: **Source:** `ChFiDS_Spine.hxx`:170 - `ChFiDS_Spine::D0()`
     pub fn ChFiDS_FilSpine_inherited_D0(
         self_: *mut ChFiDS_FilSpine,
         AbsC: f64,
         P: *mut gp_Pnt,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `ChFiDS_Spine.hxx`:175 - `ChFiDS_Spine::D1()`
+    /// Inherited: **Source:** `ChFiDS_Spine.hxx`:172 - `ChFiDS_Spine::D1()`
     pub fn ChFiDS_FilSpine_inherited_D1(
         self_: *mut ChFiDS_FilSpine,
         AbsC: f64,
         P: *mut gp_Pnt,
         V1: *mut gp_Vec,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `ChFiDS_Spine.hxx`:177 - `ChFiDS_Spine::D2()`
+    /// Inherited: **Source:** `ChFiDS_Spine.hxx`:174 - `ChFiDS_Spine::D2()`
     pub fn ChFiDS_FilSpine_inherited_D2(
         self_: *mut ChFiDS_FilSpine,
         AbsC: f64,
@@ -12382,276 +12237,183 @@ unsafe extern "C" {
         V1: *mut gp_Vec,
         V2: *mut gp_Vec,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `ChFiDS_Spine.hxx`:179 - `ChFiDS_Spine::SetCurrent()`
+    /// Inherited: **Source:** `ChFiDS_Spine.hxx`:176 - `ChFiDS_Spine::SetCurrent()`
     pub fn ChFiDS_FilSpine_inherited_SetCurrent(
         self_: *mut ChFiDS_FilSpine,
         Index: i32,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `ChFiDS_Spine.hxx`:182 - `ChFiDS_Spine::CurrentElementarySpine()`
+    /// Inherited: **Source:** `ChFiDS_Spine.hxx`:179 - `ChFiDS_Spine::CurrentElementarySpine()`
     pub fn ChFiDS_FilSpine_inherited_CurrentElementarySpine(
         self_: *mut ChFiDS_FilSpine,
         Index: i32,
     ) -> crate::OcctResult<*const BRepAdaptor_Curve>;
-    /// Inherited: **Source:** `ChFiDS_Spine.hxx`:184 - `ChFiDS_Spine::CurrentIndexOfElementarySpine()`
+    /// Inherited: **Source:** `ChFiDS_Spine.hxx`:181 - `ChFiDS_Spine::CurrentIndexOfElementarySpine()`
     pub fn ChFiDS_FilSpine_inherited_CurrentIndexOfElementarySpine(
         self_: *const ChFiDS_FilSpine,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `ChFiDS_Spine.hxx`:186 - `ChFiDS_Spine::GetType()`
+    /// Inherited: **Source:** `ChFiDS_Spine.hxx`:183 - `ChFiDS_Spine::GetType()`
     pub fn ChFiDS_FilSpine_inherited_GetType(
         self_: *const ChFiDS_FilSpine,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `ChFiDS_Spine.hxx`:188 - `ChFiDS_Spine::Line()`
+    /// Inherited: **Source:** `ChFiDS_Spine.hxx`:185 - `ChFiDS_Spine::Line()`
     pub fn ChFiDS_FilSpine_inherited_Line(
         self_: *const ChFiDS_FilSpine,
     ) -> crate::OcctResult<*mut gp_Lin>;
-    /// Inherited: **Source:** `ChFiDS_Spine.hxx`:190 - `ChFiDS_Spine::Circle()`
+    /// Inherited: **Source:** `ChFiDS_Spine.hxx`:187 - `ChFiDS_Spine::Circle()`
     pub fn ChFiDS_FilSpine_inherited_Circle(
         self_: *const ChFiDS_FilSpine,
     ) -> crate::OcctResult<*mut gp_Circ>;
-    /// Inherited: **Source:** `ChFiDS_Spine.hxx`:195 - `ChFiDS_Spine::FirstStatus()`
+    /// Inherited: **Source:** `ChFiDS_Spine.hxx`:192 - `ChFiDS_Spine::FirstStatus()`
     pub fn ChFiDS_FilSpine_inherited_FirstStatus(
         self_: *const ChFiDS_FilSpine,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `ChFiDS_Spine.hxx`:198 - `ChFiDS_Spine::LastStatus()`
+    /// Inherited: **Source:** `ChFiDS_Spine.hxx`:195 - `ChFiDS_Spine::LastStatus()`
     pub fn ChFiDS_FilSpine_inherited_LastStatus(
         self_: *const ChFiDS_FilSpine,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `ChFiDS_Spine.hxx`:200 - `ChFiDS_Spine::Status()`
+    /// Inherited: **Source:** `ChFiDS_Spine.hxx`:197 - `ChFiDS_Spine::Status()`
     pub fn ChFiDS_FilSpine_inherited_Status(
         self_: *const ChFiDS_FilSpine,
         IsFirst: bool,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `ChFiDS_Spine.hxx`:203 - `ChFiDS_Spine::GetTypeOfConcavity()`
+    /// Inherited: **Source:** `ChFiDS_Spine.hxx`:200 - `ChFiDS_Spine::GetTypeOfConcavity()`
     pub fn ChFiDS_FilSpine_inherited_GetTypeOfConcavity(
         self_: *const ChFiDS_FilSpine,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `ChFiDS_Spine.hxx`:205 - `ChFiDS_Spine::SetStatus()`
+    /// Inherited: **Source:** `ChFiDS_Spine.hxx`:202 - `ChFiDS_Spine::SetStatus()`
     pub fn ChFiDS_FilSpine_inherited_SetStatus(
         self_: *mut ChFiDS_FilSpine,
         S: i32,
         IsFirst: bool,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `ChFiDS_Spine.hxx`:208 - `ChFiDS_Spine::SetTypeOfConcavity()`
+    /// Inherited: **Source:** `ChFiDS_Spine.hxx`:205 - `ChFiDS_Spine::SetTypeOfConcavity()`
     pub fn ChFiDS_FilSpine_inherited_SetTypeOfConcavity(
         self_: *mut ChFiDS_FilSpine,
         theType: i32,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `ChFiDS_Spine.hxx`:212 - `ChFiDS_Spine::IsTangencyExtremity()`
+    /// Inherited: **Source:** `ChFiDS_Spine.hxx`:209 - `ChFiDS_Spine::IsTangencyExtremity()`
     pub fn ChFiDS_FilSpine_inherited_IsTangencyExtremity(
         self_: *const ChFiDS_FilSpine,
         IsFirst: bool,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `ChFiDS_Spine.hxx`:214 - `ChFiDS_Spine::SetTangencyExtremity()`
+    /// Inherited: **Source:** `ChFiDS_Spine.hxx`:211 - `ChFiDS_Spine::SetTangencyExtremity()`
     pub fn ChFiDS_FilSpine_inherited_SetTangencyExtremity(
         self_: *mut ChFiDS_FilSpine,
         IsTangency: bool,
         IsFirst: bool,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `ChFiDS_Spine.hxx`:218 - `ChFiDS_Spine::FirstVertex()`
+    /// Inherited: **Source:** `ChFiDS_Spine.hxx`:215 - `ChFiDS_Spine::FirstVertex()`
     pub fn ChFiDS_FilSpine_inherited_FirstVertex(
         self_: *const ChFiDS_FilSpine,
     ) -> crate::OcctResult<*mut TopoDS_Vertex>;
-    /// Inherited: **Source:** `ChFiDS_Spine.hxx`:220 - `ChFiDS_Spine::LastVertex()`
+    /// Inherited: **Source:** `ChFiDS_Spine.hxx`:217 - `ChFiDS_Spine::LastVertex()`
     pub fn ChFiDS_FilSpine_inherited_LastVertex(
         self_: *const ChFiDS_FilSpine,
     ) -> crate::OcctResult<*mut TopoDS_Vertex>;
-    /// Inherited: **Source:** `ChFiDS_Spine.hxx`:222 - `ChFiDS_Spine::SetFirstTgt()`
+    /// Inherited: **Source:** `ChFiDS_Spine.hxx`:219 - `ChFiDS_Spine::SetFirstTgt()`
     pub fn ChFiDS_FilSpine_inherited_SetFirstTgt(
         self_: *mut ChFiDS_FilSpine,
         W: f64,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `ChFiDS_Spine.hxx`:224 - `ChFiDS_Spine::SetLastTgt()`
+    /// Inherited: **Source:** `ChFiDS_Spine.hxx`:221 - `ChFiDS_Spine::SetLastTgt()`
     pub fn ChFiDS_FilSpine_inherited_SetLastTgt(
         self_: *mut ChFiDS_FilSpine,
         W: f64,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `ChFiDS_Spine.hxx`:226 - `ChFiDS_Spine::HasFirstTgt()`
+    /// Inherited: **Source:** `ChFiDS_Spine.hxx`:223 - `ChFiDS_Spine::HasFirstTgt()`
     pub fn ChFiDS_FilSpine_inherited_HasFirstTgt(
         self_: *const ChFiDS_FilSpine,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `ChFiDS_Spine.hxx`:228 - `ChFiDS_Spine::HasLastTgt()`
+    /// Inherited: **Source:** `ChFiDS_Spine.hxx`:225 - `ChFiDS_Spine::HasLastTgt()`
     pub fn ChFiDS_FilSpine_inherited_HasLastTgt(
         self_: *const ChFiDS_FilSpine,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `ChFiDS_Spine.hxx`:231 - `ChFiDS_Spine::SetReference()`
+    /// Inherited: **Source:** `ChFiDS_Spine.hxx`:228 - `ChFiDS_Spine::SetReference()`
     pub fn ChFiDS_FilSpine_inherited_SetReference(
         self_: *mut ChFiDS_FilSpine,
         W: f64,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `ChFiDS_Spine.hxx`:237 - `ChFiDS_Spine::Index()`
+    /// Inherited: **Source:** `ChFiDS_Spine.hxx`:234 - `ChFiDS_Spine::Index()`
     pub fn ChFiDS_FilSpine_inherited_Index(
         self_: *const ChFiDS_FilSpine,
         W: f64,
         Forward: bool,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `ChFiDS_Spine.hxx`:242 - `ChFiDS_Spine::UnsetReference()`
+    /// Inherited: **Source:** `ChFiDS_Spine.hxx`:238 - `ChFiDS_Spine::UnsetReference()`
     pub fn ChFiDS_FilSpine_inherited_UnsetReference(
         self_: *mut ChFiDS_FilSpine,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `ChFiDS_Spine.hxx`:244 - `ChFiDS_Spine::SetErrorStatus()`
+    /// Inherited: **Source:** `ChFiDS_Spine.hxx`:240 - `ChFiDS_Spine::SetErrorStatus()`
     pub fn ChFiDS_FilSpine_inherited_SetErrorStatus(
         self_: *mut ChFiDS_FilSpine,
         state: i32,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `ChFiDS_Spine.hxx`:246 - `ChFiDS_Spine::ErrorStatus()`
+    /// Inherited: **Source:** `ChFiDS_Spine.hxx`:242 - `ChFiDS_Spine::ErrorStatus()`
     pub fn ChFiDS_FilSpine_inherited_ErrorStatus(
         self_: *const ChFiDS_FilSpine,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `ChFiDS_Spine.hxx`:249 - `ChFiDS_Spine::Mode()`
+    /// Inherited: **Source:** `ChFiDS_Spine.hxx`:245 - `ChFiDS_Spine::Mode()`
     pub fn ChFiDS_FilSpine_inherited_Mode(self_: *const ChFiDS_FilSpine) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `ChFiDS_Spine.hxx`:252 - `ChFiDS_Spine::GetTolesp()`
+    /// Inherited: **Source:** `ChFiDS_Spine.hxx`:248 - `ChFiDS_Spine::GetTolesp()`
     pub fn ChFiDS_FilSpine_inherited_GetTolesp(
         self_: *const ChFiDS_FilSpine,
     ) -> crate::OcctResult<f64>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn ChFiDS_FilSpine_inherited_IsInstance(
         self_: *const ChFiDS_FilSpine,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn ChFiDS_FilSpine_inherited_IsKind(
         self_: *const ChFiDS_FilSpine,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn ChFiDS_FilSpine_inherited_This(
         self_: *const ChFiDS_FilSpine,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn ChFiDS_FilSpine_inherited_GetRefCount(
         self_: *const ChFiDS_FilSpine,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn ChFiDS_FilSpine_inherited_IncrementRefCounter(
         self_: *mut ChFiDS_FilSpine,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn ChFiDS_FilSpine_inherited_DecrementRefCounter(
         self_: *mut ChFiDS_FilSpine,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn ChFiDS_FilSpine_inherited_Delete(
         self_: *const ChFiDS_FilSpine,
     ) -> *const std::ffi::c_char;
-    // ======================== ChFiDS_HData ========================
-    pub fn ChFiDS_HData_destructor(self_: *mut ChFiDS_HData);
-    /// **Source:** `ChFiDS_HData.hxx`:23 - `ChFiDS_HData::ChFiDS_HData()`
-    pub fn ChFiDS_HData_ctor() -> crate::OcctResult<*mut ChFiDS_HData>;
-    /// **Source:** `ChFiDS_HData.hxx`:23 - `ChFiDS_HData::ChFiDS_HData()`
-    pub fn ChFiDS_HData_ctor_sequenceofsurfdata(
-        theOther: *const ChFiDS_SequenceOfSurfData,
-    ) -> crate::OcctResult<*mut ChFiDS_HData>;
-    /// **Source:** `ChFiDS_HData.hxx`:23 - `ChFiDS_HData::Sequence()`
-    pub fn ChFiDS_HData_sequence(
-        self_: *const ChFiDS_HData,
-    ) -> crate::OcctResult<*const ChFiDS_SequenceOfSurfData>;
-    /// **Source:** `ChFiDS_HData.hxx`:23 - `ChFiDS_HData::Append()`
-    pub fn ChFiDS_HData_append_handlechfidssurfdata(
-        self_: *mut ChFiDS_HData,
-        theItem: *const HandleChFiDSSurfData,
-    ) -> *const std::ffi::c_char;
-    /// **Source:** `ChFiDS_HData.hxx`:23 - `ChFiDS_HData::Append()`
-    pub fn ChFiDS_HData_append_sequenceofsurfdata(
-        self_: *mut ChFiDS_HData,
-        theSequence: *mut ChFiDS_SequenceOfSurfData,
-    ) -> *const std::ffi::c_char;
-    /// **Source:** `ChFiDS_HData.hxx`:23 - `ChFiDS_HData::ChangeSequence()`
-    pub fn ChFiDS_HData_change_sequence(
-        self_: *mut ChFiDS_HData,
-    ) -> crate::OcctResult<*mut ChFiDS_SequenceOfSurfData>;
-    /// **Source:** `ChFiDS_HData.hxx`:23 - `ChFiDS_HData::DynamicType()`
-    pub fn ChFiDS_HData_dynamic_type(
-        self_: *const ChFiDS_HData,
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// **Source:** `ChFiDS_HData.hxx`:23 - `ChFiDS_HData::get_type_name()`
-    pub fn ChFiDS_HData_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
-    /// **Source:** `ChFiDS_HData.hxx`:23 - `ChFiDS_HData::get_type_descriptor()`
-    pub fn ChFiDS_HData_get_type_descriptor() -> crate::OcctResult<*const HandleStandardType>;
-    /// Upcast ChFiDS_HData to Standard_Transient
-    pub fn ChFiDS_HData_as_Standard_Transient(
-        self_: *const ChFiDS_HData,
-    ) -> crate::OcctResult<*const Standard_Transient>;
-    /// Upcast ChFiDS_HData to Standard_Transient (mutable)
-    pub fn ChFiDS_HData_as_Standard_Transient_mut(
-        self_: *mut ChFiDS_HData,
-    ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Wrap ChFiDS_HData in a Handle
-    pub fn ChFiDS_HData_to_handle(
-        obj: *mut ChFiDS_HData,
-    ) -> crate::OcctResult<*mut HandleChFiDSHData>;
-    /// Destroy Handle<ChFiDS_HData>
-    pub fn HandleChFiDSHData_destructor(self_: *mut HandleChFiDSHData);
-    /// Clone Handle<ChFiDS_HData> (increments reference count)
-    pub fn HandleChFiDSHData_clone(
-        self_: *const HandleChFiDSHData,
-    ) -> crate::OcctResult<*mut HandleChFiDSHData>;
-    /// Check if Handle<ChFiDS_HData> is null
-    pub fn HandleChFiDSHData_is_null(self_: *const HandleChFiDSHData) -> bool;
-    /// Dereference Handle to get *const ChFiDS_HData
-    pub fn HandleChFiDSHData_get(
-        handle: *const HandleChFiDSHData,
-    ) -> crate::OcctResult<*const ChFiDS_HData>;
-    /// Dereference Handle to get *mut ChFiDS_HData
-    pub fn HandleChFiDSHData_get_mut(
-        handle: *mut HandleChFiDSHData,
-    ) -> crate::OcctResult<*mut ChFiDS_HData>;
-    /// Upcast Handle<ChFiDS_HData> to Handle<Standard_Transient>
-    pub fn HandleChFiDSHData_to_HandleStandardTransient(
-        self_: *const HandleChFiDSHData,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn ChFiDS_HData_inherited_IsInstance(
-        self_: *const ChFiDS_HData,
-        theType: *const HandleStandardType,
-    ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn ChFiDS_HData_inherited_IsKind(
-        self_: *const ChFiDS_HData,
-        theType: *const HandleStandardType,
-    ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
-    pub fn ChFiDS_HData_inherited_This(
-        self_: *const ChFiDS_HData,
-    ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
-    pub fn ChFiDS_HData_inherited_GetRefCount(self_: *const ChFiDS_HData)
-        -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
-    pub fn ChFiDS_HData_inherited_IncrementRefCounter(
-        self_: *mut ChFiDS_HData,
-    ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
-    pub fn ChFiDS_HData_inherited_DecrementRefCounter(
-        self_: *mut ChFiDS_HData,
-    ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
-    pub fn ChFiDS_HData_inherited_Delete(self_: *const ChFiDS_HData) -> *const std::ffi::c_char;
     // ======================== ChFiDS_Map ========================
     pub fn ChFiDS_Map_destructor(self_: *mut ChFiDS_Map);
-    /// **Source:** `ChFiDS_Map.hxx`:37 - `ChFiDS_Map::ChFiDS_Map()`
+    /// **Source:** `ChFiDS_Map.hxx`:39 - `ChFiDS_Map::ChFiDS_Map()`
     pub fn ChFiDS_Map_ctor() -> crate::OcctResult<*mut ChFiDS_Map>;
-    /// **Source:** `ChFiDS_Map.hxx`:41 - `ChFiDS_Map::Fill()`
+    /// **Source:** `ChFiDS_Map.hxx`:43 - `ChFiDS_Map::Fill()`
     pub fn ChFiDS_Map_fill(
         self_: *mut ChFiDS_Map,
         S: *const TopoDS_Shape,
         T1: i32,
         T2: i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `ChFiDS_Map.hxx`:45 - `ChFiDS_Map::Contains()`
+    /// **Source:** `ChFiDS_Map.hxx`:47 - `ChFiDS_Map::Contains()`
     pub fn ChFiDS_Map_contains(
         self_: *const ChFiDS_Map,
         S: *const TopoDS_Shape,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `ChFiDS_Map.hxx`:47 - `ChFiDS_Map::FindFromKey()`
+    /// **Source:** `ChFiDS_Map.hxx`:49 - `ChFiDS_Map::FindFromKey()`
     pub fn ChFiDS_Map_find_from_key(
         self_: *const ChFiDS_Map,
         S: *const TopoDS_Shape,
-    ) -> crate::OcctResult<*const TopTools_ListOfShape>;
-    /// **Source:** `ChFiDS_Map.hxx`:51 - `ChFiDS_Map::FindFromIndex()`
+    ) -> crate::OcctResult<*const NCollection_List_TopoDS_Shape>;
+    /// **Source:** `ChFiDS_Map.hxx`:56 - `ChFiDS_Map::FindFromIndex()`
     pub fn ChFiDS_Map_find_from_index(
         self_: *const ChFiDS_Map,
         I: i32,
-    ) -> crate::OcctResult<*const TopTools_ListOfShape>;
+    ) -> crate::OcctResult<*const NCollection_List_TopoDS_Shape>;
     // ======================== ChFiDS_Regul ========================
     pub fn ChFiDS_Regul_destructor(self_: *mut ChFiDS_Regul);
     /// **Source:** `ChFiDS_Regul.hxx`:32 - `ChFiDS_Regul::ChFiDS_Regul()`
@@ -12664,271 +12426,159 @@ unsafe extern "C" {
         IS1: i32,
         IsFace: bool,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `ChFiDS_Regul.hxx`:39 - `ChFiDS_Regul::SetS2()`
+    /// **Source:** `ChFiDS_Regul.hxx`:38 - `ChFiDS_Regul::SetS2()`
     pub fn ChFiDS_Regul_set_s2(
         self_: *mut ChFiDS_Regul,
         IS2: i32,
         IsFace: bool,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `ChFiDS_Regul.hxx`:42 - `ChFiDS_Regul::IsSurface1()`
+    /// **Source:** `ChFiDS_Regul.hxx`:40 - `ChFiDS_Regul::IsSurface1()`
     pub fn ChFiDS_Regul_is_surface1(self_: *const ChFiDS_Regul) -> crate::OcctResult<bool>;
-    /// **Source:** `ChFiDS_Regul.hxx`:44 - `ChFiDS_Regul::IsSurface2()`
+    /// **Source:** `ChFiDS_Regul.hxx`:42 - `ChFiDS_Regul::IsSurface2()`
     pub fn ChFiDS_Regul_is_surface2(self_: *const ChFiDS_Regul) -> crate::OcctResult<bool>;
-    /// **Source:** `ChFiDS_Regul.hxx`:46 - `ChFiDS_Regul::Curve()`
+    /// **Source:** `ChFiDS_Regul.hxx`:44 - `ChFiDS_Regul::Curve()`
     pub fn ChFiDS_Regul_curve(self_: *const ChFiDS_Regul) -> crate::OcctResult<i32>;
-    /// **Source:** `ChFiDS_Regul.hxx`:48 - `ChFiDS_Regul::S1()`
+    /// **Source:** `ChFiDS_Regul.hxx`:46 - `ChFiDS_Regul::S1()`
     pub fn ChFiDS_Regul_s1(self_: *const ChFiDS_Regul) -> crate::OcctResult<i32>;
-    /// **Source:** `ChFiDS_Regul.hxx`:50 - `ChFiDS_Regul::S2()`
+    /// **Source:** `ChFiDS_Regul.hxx`:48 - `ChFiDS_Regul::S2()`
     pub fn ChFiDS_Regul_s2(self_: *const ChFiDS_Regul) -> crate::OcctResult<i32>;
-    // ======================== ChFiDS_SecHArray1 ========================
-    pub fn ChFiDS_SecHArray1_destructor(self_: *mut ChFiDS_SecHArray1);
-    /// **Source:** `ChFiDS_SecHArray1.hxx`:23 - `ChFiDS_SecHArray1::ChFiDS_SecHArray1()`
-    pub fn ChFiDS_SecHArray1_ctor() -> crate::OcctResult<*mut ChFiDS_SecHArray1>;
-    /// **Source:** `ChFiDS_SecHArray1.hxx`:23 - `ChFiDS_SecHArray1::ChFiDS_SecHArray1()`
-    pub fn ChFiDS_SecHArray1_ctor_int2(
-        theLower: i32,
-        theUpper: i32,
-    ) -> crate::OcctResult<*mut ChFiDS_SecHArray1>;
-    /// **Source:** `ChFiDS_SecHArray1.hxx`:23 - `ChFiDS_SecHArray1::ChFiDS_SecHArray1()`
-    pub fn ChFiDS_SecHArray1_ctor_int2_circsection(
-        theLower: i32,
-        theUpper: i32,
-        theValue: *const ChFiDS_CircSection,
-    ) -> crate::OcctResult<*mut ChFiDS_SecHArray1>;
-    /// **Source:** `ChFiDS_SecHArray1.hxx`:23 - `ChFiDS_SecHArray1::ChFiDS_SecHArray1()`
-    pub fn ChFiDS_SecHArray1_ctor_circsection_int2_bool(
-        theBegin: *const ChFiDS_CircSection,
-        theLower: i32,
-        theUpper: i32,
-        arg3: bool,
-    ) -> crate::OcctResult<*mut ChFiDS_SecHArray1>;
-    /// **Source:** `ChFiDS_SecHArray1.hxx`:23 - `ChFiDS_SecHArray1::ChFiDS_SecHArray1()`
-    pub fn ChFiDS_SecHArray1_ctor_secarray1(
-        theOther: *const ChFiDS_SecArray1,
-    ) -> crate::OcctResult<*mut ChFiDS_SecHArray1>;
-    /// **Source:** `ChFiDS_SecHArray1.hxx`:23 - `ChFiDS_SecHArray1::Array1()`
-    pub fn ChFiDS_SecHArray1_array1(
-        self_: *const ChFiDS_SecHArray1,
-    ) -> crate::OcctResult<*const ChFiDS_SecArray1>;
-    /// **Source:** `ChFiDS_SecHArray1.hxx`:23 - `ChFiDS_SecHArray1::ChangeArray1()`
-    pub fn ChFiDS_SecHArray1_change_array1(
-        self_: *mut ChFiDS_SecHArray1,
-    ) -> crate::OcctResult<*mut ChFiDS_SecArray1>;
-    /// **Source:** `ChFiDS_SecHArray1.hxx`:23 - `ChFiDS_SecHArray1::DynamicType()`
-    pub fn ChFiDS_SecHArray1_dynamic_type(
-        self_: *const ChFiDS_SecHArray1,
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// **Source:** `ChFiDS_SecHArray1.hxx`:23 - `ChFiDS_SecHArray1::get_type_name()`
-    pub fn ChFiDS_SecHArray1_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
-    /// **Source:** `ChFiDS_SecHArray1.hxx`:23 - `ChFiDS_SecHArray1::get_type_descriptor()`
-    pub fn ChFiDS_SecHArray1_get_type_descriptor() -> crate::OcctResult<*const HandleStandardType>;
-    /// Upcast ChFiDS_SecHArray1 to Standard_Transient
-    pub fn ChFiDS_SecHArray1_as_Standard_Transient(
-        self_: *const ChFiDS_SecHArray1,
-    ) -> crate::OcctResult<*const Standard_Transient>;
-    /// Upcast ChFiDS_SecHArray1 to Standard_Transient (mutable)
-    pub fn ChFiDS_SecHArray1_as_Standard_Transient_mut(
-        self_: *mut ChFiDS_SecHArray1,
-    ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Wrap ChFiDS_SecHArray1 in a Handle
-    pub fn ChFiDS_SecHArray1_to_handle(
-        obj: *mut ChFiDS_SecHArray1,
-    ) -> crate::OcctResult<*mut HandleChFiDSSecHArray1>;
-    /// Destroy Handle<ChFiDS_SecHArray1>
-    pub fn HandleChFiDSSecHArray1_destructor(self_: *mut HandleChFiDSSecHArray1);
-    /// Clone Handle<ChFiDS_SecHArray1> (increments reference count)
-    pub fn HandleChFiDSSecHArray1_clone(
-        self_: *const HandleChFiDSSecHArray1,
-    ) -> crate::OcctResult<*mut HandleChFiDSSecHArray1>;
-    /// Check if Handle<ChFiDS_SecHArray1> is null
-    pub fn HandleChFiDSSecHArray1_is_null(self_: *const HandleChFiDSSecHArray1) -> bool;
-    /// Dereference Handle to get *const ChFiDS_SecHArray1
-    pub fn HandleChFiDSSecHArray1_get(
-        handle: *const HandleChFiDSSecHArray1,
-    ) -> crate::OcctResult<*const ChFiDS_SecHArray1>;
-    /// Dereference Handle to get *mut ChFiDS_SecHArray1
-    pub fn HandleChFiDSSecHArray1_get_mut(
-        handle: *mut HandleChFiDSSecHArray1,
-    ) -> crate::OcctResult<*mut ChFiDS_SecHArray1>;
-    /// Upcast Handle<ChFiDS_SecHArray1> to Handle<Standard_Transient>
-    pub fn HandleChFiDSSecHArray1_to_HandleStandardTransient(
-        self_: *const HandleChFiDSSecHArray1,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn ChFiDS_SecHArray1_inherited_IsInstance(
-        self_: *const ChFiDS_SecHArray1,
-        theType: *const HandleStandardType,
-    ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn ChFiDS_SecHArray1_inherited_IsKind(
-        self_: *const ChFiDS_SecHArray1,
-        theType: *const HandleStandardType,
-    ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
-    pub fn ChFiDS_SecHArray1_inherited_This(
-        self_: *const ChFiDS_SecHArray1,
-    ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
-    pub fn ChFiDS_SecHArray1_inherited_GetRefCount(
-        self_: *const ChFiDS_SecHArray1,
-    ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
-    pub fn ChFiDS_SecHArray1_inherited_IncrementRefCounter(
-        self_: *mut ChFiDS_SecHArray1,
-    ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
-    pub fn ChFiDS_SecHArray1_inherited_DecrementRefCounter(
-        self_: *mut ChFiDS_SecHArray1,
-    ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
-    pub fn ChFiDS_SecHArray1_inherited_Delete(
-        self_: *const ChFiDS_SecHArray1,
-    ) -> *const std::ffi::c_char;
     // ======================== ChFiDS_Spine ========================
     pub fn ChFiDS_Spine_destructor(self_: *mut ChFiDS_Spine);
-    /// **Source:** `ChFiDS_Spine.hxx`:73 - `ChFiDS_Spine::ChFiDS_Spine()`
+    /// **Source:** `ChFiDS_Spine.hxx`:72 - `ChFiDS_Spine::ChFiDS_Spine()`
     pub fn ChFiDS_Spine_ctor() -> crate::OcctResult<*mut ChFiDS_Spine>;
-    /// **Source:** `ChFiDS_Spine.hxx`:75 - `ChFiDS_Spine::ChFiDS_Spine()`
+    /// **Source:** `ChFiDS_Spine.hxx`:74 - `ChFiDS_Spine::ChFiDS_Spine()`
     pub fn ChFiDS_Spine_ctor_real(Tol: f64) -> crate::OcctResult<*mut ChFiDS_Spine>;
-    /// **Source:** `ChFiDS_Spine.hxx`:78 - `ChFiDS_Spine::SetEdges()`
+    /// **Source:** `ChFiDS_Spine.hxx`:77 - `ChFiDS_Spine::SetEdges()`
     pub fn ChFiDS_Spine_set_edges(
         self_: *mut ChFiDS_Spine,
         E: *const TopoDS_Edge,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `ChFiDS_Spine.hxx`:81 - `ChFiDS_Spine::SetOffsetEdges()`
+    /// **Source:** `ChFiDS_Spine.hxx`:80 - `ChFiDS_Spine::SetOffsetEdges()`
     pub fn ChFiDS_Spine_set_offset_edges(
         self_: *mut ChFiDS_Spine,
         E: *const TopoDS_Edge,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `ChFiDS_Spine.hxx`:84 - `ChFiDS_Spine::PutInFirst()`
+    /// **Source:** `ChFiDS_Spine.hxx`:83 - `ChFiDS_Spine::PutInFirst()`
     pub fn ChFiDS_Spine_put_in_first(
         self_: *mut ChFiDS_Spine,
         E: *const TopoDS_Edge,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `ChFiDS_Spine.hxx`:87 - `ChFiDS_Spine::PutInFirstOffset()`
+    /// **Source:** `ChFiDS_Spine.hxx`:86 - `ChFiDS_Spine::PutInFirstOffset()`
     pub fn ChFiDS_Spine_put_in_first_offset(
         self_: *mut ChFiDS_Spine,
         E: *const TopoDS_Edge,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `ChFiDS_Spine.hxx`:89 - `ChFiDS_Spine::NbEdges()`
+    /// **Source:** `ChFiDS_Spine.hxx`:88 - `ChFiDS_Spine::NbEdges()`
     pub fn ChFiDS_Spine_nb_edges(self_: *const ChFiDS_Spine) -> crate::OcctResult<i32>;
-    /// **Source:** `ChFiDS_Spine.hxx`:91 - `ChFiDS_Spine::Edges()`
+    /// **Source:** `ChFiDS_Spine.hxx`:90 - `ChFiDS_Spine::Edges()`
     pub fn ChFiDS_Spine_edges(
         self_: *const ChFiDS_Spine,
         I: i32,
     ) -> crate::OcctResult<*const TopoDS_Edge>;
-    /// **Source:** `ChFiDS_Spine.hxx`:93 - `ChFiDS_Spine::OffsetEdges()`
+    /// **Source:** `ChFiDS_Spine.hxx`:92 - `ChFiDS_Spine::OffsetEdges()`
     pub fn ChFiDS_Spine_offset_edges(
         self_: *const ChFiDS_Spine,
         I: i32,
     ) -> crate::OcctResult<*const TopoDS_Edge>;
-    /// **Source:** `ChFiDS_Spine.hxx`:97 - `ChFiDS_Spine::SetFirstStatus()`
+    /// **Source:** `ChFiDS_Spine.hxx`:96 - `ChFiDS_Spine::SetFirstStatus()`
     pub fn ChFiDS_Spine_set_first_status(
         self_: *mut ChFiDS_Spine,
         S: i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `ChFiDS_Spine.hxx`:101 - `ChFiDS_Spine::SetLastStatus()`
+    /// **Source:** `ChFiDS_Spine.hxx`:100 - `ChFiDS_Spine::SetLastStatus()`
     pub fn ChFiDS_Spine_set_last_status(
         self_: *mut ChFiDS_Spine,
         S: i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `ChFiDS_Spine.hxx`:103 - `ChFiDS_Spine::AppendElSpine()`
+    /// **Source:** `ChFiDS_Spine.hxx`:102 - `ChFiDS_Spine::AppendElSpine()`
     pub fn ChFiDS_Spine_append_el_spine(
         self_: *mut ChFiDS_Spine,
-        Els: *const HandleChFiDSElSpine,
+        Els: *const Handle_ChFiDS_ElSpine,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `ChFiDS_Spine.hxx`:105 - `ChFiDS_Spine::AppendOffsetElSpine()`
+    /// **Source:** `ChFiDS_Spine.hxx`:104 - `ChFiDS_Spine::AppendOffsetElSpine()`
     pub fn ChFiDS_Spine_append_offset_el_spine(
         self_: *mut ChFiDS_Spine,
-        Els: *const HandleChFiDSElSpine,
+        Els: *const Handle_ChFiDS_ElSpine,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `ChFiDS_Spine.hxx`:107 - `ChFiDS_Spine::ElSpine()`
+    /// **Source:** `ChFiDS_Spine.hxx`:106 - `ChFiDS_Spine::ElSpine()`
     pub fn ChFiDS_Spine_el_spine_int(
         self_: *const ChFiDS_Spine,
         IE: i32,
-    ) -> crate::OcctResult<*mut HandleChFiDSElSpine>;
-    /// **Source:** `ChFiDS_Spine.hxx`:109 - `ChFiDS_Spine::ElSpine()`
+    ) -> crate::OcctResult<*mut Handle_ChFiDS_ElSpine>;
+    /// **Source:** `ChFiDS_Spine.hxx`:108 - `ChFiDS_Spine::ElSpine()`
     pub fn ChFiDS_Spine_el_spine_edge(
         self_: *const ChFiDS_Spine,
         E: *const TopoDS_Edge,
-    ) -> crate::OcctResult<*mut HandleChFiDSElSpine>;
-    /// **Source:** `ChFiDS_Spine.hxx`:111 - `ChFiDS_Spine::ElSpine()`
+    ) -> crate::OcctResult<*mut Handle_ChFiDS_ElSpine>;
+    /// **Source:** `ChFiDS_Spine.hxx`:110 - `ChFiDS_Spine::ElSpine()`
     pub fn ChFiDS_Spine_el_spine_real(
         self_: *const ChFiDS_Spine,
         W: f64,
-    ) -> crate::OcctResult<*mut HandleChFiDSElSpine>;
-    /// **Source:** `ChFiDS_Spine.hxx`:113 - `ChFiDS_Spine::ChangeElSpines()`
-    pub fn ChFiDS_Spine_change_el_spines(
-        self_: *mut ChFiDS_Spine,
-    ) -> crate::OcctResult<*mut ChFiDS_ListOfHElSpine>;
-    /// **Source:** `ChFiDS_Spine.hxx`:115 - `ChFiDS_Spine::ChangeOffsetElSpines()`
-    pub fn ChFiDS_Spine_change_offset_el_spines(
-        self_: *mut ChFiDS_Spine,
-    ) -> crate::OcctResult<*mut ChFiDS_ListOfHElSpine>;
-    /// **Source:** `ChFiDS_Spine.hxx`:117 - `ChFiDS_Spine::Reset()`
+    ) -> crate::OcctResult<*mut Handle_ChFiDS_ElSpine>;
+    /// **Source:** `ChFiDS_Spine.hxx`:116 - `ChFiDS_Spine::Reset()`
     pub fn ChFiDS_Spine_reset(self_: *mut ChFiDS_Spine, AllData: bool) -> *const std::ffi::c_char;
-    /// **Source:** `ChFiDS_Spine.hxx`:119 - `ChFiDS_Spine::SplitDone()`
+    /// **Source:** `ChFiDS_Spine.hxx`:118 - `ChFiDS_Spine::SplitDone()`
     pub fn ChFiDS_Spine_split_done(self_: *const ChFiDS_Spine) -> crate::OcctResult<bool>;
-    /// **Source:** `ChFiDS_Spine.hxx`:121 - `ChFiDS_Spine::SplitDone()`
+    /// **Source:** `ChFiDS_Spine.hxx`:120 - `ChFiDS_Spine::SplitDone()`
     pub fn ChFiDS_Spine_split_done_bool(
         self_: *mut ChFiDS_Spine,
         B: bool,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `ChFiDS_Spine.hxx`:129 - `ChFiDS_Spine::Load()`
+    /// **Source:** `ChFiDS_Spine.hxx`:128 - `ChFiDS_Spine::Load()`
     pub fn ChFiDS_Spine_load(self_: *mut ChFiDS_Spine) -> *const std::ffi::c_char;
-    /// **Source:** `ChFiDS_Spine.hxx`:131 - `ChFiDS_Spine::Resolution()`
+    /// **Source:** `ChFiDS_Spine.hxx`:130 - `ChFiDS_Spine::Resolution()`
     pub fn ChFiDS_Spine_resolution(self_: *const ChFiDS_Spine, R3d: f64) -> crate::OcctResult<f64>;
-    /// **Source:** `ChFiDS_Spine.hxx`:133 - `ChFiDS_Spine::IsClosed()`
+    /// **Source:** `ChFiDS_Spine.hxx`:132 - `ChFiDS_Spine::IsClosed()`
     pub fn ChFiDS_Spine_is_closed(self_: *const ChFiDS_Spine) -> crate::OcctResult<bool>;
-    /// **Source:** `ChFiDS_Spine.hxx`:135 - `ChFiDS_Spine::FirstParameter()`
+    /// **Source:** `ChFiDS_Spine.hxx`:134 - `ChFiDS_Spine::FirstParameter()`
     pub fn ChFiDS_Spine_first_parameter(self_: *const ChFiDS_Spine) -> crate::OcctResult<f64>;
-    /// **Source:** `ChFiDS_Spine.hxx`:137 - `ChFiDS_Spine::LastParameter()`
+    /// **Source:** `ChFiDS_Spine.hxx`:136 - `ChFiDS_Spine::LastParameter()`
     pub fn ChFiDS_Spine_last_parameter(self_: *const ChFiDS_Spine) -> crate::OcctResult<f64>;
-    /// **Source:** `ChFiDS_Spine.hxx`:139 - `ChFiDS_Spine::SetFirstParameter()`
+    /// **Source:** `ChFiDS_Spine.hxx`:138 - `ChFiDS_Spine::SetFirstParameter()`
     pub fn ChFiDS_Spine_set_first_parameter(
         self_: *mut ChFiDS_Spine,
         Par: f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `ChFiDS_Spine.hxx`:141 - `ChFiDS_Spine::SetLastParameter()`
+    /// **Source:** `ChFiDS_Spine.hxx`:140 - `ChFiDS_Spine::SetLastParameter()`
     pub fn ChFiDS_Spine_set_last_parameter(
         self_: *mut ChFiDS_Spine,
         Par: f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `ChFiDS_Spine.hxx`:145 - `ChFiDS_Spine::FirstParameter()`
+    /// **Source:** `ChFiDS_Spine.hxx`:144 - `ChFiDS_Spine::FirstParameter()`
     pub fn ChFiDS_Spine_first_parameter_int(
         self_: *const ChFiDS_Spine,
         IndexSpine: i32,
     ) -> crate::OcctResult<f64>;
-    /// **Source:** `ChFiDS_Spine.hxx`:149 - `ChFiDS_Spine::LastParameter()`
+    /// **Source:** `ChFiDS_Spine.hxx`:148 - `ChFiDS_Spine::LastParameter()`
     pub fn ChFiDS_Spine_last_parameter_int(
         self_: *const ChFiDS_Spine,
         IndexSpine: i32,
     ) -> crate::OcctResult<f64>;
-    /// **Source:** `ChFiDS_Spine.hxx`:152 - `ChFiDS_Spine::Length()`
+    /// **Source:** `ChFiDS_Spine.hxx`:151 - `ChFiDS_Spine::Length()`
     pub fn ChFiDS_Spine_length(
         self_: *const ChFiDS_Spine,
         IndexSpine: i32,
     ) -> crate::OcctResult<f64>;
-    /// **Source:** `ChFiDS_Spine.hxx`:154 - `ChFiDS_Spine::IsPeriodic()`
+    /// **Source:** `ChFiDS_Spine.hxx`:153 - `ChFiDS_Spine::IsPeriodic()`
     pub fn ChFiDS_Spine_is_periodic(self_: *const ChFiDS_Spine) -> crate::OcctResult<bool>;
-    /// **Source:** `ChFiDS_Spine.hxx`:156 - `ChFiDS_Spine::Period()`
+    /// **Source:** `ChFiDS_Spine.hxx`:155 - `ChFiDS_Spine::Period()`
     pub fn ChFiDS_Spine_period(self_: *const ChFiDS_Spine) -> crate::OcctResult<f64>;
-    /// **Source:** `ChFiDS_Spine.hxx`:158 - `ChFiDS_Spine::Absc()`
+    /// **Source:** `ChFiDS_Spine.hxx`:157 - `ChFiDS_Spine::Absc()`
     pub fn ChFiDS_Spine_absc_real(self_: *mut ChFiDS_Spine, U: f64) -> crate::OcctResult<f64>;
-    /// **Source:** `ChFiDS_Spine.hxx`:160 - `ChFiDS_Spine::Absc()`
+    /// **Source:** `ChFiDS_Spine.hxx`:159 - `ChFiDS_Spine::Absc()`
     pub fn ChFiDS_Spine_absc_real_int(
         self_: *mut ChFiDS_Spine,
         U: f64,
         I: i32,
     ) -> crate::OcctResult<f64>;
-    /// **Source:** `ChFiDS_Spine.hxx`:162 - `ChFiDS_Spine::Parameter()`
+    /// **Source:** `ChFiDS_Spine.hxx`:161 - `ChFiDS_Spine::Parameter()`
     pub fn ChFiDS_Spine_parameter_real2_bool(
         self_: *mut ChFiDS_Spine,
         AbsC: f64,
         U: *mut f64,
         Oriented: bool,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `ChFiDS_Spine.hxx`:166 - `ChFiDS_Spine::Parameter()`
+    /// **Source:** `ChFiDS_Spine.hxx`:163 - `ChFiDS_Spine::Parameter()`
     pub fn ChFiDS_Spine_parameter_int_real2_bool(
         self_: *mut ChFiDS_Spine,
         Index: i32,
@@ -12936,25 +12586,25 @@ unsafe extern "C" {
         U: *mut f64,
         Oriented: bool,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `ChFiDS_Spine.hxx`:171 - `ChFiDS_Spine::Value()`
+    /// **Source:** `ChFiDS_Spine.hxx`:168 - `ChFiDS_Spine::Value()`
     pub fn ChFiDS_Spine_value(
         self_: *mut ChFiDS_Spine,
         AbsC: f64,
     ) -> crate::OcctResult<*mut gp_Pnt>;
-    /// **Source:** `ChFiDS_Spine.hxx`:173 - `ChFiDS_Spine::D0()`
+    /// **Source:** `ChFiDS_Spine.hxx`:170 - `ChFiDS_Spine::D0()`
     pub fn ChFiDS_Spine_d0(
         self_: *mut ChFiDS_Spine,
         AbsC: f64,
         P: *mut gp_Pnt,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `ChFiDS_Spine.hxx`:175 - `ChFiDS_Spine::D1()`
+    /// **Source:** `ChFiDS_Spine.hxx`:172 - `ChFiDS_Spine::D1()`
     pub fn ChFiDS_Spine_d1(
         self_: *mut ChFiDS_Spine,
         AbsC: f64,
         P: *mut gp_Pnt,
         V1: *mut gp_Vec,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `ChFiDS_Spine.hxx`:177 - `ChFiDS_Spine::D2()`
+    /// **Source:** `ChFiDS_Spine.hxx`:174 - `ChFiDS_Spine::D2()`
     pub fn ChFiDS_Spine_d2(
         self_: *mut ChFiDS_Spine,
         AbsC: f64,
@@ -12962,121 +12612,121 @@ unsafe extern "C" {
         V1: *mut gp_Vec,
         V2: *mut gp_Vec,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `ChFiDS_Spine.hxx`:179 - `ChFiDS_Spine::SetCurrent()`
+    /// **Source:** `ChFiDS_Spine.hxx`:176 - `ChFiDS_Spine::SetCurrent()`
     pub fn ChFiDS_Spine_set_current(
         self_: *mut ChFiDS_Spine,
         Index: i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `ChFiDS_Spine.hxx`:182 - `ChFiDS_Spine::CurrentElementarySpine()`
+    /// **Source:** `ChFiDS_Spine.hxx`:179 - `ChFiDS_Spine::CurrentElementarySpine()`
     pub fn ChFiDS_Spine_current_elementary_spine(
         self_: *mut ChFiDS_Spine,
         Index: i32,
     ) -> crate::OcctResult<*const BRepAdaptor_Curve>;
-    /// **Source:** `ChFiDS_Spine.hxx`:184 - `ChFiDS_Spine::CurrentIndexOfElementarySpine()`
+    /// **Source:** `ChFiDS_Spine.hxx`:181 - `ChFiDS_Spine::CurrentIndexOfElementarySpine()`
     pub fn ChFiDS_Spine_current_index_of_elementary_spine(
         self_: *const ChFiDS_Spine,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `ChFiDS_Spine.hxx`:186 - `ChFiDS_Spine::GetType()`
+    /// **Source:** `ChFiDS_Spine.hxx`:183 - `ChFiDS_Spine::GetType()`
     pub fn ChFiDS_Spine_get_type(self_: *const ChFiDS_Spine) -> crate::OcctResult<i32>;
-    /// **Source:** `ChFiDS_Spine.hxx`:188 - `ChFiDS_Spine::Line()`
+    /// **Source:** `ChFiDS_Spine.hxx`:185 - `ChFiDS_Spine::Line()`
     pub fn ChFiDS_Spine_line(self_: *const ChFiDS_Spine) -> crate::OcctResult<*mut gp_Lin>;
-    /// **Source:** `ChFiDS_Spine.hxx`:190 - `ChFiDS_Spine::Circle()`
+    /// **Source:** `ChFiDS_Spine.hxx`:187 - `ChFiDS_Spine::Circle()`
     pub fn ChFiDS_Spine_circle(self_: *const ChFiDS_Spine) -> crate::OcctResult<*mut gp_Circ>;
-    /// **Source:** `ChFiDS_Spine.hxx`:195 - `ChFiDS_Spine::FirstStatus()`
+    /// **Source:** `ChFiDS_Spine.hxx`:192 - `ChFiDS_Spine::FirstStatus()`
     pub fn ChFiDS_Spine_first_status(self_: *const ChFiDS_Spine) -> crate::OcctResult<i32>;
-    /// **Source:** `ChFiDS_Spine.hxx`:198 - `ChFiDS_Spine::LastStatus()`
+    /// **Source:** `ChFiDS_Spine.hxx`:195 - `ChFiDS_Spine::LastStatus()`
     pub fn ChFiDS_Spine_last_status(self_: *const ChFiDS_Spine) -> crate::OcctResult<i32>;
-    /// **Source:** `ChFiDS_Spine.hxx`:200 - `ChFiDS_Spine::Status()`
+    /// **Source:** `ChFiDS_Spine.hxx`:197 - `ChFiDS_Spine::Status()`
     pub fn ChFiDS_Spine_status(self_: *const ChFiDS_Spine, IsFirst: bool)
         -> crate::OcctResult<i32>;
-    /// **Source:** `ChFiDS_Spine.hxx`:203 - `ChFiDS_Spine::GetTypeOfConcavity()`
+    /// **Source:** `ChFiDS_Spine.hxx`:200 - `ChFiDS_Spine::GetTypeOfConcavity()`
     pub fn ChFiDS_Spine_get_type_of_concavity(self_: *const ChFiDS_Spine)
         -> crate::OcctResult<i32>;
-    /// **Source:** `ChFiDS_Spine.hxx`:205 - `ChFiDS_Spine::SetStatus()`
+    /// **Source:** `ChFiDS_Spine.hxx`:202 - `ChFiDS_Spine::SetStatus()`
     pub fn ChFiDS_Spine_set_status(
         self_: *mut ChFiDS_Spine,
         S: i32,
         IsFirst: bool,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `ChFiDS_Spine.hxx`:208 - `ChFiDS_Spine::SetTypeOfConcavity()`
+    /// **Source:** `ChFiDS_Spine.hxx`:205 - `ChFiDS_Spine::SetTypeOfConcavity()`
     pub fn ChFiDS_Spine_set_type_of_concavity(
         self_: *mut ChFiDS_Spine,
         theType: i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `ChFiDS_Spine.hxx`:212 - `ChFiDS_Spine::IsTangencyExtremity()`
+    /// **Source:** `ChFiDS_Spine.hxx`:209 - `ChFiDS_Spine::IsTangencyExtremity()`
     pub fn ChFiDS_Spine_is_tangency_extremity(
         self_: *const ChFiDS_Spine,
         IsFirst: bool,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `ChFiDS_Spine.hxx`:214 - `ChFiDS_Spine::SetTangencyExtremity()`
+    /// **Source:** `ChFiDS_Spine.hxx`:211 - `ChFiDS_Spine::SetTangencyExtremity()`
     pub fn ChFiDS_Spine_set_tangency_extremity(
         self_: *mut ChFiDS_Spine,
         IsTangency: bool,
         IsFirst: bool,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `ChFiDS_Spine.hxx`:216 - `ChFiDS_Spine::Absc()`
+    /// **Source:** `ChFiDS_Spine.hxx`:213 - `ChFiDS_Spine::Absc()`
     pub fn ChFiDS_Spine_absc_vertex(
         self_: *const ChFiDS_Spine,
         V: *const TopoDS_Vertex,
     ) -> crate::OcctResult<f64>;
-    /// **Source:** `ChFiDS_Spine.hxx`:218 - `ChFiDS_Spine::FirstVertex()`
+    /// **Source:** `ChFiDS_Spine.hxx`:215 - `ChFiDS_Spine::FirstVertex()`
     pub fn ChFiDS_Spine_first_vertex(
         self_: *const ChFiDS_Spine,
     ) -> crate::OcctResult<*mut TopoDS_Vertex>;
-    /// **Source:** `ChFiDS_Spine.hxx`:220 - `ChFiDS_Spine::LastVertex()`
+    /// **Source:** `ChFiDS_Spine.hxx`:217 - `ChFiDS_Spine::LastVertex()`
     pub fn ChFiDS_Spine_last_vertex(
         self_: *const ChFiDS_Spine,
     ) -> crate::OcctResult<*mut TopoDS_Vertex>;
-    /// **Source:** `ChFiDS_Spine.hxx`:222 - `ChFiDS_Spine::SetFirstTgt()`
+    /// **Source:** `ChFiDS_Spine.hxx`:219 - `ChFiDS_Spine::SetFirstTgt()`
     pub fn ChFiDS_Spine_set_first_tgt(self_: *mut ChFiDS_Spine, W: f64) -> *const std::ffi::c_char;
-    /// **Source:** `ChFiDS_Spine.hxx`:224 - `ChFiDS_Spine::SetLastTgt()`
+    /// **Source:** `ChFiDS_Spine.hxx`:221 - `ChFiDS_Spine::SetLastTgt()`
     pub fn ChFiDS_Spine_set_last_tgt(self_: *mut ChFiDS_Spine, W: f64) -> *const std::ffi::c_char;
-    /// **Source:** `ChFiDS_Spine.hxx`:226 - `ChFiDS_Spine::HasFirstTgt()`
+    /// **Source:** `ChFiDS_Spine.hxx`:223 - `ChFiDS_Spine::HasFirstTgt()`
     pub fn ChFiDS_Spine_has_first_tgt(self_: *const ChFiDS_Spine) -> crate::OcctResult<bool>;
-    /// **Source:** `ChFiDS_Spine.hxx`:228 - `ChFiDS_Spine::HasLastTgt()`
+    /// **Source:** `ChFiDS_Spine.hxx`:225 - `ChFiDS_Spine::HasLastTgt()`
     pub fn ChFiDS_Spine_has_last_tgt(self_: *const ChFiDS_Spine) -> crate::OcctResult<bool>;
-    /// **Source:** `ChFiDS_Spine.hxx`:231 - `ChFiDS_Spine::SetReference()`
+    /// **Source:** `ChFiDS_Spine.hxx`:228 - `ChFiDS_Spine::SetReference()`
     pub fn ChFiDS_Spine_set_reference_real(
         self_: *mut ChFiDS_Spine,
         W: f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `ChFiDS_Spine.hxx`:235 - `ChFiDS_Spine::SetReference()`
+    /// **Source:** `ChFiDS_Spine.hxx`:232 - `ChFiDS_Spine::SetReference()`
     pub fn ChFiDS_Spine_set_reference_int(
         self_: *mut ChFiDS_Spine,
         I: i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `ChFiDS_Spine.hxx`:237 - `ChFiDS_Spine::Index()`
+    /// **Source:** `ChFiDS_Spine.hxx`:234 - `ChFiDS_Spine::Index()`
     pub fn ChFiDS_Spine_index_real_bool(
         self_: *const ChFiDS_Spine,
         W: f64,
         Forward: bool,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `ChFiDS_Spine.hxx`:240 - `ChFiDS_Spine::Index()`
+    /// **Source:** `ChFiDS_Spine.hxx`:236 - `ChFiDS_Spine::Index()`
     pub fn ChFiDS_Spine_index_edge(
         self_: *const ChFiDS_Spine,
         E: *const TopoDS_Edge,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `ChFiDS_Spine.hxx`:242 - `ChFiDS_Spine::UnsetReference()`
+    /// **Source:** `ChFiDS_Spine.hxx`:238 - `ChFiDS_Spine::UnsetReference()`
     pub fn ChFiDS_Spine_unset_reference(self_: *mut ChFiDS_Spine) -> *const std::ffi::c_char;
-    /// **Source:** `ChFiDS_Spine.hxx`:244 - `ChFiDS_Spine::SetErrorStatus()`
+    /// **Source:** `ChFiDS_Spine.hxx`:240 - `ChFiDS_Spine::SetErrorStatus()`
     pub fn ChFiDS_Spine_set_error_status(
         self_: *mut ChFiDS_Spine,
         state: i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `ChFiDS_Spine.hxx`:246 - `ChFiDS_Spine::ErrorStatus()`
+    /// **Source:** `ChFiDS_Spine.hxx`:242 - `ChFiDS_Spine::ErrorStatus()`
     pub fn ChFiDS_Spine_error_status(self_: *const ChFiDS_Spine) -> crate::OcctResult<i32>;
-    /// **Source:** `ChFiDS_Spine.hxx`:249 - `ChFiDS_Spine::Mode()`
+    /// **Source:** `ChFiDS_Spine.hxx`:245 - `ChFiDS_Spine::Mode()`
     pub fn ChFiDS_Spine_mode(self_: *const ChFiDS_Spine) -> crate::OcctResult<i32>;
-    /// **Source:** `ChFiDS_Spine.hxx`:252 - `ChFiDS_Spine::GetTolesp()`
+    /// **Source:** `ChFiDS_Spine.hxx`:248 - `ChFiDS_Spine::GetTolesp()`
     pub fn ChFiDS_Spine_get_tolesp(self_: *const ChFiDS_Spine) -> crate::OcctResult<f64>;
-    /// **Source:** `ChFiDS_Spine.hxx`:254 - `ChFiDS_Spine::DynamicType()`
+    /// **Source:** `ChFiDS_Spine.hxx`:250 - `ChFiDS_Spine::DynamicType()`
     pub fn ChFiDS_Spine_dynamic_type(
         self_: *const ChFiDS_Spine,
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// **Source:** `ChFiDS_Spine.hxx`:254 - `ChFiDS_Spine::get_type_name()`
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
+    /// **Source:** `ChFiDS_Spine.hxx`:250 - `ChFiDS_Spine::get_type_name()`
     pub fn ChFiDS_Spine_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
-    /// **Source:** `ChFiDS_Spine.hxx`:254 - `ChFiDS_Spine::get_type_descriptor()`
-    pub fn ChFiDS_Spine_get_type_descriptor() -> crate::OcctResult<*const HandleStandardType>;
+    /// **Source:** `ChFiDS_Spine.hxx`:250 - `ChFiDS_Spine::get_type_descriptor()`
+    pub fn ChFiDS_Spine_get_type_descriptor() -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast ChFiDS_Spine to Standard_Transient
     pub fn ChFiDS_Spine_as_Standard_Transient(
         self_: *const ChFiDS_Spine,
@@ -13088,307 +12738,307 @@ unsafe extern "C" {
     /// Wrap ChFiDS_Spine in a Handle
     pub fn ChFiDS_Spine_to_handle(
         obj: *mut ChFiDS_Spine,
-    ) -> crate::OcctResult<*mut HandleChFiDSSpine>;
+    ) -> crate::OcctResult<*mut Handle_ChFiDS_Spine>;
     /// Destroy Handle<ChFiDS_Spine>
-    pub fn HandleChFiDSSpine_destructor(self_: *mut HandleChFiDSSpine);
+    pub fn Handle_ChFiDS_Spine_destructor(self_: *mut Handle_ChFiDS_Spine);
     /// Clone Handle<ChFiDS_Spine> (increments reference count)
-    pub fn HandleChFiDSSpine_clone(
-        self_: *const HandleChFiDSSpine,
-    ) -> crate::OcctResult<*mut HandleChFiDSSpine>;
+    pub fn Handle_ChFiDS_Spine_clone(
+        self_: *const Handle_ChFiDS_Spine,
+    ) -> crate::OcctResult<*mut Handle_ChFiDS_Spine>;
     /// Check if Handle<ChFiDS_Spine> is null
-    pub fn HandleChFiDSSpine_is_null(self_: *const HandleChFiDSSpine) -> bool;
+    pub fn Handle_ChFiDS_Spine_is_null(self_: *const Handle_ChFiDS_Spine) -> bool;
     /// Dereference Handle to get *const ChFiDS_Spine
-    pub fn HandleChFiDSSpine_get(
-        handle: *const HandleChFiDSSpine,
+    pub fn Handle_ChFiDS_Spine_get(
+        handle: *const Handle_ChFiDS_Spine,
     ) -> crate::OcctResult<*const ChFiDS_Spine>;
     /// Dereference Handle to get *mut ChFiDS_Spine
-    pub fn HandleChFiDSSpine_get_mut(
-        handle: *mut HandleChFiDSSpine,
+    pub fn Handle_ChFiDS_Spine_get_mut(
+        handle: *mut Handle_ChFiDS_Spine,
     ) -> crate::OcctResult<*mut ChFiDS_Spine>;
     /// Upcast Handle<ChFiDS_Spine> to Handle<Standard_Transient>
-    pub fn HandleChFiDSSpine_to_HandleStandardTransient(
-        self_: *const HandleChFiDSSpine,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
+    pub fn Handle_ChFiDS_Spine_to_Handle_Standard_Transient(
+        self_: *const Handle_ChFiDS_Spine,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
     /// Downcast Handle<ChFiDS_Spine> to Handle<ChFiDS_ChamfSpine> (returns null on failure)
-    pub fn HandleChFiDSSpine_downcast_to_HandleChFiDSChamfSpine(
-        self_: *const HandleChFiDSSpine,
-    ) -> crate::OcctResult<*mut HandleChFiDSChamfSpine>;
+    pub fn Handle_ChFiDS_Spine_downcast_to_Handle_ChFiDS_ChamfSpine(
+        self_: *const Handle_ChFiDS_Spine,
+    ) -> crate::OcctResult<*mut Handle_ChFiDS_ChamfSpine>;
     /// Downcast Handle<ChFiDS_Spine> to Handle<ChFiDS_FilSpine> (returns null on failure)
-    pub fn HandleChFiDSSpine_downcast_to_HandleChFiDSFilSpine(
-        self_: *const HandleChFiDSSpine,
-    ) -> crate::OcctResult<*mut HandleChFiDSFilSpine>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn Handle_ChFiDS_Spine_downcast_to_Handle_ChFiDS_FilSpine(
+        self_: *const Handle_ChFiDS_Spine,
+    ) -> crate::OcctResult<*mut Handle_ChFiDS_FilSpine>;
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn ChFiDS_Spine_inherited_IsInstance(
         self_: *const ChFiDS_Spine,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn ChFiDS_Spine_inherited_IsKind(
         self_: *const ChFiDS_Spine,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn ChFiDS_Spine_inherited_This(
         self_: *const ChFiDS_Spine,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn ChFiDS_Spine_inherited_GetRefCount(self_: *const ChFiDS_Spine)
         -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn ChFiDS_Spine_inherited_IncrementRefCounter(
         self_: *mut ChFiDS_Spine,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn ChFiDS_Spine_inherited_DecrementRefCounter(
         self_: *mut ChFiDS_Spine,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn ChFiDS_Spine_inherited_Delete(self_: *const ChFiDS_Spine) -> *const std::ffi::c_char;
     // ======================== ChFiDS_Stripe ========================
     pub fn ChFiDS_Stripe_destructor(self_: *mut ChFiDS_Stripe);
-    /// **Source:** `ChFiDS_Stripe.hxx`:38 - `ChFiDS_Stripe::ChFiDS_Stripe()`
+    /// **Source:** `ChFiDS_Stripe.hxx`:37 - `ChFiDS_Stripe::ChFiDS_Stripe()`
     pub fn ChFiDS_Stripe_ctor() -> crate::OcctResult<*mut ChFiDS_Stripe>;
-    /// **Source:** `ChFiDS_Stripe.hxx`:41 - `ChFiDS_Stripe::Reset()`
+    /// **Source:** `ChFiDS_Stripe.hxx`:40 - `ChFiDS_Stripe::Reset()`
     pub fn ChFiDS_Stripe_reset(self_: *mut ChFiDS_Stripe) -> *const std::ffi::c_char;
-    /// **Source:** `ChFiDS_Stripe.hxx`:43 - `ChFiDS_Stripe::SetOfSurfData()`
+    /// **Source:** `ChFiDS_Stripe.hxx`:42 - `ChFiDS_Stripe::SetOfSurfData()`
     pub fn ChFiDS_Stripe_set_of_surf_data(
         self_: *const ChFiDS_Stripe,
-    ) -> crate::OcctResult<*const HandleChFiDSHData>;
-    /// **Source:** `ChFiDS_Stripe.hxx`:45 - `ChFiDS_Stripe::Spine()`
+    ) -> crate::OcctResult<*const Handle_NCollection_HSequence_opencascade_handle_ChFiDS_SurfData>;
+    /// **Source:** `ChFiDS_Stripe.hxx`:44 - `ChFiDS_Stripe::Spine()`
     pub fn ChFiDS_Stripe_spine(
         self_: *const ChFiDS_Stripe,
-    ) -> crate::OcctResult<*const HandleChFiDSSpine>;
-    /// **Source:** `ChFiDS_Stripe.hxx`:47 - `ChFiDS_Stripe::OrientationOnFace1()`
+    ) -> crate::OcctResult<*const Handle_ChFiDS_Spine>;
+    /// **Source:** `ChFiDS_Stripe.hxx`:46 - `ChFiDS_Stripe::OrientationOnFace1()`
     pub fn ChFiDS_Stripe_orientation_on_face1(
         self_: *const ChFiDS_Stripe,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `ChFiDS_Stripe.hxx`:49 - `ChFiDS_Stripe::OrientationOnFace2()`
+    /// **Source:** `ChFiDS_Stripe.hxx`:48 - `ChFiDS_Stripe::OrientationOnFace2()`
     pub fn ChFiDS_Stripe_orientation_on_face2(
         self_: *const ChFiDS_Stripe,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `ChFiDS_Stripe.hxx`:51 - `ChFiDS_Stripe::Choix()`
+    /// **Source:** `ChFiDS_Stripe.hxx`:50 - `ChFiDS_Stripe::Choix()`
     pub fn ChFiDS_Stripe_choix(self_: *const ChFiDS_Stripe) -> crate::OcctResult<i32>;
-    /// **Source:** `ChFiDS_Stripe.hxx`:53 - `ChFiDS_Stripe::ChangeSetOfSurfData()`
+    /// **Source:** `ChFiDS_Stripe.hxx`:52 - `ChFiDS_Stripe::ChangeSetOfSurfData()`
     pub fn ChFiDS_Stripe_change_set_of_surf_data(
         self_: *mut ChFiDS_Stripe,
-    ) -> crate::OcctResult<*mut HandleChFiDSHData>;
-    /// **Source:** `ChFiDS_Stripe.hxx`:55 - `ChFiDS_Stripe::ChangeSpine()`
+    ) -> crate::OcctResult<*mut Handle_NCollection_HSequence_opencascade_handle_ChFiDS_SurfData>;
+    /// **Source:** `ChFiDS_Stripe.hxx`:54 - `ChFiDS_Stripe::ChangeSpine()`
     pub fn ChFiDS_Stripe_change_spine(
         self_: *mut ChFiDS_Stripe,
-    ) -> crate::OcctResult<*mut HandleChFiDSSpine>;
-    /// **Source:** `ChFiDS_Stripe.hxx`:57 - `ChFiDS_Stripe::OrientationOnFace1()`
+    ) -> crate::OcctResult<*mut Handle_ChFiDS_Spine>;
+    /// **Source:** `ChFiDS_Stripe.hxx`:56 - `ChFiDS_Stripe::OrientationOnFace1()`
     pub fn ChFiDS_Stripe_orientation_on_face1_orientation(
         self_: *mut ChFiDS_Stripe,
         Or1: i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `ChFiDS_Stripe.hxx`:59 - `ChFiDS_Stripe::OrientationOnFace2()`
+    /// **Source:** `ChFiDS_Stripe.hxx`:58 - `ChFiDS_Stripe::OrientationOnFace2()`
     pub fn ChFiDS_Stripe_orientation_on_face2_orientation(
         self_: *mut ChFiDS_Stripe,
         Or2: i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `ChFiDS_Stripe.hxx`:61 - `ChFiDS_Stripe::Choix()`
+    /// **Source:** `ChFiDS_Stripe.hxx`:60 - `ChFiDS_Stripe::Choix()`
     pub fn ChFiDS_Stripe_choix_int(self_: *mut ChFiDS_Stripe, C: i32) -> *const std::ffi::c_char;
-    /// **Source:** `ChFiDS_Stripe.hxx`:63 - `ChFiDS_Stripe::FirstParameters()`
+    /// **Source:** `ChFiDS_Stripe.hxx`:62 - `ChFiDS_Stripe::FirstParameters()`
     pub fn ChFiDS_Stripe_first_parameters(
         self_: *const ChFiDS_Stripe,
         Pdeb: *mut f64,
         Pfin: *mut f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `ChFiDS_Stripe.hxx`:65 - `ChFiDS_Stripe::LastParameters()`
+    /// **Source:** `ChFiDS_Stripe.hxx`:64 - `ChFiDS_Stripe::LastParameters()`
     pub fn ChFiDS_Stripe_last_parameters(
         self_: *const ChFiDS_Stripe,
         Pdeb: *mut f64,
         Pfin: *mut f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `ChFiDS_Stripe.hxx`:67 - `ChFiDS_Stripe::ChangeFirstParameters()`
+    /// **Source:** `ChFiDS_Stripe.hxx`:66 - `ChFiDS_Stripe::ChangeFirstParameters()`
     pub fn ChFiDS_Stripe_change_first_parameters(
         self_: *mut ChFiDS_Stripe,
         Pdeb: f64,
         Pfin: f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `ChFiDS_Stripe.hxx`:69 - `ChFiDS_Stripe::ChangeLastParameters()`
+    /// **Source:** `ChFiDS_Stripe.hxx`:68 - `ChFiDS_Stripe::ChangeLastParameters()`
     pub fn ChFiDS_Stripe_change_last_parameters(
         self_: *mut ChFiDS_Stripe,
         Pdeb: f64,
         Pfin: f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `ChFiDS_Stripe.hxx`:71 - `ChFiDS_Stripe::FirstCurve()`
+    /// **Source:** `ChFiDS_Stripe.hxx`:70 - `ChFiDS_Stripe::FirstCurve()`
     pub fn ChFiDS_Stripe_first_curve(self_: *const ChFiDS_Stripe) -> crate::OcctResult<i32>;
-    /// **Source:** `ChFiDS_Stripe.hxx`:73 - `ChFiDS_Stripe::LastCurve()`
+    /// **Source:** `ChFiDS_Stripe.hxx`:72 - `ChFiDS_Stripe::LastCurve()`
     pub fn ChFiDS_Stripe_last_curve(self_: *const ChFiDS_Stripe) -> crate::OcctResult<i32>;
-    /// **Source:** `ChFiDS_Stripe.hxx`:75 - `ChFiDS_Stripe::ChangeFirstCurve()`
+    /// **Source:** `ChFiDS_Stripe.hxx`:74 - `ChFiDS_Stripe::ChangeFirstCurve()`
     pub fn ChFiDS_Stripe_change_first_curve(
         self_: *mut ChFiDS_Stripe,
         Index: i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `ChFiDS_Stripe.hxx`:77 - `ChFiDS_Stripe::ChangeLastCurve()`
+    /// **Source:** `ChFiDS_Stripe.hxx`:76 - `ChFiDS_Stripe::ChangeLastCurve()`
     pub fn ChFiDS_Stripe_change_last_curve(
         self_: *mut ChFiDS_Stripe,
         Index: i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `ChFiDS_Stripe.hxx`:79 - `ChFiDS_Stripe::FirstPCurve()`
+    /// **Source:** `ChFiDS_Stripe.hxx`:78 - `ChFiDS_Stripe::FirstPCurve()`
     pub fn ChFiDS_Stripe_first_p_curve(
         self_: *const ChFiDS_Stripe,
-    ) -> crate::OcctResult<*const HandleGeom2dCurve>;
-    /// **Source:** `ChFiDS_Stripe.hxx`:81 - `ChFiDS_Stripe::LastPCurve()`
+    ) -> crate::OcctResult<*const Handle_Geom2d_Curve>;
+    /// **Source:** `ChFiDS_Stripe.hxx`:80 - `ChFiDS_Stripe::LastPCurve()`
     pub fn ChFiDS_Stripe_last_p_curve(
         self_: *const ChFiDS_Stripe,
-    ) -> crate::OcctResult<*const HandleGeom2dCurve>;
-    /// **Source:** `ChFiDS_Stripe.hxx`:83 - `ChFiDS_Stripe::ChangeFirstPCurve()`
+    ) -> crate::OcctResult<*const Handle_Geom2d_Curve>;
+    /// **Source:** `ChFiDS_Stripe.hxx`:82 - `ChFiDS_Stripe::ChangeFirstPCurve()`
     pub fn ChFiDS_Stripe_change_first_p_curve(
         self_: *mut ChFiDS_Stripe,
-    ) -> crate::OcctResult<*mut HandleGeom2dCurve>;
-    /// **Source:** `ChFiDS_Stripe.hxx`:85 - `ChFiDS_Stripe::ChangeLastPCurve()`
+    ) -> crate::OcctResult<*mut Handle_Geom2d_Curve>;
+    /// **Source:** `ChFiDS_Stripe.hxx`:84 - `ChFiDS_Stripe::ChangeLastPCurve()`
     pub fn ChFiDS_Stripe_change_last_p_curve(
         self_: *mut ChFiDS_Stripe,
-    ) -> crate::OcctResult<*mut HandleGeom2dCurve>;
-    /// **Source:** `ChFiDS_Stripe.hxx`:87 - `ChFiDS_Stripe::FirstPCurveOrientation()`
+    ) -> crate::OcctResult<*mut Handle_Geom2d_Curve>;
+    /// **Source:** `ChFiDS_Stripe.hxx`:86 - `ChFiDS_Stripe::FirstPCurveOrientation()`
     pub fn ChFiDS_Stripe_first_p_curve_orientation(
         self_: *const ChFiDS_Stripe,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `ChFiDS_Stripe.hxx`:89 - `ChFiDS_Stripe::LastPCurveOrientation()`
+    /// **Source:** `ChFiDS_Stripe.hxx`:88 - `ChFiDS_Stripe::LastPCurveOrientation()`
     pub fn ChFiDS_Stripe_last_p_curve_orientation(
         self_: *const ChFiDS_Stripe,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `ChFiDS_Stripe.hxx`:91 - `ChFiDS_Stripe::FirstPCurveOrientation()`
+    /// **Source:** `ChFiDS_Stripe.hxx`:90 - `ChFiDS_Stripe::FirstPCurveOrientation()`
     pub fn ChFiDS_Stripe_first_p_curve_orientation_orientation(
         self_: *mut ChFiDS_Stripe,
         O: i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `ChFiDS_Stripe.hxx`:93 - `ChFiDS_Stripe::LastPCurveOrientation()`
+    /// **Source:** `ChFiDS_Stripe.hxx`:92 - `ChFiDS_Stripe::LastPCurveOrientation()`
     pub fn ChFiDS_Stripe_last_p_curve_orientation_orientation(
         self_: *mut ChFiDS_Stripe,
         O: i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `ChFiDS_Stripe.hxx`:95 - `ChFiDS_Stripe::IndexFirstPointOnS1()`
+    /// **Source:** `ChFiDS_Stripe.hxx`:94 - `ChFiDS_Stripe::IndexFirstPointOnS1()`
     pub fn ChFiDS_Stripe_index_first_point_on_s1(
         self_: *const ChFiDS_Stripe,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `ChFiDS_Stripe.hxx`:97 - `ChFiDS_Stripe::IndexFirstPointOnS2()`
+    /// **Source:** `ChFiDS_Stripe.hxx`:96 - `ChFiDS_Stripe::IndexFirstPointOnS2()`
     pub fn ChFiDS_Stripe_index_first_point_on_s2(
         self_: *const ChFiDS_Stripe,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `ChFiDS_Stripe.hxx`:99 - `ChFiDS_Stripe::IndexLastPointOnS1()`
+    /// **Source:** `ChFiDS_Stripe.hxx`:98 - `ChFiDS_Stripe::IndexLastPointOnS1()`
     pub fn ChFiDS_Stripe_index_last_point_on_s1(
         self_: *const ChFiDS_Stripe,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `ChFiDS_Stripe.hxx`:101 - `ChFiDS_Stripe::IndexLastPointOnS2()`
+    /// **Source:** `ChFiDS_Stripe.hxx`:100 - `ChFiDS_Stripe::IndexLastPointOnS2()`
     pub fn ChFiDS_Stripe_index_last_point_on_s2(
         self_: *const ChFiDS_Stripe,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `ChFiDS_Stripe.hxx`:103 - `ChFiDS_Stripe::ChangeIndexFirstPointOnS1()`
+    /// **Source:** `ChFiDS_Stripe.hxx`:102 - `ChFiDS_Stripe::ChangeIndexFirstPointOnS1()`
     pub fn ChFiDS_Stripe_change_index_first_point_on_s1(
         self_: *mut ChFiDS_Stripe,
         Index: i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `ChFiDS_Stripe.hxx`:105 - `ChFiDS_Stripe::ChangeIndexFirstPointOnS2()`
+    /// **Source:** `ChFiDS_Stripe.hxx`:104 - `ChFiDS_Stripe::ChangeIndexFirstPointOnS2()`
     pub fn ChFiDS_Stripe_change_index_first_point_on_s2(
         self_: *mut ChFiDS_Stripe,
         Index: i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `ChFiDS_Stripe.hxx`:107 - `ChFiDS_Stripe::ChangeIndexLastPointOnS1()`
+    /// **Source:** `ChFiDS_Stripe.hxx`:106 - `ChFiDS_Stripe::ChangeIndexLastPointOnS1()`
     pub fn ChFiDS_Stripe_change_index_last_point_on_s1(
         self_: *mut ChFiDS_Stripe,
         Index: i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `ChFiDS_Stripe.hxx`:109 - `ChFiDS_Stripe::ChangeIndexLastPointOnS2()`
+    /// **Source:** `ChFiDS_Stripe.hxx`:108 - `ChFiDS_Stripe::ChangeIndexLastPointOnS2()`
     pub fn ChFiDS_Stripe_change_index_last_point_on_s2(
         self_: *mut ChFiDS_Stripe,
         Index: i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `ChFiDS_Stripe.hxx`:111 - `ChFiDS_Stripe::Parameters()`
+    /// **Source:** `ChFiDS_Stripe.hxx`:110 - `ChFiDS_Stripe::Parameters()`
     pub fn ChFiDS_Stripe_parameters(
         self_: *const ChFiDS_Stripe,
         First: bool,
         Pdeb: *mut f64,
         Pfin: *mut f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `ChFiDS_Stripe.hxx`:115 - `ChFiDS_Stripe::SetParameters()`
+    /// **Source:** `ChFiDS_Stripe.hxx`:112 - `ChFiDS_Stripe::SetParameters()`
     pub fn ChFiDS_Stripe_set_parameters(
         self_: *mut ChFiDS_Stripe,
         First: bool,
         Pdeb: f64,
         Pfin: f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `ChFiDS_Stripe.hxx`:119 - `ChFiDS_Stripe::Curve()`
+    /// **Source:** `ChFiDS_Stripe.hxx`:114 - `ChFiDS_Stripe::Curve()`
     pub fn ChFiDS_Stripe_curve(self_: *const ChFiDS_Stripe, First: bool) -> crate::OcctResult<i32>;
-    /// **Source:** `ChFiDS_Stripe.hxx`:121 - `ChFiDS_Stripe::SetCurve()`
+    /// **Source:** `ChFiDS_Stripe.hxx`:116 - `ChFiDS_Stripe::SetCurve()`
     pub fn ChFiDS_Stripe_set_curve(
         self_: *mut ChFiDS_Stripe,
         Index: i32,
         First: bool,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `ChFiDS_Stripe.hxx`:123 - `ChFiDS_Stripe::PCurve()`
+    /// **Source:** `ChFiDS_Stripe.hxx`:118 - `ChFiDS_Stripe::PCurve()`
     pub fn ChFiDS_Stripe_p_curve(
         self_: *const ChFiDS_Stripe,
         First: bool,
-    ) -> crate::OcctResult<*const HandleGeom2dCurve>;
-    /// **Source:** `ChFiDS_Stripe.hxx`:125 - `ChFiDS_Stripe::ChangePCurve()`
+    ) -> crate::OcctResult<*const Handle_Geom2d_Curve>;
+    /// **Source:** `ChFiDS_Stripe.hxx`:120 - `ChFiDS_Stripe::ChangePCurve()`
     pub fn ChFiDS_Stripe_change_p_curve(
         self_: *mut ChFiDS_Stripe,
         First: bool,
-    ) -> crate::OcctResult<*mut HandleGeom2dCurve>;
-    /// **Source:** `ChFiDS_Stripe.hxx`:127 - `ChFiDS_Stripe::Orientation()`
+    ) -> crate::OcctResult<*mut Handle_Geom2d_Curve>;
+    /// **Source:** `ChFiDS_Stripe.hxx`:122 - `ChFiDS_Stripe::Orientation()`
     pub fn ChFiDS_Stripe_orientation_int(
         self_: *const ChFiDS_Stripe,
         OnS: i32,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `ChFiDS_Stripe.hxx`:129 - `ChFiDS_Stripe::SetOrientation()`
+    /// **Source:** `ChFiDS_Stripe.hxx`:124 - `ChFiDS_Stripe::SetOrientation()`
     pub fn ChFiDS_Stripe_set_orientation_orientation_int(
         self_: *mut ChFiDS_Stripe,
         Or: i32,
         OnS: i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `ChFiDS_Stripe.hxx`:131 - `ChFiDS_Stripe::Orientation()`
+    /// **Source:** `ChFiDS_Stripe.hxx`:126 - `ChFiDS_Stripe::Orientation()`
     pub fn ChFiDS_Stripe_orientation_bool(
         self_: *const ChFiDS_Stripe,
         First: bool,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `ChFiDS_Stripe.hxx`:133 - `ChFiDS_Stripe::SetOrientation()`
+    /// **Source:** `ChFiDS_Stripe.hxx`:128 - `ChFiDS_Stripe::SetOrientation()`
     pub fn ChFiDS_Stripe_set_orientation_orientation_bool(
         self_: *mut ChFiDS_Stripe,
         Or: i32,
         First: bool,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `ChFiDS_Stripe.hxx`:135 - `ChFiDS_Stripe::IndexPoint()`
+    /// **Source:** `ChFiDS_Stripe.hxx`:130 - `ChFiDS_Stripe::IndexPoint()`
     pub fn ChFiDS_Stripe_index_point(
         self_: *const ChFiDS_Stripe,
         First: bool,
         OnS: i32,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `ChFiDS_Stripe.hxx`:138 - `ChFiDS_Stripe::SetIndexPoint()`
+    /// **Source:** `ChFiDS_Stripe.hxx`:132 - `ChFiDS_Stripe::SetIndexPoint()`
     pub fn ChFiDS_Stripe_set_index_point(
         self_: *mut ChFiDS_Stripe,
         Index: i32,
         First: bool,
         OnS: i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `ChFiDS_Stripe.hxx`:142 - `ChFiDS_Stripe::SolidIndex()`
+    /// **Source:** `ChFiDS_Stripe.hxx`:134 - `ChFiDS_Stripe::SolidIndex()`
     pub fn ChFiDS_Stripe_solid_index(self_: *const ChFiDS_Stripe) -> crate::OcctResult<i32>;
-    /// **Source:** `ChFiDS_Stripe.hxx`:144 - `ChFiDS_Stripe::SetSolidIndex()`
+    /// **Source:** `ChFiDS_Stripe.hxx`:136 - `ChFiDS_Stripe::SetSolidIndex()`
     pub fn ChFiDS_Stripe_set_solid_index(
         self_: *mut ChFiDS_Stripe,
         Index: i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `ChFiDS_Stripe.hxx`:147 - `ChFiDS_Stripe::InDS()`
+    /// **Source:** `ChFiDS_Stripe.hxx`:139 - `ChFiDS_Stripe::InDS()`
     pub fn ChFiDS_Stripe_in_ds(
         self_: *mut ChFiDS_Stripe,
         First: bool,
         Nb: i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `ChFiDS_Stripe.hxx`:150 - `ChFiDS_Stripe::IsInDS()`
+    /// **Source:** `ChFiDS_Stripe.hxx`:142 - `ChFiDS_Stripe::IsInDS()`
     pub fn ChFiDS_Stripe_is_in_ds(
         self_: *const ChFiDS_Stripe,
         First: bool,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `ChFiDS_Stripe.hxx`:152 - `ChFiDS_Stripe::DynamicType()`
+    /// **Source:** `ChFiDS_Stripe.hxx`:144 - `ChFiDS_Stripe::DynamicType()`
     pub fn ChFiDS_Stripe_dynamic_type(
         self_: *const ChFiDS_Stripe,
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// **Source:** `ChFiDS_Stripe.hxx`:152 - `ChFiDS_Stripe::get_type_name()`
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
+    /// **Source:** `ChFiDS_Stripe.hxx`:144 - `ChFiDS_Stripe::get_type_name()`
     pub fn ChFiDS_Stripe_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
-    /// **Source:** `ChFiDS_Stripe.hxx`:152 - `ChFiDS_Stripe::get_type_descriptor()`
-    pub fn ChFiDS_Stripe_get_type_descriptor() -> crate::OcctResult<*const HandleStandardType>;
+    /// **Source:** `ChFiDS_Stripe.hxx`:144 - `ChFiDS_Stripe::get_type_descriptor()`
+    pub fn ChFiDS_Stripe_get_type_descriptor() -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast ChFiDS_Stripe to Standard_Transient
     pub fn ChFiDS_Stripe_as_Standard_Transient(
         self_: *const ChFiDS_Stripe,
@@ -13400,275 +13050,265 @@ unsafe extern "C" {
     /// Wrap ChFiDS_Stripe in a Handle
     pub fn ChFiDS_Stripe_to_handle(
         obj: *mut ChFiDS_Stripe,
-    ) -> crate::OcctResult<*mut HandleChFiDSStripe>;
+    ) -> crate::OcctResult<*mut Handle_ChFiDS_Stripe>;
     /// Destroy Handle<ChFiDS_Stripe>
-    pub fn HandleChFiDSStripe_destructor(self_: *mut HandleChFiDSStripe);
+    pub fn Handle_ChFiDS_Stripe_destructor(self_: *mut Handle_ChFiDS_Stripe);
     /// Clone Handle<ChFiDS_Stripe> (increments reference count)
-    pub fn HandleChFiDSStripe_clone(
-        self_: *const HandleChFiDSStripe,
-    ) -> crate::OcctResult<*mut HandleChFiDSStripe>;
+    pub fn Handle_ChFiDS_Stripe_clone(
+        self_: *const Handle_ChFiDS_Stripe,
+    ) -> crate::OcctResult<*mut Handle_ChFiDS_Stripe>;
     /// Check if Handle<ChFiDS_Stripe> is null
-    pub fn HandleChFiDSStripe_is_null(self_: *const HandleChFiDSStripe) -> bool;
+    pub fn Handle_ChFiDS_Stripe_is_null(self_: *const Handle_ChFiDS_Stripe) -> bool;
     /// Dereference Handle to get *const ChFiDS_Stripe
-    pub fn HandleChFiDSStripe_get(
-        handle: *const HandleChFiDSStripe,
+    pub fn Handle_ChFiDS_Stripe_get(
+        handle: *const Handle_ChFiDS_Stripe,
     ) -> crate::OcctResult<*const ChFiDS_Stripe>;
     /// Dereference Handle to get *mut ChFiDS_Stripe
-    pub fn HandleChFiDSStripe_get_mut(
-        handle: *mut HandleChFiDSStripe,
+    pub fn Handle_ChFiDS_Stripe_get_mut(
+        handle: *mut Handle_ChFiDS_Stripe,
     ) -> crate::OcctResult<*mut ChFiDS_Stripe>;
     /// Upcast Handle<ChFiDS_Stripe> to Handle<Standard_Transient>
-    pub fn HandleChFiDSStripe_to_HandleStandardTransient(
-        self_: *const HandleChFiDSStripe,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn Handle_ChFiDS_Stripe_to_Handle_Standard_Transient(
+        self_: *const Handle_ChFiDS_Stripe,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn ChFiDS_Stripe_inherited_IsInstance(
         self_: *const ChFiDS_Stripe,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn ChFiDS_Stripe_inherited_IsKind(
         self_: *const ChFiDS_Stripe,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn ChFiDS_Stripe_inherited_This(
         self_: *const ChFiDS_Stripe,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn ChFiDS_Stripe_inherited_GetRefCount(
         self_: *const ChFiDS_Stripe,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn ChFiDS_Stripe_inherited_IncrementRefCounter(
         self_: *mut ChFiDS_Stripe,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn ChFiDS_Stripe_inherited_DecrementRefCounter(
         self_: *mut ChFiDS_Stripe,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn ChFiDS_Stripe_inherited_Delete(self_: *const ChFiDS_Stripe) -> *const std::ffi::c_char;
     // ======================== ChFiDS_StripeMap ========================
     pub fn ChFiDS_StripeMap_destructor(self_: *mut ChFiDS_StripeMap);
-    /// **Source:** `ChFiDS_StripeMap.hxx`:36 - `ChFiDS_StripeMap::ChFiDS_StripeMap()`
+    /// **Source:** `ChFiDS_StripeMap.hxx`:39 - `ChFiDS_StripeMap::ChFiDS_StripeMap()`
     pub fn ChFiDS_StripeMap_ctor() -> crate::OcctResult<*mut ChFiDS_StripeMap>;
-    /// **Source:** `ChFiDS_StripeMap.hxx`:38 - `ChFiDS_StripeMap::Add()`
+    /// **Source:** `ChFiDS_StripeMap.hxx`:41 - `ChFiDS_StripeMap::Add()`
     pub fn ChFiDS_StripeMap_add(
         self_: *mut ChFiDS_StripeMap,
         V: *const TopoDS_Vertex,
-        F: *const HandleChFiDSStripe,
+        F: *const Handle_ChFiDS_Stripe,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `ChFiDS_StripeMap.hxx`:40 - `ChFiDS_StripeMap::Extent()`
+    /// **Source:** `ChFiDS_StripeMap.hxx`:43 - `ChFiDS_StripeMap::Extent()`
     pub fn ChFiDS_StripeMap_extent(self_: *const ChFiDS_StripeMap) -> crate::OcctResult<i32>;
-    /// **Source:** `ChFiDS_StripeMap.hxx`:42 - `ChFiDS_StripeMap::FindFromKey()`
-    pub fn ChFiDS_StripeMap_find_from_key(
-        self_: *const ChFiDS_StripeMap,
-        V: *const TopoDS_Vertex,
-    ) -> crate::OcctResult<*const ChFiDS_ListOfStripe>;
-    /// **Source:** `ChFiDS_StripeMap.hxx`:46 - `ChFiDS_StripeMap::FindFromIndex()`
-    pub fn ChFiDS_StripeMap_find_from_index(
-        self_: *const ChFiDS_StripeMap,
-        I: i32,
-    ) -> crate::OcctResult<*const ChFiDS_ListOfStripe>;
-    /// **Source:** `ChFiDS_StripeMap.hxx`:50 - `ChFiDS_StripeMap::FindKey()`
+    /// **Source:** `ChFiDS_StripeMap.hxx`:61 - `ChFiDS_StripeMap::FindKey()`
     pub fn ChFiDS_StripeMap_find_key(
         self_: *const ChFiDS_StripeMap,
         I: i32,
     ) -> crate::OcctResult<*const TopoDS_Vertex>;
-    /// **Source:** `ChFiDS_StripeMap.hxx`:52 - `ChFiDS_StripeMap::Clear()`
+    /// **Source:** `ChFiDS_StripeMap.hxx`:63 - `ChFiDS_StripeMap::Clear()`
     pub fn ChFiDS_StripeMap_clear(self_: *mut ChFiDS_StripeMap) -> *const std::ffi::c_char;
     // ======================== ChFiDS_SurfData ========================
     pub fn ChFiDS_SurfData_destructor(self_: *mut ChFiDS_SurfData);
-    /// **Source:** `ChFiDS_SurfData.hxx`:39 - `ChFiDS_SurfData::ChFiDS_SurfData()`
+    /// **Source:** `ChFiDS_SurfData.hxx`:36 - `ChFiDS_SurfData::ChFiDS_SurfData()`
     pub fn ChFiDS_SurfData_ctor() -> crate::OcctResult<*mut ChFiDS_SurfData>;
-    /// **Source:** `ChFiDS_SurfData.hxx`:41 - `ChFiDS_SurfData::Copy()`
+    /// **Source:** `ChFiDS_SurfData.hxx`:38 - `ChFiDS_SurfData::Copy()`
     pub fn ChFiDS_SurfData_copy(
         self_: *mut ChFiDS_SurfData,
-        Other: *const HandleChFiDSSurfData,
+        Other: *const Handle_ChFiDS_SurfData,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `ChFiDS_SurfData.hxx`:43 - `ChFiDS_SurfData::IndexOfS1()`
+    /// **Source:** `ChFiDS_SurfData.hxx`:40 - `ChFiDS_SurfData::IndexOfS1()`
     pub fn ChFiDS_SurfData_index_of_s1(self_: *const ChFiDS_SurfData) -> crate::OcctResult<i32>;
-    /// **Source:** `ChFiDS_SurfData.hxx`:45 - `ChFiDS_SurfData::IndexOfS2()`
+    /// **Source:** `ChFiDS_SurfData.hxx`:42 - `ChFiDS_SurfData::IndexOfS2()`
     pub fn ChFiDS_SurfData_index_of_s2(self_: *const ChFiDS_SurfData) -> crate::OcctResult<i32>;
-    /// **Source:** `ChFiDS_SurfData.hxx`:47 - `ChFiDS_SurfData::IsOnCurve1()`
+    /// **Source:** `ChFiDS_SurfData.hxx`:44 - `ChFiDS_SurfData::IsOnCurve1()`
     pub fn ChFiDS_SurfData_is_on_curve1(self_: *const ChFiDS_SurfData) -> crate::OcctResult<bool>;
-    /// **Source:** `ChFiDS_SurfData.hxx`:49 - `ChFiDS_SurfData::IsOnCurve2()`
+    /// **Source:** `ChFiDS_SurfData.hxx`:46 - `ChFiDS_SurfData::IsOnCurve2()`
     pub fn ChFiDS_SurfData_is_on_curve2(self_: *const ChFiDS_SurfData) -> crate::OcctResult<bool>;
-    /// **Source:** `ChFiDS_SurfData.hxx`:51 - `ChFiDS_SurfData::IndexOfC1()`
+    /// **Source:** `ChFiDS_SurfData.hxx`:48 - `ChFiDS_SurfData::IndexOfC1()`
     pub fn ChFiDS_SurfData_index_of_c1(self_: *const ChFiDS_SurfData) -> crate::OcctResult<i32>;
-    /// **Source:** `ChFiDS_SurfData.hxx`:53 - `ChFiDS_SurfData::IndexOfC2()`
+    /// **Source:** `ChFiDS_SurfData.hxx`:50 - `ChFiDS_SurfData::IndexOfC2()`
     pub fn ChFiDS_SurfData_index_of_c2(self_: *const ChFiDS_SurfData) -> crate::OcctResult<i32>;
-    /// **Source:** `ChFiDS_SurfData.hxx`:55 - `ChFiDS_SurfData::Surf()`
+    /// **Source:** `ChFiDS_SurfData.hxx`:52 - `ChFiDS_SurfData::Surf()`
     pub fn ChFiDS_SurfData_surf(self_: *const ChFiDS_SurfData) -> crate::OcctResult<i32>;
-    /// **Source:** `ChFiDS_SurfData.hxx`:57 - `ChFiDS_SurfData::Orientation()`
+    /// **Source:** `ChFiDS_SurfData.hxx`:54 - `ChFiDS_SurfData::Orientation()`
     pub fn ChFiDS_SurfData_orientation(self_: *const ChFiDS_SurfData) -> crate::OcctResult<i32>;
-    /// **Source:** `ChFiDS_SurfData.hxx`:59 - `ChFiDS_SurfData::InterferenceOnS1()`
+    /// **Source:** `ChFiDS_SurfData.hxx`:56 - `ChFiDS_SurfData::InterferenceOnS1()`
     pub fn ChFiDS_SurfData_interference_on_s1(
         self_: *const ChFiDS_SurfData,
     ) -> crate::OcctResult<*const ChFiDS_FaceInterference>;
-    /// **Source:** `ChFiDS_SurfData.hxx`:61 - `ChFiDS_SurfData::InterferenceOnS2()`
+    /// **Source:** `ChFiDS_SurfData.hxx`:58 - `ChFiDS_SurfData::InterferenceOnS2()`
     pub fn ChFiDS_SurfData_interference_on_s2(
         self_: *const ChFiDS_SurfData,
     ) -> crate::OcctResult<*const ChFiDS_FaceInterference>;
-    /// **Source:** `ChFiDS_SurfData.hxx`:63 - `ChFiDS_SurfData::VertexFirstOnS1()`
+    /// **Source:** `ChFiDS_SurfData.hxx`:60 - `ChFiDS_SurfData::VertexFirstOnS1()`
     pub fn ChFiDS_SurfData_vertex_first_on_s1(
         self_: *const ChFiDS_SurfData,
     ) -> crate::OcctResult<*const ChFiDS_CommonPoint>;
-    /// **Source:** `ChFiDS_SurfData.hxx`:65 - `ChFiDS_SurfData::VertexFirstOnS2()`
+    /// **Source:** `ChFiDS_SurfData.hxx`:62 - `ChFiDS_SurfData::VertexFirstOnS2()`
     pub fn ChFiDS_SurfData_vertex_first_on_s2(
         self_: *const ChFiDS_SurfData,
     ) -> crate::OcctResult<*const ChFiDS_CommonPoint>;
-    /// **Source:** `ChFiDS_SurfData.hxx`:67 - `ChFiDS_SurfData::VertexLastOnS1()`
+    /// **Source:** `ChFiDS_SurfData.hxx`:64 - `ChFiDS_SurfData::VertexLastOnS1()`
     pub fn ChFiDS_SurfData_vertex_last_on_s1(
         self_: *const ChFiDS_SurfData,
     ) -> crate::OcctResult<*const ChFiDS_CommonPoint>;
-    /// **Source:** `ChFiDS_SurfData.hxx`:69 - `ChFiDS_SurfData::VertexLastOnS2()`
+    /// **Source:** `ChFiDS_SurfData.hxx`:66 - `ChFiDS_SurfData::VertexLastOnS2()`
     pub fn ChFiDS_SurfData_vertex_last_on_s2(
         self_: *const ChFiDS_SurfData,
     ) -> crate::OcctResult<*const ChFiDS_CommonPoint>;
-    /// **Source:** `ChFiDS_SurfData.hxx`:71 - `ChFiDS_SurfData::ChangeIndexOfS1()`
+    /// **Source:** `ChFiDS_SurfData.hxx`:68 - `ChFiDS_SurfData::ChangeIndexOfS1()`
     pub fn ChFiDS_SurfData_change_index_of_s1(
         self_: *mut ChFiDS_SurfData,
         Index: i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `ChFiDS_SurfData.hxx`:73 - `ChFiDS_SurfData::ChangeIndexOfS2()`
+    /// **Source:** `ChFiDS_SurfData.hxx`:70 - `ChFiDS_SurfData::ChangeIndexOfS2()`
     pub fn ChFiDS_SurfData_change_index_of_s2(
         self_: *mut ChFiDS_SurfData,
         Index: i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `ChFiDS_SurfData.hxx`:75 - `ChFiDS_SurfData::ChangeSurf()`
+    /// **Source:** `ChFiDS_SurfData.hxx`:72 - `ChFiDS_SurfData::ChangeSurf()`
     pub fn ChFiDS_SurfData_change_surf(
         self_: *mut ChFiDS_SurfData,
         Index: i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `ChFiDS_SurfData.hxx`:77 - `ChFiDS_SurfData::SetIndexOfC1()`
+    /// **Source:** `ChFiDS_SurfData.hxx`:74 - `ChFiDS_SurfData::SetIndexOfC1()`
     pub fn ChFiDS_SurfData_set_index_of_c1(
         self_: *mut ChFiDS_SurfData,
         Index: i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `ChFiDS_SurfData.hxx`:79 - `ChFiDS_SurfData::SetIndexOfC2()`
+    /// **Source:** `ChFiDS_SurfData.hxx`:76 - `ChFiDS_SurfData::SetIndexOfC2()`
     pub fn ChFiDS_SurfData_set_index_of_c2(
         self_: *mut ChFiDS_SurfData,
         Index: i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `ChFiDS_SurfData.hxx`:81 - `ChFiDS_SurfData::ChangeOrientation()`
+    /// **Source:** `ChFiDS_SurfData.hxx`:78 - `ChFiDS_SurfData::ChangeOrientation()`
     pub fn ChFiDS_SurfData_change_orientation(
         self_: *mut ChFiDS_SurfData,
     ) -> crate::OcctResult<*mut i32>;
-    /// **Source:** `ChFiDS_SurfData.hxx`:83 - `ChFiDS_SurfData::ChangeInterferenceOnS1()`
+    /// **Source:** `ChFiDS_SurfData.hxx`:80 - `ChFiDS_SurfData::ChangeInterferenceOnS1()`
     pub fn ChFiDS_SurfData_change_interference_on_s1(
         self_: *mut ChFiDS_SurfData,
     ) -> crate::OcctResult<*mut ChFiDS_FaceInterference>;
-    /// **Source:** `ChFiDS_SurfData.hxx`:85 - `ChFiDS_SurfData::ChangeInterferenceOnS2()`
+    /// **Source:** `ChFiDS_SurfData.hxx`:82 - `ChFiDS_SurfData::ChangeInterferenceOnS2()`
     pub fn ChFiDS_SurfData_change_interference_on_s2(
         self_: *mut ChFiDS_SurfData,
     ) -> crate::OcctResult<*mut ChFiDS_FaceInterference>;
-    /// **Source:** `ChFiDS_SurfData.hxx`:87 - `ChFiDS_SurfData::ChangeVertexFirstOnS1()`
+    /// **Source:** `ChFiDS_SurfData.hxx`:84 - `ChFiDS_SurfData::ChangeVertexFirstOnS1()`
     pub fn ChFiDS_SurfData_change_vertex_first_on_s1(
         self_: *mut ChFiDS_SurfData,
     ) -> crate::OcctResult<*mut ChFiDS_CommonPoint>;
-    /// **Source:** `ChFiDS_SurfData.hxx`:89 - `ChFiDS_SurfData::ChangeVertexFirstOnS2()`
+    /// **Source:** `ChFiDS_SurfData.hxx`:86 - `ChFiDS_SurfData::ChangeVertexFirstOnS2()`
     pub fn ChFiDS_SurfData_change_vertex_first_on_s2(
         self_: *mut ChFiDS_SurfData,
     ) -> crate::OcctResult<*mut ChFiDS_CommonPoint>;
-    /// **Source:** `ChFiDS_SurfData.hxx`:91 - `ChFiDS_SurfData::ChangeVertexLastOnS1()`
+    /// **Source:** `ChFiDS_SurfData.hxx`:88 - `ChFiDS_SurfData::ChangeVertexLastOnS1()`
     pub fn ChFiDS_SurfData_change_vertex_last_on_s1(
         self_: *mut ChFiDS_SurfData,
     ) -> crate::OcctResult<*mut ChFiDS_CommonPoint>;
-    /// **Source:** `ChFiDS_SurfData.hxx`:93 - `ChFiDS_SurfData::ChangeVertexLastOnS2()`
+    /// **Source:** `ChFiDS_SurfData.hxx`:90 - `ChFiDS_SurfData::ChangeVertexLastOnS2()`
     pub fn ChFiDS_SurfData_change_vertex_last_on_s2(
         self_: *mut ChFiDS_SurfData,
     ) -> crate::OcctResult<*mut ChFiDS_CommonPoint>;
-    /// **Source:** `ChFiDS_SurfData.hxx`:95 - `ChFiDS_SurfData::Interference()`
+    /// **Source:** `ChFiDS_SurfData.hxx`:92 - `ChFiDS_SurfData::Interference()`
     pub fn ChFiDS_SurfData_interference(
         self_: *const ChFiDS_SurfData,
         OnS: i32,
     ) -> crate::OcctResult<*const ChFiDS_FaceInterference>;
-    /// **Source:** `ChFiDS_SurfData.hxx`:97 - `ChFiDS_SurfData::ChangeInterference()`
+    /// **Source:** `ChFiDS_SurfData.hxx`:94 - `ChFiDS_SurfData::ChangeInterference()`
     pub fn ChFiDS_SurfData_change_interference(
         self_: *mut ChFiDS_SurfData,
         OnS: i32,
     ) -> crate::OcctResult<*mut ChFiDS_FaceInterference>;
-    /// **Source:** `ChFiDS_SurfData.hxx`:99 - `ChFiDS_SurfData::Index()`
+    /// **Source:** `ChFiDS_SurfData.hxx`:96 - `ChFiDS_SurfData::Index()`
     pub fn ChFiDS_SurfData_index(self_: *const ChFiDS_SurfData, OfS: i32)
         -> crate::OcctResult<i32>;
-    /// **Source:** `ChFiDS_SurfData.hxx`:103 - `ChFiDS_SurfData::Vertex()`
+    /// **Source:** `ChFiDS_SurfData.hxx`:100 - `ChFiDS_SurfData::Vertex()`
     pub fn ChFiDS_SurfData_vertex(
         self_: *const ChFiDS_SurfData,
         First: bool,
         OnS: i32,
     ) -> crate::OcctResult<*const ChFiDS_CommonPoint>;
-    /// **Source:** `ChFiDS_SurfData.hxx`:108 - `ChFiDS_SurfData::ChangeVertex()`
+    /// **Source:** `ChFiDS_SurfData.hxx`:104 - `ChFiDS_SurfData::ChangeVertex()`
     pub fn ChFiDS_SurfData_change_vertex(
         self_: *mut ChFiDS_SurfData,
         First: bool,
         OnS: i32,
     ) -> crate::OcctResult<*mut ChFiDS_CommonPoint>;
-    /// **Source:** `ChFiDS_SurfData.hxx`:111 - `ChFiDS_SurfData::IsOnCurve()`
+    /// **Source:** `ChFiDS_SurfData.hxx`:106 - `ChFiDS_SurfData::IsOnCurve()`
     pub fn ChFiDS_SurfData_is_on_curve(
         self_: *const ChFiDS_SurfData,
         OnS: i32,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `ChFiDS_SurfData.hxx`:113 - `ChFiDS_SurfData::IndexOfC()`
+    /// **Source:** `ChFiDS_SurfData.hxx`:108 - `ChFiDS_SurfData::IndexOfC()`
     pub fn ChFiDS_SurfData_index_of_c(
         self_: *const ChFiDS_SurfData,
         OnS: i32,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `ChFiDS_SurfData.hxx`:115 - `ChFiDS_SurfData::FirstSpineParam()`
+    /// **Source:** `ChFiDS_SurfData.hxx`:110 - `ChFiDS_SurfData::FirstSpineParam()`
     pub fn ChFiDS_SurfData_first_spine_param(
         self_: *const ChFiDS_SurfData,
     ) -> crate::OcctResult<f64>;
-    /// **Source:** `ChFiDS_SurfData.hxx`:117 - `ChFiDS_SurfData::LastSpineParam()`
+    /// **Source:** `ChFiDS_SurfData.hxx`:112 - `ChFiDS_SurfData::LastSpineParam()`
     pub fn ChFiDS_SurfData_last_spine_param(
         self_: *const ChFiDS_SurfData,
     ) -> crate::OcctResult<f64>;
-    /// **Source:** `ChFiDS_SurfData.hxx`:119 - `ChFiDS_SurfData::FirstSpineParam()`
+    /// **Source:** `ChFiDS_SurfData.hxx`:114 - `ChFiDS_SurfData::FirstSpineParam()`
     pub fn ChFiDS_SurfData_first_spine_param_real(
         self_: *mut ChFiDS_SurfData,
         Par: f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `ChFiDS_SurfData.hxx`:121 - `ChFiDS_SurfData::LastSpineParam()`
+    /// **Source:** `ChFiDS_SurfData.hxx`:116 - `ChFiDS_SurfData::LastSpineParam()`
     pub fn ChFiDS_SurfData_last_spine_param_real(
         self_: *mut ChFiDS_SurfData,
         Par: f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `ChFiDS_SurfData.hxx`:123 - `ChFiDS_SurfData::FirstExtensionValue()`
+    /// **Source:** `ChFiDS_SurfData.hxx`:118 - `ChFiDS_SurfData::FirstExtensionValue()`
     pub fn ChFiDS_SurfData_first_extension_value(
         self_: *const ChFiDS_SurfData,
     ) -> crate::OcctResult<f64>;
-    /// **Source:** `ChFiDS_SurfData.hxx`:125 - `ChFiDS_SurfData::LastExtensionValue()`
+    /// **Source:** `ChFiDS_SurfData.hxx`:120 - `ChFiDS_SurfData::LastExtensionValue()`
     pub fn ChFiDS_SurfData_last_extension_value(
         self_: *const ChFiDS_SurfData,
     ) -> crate::OcctResult<f64>;
-    /// **Source:** `ChFiDS_SurfData.hxx`:127 - `ChFiDS_SurfData::FirstExtensionValue()`
+    /// **Source:** `ChFiDS_SurfData.hxx`:122 - `ChFiDS_SurfData::FirstExtensionValue()`
     pub fn ChFiDS_SurfData_first_extension_value_real(
         self_: *mut ChFiDS_SurfData,
         Extend: f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `ChFiDS_SurfData.hxx`:129 - `ChFiDS_SurfData::LastExtensionValue()`
+    /// **Source:** `ChFiDS_SurfData.hxx`:124 - `ChFiDS_SurfData::LastExtensionValue()`
     pub fn ChFiDS_SurfData_last_extension_value_real(
         self_: *mut ChFiDS_SurfData,
         Extend: f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `ChFiDS_SurfData.hxx`:131 - `ChFiDS_SurfData::Simul()`
+    /// **Source:** `ChFiDS_SurfData.hxx`:126 - `ChFiDS_SurfData::Simul()`
     pub fn ChFiDS_SurfData_simul(
         self_: *const ChFiDS_SurfData,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
-    /// **Source:** `ChFiDS_SurfData.hxx`:133 - `ChFiDS_SurfData::SetSimul()`
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
+    /// **Source:** `ChFiDS_SurfData.hxx`:128 - `ChFiDS_SurfData::SetSimul()`
     pub fn ChFiDS_SurfData_set_simul(
         self_: *mut ChFiDS_SurfData,
-        S: *const HandleStandardTransient,
+        S: *const Handle_Standard_Transient,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `ChFiDS_SurfData.hxx`:135 - `ChFiDS_SurfData::ResetSimul()`
+    /// **Source:** `ChFiDS_SurfData.hxx`:130 - `ChFiDS_SurfData::ResetSimul()`
     pub fn ChFiDS_SurfData_reset_simul(self_: *mut ChFiDS_SurfData) -> *const std::ffi::c_char;
-    /// **Source:** `ChFiDS_SurfData.hxx`:137 - `ChFiDS_SurfData::Get2dPoints()`
+    /// **Source:** `ChFiDS_SurfData.hxx`:132 - `ChFiDS_SurfData::Get2dPoints()`
     pub fn ChFiDS_SurfData_get2d_points_bool_int(
         self_: *const ChFiDS_SurfData,
         First: bool,
         OnS: i32,
     ) -> crate::OcctResult<*mut gp_Pnt2d>;
-    /// **Source:** `ChFiDS_SurfData.hxx`:140 - `ChFiDS_SurfData::Get2dPoints()`
+    /// **Source:** `ChFiDS_SurfData.hxx`:134 - `ChFiDS_SurfData::Get2dPoints()`
     pub fn ChFiDS_SurfData_get2d_points_pnt2d4(
         self_: *const ChFiDS_SurfData,
         P2df1: *mut gp_Pnt2d,
@@ -13676,7 +13316,7 @@ unsafe extern "C" {
         P2df2: *mut gp_Pnt2d,
         P2dl2: *mut gp_Pnt2d,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `ChFiDS_SurfData.hxx`:145 - `ChFiDS_SurfData::Set2dPoints()`
+    /// **Source:** `ChFiDS_SurfData.hxx`:139 - `ChFiDS_SurfData::Set2dPoints()`
     pub fn ChFiDS_SurfData_set2d_points(
         self_: *mut ChFiDS_SurfData,
         P2df1: *const gp_Pnt2d,
@@ -13684,28 +13324,28 @@ unsafe extern "C" {
         P2df2: *const gp_Pnt2d,
         P2dl2: *const gp_Pnt2d,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `ChFiDS_SurfData.hxx`:150 - `ChFiDS_SurfData::TwistOnS1()`
+    /// **Source:** `ChFiDS_SurfData.hxx`:144 - `ChFiDS_SurfData::TwistOnS1()`
     pub fn ChFiDS_SurfData_twist_on_s1(self_: *const ChFiDS_SurfData) -> crate::OcctResult<bool>;
-    /// **Source:** `ChFiDS_SurfData.hxx`:152 - `ChFiDS_SurfData::TwistOnS2()`
+    /// **Source:** `ChFiDS_SurfData.hxx`:146 - `ChFiDS_SurfData::TwistOnS2()`
     pub fn ChFiDS_SurfData_twist_on_s2(self_: *const ChFiDS_SurfData) -> crate::OcctResult<bool>;
-    /// **Source:** `ChFiDS_SurfData.hxx`:154 - `ChFiDS_SurfData::TwistOnS1()`
+    /// **Source:** `ChFiDS_SurfData.hxx`:148 - `ChFiDS_SurfData::TwistOnS1()`
     pub fn ChFiDS_SurfData_twist_on_s1_bool(
         self_: *mut ChFiDS_SurfData,
         T: bool,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `ChFiDS_SurfData.hxx`:156 - `ChFiDS_SurfData::TwistOnS2()`
+    /// **Source:** `ChFiDS_SurfData.hxx`:150 - `ChFiDS_SurfData::TwistOnS2()`
     pub fn ChFiDS_SurfData_twist_on_s2_bool(
         self_: *mut ChFiDS_SurfData,
         T: bool,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `ChFiDS_SurfData.hxx`:158 - `ChFiDS_SurfData::DynamicType()`
+    /// **Source:** `ChFiDS_SurfData.hxx`:152 - `ChFiDS_SurfData::DynamicType()`
     pub fn ChFiDS_SurfData_dynamic_type(
         self_: *const ChFiDS_SurfData,
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// **Source:** `ChFiDS_SurfData.hxx`:158 - `ChFiDS_SurfData::get_type_name()`
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
+    /// **Source:** `ChFiDS_SurfData.hxx`:152 - `ChFiDS_SurfData::get_type_name()`
     pub fn ChFiDS_SurfData_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
-    /// **Source:** `ChFiDS_SurfData.hxx`:158 - `ChFiDS_SurfData::get_type_descriptor()`
-    pub fn ChFiDS_SurfData_get_type_descriptor() -> crate::OcctResult<*const HandleStandardType>;
+    /// **Source:** `ChFiDS_SurfData.hxx`:152 - `ChFiDS_SurfData::get_type_descriptor()`
+    pub fn ChFiDS_SurfData_get_type_descriptor() -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast ChFiDS_SurfData to Standard_Transient
     pub fn ChFiDS_SurfData_as_Standard_Transient(
         self_: *const ChFiDS_SurfData,
@@ -13717,54 +13357,54 @@ unsafe extern "C" {
     /// Wrap ChFiDS_SurfData in a Handle
     pub fn ChFiDS_SurfData_to_handle(
         obj: *mut ChFiDS_SurfData,
-    ) -> crate::OcctResult<*mut HandleChFiDSSurfData>;
+    ) -> crate::OcctResult<*mut Handle_ChFiDS_SurfData>;
     /// Destroy Handle<ChFiDS_SurfData>
-    pub fn HandleChFiDSSurfData_destructor(self_: *mut HandleChFiDSSurfData);
+    pub fn Handle_ChFiDS_SurfData_destructor(self_: *mut Handle_ChFiDS_SurfData);
     /// Clone Handle<ChFiDS_SurfData> (increments reference count)
-    pub fn HandleChFiDSSurfData_clone(
-        self_: *const HandleChFiDSSurfData,
-    ) -> crate::OcctResult<*mut HandleChFiDSSurfData>;
+    pub fn Handle_ChFiDS_SurfData_clone(
+        self_: *const Handle_ChFiDS_SurfData,
+    ) -> crate::OcctResult<*mut Handle_ChFiDS_SurfData>;
     /// Check if Handle<ChFiDS_SurfData> is null
-    pub fn HandleChFiDSSurfData_is_null(self_: *const HandleChFiDSSurfData) -> bool;
+    pub fn Handle_ChFiDS_SurfData_is_null(self_: *const Handle_ChFiDS_SurfData) -> bool;
     /// Dereference Handle to get *const ChFiDS_SurfData
-    pub fn HandleChFiDSSurfData_get(
-        handle: *const HandleChFiDSSurfData,
+    pub fn Handle_ChFiDS_SurfData_get(
+        handle: *const Handle_ChFiDS_SurfData,
     ) -> crate::OcctResult<*const ChFiDS_SurfData>;
     /// Dereference Handle to get *mut ChFiDS_SurfData
-    pub fn HandleChFiDSSurfData_get_mut(
-        handle: *mut HandleChFiDSSurfData,
+    pub fn Handle_ChFiDS_SurfData_get_mut(
+        handle: *mut Handle_ChFiDS_SurfData,
     ) -> crate::OcctResult<*mut ChFiDS_SurfData>;
     /// Upcast Handle<ChFiDS_SurfData> to Handle<Standard_Transient>
-    pub fn HandleChFiDSSurfData_to_HandleStandardTransient(
-        self_: *const HandleChFiDSSurfData,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn Handle_ChFiDS_SurfData_to_Handle_Standard_Transient(
+        self_: *const Handle_ChFiDS_SurfData,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn ChFiDS_SurfData_inherited_IsInstance(
         self_: *const ChFiDS_SurfData,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn ChFiDS_SurfData_inherited_IsKind(
         self_: *const ChFiDS_SurfData,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn ChFiDS_SurfData_inherited_This(
         self_: *const ChFiDS_SurfData,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn ChFiDS_SurfData_inherited_GetRefCount(
         self_: *const ChFiDS_SurfData,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn ChFiDS_SurfData_inherited_IncrementRefCounter(
         self_: *mut ChFiDS_SurfData,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn ChFiDS_SurfData_inherited_DecrementRefCounter(
         self_: *mut ChFiDS_SurfData,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn ChFiDS_SurfData_inherited_Delete(
         self_: *const ChFiDS_SurfData,
     ) -> *const std::ffi::c_char;
@@ -13775,20 +13415,20 @@ unsafe extern "C" {
     /// **Source:** `ChFiKPart_ComputeData.hxx`:43 - `ChFiKPart_ComputeData::Compute()`
     pub fn ChFiKPart_ComputeData_compute(
         DStr: *mut TopOpeBRepDS_DataStructure,
-        Data: *mut HandleChFiDSSurfData,
-        S1: *const HandleAdaptor3dSurface,
-        S2: *const HandleAdaptor3dSurface,
+        Data: *mut Handle_ChFiDS_SurfData,
+        S1: *const Handle_Adaptor3d_Surface,
+        S2: *const Handle_Adaptor3d_Surface,
         Or1: i32,
         Or2: i32,
-        Sp: *const HandleChFiDSSpine,
+        Sp: *const Handle_ChFiDS_Spine,
         Iedge: i32,
     ) -> crate::OcctResult<bool>;
     /// **Source:** `ChFiKPart_ComputeData.hxx`:53 - `ChFiKPart_ComputeData::ComputeCorner()`
     pub fn ChFiKPart_ComputeData_compute_corner_datastructure_handlechfidssurfdata_handleadaptor3dsurface2_orientation4_real2_pnt2d4(
         DStr: *mut TopOpeBRepDS_DataStructure,
-        Data: *const HandleChFiDSSurfData,
-        S1: *const HandleAdaptor3dSurface,
-        S2: *const HandleAdaptor3dSurface,
+        Data: *const Handle_ChFiDS_SurfData,
+        S1: *const Handle_Adaptor3d_Surface,
+        S2: *const Handle_Adaptor3d_Surface,
         OrFace1: i32,
         OrFace2: i32,
         Or1: i32,
@@ -13803,9 +13443,9 @@ unsafe extern "C" {
     /// **Source:** `ChFiKPart_ComputeData.hxx`:69 - `ChFiKPart_ComputeData::ComputeCorner()`
     pub fn ChFiKPart_ComputeData_compute_corner_datastructure_handlechfidssurfdata_handleadaptor3dsurface2_orientation4_real_pnt2d3(
         DStr: *mut TopOpeBRepDS_DataStructure,
-        Data: *const HandleChFiDSSurfData,
-        S1: *const HandleAdaptor3dSurface,
-        S2: *const HandleAdaptor3dSurface,
+        Data: *const Handle_ChFiDS_SurfData,
+        S1: *const Handle_Adaptor3d_Surface,
+        S2: *const Handle_Adaptor3d_Surface,
         OrFace1: i32,
         OrFace2: i32,
         Or1: i32,
@@ -13818,10 +13458,10 @@ unsafe extern "C" {
     /// **Source:** `ChFiKPart_ComputeData.hxx`:83 - `ChFiKPart_ComputeData::ComputeCorner()`
     pub fn ChFiKPart_ComputeData_compute_corner_datastructure_handlechfidssurfdata_handleadaptor3dsurface3_orientation4_real(
         DStr: *mut TopOpeBRepDS_DataStructure,
-        Data: *const HandleChFiDSSurfData,
-        S: *const HandleAdaptor3dSurface,
-        S1: *const HandleAdaptor3dSurface,
-        S2: *const HandleAdaptor3dSurface,
+        Data: *const Handle_ChFiDS_SurfData,
+        S: *const Handle_Adaptor3d_Surface,
+        S1: *const Handle_Adaptor3d_Surface,
+        S2: *const Handle_Adaptor3d_Surface,
         OfS: i32,
         OS: i32,
         OS1: i32,
@@ -13830,110 +13470,109 @@ unsafe extern "C" {
     ) -> crate::OcctResult<bool>;
     // ======================== FilletSurf_Builder ========================
     pub fn FilletSurf_Builder_destructor(self_: *mut FilletSurf_Builder);
-    /// **Source:** `FilletSurf_Builder.hxx`:58 - `FilletSurf_Builder::FilletSurf_Builder()`
-    pub fn FilletSurf_Builder_ctor_shape_listofshape_real4(
+    /// **Source:** `FilletSurf_Builder.hxx`:59 - `FilletSurf_Builder::FilletSurf_Builder()`
+    pub fn FilletSurf_Builder_ctor_shape_list_shape_real4(
         S: *const TopoDS_Shape,
-        E: *const TopTools_ListOfShape,
+        E: *const NCollection_List_TopoDS_Shape,
         R: f64,
         Ta: f64,
         Tapp3d: f64,
         Tapp2d: f64,
     ) -> crate::OcctResult<*mut FilletSurf_Builder>;
-    /// **Source:** `FilletSurf_Builder.hxx`:66 - `FilletSurf_Builder::Perform()`
+    /// **Source:** `FilletSurf_Builder.hxx`:67 - `FilletSurf_Builder::Perform()`
     pub fn FilletSurf_Builder_perform(self_: *mut FilletSurf_Builder) -> *const std::ffi::c_char;
-    /// **Source:** `FilletSurf_Builder.hxx`:68 - `FilletSurf_Builder::Simulate()`
+    /// **Source:** `FilletSurf_Builder.hxx`:69 - `FilletSurf_Builder::Simulate()`
     pub fn FilletSurf_Builder_simulate(self_: *mut FilletSurf_Builder) -> *const std::ffi::c_char;
-    /// **Source:** `FilletSurf_Builder.hxx`:75 - `FilletSurf_Builder::IsDone()`
+    /// **Source:** `FilletSurf_Builder.hxx`:76 - `FilletSurf_Builder::IsDone()`
     pub fn FilletSurf_Builder_is_done(self_: *const FilletSurf_Builder) -> crate::OcctResult<i32>;
-    /// **Source:** `FilletSurf_Builder.hxx`:86 - `FilletSurf_Builder::StatusError()`
+    /// **Source:** `FilletSurf_Builder.hxx`:87 - `FilletSurf_Builder::StatusError()`
     pub fn FilletSurf_Builder_status_error(
         self_: *const FilletSurf_Builder,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `FilletSurf_Builder.hxx`:89 - `FilletSurf_Builder::NbSurface()`
+    /// **Source:** `FilletSurf_Builder.hxx`:90 - `FilletSurf_Builder::NbSurface()`
     pub fn FilletSurf_Builder_nb_surface(
         self_: *const FilletSurf_Builder,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `FilletSurf_Builder.hxx`:92 - `FilletSurf_Builder::SurfaceFillet()`
-    pub fn FilletSurf_Builder_surface_fillet(
-        self_: *const FilletSurf_Builder,
-        Index: i32,
-    ) -> crate::OcctResult<*const HandleGeomSurface>;
-    /// **Source:** `FilletSurf_Builder.hxx`:96 - `FilletSurf_Builder::TolApp3d()`
-    pub fn FilletSurf_Builder_tol_app3d(
-        self_: *const FilletSurf_Builder,
-        Index: i32,
-    ) -> crate::OcctResult<f64>;
-    /// **Source:** `FilletSurf_Builder.hxx`:99 - `FilletSurf_Builder::SupportFace1()`
-    pub fn FilletSurf_Builder_support_face1(
-        self_: *const FilletSurf_Builder,
-        Index: i32,
-    ) -> crate::OcctResult<*const TopoDS_Face>;
-    /// **Source:** `FilletSurf_Builder.hxx`:102 - `FilletSurf_Builder::SupportFace2()`
-    pub fn FilletSurf_Builder_support_face2(
-        self_: *const FilletSurf_Builder,
-        Index: i32,
-    ) -> crate::OcctResult<*const TopoDS_Face>;
-    /// **Source:** `FilletSurf_Builder.hxx`:105 - `FilletSurf_Builder::CurveOnFace1()`
-    pub fn FilletSurf_Builder_curve_on_face1(
-        self_: *const FilletSurf_Builder,
-        Index: i32,
-    ) -> crate::OcctResult<*const HandleGeomCurve>;
-    /// **Source:** `FilletSurf_Builder.hxx`:108 - `FilletSurf_Builder::CurveOnFace2()`
-    pub fn FilletSurf_Builder_curve_on_face2(
-        self_: *const FilletSurf_Builder,
-        Index: i32,
-    ) -> crate::OcctResult<*const HandleGeomCurve>;
-    /// **Source:** `FilletSurf_Builder.hxx`:111 - `FilletSurf_Builder::PCurveOnFace1()`
-    pub fn FilletSurf_Builder_p_curve_on_face1(
-        self_: *const FilletSurf_Builder,
-        Index: i32,
-    ) -> crate::OcctResult<*const HandleGeom2dCurve>;
-    /// **Source:** `FilletSurf_Builder.hxx`:114 - `FilletSurf_Builder::PCurve1OnFillet()`
-    pub fn FilletSurf_Builder_p_curve1_on_fillet(
-        self_: *const FilletSurf_Builder,
-        Index: i32,
-    ) -> crate::OcctResult<*const HandleGeom2dCurve>;
-    /// **Source:** `FilletSurf_Builder.hxx`:117 - `FilletSurf_Builder::PCurveOnFace2()`
-    pub fn FilletSurf_Builder_p_curve_on_face2(
-        self_: *const FilletSurf_Builder,
-        Index: i32,
-    ) -> crate::OcctResult<*const HandleGeom2dCurve>;
-    /// **Source:** `FilletSurf_Builder.hxx`:120 - `FilletSurf_Builder::PCurve2OnFillet()`
-    pub fn FilletSurf_Builder_p_curve2_on_fillet(
-        self_: *const FilletSurf_Builder,
-        Index: i32,
-    ) -> crate::OcctResult<*const HandleGeom2dCurve>;
-    /// **Source:** `FilletSurf_Builder.hxx`:123 - `FilletSurf_Builder::FirstParameter()`
-    pub fn FilletSurf_Builder_first_parameter(
-        self_: *const FilletSurf_Builder,
-    ) -> crate::OcctResult<f64>;
-    /// **Source:** `FilletSurf_Builder.hxx`:126 - `FilletSurf_Builder::LastParameter()`
-    pub fn FilletSurf_Builder_last_parameter(
-        self_: *const FilletSurf_Builder,
-    ) -> crate::OcctResult<f64>;
-    /// **Source:** `FilletSurf_Builder.hxx`:128 - `FilletSurf_Builder::StartSectionStatus()`
-    pub fn FilletSurf_Builder_start_section_status(
-        self_: *const FilletSurf_Builder,
-    ) -> crate::OcctResult<i32>;
-    /// **Source:** `FilletSurf_Builder.hxx`:130 - `FilletSurf_Builder::EndSectionStatus()`
-    pub fn FilletSurf_Builder_end_section_status(
-        self_: *const FilletSurf_Builder,
-    ) -> crate::OcctResult<i32>;
-    /// **Source:** `FilletSurf_Builder.hxx`:132 - `FilletSurf_Builder::NbSection()`
-    pub fn FilletSurf_Builder_nb_section(
-        self_: *const FilletSurf_Builder,
-        IndexSurf: i32,
-    ) -> crate::OcctResult<i32>;
-    /// **Source:** `FilletSurf_Builder.hxx`:134 - `FilletSurf_Builder::Section()`
+    /// **Source:** `FilletSurf_Builder.hxx`:97 - `FilletSurf_Builder::Section()`
     pub fn FilletSurf_Builder_section(
         self_: *const FilletSurf_Builder,
         IndexSurf: i32,
         IndexSec: i32,
-        Circ: *mut HandleGeomTrimmedCurve,
-    ) -> *const std::ffi::c_char;
+    ) -> crate::OcctResult<*mut Handle_Geom_TrimmedCurve>;
+    /// **Source:** `FilletSurf_Builder.hxx`:107 - `FilletSurf_Builder::SurfaceFillet()`
+    pub fn FilletSurf_Builder_surface_fillet(
+        self_: *const FilletSurf_Builder,
+        Index: i32,
+    ) -> crate::OcctResult<*const Handle_Geom_Surface>;
+    /// **Source:** `FilletSurf_Builder.hxx`:111 - `FilletSurf_Builder::TolApp3d()`
+    pub fn FilletSurf_Builder_tol_app3d(
+        self_: *const FilletSurf_Builder,
+        Index: i32,
+    ) -> crate::OcctResult<f64>;
+    /// **Source:** `FilletSurf_Builder.hxx`:114 - `FilletSurf_Builder::SupportFace1()`
+    pub fn FilletSurf_Builder_support_face1(
+        self_: *const FilletSurf_Builder,
+        Index: i32,
+    ) -> crate::OcctResult<*const TopoDS_Face>;
+    /// **Source:** `FilletSurf_Builder.hxx`:117 - `FilletSurf_Builder::SupportFace2()`
+    pub fn FilletSurf_Builder_support_face2(
+        self_: *const FilletSurf_Builder,
+        Index: i32,
+    ) -> crate::OcctResult<*const TopoDS_Face>;
+    /// **Source:** `FilletSurf_Builder.hxx`:120 - `FilletSurf_Builder::CurveOnFace1()`
+    pub fn FilletSurf_Builder_curve_on_face1(
+        self_: *const FilletSurf_Builder,
+        Index: i32,
+    ) -> crate::OcctResult<*const Handle_Geom_Curve>;
+    /// **Source:** `FilletSurf_Builder.hxx`:123 - `FilletSurf_Builder::CurveOnFace2()`
+    pub fn FilletSurf_Builder_curve_on_face2(
+        self_: *const FilletSurf_Builder,
+        Index: i32,
+    ) -> crate::OcctResult<*const Handle_Geom_Curve>;
+    /// **Source:** `FilletSurf_Builder.hxx`:126 - `FilletSurf_Builder::PCurveOnFace1()`
+    pub fn FilletSurf_Builder_p_curve_on_face1(
+        self_: *const FilletSurf_Builder,
+        Index: i32,
+    ) -> crate::OcctResult<*const Handle_Geom2d_Curve>;
+    /// **Source:** `FilletSurf_Builder.hxx`:129 - `FilletSurf_Builder::PCurve1OnFillet()`
+    pub fn FilletSurf_Builder_p_curve1_on_fillet(
+        self_: *const FilletSurf_Builder,
+        Index: i32,
+    ) -> crate::OcctResult<*const Handle_Geom2d_Curve>;
+    /// **Source:** `FilletSurf_Builder.hxx`:132 - `FilletSurf_Builder::PCurveOnFace2()`
+    pub fn FilletSurf_Builder_p_curve_on_face2(
+        self_: *const FilletSurf_Builder,
+        Index: i32,
+    ) -> crate::OcctResult<*const Handle_Geom2d_Curve>;
+    /// **Source:** `FilletSurf_Builder.hxx`:135 - `FilletSurf_Builder::PCurve2OnFillet()`
+    pub fn FilletSurf_Builder_p_curve2_on_fillet(
+        self_: *const FilletSurf_Builder,
+        Index: i32,
+    ) -> crate::OcctResult<*const Handle_Geom2d_Curve>;
+    /// **Source:** `FilletSurf_Builder.hxx`:138 - `FilletSurf_Builder::FirstParameter()`
+    pub fn FilletSurf_Builder_first_parameter(
+        self_: *const FilletSurf_Builder,
+    ) -> crate::OcctResult<f64>;
+    /// **Source:** `FilletSurf_Builder.hxx`:141 - `FilletSurf_Builder::LastParameter()`
+    pub fn FilletSurf_Builder_last_parameter(
+        self_: *const FilletSurf_Builder,
+    ) -> crate::OcctResult<f64>;
+    /// **Source:** `FilletSurf_Builder.hxx`:143 - `FilletSurf_Builder::StartSectionStatus()`
+    pub fn FilletSurf_Builder_start_section_status(
+        self_: *const FilletSurf_Builder,
+    ) -> crate::OcctResult<i32>;
+    /// **Source:** `FilletSurf_Builder.hxx`:145 - `FilletSurf_Builder::EndSectionStatus()`
+    pub fn FilletSurf_Builder_end_section_status(
+        self_: *const FilletSurf_Builder,
+    ) -> crate::OcctResult<i32>;
+    /// **Source:** `FilletSurf_Builder.hxx`:147 - `FilletSurf_Builder::NbSection()`
+    pub fn FilletSurf_Builder_nb_section(
+        self_: *const FilletSurf_Builder,
+        IndexSurf: i32,
+    ) -> crate::OcctResult<i32>;
     // ======================== FilletSurf_InternalBuilder ========================
     pub fn FilletSurf_InternalBuilder_destructor(self_: *mut FilletSurf_InternalBuilder);
-    /// **Source:** `FilletSurf_InternalBuilder.hxx`:45 - `FilletSurf_InternalBuilder::FilletSurf_InternalBuilder()`
+    /// **Source:** `FilletSurf_InternalBuilder.hxx`:47 - `FilletSurf_InternalBuilder::FilletSurf_InternalBuilder()`
     pub fn FilletSurf_InternalBuilder_ctor_shape_filletshape_real3(
         S: *const TopoDS_Shape,
         FShape: i32,
@@ -13941,106 +13580,105 @@ unsafe extern "C" {
         Tapp3d: f64,
         Tapp2d: f64,
     ) -> crate::OcctResult<*mut FilletSurf_InternalBuilder>;
-    /// **Source:** `FilletSurf_InternalBuilder.hxx`:58 - `FilletSurf_InternalBuilder::Add()`
+    /// **Source:** `FilletSurf_InternalBuilder.hxx`:60 - `FilletSurf_InternalBuilder::Add()`
     pub fn FilletSurf_InternalBuilder_add(
         self_: *mut FilletSurf_InternalBuilder,
-        E: *const TopTools_ListOfShape,
+        E: *const NCollection_List_TopoDS_Shape,
         R: f64,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `FilletSurf_InternalBuilder.hxx`:60 - `FilletSurf_InternalBuilder::Perform()`
+    /// **Source:** `FilletSurf_InternalBuilder.hxx`:62 - `FilletSurf_InternalBuilder::Perform()`
     pub fn FilletSurf_InternalBuilder_perform(
         self_: *mut FilletSurf_InternalBuilder,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `FilletSurf_InternalBuilder.hxx`:62 - `FilletSurf_InternalBuilder::Done()`
+    /// **Source:** `FilletSurf_InternalBuilder.hxx`:64 - `FilletSurf_InternalBuilder::Done()`
     pub fn FilletSurf_InternalBuilder_done(
         self_: *const FilletSurf_InternalBuilder,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `FilletSurf_InternalBuilder.hxx`:65 - `FilletSurf_InternalBuilder::NbSurface()`
+    /// **Source:** `FilletSurf_InternalBuilder.hxx`:67 - `FilletSurf_InternalBuilder::NbSurface()`
     pub fn FilletSurf_InternalBuilder_nb_surface(
         self_: *const FilletSurf_InternalBuilder,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `FilletSurf_InternalBuilder.hxx`:68 - `FilletSurf_InternalBuilder::SurfaceFillet()`
+    /// **Source:** `FilletSurf_InternalBuilder.hxx`:70 - `FilletSurf_InternalBuilder::SurfaceFillet()`
     pub fn FilletSurf_InternalBuilder_surface_fillet(
         self_: *const FilletSurf_InternalBuilder,
         Index: i32,
-    ) -> crate::OcctResult<*const HandleGeomSurface>;
-    /// **Source:** `FilletSurf_InternalBuilder.hxx`:72 - `FilletSurf_InternalBuilder::TolApp3d()`
+    ) -> crate::OcctResult<*const Handle_Geom_Surface>;
+    /// **Source:** `FilletSurf_InternalBuilder.hxx`:74 - `FilletSurf_InternalBuilder::TolApp3d()`
     pub fn FilletSurf_InternalBuilder_tol_app3d(
         self_: *const FilletSurf_InternalBuilder,
         Index: i32,
     ) -> crate::OcctResult<f64>;
-    /// **Source:** `FilletSurf_InternalBuilder.hxx`:75 - `FilletSurf_InternalBuilder::SupportFace1()`
+    /// **Source:** `FilletSurf_InternalBuilder.hxx`:77 - `FilletSurf_InternalBuilder::SupportFace1()`
     pub fn FilletSurf_InternalBuilder_support_face1(
         self_: *const FilletSurf_InternalBuilder,
         Index: i32,
     ) -> crate::OcctResult<*const TopoDS_Face>;
-    /// **Source:** `FilletSurf_InternalBuilder.hxx`:78 - `FilletSurf_InternalBuilder::SupportFace2()`
+    /// **Source:** `FilletSurf_InternalBuilder.hxx`:80 - `FilletSurf_InternalBuilder::SupportFace2()`
     pub fn FilletSurf_InternalBuilder_support_face2(
         self_: *const FilletSurf_InternalBuilder,
         Index: i32,
     ) -> crate::OcctResult<*const TopoDS_Face>;
-    /// **Source:** `FilletSurf_InternalBuilder.hxx`:81 - `FilletSurf_InternalBuilder::CurveOnFace1()`
+    /// **Source:** `FilletSurf_InternalBuilder.hxx`:83 - `FilletSurf_InternalBuilder::CurveOnFace1()`
     pub fn FilletSurf_InternalBuilder_curve_on_face1(
         self_: *const FilletSurf_InternalBuilder,
         Index: i32,
-    ) -> crate::OcctResult<*const HandleGeomCurve>;
-    /// **Source:** `FilletSurf_InternalBuilder.hxx`:84 - `FilletSurf_InternalBuilder::CurveOnFace2()`
+    ) -> crate::OcctResult<*const Handle_Geom_Curve>;
+    /// **Source:** `FilletSurf_InternalBuilder.hxx`:86 - `FilletSurf_InternalBuilder::CurveOnFace2()`
     pub fn FilletSurf_InternalBuilder_curve_on_face2(
         self_: *const FilletSurf_InternalBuilder,
         Index: i32,
-    ) -> crate::OcctResult<*const HandleGeomCurve>;
-    /// **Source:** `FilletSurf_InternalBuilder.hxx`:87 - `FilletSurf_InternalBuilder::PCurveOnFace1()`
+    ) -> crate::OcctResult<*const Handle_Geom_Curve>;
+    /// **Source:** `FilletSurf_InternalBuilder.hxx`:89 - `FilletSurf_InternalBuilder::PCurveOnFace1()`
     pub fn FilletSurf_InternalBuilder_p_curve_on_face1(
         self_: *const FilletSurf_InternalBuilder,
         Index: i32,
-    ) -> crate::OcctResult<*const HandleGeom2dCurve>;
-    /// **Source:** `FilletSurf_InternalBuilder.hxx`:90 - `FilletSurf_InternalBuilder::PCurve1OnFillet()`
+    ) -> crate::OcctResult<*const Handle_Geom2d_Curve>;
+    /// **Source:** `FilletSurf_InternalBuilder.hxx`:92 - `FilletSurf_InternalBuilder::PCurve1OnFillet()`
     pub fn FilletSurf_InternalBuilder_p_curve1_on_fillet(
         self_: *const FilletSurf_InternalBuilder,
         Index: i32,
-    ) -> crate::OcctResult<*const HandleGeom2dCurve>;
-    /// **Source:** `FilletSurf_InternalBuilder.hxx`:93 - `FilletSurf_InternalBuilder::PCurveOnFace2()`
+    ) -> crate::OcctResult<*const Handle_Geom2d_Curve>;
+    /// **Source:** `FilletSurf_InternalBuilder.hxx`:95 - `FilletSurf_InternalBuilder::PCurveOnFace2()`
     pub fn FilletSurf_InternalBuilder_p_curve_on_face2(
         self_: *const FilletSurf_InternalBuilder,
         Index: i32,
-    ) -> crate::OcctResult<*const HandleGeom2dCurve>;
-    /// **Source:** `FilletSurf_InternalBuilder.hxx`:96 - `FilletSurf_InternalBuilder::PCurve2OnFillet()`
+    ) -> crate::OcctResult<*const Handle_Geom2d_Curve>;
+    /// **Source:** `FilletSurf_InternalBuilder.hxx`:98 - `FilletSurf_InternalBuilder::PCurve2OnFillet()`
     pub fn FilletSurf_InternalBuilder_p_curve2_on_fillet(
         self_: *const FilletSurf_InternalBuilder,
         Index: i32,
-    ) -> crate::OcctResult<*const HandleGeom2dCurve>;
-    /// **Source:** `FilletSurf_InternalBuilder.hxx`:99 - `FilletSurf_InternalBuilder::FirstParameter()`
+    ) -> crate::OcctResult<*const Handle_Geom2d_Curve>;
+    /// **Source:** `FilletSurf_InternalBuilder.hxx`:101 - `FilletSurf_InternalBuilder::FirstParameter()`
     pub fn FilletSurf_InternalBuilder_first_parameter(
         self_: *const FilletSurf_InternalBuilder,
     ) -> crate::OcctResult<f64>;
-    /// **Source:** `FilletSurf_InternalBuilder.hxx`:102 - `FilletSurf_InternalBuilder::LastParameter()`
+    /// **Source:** `FilletSurf_InternalBuilder.hxx`:104 - `FilletSurf_InternalBuilder::LastParameter()`
     pub fn FilletSurf_InternalBuilder_last_parameter(
         self_: *const FilletSurf_InternalBuilder,
     ) -> crate::OcctResult<f64>;
-    /// **Source:** `FilletSurf_InternalBuilder.hxx`:104 - `FilletSurf_InternalBuilder::StartSectionStatus()`
+    /// **Source:** `FilletSurf_InternalBuilder.hxx`:106 - `FilletSurf_InternalBuilder::StartSectionStatus()`
     pub fn FilletSurf_InternalBuilder_start_section_status(
         self_: *const FilletSurf_InternalBuilder,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `FilletSurf_InternalBuilder.hxx`:106 - `FilletSurf_InternalBuilder::EndSectionStatus()`
+    /// **Source:** `FilletSurf_InternalBuilder.hxx`:108 - `FilletSurf_InternalBuilder::EndSectionStatus()`
     pub fn FilletSurf_InternalBuilder_end_section_status(
         self_: *const FilletSurf_InternalBuilder,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `FilletSurf_InternalBuilder.hxx`:108 - `FilletSurf_InternalBuilder::Simulate()`
+    /// **Source:** `FilletSurf_InternalBuilder.hxx`:110 - `FilletSurf_InternalBuilder::Simulate()`
     pub fn FilletSurf_InternalBuilder_simulate(
         self_: *mut FilletSurf_InternalBuilder,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `FilletSurf_InternalBuilder.hxx`:110 - `FilletSurf_InternalBuilder::NbSection()`
+    /// **Source:** `FilletSurf_InternalBuilder.hxx`:112 - `FilletSurf_InternalBuilder::NbSection()`
     pub fn FilletSurf_InternalBuilder_nb_section(
         self_: *const FilletSurf_InternalBuilder,
         IndexSurf: i32,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `FilletSurf_InternalBuilder.hxx`:112 - `FilletSurf_InternalBuilder::Section()`
+    /// **Source:** `FilletSurf_InternalBuilder.hxx`:119 - `FilletSurf_InternalBuilder::Section()`
     pub fn FilletSurf_InternalBuilder_section(
         self_: *const FilletSurf_InternalBuilder,
         IndexSurf: i32,
         IndexSec: i32,
-        Circ: *mut HandleGeomTrimmedCurve,
-    ) -> *const std::ffi::c_char;
+    ) -> crate::OcctResult<*mut Handle_Geom_TrimmedCurve>;
     /// Upcast FilletSurf_InternalBuilder to ChFi3d_FilBuilder
     pub fn FilletSurf_InternalBuilder_as_ChFi3d_FilBuilder(
         self_: *const FilletSurf_InternalBuilder,
@@ -14057,33 +13695,33 @@ unsafe extern "C" {
     pub fn FilletSurf_InternalBuilder_as_ChFi3d_Builder_mut(
         self_: *mut FilletSurf_InternalBuilder,
     ) -> crate::OcctResult<*mut ChFi3d_Builder>;
-    /// Inherited: **Source:** `ChFi3d_FilBuilder.hxx`:54 - `ChFi3d_FilBuilder::SetFilletShape()`
+    /// Inherited: **Source:** `ChFi3d_FilBuilder.hxx`:58 - `ChFi3d_FilBuilder::SetFilletShape()`
     pub fn FilletSurf_InternalBuilder_inherited_SetFilletShape(
         self_: *mut FilletSurf_InternalBuilder,
         FShape: i32,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `ChFi3d_FilBuilder.hxx`:57 - `ChFi3d_FilBuilder::GetFilletShape()`
+    /// Inherited: **Source:** `ChFi3d_FilBuilder.hxx`:61 - `ChFi3d_FilBuilder::GetFilletShape()`
     pub fn FilletSurf_InternalBuilder_inherited_GetFilletShape(
         self_: *const FilletSurf_InternalBuilder,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `ChFi3d_FilBuilder.hxx`:68 - `ChFi3d_FilBuilder::SetRadius()`
+    /// Inherited: **Source:** `ChFi3d_FilBuilder.hxx`:72 - `ChFi3d_FilBuilder::SetRadius()`
     pub fn FilletSurf_InternalBuilder_inherited_SetRadius(
         self_: *mut FilletSurf_InternalBuilder,
-        C: *const HandleLawFunction,
+        C: *const Handle_Law_Function,
         IC: i32,
         IinC: i32,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `ChFi3d_FilBuilder.hxx`:73 - `ChFi3d_FilBuilder::IsConstant()`
+    /// Inherited: **Source:** `ChFi3d_FilBuilder.hxx`:75 - `ChFi3d_FilBuilder::IsConstant()`
     pub fn FilletSurf_InternalBuilder_inherited_IsConstant(
         self_: *mut FilletSurf_InternalBuilder,
         IC: i32,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `ChFi3d_FilBuilder.hxx`:77 - `ChFi3d_FilBuilder::Radius()`
+    /// Inherited: **Source:** `ChFi3d_FilBuilder.hxx`:79 - `ChFi3d_FilBuilder::Radius()`
     pub fn FilletSurf_InternalBuilder_inherited_Radius(
         self_: *mut FilletSurf_InternalBuilder,
         IC: i32,
     ) -> crate::OcctResult<f64>;
-    /// Inherited: **Source:** `ChFi3d_FilBuilder.hxx`:80 - `ChFi3d_FilBuilder::ResetContour()`
+    /// Inherited: **Source:** `ChFi3d_FilBuilder.hxx`:82 - `ChFi3d_FilBuilder::ResetContour()`
     pub fn FilletSurf_InternalBuilder_inherited_ResetContour(
         self_: *mut FilletSurf_InternalBuilder,
         IC: i32,
@@ -14094,7 +13732,7 @@ unsafe extern "C" {
         IC: i32,
         E: *const TopoDS_Edge,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `ChFi3d_FilBuilder.hxx`:114 - `ChFi3d_FilBuilder::GetBounds()`
+    /// Inherited: **Source:** `ChFi3d_FilBuilder.hxx`:110 - `ChFi3d_FilBuilder::GetBounds()`
     pub fn FilletSurf_InternalBuilder_inherited_GetBounds(
         self_: *mut FilletSurf_InternalBuilder,
         IC: i32,
@@ -14102,31 +13740,31 @@ unsafe extern "C" {
         First: *mut f64,
         Last: *mut f64,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `ChFi3d_FilBuilder.hxx`:122 - `ChFi3d_FilBuilder::GetLaw()`
+    /// Inherited: **Source:** `ChFi3d_FilBuilder.hxx`:115 - `ChFi3d_FilBuilder::GetLaw()`
     pub fn FilletSurf_InternalBuilder_inherited_GetLaw(
         self_: *mut FilletSurf_InternalBuilder,
         IC: i32,
         E: *const TopoDS_Edge,
-    ) -> crate::OcctResult<*mut HandleLawFunction>;
-    /// Inherited: **Source:** `ChFi3d_FilBuilder.hxx`:126 - `ChFi3d_FilBuilder::SetLaw()`
+    ) -> crate::OcctResult<*mut Handle_Law_Function>;
+    /// Inherited: **Source:** `ChFi3d_FilBuilder.hxx`:119 - `ChFi3d_FilBuilder::SetLaw()`
     pub fn FilletSurf_InternalBuilder_inherited_SetLaw(
         self_: *mut FilletSurf_InternalBuilder,
         IC: i32,
         E: *const TopoDS_Edge,
-        L: *const HandleLawFunction,
+        L: *const Handle_Law_Function,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `ChFi3d_FilBuilder.hxx`:132 - `ChFi3d_FilBuilder::NbSurf()`
+    /// Inherited: **Source:** `ChFi3d_FilBuilder.hxx`:125 - `ChFi3d_FilBuilder::NbSurf()`
     pub fn FilletSurf_InternalBuilder_inherited_NbSurf(
         self_: *const FilletSurf_InternalBuilder,
         IC: i32,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `ChFi3d_FilBuilder.hxx`:134 - `ChFi3d_FilBuilder::Sect()`
+    /// Inherited: **Source:** `ChFi3d_FilBuilder.hxx`:127 - `ChFi3d_FilBuilder::Sect()`
     pub fn FilletSurf_InternalBuilder_inherited_Sect(
         self_: *const FilletSurf_InternalBuilder,
         IC: i32,
         IS: i32,
-    ) -> crate::OcctResult<*mut HandleChFiDSSecHArray1>;
-    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:71 - `ChFi3d_Builder::SetParams()`
+    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_ChFiDS_CircSection>;
+    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:73 - `ChFi3d_Builder::SetParams()`
     pub fn FilletSurf_InternalBuilder_inherited_SetParams(
         self_: *mut FilletSurf_InternalBuilder,
         Tang: f64,
@@ -14136,53 +13774,53 @@ unsafe extern "C" {
         TolApp2d: f64,
         Fleche: f64,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:78 - `ChFi3d_Builder::SetContinuity()`
+    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:80 - `ChFi3d_Builder::SetContinuity()`
     pub fn FilletSurf_InternalBuilder_inherited_SetContinuity(
         self_: *mut FilletSurf_InternalBuilder,
         InternalContinuity: i32,
         AngularTolerance: f64,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:82 - `ChFi3d_Builder::Remove()`
+    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:84 - `ChFi3d_Builder::Remove()`
     pub fn FilletSurf_InternalBuilder_inherited_Remove(
         self_: *mut FilletSurf_InternalBuilder,
         E: *const TopoDS_Edge,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:86 - `ChFi3d_Builder::Contains()`
+    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:88 - `ChFi3d_Builder::Contains()`
     pub fn FilletSurf_InternalBuilder_inherited_Contains(
         self_: *const FilletSurf_InternalBuilder,
         E: *const TopoDS_Edge,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:96 - `ChFi3d_Builder::NbElements()`
+    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:97 - `ChFi3d_Builder::NbElements()`
     pub fn FilletSurf_InternalBuilder_inherited_NbElements(
         self_: *const FilletSurf_InternalBuilder,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:100 - `ChFi3d_Builder::Value()`
+    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:101 - `ChFi3d_Builder::Value()`
     pub fn FilletSurf_InternalBuilder_inherited_Value(
         self_: *const FilletSurf_InternalBuilder,
         I: i32,
-    ) -> crate::OcctResult<*mut HandleChFiDSSpine>;
-    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:103 - `ChFi3d_Builder::Length()`
+    ) -> crate::OcctResult<*mut Handle_ChFiDS_Spine>;
+    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:104 - `ChFi3d_Builder::Length()`
     pub fn FilletSurf_InternalBuilder_inherited_Length(
         self_: *const FilletSurf_InternalBuilder,
         IC: i32,
     ) -> crate::OcctResult<f64>;
-    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:107 - `ChFi3d_Builder::FirstVertex()`
+    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:108 - `ChFi3d_Builder::FirstVertex()`
     pub fn FilletSurf_InternalBuilder_inherited_FirstVertex(
         self_: *const FilletSurf_InternalBuilder,
         IC: i32,
     ) -> crate::OcctResult<*mut TopoDS_Vertex>;
-    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:111 - `ChFi3d_Builder::LastVertex()`
+    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:112 - `ChFi3d_Builder::LastVertex()`
     pub fn FilletSurf_InternalBuilder_inherited_LastVertex(
         self_: *const FilletSurf_InternalBuilder,
         IC: i32,
     ) -> crate::OcctResult<*mut TopoDS_Vertex>;
-    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:115 - `ChFi3d_Builder::Abscissa()`
+    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:116 - `ChFi3d_Builder::Abscissa()`
     pub fn FilletSurf_InternalBuilder_inherited_Abscissa(
         self_: *const FilletSurf_InternalBuilder,
         IC: i32,
         V: *const TopoDS_Vertex,
     ) -> crate::OcctResult<f64>;
-    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:119 - `ChFi3d_Builder::RelativeAbscissa()`
+    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:120 - `ChFi3d_Builder::RelativeAbscissa()`
     pub fn FilletSurf_InternalBuilder_inherited_RelativeAbscissa(
         self_: *const FilletSurf_InternalBuilder,
         IC: i32,
@@ -14229,52 +13867,38 @@ unsafe extern "C" {
         self_: *const FilletSurf_InternalBuilder,
         IC: i32,
         IS: i32,
-    ) -> crate::OcctResult<*mut HandleGeomSurface>;
-    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:160 - `ChFi3d_Builder::NbFaultyVertices()`
+    ) -> crate::OcctResult<*mut Handle_Geom_Surface>;
+    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:159 - `ChFi3d_Builder::NbFaultyVertices()`
     pub fn FilletSurf_InternalBuilder_inherited_NbFaultyVertices(
         self_: *const FilletSurf_InternalBuilder,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:163 - `ChFi3d_Builder::FaultyVertex()`
+    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:162 - `ChFi3d_Builder::FaultyVertex()`
     pub fn FilletSurf_InternalBuilder_inherited_FaultyVertex(
         self_: *const FilletSurf_InternalBuilder,
         IV: i32,
     ) -> crate::OcctResult<*mut TopoDS_Vertex>;
-    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:166 - `ChFi3d_Builder::HasResult()`
+    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:165 - `ChFi3d_Builder::HasResult()`
     pub fn FilletSurf_InternalBuilder_inherited_HasResult(
         self_: *const FilletSurf_InternalBuilder,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:170 - `ChFi3d_Builder::BadShape()`
+    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:169 - `ChFi3d_Builder::BadShape()`
     pub fn FilletSurf_InternalBuilder_inherited_BadShape(
         self_: *const FilletSurf_InternalBuilder,
     ) -> crate::OcctResult<*mut TopoDS_Shape>;
-    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:174 - `ChFi3d_Builder::StripeStatus()`
+    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:173 - `ChFi3d_Builder::StripeStatus()`
     pub fn FilletSurf_InternalBuilder_inherited_StripeStatus(
         self_: *const FilletSurf_InternalBuilder,
         IC: i32,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:178 - `ChFi3d_Builder::Reset()`
+    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:177 - `ChFi3d_Builder::Reset()`
     pub fn FilletSurf_InternalBuilder_inherited_Reset(
         self_: *mut FilletSurf_InternalBuilder,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:181 - `ChFi3d_Builder::Builder()`
+    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:180 - `ChFi3d_Builder::Builder()`
     pub fn FilletSurf_InternalBuilder_inherited_Builder(
         self_: *const FilletSurf_InternalBuilder,
-    ) -> crate::OcctResult<*mut HandleTopOpeBRepBuildHBuilder>;
-    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:186 - `ChFi3d_Builder::SplitKPart()`
-    pub fn FilletSurf_InternalBuilder_inherited_SplitKPart(
-        self_: *mut FilletSurf_InternalBuilder,
-        Data: *const HandleChFiDSSurfData,
-        SetData: *mut ChFiDS_SequenceOfSurfData,
-        Spine: *const HandleChFiDSSpine,
-        Iedge: i32,
-        S1: *const HandleAdaptor3dSurface,
-        I1: *const HandleAdaptor3dTopolTool,
-        S2: *const HandleAdaptor3dSurface,
-        I2: *const HandleAdaptor3dTopolTool,
-        Intf: *mut bool,
-        Intl: *mut bool,
-    ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:197 - `ChFi3d_Builder::PerformTwoCornerbyInter()`
+    ) -> crate::OcctResult<*mut Handle_TopOpeBRepBuild_HBuilder>;
+    /// Inherited: **Source:** `ChFi3d_Builder.hxx`:196 - `ChFi3d_Builder::PerformTwoCornerbyInter()`
     pub fn FilletSurf_InternalBuilder_inherited_PerformTwoCornerbyInter(
         self_: *mut FilletSurf_InternalBuilder,
         Index: i32,
@@ -14282,34 +13906,34 @@ unsafe extern "C" {
 
     // Free functions
     /// **Source:** `BlendFunc.hxx`:45 - `BlendFunc::Knots`
-    pub fn BlendFunc_knots_sectionshape_array1ofreal(
+    pub fn BlendFunc_knots_sectionshape_arr1_double(
         SectShape: i32,
-        TKnots: *mut TColStd_Array1OfReal,
+        TKnots: *mut NCollection_Array1_double,
     ) -> *const std::ffi::c_char;
     /// **Source:** `BlendFunc.hxx`:48 - `BlendFunc::Mults`
-    pub fn BlendFunc_mults_sectionshape_array1ofinteger(
+    pub fn BlendFunc_mults_sectionshape_arr1_int(
         SectShape: i32,
-        TMults: *mut TColStd_Array1OfInteger,
+        TMults: *mut NCollection_Array1_int,
     ) -> *const std::ffi::c_char;
     /// **Source:** `BlendFunc.hxx`:51 - `BlendFunc::GetMinimalWeights`
-    pub fn BlendFunc_get_minimal_weights_sectionshape_parameterisationtype_real2_array1ofreal(
+    pub fn BlendFunc_get_minimal_weights_sectionshape_parameterisationtype_real2_arr1_double(
         SectShape: i32,
         TConv: i32,
         AngleMin: f64,
         AngleMax: f64,
-        Weigths: *mut TColStd_Array1OfReal,
+        Weigths: *mut NCollection_Array1_double,
     ) -> *const std::ffi::c_char;
     /// **Source:** `BlendFunc.hxx`:58 - `BlendFunc::NextShape`
     pub fn BlendFunc_next_shape(S: i32) -> crate::OcctResult<i32>;
     /// **Source:** `BlendFunc.hxx`:60 - `BlendFunc::ComputeNormal`
     pub fn BlendFunc_compute_normal(
-        Surf: *const HandleAdaptor3dSurface,
+        Surf: *const Handle_Adaptor3d_Surface,
         p2d: *const gp_Pnt2d,
         Normal: *mut gp_Vec,
     ) -> crate::OcctResult<bool>;
     /// **Source:** `BlendFunc.hxx`:64 - `BlendFunc::ComputeDNormal`
     pub fn BlendFunc_compute_d_normal(
-        Surf: *const HandleAdaptor3dSurface,
+        Surf: *const Handle_Adaptor3d_Surface,
         p2d: *const gp_Pnt2d,
         Normal: *mut gp_Vec,
         DNu: *mut gp_Vec,
@@ -14336,14 +13960,14 @@ unsafe extern "C" {
         SinTol: f64,
         CorrectPoint: bool,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `ChFi3d.hxx`:47 - `ChFi3d::IsTangentFaces`
+    /// **Source:** `ChFi3d.hxx`:46 - `ChFi3d::IsTangentFaces`
     pub fn ChFi3d_is_tangent_faces(
         theEdge: *const TopoDS_Edge,
         theFace1: *const TopoDS_Face,
         theFace2: *const TopoDS_Face,
         Order: i32,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `ChFi3d.hxx`:86 - `ChFi3d::SameSide`
+    /// **Source:** `ChFi3d.hxx`:85 - `ChFi3d::SameSide`
     pub fn ChFi3d_same_side(
         Or: i32,
         OrSave1: i32,
@@ -14351,10 +13975,4 @@ unsafe extern "C" {
         OrFace1: i32,
         OrFace2: i32,
     ) -> crate::OcctResult<bool>;
-
-    // Nested type & typedef type destructors
-    pub fn ChFiDS_ListOfHElSpine_destructor(self_: *mut ChFiDS_ListOfHElSpine);
-    pub fn ChFiDS_ListOfStripe_destructor(self_: *mut ChFiDS_ListOfStripe);
-    pub fn ChFiDS_SecArray1_destructor(self_: *mut ChFiDS_SecArray1);
-    pub fn ChFiDS_SequenceOfSurfData_destructor(self_: *mut ChFiDS_SequenceOfSurfData);
 }

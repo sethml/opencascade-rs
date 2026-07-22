@@ -10,13 +10,10 @@
 #include <PCDM_RetrievalDriver.hxx>
 #include <PCDM_StorageDriver.hxx>
 #include <PCDM_Writer.hxx>
-#include <Standard_GUID.hxx>
 #include <Standard_Handle.hxx>
 #include <Standard_Type.hxx>
-#include <TCollection_ExtendedString.hxx>
 #include <TDF_Attribute.hxx>
 #include <TDocStd_Application.hxx>
-#include <TopLoc_Location.hxx>
 #include <TopTools_LocationSet.hxx>
 #include <XmlDrivers_DocumentRetrievalDriver.hxx>
 #include <XmlDrivers_DocumentStorageDriver.hxx>
@@ -47,134 +44,134 @@
 #include <XmlXCAFDrivers_DocumentStorageDriver.hxx>
 
 // Handle type aliases
-typedef opencascade::handle<Message_Messenger> HandleMessageMessenger;
-typedef opencascade::handle<PCDM_Reader> HandlePCDMReader;
-typedef opencascade::handle<PCDM_RetrievalDriver> HandlePCDMRetrievalDriver;
-typedef opencascade::handle<PCDM_StorageDriver> HandlePCDMStorageDriver;
-typedef opencascade::handle<PCDM_Writer> HandlePCDMWriter;
-typedef opencascade::handle<Standard_Transient> HandleStandardTransient;
-typedef opencascade::handle<Standard_Type> HandleStandardType;
-typedef opencascade::handle<TDF_Attribute> HandleTDFAttribute;
-typedef opencascade::handle<XmlDrivers_DocumentRetrievalDriver> HandleXmlDriversDocumentRetrievalDriver;
-typedef opencascade::handle<XmlDrivers_DocumentStorageDriver> HandleXmlDriversDocumentStorageDriver;
-typedef opencascade::handle<XmlLDrivers_DocumentRetrievalDriver> HandleXmlLDriversDocumentRetrievalDriver;
-typedef opencascade::handle<XmlLDrivers_DocumentStorageDriver> HandleXmlLDriversDocumentStorageDriver;
-typedef opencascade::handle<XmlMDF_ADriver> HandleXmlMDFADriver;
-typedef opencascade::handle<XmlMDF_ADriverTable> HandleXmlMDFADriverTable;
-typedef opencascade::handle<XmlMXCAFDoc_AssemblyItemRefDriver> HandleXmlMXCAFDocAssemblyItemRefDriver;
-typedef opencascade::handle<XmlMXCAFDoc_CentroidDriver> HandleXmlMXCAFDocCentroidDriver;
-typedef opencascade::handle<XmlMXCAFDoc_ColorDriver> HandleXmlMXCAFDocColorDriver;
-typedef opencascade::handle<XmlMXCAFDoc_DatumDriver> HandleXmlMXCAFDocDatumDriver;
-typedef opencascade::handle<XmlMXCAFDoc_DimTolDriver> HandleXmlMXCAFDocDimTolDriver;
-typedef opencascade::handle<XmlMXCAFDoc_GraphNodeDriver> HandleXmlMXCAFDocGraphNodeDriver;
-typedef opencascade::handle<XmlMXCAFDoc_LengthUnitDriver> HandleXmlMXCAFDocLengthUnitDriver;
-typedef opencascade::handle<XmlMXCAFDoc_LocationDriver> HandleXmlMXCAFDocLocationDriver;
-typedef opencascade::handle<XmlMXCAFDoc_MaterialDriver> HandleXmlMXCAFDocMaterialDriver;
-typedef opencascade::handle<XmlMXCAFDoc_NoteBinDataDriver> HandleXmlMXCAFDocNoteBinDataDriver;
-typedef opencascade::handle<XmlMXCAFDoc_NoteCommentDriver> HandleXmlMXCAFDocNoteCommentDriver;
-typedef opencascade::handle<XmlMXCAFDoc_NoteDriver> HandleXmlMXCAFDocNoteDriver;
-typedef opencascade::handle<XmlMXCAFDoc_VisMaterialDriver> HandleXmlMXCAFDocVisMaterialDriver;
-typedef opencascade::handle<XmlMXCAFDoc_VisMaterialToolDriver> HandleXmlMXCAFDocVisMaterialToolDriver;
-typedef opencascade::handle<XmlXCAFDrivers_DocumentRetrievalDriver> HandleXmlXCAFDriversDocumentRetrievalDriver;
-typedef opencascade::handle<XmlXCAFDrivers_DocumentStorageDriver> HandleXmlXCAFDriversDocumentStorageDriver;
+typedef opencascade::handle<Message_Messenger> Handle_Message_Messenger;
+typedef opencascade::handle<PCDM_Reader> Handle_PCDM_Reader;
+typedef opencascade::handle<PCDM_RetrievalDriver> Handle_PCDM_RetrievalDriver;
+typedef opencascade::handle<PCDM_StorageDriver> Handle_PCDM_StorageDriver;
+typedef opencascade::handle<PCDM_Writer> Handle_PCDM_Writer;
+typedef opencascade::handle<Standard_Transient> Handle_Standard_Transient;
+typedef opencascade::handle<Standard_Type> Handle_Standard_Type;
+typedef opencascade::handle<TDF_Attribute> Handle_TDF_Attribute;
+typedef opencascade::handle<XmlDrivers_DocumentRetrievalDriver> Handle_XmlDrivers_DocumentRetrievalDriver;
+typedef opencascade::handle<XmlDrivers_DocumentStorageDriver> Handle_XmlDrivers_DocumentStorageDriver;
+typedef opencascade::handle<XmlLDrivers_DocumentRetrievalDriver> Handle_XmlLDrivers_DocumentRetrievalDriver;
+typedef opencascade::handle<XmlLDrivers_DocumentStorageDriver> Handle_XmlLDrivers_DocumentStorageDriver;
+typedef opencascade::handle<XmlMDF_ADriver> Handle_XmlMDF_ADriver;
+typedef opencascade::handle<XmlMDF_ADriverTable> Handle_XmlMDF_ADriverTable;
+typedef opencascade::handle<XmlMXCAFDoc_AssemblyItemRefDriver> Handle_XmlMXCAFDoc_AssemblyItemRefDriver;
+typedef opencascade::handle<XmlMXCAFDoc_CentroidDriver> Handle_XmlMXCAFDoc_CentroidDriver;
+typedef opencascade::handle<XmlMXCAFDoc_ColorDriver> Handle_XmlMXCAFDoc_ColorDriver;
+typedef opencascade::handle<XmlMXCAFDoc_DatumDriver> Handle_XmlMXCAFDoc_DatumDriver;
+typedef opencascade::handle<XmlMXCAFDoc_DimTolDriver> Handle_XmlMXCAFDoc_DimTolDriver;
+typedef opencascade::handle<XmlMXCAFDoc_GraphNodeDriver> Handle_XmlMXCAFDoc_GraphNodeDriver;
+typedef opencascade::handle<XmlMXCAFDoc_LengthUnitDriver> Handle_XmlMXCAFDoc_LengthUnitDriver;
+typedef opencascade::handle<XmlMXCAFDoc_LocationDriver> Handle_XmlMXCAFDoc_LocationDriver;
+typedef opencascade::handle<XmlMXCAFDoc_MaterialDriver> Handle_XmlMXCAFDoc_MaterialDriver;
+typedef opencascade::handle<XmlMXCAFDoc_NoteBinDataDriver> Handle_XmlMXCAFDoc_NoteBinDataDriver;
+typedef opencascade::handle<XmlMXCAFDoc_NoteCommentDriver> Handle_XmlMXCAFDoc_NoteCommentDriver;
+typedef opencascade::handle<XmlMXCAFDoc_NoteDriver> Handle_XmlMXCAFDoc_NoteDriver;
+typedef opencascade::handle<XmlMXCAFDoc_VisMaterialDriver> Handle_XmlMXCAFDoc_VisMaterialDriver;
+typedef opencascade::handle<XmlMXCAFDoc_VisMaterialToolDriver> Handle_XmlMXCAFDoc_VisMaterialToolDriver;
+typedef opencascade::handle<XmlXCAFDrivers_DocumentRetrievalDriver> Handle_XmlXCAFDrivers_DocumentRetrievalDriver;
+typedef opencascade::handle<XmlXCAFDrivers_DocumentStorageDriver> Handle_XmlXCAFDrivers_DocumentStorageDriver;
 
 // Handle type destructors, clone, and is_null functions
-extern "C" void HandleXmlMXCAFDocAssemblyItemRefDriver_destructor(HandleXmlMXCAFDocAssemblyItemRefDriver* self_) { delete self_; }
-extern "C" OcctResult<HandleXmlMXCAFDocAssemblyItemRefDriver*> HandleXmlMXCAFDocAssemblyItemRefDriver_clone(const HandleXmlMXCAFDocAssemblyItemRefDriver* self_) {
-    try { return {new HandleXmlMXCAFDocAssemblyItemRefDriver(*self_), nullptr}; }
+extern "C" void Handle_XmlMXCAFDoc_AssemblyItemRefDriver_destructor(Handle_XmlMXCAFDoc_AssemblyItemRefDriver* self_) { delete self_; }
+extern "C" OcctResult<Handle_XmlMXCAFDoc_AssemblyItemRefDriver*> Handle_XmlMXCAFDoc_AssemblyItemRefDriver_clone(const Handle_XmlMXCAFDoc_AssemblyItemRefDriver* self_) {
+    try { return {new Handle_XmlMXCAFDoc_AssemblyItemRefDriver(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleXmlMXCAFDocAssemblyItemRefDriver_is_null(const HandleXmlMXCAFDocAssemblyItemRefDriver* self_) { return self_->IsNull(); }
-extern "C" void HandleXmlMXCAFDocCentroidDriver_destructor(HandleXmlMXCAFDocCentroidDriver* self_) { delete self_; }
-extern "C" OcctResult<HandleXmlMXCAFDocCentroidDriver*> HandleXmlMXCAFDocCentroidDriver_clone(const HandleXmlMXCAFDocCentroidDriver* self_) {
-    try { return {new HandleXmlMXCAFDocCentroidDriver(*self_), nullptr}; }
+extern "C" bool Handle_XmlMXCAFDoc_AssemblyItemRefDriver_is_null(const Handle_XmlMXCAFDoc_AssemblyItemRefDriver* self_) { return self_->IsNull(); }
+extern "C" void Handle_XmlMXCAFDoc_CentroidDriver_destructor(Handle_XmlMXCAFDoc_CentroidDriver* self_) { delete self_; }
+extern "C" OcctResult<Handle_XmlMXCAFDoc_CentroidDriver*> Handle_XmlMXCAFDoc_CentroidDriver_clone(const Handle_XmlMXCAFDoc_CentroidDriver* self_) {
+    try { return {new Handle_XmlMXCAFDoc_CentroidDriver(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleXmlMXCAFDocCentroidDriver_is_null(const HandleXmlMXCAFDocCentroidDriver* self_) { return self_->IsNull(); }
-extern "C" void HandleXmlMXCAFDocColorDriver_destructor(HandleXmlMXCAFDocColorDriver* self_) { delete self_; }
-extern "C" OcctResult<HandleXmlMXCAFDocColorDriver*> HandleXmlMXCAFDocColorDriver_clone(const HandleXmlMXCAFDocColorDriver* self_) {
-    try { return {new HandleXmlMXCAFDocColorDriver(*self_), nullptr}; }
+extern "C" bool Handle_XmlMXCAFDoc_CentroidDriver_is_null(const Handle_XmlMXCAFDoc_CentroidDriver* self_) { return self_->IsNull(); }
+extern "C" void Handle_XmlMXCAFDoc_ColorDriver_destructor(Handle_XmlMXCAFDoc_ColorDriver* self_) { delete self_; }
+extern "C" OcctResult<Handle_XmlMXCAFDoc_ColorDriver*> Handle_XmlMXCAFDoc_ColorDriver_clone(const Handle_XmlMXCAFDoc_ColorDriver* self_) {
+    try { return {new Handle_XmlMXCAFDoc_ColorDriver(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleXmlMXCAFDocColorDriver_is_null(const HandleXmlMXCAFDocColorDriver* self_) { return self_->IsNull(); }
-extern "C" void HandleXmlMXCAFDocDatumDriver_destructor(HandleXmlMXCAFDocDatumDriver* self_) { delete self_; }
-extern "C" OcctResult<HandleXmlMXCAFDocDatumDriver*> HandleXmlMXCAFDocDatumDriver_clone(const HandleXmlMXCAFDocDatumDriver* self_) {
-    try { return {new HandleXmlMXCAFDocDatumDriver(*self_), nullptr}; }
+extern "C" bool Handle_XmlMXCAFDoc_ColorDriver_is_null(const Handle_XmlMXCAFDoc_ColorDriver* self_) { return self_->IsNull(); }
+extern "C" void Handle_XmlMXCAFDoc_DatumDriver_destructor(Handle_XmlMXCAFDoc_DatumDriver* self_) { delete self_; }
+extern "C" OcctResult<Handle_XmlMXCAFDoc_DatumDriver*> Handle_XmlMXCAFDoc_DatumDriver_clone(const Handle_XmlMXCAFDoc_DatumDriver* self_) {
+    try { return {new Handle_XmlMXCAFDoc_DatumDriver(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleXmlMXCAFDocDatumDriver_is_null(const HandleXmlMXCAFDocDatumDriver* self_) { return self_->IsNull(); }
-extern "C" void HandleXmlMXCAFDocDimTolDriver_destructor(HandleXmlMXCAFDocDimTolDriver* self_) { delete self_; }
-extern "C" OcctResult<HandleXmlMXCAFDocDimTolDriver*> HandleXmlMXCAFDocDimTolDriver_clone(const HandleXmlMXCAFDocDimTolDriver* self_) {
-    try { return {new HandleXmlMXCAFDocDimTolDriver(*self_), nullptr}; }
+extern "C" bool Handle_XmlMXCAFDoc_DatumDriver_is_null(const Handle_XmlMXCAFDoc_DatumDriver* self_) { return self_->IsNull(); }
+extern "C" void Handle_XmlMXCAFDoc_DimTolDriver_destructor(Handle_XmlMXCAFDoc_DimTolDriver* self_) { delete self_; }
+extern "C" OcctResult<Handle_XmlMXCAFDoc_DimTolDriver*> Handle_XmlMXCAFDoc_DimTolDriver_clone(const Handle_XmlMXCAFDoc_DimTolDriver* self_) {
+    try { return {new Handle_XmlMXCAFDoc_DimTolDriver(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleXmlMXCAFDocDimTolDriver_is_null(const HandleXmlMXCAFDocDimTolDriver* self_) { return self_->IsNull(); }
-extern "C" void HandleXmlMXCAFDocGraphNodeDriver_destructor(HandleXmlMXCAFDocGraphNodeDriver* self_) { delete self_; }
-extern "C" OcctResult<HandleXmlMXCAFDocGraphNodeDriver*> HandleXmlMXCAFDocGraphNodeDriver_clone(const HandleXmlMXCAFDocGraphNodeDriver* self_) {
-    try { return {new HandleXmlMXCAFDocGraphNodeDriver(*self_), nullptr}; }
+extern "C" bool Handle_XmlMXCAFDoc_DimTolDriver_is_null(const Handle_XmlMXCAFDoc_DimTolDriver* self_) { return self_->IsNull(); }
+extern "C" void Handle_XmlMXCAFDoc_GraphNodeDriver_destructor(Handle_XmlMXCAFDoc_GraphNodeDriver* self_) { delete self_; }
+extern "C" OcctResult<Handle_XmlMXCAFDoc_GraphNodeDriver*> Handle_XmlMXCAFDoc_GraphNodeDriver_clone(const Handle_XmlMXCAFDoc_GraphNodeDriver* self_) {
+    try { return {new Handle_XmlMXCAFDoc_GraphNodeDriver(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleXmlMXCAFDocGraphNodeDriver_is_null(const HandleXmlMXCAFDocGraphNodeDriver* self_) { return self_->IsNull(); }
-extern "C" void HandleXmlMXCAFDocLengthUnitDriver_destructor(HandleXmlMXCAFDocLengthUnitDriver* self_) { delete self_; }
-extern "C" OcctResult<HandleXmlMXCAFDocLengthUnitDriver*> HandleXmlMXCAFDocLengthUnitDriver_clone(const HandleXmlMXCAFDocLengthUnitDriver* self_) {
-    try { return {new HandleXmlMXCAFDocLengthUnitDriver(*self_), nullptr}; }
+extern "C" bool Handle_XmlMXCAFDoc_GraphNodeDriver_is_null(const Handle_XmlMXCAFDoc_GraphNodeDriver* self_) { return self_->IsNull(); }
+extern "C" void Handle_XmlMXCAFDoc_LengthUnitDriver_destructor(Handle_XmlMXCAFDoc_LengthUnitDriver* self_) { delete self_; }
+extern "C" OcctResult<Handle_XmlMXCAFDoc_LengthUnitDriver*> Handle_XmlMXCAFDoc_LengthUnitDriver_clone(const Handle_XmlMXCAFDoc_LengthUnitDriver* self_) {
+    try { return {new Handle_XmlMXCAFDoc_LengthUnitDriver(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleXmlMXCAFDocLengthUnitDriver_is_null(const HandleXmlMXCAFDocLengthUnitDriver* self_) { return self_->IsNull(); }
-extern "C" void HandleXmlMXCAFDocLocationDriver_destructor(HandleXmlMXCAFDocLocationDriver* self_) { delete self_; }
-extern "C" OcctResult<HandleXmlMXCAFDocLocationDriver*> HandleXmlMXCAFDocLocationDriver_clone(const HandleXmlMXCAFDocLocationDriver* self_) {
-    try { return {new HandleXmlMXCAFDocLocationDriver(*self_), nullptr}; }
+extern "C" bool Handle_XmlMXCAFDoc_LengthUnitDriver_is_null(const Handle_XmlMXCAFDoc_LengthUnitDriver* self_) { return self_->IsNull(); }
+extern "C" void Handle_XmlMXCAFDoc_LocationDriver_destructor(Handle_XmlMXCAFDoc_LocationDriver* self_) { delete self_; }
+extern "C" OcctResult<Handle_XmlMXCAFDoc_LocationDriver*> Handle_XmlMXCAFDoc_LocationDriver_clone(const Handle_XmlMXCAFDoc_LocationDriver* self_) {
+    try { return {new Handle_XmlMXCAFDoc_LocationDriver(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleXmlMXCAFDocLocationDriver_is_null(const HandleXmlMXCAFDocLocationDriver* self_) { return self_->IsNull(); }
-extern "C" void HandleXmlMXCAFDocMaterialDriver_destructor(HandleXmlMXCAFDocMaterialDriver* self_) { delete self_; }
-extern "C" OcctResult<HandleXmlMXCAFDocMaterialDriver*> HandleXmlMXCAFDocMaterialDriver_clone(const HandleXmlMXCAFDocMaterialDriver* self_) {
-    try { return {new HandleXmlMXCAFDocMaterialDriver(*self_), nullptr}; }
+extern "C" bool Handle_XmlMXCAFDoc_LocationDriver_is_null(const Handle_XmlMXCAFDoc_LocationDriver* self_) { return self_->IsNull(); }
+extern "C" void Handle_XmlMXCAFDoc_MaterialDriver_destructor(Handle_XmlMXCAFDoc_MaterialDriver* self_) { delete self_; }
+extern "C" OcctResult<Handle_XmlMXCAFDoc_MaterialDriver*> Handle_XmlMXCAFDoc_MaterialDriver_clone(const Handle_XmlMXCAFDoc_MaterialDriver* self_) {
+    try { return {new Handle_XmlMXCAFDoc_MaterialDriver(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleXmlMXCAFDocMaterialDriver_is_null(const HandleXmlMXCAFDocMaterialDriver* self_) { return self_->IsNull(); }
-extern "C" void HandleXmlMXCAFDocNoteBinDataDriver_destructor(HandleXmlMXCAFDocNoteBinDataDriver* self_) { delete self_; }
-extern "C" OcctResult<HandleXmlMXCAFDocNoteBinDataDriver*> HandleXmlMXCAFDocNoteBinDataDriver_clone(const HandleXmlMXCAFDocNoteBinDataDriver* self_) {
-    try { return {new HandleXmlMXCAFDocNoteBinDataDriver(*self_), nullptr}; }
+extern "C" bool Handle_XmlMXCAFDoc_MaterialDriver_is_null(const Handle_XmlMXCAFDoc_MaterialDriver* self_) { return self_->IsNull(); }
+extern "C" void Handle_XmlMXCAFDoc_NoteBinDataDriver_destructor(Handle_XmlMXCAFDoc_NoteBinDataDriver* self_) { delete self_; }
+extern "C" OcctResult<Handle_XmlMXCAFDoc_NoteBinDataDriver*> Handle_XmlMXCAFDoc_NoteBinDataDriver_clone(const Handle_XmlMXCAFDoc_NoteBinDataDriver* self_) {
+    try { return {new Handle_XmlMXCAFDoc_NoteBinDataDriver(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleXmlMXCAFDocNoteBinDataDriver_is_null(const HandleXmlMXCAFDocNoteBinDataDriver* self_) { return self_->IsNull(); }
-extern "C" void HandleXmlMXCAFDocNoteCommentDriver_destructor(HandleXmlMXCAFDocNoteCommentDriver* self_) { delete self_; }
-extern "C" OcctResult<HandleXmlMXCAFDocNoteCommentDriver*> HandleXmlMXCAFDocNoteCommentDriver_clone(const HandleXmlMXCAFDocNoteCommentDriver* self_) {
-    try { return {new HandleXmlMXCAFDocNoteCommentDriver(*self_), nullptr}; }
+extern "C" bool Handle_XmlMXCAFDoc_NoteBinDataDriver_is_null(const Handle_XmlMXCAFDoc_NoteBinDataDriver* self_) { return self_->IsNull(); }
+extern "C" void Handle_XmlMXCAFDoc_NoteCommentDriver_destructor(Handle_XmlMXCAFDoc_NoteCommentDriver* self_) { delete self_; }
+extern "C" OcctResult<Handle_XmlMXCAFDoc_NoteCommentDriver*> Handle_XmlMXCAFDoc_NoteCommentDriver_clone(const Handle_XmlMXCAFDoc_NoteCommentDriver* self_) {
+    try { return {new Handle_XmlMXCAFDoc_NoteCommentDriver(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleXmlMXCAFDocNoteCommentDriver_is_null(const HandleXmlMXCAFDocNoteCommentDriver* self_) { return self_->IsNull(); }
-extern "C" void HandleXmlMXCAFDocNoteDriver_destructor(HandleXmlMXCAFDocNoteDriver* self_) { delete self_; }
-extern "C" OcctResult<HandleXmlMXCAFDocNoteDriver*> HandleXmlMXCAFDocNoteDriver_clone(const HandleXmlMXCAFDocNoteDriver* self_) {
-    try { return {new HandleXmlMXCAFDocNoteDriver(*self_), nullptr}; }
+extern "C" bool Handle_XmlMXCAFDoc_NoteCommentDriver_is_null(const Handle_XmlMXCAFDoc_NoteCommentDriver* self_) { return self_->IsNull(); }
+extern "C" void Handle_XmlMXCAFDoc_NoteDriver_destructor(Handle_XmlMXCAFDoc_NoteDriver* self_) { delete self_; }
+extern "C" OcctResult<Handle_XmlMXCAFDoc_NoteDriver*> Handle_XmlMXCAFDoc_NoteDriver_clone(const Handle_XmlMXCAFDoc_NoteDriver* self_) {
+    try { return {new Handle_XmlMXCAFDoc_NoteDriver(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleXmlMXCAFDocNoteDriver_is_null(const HandleXmlMXCAFDocNoteDriver* self_) { return self_->IsNull(); }
-extern "C" void HandleXmlMXCAFDocVisMaterialDriver_destructor(HandleXmlMXCAFDocVisMaterialDriver* self_) { delete self_; }
-extern "C" OcctResult<HandleXmlMXCAFDocVisMaterialDriver*> HandleXmlMXCAFDocVisMaterialDriver_clone(const HandleXmlMXCAFDocVisMaterialDriver* self_) {
-    try { return {new HandleXmlMXCAFDocVisMaterialDriver(*self_), nullptr}; }
+extern "C" bool Handle_XmlMXCAFDoc_NoteDriver_is_null(const Handle_XmlMXCAFDoc_NoteDriver* self_) { return self_->IsNull(); }
+extern "C" void Handle_XmlMXCAFDoc_VisMaterialDriver_destructor(Handle_XmlMXCAFDoc_VisMaterialDriver* self_) { delete self_; }
+extern "C" OcctResult<Handle_XmlMXCAFDoc_VisMaterialDriver*> Handle_XmlMXCAFDoc_VisMaterialDriver_clone(const Handle_XmlMXCAFDoc_VisMaterialDriver* self_) {
+    try { return {new Handle_XmlMXCAFDoc_VisMaterialDriver(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleXmlMXCAFDocVisMaterialDriver_is_null(const HandleXmlMXCAFDocVisMaterialDriver* self_) { return self_->IsNull(); }
-extern "C" void HandleXmlMXCAFDocVisMaterialToolDriver_destructor(HandleXmlMXCAFDocVisMaterialToolDriver* self_) { delete self_; }
-extern "C" OcctResult<HandleXmlMXCAFDocVisMaterialToolDriver*> HandleXmlMXCAFDocVisMaterialToolDriver_clone(const HandleXmlMXCAFDocVisMaterialToolDriver* self_) {
-    try { return {new HandleXmlMXCAFDocVisMaterialToolDriver(*self_), nullptr}; }
+extern "C" bool Handle_XmlMXCAFDoc_VisMaterialDriver_is_null(const Handle_XmlMXCAFDoc_VisMaterialDriver* self_) { return self_->IsNull(); }
+extern "C" void Handle_XmlMXCAFDoc_VisMaterialToolDriver_destructor(Handle_XmlMXCAFDoc_VisMaterialToolDriver* self_) { delete self_; }
+extern "C" OcctResult<Handle_XmlMXCAFDoc_VisMaterialToolDriver*> Handle_XmlMXCAFDoc_VisMaterialToolDriver_clone(const Handle_XmlMXCAFDoc_VisMaterialToolDriver* self_) {
+    try { return {new Handle_XmlMXCAFDoc_VisMaterialToolDriver(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleXmlMXCAFDocVisMaterialToolDriver_is_null(const HandleXmlMXCAFDocVisMaterialToolDriver* self_) { return self_->IsNull(); }
-extern "C" void HandleXmlXCAFDriversDocumentRetrievalDriver_destructor(HandleXmlXCAFDriversDocumentRetrievalDriver* self_) { delete self_; }
-extern "C" OcctResult<HandleXmlXCAFDriversDocumentRetrievalDriver*> HandleXmlXCAFDriversDocumentRetrievalDriver_clone(const HandleXmlXCAFDriversDocumentRetrievalDriver* self_) {
-    try { return {new HandleXmlXCAFDriversDocumentRetrievalDriver(*self_), nullptr}; }
+extern "C" bool Handle_XmlMXCAFDoc_VisMaterialToolDriver_is_null(const Handle_XmlMXCAFDoc_VisMaterialToolDriver* self_) { return self_->IsNull(); }
+extern "C" void Handle_XmlXCAFDrivers_DocumentRetrievalDriver_destructor(Handle_XmlXCAFDrivers_DocumentRetrievalDriver* self_) { delete self_; }
+extern "C" OcctResult<Handle_XmlXCAFDrivers_DocumentRetrievalDriver*> Handle_XmlXCAFDrivers_DocumentRetrievalDriver_clone(const Handle_XmlXCAFDrivers_DocumentRetrievalDriver* self_) {
+    try { return {new Handle_XmlXCAFDrivers_DocumentRetrievalDriver(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleXmlXCAFDriversDocumentRetrievalDriver_is_null(const HandleXmlXCAFDriversDocumentRetrievalDriver* self_) { return self_->IsNull(); }
-extern "C" void HandleXmlXCAFDriversDocumentStorageDriver_destructor(HandleXmlXCAFDriversDocumentStorageDriver* self_) { delete self_; }
-extern "C" OcctResult<HandleXmlXCAFDriversDocumentStorageDriver*> HandleXmlXCAFDriversDocumentStorageDriver_clone(const HandleXmlXCAFDriversDocumentStorageDriver* self_) {
-    try { return {new HandleXmlXCAFDriversDocumentStorageDriver(*self_), nullptr}; }
+extern "C" bool Handle_XmlXCAFDrivers_DocumentRetrievalDriver_is_null(const Handle_XmlXCAFDrivers_DocumentRetrievalDriver* self_) { return self_->IsNull(); }
+extern "C" void Handle_XmlXCAFDrivers_DocumentStorageDriver_destructor(Handle_XmlXCAFDrivers_DocumentStorageDriver* self_) { delete self_; }
+extern "C" OcctResult<Handle_XmlXCAFDrivers_DocumentStorageDriver*> Handle_XmlXCAFDrivers_DocumentStorageDriver_clone(const Handle_XmlXCAFDrivers_DocumentStorageDriver* self_) {
+    try { return {new Handle_XmlXCAFDrivers_DocumentStorageDriver(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleXmlXCAFDriversDocumentStorageDriver_is_null(const HandleXmlXCAFDriversDocumentStorageDriver* self_) { return self_->IsNull(); }
+extern "C" bool Handle_XmlXCAFDrivers_DocumentStorageDriver_is_null(const Handle_XmlXCAFDrivers_DocumentStorageDriver* self_) { return self_->IsNull(); }
 
 // ========================
 // XmlMXCAFDoc_AssemblyItemRefDriver wrappers
@@ -212,24 +209,24 @@ extern "C" OcctResult<const XmlMDF_ADriver*> XmlMXCAFDoc_AssemblyItemRefDriver_a
 extern "C" OcctResult<XmlMDF_ADriver*> XmlMXCAFDoc_AssemblyItemRefDriver_as_XmlMDF_ADriver_mut(XmlMXCAFDoc_AssemblyItemRefDriver* self_) { return {static_cast<XmlMDF_ADriver*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> XmlMXCAFDoc_AssemblyItemRefDriver_as_Standard_Transient(const XmlMXCAFDoc_AssemblyItemRefDriver* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> XmlMXCAFDoc_AssemblyItemRefDriver_as_Standard_Transient_mut(XmlMXCAFDoc_AssemblyItemRefDriver* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleXmlMXCAFDocAssemblyItemRefDriver*> XmlMXCAFDoc_AssemblyItemRefDriver_to_handle(XmlMXCAFDoc_AssemblyItemRefDriver* obj) {
-    try { return {new HandleXmlMXCAFDocAssemblyItemRefDriver(obj), nullptr}; }
+extern "C" OcctResult<Handle_XmlMXCAFDoc_AssemblyItemRefDriver*> XmlMXCAFDoc_AssemblyItemRefDriver_to_handle(XmlMXCAFDoc_AssemblyItemRefDriver* obj) {
+    try { return {new Handle_XmlMXCAFDoc_AssemblyItemRefDriver(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const XmlMXCAFDoc_AssemblyItemRefDriver*> HandleXmlMXCAFDocAssemblyItemRefDriver_get(const HandleXmlMXCAFDocAssemblyItemRefDriver* handle) {
+extern "C" OcctResult<const XmlMXCAFDoc_AssemblyItemRefDriver*> Handle_XmlMXCAFDoc_AssemblyItemRefDriver_get(const Handle_XmlMXCAFDoc_AssemblyItemRefDriver* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<XmlMXCAFDoc_AssemblyItemRefDriver*> HandleXmlMXCAFDocAssemblyItemRefDriver_get_mut(HandleXmlMXCAFDocAssemblyItemRefDriver* handle) {
+extern "C" OcctResult<XmlMXCAFDoc_AssemblyItemRefDriver*> Handle_XmlMXCAFDoc_AssemblyItemRefDriver_get_mut(Handle_XmlMXCAFDoc_AssemblyItemRefDriver* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleXmlMDFADriver*> HandleXmlMXCAFDocAssemblyItemRefDriver_to_HandleXmlMDFADriver(const HandleXmlMXCAFDocAssemblyItemRefDriver* self_) {
-    try { return {new HandleXmlMDFADriver(*self_), nullptr}; }
+extern "C" OcctResult<Handle_XmlMDF_ADriver*> Handle_XmlMXCAFDoc_AssemblyItemRefDriver_to_Handle_XmlMDF_ADriver(const Handle_XmlMXCAFDoc_AssemblyItemRefDriver* self_) {
+    try { return {new Handle_XmlMDF_ADriver(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleXmlMXCAFDocAssemblyItemRefDriver_to_HandleStandardTransient(const HandleXmlMXCAFDocAssemblyItemRefDriver* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_XmlMXCAFDoc_AssemblyItemRefDriver_to_Handle_Standard_Transient(const Handle_XmlMXCAFDoc_AssemblyItemRefDriver* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<int32_t> XmlMXCAFDoc_AssemblyItemRefDriver_inherited_VersionNumber(const XmlMXCAFDoc_AssemblyItemRefDriver* self) {
@@ -318,24 +315,24 @@ extern "C" OcctResult<const XmlMDF_ADriver*> XmlMXCAFDoc_CentroidDriver_as_XmlMD
 extern "C" OcctResult<XmlMDF_ADriver*> XmlMXCAFDoc_CentroidDriver_as_XmlMDF_ADriver_mut(XmlMXCAFDoc_CentroidDriver* self_) { return {static_cast<XmlMDF_ADriver*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> XmlMXCAFDoc_CentroidDriver_as_Standard_Transient(const XmlMXCAFDoc_CentroidDriver* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> XmlMXCAFDoc_CentroidDriver_as_Standard_Transient_mut(XmlMXCAFDoc_CentroidDriver* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleXmlMXCAFDocCentroidDriver*> XmlMXCAFDoc_CentroidDriver_to_handle(XmlMXCAFDoc_CentroidDriver* obj) {
-    try { return {new HandleXmlMXCAFDocCentroidDriver(obj), nullptr}; }
+extern "C" OcctResult<Handle_XmlMXCAFDoc_CentroidDriver*> XmlMXCAFDoc_CentroidDriver_to_handle(XmlMXCAFDoc_CentroidDriver* obj) {
+    try { return {new Handle_XmlMXCAFDoc_CentroidDriver(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const XmlMXCAFDoc_CentroidDriver*> HandleXmlMXCAFDocCentroidDriver_get(const HandleXmlMXCAFDocCentroidDriver* handle) {
+extern "C" OcctResult<const XmlMXCAFDoc_CentroidDriver*> Handle_XmlMXCAFDoc_CentroidDriver_get(const Handle_XmlMXCAFDoc_CentroidDriver* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<XmlMXCAFDoc_CentroidDriver*> HandleXmlMXCAFDocCentroidDriver_get_mut(HandleXmlMXCAFDocCentroidDriver* handle) {
+extern "C" OcctResult<XmlMXCAFDoc_CentroidDriver*> Handle_XmlMXCAFDoc_CentroidDriver_get_mut(Handle_XmlMXCAFDoc_CentroidDriver* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleXmlMDFADriver*> HandleXmlMXCAFDocCentroidDriver_to_HandleXmlMDFADriver(const HandleXmlMXCAFDocCentroidDriver* self_) {
-    try { return {new HandleXmlMDFADriver(*self_), nullptr}; }
+extern "C" OcctResult<Handle_XmlMDF_ADriver*> Handle_XmlMXCAFDoc_CentroidDriver_to_Handle_XmlMDF_ADriver(const Handle_XmlMXCAFDoc_CentroidDriver* self_) {
+    try { return {new Handle_XmlMDF_ADriver(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleXmlMXCAFDocCentroidDriver_to_HandleStandardTransient(const HandleXmlMXCAFDocCentroidDriver* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_XmlMXCAFDoc_CentroidDriver_to_Handle_Standard_Transient(const Handle_XmlMXCAFDoc_CentroidDriver* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<int32_t> XmlMXCAFDoc_CentroidDriver_inherited_VersionNumber(const XmlMXCAFDoc_CentroidDriver* self) {
@@ -424,24 +421,24 @@ extern "C" OcctResult<const XmlMDF_ADriver*> XmlMXCAFDoc_ColorDriver_as_XmlMDF_A
 extern "C" OcctResult<XmlMDF_ADriver*> XmlMXCAFDoc_ColorDriver_as_XmlMDF_ADriver_mut(XmlMXCAFDoc_ColorDriver* self_) { return {static_cast<XmlMDF_ADriver*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> XmlMXCAFDoc_ColorDriver_as_Standard_Transient(const XmlMXCAFDoc_ColorDriver* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> XmlMXCAFDoc_ColorDriver_as_Standard_Transient_mut(XmlMXCAFDoc_ColorDriver* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleXmlMXCAFDocColorDriver*> XmlMXCAFDoc_ColorDriver_to_handle(XmlMXCAFDoc_ColorDriver* obj) {
-    try { return {new HandleXmlMXCAFDocColorDriver(obj), nullptr}; }
+extern "C" OcctResult<Handle_XmlMXCAFDoc_ColorDriver*> XmlMXCAFDoc_ColorDriver_to_handle(XmlMXCAFDoc_ColorDriver* obj) {
+    try { return {new Handle_XmlMXCAFDoc_ColorDriver(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const XmlMXCAFDoc_ColorDriver*> HandleXmlMXCAFDocColorDriver_get(const HandleXmlMXCAFDocColorDriver* handle) {
+extern "C" OcctResult<const XmlMXCAFDoc_ColorDriver*> Handle_XmlMXCAFDoc_ColorDriver_get(const Handle_XmlMXCAFDoc_ColorDriver* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<XmlMXCAFDoc_ColorDriver*> HandleXmlMXCAFDocColorDriver_get_mut(HandleXmlMXCAFDocColorDriver* handle) {
+extern "C" OcctResult<XmlMXCAFDoc_ColorDriver*> Handle_XmlMXCAFDoc_ColorDriver_get_mut(Handle_XmlMXCAFDoc_ColorDriver* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleXmlMDFADriver*> HandleXmlMXCAFDocColorDriver_to_HandleXmlMDFADriver(const HandleXmlMXCAFDocColorDriver* self_) {
-    try { return {new HandleXmlMDFADriver(*self_), nullptr}; }
+extern "C" OcctResult<Handle_XmlMDF_ADriver*> Handle_XmlMXCAFDoc_ColorDriver_to_Handle_XmlMDF_ADriver(const Handle_XmlMXCAFDoc_ColorDriver* self_) {
+    try { return {new Handle_XmlMDF_ADriver(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleXmlMXCAFDocColorDriver_to_HandleStandardTransient(const HandleXmlMXCAFDocColorDriver* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_XmlMXCAFDoc_ColorDriver_to_Handle_Standard_Transient(const Handle_XmlMXCAFDoc_ColorDriver* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<int32_t> XmlMXCAFDoc_ColorDriver_inherited_VersionNumber(const XmlMXCAFDoc_ColorDriver* self) {
@@ -530,24 +527,24 @@ extern "C" OcctResult<const XmlMDF_ADriver*> XmlMXCAFDoc_DatumDriver_as_XmlMDF_A
 extern "C" OcctResult<XmlMDF_ADriver*> XmlMXCAFDoc_DatumDriver_as_XmlMDF_ADriver_mut(XmlMXCAFDoc_DatumDriver* self_) { return {static_cast<XmlMDF_ADriver*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> XmlMXCAFDoc_DatumDriver_as_Standard_Transient(const XmlMXCAFDoc_DatumDriver* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> XmlMXCAFDoc_DatumDriver_as_Standard_Transient_mut(XmlMXCAFDoc_DatumDriver* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleXmlMXCAFDocDatumDriver*> XmlMXCAFDoc_DatumDriver_to_handle(XmlMXCAFDoc_DatumDriver* obj) {
-    try { return {new HandleXmlMXCAFDocDatumDriver(obj), nullptr}; }
+extern "C" OcctResult<Handle_XmlMXCAFDoc_DatumDriver*> XmlMXCAFDoc_DatumDriver_to_handle(XmlMXCAFDoc_DatumDriver* obj) {
+    try { return {new Handle_XmlMXCAFDoc_DatumDriver(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const XmlMXCAFDoc_DatumDriver*> HandleXmlMXCAFDocDatumDriver_get(const HandleXmlMXCAFDocDatumDriver* handle) {
+extern "C" OcctResult<const XmlMXCAFDoc_DatumDriver*> Handle_XmlMXCAFDoc_DatumDriver_get(const Handle_XmlMXCAFDoc_DatumDriver* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<XmlMXCAFDoc_DatumDriver*> HandleXmlMXCAFDocDatumDriver_get_mut(HandleXmlMXCAFDocDatumDriver* handle) {
+extern "C" OcctResult<XmlMXCAFDoc_DatumDriver*> Handle_XmlMXCAFDoc_DatumDriver_get_mut(Handle_XmlMXCAFDoc_DatumDriver* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleXmlMDFADriver*> HandleXmlMXCAFDocDatumDriver_to_HandleXmlMDFADriver(const HandleXmlMXCAFDocDatumDriver* self_) {
-    try { return {new HandleXmlMDFADriver(*self_), nullptr}; }
+extern "C" OcctResult<Handle_XmlMDF_ADriver*> Handle_XmlMXCAFDoc_DatumDriver_to_Handle_XmlMDF_ADriver(const Handle_XmlMXCAFDoc_DatumDriver* self_) {
+    try { return {new Handle_XmlMDF_ADriver(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleXmlMXCAFDocDatumDriver_to_HandleStandardTransient(const HandleXmlMXCAFDocDatumDriver* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_XmlMXCAFDoc_DatumDriver_to_Handle_Standard_Transient(const Handle_XmlMXCAFDoc_DatumDriver* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<int32_t> XmlMXCAFDoc_DatumDriver_inherited_VersionNumber(const XmlMXCAFDoc_DatumDriver* self) {
@@ -636,24 +633,24 @@ extern "C" OcctResult<const XmlMDF_ADriver*> XmlMXCAFDoc_DimTolDriver_as_XmlMDF_
 extern "C" OcctResult<XmlMDF_ADriver*> XmlMXCAFDoc_DimTolDriver_as_XmlMDF_ADriver_mut(XmlMXCAFDoc_DimTolDriver* self_) { return {static_cast<XmlMDF_ADriver*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> XmlMXCAFDoc_DimTolDriver_as_Standard_Transient(const XmlMXCAFDoc_DimTolDriver* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> XmlMXCAFDoc_DimTolDriver_as_Standard_Transient_mut(XmlMXCAFDoc_DimTolDriver* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleXmlMXCAFDocDimTolDriver*> XmlMXCAFDoc_DimTolDriver_to_handle(XmlMXCAFDoc_DimTolDriver* obj) {
-    try { return {new HandleXmlMXCAFDocDimTolDriver(obj), nullptr}; }
+extern "C" OcctResult<Handle_XmlMXCAFDoc_DimTolDriver*> XmlMXCAFDoc_DimTolDriver_to_handle(XmlMXCAFDoc_DimTolDriver* obj) {
+    try { return {new Handle_XmlMXCAFDoc_DimTolDriver(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const XmlMXCAFDoc_DimTolDriver*> HandleXmlMXCAFDocDimTolDriver_get(const HandleXmlMXCAFDocDimTolDriver* handle) {
+extern "C" OcctResult<const XmlMXCAFDoc_DimTolDriver*> Handle_XmlMXCAFDoc_DimTolDriver_get(const Handle_XmlMXCAFDoc_DimTolDriver* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<XmlMXCAFDoc_DimTolDriver*> HandleXmlMXCAFDocDimTolDriver_get_mut(HandleXmlMXCAFDocDimTolDriver* handle) {
+extern "C" OcctResult<XmlMXCAFDoc_DimTolDriver*> Handle_XmlMXCAFDoc_DimTolDriver_get_mut(Handle_XmlMXCAFDoc_DimTolDriver* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleXmlMDFADriver*> HandleXmlMXCAFDocDimTolDriver_to_HandleXmlMDFADriver(const HandleXmlMXCAFDocDimTolDriver* self_) {
-    try { return {new HandleXmlMDFADriver(*self_), nullptr}; }
+extern "C" OcctResult<Handle_XmlMDF_ADriver*> Handle_XmlMXCAFDoc_DimTolDriver_to_Handle_XmlMDF_ADriver(const Handle_XmlMXCAFDoc_DimTolDriver* self_) {
+    try { return {new Handle_XmlMDF_ADriver(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleXmlMXCAFDocDimTolDriver_to_HandleStandardTransient(const HandleXmlMXCAFDocDimTolDriver* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_XmlMXCAFDoc_DimTolDriver_to_Handle_Standard_Transient(const Handle_XmlMXCAFDoc_DimTolDriver* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<int32_t> XmlMXCAFDoc_DimTolDriver_inherited_VersionNumber(const XmlMXCAFDoc_DimTolDriver* self) {
@@ -742,24 +739,24 @@ extern "C" OcctResult<const XmlMDF_ADriver*> XmlMXCAFDoc_GraphNodeDriver_as_XmlM
 extern "C" OcctResult<XmlMDF_ADriver*> XmlMXCAFDoc_GraphNodeDriver_as_XmlMDF_ADriver_mut(XmlMXCAFDoc_GraphNodeDriver* self_) { return {static_cast<XmlMDF_ADriver*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> XmlMXCAFDoc_GraphNodeDriver_as_Standard_Transient(const XmlMXCAFDoc_GraphNodeDriver* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> XmlMXCAFDoc_GraphNodeDriver_as_Standard_Transient_mut(XmlMXCAFDoc_GraphNodeDriver* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleXmlMXCAFDocGraphNodeDriver*> XmlMXCAFDoc_GraphNodeDriver_to_handle(XmlMXCAFDoc_GraphNodeDriver* obj) {
-    try { return {new HandleXmlMXCAFDocGraphNodeDriver(obj), nullptr}; }
+extern "C" OcctResult<Handle_XmlMXCAFDoc_GraphNodeDriver*> XmlMXCAFDoc_GraphNodeDriver_to_handle(XmlMXCAFDoc_GraphNodeDriver* obj) {
+    try { return {new Handle_XmlMXCAFDoc_GraphNodeDriver(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const XmlMXCAFDoc_GraphNodeDriver*> HandleXmlMXCAFDocGraphNodeDriver_get(const HandleXmlMXCAFDocGraphNodeDriver* handle) {
+extern "C" OcctResult<const XmlMXCAFDoc_GraphNodeDriver*> Handle_XmlMXCAFDoc_GraphNodeDriver_get(const Handle_XmlMXCAFDoc_GraphNodeDriver* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<XmlMXCAFDoc_GraphNodeDriver*> HandleXmlMXCAFDocGraphNodeDriver_get_mut(HandleXmlMXCAFDocGraphNodeDriver* handle) {
+extern "C" OcctResult<XmlMXCAFDoc_GraphNodeDriver*> Handle_XmlMXCAFDoc_GraphNodeDriver_get_mut(Handle_XmlMXCAFDoc_GraphNodeDriver* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleXmlMDFADriver*> HandleXmlMXCAFDocGraphNodeDriver_to_HandleXmlMDFADriver(const HandleXmlMXCAFDocGraphNodeDriver* self_) {
-    try { return {new HandleXmlMDFADriver(*self_), nullptr}; }
+extern "C" OcctResult<Handle_XmlMDF_ADriver*> Handle_XmlMXCAFDoc_GraphNodeDriver_to_Handle_XmlMDF_ADriver(const Handle_XmlMXCAFDoc_GraphNodeDriver* self_) {
+    try { return {new Handle_XmlMDF_ADriver(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleXmlMXCAFDocGraphNodeDriver_to_HandleStandardTransient(const HandleXmlMXCAFDocGraphNodeDriver* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_XmlMXCAFDoc_GraphNodeDriver_to_Handle_Standard_Transient(const Handle_XmlMXCAFDoc_GraphNodeDriver* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<int32_t> XmlMXCAFDoc_GraphNodeDriver_inherited_VersionNumber(const XmlMXCAFDoc_GraphNodeDriver* self) {
@@ -848,24 +845,24 @@ extern "C" OcctResult<const XmlMDF_ADriver*> XmlMXCAFDoc_LengthUnitDriver_as_Xml
 extern "C" OcctResult<XmlMDF_ADriver*> XmlMXCAFDoc_LengthUnitDriver_as_XmlMDF_ADriver_mut(XmlMXCAFDoc_LengthUnitDriver* self_) { return {static_cast<XmlMDF_ADriver*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> XmlMXCAFDoc_LengthUnitDriver_as_Standard_Transient(const XmlMXCAFDoc_LengthUnitDriver* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> XmlMXCAFDoc_LengthUnitDriver_as_Standard_Transient_mut(XmlMXCAFDoc_LengthUnitDriver* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleXmlMXCAFDocLengthUnitDriver*> XmlMXCAFDoc_LengthUnitDriver_to_handle(XmlMXCAFDoc_LengthUnitDriver* obj) {
-    try { return {new HandleXmlMXCAFDocLengthUnitDriver(obj), nullptr}; }
+extern "C" OcctResult<Handle_XmlMXCAFDoc_LengthUnitDriver*> XmlMXCAFDoc_LengthUnitDriver_to_handle(XmlMXCAFDoc_LengthUnitDriver* obj) {
+    try { return {new Handle_XmlMXCAFDoc_LengthUnitDriver(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const XmlMXCAFDoc_LengthUnitDriver*> HandleXmlMXCAFDocLengthUnitDriver_get(const HandleXmlMXCAFDocLengthUnitDriver* handle) {
+extern "C" OcctResult<const XmlMXCAFDoc_LengthUnitDriver*> Handle_XmlMXCAFDoc_LengthUnitDriver_get(const Handle_XmlMXCAFDoc_LengthUnitDriver* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<XmlMXCAFDoc_LengthUnitDriver*> HandleXmlMXCAFDocLengthUnitDriver_get_mut(HandleXmlMXCAFDocLengthUnitDriver* handle) {
+extern "C" OcctResult<XmlMXCAFDoc_LengthUnitDriver*> Handle_XmlMXCAFDoc_LengthUnitDriver_get_mut(Handle_XmlMXCAFDoc_LengthUnitDriver* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleXmlMDFADriver*> HandleXmlMXCAFDocLengthUnitDriver_to_HandleXmlMDFADriver(const HandleXmlMXCAFDocLengthUnitDriver* self_) {
-    try { return {new HandleXmlMDFADriver(*self_), nullptr}; }
+extern "C" OcctResult<Handle_XmlMDF_ADriver*> Handle_XmlMXCAFDoc_LengthUnitDriver_to_Handle_XmlMDF_ADriver(const Handle_XmlMXCAFDoc_LengthUnitDriver* self_) {
+    try { return {new Handle_XmlMDF_ADriver(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleXmlMXCAFDocLengthUnitDriver_to_HandleStandardTransient(const HandleXmlMXCAFDocLengthUnitDriver* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_XmlMXCAFDoc_LengthUnitDriver_to_Handle_Standard_Transient(const Handle_XmlMXCAFDoc_LengthUnitDriver* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<int32_t> XmlMXCAFDoc_LengthUnitDriver_inherited_VersionNumber(const XmlMXCAFDoc_LengthUnitDriver* self) {
@@ -966,24 +963,24 @@ extern "C" OcctResult<const XmlMDF_ADriver*> XmlMXCAFDoc_LocationDriver_as_XmlMD
 extern "C" OcctResult<XmlMDF_ADriver*> XmlMXCAFDoc_LocationDriver_as_XmlMDF_ADriver_mut(XmlMXCAFDoc_LocationDriver* self_) { return {static_cast<XmlMDF_ADriver*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> XmlMXCAFDoc_LocationDriver_as_Standard_Transient(const XmlMXCAFDoc_LocationDriver* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> XmlMXCAFDoc_LocationDriver_as_Standard_Transient_mut(XmlMXCAFDoc_LocationDriver* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleXmlMXCAFDocLocationDriver*> XmlMXCAFDoc_LocationDriver_to_handle(XmlMXCAFDoc_LocationDriver* obj) {
-    try { return {new HandleXmlMXCAFDocLocationDriver(obj), nullptr}; }
+extern "C" OcctResult<Handle_XmlMXCAFDoc_LocationDriver*> XmlMXCAFDoc_LocationDriver_to_handle(XmlMXCAFDoc_LocationDriver* obj) {
+    try { return {new Handle_XmlMXCAFDoc_LocationDriver(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const XmlMXCAFDoc_LocationDriver*> HandleXmlMXCAFDocLocationDriver_get(const HandleXmlMXCAFDocLocationDriver* handle) {
+extern "C" OcctResult<const XmlMXCAFDoc_LocationDriver*> Handle_XmlMXCAFDoc_LocationDriver_get(const Handle_XmlMXCAFDoc_LocationDriver* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<XmlMXCAFDoc_LocationDriver*> HandleXmlMXCAFDocLocationDriver_get_mut(HandleXmlMXCAFDocLocationDriver* handle) {
+extern "C" OcctResult<XmlMXCAFDoc_LocationDriver*> Handle_XmlMXCAFDoc_LocationDriver_get_mut(Handle_XmlMXCAFDoc_LocationDriver* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleXmlMDFADriver*> HandleXmlMXCAFDocLocationDriver_to_HandleXmlMDFADriver(const HandleXmlMXCAFDocLocationDriver* self_) {
-    try { return {new HandleXmlMDFADriver(*self_), nullptr}; }
+extern "C" OcctResult<Handle_XmlMDF_ADriver*> Handle_XmlMXCAFDoc_LocationDriver_to_Handle_XmlMDF_ADriver(const Handle_XmlMXCAFDoc_LocationDriver* self_) {
+    try { return {new Handle_XmlMDF_ADriver(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleXmlMXCAFDocLocationDriver_to_HandleStandardTransient(const HandleXmlMXCAFDocLocationDriver* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_XmlMXCAFDoc_LocationDriver_to_Handle_Standard_Transient(const Handle_XmlMXCAFDoc_LocationDriver* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<int32_t> XmlMXCAFDoc_LocationDriver_inherited_VersionNumber(const XmlMXCAFDoc_LocationDriver* self) {
@@ -1072,24 +1069,24 @@ extern "C" OcctResult<const XmlMDF_ADriver*> XmlMXCAFDoc_MaterialDriver_as_XmlMD
 extern "C" OcctResult<XmlMDF_ADriver*> XmlMXCAFDoc_MaterialDriver_as_XmlMDF_ADriver_mut(XmlMXCAFDoc_MaterialDriver* self_) { return {static_cast<XmlMDF_ADriver*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> XmlMXCAFDoc_MaterialDriver_as_Standard_Transient(const XmlMXCAFDoc_MaterialDriver* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> XmlMXCAFDoc_MaterialDriver_as_Standard_Transient_mut(XmlMXCAFDoc_MaterialDriver* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleXmlMXCAFDocMaterialDriver*> XmlMXCAFDoc_MaterialDriver_to_handle(XmlMXCAFDoc_MaterialDriver* obj) {
-    try { return {new HandleXmlMXCAFDocMaterialDriver(obj), nullptr}; }
+extern "C" OcctResult<Handle_XmlMXCAFDoc_MaterialDriver*> XmlMXCAFDoc_MaterialDriver_to_handle(XmlMXCAFDoc_MaterialDriver* obj) {
+    try { return {new Handle_XmlMXCAFDoc_MaterialDriver(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const XmlMXCAFDoc_MaterialDriver*> HandleXmlMXCAFDocMaterialDriver_get(const HandleXmlMXCAFDocMaterialDriver* handle) {
+extern "C" OcctResult<const XmlMXCAFDoc_MaterialDriver*> Handle_XmlMXCAFDoc_MaterialDriver_get(const Handle_XmlMXCAFDoc_MaterialDriver* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<XmlMXCAFDoc_MaterialDriver*> HandleXmlMXCAFDocMaterialDriver_get_mut(HandleXmlMXCAFDocMaterialDriver* handle) {
+extern "C" OcctResult<XmlMXCAFDoc_MaterialDriver*> Handle_XmlMXCAFDoc_MaterialDriver_get_mut(Handle_XmlMXCAFDoc_MaterialDriver* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleXmlMDFADriver*> HandleXmlMXCAFDocMaterialDriver_to_HandleXmlMDFADriver(const HandleXmlMXCAFDocMaterialDriver* self_) {
-    try { return {new HandleXmlMDFADriver(*self_), nullptr}; }
+extern "C" OcctResult<Handle_XmlMDF_ADriver*> Handle_XmlMXCAFDoc_MaterialDriver_to_Handle_XmlMDF_ADriver(const Handle_XmlMXCAFDoc_MaterialDriver* self_) {
+    try { return {new Handle_XmlMDF_ADriver(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleXmlMXCAFDocMaterialDriver_to_HandleStandardTransient(const HandleXmlMXCAFDocMaterialDriver* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_XmlMXCAFDoc_MaterialDriver_to_Handle_Standard_Transient(const Handle_XmlMXCAFDoc_MaterialDriver* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<int32_t> XmlMXCAFDoc_MaterialDriver_inherited_VersionNumber(const XmlMXCAFDoc_MaterialDriver* self) {
@@ -1180,28 +1177,28 @@ extern "C" OcctResult<const XmlMDF_ADriver*> XmlMXCAFDoc_NoteBinDataDriver_as_Xm
 extern "C" OcctResult<XmlMDF_ADriver*> XmlMXCAFDoc_NoteBinDataDriver_as_XmlMDF_ADriver_mut(XmlMXCAFDoc_NoteBinDataDriver* self_) { return {static_cast<XmlMDF_ADriver*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> XmlMXCAFDoc_NoteBinDataDriver_as_Standard_Transient(const XmlMXCAFDoc_NoteBinDataDriver* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> XmlMXCAFDoc_NoteBinDataDriver_as_Standard_Transient_mut(XmlMXCAFDoc_NoteBinDataDriver* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleXmlMXCAFDocNoteBinDataDriver*> XmlMXCAFDoc_NoteBinDataDriver_to_handle(XmlMXCAFDoc_NoteBinDataDriver* obj) {
-    try { return {new HandleXmlMXCAFDocNoteBinDataDriver(obj), nullptr}; }
+extern "C" OcctResult<Handle_XmlMXCAFDoc_NoteBinDataDriver*> XmlMXCAFDoc_NoteBinDataDriver_to_handle(XmlMXCAFDoc_NoteBinDataDriver* obj) {
+    try { return {new Handle_XmlMXCAFDoc_NoteBinDataDriver(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const XmlMXCAFDoc_NoteBinDataDriver*> HandleXmlMXCAFDocNoteBinDataDriver_get(const HandleXmlMXCAFDocNoteBinDataDriver* handle) {
+extern "C" OcctResult<const XmlMXCAFDoc_NoteBinDataDriver*> Handle_XmlMXCAFDoc_NoteBinDataDriver_get(const Handle_XmlMXCAFDoc_NoteBinDataDriver* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<XmlMXCAFDoc_NoteBinDataDriver*> HandleXmlMXCAFDocNoteBinDataDriver_get_mut(HandleXmlMXCAFDocNoteBinDataDriver* handle) {
+extern "C" OcctResult<XmlMXCAFDoc_NoteBinDataDriver*> Handle_XmlMXCAFDoc_NoteBinDataDriver_get_mut(Handle_XmlMXCAFDoc_NoteBinDataDriver* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleXmlMXCAFDocNoteDriver*> HandleXmlMXCAFDocNoteBinDataDriver_to_HandleXmlMXCAFDocNoteDriver(const HandleXmlMXCAFDocNoteBinDataDriver* self_) {
-    try { return {new HandleXmlMXCAFDocNoteDriver(*self_), nullptr}; }
+extern "C" OcctResult<Handle_XmlMXCAFDoc_NoteDriver*> Handle_XmlMXCAFDoc_NoteBinDataDriver_to_Handle_XmlMXCAFDoc_NoteDriver(const Handle_XmlMXCAFDoc_NoteBinDataDriver* self_) {
+    try { return {new Handle_XmlMXCAFDoc_NoteDriver(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleXmlMDFADriver*> HandleXmlMXCAFDocNoteBinDataDriver_to_HandleXmlMDFADriver(const HandleXmlMXCAFDocNoteBinDataDriver* self_) {
-    try { return {new HandleXmlMDFADriver(*self_), nullptr}; }
+extern "C" OcctResult<Handle_XmlMDF_ADriver*> Handle_XmlMXCAFDoc_NoteBinDataDriver_to_Handle_XmlMDF_ADriver(const Handle_XmlMXCAFDoc_NoteBinDataDriver* self_) {
+    try { return {new Handle_XmlMDF_ADriver(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleXmlMXCAFDocNoteBinDataDriver_to_HandleStandardTransient(const HandleXmlMXCAFDocNoteBinDataDriver* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_XmlMXCAFDoc_NoteBinDataDriver_to_Handle_Standard_Transient(const Handle_XmlMXCAFDoc_NoteBinDataDriver* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<int32_t> XmlMXCAFDoc_NoteBinDataDriver_inherited_VersionNumber(const XmlMXCAFDoc_NoteBinDataDriver* self) {
@@ -1292,28 +1289,28 @@ extern "C" OcctResult<const XmlMDF_ADriver*> XmlMXCAFDoc_NoteCommentDriver_as_Xm
 extern "C" OcctResult<XmlMDF_ADriver*> XmlMXCAFDoc_NoteCommentDriver_as_XmlMDF_ADriver_mut(XmlMXCAFDoc_NoteCommentDriver* self_) { return {static_cast<XmlMDF_ADriver*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> XmlMXCAFDoc_NoteCommentDriver_as_Standard_Transient(const XmlMXCAFDoc_NoteCommentDriver* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> XmlMXCAFDoc_NoteCommentDriver_as_Standard_Transient_mut(XmlMXCAFDoc_NoteCommentDriver* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleXmlMXCAFDocNoteCommentDriver*> XmlMXCAFDoc_NoteCommentDriver_to_handle(XmlMXCAFDoc_NoteCommentDriver* obj) {
-    try { return {new HandleXmlMXCAFDocNoteCommentDriver(obj), nullptr}; }
+extern "C" OcctResult<Handle_XmlMXCAFDoc_NoteCommentDriver*> XmlMXCAFDoc_NoteCommentDriver_to_handle(XmlMXCAFDoc_NoteCommentDriver* obj) {
+    try { return {new Handle_XmlMXCAFDoc_NoteCommentDriver(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const XmlMXCAFDoc_NoteCommentDriver*> HandleXmlMXCAFDocNoteCommentDriver_get(const HandleXmlMXCAFDocNoteCommentDriver* handle) {
+extern "C" OcctResult<const XmlMXCAFDoc_NoteCommentDriver*> Handle_XmlMXCAFDoc_NoteCommentDriver_get(const Handle_XmlMXCAFDoc_NoteCommentDriver* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<XmlMXCAFDoc_NoteCommentDriver*> HandleXmlMXCAFDocNoteCommentDriver_get_mut(HandleXmlMXCAFDocNoteCommentDriver* handle) {
+extern "C" OcctResult<XmlMXCAFDoc_NoteCommentDriver*> Handle_XmlMXCAFDoc_NoteCommentDriver_get_mut(Handle_XmlMXCAFDoc_NoteCommentDriver* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleXmlMXCAFDocNoteDriver*> HandleXmlMXCAFDocNoteCommentDriver_to_HandleXmlMXCAFDocNoteDriver(const HandleXmlMXCAFDocNoteCommentDriver* self_) {
-    try { return {new HandleXmlMXCAFDocNoteDriver(*self_), nullptr}; }
+extern "C" OcctResult<Handle_XmlMXCAFDoc_NoteDriver*> Handle_XmlMXCAFDoc_NoteCommentDriver_to_Handle_XmlMXCAFDoc_NoteDriver(const Handle_XmlMXCAFDoc_NoteCommentDriver* self_) {
+    try { return {new Handle_XmlMXCAFDoc_NoteDriver(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleXmlMDFADriver*> HandleXmlMXCAFDocNoteCommentDriver_to_HandleXmlMDFADriver(const HandleXmlMXCAFDocNoteCommentDriver* self_) {
-    try { return {new HandleXmlMDFADriver(*self_), nullptr}; }
+extern "C" OcctResult<Handle_XmlMDF_ADriver*> Handle_XmlMXCAFDoc_NoteCommentDriver_to_Handle_XmlMDF_ADriver(const Handle_XmlMXCAFDoc_NoteCommentDriver* self_) {
+    try { return {new Handle_XmlMDF_ADriver(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleXmlMXCAFDocNoteCommentDriver_to_HandleStandardTransient(const HandleXmlMXCAFDocNoteCommentDriver* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_XmlMXCAFDoc_NoteCommentDriver_to_Handle_Standard_Transient(const Handle_XmlMXCAFDoc_NoteCommentDriver* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<int32_t> XmlMXCAFDoc_NoteCommentDriver_inherited_VersionNumber(const XmlMXCAFDoc_NoteCommentDriver* self) {
@@ -1394,35 +1391,35 @@ extern "C" OcctResult<const XmlMDF_ADriver*> XmlMXCAFDoc_NoteDriver_as_XmlMDF_AD
 extern "C" OcctResult<XmlMDF_ADriver*> XmlMXCAFDoc_NoteDriver_as_XmlMDF_ADriver_mut(XmlMXCAFDoc_NoteDriver* self_) { return {static_cast<XmlMDF_ADriver*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> XmlMXCAFDoc_NoteDriver_as_Standard_Transient(const XmlMXCAFDoc_NoteDriver* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> XmlMXCAFDoc_NoteDriver_as_Standard_Transient_mut(XmlMXCAFDoc_NoteDriver* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<const XmlMXCAFDoc_NoteDriver*> HandleXmlMXCAFDocNoteDriver_get(const HandleXmlMXCAFDocNoteDriver* handle) {
+extern "C" OcctResult<const XmlMXCAFDoc_NoteDriver*> Handle_XmlMXCAFDoc_NoteDriver_get(const Handle_XmlMXCAFDoc_NoteDriver* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<XmlMXCAFDoc_NoteDriver*> HandleXmlMXCAFDocNoteDriver_get_mut(HandleXmlMXCAFDocNoteDriver* handle) {
+extern "C" OcctResult<XmlMXCAFDoc_NoteDriver*> Handle_XmlMXCAFDoc_NoteDriver_get_mut(Handle_XmlMXCAFDoc_NoteDriver* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleXmlMDFADriver*> HandleXmlMXCAFDocNoteDriver_to_HandleXmlMDFADriver(const HandleXmlMXCAFDocNoteDriver* self_) {
-    try { return {new HandleXmlMDFADriver(*self_), nullptr}; }
+extern "C" OcctResult<Handle_XmlMDF_ADriver*> Handle_XmlMXCAFDoc_NoteDriver_to_Handle_XmlMDF_ADriver(const Handle_XmlMXCAFDoc_NoteDriver* self_) {
+    try { return {new Handle_XmlMDF_ADriver(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleXmlMXCAFDocNoteDriver_to_HandleStandardTransient(const HandleXmlMXCAFDocNoteDriver* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_XmlMXCAFDoc_NoteDriver_to_Handle_Standard_Transient(const Handle_XmlMXCAFDoc_NoteDriver* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleXmlMXCAFDocNoteBinDataDriver*> HandleXmlMXCAFDocNoteDriver_downcast_to_HandleXmlMXCAFDocNoteBinDataDriver(const HandleXmlMXCAFDocNoteDriver* self_) {
+extern "C" OcctResult<Handle_XmlMXCAFDoc_NoteBinDataDriver*> Handle_XmlMXCAFDoc_NoteDriver_downcast_to_Handle_XmlMXCAFDoc_NoteBinDataDriver(const Handle_XmlMXCAFDoc_NoteDriver* self_) {
     try {
     opencascade::handle<XmlMXCAFDoc_NoteBinDataDriver> result = opencascade::handle<XmlMXCAFDoc_NoteBinDataDriver>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleXmlMXCAFDocNoteBinDataDriver(result), nullptr};
+    return {new Handle_XmlMXCAFDoc_NoteBinDataDriver(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleXmlMXCAFDocNoteCommentDriver*> HandleXmlMXCAFDocNoteDriver_downcast_to_HandleXmlMXCAFDocNoteCommentDriver(const HandleXmlMXCAFDocNoteDriver* self_) {
+extern "C" OcctResult<Handle_XmlMXCAFDoc_NoteCommentDriver*> Handle_XmlMXCAFDoc_NoteDriver_downcast_to_Handle_XmlMXCAFDoc_NoteCommentDriver(const Handle_XmlMXCAFDoc_NoteDriver* self_) {
     try {
     opencascade::handle<XmlMXCAFDoc_NoteCommentDriver> result = opencascade::handle<XmlMXCAFDoc_NoteCommentDriver>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleXmlMXCAFDocNoteCommentDriver(result), nullptr};
+    return {new Handle_XmlMXCAFDoc_NoteCommentDriver(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
@@ -1516,24 +1513,24 @@ extern "C" OcctResult<const XmlMDF_ADriver*> XmlMXCAFDoc_VisMaterialDriver_as_Xm
 extern "C" OcctResult<XmlMDF_ADriver*> XmlMXCAFDoc_VisMaterialDriver_as_XmlMDF_ADriver_mut(XmlMXCAFDoc_VisMaterialDriver* self_) { return {static_cast<XmlMDF_ADriver*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> XmlMXCAFDoc_VisMaterialDriver_as_Standard_Transient(const XmlMXCAFDoc_VisMaterialDriver* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> XmlMXCAFDoc_VisMaterialDriver_as_Standard_Transient_mut(XmlMXCAFDoc_VisMaterialDriver* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleXmlMXCAFDocVisMaterialDriver*> XmlMXCAFDoc_VisMaterialDriver_to_handle(XmlMXCAFDoc_VisMaterialDriver* obj) {
-    try { return {new HandleXmlMXCAFDocVisMaterialDriver(obj), nullptr}; }
+extern "C" OcctResult<Handle_XmlMXCAFDoc_VisMaterialDriver*> XmlMXCAFDoc_VisMaterialDriver_to_handle(XmlMXCAFDoc_VisMaterialDriver* obj) {
+    try { return {new Handle_XmlMXCAFDoc_VisMaterialDriver(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const XmlMXCAFDoc_VisMaterialDriver*> HandleXmlMXCAFDocVisMaterialDriver_get(const HandleXmlMXCAFDocVisMaterialDriver* handle) {
+extern "C" OcctResult<const XmlMXCAFDoc_VisMaterialDriver*> Handle_XmlMXCAFDoc_VisMaterialDriver_get(const Handle_XmlMXCAFDoc_VisMaterialDriver* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<XmlMXCAFDoc_VisMaterialDriver*> HandleXmlMXCAFDocVisMaterialDriver_get_mut(HandleXmlMXCAFDocVisMaterialDriver* handle) {
+extern "C" OcctResult<XmlMXCAFDoc_VisMaterialDriver*> Handle_XmlMXCAFDoc_VisMaterialDriver_get_mut(Handle_XmlMXCAFDoc_VisMaterialDriver* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleXmlMDFADriver*> HandleXmlMXCAFDocVisMaterialDriver_to_HandleXmlMDFADriver(const HandleXmlMXCAFDocVisMaterialDriver* self_) {
-    try { return {new HandleXmlMDFADriver(*self_), nullptr}; }
+extern "C" OcctResult<Handle_XmlMDF_ADriver*> Handle_XmlMXCAFDoc_VisMaterialDriver_to_Handle_XmlMDF_ADriver(const Handle_XmlMXCAFDoc_VisMaterialDriver* self_) {
+    try { return {new Handle_XmlMDF_ADriver(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleXmlMXCAFDocVisMaterialDriver_to_HandleStandardTransient(const HandleXmlMXCAFDocVisMaterialDriver* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_XmlMXCAFDoc_VisMaterialDriver_to_Handle_Standard_Transient(const Handle_XmlMXCAFDoc_VisMaterialDriver* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<int32_t> XmlMXCAFDoc_VisMaterialDriver_inherited_VersionNumber(const XmlMXCAFDoc_VisMaterialDriver* self) {
@@ -1622,24 +1619,24 @@ extern "C" OcctResult<const XmlMDF_ADriver*> XmlMXCAFDoc_VisMaterialToolDriver_a
 extern "C" OcctResult<XmlMDF_ADriver*> XmlMXCAFDoc_VisMaterialToolDriver_as_XmlMDF_ADriver_mut(XmlMXCAFDoc_VisMaterialToolDriver* self_) { return {static_cast<XmlMDF_ADriver*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> XmlMXCAFDoc_VisMaterialToolDriver_as_Standard_Transient(const XmlMXCAFDoc_VisMaterialToolDriver* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> XmlMXCAFDoc_VisMaterialToolDriver_as_Standard_Transient_mut(XmlMXCAFDoc_VisMaterialToolDriver* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleXmlMXCAFDocVisMaterialToolDriver*> XmlMXCAFDoc_VisMaterialToolDriver_to_handle(XmlMXCAFDoc_VisMaterialToolDriver* obj) {
-    try { return {new HandleXmlMXCAFDocVisMaterialToolDriver(obj), nullptr}; }
+extern "C" OcctResult<Handle_XmlMXCAFDoc_VisMaterialToolDriver*> XmlMXCAFDoc_VisMaterialToolDriver_to_handle(XmlMXCAFDoc_VisMaterialToolDriver* obj) {
+    try { return {new Handle_XmlMXCAFDoc_VisMaterialToolDriver(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const XmlMXCAFDoc_VisMaterialToolDriver*> HandleXmlMXCAFDocVisMaterialToolDriver_get(const HandleXmlMXCAFDocVisMaterialToolDriver* handle) {
+extern "C" OcctResult<const XmlMXCAFDoc_VisMaterialToolDriver*> Handle_XmlMXCAFDoc_VisMaterialToolDriver_get(const Handle_XmlMXCAFDoc_VisMaterialToolDriver* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<XmlMXCAFDoc_VisMaterialToolDriver*> HandleXmlMXCAFDocVisMaterialToolDriver_get_mut(HandleXmlMXCAFDocVisMaterialToolDriver* handle) {
+extern "C" OcctResult<XmlMXCAFDoc_VisMaterialToolDriver*> Handle_XmlMXCAFDoc_VisMaterialToolDriver_get_mut(Handle_XmlMXCAFDoc_VisMaterialToolDriver* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleXmlMDFADriver*> HandleXmlMXCAFDocVisMaterialToolDriver_to_HandleXmlMDFADriver(const HandleXmlMXCAFDocVisMaterialToolDriver* self_) {
-    try { return {new HandleXmlMDFADriver(*self_), nullptr}; }
+extern "C" OcctResult<Handle_XmlMDF_ADriver*> Handle_XmlMXCAFDoc_VisMaterialToolDriver_to_Handle_XmlMDF_ADriver(const Handle_XmlMXCAFDoc_VisMaterialToolDriver* self_) {
+    try { return {new Handle_XmlMDF_ADriver(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleXmlMXCAFDocVisMaterialToolDriver_to_HandleStandardTransient(const HandleXmlMXCAFDocVisMaterialToolDriver* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_XmlMXCAFDoc_VisMaterialToolDriver_to_Handle_Standard_Transient(const Handle_XmlMXCAFDoc_VisMaterialToolDriver* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<int32_t> XmlMXCAFDoc_VisMaterialToolDriver_inherited_VersionNumber(const XmlMXCAFDoc_VisMaterialToolDriver* self) {
@@ -1726,36 +1723,36 @@ extern "C" OcctResult<const PCDM_Reader*> XmlXCAFDrivers_DocumentRetrievalDriver
 extern "C" OcctResult<PCDM_Reader*> XmlXCAFDrivers_DocumentRetrievalDriver_as_PCDM_Reader_mut(XmlXCAFDrivers_DocumentRetrievalDriver* self_) { return {static_cast<PCDM_Reader*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> XmlXCAFDrivers_DocumentRetrievalDriver_as_Standard_Transient(const XmlXCAFDrivers_DocumentRetrievalDriver* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> XmlXCAFDrivers_DocumentRetrievalDriver_as_Standard_Transient_mut(XmlXCAFDrivers_DocumentRetrievalDriver* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleXmlXCAFDriversDocumentRetrievalDriver*> XmlXCAFDrivers_DocumentRetrievalDriver_to_handle(XmlXCAFDrivers_DocumentRetrievalDriver* obj) {
-    try { return {new HandleXmlXCAFDriversDocumentRetrievalDriver(obj), nullptr}; }
+extern "C" OcctResult<Handle_XmlXCAFDrivers_DocumentRetrievalDriver*> XmlXCAFDrivers_DocumentRetrievalDriver_to_handle(XmlXCAFDrivers_DocumentRetrievalDriver* obj) {
+    try { return {new Handle_XmlXCAFDrivers_DocumentRetrievalDriver(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const XmlXCAFDrivers_DocumentRetrievalDriver*> HandleXmlXCAFDriversDocumentRetrievalDriver_get(const HandleXmlXCAFDriversDocumentRetrievalDriver* handle) {
+extern "C" OcctResult<const XmlXCAFDrivers_DocumentRetrievalDriver*> Handle_XmlXCAFDrivers_DocumentRetrievalDriver_get(const Handle_XmlXCAFDrivers_DocumentRetrievalDriver* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<XmlXCAFDrivers_DocumentRetrievalDriver*> HandleXmlXCAFDriversDocumentRetrievalDriver_get_mut(HandleXmlXCAFDriversDocumentRetrievalDriver* handle) {
+extern "C" OcctResult<XmlXCAFDrivers_DocumentRetrievalDriver*> Handle_XmlXCAFDrivers_DocumentRetrievalDriver_get_mut(Handle_XmlXCAFDrivers_DocumentRetrievalDriver* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleXmlDriversDocumentRetrievalDriver*> HandleXmlXCAFDriversDocumentRetrievalDriver_to_HandleXmlDriversDocumentRetrievalDriver(const HandleXmlXCAFDriversDocumentRetrievalDriver* self_) {
-    try { return {new HandleXmlDriversDocumentRetrievalDriver(*self_), nullptr}; }
+extern "C" OcctResult<Handle_XmlDrivers_DocumentRetrievalDriver*> Handle_XmlXCAFDrivers_DocumentRetrievalDriver_to_Handle_XmlDrivers_DocumentRetrievalDriver(const Handle_XmlXCAFDrivers_DocumentRetrievalDriver* self_) {
+    try { return {new Handle_XmlDrivers_DocumentRetrievalDriver(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleXmlLDriversDocumentRetrievalDriver*> HandleXmlXCAFDriversDocumentRetrievalDriver_to_HandleXmlLDriversDocumentRetrievalDriver(const HandleXmlXCAFDriversDocumentRetrievalDriver* self_) {
-    try { return {new HandleXmlLDriversDocumentRetrievalDriver(*self_), nullptr}; }
+extern "C" OcctResult<Handle_XmlLDrivers_DocumentRetrievalDriver*> Handle_XmlXCAFDrivers_DocumentRetrievalDriver_to_Handle_XmlLDrivers_DocumentRetrievalDriver(const Handle_XmlXCAFDrivers_DocumentRetrievalDriver* self_) {
+    try { return {new Handle_XmlLDrivers_DocumentRetrievalDriver(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandlePCDMRetrievalDriver*> HandleXmlXCAFDriversDocumentRetrievalDriver_to_HandlePCDMRetrievalDriver(const HandleXmlXCAFDriversDocumentRetrievalDriver* self_) {
-    try { return {new HandlePCDMRetrievalDriver(*self_), nullptr}; }
+extern "C" OcctResult<Handle_PCDM_RetrievalDriver*> Handle_XmlXCAFDrivers_DocumentRetrievalDriver_to_Handle_PCDM_RetrievalDriver(const Handle_XmlXCAFDrivers_DocumentRetrievalDriver* self_) {
+    try { return {new Handle_PCDM_RetrievalDriver(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandlePCDMReader*> HandleXmlXCAFDriversDocumentRetrievalDriver_to_HandlePCDMReader(const HandleXmlXCAFDriversDocumentRetrievalDriver* self_) {
-    try { return {new HandlePCDMReader(*self_), nullptr}; }
+extern "C" OcctResult<Handle_PCDM_Reader*> Handle_XmlXCAFDrivers_DocumentRetrievalDriver_to_Handle_PCDM_Reader(const Handle_XmlXCAFDrivers_DocumentRetrievalDriver* self_) {
+    try { return {new Handle_PCDM_Reader(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleXmlXCAFDriversDocumentRetrievalDriver_to_HandleStandardTransient(const HandleXmlXCAFDriversDocumentRetrievalDriver* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_XmlXCAFDrivers_DocumentRetrievalDriver_to_Handle_Standard_Transient(const Handle_XmlXCAFDrivers_DocumentRetrievalDriver* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(XmlMDF_ADriver)*> XmlXCAFDrivers_DocumentRetrievalDriver_inherited_ReadShapeSection(XmlXCAFDrivers_DocumentRetrievalDriver* self, LDOM_Element const& thePDoc, Handle(Message_Messenger) const& theMsgDriver, Message_ProgressRange const& theRange) {
@@ -1846,36 +1843,36 @@ extern "C" OcctResult<const PCDM_Writer*> XmlXCAFDrivers_DocumentStorageDriver_a
 extern "C" OcctResult<PCDM_Writer*> XmlXCAFDrivers_DocumentStorageDriver_as_PCDM_Writer_mut(XmlXCAFDrivers_DocumentStorageDriver* self_) { return {static_cast<PCDM_Writer*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> XmlXCAFDrivers_DocumentStorageDriver_as_Standard_Transient(const XmlXCAFDrivers_DocumentStorageDriver* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> XmlXCAFDrivers_DocumentStorageDriver_as_Standard_Transient_mut(XmlXCAFDrivers_DocumentStorageDriver* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleXmlXCAFDriversDocumentStorageDriver*> XmlXCAFDrivers_DocumentStorageDriver_to_handle(XmlXCAFDrivers_DocumentStorageDriver* obj) {
-    try { return {new HandleXmlXCAFDriversDocumentStorageDriver(obj), nullptr}; }
+extern "C" OcctResult<Handle_XmlXCAFDrivers_DocumentStorageDriver*> XmlXCAFDrivers_DocumentStorageDriver_to_handle(XmlXCAFDrivers_DocumentStorageDriver* obj) {
+    try { return {new Handle_XmlXCAFDrivers_DocumentStorageDriver(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const XmlXCAFDrivers_DocumentStorageDriver*> HandleXmlXCAFDriversDocumentStorageDriver_get(const HandleXmlXCAFDriversDocumentStorageDriver* handle) {
+extern "C" OcctResult<const XmlXCAFDrivers_DocumentStorageDriver*> Handle_XmlXCAFDrivers_DocumentStorageDriver_get(const Handle_XmlXCAFDrivers_DocumentStorageDriver* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<XmlXCAFDrivers_DocumentStorageDriver*> HandleXmlXCAFDriversDocumentStorageDriver_get_mut(HandleXmlXCAFDriversDocumentStorageDriver* handle) {
+extern "C" OcctResult<XmlXCAFDrivers_DocumentStorageDriver*> Handle_XmlXCAFDrivers_DocumentStorageDriver_get_mut(Handle_XmlXCAFDrivers_DocumentStorageDriver* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleXmlDriversDocumentStorageDriver*> HandleXmlXCAFDriversDocumentStorageDriver_to_HandleXmlDriversDocumentStorageDriver(const HandleXmlXCAFDriversDocumentStorageDriver* self_) {
-    try { return {new HandleXmlDriversDocumentStorageDriver(*self_), nullptr}; }
+extern "C" OcctResult<Handle_XmlDrivers_DocumentStorageDriver*> Handle_XmlXCAFDrivers_DocumentStorageDriver_to_Handle_XmlDrivers_DocumentStorageDriver(const Handle_XmlXCAFDrivers_DocumentStorageDriver* self_) {
+    try { return {new Handle_XmlDrivers_DocumentStorageDriver(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleXmlLDriversDocumentStorageDriver*> HandleXmlXCAFDriversDocumentStorageDriver_to_HandleXmlLDriversDocumentStorageDriver(const HandleXmlXCAFDriversDocumentStorageDriver* self_) {
-    try { return {new HandleXmlLDriversDocumentStorageDriver(*self_), nullptr}; }
+extern "C" OcctResult<Handle_XmlLDrivers_DocumentStorageDriver*> Handle_XmlXCAFDrivers_DocumentStorageDriver_to_Handle_XmlLDrivers_DocumentStorageDriver(const Handle_XmlXCAFDrivers_DocumentStorageDriver* self_) {
+    try { return {new Handle_XmlLDrivers_DocumentStorageDriver(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandlePCDMStorageDriver*> HandleXmlXCAFDriversDocumentStorageDriver_to_HandlePCDMStorageDriver(const HandleXmlXCAFDriversDocumentStorageDriver* self_) {
-    try { return {new HandlePCDMStorageDriver(*self_), nullptr}; }
+extern "C" OcctResult<Handle_PCDM_StorageDriver*> Handle_XmlXCAFDrivers_DocumentStorageDriver_to_Handle_PCDM_StorageDriver(const Handle_XmlXCAFDrivers_DocumentStorageDriver* self_) {
+    try { return {new Handle_PCDM_StorageDriver(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandlePCDMWriter*> HandleXmlXCAFDriversDocumentStorageDriver_to_HandlePCDMWriter(const HandleXmlXCAFDriversDocumentStorageDriver* self_) {
-    try { return {new HandlePCDMWriter(*self_), nullptr}; }
+extern "C" OcctResult<Handle_PCDM_Writer*> Handle_XmlXCAFDrivers_DocumentStorageDriver_to_Handle_PCDM_Writer(const Handle_XmlXCAFDrivers_DocumentStorageDriver* self_) {
+    try { return {new Handle_PCDM_Writer(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleXmlXCAFDriversDocumentStorageDriver_to_HandleStandardTransient(const HandleXmlXCAFDriversDocumentStorageDriver* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_XmlXCAFDrivers_DocumentStorageDriver_to_Handle_Standard_Transient(const Handle_XmlXCAFDrivers_DocumentStorageDriver* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> XmlXCAFDrivers_DocumentStorageDriver_inherited_WriteShapeSection(XmlXCAFDrivers_DocumentStorageDriver* self, LDOM_Element& thePDoc, int32_t theStorageFormatVersion, Message_ProgressRange const& theRange) {

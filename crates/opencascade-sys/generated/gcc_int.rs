@@ -41,13 +41,13 @@ impl TryFrom<i32> for IType {
 }
 
 // Handle type re-exports (targets of handle upcasts/downcasts)
-pub use crate::ffi_types::HandleStandardTransient;
+pub use crate::ffi_types::Handle_Standard_Transient;
 
 // ========================
 // From GccInt_BCirc.hxx
 // ========================
 
-/// **Source:** `GccInt_BCirc.hxx`:31 - `GccInt_BCirc`
+/// **Source:** `GccInt_BCirc.hxx`:28 - `GccInt_BCirc`
 /// Describes a circle as a bisecting curve between two 2D
 /// geometric objects (such as circles or points).
 pub use crate::ffi_types::GccInt_BCirc as BCirc;
@@ -61,7 +61,7 @@ unsafe impl crate::CppDeletable for BCirc {
 }
 
 impl BCirc {
-    /// **Source:** `GccInt_BCirc.hxx`:36 - `GccInt_BCirc::GccInt_BCirc()`
+    /// **Source:** `GccInt_BCirc.hxx`:33 - `GccInt_BCirc::GccInt_BCirc()`
     /// Constructs a bisecting curve whose geometry is the 2D circle Circ.
     pub fn new_circ2d(Circ: &crate::gp::Circ2d) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -71,7 +71,7 @@ impl BCirc {
         }
     }
 
-    /// **Source:** `GccInt_BCirc.hxx`:39 - `GccInt_BCirc::Circle()`
+    /// **Source:** `GccInt_BCirc.hxx`:36 - `GccInt_BCirc::Circle()`
     /// Returns a 2D circle which is the geometry of this bisecting curve.
     pub fn circle(&self) -> crate::OwnedPtr<crate::gp::Circ2d> {
         unsafe {
@@ -81,7 +81,7 @@ impl BCirc {
         }
     }
 
-    /// **Source:** `GccInt_BCirc.hxx`:42 - `GccInt_BCirc::ArcType()`
+    /// **Source:** `GccInt_BCirc.hxx`:39 - `GccInt_BCirc::ArcType()`
     /// Returns GccInt_Cir, which is the type of any GccInt_BCirc bisecting curve.
     pub fn arc_type(&self) -> crate::gcc_int::IType {
         crate::gcc_int::IType::try_from(crate::check_result(unsafe {
@@ -90,8 +90,8 @@ impl BCirc {
         .unwrap()
     }
 
-    /// **Source:** `GccInt_BCirc.hxx`:44 - `GccInt_BCirc::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `GccInt_BCirc.hxx`:41 - `GccInt_BCirc::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKGeomAlgo::GccInt_BCirc_dynamic_type(
                 self as *const Self,
@@ -99,7 +99,7 @@ impl BCirc {
         }
     }
 
-    /// **Source:** `GccInt_BCirc.hxx`:44 - `GccInt_BCirc::get_type_name()`
+    /// **Source:** `GccInt_BCirc.hxx`:41 - `GccInt_BCirc::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -110,8 +110,8 @@ impl BCirc {
         .into_owned()
     }
 
-    /// **Source:** `GccInt_BCirc.hxx`:44 - `GccInt_BCirc::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    /// **Source:** `GccInt_BCirc.hxx`:41 - `GccInt_BCirc::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKGeomAlgo::GccInt_BCirc_get_type_descriptor()))
         }
@@ -158,7 +158,7 @@ impl BCirc {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleGccIntBCirc> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_GccInt_BCirc> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKGeomAlgo::GccInt_BCirc_to_handle(obj.into_raw()),
@@ -166,7 +166,7 @@ impl BCirc {
         }
     }
 
-    /// Inherited: **Source:** `GccInt_Bisec.hxx`:64 - `GccInt_Bisec::Point()`
+    /// Inherited: **Source:** `GccInt_Bisec.hxx`:61 - `GccInt_Bisec::Point()`
     pub fn point(&self) -> crate::OwnedPtr<crate::gp::Pnt2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -175,7 +175,7 @@ impl BCirc {
         }
     }
 
-    /// Inherited: **Source:** `GccInt_Bisec.hxx`:68 - `GccInt_Bisec::Line()`
+    /// Inherited: **Source:** `GccInt_Bisec.hxx`:65 - `GccInt_Bisec::Line()`
     pub fn line(&self) -> crate::OwnedPtr<crate::gp::Lin2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -184,7 +184,7 @@ impl BCirc {
         }
     }
 
-    /// Inherited: **Source:** `GccInt_Bisec.hxx`:76 - `GccInt_Bisec::Hyperbola()`
+    /// Inherited: **Source:** `GccInt_Bisec.hxx`:73 - `GccInt_Bisec::Hyperbola()`
     pub fn hyperbola(&self) -> crate::OwnedPtr<crate::gp::Hypr2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -193,7 +193,7 @@ impl BCirc {
         }
     }
 
-    /// Inherited: **Source:** `GccInt_Bisec.hxx`:80 - `GccInt_Bisec::Parabola()`
+    /// Inherited: **Source:** `GccInt_Bisec.hxx`:77 - `GccInt_Bisec::Parabola()`
     pub fn parabola(&self) -> crate::OwnedPtr<crate::gp::Parab2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -202,7 +202,7 @@ impl BCirc {
         }
     }
 
-    /// Inherited: **Source:** `GccInt_Bisec.hxx`:84 - `GccInt_Bisec::Ellipse()`
+    /// Inherited: **Source:** `GccInt_Bisec.hxx`:81 - `GccInt_Bisec::Ellipse()`
     pub fn ellipse(&self) -> crate::OwnedPtr<crate::gp::Elips2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -211,8 +211,8 @@ impl BCirc {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::GccInt_BCirc_inherited_IsInstance(
                 self as *const Self,
@@ -221,8 +221,8 @@ impl BCirc {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::GccInt_BCirc_inherited_IsKind(
                 self as *const Self,
@@ -231,7 +231,7 @@ impl BCirc {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -245,14 +245,14 @@ impl BCirc {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::GccInt_BCirc_inherited_GetRefCount(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::GccInt_BCirc_inherited_IncrementRefCounter(
@@ -261,7 +261,7 @@ impl BCirc {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::GccInt_BCirc_inherited_DecrementRefCounter(
@@ -270,7 +270,7 @@ impl BCirc {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::GccInt_BCirc_inherited_Delete(self as *const Self)
@@ -278,32 +278,32 @@ impl BCirc {
     }
 }
 
-pub use crate::ffi_types::HandleGccIntBCirc;
+pub use crate::ffi_types::Handle_GccInt_BCirc;
 
-unsafe impl crate::CppDeletable for HandleGccIntBCirc {
+unsafe impl crate::CppDeletable for Handle_GccInt_BCirc {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKGeomAlgo::HandleGccIntBCirc_destructor(ptr);
+            crate::ffi_extern_TKGeomAlgo::Handle_GccInt_BCirc_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleGccIntBCirc {
+unsafe impl crate::CppCopyable for Handle_GccInt_BCirc {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        unsafe { crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleGccIntBCirc_clone(ptr)) }
+        unsafe { crate::check_result(crate::ffi_extern_TKGeomAlgo::Handle_GccInt_BCirc_clone(ptr)) }
     }
 }
 
-impl HandleGccIntBCirc {
+impl Handle_GccInt_BCirc {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
-        unsafe { crate::ffi_extern_TKGeomAlgo::HandleGccIntBCirc_is_null(self as *const Self) }
+        unsafe { crate::ffi_extern_TKGeomAlgo::Handle_GccInt_BCirc_is_null(self as *const Self) }
     }
 
     /// Dereference this Handle to access the underlying GccInt_BCirc
     pub fn get(&self) -> &crate::ffi_types::GccInt_BCirc {
         unsafe {
-            &*crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleGccIntBCirc_get(
+            &*crate::check_result(crate::ffi_extern_TKGeomAlgo::Handle_GccInt_BCirc_get(
                 self as *const Self,
             ))
         }
@@ -312,17 +312,17 @@ impl HandleGccIntBCirc {
     /// Dereference this Handle to mutably access the underlying GccInt_BCirc
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::GccInt_BCirc {
         unsafe {
-            &mut *crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleGccIntBCirc_get_mut(
+            &mut *crate::check_result(crate::ffi_extern_TKGeomAlgo::Handle_GccInt_BCirc_get_mut(
                 self as *mut Self,
             ))
         }
     }
 
     /// Upcast Handle<GccInt_BCirc> to Handle<GccInt_Bisec>
-    pub fn to_handle_bisec(&self) -> crate::OwnedPtr<crate::ffi_types::HandleGccIntBisec> {
+    pub fn to_handle_bisec(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_GccInt_Bisec> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKGeomAlgo::HandleGccIntBCirc_to_HandleGccIntBisec(
+                crate::ffi_extern_TKGeomAlgo::Handle_GccInt_BCirc_to_Handle_GccInt_Bisec(
                     self as *const Self,
                 ),
             ))
@@ -332,10 +332,10 @@ impl HandleGccIntBCirc {
     /// Upcast Handle<GccInt_BCirc> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKGeomAlgo::HandleGccIntBCirc_to_HandleStandardTransient(
+                crate::ffi_extern_TKGeomAlgo::Handle_GccInt_BCirc_to_Handle_Standard_Transient(
                     self as *const Self,
                 ),
             ))
@@ -347,7 +347,7 @@ impl HandleGccIntBCirc {
 // From GccInt_BElips.hxx
 // ========================
 
-/// **Source:** `GccInt_BElips.hxx`:31 - `GccInt_BElips`
+/// **Source:** `GccInt_BElips.hxx`:28 - `GccInt_BElips`
 /// Describes an ellipse as a bisecting curve between two
 /// 2D geometric objects (such as circles or points).
 pub use crate::ffi_types::GccInt_BElips as BElips;
@@ -361,7 +361,7 @@ unsafe impl crate::CppDeletable for BElips {
 }
 
 impl BElips {
-    /// **Source:** `GccInt_BElips.hxx`:36 - `GccInt_BElips::GccInt_BElips()`
+    /// **Source:** `GccInt_BElips.hxx`:33 - `GccInt_BElips::GccInt_BElips()`
     /// Constructs a bisecting curve whose geometry is the 2D ellipse Ellipse.
     pub fn new_elips2d(Ellipse: &crate::gp::Elips2d) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -371,7 +371,7 @@ impl BElips {
         }
     }
 
-    /// **Source:** `GccInt_BElips.hxx`:39 - `GccInt_BElips::Ellipse()`
+    /// **Source:** `GccInt_BElips.hxx`:36 - `GccInt_BElips::Ellipse()`
     /// Returns a 2D ellipse which is the geometry of this bisecting curve.
     pub fn ellipse(&self) -> crate::OwnedPtr<crate::gp::Elips2d> {
         unsafe {
@@ -381,7 +381,7 @@ impl BElips {
         }
     }
 
-    /// **Source:** `GccInt_BElips.hxx`:42 - `GccInt_BElips::ArcType()`
+    /// **Source:** `GccInt_BElips.hxx`:39 - `GccInt_BElips::ArcType()`
     /// Returns GccInt_Ell, which is the type of any GccInt_BElips bisecting curve.
     pub fn arc_type(&self) -> crate::gcc_int::IType {
         crate::gcc_int::IType::try_from(crate::check_result(unsafe {
@@ -390,8 +390,8 @@ impl BElips {
         .unwrap()
     }
 
-    /// **Source:** `GccInt_BElips.hxx`:44 - `GccInt_BElips::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `GccInt_BElips.hxx`:41 - `GccInt_BElips::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKGeomAlgo::GccInt_BElips_dynamic_type(
                 self as *const Self,
@@ -399,7 +399,7 @@ impl BElips {
         }
     }
 
-    /// **Source:** `GccInt_BElips.hxx`:44 - `GccInt_BElips::get_type_name()`
+    /// **Source:** `GccInt_BElips.hxx`:41 - `GccInt_BElips::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -410,8 +410,8 @@ impl BElips {
         .into_owned()
     }
 
-    /// **Source:** `GccInt_BElips.hxx`:44 - `GccInt_BElips::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    /// **Source:** `GccInt_BElips.hxx`:41 - `GccInt_BElips::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKGeomAlgo::GccInt_BElips_get_type_descriptor(),
@@ -462,7 +462,7 @@ impl BElips {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleGccIntBElips> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_GccInt_BElips> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKGeomAlgo::GccInt_BElips_to_handle(obj.into_raw()),
@@ -470,7 +470,7 @@ impl BElips {
         }
     }
 
-    /// Inherited: **Source:** `GccInt_Bisec.hxx`:64 - `GccInt_Bisec::Point()`
+    /// Inherited: **Source:** `GccInt_Bisec.hxx`:61 - `GccInt_Bisec::Point()`
     pub fn point(&self) -> crate::OwnedPtr<crate::gp::Pnt2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -479,7 +479,7 @@ impl BElips {
         }
     }
 
-    /// Inherited: **Source:** `GccInt_Bisec.hxx`:68 - `GccInt_Bisec::Line()`
+    /// Inherited: **Source:** `GccInt_Bisec.hxx`:65 - `GccInt_Bisec::Line()`
     pub fn line(&self) -> crate::OwnedPtr<crate::gp::Lin2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -488,7 +488,7 @@ impl BElips {
         }
     }
 
-    /// Inherited: **Source:** `GccInt_Bisec.hxx`:72 - `GccInt_Bisec::Circle()`
+    /// Inherited: **Source:** `GccInt_Bisec.hxx`:69 - `GccInt_Bisec::Circle()`
     pub fn circle(&self) -> crate::OwnedPtr<crate::gp::Circ2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -497,7 +497,7 @@ impl BElips {
         }
     }
 
-    /// Inherited: **Source:** `GccInt_Bisec.hxx`:76 - `GccInt_Bisec::Hyperbola()`
+    /// Inherited: **Source:** `GccInt_Bisec.hxx`:73 - `GccInt_Bisec::Hyperbola()`
     pub fn hyperbola(&self) -> crate::OwnedPtr<crate::gp::Hypr2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -508,7 +508,7 @@ impl BElips {
         }
     }
 
-    /// Inherited: **Source:** `GccInt_Bisec.hxx`:80 - `GccInt_Bisec::Parabola()`
+    /// Inherited: **Source:** `GccInt_Bisec.hxx`:77 - `GccInt_Bisec::Parabola()`
     pub fn parabola(&self) -> crate::OwnedPtr<crate::gp::Parab2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -517,8 +517,8 @@ impl BElips {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::GccInt_BElips_inherited_IsInstance(
                 self as *const Self,
@@ -527,8 +527,8 @@ impl BElips {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::GccInt_BElips_inherited_IsKind(
                 self as *const Self,
@@ -537,7 +537,7 @@ impl BElips {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -551,14 +551,14 @@ impl BElips {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::GccInt_BElips_inherited_GetRefCount(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::GccInt_BElips_inherited_IncrementRefCounter(
@@ -567,7 +567,7 @@ impl BElips {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::GccInt_BElips_inherited_DecrementRefCounter(
@@ -576,7 +576,7 @@ impl BElips {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::GccInt_BElips_inherited_Delete(self as *const Self)
@@ -584,32 +584,34 @@ impl BElips {
     }
 }
 
-pub use crate::ffi_types::HandleGccIntBElips;
+pub use crate::ffi_types::Handle_GccInt_BElips;
 
-unsafe impl crate::CppDeletable for HandleGccIntBElips {
+unsafe impl crate::CppDeletable for Handle_GccInt_BElips {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKGeomAlgo::HandleGccIntBElips_destructor(ptr);
+            crate::ffi_extern_TKGeomAlgo::Handle_GccInt_BElips_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleGccIntBElips {
+unsafe impl crate::CppCopyable for Handle_GccInt_BElips {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        unsafe { crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleGccIntBElips_clone(ptr)) }
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKGeomAlgo::Handle_GccInt_BElips_clone(ptr))
+        }
     }
 }
 
-impl HandleGccIntBElips {
+impl Handle_GccInt_BElips {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
-        unsafe { crate::ffi_extern_TKGeomAlgo::HandleGccIntBElips_is_null(self as *const Self) }
+        unsafe { crate::ffi_extern_TKGeomAlgo::Handle_GccInt_BElips_is_null(self as *const Self) }
     }
 
     /// Dereference this Handle to access the underlying GccInt_BElips
     pub fn get(&self) -> &crate::ffi_types::GccInt_BElips {
         unsafe {
-            &*crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleGccIntBElips_get(
+            &*crate::check_result(crate::ffi_extern_TKGeomAlgo::Handle_GccInt_BElips_get(
                 self as *const Self,
             ))
         }
@@ -618,17 +620,17 @@ impl HandleGccIntBElips {
     /// Dereference this Handle to mutably access the underlying GccInt_BElips
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::GccInt_BElips {
         unsafe {
-            &mut *crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleGccIntBElips_get_mut(
+            &mut *crate::check_result(crate::ffi_extern_TKGeomAlgo::Handle_GccInt_BElips_get_mut(
                 self as *mut Self,
             ))
         }
     }
 
     /// Upcast Handle<GccInt_BElips> to Handle<GccInt_Bisec>
-    pub fn to_handle_bisec(&self) -> crate::OwnedPtr<crate::ffi_types::HandleGccIntBisec> {
+    pub fn to_handle_bisec(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_GccInt_Bisec> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKGeomAlgo::HandleGccIntBElips_to_HandleGccIntBisec(
+                crate::ffi_extern_TKGeomAlgo::Handle_GccInt_BElips_to_Handle_GccInt_Bisec(
                     self as *const Self,
                 ),
             ))
@@ -638,10 +640,10 @@ impl HandleGccIntBElips {
     /// Upcast Handle<GccInt_BElips> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKGeomAlgo::HandleGccIntBElips_to_HandleStandardTransient(
+                crate::ffi_extern_TKGeomAlgo::Handle_GccInt_BElips_to_Handle_Standard_Transient(
                     self as *const Self,
                 ),
             ))
@@ -653,7 +655,7 @@ impl HandleGccIntBElips {
 // From GccInt_BHyper.hxx
 // ========================
 
-/// **Source:** `GccInt_BHyper.hxx`:31 - `GccInt_BHyper`
+/// **Source:** `GccInt_BHyper.hxx`:28 - `GccInt_BHyper`
 /// Describes a hyperbola as a bisecting curve between two
 /// 2D geometric objects (such as circles or points).
 pub use crate::ffi_types::GccInt_BHyper as BHyper;
@@ -667,7 +669,7 @@ unsafe impl crate::CppDeletable for BHyper {
 }
 
 impl BHyper {
-    /// **Source:** `GccInt_BHyper.hxx`:36 - `GccInt_BHyper::GccInt_BHyper()`
+    /// **Source:** `GccInt_BHyper.hxx`:33 - `GccInt_BHyper::GccInt_BHyper()`
     /// Constructs a bisecting curve whose geometry is the 2D hyperbola Hyper.
     pub fn new_hypr2d(Hyper: &crate::gp::Hypr2d) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -677,7 +679,7 @@ impl BHyper {
         }
     }
 
-    /// **Source:** `GccInt_BHyper.hxx`:39 - `GccInt_BHyper::Hyperbola()`
+    /// **Source:** `GccInt_BHyper.hxx`:36 - `GccInt_BHyper::Hyperbola()`
     /// Returns a 2D hyperbola which is the geometry of this bisecting curve.
     pub fn hyperbola(&self) -> crate::OwnedPtr<crate::gp::Hypr2d> {
         unsafe {
@@ -687,7 +689,7 @@ impl BHyper {
         }
     }
 
-    /// **Source:** `GccInt_BHyper.hxx`:42 - `GccInt_BHyper::ArcType()`
+    /// **Source:** `GccInt_BHyper.hxx`:39 - `GccInt_BHyper::ArcType()`
     /// Returns GccInt_Hpr, which is the type of any GccInt_BHyper bisecting curve.
     pub fn arc_type(&self) -> crate::gcc_int::IType {
         crate::gcc_int::IType::try_from(crate::check_result(unsafe {
@@ -696,8 +698,8 @@ impl BHyper {
         .unwrap()
     }
 
-    /// **Source:** `GccInt_BHyper.hxx`:44 - `GccInt_BHyper::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `GccInt_BHyper.hxx`:41 - `GccInt_BHyper::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKGeomAlgo::GccInt_BHyper_dynamic_type(
                 self as *const Self,
@@ -705,7 +707,7 @@ impl BHyper {
         }
     }
 
-    /// **Source:** `GccInt_BHyper.hxx`:44 - `GccInt_BHyper::get_type_name()`
+    /// **Source:** `GccInt_BHyper.hxx`:41 - `GccInt_BHyper::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -716,8 +718,8 @@ impl BHyper {
         .into_owned()
     }
 
-    /// **Source:** `GccInt_BHyper.hxx`:44 - `GccInt_BHyper::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    /// **Source:** `GccInt_BHyper.hxx`:41 - `GccInt_BHyper::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKGeomAlgo::GccInt_BHyper_get_type_descriptor(),
@@ -768,7 +770,7 @@ impl BHyper {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleGccIntBHyper> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_GccInt_BHyper> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKGeomAlgo::GccInt_BHyper_to_handle(obj.into_raw()),
@@ -776,7 +778,7 @@ impl BHyper {
         }
     }
 
-    /// Inherited: **Source:** `GccInt_Bisec.hxx`:64 - `GccInt_Bisec::Point()`
+    /// Inherited: **Source:** `GccInt_Bisec.hxx`:61 - `GccInt_Bisec::Point()`
     pub fn point(&self) -> crate::OwnedPtr<crate::gp::Pnt2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -785,7 +787,7 @@ impl BHyper {
         }
     }
 
-    /// Inherited: **Source:** `GccInt_Bisec.hxx`:68 - `GccInt_Bisec::Line()`
+    /// Inherited: **Source:** `GccInt_Bisec.hxx`:65 - `GccInt_Bisec::Line()`
     pub fn line(&self) -> crate::OwnedPtr<crate::gp::Lin2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -794,7 +796,7 @@ impl BHyper {
         }
     }
 
-    /// Inherited: **Source:** `GccInt_Bisec.hxx`:72 - `GccInt_Bisec::Circle()`
+    /// Inherited: **Source:** `GccInt_Bisec.hxx`:69 - `GccInt_Bisec::Circle()`
     pub fn circle(&self) -> crate::OwnedPtr<crate::gp::Circ2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -803,7 +805,7 @@ impl BHyper {
         }
     }
 
-    /// Inherited: **Source:** `GccInt_Bisec.hxx`:80 - `GccInt_Bisec::Parabola()`
+    /// Inherited: **Source:** `GccInt_Bisec.hxx`:77 - `GccInt_Bisec::Parabola()`
     pub fn parabola(&self) -> crate::OwnedPtr<crate::gp::Parab2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -812,7 +814,7 @@ impl BHyper {
         }
     }
 
-    /// Inherited: **Source:** `GccInt_Bisec.hxx`:84 - `GccInt_Bisec::Ellipse()`
+    /// Inherited: **Source:** `GccInt_Bisec.hxx`:81 - `GccInt_Bisec::Ellipse()`
     pub fn ellipse(&self) -> crate::OwnedPtr<crate::gp::Elips2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -821,8 +823,8 @@ impl BHyper {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::GccInt_BHyper_inherited_IsInstance(
                 self as *const Self,
@@ -831,8 +833,8 @@ impl BHyper {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::GccInt_BHyper_inherited_IsKind(
                 self as *const Self,
@@ -841,7 +843,7 @@ impl BHyper {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -855,14 +857,14 @@ impl BHyper {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::GccInt_BHyper_inherited_GetRefCount(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::GccInt_BHyper_inherited_IncrementRefCounter(
@@ -871,7 +873,7 @@ impl BHyper {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::GccInt_BHyper_inherited_DecrementRefCounter(
@@ -880,7 +882,7 @@ impl BHyper {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::GccInt_BHyper_inherited_Delete(self as *const Self)
@@ -888,32 +890,34 @@ impl BHyper {
     }
 }
 
-pub use crate::ffi_types::HandleGccIntBHyper;
+pub use crate::ffi_types::Handle_GccInt_BHyper;
 
-unsafe impl crate::CppDeletable for HandleGccIntBHyper {
+unsafe impl crate::CppDeletable for Handle_GccInt_BHyper {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKGeomAlgo::HandleGccIntBHyper_destructor(ptr);
+            crate::ffi_extern_TKGeomAlgo::Handle_GccInt_BHyper_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleGccIntBHyper {
+unsafe impl crate::CppCopyable for Handle_GccInt_BHyper {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        unsafe { crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleGccIntBHyper_clone(ptr)) }
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKGeomAlgo::Handle_GccInt_BHyper_clone(ptr))
+        }
     }
 }
 
-impl HandleGccIntBHyper {
+impl Handle_GccInt_BHyper {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
-        unsafe { crate::ffi_extern_TKGeomAlgo::HandleGccIntBHyper_is_null(self as *const Self) }
+        unsafe { crate::ffi_extern_TKGeomAlgo::Handle_GccInt_BHyper_is_null(self as *const Self) }
     }
 
     /// Dereference this Handle to access the underlying GccInt_BHyper
     pub fn get(&self) -> &crate::ffi_types::GccInt_BHyper {
         unsafe {
-            &*crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleGccIntBHyper_get(
+            &*crate::check_result(crate::ffi_extern_TKGeomAlgo::Handle_GccInt_BHyper_get(
                 self as *const Self,
             ))
         }
@@ -922,17 +926,17 @@ impl HandleGccIntBHyper {
     /// Dereference this Handle to mutably access the underlying GccInt_BHyper
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::GccInt_BHyper {
         unsafe {
-            &mut *crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleGccIntBHyper_get_mut(
+            &mut *crate::check_result(crate::ffi_extern_TKGeomAlgo::Handle_GccInt_BHyper_get_mut(
                 self as *mut Self,
             ))
         }
     }
 
     /// Upcast Handle<GccInt_BHyper> to Handle<GccInt_Bisec>
-    pub fn to_handle_bisec(&self) -> crate::OwnedPtr<crate::ffi_types::HandleGccIntBisec> {
+    pub fn to_handle_bisec(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_GccInt_Bisec> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKGeomAlgo::HandleGccIntBHyper_to_HandleGccIntBisec(
+                crate::ffi_extern_TKGeomAlgo::Handle_GccInt_BHyper_to_Handle_GccInt_Bisec(
                     self as *const Self,
                 ),
             ))
@@ -942,10 +946,10 @@ impl HandleGccIntBHyper {
     /// Upcast Handle<GccInt_BHyper> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKGeomAlgo::HandleGccIntBHyper_to_HandleStandardTransient(
+                crate::ffi_extern_TKGeomAlgo::Handle_GccInt_BHyper_to_Handle_Standard_Transient(
                     self as *const Self,
                 ),
             ))
@@ -957,7 +961,7 @@ impl HandleGccIntBHyper {
 // From GccInt_BLine.hxx
 // ========================
 
-/// **Source:** `GccInt_BLine.hxx`:31 - `GccInt_BLine`
+/// **Source:** `GccInt_BLine.hxx`:28 - `GccInt_BLine`
 /// Describes a line as a bisecting curve between two 2D
 /// geometric objects (such as lines, circles or points).
 pub use crate::ffi_types::GccInt_BLine as BLine;
@@ -971,7 +975,7 @@ unsafe impl crate::CppDeletable for BLine {
 }
 
 impl BLine {
-    /// **Source:** `GccInt_BLine.hxx`:36 - `GccInt_BLine::GccInt_BLine()`
+    /// **Source:** `GccInt_BLine.hxx`:33 - `GccInt_BLine::GccInt_BLine()`
     /// Constructs a bisecting line whose geometry is the 2D line Line.
     pub fn new_lin2d(Line: &crate::gp::Lin2d) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -981,7 +985,7 @@ impl BLine {
         }
     }
 
-    /// **Source:** `GccInt_BLine.hxx`:39 - `GccInt_BLine::Line()`
+    /// **Source:** `GccInt_BLine.hxx`:36 - `GccInt_BLine::Line()`
     /// Returns a 2D line which is the geometry of this bisecting line.
     pub fn line(&self) -> crate::OwnedPtr<crate::gp::Lin2d> {
         unsafe {
@@ -991,7 +995,7 @@ impl BLine {
         }
     }
 
-    /// **Source:** `GccInt_BLine.hxx`:42 - `GccInt_BLine::ArcType()`
+    /// **Source:** `GccInt_BLine.hxx`:39 - `GccInt_BLine::ArcType()`
     /// Returns GccInt_Lin, which is the type of any GccInt_BLine bisecting line.
     pub fn arc_type(&self) -> crate::gcc_int::IType {
         crate::gcc_int::IType::try_from(crate::check_result(unsafe {
@@ -1000,8 +1004,8 @@ impl BLine {
         .unwrap()
     }
 
-    /// **Source:** `GccInt_BLine.hxx`:44 - `GccInt_BLine::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `GccInt_BLine.hxx`:41 - `GccInt_BLine::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKGeomAlgo::GccInt_BLine_dynamic_type(
                 self as *const Self,
@@ -1009,7 +1013,7 @@ impl BLine {
         }
     }
 
-    /// **Source:** `GccInt_BLine.hxx`:44 - `GccInt_BLine::get_type_name()`
+    /// **Source:** `GccInt_BLine.hxx`:41 - `GccInt_BLine::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -1020,8 +1024,8 @@ impl BLine {
         .into_owned()
     }
 
-    /// **Source:** `GccInt_BLine.hxx`:44 - `GccInt_BLine::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    /// **Source:** `GccInt_BLine.hxx`:41 - `GccInt_BLine::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKGeomAlgo::GccInt_BLine_get_type_descriptor()))
         }
@@ -1068,7 +1072,7 @@ impl BLine {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleGccIntBLine> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_GccInt_BLine> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKGeomAlgo::GccInt_BLine_to_handle(obj.into_raw()),
@@ -1076,7 +1080,7 @@ impl BLine {
         }
     }
 
-    /// Inherited: **Source:** `GccInt_Bisec.hxx`:64 - `GccInt_Bisec::Point()`
+    /// Inherited: **Source:** `GccInt_Bisec.hxx`:61 - `GccInt_Bisec::Point()`
     pub fn point(&self) -> crate::OwnedPtr<crate::gp::Pnt2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -1085,7 +1089,7 @@ impl BLine {
         }
     }
 
-    /// Inherited: **Source:** `GccInt_Bisec.hxx`:72 - `GccInt_Bisec::Circle()`
+    /// Inherited: **Source:** `GccInt_Bisec.hxx`:69 - `GccInt_Bisec::Circle()`
     pub fn circle(&self) -> crate::OwnedPtr<crate::gp::Circ2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -1094,7 +1098,7 @@ impl BLine {
         }
     }
 
-    /// Inherited: **Source:** `GccInt_Bisec.hxx`:76 - `GccInt_Bisec::Hyperbola()`
+    /// Inherited: **Source:** `GccInt_Bisec.hxx`:73 - `GccInt_Bisec::Hyperbola()`
     pub fn hyperbola(&self) -> crate::OwnedPtr<crate::gp::Hypr2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -1103,7 +1107,7 @@ impl BLine {
         }
     }
 
-    /// Inherited: **Source:** `GccInt_Bisec.hxx`:80 - `GccInt_Bisec::Parabola()`
+    /// Inherited: **Source:** `GccInt_Bisec.hxx`:77 - `GccInt_Bisec::Parabola()`
     pub fn parabola(&self) -> crate::OwnedPtr<crate::gp::Parab2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -1112,7 +1116,7 @@ impl BLine {
         }
     }
 
-    /// Inherited: **Source:** `GccInt_Bisec.hxx`:84 - `GccInt_Bisec::Ellipse()`
+    /// Inherited: **Source:** `GccInt_Bisec.hxx`:81 - `GccInt_Bisec::Ellipse()`
     pub fn ellipse(&self) -> crate::OwnedPtr<crate::gp::Elips2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -1121,8 +1125,8 @@ impl BLine {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::GccInt_BLine_inherited_IsInstance(
                 self as *const Self,
@@ -1131,8 +1135,8 @@ impl BLine {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::GccInt_BLine_inherited_IsKind(
                 self as *const Self,
@@ -1141,7 +1145,7 @@ impl BLine {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -1155,14 +1159,14 @@ impl BLine {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::GccInt_BLine_inherited_GetRefCount(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::GccInt_BLine_inherited_IncrementRefCounter(
@@ -1171,7 +1175,7 @@ impl BLine {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::GccInt_BLine_inherited_DecrementRefCounter(
@@ -1180,7 +1184,7 @@ impl BLine {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::GccInt_BLine_inherited_Delete(self as *const Self)
@@ -1188,32 +1192,32 @@ impl BLine {
     }
 }
 
-pub use crate::ffi_types::HandleGccIntBLine;
+pub use crate::ffi_types::Handle_GccInt_BLine;
 
-unsafe impl crate::CppDeletable for HandleGccIntBLine {
+unsafe impl crate::CppDeletable for Handle_GccInt_BLine {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKGeomAlgo::HandleGccIntBLine_destructor(ptr);
+            crate::ffi_extern_TKGeomAlgo::Handle_GccInt_BLine_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleGccIntBLine {
+unsafe impl crate::CppCopyable for Handle_GccInt_BLine {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        unsafe { crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleGccIntBLine_clone(ptr)) }
+        unsafe { crate::check_result(crate::ffi_extern_TKGeomAlgo::Handle_GccInt_BLine_clone(ptr)) }
     }
 }
 
-impl HandleGccIntBLine {
+impl Handle_GccInt_BLine {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
-        unsafe { crate::ffi_extern_TKGeomAlgo::HandleGccIntBLine_is_null(self as *const Self) }
+        unsafe { crate::ffi_extern_TKGeomAlgo::Handle_GccInt_BLine_is_null(self as *const Self) }
     }
 
     /// Dereference this Handle to access the underlying GccInt_BLine
     pub fn get(&self) -> &crate::ffi_types::GccInt_BLine {
         unsafe {
-            &*crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleGccIntBLine_get(
+            &*crate::check_result(crate::ffi_extern_TKGeomAlgo::Handle_GccInt_BLine_get(
                 self as *const Self,
             ))
         }
@@ -1222,17 +1226,17 @@ impl HandleGccIntBLine {
     /// Dereference this Handle to mutably access the underlying GccInt_BLine
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::GccInt_BLine {
         unsafe {
-            &mut *crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleGccIntBLine_get_mut(
+            &mut *crate::check_result(crate::ffi_extern_TKGeomAlgo::Handle_GccInt_BLine_get_mut(
                 self as *mut Self,
             ))
         }
     }
 
     /// Upcast Handle<GccInt_BLine> to Handle<GccInt_Bisec>
-    pub fn to_handle_bisec(&self) -> crate::OwnedPtr<crate::ffi_types::HandleGccIntBisec> {
+    pub fn to_handle_bisec(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_GccInt_Bisec> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKGeomAlgo::HandleGccIntBLine_to_HandleGccIntBisec(
+                crate::ffi_extern_TKGeomAlgo::Handle_GccInt_BLine_to_Handle_GccInt_Bisec(
                     self as *const Self,
                 ),
             ))
@@ -1242,10 +1246,10 @@ impl HandleGccIntBLine {
     /// Upcast Handle<GccInt_BLine> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKGeomAlgo::HandleGccIntBLine_to_HandleStandardTransient(
+                crate::ffi_extern_TKGeomAlgo::Handle_GccInt_BLine_to_Handle_Standard_Transient(
                     self as *const Self,
                 ),
             ))
@@ -1257,7 +1261,7 @@ impl HandleGccIntBLine {
 // From GccInt_BParab.hxx
 // ========================
 
-/// **Source:** `GccInt_BParab.hxx`:31 - `GccInt_BParab`
+/// **Source:** `GccInt_BParab.hxx`:28 - `GccInt_BParab`
 /// Describes a parabola as a bisecting curve between two
 /// 2D geometric objects (such as lines, circles or points).
 pub use crate::ffi_types::GccInt_BParab as BParab;
@@ -1271,7 +1275,7 @@ unsafe impl crate::CppDeletable for BParab {
 }
 
 impl BParab {
-    /// **Source:** `GccInt_BParab.hxx`:36 - `GccInt_BParab::GccInt_BParab()`
+    /// **Source:** `GccInt_BParab.hxx`:33 - `GccInt_BParab::GccInt_BParab()`
     /// Constructs a bisecting curve whose geometry is the 2D parabola Parab.
     pub fn new_parab2d(Parab: &crate::gp::Parab2d) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -1281,7 +1285,7 @@ impl BParab {
         }
     }
 
-    /// **Source:** `GccInt_BParab.hxx`:39 - `GccInt_BParab::Parabola()`
+    /// **Source:** `GccInt_BParab.hxx`:36 - `GccInt_BParab::Parabola()`
     /// Returns a 2D parabola which is the geometry of this bisecting curve.
     pub fn parabola(&self) -> crate::OwnedPtr<crate::gp::Parab2d> {
         unsafe {
@@ -1291,7 +1295,7 @@ impl BParab {
         }
     }
 
-    /// **Source:** `GccInt_BParab.hxx`:42 - `GccInt_BParab::ArcType()`
+    /// **Source:** `GccInt_BParab.hxx`:39 - `GccInt_BParab::ArcType()`
     /// Returns GccInt_Par, which is the type of any GccInt_BParab bisecting curve.
     pub fn arc_type(&self) -> crate::gcc_int::IType {
         crate::gcc_int::IType::try_from(crate::check_result(unsafe {
@@ -1300,8 +1304,8 @@ impl BParab {
         .unwrap()
     }
 
-    /// **Source:** `GccInt_BParab.hxx`:44 - `GccInt_BParab::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `GccInt_BParab.hxx`:41 - `GccInt_BParab::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKGeomAlgo::GccInt_BParab_dynamic_type(
                 self as *const Self,
@@ -1309,7 +1313,7 @@ impl BParab {
         }
     }
 
-    /// **Source:** `GccInt_BParab.hxx`:44 - `GccInt_BParab::get_type_name()`
+    /// **Source:** `GccInt_BParab.hxx`:41 - `GccInt_BParab::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -1320,8 +1324,8 @@ impl BParab {
         .into_owned()
     }
 
-    /// **Source:** `GccInt_BParab.hxx`:44 - `GccInt_BParab::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    /// **Source:** `GccInt_BParab.hxx`:41 - `GccInt_BParab::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKGeomAlgo::GccInt_BParab_get_type_descriptor(),
@@ -1372,7 +1376,7 @@ impl BParab {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleGccIntBParab> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_GccInt_BParab> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKGeomAlgo::GccInt_BParab_to_handle(obj.into_raw()),
@@ -1380,7 +1384,7 @@ impl BParab {
         }
     }
 
-    /// Inherited: **Source:** `GccInt_Bisec.hxx`:64 - `GccInt_Bisec::Point()`
+    /// Inherited: **Source:** `GccInt_Bisec.hxx`:61 - `GccInt_Bisec::Point()`
     pub fn point(&self) -> crate::OwnedPtr<crate::gp::Pnt2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -1389,7 +1393,7 @@ impl BParab {
         }
     }
 
-    /// Inherited: **Source:** `GccInt_Bisec.hxx`:68 - `GccInt_Bisec::Line()`
+    /// Inherited: **Source:** `GccInt_Bisec.hxx`:65 - `GccInt_Bisec::Line()`
     pub fn line(&self) -> crate::OwnedPtr<crate::gp::Lin2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -1398,7 +1402,7 @@ impl BParab {
         }
     }
 
-    /// Inherited: **Source:** `GccInt_Bisec.hxx`:72 - `GccInt_Bisec::Circle()`
+    /// Inherited: **Source:** `GccInt_Bisec.hxx`:69 - `GccInt_Bisec::Circle()`
     pub fn circle(&self) -> crate::OwnedPtr<crate::gp::Circ2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -1407,7 +1411,7 @@ impl BParab {
         }
     }
 
-    /// Inherited: **Source:** `GccInt_Bisec.hxx`:76 - `GccInt_Bisec::Hyperbola()`
+    /// Inherited: **Source:** `GccInt_Bisec.hxx`:73 - `GccInt_Bisec::Hyperbola()`
     pub fn hyperbola(&self) -> crate::OwnedPtr<crate::gp::Hypr2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -1418,7 +1422,7 @@ impl BParab {
         }
     }
 
-    /// Inherited: **Source:** `GccInt_Bisec.hxx`:84 - `GccInt_Bisec::Ellipse()`
+    /// Inherited: **Source:** `GccInt_Bisec.hxx`:81 - `GccInt_Bisec::Ellipse()`
     pub fn ellipse(&self) -> crate::OwnedPtr<crate::gp::Elips2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -1427,8 +1431,8 @@ impl BParab {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::GccInt_BParab_inherited_IsInstance(
                 self as *const Self,
@@ -1437,8 +1441,8 @@ impl BParab {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::GccInt_BParab_inherited_IsKind(
                 self as *const Self,
@@ -1447,7 +1451,7 @@ impl BParab {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -1461,14 +1465,14 @@ impl BParab {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::GccInt_BParab_inherited_GetRefCount(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::GccInt_BParab_inherited_IncrementRefCounter(
@@ -1477,7 +1481,7 @@ impl BParab {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::GccInt_BParab_inherited_DecrementRefCounter(
@@ -1486,7 +1490,7 @@ impl BParab {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::GccInt_BParab_inherited_Delete(self as *const Self)
@@ -1494,32 +1498,34 @@ impl BParab {
     }
 }
 
-pub use crate::ffi_types::HandleGccIntBParab;
+pub use crate::ffi_types::Handle_GccInt_BParab;
 
-unsafe impl crate::CppDeletable for HandleGccIntBParab {
+unsafe impl crate::CppDeletable for Handle_GccInt_BParab {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKGeomAlgo::HandleGccIntBParab_destructor(ptr);
+            crate::ffi_extern_TKGeomAlgo::Handle_GccInt_BParab_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleGccIntBParab {
+unsafe impl crate::CppCopyable for Handle_GccInt_BParab {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        unsafe { crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleGccIntBParab_clone(ptr)) }
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKGeomAlgo::Handle_GccInt_BParab_clone(ptr))
+        }
     }
 }
 
-impl HandleGccIntBParab {
+impl Handle_GccInt_BParab {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
-        unsafe { crate::ffi_extern_TKGeomAlgo::HandleGccIntBParab_is_null(self as *const Self) }
+        unsafe { crate::ffi_extern_TKGeomAlgo::Handle_GccInt_BParab_is_null(self as *const Self) }
     }
 
     /// Dereference this Handle to access the underlying GccInt_BParab
     pub fn get(&self) -> &crate::ffi_types::GccInt_BParab {
         unsafe {
-            &*crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleGccIntBParab_get(
+            &*crate::check_result(crate::ffi_extern_TKGeomAlgo::Handle_GccInt_BParab_get(
                 self as *const Self,
             ))
         }
@@ -1528,17 +1534,17 @@ impl HandleGccIntBParab {
     /// Dereference this Handle to mutably access the underlying GccInt_BParab
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::GccInt_BParab {
         unsafe {
-            &mut *crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleGccIntBParab_get_mut(
+            &mut *crate::check_result(crate::ffi_extern_TKGeomAlgo::Handle_GccInt_BParab_get_mut(
                 self as *mut Self,
             ))
         }
     }
 
     /// Upcast Handle<GccInt_BParab> to Handle<GccInt_Bisec>
-    pub fn to_handle_bisec(&self) -> crate::OwnedPtr<crate::ffi_types::HandleGccIntBisec> {
+    pub fn to_handle_bisec(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_GccInt_Bisec> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKGeomAlgo::HandleGccIntBParab_to_HandleGccIntBisec(
+                crate::ffi_extern_TKGeomAlgo::Handle_GccInt_BParab_to_Handle_GccInt_Bisec(
                     self as *const Self,
                 ),
             ))
@@ -1548,10 +1554,10 @@ impl HandleGccIntBParab {
     /// Upcast Handle<GccInt_BParab> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKGeomAlgo::HandleGccIntBParab_to_HandleStandardTransient(
+                crate::ffi_extern_TKGeomAlgo::Handle_GccInt_BParab_to_Handle_Standard_Transient(
                     self as *const Self,
                 ),
             ))
@@ -1563,7 +1569,7 @@ impl HandleGccIntBParab {
 // From GccInt_BPoint.hxx
 // ========================
 
-/// **Source:** `GccInt_BPoint.hxx`:30 - `GccInt_BPoint`
+/// **Source:** `GccInt_BPoint.hxx`:27 - `GccInt_BPoint`
 /// Describes a point as a bisecting object between two 2D geometric objects.
 pub use crate::ffi_types::GccInt_BPoint as BPoint;
 
@@ -1576,7 +1582,7 @@ unsafe impl crate::CppDeletable for BPoint {
 }
 
 impl BPoint {
-    /// **Source:** `GccInt_BPoint.hxx`:35 - `GccInt_BPoint::GccInt_BPoint()`
+    /// **Source:** `GccInt_BPoint.hxx`:32 - `GccInt_BPoint::GccInt_BPoint()`
     /// Constructs a bisecting object whose geometry is the 2D point Point.
     pub fn new_pnt2d(Point: &crate::gp::Pnt2d) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -1586,7 +1592,7 @@ impl BPoint {
         }
     }
 
-    /// **Source:** `GccInt_BPoint.hxx`:38 - `GccInt_BPoint::Point()`
+    /// **Source:** `GccInt_BPoint.hxx`:35 - `GccInt_BPoint::Point()`
     /// Returns a 2D point which is the geometry of this bisecting object.
     pub fn point(&self) -> crate::OwnedPtr<crate::gp::Pnt2d> {
         unsafe {
@@ -1596,7 +1602,7 @@ impl BPoint {
         }
     }
 
-    /// **Source:** `GccInt_BPoint.hxx`:41 - `GccInt_BPoint::ArcType()`
+    /// **Source:** `GccInt_BPoint.hxx`:38 - `GccInt_BPoint::ArcType()`
     /// Returns GccInt_Pnt, which is the type of any GccInt_BPoint bisecting object.
     pub fn arc_type(&self) -> crate::gcc_int::IType {
         crate::gcc_int::IType::try_from(crate::check_result(unsafe {
@@ -1605,8 +1611,8 @@ impl BPoint {
         .unwrap()
     }
 
-    /// **Source:** `GccInt_BPoint.hxx`:43 - `GccInt_BPoint::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `GccInt_BPoint.hxx`:40 - `GccInt_BPoint::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKGeomAlgo::GccInt_BPoint_dynamic_type(
                 self as *const Self,
@@ -1614,7 +1620,7 @@ impl BPoint {
         }
     }
 
-    /// **Source:** `GccInt_BPoint.hxx`:43 - `GccInt_BPoint::get_type_name()`
+    /// **Source:** `GccInt_BPoint.hxx`:40 - `GccInt_BPoint::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -1625,8 +1631,8 @@ impl BPoint {
         .into_owned()
     }
 
-    /// **Source:** `GccInt_BPoint.hxx`:43 - `GccInt_BPoint::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    /// **Source:** `GccInt_BPoint.hxx`:40 - `GccInt_BPoint::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKGeomAlgo::GccInt_BPoint_get_type_descriptor(),
@@ -1677,7 +1683,7 @@ impl BPoint {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleGccIntBPoint> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_GccInt_BPoint> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKGeomAlgo::GccInt_BPoint_to_handle(obj.into_raw()),
@@ -1685,7 +1691,7 @@ impl BPoint {
         }
     }
 
-    /// Inherited: **Source:** `GccInt_Bisec.hxx`:68 - `GccInt_Bisec::Line()`
+    /// Inherited: **Source:** `GccInt_Bisec.hxx`:65 - `GccInt_Bisec::Line()`
     pub fn line(&self) -> crate::OwnedPtr<crate::gp::Lin2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -1694,7 +1700,7 @@ impl BPoint {
         }
     }
 
-    /// Inherited: **Source:** `GccInt_Bisec.hxx`:72 - `GccInt_Bisec::Circle()`
+    /// Inherited: **Source:** `GccInt_Bisec.hxx`:69 - `GccInt_Bisec::Circle()`
     pub fn circle(&self) -> crate::OwnedPtr<crate::gp::Circ2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -1703,7 +1709,7 @@ impl BPoint {
         }
     }
 
-    /// Inherited: **Source:** `GccInt_Bisec.hxx`:76 - `GccInt_Bisec::Hyperbola()`
+    /// Inherited: **Source:** `GccInt_Bisec.hxx`:73 - `GccInt_Bisec::Hyperbola()`
     pub fn hyperbola(&self) -> crate::OwnedPtr<crate::gp::Hypr2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -1714,7 +1720,7 @@ impl BPoint {
         }
     }
 
-    /// Inherited: **Source:** `GccInt_Bisec.hxx`:80 - `GccInt_Bisec::Parabola()`
+    /// Inherited: **Source:** `GccInt_Bisec.hxx`:77 - `GccInt_Bisec::Parabola()`
     pub fn parabola(&self) -> crate::OwnedPtr<crate::gp::Parab2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -1723,7 +1729,7 @@ impl BPoint {
         }
     }
 
-    /// Inherited: **Source:** `GccInt_Bisec.hxx`:84 - `GccInt_Bisec::Ellipse()`
+    /// Inherited: **Source:** `GccInt_Bisec.hxx`:81 - `GccInt_Bisec::Ellipse()`
     pub fn ellipse(&self) -> crate::OwnedPtr<crate::gp::Elips2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -1732,8 +1738,8 @@ impl BPoint {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::GccInt_BPoint_inherited_IsInstance(
                 self as *const Self,
@@ -1742,8 +1748,8 @@ impl BPoint {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::GccInt_BPoint_inherited_IsKind(
                 self as *const Self,
@@ -1752,7 +1758,7 @@ impl BPoint {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -1766,14 +1772,14 @@ impl BPoint {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::GccInt_BPoint_inherited_GetRefCount(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::GccInt_BPoint_inherited_IncrementRefCounter(
@@ -1782,7 +1788,7 @@ impl BPoint {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::GccInt_BPoint_inherited_DecrementRefCounter(
@@ -1791,7 +1797,7 @@ impl BPoint {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::GccInt_BPoint_inherited_Delete(self as *const Self)
@@ -1799,32 +1805,34 @@ impl BPoint {
     }
 }
 
-pub use crate::ffi_types::HandleGccIntBPoint;
+pub use crate::ffi_types::Handle_GccInt_BPoint;
 
-unsafe impl crate::CppDeletable for HandleGccIntBPoint {
+unsafe impl crate::CppDeletable for Handle_GccInt_BPoint {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKGeomAlgo::HandleGccIntBPoint_destructor(ptr);
+            crate::ffi_extern_TKGeomAlgo::Handle_GccInt_BPoint_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleGccIntBPoint {
+unsafe impl crate::CppCopyable for Handle_GccInt_BPoint {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        unsafe { crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleGccIntBPoint_clone(ptr)) }
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKGeomAlgo::Handle_GccInt_BPoint_clone(ptr))
+        }
     }
 }
 
-impl HandleGccIntBPoint {
+impl Handle_GccInt_BPoint {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
-        unsafe { crate::ffi_extern_TKGeomAlgo::HandleGccIntBPoint_is_null(self as *const Self) }
+        unsafe { crate::ffi_extern_TKGeomAlgo::Handle_GccInt_BPoint_is_null(self as *const Self) }
     }
 
     /// Dereference this Handle to access the underlying GccInt_BPoint
     pub fn get(&self) -> &crate::ffi_types::GccInt_BPoint {
         unsafe {
-            &*crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleGccIntBPoint_get(
+            &*crate::check_result(crate::ffi_extern_TKGeomAlgo::Handle_GccInt_BPoint_get(
                 self as *const Self,
             ))
         }
@@ -1833,17 +1841,17 @@ impl HandleGccIntBPoint {
     /// Dereference this Handle to mutably access the underlying GccInt_BPoint
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::GccInt_BPoint {
         unsafe {
-            &mut *crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleGccIntBPoint_get_mut(
+            &mut *crate::check_result(crate::ffi_extern_TKGeomAlgo::Handle_GccInt_BPoint_get_mut(
                 self as *mut Self,
             ))
         }
     }
 
     /// Upcast Handle<GccInt_BPoint> to Handle<GccInt_Bisec>
-    pub fn to_handle_bisec(&self) -> crate::OwnedPtr<crate::ffi_types::HandleGccIntBisec> {
+    pub fn to_handle_bisec(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_GccInt_Bisec> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKGeomAlgo::HandleGccIntBPoint_to_HandleGccIntBisec(
+                crate::ffi_extern_TKGeomAlgo::Handle_GccInt_BPoint_to_Handle_GccInt_Bisec(
                     self as *const Self,
                 ),
             ))
@@ -1853,10 +1861,10 @@ impl HandleGccIntBPoint {
     /// Upcast Handle<GccInt_BPoint> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKGeomAlgo::HandleGccIntBPoint_to_HandleStandardTransient(
+                crate::ffi_extern_TKGeomAlgo::Handle_GccInt_BPoint_to_Handle_Standard_Transient(
                     self as *const Self,
                 ),
             ))
@@ -1868,7 +1876,7 @@ impl HandleGccIntBPoint {
 // From GccInt_Bisec.hxx
 // ========================
 
-/// **Source:** `GccInt_Bisec.hxx`:54 - `GccInt_Bisec`
+/// **Source:** `GccInt_Bisec.hxx`:51 - `GccInt_Bisec`
 /// The deferred class GccInt_Bisec is the root class for
 /// elementary bisecting loci between two simple geometric
 /// objects (i.e. circles, lines or points).
@@ -1899,7 +1907,7 @@ unsafe impl crate::CppDeletable for Bisec {
 }
 
 impl Bisec {
-    /// **Source:** `GccInt_Bisec.hxx`:60 - `GccInt_Bisec::ArcType()`
+    /// **Source:** `GccInt_Bisec.hxx`:57 - `GccInt_Bisec::ArcType()`
     /// Returns the type of bisecting object (line, circle,
     /// parabola, hyperbola, ellipse, point).
     pub fn arc_type(&self) -> crate::gcc_int::IType {
@@ -1909,7 +1917,7 @@ impl Bisec {
         .unwrap()
     }
 
-    /// **Source:** `GccInt_Bisec.hxx`:64 - `GccInt_Bisec::Point()`
+    /// **Source:** `GccInt_Bisec.hxx`:61 - `GccInt_Bisec::Point()`
     /// Returns the bisecting line when ArcType returns Pnt.
     /// An exception DomainError is raised if ArcType is not a Pnt.
     pub fn point(&self) -> crate::OwnedPtr<crate::gp::Pnt2d> {
@@ -1920,7 +1928,7 @@ impl Bisec {
         }
     }
 
-    /// **Source:** `GccInt_Bisec.hxx`:68 - `GccInt_Bisec::Line()`
+    /// **Source:** `GccInt_Bisec.hxx`:65 - `GccInt_Bisec::Line()`
     /// Returns the bisecting line when ArcType returns Lin.
     /// An exception DomainError is raised if ArcType is not a Lin.
     pub fn line(&self) -> crate::OwnedPtr<crate::gp::Lin2d> {
@@ -1931,7 +1939,7 @@ impl Bisec {
         }
     }
 
-    /// **Source:** `GccInt_Bisec.hxx`:72 - `GccInt_Bisec::Circle()`
+    /// **Source:** `GccInt_Bisec.hxx`:69 - `GccInt_Bisec::Circle()`
     /// Returns the bisecting line when ArcType returns Cir.
     /// An exception DomainError is raised if ArcType is not a Cir.
     pub fn circle(&self) -> crate::OwnedPtr<crate::gp::Circ2d> {
@@ -1942,7 +1950,7 @@ impl Bisec {
         }
     }
 
-    /// **Source:** `GccInt_Bisec.hxx`:76 - `GccInt_Bisec::Hyperbola()`
+    /// **Source:** `GccInt_Bisec.hxx`:73 - `GccInt_Bisec::Hyperbola()`
     /// Returns the bisecting line when ArcType returns Hpr.
     /// An exception DomainError is raised if ArcType is not a Hpr.
     pub fn hyperbola(&self) -> crate::OwnedPtr<crate::gp::Hypr2d> {
@@ -1953,7 +1961,7 @@ impl Bisec {
         }
     }
 
-    /// **Source:** `GccInt_Bisec.hxx`:80 - `GccInt_Bisec::Parabola()`
+    /// **Source:** `GccInt_Bisec.hxx`:77 - `GccInt_Bisec::Parabola()`
     /// Returns the bisecting line when ArcType returns Par.
     /// An exception DomainError is raised if ArcType is not a Par.
     pub fn parabola(&self) -> crate::OwnedPtr<crate::gp::Parab2d> {
@@ -1964,7 +1972,7 @@ impl Bisec {
         }
     }
 
-    /// **Source:** `GccInt_Bisec.hxx`:84 - `GccInt_Bisec::Ellipse()`
+    /// **Source:** `GccInt_Bisec.hxx`:81 - `GccInt_Bisec::Ellipse()`
     /// Returns the bisecting line when ArcType returns Ell.
     /// An exception DomainError is raised if ArcType is not an Ell.
     pub fn ellipse(&self) -> crate::OwnedPtr<crate::gp::Elips2d> {
@@ -1975,8 +1983,8 @@ impl Bisec {
         }
     }
 
-    /// **Source:** `GccInt_Bisec.hxx`:86 - `GccInt_Bisec::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `GccInt_Bisec.hxx`:83 - `GccInt_Bisec::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKGeomAlgo::GccInt_Bisec_dynamic_type(
                 self as *const Self,
@@ -1984,7 +1992,7 @@ impl Bisec {
         }
     }
 
-    /// **Source:** `GccInt_Bisec.hxx`:86 - `GccInt_Bisec::get_type_name()`
+    /// **Source:** `GccInt_Bisec.hxx`:83 - `GccInt_Bisec::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -1995,8 +2003,8 @@ impl Bisec {
         .into_owned()
     }
 
-    /// **Source:** `GccInt_Bisec.hxx`:86 - `GccInt_Bisec::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    /// **Source:** `GccInt_Bisec.hxx`:83 - `GccInt_Bisec::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKGeomAlgo::GccInt_Bisec_get_type_descriptor()))
         }
@@ -2022,8 +2030,8 @@ impl Bisec {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::GccInt_Bisec_inherited_IsInstance(
                 self as *const Self,
@@ -2032,8 +2040,8 @@ impl Bisec {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::GccInt_Bisec_inherited_IsKind(
                 self as *const Self,
@@ -2042,7 +2050,7 @@ impl Bisec {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -2056,14 +2064,14 @@ impl Bisec {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::GccInt_Bisec_inherited_GetRefCount(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::GccInt_Bisec_inherited_IncrementRefCounter(
@@ -2072,7 +2080,7 @@ impl Bisec {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::GccInt_Bisec_inherited_DecrementRefCounter(
@@ -2081,7 +2089,7 @@ impl Bisec {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::GccInt_Bisec_inherited_Delete(self as *const Self)
@@ -2089,32 +2097,32 @@ impl Bisec {
     }
 }
 
-pub use crate::ffi_types::HandleGccIntBisec;
+pub use crate::ffi_types::Handle_GccInt_Bisec;
 
-unsafe impl crate::CppDeletable for HandleGccIntBisec {
+unsafe impl crate::CppDeletable for Handle_GccInt_Bisec {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKGeomAlgo::HandleGccIntBisec_destructor(ptr);
+            crate::ffi_extern_TKGeomAlgo::Handle_GccInt_Bisec_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleGccIntBisec {
+unsafe impl crate::CppCopyable for Handle_GccInt_Bisec {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        unsafe { crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleGccIntBisec_clone(ptr)) }
+        unsafe { crate::check_result(crate::ffi_extern_TKGeomAlgo::Handle_GccInt_Bisec_clone(ptr)) }
     }
 }
 
-impl HandleGccIntBisec {
+impl Handle_GccInt_Bisec {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
-        unsafe { crate::ffi_extern_TKGeomAlgo::HandleGccIntBisec_is_null(self as *const Self) }
+        unsafe { crate::ffi_extern_TKGeomAlgo::Handle_GccInt_Bisec_is_null(self as *const Self) }
     }
 
     /// Dereference this Handle to access the underlying GccInt_Bisec
     pub fn get(&self) -> &crate::ffi_types::GccInt_Bisec {
         unsafe {
-            &*crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleGccIntBisec_get(
+            &*crate::check_result(crate::ffi_extern_TKGeomAlgo::Handle_GccInt_Bisec_get(
                 self as *const Self,
             ))
         }
@@ -2123,7 +2131,7 @@ impl HandleGccIntBisec {
     /// Dereference this Handle to mutably access the underlying GccInt_Bisec
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::GccInt_Bisec {
         unsafe {
-            &mut *crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleGccIntBisec_get_mut(
+            &mut *crate::check_result(crate::ffi_extern_TKGeomAlgo::Handle_GccInt_Bisec_get_mut(
                 self as *mut Self,
             ))
         }
@@ -2132,10 +2140,10 @@ impl HandleGccIntBisec {
     /// Upcast Handle<GccInt_Bisec> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKGeomAlgo::HandleGccIntBisec_to_HandleStandardTransient(
+                crate::ffi_extern_TKGeomAlgo::Handle_GccInt_Bisec_to_Handle_Standard_Transient(
                     self as *const Self,
                 ),
             ))
@@ -2147,9 +2155,9 @@ impl HandleGccIntBisec {
     /// Returns `None` if the handle does not point to a `GccInt_BCirc` (or subclass).
     pub fn downcast_to_b_circ(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleGccIntBCirc>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_GccInt_BCirc>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKGeomAlgo::HandleGccIntBisec_downcast_to_HandleGccIntBCirc(
+            crate::ffi_extern_TKGeomAlgo::Handle_GccInt_Bisec_downcast_to_Handle_GccInt_BCirc(
                 self as *const Self,
             )
         });
@@ -2165,9 +2173,9 @@ impl HandleGccIntBisec {
     /// Returns `None` if the handle does not point to a `GccInt_BElips` (or subclass).
     pub fn downcast_to_b_elips(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleGccIntBElips>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_GccInt_BElips>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKGeomAlgo::HandleGccIntBisec_downcast_to_HandleGccIntBElips(
+            crate::ffi_extern_TKGeomAlgo::Handle_GccInt_Bisec_downcast_to_Handle_GccInt_BElips(
                 self as *const Self,
             )
         });
@@ -2183,9 +2191,9 @@ impl HandleGccIntBisec {
     /// Returns `None` if the handle does not point to a `GccInt_BHyper` (or subclass).
     pub fn downcast_to_b_hyper(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleGccIntBHyper>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_GccInt_BHyper>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKGeomAlgo::HandleGccIntBisec_downcast_to_HandleGccIntBHyper(
+            crate::ffi_extern_TKGeomAlgo::Handle_GccInt_Bisec_downcast_to_Handle_GccInt_BHyper(
                 self as *const Self,
             )
         });
@@ -2201,9 +2209,9 @@ impl HandleGccIntBisec {
     /// Returns `None` if the handle does not point to a `GccInt_BLine` (or subclass).
     pub fn downcast_to_b_line(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleGccIntBLine>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_GccInt_BLine>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKGeomAlgo::HandleGccIntBisec_downcast_to_HandleGccIntBLine(
+            crate::ffi_extern_TKGeomAlgo::Handle_GccInt_Bisec_downcast_to_Handle_GccInt_BLine(
                 self as *const Self,
             )
         });
@@ -2219,9 +2227,9 @@ impl HandleGccIntBisec {
     /// Returns `None` if the handle does not point to a `GccInt_BParab` (or subclass).
     pub fn downcast_to_b_parab(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleGccIntBParab>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_GccInt_BParab>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKGeomAlgo::HandleGccIntBisec_downcast_to_HandleGccIntBParab(
+            crate::ffi_extern_TKGeomAlgo::Handle_GccInt_Bisec_downcast_to_Handle_GccInt_BParab(
                 self as *const Self,
             )
         });
@@ -2237,9 +2245,9 @@ impl HandleGccIntBisec {
     /// Returns `None` if the handle does not point to a `GccInt_BPoint` (or subclass).
     pub fn downcast_to_b_point(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleGccIntBPoint>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_GccInt_BPoint>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKGeomAlgo::HandleGccIntBisec_downcast_to_HandleGccIntBPoint(
+            crate::ffi_extern_TKGeomAlgo::Handle_GccInt_Bisec_downcast_to_Handle_GccInt_BPoint(
                 self as *const Self,
             )
         });

@@ -54,41 +54,41 @@ impl TryFrom<i32> for CheckStatus {
 
 /// The Enumeration describes an additional option for the algorithms
 /// in the Boolean Component such as General Fuse, Boolean operations,
-/// Section, Maker Volume, Splitter and Cells Builder algorithms.<br>
+/// Section, Maker Volume, Splitter and Cells Builder algorithms.
 ///
 /// The Gluing options have been designed to speed up the computation
 /// of the interference among arguments of the operations on special cases,
 /// in which the arguments may be overlapping but do not have real intersections
-/// between their sub-shapes.<br>
+/// between their sub-shapes.
 ///
 /// This option cannot be used on the shapes having real intersections,
 /// like intersection vertex between edges, or intersection vertex between
-/// edge and a face or intersection line between faces.<br>
+/// edge and a face or intersection line between faces.
 ///
-/// There are two possibilities of overlapping shapes:<br>
+/// There are two possibilities of overlapping shapes:
 /// 1. The shapes can be partially coinciding - the faces do not have
 /// intersection curves, but overlapping. The faces of such arguments will
-/// be split during the operation;<br>
+/// be split during the operation;
 /// 2. The shapes can be fully coinciding - there should be no partial
 /// overlapping of the faces, thus no intersection of type EDGE/FACE at all.
-/// In such cases the faces will not be split during the operation.<br>
+/// In such cases the faces will not be split during the operation.
 ///
 /// Even though there are no real intersections on such cases without Gluing options the algorithm
-/// will still intersect the sub-shapes of the arguments with interfering bounding boxes.<br>
+/// will still intersect the sub-shapes of the arguments with interfering bounding boxes.
 ///
 /// The performance improvement in gluing mode is achieved by excluding
-/// the most time consuming computations according to the given Gluing parameter:<br>
-/// 1. Computation of FACE/FACE intersections for partial coincidence;<br>
+/// the most time consuming computations according to the given Gluing parameter:
+/// 1. Computation of FACE/FACE intersections for partial coincidence;
 /// 2. And computation of VERTEX/FACE, EDGE/FACE and FACE/FACE intersections for full
-/// coincidence.<br>
+/// coincidence.
 ///
 /// By setting the Gluing option for the operation user should guarantee
 /// that the arguments are really coinciding. The algorithms do not check this itself.
-/// Setting inappropriate option for the operation is likely to lead to incorrect result.<br>
+/// Setting inappropriate option for the operation is likely to lead to incorrect result.
 ///
-/// There are following items in the enumeration:<br>
-/// **BOPAlgo_GlueOff** - default value for the algorithms, Gluing is switched off;<br>
-/// **BOPAlgo_GlueShift** - Glue option for shapes with partial coincidence;<br>
+/// There are following items in the enumeration:
+/// **BOPAlgo_GlueOff** - default value for the algorithms, Gluing is switched off;
+/// **BOPAlgo_GlueShift** - Glue option for shapes with partial coincidence;
 /// **BOPAlgo_GlueFull** - Glue option for shapes with full coincidence.
 /// C++ enum: `BOPAlgo_GlueEnum`
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
@@ -154,7 +154,7 @@ impl TryFrom<i32> for Operation {
 
 // Handle type re-exports (targets of handle upcasts/downcasts)
 pub use crate::ffi_types::{
-    HandleMessageAlert, HandleStandardTransient, HandleTopoDSAlertWithShape,
+    Handle_Message_Alert, Handle_Standard_Transient, Handle_TopoDS_AlertWithShape,
 };
 
 // ========================
@@ -185,7 +185,7 @@ impl AlertUserBreak {
     }
 
     /// **Source:** `BOPAlgo_Alerts.hxx`:22 - `BOPAlgo_AlertUserBreak::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKBO::BOPAlgo_AlertUserBreak_dynamic_type(
                 self as *const Self,
@@ -205,7 +205,7 @@ impl AlertUserBreak {
     }
 
     /// **Source:** `BOPAlgo_Alerts.hxx`:22 - `BOPAlgo_AlertUserBreak::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKBO::BOPAlgo_AlertUserBreak_get_type_descriptor(),
@@ -258,7 +258,7 @@ impl AlertUserBreak {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleBOPAlgoAlertUserBreak> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_BOPAlgo_AlertUserBreak> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKBO::BOPAlgo_AlertUserBreak_to_handle(obj.into_raw()),
@@ -266,7 +266,7 @@ impl AlertUserBreak {
         }
     }
 
-    /// Inherited: **Source:** `Message_Alert.hxx`:47 - `Message_Alert::SupportsMerge()`
+    /// Inherited: **Source:** `Message_Alert.hxx`:45 - `Message_Alert::SupportsMerge()`
     pub fn supports_merge(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertUserBreak_inherited_SupportsMerge(
@@ -275,8 +275,8 @@ impl AlertUserBreak {
         })
     }
 
-    /// Inherited: **Source:** `Message_Alert.hxx`:52 - `Message_Alert::Merge()`
-    pub fn merge(&mut self, theTarget: &crate::ffi_types::HandleMessageAlert) -> bool {
+    /// Inherited: **Source:** `Message_Alert.hxx`:50 - `Message_Alert::Merge()`
+    pub fn merge(&mut self, theTarget: &crate::ffi_types::Handle_Message_Alert) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertUserBreak_inherited_Merge(
                 self as *mut Self,
@@ -285,8 +285,8 @@ impl AlertUserBreak {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertUserBreak_inherited_IsInstance(
                 self as *const Self,
@@ -295,8 +295,8 @@ impl AlertUserBreak {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertUserBreak_inherited_IsKind(
                 self as *const Self,
@@ -305,7 +305,7 @@ impl AlertUserBreak {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -319,7 +319,7 @@ impl AlertUserBreak {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertUserBreak_inherited_GetRefCount(
@@ -328,7 +328,7 @@ impl AlertUserBreak {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertUserBreak_inherited_IncrementRefCounter(
@@ -337,7 +337,7 @@ impl AlertUserBreak {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertUserBreak_inherited_DecrementRefCounter(
@@ -346,7 +346,7 @@ impl AlertUserBreak {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertUserBreak_inherited_Delete(self as *const Self)
@@ -354,34 +354,36 @@ impl AlertUserBreak {
     }
 }
 
-pub use crate::ffi_types::HandleBOPAlgoAlertUserBreak;
+pub use crate::ffi_types::Handle_BOPAlgo_AlertUserBreak;
 
-unsafe impl crate::CppDeletable for HandleBOPAlgoAlertUserBreak {
+unsafe impl crate::CppDeletable for Handle_BOPAlgo_AlertUserBreak {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKBO::HandleBOPAlgoAlertUserBreak_destructor(ptr);
+            crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertUserBreak_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleBOPAlgoAlertUserBreak {
+unsafe impl crate::CppCopyable for Handle_BOPAlgo_AlertUserBreak {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
         unsafe {
-            crate::check_result(crate::ffi_extern_TKBO::HandleBOPAlgoAlertUserBreak_clone(ptr))
+            crate::check_result(crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertUserBreak_clone(ptr))
         }
     }
 }
 
-impl HandleBOPAlgoAlertUserBreak {
+impl Handle_BOPAlgo_AlertUserBreak {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
-        unsafe { crate::ffi_extern_TKBO::HandleBOPAlgoAlertUserBreak_is_null(self as *const Self) }
+        unsafe {
+            crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertUserBreak_is_null(self as *const Self)
+        }
     }
 
     /// Dereference this Handle to access the underlying BOPAlgo_AlertUserBreak
     pub fn get(&self) -> &crate::ffi_types::BOPAlgo_AlertUserBreak {
         unsafe {
-            &*crate::check_result(crate::ffi_extern_TKBO::HandleBOPAlgoAlertUserBreak_get(
+            &*crate::check_result(crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertUserBreak_get(
                 self as *const Self,
             ))
         }
@@ -390,17 +392,17 @@ impl HandleBOPAlgoAlertUserBreak {
     /// Dereference this Handle to mutably access the underlying BOPAlgo_AlertUserBreak
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::BOPAlgo_AlertUserBreak {
         unsafe {
-            &mut *crate::check_result(crate::ffi_extern_TKBO::HandleBOPAlgoAlertUserBreak_get_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertUserBreak_get_mut(self as *mut Self),
+            )
         }
     }
 
     /// Upcast Handle<BOPAlgo_AlertUserBreak> to Handle<Message_Alert>
-    pub fn to_handle_alert(&self) -> crate::OwnedPtr<crate::ffi_types::HandleMessageAlert> {
+    pub fn to_handle_alert(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_Message_Alert> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKBO::HandleBOPAlgoAlertUserBreak_to_HandleMessageAlert(
+                crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertUserBreak_to_Handle_Message_Alert(
                     self as *const Self,
                 ),
             ))
@@ -410,10 +412,10 @@ impl HandleBOPAlgoAlertUserBreak {
     /// Upcast Handle<BOPAlgo_AlertUserBreak> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKBO::HandleBOPAlgoAlertUserBreak_to_HandleStandardTransient(
+                crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertUserBreak_to_Handle_Standard_Transient(
                     self as *const Self,
                 ),
             ))
@@ -445,7 +447,7 @@ impl AlertBOPNotAllowed {
     }
 
     /// **Source:** `BOPAlgo_Alerts.hxx`:25 - `BOPAlgo_AlertBOPNotAllowed::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKBO::BOPAlgo_AlertBOPNotAllowed_dynamic_type(
@@ -467,7 +469,7 @@ impl AlertBOPNotAllowed {
     }
 
     /// **Source:** `BOPAlgo_Alerts.hxx`:25 - `BOPAlgo_AlertBOPNotAllowed::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKBO::BOPAlgo_AlertBOPNotAllowed_get_type_descriptor(),
@@ -522,7 +524,7 @@ impl AlertBOPNotAllowed {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleBOPAlgoAlertBOPNotAllowed> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_BOPAlgo_AlertBOPNotAllowed> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKBO::BOPAlgo_AlertBOPNotAllowed_to_handle(obj.into_raw()),
@@ -530,7 +532,7 @@ impl AlertBOPNotAllowed {
         }
     }
 
-    /// Inherited: **Source:** `Message_Alert.hxx`:47 - `Message_Alert::SupportsMerge()`
+    /// Inherited: **Source:** `Message_Alert.hxx`:45 - `Message_Alert::SupportsMerge()`
     pub fn supports_merge(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertBOPNotAllowed_inherited_SupportsMerge(
@@ -539,8 +541,8 @@ impl AlertBOPNotAllowed {
         })
     }
 
-    /// Inherited: **Source:** `Message_Alert.hxx`:52 - `Message_Alert::Merge()`
-    pub fn merge(&mut self, theTarget: &crate::ffi_types::HandleMessageAlert) -> bool {
+    /// Inherited: **Source:** `Message_Alert.hxx`:50 - `Message_Alert::Merge()`
+    pub fn merge(&mut self, theTarget: &crate::ffi_types::Handle_Message_Alert) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertBOPNotAllowed_inherited_Merge(
                 self as *mut Self,
@@ -549,8 +551,8 @@ impl AlertBOPNotAllowed {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertBOPNotAllowed_inherited_IsInstance(
                 self as *const Self,
@@ -559,8 +561,8 @@ impl AlertBOPNotAllowed {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertBOPNotAllowed_inherited_IsKind(
                 self as *const Self,
@@ -569,7 +571,7 @@ impl AlertBOPNotAllowed {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -585,7 +587,7 @@ impl AlertBOPNotAllowed {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertBOPNotAllowed_inherited_GetRefCount(
@@ -594,7 +596,7 @@ impl AlertBOPNotAllowed {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertBOPNotAllowed_inherited_IncrementRefCounter(
@@ -603,7 +605,7 @@ impl AlertBOPNotAllowed {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertBOPNotAllowed_inherited_DecrementRefCounter(
@@ -612,7 +614,7 @@ impl AlertBOPNotAllowed {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertBOPNotAllowed_inherited_Delete(self as *const Self)
@@ -620,36 +622,38 @@ impl AlertBOPNotAllowed {
     }
 }
 
-pub use crate::ffi_types::HandleBOPAlgoAlertBOPNotAllowed;
+pub use crate::ffi_types::Handle_BOPAlgo_AlertBOPNotAllowed;
 
-unsafe impl crate::CppDeletable for HandleBOPAlgoAlertBOPNotAllowed {
+unsafe impl crate::CppDeletable for Handle_BOPAlgo_AlertBOPNotAllowed {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKBO::HandleBOPAlgoAlertBOPNotAllowed_destructor(ptr);
+            crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertBOPNotAllowed_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleBOPAlgoAlertBOPNotAllowed {
+unsafe impl crate::CppCopyable for Handle_BOPAlgo_AlertBOPNotAllowed {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
         unsafe {
-            crate::check_result(crate::ffi_extern_TKBO::HandleBOPAlgoAlertBOPNotAllowed_clone(ptr))
+            crate::check_result(crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertBOPNotAllowed_clone(
+                ptr,
+            ))
         }
     }
 }
 
-impl HandleBOPAlgoAlertBOPNotAllowed {
+impl Handle_BOPAlgo_AlertBOPNotAllowed {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
         unsafe {
-            crate::ffi_extern_TKBO::HandleBOPAlgoAlertBOPNotAllowed_is_null(self as *const Self)
+            crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertBOPNotAllowed_is_null(self as *const Self)
         }
     }
 
     /// Dereference this Handle to access the underlying BOPAlgo_AlertBOPNotAllowed
     pub fn get(&self) -> &crate::ffi_types::BOPAlgo_AlertBOPNotAllowed {
         unsafe {
-            &*crate::check_result(crate::ffi_extern_TKBO::HandleBOPAlgoAlertBOPNotAllowed_get(
+            &*crate::check_result(crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertBOPNotAllowed_get(
                 self as *const Self,
             ))
         }
@@ -659,16 +663,18 @@ impl HandleBOPAlgoAlertBOPNotAllowed {
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::BOPAlgo_AlertBOPNotAllowed {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi_extern_TKBO::HandleBOPAlgoAlertBOPNotAllowed_get_mut(self as *mut Self),
+                crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertBOPNotAllowed_get_mut(
+                    self as *mut Self,
+                ),
             )
         }
     }
 
     /// Upcast Handle<BOPAlgo_AlertBOPNotAllowed> to Handle<Message_Alert>
-    pub fn to_handle_alert(&self) -> crate::OwnedPtr<crate::ffi_types::HandleMessageAlert> {
+    pub fn to_handle_alert(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_Message_Alert> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKBO::HandleBOPAlgoAlertBOPNotAllowed_to_HandleMessageAlert(
+                crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertBOPNotAllowed_to_Handle_Message_Alert(
                     self as *const Self,
                 ),
             ))
@@ -678,13 +684,9 @@ impl HandleBOPAlgoAlertBOPNotAllowed {
     /// Upcast Handle<BOPAlgo_AlertBOPNotAllowed> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKBO::HandleBOPAlgoAlertBOPNotAllowed_to_HandleStandardTransient(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertBOPNotAllowed_to_Handle_Standard_Transient(self as *const Self)))
         }
     }
 }
@@ -713,7 +715,7 @@ impl AlertBOPNotSet {
     }
 
     /// **Source:** `BOPAlgo_Alerts.hxx`:28 - `BOPAlgo_AlertBOPNotSet::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKBO::BOPAlgo_AlertBOPNotSet_dynamic_type(
                 self as *const Self,
@@ -733,7 +735,7 @@ impl AlertBOPNotSet {
     }
 
     /// **Source:** `BOPAlgo_Alerts.hxx`:28 - `BOPAlgo_AlertBOPNotSet::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKBO::BOPAlgo_AlertBOPNotSet_get_type_descriptor(),
@@ -786,7 +788,7 @@ impl AlertBOPNotSet {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleBOPAlgoAlertBOPNotSet> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_BOPAlgo_AlertBOPNotSet> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKBO::BOPAlgo_AlertBOPNotSet_to_handle(obj.into_raw()),
@@ -794,7 +796,7 @@ impl AlertBOPNotSet {
         }
     }
 
-    /// Inherited: **Source:** `Message_Alert.hxx`:47 - `Message_Alert::SupportsMerge()`
+    /// Inherited: **Source:** `Message_Alert.hxx`:45 - `Message_Alert::SupportsMerge()`
     pub fn supports_merge(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertBOPNotSet_inherited_SupportsMerge(
@@ -803,8 +805,8 @@ impl AlertBOPNotSet {
         })
     }
 
-    /// Inherited: **Source:** `Message_Alert.hxx`:52 - `Message_Alert::Merge()`
-    pub fn merge(&mut self, theTarget: &crate::ffi_types::HandleMessageAlert) -> bool {
+    /// Inherited: **Source:** `Message_Alert.hxx`:50 - `Message_Alert::Merge()`
+    pub fn merge(&mut self, theTarget: &crate::ffi_types::Handle_Message_Alert) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertBOPNotSet_inherited_Merge(
                 self as *mut Self,
@@ -813,8 +815,8 @@ impl AlertBOPNotSet {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertBOPNotSet_inherited_IsInstance(
                 self as *const Self,
@@ -823,8 +825,8 @@ impl AlertBOPNotSet {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertBOPNotSet_inherited_IsKind(
                 self as *const Self,
@@ -833,7 +835,7 @@ impl AlertBOPNotSet {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -847,7 +849,7 @@ impl AlertBOPNotSet {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertBOPNotSet_inherited_GetRefCount(
@@ -856,7 +858,7 @@ impl AlertBOPNotSet {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertBOPNotSet_inherited_IncrementRefCounter(
@@ -865,7 +867,7 @@ impl AlertBOPNotSet {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertBOPNotSet_inherited_DecrementRefCounter(
@@ -874,7 +876,7 @@ impl AlertBOPNotSet {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertBOPNotSet_inherited_Delete(self as *const Self)
@@ -882,34 +884,36 @@ impl AlertBOPNotSet {
     }
 }
 
-pub use crate::ffi_types::HandleBOPAlgoAlertBOPNotSet;
+pub use crate::ffi_types::Handle_BOPAlgo_AlertBOPNotSet;
 
-unsafe impl crate::CppDeletable for HandleBOPAlgoAlertBOPNotSet {
+unsafe impl crate::CppDeletable for Handle_BOPAlgo_AlertBOPNotSet {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKBO::HandleBOPAlgoAlertBOPNotSet_destructor(ptr);
+            crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertBOPNotSet_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleBOPAlgoAlertBOPNotSet {
+unsafe impl crate::CppCopyable for Handle_BOPAlgo_AlertBOPNotSet {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
         unsafe {
-            crate::check_result(crate::ffi_extern_TKBO::HandleBOPAlgoAlertBOPNotSet_clone(ptr))
+            crate::check_result(crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertBOPNotSet_clone(ptr))
         }
     }
 }
 
-impl HandleBOPAlgoAlertBOPNotSet {
+impl Handle_BOPAlgo_AlertBOPNotSet {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
-        unsafe { crate::ffi_extern_TKBO::HandleBOPAlgoAlertBOPNotSet_is_null(self as *const Self) }
+        unsafe {
+            crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertBOPNotSet_is_null(self as *const Self)
+        }
     }
 
     /// Dereference this Handle to access the underlying BOPAlgo_AlertBOPNotSet
     pub fn get(&self) -> &crate::ffi_types::BOPAlgo_AlertBOPNotSet {
         unsafe {
-            &*crate::check_result(crate::ffi_extern_TKBO::HandleBOPAlgoAlertBOPNotSet_get(
+            &*crate::check_result(crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertBOPNotSet_get(
                 self as *const Self,
             ))
         }
@@ -918,17 +922,17 @@ impl HandleBOPAlgoAlertBOPNotSet {
     /// Dereference this Handle to mutably access the underlying BOPAlgo_AlertBOPNotSet
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::BOPAlgo_AlertBOPNotSet {
         unsafe {
-            &mut *crate::check_result(crate::ffi_extern_TKBO::HandleBOPAlgoAlertBOPNotSet_get_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertBOPNotSet_get_mut(self as *mut Self),
+            )
         }
     }
 
     /// Upcast Handle<BOPAlgo_AlertBOPNotSet> to Handle<Message_Alert>
-    pub fn to_handle_alert(&self) -> crate::OwnedPtr<crate::ffi_types::HandleMessageAlert> {
+    pub fn to_handle_alert(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_Message_Alert> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKBO::HandleBOPAlgoAlertBOPNotSet_to_HandleMessageAlert(
+                crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertBOPNotSet_to_Handle_Message_Alert(
                     self as *const Self,
                 ),
             ))
@@ -938,10 +942,10 @@ impl HandleBOPAlgoAlertBOPNotSet {
     /// Upcast Handle<BOPAlgo_AlertBOPNotSet> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKBO::HandleBOPAlgoAlertBOPNotSet_to_HandleStandardTransient(
+                crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertBOPNotSet_to_Handle_Standard_Transient(
                     self as *const Self,
                 ),
             ))
@@ -973,7 +977,7 @@ impl AlertBuilderFailed {
     }
 
     /// **Source:** `BOPAlgo_Alerts.hxx`:31 - `BOPAlgo_AlertBuilderFailed::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKBO::BOPAlgo_AlertBuilderFailed_dynamic_type(
@@ -995,7 +999,7 @@ impl AlertBuilderFailed {
     }
 
     /// **Source:** `BOPAlgo_Alerts.hxx`:31 - `BOPAlgo_AlertBuilderFailed::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKBO::BOPAlgo_AlertBuilderFailed_get_type_descriptor(),
@@ -1050,7 +1054,7 @@ impl AlertBuilderFailed {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleBOPAlgoAlertBuilderFailed> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_BOPAlgo_AlertBuilderFailed> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKBO::BOPAlgo_AlertBuilderFailed_to_handle(obj.into_raw()),
@@ -1058,7 +1062,7 @@ impl AlertBuilderFailed {
         }
     }
 
-    /// Inherited: **Source:** `Message_Alert.hxx`:47 - `Message_Alert::SupportsMerge()`
+    /// Inherited: **Source:** `Message_Alert.hxx`:45 - `Message_Alert::SupportsMerge()`
     pub fn supports_merge(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertBuilderFailed_inherited_SupportsMerge(
@@ -1067,8 +1071,8 @@ impl AlertBuilderFailed {
         })
     }
 
-    /// Inherited: **Source:** `Message_Alert.hxx`:52 - `Message_Alert::Merge()`
-    pub fn merge(&mut self, theTarget: &crate::ffi_types::HandleMessageAlert) -> bool {
+    /// Inherited: **Source:** `Message_Alert.hxx`:50 - `Message_Alert::Merge()`
+    pub fn merge(&mut self, theTarget: &crate::ffi_types::Handle_Message_Alert) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertBuilderFailed_inherited_Merge(
                 self as *mut Self,
@@ -1077,8 +1081,8 @@ impl AlertBuilderFailed {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertBuilderFailed_inherited_IsInstance(
                 self as *const Self,
@@ -1087,8 +1091,8 @@ impl AlertBuilderFailed {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertBuilderFailed_inherited_IsKind(
                 self as *const Self,
@@ -1097,7 +1101,7 @@ impl AlertBuilderFailed {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -1113,7 +1117,7 @@ impl AlertBuilderFailed {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertBuilderFailed_inherited_GetRefCount(
@@ -1122,7 +1126,7 @@ impl AlertBuilderFailed {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertBuilderFailed_inherited_IncrementRefCounter(
@@ -1131,7 +1135,7 @@ impl AlertBuilderFailed {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertBuilderFailed_inherited_DecrementRefCounter(
@@ -1140,7 +1144,7 @@ impl AlertBuilderFailed {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertBuilderFailed_inherited_Delete(self as *const Self)
@@ -1148,36 +1152,38 @@ impl AlertBuilderFailed {
     }
 }
 
-pub use crate::ffi_types::HandleBOPAlgoAlertBuilderFailed;
+pub use crate::ffi_types::Handle_BOPAlgo_AlertBuilderFailed;
 
-unsafe impl crate::CppDeletable for HandleBOPAlgoAlertBuilderFailed {
+unsafe impl crate::CppDeletable for Handle_BOPAlgo_AlertBuilderFailed {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKBO::HandleBOPAlgoAlertBuilderFailed_destructor(ptr);
+            crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertBuilderFailed_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleBOPAlgoAlertBuilderFailed {
+unsafe impl crate::CppCopyable for Handle_BOPAlgo_AlertBuilderFailed {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
         unsafe {
-            crate::check_result(crate::ffi_extern_TKBO::HandleBOPAlgoAlertBuilderFailed_clone(ptr))
+            crate::check_result(crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertBuilderFailed_clone(
+                ptr,
+            ))
         }
     }
 }
 
-impl HandleBOPAlgoAlertBuilderFailed {
+impl Handle_BOPAlgo_AlertBuilderFailed {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
         unsafe {
-            crate::ffi_extern_TKBO::HandleBOPAlgoAlertBuilderFailed_is_null(self as *const Self)
+            crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertBuilderFailed_is_null(self as *const Self)
         }
     }
 
     /// Dereference this Handle to access the underlying BOPAlgo_AlertBuilderFailed
     pub fn get(&self) -> &crate::ffi_types::BOPAlgo_AlertBuilderFailed {
         unsafe {
-            &*crate::check_result(crate::ffi_extern_TKBO::HandleBOPAlgoAlertBuilderFailed_get(
+            &*crate::check_result(crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertBuilderFailed_get(
                 self as *const Self,
             ))
         }
@@ -1187,16 +1193,18 @@ impl HandleBOPAlgoAlertBuilderFailed {
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::BOPAlgo_AlertBuilderFailed {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi_extern_TKBO::HandleBOPAlgoAlertBuilderFailed_get_mut(self as *mut Self),
+                crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertBuilderFailed_get_mut(
+                    self as *mut Self,
+                ),
             )
         }
     }
 
     /// Upcast Handle<BOPAlgo_AlertBuilderFailed> to Handle<Message_Alert>
-    pub fn to_handle_alert(&self) -> crate::OwnedPtr<crate::ffi_types::HandleMessageAlert> {
+    pub fn to_handle_alert(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_Message_Alert> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKBO::HandleBOPAlgoAlertBuilderFailed_to_HandleMessageAlert(
+                crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertBuilderFailed_to_Handle_Message_Alert(
                     self as *const Self,
                 ),
             ))
@@ -1206,13 +1214,9 @@ impl HandleBOPAlgoAlertBuilderFailed {
     /// Upcast Handle<BOPAlgo_AlertBuilderFailed> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKBO::HandleBOPAlgoAlertBuilderFailed_to_HandleStandardTransient(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertBuilderFailed_to_Handle_Standard_Transient(self as *const Self)))
         }
     }
 }
@@ -1241,7 +1245,7 @@ impl AlertIntersectionFailed {
     }
 
     /// **Source:** `BOPAlgo_Alerts.hxx`:34 - `BOPAlgo_AlertIntersectionFailed::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKBO::BOPAlgo_AlertIntersectionFailed_dynamic_type(
@@ -1263,7 +1267,7 @@ impl AlertIntersectionFailed {
     }
 
     /// **Source:** `BOPAlgo_Alerts.hxx`:34 - `BOPAlgo_AlertIntersectionFailed::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKBO::BOPAlgo_AlertIntersectionFailed_get_type_descriptor(),
@@ -1318,7 +1322,7 @@ impl AlertIntersectionFailed {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleBOPAlgoAlertIntersectionFailed> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_BOPAlgo_AlertIntersectionFailed> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKBO::BOPAlgo_AlertIntersectionFailed_to_handle(obj.into_raw()),
@@ -1326,7 +1330,7 @@ impl AlertIntersectionFailed {
         }
     }
 
-    /// Inherited: **Source:** `Message_Alert.hxx`:47 - `Message_Alert::SupportsMerge()`
+    /// Inherited: **Source:** `Message_Alert.hxx`:45 - `Message_Alert::SupportsMerge()`
     pub fn supports_merge(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertIntersectionFailed_inherited_SupportsMerge(
@@ -1335,8 +1339,8 @@ impl AlertIntersectionFailed {
         })
     }
 
-    /// Inherited: **Source:** `Message_Alert.hxx`:52 - `Message_Alert::Merge()`
-    pub fn merge(&mut self, theTarget: &crate::ffi_types::HandleMessageAlert) -> bool {
+    /// Inherited: **Source:** `Message_Alert.hxx`:50 - `Message_Alert::Merge()`
+    pub fn merge(&mut self, theTarget: &crate::ffi_types::Handle_Message_Alert) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertIntersectionFailed_inherited_Merge(
                 self as *mut Self,
@@ -1345,8 +1349,8 @@ impl AlertIntersectionFailed {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertIntersectionFailed_inherited_IsInstance(
                 self as *const Self,
@@ -1355,8 +1359,8 @@ impl AlertIntersectionFailed {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertIntersectionFailed_inherited_IsKind(
                 self as *const Self,
@@ -1365,7 +1369,7 @@ impl AlertIntersectionFailed {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -1381,7 +1385,7 @@ impl AlertIntersectionFailed {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertIntersectionFailed_inherited_GetRefCount(
@@ -1390,7 +1394,7 @@ impl AlertIntersectionFailed {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertIntersectionFailed_inherited_IncrementRefCounter(
@@ -1399,7 +1403,7 @@ impl AlertIntersectionFailed {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertIntersectionFailed_inherited_DecrementRefCounter(
@@ -1408,7 +1412,7 @@ impl AlertIntersectionFailed {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertIntersectionFailed_inherited_Delete(
@@ -1418,31 +1422,31 @@ impl AlertIntersectionFailed {
     }
 }
 
-pub use crate::ffi_types::HandleBOPAlgoAlertIntersectionFailed;
+pub use crate::ffi_types::Handle_BOPAlgo_AlertIntersectionFailed;
 
-unsafe impl crate::CppDeletable for HandleBOPAlgoAlertIntersectionFailed {
+unsafe impl crate::CppDeletable for Handle_BOPAlgo_AlertIntersectionFailed {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKBO::HandleBOPAlgoAlertIntersectionFailed_destructor(ptr);
+            crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertIntersectionFailed_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleBOPAlgoAlertIntersectionFailed {
+unsafe impl crate::CppCopyable for Handle_BOPAlgo_AlertIntersectionFailed {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
         unsafe {
-            crate::check_result(crate::ffi_extern_TKBO::HandleBOPAlgoAlertIntersectionFailed_clone(
-                ptr,
-            ))
+            crate::check_result(
+                crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertIntersectionFailed_clone(ptr),
+            )
         }
     }
 }
 
-impl HandleBOPAlgoAlertIntersectionFailed {
+impl Handle_BOPAlgo_AlertIntersectionFailed {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
         unsafe {
-            crate::ffi_extern_TKBO::HandleBOPAlgoAlertIntersectionFailed_is_null(
+            crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertIntersectionFailed_is_null(
                 self as *const Self,
             )
         }
@@ -1451,9 +1455,11 @@ impl HandleBOPAlgoAlertIntersectionFailed {
     /// Dereference this Handle to access the underlying BOPAlgo_AlertIntersectionFailed
     pub fn get(&self) -> &crate::ffi_types::BOPAlgo_AlertIntersectionFailed {
         unsafe {
-            &*crate::check_result(crate::ffi_extern_TKBO::HandleBOPAlgoAlertIntersectionFailed_get(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertIntersectionFailed_get(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -1461,7 +1467,7 @@ impl HandleBOPAlgoAlertIntersectionFailed {
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::BOPAlgo_AlertIntersectionFailed {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi_extern_TKBO::HandleBOPAlgoAlertIntersectionFailed_get_mut(
+                crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertIntersectionFailed_get_mut(
                     self as *mut Self,
                 ),
             )
@@ -1469,22 +1475,18 @@ impl HandleBOPAlgoAlertIntersectionFailed {
     }
 
     /// Upcast Handle<BOPAlgo_AlertIntersectionFailed> to Handle<Message_Alert>
-    pub fn to_handle_alert(&self) -> crate::OwnedPtr<crate::ffi_types::HandleMessageAlert> {
+    pub fn to_handle_alert(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_Message_Alert> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKBO::HandleBOPAlgoAlertIntersectionFailed_to_HandleMessageAlert(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertIntersectionFailed_to_Handle_Message_Alert(self as *const Self)))
         }
     }
 
     /// Upcast Handle<BOPAlgo_AlertIntersectionFailed> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKBO::HandleBOPAlgoAlertIntersectionFailed_to_HandleStandardTransient(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertIntersectionFailed_to_Handle_Standard_Transient(self as *const Self)))
         }
     }
 }
@@ -1513,7 +1515,7 @@ impl AlertMultipleArguments {
     }
 
     /// **Source:** `BOPAlgo_Alerts.hxx`:37 - `BOPAlgo_AlertMultipleArguments::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKBO::BOPAlgo_AlertMultipleArguments_dynamic_type(
@@ -1535,7 +1537,7 @@ impl AlertMultipleArguments {
     }
 
     /// **Source:** `BOPAlgo_Alerts.hxx`:37 - `BOPAlgo_AlertMultipleArguments::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKBO::BOPAlgo_AlertMultipleArguments_get_type_descriptor(),
@@ -1590,7 +1592,7 @@ impl AlertMultipleArguments {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleBOPAlgoAlertMultipleArguments> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_BOPAlgo_AlertMultipleArguments> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKBO::BOPAlgo_AlertMultipleArguments_to_handle(obj.into_raw()),
@@ -1598,7 +1600,7 @@ impl AlertMultipleArguments {
         }
     }
 
-    /// Inherited: **Source:** `Message_Alert.hxx`:47 - `Message_Alert::SupportsMerge()`
+    /// Inherited: **Source:** `Message_Alert.hxx`:45 - `Message_Alert::SupportsMerge()`
     pub fn supports_merge(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertMultipleArguments_inherited_SupportsMerge(
@@ -1607,8 +1609,8 @@ impl AlertMultipleArguments {
         })
     }
 
-    /// Inherited: **Source:** `Message_Alert.hxx`:52 - `Message_Alert::Merge()`
-    pub fn merge(&mut self, theTarget: &crate::ffi_types::HandleMessageAlert) -> bool {
+    /// Inherited: **Source:** `Message_Alert.hxx`:50 - `Message_Alert::Merge()`
+    pub fn merge(&mut self, theTarget: &crate::ffi_types::Handle_Message_Alert) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertMultipleArguments_inherited_Merge(
                 self as *mut Self,
@@ -1617,8 +1619,8 @@ impl AlertMultipleArguments {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertMultipleArguments_inherited_IsInstance(
                 self as *const Self,
@@ -1627,8 +1629,8 @@ impl AlertMultipleArguments {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertMultipleArguments_inherited_IsKind(
                 self as *const Self,
@@ -1637,7 +1639,7 @@ impl AlertMultipleArguments {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -1653,7 +1655,7 @@ impl AlertMultipleArguments {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertMultipleArguments_inherited_GetRefCount(
@@ -1662,7 +1664,7 @@ impl AlertMultipleArguments {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertMultipleArguments_inherited_IncrementRefCounter(
@@ -1671,7 +1673,7 @@ impl AlertMultipleArguments {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertMultipleArguments_inherited_DecrementRefCounter(
@@ -1680,7 +1682,7 @@ impl AlertMultipleArguments {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertMultipleArguments_inherited_Delete(
@@ -1690,40 +1692,44 @@ impl AlertMultipleArguments {
     }
 }
 
-pub use crate::ffi_types::HandleBOPAlgoAlertMultipleArguments;
+pub use crate::ffi_types::Handle_BOPAlgo_AlertMultipleArguments;
 
-unsafe impl crate::CppDeletable for HandleBOPAlgoAlertMultipleArguments {
+unsafe impl crate::CppDeletable for Handle_BOPAlgo_AlertMultipleArguments {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKBO::HandleBOPAlgoAlertMultipleArguments_destructor(ptr);
+            crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertMultipleArguments_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleBOPAlgoAlertMultipleArguments {
+unsafe impl crate::CppCopyable for Handle_BOPAlgo_AlertMultipleArguments {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
         unsafe {
-            crate::check_result(crate::ffi_extern_TKBO::HandleBOPAlgoAlertMultipleArguments_clone(
-                ptr,
-            ))
+            crate::check_result(
+                crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertMultipleArguments_clone(ptr),
+            )
         }
     }
 }
 
-impl HandleBOPAlgoAlertMultipleArguments {
+impl Handle_BOPAlgo_AlertMultipleArguments {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
         unsafe {
-            crate::ffi_extern_TKBO::HandleBOPAlgoAlertMultipleArguments_is_null(self as *const Self)
+            crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertMultipleArguments_is_null(
+                self as *const Self,
+            )
         }
     }
 
     /// Dereference this Handle to access the underlying BOPAlgo_AlertMultipleArguments
     pub fn get(&self) -> &crate::ffi_types::BOPAlgo_AlertMultipleArguments {
         unsafe {
-            &*crate::check_result(crate::ffi_extern_TKBO::HandleBOPAlgoAlertMultipleArguments_get(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertMultipleArguments_get(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -1731,7 +1737,7 @@ impl HandleBOPAlgoAlertMultipleArguments {
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::BOPAlgo_AlertMultipleArguments {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi_extern_TKBO::HandleBOPAlgoAlertMultipleArguments_get_mut(
+                crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertMultipleArguments_get_mut(
                     self as *mut Self,
                 ),
             )
@@ -1739,22 +1745,18 @@ impl HandleBOPAlgoAlertMultipleArguments {
     }
 
     /// Upcast Handle<BOPAlgo_AlertMultipleArguments> to Handle<Message_Alert>
-    pub fn to_handle_alert(&self) -> crate::OwnedPtr<crate::ffi_types::HandleMessageAlert> {
+    pub fn to_handle_alert(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_Message_Alert> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKBO::HandleBOPAlgoAlertMultipleArguments_to_HandleMessageAlert(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertMultipleArguments_to_Handle_Message_Alert(self as *const Self)))
         }
     }
 
     /// Upcast Handle<BOPAlgo_AlertMultipleArguments> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKBO::HandleBOPAlgoAlertMultipleArguments_to_HandleStandardTransient(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertMultipleArguments_to_Handle_Standard_Transient(self as *const Self)))
         }
     }
 }
@@ -1783,7 +1785,7 @@ impl AlertNoFiller {
     }
 
     /// **Source:** `BOPAlgo_Alerts.hxx`:40 - `BOPAlgo_AlertNoFiller::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKBO::BOPAlgo_AlertNoFiller_dynamic_type(
                 self as *const Self,
@@ -1803,7 +1805,7 @@ impl AlertNoFiller {
     }
 
     /// **Source:** `BOPAlgo_Alerts.hxx`:40 - `BOPAlgo_AlertNoFiller::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKBO::BOPAlgo_AlertNoFiller_get_type_descriptor(),
@@ -1856,7 +1858,7 @@ impl AlertNoFiller {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleBOPAlgoAlertNoFiller> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_BOPAlgo_AlertNoFiller> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKBO::BOPAlgo_AlertNoFiller_to_handle(obj.into_raw()),
@@ -1864,7 +1866,7 @@ impl AlertNoFiller {
         }
     }
 
-    /// Inherited: **Source:** `Message_Alert.hxx`:47 - `Message_Alert::SupportsMerge()`
+    /// Inherited: **Source:** `Message_Alert.hxx`:45 - `Message_Alert::SupportsMerge()`
     pub fn supports_merge(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertNoFiller_inherited_SupportsMerge(
@@ -1873,8 +1875,8 @@ impl AlertNoFiller {
         })
     }
 
-    /// Inherited: **Source:** `Message_Alert.hxx`:52 - `Message_Alert::Merge()`
-    pub fn merge(&mut self, theTarget: &crate::ffi_types::HandleMessageAlert) -> bool {
+    /// Inherited: **Source:** `Message_Alert.hxx`:50 - `Message_Alert::Merge()`
+    pub fn merge(&mut self, theTarget: &crate::ffi_types::Handle_Message_Alert) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertNoFiller_inherited_Merge(
                 self as *mut Self,
@@ -1883,8 +1885,8 @@ impl AlertNoFiller {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertNoFiller_inherited_IsInstance(
                 self as *const Self,
@@ -1893,8 +1895,8 @@ impl AlertNoFiller {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertNoFiller_inherited_IsKind(
                 self as *const Self,
@@ -1903,7 +1905,7 @@ impl AlertNoFiller {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -1917,14 +1919,14 @@ impl AlertNoFiller {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertNoFiller_inherited_GetRefCount(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertNoFiller_inherited_IncrementRefCounter(
@@ -1933,7 +1935,7 @@ impl AlertNoFiller {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertNoFiller_inherited_DecrementRefCounter(
@@ -1942,7 +1944,7 @@ impl AlertNoFiller {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertNoFiller_inherited_Delete(self as *const Self)
@@ -1950,34 +1952,34 @@ impl AlertNoFiller {
     }
 }
 
-pub use crate::ffi_types::HandleBOPAlgoAlertNoFiller;
+pub use crate::ffi_types::Handle_BOPAlgo_AlertNoFiller;
 
-unsafe impl crate::CppDeletable for HandleBOPAlgoAlertNoFiller {
+unsafe impl crate::CppDeletable for Handle_BOPAlgo_AlertNoFiller {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKBO::HandleBOPAlgoAlertNoFiller_destructor(ptr);
+            crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertNoFiller_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleBOPAlgoAlertNoFiller {
+unsafe impl crate::CppCopyable for Handle_BOPAlgo_AlertNoFiller {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
         unsafe {
-            crate::check_result(crate::ffi_extern_TKBO::HandleBOPAlgoAlertNoFiller_clone(ptr))
+            crate::check_result(crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertNoFiller_clone(ptr))
         }
     }
 }
 
-impl HandleBOPAlgoAlertNoFiller {
+impl Handle_BOPAlgo_AlertNoFiller {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
-        unsafe { crate::ffi_extern_TKBO::HandleBOPAlgoAlertNoFiller_is_null(self as *const Self) }
+        unsafe { crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertNoFiller_is_null(self as *const Self) }
     }
 
     /// Dereference this Handle to access the underlying BOPAlgo_AlertNoFiller
     pub fn get(&self) -> &crate::ffi_types::BOPAlgo_AlertNoFiller {
         unsafe {
-            &*crate::check_result(crate::ffi_extern_TKBO::HandleBOPAlgoAlertNoFiller_get(
+            &*crate::check_result(crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertNoFiller_get(
                 self as *const Self,
             ))
         }
@@ -1986,17 +1988,17 @@ impl HandleBOPAlgoAlertNoFiller {
     /// Dereference this Handle to mutably access the underlying BOPAlgo_AlertNoFiller
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::BOPAlgo_AlertNoFiller {
         unsafe {
-            &mut *crate::check_result(crate::ffi_extern_TKBO::HandleBOPAlgoAlertNoFiller_get_mut(
+            &mut *crate::check_result(crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertNoFiller_get_mut(
                 self as *mut Self,
             ))
         }
     }
 
     /// Upcast Handle<BOPAlgo_AlertNoFiller> to Handle<Message_Alert>
-    pub fn to_handle_alert(&self) -> crate::OwnedPtr<crate::ffi_types::HandleMessageAlert> {
+    pub fn to_handle_alert(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_Message_Alert> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKBO::HandleBOPAlgoAlertNoFiller_to_HandleMessageAlert(
+                crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertNoFiller_to_Handle_Message_Alert(
                     self as *const Self,
                 ),
             ))
@@ -2006,10 +2008,10 @@ impl HandleBOPAlgoAlertNoFiller {
     /// Upcast Handle<BOPAlgo_AlertNoFiller> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKBO::HandleBOPAlgoAlertNoFiller_to_HandleStandardTransient(
+                crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertNoFiller_to_Handle_Standard_Transient(
                     self as *const Self,
                 ),
             ))
@@ -2041,7 +2043,7 @@ impl AlertNullInputShapes {
     }
 
     /// **Source:** `BOPAlgo_Alerts.hxx`:43 - `BOPAlgo_AlertNullInputShapes::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKBO::BOPAlgo_AlertNullInputShapes_dynamic_type(
@@ -2063,7 +2065,7 @@ impl AlertNullInputShapes {
     }
 
     /// **Source:** `BOPAlgo_Alerts.hxx`:43 - `BOPAlgo_AlertNullInputShapes::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKBO::BOPAlgo_AlertNullInputShapes_get_type_descriptor(),
@@ -2118,7 +2120,7 @@ impl AlertNullInputShapes {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleBOPAlgoAlertNullInputShapes> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_BOPAlgo_AlertNullInputShapes> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKBO::BOPAlgo_AlertNullInputShapes_to_handle(obj.into_raw()),
@@ -2126,7 +2128,7 @@ impl AlertNullInputShapes {
         }
     }
 
-    /// Inherited: **Source:** `Message_Alert.hxx`:47 - `Message_Alert::SupportsMerge()`
+    /// Inherited: **Source:** `Message_Alert.hxx`:45 - `Message_Alert::SupportsMerge()`
     pub fn supports_merge(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertNullInputShapes_inherited_SupportsMerge(
@@ -2135,8 +2137,8 @@ impl AlertNullInputShapes {
         })
     }
 
-    /// Inherited: **Source:** `Message_Alert.hxx`:52 - `Message_Alert::Merge()`
-    pub fn merge(&mut self, theTarget: &crate::ffi_types::HandleMessageAlert) -> bool {
+    /// Inherited: **Source:** `Message_Alert.hxx`:50 - `Message_Alert::Merge()`
+    pub fn merge(&mut self, theTarget: &crate::ffi_types::Handle_Message_Alert) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertNullInputShapes_inherited_Merge(
                 self as *mut Self,
@@ -2145,8 +2147,8 @@ impl AlertNullInputShapes {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertNullInputShapes_inherited_IsInstance(
                 self as *const Self,
@@ -2155,8 +2157,8 @@ impl AlertNullInputShapes {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertNullInputShapes_inherited_IsKind(
                 self as *const Self,
@@ -2165,7 +2167,7 @@ impl AlertNullInputShapes {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -2181,7 +2183,7 @@ impl AlertNullInputShapes {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertNullInputShapes_inherited_GetRefCount(
@@ -2190,7 +2192,7 @@ impl AlertNullInputShapes {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertNullInputShapes_inherited_IncrementRefCounter(
@@ -2199,7 +2201,7 @@ impl AlertNullInputShapes {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertNullInputShapes_inherited_DecrementRefCounter(
@@ -2208,7 +2210,7 @@ impl AlertNullInputShapes {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertNullInputShapes_inherited_Delete(
@@ -2218,38 +2220,38 @@ impl AlertNullInputShapes {
     }
 }
 
-pub use crate::ffi_types::HandleBOPAlgoAlertNullInputShapes;
+pub use crate::ffi_types::Handle_BOPAlgo_AlertNullInputShapes;
 
-unsafe impl crate::CppDeletable for HandleBOPAlgoAlertNullInputShapes {
+unsafe impl crate::CppDeletable for Handle_BOPAlgo_AlertNullInputShapes {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKBO::HandleBOPAlgoAlertNullInputShapes_destructor(ptr);
+            crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertNullInputShapes_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleBOPAlgoAlertNullInputShapes {
+unsafe impl crate::CppCopyable for Handle_BOPAlgo_AlertNullInputShapes {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
         unsafe {
-            crate::check_result(crate::ffi_extern_TKBO::HandleBOPAlgoAlertNullInputShapes_clone(
+            crate::check_result(crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertNullInputShapes_clone(
                 ptr,
             ))
         }
     }
 }
 
-impl HandleBOPAlgoAlertNullInputShapes {
+impl Handle_BOPAlgo_AlertNullInputShapes {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
         unsafe {
-            crate::ffi_extern_TKBO::HandleBOPAlgoAlertNullInputShapes_is_null(self as *const Self)
+            crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertNullInputShapes_is_null(self as *const Self)
         }
     }
 
     /// Dereference this Handle to access the underlying BOPAlgo_AlertNullInputShapes
     pub fn get(&self) -> &crate::ffi_types::BOPAlgo_AlertNullInputShapes {
         unsafe {
-            &*crate::check_result(crate::ffi_extern_TKBO::HandleBOPAlgoAlertNullInputShapes_get(
+            &*crate::check_result(crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertNullInputShapes_get(
                 self as *const Self,
             ))
         }
@@ -2259,7 +2261,7 @@ impl HandleBOPAlgoAlertNullInputShapes {
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::BOPAlgo_AlertNullInputShapes {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi_extern_TKBO::HandleBOPAlgoAlertNullInputShapes_get_mut(
+                crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertNullInputShapes_get_mut(
                     self as *mut Self,
                 ),
             )
@@ -2267,10 +2269,10 @@ impl HandleBOPAlgoAlertNullInputShapes {
     }
 
     /// Upcast Handle<BOPAlgo_AlertNullInputShapes> to Handle<Message_Alert>
-    pub fn to_handle_alert(&self) -> crate::OwnedPtr<crate::ffi_types::HandleMessageAlert> {
+    pub fn to_handle_alert(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_Message_Alert> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKBO::HandleBOPAlgoAlertNullInputShapes_to_HandleMessageAlert(
+                crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertNullInputShapes_to_Handle_Message_Alert(
                     self as *const Self,
                 ),
             ))
@@ -2280,9 +2282,9 @@ impl HandleBOPAlgoAlertNullInputShapes {
     /// Upcast Handle<BOPAlgo_AlertNullInputShapes> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKBO::HandleBOPAlgoAlertNullInputShapes_to_HandleStandardTransient(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertNullInputShapes_to_Handle_Standard_Transient(self as *const Self)))
         }
     }
 }
@@ -2311,7 +2313,7 @@ impl AlertPostTreatFF {
     }
 
     /// **Source:** `BOPAlgo_Alerts.hxx`:46 - `BOPAlgo_AlertPostTreatFF::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKBO::BOPAlgo_AlertPostTreatFF_dynamic_type(
                 self as *const Self,
@@ -2331,7 +2333,7 @@ impl AlertPostTreatFF {
     }
 
     /// **Source:** `BOPAlgo_Alerts.hxx`:46 - `BOPAlgo_AlertPostTreatFF::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKBO::BOPAlgo_AlertPostTreatFF_get_type_descriptor(),
@@ -2386,7 +2388,7 @@ impl AlertPostTreatFF {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleBOPAlgoAlertPostTreatFF> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_BOPAlgo_AlertPostTreatFF> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKBO::BOPAlgo_AlertPostTreatFF_to_handle(obj.into_raw()),
@@ -2394,7 +2396,7 @@ impl AlertPostTreatFF {
         }
     }
 
-    /// Inherited: **Source:** `Message_Alert.hxx`:47 - `Message_Alert::SupportsMerge()`
+    /// Inherited: **Source:** `Message_Alert.hxx`:45 - `Message_Alert::SupportsMerge()`
     pub fn supports_merge(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertPostTreatFF_inherited_SupportsMerge(
@@ -2403,8 +2405,8 @@ impl AlertPostTreatFF {
         })
     }
 
-    /// Inherited: **Source:** `Message_Alert.hxx`:52 - `Message_Alert::Merge()`
-    pub fn merge(&mut self, theTarget: &crate::ffi_types::HandleMessageAlert) -> bool {
+    /// Inherited: **Source:** `Message_Alert.hxx`:50 - `Message_Alert::Merge()`
+    pub fn merge(&mut self, theTarget: &crate::ffi_types::Handle_Message_Alert) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertPostTreatFF_inherited_Merge(
                 self as *mut Self,
@@ -2413,8 +2415,8 @@ impl AlertPostTreatFF {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertPostTreatFF_inherited_IsInstance(
                 self as *const Self,
@@ -2423,8 +2425,8 @@ impl AlertPostTreatFF {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertPostTreatFF_inherited_IsKind(
                 self as *const Self,
@@ -2433,7 +2435,7 @@ impl AlertPostTreatFF {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -2447,7 +2449,7 @@ impl AlertPostTreatFF {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertPostTreatFF_inherited_GetRefCount(
@@ -2456,7 +2458,7 @@ impl AlertPostTreatFF {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertPostTreatFF_inherited_IncrementRefCounter(
@@ -2465,7 +2467,7 @@ impl AlertPostTreatFF {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertPostTreatFF_inherited_DecrementRefCounter(
@@ -2474,7 +2476,7 @@ impl AlertPostTreatFF {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertPostTreatFF_inherited_Delete(self as *const Self)
@@ -2482,36 +2484,36 @@ impl AlertPostTreatFF {
     }
 }
 
-pub use crate::ffi_types::HandleBOPAlgoAlertPostTreatFF;
+pub use crate::ffi_types::Handle_BOPAlgo_AlertPostTreatFF;
 
-unsafe impl crate::CppDeletable for HandleBOPAlgoAlertPostTreatFF {
+unsafe impl crate::CppDeletable for Handle_BOPAlgo_AlertPostTreatFF {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKBO::HandleBOPAlgoAlertPostTreatFF_destructor(ptr);
+            crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertPostTreatFF_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleBOPAlgoAlertPostTreatFF {
+unsafe impl crate::CppCopyable for Handle_BOPAlgo_AlertPostTreatFF {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
         unsafe {
-            crate::check_result(crate::ffi_extern_TKBO::HandleBOPAlgoAlertPostTreatFF_clone(ptr))
+            crate::check_result(crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertPostTreatFF_clone(ptr))
         }
     }
 }
 
-impl HandleBOPAlgoAlertPostTreatFF {
+impl Handle_BOPAlgo_AlertPostTreatFF {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
         unsafe {
-            crate::ffi_extern_TKBO::HandleBOPAlgoAlertPostTreatFF_is_null(self as *const Self)
+            crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertPostTreatFF_is_null(self as *const Self)
         }
     }
 
     /// Dereference this Handle to access the underlying BOPAlgo_AlertPostTreatFF
     pub fn get(&self) -> &crate::ffi_types::BOPAlgo_AlertPostTreatFF {
         unsafe {
-            &*crate::check_result(crate::ffi_extern_TKBO::HandleBOPAlgoAlertPostTreatFF_get(
+            &*crate::check_result(crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertPostTreatFF_get(
                 self as *const Self,
             ))
         }
@@ -2521,16 +2523,16 @@ impl HandleBOPAlgoAlertPostTreatFF {
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::BOPAlgo_AlertPostTreatFF {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi_extern_TKBO::HandleBOPAlgoAlertPostTreatFF_get_mut(self as *mut Self),
+                crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertPostTreatFF_get_mut(self as *mut Self),
             )
         }
     }
 
     /// Upcast Handle<BOPAlgo_AlertPostTreatFF> to Handle<Message_Alert>
-    pub fn to_handle_alert(&self) -> crate::OwnedPtr<crate::ffi_types::HandleMessageAlert> {
+    pub fn to_handle_alert(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_Message_Alert> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKBO::HandleBOPAlgoAlertPostTreatFF_to_HandleMessageAlert(
+                crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertPostTreatFF_to_Handle_Message_Alert(
                     self as *const Self,
                 ),
             ))
@@ -2540,13 +2542,9 @@ impl HandleBOPAlgoAlertPostTreatFF {
     /// Upcast Handle<BOPAlgo_AlertPostTreatFF> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKBO::HandleBOPAlgoAlertPostTreatFF_to_HandleStandardTransient(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertPostTreatFF_to_Handle_Standard_Transient(self as *const Self)))
         }
     }
 }
@@ -2575,7 +2573,7 @@ impl AlertSolidBuilderFailed {
     }
 
     /// **Source:** `BOPAlgo_Alerts.hxx`:49 - `BOPAlgo_AlertSolidBuilderFailed::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKBO::BOPAlgo_AlertSolidBuilderFailed_dynamic_type(
@@ -2597,7 +2595,7 @@ impl AlertSolidBuilderFailed {
     }
 
     /// **Source:** `BOPAlgo_Alerts.hxx`:49 - `BOPAlgo_AlertSolidBuilderFailed::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKBO::BOPAlgo_AlertSolidBuilderFailed_get_type_descriptor(),
@@ -2652,7 +2650,7 @@ impl AlertSolidBuilderFailed {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleBOPAlgoAlertSolidBuilderFailed> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_BOPAlgo_AlertSolidBuilderFailed> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKBO::BOPAlgo_AlertSolidBuilderFailed_to_handle(obj.into_raw()),
@@ -2660,7 +2658,7 @@ impl AlertSolidBuilderFailed {
         }
     }
 
-    /// Inherited: **Source:** `Message_Alert.hxx`:47 - `Message_Alert::SupportsMerge()`
+    /// Inherited: **Source:** `Message_Alert.hxx`:45 - `Message_Alert::SupportsMerge()`
     pub fn supports_merge(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertSolidBuilderFailed_inherited_SupportsMerge(
@@ -2669,8 +2667,8 @@ impl AlertSolidBuilderFailed {
         })
     }
 
-    /// Inherited: **Source:** `Message_Alert.hxx`:52 - `Message_Alert::Merge()`
-    pub fn merge(&mut self, theTarget: &crate::ffi_types::HandleMessageAlert) -> bool {
+    /// Inherited: **Source:** `Message_Alert.hxx`:50 - `Message_Alert::Merge()`
+    pub fn merge(&mut self, theTarget: &crate::ffi_types::Handle_Message_Alert) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertSolidBuilderFailed_inherited_Merge(
                 self as *mut Self,
@@ -2679,8 +2677,8 @@ impl AlertSolidBuilderFailed {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertSolidBuilderFailed_inherited_IsInstance(
                 self as *const Self,
@@ -2689,8 +2687,8 @@ impl AlertSolidBuilderFailed {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertSolidBuilderFailed_inherited_IsKind(
                 self as *const Self,
@@ -2699,7 +2697,7 @@ impl AlertSolidBuilderFailed {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -2715,7 +2713,7 @@ impl AlertSolidBuilderFailed {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertSolidBuilderFailed_inherited_GetRefCount(
@@ -2724,7 +2722,7 @@ impl AlertSolidBuilderFailed {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertSolidBuilderFailed_inherited_IncrementRefCounter(
@@ -2733,7 +2731,7 @@ impl AlertSolidBuilderFailed {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertSolidBuilderFailed_inherited_DecrementRefCounter(
@@ -2742,7 +2740,7 @@ impl AlertSolidBuilderFailed {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertSolidBuilderFailed_inherited_Delete(
@@ -2752,31 +2750,31 @@ impl AlertSolidBuilderFailed {
     }
 }
 
-pub use crate::ffi_types::HandleBOPAlgoAlertSolidBuilderFailed;
+pub use crate::ffi_types::Handle_BOPAlgo_AlertSolidBuilderFailed;
 
-unsafe impl crate::CppDeletable for HandleBOPAlgoAlertSolidBuilderFailed {
+unsafe impl crate::CppDeletable for Handle_BOPAlgo_AlertSolidBuilderFailed {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKBO::HandleBOPAlgoAlertSolidBuilderFailed_destructor(ptr);
+            crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertSolidBuilderFailed_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleBOPAlgoAlertSolidBuilderFailed {
+unsafe impl crate::CppCopyable for Handle_BOPAlgo_AlertSolidBuilderFailed {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
         unsafe {
-            crate::check_result(crate::ffi_extern_TKBO::HandleBOPAlgoAlertSolidBuilderFailed_clone(
-                ptr,
-            ))
+            crate::check_result(
+                crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertSolidBuilderFailed_clone(ptr),
+            )
         }
     }
 }
 
-impl HandleBOPAlgoAlertSolidBuilderFailed {
+impl Handle_BOPAlgo_AlertSolidBuilderFailed {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
         unsafe {
-            crate::ffi_extern_TKBO::HandleBOPAlgoAlertSolidBuilderFailed_is_null(
+            crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertSolidBuilderFailed_is_null(
                 self as *const Self,
             )
         }
@@ -2785,9 +2783,11 @@ impl HandleBOPAlgoAlertSolidBuilderFailed {
     /// Dereference this Handle to access the underlying BOPAlgo_AlertSolidBuilderFailed
     pub fn get(&self) -> &crate::ffi_types::BOPAlgo_AlertSolidBuilderFailed {
         unsafe {
-            &*crate::check_result(crate::ffi_extern_TKBO::HandleBOPAlgoAlertSolidBuilderFailed_get(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertSolidBuilderFailed_get(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -2795,7 +2795,7 @@ impl HandleBOPAlgoAlertSolidBuilderFailed {
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::BOPAlgo_AlertSolidBuilderFailed {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi_extern_TKBO::HandleBOPAlgoAlertSolidBuilderFailed_get_mut(
+                crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertSolidBuilderFailed_get_mut(
                     self as *mut Self,
                 ),
             )
@@ -2803,22 +2803,18 @@ impl HandleBOPAlgoAlertSolidBuilderFailed {
     }
 
     /// Upcast Handle<BOPAlgo_AlertSolidBuilderFailed> to Handle<Message_Alert>
-    pub fn to_handle_alert(&self) -> crate::OwnedPtr<crate::ffi_types::HandleMessageAlert> {
+    pub fn to_handle_alert(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_Message_Alert> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKBO::HandleBOPAlgoAlertSolidBuilderFailed_to_HandleMessageAlert(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertSolidBuilderFailed_to_Handle_Message_Alert(self as *const Self)))
         }
     }
 
     /// Upcast Handle<BOPAlgo_AlertSolidBuilderFailed> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKBO::HandleBOPAlgoAlertSolidBuilderFailed_to_HandleStandardTransient(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertSolidBuilderFailed_to_Handle_Standard_Transient(self as *const Self)))
         }
     }
 }
@@ -2847,7 +2843,7 @@ impl AlertTooFewArguments {
     }
 
     /// **Source:** `BOPAlgo_Alerts.hxx`:52 - `BOPAlgo_AlertTooFewArguments::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKBO::BOPAlgo_AlertTooFewArguments_dynamic_type(
@@ -2869,7 +2865,7 @@ impl AlertTooFewArguments {
     }
 
     /// **Source:** `BOPAlgo_Alerts.hxx`:52 - `BOPAlgo_AlertTooFewArguments::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKBO::BOPAlgo_AlertTooFewArguments_get_type_descriptor(),
@@ -2924,7 +2920,7 @@ impl AlertTooFewArguments {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleBOPAlgoAlertTooFewArguments> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_BOPAlgo_AlertTooFewArguments> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKBO::BOPAlgo_AlertTooFewArguments_to_handle(obj.into_raw()),
@@ -2932,7 +2928,7 @@ impl AlertTooFewArguments {
         }
     }
 
-    /// Inherited: **Source:** `Message_Alert.hxx`:47 - `Message_Alert::SupportsMerge()`
+    /// Inherited: **Source:** `Message_Alert.hxx`:45 - `Message_Alert::SupportsMerge()`
     pub fn supports_merge(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertTooFewArguments_inherited_SupportsMerge(
@@ -2941,8 +2937,8 @@ impl AlertTooFewArguments {
         })
     }
 
-    /// Inherited: **Source:** `Message_Alert.hxx`:52 - `Message_Alert::Merge()`
-    pub fn merge(&mut self, theTarget: &crate::ffi_types::HandleMessageAlert) -> bool {
+    /// Inherited: **Source:** `Message_Alert.hxx`:50 - `Message_Alert::Merge()`
+    pub fn merge(&mut self, theTarget: &crate::ffi_types::Handle_Message_Alert) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertTooFewArguments_inherited_Merge(
                 self as *mut Self,
@@ -2951,8 +2947,8 @@ impl AlertTooFewArguments {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertTooFewArguments_inherited_IsInstance(
                 self as *const Self,
@@ -2961,8 +2957,8 @@ impl AlertTooFewArguments {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertTooFewArguments_inherited_IsKind(
                 self as *const Self,
@@ -2971,7 +2967,7 @@ impl AlertTooFewArguments {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -2987,7 +2983,7 @@ impl AlertTooFewArguments {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertTooFewArguments_inherited_GetRefCount(
@@ -2996,7 +2992,7 @@ impl AlertTooFewArguments {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertTooFewArguments_inherited_IncrementRefCounter(
@@ -3005,7 +3001,7 @@ impl AlertTooFewArguments {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertTooFewArguments_inherited_DecrementRefCounter(
@@ -3014,7 +3010,7 @@ impl AlertTooFewArguments {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertTooFewArguments_inherited_Delete(
@@ -3024,38 +3020,38 @@ impl AlertTooFewArguments {
     }
 }
 
-pub use crate::ffi_types::HandleBOPAlgoAlertTooFewArguments;
+pub use crate::ffi_types::Handle_BOPAlgo_AlertTooFewArguments;
 
-unsafe impl crate::CppDeletable for HandleBOPAlgoAlertTooFewArguments {
+unsafe impl crate::CppDeletable for Handle_BOPAlgo_AlertTooFewArguments {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKBO::HandleBOPAlgoAlertTooFewArguments_destructor(ptr);
+            crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertTooFewArguments_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleBOPAlgoAlertTooFewArguments {
+unsafe impl crate::CppCopyable for Handle_BOPAlgo_AlertTooFewArguments {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
         unsafe {
-            crate::check_result(crate::ffi_extern_TKBO::HandleBOPAlgoAlertTooFewArguments_clone(
+            crate::check_result(crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertTooFewArguments_clone(
                 ptr,
             ))
         }
     }
 }
 
-impl HandleBOPAlgoAlertTooFewArguments {
+impl Handle_BOPAlgo_AlertTooFewArguments {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
         unsafe {
-            crate::ffi_extern_TKBO::HandleBOPAlgoAlertTooFewArguments_is_null(self as *const Self)
+            crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertTooFewArguments_is_null(self as *const Self)
         }
     }
 
     /// Dereference this Handle to access the underlying BOPAlgo_AlertTooFewArguments
     pub fn get(&self) -> &crate::ffi_types::BOPAlgo_AlertTooFewArguments {
         unsafe {
-            &*crate::check_result(crate::ffi_extern_TKBO::HandleBOPAlgoAlertTooFewArguments_get(
+            &*crate::check_result(crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertTooFewArguments_get(
                 self as *const Self,
             ))
         }
@@ -3065,7 +3061,7 @@ impl HandleBOPAlgoAlertTooFewArguments {
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::BOPAlgo_AlertTooFewArguments {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi_extern_TKBO::HandleBOPAlgoAlertTooFewArguments_get_mut(
+                crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertTooFewArguments_get_mut(
                     self as *mut Self,
                 ),
             )
@@ -3073,10 +3069,10 @@ impl HandleBOPAlgoAlertTooFewArguments {
     }
 
     /// Upcast Handle<BOPAlgo_AlertTooFewArguments> to Handle<Message_Alert>
-    pub fn to_handle_alert(&self) -> crate::OwnedPtr<crate::ffi_types::HandleMessageAlert> {
+    pub fn to_handle_alert(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_Message_Alert> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKBO::HandleBOPAlgoAlertTooFewArguments_to_HandleMessageAlert(
+                crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertTooFewArguments_to_Handle_Message_Alert(
                     self as *const Self,
                 ),
             ))
@@ -3086,9 +3082,9 @@ impl HandleBOPAlgoAlertTooFewArguments {
     /// Upcast Handle<BOPAlgo_AlertTooFewArguments> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKBO::HandleBOPAlgoAlertTooFewArguments_to_HandleStandardTransient(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertTooFewArguments_to_Handle_Standard_Transient(self as *const Self)))
         }
     }
 }
@@ -3117,7 +3113,7 @@ impl AlertBadPositioning {
     }
 
     /// **Source:** `BOPAlgo_Alerts.hxx`:55 - `BOPAlgo_AlertBadPositioning::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKBO::BOPAlgo_AlertBadPositioning_dynamic_type(
@@ -3139,7 +3135,7 @@ impl AlertBadPositioning {
     }
 
     /// **Source:** `BOPAlgo_Alerts.hxx`:55 - `BOPAlgo_AlertBadPositioning::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKBO::BOPAlgo_AlertBadPositioning_get_type_descriptor(),
@@ -3216,7 +3212,7 @@ impl AlertBadPositioning {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleBOPAlgoAlertBadPositioning> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_BOPAlgo_AlertBadPositioning> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKBO::BOPAlgo_AlertBadPositioning_to_handle(obj.into_raw()),
@@ -3255,7 +3251,7 @@ impl AlertBadPositioning {
     }
 
     /// Inherited: **Source:** `TopoDS_AlertWithShape.hxx`:39 - `TopoDS_AlertWithShape::Merge()`
-    pub fn merge(&mut self, theTarget: &crate::ffi_types::HandleMessageAlert) -> bool {
+    pub fn merge(&mut self, theTarget: &crate::ffi_types::Handle_Message_Alert) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertBadPositioning_inherited_Merge(
                 self as *mut Self,
@@ -3264,8 +3260,8 @@ impl AlertBadPositioning {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertBadPositioning_inherited_IsInstance(
                 self as *const Self,
@@ -3274,8 +3270,8 @@ impl AlertBadPositioning {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertBadPositioning_inherited_IsKind(
                 self as *const Self,
@@ -3284,7 +3280,7 @@ impl AlertBadPositioning {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -3300,7 +3296,7 @@ impl AlertBadPositioning {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertBadPositioning_inherited_GetRefCount(
@@ -3309,7 +3305,7 @@ impl AlertBadPositioning {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertBadPositioning_inherited_IncrementRefCounter(
@@ -3318,7 +3314,7 @@ impl AlertBadPositioning {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertBadPositioning_inherited_DecrementRefCounter(
@@ -3327,7 +3323,7 @@ impl AlertBadPositioning {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertBadPositioning_inherited_Delete(
@@ -3337,36 +3333,38 @@ impl AlertBadPositioning {
     }
 }
 
-pub use crate::ffi_types::HandleBOPAlgoAlertBadPositioning;
+pub use crate::ffi_types::Handle_BOPAlgo_AlertBadPositioning;
 
-unsafe impl crate::CppDeletable for HandleBOPAlgoAlertBadPositioning {
+unsafe impl crate::CppDeletable for Handle_BOPAlgo_AlertBadPositioning {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKBO::HandleBOPAlgoAlertBadPositioning_destructor(ptr);
+            crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertBadPositioning_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleBOPAlgoAlertBadPositioning {
+unsafe impl crate::CppCopyable for Handle_BOPAlgo_AlertBadPositioning {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
         unsafe {
-            crate::check_result(crate::ffi_extern_TKBO::HandleBOPAlgoAlertBadPositioning_clone(ptr))
+            crate::check_result(crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertBadPositioning_clone(
+                ptr,
+            ))
         }
     }
 }
 
-impl HandleBOPAlgoAlertBadPositioning {
+impl Handle_BOPAlgo_AlertBadPositioning {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
         unsafe {
-            crate::ffi_extern_TKBO::HandleBOPAlgoAlertBadPositioning_is_null(self as *const Self)
+            crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertBadPositioning_is_null(self as *const Self)
         }
     }
 
     /// Dereference this Handle to access the underlying BOPAlgo_AlertBadPositioning
     pub fn get(&self) -> &crate::ffi_types::BOPAlgo_AlertBadPositioning {
         unsafe {
-            &*crate::check_result(crate::ffi_extern_TKBO::HandleBOPAlgoAlertBadPositioning_get(
+            &*crate::check_result(crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertBadPositioning_get(
                 self as *const Self,
             ))
         }
@@ -3376,7 +3374,9 @@ impl HandleBOPAlgoAlertBadPositioning {
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::BOPAlgo_AlertBadPositioning {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi_extern_TKBO::HandleBOPAlgoAlertBadPositioning_get_mut(self as *mut Self),
+                crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertBadPositioning_get_mut(
+                    self as *mut Self,
+                ),
             )
         }
     }
@@ -3384,17 +3384,17 @@ impl HandleBOPAlgoAlertBadPositioning {
     /// Upcast Handle<BOPAlgo_AlertBadPositioning> to Handle<TopoDS_AlertWithShape>
     pub fn to_handle_alert_with_shape(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleTopoDSAlertWithShape> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_TopoDS_AlertWithShape> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKBO::HandleBOPAlgoAlertBadPositioning_to_HandleTopoDSAlertWithShape(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertBadPositioning_to_Handle_TopoDS_AlertWithShape(self as *const Self)))
         }
     }
 
     /// Upcast Handle<BOPAlgo_AlertBadPositioning> to Handle<Message_Alert>
-    pub fn to_handle_alert(&self) -> crate::OwnedPtr<crate::ffi_types::HandleMessageAlert> {
+    pub fn to_handle_alert(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_Message_Alert> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKBO::HandleBOPAlgoAlertBadPositioning_to_HandleMessageAlert(
+                crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertBadPositioning_to_Handle_Message_Alert(
                     self as *const Self,
                 ),
             ))
@@ -3404,13 +3404,9 @@ impl HandleBOPAlgoAlertBadPositioning {
     /// Upcast Handle<BOPAlgo_AlertBadPositioning> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKBO::HandleBOPAlgoAlertBadPositioning_to_HandleStandardTransient(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertBadPositioning_to_Handle_Standard_Transient(self as *const Self)))
         }
     }
 }
@@ -3439,7 +3435,7 @@ impl AlertEmptyShape {
     }
 
     /// **Source:** `BOPAlgo_Alerts.hxx`:58 - `BOPAlgo_AlertEmptyShape::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKBO::BOPAlgo_AlertEmptyShape_dynamic_type(
                 self as *const Self,
@@ -3459,7 +3455,7 @@ impl AlertEmptyShape {
     }
 
     /// **Source:** `BOPAlgo_Alerts.hxx`:58 - `BOPAlgo_AlertEmptyShape::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKBO::BOPAlgo_AlertEmptyShape_get_type_descriptor(),
@@ -3534,7 +3530,7 @@ impl AlertEmptyShape {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleBOPAlgoAlertEmptyShape> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_BOPAlgo_AlertEmptyShape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKBO::BOPAlgo_AlertEmptyShape_to_handle(obj.into_raw()),
@@ -3573,7 +3569,7 @@ impl AlertEmptyShape {
     }
 
     /// Inherited: **Source:** `TopoDS_AlertWithShape.hxx`:39 - `TopoDS_AlertWithShape::Merge()`
-    pub fn merge(&mut self, theTarget: &crate::ffi_types::HandleMessageAlert) -> bool {
+    pub fn merge(&mut self, theTarget: &crate::ffi_types::Handle_Message_Alert) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertEmptyShape_inherited_Merge(
                 self as *mut Self,
@@ -3582,8 +3578,8 @@ impl AlertEmptyShape {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertEmptyShape_inherited_IsInstance(
                 self as *const Self,
@@ -3592,8 +3588,8 @@ impl AlertEmptyShape {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertEmptyShape_inherited_IsKind(
                 self as *const Self,
@@ -3602,7 +3598,7 @@ impl AlertEmptyShape {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -3616,7 +3612,7 @@ impl AlertEmptyShape {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertEmptyShape_inherited_GetRefCount(
@@ -3625,7 +3621,7 @@ impl AlertEmptyShape {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertEmptyShape_inherited_IncrementRefCounter(
@@ -3634,7 +3630,7 @@ impl AlertEmptyShape {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertEmptyShape_inherited_DecrementRefCounter(
@@ -3643,7 +3639,7 @@ impl AlertEmptyShape {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertEmptyShape_inherited_Delete(self as *const Self)
@@ -3651,34 +3647,36 @@ impl AlertEmptyShape {
     }
 }
 
-pub use crate::ffi_types::HandleBOPAlgoAlertEmptyShape;
+pub use crate::ffi_types::Handle_BOPAlgo_AlertEmptyShape;
 
-unsafe impl crate::CppDeletable for HandleBOPAlgoAlertEmptyShape {
+unsafe impl crate::CppDeletable for Handle_BOPAlgo_AlertEmptyShape {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKBO::HandleBOPAlgoAlertEmptyShape_destructor(ptr);
+            crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertEmptyShape_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleBOPAlgoAlertEmptyShape {
+unsafe impl crate::CppCopyable for Handle_BOPAlgo_AlertEmptyShape {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
         unsafe {
-            crate::check_result(crate::ffi_extern_TKBO::HandleBOPAlgoAlertEmptyShape_clone(ptr))
+            crate::check_result(crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertEmptyShape_clone(ptr))
         }
     }
 }
 
-impl HandleBOPAlgoAlertEmptyShape {
+impl Handle_BOPAlgo_AlertEmptyShape {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
-        unsafe { crate::ffi_extern_TKBO::HandleBOPAlgoAlertEmptyShape_is_null(self as *const Self) }
+        unsafe {
+            crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertEmptyShape_is_null(self as *const Self)
+        }
     }
 
     /// Dereference this Handle to access the underlying BOPAlgo_AlertEmptyShape
     pub fn get(&self) -> &crate::ffi_types::BOPAlgo_AlertEmptyShape {
         unsafe {
-            &*crate::check_result(crate::ffi_extern_TKBO::HandleBOPAlgoAlertEmptyShape_get(
+            &*crate::check_result(crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertEmptyShape_get(
                 self as *const Self,
             ))
         }
@@ -3687,30 +3685,26 @@ impl HandleBOPAlgoAlertEmptyShape {
     /// Dereference this Handle to mutably access the underlying BOPAlgo_AlertEmptyShape
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::BOPAlgo_AlertEmptyShape {
         unsafe {
-            &mut *crate::check_result(crate::ffi_extern_TKBO::HandleBOPAlgoAlertEmptyShape_get_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertEmptyShape_get_mut(self as *mut Self),
+            )
         }
     }
 
     /// Upcast Handle<BOPAlgo_AlertEmptyShape> to Handle<TopoDS_AlertWithShape>
     pub fn to_handle_alert_with_shape(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleTopoDSAlertWithShape> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_TopoDS_AlertWithShape> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKBO::HandleBOPAlgoAlertEmptyShape_to_HandleTopoDSAlertWithShape(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertEmptyShape_to_Handle_TopoDS_AlertWithShape(self as *const Self)))
         }
     }
 
     /// Upcast Handle<BOPAlgo_AlertEmptyShape> to Handle<Message_Alert>
-    pub fn to_handle_alert(&self) -> crate::OwnedPtr<crate::ffi_types::HandleMessageAlert> {
+    pub fn to_handle_alert(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_Message_Alert> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKBO::HandleBOPAlgoAlertEmptyShape_to_HandleMessageAlert(
+                crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertEmptyShape_to_Handle_Message_Alert(
                     self as *const Self,
                 ),
             ))
@@ -3720,10 +3714,10 @@ impl HandleBOPAlgoAlertEmptyShape {
     /// Upcast Handle<BOPAlgo_AlertEmptyShape> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKBO::HandleBOPAlgoAlertEmptyShape_to_HandleStandardTransient(
+                crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertEmptyShape_to_Handle_Standard_Transient(
                     self as *const Self,
                 ),
             ))
@@ -3755,7 +3749,7 @@ impl AlertNotSplittableEdge {
     }
 
     /// **Source:** `BOPAlgo_Alerts.hxx`:61 - `BOPAlgo_AlertNotSplittableEdge::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKBO::BOPAlgo_AlertNotSplittableEdge_dynamic_type(
@@ -3777,7 +3771,7 @@ impl AlertNotSplittableEdge {
     }
 
     /// **Source:** `BOPAlgo_Alerts.hxx`:61 - `BOPAlgo_AlertNotSplittableEdge::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKBO::BOPAlgo_AlertNotSplittableEdge_get_type_descriptor(),
@@ -3854,7 +3848,7 @@ impl AlertNotSplittableEdge {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleBOPAlgoAlertNotSplittableEdge> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_BOPAlgo_AlertNotSplittableEdge> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKBO::BOPAlgo_AlertNotSplittableEdge_to_handle(obj.into_raw()),
@@ -3893,7 +3887,7 @@ impl AlertNotSplittableEdge {
     }
 
     /// Inherited: **Source:** `TopoDS_AlertWithShape.hxx`:39 - `TopoDS_AlertWithShape::Merge()`
-    pub fn merge(&mut self, theTarget: &crate::ffi_types::HandleMessageAlert) -> bool {
+    pub fn merge(&mut self, theTarget: &crate::ffi_types::Handle_Message_Alert) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertNotSplittableEdge_inherited_Merge(
                 self as *mut Self,
@@ -3902,8 +3896,8 @@ impl AlertNotSplittableEdge {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertNotSplittableEdge_inherited_IsInstance(
                 self as *const Self,
@@ -3912,8 +3906,8 @@ impl AlertNotSplittableEdge {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertNotSplittableEdge_inherited_IsKind(
                 self as *const Self,
@@ -3922,7 +3916,7 @@ impl AlertNotSplittableEdge {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -3938,7 +3932,7 @@ impl AlertNotSplittableEdge {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertNotSplittableEdge_inherited_GetRefCount(
@@ -3947,7 +3941,7 @@ impl AlertNotSplittableEdge {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertNotSplittableEdge_inherited_IncrementRefCounter(
@@ -3956,7 +3950,7 @@ impl AlertNotSplittableEdge {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertNotSplittableEdge_inherited_DecrementRefCounter(
@@ -3965,7 +3959,7 @@ impl AlertNotSplittableEdge {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertNotSplittableEdge_inherited_Delete(
@@ -3975,40 +3969,44 @@ impl AlertNotSplittableEdge {
     }
 }
 
-pub use crate::ffi_types::HandleBOPAlgoAlertNotSplittableEdge;
+pub use crate::ffi_types::Handle_BOPAlgo_AlertNotSplittableEdge;
 
-unsafe impl crate::CppDeletable for HandleBOPAlgoAlertNotSplittableEdge {
+unsafe impl crate::CppDeletable for Handle_BOPAlgo_AlertNotSplittableEdge {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKBO::HandleBOPAlgoAlertNotSplittableEdge_destructor(ptr);
+            crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertNotSplittableEdge_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleBOPAlgoAlertNotSplittableEdge {
+unsafe impl crate::CppCopyable for Handle_BOPAlgo_AlertNotSplittableEdge {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
         unsafe {
-            crate::check_result(crate::ffi_extern_TKBO::HandleBOPAlgoAlertNotSplittableEdge_clone(
-                ptr,
-            ))
+            crate::check_result(
+                crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertNotSplittableEdge_clone(ptr),
+            )
         }
     }
 }
 
-impl HandleBOPAlgoAlertNotSplittableEdge {
+impl Handle_BOPAlgo_AlertNotSplittableEdge {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
         unsafe {
-            crate::ffi_extern_TKBO::HandleBOPAlgoAlertNotSplittableEdge_is_null(self as *const Self)
+            crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertNotSplittableEdge_is_null(
+                self as *const Self,
+            )
         }
     }
 
     /// Dereference this Handle to access the underlying BOPAlgo_AlertNotSplittableEdge
     pub fn get(&self) -> &crate::ffi_types::BOPAlgo_AlertNotSplittableEdge {
         unsafe {
-            &*crate::check_result(crate::ffi_extern_TKBO::HandleBOPAlgoAlertNotSplittableEdge_get(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertNotSplittableEdge_get(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -4016,7 +4014,7 @@ impl HandleBOPAlgoAlertNotSplittableEdge {
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::BOPAlgo_AlertNotSplittableEdge {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi_extern_TKBO::HandleBOPAlgoAlertNotSplittableEdge_get_mut(
+                crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertNotSplittableEdge_get_mut(
                     self as *mut Self,
                 ),
             )
@@ -4026,29 +4024,25 @@ impl HandleBOPAlgoAlertNotSplittableEdge {
     /// Upcast Handle<BOPAlgo_AlertNotSplittableEdge> to Handle<TopoDS_AlertWithShape>
     pub fn to_handle_alert_with_shape(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleTopoDSAlertWithShape> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_TopoDS_AlertWithShape> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKBO::HandleBOPAlgoAlertNotSplittableEdge_to_HandleTopoDSAlertWithShape(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertNotSplittableEdge_to_Handle_TopoDS_AlertWithShape(self as *const Self)))
         }
     }
 
     /// Upcast Handle<BOPAlgo_AlertNotSplittableEdge> to Handle<Message_Alert>
-    pub fn to_handle_alert(&self) -> crate::OwnedPtr<crate::ffi_types::HandleMessageAlert> {
+    pub fn to_handle_alert(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_Message_Alert> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKBO::HandleBOPAlgoAlertNotSplittableEdge_to_HandleMessageAlert(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertNotSplittableEdge_to_Handle_Message_Alert(self as *const Self)))
         }
     }
 
     /// Upcast Handle<BOPAlgo_AlertNotSplittableEdge> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKBO::HandleBOPAlgoAlertNotSplittableEdge_to_HandleStandardTransient(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertNotSplittableEdge_to_Handle_Standard_Transient(self as *const Self)))
         }
     }
 }
@@ -4077,7 +4071,7 @@ impl AlertRemovalOfIBForEdgesFailed {
     }
 
     /// **Source:** `BOPAlgo_Alerts.hxx`:64 - `BOPAlgo_AlertRemovalOfIBForEdgesFailed::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKBO::BOPAlgo_AlertRemovalOfIBForEdgesFailed_dynamic_type(
@@ -4099,7 +4093,7 @@ impl AlertRemovalOfIBForEdgesFailed {
     }
 
     /// **Source:** `BOPAlgo_Alerts.hxx`:64 - `BOPAlgo_AlertRemovalOfIBForEdgesFailed::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKBO::BOPAlgo_AlertRemovalOfIBForEdgesFailed_get_type_descriptor(
@@ -4161,7 +4155,7 @@ impl AlertRemovalOfIBForEdgesFailed {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleBOPAlgoAlertRemovalOfIBForEdgesFailed> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_BOPAlgo_AlertRemovalOfIBForEdgesFailed> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKBO::BOPAlgo_AlertRemovalOfIBForEdgesFailed_to_handle(
@@ -4202,7 +4196,7 @@ impl AlertRemovalOfIBForEdgesFailed {
     }
 
     /// Inherited: **Source:** `TopoDS_AlertWithShape.hxx`:39 - `TopoDS_AlertWithShape::Merge()`
-    pub fn merge(&mut self, theTarget: &crate::ffi_types::HandleMessageAlert) -> bool {
+    pub fn merge(&mut self, theTarget: &crate::ffi_types::Handle_Message_Alert) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertRemovalOfIBForEdgesFailed_inherited_Merge(
                 self as *mut Self,
@@ -4211,8 +4205,8 @@ impl AlertRemovalOfIBForEdgesFailed {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertRemovalOfIBForEdgesFailed_inherited_IsInstance(
                 self as *const Self,
@@ -4221,8 +4215,8 @@ impl AlertRemovalOfIBForEdgesFailed {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertRemovalOfIBForEdgesFailed_inherited_IsKind(
                 self as *const Self,
@@ -4231,7 +4225,7 @@ impl AlertRemovalOfIBForEdgesFailed {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -4247,7 +4241,7 @@ impl AlertRemovalOfIBForEdgesFailed {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertRemovalOfIBForEdgesFailed_inherited_GetRefCount(
@@ -4256,21 +4250,21 @@ impl AlertRemovalOfIBForEdgesFailed {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertRemovalOfIBForEdgesFailed_inherited_IncrementRefCounter(self as *mut Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertRemovalOfIBForEdgesFailed_inherited_DecrementRefCounter(self as *mut Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertRemovalOfIBForEdgesFailed_inherited_Delete(
@@ -4280,31 +4274,31 @@ impl AlertRemovalOfIBForEdgesFailed {
     }
 }
 
-pub use crate::ffi_types::HandleBOPAlgoAlertRemovalOfIBForEdgesFailed;
+pub use crate::ffi_types::Handle_BOPAlgo_AlertRemovalOfIBForEdgesFailed;
 
-unsafe impl crate::CppDeletable for HandleBOPAlgoAlertRemovalOfIBForEdgesFailed {
+unsafe impl crate::CppDeletable for Handle_BOPAlgo_AlertRemovalOfIBForEdgesFailed {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKBO::HandleBOPAlgoAlertRemovalOfIBForEdgesFailed_destructor(ptr);
+            crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertRemovalOfIBForEdgesFailed_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleBOPAlgoAlertRemovalOfIBForEdgesFailed {
+unsafe impl crate::CppCopyable for Handle_BOPAlgo_AlertRemovalOfIBForEdgesFailed {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
         unsafe {
             crate::check_result(
-                crate::ffi_extern_TKBO::HandleBOPAlgoAlertRemovalOfIBForEdgesFailed_clone(ptr),
+                crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertRemovalOfIBForEdgesFailed_clone(ptr),
             )
         }
     }
 }
 
-impl HandleBOPAlgoAlertRemovalOfIBForEdgesFailed {
+impl Handle_BOPAlgo_AlertRemovalOfIBForEdgesFailed {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
         unsafe {
-            crate::ffi_extern_TKBO::HandleBOPAlgoAlertRemovalOfIBForEdgesFailed_is_null(
+            crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertRemovalOfIBForEdgesFailed_is_null(
                 self as *const Self,
             )
         }
@@ -4314,7 +4308,7 @@ impl HandleBOPAlgoAlertRemovalOfIBForEdgesFailed {
     pub fn get(&self) -> &crate::ffi_types::BOPAlgo_AlertRemovalOfIBForEdgesFailed {
         unsafe {
             &*crate::check_result(
-                crate::ffi_extern_TKBO::HandleBOPAlgoAlertRemovalOfIBForEdgesFailed_get(
+                crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertRemovalOfIBForEdgesFailed_get(
                     self as *const Self,
                 ),
             )
@@ -4325,7 +4319,7 @@ impl HandleBOPAlgoAlertRemovalOfIBForEdgesFailed {
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::BOPAlgo_AlertRemovalOfIBForEdgesFailed {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi_extern_TKBO::HandleBOPAlgoAlertRemovalOfIBForEdgesFailed_get_mut(
+                crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertRemovalOfIBForEdgesFailed_get_mut(
                     self as *mut Self,
                 ),
             )
@@ -4335,25 +4329,25 @@ impl HandleBOPAlgoAlertRemovalOfIBForEdgesFailed {
     /// Upcast Handle<BOPAlgo_AlertRemovalOfIBForEdgesFailed> to Handle<TopoDS_AlertWithShape>
     pub fn to_handle_alert_with_shape(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleTopoDSAlertWithShape> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_TopoDS_AlertWithShape> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKBO::HandleBOPAlgoAlertRemovalOfIBForEdgesFailed_to_HandleTopoDSAlertWithShape(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertRemovalOfIBForEdgesFailed_to_Handle_TopoDS_AlertWithShape(self as *const Self)))
         }
     }
 
     /// Upcast Handle<BOPAlgo_AlertRemovalOfIBForEdgesFailed> to Handle<Message_Alert>
-    pub fn to_handle_alert(&self) -> crate::OwnedPtr<crate::ffi_types::HandleMessageAlert> {
+    pub fn to_handle_alert(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_Message_Alert> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKBO::HandleBOPAlgoAlertRemovalOfIBForEdgesFailed_to_HandleMessageAlert(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertRemovalOfIBForEdgesFailed_to_Handle_Message_Alert(self as *const Self)))
         }
     }
 
     /// Upcast Handle<BOPAlgo_AlertRemovalOfIBForEdgesFailed> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKBO::HandleBOPAlgoAlertRemovalOfIBForEdgesFailed_to_HandleStandardTransient(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertRemovalOfIBForEdgesFailed_to_Handle_Standard_Transient(self as *const Self)))
         }
     }
 }
@@ -4382,7 +4376,7 @@ impl AlertRemovalOfIBForFacesFailed {
     }
 
     /// **Source:** `BOPAlgo_Alerts.hxx`:67 - `BOPAlgo_AlertRemovalOfIBForFacesFailed::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKBO::BOPAlgo_AlertRemovalOfIBForFacesFailed_dynamic_type(
@@ -4404,7 +4398,7 @@ impl AlertRemovalOfIBForFacesFailed {
     }
 
     /// **Source:** `BOPAlgo_Alerts.hxx`:67 - `BOPAlgo_AlertRemovalOfIBForFacesFailed::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKBO::BOPAlgo_AlertRemovalOfIBForFacesFailed_get_type_descriptor(
@@ -4466,7 +4460,7 @@ impl AlertRemovalOfIBForFacesFailed {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleBOPAlgoAlertRemovalOfIBForFacesFailed> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_BOPAlgo_AlertRemovalOfIBForFacesFailed> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKBO::BOPAlgo_AlertRemovalOfIBForFacesFailed_to_handle(
@@ -4507,7 +4501,7 @@ impl AlertRemovalOfIBForFacesFailed {
     }
 
     /// Inherited: **Source:** `TopoDS_AlertWithShape.hxx`:39 - `TopoDS_AlertWithShape::Merge()`
-    pub fn merge(&mut self, theTarget: &crate::ffi_types::HandleMessageAlert) -> bool {
+    pub fn merge(&mut self, theTarget: &crate::ffi_types::Handle_Message_Alert) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertRemovalOfIBForFacesFailed_inherited_Merge(
                 self as *mut Self,
@@ -4516,8 +4510,8 @@ impl AlertRemovalOfIBForFacesFailed {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertRemovalOfIBForFacesFailed_inherited_IsInstance(
                 self as *const Self,
@@ -4526,8 +4520,8 @@ impl AlertRemovalOfIBForFacesFailed {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertRemovalOfIBForFacesFailed_inherited_IsKind(
                 self as *const Self,
@@ -4536,7 +4530,7 @@ impl AlertRemovalOfIBForFacesFailed {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -4552,7 +4546,7 @@ impl AlertRemovalOfIBForFacesFailed {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertRemovalOfIBForFacesFailed_inherited_GetRefCount(
@@ -4561,21 +4555,21 @@ impl AlertRemovalOfIBForFacesFailed {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertRemovalOfIBForFacesFailed_inherited_IncrementRefCounter(self as *mut Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertRemovalOfIBForFacesFailed_inherited_DecrementRefCounter(self as *mut Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertRemovalOfIBForFacesFailed_inherited_Delete(
@@ -4585,31 +4579,31 @@ impl AlertRemovalOfIBForFacesFailed {
     }
 }
 
-pub use crate::ffi_types::HandleBOPAlgoAlertRemovalOfIBForFacesFailed;
+pub use crate::ffi_types::Handle_BOPAlgo_AlertRemovalOfIBForFacesFailed;
 
-unsafe impl crate::CppDeletable for HandleBOPAlgoAlertRemovalOfIBForFacesFailed {
+unsafe impl crate::CppDeletable for Handle_BOPAlgo_AlertRemovalOfIBForFacesFailed {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKBO::HandleBOPAlgoAlertRemovalOfIBForFacesFailed_destructor(ptr);
+            crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertRemovalOfIBForFacesFailed_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleBOPAlgoAlertRemovalOfIBForFacesFailed {
+unsafe impl crate::CppCopyable for Handle_BOPAlgo_AlertRemovalOfIBForFacesFailed {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
         unsafe {
             crate::check_result(
-                crate::ffi_extern_TKBO::HandleBOPAlgoAlertRemovalOfIBForFacesFailed_clone(ptr),
+                crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertRemovalOfIBForFacesFailed_clone(ptr),
             )
         }
     }
 }
 
-impl HandleBOPAlgoAlertRemovalOfIBForFacesFailed {
+impl Handle_BOPAlgo_AlertRemovalOfIBForFacesFailed {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
         unsafe {
-            crate::ffi_extern_TKBO::HandleBOPAlgoAlertRemovalOfIBForFacesFailed_is_null(
+            crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertRemovalOfIBForFacesFailed_is_null(
                 self as *const Self,
             )
         }
@@ -4619,7 +4613,7 @@ impl HandleBOPAlgoAlertRemovalOfIBForFacesFailed {
     pub fn get(&self) -> &crate::ffi_types::BOPAlgo_AlertRemovalOfIBForFacesFailed {
         unsafe {
             &*crate::check_result(
-                crate::ffi_extern_TKBO::HandleBOPAlgoAlertRemovalOfIBForFacesFailed_get(
+                crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertRemovalOfIBForFacesFailed_get(
                     self as *const Self,
                 ),
             )
@@ -4630,7 +4624,7 @@ impl HandleBOPAlgoAlertRemovalOfIBForFacesFailed {
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::BOPAlgo_AlertRemovalOfIBForFacesFailed {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi_extern_TKBO::HandleBOPAlgoAlertRemovalOfIBForFacesFailed_get_mut(
+                crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertRemovalOfIBForFacesFailed_get_mut(
                     self as *mut Self,
                 ),
             )
@@ -4640,25 +4634,25 @@ impl HandleBOPAlgoAlertRemovalOfIBForFacesFailed {
     /// Upcast Handle<BOPAlgo_AlertRemovalOfIBForFacesFailed> to Handle<TopoDS_AlertWithShape>
     pub fn to_handle_alert_with_shape(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleTopoDSAlertWithShape> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_TopoDS_AlertWithShape> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKBO::HandleBOPAlgoAlertRemovalOfIBForFacesFailed_to_HandleTopoDSAlertWithShape(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertRemovalOfIBForFacesFailed_to_Handle_TopoDS_AlertWithShape(self as *const Self)))
         }
     }
 
     /// Upcast Handle<BOPAlgo_AlertRemovalOfIBForFacesFailed> to Handle<Message_Alert>
-    pub fn to_handle_alert(&self) -> crate::OwnedPtr<crate::ffi_types::HandleMessageAlert> {
+    pub fn to_handle_alert(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_Message_Alert> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKBO::HandleBOPAlgoAlertRemovalOfIBForFacesFailed_to_HandleMessageAlert(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertRemovalOfIBForFacesFailed_to_Handle_Message_Alert(self as *const Self)))
         }
     }
 
     /// Upcast Handle<BOPAlgo_AlertRemovalOfIBForFacesFailed> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKBO::HandleBOPAlgoAlertRemovalOfIBForFacesFailed_to_HandleStandardTransient(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertRemovalOfIBForFacesFailed_to_Handle_Standard_Transient(self as *const Self)))
         }
     }
 }
@@ -4687,7 +4681,7 @@ impl AlertRemovalOfIBForMDimShapes {
     }
 
     /// **Source:** `BOPAlgo_Alerts.hxx`:70 - `BOPAlgo_AlertRemovalOfIBForMDimShapes::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKBO::BOPAlgo_AlertRemovalOfIBForMDimShapes_dynamic_type(
@@ -4709,7 +4703,7 @@ impl AlertRemovalOfIBForMDimShapes {
     }
 
     /// **Source:** `BOPAlgo_Alerts.hxx`:70 - `BOPAlgo_AlertRemovalOfIBForMDimShapes::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKBO::BOPAlgo_AlertRemovalOfIBForMDimShapes_get_type_descriptor(),
@@ -4774,7 +4768,7 @@ impl AlertRemovalOfIBForMDimShapes {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleBOPAlgoAlertRemovalOfIBForMDimShapes> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_BOPAlgo_AlertRemovalOfIBForMDimShapes> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKBO::BOPAlgo_AlertRemovalOfIBForMDimShapes_to_handle(
@@ -4815,7 +4809,7 @@ impl AlertRemovalOfIBForMDimShapes {
     }
 
     /// Inherited: **Source:** `TopoDS_AlertWithShape.hxx`:39 - `TopoDS_AlertWithShape::Merge()`
-    pub fn merge(&mut self, theTarget: &crate::ffi_types::HandleMessageAlert) -> bool {
+    pub fn merge(&mut self, theTarget: &crate::ffi_types::Handle_Message_Alert) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertRemovalOfIBForMDimShapes_inherited_Merge(
                 self as *mut Self,
@@ -4824,8 +4818,8 @@ impl AlertRemovalOfIBForMDimShapes {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertRemovalOfIBForMDimShapes_inherited_IsInstance(
                 self as *const Self,
@@ -4834,8 +4828,8 @@ impl AlertRemovalOfIBForMDimShapes {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertRemovalOfIBForMDimShapes_inherited_IsKind(
                 self as *const Self,
@@ -4844,7 +4838,7 @@ impl AlertRemovalOfIBForMDimShapes {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -4860,7 +4854,7 @@ impl AlertRemovalOfIBForMDimShapes {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertRemovalOfIBForMDimShapes_inherited_GetRefCount(
@@ -4869,21 +4863,21 @@ impl AlertRemovalOfIBForMDimShapes {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertRemovalOfIBForMDimShapes_inherited_IncrementRefCounter(self as *mut Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertRemovalOfIBForMDimShapes_inherited_DecrementRefCounter(self as *mut Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertRemovalOfIBForMDimShapes_inherited_Delete(
@@ -4893,31 +4887,31 @@ impl AlertRemovalOfIBForMDimShapes {
     }
 }
 
-pub use crate::ffi_types::HandleBOPAlgoAlertRemovalOfIBForMDimShapes;
+pub use crate::ffi_types::Handle_BOPAlgo_AlertRemovalOfIBForMDimShapes;
 
-unsafe impl crate::CppDeletable for HandleBOPAlgoAlertRemovalOfIBForMDimShapes {
+unsafe impl crate::CppDeletable for Handle_BOPAlgo_AlertRemovalOfIBForMDimShapes {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKBO::HandleBOPAlgoAlertRemovalOfIBForMDimShapes_destructor(ptr);
+            crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertRemovalOfIBForMDimShapes_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleBOPAlgoAlertRemovalOfIBForMDimShapes {
+unsafe impl crate::CppCopyable for Handle_BOPAlgo_AlertRemovalOfIBForMDimShapes {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
         unsafe {
             crate::check_result(
-                crate::ffi_extern_TKBO::HandleBOPAlgoAlertRemovalOfIBForMDimShapes_clone(ptr),
+                crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertRemovalOfIBForMDimShapes_clone(ptr),
             )
         }
     }
 }
 
-impl HandleBOPAlgoAlertRemovalOfIBForMDimShapes {
+impl Handle_BOPAlgo_AlertRemovalOfIBForMDimShapes {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
         unsafe {
-            crate::ffi_extern_TKBO::HandleBOPAlgoAlertRemovalOfIBForMDimShapes_is_null(
+            crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertRemovalOfIBForMDimShapes_is_null(
                 self as *const Self,
             )
         }
@@ -4927,7 +4921,7 @@ impl HandleBOPAlgoAlertRemovalOfIBForMDimShapes {
     pub fn get(&self) -> &crate::ffi_types::BOPAlgo_AlertRemovalOfIBForMDimShapes {
         unsafe {
             &*crate::check_result(
-                crate::ffi_extern_TKBO::HandleBOPAlgoAlertRemovalOfIBForMDimShapes_get(
+                crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertRemovalOfIBForMDimShapes_get(
                     self as *const Self,
                 ),
             )
@@ -4938,7 +4932,7 @@ impl HandleBOPAlgoAlertRemovalOfIBForMDimShapes {
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::BOPAlgo_AlertRemovalOfIBForMDimShapes {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi_extern_TKBO::HandleBOPAlgoAlertRemovalOfIBForMDimShapes_get_mut(
+                crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertRemovalOfIBForMDimShapes_get_mut(
                     self as *mut Self,
                 ),
             )
@@ -4948,25 +4942,25 @@ impl HandleBOPAlgoAlertRemovalOfIBForMDimShapes {
     /// Upcast Handle<BOPAlgo_AlertRemovalOfIBForMDimShapes> to Handle<TopoDS_AlertWithShape>
     pub fn to_handle_alert_with_shape(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleTopoDSAlertWithShape> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_TopoDS_AlertWithShape> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKBO::HandleBOPAlgoAlertRemovalOfIBForMDimShapes_to_HandleTopoDSAlertWithShape(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertRemovalOfIBForMDimShapes_to_Handle_TopoDS_AlertWithShape(self as *const Self)))
         }
     }
 
     /// Upcast Handle<BOPAlgo_AlertRemovalOfIBForMDimShapes> to Handle<Message_Alert>
-    pub fn to_handle_alert(&self) -> crate::OwnedPtr<crate::ffi_types::HandleMessageAlert> {
+    pub fn to_handle_alert(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_Message_Alert> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKBO::HandleBOPAlgoAlertRemovalOfIBForMDimShapes_to_HandleMessageAlert(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertRemovalOfIBForMDimShapes_to_Handle_Message_Alert(self as *const Self)))
         }
     }
 
     /// Upcast Handle<BOPAlgo_AlertRemovalOfIBForMDimShapes> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKBO::HandleBOPAlgoAlertRemovalOfIBForMDimShapes_to_HandleStandardTransient(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertRemovalOfIBForMDimShapes_to_Handle_Standard_Transient(self as *const Self)))
         }
     }
 }
@@ -4997,7 +4991,7 @@ impl AlertRemovalOfIBForSolidsFailed {
     }
 
     /// **Source:** `BOPAlgo_Alerts.hxx`:73 - `BOPAlgo_AlertRemovalOfIBForSolidsFailed::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKBO::BOPAlgo_AlertRemovalOfIBForSolidsFailed_dynamic_type(
@@ -5019,7 +5013,7 @@ impl AlertRemovalOfIBForSolidsFailed {
     }
 
     /// **Source:** `BOPAlgo_Alerts.hxx`:73 - `BOPAlgo_AlertRemovalOfIBForSolidsFailed::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKBO::BOPAlgo_AlertRemovalOfIBForSolidsFailed_get_type_descriptor(
@@ -5077,7 +5071,7 @@ impl AlertRemovalOfIBForSolidsFailed {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleBOPAlgoAlertRemovalOfIBForSolidsFailed> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_BOPAlgo_AlertRemovalOfIBForSolidsFailed> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKBO::BOPAlgo_AlertRemovalOfIBForSolidsFailed_to_handle(
@@ -5118,7 +5112,7 @@ impl AlertRemovalOfIBForSolidsFailed {
     }
 
     /// Inherited: **Source:** `TopoDS_AlertWithShape.hxx`:39 - `TopoDS_AlertWithShape::Merge()`
-    pub fn merge(&mut self, theTarget: &crate::ffi_types::HandleMessageAlert) -> bool {
+    pub fn merge(&mut self, theTarget: &crate::ffi_types::Handle_Message_Alert) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertRemovalOfIBForSolidsFailed_inherited_Merge(
                 self as *mut Self,
@@ -5127,8 +5121,8 @@ impl AlertRemovalOfIBForSolidsFailed {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertRemovalOfIBForSolidsFailed_inherited_IsInstance(
                 self as *const Self,
@@ -5137,8 +5131,8 @@ impl AlertRemovalOfIBForSolidsFailed {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertRemovalOfIBForSolidsFailed_inherited_IsKind(
                 self as *const Self,
@@ -5147,7 +5141,7 @@ impl AlertRemovalOfIBForSolidsFailed {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -5163,7 +5157,7 @@ impl AlertRemovalOfIBForSolidsFailed {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertRemovalOfIBForSolidsFailed_inherited_GetRefCount(
@@ -5172,21 +5166,21 @@ impl AlertRemovalOfIBForSolidsFailed {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertRemovalOfIBForSolidsFailed_inherited_IncrementRefCounter(self as *mut Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertRemovalOfIBForSolidsFailed_inherited_DecrementRefCounter(self as *mut Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertRemovalOfIBForSolidsFailed_inherited_Delete(
@@ -5196,31 +5190,31 @@ impl AlertRemovalOfIBForSolidsFailed {
     }
 }
 
-pub use crate::ffi_types::HandleBOPAlgoAlertRemovalOfIBForSolidsFailed;
+pub use crate::ffi_types::Handle_BOPAlgo_AlertRemovalOfIBForSolidsFailed;
 
-unsafe impl crate::CppDeletable for HandleBOPAlgoAlertRemovalOfIBForSolidsFailed {
+unsafe impl crate::CppDeletable for Handle_BOPAlgo_AlertRemovalOfIBForSolidsFailed {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKBO::HandleBOPAlgoAlertRemovalOfIBForSolidsFailed_destructor(ptr);
+            crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertRemovalOfIBForSolidsFailed_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleBOPAlgoAlertRemovalOfIBForSolidsFailed {
+unsafe impl crate::CppCopyable for Handle_BOPAlgo_AlertRemovalOfIBForSolidsFailed {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
         unsafe {
             crate::check_result(
-                crate::ffi_extern_TKBO::HandleBOPAlgoAlertRemovalOfIBForSolidsFailed_clone(ptr),
+                crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertRemovalOfIBForSolidsFailed_clone(ptr),
             )
         }
     }
 }
 
-impl HandleBOPAlgoAlertRemovalOfIBForSolidsFailed {
+impl Handle_BOPAlgo_AlertRemovalOfIBForSolidsFailed {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
         unsafe {
-            crate::ffi_extern_TKBO::HandleBOPAlgoAlertRemovalOfIBForSolidsFailed_is_null(
+            crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertRemovalOfIBForSolidsFailed_is_null(
                 self as *const Self,
             )
         }
@@ -5230,7 +5224,7 @@ impl HandleBOPAlgoAlertRemovalOfIBForSolidsFailed {
     pub fn get(&self) -> &crate::ffi_types::BOPAlgo_AlertRemovalOfIBForSolidsFailed {
         unsafe {
             &*crate::check_result(
-                crate::ffi_extern_TKBO::HandleBOPAlgoAlertRemovalOfIBForSolidsFailed_get(
+                crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertRemovalOfIBForSolidsFailed_get(
                     self as *const Self,
                 ),
             )
@@ -5241,7 +5235,7 @@ impl HandleBOPAlgoAlertRemovalOfIBForSolidsFailed {
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::BOPAlgo_AlertRemovalOfIBForSolidsFailed {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi_extern_TKBO::HandleBOPAlgoAlertRemovalOfIBForSolidsFailed_get_mut(
+                crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertRemovalOfIBForSolidsFailed_get_mut(
                     self as *mut Self,
                 ),
             )
@@ -5251,25 +5245,25 @@ impl HandleBOPAlgoAlertRemovalOfIBForSolidsFailed {
     /// Upcast Handle<BOPAlgo_AlertRemovalOfIBForSolidsFailed> to Handle<TopoDS_AlertWithShape>
     pub fn to_handle_alert_with_shape(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleTopoDSAlertWithShape> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_TopoDS_AlertWithShape> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKBO::HandleBOPAlgoAlertRemovalOfIBForSolidsFailed_to_HandleTopoDSAlertWithShape(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertRemovalOfIBForSolidsFailed_to_Handle_TopoDS_AlertWithShape(self as *const Self)))
         }
     }
 
     /// Upcast Handle<BOPAlgo_AlertRemovalOfIBForSolidsFailed> to Handle<Message_Alert>
-    pub fn to_handle_alert(&self) -> crate::OwnedPtr<crate::ffi_types::HandleMessageAlert> {
+    pub fn to_handle_alert(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_Message_Alert> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKBO::HandleBOPAlgoAlertRemovalOfIBForSolidsFailed_to_HandleMessageAlert(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertRemovalOfIBForSolidsFailed_to_Handle_Message_Alert(self as *const Self)))
         }
     }
 
     /// Upcast Handle<BOPAlgo_AlertRemovalOfIBForSolidsFailed> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKBO::HandleBOPAlgoAlertRemovalOfIBForSolidsFailed_to_HandleStandardTransient(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertRemovalOfIBForSolidsFailed_to_Handle_Standard_Transient(self as *const Self)))
         }
     }
 }
@@ -5298,7 +5292,7 @@ impl AlertSelfInterferingShape {
     }
 
     /// **Source:** `BOPAlgo_Alerts.hxx`:76 - `BOPAlgo_AlertSelfInterferingShape::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKBO::BOPAlgo_AlertSelfInterferingShape_dynamic_type(
@@ -5320,7 +5314,7 @@ impl AlertSelfInterferingShape {
     }
 
     /// **Source:** `BOPAlgo_Alerts.hxx`:76 - `BOPAlgo_AlertSelfInterferingShape::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKBO::BOPAlgo_AlertSelfInterferingShape_get_type_descriptor(),
@@ -5393,7 +5387,7 @@ impl AlertSelfInterferingShape {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleBOPAlgoAlertSelfInterferingShape> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_BOPAlgo_AlertSelfInterferingShape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKBO::BOPAlgo_AlertSelfInterferingShape_to_handle(obj.into_raw()),
@@ -5432,7 +5426,7 @@ impl AlertSelfInterferingShape {
     }
 
     /// Inherited: **Source:** `TopoDS_AlertWithShape.hxx`:39 - `TopoDS_AlertWithShape::Merge()`
-    pub fn merge(&mut self, theTarget: &crate::ffi_types::HandleMessageAlert) -> bool {
+    pub fn merge(&mut self, theTarget: &crate::ffi_types::Handle_Message_Alert) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertSelfInterferingShape_inherited_Merge(
                 self as *mut Self,
@@ -5441,8 +5435,8 @@ impl AlertSelfInterferingShape {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertSelfInterferingShape_inherited_IsInstance(
                 self as *const Self,
@@ -5451,8 +5445,8 @@ impl AlertSelfInterferingShape {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertSelfInterferingShape_inherited_IsKind(
                 self as *const Self,
@@ -5461,7 +5455,7 @@ impl AlertSelfInterferingShape {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -5477,7 +5471,7 @@ impl AlertSelfInterferingShape {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertSelfInterferingShape_inherited_GetRefCount(
@@ -5486,7 +5480,7 @@ impl AlertSelfInterferingShape {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertSelfInterferingShape_inherited_IncrementRefCounter(
@@ -5495,7 +5489,7 @@ impl AlertSelfInterferingShape {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertSelfInterferingShape_inherited_DecrementRefCounter(
@@ -5504,7 +5498,7 @@ impl AlertSelfInterferingShape {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertSelfInterferingShape_inherited_Delete(
@@ -5514,31 +5508,31 @@ impl AlertSelfInterferingShape {
     }
 }
 
-pub use crate::ffi_types::HandleBOPAlgoAlertSelfInterferingShape;
+pub use crate::ffi_types::Handle_BOPAlgo_AlertSelfInterferingShape;
 
-unsafe impl crate::CppDeletable for HandleBOPAlgoAlertSelfInterferingShape {
+unsafe impl crate::CppDeletable for Handle_BOPAlgo_AlertSelfInterferingShape {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKBO::HandleBOPAlgoAlertSelfInterferingShape_destructor(ptr);
+            crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertSelfInterferingShape_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleBOPAlgoAlertSelfInterferingShape {
+unsafe impl crate::CppCopyable for Handle_BOPAlgo_AlertSelfInterferingShape {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
         unsafe {
             crate::check_result(
-                crate::ffi_extern_TKBO::HandleBOPAlgoAlertSelfInterferingShape_clone(ptr),
+                crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertSelfInterferingShape_clone(ptr),
             )
         }
     }
 }
 
-impl HandleBOPAlgoAlertSelfInterferingShape {
+impl Handle_BOPAlgo_AlertSelfInterferingShape {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
         unsafe {
-            crate::ffi_extern_TKBO::HandleBOPAlgoAlertSelfInterferingShape_is_null(
+            crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertSelfInterferingShape_is_null(
                 self as *const Self,
             )
         }
@@ -5548,7 +5542,7 @@ impl HandleBOPAlgoAlertSelfInterferingShape {
     pub fn get(&self) -> &crate::ffi_types::BOPAlgo_AlertSelfInterferingShape {
         unsafe {
             &*crate::check_result(
-                crate::ffi_extern_TKBO::HandleBOPAlgoAlertSelfInterferingShape_get(
+                crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertSelfInterferingShape_get(
                     self as *const Self,
                 ),
             )
@@ -5559,7 +5553,7 @@ impl HandleBOPAlgoAlertSelfInterferingShape {
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::BOPAlgo_AlertSelfInterferingShape {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi_extern_TKBO::HandleBOPAlgoAlertSelfInterferingShape_get_mut(
+                crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertSelfInterferingShape_get_mut(
                     self as *mut Self,
                 ),
             )
@@ -5569,25 +5563,25 @@ impl HandleBOPAlgoAlertSelfInterferingShape {
     /// Upcast Handle<BOPAlgo_AlertSelfInterferingShape> to Handle<TopoDS_AlertWithShape>
     pub fn to_handle_alert_with_shape(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleTopoDSAlertWithShape> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_TopoDS_AlertWithShape> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKBO::HandleBOPAlgoAlertSelfInterferingShape_to_HandleTopoDSAlertWithShape(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertSelfInterferingShape_to_Handle_TopoDS_AlertWithShape(self as *const Self)))
         }
     }
 
     /// Upcast Handle<BOPAlgo_AlertSelfInterferingShape> to Handle<Message_Alert>
-    pub fn to_handle_alert(&self) -> crate::OwnedPtr<crate::ffi_types::HandleMessageAlert> {
+    pub fn to_handle_alert(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_Message_Alert> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKBO::HandleBOPAlgoAlertSelfInterferingShape_to_HandleMessageAlert(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertSelfInterferingShape_to_Handle_Message_Alert(self as *const Self)))
         }
     }
 
     /// Upcast Handle<BOPAlgo_AlertSelfInterferingShape> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKBO::HandleBOPAlgoAlertSelfInterferingShape_to_HandleStandardTransient(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertSelfInterferingShape_to_Handle_Standard_Transient(self as *const Self)))
         }
     }
 }
@@ -5616,7 +5610,7 @@ impl AlertShellSplitterFailed {
     }
 
     /// **Source:** `BOPAlgo_Alerts.hxx`:79 - `BOPAlgo_AlertShellSplitterFailed::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKBO::BOPAlgo_AlertShellSplitterFailed_dynamic_type(
@@ -5638,7 +5632,7 @@ impl AlertShellSplitterFailed {
     }
 
     /// **Source:** `BOPAlgo_Alerts.hxx`:79 - `BOPAlgo_AlertShellSplitterFailed::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKBO::BOPAlgo_AlertShellSplitterFailed_get_type_descriptor(),
@@ -5711,7 +5705,7 @@ impl AlertShellSplitterFailed {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleBOPAlgoAlertShellSplitterFailed> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_BOPAlgo_AlertShellSplitterFailed> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKBO::BOPAlgo_AlertShellSplitterFailed_to_handle(obj.into_raw()),
@@ -5750,7 +5744,7 @@ impl AlertShellSplitterFailed {
     }
 
     /// Inherited: **Source:** `TopoDS_AlertWithShape.hxx`:39 - `TopoDS_AlertWithShape::Merge()`
-    pub fn merge(&mut self, theTarget: &crate::ffi_types::HandleMessageAlert) -> bool {
+    pub fn merge(&mut self, theTarget: &crate::ffi_types::Handle_Message_Alert) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertShellSplitterFailed_inherited_Merge(
                 self as *mut Self,
@@ -5759,8 +5753,8 @@ impl AlertShellSplitterFailed {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertShellSplitterFailed_inherited_IsInstance(
                 self as *const Self,
@@ -5769,8 +5763,8 @@ impl AlertShellSplitterFailed {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertShellSplitterFailed_inherited_IsKind(
                 self as *const Self,
@@ -5779,7 +5773,7 @@ impl AlertShellSplitterFailed {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -5795,7 +5789,7 @@ impl AlertShellSplitterFailed {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertShellSplitterFailed_inherited_GetRefCount(
@@ -5804,7 +5798,7 @@ impl AlertShellSplitterFailed {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertShellSplitterFailed_inherited_IncrementRefCounter(
@@ -5813,7 +5807,7 @@ impl AlertShellSplitterFailed {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertShellSplitterFailed_inherited_DecrementRefCounter(
@@ -5822,7 +5816,7 @@ impl AlertShellSplitterFailed {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertShellSplitterFailed_inherited_Delete(
@@ -5832,31 +5826,31 @@ impl AlertShellSplitterFailed {
     }
 }
 
-pub use crate::ffi_types::HandleBOPAlgoAlertShellSplitterFailed;
+pub use crate::ffi_types::Handle_BOPAlgo_AlertShellSplitterFailed;
 
-unsafe impl crate::CppDeletable for HandleBOPAlgoAlertShellSplitterFailed {
+unsafe impl crate::CppDeletable for Handle_BOPAlgo_AlertShellSplitterFailed {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKBO::HandleBOPAlgoAlertShellSplitterFailed_destructor(ptr);
+            crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertShellSplitterFailed_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleBOPAlgoAlertShellSplitterFailed {
+unsafe impl crate::CppCopyable for Handle_BOPAlgo_AlertShellSplitterFailed {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
         unsafe {
             crate::check_result(
-                crate::ffi_extern_TKBO::HandleBOPAlgoAlertShellSplitterFailed_clone(ptr),
+                crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertShellSplitterFailed_clone(ptr),
             )
         }
     }
 }
 
-impl HandleBOPAlgoAlertShellSplitterFailed {
+impl Handle_BOPAlgo_AlertShellSplitterFailed {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
         unsafe {
-            crate::ffi_extern_TKBO::HandleBOPAlgoAlertShellSplitterFailed_is_null(
+            crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertShellSplitterFailed_is_null(
                 self as *const Self,
             )
         }
@@ -5866,7 +5860,7 @@ impl HandleBOPAlgoAlertShellSplitterFailed {
     pub fn get(&self) -> &crate::ffi_types::BOPAlgo_AlertShellSplitterFailed {
         unsafe {
             &*crate::check_result(
-                crate::ffi_extern_TKBO::HandleBOPAlgoAlertShellSplitterFailed_get(
+                crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertShellSplitterFailed_get(
                     self as *const Self,
                 ),
             )
@@ -5877,7 +5871,7 @@ impl HandleBOPAlgoAlertShellSplitterFailed {
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::BOPAlgo_AlertShellSplitterFailed {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi_extern_TKBO::HandleBOPAlgoAlertShellSplitterFailed_get_mut(
+                crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertShellSplitterFailed_get_mut(
                     self as *mut Self,
                 ),
             )
@@ -5887,29 +5881,25 @@ impl HandleBOPAlgoAlertShellSplitterFailed {
     /// Upcast Handle<BOPAlgo_AlertShellSplitterFailed> to Handle<TopoDS_AlertWithShape>
     pub fn to_handle_alert_with_shape(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleTopoDSAlertWithShape> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_TopoDS_AlertWithShape> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKBO::HandleBOPAlgoAlertShellSplitterFailed_to_HandleTopoDSAlertWithShape(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertShellSplitterFailed_to_Handle_TopoDS_AlertWithShape(self as *const Self)))
         }
     }
 
     /// Upcast Handle<BOPAlgo_AlertShellSplitterFailed> to Handle<Message_Alert>
-    pub fn to_handle_alert(&self) -> crate::OwnedPtr<crate::ffi_types::HandleMessageAlert> {
+    pub fn to_handle_alert(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_Message_Alert> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKBO::HandleBOPAlgoAlertShellSplitterFailed_to_HandleMessageAlert(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertShellSplitterFailed_to_Handle_Message_Alert(self as *const Self)))
         }
     }
 
     /// Upcast Handle<BOPAlgo_AlertShellSplitterFailed> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKBO::HandleBOPAlgoAlertShellSplitterFailed_to_HandleStandardTransient(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertShellSplitterFailed_to_Handle_Standard_Transient(self as *const Self)))
         }
     }
 }
@@ -5938,7 +5928,7 @@ impl AlertTooSmallEdge {
     }
 
     /// **Source:** `BOPAlgo_Alerts.hxx`:82 - `BOPAlgo_AlertTooSmallEdge::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKBO::BOPAlgo_AlertTooSmallEdge_dynamic_type(
                 self as *const Self,
@@ -5958,7 +5948,7 @@ impl AlertTooSmallEdge {
     }
 
     /// **Source:** `BOPAlgo_Alerts.hxx`:82 - `BOPAlgo_AlertTooSmallEdge::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKBO::BOPAlgo_AlertTooSmallEdge_get_type_descriptor(),
@@ -6035,7 +6025,7 @@ impl AlertTooSmallEdge {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleBOPAlgoAlertTooSmallEdge> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_BOPAlgo_AlertTooSmallEdge> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKBO::BOPAlgo_AlertTooSmallEdge_to_handle(obj.into_raw()),
@@ -6074,7 +6064,7 @@ impl AlertTooSmallEdge {
     }
 
     /// Inherited: **Source:** `TopoDS_AlertWithShape.hxx`:39 - `TopoDS_AlertWithShape::Merge()`
-    pub fn merge(&mut self, theTarget: &crate::ffi_types::HandleMessageAlert) -> bool {
+    pub fn merge(&mut self, theTarget: &crate::ffi_types::Handle_Message_Alert) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertTooSmallEdge_inherited_Merge(
                 self as *mut Self,
@@ -6083,8 +6073,8 @@ impl AlertTooSmallEdge {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertTooSmallEdge_inherited_IsInstance(
                 self as *const Self,
@@ -6093,8 +6083,8 @@ impl AlertTooSmallEdge {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertTooSmallEdge_inherited_IsKind(
                 self as *const Self,
@@ -6103,7 +6093,7 @@ impl AlertTooSmallEdge {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -6119,7 +6109,7 @@ impl AlertTooSmallEdge {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertTooSmallEdge_inherited_GetRefCount(
@@ -6128,7 +6118,7 @@ impl AlertTooSmallEdge {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertTooSmallEdge_inherited_IncrementRefCounter(
@@ -6137,7 +6127,7 @@ impl AlertTooSmallEdge {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertTooSmallEdge_inherited_DecrementRefCounter(
@@ -6146,7 +6136,7 @@ impl AlertTooSmallEdge {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertTooSmallEdge_inherited_Delete(self as *const Self)
@@ -6154,36 +6144,36 @@ impl AlertTooSmallEdge {
     }
 }
 
-pub use crate::ffi_types::HandleBOPAlgoAlertTooSmallEdge;
+pub use crate::ffi_types::Handle_BOPAlgo_AlertTooSmallEdge;
 
-unsafe impl crate::CppDeletable for HandleBOPAlgoAlertTooSmallEdge {
+unsafe impl crate::CppDeletable for Handle_BOPAlgo_AlertTooSmallEdge {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKBO::HandleBOPAlgoAlertTooSmallEdge_destructor(ptr);
+            crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertTooSmallEdge_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleBOPAlgoAlertTooSmallEdge {
+unsafe impl crate::CppCopyable for Handle_BOPAlgo_AlertTooSmallEdge {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
         unsafe {
-            crate::check_result(crate::ffi_extern_TKBO::HandleBOPAlgoAlertTooSmallEdge_clone(ptr))
+            crate::check_result(crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertTooSmallEdge_clone(ptr))
         }
     }
 }
 
-impl HandleBOPAlgoAlertTooSmallEdge {
+impl Handle_BOPAlgo_AlertTooSmallEdge {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
         unsafe {
-            crate::ffi_extern_TKBO::HandleBOPAlgoAlertTooSmallEdge_is_null(self as *const Self)
+            crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertTooSmallEdge_is_null(self as *const Self)
         }
     }
 
     /// Dereference this Handle to access the underlying BOPAlgo_AlertTooSmallEdge
     pub fn get(&self) -> &crate::ffi_types::BOPAlgo_AlertTooSmallEdge {
         unsafe {
-            &*crate::check_result(crate::ffi_extern_TKBO::HandleBOPAlgoAlertTooSmallEdge_get(
+            &*crate::check_result(crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertTooSmallEdge_get(
                 self as *const Self,
             ))
         }
@@ -6193,7 +6183,7 @@ impl HandleBOPAlgoAlertTooSmallEdge {
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::BOPAlgo_AlertTooSmallEdge {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi_extern_TKBO::HandleBOPAlgoAlertTooSmallEdge_get_mut(self as *mut Self),
+                crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertTooSmallEdge_get_mut(self as *mut Self),
             )
         }
     }
@@ -6201,17 +6191,17 @@ impl HandleBOPAlgoAlertTooSmallEdge {
     /// Upcast Handle<BOPAlgo_AlertTooSmallEdge> to Handle<TopoDS_AlertWithShape>
     pub fn to_handle_alert_with_shape(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleTopoDSAlertWithShape> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_TopoDS_AlertWithShape> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKBO::HandleBOPAlgoAlertTooSmallEdge_to_HandleTopoDSAlertWithShape(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertTooSmallEdge_to_Handle_TopoDS_AlertWithShape(self as *const Self)))
         }
     }
 
     /// Upcast Handle<BOPAlgo_AlertTooSmallEdge> to Handle<Message_Alert>
-    pub fn to_handle_alert(&self) -> crate::OwnedPtr<crate::ffi_types::HandleMessageAlert> {
+    pub fn to_handle_alert(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_Message_Alert> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKBO::HandleBOPAlgoAlertTooSmallEdge_to_HandleMessageAlert(
+                crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertTooSmallEdge_to_Handle_Message_Alert(
                     self as *const Self,
                 ),
             ))
@@ -6221,13 +6211,9 @@ impl HandleBOPAlgoAlertTooSmallEdge {
     /// Upcast Handle<BOPAlgo_AlertTooSmallEdge> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKBO::HandleBOPAlgoAlertTooSmallEdge_to_HandleStandardTransient(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertTooSmallEdge_to_Handle_Standard_Transient(self as *const Self)))
         }
     }
 }
@@ -6258,7 +6244,7 @@ impl AlertIntersectionOfPairOfShapesFailed {
     }
 
     /// **Source:** `BOPAlgo_Alerts.hxx`:85 - `BOPAlgo_AlertIntersectionOfPairOfShapesFailed::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKBO::BOPAlgo_AlertIntersectionOfPairOfShapesFailed_dynamic_type(
@@ -6281,7 +6267,7 @@ impl AlertIntersectionOfPairOfShapesFailed {
     }
 
     /// **Source:** `BOPAlgo_Alerts.hxx`:85 - `BOPAlgo_AlertIntersectionOfPairOfShapesFailed::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKBO::BOPAlgo_AlertIntersectionOfPairOfShapesFailed_get_type_descriptor()))
         }
@@ -6332,7 +6318,8 @@ impl AlertIntersectionOfPairOfShapesFailed {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleBOPAlgoAlertIntersectionOfPairOfShapesFailed> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_BOPAlgo_AlertIntersectionOfPairOfShapesFailed>
+    {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKBO::BOPAlgo_AlertIntersectionOfPairOfShapesFailed_to_handle(
@@ -6367,7 +6354,7 @@ impl AlertIntersectionOfPairOfShapesFailed {
     }
 
     /// Inherited: **Source:** `TopoDS_AlertWithShape.hxx`:39 - `TopoDS_AlertWithShape::Merge()`
-    pub fn merge(&mut self, theTarget: &crate::ffi_types::HandleMessageAlert) -> bool {
+    pub fn merge(&mut self, theTarget: &crate::ffi_types::Handle_Message_Alert) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertIntersectionOfPairOfShapesFailed_inherited_Merge(
                 self as *mut Self,
@@ -6376,15 +6363,15 @@ impl AlertIntersectionOfPairOfShapesFailed {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertIntersectionOfPairOfShapesFailed_inherited_IsInstance(self as *const Self, theType)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertIntersectionOfPairOfShapesFailed_inherited_IsKind(
                 self as *const Self,
@@ -6393,7 +6380,7 @@ impl AlertIntersectionOfPairOfShapesFailed {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -6409,28 +6396,28 @@ impl AlertIntersectionOfPairOfShapesFailed {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertIntersectionOfPairOfShapesFailed_inherited_GetRefCount(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertIntersectionOfPairOfShapesFailed_inherited_IncrementRefCounter(self as *mut Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertIntersectionOfPairOfShapesFailed_inherited_DecrementRefCounter(self as *mut Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertIntersectionOfPairOfShapesFailed_inherited_Delete(
@@ -6440,23 +6427,23 @@ impl AlertIntersectionOfPairOfShapesFailed {
     }
 }
 
-pub use crate::ffi_types::HandleBOPAlgoAlertIntersectionOfPairOfShapesFailed;
+pub use crate::ffi_types::Handle_BOPAlgo_AlertIntersectionOfPairOfShapesFailed;
 
-unsafe impl crate::CppDeletable for HandleBOPAlgoAlertIntersectionOfPairOfShapesFailed {
+unsafe impl crate::CppDeletable for Handle_BOPAlgo_AlertIntersectionOfPairOfShapesFailed {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKBO::HandleBOPAlgoAlertIntersectionOfPairOfShapesFailed_destructor(
+            crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertIntersectionOfPairOfShapesFailed_destructor(
                 ptr,
             );
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleBOPAlgoAlertIntersectionOfPairOfShapesFailed {
+unsafe impl crate::CppCopyable for Handle_BOPAlgo_AlertIntersectionOfPairOfShapesFailed {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
         unsafe {
             crate::check_result(
-                crate::ffi_extern_TKBO::HandleBOPAlgoAlertIntersectionOfPairOfShapesFailed_clone(
+                crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertIntersectionOfPairOfShapesFailed_clone(
                     ptr,
                 ),
             )
@@ -6464,11 +6451,11 @@ unsafe impl crate::CppCopyable for HandleBOPAlgoAlertIntersectionOfPairOfShapesF
     }
 }
 
-impl HandleBOPAlgoAlertIntersectionOfPairOfShapesFailed {
+impl Handle_BOPAlgo_AlertIntersectionOfPairOfShapesFailed {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
         unsafe {
-            crate::ffi_extern_TKBO::HandleBOPAlgoAlertIntersectionOfPairOfShapesFailed_is_null(
+            crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertIntersectionOfPairOfShapesFailed_is_null(
                 self as *const Self,
             )
         }
@@ -6478,7 +6465,7 @@ impl HandleBOPAlgoAlertIntersectionOfPairOfShapesFailed {
     pub fn get(&self) -> &crate::ffi_types::BOPAlgo_AlertIntersectionOfPairOfShapesFailed {
         unsafe {
             &*crate::check_result(
-                crate::ffi_extern_TKBO::HandleBOPAlgoAlertIntersectionOfPairOfShapesFailed_get(
+                crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertIntersectionOfPairOfShapesFailed_get(
                     self as *const Self,
                 ),
             )
@@ -6490,36 +6477,32 @@ impl HandleBOPAlgoAlertIntersectionOfPairOfShapesFailed {
         &mut self,
     ) -> &mut crate::ffi_types::BOPAlgo_AlertIntersectionOfPairOfShapesFailed {
         unsafe {
-            &mut *crate::check_result(
-                crate::ffi_extern_TKBO::HandleBOPAlgoAlertIntersectionOfPairOfShapesFailed_get_mut(
-                    self as *mut Self,
-                ),
-            )
+            &mut *crate::check_result(crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertIntersectionOfPairOfShapesFailed_get_mut(self as *mut Self))
         }
     }
 
     /// Upcast Handle<BOPAlgo_AlertIntersectionOfPairOfShapesFailed> to Handle<TopoDS_AlertWithShape>
     pub fn to_handle_alert_with_shape(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleTopoDSAlertWithShape> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_TopoDS_AlertWithShape> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKBO::HandleBOPAlgoAlertIntersectionOfPairOfShapesFailed_to_HandleTopoDSAlertWithShape(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertIntersectionOfPairOfShapesFailed_to_Handle_TopoDS_AlertWithShape(self as *const Self)))
         }
     }
 
     /// Upcast Handle<BOPAlgo_AlertIntersectionOfPairOfShapesFailed> to Handle<Message_Alert>
-    pub fn to_handle_alert(&self) -> crate::OwnedPtr<crate::ffi_types::HandleMessageAlert> {
+    pub fn to_handle_alert(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_Message_Alert> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKBO::HandleBOPAlgoAlertIntersectionOfPairOfShapesFailed_to_HandleMessageAlert(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertIntersectionOfPairOfShapesFailed_to_Handle_Message_Alert(self as *const Self)))
         }
     }
 
     /// Upcast Handle<BOPAlgo_AlertIntersectionOfPairOfShapesFailed> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKBO::HandleBOPAlgoAlertIntersectionOfPairOfShapesFailed_to_HandleStandardTransient(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertIntersectionOfPairOfShapesFailed_to_Handle_Standard_Transient(self as *const Self)))
         }
     }
 }
@@ -6548,7 +6531,7 @@ impl AlertBuildingPCurveFailed {
     }
 
     /// **Source:** `BOPAlgo_Alerts.hxx`:88 - `BOPAlgo_AlertBuildingPCurveFailed::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKBO::BOPAlgo_AlertBuildingPCurveFailed_dynamic_type(
@@ -6570,7 +6553,7 @@ impl AlertBuildingPCurveFailed {
     }
 
     /// **Source:** `BOPAlgo_Alerts.hxx`:88 - `BOPAlgo_AlertBuildingPCurveFailed::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKBO::BOPAlgo_AlertBuildingPCurveFailed_get_type_descriptor(),
@@ -6643,7 +6626,7 @@ impl AlertBuildingPCurveFailed {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleBOPAlgoAlertBuildingPCurveFailed> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_BOPAlgo_AlertBuildingPCurveFailed> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKBO::BOPAlgo_AlertBuildingPCurveFailed_to_handle(obj.into_raw()),
@@ -6682,7 +6665,7 @@ impl AlertBuildingPCurveFailed {
     }
 
     /// Inherited: **Source:** `TopoDS_AlertWithShape.hxx`:39 - `TopoDS_AlertWithShape::Merge()`
-    pub fn merge(&mut self, theTarget: &crate::ffi_types::HandleMessageAlert) -> bool {
+    pub fn merge(&mut self, theTarget: &crate::ffi_types::Handle_Message_Alert) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertBuildingPCurveFailed_inherited_Merge(
                 self as *mut Self,
@@ -6691,8 +6674,8 @@ impl AlertBuildingPCurveFailed {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertBuildingPCurveFailed_inherited_IsInstance(
                 self as *const Self,
@@ -6701,8 +6684,8 @@ impl AlertBuildingPCurveFailed {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertBuildingPCurveFailed_inherited_IsKind(
                 self as *const Self,
@@ -6711,7 +6694,7 @@ impl AlertBuildingPCurveFailed {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -6727,7 +6710,7 @@ impl AlertBuildingPCurveFailed {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertBuildingPCurveFailed_inherited_GetRefCount(
@@ -6736,7 +6719,7 @@ impl AlertBuildingPCurveFailed {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertBuildingPCurveFailed_inherited_IncrementRefCounter(
@@ -6745,7 +6728,7 @@ impl AlertBuildingPCurveFailed {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertBuildingPCurveFailed_inherited_DecrementRefCounter(
@@ -6754,7 +6737,7 @@ impl AlertBuildingPCurveFailed {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertBuildingPCurveFailed_inherited_Delete(
@@ -6764,31 +6747,31 @@ impl AlertBuildingPCurveFailed {
     }
 }
 
-pub use crate::ffi_types::HandleBOPAlgoAlertBuildingPCurveFailed;
+pub use crate::ffi_types::Handle_BOPAlgo_AlertBuildingPCurveFailed;
 
-unsafe impl crate::CppDeletable for HandleBOPAlgoAlertBuildingPCurveFailed {
+unsafe impl crate::CppDeletable for Handle_BOPAlgo_AlertBuildingPCurveFailed {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKBO::HandleBOPAlgoAlertBuildingPCurveFailed_destructor(ptr);
+            crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertBuildingPCurveFailed_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleBOPAlgoAlertBuildingPCurveFailed {
+unsafe impl crate::CppCopyable for Handle_BOPAlgo_AlertBuildingPCurveFailed {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
         unsafe {
             crate::check_result(
-                crate::ffi_extern_TKBO::HandleBOPAlgoAlertBuildingPCurveFailed_clone(ptr),
+                crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertBuildingPCurveFailed_clone(ptr),
             )
         }
     }
 }
 
-impl HandleBOPAlgoAlertBuildingPCurveFailed {
+impl Handle_BOPAlgo_AlertBuildingPCurveFailed {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
         unsafe {
-            crate::ffi_extern_TKBO::HandleBOPAlgoAlertBuildingPCurveFailed_is_null(
+            crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertBuildingPCurveFailed_is_null(
                 self as *const Self,
             )
         }
@@ -6798,7 +6781,7 @@ impl HandleBOPAlgoAlertBuildingPCurveFailed {
     pub fn get(&self) -> &crate::ffi_types::BOPAlgo_AlertBuildingPCurveFailed {
         unsafe {
             &*crate::check_result(
-                crate::ffi_extern_TKBO::HandleBOPAlgoAlertBuildingPCurveFailed_get(
+                crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertBuildingPCurveFailed_get(
                     self as *const Self,
                 ),
             )
@@ -6809,7 +6792,7 @@ impl HandleBOPAlgoAlertBuildingPCurveFailed {
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::BOPAlgo_AlertBuildingPCurveFailed {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi_extern_TKBO::HandleBOPAlgoAlertBuildingPCurveFailed_get_mut(
+                crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertBuildingPCurveFailed_get_mut(
                     self as *mut Self,
                 ),
             )
@@ -6819,25 +6802,25 @@ impl HandleBOPAlgoAlertBuildingPCurveFailed {
     /// Upcast Handle<BOPAlgo_AlertBuildingPCurveFailed> to Handle<TopoDS_AlertWithShape>
     pub fn to_handle_alert_with_shape(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleTopoDSAlertWithShape> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_TopoDS_AlertWithShape> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKBO::HandleBOPAlgoAlertBuildingPCurveFailed_to_HandleTopoDSAlertWithShape(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertBuildingPCurveFailed_to_Handle_TopoDS_AlertWithShape(self as *const Self)))
         }
     }
 
     /// Upcast Handle<BOPAlgo_AlertBuildingPCurveFailed> to Handle<Message_Alert>
-    pub fn to_handle_alert(&self) -> crate::OwnedPtr<crate::ffi_types::HandleMessageAlert> {
+    pub fn to_handle_alert(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_Message_Alert> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKBO::HandleBOPAlgoAlertBuildingPCurveFailed_to_HandleMessageAlert(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertBuildingPCurveFailed_to_Handle_Message_Alert(self as *const Self)))
         }
     }
 
     /// Upcast Handle<BOPAlgo_AlertBuildingPCurveFailed> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKBO::HandleBOPAlgoAlertBuildingPCurveFailed_to_HandleStandardTransient(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertBuildingPCurveFailed_to_Handle_Standard_Transient(self as *const Self)))
         }
     }
 }
@@ -6868,7 +6851,7 @@ impl AlertAcquiredSelfIntersection {
     }
 
     /// **Source:** `BOPAlgo_Alerts.hxx`:92 - `BOPAlgo_AlertAcquiredSelfIntersection::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKBO::BOPAlgo_AlertAcquiredSelfIntersection_dynamic_type(
@@ -6890,7 +6873,7 @@ impl AlertAcquiredSelfIntersection {
     }
 
     /// **Source:** `BOPAlgo_Alerts.hxx`:92 - `BOPAlgo_AlertAcquiredSelfIntersection::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKBO::BOPAlgo_AlertAcquiredSelfIntersection_get_type_descriptor(),
@@ -6955,7 +6938,7 @@ impl AlertAcquiredSelfIntersection {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleBOPAlgoAlertAcquiredSelfIntersection> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_BOPAlgo_AlertAcquiredSelfIntersection> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKBO::BOPAlgo_AlertAcquiredSelfIntersection_to_handle(
@@ -6996,7 +6979,7 @@ impl AlertAcquiredSelfIntersection {
     }
 
     /// Inherited: **Source:** `TopoDS_AlertWithShape.hxx`:39 - `TopoDS_AlertWithShape::Merge()`
-    pub fn merge(&mut self, theTarget: &crate::ffi_types::HandleMessageAlert) -> bool {
+    pub fn merge(&mut self, theTarget: &crate::ffi_types::Handle_Message_Alert) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertAcquiredSelfIntersection_inherited_Merge(
                 self as *mut Self,
@@ -7005,8 +6988,8 @@ impl AlertAcquiredSelfIntersection {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertAcquiredSelfIntersection_inherited_IsInstance(
                 self as *const Self,
@@ -7015,8 +6998,8 @@ impl AlertAcquiredSelfIntersection {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertAcquiredSelfIntersection_inherited_IsKind(
                 self as *const Self,
@@ -7025,7 +7008,7 @@ impl AlertAcquiredSelfIntersection {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -7041,7 +7024,7 @@ impl AlertAcquiredSelfIntersection {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertAcquiredSelfIntersection_inherited_GetRefCount(
@@ -7050,21 +7033,21 @@ impl AlertAcquiredSelfIntersection {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertAcquiredSelfIntersection_inherited_IncrementRefCounter(self as *mut Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertAcquiredSelfIntersection_inherited_DecrementRefCounter(self as *mut Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertAcquiredSelfIntersection_inherited_Delete(
@@ -7074,31 +7057,31 @@ impl AlertAcquiredSelfIntersection {
     }
 }
 
-pub use crate::ffi_types::HandleBOPAlgoAlertAcquiredSelfIntersection;
+pub use crate::ffi_types::Handle_BOPAlgo_AlertAcquiredSelfIntersection;
 
-unsafe impl crate::CppDeletable for HandleBOPAlgoAlertAcquiredSelfIntersection {
+unsafe impl crate::CppDeletable for Handle_BOPAlgo_AlertAcquiredSelfIntersection {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKBO::HandleBOPAlgoAlertAcquiredSelfIntersection_destructor(ptr);
+            crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertAcquiredSelfIntersection_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleBOPAlgoAlertAcquiredSelfIntersection {
+unsafe impl crate::CppCopyable for Handle_BOPAlgo_AlertAcquiredSelfIntersection {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
         unsafe {
             crate::check_result(
-                crate::ffi_extern_TKBO::HandleBOPAlgoAlertAcquiredSelfIntersection_clone(ptr),
+                crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertAcquiredSelfIntersection_clone(ptr),
             )
         }
     }
 }
 
-impl HandleBOPAlgoAlertAcquiredSelfIntersection {
+impl Handle_BOPAlgo_AlertAcquiredSelfIntersection {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
         unsafe {
-            crate::ffi_extern_TKBO::HandleBOPAlgoAlertAcquiredSelfIntersection_is_null(
+            crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertAcquiredSelfIntersection_is_null(
                 self as *const Self,
             )
         }
@@ -7108,7 +7091,7 @@ impl HandleBOPAlgoAlertAcquiredSelfIntersection {
     pub fn get(&self) -> &crate::ffi_types::BOPAlgo_AlertAcquiredSelfIntersection {
         unsafe {
             &*crate::check_result(
-                crate::ffi_extern_TKBO::HandleBOPAlgoAlertAcquiredSelfIntersection_get(
+                crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertAcquiredSelfIntersection_get(
                     self as *const Self,
                 ),
             )
@@ -7119,7 +7102,7 @@ impl HandleBOPAlgoAlertAcquiredSelfIntersection {
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::BOPAlgo_AlertAcquiredSelfIntersection {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi_extern_TKBO::HandleBOPAlgoAlertAcquiredSelfIntersection_get_mut(
+                crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertAcquiredSelfIntersection_get_mut(
                     self as *mut Self,
                 ),
             )
@@ -7129,25 +7112,25 @@ impl HandleBOPAlgoAlertAcquiredSelfIntersection {
     /// Upcast Handle<BOPAlgo_AlertAcquiredSelfIntersection> to Handle<TopoDS_AlertWithShape>
     pub fn to_handle_alert_with_shape(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleTopoDSAlertWithShape> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_TopoDS_AlertWithShape> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKBO::HandleBOPAlgoAlertAcquiredSelfIntersection_to_HandleTopoDSAlertWithShape(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertAcquiredSelfIntersection_to_Handle_TopoDS_AlertWithShape(self as *const Self)))
         }
     }
 
     /// Upcast Handle<BOPAlgo_AlertAcquiredSelfIntersection> to Handle<Message_Alert>
-    pub fn to_handle_alert(&self) -> crate::OwnedPtr<crate::ffi_types::HandleMessageAlert> {
+    pub fn to_handle_alert(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_Message_Alert> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKBO::HandleBOPAlgoAlertAcquiredSelfIntersection_to_HandleMessageAlert(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertAcquiredSelfIntersection_to_Handle_Message_Alert(self as *const Self)))
         }
     }
 
     /// Upcast Handle<BOPAlgo_AlertAcquiredSelfIntersection> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKBO::HandleBOPAlgoAlertAcquiredSelfIntersection_to_HandleStandardTransient(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertAcquiredSelfIntersection_to_Handle_Standard_Transient(self as *const Self)))
         }
     }
 }
@@ -7176,7 +7159,7 @@ impl AlertUnsupportedType {
     }
 
     /// **Source:** `BOPAlgo_Alerts.hxx`:95 - `BOPAlgo_AlertUnsupportedType::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKBO::BOPAlgo_AlertUnsupportedType_dynamic_type(
@@ -7198,7 +7181,7 @@ impl AlertUnsupportedType {
     }
 
     /// **Source:** `BOPAlgo_Alerts.hxx`:95 - `BOPAlgo_AlertUnsupportedType::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKBO::BOPAlgo_AlertUnsupportedType_get_type_descriptor(),
@@ -7275,7 +7258,7 @@ impl AlertUnsupportedType {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleBOPAlgoAlertUnsupportedType> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_BOPAlgo_AlertUnsupportedType> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKBO::BOPAlgo_AlertUnsupportedType_to_handle(obj.into_raw()),
@@ -7314,7 +7297,7 @@ impl AlertUnsupportedType {
     }
 
     /// Inherited: **Source:** `TopoDS_AlertWithShape.hxx`:39 - `TopoDS_AlertWithShape::Merge()`
-    pub fn merge(&mut self, theTarget: &crate::ffi_types::HandleMessageAlert) -> bool {
+    pub fn merge(&mut self, theTarget: &crate::ffi_types::Handle_Message_Alert) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertUnsupportedType_inherited_Merge(
                 self as *mut Self,
@@ -7323,8 +7306,8 @@ impl AlertUnsupportedType {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertUnsupportedType_inherited_IsInstance(
                 self as *const Self,
@@ -7333,8 +7316,8 @@ impl AlertUnsupportedType {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertUnsupportedType_inherited_IsKind(
                 self as *const Self,
@@ -7343,7 +7326,7 @@ impl AlertUnsupportedType {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -7359,7 +7342,7 @@ impl AlertUnsupportedType {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertUnsupportedType_inherited_GetRefCount(
@@ -7368,7 +7351,7 @@ impl AlertUnsupportedType {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertUnsupportedType_inherited_IncrementRefCounter(
@@ -7377,7 +7360,7 @@ impl AlertUnsupportedType {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertUnsupportedType_inherited_DecrementRefCounter(
@@ -7386,7 +7369,7 @@ impl AlertUnsupportedType {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertUnsupportedType_inherited_Delete(
@@ -7396,38 +7379,38 @@ impl AlertUnsupportedType {
     }
 }
 
-pub use crate::ffi_types::HandleBOPAlgoAlertUnsupportedType;
+pub use crate::ffi_types::Handle_BOPAlgo_AlertUnsupportedType;
 
-unsafe impl crate::CppDeletable for HandleBOPAlgoAlertUnsupportedType {
+unsafe impl crate::CppDeletable for Handle_BOPAlgo_AlertUnsupportedType {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKBO::HandleBOPAlgoAlertUnsupportedType_destructor(ptr);
+            crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertUnsupportedType_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleBOPAlgoAlertUnsupportedType {
+unsafe impl crate::CppCopyable for Handle_BOPAlgo_AlertUnsupportedType {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
         unsafe {
-            crate::check_result(crate::ffi_extern_TKBO::HandleBOPAlgoAlertUnsupportedType_clone(
+            crate::check_result(crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertUnsupportedType_clone(
                 ptr,
             ))
         }
     }
 }
 
-impl HandleBOPAlgoAlertUnsupportedType {
+impl Handle_BOPAlgo_AlertUnsupportedType {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
         unsafe {
-            crate::ffi_extern_TKBO::HandleBOPAlgoAlertUnsupportedType_is_null(self as *const Self)
+            crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertUnsupportedType_is_null(self as *const Self)
         }
     }
 
     /// Dereference this Handle to access the underlying BOPAlgo_AlertUnsupportedType
     pub fn get(&self) -> &crate::ffi_types::BOPAlgo_AlertUnsupportedType {
         unsafe {
-            &*crate::check_result(crate::ffi_extern_TKBO::HandleBOPAlgoAlertUnsupportedType_get(
+            &*crate::check_result(crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertUnsupportedType_get(
                 self as *const Self,
             ))
         }
@@ -7437,7 +7420,7 @@ impl HandleBOPAlgoAlertUnsupportedType {
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::BOPAlgo_AlertUnsupportedType {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi_extern_TKBO::HandleBOPAlgoAlertUnsupportedType_get_mut(
+                crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertUnsupportedType_get_mut(
                     self as *mut Self,
                 ),
             )
@@ -7447,17 +7430,17 @@ impl HandleBOPAlgoAlertUnsupportedType {
     /// Upcast Handle<BOPAlgo_AlertUnsupportedType> to Handle<TopoDS_AlertWithShape>
     pub fn to_handle_alert_with_shape(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleTopoDSAlertWithShape> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_TopoDS_AlertWithShape> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKBO::HandleBOPAlgoAlertUnsupportedType_to_HandleTopoDSAlertWithShape(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertUnsupportedType_to_Handle_TopoDS_AlertWithShape(self as *const Self)))
         }
     }
 
     /// Upcast Handle<BOPAlgo_AlertUnsupportedType> to Handle<Message_Alert>
-    pub fn to_handle_alert(&self) -> crate::OwnedPtr<crate::ffi_types::HandleMessageAlert> {
+    pub fn to_handle_alert(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_Message_Alert> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKBO::HandleBOPAlgoAlertUnsupportedType_to_HandleMessageAlert(
+                crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertUnsupportedType_to_Handle_Message_Alert(
                     self as *const Self,
                 ),
             ))
@@ -7467,9 +7450,9 @@ impl HandleBOPAlgoAlertUnsupportedType {
     /// Upcast Handle<BOPAlgo_AlertUnsupportedType> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKBO::HandleBOPAlgoAlertUnsupportedType_to_HandleStandardTransient(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertUnsupportedType_to_Handle_Standard_Transient(self as *const Self)))
         }
     }
 }
@@ -7498,7 +7481,7 @@ impl AlertNoFacesToRemove {
     }
 
     /// **Source:** `BOPAlgo_Alerts.hxx`:98 - `BOPAlgo_AlertNoFacesToRemove::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKBO::BOPAlgo_AlertNoFacesToRemove_dynamic_type(
@@ -7520,7 +7503,7 @@ impl AlertNoFacesToRemove {
     }
 
     /// **Source:** `BOPAlgo_Alerts.hxx`:98 - `BOPAlgo_AlertNoFacesToRemove::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKBO::BOPAlgo_AlertNoFacesToRemove_get_type_descriptor(),
@@ -7575,7 +7558,7 @@ impl AlertNoFacesToRemove {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleBOPAlgoAlertNoFacesToRemove> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_BOPAlgo_AlertNoFacesToRemove> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKBO::BOPAlgo_AlertNoFacesToRemove_to_handle(obj.into_raw()),
@@ -7583,7 +7566,7 @@ impl AlertNoFacesToRemove {
         }
     }
 
-    /// Inherited: **Source:** `Message_Alert.hxx`:47 - `Message_Alert::SupportsMerge()`
+    /// Inherited: **Source:** `Message_Alert.hxx`:45 - `Message_Alert::SupportsMerge()`
     pub fn supports_merge(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertNoFacesToRemove_inherited_SupportsMerge(
@@ -7592,8 +7575,8 @@ impl AlertNoFacesToRemove {
         })
     }
 
-    /// Inherited: **Source:** `Message_Alert.hxx`:52 - `Message_Alert::Merge()`
-    pub fn merge(&mut self, theTarget: &crate::ffi_types::HandleMessageAlert) -> bool {
+    /// Inherited: **Source:** `Message_Alert.hxx`:50 - `Message_Alert::Merge()`
+    pub fn merge(&mut self, theTarget: &crate::ffi_types::Handle_Message_Alert) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertNoFacesToRemove_inherited_Merge(
                 self as *mut Self,
@@ -7602,8 +7585,8 @@ impl AlertNoFacesToRemove {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertNoFacesToRemove_inherited_IsInstance(
                 self as *const Self,
@@ -7612,8 +7595,8 @@ impl AlertNoFacesToRemove {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertNoFacesToRemove_inherited_IsKind(
                 self as *const Self,
@@ -7622,7 +7605,7 @@ impl AlertNoFacesToRemove {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -7638,7 +7621,7 @@ impl AlertNoFacesToRemove {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertNoFacesToRemove_inherited_GetRefCount(
@@ -7647,7 +7630,7 @@ impl AlertNoFacesToRemove {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertNoFacesToRemove_inherited_IncrementRefCounter(
@@ -7656,7 +7639,7 @@ impl AlertNoFacesToRemove {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertNoFacesToRemove_inherited_DecrementRefCounter(
@@ -7665,7 +7648,7 @@ impl AlertNoFacesToRemove {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertNoFacesToRemove_inherited_Delete(
@@ -7675,38 +7658,38 @@ impl AlertNoFacesToRemove {
     }
 }
 
-pub use crate::ffi_types::HandleBOPAlgoAlertNoFacesToRemove;
+pub use crate::ffi_types::Handle_BOPAlgo_AlertNoFacesToRemove;
 
-unsafe impl crate::CppDeletable for HandleBOPAlgoAlertNoFacesToRemove {
+unsafe impl crate::CppDeletable for Handle_BOPAlgo_AlertNoFacesToRemove {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKBO::HandleBOPAlgoAlertNoFacesToRemove_destructor(ptr);
+            crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertNoFacesToRemove_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleBOPAlgoAlertNoFacesToRemove {
+unsafe impl crate::CppCopyable for Handle_BOPAlgo_AlertNoFacesToRemove {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
         unsafe {
-            crate::check_result(crate::ffi_extern_TKBO::HandleBOPAlgoAlertNoFacesToRemove_clone(
+            crate::check_result(crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertNoFacesToRemove_clone(
                 ptr,
             ))
         }
     }
 }
 
-impl HandleBOPAlgoAlertNoFacesToRemove {
+impl Handle_BOPAlgo_AlertNoFacesToRemove {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
         unsafe {
-            crate::ffi_extern_TKBO::HandleBOPAlgoAlertNoFacesToRemove_is_null(self as *const Self)
+            crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertNoFacesToRemove_is_null(self as *const Self)
         }
     }
 
     /// Dereference this Handle to access the underlying BOPAlgo_AlertNoFacesToRemove
     pub fn get(&self) -> &crate::ffi_types::BOPAlgo_AlertNoFacesToRemove {
         unsafe {
-            &*crate::check_result(crate::ffi_extern_TKBO::HandleBOPAlgoAlertNoFacesToRemove_get(
+            &*crate::check_result(crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertNoFacesToRemove_get(
                 self as *const Self,
             ))
         }
@@ -7716,7 +7699,7 @@ impl HandleBOPAlgoAlertNoFacesToRemove {
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::BOPAlgo_AlertNoFacesToRemove {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi_extern_TKBO::HandleBOPAlgoAlertNoFacesToRemove_get_mut(
+                crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertNoFacesToRemove_get_mut(
                     self as *mut Self,
                 ),
             )
@@ -7724,10 +7707,10 @@ impl HandleBOPAlgoAlertNoFacesToRemove {
     }
 
     /// Upcast Handle<BOPAlgo_AlertNoFacesToRemove> to Handle<Message_Alert>
-    pub fn to_handle_alert(&self) -> crate::OwnedPtr<crate::ffi_types::HandleMessageAlert> {
+    pub fn to_handle_alert(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_Message_Alert> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKBO::HandleBOPAlgoAlertNoFacesToRemove_to_HandleMessageAlert(
+                crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertNoFacesToRemove_to_Handle_Message_Alert(
                     self as *const Self,
                 ),
             ))
@@ -7737,9 +7720,9 @@ impl HandleBOPAlgoAlertNoFacesToRemove {
     /// Upcast Handle<BOPAlgo_AlertNoFacesToRemove> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKBO::HandleBOPAlgoAlertNoFacesToRemove_to_HandleStandardTransient(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertNoFacesToRemove_to_Handle_Standard_Transient(self as *const Self)))
         }
     }
 }
@@ -7768,7 +7751,7 @@ impl AlertUnableToRemoveTheFeature {
     }
 
     /// **Source:** `BOPAlgo_Alerts.hxx`:101 - `BOPAlgo_AlertUnableToRemoveTheFeature::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKBO::BOPAlgo_AlertUnableToRemoveTheFeature_dynamic_type(
@@ -7790,7 +7773,7 @@ impl AlertUnableToRemoveTheFeature {
     }
 
     /// **Source:** `BOPAlgo_Alerts.hxx`:101 - `BOPAlgo_AlertUnableToRemoveTheFeature::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKBO::BOPAlgo_AlertUnableToRemoveTheFeature_get_type_descriptor(),
@@ -7855,7 +7838,7 @@ impl AlertUnableToRemoveTheFeature {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleBOPAlgoAlertUnableToRemoveTheFeature> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_BOPAlgo_AlertUnableToRemoveTheFeature> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKBO::BOPAlgo_AlertUnableToRemoveTheFeature_to_handle(
@@ -7896,7 +7879,7 @@ impl AlertUnableToRemoveTheFeature {
     }
 
     /// Inherited: **Source:** `TopoDS_AlertWithShape.hxx`:39 - `TopoDS_AlertWithShape::Merge()`
-    pub fn merge(&mut self, theTarget: &crate::ffi_types::HandleMessageAlert) -> bool {
+    pub fn merge(&mut self, theTarget: &crate::ffi_types::Handle_Message_Alert) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertUnableToRemoveTheFeature_inherited_Merge(
                 self as *mut Self,
@@ -7905,8 +7888,8 @@ impl AlertUnableToRemoveTheFeature {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertUnableToRemoveTheFeature_inherited_IsInstance(
                 self as *const Self,
@@ -7915,8 +7898,8 @@ impl AlertUnableToRemoveTheFeature {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertUnableToRemoveTheFeature_inherited_IsKind(
                 self as *const Self,
@@ -7925,7 +7908,7 @@ impl AlertUnableToRemoveTheFeature {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -7941,7 +7924,7 @@ impl AlertUnableToRemoveTheFeature {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertUnableToRemoveTheFeature_inherited_GetRefCount(
@@ -7950,21 +7933,21 @@ impl AlertUnableToRemoveTheFeature {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertUnableToRemoveTheFeature_inherited_IncrementRefCounter(self as *mut Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertUnableToRemoveTheFeature_inherited_DecrementRefCounter(self as *mut Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertUnableToRemoveTheFeature_inherited_Delete(
@@ -7974,31 +7957,31 @@ impl AlertUnableToRemoveTheFeature {
     }
 }
 
-pub use crate::ffi_types::HandleBOPAlgoAlertUnableToRemoveTheFeature;
+pub use crate::ffi_types::Handle_BOPAlgo_AlertUnableToRemoveTheFeature;
 
-unsafe impl crate::CppDeletable for HandleBOPAlgoAlertUnableToRemoveTheFeature {
+unsafe impl crate::CppDeletable for Handle_BOPAlgo_AlertUnableToRemoveTheFeature {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKBO::HandleBOPAlgoAlertUnableToRemoveTheFeature_destructor(ptr);
+            crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertUnableToRemoveTheFeature_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleBOPAlgoAlertUnableToRemoveTheFeature {
+unsafe impl crate::CppCopyable for Handle_BOPAlgo_AlertUnableToRemoveTheFeature {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
         unsafe {
             crate::check_result(
-                crate::ffi_extern_TKBO::HandleBOPAlgoAlertUnableToRemoveTheFeature_clone(ptr),
+                crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertUnableToRemoveTheFeature_clone(ptr),
             )
         }
     }
 }
 
-impl HandleBOPAlgoAlertUnableToRemoveTheFeature {
+impl Handle_BOPAlgo_AlertUnableToRemoveTheFeature {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
         unsafe {
-            crate::ffi_extern_TKBO::HandleBOPAlgoAlertUnableToRemoveTheFeature_is_null(
+            crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertUnableToRemoveTheFeature_is_null(
                 self as *const Self,
             )
         }
@@ -8008,7 +7991,7 @@ impl HandleBOPAlgoAlertUnableToRemoveTheFeature {
     pub fn get(&self) -> &crate::ffi_types::BOPAlgo_AlertUnableToRemoveTheFeature {
         unsafe {
             &*crate::check_result(
-                crate::ffi_extern_TKBO::HandleBOPAlgoAlertUnableToRemoveTheFeature_get(
+                crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertUnableToRemoveTheFeature_get(
                     self as *const Self,
                 ),
             )
@@ -8019,7 +8002,7 @@ impl HandleBOPAlgoAlertUnableToRemoveTheFeature {
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::BOPAlgo_AlertUnableToRemoveTheFeature {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi_extern_TKBO::HandleBOPAlgoAlertUnableToRemoveTheFeature_get_mut(
+                crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertUnableToRemoveTheFeature_get_mut(
                     self as *mut Self,
                 ),
             )
@@ -8029,25 +8012,25 @@ impl HandleBOPAlgoAlertUnableToRemoveTheFeature {
     /// Upcast Handle<BOPAlgo_AlertUnableToRemoveTheFeature> to Handle<TopoDS_AlertWithShape>
     pub fn to_handle_alert_with_shape(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleTopoDSAlertWithShape> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_TopoDS_AlertWithShape> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKBO::HandleBOPAlgoAlertUnableToRemoveTheFeature_to_HandleTopoDSAlertWithShape(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertUnableToRemoveTheFeature_to_Handle_TopoDS_AlertWithShape(self as *const Self)))
         }
     }
 
     /// Upcast Handle<BOPAlgo_AlertUnableToRemoveTheFeature> to Handle<Message_Alert>
-    pub fn to_handle_alert(&self) -> crate::OwnedPtr<crate::ffi_types::HandleMessageAlert> {
+    pub fn to_handle_alert(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_Message_Alert> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKBO::HandleBOPAlgoAlertUnableToRemoveTheFeature_to_HandleMessageAlert(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertUnableToRemoveTheFeature_to_Handle_Message_Alert(self as *const Self)))
         }
     }
 
     /// Upcast Handle<BOPAlgo_AlertUnableToRemoveTheFeature> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKBO::HandleBOPAlgoAlertUnableToRemoveTheFeature_to_HandleStandardTransient(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertUnableToRemoveTheFeature_to_Handle_Standard_Transient(self as *const Self)))
         }
     }
 }
@@ -8076,7 +8059,7 @@ impl AlertRemoveFeaturesFailed {
     }
 
     /// **Source:** `BOPAlgo_Alerts.hxx`:104 - `BOPAlgo_AlertRemoveFeaturesFailed::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKBO::BOPAlgo_AlertRemoveFeaturesFailed_dynamic_type(
@@ -8098,7 +8081,7 @@ impl AlertRemoveFeaturesFailed {
     }
 
     /// **Source:** `BOPAlgo_Alerts.hxx`:104 - `BOPAlgo_AlertRemoveFeaturesFailed::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKBO::BOPAlgo_AlertRemoveFeaturesFailed_get_type_descriptor(),
@@ -8153,7 +8136,7 @@ impl AlertRemoveFeaturesFailed {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleBOPAlgoAlertRemoveFeaturesFailed> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_BOPAlgo_AlertRemoveFeaturesFailed> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKBO::BOPAlgo_AlertRemoveFeaturesFailed_to_handle(obj.into_raw()),
@@ -8161,7 +8144,7 @@ impl AlertRemoveFeaturesFailed {
         }
     }
 
-    /// Inherited: **Source:** `Message_Alert.hxx`:47 - `Message_Alert::SupportsMerge()`
+    /// Inherited: **Source:** `Message_Alert.hxx`:45 - `Message_Alert::SupportsMerge()`
     pub fn supports_merge(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertRemoveFeaturesFailed_inherited_SupportsMerge(
@@ -8170,8 +8153,8 @@ impl AlertRemoveFeaturesFailed {
         })
     }
 
-    /// Inherited: **Source:** `Message_Alert.hxx`:52 - `Message_Alert::Merge()`
-    pub fn merge(&mut self, theTarget: &crate::ffi_types::HandleMessageAlert) -> bool {
+    /// Inherited: **Source:** `Message_Alert.hxx`:50 - `Message_Alert::Merge()`
+    pub fn merge(&mut self, theTarget: &crate::ffi_types::Handle_Message_Alert) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertRemoveFeaturesFailed_inherited_Merge(
                 self as *mut Self,
@@ -8180,8 +8163,8 @@ impl AlertRemoveFeaturesFailed {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertRemoveFeaturesFailed_inherited_IsInstance(
                 self as *const Self,
@@ -8190,8 +8173,8 @@ impl AlertRemoveFeaturesFailed {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertRemoveFeaturesFailed_inherited_IsKind(
                 self as *const Self,
@@ -8200,7 +8183,7 @@ impl AlertRemoveFeaturesFailed {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -8216,7 +8199,7 @@ impl AlertRemoveFeaturesFailed {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertRemoveFeaturesFailed_inherited_GetRefCount(
@@ -8225,7 +8208,7 @@ impl AlertRemoveFeaturesFailed {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertRemoveFeaturesFailed_inherited_IncrementRefCounter(
@@ -8234,7 +8217,7 @@ impl AlertRemoveFeaturesFailed {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertRemoveFeaturesFailed_inherited_DecrementRefCounter(
@@ -8243,7 +8226,7 @@ impl AlertRemoveFeaturesFailed {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertRemoveFeaturesFailed_inherited_Delete(
@@ -8253,31 +8236,31 @@ impl AlertRemoveFeaturesFailed {
     }
 }
 
-pub use crate::ffi_types::HandleBOPAlgoAlertRemoveFeaturesFailed;
+pub use crate::ffi_types::Handle_BOPAlgo_AlertRemoveFeaturesFailed;
 
-unsafe impl crate::CppDeletable for HandleBOPAlgoAlertRemoveFeaturesFailed {
+unsafe impl crate::CppDeletable for Handle_BOPAlgo_AlertRemoveFeaturesFailed {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKBO::HandleBOPAlgoAlertRemoveFeaturesFailed_destructor(ptr);
+            crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertRemoveFeaturesFailed_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleBOPAlgoAlertRemoveFeaturesFailed {
+unsafe impl crate::CppCopyable for Handle_BOPAlgo_AlertRemoveFeaturesFailed {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
         unsafe {
             crate::check_result(
-                crate::ffi_extern_TKBO::HandleBOPAlgoAlertRemoveFeaturesFailed_clone(ptr),
+                crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertRemoveFeaturesFailed_clone(ptr),
             )
         }
     }
 }
 
-impl HandleBOPAlgoAlertRemoveFeaturesFailed {
+impl Handle_BOPAlgo_AlertRemoveFeaturesFailed {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
         unsafe {
-            crate::ffi_extern_TKBO::HandleBOPAlgoAlertRemoveFeaturesFailed_is_null(
+            crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertRemoveFeaturesFailed_is_null(
                 self as *const Self,
             )
         }
@@ -8287,7 +8270,7 @@ impl HandleBOPAlgoAlertRemoveFeaturesFailed {
     pub fn get(&self) -> &crate::ffi_types::BOPAlgo_AlertRemoveFeaturesFailed {
         unsafe {
             &*crate::check_result(
-                crate::ffi_extern_TKBO::HandleBOPAlgoAlertRemoveFeaturesFailed_get(
+                crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertRemoveFeaturesFailed_get(
                     self as *const Self,
                 ),
             )
@@ -8298,7 +8281,7 @@ impl HandleBOPAlgoAlertRemoveFeaturesFailed {
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::BOPAlgo_AlertRemoveFeaturesFailed {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi_extern_TKBO::HandleBOPAlgoAlertRemoveFeaturesFailed_get_mut(
+                crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertRemoveFeaturesFailed_get_mut(
                     self as *mut Self,
                 ),
             )
@@ -8306,18 +8289,18 @@ impl HandleBOPAlgoAlertRemoveFeaturesFailed {
     }
 
     /// Upcast Handle<BOPAlgo_AlertRemoveFeaturesFailed> to Handle<Message_Alert>
-    pub fn to_handle_alert(&self) -> crate::OwnedPtr<crate::ffi_types::HandleMessageAlert> {
+    pub fn to_handle_alert(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_Message_Alert> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKBO::HandleBOPAlgoAlertRemoveFeaturesFailed_to_HandleMessageAlert(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertRemoveFeaturesFailed_to_Handle_Message_Alert(self as *const Self)))
         }
     }
 
     /// Upcast Handle<BOPAlgo_AlertRemoveFeaturesFailed> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKBO::HandleBOPAlgoAlertRemoveFeaturesFailed_to_HandleStandardTransient(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertRemoveFeaturesFailed_to_Handle_Standard_Transient(self as *const Self)))
         }
     }
 }
@@ -8348,7 +8331,7 @@ impl AlertSolidBuilderUnusedFaces {
     }
 
     /// **Source:** `BOPAlgo_Alerts.hxx`:108 - `BOPAlgo_AlertSolidBuilderUnusedFaces::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKBO::BOPAlgo_AlertSolidBuilderUnusedFaces_dynamic_type(
@@ -8370,7 +8353,7 @@ impl AlertSolidBuilderUnusedFaces {
     }
 
     /// **Source:** `BOPAlgo_Alerts.hxx`:108 - `BOPAlgo_AlertSolidBuilderUnusedFaces::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKBO::BOPAlgo_AlertSolidBuilderUnusedFaces_get_type_descriptor(),
@@ -8435,7 +8418,7 @@ impl AlertSolidBuilderUnusedFaces {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleBOPAlgoAlertSolidBuilderUnusedFaces> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_BOPAlgo_AlertSolidBuilderUnusedFaces> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKBO::BOPAlgo_AlertSolidBuilderUnusedFaces_to_handle(
@@ -8476,7 +8459,7 @@ impl AlertSolidBuilderUnusedFaces {
     }
 
     /// Inherited: **Source:** `TopoDS_AlertWithShape.hxx`:39 - `TopoDS_AlertWithShape::Merge()`
-    pub fn merge(&mut self, theTarget: &crate::ffi_types::HandleMessageAlert) -> bool {
+    pub fn merge(&mut self, theTarget: &crate::ffi_types::Handle_Message_Alert) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertSolidBuilderUnusedFaces_inherited_Merge(
                 self as *mut Self,
@@ -8485,8 +8468,8 @@ impl AlertSolidBuilderUnusedFaces {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertSolidBuilderUnusedFaces_inherited_IsInstance(
                 self as *const Self,
@@ -8495,8 +8478,8 @@ impl AlertSolidBuilderUnusedFaces {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertSolidBuilderUnusedFaces_inherited_IsKind(
                 self as *const Self,
@@ -8505,7 +8488,7 @@ impl AlertSolidBuilderUnusedFaces {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -8521,7 +8504,7 @@ impl AlertSolidBuilderUnusedFaces {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertSolidBuilderUnusedFaces_inherited_GetRefCount(
@@ -8530,21 +8513,21 @@ impl AlertSolidBuilderUnusedFaces {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertSolidBuilderUnusedFaces_inherited_IncrementRefCounter(self as *mut Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertSolidBuilderUnusedFaces_inherited_DecrementRefCounter(self as *mut Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertSolidBuilderUnusedFaces_inherited_Delete(
@@ -8554,31 +8537,31 @@ impl AlertSolidBuilderUnusedFaces {
     }
 }
 
-pub use crate::ffi_types::HandleBOPAlgoAlertSolidBuilderUnusedFaces;
+pub use crate::ffi_types::Handle_BOPAlgo_AlertSolidBuilderUnusedFaces;
 
-unsafe impl crate::CppDeletable for HandleBOPAlgoAlertSolidBuilderUnusedFaces {
+unsafe impl crate::CppDeletable for Handle_BOPAlgo_AlertSolidBuilderUnusedFaces {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKBO::HandleBOPAlgoAlertSolidBuilderUnusedFaces_destructor(ptr);
+            crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertSolidBuilderUnusedFaces_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleBOPAlgoAlertSolidBuilderUnusedFaces {
+unsafe impl crate::CppCopyable for Handle_BOPAlgo_AlertSolidBuilderUnusedFaces {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
         unsafe {
             crate::check_result(
-                crate::ffi_extern_TKBO::HandleBOPAlgoAlertSolidBuilderUnusedFaces_clone(ptr),
+                crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertSolidBuilderUnusedFaces_clone(ptr),
             )
         }
     }
 }
 
-impl HandleBOPAlgoAlertSolidBuilderUnusedFaces {
+impl Handle_BOPAlgo_AlertSolidBuilderUnusedFaces {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
         unsafe {
-            crate::ffi_extern_TKBO::HandleBOPAlgoAlertSolidBuilderUnusedFaces_is_null(
+            crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertSolidBuilderUnusedFaces_is_null(
                 self as *const Self,
             )
         }
@@ -8588,7 +8571,7 @@ impl HandleBOPAlgoAlertSolidBuilderUnusedFaces {
     pub fn get(&self) -> &crate::ffi_types::BOPAlgo_AlertSolidBuilderUnusedFaces {
         unsafe {
             &*crate::check_result(
-                crate::ffi_extern_TKBO::HandleBOPAlgoAlertSolidBuilderUnusedFaces_get(
+                crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertSolidBuilderUnusedFaces_get(
                     self as *const Self,
                 ),
             )
@@ -8599,7 +8582,7 @@ impl HandleBOPAlgoAlertSolidBuilderUnusedFaces {
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::BOPAlgo_AlertSolidBuilderUnusedFaces {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi_extern_TKBO::HandleBOPAlgoAlertSolidBuilderUnusedFaces_get_mut(
+                crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertSolidBuilderUnusedFaces_get_mut(
                     self as *mut Self,
                 ),
             )
@@ -8609,25 +8592,25 @@ impl HandleBOPAlgoAlertSolidBuilderUnusedFaces {
     /// Upcast Handle<BOPAlgo_AlertSolidBuilderUnusedFaces> to Handle<TopoDS_AlertWithShape>
     pub fn to_handle_alert_with_shape(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleTopoDSAlertWithShape> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_TopoDS_AlertWithShape> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKBO::HandleBOPAlgoAlertSolidBuilderUnusedFaces_to_HandleTopoDSAlertWithShape(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertSolidBuilderUnusedFaces_to_Handle_TopoDS_AlertWithShape(self as *const Self)))
         }
     }
 
     /// Upcast Handle<BOPAlgo_AlertSolidBuilderUnusedFaces> to Handle<Message_Alert>
-    pub fn to_handle_alert(&self) -> crate::OwnedPtr<crate::ffi_types::HandleMessageAlert> {
+    pub fn to_handle_alert(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_Message_Alert> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKBO::HandleBOPAlgoAlertSolidBuilderUnusedFaces_to_HandleMessageAlert(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertSolidBuilderUnusedFaces_to_Handle_Message_Alert(self as *const Self)))
         }
     }
 
     /// Upcast Handle<BOPAlgo_AlertSolidBuilderUnusedFaces> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKBO::HandleBOPAlgoAlertSolidBuilderUnusedFaces_to_HandleStandardTransient(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertSolidBuilderUnusedFaces_to_Handle_Standard_Transient(self as *const Self)))
         }
     }
 }
@@ -8658,7 +8641,7 @@ impl AlertFaceBuilderUnusedEdges {
     }
 
     /// **Source:** `BOPAlgo_Alerts.hxx`:112 - `BOPAlgo_AlertFaceBuilderUnusedEdges::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKBO::BOPAlgo_AlertFaceBuilderUnusedEdges_dynamic_type(
@@ -8680,7 +8663,7 @@ impl AlertFaceBuilderUnusedEdges {
     }
 
     /// **Source:** `BOPAlgo_Alerts.hxx`:112 - `BOPAlgo_AlertFaceBuilderUnusedEdges::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKBO::BOPAlgo_AlertFaceBuilderUnusedEdges_get_type_descriptor(),
@@ -8745,7 +8728,7 @@ impl AlertFaceBuilderUnusedEdges {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleBOPAlgoAlertFaceBuilderUnusedEdges> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_BOPAlgo_AlertFaceBuilderUnusedEdges> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKBO::BOPAlgo_AlertFaceBuilderUnusedEdges_to_handle(
@@ -8786,7 +8769,7 @@ impl AlertFaceBuilderUnusedEdges {
     }
 
     /// Inherited: **Source:** `TopoDS_AlertWithShape.hxx`:39 - `TopoDS_AlertWithShape::Merge()`
-    pub fn merge(&mut self, theTarget: &crate::ffi_types::HandleMessageAlert) -> bool {
+    pub fn merge(&mut self, theTarget: &crate::ffi_types::Handle_Message_Alert) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertFaceBuilderUnusedEdges_inherited_Merge(
                 self as *mut Self,
@@ -8795,8 +8778,8 @@ impl AlertFaceBuilderUnusedEdges {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertFaceBuilderUnusedEdges_inherited_IsInstance(
                 self as *const Self,
@@ -8805,8 +8788,8 @@ impl AlertFaceBuilderUnusedEdges {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertFaceBuilderUnusedEdges_inherited_IsKind(
                 self as *const Self,
@@ -8815,7 +8798,7 @@ impl AlertFaceBuilderUnusedEdges {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -8831,7 +8814,7 @@ impl AlertFaceBuilderUnusedEdges {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertFaceBuilderUnusedEdges_inherited_GetRefCount(
@@ -8840,21 +8823,21 @@ impl AlertFaceBuilderUnusedEdges {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertFaceBuilderUnusedEdges_inherited_IncrementRefCounter(self as *mut Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertFaceBuilderUnusedEdges_inherited_DecrementRefCounter(self as *mut Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertFaceBuilderUnusedEdges_inherited_Delete(
@@ -8864,31 +8847,31 @@ impl AlertFaceBuilderUnusedEdges {
     }
 }
 
-pub use crate::ffi_types::HandleBOPAlgoAlertFaceBuilderUnusedEdges;
+pub use crate::ffi_types::Handle_BOPAlgo_AlertFaceBuilderUnusedEdges;
 
-unsafe impl crate::CppDeletable for HandleBOPAlgoAlertFaceBuilderUnusedEdges {
+unsafe impl crate::CppDeletable for Handle_BOPAlgo_AlertFaceBuilderUnusedEdges {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKBO::HandleBOPAlgoAlertFaceBuilderUnusedEdges_destructor(ptr);
+            crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertFaceBuilderUnusedEdges_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleBOPAlgoAlertFaceBuilderUnusedEdges {
+unsafe impl crate::CppCopyable for Handle_BOPAlgo_AlertFaceBuilderUnusedEdges {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
         unsafe {
             crate::check_result(
-                crate::ffi_extern_TKBO::HandleBOPAlgoAlertFaceBuilderUnusedEdges_clone(ptr),
+                crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertFaceBuilderUnusedEdges_clone(ptr),
             )
         }
     }
 }
 
-impl HandleBOPAlgoAlertFaceBuilderUnusedEdges {
+impl Handle_BOPAlgo_AlertFaceBuilderUnusedEdges {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
         unsafe {
-            crate::ffi_extern_TKBO::HandleBOPAlgoAlertFaceBuilderUnusedEdges_is_null(
+            crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertFaceBuilderUnusedEdges_is_null(
                 self as *const Self,
             )
         }
@@ -8898,7 +8881,7 @@ impl HandleBOPAlgoAlertFaceBuilderUnusedEdges {
     pub fn get(&self) -> &crate::ffi_types::BOPAlgo_AlertFaceBuilderUnusedEdges {
         unsafe {
             &*crate::check_result(
-                crate::ffi_extern_TKBO::HandleBOPAlgoAlertFaceBuilderUnusedEdges_get(
+                crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertFaceBuilderUnusedEdges_get(
                     self as *const Self,
                 ),
             )
@@ -8909,7 +8892,7 @@ impl HandleBOPAlgoAlertFaceBuilderUnusedEdges {
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::BOPAlgo_AlertFaceBuilderUnusedEdges {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi_extern_TKBO::HandleBOPAlgoAlertFaceBuilderUnusedEdges_get_mut(
+                crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertFaceBuilderUnusedEdges_get_mut(
                     self as *mut Self,
                 ),
             )
@@ -8919,25 +8902,25 @@ impl HandleBOPAlgoAlertFaceBuilderUnusedEdges {
     /// Upcast Handle<BOPAlgo_AlertFaceBuilderUnusedEdges> to Handle<TopoDS_AlertWithShape>
     pub fn to_handle_alert_with_shape(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleTopoDSAlertWithShape> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_TopoDS_AlertWithShape> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKBO::HandleBOPAlgoAlertFaceBuilderUnusedEdges_to_HandleTopoDSAlertWithShape(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertFaceBuilderUnusedEdges_to_Handle_TopoDS_AlertWithShape(self as *const Self)))
         }
     }
 
     /// Upcast Handle<BOPAlgo_AlertFaceBuilderUnusedEdges> to Handle<Message_Alert>
-    pub fn to_handle_alert(&self) -> crate::OwnedPtr<crate::ffi_types::HandleMessageAlert> {
+    pub fn to_handle_alert(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_Message_Alert> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKBO::HandleBOPAlgoAlertFaceBuilderUnusedEdges_to_HandleMessageAlert(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertFaceBuilderUnusedEdges_to_Handle_Message_Alert(self as *const Self)))
         }
     }
 
     /// Upcast Handle<BOPAlgo_AlertFaceBuilderUnusedEdges> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKBO::HandleBOPAlgoAlertFaceBuilderUnusedEdges_to_HandleStandardTransient(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertFaceBuilderUnusedEdges_to_Handle_Standard_Transient(self as *const Self)))
         }
     }
 }
@@ -8966,7 +8949,7 @@ impl AlertUnableToOrientTheShape {
     }
 
     /// **Source:** `BOPAlgo_Alerts.hxx`:115 - `BOPAlgo_AlertUnableToOrientTheShape::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKBO::BOPAlgo_AlertUnableToOrientTheShape_dynamic_type(
@@ -8988,7 +8971,7 @@ impl AlertUnableToOrientTheShape {
     }
 
     /// **Source:** `BOPAlgo_Alerts.hxx`:115 - `BOPAlgo_AlertUnableToOrientTheShape::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKBO::BOPAlgo_AlertUnableToOrientTheShape_get_type_descriptor(),
@@ -9053,7 +9036,7 @@ impl AlertUnableToOrientTheShape {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleBOPAlgoAlertUnableToOrientTheShape> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_BOPAlgo_AlertUnableToOrientTheShape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKBO::BOPAlgo_AlertUnableToOrientTheShape_to_handle(
@@ -9094,7 +9077,7 @@ impl AlertUnableToOrientTheShape {
     }
 
     /// Inherited: **Source:** `TopoDS_AlertWithShape.hxx`:39 - `TopoDS_AlertWithShape::Merge()`
-    pub fn merge(&mut self, theTarget: &crate::ffi_types::HandleMessageAlert) -> bool {
+    pub fn merge(&mut self, theTarget: &crate::ffi_types::Handle_Message_Alert) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertUnableToOrientTheShape_inherited_Merge(
                 self as *mut Self,
@@ -9103,8 +9086,8 @@ impl AlertUnableToOrientTheShape {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertUnableToOrientTheShape_inherited_IsInstance(
                 self as *const Self,
@@ -9113,8 +9096,8 @@ impl AlertUnableToOrientTheShape {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertUnableToOrientTheShape_inherited_IsKind(
                 self as *const Self,
@@ -9123,7 +9106,7 @@ impl AlertUnableToOrientTheShape {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -9139,7 +9122,7 @@ impl AlertUnableToOrientTheShape {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertUnableToOrientTheShape_inherited_GetRefCount(
@@ -9148,21 +9131,21 @@ impl AlertUnableToOrientTheShape {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertUnableToOrientTheShape_inherited_IncrementRefCounter(self as *mut Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertUnableToOrientTheShape_inherited_DecrementRefCounter(self as *mut Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertUnableToOrientTheShape_inherited_Delete(
@@ -9172,31 +9155,31 @@ impl AlertUnableToOrientTheShape {
     }
 }
 
-pub use crate::ffi_types::HandleBOPAlgoAlertUnableToOrientTheShape;
+pub use crate::ffi_types::Handle_BOPAlgo_AlertUnableToOrientTheShape;
 
-unsafe impl crate::CppDeletable for HandleBOPAlgoAlertUnableToOrientTheShape {
+unsafe impl crate::CppDeletable for Handle_BOPAlgo_AlertUnableToOrientTheShape {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKBO::HandleBOPAlgoAlertUnableToOrientTheShape_destructor(ptr);
+            crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertUnableToOrientTheShape_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleBOPAlgoAlertUnableToOrientTheShape {
+unsafe impl crate::CppCopyable for Handle_BOPAlgo_AlertUnableToOrientTheShape {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
         unsafe {
             crate::check_result(
-                crate::ffi_extern_TKBO::HandleBOPAlgoAlertUnableToOrientTheShape_clone(ptr),
+                crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertUnableToOrientTheShape_clone(ptr),
             )
         }
     }
 }
 
-impl HandleBOPAlgoAlertUnableToOrientTheShape {
+impl Handle_BOPAlgo_AlertUnableToOrientTheShape {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
         unsafe {
-            crate::ffi_extern_TKBO::HandleBOPAlgoAlertUnableToOrientTheShape_is_null(
+            crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertUnableToOrientTheShape_is_null(
                 self as *const Self,
             )
         }
@@ -9206,7 +9189,7 @@ impl HandleBOPAlgoAlertUnableToOrientTheShape {
     pub fn get(&self) -> &crate::ffi_types::BOPAlgo_AlertUnableToOrientTheShape {
         unsafe {
             &*crate::check_result(
-                crate::ffi_extern_TKBO::HandleBOPAlgoAlertUnableToOrientTheShape_get(
+                crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertUnableToOrientTheShape_get(
                     self as *const Self,
                 ),
             )
@@ -9217,7 +9200,7 @@ impl HandleBOPAlgoAlertUnableToOrientTheShape {
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::BOPAlgo_AlertUnableToOrientTheShape {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi_extern_TKBO::HandleBOPAlgoAlertUnableToOrientTheShape_get_mut(
+                crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertUnableToOrientTheShape_get_mut(
                     self as *mut Self,
                 ),
             )
@@ -9227,25 +9210,25 @@ impl HandleBOPAlgoAlertUnableToOrientTheShape {
     /// Upcast Handle<BOPAlgo_AlertUnableToOrientTheShape> to Handle<TopoDS_AlertWithShape>
     pub fn to_handle_alert_with_shape(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleTopoDSAlertWithShape> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_TopoDS_AlertWithShape> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKBO::HandleBOPAlgoAlertUnableToOrientTheShape_to_HandleTopoDSAlertWithShape(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertUnableToOrientTheShape_to_Handle_TopoDS_AlertWithShape(self as *const Self)))
         }
     }
 
     /// Upcast Handle<BOPAlgo_AlertUnableToOrientTheShape> to Handle<Message_Alert>
-    pub fn to_handle_alert(&self) -> crate::OwnedPtr<crate::ffi_types::HandleMessageAlert> {
+    pub fn to_handle_alert(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_Message_Alert> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKBO::HandleBOPAlgoAlertUnableToOrientTheShape_to_HandleMessageAlert(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertUnableToOrientTheShape_to_Handle_Message_Alert(self as *const Self)))
         }
     }
 
     /// Upcast Handle<BOPAlgo_AlertUnableToOrientTheShape> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKBO::HandleBOPAlgoAlertUnableToOrientTheShape_to_HandleStandardTransient(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertUnableToOrientTheShape_to_Handle_Standard_Transient(self as *const Self)))
         }
     }
 }
@@ -9274,7 +9257,7 @@ impl AlertUnknownShape {
     }
 
     /// **Source:** `BOPAlgo_Alerts.hxx`:118 - `BOPAlgo_AlertUnknownShape::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKBO::BOPAlgo_AlertUnknownShape_dynamic_type(
                 self as *const Self,
@@ -9294,7 +9277,7 @@ impl AlertUnknownShape {
     }
 
     /// **Source:** `BOPAlgo_Alerts.hxx`:118 - `BOPAlgo_AlertUnknownShape::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKBO::BOPAlgo_AlertUnknownShape_get_type_descriptor(),
@@ -9371,7 +9354,7 @@ impl AlertUnknownShape {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleBOPAlgoAlertUnknownShape> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_BOPAlgo_AlertUnknownShape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKBO::BOPAlgo_AlertUnknownShape_to_handle(obj.into_raw()),
@@ -9410,7 +9393,7 @@ impl AlertUnknownShape {
     }
 
     /// Inherited: **Source:** `TopoDS_AlertWithShape.hxx`:39 - `TopoDS_AlertWithShape::Merge()`
-    pub fn merge(&mut self, theTarget: &crate::ffi_types::HandleMessageAlert) -> bool {
+    pub fn merge(&mut self, theTarget: &crate::ffi_types::Handle_Message_Alert) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertUnknownShape_inherited_Merge(
                 self as *mut Self,
@@ -9419,8 +9402,8 @@ impl AlertUnknownShape {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertUnknownShape_inherited_IsInstance(
                 self as *const Self,
@@ -9429,8 +9412,8 @@ impl AlertUnknownShape {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertUnknownShape_inherited_IsKind(
                 self as *const Self,
@@ -9439,7 +9422,7 @@ impl AlertUnknownShape {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -9455,7 +9438,7 @@ impl AlertUnknownShape {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertUnknownShape_inherited_GetRefCount(
@@ -9464,7 +9447,7 @@ impl AlertUnknownShape {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertUnknownShape_inherited_IncrementRefCounter(
@@ -9473,7 +9456,7 @@ impl AlertUnknownShape {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertUnknownShape_inherited_DecrementRefCounter(
@@ -9482,7 +9465,7 @@ impl AlertUnknownShape {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertUnknownShape_inherited_Delete(self as *const Self)
@@ -9490,36 +9473,36 @@ impl AlertUnknownShape {
     }
 }
 
-pub use crate::ffi_types::HandleBOPAlgoAlertUnknownShape;
+pub use crate::ffi_types::Handle_BOPAlgo_AlertUnknownShape;
 
-unsafe impl crate::CppDeletable for HandleBOPAlgoAlertUnknownShape {
+unsafe impl crate::CppDeletable for Handle_BOPAlgo_AlertUnknownShape {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKBO::HandleBOPAlgoAlertUnknownShape_destructor(ptr);
+            crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertUnknownShape_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleBOPAlgoAlertUnknownShape {
+unsafe impl crate::CppCopyable for Handle_BOPAlgo_AlertUnknownShape {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
         unsafe {
-            crate::check_result(crate::ffi_extern_TKBO::HandleBOPAlgoAlertUnknownShape_clone(ptr))
+            crate::check_result(crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertUnknownShape_clone(ptr))
         }
     }
 }
 
-impl HandleBOPAlgoAlertUnknownShape {
+impl Handle_BOPAlgo_AlertUnknownShape {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
         unsafe {
-            crate::ffi_extern_TKBO::HandleBOPAlgoAlertUnknownShape_is_null(self as *const Self)
+            crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertUnknownShape_is_null(self as *const Self)
         }
     }
 
     /// Dereference this Handle to access the underlying BOPAlgo_AlertUnknownShape
     pub fn get(&self) -> &crate::ffi_types::BOPAlgo_AlertUnknownShape {
         unsafe {
-            &*crate::check_result(crate::ffi_extern_TKBO::HandleBOPAlgoAlertUnknownShape_get(
+            &*crate::check_result(crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertUnknownShape_get(
                 self as *const Self,
             ))
         }
@@ -9529,7 +9512,7 @@ impl HandleBOPAlgoAlertUnknownShape {
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::BOPAlgo_AlertUnknownShape {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi_extern_TKBO::HandleBOPAlgoAlertUnknownShape_get_mut(self as *mut Self),
+                crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertUnknownShape_get_mut(self as *mut Self),
             )
         }
     }
@@ -9537,17 +9520,17 @@ impl HandleBOPAlgoAlertUnknownShape {
     /// Upcast Handle<BOPAlgo_AlertUnknownShape> to Handle<TopoDS_AlertWithShape>
     pub fn to_handle_alert_with_shape(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleTopoDSAlertWithShape> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_TopoDS_AlertWithShape> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKBO::HandleBOPAlgoAlertUnknownShape_to_HandleTopoDSAlertWithShape(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertUnknownShape_to_Handle_TopoDS_AlertWithShape(self as *const Self)))
         }
     }
 
     /// Upcast Handle<BOPAlgo_AlertUnknownShape> to Handle<Message_Alert>
-    pub fn to_handle_alert(&self) -> crate::OwnedPtr<crate::ffi_types::HandleMessageAlert> {
+    pub fn to_handle_alert(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_Message_Alert> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKBO::HandleBOPAlgoAlertUnknownShape_to_HandleMessageAlert(
+                crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertUnknownShape_to_Handle_Message_Alert(
                     self as *const Self,
                 ),
             ))
@@ -9557,13 +9540,9 @@ impl HandleBOPAlgoAlertUnknownShape {
     /// Upcast Handle<BOPAlgo_AlertUnknownShape> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKBO::HandleBOPAlgoAlertUnknownShape_to_HandleStandardTransient(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertUnknownShape_to_Handle_Standard_Transient(self as *const Self)))
         }
     }
 }
@@ -9592,7 +9571,7 @@ impl AlertNoPeriodicityRequired {
     }
 
     /// **Source:** `BOPAlgo_Alerts.hxx`:121 - `BOPAlgo_AlertNoPeriodicityRequired::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKBO::BOPAlgo_AlertNoPeriodicityRequired_dynamic_type(
@@ -9614,7 +9593,7 @@ impl AlertNoPeriodicityRequired {
     }
 
     /// **Source:** `BOPAlgo_Alerts.hxx`:121 - `BOPAlgo_AlertNoPeriodicityRequired::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKBO::BOPAlgo_AlertNoPeriodicityRequired_get_type_descriptor(),
@@ -9665,7 +9644,7 @@ impl AlertNoPeriodicityRequired {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleBOPAlgoAlertNoPeriodicityRequired> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_BOPAlgo_AlertNoPeriodicityRequired> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKBO::BOPAlgo_AlertNoPeriodicityRequired_to_handle(
@@ -9675,7 +9654,7 @@ impl AlertNoPeriodicityRequired {
         }
     }
 
-    /// Inherited: **Source:** `Message_Alert.hxx`:47 - `Message_Alert::SupportsMerge()`
+    /// Inherited: **Source:** `Message_Alert.hxx`:45 - `Message_Alert::SupportsMerge()`
     pub fn supports_merge(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertNoPeriodicityRequired_inherited_SupportsMerge(
@@ -9684,8 +9663,8 @@ impl AlertNoPeriodicityRequired {
         })
     }
 
-    /// Inherited: **Source:** `Message_Alert.hxx`:52 - `Message_Alert::Merge()`
-    pub fn merge(&mut self, theTarget: &crate::ffi_types::HandleMessageAlert) -> bool {
+    /// Inherited: **Source:** `Message_Alert.hxx`:50 - `Message_Alert::Merge()`
+    pub fn merge(&mut self, theTarget: &crate::ffi_types::Handle_Message_Alert) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertNoPeriodicityRequired_inherited_Merge(
                 self as *mut Self,
@@ -9694,8 +9673,8 @@ impl AlertNoPeriodicityRequired {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertNoPeriodicityRequired_inherited_IsInstance(
                 self as *const Self,
@@ -9704,8 +9683,8 @@ impl AlertNoPeriodicityRequired {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertNoPeriodicityRequired_inherited_IsKind(
                 self as *const Self,
@@ -9714,7 +9693,7 @@ impl AlertNoPeriodicityRequired {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -9730,7 +9709,7 @@ impl AlertNoPeriodicityRequired {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertNoPeriodicityRequired_inherited_GetRefCount(
@@ -9739,7 +9718,7 @@ impl AlertNoPeriodicityRequired {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertNoPeriodicityRequired_inherited_IncrementRefCounter(
@@ -9748,7 +9727,7 @@ impl AlertNoPeriodicityRequired {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertNoPeriodicityRequired_inherited_DecrementRefCounter(
@@ -9757,7 +9736,7 @@ impl AlertNoPeriodicityRequired {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertNoPeriodicityRequired_inherited_Delete(
@@ -9767,31 +9746,31 @@ impl AlertNoPeriodicityRequired {
     }
 }
 
-pub use crate::ffi_types::HandleBOPAlgoAlertNoPeriodicityRequired;
+pub use crate::ffi_types::Handle_BOPAlgo_AlertNoPeriodicityRequired;
 
-unsafe impl crate::CppDeletable for HandleBOPAlgoAlertNoPeriodicityRequired {
+unsafe impl crate::CppDeletable for Handle_BOPAlgo_AlertNoPeriodicityRequired {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKBO::HandleBOPAlgoAlertNoPeriodicityRequired_destructor(ptr);
+            crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertNoPeriodicityRequired_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleBOPAlgoAlertNoPeriodicityRequired {
+unsafe impl crate::CppCopyable for Handle_BOPAlgo_AlertNoPeriodicityRequired {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
         unsafe {
             crate::check_result(
-                crate::ffi_extern_TKBO::HandleBOPAlgoAlertNoPeriodicityRequired_clone(ptr),
+                crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertNoPeriodicityRequired_clone(ptr),
             )
         }
     }
 }
 
-impl HandleBOPAlgoAlertNoPeriodicityRequired {
+impl Handle_BOPAlgo_AlertNoPeriodicityRequired {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
         unsafe {
-            crate::ffi_extern_TKBO::HandleBOPAlgoAlertNoPeriodicityRequired_is_null(
+            crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertNoPeriodicityRequired_is_null(
                 self as *const Self,
             )
         }
@@ -9801,7 +9780,7 @@ impl HandleBOPAlgoAlertNoPeriodicityRequired {
     pub fn get(&self) -> &crate::ffi_types::BOPAlgo_AlertNoPeriodicityRequired {
         unsafe {
             &*crate::check_result(
-                crate::ffi_extern_TKBO::HandleBOPAlgoAlertNoPeriodicityRequired_get(
+                crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertNoPeriodicityRequired_get(
                     self as *const Self,
                 ),
             )
@@ -9812,7 +9791,7 @@ impl HandleBOPAlgoAlertNoPeriodicityRequired {
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::BOPAlgo_AlertNoPeriodicityRequired {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi_extern_TKBO::HandleBOPAlgoAlertNoPeriodicityRequired_get_mut(
+                crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertNoPeriodicityRequired_get_mut(
                     self as *mut Self,
                 ),
             )
@@ -9820,18 +9799,18 @@ impl HandleBOPAlgoAlertNoPeriodicityRequired {
     }
 
     /// Upcast Handle<BOPAlgo_AlertNoPeriodicityRequired> to Handle<Message_Alert>
-    pub fn to_handle_alert(&self) -> crate::OwnedPtr<crate::ffi_types::HandleMessageAlert> {
+    pub fn to_handle_alert(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_Message_Alert> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKBO::HandleBOPAlgoAlertNoPeriodicityRequired_to_HandleMessageAlert(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertNoPeriodicityRequired_to_Handle_Message_Alert(self as *const Self)))
         }
     }
 
     /// Upcast Handle<BOPAlgo_AlertNoPeriodicityRequired> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKBO::HandleBOPAlgoAlertNoPeriodicityRequired_to_HandleStandardTransient(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertNoPeriodicityRequired_to_Handle_Standard_Transient(self as *const Self)))
         }
     }
 }
@@ -9860,7 +9839,7 @@ impl AlertUnableToTrim {
     }
 
     /// **Source:** `BOPAlgo_Alerts.hxx`:124 - `BOPAlgo_AlertUnableToTrim::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKBO::BOPAlgo_AlertUnableToTrim_dynamic_type(
                 self as *const Self,
@@ -9880,7 +9859,7 @@ impl AlertUnableToTrim {
     }
 
     /// **Source:** `BOPAlgo_Alerts.hxx`:124 - `BOPAlgo_AlertUnableToTrim::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKBO::BOPAlgo_AlertUnableToTrim_get_type_descriptor(),
@@ -9957,7 +9936,7 @@ impl AlertUnableToTrim {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleBOPAlgoAlertUnableToTrim> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_BOPAlgo_AlertUnableToTrim> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKBO::BOPAlgo_AlertUnableToTrim_to_handle(obj.into_raw()),
@@ -9996,7 +9975,7 @@ impl AlertUnableToTrim {
     }
 
     /// Inherited: **Source:** `TopoDS_AlertWithShape.hxx`:39 - `TopoDS_AlertWithShape::Merge()`
-    pub fn merge(&mut self, theTarget: &crate::ffi_types::HandleMessageAlert) -> bool {
+    pub fn merge(&mut self, theTarget: &crate::ffi_types::Handle_Message_Alert) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertUnableToTrim_inherited_Merge(
                 self as *mut Self,
@@ -10005,8 +9984,8 @@ impl AlertUnableToTrim {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertUnableToTrim_inherited_IsInstance(
                 self as *const Self,
@@ -10015,8 +9994,8 @@ impl AlertUnableToTrim {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertUnableToTrim_inherited_IsKind(
                 self as *const Self,
@@ -10025,7 +10004,7 @@ impl AlertUnableToTrim {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -10041,7 +10020,7 @@ impl AlertUnableToTrim {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertUnableToTrim_inherited_GetRefCount(
@@ -10050,7 +10029,7 @@ impl AlertUnableToTrim {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertUnableToTrim_inherited_IncrementRefCounter(
@@ -10059,7 +10038,7 @@ impl AlertUnableToTrim {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertUnableToTrim_inherited_DecrementRefCounter(
@@ -10068,7 +10047,7 @@ impl AlertUnableToTrim {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertUnableToTrim_inherited_Delete(self as *const Self)
@@ -10076,36 +10055,36 @@ impl AlertUnableToTrim {
     }
 }
 
-pub use crate::ffi_types::HandleBOPAlgoAlertUnableToTrim;
+pub use crate::ffi_types::Handle_BOPAlgo_AlertUnableToTrim;
 
-unsafe impl crate::CppDeletable for HandleBOPAlgoAlertUnableToTrim {
+unsafe impl crate::CppDeletable for Handle_BOPAlgo_AlertUnableToTrim {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKBO::HandleBOPAlgoAlertUnableToTrim_destructor(ptr);
+            crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertUnableToTrim_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleBOPAlgoAlertUnableToTrim {
+unsafe impl crate::CppCopyable for Handle_BOPAlgo_AlertUnableToTrim {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
         unsafe {
-            crate::check_result(crate::ffi_extern_TKBO::HandleBOPAlgoAlertUnableToTrim_clone(ptr))
+            crate::check_result(crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertUnableToTrim_clone(ptr))
         }
     }
 }
 
-impl HandleBOPAlgoAlertUnableToTrim {
+impl Handle_BOPAlgo_AlertUnableToTrim {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
         unsafe {
-            crate::ffi_extern_TKBO::HandleBOPAlgoAlertUnableToTrim_is_null(self as *const Self)
+            crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertUnableToTrim_is_null(self as *const Self)
         }
     }
 
     /// Dereference this Handle to access the underlying BOPAlgo_AlertUnableToTrim
     pub fn get(&self) -> &crate::ffi_types::BOPAlgo_AlertUnableToTrim {
         unsafe {
-            &*crate::check_result(crate::ffi_extern_TKBO::HandleBOPAlgoAlertUnableToTrim_get(
+            &*crate::check_result(crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertUnableToTrim_get(
                 self as *const Self,
             ))
         }
@@ -10115,7 +10094,7 @@ impl HandleBOPAlgoAlertUnableToTrim {
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::BOPAlgo_AlertUnableToTrim {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi_extern_TKBO::HandleBOPAlgoAlertUnableToTrim_get_mut(self as *mut Self),
+                crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertUnableToTrim_get_mut(self as *mut Self),
             )
         }
     }
@@ -10123,17 +10102,17 @@ impl HandleBOPAlgoAlertUnableToTrim {
     /// Upcast Handle<BOPAlgo_AlertUnableToTrim> to Handle<TopoDS_AlertWithShape>
     pub fn to_handle_alert_with_shape(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleTopoDSAlertWithShape> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_TopoDS_AlertWithShape> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKBO::HandleBOPAlgoAlertUnableToTrim_to_HandleTopoDSAlertWithShape(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertUnableToTrim_to_Handle_TopoDS_AlertWithShape(self as *const Self)))
         }
     }
 
     /// Upcast Handle<BOPAlgo_AlertUnableToTrim> to Handle<Message_Alert>
-    pub fn to_handle_alert(&self) -> crate::OwnedPtr<crate::ffi_types::HandleMessageAlert> {
+    pub fn to_handle_alert(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_Message_Alert> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKBO::HandleBOPAlgoAlertUnableToTrim_to_HandleMessageAlert(
+                crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertUnableToTrim_to_Handle_Message_Alert(
                     self as *const Self,
                 ),
             ))
@@ -10143,13 +10122,9 @@ impl HandleBOPAlgoAlertUnableToTrim {
     /// Upcast Handle<BOPAlgo_AlertUnableToTrim> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKBO::HandleBOPAlgoAlertUnableToTrim_to_HandleStandardTransient(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertUnableToTrim_to_Handle_Standard_Transient(self as *const Self)))
         }
     }
 }
@@ -10178,7 +10153,7 @@ impl AlertUnableToMakeIdentical {
     }
 
     /// **Source:** `BOPAlgo_Alerts.hxx`:127 - `BOPAlgo_AlertUnableToMakeIdentical::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKBO::BOPAlgo_AlertUnableToMakeIdentical_dynamic_type(
@@ -10200,7 +10175,7 @@ impl AlertUnableToMakeIdentical {
     }
 
     /// **Source:** `BOPAlgo_Alerts.hxx`:127 - `BOPAlgo_AlertUnableToMakeIdentical::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKBO::BOPAlgo_AlertUnableToMakeIdentical_get_type_descriptor(),
@@ -10269,7 +10244,7 @@ impl AlertUnableToMakeIdentical {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleBOPAlgoAlertUnableToMakeIdentical> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_BOPAlgo_AlertUnableToMakeIdentical> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKBO::BOPAlgo_AlertUnableToMakeIdentical_to_handle(
@@ -10310,7 +10285,7 @@ impl AlertUnableToMakeIdentical {
     }
 
     /// Inherited: **Source:** `TopoDS_AlertWithShape.hxx`:39 - `TopoDS_AlertWithShape::Merge()`
-    pub fn merge(&mut self, theTarget: &crate::ffi_types::HandleMessageAlert) -> bool {
+    pub fn merge(&mut self, theTarget: &crate::ffi_types::Handle_Message_Alert) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertUnableToMakeIdentical_inherited_Merge(
                 self as *mut Self,
@@ -10319,8 +10294,8 @@ impl AlertUnableToMakeIdentical {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertUnableToMakeIdentical_inherited_IsInstance(
                 self as *const Self,
@@ -10329,8 +10304,8 @@ impl AlertUnableToMakeIdentical {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertUnableToMakeIdentical_inherited_IsKind(
                 self as *const Self,
@@ -10339,7 +10314,7 @@ impl AlertUnableToMakeIdentical {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -10355,7 +10330,7 @@ impl AlertUnableToMakeIdentical {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertUnableToMakeIdentical_inherited_GetRefCount(
@@ -10364,7 +10339,7 @@ impl AlertUnableToMakeIdentical {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertUnableToMakeIdentical_inherited_IncrementRefCounter(
@@ -10373,7 +10348,7 @@ impl AlertUnableToMakeIdentical {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertUnableToMakeIdentical_inherited_DecrementRefCounter(
@@ -10382,7 +10357,7 @@ impl AlertUnableToMakeIdentical {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertUnableToMakeIdentical_inherited_Delete(
@@ -10392,31 +10367,31 @@ impl AlertUnableToMakeIdentical {
     }
 }
 
-pub use crate::ffi_types::HandleBOPAlgoAlertUnableToMakeIdentical;
+pub use crate::ffi_types::Handle_BOPAlgo_AlertUnableToMakeIdentical;
 
-unsafe impl crate::CppDeletable for HandleBOPAlgoAlertUnableToMakeIdentical {
+unsafe impl crate::CppDeletable for Handle_BOPAlgo_AlertUnableToMakeIdentical {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKBO::HandleBOPAlgoAlertUnableToMakeIdentical_destructor(ptr);
+            crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertUnableToMakeIdentical_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleBOPAlgoAlertUnableToMakeIdentical {
+unsafe impl crate::CppCopyable for Handle_BOPAlgo_AlertUnableToMakeIdentical {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
         unsafe {
             crate::check_result(
-                crate::ffi_extern_TKBO::HandleBOPAlgoAlertUnableToMakeIdentical_clone(ptr),
+                crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertUnableToMakeIdentical_clone(ptr),
             )
         }
     }
 }
 
-impl HandleBOPAlgoAlertUnableToMakeIdentical {
+impl Handle_BOPAlgo_AlertUnableToMakeIdentical {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
         unsafe {
-            crate::ffi_extern_TKBO::HandleBOPAlgoAlertUnableToMakeIdentical_is_null(
+            crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertUnableToMakeIdentical_is_null(
                 self as *const Self,
             )
         }
@@ -10426,7 +10401,7 @@ impl HandleBOPAlgoAlertUnableToMakeIdentical {
     pub fn get(&self) -> &crate::ffi_types::BOPAlgo_AlertUnableToMakeIdentical {
         unsafe {
             &*crate::check_result(
-                crate::ffi_extern_TKBO::HandleBOPAlgoAlertUnableToMakeIdentical_get(
+                crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertUnableToMakeIdentical_get(
                     self as *const Self,
                 ),
             )
@@ -10437,7 +10412,7 @@ impl HandleBOPAlgoAlertUnableToMakeIdentical {
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::BOPAlgo_AlertUnableToMakeIdentical {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi_extern_TKBO::HandleBOPAlgoAlertUnableToMakeIdentical_get_mut(
+                crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertUnableToMakeIdentical_get_mut(
                     self as *mut Self,
                 ),
             )
@@ -10447,25 +10422,25 @@ impl HandleBOPAlgoAlertUnableToMakeIdentical {
     /// Upcast Handle<BOPAlgo_AlertUnableToMakeIdentical> to Handle<TopoDS_AlertWithShape>
     pub fn to_handle_alert_with_shape(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleTopoDSAlertWithShape> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_TopoDS_AlertWithShape> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKBO::HandleBOPAlgoAlertUnableToMakeIdentical_to_HandleTopoDSAlertWithShape(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertUnableToMakeIdentical_to_Handle_TopoDS_AlertWithShape(self as *const Self)))
         }
     }
 
     /// Upcast Handle<BOPAlgo_AlertUnableToMakeIdentical> to Handle<Message_Alert>
-    pub fn to_handle_alert(&self) -> crate::OwnedPtr<crate::ffi_types::HandleMessageAlert> {
+    pub fn to_handle_alert(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_Message_Alert> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKBO::HandleBOPAlgoAlertUnableToMakeIdentical_to_HandleMessageAlert(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertUnableToMakeIdentical_to_Handle_Message_Alert(self as *const Self)))
         }
     }
 
     /// Upcast Handle<BOPAlgo_AlertUnableToMakeIdentical> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKBO::HandleBOPAlgoAlertUnableToMakeIdentical_to_HandleStandardTransient(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertUnableToMakeIdentical_to_Handle_Standard_Transient(self as *const Self)))
         }
     }
 }
@@ -10494,7 +10469,7 @@ impl AlertUnableToRepeat {
     }
 
     /// **Source:** `BOPAlgo_Alerts.hxx`:130 - `BOPAlgo_AlertUnableToRepeat::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKBO::BOPAlgo_AlertUnableToRepeat_dynamic_type(
@@ -10516,7 +10491,7 @@ impl AlertUnableToRepeat {
     }
 
     /// **Source:** `BOPAlgo_Alerts.hxx`:130 - `BOPAlgo_AlertUnableToRepeat::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKBO::BOPAlgo_AlertUnableToRepeat_get_type_descriptor(),
@@ -10593,7 +10568,7 @@ impl AlertUnableToRepeat {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleBOPAlgoAlertUnableToRepeat> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_BOPAlgo_AlertUnableToRepeat> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKBO::BOPAlgo_AlertUnableToRepeat_to_handle(obj.into_raw()),
@@ -10632,7 +10607,7 @@ impl AlertUnableToRepeat {
     }
 
     /// Inherited: **Source:** `TopoDS_AlertWithShape.hxx`:39 - `TopoDS_AlertWithShape::Merge()`
-    pub fn merge(&mut self, theTarget: &crate::ffi_types::HandleMessageAlert) -> bool {
+    pub fn merge(&mut self, theTarget: &crate::ffi_types::Handle_Message_Alert) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertUnableToRepeat_inherited_Merge(
                 self as *mut Self,
@@ -10641,8 +10616,8 @@ impl AlertUnableToRepeat {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertUnableToRepeat_inherited_IsInstance(
                 self as *const Self,
@@ -10651,8 +10626,8 @@ impl AlertUnableToRepeat {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertUnableToRepeat_inherited_IsKind(
                 self as *const Self,
@@ -10661,7 +10636,7 @@ impl AlertUnableToRepeat {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -10677,7 +10652,7 @@ impl AlertUnableToRepeat {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertUnableToRepeat_inherited_GetRefCount(
@@ -10686,7 +10661,7 @@ impl AlertUnableToRepeat {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertUnableToRepeat_inherited_IncrementRefCounter(
@@ -10695,7 +10670,7 @@ impl AlertUnableToRepeat {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertUnableToRepeat_inherited_DecrementRefCounter(
@@ -10704,7 +10679,7 @@ impl AlertUnableToRepeat {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertUnableToRepeat_inherited_Delete(
@@ -10714,36 +10689,38 @@ impl AlertUnableToRepeat {
     }
 }
 
-pub use crate::ffi_types::HandleBOPAlgoAlertUnableToRepeat;
+pub use crate::ffi_types::Handle_BOPAlgo_AlertUnableToRepeat;
 
-unsafe impl crate::CppDeletable for HandleBOPAlgoAlertUnableToRepeat {
+unsafe impl crate::CppDeletable for Handle_BOPAlgo_AlertUnableToRepeat {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKBO::HandleBOPAlgoAlertUnableToRepeat_destructor(ptr);
+            crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertUnableToRepeat_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleBOPAlgoAlertUnableToRepeat {
+unsafe impl crate::CppCopyable for Handle_BOPAlgo_AlertUnableToRepeat {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
         unsafe {
-            crate::check_result(crate::ffi_extern_TKBO::HandleBOPAlgoAlertUnableToRepeat_clone(ptr))
+            crate::check_result(crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertUnableToRepeat_clone(
+                ptr,
+            ))
         }
     }
 }
 
-impl HandleBOPAlgoAlertUnableToRepeat {
+impl Handle_BOPAlgo_AlertUnableToRepeat {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
         unsafe {
-            crate::ffi_extern_TKBO::HandleBOPAlgoAlertUnableToRepeat_is_null(self as *const Self)
+            crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertUnableToRepeat_is_null(self as *const Self)
         }
     }
 
     /// Dereference this Handle to access the underlying BOPAlgo_AlertUnableToRepeat
     pub fn get(&self) -> &crate::ffi_types::BOPAlgo_AlertUnableToRepeat {
         unsafe {
-            &*crate::check_result(crate::ffi_extern_TKBO::HandleBOPAlgoAlertUnableToRepeat_get(
+            &*crate::check_result(crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertUnableToRepeat_get(
                 self as *const Self,
             ))
         }
@@ -10753,7 +10730,9 @@ impl HandleBOPAlgoAlertUnableToRepeat {
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::BOPAlgo_AlertUnableToRepeat {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi_extern_TKBO::HandleBOPAlgoAlertUnableToRepeat_get_mut(self as *mut Self),
+                crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertUnableToRepeat_get_mut(
+                    self as *mut Self,
+                ),
             )
         }
     }
@@ -10761,17 +10740,17 @@ impl HandleBOPAlgoAlertUnableToRepeat {
     /// Upcast Handle<BOPAlgo_AlertUnableToRepeat> to Handle<TopoDS_AlertWithShape>
     pub fn to_handle_alert_with_shape(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleTopoDSAlertWithShape> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_TopoDS_AlertWithShape> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKBO::HandleBOPAlgoAlertUnableToRepeat_to_HandleTopoDSAlertWithShape(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertUnableToRepeat_to_Handle_TopoDS_AlertWithShape(self as *const Self)))
         }
     }
 
     /// Upcast Handle<BOPAlgo_AlertUnableToRepeat> to Handle<Message_Alert>
-    pub fn to_handle_alert(&self) -> crate::OwnedPtr<crate::ffi_types::HandleMessageAlert> {
+    pub fn to_handle_alert(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_Message_Alert> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKBO::HandleBOPAlgoAlertUnableToRepeat_to_HandleMessageAlert(
+                crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertUnableToRepeat_to_Handle_Message_Alert(
                     self as *const Self,
                 ),
             ))
@@ -10781,13 +10760,9 @@ impl HandleBOPAlgoAlertUnableToRepeat {
     /// Upcast Handle<BOPAlgo_AlertUnableToRepeat> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKBO::HandleBOPAlgoAlertUnableToRepeat_to_HandleStandardTransient(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertUnableToRepeat_to_Handle_Standard_Transient(self as *const Self)))
         }
     }
 }
@@ -10816,7 +10791,7 @@ impl AlertMultiDimensionalArguments {
     }
 
     /// **Source:** `BOPAlgo_Alerts.hxx`:133 - `BOPAlgo_AlertMultiDimensionalArguments::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKBO::BOPAlgo_AlertMultiDimensionalArguments_dynamic_type(
@@ -10838,7 +10813,7 @@ impl AlertMultiDimensionalArguments {
     }
 
     /// **Source:** `BOPAlgo_Alerts.hxx`:133 - `BOPAlgo_AlertMultiDimensionalArguments::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKBO::BOPAlgo_AlertMultiDimensionalArguments_get_type_descriptor(
@@ -10886,7 +10861,7 @@ impl AlertMultiDimensionalArguments {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleBOPAlgoAlertMultiDimensionalArguments> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_BOPAlgo_AlertMultiDimensionalArguments> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKBO::BOPAlgo_AlertMultiDimensionalArguments_to_handle(
@@ -10896,7 +10871,7 @@ impl AlertMultiDimensionalArguments {
         }
     }
 
-    /// Inherited: **Source:** `Message_Alert.hxx`:47 - `Message_Alert::SupportsMerge()`
+    /// Inherited: **Source:** `Message_Alert.hxx`:45 - `Message_Alert::SupportsMerge()`
     pub fn supports_merge(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertMultiDimensionalArguments_inherited_SupportsMerge(
@@ -10905,8 +10880,8 @@ impl AlertMultiDimensionalArguments {
         })
     }
 
-    /// Inherited: **Source:** `Message_Alert.hxx`:52 - `Message_Alert::Merge()`
-    pub fn merge(&mut self, theTarget: &crate::ffi_types::HandleMessageAlert) -> bool {
+    /// Inherited: **Source:** `Message_Alert.hxx`:50 - `Message_Alert::Merge()`
+    pub fn merge(&mut self, theTarget: &crate::ffi_types::Handle_Message_Alert) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertMultiDimensionalArguments_inherited_Merge(
                 self as *mut Self,
@@ -10915,8 +10890,8 @@ impl AlertMultiDimensionalArguments {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertMultiDimensionalArguments_inherited_IsInstance(
                 self as *const Self,
@@ -10925,8 +10900,8 @@ impl AlertMultiDimensionalArguments {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertMultiDimensionalArguments_inherited_IsKind(
                 self as *const Self,
@@ -10935,7 +10910,7 @@ impl AlertMultiDimensionalArguments {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -10951,7 +10926,7 @@ impl AlertMultiDimensionalArguments {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertMultiDimensionalArguments_inherited_GetRefCount(
@@ -10960,21 +10935,21 @@ impl AlertMultiDimensionalArguments {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertMultiDimensionalArguments_inherited_IncrementRefCounter(self as *mut Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertMultiDimensionalArguments_inherited_DecrementRefCounter(self as *mut Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertMultiDimensionalArguments_inherited_Delete(
@@ -10984,31 +10959,31 @@ impl AlertMultiDimensionalArguments {
     }
 }
 
-pub use crate::ffi_types::HandleBOPAlgoAlertMultiDimensionalArguments;
+pub use crate::ffi_types::Handle_BOPAlgo_AlertMultiDimensionalArguments;
 
-unsafe impl crate::CppDeletable for HandleBOPAlgoAlertMultiDimensionalArguments {
+unsafe impl crate::CppDeletable for Handle_BOPAlgo_AlertMultiDimensionalArguments {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKBO::HandleBOPAlgoAlertMultiDimensionalArguments_destructor(ptr);
+            crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertMultiDimensionalArguments_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleBOPAlgoAlertMultiDimensionalArguments {
+unsafe impl crate::CppCopyable for Handle_BOPAlgo_AlertMultiDimensionalArguments {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
         unsafe {
             crate::check_result(
-                crate::ffi_extern_TKBO::HandleBOPAlgoAlertMultiDimensionalArguments_clone(ptr),
+                crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertMultiDimensionalArguments_clone(ptr),
             )
         }
     }
 }
 
-impl HandleBOPAlgoAlertMultiDimensionalArguments {
+impl Handle_BOPAlgo_AlertMultiDimensionalArguments {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
         unsafe {
-            crate::ffi_extern_TKBO::HandleBOPAlgoAlertMultiDimensionalArguments_is_null(
+            crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertMultiDimensionalArguments_is_null(
                 self as *const Self,
             )
         }
@@ -11018,7 +10993,7 @@ impl HandleBOPAlgoAlertMultiDimensionalArguments {
     pub fn get(&self) -> &crate::ffi_types::BOPAlgo_AlertMultiDimensionalArguments {
         unsafe {
             &*crate::check_result(
-                crate::ffi_extern_TKBO::HandleBOPAlgoAlertMultiDimensionalArguments_get(
+                crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertMultiDimensionalArguments_get(
                     self as *const Self,
                 ),
             )
@@ -11029,7 +11004,7 @@ impl HandleBOPAlgoAlertMultiDimensionalArguments {
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::BOPAlgo_AlertMultiDimensionalArguments {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi_extern_TKBO::HandleBOPAlgoAlertMultiDimensionalArguments_get_mut(
+                crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertMultiDimensionalArguments_get_mut(
                     self as *mut Self,
                 ),
             )
@@ -11037,18 +11012,18 @@ impl HandleBOPAlgoAlertMultiDimensionalArguments {
     }
 
     /// Upcast Handle<BOPAlgo_AlertMultiDimensionalArguments> to Handle<Message_Alert>
-    pub fn to_handle_alert(&self) -> crate::OwnedPtr<crate::ffi_types::HandleMessageAlert> {
+    pub fn to_handle_alert(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_Message_Alert> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKBO::HandleBOPAlgoAlertMultiDimensionalArguments_to_HandleMessageAlert(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertMultiDimensionalArguments_to_Handle_Message_Alert(self as *const Self)))
         }
     }
 
     /// Upcast Handle<BOPAlgo_AlertMultiDimensionalArguments> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKBO::HandleBOPAlgoAlertMultiDimensionalArguments_to_HandleStandardTransient(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertMultiDimensionalArguments_to_Handle_Standard_Transient(self as *const Self)))
         }
     }
 }
@@ -11077,7 +11052,7 @@ impl AlertUnableToMakePeriodic {
     }
 
     /// **Source:** `BOPAlgo_Alerts.hxx`:136 - `BOPAlgo_AlertUnableToMakePeriodic::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKBO::BOPAlgo_AlertUnableToMakePeriodic_dynamic_type(
@@ -11099,7 +11074,7 @@ impl AlertUnableToMakePeriodic {
     }
 
     /// **Source:** `BOPAlgo_Alerts.hxx`:136 - `BOPAlgo_AlertUnableToMakePeriodic::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKBO::BOPAlgo_AlertUnableToMakePeriodic_get_type_descriptor(),
@@ -11172,7 +11147,7 @@ impl AlertUnableToMakePeriodic {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleBOPAlgoAlertUnableToMakePeriodic> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_BOPAlgo_AlertUnableToMakePeriodic> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKBO::BOPAlgo_AlertUnableToMakePeriodic_to_handle(obj.into_raw()),
@@ -11211,7 +11186,7 @@ impl AlertUnableToMakePeriodic {
     }
 
     /// Inherited: **Source:** `TopoDS_AlertWithShape.hxx`:39 - `TopoDS_AlertWithShape::Merge()`
-    pub fn merge(&mut self, theTarget: &crate::ffi_types::HandleMessageAlert) -> bool {
+    pub fn merge(&mut self, theTarget: &crate::ffi_types::Handle_Message_Alert) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertUnableToMakePeriodic_inherited_Merge(
                 self as *mut Self,
@@ -11220,8 +11195,8 @@ impl AlertUnableToMakePeriodic {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertUnableToMakePeriodic_inherited_IsInstance(
                 self as *const Self,
@@ -11230,8 +11205,8 @@ impl AlertUnableToMakePeriodic {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertUnableToMakePeriodic_inherited_IsKind(
                 self as *const Self,
@@ -11240,7 +11215,7 @@ impl AlertUnableToMakePeriodic {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -11256,7 +11231,7 @@ impl AlertUnableToMakePeriodic {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertUnableToMakePeriodic_inherited_GetRefCount(
@@ -11265,7 +11240,7 @@ impl AlertUnableToMakePeriodic {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertUnableToMakePeriodic_inherited_IncrementRefCounter(
@@ -11274,7 +11249,7 @@ impl AlertUnableToMakePeriodic {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertUnableToMakePeriodic_inherited_DecrementRefCounter(
@@ -11283,7 +11258,7 @@ impl AlertUnableToMakePeriodic {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertUnableToMakePeriodic_inherited_Delete(
@@ -11293,31 +11268,31 @@ impl AlertUnableToMakePeriodic {
     }
 }
 
-pub use crate::ffi_types::HandleBOPAlgoAlertUnableToMakePeriodic;
+pub use crate::ffi_types::Handle_BOPAlgo_AlertUnableToMakePeriodic;
 
-unsafe impl crate::CppDeletable for HandleBOPAlgoAlertUnableToMakePeriodic {
+unsafe impl crate::CppDeletable for Handle_BOPAlgo_AlertUnableToMakePeriodic {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKBO::HandleBOPAlgoAlertUnableToMakePeriodic_destructor(ptr);
+            crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertUnableToMakePeriodic_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleBOPAlgoAlertUnableToMakePeriodic {
+unsafe impl crate::CppCopyable for Handle_BOPAlgo_AlertUnableToMakePeriodic {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
         unsafe {
             crate::check_result(
-                crate::ffi_extern_TKBO::HandleBOPAlgoAlertUnableToMakePeriodic_clone(ptr),
+                crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertUnableToMakePeriodic_clone(ptr),
             )
         }
     }
 }
 
-impl HandleBOPAlgoAlertUnableToMakePeriodic {
+impl Handle_BOPAlgo_AlertUnableToMakePeriodic {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
         unsafe {
-            crate::ffi_extern_TKBO::HandleBOPAlgoAlertUnableToMakePeriodic_is_null(
+            crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertUnableToMakePeriodic_is_null(
                 self as *const Self,
             )
         }
@@ -11327,7 +11302,7 @@ impl HandleBOPAlgoAlertUnableToMakePeriodic {
     pub fn get(&self) -> &crate::ffi_types::BOPAlgo_AlertUnableToMakePeriodic {
         unsafe {
             &*crate::check_result(
-                crate::ffi_extern_TKBO::HandleBOPAlgoAlertUnableToMakePeriodic_get(
+                crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertUnableToMakePeriodic_get(
                     self as *const Self,
                 ),
             )
@@ -11338,7 +11313,7 @@ impl HandleBOPAlgoAlertUnableToMakePeriodic {
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::BOPAlgo_AlertUnableToMakePeriodic {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi_extern_TKBO::HandleBOPAlgoAlertUnableToMakePeriodic_get_mut(
+                crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertUnableToMakePeriodic_get_mut(
                     self as *mut Self,
                 ),
             )
@@ -11348,25 +11323,25 @@ impl HandleBOPAlgoAlertUnableToMakePeriodic {
     /// Upcast Handle<BOPAlgo_AlertUnableToMakePeriodic> to Handle<TopoDS_AlertWithShape>
     pub fn to_handle_alert_with_shape(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleTopoDSAlertWithShape> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_TopoDS_AlertWithShape> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKBO::HandleBOPAlgoAlertUnableToMakePeriodic_to_HandleTopoDSAlertWithShape(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertUnableToMakePeriodic_to_Handle_TopoDS_AlertWithShape(self as *const Self)))
         }
     }
 
     /// Upcast Handle<BOPAlgo_AlertUnableToMakePeriodic> to Handle<Message_Alert>
-    pub fn to_handle_alert(&self) -> crate::OwnedPtr<crate::ffi_types::HandleMessageAlert> {
+    pub fn to_handle_alert(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_Message_Alert> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKBO::HandleBOPAlgoAlertUnableToMakePeriodic_to_HandleMessageAlert(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertUnableToMakePeriodic_to_Handle_Message_Alert(self as *const Self)))
         }
     }
 
     /// Upcast Handle<BOPAlgo_AlertUnableToMakePeriodic> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKBO::HandleBOPAlgoAlertUnableToMakePeriodic_to_HandleStandardTransient(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertUnableToMakePeriodic_to_Handle_Standard_Transient(self as *const Self)))
         }
     }
 }
@@ -11395,7 +11370,7 @@ impl AlertUnableToGlue {
     }
 
     /// **Source:** `BOPAlgo_Alerts.hxx`:139 - `BOPAlgo_AlertUnableToGlue::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKBO::BOPAlgo_AlertUnableToGlue_dynamic_type(
                 self as *const Self,
@@ -11415,7 +11390,7 @@ impl AlertUnableToGlue {
     }
 
     /// **Source:** `BOPAlgo_Alerts.hxx`:139 - `BOPAlgo_AlertUnableToGlue::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKBO::BOPAlgo_AlertUnableToGlue_get_type_descriptor(),
@@ -11492,7 +11467,7 @@ impl AlertUnableToGlue {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleBOPAlgoAlertUnableToGlue> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_BOPAlgo_AlertUnableToGlue> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKBO::BOPAlgo_AlertUnableToGlue_to_handle(obj.into_raw()),
@@ -11531,7 +11506,7 @@ impl AlertUnableToGlue {
     }
 
     /// Inherited: **Source:** `TopoDS_AlertWithShape.hxx`:39 - `TopoDS_AlertWithShape::Merge()`
-    pub fn merge(&mut self, theTarget: &crate::ffi_types::HandleMessageAlert) -> bool {
+    pub fn merge(&mut self, theTarget: &crate::ffi_types::Handle_Message_Alert) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertUnableToGlue_inherited_Merge(
                 self as *mut Self,
@@ -11540,8 +11515,8 @@ impl AlertUnableToGlue {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertUnableToGlue_inherited_IsInstance(
                 self as *const Self,
@@ -11550,8 +11525,8 @@ impl AlertUnableToGlue {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertUnableToGlue_inherited_IsKind(
                 self as *const Self,
@@ -11560,7 +11535,7 @@ impl AlertUnableToGlue {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -11576,7 +11551,7 @@ impl AlertUnableToGlue {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertUnableToGlue_inherited_GetRefCount(
@@ -11585,7 +11560,7 @@ impl AlertUnableToGlue {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertUnableToGlue_inherited_IncrementRefCounter(
@@ -11594,7 +11569,7 @@ impl AlertUnableToGlue {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertUnableToGlue_inherited_DecrementRefCounter(
@@ -11603,7 +11578,7 @@ impl AlertUnableToGlue {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertUnableToGlue_inherited_Delete(self as *const Self)
@@ -11611,36 +11586,36 @@ impl AlertUnableToGlue {
     }
 }
 
-pub use crate::ffi_types::HandleBOPAlgoAlertUnableToGlue;
+pub use crate::ffi_types::Handle_BOPAlgo_AlertUnableToGlue;
 
-unsafe impl crate::CppDeletable for HandleBOPAlgoAlertUnableToGlue {
+unsafe impl crate::CppDeletable for Handle_BOPAlgo_AlertUnableToGlue {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKBO::HandleBOPAlgoAlertUnableToGlue_destructor(ptr);
+            crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertUnableToGlue_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleBOPAlgoAlertUnableToGlue {
+unsafe impl crate::CppCopyable for Handle_BOPAlgo_AlertUnableToGlue {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
         unsafe {
-            crate::check_result(crate::ffi_extern_TKBO::HandleBOPAlgoAlertUnableToGlue_clone(ptr))
+            crate::check_result(crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertUnableToGlue_clone(ptr))
         }
     }
 }
 
-impl HandleBOPAlgoAlertUnableToGlue {
+impl Handle_BOPAlgo_AlertUnableToGlue {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
         unsafe {
-            crate::ffi_extern_TKBO::HandleBOPAlgoAlertUnableToGlue_is_null(self as *const Self)
+            crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertUnableToGlue_is_null(self as *const Self)
         }
     }
 
     /// Dereference this Handle to access the underlying BOPAlgo_AlertUnableToGlue
     pub fn get(&self) -> &crate::ffi_types::BOPAlgo_AlertUnableToGlue {
         unsafe {
-            &*crate::check_result(crate::ffi_extern_TKBO::HandleBOPAlgoAlertUnableToGlue_get(
+            &*crate::check_result(crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertUnableToGlue_get(
                 self as *const Self,
             ))
         }
@@ -11650,7 +11625,7 @@ impl HandleBOPAlgoAlertUnableToGlue {
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::BOPAlgo_AlertUnableToGlue {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi_extern_TKBO::HandleBOPAlgoAlertUnableToGlue_get_mut(self as *mut Self),
+                crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertUnableToGlue_get_mut(self as *mut Self),
             )
         }
     }
@@ -11658,17 +11633,17 @@ impl HandleBOPAlgoAlertUnableToGlue {
     /// Upcast Handle<BOPAlgo_AlertUnableToGlue> to Handle<TopoDS_AlertWithShape>
     pub fn to_handle_alert_with_shape(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleTopoDSAlertWithShape> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_TopoDS_AlertWithShape> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKBO::HandleBOPAlgoAlertUnableToGlue_to_HandleTopoDSAlertWithShape(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertUnableToGlue_to_Handle_TopoDS_AlertWithShape(self as *const Self)))
         }
     }
 
     /// Upcast Handle<BOPAlgo_AlertUnableToGlue> to Handle<Message_Alert>
-    pub fn to_handle_alert(&self) -> crate::OwnedPtr<crate::ffi_types::HandleMessageAlert> {
+    pub fn to_handle_alert(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_Message_Alert> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKBO::HandleBOPAlgoAlertUnableToGlue_to_HandleMessageAlert(
+                crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertUnableToGlue_to_Handle_Message_Alert(
                     self as *const Self,
                 ),
             ))
@@ -11678,13 +11653,9 @@ impl HandleBOPAlgoAlertUnableToGlue {
     /// Upcast Handle<BOPAlgo_AlertUnableToGlue> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKBO::HandleBOPAlgoAlertUnableToGlue_to_HandleStandardTransient(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertUnableToGlue_to_Handle_Standard_Transient(self as *const Self)))
         }
     }
 }
@@ -11713,7 +11684,7 @@ impl AlertShapeIsNotPeriodic {
     }
 
     /// **Source:** `BOPAlgo_Alerts.hxx`:142 - `BOPAlgo_AlertShapeIsNotPeriodic::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKBO::BOPAlgo_AlertShapeIsNotPeriodic_dynamic_type(
@@ -11735,7 +11706,7 @@ impl AlertShapeIsNotPeriodic {
     }
 
     /// **Source:** `BOPAlgo_Alerts.hxx`:142 - `BOPAlgo_AlertShapeIsNotPeriodic::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKBO::BOPAlgo_AlertShapeIsNotPeriodic_get_type_descriptor(),
@@ -11808,7 +11779,7 @@ impl AlertShapeIsNotPeriodic {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleBOPAlgoAlertShapeIsNotPeriodic> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_BOPAlgo_AlertShapeIsNotPeriodic> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKBO::BOPAlgo_AlertShapeIsNotPeriodic_to_handle(obj.into_raw()),
@@ -11847,7 +11818,7 @@ impl AlertShapeIsNotPeriodic {
     }
 
     /// Inherited: **Source:** `TopoDS_AlertWithShape.hxx`:39 - `TopoDS_AlertWithShape::Merge()`
-    pub fn merge(&mut self, theTarget: &crate::ffi_types::HandleMessageAlert) -> bool {
+    pub fn merge(&mut self, theTarget: &crate::ffi_types::Handle_Message_Alert) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertShapeIsNotPeriodic_inherited_Merge(
                 self as *mut Self,
@@ -11856,8 +11827,8 @@ impl AlertShapeIsNotPeriodic {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertShapeIsNotPeriodic_inherited_IsInstance(
                 self as *const Self,
@@ -11866,8 +11837,8 @@ impl AlertShapeIsNotPeriodic {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertShapeIsNotPeriodic_inherited_IsKind(
                 self as *const Self,
@@ -11876,7 +11847,7 @@ impl AlertShapeIsNotPeriodic {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -11892,7 +11863,7 @@ impl AlertShapeIsNotPeriodic {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertShapeIsNotPeriodic_inherited_GetRefCount(
@@ -11901,7 +11872,7 @@ impl AlertShapeIsNotPeriodic {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertShapeIsNotPeriodic_inherited_IncrementRefCounter(
@@ -11910,7 +11881,7 @@ impl AlertShapeIsNotPeriodic {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertShapeIsNotPeriodic_inherited_DecrementRefCounter(
@@ -11919,7 +11890,7 @@ impl AlertShapeIsNotPeriodic {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertShapeIsNotPeriodic_inherited_Delete(
@@ -11929,31 +11900,31 @@ impl AlertShapeIsNotPeriodic {
     }
 }
 
-pub use crate::ffi_types::HandleBOPAlgoAlertShapeIsNotPeriodic;
+pub use crate::ffi_types::Handle_BOPAlgo_AlertShapeIsNotPeriodic;
 
-unsafe impl crate::CppDeletable for HandleBOPAlgoAlertShapeIsNotPeriodic {
+unsafe impl crate::CppDeletable for Handle_BOPAlgo_AlertShapeIsNotPeriodic {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKBO::HandleBOPAlgoAlertShapeIsNotPeriodic_destructor(ptr);
+            crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertShapeIsNotPeriodic_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleBOPAlgoAlertShapeIsNotPeriodic {
+unsafe impl crate::CppCopyable for Handle_BOPAlgo_AlertShapeIsNotPeriodic {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
         unsafe {
-            crate::check_result(crate::ffi_extern_TKBO::HandleBOPAlgoAlertShapeIsNotPeriodic_clone(
-                ptr,
-            ))
+            crate::check_result(
+                crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertShapeIsNotPeriodic_clone(ptr),
+            )
         }
     }
 }
 
-impl HandleBOPAlgoAlertShapeIsNotPeriodic {
+impl Handle_BOPAlgo_AlertShapeIsNotPeriodic {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
         unsafe {
-            crate::ffi_extern_TKBO::HandleBOPAlgoAlertShapeIsNotPeriodic_is_null(
+            crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertShapeIsNotPeriodic_is_null(
                 self as *const Self,
             )
         }
@@ -11962,9 +11933,11 @@ impl HandleBOPAlgoAlertShapeIsNotPeriodic {
     /// Dereference this Handle to access the underlying BOPAlgo_AlertShapeIsNotPeriodic
     pub fn get(&self) -> &crate::ffi_types::BOPAlgo_AlertShapeIsNotPeriodic {
         unsafe {
-            &*crate::check_result(crate::ffi_extern_TKBO::HandleBOPAlgoAlertShapeIsNotPeriodic_get(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertShapeIsNotPeriodic_get(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -11972,7 +11945,7 @@ impl HandleBOPAlgoAlertShapeIsNotPeriodic {
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::BOPAlgo_AlertShapeIsNotPeriodic {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi_extern_TKBO::HandleBOPAlgoAlertShapeIsNotPeriodic_get_mut(
+                crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertShapeIsNotPeriodic_get_mut(
                     self as *mut Self,
                 ),
             )
@@ -11982,29 +11955,25 @@ impl HandleBOPAlgoAlertShapeIsNotPeriodic {
     /// Upcast Handle<BOPAlgo_AlertShapeIsNotPeriodic> to Handle<TopoDS_AlertWithShape>
     pub fn to_handle_alert_with_shape(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleTopoDSAlertWithShape> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_TopoDS_AlertWithShape> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKBO::HandleBOPAlgoAlertShapeIsNotPeriodic_to_HandleTopoDSAlertWithShape(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertShapeIsNotPeriodic_to_Handle_TopoDS_AlertWithShape(self as *const Self)))
         }
     }
 
     /// Upcast Handle<BOPAlgo_AlertShapeIsNotPeriodic> to Handle<Message_Alert>
-    pub fn to_handle_alert(&self) -> crate::OwnedPtr<crate::ffi_types::HandleMessageAlert> {
+    pub fn to_handle_alert(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_Message_Alert> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKBO::HandleBOPAlgoAlertShapeIsNotPeriodic_to_HandleMessageAlert(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertShapeIsNotPeriodic_to_Handle_Message_Alert(self as *const Self)))
         }
     }
 
     /// Upcast Handle<BOPAlgo_AlertShapeIsNotPeriodic> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKBO::HandleBOPAlgoAlertShapeIsNotPeriodic_to_HandleStandardTransient(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertShapeIsNotPeriodic_to_Handle_Standard_Transient(self as *const Self)))
         }
     }
 }
@@ -12035,7 +12004,7 @@ impl AlertUnableToMakeClosedEdgeOnFace {
     }
 
     /// **Source:** `BOPAlgo_Alerts.hxx`:145 - `BOPAlgo_AlertUnableToMakeClosedEdgeOnFace::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKBO::BOPAlgo_AlertUnableToMakeClosedEdgeOnFace_dynamic_type(
@@ -12057,7 +12026,7 @@ impl AlertUnableToMakeClosedEdgeOnFace {
     }
 
     /// **Source:** `BOPAlgo_Alerts.hxx`:145 - `BOPAlgo_AlertUnableToMakeClosedEdgeOnFace::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKBO::BOPAlgo_AlertUnableToMakeClosedEdgeOnFace_get_type_descriptor()))
         }
@@ -12112,7 +12081,7 @@ impl AlertUnableToMakeClosedEdgeOnFace {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleBOPAlgoAlertUnableToMakeClosedEdgeOnFace> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_BOPAlgo_AlertUnableToMakeClosedEdgeOnFace> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKBO::BOPAlgo_AlertUnableToMakeClosedEdgeOnFace_to_handle(
@@ -12147,7 +12116,7 @@ impl AlertUnableToMakeClosedEdgeOnFace {
     }
 
     /// Inherited: **Source:** `TopoDS_AlertWithShape.hxx`:39 - `TopoDS_AlertWithShape::Merge()`
-    pub fn merge(&mut self, theTarget: &crate::ffi_types::HandleMessageAlert) -> bool {
+    pub fn merge(&mut self, theTarget: &crate::ffi_types::Handle_Message_Alert) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertUnableToMakeClosedEdgeOnFace_inherited_Merge(
                 self as *mut Self,
@@ -12156,8 +12125,8 @@ impl AlertUnableToMakeClosedEdgeOnFace {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertUnableToMakeClosedEdgeOnFace_inherited_IsInstance(
                 self as *const Self,
@@ -12166,8 +12135,8 @@ impl AlertUnableToMakeClosedEdgeOnFace {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertUnableToMakeClosedEdgeOnFace_inherited_IsKind(
                 self as *const Self,
@@ -12176,7 +12145,7 @@ impl AlertUnableToMakeClosedEdgeOnFace {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -12192,7 +12161,7 @@ impl AlertUnableToMakeClosedEdgeOnFace {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertUnableToMakeClosedEdgeOnFace_inherited_GetRefCount(
@@ -12201,21 +12170,21 @@ impl AlertUnableToMakeClosedEdgeOnFace {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertUnableToMakeClosedEdgeOnFace_inherited_IncrementRefCounter(self as *mut Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertUnableToMakeClosedEdgeOnFace_inherited_DecrementRefCounter(self as *mut Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_AlertUnableToMakeClosedEdgeOnFace_inherited_Delete(
@@ -12225,31 +12194,33 @@ impl AlertUnableToMakeClosedEdgeOnFace {
     }
 }
 
-pub use crate::ffi_types::HandleBOPAlgoAlertUnableToMakeClosedEdgeOnFace;
+pub use crate::ffi_types::Handle_BOPAlgo_AlertUnableToMakeClosedEdgeOnFace;
 
-unsafe impl crate::CppDeletable for HandleBOPAlgoAlertUnableToMakeClosedEdgeOnFace {
+unsafe impl crate::CppDeletable for Handle_BOPAlgo_AlertUnableToMakeClosedEdgeOnFace {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKBO::HandleBOPAlgoAlertUnableToMakeClosedEdgeOnFace_destructor(ptr);
+            crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertUnableToMakeClosedEdgeOnFace_destructor(
+                ptr,
+            );
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleBOPAlgoAlertUnableToMakeClosedEdgeOnFace {
+unsafe impl crate::CppCopyable for Handle_BOPAlgo_AlertUnableToMakeClosedEdgeOnFace {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
         unsafe {
             crate::check_result(
-                crate::ffi_extern_TKBO::HandleBOPAlgoAlertUnableToMakeClosedEdgeOnFace_clone(ptr),
+                crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertUnableToMakeClosedEdgeOnFace_clone(ptr),
             )
         }
     }
 }
 
-impl HandleBOPAlgoAlertUnableToMakeClosedEdgeOnFace {
+impl Handle_BOPAlgo_AlertUnableToMakeClosedEdgeOnFace {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
         unsafe {
-            crate::ffi_extern_TKBO::HandleBOPAlgoAlertUnableToMakeClosedEdgeOnFace_is_null(
+            crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertUnableToMakeClosedEdgeOnFace_is_null(
                 self as *const Self,
             )
         }
@@ -12259,7 +12230,7 @@ impl HandleBOPAlgoAlertUnableToMakeClosedEdgeOnFace {
     pub fn get(&self) -> &crate::ffi_types::BOPAlgo_AlertUnableToMakeClosedEdgeOnFace {
         unsafe {
             &*crate::check_result(
-                crate::ffi_extern_TKBO::HandleBOPAlgoAlertUnableToMakeClosedEdgeOnFace_get(
+                crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertUnableToMakeClosedEdgeOnFace_get(
                     self as *const Self,
                 ),
             )
@@ -12270,7 +12241,7 @@ impl HandleBOPAlgoAlertUnableToMakeClosedEdgeOnFace {
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::BOPAlgo_AlertUnableToMakeClosedEdgeOnFace {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi_extern_TKBO::HandleBOPAlgoAlertUnableToMakeClosedEdgeOnFace_get_mut(
+                crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertUnableToMakeClosedEdgeOnFace_get_mut(
                     self as *mut Self,
                 ),
             )
@@ -12280,25 +12251,25 @@ impl HandleBOPAlgoAlertUnableToMakeClosedEdgeOnFace {
     /// Upcast Handle<BOPAlgo_AlertUnableToMakeClosedEdgeOnFace> to Handle<TopoDS_AlertWithShape>
     pub fn to_handle_alert_with_shape(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleTopoDSAlertWithShape> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_TopoDS_AlertWithShape> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKBO::HandleBOPAlgoAlertUnableToMakeClosedEdgeOnFace_to_HandleTopoDSAlertWithShape(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertUnableToMakeClosedEdgeOnFace_to_Handle_TopoDS_AlertWithShape(self as *const Self)))
         }
     }
 
     /// Upcast Handle<BOPAlgo_AlertUnableToMakeClosedEdgeOnFace> to Handle<Message_Alert>
-    pub fn to_handle_alert(&self) -> crate::OwnedPtr<crate::ffi_types::HandleMessageAlert> {
+    pub fn to_handle_alert(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_Message_Alert> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKBO::HandleBOPAlgoAlertUnableToMakeClosedEdgeOnFace_to_HandleMessageAlert(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertUnableToMakeClosedEdgeOnFace_to_Handle_Message_Alert(self as *const Self)))
         }
     }
 
     /// Upcast Handle<BOPAlgo_AlertUnableToMakeClosedEdgeOnFace> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKBO::HandleBOPAlgoAlertUnableToMakeClosedEdgeOnFace_to_HandleStandardTransient(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKBO::Handle_BOPAlgo_AlertUnableToMakeClosedEdgeOnFace_to_Handle_Standard_Transient(self as *const Self)))
         }
     }
 }
@@ -12308,7 +12279,7 @@ impl HandleBOPAlgoAlertUnableToMakeClosedEdgeOnFace {
 // ========================
 
 /// **Source:** `BOPAlgo_Algo.hxx`:32 - `BOPAlgo_Algo`
-/// The class provides the root interface for the algorithms in Boolean Component.<br>
+/// The class provides the root interface for the algorithms in Boolean Component.
 pub use crate::ffi_types::BOPAlgo_Algo as Algo;
 
 impl Algo {
@@ -12340,7 +12311,7 @@ impl Algo {
     }
 }
 
-/// **Source:** `BOPAlgo_Algo.hxx`:88 - `BOPAlgo_ParallelAlgo`
+/// **Source:** `BOPAlgo_Algo.hxx`:87 - `BOPAlgo_ParallelAlgo`
 /// Additional root class to provide interface to be launched from parallel vector.
 /// It already has the range as a field, and has to be used with caution to create
 /// scope from the range only once.
@@ -12355,7 +12326,7 @@ unsafe impl crate::CppDeletable for ParallelAlgo {
 }
 
 impl ParallelAlgo {
-    /// **Source:** `BOPAlgo_Algo.hxx`:98 - `BOPAlgo_ParallelAlgo::SetProgressRange()`
+    /// **Source:** `BOPAlgo_Algo.hxx`:97 - `BOPAlgo_ParallelAlgo::SetProgressRange()`
     /// Sets the range for a single run
     pub fn set_progress_range(&mut self, theRange: &crate::message::ProgressRange) {
         crate::check_void_result(unsafe {
@@ -12405,7 +12376,7 @@ impl ParallelAlgo {
     }
 
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:51 - `BOPAlgo_Options::Allocator()`
-    pub fn allocator(&self) -> &crate::ffi_types::HandleNCollectionBaseAllocator {
+    pub fn allocator(&self) -> &crate::ffi_types::TDF_HAllocator {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKBO::BOPAlgo_ParallelAlgo_inherited_Allocator(
@@ -12423,7 +12394,7 @@ impl ParallelAlgo {
     }
 
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:61 - `BOPAlgo_Options::AddError()`
-    pub fn add_error(&mut self, theAlert: &crate::ffi_types::HandleMessageAlert) {
+    pub fn add_error(&mut self, theAlert: &crate::ffi_types::Handle_Message_Alert) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_ParallelAlgo_inherited_AddError(
                 self as *mut Self,
@@ -12433,7 +12404,7 @@ impl ParallelAlgo {
     }
 
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:67 - `BOPAlgo_Options::AddWarning()`
-    pub fn add_warning(&mut self, theAlert: &crate::ffi_types::HandleMessageAlert) {
+    pub fn add_warning(&mut self, theAlert: &crate::ffi_types::Handle_Message_Alert) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_ParallelAlgo_inherited_AddWarning(
                 self as *mut Self,
@@ -12450,7 +12421,7 @@ impl ParallelAlgo {
     }
 
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:76 - `BOPAlgo_Options::HasError()`
-    pub fn has_error(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    pub fn has_error(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_ParallelAlgo_inherited_HasError(
                 self as *const Self,
@@ -12467,7 +12438,7 @@ impl ParallelAlgo {
     }
 
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:85 - `BOPAlgo_Options::HasWarning()`
-    pub fn has_warning(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    pub fn has_warning(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_ParallelAlgo_inherited_HasWarning(
                 self as *const Self,
@@ -12477,7 +12448,7 @@ impl ParallelAlgo {
     }
 
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:91 - `BOPAlgo_Options::GetReport()`
-    pub fn get_report(&self) -> &crate::ffi_types::HandleMessageReport {
+    pub fn get_report(&self) -> &crate::ffi_types::Handle_Message_Report {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKBO::BOPAlgo_ParallelAlgo_inherited_GetReport(
@@ -12567,13 +12538,13 @@ impl ParallelAlgo {
 }
 
 // ── Skipped symbols for ParallelAlgo (1 total) ──
-// SKIPPED: **Source:** `BOPAlgo_Algo.hxx`:94 - `BOPAlgo_ParallelAlgo::Perform`
+// SKIPPED: **Source:** `BOPAlgo_Algo.hxx`:93 - `BOPAlgo_ParallelAlgo::Perform`
 //   method: The main method to implement the operation
 //   Reason: causes ambiguous overload in C++ (listed in bindings.toml ambiguous_methods)
 //   // pub fn perform(&mut self);
 //
 
-/// **Source:** `BOPAlgo_Algo.hxx`:110 - `BOPAlgo_PISteps`
+/// **Source:** `BOPAlgo_Algo.hxx`:109 - `BOPAlgo_PISteps`
 /// Class for representing the relative contribution of each step of
 /// the operation to the whole progress
 pub use crate::ffi_types::BOPAlgo_PISteps as PISteps;
@@ -12587,7 +12558,7 @@ unsafe impl crate::CppDeletable for PISteps {
 }
 
 impl PISteps {
-    /// **Source:** `BOPAlgo_Algo.hxx`:114 - `BOPAlgo_PISteps::BOPAlgo_PISteps()`
+    /// **Source:** `BOPAlgo_Algo.hxx`:113 - `BOPAlgo_PISteps::BOPAlgo_PISteps()`
     /// Constructor
     pub fn new_int(theNbOp: i32) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -12597,9 +12568,9 @@ impl PISteps {
         }
     }
 
-    /// **Source:** `BOPAlgo_Algo.hxx`:121 - `BOPAlgo_PISteps::Steps()`
+    /// **Source:** `BOPAlgo_Algo.hxx`:120 - `BOPAlgo_PISteps::Steps()`
     /// Returns the steps
-    pub fn steps(&self) -> &crate::ffi_types::TColStd_Array1OfReal {
+    pub fn steps(&self) -> &crate::ffi_types::NCollection_Array1_double {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKBO::BOPAlgo_PISteps_steps(
                 self as *const Self,
@@ -12607,9 +12578,9 @@ impl PISteps {
         }
     }
 
-    /// **Source:** `BOPAlgo_Algo.hxx`:124 - `BOPAlgo_PISteps::ChangeSteps()`
+    /// **Source:** `BOPAlgo_Algo.hxx`:123 - `BOPAlgo_PISteps::ChangeSteps()`
     /// Returns modifiable steps
-    pub fn change_steps(&mut self) -> &mut crate::ffi_types::TColStd_Array1OfReal {
+    pub fn change_steps(&mut self) -> &mut crate::ffi_types::NCollection_Array1_double {
         unsafe {
             &mut *(crate::check_result(crate::ffi_extern_TKBO::BOPAlgo_PISteps_change_steps(
                 self as *mut Self,
@@ -12617,7 +12588,7 @@ impl PISteps {
         }
     }
 
-    /// **Source:** `BOPAlgo_Algo.hxx`:127 - `BOPAlgo_PISteps::SetStep()`
+    /// **Source:** `BOPAlgo_Algo.hxx`:126 - `BOPAlgo_PISteps::SetStep()`
     /// Assign the value theStep to theOperation
     pub fn set_step(&mut self, theOperation: i32, theStep: f64) {
         crate::check_void_result(unsafe {
@@ -12629,7 +12600,7 @@ impl PISteps {
         })
     }
 
-    /// **Source:** `BOPAlgo_Algo.hxx`:136 - `BOPAlgo_PISteps::GetStep()`
+    /// **Source:** `BOPAlgo_Algo.hxx`:135 - `BOPAlgo_PISteps::GetStep()`
     /// Returns the step assigned to the operation
     pub fn get_step(&mut self, theOperation: i32) -> f64 {
         crate::check_result(unsafe {
@@ -12839,7 +12810,7 @@ impl ArgumentAnalyzer {
         })
     }
 
-    /// **Source:** `BOPAlgo_ArgumentAnalyzer.hxx`:97 - `BOPAlgo_ArgumentAnalyzer::HasFaulty()`
+    /// **Source:** `BOPAlgo_ArgumentAnalyzer.hxx`:98 - `BOPAlgo_ArgumentAnalyzer::HasFaulty()`
     /// result of test
     pub fn has_faulty(&self) -> bool {
         crate::check_result(unsafe {
@@ -12847,9 +12818,9 @@ impl ArgumentAnalyzer {
         })
     }
 
-    /// **Source:** `BOPAlgo_ArgumentAnalyzer.hxx`:100 - `BOPAlgo_ArgumentAnalyzer::GetCheckResult()`
+    /// **Source:** `BOPAlgo_ArgumentAnalyzer.hxx`:101 - `BOPAlgo_ArgumentAnalyzer::GetCheckResult()`
     /// returns a result of test
-    pub fn get_check_result(&self) -> &crate::ffi_types::BOPAlgo_ListOfCheckResult {
+    pub fn get_check_result(&self) -> &crate::ffi_types::NCollection_List_BOPAlgo_CheckResult {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKBO::BOPAlgo_ArgumentAnalyzer_get_check_result(
@@ -12902,7 +12873,7 @@ impl ArgumentAnalyzer {
     }
 
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:51 - `BOPAlgo_Options::Allocator()`
-    pub fn allocator(&self) -> &crate::ffi_types::HandleNCollectionBaseAllocator {
+    pub fn allocator(&self) -> &crate::ffi_types::TDF_HAllocator {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKBO::BOPAlgo_ArgumentAnalyzer_inherited_Allocator(
@@ -12920,7 +12891,7 @@ impl ArgumentAnalyzer {
     }
 
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:61 - `BOPAlgo_Options::AddError()`
-    pub fn add_error(&mut self, theAlert: &crate::ffi_types::HandleMessageAlert) {
+    pub fn add_error(&mut self, theAlert: &crate::ffi_types::Handle_Message_Alert) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_ArgumentAnalyzer_inherited_AddError(
                 self as *mut Self,
@@ -12930,7 +12901,7 @@ impl ArgumentAnalyzer {
     }
 
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:67 - `BOPAlgo_Options::AddWarning()`
-    pub fn add_warning(&mut self, theAlert: &crate::ffi_types::HandleMessageAlert) {
+    pub fn add_warning(&mut self, theAlert: &crate::ffi_types::Handle_Message_Alert) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_ArgumentAnalyzer_inherited_AddWarning(
                 self as *mut Self,
@@ -12949,7 +12920,7 @@ impl ArgumentAnalyzer {
     }
 
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:76 - `BOPAlgo_Options::HasError()`
-    pub fn has_error(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    pub fn has_error(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_ArgumentAnalyzer_inherited_HasError(
                 self as *const Self,
@@ -12968,7 +12939,7 @@ impl ArgumentAnalyzer {
     }
 
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:85 - `BOPAlgo_Options::HasWarning()`
-    pub fn has_warning(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    pub fn has_warning(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_ArgumentAnalyzer_inherited_HasWarning(
                 self as *const Self,
@@ -12978,7 +12949,7 @@ impl ArgumentAnalyzer {
     }
 
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:91 - `BOPAlgo_Options::GetReport()`
-    pub fn get_report(&self) -> &crate::ffi_types::HandleMessageReport {
+    pub fn get_report(&self) -> &crate::ffi_types::Handle_Message_Report {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKBO::BOPAlgo_ArgumentAnalyzer_inherited_GetReport(
@@ -13080,25 +13051,25 @@ impl ArgumentAnalyzer {
 /// **Source:** `BOPAlgo_BOP.hxx`:63 - `BOPAlgo_BOP`
 ///
 /// The class represents the Building part of the Boolean Operations
-/// algorithm.<br>
+/// algorithm.
 /// The arguments of the algorithms are divided in two groups - *Objects*
-/// and *Tools*.<br>
+/// and *Tools*.
 /// The algorithm builds the splits of the given arguments using the intersection
-/// results and combines the result of Boolean Operation of given type:<br>
-/// - *FUSE* - union of two groups of objects;<br>
-/// - *COMMON* - intersection of two groups of objects;<br>
-/// - *CUT* - subtraction of one group from the other.<br>
+/// results and combines the result of Boolean Operation of given type:
+/// - *FUSE* - union of two groups of objects;
+/// - *COMMON* - intersection of two groups of objects;
+/// - *CUT* - subtraction of one group from the other.
 ///
-/// The rules for the arguments and type of the operation are the following:<br>
-/// - For Boolean operation *FUSE* all arguments should have equal dimensions;<br>
+/// The rules for the arguments and type of the operation are the following:
+/// - For Boolean operation *FUSE* all arguments should have equal dimensions;
 /// - For Boolean operation *CUT* the minimal dimension of *Tools* should not be
-/// less than the maximal dimension of *Objects*;<br>
-/// - For Boolean operation *COMMON* the arguments can have any dimension.<br>
+/// less than the maximal dimension of *Objects*;
+/// - For Boolean operation *COMMON* the arguments can have any dimension.
 ///
 /// The class is a General Fuse based algorithm. Thus, all options
 /// of the General Fuse algorithm such as Fuzzy mode, safe processing mode,
 /// parallel processing mode, gluing mode and history support are also
-/// available in this algorithm.<br>
+/// available in this algorithm.
 ///
 /// Additionally to the Warnings of the parent class the algorithm returns
 /// the following warnings:
@@ -13133,14 +13104,12 @@ impl BOP {
     }
 
     /// **Source:** `BOPAlgo_BOP.hxx`:72 - `BOPAlgo_BOP::BOPAlgo_BOP()`
-    pub fn new_handlencollectionbaseallocator(
-        theAllocator: &crate::ffi_types::HandleNCollectionBaseAllocator,
+    pub fn new_hallocator(
+        theAllocator: &crate::ffi_types::TDF_HAllocator,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKBO::BOPAlgo_BOP_ctor_handlencollectionbaseallocator(
-                    theAllocator,
-                ),
+                crate::ffi_extern_TKBO::BOPAlgo_BOP_ctor_hallocator(theAllocator),
             ))
         }
     }
@@ -13276,14 +13245,14 @@ impl BOP {
     }
 
     /// Inherited: **Source:** `BOPAlgo_ToolsProvider.hxx`:42 - `BOPAlgo_ToolsProvider::SetTools()`
-    pub fn set_tools(&mut self, theShapes: &crate::ffi_types::TopTools_ListOfShape) {
+    pub fn set_tools(&mut self, theShapes: &crate::ffi_types::NCollection_List_TopoDS_Shape) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_BOP_inherited_SetTools(self as *mut Self, theShapes)
         })
     }
 
     /// Inherited: **Source:** `BOPAlgo_ToolsProvider.hxx`:45 - `BOPAlgo_ToolsProvider::Tools()`
-    pub fn tools(&self) -> &crate::ffi_types::TopTools_ListOfShape {
+    pub fn tools(&self) -> &crate::ffi_types::NCollection_List_TopoDS_Shape {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKBO::BOPAlgo_BOP_inherited_Tools(
                 self as *const Self,
@@ -13291,7 +13260,7 @@ impl BOP {
         }
     }
 
-    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:89 - `BOPAlgo_Builder::PPaveFiller()`
+    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:90 - `BOPAlgo_Builder::PPaveFiller()`
     pub fn p_pave_filler(&mut self) -> Option<&mut PaveFiller> {
         {
             let __val = crate::check_result(unsafe {
@@ -13305,7 +13274,7 @@ impl BOP {
         }
     }
 
-    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:92 - `BOPAlgo_Builder::PDS()`
+    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:93 - `BOPAlgo_Builder::PDS()`
     pub fn pds(&mut self) -> Option<&mut crate::bopds::DS> {
         {
             let __val = crate::check_result(unsafe {
@@ -13319,8 +13288,8 @@ impl BOP {
         }
     }
 
-    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:95 - `BOPAlgo_Builder::Context()`
-    pub fn context(&self) -> crate::OwnedPtr<crate::ffi_types::HandleIntToolsContext> {
+    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:96 - `BOPAlgo_Builder::Context()`
+    pub fn context(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_IntTools_Context> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKBO::BOPAlgo_BOP_inherited_Context(self as *const Self),
@@ -13328,22 +13297,22 @@ impl BOP {
         }
     }
 
-    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:99 - `BOPAlgo_Builder::AddArgument()`
+    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:100 - `BOPAlgo_Builder::AddArgument()`
     pub fn add_argument(&mut self, theShape: &crate::topo_ds::Shape) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_BOP_inherited_AddArgument(self as *mut Self, theShape)
         })
     }
 
-    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:102 - `BOPAlgo_Builder::SetArguments()`
-    pub fn set_arguments(&mut self, theLS: &crate::ffi_types::TopTools_ListOfShape) {
+    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:103 - `BOPAlgo_Builder::SetArguments()`
+    pub fn set_arguments(&mut self, theLS: &crate::ffi_types::NCollection_List_TopoDS_Shape) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_BOP_inherited_SetArguments(self as *mut Self, theLS)
         })
     }
 
-    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:105 - `BOPAlgo_Builder::Arguments()`
-    pub fn arguments(&self) -> &crate::ffi_types::TopTools_ListOfShape {
+    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:106 - `BOPAlgo_Builder::Arguments()`
+    pub fn arguments(&self) -> &crate::ffi_types::NCollection_List_TopoDS_Shape {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKBO::BOPAlgo_BOP_inherited_Arguments(
                 self as *const Self,
@@ -13351,7 +13320,7 @@ impl BOP {
         }
     }
 
-    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:114 - `BOPAlgo_Builder::SetNonDestructive()`
+    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:115 - `BOPAlgo_Builder::SetNonDestructive()`
     pub fn set_non_destructive(&mut self, theFlag: bool) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_BOP_inherited_SetNonDestructive(
@@ -13361,21 +13330,21 @@ impl BOP {
         })
     }
 
-    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:119 - `BOPAlgo_Builder::NonDestructive()`
+    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:120 - `BOPAlgo_Builder::NonDestructive()`
     pub fn non_destructive(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_BOP_inherited_NonDestructive(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:122 - `BOPAlgo_Builder::SetGlue()`
+    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:123 - `BOPAlgo_Builder::SetGlue()`
     pub fn set_glue(&mut self, theGlue: crate::bop_algo::GlueEnum) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_BOP_inherited_SetGlue(self as *mut Self, theGlue.into())
         })
     }
 
-    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:125 - `BOPAlgo_Builder::Glue()`
+    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:126 - `BOPAlgo_Builder::Glue()`
     pub fn glue(&self) -> crate::bop_algo::GlueEnum {
         crate::bop_algo::GlueEnum::try_from(crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_BOP_inherited_Glue(self as *const Self)
@@ -13383,7 +13352,7 @@ impl BOP {
         .unwrap()
     }
 
-    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:128 - `BOPAlgo_Builder::SetCheckInverted()`
+    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:129 - `BOPAlgo_Builder::SetCheckInverted()`
     pub fn set_check_inverted(&mut self, theCheck: bool) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_BOP_inherited_SetCheckInverted(
@@ -13393,14 +13362,14 @@ impl BOP {
         })
     }
 
-    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:132 - `BOPAlgo_Builder::CheckInverted()`
+    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:133 - `BOPAlgo_Builder::CheckInverted()`
     pub fn check_inverted(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_BOP_inherited_CheckInverted(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:142 - `BOPAlgo_Builder::PerformWithFiller()`
+    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:143 - `BOPAlgo_Builder::PerformWithFiller()`
     pub fn perform_with_filler(
         &mut self,
         theFiller: &PaveFiller,
@@ -13415,15 +13384,15 @@ impl BOP {
         })
     }
 
-    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:186 - `BOPAlgo_Builder::BuildBOP()`
+    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:187 - `BOPAlgo_Builder::BuildBOP()`
     pub fn build_bop(
         &mut self,
-        theObjects: &crate::ffi_types::TopTools_ListOfShape,
+        theObjects: &crate::ffi_types::NCollection_List_TopoDS_Shape,
         theObjState: crate::top_abs::State,
-        theTools: &crate::ffi_types::TopTools_ListOfShape,
+        theTools: &crate::ffi_types::NCollection_List_TopoDS_Shape,
         theToolsState: crate::top_abs::State,
         theRange: &crate::message::ProgressRange,
-        theReport: &crate::ffi_types::HandleMessageReport,
+        theReport: &crate::ffi_types::Handle_Message_Report,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_BOP_inherited_BuildBOP(
@@ -13438,8 +13407,8 @@ impl BOP {
         })
     }
 
-    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:281 - `BOPAlgo_Builder::Images()`
-    pub fn images(&self) -> &crate::ffi_types::TopTools_DataMapOfShapeListOfShape {
+    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:285 - `BOPAlgo_Builder::Images()`
+    pub fn images(&self) -> &crate::ffi_types::NCollection_DataMap_TopoDS_Shape_NCollection_List_TopoDS_Shape_TopTools_ShapeMapHasher{
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKBO::BOPAlgo_BOP_inherited_Images(
                 self as *const Self,
@@ -13447,8 +13416,8 @@ impl BOP {
         }
     }
 
-    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:284 - `BOPAlgo_Builder::Origins()`
-    pub fn origins(&self) -> &crate::ffi_types::TopTools_DataMapOfShapeListOfShape {
+    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:292 - `BOPAlgo_Builder::Origins()`
+    pub fn origins(&self) -> &crate::ffi_types::NCollection_DataMap_TopoDS_Shape_NCollection_List_TopoDS_Shape_TopTools_ShapeMapHasher{
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKBO::BOPAlgo_BOP_inherited_Origins(
                 self as *const Self,
@@ -13456,8 +13425,11 @@ impl BOP {
         }
     }
 
-    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:288 - `BOPAlgo_Builder::ShapesSD()`
-    pub fn shapes_sd(&self) -> &crate::ffi_types::TopTools_DataMapOfShapeShape {
+    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:299 - `BOPAlgo_Builder::ShapesSD()`
+    pub fn shapes_sd(
+        &self,
+    ) -> &crate::ffi_types::NCollection_DataMap_TopoDS_Shape_TopoDS_Shape_TopTools_ShapeMapHasher
+    {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKBO::BOPAlgo_BOP_inherited_ShapesSD(
                 self as *const Self,
@@ -13465,7 +13437,7 @@ impl BOP {
         }
     }
 
-    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:47 - `BOPAlgo_BuilderShape::Shape()`
+    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:48 - `BOPAlgo_BuilderShape::Shape()`
     pub fn shape(&self) -> &crate::topo_ds::Shape {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKBO::BOPAlgo_BOP_inherited_Shape(
@@ -13474,36 +13446,36 @@ impl BOP {
         }
     }
 
-    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:71 - `BOPAlgo_BuilderShape::IsDeleted()`
+    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:72 - `BOPAlgo_BuilderShape::IsDeleted()`
     pub fn is_deleted(&mut self, theS: &crate::topo_ds::Shape) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_BOP_inherited_IsDeleted(self as *mut Self, theS)
         })
     }
 
-    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:77 - `BOPAlgo_BuilderShape::HasModified()`
+    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:78 - `BOPAlgo_BuilderShape::HasModified()`
     pub fn has_modified(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_BOP_inherited_HasModified(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:83 - `BOPAlgo_BuilderShape::HasGenerated()`
+    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:84 - `BOPAlgo_BuilderShape::HasGenerated()`
     pub fn has_generated(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_BOP_inherited_HasGenerated(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:89 - `BOPAlgo_BuilderShape::HasDeleted()`
+    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:90 - `BOPAlgo_BuilderShape::HasDeleted()`
     pub fn has_deleted(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_BOP_inherited_HasDeleted(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:95 - `BOPAlgo_BuilderShape::History()`
-    pub fn history(&mut self) -> crate::OwnedPtr<crate::ffi_types::HandleBRepToolsHistory> {
+    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:93 - `BOPAlgo_BuilderShape::History()`
+    pub fn history(&mut self) -> crate::OwnedPtr<crate::ffi_types::Handle_BRepTools_History> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKBO::BOPAlgo_BOP_inherited_History(self as *mut Self),
@@ -13511,7 +13483,7 @@ impl BOP {
         }
     }
 
-    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:116 - `BOPAlgo_BuilderShape::SetToFillHistory()`
+    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:114 - `BOPAlgo_BuilderShape::SetToFillHistory()`
     pub fn set_to_fill_history(&mut self, theHistFlag: bool) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_BOP_inherited_SetToFillHistory(
@@ -13521,7 +13493,7 @@ impl BOP {
         })
     }
 
-    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:119 - `BOPAlgo_BuilderShape::HasHistory()`
+    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:117 - `BOPAlgo_BuilderShape::HasHistory()`
     pub fn has_history(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_BOP_inherited_HasHistory(self as *const Self)
@@ -13529,7 +13501,7 @@ impl BOP {
     }
 
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:51 - `BOPAlgo_Options::Allocator()`
-    pub fn allocator(&self) -> &crate::ffi_types::HandleNCollectionBaseAllocator {
+    pub fn allocator(&self) -> &crate::ffi_types::TDF_HAllocator {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKBO::BOPAlgo_BOP_inherited_Allocator(
                 self as *const Self,
@@ -13538,14 +13510,14 @@ impl BOP {
     }
 
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:61 - `BOPAlgo_Options::AddError()`
-    pub fn add_error(&mut self, theAlert: &crate::ffi_types::HandleMessageAlert) {
+    pub fn add_error(&mut self, theAlert: &crate::ffi_types::Handle_Message_Alert) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_BOP_inherited_AddError(self as *mut Self, theAlert)
         })
     }
 
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:67 - `BOPAlgo_Options::AddWarning()`
-    pub fn add_warning(&mut self, theAlert: &crate::ffi_types::HandleMessageAlert) {
+    pub fn add_warning(&mut self, theAlert: &crate::ffi_types::Handle_Message_Alert) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_BOP_inherited_AddWarning(self as *mut Self, theAlert)
         })
@@ -13559,7 +13531,7 @@ impl BOP {
     }
 
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:76 - `BOPAlgo_Options::HasError()`
-    pub fn has_error(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    pub fn has_error(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_BOP_inherited_HasError(self as *const Self, theType)
         })
@@ -13573,14 +13545,14 @@ impl BOP {
     }
 
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:85 - `BOPAlgo_Options::HasWarning()`
-    pub fn has_warning(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    pub fn has_warning(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_BOP_inherited_HasWarning(self as *const Self, theType)
         })
     }
 
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:91 - `BOPAlgo_Options::GetReport()`
-    pub fn get_report(&self) -> &crate::ffi_types::HandleMessageReport {
+    pub fn get_report(&self) -> &crate::ffi_types::Handle_Message_Report {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKBO::BOPAlgo_BOP_inherited_GetReport(
                 self as *const Self,
@@ -13656,21 +13628,21 @@ impl BOP {
 // From BOPAlgo_Builder.hxx
 // ========================
 
-/// **Source:** `BOPAlgo_Builder.hxx`:74 - `BOPAlgo_Builder`
+/// **Source:** `BOPAlgo_Builder.hxx`:75 - `BOPAlgo_Builder`
 ///
 /// The class is a General Fuse algorithm - base algorithm for the
 /// algorithms in the Boolean Component. Its main purpose is to build
 /// the split parts of the argument shapes from which the result of
-/// the operations is combined.<br>
+/// the operations is combined.
 /// The result of the General Fuse algorithm itself is a compound
-/// containing all split parts of the arguments. <br>
+/// containing all split parts of the arguments.
 ///
 /// Additionally to the options of the base classes, the algorithm has
-/// the following options:<br>
+/// the following options:
 /// - *Safe processing mode* - allows to avoid modification of the input
-/// shapes during the operation (by default it is off);<br>
+/// shapes during the operation (by default it is off);
 /// - *Gluing options* - allows to speed up the calculation of the intersections
-/// on the special cases, in which some sub-shapes are coinciding.<br>
+/// on the special cases, in which some sub-shapes are coinciding.
 /// - *Disabling the check for inverted solids* - Disables/Enables the check of the input solids
 /// for inverted status (holes in the space). The default value is TRUE,
 /// i.e. the check is performed. Setting this flag to FALSE for inverted
@@ -13700,7 +13672,7 @@ unsafe impl crate::CppDeletable for Builder {
 }
 
 impl Builder {
-    /// **Source:** `BOPAlgo_Builder.hxx`:80 - `BOPAlgo_Builder::BOPAlgo_Builder()`
+    /// **Source:** `BOPAlgo_Builder.hxx`:81 - `BOPAlgo_Builder::BOPAlgo_Builder()`
     /// Empty constructor.
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
@@ -13710,20 +13682,18 @@ impl Builder {
         }
     }
 
-    /// **Source:** `BOPAlgo_Builder.hxx`:83 - `BOPAlgo_Builder::BOPAlgo_Builder()`
-    pub fn new_handlencollectionbaseallocator(
-        theAllocator: &crate::ffi_types::HandleNCollectionBaseAllocator,
+    /// **Source:** `BOPAlgo_Builder.hxx`:84 - `BOPAlgo_Builder::BOPAlgo_Builder()`
+    pub fn new_hallocator(
+        theAllocator: &crate::ffi_types::TDF_HAllocator,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKBO::BOPAlgo_Builder_ctor_handlencollectionbaseallocator(
-                    theAllocator,
-                ),
+                crate::ffi_extern_TKBO::BOPAlgo_Builder_ctor_hallocator(theAllocator),
             ))
         }
     }
 
-    /// **Source:** `BOPAlgo_Builder.hxx`:86 - `BOPAlgo_Builder::Clear()`
+    /// **Source:** `BOPAlgo_Builder.hxx`:87 - `BOPAlgo_Builder::Clear()`
     /// Clears the content of the algorithm.
     pub fn clear(&mut self) {
         crate::check_void_result(unsafe {
@@ -13731,7 +13701,7 @@ impl Builder {
         })
     }
 
-    /// **Source:** `BOPAlgo_Builder.hxx`:89 - `BOPAlgo_Builder::PPaveFiller()`
+    /// **Source:** `BOPAlgo_Builder.hxx`:90 - `BOPAlgo_Builder::PPaveFiller()`
     /// Returns the PaveFiller, algorithm for sub-shapes intersection.
     pub fn p_pave_filler(&mut self) -> Option<&mut PaveFiller> {
         {
@@ -13746,7 +13716,7 @@ impl Builder {
         }
     }
 
-    /// **Source:** `BOPAlgo_Builder.hxx`:92 - `BOPAlgo_Builder::PDS()`
+    /// **Source:** `BOPAlgo_Builder.hxx`:93 - `BOPAlgo_Builder::PDS()`
     /// Returns the Data Structure, holder of intersection information.
     pub fn pds(&mut self) -> Option<&mut crate::bopds::DS> {
         {
@@ -13761,9 +13731,9 @@ impl Builder {
         }
     }
 
-    /// **Source:** `BOPAlgo_Builder.hxx`:95 - `BOPAlgo_Builder::Context()`
+    /// **Source:** `BOPAlgo_Builder.hxx`:96 - `BOPAlgo_Builder::Context()`
     /// Returns the Context, tool for cashing heavy algorithms.
-    pub fn context(&self) -> crate::OwnedPtr<crate::ffi_types::HandleIntToolsContext> {
+    pub fn context(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_IntTools_Context> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKBO::BOPAlgo_Builder_context(self as *const Self),
@@ -13771,7 +13741,7 @@ impl Builder {
         }
     }
 
-    /// **Source:** `BOPAlgo_Builder.hxx`:99 - `BOPAlgo_Builder::AddArgument()`
+    /// **Source:** `BOPAlgo_Builder.hxx`:100 - `BOPAlgo_Builder::AddArgument()`
     /// @name Arguments
     /// Adds the argument to the operation.
     pub fn add_argument(&mut self, theShape: &crate::topo_ds::Shape) {
@@ -13780,17 +13750,17 @@ impl Builder {
         })
     }
 
-    /// **Source:** `BOPAlgo_Builder.hxx`:102 - `BOPAlgo_Builder::SetArguments()`
+    /// **Source:** `BOPAlgo_Builder.hxx`:103 - `BOPAlgo_Builder::SetArguments()`
     /// Sets the list of arguments for the operation.
-    pub fn set_arguments(&mut self, theLS: &crate::ffi_types::TopTools_ListOfShape) {
+    pub fn set_arguments(&mut self, theLS: &crate::ffi_types::NCollection_List_TopoDS_Shape) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_Builder_set_arguments(self as *mut Self, theLS)
         })
     }
 
-    /// **Source:** `BOPAlgo_Builder.hxx`:105 - `BOPAlgo_Builder::Arguments()`
+    /// **Source:** `BOPAlgo_Builder.hxx`:106 - `BOPAlgo_Builder::Arguments()`
     /// Returns the list of arguments.
-    pub fn arguments(&self) -> &crate::ffi_types::TopTools_ListOfShape {
+    pub fn arguments(&self) -> &crate::ffi_types::NCollection_List_TopoDS_Shape {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKBO::BOPAlgo_Builder_arguments(
                 self as *const Self,
@@ -13798,7 +13768,7 @@ impl Builder {
         }
     }
 
-    /// **Source:** `BOPAlgo_Builder.hxx`:114 - `BOPAlgo_Builder::SetNonDestructive()`
+    /// **Source:** `BOPAlgo_Builder.hxx`:115 - `BOPAlgo_Builder::SetNonDestructive()`
     /// @name Options
     /// Sets the flag that defines the mode of treatment.
     /// In non-destructive mode the argument shapes are not modified. Instead
@@ -13812,7 +13782,7 @@ impl Builder {
         })
     }
 
-    /// **Source:** `BOPAlgo_Builder.hxx`:119 - `BOPAlgo_Builder::NonDestructive()`
+    /// **Source:** `BOPAlgo_Builder.hxx`:120 - `BOPAlgo_Builder::NonDestructive()`
     /// Returns the flag that defines the mode of treatment.
     /// In non-destructive mode the argument shapes are not modified. Instead
     /// a copy of a sub-shape is created in the result if it is needed to be updated.
@@ -13822,7 +13792,7 @@ impl Builder {
         })
     }
 
-    /// **Source:** `BOPAlgo_Builder.hxx`:122 - `BOPAlgo_Builder::SetGlue()`
+    /// **Source:** `BOPAlgo_Builder.hxx`:123 - `BOPAlgo_Builder::SetGlue()`
     /// Sets the glue option for the algorithm
     pub fn set_glue(&mut self, theGlue: crate::bop_algo::GlueEnum) {
         crate::check_void_result(unsafe {
@@ -13830,7 +13800,7 @@ impl Builder {
         })
     }
 
-    /// **Source:** `BOPAlgo_Builder.hxx`:125 - `BOPAlgo_Builder::Glue()`
+    /// **Source:** `BOPAlgo_Builder.hxx`:126 - `BOPAlgo_Builder::Glue()`
     /// Returns the glue option of the algorithm
     pub fn glue(&self) -> crate::bop_algo::GlueEnum {
         crate::bop_algo::GlueEnum::try_from(crate::check_result(unsafe {
@@ -13839,7 +13809,7 @@ impl Builder {
         .unwrap()
     }
 
-    /// **Source:** `BOPAlgo_Builder.hxx`:128 - `BOPAlgo_Builder::SetCheckInverted()`
+    /// **Source:** `BOPAlgo_Builder.hxx`:129 - `BOPAlgo_Builder::SetCheckInverted()`
     /// Enables/Disables the check of the input solids for inverted status
     pub fn set_check_inverted(&mut self, theCheck: bool) {
         crate::check_void_result(unsafe {
@@ -13847,7 +13817,7 @@ impl Builder {
         })
     }
 
-    /// **Source:** `BOPAlgo_Builder.hxx`:132 - `BOPAlgo_Builder::CheckInverted()`
+    /// **Source:** `BOPAlgo_Builder.hxx`:133 - `BOPAlgo_Builder::CheckInverted()`
     /// Returns the flag defining whether the check for input solids on inverted status
     /// should be performed or not.
     pub fn check_inverted(&self) -> bool {
@@ -13856,7 +13826,7 @@ impl Builder {
         })
     }
 
-    /// **Source:** `BOPAlgo_Builder.hxx`:137 - `BOPAlgo_Builder::Perform()`
+    /// **Source:** `BOPAlgo_Builder.hxx`:138 - `BOPAlgo_Builder::Perform()`
     /// @name Performing the operation
     /// Performs the operation.
     /// The intersection will be performed also.
@@ -13866,7 +13836,7 @@ impl Builder {
         })
     }
 
-    /// **Source:** `BOPAlgo_Builder.hxx`:142 - `BOPAlgo_Builder::PerformWithFiller()`
+    /// **Source:** `BOPAlgo_Builder.hxx`:143 - `BOPAlgo_Builder::PerformWithFiller()`
     /// Performs the operation with the prepared filler.
     /// The intersection will not be performed in this case.
     pub fn perform_with_filler(
@@ -13883,7 +13853,7 @@ impl Builder {
         })
     }
 
-    /// **Source:** `BOPAlgo_Builder.hxx`:186 - `BOPAlgo_Builder::BuildBOP()`
+    /// **Source:** `BOPAlgo_Builder.hxx`:187 - `BOPAlgo_Builder::BuildBOP()`
     /// @name BOPs on open solids
     /// Builds the result shape according to the given states for the objects
     /// and tools. These states can be unambiguously converted into the Boolean operation type.
@@ -13924,21 +13894,21 @@ impl Builder {
     /// @param theTools       - The group of Tools for BOP;
     /// @param theToolsState  - State for tools faces to pass into result;
     /// @param theReport      - The alternative report to avoid pollution of the main one.
-    pub fn build_bop_listofshape_state_listofshape_state_progressrange_handlemessagereport(
+    pub fn build_bop_list_shape_state_list_shape_state_progressrange_handlemessagereport(
         &mut self,
-        theObjects: &crate::ffi_types::TopTools_ListOfShape,
+        theObjects: &crate::ffi_types::NCollection_List_TopoDS_Shape,
         theObjState: crate::top_abs::State,
-        theTools: &crate::ffi_types::TopTools_ListOfShape,
+        theTools: &crate::ffi_types::NCollection_List_TopoDS_Shape,
         theToolsState: crate::top_abs::State,
         theRange: &crate::message::ProgressRange,
-        theReport: &crate::ffi_types::HandleMessageReport,
+        theReport: &crate::ffi_types::Handle_Message_Report,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi_extern_TKBO::BOPAlgo_Builder_build_bop_listofshape_state_listofshape_state_progressrange_handlemessagereport(self as *mut Self, theObjects, theObjState.into(), theTools, theToolsState.into(), theRange, theReport)
+            crate::ffi_extern_TKBO::BOPAlgo_Builder_build_bop_list_shape_state_list_shape_state_progressrange_handlemessagereport(self as *mut Self, theObjects, theObjState.into(), theTools, theToolsState.into(), theRange, theReport)
         })
     }
 
-    /// **Source:** `BOPAlgo_Builder.hxx`:213 - `BOPAlgo_Builder::BuildBOP()`
+    /// **Source:** `BOPAlgo_Builder.hxx`:214 - `BOPAlgo_Builder::BuildBOP()`
     /// Builds the result of Boolean operation of given type
     /// basing on the result of Builder operation (GF or any other).
     ///
@@ -13959,23 +13929,23 @@ impl Builder {
     /// @param theOperation - The BOP type;
     /// @param theRange     - The parameter to progressIndicator
     /// @param theReport    - The alternative report to avoid pollution of the global one.
-    pub fn build_bop_listofshape2_operation_progressrange_handlemessagereport(
+    pub fn build_bop_list_shape2_operation_progressrange_handlemessagereport(
         &mut self,
-        theObjects: &crate::ffi_types::TopTools_ListOfShape,
-        theTools: &crate::ffi_types::TopTools_ListOfShape,
+        theObjects: &crate::ffi_types::NCollection_List_TopoDS_Shape,
+        theTools: &crate::ffi_types::NCollection_List_TopoDS_Shape,
         theOperation: crate::bop_algo::Operation,
         theRange: &crate::message::ProgressRange,
-        theReport: &crate::ffi_types::HandleMessageReport,
+        theReport: &crate::ffi_types::Handle_Message_Report,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi_extern_TKBO::BOPAlgo_Builder_build_bop_listofshape2_operation_progressrange_handlemessagereport(self as *mut Self, theObjects, theTools, theOperation.into(), theRange, theReport)
+            crate::ffi_extern_TKBO::BOPAlgo_Builder_build_bop_list_shape2_operation_progressrange_handlemessagereport(self as *mut Self, theObjects, theTools, theOperation.into(), theRange, theReport)
         })
     }
 
-    /// **Source:** `BOPAlgo_Builder.hxx`:281 - `BOPAlgo_Builder::Images()`
+    /// **Source:** `BOPAlgo_Builder.hxx`:285 - `BOPAlgo_Builder::Images()`
     /// @name Images/Origins
     /// Returns the map of images.
-    pub fn images(&self) -> &crate::ffi_types::TopTools_DataMapOfShapeListOfShape {
+    pub fn images(&self) -> &crate::ffi_types::NCollection_DataMap_TopoDS_Shape_NCollection_List_TopoDS_Shape_TopTools_ShapeMapHasher{
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKBO::BOPAlgo_Builder_images(
                 self as *const Self,
@@ -13983,9 +13953,9 @@ impl Builder {
         }
     }
 
-    /// **Source:** `BOPAlgo_Builder.hxx`:284 - `BOPAlgo_Builder::Origins()`
+    /// **Source:** `BOPAlgo_Builder.hxx`:292 - `BOPAlgo_Builder::Origins()`
     /// Returns the map of origins.
-    pub fn origins(&self) -> &crate::ffi_types::TopTools_DataMapOfShapeListOfShape {
+    pub fn origins(&self) -> &crate::ffi_types::NCollection_DataMap_TopoDS_Shape_NCollection_List_TopoDS_Shape_TopTools_ShapeMapHasher{
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKBO::BOPAlgo_Builder_origins(
                 self as *const Self,
@@ -13993,10 +13963,13 @@ impl Builder {
         }
     }
 
-    /// **Source:** `BOPAlgo_Builder.hxx`:288 - `BOPAlgo_Builder::ShapesSD()`
+    /// **Source:** `BOPAlgo_Builder.hxx`:299 - `BOPAlgo_Builder::ShapesSD()`
     /// Returns the map of Same Domain (SD) shapes - coinciding shapes
     /// from different arguments.
-    pub fn shapes_sd(&self) -> &crate::ffi_types::TopTools_DataMapOfShapeShape {
+    pub fn shapes_sd(
+        &self,
+    ) -> &crate::ffi_types::NCollection_DataMap_TopoDS_Shape_TopoDS_Shape_TopTools_ShapeMapHasher
+    {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKBO::BOPAlgo_Builder_shapes_sd(
                 self as *const Self,
@@ -14060,7 +14033,7 @@ impl Builder {
         }
     }
 
-    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:47 - `BOPAlgo_BuilderShape::Shape()`
+    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:48 - `BOPAlgo_BuilderShape::Shape()`
     pub fn shape(&self) -> &crate::topo_ds::Shape {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKBO::BOPAlgo_Builder_inherited_Shape(
@@ -14069,36 +14042,36 @@ impl Builder {
         }
     }
 
-    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:71 - `BOPAlgo_BuilderShape::IsDeleted()`
+    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:72 - `BOPAlgo_BuilderShape::IsDeleted()`
     pub fn is_deleted(&mut self, theS: &crate::topo_ds::Shape) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_Builder_inherited_IsDeleted(self as *mut Self, theS)
         })
     }
 
-    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:77 - `BOPAlgo_BuilderShape::HasModified()`
+    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:78 - `BOPAlgo_BuilderShape::HasModified()`
     pub fn has_modified(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_Builder_inherited_HasModified(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:83 - `BOPAlgo_BuilderShape::HasGenerated()`
+    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:84 - `BOPAlgo_BuilderShape::HasGenerated()`
     pub fn has_generated(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_Builder_inherited_HasGenerated(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:89 - `BOPAlgo_BuilderShape::HasDeleted()`
+    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:90 - `BOPAlgo_BuilderShape::HasDeleted()`
     pub fn has_deleted(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_Builder_inherited_HasDeleted(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:95 - `BOPAlgo_BuilderShape::History()`
-    pub fn history(&mut self) -> crate::OwnedPtr<crate::ffi_types::HandleBRepToolsHistory> {
+    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:93 - `BOPAlgo_BuilderShape::History()`
+    pub fn history(&mut self) -> crate::OwnedPtr<crate::ffi_types::Handle_BRepTools_History> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKBO::BOPAlgo_Builder_inherited_History(self as *mut Self),
@@ -14106,7 +14079,7 @@ impl Builder {
         }
     }
 
-    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:116 - `BOPAlgo_BuilderShape::SetToFillHistory()`
+    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:114 - `BOPAlgo_BuilderShape::SetToFillHistory()`
     pub fn set_to_fill_history(&mut self, theHistFlag: bool) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_Builder_inherited_SetToFillHistory(
@@ -14116,7 +14089,7 @@ impl Builder {
         })
     }
 
-    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:119 - `BOPAlgo_BuilderShape::HasHistory()`
+    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:117 - `BOPAlgo_BuilderShape::HasHistory()`
     pub fn has_history(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_Builder_inherited_HasHistory(self as *const Self)
@@ -14124,7 +14097,7 @@ impl Builder {
     }
 
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:51 - `BOPAlgo_Options::Allocator()`
-    pub fn allocator(&self) -> &crate::ffi_types::HandleNCollectionBaseAllocator {
+    pub fn allocator(&self) -> &crate::ffi_types::TDF_HAllocator {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKBO::BOPAlgo_Builder_inherited_Allocator(
                 self as *const Self,
@@ -14133,14 +14106,14 @@ impl Builder {
     }
 
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:61 - `BOPAlgo_Options::AddError()`
-    pub fn add_error(&mut self, theAlert: &crate::ffi_types::HandleMessageAlert) {
+    pub fn add_error(&mut self, theAlert: &crate::ffi_types::Handle_Message_Alert) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_Builder_inherited_AddError(self as *mut Self, theAlert)
         })
     }
 
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:67 - `BOPAlgo_Options::AddWarning()`
-    pub fn add_warning(&mut self, theAlert: &crate::ffi_types::HandleMessageAlert) {
+    pub fn add_warning(&mut self, theAlert: &crate::ffi_types::Handle_Message_Alert) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_Builder_inherited_AddWarning(
                 self as *mut Self,
@@ -14157,7 +14130,7 @@ impl Builder {
     }
 
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:76 - `BOPAlgo_Options::HasError()`
-    pub fn has_error(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    pub fn has_error(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_Builder_inherited_HasError(self as *const Self, theType)
         })
@@ -14171,7 +14144,7 @@ impl Builder {
     }
 
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:85 - `BOPAlgo_Options::HasWarning()`
-    pub fn has_warning(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    pub fn has_warning(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_Builder_inherited_HasWarning(
                 self as *const Self,
@@ -14181,7 +14154,7 @@ impl Builder {
     }
 
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:91 - `BOPAlgo_Options::GetReport()`
-    pub fn get_report(&self) -> &crate::ffi_types::HandleMessageReport {
+    pub fn get_report(&self) -> &crate::ffi_types::Handle_Message_Report {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKBO::BOPAlgo_Builder_inherited_GetReport(
                 self as *const Self,
@@ -14269,23 +14242,23 @@ impl Builder {
 // From BOPAlgo_BuilderArea.hxx
 // ========================
 
-/// **Source:** `BOPAlgo_BuilderArea.hxx`:33 - `BOPAlgo_BuilderArea`
+/// **Source:** `BOPAlgo_BuilderArea.hxx`:34 - `BOPAlgo_BuilderArea`
 /// The root class for algorithms to build
 /// faces/solids from set of edges/faces
 pub use crate::ffi_types::BOPAlgo_BuilderArea as BuilderArea;
 
 impl BuilderArea {
-    /// **Source:** `BOPAlgo_BuilderArea.hxx`:39 - `BOPAlgo_BuilderArea::SetContext()`
+    /// **Source:** `BOPAlgo_BuilderArea.hxx`:40 - `BOPAlgo_BuilderArea::SetContext()`
     /// Sets the context for the algorithms
-    pub fn set_context(&mut self, theContext: &crate::ffi_types::HandleIntToolsContext) {
+    pub fn set_context(&mut self, theContext: &crate::ffi_types::Handle_IntTools_Context) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_BuilderArea_set_context(self as *mut Self, theContext)
         })
     }
 
-    /// **Source:** `BOPAlgo_BuilderArea.hxx`:42 - `BOPAlgo_BuilderArea::Shapes()`
+    /// **Source:** `BOPAlgo_BuilderArea.hxx`:43 - `BOPAlgo_BuilderArea::Shapes()`
     /// Returns the input shapes
-    pub fn shapes(&self) -> &crate::ffi_types::TopTools_ListOfShape {
+    pub fn shapes(&self) -> &crate::ffi_types::NCollection_List_TopoDS_Shape {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKBO::BOPAlgo_BuilderArea_shapes(
                 self as *const Self,
@@ -14293,17 +14266,17 @@ impl BuilderArea {
         }
     }
 
-    /// **Source:** `BOPAlgo_BuilderArea.hxx`:45 - `BOPAlgo_BuilderArea::SetShapes()`
+    /// **Source:** `BOPAlgo_BuilderArea.hxx`:46 - `BOPAlgo_BuilderArea::SetShapes()`
     /// Sets the shapes for building areas
-    pub fn set_shapes(&mut self, theLS: &crate::ffi_types::TopTools_ListOfShape) {
+    pub fn set_shapes(&mut self, theLS: &crate::ffi_types::NCollection_List_TopoDS_Shape) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_BuilderArea_set_shapes(self as *mut Self, theLS)
         })
     }
 
-    /// **Source:** `BOPAlgo_BuilderArea.hxx`:48 - `BOPAlgo_BuilderArea::Loops()`
+    /// **Source:** `BOPAlgo_BuilderArea.hxx`:49 - `BOPAlgo_BuilderArea::Loops()`
     /// Returns the found loops
-    pub fn loops(&self) -> &crate::ffi_types::TopTools_ListOfShape {
+    pub fn loops(&self) -> &crate::ffi_types::NCollection_List_TopoDS_Shape {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKBO::BOPAlgo_BuilderArea_loops(
                 self as *const Self,
@@ -14311,9 +14284,9 @@ impl BuilderArea {
         }
     }
 
-    /// **Source:** `BOPAlgo_BuilderArea.hxx`:51 - `BOPAlgo_BuilderArea::Areas()`
+    /// **Source:** `BOPAlgo_BuilderArea.hxx`:52 - `BOPAlgo_BuilderArea::Areas()`
     /// Returns the found areas
-    pub fn areas(&self) -> &crate::ffi_types::TopTools_ListOfShape {
+    pub fn areas(&self) -> &crate::ffi_types::NCollection_List_TopoDS_Shape {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKBO::BOPAlgo_BuilderArea_areas(
                 self as *const Self,
@@ -14321,7 +14294,7 @@ impl BuilderArea {
         }
     }
 
-    /// **Source:** `BOPAlgo_BuilderArea.hxx`:55 - `BOPAlgo_BuilderArea::SetAvoidInternalShapes()`
+    /// **Source:** `BOPAlgo_BuilderArea.hxx`:56 - `BOPAlgo_BuilderArea::SetAvoidInternalShapes()`
     /// Defines the preventing of addition of internal parts into result.
     /// The default value is FALSE, i.e. the internal parts are added into result.
     pub fn set_avoid_internal_shapes(&mut self, theAvoidInternal: bool) {
@@ -14333,7 +14306,7 @@ impl BuilderArea {
         })
     }
 
-    /// **Source:** `BOPAlgo_BuilderArea.hxx`:61 - `BOPAlgo_BuilderArea::IsAvoidInternalShapes()`
+    /// **Source:** `BOPAlgo_BuilderArea.hxx`:62 - `BOPAlgo_BuilderArea::IsAvoidInternalShapes()`
     /// Returns the AvoidInternalShapes flag
     pub fn is_avoid_internal_shapes(&self) -> bool {
         crate::check_result(unsafe {
@@ -14413,14 +14386,12 @@ impl BuilderFace {
     }
 
     /// **Source:** `BOPAlgo_BuilderFace.hxx`:44 - `BOPAlgo_BuilderFace::BOPAlgo_BuilderFace()`
-    pub fn new_handlencollectionbaseallocator(
-        theAllocator: &crate::ffi_types::HandleNCollectionBaseAllocator,
+    pub fn new_hallocator(
+        theAllocator: &crate::ffi_types::TDF_HAllocator,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKBO::BOPAlgo_BuilderFace_ctor_handlencollectionbaseallocator(
-                    theAllocator,
-                ),
+                crate::ffi_extern_TKBO::BOPAlgo_BuilderFace_ctor_hallocator(theAllocator),
             ))
         }
     }
@@ -14519,8 +14490,8 @@ impl BuilderFace {
         }
     }
 
-    /// Inherited: **Source:** `BOPAlgo_BuilderArea.hxx`:39 - `BOPAlgo_BuilderArea::SetContext()`
-    pub fn set_context(&mut self, theContext: &crate::ffi_types::HandleIntToolsContext) {
+    /// Inherited: **Source:** `BOPAlgo_BuilderArea.hxx`:40 - `BOPAlgo_BuilderArea::SetContext()`
+    pub fn set_context(&mut self, theContext: &crate::ffi_types::Handle_IntTools_Context) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_BuilderFace_inherited_SetContext(
                 self as *mut Self,
@@ -14529,8 +14500,8 @@ impl BuilderFace {
         })
     }
 
-    /// Inherited: **Source:** `BOPAlgo_BuilderArea.hxx`:42 - `BOPAlgo_BuilderArea::Shapes()`
-    pub fn shapes(&self) -> &crate::ffi_types::TopTools_ListOfShape {
+    /// Inherited: **Source:** `BOPAlgo_BuilderArea.hxx`:43 - `BOPAlgo_BuilderArea::Shapes()`
+    pub fn shapes(&self) -> &crate::ffi_types::NCollection_List_TopoDS_Shape {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKBO::BOPAlgo_BuilderFace_inherited_Shapes(
                 self as *const Self,
@@ -14538,8 +14509,8 @@ impl BuilderFace {
         }
     }
 
-    /// Inherited: **Source:** `BOPAlgo_BuilderArea.hxx`:45 - `BOPAlgo_BuilderArea::SetShapes()`
-    pub fn set_shapes(&mut self, theLS: &crate::ffi_types::TopTools_ListOfShape) {
+    /// Inherited: **Source:** `BOPAlgo_BuilderArea.hxx`:46 - `BOPAlgo_BuilderArea::SetShapes()`
+    pub fn set_shapes(&mut self, theLS: &crate::ffi_types::NCollection_List_TopoDS_Shape) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_BuilderFace_inherited_SetShapes(
                 self as *mut Self,
@@ -14548,8 +14519,8 @@ impl BuilderFace {
         })
     }
 
-    /// Inherited: **Source:** `BOPAlgo_BuilderArea.hxx`:48 - `BOPAlgo_BuilderArea::Loops()`
-    pub fn loops(&self) -> &crate::ffi_types::TopTools_ListOfShape {
+    /// Inherited: **Source:** `BOPAlgo_BuilderArea.hxx`:49 - `BOPAlgo_BuilderArea::Loops()`
+    pub fn loops(&self) -> &crate::ffi_types::NCollection_List_TopoDS_Shape {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKBO::BOPAlgo_BuilderFace_inherited_Loops(
                 self as *const Self,
@@ -14557,8 +14528,8 @@ impl BuilderFace {
         }
     }
 
-    /// Inherited: **Source:** `BOPAlgo_BuilderArea.hxx`:51 - `BOPAlgo_BuilderArea::Areas()`
-    pub fn areas(&self) -> &crate::ffi_types::TopTools_ListOfShape {
+    /// Inherited: **Source:** `BOPAlgo_BuilderArea.hxx`:52 - `BOPAlgo_BuilderArea::Areas()`
+    pub fn areas(&self) -> &crate::ffi_types::NCollection_List_TopoDS_Shape {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKBO::BOPAlgo_BuilderFace_inherited_Areas(
                 self as *const Self,
@@ -14566,7 +14537,7 @@ impl BuilderFace {
         }
     }
 
-    /// Inherited: **Source:** `BOPAlgo_BuilderArea.hxx`:55 - `BOPAlgo_BuilderArea::SetAvoidInternalShapes()`
+    /// Inherited: **Source:** `BOPAlgo_BuilderArea.hxx`:56 - `BOPAlgo_BuilderArea::SetAvoidInternalShapes()`
     pub fn set_avoid_internal_shapes(&mut self, theAvoidInternal: bool) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_BuilderFace_inherited_SetAvoidInternalShapes(
@@ -14576,7 +14547,7 @@ impl BuilderFace {
         })
     }
 
-    /// Inherited: **Source:** `BOPAlgo_BuilderArea.hxx`:61 - `BOPAlgo_BuilderArea::IsAvoidInternalShapes()`
+    /// Inherited: **Source:** `BOPAlgo_BuilderArea.hxx`:62 - `BOPAlgo_BuilderArea::IsAvoidInternalShapes()`
     pub fn is_avoid_internal_shapes(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_BuilderFace_inherited_IsAvoidInternalShapes(
@@ -14586,7 +14557,7 @@ impl BuilderFace {
     }
 
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:51 - `BOPAlgo_Options::Allocator()`
-    pub fn allocator(&self) -> &crate::ffi_types::HandleNCollectionBaseAllocator {
+    pub fn allocator(&self) -> &crate::ffi_types::TDF_HAllocator {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKBO::BOPAlgo_BuilderFace_inherited_Allocator(
@@ -14604,7 +14575,7 @@ impl BuilderFace {
     }
 
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:61 - `BOPAlgo_Options::AddError()`
-    pub fn add_error(&mut self, theAlert: &crate::ffi_types::HandleMessageAlert) {
+    pub fn add_error(&mut self, theAlert: &crate::ffi_types::Handle_Message_Alert) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_BuilderFace_inherited_AddError(
                 self as *mut Self,
@@ -14614,7 +14585,7 @@ impl BuilderFace {
     }
 
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:67 - `BOPAlgo_Options::AddWarning()`
-    pub fn add_warning(&mut self, theAlert: &crate::ffi_types::HandleMessageAlert) {
+    pub fn add_warning(&mut self, theAlert: &crate::ffi_types::Handle_Message_Alert) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_BuilderFace_inherited_AddWarning(
                 self as *mut Self,
@@ -14631,7 +14602,7 @@ impl BuilderFace {
     }
 
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:76 - `BOPAlgo_Options::HasError()`
-    pub fn has_error(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    pub fn has_error(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_BuilderFace_inherited_HasError(
                 self as *const Self,
@@ -14648,7 +14619,7 @@ impl BuilderFace {
     }
 
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:85 - `BOPAlgo_Options::HasWarning()`
-    pub fn has_warning(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    pub fn has_warning(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_BuilderFace_inherited_HasWarning(
                 self as *const Self,
@@ -14658,7 +14629,7 @@ impl BuilderFace {
     }
 
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:91 - `BOPAlgo_Options::GetReport()`
-    pub fn get_report(&self) -> &crate::ffi_types::HandleMessageReport {
+    pub fn get_report(&self) -> &crate::ffi_types::Handle_Message_Report {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKBO::BOPAlgo_BuilderFace_inherited_GetReport(
@@ -14751,7 +14722,7 @@ impl BuilderFace {
 // From BOPAlgo_BuilderShape.hxx
 // ========================
 
-/// **Source:** `BOPAlgo_BuilderShape.hxx`:40 - `BOPAlgo_BuilderShape`
+/// **Source:** `BOPAlgo_BuilderShape.hxx`:41 - `BOPAlgo_BuilderShape`
 /// Root class for algorithms that has shape as result.
 ///
 /// The class provides the History mechanism, which allows
@@ -14769,7 +14740,7 @@ unsafe impl crate::CppDeletable for BuilderShape {
 }
 
 impl BuilderShape {
-    /// **Source:** `BOPAlgo_BuilderShape.hxx`:47 - `BOPAlgo_BuilderShape::Shape()`
+    /// **Source:** `BOPAlgo_BuilderShape.hxx`:48 - `BOPAlgo_BuilderShape::Shape()`
     /// @name Getting the result
     /// Returns the result of algorithm
     pub fn shape(&self) -> &crate::topo_ds::Shape {
@@ -14780,7 +14751,7 @@ impl BuilderShape {
         }
     }
 
-    /// **Source:** `BOPAlgo_BuilderShape.hxx`:51 - `BOPAlgo_BuilderShape::Modified()`
+    /// **Source:** `BOPAlgo_BuilderShape.hxx`:52 - `BOPAlgo_BuilderShape::Modified()`
     /// @name History methods
     /// Returns the list of shapes Modified from the shape theS.
     ///
@@ -14792,7 +14763,7 @@ impl BuilderShape {
     pub unsafe fn modified(
         &mut self,
         theS: &crate::topo_ds::Shape,
-    ) -> &crate::ffi_types::TopTools_ListOfShape {
+    ) -> &crate::ffi_types::NCollection_List_TopoDS_Shape {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKBO::BOPAlgo_BuilderShape_modified(
                 self as *mut Self,
@@ -14801,7 +14772,7 @@ impl BuilderShape {
         }
     }
 
-    /// **Source:** `BOPAlgo_BuilderShape.hxx`:60 - `BOPAlgo_BuilderShape::Generated()`
+    /// **Source:** `BOPAlgo_BuilderShape.hxx`:61 - `BOPAlgo_BuilderShape::Generated()`
     /// Returns the list of shapes Generated from the shape theS.
     ///
     /// # Safety
@@ -14812,7 +14783,7 @@ impl BuilderShape {
     pub unsafe fn generated(
         &mut self,
         theS: &crate::topo_ds::Shape,
-    ) -> &crate::ffi_types::TopTools_ListOfShape {
+    ) -> &crate::ffi_types::NCollection_List_TopoDS_Shape {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKBO::BOPAlgo_BuilderShape_generated(
                 self as *mut Self,
@@ -14821,7 +14792,7 @@ impl BuilderShape {
         }
     }
 
-    /// **Source:** `BOPAlgo_BuilderShape.hxx`:71 - `BOPAlgo_BuilderShape::IsDeleted()`
+    /// **Source:** `BOPAlgo_BuilderShape.hxx`:72 - `BOPAlgo_BuilderShape::IsDeleted()`
     /// Returns true if the shape theS has been deleted.
     /// In this case the shape will have no Modified elements,
     /// but can have Generated elements.
@@ -14831,7 +14802,7 @@ impl BuilderShape {
         })
     }
 
-    /// **Source:** `BOPAlgo_BuilderShape.hxx`:77 - `BOPAlgo_BuilderShape::HasModified()`
+    /// **Source:** `BOPAlgo_BuilderShape.hxx`:78 - `BOPAlgo_BuilderShape::HasModified()`
     /// Returns true if any of the input shapes has been modified during operation.
     pub fn has_modified(&self) -> bool {
         crate::check_result(unsafe {
@@ -14839,7 +14810,7 @@ impl BuilderShape {
         })
     }
 
-    /// **Source:** `BOPAlgo_BuilderShape.hxx`:83 - `BOPAlgo_BuilderShape::HasGenerated()`
+    /// **Source:** `BOPAlgo_BuilderShape.hxx`:84 - `BOPAlgo_BuilderShape::HasGenerated()`
     /// Returns true if any of the input shapes has generated shapes during operation.
     pub fn has_generated(&self) -> bool {
         crate::check_result(unsafe {
@@ -14847,7 +14818,7 @@ impl BuilderShape {
         })
     }
 
-    /// **Source:** `BOPAlgo_BuilderShape.hxx`:89 - `BOPAlgo_BuilderShape::HasDeleted()`
+    /// **Source:** `BOPAlgo_BuilderShape.hxx`:90 - `BOPAlgo_BuilderShape::HasDeleted()`
     /// Returns true if any of the input shapes has been deleted during operation.
     pub fn has_deleted(&self) -> bool {
         crate::check_result(unsafe {
@@ -14855,9 +14826,9 @@ impl BuilderShape {
         })
     }
 
-    /// **Source:** `BOPAlgo_BuilderShape.hxx`:95 - `BOPAlgo_BuilderShape::History()`
+    /// **Source:** `BOPAlgo_BuilderShape.hxx`:93 - `BOPAlgo_BuilderShape::History()`
     /// History Tool
-    pub fn history(&mut self) -> crate::OwnedPtr<crate::ffi_types::HandleBRepToolsHistory> {
+    pub fn history(&mut self) -> crate::OwnedPtr<crate::ffi_types::Handle_BRepTools_History> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKBO::BOPAlgo_BuilderShape_history(self as *mut Self),
@@ -14865,7 +14836,7 @@ impl BuilderShape {
         }
     }
 
-    /// **Source:** `BOPAlgo_BuilderShape.hxx`:116 - `BOPAlgo_BuilderShape::SetToFillHistory()`
+    /// **Source:** `BOPAlgo_BuilderShape.hxx`:114 - `BOPAlgo_BuilderShape::SetToFillHistory()`
     /// @name Enabling/Disabling the history collection.
     /// Allows disabling the history collection
     pub fn set_to_fill_history(&mut self, theHistFlag: bool) {
@@ -14877,7 +14848,7 @@ impl BuilderShape {
         })
     }
 
-    /// **Source:** `BOPAlgo_BuilderShape.hxx`:119 - `BOPAlgo_BuilderShape::HasHistory()`
+    /// **Source:** `BOPAlgo_BuilderShape.hxx`:117 - `BOPAlgo_BuilderShape::HasHistory()`
     /// Returns flag of history availability
     pub fn has_history(&self) -> bool {
         crate::check_result(unsafe {
@@ -14934,7 +14905,7 @@ impl BuilderShape {
     }
 
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:51 - `BOPAlgo_Options::Allocator()`
-    pub fn allocator(&self) -> &crate::ffi_types::HandleNCollectionBaseAllocator {
+    pub fn allocator(&self) -> &crate::ffi_types::TDF_HAllocator {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKBO::BOPAlgo_BuilderShape_inherited_Allocator(
@@ -14945,7 +14916,7 @@ impl BuilderShape {
     }
 
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:61 - `BOPAlgo_Options::AddError()`
-    pub fn add_error(&mut self, theAlert: &crate::ffi_types::HandleMessageAlert) {
+    pub fn add_error(&mut self, theAlert: &crate::ffi_types::Handle_Message_Alert) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_BuilderShape_inherited_AddError(
                 self as *mut Self,
@@ -14955,7 +14926,7 @@ impl BuilderShape {
     }
 
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:67 - `BOPAlgo_Options::AddWarning()`
-    pub fn add_warning(&mut self, theAlert: &crate::ffi_types::HandleMessageAlert) {
+    pub fn add_warning(&mut self, theAlert: &crate::ffi_types::Handle_Message_Alert) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_BuilderShape_inherited_AddWarning(
                 self as *mut Self,
@@ -14972,7 +14943,7 @@ impl BuilderShape {
     }
 
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:76 - `BOPAlgo_Options::HasError()`
-    pub fn has_error(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    pub fn has_error(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_BuilderShape_inherited_HasError(
                 self as *const Self,
@@ -14989,7 +14960,7 @@ impl BuilderShape {
     }
 
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:85 - `BOPAlgo_Options::HasWarning()`
-    pub fn has_warning(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    pub fn has_warning(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_BuilderShape_inherited_HasWarning(
                 self as *const Self,
@@ -14999,7 +14970,7 @@ impl BuilderShape {
     }
 
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:91 - `BOPAlgo_Options::GetReport()`
-    pub fn get_report(&self) -> &crate::ffi_types::HandleMessageReport {
+    pub fn get_report(&self) -> &crate::ffi_types::Handle_Message_Report {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKBO::BOPAlgo_BuilderShape_inherited_GetReport(
@@ -15092,7 +15063,7 @@ impl BuilderShape {
 // From BOPAlgo_BuilderSolid.hxx
 // ========================
 
-/// **Source:** `BOPAlgo_BuilderSolid.hxx`:80 - `BOPAlgo_BuilderSolid`
+/// **Source:** `BOPAlgo_BuilderSolid.hxx`:83 - `BOPAlgo_BuilderSolid`
 /// Solid Builder is the algorithm for building solids from set of faces.
 /// The given faces should be non-intersecting, i.e. all coinciding parts
 /// of the faces should be shared among them.
@@ -15121,8 +15092,8 @@ impl BuilderShape {
 ///
 /// Example of usage of the algorithm:
 /// ~~~~
-/// const TopTools_ListOfShape& aFaces = ...;     // Faces to build the solids
-/// Standard_Boolean isAvoidInternals = ...;      // Flag which defines whether to create the
+/// const NCollection_List<TopoDS_Shape>& aFaces = ...;     // Faces to build the solids
+/// bool isAvoidInternals = ...;      // Flag which defines whether to create the
 /// internal shells or not BOPAlgo_BuilderSolid aBS;                     // Solid Builder tool
 /// aBS.SetShapes(aFaces);                        // Set the faces
 /// aBS.SetAvoidInternalShapes(isAvoidInternals); // Set the AvoidInternalShapesFlag
@@ -15141,7 +15112,7 @@ impl BuilderShape {
 /// aBS.DumpWarnings(aSStream);
 /// }
 ///
-/// const TopTools_ListOfShape& aSolids = aBS.Areas(); // Obtaining the result solids
+/// const NCollection_List<TopoDS_Shape>& aSolids = aBS.Areas(); // Obtaining the result solids
 /// ~~~~
 pub use crate::ffi_types::BOPAlgo_BuilderSolid as BuilderSolid;
 
@@ -15154,7 +15125,7 @@ unsafe impl crate::CppDeletable for BuilderSolid {
 }
 
 impl BuilderSolid {
-    /// **Source:** `BOPAlgo_BuilderSolid.hxx`:87 - `BOPAlgo_BuilderSolid::BOPAlgo_BuilderSolid()`
+    /// **Source:** `BOPAlgo_BuilderSolid.hxx`:90 - `BOPAlgo_BuilderSolid::BOPAlgo_BuilderSolid()`
     /// @name Constructors
     /// Empty constructor
     pub fn new() -> crate::OwnedPtr<Self> {
@@ -15165,21 +15136,19 @@ impl BuilderSolid {
         }
     }
 
-    /// **Source:** `BOPAlgo_BuilderSolid.hxx`:91 - `BOPAlgo_BuilderSolid::BOPAlgo_BuilderSolid()`
+    /// **Source:** `BOPAlgo_BuilderSolid.hxx`:94 - `BOPAlgo_BuilderSolid::BOPAlgo_BuilderSolid()`
     /// Constructor with allocator
-    pub fn new_handlencollectionbaseallocator(
-        theAllocator: &crate::ffi_types::HandleNCollectionBaseAllocator,
+    pub fn new_hallocator(
+        theAllocator: &crate::ffi_types::TDF_HAllocator,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKBO::BOPAlgo_BuilderSolid_ctor_handlencollectionbaseallocator(
-                    theAllocator,
-                ),
+                crate::ffi_extern_TKBO::BOPAlgo_BuilderSolid_ctor_hallocator(theAllocator),
             ))
         }
     }
 
-    /// **Source:** `BOPAlgo_BuilderSolid.hxx`:95 - `BOPAlgo_BuilderSolid::Perform()`
+    /// **Source:** `BOPAlgo_BuilderSolid.hxx`:98 - `BOPAlgo_BuilderSolid::Perform()`
     /// @name Performing the operation
     /// Performs the construction of the solids from the given faces
     pub fn perform(&mut self, theRange: &crate::message::ProgressRange) {
@@ -15188,11 +15157,13 @@ impl BuilderSolid {
         })
     }
 
-    /// **Source:** `BOPAlgo_BuilderSolid.hxx`:101 - `BOPAlgo_BuilderSolid::GetBoxesMap()`
+    /// **Source:** `BOPAlgo_BuilderSolid.hxx`:104 - `BOPAlgo_BuilderSolid::GetBoxesMap()`
     /// @name Getting the bounding boxes of the created solids
     /// For classification purposes the algorithm builds the bounding boxes
     /// for all created solids. This method returns the data map of solid - box pairs.
-    pub fn get_boxes_map(&self) -> &crate::ffi_types::TopTools_DataMapOfShapeBox {
+    pub fn get_boxes_map(
+        &self,
+    ) -> &crate::ffi_types::NCollection_DataMap_TopoDS_Shape_Bnd_Box_TopTools_ShapeMapHasher {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKBO::BOPAlgo_BuilderSolid_get_boxes_map(
                 self as *const Self,
@@ -15260,8 +15231,8 @@ impl BuilderSolid {
         }
     }
 
-    /// Inherited: **Source:** `BOPAlgo_BuilderArea.hxx`:39 - `BOPAlgo_BuilderArea::SetContext()`
-    pub fn set_context(&mut self, theContext: &crate::ffi_types::HandleIntToolsContext) {
+    /// Inherited: **Source:** `BOPAlgo_BuilderArea.hxx`:40 - `BOPAlgo_BuilderArea::SetContext()`
+    pub fn set_context(&mut self, theContext: &crate::ffi_types::Handle_IntTools_Context) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_BuilderSolid_inherited_SetContext(
                 self as *mut Self,
@@ -15270,8 +15241,8 @@ impl BuilderSolid {
         })
     }
 
-    /// Inherited: **Source:** `BOPAlgo_BuilderArea.hxx`:42 - `BOPAlgo_BuilderArea::Shapes()`
-    pub fn shapes(&self) -> &crate::ffi_types::TopTools_ListOfShape {
+    /// Inherited: **Source:** `BOPAlgo_BuilderArea.hxx`:43 - `BOPAlgo_BuilderArea::Shapes()`
+    pub fn shapes(&self) -> &crate::ffi_types::NCollection_List_TopoDS_Shape {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKBO::BOPAlgo_BuilderSolid_inherited_Shapes(
                 self as *const Self,
@@ -15279,8 +15250,8 @@ impl BuilderSolid {
         }
     }
 
-    /// Inherited: **Source:** `BOPAlgo_BuilderArea.hxx`:45 - `BOPAlgo_BuilderArea::SetShapes()`
-    pub fn set_shapes(&mut self, theLS: &crate::ffi_types::TopTools_ListOfShape) {
+    /// Inherited: **Source:** `BOPAlgo_BuilderArea.hxx`:46 - `BOPAlgo_BuilderArea::SetShapes()`
+    pub fn set_shapes(&mut self, theLS: &crate::ffi_types::NCollection_List_TopoDS_Shape) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_BuilderSolid_inherited_SetShapes(
                 self as *mut Self,
@@ -15289,8 +15260,8 @@ impl BuilderSolid {
         })
     }
 
-    /// Inherited: **Source:** `BOPAlgo_BuilderArea.hxx`:48 - `BOPAlgo_BuilderArea::Loops()`
-    pub fn loops(&self) -> &crate::ffi_types::TopTools_ListOfShape {
+    /// Inherited: **Source:** `BOPAlgo_BuilderArea.hxx`:49 - `BOPAlgo_BuilderArea::Loops()`
+    pub fn loops(&self) -> &crate::ffi_types::NCollection_List_TopoDS_Shape {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKBO::BOPAlgo_BuilderSolid_inherited_Loops(
                 self as *const Self,
@@ -15298,8 +15269,8 @@ impl BuilderSolid {
         }
     }
 
-    /// Inherited: **Source:** `BOPAlgo_BuilderArea.hxx`:51 - `BOPAlgo_BuilderArea::Areas()`
-    pub fn areas(&self) -> &crate::ffi_types::TopTools_ListOfShape {
+    /// Inherited: **Source:** `BOPAlgo_BuilderArea.hxx`:52 - `BOPAlgo_BuilderArea::Areas()`
+    pub fn areas(&self) -> &crate::ffi_types::NCollection_List_TopoDS_Shape {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKBO::BOPAlgo_BuilderSolid_inherited_Areas(
                 self as *const Self,
@@ -15307,7 +15278,7 @@ impl BuilderSolid {
         }
     }
 
-    /// Inherited: **Source:** `BOPAlgo_BuilderArea.hxx`:55 - `BOPAlgo_BuilderArea::SetAvoidInternalShapes()`
+    /// Inherited: **Source:** `BOPAlgo_BuilderArea.hxx`:56 - `BOPAlgo_BuilderArea::SetAvoidInternalShapes()`
     pub fn set_avoid_internal_shapes(&mut self, theAvoidInternal: bool) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_BuilderSolid_inherited_SetAvoidInternalShapes(
@@ -15317,7 +15288,7 @@ impl BuilderSolid {
         })
     }
 
-    /// Inherited: **Source:** `BOPAlgo_BuilderArea.hxx`:61 - `BOPAlgo_BuilderArea::IsAvoidInternalShapes()`
+    /// Inherited: **Source:** `BOPAlgo_BuilderArea.hxx`:62 - `BOPAlgo_BuilderArea::IsAvoidInternalShapes()`
     pub fn is_avoid_internal_shapes(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_BuilderSolid_inherited_IsAvoidInternalShapes(
@@ -15327,7 +15298,7 @@ impl BuilderSolid {
     }
 
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:51 - `BOPAlgo_Options::Allocator()`
-    pub fn allocator(&self) -> &crate::ffi_types::HandleNCollectionBaseAllocator {
+    pub fn allocator(&self) -> &crate::ffi_types::TDF_HAllocator {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKBO::BOPAlgo_BuilderSolid_inherited_Allocator(
@@ -15345,7 +15316,7 @@ impl BuilderSolid {
     }
 
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:61 - `BOPAlgo_Options::AddError()`
-    pub fn add_error(&mut self, theAlert: &crate::ffi_types::HandleMessageAlert) {
+    pub fn add_error(&mut self, theAlert: &crate::ffi_types::Handle_Message_Alert) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_BuilderSolid_inherited_AddError(
                 self as *mut Self,
@@ -15355,7 +15326,7 @@ impl BuilderSolid {
     }
 
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:67 - `BOPAlgo_Options::AddWarning()`
-    pub fn add_warning(&mut self, theAlert: &crate::ffi_types::HandleMessageAlert) {
+    pub fn add_warning(&mut self, theAlert: &crate::ffi_types::Handle_Message_Alert) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_BuilderSolid_inherited_AddWarning(
                 self as *mut Self,
@@ -15372,7 +15343,7 @@ impl BuilderSolid {
     }
 
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:76 - `BOPAlgo_Options::HasError()`
-    pub fn has_error(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    pub fn has_error(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_BuilderSolid_inherited_HasError(
                 self as *const Self,
@@ -15389,7 +15360,7 @@ impl BuilderSolid {
     }
 
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:85 - `BOPAlgo_Options::HasWarning()`
-    pub fn has_warning(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    pub fn has_warning(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_BuilderSolid_inherited_HasWarning(
                 self as *const Self,
@@ -15399,7 +15370,7 @@ impl BuilderSolid {
     }
 
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:91 - `BOPAlgo_Options::GetReport()`
-    pub fn get_report(&self) -> &crate::ffi_types::HandleMessageReport {
+    pub fn get_report(&self) -> &crate::ffi_types::Handle_Message_Report {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKBO::BOPAlgo_BuilderSolid_inherited_GetReport(
@@ -15492,7 +15463,7 @@ impl BuilderSolid {
 // From BOPAlgo_CellsBuilder.hxx
 // ========================
 
-/// **Source:** `BOPAlgo_CellsBuilder.hxx`:167 - `BOPAlgo_CellsBuilder`
+/// **Source:** `BOPAlgo_CellsBuilder.hxx`:168 - `BOPAlgo_CellsBuilder`
 /// The algorithm is based on the General Fuse algorithm (GFA).
 /// The result of GFA is all split parts of the Arguments.
 ///
@@ -15566,11 +15537,11 @@ impl BuilderSolid {
 /// 1. API
 /// @code
 /// BOPAlgo_CellsBuilder aCBuilder;
-/// TopTools_ListOfShape aLS = ...; // arguments
+/// NCollection_List<TopoDS_Shape> aLS = ...; // arguments
 /// // parallel or single mode (the default value is FALSE)
 /// bool toRunParallel = false;
 /// // fuzzy option (default value is 0)
-/// Standard_Real aTol = 0.0;
+/// double aTol = 0.0;
 /// //
 /// aCBuilder.SetArguments (aLS);
 /// aCBuilder.SetRunParallel (toRunParallel);
@@ -15586,14 +15557,15 @@ impl BuilderSolid {
 /// // all split parts
 /// const TopoDS_Shape& aRes = aCBuilder.GetAllParts();
 /// //
-/// TopTools_ListOfShape aLSToTake  = ...; // parts of these arguments will be taken into result
-/// TopTools_ListOfShape aLSToAvoid = ...; // parts of these arguments will not be taken into result
+/// NCollection_List<TopoDS_Shape> aLSToTake  = ...; // parts of these arguments will be taken into
+/// result NCollection_List<TopoDS_Shape> aLSToAvoid = ...; // parts of these arguments will not be
+/// taken into result
 /// //
 /// // defines the material common for the cells,
 /// // i.e. the boundaries between cells with the same material will be removed.
 /// // By default it is set to 0.
 /// // Thus, to remove some boundary the value of this variable should not be equal to 0.
-/// Standard_Integer iMaterial = ...;
+/// int iMaterial = ...;
 /// // defines whether to update the result right now or not
 /// bool toUpdate = ...;
 /// // adding to result
@@ -15641,7 +15613,7 @@ unsafe impl crate::CppDeletable for CellsBuilder {
 }
 
 impl CellsBuilder {
-    /// **Source:** `BOPAlgo_CellsBuilder.hxx`:172 - `BOPAlgo_CellsBuilder::BOPAlgo_CellsBuilder()`
+    /// **Source:** `BOPAlgo_CellsBuilder.hxx`:173 - `BOPAlgo_CellsBuilder::BOPAlgo_CellsBuilder()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -15650,20 +15622,18 @@ impl CellsBuilder {
         }
     }
 
-    /// **Source:** `BOPAlgo_CellsBuilder.hxx`:174 - `BOPAlgo_CellsBuilder::BOPAlgo_CellsBuilder()`
-    pub fn new_handlencollectionbaseallocator(
-        theAllocator: &crate::ffi_types::HandleNCollectionBaseAllocator,
+    /// **Source:** `BOPAlgo_CellsBuilder.hxx`:175 - `BOPAlgo_CellsBuilder::BOPAlgo_CellsBuilder()`
+    pub fn new_hallocator(
+        theAllocator: &crate::ffi_types::TDF_HAllocator,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKBO::BOPAlgo_CellsBuilder_ctor_handlencollectionbaseallocator(
-                    theAllocator,
-                ),
+                crate::ffi_extern_TKBO::BOPAlgo_CellsBuilder_ctor_hallocator(theAllocator),
             ))
         }
     }
 
-    /// **Source:** `BOPAlgo_CellsBuilder.hxx`:179 - `BOPAlgo_CellsBuilder::Clear()`
+    /// **Source:** `BOPAlgo_CellsBuilder.hxx`:180 - `BOPAlgo_CellsBuilder::Clear()`
     /// Redefined method Clear - clears the contents.
     pub fn clear(&mut self) {
         crate::check_void_result(unsafe {
@@ -15671,23 +15641,23 @@ impl CellsBuilder {
         })
     }
 
-    /// **Source:** `BOPAlgo_CellsBuilder.hxx`:193 - `BOPAlgo_CellsBuilder::AddToResult()`
-    /// Adding the parts to result.<br>
-    /// The parts are defined by two lists of shapes:<br>
-    /// <theLSToTake> defines the arguments which parts should be taken into result;<br>
-    /// <theLSToAvoid> defines the arguments which parts should not be taken into result;<br>
+    /// **Source:** `BOPAlgo_CellsBuilder.hxx`:194 - `BOPAlgo_CellsBuilder::AddToResult()`
+    /// Adding the parts to result.
+    /// The parts are defined by two lists of shapes:
+    /// <theLSToTake> defines the arguments which parts should be taken into result;
+    /// <theLSToAvoid> defines the arguments which parts should not be taken into result;
     /// To be taken into result the part must be IN for all shapes from the list
-    /// <theLSToTake> and must be OUT of all shapes from the list <theLSToAvoid>.<br>
+    /// <theLSToTake> and must be OUT of all shapes from the list <theLSToAvoid>.
     ///
     /// To remove internal boundaries between any cells in the result
     /// <theMaterial> variable should be used. The boundaries between
-    /// cells with the same material will be removed. Default value is 0.<br>
-    /// Thus, to remove any boundary the value of this variable should not be equal to 0.<br>
+    /// cells with the same material will be removed. Default value is 0.
+    /// Thus, to remove any boundary the value of this variable should not be equal to 0.
     /// <theUpdate> parameter defines whether to remove boundaries now or not.
     pub fn add_to_result(
         &mut self,
-        theLSToTake: &crate::ffi_types::TopTools_ListOfShape,
-        theLSToAvoid: &crate::ffi_types::TopTools_ListOfShape,
+        theLSToTake: &crate::ffi_types::NCollection_List_TopoDS_Shape,
+        theLSToAvoid: &crate::ffi_types::NCollection_List_TopoDS_Shape,
         theMaterial: i32,
         theUpdate: bool,
     ) {
@@ -15702,9 +15672,9 @@ impl CellsBuilder {
         })
     }
 
-    /// **Source:** `BOPAlgo_CellsBuilder.hxx`:201 - `BOPAlgo_CellsBuilder::AddAllToResult()`
-    /// Add all split parts to result.<br>
-    /// <theMaterial> defines the removal of internal boundaries;<br>
+    /// **Source:** `BOPAlgo_CellsBuilder.hxx`:202 - `BOPAlgo_CellsBuilder::AddAllToResult()`
+    /// Add all split parts to result.
+    /// <theMaterial> defines the removal of internal boundaries;
     /// <theUpdate> parameter defines whether to remove boundaries now or not.
     pub fn add_all_to_result(&mut self, theMaterial: i32, theUpdate: bool) {
         crate::check_void_result(unsafe {
@@ -15717,16 +15687,16 @@ impl CellsBuilder {
     }
 
     /// **Source:** `BOPAlgo_CellsBuilder.hxx`:210 - `BOPAlgo_CellsBuilder::RemoveFromResult()`
-    /// Removing the parts from result.<br>
-    /// The parts are defined by two lists of shapes:<br>
-    /// <theLSToTake> defines the arguments which parts should be removed from result;<br>
-    /// <theLSToAvoid> defines the arguments which parts should not be removed from result.<br>
+    /// Removing the parts from result.
+    /// The parts are defined by two lists of shapes:
+    /// <theLSToTake> defines the arguments which parts should be removed from result;
+    /// <theLSToAvoid> defines the arguments which parts should not be removed from result.
     /// To be removed from the result the part must be IN for all shapes from the list
     /// <theLSToTake> and must be OUT of all shapes from the list <theLSToAvoid>.
     pub fn remove_from_result(
         &mut self,
-        theLSToTake: &crate::ffi_types::TopTools_ListOfShape,
-        theLSToAvoid: &crate::ffi_types::TopTools_ListOfShape,
+        theLSToTake: &crate::ffi_types::NCollection_List_TopoDS_Shape,
+        theLSToAvoid: &crate::ffi_types::NCollection_List_TopoDS_Shape,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_CellsBuilder_remove_from_result(
@@ -15746,9 +15716,9 @@ impl CellsBuilder {
     }
 
     /// **Source:** `BOPAlgo_CellsBuilder.hxx`:221 - `BOPAlgo_CellsBuilder::RemoveInternalBoundaries()`
-    /// Removes internal boundaries between cells with the same material.<br>
+    /// Removes internal boundaries between cells with the same material.
     /// If the result contains the cells with same material but of different dimension
-    /// the removal of internal boundaries between these cells will not be performed.<br>
+    /// the removal of internal boundaries between these cells will not be performed.
     /// In case of some errors during the removal the method will set the appropriate warning
     /// status - use GetReport() to access them.
     pub fn remove_internal_boundaries(&mut self) {
@@ -15857,7 +15827,7 @@ impl CellsBuilder {
         }
     }
 
-    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:89 - `BOPAlgo_Builder::PPaveFiller()`
+    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:90 - `BOPAlgo_Builder::PPaveFiller()`
     pub fn p_pave_filler(&mut self) -> Option<&mut PaveFiller> {
         {
             let __val = crate::check_result(unsafe {
@@ -15873,7 +15843,7 @@ impl CellsBuilder {
         }
     }
 
-    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:92 - `BOPAlgo_Builder::PDS()`
+    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:93 - `BOPAlgo_Builder::PDS()`
     pub fn pds(&mut self) -> Option<&mut crate::bopds::DS> {
         {
             let __val = crate::check_result(unsafe {
@@ -15887,8 +15857,8 @@ impl CellsBuilder {
         }
     }
 
-    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:95 - `BOPAlgo_Builder::Context()`
-    pub fn context(&self) -> crate::OwnedPtr<crate::ffi_types::HandleIntToolsContext> {
+    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:96 - `BOPAlgo_Builder::Context()`
+    pub fn context(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_IntTools_Context> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKBO::BOPAlgo_CellsBuilder_inherited_Context(self as *const Self),
@@ -15896,7 +15866,7 @@ impl CellsBuilder {
         }
     }
 
-    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:99 - `BOPAlgo_Builder::AddArgument()`
+    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:100 - `BOPAlgo_Builder::AddArgument()`
     pub fn add_argument(&mut self, theShape: &crate::topo_ds::Shape) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_CellsBuilder_inherited_AddArgument(
@@ -15906,8 +15876,8 @@ impl CellsBuilder {
         })
     }
 
-    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:102 - `BOPAlgo_Builder::SetArguments()`
-    pub fn set_arguments(&mut self, theLS: &crate::ffi_types::TopTools_ListOfShape) {
+    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:103 - `BOPAlgo_Builder::SetArguments()`
+    pub fn set_arguments(&mut self, theLS: &crate::ffi_types::NCollection_List_TopoDS_Shape) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_CellsBuilder_inherited_SetArguments(
                 self as *mut Self,
@@ -15916,8 +15886,8 @@ impl CellsBuilder {
         })
     }
 
-    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:105 - `BOPAlgo_Builder::Arguments()`
-    pub fn arguments(&self) -> &crate::ffi_types::TopTools_ListOfShape {
+    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:106 - `BOPAlgo_Builder::Arguments()`
+    pub fn arguments(&self) -> &crate::ffi_types::NCollection_List_TopoDS_Shape {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKBO::BOPAlgo_CellsBuilder_inherited_Arguments(
@@ -15927,7 +15897,7 @@ impl CellsBuilder {
         }
     }
 
-    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:114 - `BOPAlgo_Builder::SetNonDestructive()`
+    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:115 - `BOPAlgo_Builder::SetNonDestructive()`
     pub fn set_non_destructive(&mut self, theFlag: bool) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_CellsBuilder_inherited_SetNonDestructive(
@@ -15937,7 +15907,7 @@ impl CellsBuilder {
         })
     }
 
-    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:119 - `BOPAlgo_Builder::NonDestructive()`
+    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:120 - `BOPAlgo_Builder::NonDestructive()`
     pub fn non_destructive(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_CellsBuilder_inherited_NonDestructive(
@@ -15946,7 +15916,7 @@ impl CellsBuilder {
         })
     }
 
-    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:122 - `BOPAlgo_Builder::SetGlue()`
+    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:123 - `BOPAlgo_Builder::SetGlue()`
     pub fn set_glue(&mut self, theGlue: crate::bop_algo::GlueEnum) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_CellsBuilder_inherited_SetGlue(
@@ -15956,7 +15926,7 @@ impl CellsBuilder {
         })
     }
 
-    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:125 - `BOPAlgo_Builder::Glue()`
+    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:126 - `BOPAlgo_Builder::Glue()`
     pub fn glue(&self) -> crate::bop_algo::GlueEnum {
         crate::bop_algo::GlueEnum::try_from(crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_CellsBuilder_inherited_Glue(self as *const Self)
@@ -15964,7 +15934,7 @@ impl CellsBuilder {
         .unwrap()
     }
 
-    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:128 - `BOPAlgo_Builder::SetCheckInverted()`
+    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:129 - `BOPAlgo_Builder::SetCheckInverted()`
     pub fn set_check_inverted(&mut self, theCheck: bool) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_CellsBuilder_inherited_SetCheckInverted(
@@ -15974,7 +15944,7 @@ impl CellsBuilder {
         })
     }
 
-    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:132 - `BOPAlgo_Builder::CheckInverted()`
+    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:133 - `BOPAlgo_Builder::CheckInverted()`
     pub fn check_inverted(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_CellsBuilder_inherited_CheckInverted(
@@ -15983,7 +15953,7 @@ impl CellsBuilder {
         })
     }
 
-    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:137 - `BOPAlgo_Builder::Perform()`
+    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:138 - `BOPAlgo_Builder::Perform()`
     pub fn perform(&mut self, theRange: &crate::message::ProgressRange) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_CellsBuilder_inherited_Perform(
@@ -15993,7 +15963,7 @@ impl CellsBuilder {
         })
     }
 
-    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:142 - `BOPAlgo_Builder::PerformWithFiller()`
+    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:143 - `BOPAlgo_Builder::PerformWithFiller()`
     pub fn perform_with_filler(
         &mut self,
         theFiller: &PaveFiller,
@@ -16008,15 +15978,15 @@ impl CellsBuilder {
         })
     }
 
-    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:186 - `BOPAlgo_Builder::BuildBOP()`
+    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:187 - `BOPAlgo_Builder::BuildBOP()`
     pub fn build_bop(
         &mut self,
-        theObjects: &crate::ffi_types::TopTools_ListOfShape,
+        theObjects: &crate::ffi_types::NCollection_List_TopoDS_Shape,
         theObjState: crate::top_abs::State,
-        theTools: &crate::ffi_types::TopTools_ListOfShape,
+        theTools: &crate::ffi_types::NCollection_List_TopoDS_Shape,
         theToolsState: crate::top_abs::State,
         theRange: &crate::message::ProgressRange,
-        theReport: &crate::ffi_types::HandleMessageReport,
+        theReport: &crate::ffi_types::Handle_Message_Report,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_CellsBuilder_inherited_BuildBOP(
@@ -16031,8 +16001,8 @@ impl CellsBuilder {
         })
     }
 
-    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:281 - `BOPAlgo_Builder::Images()`
-    pub fn images(&self) -> &crate::ffi_types::TopTools_DataMapOfShapeListOfShape {
+    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:285 - `BOPAlgo_Builder::Images()`
+    pub fn images(&self) -> &crate::ffi_types::NCollection_DataMap_TopoDS_Shape_NCollection_List_TopoDS_Shape_TopTools_ShapeMapHasher{
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKBO::BOPAlgo_CellsBuilder_inherited_Images(
                 self as *const Self,
@@ -16040,8 +16010,8 @@ impl CellsBuilder {
         }
     }
 
-    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:284 - `BOPAlgo_Builder::Origins()`
-    pub fn origins(&self) -> &crate::ffi_types::TopTools_DataMapOfShapeListOfShape {
+    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:292 - `BOPAlgo_Builder::Origins()`
+    pub fn origins(&self) -> &crate::ffi_types::NCollection_DataMap_TopoDS_Shape_NCollection_List_TopoDS_Shape_TopTools_ShapeMapHasher{
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKBO::BOPAlgo_CellsBuilder_inherited_Origins(
                 self as *const Self,
@@ -16049,8 +16019,11 @@ impl CellsBuilder {
         }
     }
 
-    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:288 - `BOPAlgo_Builder::ShapesSD()`
-    pub fn shapes_sd(&self) -> &crate::ffi_types::TopTools_DataMapOfShapeShape {
+    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:299 - `BOPAlgo_Builder::ShapesSD()`
+    pub fn shapes_sd(
+        &self,
+    ) -> &crate::ffi_types::NCollection_DataMap_TopoDS_Shape_TopoDS_Shape_TopTools_ShapeMapHasher
+    {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKBO::BOPAlgo_CellsBuilder_inherited_ShapesSD(
@@ -16060,7 +16033,7 @@ impl CellsBuilder {
         }
     }
 
-    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:47 - `BOPAlgo_BuilderShape::Shape()`
+    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:48 - `BOPAlgo_BuilderShape::Shape()`
     pub fn shape(&self) -> &crate::topo_ds::Shape {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKBO::BOPAlgo_CellsBuilder_inherited_Shape(
@@ -16069,7 +16042,7 @@ impl CellsBuilder {
         }
     }
 
-    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:71 - `BOPAlgo_BuilderShape::IsDeleted()`
+    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:72 - `BOPAlgo_BuilderShape::IsDeleted()`
     pub fn is_deleted(&mut self, theS: &crate::topo_ds::Shape) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_CellsBuilder_inherited_IsDeleted(
@@ -16079,29 +16052,29 @@ impl CellsBuilder {
         })
     }
 
-    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:77 - `BOPAlgo_BuilderShape::HasModified()`
+    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:78 - `BOPAlgo_BuilderShape::HasModified()`
     pub fn has_modified(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_CellsBuilder_inherited_HasModified(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:83 - `BOPAlgo_BuilderShape::HasGenerated()`
+    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:84 - `BOPAlgo_BuilderShape::HasGenerated()`
     pub fn has_generated(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_CellsBuilder_inherited_HasGenerated(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:89 - `BOPAlgo_BuilderShape::HasDeleted()`
+    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:90 - `BOPAlgo_BuilderShape::HasDeleted()`
     pub fn has_deleted(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_CellsBuilder_inherited_HasDeleted(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:95 - `BOPAlgo_BuilderShape::History()`
-    pub fn history(&mut self) -> crate::OwnedPtr<crate::ffi_types::HandleBRepToolsHistory> {
+    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:93 - `BOPAlgo_BuilderShape::History()`
+    pub fn history(&mut self) -> crate::OwnedPtr<crate::ffi_types::Handle_BRepTools_History> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKBO::BOPAlgo_CellsBuilder_inherited_History(self as *mut Self),
@@ -16109,7 +16082,7 @@ impl CellsBuilder {
         }
     }
 
-    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:116 - `BOPAlgo_BuilderShape::SetToFillHistory()`
+    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:114 - `BOPAlgo_BuilderShape::SetToFillHistory()`
     pub fn set_to_fill_history(&mut self, theHistFlag: bool) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_CellsBuilder_inherited_SetToFillHistory(
@@ -16119,7 +16092,7 @@ impl CellsBuilder {
         })
     }
 
-    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:119 - `BOPAlgo_BuilderShape::HasHistory()`
+    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:117 - `BOPAlgo_BuilderShape::HasHistory()`
     pub fn has_history(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_CellsBuilder_inherited_HasHistory(self as *const Self)
@@ -16127,7 +16100,7 @@ impl CellsBuilder {
     }
 
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:51 - `BOPAlgo_Options::Allocator()`
-    pub fn allocator(&self) -> &crate::ffi_types::HandleNCollectionBaseAllocator {
+    pub fn allocator(&self) -> &crate::ffi_types::TDF_HAllocator {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKBO::BOPAlgo_CellsBuilder_inherited_Allocator(
@@ -16138,7 +16111,7 @@ impl CellsBuilder {
     }
 
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:61 - `BOPAlgo_Options::AddError()`
-    pub fn add_error(&mut self, theAlert: &crate::ffi_types::HandleMessageAlert) {
+    pub fn add_error(&mut self, theAlert: &crate::ffi_types::Handle_Message_Alert) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_CellsBuilder_inherited_AddError(
                 self as *mut Self,
@@ -16148,7 +16121,7 @@ impl CellsBuilder {
     }
 
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:67 - `BOPAlgo_Options::AddWarning()`
-    pub fn add_warning(&mut self, theAlert: &crate::ffi_types::HandleMessageAlert) {
+    pub fn add_warning(&mut self, theAlert: &crate::ffi_types::Handle_Message_Alert) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_CellsBuilder_inherited_AddWarning(
                 self as *mut Self,
@@ -16165,7 +16138,7 @@ impl CellsBuilder {
     }
 
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:76 - `BOPAlgo_Options::HasError()`
-    pub fn has_error(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    pub fn has_error(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_CellsBuilder_inherited_HasError(
                 self as *const Self,
@@ -16182,7 +16155,7 @@ impl CellsBuilder {
     }
 
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:85 - `BOPAlgo_Options::HasWarning()`
-    pub fn has_warning(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    pub fn has_warning(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_CellsBuilder_inherited_HasWarning(
                 self as *const Self,
@@ -16192,7 +16165,7 @@ impl CellsBuilder {
     }
 
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:91 - `BOPAlgo_Options::GetReport()`
-    pub fn get_report(&self) -> &crate::ffi_types::HandleMessageReport {
+    pub fn get_report(&self) -> &crate::ffi_types::Handle_Message_Report {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKBO::BOPAlgo_CellsBuilder_inherited_GetReport(
@@ -16369,7 +16342,7 @@ impl CheckResult {
 
     /// **Source:** `BOPAlgo_CheckResult.hxx`:56 - `BOPAlgo_CheckResult::GetFaultyShapes1()`
     /// returns list of faulty shapes for object
-    pub fn get_faulty_shapes1(&self) -> &crate::ffi_types::TopTools_ListOfShape {
+    pub fn get_faulty_shapes1(&self) -> &crate::ffi_types::NCollection_List_TopoDS_Shape {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKBO::BOPAlgo_CheckResult_get_faulty_shapes1(
                 self as *const Self,
@@ -16379,7 +16352,7 @@ impl CheckResult {
 
     /// **Source:** `BOPAlgo_CheckResult.hxx`:59 - `BOPAlgo_CheckResult::GetFaultyShapes2()`
     /// returns list of faulty shapes for tool
-    pub fn get_faulty_shapes2(&self) -> &crate::ffi_types::TopTools_ListOfShape {
+    pub fn get_faulty_shapes2(&self) -> &crate::ffi_types::NCollection_List_TopoDS_Shape {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKBO::BOPAlgo_CheckResult_get_faulty_shapes2(
                 self as *const Self,
@@ -16525,17 +16498,17 @@ impl CheckerSI {
     }
 
     /// **Source:** `BOPAlgo_CheckerSI.hxx`:59 - `BOPAlgo_CheckerSI::SetLevelOfCheck()`
-    /// Sets the level of checking shape on self-interference.<br>
-    /// It defines which interferences will be checked:<br>
-    /// 0 - only V/V;<br>
-    /// 1 - V/V and V/E;<br>
-    /// 2 - V/V, V/E and E/E;<br>
-    /// 3 - V/V, V/E, E/E and V/F;<br>
-    /// 4 - V/V, V/E, E/E, V/F and E/F;<br>
-    /// 5 - V/V, V/E, E/E, V/F, E/F and F/F;<br>
-    /// 6 - V/V, V/E, E/E, V/F, E/F, F/F and V/S;<br>
-    /// 7 - V/V, V/E, E/E, V/F, E/F, F/F, V/S and E/S;<br>
-    /// 8 - V/V, V/E, E/E, V/F, E/F, F/F, V/S, E/S and F/S;<br>
+    /// Sets the level of checking shape on self-interference.
+    /// It defines which interferences will be checked:
+    /// 0 - only V/V;
+    /// 1 - V/V and V/E;
+    /// 2 - V/V, V/E and E/E;
+    /// 3 - V/V, V/E, E/E and V/F;
+    /// 4 - V/V, V/E, E/E, V/F and E/F;
+    /// 5 - V/V, V/E, E/E, V/F, E/F and F/F;
+    /// 6 - V/V, V/E, E/E, V/F, E/F, F/F and V/S;
+    /// 7 - V/V, V/E, E/E, V/F, E/F, F/F, V/S and E/S;
+    /// 8 - V/V, V/E, E/E, V/F, E/F, F/F, V/S, E/S and F/S;
     /// 9 - V/V, V/E, E/E, V/F, E/F, F/F, V/S, E/S, F/S and S/S - all interferences (Default value)
     pub fn set_level_of_check(&mut self, theLevel: i32) {
         crate::check_void_result(unsafe {
@@ -16602,7 +16575,7 @@ impl CheckerSI {
         }
     }
 
-    /// Inherited: **Source:** `BOPAlgo_PaveFiller.hxx`:119 - `BOPAlgo_PaveFiller::DS()`
+    /// Inherited: **Source:** `BOPAlgo_PaveFiller.hxx`:117 - `BOPAlgo_PaveFiller::DS()`
     pub fn ds(&mut self) -> &crate::bopds::DS {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKBO::BOPAlgo_CheckerSI_inherited_DS(
@@ -16611,7 +16584,7 @@ impl CheckerSI {
         }
     }
 
-    /// Inherited: **Source:** `BOPAlgo_PaveFiller.hxx`:121 - `BOPAlgo_PaveFiller::PDS()`
+    /// Inherited: **Source:** `BOPAlgo_PaveFiller.hxx`:119 - `BOPAlgo_PaveFiller::PDS()`
     pub fn pds(&mut self) -> Option<&mut crate::bopds::DS> {
         {
             let __val = crate::check_result(unsafe {
@@ -16625,8 +16598,8 @@ impl CheckerSI {
         }
     }
 
-    /// Inherited: **Source:** `BOPAlgo_PaveFiller.hxx`:126 - `BOPAlgo_PaveFiller::SetArguments()`
-    pub fn set_arguments(&mut self, theLS: &crate::ffi_types::TopTools_ListOfShape) {
+    /// Inherited: **Source:** `BOPAlgo_PaveFiller.hxx`:124 - `BOPAlgo_PaveFiller::SetArguments()`
+    pub fn set_arguments(&mut self, theLS: &crate::ffi_types::NCollection_List_TopoDS_Shape) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_CheckerSI_inherited_SetArguments(
                 self as *mut Self,
@@ -16635,7 +16608,7 @@ impl CheckerSI {
         })
     }
 
-    /// Inherited: **Source:** `BOPAlgo_PaveFiller.hxx`:129 - `BOPAlgo_PaveFiller::AddArgument()`
+    /// Inherited: **Source:** `BOPAlgo_PaveFiller.hxx`:130 - `BOPAlgo_PaveFiller::AddArgument()`
     pub fn add_argument(&mut self, theShape: &crate::topo_ds::Shape) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_CheckerSI_inherited_AddArgument(
@@ -16645,8 +16618,8 @@ impl CheckerSI {
         })
     }
 
-    /// Inherited: **Source:** `BOPAlgo_PaveFiller.hxx`:132 - `BOPAlgo_PaveFiller::Arguments()`
-    pub fn arguments(&self) -> &crate::ffi_types::TopTools_ListOfShape {
+    /// Inherited: **Source:** `BOPAlgo_PaveFiller.hxx`:133 - `BOPAlgo_PaveFiller::Arguments()`
+    pub fn arguments(&self) -> &crate::ffi_types::NCollection_List_TopoDS_Shape {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKBO::BOPAlgo_CheckerSI_inherited_Arguments(
                 self as *const Self,
@@ -16654,8 +16627,8 @@ impl CheckerSI {
         }
     }
 
-    /// Inherited: **Source:** `BOPAlgo_PaveFiller.hxx`:134 - `BOPAlgo_PaveFiller::Context()`
-    pub fn context(&mut self) -> &crate::ffi_types::HandleIntToolsContext {
+    /// Inherited: **Source:** `BOPAlgo_PaveFiller.hxx`:135 - `BOPAlgo_PaveFiller::Context()`
+    pub fn context(&mut self) -> &crate::ffi_types::Handle_IntTools_Context {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKBO::BOPAlgo_CheckerSI_inherited_Context(
                 self as *mut Self,
@@ -16663,7 +16636,7 @@ impl CheckerSI {
         }
     }
 
-    /// Inherited: **Source:** `BOPAlgo_PaveFiller.hxx`:136 - `BOPAlgo_PaveFiller::SetSectionAttribute()`
+    /// Inherited: **Source:** `BOPAlgo_PaveFiller.hxx`:137 - `BOPAlgo_PaveFiller::SetSectionAttribute()`
     pub fn set_section_attribute(&mut self, theSecAttr: &SectionAttribute) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_CheckerSI_inherited_SetSectionAttribute(
@@ -16673,7 +16646,7 @@ impl CheckerSI {
         })
     }
 
-    /// Inherited: **Source:** `BOPAlgo_PaveFiller.hxx`:141 - `BOPAlgo_PaveFiller::SetNonDestructive()`
+    /// Inherited: **Source:** `BOPAlgo_PaveFiller.hxx`:142 - `BOPAlgo_PaveFiller::SetNonDestructive()`
     pub fn set_non_destructive(&mut self, theFlag: bool) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_CheckerSI_inherited_SetNonDestructive(
@@ -16683,14 +16656,14 @@ impl CheckerSI {
         })
     }
 
-    /// Inherited: **Source:** `BOPAlgo_PaveFiller.hxx`:146 - `BOPAlgo_PaveFiller::NonDestructive()`
+    /// Inherited: **Source:** `BOPAlgo_PaveFiller.hxx`:147 - `BOPAlgo_PaveFiller::NonDestructive()`
     pub fn non_destructive(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_CheckerSI_inherited_NonDestructive(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `BOPAlgo_PaveFiller.hxx`:152 - `BOPAlgo_PaveFiller::SetGlue()`
+    /// Inherited: **Source:** `BOPAlgo_PaveFiller.hxx`:153 - `BOPAlgo_PaveFiller::SetGlue()`
     pub fn set_glue(&mut self, theGlue: crate::bop_algo::GlueEnum) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_CheckerSI_inherited_SetGlue(
@@ -16700,7 +16673,7 @@ impl CheckerSI {
         })
     }
 
-    /// Inherited: **Source:** `BOPAlgo_PaveFiller.hxx`:155 - `BOPAlgo_PaveFiller::Glue()`
+    /// Inherited: **Source:** `BOPAlgo_PaveFiller.hxx`:156 - `BOPAlgo_PaveFiller::Glue()`
     pub fn glue(&self) -> crate::bop_algo::GlueEnum {
         crate::bop_algo::GlueEnum::try_from(crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_CheckerSI_inherited_Glue(self as *const Self)
@@ -16708,7 +16681,7 @@ impl CheckerSI {
         .unwrap()
     }
 
-    /// Inherited: **Source:** `BOPAlgo_PaveFiller.hxx`:158 - `BOPAlgo_PaveFiller::SetAvoidBuildPCurve()`
+    /// Inherited: **Source:** `BOPAlgo_PaveFiller.hxx`:159 - `BOPAlgo_PaveFiller::SetAvoidBuildPCurve()`
     pub fn set_avoid_build_p_curve(&mut self, theValue: bool) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_CheckerSI_inherited_SetAvoidBuildPCurve(
@@ -16718,7 +16691,7 @@ impl CheckerSI {
         })
     }
 
-    /// Inherited: **Source:** `BOPAlgo_PaveFiller.hxx`:161 - `BOPAlgo_PaveFiller::IsAvoidBuildPCurve()`
+    /// Inherited: **Source:** `BOPAlgo_PaveFiller.hxx`:162 - `BOPAlgo_PaveFiller::IsAvoidBuildPCurve()`
     pub fn is_avoid_build_p_curve(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_CheckerSI_inherited_IsAvoidBuildPCurve(
@@ -16728,7 +16701,7 @@ impl CheckerSI {
     }
 
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:51 - `BOPAlgo_Options::Allocator()`
-    pub fn allocator(&self) -> &crate::ffi_types::HandleNCollectionBaseAllocator {
+    pub fn allocator(&self) -> &crate::ffi_types::TDF_HAllocator {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKBO::BOPAlgo_CheckerSI_inherited_Allocator(
                 self as *const Self,
@@ -16737,7 +16710,7 @@ impl CheckerSI {
     }
 
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:61 - `BOPAlgo_Options::AddError()`
-    pub fn add_error(&mut self, theAlert: &crate::ffi_types::HandleMessageAlert) {
+    pub fn add_error(&mut self, theAlert: &crate::ffi_types::Handle_Message_Alert) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_CheckerSI_inherited_AddError(
                 self as *mut Self,
@@ -16747,7 +16720,7 @@ impl CheckerSI {
     }
 
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:67 - `BOPAlgo_Options::AddWarning()`
-    pub fn add_warning(&mut self, theAlert: &crate::ffi_types::HandleMessageAlert) {
+    pub fn add_warning(&mut self, theAlert: &crate::ffi_types::Handle_Message_Alert) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_CheckerSI_inherited_AddWarning(
                 self as *mut Self,
@@ -16764,7 +16737,7 @@ impl CheckerSI {
     }
 
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:76 - `BOPAlgo_Options::HasError()`
-    pub fn has_error(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    pub fn has_error(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_CheckerSI_inherited_HasError(
                 self as *const Self,
@@ -16781,7 +16754,7 @@ impl CheckerSI {
     }
 
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:85 - `BOPAlgo_Options::HasWarning()`
-    pub fn has_warning(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    pub fn has_warning(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_CheckerSI_inherited_HasWarning(
                 self as *const Self,
@@ -16791,7 +16764,7 @@ impl CheckerSI {
     }
 
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:91 - `BOPAlgo_Options::GetReport()`
-    pub fn get_report(&self) -> &crate::ffi_types::HandleMessageReport {
+    pub fn get_report(&self) -> &crate::ffi_types::Handle_Message_Report {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKBO::BOPAlgo_CheckerSI_inherited_GetReport(
                 self as *const Self,
@@ -16933,8 +16906,8 @@ impl CheckerSI {
 ///
 /// Here is the example of usage of the algorithm:
 /// ~~~~
-/// TopTools_ListOfShape anArguments = ...;  // Shapes to make connected
-/// Standard_Boolean bRunParallel = ...;     // Parallel processing mode
+/// NCollection_List<TopoDS_Shape> anArguments = ...;  // Shapes to make connected
+/// bool bRunParallel = ...;     // Parallel processing mode
 ///
 /// BOPAlgo_MakeConnected aMC;               // Tool for making the shapes connected
 /// aMC.SetArguments(anArguments);           // Set the shapes
@@ -16963,8 +16936,8 @@ impl CheckerSI {
 /// for (; anExp.More(); anExp.Next())
 /// {
 /// const TopoDS_Shape& anElement = anExp.Current();
-/// const TopTools_ListOfShape& aNegativeM = aMC.MaterialsOnNegativeSide(anElement);
-/// const TopTools_ListOfShape& aPositiveM = aMC.MaterialsOnPositiveSide(anElement);
+/// const NCollection_List<TopoDS_Shape>& aNegativeM = aMC.MaterialsOnNegativeSide(anElement);
+/// const NCollection_List<TopoDS_Shape>& aPositiveM = aMC.MaterialsOnPositiveSide(anElement);
 /// }
 ///
 /// // Making the connected shape periodic
@@ -17005,17 +16978,17 @@ impl MakeConnected {
         }
     }
 
-    /// **Source:** `BOPAlgo_MakeConnected.hxx`:146 - `BOPAlgo_MakeConnected::SetArguments()`
+    /// **Source:** `BOPAlgo_MakeConnected.hxx`:145 - `BOPAlgo_MakeConnected::SetArguments()`
     /// @name Setters for the shapes to make connected
     /// Sets the shape for making them connected.
     /// @param[in] theArgs  The arguments for the operation.
-    pub fn set_arguments(&mut self, theArgs: &crate::ffi_types::TopTools_ListOfShape) {
+    pub fn set_arguments(&mut self, theArgs: &crate::ffi_types::NCollection_List_TopoDS_Shape) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_MakeConnected_set_arguments(self as *mut Self, theArgs)
         })
     }
 
-    /// **Source:** `BOPAlgo_MakeConnected.hxx`:150 - `BOPAlgo_MakeConnected::AddArgument()`
+    /// **Source:** `BOPAlgo_MakeConnected.hxx`:149 - `BOPAlgo_MakeConnected::AddArgument()`
     /// Adds the shape to the arguments.
     /// @param[in] theS  One of the argument shapes.
     pub fn add_argument(&mut self, theS: &crate::topo_ds::Shape) {
@@ -17024,9 +16997,9 @@ impl MakeConnected {
         })
     }
 
-    /// **Source:** `BOPAlgo_MakeConnected.hxx`:153 - `BOPAlgo_MakeConnected::Arguments()`
+    /// **Source:** `BOPAlgo_MakeConnected.hxx`:152 - `BOPAlgo_MakeConnected::Arguments()`
     /// Returns the list of arguments of the operation.
-    pub fn arguments(&self) -> &crate::ffi_types::TopTools_ListOfShape {
+    pub fn arguments(&self) -> &crate::ffi_types::NCollection_List_TopoDS_Shape {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKBO::BOPAlgo_MakeConnected_arguments(
                 self as *const Self,
@@ -17034,7 +17007,7 @@ impl MakeConnected {
         }
     }
 
-    /// **Source:** `BOPAlgo_MakeConnected.hxx`:157 - `BOPAlgo_MakeConnected::Perform()`
+    /// **Source:** `BOPAlgo_MakeConnected.hxx`:156 - `BOPAlgo_MakeConnected::Perform()`
     /// @name Performing the operations
     /// Performs the operation, i.e. makes the input shapes connected.
     pub fn perform(&mut self) {
@@ -17043,7 +17016,7 @@ impl MakeConnected {
         })
     }
 
-    /// **Source:** `BOPAlgo_MakeConnected.hxx`:164 - `BOPAlgo_MakeConnected::MakePeriodic()`
+    /// **Source:** `BOPAlgo_MakeConnected.hxx`:163 - `BOPAlgo_MakeConnected::MakePeriodic()`
     /// @name Shape periodicity & repetition
     /// Makes the connected shape periodic.
     /// Repeated calls of this method overwrite the previous calls
@@ -17058,7 +17031,7 @@ impl MakeConnected {
         })
     }
 
-    /// **Source:** `BOPAlgo_MakeConnected.hxx`:171 - `BOPAlgo_MakeConnected::RepeatShape()`
+    /// **Source:** `BOPAlgo_MakeConnected.hxx`:170 - `BOPAlgo_MakeConnected::RepeatShape()`
     /// Performs repetition of the periodic shape in specified direction
     /// required number of times.
     /// @param[in] theDirectionID  The direction's ID (0 for X, 1 for Y, 2 for Z);
@@ -17074,7 +17047,7 @@ impl MakeConnected {
         })
     }
 
-    /// **Source:** `BOPAlgo_MakeConnected.hxx`:176 - `BOPAlgo_MakeConnected::ClearRepetitions()`
+    /// **Source:** `BOPAlgo_MakeConnected.hxx`:174 - `BOPAlgo_MakeConnected::ClearRepetitions()`
     /// Clears the repetitions performed on the periodic shape,
     /// keeping the shape periodic.
     pub fn clear_repetitions(&mut self) {
@@ -17083,7 +17056,7 @@ impl MakeConnected {
         })
     }
 
-    /// **Source:** `BOPAlgo_MakeConnected.hxx`:179 - `BOPAlgo_MakeConnected::PeriodicityTool()`
+    /// **Source:** `BOPAlgo_MakeConnected.hxx`:177 - `BOPAlgo_MakeConnected::PeriodicityTool()`
     /// Returns the periodicity tool.
     pub fn periodicity_tool(&self) -> &MakePeriodic {
         unsafe {
@@ -17093,7 +17066,7 @@ impl MakeConnected {
         }
     }
 
-    /// **Source:** `BOPAlgo_MakeConnected.hxx`:185 - `BOPAlgo_MakeConnected::MaterialsOnPositiveSide()`
+    /// **Source:** `BOPAlgo_MakeConnected.hxx`:183 - `BOPAlgo_MakeConnected::MaterialsOnPositiveSide()`
     /// @name Material transitions
     /// Returns the original shapes which images contain the
     /// the given shape with FORWARD orientation.
@@ -17107,7 +17080,7 @@ impl MakeConnected {
     pub unsafe fn materials_on_positive_side(
         &mut self,
         theS: &crate::topo_ds::Shape,
-    ) -> &crate::ffi_types::TopTools_ListOfShape {
+    ) -> &crate::ffi_types::NCollection_List_TopoDS_Shape {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKBO::BOPAlgo_MakeConnected_materials_on_positive_side(
@@ -17118,7 +17091,7 @@ impl MakeConnected {
         }
     }
 
-    /// **Source:** `BOPAlgo_MakeConnected.hxx`:194 - `BOPAlgo_MakeConnected::MaterialsOnNegativeSide()`
+    /// **Source:** `BOPAlgo_MakeConnected.hxx`:192 - `BOPAlgo_MakeConnected::MaterialsOnNegativeSide()`
     /// Returns the original shapes which images contain the
     /// the given shape with REVERSED orientation.
     /// @param[in] theS  The shape for which the materials are necessary.
@@ -17131,7 +17104,7 @@ impl MakeConnected {
     pub unsafe fn materials_on_negative_side(
         &mut self,
         theS: &crate::topo_ds::Shape,
-    ) -> &crate::ffi_types::TopTools_ListOfShape {
+    ) -> &crate::ffi_types::NCollection_List_TopoDS_Shape {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKBO::BOPAlgo_MakeConnected_materials_on_negative_side(
@@ -17142,10 +17115,10 @@ impl MakeConnected {
         }
     }
 
-    /// **Source:** `BOPAlgo_MakeConnected.hxx`:202 - `BOPAlgo_MakeConnected::History()`
+    /// **Source:** `BOPAlgo_MakeConnected.hxx`:200 - `BOPAlgo_MakeConnected::History()`
     /// @name History methods
     /// Returns the history of operations
-    pub fn history(&self) -> &crate::ffi_types::HandleBRepToolsHistory {
+    pub fn history(&self) -> &crate::ffi_types::Handle_BRepTools_History {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKBO::BOPAlgo_MakeConnected_history(
                 self as *const Self,
@@ -17153,7 +17126,7 @@ impl MakeConnected {
         }
     }
 
-    /// **Source:** `BOPAlgo_MakeConnected.hxx`:206 - `BOPAlgo_MakeConnected::GetModified()`
+    /// **Source:** `BOPAlgo_MakeConnected.hxx`:204 - `BOPAlgo_MakeConnected::GetModified()`
     /// Returns the list of shapes modified from the given shape.
     /// @param[in] theS  The shape for which the modified shapes are necessary.
     ///
@@ -17165,7 +17138,7 @@ impl MakeConnected {
     pub unsafe fn get_modified(
         &mut self,
         theS: &crate::topo_ds::Shape,
-    ) -> &crate::ffi_types::TopTools_ListOfShape {
+    ) -> &crate::ffi_types::NCollection_List_TopoDS_Shape {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKBO::BOPAlgo_MakeConnected_get_modified(
                 self as *mut Self,
@@ -17174,7 +17147,7 @@ impl MakeConnected {
         }
     }
 
-    /// **Source:** `BOPAlgo_MakeConnected.hxx`:213 - `BOPAlgo_MakeConnected::GetOrigins()`
+    /// **Source:** `BOPAlgo_MakeConnected.hxx`:211 - `BOPAlgo_MakeConnected::GetOrigins()`
     /// Returns the list of original shapes from which the current shape has been created.
     /// @param[in] theS  The shape for which the origins are necessary.
     ///
@@ -17186,7 +17159,7 @@ impl MakeConnected {
     pub unsafe fn get_origins(
         &mut self,
         theS: &crate::topo_ds::Shape,
-    ) -> &crate::ffi_types::TopTools_ListOfShape {
+    ) -> &crate::ffi_types::NCollection_List_TopoDS_Shape {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKBO::BOPAlgo_MakeConnected_get_origins(
                 self as *mut Self,
@@ -17195,7 +17168,7 @@ impl MakeConnected {
         }
     }
 
-    /// **Source:** `BOPAlgo_MakeConnected.hxx`:221 - `BOPAlgo_MakeConnected::Shape()`
+    /// **Source:** `BOPAlgo_MakeConnected.hxx`:219 - `BOPAlgo_MakeConnected::Shape()`
     /// @name Getting the result shapes
     /// Returns the resulting connected shape
     pub fn shape(&self) -> &crate::topo_ds::Shape {
@@ -17206,7 +17179,7 @@ impl MakeConnected {
         }
     }
 
-    /// **Source:** `BOPAlgo_MakeConnected.hxx`:224 - `BOPAlgo_MakeConnected::PeriodicShape()`
+    /// **Source:** `BOPAlgo_MakeConnected.hxx`:222 - `BOPAlgo_MakeConnected::PeriodicShape()`
     /// Returns the resulting periodic & repeated shape
     pub fn periodic_shape(&self) -> &crate::topo_ds::Shape {
         unsafe {
@@ -17216,7 +17189,7 @@ impl MakeConnected {
         }
     }
 
-    /// **Source:** `BOPAlgo_MakeConnected.hxx`:228 - `BOPAlgo_MakeConnected::Clear()`
+    /// **Source:** `BOPAlgo_MakeConnected.hxx`:226 - `BOPAlgo_MakeConnected::Clear()`
     /// @name Clearing the contents of the algorithm from previous runs
     /// Clears the contents of the algorithm.
     pub fn clear(&mut self) {
@@ -17246,7 +17219,7 @@ impl MakeConnected {
     }
 
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:51 - `BOPAlgo_Options::Allocator()`
-    pub fn allocator(&self) -> &crate::ffi_types::HandleNCollectionBaseAllocator {
+    pub fn allocator(&self) -> &crate::ffi_types::TDF_HAllocator {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKBO::BOPAlgo_MakeConnected_inherited_Allocator(
@@ -17257,7 +17230,7 @@ impl MakeConnected {
     }
 
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:61 - `BOPAlgo_Options::AddError()`
-    pub fn add_error(&mut self, theAlert: &crate::ffi_types::HandleMessageAlert) {
+    pub fn add_error(&mut self, theAlert: &crate::ffi_types::Handle_Message_Alert) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_MakeConnected_inherited_AddError(
                 self as *mut Self,
@@ -17267,7 +17240,7 @@ impl MakeConnected {
     }
 
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:67 - `BOPAlgo_Options::AddWarning()`
-    pub fn add_warning(&mut self, theAlert: &crate::ffi_types::HandleMessageAlert) {
+    pub fn add_warning(&mut self, theAlert: &crate::ffi_types::Handle_Message_Alert) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_MakeConnected_inherited_AddWarning(
                 self as *mut Self,
@@ -17284,7 +17257,7 @@ impl MakeConnected {
     }
 
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:76 - `BOPAlgo_Options::HasError()`
-    pub fn has_error(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    pub fn has_error(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_MakeConnected_inherited_HasError(
                 self as *const Self,
@@ -17301,7 +17274,7 @@ impl MakeConnected {
     }
 
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:85 - `BOPAlgo_Options::HasWarning()`
-    pub fn has_warning(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    pub fn has_warning(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_MakeConnected_inherited_HasWarning(
                 self as *const Self,
@@ -17311,7 +17284,7 @@ impl MakeConnected {
     }
 
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:91 - `BOPAlgo_Options::GetReport()`
-    pub fn get_report(&self) -> &crate::ffi_types::HandleMessageReport {
+    pub fn get_report(&self) -> &crate::ffi_types::Handle_Message_Report {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKBO::BOPAlgo_MakeConnected_inherited_GetReport(
@@ -17404,7 +17377,7 @@ impl MakeConnected {
 // From BOPAlgo_MakePeriodic.hxx
 // ========================
 
-/// **Source:** `BOPAlgo_MakePeriodic.hxx`:124 - `BOPAlgo_MakePeriodic`
+/// **Source:** `BOPAlgo_MakePeriodic.hxx`:125 - `BOPAlgo_MakePeriodic`
 /// BOPAlgo_MakePeriodic is the tool for making an arbitrary shape periodic
 /// in 3D space in specified directions.
 ///
@@ -17463,14 +17436,14 @@ impl MakeConnected {
 /// Example of usage of the algorithm:
 /// ~~~~
 /// TopoDS_Shape aShape = ...;                 // The shape to make periodic
-/// Standard_Boolean bMakeXPeriodic = ...;     // Flag for making or not the shape periodic in X
-/// direction Standard_Real aXPeriod = ...;              // X period for the shape Standard_Boolean
+/// bool bMakeXPeriodic = ...;     // Flag for making or not the shape periodic in X
+/// direction double aXPeriod = ...;              // X period for the shape bool
 /// isXTrimmed = ...;         // Flag defining whether it is necessary to trimming
 /// // the shape to fit to X period
-/// Standard_Real aXFirst = ...;               // Start of the X period
+/// double aXFirst = ...;               // Start of the X period
 /// // (really necessary only if the trimming is
 /// requested)
-/// Standard_Boolean bRunParallel = ...;       // Parallel processing mode or single
+/// bool bRunParallel = ...;       // Parallel processing mode or single
 ///
 /// BOPAlgo_MakePeriodic aPeriodicityMaker;                   // Periodicity maker
 /// aPeriodicityMaker.SetShape(aShape);                       // Set the shape
@@ -17510,7 +17483,7 @@ unsafe impl crate::CppDeletable for MakePeriodic {
 }
 
 impl MakePeriodic {
-    /// **Source:** `BOPAlgo_MakePeriodic.hxx`:131 - `BOPAlgo_MakePeriodic::BOPAlgo_MakePeriodic()`
+    /// **Source:** `BOPAlgo_MakePeriodic.hxx`:132 - `BOPAlgo_MakePeriodic::BOPAlgo_MakePeriodic()`
     /// @name Constructor
     /// Empty constructor
     pub fn new() -> crate::OwnedPtr<Self> {
@@ -17521,7 +17494,7 @@ impl MakePeriodic {
         }
     }
 
-    /// **Source:** `BOPAlgo_MakePeriodic.hxx`:140 - `BOPAlgo_MakePeriodic::SetShape()`
+    /// **Source:** `BOPAlgo_MakePeriodic.hxx`:137 - `BOPAlgo_MakePeriodic::SetShape()`
     /// @name Setting the shape to make it periodic
     /// Sets the shape to make it periodic.
     /// @param[in] theShape  The shape to make periodic.
@@ -17531,7 +17504,7 @@ impl MakePeriodic {
         })
     }
 
-    /// **Source:** `BOPAlgo_MakePeriodic.hxx`:172 - `BOPAlgo_MakePeriodic::SetPeriodicityParameters()`
+    /// **Source:** `BOPAlgo_MakePeriodic.hxx`:169 - `BOPAlgo_MakePeriodic::SetPeriodicityParameters()`
     /// @name Setters/Getters for periodicity parameters structure
     /// Sets the periodicity parameters.
     /// @param[in] theParams  Periodicity parameters
@@ -17544,7 +17517,7 @@ impl MakePeriodic {
         })
     }
 
-    /// **Source:** `BOPAlgo_MakePeriodic.hxx`:177 - `BOPAlgo_MakePeriodic::PeriodicityParameters()`
+    /// **Source:** `BOPAlgo_MakePeriodic.hxx`:174 - `BOPAlgo_MakePeriodic::PeriodicityParameters()`
     pub fn periodicity_parameters(&self) -> &MakePeriodic_PeriodicityParams {
         unsafe {
             &*(crate::check_result(
@@ -17555,7 +17528,7 @@ impl MakePeriodic {
         }
     }
 
-    /// **Source:** `BOPAlgo_MakePeriodic.hxx`:188 - `BOPAlgo_MakePeriodic::MakePeriodic()`
+    /// **Source:** `BOPAlgo_MakePeriodic.hxx`:185 - `BOPAlgo_MakePeriodic::MakePeriodic()`
     /// @name Methods for setting/getting periodicity info using ID as a direction
     /// Sets the flag to make the shape periodic in specified direction:
     /// - 0 - X direction;
@@ -17576,7 +17549,7 @@ impl MakePeriodic {
         })
     }
 
-    /// **Source:** `BOPAlgo_MakePeriodic.hxx`:199 - `BOPAlgo_MakePeriodic::IsPeriodic()`
+    /// **Source:** `BOPAlgo_MakePeriodic.hxx`:196 - `BOPAlgo_MakePeriodic::IsPeriodic()`
     /// Returns the info about Periodicity of the shape in specified direction.
     /// @param[in] theDirectionID  The direction's ID.
     pub fn is_periodic(&self, theDirectionID: i32) -> bool {
@@ -17588,7 +17561,7 @@ impl MakePeriodic {
         })
     }
 
-    /// **Source:** `BOPAlgo_MakePeriodic.hxx`:206 - `BOPAlgo_MakePeriodic::Period()`
+    /// **Source:** `BOPAlgo_MakePeriodic.hxx`:203 - `BOPAlgo_MakePeriodic::Period()`
     /// Returns the Period of the shape in specified direction.
     /// @param[in] theDirectionID  The direction's ID.
     pub fn period(&self, theDirectionID: i32) -> f64 {
@@ -17597,7 +17570,7 @@ impl MakePeriodic {
         })
     }
 
-    /// **Source:** `BOPAlgo_MakePeriodic.hxx`:216 - `BOPAlgo_MakePeriodic::MakeXPeriodic()`
+    /// **Source:** `BOPAlgo_MakePeriodic.hxx`:213 - `BOPAlgo_MakePeriodic::MakeXPeriodic()`
     /// @name Named methods for setting/getting info about shape's periodicity
     /// Sets the flag to make the shape periodic in X direction.
     /// @param[in] theIsPeriodic  Flag defining periodicity in X direction;
@@ -17612,7 +17585,7 @@ impl MakePeriodic {
         })
     }
 
-    /// **Source:** `BOPAlgo_MakePeriodic.hxx`:222 - `BOPAlgo_MakePeriodic::IsXPeriodic()`
+    /// **Source:** `BOPAlgo_MakePeriodic.hxx`:219 - `BOPAlgo_MakePeriodic::IsXPeriodic()`
     /// Returns the info about periodicity of the shape in X direction.
     pub fn is_x_periodic(&self) -> bool {
         crate::check_result(unsafe {
@@ -17620,7 +17593,7 @@ impl MakePeriodic {
         })
     }
 
-    /// **Source:** `BOPAlgo_MakePeriodic.hxx`:225 - `BOPAlgo_MakePeriodic::XPeriod()`
+    /// **Source:** `BOPAlgo_MakePeriodic.hxx`:222 - `BOPAlgo_MakePeriodic::XPeriod()`
     /// Returns the XPeriod of the shape
     pub fn x_period(&self) -> f64 {
         crate::check_result(unsafe {
@@ -17628,7 +17601,7 @@ impl MakePeriodic {
         })
     }
 
-    /// **Source:** `BOPAlgo_MakePeriodic.hxx`:230 - `BOPAlgo_MakePeriodic::MakeYPeriodic()`
+    /// **Source:** `BOPAlgo_MakePeriodic.hxx`:227 - `BOPAlgo_MakePeriodic::MakeYPeriodic()`
     /// Sets the flag to make the shape periodic in Y direction.
     /// @param[in] theIsPeriodic  Flag defining periodicity in Y direction;
     /// @param[in] thePeriod  Required period in Y direction.
@@ -17642,7 +17615,7 @@ impl MakePeriodic {
         })
     }
 
-    /// **Source:** `BOPAlgo_MakePeriodic.hxx`:236 - `BOPAlgo_MakePeriodic::IsYPeriodic()`
+    /// **Source:** `BOPAlgo_MakePeriodic.hxx`:233 - `BOPAlgo_MakePeriodic::IsYPeriodic()`
     /// Returns the info about periodicity of the shape in Y direction.
     pub fn is_y_periodic(&self) -> bool {
         crate::check_result(unsafe {
@@ -17650,7 +17623,7 @@ impl MakePeriodic {
         })
     }
 
-    /// **Source:** `BOPAlgo_MakePeriodic.hxx`:239 - `BOPAlgo_MakePeriodic::YPeriod()`
+    /// **Source:** `BOPAlgo_MakePeriodic.hxx`:236 - `BOPAlgo_MakePeriodic::YPeriod()`
     /// Returns the YPeriod of the shape.
     pub fn y_period(&self) -> f64 {
         crate::check_result(unsafe {
@@ -17658,7 +17631,7 @@ impl MakePeriodic {
         })
     }
 
-    /// **Source:** `BOPAlgo_MakePeriodic.hxx`:244 - `BOPAlgo_MakePeriodic::MakeZPeriodic()`
+    /// **Source:** `BOPAlgo_MakePeriodic.hxx`:241 - `BOPAlgo_MakePeriodic::MakeZPeriodic()`
     /// Sets the flag to make the shape periodic in Z direction.
     /// @param[in] theIsPeriodic  Flag defining periodicity in Z direction;
     /// @param[in] thePeriod  Required period in Z direction.
@@ -17672,7 +17645,7 @@ impl MakePeriodic {
         })
     }
 
-    /// **Source:** `BOPAlgo_MakePeriodic.hxx`:250 - `BOPAlgo_MakePeriodic::IsZPeriodic()`
+    /// **Source:** `BOPAlgo_MakePeriodic.hxx`:247 - `BOPAlgo_MakePeriodic::IsZPeriodic()`
     /// Returns the info about periodicity of the shape in Z direction.
     pub fn is_z_periodic(&self) -> bool {
         crate::check_result(unsafe {
@@ -17680,7 +17653,7 @@ impl MakePeriodic {
         })
     }
 
-    /// **Source:** `BOPAlgo_MakePeriodic.hxx`:253 - `BOPAlgo_MakePeriodic::ZPeriod()`
+    /// **Source:** `BOPAlgo_MakePeriodic.hxx`:250 - `BOPAlgo_MakePeriodic::ZPeriod()`
     /// Returns the ZPeriod of the shape.
     pub fn z_period(&self) -> f64 {
         crate::check_result(unsafe {
@@ -17688,7 +17661,7 @@ impl MakePeriodic {
         })
     }
 
-    /// **Source:** `BOPAlgo_MakePeriodic.hxx`:272 - `BOPAlgo_MakePeriodic::SetTrimmed()`
+    /// **Source:** `BOPAlgo_MakePeriodic.hxx`:269 - `BOPAlgo_MakePeriodic::SetTrimmed()`
     /// @name Methods for setting/getting trimming info taking Direction ID as a parameter
     /// Defines whether the input shape is already trimmed in specified direction
     /// to fit the period in this direction.
@@ -17717,7 +17690,7 @@ impl MakePeriodic {
         })
     }
 
-    /// **Source:** `BOPAlgo_MakePeriodic.hxx`:286 - `BOPAlgo_MakePeriodic::IsInputTrimmed()`
+    /// **Source:** `BOPAlgo_MakePeriodic.hxx`:281 - `BOPAlgo_MakePeriodic::IsInputTrimmed()`
     /// Returns whether the input shape was trimmed in the specified direction.
     /// @param[in] theDirectionID  The direction's ID.
     pub fn is_input_trimmed(&self, theDirectionID: i32) -> bool {
@@ -17729,7 +17702,7 @@ impl MakePeriodic {
         })
     }
 
-    /// **Source:** `BOPAlgo_MakePeriodic.hxx`:293 - `BOPAlgo_MakePeriodic::PeriodFirst()`
+    /// **Source:** `BOPAlgo_MakePeriodic.hxx`:288 - `BOPAlgo_MakePeriodic::PeriodFirst()`
     /// Returns the first periodic parameter in the specified direction.
     /// @param[in] theDirectionID  The direction's ID.
     pub fn period_first(&self, theDirectionID: i32) -> f64 {
@@ -17741,7 +17714,7 @@ impl MakePeriodic {
         })
     }
 
-    /// **Source:** `BOPAlgo_MakePeriodic.hxx`:310 - `BOPAlgo_MakePeriodic::SetXTrimmed()`
+    /// **Source:** `BOPAlgo_MakePeriodic.hxx`:305 - `BOPAlgo_MakePeriodic::SetXTrimmed()`
     /// @name Named methods for setting/getting trimming info
     /// Defines whether the input shape is already trimmed in X direction
     /// to fit the X period. If the shape is not trimmed it is required
@@ -17763,7 +17736,7 @@ impl MakePeriodic {
         })
     }
 
-    /// **Source:** `BOPAlgo_MakePeriodic.hxx`:316 - `BOPAlgo_MakePeriodic::IsInputXTrimmed()`
+    /// **Source:** `BOPAlgo_MakePeriodic.hxx`:311 - `BOPAlgo_MakePeriodic::IsInputXTrimmed()`
     /// Returns whether the input shape was already trimmed for X period.
     pub fn is_input_x_trimmed(&self) -> bool {
         crate::check_result(unsafe {
@@ -17771,7 +17744,7 @@ impl MakePeriodic {
         })
     }
 
-    /// **Source:** `BOPAlgo_MakePeriodic.hxx`:319 - `BOPAlgo_MakePeriodic::XPeriodFirst()`
+    /// **Source:** `BOPAlgo_MakePeriodic.hxx`:314 - `BOPAlgo_MakePeriodic::XPeriodFirst()`
     /// Returns the first parameter for the X period.
     pub fn x_period_first(&self) -> f64 {
         crate::check_result(unsafe {
@@ -17779,7 +17752,7 @@ impl MakePeriodic {
         })
     }
 
-    /// **Source:** `BOPAlgo_MakePeriodic.hxx`:331 - `BOPAlgo_MakePeriodic::SetYTrimmed()`
+    /// **Source:** `BOPAlgo_MakePeriodic.hxx`:326 - `BOPAlgo_MakePeriodic::SetYTrimmed()`
     /// Defines whether the input shape is already trimmed in Y direction
     /// to fit the Y period. If the shape is not trimmed it is required
     /// to set the first parameter for the Y period.
@@ -17800,7 +17773,7 @@ impl MakePeriodic {
         })
     }
 
-    /// **Source:** `BOPAlgo_MakePeriodic.hxx`:337 - `BOPAlgo_MakePeriodic::IsInputYTrimmed()`
+    /// **Source:** `BOPAlgo_MakePeriodic.hxx`:332 - `BOPAlgo_MakePeriodic::IsInputYTrimmed()`
     /// Returns whether the input shape was already trimmed for Y period.
     pub fn is_input_y_trimmed(&self) -> bool {
         crate::check_result(unsafe {
@@ -17808,7 +17781,7 @@ impl MakePeriodic {
         })
     }
 
-    /// **Source:** `BOPAlgo_MakePeriodic.hxx`:340 - `BOPAlgo_MakePeriodic::YPeriodFirst()`
+    /// **Source:** `BOPAlgo_MakePeriodic.hxx`:335 - `BOPAlgo_MakePeriodic::YPeriodFirst()`
     /// Returns the first parameter for the Y period.
     pub fn y_period_first(&self) -> f64 {
         crate::check_result(unsafe {
@@ -17816,7 +17789,7 @@ impl MakePeriodic {
         })
     }
 
-    /// **Source:** `BOPAlgo_MakePeriodic.hxx`:352 - `BOPAlgo_MakePeriodic::SetZTrimmed()`
+    /// **Source:** `BOPAlgo_MakePeriodic.hxx`:347 - `BOPAlgo_MakePeriodic::SetZTrimmed()`
     /// Defines whether the input shape is already trimmed in Z direction
     /// to fit the Z period. If the shape is not trimmed it is required
     /// to set the first parameter for the Z period.
@@ -17837,7 +17810,7 @@ impl MakePeriodic {
         })
     }
 
-    /// **Source:** `BOPAlgo_MakePeriodic.hxx`:358 - `BOPAlgo_MakePeriodic::IsInputZTrimmed()`
+    /// **Source:** `BOPAlgo_MakePeriodic.hxx`:353 - `BOPAlgo_MakePeriodic::IsInputZTrimmed()`
     /// Returns whether the input shape was already trimmed for Z period.
     pub fn is_input_z_trimmed(&self) -> bool {
         crate::check_result(unsafe {
@@ -17845,7 +17818,7 @@ impl MakePeriodic {
         })
     }
 
-    /// **Source:** `BOPAlgo_MakePeriodic.hxx`:361 - `BOPAlgo_MakePeriodic::ZPeriodFirst()`
+    /// **Source:** `BOPAlgo_MakePeriodic.hxx`:356 - `BOPAlgo_MakePeriodic::ZPeriodFirst()`
     /// Returns the first parameter for the Z period.
     pub fn z_period_first(&self) -> f64 {
         crate::check_result(unsafe {
@@ -17853,7 +17826,7 @@ impl MakePeriodic {
         })
     }
 
-    /// **Source:** `BOPAlgo_MakePeriodic.hxx`:365 - `BOPAlgo_MakePeriodic::Perform()`
+    /// **Source:** `BOPAlgo_MakePeriodic.hxx`:360 - `BOPAlgo_MakePeriodic::Perform()`
     /// @name Performing  the operation
     /// Makes the shape periodic in necessary directions
     pub fn perform(&mut self) {
@@ -17862,7 +17835,7 @@ impl MakePeriodic {
         })
     }
 
-    /// **Source:** `BOPAlgo_MakePeriodic.hxx`:376 - `BOPAlgo_MakePeriodic::RepeatShape()`
+    /// **Source:** `BOPAlgo_MakePeriodic.hxx`:371 - `BOPAlgo_MakePeriodic::RepeatShape()`
     /// @name Using the algorithm to repeat the shape
     /// Performs repetition of the shape in specified direction
     /// required number of times.
@@ -17882,7 +17855,7 @@ impl MakePeriodic {
         }
     }
 
-    /// **Source:** `BOPAlgo_MakePeriodic.hxx`:385 - `BOPAlgo_MakePeriodic::XRepeat()`
+    /// **Source:** `BOPAlgo_MakePeriodic.hxx`:379 - `BOPAlgo_MakePeriodic::XRepeat()`
     /// Repeats the shape in X direction specified number of times.
     /// Negative value of times means that the repetition should be
     /// perform in negative X direction.
@@ -17898,7 +17871,7 @@ impl MakePeriodic {
         }
     }
 
-    /// **Source:** `BOPAlgo_MakePeriodic.hxx`:393 - `BOPAlgo_MakePeriodic::YRepeat()`
+    /// **Source:** `BOPAlgo_MakePeriodic.hxx`:387 - `BOPAlgo_MakePeriodic::YRepeat()`
     /// Repeats the shape in Y direction specified number of times.
     /// Negative value of times means that the repetition should be
     /// perform in negative Y direction.
@@ -17914,7 +17887,7 @@ impl MakePeriodic {
         }
     }
 
-    /// **Source:** `BOPAlgo_MakePeriodic.hxx`:401 - `BOPAlgo_MakePeriodic::ZRepeat()`
+    /// **Source:** `BOPAlgo_MakePeriodic.hxx`:395 - `BOPAlgo_MakePeriodic::ZRepeat()`
     /// Repeats the shape in Z direction specified number of times.
     /// Negative value of times means that the repetition should be
     /// perform in negative Z direction.
@@ -17930,7 +17903,7 @@ impl MakePeriodic {
         }
     }
 
-    /// **Source:** `BOPAlgo_MakePeriodic.hxx`:405 - `BOPAlgo_MakePeriodic::RepeatedShape()`
+    /// **Source:** `BOPAlgo_MakePeriodic.hxx`:399 - `BOPAlgo_MakePeriodic::RepeatedShape()`
     /// @name Starting the repetitions over
     /// Returns the repeated shape
     pub fn repeated_shape(&self) -> &crate::topo_ds::Shape {
@@ -17941,7 +17914,7 @@ impl MakePeriodic {
         }
     }
 
-    /// **Source:** `BOPAlgo_MakePeriodic.hxx`:409 - `BOPAlgo_MakePeriodic::ClearRepetitions()`
+    /// **Source:** `BOPAlgo_MakePeriodic.hxx`:403 - `BOPAlgo_MakePeriodic::ClearRepetitions()`
     /// Clears all performed repetitions.
     /// The next repetition will be performed on the base shape.
     pub fn clear_repetitions(&mut self) {
@@ -17950,7 +17923,7 @@ impl MakePeriodic {
         })
     }
 
-    /// **Source:** `BOPAlgo_MakePeriodic.hxx`:424 - `BOPAlgo_MakePeriodic::Shape()`
+    /// **Source:** `BOPAlgo_MakePeriodic.hxx`:418 - `BOPAlgo_MakePeriodic::Shape()`
     /// @name Obtaining the result shape
     /// Returns the resulting periodic shape
     pub fn shape(&self) -> &crate::topo_ds::Shape {
@@ -17961,7 +17934,7 @@ impl MakePeriodic {
         }
     }
 
-    /// **Source:** `BOPAlgo_MakePeriodic.hxx`:432 - `BOPAlgo_MakePeriodic::GetTwins()`
+    /// **Source:** `BOPAlgo_MakePeriodic.hxx`:426 - `BOPAlgo_MakePeriodic::GetTwins()`
     /// @name Getting the identical shapes
     /// Returns the identical shapes for the given shape located
     /// on the opposite periodic side.
@@ -17977,7 +17950,7 @@ impl MakePeriodic {
     pub unsafe fn get_twins(
         &self,
         theS: &crate::topo_ds::Shape,
-    ) -> &crate::ffi_types::TopTools_ListOfShape {
+    ) -> &crate::ffi_types::NCollection_List_TopoDS_Shape {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKBO::BOPAlgo_MakePeriodic_get_twins(
                 self as *const Self,
@@ -17986,10 +17959,10 @@ impl MakePeriodic {
         }
     }
 
-    /// **Source:** `BOPAlgo_MakePeriodic.hxx`:442 - `BOPAlgo_MakePeriodic::History()`
+    /// **Source:** `BOPAlgo_MakePeriodic.hxx`:436 - `BOPAlgo_MakePeriodic::History()`
     /// @name Getting the History of the algorithm
     /// Returns the History of the algorithm
-    pub fn history(&self) -> &crate::ffi_types::HandleBRepToolsHistory {
+    pub fn history(&self) -> &crate::ffi_types::Handle_BRepTools_History {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKBO::BOPAlgo_MakePeriodic_history(
                 self as *const Self,
@@ -17997,7 +17970,7 @@ impl MakePeriodic {
         }
     }
 
-    /// **Source:** `BOPAlgo_MakePeriodic.hxx`:446 - `BOPAlgo_MakePeriodic::Clear()`
+    /// **Source:** `BOPAlgo_MakePeriodic.hxx`:440 - `BOPAlgo_MakePeriodic::Clear()`
     /// @name Clearing the algorithm from previous runs
     /// Clears the algorithm from previous runs
     pub fn clear(&mut self) {
@@ -18006,7 +17979,7 @@ impl MakePeriodic {
         })
     }
 
-    /// **Source:** `BOPAlgo_MakePeriodic.hxx`:461 - `BOPAlgo_MakePeriodic::ToDirectionID()`
+    /// **Source:** `BOPAlgo_MakePeriodic.hxx`:455 - `BOPAlgo_MakePeriodic::ToDirectionID()`
     /// @name Conversion of the integer to ID of periodic direction
     /// Converts the integer to ID of periodic direction
     pub fn to_direction_id(theDirectionID: i32) -> i32 {
@@ -18036,7 +18009,7 @@ impl MakePeriodic {
     }
 
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:51 - `BOPAlgo_Options::Allocator()`
-    pub fn allocator(&self) -> &crate::ffi_types::HandleNCollectionBaseAllocator {
+    pub fn allocator(&self) -> &crate::ffi_types::TDF_HAllocator {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKBO::BOPAlgo_MakePeriodic_inherited_Allocator(
@@ -18047,7 +18020,7 @@ impl MakePeriodic {
     }
 
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:61 - `BOPAlgo_Options::AddError()`
-    pub fn add_error(&mut self, theAlert: &crate::ffi_types::HandleMessageAlert) {
+    pub fn add_error(&mut self, theAlert: &crate::ffi_types::Handle_Message_Alert) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_MakePeriodic_inherited_AddError(
                 self as *mut Self,
@@ -18057,7 +18030,7 @@ impl MakePeriodic {
     }
 
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:67 - `BOPAlgo_Options::AddWarning()`
-    pub fn add_warning(&mut self, theAlert: &crate::ffi_types::HandleMessageAlert) {
+    pub fn add_warning(&mut self, theAlert: &crate::ffi_types::Handle_Message_Alert) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_MakePeriodic_inherited_AddWarning(
                 self as *mut Self,
@@ -18074,7 +18047,7 @@ impl MakePeriodic {
     }
 
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:76 - `BOPAlgo_Options::HasError()`
-    pub fn has_error(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    pub fn has_error(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_MakePeriodic_inherited_HasError(
                 self as *const Self,
@@ -18091,7 +18064,7 @@ impl MakePeriodic {
     }
 
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:85 - `BOPAlgo_Options::HasWarning()`
-    pub fn has_warning(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    pub fn has_warning(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_MakePeriodic_inherited_HasWarning(
                 self as *const Self,
@@ -18101,7 +18074,7 @@ impl MakePeriodic {
     }
 
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:91 - `BOPAlgo_Options::GetReport()`
-    pub fn get_report(&self) -> &crate::ffi_types::HandleMessageReport {
+    pub fn get_report(&self) -> &crate::ffi_types::Handle_Message_Report {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKBO::BOPAlgo_MakePeriodic_inherited_GetReport(
@@ -18190,7 +18163,7 @@ impl MakePeriodic {
     }
 }
 
-/// **Source:** `BOPAlgo_MakePeriodic.hxx`:144 - `BOPAlgo_MakePeriodic_PeriodicityParams`
+/// **Source:** `BOPAlgo_MakePeriodic.hxx`:141 - `BOPAlgo_MakePeriodic_PeriodicityParams`
 /// @name Definition of the structure to keep all periodicity parameters
 /// Structure to keep all periodicity parameters:
 pub use crate::ffi_types::BOPAlgo_MakePeriodic_PeriodicityParams as MakePeriodic_PeriodicityParams;
@@ -18207,7 +18180,7 @@ unsafe impl crate::CppDeletable for MakePeriodic_PeriodicityParams {
 // From BOPAlgo_MakerVolume.hxx
 // ========================
 
-/// **Source:** `BOPAlgo_MakerVolume.hxx`:106 - `BOPAlgo_MakerVolume`
+/// **Source:** `BOPAlgo_MakerVolume.hxx`:108 - `BOPAlgo_MakerVolume`
 /// The algorithm is to build solids from set of shapes.
 /// It uses the BOPAlgo_Builder algorithm to intersect the given shapes
 /// and build the images of faces (if needed) and BOPAlgo_BuilderSolid
@@ -18295,7 +18268,7 @@ unsafe impl crate::CppDeletable for MakerVolume {
 }
 
 impl MakerVolume {
-    /// **Source:** `BOPAlgo_MakerVolume.hxx`:112 - `BOPAlgo_MakerVolume::BOPAlgo_MakerVolume()`
+    /// **Source:** `BOPAlgo_MakerVolume.hxx`:114 - `BOPAlgo_MakerVolume::BOPAlgo_MakerVolume()`
     /// Empty constructor.
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
@@ -18305,21 +18278,19 @@ impl MakerVolume {
         }
     }
 
-    /// **Source:** `BOPAlgo_MakerVolume.hxx`:116 - `BOPAlgo_MakerVolume::BOPAlgo_MakerVolume()`
+    /// **Source:** `BOPAlgo_MakerVolume.hxx`:118 - `BOPAlgo_MakerVolume::BOPAlgo_MakerVolume()`
     /// Empty constructor.
-    pub fn new_handlencollectionbaseallocator(
-        theAllocator: &crate::ffi_types::HandleNCollectionBaseAllocator,
+    pub fn new_hallocator(
+        theAllocator: &crate::ffi_types::TDF_HAllocator,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKBO::BOPAlgo_MakerVolume_ctor_handlencollectionbaseallocator(
-                    theAllocator,
-                ),
+                crate::ffi_extern_TKBO::BOPAlgo_MakerVolume_ctor_hallocator(theAllocator),
             ))
         }
     }
 
-    /// **Source:** `BOPAlgo_MakerVolume.hxx`:119 - `BOPAlgo_MakerVolume::Clear()`
+    /// **Source:** `BOPAlgo_MakerVolume.hxx`:121 - `BOPAlgo_MakerVolume::Clear()`
     /// Clears the data.
     pub fn clear(&mut self) {
         crate::check_void_result(unsafe {
@@ -18327,7 +18298,7 @@ impl MakerVolume {
         })
     }
 
-    /// **Source:** `BOPAlgo_MakerVolume.hxx`:124 - `BOPAlgo_MakerVolume::SetIntersect()`
+    /// **Source:** `BOPAlgo_MakerVolume.hxx`:126 - `BOPAlgo_MakerVolume::SetIntersect()`
     /// Sets the flag myIntersect:
     /// if <bIntersect> is TRUE the shapes from <myArguments> will be intersected.
     /// if <bIntersect> is FALSE no intersection will be done.
@@ -18337,7 +18308,7 @@ impl MakerVolume {
         })
     }
 
-    /// **Source:** `BOPAlgo_MakerVolume.hxx`:127 - `BOPAlgo_MakerVolume::IsIntersect()`
+    /// **Source:** `BOPAlgo_MakerVolume.hxx`:129 - `BOPAlgo_MakerVolume::IsIntersect()`
     /// Returns the flag <myIntersect>.
     pub fn is_intersect(&self) -> bool {
         crate::check_result(unsafe {
@@ -18345,7 +18316,7 @@ impl MakerVolume {
         })
     }
 
-    /// **Source:** `BOPAlgo_MakerVolume.hxx`:130 - `BOPAlgo_MakerVolume::Box()`
+    /// **Source:** `BOPAlgo_MakerVolume.hxx`:132 - `BOPAlgo_MakerVolume::Box()`
     /// Returns the solid box <mySBox>.
     pub fn box_(&self) -> &crate::topo_ds::Solid {
         unsafe {
@@ -18355,9 +18326,9 @@ impl MakerVolume {
         }
     }
 
-    /// **Source:** `BOPAlgo_MakerVolume.hxx`:133 - `BOPAlgo_MakerVolume::Faces()`
+    /// **Source:** `BOPAlgo_MakerVolume.hxx`:135 - `BOPAlgo_MakerVolume::Faces()`
     /// Returns the processed faces <myFaces>.
-    pub fn faces(&self) -> &crate::ffi_types::TopTools_ListOfShape {
+    pub fn faces(&self) -> &crate::ffi_types::NCollection_List_TopoDS_Shape {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKBO::BOPAlgo_MakerVolume_faces(
                 self as *const Self,
@@ -18365,7 +18336,7 @@ impl MakerVolume {
         }
     }
 
-    /// **Source:** `BOPAlgo_MakerVolume.hxx`:137 - `BOPAlgo_MakerVolume::SetAvoidInternalShapes()`
+    /// **Source:** `BOPAlgo_MakerVolume.hxx`:139 - `BOPAlgo_MakerVolume::SetAvoidInternalShapes()`
     /// Defines the preventing of addition of internal for solid parts into the result.
     /// By default the internal parts are added into result.
     pub fn set_avoid_internal_shapes(&mut self, theAvoidInternal: bool) {
@@ -18377,7 +18348,7 @@ impl MakerVolume {
         })
     }
 
-    /// **Source:** `BOPAlgo_MakerVolume.hxx`:143 - `BOPAlgo_MakerVolume::IsAvoidInternalShapes()`
+    /// **Source:** `BOPAlgo_MakerVolume.hxx`:145 - `BOPAlgo_MakerVolume::IsAvoidInternalShapes()`
     /// Returns the AvoidInternalShapes flag
     pub fn is_avoid_internal_shapes(&self) -> bool {
         crate::check_result(unsafe {
@@ -18387,7 +18358,7 @@ impl MakerVolume {
         })
     }
 
-    /// **Source:** `BOPAlgo_MakerVolume.hxx`:146 - `BOPAlgo_MakerVolume::Perform()`
+    /// **Source:** `BOPAlgo_MakerVolume.hxx`:148 - `BOPAlgo_MakerVolume::Perform()`
     /// Performs the operation.
     pub fn perform(&mut self, theRange: &crate::message::ProgressRange) {
         crate::check_void_result(unsafe {
@@ -18475,7 +18446,7 @@ impl MakerVolume {
         }
     }
 
-    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:89 - `BOPAlgo_Builder::PPaveFiller()`
+    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:90 - `BOPAlgo_Builder::PPaveFiller()`
     pub fn p_pave_filler(&mut self) -> Option<&mut PaveFiller> {
         {
             let __val = crate::check_result(unsafe {
@@ -18489,7 +18460,7 @@ impl MakerVolume {
         }
     }
 
-    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:92 - `BOPAlgo_Builder::PDS()`
+    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:93 - `BOPAlgo_Builder::PDS()`
     pub fn pds(&mut self) -> Option<&mut crate::bopds::DS> {
         {
             let __val = crate::check_result(unsafe {
@@ -18503,8 +18474,8 @@ impl MakerVolume {
         }
     }
 
-    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:95 - `BOPAlgo_Builder::Context()`
-    pub fn context(&self) -> crate::OwnedPtr<crate::ffi_types::HandleIntToolsContext> {
+    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:96 - `BOPAlgo_Builder::Context()`
+    pub fn context(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_IntTools_Context> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKBO::BOPAlgo_MakerVolume_inherited_Context(self as *const Self),
@@ -18512,7 +18483,7 @@ impl MakerVolume {
         }
     }
 
-    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:99 - `BOPAlgo_Builder::AddArgument()`
+    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:100 - `BOPAlgo_Builder::AddArgument()`
     pub fn add_argument(&mut self, theShape: &crate::topo_ds::Shape) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_MakerVolume_inherited_AddArgument(
@@ -18522,8 +18493,8 @@ impl MakerVolume {
         })
     }
 
-    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:102 - `BOPAlgo_Builder::SetArguments()`
-    pub fn set_arguments(&mut self, theLS: &crate::ffi_types::TopTools_ListOfShape) {
+    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:103 - `BOPAlgo_Builder::SetArguments()`
+    pub fn set_arguments(&mut self, theLS: &crate::ffi_types::NCollection_List_TopoDS_Shape) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_MakerVolume_inherited_SetArguments(
                 self as *mut Self,
@@ -18532,8 +18503,8 @@ impl MakerVolume {
         })
     }
 
-    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:105 - `BOPAlgo_Builder::Arguments()`
-    pub fn arguments(&self) -> &crate::ffi_types::TopTools_ListOfShape {
+    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:106 - `BOPAlgo_Builder::Arguments()`
+    pub fn arguments(&self) -> &crate::ffi_types::NCollection_List_TopoDS_Shape {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKBO::BOPAlgo_MakerVolume_inherited_Arguments(
@@ -18543,7 +18514,7 @@ impl MakerVolume {
         }
     }
 
-    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:114 - `BOPAlgo_Builder::SetNonDestructive()`
+    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:115 - `BOPAlgo_Builder::SetNonDestructive()`
     pub fn set_non_destructive(&mut self, theFlag: bool) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_MakerVolume_inherited_SetNonDestructive(
@@ -18553,7 +18524,7 @@ impl MakerVolume {
         })
     }
 
-    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:119 - `BOPAlgo_Builder::NonDestructive()`
+    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:120 - `BOPAlgo_Builder::NonDestructive()`
     pub fn non_destructive(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_MakerVolume_inherited_NonDestructive(
@@ -18562,7 +18533,7 @@ impl MakerVolume {
         })
     }
 
-    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:122 - `BOPAlgo_Builder::SetGlue()`
+    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:123 - `BOPAlgo_Builder::SetGlue()`
     pub fn set_glue(&mut self, theGlue: crate::bop_algo::GlueEnum) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_MakerVolume_inherited_SetGlue(
@@ -18572,7 +18543,7 @@ impl MakerVolume {
         })
     }
 
-    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:125 - `BOPAlgo_Builder::Glue()`
+    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:126 - `BOPAlgo_Builder::Glue()`
     pub fn glue(&self) -> crate::bop_algo::GlueEnum {
         crate::bop_algo::GlueEnum::try_from(crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_MakerVolume_inherited_Glue(self as *const Self)
@@ -18580,7 +18551,7 @@ impl MakerVolume {
         .unwrap()
     }
 
-    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:128 - `BOPAlgo_Builder::SetCheckInverted()`
+    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:129 - `BOPAlgo_Builder::SetCheckInverted()`
     pub fn set_check_inverted(&mut self, theCheck: bool) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_MakerVolume_inherited_SetCheckInverted(
@@ -18590,14 +18561,14 @@ impl MakerVolume {
         })
     }
 
-    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:132 - `BOPAlgo_Builder::CheckInverted()`
+    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:133 - `BOPAlgo_Builder::CheckInverted()`
     pub fn check_inverted(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_MakerVolume_inherited_CheckInverted(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:142 - `BOPAlgo_Builder::PerformWithFiller()`
+    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:143 - `BOPAlgo_Builder::PerformWithFiller()`
     pub fn perform_with_filler(
         &mut self,
         theFiller: &PaveFiller,
@@ -18612,15 +18583,15 @@ impl MakerVolume {
         })
     }
 
-    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:186 - `BOPAlgo_Builder::BuildBOP()`
+    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:187 - `BOPAlgo_Builder::BuildBOP()`
     pub fn build_bop(
         &mut self,
-        theObjects: &crate::ffi_types::TopTools_ListOfShape,
+        theObjects: &crate::ffi_types::NCollection_List_TopoDS_Shape,
         theObjState: crate::top_abs::State,
-        theTools: &crate::ffi_types::TopTools_ListOfShape,
+        theTools: &crate::ffi_types::NCollection_List_TopoDS_Shape,
         theToolsState: crate::top_abs::State,
         theRange: &crate::message::ProgressRange,
-        theReport: &crate::ffi_types::HandleMessageReport,
+        theReport: &crate::ffi_types::Handle_Message_Report,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_MakerVolume_inherited_BuildBOP(
@@ -18635,8 +18606,8 @@ impl MakerVolume {
         })
     }
 
-    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:281 - `BOPAlgo_Builder::Images()`
-    pub fn images(&self) -> &crate::ffi_types::TopTools_DataMapOfShapeListOfShape {
+    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:285 - `BOPAlgo_Builder::Images()`
+    pub fn images(&self) -> &crate::ffi_types::NCollection_DataMap_TopoDS_Shape_NCollection_List_TopoDS_Shape_TopTools_ShapeMapHasher{
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKBO::BOPAlgo_MakerVolume_inherited_Images(
                 self as *const Self,
@@ -18644,8 +18615,8 @@ impl MakerVolume {
         }
     }
 
-    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:284 - `BOPAlgo_Builder::Origins()`
-    pub fn origins(&self) -> &crate::ffi_types::TopTools_DataMapOfShapeListOfShape {
+    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:292 - `BOPAlgo_Builder::Origins()`
+    pub fn origins(&self) -> &crate::ffi_types::NCollection_DataMap_TopoDS_Shape_NCollection_List_TopoDS_Shape_TopTools_ShapeMapHasher{
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKBO::BOPAlgo_MakerVolume_inherited_Origins(
                 self as *const Self,
@@ -18653,8 +18624,11 @@ impl MakerVolume {
         }
     }
 
-    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:288 - `BOPAlgo_Builder::ShapesSD()`
-    pub fn shapes_sd(&self) -> &crate::ffi_types::TopTools_DataMapOfShapeShape {
+    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:299 - `BOPAlgo_Builder::ShapesSD()`
+    pub fn shapes_sd(
+        &self,
+    ) -> &crate::ffi_types::NCollection_DataMap_TopoDS_Shape_TopoDS_Shape_TopTools_ShapeMapHasher
+    {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKBO::BOPAlgo_MakerVolume_inherited_ShapesSD(
                 self as *const Self,
@@ -18662,7 +18636,7 @@ impl MakerVolume {
         }
     }
 
-    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:47 - `BOPAlgo_BuilderShape::Shape()`
+    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:48 - `BOPAlgo_BuilderShape::Shape()`
     pub fn shape(&self) -> &crate::topo_ds::Shape {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKBO::BOPAlgo_MakerVolume_inherited_Shape(
@@ -18671,36 +18645,36 @@ impl MakerVolume {
         }
     }
 
-    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:71 - `BOPAlgo_BuilderShape::IsDeleted()`
+    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:72 - `BOPAlgo_BuilderShape::IsDeleted()`
     pub fn is_deleted(&mut self, theS: &crate::topo_ds::Shape) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_MakerVolume_inherited_IsDeleted(self as *mut Self, theS)
         })
     }
 
-    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:77 - `BOPAlgo_BuilderShape::HasModified()`
+    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:78 - `BOPAlgo_BuilderShape::HasModified()`
     pub fn has_modified(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_MakerVolume_inherited_HasModified(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:83 - `BOPAlgo_BuilderShape::HasGenerated()`
+    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:84 - `BOPAlgo_BuilderShape::HasGenerated()`
     pub fn has_generated(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_MakerVolume_inherited_HasGenerated(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:89 - `BOPAlgo_BuilderShape::HasDeleted()`
+    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:90 - `BOPAlgo_BuilderShape::HasDeleted()`
     pub fn has_deleted(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_MakerVolume_inherited_HasDeleted(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:95 - `BOPAlgo_BuilderShape::History()`
-    pub fn history(&mut self) -> crate::OwnedPtr<crate::ffi_types::HandleBRepToolsHistory> {
+    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:93 - `BOPAlgo_BuilderShape::History()`
+    pub fn history(&mut self) -> crate::OwnedPtr<crate::ffi_types::Handle_BRepTools_History> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKBO::BOPAlgo_MakerVolume_inherited_History(self as *mut Self),
@@ -18708,7 +18682,7 @@ impl MakerVolume {
         }
     }
 
-    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:116 - `BOPAlgo_BuilderShape::SetToFillHistory()`
+    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:114 - `BOPAlgo_BuilderShape::SetToFillHistory()`
     pub fn set_to_fill_history(&mut self, theHistFlag: bool) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_MakerVolume_inherited_SetToFillHistory(
@@ -18718,7 +18692,7 @@ impl MakerVolume {
         })
     }
 
-    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:119 - `BOPAlgo_BuilderShape::HasHistory()`
+    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:117 - `BOPAlgo_BuilderShape::HasHistory()`
     pub fn has_history(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_MakerVolume_inherited_HasHistory(self as *const Self)
@@ -18726,7 +18700,7 @@ impl MakerVolume {
     }
 
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:51 - `BOPAlgo_Options::Allocator()`
-    pub fn allocator(&self) -> &crate::ffi_types::HandleNCollectionBaseAllocator {
+    pub fn allocator(&self) -> &crate::ffi_types::TDF_HAllocator {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKBO::BOPAlgo_MakerVolume_inherited_Allocator(
@@ -18737,7 +18711,7 @@ impl MakerVolume {
     }
 
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:61 - `BOPAlgo_Options::AddError()`
-    pub fn add_error(&mut self, theAlert: &crate::ffi_types::HandleMessageAlert) {
+    pub fn add_error(&mut self, theAlert: &crate::ffi_types::Handle_Message_Alert) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_MakerVolume_inherited_AddError(
                 self as *mut Self,
@@ -18747,7 +18721,7 @@ impl MakerVolume {
     }
 
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:67 - `BOPAlgo_Options::AddWarning()`
-    pub fn add_warning(&mut self, theAlert: &crate::ffi_types::HandleMessageAlert) {
+    pub fn add_warning(&mut self, theAlert: &crate::ffi_types::Handle_Message_Alert) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_MakerVolume_inherited_AddWarning(
                 self as *mut Self,
@@ -18764,7 +18738,7 @@ impl MakerVolume {
     }
 
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:76 - `BOPAlgo_Options::HasError()`
-    pub fn has_error(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    pub fn has_error(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_MakerVolume_inherited_HasError(
                 self as *const Self,
@@ -18781,7 +18755,7 @@ impl MakerVolume {
     }
 
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:85 - `BOPAlgo_Options::HasWarning()`
-    pub fn has_warning(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    pub fn has_warning(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_MakerVolume_inherited_HasWarning(
                 self as *const Self,
@@ -18791,7 +18765,7 @@ impl MakerVolume {
     }
 
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:91 - `BOPAlgo_Options::GetReport()`
-    pub fn get_report(&self) -> &crate::ffi_types::HandleMessageReport {
+    pub fn get_report(&self) -> &crate::ffi_types::Handle_Message_Report {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKBO::BOPAlgo_MakerVolume_inherited_GetReport(
@@ -18918,21 +18892,19 @@ impl Options {
 
     /// **Source:** `BOPAlgo_Options.hxx`:45 - `BOPAlgo_Options::BOPAlgo_Options()`
     /// Constructor with allocator
-    pub fn new_handlencollectionbaseallocator(
-        theAllocator: &crate::ffi_types::HandleNCollectionBaseAllocator,
+    pub fn new_hallocator(
+        theAllocator: &crate::ffi_types::TDF_HAllocator,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKBO::BOPAlgo_Options_ctor_handlencollectionbaseallocator(
-                    theAllocator,
-                ),
+                crate::ffi_extern_TKBO::BOPAlgo_Options_ctor_hallocator(theAllocator),
             ))
         }
     }
 
     /// **Source:** `BOPAlgo_Options.hxx`:51 - `BOPAlgo_Options::Allocator()`
     /// Returns allocator
-    pub fn allocator(&self) -> &crate::ffi_types::HandleNCollectionBaseAllocator {
+    pub fn allocator(&self) -> &crate::ffi_types::TDF_HAllocator {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKBO::BOPAlgo_Options_allocator(
                 self as *const Self,
@@ -18951,7 +18923,7 @@ impl Options {
 
     /// **Source:** `BOPAlgo_Options.hxx`:61 - `BOPAlgo_Options::AddError()`
     /// Adds the alert as error (fail)
-    pub fn add_error(&mut self, theAlert: &crate::ffi_types::HandleMessageAlert) {
+    pub fn add_error(&mut self, theAlert: &crate::ffi_types::Handle_Message_Alert) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_Options_add_error(self as *mut Self, theAlert)
         })
@@ -18959,7 +18931,7 @@ impl Options {
 
     /// **Source:** `BOPAlgo_Options.hxx`:67 - `BOPAlgo_Options::AddWarning()`
     /// Adds the alert as warning
-    pub fn add_warning(&mut self, theAlert: &crate::ffi_types::HandleMessageAlert) {
+    pub fn add_warning(&mut self, theAlert: &crate::ffi_types::Handle_Message_Alert) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_Options_add_warning(self as *mut Self, theAlert)
         })
@@ -18975,7 +18947,7 @@ impl Options {
 
     /// **Source:** `BOPAlgo_Options.hxx`:76 - `BOPAlgo_Options::HasError()`
     /// Returns true if algorithm has generated error of specified type
-    pub fn has_error(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    pub fn has_error(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_Options_has_error(self as *const Self, theType)
         })
@@ -18991,7 +18963,7 @@ impl Options {
 
     /// **Source:** `BOPAlgo_Options.hxx`:85 - `BOPAlgo_Options::HasWarning()`
     /// Returns true if algorithm has generated warning of specified type
-    pub fn has_warning(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    pub fn has_warning(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_Options_has_warning(self as *const Self, theType)
         })
@@ -18999,7 +18971,7 @@ impl Options {
 
     /// **Source:** `BOPAlgo_Options.hxx`:91 - `BOPAlgo_Options::GetReport()`
     /// Returns report collecting all errors and warnings
-    pub fn get_report(&self) -> &crate::ffi_types::HandleMessageReport {
+    pub fn get_report(&self) -> &crate::ffi_types::Handle_Message_Report {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKBO::BOPAlgo_Options_get_report(
                 self as *const Self,
@@ -19100,30 +19072,30 @@ impl Options {
 // From BOPAlgo_PaveFiller.hxx
 // ========================
 
-/// **Source:** `BOPAlgo_PaveFiller.hxx`:108 - `BOPAlgo_PaveFiller`
+/// **Source:** `BOPAlgo_PaveFiller.hxx`:106 - `BOPAlgo_PaveFiller`
 ///
 /// The class represents the Intersection phase of the
-/// Boolean Operations algorithm.<br>
+/// Boolean Operations algorithm.
 /// It performs the pairwise intersection of the sub-shapes of
-/// the arguments in the following order:<br>
-/// 1. Vertex/Vertex;<br>
-/// 2. Vertex/Edge;<br>
-/// 3. Edge/Edge;<br>
-/// 4. Vertex/Face;<br>
-/// 5. Edge/Face;<br>
-/// 6. Face/Face.<br>
+/// the arguments in the following order:
+/// 1. Vertex/Vertex;
+/// 2. Vertex/Edge;
+/// 3. Edge/Edge;
+/// 4. Vertex/Face;
+/// 5. Edge/Face;
+/// 6. Face/Face.
 ///
 /// The results of intersection are stored into the Data Structure
-/// of the algorithm.<br>
+/// of the algorithm.
 ///
 /// Additionally to the options provided by the parent class,
-/// the algorithm has the following options:<br>
+/// the algorithm has the following options:
 /// - *Section attributes* - allows to customize the intersection of the faces
-/// (avoid approximation or building 2d curves);<br>
+/// (avoid approximation or building 2d curves);
 /// - *Safe processing mode* - allows to avoid modification of the input
-/// shapes during the operation (by default it is off);<br>
+/// shapes during the operation (by default it is off);
 /// - *Gluing options* - allows to speed up the calculation on the special
-/// cases, in which some sub-shapes are coincide.<br>
+/// cases, in which some sub-shapes are coincide.
 ///
 /// The algorithm returns the following Warning statuses:
 /// - *BOPAlgo_AlertSelfInterferingShape* - in case some of the argument shapes are self-interfering
@@ -19143,9 +19115,9 @@ impl Options {
 ///
 /// The algorithm returns the following Error alerts:
 /// - *BOPAlgo_AlertTooFewArguments* - in case there are no enough arguments to
-/// perform the operation;<br>
-/// - *BOPAlgo_AlertIntersectionFailed* - in case some unexpected error occurred;<br>
-/// - *BOPAlgo_AlertNullInputShapes* - in case some of the arguments are null shapes.<br>
+/// perform the operation;
+/// - *BOPAlgo_AlertIntersectionFailed* - in case some unexpected error occurred;
+/// - *BOPAlgo_AlertNullInputShapes* - in case some of the arguments are null shapes.
 pub use crate::ffi_types::BOPAlgo_PaveFiller as PaveFiller;
 
 unsafe impl crate::CppDeletable for PaveFiller {
@@ -19157,7 +19129,7 @@ unsafe impl crate::CppDeletable for PaveFiller {
 }
 
 impl PaveFiller {
-    /// **Source:** `BOPAlgo_PaveFiller.hxx`:113 - `BOPAlgo_PaveFiller::BOPAlgo_PaveFiller()`
+    /// **Source:** `BOPAlgo_PaveFiller.hxx`:111 - `BOPAlgo_PaveFiller::BOPAlgo_PaveFiller()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -19166,20 +19138,18 @@ impl PaveFiller {
         }
     }
 
-    /// **Source:** `BOPAlgo_PaveFiller.hxx`:117 - `BOPAlgo_PaveFiller::BOPAlgo_PaveFiller()`
-    pub fn new_handlencollectionbaseallocator(
-        theAllocator: &crate::ffi_types::HandleNCollectionBaseAllocator,
+    /// **Source:** `BOPAlgo_PaveFiller.hxx`:115 - `BOPAlgo_PaveFiller::BOPAlgo_PaveFiller()`
+    pub fn new_hallocator(
+        theAllocator: &crate::ffi_types::TDF_HAllocator,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKBO::BOPAlgo_PaveFiller_ctor_handlencollectionbaseallocator(
-                    theAllocator,
-                ),
+                crate::ffi_extern_TKBO::BOPAlgo_PaveFiller_ctor_hallocator(theAllocator),
             ))
         }
     }
 
-    /// **Source:** `BOPAlgo_PaveFiller.hxx`:119 - `BOPAlgo_PaveFiller::DS()`
+    /// **Source:** `BOPAlgo_PaveFiller.hxx`:117 - `BOPAlgo_PaveFiller::DS()`
     pub fn ds(&mut self) -> &crate::bopds::DS {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKBO::BOPAlgo_PaveFiller_ds(
@@ -19188,7 +19158,7 @@ impl PaveFiller {
         }
     }
 
-    /// **Source:** `BOPAlgo_PaveFiller.hxx`:121 - `BOPAlgo_PaveFiller::PDS()`
+    /// **Source:** `BOPAlgo_PaveFiller.hxx`:119 - `BOPAlgo_PaveFiller::PDS()`
     pub fn pds(&mut self) -> Option<&mut crate::bopds::DS> {
         {
             let __val = crate::check_result(unsafe {
@@ -19202,7 +19172,7 @@ impl PaveFiller {
         }
     }
 
-    /// **Source:** `BOPAlgo_PaveFiller.hxx`:123 - `BOPAlgo_PaveFiller::Iterator()`
+    /// **Source:** `BOPAlgo_PaveFiller.hxx`:121 - `BOPAlgo_PaveFiller::Iterator()`
     pub unsafe fn iterator(&mut self) -> &*mut crate::bopds::Iterator {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKBO::BOPAlgo_PaveFiller_iterator(
@@ -19211,15 +19181,15 @@ impl PaveFiller {
         }
     }
 
-    /// **Source:** `BOPAlgo_PaveFiller.hxx`:126 - `BOPAlgo_PaveFiller::SetArguments()`
+    /// **Source:** `BOPAlgo_PaveFiller.hxx`:124 - `BOPAlgo_PaveFiller::SetArguments()`
     /// Sets the arguments for operation
-    pub fn set_arguments(&mut self, theLS: &crate::ffi_types::TopTools_ListOfShape) {
+    pub fn set_arguments(&mut self, theLS: &crate::ffi_types::NCollection_List_TopoDS_Shape) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_PaveFiller_set_arguments(self as *mut Self, theLS)
         })
     }
 
-    /// **Source:** `BOPAlgo_PaveFiller.hxx`:129 - `BOPAlgo_PaveFiller::AddArgument()`
+    /// **Source:** `BOPAlgo_PaveFiller.hxx`:130 - `BOPAlgo_PaveFiller::AddArgument()`
     /// Adds the argument for operation
     pub fn add_argument(&mut self, theShape: &crate::topo_ds::Shape) {
         crate::check_void_result(unsafe {
@@ -19227,9 +19197,9 @@ impl PaveFiller {
         })
     }
 
-    /// **Source:** `BOPAlgo_PaveFiller.hxx`:132 - `BOPAlgo_PaveFiller::Arguments()`
+    /// **Source:** `BOPAlgo_PaveFiller.hxx`:133 - `BOPAlgo_PaveFiller::Arguments()`
     /// Returns the list of arguments
-    pub fn arguments(&self) -> &crate::ffi_types::TopTools_ListOfShape {
+    pub fn arguments(&self) -> &crate::ffi_types::NCollection_List_TopoDS_Shape {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKBO::BOPAlgo_PaveFiller_arguments(
                 self as *const Self,
@@ -19237,8 +19207,8 @@ impl PaveFiller {
         }
     }
 
-    /// **Source:** `BOPAlgo_PaveFiller.hxx`:134 - `BOPAlgo_PaveFiller::Context()`
-    pub fn context(&mut self) -> &crate::ffi_types::HandleIntToolsContext {
+    /// **Source:** `BOPAlgo_PaveFiller.hxx`:135 - `BOPAlgo_PaveFiller::Context()`
+    pub fn context(&mut self) -> &crate::ffi_types::Handle_IntTools_Context {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKBO::BOPAlgo_PaveFiller_context(
                 self as *mut Self,
@@ -19246,7 +19216,7 @@ impl PaveFiller {
         }
     }
 
-    /// **Source:** `BOPAlgo_PaveFiller.hxx`:136 - `BOPAlgo_PaveFiller::SetSectionAttribute()`
+    /// **Source:** `BOPAlgo_PaveFiller.hxx`:137 - `BOPAlgo_PaveFiller::SetSectionAttribute()`
     pub fn set_section_attribute(&mut self, theSecAttr: &SectionAttribute) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_PaveFiller_set_section_attribute(
@@ -19256,7 +19226,7 @@ impl PaveFiller {
         })
     }
 
-    /// **Source:** `BOPAlgo_PaveFiller.hxx`:141 - `BOPAlgo_PaveFiller::SetNonDestructive()`
+    /// **Source:** `BOPAlgo_PaveFiller.hxx`:142 - `BOPAlgo_PaveFiller::SetNonDestructive()`
     /// Sets the flag that defines the mode of treatment.
     /// In non-destructive mode the argument shapes are not modified. Instead
     /// a copy of a sub-shape is created in the result if it is needed to be updated.
@@ -19269,7 +19239,7 @@ impl PaveFiller {
         })
     }
 
-    /// **Source:** `BOPAlgo_PaveFiller.hxx`:146 - `BOPAlgo_PaveFiller::NonDestructive()`
+    /// **Source:** `BOPAlgo_PaveFiller.hxx`:147 - `BOPAlgo_PaveFiller::NonDestructive()`
     /// Returns the flag that defines the mode of treatment.
     /// In non-destructive mode the argument shapes are not modified. Instead
     /// a copy of a sub-shape is created in the result if it is needed to be updated.
@@ -19279,14 +19249,14 @@ impl PaveFiller {
         })
     }
 
-    /// **Source:** `BOPAlgo_PaveFiller.hxx`:148 - `BOPAlgo_PaveFiller::Perform()`
+    /// **Source:** `BOPAlgo_PaveFiller.hxx`:149 - `BOPAlgo_PaveFiller::Perform()`
     pub fn perform(&mut self, theRange: &crate::message::ProgressRange) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_PaveFiller_perform(self as *mut Self, theRange)
         })
     }
 
-    /// **Source:** `BOPAlgo_PaveFiller.hxx`:152 - `BOPAlgo_PaveFiller::SetGlue()`
+    /// **Source:** `BOPAlgo_PaveFiller.hxx`:153 - `BOPAlgo_PaveFiller::SetGlue()`
     /// Sets the glue option for the algorithm
     pub fn set_glue(&mut self, theGlue: crate::bop_algo::GlueEnum) {
         crate::check_void_result(unsafe {
@@ -19294,7 +19264,7 @@ impl PaveFiller {
         })
     }
 
-    /// **Source:** `BOPAlgo_PaveFiller.hxx`:155 - `BOPAlgo_PaveFiller::Glue()`
+    /// **Source:** `BOPAlgo_PaveFiller.hxx`:156 - `BOPAlgo_PaveFiller::Glue()`
     /// Returns the glue option of the algorithm
     pub fn glue(&self) -> crate::bop_algo::GlueEnum {
         crate::bop_algo::GlueEnum::try_from(crate::check_result(unsafe {
@@ -19303,7 +19273,7 @@ impl PaveFiller {
         .unwrap()
     }
 
-    /// **Source:** `BOPAlgo_PaveFiller.hxx`:158 - `BOPAlgo_PaveFiller::SetAvoidBuildPCurve()`
+    /// **Source:** `BOPAlgo_PaveFiller.hxx`:159 - `BOPAlgo_PaveFiller::SetAvoidBuildPCurve()`
     /// Sets the flag to avoid building of p-curves of edges on faces
     pub fn set_avoid_build_p_curve(&mut self, theValue: bool) {
         crate::check_void_result(unsafe {
@@ -19314,7 +19284,7 @@ impl PaveFiller {
         })
     }
 
-    /// **Source:** `BOPAlgo_PaveFiller.hxx`:161 - `BOPAlgo_PaveFiller::IsAvoidBuildPCurve()`
+    /// **Source:** `BOPAlgo_PaveFiller.hxx`:162 - `BOPAlgo_PaveFiller::IsAvoidBuildPCurve()`
     /// Returns the flag to avoid building of p-curves of edges on faces
     pub fn is_avoid_build_p_curve(&self) -> bool {
         crate::check_result(unsafe {
@@ -19361,7 +19331,7 @@ impl PaveFiller {
     }
 
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:51 - `BOPAlgo_Options::Allocator()`
-    pub fn allocator(&self) -> &crate::ffi_types::HandleNCollectionBaseAllocator {
+    pub fn allocator(&self) -> &crate::ffi_types::TDF_HAllocator {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKBO::BOPAlgo_PaveFiller_inherited_Allocator(
                 self as *const Self,
@@ -19370,7 +19340,7 @@ impl PaveFiller {
     }
 
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:61 - `BOPAlgo_Options::AddError()`
-    pub fn add_error(&mut self, theAlert: &crate::ffi_types::HandleMessageAlert) {
+    pub fn add_error(&mut self, theAlert: &crate::ffi_types::Handle_Message_Alert) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_PaveFiller_inherited_AddError(
                 self as *mut Self,
@@ -19380,7 +19350,7 @@ impl PaveFiller {
     }
 
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:67 - `BOPAlgo_Options::AddWarning()`
-    pub fn add_warning(&mut self, theAlert: &crate::ffi_types::HandleMessageAlert) {
+    pub fn add_warning(&mut self, theAlert: &crate::ffi_types::Handle_Message_Alert) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_PaveFiller_inherited_AddWarning(
                 self as *mut Self,
@@ -19397,7 +19367,7 @@ impl PaveFiller {
     }
 
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:76 - `BOPAlgo_Options::HasError()`
-    pub fn has_error(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    pub fn has_error(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_PaveFiller_inherited_HasError(
                 self as *const Self,
@@ -19414,7 +19384,7 @@ impl PaveFiller {
     }
 
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:85 - `BOPAlgo_Options::HasWarning()`
-    pub fn has_warning(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    pub fn has_warning(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_PaveFiller_inherited_HasWarning(
                 self as *const Self,
@@ -19424,7 +19394,7 @@ impl PaveFiller {
     }
 
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:91 - `BOPAlgo_Options::GetReport()`
-    pub fn get_report(&self) -> &crate::ffi_types::HandleMessageReport {
+    pub fn get_report(&self) -> &crate::ffi_types::Handle_Message_Report {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKBO::BOPAlgo_PaveFiller_inherited_GetReport(
                 self as *const Self,
@@ -19511,11 +19481,18 @@ impl PaveFiller {
     }
 }
 
+// ── Skipped symbols for PaveFiller (1 total) ──
+// SKIPPED: **Source:** `BOPAlgo_PaveFiller.hxx`:127 - `BOPAlgo_PaveFiller::SetArguments`
+//   method: Sets the arguments for operation (move semantics)
+//   Reason: has unbindable types: param 'theLS': rvalue reference (NCollection_List_TopoDS_Shape&&)
+//   // pub fn set_arguments(&mut self, theLS: /* NCollection_List_TopoDS_Shape&& */);
+//
+
 // ========================
 // From BOPAlgo_RemoveFeatures.hxx
 // ========================
 
-/// **Source:** `BOPAlgo_RemoveFeatures.hxx`:147 - `BOPAlgo_RemoveFeatures`
+/// **Source:** `BOPAlgo_RemoveFeatures.hxx`:148 - `BOPAlgo_RemoveFeatures`
 /// The RemoveFeatures algorithm is intended for reconstruction of
 /// the shape by removal of the unwanted parts from it. These parts can
 /// be holes, protrusions, spikes, fillets etc.
@@ -19605,9 +19582,9 @@ impl PaveFiller {
 /// Here is the example of usage of the algorithm:
 /// ~~~~
 /// TopoDS_Shape aSolid = ...;              // Input shape to remove the features from
-/// TopTools_ListOfShape aFaces = ...;      // Faces to remove from the shape
-/// Standard_Boolean bRunParallel = ...;    // Parallel processing mode
-/// Standard_Boolean isHistoryNeeded = ...; // History support
+/// NCollection_List<TopoDS_Shape> aFaces = ...;      // Faces to remove from the shape
+/// bool bRunParallel = ...;    // Parallel processing mode
+/// bool isHistoryNeeded = ...; // History support
 ///
 /// BOPAlgo_RemoveFeatures aRF;             // Feature removal algorithm
 /// aRF.SetShape(aSolid);                   // Set the shape
@@ -19643,7 +19620,7 @@ unsafe impl crate::CppDeletable for RemoveFeatures {
 }
 
 impl RemoveFeatures {
-    /// **Source:** `BOPAlgo_RemoveFeatures.hxx`:154 - `BOPAlgo_RemoveFeatures::BOPAlgo_RemoveFeatures()`
+    /// **Source:** `BOPAlgo_RemoveFeatures.hxx`:155 - `BOPAlgo_RemoveFeatures::BOPAlgo_RemoveFeatures()`
     /// @name Constructors
     /// Empty constructor
     pub fn new() -> crate::OwnedPtr<Self> {
@@ -19690,7 +19667,10 @@ impl RemoveFeatures {
     /// **Source:** `BOPAlgo_RemoveFeatures.hxx`:174 - `BOPAlgo_RemoveFeatures::AddFacesToRemove()`
     /// Adds the faces to remove from the input shape.
     /// @param[in] theFaces  The list of shapes to extract the faces for removal.
-    pub fn add_faces_to_remove(&mut self, theFaces: &crate::ffi_types::TopTools_ListOfShape) {
+    pub fn add_faces_to_remove(
+        &mut self,
+        theFaces: &crate::ffi_types::NCollection_List_TopoDS_Shape,
+    ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_RemoveFeatures_add_faces_to_remove(
                 self as *mut Self,
@@ -19702,7 +19682,7 @@ impl RemoveFeatures {
     /// **Source:** `BOPAlgo_RemoveFeatures.hxx`:183 - `BOPAlgo_RemoveFeatures::FacesToRemove()`
     /// Returns the list of faces which have been requested for removal
     /// from the input shape.
-    pub fn faces_to_remove(&self) -> &crate::ffi_types::TopTools_ListOfShape {
+    pub fn faces_to_remove(&self) -> &crate::ffi_types::NCollection_List_TopoDS_Shape {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKBO::BOPAlgo_RemoveFeatures_faces_to_remove(
                 self as *const Self,
@@ -19793,7 +19773,7 @@ impl RemoveFeatures {
         }
     }
 
-    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:47 - `BOPAlgo_BuilderShape::Shape()`
+    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:48 - `BOPAlgo_BuilderShape::Shape()`
     pub fn shape(&self) -> &crate::topo_ds::Shape {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKBO::BOPAlgo_RemoveFeatures_inherited_Shape(
@@ -19802,7 +19782,7 @@ impl RemoveFeatures {
         }
     }
 
-    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:71 - `BOPAlgo_BuilderShape::IsDeleted()`
+    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:72 - `BOPAlgo_BuilderShape::IsDeleted()`
     pub fn is_deleted(&mut self, theS: &crate::topo_ds::Shape) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_RemoveFeatures_inherited_IsDeleted(
@@ -19812,7 +19792,7 @@ impl RemoveFeatures {
         })
     }
 
-    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:77 - `BOPAlgo_BuilderShape::HasModified()`
+    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:78 - `BOPAlgo_BuilderShape::HasModified()`
     pub fn has_modified(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_RemoveFeatures_inherited_HasModified(
@@ -19821,7 +19801,7 @@ impl RemoveFeatures {
         })
     }
 
-    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:83 - `BOPAlgo_BuilderShape::HasGenerated()`
+    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:84 - `BOPAlgo_BuilderShape::HasGenerated()`
     pub fn has_generated(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_RemoveFeatures_inherited_HasGenerated(
@@ -19830,15 +19810,15 @@ impl RemoveFeatures {
         })
     }
 
-    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:89 - `BOPAlgo_BuilderShape::HasDeleted()`
+    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:90 - `BOPAlgo_BuilderShape::HasDeleted()`
     pub fn has_deleted(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_RemoveFeatures_inherited_HasDeleted(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:95 - `BOPAlgo_BuilderShape::History()`
-    pub fn history(&mut self) -> crate::OwnedPtr<crate::ffi_types::HandleBRepToolsHistory> {
+    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:93 - `BOPAlgo_BuilderShape::History()`
+    pub fn history(&mut self) -> crate::OwnedPtr<crate::ffi_types::Handle_BRepTools_History> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKBO::BOPAlgo_RemoveFeatures_inherited_History(self as *mut Self),
@@ -19846,7 +19826,7 @@ impl RemoveFeatures {
         }
     }
 
-    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:116 - `BOPAlgo_BuilderShape::SetToFillHistory()`
+    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:114 - `BOPAlgo_BuilderShape::SetToFillHistory()`
     pub fn set_to_fill_history(&mut self, theHistFlag: bool) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_RemoveFeatures_inherited_SetToFillHistory(
@@ -19856,7 +19836,7 @@ impl RemoveFeatures {
         })
     }
 
-    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:119 - `BOPAlgo_BuilderShape::HasHistory()`
+    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:117 - `BOPAlgo_BuilderShape::HasHistory()`
     pub fn has_history(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_RemoveFeatures_inherited_HasHistory(self as *const Self)
@@ -19864,7 +19844,7 @@ impl RemoveFeatures {
     }
 
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:51 - `BOPAlgo_Options::Allocator()`
-    pub fn allocator(&self) -> &crate::ffi_types::HandleNCollectionBaseAllocator {
+    pub fn allocator(&self) -> &crate::ffi_types::TDF_HAllocator {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKBO::BOPAlgo_RemoveFeatures_inherited_Allocator(
@@ -19875,7 +19855,7 @@ impl RemoveFeatures {
     }
 
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:61 - `BOPAlgo_Options::AddError()`
-    pub fn add_error(&mut self, theAlert: &crate::ffi_types::HandleMessageAlert) {
+    pub fn add_error(&mut self, theAlert: &crate::ffi_types::Handle_Message_Alert) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_RemoveFeatures_inherited_AddError(
                 self as *mut Self,
@@ -19885,7 +19865,7 @@ impl RemoveFeatures {
     }
 
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:67 - `BOPAlgo_Options::AddWarning()`
-    pub fn add_warning(&mut self, theAlert: &crate::ffi_types::HandleMessageAlert) {
+    pub fn add_warning(&mut self, theAlert: &crate::ffi_types::Handle_Message_Alert) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_RemoveFeatures_inherited_AddWarning(
                 self as *mut Self,
@@ -19902,7 +19882,7 @@ impl RemoveFeatures {
     }
 
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:76 - `BOPAlgo_Options::HasError()`
-    pub fn has_error(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    pub fn has_error(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_RemoveFeatures_inherited_HasError(
                 self as *const Self,
@@ -19921,7 +19901,7 @@ impl RemoveFeatures {
     }
 
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:85 - `BOPAlgo_Options::HasWarning()`
-    pub fn has_warning(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    pub fn has_warning(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_RemoveFeatures_inherited_HasWarning(
                 self as *const Self,
@@ -19931,7 +19911,7 @@ impl RemoveFeatures {
     }
 
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:91 - `BOPAlgo_Options::GetReport()`
-    pub fn get_report(&self) -> &crate::ffi_types::HandleMessageReport {
+    pub fn get_report(&self) -> &crate::ffi_types::Handle_Message_Report {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKBO::BOPAlgo_RemoveFeatures_inherited_GetReport(
@@ -20059,14 +20039,12 @@ impl Section {
 
     /// **Source:** `BOPAlgo_Section.hxx`:43 - `BOPAlgo_Section::BOPAlgo_Section()`
     /// Constructor with allocator
-    pub fn new_handlencollectionbaseallocator(
-        theAllocator: &crate::ffi_types::HandleNCollectionBaseAllocator,
+    pub fn new_hallocator(
+        theAllocator: &crate::ffi_types::TDF_HAllocator,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKBO::BOPAlgo_Section_ctor_handlencollectionbaseallocator(
-                    theAllocator,
-                ),
+                crate::ffi_extern_TKBO::BOPAlgo_Section_ctor_hallocator(theAllocator),
             ))
         }
     }
@@ -20145,14 +20123,14 @@ impl Section {
         }
     }
 
-    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:86 - `BOPAlgo_Builder::Clear()`
+    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:87 - `BOPAlgo_Builder::Clear()`
     pub fn clear(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_Section_inherited_Clear(self as *mut Self)
         })
     }
 
-    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:89 - `BOPAlgo_Builder::PPaveFiller()`
+    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:90 - `BOPAlgo_Builder::PPaveFiller()`
     pub fn p_pave_filler(&mut self) -> Option<&mut PaveFiller> {
         {
             let __val = crate::check_result(unsafe {
@@ -20166,7 +20144,7 @@ impl Section {
         }
     }
 
-    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:92 - `BOPAlgo_Builder::PDS()`
+    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:93 - `BOPAlgo_Builder::PDS()`
     pub fn pds(&mut self) -> Option<&mut crate::bopds::DS> {
         {
             let __val = crate::check_result(unsafe {
@@ -20180,8 +20158,8 @@ impl Section {
         }
     }
 
-    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:95 - `BOPAlgo_Builder::Context()`
-    pub fn context(&self) -> crate::OwnedPtr<crate::ffi_types::HandleIntToolsContext> {
+    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:96 - `BOPAlgo_Builder::Context()`
+    pub fn context(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_IntTools_Context> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKBO::BOPAlgo_Section_inherited_Context(self as *const Self),
@@ -20189,7 +20167,7 @@ impl Section {
         }
     }
 
-    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:99 - `BOPAlgo_Builder::AddArgument()`
+    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:100 - `BOPAlgo_Builder::AddArgument()`
     pub fn add_argument(&mut self, theShape: &crate::topo_ds::Shape) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_Section_inherited_AddArgument(
@@ -20199,15 +20177,15 @@ impl Section {
         })
     }
 
-    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:102 - `BOPAlgo_Builder::SetArguments()`
-    pub fn set_arguments(&mut self, theLS: &crate::ffi_types::TopTools_ListOfShape) {
+    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:103 - `BOPAlgo_Builder::SetArguments()`
+    pub fn set_arguments(&mut self, theLS: &crate::ffi_types::NCollection_List_TopoDS_Shape) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_Section_inherited_SetArguments(self as *mut Self, theLS)
         })
     }
 
-    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:105 - `BOPAlgo_Builder::Arguments()`
-    pub fn arguments(&self) -> &crate::ffi_types::TopTools_ListOfShape {
+    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:106 - `BOPAlgo_Builder::Arguments()`
+    pub fn arguments(&self) -> &crate::ffi_types::NCollection_List_TopoDS_Shape {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKBO::BOPAlgo_Section_inherited_Arguments(
                 self as *const Self,
@@ -20215,7 +20193,7 @@ impl Section {
         }
     }
 
-    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:114 - `BOPAlgo_Builder::SetNonDestructive()`
+    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:115 - `BOPAlgo_Builder::SetNonDestructive()`
     pub fn set_non_destructive(&mut self, theFlag: bool) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_Section_inherited_SetNonDestructive(
@@ -20225,14 +20203,14 @@ impl Section {
         })
     }
 
-    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:119 - `BOPAlgo_Builder::NonDestructive()`
+    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:120 - `BOPAlgo_Builder::NonDestructive()`
     pub fn non_destructive(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_Section_inherited_NonDestructive(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:122 - `BOPAlgo_Builder::SetGlue()`
+    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:123 - `BOPAlgo_Builder::SetGlue()`
     pub fn set_glue(&mut self, theGlue: crate::bop_algo::GlueEnum) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_Section_inherited_SetGlue(
@@ -20242,7 +20220,7 @@ impl Section {
         })
     }
 
-    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:125 - `BOPAlgo_Builder::Glue()`
+    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:126 - `BOPAlgo_Builder::Glue()`
     pub fn glue(&self) -> crate::bop_algo::GlueEnum {
         crate::bop_algo::GlueEnum::try_from(crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_Section_inherited_Glue(self as *const Self)
@@ -20250,7 +20228,7 @@ impl Section {
         .unwrap()
     }
 
-    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:128 - `BOPAlgo_Builder::SetCheckInverted()`
+    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:129 - `BOPAlgo_Builder::SetCheckInverted()`
     pub fn set_check_inverted(&mut self, theCheck: bool) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_Section_inherited_SetCheckInverted(
@@ -20260,21 +20238,21 @@ impl Section {
         })
     }
 
-    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:132 - `BOPAlgo_Builder::CheckInverted()`
+    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:133 - `BOPAlgo_Builder::CheckInverted()`
     pub fn check_inverted(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_Section_inherited_CheckInverted(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:137 - `BOPAlgo_Builder::Perform()`
+    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:138 - `BOPAlgo_Builder::Perform()`
     pub fn perform(&mut self, theRange: &crate::message::ProgressRange) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_Section_inherited_Perform(self as *mut Self, theRange)
         })
     }
 
-    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:142 - `BOPAlgo_Builder::PerformWithFiller()`
+    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:143 - `BOPAlgo_Builder::PerformWithFiller()`
     pub fn perform_with_filler(
         &mut self,
         theFiller: &PaveFiller,
@@ -20289,15 +20267,15 @@ impl Section {
         })
     }
 
-    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:186 - `BOPAlgo_Builder::BuildBOP()`
+    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:187 - `BOPAlgo_Builder::BuildBOP()`
     pub fn build_bop(
         &mut self,
-        theObjects: &crate::ffi_types::TopTools_ListOfShape,
+        theObjects: &crate::ffi_types::NCollection_List_TopoDS_Shape,
         theObjState: crate::top_abs::State,
-        theTools: &crate::ffi_types::TopTools_ListOfShape,
+        theTools: &crate::ffi_types::NCollection_List_TopoDS_Shape,
         theToolsState: crate::top_abs::State,
         theRange: &crate::message::ProgressRange,
-        theReport: &crate::ffi_types::HandleMessageReport,
+        theReport: &crate::ffi_types::Handle_Message_Report,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_Section_inherited_BuildBOP(
@@ -20312,8 +20290,8 @@ impl Section {
         })
     }
 
-    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:281 - `BOPAlgo_Builder::Images()`
-    pub fn images(&self) -> &crate::ffi_types::TopTools_DataMapOfShapeListOfShape {
+    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:285 - `BOPAlgo_Builder::Images()`
+    pub fn images(&self) -> &crate::ffi_types::NCollection_DataMap_TopoDS_Shape_NCollection_List_TopoDS_Shape_TopTools_ShapeMapHasher{
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKBO::BOPAlgo_Section_inherited_Images(
                 self as *const Self,
@@ -20321,8 +20299,8 @@ impl Section {
         }
     }
 
-    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:284 - `BOPAlgo_Builder::Origins()`
-    pub fn origins(&self) -> &crate::ffi_types::TopTools_DataMapOfShapeListOfShape {
+    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:292 - `BOPAlgo_Builder::Origins()`
+    pub fn origins(&self) -> &crate::ffi_types::NCollection_DataMap_TopoDS_Shape_NCollection_List_TopoDS_Shape_TopTools_ShapeMapHasher{
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKBO::BOPAlgo_Section_inherited_Origins(
                 self as *const Self,
@@ -20330,8 +20308,11 @@ impl Section {
         }
     }
 
-    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:288 - `BOPAlgo_Builder::ShapesSD()`
-    pub fn shapes_sd(&self) -> &crate::ffi_types::TopTools_DataMapOfShapeShape {
+    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:299 - `BOPAlgo_Builder::ShapesSD()`
+    pub fn shapes_sd(
+        &self,
+    ) -> &crate::ffi_types::NCollection_DataMap_TopoDS_Shape_TopoDS_Shape_TopTools_ShapeMapHasher
+    {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKBO::BOPAlgo_Section_inherited_ShapesSD(
                 self as *const Self,
@@ -20339,7 +20320,7 @@ impl Section {
         }
     }
 
-    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:47 - `BOPAlgo_BuilderShape::Shape()`
+    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:48 - `BOPAlgo_BuilderShape::Shape()`
     pub fn shape(&self) -> &crate::topo_ds::Shape {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKBO::BOPAlgo_Section_inherited_Shape(
@@ -20348,36 +20329,36 @@ impl Section {
         }
     }
 
-    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:71 - `BOPAlgo_BuilderShape::IsDeleted()`
+    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:72 - `BOPAlgo_BuilderShape::IsDeleted()`
     pub fn is_deleted(&mut self, theS: &crate::topo_ds::Shape) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_Section_inherited_IsDeleted(self as *mut Self, theS)
         })
     }
 
-    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:77 - `BOPAlgo_BuilderShape::HasModified()`
+    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:78 - `BOPAlgo_BuilderShape::HasModified()`
     pub fn has_modified(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_Section_inherited_HasModified(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:83 - `BOPAlgo_BuilderShape::HasGenerated()`
+    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:84 - `BOPAlgo_BuilderShape::HasGenerated()`
     pub fn has_generated(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_Section_inherited_HasGenerated(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:89 - `BOPAlgo_BuilderShape::HasDeleted()`
+    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:90 - `BOPAlgo_BuilderShape::HasDeleted()`
     pub fn has_deleted(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_Section_inherited_HasDeleted(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:95 - `BOPAlgo_BuilderShape::History()`
-    pub fn history(&mut self) -> crate::OwnedPtr<crate::ffi_types::HandleBRepToolsHistory> {
+    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:93 - `BOPAlgo_BuilderShape::History()`
+    pub fn history(&mut self) -> crate::OwnedPtr<crate::ffi_types::Handle_BRepTools_History> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKBO::BOPAlgo_Section_inherited_History(self as *mut Self),
@@ -20385,7 +20366,7 @@ impl Section {
         }
     }
 
-    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:116 - `BOPAlgo_BuilderShape::SetToFillHistory()`
+    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:114 - `BOPAlgo_BuilderShape::SetToFillHistory()`
     pub fn set_to_fill_history(&mut self, theHistFlag: bool) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_Section_inherited_SetToFillHistory(
@@ -20395,7 +20376,7 @@ impl Section {
         })
     }
 
-    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:119 - `BOPAlgo_BuilderShape::HasHistory()`
+    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:117 - `BOPAlgo_BuilderShape::HasHistory()`
     pub fn has_history(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_Section_inherited_HasHistory(self as *const Self)
@@ -20403,7 +20384,7 @@ impl Section {
     }
 
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:51 - `BOPAlgo_Options::Allocator()`
-    pub fn allocator(&self) -> &crate::ffi_types::HandleNCollectionBaseAllocator {
+    pub fn allocator(&self) -> &crate::ffi_types::TDF_HAllocator {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKBO::BOPAlgo_Section_inherited_Allocator(
                 self as *const Self,
@@ -20412,14 +20393,14 @@ impl Section {
     }
 
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:61 - `BOPAlgo_Options::AddError()`
-    pub fn add_error(&mut self, theAlert: &crate::ffi_types::HandleMessageAlert) {
+    pub fn add_error(&mut self, theAlert: &crate::ffi_types::Handle_Message_Alert) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_Section_inherited_AddError(self as *mut Self, theAlert)
         })
     }
 
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:67 - `BOPAlgo_Options::AddWarning()`
-    pub fn add_warning(&mut self, theAlert: &crate::ffi_types::HandleMessageAlert) {
+    pub fn add_warning(&mut self, theAlert: &crate::ffi_types::Handle_Message_Alert) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_Section_inherited_AddWarning(
                 self as *mut Self,
@@ -20436,7 +20417,7 @@ impl Section {
     }
 
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:76 - `BOPAlgo_Options::HasError()`
-    pub fn has_error(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    pub fn has_error(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_Section_inherited_HasError(self as *const Self, theType)
         })
@@ -20450,7 +20431,7 @@ impl Section {
     }
 
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:85 - `BOPAlgo_Options::HasWarning()`
-    pub fn has_warning(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    pub fn has_warning(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_Section_inherited_HasWarning(
                 self as *const Self,
@@ -20460,7 +20441,7 @@ impl Section {
     }
 
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:91 - `BOPAlgo_Options::GetReport()`
-    pub fn get_report(&self) -> &crate::ffi_types::HandleMessageReport {
+    pub fn get_report(&self) -> &crate::ffi_types::Handle_Message_Report {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKBO::BOPAlgo_Section_inherited_GetReport(
                 self as *const Self,
@@ -20678,14 +20659,12 @@ impl ShellSplitter {
 
     /// **Source:** `BOPAlgo_ShellSplitter.hxx`:41 - `BOPAlgo_ShellSplitter::BOPAlgo_ShellSplitter()`
     /// constructor
-    pub fn new_handlencollectionbaseallocator(
-        theAllocator: &crate::ffi_types::HandleNCollectionBaseAllocator,
+    pub fn new_hallocator(
+        theAllocator: &crate::ffi_types::TDF_HAllocator,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKBO::BOPAlgo_ShellSplitter_ctor_handlencollectionbaseallocator(
-                    theAllocator,
-                ),
+                crate::ffi_extern_TKBO::BOPAlgo_ShellSplitter_ctor_hallocator(theAllocator),
             ))
         }
     }
@@ -20700,7 +20679,7 @@ impl ShellSplitter {
 
     /// **Source:** `BOPAlgo_ShellSplitter.hxx`:47 - `BOPAlgo_ShellSplitter::StartElements()`
     /// return the faces to process
-    pub fn start_elements(&self) -> &crate::ffi_types::TopTools_ListOfShape {
+    pub fn start_elements(&self) -> &crate::ffi_types::NCollection_List_TopoDS_Shape {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKBO::BOPAlgo_ShellSplitter_start_elements(
                 self as *const Self,
@@ -20718,7 +20697,7 @@ impl ShellSplitter {
 
     /// **Source:** `BOPAlgo_ShellSplitter.hxx`:54 - `BOPAlgo_ShellSplitter::Shells()`
     /// returns the loops
-    pub fn shells(&self) -> &crate::ffi_types::TopTools_ListOfShape {
+    pub fn shells(&self) -> &crate::ffi_types::NCollection_List_TopoDS_Shape {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKBO::BOPAlgo_ShellSplitter_shells(
                 self as *const Self,
@@ -20774,7 +20753,7 @@ impl ShellSplitter {
     }
 
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:51 - `BOPAlgo_Options::Allocator()`
-    pub fn allocator(&self) -> &crate::ffi_types::HandleNCollectionBaseAllocator {
+    pub fn allocator(&self) -> &crate::ffi_types::TDF_HAllocator {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKBO::BOPAlgo_ShellSplitter_inherited_Allocator(
@@ -20792,7 +20771,7 @@ impl ShellSplitter {
     }
 
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:61 - `BOPAlgo_Options::AddError()`
-    pub fn add_error(&mut self, theAlert: &crate::ffi_types::HandleMessageAlert) {
+    pub fn add_error(&mut self, theAlert: &crate::ffi_types::Handle_Message_Alert) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_ShellSplitter_inherited_AddError(
                 self as *mut Self,
@@ -20802,7 +20781,7 @@ impl ShellSplitter {
     }
 
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:67 - `BOPAlgo_Options::AddWarning()`
-    pub fn add_warning(&mut self, theAlert: &crate::ffi_types::HandleMessageAlert) {
+    pub fn add_warning(&mut self, theAlert: &crate::ffi_types::Handle_Message_Alert) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_ShellSplitter_inherited_AddWarning(
                 self as *mut Self,
@@ -20819,7 +20798,7 @@ impl ShellSplitter {
     }
 
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:76 - `BOPAlgo_Options::HasError()`
-    pub fn has_error(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    pub fn has_error(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_ShellSplitter_inherited_HasError(
                 self as *const Self,
@@ -20836,7 +20815,7 @@ impl ShellSplitter {
     }
 
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:85 - `BOPAlgo_Options::HasWarning()`
-    pub fn has_warning(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    pub fn has_warning(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_ShellSplitter_inherited_HasWarning(
                 self as *const Self,
@@ -20846,7 +20825,7 @@ impl ShellSplitter {
     }
 
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:91 - `BOPAlgo_Options::GetReport()`
-    pub fn get_report(&self) -> &crate::ffi_types::HandleMessageReport {
+    pub fn get_report(&self) -> &crate::ffi_types::Handle_Message_Report {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKBO::BOPAlgo_ShellSplitter_inherited_GetReport(
@@ -20941,27 +20920,27 @@ impl ShellSplitter {
 
 /// **Source:** `BOPAlgo_Splitter.hxx`:50 - `BOPAlgo_Splitter`
 /// The **Splitter algorithm** is the algorithm for splitting a group of
-/// arbitrary shapes by the other group of arbitrary shapes.<br>
-/// The arguments of the operation are divided on two groups:<br>
-/// *Objects* - shapes that will be split;<br>
-/// *Tools*   - shapes by which the *Objects* will be split.<br>
+/// arbitrary shapes by the other group of arbitrary shapes.
+/// The arguments of the operation are divided on two groups:
+/// *Objects* - shapes that will be split;
+/// *Tools*   - shapes by which the *Objects* will be split.
 /// The result of the operation contains only the split parts
-/// of the shapes from the group of *Objects*.<br>
+/// of the shapes from the group of *Objects*.
 /// The split parts of the shapes from the group of *Tools* are excluded
-/// from the result.<br>
+/// from the result.
 /// The shapes can be split by the other shapes from the same group
 /// (in case these shapes are interfering).
 ///
 /// The class is a General Fuse based algorithm. Thus, all options
 /// of the General Fuse algorithm such as Fuzzy mode, safe processing mode,
 /// parallel processing mode, gluing mode and history support are also
-/// available in this algorithm.<br>
+/// available in this algorithm.
 /// There is no requirement on the existence of the *Tools* shapes.
 /// And if there are no *Tools* shapes, the result of the splitting
 /// operation will be equivalent to the General Fuse result.
 ///
 /// The implementation of the algorithm is minimal - only the methods
-/// CheckData() and Perform() have been overridden.<br>
+/// CheckData() and Perform() have been overridden.
 /// The method BOPAlgo_Builder::BuildResult(), which adds the split parts of the arguments
 /// into result, does not have to be overridden, because its native implementation
 /// performs the necessary actions for the Splitter algorithm - it adds
@@ -20988,14 +20967,12 @@ impl Splitter {
     }
 
     /// **Source:** `BOPAlgo_Splitter.hxx`:59 - `BOPAlgo_Splitter::BOPAlgo_Splitter()`
-    pub fn new_handlencollectionbaseallocator(
-        theAllocator: &crate::ffi_types::HandleNCollectionBaseAllocator,
+    pub fn new_hallocator(
+        theAllocator: &crate::ffi_types::TDF_HAllocator,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKBO::BOPAlgo_Splitter_ctor_handlencollectionbaseallocator(
-                    theAllocator,
-                ),
+                crate::ffi_extern_TKBO::BOPAlgo_Splitter_ctor_hallocator(theAllocator),
             ))
         }
     }
@@ -21119,7 +21096,7 @@ impl Splitter {
     }
 
     /// Inherited: **Source:** `BOPAlgo_ToolsProvider.hxx`:42 - `BOPAlgo_ToolsProvider::SetTools()`
-    pub fn set_tools(&mut self, theShapes: &crate::ffi_types::TopTools_ListOfShape) {
+    pub fn set_tools(&mut self, theShapes: &crate::ffi_types::NCollection_List_TopoDS_Shape) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_Splitter_inherited_SetTools(
                 self as *mut Self,
@@ -21129,7 +21106,7 @@ impl Splitter {
     }
 
     /// Inherited: **Source:** `BOPAlgo_ToolsProvider.hxx`:45 - `BOPAlgo_ToolsProvider::Tools()`
-    pub fn tools(&self) -> &crate::ffi_types::TopTools_ListOfShape {
+    pub fn tools(&self) -> &crate::ffi_types::NCollection_List_TopoDS_Shape {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKBO::BOPAlgo_Splitter_inherited_Tools(
                 self as *const Self,
@@ -21137,7 +21114,7 @@ impl Splitter {
         }
     }
 
-    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:89 - `BOPAlgo_Builder::PPaveFiller()`
+    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:90 - `BOPAlgo_Builder::PPaveFiller()`
     pub fn p_pave_filler(&mut self) -> Option<&mut PaveFiller> {
         {
             let __val = crate::check_result(unsafe {
@@ -21151,7 +21128,7 @@ impl Splitter {
         }
     }
 
-    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:92 - `BOPAlgo_Builder::PDS()`
+    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:93 - `BOPAlgo_Builder::PDS()`
     pub fn pds(&mut self) -> Option<&mut crate::bopds::DS> {
         {
             let __val = crate::check_result(unsafe {
@@ -21165,8 +21142,8 @@ impl Splitter {
         }
     }
 
-    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:95 - `BOPAlgo_Builder::Context()`
-    pub fn context(&self) -> crate::OwnedPtr<crate::ffi_types::HandleIntToolsContext> {
+    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:96 - `BOPAlgo_Builder::Context()`
+    pub fn context(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_IntTools_Context> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKBO::BOPAlgo_Splitter_inherited_Context(self as *const Self),
@@ -21174,7 +21151,7 @@ impl Splitter {
         }
     }
 
-    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:99 - `BOPAlgo_Builder::AddArgument()`
+    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:100 - `BOPAlgo_Builder::AddArgument()`
     pub fn add_argument(&mut self, theShape: &crate::topo_ds::Shape) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_Splitter_inherited_AddArgument(
@@ -21184,8 +21161,8 @@ impl Splitter {
         })
     }
 
-    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:102 - `BOPAlgo_Builder::SetArguments()`
-    pub fn set_arguments(&mut self, theLS: &crate::ffi_types::TopTools_ListOfShape) {
+    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:103 - `BOPAlgo_Builder::SetArguments()`
+    pub fn set_arguments(&mut self, theLS: &crate::ffi_types::NCollection_List_TopoDS_Shape) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_Splitter_inherited_SetArguments(
                 self as *mut Self,
@@ -21194,8 +21171,8 @@ impl Splitter {
         })
     }
 
-    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:105 - `BOPAlgo_Builder::Arguments()`
-    pub fn arguments(&self) -> &crate::ffi_types::TopTools_ListOfShape {
+    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:106 - `BOPAlgo_Builder::Arguments()`
+    pub fn arguments(&self) -> &crate::ffi_types::NCollection_List_TopoDS_Shape {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKBO::BOPAlgo_Splitter_inherited_Arguments(
                 self as *const Self,
@@ -21203,7 +21180,7 @@ impl Splitter {
         }
     }
 
-    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:114 - `BOPAlgo_Builder::SetNonDestructive()`
+    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:115 - `BOPAlgo_Builder::SetNonDestructive()`
     pub fn set_non_destructive(&mut self, theFlag: bool) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_Splitter_inherited_SetNonDestructive(
@@ -21213,14 +21190,14 @@ impl Splitter {
         })
     }
 
-    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:119 - `BOPAlgo_Builder::NonDestructive()`
+    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:120 - `BOPAlgo_Builder::NonDestructive()`
     pub fn non_destructive(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_Splitter_inherited_NonDestructive(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:122 - `BOPAlgo_Builder::SetGlue()`
+    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:123 - `BOPAlgo_Builder::SetGlue()`
     pub fn set_glue(&mut self, theGlue: crate::bop_algo::GlueEnum) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_Splitter_inherited_SetGlue(
@@ -21230,7 +21207,7 @@ impl Splitter {
         })
     }
 
-    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:125 - `BOPAlgo_Builder::Glue()`
+    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:126 - `BOPAlgo_Builder::Glue()`
     pub fn glue(&self) -> crate::bop_algo::GlueEnum {
         crate::bop_algo::GlueEnum::try_from(crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_Splitter_inherited_Glue(self as *const Self)
@@ -21238,7 +21215,7 @@ impl Splitter {
         .unwrap()
     }
 
-    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:128 - `BOPAlgo_Builder::SetCheckInverted()`
+    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:129 - `BOPAlgo_Builder::SetCheckInverted()`
     pub fn set_check_inverted(&mut self, theCheck: bool) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_Splitter_inherited_SetCheckInverted(
@@ -21248,14 +21225,14 @@ impl Splitter {
         })
     }
 
-    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:132 - `BOPAlgo_Builder::CheckInverted()`
+    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:133 - `BOPAlgo_Builder::CheckInverted()`
     pub fn check_inverted(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_Splitter_inherited_CheckInverted(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:142 - `BOPAlgo_Builder::PerformWithFiller()`
+    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:143 - `BOPAlgo_Builder::PerformWithFiller()`
     pub fn perform_with_filler(
         &mut self,
         theFiller: &PaveFiller,
@@ -21270,15 +21247,15 @@ impl Splitter {
         })
     }
 
-    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:186 - `BOPAlgo_Builder::BuildBOP()`
+    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:187 - `BOPAlgo_Builder::BuildBOP()`
     pub fn build_bop(
         &mut self,
-        theObjects: &crate::ffi_types::TopTools_ListOfShape,
+        theObjects: &crate::ffi_types::NCollection_List_TopoDS_Shape,
         theObjState: crate::top_abs::State,
-        theTools: &crate::ffi_types::TopTools_ListOfShape,
+        theTools: &crate::ffi_types::NCollection_List_TopoDS_Shape,
         theToolsState: crate::top_abs::State,
         theRange: &crate::message::ProgressRange,
-        theReport: &crate::ffi_types::HandleMessageReport,
+        theReport: &crate::ffi_types::Handle_Message_Report,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_Splitter_inherited_BuildBOP(
@@ -21293,8 +21270,8 @@ impl Splitter {
         })
     }
 
-    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:281 - `BOPAlgo_Builder::Images()`
-    pub fn images(&self) -> &crate::ffi_types::TopTools_DataMapOfShapeListOfShape {
+    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:285 - `BOPAlgo_Builder::Images()`
+    pub fn images(&self) -> &crate::ffi_types::NCollection_DataMap_TopoDS_Shape_NCollection_List_TopoDS_Shape_TopTools_ShapeMapHasher{
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKBO::BOPAlgo_Splitter_inherited_Images(
                 self as *const Self,
@@ -21302,8 +21279,8 @@ impl Splitter {
         }
     }
 
-    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:284 - `BOPAlgo_Builder::Origins()`
-    pub fn origins(&self) -> &crate::ffi_types::TopTools_DataMapOfShapeListOfShape {
+    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:292 - `BOPAlgo_Builder::Origins()`
+    pub fn origins(&self) -> &crate::ffi_types::NCollection_DataMap_TopoDS_Shape_NCollection_List_TopoDS_Shape_TopTools_ShapeMapHasher{
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKBO::BOPAlgo_Splitter_inherited_Origins(
                 self as *const Self,
@@ -21311,8 +21288,11 @@ impl Splitter {
         }
     }
 
-    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:288 - `BOPAlgo_Builder::ShapesSD()`
-    pub fn shapes_sd(&self) -> &crate::ffi_types::TopTools_DataMapOfShapeShape {
+    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:299 - `BOPAlgo_Builder::ShapesSD()`
+    pub fn shapes_sd(
+        &self,
+    ) -> &crate::ffi_types::NCollection_DataMap_TopoDS_Shape_TopoDS_Shape_TopTools_ShapeMapHasher
+    {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKBO::BOPAlgo_Splitter_inherited_ShapesSD(
                 self as *const Self,
@@ -21320,7 +21300,7 @@ impl Splitter {
         }
     }
 
-    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:47 - `BOPAlgo_BuilderShape::Shape()`
+    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:48 - `BOPAlgo_BuilderShape::Shape()`
     pub fn shape(&self) -> &crate::topo_ds::Shape {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKBO::BOPAlgo_Splitter_inherited_Shape(
@@ -21329,36 +21309,36 @@ impl Splitter {
         }
     }
 
-    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:71 - `BOPAlgo_BuilderShape::IsDeleted()`
+    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:72 - `BOPAlgo_BuilderShape::IsDeleted()`
     pub fn is_deleted(&mut self, theS: &crate::topo_ds::Shape) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_Splitter_inherited_IsDeleted(self as *mut Self, theS)
         })
     }
 
-    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:77 - `BOPAlgo_BuilderShape::HasModified()`
+    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:78 - `BOPAlgo_BuilderShape::HasModified()`
     pub fn has_modified(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_Splitter_inherited_HasModified(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:83 - `BOPAlgo_BuilderShape::HasGenerated()`
+    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:84 - `BOPAlgo_BuilderShape::HasGenerated()`
     pub fn has_generated(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_Splitter_inherited_HasGenerated(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:89 - `BOPAlgo_BuilderShape::HasDeleted()`
+    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:90 - `BOPAlgo_BuilderShape::HasDeleted()`
     pub fn has_deleted(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_Splitter_inherited_HasDeleted(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:95 - `BOPAlgo_BuilderShape::History()`
-    pub fn history(&mut self) -> crate::OwnedPtr<crate::ffi_types::HandleBRepToolsHistory> {
+    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:93 - `BOPAlgo_BuilderShape::History()`
+    pub fn history(&mut self) -> crate::OwnedPtr<crate::ffi_types::Handle_BRepTools_History> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKBO::BOPAlgo_Splitter_inherited_History(self as *mut Self),
@@ -21366,7 +21346,7 @@ impl Splitter {
         }
     }
 
-    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:116 - `BOPAlgo_BuilderShape::SetToFillHistory()`
+    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:114 - `BOPAlgo_BuilderShape::SetToFillHistory()`
     pub fn set_to_fill_history(&mut self, theHistFlag: bool) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_Splitter_inherited_SetToFillHistory(
@@ -21376,7 +21356,7 @@ impl Splitter {
         })
     }
 
-    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:119 - `BOPAlgo_BuilderShape::HasHistory()`
+    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:117 - `BOPAlgo_BuilderShape::HasHistory()`
     pub fn has_history(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_Splitter_inherited_HasHistory(self as *const Self)
@@ -21384,7 +21364,7 @@ impl Splitter {
     }
 
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:51 - `BOPAlgo_Options::Allocator()`
-    pub fn allocator(&self) -> &crate::ffi_types::HandleNCollectionBaseAllocator {
+    pub fn allocator(&self) -> &crate::ffi_types::TDF_HAllocator {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKBO::BOPAlgo_Splitter_inherited_Allocator(
                 self as *const Self,
@@ -21393,14 +21373,14 @@ impl Splitter {
     }
 
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:61 - `BOPAlgo_Options::AddError()`
-    pub fn add_error(&mut self, theAlert: &crate::ffi_types::HandleMessageAlert) {
+    pub fn add_error(&mut self, theAlert: &crate::ffi_types::Handle_Message_Alert) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_Splitter_inherited_AddError(self as *mut Self, theAlert)
         })
     }
 
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:67 - `BOPAlgo_Options::AddWarning()`
-    pub fn add_warning(&mut self, theAlert: &crate::ffi_types::HandleMessageAlert) {
+    pub fn add_warning(&mut self, theAlert: &crate::ffi_types::Handle_Message_Alert) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_Splitter_inherited_AddWarning(
                 self as *mut Self,
@@ -21417,7 +21397,7 @@ impl Splitter {
     }
 
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:76 - `BOPAlgo_Options::HasError()`
-    pub fn has_error(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    pub fn has_error(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_Splitter_inherited_HasError(
                 self as *const Self,
@@ -21434,7 +21414,7 @@ impl Splitter {
     }
 
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:85 - `BOPAlgo_Options::HasWarning()`
-    pub fn has_warning(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    pub fn has_warning(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_Splitter_inherited_HasWarning(
                 self as *const Self,
@@ -21444,7 +21424,7 @@ impl Splitter {
     }
 
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:91 - `BOPAlgo_Options::GetReport()`
-    pub fn get_report(&self) -> &crate::ffi_types::HandleMessageReport {
+    pub fn get_report(&self) -> &crate::ffi_types::Handle_Message_Report {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKBO::BOPAlgo_Splitter_inherited_GetReport(
                 self as *const Self,
@@ -21558,50 +21538,11 @@ impl Tools {
         }
     }
 
-    /// **Source:** `BOPAlgo_Tools.hxx`:104 - `BOPAlgo_Tools::FillMap()`
-    pub fn fill_map(
-        thePB1: &crate::ffi_types::HandleBOPDSPaveBlock,
-        theF: i32,
-        theMILI: &mut crate::ffi_types::BOPDS_IndexedDataMapOfPaveBlockListOfInteger,
-        theAllocator: &crate::ffi_types::HandleNCollectionBaseAllocator,
-    ) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKBO::BOPAlgo_Tools_fill_map(thePB1, theF, theMILI, theAllocator)
-        })
-    }
-
-    /// **Source:** `BOPAlgo_Tools.hxx`:111 - `BOPAlgo_Tools::PerformCommonBlocks()`
-    /// Create Common Blocks from the groups of pave blocks of <theMBlocks>
-    /// connection map.
-    pub unsafe fn perform_common_blocks_indexeddatamapofpaveblocklistofpaveblock_handlencollectionbaseallocator_dsptr_handleinttoolscontext(
-        theMBlocks: &mut crate::ffi_types::BOPDS_IndexedDataMapOfPaveBlockListOfPaveBlock,
-        theAllocator: &crate::ffi_types::HandleNCollectionBaseAllocator,
-        theDS: &mut *mut crate::bopds::DS,
-        theContext: &crate::ffi_types::HandleIntToolsContext,
-    ) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKBO::BOPAlgo_Tools_perform_common_blocks_indexeddatamapofpaveblocklistofpaveblock_handlencollectionbaseallocator_dsptr_handleinttoolscontext(theMBlocks, theAllocator, theDS, theContext)
-        })
-    }
-
-    /// **Source:** `BOPAlgo_Tools.hxx`:118 - `BOPAlgo_Tools::PerformCommonBlocks()`
-    /// Create Common Blocks on faces using the PB->Faces connection map <theMBlocks>.
-    pub unsafe fn perform_common_blocks_indexeddatamapofpaveblocklistofinteger_handlencollectionbaseallocator_dsptr_handleinttoolscontext(
-        theMBlocks: &crate::ffi_types::BOPDS_IndexedDataMapOfPaveBlockListOfInteger,
-        theAllocator: &crate::ffi_types::HandleNCollectionBaseAllocator,
-        pDS: &mut *mut crate::bopds::DS,
-        theContext: &crate::ffi_types::HandleIntToolsContext,
-    ) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKBO::BOPAlgo_Tools_perform_common_blocks_indexeddatamapofpaveblocklistofinteger_handlencollectionbaseallocator_dsptr_handleinttoolscontext(theMBlocks, theAllocator, pDS, theContext)
-        })
-    }
-
-    /// **Source:** `BOPAlgo_Tools.hxx`:124 - `BOPAlgo_Tools::ComputeToleranceOfCB()`
+    /// **Source:** `BOPAlgo_Tools.hxx`:127 - `BOPAlgo_Tools::ComputeToleranceOfCB()`
     pub fn compute_tolerance_of_cb(
-        theCB: &crate::ffi_types::HandleBOPDSCommonBlock,
+        theCB: &crate::ffi_types::Handle_BOPDS_CommonBlock,
         theDS: &mut crate::bopds::DS,
-        theContext: &crate::ffi_types::HandleIntToolsContext,
+        theContext: &crate::ffi_types::Handle_IntTools_Context,
     ) -> f64 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_Tools_compute_tolerance_of_cb(
@@ -21612,26 +21553,26 @@ impl Tools {
         })
     }
 
-    /// **Source:** `BOPAlgo_Tools.hxx`:148 - `BOPAlgo_Tools::EdgesToWires()`
-    /// Creates planar wires from the given edges.<br>
+    /// **Source:** `BOPAlgo_Tools.hxx`:151 - `BOPAlgo_Tools::EdgesToWires()`
+    /// Creates planar wires from the given edges.
     /// The input edges are expected to be planar. And for the performance
-    /// sake the method does not check if the edges are really planar.<br>
-    /// Thus, the result wires will also be not planar if the input edges are not planar.<br>
+    /// sake the method does not check if the edges are really planar.
+    /// Thus, the result wires will also be not planar if the input edges are not planar.
     /// The edges may be not shared, but the resulting wires will be sharing the
-    /// coinciding parts and intersecting parts.<br>
-    /// The output wires may be non-manifold and contain free and multi-connected vertices.<br>
+    /// coinciding parts and intersecting parts.
+    /// The output wires may be non-manifold and contain free and multi-connected vertices.
     /// Parameters:
-    /// <theEdges> - input edges;<br>
-    /// <theWires> - output wires;<br>
+    /// <theEdges> - input edges;
+    /// <theWires> - output wires;
     /// <theShared> - boolean flag which defines whether the input edges are already
-    /// shared or have to be intersected;<br>
+    /// shared or have to be intersected;
     /// <theAngTol> - the angular tolerance which will be used for distinguishing
     /// the planes in which the edges are located. Default value is
-    /// 1.e-8 which is used for intersection of planes in IntTools_FaceFace.<br>
-    /// Method returns the following error statuses:<br>
-    /// 0 - in case of success (at least one wire has been built);<br>
-    /// 1 - in case there are no edges in the given shape;<br>
-    /// 2 - sharing of the edges has failed.<br>
+    /// 1.e-8 which is used for intersection of planes in IntTools_FaceFace.
+    /// Method returns the following error statuses:
+    /// 0 - in case of success (at least one wire has been built);
+    /// 1 - in case there are no edges in the given shape;
+    /// 2 - sharing of the edges has failed.
     pub fn edges_to_wires(
         theEdges: &crate::topo_ds::Shape,
         theWires: &mut crate::topo_ds::Shape,
@@ -21645,21 +21586,21 @@ impl Tools {
         })
     }
 
-    /// **Source:** `BOPAlgo_Tools.hxx`:168 - `BOPAlgo_Tools::WiresToFaces()`
-    /// Creates planar faces from given planar wires.<br>
-    /// The method does not check if the wires are really planar.<br>
-    /// The input wires may be non-manifold but should be shared.<br>
+    /// **Source:** `BOPAlgo_Tools.hxx`:170 - `BOPAlgo_Tools::WiresToFaces()`
+    /// Creates planar faces from given planar wires.
+    /// The method does not check if the wires are really planar.
+    /// The input wires may be non-manifold but should be shared.
     /// The wires located in the same planes and included into other wires will create
-    /// holes in the faces built from outer wires.<br>
+    /// holes in the faces built from outer wires.
     /// The tolerance values of the input shapes may be modified during the operation
-    /// due to projection of the edges on the planes for creation of 2D curves.<br>
+    /// due to projection of the edges on the planes for creation of 2D curves.
     /// Parameters:
-    /// <theWires> - the given wires;<br>
-    /// <theFaces> - the output faces;<br>
+    /// <theWires> - the given wires;
+    /// <theFaces> - the output faces;
     /// <theAngTol> - the angular tolerance for distinguishing the planes in which
     /// the wires are located. Default value is 1.e-8 which is used
-    /// for intersection of planes in IntTools_FaceFace.<br>
-    /// Method returns TRUE in case of success, i.e. at least one face has been built.<br>
+    /// for intersection of planes in IntTools_FaceFace.
+    /// Method returns TRUE in case of success, i.e. at least one face has been built.
     pub fn wires_to_faces(
         theWires: &crate::topo_ds::Shape,
         theFaces: &mut crate::topo_ds::Shape,
@@ -21670,12 +21611,12 @@ impl Tools {
         })
     }
 
-    /// **Source:** `BOPAlgo_Tools.hxx`:173 - `BOPAlgo_Tools::IntersectVertices()`
+    /// **Source:** `BOPAlgo_Tools.hxx`:175 - `BOPAlgo_Tools::IntersectVertices()`
     /// Finds chains of intersecting vertices
     pub fn intersect_vertices(
-        theVertices: &crate::ffi_types::TopTools_IndexedDataMapOfShapeReal,
+        theVertices: &crate::ffi_types::NCollection_IndexedDataMap_TopoDS_Shape_double_TopTools_ShapeMapHasher,
         theFuzzyValue: f64,
-        theChains: &mut crate::ffi_types::TopTools_ListOfListOfShape,
+        theChains: &mut crate::ffi_types::NCollection_List_NCollection_List_TopoDS_Shape,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_Tools_intersect_vertices(
@@ -21686,7 +21627,7 @@ impl Tools {
         })
     }
 
-    /// **Source:** `BOPAlgo_Tools.hxx`:191 - `BOPAlgo_Tools::ClassifyFaces()`
+    /// **Source:** `BOPAlgo_Tools.hxx`:193 - `BOPAlgo_Tools::ClassifyFaces()`
     /// Classifies the faces <theFaces> relatively solids <theSolids>.
     /// The IN faces for solids are stored into output data map <theInParts>.
     ///
@@ -21701,13 +21642,13 @@ impl Tools {
     /// do not have any geometrically coinciding parts without topological
     /// sharing of these parts
     pub fn classify_faces(
-        theFaces: &crate::ffi_types::TopTools_ListOfShape,
-        theSolids: &crate::ffi_types::TopTools_ListOfShape,
+        theFaces: &crate::ffi_types::NCollection_List_TopoDS_Shape,
+        theSolids: &crate::ffi_types::NCollection_List_TopoDS_Shape,
         theRunParallel: bool,
-        theContext: &mut crate::ffi_types::HandleIntToolsContext,
-        theInParts: &mut crate::ffi_types::TopTools_IndexedDataMapOfShapeListOfShape,
-        theShapeBoxMap: &crate::ffi_types::TopTools_DataMapOfShapeBox,
-        theSolidsIF: &crate::ffi_types::TopTools_DataMapOfShapeListOfShape,
+        theContext: &mut crate::ffi_types::Handle_IntTools_Context,
+        theInParts: &mut crate::ffi_types::NCollection_IndexedDataMap_TopoDS_Shape_NCollection_List_TopoDS_Shape_TopTools_ShapeMapHasher,
+        theShapeBoxMap: &crate::ffi_types::NCollection_DataMap_TopoDS_Shape_Bnd_Box_TopTools_ShapeMapHasher,
+        theSolidsIF: &crate::ffi_types::NCollection_DataMap_TopoDS_Shape_NCollection_List_TopoDS_Shape_TopTools_ShapeMapHasher,
         theRange: &crate::message::ProgressRange,
     ) {
         crate::check_void_result(unsafe {
@@ -21724,7 +21665,7 @@ impl Tools {
         })
     }
 
-    /// **Source:** `BOPAlgo_Tools.hxx`:208 - `BOPAlgo_Tools::FillInternals()`
+    /// **Source:** `BOPAlgo_Tools.hxx`:216 - `BOPAlgo_Tools::FillInternals()`
     /// Classifies the given parts relatively the given solids and
     /// fills the solids with the parts classified as INTERNAL.
     ///
@@ -21733,10 +21674,10 @@ impl Tools {
     /// @param theImages  - Possible images of the parts that has to be classified
     /// @param theContext - cached geometrical tools to speed-up classifications
     pub fn fill_internals(
-        theSolids: &crate::ffi_types::TopTools_ListOfShape,
-        theParts: &crate::ffi_types::TopTools_ListOfShape,
-        theImages: &crate::ffi_types::TopTools_DataMapOfShapeListOfShape,
-        theContext: &crate::ffi_types::HandleIntToolsContext,
+        theSolids: &crate::ffi_types::NCollection_List_TopoDS_Shape,
+        theParts: &crate::ffi_types::NCollection_List_TopoDS_Shape,
+        theImages: &crate::ffi_types::NCollection_DataMap_TopoDS_Shape_NCollection_List_TopoDS_Shape_TopTools_ShapeMapHasher,
+        theContext: &crate::ffi_types::Handle_IntTools_Context,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_Tools_fill_internals(
@@ -21745,7 +21686,7 @@ impl Tools {
         })
     }
 
-    /// **Source:** `BOPAlgo_Tools.hxx`:222 - `BOPAlgo_Tools::TrsfToPoint()`
+    /// **Source:** `BOPAlgo_Tools.hxx`:233 - `BOPAlgo_Tools::TrsfToPoint()`
     /// Computes the transformation needed to move the objects
     /// to the given point to increase the quality of computations.
     /// Returns true if the objects are located far from the given point
@@ -21773,6 +21714,23 @@ impl Tools {
         })
     }
 }
+
+// ── Skipped symbols for Tools (3 total) ──
+// SKIPPED: **Source:** `BOPAlgo_Tools.hxx`:104 - `BOPAlgo_Tools::FillMap`
+//   Reason: has unbindable types: param 'theMILI': unresolved template type (NCollection_IndexedDataMap<occ::handle<BOPDS_PaveBlock>, NCollection_List<int>>&)
+//   // pub fn fill_map(thePB1: &HandlePaveBlock, theF: i32, theMILI: /* NCollection_IndexedDataMap<occ::handle<BOPDS_PaveBlock>, NCollection_List<int>>& */, theAllocator: &HAllocator);
+//
+// SKIPPED: **Source:** `BOPAlgo_Tools.hxx`:112 - `BOPAlgo_Tools::PerformCommonBlocks`
+//   static_method: Create Common Blocks from the groups of pave blocks of <theMBlocks>
+//   static_method: connection map.
+//   Reason: has unbindable types: param 'theMBlocks': unresolved template type (NCollection_IndexedDataMap<occ::handle<BOPDS_PaveBlock>, NCollection_List<occ::handle<BOPDS_PaveBlock>>>&)
+//   // pub fn perform_common_blocks(theMBlocks: /* NCollection_IndexedDataMap<occ::handle<BOPDS_PaveBlock>, NCollection_List<occ::handle<BOPDS_PaveBlock>>>& */, theAllocator: &HAllocator, theDS: &mut *mut DS, theContext: &HandleContext);
+//
+// SKIPPED: **Source:** `BOPAlgo_Tools.hxx`:120 - `BOPAlgo_Tools::PerformCommonBlocks`
+//   static_method: Create Common Blocks on faces using the PB->Faces connection map <theMBlocks>.
+//   Reason: has unbindable types: param 'theMBlocks': unresolved template type (NCollection_IndexedDataMap<occ::handle<BOPDS_PaveBlock>, NCollection_List<int>> const&)
+//   // pub fn perform_common_blocks(theMBlocks: /* NCollection_IndexedDataMap<occ::handle<BOPDS_PaveBlock>, NCollection_List<int>> const& */, theAllocator: &HAllocator, pDS: &mut *mut DS, theContext: &HandleContext);
+//
 
 // ========================
 // From BOPAlgo_ToolsProvider.hxx
@@ -21802,14 +21760,12 @@ impl ToolsProvider {
     }
 
     /// **Source:** `BOPAlgo_ToolsProvider.hxx`:33 - `BOPAlgo_ToolsProvider::BOPAlgo_ToolsProvider()`
-    pub fn new_handlencollectionbaseallocator(
-        theAllocator: &crate::ffi_types::HandleNCollectionBaseAllocator,
+    pub fn new_hallocator(
+        theAllocator: &crate::ffi_types::TDF_HAllocator,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKBO::BOPAlgo_ToolsProvider_ctor_handlencollectionbaseallocator(
-                    theAllocator,
-                ),
+                crate::ffi_extern_TKBO::BOPAlgo_ToolsProvider_ctor_hallocator(theAllocator),
             ))
         }
     }
@@ -21832,7 +21788,7 @@ impl ToolsProvider {
 
     /// **Source:** `BOPAlgo_ToolsProvider.hxx`:42 - `BOPAlgo_ToolsProvider::SetTools()`
     /// Adds the Tool arguments of the operation
-    pub fn set_tools(&mut self, theShapes: &crate::ffi_types::TopTools_ListOfShape) {
+    pub fn set_tools(&mut self, theShapes: &crate::ffi_types::NCollection_List_TopoDS_Shape) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_ToolsProvider_set_tools(self as *mut Self, theShapes)
         })
@@ -21840,7 +21796,7 @@ impl ToolsProvider {
 
     /// **Source:** `BOPAlgo_ToolsProvider.hxx`:45 - `BOPAlgo_ToolsProvider::Tools()`
     /// Returns the Tool arguments of the operation
-    pub fn tools(&self) -> &crate::ffi_types::TopTools_ListOfShape {
+    pub fn tools(&self) -> &crate::ffi_types::NCollection_List_TopoDS_Shape {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKBO::BOPAlgo_ToolsProvider_tools(
                 self as *const Self,
@@ -21930,7 +21886,7 @@ impl ToolsProvider {
         }
     }
 
-    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:89 - `BOPAlgo_Builder::PPaveFiller()`
+    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:90 - `BOPAlgo_Builder::PPaveFiller()`
     pub fn p_pave_filler(&mut self) -> Option<&mut PaveFiller> {
         {
             let __val = crate::check_result(unsafe {
@@ -21946,7 +21902,7 @@ impl ToolsProvider {
         }
     }
 
-    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:92 - `BOPAlgo_Builder::PDS()`
+    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:93 - `BOPAlgo_Builder::PDS()`
     pub fn pds(&mut self) -> Option<&mut crate::bopds::DS> {
         {
             let __val = crate::check_result(unsafe {
@@ -21960,8 +21916,8 @@ impl ToolsProvider {
         }
     }
 
-    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:95 - `BOPAlgo_Builder::Context()`
-    pub fn context(&self) -> crate::OwnedPtr<crate::ffi_types::HandleIntToolsContext> {
+    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:96 - `BOPAlgo_Builder::Context()`
+    pub fn context(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_IntTools_Context> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKBO::BOPAlgo_ToolsProvider_inherited_Context(
@@ -21971,7 +21927,7 @@ impl ToolsProvider {
         }
     }
 
-    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:99 - `BOPAlgo_Builder::AddArgument()`
+    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:100 - `BOPAlgo_Builder::AddArgument()`
     pub fn add_argument(&mut self, theShape: &crate::topo_ds::Shape) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_ToolsProvider_inherited_AddArgument(
@@ -21981,8 +21937,8 @@ impl ToolsProvider {
         })
     }
 
-    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:102 - `BOPAlgo_Builder::SetArguments()`
-    pub fn set_arguments(&mut self, theLS: &crate::ffi_types::TopTools_ListOfShape) {
+    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:103 - `BOPAlgo_Builder::SetArguments()`
+    pub fn set_arguments(&mut self, theLS: &crate::ffi_types::NCollection_List_TopoDS_Shape) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_ToolsProvider_inherited_SetArguments(
                 self as *mut Self,
@@ -21991,8 +21947,8 @@ impl ToolsProvider {
         })
     }
 
-    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:105 - `BOPAlgo_Builder::Arguments()`
-    pub fn arguments(&self) -> &crate::ffi_types::TopTools_ListOfShape {
+    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:106 - `BOPAlgo_Builder::Arguments()`
+    pub fn arguments(&self) -> &crate::ffi_types::NCollection_List_TopoDS_Shape {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKBO::BOPAlgo_ToolsProvider_inherited_Arguments(
@@ -22002,7 +21958,7 @@ impl ToolsProvider {
         }
     }
 
-    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:114 - `BOPAlgo_Builder::SetNonDestructive()`
+    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:115 - `BOPAlgo_Builder::SetNonDestructive()`
     pub fn set_non_destructive(&mut self, theFlag: bool) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_ToolsProvider_inherited_SetNonDestructive(
@@ -22012,7 +21968,7 @@ impl ToolsProvider {
         })
     }
 
-    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:119 - `BOPAlgo_Builder::NonDestructive()`
+    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:120 - `BOPAlgo_Builder::NonDestructive()`
     pub fn non_destructive(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_ToolsProvider_inherited_NonDestructive(
@@ -22021,7 +21977,7 @@ impl ToolsProvider {
         })
     }
 
-    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:122 - `BOPAlgo_Builder::SetGlue()`
+    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:123 - `BOPAlgo_Builder::SetGlue()`
     pub fn set_glue(&mut self, theGlue: crate::bop_algo::GlueEnum) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_ToolsProvider_inherited_SetGlue(
@@ -22031,7 +21987,7 @@ impl ToolsProvider {
         })
     }
 
-    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:125 - `BOPAlgo_Builder::Glue()`
+    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:126 - `BOPAlgo_Builder::Glue()`
     pub fn glue(&self) -> crate::bop_algo::GlueEnum {
         crate::bop_algo::GlueEnum::try_from(crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_ToolsProvider_inherited_Glue(self as *const Self)
@@ -22039,7 +21995,7 @@ impl ToolsProvider {
         .unwrap()
     }
 
-    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:128 - `BOPAlgo_Builder::SetCheckInverted()`
+    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:129 - `BOPAlgo_Builder::SetCheckInverted()`
     pub fn set_check_inverted(&mut self, theCheck: bool) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_ToolsProvider_inherited_SetCheckInverted(
@@ -22049,7 +22005,7 @@ impl ToolsProvider {
         })
     }
 
-    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:132 - `BOPAlgo_Builder::CheckInverted()`
+    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:133 - `BOPAlgo_Builder::CheckInverted()`
     pub fn check_inverted(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_ToolsProvider_inherited_CheckInverted(
@@ -22058,7 +22014,7 @@ impl ToolsProvider {
         })
     }
 
-    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:137 - `BOPAlgo_Builder::Perform()`
+    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:138 - `BOPAlgo_Builder::Perform()`
     pub fn perform(&mut self, theRange: &crate::message::ProgressRange) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_ToolsProvider_inherited_Perform(
@@ -22068,7 +22024,7 @@ impl ToolsProvider {
         })
     }
 
-    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:142 - `BOPAlgo_Builder::PerformWithFiller()`
+    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:143 - `BOPAlgo_Builder::PerformWithFiller()`
     pub fn perform_with_filler(
         &mut self,
         theFiller: &PaveFiller,
@@ -22083,15 +22039,15 @@ impl ToolsProvider {
         })
     }
 
-    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:186 - `BOPAlgo_Builder::BuildBOP()`
+    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:187 - `BOPAlgo_Builder::BuildBOP()`
     pub fn build_bop(
         &mut self,
-        theObjects: &crate::ffi_types::TopTools_ListOfShape,
+        theObjects: &crate::ffi_types::NCollection_List_TopoDS_Shape,
         theObjState: crate::top_abs::State,
-        theTools: &crate::ffi_types::TopTools_ListOfShape,
+        theTools: &crate::ffi_types::NCollection_List_TopoDS_Shape,
         theToolsState: crate::top_abs::State,
         theRange: &crate::message::ProgressRange,
-        theReport: &crate::ffi_types::HandleMessageReport,
+        theReport: &crate::ffi_types::Handle_Message_Report,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_ToolsProvider_inherited_BuildBOP(
@@ -22106,8 +22062,8 @@ impl ToolsProvider {
         })
     }
 
-    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:281 - `BOPAlgo_Builder::Images()`
-    pub fn images(&self) -> &crate::ffi_types::TopTools_DataMapOfShapeListOfShape {
+    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:285 - `BOPAlgo_Builder::Images()`
+    pub fn images(&self) -> &crate::ffi_types::NCollection_DataMap_TopoDS_Shape_NCollection_List_TopoDS_Shape_TopTools_ShapeMapHasher{
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKBO::BOPAlgo_ToolsProvider_inherited_Images(
                 self as *const Self,
@@ -22115,8 +22071,8 @@ impl ToolsProvider {
         }
     }
 
-    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:284 - `BOPAlgo_Builder::Origins()`
-    pub fn origins(&self) -> &crate::ffi_types::TopTools_DataMapOfShapeListOfShape {
+    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:292 - `BOPAlgo_Builder::Origins()`
+    pub fn origins(&self) -> &crate::ffi_types::NCollection_DataMap_TopoDS_Shape_NCollection_List_TopoDS_Shape_TopTools_ShapeMapHasher{
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKBO::BOPAlgo_ToolsProvider_inherited_Origins(
@@ -22126,8 +22082,11 @@ impl ToolsProvider {
         }
     }
 
-    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:288 - `BOPAlgo_Builder::ShapesSD()`
-    pub fn shapes_sd(&self) -> &crate::ffi_types::TopTools_DataMapOfShapeShape {
+    /// Inherited: **Source:** `BOPAlgo_Builder.hxx`:299 - `BOPAlgo_Builder::ShapesSD()`
+    pub fn shapes_sd(
+        &self,
+    ) -> &crate::ffi_types::NCollection_DataMap_TopoDS_Shape_TopoDS_Shape_TopTools_ShapeMapHasher
+    {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKBO::BOPAlgo_ToolsProvider_inherited_ShapesSD(
@@ -22137,7 +22096,7 @@ impl ToolsProvider {
         }
     }
 
-    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:47 - `BOPAlgo_BuilderShape::Shape()`
+    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:48 - `BOPAlgo_BuilderShape::Shape()`
     pub fn shape(&self) -> &crate::topo_ds::Shape {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKBO::BOPAlgo_ToolsProvider_inherited_Shape(
@@ -22146,7 +22105,7 @@ impl ToolsProvider {
         }
     }
 
-    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:71 - `BOPAlgo_BuilderShape::IsDeleted()`
+    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:72 - `BOPAlgo_BuilderShape::IsDeleted()`
     pub fn is_deleted(&mut self, theS: &crate::topo_ds::Shape) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_ToolsProvider_inherited_IsDeleted(
@@ -22156,14 +22115,14 @@ impl ToolsProvider {
         })
     }
 
-    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:77 - `BOPAlgo_BuilderShape::HasModified()`
+    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:78 - `BOPAlgo_BuilderShape::HasModified()`
     pub fn has_modified(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_ToolsProvider_inherited_HasModified(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:83 - `BOPAlgo_BuilderShape::HasGenerated()`
+    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:84 - `BOPAlgo_BuilderShape::HasGenerated()`
     pub fn has_generated(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_ToolsProvider_inherited_HasGenerated(
@@ -22172,15 +22131,15 @@ impl ToolsProvider {
         })
     }
 
-    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:89 - `BOPAlgo_BuilderShape::HasDeleted()`
+    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:90 - `BOPAlgo_BuilderShape::HasDeleted()`
     pub fn has_deleted(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_ToolsProvider_inherited_HasDeleted(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:95 - `BOPAlgo_BuilderShape::History()`
-    pub fn history(&mut self) -> crate::OwnedPtr<crate::ffi_types::HandleBRepToolsHistory> {
+    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:93 - `BOPAlgo_BuilderShape::History()`
+    pub fn history(&mut self) -> crate::OwnedPtr<crate::ffi_types::Handle_BRepTools_History> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKBO::BOPAlgo_ToolsProvider_inherited_History(self as *mut Self),
@@ -22188,7 +22147,7 @@ impl ToolsProvider {
         }
     }
 
-    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:116 - `BOPAlgo_BuilderShape::SetToFillHistory()`
+    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:114 - `BOPAlgo_BuilderShape::SetToFillHistory()`
     pub fn set_to_fill_history(&mut self, theHistFlag: bool) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_ToolsProvider_inherited_SetToFillHistory(
@@ -22198,7 +22157,7 @@ impl ToolsProvider {
         })
     }
 
-    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:119 - `BOPAlgo_BuilderShape::HasHistory()`
+    /// Inherited: **Source:** `BOPAlgo_BuilderShape.hxx`:117 - `BOPAlgo_BuilderShape::HasHistory()`
     pub fn has_history(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_ToolsProvider_inherited_HasHistory(self as *const Self)
@@ -22206,7 +22165,7 @@ impl ToolsProvider {
     }
 
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:51 - `BOPAlgo_Options::Allocator()`
-    pub fn allocator(&self) -> &crate::ffi_types::HandleNCollectionBaseAllocator {
+    pub fn allocator(&self) -> &crate::ffi_types::TDF_HAllocator {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKBO::BOPAlgo_ToolsProvider_inherited_Allocator(
@@ -22217,7 +22176,7 @@ impl ToolsProvider {
     }
 
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:61 - `BOPAlgo_Options::AddError()`
-    pub fn add_error(&mut self, theAlert: &crate::ffi_types::HandleMessageAlert) {
+    pub fn add_error(&mut self, theAlert: &crate::ffi_types::Handle_Message_Alert) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_ToolsProvider_inherited_AddError(
                 self as *mut Self,
@@ -22227,7 +22186,7 @@ impl ToolsProvider {
     }
 
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:67 - `BOPAlgo_Options::AddWarning()`
-    pub fn add_warning(&mut self, theAlert: &crate::ffi_types::HandleMessageAlert) {
+    pub fn add_warning(&mut self, theAlert: &crate::ffi_types::Handle_Message_Alert) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_ToolsProvider_inherited_AddWarning(
                 self as *mut Self,
@@ -22244,7 +22203,7 @@ impl ToolsProvider {
     }
 
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:76 - `BOPAlgo_Options::HasError()`
-    pub fn has_error(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    pub fn has_error(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_ToolsProvider_inherited_HasError(
                 self as *const Self,
@@ -22261,7 +22220,7 @@ impl ToolsProvider {
     }
 
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:85 - `BOPAlgo_Options::HasWarning()`
-    pub fn has_warning(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    pub fn has_warning(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_ToolsProvider_inherited_HasWarning(
                 self as *const Self,
@@ -22271,7 +22230,7 @@ impl ToolsProvider {
     }
 
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:91 - `BOPAlgo_Options::GetReport()`
-    pub fn get_report(&self) -> &crate::ffi_types::HandleMessageReport {
+    pub fn get_report(&self) -> &crate::ffi_types::Handle_Message_Report {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKBO::BOPAlgo_ToolsProvider_inherited_GetReport(
@@ -22364,7 +22323,7 @@ impl ToolsProvider {
 // From BOPAlgo_WireEdgeSet.hxx
 // ========================
 
-/// **Source:** `BOPAlgo_WireEdgeSet.hxx`:31 - `BOPAlgo_WireEdgeSet`
+/// **Source:** `BOPAlgo_WireEdgeSet.hxx`:32 - `BOPAlgo_WireEdgeSet`
 pub use crate::ffi_types::BOPAlgo_WireEdgeSet as WireEdgeSet;
 
 unsafe impl crate::CppDeletable for WireEdgeSet {
@@ -22376,7 +22335,7 @@ unsafe impl crate::CppDeletable for WireEdgeSet {
 }
 
 impl WireEdgeSet {
-    /// **Source:** `BOPAlgo_WireEdgeSet.hxx`:36 - `BOPAlgo_WireEdgeSet::BOPAlgo_WireEdgeSet()`
+    /// **Source:** `BOPAlgo_WireEdgeSet.hxx`:37 - `BOPAlgo_WireEdgeSet::BOPAlgo_WireEdgeSet()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -22385,34 +22344,32 @@ impl WireEdgeSet {
         }
     }
 
-    /// **Source:** `BOPAlgo_WireEdgeSet.hxx`:39 - `BOPAlgo_WireEdgeSet::BOPAlgo_WireEdgeSet()`
-    pub fn new_handlencollectionbaseallocator(
-        theAllocator: &crate::ffi_types::HandleNCollectionBaseAllocator,
+    /// **Source:** `BOPAlgo_WireEdgeSet.hxx`:40 - `BOPAlgo_WireEdgeSet::BOPAlgo_WireEdgeSet()`
+    pub fn new_hallocator(
+        theAllocator: &crate::ffi_types::TDF_HAllocator,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKBO::BOPAlgo_WireEdgeSet_ctor_handlencollectionbaseallocator(
-                    theAllocator,
-                ),
+                crate::ffi_extern_TKBO::BOPAlgo_WireEdgeSet_ctor_hallocator(theAllocator),
             ))
         }
     }
 
-    /// **Source:** `BOPAlgo_WireEdgeSet.hxx`:41 - `BOPAlgo_WireEdgeSet::Clear()`
+    /// **Source:** `BOPAlgo_WireEdgeSet.hxx`:42 - `BOPAlgo_WireEdgeSet::Clear()`
     pub fn clear(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_WireEdgeSet_clear(self as *mut Self)
         })
     }
 
-    /// **Source:** `BOPAlgo_WireEdgeSet.hxx`:43 - `BOPAlgo_WireEdgeSet::SetFace()`
+    /// **Source:** `BOPAlgo_WireEdgeSet.hxx`:44 - `BOPAlgo_WireEdgeSet::SetFace()`
     pub fn set_face(&mut self, aF: &crate::topo_ds::Face) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_WireEdgeSet_set_face(self as *mut Self, aF)
         })
     }
 
-    /// **Source:** `BOPAlgo_WireEdgeSet.hxx`:45 - `BOPAlgo_WireEdgeSet::Face()`
+    /// **Source:** `BOPAlgo_WireEdgeSet.hxx`:46 - `BOPAlgo_WireEdgeSet::Face()`
     pub fn face(&self) -> &crate::topo_ds::Face {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKBO::BOPAlgo_WireEdgeSet_face(
@@ -22421,15 +22378,15 @@ impl WireEdgeSet {
         }
     }
 
-    /// **Source:** `BOPAlgo_WireEdgeSet.hxx`:47 - `BOPAlgo_WireEdgeSet::AddStartElement()`
+    /// **Source:** `BOPAlgo_WireEdgeSet.hxx`:48 - `BOPAlgo_WireEdgeSet::AddStartElement()`
     pub fn add_start_element(&mut self, sS: &crate::topo_ds::Shape) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_WireEdgeSet_add_start_element(self as *mut Self, sS)
         })
     }
 
-    /// **Source:** `BOPAlgo_WireEdgeSet.hxx`:49 - `BOPAlgo_WireEdgeSet::StartElements()`
-    pub fn start_elements(&self) -> &crate::ffi_types::TopTools_ListOfShape {
+    /// **Source:** `BOPAlgo_WireEdgeSet.hxx`:50 - `BOPAlgo_WireEdgeSet::StartElements()`
+    pub fn start_elements(&self) -> &crate::ffi_types::NCollection_List_TopoDS_Shape {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKBO::BOPAlgo_WireEdgeSet_start_elements(
                 self as *const Self,
@@ -22437,15 +22394,15 @@ impl WireEdgeSet {
         }
     }
 
-    /// **Source:** `BOPAlgo_WireEdgeSet.hxx`:51 - `BOPAlgo_WireEdgeSet::AddShape()`
+    /// **Source:** `BOPAlgo_WireEdgeSet.hxx`:52 - `BOPAlgo_WireEdgeSet::AddShape()`
     pub fn add_shape(&mut self, sS: &crate::topo_ds::Shape) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_WireEdgeSet_add_shape(self as *mut Self, sS)
         })
     }
 
-    /// **Source:** `BOPAlgo_WireEdgeSet.hxx`:53 - `BOPAlgo_WireEdgeSet::Shapes()`
-    pub fn shapes(&self) -> &crate::ffi_types::TopTools_ListOfShape {
+    /// **Source:** `BOPAlgo_WireEdgeSet.hxx`:54 - `BOPAlgo_WireEdgeSet::Shapes()`
+    pub fn shapes(&self) -> &crate::ffi_types::NCollection_List_TopoDS_Shape {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKBO::BOPAlgo_WireEdgeSet_shapes(
                 self as *const Self,
@@ -22484,14 +22441,12 @@ impl WireSplitter {
     }
 
     /// **Source:** `BOPAlgo_WireSplitter.hxx`:45 - `BOPAlgo_WireSplitter::BOPAlgo_WireSplitter()`
-    pub fn new_handlencollectionbaseallocator(
-        theAllocator: &crate::ffi_types::HandleNCollectionBaseAllocator,
+    pub fn new_hallocator(
+        theAllocator: &crate::ffi_types::TDF_HAllocator,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKBO::BOPAlgo_WireSplitter_ctor_handlencollectionbaseallocator(
-                    theAllocator,
-                ),
+                crate::ffi_extern_TKBO::BOPAlgo_WireSplitter_ctor_hallocator(theAllocator),
             ))
         }
     }
@@ -22514,7 +22469,7 @@ impl WireSplitter {
 
     /// **Source:** `BOPAlgo_WireSplitter.hxx`:52 - `BOPAlgo_WireSplitter::SetContext()`
     /// Sets the context for the algorithm
-    pub fn set_context(&mut self, theContext: &crate::ffi_types::HandleIntToolsContext) {
+    pub fn set_context(&mut self, theContext: &crate::ffi_types::Handle_IntTools_Context) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_WireSplitter_set_context(self as *mut Self, theContext)
         })
@@ -22522,7 +22477,7 @@ impl WireSplitter {
 
     /// **Source:** `BOPAlgo_WireSplitter.hxx`:55 - `BOPAlgo_WireSplitter::Context()`
     /// Returns the context
-    pub fn context(&mut self) -> &crate::ffi_types::HandleIntToolsContext {
+    pub fn context(&mut self) -> &crate::ffi_types::Handle_IntTools_Context {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKBO::BOPAlgo_WireSplitter_context(
                 self as *mut Self,
@@ -22539,7 +22494,7 @@ impl WireSplitter {
 
     /// **Source:** `BOPAlgo_WireSplitter.hxx`:60 - `BOPAlgo_WireSplitter::MakeWire()`
     pub fn make_wire(
-        theLE: &mut crate::ffi_types::TopTools_ListOfShape,
+        theLE: &mut crate::ffi_types::NCollection_List_TopoDS_Shape,
         theW: &mut crate::topo_ds::Wire,
     ) {
         crate::check_void_result(unsafe {
@@ -22551,7 +22506,7 @@ impl WireSplitter {
     pub fn split_block(
         theF: &crate::topo_ds::Face,
         theCB: &mut crate::bop_tools::ConnexityBlock,
-        theContext: &crate::ffi_types::HandleIntToolsContext,
+        theContext: &crate::ffi_types::Handle_IntTools_Context,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_WireSplitter_split_block(theF, theCB, theContext)
@@ -22597,7 +22552,7 @@ impl WireSplitter {
     }
 
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:51 - `BOPAlgo_Options::Allocator()`
-    pub fn allocator(&self) -> &crate::ffi_types::HandleNCollectionBaseAllocator {
+    pub fn allocator(&self) -> &crate::ffi_types::TDF_HAllocator {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKBO::BOPAlgo_WireSplitter_inherited_Allocator(
@@ -22615,7 +22570,7 @@ impl WireSplitter {
     }
 
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:61 - `BOPAlgo_Options::AddError()`
-    pub fn add_error(&mut self, theAlert: &crate::ffi_types::HandleMessageAlert) {
+    pub fn add_error(&mut self, theAlert: &crate::ffi_types::Handle_Message_Alert) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_WireSplitter_inherited_AddError(
                 self as *mut Self,
@@ -22625,7 +22580,7 @@ impl WireSplitter {
     }
 
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:67 - `BOPAlgo_Options::AddWarning()`
-    pub fn add_warning(&mut self, theAlert: &crate::ffi_types::HandleMessageAlert) {
+    pub fn add_warning(&mut self, theAlert: &crate::ffi_types::Handle_Message_Alert) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_WireSplitter_inherited_AddWarning(
                 self as *mut Self,
@@ -22642,7 +22597,7 @@ impl WireSplitter {
     }
 
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:76 - `BOPAlgo_Options::HasError()`
-    pub fn has_error(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    pub fn has_error(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_WireSplitter_inherited_HasError(
                 self as *const Self,
@@ -22659,7 +22614,7 @@ impl WireSplitter {
     }
 
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:85 - `BOPAlgo_Options::HasWarning()`
-    pub fn has_warning(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    pub fn has_warning(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKBO::BOPAlgo_WireSplitter_inherited_HasWarning(
                 self as *const Self,
@@ -22669,7 +22624,7 @@ impl WireSplitter {
     }
 
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:91 - `BOPAlgo_Options::GetReport()`
-    pub fn get_report(&self) -> &crate::ffi_types::HandleMessageReport {
+    pub fn get_report(&self) -> &crate::ffi_types::Handle_Message_Report {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKBO::BOPAlgo_WireSplitter_inherited_GetReport(
@@ -22757,9 +22712,3 @@ impl WireSplitter {
         })
     }
 }
-
-// ========================
-// Additional type re-exports
-// ========================
-
-pub use crate::ffi_types::BOPAlgo_ListOfCheckResult as ListOfCheckResult;

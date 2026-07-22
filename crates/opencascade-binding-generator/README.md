@@ -148,7 +148,7 @@ use opencascade_sys::geom::{BezierCurve, BSplineCurve};
 // Wrap a geometry object in a Handle
 let curve: OwnedPtr<BezierCurve> = /* ... */;
 let handle = BezierCurve::to_handle(curve);
-// handle is OwnedPtr<HandleGeomBezierCurve>
+// handle is OwnedPtr<Handle_Geom_BezierCurve>
 
 // Clone a handle (invokes C++ copy constructor)
 let handle2 = handle.clone();
@@ -160,7 +160,7 @@ if !handle.is_null() {
 
 // Methods that return Handles
 let copy = some_curve.copy();
-// copy is OwnedPtr<HandleGeomGeometry>
+// copy is OwnedPtr<Handle_Geom_Geometry>
 ```
 
 
@@ -254,22 +254,29 @@ let stream: &mut OStream = unsafe { bin_tools::put_real(&mut os, &value) };
 
 Methods that return references but take no reference parameters (other than `self`) are **safe** — Rust's lifetime elision correctly binds the return to `self`.
 
-### Collection Iterators
+### Collections
 
-OCCT collection types (NCollection_List, NCollection_Sequence, NCollection_IndexedMap, etc.) get Rust iterator support. Each collection has a C++ iterator wrapper struct and Rust `Iterator` trait impl.
+Every `NCollection_*<T>` instantiation referenced by the API is materialized under a
+canonical name in the `n_collection` module (`List_TopoDS_Shape`, `Array1_gp_Pnt`,
+`HArray1_gp_Pnt`, `DataMap_TopoDS_Shape_int`, `IndexedMap_TopoDS_Shape_TopTools_ShapeMapHasher`,
+…) with full methods (`new`, `append`/`value`/`set_value`/`add`/`bind`/`find`, …), a real
+`Iterator` impl, and — for handle kinds (`HArray1`/`HSequence`) — `to_handle`. Collections
+of primitive scalars (`List_int`, `Sequence_double`) are supported too; their scalar
+accessors take/return the value directly.
+
+Because the iterator implements `Iterator`, `iter()` works directly in `for` loops and
+iterator adapters:
 
 ```rust
-use opencascade_sys::top_tools::ListOfShape;
-use opencascade_sys::topo_ds::Shape;
+use opencascade_sys::n_collection::List_TopoDS_Shape;
 
-// Iterate over a list of shapes
-for shape in list_of_shape.iter() {
+let mut list = List_TopoDS_Shape::new();
+list.append(a_shape);
+
+for shape in list.iter() {
     // shape: OwnedPtr<Shape>
-    let x = shape.IsNull();
+    let _ = shape.is_null();
 }
-
-// Build a list from an iterator
-let list = ListOfShape::from_iter(shapes.iter());
 ```
 
 ### Enums
@@ -290,19 +297,27 @@ let back = ShapeEnum::try_from(raw).unwrap();
 
 ### FFI Architecture
 
-All types and functions are in a single `extern "C"` FFI module (`ffi.rs`), with per-module re-export files providing ergonomic short names:
+Type definitions live in one file; the `extern "C"` function declarations and their C++
+wrapper glue are split per OCCT toolkit (TKernel, TKMath, TKBRep, …) so the C++ and Rust
+FFI compile in parallel. Per-module re-export files layer ergonomic short names on top:
 
 ```
 crates/opencascade-sys/generated/
-├── ffi.rs             # Single extern "C" block with ALL types (full C++ names)
-├── wrappers.cpp       # Single C++ wrapper file (all includes + wrapper functions)
-├── gp.rs              # Re-exports: `pub use crate::ffi::gp_Pnt as Pnt;` + impl blocks
-├── topo_ds.rs         # Re-exports for topo_ds module + impl blocks
+├── ffi_types.rs         # All opaque/POD type definitions (full C++ names) — pub(crate)
+├── ffi_extern_TKMath.rs # extern "C" fn declarations for the TKMath toolkit — pub(crate)
+├── ffi_extern_TKBRep.rs # ... one ffi_extern_TK<toolkit>.rs per toolkit (~47 files)
+├── wrappers_TKMath.cpp  # C++ wrapper definitions for the TKMath toolkit
+├── wrappers_TKBRep.cpp  # ... one wrappers_TK<toolkit>.cpp per toolkit (~47 files)
+├── gp.rs                # Re-exports: `pub use crate::ffi_types::gp_Pnt as Pnt;` + impl blocks
+├── topo_ds.rs           # Re-exports for topo_ds module + impl blocks
 ├── ... (per-module files)
-└── lib.rs             # `pub(crate) mod ffi;` + `pub mod gp;` etc.
+└── lib.rs               # `pub(crate) mod ffi_types;` + per-toolkit `mod ffi_extern_TK*;` + `pub mod gp;` etc.
 ```
 
-Users write `use opencascade_sys::gp::Pnt;` — the ffi module is `pub(crate)`.
+Users write `use opencascade_sys::gp::Pnt;` — the `ffi_types` and `ffi_extern_*` modules are
+`pub(crate)`. (Internally the generator emits a `crate::ffi::` placeholder for every FFI
+reference; the toolkit-split pass rewrites each into `crate::ffi_types::` for a type or
+`crate::ffi_extern_TK<toolkit>::` for a function.)
 
 ### Generator Source
 
@@ -319,9 +334,9 @@ crates/opencascade-binding-generator/src/
 └── codegen/
     ├── mod.rs
     ├── bindings.rs   # ClassBindings IR + emit functions for ffi/cpp/reexports
-    ├── rust.rs       # Generates ffi.rs + per-module re-export files
-    ├── cpp.rs        # Generates wrappers.cpp
-    └── collections.rs # Generates collection type wrappers (iterators, accessors)
+    ├── rust.rs       # Generates ffi_types.rs + per-toolkit ffi_extern_TK*.rs + per-module re-exports
+    ├── cpp.rs        # Generates per-toolkit wrappers_TK*.cpp
+    └── collections.rs # Discovers NCollection instantiations + generates their wrappers
 ```
 
 ### Two-Pass Pipeline
@@ -341,7 +356,7 @@ All methods use extern "C" C++ wrapper functions, since there is no direct Rust�
 | Constructor | `new T(args)` returning `T*` |
 | Return by value | `new T(obj.Method(args))` returning `T*` |
 | Static method | Free function calling `ClassName::Method()` |
-| `Handle<T>` | `typedef opencascade::handle<T> HandleT;` |
+| `Handle<T>` | `typedef opencascade::handle<T> Handle_T;` |
 | Overloaded method | Suffix: `_real3`, `_pnt2`, etc. |
 | `const char*` param | Pass-through as `const char*` |
 | `const char*` return | Pass-through as `const char*` |
@@ -370,15 +385,34 @@ Classes inheriting from `Standard_Transient` get:
 - `handle.downcast_to_derived()` — type-checked downcast
 - `handle.get()` / `handle.get_mut()` — dereference handle to contained object
 
-
+The `NCollection_H*` templates (`HArray1`, `HArray2`, `HSequence`) also inherit
+`Standard_Transient`, so their instantiations are auto-registered as handle-able. This
+lets `Handle(NCollection_HArray1<T>)` parameters/returns resolve rather than being skipped
+— previously the single largest source of skipped symbols.
 
 ### Collection Types
 
-NCollection typedefs (e.g., `TopTools_ListOfShape`) get iterator wrappers:
-- C++ iterator struct wrapping `const_iterator` or indexed access
-- `TypeName_iter()` / `TypeNameIterator_next()` C++ functions
-- Rust `Iterator` trait impl yielding `OwnedPtr<Element>`
-- Impl methods: `iter()`, `from_iter()`, `append()`, etc.
+Collections are **auto-discovered** from the canonical `NCollection_*<...>` template
+spellings the parsed API references (`collections.rs`: `discover_collections`). Each
+instantiation whose element/value types are bindable is materialized in the `n_collection`
+module under a canonical mangled name (`NCollection_List<TopoDS_Shape>` →
+`n_collection::List_TopoDS_Shape`) with:
+- a C++ `typedef <spelling> <mangled>;` bridge, so the wrappers use the short mangled name
+- full element methods per kind (list/sequence/array/map/data-map), primitive-aware
+  (scalar elements/values are passed by value rather than pointer)
+- a C++ iterator struct + `TypeNameIterator_next()` function and a real `Iterator` impl
+  (`iter()` — usable in `for` loops and adapters, via a blanket `Iterator for OwnedPtr<I>`)
+- for handle kinds (`HArray1`/`HSequence`): `to_handle` plus `get`/`get_mut` and the
+  handle lifetime machinery on the generated `Handle_*` type
+
+The canonical names are the same ones method signatures resolve to, so a returned
+`&NCollection_List<TopoDS_Shape>` and the collection's own methods refer to one type.
+
+In overload suffixes, collection parameters use a short registered token (`imap_shape`,
+`arr1_pnt`, `harr1_pnt`, `dmap_shape_int` — dropping the hasher argument) rather than the
+full mangled type, so an overloaded `TopExp::MapShapes` reads
+`map_shapes_shape_shapeenum_imap_shape` instead of
+`map_shapes_shape_shapeenum_indexedmap_topods_shape_toptools_shapemaphasher`.
 
 ### Standard Streams (iostream)
 
@@ -406,8 +440,9 @@ The `OStream` and `IStream` type aliases are re-exported from the `standard` mod
 
 ### Naming Conventions
 
-- **Types in ffi.rs**: Full C++ names (`gp_Pnt`, `TopoDS_Shape`, `BRepPrimAPI_MakeBox`)
-- **Types in re-exports**: Short names (`Pnt`, `Shape`, `MakeBox`) via `pub use crate::ffi::X as Y;`
+- **Types in `ffi_types.rs`**: Full C++ names (`gp_Pnt`, `TopoDS_Shape`, `BRepPrimAPI_MakeBox`)
+- **Types in re-exports**: Short names (`Pnt`, `Shape`, `MakeBox`) via `pub use crate::ffi_types::X as Y;`
+- **Handle types**: `Handle_<C++name>` (`Handle_Geom_Curve`, `Handle_NCollection_HArray1_gp_Pnt`)
 - **Methods**: snake_case (generated by the code generator)
 - **Overloads**: Compressed parameter-type suffix (`_real3` not `_real_real_real`, `_pnt2` not `_pnt_pnt`)
 - **Enums**: `TopAbs_ShapeEnum` -> `ShapeEnum`, variants `TopAbs_COMPOUND` -> `Compound`
@@ -419,7 +454,7 @@ Some C++ function signatures can't be auto-generated. Manual replacements live i
 - `<module>.rs` — `extern "C"` declarations + `impl` blocks
 - `<module>_wrappers.cpp` — C++ wrapper functions
 
-The generator appends `include!("../manual/<module>.rs");` (with a comment explaining why) to the generated module re-export file when a corresponding `manual/<module>.rs` exists. Because `include!()` is a textual insertion, the manual code has full access to the module's type aliases. The `extern "C"` declarations in manual files are not marked `pub`, so they are private to the module. `build.rs` globs `manual/*_wrappers.cpp` and compiles them alongside `generated/wrappers.cpp`. Since Rust allows multiple `impl` blocks for a type, manual methods appear seamlessly alongside the auto-generated ones.
+The generator appends `include!("../manual/<module>.rs");` (with a comment explaining why) to the generated module re-export file when a corresponding `manual/<module>.rs` exists. Because `include!()` is a textual insertion, the manual code has full access to the module's type aliases. The `extern "C"` declarations in manual files are not marked `pub`, so they are private to the module. `build.rs` globs `manual/*_wrappers.cpp` and compiles them alongside the generated `wrappers_TK*.cpp`. Since Rust allows multiple `impl` blocks for a type, manual methods appear seamlessly alongside the auto-generated ones.
 
 Currently only `standard` iostream accessors (`cout()`, `cerr()`, etc.) require manual bindings in `crates/opencascade-sys/manual/`. `bindings.toml` `manual_types` remains useful for explicit opaque known types, while guarded namespace-typedef auto-resolution handles OCCT namespace aliases without per-type config entries.
 
@@ -427,9 +462,19 @@ Currently only `standard` iostream accessors (`cout()`, `cerr()`, etc.) require 
 
 ---
 
+## Deprecated Symbols
+
+The generator does **not** emit bindings for OCCT deprecated symbols. OCCT 8.0.0 moved
+its backward-compatibility alias headers (e.g. `TColgp_HArray1OfPnt.hxx`, now just
+`typedef NCollection_HArray1<gp_Pnt>`) into `src/Deprecated/` and pivoted its own API to
+the canonical `NCollection_...<T>` template names. These alias headers are excluded
+automatically by the `exclude_deprecated_headers` config option (on by default), which
+matches the standard deprecation banner in header content — so bindings target the
+canonical types rather than the deprecated aliases.
+
 ## Skipped Symbols
 
-The binding generator currently skips **94** symbols (methods, constructors, static methods, and free functions) that it cannot safely represent in Rust FFI. Abstract class constructors are silently omitted since that's expected behavior, not a binding limitation. Every other skipped symbol is documented in generated per-module `.rs` files as a `// SKIPPED:` comment block including:
+The binding generator currently skips **~720** symbols (methods, constructors, static methods, and free functions) that it cannot safely represent in Rust FFI — out of ~144,000 bound functions. Abstract class constructors are silently omitted since that's expected behavior, not a binding limitation. Every other skipped symbol is documented in generated per-module `.rs` files as a `// SKIPPED:` comment block including:
 
 - **Source location** (header file, line number, C++ symbol name)
 - **Documentation comment** from the C++ header (first 3 lines)
@@ -446,50 +491,18 @@ Example from `select_mgr.rs`:
 
 ### Skip Reason Breakdown
 
-| Count | % | Category | Description |
-|------:|----:|----------|-------------|
-| 66 | 70.2% | **Unknown/unresolved type** | Parameter or return type is not in the resolved known-type set |
-| 12 | 12.8% | **Rvalue reference** | C++ move semantics (`T&&`) — const-ref overloads usually exist |
-| 10 | 10.6% | **Unknown Handle type** | `Handle(T)` where `T` is unresolved or excluded |
-| 2 | 2.1% | **Excluded by bindings.toml** | Explicitly excluded in config |
-| 2 | 2.1% | **Unresolved template type** | Template instantiations that still cannot be represented safely |
-| 1 | 1.1% | **Ambiguous overload** | C++ overload would produce conflicting wrapper signatures |
-| 1 | 1.1% | **Not CppDeletable** | Return type has no destructor in the binding set |
+| Approx. count | Category | Description |
+|------:|----------|-------------|
+| ~460 | **Unbindable types** | A parameter/return type isn't in the resolved known-type set — internal helper types, unresolved templates, or platform/external-dependency types (X11 `GLXFBConfig`/`Aspect_XDisplay*`, macOS `NSOpenGLContext*`, FFmpeg/glTF writer types, etc.). |
+| ~120 | **`BRepGraphInc` graph API** | New-in-8.0 experimental graph package with private nested types. |
+| ~33 | **`std::` types** | e.g. `std::string_view` parameters. |
+| ~14 | **Rvalue reference** | C++ move semantics (`T&&`) — const-ref overloads usually exist. |
 
-Combined unresolved coverage (`Unknown/unresolved type` + `Unknown Handle type`) is **76 / 94 (80.9%)**.
+Handle-wrapped `NCollection_H*<T>` instantiations (`Handle(NCollection_HArray1<T>)`, etc.)
+used to dominate this list; they are now auto-registered as handle-able (see the
+[handle collections](#handle-support) note below), leaving only a handful of skips.
 
-Fixed-size arrays (`T (&)[N]`, `const T (&)[N]`, and `T arr[N]` parameter syntax) are now bindable; there are currently **no** remaining skips categorized as C-style arrays.
-
-### Most Common Unknown Types
-
-| Count | Type | How to Unblock |
-|------:|------|----------------|
-| 5 | `AVStream const&` | FFmpeg media type — external dependency |
-| 5 | `WNT_HIDSpaceMouse const&` | Windows-only type, WNT module excluded |
-| 5 | `RWGltf_GltfOStreamWriter*` | RapidJSON-backed writer type — external dependency |
-| 4 | `GLXFBConfig` | X11/Linux display type — platform-specific |
-| 3 | `IMeshData_Edge *const const&` | Internal mesh pointer signature in specialized APIs |
-| 3 | `Aspect_XDisplay*` | X11/Linux display type — platform-specific |
-| 3 | `IMeshData_Face *const const&` | Internal mesh pointer signature in specialized APIs |
-| 2 | `NSOpenGLContext*` | macOS OpenGL context type in platform-specific APIs |
-| 2 | `ProxPnt_Status const&` | Internal proximity/status type not currently in known class set |
-| 2 | `AVCodecContext*` | FFmpeg codec context — external dependency |
-
-### Important Skipped Symbols
-
-Most skipped symbols are in specialized or platform-specific areas. Current hotspots:
-
-**Shape Persistent (7 symbols)** — `shape_persistent` dropped significantly after alias normalization; remaining skips are unknown handle instantiations of deeply nested persistence templates (`pTObject<...>`, `ShapePersistent_Poly::instance<...>`).
-
-**UI/Platform Integration (21 symbols)** — `aspect` (13), `graphic3d` (3), `osd` (3), `v3d` (1), `ais` (1), mostly platform/window-system types (`GLXFBConfig`, `Aspect_XDisplay*`, `NSOpenGLContext*`, and related handles).
-
-**Data Exchange (8 symbols)** — `rw_gltf` (5), `iges_control` (1), `step_control` (1), `rw_stl` (1). Predominantly external/third-party types, plus `T&&` overloads where safe const-ref equivalents are already bound.
-
-**Shape Meshing (7 symbols)** — `i_mesh_data` (5), `b_rep_mesh` (2). `BRepMesh_Classifier::RegisterWire` is now bound; remaining skips are internal pointer/handle-heavy signatures.
-
-**Geometry (0 symbols in gp/Geom/Geom2d)** — Fully bound for core geometry modules.
-
-**Poly (2 symbols)** — one config exclusion and one unresolved type in low-level helper APIs.
+Fixed-size arrays (`T (&)[N]`, `const T (&)[N]`, and `T arr[N]` parameter syntax) are bindable; there are **no** remaining skips categorized as C-style arrays. Core geometry (`gp`/`Geom`/`Geom2d`) and topology/modeling modules are essentially fully bound.
 
 ### How Skipped Symbols Are Tracked
 
@@ -503,18 +516,19 @@ The `emit_reexport_class()` and `emit_skipped_functions()` functions write the s
 
 ## Implementation Details
 
-The generated code has two layers: a `pub(crate)` FFI module containing the raw extern "C" bindings, and public per-module re-export files that provide the user-facing API.
+The generated code has two layers: a `pub(crate)` FFI layer (type definitions plus
+per-toolkit `extern "C"` blocks) containing the raw bindings, and public per-module
+re-export files that provide the user-facing API.
 
-### Internal: `ffi.rs` (the FFI declarations)
+### Internal: `ffi_types.rs` + `ffi_extern_TK*.rs` (the FFI declarations)
 
-A single `extern "C"` block declares all types and functions using full C++ names. This is `pub(crate)` — users never interact with it directly.
-
-Types use their full C++ identifiers as Rust names to avoid collisions:
+`ffi_types.rs` declares all types (full C++ names, to avoid collisions), and each
+`ffi_extern_TK<toolkit>.rs` declares the `extern "C"` functions for one OCCT toolkit. Both
+are `pub(crate)` — users never interact with them directly.
 
 ```rust
-// generated/ffi.rs (pub(crate), not user-facing)
-extern "C" {
-    // Opaque C++ types -- full C++ names
+// generated/ffi_types.rs (types) + generated/ffi_extern_TKMath.rs (functions) — pub(crate)
+unsafe extern "C" {
     pub fn gp_Pnt_ctor_real3(theXp: f64, theYp: f64, theZp: f64) -> *mut gp_Pnt;
     pub fn gp_Pnt_destructor(self_: *mut gp_Pnt);
     pub fn gp_Pnt_x(self_: *const gp_Pnt) -> f64;
@@ -527,12 +541,13 @@ extern "C" {
 
 All methods go through extern "C" C++ wrapper functions. There is no ABI-level distinction between "direct" and "wrapped" methods — everything is wrapped for uniform handling.
 
-### Internal: `wrappers.cpp` (C++ glue)
+### Internal: `wrappers_TK*.cpp` (C++ glue)
 
-A single C++ file includes all needed OCCT headers and defines `extern "C"` wrapper functions for everything:
+Each `wrappers_TK<toolkit>.cpp` includes the OCCT headers for its toolkit and defines the
+`extern "C"` wrapper functions:
 
 ```cpp
-// generated/wrappers.cpp
+// generated/wrappers_TKMath.cpp
 #include <gp_Pnt.hxx>
 #include <TopoDS_Shape.hxx>
 // ... OCCT headers
@@ -551,26 +566,23 @@ extern "C" double gp_Pnt_x(const gp_Pnt* self) {
 
 ### Internal: Per-Module Re-export Files
 
-Each module file (e.g., `gp.rs`, `topo_ds.rs`) re-exports types from `ffi` with short names and provides `impl` blocks that wrap the internal FFI functions:
+Each module file (e.g., `gp.rs`, `topo_ds.rs`) re-exports types from `ffi_types` with short
+names and provides `impl` blocks that call the toolkit's `ffi_extern_TK*` functions:
 
 ```rust
 // generated/gp.rs
 
 // Type re-export: full C++ name -> short Rust name
 /// A 3D Cartesian point.
-pub use crate::ffi::gp_Pnt as Pnt;
+pub use crate::ffi_types::gp_Pnt as Pnt;
 
 impl Pnt {
     pub fn new_real3(theXp: f64, theYp: f64, theZp: f64) -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::gp_Pnt_ctor_real3(theXp, theYp, theZp)) }
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi_extern_TKMath::gp_Pnt_ctor_real3(theXp, theYp, theZp)) }
     }
 
-    pub fn mirrored_pnt(&self, theP: &crate::ffi::gp_Pnt) -> crate::OwnedPtr<crate::ffi::gp_Pnt> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::gp_Pnt_mirrored_pnt(self, theP)) }
-    }
-
-    pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::gp_Pnt_to_owned(self as *const Self)) }
+    pub fn mirrored_pnt(&self, theP: &crate::ffi_types::gp_Pnt) -> crate::OwnedPtr<crate::ffi_types::gp_Pnt> {
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi_extern_TKMath::gp_Pnt_mirrored_pnt(self, theP)) }
     }
 }
 ```
@@ -579,12 +591,14 @@ impl Pnt {
 
 ```rust
 // generated/lib.rs
-pub(crate) mod ffi;   // The FFI declarations -- internal only
+pub(crate) mod ffi_types;            // Type definitions -- internal only
+pub(crate) mod ffi_extern_TKMath;    // Per-toolkit extern "C" blocks -- internal only
+pub(crate) mod ffi_extern_TKBRep;
+// ... one ffi_extern_TK<toolkit> per toolkit
 
 pub mod gp;           // Re-exports gp_Pnt as Pnt, gp_Vec as Vec, etc.
 pub mod topo_ds;      // Re-exports TopoDS_Shape as Shape, etc.
 pub mod b_rep_prim_api;
-pub mod b_rep_algo_api;
 // ... modules
 ```
 

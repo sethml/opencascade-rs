@@ -122,7 +122,7 @@ impl Curve {
     }
 
     /// **Source:** `IntAna_Curve.hxx`:61 - `IntAna_Curve::SetConeQuadValues()`
-    /// Sets  the parameters used    to compute Points  and
+    /// Sets the parameters used to compute Points and
     /// Derivative on the curve.
     pub fn set_cone_quad_values(
         &mut self,
@@ -167,7 +167,7 @@ impl Curve {
     }
 
     /// **Source:** `IntAna_Curve.hxx`:80 - `IntAna_Curve::IsOpen()`
-    /// Returns TRUE if the curve is not  infinite  at the
+    /// Returns TRUE if the curve is not infinite at the
     /// last parameter or at the first parameter of the domain.
     pub fn is_open(&self) -> bool {
         crate::check_result(unsafe {
@@ -239,7 +239,7 @@ impl Curve {
     pub fn find_parameter(
         &self,
         P: &crate::gp::Pnt,
-        theParams: &mut crate::ffi_types::TColStd_ListOfReal,
+        theParams: &mut crate::ffi_types::NCollection_List_double,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomBase::IntAna_Curve_find_parameter(
@@ -377,10 +377,10 @@ impl Int3Pln {
 /// The result of the intersection are points (Pnt from
 /// gp), associated with the parameter on the conic.
 ///
-/// A call to an Intersection  L:Lin from gp and
-/// SPH: Sphere from gp can be written either :
+/// A call to an Intersection L:Lin from gp and
+/// SPH: Sphere from gp can be written either:
 /// IntAna_IntConicQuad Inter(L,IntAna_Quadric(SPH))
-/// or :
+/// or:
 /// IntAna_IntConicQuad Inter(L,SPH) (it is necessary
 /// to include IntAna_Quadric.hxx in this case)
 pub use crate::ffi_types::IntAna_IntConicQuad as IntConicQuad;
@@ -535,7 +535,7 @@ impl IntConicQuad {
         }
     }
 
-    /// **Source:** `IntAna_IntConicQuad.hxx`:161 - `IntAna_IntConicQuad::IntAna_IntConicQuad()`
+    /// **Source:** `IntAna_IntConicQuad.hxx`:159 - `IntAna_IntConicQuad::IntAna_IntConicQuad()`
     /// Intersection between an hyperbola and a plane.
     /// Tolang is used to determine if the angle between two
     /// vectors is null.
@@ -712,7 +712,7 @@ impl IntConicQuad {
         })
     }
 
-    /// **Source:** `IntAna_IntConicQuad.hxx`:156 - `IntAna_IntConicQuad::Perform()`
+    /// **Source:** `IntAna_IntConicQuad.hxx`:154 - `IntAna_IntConicQuad::Perform()`
     /// Intersects a parabola and a plane.
     /// Tolang is used to determine if the angle between two
     /// vectors is null.
@@ -732,7 +732,7 @@ impl IntConicQuad {
         })
     }
 
-    /// **Source:** `IntAna_IntConicQuad.hxx`:168 - `IntAna_IntConicQuad::Perform()`
+    /// **Source:** `IntAna_IntConicQuad.hxx`:164 - `IntAna_IntConicQuad::Perform()`
     /// Intersects an hyperbola and a plane.
     /// Tolang is used to determine if the angle between two
     /// vectors is null.
@@ -747,7 +747,7 @@ impl IntConicQuad {
         })
     }
 
-    /// **Source:** `IntAna_IntConicQuad.hxx`:171 - `IntAna_IntConicQuad::IsDone()`
+    /// **Source:** `IntAna_IntConicQuad.hxx`:167 - `IntAna_IntConicQuad::IsDone()`
     /// Returns TRUE if the creation completed.
     pub fn is_done(&self) -> bool {
         crate::check_result(unsafe {
@@ -755,7 +755,7 @@ impl IntConicQuad {
         })
     }
 
-    /// **Source:** `IntAna_IntConicQuad.hxx`:174 - `IntAna_IntConicQuad::IsInQuadric()`
+    /// **Source:** `IntAna_IntConicQuad.hxx`:170 - `IntAna_IntConicQuad::IsInQuadric()`
     /// Returns TRUE if the conic is in the quadric.
     pub fn is_in_quadric(&self) -> bool {
         crate::check_result(unsafe {
@@ -763,7 +763,7 @@ impl IntConicQuad {
         })
     }
 
-    /// **Source:** `IntAna_IntConicQuad.hxx`:178 - `IntAna_IntConicQuad::IsParallel()`
+    /// **Source:** `IntAna_IntConicQuad.hxx`:174 - `IntAna_IntConicQuad::IsParallel()`
     /// Returns TRUE if the line is in a quadric which
     /// is parallel to the quadric.
     pub fn is_parallel(&self) -> bool {
@@ -772,7 +772,7 @@ impl IntConicQuad {
         })
     }
 
-    /// **Source:** `IntAna_IntConicQuad.hxx`:181 - `IntAna_IntConicQuad::NbPoints()`
+    /// **Source:** `IntAna_IntConicQuad.hxx`:177 - `IntAna_IntConicQuad::NbPoints()`
     /// Returns the number of intersection point.
     pub fn nb_points(&self) -> i32 {
         crate::check_result(unsafe {
@@ -780,7 +780,7 @@ impl IntConicQuad {
         })
     }
 
-    /// **Source:** `IntAna_IntConicQuad.hxx`:184 - `IntAna_IntConicQuad::Point()`
+    /// **Source:** `IntAna_IntConicQuad.hxx`:180 - `IntAna_IntConicQuad::Point()`
     /// Returns the point of range N.
     pub fn point(&self, N: i32) -> &crate::gp::Pnt {
         unsafe {
@@ -791,7 +791,7 @@ impl IntConicQuad {
         }
     }
 
-    /// **Source:** `IntAna_IntConicQuad.hxx`:188 - `IntAna_IntConicQuad::ParamOnConic()`
+    /// **Source:** `IntAna_IntConicQuad.hxx`:184 - `IntAna_IntConicQuad::ParamOnConic()`
     /// Returns the parameter on the line of the intersection
     /// point of range N.
     pub fn param_on_conic(&self, N: i32) -> f64 {
@@ -935,7 +935,7 @@ impl IntQuadQuad {
     }
 
     /// **Source:** `IntAna_IntQuadQuad.hxx`:49 - `IntAna_IntQuadQuad::IntAna_IntQuadQuad()`
-    /// Creates the intersection between a cylinder and a quadric .
+    /// Creates the intersection between a cylinder and a quadric.
     /// Tol est a definir plus precisemment.
     pub fn new_cylinder_quadric_real(
         C: &crate::gp::Cylinder,
@@ -966,7 +966,7 @@ impl IntQuadQuad {
         }
     }
 
-    /// **Source:** `IntAna_IntQuadQuad.hxx`:61 - `IntAna_IntQuadQuad::Perform()`
+    /// **Source:** `IntAna_IntQuadQuad.hxx`:59 - `IntAna_IntQuadQuad::Perform()`
     /// Intersects a cylinder and a quadric .
     /// Tol est a definir plus precisemment.
     pub fn perform_cylinder_quadric_real(
@@ -985,7 +985,7 @@ impl IntQuadQuad {
         })
     }
 
-    /// **Source:** `IntAna_IntQuadQuad.hxx`:67 - `IntAna_IntQuadQuad::Perform()`
+    /// **Source:** `IntAna_IntQuadQuad.hxx`:63 - `IntAna_IntQuadQuad::Perform()`
     /// Intersects a cone and a quadric.
     /// Tol est a definir plus precisemment.
     pub fn perform_cone_quadric_real(&mut self, C: &crate::gp::Cone, Q: &Quadric, Tol: f64) {
@@ -999,7 +999,7 @@ impl IntQuadQuad {
         })
     }
 
-    /// **Source:** `IntAna_IntQuadQuad.hxx`:70 - `IntAna_IntQuadQuad::IsDone()`
+    /// **Source:** `IntAna_IntQuadQuad.hxx`:66 - `IntAna_IntQuadQuad::IsDone()`
     /// Returns True if the computation was successful.
     pub fn is_done(&self) -> bool {
         crate::check_result(unsafe {
@@ -1007,7 +1007,7 @@ impl IntQuadQuad {
         })
     }
 
-    /// **Source:** `IntAna_IntQuadQuad.hxx`:74 - `IntAna_IntQuadQuad::IdenticalElements()`
+    /// **Source:** `IntAna_IntQuadQuad.hxx`:70 - `IntAna_IntQuadQuad::IdenticalElements()`
     /// Returns TRUE if the cylinder, the cone or the sphere
     /// is identical to the quadric.
     pub fn identical_elements(&self) -> bool {
@@ -1016,7 +1016,7 @@ impl IntQuadQuad {
         })
     }
 
-    /// **Source:** `IntAna_IntQuadQuad.hxx`:77 - `IntAna_IntQuadQuad::NbCurve()`
+    /// **Source:** `IntAna_IntQuadQuad.hxx`:73 - `IntAna_IntQuadQuad::NbCurve()`
     /// Returns the number of curves solution.
     pub fn nb_curve(&self) -> i32 {
         crate::check_result(unsafe {
@@ -1024,7 +1024,7 @@ impl IntQuadQuad {
         })
     }
 
-    /// **Source:** `IntAna_IntQuadQuad.hxx`:80 - `IntAna_IntQuadQuad::Curve()`
+    /// **Source:** `IntAna_IntQuadQuad.hxx`:76 - `IntAna_IntQuadQuad::Curve()`
     /// Returns the curve of range N.
     pub fn curve(&self, N: i32) -> &Curve {
         unsafe {
@@ -1035,7 +1035,7 @@ impl IntQuadQuad {
         }
     }
 
-    /// **Source:** `IntAna_IntQuadQuad.hxx`:83 - `IntAna_IntQuadQuad::NbPnt()`
+    /// **Source:** `IntAna_IntQuadQuad.hxx`:79 - `IntAna_IntQuadQuad::NbPnt()`
     /// Returns the number of contact point.
     pub fn nb_pnt(&self) -> i32 {
         crate::check_result(unsafe {
@@ -1043,7 +1043,7 @@ impl IntQuadQuad {
         })
     }
 
-    /// **Source:** `IntAna_IntQuadQuad.hxx`:86 - `IntAna_IntQuadQuad::Point()`
+    /// **Source:** `IntAna_IntQuadQuad.hxx`:82 - `IntAna_IntQuadQuad::Point()`
     /// Returns the point of range N.
     pub fn point(&self, N: i32) -> &crate::gp::Pnt {
         unsafe {
@@ -1054,10 +1054,10 @@ impl IntQuadQuad {
         }
     }
 
-    /// **Source:** `IntAna_IntQuadQuad.hxx`:91 - `IntAna_IntQuadQuad::Parameters()`
+    /// **Source:** `IntAna_IntQuadQuad.hxx`:87 - `IntAna_IntQuadQuad::Parameters()`
     /// Returns the parameters on the "explicit quadric"
-    /// (i.e  the cylinder or the  cone, the first argument given to the constructor) of the point of
-    /// range N.
+    /// (i.e. the cylinder or the cone, the first argument given to the constructor)
+    /// of the point of range N.
     pub fn parameters(&self, N: i32, U1: &mut f64, U2: &mut f64) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomBase::IntAna_IntQuadQuad_parameters(
@@ -1069,8 +1069,8 @@ impl IntQuadQuad {
         })
     }
 
-    /// **Source:** `IntAna_IntQuadQuad.hxx`:97 - `IntAna_IntQuadQuad::HasNextCurve()`
-    /// Returns True if the Curve I  shares its last bound
+    /// **Source:** `IntAna_IntQuadQuad.hxx`:91 - `IntAna_IntQuadQuad::HasNextCurve()`
+    /// Returns True if the Curve I shares its last bound
     /// with another curve.
     pub fn has_next_curve(&self, I: i32) -> bool {
         crate::check_result(unsafe {
@@ -1078,14 +1078,14 @@ impl IntQuadQuad {
         })
     }
 
-    /// **Source:** `IntAna_IntQuadQuad.hxx`:107 - `IntAna_IntQuadQuad::NextCurve()`
-    /// If  HasNextCurve(I)  returns True,  this  function
-    /// returns  the  Index J  of the curve  which   has a
-    /// common bound  with the curve   I.  If  theOpposite ==
-    /// True , then the last parameter of the curve I, and
-    /// the last parameter of  the curve J  give  the same
-    /// point. Else the last  parameter of the curve I and
-    /// the first parameter  of  the curve J are  the same
+    /// **Source:** `IntAna_IntQuadQuad.hxx`:101 - `IntAna_IntQuadQuad::NextCurve()`
+    /// If HasNextCurve(I) returns True, this function
+    /// returns the Index J of the curve which has a
+    /// common bound with the curve I. If theOpposite ==
+    /// True, then the last parameter of the curve I, and
+    /// the last parameter of the curve J give the same
+    /// point. Else the last parameter of the curve I and
+    /// the first parameter of the curve J are the same
     /// point.
     pub fn next_curve(&self, I: i32, theOpposite: &mut bool) -> i32 {
         crate::check_result(unsafe {
@@ -1097,7 +1097,7 @@ impl IntQuadQuad {
         })
     }
 
-    /// **Source:** `IntAna_IntQuadQuad.hxx`:112 - `IntAna_IntQuadQuad::HasPreviousCurve()`
+    /// **Source:** `IntAna_IntQuadQuad.hxx`:105 - `IntAna_IntQuadQuad::HasPreviousCurve()`
     /// Returns True if the Curve I shares its first bound
     /// with another curve.
     pub fn has_previous_curve(&self, I: i32) -> bool {
@@ -1109,15 +1109,15 @@ impl IntQuadQuad {
         })
     }
 
-    /// **Source:** `IntAna_IntQuadQuad.hxx`:122 - `IntAna_IntQuadQuad::PreviousCurve()`
+    /// **Source:** `IntAna_IntQuadQuad.hxx`:115 - `IntAna_IntQuadQuad::PreviousCurve()`
     /// if HasPreviousCurve(I) returns True, this function
-    /// returns the   Index  J of the   curve  which has a
-    /// common  bound with the  curve  I.  If theOpposite  ==
-    /// True  , then the  first parameter of  the curve I,
-    /// and the first parameter of the curve  J  give  the
-    /// same point. Else the first  parameter of the curve
-    /// I and the last  parameter  of the curve J  are the
-    /// same point.
+    /// returns the Index J of the curve which has a common
+    /// bound with the curve I. If theOpposite == True
+    /// then the first parameter of the curve I, and the
+    /// first parameter of the curve J give the same
+    /// point. Else the first parameter of the curve I and
+    /// the last parameter of the curve J are the same
+    /// point.
     pub fn previous_curve(&self, I: i32, theOpposite: &mut bool) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomBase::IntAna_IntQuadQuad_previous_curve(
@@ -1199,7 +1199,7 @@ impl QuadQuadGeo {
     /// is a circle or an ellipse. If the maximum distance between
     /// the ellipse solution and the circle centered at the ellipse
     /// center is less than Tol, the result will be the circle.
-    /// H is the height of the cylinder <Cyl>. It is  used to check
+    /// H is the height of the cylinder <Cyl>. It is used to check
     /// whether the plane and cylinder are parallel.
     pub fn new_pln_cylinder_real3(
         P: &crate::gp::Pln,
@@ -1266,7 +1266,7 @@ impl QuadQuadGeo {
         }
     }
 
-    /// **Source:** `IntAna_QuadQuadGeo.hxx`:152 - `IntAna_QuadQuadGeo::IntAna_QuadQuadGeo()`
+    /// **Source:** `IntAna_QuadQuadGeo.hxx`:150 - `IntAna_QuadQuadGeo::IntAna_QuadQuadGeo()`
     /// Creates the intersection between a Cylinder and a Sphere.
     pub fn new_cylinder_sphere_real(
         Cyl: &crate::gp::Cylinder,
@@ -1282,7 +1282,7 @@ impl QuadQuadGeo {
         }
     }
 
-    /// **Source:** `IntAna_QuadQuadGeo.hxx`:162 - `IntAna_QuadQuadGeo::IntAna_QuadQuadGeo()`
+    /// **Source:** `IntAna_QuadQuadGeo.hxx`:158 - `IntAna_QuadQuadGeo::IntAna_QuadQuadGeo()`
     /// Creates the intersection between a Cylinder and a Cone
     pub fn new_cylinder_cone_real(
         Cyl: &crate::gp::Cylinder,
@@ -1298,7 +1298,7 @@ impl QuadQuadGeo {
         }
     }
 
-    /// **Source:** `IntAna_QuadQuadGeo.hxx`:170 - `IntAna_QuadQuadGeo::IntAna_QuadQuadGeo()`
+    /// **Source:** `IntAna_QuadQuadGeo.hxx`:164 - `IntAna_QuadQuadGeo::IntAna_QuadQuadGeo()`
     /// Creates the intersection between two Spheres.
     pub fn new_sphere2_real(
         Sph1: &crate::gp::Sphere,
@@ -1312,7 +1312,7 @@ impl QuadQuadGeo {
         }
     }
 
-    /// **Source:** `IntAna_QuadQuadGeo.hxx`:180 - `IntAna_QuadQuadGeo::IntAna_QuadQuadGeo()`
+    /// **Source:** `IntAna_QuadQuadGeo.hxx`:172 - `IntAna_QuadQuadGeo::IntAna_QuadQuadGeo()`
     /// Creates the intersection between a Sphere and a Cone.
     pub fn new_sphere_cone_real(
         Sph: &crate::gp::Sphere,
@@ -1328,7 +1328,7 @@ impl QuadQuadGeo {
         }
     }
 
-    /// **Source:** `IntAna_QuadQuadGeo.hxx`:188 - `IntAna_QuadQuadGeo::IntAna_QuadQuadGeo()`
+    /// **Source:** `IntAna_QuadQuadGeo.hxx`:178 - `IntAna_QuadQuadGeo::IntAna_QuadQuadGeo()`
     /// Creates the intersection between two cones.
     pub fn new_cone2_real(
         Con1: &crate::gp::Cone,
@@ -1342,7 +1342,7 @@ impl QuadQuadGeo {
         }
     }
 
-    /// **Source:** `IntAna_QuadQuadGeo.hxx`:196 - `IntAna_QuadQuadGeo::IntAna_QuadQuadGeo()`
+    /// **Source:** `IntAna_QuadQuadGeo.hxx`:184 - `IntAna_QuadQuadGeo::IntAna_QuadQuadGeo()`
     /// Creates the intersection between plane and torus.
     pub fn new_pln_torus_real(
         Pln: &crate::gp::Pln,
@@ -1356,7 +1356,7 @@ impl QuadQuadGeo {
         }
     }
 
-    /// **Source:** `IntAna_QuadQuadGeo.hxx`:204 - `IntAna_QuadQuadGeo::IntAna_QuadQuadGeo()`
+    /// **Source:** `IntAna_QuadQuadGeo.hxx`:190 - `IntAna_QuadQuadGeo::IntAna_QuadQuadGeo()`
     /// Creates the intersection between cylinder and torus.
     pub fn new_cylinder_torus_real(
         Cyl: &crate::gp::Cylinder,
@@ -1372,7 +1372,7 @@ impl QuadQuadGeo {
         }
     }
 
-    /// **Source:** `IntAna_QuadQuadGeo.hxx`:214 - `IntAna_QuadQuadGeo::IntAna_QuadQuadGeo()`
+    /// **Source:** `IntAna_QuadQuadGeo.hxx`:196 - `IntAna_QuadQuadGeo::IntAna_QuadQuadGeo()`
     /// Creates the intersection between cone and torus.
     pub fn new_cone_torus_real(
         Con: &crate::gp::Cone,
@@ -1388,7 +1388,7 @@ impl QuadQuadGeo {
         }
     }
 
-    /// **Source:** `IntAna_QuadQuadGeo.hxx`:222 - `IntAna_QuadQuadGeo::IntAna_QuadQuadGeo()`
+    /// **Source:** `IntAna_QuadQuadGeo.hxx`:202 - `IntAna_QuadQuadGeo::IntAna_QuadQuadGeo()`
     /// Creates the intersection between sphere and torus.
     pub fn new_sphere_torus_real(
         Sph: &crate::gp::Sphere,
@@ -1404,7 +1404,7 @@ impl QuadQuadGeo {
         }
     }
 
-    /// **Source:** `IntAna_QuadQuadGeo.hxx`:230 - `IntAna_QuadQuadGeo::IntAna_QuadQuadGeo()`
+    /// **Source:** `IntAna_QuadQuadGeo.hxx`:208 - `IntAna_QuadQuadGeo::IntAna_QuadQuadGeo()`
     /// Creates the intersection between two toruses.
     pub fn new_torus2_real(
         Tor1: &crate::gp::Torus,
@@ -1426,7 +1426,7 @@ impl QuadQuadGeo {
     /// is a circle or an ellipse. If the maximum distance between
     /// the ellipse solution and the circle centered at the ellipse
     /// center is less than Tol, the result will be the circle.
-    /// H is the height of the cylinder <Cyl>. It is  used to check
+    /// H is the height of the cylinder <Cyl>. It is used to check
     /// whether the plane and cylinder are parallel.
     pub fn new_pln_cylinder_real2(
         P: &crate::gp::Pln,
@@ -1469,7 +1469,7 @@ impl QuadQuadGeo {
     /// is a circle or an ellipse. If the maximum distance between
     /// the ellipse solution and the circle centered at the ellipse
     /// center is less than Tol, the result will be the circle.
-    /// H is the height of the cylinder <Cyl>. It is  used to check
+    /// H is the height of the cylinder <Cyl>. It is used to check
     /// whether the plane and cylinder are parallel.
     pub fn perform_pln_cylinder_real3(
         &mut self,
@@ -1547,7 +1547,7 @@ impl QuadQuadGeo {
         })
     }
 
-    /// **Source:** `IntAna_QuadQuadGeo.hxx`:157 - `IntAna_QuadQuadGeo::Perform()`
+    /// **Source:** `IntAna_QuadQuadGeo.hxx`:155 - `IntAna_QuadQuadGeo::Perform()`
     /// Intersects a cylinder and a sphere.
     pub fn perform_cylinder_sphere_real(
         &mut self,
@@ -1565,7 +1565,7 @@ impl QuadQuadGeo {
         })
     }
 
-    /// **Source:** `IntAna_QuadQuadGeo.hxx`:167 - `IntAna_QuadQuadGeo::Perform()`
+    /// **Source:** `IntAna_QuadQuadGeo.hxx`:161 - `IntAna_QuadQuadGeo::Perform()`
     /// Intersects a cylinder and a cone.
     pub fn perform_cylinder_cone_real(
         &mut self,
@@ -1583,7 +1583,7 @@ impl QuadQuadGeo {
         })
     }
 
-    /// **Source:** `IntAna_QuadQuadGeo.hxx`:175 - `IntAna_QuadQuadGeo::Perform()`
+    /// **Source:** `IntAna_QuadQuadGeo.hxx`:169 - `IntAna_QuadQuadGeo::Perform()`
     /// Intersects a two spheres.
     pub fn perform_sphere2_real(
         &mut self,
@@ -1601,7 +1601,7 @@ impl QuadQuadGeo {
         })
     }
 
-    /// **Source:** `IntAna_QuadQuadGeo.hxx`:185 - `IntAna_QuadQuadGeo::Perform()`
+    /// **Source:** `IntAna_QuadQuadGeo.hxx`:175 - `IntAna_QuadQuadGeo::Perform()`
     /// Intersects a sphere and a cone.
     pub fn perform_sphere_cone_real(
         &mut self,
@@ -1619,7 +1619,7 @@ impl QuadQuadGeo {
         })
     }
 
-    /// **Source:** `IntAna_QuadQuadGeo.hxx`:193 - `IntAna_QuadQuadGeo::Perform()`
+    /// **Source:** `IntAna_QuadQuadGeo.hxx`:181 - `IntAna_QuadQuadGeo::Perform()`
     /// Intersects two cones.
     pub fn perform_cone2_real(&mut self, Con1: &crate::gp::Cone, Con2: &crate::gp::Cone, Tol: f64) {
         crate::check_void_result(unsafe {
@@ -1632,7 +1632,7 @@ impl QuadQuadGeo {
         })
     }
 
-    /// **Source:** `IntAna_QuadQuadGeo.hxx`:201 - `IntAna_QuadQuadGeo::Perform()`
+    /// **Source:** `IntAna_QuadQuadGeo.hxx`:187 - `IntAna_QuadQuadGeo::Perform()`
     /// Intersects plane and torus.
     pub fn perform_pln_torus_real(
         &mut self,
@@ -1650,7 +1650,7 @@ impl QuadQuadGeo {
         })
     }
 
-    /// **Source:** `IntAna_QuadQuadGeo.hxx`:209 - `IntAna_QuadQuadGeo::Perform()`
+    /// **Source:** `IntAna_QuadQuadGeo.hxx`:193 - `IntAna_QuadQuadGeo::Perform()`
     /// Intersects cylinder and torus.
     pub fn perform_cylinder_torus_real(
         &mut self,
@@ -1668,7 +1668,7 @@ impl QuadQuadGeo {
         })
     }
 
-    /// **Source:** `IntAna_QuadQuadGeo.hxx`:219 - `IntAna_QuadQuadGeo::Perform()`
+    /// **Source:** `IntAna_QuadQuadGeo.hxx`:199 - `IntAna_QuadQuadGeo::Perform()`
     /// Intersects cone and torus.
     pub fn perform_cone_torus_real(
         &mut self,
@@ -1686,7 +1686,7 @@ impl QuadQuadGeo {
         })
     }
 
-    /// **Source:** `IntAna_QuadQuadGeo.hxx`:227 - `IntAna_QuadQuadGeo::Perform()`
+    /// **Source:** `IntAna_QuadQuadGeo.hxx`:205 - `IntAna_QuadQuadGeo::Perform()`
     /// Intersects sphere and torus.
     pub fn perform_sphere_torus_real(
         &mut self,
@@ -1704,7 +1704,7 @@ impl QuadQuadGeo {
         })
     }
 
-    /// **Source:** `IntAna_QuadQuadGeo.hxx`:235 - `IntAna_QuadQuadGeo::Perform()`
+    /// **Source:** `IntAna_QuadQuadGeo.hxx`:211 - `IntAna_QuadQuadGeo::Perform()`
     /// Intersects two toruses.
     pub fn perform_torus2_real(
         &mut self,
@@ -1722,15 +1722,15 @@ impl QuadQuadGeo {
         })
     }
 
-    /// **Source:** `IntAna_QuadQuadGeo.hxx`:238 - `IntAna_QuadQuadGeo::IsDone()`
-    /// Returns Standard_True if the computation was successful.
+    /// **Source:** `IntAna_QuadQuadGeo.hxx`:214 - `IntAna_QuadQuadGeo::IsDone()`
+    /// Returns true if the computation was successful.
     pub fn is_done(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomBase::IntAna_QuadQuadGeo_is_done(self as *const Self)
         })
     }
 
-    /// **Source:** `IntAna_QuadQuadGeo.hxx`:241 - `IntAna_QuadQuadGeo::TypeInter()`
+    /// **Source:** `IntAna_QuadQuadGeo.hxx`:217 - `IntAna_QuadQuadGeo::TypeInter()`
     /// Returns the type of intersection.
     pub fn type_inter(&self) -> crate::int_ana::ResultType {
         crate::int_ana::ResultType::try_from(crate::check_result(unsafe {
@@ -1739,7 +1739,7 @@ impl QuadQuadGeo {
         .unwrap()
     }
 
-    /// **Source:** `IntAna_QuadQuadGeo.hxx`:252 - `IntAna_QuadQuadGeo::NbSolutions()`
+    /// **Source:** `IntAna_QuadQuadGeo.hxx`:228 - `IntAna_QuadQuadGeo::NbSolutions()`
     /// Returns the number of intersections.
     /// The possible intersections are :
     /// - 1 point
@@ -1755,7 +1755,7 @@ impl QuadQuadGeo {
         })
     }
 
-    /// **Source:** `IntAna_QuadQuadGeo.hxx`:255 - `IntAna_QuadQuadGeo::Point()`
+    /// **Source:** `IntAna_QuadQuadGeo.hxx`:231 - `IntAna_QuadQuadGeo::Point()`
     /// Returns the point solution of range Num.
     pub fn point(&self, Num: i32) -> crate::OwnedPtr<crate::gp::Pnt> {
         unsafe {
@@ -1765,7 +1765,7 @@ impl QuadQuadGeo {
         }
     }
 
-    /// **Source:** `IntAna_QuadQuadGeo.hxx`:258 - `IntAna_QuadQuadGeo::Line()`
+    /// **Source:** `IntAna_QuadQuadGeo.hxx`:234 - `IntAna_QuadQuadGeo::Line()`
     /// Returns the line solution of range Num.
     pub fn line(&self, Num: i32) -> crate::OwnedPtr<crate::gp::Lin> {
         unsafe {
@@ -1775,7 +1775,7 @@ impl QuadQuadGeo {
         }
     }
 
-    /// **Source:** `IntAna_QuadQuadGeo.hxx`:261 - `IntAna_QuadQuadGeo::Circle()`
+    /// **Source:** `IntAna_QuadQuadGeo.hxx`:237 - `IntAna_QuadQuadGeo::Circle()`
     /// Returns the circle solution of range Num.
     pub fn circle(&self, Num: i32) -> crate::OwnedPtr<crate::gp::Circ> {
         unsafe {
@@ -1785,7 +1785,7 @@ impl QuadQuadGeo {
         }
     }
 
-    /// **Source:** `IntAna_QuadQuadGeo.hxx`:264 - `IntAna_QuadQuadGeo::Ellipse()`
+    /// **Source:** `IntAna_QuadQuadGeo.hxx`:240 - `IntAna_QuadQuadGeo::Ellipse()`
     /// Returns the ellipse solution of range Num.
     pub fn ellipse(&self, Num: i32) -> crate::OwnedPtr<crate::gp::Elips> {
         unsafe {
@@ -1795,7 +1795,7 @@ impl QuadQuadGeo {
         }
     }
 
-    /// **Source:** `IntAna_QuadQuadGeo.hxx`:267 - `IntAna_QuadQuadGeo::Parabola()`
+    /// **Source:** `IntAna_QuadQuadGeo.hxx`:243 - `IntAna_QuadQuadGeo::Parabola()`
     /// Returns the parabola solution of range Num.
     pub fn parabola(&self, Num: i32) -> crate::OwnedPtr<crate::gp::Parab> {
         unsafe {
@@ -1805,7 +1805,7 @@ impl QuadQuadGeo {
         }
     }
 
-    /// **Source:** `IntAna_QuadQuadGeo.hxx`:270 - `IntAna_QuadQuadGeo::Hyperbola()`
+    /// **Source:** `IntAna_QuadQuadGeo.hxx`:246 - `IntAna_QuadQuadGeo::Hyperbola()`
     /// Returns the hyperbola solution of range Num.
     pub fn hyperbola(&self, Num: i32) -> crate::OwnedPtr<crate::gp::Hypr> {
         unsafe {
@@ -1818,14 +1818,14 @@ impl QuadQuadGeo {
         }
     }
 
-    /// **Source:** `IntAna_QuadQuadGeo.hxx`:272 - `IntAna_QuadQuadGeo::HasCommonGen()`
+    /// **Source:** `IntAna_QuadQuadGeo.hxx`:248 - `IntAna_QuadQuadGeo::HasCommonGen()`
     pub fn has_common_gen(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomBase::IntAna_QuadQuadGeo_has_common_gen(self as *const Self)
         })
     }
 
-    /// **Source:** `IntAna_QuadQuadGeo.hxx`:274 - `IntAna_QuadQuadGeo::PChar()`
+    /// **Source:** `IntAna_QuadQuadGeo.hxx`:250 - `IntAna_QuadQuadGeo::PChar()`
     pub fn p_char(&self) -> &crate::gp::Pnt {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKGeomBase::IntAna_QuadQuadGeo_p_char(

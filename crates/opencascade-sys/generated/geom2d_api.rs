@@ -55,8 +55,8 @@ impl ExtremaCurveCurve {
     /// Use the function NbExtrema to obtain the number
     /// of solutions. If this algorithm fails, NbExtrema returns 0.
     pub fn new_handlegeom2dcurve2_real4(
-        C1: &crate::ffi_types::HandleGeom2dCurve,
-        C2: &crate::ffi_types::HandleGeom2dCurve,
+        C1: &crate::ffi_types::Handle_Geom2d_Curve,
+        C2: &crate::ffi_types::Handle_Geom2d_Curve,
         U1min: f64,
         U1max: f64,
         U2min: f64,
@@ -117,7 +117,7 @@ impl ExtremaCurveCurve {
         })
     }
 
-    /// **Source:** `Geom2dAPI_ExtremaCurveCurve.hxx`:105 - `Geom2dAPI_ExtremaCurveCurve::Distance()`
+    /// **Source:** `Geom2dAPI_ExtremaCurveCurve.hxx`:103 - `Geom2dAPI_ExtremaCurveCurve::Distance()`
     /// Computes the distance between the end points of the
     /// extremum of index Index computed by this algorithm.
     /// Exceptions
@@ -133,7 +133,7 @@ impl ExtremaCurveCurve {
         })
     }
 
-    /// **Source:** `Geom2dAPI_ExtremaCurveCurve.hxx`:111 - `Geom2dAPI_ExtremaCurveCurve::NearestPoints()`
+    /// **Source:** `Geom2dAPI_ExtremaCurveCurve.hxx`:109 - `Geom2dAPI_ExtremaCurveCurve::NearestPoints()`
     /// Returns the points P1 on the first curve and P2 on
     /// the second curve, which are the ends of the shortest
     /// extremum computed by this algorithm.
@@ -148,7 +148,7 @@ impl ExtremaCurveCurve {
         })
     }
 
-    /// **Source:** `Geom2dAPI_ExtremaCurveCurve.hxx`:118 - `Geom2dAPI_ExtremaCurveCurve::LowerDistanceParameters()`
+    /// **Source:** `Geom2dAPI_ExtremaCurveCurve.hxx`:116 - `Geom2dAPI_ExtremaCurveCurve::LowerDistanceParameters()`
     /// Returns the parameters U1 of the point on the first
     /// curve and U2 of the point on the second curve, which
     /// are the ends of the shortest extremum computed by this algorithm.
@@ -164,7 +164,7 @@ impl ExtremaCurveCurve {
         })
     }
 
-    /// **Source:** `Geom2dAPI_ExtremaCurveCurve.hxx`:123 - `Geom2dAPI_ExtremaCurveCurve::LowerDistance()`
+    /// **Source:** `Geom2dAPI_ExtremaCurveCurve.hxx`:121 - `Geom2dAPI_ExtremaCurveCurve::LowerDistance()`
     /// Computes the distance between the end points of the
     /// shortest extremum computed by this algorithm.
     /// Exceptions - StdFail_NotDone if this algorithm fails.
@@ -176,7 +176,7 @@ impl ExtremaCurveCurve {
         })
     }
 
-    /// **Source:** `Geom2dAPI_ExtremaCurveCurve.hxx`:126 - `Geom2dAPI_ExtremaCurveCurve::Extrema()`
+    /// **Source:** `Geom2dAPI_ExtremaCurveCurve.hxx`:124 - `Geom2dAPI_ExtremaCurveCurve::Extrema()`
     pub fn extrema(&self) -> &crate::extrema::ExtCC2d {
         unsafe {
             &*(crate::check_result(
@@ -194,10 +194,10 @@ impl ExtremaCurveCurve {
 
 /// **Source:** `Geom2dAPI_InterCurveCurve.hxx`:36 - `Geom2dAPI_InterCurveCurve`
 /// This class implements methods for computing
-/// -       the intersections between  two 2D curves,
-/// -       the self-intersections of a  2D curve.
+/// -       the intersections between two 2D curves,
+/// -       the self-intersections of a 2D curve.
 /// Using the InterCurveCurve algorithm allows to get the following results:
-/// -      intersection points in the  case of cross intersections,
+/// -      intersection points in the case of cross intersections,
 /// -      intersection segments in the case of tangential intersections,
 /// -       nothing in the case of no intersections.
 pub use crate::ffi_types::Geom2dAPI_InterCurveCurve as InterCurveCurve;
@@ -227,8 +227,8 @@ impl InterCurveCurve {
     /// Creates an object and computes the
     /// intersections between the curves C1 and C2.
     pub fn new_handlegeom2dcurve2_real(
-        C1: &crate::ffi_types::HandleGeom2dCurve,
-        C2: &crate::ffi_types::HandleGeom2dCurve,
+        C1: &crate::ffi_types::Handle_Geom2d_Curve,
+        C2: &crate::ffi_types::Handle_Geom2d_Curve,
         Tol: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -249,7 +249,7 @@ impl InterCurveCurve {
     /// solutions. If the algorithm finds no intersections NbPoints and
     /// NbSegments return 0.
     pub fn new_handlegeom2dcurve_real(
-        C1: &crate::ffi_types::HandleGeom2dCurve,
+        C1: &crate::ffi_types::Handle_Geom2d_Curve,
         Tol: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -265,8 +265,8 @@ impl InterCurveCurve {
     /// Creates an object and computes the
     /// intersections between the curves C1 and C2.
     pub fn new_handlegeom2dcurve2(
-        C1: &crate::ffi_types::HandleGeom2dCurve,
-        C2: &crate::ffi_types::HandleGeom2dCurve,
+        C1: &crate::ffi_types::Handle_Geom2d_Curve,
+        C2: &crate::ffi_types::Handle_Geom2d_Curve,
     ) -> crate::OwnedPtr<Self> {
         Self::new_handlegeom2dcurve2_real(C1, C2, 1.0e-6)
     }
@@ -284,7 +284,7 @@ impl InterCurveCurve {
     /// solutions. If the algorithm finds no intersections NbPoints and
     /// NbSegments return 0.
     pub fn new_handlegeom2dcurve(
-        C1: &crate::ffi_types::HandleGeom2dCurve,
+        C1: &crate::ffi_types::Handle_Geom2d_Curve,
     ) -> crate::OwnedPtr<Self> {
         Self::new_handlegeom2dcurve_real(C1, 1.0e-6)
     }
@@ -294,8 +294,8 @@ impl InterCurveCurve {
     /// given arguments and computes the intersections between the curves C1. and C2.
     pub fn init_handlegeom2dcurve2_real(
         &mut self,
-        C1: &crate::ffi_types::HandleGeom2dCurve,
-        C2: &crate::ffi_types::HandleGeom2dCurve,
+        C1: &crate::ffi_types::Handle_Geom2d_Curve,
+        C2: &crate::ffi_types::Handle_Geom2d_Curve,
         Tol: f64,
     ) {
         crate::check_void_result(unsafe {
@@ -322,7 +322,7 @@ impl InterCurveCurve {
     /// and NbSegments return 0.
     pub fn init_handlegeom2dcurve_real(
         &mut self,
-        C1: &crate::ffi_types::HandleGeom2dCurve,
+        C1: &crate::ffi_types::Handle_Geom2d_Curve,
         Tol: f64,
     ) {
         crate::check_void_result(unsafe {
@@ -389,8 +389,8 @@ impl InterCurveCurve {
     pub fn segment(
         &self,
         Index: i32,
-        Curve1: &mut crate::ffi_types::HandleGeom2dCurve,
-        Curve2: &mut crate::ffi_types::HandleGeom2dCurve,
+        Curve1: &mut crate::ffi_types::Handle_Geom2d_Curve,
+        Curve2: &mut crate::ffi_types::Handle_Geom2d_Curve,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::Geom2dAPI_InterCurveCurve_segment(
@@ -419,12 +419,12 @@ impl InterCurveCurve {
 // From Geom2dAPI_Interpolate.hxx
 // ========================
 
-/// **Source:** `Geom2dAPI_Interpolate.hxx`:43 - `Geom2dAPI_Interpolate`
-/// This  class  is  used  to  interpolate a  BsplineCurve
-/// passing   through  an  array  of  points,  with  a  C2
+/// **Source:** `Geom2dAPI_Interpolate.hxx`:42 - `Geom2dAPI_Interpolate`
+/// This class is used to interpolate a BsplineCurve
+/// passing through an array of points, with a C2
 /// Continuity if tangency is not requested at the point.
 /// If tangency is requested at the point the continuity will
-/// be C1.  If Perodicity is requested the curve will be closed
+/// be C1. If Perodicity is requested the curve will be closed
 /// and the junction will be the first point given. The curve will than be only C1
 /// The curve is defined by a table of points through which it passes, and if required
 /// by a parallel table of reals which gives the value of the parameter of each point through
@@ -442,39 +442,45 @@ unsafe impl crate::CppDeletable for Interpolate {
 }
 
 impl Interpolate {
-    /// **Source:** `Geom2dAPI_Interpolate.hxx`:52 - `Geom2dAPI_Interpolate::Geom2dAPI_Interpolate()`
+    /// **Source:** `Geom2dAPI_Interpolate.hxx`:51 - `Geom2dAPI_Interpolate::Geom2dAPI_Interpolate()`
     /// Tolerance is to check if the points are not too close to one an other
     /// It is also used to check if the tangent vector is not too small.
     /// There should be at least 2 points
     /// if PeriodicFlag is True then the curve will be periodic.
-    pub fn new_handletcolgpharray1ofpnt2d_bool_real(
-        Points: &crate::ffi_types::HandleTColgpHArray1OfPnt2d,
+    pub fn new_harr1_pnt2d_bool_real(
+        Points: &crate::ffi_types::Handle_NCollection_HArray1_gp_Pnt2d,
         PeriodicFlag: bool,
         Tolerance: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomAlgo::Geom2dAPI_Interpolate_ctor_handletcolgpharray1ofpnt2d_bool_real(Points, PeriodicFlag, Tolerance)))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::Geom2dAPI_Interpolate_ctor_harr1_pnt2d_bool_real(
+                    Points,
+                    PeriodicFlag,
+                    Tolerance,
+                ),
+            ))
         }
     }
 
-    /// **Source:** `Geom2dAPI_Interpolate.hxx`:61 - `Geom2dAPI_Interpolate::Geom2dAPI_Interpolate()`
+    /// **Source:** `Geom2dAPI_Interpolate.hxx`:60 - `Geom2dAPI_Interpolate::Geom2dAPI_Interpolate()`
     /// if PeriodicFlag is True then the curve will be periodic
     /// Warning:
     /// There should be as many parameters as there are points
     /// except if PeriodicFlag is True : then there should be one more
     /// parameter to close the curve
-    pub fn new_handletcolgpharray1ofpnt2d_handletcolstdharray1ofreal_bool_real(
-        Points: &crate::ffi_types::HandleTColgpHArray1OfPnt2d,
-        Parameters: &crate::ffi_types::HandleTColStdHArray1OfReal,
+    pub fn new_harr1_pnt2d_harr1_double_bool_real(
+        Points: &crate::ffi_types::Handle_NCollection_HArray1_gp_Pnt2d,
+        Parameters: &crate::ffi_types::Handle_NCollection_HArray1_double,
         PeriodicFlag: bool,
         Tolerance: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomAlgo::Geom2dAPI_Interpolate_ctor_handletcolgpharray1ofpnt2d_handletcolstdharray1ofreal_bool_real(Points, Parameters, PeriodicFlag, Tolerance)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomAlgo::Geom2dAPI_Interpolate_ctor_harr1_pnt2d_harr1_double_bool_real(Points, Parameters, PeriodicFlag, Tolerance)))
         }
     }
 
-    /// **Source:** `Geom2dAPI_Interpolate.hxx`:74 - `Geom2dAPI_Interpolate::Load()`
+    /// **Source:** `Geom2dAPI_Interpolate.hxx`:73 - `Geom2dAPI_Interpolate::Load()`
     /// Assigns this constrained BSpline curve to be
     /// tangential to vectors InitialTangent and FinalTangent
     /// at its first and last points respectively (i.e.
@@ -499,7 +505,7 @@ impl Interpolate {
         })
     }
 
-    /// **Source:** `Geom2dAPI_Interpolate.hxx`:89 - `Geom2dAPI_Interpolate::Load()`
+    /// **Source:** `Geom2dAPI_Interpolate.hxx`:88 - `Geom2dAPI_Interpolate::Load()`
     /// Assigns this constrained BSpline curve to be
     /// tangential to vectors defined in the table Tangents,
     /// which is parallel to the table of points
@@ -511,18 +517,23 @@ impl Interpolate {
     /// are set as tangency constraints.
     /// <Scale> - boolean flag defining whether tangent vectors are to
     /// be scaled according to derivatives of lagrange interpolation.
-    pub fn load_array1ofvec2d_handletcolstdharray1ofboolean_bool(
+    pub fn load_arr1_vec2d_harr1_bool_bool(
         &mut self,
-        Tangents: &crate::ffi_types::TColgp_Array1OfVec2d,
-        TangentFlags: &crate::ffi_types::HandleTColStdHArray1OfBoolean,
+        Tangents: &crate::ffi_types::NCollection_Array1_gp_Vec2d,
+        TangentFlags: &crate::ffi_types::Handle_NCollection_HArray1_bool,
         Scale: bool,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi_extern_TKGeomAlgo::Geom2dAPI_Interpolate_load_array1ofvec2d_handletcolstdharray1ofboolean_bool(self as *mut Self, Tangents, TangentFlags, Scale)
+            crate::ffi_extern_TKGeomAlgo::Geom2dAPI_Interpolate_load_arr1_vec2d_harr1_bool_bool(
+                self as *mut Self,
+                Tangents,
+                TangentFlags,
+                Scale,
+            )
         })
     }
 
-    /// **Source:** `Geom2dAPI_Interpolate.hxx`:95 - `Geom2dAPI_Interpolate::ClearTangents()`
+    /// **Source:** `Geom2dAPI_Interpolate.hxx`:94 - `Geom2dAPI_Interpolate::ClearTangents()`
     /// Clears all tangency constraints on this
     /// constrained BSpline curve (as initialized by the function Load).
     pub fn clear_tangents(&mut self) {
@@ -531,7 +542,7 @@ impl Interpolate {
         })
     }
 
-    /// **Source:** `Geom2dAPI_Interpolate.hxx`:99 - `Geom2dAPI_Interpolate::Perform()`
+    /// **Source:** `Geom2dAPI_Interpolate.hxx`:98 - `Geom2dAPI_Interpolate::Perform()`
     /// Computes the constrained BSpline curve. Use the function IsDone to verify that the
     /// computation is successful, and then the function Curve to obtain the result.
     pub fn perform(&mut self) {
@@ -540,9 +551,9 @@ impl Interpolate {
         })
     }
 
-    /// **Source:** `Geom2dAPI_Interpolate.hxx`:102 - `Geom2dAPI_Interpolate::Curve()`
-    /// Returns the computed BSpline curve. Raises  StdFail_NotDone if the interpolation fails.
-    pub fn curve(&self) -> &crate::ffi_types::HandleGeom2dBSplineCurve {
+    /// **Source:** `Geom2dAPI_Interpolate.hxx`:101 - `Geom2dAPI_Interpolate::Curve()`
+    /// Returns the computed BSpline curve. Raises StdFail_NotDone if the interpolation fails.
+    pub fn curve(&self) -> &crate::ffi_types::Handle_Geom2d_BSplineCurve {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKGeomAlgo::Geom2dAPI_Interpolate_curve(
                 self as *const Self,
@@ -550,7 +561,7 @@ impl Interpolate {
         }
     }
 
-    /// **Source:** `Geom2dAPI_Interpolate.hxx`:107 - `Geom2dAPI_Interpolate::IsDone()`
+    /// **Source:** `Geom2dAPI_Interpolate.hxx`:106 - `Geom2dAPI_Interpolate::IsDone()`
     /// Returns true if the constrained BSpline curve is successfully constructed.
     /// Note: in this case, the result is given by the function Curve.
     pub fn is_done(&self) -> bool {
@@ -565,8 +576,8 @@ impl Interpolate {
 // ========================
 
 /// **Source:** `Geom2dAPI_PointsToBSpline.hxx`:40 - `Geom2dAPI_PointsToBSpline`
-/// This  class  is  used  to  approximate a  BsplineCurve
-/// passing  through an  array  of points,  with  a  given
+/// This class is used to approximate a BsplineCurve
+/// passing through an array of points, with a given
 /// Continuity.
 /// Describes functions for building a 2D BSpline
 /// curve which approximates a set of points.
@@ -597,47 +608,47 @@ impl PointsToBSpline {
     }
 
     /// **Source:** `Geom2dAPI_PointsToBSpline.hxx`:56 - `Geom2dAPI_PointsToBSpline::Geom2dAPI_PointsToBSpline()`
-    /// Approximate  a BSpline  Curve passing  through  an
-    /// array of  Point.  The resulting BSpline will  have
+    /// Approximate a BSpline Curve passing through an
+    /// array of Point. The resulting BSpline will have
     /// the following properties:
     /// 1- his degree will be in the range [Degmin,Degmax]
-    /// 2- his  continuity will be  at  least <Continuity>
+    /// 2- his continuity will be at least <Continuity>
     /// 3- the distance from the point <Points> to the
     /// BSpline will be lower to Tol2D
-    pub fn new_array1ofpnt2d_int2_shape_real(
-        Points: &crate::ffi_types::TColgp_Array1OfPnt2d,
+    pub fn new_arr1_pnt2d_int2_shape_real(
+        Points: &crate::ffi_types::NCollection_Array1_gp_Pnt2d,
         DegMin: i32,
         DegMax: i32,
         Continuity: crate::geom_abs::Shape,
         Tol2D: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomAlgo::Geom2dAPI_PointsToBSpline_ctor_array1ofpnt2d_int2_shape_real(Points, DegMin, DegMax, Continuity.into(), Tol2D)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomAlgo::Geom2dAPI_PointsToBSpline_ctor_arr1_pnt2d_int2_shape_real(Points, DegMin, DegMax, Continuity.into(), Tol2D)))
         }
     }
 
     /// **Source:** `Geom2dAPI_PointsToBSpline.hxx`:81 - `Geom2dAPI_PointsToBSpline::Geom2dAPI_PointsToBSpline()`
-    /// Approximate  a BSpline  Curve passing  through  an
-    /// array of  Point.  Of coordinates :
+    /// Approximate a BSpline Curve passing through an
+    /// array of Point. Of coordinates :
     ///
     /// X = X0 + DX * (i-YValues.Lower())
     /// Y = YValues(i)
     ///
     /// With i in the range YValues.Lower(), YValues.Upper()
     ///
-    /// The BSpline will be parametrized  from t = X0 to
+    /// The BSpline will be parametrized from t = X0 to
     /// X0 + DX * (YValues.Upper() - YValues.Lower())
     ///
     /// And will satisfy X(t) = t
     ///
-    /// The resulting BSpline will  have
+    /// The resulting BSpline will have
     /// the following properties:
     /// 1- his degree will be in the range [Degmin,Degmax]
-    /// 2- his  continuity will be  at  least <Continuity>
+    /// 2- his continuity will be at least <Continuity>
     /// 3- the distance from the point <Points> to the
     /// BSpline will be lower to Tol2D
-    pub fn new_array1ofreal_real2_int2_shape_real(
-        YValues: &crate::ffi_types::TColStd_Array1OfReal,
+    pub fn new_arr1_double_real2_int2_shape_real(
+        YValues: &crate::ffi_types::NCollection_Array1_double,
         X0: f64,
         DX: f64,
         DegMin: i32,
@@ -646,20 +657,20 @@ impl PointsToBSpline {
         Tol2D: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomAlgo::Geom2dAPI_PointsToBSpline_ctor_array1ofreal_real2_int2_shape_real(YValues, X0, DX, DegMin, DegMax, Continuity.into(), Tol2D)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomAlgo::Geom2dAPI_PointsToBSpline_ctor_arr1_double_real2_int2_shape_real(YValues, X0, DX, DegMin, DegMax, Continuity.into(), Tol2D)))
         }
     }
 
     /// **Source:** `Geom2dAPI_PointsToBSpline.hxx`:96 - `Geom2dAPI_PointsToBSpline::Geom2dAPI_PointsToBSpline()`
-    /// Approximate  a BSpline  Curve passing  through  an
-    /// array of  Point.  The resulting BSpline will  have
+    /// Approximate a BSpline Curve passing through an
+    /// array of Point. The resulting BSpline will have
     /// the following properties:
     /// 1- his degree will be in the range [Degmin,Degmax]
-    /// 2- his  continuity will be  at  least <Continuity>
+    /// 2- his continuity will be at least <Continuity>
     /// 3- the distance from the point <Points> to the
     /// BSpline will be lower to Tol2D
-    pub fn new_array1ofpnt2d_parametrizationtype_int2_shape_real(
-        Points: &crate::ffi_types::TColgp_Array1OfPnt2d,
+    pub fn new_arr1_pnt2d_parametrizationtype_int2_shape_real(
+        Points: &crate::ffi_types::NCollection_Array1_gp_Pnt2d,
         ParType: crate::approx::ParametrizationType,
         DegMin: i32,
         DegMax: i32,
@@ -667,40 +678,40 @@ impl PointsToBSpline {
         Tol2D: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomAlgo::Geom2dAPI_PointsToBSpline_ctor_array1ofpnt2d_parametrizationtype_int2_shape_real(Points, ParType.into(), DegMin, DegMax, Continuity.into(), Tol2D)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomAlgo::Geom2dAPI_PointsToBSpline_ctor_arr1_pnt2d_parametrizationtype_int2_shape_real(Points, ParType.into(), DegMin, DegMax, Continuity.into(), Tol2D)))
         }
     }
 
     /// **Source:** `Geom2dAPI_PointsToBSpline.hxx`:112 - `Geom2dAPI_PointsToBSpline::Geom2dAPI_PointsToBSpline()`
-    /// Approximate  a  BSpline  Curve  passing through an
-    /// array of Point,  which parameters are given by the
+    /// Approximate a BSpline Curve passing through an
+    /// array of Point, which parameters are given by the
     /// array <Parameters>.
-    /// The resulting  BSpline   will have the   following
+    /// The resulting BSpline will have the following
     /// properties:
     /// 1- his degree will be in the range [Degmin,Degmax]
-    /// 2- his  continuity will be  at  least <Continuity>
+    /// 2- his continuity will be at least <Continuity>
     /// 3- the distance from the point <Points> to the
     /// BSpline will be lower to Tol2D
-    pub fn new_array1ofpnt2d_array1ofreal_int2_shape_real(
-        Points: &crate::ffi_types::TColgp_Array1OfPnt2d,
-        Parameters: &crate::ffi_types::TColStd_Array1OfReal,
+    pub fn new_arr1_pnt2d_arr1_double_int2_shape_real(
+        Points: &crate::ffi_types::NCollection_Array1_gp_Pnt2d,
+        Parameters: &crate::ffi_types::NCollection_Array1_double,
         DegMin: i32,
         DegMax: i32,
         Continuity: crate::geom_abs::Shape,
         Tol2D: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomAlgo::Geom2dAPI_PointsToBSpline_ctor_array1ofpnt2d_array1ofreal_int2_shape_real(Points, Parameters, DegMin, DegMax, Continuity.into(), Tol2D)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomAlgo::Geom2dAPI_PointsToBSpline_ctor_arr1_pnt2d_arr1_double_int2_shape_real(Points, Parameters, DegMin, DegMax, Continuity.into(), Tol2D)))
         }
     }
 
     /// **Source:** `Geom2dAPI_PointsToBSpline.hxx`:123 - `Geom2dAPI_PointsToBSpline::Geom2dAPI_PointsToBSpline()`
-    /// Approximate a BSpline Curve  passing through an
+    /// Approximate a BSpline Curve passing through an
     /// array of Point using variational smoothing algorithm,
     /// which tries to minimize additional criterium:
     /// Weight1*CurveLength + Weight2*Curvature + Weight3*Torsion
-    pub fn new_array1ofpnt2d_real3_int_shape_real(
-        Points: &crate::ffi_types::TColgp_Array1OfPnt2d,
+    pub fn new_arr1_pnt2d_real3_int_shape_real(
+        Points: &crate::ffi_types::NCollection_Array1_gp_Pnt2d,
         Weight1: f64,
         Weight2: f64,
         Weight3: f64,
@@ -709,164 +720,171 @@ impl PointsToBSpline {
         Tol3D: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomAlgo::Geom2dAPI_PointsToBSpline_ctor_array1ofpnt2d_real3_int_shape_real(Points, Weight1, Weight2, Weight3, DegMax, Continuity.into(), Tol3D)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomAlgo::Geom2dAPI_PointsToBSpline_ctor_arr1_pnt2d_real3_int_shape_real(Points, Weight1, Weight2, Weight3, DegMax, Continuity.into(), Tol3D)))
         }
     }
 
     /// **Source:** `Geom2dAPI_PointsToBSpline.hxx`:56 - `Geom2dAPI_PointsToBSpline::Geom2dAPI_PointsToBSpline()`
-    /// Approximate  a BSpline  Curve passing  through  an
-    /// array of  Point.  The resulting BSpline will  have
+    /// Approximate a BSpline Curve passing through an
+    /// array of Point. The resulting BSpline will have
     /// the following properties:
     /// 1- his degree will be in the range [Degmin,Degmax]
-    /// 2- his  continuity will be  at  least <Continuity>
+    /// 2- his continuity will be at least <Continuity>
     /// 3- the distance from the point <Points> to the
     /// BSpline will be lower to Tol2D
-    pub fn new_array1ofpnt2d_int2_shape(
-        Points: &crate::ffi_types::TColgp_Array1OfPnt2d,
+    pub fn new_arr1_pnt2d_int2_shape(
+        Points: &crate::ffi_types::NCollection_Array1_gp_Pnt2d,
         DegMin: i32,
         DegMax: i32,
         Continuity: crate::geom_abs::Shape,
     ) -> crate::OwnedPtr<Self> {
-        Self::new_array1ofpnt2d_int2_shape_real(Points, DegMin, DegMax, Continuity, 1.0e-6)
+        Self::new_arr1_pnt2d_int2_shape_real(Points, DegMin, DegMax, Continuity, 1.0e-6)
     }
 
     /// **Source:** `Geom2dAPI_PointsToBSpline.hxx`:81 - `Geom2dAPI_PointsToBSpline::Geom2dAPI_PointsToBSpline()`
-    /// Approximate  a BSpline  Curve passing  through  an
-    /// array of  Point.  Of coordinates :
+    /// Approximate a BSpline Curve passing through an
+    /// array of Point. Of coordinates :
     ///
     /// X = X0 + DX * (i-YValues.Lower())
     /// Y = YValues(i)
     ///
     /// With i in the range YValues.Lower(), YValues.Upper()
     ///
-    /// The BSpline will be parametrized  from t = X0 to
+    /// The BSpline will be parametrized from t = X0 to
     /// X0 + DX * (YValues.Upper() - YValues.Lower())
     ///
     /// And will satisfy X(t) = t
     ///
-    /// The resulting BSpline will  have
+    /// The resulting BSpline will have
     /// the following properties:
     /// 1- his degree will be in the range [Degmin,Degmax]
-    /// 2- his  continuity will be  at  least <Continuity>
+    /// 2- his continuity will be at least <Continuity>
     /// 3- the distance from the point <Points> to the
     /// BSpline will be lower to Tol2D
-    pub fn new_array1ofreal_real2_int2_shape(
-        YValues: &crate::ffi_types::TColStd_Array1OfReal,
+    pub fn new_arr1_double_real2_int2_shape(
+        YValues: &crate::ffi_types::NCollection_Array1_double,
         X0: f64,
         DX: f64,
         DegMin: i32,
         DegMax: i32,
         Continuity: crate::geom_abs::Shape,
     ) -> crate::OwnedPtr<Self> {
-        Self::new_array1ofreal_real2_int2_shape_real(
+        Self::new_arr1_double_real2_int2_shape_real(
             YValues, X0, DX, DegMin, DegMax, Continuity, 1.0e-6,
         )
     }
 
     /// **Source:** `Geom2dAPI_PointsToBSpline.hxx`:96 - `Geom2dAPI_PointsToBSpline::Geom2dAPI_PointsToBSpline()`
-    /// Approximate  a BSpline  Curve passing  through  an
-    /// array of  Point.  The resulting BSpline will  have
+    /// Approximate a BSpline Curve passing through an
+    /// array of Point. The resulting BSpline will have
     /// the following properties:
     /// 1- his degree will be in the range [Degmin,Degmax]
-    /// 2- his  continuity will be  at  least <Continuity>
+    /// 2- his continuity will be at least <Continuity>
     /// 3- the distance from the point <Points> to the
     /// BSpline will be lower to Tol2D
-    pub fn new_array1ofpnt2d_parametrizationtype_int2_shape(
-        Points: &crate::ffi_types::TColgp_Array1OfPnt2d,
+    pub fn new_arr1_pnt2d_parametrizationtype_int2_shape(
+        Points: &crate::ffi_types::NCollection_Array1_gp_Pnt2d,
         ParType: crate::approx::ParametrizationType,
         DegMin: i32,
         DegMax: i32,
         Continuity: crate::geom_abs::Shape,
     ) -> crate::OwnedPtr<Self> {
-        Self::new_array1ofpnt2d_parametrizationtype_int2_shape_real(
+        Self::new_arr1_pnt2d_parametrizationtype_int2_shape_real(
             Points, ParType, DegMin, DegMax, Continuity, 1.0e-3,
         )
     }
 
     /// **Source:** `Geom2dAPI_PointsToBSpline.hxx`:112 - `Geom2dAPI_PointsToBSpline::Geom2dAPI_PointsToBSpline()`
-    /// Approximate  a  BSpline  Curve  passing through an
-    /// array of Point,  which parameters are given by the
+    /// Approximate a BSpline Curve passing through an
+    /// array of Point, which parameters are given by the
     /// array <Parameters>.
-    /// The resulting  BSpline   will have the   following
+    /// The resulting BSpline will have the following
     /// properties:
     /// 1- his degree will be in the range [Degmin,Degmax]
-    /// 2- his  continuity will be  at  least <Continuity>
+    /// 2- his continuity will be at least <Continuity>
     /// 3- the distance from the point <Points> to the
     /// BSpline will be lower to Tol2D
-    pub fn new_array1ofpnt2d_array1ofreal_int2_shape(
-        Points: &crate::ffi_types::TColgp_Array1OfPnt2d,
-        Parameters: &crate::ffi_types::TColStd_Array1OfReal,
+    pub fn new_arr1_pnt2d_arr1_double_int2_shape(
+        Points: &crate::ffi_types::NCollection_Array1_gp_Pnt2d,
+        Parameters: &crate::ffi_types::NCollection_Array1_double,
         DegMin: i32,
         DegMax: i32,
         Continuity: crate::geom_abs::Shape,
     ) -> crate::OwnedPtr<Self> {
-        Self::new_array1ofpnt2d_array1ofreal_int2_shape_real(
+        Self::new_arr1_pnt2d_arr1_double_int2_shape_real(
             Points, Parameters, DegMin, DegMax, Continuity, 1.0e-3,
         )
     }
 
     /// **Source:** `Geom2dAPI_PointsToBSpline.hxx`:123 - `Geom2dAPI_PointsToBSpline::Geom2dAPI_PointsToBSpline()`
-    /// Approximate a BSpline Curve  passing through an
+    /// Approximate a BSpline Curve passing through an
     /// array of Point using variational smoothing algorithm,
     /// which tries to minimize additional criterium:
     /// Weight1*CurveLength + Weight2*Curvature + Weight3*Torsion
-    pub fn new_array1ofpnt2d_real3_int_shape(
-        Points: &crate::ffi_types::TColgp_Array1OfPnt2d,
+    pub fn new_arr1_pnt2d_real3_int_shape(
+        Points: &crate::ffi_types::NCollection_Array1_gp_Pnt2d,
         Weight1: f64,
         Weight2: f64,
         Weight3: f64,
         DegMax: i32,
         Continuity: crate::geom_abs::Shape,
     ) -> crate::OwnedPtr<Self> {
-        Self::new_array1ofpnt2d_real3_int_shape_real(
+        Self::new_arr1_pnt2d_real3_int_shape_real(
             Points, Weight1, Weight2, Weight3, DegMax, Continuity, 1.0e-3,
         )
     }
 
     /// **Source:** `Geom2dAPI_PointsToBSpline.hxx`:138 - `Geom2dAPI_PointsToBSpline::Init()`
-    /// Approximate  a BSpline  Curve passing  through  an
-    /// array of  Point.  The resulting BSpline will  have
+    /// Approximate a BSpline Curve passing through an
+    /// array of Point. The resulting BSpline will have
     /// the following properties:
     /// 1- his degree will be in the range [Degmin,Degmax]
-    /// 2- his  continuity will be  at  least <Continuity>
+    /// 2- his continuity will be at least <Continuity>
     /// 3- the distance from the point <Points> to the
     /// BSpline will be lower to Tol2D
-    pub fn init_array1ofpnt2d_int2_shape_real(
+    pub fn init_arr1_pnt2d_int2_shape_real(
         &mut self,
-        Points: &crate::ffi_types::TColgp_Array1OfPnt2d,
+        Points: &crate::ffi_types::NCollection_Array1_gp_Pnt2d,
         DegMin: i32,
         DegMax: i32,
         Continuity: crate::geom_abs::Shape,
         Tol2D: f64,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi_extern_TKGeomAlgo::Geom2dAPI_PointsToBSpline_init_array1ofpnt2d_int2_shape_real(self as *mut Self, Points, DegMin, DegMax, Continuity.into(), Tol2D)
+            crate::ffi_extern_TKGeomAlgo::Geom2dAPI_PointsToBSpline_init_arr1_pnt2d_int2_shape_real(
+                self as *mut Self,
+                Points,
+                DegMin,
+                DegMax,
+                Continuity.into(),
+                Tol2D,
+            )
         })
     }
 
     /// **Source:** `Geom2dAPI_PointsToBSpline.hxx`:163 - `Geom2dAPI_PointsToBSpline::Init()`
-    /// Approximate  a BSpline  Curve passing  through  an
-    /// array of  Point.  Of coordinates :
+    /// Approximate a BSpline Curve passing through an
+    /// array of Point. Of coordinates :
     ///
     /// X = X0 + DX * (i-YValues.Lower())
     /// Y = YValues(i)
     ///
     /// With i in the range YValues.Lower(), YValues.Upper()
     ///
-    /// The BSpline will be parametrized  from t = X0 to
+    /// The BSpline will be parametrized from t = X0 to
     /// X0 + DX * (YValues.Upper() - YValues.Lower())
     ///
     /// And will satisfy X(t) = t
     ///
-    /// The resulting BSpline will  have
+    /// The resulting BSpline will have
     /// the following properties:
     /// 1- his degree will be in the range [Degmin,Degmax]
-    /// 2- his  continuity will be  at  least <Continuity>
+    /// 2- his continuity will be at least <Continuity>
     /// 3- the distance from the point <Points> to the
     /// BSpline will be lower to Tol2D
-    pub fn init_array1ofreal_real2_int2_shape_real(
+    pub fn init_arr1_double_real2_int2_shape_real(
         &mut self,
-        YValues: &crate::ffi_types::TColStd_Array1OfReal,
+        YValues: &crate::ffi_types::NCollection_Array1_double,
         X0: f64,
         DX: f64,
         DegMin: i32,
@@ -875,21 +893,21 @@ impl PointsToBSpline {
         Tol2D: f64,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi_extern_TKGeomAlgo::Geom2dAPI_PointsToBSpline_init_array1ofreal_real2_int2_shape_real(self as *mut Self, YValues, X0, DX, DegMin, DegMax, Continuity.into(), Tol2D)
+            crate::ffi_extern_TKGeomAlgo::Geom2dAPI_PointsToBSpline_init_arr1_double_real2_int2_shape_real(self as *mut Self, YValues, X0, DX, DegMin, DegMax, Continuity.into(), Tol2D)
         })
     }
 
     /// **Source:** `Geom2dAPI_PointsToBSpline.hxx`:178 - `Geom2dAPI_PointsToBSpline::Init()`
-    /// Approximate  a BSpline  Curve passing  through  an
-    /// array of  Point.  The resulting BSpline will  have
+    /// Approximate a BSpline Curve passing through an
+    /// array of Point. The resulting BSpline will have
     /// the following properties:
     /// 1- his degree will be in the range [Degmin,Degmax]
-    /// 2- his  continuity will be  at  least <Continuity>
+    /// 2- his continuity will be at least <Continuity>
     /// 3- the distance from the point <Points> to the
     /// BSpline will be lower to Tol2D
-    pub fn init_array1ofpnt2d_parametrizationtype_int2_shape_real(
+    pub fn init_arr1_pnt2d_parametrizationtype_int2_shape_real(
         &mut self,
-        Points: &crate::ffi_types::TColgp_Array1OfPnt2d,
+        Points: &crate::ffi_types::NCollection_Array1_gp_Pnt2d,
         ParType: crate::approx::ParametrizationType,
         DegMin: i32,
         DegMax: i32,
@@ -897,42 +915,42 @@ impl PointsToBSpline {
         Tol2D: f64,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi_extern_TKGeomAlgo::Geom2dAPI_PointsToBSpline_init_array1ofpnt2d_parametrizationtype_int2_shape_real(self as *mut Self, Points, ParType.into(), DegMin, DegMax, Continuity.into(), Tol2D)
+            crate::ffi_extern_TKGeomAlgo::Geom2dAPI_PointsToBSpline_init_arr1_pnt2d_parametrizationtype_int2_shape_real(self as *mut Self, Points, ParType.into(), DegMin, DegMax, Continuity.into(), Tol2D)
         })
     }
 
     /// **Source:** `Geom2dAPI_PointsToBSpline.hxx`:194 - `Geom2dAPI_PointsToBSpline::Init()`
-    /// Approximate  a  BSpline  Curve  passing through an
-    /// array of Point,  which parameters are given by the
+    /// Approximate a BSpline Curve passing through an
+    /// array of Point, which parameters are given by the
     /// array <Parameters>.
-    /// The resulting  BSpline   will have the   following
+    /// The resulting BSpline will have the following
     /// properties:
     /// 1- his degree will be in the range [Degmin,Degmax]
-    /// 2- his  continuity will be  at  least <Continuity>
+    /// 2- his continuity will be at least <Continuity>
     /// 3- the distance from the point <Points> to the
     /// BSpline will be lower to Tol2D
-    pub fn init_array1ofpnt2d_array1ofreal_int2_shape_real(
+    pub fn init_arr1_pnt2d_arr1_double_int2_shape_real(
         &mut self,
-        Points: &crate::ffi_types::TColgp_Array1OfPnt2d,
-        Parameters: &crate::ffi_types::TColStd_Array1OfReal,
+        Points: &crate::ffi_types::NCollection_Array1_gp_Pnt2d,
+        Parameters: &crate::ffi_types::NCollection_Array1_double,
         DegMin: i32,
         DegMax: i32,
         Continuity: crate::geom_abs::Shape,
         Tol2D: f64,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi_extern_TKGeomAlgo::Geom2dAPI_PointsToBSpline_init_array1ofpnt2d_array1ofreal_int2_shape_real(self as *mut Self, Points, Parameters, DegMin, DegMax, Continuity.into(), Tol2D)
+            crate::ffi_extern_TKGeomAlgo::Geom2dAPI_PointsToBSpline_init_arr1_pnt2d_arr1_double_int2_shape_real(self as *mut Self, Points, Parameters, DegMin, DegMax, Continuity.into(), Tol2D)
         })
     }
 
     /// **Source:** `Geom2dAPI_PointsToBSpline.hxx`:205 - `Geom2dAPI_PointsToBSpline::Init()`
-    /// Approximate a BSpline Curve  passing through an
+    /// Approximate a BSpline Curve passing through an
     /// array of Point using variational smoothing algorithm,
     /// which tries to minimize additional criterium:
     /// Weight1*CurveLength + Weight2*Curvature + Weight3*Torsion
-    pub fn init_array1ofpnt2d_real3_int_shape_real(
+    pub fn init_arr1_pnt2d_real3_int_shape_real(
         &mut self,
-        Points: &crate::ffi_types::TColgp_Array1OfPnt2d,
+        Points: &crate::ffi_types::NCollection_Array1_gp_Pnt2d,
         Weight1: f64,
         Weight2: f64,
         Weight3: f64,
@@ -941,13 +959,13 @@ impl PointsToBSpline {
         Tol2D: f64,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi_extern_TKGeomAlgo::Geom2dAPI_PointsToBSpline_init_array1ofpnt2d_real3_int_shape_real(self as *mut Self, Points, Weight1, Weight2, Weight3, DegMax, Continuity.into(), Tol2D)
+            crate::ffi_extern_TKGeomAlgo::Geom2dAPI_PointsToBSpline_init_arr1_pnt2d_real3_int_shape_real(self as *mut Self, Points, Weight1, Weight2, Weight3, DegMax, Continuity.into(), Tol2D)
         })
     }
 
     /// **Source:** `Geom2dAPI_PointsToBSpline.hxx`:214 - `Geom2dAPI_PointsToBSpline::Curve()`
     /// Returns the approximate BSpline Curve
-    pub fn curve(&self) -> &crate::ffi_types::HandleGeom2dBSplineCurve {
+    pub fn curve(&self) -> &crate::ffi_types::Handle_Geom2d_BSplineCurve {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKGeomAlgo::Geom2dAPI_PointsToBSpline_curve(
                 self as *const Self,
@@ -993,11 +1011,11 @@ impl ProjectPointOnCurve {
     }
 
     /// **Source:** `Geom2dAPI_ProjectPointOnCurve.hxx`:43 - `Geom2dAPI_ProjectPointOnCurve::Geom2dAPI_ProjectPointOnCurve()`
-    /// Create the projection  of a  point  <P> on a curve
+    /// Create the projection of a point <P> on a curve
     /// <Curve>
     pub fn new_pnt2d_handlegeom2dcurve(
         P: &crate::gp::Pnt2d,
-        Curve: &crate::ffi_types::HandleGeom2dCurve,
+        Curve: &crate::ffi_types::Handle_Geom2d_Curve,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomAlgo::Geom2dAPI_ProjectPointOnCurve_ctor_pnt2d_handlegeom2dcurve(P, Curve)))
@@ -1005,14 +1023,14 @@ impl ProjectPointOnCurve {
     }
 
     /// **Source:** `Geom2dAPI_ProjectPointOnCurve.hxx`:51 - `Geom2dAPI_ProjectPointOnCurve::Geom2dAPI_ProjectPointOnCurve()`
-    /// Create  the projection  of a point <P>  on a curve
-    /// <Curve> limited by the two   points of parameter Umin and Usup.
+    /// Create the projection of a point <P> on a curve
+    /// <Curve> limited by the two points of parameter Umin and Usup.
     /// Warning
     /// Use the function NbPoints to obtain the number of solutions. If
     /// projection fails, NbPoints returns 0.
     pub fn new_pnt2d_handlegeom2dcurve_real2(
         P: &crate::gp::Pnt2d,
-        Curve: &crate::ffi_types::HandleGeom2dCurve,
+        Curve: &crate::ffi_types::Handle_Geom2d_Curve,
         Umin: f64,
         Usup: f64,
     ) -> crate::OwnedPtr<Self> {
@@ -1023,11 +1041,11 @@ impl ProjectPointOnCurve {
 
     /// **Source:** `Geom2dAPI_ProjectPointOnCurve.hxx`:58 - `Geom2dAPI_ProjectPointOnCurve::Init()`
     /// Initializes this algorithm with the given arguments, and
-    /// computes the orthogonal  projections  of a  point  <P> on a curve <Curve>
+    /// computes the orthogonal projections of a point <P> on a curve <Curve>
     pub fn init_pnt2d_handlegeom2dcurve(
         &mut self,
         P: &crate::gp::Pnt2d,
-        Curve: &crate::ffi_types::HandleGeom2dCurve,
+        Curve: &crate::ffi_types::Handle_Geom2d_Curve,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::Geom2dAPI_ProjectPointOnCurve_init_pnt2d_handlegeom2dcurve(
@@ -1045,7 +1063,7 @@ impl ProjectPointOnCurve {
     pub fn init_pnt2d_handlegeom2dcurve_real2(
         &mut self,
         P: &crate::gp::Pnt2d,
-        Curve: &crate::ffi_types::HandleGeom2dCurve,
+        Curve: &crate::ffi_types::Handle_Geom2d_Curve,
         Umin: f64,
         Usup: f64,
     ) {
@@ -1173,7 +1191,7 @@ impl ProjectPointOnCurve {
 
     /// **Source:** `Geom2dAPI_ProjectPointOnCurve.hxx`:124 - `Geom2dAPI_ProjectPointOnCurve::Extrema()`
     /// return the algorithmic object from Extrema
-    pub fn extrema(&self) -> &crate::extrema::ExtPC2d {
+    pub fn extrema(&self) -> &crate::ffi_types::Extrema_ExtPC2d {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKGeomAlgo::Geom2dAPI_ProjectPointOnCurve_extrema(

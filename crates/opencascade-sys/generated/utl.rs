@@ -17,7 +17,7 @@ pub fn xgetenv(aCString: &str) -> crate::OwnedPtr<crate::t_collection::ExtendedS
 }
 /// **Source:** `UTL.hxx`:44 - `UTL::OpenFile`
 pub fn open_file(
-    aFile: &crate::ffi_types::HandleStorageBaseDriver,
+    aFile: &crate::ffi_types::Handle_Storage_BaseDriver,
     aName: &crate::t_collection::ExtendedString,
     aMode: crate::storage::OpenMode,
 ) -> crate::storage::Error {
@@ -28,7 +28,7 @@ pub fn open_file(
 }
 /// **Source:** `UTL.hxx`:48 - `UTL::AddToUserInfo`
 pub fn add_to_user_info(
-    aData: &crate::ffi_types::HandleStorageData,
+    aData: &crate::ffi_types::Handle_Storage_Data,
     anInfo: &crate::t_collection::ExtendedString,
 ) {
     crate::check_void_result(unsafe {
@@ -116,7 +116,7 @@ pub fn guid(
 }
 /// **Source:** `UTL.hxx`:74 - `UTL::Find`
 pub fn find(
-    aResourceManager: &crate::ffi_types::HandleResourceManager,
+    aResourceManager: &crate::ffi_types::Handle_Resource_Manager,
     aResourceName: &crate::t_collection::ExtendedString,
 ) -> bool {
     crate::check_result(unsafe {
@@ -125,7 +125,7 @@ pub fn find(
 }
 /// **Source:** `UTL.hxx`:77 - `UTL::Value`
 pub fn value_handleresourcemanager_extendedstring(
-    aResourceManager: &crate::ffi_types::HandleResourceManager,
+    aResourceManager: &crate::ffi_types::Handle_Resource_Manager,
     aResourceName: &crate::t_collection::ExtendedString,
 ) -> crate::OwnedPtr<crate::t_collection::ExtendedString> {
     unsafe {
@@ -141,7 +141,7 @@ pub fn value_handleresourcemanager_extendedstring(
 pub fn integer_value(anExtendedString: &crate::t_collection::ExtendedString) -> i32 {
     crate::check_result(unsafe { crate::ffi_extern_TKCDF::UTL_integer_value(anExtendedString) })
 }
-/// **Source:** `UTL.hxx`:84 - `UTL::CString`
+/// **Source:** `UTL.hxx`:83 - `UTL::CString`
 pub fn c_string(anExtendedString: &crate::t_collection::ExtendedString) -> std::string::String {
     unsafe {
         std::ffi::CStr::from_ptr(crate::check_result(crate::ffi_extern_TKCDF::UTL_c_string(
@@ -151,7 +151,7 @@ pub fn c_string(anExtendedString: &crate::t_collection::ExtendedString) -> std::
     .to_string_lossy()
     .into_owned()
 }
-/// **Source:** `UTL.hxx`:87 - `UTL::IsReadOnly`
+/// **Source:** `UTL.hxx`:85 - `UTL::IsReadOnly`
 pub fn is_read_only(aFileName: &crate::t_collection::ExtendedString) -> bool {
     crate::check_result(unsafe { crate::ffi_extern_TKCDF::UTL_is_read_only(aFileName) })
 }

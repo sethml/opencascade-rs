@@ -10,7 +10,7 @@
 // From BRepIntCurveSurface_Inter.hxx
 // ========================
 
-/// **Source:** `BRepIntCurveSurface_Inter.hxx`:54 - `BRepIntCurveSurface_Inter`
+/// **Source:** `BRepIntCurveSurface_Inter.hxx`:57 - `BRepIntCurveSurface_Inter`
 /// Computes the intersection between a face and a
 /// curve. To intersect one curve with shape method
 /// Init(Shape, curve, tTol) should be used. To
@@ -26,7 +26,7 @@
 /// for( i =1; i <= nbCurves;i++)
 /// {
 /// Inter.Init(curve);
-/// for(  ;Inter.More(); Inter.Next())
+/// for( ;Inter.More(); Inter.Next())
 /// {
 /// .......
 /// }
@@ -42,7 +42,7 @@ unsafe impl crate::CppDeletable for Inter {
 }
 
 impl Inter {
-    /// **Source:** `BRepIntCurveSurface_Inter.hxx`:60 - `BRepIntCurveSurface_Inter::BRepIntCurveSurface_Inter()`
+    /// **Source:** `BRepIntCurveSurface_Inter.hxx`:63 - `BRepIntCurveSurface_Inter::BRepIntCurveSurface_Inter()`
     /// Empty constructor;
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
@@ -52,7 +52,7 @@ impl Inter {
         }
     }
 
-    /// **Source:** `BRepIntCurveSurface_Inter.hxx`:64 - `BRepIntCurveSurface_Inter::Init()`
+    /// **Source:** `BRepIntCurveSurface_Inter.hxx`:67 - `BRepIntCurveSurface_Inter::Init()`
     /// Load the Shape, the curve and initialize the
     /// tolerance used for the classification.
     pub fn init_shape_curve_real(
@@ -71,7 +71,7 @@ impl Inter {
         })
     }
 
-    /// **Source:** `BRepIntCurveSurface_Inter.hxx`:70 - `BRepIntCurveSurface_Inter::Init()`
+    /// **Source:** `BRepIntCurveSurface_Inter.hxx`:73 - `BRepIntCurveSurface_Inter::Init()`
     /// Load the Shape, the curve and initialize the
     /// tolerance used for the classification.
     pub fn init_shape_lin_real(
@@ -90,7 +90,7 @@ impl Inter {
         })
     }
 
-    /// **Source:** `BRepIntCurveSurface_Inter.hxx`:76 - `BRepIntCurveSurface_Inter::Load()`
+    /// **Source:** `BRepIntCurveSurface_Inter.hxx`:79 - `BRepIntCurveSurface_Inter::Load()`
     /// Load the Shape, and initialize the
     /// tolerance used for the classification.
     pub fn load(&mut self, theShape: &crate::topo_ds::Shape, theTol: f64) {
@@ -103,7 +103,7 @@ impl Inter {
         })
     }
 
-    /// **Source:** `BRepIntCurveSurface_Inter.hxx`:79 - `BRepIntCurveSurface_Inter::Init()`
+    /// **Source:** `BRepIntCurveSurface_Inter.hxx`:82 - `BRepIntCurveSurface_Inter::Init()`
     /// Method to find intersections of specified curve with loaded shape.
     pub fn init_curve(&mut self, theCurve: &crate::geom_adaptor::Curve) {
         crate::check_void_result(unsafe {
@@ -114,7 +114,7 @@ impl Inter {
         })
     }
 
-    /// **Source:** `BRepIntCurveSurface_Inter.hxx`:82 - `BRepIntCurveSurface_Inter::More()`
+    /// **Source:** `BRepIntCurveSurface_Inter.hxx`:85 - `BRepIntCurveSurface_Inter::More()`
     /// returns True if there is a current face.
     pub fn more(&self) -> bool {
         crate::check_result(unsafe {
@@ -122,7 +122,7 @@ impl Inter {
         })
     }
 
-    /// **Source:** `BRepIntCurveSurface_Inter.hxx`:85 - `BRepIntCurveSurface_Inter::Next()`
+    /// **Source:** `BRepIntCurveSurface_Inter.hxx`:88 - `BRepIntCurveSurface_Inter::Next()`
     /// Sets the next intersection point to check.
     pub fn next(&mut self) {
         crate::check_void_result(unsafe {
@@ -130,7 +130,7 @@ impl Inter {
         })
     }
 
-    /// **Source:** `BRepIntCurveSurface_Inter.hxx`:88 - `BRepIntCurveSurface_Inter::Point()`
+    /// **Source:** `BRepIntCurveSurface_Inter.hxx`:91 - `BRepIntCurveSurface_Inter::Point()`
     /// returns the current Intersection point.
     pub fn point(&self) -> crate::OwnedPtr<crate::int_curve_surface::IntersectionPoint> {
         unsafe {
@@ -140,7 +140,7 @@ impl Inter {
         }
     }
 
-    /// **Source:** `BRepIntCurveSurface_Inter.hxx`:91 - `BRepIntCurveSurface_Inter::Pnt()`
+    /// **Source:** `BRepIntCurveSurface_Inter.hxx`:94 - `BRepIntCurveSurface_Inter::Pnt()`
     /// returns the current geometric Point
     pub fn pnt(&self) -> &crate::gp::Pnt {
         unsafe {
@@ -150,7 +150,7 @@ impl Inter {
         }
     }
 
-    /// **Source:** `BRepIntCurveSurface_Inter.hxx`:95 - `BRepIntCurveSurface_Inter::U()`
+    /// **Source:** `BRepIntCurveSurface_Inter.hxx`:98 - `BRepIntCurveSurface_Inter::U()`
     /// returns the U parameter of the current point
     /// on the current face.
     pub fn u(&self) -> f64 {
@@ -159,7 +159,7 @@ impl Inter {
         })
     }
 
-    /// **Source:** `BRepIntCurveSurface_Inter.hxx`:99 - `BRepIntCurveSurface_Inter::V()`
+    /// **Source:** `BRepIntCurveSurface_Inter.hxx`:102 - `BRepIntCurveSurface_Inter::V()`
     /// returns the V parameter of the current point
     /// on the current face.
     pub fn v(&self) -> f64 {
@@ -168,7 +168,7 @@ impl Inter {
         })
     }
 
-    /// **Source:** `BRepIntCurveSurface_Inter.hxx`:103 - `BRepIntCurveSurface_Inter::W()`
+    /// **Source:** `BRepIntCurveSurface_Inter.hxx`:106 - `BRepIntCurveSurface_Inter::W()`
     /// returns the parameter of the current point
     /// on the curve.
     pub fn w(&self) -> f64 {
@@ -177,7 +177,7 @@ impl Inter {
         })
     }
 
-    /// **Source:** `BRepIntCurveSurface_Inter.hxx`:106 - `BRepIntCurveSurface_Inter::State()`
+    /// **Source:** `BRepIntCurveSurface_Inter.hxx`:109 - `BRepIntCurveSurface_Inter::State()`
     /// returns the current state (IN or ON)
     pub fn state(&self) -> crate::top_abs::State {
         crate::top_abs::State::try_from(crate::check_result(unsafe {
@@ -186,7 +186,7 @@ impl Inter {
         .unwrap()
     }
 
-    /// **Source:** `BRepIntCurveSurface_Inter.hxx`:109 - `BRepIntCurveSurface_Inter::Transition()`
+    /// **Source:** `BRepIntCurveSurface_Inter.hxx`:112 - `BRepIntCurveSurface_Inter::Transition()`
     /// returns the transition of the line on the surface (IN or OUT or UNKNOWN)
     pub fn transition(&self) -> crate::int_curve_surface::TransitionOnCurve {
         crate::int_curve_surface::TransitionOnCurve::try_from(crate::check_result(unsafe {
@@ -195,7 +195,7 @@ impl Inter {
         .unwrap()
     }
 
-    /// **Source:** `BRepIntCurveSurface_Inter.hxx`:112 - `BRepIntCurveSurface_Inter::Face()`
+    /// **Source:** `BRepIntCurveSurface_Inter.hxx`:115 - `BRepIntCurveSurface_Inter::Face()`
     /// returns the current face.
     pub fn face(&self) -> &crate::topo_ds::Face {
         unsafe {

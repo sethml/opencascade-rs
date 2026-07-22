@@ -6,14 +6,11 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 
-// Handle type re-exports (targets of handle upcasts/downcasts)
-pub use crate::ffi_types::{HandleStandardFailure, HandleStandardTransient};
-
 // ========================
 // From GccAna_Circ2d2TanOn.hxx
 // ========================
 
-/// **Source:** `GccAna_Circ2d2TanOn.hxx`:46 - `GccAna_Circ2d2TanOn`
+/// **Source:** `GccAna_Circ2d2TanOn.hxx`:44 - `GccAna_Circ2d2TanOn`
 /// Describes functions for building a 2D circle
 /// -   tangential to 2 curves, or
 /// -   tangential to a curve and passing through a point, or
@@ -35,7 +32,7 @@ unsafe impl crate::CppDeletable for Circ2d2TanOn {
 }
 
 impl Circ2d2TanOn {
-    /// **Source:** `GccAna_Circ2d2TanOn.hxx`:54 - `GccAna_Circ2d2TanOn::GccAna_Circ2d2TanOn()`
+    /// **Source:** `GccAna_Circ2d2TanOn.hxx`:52 - `GccAna_Circ2d2TanOn::GccAna_Circ2d2TanOn()`
     /// This method implements the algorithms used to
     /// create 2d circles TANgent to two 2d circles and
     /// having the center ON a 2d line.
@@ -54,7 +51,7 @@ impl Circ2d2TanOn {
         }
     }
 
-    /// **Source:** `GccAna_Circ2d2TanOn.hxx`:62 - `GccAna_Circ2d2TanOn::GccAna_Circ2d2TanOn()`
+    /// **Source:** `GccAna_Circ2d2TanOn.hxx`:60 - `GccAna_Circ2d2TanOn::GccAna_Circ2d2TanOn()`
     /// This method implements the algorithms used to
     /// create 2d circles TANgent to a 2d circle and a 2d line
     /// having the center ON a 2d line.
@@ -69,7 +66,7 @@ impl Circ2d2TanOn {
         }
     }
 
-    /// **Source:** `GccAna_Circ2d2TanOn.hxx`:70 - `GccAna_Circ2d2TanOn::GccAna_Circ2d2TanOn()`
+    /// **Source:** `GccAna_Circ2d2TanOn.hxx`:68 - `GccAna_Circ2d2TanOn::GccAna_Circ2d2TanOn()`
     /// This method implements the algorithms used to
     /// create 2d circles TANgent to two 2d lines
     /// having the center ON a 2d line.
@@ -88,7 +85,7 @@ impl Circ2d2TanOn {
         }
     }
 
-    /// **Source:** `GccAna_Circ2d2TanOn.hxx`:78 - `GccAna_Circ2d2TanOn::GccAna_Circ2d2TanOn()`
+    /// **Source:** `GccAna_Circ2d2TanOn.hxx`:76 - `GccAna_Circ2d2TanOn::GccAna_Circ2d2TanOn()`
     /// This method implements the algorithms used to
     /// create 2d circles TANgent to a 2d circle and a point
     /// having the center ON a 2d line.
@@ -103,7 +100,7 @@ impl Circ2d2TanOn {
         }
     }
 
-    /// **Source:** `GccAna_Circ2d2TanOn.hxx`:86 - `GccAna_Circ2d2TanOn::GccAna_Circ2d2TanOn()`
+    /// **Source:** `GccAna_Circ2d2TanOn.hxx`:84 - `GccAna_Circ2d2TanOn::GccAna_Circ2d2TanOn()`
     /// This method implements the algorithms used to
     /// create 2d circles TANgent to a 2d line and a point
     /// having the center ON a 2d line.
@@ -118,7 +115,7 @@ impl Circ2d2TanOn {
         }
     }
 
-    /// **Source:** `GccAna_Circ2d2TanOn.hxx`:94 - `GccAna_Circ2d2TanOn::GccAna_Circ2d2TanOn()`
+    /// **Source:** `GccAna_Circ2d2TanOn.hxx`:92 - `GccAna_Circ2d2TanOn::GccAna_Circ2d2TanOn()`
     /// This method implements the algorithms used to
     /// create 2d circles TANgent to two points
     /// having the center ON a 2d line.
@@ -137,7 +134,7 @@ impl Circ2d2TanOn {
         }
     }
 
-    /// **Source:** `GccAna_Circ2d2TanOn.hxx`:102 - `GccAna_Circ2d2TanOn::GccAna_Circ2d2TanOn()`
+    /// **Source:** `GccAna_Circ2d2TanOn.hxx`:100 - `GccAna_Circ2d2TanOn::GccAna_Circ2d2TanOn()`
     /// This method implements the algorithms used to
     /// create 2d circles TANgent to two 2d circles and
     /// having the center ON a 2d circle.
@@ -156,7 +153,7 @@ impl Circ2d2TanOn {
         }
     }
 
-    /// **Source:** `GccAna_Circ2d2TanOn.hxx`:110 - `GccAna_Circ2d2TanOn::GccAna_Circ2d2TanOn()`
+    /// **Source:** `GccAna_Circ2d2TanOn.hxx`:108 - `GccAna_Circ2d2TanOn::GccAna_Circ2d2TanOn()`
     /// This method implements the algorithms used to
     /// create 2d circles TANgent to a circle and a line
     /// having the center ON a 2d circle.
@@ -171,7 +168,7 @@ impl Circ2d2TanOn {
         }
     }
 
-    /// **Source:** `GccAna_Circ2d2TanOn.hxx`:118 - `GccAna_Circ2d2TanOn::GccAna_Circ2d2TanOn()`
+    /// **Source:** `GccAna_Circ2d2TanOn.hxx`:116 - `GccAna_Circ2d2TanOn::GccAna_Circ2d2TanOn()`
     /// This method implements the algorithms used to
     /// create 2d circles TANgent to a circle and a point
     /// having the center ON a 2d circle.
@@ -186,7 +183,7 @@ impl Circ2d2TanOn {
         }
     }
 
-    /// **Source:** `GccAna_Circ2d2TanOn.hxx`:126 - `GccAna_Circ2d2TanOn::GccAna_Circ2d2TanOn()`
+    /// **Source:** `GccAna_Circ2d2TanOn.hxx`:124 - `GccAna_Circ2d2TanOn::GccAna_Circ2d2TanOn()`
     /// This method implements the algorithms used to
     /// create 2d circles TANgent to two 2d lines
     /// having the center ON a 2d circle.
@@ -205,7 +202,7 @@ impl Circ2d2TanOn {
         }
     }
 
-    /// **Source:** `GccAna_Circ2d2TanOn.hxx`:134 - `GccAna_Circ2d2TanOn::GccAna_Circ2d2TanOn()`
+    /// **Source:** `GccAna_Circ2d2TanOn.hxx`:132 - `GccAna_Circ2d2TanOn::GccAna_Circ2d2TanOn()`
     /// This method implements the algorithms used to
     /// create 2d circles TANgent to a line and a point
     /// having the center ON a 2d circle.
@@ -220,7 +217,7 @@ impl Circ2d2TanOn {
         }
     }
 
-    /// **Source:** `GccAna_Circ2d2TanOn.hxx`:142 - `GccAna_Circ2d2TanOn::GccAna_Circ2d2TanOn()`
+    /// **Source:** `GccAna_Circ2d2TanOn.hxx`:140 - `GccAna_Circ2d2TanOn::GccAna_Circ2d2TanOn()`
     /// This method implements the algorithms used to create
     /// 2d circles TANgent to two points having the center ON
     /// a 2d circle.
@@ -239,7 +236,7 @@ impl Circ2d2TanOn {
         }
     }
 
-    /// **Source:** `GccAna_Circ2d2TanOn.hxx`:151 - `GccAna_Circ2d2TanOn::IsDone()`
+    /// **Source:** `GccAna_Circ2d2TanOn.hxx`:149 - `GccAna_Circ2d2TanOn::IsDone()`
     /// Returns true if the construction algorithm does not fail
     /// (even if it finds no solution).
     /// Note: IsDone protects against a failure arising from a
@@ -250,7 +247,7 @@ impl Circ2d2TanOn {
         })
     }
 
-    /// **Source:** `GccAna_Circ2d2TanOn.hxx`:157 - `GccAna_Circ2d2TanOn::NbSolutions()`
+    /// **Source:** `GccAna_Circ2d2TanOn.hxx`:155 - `GccAna_Circ2d2TanOn::NbSolutions()`
     /// Returns the number of circles, representing solutions
     /// computed by this algorithm.
     /// Exceptions
@@ -261,7 +258,7 @@ impl Circ2d2TanOn {
         })
     }
 
-    /// **Source:** `GccAna_Circ2d2TanOn.hxx`:168 - `GccAna_Circ2d2TanOn::ThisSolution()`
+    /// **Source:** `GccAna_Circ2d2TanOn.hxx`:166 - `GccAna_Circ2d2TanOn::ThisSolution()`
     /// Returns the solution number Index and raises OutOfRange
     /// exception if Index is greater than the number of solutions.
     /// Be careful: the Index is only a way to get all the
@@ -282,7 +279,7 @@ impl Circ2d2TanOn {
         }
     }
 
-    /// **Source:** `GccAna_Circ2d2TanOn.hxx`:185 - `GccAna_Circ2d2TanOn::WhichQualifier()`
+    /// **Source:** `GccAna_Circ2d2TanOn.hxx`:183 - `GccAna_Circ2d2TanOn::WhichQualifier()`
     /// Returns the qualifiers Qualif1 and Qualif2 of the
     /// tangency arguments for the solution of index Index
     /// computed by this algorithm.
@@ -318,7 +315,7 @@ impl Circ2d2TanOn {
         *Qualif2 = crate::gcc_ent::Position::try_from(Qualif2_i32_).unwrap();
     }
 
-    /// **Source:** `GccAna_Circ2d2TanOn.hxx`:196 - `GccAna_Circ2d2TanOn::Tangency1()`
+    /// **Source:** `GccAna_Circ2d2TanOn.hxx`:194 - `GccAna_Circ2d2TanOn::Tangency1()`
     /// Returns the information about the tangency point between the
     /// result number Index and the first argument.
     /// ParSol is the intrinsic parameter of the point PntSol on
@@ -344,7 +341,7 @@ impl Circ2d2TanOn {
         })
     }
 
-    /// **Source:** `GccAna_Circ2d2TanOn.hxx`:208 - `GccAna_Circ2d2TanOn::Tangency2()`
+    /// **Source:** `GccAna_Circ2d2TanOn.hxx`:206 - `GccAna_Circ2d2TanOn::Tangency2()`
     /// Returns the information about the tangency point between the
     /// result number Index and the second argument.
     /// ParSol is the intrinsic parameter of the point PntSol on
@@ -370,7 +367,7 @@ impl Circ2d2TanOn {
         })
     }
 
-    /// **Source:** `GccAna_Circ2d2TanOn.hxx`:221 - `GccAna_Circ2d2TanOn::CenterOn3()`
+    /// **Source:** `GccAna_Circ2d2TanOn.hxx`:219 - `GccAna_Circ2d2TanOn::CenterOn3()`
     /// Returns the information about the center (on the curv) of
     /// the result number Index and the third argument.
     /// ParArg is the intrinsic parameter of the point PntArg on
@@ -390,7 +387,7 @@ impl Circ2d2TanOn {
         })
     }
 
-    /// **Source:** `GccAna_Circ2d2TanOn.hxx`:234 - `GccAna_Circ2d2TanOn::IsTheSame1()`
+    /// **Source:** `GccAna_Circ2d2TanOn.hxx`:230 - `GccAna_Circ2d2TanOn::IsTheSame1()`
     /// True if the solution and the first argument are the same
     /// (2 circles).
     /// If R1 is the radius of the first argument and Rsol the radius
@@ -409,7 +406,7 @@ impl Circ2d2TanOn {
         })
     }
 
-    /// **Source:** `GccAna_Circ2d2TanOn.hxx`:245 - `GccAna_Circ2d2TanOn::IsTheSame2()`
+    /// **Source:** `GccAna_Circ2d2TanOn.hxx`:241 - `GccAna_Circ2d2TanOn::IsTheSame2()`
     /// True if the solution and the second argument are the same
     /// (2 circles).
     /// If R2 is the radius of the second argument and Rsol the radius
@@ -433,7 +430,7 @@ impl Circ2d2TanOn {
 // From GccAna_Circ2d2TanRad.hxx
 // ========================
 
-/// **Source:** `GccAna_Circ2d2TanRad.hxx`:56 - `GccAna_Circ2d2TanRad`
+/// **Source:** `GccAna_Circ2d2TanRad.hxx`:54 - `GccAna_Circ2d2TanRad`
 /// This class implements the algorithms used to
 /// create 2d circles tangent to 2
 /// points/lines/circles and with a given radius.
@@ -466,7 +463,7 @@ unsafe impl crate::CppDeletable for Circ2d2TanRad {
 }
 
 impl Circ2d2TanRad {
-    /// **Source:** `GccAna_Circ2d2TanRad.hxx`:65 - `GccAna_Circ2d2TanRad::GccAna_Circ2d2TanRad()`
+    /// **Source:** `GccAna_Circ2d2TanRad.hxx`:63 - `GccAna_Circ2d2TanRad::GccAna_Circ2d2TanRad()`
     /// This method implements the algorithms used to
     /// create 2d circles TANgent to two 2d circle with a
     /// radius of Radius.
@@ -486,7 +483,7 @@ impl Circ2d2TanRad {
         }
     }
 
-    /// **Source:** `GccAna_Circ2d2TanRad.hxx`:74 - `GccAna_Circ2d2TanRad::GccAna_Circ2d2TanRad()`
+    /// **Source:** `GccAna_Circ2d2TanRad.hxx`:72 - `GccAna_Circ2d2TanRad::GccAna_Circ2d2TanRad()`
     /// This method implements the algorithms used to
     /// create 2d circles TANgent to a 2d circle and a 2d line
     /// with a radius of Radius.
@@ -502,7 +499,7 @@ impl Circ2d2TanRad {
         }
     }
 
-    /// **Source:** `GccAna_Circ2d2TanRad.hxx`:83 - `GccAna_Circ2d2TanRad::GccAna_Circ2d2TanRad()`
+    /// **Source:** `GccAna_Circ2d2TanRad.hxx`:81 - `GccAna_Circ2d2TanRad::GccAna_Circ2d2TanRad()`
     /// This method implements the algorithms used to
     /// create 2d circles TANgent to a 2d circle and a point
     /// with a radius of Radius.
@@ -522,7 +519,7 @@ impl Circ2d2TanRad {
         }
     }
 
-    /// **Source:** `GccAna_Circ2d2TanRad.hxx`:92 - `GccAna_Circ2d2TanRad::GccAna_Circ2d2TanRad()`
+    /// **Source:** `GccAna_Circ2d2TanRad.hxx`:90 - `GccAna_Circ2d2TanRad::GccAna_Circ2d2TanRad()`
     /// This method implements the algorithms used to
     /// create 2d circles TANgent to a 2d line and a point
     /// with a radius of Radius.
@@ -542,7 +539,7 @@ impl Circ2d2TanRad {
         }
     }
 
-    /// **Source:** `GccAna_Circ2d2TanRad.hxx`:101 - `GccAna_Circ2d2TanRad::GccAna_Circ2d2TanRad()`
+    /// **Source:** `GccAna_Circ2d2TanRad.hxx`:99 - `GccAna_Circ2d2TanRad::GccAna_Circ2d2TanRad()`
     /// This method implements the algorithms used to
     /// create 2d circles TANgent to two 2d lines
     /// with a radius of Radius.
@@ -562,7 +559,7 @@ impl Circ2d2TanRad {
         }
     }
 
-    /// **Source:** `GccAna_Circ2d2TanRad.hxx`:110 - `GccAna_Circ2d2TanRad::GccAna_Circ2d2TanRad()`
+    /// **Source:** `GccAna_Circ2d2TanRad.hxx`:108 - `GccAna_Circ2d2TanRad::GccAna_Circ2d2TanRad()`
     /// This method implements the algorithms used to
     /// create 2d circles passing through two points with a
     /// radius of Radius.
@@ -582,7 +579,7 @@ impl Circ2d2TanRad {
         }
     }
 
-    /// **Source:** `GccAna_Circ2d2TanRad.hxx`:118 - `GccAna_Circ2d2TanRad::IsDone()`
+    /// **Source:** `GccAna_Circ2d2TanRad.hxx`:116 - `GccAna_Circ2d2TanRad::IsDone()`
     /// This method returns True if the algorithm succeeded.
     /// Note: IsDone protects against a failure arising from a
     /// more internal intersection algorithm, which has reached its numeric limits.
@@ -592,7 +589,7 @@ impl Circ2d2TanRad {
         })
     }
 
-    /// **Source:** `GccAna_Circ2d2TanRad.hxx`:123 - `GccAna_Circ2d2TanRad::NbSolutions()`
+    /// **Source:** `GccAna_Circ2d2TanRad.hxx`:121 - `GccAna_Circ2d2TanRad::NbSolutions()`
     /// This method returns the number of circles, representing solutions computed by this algorithm.
     /// Exceptions
     /// StdFail_NotDone if the construction fails. of solutions.
@@ -602,7 +599,7 @@ impl Circ2d2TanRad {
         })
     }
 
-    /// **Source:** `GccAna_Circ2d2TanRad.hxx`:132 - `GccAna_Circ2d2TanRad::ThisSolution()`
+    /// **Source:** `GccAna_Circ2d2TanRad.hxx`:130 - `GccAna_Circ2d2TanRad::ThisSolution()`
     /// Returns the solution number Index.
     /// Be careful: the Index is only a way to get all the
     /// solutions, but is not associated to those outside the context
@@ -621,7 +618,7 @@ impl Circ2d2TanRad {
         }
     }
 
-    /// **Source:** `GccAna_Circ2d2TanRad.hxx`:139 - `GccAna_Circ2d2TanRad::WhichQualifier()`
+    /// **Source:** `GccAna_Circ2d2TanRad.hxx`:137 - `GccAna_Circ2d2TanRad::WhichQualifier()`
     /// Returns the information about the qualifiers of
     /// the tangency arguments concerning the solution number Index.
     /// It returns the real qualifiers (the qualifiers given to the
@@ -647,7 +644,7 @@ impl Circ2d2TanRad {
         *Qualif2 = crate::gcc_ent::Position::try_from(Qualif2_i32_).unwrap();
     }
 
-    /// **Source:** `GccAna_Circ2d2TanRad.hxx`:150 - `GccAna_Circ2d2TanRad::Tangency1()`
+    /// **Source:** `GccAna_Circ2d2TanRad.hxx`:148 - `GccAna_Circ2d2TanRad::Tangency1()`
     /// Returns information about the tangency point between the
     /// result number Index and the first argument.
     /// ParSol is the intrinsic parameter of the point PntSol on the solution.
@@ -673,7 +670,7 @@ impl Circ2d2TanRad {
         })
     }
 
-    /// **Source:** `GccAna_Circ2d2TanRad.hxx`:163 - `GccAna_Circ2d2TanRad::Tangency2()`
+    /// **Source:** `GccAna_Circ2d2TanRad.hxx`:161 - `GccAna_Circ2d2TanRad::Tangency2()`
     /// Returns information about the tangency point between the
     /// result number Index and the second argument.
     /// ParSol is the intrinsic parameter of the point PntSol on
@@ -700,7 +697,7 @@ impl Circ2d2TanRad {
         })
     }
 
-    /// **Source:** `GccAna_Circ2d2TanRad.hxx`:173 - `GccAna_Circ2d2TanRad::IsTheSame1()`
+    /// **Source:** `GccAna_Circ2d2TanRad.hxx`:171 - `GccAna_Circ2d2TanRad::IsTheSame1()`
     /// Returns True if the solution number Index is equal to
     /// the first argument. Raises OutOfRange if Index is greater than the number
     /// of solutions.
@@ -715,11 +712,11 @@ impl Circ2d2TanRad {
         })
     }
 
-    /// **Source:** `GccAna_Circ2d2TanRad.hxx`:179 - `GccAna_Circ2d2TanRad::IsTheSame2()`
+    /// **Source:** `GccAna_Circ2d2TanRad.hxx`:177 - `GccAna_Circ2d2TanRad::IsTheSame2()`
     /// Returns True if the solution number Index is equal to
     /// the second argument. Raises OutOfRange if Index is greater than the number
     /// of solutions.
-    /// It raises NotDone if the construction algorithm did not  succeed.
+    /// It raises NotDone if the construction algorithm did not succeed.
     pub fn is_the_same2(&self, Index: i32) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::GccAna_Circ2d2TanRad_is_the_same2(
@@ -734,7 +731,7 @@ impl Circ2d2TanRad {
 // From GccAna_Circ2d3Tan.hxx
 // ========================
 
-/// **Source:** `GccAna_Circ2d3Tan.hxx`:54 - `GccAna_Circ2d3Tan`
+/// **Source:** `GccAna_Circ2d3Tan.hxx`:52 - `GccAna_Circ2d3Tan`
 /// This class implements the algorithms used to
 /// create 2d circles tangent to 3 points/lines/circles.
 /// The arguments of all construction methods are :
@@ -765,7 +762,7 @@ unsafe impl crate::CppDeletable for Circ2d3Tan {
 }
 
 impl Circ2d3Tan {
-    /// **Source:** `GccAna_Circ2d3Tan.hxx`:63 - `GccAna_Circ2d3Tan::GccAna_Circ2d3Tan()`
+    /// **Source:** `GccAna_Circ2d3Tan.hxx`:61 - `GccAna_Circ2d3Tan::GccAna_Circ2d3Tan()`
     /// This method implements the algorithms used to
     /// create 2d circles tangent to 3 circles.
     /// ConstructionError is raised if there is a problem during
@@ -785,7 +782,7 @@ impl Circ2d3Tan {
         }
     }
 
-    /// **Source:** `GccAna_Circ2d3Tan.hxx`:72 - `GccAna_Circ2d3Tan::GccAna_Circ2d3Tan()`
+    /// **Source:** `GccAna_Circ2d3Tan.hxx`:70 - `GccAna_Circ2d3Tan::GccAna_Circ2d3Tan()`
     /// This method implements the algorithms used to
     /// create 2d circles tangent to 2 circles and 1 line.
     /// ConstructionError is raised if there is a problem during
@@ -801,7 +798,7 @@ impl Circ2d3Tan {
         }
     }
 
-    /// **Source:** `GccAna_Circ2d3Tan.hxx`:81 - `GccAna_Circ2d3Tan::GccAna_Circ2d3Tan()`
+    /// **Source:** `GccAna_Circ2d3Tan.hxx`:79 - `GccAna_Circ2d3Tan::GccAna_Circ2d3Tan()`
     /// This method implements the algorithms used to
     /// create 2d circles tangent to 1 circle and 2 lines.
     /// ConstructionError is raised if there is a problem during
@@ -817,7 +814,7 @@ impl Circ2d3Tan {
         }
     }
 
-    /// **Source:** `GccAna_Circ2d3Tan.hxx`:90 - `GccAna_Circ2d3Tan::GccAna_Circ2d3Tan()`
+    /// **Source:** `GccAna_Circ2d3Tan.hxx`:88 - `GccAna_Circ2d3Tan::GccAna_Circ2d3Tan()`
     /// This method implements the algorithms used to
     /// create 2d circles tangent to 3 lines.
     /// ConstructionError is raised if there is a problem during
@@ -837,7 +834,7 @@ impl Circ2d3Tan {
         }
     }
 
-    /// **Source:** `GccAna_Circ2d3Tan.hxx`:99 - `GccAna_Circ2d3Tan::GccAna_Circ2d3Tan()`
+    /// **Source:** `GccAna_Circ2d3Tan.hxx`:97 - `GccAna_Circ2d3Tan::GccAna_Circ2d3Tan()`
     /// This method implements the algorithms used to
     /// create 2d circles tangent to 2 circles and 1 Point.
     /// ConstructionError is raised if there is a problem during
@@ -857,7 +854,7 @@ impl Circ2d3Tan {
         }
     }
 
-    /// **Source:** `GccAna_Circ2d3Tan.hxx`:109 - `GccAna_Circ2d3Tan::GccAna_Circ2d3Tan()`
+    /// **Source:** `GccAna_Circ2d3Tan.hxx`:107 - `GccAna_Circ2d3Tan::GccAna_Circ2d3Tan()`
     /// This method implements the algorithms used to
     /// create 2d circles tangent to a circle and a line and
     /// 1 Point.
@@ -874,7 +871,7 @@ impl Circ2d3Tan {
         }
     }
 
-    /// **Source:** `GccAna_Circ2d3Tan.hxx`:118 - `GccAna_Circ2d3Tan::GccAna_Circ2d3Tan()`
+    /// **Source:** `GccAna_Circ2d3Tan.hxx`:116 - `GccAna_Circ2d3Tan::GccAna_Circ2d3Tan()`
     /// This method implements the algorithms used to
     /// create 2d circles tangent to 2 lines and 1 Point.
     /// ConstructionError is raised if there is a problem during
@@ -894,7 +891,7 @@ impl Circ2d3Tan {
         }
     }
 
-    /// **Source:** `GccAna_Circ2d3Tan.hxx`:128 - `GccAna_Circ2d3Tan::GccAna_Circ2d3Tan()`
+    /// **Source:** `GccAna_Circ2d3Tan.hxx`:126 - `GccAna_Circ2d3Tan::GccAna_Circ2d3Tan()`
     /// This method implements the algorithms used to
     /// create 2d circles tangent to a circle and passing
     /// through 2 Points.
@@ -915,7 +912,7 @@ impl Circ2d3Tan {
         }
     }
 
-    /// **Source:** `GccAna_Circ2d3Tan.hxx`:138 - `GccAna_Circ2d3Tan::GccAna_Circ2d3Tan()`
+    /// **Source:** `GccAna_Circ2d3Tan.hxx`:136 - `GccAna_Circ2d3Tan::GccAna_Circ2d3Tan()`
     /// This method implements the algorithms used to
     /// create 2d circles tangent to a line and passing
     /// through 2 Points.
@@ -936,7 +933,7 @@ impl Circ2d3Tan {
         }
     }
 
-    /// **Source:** `GccAna_Circ2d3Tan.hxx`:147 - `GccAna_Circ2d3Tan::GccAna_Circ2d3Tan()`
+    /// **Source:** `GccAna_Circ2d3Tan.hxx`:145 - `GccAna_Circ2d3Tan::GccAna_Circ2d3Tan()`
     /// This method implements the algorithms used to
     /// create 2d circles passing through 3 Points.
     /// ConstructionError is raised if there is a problem during
@@ -956,7 +953,7 @@ impl Circ2d3Tan {
         }
     }
 
-    /// **Source:** `GccAna_Circ2d3Tan.hxx`:157 - `GccAna_Circ2d3Tan::IsDone()`
+    /// **Source:** `GccAna_Circ2d3Tan.hxx`:155 - `GccAna_Circ2d3Tan::IsDone()`
     /// This method returns True if the construction
     /// algorithm succeeded.
     /// Note: IsDone protects against a failure arising from a
@@ -968,7 +965,7 @@ impl Circ2d3Tan {
         })
     }
 
-    /// **Source:** `GccAna_Circ2d3Tan.hxx`:161 - `GccAna_Circ2d3Tan::NbSolutions()`
+    /// **Source:** `GccAna_Circ2d3Tan.hxx`:159 - `GccAna_Circ2d3Tan::NbSolutions()`
     /// This method returns the number of solutions.
     /// Raises NotDone if the construction algorithm didn't succeed.
     pub fn nb_solutions(&self) -> i32 {
@@ -977,7 +974,7 @@ impl Circ2d3Tan {
         })
     }
 
-    /// **Source:** `GccAna_Circ2d3Tan.hxx`:172 - `GccAna_Circ2d3Tan::ThisSolution()`
+    /// **Source:** `GccAna_Circ2d3Tan.hxx`:170 - `GccAna_Circ2d3Tan::ThisSolution()`
     /// Returns the solution number Index and raises OutOfRange
     /// exception if Index is greater than the number of
     /// solutions.
@@ -998,7 +995,7 @@ impl Circ2d3Tan {
         }
     }
 
-    /// **Source:** `GccAna_Circ2d3Tan.hxx`:180 - `GccAna_Circ2d3Tan::WhichQualifier()`
+    /// **Source:** `GccAna_Circ2d3Tan.hxx`:178 - `GccAna_Circ2d3Tan::WhichQualifier()`
     /// Returns the information about the qualifiers of the
     /// tangency
     /// arguments concerning the solution number Index.
@@ -1029,7 +1026,7 @@ impl Circ2d3Tan {
         *Qualif3 = crate::gcc_ent::Position::try_from(Qualif3_i32_).unwrap();
     }
 
-    /// **Source:** `GccAna_Circ2d3Tan.hxx`:193 - `GccAna_Circ2d3Tan::Tangency1()`
+    /// **Source:** `GccAna_Circ2d3Tan.hxx`:191 - `GccAna_Circ2d3Tan::Tangency1()`
     /// Returns information about the tangency point between the
     /// result number Index and the first argument.
     /// ParSol is the intrinsic parameter of the point PntSol
@@ -1056,7 +1053,7 @@ impl Circ2d3Tan {
         })
     }
 
-    /// **Source:** `GccAna_Circ2d3Tan.hxx`:206 - `GccAna_Circ2d3Tan::Tangency2()`
+    /// **Source:** `GccAna_Circ2d3Tan.hxx`:204 - `GccAna_Circ2d3Tan::Tangency2()`
     /// Returns information about the tangency point between the
     /// result number Index and the first argument.
     /// ParSol is the intrinsic parameter of the point PntSol
@@ -1083,7 +1080,7 @@ impl Circ2d3Tan {
         })
     }
 
-    /// **Source:** `GccAna_Circ2d3Tan.hxx`:219 - `GccAna_Circ2d3Tan::Tangency3()`
+    /// **Source:** `GccAna_Circ2d3Tan.hxx`:217 - `GccAna_Circ2d3Tan::Tangency3()`
     /// Returns information about the tangency point between the
     /// result number Index and the first argument.
     /// ParSol is the intrinsic parameter of the point PntSol
@@ -1110,7 +1107,7 @@ impl Circ2d3Tan {
         })
     }
 
-    /// **Source:** `GccAna_Circ2d3Tan.hxx`:228 - `GccAna_Circ2d3Tan::IsTheSame1()`
+    /// **Source:** `GccAna_Circ2d3Tan.hxx`:226 - `GccAna_Circ2d3Tan::IsTheSame1()`
     /// Returns True if the solution number Index is equal to
     /// the first argument. Raises OutOfRange if Index is greater than
     /// the number of solutions.
@@ -1121,7 +1118,7 @@ impl Circ2d3Tan {
         })
     }
 
-    /// **Source:** `GccAna_Circ2d3Tan.hxx`:234 - `GccAna_Circ2d3Tan::IsTheSame2()`
+    /// **Source:** `GccAna_Circ2d3Tan.hxx`:232 - `GccAna_Circ2d3Tan::IsTheSame2()`
     /// Returns True if the solution number Index is equal to
     /// the second argument. Raises OutOfRange Index is greater than
     /// the number of solutions.
@@ -1132,7 +1129,7 @@ impl Circ2d3Tan {
         })
     }
 
-    /// **Source:** `GccAna_Circ2d3Tan.hxx`:240 - `GccAna_Circ2d3Tan::IsTheSame3()`
+    /// **Source:** `GccAna_Circ2d3Tan.hxx`:238 - `GccAna_Circ2d3Tan::IsTheSame3()`
     /// Returns True if the solution number Index is equal to
     /// the third argument. Raises OutOfRange if Index is greater than
     /// the number of solutions.
@@ -1193,7 +1190,7 @@ impl Circ2dBisec {
 
     /// **Source:** `GccAna_Circ2dBisec.hxx`:52 - `GccAna_Circ2dBisec::NbSolutions()`
     /// This method returns the number of solutions.
-    /// Raises NotDone if the construction algorithm  didn't succeed.
+    /// Raises NotDone if the construction algorithm didn't succeed.
     pub fn nb_solutions(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::GccAna_Circ2dBisec_nb_solutions(self as *const Self)
@@ -1209,7 +1206,7 @@ impl Circ2dBisec {
     pub fn this_solution(
         &self,
         Index: i32,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleGccIntBisec> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_GccInt_Bisec> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKGeomAlgo::GccAna_Circ2dBisec_this_solution(
@@ -1225,7 +1222,7 @@ impl Circ2dBisec {
 // From GccAna_Circ2dTanCen.hxx
 // ========================
 
-/// **Source:** `GccAna_Circ2dTanCen.hxx`:52 - `GccAna_Circ2dTanCen`
+/// **Source:** `GccAna_Circ2dTanCen.hxx`:50 - `GccAna_Circ2dTanCen`
 /// This class implements the algorithms used to
 /// create 2d circles tangent to an entity and
 /// centered on a point.
@@ -1254,7 +1251,7 @@ unsafe impl crate::CppDeletable for Circ2dTanCen {
 }
 
 impl Circ2dTanCen {
-    /// **Source:** `GccAna_Circ2dTanCen.hxx`:60 - `GccAna_Circ2dTanCen::GccAna_Circ2dTanCen()`
+    /// **Source:** `GccAna_Circ2dTanCen.hxx`:58 - `GccAna_Circ2dTanCen::GccAna_Circ2dTanCen()`
     /// This method implements the algorithms used to
     /// create 2d circles tangent to a circle and
     /// centered on a point.
@@ -1272,7 +1269,7 @@ impl Circ2dTanCen {
         }
     }
 
-    /// **Source:** `GccAna_Circ2dTanCen.hxx`:67 - `GccAna_Circ2dTanCen::GccAna_Circ2dTanCen()`
+    /// **Source:** `GccAna_Circ2dTanCen.hxx`:65 - `GccAna_Circ2dTanCen::GccAna_Circ2dTanCen()`
     /// This method implements the algorithms used to
     /// create 2d circles tangent to a line and
     /// centered on a point.
@@ -1289,7 +1286,7 @@ impl Circ2dTanCen {
         }
     }
 
-    /// **Source:** `GccAna_Circ2dTanCen.hxx`:83 - `GccAna_Circ2dTanCen::GccAna_Circ2dTanCen()`
+    /// **Source:** `GccAna_Circ2dTanCen.hxx`:81 - `GccAna_Circ2dTanCen::GccAna_Circ2dTanCen()`
     /// This method implements the algorithms used to
     /// create 2d circles passing through a point and
     /// centered on a point.
@@ -1315,7 +1312,7 @@ impl Circ2dTanCen {
         }
     }
 
-    /// **Source:** `GccAna_Circ2dTanCen.hxx`:90 - `GccAna_Circ2dTanCen::IsDone()`
+    /// **Source:** `GccAna_Circ2dTanCen.hxx`:88 - `GccAna_Circ2dTanCen::IsDone()`
     /// This method returns True if the construction
     /// algorithm succeeded.
     /// Note: IsDone protects against a failure arising from a
@@ -1327,7 +1324,7 @@ impl Circ2dTanCen {
         })
     }
 
-    /// **Source:** `GccAna_Circ2dTanCen.hxx`:95 - `GccAna_Circ2dTanCen::NbSolutions()`
+    /// **Source:** `GccAna_Circ2dTanCen.hxx`:93 - `GccAna_Circ2dTanCen::NbSolutions()`
     /// Returns the number of circles, representing solutions
     /// computed by this algorithm and raises NotDone
     /// exception if the algorithm didn't succeed.
@@ -1337,7 +1334,7 @@ impl Circ2dTanCen {
         })
     }
 
-    /// **Source:** `GccAna_Circ2dTanCen.hxx`:105 - `GccAna_Circ2dTanCen::ThisSolution()`
+    /// **Source:** `GccAna_Circ2dTanCen.hxx`:103 - `GccAna_Circ2dTanCen::ThisSolution()`
     /// Returns the circle, representing the solution number Index and raises OutOfRange
     /// exception if Index is greater than the number of solutions.
     /// Be careful: the Index is only a way to get all the
@@ -1357,7 +1354,7 @@ impl Circ2dTanCen {
         }
     }
 
-    /// **Source:** `GccAna_Circ2dTanCen.hxx`:115 - `GccAna_Circ2dTanCen::WhichQualifier()`
+    /// **Source:** `GccAna_Circ2dTanCen.hxx`:113 - `GccAna_Circ2dTanCen::WhichQualifier()`
     /// Returns the qualifier Qualif1 of the tangency argument
     /// for the solution of index Index computed by this algorithm.
     /// The returned qualifier is:
@@ -1378,7 +1375,7 @@ impl Circ2dTanCen {
         *Qualif1 = crate::gcc_ent::Position::try_from(Qualif1_i32_).unwrap();
     }
 
-    /// **Source:** `GccAna_Circ2dTanCen.hxx`:127 - `GccAna_Circ2dTanCen::Tangency1()`
+    /// **Source:** `GccAna_Circ2dTanCen.hxx`:125 - `GccAna_Circ2dTanCen::Tangency1()`
     /// Returns information about the tangency point between the
     /// result number Index and the first argument.
     /// ParSol is the intrinsic parameter of the point PntSol
@@ -1407,7 +1404,7 @@ impl Circ2dTanCen {
         })
     }
 
-    /// **Source:** `GccAna_Circ2dTanCen.hxx`:138 - `GccAna_Circ2dTanCen::IsTheSame1()`
+    /// **Source:** `GccAna_Circ2dTanCen.hxx`:136 - `GccAna_Circ2dTanCen::IsTheSame1()`
     /// Returns True if the solution number Index is equal to
     /// the first argument.
     /// It raises NotDone if the construction algorithm
@@ -1428,7 +1425,7 @@ impl Circ2dTanCen {
 // From GccAna_Circ2dTanOnRad.hxx
 // ========================
 
-/// **Source:** `GccAna_Circ2dTanOnRad.hxx`:57 - `GccAna_Circ2dTanOnRad`
+/// **Source:** `GccAna_Circ2dTanOnRad.hxx`:55 - `GccAna_Circ2dTanOnRad`
 /// This class implements the algorithms used to
 /// create a 2d circle tangent to a 2d entity,
 /// centered on a curv and with a given radius.
@@ -1461,7 +1458,7 @@ unsafe impl crate::CppDeletable for Circ2dTanOnRad {
 }
 
 impl Circ2dTanOnRad {
-    /// **Source:** `GccAna_Circ2dTanOnRad.hxx`:71 - `GccAna_Circ2dTanOnRad::GccAna_Circ2dTanOnRad()`
+    /// **Source:** `GccAna_Circ2dTanOnRad.hxx`:69 - `GccAna_Circ2dTanOnRad::GccAna_Circ2dTanOnRad()`
     /// This methods implements the algorithms used to create
     /// 2d Circles tangent to a circle and centered on a 2d Line
     /// with a given radius.
@@ -1486,7 +1483,7 @@ impl Circ2dTanOnRad {
         }
     }
 
-    /// **Source:** `GccAna_Circ2dTanOnRad.hxx`:81 - `GccAna_Circ2dTanOnRad::GccAna_Circ2dTanOnRad()`
+    /// **Source:** `GccAna_Circ2dTanOnRad.hxx`:79 - `GccAna_Circ2dTanOnRad::GccAna_Circ2dTanOnRad()`
     /// This methods implements the algorithms used to create
     /// 2d Circles tangent to a 2d Line and centered on a 2d Line
     /// with a given radius.
@@ -1507,7 +1504,7 @@ impl Circ2dTanOnRad {
         }
     }
 
-    /// **Source:** `GccAna_Circ2dTanOnRad.hxx`:90 - `GccAna_Circ2dTanOnRad::GccAna_Circ2dTanOnRad()`
+    /// **Source:** `GccAna_Circ2dTanOnRad.hxx`:88 - `GccAna_Circ2dTanOnRad::GccAna_Circ2dTanOnRad()`
     /// This methods implements the algorithms used to create
     /// 2d Circles passing through a 2d Point and centered on a
     /// 2d Line with a given radius.
@@ -1527,7 +1524,7 @@ impl Circ2dTanOnRad {
         }
     }
 
-    /// **Source:** `GccAna_Circ2dTanOnRad.hxx`:100 - `GccAna_Circ2dTanOnRad::GccAna_Circ2dTanOnRad()`
+    /// **Source:** `GccAna_Circ2dTanOnRad.hxx`:98 - `GccAna_Circ2dTanOnRad::GccAna_Circ2dTanOnRad()`
     /// This methods implements the algorithms used to create
     /// 2d Circles tangent to a circle and centered on a 2d Circle
     /// with a given radius.
@@ -1548,7 +1545,7 @@ impl Circ2dTanOnRad {
         }
     }
 
-    /// **Source:** `GccAna_Circ2dTanOnRad.hxx`:110 - `GccAna_Circ2dTanOnRad::GccAna_Circ2dTanOnRad()`
+    /// **Source:** `GccAna_Circ2dTanOnRad.hxx`:108 - `GccAna_Circ2dTanOnRad::GccAna_Circ2dTanOnRad()`
     /// This methods implements the algorithms used to create
     /// 2d Circles tangent to a 2d Line and centered on a 2d Line
     /// with a given radius.
@@ -1569,7 +1566,7 @@ impl Circ2dTanOnRad {
         }
     }
 
-    /// **Source:** `GccAna_Circ2dTanOnRad.hxx`:120 - `GccAna_Circ2dTanOnRad::GccAna_Circ2dTanOnRad()`
+    /// **Source:** `GccAna_Circ2dTanOnRad.hxx`:118 - `GccAna_Circ2dTanOnRad::GccAna_Circ2dTanOnRad()`
     /// This methods implements the algorithms used to create
     /// 2d Circles passing through a 2d Point and centered on a
     /// 2d Line with a given radius.
@@ -1590,7 +1587,7 @@ impl Circ2dTanOnRad {
         }
     }
 
-    /// **Source:** `GccAna_Circ2dTanOnRad.hxx`:130 - `GccAna_Circ2dTanOnRad::IsDone()`
+    /// **Source:** `GccAna_Circ2dTanOnRad.hxx`:128 - `GccAna_Circ2dTanOnRad::IsDone()`
     /// Returns true if the construction algorithm does not fail
     /// (even if it finds no solution).
     /// Note: IsDone protects against a failure arising from a
@@ -1602,7 +1599,7 @@ impl Circ2dTanOnRad {
         })
     }
 
-    /// **Source:** `GccAna_Circ2dTanOnRad.hxx`:134 - `GccAna_Circ2dTanOnRad::NbSolutions()`
+    /// **Source:** `GccAna_Circ2dTanOnRad.hxx`:132 - `GccAna_Circ2dTanOnRad::NbSolutions()`
     /// This method returns the number of circles, representing solutions.
     /// Raises NotDone if the construction algorithm didn't succeed.
     pub fn nb_solutions(&self) -> i32 {
@@ -1611,13 +1608,13 @@ impl Circ2dTanOnRad {
         })
     }
 
-    /// **Source:** `GccAna_Circ2dTanOnRad.hxx`:144 - `GccAna_Circ2dTanOnRad::ThisSolution()`
+    /// **Source:** `GccAna_Circ2dTanOnRad.hxx`:142 - `GccAna_Circ2dTanOnRad::ThisSolution()`
     /// Returns the solution number Index and raises OutOfRange
     /// exception if Index is greater than the number of solutions.
     /// Be careful: the Index is only a way to get all the
     /// solutions, but is not associated to these outside the
     /// context of the algorithm-object.
-    /// Raises NotDone if the construction algorithm  didn't succeed.
+    /// Raises NotDone if the construction algorithm didn't succeed.
     /// It raises OutOfRange if Index is greater than the
     /// number of solutions
     pub fn this_solution(&self, Index: i32) -> crate::OwnedPtr<crate::gp::Circ2d> {
@@ -1631,7 +1628,7 @@ impl Circ2dTanOnRad {
         }
     }
 
-    /// **Source:** `GccAna_Circ2dTanOnRad.hxx`:160 - `GccAna_Circ2dTanOnRad::WhichQualifier()`
+    /// **Source:** `GccAna_Circ2dTanOnRad.hxx`:158 - `GccAna_Circ2dTanOnRad::WhichQualifier()`
     /// Returns the qualifier Qualif1 of the tangency argument
     /// for the solution of index Index computed by this algorithm.
     /// The returned qualifier is:
@@ -1658,7 +1655,7 @@ impl Circ2dTanOnRad {
         *Qualif1 = crate::gcc_ent::Position::try_from(Qualif1_i32_).unwrap();
     }
 
-    /// **Source:** `GccAna_Circ2dTanOnRad.hxx`:173 - `GccAna_Circ2dTanOnRad::Tangency1()`
+    /// **Source:** `GccAna_Circ2dTanOnRad.hxx`:171 - `GccAna_Circ2dTanOnRad::Tangency1()`
     /// Returns information about the tangency point between the
     /// result number Index and the first argument.
     /// ParSol is the intrinsic parameter of the point on the
@@ -1688,13 +1685,13 @@ impl Circ2dTanOnRad {
         })
     }
 
-    /// **Source:** `GccAna_Circ2dTanOnRad.hxx`:186 - `GccAna_Circ2dTanOnRad::CenterOn3()`
+    /// **Source:** `GccAna_Circ2dTanOnRad.hxx`:184 - `GccAna_Circ2dTanOnRad::CenterOn3()`
     /// Returns information about the center (on the curv)
     /// of the result.
     /// ParArg is the intrinsic parameter of the point on
     /// the argument curv.
     /// PntSol is the center point of the solution curv.
-    /// Raises NotDone if the construction algorithm  didn't succeed.
+    /// Raises NotDone if the construction algorithm didn't succeed.
     /// It raises OutOfRange if Index is greater than the
     /// number of solutions.
     pub fn center_on3(&self, Index: i32, ParArg: &mut f64, PntSol: &mut crate::gp::Pnt2d) {
@@ -1708,10 +1705,10 @@ impl Circ2dTanOnRad {
         })
     }
 
-    /// **Source:** `GccAna_Circ2dTanOnRad.hxx`:195 - `GccAna_Circ2dTanOnRad::IsTheSame1()`
+    /// **Source:** `GccAna_Circ2dTanOnRad.hxx`:191 - `GccAna_Circ2dTanOnRad::IsTheSame1()`
     /// Returns True if the solution number Index is equal to
     /// the first argument and False in the other cases.
-    /// Raises NotDone if the construction algorithm  didn't succeed.
+    /// Raises NotDone if the construction algorithm didn't succeed.
     /// It raises OutOfRange if Index is greater than the
     /// number of solutions.
     pub fn is_the_same1(&self, Index: i32) -> bool {
@@ -1788,7 +1785,7 @@ impl CircLin2dBisec {
     pub fn this_solution(
         &self,
         Index: i32,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleGccIntBisec> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_GccInt_Bisec> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKGeomAlgo::GccAna_CircLin2dBisec_this_solution(
@@ -1885,7 +1882,7 @@ impl CircPnt2dBisec {
     pub fn this_solution(
         &self,
         Index: i32,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleGccIntBisec> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_GccInt_Bisec> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKGeomAlgo::GccAna_CircPnt2dBisec_this_solution(
@@ -1901,7 +1898,7 @@ impl CircPnt2dBisec {
 // From GccAna_Lin2d2Tan.hxx
 // ========================
 
-/// **Source:** `GccAna_Lin2d2Tan.hxx`:48 - `GccAna_Lin2d2Tan`
+/// **Source:** `GccAna_Lin2d2Tan.hxx`:47 - `GccAna_Lin2d2Tan`
 /// This class implements the algorithms used to
 /// create 2d lines tangent to 2 other elements which
 /// can be circles or points.
@@ -1928,7 +1925,7 @@ unsafe impl crate::CppDeletable for Lin2d2Tan {
 }
 
 impl Lin2d2Tan {
-    /// **Source:** `GccAna_Lin2d2Tan.hxx`:57 - `GccAna_Lin2d2Tan::GccAna_Lin2d2Tan()`
+    /// **Source:** `GccAna_Lin2d2Tan.hxx`:56 - `GccAna_Lin2d2Tan::GccAna_Lin2d2Tan()`
     /// This methods implements the algorithms used to
     /// create 2d lines passing through 2 points.
     /// Tolerance is used because we can't create a line
@@ -1947,7 +1944,7 @@ impl Lin2d2Tan {
         }
     }
 
-    /// **Source:** `GccAna_Lin2d2Tan.hxx`:69 - `GccAna_Lin2d2Tan::GccAna_Lin2d2Tan()`
+    /// **Source:** `GccAna_Lin2d2Tan.hxx`:68 - `GccAna_Lin2d2Tan::GccAna_Lin2d2Tan()`
     /// This methods implements the algorithms used to
     /// create 2d lines tangent to one circle and passing
     /// through a point.
@@ -1970,7 +1967,7 @@ impl Lin2d2Tan {
         }
     }
 
-    /// **Source:** `GccAna_Lin2d2Tan.hxx`:77 - `GccAna_Lin2d2Tan::GccAna_Lin2d2Tan()`
+    /// **Source:** `GccAna_Lin2d2Tan.hxx`:76 - `GccAna_Lin2d2Tan::GccAna_Lin2d2Tan()`
     /// This methods implements the algorithms used to
     /// create 2d lines tangent to 2 circles.
     /// Exception BadQualifier is raised in the case of
@@ -1989,7 +1986,7 @@ impl Lin2d2Tan {
         }
     }
 
-    /// **Source:** `GccAna_Lin2d2Tan.hxx`:83 - `GccAna_Lin2d2Tan::IsDone()`
+    /// **Source:** `GccAna_Lin2d2Tan.hxx`:82 - `GccAna_Lin2d2Tan::IsDone()`
     /// This method returns true when there is a solution
     /// and false in the other cases.
     pub fn is_done(&self) -> bool {
@@ -1998,7 +1995,7 @@ impl Lin2d2Tan {
         })
     }
 
-    /// **Source:** `GccAna_Lin2d2Tan.hxx`:87 - `GccAna_Lin2d2Tan::NbSolutions()`
+    /// **Source:** `GccAna_Lin2d2Tan.hxx`:86 - `GccAna_Lin2d2Tan::NbSolutions()`
     /// This method returns the number of solutions.
     /// Raises NotDone if the construction algorithm didn't succeed.
     pub fn nb_solutions(&self) -> i32 {
@@ -2007,7 +2004,7 @@ impl Lin2d2Tan {
         })
     }
 
-    /// **Source:** `GccAna_Lin2d2Tan.hxx`:96 - `GccAna_Lin2d2Tan::ThisSolution()`
+    /// **Source:** `GccAna_Lin2d2Tan.hxx`:95 - `GccAna_Lin2d2Tan::ThisSolution()`
     /// Returns the solution number Index and raises OutOfRange
     /// exception if Index is greater than the number of solutions.
     /// Be careful: the Index is only a way to get all the
@@ -2026,7 +2023,7 @@ impl Lin2d2Tan {
         }
     }
 
-    /// **Source:** `GccAna_Lin2d2Tan.hxx`:113 - `GccAna_Lin2d2Tan::WhichQualifier()`
+    /// **Source:** `GccAna_Lin2d2Tan.hxx`:112 - `GccAna_Lin2d2Tan::WhichQualifier()`
     /// Returns the qualifiers Qualif1 and Qualif2 of the
     /// tangency arguments for the solution of index Index
     /// computed by this algorithm.
@@ -2062,7 +2059,7 @@ impl Lin2d2Tan {
         *Qualif2 = crate::gcc_ent::Position::try_from(Qualif2_i32_).unwrap();
     }
 
-    /// **Source:** `GccAna_Lin2d2Tan.hxx`:125 - `GccAna_Lin2d2Tan::Tangency1()`
+    /// **Source:** `GccAna_Lin2d2Tan.hxx`:124 - `GccAna_Lin2d2Tan::Tangency1()`
     /// Returns information about the tangency point between the
     /// result number Index and the first argument.
     /// ParSol is the intrinsic parameter of the point PntSol on
@@ -2089,7 +2086,7 @@ impl Lin2d2Tan {
         })
     }
 
-    /// **Source:** `GccAna_Lin2d2Tan.hxx`:138 - `GccAna_Lin2d2Tan::Tangency2()`
+    /// **Source:** `GccAna_Lin2d2Tan.hxx`:137 - `GccAna_Lin2d2Tan::Tangency2()`
     /// Returns information about the tangency point between the
     /// result number Index and the second argument.
     /// ParSol is the intrinsic parameter of the point ParSol on
@@ -2204,7 +2201,7 @@ impl Lin2dBisec {
     /// **Source:** `GccAna_Lin2dBisec.hxx`:81 - `GccAna_Lin2dBisec::Intersection1()`
     /// Returns information about the intersection point between
     /// the result number Index and the first argument.
-    /// Raises NotDone if the construction algorithm  didn't succeed.
+    /// Raises NotDone if the construction algorithm didn't succeed.
     /// It raises OutOfRange if Index is greater than the
     /// number of solutions.
     pub fn intersection1(
@@ -2255,7 +2252,7 @@ impl Lin2dBisec {
 // From GccAna_Lin2dTanObl.hxx
 // ========================
 
-/// **Source:** `GccAna_Lin2dTanObl.hxx`:41 - `GccAna_Lin2dTanObl`
+/// **Source:** `GccAna_Lin2dTanObl.hxx`:40 - `GccAna_Lin2dTanObl`
 /// This class implements the algorithms used to
 /// create 2d line tangent to a circle or a point and
 /// making an angle with a line.
@@ -2275,7 +2272,7 @@ unsafe impl crate::CppDeletable for Lin2dTanObl {
 }
 
 impl Lin2dTanObl {
-    /// **Source:** `GccAna_Lin2dTanObl.hxx`:49 - `GccAna_Lin2dTanObl::GccAna_Lin2dTanObl()`
+    /// **Source:** `GccAna_Lin2dTanObl.hxx`:48 - `GccAna_Lin2dTanObl::GccAna_Lin2dTanObl()`
     /// This class implements the algorithms used to
     /// create 2d line passing through a point and
     /// making an angle with a line.
@@ -2293,7 +2290,7 @@ impl Lin2dTanObl {
         }
     }
 
-    /// **Source:** `GccAna_Lin2dTanObl.hxx`:59 - `GccAna_Lin2dTanObl::GccAna_Lin2dTanObl()`
+    /// **Source:** `GccAna_Lin2dTanObl.hxx`:58 - `GccAna_Lin2dTanObl::GccAna_Lin2dTanObl()`
     /// This class implements the algorithms used to
     /// create 2d line tangent to a circle and
     /// making an angle with a line.
@@ -2314,7 +2311,7 @@ impl Lin2dTanObl {
         }
     }
 
-    /// **Source:** `GccAna_Lin2dTanObl.hxx`:67 - `GccAna_Lin2dTanObl::IsDone()`
+    /// **Source:** `GccAna_Lin2dTanObl.hxx`:66 - `GccAna_Lin2dTanObl::IsDone()`
     /// Returns True if the algorithm succeeded.
     /// Note: IsDone protects against a failure arising from a
     /// more internal intersection algorithm, which has reached
@@ -2325,8 +2322,8 @@ impl Lin2dTanObl {
         })
     }
 
-    /// **Source:** `GccAna_Lin2dTanObl.hxx`:71 - `GccAna_Lin2dTanObl::NbSolutions()`
-    /// Returns the number of  of lines, representing solutions computed by this algorithm.
+    /// **Source:** `GccAna_Lin2dTanObl.hxx`:70 - `GccAna_Lin2dTanObl::NbSolutions()`
+    /// Returns the number of lines, representing solutions computed by this algorithm.
     /// Raises NotDone if the construction algorithm didn't succeed.
     pub fn nb_solutions(&self) -> i32 {
         crate::check_result(unsafe {
@@ -2334,13 +2331,13 @@ impl Lin2dTanObl {
         })
     }
 
-    /// **Source:** `GccAna_Lin2dTanObl.hxx`:79 - `GccAna_Lin2dTanObl::ThisSolution()`
+    /// **Source:** `GccAna_Lin2dTanObl.hxx`:78 - `GccAna_Lin2dTanObl::ThisSolution()`
     /// Returns the solution number Index.
     /// Be careful: the Index is only a way to get all the
     /// solutions, but is not associated to these outside the
     /// context of the algorithm-object.
     /// raises NotDone if the construction algorithm didn't succeed.
-    /// It raises OutOfRange if Index is greater than the   number of solutions.
+    /// It raises OutOfRange if Index is greater than the number of solutions.
     pub fn this_solution(&self, Index: i32) -> crate::OwnedPtr<crate::gp::Lin2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -2352,7 +2349,7 @@ impl Lin2dTanObl {
         }
     }
 
-    /// **Source:** `GccAna_Lin2dTanObl.hxx`:95 - `GccAna_Lin2dTanObl::WhichQualifier()`
+    /// **Source:** `GccAna_Lin2dTanObl.hxx`:94 - `GccAna_Lin2dTanObl::WhichQualifier()`
     /// Returns the qualifier Qualif1 of the tangency argument
     /// for the solution of index Index computed by this algorithm.
     /// The returned qualifier is:
@@ -2379,7 +2376,7 @@ impl Lin2dTanObl {
         *Qualif1 = crate::gcc_ent::Position::try_from(Qualif1_i32_).unwrap();
     }
 
-    /// **Source:** `GccAna_Lin2dTanObl.hxx`:105 - `GccAna_Lin2dTanObl::Tangency1()`
+    /// **Source:** `GccAna_Lin2dTanObl.hxx`:104 - `GccAna_Lin2dTanObl::Tangency1()`
     /// Returns information about the tangency point between the
     /// result number Index and the first argument.
     /// ParSol is the intrinsic parameter of the point ParSol on
@@ -2387,7 +2384,7 @@ impl Lin2dTanObl {
     /// ParArg is the intrinsic parameter of the point ParArg on
     /// the argument curv. Raises NotDone if the construction algorithm
     /// didn't succeed.
-    /// It raises OutOfRange if Index is greater than the  number of solutions.
+    /// It raises OutOfRange if Index is greater than the number of solutions.
     pub fn tangency1(
         &self,
         Index: i32,
@@ -2406,10 +2403,10 @@ impl Lin2dTanObl {
         })
     }
 
-    /// **Source:** `GccAna_Lin2dTanObl.hxx`:114 - `GccAna_Lin2dTanObl::Intersection2()`
+    /// **Source:** `GccAna_Lin2dTanObl.hxx`:113 - `GccAna_Lin2dTanObl::Intersection2()`
     /// Returns information about the intersection between the
     /// result number Index and the third argument.
-    /// Raises NotDone if the construction algorithm  didn't succeed.
+    /// Raises NotDone if the construction algorithm didn't succeed.
     /// It raises OutOfRange if Index is greater than the number of solutions.
     pub fn intersection2(
         &self,
@@ -2434,7 +2431,7 @@ impl Lin2dTanObl {
 // From GccAna_Lin2dTanPar.hxx
 // ========================
 
-/// **Source:** `GccAna_Lin2dTanPar.hxx`:44 - `GccAna_Lin2dTanPar`
+/// **Source:** `GccAna_Lin2dTanPar.hxx`:43 - `GccAna_Lin2dTanPar`
 /// This class implements the algorithms used to create 2d
 /// line tangent to a circle or a point and parallel to
 /// another line.
@@ -2457,7 +2454,7 @@ unsafe impl crate::CppDeletable for Lin2dTanPar {
 }
 
 impl Lin2dTanPar {
-    /// **Source:** `GccAna_Lin2dTanPar.hxx`:52 - `GccAna_Lin2dTanPar::GccAna_Lin2dTanPar()`
+    /// **Source:** `GccAna_Lin2dTanPar.hxx`:51 - `GccAna_Lin2dTanPar::GccAna_Lin2dTanPar()`
     /// This method implements the algorithms used to create a 2d
     /// line passing through a point and parallel to
     /// another line.
@@ -2472,7 +2469,7 @@ impl Lin2dTanPar {
         }
     }
 
-    /// **Source:** `GccAna_Lin2dTanPar.hxx`:60 - `GccAna_Lin2dTanPar::GccAna_Lin2dTanPar()`
+    /// **Source:** `GccAna_Lin2dTanPar.hxx`:59 - `GccAna_Lin2dTanPar::GccAna_Lin2dTanPar()`
     /// This method implements the algorithms used to create a 2d
     /// line tangent to a circle and parallel to another line.
     /// It raises BadQualifier in case of EnclosedCirc.
@@ -2492,7 +2489,7 @@ impl Lin2dTanPar {
         }
     }
 
-    /// **Source:** `GccAna_Lin2dTanPar.hxx`:63 - `GccAna_Lin2dTanPar::IsDone()`
+    /// **Source:** `GccAna_Lin2dTanPar.hxx`:62 - `GccAna_Lin2dTanPar::IsDone()`
     /// Returns True if the algorithm succeeded.
     pub fn is_done(&self) -> bool {
         crate::check_result(unsafe {
@@ -2500,16 +2497,16 @@ impl Lin2dTanPar {
         })
     }
 
-    /// **Source:** `GccAna_Lin2dTanPar.hxx`:67 - `GccAna_Lin2dTanPar::NbSolutions()`
+    /// **Source:** `GccAna_Lin2dTanPar.hxx`:66 - `GccAna_Lin2dTanPar::NbSolutions()`
     /// Returns the number of solutions.
-    /// Raises NotDone if the construction algorithm  didn't succeed.
+    /// Raises NotDone if the construction algorithm didn't succeed.
     pub fn nb_solutions(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::GccAna_Lin2dTanPar_nb_solutions(self as *const Self)
         })
     }
 
-    /// **Source:** `GccAna_Lin2dTanPar.hxx`:78 - `GccAna_Lin2dTanPar::ThisSolution()`
+    /// **Source:** `GccAna_Lin2dTanPar.hxx`:77 - `GccAna_Lin2dTanPar::ThisSolution()`
     /// Returns the solution number Index and raises OutOfRange
     /// exception if Index is greater than the number of solutions.
     /// Be careful: the Index is only a way to get all the
@@ -2530,7 +2527,7 @@ impl Lin2dTanPar {
         }
     }
 
-    /// **Source:** `GccAna_Lin2dTanPar.hxx`:89 - `GccAna_Lin2dTanPar::WhichQualifier()`
+    /// **Source:** `GccAna_Lin2dTanPar.hxx`:88 - `GccAna_Lin2dTanPar::WhichQualifier()`
     /// Returns the information about the qualifiers of the
     /// tangency arguments concerning the solution number Index.
     /// It returns the real qualifiers (the qualifiers given to the
@@ -2552,7 +2549,7 @@ impl Lin2dTanPar {
         *Qualif1 = crate::gcc_ent::Position::try_from(Qualif1_i32_).unwrap();
     }
 
-    /// **Source:** `GccAna_Lin2dTanPar.hxx`:102 - `GccAna_Lin2dTanPar::Tangency1()`
+    /// **Source:** `GccAna_Lin2dTanPar.hxx`:101 - `GccAna_Lin2dTanPar::Tangency1()`
     /// Returns information about the tangency point between the
     /// result number Index and the first argument.
     /// ParSol is the intrinsic parameter of the point on the
@@ -2587,7 +2584,7 @@ impl Lin2dTanPar {
 // From GccAna_Lin2dTanPer.hxx
 // ========================
 
-/// **Source:** `GccAna_Lin2dTanPer.hxx`:45 - `GccAna_Lin2dTanPer`
+/// **Source:** `GccAna_Lin2dTanPer.hxx`:44 - `GccAna_Lin2dTanPer`
 /// This class implements the algorithms used to
 /// create 2d lines tangent to a circle or a point and
 /// perpendicular to a line or a circle.
@@ -2610,7 +2607,7 @@ unsafe impl crate::CppDeletable for Lin2dTanPer {
 }
 
 impl Lin2dTanPer {
-    /// **Source:** `GccAna_Lin2dTanPer.hxx`:53 - `GccAna_Lin2dTanPer::GccAna_Lin2dTanPer()`
+    /// **Source:** `GccAna_Lin2dTanPer.hxx`:52 - `GccAna_Lin2dTanPer::GccAna_Lin2dTanPer()`
     /// This method implements the algorithms used to
     /// create 2d lines passing through a point and
     /// perpendicular to a line.
@@ -2625,7 +2622,7 @@ impl Lin2dTanPer {
         }
     }
 
-    /// **Source:** `GccAna_Lin2dTanPer.hxx`:58 - `GccAna_Lin2dTanPer::GccAna_Lin2dTanPer()`
+    /// **Source:** `GccAna_Lin2dTanPer.hxx`:57 - `GccAna_Lin2dTanPer::GccAna_Lin2dTanPer()`
     /// This method implements the algorithms used to
     /// create 2d lines passing through a point and
     /// perpendicular to a circle.
@@ -2642,7 +2639,7 @@ impl Lin2dTanPer {
         }
     }
 
-    /// **Source:** `GccAna_Lin2dTanPer.hxx`:63 - `GccAna_Lin2dTanPer::GccAna_Lin2dTanPer()`
+    /// **Source:** `GccAna_Lin2dTanPer.hxx`:62 - `GccAna_Lin2dTanPer::GccAna_Lin2dTanPer()`
     /// This method implements the algorithms used to
     /// create 2d lines tangent to a circle and
     /// perpendicular to a line.
@@ -2659,7 +2656,7 @@ impl Lin2dTanPer {
         }
     }
 
-    /// **Source:** `GccAna_Lin2dTanPer.hxx`:69 - `GccAna_Lin2dTanPer::GccAna_Lin2dTanPer()`
+    /// **Source:** `GccAna_Lin2dTanPer.hxx`:68 - `GccAna_Lin2dTanPer::GccAna_Lin2dTanPer()`
     /// This method implements the algorithms used to
     /// create 2d lines tangent to a circle and
     /// perpendicular to a circle.
@@ -2676,7 +2673,7 @@ impl Lin2dTanPer {
         }
     }
 
-    /// **Source:** `GccAna_Lin2dTanPer.hxx`:73 - `GccAna_Lin2dTanPer::IsDone()`
+    /// **Source:** `GccAna_Lin2dTanPer.hxx`:72 - `GccAna_Lin2dTanPer::IsDone()`
     /// Returns True if the algorithm succeeded.
     pub fn is_done(&self) -> bool {
         crate::check_result(unsafe {
@@ -2684,7 +2681,7 @@ impl Lin2dTanPer {
         })
     }
 
-    /// **Source:** `GccAna_Lin2dTanPer.hxx`:77 - `GccAna_Lin2dTanPer::NbSolutions()`
+    /// **Source:** `GccAna_Lin2dTanPer.hxx`:76 - `GccAna_Lin2dTanPer::NbSolutions()`
     /// Returns the number of solutions.
     /// Raises NotDone if the construction algorithm didn't succeed.
     pub fn nb_solutions(&self) -> i32 {
@@ -2693,7 +2690,7 @@ impl Lin2dTanPer {
         })
     }
 
-    /// **Source:** `GccAna_Lin2dTanPer.hxx`:93 - `GccAna_Lin2dTanPer::WhichQualifier()`
+    /// **Source:** `GccAna_Lin2dTanPer.hxx`:92 - `GccAna_Lin2dTanPer::WhichQualifier()`
     /// Returns the qualifier Qualif1 of the tangency argument
     /// for the solution of index Index computed by this algorithm.
     /// The returned qualifier is:
@@ -2720,7 +2717,7 @@ impl Lin2dTanPer {
         *Qualif1 = crate::gcc_ent::Position::try_from(Qualif1_i32_).unwrap();
     }
 
-    /// **Source:** `GccAna_Lin2dTanPer.hxx`:104 - `GccAna_Lin2dTanPer::ThisSolution()`
+    /// **Source:** `GccAna_Lin2dTanPer.hxx`:103 - `GccAna_Lin2dTanPer::ThisSolution()`
     /// Returns the solution number Index and raises OutOfRange
     /// exception if Index is greater than the number of solutions.
     /// Be careful: the Index is only a way to get all the
@@ -2741,7 +2738,7 @@ impl Lin2dTanPer {
         }
     }
 
-    /// **Source:** `GccAna_Lin2dTanPer.hxx`:116 - `GccAna_Lin2dTanPer::Tangency1()`
+    /// **Source:** `GccAna_Lin2dTanPer.hxx`:115 - `GccAna_Lin2dTanPer::Tangency1()`
     /// Returns information about the tangency point between the
     /// result number Index and the first argument.
     /// ParSol is the intrinsic parameter of the point on the
@@ -2770,7 +2767,7 @@ impl Lin2dTanPer {
         })
     }
 
-    /// **Source:** `GccAna_Lin2dTanPer.hxx`:132 - `GccAna_Lin2dTanPer::Intersection2()`
+    /// **Source:** `GccAna_Lin2dTanPer.hxx`:131 - `GccAna_Lin2dTanPer::Intersection2()`
     /// Returns information about the intersection between the
     /// solution number Index and the second argument.
     /// It returns the first intersection in a case of
@@ -2851,7 +2848,7 @@ impl LinPnt2dBisec {
     /// **Source:** `GccAna_LinPnt2dBisec.hxx`:52 - `GccAna_LinPnt2dBisec::ThisSolution()`
     /// Returns the number of solutions.
     /// It raises NotDone if the construction algorithm didn't succeed.
-    pub fn this_solution(&self) -> crate::OwnedPtr<crate::ffi_types::HandleGccIntBisec> {
+    pub fn this_solution(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_GccInt_Bisec> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKGeomAlgo::GccAna_LinPnt2dBisec_this_solution(
@@ -2866,7 +2863,7 @@ impl LinPnt2dBisec {
 // From GccAna_NoSolution.hxx
 // ========================
 
-/// **Source:** `GccAna_NoSolution.hxx`:36 - `GccAna_NoSolution`
+/// **Source:** `GccAna_NoSolution.hxx`:32 - `GccAna_NoSolution`
 pub use crate::ffi_types::GccAna_NoSolution as NoSolution;
 
 unsafe impl crate::CppDeletable for NoSolution {
@@ -2878,16 +2875,7 @@ unsafe impl crate::CppDeletable for NoSolution {
 }
 
 impl NoSolution {
-    /// **Source:** `GccAna_NoSolution.hxx`:36 - `GccAna_NoSolution::GccAna_NoSolution()`
-    pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKGeomAlgo::GccAna_NoSolution_ctor(),
-            ))
-        }
-    }
-
-    /// **Source:** `GccAna_NoSolution.hxx`:36 - `GccAna_NoSolution::GccAna_NoSolution()`
+    /// **Source:** `GccAna_NoSolution.hxx`:32 - `GccAna_NoSolution::GccAna_NoSolution()`
     pub fn new_charptr(theMessage: &str) -> crate::OwnedPtr<Self> {
         let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
         unsafe {
@@ -2897,7 +2885,7 @@ impl NoSolution {
         }
     }
 
-    /// **Source:** `GccAna_NoSolution.hxx`:36 - `GccAna_NoSolution::GccAna_NoSolution()`
+    /// **Source:** `GccAna_NoSolution.hxx`:32 - `GccAna_NoSolution::GccAna_NoSolution()`
     pub fn new_charptr2(theMessage: &str, theStackTrace: &str) -> crate::OwnedPtr<Self> {
         let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
         let c_theStackTrace = std::ffi::CString::new(theStackTrace).unwrap();
@@ -2911,79 +2899,15 @@ impl NoSolution {
         }
     }
 
-    /// **Source:** `GccAna_NoSolution.hxx`:36 - `GccAna_NoSolution::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
-        unsafe {
-            &*(crate::check_result(crate::ffi_extern_TKGeomAlgo::GccAna_NoSolution_dynamic_type(
-                self as *const Self,
-            )))
-        }
-    }
-
-    /// **Source:** `GccAna_NoSolution.hxx`:36 - `GccAna_NoSolution::Raise()`
-    pub fn raise_charptr(theMessage: &str) {
-        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKGeomAlgo::GccAna_NoSolution_raise_charptr(c_theMessage.as_ptr())
-        })
-    }
-
-    /// **Source:** `GccAna_NoSolution.hxx`:36 - `GccAna_NoSolution::Raise()`
-    pub fn raise_sstream(theMessage: &mut crate::ffi_types::Standard_SStream) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKGeomAlgo::GccAna_NoSolution_raise_sstream(theMessage)
-        })
-    }
-
-    /// **Source:** `GccAna_NoSolution.hxx`:36 - `GccAna_NoSolution::NewInstance()`
-    pub fn new_instance_charptr(
-        theMessage: &str,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleGccAnaNoSolution> {
-        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKGeomAlgo::GccAna_NoSolution_new_instance_charptr(
-                    c_theMessage.as_ptr(),
-                ),
-            ))
-        }
-    }
-
-    /// **Source:** `GccAna_NoSolution.hxx`:36 - `GccAna_NoSolution::NewInstance()`
-    pub fn new_instance_charptr2(
-        theMessage: &str,
-        theStackTrace: &str,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleGccAnaNoSolution> {
-        let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
-        let c_theStackTrace = std::ffi::CString::new(theStackTrace).unwrap();
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKGeomAlgo::GccAna_NoSolution_new_instance_charptr2(
-                    c_theMessage.as_ptr(),
-                    c_theStackTrace.as_ptr(),
-                ),
-            ))
-        }
-    }
-
-    /// **Source:** `GccAna_NoSolution.hxx`:36 - `GccAna_NoSolution::get_type_name()`
-    pub fn get_type_name() -> std::string::String {
+    /// **Source:** `GccAna_NoSolution.hxx`:32 - `GccAna_NoSolution::ExceptionType()`
+    pub fn exception_type(&self) -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi_extern_TKGeomAlgo::GccAna_NoSolution_get_type_name(),
+                crate::ffi_extern_TKGeomAlgo::GccAna_NoSolution_exception_type(self as *const Self),
             ))
         }
         .to_string_lossy()
         .into_owned()
-    }
-
-    /// **Source:** `GccAna_NoSolution.hxx`:36 - `GccAna_NoSolution::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
-        unsafe {
-            &*(crate::check_result(
-                crate::ffi_extern_TKGeomAlgo::GccAna_NoSolution_get_type_descriptor(),
-            ))
-        }
     }
 
     /// Upcast to Standard_Failure
@@ -3008,40 +2932,7 @@ impl NoSolution {
         }
     }
 
-    /// Upcast to Standard_Transient
-    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        unsafe {
-            &*crate::check_result(
-                crate::ffi_extern_TKGeomAlgo::GccAna_NoSolution_as_Standard_Transient(
-                    self as *const Self,
-                ),
-            )
-        }
-    }
-
-    /// Upcast to Standard_Transient (mutable)
-    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        unsafe {
-            &mut *crate::check_result(
-                crate::ffi_extern_TKGeomAlgo::GccAna_NoSolution_as_Standard_Transient_mut(
-                    self as *mut Self,
-                ),
-            )
-        }
-    }
-
-    /// Wrap in a Handle (reference-counted smart pointer)
-    pub fn to_handle(
-        obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleGccAnaNoSolution> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKGeomAlgo::GccAna_NoSolution_to_handle(obj.into_raw()),
-            ))
-        }
-    }
-
-    /// Inherited: **Source:** `Standard_Failure.hxx`:58 - `Standard_Failure::Print()`
+    /// Inherited: **Source:** `Standard_Failure.hxx`:73 - `Standard_Failure::Print()`
     pub fn print(&self, theStream: &mut crate::ffi_types::Standard_OStream) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomAlgo::GccAna_NoSolution_inherited_Print(
@@ -3049,155 +2940,6 @@ impl NoSolution {
                 theStream,
             )
         })
-    }
-
-    /// Inherited: **Source:** `Standard_Failure.hxx`:72 - `Standard_Failure::Reraise()`
-    pub fn reraise(&mut self) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKGeomAlgo::GccAna_NoSolution_inherited_Reraise(self as *mut Self)
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Failure.hxx`:112 - `Standard_Failure::Jump()`
-    pub fn jump(&mut self) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKGeomAlgo::GccAna_NoSolution_inherited_Jump(self as *mut Self)
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKGeomAlgo::GccAna_NoSolution_inherited_IsInstance(
-                self as *const Self,
-                theType,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKGeomAlgo::GccAna_NoSolution_inherited_IsKind(
-                self as *const Self,
-                theType,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
-    pub fn this(&self) -> Option<&crate::standard::Transient> {
-        {
-            let __val = crate::check_result(unsafe {
-                crate::ffi_extern_TKGeomAlgo::GccAna_NoSolution_inherited_This(self as *const Self)
-            });
-            if __val.is_null() {
-                None
-            } else {
-                Some(unsafe { &*__val })
-            }
-        }
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
-    pub fn get_ref_count(&self) -> i32 {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKGeomAlgo::GccAna_NoSolution_inherited_GetRefCount(
-                self as *const Self,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
-    pub fn increment_ref_counter(&mut self) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKGeomAlgo::GccAna_NoSolution_inherited_IncrementRefCounter(
-                self as *mut Self,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
-    pub fn decrement_ref_counter(&mut self) -> i32 {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKGeomAlgo::GccAna_NoSolution_inherited_DecrementRefCounter(
-                self as *mut Self,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
-    pub fn delete(&self) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKGeomAlgo::GccAna_NoSolution_inherited_Delete(self as *const Self)
-        })
-    }
-}
-
-pub use crate::ffi_types::HandleGccAnaNoSolution;
-
-unsafe impl crate::CppDeletable for HandleGccAnaNoSolution {
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        unsafe {
-            crate::ffi_extern_TKGeomAlgo::HandleGccAnaNoSolution_destructor(ptr);
-        }
-    }
-}
-
-unsafe impl crate::CppCopyable for HandleGccAnaNoSolution {
-    unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        unsafe {
-            crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleGccAnaNoSolution_clone(ptr))
-        }
-    }
-}
-
-impl HandleGccAnaNoSolution {
-    /// Returns `true` if this Handle is null (doesn't point to any object).
-    pub fn is_null(&self) -> bool {
-        unsafe { crate::ffi_extern_TKGeomAlgo::HandleGccAnaNoSolution_is_null(self as *const Self) }
-    }
-
-    /// Dereference this Handle to access the underlying GccAna_NoSolution
-    pub fn get(&self) -> &crate::ffi_types::GccAna_NoSolution {
-        unsafe {
-            &*crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleGccAnaNoSolution_get(
-                self as *const Self,
-            ))
-        }
-    }
-
-    /// Dereference this Handle to mutably access the underlying GccAna_NoSolution
-    pub fn get_mut(&mut self) -> &mut crate::ffi_types::GccAna_NoSolution {
-        unsafe {
-            &mut *crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleGccAnaNoSolution_get_mut(
-                self as *mut Self,
-            ))
-        }
-    }
-
-    /// Upcast Handle<GccAna_NoSolution> to Handle<Standard_Failure>
-    pub fn to_handle_failure(&self) -> crate::OwnedPtr<crate::ffi_types::HandleStandardFailure> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKGeomAlgo::HandleGccAnaNoSolution_to_HandleStandardFailure(
-                    self as *const Self,
-                ),
-            ))
-        }
-    }
-
-    /// Upcast Handle<GccAna_NoSolution> to Handle<Standard_Transient>
-    pub fn to_handle_transient(
-        &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKGeomAlgo::HandleGccAnaNoSolution_to_HandleStandardTransient(
-                    self as *const Self,
-                ),
-            ))
-        }
     }
 }
 

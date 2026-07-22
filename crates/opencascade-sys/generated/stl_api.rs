@@ -29,7 +29,7 @@ pub fn write_shape_charptr_bool(
 // From StlAPI_Reader.hxx
 // ========================
 
-/// **Source:** `StlAPI_Reader.hxx`:27 - `StlAPI_Reader`
+/// **Source:** `StlAPI_Reader.hxx`:28 - `StlAPI_Reader`
 /// Reading from stereolithography format.
 /// Reads STL file and creates a shape composed of triangular faces, one per facet.
 /// IMPORTANT: This approach is very inefficient, especially for large files.
@@ -55,16 +55,39 @@ impl Reader {
         }
     }
 
-    /// **Source:** `StlAPI_Reader.hxx`:32 - `StlAPI_Reader::Read()`
+    /// **Source:** `StlAPI_Reader.hxx`:33 - `StlAPI_Reader::Read()`
     /// Reads STL file to the TopoDS_Shape (each triangle is converted to the face).
     /// @return True if reading is successful
-    pub fn read(&mut self, theShape: &mut crate::topo_ds::Shape, theFileName: &str) -> bool {
+    pub fn read_shape_charptr(
+        &mut self,
+        theShape: &mut crate::topo_ds::Shape,
+        theFileName: &str,
+    ) -> bool {
         let c_theFileName = std::ffi::CString::new(theFileName).unwrap();
         crate::check_result(unsafe {
-            crate::ffi_extern_TKDESTL::StlAPI_Reader_read(
+            crate::ffi_extern_TKDESTL::StlAPI_Reader_read_shape_charptr(
                 self as *mut Self,
                 theShape,
                 c_theFileName.as_ptr(),
+            )
+        })
+    }
+
+    /// **Source:** `StlAPI_Reader.hxx`:39 - `StlAPI_Reader::Read()`
+    /// Reads STL data from stream to the TopoDS_Shape (each triangle is converted to the face).
+    /// @param theShape result shape
+    /// @param theStream stream to read from
+    /// @return True if reading is successful
+    pub fn read_shape_istream(
+        &mut self,
+        theShape: &mut crate::topo_ds::Shape,
+        theStream: &mut crate::ffi_types::Standard_IStream,
+    ) -> bool {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKDESTL::StlAPI_Reader_read_shape_istream(
+                self as *mut Self,
+                theShape,
+                theStream,
             )
         })
     }
@@ -112,10 +135,10 @@ impl Writer {
         }
     }
 
-    /// **Source:** `StlAPI_Writer.hxx`:44 - `StlAPI_Writer::Write()`
+    /// **Source:** `StlAPI_Writer.hxx`:43 - `StlAPI_Writer::Write()`
     /// Converts a given shape to STL format and writes it to file with a given filename.
     /// \return the error state.
-    pub fn write(
+    pub fn write_shape_charptr_progressrange(
         &mut self,
         theShape: &crate::topo_ds::Shape,
         theFileName: &str,
@@ -123,10 +146,29 @@ impl Writer {
     ) -> bool {
         let c_theFileName = std::ffi::CString::new(theFileName).unwrap();
         crate::check_result(unsafe {
-            crate::ffi_extern_TKDESTL::StlAPI_Writer_write(
+            crate::ffi_extern_TKDESTL::StlAPI_Writer_write_shape_charptr_progressrange(
                 self as *mut Self,
                 theShape,
                 c_theFileName.as_ptr(),
+                theProgress,
+            )
+        })
+    }
+
+    /// **Source:** `StlAPI_Writer.hxx`:49 - `StlAPI_Writer::Write()`
+    /// Converts a given shape to STL format and writes it to the specified stream.
+    /// \return the error state.
+    pub fn write_shape_ostream_progressrange(
+        &mut self,
+        theShape: &crate::topo_ds::Shape,
+        theStream: &mut crate::ffi_types::Standard_OStream,
+        theProgress: &crate::message::ProgressRange,
+    ) -> bool {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKDESTL::StlAPI_Writer_write_shape_ostream_progressrange(
+                self as *mut Self,
+                theShape,
+                theStream,
                 theProgress,
             )
         })

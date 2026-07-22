@@ -67,7 +67,7 @@ impl TryFrom<i32> for ErrorStatus {
 }
 
 // Handle type re-exports (targets of handle upcasts/downcasts)
-pub use crate::ffi_types::HandleStandardTransient;
+pub use crate::ffi_types::Handle_Standard_Transient;
 
 // ========================
 // From VrmlData_Appearance.hxx
@@ -116,7 +116,7 @@ impl Appearance {
     /// **Source:** `VrmlData_Appearance.hxx`:47 - `VrmlData_Appearance::Material()`
     ///
     /// Query the Material
-    pub fn material(&self) -> &crate::ffi_types::HandleVrmlDataMaterial {
+    pub fn material(&self) -> &crate::ffi_types::Handle_VrmlData_Material {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKDEVRML::VrmlData_Appearance_material(
                 self as *const Self,
@@ -127,7 +127,7 @@ impl Appearance {
     /// **Source:** `VrmlData_Appearance.hxx`:52 - `VrmlData_Appearance::Texture()`
     ///
     /// Query the Texture
-    pub fn texture(&self) -> &crate::ffi_types::HandleVrmlDataTexture {
+    pub fn texture(&self) -> &crate::ffi_types::Handle_VrmlData_Texture {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKDEVRML::VrmlData_Appearance_texture(
                 self as *const Self,
@@ -138,7 +138,7 @@ impl Appearance {
     /// **Source:** `VrmlData_Appearance.hxx`:57 - `VrmlData_Appearance::TextureTransform()`
     ///
     /// Query the TextureTransform
-    pub fn texture_transform(&self) -> &crate::ffi_types::HandleVrmlDataTextureTransform {
+    pub fn texture_transform(&self) -> &crate::ffi_types::Handle_VrmlData_TextureTransform {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKDEVRML::VrmlData_Appearance_texture_transform(
@@ -148,19 +148,19 @@ impl Appearance {
         }
     }
 
-    /// **Source:** `VrmlData_Appearance.hxx`:62 - `VrmlData_Appearance::SetMaterial()`
+    /// **Source:** `VrmlData_Appearance.hxx`:65 - `VrmlData_Appearance::SetMaterial()`
     ///
     /// Set the Material
-    pub fn set_material(&mut self, theMat: &crate::ffi_types::HandleVrmlDataMaterial) {
+    pub fn set_material(&mut self, theMat: &crate::ffi_types::Handle_VrmlData_Material) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlData_Appearance_set_material(self as *mut Self, theMat)
         })
     }
 
-    /// **Source:** `VrmlData_Appearance.hxx`:67 - `VrmlData_Appearance::SetTexture()`
+    /// **Source:** `VrmlData_Appearance.hxx`:70 - `VrmlData_Appearance::SetTexture()`
     ///
     /// Set the Texture
-    pub fn set_texture(&mut self, theTexture: &crate::ffi_types::HandleVrmlDataTexture) {
+    pub fn set_texture(&mut self, theTexture: &crate::ffi_types::Handle_VrmlData_Texture) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlData_Appearance_set_texture(
                 self as *mut Self,
@@ -169,12 +169,12 @@ impl Appearance {
         })
     }
 
-    /// **Source:** `VrmlData_Appearance.hxx`:72 - `VrmlData_Appearance::SetTextureTransform()`
+    /// **Source:** `VrmlData_Appearance.hxx`:78 - `VrmlData_Appearance::SetTextureTransform()`
     ///
     /// Set the Texture Transform
     pub fn set_texture_transform(
         &mut self,
-        theTT: &crate::ffi_types::HandleVrmlDataTextureTransform,
+        theTT: &crate::ffi_types::Handle_VrmlData_TextureTransform,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlData_Appearance_set_texture_transform(
@@ -184,15 +184,15 @@ impl Appearance {
         })
     }
 
-    /// **Source:** `VrmlData_Appearance.hxx`:82 - `VrmlData_Appearance::Clone()`
+    /// **Source:** `VrmlData_Appearance.hxx`:88 - `VrmlData_Appearance::Clone()`
     ///
     /// Create a copy of this node.
     /// If the parameter is null, a new copied node is created. Otherwise new node
     /// is not created, but rather the given one is modified.<p>
     pub fn clone(
         &self,
-        arg0: &crate::ffi_types::HandleVrmlDataNode,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleVrmlDataNode> {
+        arg0: &crate::ffi_types::Handle_VrmlData_Node,
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_VrmlData_Node> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDEVRML::VrmlData_Appearance_clone(self as *const Self, arg0),
@@ -200,7 +200,7 @@ impl Appearance {
         }
     }
 
-    /// **Source:** `VrmlData_Appearance.hxx`:87 - `VrmlData_Appearance::Read()`
+    /// **Source:** `VrmlData_Appearance.hxx`:93 - `VrmlData_Appearance::Read()`
     ///
     /// Read the node from input stream.
     pub fn read(&mut self, theBuffer: &mut InBuffer) -> crate::vrml_data::ErrorStatus {
@@ -210,7 +210,7 @@ impl Appearance {
         .unwrap()
     }
 
-    /// **Source:** `VrmlData_Appearance.hxx`:92 - `VrmlData_Appearance::Write()`
+    /// **Source:** `VrmlData_Appearance.hxx`:98 - `VrmlData_Appearance::Write()`
     ///
     /// Write the Node from input stream.
     pub fn write(&self, thePrefix: &str) -> crate::vrml_data::ErrorStatus {
@@ -224,7 +224,7 @@ impl Appearance {
         .unwrap()
     }
 
-    /// **Source:** `VrmlData_Appearance.hxx`:97 - `VrmlData_Appearance::IsDefault()`
+    /// **Source:** `VrmlData_Appearance.hxx`:103 - `VrmlData_Appearance::IsDefault()`
     ///
     /// Returns True if the node is default, so that it should not be written.
     pub fn is_default(&self) -> bool {
@@ -233,8 +233,8 @@ impl Appearance {
         })
     }
 
-    /// **Source:** `VrmlData_Appearance.hxx`:111 - `VrmlData_Appearance::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `VrmlData_Appearance.hxx`:114 - `VrmlData_Appearance::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKDEVRML::VrmlData_Appearance_dynamic_type(
                 self as *const Self,
@@ -242,7 +242,7 @@ impl Appearance {
         }
     }
 
-    /// **Source:** `VrmlData_Appearance.hxx`:111 - `VrmlData_Appearance::get_type_name()`
+    /// **Source:** `VrmlData_Appearance.hxx`:114 - `VrmlData_Appearance::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -253,8 +253,8 @@ impl Appearance {
         .into_owned()
     }
 
-    /// **Source:** `VrmlData_Appearance.hxx`:111 - `VrmlData_Appearance::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    /// **Source:** `VrmlData_Appearance.hxx`:114 - `VrmlData_Appearance::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKDEVRML::VrmlData_Appearance_get_type_descriptor(),
@@ -307,7 +307,7 @@ impl Appearance {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleVrmlDataAppearance> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_VrmlData_Appearance> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDEVRML::VrmlData_Appearance_to_handle(obj.into_raw()),
@@ -315,7 +315,7 @@ impl Appearance {
         }
     }
 
-    /// Inherited: **Source:** `VrmlData_Node.hxx`:53 - `VrmlData_Node::Scene()`
+    /// Inherited: **Source:** `VrmlData_Node.hxx`:54 - `VrmlData_Node::Scene()`
     pub fn scene(&self) -> &Scene {
         unsafe {
             &*(crate::check_result(
@@ -326,12 +326,12 @@ impl Appearance {
         }
     }
 
-    /// Inherited: **Source:** `VrmlData_Node.hxx`:71 - `VrmlData_Node::ReadNode()`
+    /// Inherited: **Source:** `VrmlData_Node.hxx`:72 - `VrmlData_Node::ReadNode()`
     pub fn read_node(
         &mut self,
         theBuffer: &mut InBuffer,
-        theNode: &mut crate::ffi_types::HandleVrmlDataNode,
-        Type: &crate::ffi_types::HandleStandardType,
+        theNode: &mut crate::ffi_types::Handle_VrmlData_Node,
+        Type: &crate::ffi_types::Handle_Standard_Type,
     ) -> crate::vrml_data::ErrorStatus {
         crate::vrml_data::ErrorStatus::try_from(crate::check_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlData_Appearance_inherited_ReadNode(
@@ -344,7 +344,7 @@ impl Appearance {
         .unwrap()
     }
 
-    /// Inherited: **Source:** `VrmlData_Node.hxx`:93 - `VrmlData_Node::WriteClosing()`
+    /// Inherited: **Source:** `VrmlData_Node.hxx`:94 - `VrmlData_Node::WriteClosing()`
     pub fn write_closing(&self) -> crate::vrml_data::ErrorStatus {
         crate::vrml_data::ErrorStatus::try_from(crate::check_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlData_Appearance_inherited_WriteClosing(
@@ -354,8 +354,8 @@ impl Appearance {
         .unwrap()
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlData_Appearance_inherited_IsInstance(
                 self as *const Self,
@@ -364,8 +364,8 @@ impl Appearance {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlData_Appearance_inherited_IsKind(
                 self as *const Self,
@@ -374,7 +374,7 @@ impl Appearance {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -388,7 +388,7 @@ impl Appearance {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlData_Appearance_inherited_GetRefCount(
@@ -397,7 +397,7 @@ impl Appearance {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlData_Appearance_inherited_IncrementRefCounter(
@@ -406,7 +406,7 @@ impl Appearance {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlData_Appearance_inherited_DecrementRefCounter(
@@ -415,7 +415,7 @@ impl Appearance {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlData_Appearance_inherited_Delete(self as *const Self)
@@ -423,34 +423,36 @@ impl Appearance {
     }
 }
 
-pub use crate::ffi_types::HandleVrmlDataAppearance;
+pub use crate::ffi_types::Handle_VrmlData_Appearance;
 
-unsafe impl crate::CppDeletable for HandleVrmlDataAppearance {
+unsafe impl crate::CppDeletable for Handle_VrmlData_Appearance {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKDEVRML::HandleVrmlDataAppearance_destructor(ptr);
+            crate::ffi_extern_TKDEVRML::Handle_VrmlData_Appearance_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleVrmlDataAppearance {
+unsafe impl crate::CppCopyable for Handle_VrmlData_Appearance {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
         unsafe {
-            crate::check_result(crate::ffi_extern_TKDEVRML::HandleVrmlDataAppearance_clone(ptr))
+            crate::check_result(crate::ffi_extern_TKDEVRML::Handle_VrmlData_Appearance_clone(ptr))
         }
     }
 }
 
-impl HandleVrmlDataAppearance {
+impl Handle_VrmlData_Appearance {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
-        unsafe { crate::ffi_extern_TKDEVRML::HandleVrmlDataAppearance_is_null(self as *const Self) }
+        unsafe {
+            crate::ffi_extern_TKDEVRML::Handle_VrmlData_Appearance_is_null(self as *const Self)
+        }
     }
 
     /// Dereference this Handle to access the underlying VrmlData_Appearance
     pub fn get(&self) -> &crate::ffi_types::VrmlData_Appearance {
         unsafe {
-            &*crate::check_result(crate::ffi_extern_TKDEVRML::HandleVrmlDataAppearance_get(
+            &*crate::check_result(crate::ffi_extern_TKDEVRML::Handle_VrmlData_Appearance_get(
                 self as *const Self,
             ))
         }
@@ -459,17 +461,17 @@ impl HandleVrmlDataAppearance {
     /// Dereference this Handle to mutably access the underlying VrmlData_Appearance
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::VrmlData_Appearance {
         unsafe {
-            &mut *crate::check_result(crate::ffi_extern_TKDEVRML::HandleVrmlDataAppearance_get_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKDEVRML::Handle_VrmlData_Appearance_get_mut(self as *mut Self),
+            )
         }
     }
 
     /// Upcast Handle<VrmlData_Appearance> to Handle<VrmlData_Node>
-    pub fn to_handle_node(&self) -> crate::OwnedPtr<crate::ffi_types::HandleVrmlDataNode> {
+    pub fn to_handle_node(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_VrmlData_Node> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKDEVRML::HandleVrmlDataAppearance_to_HandleVrmlDataNode(
+                crate::ffi_extern_TKDEVRML::Handle_VrmlData_Appearance_to_Handle_VrmlData_Node(
                     self as *const Self,
                 ),
             ))
@@ -479,10 +481,10 @@ impl HandleVrmlDataAppearance {
     /// Upcast Handle<VrmlData_Appearance> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKDEVRML::HandleVrmlDataAppearance_to_HandleStandardTransient(
+                crate::ffi_extern_TKDEVRML::Handle_VrmlData_Appearance_to_Handle_Standard_Transient(
                     self as *const Self,
                 ),
             ))
@@ -597,7 +599,7 @@ impl ArrayVec3d {
         .unwrap()
     }
 
-    /// **Source:** `VrmlData_ArrayVec3d.hxx`:103 - `VrmlData_ArrayVec3d::IsDefault()`
+    /// **Source:** `VrmlData_ArrayVec3d.hxx`:102 - `VrmlData_ArrayVec3d::IsDefault()`
     ///
     /// Returns True if the node is default, so that it should not be written.
     pub fn is_default(&self) -> bool {
@@ -606,8 +608,8 @@ impl ArrayVec3d {
         })
     }
 
-    /// **Source:** `VrmlData_ArrayVec3d.hxx`:124 - `VrmlData_ArrayVec3d::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `VrmlData_ArrayVec3d.hxx`:123 - `VrmlData_ArrayVec3d::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKDEVRML::VrmlData_ArrayVec3d_dynamic_type(
                 self as *const Self,
@@ -615,7 +617,7 @@ impl ArrayVec3d {
         }
     }
 
-    /// **Source:** `VrmlData_ArrayVec3d.hxx`:124 - `VrmlData_ArrayVec3d::get_type_name()`
+    /// **Source:** `VrmlData_ArrayVec3d.hxx`:123 - `VrmlData_ArrayVec3d::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -626,8 +628,8 @@ impl ArrayVec3d {
         .into_owned()
     }
 
-    /// **Source:** `VrmlData_ArrayVec3d.hxx`:124 - `VrmlData_ArrayVec3d::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    /// **Source:** `VrmlData_ArrayVec3d.hxx`:123 - `VrmlData_ArrayVec3d::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKDEVRML::VrmlData_ArrayVec3d_get_type_descriptor(),
@@ -677,7 +679,7 @@ impl ArrayVec3d {
         }
     }
 
-    /// Inherited: **Source:** `VrmlData_Node.hxx`:53 - `VrmlData_Node::Scene()`
+    /// Inherited: **Source:** `VrmlData_Node.hxx`:54 - `VrmlData_Node::Scene()`
     pub fn scene(&self) -> &Scene {
         unsafe {
             &*(crate::check_result(
@@ -688,12 +690,12 @@ impl ArrayVec3d {
         }
     }
 
-    /// Inherited: **Source:** `VrmlData_Node.hxx`:71 - `VrmlData_Node::ReadNode()`
+    /// Inherited: **Source:** `VrmlData_Node.hxx`:72 - `VrmlData_Node::ReadNode()`
     pub fn read_node(
         &mut self,
         theBuffer: &mut InBuffer,
-        theNode: &mut crate::ffi_types::HandleVrmlDataNode,
-        Type: &crate::ffi_types::HandleStandardType,
+        theNode: &mut crate::ffi_types::Handle_VrmlData_Node,
+        Type: &crate::ffi_types::Handle_Standard_Type,
     ) -> crate::vrml_data::ErrorStatus {
         crate::vrml_data::ErrorStatus::try_from(crate::check_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlData_ArrayVec3d_inherited_ReadNode(
@@ -706,7 +708,7 @@ impl ArrayVec3d {
         .unwrap()
     }
 
-    /// Inherited: **Source:** `VrmlData_Node.hxx`:78 - `VrmlData_Node::Read()`
+    /// Inherited: **Source:** `VrmlData_Node.hxx`:79 - `VrmlData_Node::Read()`
     pub fn read(&mut self, theBuffer: &mut InBuffer) -> crate::vrml_data::ErrorStatus {
         crate::vrml_data::ErrorStatus::try_from(crate::check_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlData_ArrayVec3d_inherited_Read(
@@ -717,7 +719,7 @@ impl ArrayVec3d {
         .unwrap()
     }
 
-    /// Inherited: **Source:** `VrmlData_Node.hxx`:93 - `VrmlData_Node::WriteClosing()`
+    /// Inherited: **Source:** `VrmlData_Node.hxx`:94 - `VrmlData_Node::WriteClosing()`
     pub fn write_closing(&self) -> crate::vrml_data::ErrorStatus {
         crate::vrml_data::ErrorStatus::try_from(crate::check_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlData_ArrayVec3d_inherited_WriteClosing(
@@ -727,11 +729,11 @@ impl ArrayVec3d {
         .unwrap()
     }
 
-    /// Inherited: **Source:** `VrmlData_Node.hxx`:102 - `VrmlData_Node::Clone()`
+    /// Inherited: **Source:** `VrmlData_Node.hxx`:103 - `VrmlData_Node::Clone()`
     pub fn clone(
         &self,
-        arg0: &crate::ffi_types::HandleVrmlDataNode,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleVrmlDataNode> {
+        arg0: &crate::ffi_types::Handle_VrmlData_Node,
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_VrmlData_Node> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDEVRML::VrmlData_ArrayVec3d_inherited_Clone(
@@ -742,8 +744,8 @@ impl ArrayVec3d {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlData_ArrayVec3d_inherited_IsInstance(
                 self as *const Self,
@@ -752,8 +754,8 @@ impl ArrayVec3d {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlData_ArrayVec3d_inherited_IsKind(
                 self as *const Self,
@@ -762,7 +764,7 @@ impl ArrayVec3d {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -776,7 +778,7 @@ impl ArrayVec3d {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlData_ArrayVec3d_inherited_GetRefCount(
@@ -785,7 +787,7 @@ impl ArrayVec3d {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlData_ArrayVec3d_inherited_IncrementRefCounter(
@@ -794,7 +796,7 @@ impl ArrayVec3d {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlData_ArrayVec3d_inherited_DecrementRefCounter(
@@ -803,7 +805,7 @@ impl ArrayVec3d {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlData_ArrayVec3d_inherited_Delete(self as *const Self)
@@ -811,34 +813,36 @@ impl ArrayVec3d {
     }
 }
 
-pub use crate::ffi_types::HandleVrmlDataArrayVec3d;
+pub use crate::ffi_types::Handle_VrmlData_ArrayVec3d;
 
-unsafe impl crate::CppDeletable for HandleVrmlDataArrayVec3d {
+unsafe impl crate::CppDeletable for Handle_VrmlData_ArrayVec3d {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKDEVRML::HandleVrmlDataArrayVec3d_destructor(ptr);
+            crate::ffi_extern_TKDEVRML::Handle_VrmlData_ArrayVec3d_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleVrmlDataArrayVec3d {
+unsafe impl crate::CppCopyable for Handle_VrmlData_ArrayVec3d {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
         unsafe {
-            crate::check_result(crate::ffi_extern_TKDEVRML::HandleVrmlDataArrayVec3d_clone(ptr))
+            crate::check_result(crate::ffi_extern_TKDEVRML::Handle_VrmlData_ArrayVec3d_clone(ptr))
         }
     }
 }
 
-impl HandleVrmlDataArrayVec3d {
+impl Handle_VrmlData_ArrayVec3d {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
-        unsafe { crate::ffi_extern_TKDEVRML::HandleVrmlDataArrayVec3d_is_null(self as *const Self) }
+        unsafe {
+            crate::ffi_extern_TKDEVRML::Handle_VrmlData_ArrayVec3d_is_null(self as *const Self)
+        }
     }
 
     /// Dereference this Handle to access the underlying VrmlData_ArrayVec3d
     pub fn get(&self) -> &crate::ffi_types::VrmlData_ArrayVec3d {
         unsafe {
-            &*crate::check_result(crate::ffi_extern_TKDEVRML::HandleVrmlDataArrayVec3d_get(
+            &*crate::check_result(crate::ffi_extern_TKDEVRML::Handle_VrmlData_ArrayVec3d_get(
                 self as *const Self,
             ))
         }
@@ -847,17 +851,17 @@ impl HandleVrmlDataArrayVec3d {
     /// Dereference this Handle to mutably access the underlying VrmlData_ArrayVec3d
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::VrmlData_ArrayVec3d {
         unsafe {
-            &mut *crate::check_result(crate::ffi_extern_TKDEVRML::HandleVrmlDataArrayVec3d_get_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKDEVRML::Handle_VrmlData_ArrayVec3d_get_mut(self as *mut Self),
+            )
         }
     }
 
     /// Upcast Handle<VrmlData_ArrayVec3d> to Handle<VrmlData_Node>
-    pub fn to_handle_node(&self) -> crate::OwnedPtr<crate::ffi_types::HandleVrmlDataNode> {
+    pub fn to_handle_node(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_VrmlData_Node> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKDEVRML::HandleVrmlDataArrayVec3d_to_HandleVrmlDataNode(
+                crate::ffi_extern_TKDEVRML::Handle_VrmlData_ArrayVec3d_to_Handle_VrmlData_Node(
                     self as *const Self,
                 ),
             ))
@@ -867,10 +871,10 @@ impl HandleVrmlDataArrayVec3d {
     /// Upcast Handle<VrmlData_ArrayVec3d> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKDEVRML::HandleVrmlDataArrayVec3d_to_HandleStandardTransient(
+                crate::ffi_extern_TKDEVRML::Handle_VrmlData_ArrayVec3d_to_Handle_Standard_Transient(
                     self as *const Self,
                 ),
             ))
@@ -882,9 +886,9 @@ impl HandleVrmlDataArrayVec3d {
     /// Returns `None` if the handle does not point to a `VrmlData_Color` (or subclass).
     pub fn downcast_to_color(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleVrmlDataColor>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_VrmlData_Color>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKDEVRML::HandleVrmlDataArrayVec3d_downcast_to_HandleVrmlDataColor(
+            crate::ffi_extern_TKDEVRML::Handle_VrmlData_ArrayVec3d_downcast_to_Handle_VrmlData_Color(
                 self as *const Self,
             )
         });
@@ -900,9 +904,9 @@ impl HandleVrmlDataArrayVec3d {
     /// Returns `None` if the handle does not point to a `VrmlData_Coordinate` (or subclass).
     pub fn downcast_to_coordinate(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleVrmlDataCoordinate>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_VrmlData_Coordinate>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKDEVRML::HandleVrmlDataArrayVec3d_downcast_to_HandleVrmlDataCoordinate(self as *const Self)
+            crate::ffi_extern_TKDEVRML::Handle_VrmlData_ArrayVec3d_downcast_to_Handle_VrmlData_Coordinate(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -916,11 +920,9 @@ impl HandleVrmlDataArrayVec3d {
     /// Returns `None` if the handle does not point to a `VrmlData_Normal` (or subclass).
     pub fn downcast_to_normal(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleVrmlDataNormal>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_VrmlData_Normal>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKDEVRML::HandleVrmlDataArrayVec3d_downcast_to_HandleVrmlDataNormal(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKDEVRML::Handle_VrmlData_ArrayVec3d_downcast_to_Handle_VrmlData_Normal(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -1039,7 +1041,7 @@ impl Box {
     ///
     /// Query the primitive topology. This method returns a Null shape if there
     /// is an internal error during the primitive creation (zero radius, etc.)
-    pub fn t_shape(&mut self) -> &crate::ffi_types::HandleTopoDSTShape {
+    pub fn t_shape(&mut self) -> &crate::ffi_types::Handle_TopoDS_TShape {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKDEVRML::VrmlData_Box_t_shape(
                 self as *mut Self,
@@ -1054,8 +1056,8 @@ impl Box {
     /// is not created, but rather the given one is modified.
     pub fn clone(
         &self,
-        theOther: &crate::ffi_types::HandleVrmlDataNode,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleVrmlDataNode> {
+        theOther: &crate::ffi_types::Handle_VrmlData_Node,
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_VrmlData_Node> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDEVRML::VrmlData_Box_clone(self as *const Self, theOther),
@@ -1088,7 +1090,7 @@ impl Box {
     }
 
     /// **Source:** `VrmlData_Box.hxx`:98 - `VrmlData_Box::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKDEVRML::VrmlData_Box_dynamic_type(
                 self as *const Self,
@@ -1108,7 +1110,7 @@ impl Box {
     }
 
     /// **Source:** `VrmlData_Box.hxx`:98 - `VrmlData_Box::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKDEVRML::VrmlData_Box_get_type_descriptor()))
         }
@@ -1175,7 +1177,7 @@ impl Box {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleVrmlDataBox> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_VrmlData_Box> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDEVRML::VrmlData_Box_to_handle(obj.into_raw()),
@@ -1183,7 +1185,7 @@ impl Box {
         }
     }
 
-    /// Inherited: **Source:** `VrmlData_Node.hxx`:53 - `VrmlData_Node::Scene()`
+    /// Inherited: **Source:** `VrmlData_Node.hxx`:54 - `VrmlData_Node::Scene()`
     pub fn scene(&self) -> &Scene {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKDEVRML::VrmlData_Box_inherited_Scene(
@@ -1192,12 +1194,12 @@ impl Box {
         }
     }
 
-    /// Inherited: **Source:** `VrmlData_Node.hxx`:71 - `VrmlData_Node::ReadNode()`
+    /// Inherited: **Source:** `VrmlData_Node.hxx`:72 - `VrmlData_Node::ReadNode()`
     pub fn read_node(
         &mut self,
         theBuffer: &mut InBuffer,
-        theNode: &mut crate::ffi_types::HandleVrmlDataNode,
-        Type: &crate::ffi_types::HandleStandardType,
+        theNode: &mut crate::ffi_types::Handle_VrmlData_Node,
+        Type: &crate::ffi_types::Handle_Standard_Type,
     ) -> crate::vrml_data::ErrorStatus {
         crate::vrml_data::ErrorStatus::try_from(crate::check_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlData_Box_inherited_ReadNode(
@@ -1210,14 +1212,14 @@ impl Box {
         .unwrap()
     }
 
-    /// Inherited: **Source:** `VrmlData_Node.hxx`:88 - `VrmlData_Node::IsDefault()`
+    /// Inherited: **Source:** `VrmlData_Node.hxx`:89 - `VrmlData_Node::IsDefault()`
     pub fn is_default(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlData_Box_inherited_IsDefault(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `VrmlData_Node.hxx`:93 - `VrmlData_Node::WriteClosing()`
+    /// Inherited: **Source:** `VrmlData_Node.hxx`:94 - `VrmlData_Node::WriteClosing()`
     pub fn write_closing(&self) -> crate::vrml_data::ErrorStatus {
         crate::vrml_data::ErrorStatus::try_from(crate::check_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlData_Box_inherited_WriteClosing(self as *const Self)
@@ -1225,8 +1227,8 @@ impl Box {
         .unwrap()
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlData_Box_inherited_IsInstance(
                 self as *const Self,
@@ -1235,14 +1237,14 @@ impl Box {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlData_Box_inherited_IsKind(self as *const Self, theType)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -1256,14 +1258,14 @@ impl Box {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlData_Box_inherited_GetRefCount(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlData_Box_inherited_IncrementRefCounter(
@@ -1272,7 +1274,7 @@ impl Box {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlData_Box_inherited_DecrementRefCounter(
@@ -1281,7 +1283,7 @@ impl Box {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlData_Box_inherited_Delete(self as *const Self)
@@ -1289,32 +1291,32 @@ impl Box {
     }
 }
 
-pub use crate::ffi_types::HandleVrmlDataBox;
+pub use crate::ffi_types::Handle_VrmlData_Box;
 
-unsafe impl crate::CppDeletable for HandleVrmlDataBox {
+unsafe impl crate::CppDeletable for Handle_VrmlData_Box {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKDEVRML::HandleVrmlDataBox_destructor(ptr);
+            crate::ffi_extern_TKDEVRML::Handle_VrmlData_Box_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleVrmlDataBox {
+unsafe impl crate::CppCopyable for Handle_VrmlData_Box {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        unsafe { crate::check_result(crate::ffi_extern_TKDEVRML::HandleVrmlDataBox_clone(ptr)) }
+        unsafe { crate::check_result(crate::ffi_extern_TKDEVRML::Handle_VrmlData_Box_clone(ptr)) }
     }
 }
 
-impl HandleVrmlDataBox {
+impl Handle_VrmlData_Box {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
-        unsafe { crate::ffi_extern_TKDEVRML::HandleVrmlDataBox_is_null(self as *const Self) }
+        unsafe { crate::ffi_extern_TKDEVRML::Handle_VrmlData_Box_is_null(self as *const Self) }
     }
 
     /// Dereference this Handle to access the underlying VrmlData_Box
     pub fn get(&self) -> &crate::ffi_types::VrmlData_Box {
         unsafe {
-            &*crate::check_result(crate::ffi_extern_TKDEVRML::HandleVrmlDataBox_get(
+            &*crate::check_result(crate::ffi_extern_TKDEVRML::Handle_VrmlData_Box_get(
                 self as *const Self,
             ))
         }
@@ -1323,17 +1325,19 @@ impl HandleVrmlDataBox {
     /// Dereference this Handle to mutably access the underlying VrmlData_Box
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::VrmlData_Box {
         unsafe {
-            &mut *crate::check_result(crate::ffi_extern_TKDEVRML::HandleVrmlDataBox_get_mut(
+            &mut *crate::check_result(crate::ffi_extern_TKDEVRML::Handle_VrmlData_Box_get_mut(
                 self as *mut Self,
             ))
         }
     }
 
     /// Upcast Handle<VrmlData_Box> to Handle<VrmlData_Geometry>
-    pub fn to_handle_geometry(&self) -> crate::OwnedPtr<crate::ffi_types::HandleVrmlDataGeometry> {
+    pub fn to_handle_geometry(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_VrmlData_Geometry> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKDEVRML::HandleVrmlDataBox_to_HandleVrmlDataGeometry(
+                crate::ffi_extern_TKDEVRML::Handle_VrmlData_Box_to_Handle_VrmlData_Geometry(
                     self as *const Self,
                 ),
             ))
@@ -1341,10 +1345,10 @@ impl HandleVrmlDataBox {
     }
 
     /// Upcast Handle<VrmlData_Box> to Handle<VrmlData_Node>
-    pub fn to_handle_node(&self) -> crate::OwnedPtr<crate::ffi_types::HandleVrmlDataNode> {
+    pub fn to_handle_node(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_VrmlData_Node> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKDEVRML::HandleVrmlDataBox_to_HandleVrmlDataNode(
+                crate::ffi_extern_TKDEVRML::Handle_VrmlData_Box_to_Handle_VrmlData_Node(
                     self as *const Self,
                 ),
             ))
@@ -1354,10 +1358,10 @@ impl HandleVrmlDataBox {
     /// Upcast Handle<VrmlData_Box> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKDEVRML::HandleVrmlDataBox_to_HandleStandardTransient(
+                crate::ffi_extern_TKDEVRML::Handle_VrmlData_Box_to_Handle_Standard_Transient(
                     self as *const Self,
                 ),
             ))
@@ -1451,8 +1455,8 @@ impl Color {
     /// is not created, but rather the given one is modified.<p>
     pub fn clone(
         &self,
-        theOther: &crate::ffi_types::HandleVrmlDataNode,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleVrmlDataNode> {
+        theOther: &crate::ffi_types::Handle_VrmlData_Node,
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_VrmlData_Node> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDEVRML::VrmlData_Color_clone(self as *const Self, theOther),
@@ -1484,8 +1488,8 @@ impl Color {
         .unwrap()
     }
 
-    /// **Source:** `VrmlData_Color.hxx`:91 - `VrmlData_Color::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `VrmlData_Color.hxx`:88 - `VrmlData_Color::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKDEVRML::VrmlData_Color_dynamic_type(
                 self as *const Self,
@@ -1493,7 +1497,7 @@ impl Color {
         }
     }
 
-    /// **Source:** `VrmlData_Color.hxx`:91 - `VrmlData_Color::get_type_name()`
+    /// **Source:** `VrmlData_Color.hxx`:88 - `VrmlData_Color::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -1504,8 +1508,8 @@ impl Color {
         .into_owned()
     }
 
-    /// **Source:** `VrmlData_Color.hxx`:91 - `VrmlData_Color::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    /// **Source:** `VrmlData_Color.hxx`:88 - `VrmlData_Color::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKDEVRML::VrmlData_Color_get_type_descriptor()))
         }
@@ -1574,7 +1578,7 @@ impl Color {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleVrmlDataColor> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_VrmlData_Color> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDEVRML::VrmlData_Color_to_handle(obj.into_raw()),
@@ -1624,14 +1628,14 @@ impl Color {
         })
     }
 
-    /// Inherited: **Source:** `VrmlData_ArrayVec3d.hxx`:103 - `VrmlData_ArrayVec3d::IsDefault()`
+    /// Inherited: **Source:** `VrmlData_ArrayVec3d.hxx`:102 - `VrmlData_ArrayVec3d::IsDefault()`
     pub fn is_default(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlData_Color_inherited_IsDefault(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `VrmlData_Node.hxx`:53 - `VrmlData_Node::Scene()`
+    /// Inherited: **Source:** `VrmlData_Node.hxx`:54 - `VrmlData_Node::Scene()`
     pub fn scene(&self) -> &Scene {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKDEVRML::VrmlData_Color_inherited_Scene(
@@ -1640,12 +1644,12 @@ impl Color {
         }
     }
 
-    /// Inherited: **Source:** `VrmlData_Node.hxx`:71 - `VrmlData_Node::ReadNode()`
+    /// Inherited: **Source:** `VrmlData_Node.hxx`:72 - `VrmlData_Node::ReadNode()`
     pub fn read_node(
         &mut self,
         theBuffer: &mut InBuffer,
-        theNode: &mut crate::ffi_types::HandleVrmlDataNode,
-        Type: &crate::ffi_types::HandleStandardType,
+        theNode: &mut crate::ffi_types::Handle_VrmlData_Node,
+        Type: &crate::ffi_types::Handle_Standard_Type,
     ) -> crate::vrml_data::ErrorStatus {
         crate::vrml_data::ErrorStatus::try_from(crate::check_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlData_Color_inherited_ReadNode(
@@ -1658,7 +1662,7 @@ impl Color {
         .unwrap()
     }
 
-    /// Inherited: **Source:** `VrmlData_Node.hxx`:93 - `VrmlData_Node::WriteClosing()`
+    /// Inherited: **Source:** `VrmlData_Node.hxx`:94 - `VrmlData_Node::WriteClosing()`
     pub fn write_closing(&self) -> crate::vrml_data::ErrorStatus {
         crate::vrml_data::ErrorStatus::try_from(crate::check_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlData_Color_inherited_WriteClosing(self as *const Self)
@@ -1666,8 +1670,8 @@ impl Color {
         .unwrap()
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlData_Color_inherited_IsInstance(
                 self as *const Self,
@@ -1676,8 +1680,8 @@ impl Color {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlData_Color_inherited_IsKind(
                 self as *const Self,
@@ -1686,7 +1690,7 @@ impl Color {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -1700,14 +1704,14 @@ impl Color {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlData_Color_inherited_GetRefCount(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlData_Color_inherited_IncrementRefCounter(
@@ -1716,7 +1720,7 @@ impl Color {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlData_Color_inherited_DecrementRefCounter(
@@ -1725,7 +1729,7 @@ impl Color {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlData_Color_inherited_Delete(self as *const Self)
@@ -1733,32 +1737,32 @@ impl Color {
     }
 }
 
-pub use crate::ffi_types::HandleVrmlDataColor;
+pub use crate::ffi_types::Handle_VrmlData_Color;
 
-unsafe impl crate::CppDeletable for HandleVrmlDataColor {
+unsafe impl crate::CppDeletable for Handle_VrmlData_Color {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKDEVRML::HandleVrmlDataColor_destructor(ptr);
+            crate::ffi_extern_TKDEVRML::Handle_VrmlData_Color_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleVrmlDataColor {
+unsafe impl crate::CppCopyable for Handle_VrmlData_Color {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        unsafe { crate::check_result(crate::ffi_extern_TKDEVRML::HandleVrmlDataColor_clone(ptr)) }
+        unsafe { crate::check_result(crate::ffi_extern_TKDEVRML::Handle_VrmlData_Color_clone(ptr)) }
     }
 }
 
-impl HandleVrmlDataColor {
+impl Handle_VrmlData_Color {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
-        unsafe { crate::ffi_extern_TKDEVRML::HandleVrmlDataColor_is_null(self as *const Self) }
+        unsafe { crate::ffi_extern_TKDEVRML::Handle_VrmlData_Color_is_null(self as *const Self) }
     }
 
     /// Dereference this Handle to access the underlying VrmlData_Color
     pub fn get(&self) -> &crate::ffi_types::VrmlData_Color {
         unsafe {
-            &*crate::check_result(crate::ffi_extern_TKDEVRML::HandleVrmlDataColor_get(
+            &*crate::check_result(crate::ffi_extern_TKDEVRML::Handle_VrmlData_Color_get(
                 self as *const Self,
             ))
         }
@@ -1767,7 +1771,7 @@ impl HandleVrmlDataColor {
     /// Dereference this Handle to mutably access the underlying VrmlData_Color
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::VrmlData_Color {
         unsafe {
-            &mut *crate::check_result(crate::ffi_extern_TKDEVRML::HandleVrmlDataColor_get_mut(
+            &mut *crate::check_result(crate::ffi_extern_TKDEVRML::Handle_VrmlData_Color_get_mut(
                 self as *mut Self,
             ))
         }
@@ -1776,10 +1780,10 @@ impl HandleVrmlDataColor {
     /// Upcast Handle<VrmlData_Color> to Handle<VrmlData_ArrayVec3d>
     pub fn to_handle_array_vec3d(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleVrmlDataArrayVec3d> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_VrmlData_ArrayVec3d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKDEVRML::HandleVrmlDataColor_to_HandleVrmlDataArrayVec3d(
+                crate::ffi_extern_TKDEVRML::Handle_VrmlData_Color_to_Handle_VrmlData_ArrayVec3d(
                     self as *const Self,
                 ),
             ))
@@ -1787,10 +1791,10 @@ impl HandleVrmlDataColor {
     }
 
     /// Upcast Handle<VrmlData_Color> to Handle<VrmlData_Node>
-    pub fn to_handle_node(&self) -> crate::OwnedPtr<crate::ffi_types::HandleVrmlDataNode> {
+    pub fn to_handle_node(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_VrmlData_Node> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKDEVRML::HandleVrmlDataColor_to_HandleVrmlDataNode(
+                crate::ffi_extern_TKDEVRML::Handle_VrmlData_Color_to_Handle_VrmlData_Node(
                     self as *const Self,
                 ),
             ))
@@ -1800,10 +1804,10 @@ impl HandleVrmlDataColor {
     /// Upcast Handle<VrmlData_Color> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKDEVRML::HandleVrmlDataColor_to_HandleStandardTransient(
+                crate::ffi_extern_TKDEVRML::Handle_VrmlData_Color_to_Handle_Standard_Transient(
                     self as *const Self,
                 ),
             ))
@@ -1956,7 +1960,7 @@ impl Cone {
     ///
     /// Query the primitive topology. This method returns a Null shape if there
     /// is an internal error during the primitive creation (zero radius, etc.)
-    pub fn t_shape(&mut self) -> &crate::ffi_types::HandleTopoDSTShape {
+    pub fn t_shape(&mut self) -> &crate::ffi_types::Handle_TopoDS_TShape {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKDEVRML::VrmlData_Cone_t_shape(
                 self as *mut Self,
@@ -1971,8 +1975,8 @@ impl Cone {
     /// is not created, but rather the given one is modified.
     pub fn clone(
         &self,
-        theOther: &crate::ffi_types::HandleVrmlDataNode,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleVrmlDataNode> {
+        theOther: &crate::ffi_types::Handle_VrmlData_Node,
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_VrmlData_Node> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDEVRML::VrmlData_Cone_clone(self as *const Self, theOther),
@@ -2004,8 +2008,8 @@ impl Cone {
         .unwrap()
     }
 
-    /// **Source:** `VrmlData_Cone.hxx`:142 - `VrmlData_Cone::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `VrmlData_Cone.hxx`:139 - `VrmlData_Cone::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKDEVRML::VrmlData_Cone_dynamic_type(
                 self as *const Self,
@@ -2013,7 +2017,7 @@ impl Cone {
         }
     }
 
-    /// **Source:** `VrmlData_Cone.hxx`:142 - `VrmlData_Cone::get_type_name()`
+    /// **Source:** `VrmlData_Cone.hxx`:139 - `VrmlData_Cone::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -2024,8 +2028,8 @@ impl Cone {
         .into_owned()
     }
 
-    /// **Source:** `VrmlData_Cone.hxx`:142 - `VrmlData_Cone::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    /// **Source:** `VrmlData_Cone.hxx`:139 - `VrmlData_Cone::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKDEVRML::VrmlData_Cone_get_type_descriptor()))
         }
@@ -2092,7 +2096,7 @@ impl Cone {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleVrmlDataCone> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_VrmlData_Cone> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDEVRML::VrmlData_Cone_to_handle(obj.into_raw()),
@@ -2100,7 +2104,7 @@ impl Cone {
         }
     }
 
-    /// Inherited: **Source:** `VrmlData_Node.hxx`:53 - `VrmlData_Node::Scene()`
+    /// Inherited: **Source:** `VrmlData_Node.hxx`:54 - `VrmlData_Node::Scene()`
     pub fn scene(&self) -> &Scene {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKDEVRML::VrmlData_Cone_inherited_Scene(
@@ -2109,12 +2113,12 @@ impl Cone {
         }
     }
 
-    /// Inherited: **Source:** `VrmlData_Node.hxx`:71 - `VrmlData_Node::ReadNode()`
+    /// Inherited: **Source:** `VrmlData_Node.hxx`:72 - `VrmlData_Node::ReadNode()`
     pub fn read_node(
         &mut self,
         theBuffer: &mut InBuffer,
-        theNode: &mut crate::ffi_types::HandleVrmlDataNode,
-        Type: &crate::ffi_types::HandleStandardType,
+        theNode: &mut crate::ffi_types::Handle_VrmlData_Node,
+        Type: &crate::ffi_types::Handle_Standard_Type,
     ) -> crate::vrml_data::ErrorStatus {
         crate::vrml_data::ErrorStatus::try_from(crate::check_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlData_Cone_inherited_ReadNode(
@@ -2127,14 +2131,14 @@ impl Cone {
         .unwrap()
     }
 
-    /// Inherited: **Source:** `VrmlData_Node.hxx`:88 - `VrmlData_Node::IsDefault()`
+    /// Inherited: **Source:** `VrmlData_Node.hxx`:89 - `VrmlData_Node::IsDefault()`
     pub fn is_default(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlData_Cone_inherited_IsDefault(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `VrmlData_Node.hxx`:93 - `VrmlData_Node::WriteClosing()`
+    /// Inherited: **Source:** `VrmlData_Node.hxx`:94 - `VrmlData_Node::WriteClosing()`
     pub fn write_closing(&self) -> crate::vrml_data::ErrorStatus {
         crate::vrml_data::ErrorStatus::try_from(crate::check_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlData_Cone_inherited_WriteClosing(self as *const Self)
@@ -2142,8 +2146,8 @@ impl Cone {
         .unwrap()
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlData_Cone_inherited_IsInstance(
                 self as *const Self,
@@ -2152,14 +2156,14 @@ impl Cone {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlData_Cone_inherited_IsKind(self as *const Self, theType)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -2173,14 +2177,14 @@ impl Cone {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlData_Cone_inherited_GetRefCount(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlData_Cone_inherited_IncrementRefCounter(
@@ -2189,7 +2193,7 @@ impl Cone {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlData_Cone_inherited_DecrementRefCounter(
@@ -2198,7 +2202,7 @@ impl Cone {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlData_Cone_inherited_Delete(self as *const Self)
@@ -2206,32 +2210,32 @@ impl Cone {
     }
 }
 
-pub use crate::ffi_types::HandleVrmlDataCone;
+pub use crate::ffi_types::Handle_VrmlData_Cone;
 
-unsafe impl crate::CppDeletable for HandleVrmlDataCone {
+unsafe impl crate::CppDeletable for Handle_VrmlData_Cone {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKDEVRML::HandleVrmlDataCone_destructor(ptr);
+            crate::ffi_extern_TKDEVRML::Handle_VrmlData_Cone_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleVrmlDataCone {
+unsafe impl crate::CppCopyable for Handle_VrmlData_Cone {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        unsafe { crate::check_result(crate::ffi_extern_TKDEVRML::HandleVrmlDataCone_clone(ptr)) }
+        unsafe { crate::check_result(crate::ffi_extern_TKDEVRML::Handle_VrmlData_Cone_clone(ptr)) }
     }
 }
 
-impl HandleVrmlDataCone {
+impl Handle_VrmlData_Cone {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
-        unsafe { crate::ffi_extern_TKDEVRML::HandleVrmlDataCone_is_null(self as *const Self) }
+        unsafe { crate::ffi_extern_TKDEVRML::Handle_VrmlData_Cone_is_null(self as *const Self) }
     }
 
     /// Dereference this Handle to access the underlying VrmlData_Cone
     pub fn get(&self) -> &crate::ffi_types::VrmlData_Cone {
         unsafe {
-            &*crate::check_result(crate::ffi_extern_TKDEVRML::HandleVrmlDataCone_get(
+            &*crate::check_result(crate::ffi_extern_TKDEVRML::Handle_VrmlData_Cone_get(
                 self as *const Self,
             ))
         }
@@ -2240,17 +2244,19 @@ impl HandleVrmlDataCone {
     /// Dereference this Handle to mutably access the underlying VrmlData_Cone
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::VrmlData_Cone {
         unsafe {
-            &mut *crate::check_result(crate::ffi_extern_TKDEVRML::HandleVrmlDataCone_get_mut(
+            &mut *crate::check_result(crate::ffi_extern_TKDEVRML::Handle_VrmlData_Cone_get_mut(
                 self as *mut Self,
             ))
         }
     }
 
     /// Upcast Handle<VrmlData_Cone> to Handle<VrmlData_Geometry>
-    pub fn to_handle_geometry(&self) -> crate::OwnedPtr<crate::ffi_types::HandleVrmlDataGeometry> {
+    pub fn to_handle_geometry(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_VrmlData_Geometry> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKDEVRML::HandleVrmlDataCone_to_HandleVrmlDataGeometry(
+                crate::ffi_extern_TKDEVRML::Handle_VrmlData_Cone_to_Handle_VrmlData_Geometry(
                     self as *const Self,
                 ),
             ))
@@ -2258,10 +2264,10 @@ impl HandleVrmlDataCone {
     }
 
     /// Upcast Handle<VrmlData_Cone> to Handle<VrmlData_Node>
-    pub fn to_handle_node(&self) -> crate::OwnedPtr<crate::ffi_types::HandleVrmlDataNode> {
+    pub fn to_handle_node(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_VrmlData_Node> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKDEVRML::HandleVrmlDataCone_to_HandleVrmlDataNode(
+                crate::ffi_extern_TKDEVRML::Handle_VrmlData_Cone_to_Handle_VrmlData_Node(
                     self as *const Self,
                 ),
             ))
@@ -2271,10 +2277,10 @@ impl HandleVrmlDataCone {
     /// Upcast Handle<VrmlData_Cone> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKDEVRML::HandleVrmlDataCone_to_HandleStandardTransient(
+                crate::ffi_extern_TKDEVRML::Handle_VrmlData_Cone_to_Handle_Standard_Transient(
                     self as *const Self,
                 ),
             ))
@@ -2356,8 +2362,8 @@ impl Coordinate {
     /// is not created, but rather the given one is modified.
     pub fn clone(
         &self,
-        theOther: &crate::ffi_types::HandleVrmlDataNode,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleVrmlDataNode> {
+        theOther: &crate::ffi_types::Handle_VrmlData_Node,
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_VrmlData_Node> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDEVRML::VrmlData_Coordinate_clone(
@@ -2392,8 +2398,8 @@ impl Coordinate {
         .unwrap()
     }
 
-    /// **Source:** `VrmlData_Coordinate.hxx`:77 - `VrmlData_Coordinate::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `VrmlData_Coordinate.hxx`:74 - `VrmlData_Coordinate::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKDEVRML::VrmlData_Coordinate_dynamic_type(
                 self as *const Self,
@@ -2401,7 +2407,7 @@ impl Coordinate {
         }
     }
 
-    /// **Source:** `VrmlData_Coordinate.hxx`:77 - `VrmlData_Coordinate::get_type_name()`
+    /// **Source:** `VrmlData_Coordinate.hxx`:74 - `VrmlData_Coordinate::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -2412,8 +2418,8 @@ impl Coordinate {
         .into_owned()
     }
 
-    /// **Source:** `VrmlData_Coordinate.hxx`:77 - `VrmlData_Coordinate::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    /// **Source:** `VrmlData_Coordinate.hxx`:74 - `VrmlData_Coordinate::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKDEVRML::VrmlData_Coordinate_get_type_descriptor(),
@@ -2488,7 +2494,7 @@ impl Coordinate {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleVrmlDataCoordinate> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_VrmlData_Coordinate> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDEVRML::VrmlData_Coordinate_to_handle(obj.into_raw()),
@@ -2540,14 +2546,14 @@ impl Coordinate {
         })
     }
 
-    /// Inherited: **Source:** `VrmlData_ArrayVec3d.hxx`:103 - `VrmlData_ArrayVec3d::IsDefault()`
+    /// Inherited: **Source:** `VrmlData_ArrayVec3d.hxx`:102 - `VrmlData_ArrayVec3d::IsDefault()`
     pub fn is_default(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlData_Coordinate_inherited_IsDefault(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `VrmlData_Node.hxx`:53 - `VrmlData_Node::Scene()`
+    /// Inherited: **Source:** `VrmlData_Node.hxx`:54 - `VrmlData_Node::Scene()`
     pub fn scene(&self) -> &Scene {
         unsafe {
             &*(crate::check_result(
@@ -2558,12 +2564,12 @@ impl Coordinate {
         }
     }
 
-    /// Inherited: **Source:** `VrmlData_Node.hxx`:71 - `VrmlData_Node::ReadNode()`
+    /// Inherited: **Source:** `VrmlData_Node.hxx`:72 - `VrmlData_Node::ReadNode()`
     pub fn read_node(
         &mut self,
         theBuffer: &mut InBuffer,
-        theNode: &mut crate::ffi_types::HandleVrmlDataNode,
-        Type: &crate::ffi_types::HandleStandardType,
+        theNode: &mut crate::ffi_types::Handle_VrmlData_Node,
+        Type: &crate::ffi_types::Handle_Standard_Type,
     ) -> crate::vrml_data::ErrorStatus {
         crate::vrml_data::ErrorStatus::try_from(crate::check_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlData_Coordinate_inherited_ReadNode(
@@ -2576,7 +2582,7 @@ impl Coordinate {
         .unwrap()
     }
 
-    /// Inherited: **Source:** `VrmlData_Node.hxx`:93 - `VrmlData_Node::WriteClosing()`
+    /// Inherited: **Source:** `VrmlData_Node.hxx`:94 - `VrmlData_Node::WriteClosing()`
     pub fn write_closing(&self) -> crate::vrml_data::ErrorStatus {
         crate::vrml_data::ErrorStatus::try_from(crate::check_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlData_Coordinate_inherited_WriteClosing(
@@ -2586,8 +2592,8 @@ impl Coordinate {
         .unwrap()
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlData_Coordinate_inherited_IsInstance(
                 self as *const Self,
@@ -2596,8 +2602,8 @@ impl Coordinate {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlData_Coordinate_inherited_IsKind(
                 self as *const Self,
@@ -2606,7 +2612,7 @@ impl Coordinate {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -2620,7 +2626,7 @@ impl Coordinate {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlData_Coordinate_inherited_GetRefCount(
@@ -2629,7 +2635,7 @@ impl Coordinate {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlData_Coordinate_inherited_IncrementRefCounter(
@@ -2638,7 +2644,7 @@ impl Coordinate {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlData_Coordinate_inherited_DecrementRefCounter(
@@ -2647,7 +2653,7 @@ impl Coordinate {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlData_Coordinate_inherited_Delete(self as *const Self)
@@ -2655,34 +2661,36 @@ impl Coordinate {
     }
 }
 
-pub use crate::ffi_types::HandleVrmlDataCoordinate;
+pub use crate::ffi_types::Handle_VrmlData_Coordinate;
 
-unsafe impl crate::CppDeletable for HandleVrmlDataCoordinate {
+unsafe impl crate::CppDeletable for Handle_VrmlData_Coordinate {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKDEVRML::HandleVrmlDataCoordinate_destructor(ptr);
+            crate::ffi_extern_TKDEVRML::Handle_VrmlData_Coordinate_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleVrmlDataCoordinate {
+unsafe impl crate::CppCopyable for Handle_VrmlData_Coordinate {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
         unsafe {
-            crate::check_result(crate::ffi_extern_TKDEVRML::HandleVrmlDataCoordinate_clone(ptr))
+            crate::check_result(crate::ffi_extern_TKDEVRML::Handle_VrmlData_Coordinate_clone(ptr))
         }
     }
 }
 
-impl HandleVrmlDataCoordinate {
+impl Handle_VrmlData_Coordinate {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
-        unsafe { crate::ffi_extern_TKDEVRML::HandleVrmlDataCoordinate_is_null(self as *const Self) }
+        unsafe {
+            crate::ffi_extern_TKDEVRML::Handle_VrmlData_Coordinate_is_null(self as *const Self)
+        }
     }
 
     /// Dereference this Handle to access the underlying VrmlData_Coordinate
     pub fn get(&self) -> &crate::ffi_types::VrmlData_Coordinate {
         unsafe {
-            &*crate::check_result(crate::ffi_extern_TKDEVRML::HandleVrmlDataCoordinate_get(
+            &*crate::check_result(crate::ffi_extern_TKDEVRML::Handle_VrmlData_Coordinate_get(
                 self as *const Self,
             ))
         }
@@ -2691,30 +2699,26 @@ impl HandleVrmlDataCoordinate {
     /// Dereference this Handle to mutably access the underlying VrmlData_Coordinate
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::VrmlData_Coordinate {
         unsafe {
-            &mut *crate::check_result(crate::ffi_extern_TKDEVRML::HandleVrmlDataCoordinate_get_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKDEVRML::Handle_VrmlData_Coordinate_get_mut(self as *mut Self),
+            )
         }
     }
 
     /// Upcast Handle<VrmlData_Coordinate> to Handle<VrmlData_ArrayVec3d>
     pub fn to_handle_array_vec3d(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleVrmlDataArrayVec3d> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_VrmlData_ArrayVec3d> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKDEVRML::HandleVrmlDataCoordinate_to_HandleVrmlDataArrayVec3d(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEVRML::Handle_VrmlData_Coordinate_to_Handle_VrmlData_ArrayVec3d(self as *const Self)))
         }
     }
 
     /// Upcast Handle<VrmlData_Coordinate> to Handle<VrmlData_Node>
-    pub fn to_handle_node(&self) -> crate::OwnedPtr<crate::ffi_types::HandleVrmlDataNode> {
+    pub fn to_handle_node(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_VrmlData_Node> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKDEVRML::HandleVrmlDataCoordinate_to_HandleVrmlDataNode(
+                crate::ffi_extern_TKDEVRML::Handle_VrmlData_Coordinate_to_Handle_VrmlData_Node(
                     self as *const Self,
                 ),
             ))
@@ -2724,10 +2728,10 @@ impl HandleVrmlDataCoordinate {
     /// Upcast Handle<VrmlData_Coordinate> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKDEVRML::HandleVrmlDataCoordinate_to_HandleStandardTransient(
+                crate::ffi_extern_TKDEVRML::Handle_VrmlData_Coordinate_to_Handle_Standard_Transient(
                     self as *const Self,
                 ),
             ))
@@ -2881,11 +2885,11 @@ impl Cylinder {
         })
     }
 
-    /// **Source:** `VrmlData_Cylinder.hxx`:117 - `VrmlData_Cylinder::TShape()`
+    /// **Source:** `VrmlData_Cylinder.hxx`:115 - `VrmlData_Cylinder::TShape()`
     ///
     /// Query the primitive topology. This method returns a Null shape if there
     /// is an internal error during the primitive creation (zero radius, etc.)
-    pub fn t_shape(&mut self) -> &crate::ffi_types::HandleTopoDSTShape {
+    pub fn t_shape(&mut self) -> &crate::ffi_types::Handle_TopoDS_TShape {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKDEVRML::VrmlData_Cylinder_t_shape(
                 self as *mut Self,
@@ -2893,15 +2897,15 @@ impl Cylinder {
         }
     }
 
-    /// **Source:** `VrmlData_Cylinder.hxx`:124 - `VrmlData_Cylinder::Clone()`
+    /// **Source:** `VrmlData_Cylinder.hxx`:122 - `VrmlData_Cylinder::Clone()`
     ///
     /// Create a copy of this node.
     /// If the parameter is null, a new copied node is created. Otherwise new node
     /// is not created, but rather the given one is modified.
     pub fn clone(
         &self,
-        theOther: &crate::ffi_types::HandleVrmlDataNode,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleVrmlDataNode> {
+        theOther: &crate::ffi_types::Handle_VrmlData_Node,
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_VrmlData_Node> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDEVRML::VrmlData_Cylinder_clone(self as *const Self, theOther),
@@ -2909,7 +2913,7 @@ impl Cylinder {
         }
     }
 
-    /// **Source:** `VrmlData_Cylinder.hxx`:130 - `VrmlData_Cylinder::Read()`
+    /// **Source:** `VrmlData_Cylinder.hxx`:128 - `VrmlData_Cylinder::Read()`
     ///
     /// Fill the Node internal data from the given input stream.
     pub fn read(&mut self, theBuffer: &mut InBuffer) -> crate::vrml_data::ErrorStatus {
@@ -2919,7 +2923,7 @@ impl Cylinder {
         .unwrap()
     }
 
-    /// **Source:** `VrmlData_Cylinder.hxx`:135 - `VrmlData_Cylinder::Write()`
+    /// **Source:** `VrmlData_Cylinder.hxx`:133 - `VrmlData_Cylinder::Write()`
     ///
     /// Write the Node to output stream.
     pub fn write(&self, thePrefix: &str) -> crate::vrml_data::ErrorStatus {
@@ -2933,8 +2937,8 @@ impl Cylinder {
         .unwrap()
     }
 
-    /// **Source:** `VrmlData_Cylinder.hxx`:150 - `VrmlData_Cylinder::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `VrmlData_Cylinder.hxx`:145 - `VrmlData_Cylinder::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKDEVRML::VrmlData_Cylinder_dynamic_type(
                 self as *const Self,
@@ -2942,7 +2946,7 @@ impl Cylinder {
         }
     }
 
-    /// **Source:** `VrmlData_Cylinder.hxx`:150 - `VrmlData_Cylinder::get_type_name()`
+    /// **Source:** `VrmlData_Cylinder.hxx`:145 - `VrmlData_Cylinder::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -2953,8 +2957,8 @@ impl Cylinder {
         .into_owned()
     }
 
-    /// **Source:** `VrmlData_Cylinder.hxx`:150 - `VrmlData_Cylinder::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    /// **Source:** `VrmlData_Cylinder.hxx`:145 - `VrmlData_Cylinder::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKDEVRML::VrmlData_Cylinder_get_type_descriptor(),
@@ -3029,7 +3033,7 @@ impl Cylinder {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleVrmlDataCylinder> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_VrmlData_Cylinder> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDEVRML::VrmlData_Cylinder_to_handle(obj.into_raw()),
@@ -3037,7 +3041,7 @@ impl Cylinder {
         }
     }
 
-    /// Inherited: **Source:** `VrmlData_Node.hxx`:53 - `VrmlData_Node::Scene()`
+    /// Inherited: **Source:** `VrmlData_Node.hxx`:54 - `VrmlData_Node::Scene()`
     pub fn scene(&self) -> &Scene {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKDEVRML::VrmlData_Cylinder_inherited_Scene(
@@ -3046,12 +3050,12 @@ impl Cylinder {
         }
     }
 
-    /// Inherited: **Source:** `VrmlData_Node.hxx`:71 - `VrmlData_Node::ReadNode()`
+    /// Inherited: **Source:** `VrmlData_Node.hxx`:72 - `VrmlData_Node::ReadNode()`
     pub fn read_node(
         &mut self,
         theBuffer: &mut InBuffer,
-        theNode: &mut crate::ffi_types::HandleVrmlDataNode,
-        Type: &crate::ffi_types::HandleStandardType,
+        theNode: &mut crate::ffi_types::Handle_VrmlData_Node,
+        Type: &crate::ffi_types::Handle_Standard_Type,
     ) -> crate::vrml_data::ErrorStatus {
         crate::vrml_data::ErrorStatus::try_from(crate::check_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlData_Cylinder_inherited_ReadNode(
@@ -3064,14 +3068,14 @@ impl Cylinder {
         .unwrap()
     }
 
-    /// Inherited: **Source:** `VrmlData_Node.hxx`:88 - `VrmlData_Node::IsDefault()`
+    /// Inherited: **Source:** `VrmlData_Node.hxx`:89 - `VrmlData_Node::IsDefault()`
     pub fn is_default(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlData_Cylinder_inherited_IsDefault(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `VrmlData_Node.hxx`:93 - `VrmlData_Node::WriteClosing()`
+    /// Inherited: **Source:** `VrmlData_Node.hxx`:94 - `VrmlData_Node::WriteClosing()`
     pub fn write_closing(&self) -> crate::vrml_data::ErrorStatus {
         crate::vrml_data::ErrorStatus::try_from(crate::check_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlData_Cylinder_inherited_WriteClosing(
@@ -3081,8 +3085,8 @@ impl Cylinder {
         .unwrap()
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlData_Cylinder_inherited_IsInstance(
                 self as *const Self,
@@ -3091,8 +3095,8 @@ impl Cylinder {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlData_Cylinder_inherited_IsKind(
                 self as *const Self,
@@ -3101,7 +3105,7 @@ impl Cylinder {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -3115,14 +3119,14 @@ impl Cylinder {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlData_Cylinder_inherited_GetRefCount(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlData_Cylinder_inherited_IncrementRefCounter(
@@ -3131,7 +3135,7 @@ impl Cylinder {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlData_Cylinder_inherited_DecrementRefCounter(
@@ -3140,7 +3144,7 @@ impl Cylinder {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlData_Cylinder_inherited_Delete(self as *const Self)
@@ -3148,34 +3152,34 @@ impl Cylinder {
     }
 }
 
-pub use crate::ffi_types::HandleVrmlDataCylinder;
+pub use crate::ffi_types::Handle_VrmlData_Cylinder;
 
-unsafe impl crate::CppDeletable for HandleVrmlDataCylinder {
+unsafe impl crate::CppDeletable for Handle_VrmlData_Cylinder {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKDEVRML::HandleVrmlDataCylinder_destructor(ptr);
+            crate::ffi_extern_TKDEVRML::Handle_VrmlData_Cylinder_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleVrmlDataCylinder {
+unsafe impl crate::CppCopyable for Handle_VrmlData_Cylinder {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
         unsafe {
-            crate::check_result(crate::ffi_extern_TKDEVRML::HandleVrmlDataCylinder_clone(ptr))
+            crate::check_result(crate::ffi_extern_TKDEVRML::Handle_VrmlData_Cylinder_clone(ptr))
         }
     }
 }
 
-impl HandleVrmlDataCylinder {
+impl Handle_VrmlData_Cylinder {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
-        unsafe { crate::ffi_extern_TKDEVRML::HandleVrmlDataCylinder_is_null(self as *const Self) }
+        unsafe { crate::ffi_extern_TKDEVRML::Handle_VrmlData_Cylinder_is_null(self as *const Self) }
     }
 
     /// Dereference this Handle to access the underlying VrmlData_Cylinder
     pub fn get(&self) -> &crate::ffi_types::VrmlData_Cylinder {
         unsafe {
-            &*crate::check_result(crate::ffi_extern_TKDEVRML::HandleVrmlDataCylinder_get(
+            &*crate::check_result(crate::ffi_extern_TKDEVRML::Handle_VrmlData_Cylinder_get(
                 self as *const Self,
             ))
         }
@@ -3184,17 +3188,19 @@ impl HandleVrmlDataCylinder {
     /// Dereference this Handle to mutably access the underlying VrmlData_Cylinder
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::VrmlData_Cylinder {
         unsafe {
-            &mut *crate::check_result(crate::ffi_extern_TKDEVRML::HandleVrmlDataCylinder_get_mut(
+            &mut *crate::check_result(crate::ffi_extern_TKDEVRML::Handle_VrmlData_Cylinder_get_mut(
                 self as *mut Self,
             ))
         }
     }
 
     /// Upcast Handle<VrmlData_Cylinder> to Handle<VrmlData_Geometry>
-    pub fn to_handle_geometry(&self) -> crate::OwnedPtr<crate::ffi_types::HandleVrmlDataGeometry> {
+    pub fn to_handle_geometry(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_VrmlData_Geometry> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKDEVRML::HandleVrmlDataCylinder_to_HandleVrmlDataGeometry(
+                crate::ffi_extern_TKDEVRML::Handle_VrmlData_Cylinder_to_Handle_VrmlData_Geometry(
                     self as *const Self,
                 ),
             ))
@@ -3202,10 +3208,10 @@ impl HandleVrmlDataCylinder {
     }
 
     /// Upcast Handle<VrmlData_Cylinder> to Handle<VrmlData_Node>
-    pub fn to_handle_node(&self) -> crate::OwnedPtr<crate::ffi_types::HandleVrmlDataNode> {
+    pub fn to_handle_node(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_VrmlData_Node> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKDEVRML::HandleVrmlDataCylinder_to_HandleVrmlDataNode(
+                crate::ffi_extern_TKDEVRML::Handle_VrmlData_Cylinder_to_Handle_VrmlData_Node(
                     self as *const Self,
                 ),
             ))
@@ -3215,10 +3221,10 @@ impl HandleVrmlDataCylinder {
     /// Upcast Handle<VrmlData_Cylinder> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKDEVRML::HandleVrmlDataCylinder_to_HandleStandardTransient(
+                crate::ffi_extern_TKDEVRML::Handle_VrmlData_Cylinder_to_Handle_Standard_Transient(
                     self as *const Self,
                 ),
             ))
@@ -3321,7 +3327,7 @@ impl Faceted {
     }
 
     /// **Source:** `VrmlData_Faceted.hxx`:112 - `VrmlData_Faceted::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKDEVRML::VrmlData_Faceted_dynamic_type(
                 self as *const Self,
@@ -3341,7 +3347,7 @@ impl Faceted {
     }
 
     /// **Source:** `VrmlData_Faceted.hxx`:112 - `VrmlData_Faceted::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKDEVRML::VrmlData_Faceted_get_type_descriptor(),
@@ -3414,7 +3420,7 @@ impl Faceted {
     }
 
     /// Inherited: **Source:** `VrmlData_Geometry.hxx`:53 - `VrmlData_Geometry::TShape()`
-    pub fn t_shape(&mut self) -> &crate::ffi_types::HandleTopoDSTShape {
+    pub fn t_shape(&mut self) -> &crate::ffi_types::Handle_TopoDS_TShape {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKDEVRML::VrmlData_Faceted_inherited_TShape(
                 self as *mut Self,
@@ -3422,7 +3428,7 @@ impl Faceted {
         }
     }
 
-    /// Inherited: **Source:** `VrmlData_Node.hxx`:53 - `VrmlData_Node::Scene()`
+    /// Inherited: **Source:** `VrmlData_Node.hxx`:54 - `VrmlData_Node::Scene()`
     pub fn scene(&self) -> &Scene {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKDEVRML::VrmlData_Faceted_inherited_Scene(
@@ -3431,12 +3437,12 @@ impl Faceted {
         }
     }
 
-    /// Inherited: **Source:** `VrmlData_Node.hxx`:71 - `VrmlData_Node::ReadNode()`
+    /// Inherited: **Source:** `VrmlData_Node.hxx`:72 - `VrmlData_Node::ReadNode()`
     pub fn read_node(
         &mut self,
         theBuffer: &mut InBuffer,
-        theNode: &mut crate::ffi_types::HandleVrmlDataNode,
-        Type: &crate::ffi_types::HandleStandardType,
+        theNode: &mut crate::ffi_types::Handle_VrmlData_Node,
+        Type: &crate::ffi_types::Handle_Standard_Type,
     ) -> crate::vrml_data::ErrorStatus {
         crate::vrml_data::ErrorStatus::try_from(crate::check_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlData_Faceted_inherited_ReadNode(
@@ -3449,7 +3455,7 @@ impl Faceted {
         .unwrap()
     }
 
-    /// Inherited: **Source:** `VrmlData_Node.hxx`:78 - `VrmlData_Node::Read()`
+    /// Inherited: **Source:** `VrmlData_Node.hxx`:79 - `VrmlData_Node::Read()`
     pub fn read(&mut self, theBuffer: &mut InBuffer) -> crate::vrml_data::ErrorStatus {
         crate::vrml_data::ErrorStatus::try_from(crate::check_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlData_Faceted_inherited_Read(
@@ -3460,14 +3466,14 @@ impl Faceted {
         .unwrap()
     }
 
-    /// Inherited: **Source:** `VrmlData_Node.hxx`:88 - `VrmlData_Node::IsDefault()`
+    /// Inherited: **Source:** `VrmlData_Node.hxx`:89 - `VrmlData_Node::IsDefault()`
     pub fn is_default(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlData_Faceted_inherited_IsDefault(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `VrmlData_Node.hxx`:93 - `VrmlData_Node::WriteClosing()`
+    /// Inherited: **Source:** `VrmlData_Node.hxx`:94 - `VrmlData_Node::WriteClosing()`
     pub fn write_closing(&self) -> crate::vrml_data::ErrorStatus {
         crate::vrml_data::ErrorStatus::try_from(crate::check_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlData_Faceted_inherited_WriteClosing(self as *const Self)
@@ -3475,11 +3481,11 @@ impl Faceted {
         .unwrap()
     }
 
-    /// Inherited: **Source:** `VrmlData_Node.hxx`:102 - `VrmlData_Node::Clone()`
+    /// Inherited: **Source:** `VrmlData_Node.hxx`:103 - `VrmlData_Node::Clone()`
     pub fn clone(
         &self,
-        arg0: &crate::ffi_types::HandleVrmlDataNode,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleVrmlDataNode> {
+        arg0: &crate::ffi_types::Handle_VrmlData_Node,
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_VrmlData_Node> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDEVRML::VrmlData_Faceted_inherited_Clone(
@@ -3490,8 +3496,8 @@ impl Faceted {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlData_Faceted_inherited_IsInstance(
                 self as *const Self,
@@ -3500,8 +3506,8 @@ impl Faceted {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlData_Faceted_inherited_IsKind(
                 self as *const Self,
@@ -3510,7 +3516,7 @@ impl Faceted {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -3524,14 +3530,14 @@ impl Faceted {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlData_Faceted_inherited_GetRefCount(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlData_Faceted_inherited_IncrementRefCounter(
@@ -3540,7 +3546,7 @@ impl Faceted {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlData_Faceted_inherited_DecrementRefCounter(
@@ -3549,7 +3555,7 @@ impl Faceted {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlData_Faceted_inherited_Delete(self as *const Self)
@@ -3557,32 +3563,34 @@ impl Faceted {
     }
 }
 
-pub use crate::ffi_types::HandleVrmlDataFaceted;
+pub use crate::ffi_types::Handle_VrmlData_Faceted;
 
-unsafe impl crate::CppDeletable for HandleVrmlDataFaceted {
+unsafe impl crate::CppDeletable for Handle_VrmlData_Faceted {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKDEVRML::HandleVrmlDataFaceted_destructor(ptr);
+            crate::ffi_extern_TKDEVRML::Handle_VrmlData_Faceted_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleVrmlDataFaceted {
+unsafe impl crate::CppCopyable for Handle_VrmlData_Faceted {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        unsafe { crate::check_result(crate::ffi_extern_TKDEVRML::HandleVrmlDataFaceted_clone(ptr)) }
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDEVRML::Handle_VrmlData_Faceted_clone(ptr))
+        }
     }
 }
 
-impl HandleVrmlDataFaceted {
+impl Handle_VrmlData_Faceted {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
-        unsafe { crate::ffi_extern_TKDEVRML::HandleVrmlDataFaceted_is_null(self as *const Self) }
+        unsafe { crate::ffi_extern_TKDEVRML::Handle_VrmlData_Faceted_is_null(self as *const Self) }
     }
 
     /// Dereference this Handle to access the underlying VrmlData_Faceted
     pub fn get(&self) -> &crate::ffi_types::VrmlData_Faceted {
         unsafe {
-            &*crate::check_result(crate::ffi_extern_TKDEVRML::HandleVrmlDataFaceted_get(
+            &*crate::check_result(crate::ffi_extern_TKDEVRML::Handle_VrmlData_Faceted_get(
                 self as *const Self,
             ))
         }
@@ -3591,17 +3599,19 @@ impl HandleVrmlDataFaceted {
     /// Dereference this Handle to mutably access the underlying VrmlData_Faceted
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::VrmlData_Faceted {
         unsafe {
-            &mut *crate::check_result(crate::ffi_extern_TKDEVRML::HandleVrmlDataFaceted_get_mut(
+            &mut *crate::check_result(crate::ffi_extern_TKDEVRML::Handle_VrmlData_Faceted_get_mut(
                 self as *mut Self,
             ))
         }
     }
 
     /// Upcast Handle<VrmlData_Faceted> to Handle<VrmlData_Geometry>
-    pub fn to_handle_geometry(&self) -> crate::OwnedPtr<crate::ffi_types::HandleVrmlDataGeometry> {
+    pub fn to_handle_geometry(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_VrmlData_Geometry> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKDEVRML::HandleVrmlDataFaceted_to_HandleVrmlDataGeometry(
+                crate::ffi_extern_TKDEVRML::Handle_VrmlData_Faceted_to_Handle_VrmlData_Geometry(
                     self as *const Self,
                 ),
             ))
@@ -3609,10 +3619,10 @@ impl HandleVrmlDataFaceted {
     }
 
     /// Upcast Handle<VrmlData_Faceted> to Handle<VrmlData_Node>
-    pub fn to_handle_node(&self) -> crate::OwnedPtr<crate::ffi_types::HandleVrmlDataNode> {
+    pub fn to_handle_node(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_VrmlData_Node> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKDEVRML::HandleVrmlDataFaceted_to_HandleVrmlDataNode(
+                crate::ffi_extern_TKDEVRML::Handle_VrmlData_Faceted_to_Handle_VrmlData_Node(
                     self as *const Self,
                 ),
             ))
@@ -3622,10 +3632,10 @@ impl HandleVrmlDataFaceted {
     /// Upcast Handle<VrmlData_Faceted> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKDEVRML::HandleVrmlDataFaceted_to_HandleStandardTransient(
+                crate::ffi_extern_TKDEVRML::Handle_VrmlData_Faceted_to_Handle_Standard_Transient(
                     self as *const Self,
                 ),
             ))
@@ -3637,9 +3647,9 @@ impl HandleVrmlDataFaceted {
     /// Returns `None` if the handle does not point to a `VrmlData_IndexedFaceSet` (or subclass).
     pub fn downcast_to_indexed_face_set(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleVrmlDataIndexedFaceSet>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_VrmlData_IndexedFaceSet>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKDEVRML::HandleVrmlDataFaceted_downcast_to_HandleVrmlDataIndexedFaceSet(self as *const Self)
+            crate::ffi_extern_TKDEVRML::Handle_VrmlData_Faceted_downcast_to_Handle_VrmlData_IndexedFaceSet(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -3672,7 +3682,7 @@ impl Geometry {
     ///
     /// Query the shape. This method checks the flag myIsModified; if True it
     /// should rebuild the shape presentation.
-    pub fn t_shape(&mut self) -> &crate::ffi_types::HandleTopoDSTShape {
+    pub fn t_shape(&mut self) -> &crate::ffi_types::Handle_TopoDS_TShape {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKDEVRML::VrmlData_Geometry_t_shape(
                 self as *mut Self,
@@ -3681,7 +3691,7 @@ impl Geometry {
     }
 
     /// **Source:** `VrmlData_Geometry.hxx`:76 - `VrmlData_Geometry::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKDEVRML::VrmlData_Geometry_dynamic_type(
                 self as *const Self,
@@ -3701,7 +3711,7 @@ impl Geometry {
     }
 
     /// **Source:** `VrmlData_Geometry.hxx`:76 - `VrmlData_Geometry::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKDEVRML::VrmlData_Geometry_get_type_descriptor(),
@@ -3751,7 +3761,7 @@ impl Geometry {
         }
     }
 
-    /// Inherited: **Source:** `VrmlData_Node.hxx`:53 - `VrmlData_Node::Scene()`
+    /// Inherited: **Source:** `VrmlData_Node.hxx`:54 - `VrmlData_Node::Scene()`
     pub fn scene(&self) -> &Scene {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKDEVRML::VrmlData_Geometry_inherited_Scene(
@@ -3760,12 +3770,12 @@ impl Geometry {
         }
     }
 
-    /// Inherited: **Source:** `VrmlData_Node.hxx`:71 - `VrmlData_Node::ReadNode()`
+    /// Inherited: **Source:** `VrmlData_Node.hxx`:72 - `VrmlData_Node::ReadNode()`
     pub fn read_node(
         &mut self,
         theBuffer: &mut InBuffer,
-        theNode: &mut crate::ffi_types::HandleVrmlDataNode,
-        Type: &crate::ffi_types::HandleStandardType,
+        theNode: &mut crate::ffi_types::Handle_VrmlData_Node,
+        Type: &crate::ffi_types::Handle_Standard_Type,
     ) -> crate::vrml_data::ErrorStatus {
         crate::vrml_data::ErrorStatus::try_from(crate::check_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlData_Geometry_inherited_ReadNode(
@@ -3778,7 +3788,7 @@ impl Geometry {
         .unwrap()
     }
 
-    /// Inherited: **Source:** `VrmlData_Node.hxx`:78 - `VrmlData_Node::Read()`
+    /// Inherited: **Source:** `VrmlData_Node.hxx`:79 - `VrmlData_Node::Read()`
     pub fn read(&mut self, theBuffer: &mut InBuffer) -> crate::vrml_data::ErrorStatus {
         crate::vrml_data::ErrorStatus::try_from(crate::check_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlData_Geometry_inherited_Read(
@@ -3789,14 +3799,14 @@ impl Geometry {
         .unwrap()
     }
 
-    /// Inherited: **Source:** `VrmlData_Node.hxx`:88 - `VrmlData_Node::IsDefault()`
+    /// Inherited: **Source:** `VrmlData_Node.hxx`:89 - `VrmlData_Node::IsDefault()`
     pub fn is_default(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlData_Geometry_inherited_IsDefault(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `VrmlData_Node.hxx`:93 - `VrmlData_Node::WriteClosing()`
+    /// Inherited: **Source:** `VrmlData_Node.hxx`:94 - `VrmlData_Node::WriteClosing()`
     pub fn write_closing(&self) -> crate::vrml_data::ErrorStatus {
         crate::vrml_data::ErrorStatus::try_from(crate::check_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlData_Geometry_inherited_WriteClosing(
@@ -3806,11 +3816,11 @@ impl Geometry {
         .unwrap()
     }
 
-    /// Inherited: **Source:** `VrmlData_Node.hxx`:102 - `VrmlData_Node::Clone()`
+    /// Inherited: **Source:** `VrmlData_Node.hxx`:103 - `VrmlData_Node::Clone()`
     pub fn clone(
         &self,
-        arg0: &crate::ffi_types::HandleVrmlDataNode,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleVrmlDataNode> {
+        arg0: &crate::ffi_types::Handle_VrmlData_Node,
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_VrmlData_Node> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDEVRML::VrmlData_Geometry_inherited_Clone(
@@ -3821,8 +3831,8 @@ impl Geometry {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlData_Geometry_inherited_IsInstance(
                 self as *const Self,
@@ -3831,8 +3841,8 @@ impl Geometry {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlData_Geometry_inherited_IsKind(
                 self as *const Self,
@@ -3841,7 +3851,7 @@ impl Geometry {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -3855,14 +3865,14 @@ impl Geometry {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlData_Geometry_inherited_GetRefCount(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlData_Geometry_inherited_IncrementRefCounter(
@@ -3871,7 +3881,7 @@ impl Geometry {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlData_Geometry_inherited_DecrementRefCounter(
@@ -3880,7 +3890,7 @@ impl Geometry {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlData_Geometry_inherited_Delete(self as *const Self)
@@ -3888,34 +3898,34 @@ impl Geometry {
     }
 }
 
-pub use crate::ffi_types::HandleVrmlDataGeometry;
+pub use crate::ffi_types::Handle_VrmlData_Geometry;
 
-unsafe impl crate::CppDeletable for HandleVrmlDataGeometry {
+unsafe impl crate::CppDeletable for Handle_VrmlData_Geometry {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKDEVRML::HandleVrmlDataGeometry_destructor(ptr);
+            crate::ffi_extern_TKDEVRML::Handle_VrmlData_Geometry_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleVrmlDataGeometry {
+unsafe impl crate::CppCopyable for Handle_VrmlData_Geometry {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
         unsafe {
-            crate::check_result(crate::ffi_extern_TKDEVRML::HandleVrmlDataGeometry_clone(ptr))
+            crate::check_result(crate::ffi_extern_TKDEVRML::Handle_VrmlData_Geometry_clone(ptr))
         }
     }
 }
 
-impl HandleVrmlDataGeometry {
+impl Handle_VrmlData_Geometry {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
-        unsafe { crate::ffi_extern_TKDEVRML::HandleVrmlDataGeometry_is_null(self as *const Self) }
+        unsafe { crate::ffi_extern_TKDEVRML::Handle_VrmlData_Geometry_is_null(self as *const Self) }
     }
 
     /// Dereference this Handle to access the underlying VrmlData_Geometry
     pub fn get(&self) -> &crate::ffi_types::VrmlData_Geometry {
         unsafe {
-            &*crate::check_result(crate::ffi_extern_TKDEVRML::HandleVrmlDataGeometry_get(
+            &*crate::check_result(crate::ffi_extern_TKDEVRML::Handle_VrmlData_Geometry_get(
                 self as *const Self,
             ))
         }
@@ -3924,17 +3934,17 @@ impl HandleVrmlDataGeometry {
     /// Dereference this Handle to mutably access the underlying VrmlData_Geometry
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::VrmlData_Geometry {
         unsafe {
-            &mut *crate::check_result(crate::ffi_extern_TKDEVRML::HandleVrmlDataGeometry_get_mut(
+            &mut *crate::check_result(crate::ffi_extern_TKDEVRML::Handle_VrmlData_Geometry_get_mut(
                 self as *mut Self,
             ))
         }
     }
 
     /// Upcast Handle<VrmlData_Geometry> to Handle<VrmlData_Node>
-    pub fn to_handle_node(&self) -> crate::OwnedPtr<crate::ffi_types::HandleVrmlDataNode> {
+    pub fn to_handle_node(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_VrmlData_Node> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKDEVRML::HandleVrmlDataGeometry_to_HandleVrmlDataNode(
+                crate::ffi_extern_TKDEVRML::Handle_VrmlData_Geometry_to_Handle_VrmlData_Node(
                     self as *const Self,
                 ),
             ))
@@ -3944,10 +3954,10 @@ impl HandleVrmlDataGeometry {
     /// Upcast Handle<VrmlData_Geometry> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKDEVRML::HandleVrmlDataGeometry_to_HandleStandardTransient(
+                crate::ffi_extern_TKDEVRML::Handle_VrmlData_Geometry_to_Handle_Standard_Transient(
                     self as *const Self,
                 ),
             ))
@@ -3957,9 +3967,11 @@ impl HandleVrmlDataGeometry {
     /// Downcast Handle<VrmlData_Geometry> to Handle<VrmlData_Box>
     ///
     /// Returns `None` if the handle does not point to a `VrmlData_Box` (or subclass).
-    pub fn downcast_to_box(&self) -> Option<crate::OwnedPtr<crate::ffi_types::HandleVrmlDataBox>> {
+    pub fn downcast_to_box(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_VrmlData_Box>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKDEVRML::HandleVrmlDataGeometry_downcast_to_HandleVrmlDataBox(
+            crate::ffi_extern_TKDEVRML::Handle_VrmlData_Geometry_downcast_to_Handle_VrmlData_Box(
                 self as *const Self,
             )
         });
@@ -3975,9 +3987,9 @@ impl HandleVrmlDataGeometry {
     /// Returns `None` if the handle does not point to a `VrmlData_Cone` (or subclass).
     pub fn downcast_to_cone(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleVrmlDataCone>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_VrmlData_Cone>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKDEVRML::HandleVrmlDataGeometry_downcast_to_HandleVrmlDataCone(
+            crate::ffi_extern_TKDEVRML::Handle_VrmlData_Geometry_downcast_to_Handle_VrmlData_Cone(
                 self as *const Self,
             )
         });
@@ -3993,11 +4005,9 @@ impl HandleVrmlDataGeometry {
     /// Returns `None` if the handle does not point to a `VrmlData_Cylinder` (or subclass).
     pub fn downcast_to_cylinder(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleVrmlDataCylinder>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_VrmlData_Cylinder>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKDEVRML::HandleVrmlDataGeometry_downcast_to_HandleVrmlDataCylinder(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKDEVRML::Handle_VrmlData_Geometry_downcast_to_Handle_VrmlData_Cylinder(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -4011,9 +4021,9 @@ impl HandleVrmlDataGeometry {
     /// Returns `None` if the handle does not point to a `VrmlData_Faceted` (or subclass).
     pub fn downcast_to_faceted(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleVrmlDataFaceted>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_VrmlData_Faceted>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKDEVRML::HandleVrmlDataGeometry_downcast_to_HandleVrmlDataFaceted(
+            crate::ffi_extern_TKDEVRML::Handle_VrmlData_Geometry_downcast_to_Handle_VrmlData_Faceted(
                 self as *const Self,
             )
         });
@@ -4029,9 +4039,9 @@ impl HandleVrmlDataGeometry {
     /// Returns `None` if the handle does not point to a `VrmlData_IndexedFaceSet` (or subclass).
     pub fn downcast_to_indexed_face_set(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleVrmlDataIndexedFaceSet>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_VrmlData_IndexedFaceSet>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKDEVRML::HandleVrmlDataGeometry_downcast_to_HandleVrmlDataIndexedFaceSet(self as *const Self)
+            crate::ffi_extern_TKDEVRML::Handle_VrmlData_Geometry_downcast_to_Handle_VrmlData_IndexedFaceSet(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -4045,9 +4055,9 @@ impl HandleVrmlDataGeometry {
     /// Returns `None` if the handle does not point to a `VrmlData_IndexedLineSet` (or subclass).
     pub fn downcast_to_indexed_line_set(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleVrmlDataIndexedLineSet>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_VrmlData_IndexedLineSet>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKDEVRML::HandleVrmlDataGeometry_downcast_to_HandleVrmlDataIndexedLineSet(self as *const Self)
+            crate::ffi_extern_TKDEVRML::Handle_VrmlData_Geometry_downcast_to_Handle_VrmlData_IndexedLineSet(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -4061,9 +4071,9 @@ impl HandleVrmlDataGeometry {
     /// Returns `None` if the handle does not point to a `VrmlData_Sphere` (or subclass).
     pub fn downcast_to_sphere(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleVrmlDataSphere>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_VrmlData_Sphere>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKDEVRML::HandleVrmlDataGeometry_downcast_to_HandleVrmlDataSphere(
+            crate::ffi_extern_TKDEVRML::Handle_VrmlData_Geometry_downcast_to_Handle_VrmlData_Sphere(
                 self as *const Self,
             )
         });
@@ -4079,7 +4089,7 @@ impl HandleVrmlDataGeometry {
 // From VrmlData_Group.hxx
 // ========================
 
-/// **Source:** `VrmlData_Group.hxx`:30 - `VrmlData_Group`
+/// **Source:** `VrmlData_Group.hxx`:33 - `VrmlData_Group`
 ///
 /// Implementation of node "Group"
 pub use crate::ffi_types::VrmlData_Group as Group;
@@ -4093,7 +4103,7 @@ unsafe impl crate::CppDeletable for Group {
 }
 
 impl Group {
-    /// **Source:** `VrmlData_Group.hxx`:44 - `VrmlData_Group::VrmlData_Group()`
+    /// **Source:** `VrmlData_Group.hxx`:47 - `VrmlData_Group::VrmlData_Group()`
     ///
     /// Empty constructor.
     /// @param isTransform
@@ -4108,7 +4118,7 @@ impl Group {
         }
     }
 
-    /// **Source:** `VrmlData_Group.hxx`:58 - `VrmlData_Group::VrmlData_Group()`
+    /// **Source:** `VrmlData_Group.hxx`:61 - `VrmlData_Group::VrmlData_Group()`
     ///
     /// Constructor.
     /// @param theName
@@ -4134,7 +4144,7 @@ impl Group {
         }
     }
 
-    /// **Source:** `VrmlData_Group.hxx`:44 - `VrmlData_Group::VrmlData_Group()`
+    /// **Source:** `VrmlData_Group.hxx`:47 - `VrmlData_Group::VrmlData_Group()`
     ///
     /// Empty constructor.
     /// @param isTransform
@@ -4145,7 +4155,7 @@ impl Group {
         Self::new_bool(false)
     }
 
-    /// **Source:** `VrmlData_Group.hxx`:58 - `VrmlData_Group::VrmlData_Group()`
+    /// **Source:** `VrmlData_Group.hxx`:61 - `VrmlData_Group::VrmlData_Group()`
     ///
     /// Constructor.
     /// @param theName
@@ -4158,7 +4168,7 @@ impl Group {
         Self::new_scene_charptr_bool(theScene, theName, false)
     }
 
-    /// **Source:** `VrmlData_Group.hxx`:65 - `VrmlData_Group::AddNode()`
+    /// **Source:** `VrmlData_Group.hxx`:68 - `VrmlData_Group::AddNode()`
     ///
     /// Add one node to the Group.
     ///
@@ -4169,8 +4179,8 @@ impl Group {
     /// not outlive whichever source it actually borrows from.
     pub unsafe fn add_node(
         &mut self,
-        theNode: &crate::ffi_types::HandleVrmlDataNode,
-    ) -> &mut crate::ffi_types::HandleVrmlDataNode {
+        theNode: &crate::ffi_types::Handle_VrmlData_Node,
+    ) -> &mut crate::ffi_types::Handle_VrmlData_Node {
         unsafe {
             &mut *(crate::check_result(crate::ffi_extern_TKDEVRML::VrmlData_Group_add_node(
                 self as *mut Self,
@@ -4179,18 +4189,18 @@ impl Group {
         }
     }
 
-    /// **Source:** `VrmlData_Group.hxx`:75 - `VrmlData_Group::RemoveNode()`
+    /// **Source:** `VrmlData_Group.hxx`:78 - `VrmlData_Group::RemoveNode()`
     ///
     /// Remove one node from the Group.
     /// @return
     /// True if the node was located and removed, False if none removed.
-    pub fn remove_node(&mut self, theNode: &crate::ffi_types::HandleVrmlDataNode) -> bool {
+    pub fn remove_node(&mut self, theNode: &crate::ffi_types::Handle_VrmlData_Node) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlData_Group_remove_node(self as *mut Self, theNode)
         })
     }
 
-    /// **Source:** `VrmlData_Group.hxx`:80 - `VrmlData_Group::NodeIterator()`
+    /// **Source:** `VrmlData_Group.hxx`:83 - `VrmlData_Group::NodeIterator()`
     ///
     /// Create iterator on nodes belonging to the Group.
     pub fn node_iterator(&self) -> crate::OwnedPtr<crate::ffi_types::VrmlData_Group_Iterator> {
@@ -4201,10 +4211,10 @@ impl Group {
         }
     }
 
-    /// **Source:** `VrmlData_Group.hxx`:85 - `VrmlData_Group::Box()`
+    /// **Source:** `VrmlData_Group.hxx`:88 - `VrmlData_Group::Box()`
     ///
     /// Query the bounding box.
-    pub fn box_(&self) -> &crate::bnd::B3f {
+    pub fn box_(&self) -> &crate::ffi_types::Bnd_B3f {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKDEVRML::VrmlData_Group_box_(
                 self as *const Self,
@@ -4212,16 +4222,16 @@ impl Group {
         }
     }
 
-    /// **Source:** `VrmlData_Group.hxx`:90 - `VrmlData_Group::SetBox()`
+    /// **Source:** `VrmlData_Group.hxx`:93 - `VrmlData_Group::SetBox()`
     ///
     /// Set the bounding box.
-    pub fn set_box(&mut self, theBox: &crate::bnd::B3f) {
+    pub fn set_box(&mut self, theBox: &crate::ffi_types::Bnd_B3f) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlData_Group_set_box(self as *mut Self, theBox)
         })
     }
 
-    /// **Source:** `VrmlData_Group.hxx`:96 - `VrmlData_Group::SetTransform()`
+    /// **Source:** `VrmlData_Group.hxx`:99 - `VrmlData_Group::SetTransform()`
     ///
     /// Set the transformation. Returns True if the group is Transform type,
     /// otherwise do nothing and return False.
@@ -4231,7 +4241,7 @@ impl Group {
         })
     }
 
-    /// **Source:** `VrmlData_Group.hxx`:102 - `VrmlData_Group::GetTransform()`
+    /// **Source:** `VrmlData_Group.hxx`:105 - `VrmlData_Group::GetTransform()`
     ///
     /// Query the transform value.
     /// For group without transformation this always returns Identity
@@ -4243,7 +4253,7 @@ impl Group {
         }
     }
 
-    /// **Source:** `VrmlData_Group.hxx`:107 - `VrmlData_Group::IsTransform()`
+    /// **Source:** `VrmlData_Group.hxx`:110 - `VrmlData_Group::IsTransform()`
     ///
     /// Query if the node is Transform type.
     pub fn is_transform(&self) -> bool {
@@ -4252,15 +4262,15 @@ impl Group {
         })
     }
 
-    /// **Source:** `VrmlData_Group.hxx`:114 - `VrmlData_Group::Clone()`
+    /// **Source:** `VrmlData_Group.hxx`:117 - `VrmlData_Group::Clone()`
     ///
     /// Create a copy of this node.
     /// If the parameter is null, a new copied node is created. Otherwise new node
     /// is not created, but rather the given one is modified.
     pub fn clone(
         &self,
-        theOther: &crate::ffi_types::HandleVrmlDataNode,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleVrmlDataNode> {
+        theOther: &crate::ffi_types::Handle_VrmlData_Node,
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_VrmlData_Node> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDEVRML::VrmlData_Group_clone(self as *const Self, theOther),
@@ -4268,7 +4278,7 @@ impl Group {
         }
     }
 
-    /// **Source:** `VrmlData_Group.hxx`:120 - `VrmlData_Group::Read()`
+    /// **Source:** `VrmlData_Group.hxx`:123 - `VrmlData_Group::Read()`
     ///
     /// Fill the Node internal data from the given input stream.
     pub fn read(&mut self, theBuffer: &mut InBuffer) -> crate::vrml_data::ErrorStatus {
@@ -4278,7 +4288,7 @@ impl Group {
         .unwrap()
     }
 
-    /// **Source:** `VrmlData_Group.hxx`:125 - `VrmlData_Group::Write()`
+    /// **Source:** `VrmlData_Group.hxx`:128 - `VrmlData_Group::Write()`
     ///
     /// Write the Node to output stream.
     pub fn write(&self, thePrefix: &str) -> crate::vrml_data::ErrorStatus {
@@ -4292,7 +4302,7 @@ impl Group {
         .unwrap()
     }
 
-    /// **Source:** `VrmlData_Group.hxx`:134 - `VrmlData_Group::FindNode()`
+    /// **Source:** `VrmlData_Group.hxx`:137 - `VrmlData_Group::FindNode()`
     ///
     /// Find a node by its name, inside this Group
     /// @param theName
@@ -4303,7 +4313,7 @@ impl Group {
         &self,
         theName: &str,
         theLocation: &mut crate::gp::Trsf,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleVrmlDataNode> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_VrmlData_Node> {
         let c_theName = std::ffi::CString::new(theName).unwrap();
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -4316,25 +4326,8 @@ impl Group {
         }
     }
 
-    /// **Source:** `VrmlData_Group.hxx`:139 - `VrmlData_Group::Shape()`
-    ///
-    /// Get the shape representing the group geometry.
-    pub fn shape(
-        &mut self,
-        theShape: &mut crate::topo_ds::Shape,
-        pMapApp: &mut crate::ffi_types::VrmlData_DataMapOfShapeAppearance,
-    ) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKDEVRML::VrmlData_Group_shape(
-                self as *mut Self,
-                theShape,
-                pMapApp as *mut _,
-            )
-        })
-    }
-
-    /// **Source:** `VrmlData_Group.hxx`:161 - `VrmlData_Group::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `VrmlData_Group.hxx`:167 - `VrmlData_Group::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKDEVRML::VrmlData_Group_dynamic_type(
                 self as *const Self,
@@ -4342,7 +4335,7 @@ impl Group {
         }
     }
 
-    /// **Source:** `VrmlData_Group.hxx`:161 - `VrmlData_Group::get_type_name()`
+    /// **Source:** `VrmlData_Group.hxx`:167 - `VrmlData_Group::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -4353,8 +4346,8 @@ impl Group {
         .into_owned()
     }
 
-    /// **Source:** `VrmlData_Group.hxx`:161 - `VrmlData_Group::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    /// **Source:** `VrmlData_Group.hxx`:167 - `VrmlData_Group::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKDEVRML::VrmlData_Group_get_type_descriptor()))
         }
@@ -4401,7 +4394,7 @@ impl Group {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleVrmlDataGroup> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_VrmlData_Group> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDEVRML::VrmlData_Group_to_handle(obj.into_raw()),
@@ -4409,7 +4402,7 @@ impl Group {
         }
     }
 
-    /// Inherited: **Source:** `VrmlData_Node.hxx`:53 - `VrmlData_Node::Scene()`
+    /// Inherited: **Source:** `VrmlData_Node.hxx`:54 - `VrmlData_Node::Scene()`
     pub fn scene(&self) -> &Scene {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKDEVRML::VrmlData_Group_inherited_Scene(
@@ -4418,12 +4411,12 @@ impl Group {
         }
     }
 
-    /// Inherited: **Source:** `VrmlData_Node.hxx`:71 - `VrmlData_Node::ReadNode()`
+    /// Inherited: **Source:** `VrmlData_Node.hxx`:72 - `VrmlData_Node::ReadNode()`
     pub fn read_node(
         &mut self,
         theBuffer: &mut InBuffer,
-        theNode: &mut crate::ffi_types::HandleVrmlDataNode,
-        Type: &crate::ffi_types::HandleStandardType,
+        theNode: &mut crate::ffi_types::Handle_VrmlData_Node,
+        Type: &crate::ffi_types::Handle_Standard_Type,
     ) -> crate::vrml_data::ErrorStatus {
         crate::vrml_data::ErrorStatus::try_from(crate::check_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlData_Group_inherited_ReadNode(
@@ -4436,14 +4429,14 @@ impl Group {
         .unwrap()
     }
 
-    /// Inherited: **Source:** `VrmlData_Node.hxx`:88 - `VrmlData_Node::IsDefault()`
+    /// Inherited: **Source:** `VrmlData_Node.hxx`:89 - `VrmlData_Node::IsDefault()`
     pub fn is_default(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlData_Group_inherited_IsDefault(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `VrmlData_Node.hxx`:93 - `VrmlData_Node::WriteClosing()`
+    /// Inherited: **Source:** `VrmlData_Node.hxx`:94 - `VrmlData_Node::WriteClosing()`
     pub fn write_closing(&self) -> crate::vrml_data::ErrorStatus {
         crate::vrml_data::ErrorStatus::try_from(crate::check_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlData_Group_inherited_WriteClosing(self as *const Self)
@@ -4451,8 +4444,8 @@ impl Group {
         .unwrap()
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlData_Group_inherited_IsInstance(
                 self as *const Self,
@@ -4461,8 +4454,8 @@ impl Group {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlData_Group_inherited_IsKind(
                 self as *const Self,
@@ -4471,7 +4464,7 @@ impl Group {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -4485,14 +4478,14 @@ impl Group {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlData_Group_inherited_GetRefCount(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlData_Group_inherited_IncrementRefCounter(
@@ -4501,7 +4494,7 @@ impl Group {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlData_Group_inherited_DecrementRefCounter(
@@ -4510,7 +4503,7 @@ impl Group {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlData_Group_inherited_Delete(self as *const Self)
@@ -4518,32 +4511,32 @@ impl Group {
     }
 }
 
-pub use crate::ffi_types::HandleVrmlDataGroup;
+pub use crate::ffi_types::Handle_VrmlData_Group;
 
-unsafe impl crate::CppDeletable for HandleVrmlDataGroup {
+unsafe impl crate::CppDeletable for Handle_VrmlData_Group {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKDEVRML::HandleVrmlDataGroup_destructor(ptr);
+            crate::ffi_extern_TKDEVRML::Handle_VrmlData_Group_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleVrmlDataGroup {
+unsafe impl crate::CppCopyable for Handle_VrmlData_Group {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        unsafe { crate::check_result(crate::ffi_extern_TKDEVRML::HandleVrmlDataGroup_clone(ptr)) }
+        unsafe { crate::check_result(crate::ffi_extern_TKDEVRML::Handle_VrmlData_Group_clone(ptr)) }
     }
 }
 
-impl HandleVrmlDataGroup {
+impl Handle_VrmlData_Group {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
-        unsafe { crate::ffi_extern_TKDEVRML::HandleVrmlDataGroup_is_null(self as *const Self) }
+        unsafe { crate::ffi_extern_TKDEVRML::Handle_VrmlData_Group_is_null(self as *const Self) }
     }
 
     /// Dereference this Handle to access the underlying VrmlData_Group
     pub fn get(&self) -> &crate::ffi_types::VrmlData_Group {
         unsafe {
-            &*crate::check_result(crate::ffi_extern_TKDEVRML::HandleVrmlDataGroup_get(
+            &*crate::check_result(crate::ffi_extern_TKDEVRML::Handle_VrmlData_Group_get(
                 self as *const Self,
             ))
         }
@@ -4552,17 +4545,17 @@ impl HandleVrmlDataGroup {
     /// Dereference this Handle to mutably access the underlying VrmlData_Group
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::VrmlData_Group {
         unsafe {
-            &mut *crate::check_result(crate::ffi_extern_TKDEVRML::HandleVrmlDataGroup_get_mut(
+            &mut *crate::check_result(crate::ffi_extern_TKDEVRML::Handle_VrmlData_Group_get_mut(
                 self as *mut Self,
             ))
         }
     }
 
     /// Upcast Handle<VrmlData_Group> to Handle<VrmlData_Node>
-    pub fn to_handle_node(&self) -> crate::OwnedPtr<crate::ffi_types::HandleVrmlDataNode> {
+    pub fn to_handle_node(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_VrmlData_Node> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKDEVRML::HandleVrmlDataGroup_to_HandleVrmlDataNode(
+                crate::ffi_extern_TKDEVRML::Handle_VrmlData_Group_to_Handle_VrmlData_Node(
                     self as *const Self,
                 ),
             ))
@@ -4572,16 +4565,23 @@ impl HandleVrmlDataGroup {
     /// Upcast Handle<VrmlData_Group> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKDEVRML::HandleVrmlDataGroup_to_HandleStandardTransient(
+                crate::ffi_extern_TKDEVRML::Handle_VrmlData_Group_to_Handle_Standard_Transient(
                     self as *const Self,
                 ),
             ))
         }
     }
 }
+
+// ── Skipped symbols for Group (1 total) ──
+// SKIPPED: **Source:** `VrmlData_Group.hxx`:143 - `VrmlData_Group::Shape`
+//   method: Get the shape representing the group geometry.
+//   Reason: param 'pMapApp' uses unknown type 'NCollection_DataMap<occ::handle<TopoDS_TShape>, occ::handle<VrmlData_Appearance>>*'
+//   // pub fn shape(&mut self, theShape: &mut Shape, pMapApp: /* NCollection_DataMap<occ::handle<TopoDS_TShape>, occ::handle<VrmlData_Appearance>>* */);
+//
 
 // ========================
 // From VrmlData_ImageTexture.hxx
@@ -4663,7 +4663,7 @@ impl ImageTexture {
     /// **Source:** `VrmlData_ImageTexture.hxx`:46 - `VrmlData_ImageTexture::URL()`
     ///
     /// Query the associated URL.
-    pub fn url(&self) -> &crate::ffi_types::TColStd_ListOfAsciiString {
+    pub fn url(&self) -> &crate::ffi_types::NCollection_List_TCollection_AsciiString {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKDEVRML::VrmlData_ImageTexture_url(
                 self as *const Self,
@@ -4678,8 +4678,8 @@ impl ImageTexture {
     /// is not created, but rather the given one is modified.
     pub fn clone(
         &self,
-        theOther: &crate::ffi_types::HandleVrmlDataNode,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleVrmlDataNode> {
+        theOther: &crate::ffi_types::Handle_VrmlData_Node,
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_VrmlData_Node> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDEVRML::VrmlData_ImageTexture_clone(
@@ -4714,8 +4714,8 @@ impl ImageTexture {
         .unwrap()
     }
 
-    /// **Source:** `VrmlData_ImageTexture.hxx`:76 - `VrmlData_ImageTexture::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `VrmlData_ImageTexture.hxx`:73 - `VrmlData_ImageTexture::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKDEVRML::VrmlData_ImageTexture_dynamic_type(
                 self as *const Self,
@@ -4723,7 +4723,7 @@ impl ImageTexture {
         }
     }
 
-    /// **Source:** `VrmlData_ImageTexture.hxx`:76 - `VrmlData_ImageTexture::get_type_name()`
+    /// **Source:** `VrmlData_ImageTexture.hxx`:73 - `VrmlData_ImageTexture::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -4734,8 +4734,8 @@ impl ImageTexture {
         .into_owned()
     }
 
-    /// **Source:** `VrmlData_ImageTexture.hxx`:76 - `VrmlData_ImageTexture::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    /// **Source:** `VrmlData_ImageTexture.hxx`:73 - `VrmlData_ImageTexture::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKDEVRML::VrmlData_ImageTexture_get_type_descriptor(),
@@ -4812,7 +4812,7 @@ impl ImageTexture {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleVrmlDataImageTexture> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_VrmlData_ImageTexture> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDEVRML::VrmlData_ImageTexture_to_handle(obj.into_raw()),
@@ -4854,7 +4854,7 @@ impl ImageTexture {
         })
     }
 
-    /// Inherited: **Source:** `VrmlData_Node.hxx`:53 - `VrmlData_Node::Scene()`
+    /// Inherited: **Source:** `VrmlData_Node.hxx`:54 - `VrmlData_Node::Scene()`
     pub fn scene(&self) -> &Scene {
         unsafe {
             &*(crate::check_result(
@@ -4865,12 +4865,12 @@ impl ImageTexture {
         }
     }
 
-    /// Inherited: **Source:** `VrmlData_Node.hxx`:71 - `VrmlData_Node::ReadNode()`
+    /// Inherited: **Source:** `VrmlData_Node.hxx`:72 - `VrmlData_Node::ReadNode()`
     pub fn read_node(
         &mut self,
         theBuffer: &mut InBuffer,
-        theNode: &mut crate::ffi_types::HandleVrmlDataNode,
-        Type: &crate::ffi_types::HandleStandardType,
+        theNode: &mut crate::ffi_types::Handle_VrmlData_Node,
+        Type: &crate::ffi_types::Handle_Standard_Type,
     ) -> crate::vrml_data::ErrorStatus {
         crate::vrml_data::ErrorStatus::try_from(crate::check_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlData_ImageTexture_inherited_ReadNode(
@@ -4883,7 +4883,7 @@ impl ImageTexture {
         .unwrap()
     }
 
-    /// Inherited: **Source:** `VrmlData_Node.hxx`:88 - `VrmlData_Node::IsDefault()`
+    /// Inherited: **Source:** `VrmlData_Node.hxx`:89 - `VrmlData_Node::IsDefault()`
     pub fn is_default(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlData_ImageTexture_inherited_IsDefault(
@@ -4892,7 +4892,7 @@ impl ImageTexture {
         })
     }
 
-    /// Inherited: **Source:** `VrmlData_Node.hxx`:93 - `VrmlData_Node::WriteClosing()`
+    /// Inherited: **Source:** `VrmlData_Node.hxx`:94 - `VrmlData_Node::WriteClosing()`
     pub fn write_closing(&self) -> crate::vrml_data::ErrorStatus {
         crate::vrml_data::ErrorStatus::try_from(crate::check_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlData_ImageTexture_inherited_WriteClosing(
@@ -4902,8 +4902,8 @@ impl ImageTexture {
         .unwrap()
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlData_ImageTexture_inherited_IsInstance(
                 self as *const Self,
@@ -4912,8 +4912,8 @@ impl ImageTexture {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlData_ImageTexture_inherited_IsKind(
                 self as *const Self,
@@ -4922,7 +4922,7 @@ impl ImageTexture {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -4938,7 +4938,7 @@ impl ImageTexture {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlData_ImageTexture_inherited_GetRefCount(
@@ -4947,7 +4947,7 @@ impl ImageTexture {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlData_ImageTexture_inherited_IncrementRefCounter(
@@ -4956,7 +4956,7 @@ impl ImageTexture {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlData_ImageTexture_inherited_DecrementRefCounter(
@@ -4965,7 +4965,7 @@ impl ImageTexture {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlData_ImageTexture_inherited_Delete(self as *const Self)
@@ -4973,36 +4973,36 @@ impl ImageTexture {
     }
 }
 
-pub use crate::ffi_types::HandleVrmlDataImageTexture;
+pub use crate::ffi_types::Handle_VrmlData_ImageTexture;
 
-unsafe impl crate::CppDeletable for HandleVrmlDataImageTexture {
+unsafe impl crate::CppDeletable for Handle_VrmlData_ImageTexture {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKDEVRML::HandleVrmlDataImageTexture_destructor(ptr);
+            crate::ffi_extern_TKDEVRML::Handle_VrmlData_ImageTexture_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleVrmlDataImageTexture {
+unsafe impl crate::CppCopyable for Handle_VrmlData_ImageTexture {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
         unsafe {
-            crate::check_result(crate::ffi_extern_TKDEVRML::HandleVrmlDataImageTexture_clone(ptr))
+            crate::check_result(crate::ffi_extern_TKDEVRML::Handle_VrmlData_ImageTexture_clone(ptr))
         }
     }
 }
 
-impl HandleVrmlDataImageTexture {
+impl Handle_VrmlData_ImageTexture {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
         unsafe {
-            crate::ffi_extern_TKDEVRML::HandleVrmlDataImageTexture_is_null(self as *const Self)
+            crate::ffi_extern_TKDEVRML::Handle_VrmlData_ImageTexture_is_null(self as *const Self)
         }
     }
 
     /// Dereference this Handle to access the underlying VrmlData_ImageTexture
     pub fn get(&self) -> &crate::ffi_types::VrmlData_ImageTexture {
         unsafe {
-            &*crate::check_result(crate::ffi_extern_TKDEVRML::HandleVrmlDataImageTexture_get(
+            &*crate::check_result(crate::ffi_extern_TKDEVRML::Handle_VrmlData_ImageTexture_get(
                 self as *const Self,
             ))
         }
@@ -5012,16 +5012,16 @@ impl HandleVrmlDataImageTexture {
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::VrmlData_ImageTexture {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi_extern_TKDEVRML::HandleVrmlDataImageTexture_get_mut(self as *mut Self),
+                crate::ffi_extern_TKDEVRML::Handle_VrmlData_ImageTexture_get_mut(self as *mut Self),
             )
         }
     }
 
     /// Upcast Handle<VrmlData_ImageTexture> to Handle<VrmlData_Texture>
-    pub fn to_handle_texture(&self) -> crate::OwnedPtr<crate::ffi_types::HandleVrmlDataTexture> {
+    pub fn to_handle_texture(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_VrmlData_Texture> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKDEVRML::HandleVrmlDataImageTexture_to_HandleVrmlDataTexture(
+                crate::ffi_extern_TKDEVRML::Handle_VrmlData_ImageTexture_to_Handle_VrmlData_Texture(
                     self as *const Self,
                 ),
             ))
@@ -5029,10 +5029,10 @@ impl HandleVrmlDataImageTexture {
     }
 
     /// Upcast Handle<VrmlData_ImageTexture> to Handle<VrmlData_Node>
-    pub fn to_handle_node(&self) -> crate::OwnedPtr<crate::ffi_types::HandleVrmlDataNode> {
+    pub fn to_handle_node(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_VrmlData_Node> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKDEVRML::HandleVrmlDataImageTexture_to_HandleVrmlDataNode(
+                crate::ffi_extern_TKDEVRML::Handle_VrmlData_ImageTexture_to_Handle_VrmlData_Node(
                     self as *const Self,
                 ),
             ))
@@ -5042,13 +5042,9 @@ impl HandleVrmlDataImageTexture {
     /// Upcast Handle<VrmlData_ImageTexture> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKDEVRML::HandleVrmlDataImageTexture_to_HandleStandardTransient(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEVRML::Handle_VrmlData_ImageTexture_to_Handle_Standard_Transient(self as *const Self)))
         }
     }
 }
@@ -5184,7 +5180,7 @@ impl IndexedFaceSet {
     /// **Source:** `VrmlData_IndexedFaceSet.hxx`:78 - `VrmlData_IndexedFaceSet::Normals()`
     ///
     /// Query the Normals.
-    pub fn normals(&self) -> &crate::ffi_types::HandleVrmlDataNormal {
+    pub fn normals(&self) -> &crate::ffi_types::Handle_VrmlData_Normal {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKDEVRML::VrmlData_IndexedFaceSet_normals(
                 self as *const Self,
@@ -5195,7 +5191,7 @@ impl IndexedFaceSet {
     /// **Source:** `VrmlData_IndexedFaceSet.hxx`:83 - `VrmlData_IndexedFaceSet::Colors()`
     ///
     /// Query the Colors.
-    pub fn colors(&self) -> &crate::ffi_types::HandleVrmlDataColor {
+    pub fn colors(&self) -> &crate::ffi_types::Handle_VrmlData_Color {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKDEVRML::VrmlData_IndexedFaceSet_colors(
                 self as *const Self,
@@ -5206,7 +5202,7 @@ impl IndexedFaceSet {
     /// **Source:** `VrmlData_IndexedFaceSet.hxx`:88 - `VrmlData_IndexedFaceSet::TextureCoords()`
     ///
     /// Query the Texture Coordinates.
-    pub fn texture_coords(&self) -> &crate::ffi_types::HandleVrmlDataTextureCoordinate {
+    pub fn texture_coords(&self) -> &crate::ffi_types::Handle_VrmlData_TextureCoordinate {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKDEVRML::VrmlData_IndexedFaceSet_texture_coords(
@@ -5219,7 +5215,7 @@ impl IndexedFaceSet {
     /// **Source:** `VrmlData_IndexedFaceSet.hxx`:95 - `VrmlData_IndexedFaceSet::Coordinates()`
     ///
     /// Query the Coordinates.
-    pub fn coordinates(&self) -> &crate::ffi_types::HandleVrmlDataCoordinate {
+    pub fn coordinates(&self) -> &crate::ffi_types::Handle_VrmlData_Coordinate {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKDEVRML::VrmlData_IndexedFaceSet_coordinates(
@@ -5263,7 +5259,7 @@ impl IndexedFaceSet {
     /// **Source:** `VrmlData_IndexedFaceSet.hxx`:123 - `VrmlData_IndexedFaceSet::SetCoordinates()`
     ///
     /// Set the nodes
-    pub fn set_coordinates(&mut self, theCoord: &crate::ffi_types::HandleVrmlDataCoordinate) {
+    pub fn set_coordinates(&mut self, theCoord: &crate::ffi_types::Handle_VrmlData_Coordinate) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlData_IndexedFaceSet_set_coordinates(
                 self as *mut Self,
@@ -5272,7 +5268,7 @@ impl IndexedFaceSet {
         })
     }
 
-    /// **Source:** `VrmlData_IndexedFaceSet.hxx`:128 - `VrmlData_IndexedFaceSet::SetPolygons()`
+    /// **Source:** `VrmlData_IndexedFaceSet.hxx`:131 - `VrmlData_IndexedFaceSet::SetPolygons()`
     ///
     /// Set the polygons
     pub unsafe fn set_polygons(&mut self, nPolygons: usize, thePolygons: *mut *const i32) {
@@ -5285,7 +5281,7 @@ impl IndexedFaceSet {
         })
     }
 
-    /// **Source:** `VrmlData_IndexedFaceSet.hxx`:144 - `VrmlData_IndexedFaceSet::ArrayNormalInd()`
+    /// **Source:** `VrmlData_IndexedFaceSet.hxx`:147 - `VrmlData_IndexedFaceSet::ArrayNormalInd()`
     ///
     /// Query the array of normal indice
     /// @param arrNormalInd
@@ -5301,7 +5297,7 @@ impl IndexedFaceSet {
         })
     }
 
-    /// **Source:** `VrmlData_IndexedFaceSet.hxx`:160 - `VrmlData_IndexedFaceSet::IndiceNormals()`
+    /// **Source:** `VrmlData_IndexedFaceSet.hxx`:163 - `VrmlData_IndexedFaceSet::IndiceNormals()`
     ///
     /// Query normals indice for one face. This method should be called after
     /// checking myArrNormalInd != NULL, otherwise exception will be thrown.
@@ -5321,7 +5317,7 @@ impl IndexedFaceSet {
         })
     }
 
-    /// **Source:** `VrmlData_IndexedFaceSet.hxx`:178 - `VrmlData_IndexedFaceSet::GetNormal()`
+    /// **Source:** `VrmlData_IndexedFaceSet.hxx`:180 - `VrmlData_IndexedFaceSet::GetNormal()`
     ///
     /// Query a normal for one node in the given element. The normal is
     /// interpreted according to fields myNormals, myArrNormalInd,
@@ -5345,7 +5341,7 @@ impl IndexedFaceSet {
         }
     }
 
-    /// **Source:** `VrmlData_IndexedFaceSet.hxx`:183 - `VrmlData_IndexedFaceSet::SetNormalInd()`
+    /// **Source:** `VrmlData_IndexedFaceSet.hxx`:185 - `VrmlData_IndexedFaceSet::SetNormalInd()`
     ///
     /// Set the normals array of indice
     pub unsafe fn set_normal_ind(&mut self, nIndice: usize, theIndice: *mut *const i32) {
@@ -5358,10 +5354,10 @@ impl IndexedFaceSet {
         })
     }
 
-    /// **Source:** `VrmlData_IndexedFaceSet.hxx`:192 - `VrmlData_IndexedFaceSet::SetNormals()`
+    /// **Source:** `VrmlData_IndexedFaceSet.hxx`:194 - `VrmlData_IndexedFaceSet::SetNormals()`
     ///
     /// Set the normals node
-    pub fn set_normals(&mut self, theNormals: &crate::ffi_types::HandleVrmlDataNormal) {
+    pub fn set_normals(&mut self, theNormals: &crate::ffi_types::Handle_VrmlData_Normal) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlData_IndexedFaceSet_set_normals(
                 self as *mut Self,
@@ -5370,7 +5366,7 @@ impl IndexedFaceSet {
         })
     }
 
-    /// **Source:** `VrmlData_IndexedFaceSet.hxx`:197 - `VrmlData_IndexedFaceSet::SetNormalPerVertex()`
+    /// **Source:** `VrmlData_IndexedFaceSet.hxx`:199 - `VrmlData_IndexedFaceSet::SetNormalPerVertex()`
     ///
     /// Set the boolean value "normalPerVertex"
     pub fn set_normal_per_vertex(&mut self, isNormalPerVertex: bool) {
@@ -5382,7 +5378,7 @@ impl IndexedFaceSet {
         })
     }
 
-    /// **Source:** `VrmlData_IndexedFaceSet.hxx`:212 - `VrmlData_IndexedFaceSet::ArrayColorInd()`
+    /// **Source:** `VrmlData_IndexedFaceSet.hxx`:214 - `VrmlData_IndexedFaceSet::ArrayColorInd()`
     ///
     /// Query the array of color indice
     /// @param arrColorInd
@@ -5398,7 +5394,7 @@ impl IndexedFaceSet {
         })
     }
 
-    /// **Source:** `VrmlData_IndexedFaceSet.hxx`:230 - `VrmlData_IndexedFaceSet::GetColor()`
+    /// **Source:** `VrmlData_IndexedFaceSet.hxx`:232 - `VrmlData_IndexedFaceSet::GetColor()`
     ///
     /// Query a color for one node in the given element. The color is
     /// interpreted according to fields myColors, myArrColorInd,
@@ -5426,7 +5422,7 @@ impl IndexedFaceSet {
         }
     }
 
-    /// **Source:** `VrmlData_IndexedFaceSet.hxx`:236 - `VrmlData_IndexedFaceSet::SetColorInd()`
+    /// **Source:** `VrmlData_IndexedFaceSet.hxx`:237 - `VrmlData_IndexedFaceSet::SetColorInd()`
     ///
     /// Set the colors array of indice
     pub unsafe fn set_color_ind(&mut self, nIndice: usize, theIndice: *mut *const i32) {
@@ -5439,10 +5435,10 @@ impl IndexedFaceSet {
         })
     }
 
-    /// **Source:** `VrmlData_IndexedFaceSet.hxx`:245 - `VrmlData_IndexedFaceSet::SetColors()`
+    /// **Source:** `VrmlData_IndexedFaceSet.hxx`:246 - `VrmlData_IndexedFaceSet::SetColors()`
     ///
     /// Set the Color node
-    pub fn set_colors(&mut self, theColors: &crate::ffi_types::HandleVrmlDataColor) {
+    pub fn set_colors(&mut self, theColors: &crate::ffi_types::Handle_VrmlData_Color) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlData_IndexedFaceSet_set_colors(
                 self as *mut Self,
@@ -5451,7 +5447,7 @@ impl IndexedFaceSet {
         })
     }
 
-    /// **Source:** `VrmlData_IndexedFaceSet.hxx`:250 - `VrmlData_IndexedFaceSet::SetColorPerVertex()`
+    /// **Source:** `VrmlData_IndexedFaceSet.hxx`:251 - `VrmlData_IndexedFaceSet::SetColorPerVertex()`
     ///
     /// Set the boolean value "colorPerVertex"
     pub fn set_color_per_vertex(&mut self, isColorPerVertex: bool) {
@@ -5463,7 +5459,7 @@ impl IndexedFaceSet {
         })
     }
 
-    /// **Source:** `VrmlData_IndexedFaceSet.hxx`:265 - `VrmlData_IndexedFaceSet::ArrayTextureCoordInd()`
+    /// **Source:** `VrmlData_IndexedFaceSet.hxx`:266 - `VrmlData_IndexedFaceSet::ArrayTextureCoordInd()`
     ///
     /// Query the array of texture coordinate indice
     /// @param arrTextureCoordInd
@@ -5482,7 +5478,7 @@ impl IndexedFaceSet {
         })
     }
 
-    /// **Source:** `VrmlData_IndexedFaceSet.hxx`:274 - `VrmlData_IndexedFaceSet::SetTextureCoordInd()`
+    /// **Source:** `VrmlData_IndexedFaceSet.hxx`:275 - `VrmlData_IndexedFaceSet::SetTextureCoordInd()`
     ///
     /// Set the TexCoordiante array of indice
     pub unsafe fn set_texture_coord_ind(&mut self, nIndice: usize, theIndice: *mut *const i32) {
@@ -5495,10 +5491,10 @@ impl IndexedFaceSet {
         })
     }
 
-    /// **Source:** `VrmlData_IndexedFaceSet.hxx`:283 - `VrmlData_IndexedFaceSet::SetTextureCoords()`
+    /// **Source:** `VrmlData_IndexedFaceSet.hxx`:284 - `VrmlData_IndexedFaceSet::SetTextureCoords()`
     ///
     /// Set the Texture Coordinate node
-    pub fn set_texture_coords(&mut self, tc: &crate::ffi_types::HandleVrmlDataTextureCoordinate) {
+    pub fn set_texture_coords(&mut self, tc: &crate::ffi_types::Handle_VrmlData_TextureCoordinate) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlData_IndexedFaceSet_set_texture_coords(
                 self as *mut Self,
@@ -5507,11 +5503,11 @@ impl IndexedFaceSet {
         })
     }
 
-    /// **Source:** `VrmlData_IndexedFaceSet.hxx`:289 - `VrmlData_IndexedFaceSet::TShape()`
+    /// **Source:** `VrmlData_IndexedFaceSet.hxx`:293 - `VrmlData_IndexedFaceSet::TShape()`
     ///
     /// Query the shape. This method checks the flag myIsModified; if True it
     /// should rebuild the shape presentation.
-    pub fn t_shape(&mut self) -> &crate::ffi_types::HandleTopoDSTShape {
+    pub fn t_shape(&mut self) -> &crate::ffi_types::Handle_TopoDS_TShape {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKDEVRML::VrmlData_IndexedFaceSet_t_shape(
                 self as *mut Self,
@@ -5519,15 +5515,15 @@ impl IndexedFaceSet {
         }
     }
 
-    /// **Source:** `VrmlData_IndexedFaceSet.hxx`:296 - `VrmlData_IndexedFaceSet::Clone()`
+    /// **Source:** `VrmlData_IndexedFaceSet.hxx`:300 - `VrmlData_IndexedFaceSet::Clone()`
     ///
     /// Create a copy of this node.
     /// If the parameter is null, a new copied node is created. Otherwise new node
     /// is not created, but rather the given one is modified.
     pub fn clone(
         &self,
-        theOther: &crate::ffi_types::HandleVrmlDataNode,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleVrmlDataNode> {
+        theOther: &crate::ffi_types::Handle_VrmlData_Node,
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_VrmlData_Node> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDEVRML::VrmlData_IndexedFaceSet_clone(
@@ -5538,7 +5534,7 @@ impl IndexedFaceSet {
         }
     }
 
-    /// **Source:** `VrmlData_IndexedFaceSet.hxx`:302 - `VrmlData_IndexedFaceSet::Read()`
+    /// **Source:** `VrmlData_IndexedFaceSet.hxx`:306 - `VrmlData_IndexedFaceSet::Read()`
     ///
     /// Read the Node from input stream.
     pub fn read(&mut self, theBuffer: &mut InBuffer) -> crate::vrml_data::ErrorStatus {
@@ -5548,7 +5544,7 @@ impl IndexedFaceSet {
         .unwrap()
     }
 
-    /// **Source:** `VrmlData_IndexedFaceSet.hxx`:307 - `VrmlData_IndexedFaceSet::Write()`
+    /// **Source:** `VrmlData_IndexedFaceSet.hxx`:311 - `VrmlData_IndexedFaceSet::Write()`
     ///
     /// Write the Node to output stream.
     pub fn write(&self, thePrefix: &str) -> crate::vrml_data::ErrorStatus {
@@ -5562,7 +5558,7 @@ impl IndexedFaceSet {
         .unwrap()
     }
 
-    /// **Source:** `VrmlData_IndexedFaceSet.hxx`:312 - `VrmlData_IndexedFaceSet::IsDefault()`
+    /// **Source:** `VrmlData_IndexedFaceSet.hxx`:316 - `VrmlData_IndexedFaceSet::IsDefault()`
     ///
     /// Returns True if the node is default, so that it should not be written.
     pub fn is_default(&self) -> bool {
@@ -5571,8 +5567,8 @@ impl IndexedFaceSet {
         })
     }
 
-    /// **Source:** `VrmlData_IndexedFaceSet.hxx`:347 - `VrmlData_IndexedFaceSet::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `VrmlData_IndexedFaceSet.hxx`:337 - `VrmlData_IndexedFaceSet::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKDEVRML::VrmlData_IndexedFaceSet_dynamic_type(
@@ -5582,7 +5578,7 @@ impl IndexedFaceSet {
         }
     }
 
-    /// **Source:** `VrmlData_IndexedFaceSet.hxx`:347 - `VrmlData_IndexedFaceSet::get_type_name()`
+    /// **Source:** `VrmlData_IndexedFaceSet.hxx`:337 - `VrmlData_IndexedFaceSet::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -5593,8 +5589,8 @@ impl IndexedFaceSet {
         .into_owned()
     }
 
-    /// **Source:** `VrmlData_IndexedFaceSet.hxx`:347 - `VrmlData_IndexedFaceSet::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    /// **Source:** `VrmlData_IndexedFaceSet.hxx`:337 - `VrmlData_IndexedFaceSet::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKDEVRML::VrmlData_IndexedFaceSet_get_type_descriptor(),
@@ -5693,7 +5689,7 @@ impl IndexedFaceSet {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleVrmlDataIndexedFaceSet> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_VrmlData_IndexedFaceSet> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDEVRML::VrmlData_IndexedFaceSet_to_handle(obj.into_raw()),
@@ -5775,7 +5771,7 @@ impl IndexedFaceSet {
         })
     }
 
-    /// Inherited: **Source:** `VrmlData_Node.hxx`:53 - `VrmlData_Node::Scene()`
+    /// Inherited: **Source:** `VrmlData_Node.hxx`:54 - `VrmlData_Node::Scene()`
     pub fn scene(&self) -> &Scene {
         unsafe {
             &*(crate::check_result(
@@ -5786,12 +5782,12 @@ impl IndexedFaceSet {
         }
     }
 
-    /// Inherited: **Source:** `VrmlData_Node.hxx`:71 - `VrmlData_Node::ReadNode()`
+    /// Inherited: **Source:** `VrmlData_Node.hxx`:72 - `VrmlData_Node::ReadNode()`
     pub fn read_node(
         &mut self,
         theBuffer: &mut InBuffer,
-        theNode: &mut crate::ffi_types::HandleVrmlDataNode,
-        Type: &crate::ffi_types::HandleStandardType,
+        theNode: &mut crate::ffi_types::Handle_VrmlData_Node,
+        Type: &crate::ffi_types::Handle_Standard_Type,
     ) -> crate::vrml_data::ErrorStatus {
         crate::vrml_data::ErrorStatus::try_from(crate::check_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlData_IndexedFaceSet_inherited_ReadNode(
@@ -5804,7 +5800,7 @@ impl IndexedFaceSet {
         .unwrap()
     }
 
-    /// Inherited: **Source:** `VrmlData_Node.hxx`:93 - `VrmlData_Node::WriteClosing()`
+    /// Inherited: **Source:** `VrmlData_Node.hxx`:94 - `VrmlData_Node::WriteClosing()`
     pub fn write_closing(&self) -> crate::vrml_data::ErrorStatus {
         crate::vrml_data::ErrorStatus::try_from(crate::check_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlData_IndexedFaceSet_inherited_WriteClosing(
@@ -5814,8 +5810,8 @@ impl IndexedFaceSet {
         .unwrap()
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlData_IndexedFaceSet_inherited_IsInstance(
                 self as *const Self,
@@ -5824,8 +5820,8 @@ impl IndexedFaceSet {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlData_IndexedFaceSet_inherited_IsKind(
                 self as *const Self,
@@ -5834,7 +5830,7 @@ impl IndexedFaceSet {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -5850,7 +5846,7 @@ impl IndexedFaceSet {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlData_IndexedFaceSet_inherited_GetRefCount(
@@ -5859,7 +5855,7 @@ impl IndexedFaceSet {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlData_IndexedFaceSet_inherited_IncrementRefCounter(
@@ -5868,7 +5864,7 @@ impl IndexedFaceSet {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlData_IndexedFaceSet_inherited_DecrementRefCounter(
@@ -5877,7 +5873,7 @@ impl IndexedFaceSet {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlData_IndexedFaceSet_inherited_Delete(
@@ -5887,36 +5883,38 @@ impl IndexedFaceSet {
     }
 }
 
-pub use crate::ffi_types::HandleVrmlDataIndexedFaceSet;
+pub use crate::ffi_types::Handle_VrmlData_IndexedFaceSet;
 
-unsafe impl crate::CppDeletable for HandleVrmlDataIndexedFaceSet {
+unsafe impl crate::CppDeletable for Handle_VrmlData_IndexedFaceSet {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKDEVRML::HandleVrmlDataIndexedFaceSet_destructor(ptr);
+            crate::ffi_extern_TKDEVRML::Handle_VrmlData_IndexedFaceSet_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleVrmlDataIndexedFaceSet {
+unsafe impl crate::CppCopyable for Handle_VrmlData_IndexedFaceSet {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
         unsafe {
-            crate::check_result(crate::ffi_extern_TKDEVRML::HandleVrmlDataIndexedFaceSet_clone(ptr))
+            crate::check_result(crate::ffi_extern_TKDEVRML::Handle_VrmlData_IndexedFaceSet_clone(
+                ptr,
+            ))
         }
     }
 }
 
-impl HandleVrmlDataIndexedFaceSet {
+impl Handle_VrmlData_IndexedFaceSet {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
         unsafe {
-            crate::ffi_extern_TKDEVRML::HandleVrmlDataIndexedFaceSet_is_null(self as *const Self)
+            crate::ffi_extern_TKDEVRML::Handle_VrmlData_IndexedFaceSet_is_null(self as *const Self)
         }
     }
 
     /// Dereference this Handle to access the underlying VrmlData_IndexedFaceSet
     pub fn get(&self) -> &crate::ffi_types::VrmlData_IndexedFaceSet {
         unsafe {
-            &*crate::check_result(crate::ffi_extern_TKDEVRML::HandleVrmlDataIndexedFaceSet_get(
+            &*crate::check_result(crate::ffi_extern_TKDEVRML::Handle_VrmlData_IndexedFaceSet_get(
                 self as *const Self,
             ))
         }
@@ -5926,38 +5924,34 @@ impl HandleVrmlDataIndexedFaceSet {
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::VrmlData_IndexedFaceSet {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi_extern_TKDEVRML::HandleVrmlDataIndexedFaceSet_get_mut(self as *mut Self),
+                crate::ffi_extern_TKDEVRML::Handle_VrmlData_IndexedFaceSet_get_mut(
+                    self as *mut Self,
+                ),
             )
         }
     }
 
     /// Upcast Handle<VrmlData_IndexedFaceSet> to Handle<VrmlData_Faceted>
-    pub fn to_handle_faceted(&self) -> crate::OwnedPtr<crate::ffi_types::HandleVrmlDataFaceted> {
+    pub fn to_handle_faceted(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_VrmlData_Faceted> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKDEVRML::HandleVrmlDataIndexedFaceSet_to_HandleVrmlDataFaceted(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEVRML::Handle_VrmlData_IndexedFaceSet_to_Handle_VrmlData_Faceted(self as *const Self)))
         }
     }
 
     /// Upcast Handle<VrmlData_IndexedFaceSet> to Handle<VrmlData_Geometry>
-    pub fn to_handle_geometry(&self) -> crate::OwnedPtr<crate::ffi_types::HandleVrmlDataGeometry> {
+    pub fn to_handle_geometry(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_VrmlData_Geometry> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKDEVRML::HandleVrmlDataIndexedFaceSet_to_HandleVrmlDataGeometry(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEVRML::Handle_VrmlData_IndexedFaceSet_to_Handle_VrmlData_Geometry(self as *const Self)))
         }
     }
 
     /// Upcast Handle<VrmlData_IndexedFaceSet> to Handle<VrmlData_Node>
-    pub fn to_handle_node(&self) -> crate::OwnedPtr<crate::ffi_types::HandleVrmlDataNode> {
+    pub fn to_handle_node(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_VrmlData_Node> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKDEVRML::HandleVrmlDataIndexedFaceSet_to_HandleVrmlDataNode(
+                crate::ffi_extern_TKDEVRML::Handle_VrmlData_IndexedFaceSet_to_Handle_VrmlData_Node(
                     self as *const Self,
                 ),
             ))
@@ -5967,13 +5961,9 @@ impl HandleVrmlDataIndexedFaceSet {
     /// Upcast Handle<VrmlData_IndexedFaceSet> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKDEVRML::HandleVrmlDataIndexedFaceSet_to_HandleStandardTransient(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEVRML::Handle_VrmlData_IndexedFaceSet_to_Handle_Standard_Transient(self as *const Self)))
         }
     }
 }
@@ -6037,7 +6027,7 @@ impl IndexedLineSet {
     /// **Source:** `VrmlData_IndexedLineSet.hxx`:64 - `VrmlData_IndexedLineSet::Coordinates()`
     ///
     /// Query the Coordinates.
-    pub fn coordinates(&self) -> &crate::ffi_types::HandleVrmlDataCoordinate {
+    pub fn coordinates(&self) -> &crate::ffi_types::Handle_VrmlData_Coordinate {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKDEVRML::VrmlData_IndexedLineSet_coordinates(
@@ -6050,7 +6040,7 @@ impl IndexedLineSet {
     /// **Source:** `VrmlData_IndexedLineSet.hxx`:69 - `VrmlData_IndexedLineSet::SetCoordinates()`
     ///
     /// Set the nodes
-    pub fn set_coordinates(&mut self, theCoord: &crate::ffi_types::HandleVrmlDataCoordinate) {
+    pub fn set_coordinates(&mut self, theCoord: &crate::ffi_types::Handle_VrmlData_Coordinate) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlData_IndexedLineSet_set_coordinates(
                 self as *mut Self,
@@ -6059,10 +6049,10 @@ impl IndexedLineSet {
         })
     }
 
-    /// **Source:** `VrmlData_IndexedLineSet.hxx`:74 - `VrmlData_IndexedLineSet::Colors()`
+    /// **Source:** `VrmlData_IndexedLineSet.hxx`:77 - `VrmlData_IndexedLineSet::Colors()`
     ///
     /// Query the Colors.
-    pub fn colors(&self) -> &crate::ffi_types::HandleVrmlDataColor {
+    pub fn colors(&self) -> &crate::ffi_types::Handle_VrmlData_Color {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKDEVRML::VrmlData_IndexedLineSet_colors(
                 self as *const Self,
@@ -6070,10 +6060,10 @@ impl IndexedLineSet {
         }
     }
 
-    /// **Source:** `VrmlData_IndexedLineSet.hxx`:79 - `VrmlData_IndexedLineSet::SetColors()`
+    /// **Source:** `VrmlData_IndexedLineSet.hxx`:82 - `VrmlData_IndexedLineSet::SetColors()`
     ///
     /// Set the Color node
-    pub fn set_colors(&mut self, theColors: &crate::ffi_types::HandleVrmlDataColor) {
+    pub fn set_colors(&mut self, theColors: &crate::ffi_types::Handle_VrmlData_Color) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlData_IndexedLineSet_set_colors(
                 self as *mut Self,
@@ -6082,7 +6072,7 @@ impl IndexedLineSet {
         })
     }
 
-    /// **Source:** `VrmlData_IndexedLineSet.hxx`:86 - `VrmlData_IndexedLineSet::Polygons()`
+    /// **Source:** `VrmlData_IndexedLineSet.hxx`:89 - `VrmlData_IndexedLineSet::Polygons()`
     ///
     /// Query the array of polygons
     pub unsafe fn polygons(&self, arrPolygons: &mut *mut *const i32) -> usize {
@@ -6094,7 +6084,7 @@ impl IndexedLineSet {
         })
     }
 
-    /// **Source:** `VrmlData_IndexedLineSet.hxx`:101 - `VrmlData_IndexedLineSet::Polygon()`
+    /// **Source:** `VrmlData_IndexedLineSet.hxx`:104 - `VrmlData_IndexedLineSet::Polygon()`
     ///
     /// Query one polygon.
     /// @param iPolygon
@@ -6113,7 +6103,7 @@ impl IndexedLineSet {
         })
     }
 
-    /// **Source:** `VrmlData_IndexedLineSet.hxx`:110 - `VrmlData_IndexedLineSet::SetPolygons()`
+    /// **Source:** `VrmlData_IndexedLineSet.hxx`:112 - `VrmlData_IndexedLineSet::SetPolygons()`
     ///
     /// Set the polygons
     pub unsafe fn set_polygons(&mut self, nPolygons: usize, thePolygons: *mut *const i32) {
@@ -6126,7 +6116,7 @@ impl IndexedLineSet {
         })
     }
 
-    /// **Source:** `VrmlData_IndexedLineSet.hxx`:125 - `VrmlData_IndexedLineSet::ArrayColorInd()`
+    /// **Source:** `VrmlData_IndexedLineSet.hxx`:127 - `VrmlData_IndexedLineSet::ArrayColorInd()`
     ///
     /// Query the array of color indice
     /// @param arrColorInd
@@ -6142,7 +6132,7 @@ impl IndexedLineSet {
         })
     }
 
-    /// **Source:** `VrmlData_IndexedLineSet.hxx`:143 - `VrmlData_IndexedLineSet::GetColor()`
+    /// **Source:** `VrmlData_IndexedLineSet.hxx`:145 - `VrmlData_IndexedLineSet::GetColor()`
     ///
     /// Query a color for one node in the given element. The color is
     /// interpreted according to fields myColors, myArrColorInd,
@@ -6170,7 +6160,7 @@ impl IndexedLineSet {
         }
     }
 
-    /// **Source:** `VrmlData_IndexedLineSet.hxx`:149 - `VrmlData_IndexedLineSet::SetColorInd()`
+    /// **Source:** `VrmlData_IndexedLineSet.hxx`:150 - `VrmlData_IndexedLineSet::SetColorInd()`
     ///
     /// Set the colors array of indice
     pub unsafe fn set_color_ind(&mut self, nIndice: usize, theIndice: *mut *const i32) {
@@ -6183,7 +6173,7 @@ impl IndexedLineSet {
         })
     }
 
-    /// **Source:** `VrmlData_IndexedLineSet.hxx`:158 - `VrmlData_IndexedLineSet::SetColorPerVertex()`
+    /// **Source:** `VrmlData_IndexedLineSet.hxx`:159 - `VrmlData_IndexedLineSet::SetColorPerVertex()`
     ///
     /// Set the boolean value "colorPerVertex"
     pub fn set_color_per_vertex(&mut self, isColorPerVertex: bool) {
@@ -6195,11 +6185,11 @@ impl IndexedLineSet {
         })
     }
 
-    /// **Source:** `VrmlData_IndexedLineSet.hxx`:167 - `VrmlData_IndexedLineSet::TShape()`
+    /// **Source:** `VrmlData_IndexedLineSet.hxx`:168 - `VrmlData_IndexedLineSet::TShape()`
     ///
     /// Query the shape. This method checks the flag myIsModified; if True it
     /// should rebuild the shape presentation.
-    pub fn t_shape(&mut self) -> &crate::ffi_types::HandleTopoDSTShape {
+    pub fn t_shape(&mut self) -> &crate::ffi_types::Handle_TopoDS_TShape {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKDEVRML::VrmlData_IndexedLineSet_t_shape(
                 self as *mut Self,
@@ -6207,15 +6197,15 @@ impl IndexedLineSet {
         }
     }
 
-    /// **Source:** `VrmlData_IndexedLineSet.hxx`:174 - `VrmlData_IndexedLineSet::Clone()`
+    /// **Source:** `VrmlData_IndexedLineSet.hxx`:175 - `VrmlData_IndexedLineSet::Clone()`
     ///
     /// Create a copy of this node.
     /// If the parameter is null, a new copied node is created. Otherwise new node
     /// is not created, but rather the given one is modified.
     pub fn clone(
         &self,
-        theOther: &crate::ffi_types::HandleVrmlDataNode,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleVrmlDataNode> {
+        theOther: &crate::ffi_types::Handle_VrmlData_Node,
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_VrmlData_Node> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDEVRML::VrmlData_IndexedLineSet_clone(
@@ -6226,7 +6216,7 @@ impl IndexedLineSet {
         }
     }
 
-    /// **Source:** `VrmlData_IndexedLineSet.hxx`:180 - `VrmlData_IndexedLineSet::Read()`
+    /// **Source:** `VrmlData_IndexedLineSet.hxx`:181 - `VrmlData_IndexedLineSet::Read()`
     ///
     /// Read the Node from input stream.
     pub fn read(&mut self, theBuffer: &mut InBuffer) -> crate::vrml_data::ErrorStatus {
@@ -6236,7 +6226,7 @@ impl IndexedLineSet {
         .unwrap()
     }
 
-    /// **Source:** `VrmlData_IndexedLineSet.hxx`:185 - `VrmlData_IndexedLineSet::Write()`
+    /// **Source:** `VrmlData_IndexedLineSet.hxx`:186 - `VrmlData_IndexedLineSet::Write()`
     ///
     /// Write the Node to output stream.
     pub fn write(&self, thePrefix: &str) -> crate::vrml_data::ErrorStatus {
@@ -6250,7 +6240,7 @@ impl IndexedLineSet {
         .unwrap()
     }
 
-    /// **Source:** `VrmlData_IndexedLineSet.hxx`:190 - `VrmlData_IndexedLineSet::IsDefault()`
+    /// **Source:** `VrmlData_IndexedLineSet.hxx`:191 - `VrmlData_IndexedLineSet::IsDefault()`
     ///
     /// Returns True if the node is default, so that it should not be written.
     pub fn is_default(&self) -> bool {
@@ -6259,8 +6249,8 @@ impl IndexedLineSet {
         })
     }
 
-    /// **Source:** `VrmlData_IndexedLineSet.hxx`:204 - `VrmlData_IndexedLineSet::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `VrmlData_IndexedLineSet.hxx`:205 - `VrmlData_IndexedLineSet::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKDEVRML::VrmlData_IndexedLineSet_dynamic_type(
@@ -6270,7 +6260,7 @@ impl IndexedLineSet {
         }
     }
 
-    /// **Source:** `VrmlData_IndexedLineSet.hxx`:204 - `VrmlData_IndexedLineSet::get_type_name()`
+    /// **Source:** `VrmlData_IndexedLineSet.hxx`:205 - `VrmlData_IndexedLineSet::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -6281,8 +6271,8 @@ impl IndexedLineSet {
         .into_owned()
     }
 
-    /// **Source:** `VrmlData_IndexedLineSet.hxx`:204 - `VrmlData_IndexedLineSet::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    /// **Source:** `VrmlData_IndexedLineSet.hxx`:205 - `VrmlData_IndexedLineSet::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKDEVRML::VrmlData_IndexedLineSet_get_type_descriptor(),
@@ -6359,7 +6349,7 @@ impl IndexedLineSet {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleVrmlDataIndexedLineSet> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_VrmlData_IndexedLineSet> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDEVRML::VrmlData_IndexedLineSet_to_handle(obj.into_raw()),
@@ -6367,7 +6357,7 @@ impl IndexedLineSet {
         }
     }
 
-    /// Inherited: **Source:** `VrmlData_Node.hxx`:53 - `VrmlData_Node::Scene()`
+    /// Inherited: **Source:** `VrmlData_Node.hxx`:54 - `VrmlData_Node::Scene()`
     pub fn scene(&self) -> &Scene {
         unsafe {
             &*(crate::check_result(
@@ -6378,12 +6368,12 @@ impl IndexedLineSet {
         }
     }
 
-    /// Inherited: **Source:** `VrmlData_Node.hxx`:71 - `VrmlData_Node::ReadNode()`
+    /// Inherited: **Source:** `VrmlData_Node.hxx`:72 - `VrmlData_Node::ReadNode()`
     pub fn read_node(
         &mut self,
         theBuffer: &mut InBuffer,
-        theNode: &mut crate::ffi_types::HandleVrmlDataNode,
-        Type: &crate::ffi_types::HandleStandardType,
+        theNode: &mut crate::ffi_types::Handle_VrmlData_Node,
+        Type: &crate::ffi_types::Handle_Standard_Type,
     ) -> crate::vrml_data::ErrorStatus {
         crate::vrml_data::ErrorStatus::try_from(crate::check_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlData_IndexedLineSet_inherited_ReadNode(
@@ -6396,7 +6386,7 @@ impl IndexedLineSet {
         .unwrap()
     }
 
-    /// Inherited: **Source:** `VrmlData_Node.hxx`:93 - `VrmlData_Node::WriteClosing()`
+    /// Inherited: **Source:** `VrmlData_Node.hxx`:94 - `VrmlData_Node::WriteClosing()`
     pub fn write_closing(&self) -> crate::vrml_data::ErrorStatus {
         crate::vrml_data::ErrorStatus::try_from(crate::check_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlData_IndexedLineSet_inherited_WriteClosing(
@@ -6406,8 +6396,8 @@ impl IndexedLineSet {
         .unwrap()
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlData_IndexedLineSet_inherited_IsInstance(
                 self as *const Self,
@@ -6416,8 +6406,8 @@ impl IndexedLineSet {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlData_IndexedLineSet_inherited_IsKind(
                 self as *const Self,
@@ -6426,7 +6416,7 @@ impl IndexedLineSet {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -6442,7 +6432,7 @@ impl IndexedLineSet {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlData_IndexedLineSet_inherited_GetRefCount(
@@ -6451,7 +6441,7 @@ impl IndexedLineSet {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlData_IndexedLineSet_inherited_IncrementRefCounter(
@@ -6460,7 +6450,7 @@ impl IndexedLineSet {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlData_IndexedLineSet_inherited_DecrementRefCounter(
@@ -6469,7 +6459,7 @@ impl IndexedLineSet {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlData_IndexedLineSet_inherited_Delete(
@@ -6479,36 +6469,38 @@ impl IndexedLineSet {
     }
 }
 
-pub use crate::ffi_types::HandleVrmlDataIndexedLineSet;
+pub use crate::ffi_types::Handle_VrmlData_IndexedLineSet;
 
-unsafe impl crate::CppDeletable for HandleVrmlDataIndexedLineSet {
+unsafe impl crate::CppDeletable for Handle_VrmlData_IndexedLineSet {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKDEVRML::HandleVrmlDataIndexedLineSet_destructor(ptr);
+            crate::ffi_extern_TKDEVRML::Handle_VrmlData_IndexedLineSet_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleVrmlDataIndexedLineSet {
+unsafe impl crate::CppCopyable for Handle_VrmlData_IndexedLineSet {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
         unsafe {
-            crate::check_result(crate::ffi_extern_TKDEVRML::HandleVrmlDataIndexedLineSet_clone(ptr))
+            crate::check_result(crate::ffi_extern_TKDEVRML::Handle_VrmlData_IndexedLineSet_clone(
+                ptr,
+            ))
         }
     }
 }
 
-impl HandleVrmlDataIndexedLineSet {
+impl Handle_VrmlData_IndexedLineSet {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
         unsafe {
-            crate::ffi_extern_TKDEVRML::HandleVrmlDataIndexedLineSet_is_null(self as *const Self)
+            crate::ffi_extern_TKDEVRML::Handle_VrmlData_IndexedLineSet_is_null(self as *const Self)
         }
     }
 
     /// Dereference this Handle to access the underlying VrmlData_IndexedLineSet
     pub fn get(&self) -> &crate::ffi_types::VrmlData_IndexedLineSet {
         unsafe {
-            &*crate::check_result(crate::ffi_extern_TKDEVRML::HandleVrmlDataIndexedLineSet_get(
+            &*crate::check_result(crate::ffi_extern_TKDEVRML::Handle_VrmlData_IndexedLineSet_get(
                 self as *const Self,
             ))
         }
@@ -6518,27 +6510,27 @@ impl HandleVrmlDataIndexedLineSet {
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::VrmlData_IndexedLineSet {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi_extern_TKDEVRML::HandleVrmlDataIndexedLineSet_get_mut(self as *mut Self),
+                crate::ffi_extern_TKDEVRML::Handle_VrmlData_IndexedLineSet_get_mut(
+                    self as *mut Self,
+                ),
             )
         }
     }
 
     /// Upcast Handle<VrmlData_IndexedLineSet> to Handle<VrmlData_Geometry>
-    pub fn to_handle_geometry(&self) -> crate::OwnedPtr<crate::ffi_types::HandleVrmlDataGeometry> {
+    pub fn to_handle_geometry(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_VrmlData_Geometry> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKDEVRML::HandleVrmlDataIndexedLineSet_to_HandleVrmlDataGeometry(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEVRML::Handle_VrmlData_IndexedLineSet_to_Handle_VrmlData_Geometry(self as *const Self)))
         }
     }
 
     /// Upcast Handle<VrmlData_IndexedLineSet> to Handle<VrmlData_Node>
-    pub fn to_handle_node(&self) -> crate::OwnedPtr<crate::ffi_types::HandleVrmlDataNode> {
+    pub fn to_handle_node(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_VrmlData_Node> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKDEVRML::HandleVrmlDataIndexedLineSet_to_HandleVrmlDataNode(
+                crate::ffi_extern_TKDEVRML::Handle_VrmlData_IndexedLineSet_to_Handle_VrmlData_Node(
                     self as *const Self,
                 ),
             ))
@@ -6548,13 +6540,9 @@ impl HandleVrmlDataIndexedLineSet {
     /// Upcast Handle<VrmlData_IndexedLineSet> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKDEVRML::HandleVrmlDataIndexedLineSet_to_HandleStandardTransient(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEVRML::Handle_VrmlData_IndexedLineSet_to_Handle_Standard_Transient(self as *const Self)))
         }
     }
 }
@@ -6749,7 +6737,7 @@ impl Material {
         })
     }
 
-    /// **Source:** `VrmlData_Material.hxx`:103 - `VrmlData_Material::SetAmbientColor()`
+    /// **Source:** `VrmlData_Material.hxx`:100 - `VrmlData_Material::SetAmbientColor()`
     ///
     /// Query the Ambient color
     pub fn set_ambient_color(&mut self, theColor: &crate::quantity::Color) {
@@ -6761,7 +6749,7 @@ impl Material {
         })
     }
 
-    /// **Source:** `VrmlData_Material.hxx`:108 - `VrmlData_Material::SetDiffuseColor()`
+    /// **Source:** `VrmlData_Material.hxx`:105 - `VrmlData_Material::SetDiffuseColor()`
     ///
     /// Query the Diffuse color
     pub fn set_diffuse_color(&mut self, theColor: &crate::quantity::Color) {
@@ -6773,7 +6761,7 @@ impl Material {
         })
     }
 
-    /// **Source:** `VrmlData_Material.hxx`:113 - `VrmlData_Material::SetEmissiveColor()`
+    /// **Source:** `VrmlData_Material.hxx`:110 - `VrmlData_Material::SetEmissiveColor()`
     ///
     /// Query the Emissive color
     pub fn set_emissive_color(&mut self, theColor: &crate::quantity::Color) {
@@ -6785,7 +6773,7 @@ impl Material {
         })
     }
 
-    /// **Source:** `VrmlData_Material.hxx`:118 - `VrmlData_Material::SetSpecularColor()`
+    /// **Source:** `VrmlData_Material.hxx`:115 - `VrmlData_Material::SetSpecularColor()`
     ///
     /// Query the Specular color
     pub fn set_specular_color(&mut self, theColor: &crate::quantity::Color) {
@@ -6797,15 +6785,15 @@ impl Material {
         })
     }
 
-    /// **Source:** `VrmlData_Material.hxx`:125 - `VrmlData_Material::Clone()`
+    /// **Source:** `VrmlData_Material.hxx`:122 - `VrmlData_Material::Clone()`
     ///
     /// Create a copy of this node.
     /// If the parameter is null, a new copied node is created. Otherwise new node
     /// is not created, but rather the given one is modified.
     pub fn clone(
         &self,
-        theOther: &crate::ffi_types::HandleVrmlDataNode,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleVrmlDataNode> {
+        theOther: &crate::ffi_types::Handle_VrmlData_Node,
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_VrmlData_Node> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDEVRML::VrmlData_Material_clone(self as *const Self, theOther),
@@ -6813,7 +6801,7 @@ impl Material {
         }
     }
 
-    /// **Source:** `VrmlData_Material.hxx`:131 - `VrmlData_Material::Read()`
+    /// **Source:** `VrmlData_Material.hxx`:128 - `VrmlData_Material::Read()`
     ///
     /// Read the Node from input stream.
     pub fn read(&mut self, theBuffer: &mut InBuffer) -> crate::vrml_data::ErrorStatus {
@@ -6823,7 +6811,7 @@ impl Material {
         .unwrap()
     }
 
-    /// **Source:** `VrmlData_Material.hxx`:136 - `VrmlData_Material::Write()`
+    /// **Source:** `VrmlData_Material.hxx`:133 - `VrmlData_Material::Write()`
     ///
     /// Write the Node to the Scene output.
     pub fn write(&self, thePrefix: &str) -> crate::vrml_data::ErrorStatus {
@@ -6837,7 +6825,7 @@ impl Material {
         .unwrap()
     }
 
-    /// **Source:** `VrmlData_Material.hxx`:141 - `VrmlData_Material::IsDefault()`
+    /// **Source:** `VrmlData_Material.hxx`:138 - `VrmlData_Material::IsDefault()`
     ///
     /// Returns True if the node is default, so that it should not be written.
     pub fn is_default(&self) -> bool {
@@ -6846,8 +6834,8 @@ impl Material {
         })
     }
 
-    /// **Source:** `VrmlData_Material.hxx`:159 - `VrmlData_Material::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `VrmlData_Material.hxx`:153 - `VrmlData_Material::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKDEVRML::VrmlData_Material_dynamic_type(
                 self as *const Self,
@@ -6855,7 +6843,7 @@ impl Material {
         }
     }
 
-    /// **Source:** `VrmlData_Material.hxx`:159 - `VrmlData_Material::get_type_name()`
+    /// **Source:** `VrmlData_Material.hxx`:153 - `VrmlData_Material::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -6866,8 +6854,8 @@ impl Material {
         .into_owned()
     }
 
-    /// **Source:** `VrmlData_Material.hxx`:159 - `VrmlData_Material::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    /// **Source:** `VrmlData_Material.hxx`:153 - `VrmlData_Material::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKDEVRML::VrmlData_Material_get_type_descriptor(),
@@ -6920,7 +6908,7 @@ impl Material {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleVrmlDataMaterial> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_VrmlData_Material> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDEVRML::VrmlData_Material_to_handle(obj.into_raw()),
@@ -6928,7 +6916,7 @@ impl Material {
         }
     }
 
-    /// Inherited: **Source:** `VrmlData_Node.hxx`:53 - `VrmlData_Node::Scene()`
+    /// Inherited: **Source:** `VrmlData_Node.hxx`:54 - `VrmlData_Node::Scene()`
     pub fn scene(&self) -> &Scene {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKDEVRML::VrmlData_Material_inherited_Scene(
@@ -6937,12 +6925,12 @@ impl Material {
         }
     }
 
-    /// Inherited: **Source:** `VrmlData_Node.hxx`:71 - `VrmlData_Node::ReadNode()`
+    /// Inherited: **Source:** `VrmlData_Node.hxx`:72 - `VrmlData_Node::ReadNode()`
     pub fn read_node(
         &mut self,
         theBuffer: &mut InBuffer,
-        theNode: &mut crate::ffi_types::HandleVrmlDataNode,
-        Type: &crate::ffi_types::HandleStandardType,
+        theNode: &mut crate::ffi_types::Handle_VrmlData_Node,
+        Type: &crate::ffi_types::Handle_Standard_Type,
     ) -> crate::vrml_data::ErrorStatus {
         crate::vrml_data::ErrorStatus::try_from(crate::check_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlData_Material_inherited_ReadNode(
@@ -6955,7 +6943,7 @@ impl Material {
         .unwrap()
     }
 
-    /// Inherited: **Source:** `VrmlData_Node.hxx`:93 - `VrmlData_Node::WriteClosing()`
+    /// Inherited: **Source:** `VrmlData_Node.hxx`:94 - `VrmlData_Node::WriteClosing()`
     pub fn write_closing(&self) -> crate::vrml_data::ErrorStatus {
         crate::vrml_data::ErrorStatus::try_from(crate::check_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlData_Material_inherited_WriteClosing(
@@ -6965,8 +6953,8 @@ impl Material {
         .unwrap()
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlData_Material_inherited_IsInstance(
                 self as *const Self,
@@ -6975,8 +6963,8 @@ impl Material {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlData_Material_inherited_IsKind(
                 self as *const Self,
@@ -6985,7 +6973,7 @@ impl Material {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -6999,14 +6987,14 @@ impl Material {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlData_Material_inherited_GetRefCount(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlData_Material_inherited_IncrementRefCounter(
@@ -7015,7 +7003,7 @@ impl Material {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlData_Material_inherited_DecrementRefCounter(
@@ -7024,7 +7012,7 @@ impl Material {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlData_Material_inherited_Delete(self as *const Self)
@@ -7032,34 +7020,34 @@ impl Material {
     }
 }
 
-pub use crate::ffi_types::HandleVrmlDataMaterial;
+pub use crate::ffi_types::Handle_VrmlData_Material;
 
-unsafe impl crate::CppDeletable for HandleVrmlDataMaterial {
+unsafe impl crate::CppDeletable for Handle_VrmlData_Material {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKDEVRML::HandleVrmlDataMaterial_destructor(ptr);
+            crate::ffi_extern_TKDEVRML::Handle_VrmlData_Material_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleVrmlDataMaterial {
+unsafe impl crate::CppCopyable for Handle_VrmlData_Material {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
         unsafe {
-            crate::check_result(crate::ffi_extern_TKDEVRML::HandleVrmlDataMaterial_clone(ptr))
+            crate::check_result(crate::ffi_extern_TKDEVRML::Handle_VrmlData_Material_clone(ptr))
         }
     }
 }
 
-impl HandleVrmlDataMaterial {
+impl Handle_VrmlData_Material {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
-        unsafe { crate::ffi_extern_TKDEVRML::HandleVrmlDataMaterial_is_null(self as *const Self) }
+        unsafe { crate::ffi_extern_TKDEVRML::Handle_VrmlData_Material_is_null(self as *const Self) }
     }
 
     /// Dereference this Handle to access the underlying VrmlData_Material
     pub fn get(&self) -> &crate::ffi_types::VrmlData_Material {
         unsafe {
-            &*crate::check_result(crate::ffi_extern_TKDEVRML::HandleVrmlDataMaterial_get(
+            &*crate::check_result(crate::ffi_extern_TKDEVRML::Handle_VrmlData_Material_get(
                 self as *const Self,
             ))
         }
@@ -7068,17 +7056,17 @@ impl HandleVrmlDataMaterial {
     /// Dereference this Handle to mutably access the underlying VrmlData_Material
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::VrmlData_Material {
         unsafe {
-            &mut *crate::check_result(crate::ffi_extern_TKDEVRML::HandleVrmlDataMaterial_get_mut(
+            &mut *crate::check_result(crate::ffi_extern_TKDEVRML::Handle_VrmlData_Material_get_mut(
                 self as *mut Self,
             ))
         }
     }
 
     /// Upcast Handle<VrmlData_Material> to Handle<VrmlData_Node>
-    pub fn to_handle_node(&self) -> crate::OwnedPtr<crate::ffi_types::HandleVrmlDataNode> {
+    pub fn to_handle_node(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_VrmlData_Node> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKDEVRML::HandleVrmlDataMaterial_to_HandleVrmlDataNode(
+                crate::ffi_extern_TKDEVRML::Handle_VrmlData_Material_to_Handle_VrmlData_Node(
                     self as *const Self,
                 ),
             ))
@@ -7088,10 +7076,10 @@ impl HandleVrmlDataMaterial {
     /// Upcast Handle<VrmlData_Material> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKDEVRML::HandleVrmlDataMaterial_to_HandleStandardTransient(
+                crate::ffi_extern_TKDEVRML::Handle_VrmlData_Material_to_Handle_Standard_Transient(
                     self as *const Self,
                 ),
             ))
@@ -7103,7 +7091,7 @@ impl HandleVrmlDataMaterial {
 // From VrmlData_Node.hxx
 // ========================
 
-/// **Source:** `VrmlData_Node.hxx`:35 - `VrmlData_Node`
+/// **Source:** `VrmlData_Node.hxx`:36 - `VrmlData_Node`
 ///
 /// Abstract VRML Node
 pub use crate::ffi_types::VrmlData_Node as Node;
@@ -7117,7 +7105,7 @@ unsafe impl crate::CppDeletable for Node {
 }
 
 impl Node {
-    /// **Source:** `VrmlData_Node.hxx`:53 - `VrmlData_Node::Scene()`
+    /// **Source:** `VrmlData_Node.hxx`:54 - `VrmlData_Node::Scene()`
     ///
     /// Query the Scene that contains this Node
     pub fn scene(&self) -> &Scene {
@@ -7128,7 +7116,7 @@ impl Node {
         }
     }
 
-    /// **Source:** `VrmlData_Node.hxx`:58 - `VrmlData_Node::Name()`
+    /// **Source:** `VrmlData_Node.hxx`:59 - `VrmlData_Node::Name()`
     ///
     /// Query the name
     pub fn name(&self) -> std::string::String {
@@ -7141,7 +7129,7 @@ impl Node {
         .into_owned()
     }
 
-    /// **Source:** `VrmlData_Node.hxx`:71 - `VrmlData_Node::ReadNode()`
+    /// **Source:** `VrmlData_Node.hxx`:72 - `VrmlData_Node::ReadNode()`
     ///
     /// Read a complete node definition from VRML stream
     /// @param theBuffer
@@ -7155,8 +7143,8 @@ impl Node {
     pub fn read_node(
         &mut self,
         theBuffer: &mut InBuffer,
-        theNode: &mut crate::ffi_types::HandleVrmlDataNode,
-        Type: &crate::ffi_types::HandleStandardType,
+        theNode: &mut crate::ffi_types::Handle_VrmlData_Node,
+        Type: &crate::ffi_types::Handle_Standard_Type,
     ) -> crate::vrml_data::ErrorStatus {
         crate::vrml_data::ErrorStatus::try_from(crate::check_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlData_Node_read_node(
@@ -7169,7 +7157,7 @@ impl Node {
         .unwrap()
     }
 
-    /// **Source:** `VrmlData_Node.hxx`:78 - `VrmlData_Node::Read()`
+    /// **Source:** `VrmlData_Node.hxx`:79 - `VrmlData_Node::Read()`
     ///
     /// Read the Node from input stream.
     pub fn read(&mut self, theBuffer: &mut InBuffer) -> crate::vrml_data::ErrorStatus {
@@ -7179,7 +7167,7 @@ impl Node {
         .unwrap()
     }
 
-    /// **Source:** `VrmlData_Node.hxx`:83 - `VrmlData_Node::Write()`
+    /// **Source:** `VrmlData_Node.hxx`:84 - `VrmlData_Node::Write()`
     ///
     /// Write the Node to output stream.
     pub fn write(&self, thePrefix: &str) -> crate::vrml_data::ErrorStatus {
@@ -7193,7 +7181,7 @@ impl Node {
         .unwrap()
     }
 
-    /// **Source:** `VrmlData_Node.hxx`:88 - `VrmlData_Node::IsDefault()`
+    /// **Source:** `VrmlData_Node.hxx`:89 - `VrmlData_Node::IsDefault()`
     ///
     /// Returns True if the node is default, then it would not be written.
     pub fn is_default(&self) -> bool {
@@ -7202,7 +7190,7 @@ impl Node {
         })
     }
 
-    /// **Source:** `VrmlData_Node.hxx`:93 - `VrmlData_Node::WriteClosing()`
+    /// **Source:** `VrmlData_Node.hxx`:94 - `VrmlData_Node::WriteClosing()`
     ///
     /// Write the closing brace in the end of a node output.
     pub fn write_closing(&self) -> crate::vrml_data::ErrorStatus {
@@ -7212,7 +7200,7 @@ impl Node {
         .unwrap()
     }
 
-    /// **Source:** `VrmlData_Node.hxx`:102 - `VrmlData_Node::Clone()`
+    /// **Source:** `VrmlData_Node.hxx`:103 - `VrmlData_Node::Clone()`
     ///
     /// Create a copy of this node.
     /// If the parameter is null, a new copied node is created. Otherwise new node
@@ -7221,8 +7209,8 @@ impl Node {
     /// from that one of the current instance.
     pub fn clone(
         &self,
-        arg0: &crate::ffi_types::HandleVrmlDataNode,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleVrmlDataNode> {
+        arg0: &crate::ffi_types::Handle_VrmlData_Node,
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_VrmlData_Node> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDEVRML::VrmlData_Node_clone(self as *const Self, arg0),
@@ -7230,8 +7218,8 @@ impl Node {
         }
     }
 
-    /// **Source:** `VrmlData_Node.hxx`:183 - `VrmlData_Node::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `VrmlData_Node.hxx`:180 - `VrmlData_Node::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKDEVRML::VrmlData_Node_dynamic_type(
                 self as *const Self,
@@ -7239,7 +7227,7 @@ impl Node {
         }
     }
 
-    /// **Source:** `VrmlData_Node.hxx`:107 - `VrmlData_Node::ReadBoolean()`
+    /// **Source:** `VrmlData_Node.hxx`:108 - `VrmlData_Node::ReadBoolean()`
     ///
     /// Read one boolean value (TRUE or FALSE).
     pub fn read_boolean(
@@ -7252,7 +7240,7 @@ impl Node {
         .unwrap()
     }
 
-    /// **Source:** `VrmlData_Node.hxx`:113 - `VrmlData_Node::ReadString()`
+    /// **Source:** `VrmlData_Node.hxx`:114 - `VrmlData_Node::ReadString()`
     ///
     /// Read one quoted string, the quotes are removed.
     pub fn read_string(
@@ -7265,12 +7253,12 @@ impl Node {
         .unwrap()
     }
 
-    /// **Source:** `VrmlData_Node.hxx`:119 - `VrmlData_Node::ReadMultiString()`
+    /// **Source:** `VrmlData_Node.hxx`:120 - `VrmlData_Node::ReadMultiString()`
     ///
     /// Read one quoted string, the quotes are removed.
     pub fn read_multi_string(
         theBuffer: &mut InBuffer,
-        theRes: &mut crate::ffi_types::TColStd_ListOfAsciiString,
+        theRes: &mut crate::ffi_types::NCollection_List_TCollection_AsciiString,
     ) -> crate::vrml_data::ErrorStatus {
         crate::vrml_data::ErrorStatus::try_from(crate::check_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlData_Node_read_multi_string(theBuffer, theRes)
@@ -7278,7 +7266,7 @@ impl Node {
         .unwrap()
     }
 
-    /// **Source:** `VrmlData_Node.hxx`:126 - `VrmlData_Node::ReadInteger()`
+    /// **Source:** `VrmlData_Node.hxx`:127 - `VrmlData_Node::ReadInteger()`
     ///
     /// Read one integer value.
     pub fn read_integer(
@@ -7291,14 +7279,14 @@ impl Node {
         .unwrap()
     }
 
-    /// **Source:** `VrmlData_Node.hxx`:129 - `VrmlData_Node::OK()`
+    /// **Source:** `VrmlData_Node.hxx`:130 - `VrmlData_Node::OK()`
     pub fn ok_errorstatus(theStat: crate::vrml_data::ErrorStatus) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlData_Node_ok_errorstatus(theStat.into())
         })
     }
 
-    /// **Source:** `VrmlData_Node.hxx`:134 - `VrmlData_Node::OK()`
+    /// **Source:** `VrmlData_Node.hxx`:132 - `VrmlData_Node::OK()`
     pub fn ok_errorstatus2(
         outStat: &mut crate::vrml_data::ErrorStatus,
         theStat: crate::vrml_data::ErrorStatus,
@@ -7314,14 +7302,14 @@ impl Node {
         result_
     }
 
-    /// **Source:** `VrmlData_Node.hxx`:143 - `VrmlData_Node::GlobalIndent()`
+    /// **Source:** `VrmlData_Node.hxx`:140 - `VrmlData_Node::GlobalIndent()`
     ///
     /// Define the common Indent in spaces, for writing all nodes.
     pub fn global_indent() -> i32 {
         crate::check_result(unsafe { crate::ffi_extern_TKDEVRML::VrmlData_Node_global_indent() })
     }
 
-    /// **Source:** `VrmlData_Node.hxx`:183 - `VrmlData_Node::get_type_name()`
+    /// **Source:** `VrmlData_Node.hxx`:180 - `VrmlData_Node::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -7332,8 +7320,8 @@ impl Node {
         .into_owned()
     }
 
-    /// **Source:** `VrmlData_Node.hxx`:183 - `VrmlData_Node::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    /// **Source:** `VrmlData_Node.hxx`:180 - `VrmlData_Node::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKDEVRML::VrmlData_Node_get_type_descriptor()))
         }
@@ -7359,8 +7347,8 @@ impl Node {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlData_Node_inherited_IsInstance(
                 self as *const Self,
@@ -7369,14 +7357,14 @@ impl Node {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlData_Node_inherited_IsKind(self as *const Self, theType)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -7390,14 +7378,14 @@ impl Node {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlData_Node_inherited_GetRefCount(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlData_Node_inherited_IncrementRefCounter(
@@ -7406,7 +7394,7 @@ impl Node {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlData_Node_inherited_DecrementRefCounter(
@@ -7415,7 +7403,7 @@ impl Node {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlData_Node_inherited_Delete(self as *const Self)
@@ -7423,32 +7411,32 @@ impl Node {
     }
 }
 
-pub use crate::ffi_types::HandleVrmlDataNode;
+pub use crate::ffi_types::Handle_VrmlData_Node;
 
-unsafe impl crate::CppDeletable for HandleVrmlDataNode {
+unsafe impl crate::CppDeletable for Handle_VrmlData_Node {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKDEVRML::HandleVrmlDataNode_destructor(ptr);
+            crate::ffi_extern_TKDEVRML::Handle_VrmlData_Node_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleVrmlDataNode {
+unsafe impl crate::CppCopyable for Handle_VrmlData_Node {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        unsafe { crate::check_result(crate::ffi_extern_TKDEVRML::HandleVrmlDataNode_clone(ptr)) }
+        unsafe { crate::check_result(crate::ffi_extern_TKDEVRML::Handle_VrmlData_Node_clone(ptr)) }
     }
 }
 
-impl HandleVrmlDataNode {
+impl Handle_VrmlData_Node {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
-        unsafe { crate::ffi_extern_TKDEVRML::HandleVrmlDataNode_is_null(self as *const Self) }
+        unsafe { crate::ffi_extern_TKDEVRML::Handle_VrmlData_Node_is_null(self as *const Self) }
     }
 
     /// Dereference this Handle to access the underlying VrmlData_Node
     pub fn get(&self) -> &crate::ffi_types::VrmlData_Node {
         unsafe {
-            &*crate::check_result(crate::ffi_extern_TKDEVRML::HandleVrmlDataNode_get(
+            &*crate::check_result(crate::ffi_extern_TKDEVRML::Handle_VrmlData_Node_get(
                 self as *const Self,
             ))
         }
@@ -7457,7 +7445,7 @@ impl HandleVrmlDataNode {
     /// Dereference this Handle to mutably access the underlying VrmlData_Node
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::VrmlData_Node {
         unsafe {
-            &mut *crate::check_result(crate::ffi_extern_TKDEVRML::HandleVrmlDataNode_get_mut(
+            &mut *crate::check_result(crate::ffi_extern_TKDEVRML::Handle_VrmlData_Node_get_mut(
                 self as *mut Self,
             ))
         }
@@ -7466,10 +7454,10 @@ impl HandleVrmlDataNode {
     /// Upcast Handle<VrmlData_Node> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKDEVRML::HandleVrmlDataNode_to_HandleStandardTransient(
+                crate::ffi_extern_TKDEVRML::Handle_VrmlData_Node_to_Handle_Standard_Transient(
                     self as *const Self,
                 ),
             ))
@@ -7481,9 +7469,9 @@ impl HandleVrmlDataNode {
     /// Returns `None` if the handle does not point to a `VrmlData_Appearance` (or subclass).
     pub fn downcast_to_appearance(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleVrmlDataAppearance>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_VrmlData_Appearance>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKDEVRML::HandleVrmlDataNode_downcast_to_HandleVrmlDataAppearance(
+            crate::ffi_extern_TKDEVRML::Handle_VrmlData_Node_downcast_to_Handle_VrmlData_Appearance(
                 self as *const Self,
             )
         });
@@ -7499,9 +7487,9 @@ impl HandleVrmlDataNode {
     /// Returns `None` if the handle does not point to a `VrmlData_ArrayVec3d` (or subclass).
     pub fn downcast_to_array_vec3d(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleVrmlDataArrayVec3d>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_VrmlData_ArrayVec3d>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKDEVRML::HandleVrmlDataNode_downcast_to_HandleVrmlDataArrayVec3d(
+            crate::ffi_extern_TKDEVRML::Handle_VrmlData_Node_downcast_to_Handle_VrmlData_ArrayVec3d(
                 self as *const Self,
             )
         });
@@ -7515,9 +7503,11 @@ impl HandleVrmlDataNode {
     /// Downcast Handle<VrmlData_Node> to Handle<VrmlData_Box>
     ///
     /// Returns `None` if the handle does not point to a `VrmlData_Box` (or subclass).
-    pub fn downcast_to_box(&self) -> Option<crate::OwnedPtr<crate::ffi_types::HandleVrmlDataBox>> {
+    pub fn downcast_to_box(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_VrmlData_Box>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKDEVRML::HandleVrmlDataNode_downcast_to_HandleVrmlDataBox(
+            crate::ffi_extern_TKDEVRML::Handle_VrmlData_Node_downcast_to_Handle_VrmlData_Box(
                 self as *const Self,
             )
         });
@@ -7533,9 +7523,9 @@ impl HandleVrmlDataNode {
     /// Returns `None` if the handle does not point to a `VrmlData_Color` (or subclass).
     pub fn downcast_to_color(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleVrmlDataColor>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_VrmlData_Color>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKDEVRML::HandleVrmlDataNode_downcast_to_HandleVrmlDataColor(
+            crate::ffi_extern_TKDEVRML::Handle_VrmlData_Node_downcast_to_Handle_VrmlData_Color(
                 self as *const Self,
             )
         });
@@ -7551,9 +7541,9 @@ impl HandleVrmlDataNode {
     /// Returns `None` if the handle does not point to a `VrmlData_Cone` (or subclass).
     pub fn downcast_to_cone(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleVrmlDataCone>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_VrmlData_Cone>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKDEVRML::HandleVrmlDataNode_downcast_to_HandleVrmlDataCone(
+            crate::ffi_extern_TKDEVRML::Handle_VrmlData_Node_downcast_to_Handle_VrmlData_Cone(
                 self as *const Self,
             )
         });
@@ -7569,9 +7559,9 @@ impl HandleVrmlDataNode {
     /// Returns `None` if the handle does not point to a `VrmlData_Coordinate` (or subclass).
     pub fn downcast_to_coordinate(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleVrmlDataCoordinate>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_VrmlData_Coordinate>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKDEVRML::HandleVrmlDataNode_downcast_to_HandleVrmlDataCoordinate(
+            crate::ffi_extern_TKDEVRML::Handle_VrmlData_Node_downcast_to_Handle_VrmlData_Coordinate(
                 self as *const Self,
             )
         });
@@ -7587,9 +7577,9 @@ impl HandleVrmlDataNode {
     /// Returns `None` if the handle does not point to a `VrmlData_Cylinder` (or subclass).
     pub fn downcast_to_cylinder(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleVrmlDataCylinder>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_VrmlData_Cylinder>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKDEVRML::HandleVrmlDataNode_downcast_to_HandleVrmlDataCylinder(
+            crate::ffi_extern_TKDEVRML::Handle_VrmlData_Node_downcast_to_Handle_VrmlData_Cylinder(
                 self as *const Self,
             )
         });
@@ -7605,9 +7595,9 @@ impl HandleVrmlDataNode {
     /// Returns `None` if the handle does not point to a `VrmlData_Faceted` (or subclass).
     pub fn downcast_to_faceted(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleVrmlDataFaceted>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_VrmlData_Faceted>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKDEVRML::HandleVrmlDataNode_downcast_to_HandleVrmlDataFaceted(
+            crate::ffi_extern_TKDEVRML::Handle_VrmlData_Node_downcast_to_Handle_VrmlData_Faceted(
                 self as *const Self,
             )
         });
@@ -7623,9 +7613,9 @@ impl HandleVrmlDataNode {
     /// Returns `None` if the handle does not point to a `VrmlData_Group` (or subclass).
     pub fn downcast_to_group(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleVrmlDataGroup>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_VrmlData_Group>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKDEVRML::HandleVrmlDataNode_downcast_to_HandleVrmlDataGroup(
+            crate::ffi_extern_TKDEVRML::Handle_VrmlData_Node_downcast_to_Handle_VrmlData_Group(
                 self as *const Self,
             )
         });
@@ -7641,11 +7631,9 @@ impl HandleVrmlDataNode {
     /// Returns `None` if the handle does not point to a `VrmlData_ImageTexture` (or subclass).
     pub fn downcast_to_image_texture(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleVrmlDataImageTexture>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_VrmlData_ImageTexture>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKDEVRML::HandleVrmlDataNode_downcast_to_HandleVrmlDataImageTexture(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKDEVRML::Handle_VrmlData_Node_downcast_to_Handle_VrmlData_ImageTexture(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -7659,11 +7647,9 @@ impl HandleVrmlDataNode {
     /// Returns `None` if the handle does not point to a `VrmlData_IndexedFaceSet` (or subclass).
     pub fn downcast_to_indexed_face_set(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleVrmlDataIndexedFaceSet>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_VrmlData_IndexedFaceSet>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKDEVRML::HandleVrmlDataNode_downcast_to_HandleVrmlDataIndexedFaceSet(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKDEVRML::Handle_VrmlData_Node_downcast_to_Handle_VrmlData_IndexedFaceSet(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -7677,11 +7663,9 @@ impl HandleVrmlDataNode {
     /// Returns `None` if the handle does not point to a `VrmlData_IndexedLineSet` (or subclass).
     pub fn downcast_to_indexed_line_set(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleVrmlDataIndexedLineSet>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_VrmlData_IndexedLineSet>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKDEVRML::HandleVrmlDataNode_downcast_to_HandleVrmlDataIndexedLineSet(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKDEVRML::Handle_VrmlData_Node_downcast_to_Handle_VrmlData_IndexedLineSet(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -7695,9 +7679,9 @@ impl HandleVrmlDataNode {
     /// Returns `None` if the handle does not point to a `VrmlData_Material` (or subclass).
     pub fn downcast_to_material(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleVrmlDataMaterial>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_VrmlData_Material>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKDEVRML::HandleVrmlDataNode_downcast_to_HandleVrmlDataMaterial(
+            crate::ffi_extern_TKDEVRML::Handle_VrmlData_Node_downcast_to_Handle_VrmlData_Material(
                 self as *const Self,
             )
         });
@@ -7713,9 +7697,9 @@ impl HandleVrmlDataNode {
     /// Returns `None` if the handle does not point to a `VrmlData_Normal` (or subclass).
     pub fn downcast_to_normal(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleVrmlDataNormal>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_VrmlData_Normal>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKDEVRML::HandleVrmlDataNode_downcast_to_HandleVrmlDataNormal(
+            crate::ffi_extern_TKDEVRML::Handle_VrmlData_Node_downcast_to_Handle_VrmlData_Normal(
                 self as *const Self,
             )
         });
@@ -7731,9 +7715,9 @@ impl HandleVrmlDataNode {
     /// Returns `None` if the handle does not point to a `VrmlData_ShapeNode` (or subclass).
     pub fn downcast_to_shape_node(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleVrmlDataShapeNode>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_VrmlData_ShapeNode>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKDEVRML::HandleVrmlDataNode_downcast_to_HandleVrmlDataShapeNode(
+            crate::ffi_extern_TKDEVRML::Handle_VrmlData_Node_downcast_to_Handle_VrmlData_ShapeNode(
                 self as *const Self,
             )
         });
@@ -7749,9 +7733,9 @@ impl HandleVrmlDataNode {
     /// Returns `None` if the handle does not point to a `VrmlData_Sphere` (or subclass).
     pub fn downcast_to_sphere(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleVrmlDataSphere>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_VrmlData_Sphere>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKDEVRML::HandleVrmlDataNode_downcast_to_HandleVrmlDataSphere(
+            crate::ffi_extern_TKDEVRML::Handle_VrmlData_Node_downcast_to_Handle_VrmlData_Sphere(
                 self as *const Self,
             )
         });
@@ -7767,9 +7751,9 @@ impl HandleVrmlDataNode {
     /// Returns `None` if the handle does not point to a `VrmlData_Texture` (or subclass).
     pub fn downcast_to_texture(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleVrmlDataTexture>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_VrmlData_Texture>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKDEVRML::HandleVrmlDataNode_downcast_to_HandleVrmlDataTexture(
+            crate::ffi_extern_TKDEVRML::Handle_VrmlData_Node_downcast_to_Handle_VrmlData_Texture(
                 self as *const Self,
             )
         });
@@ -7785,9 +7769,9 @@ impl HandleVrmlDataNode {
     /// Returns `None` if the handle does not point to a `VrmlData_TextureCoordinate` (or subclass).
     pub fn downcast_to_texture_coordinate(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleVrmlDataTextureCoordinate>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_VrmlData_TextureCoordinate>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKDEVRML::HandleVrmlDataNode_downcast_to_HandleVrmlDataTextureCoordinate(self as *const Self)
+            crate::ffi_extern_TKDEVRML::Handle_VrmlData_Node_downcast_to_Handle_VrmlData_TextureCoordinate(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -7801,9 +7785,9 @@ impl HandleVrmlDataNode {
     /// Returns `None` if the handle does not point to a `VrmlData_TextureTransform` (or subclass).
     pub fn downcast_to_texture_transform(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleVrmlDataTextureTransform>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_VrmlData_TextureTransform>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKDEVRML::HandleVrmlDataNode_downcast_to_HandleVrmlDataTextureTransform(self as *const Self)
+            crate::ffi_extern_TKDEVRML::Handle_VrmlData_Node_downcast_to_Handle_VrmlData_TextureTransform(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -7817,9 +7801,9 @@ impl HandleVrmlDataNode {
     /// Returns `None` if the handle does not point to a `VrmlData_UnknownNode` (or subclass).
     pub fn downcast_to_unknown_node(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleVrmlDataUnknownNode>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_VrmlData_UnknownNode>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKDEVRML::HandleVrmlDataNode_downcast_to_HandleVrmlDataUnknownNode(
+            crate::ffi_extern_TKDEVRML::Handle_VrmlData_Node_downcast_to_Handle_VrmlData_UnknownNode(
                 self as *const Self,
             )
         });
@@ -7835,9 +7819,9 @@ impl HandleVrmlDataNode {
     /// Returns `None` if the handle does not point to a `VrmlData_WorldInfo` (or subclass).
     pub fn downcast_to_world_info(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleVrmlDataWorldInfo>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_VrmlData_WorldInfo>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKDEVRML::HandleVrmlDataNode_downcast_to_HandleVrmlDataWorldInfo(
+            crate::ffi_extern_TKDEVRML::Handle_VrmlData_Node_downcast_to_Handle_VrmlData_WorldInfo(
                 self as *const Self,
             )
         });
@@ -7923,8 +7907,8 @@ impl Normal {
     /// is not created, but rather the given one is modified.
     pub fn clone(
         &self,
-        theOther: &crate::ffi_types::HandleVrmlDataNode,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleVrmlDataNode> {
+        theOther: &crate::ffi_types::Handle_VrmlData_Node,
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_VrmlData_Node> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDEVRML::VrmlData_Normal_clone(self as *const Self, theOther),
@@ -7956,8 +7940,8 @@ impl Normal {
         .unwrap()
     }
 
-    /// **Source:** `VrmlData_Normal.hxx`:77 - `VrmlData_Normal::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `VrmlData_Normal.hxx`:74 - `VrmlData_Normal::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKDEVRML::VrmlData_Normal_dynamic_type(
                 self as *const Self,
@@ -7965,7 +7949,7 @@ impl Normal {
         }
     }
 
-    /// **Source:** `VrmlData_Normal.hxx`:77 - `VrmlData_Normal::get_type_name()`
+    /// **Source:** `VrmlData_Normal.hxx`:74 - `VrmlData_Normal::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -7976,8 +7960,8 @@ impl Normal {
         .into_owned()
     }
 
-    /// **Source:** `VrmlData_Normal.hxx`:77 - `VrmlData_Normal::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    /// **Source:** `VrmlData_Normal.hxx`:74 - `VrmlData_Normal::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKDEVRML::VrmlData_Normal_get_type_descriptor(),
@@ -8050,7 +8034,7 @@ impl Normal {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleVrmlDataNormal> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_VrmlData_Normal> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDEVRML::VrmlData_Normal_to_handle(obj.into_raw()),
@@ -8100,14 +8084,14 @@ impl Normal {
         })
     }
 
-    /// Inherited: **Source:** `VrmlData_ArrayVec3d.hxx`:103 - `VrmlData_ArrayVec3d::IsDefault()`
+    /// Inherited: **Source:** `VrmlData_ArrayVec3d.hxx`:102 - `VrmlData_ArrayVec3d::IsDefault()`
     pub fn is_default(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlData_Normal_inherited_IsDefault(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `VrmlData_Node.hxx`:53 - `VrmlData_Node::Scene()`
+    /// Inherited: **Source:** `VrmlData_Node.hxx`:54 - `VrmlData_Node::Scene()`
     pub fn scene(&self) -> &Scene {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKDEVRML::VrmlData_Normal_inherited_Scene(
@@ -8116,12 +8100,12 @@ impl Normal {
         }
     }
 
-    /// Inherited: **Source:** `VrmlData_Node.hxx`:71 - `VrmlData_Node::ReadNode()`
+    /// Inherited: **Source:** `VrmlData_Node.hxx`:72 - `VrmlData_Node::ReadNode()`
     pub fn read_node(
         &mut self,
         theBuffer: &mut InBuffer,
-        theNode: &mut crate::ffi_types::HandleVrmlDataNode,
-        Type: &crate::ffi_types::HandleStandardType,
+        theNode: &mut crate::ffi_types::Handle_VrmlData_Node,
+        Type: &crate::ffi_types::Handle_Standard_Type,
     ) -> crate::vrml_data::ErrorStatus {
         crate::vrml_data::ErrorStatus::try_from(crate::check_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlData_Normal_inherited_ReadNode(
@@ -8134,7 +8118,7 @@ impl Normal {
         .unwrap()
     }
 
-    /// Inherited: **Source:** `VrmlData_Node.hxx`:93 - `VrmlData_Node::WriteClosing()`
+    /// Inherited: **Source:** `VrmlData_Node.hxx`:94 - `VrmlData_Node::WriteClosing()`
     pub fn write_closing(&self) -> crate::vrml_data::ErrorStatus {
         crate::vrml_data::ErrorStatus::try_from(crate::check_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlData_Normal_inherited_WriteClosing(self as *const Self)
@@ -8142,8 +8126,8 @@ impl Normal {
         .unwrap()
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlData_Normal_inherited_IsInstance(
                 self as *const Self,
@@ -8152,8 +8136,8 @@ impl Normal {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlData_Normal_inherited_IsKind(
                 self as *const Self,
@@ -8162,7 +8146,7 @@ impl Normal {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -8176,14 +8160,14 @@ impl Normal {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlData_Normal_inherited_GetRefCount(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlData_Normal_inherited_IncrementRefCounter(
@@ -8192,7 +8176,7 @@ impl Normal {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlData_Normal_inherited_DecrementRefCounter(
@@ -8201,7 +8185,7 @@ impl Normal {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlData_Normal_inherited_Delete(self as *const Self)
@@ -8209,32 +8193,34 @@ impl Normal {
     }
 }
 
-pub use crate::ffi_types::HandleVrmlDataNormal;
+pub use crate::ffi_types::Handle_VrmlData_Normal;
 
-unsafe impl crate::CppDeletable for HandleVrmlDataNormal {
+unsafe impl crate::CppDeletable for Handle_VrmlData_Normal {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKDEVRML::HandleVrmlDataNormal_destructor(ptr);
+            crate::ffi_extern_TKDEVRML::Handle_VrmlData_Normal_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleVrmlDataNormal {
+unsafe impl crate::CppCopyable for Handle_VrmlData_Normal {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        unsafe { crate::check_result(crate::ffi_extern_TKDEVRML::HandleVrmlDataNormal_clone(ptr)) }
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDEVRML::Handle_VrmlData_Normal_clone(ptr))
+        }
     }
 }
 
-impl HandleVrmlDataNormal {
+impl Handle_VrmlData_Normal {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
-        unsafe { crate::ffi_extern_TKDEVRML::HandleVrmlDataNormal_is_null(self as *const Self) }
+        unsafe { crate::ffi_extern_TKDEVRML::Handle_VrmlData_Normal_is_null(self as *const Self) }
     }
 
     /// Dereference this Handle to access the underlying VrmlData_Normal
     pub fn get(&self) -> &crate::ffi_types::VrmlData_Normal {
         unsafe {
-            &*crate::check_result(crate::ffi_extern_TKDEVRML::HandleVrmlDataNormal_get(
+            &*crate::check_result(crate::ffi_extern_TKDEVRML::Handle_VrmlData_Normal_get(
                 self as *const Self,
             ))
         }
@@ -8243,7 +8229,7 @@ impl HandleVrmlDataNormal {
     /// Dereference this Handle to mutably access the underlying VrmlData_Normal
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::VrmlData_Normal {
         unsafe {
-            &mut *crate::check_result(crate::ffi_extern_TKDEVRML::HandleVrmlDataNormal_get_mut(
+            &mut *crate::check_result(crate::ffi_extern_TKDEVRML::Handle_VrmlData_Normal_get_mut(
                 self as *mut Self,
             ))
         }
@@ -8252,10 +8238,10 @@ impl HandleVrmlDataNormal {
     /// Upcast Handle<VrmlData_Normal> to Handle<VrmlData_ArrayVec3d>
     pub fn to_handle_array_vec3d(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleVrmlDataArrayVec3d> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_VrmlData_ArrayVec3d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKDEVRML::HandleVrmlDataNormal_to_HandleVrmlDataArrayVec3d(
+                crate::ffi_extern_TKDEVRML::Handle_VrmlData_Normal_to_Handle_VrmlData_ArrayVec3d(
                     self as *const Self,
                 ),
             ))
@@ -8263,10 +8249,10 @@ impl HandleVrmlDataNormal {
     }
 
     /// Upcast Handle<VrmlData_Normal> to Handle<VrmlData_Node>
-    pub fn to_handle_node(&self) -> crate::OwnedPtr<crate::ffi_types::HandleVrmlDataNode> {
+    pub fn to_handle_node(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_VrmlData_Node> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKDEVRML::HandleVrmlDataNormal_to_HandleVrmlDataNode(
+                crate::ffi_extern_TKDEVRML::Handle_VrmlData_Normal_to_Handle_VrmlData_Node(
                     self as *const Self,
                 ),
             ))
@@ -8276,10 +8262,10 @@ impl HandleVrmlDataNormal {
     /// Upcast Handle<VrmlData_Normal> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKDEVRML::HandleVrmlDataNormal_to_HandleStandardTransient(
+                crate::ffi_extern_TKDEVRML::Handle_VrmlData_Normal_to_Handle_Standard_Transient(
                     self as *const Self,
                 ),
             ))
@@ -8291,7 +8277,7 @@ impl HandleVrmlDataNormal {
 // From VrmlData_Scene.hxx
 // ========================
 
-/// **Source:** `VrmlData_Scene.hxx`:42 - `VrmlData_Scene`
+/// **Source:** `VrmlData_Scene.hxx`:46 - `VrmlData_Scene`
 ///
 /// Block of comments describing class VrmlData_Scene
 pub use crate::ffi_types::VrmlData_Scene as Scene;
@@ -8305,11 +8291,11 @@ unsafe impl crate::CppDeletable for Scene {
 }
 
 impl Scene {
-    /// **Source:** `VrmlData_Scene.hxx`:55 - `VrmlData_Scene::VrmlData_Scene()`
+    /// **Source:** `VrmlData_Scene.hxx`:59 - `VrmlData_Scene::VrmlData_Scene()`
     ///
     /// Constructor.
     pub fn new_handlencollectionincallocator(
-        arg0: &crate::ffi_types::HandleNCollectionIncAllocator,
+        arg0: &crate::ffi_types::Handle_NCollection_IncAllocator,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -8318,7 +8304,7 @@ impl Scene {
         }
     }
 
-    /// **Source:** `VrmlData_Scene.hxx`:61 - `VrmlData_Scene::Status()`
+    /// **Source:** `VrmlData_Scene.hxx`:65 - `VrmlData_Scene::Status()`
     ///
     /// Query the status of the previous operation.
     /// Normally it should be equal to VrmlData_StatusOK (no error).
@@ -8329,7 +8315,7 @@ impl Scene {
         .unwrap()
     }
 
-    /// **Source:** `VrmlData_Scene.hxx`:72 - `VrmlData_Scene::SetVrmlDir()`
+    /// **Source:** `VrmlData_Scene.hxx`:76 - `VrmlData_Scene::SetVrmlDir()`
     ///
     /// Add the given directory path to the list of VRML file search directories.
     /// This method forms the list of directories ordered according to the
@@ -8344,7 +8330,7 @@ impl Scene {
         })
     }
 
-    /// **Source:** `VrmlData_Scene.hxx`:79 - `VrmlData_Scene::SetLinearScale()`
+    /// **Source:** `VrmlData_Scene.hxx`:83 - `VrmlData_Scene::SetLinearScale()`
     ///
     /// Set the scale factor that would be further used in methods
     /// ReadReal, ReadXYZ and ReadXY. All coordinates, distances and sized are
@@ -8355,21 +8341,7 @@ impl Scene {
         })
     }
 
-    /// **Source:** `VrmlData_Scene.hxx`:85 - `VrmlData_Scene::VrmlDirIterator()`
-    ///
-    /// Returns the directory iterator, to check the presence of requested VRML
-    /// file in each iterated directory.
-    pub fn vrml_dir_iterator(
-        &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::TDataStd_ListIteratorOfListOfExtendedString> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKDEVRML::VrmlData_Scene_vrml_dir_iterator(self as *const Self),
-            ))
-        }
-    }
-
-    /// **Source:** `VrmlData_Scene.hxx`:93 - `VrmlData_Scene::GetIterator()`
+    /// **Source:** `VrmlData_Scene.hxx`:97 - `VrmlData_Scene::GetIterator()`
     ///
     /// Iterator of Nodes
     pub fn get_iterator(&self) -> crate::OwnedPtr<crate::ffi_types::VrmlData_Scene_Iterator> {
@@ -8380,25 +8352,10 @@ impl Scene {
         }
     }
 
-    /// **Source:** `VrmlData_Scene.hxx`:98 - `VrmlData_Scene::NamedNodesIterator()`
-    ///
-    /// Get the iterator of named nodes.
-    pub fn named_nodes_iterator(
-        &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::VrmlData_MapOfNode_Iterator> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKDEVRML::VrmlData_Scene_named_nodes_iterator(
-                    self as *const Self,
-                ),
-            ))
-        }
-    }
-
-    /// **Source:** `VrmlData_Scene.hxx`:103 - `VrmlData_Scene::Allocator()`
+    /// **Source:** `VrmlData_Scene.hxx`:110 - `VrmlData_Scene::Allocator()`
     ///
     /// Allocator used by all nodes contained in the Scene.
-    pub fn allocator(&self) -> &crate::ffi_types::HandleNCollectionIncAllocator {
+    pub fn allocator(&self) -> &crate::ffi_types::Handle_NCollection_IncAllocator {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKDEVRML::VrmlData_Scene_allocator(
                 self as *const Self,
@@ -8406,7 +8363,7 @@ impl Scene {
         }
     }
 
-    /// **Source:** `VrmlData_Scene.hxx`:110 - `VrmlData_Scene::AddNode()`
+    /// **Source:** `VrmlData_Scene.hxx`:117 - `VrmlData_Scene::AddNode()`
     ///
     /// Add a Node. If theN belongs to another Scene, it is cloned.
     /// <p>VrmlData_WorldInfo cannot be added, in this case the method
@@ -8419,9 +8376,9 @@ impl Scene {
     /// not outlive whichever source it actually borrows from.
     pub unsafe fn add_node(
         &mut self,
-        theN: &crate::ffi_types::HandleVrmlDataNode,
+        theN: &crate::ffi_types::Handle_VrmlData_Node,
         isTopLevel: bool,
-    ) -> &crate::ffi_types::HandleVrmlDataNode {
+    ) -> &crate::ffi_types::Handle_VrmlData_Node {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKDEVRML::VrmlData_Scene_add_node(
                 self as *mut Self,
@@ -8431,7 +8388,7 @@ impl Scene {
         }
     }
 
-    /// **Source:** `VrmlData_Scene.hxx`:123 - `VrmlData_Scene::FindNode()`
+    /// **Source:** `VrmlData_Scene.hxx`:129 - `VrmlData_Scene::FindNode()`
     ///
     /// Find a node by its name.
     /// @param theName
@@ -8443,8 +8400,8 @@ impl Scene {
     pub fn find_node_charptr_handlestandardtype(
         &self,
         theName: &str,
-        theType: &crate::ffi_types::HandleStandardType,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleVrmlDataNode> {
+        theType: &crate::ffi_types::Handle_Standard_Type,
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_VrmlData_Node> {
         let c_theName = std::ffi::CString::new(theName).unwrap();
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -8457,7 +8414,7 @@ impl Scene {
         }
     }
 
-    /// **Source:** `VrmlData_Scene.hxx`:133 - `VrmlData_Scene::FindNode()`
+    /// **Source:** `VrmlData_Scene.hxx`:140 - `VrmlData_Scene::FindNode()`
     ///
     /// Find a node by its name.
     /// @param theName
@@ -8468,7 +8425,7 @@ impl Scene {
         &self,
         theName: &str,
         theLocation: &mut crate::gp::Trsf,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleVrmlDataNode> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_VrmlData_Node> {
         let c_theName = std::ffi::CString::new(theName).unwrap();
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -8481,33 +8438,10 @@ impl Scene {
         }
     }
 
-    /// **Source:** `VrmlData_Scene.hxx`:172 - `VrmlData_Scene::GetShape()`
-    ///
-    /// Convert the scene to a Shape, with the information on materials defined
-    /// for each sub-shape. This method should be used instead of TopoDS_Shape
-    /// explicit conversion operator when you need to retrieve the material
-    /// aspect for each face or edge in the returned topological object.
-    /// @param M
-    /// Data Map that binds an Appearance instance to each created TFace or
-    /// TEdge if the Appearance node is defined in VRML scene for that geometry.
-    /// @return
-    /// TopoDS_Shape (Compound) holding all the scene, similar to the result of
-    /// explicit TopoDS_Shape conversion operator.
-    pub fn get_shape(
-        &mut self,
-        M: &mut crate::ffi_types::VrmlData_DataMapOfShapeAppearance,
-    ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKDEVRML::VrmlData_Scene_get_shape(self as *mut Self, M),
-            ))
-        }
-    }
-
-    /// **Source:** `VrmlData_Scene.hxx`:177 - `VrmlData_Scene::WorldInfo()`
+    /// **Source:** `VrmlData_Scene.hxx`:186 - `VrmlData_Scene::WorldInfo()`
     ///
     /// Query the WorldInfo member.
-    pub fn world_info(&self) -> &crate::ffi_types::HandleVrmlDataWorldInfo {
+    pub fn world_info(&self) -> &crate::ffi_types::Handle_VrmlData_WorldInfo {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKDEVRML::VrmlData_Scene_world_info(
                 self as *const Self,
@@ -8515,7 +8449,7 @@ impl Scene {
         }
     }
 
-    /// **Source:** `VrmlData_Scene.hxx`:202 - `VrmlData_Scene::Dump()`
+    /// **Source:** `VrmlData_Scene.hxx`:211 - `VrmlData_Scene::Dump()`
     ///
     /// Diagnostic dump of the contents
     pub fn dump(&self, theStream: &mut crate::ffi_types::Standard_OStream) {
@@ -8524,7 +8458,7 @@ impl Scene {
         })
     }
 
-    /// **Source:** `VrmlData_Scene.hxx`:207 - `VrmlData_Scene::ReadReal()`
+    /// **Source:** `VrmlData_Scene.hxx`:216 - `VrmlData_Scene::ReadReal()`
     ///
     /// Read one real value.
     pub fn read_real(
@@ -8546,7 +8480,7 @@ impl Scene {
         .unwrap()
     }
 
-    /// **Source:** `VrmlData_Scene.hxx`:215 - `VrmlData_Scene::ReadXYZ()`
+    /// **Source:** `VrmlData_Scene.hxx`:224 - `VrmlData_Scene::ReadXYZ()`
     ///
     /// Read one triplet of real values.
     pub fn read_xyz(
@@ -8568,7 +8502,7 @@ impl Scene {
         .unwrap()
     }
 
-    /// **Source:** `VrmlData_Scene.hxx`:223 - `VrmlData_Scene::ReadXY()`
+    /// **Source:** `VrmlData_Scene.hxx`:232 - `VrmlData_Scene::ReadXY()`
     ///
     /// Read one doublet of real values.
     pub fn read_xy(
@@ -8590,7 +8524,7 @@ impl Scene {
         .unwrap()
     }
 
-    /// **Source:** `VrmlData_Scene.hxx`:230 - `VrmlData_Scene::ReadArrIndex()`
+    /// **Source:** `VrmlData_Scene.hxx`:239 - `VrmlData_Scene::ReadArrIndex()`
     ///
     /// Read an array of integer indices, for IndexedfaceSet and IndexedLineSet.
     pub unsafe fn read_arr_index(
@@ -8610,7 +8544,7 @@ impl Scene {
         .unwrap()
     }
 
-    /// **Source:** `VrmlData_Scene.hxx`:237 - `VrmlData_Scene::GetLineError()`
+    /// **Source:** `VrmlData_Scene.hxx`:246 - `VrmlData_Scene::GetLineError()`
     ///
     /// Query the line where the error occurred (if the status is not OK)
     pub fn get_line_error(&self) -> i32 {
@@ -8619,7 +8553,7 @@ impl Scene {
         })
     }
 
-    /// **Source:** `VrmlData_Scene.hxx`:244 - `VrmlData_Scene::SetIndent()`
+    /// **Source:** `VrmlData_Scene.hxx`:253 - `VrmlData_Scene::SetIndent()`
     ///
     /// Store the indentation for VRML output.
     /// @param nSpc
@@ -8630,7 +8564,7 @@ impl Scene {
         })
     }
 
-    /// **Source:** `VrmlData_Scene.hxx`:255 - `VrmlData_Scene::WriteXYZ()`
+    /// **Source:** `VrmlData_Scene.hxx`:264 - `VrmlData_Scene::WriteXYZ()`
     ///
     /// Write a triplet of real values on a separate line.
     /// @param theXYZ
@@ -8657,7 +8591,7 @@ impl Scene {
         .unwrap()
     }
 
-    /// **Source:** `VrmlData_Scene.hxx`:261 - `VrmlData_Scene::WriteArrIndex()`
+    /// **Source:** `VrmlData_Scene.hxx`:270 - `VrmlData_Scene::WriteArrIndex()`
     ///
     /// Write an array of integer indices, for IndexedFaceSet and IndexedLineSet.
     pub unsafe fn write_arr_index(
@@ -8678,7 +8612,7 @@ impl Scene {
         .unwrap()
     }
 
-    /// **Source:** `VrmlData_Scene.hxx`:281 - `VrmlData_Scene::WriteLine()`
+    /// **Source:** `VrmlData_Scene.hxx`:290 - `VrmlData_Scene::WriteLine()`
     ///
     /// Write a string to the output stream respecting the indentation. The string
     /// can be defined as two substrings that will be separated by a space.
@@ -8713,13 +8647,13 @@ impl Scene {
         .unwrap()
     }
 
-    /// **Source:** `VrmlData_Scene.hxx`:288 - `VrmlData_Scene::WriteNode()`
+    /// **Source:** `VrmlData_Scene.hxx`:297 - `VrmlData_Scene::WriteNode()`
     ///
     /// Write the given node to output stream 'myOutput'.
     pub fn write_node(
         &self,
         thePrefix: &str,
-        arg1: &crate::ffi_types::HandleVrmlDataNode,
+        arg1: &crate::ffi_types::Handle_VrmlData_Node,
     ) -> crate::vrml_data::ErrorStatus {
         let c_thePrefix = std::ffi::CString::new(thePrefix).unwrap();
         crate::vrml_data::ErrorStatus::try_from(crate::check_result(unsafe {
@@ -8732,7 +8666,7 @@ impl Scene {
         .unwrap()
     }
 
-    /// **Source:** `VrmlData_Scene.hxx`:295 - `VrmlData_Scene::IsDummyWrite()`
+    /// **Source:** `VrmlData_Scene.hxx`:304 - `VrmlData_Scene::IsDummyWrite()`
     ///
     /// Query if the current write operation is dummy, i.e., for the purpose of
     /// collecting information before the real write is commenced.
@@ -8742,7 +8676,7 @@ impl Scene {
         })
     }
 
-    /// **Source:** `VrmlData_Scene.hxx`:191 - `VrmlData_Scene::ReadLine()`
+    /// **Source:** `VrmlData_Scene.hxx`:200 - `VrmlData_Scene::ReadLine()`
     ///
     /// Read a VRML line. Empty lines and comments are skipped.
     /// The processing starts here from theBuffer.LinePtr; if there is at least
@@ -8761,7 +8695,7 @@ impl Scene {
         .unwrap()
     }
 
-    /// **Source:** `VrmlData_Scene.hxx`:196 - `VrmlData_Scene::ReadWord()`
+    /// **Source:** `VrmlData_Scene.hxx`:205 - `VrmlData_Scene::ReadWord()`
     ///
     /// Read a single word from the input stream, delimited by whitespace.
     pub fn read_word(
@@ -8774,6 +8708,25 @@ impl Scene {
         .unwrap()
     }
 }
+
+// ── Skipped symbols for Scene (3 total) ──
+// SKIPPED: **Source:** `VrmlData_Scene.hxx`:89 - `VrmlData_Scene::VrmlDirIterator`
+//   method: Returns the directory iterator, to check the presence of requested VRML
+//   method: file in each iterated directory.
+//   Reason: has unbindable types: return: unresolved template type (NCollection_List<TCollection_ExtendedString>::Iterator)
+//   // pub fn vrml_dir_iterator(&self) -> OwnedPtr<NCollection_List<TCollection_ExtendedString>::Iterator>;
+//
+// SKIPPED: **Source:** `VrmlData_Scene.hxx`:102 - `VrmlData_Scene::NamedNodesIterator`
+//   method: Get the iterator of named nodes.
+//   Reason: has unbindable types: return: unresolved template type (NCollection_Map<occ::handle<VrmlData_Node>>::Iterator)
+//   // pub fn named_nodes_iterator(&self) -> OwnedPtr<NCollection_Map<occ::handle<VrmlData_Node>>::Iterator>;
+//
+// SKIPPED: **Source:** `VrmlData_Scene.hxx`:181 - `VrmlData_Scene::GetShape`
+//   method: Convert the scene to a Shape, with the information on materials defined
+//   method: for each sub-shape. This method should be used instead of TopoDS_Shape
+//   Reason: has unbindable types: param 'M': unresolved template type (NCollection_DataMap<occ::handle<TopoDS_TShape>, occ::handle<VrmlData_Appearance>>&)
+//   // pub fn get_shape(&mut self, M: /* NCollection_DataMap<occ::handle<TopoDS_TShape>, occ::handle<VrmlData_Appearance>>& */) -> OwnedPtr<TopoDS_Shape>;
+//
 
 // ========================
 // From VrmlData_ShapeConvert.hxx
@@ -8873,7 +8826,7 @@ impl ShapeConvert {
     /// **Source:** `VrmlData_ShapeConvert.hxx`:96 - `VrmlData_ShapeConvert::ConvertDocument()`
     ///
     /// Add all shapes start from given document with colors and names to the internal structure
-    pub fn convert_document(&mut self, theDoc: &crate::ffi_types::HandleTDocStdDocument) {
+    pub fn convert_document(&mut self, theDoc: &crate::ffi_types::Handle_TDocStd_Document) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlData_ShapeConvert_convert_document(
                 self as *mut Self,
@@ -8953,7 +8906,7 @@ impl ShapeNode {
     /// **Source:** `VrmlData_ShapeNode.hxx`:46 - `VrmlData_ShapeNode::Appearance()`
     ///
     /// Query the Appearance.
-    pub fn appearance(&self) -> &crate::ffi_types::HandleVrmlDataAppearance {
+    pub fn appearance(&self) -> &crate::ffi_types::Handle_VrmlData_Appearance {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKDEVRML::VrmlData_ShapeNode_appearance(
                 self as *const Self,
@@ -8964,7 +8917,7 @@ impl ShapeNode {
     /// **Source:** `VrmlData_ShapeNode.hxx`:51 - `VrmlData_ShapeNode::Geometry()`
     ///
     /// Query the Geometry.
-    pub fn geometry(&self) -> &crate::ffi_types::HandleVrmlDataGeometry {
+    pub fn geometry(&self) -> &crate::ffi_types::Handle_VrmlData_Geometry {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKDEVRML::VrmlData_ShapeNode_geometry(
                 self as *const Self,
@@ -8975,7 +8928,7 @@ impl ShapeNode {
     /// **Source:** `VrmlData_ShapeNode.hxx`:56 - `VrmlData_ShapeNode::SetAppearance()`
     ///
     /// Set the Appearance
-    pub fn set_appearance(&mut self, theAppear: &crate::ffi_types::HandleVrmlDataAppearance) {
+    pub fn set_appearance(&mut self, theAppear: &crate::ffi_types::Handle_VrmlData_Appearance) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlData_ShapeNode_set_appearance(
                 self as *mut Self,
@@ -8987,7 +8940,7 @@ impl ShapeNode {
     /// **Source:** `VrmlData_ShapeNode.hxx`:64 - `VrmlData_ShapeNode::SetGeometry()`
     ///
     /// Set the Geometry
-    pub fn set_geometry(&mut self, theGeometry: &crate::ffi_types::HandleVrmlDataGeometry) {
+    pub fn set_geometry(&mut self, theGeometry: &crate::ffi_types::Handle_VrmlData_Geometry) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlData_ShapeNode_set_geometry(
                 self as *mut Self,
@@ -9003,8 +8956,8 @@ impl ShapeNode {
     /// is not created, but rather the given one is modified.
     pub fn clone(
         &self,
-        theOther: &crate::ffi_types::HandleVrmlDataNode,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleVrmlDataNode> {
+        theOther: &crate::ffi_types::Handle_VrmlData_Node,
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_VrmlData_Node> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDEVRML::VrmlData_ShapeNode_clone(self as *const Self, theOther),
@@ -9045,8 +8998,8 @@ impl ShapeNode {
         })
     }
 
-    /// **Source:** `VrmlData_ShapeNode.hxx`:103 - `VrmlData_ShapeNode::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `VrmlData_ShapeNode.hxx`:100 - `VrmlData_ShapeNode::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKDEVRML::VrmlData_ShapeNode_dynamic_type(
                 self as *const Self,
@@ -9054,7 +9007,7 @@ impl ShapeNode {
         }
     }
 
-    /// **Source:** `VrmlData_ShapeNode.hxx`:103 - `VrmlData_ShapeNode::get_type_name()`
+    /// **Source:** `VrmlData_ShapeNode.hxx`:100 - `VrmlData_ShapeNode::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -9065,8 +9018,8 @@ impl ShapeNode {
         .into_owned()
     }
 
-    /// **Source:** `VrmlData_ShapeNode.hxx`:103 - `VrmlData_ShapeNode::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    /// **Source:** `VrmlData_ShapeNode.hxx`:100 - `VrmlData_ShapeNode::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKDEVRML::VrmlData_ShapeNode_get_type_descriptor(),
@@ -9119,7 +9072,7 @@ impl ShapeNode {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleVrmlDataShapeNode> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_VrmlData_ShapeNode> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDEVRML::VrmlData_ShapeNode_to_handle(obj.into_raw()),
@@ -9127,7 +9080,7 @@ impl ShapeNode {
         }
     }
 
-    /// Inherited: **Source:** `VrmlData_Node.hxx`:53 - `VrmlData_Node::Scene()`
+    /// Inherited: **Source:** `VrmlData_Node.hxx`:54 - `VrmlData_Node::Scene()`
     pub fn scene(&self) -> &Scene {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKDEVRML::VrmlData_ShapeNode_inherited_Scene(
@@ -9136,12 +9089,12 @@ impl ShapeNode {
         }
     }
 
-    /// Inherited: **Source:** `VrmlData_Node.hxx`:71 - `VrmlData_Node::ReadNode()`
+    /// Inherited: **Source:** `VrmlData_Node.hxx`:72 - `VrmlData_Node::ReadNode()`
     pub fn read_node(
         &mut self,
         theBuffer: &mut InBuffer,
-        theNode: &mut crate::ffi_types::HandleVrmlDataNode,
-        Type: &crate::ffi_types::HandleStandardType,
+        theNode: &mut crate::ffi_types::Handle_VrmlData_Node,
+        Type: &crate::ffi_types::Handle_Standard_Type,
     ) -> crate::vrml_data::ErrorStatus {
         crate::vrml_data::ErrorStatus::try_from(crate::check_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlData_ShapeNode_inherited_ReadNode(
@@ -9154,7 +9107,7 @@ impl ShapeNode {
         .unwrap()
     }
 
-    /// Inherited: **Source:** `VrmlData_Node.hxx`:93 - `VrmlData_Node::WriteClosing()`
+    /// Inherited: **Source:** `VrmlData_Node.hxx`:94 - `VrmlData_Node::WriteClosing()`
     pub fn write_closing(&self) -> crate::vrml_data::ErrorStatus {
         crate::vrml_data::ErrorStatus::try_from(crate::check_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlData_ShapeNode_inherited_WriteClosing(
@@ -9164,8 +9117,8 @@ impl ShapeNode {
         .unwrap()
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlData_ShapeNode_inherited_IsInstance(
                 self as *const Self,
@@ -9174,8 +9127,8 @@ impl ShapeNode {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlData_ShapeNode_inherited_IsKind(
                 self as *const Self,
@@ -9184,7 +9137,7 @@ impl ShapeNode {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -9198,7 +9151,7 @@ impl ShapeNode {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlData_ShapeNode_inherited_GetRefCount(
@@ -9207,7 +9160,7 @@ impl ShapeNode {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlData_ShapeNode_inherited_IncrementRefCounter(
@@ -9216,7 +9169,7 @@ impl ShapeNode {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlData_ShapeNode_inherited_DecrementRefCounter(
@@ -9225,7 +9178,7 @@ impl ShapeNode {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlData_ShapeNode_inherited_Delete(self as *const Self)
@@ -9233,34 +9186,36 @@ impl ShapeNode {
     }
 }
 
-pub use crate::ffi_types::HandleVrmlDataShapeNode;
+pub use crate::ffi_types::Handle_VrmlData_ShapeNode;
 
-unsafe impl crate::CppDeletable for HandleVrmlDataShapeNode {
+unsafe impl crate::CppDeletable for Handle_VrmlData_ShapeNode {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKDEVRML::HandleVrmlDataShapeNode_destructor(ptr);
+            crate::ffi_extern_TKDEVRML::Handle_VrmlData_ShapeNode_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleVrmlDataShapeNode {
+unsafe impl crate::CppCopyable for Handle_VrmlData_ShapeNode {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
         unsafe {
-            crate::check_result(crate::ffi_extern_TKDEVRML::HandleVrmlDataShapeNode_clone(ptr))
+            crate::check_result(crate::ffi_extern_TKDEVRML::Handle_VrmlData_ShapeNode_clone(ptr))
         }
     }
 }
 
-impl HandleVrmlDataShapeNode {
+impl Handle_VrmlData_ShapeNode {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
-        unsafe { crate::ffi_extern_TKDEVRML::HandleVrmlDataShapeNode_is_null(self as *const Self) }
+        unsafe {
+            crate::ffi_extern_TKDEVRML::Handle_VrmlData_ShapeNode_is_null(self as *const Self)
+        }
     }
 
     /// Dereference this Handle to access the underlying VrmlData_ShapeNode
     pub fn get(&self) -> &crate::ffi_types::VrmlData_ShapeNode {
         unsafe {
-            &*crate::check_result(crate::ffi_extern_TKDEVRML::HandleVrmlDataShapeNode_get(
+            &*crate::check_result(crate::ffi_extern_TKDEVRML::Handle_VrmlData_ShapeNode_get(
                 self as *const Self,
             ))
         }
@@ -9269,17 +9224,17 @@ impl HandleVrmlDataShapeNode {
     /// Dereference this Handle to mutably access the underlying VrmlData_ShapeNode
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::VrmlData_ShapeNode {
         unsafe {
-            &mut *crate::check_result(crate::ffi_extern_TKDEVRML::HandleVrmlDataShapeNode_get_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKDEVRML::Handle_VrmlData_ShapeNode_get_mut(self as *mut Self),
+            )
         }
     }
 
     /// Upcast Handle<VrmlData_ShapeNode> to Handle<VrmlData_Node>
-    pub fn to_handle_node(&self) -> crate::OwnedPtr<crate::ffi_types::HandleVrmlDataNode> {
+    pub fn to_handle_node(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_VrmlData_Node> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKDEVRML::HandleVrmlDataShapeNode_to_HandleVrmlDataNode(
+                crate::ffi_extern_TKDEVRML::Handle_VrmlData_ShapeNode_to_Handle_VrmlData_Node(
                     self as *const Self,
                 ),
             ))
@@ -9289,10 +9244,10 @@ impl HandleVrmlDataShapeNode {
     /// Upcast Handle<VrmlData_ShapeNode> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKDEVRML::HandleVrmlDataShapeNode_to_HandleStandardTransient(
+                crate::ffi_extern_TKDEVRML::Handle_VrmlData_ShapeNode_to_Handle_Standard_Transient(
                     self as *const Self,
                 ),
             ))
@@ -9378,7 +9333,7 @@ impl Sphere {
     ///
     /// Query the primitive topology. This method returns a Null shape if there
     /// is an internal error during the primitive creation (zero radius, etc.)
-    pub fn t_shape(&mut self) -> &crate::ffi_types::HandleTopoDSTShape {
+    pub fn t_shape(&mut self) -> &crate::ffi_types::Handle_TopoDS_TShape {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKDEVRML::VrmlData_Sphere_t_shape(
                 self as *mut Self,
@@ -9393,8 +9348,8 @@ impl Sphere {
     /// is not created, but rather the given one is modified.
     pub fn clone(
         &self,
-        theOther: &crate::ffi_types::HandleVrmlDataNode,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleVrmlDataNode> {
+        theOther: &crate::ffi_types::Handle_VrmlData_Node,
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_VrmlData_Node> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDEVRML::VrmlData_Sphere_clone(self as *const Self, theOther),
@@ -9427,7 +9382,7 @@ impl Sphere {
     }
 
     /// **Source:** `VrmlData_Sphere.hxx`:93 - `VrmlData_Sphere::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKDEVRML::VrmlData_Sphere_dynamic_type(
                 self as *const Self,
@@ -9447,7 +9402,7 @@ impl Sphere {
     }
 
     /// **Source:** `VrmlData_Sphere.hxx`:93 - `VrmlData_Sphere::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKDEVRML::VrmlData_Sphere_get_type_descriptor(),
@@ -9518,7 +9473,7 @@ impl Sphere {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleVrmlDataSphere> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_VrmlData_Sphere> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDEVRML::VrmlData_Sphere_to_handle(obj.into_raw()),
@@ -9526,7 +9481,7 @@ impl Sphere {
         }
     }
 
-    /// Inherited: **Source:** `VrmlData_Node.hxx`:53 - `VrmlData_Node::Scene()`
+    /// Inherited: **Source:** `VrmlData_Node.hxx`:54 - `VrmlData_Node::Scene()`
     pub fn scene(&self) -> &Scene {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKDEVRML::VrmlData_Sphere_inherited_Scene(
@@ -9535,12 +9490,12 @@ impl Sphere {
         }
     }
 
-    /// Inherited: **Source:** `VrmlData_Node.hxx`:71 - `VrmlData_Node::ReadNode()`
+    /// Inherited: **Source:** `VrmlData_Node.hxx`:72 - `VrmlData_Node::ReadNode()`
     pub fn read_node(
         &mut self,
         theBuffer: &mut InBuffer,
-        theNode: &mut crate::ffi_types::HandleVrmlDataNode,
-        Type: &crate::ffi_types::HandleStandardType,
+        theNode: &mut crate::ffi_types::Handle_VrmlData_Node,
+        Type: &crate::ffi_types::Handle_Standard_Type,
     ) -> crate::vrml_data::ErrorStatus {
         crate::vrml_data::ErrorStatus::try_from(crate::check_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlData_Sphere_inherited_ReadNode(
@@ -9553,14 +9508,14 @@ impl Sphere {
         .unwrap()
     }
 
-    /// Inherited: **Source:** `VrmlData_Node.hxx`:88 - `VrmlData_Node::IsDefault()`
+    /// Inherited: **Source:** `VrmlData_Node.hxx`:89 - `VrmlData_Node::IsDefault()`
     pub fn is_default(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlData_Sphere_inherited_IsDefault(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `VrmlData_Node.hxx`:93 - `VrmlData_Node::WriteClosing()`
+    /// Inherited: **Source:** `VrmlData_Node.hxx`:94 - `VrmlData_Node::WriteClosing()`
     pub fn write_closing(&self) -> crate::vrml_data::ErrorStatus {
         crate::vrml_data::ErrorStatus::try_from(crate::check_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlData_Sphere_inherited_WriteClosing(self as *const Self)
@@ -9568,8 +9523,8 @@ impl Sphere {
         .unwrap()
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlData_Sphere_inherited_IsInstance(
                 self as *const Self,
@@ -9578,8 +9533,8 @@ impl Sphere {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlData_Sphere_inherited_IsKind(
                 self as *const Self,
@@ -9588,7 +9543,7 @@ impl Sphere {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -9602,14 +9557,14 @@ impl Sphere {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlData_Sphere_inherited_GetRefCount(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlData_Sphere_inherited_IncrementRefCounter(
@@ -9618,7 +9573,7 @@ impl Sphere {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlData_Sphere_inherited_DecrementRefCounter(
@@ -9627,7 +9582,7 @@ impl Sphere {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlData_Sphere_inherited_Delete(self as *const Self)
@@ -9635,32 +9590,34 @@ impl Sphere {
     }
 }
 
-pub use crate::ffi_types::HandleVrmlDataSphere;
+pub use crate::ffi_types::Handle_VrmlData_Sphere;
 
-unsafe impl crate::CppDeletable for HandleVrmlDataSphere {
+unsafe impl crate::CppDeletable for Handle_VrmlData_Sphere {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKDEVRML::HandleVrmlDataSphere_destructor(ptr);
+            crate::ffi_extern_TKDEVRML::Handle_VrmlData_Sphere_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleVrmlDataSphere {
+unsafe impl crate::CppCopyable for Handle_VrmlData_Sphere {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        unsafe { crate::check_result(crate::ffi_extern_TKDEVRML::HandleVrmlDataSphere_clone(ptr)) }
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDEVRML::Handle_VrmlData_Sphere_clone(ptr))
+        }
     }
 }
 
-impl HandleVrmlDataSphere {
+impl Handle_VrmlData_Sphere {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
-        unsafe { crate::ffi_extern_TKDEVRML::HandleVrmlDataSphere_is_null(self as *const Self) }
+        unsafe { crate::ffi_extern_TKDEVRML::Handle_VrmlData_Sphere_is_null(self as *const Self) }
     }
 
     /// Dereference this Handle to access the underlying VrmlData_Sphere
     pub fn get(&self) -> &crate::ffi_types::VrmlData_Sphere {
         unsafe {
-            &*crate::check_result(crate::ffi_extern_TKDEVRML::HandleVrmlDataSphere_get(
+            &*crate::check_result(crate::ffi_extern_TKDEVRML::Handle_VrmlData_Sphere_get(
                 self as *const Self,
             ))
         }
@@ -9669,17 +9626,19 @@ impl HandleVrmlDataSphere {
     /// Dereference this Handle to mutably access the underlying VrmlData_Sphere
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::VrmlData_Sphere {
         unsafe {
-            &mut *crate::check_result(crate::ffi_extern_TKDEVRML::HandleVrmlDataSphere_get_mut(
+            &mut *crate::check_result(crate::ffi_extern_TKDEVRML::Handle_VrmlData_Sphere_get_mut(
                 self as *mut Self,
             ))
         }
     }
 
     /// Upcast Handle<VrmlData_Sphere> to Handle<VrmlData_Geometry>
-    pub fn to_handle_geometry(&self) -> crate::OwnedPtr<crate::ffi_types::HandleVrmlDataGeometry> {
+    pub fn to_handle_geometry(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_VrmlData_Geometry> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKDEVRML::HandleVrmlDataSphere_to_HandleVrmlDataGeometry(
+                crate::ffi_extern_TKDEVRML::Handle_VrmlData_Sphere_to_Handle_VrmlData_Geometry(
                     self as *const Self,
                 ),
             ))
@@ -9687,10 +9646,10 @@ impl HandleVrmlDataSphere {
     }
 
     /// Upcast Handle<VrmlData_Sphere> to Handle<VrmlData_Node>
-    pub fn to_handle_node(&self) -> crate::OwnedPtr<crate::ffi_types::HandleVrmlDataNode> {
+    pub fn to_handle_node(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_VrmlData_Node> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKDEVRML::HandleVrmlDataSphere_to_HandleVrmlDataNode(
+                crate::ffi_extern_TKDEVRML::Handle_VrmlData_Sphere_to_Handle_VrmlData_Node(
                     self as *const Self,
                 ),
             ))
@@ -9700,10 +9659,10 @@ impl HandleVrmlDataSphere {
     /// Upcast Handle<VrmlData_Sphere> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKDEVRML::HandleVrmlDataSphere_to_HandleStandardTransient(
+                crate::ffi_extern_TKDEVRML::Handle_VrmlData_Sphere_to_Handle_Standard_Transient(
                     self as *const Self,
                 ),
             ))
@@ -9765,8 +9724,8 @@ impl Texture {
         })
     }
 
-    /// **Source:** `VrmlData_Texture.hxx`:82 - `VrmlData_Texture::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `VrmlData_Texture.hxx`:79 - `VrmlData_Texture::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKDEVRML::VrmlData_Texture_dynamic_type(
                 self as *const Self,
@@ -9774,7 +9733,7 @@ impl Texture {
         }
     }
 
-    /// **Source:** `VrmlData_Texture.hxx`:82 - `VrmlData_Texture::get_type_name()`
+    /// **Source:** `VrmlData_Texture.hxx`:79 - `VrmlData_Texture::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -9785,8 +9744,8 @@ impl Texture {
         .into_owned()
     }
 
-    /// **Source:** `VrmlData_Texture.hxx`:82 - `VrmlData_Texture::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    /// **Source:** `VrmlData_Texture.hxx`:79 - `VrmlData_Texture::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKDEVRML::VrmlData_Texture_get_type_descriptor(),
@@ -9836,7 +9795,7 @@ impl Texture {
         }
     }
 
-    /// Inherited: **Source:** `VrmlData_Node.hxx`:53 - `VrmlData_Node::Scene()`
+    /// Inherited: **Source:** `VrmlData_Node.hxx`:54 - `VrmlData_Node::Scene()`
     pub fn scene(&self) -> &Scene {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKDEVRML::VrmlData_Texture_inherited_Scene(
@@ -9845,12 +9804,12 @@ impl Texture {
         }
     }
 
-    /// Inherited: **Source:** `VrmlData_Node.hxx`:71 - `VrmlData_Node::ReadNode()`
+    /// Inherited: **Source:** `VrmlData_Node.hxx`:72 - `VrmlData_Node::ReadNode()`
     pub fn read_node(
         &mut self,
         theBuffer: &mut InBuffer,
-        theNode: &mut crate::ffi_types::HandleVrmlDataNode,
-        Type: &crate::ffi_types::HandleStandardType,
+        theNode: &mut crate::ffi_types::Handle_VrmlData_Node,
+        Type: &crate::ffi_types::Handle_Standard_Type,
     ) -> crate::vrml_data::ErrorStatus {
         crate::vrml_data::ErrorStatus::try_from(crate::check_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlData_Texture_inherited_ReadNode(
@@ -9863,7 +9822,7 @@ impl Texture {
         .unwrap()
     }
 
-    /// Inherited: **Source:** `VrmlData_Node.hxx`:78 - `VrmlData_Node::Read()`
+    /// Inherited: **Source:** `VrmlData_Node.hxx`:79 - `VrmlData_Node::Read()`
     pub fn read(&mut self, theBuffer: &mut InBuffer) -> crate::vrml_data::ErrorStatus {
         crate::vrml_data::ErrorStatus::try_from(crate::check_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlData_Texture_inherited_Read(
@@ -9874,14 +9833,14 @@ impl Texture {
         .unwrap()
     }
 
-    /// Inherited: **Source:** `VrmlData_Node.hxx`:88 - `VrmlData_Node::IsDefault()`
+    /// Inherited: **Source:** `VrmlData_Node.hxx`:89 - `VrmlData_Node::IsDefault()`
     pub fn is_default(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlData_Texture_inherited_IsDefault(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `VrmlData_Node.hxx`:93 - `VrmlData_Node::WriteClosing()`
+    /// Inherited: **Source:** `VrmlData_Node.hxx`:94 - `VrmlData_Node::WriteClosing()`
     pub fn write_closing(&self) -> crate::vrml_data::ErrorStatus {
         crate::vrml_data::ErrorStatus::try_from(crate::check_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlData_Texture_inherited_WriteClosing(self as *const Self)
@@ -9889,11 +9848,11 @@ impl Texture {
         .unwrap()
     }
 
-    /// Inherited: **Source:** `VrmlData_Node.hxx`:102 - `VrmlData_Node::Clone()`
+    /// Inherited: **Source:** `VrmlData_Node.hxx`:103 - `VrmlData_Node::Clone()`
     pub fn clone(
         &self,
-        arg0: &crate::ffi_types::HandleVrmlDataNode,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleVrmlDataNode> {
+        arg0: &crate::ffi_types::Handle_VrmlData_Node,
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_VrmlData_Node> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDEVRML::VrmlData_Texture_inherited_Clone(
@@ -9904,8 +9863,8 @@ impl Texture {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlData_Texture_inherited_IsInstance(
                 self as *const Self,
@@ -9914,8 +9873,8 @@ impl Texture {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlData_Texture_inherited_IsKind(
                 self as *const Self,
@@ -9924,7 +9883,7 @@ impl Texture {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -9938,14 +9897,14 @@ impl Texture {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlData_Texture_inherited_GetRefCount(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlData_Texture_inherited_IncrementRefCounter(
@@ -9954,7 +9913,7 @@ impl Texture {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlData_Texture_inherited_DecrementRefCounter(
@@ -9963,7 +9922,7 @@ impl Texture {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlData_Texture_inherited_Delete(self as *const Self)
@@ -9971,32 +9930,34 @@ impl Texture {
     }
 }
 
-pub use crate::ffi_types::HandleVrmlDataTexture;
+pub use crate::ffi_types::Handle_VrmlData_Texture;
 
-unsafe impl crate::CppDeletable for HandleVrmlDataTexture {
+unsafe impl crate::CppDeletable for Handle_VrmlData_Texture {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKDEVRML::HandleVrmlDataTexture_destructor(ptr);
+            crate::ffi_extern_TKDEVRML::Handle_VrmlData_Texture_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleVrmlDataTexture {
+unsafe impl crate::CppCopyable for Handle_VrmlData_Texture {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        unsafe { crate::check_result(crate::ffi_extern_TKDEVRML::HandleVrmlDataTexture_clone(ptr)) }
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKDEVRML::Handle_VrmlData_Texture_clone(ptr))
+        }
     }
 }
 
-impl HandleVrmlDataTexture {
+impl Handle_VrmlData_Texture {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
-        unsafe { crate::ffi_extern_TKDEVRML::HandleVrmlDataTexture_is_null(self as *const Self) }
+        unsafe { crate::ffi_extern_TKDEVRML::Handle_VrmlData_Texture_is_null(self as *const Self) }
     }
 
     /// Dereference this Handle to access the underlying VrmlData_Texture
     pub fn get(&self) -> &crate::ffi_types::VrmlData_Texture {
         unsafe {
-            &*crate::check_result(crate::ffi_extern_TKDEVRML::HandleVrmlDataTexture_get(
+            &*crate::check_result(crate::ffi_extern_TKDEVRML::Handle_VrmlData_Texture_get(
                 self as *const Self,
             ))
         }
@@ -10005,17 +9966,17 @@ impl HandleVrmlDataTexture {
     /// Dereference this Handle to mutably access the underlying VrmlData_Texture
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::VrmlData_Texture {
         unsafe {
-            &mut *crate::check_result(crate::ffi_extern_TKDEVRML::HandleVrmlDataTexture_get_mut(
+            &mut *crate::check_result(crate::ffi_extern_TKDEVRML::Handle_VrmlData_Texture_get_mut(
                 self as *mut Self,
             ))
         }
     }
 
     /// Upcast Handle<VrmlData_Texture> to Handle<VrmlData_Node>
-    pub fn to_handle_node(&self) -> crate::OwnedPtr<crate::ffi_types::HandleVrmlDataNode> {
+    pub fn to_handle_node(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_VrmlData_Node> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKDEVRML::HandleVrmlDataTexture_to_HandleVrmlDataNode(
+                crate::ffi_extern_TKDEVRML::Handle_VrmlData_Texture_to_Handle_VrmlData_Node(
                     self as *const Self,
                 ),
             ))
@@ -10025,10 +9986,10 @@ impl HandleVrmlDataTexture {
     /// Upcast Handle<VrmlData_Texture> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKDEVRML::HandleVrmlDataTexture_to_HandleStandardTransient(
+                crate::ffi_extern_TKDEVRML::Handle_VrmlData_Texture_to_Handle_Standard_Transient(
                     self as *const Self,
                 ),
             ))
@@ -10040,11 +10001,9 @@ impl HandleVrmlDataTexture {
     /// Returns `None` if the handle does not point to a `VrmlData_ImageTexture` (or subclass).
     pub fn downcast_to_image_texture(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleVrmlDataImageTexture>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_VrmlData_ImageTexture>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKDEVRML::HandleVrmlDataTexture_downcast_to_HandleVrmlDataImageTexture(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKDEVRML::Handle_VrmlData_Texture_downcast_to_Handle_VrmlData_ImageTexture(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -10157,8 +10116,8 @@ impl TextureCoordinate {
     /// is not created, but rather the given one is modified.
     pub fn clone(
         &self,
-        theOther: &crate::ffi_types::HandleVrmlDataNode,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleVrmlDataNode> {
+        theOther: &crate::ffi_types::Handle_VrmlData_Node,
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_VrmlData_Node> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDEVRML::VrmlData_TextureCoordinate_clone(
@@ -10183,7 +10142,7 @@ impl TextureCoordinate {
     }
 
     /// **Source:** `VrmlData_TextureCoordinate.hxx`:99 - `VrmlData_TextureCoordinate::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKDEVRML::VrmlData_TextureCoordinate_dynamic_type(
@@ -10205,7 +10164,7 @@ impl TextureCoordinate {
     }
 
     /// **Source:** `VrmlData_TextureCoordinate.hxx`:99 - `VrmlData_TextureCoordinate::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKDEVRML::VrmlData_TextureCoordinate_get_type_descriptor(),
@@ -10260,7 +10219,7 @@ impl TextureCoordinate {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleVrmlDataTextureCoordinate> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_VrmlData_TextureCoordinate> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDEVRML::VrmlData_TextureCoordinate_to_handle(obj.into_raw()),
@@ -10268,7 +10227,7 @@ impl TextureCoordinate {
         }
     }
 
-    /// Inherited: **Source:** `VrmlData_Node.hxx`:53 - `VrmlData_Node::Scene()`
+    /// Inherited: **Source:** `VrmlData_Node.hxx`:54 - `VrmlData_Node::Scene()`
     pub fn scene(&self) -> &Scene {
         unsafe {
             &*(crate::check_result(
@@ -10279,12 +10238,12 @@ impl TextureCoordinate {
         }
     }
 
-    /// Inherited: **Source:** `VrmlData_Node.hxx`:71 - `VrmlData_Node::ReadNode()`
+    /// Inherited: **Source:** `VrmlData_Node.hxx`:72 - `VrmlData_Node::ReadNode()`
     pub fn read_node(
         &mut self,
         theBuffer: &mut InBuffer,
-        theNode: &mut crate::ffi_types::HandleVrmlDataNode,
-        Type: &crate::ffi_types::HandleStandardType,
+        theNode: &mut crate::ffi_types::Handle_VrmlData_Node,
+        Type: &crate::ffi_types::Handle_Standard_Type,
     ) -> crate::vrml_data::ErrorStatus {
         crate::vrml_data::ErrorStatus::try_from(crate::check_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlData_TextureCoordinate_inherited_ReadNode(
@@ -10297,7 +10256,7 @@ impl TextureCoordinate {
         .unwrap()
     }
 
-    /// Inherited: **Source:** `VrmlData_Node.hxx`:88 - `VrmlData_Node::IsDefault()`
+    /// Inherited: **Source:** `VrmlData_Node.hxx`:89 - `VrmlData_Node::IsDefault()`
     pub fn is_default(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlData_TextureCoordinate_inherited_IsDefault(
@@ -10306,7 +10265,7 @@ impl TextureCoordinate {
         })
     }
 
-    /// Inherited: **Source:** `VrmlData_Node.hxx`:93 - `VrmlData_Node::WriteClosing()`
+    /// Inherited: **Source:** `VrmlData_Node.hxx`:94 - `VrmlData_Node::WriteClosing()`
     pub fn write_closing(&self) -> crate::vrml_data::ErrorStatus {
         crate::vrml_data::ErrorStatus::try_from(crate::check_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlData_TextureCoordinate_inherited_WriteClosing(
@@ -10316,8 +10275,8 @@ impl TextureCoordinate {
         .unwrap()
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlData_TextureCoordinate_inherited_IsInstance(
                 self as *const Self,
@@ -10326,8 +10285,8 @@ impl TextureCoordinate {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlData_TextureCoordinate_inherited_IsKind(
                 self as *const Self,
@@ -10336,7 +10295,7 @@ impl TextureCoordinate {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -10352,7 +10311,7 @@ impl TextureCoordinate {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlData_TextureCoordinate_inherited_GetRefCount(
@@ -10361,7 +10320,7 @@ impl TextureCoordinate {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlData_TextureCoordinate_inherited_IncrementRefCounter(
@@ -10370,7 +10329,7 @@ impl TextureCoordinate {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlData_TextureCoordinate_inherited_DecrementRefCounter(
@@ -10379,7 +10338,7 @@ impl TextureCoordinate {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlData_TextureCoordinate_inherited_Delete(
@@ -10389,40 +10348,44 @@ impl TextureCoordinate {
     }
 }
 
-pub use crate::ffi_types::HandleVrmlDataTextureCoordinate;
+pub use crate::ffi_types::Handle_VrmlData_TextureCoordinate;
 
-unsafe impl crate::CppDeletable for HandleVrmlDataTextureCoordinate {
+unsafe impl crate::CppDeletable for Handle_VrmlData_TextureCoordinate {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKDEVRML::HandleVrmlDataTextureCoordinate_destructor(ptr);
+            crate::ffi_extern_TKDEVRML::Handle_VrmlData_TextureCoordinate_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleVrmlDataTextureCoordinate {
+unsafe impl crate::CppCopyable for Handle_VrmlData_TextureCoordinate {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
         unsafe {
-            crate::check_result(crate::ffi_extern_TKDEVRML::HandleVrmlDataTextureCoordinate_clone(
-                ptr,
-            ))
+            crate::check_result(
+                crate::ffi_extern_TKDEVRML::Handle_VrmlData_TextureCoordinate_clone(ptr),
+            )
         }
     }
 }
 
-impl HandleVrmlDataTextureCoordinate {
+impl Handle_VrmlData_TextureCoordinate {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
         unsafe {
-            crate::ffi_extern_TKDEVRML::HandleVrmlDataTextureCoordinate_is_null(self as *const Self)
+            crate::ffi_extern_TKDEVRML::Handle_VrmlData_TextureCoordinate_is_null(
+                self as *const Self,
+            )
         }
     }
 
     /// Dereference this Handle to access the underlying VrmlData_TextureCoordinate
     pub fn get(&self) -> &crate::ffi_types::VrmlData_TextureCoordinate {
         unsafe {
-            &*crate::check_result(crate::ffi_extern_TKDEVRML::HandleVrmlDataTextureCoordinate_get(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKDEVRML::Handle_VrmlData_TextureCoordinate_get(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -10430,7 +10393,7 @@ impl HandleVrmlDataTextureCoordinate {
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::VrmlData_TextureCoordinate {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi_extern_TKDEVRML::HandleVrmlDataTextureCoordinate_get_mut(
+                crate::ffi_extern_TKDEVRML::Handle_VrmlData_TextureCoordinate_get_mut(
                     self as *mut Self,
                 ),
             )
@@ -10438,22 +10401,18 @@ impl HandleVrmlDataTextureCoordinate {
     }
 
     /// Upcast Handle<VrmlData_TextureCoordinate> to Handle<VrmlData_Node>
-    pub fn to_handle_node(&self) -> crate::OwnedPtr<crate::ffi_types::HandleVrmlDataNode> {
+    pub fn to_handle_node(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_VrmlData_Node> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKDEVRML::HandleVrmlDataTextureCoordinate_to_HandleVrmlDataNode(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEVRML::Handle_VrmlData_TextureCoordinate_to_Handle_VrmlData_Node(self as *const Self)))
         }
     }
 
     /// Upcast Handle<VrmlData_TextureCoordinate> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEVRML::HandleVrmlDataTextureCoordinate_to_HandleStandardTransient(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEVRML::Handle_VrmlData_TextureCoordinate_to_Handle_Standard_Transient(self as *const Self)))
         }
     }
 }
@@ -10558,8 +10517,8 @@ impl TextureTransform {
         })
     }
 
-    /// **Source:** `VrmlData_TextureTransform.hxx`:99 - `VrmlData_TextureTransform::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `VrmlData_TextureTransform.hxx`:96 - `VrmlData_TextureTransform::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKDEVRML::VrmlData_TextureTransform_dynamic_type(
@@ -10569,7 +10528,7 @@ impl TextureTransform {
         }
     }
 
-    /// **Source:** `VrmlData_TextureTransform.hxx`:99 - `VrmlData_TextureTransform::get_type_name()`
+    /// **Source:** `VrmlData_TextureTransform.hxx`:96 - `VrmlData_TextureTransform::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -10580,8 +10539,8 @@ impl TextureTransform {
         .into_owned()
     }
 
-    /// **Source:** `VrmlData_TextureTransform.hxx`:99 - `VrmlData_TextureTransform::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    /// **Source:** `VrmlData_TextureTransform.hxx`:96 - `VrmlData_TextureTransform::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKDEVRML::VrmlData_TextureTransform_get_type_descriptor(),
@@ -10633,7 +10592,7 @@ impl TextureTransform {
         }
     }
 
-    /// Inherited: **Source:** `VrmlData_Node.hxx`:53 - `VrmlData_Node::Scene()`
+    /// Inherited: **Source:** `VrmlData_Node.hxx`:54 - `VrmlData_Node::Scene()`
     pub fn scene(&self) -> &Scene {
         unsafe {
             &*(crate::check_result(
@@ -10644,12 +10603,12 @@ impl TextureTransform {
         }
     }
 
-    /// Inherited: **Source:** `VrmlData_Node.hxx`:71 - `VrmlData_Node::ReadNode()`
+    /// Inherited: **Source:** `VrmlData_Node.hxx`:72 - `VrmlData_Node::ReadNode()`
     pub fn read_node(
         &mut self,
         theBuffer: &mut InBuffer,
-        theNode: &mut crate::ffi_types::HandleVrmlDataNode,
-        Type: &crate::ffi_types::HandleStandardType,
+        theNode: &mut crate::ffi_types::Handle_VrmlData_Node,
+        Type: &crate::ffi_types::Handle_Standard_Type,
     ) -> crate::vrml_data::ErrorStatus {
         crate::vrml_data::ErrorStatus::try_from(crate::check_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlData_TextureTransform_inherited_ReadNode(
@@ -10662,7 +10621,7 @@ impl TextureTransform {
         .unwrap()
     }
 
-    /// Inherited: **Source:** `VrmlData_Node.hxx`:78 - `VrmlData_Node::Read()`
+    /// Inherited: **Source:** `VrmlData_Node.hxx`:79 - `VrmlData_Node::Read()`
     pub fn read(&mut self, theBuffer: &mut InBuffer) -> crate::vrml_data::ErrorStatus {
         crate::vrml_data::ErrorStatus::try_from(crate::check_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlData_TextureTransform_inherited_Read(
@@ -10673,7 +10632,7 @@ impl TextureTransform {
         .unwrap()
     }
 
-    /// Inherited: **Source:** `VrmlData_Node.hxx`:88 - `VrmlData_Node::IsDefault()`
+    /// Inherited: **Source:** `VrmlData_Node.hxx`:89 - `VrmlData_Node::IsDefault()`
     pub fn is_default(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlData_TextureTransform_inherited_IsDefault(
@@ -10682,7 +10641,7 @@ impl TextureTransform {
         })
     }
 
-    /// Inherited: **Source:** `VrmlData_Node.hxx`:93 - `VrmlData_Node::WriteClosing()`
+    /// Inherited: **Source:** `VrmlData_Node.hxx`:94 - `VrmlData_Node::WriteClosing()`
     pub fn write_closing(&self) -> crate::vrml_data::ErrorStatus {
         crate::vrml_data::ErrorStatus::try_from(crate::check_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlData_TextureTransform_inherited_WriteClosing(
@@ -10692,11 +10651,11 @@ impl TextureTransform {
         .unwrap()
     }
 
-    /// Inherited: **Source:** `VrmlData_Node.hxx`:102 - `VrmlData_Node::Clone()`
+    /// Inherited: **Source:** `VrmlData_Node.hxx`:103 - `VrmlData_Node::Clone()`
     pub fn clone(
         &self,
-        arg0: &crate::ffi_types::HandleVrmlDataNode,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleVrmlDataNode> {
+        arg0: &crate::ffi_types::Handle_VrmlData_Node,
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_VrmlData_Node> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDEVRML::VrmlData_TextureTransform_inherited_Clone(
@@ -10707,8 +10666,8 @@ impl TextureTransform {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlData_TextureTransform_inherited_IsInstance(
                 self as *const Self,
@@ -10717,8 +10676,8 @@ impl TextureTransform {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlData_TextureTransform_inherited_IsKind(
                 self as *const Self,
@@ -10727,7 +10686,7 @@ impl TextureTransform {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -10743,7 +10702,7 @@ impl TextureTransform {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlData_TextureTransform_inherited_GetRefCount(
@@ -10752,7 +10711,7 @@ impl TextureTransform {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlData_TextureTransform_inherited_IncrementRefCounter(
@@ -10761,7 +10720,7 @@ impl TextureTransform {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlData_TextureTransform_inherited_DecrementRefCounter(
@@ -10770,7 +10729,7 @@ impl TextureTransform {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlData_TextureTransform_inherited_Delete(
@@ -10780,38 +10739,40 @@ impl TextureTransform {
     }
 }
 
-pub use crate::ffi_types::HandleVrmlDataTextureTransform;
+pub use crate::ffi_types::Handle_VrmlData_TextureTransform;
 
-unsafe impl crate::CppDeletable for HandleVrmlDataTextureTransform {
+unsafe impl crate::CppDeletable for Handle_VrmlData_TextureTransform {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKDEVRML::HandleVrmlDataTextureTransform_destructor(ptr);
+            crate::ffi_extern_TKDEVRML::Handle_VrmlData_TextureTransform_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleVrmlDataTextureTransform {
+unsafe impl crate::CppCopyable for Handle_VrmlData_TextureTransform {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
         unsafe {
-            crate::check_result(crate::ffi_extern_TKDEVRML::HandleVrmlDataTextureTransform_clone(
+            crate::check_result(crate::ffi_extern_TKDEVRML::Handle_VrmlData_TextureTransform_clone(
                 ptr,
             ))
         }
     }
 }
 
-impl HandleVrmlDataTextureTransform {
+impl Handle_VrmlData_TextureTransform {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
         unsafe {
-            crate::ffi_extern_TKDEVRML::HandleVrmlDataTextureTransform_is_null(self as *const Self)
+            crate::ffi_extern_TKDEVRML::Handle_VrmlData_TextureTransform_is_null(
+                self as *const Self,
+            )
         }
     }
 
     /// Dereference this Handle to access the underlying VrmlData_TextureTransform
     pub fn get(&self) -> &crate::ffi_types::VrmlData_TextureTransform {
         unsafe {
-            &*crate::check_result(crate::ffi_extern_TKDEVRML::HandleVrmlDataTextureTransform_get(
+            &*crate::check_result(crate::ffi_extern_TKDEVRML::Handle_VrmlData_TextureTransform_get(
                 self as *const Self,
             ))
         }
@@ -10821,7 +10782,7 @@ impl HandleVrmlDataTextureTransform {
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::VrmlData_TextureTransform {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi_extern_TKDEVRML::HandleVrmlDataTextureTransform_get_mut(
+                crate::ffi_extern_TKDEVRML::Handle_VrmlData_TextureTransform_get_mut(
                     self as *mut Self,
                 ),
             )
@@ -10829,22 +10790,18 @@ impl HandleVrmlDataTextureTransform {
     }
 
     /// Upcast Handle<VrmlData_TextureTransform> to Handle<VrmlData_Node>
-    pub fn to_handle_node(&self) -> crate::OwnedPtr<crate::ffi_types::HandleVrmlDataNode> {
+    pub fn to_handle_node(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_VrmlData_Node> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKDEVRML::HandleVrmlDataTextureTransform_to_HandleVrmlDataNode(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEVRML::Handle_VrmlData_TextureTransform_to_Handle_VrmlData_Node(self as *const Self)))
         }
     }
 
     /// Upcast Handle<VrmlData_TextureTransform> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEVRML::HandleVrmlDataTextureTransform_to_HandleStandardTransient(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEVRML::Handle_VrmlData_TextureTransform_to_Handle_Standard_Transient(self as *const Self)))
         }
     }
 }
@@ -10931,7 +10888,7 @@ impl UnknownNode {
     }
 
     /// **Source:** `VrmlData_UnknownNode.hxx`:71 - `VrmlData_UnknownNode::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKDEVRML::VrmlData_UnknownNode_dynamic_type(
                 self as *const Self,
@@ -10951,7 +10908,7 @@ impl UnknownNode {
     }
 
     /// **Source:** `VrmlData_UnknownNode.hxx`:71 - `VrmlData_UnknownNode::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKDEVRML::VrmlData_UnknownNode_get_type_descriptor(),
@@ -11006,7 +10963,7 @@ impl UnknownNode {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleVrmlDataUnknownNode> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_VrmlData_UnknownNode> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDEVRML::VrmlData_UnknownNode_to_handle(obj.into_raw()),
@@ -11014,7 +10971,7 @@ impl UnknownNode {
         }
     }
 
-    /// Inherited: **Source:** `VrmlData_Node.hxx`:53 - `VrmlData_Node::Scene()`
+    /// Inherited: **Source:** `VrmlData_Node.hxx`:54 - `VrmlData_Node::Scene()`
     pub fn scene(&self) -> &Scene {
         unsafe {
             &*(crate::check_result(
@@ -11025,12 +10982,12 @@ impl UnknownNode {
         }
     }
 
-    /// Inherited: **Source:** `VrmlData_Node.hxx`:71 - `VrmlData_Node::ReadNode()`
+    /// Inherited: **Source:** `VrmlData_Node.hxx`:72 - `VrmlData_Node::ReadNode()`
     pub fn read_node(
         &mut self,
         theBuffer: &mut InBuffer,
-        theNode: &mut crate::ffi_types::HandleVrmlDataNode,
-        Type: &crate::ffi_types::HandleStandardType,
+        theNode: &mut crate::ffi_types::Handle_VrmlData_Node,
+        Type: &crate::ffi_types::Handle_Standard_Type,
     ) -> crate::vrml_data::ErrorStatus {
         crate::vrml_data::ErrorStatus::try_from(crate::check_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlData_UnknownNode_inherited_ReadNode(
@@ -11043,7 +11000,7 @@ impl UnknownNode {
         .unwrap()
     }
 
-    /// Inherited: **Source:** `VrmlData_Node.hxx`:93 - `VrmlData_Node::WriteClosing()`
+    /// Inherited: **Source:** `VrmlData_Node.hxx`:94 - `VrmlData_Node::WriteClosing()`
     pub fn write_closing(&self) -> crate::vrml_data::ErrorStatus {
         crate::vrml_data::ErrorStatus::try_from(crate::check_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlData_UnknownNode_inherited_WriteClosing(
@@ -11053,11 +11010,11 @@ impl UnknownNode {
         .unwrap()
     }
 
-    /// Inherited: **Source:** `VrmlData_Node.hxx`:102 - `VrmlData_Node::Clone()`
+    /// Inherited: **Source:** `VrmlData_Node.hxx`:103 - `VrmlData_Node::Clone()`
     pub fn clone(
         &self,
-        arg0: &crate::ffi_types::HandleVrmlDataNode,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleVrmlDataNode> {
+        arg0: &crate::ffi_types::Handle_VrmlData_Node,
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_VrmlData_Node> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDEVRML::VrmlData_UnknownNode_inherited_Clone(
@@ -11068,8 +11025,8 @@ impl UnknownNode {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlData_UnknownNode_inherited_IsInstance(
                 self as *const Self,
@@ -11078,8 +11035,8 @@ impl UnknownNode {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlData_UnknownNode_inherited_IsKind(
                 self as *const Self,
@@ -11088,7 +11045,7 @@ impl UnknownNode {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -11102,7 +11059,7 @@ impl UnknownNode {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlData_UnknownNode_inherited_GetRefCount(
@@ -11111,7 +11068,7 @@ impl UnknownNode {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlData_UnknownNode_inherited_IncrementRefCounter(
@@ -11120,7 +11077,7 @@ impl UnknownNode {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlData_UnknownNode_inherited_DecrementRefCounter(
@@ -11129,7 +11086,7 @@ impl UnknownNode {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlData_UnknownNode_inherited_Delete(self as *const Self)
@@ -11137,36 +11094,36 @@ impl UnknownNode {
     }
 }
 
-pub use crate::ffi_types::HandleVrmlDataUnknownNode;
+pub use crate::ffi_types::Handle_VrmlData_UnknownNode;
 
-unsafe impl crate::CppDeletable for HandleVrmlDataUnknownNode {
+unsafe impl crate::CppDeletable for Handle_VrmlData_UnknownNode {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKDEVRML::HandleVrmlDataUnknownNode_destructor(ptr);
+            crate::ffi_extern_TKDEVRML::Handle_VrmlData_UnknownNode_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleVrmlDataUnknownNode {
+unsafe impl crate::CppCopyable for Handle_VrmlData_UnknownNode {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
         unsafe {
-            crate::check_result(crate::ffi_extern_TKDEVRML::HandleVrmlDataUnknownNode_clone(ptr))
+            crate::check_result(crate::ffi_extern_TKDEVRML::Handle_VrmlData_UnknownNode_clone(ptr))
         }
     }
 }
 
-impl HandleVrmlDataUnknownNode {
+impl Handle_VrmlData_UnknownNode {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
         unsafe {
-            crate::ffi_extern_TKDEVRML::HandleVrmlDataUnknownNode_is_null(self as *const Self)
+            crate::ffi_extern_TKDEVRML::Handle_VrmlData_UnknownNode_is_null(self as *const Self)
         }
     }
 
     /// Dereference this Handle to access the underlying VrmlData_UnknownNode
     pub fn get(&self) -> &crate::ffi_types::VrmlData_UnknownNode {
         unsafe {
-            &*crate::check_result(crate::ffi_extern_TKDEVRML::HandleVrmlDataUnknownNode_get(
+            &*crate::check_result(crate::ffi_extern_TKDEVRML::Handle_VrmlData_UnknownNode_get(
                 self as *const Self,
             ))
         }
@@ -11176,16 +11133,16 @@ impl HandleVrmlDataUnknownNode {
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::VrmlData_UnknownNode {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi_extern_TKDEVRML::HandleVrmlDataUnknownNode_get_mut(self as *mut Self),
+                crate::ffi_extern_TKDEVRML::Handle_VrmlData_UnknownNode_get_mut(self as *mut Self),
             )
         }
     }
 
     /// Upcast Handle<VrmlData_UnknownNode> to Handle<VrmlData_Node>
-    pub fn to_handle_node(&self) -> crate::OwnedPtr<crate::ffi_types::HandleVrmlDataNode> {
+    pub fn to_handle_node(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_VrmlData_Node> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKDEVRML::HandleVrmlDataUnknownNode_to_HandleVrmlDataNode(
+                crate::ffi_extern_TKDEVRML::Handle_VrmlData_UnknownNode_to_Handle_VrmlData_Node(
                     self as *const Self,
                 ),
             ))
@@ -11195,13 +11152,9 @@ impl HandleVrmlDataUnknownNode {
     /// Upcast Handle<VrmlData_UnknownNode> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKDEVRML::HandleVrmlDataUnknownNode_to_HandleStandardTransient(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEVRML::Handle_VrmlData_UnknownNode_to_Handle_Standard_Transient(self as *const Self)))
         }
     }
 }
@@ -11302,8 +11255,8 @@ impl WorldInfo {
     /// is not created, but rather the given one is modified.
     pub fn clone(
         &self,
-        theOther: &crate::ffi_types::HandleVrmlDataNode,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleVrmlDataNode> {
+        theOther: &crate::ffi_types::Handle_VrmlData_Node,
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_VrmlData_Node> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDEVRML::VrmlData_WorldInfo_clone(self as *const Self, theOther),
@@ -11345,7 +11298,7 @@ impl WorldInfo {
     }
 
     /// **Source:** `VrmlData_WorldInfo.hxx`:96 - `VrmlData_WorldInfo::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKDEVRML::VrmlData_WorldInfo_dynamic_type(
                 self as *const Self,
@@ -11365,7 +11318,7 @@ impl WorldInfo {
     }
 
     /// **Source:** `VrmlData_WorldInfo.hxx`:96 - `VrmlData_WorldInfo::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKDEVRML::VrmlData_WorldInfo_get_type_descriptor(),
@@ -11418,7 +11371,7 @@ impl WorldInfo {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleVrmlDataWorldInfo> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_VrmlData_WorldInfo> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDEVRML::VrmlData_WorldInfo_to_handle(obj.into_raw()),
@@ -11426,7 +11379,7 @@ impl WorldInfo {
         }
     }
 
-    /// Inherited: **Source:** `VrmlData_Node.hxx`:53 - `VrmlData_Node::Scene()`
+    /// Inherited: **Source:** `VrmlData_Node.hxx`:54 - `VrmlData_Node::Scene()`
     pub fn scene(&self) -> &Scene {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKDEVRML::VrmlData_WorldInfo_inherited_Scene(
@@ -11435,12 +11388,12 @@ impl WorldInfo {
         }
     }
 
-    /// Inherited: **Source:** `VrmlData_Node.hxx`:71 - `VrmlData_Node::ReadNode()`
+    /// Inherited: **Source:** `VrmlData_Node.hxx`:72 - `VrmlData_Node::ReadNode()`
     pub fn read_node(
         &mut self,
         theBuffer: &mut InBuffer,
-        theNode: &mut crate::ffi_types::HandleVrmlDataNode,
-        Type: &crate::ffi_types::HandleStandardType,
+        theNode: &mut crate::ffi_types::Handle_VrmlData_Node,
+        Type: &crate::ffi_types::Handle_Standard_Type,
     ) -> crate::vrml_data::ErrorStatus {
         crate::vrml_data::ErrorStatus::try_from(crate::check_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlData_WorldInfo_inherited_ReadNode(
@@ -11453,7 +11406,7 @@ impl WorldInfo {
         .unwrap()
     }
 
-    /// Inherited: **Source:** `VrmlData_Node.hxx`:93 - `VrmlData_Node::WriteClosing()`
+    /// Inherited: **Source:** `VrmlData_Node.hxx`:94 - `VrmlData_Node::WriteClosing()`
     pub fn write_closing(&self) -> crate::vrml_data::ErrorStatus {
         crate::vrml_data::ErrorStatus::try_from(crate::check_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlData_WorldInfo_inherited_WriteClosing(
@@ -11463,8 +11416,8 @@ impl WorldInfo {
         .unwrap()
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlData_WorldInfo_inherited_IsInstance(
                 self as *const Self,
@@ -11473,8 +11426,8 @@ impl WorldInfo {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlData_WorldInfo_inherited_IsKind(
                 self as *const Self,
@@ -11483,7 +11436,7 @@ impl WorldInfo {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -11497,7 +11450,7 @@ impl WorldInfo {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlData_WorldInfo_inherited_GetRefCount(
@@ -11506,7 +11459,7 @@ impl WorldInfo {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlData_WorldInfo_inherited_IncrementRefCounter(
@@ -11515,7 +11468,7 @@ impl WorldInfo {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlData_WorldInfo_inherited_DecrementRefCounter(
@@ -11524,7 +11477,7 @@ impl WorldInfo {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDEVRML::VrmlData_WorldInfo_inherited_Delete(self as *const Self)
@@ -11532,34 +11485,36 @@ impl WorldInfo {
     }
 }
 
-pub use crate::ffi_types::HandleVrmlDataWorldInfo;
+pub use crate::ffi_types::Handle_VrmlData_WorldInfo;
 
-unsafe impl crate::CppDeletable for HandleVrmlDataWorldInfo {
+unsafe impl crate::CppDeletable for Handle_VrmlData_WorldInfo {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKDEVRML::HandleVrmlDataWorldInfo_destructor(ptr);
+            crate::ffi_extern_TKDEVRML::Handle_VrmlData_WorldInfo_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleVrmlDataWorldInfo {
+unsafe impl crate::CppCopyable for Handle_VrmlData_WorldInfo {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
         unsafe {
-            crate::check_result(crate::ffi_extern_TKDEVRML::HandleVrmlDataWorldInfo_clone(ptr))
+            crate::check_result(crate::ffi_extern_TKDEVRML::Handle_VrmlData_WorldInfo_clone(ptr))
         }
     }
 }
 
-impl HandleVrmlDataWorldInfo {
+impl Handle_VrmlData_WorldInfo {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
-        unsafe { crate::ffi_extern_TKDEVRML::HandleVrmlDataWorldInfo_is_null(self as *const Self) }
+        unsafe {
+            crate::ffi_extern_TKDEVRML::Handle_VrmlData_WorldInfo_is_null(self as *const Self)
+        }
     }
 
     /// Dereference this Handle to access the underlying VrmlData_WorldInfo
     pub fn get(&self) -> &crate::ffi_types::VrmlData_WorldInfo {
         unsafe {
-            &*crate::check_result(crate::ffi_extern_TKDEVRML::HandleVrmlDataWorldInfo_get(
+            &*crate::check_result(crate::ffi_extern_TKDEVRML::Handle_VrmlData_WorldInfo_get(
                 self as *const Self,
             ))
         }
@@ -11568,17 +11523,17 @@ impl HandleVrmlDataWorldInfo {
     /// Dereference this Handle to mutably access the underlying VrmlData_WorldInfo
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::VrmlData_WorldInfo {
         unsafe {
-            &mut *crate::check_result(crate::ffi_extern_TKDEVRML::HandleVrmlDataWorldInfo_get_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKDEVRML::Handle_VrmlData_WorldInfo_get_mut(self as *mut Self),
+            )
         }
     }
 
     /// Upcast Handle<VrmlData_WorldInfo> to Handle<VrmlData_Node>
-    pub fn to_handle_node(&self) -> crate::OwnedPtr<crate::ffi_types::HandleVrmlDataNode> {
+    pub fn to_handle_node(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_VrmlData_Node> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKDEVRML::HandleVrmlDataWorldInfo_to_HandleVrmlDataNode(
+                crate::ffi_extern_TKDEVRML::Handle_VrmlData_WorldInfo_to_Handle_VrmlData_Node(
                     self as *const Self,
                 ),
             ))
@@ -11588,10 +11543,10 @@ impl HandleVrmlDataWorldInfo {
     /// Upcast Handle<VrmlData_WorldInfo> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKDEVRML::HandleVrmlDataWorldInfo_to_HandleStandardTransient(
+                crate::ffi_extern_TKDEVRML::Handle_VrmlData_WorldInfo_to_Handle_Standard_Transient(
                     self as *const Self,
                 ),
             ))
@@ -11605,9 +11560,3 @@ impl HandleVrmlDataWorldInfo {
 //   Reason: has unbindable types: return: unresolved template type (NCollection_List<const char *>::Iterator)
 //   // pub fn info_iterator(&self) -> OwnedPtr<NCollection_List<const char *>::Iterator>;
 //
-
-// ========================
-// Additional type re-exports
-// ========================
-
-pub use crate::ffi_types::VrmlData_DataMapOfShapeAppearance as DataMapOfShapeAppearance;

@@ -14,54 +14,58 @@ unsafe extern "C" {
     pub fn DEVRML_ConfigurationNode_ctor() -> crate::OcctResult<*mut DEVRML_ConfigurationNode>;
     /// **Source:** `DEVRML_ConfigurationNode.hxx`:39 - `DEVRML_ConfigurationNode::DEVRML_ConfigurationNode()`
     pub fn DEVRML_ConfigurationNode_ctor_handledevrmlconfigurationnode(
-        theNode: *const HandleDEVRMLConfigurationNode,
+        theNode: *const Handle_DEVRML_ConfigurationNode,
     ) -> crate::OcctResult<*mut DEVRML_ConfigurationNode>;
     /// **Source:** `DEVRML_ConfigurationNode.hxx`:32 - `DEVRML_ConfigurationNode::DynamicType()`
     pub fn DEVRML_ConfigurationNode_dynamic_type(
         self_: *const DEVRML_ConfigurationNode,
-    ) -> crate::OcctResult<*const HandleStandardType>;
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// **Source:** `DEVRML_ConfigurationNode.hxx`:44 - `DEVRML_ConfigurationNode::Load()`
     pub fn DEVRML_ConfigurationNode_load(
         self_: *mut DEVRML_ConfigurationNode,
-        theResource: *const HandleDEConfigurationContext,
+        theResource: *const Handle_DE_ConfigurationContext,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `DEVRML_ConfigurationNode.hxx`:49 - `DEVRML_ConfigurationNode::Save()`
+    /// **Source:** `DEVRML_ConfigurationNode.hxx`:48 - `DEVRML_ConfigurationNode::Save()`
     pub fn DEVRML_ConfigurationNode_save(
         self_: *const DEVRML_ConfigurationNode,
     ) -> crate::OcctResult<*mut TCollection_AsciiString>;
-    /// **Source:** `DEVRML_ConfigurationNode.hxx`:53 - `DEVRML_ConfigurationNode::Copy()`
+    /// **Source:** `DEVRML_ConfigurationNode.hxx`:52 - `DEVRML_ConfigurationNode::Copy()`
     pub fn DEVRML_ConfigurationNode_copy(
         self_: *const DEVRML_ConfigurationNode,
-    ) -> crate::OcctResult<*mut HandleDEConfigurationNode>;
-    /// **Source:** `DEVRML_ConfigurationNode.hxx`:57 - `DEVRML_ConfigurationNode::BuildProvider()`
+    ) -> crate::OcctResult<*mut Handle_DE_ConfigurationNode>;
+    /// **Source:** `DEVRML_ConfigurationNode.hxx`:56 - `DEVRML_ConfigurationNode::BuildProvider()`
     pub fn DEVRML_ConfigurationNode_build_provider(
         self_: *mut DEVRML_ConfigurationNode,
-    ) -> crate::OcctResult<*mut HandleDEProvider>;
-    /// **Source:** `DEVRML_ConfigurationNode.hxx`:62 - `DEVRML_ConfigurationNode::IsImportSupported()`
+    ) -> crate::OcctResult<*mut Handle_DE_Provider>;
+    /// **Source:** `DEVRML_ConfigurationNode.hxx`:61 - `DEVRML_ConfigurationNode::IsImportSupported()`
     pub fn DEVRML_ConfigurationNode_is_import_supported(
         self_: *const DEVRML_ConfigurationNode,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `DEVRML_ConfigurationNode.hxx`:66 - `DEVRML_ConfigurationNode::IsExportSupported()`
+    /// **Source:** `DEVRML_ConfigurationNode.hxx`:65 - `DEVRML_ConfigurationNode::IsExportSupported()`
     pub fn DEVRML_ConfigurationNode_is_export_supported(
         self_: *const DEVRML_ConfigurationNode,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `DEVRML_ConfigurationNode.hxx`:70 - `DEVRML_ConfigurationNode::GetFormat()`
+    /// **Source:** `DEVRML_ConfigurationNode.hxx`:69 - `DEVRML_ConfigurationNode::IsStreamSupported()`
+    pub fn DEVRML_ConfigurationNode_is_stream_supported(
+        self_: *const DEVRML_ConfigurationNode,
+    ) -> crate::OcctResult<bool>;
+    /// **Source:** `DEVRML_ConfigurationNode.hxx`:73 - `DEVRML_ConfigurationNode::GetFormat()`
     pub fn DEVRML_ConfigurationNode_get_format(
         self_: *const DEVRML_ConfigurationNode,
     ) -> crate::OcctResult<*mut TCollection_AsciiString>;
-    /// **Source:** `DEVRML_ConfigurationNode.hxx`:74 - `DEVRML_ConfigurationNode::GetVendor()`
+    /// **Source:** `DEVRML_ConfigurationNode.hxx`:77 - `DEVRML_ConfigurationNode::GetVendor()`
     pub fn DEVRML_ConfigurationNode_get_vendor(
         self_: *const DEVRML_ConfigurationNode,
     ) -> crate::OcctResult<*mut TCollection_AsciiString>;
-    /// **Source:** `DEVRML_ConfigurationNode.hxx`:78 - `DEVRML_ConfigurationNode::GetExtensions()`
+    /// **Source:** `DEVRML_ConfigurationNode.hxx`:81 - `DEVRML_ConfigurationNode::GetExtensions()`
     pub fn DEVRML_ConfigurationNode_get_extensions(
         self_: *const DEVRML_ConfigurationNode,
-    ) -> crate::OcctResult<*mut TColStd_ListOfAsciiString>;
+    ) -> crate::OcctResult<*mut NCollection_List_TCollection_AsciiString>;
     /// **Source:** `DEVRML_ConfigurationNode.hxx`:32 - `DEVRML_ConfigurationNode::get_type_name()`
     pub fn DEVRML_ConfigurationNode_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
     /// **Source:** `DEVRML_ConfigurationNode.hxx`:32 - `DEVRML_ConfigurationNode::get_type_descriptor()`
     pub fn DEVRML_ConfigurationNode_get_type_descriptor(
-    ) -> crate::OcctResult<*const HandleStandardType>;
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast DEVRML_ConfigurationNode to DE_ConfigurationNode
     pub fn DEVRML_ConfigurationNode_as_DE_ConfigurationNode(
         self_: *const DEVRML_ConfigurationNode,
@@ -81,90 +85,100 @@ unsafe extern "C" {
     /// Wrap DEVRML_ConfigurationNode in a Handle
     pub fn DEVRML_ConfigurationNode_to_handle(
         obj: *mut DEVRML_ConfigurationNode,
-    ) -> crate::OcctResult<*mut HandleDEVRMLConfigurationNode>;
+    ) -> crate::OcctResult<*mut Handle_DEVRML_ConfigurationNode>;
     /// Destroy Handle<DEVRML_ConfigurationNode>
-    pub fn HandleDEVRMLConfigurationNode_destructor(self_: *mut HandleDEVRMLConfigurationNode);
+    pub fn Handle_DEVRML_ConfigurationNode_destructor(self_: *mut Handle_DEVRML_ConfigurationNode);
     /// Clone Handle<DEVRML_ConfigurationNode> (increments reference count)
-    pub fn HandleDEVRMLConfigurationNode_clone(
-        self_: *const HandleDEVRMLConfigurationNode,
-    ) -> crate::OcctResult<*mut HandleDEVRMLConfigurationNode>;
+    pub fn Handle_DEVRML_ConfigurationNode_clone(
+        self_: *const Handle_DEVRML_ConfigurationNode,
+    ) -> crate::OcctResult<*mut Handle_DEVRML_ConfigurationNode>;
     /// Check if Handle<DEVRML_ConfigurationNode> is null
-    pub fn HandleDEVRMLConfigurationNode_is_null(
-        self_: *const HandleDEVRMLConfigurationNode,
+    pub fn Handle_DEVRML_ConfigurationNode_is_null(
+        self_: *const Handle_DEVRML_ConfigurationNode,
     ) -> bool;
     /// Dereference Handle to get *const DEVRML_ConfigurationNode
-    pub fn HandleDEVRMLConfigurationNode_get(
-        handle: *const HandleDEVRMLConfigurationNode,
+    pub fn Handle_DEVRML_ConfigurationNode_get(
+        handle: *const Handle_DEVRML_ConfigurationNode,
     ) -> crate::OcctResult<*const DEVRML_ConfigurationNode>;
     /// Dereference Handle to get *mut DEVRML_ConfigurationNode
-    pub fn HandleDEVRMLConfigurationNode_get_mut(
-        handle: *mut HandleDEVRMLConfigurationNode,
+    pub fn Handle_DEVRML_ConfigurationNode_get_mut(
+        handle: *mut Handle_DEVRML_ConfigurationNode,
     ) -> crate::OcctResult<*mut DEVRML_ConfigurationNode>;
     /// Upcast Handle<DEVRML_ConfigurationNode> to Handle<DE_ConfigurationNode>
-    pub fn HandleDEVRMLConfigurationNode_to_HandleDEConfigurationNode(
-        self_: *const HandleDEVRMLConfigurationNode,
-    ) -> crate::OcctResult<*mut HandleDEConfigurationNode>;
+    pub fn Handle_DEVRML_ConfigurationNode_to_Handle_DE_ConfigurationNode(
+        self_: *const Handle_DEVRML_ConfigurationNode,
+    ) -> crate::OcctResult<*mut Handle_DE_ConfigurationNode>;
     /// Upcast Handle<DEVRML_ConfigurationNode> to Handle<Standard_Transient>
-    pub fn HandleDEVRMLConfigurationNode_to_HandleStandardTransient(
-        self_: *const HandleDEVRMLConfigurationNode,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
-    /// Inherited: **Source:** `DE_ConfigurationNode.hxx`:91 - `DE_ConfigurationNode::UpdateLoad()`
+    pub fn Handle_DEVRML_ConfigurationNode_to_Handle_Standard_Transient(
+        self_: *const Handle_DEVRML_ConfigurationNode,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
+    /// Inherited: **Source:** `DE_ConfigurationNode.hxx`:94 - `DE_ConfigurationNode::UpdateLoad()`
     pub fn DEVRML_ConfigurationNode_inherited_UpdateLoad(
         self_: *mut DEVRML_ConfigurationNode,
         theToImport: bool,
         theToKeep: bool,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `DE_ConfigurationNode.hxx`:118 - `DE_ConfigurationNode::CheckExtension()`
+    /// Inherited: **Source:** `DE_ConfigurationNode.hxx`:124 - `DE_ConfigurationNode::CheckExtension()`
     pub fn DEVRML_ConfigurationNode_inherited_CheckExtension(
         self_: *const DEVRML_ConfigurationNode,
         theExtension: *const TCollection_AsciiString,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `DE_ConfigurationNode.hxx`:123 - `DE_ConfigurationNode::CheckContent()`
+    /// Inherited: **Source:** `DE_ConfigurationNode.hxx`:129 - `DE_ConfigurationNode::CheckContent()`
     pub fn DEVRML_ConfigurationNode_inherited_CheckContent(
         self_: *const DEVRML_ConfigurationNode,
-        theBuffer: *const HandleNCollectionBuffer,
+        theBuffer: *const Handle_NCollection_Buffer,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `DE_ConfigurationNode.hxx`:128 - `DE_ConfigurationNode::IsEnabled()`
+    /// Inherited: **Source:** `DE_ConfigurationNode.hxx`:134 - `DE_ConfigurationNode::IsEnabled()`
     pub fn DEVRML_ConfigurationNode_inherited_IsEnabled(
         self_: *const DEVRML_ConfigurationNode,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `DE_ConfigurationNode.hxx`:132 - `DE_ConfigurationNode::SetEnabled()`
+    /// Inherited: **Source:** `DE_ConfigurationNode.hxx`:138 - `DE_ConfigurationNode::SetEnabled()`
     pub fn DEVRML_ConfigurationNode_inherited_SetEnabled(
         self_: *mut DEVRML_ConfigurationNode,
         theIsLoaded: bool,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `DE_ConfigurationNode.hxx`:141 - `DE_ConfigurationNode::CustomActivation()`
+    /// Inherited: **Source:** `DE_ConfigurationNode.hxx`:147 - `DE_ConfigurationNode::CustomActivation()`
     pub fn DEVRML_ConfigurationNode_inherited_CustomActivation(
         self_: *mut DEVRML_ConfigurationNode,
-        arg0: *const TColStd_ListOfAsciiString,
+        arg0: *const NCollection_List_TCollection_AsciiString,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    /// Inherited: **Source:** `DE_ConfigurationNode.hxx`:164 - `DE_ConfigurationNode::Register()`
+    pub fn DEVRML_ConfigurationNode_inherited_Register(
+        self_: *const DEVRML_ConfigurationNode,
+        theWrapper: *const Handle_DE_Wrapper,
+    ) -> *const std::ffi::c_char;
+    /// Inherited: **Source:** `DE_ConfigurationNode.hxx`:168 - `DE_ConfigurationNode::UnRegister()`
+    pub fn DEVRML_ConfigurationNode_inherited_UnRegister(
+        self_: *const DEVRML_ConfigurationNode,
+        theWrapper: *const Handle_DE_Wrapper,
+    ) -> *const std::ffi::c_char;
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn DEVRML_ConfigurationNode_inherited_IsInstance(
         self_: *const DEVRML_ConfigurationNode,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn DEVRML_ConfigurationNode_inherited_IsKind(
         self_: *const DEVRML_ConfigurationNode,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn DEVRML_ConfigurationNode_inherited_This(
         self_: *const DEVRML_ConfigurationNode,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn DEVRML_ConfigurationNode_inherited_GetRefCount(
         self_: *const DEVRML_ConfigurationNode,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn DEVRML_ConfigurationNode_inherited_IncrementRefCounter(
         self_: *mut DEVRML_ConfigurationNode,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn DEVRML_ConfigurationNode_inherited_DecrementRefCounter(
         self_: *mut DEVRML_ConfigurationNode,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn DEVRML_ConfigurationNode_inherited_Delete(
         self_: *const DEVRML_ConfigurationNode,
     ) -> *const std::ffi::c_char;
@@ -181,40 +195,40 @@ unsafe extern "C" {
     pub fn DEVRML_Provider_ctor() -> crate::OcctResult<*mut DEVRML_Provider>;
     /// **Source:** `DEVRML_Provider.hxx`:40 - `DEVRML_Provider::DEVRML_Provider()`
     pub fn DEVRML_Provider_ctor_handledeconfigurationnode(
-        theNode: *const HandleDEConfigurationNode,
+        theNode: *const Handle_DE_ConfigurationNode,
     ) -> crate::OcctResult<*mut DEVRML_Provider>;
     /// **Source:** `DEVRML_Provider.hxx`:31 - `DEVRML_Provider::DynamicType()`
     pub fn DEVRML_Provider_dynamic_type(
         self_: *const DEVRML_Provider,
-    ) -> crate::OcctResult<*const HandleStandardType>;
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// **Source:** `DEVRML_Provider.hxx`:49 - `DEVRML_Provider::Read()`
     pub fn DEVRML_Provider_read_asciistring_handletdocstddocument_handlexscontrolworksession_progressrange(
         self_: *mut DEVRML_Provider,
         thePath: *const TCollection_AsciiString,
-        theDocument: *const HandleTDocStdDocument,
-        theWS: *mut HandleXSControlWorkSession,
+        theDocument: *const Handle_TDocStd_Document,
+        theWS: *mut Handle_XSControl_WorkSession,
         theProgress: *const Message_ProgressRange,
     ) -> crate::OcctResult<bool>;
     /// **Source:** `DEVRML_Provider.hxx`:61 - `DEVRML_Provider::Write()`
     pub fn DEVRML_Provider_write_asciistring_handletdocstddocument_handlexscontrolworksession_progressrange(
         self_: *mut DEVRML_Provider,
         thePath: *const TCollection_AsciiString,
-        theDocument: *const HandleTDocStdDocument,
-        theWS: *mut HandleXSControlWorkSession,
+        theDocument: *const Handle_TDocStd_Document,
+        theWS: *mut Handle_XSControl_WorkSession,
         theProgress: *const Message_ProgressRange,
     ) -> crate::OcctResult<bool>;
     /// **Source:** `DEVRML_Provider.hxx`:72 - `DEVRML_Provider::Read()`
     pub fn DEVRML_Provider_read_asciistring_handletdocstddocument_progressrange(
         self_: *mut DEVRML_Provider,
         thePath: *const TCollection_AsciiString,
-        theDocument: *const HandleTDocStdDocument,
+        theDocument: *const Handle_TDocStd_Document,
         theProgress: *const Message_ProgressRange,
     ) -> crate::OcctResult<bool>;
     /// **Source:** `DEVRML_Provider.hxx`:82 - `DEVRML_Provider::Write()`
     pub fn DEVRML_Provider_write_asciistring_handletdocstddocument_progressrange(
         self_: *mut DEVRML_Provider,
         thePath: *const TCollection_AsciiString,
-        theDocument: *const HandleTDocStdDocument,
+        theDocument: *const Handle_TDocStd_Document,
         theProgress: *const Message_ProgressRange,
     ) -> crate::OcctResult<bool>;
     /// **Source:** `DEVRML_Provider.hxx`:93 - `DEVRML_Provider::Read()`
@@ -222,7 +236,7 @@ unsafe extern "C" {
         self_: *mut DEVRML_Provider,
         thePath: *const TCollection_AsciiString,
         theShape: *mut TopoDS_Shape,
-        theWS: *mut HandleXSControlWorkSession,
+        theWS: *mut Handle_XSControl_WorkSession,
         theProgress: *const Message_ProgressRange,
     ) -> crate::OcctResult<bool>;
     /// **Source:** `DEVRML_Provider.hxx`:105 - `DEVRML_Provider::Write()`
@@ -230,35 +244,95 @@ unsafe extern "C" {
         self_: *mut DEVRML_Provider,
         thePath: *const TCollection_AsciiString,
         theShape: *const TopoDS_Shape,
-        theWS: *mut HandleXSControlWorkSession,
+        theWS: *mut Handle_XSControl_WorkSession,
         theProgress: *const Message_ProgressRange,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `DEVRML_Provider.hxx`:116 - `DEVRML_Provider::Read()`
+    /// **Source:** `DEVRML_Provider.hxx`:117 - `DEVRML_Provider::Read()`
+    pub fn DEVRML_Provider_read_readstreamlist_handletdocstddocument_handlexscontrolworksession_progressrange(
+        self_: *mut DEVRML_Provider,
+        theStreams: *mut DE_Provider_ReadStreamList,
+        theDocument: *const Handle_TDocStd_Document,
+        theWS: *mut Handle_XSControl_WorkSession,
+        theProgress: *const Message_ProgressRange,
+    ) -> crate::OcctResult<bool>;
+    /// **Source:** `DEVRML_Provider.hxx`:129 - `DEVRML_Provider::Write()`
+    pub fn DEVRML_Provider_write_writestreamlist_handletdocstddocument_handlexscontrolworksession_progressrange(
+        self_: *mut DEVRML_Provider,
+        theStreams: *mut DE_Provider_WriteStreamList,
+        theDocument: *const Handle_TDocStd_Document,
+        theWS: *mut Handle_XSControl_WorkSession,
+        theProgress: *const Message_ProgressRange,
+    ) -> crate::OcctResult<bool>;
+    /// **Source:** `DEVRML_Provider.hxx`:141 - `DEVRML_Provider::Read()`
+    pub fn DEVRML_Provider_read_readstreamlist_shape_handlexscontrolworksession_progressrange(
+        self_: *mut DEVRML_Provider,
+        theStreams: *mut DE_Provider_ReadStreamList,
+        theShape: *mut TopoDS_Shape,
+        theWS: *mut Handle_XSControl_WorkSession,
+        theProgress: *const Message_ProgressRange,
+    ) -> crate::OcctResult<bool>;
+    /// **Source:** `DEVRML_Provider.hxx`:153 - `DEVRML_Provider::Write()`
+    pub fn DEVRML_Provider_write_writestreamlist_shape_handlexscontrolworksession_progressrange(
+        self_: *mut DEVRML_Provider,
+        theStreams: *mut DE_Provider_WriteStreamList,
+        theShape: *const TopoDS_Shape,
+        theWS: *mut Handle_XSControl_WorkSession,
+        theProgress: *const Message_ProgressRange,
+    ) -> crate::OcctResult<bool>;
+    /// **Source:** `DEVRML_Provider.hxx`:164 - `DEVRML_Provider::Read()`
     pub fn DEVRML_Provider_read_asciistring_shape_progressrange(
         self_: *mut DEVRML_Provider,
         thePath: *const TCollection_AsciiString,
         theShape: *mut TopoDS_Shape,
         theProgress: *const Message_ProgressRange,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `DEVRML_Provider.hxx`:126 - `DEVRML_Provider::Write()`
+    /// **Source:** `DEVRML_Provider.hxx`:174 - `DEVRML_Provider::Write()`
     pub fn DEVRML_Provider_write_asciistring_shape_progressrange(
         self_: *mut DEVRML_Provider,
         thePath: *const TCollection_AsciiString,
         theShape: *const TopoDS_Shape,
         theProgress: *const Message_ProgressRange,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `DEVRML_Provider.hxx`:134 - `DEVRML_Provider::GetFormat()`
+    /// **Source:** `DEVRML_Provider.hxx`:184 - `DEVRML_Provider::Read()`
+    pub fn DEVRML_Provider_read_readstreamlist_handletdocstddocument_progressrange(
+        self_: *mut DEVRML_Provider,
+        theStreams: *mut DE_Provider_ReadStreamList,
+        theDocument: *const Handle_TDocStd_Document,
+        theProgress: *const Message_ProgressRange,
+    ) -> crate::OcctResult<bool>;
+    /// **Source:** `DEVRML_Provider.hxx`:194 - `DEVRML_Provider::Write()`
+    pub fn DEVRML_Provider_write_writestreamlist_handletdocstddocument_progressrange(
+        self_: *mut DEVRML_Provider,
+        theStreams: *mut DE_Provider_WriteStreamList,
+        theDocument: *const Handle_TDocStd_Document,
+        theProgress: *const Message_ProgressRange,
+    ) -> crate::OcctResult<bool>;
+    /// **Source:** `DEVRML_Provider.hxx`:204 - `DEVRML_Provider::Read()`
+    pub fn DEVRML_Provider_read_readstreamlist_shape_progressrange(
+        self_: *mut DEVRML_Provider,
+        theStreams: *mut DE_Provider_ReadStreamList,
+        theShape: *mut TopoDS_Shape,
+        theProgress: *const Message_ProgressRange,
+    ) -> crate::OcctResult<bool>;
+    /// **Source:** `DEVRML_Provider.hxx`:214 - `DEVRML_Provider::Write()`
+    pub fn DEVRML_Provider_write_writestreamlist_shape_progressrange(
+        self_: *mut DEVRML_Provider,
+        theStreams: *mut DE_Provider_WriteStreamList,
+        theShape: *const TopoDS_Shape,
+        theProgress: *const Message_ProgressRange,
+    ) -> crate::OcctResult<bool>;
+    /// **Source:** `DEVRML_Provider.hxx`:222 - `DEVRML_Provider::GetFormat()`
     pub fn DEVRML_Provider_get_format(
         self_: *const DEVRML_Provider,
     ) -> crate::OcctResult<*mut TCollection_AsciiString>;
-    /// **Source:** `DEVRML_Provider.hxx`:138 - `DEVRML_Provider::GetVendor()`
+    /// **Source:** `DEVRML_Provider.hxx`:226 - `DEVRML_Provider::GetVendor()`
     pub fn DEVRML_Provider_get_vendor(
         self_: *const DEVRML_Provider,
     ) -> crate::OcctResult<*mut TCollection_AsciiString>;
     /// **Source:** `DEVRML_Provider.hxx`:31 - `DEVRML_Provider::get_type_name()`
     pub fn DEVRML_Provider_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
     /// **Source:** `DEVRML_Provider.hxx`:31 - `DEVRML_Provider::get_type_descriptor()`
-    pub fn DEVRML_Provider_get_type_descriptor() -> crate::OcctResult<*const HandleStandardType>;
+    pub fn DEVRML_Provider_get_type_descriptor() -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast DEVRML_Provider to DE_Provider
     pub fn DEVRML_Provider_as_DE_Provider(
         self_: *const DEVRML_Provider,
@@ -278,77 +352,77 @@ unsafe extern "C" {
     /// Wrap DEVRML_Provider in a Handle
     pub fn DEVRML_Provider_to_handle(
         obj: *mut DEVRML_Provider,
-    ) -> crate::OcctResult<*mut HandleDEVRMLProvider>;
+    ) -> crate::OcctResult<*mut Handle_DEVRML_Provider>;
     /// Destroy Handle<DEVRML_Provider>
-    pub fn HandleDEVRMLProvider_destructor(self_: *mut HandleDEVRMLProvider);
+    pub fn Handle_DEVRML_Provider_destructor(self_: *mut Handle_DEVRML_Provider);
     /// Clone Handle<DEVRML_Provider> (increments reference count)
-    pub fn HandleDEVRMLProvider_clone(
-        self_: *const HandleDEVRMLProvider,
-    ) -> crate::OcctResult<*mut HandleDEVRMLProvider>;
+    pub fn Handle_DEVRML_Provider_clone(
+        self_: *const Handle_DEVRML_Provider,
+    ) -> crate::OcctResult<*mut Handle_DEVRML_Provider>;
     /// Check if Handle<DEVRML_Provider> is null
-    pub fn HandleDEVRMLProvider_is_null(self_: *const HandleDEVRMLProvider) -> bool;
+    pub fn Handle_DEVRML_Provider_is_null(self_: *const Handle_DEVRML_Provider) -> bool;
     /// Dereference Handle to get *const DEVRML_Provider
-    pub fn HandleDEVRMLProvider_get(
-        handle: *const HandleDEVRMLProvider,
+    pub fn Handle_DEVRML_Provider_get(
+        handle: *const Handle_DEVRML_Provider,
     ) -> crate::OcctResult<*const DEVRML_Provider>;
     /// Dereference Handle to get *mut DEVRML_Provider
-    pub fn HandleDEVRMLProvider_get_mut(
-        handle: *mut HandleDEVRMLProvider,
+    pub fn Handle_DEVRML_Provider_get_mut(
+        handle: *mut Handle_DEVRML_Provider,
     ) -> crate::OcctResult<*mut DEVRML_Provider>;
     /// Upcast Handle<DEVRML_Provider> to Handle<DE_Provider>
-    pub fn HandleDEVRMLProvider_to_HandleDEProvider(
-        self_: *const HandleDEVRMLProvider,
-    ) -> crate::OcctResult<*mut HandleDEProvider>;
+    pub fn Handle_DEVRML_Provider_to_Handle_DE_Provider(
+        self_: *const Handle_DEVRML_Provider,
+    ) -> crate::OcctResult<*mut Handle_DE_Provider>;
     /// Upcast Handle<DEVRML_Provider> to Handle<Standard_Transient>
-    pub fn HandleDEVRMLProvider_to_HandleStandardTransient(
-        self_: *const HandleDEVRMLProvider,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
-    /// Inherited: **Source:** `DE_Provider.hxx`:155 - `DE_Provider::GetNode()`
+    pub fn Handle_DEVRML_Provider_to_Handle_Standard_Transient(
+        self_: *const Handle_DEVRML_Provider,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
+    /// Inherited: **Source:** `DE_Provider.hxx`:285 - `DE_Provider::GetNode()`
     pub fn DEVRML_Provider_inherited_GetNode(
         self_: *const DEVRML_Provider,
-    ) -> crate::OcctResult<*mut HandleDEConfigurationNode>;
-    /// Inherited: **Source:** `DE_Provider.hxx`:159 - `DE_Provider::SetNode()`
+    ) -> crate::OcctResult<*mut Handle_DE_ConfigurationNode>;
+    /// Inherited: **Source:** `DE_Provider.hxx`:289 - `DE_Provider::SetNode()`
     pub fn DEVRML_Provider_inherited_SetNode(
         self_: *mut DEVRML_Provider,
-        theNode: *const HandleDEConfigurationNode,
+        theNode: *const Handle_DE_ConfigurationNode,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn DEVRML_Provider_inherited_IsInstance(
         self_: *const DEVRML_Provider,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn DEVRML_Provider_inherited_IsKind(
         self_: *const DEVRML_Provider,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn DEVRML_Provider_inherited_This(
         self_: *const DEVRML_Provider,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn DEVRML_Provider_inherited_GetRefCount(
         self_: *const DEVRML_Provider,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn DEVRML_Provider_inherited_IncrementRefCounter(
         self_: *mut DEVRML_Provider,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn DEVRML_Provider_inherited_DecrementRefCounter(
         self_: *mut DEVRML_Provider,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn DEVRML_Provider_inherited_Delete(
         self_: *const DEVRML_Provider,
     ) -> *const std::ffi::c_char;
     // ======================== Vrml_AsciiText ========================
     pub fn Vrml_AsciiText_destructor(self_: *mut Vrml_AsciiText);
-    /// **Source:** `Vrml_AsciiText.hxx`:45 - `Vrml_AsciiText::Vrml_AsciiText()`
+    /// **Source:** `Vrml_AsciiText.hxx`:44 - `Vrml_AsciiText::Vrml_AsciiText()`
     pub fn Vrml_AsciiText_ctor() -> crate::OcctResult<*mut Vrml_AsciiText>;
-    /// **Source:** `Vrml_AsciiText.hxx`:47 - `Vrml_AsciiText::Vrml_AsciiText()`
-    pub fn Vrml_AsciiText_ctor_handletcolstdharray1ofasciistring_real_asciitextjustification_real(
-        aString: *const HandleTColStdHArray1OfAsciiString,
+    /// **Source:** `Vrml_AsciiText.hxx`:46 - `Vrml_AsciiText::Vrml_AsciiText()`
+    pub fn Vrml_AsciiText_ctor_harr1_asciistring_real_asciitextjustification_real(
+        aString: *const Handle_NCollection_HArray1_TCollection_AsciiString,
         aSpacing: f64,
         aJustification: i32,
         aWidth: f64,
@@ -356,46 +430,46 @@ unsafe extern "C" {
     /// **Source:** `Vrml_AsciiText.hxx`:52 - `Vrml_AsciiText::SetString()`
     pub fn Vrml_AsciiText_set_string(
         self_: *mut Vrml_AsciiText,
-        aString: *const HandleTColStdHArray1OfAsciiString,
+        aString: *const Handle_NCollection_HArray1_TCollection_AsciiString,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `Vrml_AsciiText.hxx`:54 - `Vrml_AsciiText::String()`
+    /// **Source:** `Vrml_AsciiText.hxx`:55 - `Vrml_AsciiText::String()`
     pub fn Vrml_AsciiText_string(
         self_: *const Vrml_AsciiText,
-    ) -> crate::OcctResult<*mut HandleTColStdHArray1OfAsciiString>;
-    /// **Source:** `Vrml_AsciiText.hxx`:56 - `Vrml_AsciiText::SetSpacing()`
+    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_TCollection_AsciiString>;
+    /// **Source:** `Vrml_AsciiText.hxx`:57 - `Vrml_AsciiText::SetSpacing()`
     pub fn Vrml_AsciiText_set_spacing(
         self_: *mut Vrml_AsciiText,
         aSpacing: f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `Vrml_AsciiText.hxx`:58 - `Vrml_AsciiText::Spacing()`
+    /// **Source:** `Vrml_AsciiText.hxx`:59 - `Vrml_AsciiText::Spacing()`
     pub fn Vrml_AsciiText_spacing(self_: *const Vrml_AsciiText) -> crate::OcctResult<f64>;
-    /// **Source:** `Vrml_AsciiText.hxx`:60 - `Vrml_AsciiText::SetJustification()`
+    /// **Source:** `Vrml_AsciiText.hxx`:61 - `Vrml_AsciiText::SetJustification()`
     pub fn Vrml_AsciiText_set_justification(
         self_: *mut Vrml_AsciiText,
         aJustification: i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `Vrml_AsciiText.hxx`:62 - `Vrml_AsciiText::Justification()`
+    /// **Source:** `Vrml_AsciiText.hxx`:63 - `Vrml_AsciiText::Justification()`
     pub fn Vrml_AsciiText_justification(self_: *const Vrml_AsciiText) -> crate::OcctResult<i32>;
-    /// **Source:** `Vrml_AsciiText.hxx`:64 - `Vrml_AsciiText::SetWidth()`
+    /// **Source:** `Vrml_AsciiText.hxx`:65 - `Vrml_AsciiText::SetWidth()`
     pub fn Vrml_AsciiText_set_width(
         self_: *mut Vrml_AsciiText,
         aWidth: f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `Vrml_AsciiText.hxx`:66 - `Vrml_AsciiText::Width()`
+    /// **Source:** `Vrml_AsciiText.hxx`:67 - `Vrml_AsciiText::Width()`
     pub fn Vrml_AsciiText_width(self_: *const Vrml_AsciiText) -> crate::OcctResult<f64>;
-    /// **Source:** `Vrml_AsciiText.hxx`:68 - `Vrml_AsciiText::Print()`
+    /// **Source:** `Vrml_AsciiText.hxx`:69 - `Vrml_AsciiText::Print()`
     pub fn Vrml_AsciiText_print(
         self_: *mut Vrml_AsciiText,
         anOStream: *mut Standard_OStream,
     ) -> crate::OcctResult<*mut Standard_OStream>;
-    /// **Source:** `Vrml_AsciiText.hxx`:70 - `Vrml_AsciiText::DynamicType()`
+    /// **Source:** `Vrml_AsciiText.hxx`:71 - `Vrml_AsciiText::DynamicType()`
     pub fn Vrml_AsciiText_dynamic_type(
         self_: *const Vrml_AsciiText,
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// **Source:** `Vrml_AsciiText.hxx`:70 - `Vrml_AsciiText::get_type_name()`
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
+    /// **Source:** `Vrml_AsciiText.hxx`:71 - `Vrml_AsciiText::get_type_name()`
     pub fn Vrml_AsciiText_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
-    /// **Source:** `Vrml_AsciiText.hxx`:70 - `Vrml_AsciiText::get_type_descriptor()`
-    pub fn Vrml_AsciiText_get_type_descriptor() -> crate::OcctResult<*const HandleStandardType>;
+    /// **Source:** `Vrml_AsciiText.hxx`:71 - `Vrml_AsciiText::get_type_descriptor()`
+    pub fn Vrml_AsciiText_get_type_descriptor() -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast Vrml_AsciiText to Standard_Transient
     pub fn Vrml_AsciiText_as_Standard_Transient(
         self_: *const Vrml_AsciiText,
@@ -407,54 +481,54 @@ unsafe extern "C" {
     /// Wrap Vrml_AsciiText in a Handle
     pub fn Vrml_AsciiText_to_handle(
         obj: *mut Vrml_AsciiText,
-    ) -> crate::OcctResult<*mut HandleVrmlAsciiText>;
+    ) -> crate::OcctResult<*mut Handle_Vrml_AsciiText>;
     /// Destroy Handle<Vrml_AsciiText>
-    pub fn HandleVrmlAsciiText_destructor(self_: *mut HandleVrmlAsciiText);
+    pub fn Handle_Vrml_AsciiText_destructor(self_: *mut Handle_Vrml_AsciiText);
     /// Clone Handle<Vrml_AsciiText> (increments reference count)
-    pub fn HandleVrmlAsciiText_clone(
-        self_: *const HandleVrmlAsciiText,
-    ) -> crate::OcctResult<*mut HandleVrmlAsciiText>;
+    pub fn Handle_Vrml_AsciiText_clone(
+        self_: *const Handle_Vrml_AsciiText,
+    ) -> crate::OcctResult<*mut Handle_Vrml_AsciiText>;
     /// Check if Handle<Vrml_AsciiText> is null
-    pub fn HandleVrmlAsciiText_is_null(self_: *const HandleVrmlAsciiText) -> bool;
+    pub fn Handle_Vrml_AsciiText_is_null(self_: *const Handle_Vrml_AsciiText) -> bool;
     /// Dereference Handle to get *const Vrml_AsciiText
-    pub fn HandleVrmlAsciiText_get(
-        handle: *const HandleVrmlAsciiText,
+    pub fn Handle_Vrml_AsciiText_get(
+        handle: *const Handle_Vrml_AsciiText,
     ) -> crate::OcctResult<*const Vrml_AsciiText>;
     /// Dereference Handle to get *mut Vrml_AsciiText
-    pub fn HandleVrmlAsciiText_get_mut(
-        handle: *mut HandleVrmlAsciiText,
+    pub fn Handle_Vrml_AsciiText_get_mut(
+        handle: *mut Handle_Vrml_AsciiText,
     ) -> crate::OcctResult<*mut Vrml_AsciiText>;
     /// Upcast Handle<Vrml_AsciiText> to Handle<Standard_Transient>
-    pub fn HandleVrmlAsciiText_to_HandleStandardTransient(
-        self_: *const HandleVrmlAsciiText,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn Handle_Vrml_AsciiText_to_Handle_Standard_Transient(
+        self_: *const Handle_Vrml_AsciiText,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn Vrml_AsciiText_inherited_IsInstance(
         self_: *const Vrml_AsciiText,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn Vrml_AsciiText_inherited_IsKind(
         self_: *const Vrml_AsciiText,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn Vrml_AsciiText_inherited_This(
         self_: *const Vrml_AsciiText,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn Vrml_AsciiText_inherited_GetRefCount(
         self_: *const Vrml_AsciiText,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn Vrml_AsciiText_inherited_IncrementRefCounter(
         self_: *mut Vrml_AsciiText,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn Vrml_AsciiText_inherited_DecrementRefCounter(
         self_: *mut Vrml_AsciiText,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn Vrml_AsciiText_inherited_Delete(self_: *const Vrml_AsciiText)
         -> *const std::ffi::c_char;
     // ======================== Vrml_Cone ========================
@@ -487,34 +561,34 @@ unsafe extern "C" {
     ) -> crate::OcctResult<*mut Standard_OStream>;
     // ======================== Vrml_Coordinate3 ========================
     pub fn Vrml_Coordinate3_destructor(self_: *mut Vrml_Coordinate3);
-    /// **Source:** `Vrml_Coordinate3.hxx`:40 - `Vrml_Coordinate3::Vrml_Coordinate3()`
-    pub fn Vrml_Coordinate3_ctor_handletcolgpharray1ofvec(
-        aPoint: *const HandleTColgpHArray1OfVec,
+    /// **Source:** `Vrml_Coordinate3.hxx`:39 - `Vrml_Coordinate3::Vrml_Coordinate3()`
+    pub fn Vrml_Coordinate3_ctor_harr1_vec(
+        aPoint: *const Handle_NCollection_HArray1_gp_Vec,
     ) -> crate::OcctResult<*mut Vrml_Coordinate3>;
-    /// **Source:** `Vrml_Coordinate3.hxx`:42 - `Vrml_Coordinate3::Vrml_Coordinate3()`
+    /// **Source:** `Vrml_Coordinate3.hxx`:41 - `Vrml_Coordinate3::Vrml_Coordinate3()`
     pub fn Vrml_Coordinate3_ctor() -> crate::OcctResult<*mut Vrml_Coordinate3>;
-    /// **Source:** `Vrml_Coordinate3.hxx`:44 - `Vrml_Coordinate3::SetPoint()`
+    /// **Source:** `Vrml_Coordinate3.hxx`:43 - `Vrml_Coordinate3::SetPoint()`
     pub fn Vrml_Coordinate3_set_point(
         self_: *mut Vrml_Coordinate3,
-        aPoint: *const HandleTColgpHArray1OfVec,
+        aPoint: *const Handle_NCollection_HArray1_gp_Vec,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `Vrml_Coordinate3.hxx`:46 - `Vrml_Coordinate3::Point()`
+    /// **Source:** `Vrml_Coordinate3.hxx`:45 - `Vrml_Coordinate3::Point()`
     pub fn Vrml_Coordinate3_point(
         self_: *const Vrml_Coordinate3,
-    ) -> crate::OcctResult<*mut HandleTColgpHArray1OfVec>;
-    /// **Source:** `Vrml_Coordinate3.hxx`:48 - `Vrml_Coordinate3::Print()`
+    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_gp_Vec>;
+    /// **Source:** `Vrml_Coordinate3.hxx`:47 - `Vrml_Coordinate3::Print()`
     pub fn Vrml_Coordinate3_print(
         self_: *mut Vrml_Coordinate3,
         anOStream: *mut Standard_OStream,
     ) -> crate::OcctResult<*mut Standard_OStream>;
-    /// **Source:** `Vrml_Coordinate3.hxx`:50 - `Vrml_Coordinate3::DynamicType()`
+    /// **Source:** `Vrml_Coordinate3.hxx`:49 - `Vrml_Coordinate3::DynamicType()`
     pub fn Vrml_Coordinate3_dynamic_type(
         self_: *const Vrml_Coordinate3,
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// **Source:** `Vrml_Coordinate3.hxx`:50 - `Vrml_Coordinate3::get_type_name()`
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
+    /// **Source:** `Vrml_Coordinate3.hxx`:49 - `Vrml_Coordinate3::get_type_name()`
     pub fn Vrml_Coordinate3_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
-    /// **Source:** `Vrml_Coordinate3.hxx`:50 - `Vrml_Coordinate3::get_type_descriptor()`
-    pub fn Vrml_Coordinate3_get_type_descriptor() -> crate::OcctResult<*const HandleStandardType>;
+    /// **Source:** `Vrml_Coordinate3.hxx`:49 - `Vrml_Coordinate3::get_type_descriptor()`
+    pub fn Vrml_Coordinate3_get_type_descriptor() -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast Vrml_Coordinate3 to Standard_Transient
     pub fn Vrml_Coordinate3_as_Standard_Transient(
         self_: *const Vrml_Coordinate3,
@@ -526,54 +600,54 @@ unsafe extern "C" {
     /// Wrap Vrml_Coordinate3 in a Handle
     pub fn Vrml_Coordinate3_to_handle(
         obj: *mut Vrml_Coordinate3,
-    ) -> crate::OcctResult<*mut HandleVrmlCoordinate3>;
+    ) -> crate::OcctResult<*mut Handle_Vrml_Coordinate3>;
     /// Destroy Handle<Vrml_Coordinate3>
-    pub fn HandleVrmlCoordinate3_destructor(self_: *mut HandleVrmlCoordinate3);
+    pub fn Handle_Vrml_Coordinate3_destructor(self_: *mut Handle_Vrml_Coordinate3);
     /// Clone Handle<Vrml_Coordinate3> (increments reference count)
-    pub fn HandleVrmlCoordinate3_clone(
-        self_: *const HandleVrmlCoordinate3,
-    ) -> crate::OcctResult<*mut HandleVrmlCoordinate3>;
+    pub fn Handle_Vrml_Coordinate3_clone(
+        self_: *const Handle_Vrml_Coordinate3,
+    ) -> crate::OcctResult<*mut Handle_Vrml_Coordinate3>;
     /// Check if Handle<Vrml_Coordinate3> is null
-    pub fn HandleVrmlCoordinate3_is_null(self_: *const HandleVrmlCoordinate3) -> bool;
+    pub fn Handle_Vrml_Coordinate3_is_null(self_: *const Handle_Vrml_Coordinate3) -> bool;
     /// Dereference Handle to get *const Vrml_Coordinate3
-    pub fn HandleVrmlCoordinate3_get(
-        handle: *const HandleVrmlCoordinate3,
+    pub fn Handle_Vrml_Coordinate3_get(
+        handle: *const Handle_Vrml_Coordinate3,
     ) -> crate::OcctResult<*const Vrml_Coordinate3>;
     /// Dereference Handle to get *mut Vrml_Coordinate3
-    pub fn HandleVrmlCoordinate3_get_mut(
-        handle: *mut HandleVrmlCoordinate3,
+    pub fn Handle_Vrml_Coordinate3_get_mut(
+        handle: *mut Handle_Vrml_Coordinate3,
     ) -> crate::OcctResult<*mut Vrml_Coordinate3>;
     /// Upcast Handle<Vrml_Coordinate3> to Handle<Standard_Transient>
-    pub fn HandleVrmlCoordinate3_to_HandleStandardTransient(
-        self_: *const HandleVrmlCoordinate3,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn Handle_Vrml_Coordinate3_to_Handle_Standard_Transient(
+        self_: *const Handle_Vrml_Coordinate3,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn Vrml_Coordinate3_inherited_IsInstance(
         self_: *const Vrml_Coordinate3,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn Vrml_Coordinate3_inherited_IsKind(
         self_: *const Vrml_Coordinate3,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn Vrml_Coordinate3_inherited_This(
         self_: *const Vrml_Coordinate3,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn Vrml_Coordinate3_inherited_GetRefCount(
         self_: *const Vrml_Coordinate3,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn Vrml_Coordinate3_inherited_IncrementRefCounter(
         self_: *mut Vrml_Coordinate3,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn Vrml_Coordinate3_inherited_DecrementRefCounter(
         self_: *mut Vrml_Coordinate3,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn Vrml_Coordinate3_inherited_Delete(
         self_: *const Vrml_Coordinate3,
     ) -> *const std::ffi::c_char;
@@ -733,64 +807,65 @@ unsafe extern "C" {
     ) -> crate::OcctResult<*mut Standard_OStream>;
     // ======================== Vrml_IndexedFaceSet ========================
     pub fn Vrml_IndexedFaceSet_destructor(self_: *mut Vrml_IndexedFaceSet);
-    /// **Source:** `Vrml_IndexedFaceSet.hxx`:39 - `Vrml_IndexedFaceSet::Vrml_IndexedFaceSet()`
-    pub fn Vrml_IndexedFaceSet_ctor_handletcolstdharray1ofinteger4(
-        aCoordIndex: *const HandleTColStdHArray1OfInteger,
-        aMaterialIndex: *const HandleTColStdHArray1OfInteger,
-        aNormalIndex: *const HandleTColStdHArray1OfInteger,
-        aTextureCoordIndex: *const HandleTColStdHArray1OfInteger,
+    /// **Source:** `Vrml_IndexedFaceSet.hxx`:38 - `Vrml_IndexedFaceSet::Vrml_IndexedFaceSet()`
+    pub fn Vrml_IndexedFaceSet_ctor_harr1_int4(
+        aCoordIndex: *const Handle_NCollection_HArray1_int,
+        aMaterialIndex: *const Handle_NCollection_HArray1_int,
+        aNormalIndex: *const Handle_NCollection_HArray1_int,
+        aTextureCoordIndex: *const Handle_NCollection_HArray1_int,
     ) -> crate::OcctResult<*mut Vrml_IndexedFaceSet>;
     /// **Source:** `Vrml_IndexedFaceSet.hxx`:44 - `Vrml_IndexedFaceSet::Vrml_IndexedFaceSet()`
     pub fn Vrml_IndexedFaceSet_ctor() -> crate::OcctResult<*mut Vrml_IndexedFaceSet>;
     /// **Source:** `Vrml_IndexedFaceSet.hxx`:46 - `Vrml_IndexedFaceSet::SetCoordIndex()`
     pub fn Vrml_IndexedFaceSet_set_coord_index(
         self_: *mut Vrml_IndexedFaceSet,
-        aCoordIndex: *const HandleTColStdHArray1OfInteger,
+        aCoordIndex: *const Handle_NCollection_HArray1_int,
     ) -> *const std::ffi::c_char;
     /// **Source:** `Vrml_IndexedFaceSet.hxx`:48 - `Vrml_IndexedFaceSet::CoordIndex()`
     pub fn Vrml_IndexedFaceSet_coord_index(
         self_: *const Vrml_IndexedFaceSet,
-    ) -> crate::OcctResult<*mut HandleTColStdHArray1OfInteger>;
+    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_int>;
     /// **Source:** `Vrml_IndexedFaceSet.hxx`:50 - `Vrml_IndexedFaceSet::SetMaterialIndex()`
     pub fn Vrml_IndexedFaceSet_set_material_index(
         self_: *mut Vrml_IndexedFaceSet,
-        aMaterialIndex: *const HandleTColStdHArray1OfInteger,
+        aMaterialIndex: *const Handle_NCollection_HArray1_int,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `Vrml_IndexedFaceSet.hxx`:52 - `Vrml_IndexedFaceSet::MaterialIndex()`
+    /// **Source:** `Vrml_IndexedFaceSet.hxx`:53 - `Vrml_IndexedFaceSet::MaterialIndex()`
     pub fn Vrml_IndexedFaceSet_material_index(
         self_: *const Vrml_IndexedFaceSet,
-    ) -> crate::OcctResult<*mut HandleTColStdHArray1OfInteger>;
-    /// **Source:** `Vrml_IndexedFaceSet.hxx`:54 - `Vrml_IndexedFaceSet::SetNormalIndex()`
+    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_int>;
+    /// **Source:** `Vrml_IndexedFaceSet.hxx`:55 - `Vrml_IndexedFaceSet::SetNormalIndex()`
     pub fn Vrml_IndexedFaceSet_set_normal_index(
         self_: *mut Vrml_IndexedFaceSet,
-        aNormalIndex: *const HandleTColStdHArray1OfInteger,
+        aNormalIndex: *const Handle_NCollection_HArray1_int,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `Vrml_IndexedFaceSet.hxx`:56 - `Vrml_IndexedFaceSet::NormalIndex()`
+    /// **Source:** `Vrml_IndexedFaceSet.hxx`:57 - `Vrml_IndexedFaceSet::NormalIndex()`
     pub fn Vrml_IndexedFaceSet_normal_index(
         self_: *const Vrml_IndexedFaceSet,
-    ) -> crate::OcctResult<*mut HandleTColStdHArray1OfInteger>;
-    /// **Source:** `Vrml_IndexedFaceSet.hxx`:58 - `Vrml_IndexedFaceSet::SetTextureCoordIndex()`
+    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_int>;
+    /// **Source:** `Vrml_IndexedFaceSet.hxx`:59 - `Vrml_IndexedFaceSet::SetTextureCoordIndex()`
     pub fn Vrml_IndexedFaceSet_set_texture_coord_index(
         self_: *mut Vrml_IndexedFaceSet,
-        aTextureCoordIndex: *const HandleTColStdHArray1OfInteger,
+        aTextureCoordIndex: *const Handle_NCollection_HArray1_int,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `Vrml_IndexedFaceSet.hxx`:61 - `Vrml_IndexedFaceSet::TextureCoordIndex()`
+    /// **Source:** `Vrml_IndexedFaceSet.hxx`:62 - `Vrml_IndexedFaceSet::TextureCoordIndex()`
     pub fn Vrml_IndexedFaceSet_texture_coord_index(
         self_: *const Vrml_IndexedFaceSet,
-    ) -> crate::OcctResult<*mut HandleTColStdHArray1OfInteger>;
-    /// **Source:** `Vrml_IndexedFaceSet.hxx`:63 - `Vrml_IndexedFaceSet::Print()`
+    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_int>;
+    /// **Source:** `Vrml_IndexedFaceSet.hxx`:64 - `Vrml_IndexedFaceSet::Print()`
     pub fn Vrml_IndexedFaceSet_print(
         self_: *mut Vrml_IndexedFaceSet,
         anOStream: *mut Standard_OStream,
     ) -> crate::OcctResult<*mut Standard_OStream>;
-    /// **Source:** `Vrml_IndexedFaceSet.hxx`:65 - `Vrml_IndexedFaceSet::DynamicType()`
+    /// **Source:** `Vrml_IndexedFaceSet.hxx`:66 - `Vrml_IndexedFaceSet::DynamicType()`
     pub fn Vrml_IndexedFaceSet_dynamic_type(
         self_: *const Vrml_IndexedFaceSet,
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// **Source:** `Vrml_IndexedFaceSet.hxx`:65 - `Vrml_IndexedFaceSet::get_type_name()`
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
+    /// **Source:** `Vrml_IndexedFaceSet.hxx`:66 - `Vrml_IndexedFaceSet::get_type_name()`
     pub fn Vrml_IndexedFaceSet_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
-    /// **Source:** `Vrml_IndexedFaceSet.hxx`:65 - `Vrml_IndexedFaceSet::get_type_descriptor()`
-    pub fn Vrml_IndexedFaceSet_get_type_descriptor() -> crate::OcctResult<*const HandleStandardType>;
+    /// **Source:** `Vrml_IndexedFaceSet.hxx`:66 - `Vrml_IndexedFaceSet::get_type_descriptor()`
+    pub fn Vrml_IndexedFaceSet_get_type_descriptor(
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast Vrml_IndexedFaceSet to Standard_Transient
     pub fn Vrml_IndexedFaceSet_as_Standard_Transient(
         self_: *const Vrml_IndexedFaceSet,
@@ -802,117 +877,118 @@ unsafe extern "C" {
     /// Wrap Vrml_IndexedFaceSet in a Handle
     pub fn Vrml_IndexedFaceSet_to_handle(
         obj: *mut Vrml_IndexedFaceSet,
-    ) -> crate::OcctResult<*mut HandleVrmlIndexedFaceSet>;
+    ) -> crate::OcctResult<*mut Handle_Vrml_IndexedFaceSet>;
     /// Destroy Handle<Vrml_IndexedFaceSet>
-    pub fn HandleVrmlIndexedFaceSet_destructor(self_: *mut HandleVrmlIndexedFaceSet);
+    pub fn Handle_Vrml_IndexedFaceSet_destructor(self_: *mut Handle_Vrml_IndexedFaceSet);
     /// Clone Handle<Vrml_IndexedFaceSet> (increments reference count)
-    pub fn HandleVrmlIndexedFaceSet_clone(
-        self_: *const HandleVrmlIndexedFaceSet,
-    ) -> crate::OcctResult<*mut HandleVrmlIndexedFaceSet>;
+    pub fn Handle_Vrml_IndexedFaceSet_clone(
+        self_: *const Handle_Vrml_IndexedFaceSet,
+    ) -> crate::OcctResult<*mut Handle_Vrml_IndexedFaceSet>;
     /// Check if Handle<Vrml_IndexedFaceSet> is null
-    pub fn HandleVrmlIndexedFaceSet_is_null(self_: *const HandleVrmlIndexedFaceSet) -> bool;
+    pub fn Handle_Vrml_IndexedFaceSet_is_null(self_: *const Handle_Vrml_IndexedFaceSet) -> bool;
     /// Dereference Handle to get *const Vrml_IndexedFaceSet
-    pub fn HandleVrmlIndexedFaceSet_get(
-        handle: *const HandleVrmlIndexedFaceSet,
+    pub fn Handle_Vrml_IndexedFaceSet_get(
+        handle: *const Handle_Vrml_IndexedFaceSet,
     ) -> crate::OcctResult<*const Vrml_IndexedFaceSet>;
     /// Dereference Handle to get *mut Vrml_IndexedFaceSet
-    pub fn HandleVrmlIndexedFaceSet_get_mut(
-        handle: *mut HandleVrmlIndexedFaceSet,
+    pub fn Handle_Vrml_IndexedFaceSet_get_mut(
+        handle: *mut Handle_Vrml_IndexedFaceSet,
     ) -> crate::OcctResult<*mut Vrml_IndexedFaceSet>;
     /// Upcast Handle<Vrml_IndexedFaceSet> to Handle<Standard_Transient>
-    pub fn HandleVrmlIndexedFaceSet_to_HandleStandardTransient(
-        self_: *const HandleVrmlIndexedFaceSet,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn Handle_Vrml_IndexedFaceSet_to_Handle_Standard_Transient(
+        self_: *const Handle_Vrml_IndexedFaceSet,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn Vrml_IndexedFaceSet_inherited_IsInstance(
         self_: *const Vrml_IndexedFaceSet,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn Vrml_IndexedFaceSet_inherited_IsKind(
         self_: *const Vrml_IndexedFaceSet,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn Vrml_IndexedFaceSet_inherited_This(
         self_: *const Vrml_IndexedFaceSet,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn Vrml_IndexedFaceSet_inherited_GetRefCount(
         self_: *const Vrml_IndexedFaceSet,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn Vrml_IndexedFaceSet_inherited_IncrementRefCounter(
         self_: *mut Vrml_IndexedFaceSet,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn Vrml_IndexedFaceSet_inherited_DecrementRefCounter(
         self_: *mut Vrml_IndexedFaceSet,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn Vrml_IndexedFaceSet_inherited_Delete(
         self_: *const Vrml_IndexedFaceSet,
     ) -> *const std::ffi::c_char;
     // ======================== Vrml_IndexedLineSet ========================
     pub fn Vrml_IndexedLineSet_destructor(self_: *mut Vrml_IndexedLineSet);
-    /// **Source:** `Vrml_IndexedLineSet.hxx`:47 - `Vrml_IndexedLineSet::Vrml_IndexedLineSet()`
-    pub fn Vrml_IndexedLineSet_ctor_handletcolstdharray1ofinteger4(
-        aCoordIndex: *const HandleTColStdHArray1OfInteger,
-        aMaterialIndex: *const HandleTColStdHArray1OfInteger,
-        aNormalIndex: *const HandleTColStdHArray1OfInteger,
-        aTextureCoordIndex: *const HandleTColStdHArray1OfInteger,
+    /// **Source:** `Vrml_IndexedLineSet.hxx`:46 - `Vrml_IndexedLineSet::Vrml_IndexedLineSet()`
+    pub fn Vrml_IndexedLineSet_ctor_harr1_int4(
+        aCoordIndex: *const Handle_NCollection_HArray1_int,
+        aMaterialIndex: *const Handle_NCollection_HArray1_int,
+        aNormalIndex: *const Handle_NCollection_HArray1_int,
+        aTextureCoordIndex: *const Handle_NCollection_HArray1_int,
     ) -> crate::OcctResult<*mut Vrml_IndexedLineSet>;
     /// **Source:** `Vrml_IndexedLineSet.hxx`:52 - `Vrml_IndexedLineSet::Vrml_IndexedLineSet()`
     pub fn Vrml_IndexedLineSet_ctor() -> crate::OcctResult<*mut Vrml_IndexedLineSet>;
     /// **Source:** `Vrml_IndexedLineSet.hxx`:54 - `Vrml_IndexedLineSet::SetCoordIndex()`
     pub fn Vrml_IndexedLineSet_set_coord_index(
         self_: *mut Vrml_IndexedLineSet,
-        aCoordIndex: *const HandleTColStdHArray1OfInteger,
+        aCoordIndex: *const Handle_NCollection_HArray1_int,
     ) -> *const std::ffi::c_char;
     /// **Source:** `Vrml_IndexedLineSet.hxx`:56 - `Vrml_IndexedLineSet::CoordIndex()`
     pub fn Vrml_IndexedLineSet_coord_index(
         self_: *const Vrml_IndexedLineSet,
-    ) -> crate::OcctResult<*mut HandleTColStdHArray1OfInteger>;
+    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_int>;
     /// **Source:** `Vrml_IndexedLineSet.hxx`:58 - `Vrml_IndexedLineSet::SetMaterialIndex()`
     pub fn Vrml_IndexedLineSet_set_material_index(
         self_: *mut Vrml_IndexedLineSet,
-        aMaterialIndex: *const HandleTColStdHArray1OfInteger,
+        aMaterialIndex: *const Handle_NCollection_HArray1_int,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `Vrml_IndexedLineSet.hxx`:60 - `Vrml_IndexedLineSet::MaterialIndex()`
+    /// **Source:** `Vrml_IndexedLineSet.hxx`:61 - `Vrml_IndexedLineSet::MaterialIndex()`
     pub fn Vrml_IndexedLineSet_material_index(
         self_: *const Vrml_IndexedLineSet,
-    ) -> crate::OcctResult<*mut HandleTColStdHArray1OfInteger>;
-    /// **Source:** `Vrml_IndexedLineSet.hxx`:62 - `Vrml_IndexedLineSet::SetNormalIndex()`
+    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_int>;
+    /// **Source:** `Vrml_IndexedLineSet.hxx`:63 - `Vrml_IndexedLineSet::SetNormalIndex()`
     pub fn Vrml_IndexedLineSet_set_normal_index(
         self_: *mut Vrml_IndexedLineSet,
-        aNormalIndex: *const HandleTColStdHArray1OfInteger,
+        aNormalIndex: *const Handle_NCollection_HArray1_int,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `Vrml_IndexedLineSet.hxx`:64 - `Vrml_IndexedLineSet::NormalIndex()`
+    /// **Source:** `Vrml_IndexedLineSet.hxx`:65 - `Vrml_IndexedLineSet::NormalIndex()`
     pub fn Vrml_IndexedLineSet_normal_index(
         self_: *const Vrml_IndexedLineSet,
-    ) -> crate::OcctResult<*mut HandleTColStdHArray1OfInteger>;
-    /// **Source:** `Vrml_IndexedLineSet.hxx`:66 - `Vrml_IndexedLineSet::SetTextureCoordIndex()`
+    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_int>;
+    /// **Source:** `Vrml_IndexedLineSet.hxx`:67 - `Vrml_IndexedLineSet::SetTextureCoordIndex()`
     pub fn Vrml_IndexedLineSet_set_texture_coord_index(
         self_: *mut Vrml_IndexedLineSet,
-        aTextureCoordIndex: *const HandleTColStdHArray1OfInteger,
+        aTextureCoordIndex: *const Handle_NCollection_HArray1_int,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `Vrml_IndexedLineSet.hxx`:69 - `Vrml_IndexedLineSet::TextureCoordIndex()`
+    /// **Source:** `Vrml_IndexedLineSet.hxx`:70 - `Vrml_IndexedLineSet::TextureCoordIndex()`
     pub fn Vrml_IndexedLineSet_texture_coord_index(
         self_: *const Vrml_IndexedLineSet,
-    ) -> crate::OcctResult<*mut HandleTColStdHArray1OfInteger>;
-    /// **Source:** `Vrml_IndexedLineSet.hxx`:71 - `Vrml_IndexedLineSet::Print()`
+    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_int>;
+    /// **Source:** `Vrml_IndexedLineSet.hxx`:72 - `Vrml_IndexedLineSet::Print()`
     pub fn Vrml_IndexedLineSet_print(
         self_: *mut Vrml_IndexedLineSet,
         anOStream: *mut Standard_OStream,
     ) -> crate::OcctResult<*mut Standard_OStream>;
-    /// **Source:** `Vrml_IndexedLineSet.hxx`:73 - `Vrml_IndexedLineSet::DynamicType()`
+    /// **Source:** `Vrml_IndexedLineSet.hxx`:74 - `Vrml_IndexedLineSet::DynamicType()`
     pub fn Vrml_IndexedLineSet_dynamic_type(
         self_: *const Vrml_IndexedLineSet,
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// **Source:** `Vrml_IndexedLineSet.hxx`:73 - `Vrml_IndexedLineSet::get_type_name()`
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
+    /// **Source:** `Vrml_IndexedLineSet.hxx`:74 - `Vrml_IndexedLineSet::get_type_name()`
     pub fn Vrml_IndexedLineSet_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
-    /// **Source:** `Vrml_IndexedLineSet.hxx`:73 - `Vrml_IndexedLineSet::get_type_descriptor()`
-    pub fn Vrml_IndexedLineSet_get_type_descriptor() -> crate::OcctResult<*const HandleStandardType>;
+    /// **Source:** `Vrml_IndexedLineSet.hxx`:74 - `Vrml_IndexedLineSet::get_type_descriptor()`
+    pub fn Vrml_IndexedLineSet_get_type_descriptor(
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast Vrml_IndexedLineSet to Standard_Transient
     pub fn Vrml_IndexedLineSet_as_Standard_Transient(
         self_: *const Vrml_IndexedLineSet,
@@ -924,54 +1000,54 @@ unsafe extern "C" {
     /// Wrap Vrml_IndexedLineSet in a Handle
     pub fn Vrml_IndexedLineSet_to_handle(
         obj: *mut Vrml_IndexedLineSet,
-    ) -> crate::OcctResult<*mut HandleVrmlIndexedLineSet>;
+    ) -> crate::OcctResult<*mut Handle_Vrml_IndexedLineSet>;
     /// Destroy Handle<Vrml_IndexedLineSet>
-    pub fn HandleVrmlIndexedLineSet_destructor(self_: *mut HandleVrmlIndexedLineSet);
+    pub fn Handle_Vrml_IndexedLineSet_destructor(self_: *mut Handle_Vrml_IndexedLineSet);
     /// Clone Handle<Vrml_IndexedLineSet> (increments reference count)
-    pub fn HandleVrmlIndexedLineSet_clone(
-        self_: *const HandleVrmlIndexedLineSet,
-    ) -> crate::OcctResult<*mut HandleVrmlIndexedLineSet>;
+    pub fn Handle_Vrml_IndexedLineSet_clone(
+        self_: *const Handle_Vrml_IndexedLineSet,
+    ) -> crate::OcctResult<*mut Handle_Vrml_IndexedLineSet>;
     /// Check if Handle<Vrml_IndexedLineSet> is null
-    pub fn HandleVrmlIndexedLineSet_is_null(self_: *const HandleVrmlIndexedLineSet) -> bool;
+    pub fn Handle_Vrml_IndexedLineSet_is_null(self_: *const Handle_Vrml_IndexedLineSet) -> bool;
     /// Dereference Handle to get *const Vrml_IndexedLineSet
-    pub fn HandleVrmlIndexedLineSet_get(
-        handle: *const HandleVrmlIndexedLineSet,
+    pub fn Handle_Vrml_IndexedLineSet_get(
+        handle: *const Handle_Vrml_IndexedLineSet,
     ) -> crate::OcctResult<*const Vrml_IndexedLineSet>;
     /// Dereference Handle to get *mut Vrml_IndexedLineSet
-    pub fn HandleVrmlIndexedLineSet_get_mut(
-        handle: *mut HandleVrmlIndexedLineSet,
+    pub fn Handle_Vrml_IndexedLineSet_get_mut(
+        handle: *mut Handle_Vrml_IndexedLineSet,
     ) -> crate::OcctResult<*mut Vrml_IndexedLineSet>;
     /// Upcast Handle<Vrml_IndexedLineSet> to Handle<Standard_Transient>
-    pub fn HandleVrmlIndexedLineSet_to_HandleStandardTransient(
-        self_: *const HandleVrmlIndexedLineSet,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn Handle_Vrml_IndexedLineSet_to_Handle_Standard_Transient(
+        self_: *const Handle_Vrml_IndexedLineSet,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn Vrml_IndexedLineSet_inherited_IsInstance(
         self_: *const Vrml_IndexedLineSet,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn Vrml_IndexedLineSet_inherited_IsKind(
         self_: *const Vrml_IndexedLineSet,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn Vrml_IndexedLineSet_inherited_This(
         self_: *const Vrml_IndexedLineSet,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn Vrml_IndexedLineSet_inherited_GetRefCount(
         self_: *const Vrml_IndexedLineSet,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn Vrml_IndexedLineSet_inherited_IncrementRefCounter(
         self_: *mut Vrml_IndexedLineSet,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn Vrml_IndexedLineSet_inherited_DecrementRefCounter(
         self_: *mut Vrml_IndexedLineSet,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn Vrml_IndexedLineSet_inherited_Delete(
         self_: *const Vrml_IndexedLineSet,
     ) -> *const std::ffi::c_char;
@@ -1013,42 +1089,42 @@ unsafe extern "C" {
     ) -> crate::OcctResult<*mut Standard_OStream>;
     // ======================== Vrml_LOD ========================
     pub fn Vrml_LOD_destructor(self_: *mut Vrml_LOD);
-    /// **Source:** `Vrml_LOD.hxx`:56 - `Vrml_LOD::Vrml_LOD()`
+    /// **Source:** `Vrml_LOD.hxx`:54 - `Vrml_LOD::Vrml_LOD()`
     pub fn Vrml_LOD_ctor() -> crate::OcctResult<*mut Vrml_LOD>;
-    /// **Source:** `Vrml_LOD.hxx`:58 - `Vrml_LOD::Vrml_LOD()`
-    pub fn Vrml_LOD_ctor_handletcolstdharray1ofreal_vec(
-        aRange: *const HandleTColStdHArray1OfReal,
+    /// **Source:** `Vrml_LOD.hxx`:56 - `Vrml_LOD::Vrml_LOD()`
+    pub fn Vrml_LOD_ctor_harr1_double_vec(
+        aRange: *const Handle_NCollection_HArray1_double,
         aCenter: *const gp_Vec,
     ) -> crate::OcctResult<*mut Vrml_LOD>;
-    /// **Source:** `Vrml_LOD.hxx`:60 - `Vrml_LOD::SetRange()`
+    /// **Source:** `Vrml_LOD.hxx`:59 - `Vrml_LOD::SetRange()`
     pub fn Vrml_LOD_set_range(
         self_: *mut Vrml_LOD,
-        aRange: *const HandleTColStdHArray1OfReal,
+        aRange: *const Handle_NCollection_HArray1_double,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `Vrml_LOD.hxx`:62 - `Vrml_LOD::Range()`
+    /// **Source:** `Vrml_LOD.hxx`:61 - `Vrml_LOD::Range()`
     pub fn Vrml_LOD_range(
         self_: *const Vrml_LOD,
-    ) -> crate::OcctResult<*mut HandleTColStdHArray1OfReal>;
-    /// **Source:** `Vrml_LOD.hxx`:64 - `Vrml_LOD::SetCenter()`
+    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_double>;
+    /// **Source:** `Vrml_LOD.hxx`:63 - `Vrml_LOD::SetCenter()`
     pub fn Vrml_LOD_set_center(
         self_: *mut Vrml_LOD,
         aCenter: *const gp_Vec,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `Vrml_LOD.hxx`:66 - `Vrml_LOD::Center()`
+    /// **Source:** `Vrml_LOD.hxx`:65 - `Vrml_LOD::Center()`
     pub fn Vrml_LOD_center(self_: *const Vrml_LOD) -> crate::OcctResult<*mut gp_Vec>;
-    /// **Source:** `Vrml_LOD.hxx`:68 - `Vrml_LOD::Print()`
+    /// **Source:** `Vrml_LOD.hxx`:67 - `Vrml_LOD::Print()`
     pub fn Vrml_LOD_print(
         self_: *mut Vrml_LOD,
         anOStream: *mut Standard_OStream,
     ) -> crate::OcctResult<*mut Standard_OStream>;
-    /// **Source:** `Vrml_LOD.hxx`:70 - `Vrml_LOD::DynamicType()`
+    /// **Source:** `Vrml_LOD.hxx`:69 - `Vrml_LOD::DynamicType()`
     pub fn Vrml_LOD_dynamic_type(
         self_: *const Vrml_LOD,
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// **Source:** `Vrml_LOD.hxx`:70 - `Vrml_LOD::get_type_name()`
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
+    /// **Source:** `Vrml_LOD.hxx`:69 - `Vrml_LOD::get_type_name()`
     pub fn Vrml_LOD_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
-    /// **Source:** `Vrml_LOD.hxx`:70 - `Vrml_LOD::get_type_descriptor()`
-    pub fn Vrml_LOD_get_type_descriptor() -> crate::OcctResult<*const HandleStandardType>;
+    /// **Source:** `Vrml_LOD.hxx`:69 - `Vrml_LOD::get_type_descriptor()`
+    pub fn Vrml_LOD_get_type_descriptor() -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast Vrml_LOD to Standard_Transient
     pub fn Vrml_LOD_as_Standard_Transient(
         self_: *const Vrml_LOD,
@@ -1058,125 +1134,129 @@ unsafe extern "C" {
         self_: *mut Vrml_LOD,
     ) -> crate::OcctResult<*mut Standard_Transient>;
     /// Wrap Vrml_LOD in a Handle
-    pub fn Vrml_LOD_to_handle(obj: *mut Vrml_LOD) -> crate::OcctResult<*mut HandleVrmlLOD>;
+    pub fn Vrml_LOD_to_handle(obj: *mut Vrml_LOD) -> crate::OcctResult<*mut Handle_Vrml_LOD>;
     /// Destroy Handle<Vrml_LOD>
-    pub fn HandleVrmlLOD_destructor(self_: *mut HandleVrmlLOD);
+    pub fn Handle_Vrml_LOD_destructor(self_: *mut Handle_Vrml_LOD);
     /// Clone Handle<Vrml_LOD> (increments reference count)
-    pub fn HandleVrmlLOD_clone(
-        self_: *const HandleVrmlLOD,
-    ) -> crate::OcctResult<*mut HandleVrmlLOD>;
+    pub fn Handle_Vrml_LOD_clone(
+        self_: *const Handle_Vrml_LOD,
+    ) -> crate::OcctResult<*mut Handle_Vrml_LOD>;
     /// Check if Handle<Vrml_LOD> is null
-    pub fn HandleVrmlLOD_is_null(self_: *const HandleVrmlLOD) -> bool;
+    pub fn Handle_Vrml_LOD_is_null(self_: *const Handle_Vrml_LOD) -> bool;
     /// Dereference Handle to get *const Vrml_LOD
-    pub fn HandleVrmlLOD_get(handle: *const HandleVrmlLOD) -> crate::OcctResult<*const Vrml_LOD>;
+    pub fn Handle_Vrml_LOD_get(
+        handle: *const Handle_Vrml_LOD,
+    ) -> crate::OcctResult<*const Vrml_LOD>;
     /// Dereference Handle to get *mut Vrml_LOD
-    pub fn HandleVrmlLOD_get_mut(handle: *mut HandleVrmlLOD) -> crate::OcctResult<*mut Vrml_LOD>;
+    pub fn Handle_Vrml_LOD_get_mut(
+        handle: *mut Handle_Vrml_LOD,
+    ) -> crate::OcctResult<*mut Vrml_LOD>;
     /// Upcast Handle<Vrml_LOD> to Handle<Standard_Transient>
-    pub fn HandleVrmlLOD_to_HandleStandardTransient(
-        self_: *const HandleVrmlLOD,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn Handle_Vrml_LOD_to_Handle_Standard_Transient(
+        self_: *const Handle_Vrml_LOD,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn Vrml_LOD_inherited_IsInstance(
         self_: *const Vrml_LOD,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn Vrml_LOD_inherited_IsKind(
         self_: *const Vrml_LOD,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn Vrml_LOD_inherited_This(
         self_: *const Vrml_LOD,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn Vrml_LOD_inherited_GetRefCount(self_: *const Vrml_LOD) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn Vrml_LOD_inherited_IncrementRefCounter(self_: *mut Vrml_LOD) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn Vrml_LOD_inherited_DecrementRefCounter(self_: *mut Vrml_LOD) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn Vrml_LOD_inherited_Delete(self_: *const Vrml_LOD) -> *const std::ffi::c_char;
     // ======================== Vrml_Material ========================
     pub fn Vrml_Material_destructor(self_: *mut Vrml_Material);
-    /// **Source:** `Vrml_Material.hxx`:41 - `Vrml_Material::Vrml_Material()`
-    pub fn Vrml_Material_ctor_handlequantityharray1ofcolor4_handletcolstdharray1ofreal2(
-        aAmbientColor: *const HandleQuantityHArray1OfColor,
-        aDiffuseColor: *const HandleQuantityHArray1OfColor,
-        aSpecularColor: *const HandleQuantityHArray1OfColor,
-        aEmissiveColor: *const HandleQuantityHArray1OfColor,
-        aShininess: *const HandleTColStdHArray1OfReal,
-        aTransparency: *const HandleTColStdHArray1OfReal,
+    /// **Source:** `Vrml_Material.hxx`:39 - `Vrml_Material::Vrml_Material()`
+    pub fn Vrml_Material_ctor_harr1_color4_harr1_double2(
+        aAmbientColor: *const Handle_NCollection_HArray1_Quantity_Color,
+        aDiffuseColor: *const Handle_NCollection_HArray1_Quantity_Color,
+        aSpecularColor: *const Handle_NCollection_HArray1_Quantity_Color,
+        aEmissiveColor: *const Handle_NCollection_HArray1_Quantity_Color,
+        aShininess: *const Handle_NCollection_HArray1_double,
+        aTransparency: *const Handle_NCollection_HArray1_double,
     ) -> crate::OcctResult<*mut Vrml_Material>;
-    /// **Source:** `Vrml_Material.hxx`:48 - `Vrml_Material::Vrml_Material()`
+    /// **Source:** `Vrml_Material.hxx`:47 - `Vrml_Material::Vrml_Material()`
     pub fn Vrml_Material_ctor() -> crate::OcctResult<*mut Vrml_Material>;
-    /// **Source:** `Vrml_Material.hxx`:50 - `Vrml_Material::SetAmbientColor()`
+    /// **Source:** `Vrml_Material.hxx`:49 - `Vrml_Material::SetAmbientColor()`
     pub fn Vrml_Material_set_ambient_color(
         self_: *mut Vrml_Material,
-        aAmbientColor: *const HandleQuantityHArray1OfColor,
+        aAmbientColor: *const Handle_NCollection_HArray1_Quantity_Color,
     ) -> *const std::ffi::c_char;
     /// **Source:** `Vrml_Material.hxx`:52 - `Vrml_Material::AmbientColor()`
     pub fn Vrml_Material_ambient_color(
         self_: *const Vrml_Material,
-    ) -> crate::OcctResult<*mut HandleQuantityHArray1OfColor>;
+    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_Quantity_Color>;
     /// **Source:** `Vrml_Material.hxx`:54 - `Vrml_Material::SetDiffuseColor()`
     pub fn Vrml_Material_set_diffuse_color(
         self_: *mut Vrml_Material,
-        aDiffuseColor: *const HandleQuantityHArray1OfColor,
+        aDiffuseColor: *const Handle_NCollection_HArray1_Quantity_Color,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `Vrml_Material.hxx`:56 - `Vrml_Material::DiffuseColor()`
+    /// **Source:** `Vrml_Material.hxx`:57 - `Vrml_Material::DiffuseColor()`
     pub fn Vrml_Material_diffuse_color(
         self_: *const Vrml_Material,
-    ) -> crate::OcctResult<*mut HandleQuantityHArray1OfColor>;
-    /// **Source:** `Vrml_Material.hxx`:58 - `Vrml_Material::SetSpecularColor()`
+    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_Quantity_Color>;
+    /// **Source:** `Vrml_Material.hxx`:59 - `Vrml_Material::SetSpecularColor()`
     pub fn Vrml_Material_set_specular_color(
         self_: *mut Vrml_Material,
-        aSpecularColor: *const HandleQuantityHArray1OfColor,
+        aSpecularColor: *const Handle_NCollection_HArray1_Quantity_Color,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `Vrml_Material.hxx`:60 - `Vrml_Material::SpecularColor()`
+    /// **Source:** `Vrml_Material.hxx`:62 - `Vrml_Material::SpecularColor()`
     pub fn Vrml_Material_specular_color(
         self_: *const Vrml_Material,
-    ) -> crate::OcctResult<*mut HandleQuantityHArray1OfColor>;
-    /// **Source:** `Vrml_Material.hxx`:62 - `Vrml_Material::SetEmissiveColor()`
+    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_Quantity_Color>;
+    /// **Source:** `Vrml_Material.hxx`:64 - `Vrml_Material::SetEmissiveColor()`
     pub fn Vrml_Material_set_emissive_color(
         self_: *mut Vrml_Material,
-        aEmissiveColor: *const HandleQuantityHArray1OfColor,
+        aEmissiveColor: *const Handle_NCollection_HArray1_Quantity_Color,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `Vrml_Material.hxx`:64 - `Vrml_Material::EmissiveColor()`
+    /// **Source:** `Vrml_Material.hxx`:67 - `Vrml_Material::EmissiveColor()`
     pub fn Vrml_Material_emissive_color(
         self_: *const Vrml_Material,
-    ) -> crate::OcctResult<*mut HandleQuantityHArray1OfColor>;
-    /// **Source:** `Vrml_Material.hxx`:66 - `Vrml_Material::SetShininess()`
+    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_Quantity_Color>;
+    /// **Source:** `Vrml_Material.hxx`:69 - `Vrml_Material::SetShininess()`
     pub fn Vrml_Material_set_shininess(
         self_: *mut Vrml_Material,
-        aShininess: *const HandleTColStdHArray1OfReal,
+        aShininess: *const Handle_NCollection_HArray1_double,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `Vrml_Material.hxx`:68 - `Vrml_Material::Shininess()`
+    /// **Source:** `Vrml_Material.hxx`:71 - `Vrml_Material::Shininess()`
     pub fn Vrml_Material_shininess(
         self_: *const Vrml_Material,
-    ) -> crate::OcctResult<*mut HandleTColStdHArray1OfReal>;
-    /// **Source:** `Vrml_Material.hxx`:70 - `Vrml_Material::SetTransparency()`
+    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_double>;
+    /// **Source:** `Vrml_Material.hxx`:73 - `Vrml_Material::SetTransparency()`
     pub fn Vrml_Material_set_transparency(
         self_: *mut Vrml_Material,
-        aTransparency: *const HandleTColStdHArray1OfReal,
+        aTransparency: *const Handle_NCollection_HArray1_double,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `Vrml_Material.hxx`:72 - `Vrml_Material::Transparency()`
+    /// **Source:** `Vrml_Material.hxx`:76 - `Vrml_Material::Transparency()`
     pub fn Vrml_Material_transparency(
         self_: *const Vrml_Material,
-    ) -> crate::OcctResult<*mut HandleTColStdHArray1OfReal>;
-    /// **Source:** `Vrml_Material.hxx`:74 - `Vrml_Material::Print()`
+    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_double>;
+    /// **Source:** `Vrml_Material.hxx`:78 - `Vrml_Material::Print()`
     pub fn Vrml_Material_print(
         self_: *mut Vrml_Material,
         anOStream: *mut Standard_OStream,
     ) -> crate::OcctResult<*mut Standard_OStream>;
-    /// **Source:** `Vrml_Material.hxx`:76 - `Vrml_Material::DynamicType()`
+    /// **Source:** `Vrml_Material.hxx`:80 - `Vrml_Material::DynamicType()`
     pub fn Vrml_Material_dynamic_type(
         self_: *const Vrml_Material,
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// **Source:** `Vrml_Material.hxx`:76 - `Vrml_Material::get_type_name()`
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
+    /// **Source:** `Vrml_Material.hxx`:80 - `Vrml_Material::get_type_name()`
     pub fn Vrml_Material_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
-    /// **Source:** `Vrml_Material.hxx`:76 - `Vrml_Material::get_type_descriptor()`
-    pub fn Vrml_Material_get_type_descriptor() -> crate::OcctResult<*const HandleStandardType>;
+    /// **Source:** `Vrml_Material.hxx`:80 - `Vrml_Material::get_type_descriptor()`
+    pub fn Vrml_Material_get_type_descriptor() -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast Vrml_Material to Standard_Transient
     pub fn Vrml_Material_as_Standard_Transient(
         self_: *const Vrml_Material,
@@ -1188,54 +1268,54 @@ unsafe extern "C" {
     /// Wrap Vrml_Material in a Handle
     pub fn Vrml_Material_to_handle(
         obj: *mut Vrml_Material,
-    ) -> crate::OcctResult<*mut HandleVrmlMaterial>;
+    ) -> crate::OcctResult<*mut Handle_Vrml_Material>;
     /// Destroy Handle<Vrml_Material>
-    pub fn HandleVrmlMaterial_destructor(self_: *mut HandleVrmlMaterial);
+    pub fn Handle_Vrml_Material_destructor(self_: *mut Handle_Vrml_Material);
     /// Clone Handle<Vrml_Material> (increments reference count)
-    pub fn HandleVrmlMaterial_clone(
-        self_: *const HandleVrmlMaterial,
-    ) -> crate::OcctResult<*mut HandleVrmlMaterial>;
+    pub fn Handle_Vrml_Material_clone(
+        self_: *const Handle_Vrml_Material,
+    ) -> crate::OcctResult<*mut Handle_Vrml_Material>;
     /// Check if Handle<Vrml_Material> is null
-    pub fn HandleVrmlMaterial_is_null(self_: *const HandleVrmlMaterial) -> bool;
+    pub fn Handle_Vrml_Material_is_null(self_: *const Handle_Vrml_Material) -> bool;
     /// Dereference Handle to get *const Vrml_Material
-    pub fn HandleVrmlMaterial_get(
-        handle: *const HandleVrmlMaterial,
+    pub fn Handle_Vrml_Material_get(
+        handle: *const Handle_Vrml_Material,
     ) -> crate::OcctResult<*const Vrml_Material>;
     /// Dereference Handle to get *mut Vrml_Material
-    pub fn HandleVrmlMaterial_get_mut(
-        handle: *mut HandleVrmlMaterial,
+    pub fn Handle_Vrml_Material_get_mut(
+        handle: *mut Handle_Vrml_Material,
     ) -> crate::OcctResult<*mut Vrml_Material>;
     /// Upcast Handle<Vrml_Material> to Handle<Standard_Transient>
-    pub fn HandleVrmlMaterial_to_HandleStandardTransient(
-        self_: *const HandleVrmlMaterial,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn Handle_Vrml_Material_to_Handle_Standard_Transient(
+        self_: *const Handle_Vrml_Material,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn Vrml_Material_inherited_IsInstance(
         self_: *const Vrml_Material,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn Vrml_Material_inherited_IsKind(
         self_: *const Vrml_Material,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn Vrml_Material_inherited_This(
         self_: *const Vrml_Material,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn Vrml_Material_inherited_GetRefCount(
         self_: *const Vrml_Material,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn Vrml_Material_inherited_IncrementRefCounter(
         self_: *mut Vrml_Material,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn Vrml_Material_inherited_DecrementRefCounter(
         self_: *mut Vrml_Material,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn Vrml_Material_inherited_Delete(self_: *const Vrml_Material) -> *const std::ffi::c_char;
     // ======================== Vrml_MaterialBinding ========================
     pub fn Vrml_MaterialBinding_destructor(self_: *mut Vrml_MaterialBinding);
@@ -1282,34 +1362,34 @@ unsafe extern "C" {
     ) -> crate::OcctResult<*mut Standard_OStream>;
     // ======================== Vrml_Normal ========================
     pub fn Vrml_Normal_destructor(self_: *mut Vrml_Normal);
-    /// **Source:** `Vrml_Normal.hxx`:41 - `Vrml_Normal::Vrml_Normal()`
-    pub fn Vrml_Normal_ctor_handletcolgpharray1ofvec(
-        aVector: *const HandleTColgpHArray1OfVec,
+    /// **Source:** `Vrml_Normal.hxx`:40 - `Vrml_Normal::Vrml_Normal()`
+    pub fn Vrml_Normal_ctor_harr1_vec(
+        aVector: *const Handle_NCollection_HArray1_gp_Vec,
     ) -> crate::OcctResult<*mut Vrml_Normal>;
-    /// **Source:** `Vrml_Normal.hxx`:43 - `Vrml_Normal::Vrml_Normal()`
+    /// **Source:** `Vrml_Normal.hxx`:42 - `Vrml_Normal::Vrml_Normal()`
     pub fn Vrml_Normal_ctor() -> crate::OcctResult<*mut Vrml_Normal>;
-    /// **Source:** `Vrml_Normal.hxx`:45 - `Vrml_Normal::SetVector()`
+    /// **Source:** `Vrml_Normal.hxx`:44 - `Vrml_Normal::SetVector()`
     pub fn Vrml_Normal_set_vector(
         self_: *mut Vrml_Normal,
-        aVector: *const HandleTColgpHArray1OfVec,
+        aVector: *const Handle_NCollection_HArray1_gp_Vec,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `Vrml_Normal.hxx`:47 - `Vrml_Normal::Vector()`
+    /// **Source:** `Vrml_Normal.hxx`:46 - `Vrml_Normal::Vector()`
     pub fn Vrml_Normal_vector(
         self_: *const Vrml_Normal,
-    ) -> crate::OcctResult<*mut HandleTColgpHArray1OfVec>;
-    /// **Source:** `Vrml_Normal.hxx`:49 - `Vrml_Normal::Print()`
+    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_gp_Vec>;
+    /// **Source:** `Vrml_Normal.hxx`:48 - `Vrml_Normal::Print()`
     pub fn Vrml_Normal_print(
         self_: *mut Vrml_Normal,
         anOStream: *mut Standard_OStream,
     ) -> crate::OcctResult<*mut Standard_OStream>;
-    /// **Source:** `Vrml_Normal.hxx`:51 - `Vrml_Normal::DynamicType()`
+    /// **Source:** `Vrml_Normal.hxx`:50 - `Vrml_Normal::DynamicType()`
     pub fn Vrml_Normal_dynamic_type(
         self_: *const Vrml_Normal,
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// **Source:** `Vrml_Normal.hxx`:51 - `Vrml_Normal::get_type_name()`
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
+    /// **Source:** `Vrml_Normal.hxx`:50 - `Vrml_Normal::get_type_name()`
     pub fn Vrml_Normal_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
-    /// **Source:** `Vrml_Normal.hxx`:51 - `Vrml_Normal::get_type_descriptor()`
-    pub fn Vrml_Normal_get_type_descriptor() -> crate::OcctResult<*const HandleStandardType>;
+    /// **Source:** `Vrml_Normal.hxx`:50 - `Vrml_Normal::get_type_descriptor()`
+    pub fn Vrml_Normal_get_type_descriptor() -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast Vrml_Normal to Standard_Transient
     pub fn Vrml_Normal_as_Standard_Transient(
         self_: *const Vrml_Normal,
@@ -1319,53 +1399,54 @@ unsafe extern "C" {
         self_: *mut Vrml_Normal,
     ) -> crate::OcctResult<*mut Standard_Transient>;
     /// Wrap Vrml_Normal in a Handle
-    pub fn Vrml_Normal_to_handle(obj: *mut Vrml_Normal)
-        -> crate::OcctResult<*mut HandleVrmlNormal>;
+    pub fn Vrml_Normal_to_handle(
+        obj: *mut Vrml_Normal,
+    ) -> crate::OcctResult<*mut Handle_Vrml_Normal>;
     /// Destroy Handle<Vrml_Normal>
-    pub fn HandleVrmlNormal_destructor(self_: *mut HandleVrmlNormal);
+    pub fn Handle_Vrml_Normal_destructor(self_: *mut Handle_Vrml_Normal);
     /// Clone Handle<Vrml_Normal> (increments reference count)
-    pub fn HandleVrmlNormal_clone(
-        self_: *const HandleVrmlNormal,
-    ) -> crate::OcctResult<*mut HandleVrmlNormal>;
+    pub fn Handle_Vrml_Normal_clone(
+        self_: *const Handle_Vrml_Normal,
+    ) -> crate::OcctResult<*mut Handle_Vrml_Normal>;
     /// Check if Handle<Vrml_Normal> is null
-    pub fn HandleVrmlNormal_is_null(self_: *const HandleVrmlNormal) -> bool;
+    pub fn Handle_Vrml_Normal_is_null(self_: *const Handle_Vrml_Normal) -> bool;
     /// Dereference Handle to get *const Vrml_Normal
-    pub fn HandleVrmlNormal_get(
-        handle: *const HandleVrmlNormal,
+    pub fn Handle_Vrml_Normal_get(
+        handle: *const Handle_Vrml_Normal,
     ) -> crate::OcctResult<*const Vrml_Normal>;
     /// Dereference Handle to get *mut Vrml_Normal
-    pub fn HandleVrmlNormal_get_mut(
-        handle: *mut HandleVrmlNormal,
+    pub fn Handle_Vrml_Normal_get_mut(
+        handle: *mut Handle_Vrml_Normal,
     ) -> crate::OcctResult<*mut Vrml_Normal>;
     /// Upcast Handle<Vrml_Normal> to Handle<Standard_Transient>
-    pub fn HandleVrmlNormal_to_HandleStandardTransient(
-        self_: *const HandleVrmlNormal,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn Handle_Vrml_Normal_to_Handle_Standard_Transient(
+        self_: *const Handle_Vrml_Normal,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn Vrml_Normal_inherited_IsInstance(
         self_: *const Vrml_Normal,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn Vrml_Normal_inherited_IsKind(
         self_: *const Vrml_Normal,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn Vrml_Normal_inherited_This(
         self_: *const Vrml_Normal,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn Vrml_Normal_inherited_GetRefCount(self_: *const Vrml_Normal) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn Vrml_Normal_inherited_IncrementRefCounter(
         self_: *mut Vrml_Normal,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn Vrml_Normal_inherited_DecrementRefCounter(
         self_: *mut Vrml_Normal,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn Vrml_Normal_inherited_Delete(self_: *const Vrml_Normal) -> *const std::ffi::c_char;
     // ======================== Vrml_NormalBinding ========================
     pub fn Vrml_NormalBinding_destructor(self_: *mut Vrml_NormalBinding);
@@ -1546,21 +1627,21 @@ unsafe extern "C" {
         aStartIndex: i32,
         aNumPoints: i32,
     ) -> crate::OcctResult<*mut Vrml_PointSet>;
-    /// **Source:** `Vrml_PointSet.hxx`:35 - `Vrml_PointSet::SetStartIndex()`
+    /// **Source:** `Vrml_PointSet.hxx`:34 - `Vrml_PointSet::SetStartIndex()`
     pub fn Vrml_PointSet_set_start_index(
         self_: *mut Vrml_PointSet,
         aStartIndex: i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `Vrml_PointSet.hxx`:37 - `Vrml_PointSet::StartIndex()`
+    /// **Source:** `Vrml_PointSet.hxx`:36 - `Vrml_PointSet::StartIndex()`
     pub fn Vrml_PointSet_start_index(self_: *const Vrml_PointSet) -> crate::OcctResult<i32>;
-    /// **Source:** `Vrml_PointSet.hxx`:39 - `Vrml_PointSet::SetNumPoints()`
+    /// **Source:** `Vrml_PointSet.hxx`:38 - `Vrml_PointSet::SetNumPoints()`
     pub fn Vrml_PointSet_set_num_points(
         self_: *mut Vrml_PointSet,
         aNumPoints: i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `Vrml_PointSet.hxx`:41 - `Vrml_PointSet::NumPoints()`
+    /// **Source:** `Vrml_PointSet.hxx`:40 - `Vrml_PointSet::NumPoints()`
     pub fn Vrml_PointSet_num_points(self_: *const Vrml_PointSet) -> crate::OcctResult<i32>;
-    /// **Source:** `Vrml_PointSet.hxx`:43 - `Vrml_PointSet::Print()`
+    /// **Source:** `Vrml_PointSet.hxx`:42 - `Vrml_PointSet::Print()`
     pub fn Vrml_PointSet_print(
         self_: *mut Vrml_PointSet,
         anOStream: *mut Standard_OStream,
@@ -1589,53 +1670,53 @@ unsafe extern "C" {
     ) -> crate::OcctResult<*mut Standard_OStream>;
     // ======================== Vrml_SFImage ========================
     pub fn Vrml_SFImage_destructor(self_: *mut Vrml_SFImage);
-    /// **Source:** `Vrml_SFImage.hxx`:36 - `Vrml_SFImage::Vrml_SFImage()`
+    /// **Source:** `Vrml_SFImage.hxx`:34 - `Vrml_SFImage::Vrml_SFImage()`
     pub fn Vrml_SFImage_ctor() -> crate::OcctResult<*mut Vrml_SFImage>;
-    /// **Source:** `Vrml_SFImage.hxx`:38 - `Vrml_SFImage::Vrml_SFImage()`
-    pub fn Vrml_SFImage_ctor_int2_sfimagenumber_handletcolstdharray1ofinteger(
+    /// **Source:** `Vrml_SFImage.hxx`:36 - `Vrml_SFImage::Vrml_SFImage()`
+    pub fn Vrml_SFImage_ctor_int2_sfimagenumber_harr1_int(
         aWidth: i32,
         aHeight: i32,
         aNumber: i32,
-        anArray: *const HandleTColStdHArray1OfInteger,
+        anArray: *const Handle_NCollection_HArray1_int,
     ) -> crate::OcctResult<*mut Vrml_SFImage>;
-    /// **Source:** `Vrml_SFImage.hxx`:43 - `Vrml_SFImage::SetWidth()`
+    /// **Source:** `Vrml_SFImage.hxx`:41 - `Vrml_SFImage::SetWidth()`
     pub fn Vrml_SFImage_set_width(self_: *mut Vrml_SFImage, aWidth: i32)
         -> *const std::ffi::c_char;
-    /// **Source:** `Vrml_SFImage.hxx`:45 - `Vrml_SFImage::Width()`
+    /// **Source:** `Vrml_SFImage.hxx`:43 - `Vrml_SFImage::Width()`
     pub fn Vrml_SFImage_width(self_: *const Vrml_SFImage) -> crate::OcctResult<i32>;
-    /// **Source:** `Vrml_SFImage.hxx`:47 - `Vrml_SFImage::SetHeight()`
+    /// **Source:** `Vrml_SFImage.hxx`:45 - `Vrml_SFImage::SetHeight()`
     pub fn Vrml_SFImage_set_height(
         self_: *mut Vrml_SFImage,
         aHeight: i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `Vrml_SFImage.hxx`:49 - `Vrml_SFImage::Height()`
+    /// **Source:** `Vrml_SFImage.hxx`:47 - `Vrml_SFImage::Height()`
     pub fn Vrml_SFImage_height(self_: *const Vrml_SFImage) -> crate::OcctResult<i32>;
-    /// **Source:** `Vrml_SFImage.hxx`:51 - `Vrml_SFImage::SetNumber()`
+    /// **Source:** `Vrml_SFImage.hxx`:49 - `Vrml_SFImage::SetNumber()`
     pub fn Vrml_SFImage_set_number(
         self_: *mut Vrml_SFImage,
         aNumber: i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `Vrml_SFImage.hxx`:53 - `Vrml_SFImage::Number()`
+    /// **Source:** `Vrml_SFImage.hxx`:51 - `Vrml_SFImage::Number()`
     pub fn Vrml_SFImage_number(self_: *const Vrml_SFImage) -> crate::OcctResult<i32>;
-    /// **Source:** `Vrml_SFImage.hxx`:55 - `Vrml_SFImage::SetArray()`
+    /// **Source:** `Vrml_SFImage.hxx`:53 - `Vrml_SFImage::SetArray()`
     pub fn Vrml_SFImage_set_array(
         self_: *mut Vrml_SFImage,
-        anArray: *const HandleTColStdHArray1OfInteger,
+        anArray: *const Handle_NCollection_HArray1_int,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `Vrml_SFImage.hxx`:57 - `Vrml_SFImage::Array()`
+    /// **Source:** `Vrml_SFImage.hxx`:55 - `Vrml_SFImage::Array()`
     pub fn Vrml_SFImage_array(
         self_: *const Vrml_SFImage,
-    ) -> crate::OcctResult<*mut HandleTColStdHArray1OfInteger>;
-    /// **Source:** `Vrml_SFImage.hxx`:59 - `Vrml_SFImage::ArrayFlag()`
+    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_int>;
+    /// **Source:** `Vrml_SFImage.hxx`:57 - `Vrml_SFImage::ArrayFlag()`
     pub fn Vrml_SFImage_array_flag(self_: *const Vrml_SFImage) -> crate::OcctResult<bool>;
-    /// **Source:** `Vrml_SFImage.hxx`:61 - `Vrml_SFImage::DynamicType()`
+    /// **Source:** `Vrml_SFImage.hxx`:59 - `Vrml_SFImage::DynamicType()`
     pub fn Vrml_SFImage_dynamic_type(
         self_: *const Vrml_SFImage,
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// **Source:** `Vrml_SFImage.hxx`:61 - `Vrml_SFImage::get_type_name()`
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
+    /// **Source:** `Vrml_SFImage.hxx`:59 - `Vrml_SFImage::get_type_name()`
     pub fn Vrml_SFImage_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
-    /// **Source:** `Vrml_SFImage.hxx`:61 - `Vrml_SFImage::get_type_descriptor()`
-    pub fn Vrml_SFImage_get_type_descriptor() -> crate::OcctResult<*const HandleStandardType>;
+    /// **Source:** `Vrml_SFImage.hxx`:59 - `Vrml_SFImage::get_type_descriptor()`
+    pub fn Vrml_SFImage_get_type_descriptor() -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast Vrml_SFImage to Standard_Transient
     pub fn Vrml_SFImage_as_Standard_Transient(
         self_: *const Vrml_SFImage,
@@ -1647,53 +1728,53 @@ unsafe extern "C" {
     /// Wrap Vrml_SFImage in a Handle
     pub fn Vrml_SFImage_to_handle(
         obj: *mut Vrml_SFImage,
-    ) -> crate::OcctResult<*mut HandleVrmlSFImage>;
+    ) -> crate::OcctResult<*mut Handle_Vrml_SFImage>;
     /// Destroy Handle<Vrml_SFImage>
-    pub fn HandleVrmlSFImage_destructor(self_: *mut HandleVrmlSFImage);
+    pub fn Handle_Vrml_SFImage_destructor(self_: *mut Handle_Vrml_SFImage);
     /// Clone Handle<Vrml_SFImage> (increments reference count)
-    pub fn HandleVrmlSFImage_clone(
-        self_: *const HandleVrmlSFImage,
-    ) -> crate::OcctResult<*mut HandleVrmlSFImage>;
+    pub fn Handle_Vrml_SFImage_clone(
+        self_: *const Handle_Vrml_SFImage,
+    ) -> crate::OcctResult<*mut Handle_Vrml_SFImage>;
     /// Check if Handle<Vrml_SFImage> is null
-    pub fn HandleVrmlSFImage_is_null(self_: *const HandleVrmlSFImage) -> bool;
+    pub fn Handle_Vrml_SFImage_is_null(self_: *const Handle_Vrml_SFImage) -> bool;
     /// Dereference Handle to get *const Vrml_SFImage
-    pub fn HandleVrmlSFImage_get(
-        handle: *const HandleVrmlSFImage,
+    pub fn Handle_Vrml_SFImage_get(
+        handle: *const Handle_Vrml_SFImage,
     ) -> crate::OcctResult<*const Vrml_SFImage>;
     /// Dereference Handle to get *mut Vrml_SFImage
-    pub fn HandleVrmlSFImage_get_mut(
-        handle: *mut HandleVrmlSFImage,
+    pub fn Handle_Vrml_SFImage_get_mut(
+        handle: *mut Handle_Vrml_SFImage,
     ) -> crate::OcctResult<*mut Vrml_SFImage>;
     /// Upcast Handle<Vrml_SFImage> to Handle<Standard_Transient>
-    pub fn HandleVrmlSFImage_to_HandleStandardTransient(
-        self_: *const HandleVrmlSFImage,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn Handle_Vrml_SFImage_to_Handle_Standard_Transient(
+        self_: *const Handle_Vrml_SFImage,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn Vrml_SFImage_inherited_IsInstance(
         self_: *const Vrml_SFImage,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn Vrml_SFImage_inherited_IsKind(
         self_: *const Vrml_SFImage,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn Vrml_SFImage_inherited_This(
         self_: *const Vrml_SFImage,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn Vrml_SFImage_inherited_GetRefCount(self_: *const Vrml_SFImage)
         -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn Vrml_SFImage_inherited_IncrementRefCounter(
         self_: *mut Vrml_SFImage,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn Vrml_SFImage_inherited_DecrementRefCounter(
         self_: *mut Vrml_SFImage,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn Vrml_SFImage_inherited_Delete(self_: *const Vrml_SFImage) -> *const std::ffi::c_char;
     // ======================== Vrml_SFRotation ========================
     pub fn Vrml_SFRotation_destructor(self_: *mut Vrml_SFRotation);
@@ -1923,7 +2004,7 @@ unsafe extern "C" {
     /// **Source:** `Vrml_Texture2.hxx`:48 - `Vrml_Texture2::Vrml_Texture2()`
     pub fn Vrml_Texture2_ctor_asciistring_handlevrmlsfimage_texture2wrap2(
         aFilename: *const TCollection_AsciiString,
-        aImage: *const HandleVrmlSFImage,
+        aImage: *const Handle_Vrml_SFImage,
         aWrapS: i32,
         aWrapT: i32,
     ) -> crate::OcctResult<*mut Vrml_Texture2>;
@@ -1939,12 +2020,12 @@ unsafe extern "C" {
     /// **Source:** `Vrml_Texture2.hxx`:57 - `Vrml_Texture2::SetImage()`
     pub fn Vrml_Texture2_set_image(
         self_: *mut Vrml_Texture2,
-        aImage: *const HandleVrmlSFImage,
+        aImage: *const Handle_Vrml_SFImage,
     ) -> *const std::ffi::c_char;
     /// **Source:** `Vrml_Texture2.hxx`:59 - `Vrml_Texture2::Image()`
     pub fn Vrml_Texture2_image(
         self_: *const Vrml_Texture2,
-    ) -> crate::OcctResult<*mut HandleVrmlSFImage>;
+    ) -> crate::OcctResult<*mut Handle_Vrml_SFImage>;
     /// **Source:** `Vrml_Texture2.hxx`:61 - `Vrml_Texture2::SetWrapS()`
     pub fn Vrml_Texture2_set_wrap_s(
         self_: *mut Vrml_Texture2,
@@ -2018,35 +2099,35 @@ unsafe extern "C" {
     ) -> crate::OcctResult<*mut Standard_OStream>;
     // ======================== Vrml_TextureCoordinate2 ========================
     pub fn Vrml_TextureCoordinate2_destructor(self_: *mut Vrml_TextureCoordinate2);
-    /// **Source:** `Vrml_TextureCoordinate2.hxx`:45 - `Vrml_TextureCoordinate2::Vrml_TextureCoordinate2()`
+    /// **Source:** `Vrml_TextureCoordinate2.hxx`:44 - `Vrml_TextureCoordinate2::Vrml_TextureCoordinate2()`
     pub fn Vrml_TextureCoordinate2_ctor() -> crate::OcctResult<*mut Vrml_TextureCoordinate2>;
-    /// **Source:** `Vrml_TextureCoordinate2.hxx`:47 - `Vrml_TextureCoordinate2::Vrml_TextureCoordinate2()`
-    pub fn Vrml_TextureCoordinate2_ctor_handletcolgpharray1ofvec2d(
-        aPoint: *const HandleTColgpHArray1OfVec2d,
+    /// **Source:** `Vrml_TextureCoordinate2.hxx`:46 - `Vrml_TextureCoordinate2::Vrml_TextureCoordinate2()`
+    pub fn Vrml_TextureCoordinate2_ctor_harr1_vec2d(
+        aPoint: *const Handle_NCollection_HArray1_gp_Vec2d,
     ) -> crate::OcctResult<*mut Vrml_TextureCoordinate2>;
-    /// **Source:** `Vrml_TextureCoordinate2.hxx`:49 - `Vrml_TextureCoordinate2::SetPoint()`
+    /// **Source:** `Vrml_TextureCoordinate2.hxx`:48 - `Vrml_TextureCoordinate2::SetPoint()`
     pub fn Vrml_TextureCoordinate2_set_point(
         self_: *mut Vrml_TextureCoordinate2,
-        aPoint: *const HandleTColgpHArray1OfVec2d,
+        aPoint: *const Handle_NCollection_HArray1_gp_Vec2d,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `Vrml_TextureCoordinate2.hxx`:51 - `Vrml_TextureCoordinate2::Point()`
+    /// **Source:** `Vrml_TextureCoordinate2.hxx`:50 - `Vrml_TextureCoordinate2::Point()`
     pub fn Vrml_TextureCoordinate2_point(
         self_: *const Vrml_TextureCoordinate2,
-    ) -> crate::OcctResult<*mut HandleTColgpHArray1OfVec2d>;
-    /// **Source:** `Vrml_TextureCoordinate2.hxx`:53 - `Vrml_TextureCoordinate2::Print()`
+    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_gp_Vec2d>;
+    /// **Source:** `Vrml_TextureCoordinate2.hxx`:52 - `Vrml_TextureCoordinate2::Print()`
     pub fn Vrml_TextureCoordinate2_print(
         self_: *mut Vrml_TextureCoordinate2,
         anOStream: *mut Standard_OStream,
     ) -> crate::OcctResult<*mut Standard_OStream>;
-    /// **Source:** `Vrml_TextureCoordinate2.hxx`:55 - `Vrml_TextureCoordinate2::DynamicType()`
+    /// **Source:** `Vrml_TextureCoordinate2.hxx`:54 - `Vrml_TextureCoordinate2::DynamicType()`
     pub fn Vrml_TextureCoordinate2_dynamic_type(
         self_: *const Vrml_TextureCoordinate2,
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// **Source:** `Vrml_TextureCoordinate2.hxx`:55 - `Vrml_TextureCoordinate2::get_type_name()`
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
+    /// **Source:** `Vrml_TextureCoordinate2.hxx`:54 - `Vrml_TextureCoordinate2::get_type_name()`
     pub fn Vrml_TextureCoordinate2_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
-    /// **Source:** `Vrml_TextureCoordinate2.hxx`:55 - `Vrml_TextureCoordinate2::get_type_descriptor()`
+    /// **Source:** `Vrml_TextureCoordinate2.hxx`:54 - `Vrml_TextureCoordinate2::get_type_descriptor()`
     pub fn Vrml_TextureCoordinate2_get_type_descriptor(
-    ) -> crate::OcctResult<*const HandleStandardType>;
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast Vrml_TextureCoordinate2 to Standard_Transient
     pub fn Vrml_TextureCoordinate2_as_Standard_Transient(
         self_: *const Vrml_TextureCoordinate2,
@@ -2058,55 +2139,56 @@ unsafe extern "C" {
     /// Wrap Vrml_TextureCoordinate2 in a Handle
     pub fn Vrml_TextureCoordinate2_to_handle(
         obj: *mut Vrml_TextureCoordinate2,
-    ) -> crate::OcctResult<*mut HandleVrmlTextureCoordinate2>;
+    ) -> crate::OcctResult<*mut Handle_Vrml_TextureCoordinate2>;
     /// Destroy Handle<Vrml_TextureCoordinate2>
-    pub fn HandleVrmlTextureCoordinate2_destructor(self_: *mut HandleVrmlTextureCoordinate2);
+    pub fn Handle_Vrml_TextureCoordinate2_destructor(self_: *mut Handle_Vrml_TextureCoordinate2);
     /// Clone Handle<Vrml_TextureCoordinate2> (increments reference count)
-    pub fn HandleVrmlTextureCoordinate2_clone(
-        self_: *const HandleVrmlTextureCoordinate2,
-    ) -> crate::OcctResult<*mut HandleVrmlTextureCoordinate2>;
+    pub fn Handle_Vrml_TextureCoordinate2_clone(
+        self_: *const Handle_Vrml_TextureCoordinate2,
+    ) -> crate::OcctResult<*mut Handle_Vrml_TextureCoordinate2>;
     /// Check if Handle<Vrml_TextureCoordinate2> is null
-    pub fn HandleVrmlTextureCoordinate2_is_null(self_: *const HandleVrmlTextureCoordinate2)
-        -> bool;
+    pub fn Handle_Vrml_TextureCoordinate2_is_null(
+        self_: *const Handle_Vrml_TextureCoordinate2,
+    ) -> bool;
     /// Dereference Handle to get *const Vrml_TextureCoordinate2
-    pub fn HandleVrmlTextureCoordinate2_get(
-        handle: *const HandleVrmlTextureCoordinate2,
+    pub fn Handle_Vrml_TextureCoordinate2_get(
+        handle: *const Handle_Vrml_TextureCoordinate2,
     ) -> crate::OcctResult<*const Vrml_TextureCoordinate2>;
     /// Dereference Handle to get *mut Vrml_TextureCoordinate2
-    pub fn HandleVrmlTextureCoordinate2_get_mut(
-        handle: *mut HandleVrmlTextureCoordinate2,
+    pub fn Handle_Vrml_TextureCoordinate2_get_mut(
+        handle: *mut Handle_Vrml_TextureCoordinate2,
     ) -> crate::OcctResult<*mut Vrml_TextureCoordinate2>;
     /// Upcast Handle<Vrml_TextureCoordinate2> to Handle<Standard_Transient>
-    pub fn HandleVrmlTextureCoordinate2_to_HandleStandardTransient(
-        self_: *const HandleVrmlTextureCoordinate2,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn Handle_Vrml_TextureCoordinate2_to_Handle_Standard_Transient(
+        self_: *const Handle_Vrml_TextureCoordinate2,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn Vrml_TextureCoordinate2_inherited_IsInstance(
         self_: *const Vrml_TextureCoordinate2,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn Vrml_TextureCoordinate2_inherited_IsKind(
         self_: *const Vrml_TextureCoordinate2,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn Vrml_TextureCoordinate2_inherited_This(
         self_: *const Vrml_TextureCoordinate2,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn Vrml_TextureCoordinate2_inherited_GetRefCount(
         self_: *const Vrml_TextureCoordinate2,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn Vrml_TextureCoordinate2_inherited_IncrementRefCounter(
         self_: *mut Vrml_TextureCoordinate2,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn Vrml_TextureCoordinate2_inherited_DecrementRefCounter(
         self_: *mut Vrml_TextureCoordinate2,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn Vrml_TextureCoordinate2_inherited_Delete(
         self_: *const Vrml_TextureCoordinate2,
     ) -> *const std::ffi::c_char;
@@ -2285,11 +2367,11 @@ unsafe extern "C" {
     /// **Source:** `VrmlAPI_CafReader.hxx`:22 - `VrmlAPI_CafReader::DynamicType()`
     pub fn VrmlAPI_CafReader_dynamic_type(
         self_: *const VrmlAPI_CafReader,
-    ) -> crate::OcctResult<*const HandleStandardType>;
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// **Source:** `VrmlAPI_CafReader.hxx`:22 - `VrmlAPI_CafReader::get_type_name()`
     pub fn VrmlAPI_CafReader_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
     /// **Source:** `VrmlAPI_CafReader.hxx`:22 - `VrmlAPI_CafReader::get_type_descriptor()`
-    pub fn VrmlAPI_CafReader_get_type_descriptor() -> crate::OcctResult<*const HandleStandardType>;
+    pub fn VrmlAPI_CafReader_get_type_descriptor() -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast VrmlAPI_CafReader to RWMesh_CafReader
     pub fn VrmlAPI_CafReader_as_RWMesh_CafReader(
         self_: *const VrmlAPI_CafReader,
@@ -2309,282 +2391,262 @@ unsafe extern "C" {
     /// Wrap VrmlAPI_CafReader in a Handle
     pub fn VrmlAPI_CafReader_to_handle(
         obj: *mut VrmlAPI_CafReader,
-    ) -> crate::OcctResult<*mut HandleVrmlAPICafReader>;
+    ) -> crate::OcctResult<*mut Handle_VrmlAPI_CafReader>;
     /// Destroy Handle<VrmlAPI_CafReader>
-    pub fn HandleVrmlAPICafReader_destructor(self_: *mut HandleVrmlAPICafReader);
+    pub fn Handle_VrmlAPI_CafReader_destructor(self_: *mut Handle_VrmlAPI_CafReader);
     /// Clone Handle<VrmlAPI_CafReader> (increments reference count)
-    pub fn HandleVrmlAPICafReader_clone(
-        self_: *const HandleVrmlAPICafReader,
-    ) -> crate::OcctResult<*mut HandleVrmlAPICafReader>;
+    pub fn Handle_VrmlAPI_CafReader_clone(
+        self_: *const Handle_VrmlAPI_CafReader,
+    ) -> crate::OcctResult<*mut Handle_VrmlAPI_CafReader>;
     /// Check if Handle<VrmlAPI_CafReader> is null
-    pub fn HandleVrmlAPICafReader_is_null(self_: *const HandleVrmlAPICafReader) -> bool;
+    pub fn Handle_VrmlAPI_CafReader_is_null(self_: *const Handle_VrmlAPI_CafReader) -> bool;
     /// Dereference Handle to get *const VrmlAPI_CafReader
-    pub fn HandleVrmlAPICafReader_get(
-        handle: *const HandleVrmlAPICafReader,
+    pub fn Handle_VrmlAPI_CafReader_get(
+        handle: *const Handle_VrmlAPI_CafReader,
     ) -> crate::OcctResult<*const VrmlAPI_CafReader>;
     /// Dereference Handle to get *mut VrmlAPI_CafReader
-    pub fn HandleVrmlAPICafReader_get_mut(
-        handle: *mut HandleVrmlAPICafReader,
+    pub fn Handle_VrmlAPI_CafReader_get_mut(
+        handle: *mut Handle_VrmlAPI_CafReader,
     ) -> crate::OcctResult<*mut VrmlAPI_CafReader>;
     /// Upcast Handle<VrmlAPI_CafReader> to Handle<RWMesh_CafReader>
-    pub fn HandleVrmlAPICafReader_to_HandleRWMeshCafReader(
-        self_: *const HandleVrmlAPICafReader,
-    ) -> crate::OcctResult<*mut HandleRWMeshCafReader>;
+    pub fn Handle_VrmlAPI_CafReader_to_Handle_RWMesh_CafReader(
+        self_: *const Handle_VrmlAPI_CafReader,
+    ) -> crate::OcctResult<*mut Handle_RWMesh_CafReader>;
     /// Upcast Handle<VrmlAPI_CafReader> to Handle<Standard_Transient>
-    pub fn HandleVrmlAPICafReader_to_HandleStandardTransient(
-        self_: *const HandleVrmlAPICafReader,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
-    /// Inherited: **Source:** `RWMesh_CafReader.hxx`:72 - `RWMesh_CafReader::Document()`
+    pub fn Handle_VrmlAPI_CafReader_to_Handle_Standard_Transient(
+        self_: *const Handle_VrmlAPI_CafReader,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
+    /// Inherited: **Source:** `RWMesh_CafReader.hxx`:74 - `RWMesh_CafReader::Document()`
     pub fn VrmlAPI_CafReader_inherited_Document(
         self_: *const VrmlAPI_CafReader,
-    ) -> crate::OcctResult<*const HandleTDocStdDocument>;
-    /// Inherited: **Source:** `RWMesh_CafReader.hxx`:76 - `RWMesh_CafReader::SetDocument()`
+    ) -> crate::OcctResult<*const Handle_TDocStd_Document>;
+    /// Inherited: **Source:** `RWMesh_CafReader.hxx`:78 - `RWMesh_CafReader::SetDocument()`
     pub fn VrmlAPI_CafReader_inherited_SetDocument(
         self_: *mut VrmlAPI_CafReader,
-        theDoc: *const HandleTDocStdDocument,
+        theDoc: *const Handle_TDocStd_Document,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `RWMesh_CafReader.hxx`:79 - `RWMesh_CafReader::RootPrefix()`
+    /// Inherited: **Source:** `RWMesh_CafReader.hxx`:81 - `RWMesh_CafReader::RootPrefix()`
     pub fn VrmlAPI_CafReader_inherited_RootPrefix(
         self_: *const VrmlAPI_CafReader,
     ) -> crate::OcctResult<*const TCollection_AsciiString>;
-    /// Inherited: **Source:** `RWMesh_CafReader.hxx`:82 - `RWMesh_CafReader::SetRootPrefix()`
+    /// Inherited: **Source:** `RWMesh_CafReader.hxx`:84 - `RWMesh_CafReader::SetRootPrefix()`
     pub fn VrmlAPI_CafReader_inherited_SetRootPrefix(
         self_: *mut VrmlAPI_CafReader,
         theRootPrefix: *const TCollection_AsciiString,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `RWMesh_CafReader.hxx`:95 - `RWMesh_CafReader::ToFillIncompleteDocument()`
+    /// Inherited: **Source:** `RWMesh_CafReader.hxx`:97 - `RWMesh_CafReader::ToFillIncompleteDocument()`
     pub fn VrmlAPI_CafReader_inherited_ToFillIncompleteDocument(
         self_: *const VrmlAPI_CafReader,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `RWMesh_CafReader.hxx`:98 - `RWMesh_CafReader::SetFillIncompleteDocument()`
+    /// Inherited: **Source:** `RWMesh_CafReader.hxx`:100 - `RWMesh_CafReader::SetFillIncompleteDocument()`
     pub fn VrmlAPI_CafReader_inherited_SetFillIncompleteDocument(
         self_: *mut VrmlAPI_CafReader,
         theToFillIncomplete: bool,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `RWMesh_CafReader.hxx`:104 - `RWMesh_CafReader::MemoryLimitMiB()`
+    /// Inherited: **Source:** `RWMesh_CafReader.hxx`:106 - `RWMesh_CafReader::MemoryLimitMiB()`
     pub fn VrmlAPI_CafReader_inherited_MemoryLimitMiB(
         self_: *const VrmlAPI_CafReader,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `RWMesh_CafReader.hxx`:107 - `RWMesh_CafReader::SetMemoryLimitMiB()`
+    /// Inherited: **Source:** `RWMesh_CafReader.hxx`:109 - `RWMesh_CafReader::SetMemoryLimitMiB()`
     pub fn VrmlAPI_CafReader_inherited_SetMemoryLimitMiB(
         self_: *mut VrmlAPI_CafReader,
         theLimitMiB: i32,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `RWMesh_CafReader.hxx`:111 - `RWMesh_CafReader::CoordinateSystemConverter()`
+    /// Inherited: **Source:** `RWMesh_CafReader.hxx`:113 - `RWMesh_CafReader::CoordinateSystemConverter()`
     pub fn VrmlAPI_CafReader_inherited_CoordinateSystemConverter(
         self_: *const VrmlAPI_CafReader,
     ) -> crate::OcctResult<*const RWMesh_CoordinateSystemConverter>;
-    /// Inherited: **Source:** `RWMesh_CafReader.hxx`:117 - `RWMesh_CafReader::SetCoordinateSystemConverter()`
+    /// Inherited: **Source:** `RWMesh_CafReader.hxx`:119 - `RWMesh_CafReader::SetCoordinateSystemConverter()`
     pub fn VrmlAPI_CafReader_inherited_SetCoordinateSystemConverter(
         self_: *mut VrmlAPI_CafReader,
         theConverter: *const RWMesh_CoordinateSystemConverter,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `RWMesh_CafReader.hxx`:124 - `RWMesh_CafReader::SystemLengthUnit()`
+    /// Inherited: **Source:** `RWMesh_CafReader.hxx`:126 - `RWMesh_CafReader::SystemLengthUnit()`
     pub fn VrmlAPI_CafReader_inherited_SystemLengthUnit(
         self_: *const VrmlAPI_CafReader,
     ) -> crate::OcctResult<f64>;
-    /// Inherited: **Source:** `RWMesh_CafReader.hxx`:128 - `RWMesh_CafReader::SetSystemLengthUnit()`
+    /// Inherited: **Source:** `RWMesh_CafReader.hxx`:130 - `RWMesh_CafReader::SetSystemLengthUnit()`
     pub fn VrmlAPI_CafReader_inherited_SetSystemLengthUnit(
         self_: *mut VrmlAPI_CafReader,
         theUnits: f64,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `RWMesh_CafReader.hxx`:134 - `RWMesh_CafReader::HasSystemCoordinateSystem()`
+    /// Inherited: **Source:** `RWMesh_CafReader.hxx`:133 - `RWMesh_CafReader::HasSystemCoordinateSystem()`
     pub fn VrmlAPI_CafReader_inherited_HasSystemCoordinateSystem(
         self_: *const VrmlAPI_CafReader,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `RWMesh_CafReader.hxx`:141 - `RWMesh_CafReader::SystemCoordinateSystem()`
+    /// Inherited: **Source:** `RWMesh_CafReader.hxx`:137 - `RWMesh_CafReader::SystemCoordinateSystem()`
     pub fn VrmlAPI_CafReader_inherited_SystemCoordinateSystem(
         self_: *const VrmlAPI_CafReader,
     ) -> crate::OcctResult<*const gp_Ax3>;
-    /// Inherited: **Source:** `RWMesh_CafReader.hxx`:147 - `RWMesh_CafReader::SetSystemCoordinateSystem()`
+    /// Inherited: **Source:** `RWMesh_CafReader.hxx`:143 - `RWMesh_CafReader::SetSystemCoordinateSystem()`
     pub fn VrmlAPI_CafReader_inherited_SetSystemCoordinateSystem(
         self_: *mut VrmlAPI_CafReader,
         theCS: *const gp_Ax3,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `RWMesh_CafReader.hxx`:160 - `RWMesh_CafReader::FileLengthUnit()`
+    /// Inherited: **Source:** `RWMesh_CafReader.hxx`:156 - `RWMesh_CafReader::FileLengthUnit()`
     pub fn VrmlAPI_CafReader_inherited_FileLengthUnit(
         self_: *const VrmlAPI_CafReader,
     ) -> crate::OcctResult<f64>;
-    /// Inherited: **Source:** `RWMesh_CafReader.hxx`:164 - `RWMesh_CafReader::SetFileLengthUnit()`
+    /// Inherited: **Source:** `RWMesh_CafReader.hxx`:160 - `RWMesh_CafReader::SetFileLengthUnit()`
     pub fn VrmlAPI_CafReader_inherited_SetFileLengthUnit(
         self_: *mut VrmlAPI_CafReader,
         theUnits: f64,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `RWMesh_CafReader.hxx`:170 - `RWMesh_CafReader::HasFileCoordinateSystem()`
+    /// Inherited: **Source:** `RWMesh_CafReader.hxx`:163 - `RWMesh_CafReader::HasFileCoordinateSystem()`
     pub fn VrmlAPI_CafReader_inherited_HasFileCoordinateSystem(
         self_: *const VrmlAPI_CafReader,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `RWMesh_CafReader.hxx`:177 - `RWMesh_CafReader::FileCoordinateSystem()`
+    /// Inherited: **Source:** `RWMesh_CafReader.hxx`:167 - `RWMesh_CafReader::FileCoordinateSystem()`
     pub fn VrmlAPI_CafReader_inherited_FileCoordinateSystem(
         self_: *const VrmlAPI_CafReader,
     ) -> crate::OcctResult<*const gp_Ax3>;
-    /// Inherited: **Source:** `RWMesh_CafReader.hxx`:180 - `RWMesh_CafReader::SetFileCoordinateSystem()`
+    /// Inherited: **Source:** `RWMesh_CafReader.hxx`:170 - `RWMesh_CafReader::SetFileCoordinateSystem()`
     pub fn VrmlAPI_CafReader_inherited_SetFileCoordinateSystem(
         self_: *mut VrmlAPI_CafReader,
         theCS: *const gp_Ax3,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `RWMesh_CafReader.hxx`:194 - `RWMesh_CafReader::Perform()`
+    /// Inherited: **Source:** `RWMesh_CafReader.hxx`:184 - `RWMesh_CafReader::Perform()`
     pub fn VrmlAPI_CafReader_inherited_Perform(
         self_: *mut VrmlAPI_CafReader,
         theFile: *const TCollection_AsciiString,
         theProgress: *const Message_ProgressRange,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `RWMesh_CafReader.hxx`:211 - `RWMesh_CafReader::ExtraStatus()`
+    /// Inherited: **Source:** `RWMesh_CafReader.hxx`:201 - `RWMesh_CafReader::ExtraStatus()`
     pub fn VrmlAPI_CafReader_inherited_ExtraStatus(
         self_: *const VrmlAPI_CafReader,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `RWMesh_CafReader.hxx`:215 - `RWMesh_CafReader::SingleShape()`
+    /// Inherited: **Source:** `RWMesh_CafReader.hxx`:205 - `RWMesh_CafReader::SingleShape()`
     pub fn VrmlAPI_CafReader_inherited_SingleShape(
         self_: *const VrmlAPI_CafReader,
     ) -> crate::OcctResult<*mut TopoDS_Shape>;
-    /// Inherited: **Source:** `RWMesh_CafReader.hxx`:218 - `RWMesh_CafReader::ExternalFiles()`
+    /// Inherited: **Source:** `RWMesh_CafReader.hxx`:208 - `RWMesh_CafReader::ExternalFiles()`
     pub fn VrmlAPI_CafReader_inherited_ExternalFiles(
         self_: *const VrmlAPI_CafReader,
-    ) -> crate::OcctResult<*const Interface_IndexedMapOfAsciiString>;
-    /// Inherited: **Source:** `RWMesh_CafReader.hxx`:224 - `RWMesh_CafReader::Metadata()`
+    ) -> crate::OcctResult<*const NCollection_IndexedMap_TCollection_AsciiString>;
+    /// Inherited: **Source:** `RWMesh_CafReader.hxx`:214 - `RWMesh_CafReader::Metadata()`
     pub fn VrmlAPI_CafReader_inherited_Metadata(
         self_: *const VrmlAPI_CafReader,
-    ) -> crate::OcctResult<*const TColStd_IndexedDataMapOfStringString>;
-    /// Inherited: **Source:** `RWMesh_CafReader.hxx`:227 - `RWMesh_CafReader::ProbeHeader()`
+    ) -> crate::OcctResult<
+        *const NCollection_IndexedDataMap_TCollection_AsciiString_TCollection_AsciiString,
+    >;
+    /// Inherited: **Source:** `RWMesh_CafReader.hxx`:221 - `RWMesh_CafReader::ProbeHeader()`
     pub fn VrmlAPI_CafReader_inherited_ProbeHeader(
         self_: *mut VrmlAPI_CafReader,
         theFile: *const TCollection_AsciiString,
         theProgress: *const Message_ProgressRange,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn VrmlAPI_CafReader_inherited_IsInstance(
         self_: *const VrmlAPI_CafReader,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn VrmlAPI_CafReader_inherited_IsKind(
         self_: *const VrmlAPI_CafReader,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn VrmlAPI_CafReader_inherited_This(
         self_: *const VrmlAPI_CafReader,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn VrmlAPI_CafReader_inherited_GetRefCount(
         self_: *const VrmlAPI_CafReader,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn VrmlAPI_CafReader_inherited_IncrementRefCounter(
         self_: *mut VrmlAPI_CafReader,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn VrmlAPI_CafReader_inherited_DecrementRefCounter(
         self_: *mut VrmlAPI_CafReader,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn VrmlAPI_CafReader_inherited_Delete(
         self_: *const VrmlAPI_CafReader,
     ) -> *const std::ffi::c_char;
     // ======================== VrmlAPI_Writer ========================
     pub fn VrmlAPI_Writer_destructor(self_: *mut VrmlAPI_Writer);
-    /// **Source:** `VrmlAPI_Writer.hxx`:42 - `VrmlAPI_Writer::VrmlAPI_Writer()`
+    /// **Source:** `VrmlAPI_Writer.hxx`:44 - `VrmlAPI_Writer::VrmlAPI_Writer()`
     pub fn VrmlAPI_Writer_ctor() -> crate::OcctResult<*mut VrmlAPI_Writer>;
-    /// **Source:** `VrmlAPI_Writer.hxx`:46 - `VrmlAPI_Writer::ResetToDefaults()`
+    /// **Source:** `VrmlAPI_Writer.hxx`:48 - `VrmlAPI_Writer::ResetToDefaults()`
     pub fn VrmlAPI_Writer_reset_to_defaults(self_: *mut VrmlAPI_Writer) -> *const std::ffi::c_char;
-    /// **Source:** `VrmlAPI_Writer.hxx`:49 - `VrmlAPI_Writer::Drawer()`
+    /// **Source:** `VrmlAPI_Writer.hxx`:51 - `VrmlAPI_Writer::Drawer()`
     pub fn VrmlAPI_Writer_drawer(
         self_: *const VrmlAPI_Writer,
-    ) -> crate::OcctResult<*mut HandleVrmlConverterDrawer>;
-    /// **Source:** `VrmlAPI_Writer.hxx`:57 - `VrmlAPI_Writer::SetDeflection()`
+    ) -> crate::OcctResult<*mut Handle_VrmlConverter_Drawer>;
+    /// **Source:** `VrmlAPI_Writer.hxx`:59 - `VrmlAPI_Writer::SetDeflection()`
     pub fn VrmlAPI_Writer_set_deflection(
         self_: *mut VrmlAPI_Writer,
         aDef: f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `VrmlAPI_Writer.hxx`:65 - `VrmlAPI_Writer::SetRepresentation()`
+    /// **Source:** `VrmlAPI_Writer.hxx`:67 - `VrmlAPI_Writer::SetRepresentation()`
     pub fn VrmlAPI_Writer_set_representation(
         self_: *mut VrmlAPI_Writer,
         aRep: i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `VrmlAPI_Writer.hxx`:68 - `VrmlAPI_Writer::SetTransparencyToMaterial()`
-    pub fn VrmlAPI_Writer_set_transparency_to_material(
-        self_: *mut VrmlAPI_Writer,
-        aMaterial: *mut HandleVrmlMaterial,
-        aTransparency: f64,
-    ) -> *const std::ffi::c_char;
-    /// **Source:** `VrmlAPI_Writer.hxx`:71 - `VrmlAPI_Writer::SetShininessToMaterial()`
-    pub fn VrmlAPI_Writer_set_shininess_to_material(
-        self_: *mut VrmlAPI_Writer,
-        aMaterial: *mut HandleVrmlMaterial,
-        aShininess: f64,
-    ) -> *const std::ffi::c_char;
-    /// **Source:** `VrmlAPI_Writer.hxx`:74 - `VrmlAPI_Writer::SetAmbientColorToMaterial()`
-    pub fn VrmlAPI_Writer_set_ambient_color_to_material(
-        self_: *mut VrmlAPI_Writer,
-        aMaterial: *mut HandleVrmlMaterial,
-        Color: *const HandleQuantityHArray1OfColor,
-    ) -> *const std::ffi::c_char;
-    /// **Source:** `VrmlAPI_Writer.hxx`:77 - `VrmlAPI_Writer::SetDiffuseColorToMaterial()`
-    pub fn VrmlAPI_Writer_set_diffuse_color_to_material(
-        self_: *mut VrmlAPI_Writer,
-        aMaterial: *mut HandleVrmlMaterial,
-        Color: *const HandleQuantityHArray1OfColor,
-    ) -> *const std::ffi::c_char;
-    /// **Source:** `VrmlAPI_Writer.hxx`:80 - `VrmlAPI_Writer::SetSpecularColorToMaterial()`
-    pub fn VrmlAPI_Writer_set_specular_color_to_material(
-        self_: *mut VrmlAPI_Writer,
-        aMaterial: *mut HandleVrmlMaterial,
-        Color: *const HandleQuantityHArray1OfColor,
-    ) -> *const std::ffi::c_char;
-    /// **Source:** `VrmlAPI_Writer.hxx`:83 - `VrmlAPI_Writer::SetEmissiveColorToMaterial()`
-    pub fn VrmlAPI_Writer_set_emissive_color_to_material(
-        self_: *mut VrmlAPI_Writer,
-        aMaterial: *mut HandleVrmlMaterial,
-        Color: *const HandleQuantityHArray1OfColor,
-    ) -> *const std::ffi::c_char;
-    /// **Source:** `VrmlAPI_Writer.hxx`:89 - `VrmlAPI_Writer::GetRepresentation()`
+    /// **Source:** `VrmlAPI_Writer.hxx`:72 - `VrmlAPI_Writer::GetRepresentation()`
     pub fn VrmlAPI_Writer_get_representation(
         self_: *const VrmlAPI_Writer,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `VrmlAPI_Writer.hxx`:91 - `VrmlAPI_Writer::GetFrontMaterial()`
+    /// **Source:** `VrmlAPI_Writer.hxx`:108 - `VrmlAPI_Writer::GetFrontMaterial()`
     pub fn VrmlAPI_Writer_get_front_material(
         self_: *const VrmlAPI_Writer,
-    ) -> crate::OcctResult<*mut HandleVrmlMaterial>;
-    /// **Source:** `VrmlAPI_Writer.hxx`:93 - `VrmlAPI_Writer::GetPointsMaterial()`
+    ) -> crate::OcctResult<*mut Handle_Vrml_Material>;
+    /// **Source:** `VrmlAPI_Writer.hxx`:110 - `VrmlAPI_Writer::GetPointsMaterial()`
     pub fn VrmlAPI_Writer_get_points_material(
         self_: *const VrmlAPI_Writer,
-    ) -> crate::OcctResult<*mut HandleVrmlMaterial>;
-    /// **Source:** `VrmlAPI_Writer.hxx`:95 - `VrmlAPI_Writer::GetUisoMaterial()`
+    ) -> crate::OcctResult<*mut Handle_Vrml_Material>;
+    /// **Source:** `VrmlAPI_Writer.hxx`:112 - `VrmlAPI_Writer::GetUisoMaterial()`
     pub fn VrmlAPI_Writer_get_uiso_material(
         self_: *const VrmlAPI_Writer,
-    ) -> crate::OcctResult<*mut HandleVrmlMaterial>;
-    /// **Source:** `VrmlAPI_Writer.hxx`:97 - `VrmlAPI_Writer::GetVisoMaterial()`
+    ) -> crate::OcctResult<*mut Handle_Vrml_Material>;
+    /// **Source:** `VrmlAPI_Writer.hxx`:114 - `VrmlAPI_Writer::GetVisoMaterial()`
     pub fn VrmlAPI_Writer_get_viso_material(
         self_: *const VrmlAPI_Writer,
-    ) -> crate::OcctResult<*mut HandleVrmlMaterial>;
-    /// **Source:** `VrmlAPI_Writer.hxx`:99 - `VrmlAPI_Writer::GetLineMaterial()`
+    ) -> crate::OcctResult<*mut Handle_Vrml_Material>;
+    /// **Source:** `VrmlAPI_Writer.hxx`:116 - `VrmlAPI_Writer::GetLineMaterial()`
     pub fn VrmlAPI_Writer_get_line_material(
         self_: *const VrmlAPI_Writer,
-    ) -> crate::OcctResult<*mut HandleVrmlMaterial>;
-    /// **Source:** `VrmlAPI_Writer.hxx`:101 - `VrmlAPI_Writer::GetWireMaterial()`
+    ) -> crate::OcctResult<*mut Handle_Vrml_Material>;
+    /// **Source:** `VrmlAPI_Writer.hxx`:118 - `VrmlAPI_Writer::GetWireMaterial()`
     pub fn VrmlAPI_Writer_get_wire_material(
         self_: *const VrmlAPI_Writer,
-    ) -> crate::OcctResult<*mut HandleVrmlMaterial>;
-    /// **Source:** `VrmlAPI_Writer.hxx`:103 - `VrmlAPI_Writer::GetFreeBoundsMaterial()`
+    ) -> crate::OcctResult<*mut Handle_Vrml_Material>;
+    /// **Source:** `VrmlAPI_Writer.hxx`:120 - `VrmlAPI_Writer::GetFreeBoundsMaterial()`
     pub fn VrmlAPI_Writer_get_free_bounds_material(
         self_: *const VrmlAPI_Writer,
-    ) -> crate::OcctResult<*mut HandleVrmlMaterial>;
-    /// **Source:** `VrmlAPI_Writer.hxx`:105 - `VrmlAPI_Writer::GetUnfreeBoundsMaterial()`
+    ) -> crate::OcctResult<*mut Handle_Vrml_Material>;
+    /// **Source:** `VrmlAPI_Writer.hxx`:122 - `VrmlAPI_Writer::GetUnfreeBoundsMaterial()`
     pub fn VrmlAPI_Writer_get_unfree_bounds_material(
         self_: *const VrmlAPI_Writer,
-    ) -> crate::OcctResult<*mut HandleVrmlMaterial>;
-    /// **Source:** `VrmlAPI_Writer.hxx`:109 - `VrmlAPI_Writer::Write()`
-    pub fn VrmlAPI_Writer_write(
+    ) -> crate::OcctResult<*mut Handle_Vrml_Material>;
+    /// **Source:** `VrmlAPI_Writer.hxx`:126 - `VrmlAPI_Writer::Write()`
+    pub fn VrmlAPI_Writer_write_shape_charptr_int(
         self_: *const VrmlAPI_Writer,
         aShape: *const TopoDS_Shape,
         aFile: *const std::ffi::c_char,
         aVersion: i32,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `VrmlAPI_Writer.hxx`:115 - `VrmlAPI_Writer::WriteDoc()`
-    pub fn VrmlAPI_Writer_write_doc(
+    /// **Source:** `VrmlAPI_Writer.hxx`:132 - `VrmlAPI_Writer::WriteDoc()`
+    pub fn VrmlAPI_Writer_write_doc_handletdocstddocument_charptr_real(
         self_: *const VrmlAPI_Writer,
-        theDoc: *const HandleTDocStdDocument,
+        theDoc: *const Handle_TDocStd_Document,
         theFile: *const std::ffi::c_char,
+        theScale: f64,
+    ) -> crate::OcctResult<bool>;
+    /// **Source:** `VrmlAPI_Writer.hxx`:138 - `VrmlAPI_Writer::Write()`
+    pub fn VrmlAPI_Writer_write_shape_ostream_int(
+        self_: *const VrmlAPI_Writer,
+        aShape: *const TopoDS_Shape,
+        theOStream: *mut Standard_OStream,
+        aVersion: i32,
+    ) -> crate::OcctResult<bool>;
+    /// **Source:** `VrmlAPI_Writer.hxx`:144 - `VrmlAPI_Writer::WriteDoc()`
+    pub fn VrmlAPI_Writer_write_doc_handletdocstddocument_ostream_real(
+        self_: *const VrmlAPI_Writer,
+        theDoc: *const Handle_TDocStd_Document,
+        theOStream: *mut Standard_OStream,
         theScale: f64,
     ) -> crate::OcctResult<bool>;
     // ======================== VrmlConverter_Curve ========================
@@ -2594,7 +2656,7 @@ unsafe extern "C" {
     /// **Source:** `VrmlConverter_Curve.hxx`:45 - `VrmlConverter_Curve::Add()`
     pub fn VrmlConverter_Curve_add_curve_handlevrmlconverterdrawer_ostream(
         aCurve: *const Adaptor3d_Curve,
-        aDrawer: *const HandleVrmlConverterDrawer,
+        aDrawer: *const Handle_VrmlConverter_Drawer,
         anOStream: *mut Standard_OStream,
     ) -> *const std::ffi::c_char;
     /// **Source:** `VrmlConverter_Curve.hxx`:53 - `VrmlConverter_Curve::Add()`
@@ -2602,7 +2664,7 @@ unsafe extern "C" {
         aCurve: *const Adaptor3d_Curve,
         U1: f64,
         U2: f64,
-        aDrawer: *const HandleVrmlConverterDrawer,
+        aDrawer: *const Handle_VrmlConverter_Drawer,
         anOStream: *mut Standard_OStream,
     ) -> *const std::ffi::c_char;
     /// **Source:** `VrmlConverter_Curve.hxx`:63 - `VrmlConverter_Curve::Add()`
@@ -2618,35 +2680,35 @@ unsafe extern "C" {
     /// **Source:** `VrmlConverter_DeflectionCurve.hxx` - `VrmlConverter_DeflectionCurve::VrmlConverter_DeflectionCurve()`
     pub fn VrmlConverter_DeflectionCurve_ctor(
     ) -> crate::OcctResult<*mut VrmlConverter_DeflectionCurve>;
-    /// **Source:** `VrmlConverter_DeflectionCurve.hxx`:48 - `VrmlConverter_DeflectionCurve::Add()`
+    /// **Source:** `VrmlConverter_DeflectionCurve.hxx`:49 - `VrmlConverter_DeflectionCurve::Add()`
     pub fn VrmlConverter_DeflectionCurve_add_ostream_curve_handlevrmlconverterdrawer(
         anOStream: *mut Standard_OStream,
         aCurve: *mut Adaptor3d_Curve,
-        aDrawer: *const HandleVrmlConverterDrawer,
+        aDrawer: *const Handle_VrmlConverter_Drawer,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `VrmlConverter_DeflectionCurve.hxx`:58 - `VrmlConverter_DeflectionCurve::Add()`
+    /// **Source:** `VrmlConverter_DeflectionCurve.hxx`:59 - `VrmlConverter_DeflectionCurve::Add()`
     pub fn VrmlConverter_DeflectionCurve_add_ostream_curve_real2_handlevrmlconverterdrawer(
         anOStream: *mut Standard_OStream,
         aCurve: *mut Adaptor3d_Curve,
         U1: f64,
         U2: f64,
-        aDrawer: *const HandleVrmlConverterDrawer,
+        aDrawer: *const Handle_VrmlConverter_Drawer,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `VrmlConverter_DeflectionCurve.hxx`:67 - `VrmlConverter_DeflectionCurve::Add()`
+    /// **Source:** `VrmlConverter_DeflectionCurve.hxx`:68 - `VrmlConverter_DeflectionCurve::Add()`
     pub fn VrmlConverter_DeflectionCurve_add_ostream_curve_real2(
         anOStream: *mut Standard_OStream,
         aCurve: *mut Adaptor3d_Curve,
         aDeflection: f64,
         aLimit: f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `VrmlConverter_DeflectionCurve.hxx`:75 - `VrmlConverter_DeflectionCurve::Add()`
+    /// **Source:** `VrmlConverter_DeflectionCurve.hxx`:76 - `VrmlConverter_DeflectionCurve::Add()`
     pub fn VrmlConverter_DeflectionCurve_add_ostream_curve_real_handlevrmlconverterdrawer(
         anOStream: *mut Standard_OStream,
         aCurve: *mut Adaptor3d_Curve,
         aDeflection: f64,
-        aDrawer: *const HandleVrmlConverterDrawer,
+        aDrawer: *const Handle_VrmlConverter_Drawer,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `VrmlConverter_DeflectionCurve.hxx`:85 - `VrmlConverter_DeflectionCurve::Add()`
+    /// **Source:** `VrmlConverter_DeflectionCurve.hxx`:86 - `VrmlConverter_DeflectionCurve::Add()`
     pub fn VrmlConverter_DeflectionCurve_add_ostream_curve_real3(
         anOStream: *mut Standard_OStream,
         aCurve: *mut Adaptor3d_Curve,
@@ -2654,209 +2716,201 @@ unsafe extern "C" {
         U2: f64,
         aDeflection: f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `VrmlConverter_DeflectionCurve.hxx`:93 - `VrmlConverter_DeflectionCurve::Add()`
-    pub fn VrmlConverter_DeflectionCurve_add_ostream_curve_handletcolstdharray1ofreal_int_handlevrmlconverterdrawer(
+    /// **Source:** `VrmlConverter_DeflectionCurve.hxx`:94 - `VrmlConverter_DeflectionCurve::Add()`
+    pub fn VrmlConverter_DeflectionCurve_add_ostream_curve_harr1_double_int_handlevrmlconverterdrawer(
         anOStream: *mut Standard_OStream,
         aCurve: *const Adaptor3d_Curve,
-        aParams: *const HandleTColStdHArray1OfReal,
+        aParams: *const Handle_NCollection_HArray1_double,
         aNbNodes: i32,
-        aDrawer: *const HandleVrmlConverterDrawer,
+        aDrawer: *const Handle_VrmlConverter_Drawer,
     ) -> *const std::ffi::c_char;
     // ======================== VrmlConverter_Drawer ========================
     pub fn VrmlConverter_Drawer_destructor(self_: *mut VrmlConverter_Drawer);
-    /// **Source:** `VrmlConverter_Drawer.hxx`:41 - `VrmlConverter_Drawer::VrmlConverter_Drawer()`
+    /// **Source:** `VrmlConverter_Drawer.hxx`:38 - `VrmlConverter_Drawer::VrmlConverter_Drawer()`
     pub fn VrmlConverter_Drawer_ctor() -> crate::OcctResult<*mut VrmlConverter_Drawer>;
-    /// **Source:** `VrmlConverter_Drawer.hxx`:45 - `VrmlConverter_Drawer::SetTypeOfDeflection()`
-    pub fn VrmlConverter_Drawer_set_type_of_deflection(
-        self_: *mut VrmlConverter_Drawer,
-        aTypeOfDeflection: i32,
-    ) -> *const std::ffi::c_char;
-    /// **Source:** `VrmlConverter_Drawer.hxx`:47 - `VrmlConverter_Drawer::TypeOfDeflection()`
-    pub fn VrmlConverter_Drawer_type_of_deflection(
-        self_: *const VrmlConverter_Drawer,
-    ) -> crate::OcctResult<i32>;
-    /// **Source:** `VrmlConverter_Drawer.hxx`:57 - `VrmlConverter_Drawer::SetMaximalChordialDeviation()`
+    /// **Source:** `VrmlConverter_Drawer.hxx`:54 - `VrmlConverter_Drawer::SetMaximalChordialDeviation()`
     pub fn VrmlConverter_Drawer_set_maximal_chordial_deviation(
         self_: *mut VrmlConverter_Drawer,
         aChordialDeviation: f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `VrmlConverter_Drawer.hxx`:61 - `VrmlConverter_Drawer::MaximalChordialDeviation()`
+    /// **Source:** `VrmlConverter_Drawer.hxx`:58 - `VrmlConverter_Drawer::MaximalChordialDeviation()`
     pub fn VrmlConverter_Drawer_maximal_chordial_deviation(
         self_: *const VrmlConverter_Drawer,
     ) -> crate::OcctResult<f64>;
-    /// **Source:** `VrmlConverter_Drawer.hxx`:64 - `VrmlConverter_Drawer::SetDeviationCoefficient()`
+    /// **Source:** `VrmlConverter_Drawer.hxx`:61 - `VrmlConverter_Drawer::SetDeviationCoefficient()`
     pub fn VrmlConverter_Drawer_set_deviation_coefficient(
         self_: *mut VrmlConverter_Drawer,
         aCoefficient: f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `VrmlConverter_Drawer.hxx`:66 - `VrmlConverter_Drawer::DeviationCoefficient()`
+    /// **Source:** `VrmlConverter_Drawer.hxx`:63 - `VrmlConverter_Drawer::DeviationCoefficient()`
     pub fn VrmlConverter_Drawer_deviation_coefficient(
         self_: *const VrmlConverter_Drawer,
     ) -> crate::OcctResult<f64>;
-    /// **Source:** `VrmlConverter_Drawer.hxx`:77 - `VrmlConverter_Drawer::SetDiscretisation()`
+    /// **Source:** `VrmlConverter_Drawer.hxx`:74 - `VrmlConverter_Drawer::SetDiscretisation()`
     pub fn VrmlConverter_Drawer_set_discretisation(
         self_: *mut VrmlConverter_Drawer,
         d: i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `VrmlConverter_Drawer.hxx`:79 - `VrmlConverter_Drawer::Discretisation()`
+    /// **Source:** `VrmlConverter_Drawer.hxx`:76 - `VrmlConverter_Drawer::Discretisation()`
     pub fn VrmlConverter_Drawer_discretisation(
         self_: *const VrmlConverter_Drawer,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `VrmlConverter_Drawer.hxx`:87 - `VrmlConverter_Drawer::SetMaximalParameterValue()`
+    /// **Source:** `VrmlConverter_Drawer.hxx`:84 - `VrmlConverter_Drawer::SetMaximalParameterValue()`
     pub fn VrmlConverter_Drawer_set_maximal_parameter_value(
         self_: *mut VrmlConverter_Drawer,
         Value: f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `VrmlConverter_Drawer.hxx`:89 - `VrmlConverter_Drawer::MaximalParameterValue()`
+    /// **Source:** `VrmlConverter_Drawer.hxx`:86 - `VrmlConverter_Drawer::MaximalParameterValue()`
     pub fn VrmlConverter_Drawer_maximal_parameter_value(
         self_: *const VrmlConverter_Drawer,
     ) -> crate::OcctResult<f64>;
-    /// **Source:** `VrmlConverter_Drawer.hxx`:93 - `VrmlConverter_Drawer::SetIsoOnPlane()`
+    /// **Source:** `VrmlConverter_Drawer.hxx`:90 - `VrmlConverter_Drawer::SetIsoOnPlane()`
     pub fn VrmlConverter_Drawer_set_iso_on_plane(
         self_: *mut VrmlConverter_Drawer,
         OnOff: bool,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `VrmlConverter_Drawer.hxx`:96 - `VrmlConverter_Drawer::IsoOnPlane()`
+    /// **Source:** `VrmlConverter_Drawer.hxx`:93 - `VrmlConverter_Drawer::IsoOnPlane()`
     pub fn VrmlConverter_Drawer_iso_on_plane(
         self_: *const VrmlConverter_Drawer,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `VrmlConverter_Drawer.hxx`:106 - `VrmlConverter_Drawer::UIsoAspect()`
+    /// **Source:** `VrmlConverter_Drawer.hxx`:103 - `VrmlConverter_Drawer::UIsoAspect()`
     pub fn VrmlConverter_Drawer_u_iso_aspect(
         self_: *mut VrmlConverter_Drawer,
-    ) -> crate::OcctResult<*mut HandleVrmlConverterIsoAspect>;
-    /// **Source:** `VrmlConverter_Drawer.hxx`:108 - `VrmlConverter_Drawer::SetUIsoAspect()`
+    ) -> crate::OcctResult<*mut Handle_VrmlConverter_IsoAspect>;
+    /// **Source:** `VrmlConverter_Drawer.hxx`:105 - `VrmlConverter_Drawer::SetUIsoAspect()`
     pub fn VrmlConverter_Drawer_set_u_iso_aspect(
         self_: *mut VrmlConverter_Drawer,
-        anAspect: *const HandleVrmlConverterIsoAspect,
+        anAspect: *const Handle_VrmlConverter_IsoAspect,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `VrmlConverter_Drawer.hxx`:118 - `VrmlConverter_Drawer::VIsoAspect()`
+    /// **Source:** `VrmlConverter_Drawer.hxx`:115 - `VrmlConverter_Drawer::VIsoAspect()`
     pub fn VrmlConverter_Drawer_v_iso_aspect(
         self_: *mut VrmlConverter_Drawer,
-    ) -> crate::OcctResult<*mut HandleVrmlConverterIsoAspect>;
-    /// **Source:** `VrmlConverter_Drawer.hxx`:120 - `VrmlConverter_Drawer::SetVIsoAspect()`
+    ) -> crate::OcctResult<*mut Handle_VrmlConverter_IsoAspect>;
+    /// **Source:** `VrmlConverter_Drawer.hxx`:117 - `VrmlConverter_Drawer::SetVIsoAspect()`
     pub fn VrmlConverter_Drawer_set_v_iso_aspect(
         self_: *mut VrmlConverter_Drawer,
-        anAspect: *const HandleVrmlConverterIsoAspect,
+        anAspect: *const Handle_VrmlConverter_IsoAspect,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `VrmlConverter_Drawer.hxx`:126 - `VrmlConverter_Drawer::FreeBoundaryAspect()`
+    /// **Source:** `VrmlConverter_Drawer.hxx`:123 - `VrmlConverter_Drawer::FreeBoundaryAspect()`
     pub fn VrmlConverter_Drawer_free_boundary_aspect(
         self_: *mut VrmlConverter_Drawer,
-    ) -> crate::OcctResult<*mut HandleVrmlConverterLineAspect>;
-    /// **Source:** `VrmlConverter_Drawer.hxx`:128 - `VrmlConverter_Drawer::SetFreeBoundaryAspect()`
+    ) -> crate::OcctResult<*mut Handle_VrmlConverter_LineAspect>;
+    /// **Source:** `VrmlConverter_Drawer.hxx`:125 - `VrmlConverter_Drawer::SetFreeBoundaryAspect()`
     pub fn VrmlConverter_Drawer_set_free_boundary_aspect(
         self_: *mut VrmlConverter_Drawer,
-        anAspect: *const HandleVrmlConverterLineAspect,
+        anAspect: *const Handle_VrmlConverter_LineAspect,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `VrmlConverter_Drawer.hxx`:132 - `VrmlConverter_Drawer::SetFreeBoundaryDraw()`
+    /// **Source:** `VrmlConverter_Drawer.hxx`:129 - `VrmlConverter_Drawer::SetFreeBoundaryDraw()`
     pub fn VrmlConverter_Drawer_set_free_boundary_draw(
         self_: *mut VrmlConverter_Drawer,
         OnOff: bool,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `VrmlConverter_Drawer.hxx`:135 - `VrmlConverter_Drawer::FreeBoundaryDraw()`
+    /// **Source:** `VrmlConverter_Drawer.hxx`:132 - `VrmlConverter_Drawer::FreeBoundaryDraw()`
     pub fn VrmlConverter_Drawer_free_boundary_draw(
         self_: *const VrmlConverter_Drawer,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `VrmlConverter_Drawer.hxx`:141 - `VrmlConverter_Drawer::WireAspect()`
+    /// **Source:** `VrmlConverter_Drawer.hxx`:138 - `VrmlConverter_Drawer::WireAspect()`
     pub fn VrmlConverter_Drawer_wire_aspect(
         self_: *mut VrmlConverter_Drawer,
-    ) -> crate::OcctResult<*mut HandleVrmlConverterLineAspect>;
-    /// **Source:** `VrmlConverter_Drawer.hxx`:143 - `VrmlConverter_Drawer::SetWireAspect()`
+    ) -> crate::OcctResult<*mut Handle_VrmlConverter_LineAspect>;
+    /// **Source:** `VrmlConverter_Drawer.hxx`:140 - `VrmlConverter_Drawer::SetWireAspect()`
     pub fn VrmlConverter_Drawer_set_wire_aspect(
         self_: *mut VrmlConverter_Drawer,
-        anAspect: *const HandleVrmlConverterLineAspect,
+        anAspect: *const Handle_VrmlConverter_LineAspect,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `VrmlConverter_Drawer.hxx`:147 - `VrmlConverter_Drawer::SetWireDraw()`
+    /// **Source:** `VrmlConverter_Drawer.hxx`:144 - `VrmlConverter_Drawer::SetWireDraw()`
     pub fn VrmlConverter_Drawer_set_wire_draw(
         self_: *mut VrmlConverter_Drawer,
         OnOff: bool,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `VrmlConverter_Drawer.hxx`:150 - `VrmlConverter_Drawer::WireDraw()`
+    /// **Source:** `VrmlConverter_Drawer.hxx`:147 - `VrmlConverter_Drawer::WireDraw()`
     pub fn VrmlConverter_Drawer_wire_draw(
         self_: *const VrmlConverter_Drawer,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `VrmlConverter_Drawer.hxx`:156 - `VrmlConverter_Drawer::UnFreeBoundaryAspect()`
+    /// **Source:** `VrmlConverter_Drawer.hxx`:153 - `VrmlConverter_Drawer::UnFreeBoundaryAspect()`
     pub fn VrmlConverter_Drawer_un_free_boundary_aspect(
         self_: *mut VrmlConverter_Drawer,
-    ) -> crate::OcctResult<*mut HandleVrmlConverterLineAspect>;
-    /// **Source:** `VrmlConverter_Drawer.hxx`:158 - `VrmlConverter_Drawer::SetUnFreeBoundaryAspect()`
+    ) -> crate::OcctResult<*mut Handle_VrmlConverter_LineAspect>;
+    /// **Source:** `VrmlConverter_Drawer.hxx`:155 - `VrmlConverter_Drawer::SetUnFreeBoundaryAspect()`
     pub fn VrmlConverter_Drawer_set_un_free_boundary_aspect(
         self_: *mut VrmlConverter_Drawer,
-        anAspect: *const HandleVrmlConverterLineAspect,
+        anAspect: *const Handle_VrmlConverter_LineAspect,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `VrmlConverter_Drawer.hxx`:162 - `VrmlConverter_Drawer::SetUnFreeBoundaryDraw()`
+    /// **Source:** `VrmlConverter_Drawer.hxx`:160 - `VrmlConverter_Drawer::SetUnFreeBoundaryDraw()`
     pub fn VrmlConverter_Drawer_set_un_free_boundary_draw(
         self_: *mut VrmlConverter_Drawer,
         OnOff: bool,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `VrmlConverter_Drawer.hxx`:165 - `VrmlConverter_Drawer::UnFreeBoundaryDraw()`
+    /// **Source:** `VrmlConverter_Drawer.hxx`:163 - `VrmlConverter_Drawer::UnFreeBoundaryDraw()`
     pub fn VrmlConverter_Drawer_un_free_boundary_draw(
         self_: *const VrmlConverter_Drawer,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `VrmlConverter_Drawer.hxx`:168 - `VrmlConverter_Drawer::LineAspect()`
+    /// **Source:** `VrmlConverter_Drawer.hxx`:166 - `VrmlConverter_Drawer::LineAspect()`
     pub fn VrmlConverter_Drawer_line_aspect(
         self_: *mut VrmlConverter_Drawer,
-    ) -> crate::OcctResult<*mut HandleVrmlConverterLineAspect>;
-    /// **Source:** `VrmlConverter_Drawer.hxx`:170 - `VrmlConverter_Drawer::SetLineAspect()`
+    ) -> crate::OcctResult<*mut Handle_VrmlConverter_LineAspect>;
+    /// **Source:** `VrmlConverter_Drawer.hxx`:168 - `VrmlConverter_Drawer::SetLineAspect()`
     pub fn VrmlConverter_Drawer_set_line_aspect(
         self_: *mut VrmlConverter_Drawer,
-        anAspect: *const HandleVrmlConverterLineAspect,
+        anAspect: *const Handle_VrmlConverter_LineAspect,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `VrmlConverter_Drawer.hxx`:172 - `VrmlConverter_Drawer::PointAspect()`
+    /// **Source:** `VrmlConverter_Drawer.hxx`:170 - `VrmlConverter_Drawer::PointAspect()`
     pub fn VrmlConverter_Drawer_point_aspect(
         self_: *mut VrmlConverter_Drawer,
-    ) -> crate::OcctResult<*mut HandleVrmlConverterPointAspect>;
-    /// **Source:** `VrmlConverter_Drawer.hxx`:174 - `VrmlConverter_Drawer::SetPointAspect()`
+    ) -> crate::OcctResult<*mut Handle_VrmlConverter_PointAspect>;
+    /// **Source:** `VrmlConverter_Drawer.hxx`:172 - `VrmlConverter_Drawer::SetPointAspect()`
     pub fn VrmlConverter_Drawer_set_point_aspect(
         self_: *mut VrmlConverter_Drawer,
-        anAspect: *const HandleVrmlConverterPointAspect,
+        anAspect: *const Handle_VrmlConverter_PointAspect,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `VrmlConverter_Drawer.hxx`:177 - `VrmlConverter_Drawer::ShadingAspect()`
+    /// **Source:** `VrmlConverter_Drawer.hxx`:175 - `VrmlConverter_Drawer::ShadingAspect()`
     pub fn VrmlConverter_Drawer_shading_aspect(
         self_: *mut VrmlConverter_Drawer,
-    ) -> crate::OcctResult<*mut HandleVrmlConverterShadingAspect>;
-    /// **Source:** `VrmlConverter_Drawer.hxx`:179 - `VrmlConverter_Drawer::SetShadingAspect()`
+    ) -> crate::OcctResult<*mut Handle_VrmlConverter_ShadingAspect>;
+    /// **Source:** `VrmlConverter_Drawer.hxx`:177 - `VrmlConverter_Drawer::SetShadingAspect()`
     pub fn VrmlConverter_Drawer_set_shading_aspect(
         self_: *mut VrmlConverter_Drawer,
-        anAspect: *const HandleVrmlConverterShadingAspect,
+        anAspect: *const Handle_VrmlConverter_ShadingAspect,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `VrmlConverter_Drawer.hxx`:183 - `VrmlConverter_Drawer::DrawHiddenLine()`
+    /// **Source:** `VrmlConverter_Drawer.hxx`:181 - `VrmlConverter_Drawer::DrawHiddenLine()`
     pub fn VrmlConverter_Drawer_draw_hidden_line(
         self_: *const VrmlConverter_Drawer,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `VrmlConverter_Drawer.hxx`:186 - `VrmlConverter_Drawer::EnableDrawHiddenLine()`
+    /// **Source:** `VrmlConverter_Drawer.hxx`:184 - `VrmlConverter_Drawer::EnableDrawHiddenLine()`
     pub fn VrmlConverter_Drawer_enable_draw_hidden_line(
         self_: *mut VrmlConverter_Drawer,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `VrmlConverter_Drawer.hxx`:189 - `VrmlConverter_Drawer::DisableDrawHiddenLine()`
+    /// **Source:** `VrmlConverter_Drawer.hxx`:187 - `VrmlConverter_Drawer::DisableDrawHiddenLine()`
     pub fn VrmlConverter_Drawer_disable_draw_hidden_line(
         self_: *mut VrmlConverter_Drawer,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `VrmlConverter_Drawer.hxx`:193 - `VrmlConverter_Drawer::HiddenLineAspect()`
+    /// **Source:** `VrmlConverter_Drawer.hxx`:191 - `VrmlConverter_Drawer::HiddenLineAspect()`
     pub fn VrmlConverter_Drawer_hidden_line_aspect(
         self_: *mut VrmlConverter_Drawer,
-    ) -> crate::OcctResult<*mut HandleVrmlConverterLineAspect>;
-    /// **Source:** `VrmlConverter_Drawer.hxx`:196 - `VrmlConverter_Drawer::SetHiddenLineAspect()`
+    ) -> crate::OcctResult<*mut Handle_VrmlConverter_LineAspect>;
+    /// **Source:** `VrmlConverter_Drawer.hxx`:194 - `VrmlConverter_Drawer::SetHiddenLineAspect()`
     pub fn VrmlConverter_Drawer_set_hidden_line_aspect(
         self_: *mut VrmlConverter_Drawer,
-        anAspect: *const HandleVrmlConverterLineAspect,
+        anAspect: *const Handle_VrmlConverter_LineAspect,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `VrmlConverter_Drawer.hxx`:200 - `VrmlConverter_Drawer::SeenLineAspect()`
+    /// **Source:** `VrmlConverter_Drawer.hxx`:198 - `VrmlConverter_Drawer::SeenLineAspect()`
     pub fn VrmlConverter_Drawer_seen_line_aspect(
         self_: *mut VrmlConverter_Drawer,
-    ) -> crate::OcctResult<*mut HandleVrmlConverterLineAspect>;
-    /// **Source:** `VrmlConverter_Drawer.hxx`:203 - `VrmlConverter_Drawer::SetSeenLineAspect()`
+    ) -> crate::OcctResult<*mut Handle_VrmlConverter_LineAspect>;
+    /// **Source:** `VrmlConverter_Drawer.hxx`:201 - `VrmlConverter_Drawer::SetSeenLineAspect()`
     pub fn VrmlConverter_Drawer_set_seen_line_aspect(
         self_: *mut VrmlConverter_Drawer,
-        anAspect: *const HandleVrmlConverterLineAspect,
+        anAspect: *const Handle_VrmlConverter_LineAspect,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `VrmlConverter_Drawer.hxx`:205 - `VrmlConverter_Drawer::DynamicType()`
+    /// **Source:** `VrmlConverter_Drawer.hxx`:203 - `VrmlConverter_Drawer::DynamicType()`
     pub fn VrmlConverter_Drawer_dynamic_type(
         self_: *const VrmlConverter_Drawer,
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// **Source:** `VrmlConverter_Drawer.hxx`:205 - `VrmlConverter_Drawer::get_type_name()`
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
+    /// **Source:** `VrmlConverter_Drawer.hxx`:203 - `VrmlConverter_Drawer::get_type_name()`
     pub fn VrmlConverter_Drawer_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
-    /// **Source:** `VrmlConverter_Drawer.hxx`:205 - `VrmlConverter_Drawer::get_type_descriptor()`
-    pub fn VrmlConverter_Drawer_get_type_descriptor() -> crate::OcctResult<*const HandleStandardType>;
+    /// **Source:** `VrmlConverter_Drawer.hxx`:203 - `VrmlConverter_Drawer::get_type_descriptor()`
+    pub fn VrmlConverter_Drawer_get_type_descriptor(
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast VrmlConverter_Drawer to Standard_Transient
     pub fn VrmlConverter_Drawer_as_Standard_Transient(
         self_: *const VrmlConverter_Drawer,
@@ -2868,54 +2922,54 @@ unsafe extern "C" {
     /// Wrap VrmlConverter_Drawer in a Handle
     pub fn VrmlConverter_Drawer_to_handle(
         obj: *mut VrmlConverter_Drawer,
-    ) -> crate::OcctResult<*mut HandleVrmlConverterDrawer>;
+    ) -> crate::OcctResult<*mut Handle_VrmlConverter_Drawer>;
     /// Destroy Handle<VrmlConverter_Drawer>
-    pub fn HandleVrmlConverterDrawer_destructor(self_: *mut HandleVrmlConverterDrawer);
+    pub fn Handle_VrmlConverter_Drawer_destructor(self_: *mut Handle_VrmlConverter_Drawer);
     /// Clone Handle<VrmlConverter_Drawer> (increments reference count)
-    pub fn HandleVrmlConverterDrawer_clone(
-        self_: *const HandleVrmlConverterDrawer,
-    ) -> crate::OcctResult<*mut HandleVrmlConverterDrawer>;
+    pub fn Handle_VrmlConverter_Drawer_clone(
+        self_: *const Handle_VrmlConverter_Drawer,
+    ) -> crate::OcctResult<*mut Handle_VrmlConverter_Drawer>;
     /// Check if Handle<VrmlConverter_Drawer> is null
-    pub fn HandleVrmlConverterDrawer_is_null(self_: *const HandleVrmlConverterDrawer) -> bool;
+    pub fn Handle_VrmlConverter_Drawer_is_null(self_: *const Handle_VrmlConverter_Drawer) -> bool;
     /// Dereference Handle to get *const VrmlConverter_Drawer
-    pub fn HandleVrmlConverterDrawer_get(
-        handle: *const HandleVrmlConverterDrawer,
+    pub fn Handle_VrmlConverter_Drawer_get(
+        handle: *const Handle_VrmlConverter_Drawer,
     ) -> crate::OcctResult<*const VrmlConverter_Drawer>;
     /// Dereference Handle to get *mut VrmlConverter_Drawer
-    pub fn HandleVrmlConverterDrawer_get_mut(
-        handle: *mut HandleVrmlConverterDrawer,
+    pub fn Handle_VrmlConverter_Drawer_get_mut(
+        handle: *mut Handle_VrmlConverter_Drawer,
     ) -> crate::OcctResult<*mut VrmlConverter_Drawer>;
     /// Upcast Handle<VrmlConverter_Drawer> to Handle<Standard_Transient>
-    pub fn HandleVrmlConverterDrawer_to_HandleStandardTransient(
-        self_: *const HandleVrmlConverterDrawer,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn Handle_VrmlConverter_Drawer_to_Handle_Standard_Transient(
+        self_: *const Handle_VrmlConverter_Drawer,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn VrmlConverter_Drawer_inherited_IsInstance(
         self_: *const VrmlConverter_Drawer,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn VrmlConverter_Drawer_inherited_IsKind(
         self_: *const VrmlConverter_Drawer,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn VrmlConverter_Drawer_inherited_This(
         self_: *const VrmlConverter_Drawer,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn VrmlConverter_Drawer_inherited_GetRefCount(
         self_: *const VrmlConverter_Drawer,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn VrmlConverter_Drawer_inherited_IncrementRefCounter(
         self_: *mut VrmlConverter_Drawer,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn VrmlConverter_Drawer_inherited_DecrementRefCounter(
         self_: *mut VrmlConverter_Drawer,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn VrmlConverter_Drawer_inherited_Delete(
         self_: *const VrmlConverter_Drawer,
     ) -> *const std::ffi::c_char;
@@ -2927,37 +2981,37 @@ unsafe extern "C" {
     pub fn VrmlConverter_HLRShape_add(
         anOStream: *mut Standard_OStream,
         aShape: *const TopoDS_Shape,
-        aDrawer: *const HandleVrmlConverterDrawer,
-        aProjector: *const HandleVrmlConverterProjector,
+        aDrawer: *const Handle_VrmlConverter_Drawer,
+        aProjector: *const Handle_VrmlConverter_Projector,
     ) -> *const std::ffi::c_char;
     // ======================== VrmlConverter_IsoAspect ========================
     pub fn VrmlConverter_IsoAspect_destructor(self_: *mut VrmlConverter_IsoAspect);
-    /// **Source:** `VrmlConverter_IsoAspect.hxx`:38 - `VrmlConverter_IsoAspect::VrmlConverter_IsoAspect()`
+    /// **Source:** `VrmlConverter_IsoAspect.hxx`:35 - `VrmlConverter_IsoAspect::VrmlConverter_IsoAspect()`
     pub fn VrmlConverter_IsoAspect_ctor() -> crate::OcctResult<*mut VrmlConverter_IsoAspect>;
-    /// **Source:** `VrmlConverter_IsoAspect.hxx`:40 - `VrmlConverter_IsoAspect::VrmlConverter_IsoAspect()`
+    /// **Source:** `VrmlConverter_IsoAspect.hxx`:37 - `VrmlConverter_IsoAspect::VrmlConverter_IsoAspect()`
     pub fn VrmlConverter_IsoAspect_ctor_handlevrmlmaterial_bool_int(
-        aMaterial: *const HandleVrmlMaterial,
+        aMaterial: *const Handle_Vrml_Material,
         OnOff: bool,
         aNumber: i32,
     ) -> crate::OcctResult<*mut VrmlConverter_IsoAspect>;
-    /// **Source:** `VrmlConverter_IsoAspect.hxx`:44 - `VrmlConverter_IsoAspect::SetNumber()`
+    /// **Source:** `VrmlConverter_IsoAspect.hxx`:41 - `VrmlConverter_IsoAspect::SetNumber()`
     pub fn VrmlConverter_IsoAspect_set_number(
         self_: *mut VrmlConverter_IsoAspect,
         aNumber: i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `VrmlConverter_IsoAspect.hxx`:48 - `VrmlConverter_IsoAspect::Number()`
+    /// **Source:** `VrmlConverter_IsoAspect.hxx`:45 - `VrmlConverter_IsoAspect::Number()`
     pub fn VrmlConverter_IsoAspect_number(
         self_: *const VrmlConverter_IsoAspect,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `VrmlConverter_IsoAspect.hxx`:50 - `VrmlConverter_IsoAspect::DynamicType()`
+    /// **Source:** `VrmlConverter_IsoAspect.hxx`:47 - `VrmlConverter_IsoAspect::DynamicType()`
     pub fn VrmlConverter_IsoAspect_dynamic_type(
         self_: *const VrmlConverter_IsoAspect,
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// **Source:** `VrmlConverter_IsoAspect.hxx`:50 - `VrmlConverter_IsoAspect::get_type_name()`
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
+    /// **Source:** `VrmlConverter_IsoAspect.hxx`:47 - `VrmlConverter_IsoAspect::get_type_name()`
     pub fn VrmlConverter_IsoAspect_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
-    /// **Source:** `VrmlConverter_IsoAspect.hxx`:50 - `VrmlConverter_IsoAspect::get_type_descriptor()`
+    /// **Source:** `VrmlConverter_IsoAspect.hxx`:47 - `VrmlConverter_IsoAspect::get_type_descriptor()`
     pub fn VrmlConverter_IsoAspect_get_type_descriptor(
-    ) -> crate::OcctResult<*const HandleStandardType>;
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast VrmlConverter_IsoAspect to VrmlConverter_LineAspect
     pub fn VrmlConverter_IsoAspect_as_VrmlConverter_LineAspect(
         self_: *const VrmlConverter_IsoAspect,
@@ -2977,116 +3031,117 @@ unsafe extern "C" {
     /// Wrap VrmlConverter_IsoAspect in a Handle
     pub fn VrmlConverter_IsoAspect_to_handle(
         obj: *mut VrmlConverter_IsoAspect,
-    ) -> crate::OcctResult<*mut HandleVrmlConverterIsoAspect>;
+    ) -> crate::OcctResult<*mut Handle_VrmlConverter_IsoAspect>;
     /// Destroy Handle<VrmlConverter_IsoAspect>
-    pub fn HandleVrmlConverterIsoAspect_destructor(self_: *mut HandleVrmlConverterIsoAspect);
+    pub fn Handle_VrmlConverter_IsoAspect_destructor(self_: *mut Handle_VrmlConverter_IsoAspect);
     /// Clone Handle<VrmlConverter_IsoAspect> (increments reference count)
-    pub fn HandleVrmlConverterIsoAspect_clone(
-        self_: *const HandleVrmlConverterIsoAspect,
-    ) -> crate::OcctResult<*mut HandleVrmlConverterIsoAspect>;
+    pub fn Handle_VrmlConverter_IsoAspect_clone(
+        self_: *const Handle_VrmlConverter_IsoAspect,
+    ) -> crate::OcctResult<*mut Handle_VrmlConverter_IsoAspect>;
     /// Check if Handle<VrmlConverter_IsoAspect> is null
-    pub fn HandleVrmlConverterIsoAspect_is_null(self_: *const HandleVrmlConverterIsoAspect)
-        -> bool;
+    pub fn Handle_VrmlConverter_IsoAspect_is_null(
+        self_: *const Handle_VrmlConverter_IsoAspect,
+    ) -> bool;
     /// Dereference Handle to get *const VrmlConverter_IsoAspect
-    pub fn HandleVrmlConverterIsoAspect_get(
-        handle: *const HandleVrmlConverterIsoAspect,
+    pub fn Handle_VrmlConverter_IsoAspect_get(
+        handle: *const Handle_VrmlConverter_IsoAspect,
     ) -> crate::OcctResult<*const VrmlConverter_IsoAspect>;
     /// Dereference Handle to get *mut VrmlConverter_IsoAspect
-    pub fn HandleVrmlConverterIsoAspect_get_mut(
-        handle: *mut HandleVrmlConverterIsoAspect,
+    pub fn Handle_VrmlConverter_IsoAspect_get_mut(
+        handle: *mut Handle_VrmlConverter_IsoAspect,
     ) -> crate::OcctResult<*mut VrmlConverter_IsoAspect>;
     /// Upcast Handle<VrmlConverter_IsoAspect> to Handle<VrmlConverter_LineAspect>
-    pub fn HandleVrmlConverterIsoAspect_to_HandleVrmlConverterLineAspect(
-        self_: *const HandleVrmlConverterIsoAspect,
-    ) -> crate::OcctResult<*mut HandleVrmlConverterLineAspect>;
+    pub fn Handle_VrmlConverter_IsoAspect_to_Handle_VrmlConverter_LineAspect(
+        self_: *const Handle_VrmlConverter_IsoAspect,
+    ) -> crate::OcctResult<*mut Handle_VrmlConverter_LineAspect>;
     /// Upcast Handle<VrmlConverter_IsoAspect> to Handle<Standard_Transient>
-    pub fn HandleVrmlConverterIsoAspect_to_HandleStandardTransient(
-        self_: *const HandleVrmlConverterIsoAspect,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
-    /// Inherited: **Source:** `VrmlConverter_LineAspect.hxx`:42 - `VrmlConverter_LineAspect::SetMaterial()`
+    pub fn Handle_VrmlConverter_IsoAspect_to_Handle_Standard_Transient(
+        self_: *const Handle_VrmlConverter_IsoAspect,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
+    /// Inherited: **Source:** `VrmlConverter_LineAspect.hxx`:39 - `VrmlConverter_LineAspect::SetMaterial()`
     pub fn VrmlConverter_IsoAspect_inherited_SetMaterial(
         self_: *mut VrmlConverter_IsoAspect,
-        aMaterial: *const HandleVrmlMaterial,
+        aMaterial: *const Handle_Vrml_Material,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `VrmlConverter_LineAspect.hxx`:44 - `VrmlConverter_LineAspect::Material()`
+    /// Inherited: **Source:** `VrmlConverter_LineAspect.hxx`:41 - `VrmlConverter_LineAspect::Material()`
     pub fn VrmlConverter_IsoAspect_inherited_Material(
         self_: *const VrmlConverter_IsoAspect,
-    ) -> crate::OcctResult<*mut HandleVrmlMaterial>;
-    /// Inherited: **Source:** `VrmlConverter_LineAspect.hxx`:49 - `VrmlConverter_LineAspect::SetHasMaterial()`
+    ) -> crate::OcctResult<*mut Handle_Vrml_Material>;
+    /// Inherited: **Source:** `VrmlConverter_LineAspect.hxx`:46 - `VrmlConverter_LineAspect::SetHasMaterial()`
     pub fn VrmlConverter_IsoAspect_inherited_SetHasMaterial(
         self_: *mut VrmlConverter_IsoAspect,
         OnOff: bool,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `VrmlConverter_LineAspect.hxx`:52 - `VrmlConverter_LineAspect::HasMaterial()`
+    /// Inherited: **Source:** `VrmlConverter_LineAspect.hxx`:49 - `VrmlConverter_LineAspect::HasMaterial()`
     pub fn VrmlConverter_IsoAspect_inherited_HasMaterial(
         self_: *const VrmlConverter_IsoAspect,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn VrmlConverter_IsoAspect_inherited_IsInstance(
         self_: *const VrmlConverter_IsoAspect,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn VrmlConverter_IsoAspect_inherited_IsKind(
         self_: *const VrmlConverter_IsoAspect,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn VrmlConverter_IsoAspect_inherited_This(
         self_: *const VrmlConverter_IsoAspect,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn VrmlConverter_IsoAspect_inherited_GetRefCount(
         self_: *const VrmlConverter_IsoAspect,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn VrmlConverter_IsoAspect_inherited_IncrementRefCounter(
         self_: *mut VrmlConverter_IsoAspect,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn VrmlConverter_IsoAspect_inherited_DecrementRefCounter(
         self_: *mut VrmlConverter_IsoAspect,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn VrmlConverter_IsoAspect_inherited_Delete(
         self_: *const VrmlConverter_IsoAspect,
     ) -> *const std::ffi::c_char;
     // ======================== VrmlConverter_LineAspect ========================
     pub fn VrmlConverter_LineAspect_destructor(self_: *mut VrmlConverter_LineAspect);
-    /// **Source:** `VrmlConverter_LineAspect.hxx`:37 - `VrmlConverter_LineAspect::VrmlConverter_LineAspect()`
+    /// **Source:** `VrmlConverter_LineAspect.hxx`:34 - `VrmlConverter_LineAspect::VrmlConverter_LineAspect()`
     pub fn VrmlConverter_LineAspect_ctor() -> crate::OcctResult<*mut VrmlConverter_LineAspect>;
-    /// **Source:** `VrmlConverter_LineAspect.hxx`:39 - `VrmlConverter_LineAspect::VrmlConverter_LineAspect()`
+    /// **Source:** `VrmlConverter_LineAspect.hxx`:36 - `VrmlConverter_LineAspect::VrmlConverter_LineAspect()`
     pub fn VrmlConverter_LineAspect_ctor_handlevrmlmaterial_bool(
-        aMaterial: *const HandleVrmlMaterial,
+        aMaterial: *const Handle_Vrml_Material,
         OnOff: bool,
     ) -> crate::OcctResult<*mut VrmlConverter_LineAspect>;
-    /// **Source:** `VrmlConverter_LineAspect.hxx`:42 - `VrmlConverter_LineAspect::SetMaterial()`
+    /// **Source:** `VrmlConverter_LineAspect.hxx`:39 - `VrmlConverter_LineAspect::SetMaterial()`
     pub fn VrmlConverter_LineAspect_set_material(
         self_: *mut VrmlConverter_LineAspect,
-        aMaterial: *const HandleVrmlMaterial,
+        aMaterial: *const Handle_Vrml_Material,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `VrmlConverter_LineAspect.hxx`:44 - `VrmlConverter_LineAspect::Material()`
+    /// **Source:** `VrmlConverter_LineAspect.hxx`:41 - `VrmlConverter_LineAspect::Material()`
     pub fn VrmlConverter_LineAspect_material(
         self_: *const VrmlConverter_LineAspect,
-    ) -> crate::OcctResult<*mut HandleVrmlMaterial>;
-    /// **Source:** `VrmlConverter_LineAspect.hxx`:49 - `VrmlConverter_LineAspect::SetHasMaterial()`
+    ) -> crate::OcctResult<*mut Handle_Vrml_Material>;
+    /// **Source:** `VrmlConverter_LineAspect.hxx`:46 - `VrmlConverter_LineAspect::SetHasMaterial()`
     pub fn VrmlConverter_LineAspect_set_has_material(
         self_: *mut VrmlConverter_LineAspect,
         OnOff: bool,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `VrmlConverter_LineAspect.hxx`:52 - `VrmlConverter_LineAspect::HasMaterial()`
+    /// **Source:** `VrmlConverter_LineAspect.hxx`:49 - `VrmlConverter_LineAspect::HasMaterial()`
     pub fn VrmlConverter_LineAspect_has_material(
         self_: *const VrmlConverter_LineAspect,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `VrmlConverter_LineAspect.hxx`:54 - `VrmlConverter_LineAspect::DynamicType()`
+    /// **Source:** `VrmlConverter_LineAspect.hxx`:51 - `VrmlConverter_LineAspect::DynamicType()`
     pub fn VrmlConverter_LineAspect_dynamic_type(
         self_: *const VrmlConverter_LineAspect,
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// **Source:** `VrmlConverter_LineAspect.hxx`:54 - `VrmlConverter_LineAspect::get_type_name()`
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
+    /// **Source:** `VrmlConverter_LineAspect.hxx`:51 - `VrmlConverter_LineAspect::get_type_name()`
     pub fn VrmlConverter_LineAspect_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
-    /// **Source:** `VrmlConverter_LineAspect.hxx`:54 - `VrmlConverter_LineAspect::get_type_descriptor()`
+    /// **Source:** `VrmlConverter_LineAspect.hxx`:51 - `VrmlConverter_LineAspect::get_type_descriptor()`
     pub fn VrmlConverter_LineAspect_get_type_descriptor(
-    ) -> crate::OcctResult<*const HandleStandardType>;
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast VrmlConverter_LineAspect to Standard_Transient
     pub fn VrmlConverter_LineAspect_as_Standard_Transient(
         self_: *const VrmlConverter_LineAspect,
@@ -3098,99 +3153,99 @@ unsafe extern "C" {
     /// Wrap VrmlConverter_LineAspect in a Handle
     pub fn VrmlConverter_LineAspect_to_handle(
         obj: *mut VrmlConverter_LineAspect,
-    ) -> crate::OcctResult<*mut HandleVrmlConverterLineAspect>;
+    ) -> crate::OcctResult<*mut Handle_VrmlConverter_LineAspect>;
     /// Destroy Handle<VrmlConverter_LineAspect>
-    pub fn HandleVrmlConverterLineAspect_destructor(self_: *mut HandleVrmlConverterLineAspect);
+    pub fn Handle_VrmlConverter_LineAspect_destructor(self_: *mut Handle_VrmlConverter_LineAspect);
     /// Clone Handle<VrmlConverter_LineAspect> (increments reference count)
-    pub fn HandleVrmlConverterLineAspect_clone(
-        self_: *const HandleVrmlConverterLineAspect,
-    ) -> crate::OcctResult<*mut HandleVrmlConverterLineAspect>;
+    pub fn Handle_VrmlConverter_LineAspect_clone(
+        self_: *const Handle_VrmlConverter_LineAspect,
+    ) -> crate::OcctResult<*mut Handle_VrmlConverter_LineAspect>;
     /// Check if Handle<VrmlConverter_LineAspect> is null
-    pub fn HandleVrmlConverterLineAspect_is_null(
-        self_: *const HandleVrmlConverterLineAspect,
+    pub fn Handle_VrmlConverter_LineAspect_is_null(
+        self_: *const Handle_VrmlConverter_LineAspect,
     ) -> bool;
     /// Dereference Handle to get *const VrmlConverter_LineAspect
-    pub fn HandleVrmlConverterLineAspect_get(
-        handle: *const HandleVrmlConverterLineAspect,
+    pub fn Handle_VrmlConverter_LineAspect_get(
+        handle: *const Handle_VrmlConverter_LineAspect,
     ) -> crate::OcctResult<*const VrmlConverter_LineAspect>;
     /// Dereference Handle to get *mut VrmlConverter_LineAspect
-    pub fn HandleVrmlConverterLineAspect_get_mut(
-        handle: *mut HandleVrmlConverterLineAspect,
+    pub fn Handle_VrmlConverter_LineAspect_get_mut(
+        handle: *mut Handle_VrmlConverter_LineAspect,
     ) -> crate::OcctResult<*mut VrmlConverter_LineAspect>;
     /// Upcast Handle<VrmlConverter_LineAspect> to Handle<Standard_Transient>
-    pub fn HandleVrmlConverterLineAspect_to_HandleStandardTransient(
-        self_: *const HandleVrmlConverterLineAspect,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
+    pub fn Handle_VrmlConverter_LineAspect_to_Handle_Standard_Transient(
+        self_: *const Handle_VrmlConverter_LineAspect,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
     /// Downcast Handle<VrmlConverter_LineAspect> to Handle<VrmlConverter_IsoAspect> (returns null on failure)
-    pub fn HandleVrmlConverterLineAspect_downcast_to_HandleVrmlConverterIsoAspect(
-        self_: *const HandleVrmlConverterLineAspect,
-    ) -> crate::OcctResult<*mut HandleVrmlConverterIsoAspect>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn Handle_VrmlConverter_LineAspect_downcast_to_Handle_VrmlConverter_IsoAspect(
+        self_: *const Handle_VrmlConverter_LineAspect,
+    ) -> crate::OcctResult<*mut Handle_VrmlConverter_IsoAspect>;
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn VrmlConverter_LineAspect_inherited_IsInstance(
         self_: *const VrmlConverter_LineAspect,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn VrmlConverter_LineAspect_inherited_IsKind(
         self_: *const VrmlConverter_LineAspect,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn VrmlConverter_LineAspect_inherited_This(
         self_: *const VrmlConverter_LineAspect,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn VrmlConverter_LineAspect_inherited_GetRefCount(
         self_: *const VrmlConverter_LineAspect,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn VrmlConverter_LineAspect_inherited_IncrementRefCounter(
         self_: *mut VrmlConverter_LineAspect,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn VrmlConverter_LineAspect_inherited_DecrementRefCounter(
         self_: *mut VrmlConverter_LineAspect,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn VrmlConverter_LineAspect_inherited_Delete(
         self_: *const VrmlConverter_LineAspect,
     ) -> *const std::ffi::c_char;
     // ======================== VrmlConverter_PointAspect ========================
     pub fn VrmlConverter_PointAspect_destructor(self_: *mut VrmlConverter_PointAspect);
-    /// **Source:** `VrmlConverter_PointAspect.hxx`:37 - `VrmlConverter_PointAspect::VrmlConverter_PointAspect()`
+    /// **Source:** `VrmlConverter_PointAspect.hxx`:34 - `VrmlConverter_PointAspect::VrmlConverter_PointAspect()`
     pub fn VrmlConverter_PointAspect_ctor() -> crate::OcctResult<*mut VrmlConverter_PointAspect>;
-    /// **Source:** `VrmlConverter_PointAspect.hxx`:39 - `VrmlConverter_PointAspect::VrmlConverter_PointAspect()`
+    /// **Source:** `VrmlConverter_PointAspect.hxx`:36 - `VrmlConverter_PointAspect::VrmlConverter_PointAspect()`
     pub fn VrmlConverter_PointAspect_ctor_handlevrmlmaterial_bool(
-        aMaterial: *const HandleVrmlMaterial,
+        aMaterial: *const Handle_Vrml_Material,
         OnOff: bool,
     ) -> crate::OcctResult<*mut VrmlConverter_PointAspect>;
-    /// **Source:** `VrmlConverter_PointAspect.hxx`:42 - `VrmlConverter_PointAspect::SetMaterial()`
+    /// **Source:** `VrmlConverter_PointAspect.hxx`:39 - `VrmlConverter_PointAspect::SetMaterial()`
     pub fn VrmlConverter_PointAspect_set_material(
         self_: *mut VrmlConverter_PointAspect,
-        aMaterial: *const HandleVrmlMaterial,
+        aMaterial: *const Handle_Vrml_Material,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `VrmlConverter_PointAspect.hxx`:44 - `VrmlConverter_PointAspect::Material()`
+    /// **Source:** `VrmlConverter_PointAspect.hxx`:41 - `VrmlConverter_PointAspect::Material()`
     pub fn VrmlConverter_PointAspect_material(
         self_: *const VrmlConverter_PointAspect,
-    ) -> crate::OcctResult<*mut HandleVrmlMaterial>;
-    /// **Source:** `VrmlConverter_PointAspect.hxx`:49 - `VrmlConverter_PointAspect::SetHasMaterial()`
+    ) -> crate::OcctResult<*mut Handle_Vrml_Material>;
+    /// **Source:** `VrmlConverter_PointAspect.hxx`:46 - `VrmlConverter_PointAspect::SetHasMaterial()`
     pub fn VrmlConverter_PointAspect_set_has_material(
         self_: *mut VrmlConverter_PointAspect,
         OnOff: bool,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `VrmlConverter_PointAspect.hxx`:52 - `VrmlConverter_PointAspect::HasMaterial()`
+    /// **Source:** `VrmlConverter_PointAspect.hxx`:49 - `VrmlConverter_PointAspect::HasMaterial()`
     pub fn VrmlConverter_PointAspect_has_material(
         self_: *const VrmlConverter_PointAspect,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `VrmlConverter_PointAspect.hxx`:54 - `VrmlConverter_PointAspect::DynamicType()`
+    /// **Source:** `VrmlConverter_PointAspect.hxx`:51 - `VrmlConverter_PointAspect::DynamicType()`
     pub fn VrmlConverter_PointAspect_dynamic_type(
         self_: *const VrmlConverter_PointAspect,
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// **Source:** `VrmlConverter_PointAspect.hxx`:54 - `VrmlConverter_PointAspect::get_type_name()`
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
+    /// **Source:** `VrmlConverter_PointAspect.hxx`:51 - `VrmlConverter_PointAspect::get_type_name()`
     pub fn VrmlConverter_PointAspect_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
-    /// **Source:** `VrmlConverter_PointAspect.hxx`:54 - `VrmlConverter_PointAspect::get_type_descriptor()`
+    /// **Source:** `VrmlConverter_PointAspect.hxx`:51 - `VrmlConverter_PointAspect::get_type_descriptor()`
     pub fn VrmlConverter_PointAspect_get_type_descriptor(
-    ) -> crate::OcctResult<*const HandleStandardType>;
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast VrmlConverter_PointAspect to Standard_Transient
     pub fn VrmlConverter_PointAspect_as_Standard_Transient(
         self_: *const VrmlConverter_PointAspect,
@@ -3202,64 +3257,66 @@ unsafe extern "C" {
     /// Wrap VrmlConverter_PointAspect in a Handle
     pub fn VrmlConverter_PointAspect_to_handle(
         obj: *mut VrmlConverter_PointAspect,
-    ) -> crate::OcctResult<*mut HandleVrmlConverterPointAspect>;
+    ) -> crate::OcctResult<*mut Handle_VrmlConverter_PointAspect>;
     /// Destroy Handle<VrmlConverter_PointAspect>
-    pub fn HandleVrmlConverterPointAspect_destructor(self_: *mut HandleVrmlConverterPointAspect);
+    pub fn Handle_VrmlConverter_PointAspect_destructor(
+        self_: *mut Handle_VrmlConverter_PointAspect,
+    );
     /// Clone Handle<VrmlConverter_PointAspect> (increments reference count)
-    pub fn HandleVrmlConverterPointAspect_clone(
-        self_: *const HandleVrmlConverterPointAspect,
-    ) -> crate::OcctResult<*mut HandleVrmlConverterPointAspect>;
+    pub fn Handle_VrmlConverter_PointAspect_clone(
+        self_: *const Handle_VrmlConverter_PointAspect,
+    ) -> crate::OcctResult<*mut Handle_VrmlConverter_PointAspect>;
     /// Check if Handle<VrmlConverter_PointAspect> is null
-    pub fn HandleVrmlConverterPointAspect_is_null(
-        self_: *const HandleVrmlConverterPointAspect,
+    pub fn Handle_VrmlConverter_PointAspect_is_null(
+        self_: *const Handle_VrmlConverter_PointAspect,
     ) -> bool;
     /// Dereference Handle to get *const VrmlConverter_PointAspect
-    pub fn HandleVrmlConverterPointAspect_get(
-        handle: *const HandleVrmlConverterPointAspect,
+    pub fn Handle_VrmlConverter_PointAspect_get(
+        handle: *const Handle_VrmlConverter_PointAspect,
     ) -> crate::OcctResult<*const VrmlConverter_PointAspect>;
     /// Dereference Handle to get *mut VrmlConverter_PointAspect
-    pub fn HandleVrmlConverterPointAspect_get_mut(
-        handle: *mut HandleVrmlConverterPointAspect,
+    pub fn Handle_VrmlConverter_PointAspect_get_mut(
+        handle: *mut Handle_VrmlConverter_PointAspect,
     ) -> crate::OcctResult<*mut VrmlConverter_PointAspect>;
     /// Upcast Handle<VrmlConverter_PointAspect> to Handle<Standard_Transient>
-    pub fn HandleVrmlConverterPointAspect_to_HandleStandardTransient(
-        self_: *const HandleVrmlConverterPointAspect,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn Handle_VrmlConverter_PointAspect_to_Handle_Standard_Transient(
+        self_: *const Handle_VrmlConverter_PointAspect,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn VrmlConverter_PointAspect_inherited_IsInstance(
         self_: *const VrmlConverter_PointAspect,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn VrmlConverter_PointAspect_inherited_IsKind(
         self_: *const VrmlConverter_PointAspect,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn VrmlConverter_PointAspect_inherited_This(
         self_: *const VrmlConverter_PointAspect,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn VrmlConverter_PointAspect_inherited_GetRefCount(
         self_: *const VrmlConverter_PointAspect,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn VrmlConverter_PointAspect_inherited_IncrementRefCounter(
         self_: *mut VrmlConverter_PointAspect,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn VrmlConverter_PointAspect_inherited_DecrementRefCounter(
         self_: *mut VrmlConverter_PointAspect,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn VrmlConverter_PointAspect_inherited_Delete(
         self_: *const VrmlConverter_PointAspect,
     ) -> *const std::ffi::c_char;
     // ======================== VrmlConverter_Projector ========================
     pub fn VrmlConverter_Projector_destructor(self_: *mut VrmlConverter_Projector);
-    /// **Source:** `VrmlConverter_Projector.hxx`:48 - `VrmlConverter_Projector::VrmlConverter_Projector()`
-    pub fn VrmlConverter_Projector_ctor_array1ofshape_real7_typeofcamera_typeoflight(
-        Shapes: *const TopTools_Array1OfShape,
+    /// **Source:** `VrmlConverter_Projector.hxx`:46 - `VrmlConverter_Projector::VrmlConverter_Projector()`
+    pub fn VrmlConverter_Projector_ctor_arr1_shape_real7_typeofcamera_typeoflight(
+        Shapes: *const NCollection_Array1_TopoDS_Shape,
         Focus: f64,
         DX: f64,
         DY: f64,
@@ -3270,42 +3327,42 @@ unsafe extern "C" {
         Camera: i32,
         Light: i32,
     ) -> crate::OcctResult<*mut VrmlConverter_Projector>;
-    /// **Source:** `VrmlConverter_Projector.hxx`:60 - `VrmlConverter_Projector::SetCamera()`
+    /// **Source:** `VrmlConverter_Projector.hxx`:58 - `VrmlConverter_Projector::SetCamera()`
     pub fn VrmlConverter_Projector_set_camera(
         self_: *mut VrmlConverter_Projector,
         aCamera: i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `VrmlConverter_Projector.hxx`:62 - `VrmlConverter_Projector::Camera()`
+    /// **Source:** `VrmlConverter_Projector.hxx`:60 - `VrmlConverter_Projector::Camera()`
     pub fn VrmlConverter_Projector_camera(
         self_: *const VrmlConverter_Projector,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `VrmlConverter_Projector.hxx`:64 - `VrmlConverter_Projector::SetLight()`
+    /// **Source:** `VrmlConverter_Projector.hxx`:62 - `VrmlConverter_Projector::SetLight()`
     pub fn VrmlConverter_Projector_set_light(
         self_: *mut VrmlConverter_Projector,
         aLight: i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `VrmlConverter_Projector.hxx`:66 - `VrmlConverter_Projector::Light()`
+    /// **Source:** `VrmlConverter_Projector.hxx`:64 - `VrmlConverter_Projector::Light()`
     pub fn VrmlConverter_Projector_light(
         self_: *const VrmlConverter_Projector,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `VrmlConverter_Projector.hxx`:75 - `VrmlConverter_Projector::Add()`
+    /// **Source:** `VrmlConverter_Projector.hxx`:73 - `VrmlConverter_Projector::Add()`
     pub fn VrmlConverter_Projector_add(
         self_: *const VrmlConverter_Projector,
         anOStream: *mut Standard_OStream,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `VrmlConverter_Projector.hxx`:77 - `VrmlConverter_Projector::Projector()`
+    /// **Source:** `VrmlConverter_Projector.hxx`:75 - `VrmlConverter_Projector::Projector()`
     pub fn VrmlConverter_Projector_projector(
         self_: *const VrmlConverter_Projector,
     ) -> crate::OcctResult<*mut HLRAlgo_Projector>;
-    /// **Source:** `VrmlConverter_Projector.hxx`:79 - `VrmlConverter_Projector::DynamicType()`
+    /// **Source:** `VrmlConverter_Projector.hxx`:77 - `VrmlConverter_Projector::DynamicType()`
     pub fn VrmlConverter_Projector_dynamic_type(
         self_: *const VrmlConverter_Projector,
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// **Source:** `VrmlConverter_Projector.hxx`:79 - `VrmlConverter_Projector::get_type_name()`
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
+    /// **Source:** `VrmlConverter_Projector.hxx`:77 - `VrmlConverter_Projector::get_type_name()`
     pub fn VrmlConverter_Projector_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
-    /// **Source:** `VrmlConverter_Projector.hxx`:79 - `VrmlConverter_Projector::get_type_descriptor()`
+    /// **Source:** `VrmlConverter_Projector.hxx`:77 - `VrmlConverter_Projector::get_type_descriptor()`
     pub fn VrmlConverter_Projector_get_type_descriptor(
-    ) -> crate::OcctResult<*const HandleStandardType>;
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast VrmlConverter_Projector to Standard_Transient
     pub fn VrmlConverter_Projector_as_Standard_Transient(
         self_: *const VrmlConverter_Projector,
@@ -3317,55 +3374,56 @@ unsafe extern "C" {
     /// Wrap VrmlConverter_Projector in a Handle
     pub fn VrmlConverter_Projector_to_handle(
         obj: *mut VrmlConverter_Projector,
-    ) -> crate::OcctResult<*mut HandleVrmlConverterProjector>;
+    ) -> crate::OcctResult<*mut Handle_VrmlConverter_Projector>;
     /// Destroy Handle<VrmlConverter_Projector>
-    pub fn HandleVrmlConverterProjector_destructor(self_: *mut HandleVrmlConverterProjector);
+    pub fn Handle_VrmlConverter_Projector_destructor(self_: *mut Handle_VrmlConverter_Projector);
     /// Clone Handle<VrmlConverter_Projector> (increments reference count)
-    pub fn HandleVrmlConverterProjector_clone(
-        self_: *const HandleVrmlConverterProjector,
-    ) -> crate::OcctResult<*mut HandleVrmlConverterProjector>;
+    pub fn Handle_VrmlConverter_Projector_clone(
+        self_: *const Handle_VrmlConverter_Projector,
+    ) -> crate::OcctResult<*mut Handle_VrmlConverter_Projector>;
     /// Check if Handle<VrmlConverter_Projector> is null
-    pub fn HandleVrmlConverterProjector_is_null(self_: *const HandleVrmlConverterProjector)
-        -> bool;
+    pub fn Handle_VrmlConverter_Projector_is_null(
+        self_: *const Handle_VrmlConverter_Projector,
+    ) -> bool;
     /// Dereference Handle to get *const VrmlConverter_Projector
-    pub fn HandleVrmlConverterProjector_get(
-        handle: *const HandleVrmlConverterProjector,
+    pub fn Handle_VrmlConverter_Projector_get(
+        handle: *const Handle_VrmlConverter_Projector,
     ) -> crate::OcctResult<*const VrmlConverter_Projector>;
     /// Dereference Handle to get *mut VrmlConverter_Projector
-    pub fn HandleVrmlConverterProjector_get_mut(
-        handle: *mut HandleVrmlConverterProjector,
+    pub fn Handle_VrmlConverter_Projector_get_mut(
+        handle: *mut Handle_VrmlConverter_Projector,
     ) -> crate::OcctResult<*mut VrmlConverter_Projector>;
     /// Upcast Handle<VrmlConverter_Projector> to Handle<Standard_Transient>
-    pub fn HandleVrmlConverterProjector_to_HandleStandardTransient(
-        self_: *const HandleVrmlConverterProjector,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn Handle_VrmlConverter_Projector_to_Handle_Standard_Transient(
+        self_: *const Handle_VrmlConverter_Projector,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn VrmlConverter_Projector_inherited_IsInstance(
         self_: *const VrmlConverter_Projector,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn VrmlConverter_Projector_inherited_IsKind(
         self_: *const VrmlConverter_Projector,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn VrmlConverter_Projector_inherited_This(
         self_: *const VrmlConverter_Projector,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn VrmlConverter_Projector_inherited_GetRefCount(
         self_: *const VrmlConverter_Projector,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn VrmlConverter_Projector_inherited_IncrementRefCounter(
         self_: *mut VrmlConverter_Projector,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn VrmlConverter_Projector_inherited_DecrementRefCounter(
         self_: *mut VrmlConverter_Projector,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn VrmlConverter_Projector_inherited_Delete(
         self_: *const VrmlConverter_Projector,
     ) -> *const std::ffi::c_char;
@@ -3373,67 +3431,67 @@ unsafe extern "C" {
     pub fn VrmlConverter_ShadedShape_destructor(self_: *mut VrmlConverter_ShadedShape);
     /// **Source:** `VrmlConverter_ShadedShape.hxx` - `VrmlConverter_ShadedShape::VrmlConverter_ShadedShape()`
     pub fn VrmlConverter_ShadedShape_ctor() -> crate::OcctResult<*mut VrmlConverter_ShadedShape>;
-    /// **Source:** `VrmlConverter_ShadedShape.hxx`:43 - `VrmlConverter_ShadedShape::Add()`
+    /// **Source:** `VrmlConverter_ShadedShape.hxx`:44 - `VrmlConverter_ShadedShape::Add()`
     pub fn VrmlConverter_ShadedShape_add(
         anOStream: *mut Standard_OStream,
         aShape: *const TopoDS_Shape,
-        aDrawer: *const HandleVrmlConverterDrawer,
+        aDrawer: *const Handle_VrmlConverter_Drawer,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `VrmlConverter_ShadedShape.hxx`:47 - `VrmlConverter_ShadedShape::ComputeNormal()`
+    /// **Source:** `VrmlConverter_ShadedShape.hxx`:48 - `VrmlConverter_ShadedShape::ComputeNormal()`
     pub fn VrmlConverter_ShadedShape_compute_normal(
         aFace: *const TopoDS_Face,
         pc: *mut Poly_Connect,
-        Nor: *mut TColgp_Array1OfDir,
+        Nor: *mut NCollection_Array1_gp_Dir,
     ) -> *const std::ffi::c_char;
     // ======================== VrmlConverter_ShadingAspect ========================
     pub fn VrmlConverter_ShadingAspect_destructor(self_: *mut VrmlConverter_ShadingAspect);
-    /// **Source:** `VrmlConverter_ShadingAspect.hxx`:37 - `VrmlConverter_ShadingAspect::VrmlConverter_ShadingAspect()`
+    /// **Source:** `VrmlConverter_ShadingAspect.hxx`:34 - `VrmlConverter_ShadingAspect::VrmlConverter_ShadingAspect()`
     pub fn VrmlConverter_ShadingAspect_ctor() -> crate::OcctResult<*mut VrmlConverter_ShadingAspect>;
-    /// **Source:** `VrmlConverter_ShadingAspect.hxx`:39 - `VrmlConverter_ShadingAspect::SetFrontMaterial()`
+    /// **Source:** `VrmlConverter_ShadingAspect.hxx`:36 - `VrmlConverter_ShadingAspect::SetFrontMaterial()`
     pub fn VrmlConverter_ShadingAspect_set_front_material(
         self_: *mut VrmlConverter_ShadingAspect,
-        aMaterial: *const HandleVrmlMaterial,
+        aMaterial: *const Handle_Vrml_Material,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `VrmlConverter_ShadingAspect.hxx`:41 - `VrmlConverter_ShadingAspect::FrontMaterial()`
+    /// **Source:** `VrmlConverter_ShadingAspect.hxx`:38 - `VrmlConverter_ShadingAspect::FrontMaterial()`
     pub fn VrmlConverter_ShadingAspect_front_material(
         self_: *const VrmlConverter_ShadingAspect,
-    ) -> crate::OcctResult<*mut HandleVrmlMaterial>;
-    /// **Source:** `VrmlConverter_ShadingAspect.hxx`:43 - `VrmlConverter_ShadingAspect::SetShapeHints()`
+    ) -> crate::OcctResult<*mut Handle_Vrml_Material>;
+    /// **Source:** `VrmlConverter_ShadingAspect.hxx`:40 - `VrmlConverter_ShadingAspect::SetShapeHints()`
     pub fn VrmlConverter_ShadingAspect_set_shape_hints(
         self_: *mut VrmlConverter_ShadingAspect,
         aShapeHints: *const Vrml_ShapeHints,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `VrmlConverter_ShadingAspect.hxx`:45 - `VrmlConverter_ShadingAspect::ShapeHints()`
+    /// **Source:** `VrmlConverter_ShadingAspect.hxx`:42 - `VrmlConverter_ShadingAspect::ShapeHints()`
     pub fn VrmlConverter_ShadingAspect_shape_hints(
         self_: *const VrmlConverter_ShadingAspect,
     ) -> crate::OcctResult<*mut Vrml_ShapeHints>;
-    /// **Source:** `VrmlConverter_ShadingAspect.hxx`:54 - `VrmlConverter_ShadingAspect::SetHasNormals()`
+    /// **Source:** `VrmlConverter_ShadingAspect.hxx`:51 - `VrmlConverter_ShadingAspect::SetHasNormals()`
     pub fn VrmlConverter_ShadingAspect_set_has_normals(
         self_: *mut VrmlConverter_ShadingAspect,
         OnOff: bool,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `VrmlConverter_ShadingAspect.hxx`:57 - `VrmlConverter_ShadingAspect::HasNormals()`
+    /// **Source:** `VrmlConverter_ShadingAspect.hxx`:54 - `VrmlConverter_ShadingAspect::HasNormals()`
     pub fn VrmlConverter_ShadingAspect_has_normals(
         self_: *const VrmlConverter_ShadingAspect,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `VrmlConverter_ShadingAspect.hxx`:62 - `VrmlConverter_ShadingAspect::SetHasMaterial()`
+    /// **Source:** `VrmlConverter_ShadingAspect.hxx`:59 - `VrmlConverter_ShadingAspect::SetHasMaterial()`
     pub fn VrmlConverter_ShadingAspect_set_has_material(
         self_: *mut VrmlConverter_ShadingAspect,
         OnOff: bool,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `VrmlConverter_ShadingAspect.hxx`:65 - `VrmlConverter_ShadingAspect::HasMaterial()`
+    /// **Source:** `VrmlConverter_ShadingAspect.hxx`:62 - `VrmlConverter_ShadingAspect::HasMaterial()`
     pub fn VrmlConverter_ShadingAspect_has_material(
         self_: *const VrmlConverter_ShadingAspect,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `VrmlConverter_ShadingAspect.hxx`:67 - `VrmlConverter_ShadingAspect::DynamicType()`
+    /// **Source:** `VrmlConverter_ShadingAspect.hxx`:64 - `VrmlConverter_ShadingAspect::DynamicType()`
     pub fn VrmlConverter_ShadingAspect_dynamic_type(
         self_: *const VrmlConverter_ShadingAspect,
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// **Source:** `VrmlConverter_ShadingAspect.hxx`:67 - `VrmlConverter_ShadingAspect::get_type_name()`
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
+    /// **Source:** `VrmlConverter_ShadingAspect.hxx`:64 - `VrmlConverter_ShadingAspect::get_type_name()`
     pub fn VrmlConverter_ShadingAspect_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
-    /// **Source:** `VrmlConverter_ShadingAspect.hxx`:67 - `VrmlConverter_ShadingAspect::get_type_descriptor()`
+    /// **Source:** `VrmlConverter_ShadingAspect.hxx`:64 - `VrmlConverter_ShadingAspect::get_type_descriptor()`
     pub fn VrmlConverter_ShadingAspect_get_type_descriptor(
-    ) -> crate::OcctResult<*const HandleStandardType>;
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast VrmlConverter_ShadingAspect to Standard_Transient
     pub fn VrmlConverter_ShadingAspect_as_Standard_Transient(
         self_: *const VrmlConverter_ShadingAspect,
@@ -3445,58 +3503,58 @@ unsafe extern "C" {
     /// Wrap VrmlConverter_ShadingAspect in a Handle
     pub fn VrmlConverter_ShadingAspect_to_handle(
         obj: *mut VrmlConverter_ShadingAspect,
-    ) -> crate::OcctResult<*mut HandleVrmlConverterShadingAspect>;
+    ) -> crate::OcctResult<*mut Handle_VrmlConverter_ShadingAspect>;
     /// Destroy Handle<VrmlConverter_ShadingAspect>
-    pub fn HandleVrmlConverterShadingAspect_destructor(
-        self_: *mut HandleVrmlConverterShadingAspect,
+    pub fn Handle_VrmlConverter_ShadingAspect_destructor(
+        self_: *mut Handle_VrmlConverter_ShadingAspect,
     );
     /// Clone Handle<VrmlConverter_ShadingAspect> (increments reference count)
-    pub fn HandleVrmlConverterShadingAspect_clone(
-        self_: *const HandleVrmlConverterShadingAspect,
-    ) -> crate::OcctResult<*mut HandleVrmlConverterShadingAspect>;
+    pub fn Handle_VrmlConverter_ShadingAspect_clone(
+        self_: *const Handle_VrmlConverter_ShadingAspect,
+    ) -> crate::OcctResult<*mut Handle_VrmlConverter_ShadingAspect>;
     /// Check if Handle<VrmlConverter_ShadingAspect> is null
-    pub fn HandleVrmlConverterShadingAspect_is_null(
-        self_: *const HandleVrmlConverterShadingAspect,
+    pub fn Handle_VrmlConverter_ShadingAspect_is_null(
+        self_: *const Handle_VrmlConverter_ShadingAspect,
     ) -> bool;
     /// Dereference Handle to get *const VrmlConverter_ShadingAspect
-    pub fn HandleVrmlConverterShadingAspect_get(
-        handle: *const HandleVrmlConverterShadingAspect,
+    pub fn Handle_VrmlConverter_ShadingAspect_get(
+        handle: *const Handle_VrmlConverter_ShadingAspect,
     ) -> crate::OcctResult<*const VrmlConverter_ShadingAspect>;
     /// Dereference Handle to get *mut VrmlConverter_ShadingAspect
-    pub fn HandleVrmlConverterShadingAspect_get_mut(
-        handle: *mut HandleVrmlConverterShadingAspect,
+    pub fn Handle_VrmlConverter_ShadingAspect_get_mut(
+        handle: *mut Handle_VrmlConverter_ShadingAspect,
     ) -> crate::OcctResult<*mut VrmlConverter_ShadingAspect>;
     /// Upcast Handle<VrmlConverter_ShadingAspect> to Handle<Standard_Transient>
-    pub fn HandleVrmlConverterShadingAspect_to_HandleStandardTransient(
-        self_: *const HandleVrmlConverterShadingAspect,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn Handle_VrmlConverter_ShadingAspect_to_Handle_Standard_Transient(
+        self_: *const Handle_VrmlConverter_ShadingAspect,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn VrmlConverter_ShadingAspect_inherited_IsInstance(
         self_: *const VrmlConverter_ShadingAspect,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn VrmlConverter_ShadingAspect_inherited_IsKind(
         self_: *const VrmlConverter_ShadingAspect,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn VrmlConverter_ShadingAspect_inherited_This(
         self_: *const VrmlConverter_ShadingAspect,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn VrmlConverter_ShadingAspect_inherited_GetRefCount(
         self_: *const VrmlConverter_ShadingAspect,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn VrmlConverter_ShadingAspect_inherited_IncrementRefCounter(
         self_: *mut VrmlConverter_ShadingAspect,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn VrmlConverter_ShadingAspect_inherited_DecrementRefCounter(
         self_: *mut VrmlConverter_ShadingAspect,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn VrmlConverter_ShadingAspect_inherited_Delete(
         self_: *const VrmlConverter_ShadingAspect,
     ) -> *const std::ffi::c_char;
@@ -3510,31 +3568,31 @@ unsafe extern "C" {
     /// **Source:** `VrmlConverter_WFDeflectionRestrictedFace.hxx`:40 - `VrmlConverter_WFDeflectionRestrictedFace::Add()`
     pub fn VrmlConverter_WFDeflectionRestrictedFace_add_ostream_handlebrepadaptorsurface_handlevrmlconverterdrawer(
         anOStream: *mut Standard_OStream,
-        aFace: *const HandleBRepAdaptorSurface,
-        aDrawer: *const HandleVrmlConverterDrawer,
+        aFace: *const Handle_BRepAdaptor_Surface,
+        aDrawer: *const Handle_VrmlConverter_Drawer,
     ) -> *const std::ffi::c_char;
     /// **Source:** `VrmlConverter_WFDeflectionRestrictedFace.hxx`:44 - `VrmlConverter_WFDeflectionRestrictedFace::AddUIso()`
     pub fn VrmlConverter_WFDeflectionRestrictedFace_add_u_iso(
         anOStream: *mut Standard_OStream,
-        aFace: *const HandleBRepAdaptorSurface,
-        aDrawer: *const HandleVrmlConverterDrawer,
+        aFace: *const Handle_BRepAdaptor_Surface,
+        aDrawer: *const Handle_VrmlConverter_Drawer,
     ) -> *const std::ffi::c_char;
     /// **Source:** `VrmlConverter_WFDeflectionRestrictedFace.hxx`:48 - `VrmlConverter_WFDeflectionRestrictedFace::AddVIso()`
     pub fn VrmlConverter_WFDeflectionRestrictedFace_add_v_iso(
         anOStream: *mut Standard_OStream,
-        aFace: *const HandleBRepAdaptorSurface,
-        aDrawer: *const HandleVrmlConverterDrawer,
+        aFace: *const Handle_BRepAdaptor_Surface,
+        aDrawer: *const Handle_VrmlConverter_Drawer,
     ) -> *const std::ffi::c_char;
     /// **Source:** `VrmlConverter_WFDeflectionRestrictedFace.hxx`:52 - `VrmlConverter_WFDeflectionRestrictedFace::Add()`
     pub fn VrmlConverter_WFDeflectionRestrictedFace_add_ostream_handlebrepadaptorsurface_bool2_real_int2_handlevrmlconverterdrawer(
         anOStream: *mut Standard_OStream,
-        aFace: *const HandleBRepAdaptorSurface,
+        aFace: *const Handle_BRepAdaptor_Surface,
         DrawUIso: bool,
         DrawVIso: bool,
         Deflection: f64,
         NBUiso: i32,
         NBViso: i32,
-        aDrawer: *const HandleVrmlConverterDrawer,
+        aDrawer: *const Handle_VrmlConverter_Drawer,
     ) -> *const std::ffi::c_char;
     // ======================== VrmlConverter_WFDeflectionShape ========================
     pub fn VrmlConverter_WFDeflectionShape_destructor(self_: *mut VrmlConverter_WFDeflectionShape);
@@ -3545,7 +3603,7 @@ unsafe extern "C" {
     pub fn VrmlConverter_WFDeflectionShape_add(
         anOStream: *mut Standard_OStream,
         aShape: *const TopoDS_Shape,
-        aDrawer: *const HandleVrmlConverterDrawer,
+        aDrawer: *const Handle_VrmlConverter_Drawer,
     ) -> *const std::ffi::c_char;
     // ======================== VrmlConverter_WFRestrictedFace ========================
     pub fn VrmlConverter_WFRestrictedFace_destructor(self_: *mut VrmlConverter_WFRestrictedFace);
@@ -3555,30 +3613,30 @@ unsafe extern "C" {
     /// **Source:** `VrmlConverter_WFRestrictedFace.hxx`:39 - `VrmlConverter_WFRestrictedFace::Add()`
     pub fn VrmlConverter_WFRestrictedFace_add_ostream_handlebrepadaptorsurface_handlevrmlconverterdrawer(
         anOStream: *mut Standard_OStream,
-        aFace: *const HandleBRepAdaptorSurface,
-        aDrawer: *const HandleVrmlConverterDrawer,
+        aFace: *const Handle_BRepAdaptor_Surface,
+        aDrawer: *const Handle_VrmlConverter_Drawer,
     ) -> *const std::ffi::c_char;
     /// **Source:** `VrmlConverter_WFRestrictedFace.hxx`:43 - `VrmlConverter_WFRestrictedFace::AddUIso()`
     pub fn VrmlConverter_WFRestrictedFace_add_u_iso(
         anOStream: *mut Standard_OStream,
-        aFace: *const HandleBRepAdaptorSurface,
-        aDrawer: *const HandleVrmlConverterDrawer,
+        aFace: *const Handle_BRepAdaptor_Surface,
+        aDrawer: *const Handle_VrmlConverter_Drawer,
     ) -> *const std::ffi::c_char;
     /// **Source:** `VrmlConverter_WFRestrictedFace.hxx`:47 - `VrmlConverter_WFRestrictedFace::AddVIso()`
     pub fn VrmlConverter_WFRestrictedFace_add_v_iso(
         anOStream: *mut Standard_OStream,
-        aFace: *const HandleBRepAdaptorSurface,
-        aDrawer: *const HandleVrmlConverterDrawer,
+        aFace: *const Handle_BRepAdaptor_Surface,
+        aDrawer: *const Handle_VrmlConverter_Drawer,
     ) -> *const std::ffi::c_char;
     /// **Source:** `VrmlConverter_WFRestrictedFace.hxx`:51 - `VrmlConverter_WFRestrictedFace::Add()`
     pub fn VrmlConverter_WFRestrictedFace_add_ostream_handlebrepadaptorsurface_bool2_int2_handlevrmlconverterdrawer(
         anOStream: *mut Standard_OStream,
-        aFace: *const HandleBRepAdaptorSurface,
+        aFace: *const Handle_BRepAdaptor_Surface,
         DrawUIso: bool,
         DrawVIso: bool,
         NBUiso: i32,
         NBViso: i32,
-        aDrawer: *const HandleVrmlConverterDrawer,
+        aDrawer: *const Handle_VrmlConverter_Drawer,
     ) -> *const std::ffi::c_char;
     // ======================== VrmlConverter_WFShape ========================
     pub fn VrmlConverter_WFShape_destructor(self_: *mut VrmlConverter_WFShape);
@@ -3588,7 +3646,7 @@ unsafe extern "C" {
     pub fn VrmlConverter_WFShape_add(
         anOStream: *mut Standard_OStream,
         aShape: *const TopoDS_Shape,
-        aDrawer: *const HandleVrmlConverterDrawer,
+        aDrawer: *const Handle_VrmlConverter_Drawer,
     ) -> *const std::ffi::c_char;
     // ======================== VrmlData_Appearance ========================
     pub fn VrmlData_Appearance_destructor(self_: *mut VrmlData_Appearance);
@@ -3602,57 +3660,58 @@ unsafe extern "C" {
     /// **Source:** `VrmlData_Appearance.hxx`:47 - `VrmlData_Appearance::Material()`
     pub fn VrmlData_Appearance_material(
         self_: *const VrmlData_Appearance,
-    ) -> crate::OcctResult<*const HandleVrmlDataMaterial>;
+    ) -> crate::OcctResult<*const Handle_VrmlData_Material>;
     /// **Source:** `VrmlData_Appearance.hxx`:52 - `VrmlData_Appearance::Texture()`
     pub fn VrmlData_Appearance_texture(
         self_: *const VrmlData_Appearance,
-    ) -> crate::OcctResult<*const HandleVrmlDataTexture>;
+    ) -> crate::OcctResult<*const Handle_VrmlData_Texture>;
     /// **Source:** `VrmlData_Appearance.hxx`:57 - `VrmlData_Appearance::TextureTransform()`
     pub fn VrmlData_Appearance_texture_transform(
         self_: *const VrmlData_Appearance,
-    ) -> crate::OcctResult<*const HandleVrmlDataTextureTransform>;
-    /// **Source:** `VrmlData_Appearance.hxx`:62 - `VrmlData_Appearance::SetMaterial()`
+    ) -> crate::OcctResult<*const Handle_VrmlData_TextureTransform>;
+    /// **Source:** `VrmlData_Appearance.hxx`:65 - `VrmlData_Appearance::SetMaterial()`
     pub fn VrmlData_Appearance_set_material(
         self_: *mut VrmlData_Appearance,
-        theMat: *const HandleVrmlDataMaterial,
+        theMat: *const Handle_VrmlData_Material,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `VrmlData_Appearance.hxx`:67 - `VrmlData_Appearance::SetTexture()`
+    /// **Source:** `VrmlData_Appearance.hxx`:70 - `VrmlData_Appearance::SetTexture()`
     pub fn VrmlData_Appearance_set_texture(
         self_: *mut VrmlData_Appearance,
-        theTexture: *const HandleVrmlDataTexture,
+        theTexture: *const Handle_VrmlData_Texture,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `VrmlData_Appearance.hxx`:72 - `VrmlData_Appearance::SetTextureTransform()`
+    /// **Source:** `VrmlData_Appearance.hxx`:78 - `VrmlData_Appearance::SetTextureTransform()`
     pub fn VrmlData_Appearance_set_texture_transform(
         self_: *mut VrmlData_Appearance,
-        theTT: *const HandleVrmlDataTextureTransform,
+        theTT: *const Handle_VrmlData_TextureTransform,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `VrmlData_Appearance.hxx`:82 - `VrmlData_Appearance::Clone()`
+    /// **Source:** `VrmlData_Appearance.hxx`:88 - `VrmlData_Appearance::Clone()`
     pub fn VrmlData_Appearance_clone(
         self_: *const VrmlData_Appearance,
-        arg0: *const HandleVrmlDataNode,
-    ) -> crate::OcctResult<*mut HandleVrmlDataNode>;
-    /// **Source:** `VrmlData_Appearance.hxx`:87 - `VrmlData_Appearance::Read()`
+        arg0: *const Handle_VrmlData_Node,
+    ) -> crate::OcctResult<*mut Handle_VrmlData_Node>;
+    /// **Source:** `VrmlData_Appearance.hxx`:93 - `VrmlData_Appearance::Read()`
     pub fn VrmlData_Appearance_read(
         self_: *mut VrmlData_Appearance,
         theBuffer: *mut VrmlData_InBuffer,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `VrmlData_Appearance.hxx`:92 - `VrmlData_Appearance::Write()`
+    /// **Source:** `VrmlData_Appearance.hxx`:98 - `VrmlData_Appearance::Write()`
     pub fn VrmlData_Appearance_write(
         self_: *const VrmlData_Appearance,
         thePrefix: *const std::ffi::c_char,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `VrmlData_Appearance.hxx`:97 - `VrmlData_Appearance::IsDefault()`
+    /// **Source:** `VrmlData_Appearance.hxx`:103 - `VrmlData_Appearance::IsDefault()`
     pub fn VrmlData_Appearance_is_default(
         self_: *const VrmlData_Appearance,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `VrmlData_Appearance.hxx`:111 - `VrmlData_Appearance::DynamicType()`
+    /// **Source:** `VrmlData_Appearance.hxx`:114 - `VrmlData_Appearance::DynamicType()`
     pub fn VrmlData_Appearance_dynamic_type(
         self_: *const VrmlData_Appearance,
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// **Source:** `VrmlData_Appearance.hxx`:111 - `VrmlData_Appearance::get_type_name()`
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
+    /// **Source:** `VrmlData_Appearance.hxx`:114 - `VrmlData_Appearance::get_type_name()`
     pub fn VrmlData_Appearance_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
-    /// **Source:** `VrmlData_Appearance.hxx`:111 - `VrmlData_Appearance::get_type_descriptor()`
-    pub fn VrmlData_Appearance_get_type_descriptor() -> crate::OcctResult<*const HandleStandardType>;
+    /// **Source:** `VrmlData_Appearance.hxx`:114 - `VrmlData_Appearance::get_type_descriptor()`
+    pub fn VrmlData_Appearance_get_type_descriptor(
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast VrmlData_Appearance to VrmlData_Node
     pub fn VrmlData_Appearance_as_VrmlData_Node(
         self_: *const VrmlData_Appearance,
@@ -3672,73 +3731,73 @@ unsafe extern "C" {
     /// Wrap VrmlData_Appearance in a Handle
     pub fn VrmlData_Appearance_to_handle(
         obj: *mut VrmlData_Appearance,
-    ) -> crate::OcctResult<*mut HandleVrmlDataAppearance>;
+    ) -> crate::OcctResult<*mut Handle_VrmlData_Appearance>;
     /// Destroy Handle<VrmlData_Appearance>
-    pub fn HandleVrmlDataAppearance_destructor(self_: *mut HandleVrmlDataAppearance);
+    pub fn Handle_VrmlData_Appearance_destructor(self_: *mut Handle_VrmlData_Appearance);
     /// Clone Handle<VrmlData_Appearance> (increments reference count)
-    pub fn HandleVrmlDataAppearance_clone(
-        self_: *const HandleVrmlDataAppearance,
-    ) -> crate::OcctResult<*mut HandleVrmlDataAppearance>;
+    pub fn Handle_VrmlData_Appearance_clone(
+        self_: *const Handle_VrmlData_Appearance,
+    ) -> crate::OcctResult<*mut Handle_VrmlData_Appearance>;
     /// Check if Handle<VrmlData_Appearance> is null
-    pub fn HandleVrmlDataAppearance_is_null(self_: *const HandleVrmlDataAppearance) -> bool;
+    pub fn Handle_VrmlData_Appearance_is_null(self_: *const Handle_VrmlData_Appearance) -> bool;
     /// Dereference Handle to get *const VrmlData_Appearance
-    pub fn HandleVrmlDataAppearance_get(
-        handle: *const HandleVrmlDataAppearance,
+    pub fn Handle_VrmlData_Appearance_get(
+        handle: *const Handle_VrmlData_Appearance,
     ) -> crate::OcctResult<*const VrmlData_Appearance>;
     /// Dereference Handle to get *mut VrmlData_Appearance
-    pub fn HandleVrmlDataAppearance_get_mut(
-        handle: *mut HandleVrmlDataAppearance,
+    pub fn Handle_VrmlData_Appearance_get_mut(
+        handle: *mut Handle_VrmlData_Appearance,
     ) -> crate::OcctResult<*mut VrmlData_Appearance>;
     /// Upcast Handle<VrmlData_Appearance> to Handle<VrmlData_Node>
-    pub fn HandleVrmlDataAppearance_to_HandleVrmlDataNode(
-        self_: *const HandleVrmlDataAppearance,
-    ) -> crate::OcctResult<*mut HandleVrmlDataNode>;
+    pub fn Handle_VrmlData_Appearance_to_Handle_VrmlData_Node(
+        self_: *const Handle_VrmlData_Appearance,
+    ) -> crate::OcctResult<*mut Handle_VrmlData_Node>;
     /// Upcast Handle<VrmlData_Appearance> to Handle<Standard_Transient>
-    pub fn HandleVrmlDataAppearance_to_HandleStandardTransient(
-        self_: *const HandleVrmlDataAppearance,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
-    /// Inherited: **Source:** `VrmlData_Node.hxx`:53 - `VrmlData_Node::Scene()`
+    pub fn Handle_VrmlData_Appearance_to_Handle_Standard_Transient(
+        self_: *const Handle_VrmlData_Appearance,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
+    /// Inherited: **Source:** `VrmlData_Node.hxx`:54 - `VrmlData_Node::Scene()`
     pub fn VrmlData_Appearance_inherited_Scene(
         self_: *const VrmlData_Appearance,
     ) -> crate::OcctResult<*const VrmlData_Scene>;
-    /// Inherited: **Source:** `VrmlData_Node.hxx`:71 - `VrmlData_Node::ReadNode()`
+    /// Inherited: **Source:** `VrmlData_Node.hxx`:72 - `VrmlData_Node::ReadNode()`
     pub fn VrmlData_Appearance_inherited_ReadNode(
         self_: *mut VrmlData_Appearance,
         theBuffer: *mut VrmlData_InBuffer,
-        theNode: *mut HandleVrmlDataNode,
-        Type: *const HandleStandardType,
+        theNode: *mut Handle_VrmlData_Node,
+        Type: *const Handle_Standard_Type,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `VrmlData_Node.hxx`:93 - `VrmlData_Node::WriteClosing()`
+    /// Inherited: **Source:** `VrmlData_Node.hxx`:94 - `VrmlData_Node::WriteClosing()`
     pub fn VrmlData_Appearance_inherited_WriteClosing(
         self_: *const VrmlData_Appearance,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn VrmlData_Appearance_inherited_IsInstance(
         self_: *const VrmlData_Appearance,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn VrmlData_Appearance_inherited_IsKind(
         self_: *const VrmlData_Appearance,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn VrmlData_Appearance_inherited_This(
         self_: *const VrmlData_Appearance,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn VrmlData_Appearance_inherited_GetRefCount(
         self_: *const VrmlData_Appearance,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn VrmlData_Appearance_inherited_IncrementRefCounter(
         self_: *mut VrmlData_Appearance,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn VrmlData_Appearance_inherited_DecrementRefCounter(
         self_: *mut VrmlData_Appearance,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn VrmlData_Appearance_inherited_Delete(
         self_: *const VrmlData_Appearance,
     ) -> *const std::ffi::c_char;
@@ -3776,18 +3835,19 @@ unsafe extern "C" {
         theName: *const std::ffi::c_char,
         isScale: bool,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `VrmlData_ArrayVec3d.hxx`:103 - `VrmlData_ArrayVec3d::IsDefault()`
+    /// **Source:** `VrmlData_ArrayVec3d.hxx`:102 - `VrmlData_ArrayVec3d::IsDefault()`
     pub fn VrmlData_ArrayVec3d_is_default(
         self_: *const VrmlData_ArrayVec3d,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `VrmlData_ArrayVec3d.hxx`:124 - `VrmlData_ArrayVec3d::DynamicType()`
+    /// **Source:** `VrmlData_ArrayVec3d.hxx`:123 - `VrmlData_ArrayVec3d::DynamicType()`
     pub fn VrmlData_ArrayVec3d_dynamic_type(
         self_: *const VrmlData_ArrayVec3d,
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// **Source:** `VrmlData_ArrayVec3d.hxx`:124 - `VrmlData_ArrayVec3d::get_type_name()`
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
+    /// **Source:** `VrmlData_ArrayVec3d.hxx`:123 - `VrmlData_ArrayVec3d::get_type_name()`
     pub fn VrmlData_ArrayVec3d_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
-    /// **Source:** `VrmlData_ArrayVec3d.hxx`:124 - `VrmlData_ArrayVec3d::get_type_descriptor()`
-    pub fn VrmlData_ArrayVec3d_get_type_descriptor() -> crate::OcctResult<*const HandleStandardType>;
+    /// **Source:** `VrmlData_ArrayVec3d.hxx`:123 - `VrmlData_ArrayVec3d::get_type_descriptor()`
+    pub fn VrmlData_ArrayVec3d_get_type_descriptor(
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast VrmlData_ArrayVec3d to VrmlData_Node
     pub fn VrmlData_ArrayVec3d_as_VrmlData_Node(
         self_: *const VrmlData_ArrayVec3d,
@@ -3805,93 +3865,93 @@ unsafe extern "C" {
         self_: *mut VrmlData_ArrayVec3d,
     ) -> crate::OcctResult<*mut Standard_Transient>;
     /// Destroy Handle<VrmlData_ArrayVec3d>
-    pub fn HandleVrmlDataArrayVec3d_destructor(self_: *mut HandleVrmlDataArrayVec3d);
+    pub fn Handle_VrmlData_ArrayVec3d_destructor(self_: *mut Handle_VrmlData_ArrayVec3d);
     /// Clone Handle<VrmlData_ArrayVec3d> (increments reference count)
-    pub fn HandleVrmlDataArrayVec3d_clone(
-        self_: *const HandleVrmlDataArrayVec3d,
-    ) -> crate::OcctResult<*mut HandleVrmlDataArrayVec3d>;
+    pub fn Handle_VrmlData_ArrayVec3d_clone(
+        self_: *const Handle_VrmlData_ArrayVec3d,
+    ) -> crate::OcctResult<*mut Handle_VrmlData_ArrayVec3d>;
     /// Check if Handle<VrmlData_ArrayVec3d> is null
-    pub fn HandleVrmlDataArrayVec3d_is_null(self_: *const HandleVrmlDataArrayVec3d) -> bool;
+    pub fn Handle_VrmlData_ArrayVec3d_is_null(self_: *const Handle_VrmlData_ArrayVec3d) -> bool;
     /// Dereference Handle to get *const VrmlData_ArrayVec3d
-    pub fn HandleVrmlDataArrayVec3d_get(
-        handle: *const HandleVrmlDataArrayVec3d,
+    pub fn Handle_VrmlData_ArrayVec3d_get(
+        handle: *const Handle_VrmlData_ArrayVec3d,
     ) -> crate::OcctResult<*const VrmlData_ArrayVec3d>;
     /// Dereference Handle to get *mut VrmlData_ArrayVec3d
-    pub fn HandleVrmlDataArrayVec3d_get_mut(
-        handle: *mut HandleVrmlDataArrayVec3d,
+    pub fn Handle_VrmlData_ArrayVec3d_get_mut(
+        handle: *mut Handle_VrmlData_ArrayVec3d,
     ) -> crate::OcctResult<*mut VrmlData_ArrayVec3d>;
     /// Upcast Handle<VrmlData_ArrayVec3d> to Handle<VrmlData_Node>
-    pub fn HandleVrmlDataArrayVec3d_to_HandleVrmlDataNode(
-        self_: *const HandleVrmlDataArrayVec3d,
-    ) -> crate::OcctResult<*mut HandleVrmlDataNode>;
+    pub fn Handle_VrmlData_ArrayVec3d_to_Handle_VrmlData_Node(
+        self_: *const Handle_VrmlData_ArrayVec3d,
+    ) -> crate::OcctResult<*mut Handle_VrmlData_Node>;
     /// Upcast Handle<VrmlData_ArrayVec3d> to Handle<Standard_Transient>
-    pub fn HandleVrmlDataArrayVec3d_to_HandleStandardTransient(
-        self_: *const HandleVrmlDataArrayVec3d,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
+    pub fn Handle_VrmlData_ArrayVec3d_to_Handle_Standard_Transient(
+        self_: *const Handle_VrmlData_ArrayVec3d,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
     /// Downcast Handle<VrmlData_ArrayVec3d> to Handle<VrmlData_Color> (returns null on failure)
-    pub fn HandleVrmlDataArrayVec3d_downcast_to_HandleVrmlDataColor(
-        self_: *const HandleVrmlDataArrayVec3d,
-    ) -> crate::OcctResult<*mut HandleVrmlDataColor>;
+    pub fn Handle_VrmlData_ArrayVec3d_downcast_to_Handle_VrmlData_Color(
+        self_: *const Handle_VrmlData_ArrayVec3d,
+    ) -> crate::OcctResult<*mut Handle_VrmlData_Color>;
     /// Downcast Handle<VrmlData_ArrayVec3d> to Handle<VrmlData_Coordinate> (returns null on failure)
-    pub fn HandleVrmlDataArrayVec3d_downcast_to_HandleVrmlDataCoordinate(
-        self_: *const HandleVrmlDataArrayVec3d,
-    ) -> crate::OcctResult<*mut HandleVrmlDataCoordinate>;
+    pub fn Handle_VrmlData_ArrayVec3d_downcast_to_Handle_VrmlData_Coordinate(
+        self_: *const Handle_VrmlData_ArrayVec3d,
+    ) -> crate::OcctResult<*mut Handle_VrmlData_Coordinate>;
     /// Downcast Handle<VrmlData_ArrayVec3d> to Handle<VrmlData_Normal> (returns null on failure)
-    pub fn HandleVrmlDataArrayVec3d_downcast_to_HandleVrmlDataNormal(
-        self_: *const HandleVrmlDataArrayVec3d,
-    ) -> crate::OcctResult<*mut HandleVrmlDataNormal>;
-    /// Inherited: **Source:** `VrmlData_Node.hxx`:53 - `VrmlData_Node::Scene()`
+    pub fn Handle_VrmlData_ArrayVec3d_downcast_to_Handle_VrmlData_Normal(
+        self_: *const Handle_VrmlData_ArrayVec3d,
+    ) -> crate::OcctResult<*mut Handle_VrmlData_Normal>;
+    /// Inherited: **Source:** `VrmlData_Node.hxx`:54 - `VrmlData_Node::Scene()`
     pub fn VrmlData_ArrayVec3d_inherited_Scene(
         self_: *const VrmlData_ArrayVec3d,
     ) -> crate::OcctResult<*const VrmlData_Scene>;
-    /// Inherited: **Source:** `VrmlData_Node.hxx`:71 - `VrmlData_Node::ReadNode()`
+    /// Inherited: **Source:** `VrmlData_Node.hxx`:72 - `VrmlData_Node::ReadNode()`
     pub fn VrmlData_ArrayVec3d_inherited_ReadNode(
         self_: *mut VrmlData_ArrayVec3d,
         theBuffer: *mut VrmlData_InBuffer,
-        theNode: *mut HandleVrmlDataNode,
-        Type: *const HandleStandardType,
+        theNode: *mut Handle_VrmlData_Node,
+        Type: *const Handle_Standard_Type,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `VrmlData_Node.hxx`:78 - `VrmlData_Node::Read()`
+    /// Inherited: **Source:** `VrmlData_Node.hxx`:79 - `VrmlData_Node::Read()`
     pub fn VrmlData_ArrayVec3d_inherited_Read(
         self_: *mut VrmlData_ArrayVec3d,
         theBuffer: *mut VrmlData_InBuffer,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `VrmlData_Node.hxx`:93 - `VrmlData_Node::WriteClosing()`
+    /// Inherited: **Source:** `VrmlData_Node.hxx`:94 - `VrmlData_Node::WriteClosing()`
     pub fn VrmlData_ArrayVec3d_inherited_WriteClosing(
         self_: *const VrmlData_ArrayVec3d,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `VrmlData_Node.hxx`:102 - `VrmlData_Node::Clone()`
+    /// Inherited: **Source:** `VrmlData_Node.hxx`:103 - `VrmlData_Node::Clone()`
     pub fn VrmlData_ArrayVec3d_inherited_Clone(
         self_: *const VrmlData_ArrayVec3d,
-        arg0: *const HandleVrmlDataNode,
-    ) -> crate::OcctResult<*mut HandleVrmlDataNode>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+        arg0: *const Handle_VrmlData_Node,
+    ) -> crate::OcctResult<*mut Handle_VrmlData_Node>;
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn VrmlData_ArrayVec3d_inherited_IsInstance(
         self_: *const VrmlData_ArrayVec3d,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn VrmlData_ArrayVec3d_inherited_IsKind(
         self_: *const VrmlData_ArrayVec3d,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn VrmlData_ArrayVec3d_inherited_This(
         self_: *const VrmlData_ArrayVec3d,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn VrmlData_ArrayVec3d_inherited_GetRefCount(
         self_: *const VrmlData_ArrayVec3d,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn VrmlData_ArrayVec3d_inherited_IncrementRefCounter(
         self_: *mut VrmlData_ArrayVec3d,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn VrmlData_ArrayVec3d_inherited_DecrementRefCounter(
         self_: *mut VrmlData_ArrayVec3d,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn VrmlData_ArrayVec3d_inherited_Delete(
         self_: *const VrmlData_ArrayVec3d,
     ) -> *const std::ffi::c_char;
@@ -3917,12 +3977,12 @@ unsafe extern "C" {
     /// **Source:** `VrmlData_Box.hxx`:71 - `VrmlData_Box::TShape()`
     pub fn VrmlData_Box_t_shape(
         self_: *mut VrmlData_Box,
-    ) -> crate::OcctResult<*const HandleTopoDSTShape>;
+    ) -> crate::OcctResult<*const Handle_TopoDS_TShape>;
     /// **Source:** `VrmlData_Box.hxx`:78 - `VrmlData_Box::Clone()`
     pub fn VrmlData_Box_clone(
         self_: *const VrmlData_Box,
-        theOther: *const HandleVrmlDataNode,
-    ) -> crate::OcctResult<*mut HandleVrmlDataNode>;
+        theOther: *const Handle_VrmlData_Node,
+    ) -> crate::OcctResult<*mut Handle_VrmlData_Node>;
     /// **Source:** `VrmlData_Box.hxx`:84 - `VrmlData_Box::Read()`
     pub fn VrmlData_Box_read(
         self_: *mut VrmlData_Box,
@@ -3936,11 +3996,11 @@ unsafe extern "C" {
     /// **Source:** `VrmlData_Box.hxx`:98 - `VrmlData_Box::DynamicType()`
     pub fn VrmlData_Box_dynamic_type(
         self_: *const VrmlData_Box,
-    ) -> crate::OcctResult<*const HandleStandardType>;
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// **Source:** `VrmlData_Box.hxx`:98 - `VrmlData_Box::get_type_name()`
     pub fn VrmlData_Box_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
     /// **Source:** `VrmlData_Box.hxx`:98 - `VrmlData_Box::get_type_descriptor()`
-    pub fn VrmlData_Box_get_type_descriptor() -> crate::OcctResult<*const HandleStandardType>;
+    pub fn VrmlData_Box_get_type_descriptor() -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast VrmlData_Box to VrmlData_Geometry
     pub fn VrmlData_Box_as_VrmlData_Geometry(
         self_: *const VrmlData_Box,
@@ -3968,78 +4028,78 @@ unsafe extern "C" {
     /// Wrap VrmlData_Box in a Handle
     pub fn VrmlData_Box_to_handle(
         obj: *mut VrmlData_Box,
-    ) -> crate::OcctResult<*mut HandleVrmlDataBox>;
+    ) -> crate::OcctResult<*mut Handle_VrmlData_Box>;
     /// Destroy Handle<VrmlData_Box>
-    pub fn HandleVrmlDataBox_destructor(self_: *mut HandleVrmlDataBox);
+    pub fn Handle_VrmlData_Box_destructor(self_: *mut Handle_VrmlData_Box);
     /// Clone Handle<VrmlData_Box> (increments reference count)
-    pub fn HandleVrmlDataBox_clone(
-        self_: *const HandleVrmlDataBox,
-    ) -> crate::OcctResult<*mut HandleVrmlDataBox>;
+    pub fn Handle_VrmlData_Box_clone(
+        self_: *const Handle_VrmlData_Box,
+    ) -> crate::OcctResult<*mut Handle_VrmlData_Box>;
     /// Check if Handle<VrmlData_Box> is null
-    pub fn HandleVrmlDataBox_is_null(self_: *const HandleVrmlDataBox) -> bool;
+    pub fn Handle_VrmlData_Box_is_null(self_: *const Handle_VrmlData_Box) -> bool;
     /// Dereference Handle to get *const VrmlData_Box
-    pub fn HandleVrmlDataBox_get(
-        handle: *const HandleVrmlDataBox,
+    pub fn Handle_VrmlData_Box_get(
+        handle: *const Handle_VrmlData_Box,
     ) -> crate::OcctResult<*const VrmlData_Box>;
     /// Dereference Handle to get *mut VrmlData_Box
-    pub fn HandleVrmlDataBox_get_mut(
-        handle: *mut HandleVrmlDataBox,
+    pub fn Handle_VrmlData_Box_get_mut(
+        handle: *mut Handle_VrmlData_Box,
     ) -> crate::OcctResult<*mut VrmlData_Box>;
     /// Upcast Handle<VrmlData_Box> to Handle<VrmlData_Geometry>
-    pub fn HandleVrmlDataBox_to_HandleVrmlDataGeometry(
-        self_: *const HandleVrmlDataBox,
-    ) -> crate::OcctResult<*mut HandleVrmlDataGeometry>;
+    pub fn Handle_VrmlData_Box_to_Handle_VrmlData_Geometry(
+        self_: *const Handle_VrmlData_Box,
+    ) -> crate::OcctResult<*mut Handle_VrmlData_Geometry>;
     /// Upcast Handle<VrmlData_Box> to Handle<VrmlData_Node>
-    pub fn HandleVrmlDataBox_to_HandleVrmlDataNode(
-        self_: *const HandleVrmlDataBox,
-    ) -> crate::OcctResult<*mut HandleVrmlDataNode>;
+    pub fn Handle_VrmlData_Box_to_Handle_VrmlData_Node(
+        self_: *const Handle_VrmlData_Box,
+    ) -> crate::OcctResult<*mut Handle_VrmlData_Node>;
     /// Upcast Handle<VrmlData_Box> to Handle<Standard_Transient>
-    pub fn HandleVrmlDataBox_to_HandleStandardTransient(
-        self_: *const HandleVrmlDataBox,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
-    /// Inherited: **Source:** `VrmlData_Node.hxx`:53 - `VrmlData_Node::Scene()`
+    pub fn Handle_VrmlData_Box_to_Handle_Standard_Transient(
+        self_: *const Handle_VrmlData_Box,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
+    /// Inherited: **Source:** `VrmlData_Node.hxx`:54 - `VrmlData_Node::Scene()`
     pub fn VrmlData_Box_inherited_Scene(
         self_: *const VrmlData_Box,
     ) -> crate::OcctResult<*const VrmlData_Scene>;
-    /// Inherited: **Source:** `VrmlData_Node.hxx`:71 - `VrmlData_Node::ReadNode()`
+    /// Inherited: **Source:** `VrmlData_Node.hxx`:72 - `VrmlData_Node::ReadNode()`
     pub fn VrmlData_Box_inherited_ReadNode(
         self_: *mut VrmlData_Box,
         theBuffer: *mut VrmlData_InBuffer,
-        theNode: *mut HandleVrmlDataNode,
-        Type: *const HandleStandardType,
+        theNode: *mut Handle_VrmlData_Node,
+        Type: *const Handle_Standard_Type,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `VrmlData_Node.hxx`:88 - `VrmlData_Node::IsDefault()`
+    /// Inherited: **Source:** `VrmlData_Node.hxx`:89 - `VrmlData_Node::IsDefault()`
     pub fn VrmlData_Box_inherited_IsDefault(self_: *const VrmlData_Box) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `VrmlData_Node.hxx`:93 - `VrmlData_Node::WriteClosing()`
+    /// Inherited: **Source:** `VrmlData_Node.hxx`:94 - `VrmlData_Node::WriteClosing()`
     pub fn VrmlData_Box_inherited_WriteClosing(
         self_: *const VrmlData_Box,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn VrmlData_Box_inherited_IsInstance(
         self_: *const VrmlData_Box,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn VrmlData_Box_inherited_IsKind(
         self_: *const VrmlData_Box,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn VrmlData_Box_inherited_This(
         self_: *const VrmlData_Box,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn VrmlData_Box_inherited_GetRefCount(self_: *const VrmlData_Box)
         -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn VrmlData_Box_inherited_IncrementRefCounter(
         self_: *mut VrmlData_Box,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn VrmlData_Box_inherited_DecrementRefCounter(
         self_: *mut VrmlData_Box,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn VrmlData_Box_inherited_Delete(self_: *const VrmlData_Box) -> *const std::ffi::c_char;
     // ======================== VrmlData_Color ========================
     pub fn VrmlData_Color_destructor(self_: *mut VrmlData_Color);
@@ -4066,8 +4126,8 @@ unsafe extern "C" {
     /// **Source:** `VrmlData_Color.hxx`:73 - `VrmlData_Color::Clone()`
     pub fn VrmlData_Color_clone(
         self_: *const VrmlData_Color,
-        theOther: *const HandleVrmlDataNode,
-    ) -> crate::OcctResult<*mut HandleVrmlDataNode>;
+        theOther: *const Handle_VrmlData_Node,
+    ) -> crate::OcctResult<*mut Handle_VrmlData_Node>;
     /// **Source:** `VrmlData_Color.hxx`:79 - `VrmlData_Color::Read()`
     pub fn VrmlData_Color_read(
         self_: *mut VrmlData_Color,
@@ -4078,14 +4138,14 @@ unsafe extern "C" {
         self_: *const VrmlData_Color,
         thePrefix: *const std::ffi::c_char,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `VrmlData_Color.hxx`:91 - `VrmlData_Color::DynamicType()`
+    /// **Source:** `VrmlData_Color.hxx`:88 - `VrmlData_Color::DynamicType()`
     pub fn VrmlData_Color_dynamic_type(
         self_: *const VrmlData_Color,
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// **Source:** `VrmlData_Color.hxx`:91 - `VrmlData_Color::get_type_name()`
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
+    /// **Source:** `VrmlData_Color.hxx`:88 - `VrmlData_Color::get_type_name()`
     pub fn VrmlData_Color_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
-    /// **Source:** `VrmlData_Color.hxx`:91 - `VrmlData_Color::get_type_descriptor()`
-    pub fn VrmlData_Color_get_type_descriptor() -> crate::OcctResult<*const HandleStandardType>;
+    /// **Source:** `VrmlData_Color.hxx`:88 - `VrmlData_Color::get_type_descriptor()`
+    pub fn VrmlData_Color_get_type_descriptor() -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast VrmlData_Color to VrmlData_ArrayVec3d
     pub fn VrmlData_Color_as_VrmlData_ArrayVec3d(
         self_: *const VrmlData_Color,
@@ -4113,35 +4173,35 @@ unsafe extern "C" {
     /// Wrap VrmlData_Color in a Handle
     pub fn VrmlData_Color_to_handle(
         obj: *mut VrmlData_Color,
-    ) -> crate::OcctResult<*mut HandleVrmlDataColor>;
+    ) -> crate::OcctResult<*mut Handle_VrmlData_Color>;
     /// Destroy Handle<VrmlData_Color>
-    pub fn HandleVrmlDataColor_destructor(self_: *mut HandleVrmlDataColor);
+    pub fn Handle_VrmlData_Color_destructor(self_: *mut Handle_VrmlData_Color);
     /// Clone Handle<VrmlData_Color> (increments reference count)
-    pub fn HandleVrmlDataColor_clone(
-        self_: *const HandleVrmlDataColor,
-    ) -> crate::OcctResult<*mut HandleVrmlDataColor>;
+    pub fn Handle_VrmlData_Color_clone(
+        self_: *const Handle_VrmlData_Color,
+    ) -> crate::OcctResult<*mut Handle_VrmlData_Color>;
     /// Check if Handle<VrmlData_Color> is null
-    pub fn HandleVrmlDataColor_is_null(self_: *const HandleVrmlDataColor) -> bool;
+    pub fn Handle_VrmlData_Color_is_null(self_: *const Handle_VrmlData_Color) -> bool;
     /// Dereference Handle to get *const VrmlData_Color
-    pub fn HandleVrmlDataColor_get(
-        handle: *const HandleVrmlDataColor,
+    pub fn Handle_VrmlData_Color_get(
+        handle: *const Handle_VrmlData_Color,
     ) -> crate::OcctResult<*const VrmlData_Color>;
     /// Dereference Handle to get *mut VrmlData_Color
-    pub fn HandleVrmlDataColor_get_mut(
-        handle: *mut HandleVrmlDataColor,
+    pub fn Handle_VrmlData_Color_get_mut(
+        handle: *mut Handle_VrmlData_Color,
     ) -> crate::OcctResult<*mut VrmlData_Color>;
     /// Upcast Handle<VrmlData_Color> to Handle<VrmlData_ArrayVec3d>
-    pub fn HandleVrmlDataColor_to_HandleVrmlDataArrayVec3d(
-        self_: *const HandleVrmlDataColor,
-    ) -> crate::OcctResult<*mut HandleVrmlDataArrayVec3d>;
+    pub fn Handle_VrmlData_Color_to_Handle_VrmlData_ArrayVec3d(
+        self_: *const Handle_VrmlData_Color,
+    ) -> crate::OcctResult<*mut Handle_VrmlData_ArrayVec3d>;
     /// Upcast Handle<VrmlData_Color> to Handle<VrmlData_Node>
-    pub fn HandleVrmlDataColor_to_HandleVrmlDataNode(
-        self_: *const HandleVrmlDataColor,
-    ) -> crate::OcctResult<*mut HandleVrmlDataNode>;
+    pub fn Handle_VrmlData_Color_to_Handle_VrmlData_Node(
+        self_: *const Handle_VrmlData_Color,
+    ) -> crate::OcctResult<*mut Handle_VrmlData_Node>;
     /// Upcast Handle<VrmlData_Color> to Handle<Standard_Transient>
-    pub fn HandleVrmlDataColor_to_HandleStandardTransient(
-        self_: *const HandleVrmlDataColor,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
+    pub fn Handle_VrmlData_Color_to_Handle_Standard_Transient(
+        self_: *const Handle_VrmlData_Color,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
     /// Inherited: **Source:** `VrmlData_ArrayVec3d.hxx`:56 - `VrmlData_ArrayVec3d::Length()`
     pub fn VrmlData_Color_inherited_Length(
         self_: *const VrmlData_Color,
@@ -4161,52 +4221,52 @@ unsafe extern "C" {
         nValues: usize,
         arrValues: *const gp_XYZ,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `VrmlData_ArrayVec3d.hxx`:103 - `VrmlData_ArrayVec3d::IsDefault()`
+    /// Inherited: **Source:** `VrmlData_ArrayVec3d.hxx`:102 - `VrmlData_ArrayVec3d::IsDefault()`
     pub fn VrmlData_Color_inherited_IsDefault(
         self_: *const VrmlData_Color,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `VrmlData_Node.hxx`:53 - `VrmlData_Node::Scene()`
+    /// Inherited: **Source:** `VrmlData_Node.hxx`:54 - `VrmlData_Node::Scene()`
     pub fn VrmlData_Color_inherited_Scene(
         self_: *const VrmlData_Color,
     ) -> crate::OcctResult<*const VrmlData_Scene>;
-    /// Inherited: **Source:** `VrmlData_Node.hxx`:71 - `VrmlData_Node::ReadNode()`
+    /// Inherited: **Source:** `VrmlData_Node.hxx`:72 - `VrmlData_Node::ReadNode()`
     pub fn VrmlData_Color_inherited_ReadNode(
         self_: *mut VrmlData_Color,
         theBuffer: *mut VrmlData_InBuffer,
-        theNode: *mut HandleVrmlDataNode,
-        Type: *const HandleStandardType,
+        theNode: *mut Handle_VrmlData_Node,
+        Type: *const Handle_Standard_Type,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `VrmlData_Node.hxx`:93 - `VrmlData_Node::WriteClosing()`
+    /// Inherited: **Source:** `VrmlData_Node.hxx`:94 - `VrmlData_Node::WriteClosing()`
     pub fn VrmlData_Color_inherited_WriteClosing(
         self_: *const VrmlData_Color,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn VrmlData_Color_inherited_IsInstance(
         self_: *const VrmlData_Color,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn VrmlData_Color_inherited_IsKind(
         self_: *const VrmlData_Color,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn VrmlData_Color_inherited_This(
         self_: *const VrmlData_Color,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn VrmlData_Color_inherited_GetRefCount(
         self_: *const VrmlData_Color,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn VrmlData_Color_inherited_IncrementRefCounter(
         self_: *mut VrmlData_Color,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn VrmlData_Color_inherited_DecrementRefCounter(
         self_: *mut VrmlData_Color,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn VrmlData_Color_inherited_Delete(self_: *const VrmlData_Color)
         -> *const std::ffi::c_char;
     // ======================== VrmlData_Cone ========================
@@ -4247,12 +4307,12 @@ unsafe extern "C" {
     /// **Source:** `VrmlData_Cone.hxx`:109 - `VrmlData_Cone::TShape()`
     pub fn VrmlData_Cone_t_shape(
         self_: *mut VrmlData_Cone,
-    ) -> crate::OcctResult<*const HandleTopoDSTShape>;
+    ) -> crate::OcctResult<*const Handle_TopoDS_TShape>;
     /// **Source:** `VrmlData_Cone.hxx`:116 - `VrmlData_Cone::Clone()`
     pub fn VrmlData_Cone_clone(
         self_: *const VrmlData_Cone,
-        theOther: *const HandleVrmlDataNode,
-    ) -> crate::OcctResult<*mut HandleVrmlDataNode>;
+        theOther: *const Handle_VrmlData_Node,
+    ) -> crate::OcctResult<*mut Handle_VrmlData_Node>;
     /// **Source:** `VrmlData_Cone.hxx`:122 - `VrmlData_Cone::Read()`
     pub fn VrmlData_Cone_read(
         self_: *mut VrmlData_Cone,
@@ -4263,14 +4323,14 @@ unsafe extern "C" {
         self_: *const VrmlData_Cone,
         thePrefix: *const std::ffi::c_char,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `VrmlData_Cone.hxx`:142 - `VrmlData_Cone::DynamicType()`
+    /// **Source:** `VrmlData_Cone.hxx`:139 - `VrmlData_Cone::DynamicType()`
     pub fn VrmlData_Cone_dynamic_type(
         self_: *const VrmlData_Cone,
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// **Source:** `VrmlData_Cone.hxx`:142 - `VrmlData_Cone::get_type_name()`
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
+    /// **Source:** `VrmlData_Cone.hxx`:139 - `VrmlData_Cone::get_type_name()`
     pub fn VrmlData_Cone_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
-    /// **Source:** `VrmlData_Cone.hxx`:142 - `VrmlData_Cone::get_type_descriptor()`
-    pub fn VrmlData_Cone_get_type_descriptor() -> crate::OcctResult<*const HandleStandardType>;
+    /// **Source:** `VrmlData_Cone.hxx`:139 - `VrmlData_Cone::get_type_descriptor()`
+    pub fn VrmlData_Cone_get_type_descriptor() -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast VrmlData_Cone to VrmlData_Geometry
     pub fn VrmlData_Cone_as_VrmlData_Geometry(
         self_: *const VrmlData_Cone,
@@ -4298,81 +4358,81 @@ unsafe extern "C" {
     /// Wrap VrmlData_Cone in a Handle
     pub fn VrmlData_Cone_to_handle(
         obj: *mut VrmlData_Cone,
-    ) -> crate::OcctResult<*mut HandleVrmlDataCone>;
+    ) -> crate::OcctResult<*mut Handle_VrmlData_Cone>;
     /// Destroy Handle<VrmlData_Cone>
-    pub fn HandleVrmlDataCone_destructor(self_: *mut HandleVrmlDataCone);
+    pub fn Handle_VrmlData_Cone_destructor(self_: *mut Handle_VrmlData_Cone);
     /// Clone Handle<VrmlData_Cone> (increments reference count)
-    pub fn HandleVrmlDataCone_clone(
-        self_: *const HandleVrmlDataCone,
-    ) -> crate::OcctResult<*mut HandleVrmlDataCone>;
+    pub fn Handle_VrmlData_Cone_clone(
+        self_: *const Handle_VrmlData_Cone,
+    ) -> crate::OcctResult<*mut Handle_VrmlData_Cone>;
     /// Check if Handle<VrmlData_Cone> is null
-    pub fn HandleVrmlDataCone_is_null(self_: *const HandleVrmlDataCone) -> bool;
+    pub fn Handle_VrmlData_Cone_is_null(self_: *const Handle_VrmlData_Cone) -> bool;
     /// Dereference Handle to get *const VrmlData_Cone
-    pub fn HandleVrmlDataCone_get(
-        handle: *const HandleVrmlDataCone,
+    pub fn Handle_VrmlData_Cone_get(
+        handle: *const Handle_VrmlData_Cone,
     ) -> crate::OcctResult<*const VrmlData_Cone>;
     /// Dereference Handle to get *mut VrmlData_Cone
-    pub fn HandleVrmlDataCone_get_mut(
-        handle: *mut HandleVrmlDataCone,
+    pub fn Handle_VrmlData_Cone_get_mut(
+        handle: *mut Handle_VrmlData_Cone,
     ) -> crate::OcctResult<*mut VrmlData_Cone>;
     /// Upcast Handle<VrmlData_Cone> to Handle<VrmlData_Geometry>
-    pub fn HandleVrmlDataCone_to_HandleVrmlDataGeometry(
-        self_: *const HandleVrmlDataCone,
-    ) -> crate::OcctResult<*mut HandleVrmlDataGeometry>;
+    pub fn Handle_VrmlData_Cone_to_Handle_VrmlData_Geometry(
+        self_: *const Handle_VrmlData_Cone,
+    ) -> crate::OcctResult<*mut Handle_VrmlData_Geometry>;
     /// Upcast Handle<VrmlData_Cone> to Handle<VrmlData_Node>
-    pub fn HandleVrmlDataCone_to_HandleVrmlDataNode(
-        self_: *const HandleVrmlDataCone,
-    ) -> crate::OcctResult<*mut HandleVrmlDataNode>;
+    pub fn Handle_VrmlData_Cone_to_Handle_VrmlData_Node(
+        self_: *const Handle_VrmlData_Cone,
+    ) -> crate::OcctResult<*mut Handle_VrmlData_Node>;
     /// Upcast Handle<VrmlData_Cone> to Handle<Standard_Transient>
-    pub fn HandleVrmlDataCone_to_HandleStandardTransient(
-        self_: *const HandleVrmlDataCone,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
-    /// Inherited: **Source:** `VrmlData_Node.hxx`:53 - `VrmlData_Node::Scene()`
+    pub fn Handle_VrmlData_Cone_to_Handle_Standard_Transient(
+        self_: *const Handle_VrmlData_Cone,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
+    /// Inherited: **Source:** `VrmlData_Node.hxx`:54 - `VrmlData_Node::Scene()`
     pub fn VrmlData_Cone_inherited_Scene(
         self_: *const VrmlData_Cone,
     ) -> crate::OcctResult<*const VrmlData_Scene>;
-    /// Inherited: **Source:** `VrmlData_Node.hxx`:71 - `VrmlData_Node::ReadNode()`
+    /// Inherited: **Source:** `VrmlData_Node.hxx`:72 - `VrmlData_Node::ReadNode()`
     pub fn VrmlData_Cone_inherited_ReadNode(
         self_: *mut VrmlData_Cone,
         theBuffer: *mut VrmlData_InBuffer,
-        theNode: *mut HandleVrmlDataNode,
-        Type: *const HandleStandardType,
+        theNode: *mut Handle_VrmlData_Node,
+        Type: *const Handle_Standard_Type,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `VrmlData_Node.hxx`:88 - `VrmlData_Node::IsDefault()`
+    /// Inherited: **Source:** `VrmlData_Node.hxx`:89 - `VrmlData_Node::IsDefault()`
     pub fn VrmlData_Cone_inherited_IsDefault(
         self_: *const VrmlData_Cone,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `VrmlData_Node.hxx`:93 - `VrmlData_Node::WriteClosing()`
+    /// Inherited: **Source:** `VrmlData_Node.hxx`:94 - `VrmlData_Node::WriteClosing()`
     pub fn VrmlData_Cone_inherited_WriteClosing(
         self_: *const VrmlData_Cone,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn VrmlData_Cone_inherited_IsInstance(
         self_: *const VrmlData_Cone,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn VrmlData_Cone_inherited_IsKind(
         self_: *const VrmlData_Cone,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn VrmlData_Cone_inherited_This(
         self_: *const VrmlData_Cone,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn VrmlData_Cone_inherited_GetRefCount(
         self_: *const VrmlData_Cone,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn VrmlData_Cone_inherited_IncrementRefCounter(
         self_: *mut VrmlData_Cone,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn VrmlData_Cone_inherited_DecrementRefCounter(
         self_: *mut VrmlData_Cone,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn VrmlData_Cone_inherited_Delete(self_: *const VrmlData_Cone) -> *const std::ffi::c_char;
     // ======================== VrmlData_Coordinate ========================
     pub fn VrmlData_Coordinate_destructor(self_: *mut VrmlData_Coordinate);
@@ -4393,8 +4453,8 @@ unsafe extern "C" {
     /// **Source:** `VrmlData_Coordinate.hxx`:59 - `VrmlData_Coordinate::Clone()`
     pub fn VrmlData_Coordinate_clone(
         self_: *const VrmlData_Coordinate,
-        theOther: *const HandleVrmlDataNode,
-    ) -> crate::OcctResult<*mut HandleVrmlDataNode>;
+        theOther: *const Handle_VrmlData_Node,
+    ) -> crate::OcctResult<*mut Handle_VrmlData_Node>;
     /// **Source:** `VrmlData_Coordinate.hxx`:65 - `VrmlData_Coordinate::Read()`
     pub fn VrmlData_Coordinate_read(
         self_: *mut VrmlData_Coordinate,
@@ -4405,14 +4465,15 @@ unsafe extern "C" {
         self_: *const VrmlData_Coordinate,
         thePrefix: *const std::ffi::c_char,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `VrmlData_Coordinate.hxx`:77 - `VrmlData_Coordinate::DynamicType()`
+    /// **Source:** `VrmlData_Coordinate.hxx`:74 - `VrmlData_Coordinate::DynamicType()`
     pub fn VrmlData_Coordinate_dynamic_type(
         self_: *const VrmlData_Coordinate,
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// **Source:** `VrmlData_Coordinate.hxx`:77 - `VrmlData_Coordinate::get_type_name()`
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
+    /// **Source:** `VrmlData_Coordinate.hxx`:74 - `VrmlData_Coordinate::get_type_name()`
     pub fn VrmlData_Coordinate_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
-    /// **Source:** `VrmlData_Coordinate.hxx`:77 - `VrmlData_Coordinate::get_type_descriptor()`
-    pub fn VrmlData_Coordinate_get_type_descriptor() -> crate::OcctResult<*const HandleStandardType>;
+    /// **Source:** `VrmlData_Coordinate.hxx`:74 - `VrmlData_Coordinate::get_type_descriptor()`
+    pub fn VrmlData_Coordinate_get_type_descriptor(
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast VrmlData_Coordinate to VrmlData_ArrayVec3d
     pub fn VrmlData_Coordinate_as_VrmlData_ArrayVec3d(
         self_: *const VrmlData_Coordinate,
@@ -4440,35 +4501,35 @@ unsafe extern "C" {
     /// Wrap VrmlData_Coordinate in a Handle
     pub fn VrmlData_Coordinate_to_handle(
         obj: *mut VrmlData_Coordinate,
-    ) -> crate::OcctResult<*mut HandleVrmlDataCoordinate>;
+    ) -> crate::OcctResult<*mut Handle_VrmlData_Coordinate>;
     /// Destroy Handle<VrmlData_Coordinate>
-    pub fn HandleVrmlDataCoordinate_destructor(self_: *mut HandleVrmlDataCoordinate);
+    pub fn Handle_VrmlData_Coordinate_destructor(self_: *mut Handle_VrmlData_Coordinate);
     /// Clone Handle<VrmlData_Coordinate> (increments reference count)
-    pub fn HandleVrmlDataCoordinate_clone(
-        self_: *const HandleVrmlDataCoordinate,
-    ) -> crate::OcctResult<*mut HandleVrmlDataCoordinate>;
+    pub fn Handle_VrmlData_Coordinate_clone(
+        self_: *const Handle_VrmlData_Coordinate,
+    ) -> crate::OcctResult<*mut Handle_VrmlData_Coordinate>;
     /// Check if Handle<VrmlData_Coordinate> is null
-    pub fn HandleVrmlDataCoordinate_is_null(self_: *const HandleVrmlDataCoordinate) -> bool;
+    pub fn Handle_VrmlData_Coordinate_is_null(self_: *const Handle_VrmlData_Coordinate) -> bool;
     /// Dereference Handle to get *const VrmlData_Coordinate
-    pub fn HandleVrmlDataCoordinate_get(
-        handle: *const HandleVrmlDataCoordinate,
+    pub fn Handle_VrmlData_Coordinate_get(
+        handle: *const Handle_VrmlData_Coordinate,
     ) -> crate::OcctResult<*const VrmlData_Coordinate>;
     /// Dereference Handle to get *mut VrmlData_Coordinate
-    pub fn HandleVrmlDataCoordinate_get_mut(
-        handle: *mut HandleVrmlDataCoordinate,
+    pub fn Handle_VrmlData_Coordinate_get_mut(
+        handle: *mut Handle_VrmlData_Coordinate,
     ) -> crate::OcctResult<*mut VrmlData_Coordinate>;
     /// Upcast Handle<VrmlData_Coordinate> to Handle<VrmlData_ArrayVec3d>
-    pub fn HandleVrmlDataCoordinate_to_HandleVrmlDataArrayVec3d(
-        self_: *const HandleVrmlDataCoordinate,
-    ) -> crate::OcctResult<*mut HandleVrmlDataArrayVec3d>;
+    pub fn Handle_VrmlData_Coordinate_to_Handle_VrmlData_ArrayVec3d(
+        self_: *const Handle_VrmlData_Coordinate,
+    ) -> crate::OcctResult<*mut Handle_VrmlData_ArrayVec3d>;
     /// Upcast Handle<VrmlData_Coordinate> to Handle<VrmlData_Node>
-    pub fn HandleVrmlDataCoordinate_to_HandleVrmlDataNode(
-        self_: *const HandleVrmlDataCoordinate,
-    ) -> crate::OcctResult<*mut HandleVrmlDataNode>;
+    pub fn Handle_VrmlData_Coordinate_to_Handle_VrmlData_Node(
+        self_: *const Handle_VrmlData_Coordinate,
+    ) -> crate::OcctResult<*mut Handle_VrmlData_Node>;
     /// Upcast Handle<VrmlData_Coordinate> to Handle<Standard_Transient>
-    pub fn HandleVrmlDataCoordinate_to_HandleStandardTransient(
-        self_: *const HandleVrmlDataCoordinate,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
+    pub fn Handle_VrmlData_Coordinate_to_Handle_Standard_Transient(
+        self_: *const Handle_VrmlData_Coordinate,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
     /// Inherited: **Source:** `VrmlData_ArrayVec3d.hxx`:56 - `VrmlData_ArrayVec3d::Length()`
     pub fn VrmlData_Coordinate_inherited_Length(
         self_: *const VrmlData_Coordinate,
@@ -4488,52 +4549,52 @@ unsafe extern "C" {
         nValues: usize,
         arrValues: *const gp_XYZ,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `VrmlData_ArrayVec3d.hxx`:103 - `VrmlData_ArrayVec3d::IsDefault()`
+    /// Inherited: **Source:** `VrmlData_ArrayVec3d.hxx`:102 - `VrmlData_ArrayVec3d::IsDefault()`
     pub fn VrmlData_Coordinate_inherited_IsDefault(
         self_: *const VrmlData_Coordinate,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `VrmlData_Node.hxx`:53 - `VrmlData_Node::Scene()`
+    /// Inherited: **Source:** `VrmlData_Node.hxx`:54 - `VrmlData_Node::Scene()`
     pub fn VrmlData_Coordinate_inherited_Scene(
         self_: *const VrmlData_Coordinate,
     ) -> crate::OcctResult<*const VrmlData_Scene>;
-    /// Inherited: **Source:** `VrmlData_Node.hxx`:71 - `VrmlData_Node::ReadNode()`
+    /// Inherited: **Source:** `VrmlData_Node.hxx`:72 - `VrmlData_Node::ReadNode()`
     pub fn VrmlData_Coordinate_inherited_ReadNode(
         self_: *mut VrmlData_Coordinate,
         theBuffer: *mut VrmlData_InBuffer,
-        theNode: *mut HandleVrmlDataNode,
-        Type: *const HandleStandardType,
+        theNode: *mut Handle_VrmlData_Node,
+        Type: *const Handle_Standard_Type,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `VrmlData_Node.hxx`:93 - `VrmlData_Node::WriteClosing()`
+    /// Inherited: **Source:** `VrmlData_Node.hxx`:94 - `VrmlData_Node::WriteClosing()`
     pub fn VrmlData_Coordinate_inherited_WriteClosing(
         self_: *const VrmlData_Coordinate,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn VrmlData_Coordinate_inherited_IsInstance(
         self_: *const VrmlData_Coordinate,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn VrmlData_Coordinate_inherited_IsKind(
         self_: *const VrmlData_Coordinate,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn VrmlData_Coordinate_inherited_This(
         self_: *const VrmlData_Coordinate,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn VrmlData_Coordinate_inherited_GetRefCount(
         self_: *const VrmlData_Coordinate,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn VrmlData_Coordinate_inherited_IncrementRefCounter(
         self_: *mut VrmlData_Coordinate,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn VrmlData_Coordinate_inherited_DecrementRefCounter(
         self_: *mut VrmlData_Coordinate,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn VrmlData_Coordinate_inherited_Delete(
         self_: *const VrmlData_Coordinate,
     ) -> *const std::ffi::c_char;
@@ -4576,33 +4637,33 @@ unsafe extern "C" {
         hasSide: bool,
         hasTop: bool,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `VrmlData_Cylinder.hxx`:117 - `VrmlData_Cylinder::TShape()`
+    /// **Source:** `VrmlData_Cylinder.hxx`:115 - `VrmlData_Cylinder::TShape()`
     pub fn VrmlData_Cylinder_t_shape(
         self_: *mut VrmlData_Cylinder,
-    ) -> crate::OcctResult<*const HandleTopoDSTShape>;
-    /// **Source:** `VrmlData_Cylinder.hxx`:124 - `VrmlData_Cylinder::Clone()`
+    ) -> crate::OcctResult<*const Handle_TopoDS_TShape>;
+    /// **Source:** `VrmlData_Cylinder.hxx`:122 - `VrmlData_Cylinder::Clone()`
     pub fn VrmlData_Cylinder_clone(
         self_: *const VrmlData_Cylinder,
-        theOther: *const HandleVrmlDataNode,
-    ) -> crate::OcctResult<*mut HandleVrmlDataNode>;
-    /// **Source:** `VrmlData_Cylinder.hxx`:130 - `VrmlData_Cylinder::Read()`
+        theOther: *const Handle_VrmlData_Node,
+    ) -> crate::OcctResult<*mut Handle_VrmlData_Node>;
+    /// **Source:** `VrmlData_Cylinder.hxx`:128 - `VrmlData_Cylinder::Read()`
     pub fn VrmlData_Cylinder_read(
         self_: *mut VrmlData_Cylinder,
         theBuffer: *mut VrmlData_InBuffer,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `VrmlData_Cylinder.hxx`:135 - `VrmlData_Cylinder::Write()`
+    /// **Source:** `VrmlData_Cylinder.hxx`:133 - `VrmlData_Cylinder::Write()`
     pub fn VrmlData_Cylinder_write(
         self_: *const VrmlData_Cylinder,
         thePrefix: *const std::ffi::c_char,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `VrmlData_Cylinder.hxx`:150 - `VrmlData_Cylinder::DynamicType()`
+    /// **Source:** `VrmlData_Cylinder.hxx`:145 - `VrmlData_Cylinder::DynamicType()`
     pub fn VrmlData_Cylinder_dynamic_type(
         self_: *const VrmlData_Cylinder,
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// **Source:** `VrmlData_Cylinder.hxx`:150 - `VrmlData_Cylinder::get_type_name()`
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
+    /// **Source:** `VrmlData_Cylinder.hxx`:145 - `VrmlData_Cylinder::get_type_name()`
     pub fn VrmlData_Cylinder_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
-    /// **Source:** `VrmlData_Cylinder.hxx`:150 - `VrmlData_Cylinder::get_type_descriptor()`
-    pub fn VrmlData_Cylinder_get_type_descriptor() -> crate::OcctResult<*const HandleStandardType>;
+    /// **Source:** `VrmlData_Cylinder.hxx`:145 - `VrmlData_Cylinder::get_type_descriptor()`
+    pub fn VrmlData_Cylinder_get_type_descriptor() -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast VrmlData_Cylinder to VrmlData_Geometry
     pub fn VrmlData_Cylinder_as_VrmlData_Geometry(
         self_: *const VrmlData_Cylinder,
@@ -4630,81 +4691,81 @@ unsafe extern "C" {
     /// Wrap VrmlData_Cylinder in a Handle
     pub fn VrmlData_Cylinder_to_handle(
         obj: *mut VrmlData_Cylinder,
-    ) -> crate::OcctResult<*mut HandleVrmlDataCylinder>;
+    ) -> crate::OcctResult<*mut Handle_VrmlData_Cylinder>;
     /// Destroy Handle<VrmlData_Cylinder>
-    pub fn HandleVrmlDataCylinder_destructor(self_: *mut HandleVrmlDataCylinder);
+    pub fn Handle_VrmlData_Cylinder_destructor(self_: *mut Handle_VrmlData_Cylinder);
     /// Clone Handle<VrmlData_Cylinder> (increments reference count)
-    pub fn HandleVrmlDataCylinder_clone(
-        self_: *const HandleVrmlDataCylinder,
-    ) -> crate::OcctResult<*mut HandleVrmlDataCylinder>;
+    pub fn Handle_VrmlData_Cylinder_clone(
+        self_: *const Handle_VrmlData_Cylinder,
+    ) -> crate::OcctResult<*mut Handle_VrmlData_Cylinder>;
     /// Check if Handle<VrmlData_Cylinder> is null
-    pub fn HandleVrmlDataCylinder_is_null(self_: *const HandleVrmlDataCylinder) -> bool;
+    pub fn Handle_VrmlData_Cylinder_is_null(self_: *const Handle_VrmlData_Cylinder) -> bool;
     /// Dereference Handle to get *const VrmlData_Cylinder
-    pub fn HandleVrmlDataCylinder_get(
-        handle: *const HandleVrmlDataCylinder,
+    pub fn Handle_VrmlData_Cylinder_get(
+        handle: *const Handle_VrmlData_Cylinder,
     ) -> crate::OcctResult<*const VrmlData_Cylinder>;
     /// Dereference Handle to get *mut VrmlData_Cylinder
-    pub fn HandleVrmlDataCylinder_get_mut(
-        handle: *mut HandleVrmlDataCylinder,
+    pub fn Handle_VrmlData_Cylinder_get_mut(
+        handle: *mut Handle_VrmlData_Cylinder,
     ) -> crate::OcctResult<*mut VrmlData_Cylinder>;
     /// Upcast Handle<VrmlData_Cylinder> to Handle<VrmlData_Geometry>
-    pub fn HandleVrmlDataCylinder_to_HandleVrmlDataGeometry(
-        self_: *const HandleVrmlDataCylinder,
-    ) -> crate::OcctResult<*mut HandleVrmlDataGeometry>;
+    pub fn Handle_VrmlData_Cylinder_to_Handle_VrmlData_Geometry(
+        self_: *const Handle_VrmlData_Cylinder,
+    ) -> crate::OcctResult<*mut Handle_VrmlData_Geometry>;
     /// Upcast Handle<VrmlData_Cylinder> to Handle<VrmlData_Node>
-    pub fn HandleVrmlDataCylinder_to_HandleVrmlDataNode(
-        self_: *const HandleVrmlDataCylinder,
-    ) -> crate::OcctResult<*mut HandleVrmlDataNode>;
+    pub fn Handle_VrmlData_Cylinder_to_Handle_VrmlData_Node(
+        self_: *const Handle_VrmlData_Cylinder,
+    ) -> crate::OcctResult<*mut Handle_VrmlData_Node>;
     /// Upcast Handle<VrmlData_Cylinder> to Handle<Standard_Transient>
-    pub fn HandleVrmlDataCylinder_to_HandleStandardTransient(
-        self_: *const HandleVrmlDataCylinder,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
-    /// Inherited: **Source:** `VrmlData_Node.hxx`:53 - `VrmlData_Node::Scene()`
+    pub fn Handle_VrmlData_Cylinder_to_Handle_Standard_Transient(
+        self_: *const Handle_VrmlData_Cylinder,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
+    /// Inherited: **Source:** `VrmlData_Node.hxx`:54 - `VrmlData_Node::Scene()`
     pub fn VrmlData_Cylinder_inherited_Scene(
         self_: *const VrmlData_Cylinder,
     ) -> crate::OcctResult<*const VrmlData_Scene>;
-    /// Inherited: **Source:** `VrmlData_Node.hxx`:71 - `VrmlData_Node::ReadNode()`
+    /// Inherited: **Source:** `VrmlData_Node.hxx`:72 - `VrmlData_Node::ReadNode()`
     pub fn VrmlData_Cylinder_inherited_ReadNode(
         self_: *mut VrmlData_Cylinder,
         theBuffer: *mut VrmlData_InBuffer,
-        theNode: *mut HandleVrmlDataNode,
-        Type: *const HandleStandardType,
+        theNode: *mut Handle_VrmlData_Node,
+        Type: *const Handle_Standard_Type,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `VrmlData_Node.hxx`:88 - `VrmlData_Node::IsDefault()`
+    /// Inherited: **Source:** `VrmlData_Node.hxx`:89 - `VrmlData_Node::IsDefault()`
     pub fn VrmlData_Cylinder_inherited_IsDefault(
         self_: *const VrmlData_Cylinder,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `VrmlData_Node.hxx`:93 - `VrmlData_Node::WriteClosing()`
+    /// Inherited: **Source:** `VrmlData_Node.hxx`:94 - `VrmlData_Node::WriteClosing()`
     pub fn VrmlData_Cylinder_inherited_WriteClosing(
         self_: *const VrmlData_Cylinder,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn VrmlData_Cylinder_inherited_IsInstance(
         self_: *const VrmlData_Cylinder,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn VrmlData_Cylinder_inherited_IsKind(
         self_: *const VrmlData_Cylinder,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn VrmlData_Cylinder_inherited_This(
         self_: *const VrmlData_Cylinder,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn VrmlData_Cylinder_inherited_GetRefCount(
         self_: *const VrmlData_Cylinder,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn VrmlData_Cylinder_inherited_IncrementRefCounter(
         self_: *mut VrmlData_Cylinder,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn VrmlData_Cylinder_inherited_DecrementRefCounter(
         self_: *mut VrmlData_Cylinder,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn VrmlData_Cylinder_inherited_Delete(
         self_: *const VrmlData_Cylinder,
     ) -> *const std::ffi::c_char;
@@ -4741,11 +4802,11 @@ unsafe extern "C" {
     /// **Source:** `VrmlData_Faceted.hxx`:112 - `VrmlData_Faceted::DynamicType()`
     pub fn VrmlData_Faceted_dynamic_type(
         self_: *const VrmlData_Faceted,
-    ) -> crate::OcctResult<*const HandleStandardType>;
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// **Source:** `VrmlData_Faceted.hxx`:112 - `VrmlData_Faceted::get_type_name()`
     pub fn VrmlData_Faceted_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
     /// **Source:** `VrmlData_Faceted.hxx`:112 - `VrmlData_Faceted::get_type_descriptor()`
-    pub fn VrmlData_Faceted_get_type_descriptor() -> crate::OcctResult<*const HandleStandardType>;
+    pub fn VrmlData_Faceted_get_type_descriptor() -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast VrmlData_Faceted to VrmlData_Geometry
     pub fn VrmlData_Faceted_as_VrmlData_Geometry(
         self_: *const VrmlData_Faceted,
@@ -4771,97 +4832,97 @@ unsafe extern "C" {
         self_: *mut VrmlData_Faceted,
     ) -> crate::OcctResult<*mut Standard_Transient>;
     /// Destroy Handle<VrmlData_Faceted>
-    pub fn HandleVrmlDataFaceted_destructor(self_: *mut HandleVrmlDataFaceted);
+    pub fn Handle_VrmlData_Faceted_destructor(self_: *mut Handle_VrmlData_Faceted);
     /// Clone Handle<VrmlData_Faceted> (increments reference count)
-    pub fn HandleVrmlDataFaceted_clone(
-        self_: *const HandleVrmlDataFaceted,
-    ) -> crate::OcctResult<*mut HandleVrmlDataFaceted>;
+    pub fn Handle_VrmlData_Faceted_clone(
+        self_: *const Handle_VrmlData_Faceted,
+    ) -> crate::OcctResult<*mut Handle_VrmlData_Faceted>;
     /// Check if Handle<VrmlData_Faceted> is null
-    pub fn HandleVrmlDataFaceted_is_null(self_: *const HandleVrmlDataFaceted) -> bool;
+    pub fn Handle_VrmlData_Faceted_is_null(self_: *const Handle_VrmlData_Faceted) -> bool;
     /// Dereference Handle to get *const VrmlData_Faceted
-    pub fn HandleVrmlDataFaceted_get(
-        handle: *const HandleVrmlDataFaceted,
+    pub fn Handle_VrmlData_Faceted_get(
+        handle: *const Handle_VrmlData_Faceted,
     ) -> crate::OcctResult<*const VrmlData_Faceted>;
     /// Dereference Handle to get *mut VrmlData_Faceted
-    pub fn HandleVrmlDataFaceted_get_mut(
-        handle: *mut HandleVrmlDataFaceted,
+    pub fn Handle_VrmlData_Faceted_get_mut(
+        handle: *mut Handle_VrmlData_Faceted,
     ) -> crate::OcctResult<*mut VrmlData_Faceted>;
     /// Upcast Handle<VrmlData_Faceted> to Handle<VrmlData_Geometry>
-    pub fn HandleVrmlDataFaceted_to_HandleVrmlDataGeometry(
-        self_: *const HandleVrmlDataFaceted,
-    ) -> crate::OcctResult<*mut HandleVrmlDataGeometry>;
+    pub fn Handle_VrmlData_Faceted_to_Handle_VrmlData_Geometry(
+        self_: *const Handle_VrmlData_Faceted,
+    ) -> crate::OcctResult<*mut Handle_VrmlData_Geometry>;
     /// Upcast Handle<VrmlData_Faceted> to Handle<VrmlData_Node>
-    pub fn HandleVrmlDataFaceted_to_HandleVrmlDataNode(
-        self_: *const HandleVrmlDataFaceted,
-    ) -> crate::OcctResult<*mut HandleVrmlDataNode>;
+    pub fn Handle_VrmlData_Faceted_to_Handle_VrmlData_Node(
+        self_: *const Handle_VrmlData_Faceted,
+    ) -> crate::OcctResult<*mut Handle_VrmlData_Node>;
     /// Upcast Handle<VrmlData_Faceted> to Handle<Standard_Transient>
-    pub fn HandleVrmlDataFaceted_to_HandleStandardTransient(
-        self_: *const HandleVrmlDataFaceted,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
+    pub fn Handle_VrmlData_Faceted_to_Handle_Standard_Transient(
+        self_: *const Handle_VrmlData_Faceted,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
     /// Downcast Handle<VrmlData_Faceted> to Handle<VrmlData_IndexedFaceSet> (returns null on failure)
-    pub fn HandleVrmlDataFaceted_downcast_to_HandleVrmlDataIndexedFaceSet(
-        self_: *const HandleVrmlDataFaceted,
-    ) -> crate::OcctResult<*mut HandleVrmlDataIndexedFaceSet>;
+    pub fn Handle_VrmlData_Faceted_downcast_to_Handle_VrmlData_IndexedFaceSet(
+        self_: *const Handle_VrmlData_Faceted,
+    ) -> crate::OcctResult<*mut Handle_VrmlData_IndexedFaceSet>;
     /// Inherited: **Source:** `VrmlData_Geometry.hxx`:53 - `VrmlData_Geometry::TShape()`
     pub fn VrmlData_Faceted_inherited_TShape(
         self_: *mut VrmlData_Faceted,
-    ) -> crate::OcctResult<*const HandleTopoDSTShape>;
-    /// Inherited: **Source:** `VrmlData_Node.hxx`:53 - `VrmlData_Node::Scene()`
+    ) -> crate::OcctResult<*const Handle_TopoDS_TShape>;
+    /// Inherited: **Source:** `VrmlData_Node.hxx`:54 - `VrmlData_Node::Scene()`
     pub fn VrmlData_Faceted_inherited_Scene(
         self_: *const VrmlData_Faceted,
     ) -> crate::OcctResult<*const VrmlData_Scene>;
-    /// Inherited: **Source:** `VrmlData_Node.hxx`:71 - `VrmlData_Node::ReadNode()`
+    /// Inherited: **Source:** `VrmlData_Node.hxx`:72 - `VrmlData_Node::ReadNode()`
     pub fn VrmlData_Faceted_inherited_ReadNode(
         self_: *mut VrmlData_Faceted,
         theBuffer: *mut VrmlData_InBuffer,
-        theNode: *mut HandleVrmlDataNode,
-        Type: *const HandleStandardType,
+        theNode: *mut Handle_VrmlData_Node,
+        Type: *const Handle_Standard_Type,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `VrmlData_Node.hxx`:78 - `VrmlData_Node::Read()`
+    /// Inherited: **Source:** `VrmlData_Node.hxx`:79 - `VrmlData_Node::Read()`
     pub fn VrmlData_Faceted_inherited_Read(
         self_: *mut VrmlData_Faceted,
         theBuffer: *mut VrmlData_InBuffer,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `VrmlData_Node.hxx`:88 - `VrmlData_Node::IsDefault()`
+    /// Inherited: **Source:** `VrmlData_Node.hxx`:89 - `VrmlData_Node::IsDefault()`
     pub fn VrmlData_Faceted_inherited_IsDefault(
         self_: *const VrmlData_Faceted,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `VrmlData_Node.hxx`:93 - `VrmlData_Node::WriteClosing()`
+    /// Inherited: **Source:** `VrmlData_Node.hxx`:94 - `VrmlData_Node::WriteClosing()`
     pub fn VrmlData_Faceted_inherited_WriteClosing(
         self_: *const VrmlData_Faceted,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `VrmlData_Node.hxx`:102 - `VrmlData_Node::Clone()`
+    /// Inherited: **Source:** `VrmlData_Node.hxx`:103 - `VrmlData_Node::Clone()`
     pub fn VrmlData_Faceted_inherited_Clone(
         self_: *const VrmlData_Faceted,
-        arg0: *const HandleVrmlDataNode,
-    ) -> crate::OcctResult<*mut HandleVrmlDataNode>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+        arg0: *const Handle_VrmlData_Node,
+    ) -> crate::OcctResult<*mut Handle_VrmlData_Node>;
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn VrmlData_Faceted_inherited_IsInstance(
         self_: *const VrmlData_Faceted,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn VrmlData_Faceted_inherited_IsKind(
         self_: *const VrmlData_Faceted,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn VrmlData_Faceted_inherited_This(
         self_: *const VrmlData_Faceted,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn VrmlData_Faceted_inherited_GetRefCount(
         self_: *const VrmlData_Faceted,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn VrmlData_Faceted_inherited_IncrementRefCounter(
         self_: *mut VrmlData_Faceted,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn VrmlData_Faceted_inherited_DecrementRefCounter(
         self_: *mut VrmlData_Faceted,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn VrmlData_Faceted_inherited_Delete(
         self_: *const VrmlData_Faceted,
     ) -> *const std::ffi::c_char;
@@ -4870,15 +4931,15 @@ unsafe extern "C" {
     /// **Source:** `VrmlData_Geometry.hxx`:53 - `VrmlData_Geometry::TShape()`
     pub fn VrmlData_Geometry_t_shape(
         self_: *mut VrmlData_Geometry,
-    ) -> crate::OcctResult<*const HandleTopoDSTShape>;
+    ) -> crate::OcctResult<*const Handle_TopoDS_TShape>;
     /// **Source:** `VrmlData_Geometry.hxx`:76 - `VrmlData_Geometry::DynamicType()`
     pub fn VrmlData_Geometry_dynamic_type(
         self_: *const VrmlData_Geometry,
-    ) -> crate::OcctResult<*const HandleStandardType>;
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// **Source:** `VrmlData_Geometry.hxx`:76 - `VrmlData_Geometry::get_type_name()`
     pub fn VrmlData_Geometry_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
     /// **Source:** `VrmlData_Geometry.hxx`:76 - `VrmlData_Geometry::get_type_descriptor()`
-    pub fn VrmlData_Geometry_get_type_descriptor() -> crate::OcctResult<*const HandleStandardType>;
+    pub fn VrmlData_Geometry_get_type_descriptor() -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast VrmlData_Geometry to VrmlData_Node
     pub fn VrmlData_Geometry_as_VrmlData_Node(
         self_: *const VrmlData_Geometry,
@@ -4896,193 +4957,187 @@ unsafe extern "C" {
         self_: *mut VrmlData_Geometry,
     ) -> crate::OcctResult<*mut Standard_Transient>;
     /// Destroy Handle<VrmlData_Geometry>
-    pub fn HandleVrmlDataGeometry_destructor(self_: *mut HandleVrmlDataGeometry);
+    pub fn Handle_VrmlData_Geometry_destructor(self_: *mut Handle_VrmlData_Geometry);
     /// Clone Handle<VrmlData_Geometry> (increments reference count)
-    pub fn HandleVrmlDataGeometry_clone(
-        self_: *const HandleVrmlDataGeometry,
-    ) -> crate::OcctResult<*mut HandleVrmlDataGeometry>;
+    pub fn Handle_VrmlData_Geometry_clone(
+        self_: *const Handle_VrmlData_Geometry,
+    ) -> crate::OcctResult<*mut Handle_VrmlData_Geometry>;
     /// Check if Handle<VrmlData_Geometry> is null
-    pub fn HandleVrmlDataGeometry_is_null(self_: *const HandleVrmlDataGeometry) -> bool;
+    pub fn Handle_VrmlData_Geometry_is_null(self_: *const Handle_VrmlData_Geometry) -> bool;
     /// Dereference Handle to get *const VrmlData_Geometry
-    pub fn HandleVrmlDataGeometry_get(
-        handle: *const HandleVrmlDataGeometry,
+    pub fn Handle_VrmlData_Geometry_get(
+        handle: *const Handle_VrmlData_Geometry,
     ) -> crate::OcctResult<*const VrmlData_Geometry>;
     /// Dereference Handle to get *mut VrmlData_Geometry
-    pub fn HandleVrmlDataGeometry_get_mut(
-        handle: *mut HandleVrmlDataGeometry,
+    pub fn Handle_VrmlData_Geometry_get_mut(
+        handle: *mut Handle_VrmlData_Geometry,
     ) -> crate::OcctResult<*mut VrmlData_Geometry>;
     /// Upcast Handle<VrmlData_Geometry> to Handle<VrmlData_Node>
-    pub fn HandleVrmlDataGeometry_to_HandleVrmlDataNode(
-        self_: *const HandleVrmlDataGeometry,
-    ) -> crate::OcctResult<*mut HandleVrmlDataNode>;
+    pub fn Handle_VrmlData_Geometry_to_Handle_VrmlData_Node(
+        self_: *const Handle_VrmlData_Geometry,
+    ) -> crate::OcctResult<*mut Handle_VrmlData_Node>;
     /// Upcast Handle<VrmlData_Geometry> to Handle<Standard_Transient>
-    pub fn HandleVrmlDataGeometry_to_HandleStandardTransient(
-        self_: *const HandleVrmlDataGeometry,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
+    pub fn Handle_VrmlData_Geometry_to_Handle_Standard_Transient(
+        self_: *const Handle_VrmlData_Geometry,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
     /// Downcast Handle<VrmlData_Geometry> to Handle<VrmlData_Box> (returns null on failure)
-    pub fn HandleVrmlDataGeometry_downcast_to_HandleVrmlDataBox(
-        self_: *const HandleVrmlDataGeometry,
-    ) -> crate::OcctResult<*mut HandleVrmlDataBox>;
+    pub fn Handle_VrmlData_Geometry_downcast_to_Handle_VrmlData_Box(
+        self_: *const Handle_VrmlData_Geometry,
+    ) -> crate::OcctResult<*mut Handle_VrmlData_Box>;
     /// Downcast Handle<VrmlData_Geometry> to Handle<VrmlData_Cone> (returns null on failure)
-    pub fn HandleVrmlDataGeometry_downcast_to_HandleVrmlDataCone(
-        self_: *const HandleVrmlDataGeometry,
-    ) -> crate::OcctResult<*mut HandleVrmlDataCone>;
+    pub fn Handle_VrmlData_Geometry_downcast_to_Handle_VrmlData_Cone(
+        self_: *const Handle_VrmlData_Geometry,
+    ) -> crate::OcctResult<*mut Handle_VrmlData_Cone>;
     /// Downcast Handle<VrmlData_Geometry> to Handle<VrmlData_Cylinder> (returns null on failure)
-    pub fn HandleVrmlDataGeometry_downcast_to_HandleVrmlDataCylinder(
-        self_: *const HandleVrmlDataGeometry,
-    ) -> crate::OcctResult<*mut HandleVrmlDataCylinder>;
+    pub fn Handle_VrmlData_Geometry_downcast_to_Handle_VrmlData_Cylinder(
+        self_: *const Handle_VrmlData_Geometry,
+    ) -> crate::OcctResult<*mut Handle_VrmlData_Cylinder>;
     /// Downcast Handle<VrmlData_Geometry> to Handle<VrmlData_Faceted> (returns null on failure)
-    pub fn HandleVrmlDataGeometry_downcast_to_HandleVrmlDataFaceted(
-        self_: *const HandleVrmlDataGeometry,
-    ) -> crate::OcctResult<*mut HandleVrmlDataFaceted>;
+    pub fn Handle_VrmlData_Geometry_downcast_to_Handle_VrmlData_Faceted(
+        self_: *const Handle_VrmlData_Geometry,
+    ) -> crate::OcctResult<*mut Handle_VrmlData_Faceted>;
     /// Downcast Handle<VrmlData_Geometry> to Handle<VrmlData_IndexedFaceSet> (returns null on failure)
-    pub fn HandleVrmlDataGeometry_downcast_to_HandleVrmlDataIndexedFaceSet(
-        self_: *const HandleVrmlDataGeometry,
-    ) -> crate::OcctResult<*mut HandleVrmlDataIndexedFaceSet>;
+    pub fn Handle_VrmlData_Geometry_downcast_to_Handle_VrmlData_IndexedFaceSet(
+        self_: *const Handle_VrmlData_Geometry,
+    ) -> crate::OcctResult<*mut Handle_VrmlData_IndexedFaceSet>;
     /// Downcast Handle<VrmlData_Geometry> to Handle<VrmlData_IndexedLineSet> (returns null on failure)
-    pub fn HandleVrmlDataGeometry_downcast_to_HandleVrmlDataIndexedLineSet(
-        self_: *const HandleVrmlDataGeometry,
-    ) -> crate::OcctResult<*mut HandleVrmlDataIndexedLineSet>;
+    pub fn Handle_VrmlData_Geometry_downcast_to_Handle_VrmlData_IndexedLineSet(
+        self_: *const Handle_VrmlData_Geometry,
+    ) -> crate::OcctResult<*mut Handle_VrmlData_IndexedLineSet>;
     /// Downcast Handle<VrmlData_Geometry> to Handle<VrmlData_Sphere> (returns null on failure)
-    pub fn HandleVrmlDataGeometry_downcast_to_HandleVrmlDataSphere(
-        self_: *const HandleVrmlDataGeometry,
-    ) -> crate::OcctResult<*mut HandleVrmlDataSphere>;
-    /// Inherited: **Source:** `VrmlData_Node.hxx`:53 - `VrmlData_Node::Scene()`
+    pub fn Handle_VrmlData_Geometry_downcast_to_Handle_VrmlData_Sphere(
+        self_: *const Handle_VrmlData_Geometry,
+    ) -> crate::OcctResult<*mut Handle_VrmlData_Sphere>;
+    /// Inherited: **Source:** `VrmlData_Node.hxx`:54 - `VrmlData_Node::Scene()`
     pub fn VrmlData_Geometry_inherited_Scene(
         self_: *const VrmlData_Geometry,
     ) -> crate::OcctResult<*const VrmlData_Scene>;
-    /// Inherited: **Source:** `VrmlData_Node.hxx`:71 - `VrmlData_Node::ReadNode()`
+    /// Inherited: **Source:** `VrmlData_Node.hxx`:72 - `VrmlData_Node::ReadNode()`
     pub fn VrmlData_Geometry_inherited_ReadNode(
         self_: *mut VrmlData_Geometry,
         theBuffer: *mut VrmlData_InBuffer,
-        theNode: *mut HandleVrmlDataNode,
-        Type: *const HandleStandardType,
+        theNode: *mut Handle_VrmlData_Node,
+        Type: *const Handle_Standard_Type,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `VrmlData_Node.hxx`:78 - `VrmlData_Node::Read()`
+    /// Inherited: **Source:** `VrmlData_Node.hxx`:79 - `VrmlData_Node::Read()`
     pub fn VrmlData_Geometry_inherited_Read(
         self_: *mut VrmlData_Geometry,
         theBuffer: *mut VrmlData_InBuffer,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `VrmlData_Node.hxx`:88 - `VrmlData_Node::IsDefault()`
+    /// Inherited: **Source:** `VrmlData_Node.hxx`:89 - `VrmlData_Node::IsDefault()`
     pub fn VrmlData_Geometry_inherited_IsDefault(
         self_: *const VrmlData_Geometry,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `VrmlData_Node.hxx`:93 - `VrmlData_Node::WriteClosing()`
+    /// Inherited: **Source:** `VrmlData_Node.hxx`:94 - `VrmlData_Node::WriteClosing()`
     pub fn VrmlData_Geometry_inherited_WriteClosing(
         self_: *const VrmlData_Geometry,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `VrmlData_Node.hxx`:102 - `VrmlData_Node::Clone()`
+    /// Inherited: **Source:** `VrmlData_Node.hxx`:103 - `VrmlData_Node::Clone()`
     pub fn VrmlData_Geometry_inherited_Clone(
         self_: *const VrmlData_Geometry,
-        arg0: *const HandleVrmlDataNode,
-    ) -> crate::OcctResult<*mut HandleVrmlDataNode>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+        arg0: *const Handle_VrmlData_Node,
+    ) -> crate::OcctResult<*mut Handle_VrmlData_Node>;
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn VrmlData_Geometry_inherited_IsInstance(
         self_: *const VrmlData_Geometry,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn VrmlData_Geometry_inherited_IsKind(
         self_: *const VrmlData_Geometry,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn VrmlData_Geometry_inherited_This(
         self_: *const VrmlData_Geometry,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn VrmlData_Geometry_inherited_GetRefCount(
         self_: *const VrmlData_Geometry,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn VrmlData_Geometry_inherited_IncrementRefCounter(
         self_: *mut VrmlData_Geometry,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn VrmlData_Geometry_inherited_DecrementRefCounter(
         self_: *mut VrmlData_Geometry,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn VrmlData_Geometry_inherited_Delete(
         self_: *const VrmlData_Geometry,
     ) -> *const std::ffi::c_char;
     // ======================== VrmlData_Group ========================
     pub fn VrmlData_Group_destructor(self_: *mut VrmlData_Group);
-    /// **Source:** `VrmlData_Group.hxx`:44 - `VrmlData_Group::VrmlData_Group()`
+    /// **Source:** `VrmlData_Group.hxx`:47 - `VrmlData_Group::VrmlData_Group()`
     pub fn VrmlData_Group_ctor_bool(isTransform: bool) -> crate::OcctResult<*mut VrmlData_Group>;
-    /// **Source:** `VrmlData_Group.hxx`:58 - `VrmlData_Group::VrmlData_Group()`
+    /// **Source:** `VrmlData_Group.hxx`:61 - `VrmlData_Group::VrmlData_Group()`
     pub fn VrmlData_Group_ctor_scene_charptr_bool(
         theScene: *const VrmlData_Scene,
         theName: *const std::ffi::c_char,
         isTransform: bool,
     ) -> crate::OcctResult<*mut VrmlData_Group>;
-    /// **Source:** `VrmlData_Group.hxx`:65 - `VrmlData_Group::AddNode()`
+    /// **Source:** `VrmlData_Group.hxx`:68 - `VrmlData_Group::AddNode()`
     pub fn VrmlData_Group_add_node(
         self_: *mut VrmlData_Group,
-        theNode: *const HandleVrmlDataNode,
-    ) -> crate::OcctResult<*mut HandleVrmlDataNode>;
-    /// **Source:** `VrmlData_Group.hxx`:75 - `VrmlData_Group::RemoveNode()`
+        theNode: *const Handle_VrmlData_Node,
+    ) -> crate::OcctResult<*mut Handle_VrmlData_Node>;
+    /// **Source:** `VrmlData_Group.hxx`:78 - `VrmlData_Group::RemoveNode()`
     pub fn VrmlData_Group_remove_node(
         self_: *mut VrmlData_Group,
-        theNode: *const HandleVrmlDataNode,
+        theNode: *const Handle_VrmlData_Node,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `VrmlData_Group.hxx`:80 - `VrmlData_Group::NodeIterator()`
+    /// **Source:** `VrmlData_Group.hxx`:83 - `VrmlData_Group::NodeIterator()`
     pub fn VrmlData_Group_node_iterator(
         self_: *const VrmlData_Group,
     ) -> crate::OcctResult<*mut VrmlData_Group_Iterator>;
-    /// **Source:** `VrmlData_Group.hxx`:85 - `VrmlData_Group::Box()`
+    /// **Source:** `VrmlData_Group.hxx`:88 - `VrmlData_Group::Box()`
     pub fn VrmlData_Group_box_(self_: *const VrmlData_Group) -> crate::OcctResult<*const Bnd_B3f>;
-    /// **Source:** `VrmlData_Group.hxx`:90 - `VrmlData_Group::SetBox()`
+    /// **Source:** `VrmlData_Group.hxx`:93 - `VrmlData_Group::SetBox()`
     pub fn VrmlData_Group_set_box(
         self_: *mut VrmlData_Group,
         theBox: *const Bnd_B3f,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `VrmlData_Group.hxx`:96 - `VrmlData_Group::SetTransform()`
+    /// **Source:** `VrmlData_Group.hxx`:99 - `VrmlData_Group::SetTransform()`
     pub fn VrmlData_Group_set_transform(
         self_: *mut VrmlData_Group,
         theTrsf: *const gp_Trsf,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `VrmlData_Group.hxx`:102 - `VrmlData_Group::GetTransform()`
+    /// **Source:** `VrmlData_Group.hxx`:105 - `VrmlData_Group::GetTransform()`
     pub fn VrmlData_Group_get_transform(
         self_: *const VrmlData_Group,
     ) -> crate::OcctResult<*const gp_Trsf>;
-    /// **Source:** `VrmlData_Group.hxx`:107 - `VrmlData_Group::IsTransform()`
+    /// **Source:** `VrmlData_Group.hxx`:110 - `VrmlData_Group::IsTransform()`
     pub fn VrmlData_Group_is_transform(self_: *const VrmlData_Group) -> crate::OcctResult<bool>;
-    /// **Source:** `VrmlData_Group.hxx`:114 - `VrmlData_Group::Clone()`
+    /// **Source:** `VrmlData_Group.hxx`:117 - `VrmlData_Group::Clone()`
     pub fn VrmlData_Group_clone(
         self_: *const VrmlData_Group,
-        theOther: *const HandleVrmlDataNode,
-    ) -> crate::OcctResult<*mut HandleVrmlDataNode>;
-    /// **Source:** `VrmlData_Group.hxx`:120 - `VrmlData_Group::Read()`
+        theOther: *const Handle_VrmlData_Node,
+    ) -> crate::OcctResult<*mut Handle_VrmlData_Node>;
+    /// **Source:** `VrmlData_Group.hxx`:123 - `VrmlData_Group::Read()`
     pub fn VrmlData_Group_read(
         self_: *mut VrmlData_Group,
         theBuffer: *mut VrmlData_InBuffer,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `VrmlData_Group.hxx`:125 - `VrmlData_Group::Write()`
+    /// **Source:** `VrmlData_Group.hxx`:128 - `VrmlData_Group::Write()`
     pub fn VrmlData_Group_write(
         self_: *const VrmlData_Group,
         thePrefix: *const std::ffi::c_char,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `VrmlData_Group.hxx`:134 - `VrmlData_Group::FindNode()`
+    /// **Source:** `VrmlData_Group.hxx`:137 - `VrmlData_Group::FindNode()`
     pub fn VrmlData_Group_find_node(
         self_: *const VrmlData_Group,
         theName: *const std::ffi::c_char,
         theLocation: *mut gp_Trsf,
-    ) -> crate::OcctResult<*mut HandleVrmlDataNode>;
-    /// **Source:** `VrmlData_Group.hxx`:139 - `VrmlData_Group::Shape()`
-    pub fn VrmlData_Group_shape(
-        self_: *mut VrmlData_Group,
-        theShape: *mut TopoDS_Shape,
-        pMapApp: *mut VrmlData_DataMapOfShapeAppearance,
-    ) -> *const std::ffi::c_char;
-    /// **Source:** `VrmlData_Group.hxx`:161 - `VrmlData_Group::DynamicType()`
+    ) -> crate::OcctResult<*mut Handle_VrmlData_Node>;
+    /// **Source:** `VrmlData_Group.hxx`:167 - `VrmlData_Group::DynamicType()`
     pub fn VrmlData_Group_dynamic_type(
         self_: *const VrmlData_Group,
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// **Source:** `VrmlData_Group.hxx`:161 - `VrmlData_Group::get_type_name()`
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
+    /// **Source:** `VrmlData_Group.hxx`:167 - `VrmlData_Group::get_type_name()`
     pub fn VrmlData_Group_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
-    /// **Source:** `VrmlData_Group.hxx`:161 - `VrmlData_Group::get_type_descriptor()`
-    pub fn VrmlData_Group_get_type_descriptor() -> crate::OcctResult<*const HandleStandardType>;
+    /// **Source:** `VrmlData_Group.hxx`:167 - `VrmlData_Group::get_type_descriptor()`
+    pub fn VrmlData_Group_get_type_descriptor() -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast VrmlData_Group to VrmlData_Node
     pub fn VrmlData_Group_as_VrmlData_Node(
         self_: *const VrmlData_Group,
@@ -5102,77 +5157,77 @@ unsafe extern "C" {
     /// Wrap VrmlData_Group in a Handle
     pub fn VrmlData_Group_to_handle(
         obj: *mut VrmlData_Group,
-    ) -> crate::OcctResult<*mut HandleVrmlDataGroup>;
+    ) -> crate::OcctResult<*mut Handle_VrmlData_Group>;
     /// Destroy Handle<VrmlData_Group>
-    pub fn HandleVrmlDataGroup_destructor(self_: *mut HandleVrmlDataGroup);
+    pub fn Handle_VrmlData_Group_destructor(self_: *mut Handle_VrmlData_Group);
     /// Clone Handle<VrmlData_Group> (increments reference count)
-    pub fn HandleVrmlDataGroup_clone(
-        self_: *const HandleVrmlDataGroup,
-    ) -> crate::OcctResult<*mut HandleVrmlDataGroup>;
+    pub fn Handle_VrmlData_Group_clone(
+        self_: *const Handle_VrmlData_Group,
+    ) -> crate::OcctResult<*mut Handle_VrmlData_Group>;
     /// Check if Handle<VrmlData_Group> is null
-    pub fn HandleVrmlDataGroup_is_null(self_: *const HandleVrmlDataGroup) -> bool;
+    pub fn Handle_VrmlData_Group_is_null(self_: *const Handle_VrmlData_Group) -> bool;
     /// Dereference Handle to get *const VrmlData_Group
-    pub fn HandleVrmlDataGroup_get(
-        handle: *const HandleVrmlDataGroup,
+    pub fn Handle_VrmlData_Group_get(
+        handle: *const Handle_VrmlData_Group,
     ) -> crate::OcctResult<*const VrmlData_Group>;
     /// Dereference Handle to get *mut VrmlData_Group
-    pub fn HandleVrmlDataGroup_get_mut(
-        handle: *mut HandleVrmlDataGroup,
+    pub fn Handle_VrmlData_Group_get_mut(
+        handle: *mut Handle_VrmlData_Group,
     ) -> crate::OcctResult<*mut VrmlData_Group>;
     /// Upcast Handle<VrmlData_Group> to Handle<VrmlData_Node>
-    pub fn HandleVrmlDataGroup_to_HandleVrmlDataNode(
-        self_: *const HandleVrmlDataGroup,
-    ) -> crate::OcctResult<*mut HandleVrmlDataNode>;
+    pub fn Handle_VrmlData_Group_to_Handle_VrmlData_Node(
+        self_: *const Handle_VrmlData_Group,
+    ) -> crate::OcctResult<*mut Handle_VrmlData_Node>;
     /// Upcast Handle<VrmlData_Group> to Handle<Standard_Transient>
-    pub fn HandleVrmlDataGroup_to_HandleStandardTransient(
-        self_: *const HandleVrmlDataGroup,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
-    /// Inherited: **Source:** `VrmlData_Node.hxx`:53 - `VrmlData_Node::Scene()`
+    pub fn Handle_VrmlData_Group_to_Handle_Standard_Transient(
+        self_: *const Handle_VrmlData_Group,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
+    /// Inherited: **Source:** `VrmlData_Node.hxx`:54 - `VrmlData_Node::Scene()`
     pub fn VrmlData_Group_inherited_Scene(
         self_: *const VrmlData_Group,
     ) -> crate::OcctResult<*const VrmlData_Scene>;
-    /// Inherited: **Source:** `VrmlData_Node.hxx`:71 - `VrmlData_Node::ReadNode()`
+    /// Inherited: **Source:** `VrmlData_Node.hxx`:72 - `VrmlData_Node::ReadNode()`
     pub fn VrmlData_Group_inherited_ReadNode(
         self_: *mut VrmlData_Group,
         theBuffer: *mut VrmlData_InBuffer,
-        theNode: *mut HandleVrmlDataNode,
-        Type: *const HandleStandardType,
+        theNode: *mut Handle_VrmlData_Node,
+        Type: *const Handle_Standard_Type,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `VrmlData_Node.hxx`:88 - `VrmlData_Node::IsDefault()`
+    /// Inherited: **Source:** `VrmlData_Node.hxx`:89 - `VrmlData_Node::IsDefault()`
     pub fn VrmlData_Group_inherited_IsDefault(
         self_: *const VrmlData_Group,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `VrmlData_Node.hxx`:93 - `VrmlData_Node::WriteClosing()`
+    /// Inherited: **Source:** `VrmlData_Node.hxx`:94 - `VrmlData_Node::WriteClosing()`
     pub fn VrmlData_Group_inherited_WriteClosing(
         self_: *const VrmlData_Group,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn VrmlData_Group_inherited_IsInstance(
         self_: *const VrmlData_Group,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn VrmlData_Group_inherited_IsKind(
         self_: *const VrmlData_Group,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn VrmlData_Group_inherited_This(
         self_: *const VrmlData_Group,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn VrmlData_Group_inherited_GetRefCount(
         self_: *const VrmlData_Group,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn VrmlData_Group_inherited_IncrementRefCounter(
         self_: *mut VrmlData_Group,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn VrmlData_Group_inherited_DecrementRefCounter(
         self_: *mut VrmlData_Group,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn VrmlData_Group_inherited_Delete(self_: *const VrmlData_Group)
         -> *const std::ffi::c_char;
     // ======================== VrmlData_ImageTexture ========================
@@ -5190,12 +5245,12 @@ unsafe extern "C" {
     /// **Source:** `VrmlData_ImageTexture.hxx`:46 - `VrmlData_ImageTexture::URL()`
     pub fn VrmlData_ImageTexture_url(
         self_: *const VrmlData_ImageTexture,
-    ) -> crate::OcctResult<*const TColStd_ListOfAsciiString>;
+    ) -> crate::OcctResult<*const NCollection_List_TCollection_AsciiString>;
     /// **Source:** `VrmlData_ImageTexture.hxx`:53 - `VrmlData_ImageTexture::Clone()`
     pub fn VrmlData_ImageTexture_clone(
         self_: *const VrmlData_ImageTexture,
-        theOther: *const HandleVrmlDataNode,
-    ) -> crate::OcctResult<*mut HandleVrmlDataNode>;
+        theOther: *const Handle_VrmlData_Node,
+    ) -> crate::OcctResult<*mut Handle_VrmlData_Node>;
     /// **Source:** `VrmlData_ImageTexture.hxx`:59 - `VrmlData_ImageTexture::Read()`
     pub fn VrmlData_ImageTexture_read(
         self_: *mut VrmlData_ImageTexture,
@@ -5206,15 +5261,15 @@ unsafe extern "C" {
         self_: *const VrmlData_ImageTexture,
         thePrefix: *const std::ffi::c_char,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `VrmlData_ImageTexture.hxx`:76 - `VrmlData_ImageTexture::DynamicType()`
+    /// **Source:** `VrmlData_ImageTexture.hxx`:73 - `VrmlData_ImageTexture::DynamicType()`
     pub fn VrmlData_ImageTexture_dynamic_type(
         self_: *const VrmlData_ImageTexture,
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// **Source:** `VrmlData_ImageTexture.hxx`:76 - `VrmlData_ImageTexture::get_type_name()`
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
+    /// **Source:** `VrmlData_ImageTexture.hxx`:73 - `VrmlData_ImageTexture::get_type_name()`
     pub fn VrmlData_ImageTexture_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
-    /// **Source:** `VrmlData_ImageTexture.hxx`:76 - `VrmlData_ImageTexture::get_type_descriptor()`
+    /// **Source:** `VrmlData_ImageTexture.hxx`:73 - `VrmlData_ImageTexture::get_type_descriptor()`
     pub fn VrmlData_ImageTexture_get_type_descriptor(
-    ) -> crate::OcctResult<*const HandleStandardType>;
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast VrmlData_ImageTexture to VrmlData_Texture
     pub fn VrmlData_ImageTexture_as_VrmlData_Texture(
         self_: *const VrmlData_ImageTexture,
@@ -5242,35 +5297,36 @@ unsafe extern "C" {
     /// Wrap VrmlData_ImageTexture in a Handle
     pub fn VrmlData_ImageTexture_to_handle(
         obj: *mut VrmlData_ImageTexture,
-    ) -> crate::OcctResult<*mut HandleVrmlDataImageTexture>;
+    ) -> crate::OcctResult<*mut Handle_VrmlData_ImageTexture>;
     /// Destroy Handle<VrmlData_ImageTexture>
-    pub fn HandleVrmlDataImageTexture_destructor(self_: *mut HandleVrmlDataImageTexture);
+    pub fn Handle_VrmlData_ImageTexture_destructor(self_: *mut Handle_VrmlData_ImageTexture);
     /// Clone Handle<VrmlData_ImageTexture> (increments reference count)
-    pub fn HandleVrmlDataImageTexture_clone(
-        self_: *const HandleVrmlDataImageTexture,
-    ) -> crate::OcctResult<*mut HandleVrmlDataImageTexture>;
+    pub fn Handle_VrmlData_ImageTexture_clone(
+        self_: *const Handle_VrmlData_ImageTexture,
+    ) -> crate::OcctResult<*mut Handle_VrmlData_ImageTexture>;
     /// Check if Handle<VrmlData_ImageTexture> is null
-    pub fn HandleVrmlDataImageTexture_is_null(self_: *const HandleVrmlDataImageTexture) -> bool;
+    pub fn Handle_VrmlData_ImageTexture_is_null(self_: *const Handle_VrmlData_ImageTexture)
+        -> bool;
     /// Dereference Handle to get *const VrmlData_ImageTexture
-    pub fn HandleVrmlDataImageTexture_get(
-        handle: *const HandleVrmlDataImageTexture,
+    pub fn Handle_VrmlData_ImageTexture_get(
+        handle: *const Handle_VrmlData_ImageTexture,
     ) -> crate::OcctResult<*const VrmlData_ImageTexture>;
     /// Dereference Handle to get *mut VrmlData_ImageTexture
-    pub fn HandleVrmlDataImageTexture_get_mut(
-        handle: *mut HandleVrmlDataImageTexture,
+    pub fn Handle_VrmlData_ImageTexture_get_mut(
+        handle: *mut Handle_VrmlData_ImageTexture,
     ) -> crate::OcctResult<*mut VrmlData_ImageTexture>;
     /// Upcast Handle<VrmlData_ImageTexture> to Handle<VrmlData_Texture>
-    pub fn HandleVrmlDataImageTexture_to_HandleVrmlDataTexture(
-        self_: *const HandleVrmlDataImageTexture,
-    ) -> crate::OcctResult<*mut HandleVrmlDataTexture>;
+    pub fn Handle_VrmlData_ImageTexture_to_Handle_VrmlData_Texture(
+        self_: *const Handle_VrmlData_ImageTexture,
+    ) -> crate::OcctResult<*mut Handle_VrmlData_Texture>;
     /// Upcast Handle<VrmlData_ImageTexture> to Handle<VrmlData_Node>
-    pub fn HandleVrmlDataImageTexture_to_HandleVrmlDataNode(
-        self_: *const HandleVrmlDataImageTexture,
-    ) -> crate::OcctResult<*mut HandleVrmlDataNode>;
+    pub fn Handle_VrmlData_ImageTexture_to_Handle_VrmlData_Node(
+        self_: *const Handle_VrmlData_ImageTexture,
+    ) -> crate::OcctResult<*mut Handle_VrmlData_Node>;
     /// Upcast Handle<VrmlData_ImageTexture> to Handle<Standard_Transient>
-    pub fn HandleVrmlDataImageTexture_to_HandleStandardTransient(
-        self_: *const HandleVrmlDataImageTexture,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
+    pub fn Handle_VrmlData_ImageTexture_to_Handle_Standard_Transient(
+        self_: *const Handle_VrmlData_ImageTexture,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
     /// Inherited: **Source:** `VrmlData_Texture.hxx`:54 - `VrmlData_Texture::RepeatS()`
     pub fn VrmlData_ImageTexture_inherited_RepeatS(
         self_: *const VrmlData_ImageTexture,
@@ -5289,52 +5345,52 @@ unsafe extern "C" {
         self_: *mut VrmlData_ImageTexture,
         theFlag: bool,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `VrmlData_Node.hxx`:53 - `VrmlData_Node::Scene()`
+    /// Inherited: **Source:** `VrmlData_Node.hxx`:54 - `VrmlData_Node::Scene()`
     pub fn VrmlData_ImageTexture_inherited_Scene(
         self_: *const VrmlData_ImageTexture,
     ) -> crate::OcctResult<*const VrmlData_Scene>;
-    /// Inherited: **Source:** `VrmlData_Node.hxx`:71 - `VrmlData_Node::ReadNode()`
+    /// Inherited: **Source:** `VrmlData_Node.hxx`:72 - `VrmlData_Node::ReadNode()`
     pub fn VrmlData_ImageTexture_inherited_ReadNode(
         self_: *mut VrmlData_ImageTexture,
         theBuffer: *mut VrmlData_InBuffer,
-        theNode: *mut HandleVrmlDataNode,
-        Type: *const HandleStandardType,
+        theNode: *mut Handle_VrmlData_Node,
+        Type: *const Handle_Standard_Type,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `VrmlData_Node.hxx`:88 - `VrmlData_Node::IsDefault()`
+    /// Inherited: **Source:** `VrmlData_Node.hxx`:89 - `VrmlData_Node::IsDefault()`
     pub fn VrmlData_ImageTexture_inherited_IsDefault(
         self_: *const VrmlData_ImageTexture,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `VrmlData_Node.hxx`:93 - `VrmlData_Node::WriteClosing()`
+    /// Inherited: **Source:** `VrmlData_Node.hxx`:94 - `VrmlData_Node::WriteClosing()`
     pub fn VrmlData_ImageTexture_inherited_WriteClosing(
         self_: *const VrmlData_ImageTexture,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn VrmlData_ImageTexture_inherited_IsInstance(
         self_: *const VrmlData_ImageTexture,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn VrmlData_ImageTexture_inherited_IsKind(
         self_: *const VrmlData_ImageTexture,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn VrmlData_ImageTexture_inherited_This(
         self_: *const VrmlData_ImageTexture,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn VrmlData_ImageTexture_inherited_GetRefCount(
         self_: *const VrmlData_ImageTexture,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn VrmlData_ImageTexture_inherited_IncrementRefCounter(
         self_: *mut VrmlData_ImageTexture,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn VrmlData_ImageTexture_inherited_DecrementRefCounter(
         self_: *mut VrmlData_ImageTexture,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn VrmlData_ImageTexture_inherited_Delete(
         self_: *const VrmlData_ImageTexture,
     ) -> *const std::ffi::c_char;
@@ -5360,19 +5416,19 @@ unsafe extern "C" {
     /// **Source:** `VrmlData_IndexedFaceSet.hxx`:78 - `VrmlData_IndexedFaceSet::Normals()`
     pub fn VrmlData_IndexedFaceSet_normals(
         self_: *const VrmlData_IndexedFaceSet,
-    ) -> crate::OcctResult<*const HandleVrmlDataNormal>;
+    ) -> crate::OcctResult<*const Handle_VrmlData_Normal>;
     /// **Source:** `VrmlData_IndexedFaceSet.hxx`:83 - `VrmlData_IndexedFaceSet::Colors()`
     pub fn VrmlData_IndexedFaceSet_colors(
         self_: *const VrmlData_IndexedFaceSet,
-    ) -> crate::OcctResult<*const HandleVrmlDataColor>;
+    ) -> crate::OcctResult<*const Handle_VrmlData_Color>;
     /// **Source:** `VrmlData_IndexedFaceSet.hxx`:88 - `VrmlData_IndexedFaceSet::TextureCoords()`
     pub fn VrmlData_IndexedFaceSet_texture_coords(
         self_: *const VrmlData_IndexedFaceSet,
-    ) -> crate::OcctResult<*const HandleVrmlDataTextureCoordinate>;
+    ) -> crate::OcctResult<*const Handle_VrmlData_TextureCoordinate>;
     /// **Source:** `VrmlData_IndexedFaceSet.hxx`:95 - `VrmlData_IndexedFaceSet::Coordinates()`
     pub fn VrmlData_IndexedFaceSet_coordinates(
         self_: *const VrmlData_IndexedFaceSet,
-    ) -> crate::OcctResult<*const HandleVrmlDataCoordinate>;
+    ) -> crate::OcctResult<*const Handle_VrmlData_Coordinate>;
     /// **Source:** `VrmlData_IndexedFaceSet.hxx`:100 - `VrmlData_IndexedFaceSet::Polygons()`
     pub fn VrmlData_IndexedFaceSet_polygons(
         self_: *const VrmlData_IndexedFaceSet,
@@ -5387,122 +5443,122 @@ unsafe extern "C" {
     /// **Source:** `VrmlData_IndexedFaceSet.hxx`:123 - `VrmlData_IndexedFaceSet::SetCoordinates()`
     pub fn VrmlData_IndexedFaceSet_set_coordinates(
         self_: *mut VrmlData_IndexedFaceSet,
-        theCoord: *const HandleVrmlDataCoordinate,
+        theCoord: *const Handle_VrmlData_Coordinate,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `VrmlData_IndexedFaceSet.hxx`:128 - `VrmlData_IndexedFaceSet::SetPolygons()`
+    /// **Source:** `VrmlData_IndexedFaceSet.hxx`:131 - `VrmlData_IndexedFaceSet::SetPolygons()`
     pub fn VrmlData_IndexedFaceSet_set_polygons(
         self_: *mut VrmlData_IndexedFaceSet,
         nPolygons: usize,
         thePolygons: *mut *const i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `VrmlData_IndexedFaceSet.hxx`:144 - `VrmlData_IndexedFaceSet::ArrayNormalInd()`
+    /// **Source:** `VrmlData_IndexedFaceSet.hxx`:147 - `VrmlData_IndexedFaceSet::ArrayNormalInd()`
     pub fn VrmlData_IndexedFaceSet_array_normal_ind(
         self_: *const VrmlData_IndexedFaceSet,
         arrNormalInd: *mut *mut *const i32,
     ) -> crate::OcctResult<usize>;
-    /// **Source:** `VrmlData_IndexedFaceSet.hxx`:160 - `VrmlData_IndexedFaceSet::IndiceNormals()`
+    /// **Source:** `VrmlData_IndexedFaceSet.hxx`:163 - `VrmlData_IndexedFaceSet::IndiceNormals()`
     pub fn VrmlData_IndexedFaceSet_indice_normals(
         self_: *mut VrmlData_IndexedFaceSet,
         iFace: i32,
         outIndice: *mut *const i32,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `VrmlData_IndexedFaceSet.hxx`:178 - `VrmlData_IndexedFaceSet::GetNormal()`
+    /// **Source:** `VrmlData_IndexedFaceSet.hxx`:180 - `VrmlData_IndexedFaceSet::GetNormal()`
     pub fn VrmlData_IndexedFaceSet_get_normal(
         self_: *mut VrmlData_IndexedFaceSet,
         iFace: i32,
         iVertex: i32,
     ) -> crate::OcctResult<*mut gp_XYZ>;
-    /// **Source:** `VrmlData_IndexedFaceSet.hxx`:183 - `VrmlData_IndexedFaceSet::SetNormalInd()`
+    /// **Source:** `VrmlData_IndexedFaceSet.hxx`:185 - `VrmlData_IndexedFaceSet::SetNormalInd()`
     pub fn VrmlData_IndexedFaceSet_set_normal_ind(
         self_: *mut VrmlData_IndexedFaceSet,
         nIndice: usize,
         theIndice: *mut *const i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `VrmlData_IndexedFaceSet.hxx`:192 - `VrmlData_IndexedFaceSet::SetNormals()`
+    /// **Source:** `VrmlData_IndexedFaceSet.hxx`:194 - `VrmlData_IndexedFaceSet::SetNormals()`
     pub fn VrmlData_IndexedFaceSet_set_normals(
         self_: *mut VrmlData_IndexedFaceSet,
-        theNormals: *const HandleVrmlDataNormal,
+        theNormals: *const Handle_VrmlData_Normal,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `VrmlData_IndexedFaceSet.hxx`:197 - `VrmlData_IndexedFaceSet::SetNormalPerVertex()`
+    /// **Source:** `VrmlData_IndexedFaceSet.hxx`:199 - `VrmlData_IndexedFaceSet::SetNormalPerVertex()`
     pub fn VrmlData_IndexedFaceSet_set_normal_per_vertex(
         self_: *mut VrmlData_IndexedFaceSet,
         isNormalPerVertex: bool,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `VrmlData_IndexedFaceSet.hxx`:212 - `VrmlData_IndexedFaceSet::ArrayColorInd()`
+    /// **Source:** `VrmlData_IndexedFaceSet.hxx`:214 - `VrmlData_IndexedFaceSet::ArrayColorInd()`
     pub fn VrmlData_IndexedFaceSet_array_color_ind(
         self_: *const VrmlData_IndexedFaceSet,
         arrColorInd: *mut *mut *const i32,
     ) -> crate::OcctResult<usize>;
-    /// **Source:** `VrmlData_IndexedFaceSet.hxx`:230 - `VrmlData_IndexedFaceSet::GetColor()`
+    /// **Source:** `VrmlData_IndexedFaceSet.hxx`:232 - `VrmlData_IndexedFaceSet::GetColor()`
     pub fn VrmlData_IndexedFaceSet_get_color(
         self_: *mut VrmlData_IndexedFaceSet,
         iFace: i32,
         iVertex: i32,
     ) -> crate::OcctResult<*mut Quantity_Color>;
-    /// **Source:** `VrmlData_IndexedFaceSet.hxx`:236 - `VrmlData_IndexedFaceSet::SetColorInd()`
+    /// **Source:** `VrmlData_IndexedFaceSet.hxx`:237 - `VrmlData_IndexedFaceSet::SetColorInd()`
     pub fn VrmlData_IndexedFaceSet_set_color_ind(
         self_: *mut VrmlData_IndexedFaceSet,
         nIndice: usize,
         theIndice: *mut *const i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `VrmlData_IndexedFaceSet.hxx`:245 - `VrmlData_IndexedFaceSet::SetColors()`
+    /// **Source:** `VrmlData_IndexedFaceSet.hxx`:246 - `VrmlData_IndexedFaceSet::SetColors()`
     pub fn VrmlData_IndexedFaceSet_set_colors(
         self_: *mut VrmlData_IndexedFaceSet,
-        theColors: *const HandleVrmlDataColor,
+        theColors: *const Handle_VrmlData_Color,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `VrmlData_IndexedFaceSet.hxx`:250 - `VrmlData_IndexedFaceSet::SetColorPerVertex()`
+    /// **Source:** `VrmlData_IndexedFaceSet.hxx`:251 - `VrmlData_IndexedFaceSet::SetColorPerVertex()`
     pub fn VrmlData_IndexedFaceSet_set_color_per_vertex(
         self_: *mut VrmlData_IndexedFaceSet,
         isColorPerVertex: bool,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `VrmlData_IndexedFaceSet.hxx`:265 - `VrmlData_IndexedFaceSet::ArrayTextureCoordInd()`
+    /// **Source:** `VrmlData_IndexedFaceSet.hxx`:266 - `VrmlData_IndexedFaceSet::ArrayTextureCoordInd()`
     pub fn VrmlData_IndexedFaceSet_array_texture_coord_ind(
         self_: *const VrmlData_IndexedFaceSet,
         arrTextureCoordInd: *mut *mut *const i32,
     ) -> crate::OcctResult<usize>;
-    /// **Source:** `VrmlData_IndexedFaceSet.hxx`:274 - `VrmlData_IndexedFaceSet::SetTextureCoordInd()`
+    /// **Source:** `VrmlData_IndexedFaceSet.hxx`:275 - `VrmlData_IndexedFaceSet::SetTextureCoordInd()`
     pub fn VrmlData_IndexedFaceSet_set_texture_coord_ind(
         self_: *mut VrmlData_IndexedFaceSet,
         nIndice: usize,
         theIndice: *mut *const i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `VrmlData_IndexedFaceSet.hxx`:283 - `VrmlData_IndexedFaceSet::SetTextureCoords()`
+    /// **Source:** `VrmlData_IndexedFaceSet.hxx`:284 - `VrmlData_IndexedFaceSet::SetTextureCoords()`
     pub fn VrmlData_IndexedFaceSet_set_texture_coords(
         self_: *mut VrmlData_IndexedFaceSet,
-        tc: *const HandleVrmlDataTextureCoordinate,
+        tc: *const Handle_VrmlData_TextureCoordinate,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `VrmlData_IndexedFaceSet.hxx`:289 - `VrmlData_IndexedFaceSet::TShape()`
+    /// **Source:** `VrmlData_IndexedFaceSet.hxx`:293 - `VrmlData_IndexedFaceSet::TShape()`
     pub fn VrmlData_IndexedFaceSet_t_shape(
         self_: *mut VrmlData_IndexedFaceSet,
-    ) -> crate::OcctResult<*const HandleTopoDSTShape>;
-    /// **Source:** `VrmlData_IndexedFaceSet.hxx`:296 - `VrmlData_IndexedFaceSet::Clone()`
+    ) -> crate::OcctResult<*const Handle_TopoDS_TShape>;
+    /// **Source:** `VrmlData_IndexedFaceSet.hxx`:300 - `VrmlData_IndexedFaceSet::Clone()`
     pub fn VrmlData_IndexedFaceSet_clone(
         self_: *const VrmlData_IndexedFaceSet,
-        theOther: *const HandleVrmlDataNode,
-    ) -> crate::OcctResult<*mut HandleVrmlDataNode>;
-    /// **Source:** `VrmlData_IndexedFaceSet.hxx`:302 - `VrmlData_IndexedFaceSet::Read()`
+        theOther: *const Handle_VrmlData_Node,
+    ) -> crate::OcctResult<*mut Handle_VrmlData_Node>;
+    /// **Source:** `VrmlData_IndexedFaceSet.hxx`:306 - `VrmlData_IndexedFaceSet::Read()`
     pub fn VrmlData_IndexedFaceSet_read(
         self_: *mut VrmlData_IndexedFaceSet,
         theBuffer: *mut VrmlData_InBuffer,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `VrmlData_IndexedFaceSet.hxx`:307 - `VrmlData_IndexedFaceSet::Write()`
+    /// **Source:** `VrmlData_IndexedFaceSet.hxx`:311 - `VrmlData_IndexedFaceSet::Write()`
     pub fn VrmlData_IndexedFaceSet_write(
         self_: *const VrmlData_IndexedFaceSet,
         thePrefix: *const std::ffi::c_char,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `VrmlData_IndexedFaceSet.hxx`:312 - `VrmlData_IndexedFaceSet::IsDefault()`
+    /// **Source:** `VrmlData_IndexedFaceSet.hxx`:316 - `VrmlData_IndexedFaceSet::IsDefault()`
     pub fn VrmlData_IndexedFaceSet_is_default(
         self_: *const VrmlData_IndexedFaceSet,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `VrmlData_IndexedFaceSet.hxx`:347 - `VrmlData_IndexedFaceSet::DynamicType()`
+    /// **Source:** `VrmlData_IndexedFaceSet.hxx`:337 - `VrmlData_IndexedFaceSet::DynamicType()`
     pub fn VrmlData_IndexedFaceSet_dynamic_type(
         self_: *const VrmlData_IndexedFaceSet,
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// **Source:** `VrmlData_IndexedFaceSet.hxx`:347 - `VrmlData_IndexedFaceSet::get_type_name()`
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
+    /// **Source:** `VrmlData_IndexedFaceSet.hxx`:337 - `VrmlData_IndexedFaceSet::get_type_name()`
     pub fn VrmlData_IndexedFaceSet_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
-    /// **Source:** `VrmlData_IndexedFaceSet.hxx`:347 - `VrmlData_IndexedFaceSet::get_type_descriptor()`
+    /// **Source:** `VrmlData_IndexedFaceSet.hxx`:337 - `VrmlData_IndexedFaceSet::get_type_descriptor()`
     pub fn VrmlData_IndexedFaceSet_get_type_descriptor(
-    ) -> crate::OcctResult<*const HandleStandardType>;
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast VrmlData_IndexedFaceSet to VrmlData_Faceted
     pub fn VrmlData_IndexedFaceSet_as_VrmlData_Faceted(
         self_: *const VrmlData_IndexedFaceSet,
@@ -5538,40 +5594,41 @@ unsafe extern "C" {
     /// Wrap VrmlData_IndexedFaceSet in a Handle
     pub fn VrmlData_IndexedFaceSet_to_handle(
         obj: *mut VrmlData_IndexedFaceSet,
-    ) -> crate::OcctResult<*mut HandleVrmlDataIndexedFaceSet>;
+    ) -> crate::OcctResult<*mut Handle_VrmlData_IndexedFaceSet>;
     /// Destroy Handle<VrmlData_IndexedFaceSet>
-    pub fn HandleVrmlDataIndexedFaceSet_destructor(self_: *mut HandleVrmlDataIndexedFaceSet);
+    pub fn Handle_VrmlData_IndexedFaceSet_destructor(self_: *mut Handle_VrmlData_IndexedFaceSet);
     /// Clone Handle<VrmlData_IndexedFaceSet> (increments reference count)
-    pub fn HandleVrmlDataIndexedFaceSet_clone(
-        self_: *const HandleVrmlDataIndexedFaceSet,
-    ) -> crate::OcctResult<*mut HandleVrmlDataIndexedFaceSet>;
+    pub fn Handle_VrmlData_IndexedFaceSet_clone(
+        self_: *const Handle_VrmlData_IndexedFaceSet,
+    ) -> crate::OcctResult<*mut Handle_VrmlData_IndexedFaceSet>;
     /// Check if Handle<VrmlData_IndexedFaceSet> is null
-    pub fn HandleVrmlDataIndexedFaceSet_is_null(self_: *const HandleVrmlDataIndexedFaceSet)
-        -> bool;
+    pub fn Handle_VrmlData_IndexedFaceSet_is_null(
+        self_: *const Handle_VrmlData_IndexedFaceSet,
+    ) -> bool;
     /// Dereference Handle to get *const VrmlData_IndexedFaceSet
-    pub fn HandleVrmlDataIndexedFaceSet_get(
-        handle: *const HandleVrmlDataIndexedFaceSet,
+    pub fn Handle_VrmlData_IndexedFaceSet_get(
+        handle: *const Handle_VrmlData_IndexedFaceSet,
     ) -> crate::OcctResult<*const VrmlData_IndexedFaceSet>;
     /// Dereference Handle to get *mut VrmlData_IndexedFaceSet
-    pub fn HandleVrmlDataIndexedFaceSet_get_mut(
-        handle: *mut HandleVrmlDataIndexedFaceSet,
+    pub fn Handle_VrmlData_IndexedFaceSet_get_mut(
+        handle: *mut Handle_VrmlData_IndexedFaceSet,
     ) -> crate::OcctResult<*mut VrmlData_IndexedFaceSet>;
     /// Upcast Handle<VrmlData_IndexedFaceSet> to Handle<VrmlData_Faceted>
-    pub fn HandleVrmlDataIndexedFaceSet_to_HandleVrmlDataFaceted(
-        self_: *const HandleVrmlDataIndexedFaceSet,
-    ) -> crate::OcctResult<*mut HandleVrmlDataFaceted>;
+    pub fn Handle_VrmlData_IndexedFaceSet_to_Handle_VrmlData_Faceted(
+        self_: *const Handle_VrmlData_IndexedFaceSet,
+    ) -> crate::OcctResult<*mut Handle_VrmlData_Faceted>;
     /// Upcast Handle<VrmlData_IndexedFaceSet> to Handle<VrmlData_Geometry>
-    pub fn HandleVrmlDataIndexedFaceSet_to_HandleVrmlDataGeometry(
-        self_: *const HandleVrmlDataIndexedFaceSet,
-    ) -> crate::OcctResult<*mut HandleVrmlDataGeometry>;
+    pub fn Handle_VrmlData_IndexedFaceSet_to_Handle_VrmlData_Geometry(
+        self_: *const Handle_VrmlData_IndexedFaceSet,
+    ) -> crate::OcctResult<*mut Handle_VrmlData_Geometry>;
     /// Upcast Handle<VrmlData_IndexedFaceSet> to Handle<VrmlData_Node>
-    pub fn HandleVrmlDataIndexedFaceSet_to_HandleVrmlDataNode(
-        self_: *const HandleVrmlDataIndexedFaceSet,
-    ) -> crate::OcctResult<*mut HandleVrmlDataNode>;
+    pub fn Handle_VrmlData_IndexedFaceSet_to_Handle_VrmlData_Node(
+        self_: *const Handle_VrmlData_IndexedFaceSet,
+    ) -> crate::OcctResult<*mut Handle_VrmlData_Node>;
     /// Upcast Handle<VrmlData_IndexedFaceSet> to Handle<Standard_Transient>
-    pub fn HandleVrmlDataIndexedFaceSet_to_HandleStandardTransient(
-        self_: *const HandleVrmlDataIndexedFaceSet,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
+    pub fn Handle_VrmlData_IndexedFaceSet_to_Handle_Standard_Transient(
+        self_: *const Handle_VrmlData_IndexedFaceSet,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
     /// Inherited: **Source:** `VrmlData_Faceted.hxx`:61 - `VrmlData_Faceted::IsCCW()`
     pub fn VrmlData_IndexedFaceSet_inherited_IsCCW(
         self_: *const VrmlData_IndexedFaceSet,
@@ -5608,48 +5665,48 @@ unsafe extern "C" {
         self_: *mut VrmlData_IndexedFaceSet,
         theValue: f64,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `VrmlData_Node.hxx`:53 - `VrmlData_Node::Scene()`
+    /// Inherited: **Source:** `VrmlData_Node.hxx`:54 - `VrmlData_Node::Scene()`
     pub fn VrmlData_IndexedFaceSet_inherited_Scene(
         self_: *const VrmlData_IndexedFaceSet,
     ) -> crate::OcctResult<*const VrmlData_Scene>;
-    /// Inherited: **Source:** `VrmlData_Node.hxx`:71 - `VrmlData_Node::ReadNode()`
+    /// Inherited: **Source:** `VrmlData_Node.hxx`:72 - `VrmlData_Node::ReadNode()`
     pub fn VrmlData_IndexedFaceSet_inherited_ReadNode(
         self_: *mut VrmlData_IndexedFaceSet,
         theBuffer: *mut VrmlData_InBuffer,
-        theNode: *mut HandleVrmlDataNode,
-        Type: *const HandleStandardType,
+        theNode: *mut Handle_VrmlData_Node,
+        Type: *const Handle_Standard_Type,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `VrmlData_Node.hxx`:93 - `VrmlData_Node::WriteClosing()`
+    /// Inherited: **Source:** `VrmlData_Node.hxx`:94 - `VrmlData_Node::WriteClosing()`
     pub fn VrmlData_IndexedFaceSet_inherited_WriteClosing(
         self_: *const VrmlData_IndexedFaceSet,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn VrmlData_IndexedFaceSet_inherited_IsInstance(
         self_: *const VrmlData_IndexedFaceSet,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn VrmlData_IndexedFaceSet_inherited_IsKind(
         self_: *const VrmlData_IndexedFaceSet,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn VrmlData_IndexedFaceSet_inherited_This(
         self_: *const VrmlData_IndexedFaceSet,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn VrmlData_IndexedFaceSet_inherited_GetRefCount(
         self_: *const VrmlData_IndexedFaceSet,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn VrmlData_IndexedFaceSet_inherited_IncrementRefCounter(
         self_: *mut VrmlData_IndexedFaceSet,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn VrmlData_IndexedFaceSet_inherited_DecrementRefCounter(
         self_: *mut VrmlData_IndexedFaceSet,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn VrmlData_IndexedFaceSet_inherited_Delete(
         self_: *const VrmlData_IndexedFaceSet,
     ) -> *const std::ffi::c_char;
@@ -5666,92 +5723,92 @@ unsafe extern "C" {
     /// **Source:** `VrmlData_IndexedLineSet.hxx`:64 - `VrmlData_IndexedLineSet::Coordinates()`
     pub fn VrmlData_IndexedLineSet_coordinates(
         self_: *const VrmlData_IndexedLineSet,
-    ) -> crate::OcctResult<*const HandleVrmlDataCoordinate>;
+    ) -> crate::OcctResult<*const Handle_VrmlData_Coordinate>;
     /// **Source:** `VrmlData_IndexedLineSet.hxx`:69 - `VrmlData_IndexedLineSet::SetCoordinates()`
     pub fn VrmlData_IndexedLineSet_set_coordinates(
         self_: *mut VrmlData_IndexedLineSet,
-        theCoord: *const HandleVrmlDataCoordinate,
+        theCoord: *const Handle_VrmlData_Coordinate,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `VrmlData_IndexedLineSet.hxx`:74 - `VrmlData_IndexedLineSet::Colors()`
+    /// **Source:** `VrmlData_IndexedLineSet.hxx`:77 - `VrmlData_IndexedLineSet::Colors()`
     pub fn VrmlData_IndexedLineSet_colors(
         self_: *const VrmlData_IndexedLineSet,
-    ) -> crate::OcctResult<*const HandleVrmlDataColor>;
-    /// **Source:** `VrmlData_IndexedLineSet.hxx`:79 - `VrmlData_IndexedLineSet::SetColors()`
+    ) -> crate::OcctResult<*const Handle_VrmlData_Color>;
+    /// **Source:** `VrmlData_IndexedLineSet.hxx`:82 - `VrmlData_IndexedLineSet::SetColors()`
     pub fn VrmlData_IndexedLineSet_set_colors(
         self_: *mut VrmlData_IndexedLineSet,
-        theColors: *const HandleVrmlDataColor,
+        theColors: *const Handle_VrmlData_Color,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `VrmlData_IndexedLineSet.hxx`:86 - `VrmlData_IndexedLineSet::Polygons()`
+    /// **Source:** `VrmlData_IndexedLineSet.hxx`:89 - `VrmlData_IndexedLineSet::Polygons()`
     pub fn VrmlData_IndexedLineSet_polygons(
         self_: *const VrmlData_IndexedLineSet,
         arrPolygons: *mut *mut *const i32,
     ) -> crate::OcctResult<usize>;
-    /// **Source:** `VrmlData_IndexedLineSet.hxx`:101 - `VrmlData_IndexedLineSet::Polygon()`
+    /// **Source:** `VrmlData_IndexedLineSet.hxx`:104 - `VrmlData_IndexedLineSet::Polygon()`
     pub fn VrmlData_IndexedLineSet_polygon(
         self_: *mut VrmlData_IndexedLineSet,
         iPolygon: i32,
         outIndice: *mut *const i32,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `VrmlData_IndexedLineSet.hxx`:110 - `VrmlData_IndexedLineSet::SetPolygons()`
+    /// **Source:** `VrmlData_IndexedLineSet.hxx`:112 - `VrmlData_IndexedLineSet::SetPolygons()`
     pub fn VrmlData_IndexedLineSet_set_polygons(
         self_: *mut VrmlData_IndexedLineSet,
         nPolygons: usize,
         thePolygons: *mut *const i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `VrmlData_IndexedLineSet.hxx`:125 - `VrmlData_IndexedLineSet::ArrayColorInd()`
+    /// **Source:** `VrmlData_IndexedLineSet.hxx`:127 - `VrmlData_IndexedLineSet::ArrayColorInd()`
     pub fn VrmlData_IndexedLineSet_array_color_ind(
         self_: *const VrmlData_IndexedLineSet,
         arrColorInd: *mut *mut *const i32,
     ) -> crate::OcctResult<usize>;
-    /// **Source:** `VrmlData_IndexedLineSet.hxx`:143 - `VrmlData_IndexedLineSet::GetColor()`
+    /// **Source:** `VrmlData_IndexedLineSet.hxx`:145 - `VrmlData_IndexedLineSet::GetColor()`
     pub fn VrmlData_IndexedLineSet_get_color(
         self_: *mut VrmlData_IndexedLineSet,
         iFace: i32,
         iVertex: i32,
     ) -> crate::OcctResult<*mut Quantity_Color>;
-    /// **Source:** `VrmlData_IndexedLineSet.hxx`:149 - `VrmlData_IndexedLineSet::SetColorInd()`
+    /// **Source:** `VrmlData_IndexedLineSet.hxx`:150 - `VrmlData_IndexedLineSet::SetColorInd()`
     pub fn VrmlData_IndexedLineSet_set_color_ind(
         self_: *mut VrmlData_IndexedLineSet,
         nIndice: usize,
         theIndice: *mut *const i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `VrmlData_IndexedLineSet.hxx`:158 - `VrmlData_IndexedLineSet::SetColorPerVertex()`
+    /// **Source:** `VrmlData_IndexedLineSet.hxx`:159 - `VrmlData_IndexedLineSet::SetColorPerVertex()`
     pub fn VrmlData_IndexedLineSet_set_color_per_vertex(
         self_: *mut VrmlData_IndexedLineSet,
         isColorPerVertex: bool,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `VrmlData_IndexedLineSet.hxx`:167 - `VrmlData_IndexedLineSet::TShape()`
+    /// **Source:** `VrmlData_IndexedLineSet.hxx`:168 - `VrmlData_IndexedLineSet::TShape()`
     pub fn VrmlData_IndexedLineSet_t_shape(
         self_: *mut VrmlData_IndexedLineSet,
-    ) -> crate::OcctResult<*const HandleTopoDSTShape>;
-    /// **Source:** `VrmlData_IndexedLineSet.hxx`:174 - `VrmlData_IndexedLineSet::Clone()`
+    ) -> crate::OcctResult<*const Handle_TopoDS_TShape>;
+    /// **Source:** `VrmlData_IndexedLineSet.hxx`:175 - `VrmlData_IndexedLineSet::Clone()`
     pub fn VrmlData_IndexedLineSet_clone(
         self_: *const VrmlData_IndexedLineSet,
-        theOther: *const HandleVrmlDataNode,
-    ) -> crate::OcctResult<*mut HandleVrmlDataNode>;
-    /// **Source:** `VrmlData_IndexedLineSet.hxx`:180 - `VrmlData_IndexedLineSet::Read()`
+        theOther: *const Handle_VrmlData_Node,
+    ) -> crate::OcctResult<*mut Handle_VrmlData_Node>;
+    /// **Source:** `VrmlData_IndexedLineSet.hxx`:181 - `VrmlData_IndexedLineSet::Read()`
     pub fn VrmlData_IndexedLineSet_read(
         self_: *mut VrmlData_IndexedLineSet,
         theBuffer: *mut VrmlData_InBuffer,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `VrmlData_IndexedLineSet.hxx`:185 - `VrmlData_IndexedLineSet::Write()`
+    /// **Source:** `VrmlData_IndexedLineSet.hxx`:186 - `VrmlData_IndexedLineSet::Write()`
     pub fn VrmlData_IndexedLineSet_write(
         self_: *const VrmlData_IndexedLineSet,
         thePrefix: *const std::ffi::c_char,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `VrmlData_IndexedLineSet.hxx`:190 - `VrmlData_IndexedLineSet::IsDefault()`
+    /// **Source:** `VrmlData_IndexedLineSet.hxx`:191 - `VrmlData_IndexedLineSet::IsDefault()`
     pub fn VrmlData_IndexedLineSet_is_default(
         self_: *const VrmlData_IndexedLineSet,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `VrmlData_IndexedLineSet.hxx`:204 - `VrmlData_IndexedLineSet::DynamicType()`
+    /// **Source:** `VrmlData_IndexedLineSet.hxx`:205 - `VrmlData_IndexedLineSet::DynamicType()`
     pub fn VrmlData_IndexedLineSet_dynamic_type(
         self_: *const VrmlData_IndexedLineSet,
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// **Source:** `VrmlData_IndexedLineSet.hxx`:204 - `VrmlData_IndexedLineSet::get_type_name()`
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
+    /// **Source:** `VrmlData_IndexedLineSet.hxx`:205 - `VrmlData_IndexedLineSet::get_type_name()`
     pub fn VrmlData_IndexedLineSet_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
-    /// **Source:** `VrmlData_IndexedLineSet.hxx`:204 - `VrmlData_IndexedLineSet::get_type_descriptor()`
+    /// **Source:** `VrmlData_IndexedLineSet.hxx`:205 - `VrmlData_IndexedLineSet::get_type_descriptor()`
     pub fn VrmlData_IndexedLineSet_get_type_descriptor(
-    ) -> crate::OcctResult<*const HandleStandardType>;
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast VrmlData_IndexedLineSet to VrmlData_Geometry
     pub fn VrmlData_IndexedLineSet_as_VrmlData_Geometry(
         self_: *const VrmlData_IndexedLineSet,
@@ -5779,78 +5836,79 @@ unsafe extern "C" {
     /// Wrap VrmlData_IndexedLineSet in a Handle
     pub fn VrmlData_IndexedLineSet_to_handle(
         obj: *mut VrmlData_IndexedLineSet,
-    ) -> crate::OcctResult<*mut HandleVrmlDataIndexedLineSet>;
+    ) -> crate::OcctResult<*mut Handle_VrmlData_IndexedLineSet>;
     /// Destroy Handle<VrmlData_IndexedLineSet>
-    pub fn HandleVrmlDataIndexedLineSet_destructor(self_: *mut HandleVrmlDataIndexedLineSet);
+    pub fn Handle_VrmlData_IndexedLineSet_destructor(self_: *mut Handle_VrmlData_IndexedLineSet);
     /// Clone Handle<VrmlData_IndexedLineSet> (increments reference count)
-    pub fn HandleVrmlDataIndexedLineSet_clone(
-        self_: *const HandleVrmlDataIndexedLineSet,
-    ) -> crate::OcctResult<*mut HandleVrmlDataIndexedLineSet>;
+    pub fn Handle_VrmlData_IndexedLineSet_clone(
+        self_: *const Handle_VrmlData_IndexedLineSet,
+    ) -> crate::OcctResult<*mut Handle_VrmlData_IndexedLineSet>;
     /// Check if Handle<VrmlData_IndexedLineSet> is null
-    pub fn HandleVrmlDataIndexedLineSet_is_null(self_: *const HandleVrmlDataIndexedLineSet)
-        -> bool;
+    pub fn Handle_VrmlData_IndexedLineSet_is_null(
+        self_: *const Handle_VrmlData_IndexedLineSet,
+    ) -> bool;
     /// Dereference Handle to get *const VrmlData_IndexedLineSet
-    pub fn HandleVrmlDataIndexedLineSet_get(
-        handle: *const HandleVrmlDataIndexedLineSet,
+    pub fn Handle_VrmlData_IndexedLineSet_get(
+        handle: *const Handle_VrmlData_IndexedLineSet,
     ) -> crate::OcctResult<*const VrmlData_IndexedLineSet>;
     /// Dereference Handle to get *mut VrmlData_IndexedLineSet
-    pub fn HandleVrmlDataIndexedLineSet_get_mut(
-        handle: *mut HandleVrmlDataIndexedLineSet,
+    pub fn Handle_VrmlData_IndexedLineSet_get_mut(
+        handle: *mut Handle_VrmlData_IndexedLineSet,
     ) -> crate::OcctResult<*mut VrmlData_IndexedLineSet>;
     /// Upcast Handle<VrmlData_IndexedLineSet> to Handle<VrmlData_Geometry>
-    pub fn HandleVrmlDataIndexedLineSet_to_HandleVrmlDataGeometry(
-        self_: *const HandleVrmlDataIndexedLineSet,
-    ) -> crate::OcctResult<*mut HandleVrmlDataGeometry>;
+    pub fn Handle_VrmlData_IndexedLineSet_to_Handle_VrmlData_Geometry(
+        self_: *const Handle_VrmlData_IndexedLineSet,
+    ) -> crate::OcctResult<*mut Handle_VrmlData_Geometry>;
     /// Upcast Handle<VrmlData_IndexedLineSet> to Handle<VrmlData_Node>
-    pub fn HandleVrmlDataIndexedLineSet_to_HandleVrmlDataNode(
-        self_: *const HandleVrmlDataIndexedLineSet,
-    ) -> crate::OcctResult<*mut HandleVrmlDataNode>;
+    pub fn Handle_VrmlData_IndexedLineSet_to_Handle_VrmlData_Node(
+        self_: *const Handle_VrmlData_IndexedLineSet,
+    ) -> crate::OcctResult<*mut Handle_VrmlData_Node>;
     /// Upcast Handle<VrmlData_IndexedLineSet> to Handle<Standard_Transient>
-    pub fn HandleVrmlDataIndexedLineSet_to_HandleStandardTransient(
-        self_: *const HandleVrmlDataIndexedLineSet,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
-    /// Inherited: **Source:** `VrmlData_Node.hxx`:53 - `VrmlData_Node::Scene()`
+    pub fn Handle_VrmlData_IndexedLineSet_to_Handle_Standard_Transient(
+        self_: *const Handle_VrmlData_IndexedLineSet,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
+    /// Inherited: **Source:** `VrmlData_Node.hxx`:54 - `VrmlData_Node::Scene()`
     pub fn VrmlData_IndexedLineSet_inherited_Scene(
         self_: *const VrmlData_IndexedLineSet,
     ) -> crate::OcctResult<*const VrmlData_Scene>;
-    /// Inherited: **Source:** `VrmlData_Node.hxx`:71 - `VrmlData_Node::ReadNode()`
+    /// Inherited: **Source:** `VrmlData_Node.hxx`:72 - `VrmlData_Node::ReadNode()`
     pub fn VrmlData_IndexedLineSet_inherited_ReadNode(
         self_: *mut VrmlData_IndexedLineSet,
         theBuffer: *mut VrmlData_InBuffer,
-        theNode: *mut HandleVrmlDataNode,
-        Type: *const HandleStandardType,
+        theNode: *mut Handle_VrmlData_Node,
+        Type: *const Handle_Standard_Type,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `VrmlData_Node.hxx`:93 - `VrmlData_Node::WriteClosing()`
+    /// Inherited: **Source:** `VrmlData_Node.hxx`:94 - `VrmlData_Node::WriteClosing()`
     pub fn VrmlData_IndexedLineSet_inherited_WriteClosing(
         self_: *const VrmlData_IndexedLineSet,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn VrmlData_IndexedLineSet_inherited_IsInstance(
         self_: *const VrmlData_IndexedLineSet,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn VrmlData_IndexedLineSet_inherited_IsKind(
         self_: *const VrmlData_IndexedLineSet,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn VrmlData_IndexedLineSet_inherited_This(
         self_: *const VrmlData_IndexedLineSet,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn VrmlData_IndexedLineSet_inherited_GetRefCount(
         self_: *const VrmlData_IndexedLineSet,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn VrmlData_IndexedLineSet_inherited_IncrementRefCounter(
         self_: *mut VrmlData_IndexedLineSet,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn VrmlData_IndexedLineSet_inherited_DecrementRefCounter(
         self_: *mut VrmlData_IndexedLineSet,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn VrmlData_IndexedLineSet_inherited_Delete(
         self_: *const VrmlData_IndexedLineSet,
     ) -> *const std::ffi::c_char;
@@ -5907,52 +5965,52 @@ unsafe extern "C" {
         self_: *mut VrmlData_Material,
         theTransparency: f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `VrmlData_Material.hxx`:103 - `VrmlData_Material::SetAmbientColor()`
+    /// **Source:** `VrmlData_Material.hxx`:100 - `VrmlData_Material::SetAmbientColor()`
     pub fn VrmlData_Material_set_ambient_color(
         self_: *mut VrmlData_Material,
         theColor: *const Quantity_Color,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `VrmlData_Material.hxx`:108 - `VrmlData_Material::SetDiffuseColor()`
+    /// **Source:** `VrmlData_Material.hxx`:105 - `VrmlData_Material::SetDiffuseColor()`
     pub fn VrmlData_Material_set_diffuse_color(
         self_: *mut VrmlData_Material,
         theColor: *const Quantity_Color,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `VrmlData_Material.hxx`:113 - `VrmlData_Material::SetEmissiveColor()`
+    /// **Source:** `VrmlData_Material.hxx`:110 - `VrmlData_Material::SetEmissiveColor()`
     pub fn VrmlData_Material_set_emissive_color(
         self_: *mut VrmlData_Material,
         theColor: *const Quantity_Color,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `VrmlData_Material.hxx`:118 - `VrmlData_Material::SetSpecularColor()`
+    /// **Source:** `VrmlData_Material.hxx`:115 - `VrmlData_Material::SetSpecularColor()`
     pub fn VrmlData_Material_set_specular_color(
         self_: *mut VrmlData_Material,
         theColor: *const Quantity_Color,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `VrmlData_Material.hxx`:125 - `VrmlData_Material::Clone()`
+    /// **Source:** `VrmlData_Material.hxx`:122 - `VrmlData_Material::Clone()`
     pub fn VrmlData_Material_clone(
         self_: *const VrmlData_Material,
-        theOther: *const HandleVrmlDataNode,
-    ) -> crate::OcctResult<*mut HandleVrmlDataNode>;
-    /// **Source:** `VrmlData_Material.hxx`:131 - `VrmlData_Material::Read()`
+        theOther: *const Handle_VrmlData_Node,
+    ) -> crate::OcctResult<*mut Handle_VrmlData_Node>;
+    /// **Source:** `VrmlData_Material.hxx`:128 - `VrmlData_Material::Read()`
     pub fn VrmlData_Material_read(
         self_: *mut VrmlData_Material,
         theBuffer: *mut VrmlData_InBuffer,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `VrmlData_Material.hxx`:136 - `VrmlData_Material::Write()`
+    /// **Source:** `VrmlData_Material.hxx`:133 - `VrmlData_Material::Write()`
     pub fn VrmlData_Material_write(
         self_: *const VrmlData_Material,
         thePrefix: *const std::ffi::c_char,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `VrmlData_Material.hxx`:141 - `VrmlData_Material::IsDefault()`
+    /// **Source:** `VrmlData_Material.hxx`:138 - `VrmlData_Material::IsDefault()`
     pub fn VrmlData_Material_is_default(self_: *const VrmlData_Material)
         -> crate::OcctResult<bool>;
-    /// **Source:** `VrmlData_Material.hxx`:159 - `VrmlData_Material::DynamicType()`
+    /// **Source:** `VrmlData_Material.hxx`:153 - `VrmlData_Material::DynamicType()`
     pub fn VrmlData_Material_dynamic_type(
         self_: *const VrmlData_Material,
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// **Source:** `VrmlData_Material.hxx`:159 - `VrmlData_Material::get_type_name()`
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
+    /// **Source:** `VrmlData_Material.hxx`:153 - `VrmlData_Material::get_type_name()`
     pub fn VrmlData_Material_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
-    /// **Source:** `VrmlData_Material.hxx`:159 - `VrmlData_Material::get_type_descriptor()`
-    pub fn VrmlData_Material_get_type_descriptor() -> crate::OcctResult<*const HandleStandardType>;
+    /// **Source:** `VrmlData_Material.hxx`:153 - `VrmlData_Material::get_type_descriptor()`
+    pub fn VrmlData_Material_get_type_descriptor() -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast VrmlData_Material to VrmlData_Node
     pub fn VrmlData_Material_as_VrmlData_Node(
         self_: *const VrmlData_Material,
@@ -5972,149 +6030,149 @@ unsafe extern "C" {
     /// Wrap VrmlData_Material in a Handle
     pub fn VrmlData_Material_to_handle(
         obj: *mut VrmlData_Material,
-    ) -> crate::OcctResult<*mut HandleVrmlDataMaterial>;
+    ) -> crate::OcctResult<*mut Handle_VrmlData_Material>;
     /// Destroy Handle<VrmlData_Material>
-    pub fn HandleVrmlDataMaterial_destructor(self_: *mut HandleVrmlDataMaterial);
+    pub fn Handle_VrmlData_Material_destructor(self_: *mut Handle_VrmlData_Material);
     /// Clone Handle<VrmlData_Material> (increments reference count)
-    pub fn HandleVrmlDataMaterial_clone(
-        self_: *const HandleVrmlDataMaterial,
-    ) -> crate::OcctResult<*mut HandleVrmlDataMaterial>;
+    pub fn Handle_VrmlData_Material_clone(
+        self_: *const Handle_VrmlData_Material,
+    ) -> crate::OcctResult<*mut Handle_VrmlData_Material>;
     /// Check if Handle<VrmlData_Material> is null
-    pub fn HandleVrmlDataMaterial_is_null(self_: *const HandleVrmlDataMaterial) -> bool;
+    pub fn Handle_VrmlData_Material_is_null(self_: *const Handle_VrmlData_Material) -> bool;
     /// Dereference Handle to get *const VrmlData_Material
-    pub fn HandleVrmlDataMaterial_get(
-        handle: *const HandleVrmlDataMaterial,
+    pub fn Handle_VrmlData_Material_get(
+        handle: *const Handle_VrmlData_Material,
     ) -> crate::OcctResult<*const VrmlData_Material>;
     /// Dereference Handle to get *mut VrmlData_Material
-    pub fn HandleVrmlDataMaterial_get_mut(
-        handle: *mut HandleVrmlDataMaterial,
+    pub fn Handle_VrmlData_Material_get_mut(
+        handle: *mut Handle_VrmlData_Material,
     ) -> crate::OcctResult<*mut VrmlData_Material>;
     /// Upcast Handle<VrmlData_Material> to Handle<VrmlData_Node>
-    pub fn HandleVrmlDataMaterial_to_HandleVrmlDataNode(
-        self_: *const HandleVrmlDataMaterial,
-    ) -> crate::OcctResult<*mut HandleVrmlDataNode>;
+    pub fn Handle_VrmlData_Material_to_Handle_VrmlData_Node(
+        self_: *const Handle_VrmlData_Material,
+    ) -> crate::OcctResult<*mut Handle_VrmlData_Node>;
     /// Upcast Handle<VrmlData_Material> to Handle<Standard_Transient>
-    pub fn HandleVrmlDataMaterial_to_HandleStandardTransient(
-        self_: *const HandleVrmlDataMaterial,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
-    /// Inherited: **Source:** `VrmlData_Node.hxx`:53 - `VrmlData_Node::Scene()`
+    pub fn Handle_VrmlData_Material_to_Handle_Standard_Transient(
+        self_: *const Handle_VrmlData_Material,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
+    /// Inherited: **Source:** `VrmlData_Node.hxx`:54 - `VrmlData_Node::Scene()`
     pub fn VrmlData_Material_inherited_Scene(
         self_: *const VrmlData_Material,
     ) -> crate::OcctResult<*const VrmlData_Scene>;
-    /// Inherited: **Source:** `VrmlData_Node.hxx`:71 - `VrmlData_Node::ReadNode()`
+    /// Inherited: **Source:** `VrmlData_Node.hxx`:72 - `VrmlData_Node::ReadNode()`
     pub fn VrmlData_Material_inherited_ReadNode(
         self_: *mut VrmlData_Material,
         theBuffer: *mut VrmlData_InBuffer,
-        theNode: *mut HandleVrmlDataNode,
-        Type: *const HandleStandardType,
+        theNode: *mut Handle_VrmlData_Node,
+        Type: *const Handle_Standard_Type,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `VrmlData_Node.hxx`:93 - `VrmlData_Node::WriteClosing()`
+    /// Inherited: **Source:** `VrmlData_Node.hxx`:94 - `VrmlData_Node::WriteClosing()`
     pub fn VrmlData_Material_inherited_WriteClosing(
         self_: *const VrmlData_Material,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn VrmlData_Material_inherited_IsInstance(
         self_: *const VrmlData_Material,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn VrmlData_Material_inherited_IsKind(
         self_: *const VrmlData_Material,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn VrmlData_Material_inherited_This(
         self_: *const VrmlData_Material,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn VrmlData_Material_inherited_GetRefCount(
         self_: *const VrmlData_Material,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn VrmlData_Material_inherited_IncrementRefCounter(
         self_: *mut VrmlData_Material,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn VrmlData_Material_inherited_DecrementRefCounter(
         self_: *mut VrmlData_Material,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn VrmlData_Material_inherited_Delete(
         self_: *const VrmlData_Material,
     ) -> *const std::ffi::c_char;
     // ======================== VrmlData_Node ========================
     pub fn VrmlData_Node_destructor(self_: *mut VrmlData_Node);
-    /// **Source:** `VrmlData_Node.hxx`:53 - `VrmlData_Node::Scene()`
+    /// **Source:** `VrmlData_Node.hxx`:54 - `VrmlData_Node::Scene()`
     pub fn VrmlData_Node_scene(
         self_: *const VrmlData_Node,
     ) -> crate::OcctResult<*const VrmlData_Scene>;
-    /// **Source:** `VrmlData_Node.hxx`:58 - `VrmlData_Node::Name()`
+    /// **Source:** `VrmlData_Node.hxx`:59 - `VrmlData_Node::Name()`
     pub fn VrmlData_Node_name(
         self_: *const VrmlData_Node,
     ) -> crate::OcctResult<*const std::ffi::c_char>;
-    /// **Source:** `VrmlData_Node.hxx`:71 - `VrmlData_Node::ReadNode()`
+    /// **Source:** `VrmlData_Node.hxx`:72 - `VrmlData_Node::ReadNode()`
     pub fn VrmlData_Node_read_node(
         self_: *mut VrmlData_Node,
         theBuffer: *mut VrmlData_InBuffer,
-        theNode: *mut HandleVrmlDataNode,
-        Type: *const HandleStandardType,
+        theNode: *mut Handle_VrmlData_Node,
+        Type: *const Handle_Standard_Type,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `VrmlData_Node.hxx`:78 - `VrmlData_Node::Read()`
+    /// **Source:** `VrmlData_Node.hxx`:79 - `VrmlData_Node::Read()`
     pub fn VrmlData_Node_read(
         self_: *mut VrmlData_Node,
         theBuffer: *mut VrmlData_InBuffer,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `VrmlData_Node.hxx`:83 - `VrmlData_Node::Write()`
+    /// **Source:** `VrmlData_Node.hxx`:84 - `VrmlData_Node::Write()`
     pub fn VrmlData_Node_write(
         self_: *const VrmlData_Node,
         thePrefix: *const std::ffi::c_char,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `VrmlData_Node.hxx`:88 - `VrmlData_Node::IsDefault()`
+    /// **Source:** `VrmlData_Node.hxx`:89 - `VrmlData_Node::IsDefault()`
     pub fn VrmlData_Node_is_default(self_: *const VrmlData_Node) -> crate::OcctResult<bool>;
-    /// **Source:** `VrmlData_Node.hxx`:93 - `VrmlData_Node::WriteClosing()`
+    /// **Source:** `VrmlData_Node.hxx`:94 - `VrmlData_Node::WriteClosing()`
     pub fn VrmlData_Node_write_closing(self_: *const VrmlData_Node) -> crate::OcctResult<i32>;
-    /// **Source:** `VrmlData_Node.hxx`:102 - `VrmlData_Node::Clone()`
+    /// **Source:** `VrmlData_Node.hxx`:103 - `VrmlData_Node::Clone()`
     pub fn VrmlData_Node_clone(
         self_: *const VrmlData_Node,
-        arg0: *const HandleVrmlDataNode,
-    ) -> crate::OcctResult<*mut HandleVrmlDataNode>;
-    /// **Source:** `VrmlData_Node.hxx`:183 - `VrmlData_Node::DynamicType()`
+        arg0: *const Handle_VrmlData_Node,
+    ) -> crate::OcctResult<*mut Handle_VrmlData_Node>;
+    /// **Source:** `VrmlData_Node.hxx`:180 - `VrmlData_Node::DynamicType()`
     pub fn VrmlData_Node_dynamic_type(
         self_: *const VrmlData_Node,
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// **Source:** `VrmlData_Node.hxx`:107 - `VrmlData_Node::ReadBoolean()`
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
+    /// **Source:** `VrmlData_Node.hxx`:108 - `VrmlData_Node::ReadBoolean()`
     pub fn VrmlData_Node_read_boolean(
         theBuffer: *mut VrmlData_InBuffer,
         theResult: *mut bool,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `VrmlData_Node.hxx`:113 - `VrmlData_Node::ReadString()`
+    /// **Source:** `VrmlData_Node.hxx`:114 - `VrmlData_Node::ReadString()`
     pub fn VrmlData_Node_read_string(
         theBuffer: *mut VrmlData_InBuffer,
         theRes: *mut TCollection_AsciiString,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `VrmlData_Node.hxx`:119 - `VrmlData_Node::ReadMultiString()`
+    /// **Source:** `VrmlData_Node.hxx`:120 - `VrmlData_Node::ReadMultiString()`
     pub fn VrmlData_Node_read_multi_string(
         theBuffer: *mut VrmlData_InBuffer,
-        theRes: *mut TColStd_ListOfAsciiString,
+        theRes: *mut NCollection_List_TCollection_AsciiString,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `VrmlData_Node.hxx`:126 - `VrmlData_Node::ReadInteger()`
+    /// **Source:** `VrmlData_Node.hxx`:127 - `VrmlData_Node::ReadInteger()`
     pub fn VrmlData_Node_read_integer(
         theBuffer: *mut VrmlData_InBuffer,
         theResult: *mut std::ffi::c_long,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `VrmlData_Node.hxx`:129 - `VrmlData_Node::OK()`
+    /// **Source:** `VrmlData_Node.hxx`:130 - `VrmlData_Node::OK()`
     pub fn VrmlData_Node_ok_errorstatus(theStat: i32) -> crate::OcctResult<bool>;
-    /// **Source:** `VrmlData_Node.hxx`:134 - `VrmlData_Node::OK()`
+    /// **Source:** `VrmlData_Node.hxx`:132 - `VrmlData_Node::OK()`
     pub fn VrmlData_Node_ok_errorstatus2(
         outStat: &mut i32,
         theStat: i32,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `VrmlData_Node.hxx`:143 - `VrmlData_Node::GlobalIndent()`
+    /// **Source:** `VrmlData_Node.hxx`:140 - `VrmlData_Node::GlobalIndent()`
     pub fn VrmlData_Node_global_indent() -> crate::OcctResult<i32>;
-    /// **Source:** `VrmlData_Node.hxx`:183 - `VrmlData_Node::get_type_name()`
+    /// **Source:** `VrmlData_Node.hxx`:180 - `VrmlData_Node::get_type_name()`
     pub fn VrmlData_Node_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
-    /// **Source:** `VrmlData_Node.hxx`:183 - `VrmlData_Node::get_type_descriptor()`
-    pub fn VrmlData_Node_get_type_descriptor() -> crate::OcctResult<*const HandleStandardType>;
+    /// **Source:** `VrmlData_Node.hxx`:180 - `VrmlData_Node::get_type_descriptor()`
+    pub fn VrmlData_Node_get_type_descriptor() -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast VrmlData_Node to Standard_Transient
     pub fn VrmlData_Node_as_Standard_Transient(
         self_: *const VrmlData_Node,
@@ -6124,136 +6182,136 @@ unsafe extern "C" {
         self_: *mut VrmlData_Node,
     ) -> crate::OcctResult<*mut Standard_Transient>;
     /// Destroy Handle<VrmlData_Node>
-    pub fn HandleVrmlDataNode_destructor(self_: *mut HandleVrmlDataNode);
+    pub fn Handle_VrmlData_Node_destructor(self_: *mut Handle_VrmlData_Node);
     /// Clone Handle<VrmlData_Node> (increments reference count)
-    pub fn HandleVrmlDataNode_clone(
-        self_: *const HandleVrmlDataNode,
-    ) -> crate::OcctResult<*mut HandleVrmlDataNode>;
+    pub fn Handle_VrmlData_Node_clone(
+        self_: *const Handle_VrmlData_Node,
+    ) -> crate::OcctResult<*mut Handle_VrmlData_Node>;
     /// Check if Handle<VrmlData_Node> is null
-    pub fn HandleVrmlDataNode_is_null(self_: *const HandleVrmlDataNode) -> bool;
+    pub fn Handle_VrmlData_Node_is_null(self_: *const Handle_VrmlData_Node) -> bool;
     /// Dereference Handle to get *const VrmlData_Node
-    pub fn HandleVrmlDataNode_get(
-        handle: *const HandleVrmlDataNode,
+    pub fn Handle_VrmlData_Node_get(
+        handle: *const Handle_VrmlData_Node,
     ) -> crate::OcctResult<*const VrmlData_Node>;
     /// Dereference Handle to get *mut VrmlData_Node
-    pub fn HandleVrmlDataNode_get_mut(
-        handle: *mut HandleVrmlDataNode,
+    pub fn Handle_VrmlData_Node_get_mut(
+        handle: *mut Handle_VrmlData_Node,
     ) -> crate::OcctResult<*mut VrmlData_Node>;
     /// Upcast Handle<VrmlData_Node> to Handle<Standard_Transient>
-    pub fn HandleVrmlDataNode_to_HandleStandardTransient(
-        self_: *const HandleVrmlDataNode,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
+    pub fn Handle_VrmlData_Node_to_Handle_Standard_Transient(
+        self_: *const Handle_VrmlData_Node,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
     /// Downcast Handle<VrmlData_Node> to Handle<VrmlData_Appearance> (returns null on failure)
-    pub fn HandleVrmlDataNode_downcast_to_HandleVrmlDataAppearance(
-        self_: *const HandleVrmlDataNode,
-    ) -> crate::OcctResult<*mut HandleVrmlDataAppearance>;
+    pub fn Handle_VrmlData_Node_downcast_to_Handle_VrmlData_Appearance(
+        self_: *const Handle_VrmlData_Node,
+    ) -> crate::OcctResult<*mut Handle_VrmlData_Appearance>;
     /// Downcast Handle<VrmlData_Node> to Handle<VrmlData_ArrayVec3d> (returns null on failure)
-    pub fn HandleVrmlDataNode_downcast_to_HandleVrmlDataArrayVec3d(
-        self_: *const HandleVrmlDataNode,
-    ) -> crate::OcctResult<*mut HandleVrmlDataArrayVec3d>;
+    pub fn Handle_VrmlData_Node_downcast_to_Handle_VrmlData_ArrayVec3d(
+        self_: *const Handle_VrmlData_Node,
+    ) -> crate::OcctResult<*mut Handle_VrmlData_ArrayVec3d>;
     /// Downcast Handle<VrmlData_Node> to Handle<VrmlData_Box> (returns null on failure)
-    pub fn HandleVrmlDataNode_downcast_to_HandleVrmlDataBox(
-        self_: *const HandleVrmlDataNode,
-    ) -> crate::OcctResult<*mut HandleVrmlDataBox>;
+    pub fn Handle_VrmlData_Node_downcast_to_Handle_VrmlData_Box(
+        self_: *const Handle_VrmlData_Node,
+    ) -> crate::OcctResult<*mut Handle_VrmlData_Box>;
     /// Downcast Handle<VrmlData_Node> to Handle<VrmlData_Color> (returns null on failure)
-    pub fn HandleVrmlDataNode_downcast_to_HandleVrmlDataColor(
-        self_: *const HandleVrmlDataNode,
-    ) -> crate::OcctResult<*mut HandleVrmlDataColor>;
+    pub fn Handle_VrmlData_Node_downcast_to_Handle_VrmlData_Color(
+        self_: *const Handle_VrmlData_Node,
+    ) -> crate::OcctResult<*mut Handle_VrmlData_Color>;
     /// Downcast Handle<VrmlData_Node> to Handle<VrmlData_Cone> (returns null on failure)
-    pub fn HandleVrmlDataNode_downcast_to_HandleVrmlDataCone(
-        self_: *const HandleVrmlDataNode,
-    ) -> crate::OcctResult<*mut HandleVrmlDataCone>;
+    pub fn Handle_VrmlData_Node_downcast_to_Handle_VrmlData_Cone(
+        self_: *const Handle_VrmlData_Node,
+    ) -> crate::OcctResult<*mut Handle_VrmlData_Cone>;
     /// Downcast Handle<VrmlData_Node> to Handle<VrmlData_Coordinate> (returns null on failure)
-    pub fn HandleVrmlDataNode_downcast_to_HandleVrmlDataCoordinate(
-        self_: *const HandleVrmlDataNode,
-    ) -> crate::OcctResult<*mut HandleVrmlDataCoordinate>;
+    pub fn Handle_VrmlData_Node_downcast_to_Handle_VrmlData_Coordinate(
+        self_: *const Handle_VrmlData_Node,
+    ) -> crate::OcctResult<*mut Handle_VrmlData_Coordinate>;
     /// Downcast Handle<VrmlData_Node> to Handle<VrmlData_Cylinder> (returns null on failure)
-    pub fn HandleVrmlDataNode_downcast_to_HandleVrmlDataCylinder(
-        self_: *const HandleVrmlDataNode,
-    ) -> crate::OcctResult<*mut HandleVrmlDataCylinder>;
+    pub fn Handle_VrmlData_Node_downcast_to_Handle_VrmlData_Cylinder(
+        self_: *const Handle_VrmlData_Node,
+    ) -> crate::OcctResult<*mut Handle_VrmlData_Cylinder>;
     /// Downcast Handle<VrmlData_Node> to Handle<VrmlData_Faceted> (returns null on failure)
-    pub fn HandleVrmlDataNode_downcast_to_HandleVrmlDataFaceted(
-        self_: *const HandleVrmlDataNode,
-    ) -> crate::OcctResult<*mut HandleVrmlDataFaceted>;
+    pub fn Handle_VrmlData_Node_downcast_to_Handle_VrmlData_Faceted(
+        self_: *const Handle_VrmlData_Node,
+    ) -> crate::OcctResult<*mut Handle_VrmlData_Faceted>;
     /// Downcast Handle<VrmlData_Node> to Handle<VrmlData_Group> (returns null on failure)
-    pub fn HandleVrmlDataNode_downcast_to_HandleVrmlDataGroup(
-        self_: *const HandleVrmlDataNode,
-    ) -> crate::OcctResult<*mut HandleVrmlDataGroup>;
+    pub fn Handle_VrmlData_Node_downcast_to_Handle_VrmlData_Group(
+        self_: *const Handle_VrmlData_Node,
+    ) -> crate::OcctResult<*mut Handle_VrmlData_Group>;
     /// Downcast Handle<VrmlData_Node> to Handle<VrmlData_ImageTexture> (returns null on failure)
-    pub fn HandleVrmlDataNode_downcast_to_HandleVrmlDataImageTexture(
-        self_: *const HandleVrmlDataNode,
-    ) -> crate::OcctResult<*mut HandleVrmlDataImageTexture>;
+    pub fn Handle_VrmlData_Node_downcast_to_Handle_VrmlData_ImageTexture(
+        self_: *const Handle_VrmlData_Node,
+    ) -> crate::OcctResult<*mut Handle_VrmlData_ImageTexture>;
     /// Downcast Handle<VrmlData_Node> to Handle<VrmlData_IndexedFaceSet> (returns null on failure)
-    pub fn HandleVrmlDataNode_downcast_to_HandleVrmlDataIndexedFaceSet(
-        self_: *const HandleVrmlDataNode,
-    ) -> crate::OcctResult<*mut HandleVrmlDataIndexedFaceSet>;
+    pub fn Handle_VrmlData_Node_downcast_to_Handle_VrmlData_IndexedFaceSet(
+        self_: *const Handle_VrmlData_Node,
+    ) -> crate::OcctResult<*mut Handle_VrmlData_IndexedFaceSet>;
     /// Downcast Handle<VrmlData_Node> to Handle<VrmlData_IndexedLineSet> (returns null on failure)
-    pub fn HandleVrmlDataNode_downcast_to_HandleVrmlDataIndexedLineSet(
-        self_: *const HandleVrmlDataNode,
-    ) -> crate::OcctResult<*mut HandleVrmlDataIndexedLineSet>;
+    pub fn Handle_VrmlData_Node_downcast_to_Handle_VrmlData_IndexedLineSet(
+        self_: *const Handle_VrmlData_Node,
+    ) -> crate::OcctResult<*mut Handle_VrmlData_IndexedLineSet>;
     /// Downcast Handle<VrmlData_Node> to Handle<VrmlData_Material> (returns null on failure)
-    pub fn HandleVrmlDataNode_downcast_to_HandleVrmlDataMaterial(
-        self_: *const HandleVrmlDataNode,
-    ) -> crate::OcctResult<*mut HandleVrmlDataMaterial>;
+    pub fn Handle_VrmlData_Node_downcast_to_Handle_VrmlData_Material(
+        self_: *const Handle_VrmlData_Node,
+    ) -> crate::OcctResult<*mut Handle_VrmlData_Material>;
     /// Downcast Handle<VrmlData_Node> to Handle<VrmlData_Normal> (returns null on failure)
-    pub fn HandleVrmlDataNode_downcast_to_HandleVrmlDataNormal(
-        self_: *const HandleVrmlDataNode,
-    ) -> crate::OcctResult<*mut HandleVrmlDataNormal>;
+    pub fn Handle_VrmlData_Node_downcast_to_Handle_VrmlData_Normal(
+        self_: *const Handle_VrmlData_Node,
+    ) -> crate::OcctResult<*mut Handle_VrmlData_Normal>;
     /// Downcast Handle<VrmlData_Node> to Handle<VrmlData_ShapeNode> (returns null on failure)
-    pub fn HandleVrmlDataNode_downcast_to_HandleVrmlDataShapeNode(
-        self_: *const HandleVrmlDataNode,
-    ) -> crate::OcctResult<*mut HandleVrmlDataShapeNode>;
+    pub fn Handle_VrmlData_Node_downcast_to_Handle_VrmlData_ShapeNode(
+        self_: *const Handle_VrmlData_Node,
+    ) -> crate::OcctResult<*mut Handle_VrmlData_ShapeNode>;
     /// Downcast Handle<VrmlData_Node> to Handle<VrmlData_Sphere> (returns null on failure)
-    pub fn HandleVrmlDataNode_downcast_to_HandleVrmlDataSphere(
-        self_: *const HandleVrmlDataNode,
-    ) -> crate::OcctResult<*mut HandleVrmlDataSphere>;
+    pub fn Handle_VrmlData_Node_downcast_to_Handle_VrmlData_Sphere(
+        self_: *const Handle_VrmlData_Node,
+    ) -> crate::OcctResult<*mut Handle_VrmlData_Sphere>;
     /// Downcast Handle<VrmlData_Node> to Handle<VrmlData_Texture> (returns null on failure)
-    pub fn HandleVrmlDataNode_downcast_to_HandleVrmlDataTexture(
-        self_: *const HandleVrmlDataNode,
-    ) -> crate::OcctResult<*mut HandleVrmlDataTexture>;
+    pub fn Handle_VrmlData_Node_downcast_to_Handle_VrmlData_Texture(
+        self_: *const Handle_VrmlData_Node,
+    ) -> crate::OcctResult<*mut Handle_VrmlData_Texture>;
     /// Downcast Handle<VrmlData_Node> to Handle<VrmlData_TextureCoordinate> (returns null on failure)
-    pub fn HandleVrmlDataNode_downcast_to_HandleVrmlDataTextureCoordinate(
-        self_: *const HandleVrmlDataNode,
-    ) -> crate::OcctResult<*mut HandleVrmlDataTextureCoordinate>;
+    pub fn Handle_VrmlData_Node_downcast_to_Handle_VrmlData_TextureCoordinate(
+        self_: *const Handle_VrmlData_Node,
+    ) -> crate::OcctResult<*mut Handle_VrmlData_TextureCoordinate>;
     /// Downcast Handle<VrmlData_Node> to Handle<VrmlData_TextureTransform> (returns null on failure)
-    pub fn HandleVrmlDataNode_downcast_to_HandleVrmlDataTextureTransform(
-        self_: *const HandleVrmlDataNode,
-    ) -> crate::OcctResult<*mut HandleVrmlDataTextureTransform>;
+    pub fn Handle_VrmlData_Node_downcast_to_Handle_VrmlData_TextureTransform(
+        self_: *const Handle_VrmlData_Node,
+    ) -> crate::OcctResult<*mut Handle_VrmlData_TextureTransform>;
     /// Downcast Handle<VrmlData_Node> to Handle<VrmlData_UnknownNode> (returns null on failure)
-    pub fn HandleVrmlDataNode_downcast_to_HandleVrmlDataUnknownNode(
-        self_: *const HandleVrmlDataNode,
-    ) -> crate::OcctResult<*mut HandleVrmlDataUnknownNode>;
+    pub fn Handle_VrmlData_Node_downcast_to_Handle_VrmlData_UnknownNode(
+        self_: *const Handle_VrmlData_Node,
+    ) -> crate::OcctResult<*mut Handle_VrmlData_UnknownNode>;
     /// Downcast Handle<VrmlData_Node> to Handle<VrmlData_WorldInfo> (returns null on failure)
-    pub fn HandleVrmlDataNode_downcast_to_HandleVrmlDataWorldInfo(
-        self_: *const HandleVrmlDataNode,
-    ) -> crate::OcctResult<*mut HandleVrmlDataWorldInfo>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn Handle_VrmlData_Node_downcast_to_Handle_VrmlData_WorldInfo(
+        self_: *const Handle_VrmlData_Node,
+    ) -> crate::OcctResult<*mut Handle_VrmlData_WorldInfo>;
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn VrmlData_Node_inherited_IsInstance(
         self_: *const VrmlData_Node,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn VrmlData_Node_inherited_IsKind(
         self_: *const VrmlData_Node,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn VrmlData_Node_inherited_This(
         self_: *const VrmlData_Node,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn VrmlData_Node_inherited_GetRefCount(
         self_: *const VrmlData_Node,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn VrmlData_Node_inherited_IncrementRefCounter(
         self_: *mut VrmlData_Node,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn VrmlData_Node_inherited_DecrementRefCounter(
         self_: *mut VrmlData_Node,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn VrmlData_Node_inherited_Delete(self_: *const VrmlData_Node) -> *const std::ffi::c_char;
     // ======================== VrmlData_Normal ========================
     pub fn VrmlData_Normal_destructor(self_: *mut VrmlData_Normal);
@@ -6274,8 +6332,8 @@ unsafe extern "C" {
     /// **Source:** `VrmlData_Normal.hxx`:59 - `VrmlData_Normal::Clone()`
     pub fn VrmlData_Normal_clone(
         self_: *const VrmlData_Normal,
-        theOther: *const HandleVrmlDataNode,
-    ) -> crate::OcctResult<*mut HandleVrmlDataNode>;
+        theOther: *const Handle_VrmlData_Node,
+    ) -> crate::OcctResult<*mut Handle_VrmlData_Node>;
     /// **Source:** `VrmlData_Normal.hxx`:65 - `VrmlData_Normal::Read()`
     pub fn VrmlData_Normal_read(
         self_: *mut VrmlData_Normal,
@@ -6286,14 +6344,14 @@ unsafe extern "C" {
         self_: *const VrmlData_Normal,
         thePrefix: *const std::ffi::c_char,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `VrmlData_Normal.hxx`:77 - `VrmlData_Normal::DynamicType()`
+    /// **Source:** `VrmlData_Normal.hxx`:74 - `VrmlData_Normal::DynamicType()`
     pub fn VrmlData_Normal_dynamic_type(
         self_: *const VrmlData_Normal,
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// **Source:** `VrmlData_Normal.hxx`:77 - `VrmlData_Normal::get_type_name()`
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
+    /// **Source:** `VrmlData_Normal.hxx`:74 - `VrmlData_Normal::get_type_name()`
     pub fn VrmlData_Normal_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
-    /// **Source:** `VrmlData_Normal.hxx`:77 - `VrmlData_Normal::get_type_descriptor()`
-    pub fn VrmlData_Normal_get_type_descriptor() -> crate::OcctResult<*const HandleStandardType>;
+    /// **Source:** `VrmlData_Normal.hxx`:74 - `VrmlData_Normal::get_type_descriptor()`
+    pub fn VrmlData_Normal_get_type_descriptor() -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast VrmlData_Normal to VrmlData_ArrayVec3d
     pub fn VrmlData_Normal_as_VrmlData_ArrayVec3d(
         self_: *const VrmlData_Normal,
@@ -6321,35 +6379,35 @@ unsafe extern "C" {
     /// Wrap VrmlData_Normal in a Handle
     pub fn VrmlData_Normal_to_handle(
         obj: *mut VrmlData_Normal,
-    ) -> crate::OcctResult<*mut HandleVrmlDataNormal>;
+    ) -> crate::OcctResult<*mut Handle_VrmlData_Normal>;
     /// Destroy Handle<VrmlData_Normal>
-    pub fn HandleVrmlDataNormal_destructor(self_: *mut HandleVrmlDataNormal);
+    pub fn Handle_VrmlData_Normal_destructor(self_: *mut Handle_VrmlData_Normal);
     /// Clone Handle<VrmlData_Normal> (increments reference count)
-    pub fn HandleVrmlDataNormal_clone(
-        self_: *const HandleVrmlDataNormal,
-    ) -> crate::OcctResult<*mut HandleVrmlDataNormal>;
+    pub fn Handle_VrmlData_Normal_clone(
+        self_: *const Handle_VrmlData_Normal,
+    ) -> crate::OcctResult<*mut Handle_VrmlData_Normal>;
     /// Check if Handle<VrmlData_Normal> is null
-    pub fn HandleVrmlDataNormal_is_null(self_: *const HandleVrmlDataNormal) -> bool;
+    pub fn Handle_VrmlData_Normal_is_null(self_: *const Handle_VrmlData_Normal) -> bool;
     /// Dereference Handle to get *const VrmlData_Normal
-    pub fn HandleVrmlDataNormal_get(
-        handle: *const HandleVrmlDataNormal,
+    pub fn Handle_VrmlData_Normal_get(
+        handle: *const Handle_VrmlData_Normal,
     ) -> crate::OcctResult<*const VrmlData_Normal>;
     /// Dereference Handle to get *mut VrmlData_Normal
-    pub fn HandleVrmlDataNormal_get_mut(
-        handle: *mut HandleVrmlDataNormal,
+    pub fn Handle_VrmlData_Normal_get_mut(
+        handle: *mut Handle_VrmlData_Normal,
     ) -> crate::OcctResult<*mut VrmlData_Normal>;
     /// Upcast Handle<VrmlData_Normal> to Handle<VrmlData_ArrayVec3d>
-    pub fn HandleVrmlDataNormal_to_HandleVrmlDataArrayVec3d(
-        self_: *const HandleVrmlDataNormal,
-    ) -> crate::OcctResult<*mut HandleVrmlDataArrayVec3d>;
+    pub fn Handle_VrmlData_Normal_to_Handle_VrmlData_ArrayVec3d(
+        self_: *const Handle_VrmlData_Normal,
+    ) -> crate::OcctResult<*mut Handle_VrmlData_ArrayVec3d>;
     /// Upcast Handle<VrmlData_Normal> to Handle<VrmlData_Node>
-    pub fn HandleVrmlDataNormal_to_HandleVrmlDataNode(
-        self_: *const HandleVrmlDataNormal,
-    ) -> crate::OcctResult<*mut HandleVrmlDataNode>;
+    pub fn Handle_VrmlData_Normal_to_Handle_VrmlData_Node(
+        self_: *const Handle_VrmlData_Normal,
+    ) -> crate::OcctResult<*mut Handle_VrmlData_Node>;
     /// Upcast Handle<VrmlData_Normal> to Handle<Standard_Transient>
-    pub fn HandleVrmlDataNormal_to_HandleStandardTransient(
-        self_: *const HandleVrmlDataNormal,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
+    pub fn Handle_VrmlData_Normal_to_Handle_Standard_Transient(
+        self_: *const Handle_VrmlData_Normal,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
     /// Inherited: **Source:** `VrmlData_ArrayVec3d.hxx`:56 - `VrmlData_ArrayVec3d::Length()`
     pub fn VrmlData_Normal_inherited_Length(
         self_: *const VrmlData_Normal,
@@ -6369,122 +6427,109 @@ unsafe extern "C" {
         nValues: usize,
         arrValues: *const gp_XYZ,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `VrmlData_ArrayVec3d.hxx`:103 - `VrmlData_ArrayVec3d::IsDefault()`
+    /// Inherited: **Source:** `VrmlData_ArrayVec3d.hxx`:102 - `VrmlData_ArrayVec3d::IsDefault()`
     pub fn VrmlData_Normal_inherited_IsDefault(
         self_: *const VrmlData_Normal,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `VrmlData_Node.hxx`:53 - `VrmlData_Node::Scene()`
+    /// Inherited: **Source:** `VrmlData_Node.hxx`:54 - `VrmlData_Node::Scene()`
     pub fn VrmlData_Normal_inherited_Scene(
         self_: *const VrmlData_Normal,
     ) -> crate::OcctResult<*const VrmlData_Scene>;
-    /// Inherited: **Source:** `VrmlData_Node.hxx`:71 - `VrmlData_Node::ReadNode()`
+    /// Inherited: **Source:** `VrmlData_Node.hxx`:72 - `VrmlData_Node::ReadNode()`
     pub fn VrmlData_Normal_inherited_ReadNode(
         self_: *mut VrmlData_Normal,
         theBuffer: *mut VrmlData_InBuffer,
-        theNode: *mut HandleVrmlDataNode,
-        Type: *const HandleStandardType,
+        theNode: *mut Handle_VrmlData_Node,
+        Type: *const Handle_Standard_Type,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `VrmlData_Node.hxx`:93 - `VrmlData_Node::WriteClosing()`
+    /// Inherited: **Source:** `VrmlData_Node.hxx`:94 - `VrmlData_Node::WriteClosing()`
     pub fn VrmlData_Normal_inherited_WriteClosing(
         self_: *const VrmlData_Normal,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn VrmlData_Normal_inherited_IsInstance(
         self_: *const VrmlData_Normal,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn VrmlData_Normal_inherited_IsKind(
         self_: *const VrmlData_Normal,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn VrmlData_Normal_inherited_This(
         self_: *const VrmlData_Normal,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn VrmlData_Normal_inherited_GetRefCount(
         self_: *const VrmlData_Normal,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn VrmlData_Normal_inherited_IncrementRefCounter(
         self_: *mut VrmlData_Normal,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn VrmlData_Normal_inherited_DecrementRefCounter(
         self_: *mut VrmlData_Normal,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn VrmlData_Normal_inherited_Delete(
         self_: *const VrmlData_Normal,
     ) -> *const std::ffi::c_char;
     // ======================== VrmlData_Scene ========================
     pub fn VrmlData_Scene_destructor(self_: *mut VrmlData_Scene);
-    /// **Source:** `VrmlData_Scene.hxx`:55 - `VrmlData_Scene::VrmlData_Scene()`
+    /// **Source:** `VrmlData_Scene.hxx`:59 - `VrmlData_Scene::VrmlData_Scene()`
     pub fn VrmlData_Scene_ctor_handlencollectionincallocator(
-        arg0: *const HandleNCollectionIncAllocator,
+        arg0: *const Handle_NCollection_IncAllocator,
     ) -> crate::OcctResult<*mut VrmlData_Scene>;
-    /// **Source:** `VrmlData_Scene.hxx`:61 - `VrmlData_Scene::Status()`
+    /// **Source:** `VrmlData_Scene.hxx`:65 - `VrmlData_Scene::Status()`
     pub fn VrmlData_Scene_status(self_: *const VrmlData_Scene) -> crate::OcctResult<i32>;
-    /// **Source:** `VrmlData_Scene.hxx`:72 - `VrmlData_Scene::SetVrmlDir()`
+    /// **Source:** `VrmlData_Scene.hxx`:76 - `VrmlData_Scene::SetVrmlDir()`
     pub fn VrmlData_Scene_set_vrml_dir(
         self_: *mut VrmlData_Scene,
         arg0: *const TCollection_ExtendedString,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `VrmlData_Scene.hxx`:79 - `VrmlData_Scene::SetLinearScale()`
+    /// **Source:** `VrmlData_Scene.hxx`:83 - `VrmlData_Scene::SetLinearScale()`
     pub fn VrmlData_Scene_set_linear_scale(
         self_: *mut VrmlData_Scene,
         theScale: f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `VrmlData_Scene.hxx`:85 - `VrmlData_Scene::VrmlDirIterator()`
-    pub fn VrmlData_Scene_vrml_dir_iterator(
-        self_: *const VrmlData_Scene,
-    ) -> crate::OcctResult<*mut TDataStd_ListIteratorOfListOfExtendedString>;
-    /// **Source:** `VrmlData_Scene.hxx`:93 - `VrmlData_Scene::GetIterator()`
+    /// **Source:** `VrmlData_Scene.hxx`:97 - `VrmlData_Scene::GetIterator()`
     pub fn VrmlData_Scene_get_iterator(
         self_: *const VrmlData_Scene,
     ) -> crate::OcctResult<*mut VrmlData_Scene_Iterator>;
-    /// **Source:** `VrmlData_Scene.hxx`:98 - `VrmlData_Scene::NamedNodesIterator()`
-    pub fn VrmlData_Scene_named_nodes_iterator(
-        self_: *const VrmlData_Scene,
-    ) -> crate::OcctResult<*mut VrmlData_MapOfNode_Iterator>;
-    /// **Source:** `VrmlData_Scene.hxx`:103 - `VrmlData_Scene::Allocator()`
+    /// **Source:** `VrmlData_Scene.hxx`:110 - `VrmlData_Scene::Allocator()`
     pub fn VrmlData_Scene_allocator(
         self_: *const VrmlData_Scene,
-    ) -> crate::OcctResult<*const HandleNCollectionIncAllocator>;
-    /// **Source:** `VrmlData_Scene.hxx`:110 - `VrmlData_Scene::AddNode()`
+    ) -> crate::OcctResult<*const Handle_NCollection_IncAllocator>;
+    /// **Source:** `VrmlData_Scene.hxx`:117 - `VrmlData_Scene::AddNode()`
     pub fn VrmlData_Scene_add_node(
         self_: *mut VrmlData_Scene,
-        theN: *const HandleVrmlDataNode,
+        theN: *const Handle_VrmlData_Node,
         isTopLevel: bool,
-    ) -> crate::OcctResult<*const HandleVrmlDataNode>;
-    /// **Source:** `VrmlData_Scene.hxx`:123 - `VrmlData_Scene::FindNode()`
+    ) -> crate::OcctResult<*const Handle_VrmlData_Node>;
+    /// **Source:** `VrmlData_Scene.hxx`:129 - `VrmlData_Scene::FindNode()`
     pub fn VrmlData_Scene_find_node_charptr_handlestandardtype(
         self_: *const VrmlData_Scene,
         theName: *const std::ffi::c_char,
-        theType: *const HandleStandardType,
-    ) -> crate::OcctResult<*mut HandleVrmlDataNode>;
-    /// **Source:** `VrmlData_Scene.hxx`:133 - `VrmlData_Scene::FindNode()`
+        theType: *const Handle_Standard_Type,
+    ) -> crate::OcctResult<*mut Handle_VrmlData_Node>;
+    /// **Source:** `VrmlData_Scene.hxx`:140 - `VrmlData_Scene::FindNode()`
     pub fn VrmlData_Scene_find_node_charptr_trsf(
         self_: *const VrmlData_Scene,
         theName: *const std::ffi::c_char,
         theLocation: *mut gp_Trsf,
-    ) -> crate::OcctResult<*mut HandleVrmlDataNode>;
-    /// **Source:** `VrmlData_Scene.hxx`:172 - `VrmlData_Scene::GetShape()`
-    pub fn VrmlData_Scene_get_shape(
-        self_: *mut VrmlData_Scene,
-        M: *mut VrmlData_DataMapOfShapeAppearance,
-    ) -> crate::OcctResult<*mut TopoDS_Shape>;
-    /// **Source:** `VrmlData_Scene.hxx`:177 - `VrmlData_Scene::WorldInfo()`
+    ) -> crate::OcctResult<*mut Handle_VrmlData_Node>;
+    /// **Source:** `VrmlData_Scene.hxx`:186 - `VrmlData_Scene::WorldInfo()`
     pub fn VrmlData_Scene_world_info(
         self_: *const VrmlData_Scene,
-    ) -> crate::OcctResult<*const HandleVrmlDataWorldInfo>;
-    /// **Source:** `VrmlData_Scene.hxx`:202 - `VrmlData_Scene::Dump()`
+    ) -> crate::OcctResult<*const Handle_VrmlData_WorldInfo>;
+    /// **Source:** `VrmlData_Scene.hxx`:211 - `VrmlData_Scene::Dump()`
     pub fn VrmlData_Scene_dump(
         self_: *const VrmlData_Scene,
         theStream: *mut Standard_OStream,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `VrmlData_Scene.hxx`:207 - `VrmlData_Scene::ReadReal()`
+    /// **Source:** `VrmlData_Scene.hxx`:216 - `VrmlData_Scene::ReadReal()`
     pub fn VrmlData_Scene_read_real(
         self_: *const VrmlData_Scene,
         theBuffer: *mut VrmlData_InBuffer,
@@ -6492,7 +6537,7 @@ unsafe extern "C" {
         isApplyScale: bool,
         isOnlyPositive: bool,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `VrmlData_Scene.hxx`:215 - `VrmlData_Scene::ReadXYZ()`
+    /// **Source:** `VrmlData_Scene.hxx`:224 - `VrmlData_Scene::ReadXYZ()`
     pub fn VrmlData_Scene_read_xyz(
         self_: *const VrmlData_Scene,
         theBuffer: *mut VrmlData_InBuffer,
@@ -6500,7 +6545,7 @@ unsafe extern "C" {
         isApplyScale: bool,
         isOnlyPositive: bool,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `VrmlData_Scene.hxx`:223 - `VrmlData_Scene::ReadXY()`
+    /// **Source:** `VrmlData_Scene.hxx`:232 - `VrmlData_Scene::ReadXY()`
     pub fn VrmlData_Scene_read_xy(
         self_: *const VrmlData_Scene,
         theBuffer: *mut VrmlData_InBuffer,
@@ -6508,52 +6553,52 @@ unsafe extern "C" {
         isApplyScale: bool,
         isOnlyPositive: bool,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `VrmlData_Scene.hxx`:230 - `VrmlData_Scene::ReadArrIndex()`
+    /// **Source:** `VrmlData_Scene.hxx`:239 - `VrmlData_Scene::ReadArrIndex()`
     pub fn VrmlData_Scene_read_arr_index(
         self_: *const VrmlData_Scene,
         theBuffer: *mut VrmlData_InBuffer,
         theArr: *mut *mut *const i32,
         theNBl: *mut usize,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `VrmlData_Scene.hxx`:237 - `VrmlData_Scene::GetLineError()`
+    /// **Source:** `VrmlData_Scene.hxx`:246 - `VrmlData_Scene::GetLineError()`
     pub fn VrmlData_Scene_get_line_error(self_: *const VrmlData_Scene) -> crate::OcctResult<i32>;
-    /// **Source:** `VrmlData_Scene.hxx`:244 - `VrmlData_Scene::SetIndent()`
+    /// **Source:** `VrmlData_Scene.hxx`:253 - `VrmlData_Scene::SetIndent()`
     pub fn VrmlData_Scene_set_indent(
         self_: *mut VrmlData_Scene,
         nSpc: i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `VrmlData_Scene.hxx`:255 - `VrmlData_Scene::WriteXYZ()`
+    /// **Source:** `VrmlData_Scene.hxx`:264 - `VrmlData_Scene::WriteXYZ()`
     pub fn VrmlData_Scene_write_xyz(
         self_: *const VrmlData_Scene,
         theXYZ: *const gp_XYZ,
         isScale: bool,
         thePostfix: *const std::ffi::c_char,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `VrmlData_Scene.hxx`:261 - `VrmlData_Scene::WriteArrIndex()`
+    /// **Source:** `VrmlData_Scene.hxx`:270 - `VrmlData_Scene::WriteArrIndex()`
     pub fn VrmlData_Scene_write_arr_index(
         self_: *const VrmlData_Scene,
         thePrefix: *const std::ffi::c_char,
         theArr: *mut *const i32,
         theNbBl: usize,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `VrmlData_Scene.hxx`:281 - `VrmlData_Scene::WriteLine()`
+    /// **Source:** `VrmlData_Scene.hxx`:290 - `VrmlData_Scene::WriteLine()`
     pub fn VrmlData_Scene_write_line(
         self_: *const VrmlData_Scene,
         theLine0: *const std::ffi::c_char,
         theLine1: *const std::ffi::c_char,
         theIndent: i32,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `VrmlData_Scene.hxx`:288 - `VrmlData_Scene::WriteNode()`
+    /// **Source:** `VrmlData_Scene.hxx`:297 - `VrmlData_Scene::WriteNode()`
     pub fn VrmlData_Scene_write_node(
         self_: *const VrmlData_Scene,
         thePrefix: *const std::ffi::c_char,
-        arg1: *const HandleVrmlDataNode,
+        arg1: *const Handle_VrmlData_Node,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `VrmlData_Scene.hxx`:295 - `VrmlData_Scene::IsDummyWrite()`
+    /// **Source:** `VrmlData_Scene.hxx`:304 - `VrmlData_Scene::IsDummyWrite()`
     pub fn VrmlData_Scene_is_dummy_write(self_: *const VrmlData_Scene) -> crate::OcctResult<bool>;
-    /// **Source:** `VrmlData_Scene.hxx`:191 - `VrmlData_Scene::ReadLine()`
+    /// **Source:** `VrmlData_Scene.hxx`:200 - `VrmlData_Scene::ReadLine()`
     pub fn VrmlData_Scene_read_line(theBuffer: *mut VrmlData_InBuffer) -> crate::OcctResult<i32>;
-    /// **Source:** `VrmlData_Scene.hxx`:196 - `VrmlData_Scene::ReadWord()`
+    /// **Source:** `VrmlData_Scene.hxx`:205 - `VrmlData_Scene::ReadWord()`
     pub fn VrmlData_Scene_read_word(
         theBuffer: *mut VrmlData_InBuffer,
         theStr: *mut TCollection_AsciiString,
@@ -6582,7 +6627,7 @@ unsafe extern "C" {
     /// **Source:** `VrmlData_ShapeConvert.hxx`:96 - `VrmlData_ShapeConvert::ConvertDocument()`
     pub fn VrmlData_ShapeConvert_convert_document(
         self_: *mut VrmlData_ShapeConvert,
-        theDoc: *const HandleTDocStdDocument,
+        theDoc: *const Handle_TDocStd_Document,
     ) -> *const std::ffi::c_char;
     // ======================== VrmlData_ShapeConvert_ShapeData ========================
     pub fn VrmlData_ShapeConvert_ShapeData_destructor(self_: *mut VrmlData_ShapeConvert_ShapeData);
@@ -6601,26 +6646,26 @@ unsafe extern "C" {
     /// **Source:** `VrmlData_ShapeNode.hxx`:46 - `VrmlData_ShapeNode::Appearance()`
     pub fn VrmlData_ShapeNode_appearance(
         self_: *const VrmlData_ShapeNode,
-    ) -> crate::OcctResult<*const HandleVrmlDataAppearance>;
+    ) -> crate::OcctResult<*const Handle_VrmlData_Appearance>;
     /// **Source:** `VrmlData_ShapeNode.hxx`:51 - `VrmlData_ShapeNode::Geometry()`
     pub fn VrmlData_ShapeNode_geometry(
         self_: *const VrmlData_ShapeNode,
-    ) -> crate::OcctResult<*const HandleVrmlDataGeometry>;
+    ) -> crate::OcctResult<*const Handle_VrmlData_Geometry>;
     /// **Source:** `VrmlData_ShapeNode.hxx`:56 - `VrmlData_ShapeNode::SetAppearance()`
     pub fn VrmlData_ShapeNode_set_appearance(
         self_: *mut VrmlData_ShapeNode,
-        theAppear: *const HandleVrmlDataAppearance,
+        theAppear: *const Handle_VrmlData_Appearance,
     ) -> *const std::ffi::c_char;
     /// **Source:** `VrmlData_ShapeNode.hxx`:64 - `VrmlData_ShapeNode::SetGeometry()`
     pub fn VrmlData_ShapeNode_set_geometry(
         self_: *mut VrmlData_ShapeNode,
-        theGeometry: *const HandleVrmlDataGeometry,
+        theGeometry: *const Handle_VrmlData_Geometry,
     ) -> *const std::ffi::c_char;
     /// **Source:** `VrmlData_ShapeNode.hxx`:74 - `VrmlData_ShapeNode::Clone()`
     pub fn VrmlData_ShapeNode_clone(
         self_: *const VrmlData_ShapeNode,
-        theOther: *const HandleVrmlDataNode,
-    ) -> crate::OcctResult<*mut HandleVrmlDataNode>;
+        theOther: *const Handle_VrmlData_Node,
+    ) -> crate::OcctResult<*mut Handle_VrmlData_Node>;
     /// **Source:** `VrmlData_ShapeNode.hxx`:80 - `VrmlData_ShapeNode::Read()`
     pub fn VrmlData_ShapeNode_read(
         self_: *mut VrmlData_ShapeNode,
@@ -6635,14 +6680,14 @@ unsafe extern "C" {
     pub fn VrmlData_ShapeNode_is_default(
         self_: *const VrmlData_ShapeNode,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `VrmlData_ShapeNode.hxx`:103 - `VrmlData_ShapeNode::DynamicType()`
+    /// **Source:** `VrmlData_ShapeNode.hxx`:100 - `VrmlData_ShapeNode::DynamicType()`
     pub fn VrmlData_ShapeNode_dynamic_type(
         self_: *const VrmlData_ShapeNode,
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// **Source:** `VrmlData_ShapeNode.hxx`:103 - `VrmlData_ShapeNode::get_type_name()`
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
+    /// **Source:** `VrmlData_ShapeNode.hxx`:100 - `VrmlData_ShapeNode::get_type_name()`
     pub fn VrmlData_ShapeNode_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
-    /// **Source:** `VrmlData_ShapeNode.hxx`:103 - `VrmlData_ShapeNode::get_type_descriptor()`
-    pub fn VrmlData_ShapeNode_get_type_descriptor() -> crate::OcctResult<*const HandleStandardType>;
+    /// **Source:** `VrmlData_ShapeNode.hxx`:100 - `VrmlData_ShapeNode::get_type_descriptor()`
+    pub fn VrmlData_ShapeNode_get_type_descriptor() -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast VrmlData_ShapeNode to VrmlData_Node
     pub fn VrmlData_ShapeNode_as_VrmlData_Node(
         self_: *const VrmlData_ShapeNode,
@@ -6662,73 +6707,73 @@ unsafe extern "C" {
     /// Wrap VrmlData_ShapeNode in a Handle
     pub fn VrmlData_ShapeNode_to_handle(
         obj: *mut VrmlData_ShapeNode,
-    ) -> crate::OcctResult<*mut HandleVrmlDataShapeNode>;
+    ) -> crate::OcctResult<*mut Handle_VrmlData_ShapeNode>;
     /// Destroy Handle<VrmlData_ShapeNode>
-    pub fn HandleVrmlDataShapeNode_destructor(self_: *mut HandleVrmlDataShapeNode);
+    pub fn Handle_VrmlData_ShapeNode_destructor(self_: *mut Handle_VrmlData_ShapeNode);
     /// Clone Handle<VrmlData_ShapeNode> (increments reference count)
-    pub fn HandleVrmlDataShapeNode_clone(
-        self_: *const HandleVrmlDataShapeNode,
-    ) -> crate::OcctResult<*mut HandleVrmlDataShapeNode>;
+    pub fn Handle_VrmlData_ShapeNode_clone(
+        self_: *const Handle_VrmlData_ShapeNode,
+    ) -> crate::OcctResult<*mut Handle_VrmlData_ShapeNode>;
     /// Check if Handle<VrmlData_ShapeNode> is null
-    pub fn HandleVrmlDataShapeNode_is_null(self_: *const HandleVrmlDataShapeNode) -> bool;
+    pub fn Handle_VrmlData_ShapeNode_is_null(self_: *const Handle_VrmlData_ShapeNode) -> bool;
     /// Dereference Handle to get *const VrmlData_ShapeNode
-    pub fn HandleVrmlDataShapeNode_get(
-        handle: *const HandleVrmlDataShapeNode,
+    pub fn Handle_VrmlData_ShapeNode_get(
+        handle: *const Handle_VrmlData_ShapeNode,
     ) -> crate::OcctResult<*const VrmlData_ShapeNode>;
     /// Dereference Handle to get *mut VrmlData_ShapeNode
-    pub fn HandleVrmlDataShapeNode_get_mut(
-        handle: *mut HandleVrmlDataShapeNode,
+    pub fn Handle_VrmlData_ShapeNode_get_mut(
+        handle: *mut Handle_VrmlData_ShapeNode,
     ) -> crate::OcctResult<*mut VrmlData_ShapeNode>;
     /// Upcast Handle<VrmlData_ShapeNode> to Handle<VrmlData_Node>
-    pub fn HandleVrmlDataShapeNode_to_HandleVrmlDataNode(
-        self_: *const HandleVrmlDataShapeNode,
-    ) -> crate::OcctResult<*mut HandleVrmlDataNode>;
+    pub fn Handle_VrmlData_ShapeNode_to_Handle_VrmlData_Node(
+        self_: *const Handle_VrmlData_ShapeNode,
+    ) -> crate::OcctResult<*mut Handle_VrmlData_Node>;
     /// Upcast Handle<VrmlData_ShapeNode> to Handle<Standard_Transient>
-    pub fn HandleVrmlDataShapeNode_to_HandleStandardTransient(
-        self_: *const HandleVrmlDataShapeNode,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
-    /// Inherited: **Source:** `VrmlData_Node.hxx`:53 - `VrmlData_Node::Scene()`
+    pub fn Handle_VrmlData_ShapeNode_to_Handle_Standard_Transient(
+        self_: *const Handle_VrmlData_ShapeNode,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
+    /// Inherited: **Source:** `VrmlData_Node.hxx`:54 - `VrmlData_Node::Scene()`
     pub fn VrmlData_ShapeNode_inherited_Scene(
         self_: *const VrmlData_ShapeNode,
     ) -> crate::OcctResult<*const VrmlData_Scene>;
-    /// Inherited: **Source:** `VrmlData_Node.hxx`:71 - `VrmlData_Node::ReadNode()`
+    /// Inherited: **Source:** `VrmlData_Node.hxx`:72 - `VrmlData_Node::ReadNode()`
     pub fn VrmlData_ShapeNode_inherited_ReadNode(
         self_: *mut VrmlData_ShapeNode,
         theBuffer: *mut VrmlData_InBuffer,
-        theNode: *mut HandleVrmlDataNode,
-        Type: *const HandleStandardType,
+        theNode: *mut Handle_VrmlData_Node,
+        Type: *const Handle_Standard_Type,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `VrmlData_Node.hxx`:93 - `VrmlData_Node::WriteClosing()`
+    /// Inherited: **Source:** `VrmlData_Node.hxx`:94 - `VrmlData_Node::WriteClosing()`
     pub fn VrmlData_ShapeNode_inherited_WriteClosing(
         self_: *const VrmlData_ShapeNode,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn VrmlData_ShapeNode_inherited_IsInstance(
         self_: *const VrmlData_ShapeNode,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn VrmlData_ShapeNode_inherited_IsKind(
         self_: *const VrmlData_ShapeNode,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn VrmlData_ShapeNode_inherited_This(
         self_: *const VrmlData_ShapeNode,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn VrmlData_ShapeNode_inherited_GetRefCount(
         self_: *const VrmlData_ShapeNode,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn VrmlData_ShapeNode_inherited_IncrementRefCounter(
         self_: *mut VrmlData_ShapeNode,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn VrmlData_ShapeNode_inherited_DecrementRefCounter(
         self_: *mut VrmlData_ShapeNode,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn VrmlData_ShapeNode_inherited_Delete(
         self_: *const VrmlData_ShapeNode,
     ) -> *const std::ffi::c_char;
@@ -6752,12 +6797,12 @@ unsafe extern "C" {
     /// **Source:** `VrmlData_Sphere.hxx`:66 - `VrmlData_Sphere::TShape()`
     pub fn VrmlData_Sphere_t_shape(
         self_: *mut VrmlData_Sphere,
-    ) -> crate::OcctResult<*const HandleTopoDSTShape>;
+    ) -> crate::OcctResult<*const Handle_TopoDS_TShape>;
     /// **Source:** `VrmlData_Sphere.hxx`:73 - `VrmlData_Sphere::Clone()`
     pub fn VrmlData_Sphere_clone(
         self_: *const VrmlData_Sphere,
-        theOther: *const HandleVrmlDataNode,
-    ) -> crate::OcctResult<*mut HandleVrmlDataNode>;
+        theOther: *const Handle_VrmlData_Node,
+    ) -> crate::OcctResult<*mut Handle_VrmlData_Node>;
     /// **Source:** `VrmlData_Sphere.hxx`:79 - `VrmlData_Sphere::Read()`
     pub fn VrmlData_Sphere_read(
         self_: *mut VrmlData_Sphere,
@@ -6771,11 +6816,11 @@ unsafe extern "C" {
     /// **Source:** `VrmlData_Sphere.hxx`:93 - `VrmlData_Sphere::DynamicType()`
     pub fn VrmlData_Sphere_dynamic_type(
         self_: *const VrmlData_Sphere,
-    ) -> crate::OcctResult<*const HandleStandardType>;
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// **Source:** `VrmlData_Sphere.hxx`:93 - `VrmlData_Sphere::get_type_name()`
     pub fn VrmlData_Sphere_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
     /// **Source:** `VrmlData_Sphere.hxx`:93 - `VrmlData_Sphere::get_type_descriptor()`
-    pub fn VrmlData_Sphere_get_type_descriptor() -> crate::OcctResult<*const HandleStandardType>;
+    pub fn VrmlData_Sphere_get_type_descriptor() -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast VrmlData_Sphere to VrmlData_Geometry
     pub fn VrmlData_Sphere_as_VrmlData_Geometry(
         self_: *const VrmlData_Sphere,
@@ -6803,81 +6848,81 @@ unsafe extern "C" {
     /// Wrap VrmlData_Sphere in a Handle
     pub fn VrmlData_Sphere_to_handle(
         obj: *mut VrmlData_Sphere,
-    ) -> crate::OcctResult<*mut HandleVrmlDataSphere>;
+    ) -> crate::OcctResult<*mut Handle_VrmlData_Sphere>;
     /// Destroy Handle<VrmlData_Sphere>
-    pub fn HandleVrmlDataSphere_destructor(self_: *mut HandleVrmlDataSphere);
+    pub fn Handle_VrmlData_Sphere_destructor(self_: *mut Handle_VrmlData_Sphere);
     /// Clone Handle<VrmlData_Sphere> (increments reference count)
-    pub fn HandleVrmlDataSphere_clone(
-        self_: *const HandleVrmlDataSphere,
-    ) -> crate::OcctResult<*mut HandleVrmlDataSphere>;
+    pub fn Handle_VrmlData_Sphere_clone(
+        self_: *const Handle_VrmlData_Sphere,
+    ) -> crate::OcctResult<*mut Handle_VrmlData_Sphere>;
     /// Check if Handle<VrmlData_Sphere> is null
-    pub fn HandleVrmlDataSphere_is_null(self_: *const HandleVrmlDataSphere) -> bool;
+    pub fn Handle_VrmlData_Sphere_is_null(self_: *const Handle_VrmlData_Sphere) -> bool;
     /// Dereference Handle to get *const VrmlData_Sphere
-    pub fn HandleVrmlDataSphere_get(
-        handle: *const HandleVrmlDataSphere,
+    pub fn Handle_VrmlData_Sphere_get(
+        handle: *const Handle_VrmlData_Sphere,
     ) -> crate::OcctResult<*const VrmlData_Sphere>;
     /// Dereference Handle to get *mut VrmlData_Sphere
-    pub fn HandleVrmlDataSphere_get_mut(
-        handle: *mut HandleVrmlDataSphere,
+    pub fn Handle_VrmlData_Sphere_get_mut(
+        handle: *mut Handle_VrmlData_Sphere,
     ) -> crate::OcctResult<*mut VrmlData_Sphere>;
     /// Upcast Handle<VrmlData_Sphere> to Handle<VrmlData_Geometry>
-    pub fn HandleVrmlDataSphere_to_HandleVrmlDataGeometry(
-        self_: *const HandleVrmlDataSphere,
-    ) -> crate::OcctResult<*mut HandleVrmlDataGeometry>;
+    pub fn Handle_VrmlData_Sphere_to_Handle_VrmlData_Geometry(
+        self_: *const Handle_VrmlData_Sphere,
+    ) -> crate::OcctResult<*mut Handle_VrmlData_Geometry>;
     /// Upcast Handle<VrmlData_Sphere> to Handle<VrmlData_Node>
-    pub fn HandleVrmlDataSphere_to_HandleVrmlDataNode(
-        self_: *const HandleVrmlDataSphere,
-    ) -> crate::OcctResult<*mut HandleVrmlDataNode>;
+    pub fn Handle_VrmlData_Sphere_to_Handle_VrmlData_Node(
+        self_: *const Handle_VrmlData_Sphere,
+    ) -> crate::OcctResult<*mut Handle_VrmlData_Node>;
     /// Upcast Handle<VrmlData_Sphere> to Handle<Standard_Transient>
-    pub fn HandleVrmlDataSphere_to_HandleStandardTransient(
-        self_: *const HandleVrmlDataSphere,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
-    /// Inherited: **Source:** `VrmlData_Node.hxx`:53 - `VrmlData_Node::Scene()`
+    pub fn Handle_VrmlData_Sphere_to_Handle_Standard_Transient(
+        self_: *const Handle_VrmlData_Sphere,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
+    /// Inherited: **Source:** `VrmlData_Node.hxx`:54 - `VrmlData_Node::Scene()`
     pub fn VrmlData_Sphere_inherited_Scene(
         self_: *const VrmlData_Sphere,
     ) -> crate::OcctResult<*const VrmlData_Scene>;
-    /// Inherited: **Source:** `VrmlData_Node.hxx`:71 - `VrmlData_Node::ReadNode()`
+    /// Inherited: **Source:** `VrmlData_Node.hxx`:72 - `VrmlData_Node::ReadNode()`
     pub fn VrmlData_Sphere_inherited_ReadNode(
         self_: *mut VrmlData_Sphere,
         theBuffer: *mut VrmlData_InBuffer,
-        theNode: *mut HandleVrmlDataNode,
-        Type: *const HandleStandardType,
+        theNode: *mut Handle_VrmlData_Node,
+        Type: *const Handle_Standard_Type,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `VrmlData_Node.hxx`:88 - `VrmlData_Node::IsDefault()`
+    /// Inherited: **Source:** `VrmlData_Node.hxx`:89 - `VrmlData_Node::IsDefault()`
     pub fn VrmlData_Sphere_inherited_IsDefault(
         self_: *const VrmlData_Sphere,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `VrmlData_Node.hxx`:93 - `VrmlData_Node::WriteClosing()`
+    /// Inherited: **Source:** `VrmlData_Node.hxx`:94 - `VrmlData_Node::WriteClosing()`
     pub fn VrmlData_Sphere_inherited_WriteClosing(
         self_: *const VrmlData_Sphere,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn VrmlData_Sphere_inherited_IsInstance(
         self_: *const VrmlData_Sphere,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn VrmlData_Sphere_inherited_IsKind(
         self_: *const VrmlData_Sphere,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn VrmlData_Sphere_inherited_This(
         self_: *const VrmlData_Sphere,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn VrmlData_Sphere_inherited_GetRefCount(
         self_: *const VrmlData_Sphere,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn VrmlData_Sphere_inherited_IncrementRefCounter(
         self_: *mut VrmlData_Sphere,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn VrmlData_Sphere_inherited_DecrementRefCounter(
         self_: *mut VrmlData_Sphere,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn VrmlData_Sphere_inherited_Delete(
         self_: *const VrmlData_Sphere,
     ) -> *const std::ffi::c_char;
@@ -6897,14 +6942,14 @@ unsafe extern "C" {
         self_: *mut VrmlData_Texture,
         theFlag: bool,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `VrmlData_Texture.hxx`:82 - `VrmlData_Texture::DynamicType()`
+    /// **Source:** `VrmlData_Texture.hxx`:79 - `VrmlData_Texture::DynamicType()`
     pub fn VrmlData_Texture_dynamic_type(
         self_: *const VrmlData_Texture,
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// **Source:** `VrmlData_Texture.hxx`:82 - `VrmlData_Texture::get_type_name()`
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
+    /// **Source:** `VrmlData_Texture.hxx`:79 - `VrmlData_Texture::get_type_name()`
     pub fn VrmlData_Texture_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
-    /// **Source:** `VrmlData_Texture.hxx`:82 - `VrmlData_Texture::get_type_descriptor()`
-    pub fn VrmlData_Texture_get_type_descriptor() -> crate::OcctResult<*const HandleStandardType>;
+    /// **Source:** `VrmlData_Texture.hxx`:79 - `VrmlData_Texture::get_type_descriptor()`
+    pub fn VrmlData_Texture_get_type_descriptor() -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast VrmlData_Texture to VrmlData_Node
     pub fn VrmlData_Texture_as_VrmlData_Node(
         self_: *const VrmlData_Texture,
@@ -6922,89 +6967,89 @@ unsafe extern "C" {
         self_: *mut VrmlData_Texture,
     ) -> crate::OcctResult<*mut Standard_Transient>;
     /// Destroy Handle<VrmlData_Texture>
-    pub fn HandleVrmlDataTexture_destructor(self_: *mut HandleVrmlDataTexture);
+    pub fn Handle_VrmlData_Texture_destructor(self_: *mut Handle_VrmlData_Texture);
     /// Clone Handle<VrmlData_Texture> (increments reference count)
-    pub fn HandleVrmlDataTexture_clone(
-        self_: *const HandleVrmlDataTexture,
-    ) -> crate::OcctResult<*mut HandleVrmlDataTexture>;
+    pub fn Handle_VrmlData_Texture_clone(
+        self_: *const Handle_VrmlData_Texture,
+    ) -> crate::OcctResult<*mut Handle_VrmlData_Texture>;
     /// Check if Handle<VrmlData_Texture> is null
-    pub fn HandleVrmlDataTexture_is_null(self_: *const HandleVrmlDataTexture) -> bool;
+    pub fn Handle_VrmlData_Texture_is_null(self_: *const Handle_VrmlData_Texture) -> bool;
     /// Dereference Handle to get *const VrmlData_Texture
-    pub fn HandleVrmlDataTexture_get(
-        handle: *const HandleVrmlDataTexture,
+    pub fn Handle_VrmlData_Texture_get(
+        handle: *const Handle_VrmlData_Texture,
     ) -> crate::OcctResult<*const VrmlData_Texture>;
     /// Dereference Handle to get *mut VrmlData_Texture
-    pub fn HandleVrmlDataTexture_get_mut(
-        handle: *mut HandleVrmlDataTexture,
+    pub fn Handle_VrmlData_Texture_get_mut(
+        handle: *mut Handle_VrmlData_Texture,
     ) -> crate::OcctResult<*mut VrmlData_Texture>;
     /// Upcast Handle<VrmlData_Texture> to Handle<VrmlData_Node>
-    pub fn HandleVrmlDataTexture_to_HandleVrmlDataNode(
-        self_: *const HandleVrmlDataTexture,
-    ) -> crate::OcctResult<*mut HandleVrmlDataNode>;
+    pub fn Handle_VrmlData_Texture_to_Handle_VrmlData_Node(
+        self_: *const Handle_VrmlData_Texture,
+    ) -> crate::OcctResult<*mut Handle_VrmlData_Node>;
     /// Upcast Handle<VrmlData_Texture> to Handle<Standard_Transient>
-    pub fn HandleVrmlDataTexture_to_HandleStandardTransient(
-        self_: *const HandleVrmlDataTexture,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
+    pub fn Handle_VrmlData_Texture_to_Handle_Standard_Transient(
+        self_: *const Handle_VrmlData_Texture,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
     /// Downcast Handle<VrmlData_Texture> to Handle<VrmlData_ImageTexture> (returns null on failure)
-    pub fn HandleVrmlDataTexture_downcast_to_HandleVrmlDataImageTexture(
-        self_: *const HandleVrmlDataTexture,
-    ) -> crate::OcctResult<*mut HandleVrmlDataImageTexture>;
-    /// Inherited: **Source:** `VrmlData_Node.hxx`:53 - `VrmlData_Node::Scene()`
+    pub fn Handle_VrmlData_Texture_downcast_to_Handle_VrmlData_ImageTexture(
+        self_: *const Handle_VrmlData_Texture,
+    ) -> crate::OcctResult<*mut Handle_VrmlData_ImageTexture>;
+    /// Inherited: **Source:** `VrmlData_Node.hxx`:54 - `VrmlData_Node::Scene()`
     pub fn VrmlData_Texture_inherited_Scene(
         self_: *const VrmlData_Texture,
     ) -> crate::OcctResult<*const VrmlData_Scene>;
-    /// Inherited: **Source:** `VrmlData_Node.hxx`:71 - `VrmlData_Node::ReadNode()`
+    /// Inherited: **Source:** `VrmlData_Node.hxx`:72 - `VrmlData_Node::ReadNode()`
     pub fn VrmlData_Texture_inherited_ReadNode(
         self_: *mut VrmlData_Texture,
         theBuffer: *mut VrmlData_InBuffer,
-        theNode: *mut HandleVrmlDataNode,
-        Type: *const HandleStandardType,
+        theNode: *mut Handle_VrmlData_Node,
+        Type: *const Handle_Standard_Type,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `VrmlData_Node.hxx`:78 - `VrmlData_Node::Read()`
+    /// Inherited: **Source:** `VrmlData_Node.hxx`:79 - `VrmlData_Node::Read()`
     pub fn VrmlData_Texture_inherited_Read(
         self_: *mut VrmlData_Texture,
         theBuffer: *mut VrmlData_InBuffer,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `VrmlData_Node.hxx`:88 - `VrmlData_Node::IsDefault()`
+    /// Inherited: **Source:** `VrmlData_Node.hxx`:89 - `VrmlData_Node::IsDefault()`
     pub fn VrmlData_Texture_inherited_IsDefault(
         self_: *const VrmlData_Texture,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `VrmlData_Node.hxx`:93 - `VrmlData_Node::WriteClosing()`
+    /// Inherited: **Source:** `VrmlData_Node.hxx`:94 - `VrmlData_Node::WriteClosing()`
     pub fn VrmlData_Texture_inherited_WriteClosing(
         self_: *const VrmlData_Texture,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `VrmlData_Node.hxx`:102 - `VrmlData_Node::Clone()`
+    /// Inherited: **Source:** `VrmlData_Node.hxx`:103 - `VrmlData_Node::Clone()`
     pub fn VrmlData_Texture_inherited_Clone(
         self_: *const VrmlData_Texture,
-        arg0: *const HandleVrmlDataNode,
-    ) -> crate::OcctResult<*mut HandleVrmlDataNode>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+        arg0: *const Handle_VrmlData_Node,
+    ) -> crate::OcctResult<*mut Handle_VrmlData_Node>;
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn VrmlData_Texture_inherited_IsInstance(
         self_: *const VrmlData_Texture,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn VrmlData_Texture_inherited_IsKind(
         self_: *const VrmlData_Texture,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn VrmlData_Texture_inherited_This(
         self_: *const VrmlData_Texture,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn VrmlData_Texture_inherited_GetRefCount(
         self_: *const VrmlData_Texture,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn VrmlData_Texture_inherited_IncrementRefCounter(
         self_: *mut VrmlData_Texture,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn VrmlData_Texture_inherited_DecrementRefCounter(
         self_: *mut VrmlData_Texture,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn VrmlData_Texture_inherited_Delete(
         self_: *const VrmlData_Texture,
     ) -> *const std::ffi::c_char;
@@ -7041,8 +7086,8 @@ unsafe extern "C" {
     /// **Source:** `VrmlData_TextureCoordinate.hxx`:83 - `VrmlData_TextureCoordinate::Clone()`
     pub fn VrmlData_TextureCoordinate_clone(
         self_: *const VrmlData_TextureCoordinate,
-        theOther: *const HandleVrmlDataNode,
-    ) -> crate::OcctResult<*mut HandleVrmlDataNode>;
+        theOther: *const Handle_VrmlData_Node,
+    ) -> crate::OcctResult<*mut Handle_VrmlData_Node>;
     /// **Source:** `VrmlData_TextureCoordinate.hxx`:89 - `VrmlData_TextureCoordinate::Read()`
     pub fn VrmlData_TextureCoordinate_read(
         self_: *mut VrmlData_TextureCoordinate,
@@ -7051,12 +7096,12 @@ unsafe extern "C" {
     /// **Source:** `VrmlData_TextureCoordinate.hxx`:99 - `VrmlData_TextureCoordinate::DynamicType()`
     pub fn VrmlData_TextureCoordinate_dynamic_type(
         self_: *const VrmlData_TextureCoordinate,
-    ) -> crate::OcctResult<*const HandleStandardType>;
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// **Source:** `VrmlData_TextureCoordinate.hxx`:99 - `VrmlData_TextureCoordinate::get_type_name()`
     pub fn VrmlData_TextureCoordinate_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
     /// **Source:** `VrmlData_TextureCoordinate.hxx`:99 - `VrmlData_TextureCoordinate::get_type_descriptor()`
     pub fn VrmlData_TextureCoordinate_get_type_descriptor(
-    ) -> crate::OcctResult<*const HandleStandardType>;
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast VrmlData_TextureCoordinate to VrmlData_Node
     pub fn VrmlData_TextureCoordinate_as_VrmlData_Node(
         self_: *const VrmlData_TextureCoordinate,
@@ -7076,79 +7121,81 @@ unsafe extern "C" {
     /// Wrap VrmlData_TextureCoordinate in a Handle
     pub fn VrmlData_TextureCoordinate_to_handle(
         obj: *mut VrmlData_TextureCoordinate,
-    ) -> crate::OcctResult<*mut HandleVrmlDataTextureCoordinate>;
+    ) -> crate::OcctResult<*mut Handle_VrmlData_TextureCoordinate>;
     /// Destroy Handle<VrmlData_TextureCoordinate>
-    pub fn HandleVrmlDataTextureCoordinate_destructor(self_: *mut HandleVrmlDataTextureCoordinate);
+    pub fn Handle_VrmlData_TextureCoordinate_destructor(
+        self_: *mut Handle_VrmlData_TextureCoordinate,
+    );
     /// Clone Handle<VrmlData_TextureCoordinate> (increments reference count)
-    pub fn HandleVrmlDataTextureCoordinate_clone(
-        self_: *const HandleVrmlDataTextureCoordinate,
-    ) -> crate::OcctResult<*mut HandleVrmlDataTextureCoordinate>;
+    pub fn Handle_VrmlData_TextureCoordinate_clone(
+        self_: *const Handle_VrmlData_TextureCoordinate,
+    ) -> crate::OcctResult<*mut Handle_VrmlData_TextureCoordinate>;
     /// Check if Handle<VrmlData_TextureCoordinate> is null
-    pub fn HandleVrmlDataTextureCoordinate_is_null(
-        self_: *const HandleVrmlDataTextureCoordinate,
+    pub fn Handle_VrmlData_TextureCoordinate_is_null(
+        self_: *const Handle_VrmlData_TextureCoordinate,
     ) -> bool;
     /// Dereference Handle to get *const VrmlData_TextureCoordinate
-    pub fn HandleVrmlDataTextureCoordinate_get(
-        handle: *const HandleVrmlDataTextureCoordinate,
+    pub fn Handle_VrmlData_TextureCoordinate_get(
+        handle: *const Handle_VrmlData_TextureCoordinate,
     ) -> crate::OcctResult<*const VrmlData_TextureCoordinate>;
     /// Dereference Handle to get *mut VrmlData_TextureCoordinate
-    pub fn HandleVrmlDataTextureCoordinate_get_mut(
-        handle: *mut HandleVrmlDataTextureCoordinate,
+    pub fn Handle_VrmlData_TextureCoordinate_get_mut(
+        handle: *mut Handle_VrmlData_TextureCoordinate,
     ) -> crate::OcctResult<*mut VrmlData_TextureCoordinate>;
     /// Upcast Handle<VrmlData_TextureCoordinate> to Handle<VrmlData_Node>
-    pub fn HandleVrmlDataTextureCoordinate_to_HandleVrmlDataNode(
-        self_: *const HandleVrmlDataTextureCoordinate,
-    ) -> crate::OcctResult<*mut HandleVrmlDataNode>;
+    pub fn Handle_VrmlData_TextureCoordinate_to_Handle_VrmlData_Node(
+        self_: *const Handle_VrmlData_TextureCoordinate,
+    ) -> crate::OcctResult<*mut Handle_VrmlData_Node>;
     /// Upcast Handle<VrmlData_TextureCoordinate> to Handle<Standard_Transient>
-    pub fn HandleVrmlDataTextureCoordinate_to_HandleStandardTransient(
-        self_: *const HandleVrmlDataTextureCoordinate,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
-    /// Inherited: **Source:** `VrmlData_Node.hxx`:53 - `VrmlData_Node::Scene()`
+    pub fn Handle_VrmlData_TextureCoordinate_to_Handle_Standard_Transient(
+        self_: *const Handle_VrmlData_TextureCoordinate,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
+    /// Inherited: **Source:** `VrmlData_Node.hxx`:54 - `VrmlData_Node::Scene()`
     pub fn VrmlData_TextureCoordinate_inherited_Scene(
         self_: *const VrmlData_TextureCoordinate,
     ) -> crate::OcctResult<*const VrmlData_Scene>;
-    /// Inherited: **Source:** `VrmlData_Node.hxx`:71 - `VrmlData_Node::ReadNode()`
+    /// Inherited: **Source:** `VrmlData_Node.hxx`:72 - `VrmlData_Node::ReadNode()`
     pub fn VrmlData_TextureCoordinate_inherited_ReadNode(
         self_: *mut VrmlData_TextureCoordinate,
         theBuffer: *mut VrmlData_InBuffer,
-        theNode: *mut HandleVrmlDataNode,
-        Type: *const HandleStandardType,
+        theNode: *mut Handle_VrmlData_Node,
+        Type: *const Handle_Standard_Type,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `VrmlData_Node.hxx`:88 - `VrmlData_Node::IsDefault()`
+    /// Inherited: **Source:** `VrmlData_Node.hxx`:89 - `VrmlData_Node::IsDefault()`
     pub fn VrmlData_TextureCoordinate_inherited_IsDefault(
         self_: *const VrmlData_TextureCoordinate,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `VrmlData_Node.hxx`:93 - `VrmlData_Node::WriteClosing()`
+    /// Inherited: **Source:** `VrmlData_Node.hxx`:94 - `VrmlData_Node::WriteClosing()`
     pub fn VrmlData_TextureCoordinate_inherited_WriteClosing(
         self_: *const VrmlData_TextureCoordinate,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn VrmlData_TextureCoordinate_inherited_IsInstance(
         self_: *const VrmlData_TextureCoordinate,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn VrmlData_TextureCoordinate_inherited_IsKind(
         self_: *const VrmlData_TextureCoordinate,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn VrmlData_TextureCoordinate_inherited_This(
         self_: *const VrmlData_TextureCoordinate,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn VrmlData_TextureCoordinate_inherited_GetRefCount(
         self_: *const VrmlData_TextureCoordinate,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn VrmlData_TextureCoordinate_inherited_IncrementRefCounter(
         self_: *mut VrmlData_TextureCoordinate,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn VrmlData_TextureCoordinate_inherited_DecrementRefCounter(
         self_: *mut VrmlData_TextureCoordinate,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn VrmlData_TextureCoordinate_inherited_Delete(
         self_: *const VrmlData_TextureCoordinate,
     ) -> *const std::ffi::c_char;
@@ -7190,15 +7237,15 @@ unsafe extern "C" {
         self_: *mut VrmlData_TextureTransform,
         V: *const gp_XY,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `VrmlData_TextureTransform.hxx`:99 - `VrmlData_TextureTransform::DynamicType()`
+    /// **Source:** `VrmlData_TextureTransform.hxx`:96 - `VrmlData_TextureTransform::DynamicType()`
     pub fn VrmlData_TextureTransform_dynamic_type(
         self_: *const VrmlData_TextureTransform,
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// **Source:** `VrmlData_TextureTransform.hxx`:99 - `VrmlData_TextureTransform::get_type_name()`
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
+    /// **Source:** `VrmlData_TextureTransform.hxx`:96 - `VrmlData_TextureTransform::get_type_name()`
     pub fn VrmlData_TextureTransform_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
-    /// **Source:** `VrmlData_TextureTransform.hxx`:99 - `VrmlData_TextureTransform::get_type_descriptor()`
+    /// **Source:** `VrmlData_TextureTransform.hxx`:96 - `VrmlData_TextureTransform::get_type_descriptor()`
     pub fn VrmlData_TextureTransform_get_type_descriptor(
-    ) -> crate::OcctResult<*const HandleStandardType>;
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast VrmlData_TextureTransform to VrmlData_Node
     pub fn VrmlData_TextureTransform_as_VrmlData_Node(
         self_: *const VrmlData_TextureTransform,
@@ -7216,87 +7263,89 @@ unsafe extern "C" {
         self_: *mut VrmlData_TextureTransform,
     ) -> crate::OcctResult<*mut Standard_Transient>;
     /// Destroy Handle<VrmlData_TextureTransform>
-    pub fn HandleVrmlDataTextureTransform_destructor(self_: *mut HandleVrmlDataTextureTransform);
+    pub fn Handle_VrmlData_TextureTransform_destructor(
+        self_: *mut Handle_VrmlData_TextureTransform,
+    );
     /// Clone Handle<VrmlData_TextureTransform> (increments reference count)
-    pub fn HandleVrmlDataTextureTransform_clone(
-        self_: *const HandleVrmlDataTextureTransform,
-    ) -> crate::OcctResult<*mut HandleVrmlDataTextureTransform>;
+    pub fn Handle_VrmlData_TextureTransform_clone(
+        self_: *const Handle_VrmlData_TextureTransform,
+    ) -> crate::OcctResult<*mut Handle_VrmlData_TextureTransform>;
     /// Check if Handle<VrmlData_TextureTransform> is null
-    pub fn HandleVrmlDataTextureTransform_is_null(
-        self_: *const HandleVrmlDataTextureTransform,
+    pub fn Handle_VrmlData_TextureTransform_is_null(
+        self_: *const Handle_VrmlData_TextureTransform,
     ) -> bool;
     /// Dereference Handle to get *const VrmlData_TextureTransform
-    pub fn HandleVrmlDataTextureTransform_get(
-        handle: *const HandleVrmlDataTextureTransform,
+    pub fn Handle_VrmlData_TextureTransform_get(
+        handle: *const Handle_VrmlData_TextureTransform,
     ) -> crate::OcctResult<*const VrmlData_TextureTransform>;
     /// Dereference Handle to get *mut VrmlData_TextureTransform
-    pub fn HandleVrmlDataTextureTransform_get_mut(
-        handle: *mut HandleVrmlDataTextureTransform,
+    pub fn Handle_VrmlData_TextureTransform_get_mut(
+        handle: *mut Handle_VrmlData_TextureTransform,
     ) -> crate::OcctResult<*mut VrmlData_TextureTransform>;
     /// Upcast Handle<VrmlData_TextureTransform> to Handle<VrmlData_Node>
-    pub fn HandleVrmlDataTextureTransform_to_HandleVrmlDataNode(
-        self_: *const HandleVrmlDataTextureTransform,
-    ) -> crate::OcctResult<*mut HandleVrmlDataNode>;
+    pub fn Handle_VrmlData_TextureTransform_to_Handle_VrmlData_Node(
+        self_: *const Handle_VrmlData_TextureTransform,
+    ) -> crate::OcctResult<*mut Handle_VrmlData_Node>;
     /// Upcast Handle<VrmlData_TextureTransform> to Handle<Standard_Transient>
-    pub fn HandleVrmlDataTextureTransform_to_HandleStandardTransient(
-        self_: *const HandleVrmlDataTextureTransform,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
-    /// Inherited: **Source:** `VrmlData_Node.hxx`:53 - `VrmlData_Node::Scene()`
+    pub fn Handle_VrmlData_TextureTransform_to_Handle_Standard_Transient(
+        self_: *const Handle_VrmlData_TextureTransform,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
+    /// Inherited: **Source:** `VrmlData_Node.hxx`:54 - `VrmlData_Node::Scene()`
     pub fn VrmlData_TextureTransform_inherited_Scene(
         self_: *const VrmlData_TextureTransform,
     ) -> crate::OcctResult<*const VrmlData_Scene>;
-    /// Inherited: **Source:** `VrmlData_Node.hxx`:71 - `VrmlData_Node::ReadNode()`
+    /// Inherited: **Source:** `VrmlData_Node.hxx`:72 - `VrmlData_Node::ReadNode()`
     pub fn VrmlData_TextureTransform_inherited_ReadNode(
         self_: *mut VrmlData_TextureTransform,
         theBuffer: *mut VrmlData_InBuffer,
-        theNode: *mut HandleVrmlDataNode,
-        Type: *const HandleStandardType,
+        theNode: *mut Handle_VrmlData_Node,
+        Type: *const Handle_Standard_Type,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `VrmlData_Node.hxx`:78 - `VrmlData_Node::Read()`
+    /// Inherited: **Source:** `VrmlData_Node.hxx`:79 - `VrmlData_Node::Read()`
     pub fn VrmlData_TextureTransform_inherited_Read(
         self_: *mut VrmlData_TextureTransform,
         theBuffer: *mut VrmlData_InBuffer,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `VrmlData_Node.hxx`:88 - `VrmlData_Node::IsDefault()`
+    /// Inherited: **Source:** `VrmlData_Node.hxx`:89 - `VrmlData_Node::IsDefault()`
     pub fn VrmlData_TextureTransform_inherited_IsDefault(
         self_: *const VrmlData_TextureTransform,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `VrmlData_Node.hxx`:93 - `VrmlData_Node::WriteClosing()`
+    /// Inherited: **Source:** `VrmlData_Node.hxx`:94 - `VrmlData_Node::WriteClosing()`
     pub fn VrmlData_TextureTransform_inherited_WriteClosing(
         self_: *const VrmlData_TextureTransform,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `VrmlData_Node.hxx`:102 - `VrmlData_Node::Clone()`
+    /// Inherited: **Source:** `VrmlData_Node.hxx`:103 - `VrmlData_Node::Clone()`
     pub fn VrmlData_TextureTransform_inherited_Clone(
         self_: *const VrmlData_TextureTransform,
-        arg0: *const HandleVrmlDataNode,
-    ) -> crate::OcctResult<*mut HandleVrmlDataNode>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+        arg0: *const Handle_VrmlData_Node,
+    ) -> crate::OcctResult<*mut Handle_VrmlData_Node>;
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn VrmlData_TextureTransform_inherited_IsInstance(
         self_: *const VrmlData_TextureTransform,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn VrmlData_TextureTransform_inherited_IsKind(
         self_: *const VrmlData_TextureTransform,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn VrmlData_TextureTransform_inherited_This(
         self_: *const VrmlData_TextureTransform,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn VrmlData_TextureTransform_inherited_GetRefCount(
         self_: *const VrmlData_TextureTransform,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn VrmlData_TextureTransform_inherited_IncrementRefCounter(
         self_: *mut VrmlData_TextureTransform,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn VrmlData_TextureTransform_inherited_DecrementRefCounter(
         self_: *mut VrmlData_TextureTransform,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn VrmlData_TextureTransform_inherited_Delete(
         self_: *const VrmlData_TextureTransform,
     ) -> *const std::ffi::c_char;
@@ -7326,11 +7375,12 @@ unsafe extern "C" {
     /// **Source:** `VrmlData_UnknownNode.hxx`:71 - `VrmlData_UnknownNode::DynamicType()`
     pub fn VrmlData_UnknownNode_dynamic_type(
         self_: *const VrmlData_UnknownNode,
-    ) -> crate::OcctResult<*const HandleStandardType>;
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// **Source:** `VrmlData_UnknownNode.hxx`:71 - `VrmlData_UnknownNode::get_type_name()`
     pub fn VrmlData_UnknownNode_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
     /// **Source:** `VrmlData_UnknownNode.hxx`:71 - `VrmlData_UnknownNode::get_type_descriptor()`
-    pub fn VrmlData_UnknownNode_get_type_descriptor() -> crate::OcctResult<*const HandleStandardType>;
+    pub fn VrmlData_UnknownNode_get_type_descriptor(
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast VrmlData_UnknownNode to VrmlData_Node
     pub fn VrmlData_UnknownNode_as_VrmlData_Node(
         self_: *const VrmlData_UnknownNode,
@@ -7350,78 +7400,78 @@ unsafe extern "C" {
     /// Wrap VrmlData_UnknownNode in a Handle
     pub fn VrmlData_UnknownNode_to_handle(
         obj: *mut VrmlData_UnknownNode,
-    ) -> crate::OcctResult<*mut HandleVrmlDataUnknownNode>;
+    ) -> crate::OcctResult<*mut Handle_VrmlData_UnknownNode>;
     /// Destroy Handle<VrmlData_UnknownNode>
-    pub fn HandleVrmlDataUnknownNode_destructor(self_: *mut HandleVrmlDataUnknownNode);
+    pub fn Handle_VrmlData_UnknownNode_destructor(self_: *mut Handle_VrmlData_UnknownNode);
     /// Clone Handle<VrmlData_UnknownNode> (increments reference count)
-    pub fn HandleVrmlDataUnknownNode_clone(
-        self_: *const HandleVrmlDataUnknownNode,
-    ) -> crate::OcctResult<*mut HandleVrmlDataUnknownNode>;
+    pub fn Handle_VrmlData_UnknownNode_clone(
+        self_: *const Handle_VrmlData_UnknownNode,
+    ) -> crate::OcctResult<*mut Handle_VrmlData_UnknownNode>;
     /// Check if Handle<VrmlData_UnknownNode> is null
-    pub fn HandleVrmlDataUnknownNode_is_null(self_: *const HandleVrmlDataUnknownNode) -> bool;
+    pub fn Handle_VrmlData_UnknownNode_is_null(self_: *const Handle_VrmlData_UnknownNode) -> bool;
     /// Dereference Handle to get *const VrmlData_UnknownNode
-    pub fn HandleVrmlDataUnknownNode_get(
-        handle: *const HandleVrmlDataUnknownNode,
+    pub fn Handle_VrmlData_UnknownNode_get(
+        handle: *const Handle_VrmlData_UnknownNode,
     ) -> crate::OcctResult<*const VrmlData_UnknownNode>;
     /// Dereference Handle to get *mut VrmlData_UnknownNode
-    pub fn HandleVrmlDataUnknownNode_get_mut(
-        handle: *mut HandleVrmlDataUnknownNode,
+    pub fn Handle_VrmlData_UnknownNode_get_mut(
+        handle: *mut Handle_VrmlData_UnknownNode,
     ) -> crate::OcctResult<*mut VrmlData_UnknownNode>;
     /// Upcast Handle<VrmlData_UnknownNode> to Handle<VrmlData_Node>
-    pub fn HandleVrmlDataUnknownNode_to_HandleVrmlDataNode(
-        self_: *const HandleVrmlDataUnknownNode,
-    ) -> crate::OcctResult<*mut HandleVrmlDataNode>;
+    pub fn Handle_VrmlData_UnknownNode_to_Handle_VrmlData_Node(
+        self_: *const Handle_VrmlData_UnknownNode,
+    ) -> crate::OcctResult<*mut Handle_VrmlData_Node>;
     /// Upcast Handle<VrmlData_UnknownNode> to Handle<Standard_Transient>
-    pub fn HandleVrmlDataUnknownNode_to_HandleStandardTransient(
-        self_: *const HandleVrmlDataUnknownNode,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
-    /// Inherited: **Source:** `VrmlData_Node.hxx`:53 - `VrmlData_Node::Scene()`
+    pub fn Handle_VrmlData_UnknownNode_to_Handle_Standard_Transient(
+        self_: *const Handle_VrmlData_UnknownNode,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
+    /// Inherited: **Source:** `VrmlData_Node.hxx`:54 - `VrmlData_Node::Scene()`
     pub fn VrmlData_UnknownNode_inherited_Scene(
         self_: *const VrmlData_UnknownNode,
     ) -> crate::OcctResult<*const VrmlData_Scene>;
-    /// Inherited: **Source:** `VrmlData_Node.hxx`:71 - `VrmlData_Node::ReadNode()`
+    /// Inherited: **Source:** `VrmlData_Node.hxx`:72 - `VrmlData_Node::ReadNode()`
     pub fn VrmlData_UnknownNode_inherited_ReadNode(
         self_: *mut VrmlData_UnknownNode,
         theBuffer: *mut VrmlData_InBuffer,
-        theNode: *mut HandleVrmlDataNode,
-        Type: *const HandleStandardType,
+        theNode: *mut Handle_VrmlData_Node,
+        Type: *const Handle_Standard_Type,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `VrmlData_Node.hxx`:93 - `VrmlData_Node::WriteClosing()`
+    /// Inherited: **Source:** `VrmlData_Node.hxx`:94 - `VrmlData_Node::WriteClosing()`
     pub fn VrmlData_UnknownNode_inherited_WriteClosing(
         self_: *const VrmlData_UnknownNode,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `VrmlData_Node.hxx`:102 - `VrmlData_Node::Clone()`
+    /// Inherited: **Source:** `VrmlData_Node.hxx`:103 - `VrmlData_Node::Clone()`
     pub fn VrmlData_UnknownNode_inherited_Clone(
         self_: *const VrmlData_UnknownNode,
-        arg0: *const HandleVrmlDataNode,
-    ) -> crate::OcctResult<*mut HandleVrmlDataNode>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+        arg0: *const Handle_VrmlData_Node,
+    ) -> crate::OcctResult<*mut Handle_VrmlData_Node>;
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn VrmlData_UnknownNode_inherited_IsInstance(
         self_: *const VrmlData_UnknownNode,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn VrmlData_UnknownNode_inherited_IsKind(
         self_: *const VrmlData_UnknownNode,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn VrmlData_UnknownNode_inherited_This(
         self_: *const VrmlData_UnknownNode,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn VrmlData_UnknownNode_inherited_GetRefCount(
         self_: *const VrmlData_UnknownNode,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn VrmlData_UnknownNode_inherited_IncrementRefCounter(
         self_: *mut VrmlData_UnknownNode,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn VrmlData_UnknownNode_inherited_DecrementRefCounter(
         self_: *mut VrmlData_UnknownNode,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn VrmlData_UnknownNode_inherited_Delete(
         self_: *const VrmlData_UnknownNode,
     ) -> *const std::ffi::c_char;
@@ -7452,8 +7502,8 @@ unsafe extern "C" {
     /// **Source:** `VrmlData_WorldInfo.hxx`:70 - `VrmlData_WorldInfo::Clone()`
     pub fn VrmlData_WorldInfo_clone(
         self_: *const VrmlData_WorldInfo,
-        theOther: *const HandleVrmlDataNode,
-    ) -> crate::OcctResult<*mut HandleVrmlDataNode>;
+        theOther: *const Handle_VrmlData_Node,
+    ) -> crate::OcctResult<*mut Handle_VrmlData_Node>;
     /// **Source:** `VrmlData_WorldInfo.hxx`:76 - `VrmlData_WorldInfo::Read()`
     pub fn VrmlData_WorldInfo_read(
         self_: *mut VrmlData_WorldInfo,
@@ -7471,11 +7521,11 @@ unsafe extern "C" {
     /// **Source:** `VrmlData_WorldInfo.hxx`:96 - `VrmlData_WorldInfo::DynamicType()`
     pub fn VrmlData_WorldInfo_dynamic_type(
         self_: *const VrmlData_WorldInfo,
-    ) -> crate::OcctResult<*const HandleStandardType>;
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// **Source:** `VrmlData_WorldInfo.hxx`:96 - `VrmlData_WorldInfo::get_type_name()`
     pub fn VrmlData_WorldInfo_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
     /// **Source:** `VrmlData_WorldInfo.hxx`:96 - `VrmlData_WorldInfo::get_type_descriptor()`
-    pub fn VrmlData_WorldInfo_get_type_descriptor() -> crate::OcctResult<*const HandleStandardType>;
+    pub fn VrmlData_WorldInfo_get_type_descriptor() -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast VrmlData_WorldInfo to VrmlData_Node
     pub fn VrmlData_WorldInfo_as_VrmlData_Node(
         self_: *const VrmlData_WorldInfo,
@@ -7495,73 +7545,73 @@ unsafe extern "C" {
     /// Wrap VrmlData_WorldInfo in a Handle
     pub fn VrmlData_WorldInfo_to_handle(
         obj: *mut VrmlData_WorldInfo,
-    ) -> crate::OcctResult<*mut HandleVrmlDataWorldInfo>;
+    ) -> crate::OcctResult<*mut Handle_VrmlData_WorldInfo>;
     /// Destroy Handle<VrmlData_WorldInfo>
-    pub fn HandleVrmlDataWorldInfo_destructor(self_: *mut HandleVrmlDataWorldInfo);
+    pub fn Handle_VrmlData_WorldInfo_destructor(self_: *mut Handle_VrmlData_WorldInfo);
     /// Clone Handle<VrmlData_WorldInfo> (increments reference count)
-    pub fn HandleVrmlDataWorldInfo_clone(
-        self_: *const HandleVrmlDataWorldInfo,
-    ) -> crate::OcctResult<*mut HandleVrmlDataWorldInfo>;
+    pub fn Handle_VrmlData_WorldInfo_clone(
+        self_: *const Handle_VrmlData_WorldInfo,
+    ) -> crate::OcctResult<*mut Handle_VrmlData_WorldInfo>;
     /// Check if Handle<VrmlData_WorldInfo> is null
-    pub fn HandleVrmlDataWorldInfo_is_null(self_: *const HandleVrmlDataWorldInfo) -> bool;
+    pub fn Handle_VrmlData_WorldInfo_is_null(self_: *const Handle_VrmlData_WorldInfo) -> bool;
     /// Dereference Handle to get *const VrmlData_WorldInfo
-    pub fn HandleVrmlDataWorldInfo_get(
-        handle: *const HandleVrmlDataWorldInfo,
+    pub fn Handle_VrmlData_WorldInfo_get(
+        handle: *const Handle_VrmlData_WorldInfo,
     ) -> crate::OcctResult<*const VrmlData_WorldInfo>;
     /// Dereference Handle to get *mut VrmlData_WorldInfo
-    pub fn HandleVrmlDataWorldInfo_get_mut(
-        handle: *mut HandleVrmlDataWorldInfo,
+    pub fn Handle_VrmlData_WorldInfo_get_mut(
+        handle: *mut Handle_VrmlData_WorldInfo,
     ) -> crate::OcctResult<*mut VrmlData_WorldInfo>;
     /// Upcast Handle<VrmlData_WorldInfo> to Handle<VrmlData_Node>
-    pub fn HandleVrmlDataWorldInfo_to_HandleVrmlDataNode(
-        self_: *const HandleVrmlDataWorldInfo,
-    ) -> crate::OcctResult<*mut HandleVrmlDataNode>;
+    pub fn Handle_VrmlData_WorldInfo_to_Handle_VrmlData_Node(
+        self_: *const Handle_VrmlData_WorldInfo,
+    ) -> crate::OcctResult<*mut Handle_VrmlData_Node>;
     /// Upcast Handle<VrmlData_WorldInfo> to Handle<Standard_Transient>
-    pub fn HandleVrmlDataWorldInfo_to_HandleStandardTransient(
-        self_: *const HandleVrmlDataWorldInfo,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
-    /// Inherited: **Source:** `VrmlData_Node.hxx`:53 - `VrmlData_Node::Scene()`
+    pub fn Handle_VrmlData_WorldInfo_to_Handle_Standard_Transient(
+        self_: *const Handle_VrmlData_WorldInfo,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
+    /// Inherited: **Source:** `VrmlData_Node.hxx`:54 - `VrmlData_Node::Scene()`
     pub fn VrmlData_WorldInfo_inherited_Scene(
         self_: *const VrmlData_WorldInfo,
     ) -> crate::OcctResult<*const VrmlData_Scene>;
-    /// Inherited: **Source:** `VrmlData_Node.hxx`:71 - `VrmlData_Node::ReadNode()`
+    /// Inherited: **Source:** `VrmlData_Node.hxx`:72 - `VrmlData_Node::ReadNode()`
     pub fn VrmlData_WorldInfo_inherited_ReadNode(
         self_: *mut VrmlData_WorldInfo,
         theBuffer: *mut VrmlData_InBuffer,
-        theNode: *mut HandleVrmlDataNode,
-        Type: *const HandleStandardType,
+        theNode: *mut Handle_VrmlData_Node,
+        Type: *const Handle_Standard_Type,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `VrmlData_Node.hxx`:93 - `VrmlData_Node::WriteClosing()`
+    /// Inherited: **Source:** `VrmlData_Node.hxx`:94 - `VrmlData_Node::WriteClosing()`
     pub fn VrmlData_WorldInfo_inherited_WriteClosing(
         self_: *const VrmlData_WorldInfo,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn VrmlData_WorldInfo_inherited_IsInstance(
         self_: *const VrmlData_WorldInfo,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn VrmlData_WorldInfo_inherited_IsKind(
         self_: *const VrmlData_WorldInfo,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn VrmlData_WorldInfo_inherited_This(
         self_: *const VrmlData_WorldInfo,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn VrmlData_WorldInfo_inherited_GetRefCount(
         self_: *const VrmlData_WorldInfo,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn VrmlData_WorldInfo_inherited_IncrementRefCounter(
         self_: *mut VrmlData_WorldInfo,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn VrmlData_WorldInfo_inherited_DecrementRefCounter(
         self_: *mut VrmlData_WorldInfo,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn VrmlData_WorldInfo_inherited_Delete(
         self_: *const VrmlData_WorldInfo,
     ) -> *const std::ffi::c_char;
@@ -7584,10 +7634,6 @@ unsafe extern "C" {
     ) -> crate::OcctResult<bool>;
 
     // Nested type & typedef type destructors
-    pub fn VrmlData_DataMapOfShapeAppearance_destructor(
-        self_: *mut VrmlData_DataMapOfShapeAppearance,
-    );
     pub fn VrmlData_Group_Iterator_destructor(self_: *mut VrmlData_Group_Iterator);
-    pub fn VrmlData_MapOfNode_Iterator_destructor(self_: *mut VrmlData_MapOfNode_Iterator);
     pub fn VrmlData_Scene_Iterator_destructor(self_: *mut VrmlData_Scene_Iterator);
 }

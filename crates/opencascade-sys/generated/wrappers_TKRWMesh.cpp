@@ -3,21 +3,16 @@
 
 #include "occt_preamble.hxx"
 
-#include <Bnd_Box.hxx>
-#include <Graphic3d_Vec3.hxx>
+#include <BRepGraph_LayerParametric.hxx>
+#include <BVH_Types.hxx>
 #include <Image_Texture.hxx>
-#include <Interface_IndexedMapOfAsciiString.hxx>
 #include <Message_ProgressRange.hxx>
 #include <OSD_FileSystem.hxx>
-#include <Poly_Array1OfTriangle.hxx>
 #include <Poly_ArrayOfNodes.hxx>
 #include <Poly_ArrayOfUVNodes.hxx>
 #include <Poly_Polygon3D.hxx>
+#include <Poly_Triangulation.hxx>
 #include <Quantity_ColorRGBA.hxx>
-#include <RWGltf_CafReader.hxx>
-#include <RWGltf_GltfLatePrimitiveArray.hxx>
-#include <RWGltf_GltfMaterialMap.hxx>
-#include <RWGltf_TriangulationReader.hxx>
 #include <RWMesh.hxx>
 #include <RWMesh_CafReader.hxx>
 #include <RWMesh_CoordinateSystem.hxx>
@@ -36,65 +31,54 @@
 #include <Standard_Handle.hxx>
 #include <Standard_IStream.hxx>
 #include <Standard_Type.hxx>
-#include <Standard_TypeDef.hxx>
-#include <TColStd_Array1OfInteger.hxx>
-#include <TColStd_IndexedDataMapOfStringString.hxx>
 #include <TDocStd_Document.hxx>
-#include <TopLoc_Location.hxx>
 #include <TopoDS_Edge.hxx>
 #include <TopoDS_Face.hxx>
 #include <TopoDS_Vertex.hxx>
 #include <VrmlAPI_CafReader.hxx>
-#include <XCAFPrs_Style.hxx>
 #include <gp_Ax3.hxx>
-#include <gp_Dir.hxx>
-#include <gp_Trsf.hxx>
 
 // Handle type aliases
-typedef opencascade::handle<Image_Texture> HandleImageTexture;
-typedef opencascade::handle<OSD_FileSystem> HandleOSDFileSystem;
-typedef opencascade::handle<Poly_Polygon3D> HandlePolyPolygon3D;
-typedef opencascade::handle<Poly_Triangulation> HandlePolyTriangulation;
-typedef opencascade::handle<RWGltf_CafReader> HandleRWGltfCafReader;
-typedef opencascade::handle<RWGltf_GltfLatePrimitiveArray> HandleRWGltfGltfLatePrimitiveArray;
-typedef opencascade::handle<RWGltf_GltfMaterialMap> HandleRWGltfGltfMaterialMap;
-typedef opencascade::handle<RWGltf_TriangulationReader> HandleRWGltfTriangulationReader;
-typedef opencascade::handle<RWMesh_CafReader> HandleRWMeshCafReader;
-typedef opencascade::handle<RWMesh_MaterialMap> HandleRWMeshMaterialMap;
-typedef opencascade::handle<RWMesh_TriangulationReader> HandleRWMeshTriangulationReader;
-typedef opencascade::handle<RWMesh_TriangulationSource> HandleRWMeshTriangulationSource;
-typedef opencascade::handle<RWObj_CafReader> HandleRWObjCafReader;
-typedef opencascade::handle<RWObj_ObjMaterialMap> HandleRWObjObjMaterialMap;
-typedef opencascade::handle<Standard_Transient> HandleStandardTransient;
-typedef opencascade::handle<Standard_Type> HandleStandardType;
-typedef opencascade::handle<TDocStd_Document> HandleTDocStdDocument;
-typedef opencascade::handle<VrmlAPI_CafReader> HandleVrmlAPICafReader;
+typedef opencascade::handle<Image_Texture> Handle_Image_Texture;
+typedef opencascade::handle<OSD_FileSystem> Handle_OSD_FileSystem;
+typedef opencascade::handle<Poly_Polygon3D> Handle_Poly_Polygon3D;
+typedef opencascade::handle<Poly_Triangulation> Handle_Poly_Triangulation;
+typedef opencascade::handle<RWMesh_CafReader> Handle_RWMesh_CafReader;
+typedef opencascade::handle<RWMesh_MaterialMap> Handle_RWMesh_MaterialMap;
+typedef opencascade::handle<RWMesh_TriangulationReader> Handle_RWMesh_TriangulationReader;
+typedef opencascade::handle<RWMesh_TriangulationSource> Handle_RWMesh_TriangulationSource;
+typedef opencascade::handle<RWObj_CafReader> Handle_RWObj_CafReader;
+typedef opencascade::handle<RWObj_ObjMaterialMap> Handle_RWObj_ObjMaterialMap;
+typedef opencascade::handle<Standard_Transient> Handle_Standard_Transient;
+typedef opencascade::handle<Standard_Type> Handle_Standard_Type;
+typedef opencascade::handle<TDocStd_Document> Handle_TDocStd_Document;
+typedef opencascade::handle<VrmlAPI_CafReader> Handle_VrmlAPI_CafReader;
 
 // Handle type destructors, clone, and is_null functions
-extern "C" void HandleRWMeshCafReader_destructor(HandleRWMeshCafReader* self_) { delete self_; }
-extern "C" OcctResult<HandleRWMeshCafReader*> HandleRWMeshCafReader_clone(const HandleRWMeshCafReader* self_) {
-    try { return {new HandleRWMeshCafReader(*self_), nullptr}; }
+extern "C" void Handle_RWMesh_CafReader_destructor(Handle_RWMesh_CafReader* self_) { delete self_; }
+extern "C" OcctResult<Handle_RWMesh_CafReader*> Handle_RWMesh_CafReader_clone(const Handle_RWMesh_CafReader* self_) {
+    try { return {new Handle_RWMesh_CafReader(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleRWMeshCafReader_is_null(const HandleRWMeshCafReader* self_) { return self_->IsNull(); }
-extern "C" void HandleRWMeshMaterialMap_destructor(HandleRWMeshMaterialMap* self_) { delete self_; }
-extern "C" OcctResult<HandleRWMeshMaterialMap*> HandleRWMeshMaterialMap_clone(const HandleRWMeshMaterialMap* self_) {
-    try { return {new HandleRWMeshMaterialMap(*self_), nullptr}; }
+extern "C" bool Handle_RWMesh_CafReader_is_null(const Handle_RWMesh_CafReader* self_) { return self_->IsNull(); }
+extern "C" void Handle_RWMesh_MaterialMap_destructor(Handle_RWMesh_MaterialMap* self_) { delete self_; }
+extern "C" OcctResult<Handle_RWMesh_MaterialMap*> Handle_RWMesh_MaterialMap_clone(const Handle_RWMesh_MaterialMap* self_) {
+    try { return {new Handle_RWMesh_MaterialMap(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleRWMeshMaterialMap_is_null(const HandleRWMeshMaterialMap* self_) { return self_->IsNull(); }
-extern "C" void HandleRWMeshTriangulationReader_destructor(HandleRWMeshTriangulationReader* self_) { delete self_; }
-extern "C" OcctResult<HandleRWMeshTriangulationReader*> HandleRWMeshTriangulationReader_clone(const HandleRWMeshTriangulationReader* self_) {
-    try { return {new HandleRWMeshTriangulationReader(*self_), nullptr}; }
+extern "C" bool Handle_RWMesh_MaterialMap_is_null(const Handle_RWMesh_MaterialMap* self_) { return self_->IsNull(); }
+extern "C" void Handle_RWMesh_TriangulationReader_destructor(Handle_RWMesh_TriangulationReader* self_) { delete self_; }
+extern "C" OcctResult<Handle_RWMesh_TriangulationReader*> Handle_RWMesh_TriangulationReader_clone(const Handle_RWMesh_TriangulationReader* self_) {
+    try { return {new Handle_RWMesh_TriangulationReader(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleRWMeshTriangulationReader_is_null(const HandleRWMeshTriangulationReader* self_) { return self_->IsNull(); }
-extern "C" void HandleRWMeshTriangulationSource_destructor(HandleRWMeshTriangulationSource* self_) { delete self_; }
-extern "C" OcctResult<HandleRWMeshTriangulationSource*> HandleRWMeshTriangulationSource_clone(const HandleRWMeshTriangulationSource* self_) {
-    try { return {new HandleRWMeshTriangulationSource(*self_), nullptr}; }
+extern "C" bool Handle_RWMesh_TriangulationReader_is_null(const Handle_RWMesh_TriangulationReader* self_) { return self_->IsNull(); }
+extern "C" void Handle_RWMesh_TriangulationSource_destructor(Handle_RWMesh_TriangulationSource* self_) { delete self_; }
+extern "C" OcctResult<Handle_RWMesh_TriangulationSource*> Handle_RWMesh_TriangulationSource_clone(const Handle_RWMesh_TriangulationSource* self_) {
+    try { return {new Handle_RWMesh_TriangulationSource(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleRWMeshTriangulationSource_is_null(const HandleRWMeshTriangulationSource* self_) { return self_->IsNull(); }
+extern "C" bool Handle_RWMesh_TriangulationSource_is_null(const Handle_RWMesh_TriangulationSource* self_) { return self_->IsNull(); }
 
 // ========================
 // RWMesh_CafReader wrappers
@@ -208,11 +192,11 @@ extern "C" OcctResult<int32_t> RWMesh_CafReader_extra_status(const RWMesh_CafRea
     try { return {self_->ExtraStatus(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Interface_IndexedMapOfAsciiString const*> RWMesh_CafReader_external_files(const RWMesh_CafReader* self_) {
+extern "C" OcctResult<NCollection_IndexedMap_TCollection_AsciiString const*> RWMesh_CafReader_external_files(const RWMesh_CafReader* self_) {
     try { return {&(self_->ExternalFiles()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<TColStd_IndexedDataMapOfStringString const*> RWMesh_CafReader_metadata(const RWMesh_CafReader* self_) {
+extern "C" OcctResult<NCollection_IndexedDataMap_TCollection_AsciiString_TCollection_AsciiString const*> RWMesh_CafReader_metadata(const RWMesh_CafReader* self_) {
     try { return {&(self_->Metadata()), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -234,39 +218,31 @@ extern "C" OcctResult<Handle(Standard_Type) const*> RWMesh_CafReader_get_type_de
 }
 extern "C" OcctResult<const Standard_Transient*> RWMesh_CafReader_as_Standard_Transient(const RWMesh_CafReader* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> RWMesh_CafReader_as_Standard_Transient_mut(RWMesh_CafReader* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<const RWMesh_CafReader*> HandleRWMeshCafReader_get(const HandleRWMeshCafReader* handle) {
+extern "C" OcctResult<const RWMesh_CafReader*> Handle_RWMesh_CafReader_get(const Handle_RWMesh_CafReader* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<RWMesh_CafReader*> HandleRWMeshCafReader_get_mut(HandleRWMeshCafReader* handle) {
+extern "C" OcctResult<RWMesh_CafReader*> Handle_RWMesh_CafReader_get_mut(Handle_RWMesh_CafReader* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleRWMeshCafReader_to_HandleStandardTransient(const HandleRWMeshCafReader* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_RWMesh_CafReader_to_Handle_Standard_Transient(const Handle_RWMesh_CafReader* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleRWGltfCafReader*> HandleRWMeshCafReader_downcast_to_HandleRWGltfCafReader(const HandleRWMeshCafReader* self_) {
-    try {
-    opencascade::handle<RWGltf_CafReader> result = opencascade::handle<RWGltf_CafReader>::DownCast(*self_);
-    if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleRWGltfCafReader(result), nullptr};
-    }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<HandleRWObjCafReader*> HandleRWMeshCafReader_downcast_to_HandleRWObjCafReader(const HandleRWMeshCafReader* self_) {
+extern "C" OcctResult<Handle_RWObj_CafReader*> Handle_RWMesh_CafReader_downcast_to_Handle_RWObj_CafReader(const Handle_RWMesh_CafReader* self_) {
     try {
     opencascade::handle<RWObj_CafReader> result = opencascade::handle<RWObj_CafReader>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleRWObjCafReader(result), nullptr};
+    return {new Handle_RWObj_CafReader(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleVrmlAPICafReader*> HandleRWMeshCafReader_downcast_to_HandleVrmlAPICafReader(const HandleRWMeshCafReader* self_) {
+extern "C" OcctResult<Handle_VrmlAPI_CafReader*> Handle_RWMesh_CafReader_downcast_to_Handle_VrmlAPI_CafReader(const Handle_RWMesh_CafReader* self_) {
     try {
     opencascade::handle<VrmlAPI_CafReader> result = opencascade::handle<VrmlAPI_CafReader>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleVrmlAPICafReader(result), nullptr};
+    return {new Handle_VrmlAPI_CafReader(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
@@ -382,7 +358,7 @@ extern "C" const char* RWMesh_CoordinateSystemConverter_transform_position(const
     try { self_->TransformPosition(*thePos); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" const char* RWMesh_CoordinateSystemConverter_transform_normal(const RWMesh_CoordinateSystemConverter* self_, Graphic3d_Vec3* theNorm) {
+extern "C" const char* RWMesh_CoordinateSystemConverter_transform_normal(const RWMesh_CoordinateSystemConverter* self_, BVH_Vec3f* theNorm) {
     try { self_->TransformNormal(*theNorm); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -658,31 +634,23 @@ extern "C" OcctResult<Handle(Standard_Type) const*> RWMesh_MaterialMap_get_type_
 }
 extern "C" OcctResult<const Standard_Transient*> RWMesh_MaterialMap_as_Standard_Transient(const RWMesh_MaterialMap* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> RWMesh_MaterialMap_as_Standard_Transient_mut(RWMesh_MaterialMap* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<const RWMesh_MaterialMap*> HandleRWMeshMaterialMap_get(const HandleRWMeshMaterialMap* handle) {
+extern "C" OcctResult<const RWMesh_MaterialMap*> Handle_RWMesh_MaterialMap_get(const Handle_RWMesh_MaterialMap* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<RWMesh_MaterialMap*> HandleRWMeshMaterialMap_get_mut(HandleRWMeshMaterialMap* handle) {
+extern "C" OcctResult<RWMesh_MaterialMap*> Handle_RWMesh_MaterialMap_get_mut(Handle_RWMesh_MaterialMap* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleRWMeshMaterialMap_to_HandleStandardTransient(const HandleRWMeshMaterialMap* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_RWMesh_MaterialMap_to_Handle_Standard_Transient(const Handle_RWMesh_MaterialMap* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleRWGltfGltfMaterialMap*> HandleRWMeshMaterialMap_downcast_to_HandleRWGltfGltfMaterialMap(const HandleRWMeshMaterialMap* self_) {
-    try {
-    opencascade::handle<RWGltf_GltfMaterialMap> result = opencascade::handle<RWGltf_GltfMaterialMap>::DownCast(*self_);
-    if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleRWGltfGltfMaterialMap(result), nullptr};
-    }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<HandleRWObjObjMaterialMap*> HandleRWMeshMaterialMap_downcast_to_HandleRWObjObjMaterialMap(const HandleRWMeshMaterialMap* self_) {
+extern "C" OcctResult<Handle_RWObj_ObjMaterialMap*> Handle_RWMesh_MaterialMap_downcast_to_Handle_RWObj_ObjMaterialMap(const Handle_RWMesh_MaterialMap* self_) {
     try {
     opencascade::handle<RWObj_ObjMaterialMap> result = opencascade::handle<RWObj_ObjMaterialMap>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleRWObjObjMaterialMap(result), nullptr};
+    return {new Handle_RWObj_ObjMaterialMap(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
@@ -862,24 +830,16 @@ extern "C" OcctResult<Handle(Standard_Type) const*> RWMesh_TriangulationReader_g
 }
 extern "C" OcctResult<const Standard_Transient*> RWMesh_TriangulationReader_as_Standard_Transient(const RWMesh_TriangulationReader* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> RWMesh_TriangulationReader_as_Standard_Transient_mut(RWMesh_TriangulationReader* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<const RWMesh_TriangulationReader*> HandleRWMeshTriangulationReader_get(const HandleRWMeshTriangulationReader* handle) {
+extern "C" OcctResult<const RWMesh_TriangulationReader*> Handle_RWMesh_TriangulationReader_get(const Handle_RWMesh_TriangulationReader* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<RWMesh_TriangulationReader*> HandleRWMeshTriangulationReader_get_mut(HandleRWMeshTriangulationReader* handle) {
+extern "C" OcctResult<RWMesh_TriangulationReader*> Handle_RWMesh_TriangulationReader_get_mut(Handle_RWMesh_TriangulationReader* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleRWMeshTriangulationReader_to_HandleStandardTransient(const HandleRWMeshTriangulationReader* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<HandleRWGltfTriangulationReader*> HandleRWMeshTriangulationReader_downcast_to_HandleRWGltfTriangulationReader(const HandleRWMeshTriangulationReader* self_) {
-    try {
-    opencascade::handle<RWGltf_TriangulationReader> result = opencascade::handle<RWGltf_TriangulationReader>::DownCast(*self_);
-    if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleRWGltfTriangulationReader(result), nullptr};
-    }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_RWMesh_TriangulationReader_to_Handle_Standard_Transient(const Handle_RWMesh_TriangulationReader* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<bool> RWMesh_TriangulationReader_inherited_IsInstance(const RWMesh_TriangulationReader* self, Handle(Standard_Type) const& theType) {
@@ -976,7 +936,7 @@ extern "C" const char* RWMesh_TriangulationSource_set_nb_deferred_triangles(RWMe
     try { self_->SetNbDeferredTriangles(theNbTris); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<TColStd_Array1OfInteger*> RWMesh_TriangulationSource_internal_edges(RWMesh_TriangulationSource* self_) {
+extern "C" OcctResult<NCollection_Array1_int*> RWMesh_TriangulationSource_internal_edges(RWMesh_TriangulationSource* self_) {
     try { return {&(self_->InternalEdges()), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -996,32 +956,24 @@ extern "C" OcctResult<const Poly_Triangulation*> RWMesh_TriangulationSource_as_P
 extern "C" OcctResult<Poly_Triangulation*> RWMesh_TriangulationSource_as_Poly_Triangulation_mut(RWMesh_TriangulationSource* self_) { return {static_cast<Poly_Triangulation*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> RWMesh_TriangulationSource_as_Standard_Transient(const RWMesh_TriangulationSource* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> RWMesh_TriangulationSource_as_Standard_Transient_mut(RWMesh_TriangulationSource* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleRWMeshTriangulationSource*> RWMesh_TriangulationSource_to_handle(RWMesh_TriangulationSource* obj) {
-    try { return {new HandleRWMeshTriangulationSource(obj), nullptr}; }
+extern "C" OcctResult<Handle_RWMesh_TriangulationSource*> RWMesh_TriangulationSource_to_handle(RWMesh_TriangulationSource* obj) {
+    try { return {new Handle_RWMesh_TriangulationSource(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const RWMesh_TriangulationSource*> HandleRWMeshTriangulationSource_get(const HandleRWMeshTriangulationSource* handle) {
+extern "C" OcctResult<const RWMesh_TriangulationSource*> Handle_RWMesh_TriangulationSource_get(const Handle_RWMesh_TriangulationSource* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<RWMesh_TriangulationSource*> HandleRWMeshTriangulationSource_get_mut(HandleRWMeshTriangulationSource* handle) {
+extern "C" OcctResult<RWMesh_TriangulationSource*> Handle_RWMesh_TriangulationSource_get_mut(Handle_RWMesh_TriangulationSource* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandlePolyTriangulation*> HandleRWMeshTriangulationSource_to_HandlePolyTriangulation(const HandleRWMeshTriangulationSource* self_) {
-    try { return {new HandlePolyTriangulation(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Poly_Triangulation*> Handle_RWMesh_TriangulationSource_to_Handle_Poly_Triangulation(const Handle_RWMesh_TriangulationSource* self_) {
+    try { return {new Handle_Poly_Triangulation(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleRWMeshTriangulationSource_to_HandleStandardTransient(const HandleRWMeshTriangulationSource* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
-    OCCT_CATCH_RETURN
-}
-extern "C" OcctResult<HandleRWGltfGltfLatePrimitiveArray*> HandleRWMeshTriangulationSource_downcast_to_HandleRWGltfGltfLatePrimitiveArray(const HandleRWMeshTriangulationSource* self_) {
-    try {
-    opencascade::handle<RWGltf_GltfLatePrimitiveArray> result = opencascade::handle<RWGltf_GltfLatePrimitiveArray>::DownCast(*self_);
-    if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleRWGltfGltfLatePrimitiveArray(result), nullptr};
-    }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_RWMesh_TriangulationSource_to_Handle_Standard_Transient(const Handle_RWMesh_TriangulationSource* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(Poly_Triangulation)*> RWMesh_TriangulationSource_inherited_Copy(const RWMesh_TriangulationSource* self) {
@@ -1084,7 +1036,7 @@ extern "C" OcctResult<gp_Dir*> RWMesh_TriangulationSource_inherited_Normal(const
     try { return {new gp_Dir(self->Normal(theIndex)), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" const char* RWMesh_TriangulationSource_inherited_SetNormal(RWMesh_TriangulationSource* self, int32_t theIndex, gp_Vec3f const& theNormal) {
+extern "C" const char* RWMesh_TriangulationSource_inherited_SetNormal(RWMesh_TriangulationSource* self, int32_t theIndex, BVH_Vec3f const& theNormal) {
     try { self->SetNormal(theIndex, theNormal); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
@@ -1152,23 +1104,23 @@ extern "C" const char* RWMesh_TriangulationSource_inherited_ComputeNormals(RWMes
     try { self->ComputeNormals(); return nullptr; }
     OCCT_CATCH_RETURN_VOID
 }
-extern "C" OcctResult<Handle(TColgp_HArray1OfPnt)*> RWMesh_TriangulationSource_inherited_MapNodeArray(const RWMesh_TriangulationSource* self) {
-    try { return {new Handle(TColgp_HArray1OfPnt)(self->MapNodeArray()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HArray1_gp_Pnt)*> RWMesh_TriangulationSource_inherited_MapNodeArray(const RWMesh_TriangulationSource* self) {
+    try { return {new Handle(NCollection_HArray1_gp_Pnt)(self->MapNodeArray()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(Poly_HArray1OfTriangle)*> RWMesh_TriangulationSource_inherited_MapTriangleArray(const RWMesh_TriangulationSource* self) {
-    try { return {new Handle(Poly_HArray1OfTriangle)(self->MapTriangleArray()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HArray1_Poly_Triangle)*> RWMesh_TriangulationSource_inherited_MapTriangleArray(const RWMesh_TriangulationSource* self) {
+    try { return {new Handle(NCollection_HArray1_Poly_Triangle)(self->MapTriangleArray()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(TColgp_HArray1OfPnt2d)*> RWMesh_TriangulationSource_inherited_MapUVNodeArray(const RWMesh_TriangulationSource* self) {
-    try { return {new Handle(TColgp_HArray1OfPnt2d)(self->MapUVNodeArray()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HArray1_gp_Pnt2d)*> RWMesh_TriangulationSource_inherited_MapUVNodeArray(const RWMesh_TriangulationSource* self) {
+    try { return {new Handle(NCollection_HArray1_gp_Pnt2d)(self->MapUVNodeArray()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Handle(TShort_HArray1OfShortReal)*> RWMesh_TriangulationSource_inherited_MapNormalArray(const RWMesh_TriangulationSource* self) {
-    try { return {new Handle(TShort_HArray1OfShortReal)(self->MapNormalArray()), nullptr}; }
+extern "C" OcctResult<Handle(NCollection_HArray1_float)*> RWMesh_TriangulationSource_inherited_MapNormalArray(const RWMesh_TriangulationSource* self) {
+    try { return {new Handle(NCollection_HArray1_float)(self->MapNormalArray()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<Poly_Array1OfTriangle*> RWMesh_TriangulationSource_inherited_InternalTriangles(RWMesh_TriangulationSource* self) {
+extern "C" OcctResult<NCollection_Array1_Poly_Triangle*> RWMesh_TriangulationSource_inherited_InternalTriangles(RWMesh_TriangulationSource* self) {
     try { return {&(self->InternalTriangles()), nullptr}; }
     OCCT_CATCH_RETURN
 }
@@ -1180,7 +1132,7 @@ extern "C" OcctResult<Poly_ArrayOfUVNodes*> RWMesh_TriangulationSource_inherited
     try { return {&(self->InternalUVNodes()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<NCollection_Array1_gp_Vec3f*> RWMesh_TriangulationSource_inherited_InternalNormals(RWMesh_TriangulationSource* self) {
+extern "C" OcctResult<NCollection_Array1_NCollection_Vec3_float*> RWMesh_TriangulationSource_inherited_InternalNormals(RWMesh_TriangulationSource* self) {
     try { return {&(self->InternalNormals()), nullptr}; }
     OCCT_CATCH_RETURN
 }

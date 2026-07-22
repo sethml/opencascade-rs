@@ -331,12 +331,23 @@ fn main() -> Result<()> {
                 } else {
                     base.to_string()
                 };
+                // The `NCollection_H*` templates (HArray1, HArray2, HSequence) publicly
+                // inherit Standard_Transient, so their instantiations are handle-able.
+                // Registering them as handles lets `Handle(NCollection_HArray1<T>)`
+                // parameters/returns resolve instead of being skipped as "unknown Handle
+                // type" — the dominant category of skipped symbols. Header completeness is
+                // already satisfied (the opaque destructor these types get requires the
+                // same completeness as the handle machinery).
+                let is_handle_collection = matches!(
+                    base,
+                    "NCollection_HArray1" | "NCollection_HArray2" | "NCollection_HSequence"
+                );
                 template_instantiations.insert(
                     spelling.clone(),
                     config::TemplateInstantiation {
                         header,
                         module,
-                        handle: false,
+                        handle: is_handle_collection,
                     },
                 );
                 auto_count += 1;
@@ -458,8 +469,22 @@ fn main() -> Result<()> {
     let all_enums: Vec<_> = all_enums.iter().collect();
     let all_functions: Vec<_> = parsed.iter().flat_map(|h| &h.functions).collect();
 
-    // Get collection type names (needed for symbol resolution filtering)
-    let all_collections = codegen::collections::all_known_collections();
+    // Discover collection instantiations automatically from the canonical
+    // `NCollection_*<...>` template spellings referenced in method signatures,
+    // gated on element bindability against the set of parsed classes. This keeps
+    // collection FFI type names aligned with what signatures resolve to (OCCT 8.0
+    // uses the canonical names directly rather than the deprecated aliases).
+    let class_header_of: HashMap<String, String> =
+        all_classes.iter().map(|c| (c.name.clone(), c.source_header.clone())).collect();
+    // The template instantiation keys are the canonical `NCollection_*<...>` spellings
+    // (explicit + auto-inferred) captured *before* they are rewritten to mangled names,
+    // so they are the right source for collection discovery.
+    let collection_spellings: HashSet<String> =
+        template_instantiations.keys().cloned().collect();
+    let all_collections = codegen::collections::discover_collections(
+        &collection_spellings,
+        |name| class_header_of.get(name).cloned(),
+    );
     let collection_type_names: HashSet<String> =
         all_collections.iter().map(|c| c.typedef_name.clone()).collect();
 
@@ -610,10 +635,17 @@ fn collect_template_class_types(parsed: &[model::ParsedHeader]) -> HashSet<Strin
     for header in parsed {
         model::for_each_type_in_header(header, &mut |ty| {
             ty.visit_inner(&mut |inner| {
-                if let model::Type::Class(name) = inner {
-                    if name.contains('<') {
-                        templates.insert(name.clone());
+                // Collect template spellings appearing as a plain class *or* inside a
+                // Handle (e.g. `Handle(NCollection_HArray1<gp_Pnt>)`). The latter is how
+                // most handle-able collection instantiations show up in the API, and
+                // missing them was the reason those methods were skipped.
+                match inner {
+                    model::Type::Class(name) | model::Type::Handle(name) => {
+                        if name.contains('<') {
+                            templates.insert(name.clone());
+                        }
                     }
+                    _ => {}
                 }
             });
         });
@@ -977,26 +1009,49 @@ fn generate_output(
     }
     let all_headers_list: Vec<String> = all_headers.into_iter().collect();
 
-    // Get all collections
-    let all_collections = codegen::collections::all_known_collections();
+    // Auto-discover collection instantiations from the canonical NCollection template
+    // spellings (same logic as the earlier pass in main()). The template instantiation
+    // keys hold the pre-rewrite `NCollection_*<...>` spellings.
+    let class_header_of: HashMap<String, String> =
+        all_classes.iter().map(|c| (c.name.clone(), c.source_header.clone())).collect();
+    let collection_spellings: std::collections::HashSet<String> =
+        template_instantiations.keys().cloned().collect();
+    let all_collections = codegen::collections::discover_collections(
+        &collection_spellings,
+        |name| class_header_of.get(name).cloned(),
+    );
 
     // Compute ClassBindings once for ALL classes — shared by all three generators
     let collection_type_names: std::collections::HashSet<String> =
         all_collections.iter().map(|c| c.typedef_name.clone()).collect();
     let mut extra_typedef_names = parser::get_collected_typedef_names();
-    // Add template instantiation alias names so they get destructor generation
+    // Add template instantiation alias names so they get destructor generation — but
+    // NOT ones that are also generated as collections (e.g. NCollection_HArray1<gp_Pnt>,
+    // which is both a handle-able template instantiation and a collection). For those,
+    // the collection generator owns the base struct + destructor, so adding them here
+    // too would emit a duplicate destructor.
     for (spelling, _) in template_instantiations {
-        extra_typedef_names.insert(config::template_alias_name(spelling));
+        let alias = config::template_alias_name(spelling);
+        if !collection_type_names.contains(&alias) {
+            extra_typedef_names.insert(alias);
+        }
     }
     let mut all_bindings =
         codegen::bindings::compute_all_class_bindings(all_classes, symbol_table, &collection_type_names, &extra_typedef_names, exclude_methods, ambiguous_methods, manual_type_names, &handle_able_classes);
 
     // Mark non-allocatable classes as having protected destructors so both the
     // C++ wrappers (which check has_protected_destructor) and the Rust FFI side
-    // skip constructors, destructors, CppDeletable, and ToOwned.
+    // skip constructors, destructors, CppDeletable, and ToOwned. Also disable
+    // to_handle, which takes ownership of a raw pointer (via OwnedPtr) and thus
+    // requires CppDeletable that these classes no longer get.
     for b in &mut all_bindings {
         if non_allocatable_classes.contains(&b.cpp_name) {
             b.has_protected_destructor = true;
+            b.has_to_handle = false;
+            b.constructors.clear();
+            b.direct_methods.clear();
+            b.wrapper_methods.clear();
+            b.static_methods.clear();
         }
     }
 
@@ -1345,8 +1400,8 @@ fn generate_output(
     let mut extra_types_by_module: HashMap<String, Vec<(String, String)>> = HashMap::new();
     for (ffi_name, module_prefix) in &all_ffi_types {
         // Compute short name based on type category
-        let short_name = if ffi_name.starts_with("Handle") && !ffi_name.contains('_') {
-            // Handle types like "HandleGeomEvaluatorCurve" — keep as-is (no short alias)
+        let short_name = if ffi_name.starts_with("Handle_") {
+            // Handle types like "Handle_Geom_EvaluatorCurve" — keep as-is (no short alias)
             ffi_name.clone()
         } else if ffi_name.ends_with("Iterator") && !ffi_name.contains('_') {
             // Collection iterator types like "ListOfShapeIterator" — keep as-is

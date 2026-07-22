@@ -13,7 +13,7 @@ use glam::{dvec3, DVec3};
 use opencascade_sys::{
     b_rep, b_rep_algo_api, b_rep_builder_api, b_rep_feat, b_rep_fillet_api, b_rep_g_prop,
     b_rep_offset_api, b_rep_prim_api, b_rep_tools, extrema, g_prop, geom_api, gp, message,
-    top_abs, top_exp, top_tools, topo_ds,
+    n_collection, top_abs, top_exp, topo_ds,
 };
 
 pub struct Face {
@@ -139,8 +139,12 @@ impl Face {
         // Use IndexedMapOfShape to deduplicate vertices. TopExp_Explorer visits
         // each vertex once per adjacent edge, so adding a fillet at the same
         // vertex twice causes StdFail_NotDone.
-        let mut shape_map = top_tools::IndexedMapOfShape::new();
-        top_exp::map_shapes_shape_shapeenum_indexedmapofshape(face_shape, top_abs::ShapeEnum::Vertex, &mut shape_map);
+        let mut shape_map = n_collection::IndexedMap_TopoDS_Shape_TopTools_ShapeMapHasher::new();
+        top_exp::map_shapes_shape_shapeenum_imap_shape(
+            face_shape,
+            top_abs::ShapeEnum::Vertex,
+            &mut shape_map,
+        );
 
         for i in 1..=shape_map.size() {
             let vertex = topo_ds::vertex(shape_map.find_key(i));

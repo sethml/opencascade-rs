@@ -29,114 +29,122 @@ unsafe impl crate::CppDeletable for MakeArcOfCircle {
 }
 
 impl MakeArcOfCircle {
-    /// **Source:** `GC_MakeArcOfCircle.hxx`:46 - `GC_MakeArcOfCircle::GC_MakeArcOfCircle()`
-    /// Make an arc of circle (TrimmedCurve from Geom) from
-    /// a circle between two angles Alpha1 and Alpha2
-    /// given in radiians.
+    /// **Source:** `GC_MakeArcOfCircle.hxx`:48 - `GC_MakeArcOfCircle::GC_MakeArcOfCircle()`
+    /// Creates an arc of circle from angular bounds.
+    /// @param[in] theCirc source circle
+    /// @param[in] theAlpha1 first angle (radians)
+    /// @param[in] theAlpha2 second angle (radians)
+    /// @param[in] theSense orientation of resulting arc
     pub fn new_circ_real2_bool(
-        Circ: &crate::gp::Circ,
-        Alpha1: f64,
-        Alpha2: f64,
-        Sense: bool,
+        theCirc: &crate::gp::Circ,
+        theAlpha1: f64,
+        theAlpha2: f64,
+        theSense: bool,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKGeomBase::GC_MakeArcOfCircle_ctor_circ_real2_bool(
-                    Circ, Alpha1, Alpha2, Sense,
+                    theCirc, theAlpha1, theAlpha2, theSense,
                 ),
             ))
         }
     }
 
-    /// **Source:** `GC_MakeArcOfCircle.hxx`:54 - `GC_MakeArcOfCircle::GC_MakeArcOfCircle()`
-    /// Make an arc of circle (TrimmedCurve from Geom) from
-    /// a circle between point <P> and the angle Alpha
-    /// given in radians.
+    /// **Source:** `GC_MakeArcOfCircle.hxx`:58 - `GC_MakeArcOfCircle::GC_MakeArcOfCircle()`
+    /// Creates an arc of circle from a point and an angular bound.
+    /// @param[in] theCirc source circle
+    /// @param[in] theP point on circle
+    /// @param[in] theAlpha target angle (radians)
+    /// @param[in] theSense orientation of resulting arc
     pub fn new_circ_pnt_real_bool(
-        Circ: &crate::gp::Circ,
-        P: &crate::gp::Pnt,
-        Alpha: f64,
-        Sense: bool,
+        theCirc: &crate::gp::Circ,
+        theP: &crate::gp::Pnt,
+        theAlpha: f64,
+        theSense: bool,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKGeomBase::GC_MakeArcOfCircle_ctor_circ_pnt_real_bool(
-                    Circ, P, Alpha, Sense,
-                ),
-            ))
-        }
-    }
-
-    /// **Source:** `GC_MakeArcOfCircle.hxx`:61 - `GC_MakeArcOfCircle::GC_MakeArcOfCircle()`
-    /// Make an arc of circle (TrimmedCurve from Geom) from
-    /// a circle between two points P1 and P2.
-    pub fn new_circ_pnt2_bool(
-        Circ: &crate::gp::Circ,
-        P1: &crate::gp::Pnt,
-        P2: &crate::gp::Pnt,
-        Sense: bool,
-    ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKGeomBase::GC_MakeArcOfCircle_ctor_circ_pnt2_bool(
-                    Circ, P1, P2, Sense,
+                    theCirc, theP, theAlpha, theSense,
                 ),
             ))
         }
     }
 
     /// **Source:** `GC_MakeArcOfCircle.hxx`:68 - `GC_MakeArcOfCircle::GC_MakeArcOfCircle()`
-    /// Make an arc of circle (TrimmedCurve from Geom) from
-    /// three points P1,P2,P3 between two points P1 and P2.
+    /// Creates an arc of circle from two points on the circle.
+    /// @param[in] theCirc source circle
+    /// @param[in] theP1 first point on circle
+    /// @param[in] theP2 second point on circle
+    /// @param[in] theSense orientation of resulting arc
+    pub fn new_circ_pnt2_bool(
+        theCirc: &crate::gp::Circ,
+        theP1: &crate::gp::Pnt,
+        theP2: &crate::gp::Pnt,
+        theSense: bool,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomBase::GC_MakeArcOfCircle_ctor_circ_pnt2_bool(
+                    theCirc, theP1, theP2, theSense,
+                ),
+            ))
+        }
+    }
+
+    /// **Source:** `GC_MakeArcOfCircle.hxx`:77 - `GC_MakeArcOfCircle::GC_MakeArcOfCircle()`
+    /// Creates an arc of circle passing through three points.
+    /// @param[in] theP1 first point
+    /// @param[in] theP2 second point
+    /// @param[in] theP3 third point
     pub fn new_pnt3(
-        P1: &crate::gp::Pnt,
-        P2: &crate::gp::Pnt,
-        P3: &crate::gp::Pnt,
+        theP1: &crate::gp::Pnt,
+        theP2: &crate::gp::Pnt,
+        theP3: &crate::gp::Pnt,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKGeomBase::GC_MakeArcOfCircle_ctor_pnt3(P1, P2, P3),
+                crate::ffi_extern_TKGeomBase::GC_MakeArcOfCircle_ctor_pnt3(theP1, theP2, theP3),
             ))
         }
     }
 
-    /// **Source:** `GC_MakeArcOfCircle.hxx`:90 - `GC_MakeArcOfCircle::GC_MakeArcOfCircle()`
-    /// Make an arc of circle (TrimmedCurve from Geom) from
-    /// two points P1,P2 and the tangente to the solution at
-    /// the point P1.
+    /// **Source:** `GC_MakeArcOfCircle.hxx`:95 - `GC_MakeArcOfCircle::GC_MakeArcOfCircle()`
+    /// Creates an arc of circle from two points and a tangent at the first point.
+    /// @param[in] theP1 start point
+    /// @param[in] theV tangent vector at start point
+    /// @param[in] theP2 end point
+    /// @note The tangent direction is given by the input vector.
     /// The orientation of the arc is:
-    /// -   the sense determined by the order of the points P1, P3 and P2;
-    /// -   the sense defined by the vector V; or
-    /// -   for other syntaxes:
-    /// -   the sense of Circ if Sense is true, or
-    /// -   the opposite sense if Sense is false.
-    /// Note: Alpha1, Alpha2 and Alpha are angle values, given in radians.
-    /// Warning
-    /// If an error occurs (that is, when IsDone returns
-    /// false), the Status function returns:
-    /// -   gce_ConfusedPoints if:
-    /// -   any 2 of the 3 points P1, P2 and P3 are coincident, or
-    /// -   P1 and P2 are coincident; or
-    /// -   gce_IntersectionError if:
-    /// -   P1, P2 and P3 are collinear and not coincident, or
-    /// -   the vector defined by the points P1 and
-    /// P2 is collinear with the vector V.
+    /// -   the sense determined by the order of the three input points;
+    /// -   the sense defined by the input vector; or
+    /// -   for the other constructors:
+    /// -   the sense of the source circle if the orientation flag is true, or
+    /// -   the opposite sense if `theSense` is false.
+    /// @note Angles are expressed in radians.
+    /// @note Construction fails with `gce_ConfusedPoints` if `theP1` and `theP2`
+    /// are coincident.
+    /// @note Construction fails with `gce_IntersectionError` if the supporting
+    /// lines used to define circle center do not intersect.
     pub fn new_pnt_vec_pnt(
-        P1: &crate::gp::Pnt,
-        V: &crate::gp::Vec,
-        P2: &crate::gp::Pnt,
+        theP1: &crate::gp::Pnt,
+        theV: &crate::gp::Vec,
+        theP2: &crate::gp::Pnt,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKGeomBase::GC_MakeArcOfCircle_ctor_pnt_vec_pnt(P1, V, P2),
+                crate::ffi_extern_TKGeomBase::GC_MakeArcOfCircle_ctor_pnt_vec_pnt(
+                    theP1, theV, theP2,
+                ),
             ))
         }
     }
 
-    /// **Source:** `GC_MakeArcOfCircle.hxx`:94 - `GC_MakeArcOfCircle::Value()`
+    /// **Source:** `GC_MakeArcOfCircle.hxx`:100 - `GC_MakeArcOfCircle::Value()`
     /// Returns the constructed arc of circle.
     /// Exceptions StdFail_NotDone if no arc of circle is constructed.
-    pub fn value(&self) -> &crate::ffi_types::HandleGeomTrimmedCurve {
+    /// @return resulting arc
+    pub fn value(&self) -> &crate::ffi_types::Handle_Geom_TrimmedCurve {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKGeomBase::GC_MakeArcOfCircle_value(
                 self as *const Self,
@@ -169,10 +177,238 @@ impl MakeArcOfCircle {
         })
     }
 
-    /// Inherited: **Source:** `GC_Root.hxx`:44 - `GC_Root::Status()`
+    /// Inherited: **Source:** `GC_Root.hxx`:41 - `GC_Root::IsError()`
+    pub fn is_error(&self) -> bool {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKGeomBase::GC_MakeArcOfCircle_inherited_IsError(self as *const Self)
+        })
+    }
+
+    /// Inherited: **Source:** `GC_Root.hxx`:47 - `GC_Root::Status()`
     pub fn status(&self) -> crate::gce::ErrorType {
         crate::gce::ErrorType::try_from(crate::check_result(unsafe {
             crate::ffi_extern_TKGeomBase::GC_MakeArcOfCircle_inherited_Status(self as *const Self)
+        }))
+        .unwrap()
+    }
+}
+
+// ========================
+// From GC_MakeArcOfCircle2d.hxx
+// ========================
+
+/// **Source:** `GC_MakeArcOfCircle2d.hxx`:38 - `GC_MakeArcOfCircle2d`
+/// This class implements construction algorithms for arcs of circles in the plane.
+/// The result is a `Geom2d_TrimmedCurve`.
+/// A `GC_MakeArcOfCircle2d` object provides a framework for:
+/// - defining the construction parameters;
+/// - running the construction algorithm;
+/// - querying the construction status and the resulting arc via `Value()`.
+/// @note Angular parameters are expressed in radians.
+pub use crate::ffi_types::GC_MakeArcOfCircle2d as MakeArcOfCircle2d;
+
+unsafe impl crate::CppDeletable for MakeArcOfCircle2d {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            crate::ffi_extern_TKGeomBase::GC_MakeArcOfCircle2d_destructor(ptr);
+        }
+    }
+}
+
+impl MakeArcOfCircle2d {
+    /// **Source:** `GC_MakeArcOfCircle2d.hxx`:48 - `GC_MakeArcOfCircle2d::GC_MakeArcOfCircle2d()`
+    /// Constructs an arc from angular bounds on a circle.
+    /// @param[in] theCircle source circle
+    /// @param[in] theAlpha1 first angle (radians)
+    /// @param[in] theAlpha2 second angle (radians)
+    /// @param[in] theSense orientation of resulting arc
+    pub fn new_circ2d_real2_bool(
+        theCircle: &crate::gp::Circ2d,
+        theAlpha1: f64,
+        theAlpha2: f64,
+        theSense: bool,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomBase::GC_MakeArcOfCircle2d_ctor_circ2d_real2_bool(
+                    theCircle, theAlpha1, theAlpha2, theSense,
+                ),
+            ))
+        }
+    }
+
+    /// **Source:** `GC_MakeArcOfCircle2d.hxx`:58 - `GC_MakeArcOfCircle2d::GC_MakeArcOfCircle2d()`
+    /// Constructs an arc from a point and angular bound on a circle.
+    /// @param[in] theCircle source circle
+    /// @param[in] thePoint point on source circle
+    /// @param[in] theAlpha angle value (radians)
+    /// @param[in] theSense orientation of resulting arc
+    pub fn new_circ2d_pnt2d_real_bool(
+        theCircle: &crate::gp::Circ2d,
+        thePoint: &crate::gp::Pnt2d,
+        theAlpha: f64,
+        theSense: bool,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomBase::GC_MakeArcOfCircle2d_ctor_circ2d_pnt2d_real_bool(
+                    theCircle, thePoint, theAlpha, theSense,
+                ),
+            ))
+        }
+    }
+
+    /// **Source:** `GC_MakeArcOfCircle2d.hxx`:68 - `GC_MakeArcOfCircle2d::GC_MakeArcOfCircle2d()`
+    /// Constructs an arc between two points on a circle.
+    /// @param[in] theCircle source circle
+    /// @param[in] theP1 first point on source circle
+    /// @param[in] theP2 second point on source circle
+    /// @param[in] theSense orientation of resulting arc
+    pub fn new_circ2d_pnt2d2_bool(
+        theCircle: &crate::gp::Circ2d,
+        theP1: &crate::gp::Pnt2d,
+        theP2: &crate::gp::Pnt2d,
+        theSense: bool,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomBase::GC_MakeArcOfCircle2d_ctor_circ2d_pnt2d2_bool(
+                    theCircle, theP1, theP2, theSense,
+                ),
+            ))
+        }
+    }
+
+    /// **Source:** `GC_MakeArcOfCircle2d.hxx`:77 - `GC_MakeArcOfCircle2d::GC_MakeArcOfCircle2d()`
+    /// Constructs an arc passing through three points.
+    /// @param[in] theP1 first point
+    /// @param[in] theP2 intermediate point
+    /// @param[in] theP3 last point
+    pub fn new_pnt2d3(
+        theP1: &crate::gp::Pnt2d,
+        theP2: &crate::gp::Pnt2d,
+        theP3: &crate::gp::Pnt2d,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomBase::GC_MakeArcOfCircle2d_ctor_pnt2d3(theP1, theP2, theP3),
+            ))
+        }
+    }
+
+    /// **Source:** `GC_MakeArcOfCircle2d.hxx`:85 - `GC_MakeArcOfCircle2d::GC_MakeArcOfCircle2d()`
+    /// Constructs an arc from two points and tangent vector at start point.
+    /// @param[in] theP1 start point
+    /// @param[in] theV tangent vector at start point
+    /// @param[in] theP2 end point
+    pub fn new_pnt2d_vec2d_pnt2d(
+        theP1: &crate::gp::Pnt2d,
+        theV: &crate::gp::Vec2d,
+        theP2: &crate::gp::Pnt2d,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomBase::GC_MakeArcOfCircle2d_ctor_pnt2d_vec2d_pnt2d(
+                    theP1, theV, theP2,
+                ),
+            ))
+        }
+    }
+
+    /// **Source:** `GC_MakeArcOfCircle2d.hxx`:48 - `GC_MakeArcOfCircle2d::GC_MakeArcOfCircle2d()`
+    /// Constructs an arc from angular bounds on a circle.
+    /// @param[in] theCircle source circle
+    /// @param[in] theAlpha1 first angle (radians)
+    /// @param[in] theAlpha2 second angle (radians)
+    /// @param[in] theSense orientation of resulting arc
+    pub fn new_circ2d_real2(
+        theCircle: &crate::gp::Circ2d,
+        theAlpha1: f64,
+        theAlpha2: f64,
+    ) -> crate::OwnedPtr<Self> {
+        Self::new_circ2d_real2_bool(theCircle, theAlpha1, theAlpha2, true)
+    }
+
+    /// **Source:** `GC_MakeArcOfCircle2d.hxx`:58 - `GC_MakeArcOfCircle2d::GC_MakeArcOfCircle2d()`
+    /// Constructs an arc from a point and angular bound on a circle.
+    /// @param[in] theCircle source circle
+    /// @param[in] thePoint point on source circle
+    /// @param[in] theAlpha angle value (radians)
+    /// @param[in] theSense orientation of resulting arc
+    pub fn new_circ2d_pnt2d_real(
+        theCircle: &crate::gp::Circ2d,
+        thePoint: &crate::gp::Pnt2d,
+        theAlpha: f64,
+    ) -> crate::OwnedPtr<Self> {
+        Self::new_circ2d_pnt2d_real_bool(theCircle, thePoint, theAlpha, true)
+    }
+
+    /// **Source:** `GC_MakeArcOfCircle2d.hxx`:68 - `GC_MakeArcOfCircle2d::GC_MakeArcOfCircle2d()`
+    /// Constructs an arc between two points on a circle.
+    /// @param[in] theCircle source circle
+    /// @param[in] theP1 first point on source circle
+    /// @param[in] theP2 second point on source circle
+    /// @param[in] theSense orientation of resulting arc
+    pub fn new_circ2d_pnt2d2(
+        theCircle: &crate::gp::Circ2d,
+        theP1: &crate::gp::Pnt2d,
+        theP2: &crate::gp::Pnt2d,
+    ) -> crate::OwnedPtr<Self> {
+        Self::new_circ2d_pnt2d2_bool(theCircle, theP1, theP2, true)
+    }
+
+    /// **Source:** `GC_MakeArcOfCircle2d.hxx`:92 - `GC_MakeArcOfCircle2d::Value()`
+    /// Returns the constructed arc of circle.
+    /// Exceptions StdFail_NotDone if no arc of circle is constructed.
+    /// @return resulting trimmed curve
+    pub fn value(&self) -> &crate::ffi_types::Handle_Geom2d_TrimmedCurve {
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKGeomBase::GC_MakeArcOfCircle2d_value(
+                self as *const Self,
+            )))
+        }
+    }
+
+    /// Upcast to GC_Root
+    pub fn as_root(&self) -> &Root {
+        unsafe {
+            &*crate::check_result(crate::ffi_extern_TKGeomBase::GC_MakeArcOfCircle2d_as_GC_Root(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast to GC_Root (mutable)
+    pub fn as_root_mut(&mut self) -> &mut Root {
+        unsafe {
+            &mut *crate::check_result(
+                crate::ffi_extern_TKGeomBase::GC_MakeArcOfCircle2d_as_GC_Root_mut(
+                    self as *mut Self,
+                ),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `GC_Root.hxx`:38 - `GC_Root::IsDone()`
+    pub fn is_done(&self) -> bool {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKGeomBase::GC_MakeArcOfCircle2d_inherited_IsDone(self as *const Self)
+        })
+    }
+
+    /// Inherited: **Source:** `GC_Root.hxx`:41 - `GC_Root::IsError()`
+    pub fn is_error(&self) -> bool {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKGeomBase::GC_MakeArcOfCircle2d_inherited_IsError(
+                self as *const Self,
+            )
+        })
+    }
+
+    /// Inherited: **Source:** `GC_Root.hxx`:47 - `GC_Root::Status()`
+    pub fn status(&self) -> crate::gce::ErrorType {
+        crate::gce::ErrorType::try_from(crate::check_result(unsafe {
+            crate::ffi_extern_TKGeomBase::GC_MakeArcOfCircle2d_inherited_Status(self as *const Self)
         }))
         .unwrap()
     }
@@ -183,8 +419,8 @@ impl MakeArcOfCircle {
 // ========================
 
 /// **Source:** `GC_MakeArcOfEllipse.hxx`:37 - `GC_MakeArcOfEllipse`
-/// Implements construction algorithms for an arc
-/// of ellipse in 3D space. The result is a Geom_TrimmedCurve curve.
+/// Implements construction algorithms for ellipse arcs in 3D space.
+/// The result is a `Geom_TrimmedCurve`.
 /// A MakeArcOfEllipse object provides a framework for:
 /// -   defining the construction of the arc of ellipse,
 /// -   implementing the construction algorithm, and
@@ -201,70 +437,78 @@ unsafe impl crate::CppDeletable for MakeArcOfEllipse {
 }
 
 impl MakeArcOfEllipse {
-    /// **Source:** `GC_MakeArcOfEllipse.hxx`:44 - `GC_MakeArcOfEllipse::GC_MakeArcOfEllipse()`
-    /// Constructs an arc of Ellipse (TrimmedCurve from Geom) from
-    /// a Ellipse between two parameters Alpha1 and Alpha2.
+    /// **Source:** `GC_MakeArcOfEllipse.hxx`:47 - `GC_MakeArcOfEllipse::GC_MakeArcOfEllipse()`
+    /// Constructs an arc from angular bounds on an ellipse.
+    /// @param[in] theElips source ellipse
+    /// @param[in] theAlpha1 first angle (radians)
+    /// @param[in] theAlpha2 second angle (radians)
+    /// @param[in] theSense orientation of resulting arc
     pub fn new_elips_real2_bool(
-        Elips: &crate::gp::Elips,
-        Alpha1: f64,
-        Alpha2: f64,
-        Sense: bool,
+        theElips: &crate::gp::Elips,
+        theAlpha1: f64,
+        theAlpha2: f64,
+        theSense: bool,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKGeomBase::GC_MakeArcOfEllipse_ctor_elips_real2_bool(
-                    Elips, Alpha1, Alpha2, Sense,
+                    theElips, theAlpha1, theAlpha2, theSense,
                 ),
             ))
         }
     }
 
-    /// **Source:** `GC_MakeArcOfEllipse.hxx`:52 - `GC_MakeArcOfEllipse::GC_MakeArcOfEllipse()`
-    /// Constructs an arc of Ellipse (TrimmedCurve from Geom) from
-    /// a Ellipse between point <P> and the angle Alpha
-    /// given in radians.
+    /// **Source:** `GC_MakeArcOfEllipse.hxx`:57 - `GC_MakeArcOfEllipse::GC_MakeArcOfEllipse()`
+    /// Constructs an arc from a point and angle on an ellipse.
+    /// @param[in] theElips source ellipse
+    /// @param[in] theP point on ellipse
+    /// @param[in] theAlpha target angle (radians)
+    /// @param[in] theSense orientation of resulting arc
     pub fn new_elips_pnt_real_bool(
-        Elips: &crate::gp::Elips,
-        P: &crate::gp::Pnt,
-        Alpha: f64,
-        Sense: bool,
+        theElips: &crate::gp::Elips,
+        theP: &crate::gp::Pnt,
+        theAlpha: f64,
+        theSense: bool,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKGeomBase::GC_MakeArcOfEllipse_ctor_elips_pnt_real_bool(
-                    Elips, P, Alpha, Sense,
+                    theElips, theP, theAlpha, theSense,
                 ),
             ))
         }
     }
 
-    /// **Source:** `GC_MakeArcOfEllipse.hxx`:65 - `GC_MakeArcOfEllipse::GC_MakeArcOfEllipse()`
-    /// Constructs an arc of Ellipse (TrimmedCurve from Geom) from
-    /// a Ellipse between two points P1 and P2.
-    /// The orientation of the arc of ellipse is:
-    /// -   the sense of Elips if Sense is true, or
-    /// -   the opposite sense if Sense is false.
-    /// Notes:
-    /// -   Alpha1, Alpha2 and Alpha are angle values, given in radians.
-    /// -   IsDone always returns true.
+    /// **Source:** `GC_MakeArcOfEllipse.hxx`:72 - `GC_MakeArcOfEllipse::GC_MakeArcOfEllipse()`
+    /// Constructs an arc between two points on an ellipse.
+    /// @param[in] theElips source ellipse
+    /// @param[in] theP1 first point
+    /// @param[in] theP2 second point
+    /// @param[in] theSense orientation of resulting arc
+    /// @note The orientation of the arc of ellipse is:
+    /// -   the orientation of ellipse if `theSense` is true, or
+    /// -   the opposite orientation if `theSense` is false.
+    /// @note Alpha1, Alpha2 and Alpha are angle values, given in radians.
+    /// @note IsDone always returns true.
     pub fn new_elips_pnt2_bool(
-        Elips: &crate::gp::Elips,
-        P1: &crate::gp::Pnt,
-        P2: &crate::gp::Pnt,
-        Sense: bool,
+        theElips: &crate::gp::Elips,
+        theP1: &crate::gp::Pnt,
+        theP2: &crate::gp::Pnt,
+        theSense: bool,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKGeomBase::GC_MakeArcOfEllipse_ctor_elips_pnt2_bool(
-                    Elips, P1, P2, Sense,
+                    theElips, theP1, theP2, theSense,
                 ),
             ))
         }
     }
 
-    /// **Source:** `GC_MakeArcOfEllipse.hxx`:71 - `GC_MakeArcOfEllipse::Value()`
+    /// **Source:** `GC_MakeArcOfEllipse.hxx`:79 - `GC_MakeArcOfEllipse::Value()`
     /// Returns the constructed arc of ellipse.
-    pub fn value(&self) -> &crate::ffi_types::HandleGeomTrimmedCurve {
+    /// @return resulting arc
+    pub fn value(&self) -> &crate::ffi_types::Handle_Geom_TrimmedCurve {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKGeomBase::GC_MakeArcOfEllipse_value(
                 self as *const Self,
@@ -297,10 +541,211 @@ impl MakeArcOfEllipse {
         })
     }
 
-    /// Inherited: **Source:** `GC_Root.hxx`:44 - `GC_Root::Status()`
+    /// Inherited: **Source:** `GC_Root.hxx`:41 - `GC_Root::IsError()`
+    pub fn is_error(&self) -> bool {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKGeomBase::GC_MakeArcOfEllipse_inherited_IsError(self as *const Self)
+        })
+    }
+
+    /// Inherited: **Source:** `GC_Root.hxx`:47 - `GC_Root::Status()`
     pub fn status(&self) -> crate::gce::ErrorType {
         crate::gce::ErrorType::try_from(crate::check_result(unsafe {
             crate::ffi_extern_TKGeomBase::GC_MakeArcOfEllipse_inherited_Status(self as *const Self)
+        }))
+        .unwrap()
+    }
+}
+
+// ========================
+// From GC_MakeArcOfEllipse2d.hxx
+// ========================
+
+/// **Source:** `GC_MakeArcOfEllipse2d.hxx`:37 - `GC_MakeArcOfEllipse2d`
+/// This class implements construction algorithms for arcs of ellipses in the plane.
+/// The result is a `Geom2d_TrimmedCurve`.
+/// A `GC_MakeArcOfEllipse2d` object provides a framework for:
+/// - defining the construction parameters;
+/// - running the construction algorithm;
+/// - querying the construction status and the resulting arc via `Value()`.
+/// @note Angular parameters are expressed in radians.
+pub use crate::ffi_types::GC_MakeArcOfEllipse2d as MakeArcOfEllipse2d;
+
+unsafe impl crate::CppDeletable for MakeArcOfEllipse2d {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            crate::ffi_extern_TKGeomBase::GC_MakeArcOfEllipse2d_destructor(ptr);
+        }
+    }
+}
+
+impl MakeArcOfEllipse2d {
+    /// **Source:** `GC_MakeArcOfEllipse2d.hxx`:47 - `GC_MakeArcOfEllipse2d::GC_MakeArcOfEllipse2d()`
+    /// Constructs an arc from angular bounds on an ellipse.
+    /// @param[in] theEllipse source ellipse
+    /// @param[in] theAlpha1 first angle (radians)
+    /// @param[in] theAlpha2 second angle (radians)
+    /// @param[in] theSense orientation of resulting arc
+    pub fn new_elips2d_real2_bool(
+        theEllipse: &crate::gp::Elips2d,
+        theAlpha1: f64,
+        theAlpha2: f64,
+        theSense: bool,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomBase::GC_MakeArcOfEllipse2d_ctor_elips2d_real2_bool(
+                    theEllipse, theAlpha1, theAlpha2, theSense,
+                ),
+            ))
+        }
+    }
+
+    /// **Source:** `GC_MakeArcOfEllipse2d.hxx`:57 - `GC_MakeArcOfEllipse2d::GC_MakeArcOfEllipse2d()`
+    /// Constructs an arc from a point and angular bound on an ellipse.
+    /// @param[in] theEllipse source ellipse
+    /// @param[in] thePoint point on source ellipse
+    /// @param[in] theAlpha angle value (radians)
+    /// @param[in] theSense orientation of resulting arc
+    pub fn new_elips2d_pnt2d_real_bool(
+        theEllipse: &crate::gp::Elips2d,
+        thePoint: &crate::gp::Pnt2d,
+        theAlpha: f64,
+        theSense: bool,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomBase::GC_MakeArcOfEllipse2d_ctor_elips2d_pnt2d_real_bool(
+                    theEllipse, thePoint, theAlpha, theSense,
+                ),
+            ))
+        }
+    }
+
+    /// **Source:** `GC_MakeArcOfEllipse2d.hxx`:70 - `GC_MakeArcOfEllipse2d::GC_MakeArcOfEllipse2d()`
+    /// Constructs an arc between two points on an ellipse.
+    /// @param[in] theEllipse source ellipse
+    /// @param[in] theP1 first point on source ellipse
+    /// @param[in] theP2 second point on source ellipse
+    /// @param[in] theSense orientation of resulting arc
+    /// @note Orientation is trigonometric when `theSense` is true,
+    /// otherwise opposite.
+    /// @note IsDone always returns true.
+    pub fn new_elips2d_pnt2d2_bool(
+        theEllipse: &crate::gp::Elips2d,
+        theP1: &crate::gp::Pnt2d,
+        theP2: &crate::gp::Pnt2d,
+        theSense: bool,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomBase::GC_MakeArcOfEllipse2d_ctor_elips2d_pnt2d2_bool(
+                    theEllipse, theP1, theP2, theSense,
+                ),
+            ))
+        }
+    }
+
+    /// **Source:** `GC_MakeArcOfEllipse2d.hxx`:47 - `GC_MakeArcOfEllipse2d::GC_MakeArcOfEllipse2d()`
+    /// Constructs an arc from angular bounds on an ellipse.
+    /// @param[in] theEllipse source ellipse
+    /// @param[in] theAlpha1 first angle (radians)
+    /// @param[in] theAlpha2 second angle (radians)
+    /// @param[in] theSense orientation of resulting arc
+    pub fn new_elips2d_real2(
+        theEllipse: &crate::gp::Elips2d,
+        theAlpha1: f64,
+        theAlpha2: f64,
+    ) -> crate::OwnedPtr<Self> {
+        Self::new_elips2d_real2_bool(theEllipse, theAlpha1, theAlpha2, true)
+    }
+
+    /// **Source:** `GC_MakeArcOfEllipse2d.hxx`:57 - `GC_MakeArcOfEllipse2d::GC_MakeArcOfEllipse2d()`
+    /// Constructs an arc from a point and angular bound on an ellipse.
+    /// @param[in] theEllipse source ellipse
+    /// @param[in] thePoint point on source ellipse
+    /// @param[in] theAlpha angle value (radians)
+    /// @param[in] theSense orientation of resulting arc
+    pub fn new_elips2d_pnt2d_real(
+        theEllipse: &crate::gp::Elips2d,
+        thePoint: &crate::gp::Pnt2d,
+        theAlpha: f64,
+    ) -> crate::OwnedPtr<Self> {
+        Self::new_elips2d_pnt2d_real_bool(theEllipse, thePoint, theAlpha, true)
+    }
+
+    /// **Source:** `GC_MakeArcOfEllipse2d.hxx`:70 - `GC_MakeArcOfEllipse2d::GC_MakeArcOfEllipse2d()`
+    /// Constructs an arc between two points on an ellipse.
+    /// @param[in] theEllipse source ellipse
+    /// @param[in] theP1 first point on source ellipse
+    /// @param[in] theP2 second point on source ellipse
+    /// @param[in] theSense orientation of resulting arc
+    /// @note Orientation is trigonometric when `theSense` is true,
+    /// otherwise opposite.
+    /// @note IsDone always returns true.
+    pub fn new_elips2d_pnt2d2(
+        theEllipse: &crate::gp::Elips2d,
+        theP1: &crate::gp::Pnt2d,
+        theP2: &crate::gp::Pnt2d,
+    ) -> crate::OwnedPtr<Self> {
+        Self::new_elips2d_pnt2d2_bool(theEllipse, theP1, theP2, true)
+    }
+
+    /// **Source:** `GC_MakeArcOfEllipse2d.hxx`:77 - `GC_MakeArcOfEllipse2d::Value()`
+    /// Returns the constructed arc of ellipse.
+    /// @return resulting trimmed curve
+    pub fn value(&self) -> &crate::ffi_types::Handle_Geom2d_TrimmedCurve {
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKGeomBase::GC_MakeArcOfEllipse2d_value(
+                self as *const Self,
+            )))
+        }
+    }
+
+    /// Upcast to GC_Root
+    pub fn as_root(&self) -> &Root {
+        unsafe {
+            &*crate::check_result(crate::ffi_extern_TKGeomBase::GC_MakeArcOfEllipse2d_as_GC_Root(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast to GC_Root (mutable)
+    pub fn as_root_mut(&mut self) -> &mut Root {
+        unsafe {
+            &mut *crate::check_result(
+                crate::ffi_extern_TKGeomBase::GC_MakeArcOfEllipse2d_as_GC_Root_mut(
+                    self as *mut Self,
+                ),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `GC_Root.hxx`:38 - `GC_Root::IsDone()`
+    pub fn is_done(&self) -> bool {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKGeomBase::GC_MakeArcOfEllipse2d_inherited_IsDone(
+                self as *const Self,
+            )
+        })
+    }
+
+    /// Inherited: **Source:** `GC_Root.hxx`:41 - `GC_Root::IsError()`
+    pub fn is_error(&self) -> bool {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKGeomBase::GC_MakeArcOfEllipse2d_inherited_IsError(
+                self as *const Self,
+            )
+        })
+    }
+
+    /// Inherited: **Source:** `GC_Root.hxx`:47 - `GC_Root::Status()`
+    pub fn status(&self) -> crate::gce::ErrorType {
+        crate::gce::ErrorType::try_from(crate::check_result(unsafe {
+            crate::ffi_extern_TKGeomBase::GC_MakeArcOfEllipse2d_inherited_Status(
+                self as *const Self,
+            )
         }))
         .unwrap()
     }
@@ -311,8 +756,8 @@ impl MakeArcOfEllipse {
 // ========================
 
 /// **Source:** `GC_MakeArcOfHyperbola.hxx`:37 - `GC_MakeArcOfHyperbola`
-/// Implements construction algorithms for an arc
-/// of hyperbola in 3D space. The result is a Geom_TrimmedCurve curve.
+/// Implements construction algorithms for hyperbola arcs in 3D space.
+/// The result is a `Geom_TrimmedCurve`.
 /// A MakeArcOfHyperbola object provides a framework for:
 /// -   defining the construction of the arc of hyperbola,
 /// -   implementing the construction algorithm, and
@@ -329,68 +774,76 @@ unsafe impl crate::CppDeletable for MakeArcOfHyperbola {
 }
 
 impl MakeArcOfHyperbola {
-    /// **Source:** `GC_MakeArcOfHyperbola.hxx`:45 - `GC_MakeArcOfHyperbola::GC_MakeArcOfHyperbola()`
-    /// Creates an arc of Hyperbola (TrimmedCurve from Geom) from
-    /// a Hyperbola between two parameters Alpha1 and Alpha2
-    /// (given in radians).
+    /// **Source:** `GC_MakeArcOfHyperbola.hxx`:47 - `GC_MakeArcOfHyperbola::GC_MakeArcOfHyperbola()`
+    /// Constructs an arc from angular bounds on a hyperbola.
+    /// @param[in] theHypr source hyperbola
+    /// @param[in] theAlpha1 first angle (radians)
+    /// @param[in] theAlpha2 second angle (radians)
+    /// @param[in] theSense orientation of resulting arc
     pub fn new_hypr_real2_bool(
-        Hypr: &crate::gp::Hypr,
-        Alpha1: f64,
-        Alpha2: f64,
-        Sense: bool,
+        theHypr: &crate::gp::Hypr,
+        theAlpha1: f64,
+        theAlpha2: f64,
+        theSense: bool,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKGeomBase::GC_MakeArcOfHyperbola_ctor_hypr_real2_bool(
-                    Hypr, Alpha1, Alpha2, Sense,
+                    theHypr, theAlpha1, theAlpha2, theSense,
                 ),
             ))
         }
     }
 
-    /// **Source:** `GC_MakeArcOfHyperbola.hxx`:53 - `GC_MakeArcOfHyperbola::GC_MakeArcOfHyperbola()`
-    /// Creates an arc of Hyperbola (TrimmedCurve from Geom) from
-    /// a Hyperbola between point <P> and the parameter
-    /// Alpha (given in radians).
+    /// **Source:** `GC_MakeArcOfHyperbola.hxx`:57 - `GC_MakeArcOfHyperbola::GC_MakeArcOfHyperbola()`
+    /// Constructs an arc from a point and angle on a hyperbola.
+    /// @param[in] theHypr source hyperbola
+    /// @param[in] theP point on hyperbola
+    /// @param[in] theAlpha target angle (radians)
+    /// @param[in] theSense orientation of resulting arc
     pub fn new_hypr_pnt_real_bool(
-        Hypr: &crate::gp::Hypr,
-        P: &crate::gp::Pnt,
-        Alpha: f64,
-        Sense: bool,
+        theHypr: &crate::gp::Hypr,
+        theP: &crate::gp::Pnt,
+        theAlpha: f64,
+        theSense: bool,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKGeomBase::GC_MakeArcOfHyperbola_ctor_hypr_pnt_real_bool(
-                    Hypr, P, Alpha, Sense,
+                    theHypr, theP, theAlpha, theSense,
                 ),
             ))
         }
     }
 
-    /// **Source:** `GC_MakeArcOfHyperbola.hxx`:63 - `GC_MakeArcOfHyperbola::GC_MakeArcOfHyperbola()`
-    /// Creates an arc of Hyperbola (TrimmedCurve from Geom) from
-    /// a Hyperbola between two points P1 and P2.
-    /// The orientation of the arc of hyperbola is:
-    /// -   the sense of Hypr if Sense is true, or
-    /// -   the opposite sense if Sense is false.
+    /// **Source:** `GC_MakeArcOfHyperbola.hxx`:70 - `GC_MakeArcOfHyperbola::GC_MakeArcOfHyperbola()`
+    /// Constructs an arc between two points on a hyperbola.
+    /// @param[in] theHypr source hyperbola
+    /// @param[in] theP1 first point
+    /// @param[in] theP2 second point
+    /// @param[in] theSense orientation of resulting arc
+    /// @note The orientation of the arc of hyperbola is:
+    /// -   the orientation of hyperbola if `theSense` is true, or
+    /// -   the opposite orientation if `theSense` is false.
     pub fn new_hypr_pnt2_bool(
-        Hypr: &crate::gp::Hypr,
-        P1: &crate::gp::Pnt,
-        P2: &crate::gp::Pnt,
-        Sense: bool,
+        theHypr: &crate::gp::Hypr,
+        theP1: &crate::gp::Pnt,
+        theP2: &crate::gp::Pnt,
+        theSense: bool,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKGeomBase::GC_MakeArcOfHyperbola_ctor_hypr_pnt2_bool(
-                    Hypr, P1, P2, Sense,
+                    theHypr, theP1, theP2, theSense,
                 ),
             ))
         }
     }
 
-    /// **Source:** `GC_MakeArcOfHyperbola.hxx`:69 - `GC_MakeArcOfHyperbola::Value()`
+    /// **Source:** `GC_MakeArcOfHyperbola.hxx`:77 - `GC_MakeArcOfHyperbola::Value()`
     /// Returns the constructed arc of hyperbola.
-    pub fn value(&self) -> &crate::ffi_types::HandleGeomTrimmedCurve {
+    /// @return resulting arc
+    pub fn value(&self) -> &crate::ffi_types::Handle_Geom_TrimmedCurve {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKGeomBase::GC_MakeArcOfHyperbola_value(
                 self as *const Self,
@@ -427,10 +880,222 @@ impl MakeArcOfHyperbola {
         })
     }
 
-    /// Inherited: **Source:** `GC_Root.hxx`:44 - `GC_Root::Status()`
+    /// Inherited: **Source:** `GC_Root.hxx`:41 - `GC_Root::IsError()`
+    pub fn is_error(&self) -> bool {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKGeomBase::GC_MakeArcOfHyperbola_inherited_IsError(
+                self as *const Self,
+            )
+        })
+    }
+
+    /// Inherited: **Source:** `GC_Root.hxx`:47 - `GC_Root::Status()`
     pub fn status(&self) -> crate::gce::ErrorType {
         crate::gce::ErrorType::try_from(crate::check_result(unsafe {
             crate::ffi_extern_TKGeomBase::GC_MakeArcOfHyperbola_inherited_Status(
+                self as *const Self,
+            )
+        }))
+        .unwrap()
+    }
+}
+
+// ========================
+// From GC_MakeArcOfHyperbola2d.hxx
+// ========================
+
+/// **Source:** `GC_MakeArcOfHyperbola2d.hxx`:37 - `GC_MakeArcOfHyperbola2d`
+/// This class implements construction algorithms for arcs of hyperbolas in the plane.
+/// The result is a `Geom2d_TrimmedCurve`.
+/// A `GC_MakeArcOfHyperbola2d` object provides a framework for:
+/// - defining the construction parameters;
+/// - running the construction algorithm;
+/// - querying the construction status and the resulting arc via `Value()`.
+/// @note Angular parameters are expressed in radians.
+pub use crate::ffi_types::GC_MakeArcOfHyperbola2d as MakeArcOfHyperbola2d;
+
+unsafe impl crate::CppDeletable for MakeArcOfHyperbola2d {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            crate::ffi_extern_TKGeomBase::GC_MakeArcOfHyperbola2d_destructor(ptr);
+        }
+    }
+}
+
+impl MakeArcOfHyperbola2d {
+    /// **Source:** `GC_MakeArcOfHyperbola2d.hxx`:47 - `GC_MakeArcOfHyperbola2d::GC_MakeArcOfHyperbola2d()`
+    /// Constructs an arc from angular bounds on a hyperbola.
+    /// @param[in] theHyperbola source hyperbola
+    /// @param[in] theAlpha1 first angle (radians)
+    /// @param[in] theAlpha2 second angle (radians)
+    /// @param[in] theSense orientation of resulting arc
+    pub fn new_hypr2d_real2_bool(
+        theHyperbola: &crate::gp::Hypr2d,
+        theAlpha1: f64,
+        theAlpha2: f64,
+        theSense: bool,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomBase::GC_MakeArcOfHyperbola2d_ctor_hypr2d_real2_bool(
+                    theHyperbola,
+                    theAlpha1,
+                    theAlpha2,
+                    theSense,
+                ),
+            ))
+        }
+    }
+
+    /// **Source:** `GC_MakeArcOfHyperbola2d.hxx`:57 - `GC_MakeArcOfHyperbola2d::GC_MakeArcOfHyperbola2d()`
+    /// Constructs an arc from a point and angular bound on a hyperbola.
+    /// @param[in] theHyperbola source hyperbola
+    /// @param[in] thePoint point on source hyperbola
+    /// @param[in] theAlpha angle value (radians)
+    /// @param[in] theSense orientation of resulting arc
+    pub fn new_hypr2d_pnt2d_real_bool(
+        theHyperbola: &crate::gp::Hypr2d,
+        thePoint: &crate::gp::Pnt2d,
+        theAlpha: f64,
+        theSense: bool,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomBase::GC_MakeArcOfHyperbola2d_ctor_hypr2d_pnt2d_real_bool(
+                    theHyperbola,
+                    thePoint,
+                    theAlpha,
+                    theSense,
+                ),
+            ))
+        }
+    }
+
+    /// **Source:** `GC_MakeArcOfHyperbola2d.hxx`:70 - `GC_MakeArcOfHyperbola2d::GC_MakeArcOfHyperbola2d()`
+    /// Constructs an arc between two points on a hyperbola.
+    /// @param[in] theHyperbola source hyperbola
+    /// @param[in] theP1 first point on source hyperbola
+    /// @param[in] theP2 second point on source hyperbola
+    /// @param[in] theSense orientation of resulting arc
+    /// @note Orientation is trigonometric when `theSense` is true,
+    /// otherwise opposite.
+    /// @note IsDone always returns true.
+    pub fn new_hypr2d_pnt2d2_bool(
+        theHyperbola: &crate::gp::Hypr2d,
+        theP1: &crate::gp::Pnt2d,
+        theP2: &crate::gp::Pnt2d,
+        theSense: bool,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomBase::GC_MakeArcOfHyperbola2d_ctor_hypr2d_pnt2d2_bool(
+                    theHyperbola,
+                    theP1,
+                    theP2,
+                    theSense,
+                ),
+            ))
+        }
+    }
+
+    /// **Source:** `GC_MakeArcOfHyperbola2d.hxx`:47 - `GC_MakeArcOfHyperbola2d::GC_MakeArcOfHyperbola2d()`
+    /// Constructs an arc from angular bounds on a hyperbola.
+    /// @param[in] theHyperbola source hyperbola
+    /// @param[in] theAlpha1 first angle (radians)
+    /// @param[in] theAlpha2 second angle (radians)
+    /// @param[in] theSense orientation of resulting arc
+    pub fn new_hypr2d_real2(
+        theHyperbola: &crate::gp::Hypr2d,
+        theAlpha1: f64,
+        theAlpha2: f64,
+    ) -> crate::OwnedPtr<Self> {
+        Self::new_hypr2d_real2_bool(theHyperbola, theAlpha1, theAlpha2, true)
+    }
+
+    /// **Source:** `GC_MakeArcOfHyperbola2d.hxx`:57 - `GC_MakeArcOfHyperbola2d::GC_MakeArcOfHyperbola2d()`
+    /// Constructs an arc from a point and angular bound on a hyperbola.
+    /// @param[in] theHyperbola source hyperbola
+    /// @param[in] thePoint point on source hyperbola
+    /// @param[in] theAlpha angle value (radians)
+    /// @param[in] theSense orientation of resulting arc
+    pub fn new_hypr2d_pnt2d_real(
+        theHyperbola: &crate::gp::Hypr2d,
+        thePoint: &crate::gp::Pnt2d,
+        theAlpha: f64,
+    ) -> crate::OwnedPtr<Self> {
+        Self::new_hypr2d_pnt2d_real_bool(theHyperbola, thePoint, theAlpha, true)
+    }
+
+    /// **Source:** `GC_MakeArcOfHyperbola2d.hxx`:70 - `GC_MakeArcOfHyperbola2d::GC_MakeArcOfHyperbola2d()`
+    /// Constructs an arc between two points on a hyperbola.
+    /// @param[in] theHyperbola source hyperbola
+    /// @param[in] theP1 first point on source hyperbola
+    /// @param[in] theP2 second point on source hyperbola
+    /// @param[in] theSense orientation of resulting arc
+    /// @note Orientation is trigonometric when `theSense` is true,
+    /// otherwise opposite.
+    /// @note IsDone always returns true.
+    pub fn new_hypr2d_pnt2d2(
+        theHyperbola: &crate::gp::Hypr2d,
+        theP1: &crate::gp::Pnt2d,
+        theP2: &crate::gp::Pnt2d,
+    ) -> crate::OwnedPtr<Self> {
+        Self::new_hypr2d_pnt2d2_bool(theHyperbola, theP1, theP2, true)
+    }
+
+    /// **Source:** `GC_MakeArcOfHyperbola2d.hxx`:77 - `GC_MakeArcOfHyperbola2d::Value()`
+    /// Returns the constructed arc of hyperbola.
+    /// @return resulting trimmed curve
+    pub fn value(&self) -> &crate::ffi_types::Handle_Geom2d_TrimmedCurve {
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKGeomBase::GC_MakeArcOfHyperbola2d_value(
+                self as *const Self,
+            )))
+        }
+    }
+
+    /// Upcast to GC_Root
+    pub fn as_root(&self) -> &Root {
+        unsafe {
+            &*crate::check_result(crate::ffi_extern_TKGeomBase::GC_MakeArcOfHyperbola2d_as_GC_Root(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast to GC_Root (mutable)
+    pub fn as_root_mut(&mut self) -> &mut Root {
+        unsafe {
+            &mut *crate::check_result(
+                crate::ffi_extern_TKGeomBase::GC_MakeArcOfHyperbola2d_as_GC_Root_mut(
+                    self as *mut Self,
+                ),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `GC_Root.hxx`:38 - `GC_Root::IsDone()`
+    pub fn is_done(&self) -> bool {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKGeomBase::GC_MakeArcOfHyperbola2d_inherited_IsDone(
+                self as *const Self,
+            )
+        })
+    }
+
+    /// Inherited: **Source:** `GC_Root.hxx`:41 - `GC_Root::IsError()`
+    pub fn is_error(&self) -> bool {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKGeomBase::GC_MakeArcOfHyperbola2d_inherited_IsError(
+                self as *const Self,
+            )
+        })
+    }
+
+    /// Inherited: **Source:** `GC_Root.hxx`:47 - `GC_Root::Status()`
+    pub fn status(&self) -> crate::gce::ErrorType {
+        crate::gce::ErrorType::try_from(crate::check_result(unsafe {
+            crate::ffi_extern_TKGeomBase::GC_MakeArcOfHyperbola2d_inherited_Status(
                 self as *const Self,
             )
         }))
@@ -443,8 +1108,8 @@ impl MakeArcOfHyperbola {
 // ========================
 
 /// **Source:** `GC_MakeArcOfParabola.hxx`:37 - `GC_MakeArcOfParabola`
-/// Implements construction algorithms for an arc
-/// of parabola in 3D space. The result is a Geom_TrimmedCurve curve.
+/// Implements construction algorithms for parabola arcs in 3D space.
+/// The result is a `Geom_TrimmedCurve`.
 /// A MakeArcOfParabola object provides a framework for:
 /// -   defining the construction of the arc of parabola,
 /// -   implementing the construction algorithm, and
@@ -461,65 +1126,73 @@ unsafe impl crate::CppDeletable for MakeArcOfParabola {
 }
 
 impl MakeArcOfParabola {
-    /// **Source:** `GC_MakeArcOfParabola.hxx`:45 - `GC_MakeArcOfParabola::GC_MakeArcOfParabola()`
-    /// Creates an arc of Parabola (TrimmedCurve from Geom) from
-    /// a Parabola between two parameters Alpha1 and Alpha2
-    /// (given in radians).
+    /// **Source:** `GC_MakeArcOfParabola.hxx`:47 - `GC_MakeArcOfParabola::GC_MakeArcOfParabola()`
+    /// Constructs an arc from angular bounds on a parabola.
+    /// @param[in] theParab source parabola
+    /// @param[in] theAlpha1 first angle (radians)
+    /// @param[in] theAlpha2 second angle (radians)
+    /// @param[in] theSense orientation of resulting arc
     pub fn new_parab_real2_bool(
-        Parab: &crate::gp::Parab,
-        Alpha1: f64,
-        Alpha2: f64,
-        Sense: bool,
+        theParab: &crate::gp::Parab,
+        theAlpha1: f64,
+        theAlpha2: f64,
+        theSense: bool,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKGeomBase::GC_MakeArcOfParabola_ctor_parab_real2_bool(
-                    Parab, Alpha1, Alpha2, Sense,
+                    theParab, theAlpha1, theAlpha2, theSense,
                 ),
             ))
         }
     }
 
-    /// **Source:** `GC_MakeArcOfParabola.hxx`:53 - `GC_MakeArcOfParabola::GC_MakeArcOfParabola()`
-    /// Creates an arc of Parabola (TrimmedCurve from Geom) from
-    /// a Parabola between point <P> and the parameter
-    /// Alpha (given in radians).
+    /// **Source:** `GC_MakeArcOfParabola.hxx`:57 - `GC_MakeArcOfParabola::GC_MakeArcOfParabola()`
+    /// Constructs an arc from a point and angle on a parabola.
+    /// @param[in] theParab source parabola
+    /// @param[in] theP point on parabola
+    /// @param[in] theAlpha target angle (radians)
+    /// @param[in] theSense orientation of resulting arc
     pub fn new_parab_pnt_real_bool(
-        Parab: &crate::gp::Parab,
-        P: &crate::gp::Pnt,
-        Alpha: f64,
-        Sense: bool,
+        theParab: &crate::gp::Parab,
+        theP: &crate::gp::Pnt,
+        theAlpha: f64,
+        theSense: bool,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKGeomBase::GC_MakeArcOfParabola_ctor_parab_pnt_real_bool(
-                    Parab, P, Alpha, Sense,
+                    theParab, theP, theAlpha, theSense,
                 ),
             ))
         }
     }
 
-    /// **Source:** `GC_MakeArcOfParabola.hxx`:60 - `GC_MakeArcOfParabola::GC_MakeArcOfParabola()`
-    /// Creates an arc of Parabola (TrimmedCurve from Geom) from
-    /// a Parabola between two points P1 and P2.
+    /// **Source:** `GC_MakeArcOfParabola.hxx`:67 - `GC_MakeArcOfParabola::GC_MakeArcOfParabola()`
+    /// Constructs an arc between two points on a parabola.
+    /// @param[in] theParab source parabola
+    /// @param[in] theP1 first point
+    /// @param[in] theP2 second point
+    /// @param[in] theSense orientation of resulting arc
     pub fn new_parab_pnt2_bool(
-        Parab: &crate::gp::Parab,
-        P1: &crate::gp::Pnt,
-        P2: &crate::gp::Pnt,
-        Sense: bool,
+        theParab: &crate::gp::Parab,
+        theP1: &crate::gp::Pnt,
+        theP2: &crate::gp::Pnt,
+        theSense: bool,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKGeomBase::GC_MakeArcOfParabola_ctor_parab_pnt2_bool(
-                    Parab, P1, P2, Sense,
+                    theParab, theP1, theP2, theSense,
                 ),
             ))
         }
     }
 
-    /// **Source:** `GC_MakeArcOfParabola.hxx`:66 - `GC_MakeArcOfParabola::Value()`
+    /// **Source:** `GC_MakeArcOfParabola.hxx`:74 - `GC_MakeArcOfParabola::Value()`
     /// Returns the constructed arc of parabola.
-    pub fn value(&self) -> &crate::ffi_types::HandleGeomTrimmedCurve {
+    /// @return resulting arc
+    pub fn value(&self) -> &crate::ffi_types::Handle_Geom_TrimmedCurve {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKGeomBase::GC_MakeArcOfParabola_value(
                 self as *const Self,
@@ -554,7 +1227,16 @@ impl MakeArcOfParabola {
         })
     }
 
-    /// Inherited: **Source:** `GC_Root.hxx`:44 - `GC_Root::Status()`
+    /// Inherited: **Source:** `GC_Root.hxx`:41 - `GC_Root::IsError()`
+    pub fn is_error(&self) -> bool {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKGeomBase::GC_MakeArcOfParabola_inherited_IsError(
+                self as *const Self,
+            )
+        })
+    }
+
+    /// Inherited: **Source:** `GC_Root.hxx`:47 - `GC_Root::Status()`
     pub fn status(&self) -> crate::gce::ErrorType {
         crate::gce::ErrorType::try_from(crate::check_result(unsafe {
             crate::ffi_extern_TKGeomBase::GC_MakeArcOfParabola_inherited_Status(self as *const Self)
@@ -564,22 +1246,224 @@ impl MakeArcOfParabola {
 }
 
 // ========================
+// From GC_MakeArcOfParabola2d.hxx
+// ========================
+
+/// **Source:** `GC_MakeArcOfParabola2d.hxx`:37 - `GC_MakeArcOfParabola2d`
+/// This class implements construction algorithms for arcs of parabolas in the plane.
+/// The result is a `Geom2d_TrimmedCurve`.
+/// A `GC_MakeArcOfParabola2d` object provides a framework for:
+/// - defining the construction parameters;
+/// - running the construction algorithm;
+/// - querying the construction status and the resulting arc via `Value()`.
+/// @note Angular parameters are expressed in radians.
+pub use crate::ffi_types::GC_MakeArcOfParabola2d as MakeArcOfParabola2d;
+
+unsafe impl crate::CppDeletable for MakeArcOfParabola2d {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            crate::ffi_extern_TKGeomBase::GC_MakeArcOfParabola2d_destructor(ptr);
+        }
+    }
+}
+
+impl MakeArcOfParabola2d {
+    /// **Source:** `GC_MakeArcOfParabola2d.hxx`:47 - `GC_MakeArcOfParabola2d::GC_MakeArcOfParabola2d()`
+    /// Constructs an arc from angular bounds on a parabola.
+    /// @param[in] theParabola source parabola
+    /// @param[in] theAlpha1 first angle (radians)
+    /// @param[in] theAlpha2 second angle (radians)
+    /// @param[in] theSense orientation of resulting arc
+    pub fn new_parab2d_real2_bool(
+        theParabola: &crate::gp::Parab2d,
+        theAlpha1: f64,
+        theAlpha2: f64,
+        theSense: bool,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomBase::GC_MakeArcOfParabola2d_ctor_parab2d_real2_bool(
+                    theParabola,
+                    theAlpha1,
+                    theAlpha2,
+                    theSense,
+                ),
+            ))
+        }
+    }
+
+    /// **Source:** `GC_MakeArcOfParabola2d.hxx`:57 - `GC_MakeArcOfParabola2d::GC_MakeArcOfParabola2d()`
+    /// Constructs an arc from a point and angular bound on a parabola.
+    /// @param[in] theParabola source parabola
+    /// @param[in] thePoint point on source parabola
+    /// @param[in] theAlpha angle value (radians)
+    /// @param[in] theSense orientation of resulting arc
+    pub fn new_parab2d_pnt2d_real_bool(
+        theParabola: &crate::gp::Parab2d,
+        thePoint: &crate::gp::Pnt2d,
+        theAlpha: f64,
+        theSense: bool,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomBase::GC_MakeArcOfParabola2d_ctor_parab2d_pnt2d_real_bool(
+                    theParabola,
+                    thePoint,
+                    theAlpha,
+                    theSense,
+                ),
+            ))
+        }
+    }
+
+    /// **Source:** `GC_MakeArcOfParabola2d.hxx`:70 - `GC_MakeArcOfParabola2d::GC_MakeArcOfParabola2d()`
+    /// Constructs an arc between two points on a parabola.
+    /// @param[in] theParabola source parabola
+    /// @param[in] theP1 first point on source parabola
+    /// @param[in] theP2 second point on source parabola
+    /// @param[in] theSense orientation of resulting arc
+    /// @note Orientation is trigonometric when `theSense` is true,
+    /// otherwise opposite.
+    /// @note IsDone always returns true.
+    pub fn new_parab2d_pnt2d2_bool(
+        theParabola: &crate::gp::Parab2d,
+        theP1: &crate::gp::Pnt2d,
+        theP2: &crate::gp::Pnt2d,
+        theSense: bool,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomBase::GC_MakeArcOfParabola2d_ctor_parab2d_pnt2d2_bool(
+                    theParabola,
+                    theP1,
+                    theP2,
+                    theSense,
+                ),
+            ))
+        }
+    }
+
+    /// **Source:** `GC_MakeArcOfParabola2d.hxx`:47 - `GC_MakeArcOfParabola2d::GC_MakeArcOfParabola2d()`
+    /// Constructs an arc from angular bounds on a parabola.
+    /// @param[in] theParabola source parabola
+    /// @param[in] theAlpha1 first angle (radians)
+    /// @param[in] theAlpha2 second angle (radians)
+    /// @param[in] theSense orientation of resulting arc
+    pub fn new_parab2d_real2(
+        theParabola: &crate::gp::Parab2d,
+        theAlpha1: f64,
+        theAlpha2: f64,
+    ) -> crate::OwnedPtr<Self> {
+        Self::new_parab2d_real2_bool(theParabola, theAlpha1, theAlpha2, true)
+    }
+
+    /// **Source:** `GC_MakeArcOfParabola2d.hxx`:57 - `GC_MakeArcOfParabola2d::GC_MakeArcOfParabola2d()`
+    /// Constructs an arc from a point and angular bound on a parabola.
+    /// @param[in] theParabola source parabola
+    /// @param[in] thePoint point on source parabola
+    /// @param[in] theAlpha angle value (radians)
+    /// @param[in] theSense orientation of resulting arc
+    pub fn new_parab2d_pnt2d_real(
+        theParabola: &crate::gp::Parab2d,
+        thePoint: &crate::gp::Pnt2d,
+        theAlpha: f64,
+    ) -> crate::OwnedPtr<Self> {
+        Self::new_parab2d_pnt2d_real_bool(theParabola, thePoint, theAlpha, true)
+    }
+
+    /// **Source:** `GC_MakeArcOfParabola2d.hxx`:70 - `GC_MakeArcOfParabola2d::GC_MakeArcOfParabola2d()`
+    /// Constructs an arc between two points on a parabola.
+    /// @param[in] theParabola source parabola
+    /// @param[in] theP1 first point on source parabola
+    /// @param[in] theP2 second point on source parabola
+    /// @param[in] theSense orientation of resulting arc
+    /// @note Orientation is trigonometric when `theSense` is true,
+    /// otherwise opposite.
+    /// @note IsDone always returns true.
+    pub fn new_parab2d_pnt2d2(
+        theParabola: &crate::gp::Parab2d,
+        theP1: &crate::gp::Pnt2d,
+        theP2: &crate::gp::Pnt2d,
+    ) -> crate::OwnedPtr<Self> {
+        Self::new_parab2d_pnt2d2_bool(theParabola, theP1, theP2, true)
+    }
+
+    /// **Source:** `GC_MakeArcOfParabola2d.hxx`:77 - `GC_MakeArcOfParabola2d::Value()`
+    /// Returns the constructed arc of parabola.
+    /// @return resulting trimmed curve
+    pub fn value(&self) -> &crate::ffi_types::Handle_Geom2d_TrimmedCurve {
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKGeomBase::GC_MakeArcOfParabola2d_value(
+                self as *const Self,
+            )))
+        }
+    }
+
+    /// Upcast to GC_Root
+    pub fn as_root(&self) -> &Root {
+        unsafe {
+            &*crate::check_result(crate::ffi_extern_TKGeomBase::GC_MakeArcOfParabola2d_as_GC_Root(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast to GC_Root (mutable)
+    pub fn as_root_mut(&mut self) -> &mut Root {
+        unsafe {
+            &mut *crate::check_result(
+                crate::ffi_extern_TKGeomBase::GC_MakeArcOfParabola2d_as_GC_Root_mut(
+                    self as *mut Self,
+                ),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `GC_Root.hxx`:38 - `GC_Root::IsDone()`
+    pub fn is_done(&self) -> bool {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKGeomBase::GC_MakeArcOfParabola2d_inherited_IsDone(
+                self as *const Self,
+            )
+        })
+    }
+
+    /// Inherited: **Source:** `GC_Root.hxx`:41 - `GC_Root::IsError()`
+    pub fn is_error(&self) -> bool {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKGeomBase::GC_MakeArcOfParabola2d_inherited_IsError(
+                self as *const Self,
+            )
+        })
+    }
+
+    /// Inherited: **Source:** `GC_Root.hxx`:47 - `GC_Root::Status()`
+    pub fn status(&self) -> crate::gce::ErrorType {
+        crate::gce::ErrorType::try_from(crate::check_result(unsafe {
+            crate::ffi_extern_TKGeomBase::GC_MakeArcOfParabola2d_inherited_Status(
+                self as *const Self,
+            )
+        }))
+        .unwrap()
+    }
+}
+
+// ========================
 // From GC_MakeCircle.hxx
 // ========================
 
-/// **Source:** `GC_MakeCircle.hxx`:50 - `GC_MakeCircle`
-/// This class implements the following algorithms used
-/// to create Cirlec from Geom.
+/// **Source:** `GC_MakeCircle.hxx`:49 - `GC_MakeCircle`
+/// Implements construction algorithms for circles in 3D space.
 ///
-/// * Create a Circle parallel to another and passing
-/// though a point.
+/// * Create a circle parallel to another and passing
+/// through a point.
 /// * Create a Circle parallel to another at the distance
 /// Dist.
 /// * Create a Circle passing through 3 points.
 /// * Create a Circle with its center and the normal of its
 /// plane and its radius.
 /// * Create a Circle with its axis and radius.
-/// The circle's parameter is the angle (Radian).
+/// The circle parameter is the angle in radians.
 /// The parametrization range is [0,2*PI].
 /// The circle is a closed and periodic curve.
 /// The center of the circle is the Location point of its axis
@@ -597,115 +1481,131 @@ unsafe impl crate::CppDeletable for MakeCircle {
 
 impl MakeCircle {
     /// **Source:** `GC_MakeCircle.hxx`:56 - `GC_MakeCircle::GC_MakeCircle()`
-    /// creates a circle from a non persistent circle C by its conversion.
-    pub fn new_circ(C: &crate::gp::Circ) -> crate::OwnedPtr<Self> {
+    /// Creates a circle from a `gp_Circ`.
+    /// @param[in] theC source circle
+    pub fn new_circ(theC: &crate::gp::Circ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKGeomBase::GC_MakeCircle_ctor_circ(C),
+                crate::ffi_extern_TKGeomBase::GC_MakeCircle_ctor_circ(theC),
             ))
         }
     }
 
-    /// **Source:** `GC_MakeCircle.hxx`:61 - `GC_MakeCircle::GC_MakeCircle()`
-    /// A2 is the local coordinates system of the circle.
-    /// It is not forbidden to create a circle with Radius = 0.0
-    /// Status is "NegativeRadius" if Radius < 0.
-    pub fn new_ax2_real(A2: &crate::gp::Ax2, Radius: f64) -> crate::OwnedPtr<Self> {
+    /// **Source:** `GC_MakeCircle.hxx`:63 - `GC_MakeCircle::GC_MakeCircle()`
+    /// Creates a circle from axis placement and radius.
+    /// @param[in] theA2 local coordinate system of the circle
+    /// @param[in] theRadius circle radius
+    /// @note Radius equal to `0.0` is allowed.
+    /// @note The status is `gce_NegativeRadius` if `theRadius < 0.0`.
+    pub fn new_ax2_real(theA2: &crate::gp::Ax2, theRadius: f64) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKGeomBase::GC_MakeCircle_ctor_ax2_real(A2, Radius),
+                crate::ffi_extern_TKGeomBase::GC_MakeCircle_ctor_ax2_real(theA2, theRadius),
             ))
         }
     }
 
     /// **Source:** `GC_MakeCircle.hxx`:68 - `GC_MakeCircle::GC_MakeCircle()`
-    /// Make a Circle from Geom <TheCirc> parallel to another
-    /// Circ <Circ> with a distance <Dist>.
-    /// If Dist is greater than zero the result is enclosing
-    /// the circle <Circ>, else the result is enclosed by the
-    /// circle <Circ>.
-    pub fn new_circ_real(Circ: &crate::gp::Circ, Dist: f64) -> crate::OwnedPtr<Self> {
+    /// Creates a circle concentric to the input circle with an offset radius.
+    /// @param[in] theCirc reference circle
+    /// @param[in] theDist radius offset
+    pub fn new_circ_real(theCirc: &crate::gp::Circ, theDist: f64) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKGeomBase::GC_MakeCircle_ctor_circ_real(Circ, Dist),
+                crate::ffi_extern_TKGeomBase::GC_MakeCircle_ctor_circ_real(theCirc, theDist),
             ))
         }
     }
 
-    /// **Source:** `GC_MakeCircle.hxx`:72 - `GC_MakeCircle::GC_MakeCircle()`
-    /// Make a Circle from Geom <TheCirc> parallel to another
-    /// Circ <Circ> and passing through a Pnt <Point>.
-    pub fn new_circ_pnt(Circ: &crate::gp::Circ, Point: &crate::gp::Pnt) -> crate::OwnedPtr<Self> {
+    /// **Source:** `GC_MakeCircle.hxx`:73 - `GC_MakeCircle::GC_MakeCircle()`
+    /// Creates a circle concentric to the input circle and passing through the input point.
+    /// @param[in] theCirc source circle
+    /// @param[in] thePoint point on resulting circle
+    pub fn new_circ_pnt(
+        theCirc: &crate::gp::Circ,
+        thePoint: &crate::gp::Pnt,
+    ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKGeomBase::GC_MakeCircle_ctor_circ_pnt(Circ, Point),
+                crate::ffi_extern_TKGeomBase::GC_MakeCircle_ctor_circ_pnt(theCirc, thePoint),
             ))
         }
     }
 
-    /// **Source:** `GC_MakeCircle.hxx`:76 - `GC_MakeCircle::GC_MakeCircle()`
-    /// Make a Circ from gp <TheCirc> passing through 3
-    /// Pnt2d <P1>,<P2>,<P3>.
+    /// **Source:** `GC_MakeCircle.hxx`:79 - `GC_MakeCircle::GC_MakeCircle()`
+    /// Creates a circle passing through three points.
+    /// @param[in] theP1 first point
+    /// @param[in] theP2 second point
+    /// @param[in] theP3 third point
     pub fn new_pnt3(
-        P1: &crate::gp::Pnt,
-        P2: &crate::gp::Pnt,
-        P3: &crate::gp::Pnt,
+        theP1: &crate::gp::Pnt,
+        theP2: &crate::gp::Pnt,
+        theP3: &crate::gp::Pnt,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKGeomBase::GC_MakeCircle_ctor_pnt3(P1, P2, P3),
+                crate::ffi_extern_TKGeomBase::GC_MakeCircle_ctor_pnt3(theP1, theP2, theP3),
             ))
         }
     }
 
-    /// **Source:** `GC_MakeCircle.hxx`:81 - `GC_MakeCircle::GC_MakeCircle()`
-    /// Make a Circle from Geom <TheCirc> with its center
-    /// <Center> and the normal of its plane <Norm> and
-    /// its radius <Radius>.
+    /// **Source:** `GC_MakeCircle.hxx`:85 - `GC_MakeCircle::GC_MakeCircle()`
+    /// Creates a circle from center point, normal and radius.
+    /// @param[in] theCenter circle center
+    /// @param[in] theNorm normal direction of circle plane
+    /// @param[in] theRadius circle radius
     pub fn new_pnt_dir_real(
-        Center: &crate::gp::Pnt,
-        Norm: &crate::gp::Dir,
-        Radius: f64,
+        theCenter: &crate::gp::Pnt,
+        theNorm: &crate::gp::Dir,
+        theRadius: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKGeomBase::GC_MakeCircle_ctor_pnt_dir_real(Center, Norm, Radius),
-            ))
-        }
-    }
-
-    /// **Source:** `GC_MakeCircle.hxx`:88 - `GC_MakeCircle::GC_MakeCircle()`
-    /// Make a Circle from Geom <TheCirc> with its center
-    /// <Center> and the normal of its plane defined by the
-    /// two points <Center> and <PtAxis> and its radius <Radius>.
-    pub fn new_pnt2_real(
-        Center: &crate::gp::Pnt,
-        PtAxis: &crate::gp::Pnt,
-        Radius: f64,
-    ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKGeomBase::GC_MakeCircle_ctor_pnt2_real(Center, PtAxis, Radius),
+                crate::ffi_extern_TKGeomBase::GC_MakeCircle_ctor_pnt_dir_real(
+                    theCenter, theNorm, theRadius,
+                ),
             ))
         }
     }
 
     /// **Source:** `GC_MakeCircle.hxx`:94 - `GC_MakeCircle::GC_MakeCircle()`
-    /// Make a Circle from Geom <TheCirc> with its center
-    /// <Center> and its radius <Radius>.
-    pub fn new_ax1_real(Axis: &crate::gp::Ax1, Radius: f64) -> crate::OwnedPtr<Self> {
+    /// Creates a circle from center point, axis point and radius.
+    /// @param[in] theCenter circle center
+    /// @param[in] thePtAxis point defining normal direction
+    /// @param[in] theRadius circle radius
+    /// @note The direction is defined by vector (`theCenter`,`thePtAxis`).
+    pub fn new_pnt2_real(
+        theCenter: &crate::gp::Pnt,
+        thePtAxis: &crate::gp::Pnt,
+        theRadius: f64,
+    ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKGeomBase::GC_MakeCircle_ctor_ax1_real(Axis, Radius),
+                crate::ffi_extern_TKGeomBase::GC_MakeCircle_ctor_pnt2_real(
+                    theCenter, thePtAxis, theRadius,
+                ),
             ))
         }
     }
 
-    /// **Source:** `GC_MakeCircle.hxx`:99 - `GC_MakeCircle::Value()`
+    /// **Source:** `GC_MakeCircle.hxx`:101 - `GC_MakeCircle::GC_MakeCircle()`
+    /// Creates a circle from axis and radius.
+    /// @param[in] theAxis circle axis
+    /// @param[in] theRadius circle radius
+    pub fn new_ax1_real(theAxis: &crate::gp::Ax1, theRadius: f64) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomBase::GC_MakeCircle_ctor_ax1_real(theAxis, theRadius),
+            ))
+        }
+    }
+
+    /// **Source:** `GC_MakeCircle.hxx`:107 - `GC_MakeCircle::Value()`
     /// Returns the constructed circle.
     /// Exceptions
     /// StdFail_NotDone if no circle is constructed.
-    pub fn value(&self) -> &crate::ffi_types::HandleGeomCircle {
+    /// @return resulting circle
+    pub fn value(&self) -> &crate::ffi_types::Handle_Geom_Circle {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKGeomBase::GC_MakeCircle_value(
                 self as *const Self,
@@ -738,7 +1638,14 @@ impl MakeCircle {
         })
     }
 
-    /// Inherited: **Source:** `GC_Root.hxx`:44 - `GC_Root::Status()`
+    /// Inherited: **Source:** `GC_Root.hxx`:41 - `GC_Root::IsError()`
+    pub fn is_error(&self) -> bool {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKGeomBase::GC_MakeCircle_inherited_IsError(self as *const Self)
+        })
+    }
+
+    /// Inherited: **Source:** `GC_Root.hxx`:47 - `GC_Root::Status()`
     pub fn status(&self) -> crate::gce::ErrorType {
         crate::gce::ErrorType::try_from(crate::check_result(unsafe {
             crate::ffi_extern_TKGeomBase::GC_MakeCircle_inherited_Status(self as *const Self)
@@ -748,19 +1655,261 @@ impl MakeCircle {
 }
 
 // ========================
+// From GC_MakeCircle2d.hxx
+// ========================
+
+/// **Source:** `GC_MakeCircle2d.hxx`:40 - `GC_MakeCircle2d`
+/// This class implements construction algorithms for circles in the plane.
+/// The result is a `Geom2d_Circle`.
+/// A `GC_MakeCircle2d` object provides a framework for:
+/// - defining the construction parameters;
+/// - running the construction algorithm;
+/// - querying the construction status and the resulting circle via `Value()`.
+/// @note A circle is parameterized in the range [0, 2*PI], and the X axis
+/// of its local coordinate system defines the parameter origin.
+pub use crate::ffi_types::GC_MakeCircle2d as MakeCircle2d;
+
+unsafe impl crate::CppDeletable for MakeCircle2d {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            crate::ffi_extern_TKGeomBase::GC_MakeCircle2d_destructor(ptr);
+        }
+    }
+}
+
+impl MakeCircle2d {
+    /// **Source:** `GC_MakeCircle2d.hxx`:47 - `GC_MakeCircle2d::GC_MakeCircle2d()`
+    /// Creates a circle from a non-persistent one from package gp.
+    /// @param[in] theCircle source circle
+    pub fn new_circ2d(theCircle: &crate::gp::Circ2d) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomBase::GC_MakeCircle2d_ctor_circ2d(theCircle),
+            ))
+        }
+    }
+
+    /// **Source:** `GC_MakeCircle2d.hxx`:54 - `GC_MakeCircle2d::GC_MakeCircle2d()`
+    /// Creates a circle from an axis placement and radius.
+    /// @param[in] theAxis axis placement
+    /// @param[in] theRadius radius value
+    /// @param[in] theSense orientation flag
+    /// @note Construction fails with `gce_NegativeRadius` if `theRadius` is negative.
+    pub fn new_ax2d_real_bool(
+        theAxis: &crate::gp::Ax2d,
+        theRadius: f64,
+        theSense: bool,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomBase::GC_MakeCircle2d_ctor_ax2d_real_bool(
+                    theAxis, theRadius, theSense,
+                ),
+            ))
+        }
+    }
+
+    /// **Source:** `GC_MakeCircle2d.hxx`:62 - `GC_MakeCircle2d::GC_MakeCircle2d()`
+    /// Creates a circle from a local coordinate system and radius.
+    /// @param[in] theAxis local coordinate system
+    /// @param[in] theRadius radius value
+    /// @note Construction fails with `gce_NegativeRadius` if `theRadius` is negative.
+    pub fn new_ax22d_real(theAxis: &crate::gp::Ax22d, theRadius: f64) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomBase::GC_MakeCircle2d_ctor_ax22d_real(theAxis, theRadius),
+            ))
+        }
+    }
+
+    /// **Source:** `GC_MakeCircle2d.hxx`:70 - `GC_MakeCircle2d::GC_MakeCircle2d()`
+    /// Creates a circle parallel to another one at signed distance.
+    /// @param[in] theCircle source circle
+    /// @param[in] theDist signed distance
+    /// @note If `theDist` is positive, the resulting circle encloses `theCircle`.
+    /// @note If `theDist` is negative, the resulting circle is enclosed by `theCircle`.
+    /// @note Error status is provided by the underlying `gce_MakeCirc2d`.
+    pub fn new_circ2d_real(theCircle: &crate::gp::Circ2d, theDist: f64) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomBase::GC_MakeCircle2d_ctor_circ2d_real(theCircle, theDist),
+            ))
+        }
+    }
+
+    /// **Source:** `GC_MakeCircle2d.hxx`:76 - `GC_MakeCircle2d::GC_MakeCircle2d()`
+    /// Creates a circle parallel to another one and passing through a point.
+    /// @param[in] theCircle source circle
+    /// @param[in] thePoint point on resulting circle
+    /// @note Error status is provided by the underlying `gce_MakeCirc2d`.
+    pub fn new_circ2d_pnt2d(
+        theCircle: &crate::gp::Circ2d,
+        thePoint: &crate::gp::Pnt2d,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomBase::GC_MakeCircle2d_ctor_circ2d_pnt2d(
+                    theCircle, thePoint,
+                ),
+            ))
+        }
+    }
+
+    /// **Source:** `GC_MakeCircle2d.hxx`:83 - `GC_MakeCircle2d::GC_MakeCircle2d()`
+    /// Creates a circle passing through three points.
+    /// @param[in] theP1 first point
+    /// @param[in] theP2 second point
+    /// @param[in] theP3 third point
+    /// @note Error status is provided by the underlying `gce_MakeCirc2d`.
+    pub fn new_pnt2d3(
+        theP1: &crate::gp::Pnt2d,
+        theP2: &crate::gp::Pnt2d,
+        theP3: &crate::gp::Pnt2d,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomBase::GC_MakeCircle2d_ctor_pnt2d3(theP1, theP2, theP3),
+            ))
+        }
+    }
+
+    /// **Source:** `GC_MakeCircle2d.hxx`:92 - `GC_MakeCircle2d::GC_MakeCircle2d()`
+    /// Creates a circle from center point and radius.
+    /// @param[in] theCenter center point
+    /// @param[in] theRadius radius value
+    /// @param[in] theSense orientation flag
+    /// @note Error status is provided by the underlying `gce_MakeCirc2d`.
+    pub fn new_pnt2d_real_bool(
+        theCenter: &crate::gp::Pnt2d,
+        theRadius: f64,
+        theSense: bool,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomBase::GC_MakeCircle2d_ctor_pnt2d_real_bool(
+                    theCenter, theRadius, theSense,
+                ),
+            ))
+        }
+    }
+
+    /// **Source:** `GC_MakeCircle2d.hxx`:101 - `GC_MakeCircle2d::GC_MakeCircle2d()`
+    /// Creates a circle from center point and one point on the circle.
+    /// @param[in] theCenter center point
+    /// @param[in] thePoint point on resulting circle
+    /// @param[in] theSense orientation flag
+    /// @note Error status is provided by the underlying `gce_MakeCirc2d`.
+    pub fn new_pnt2d2_bool(
+        theCenter: &crate::gp::Pnt2d,
+        thePoint: &crate::gp::Pnt2d,
+        theSense: bool,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomBase::GC_MakeCircle2d_ctor_pnt2d2_bool(
+                    theCenter, thePoint, theSense,
+                ),
+            ))
+        }
+    }
+
+    /// **Source:** `GC_MakeCircle2d.hxx`:54 - `GC_MakeCircle2d::GC_MakeCircle2d()`
+    /// Creates a circle from an axis placement and radius.
+    /// @param[in] theAxis axis placement
+    /// @param[in] theRadius radius value
+    /// @param[in] theSense orientation flag
+    /// @note Construction fails with `gce_NegativeRadius` if `theRadius` is negative.
+    pub fn new_ax2d_real(theAxis: &crate::gp::Ax2d, theRadius: f64) -> crate::OwnedPtr<Self> {
+        Self::new_ax2d_real_bool(theAxis, theRadius, true)
+    }
+
+    /// **Source:** `GC_MakeCircle2d.hxx`:92 - `GC_MakeCircle2d::GC_MakeCircle2d()`
+    /// Creates a circle from center point and radius.
+    /// @param[in] theCenter center point
+    /// @param[in] theRadius radius value
+    /// @param[in] theSense orientation flag
+    /// @note Error status is provided by the underlying `gce_MakeCirc2d`.
+    pub fn new_pnt2d_real(theCenter: &crate::gp::Pnt2d, theRadius: f64) -> crate::OwnedPtr<Self> {
+        Self::new_pnt2d_real_bool(theCenter, theRadius, true)
+    }
+
+    /// **Source:** `GC_MakeCircle2d.hxx`:101 - `GC_MakeCircle2d::GC_MakeCircle2d()`
+    /// Creates a circle from center point and one point on the circle.
+    /// @param[in] theCenter center point
+    /// @param[in] thePoint point on resulting circle
+    /// @param[in] theSense orientation flag
+    /// @note Error status is provided by the underlying `gce_MakeCirc2d`.
+    pub fn new_pnt2d2(
+        theCenter: &crate::gp::Pnt2d,
+        thePoint: &crate::gp::Pnt2d,
+    ) -> crate::OwnedPtr<Self> {
+        Self::new_pnt2d2_bool(theCenter, thePoint, true)
+    }
+
+    /// **Source:** `GC_MakeCircle2d.hxx`:108 - `GC_MakeCircle2d::Value()`
+    /// Returns the constructed circle.
+    /// Exceptions StdFail_NotDone if no circle is constructed.
+    /// @return resulting circle
+    pub fn value(&self) -> &crate::ffi_types::Handle_Geom2d_Circle {
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKGeomBase::GC_MakeCircle2d_value(
+                self as *const Self,
+            )))
+        }
+    }
+
+    /// Upcast to GC_Root
+    pub fn as_root(&self) -> &Root {
+        unsafe {
+            &*crate::check_result(crate::ffi_extern_TKGeomBase::GC_MakeCircle2d_as_GC_Root(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast to GC_Root (mutable)
+    pub fn as_root_mut(&mut self) -> &mut Root {
+        unsafe {
+            &mut *crate::check_result(crate::ffi_extern_TKGeomBase::GC_MakeCircle2d_as_GC_Root_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `GC_Root.hxx`:38 - `GC_Root::IsDone()`
+    pub fn is_done(&self) -> bool {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKGeomBase::GC_MakeCircle2d_inherited_IsDone(self as *const Self)
+        })
+    }
+
+    /// Inherited: **Source:** `GC_Root.hxx`:41 - `GC_Root::IsError()`
+    pub fn is_error(&self) -> bool {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKGeomBase::GC_MakeCircle2d_inherited_IsError(self as *const Self)
+        })
+    }
+
+    /// Inherited: **Source:** `GC_Root.hxx`:47 - `GC_Root::Status()`
+    pub fn status(&self) -> crate::gce::ErrorType {
+        crate::gce::ErrorType::try_from(crate::check_result(unsafe {
+            crate::ffi_extern_TKGeomBase::GC_MakeCircle2d_inherited_Status(self as *const Self)
+        }))
+        .unwrap()
+    }
+}
+
+// ========================
 // From GC_MakeConicalSurface.hxx
 // ========================
 
-/// **Source:** `GC_MakeConicalSurface.hxx`:59 - `GC_MakeConicalSurface`
-/// This class implements the following algorithms used
-/// to create a ConicalSurface from Geom.
-/// * Create a ConicalSurface parallel to another and passing
-/// through a point.
-/// * Create a ConicalSurface parallel to another at a distance
-/// <Dist>.
-/// * Create a ConicalSurface by 4 points.
-/// * Create a ConicalSurface by its axis and 2 points.
-/// * Create a ConicalSurface by 2 points and 2 radius.
+/// **Source:** `GC_MakeConicalSurface.hxx`:56 - `GC_MakeConicalSurface`
+/// Implements construction algorithms for conical surfaces.
+/// Supported constructions include:
+/// - a conical surface from axis placement and angle/radius;
+/// - conversion from `gp_Cone`;
+/// - a conical surface through four points;
+/// - a conical surface from two points and two radii.
 /// The local coordinate system of the ConicalSurface is defined
 /// with an axis placement (see class ElementarySurface).
 ///
@@ -768,13 +1917,13 @@ impl MakeCircle {
 /// it gives the direction of increasing parametric value V.
 /// The apex of the surface is on the negative side of this axis.
 ///
-/// The parametrization range is  :
-/// U [0, 2*PI],  V ]-infinite, + infinite[
+/// The parametrization range is:
+/// U [0, 2*PI], V ]-infinite, + infinite[
 ///
 /// The "XAxis" and the "YAxis" define the placement plane of the
-/// surface (Z = 0, and parametric value V = 0)  perpendicular to
+/// surface (Z = 0, and parametric value V = 0) perpendicular to
 /// the symmetry axis. The "XAxis" defines the origin of the
-/// parameter U = 0.  The trigonometric sense gives the positive
+/// parameter U = 0. The trigonometric sense gives the positive
 /// orientation for the parameter U.
 ///
 /// When you create a ConicalSurface the U and V directions of
@@ -792,84 +1941,105 @@ unsafe impl crate::CppDeletable for MakeConicalSurface {
 
 impl MakeConicalSurface {
     /// **Source:** `GC_MakeConicalSurface.hxx`:77 - `GC_MakeConicalSurface::GC_MakeConicalSurface()`
-    /// A2 defines the local coordinate system of the conical surface.
-    /// Ang is the conical surface semi-angle ]0, PI/2[.
-    /// Radius is the radius of the circle Viso in the placement plane
+    /// Creates a conical surface from local frame, semi-angle and radius.
+    /// @param[in] theA2 local coordinate system
+    /// @param[in] theAng semi-angle
+    /// @param[in] theRadius reference radius in placement plane
+    /// @note `theA2` defines the local coordinate system of the conical surface.
+    /// @note `theAng` is the conical surface semi-angle ]0, PI/2[.
+    /// @note `theRadius` is the radius of the circle Viso in the placement plane
     /// of the conical surface defined with "XAxis" and "YAxis".
-    /// The "ZDirection" of A2 defines the direction of the surface's
-    /// axis of symmetry.
-    /// If the location point of A2 is the apex of the surface
-    /// Radius = 0 .
-    /// At the creation the parametrization of the surface is defined
-    /// such that the normal Vector (N = D1U ^ D1V) is oriented towards
-    /// the "outside region" of the surface.
-    /// Status is "NegativeRadius" if Radius < 0.0 or "BadAngle" if
-    /// Ang < Resolution from gp or Ang >= PI/ - Resolution
-    pub fn new_ax2_real2(A2: &crate::gp::Ax2, Ang: f64, Radius: f64) -> crate::OwnedPtr<Self> {
+    /// @note The "ZDirection" of `theA2` defines the direction of the surface axis
+    /// of symmetry.
+    /// @note If the location point of `theA2` is the apex of the surface,
+    /// `theRadius` is zero.
+    /// @note The created surface is parametrized such that the normal vector
+    /// (`N = D1U ^ D1V`) is oriented towards the "outside region".
+    /// @note Status is `gce_NegativeRadius` if `theRadius < 0.0`, or
+    /// `gce_BadAngle` if `theAng` is outside valid range.
+    pub fn new_ax2_real2(
+        theA2: &crate::gp::Ax2,
+        theAng: f64,
+        theRadius: f64,
+    ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKGeomBase::GC_MakeConicalSurface_ctor_ax2_real2(A2, Ang, Radius),
+                crate::ffi_extern_TKGeomBase::GC_MakeConicalSurface_ctor_ax2_real2(
+                    theA2, theAng, theRadius,
+                ),
             ))
         }
     }
 
-    /// **Source:** `GC_MakeConicalSurface.hxx`:82 - `GC_MakeConicalSurface::GC_MakeConicalSurface()`
-    /// Creates a ConicalSurface from a non persistent Cone from package gp.
-    pub fn new_cone(C: &crate::gp::Cone) -> crate::OwnedPtr<Self> {
+    /// **Source:** `GC_MakeConicalSurface.hxx`:83 - `GC_MakeConicalSurface::GC_MakeConicalSurface()`
+    /// Creates a conical surface from a `gp_Cone`.
+    /// @param[in] theC source cone
+    pub fn new_cone(theC: &crate::gp::Cone) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKGeomBase::GC_MakeConicalSurface_ctor_cone(C),
+                crate::ffi_extern_TKGeomBase::GC_MakeConicalSurface_ctor_cone(theC),
             ))
         }
     }
 
-    /// **Source:** `GC_MakeConicalSurface.hxx`:93 - `GC_MakeConicalSurface::GC_MakeConicalSurface()`
-    /// Make a ConicalSurface from Geom <TheCone> passing through 3
-    /// Pnt <P1>,<P2>,<P3>.
-    /// Its axis is <P1P2> and the radius of its base is
-    /// the distance between <P3> and <P1P2>.
-    /// The distance between <P4> and <P1P2> is the radius of
-    /// the section passing through <P4>.
-    /// An error iss raised if <P1>,<P2>,<P3>,<P4> are
-    /// colinear or if <P3P4> is perpendicular to <P1P2> or
-    /// <P3P4> is colinear to <P1P2>.
+    /// **Source:** `GC_MakeConicalSurface.hxx`:97 - `GC_MakeConicalSurface::GC_MakeConicalSurface()`
+    /// Creates a conical surface from four points.
+    /// @param[in] theP1 first point defining axis
+    /// @param[in] theP2 second point defining axis
+    /// @param[in] theP3 point defining first section radius
+    /// @param[in] theP4 point defining second section radius
+    /// @note Axis is defined by points `theP1` and `theP2`, and base radius is
+    /// the distance between point `theP3` and that axis.
+    /// @note The distance between point `theP4` and that axis is the radius of
+    /// the section passing through P4.
+    /// @note Construction fails if points `theP1`, `theP2`, `theP3` and `theP4` are
+    /// collinear, or if vector (`theP3`,`theP4`) is perpendicular/collinear
+    /// to vector (`theP1`,`theP2`).
     pub fn new_pnt4(
-        P1: &crate::gp::Pnt,
-        P2: &crate::gp::Pnt,
-        P3: &crate::gp::Pnt,
-        P4: &crate::gp::Pnt,
+        theP1: &crate::gp::Pnt,
+        theP2: &crate::gp::Pnt,
+        theP3: &crate::gp::Pnt,
+        theP4: &crate::gp::Pnt,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKGeomBase::GC_MakeConicalSurface_ctor_pnt4(P1, P2, P3, P4),
+                crate::ffi_extern_TKGeomBase::GC_MakeConicalSurface_ctor_pnt4(
+                    theP1, theP2, theP3, theP4,
+                ),
             ))
         }
     }
 
-    /// **Source:** `GC_MakeConicalSurface.hxx`:103 - `GC_MakeConicalSurface::GC_MakeConicalSurface()`
-    /// Make a ConicalSurface with two points and two radius.
-    /// The axis of the solution is the line passing through
-    /// <P1> and <P2>.
-    /// <R1> is the radius of the section passing through <P1>
-    /// and <R2> the radius of the section passing through <P2>.
+    /// **Source:** `GC_MakeConicalSurface.hxx`:110 - `GC_MakeConicalSurface::GC_MakeConicalSurface()`
+    /// Creates a conical surface with two points and two radii.
+    /// @param[in] theP1 first axis point
+    /// @param[in] theP2 second axis point
+    /// @param[in] theR1 radius at P1
+    /// @param[in] theR2 radius at P2
+    /// @note The axis of the solution is the line passing through `theP1` and `theP2`.
+    /// @note `theR1` and `theR2` are radii of sections passing through
+    /// `theP1` and `theP2`.
     pub fn new_pnt2_real2(
-        P1: &crate::gp::Pnt,
-        P2: &crate::gp::Pnt,
-        R1: f64,
-        R2: f64,
+        theP1: &crate::gp::Pnt,
+        theP2: &crate::gp::Pnt,
+        theR1: f64,
+        theR2: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKGeomBase::GC_MakeConicalSurface_ctor_pnt2_real2(P1, P2, R1, R2),
+                crate::ffi_extern_TKGeomBase::GC_MakeConicalSurface_ctor_pnt2_real2(
+                    theP1, theP2, theR1, theR2,
+                ),
             ))
         }
     }
 
-    /// **Source:** `GC_MakeConicalSurface.hxx`:111 - `GC_MakeConicalSurface::Value()`
+    /// **Source:** `GC_MakeConicalSurface.hxx`:119 - `GC_MakeConicalSurface::Value()`
     /// Returns the constructed cone.
     /// Exceptions
     /// StdFail_NotDone if no cone is constructed.
-    pub fn value(&self) -> &crate::ffi_types::HandleGeomConicalSurface {
+    /// @return resulting conical surface
+    pub fn value(&self) -> &crate::ffi_types::Handle_Geom_ConicalSurface {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKGeomBase::GC_MakeConicalSurface_value(
                 self as *const Self,
@@ -906,7 +2076,16 @@ impl MakeConicalSurface {
         })
     }
 
-    /// Inherited: **Source:** `GC_Root.hxx`:44 - `GC_Root::Status()`
+    /// Inherited: **Source:** `GC_Root.hxx`:41 - `GC_Root::IsError()`
+    pub fn is_error(&self) -> bool {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKGeomBase::GC_MakeConicalSurface_inherited_IsError(
+                self as *const Self,
+            )
+        })
+    }
+
+    /// Inherited: **Source:** `GC_Root.hxx`:47 - `GC_Root::Status()`
     pub fn status(&self) -> crate::gce::ErrorType {
         crate::gce::ErrorType::try_from(crate::check_result(unsafe {
             crate::ffi_extern_TKGeomBase::GC_MakeConicalSurface_inherited_Status(
@@ -921,17 +2100,15 @@ impl MakeConicalSurface {
 // From GC_MakeCylindricalSurface.hxx
 // ========================
 
-/// **Source:** `GC_MakeCylindricalSurface.hxx`:57 - `GC_MakeCylindricalSurface`
-/// This class implements the following algorithms used
-/// to create a CylindricalSurface from Geom.
-/// * Create a CylindricalSurface parallel to another and
-/// passing through a point.
-/// * Create a CylindricalSurface parallel to another at a
-/// distance
-/// <Dist>.
-/// * Create a CylindricalSurface passing through 3 points.
-/// * Create a CylindricalSurface by its axis and radius.
-/// * Create a cylindricalSurface by its circular base.
+/// **Source:** `GC_MakeCylindricalSurface.hxx`:55 - `GC_MakeCylindricalSurface`
+/// Implements construction algorithms for cylindrical surfaces.
+/// Supported constructions include:
+/// - a cylindrical surface from axis placement and radius;
+/// - conversion from `gp_Cylinder`;
+/// - an offset/parallel cylindrical surface;
+/// - a cylindrical surface through three points;
+/// - a cylindrical surface from axis and radius;
+/// - a cylindrical surface from circular base.
 /// The local coordinate system of the CylindricalSurface is defined
 /// with an axis placement (see class ElementarySurface).
 ///
@@ -939,12 +2116,12 @@ impl MakeConicalSurface {
 /// it gives the direction of increasing parametric value V.
 ///
 /// The parametrization range is :
-/// U [0, 2*PI],  V ]- infinite, + infinite[
+/// U [0, 2*PI], V ]- infinite, + infinite[
 ///
 /// The "XAxis" and the "YAxis" define the placement plane of the
-/// surface (Z = 0, and parametric value V = 0)  perpendicular to
+/// surface (Z = 0, and parametric value V = 0) perpendicular to
 /// the symmetry axis. The "XAxis" defines the origin of the
-/// parameter U = 0.  The trigonometric sense gives the positive
+/// parameter U = 0. The trigonometric sense gives the positive
 /// orientation for the parameter U.
 pub use crate::ffi_types::GC_MakeCylindricalSurface as MakeCylindricalSurface;
 
@@ -957,113 +2134,123 @@ unsafe impl crate::CppDeletable for MakeCylindricalSurface {
 }
 
 impl MakeCylindricalSurface {
-    /// **Source:** `GC_MakeCylindricalSurface.hxx`:72 - `GC_MakeCylindricalSurface::GC_MakeCylindricalSurface()`
-    /// A2 defines the local coordinate system of the cylindrical surface.
-    /// The "ZDirection" of A2 defines the direction of the surface's
-    /// axis of symmetry.
-    /// At the creation the parametrization of the surface is defined
-    /// such that the normal Vector (N = D1U ^ D1V) is oriented towards
-    /// the "outside region" of the surface.
-    /// Warnings :
-    /// It is not forbidden to create a cylindrical surface with
-    /// Radius = 0.0
-    /// Status is "NegativeRadius" if Radius < 0.0
-    pub fn new_ax2_real(A2: &crate::gp::Ax2, Radius: f64) -> crate::OwnedPtr<Self> {
+    /// **Source:** `GC_MakeCylindricalSurface.hxx`:70 - `GC_MakeCylindricalSurface::GC_MakeCylindricalSurface()`
+    /// Creates a cylindrical surface from axis placement and radius.
+    /// @param[in] theA2 local coordinate system
+    /// @param[in] theRadius cylinder radius
+    /// @note `theA2` defines the local coordinate system of the cylindrical surface.
+    /// @note The "ZDirection" of `theA2` defines the direction of the surface axis
+    /// of symmetry.
+    /// @note The created surface is parametrized such that the normal vector
+    /// (`N = D1U ^ D1V`) is oriented towards the "outside region".
+    /// @note It is valid to create a cylindrical surface with `theRadius = 0.0`.
+    /// @note Status is `gce_NegativeRadius` if `theRadius < 0.0`.
+    pub fn new_ax2_real(theA2: &crate::gp::Ax2, theRadius: f64) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKGeomBase::GC_MakeCylindricalSurface_ctor_ax2_real(A2, Radius),
+                crate::ffi_extern_TKGeomBase::GC_MakeCylindricalSurface_ctor_ax2_real(
+                    theA2, theRadius,
+                ),
             ))
         }
     }
 
-    /// **Source:** `GC_MakeCylindricalSurface.hxx`:76 - `GC_MakeCylindricalSurface::GC_MakeCylindricalSurface()`
-    /// Creates a CylindricalSurface from a non persistent Cylinder
-    /// from package gp.
-    pub fn new_cylinder(C: &crate::gp::Cylinder) -> crate::OwnedPtr<Self> {
+    /// **Source:** `GC_MakeCylindricalSurface.hxx`:74 - `GC_MakeCylindricalSurface::GC_MakeCylindricalSurface()`
+    /// Creates a cylindrical surface from a `gp_Cylinder`.
+    /// @param[in] theC source cylinder
+    pub fn new_cylinder(theC: &crate::gp::Cylinder) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKGeomBase::GC_MakeCylindricalSurface_ctor_cylinder(C),
+                crate::ffi_extern_TKGeomBase::GC_MakeCylindricalSurface_ctor_cylinder(theC),
             ))
         }
     }
 
-    /// **Source:** `GC_MakeCylindricalSurface.hxx`:82 - `GC_MakeCylindricalSurface::GC_MakeCylindricalSurface()`
-    /// Make a CylindricalSurface from Geom <TheCylinder>
-    /// parallel to another
-    /// CylindricalSurface <Cylinder> and passing through a
-    /// Pnt <Point>.
+    /// **Source:** `GC_MakeCylindricalSurface.hxx`:80 - `GC_MakeCylindricalSurface::GC_MakeCylindricalSurface()`
+    /// Creates a cylindrical surface parallel to the input cylinder and passing through the input
+    /// point.
+    /// @param[in] theCyl source cylinder
+    /// @param[in] thePoint point on resulting surface
     pub fn new_cylinder_pnt(
-        Cyl: &crate::gp::Cylinder,
-        Point: &crate::gp::Pnt,
+        theCyl: &crate::gp::Cylinder,
+        thePoint: &crate::gp::Pnt,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKGeomBase::GC_MakeCylindricalSurface_ctor_cylinder_pnt(
-                    Cyl, Point,
+                    theCyl, thePoint,
                 ),
             ))
         }
     }
 
-    /// **Source:** `GC_MakeCylindricalSurface.hxx`:90 - `GC_MakeCylindricalSurface::GC_MakeCylindricalSurface()`
-    /// Make a CylindricalSurface from Geom <TheCylinder>
-    /// parallel to another
-    /// CylindricalSurface <Cylinder> at the distance <Dist>
-    /// which can be greater or lower than zero.
-    /// The radius of the result is the absolute value of the
-    /// radius of <Cyl> plus <Dist>
-    pub fn new_cylinder_real(Cyl: &crate::gp::Cylinder, Dist: f64) -> crate::OwnedPtr<Self> {
+    /// **Source:** `GC_MakeCylindricalSurface.hxx`:87 - `GC_MakeCylindricalSurface::GC_MakeCylindricalSurface()`
+    /// Creates a cylindrical surface parallel to the input cylinder at signed distance.
+    /// @param[in] theCyl source cylinder
+    /// @param[in] theDist signed offset distance
+    /// @note The result radius is the absolute value of
+    /// (source radius + signed distance).
+    pub fn new_cylinder_real(theCyl: &crate::gp::Cylinder, theDist: f64) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKGeomBase::GC_MakeCylindricalSurface_ctor_cylinder_real(
-                    Cyl, Dist,
+                    theCyl, theDist,
                 ),
             ))
         }
     }
 
-    /// **Source:** `GC_MakeCylindricalSurface.hxx`:96 - `GC_MakeCylindricalSurface::GC_MakeCylindricalSurface()`
-    /// Make a CylindricalSurface from Geom <TheCylinder>
-    /// passing through 3 Pnt <P1>,<P2>,<P3>.
-    /// Its axis is <P1P2> and its radius is the distance
-    /// between <P3> and <P1P2>
+    /// **Source:** `GC_MakeCylindricalSurface.hxx`:95 - `GC_MakeCylindricalSurface::GC_MakeCylindricalSurface()`
+    /// Creates a cylindrical surface passing through three points.
+    /// @param[in] theP1 first axis point
+    /// @param[in] theP2 second axis point
+    /// @param[in] theP3 point defining radius
+    /// @note The axis is defined by points `theP1` and `theP2`, and radius is the
+    /// distance between point `theP3` and that axis.
     pub fn new_pnt3(
-        P1: &crate::gp::Pnt,
-        P2: &crate::gp::Pnt,
-        P3: &crate::gp::Pnt,
+        theP1: &crate::gp::Pnt,
+        theP2: &crate::gp::Pnt,
+        theP3: &crate::gp::Pnt,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKGeomBase::GC_MakeCylindricalSurface_ctor_pnt3(P1, P2, P3),
+                crate::ffi_extern_TKGeomBase::GC_MakeCylindricalSurface_ctor_pnt3(
+                    theP1, theP2, theP3,
+                ),
             ))
         }
     }
 
-    /// **Source:** `GC_MakeCylindricalSurface.hxx`:100 - `GC_MakeCylindricalSurface::GC_MakeCylindricalSurface()`
-    /// Make a CylindricalSurface by its axis <Axis> and radius
-    /// <Radius>.
-    pub fn new_ax1_real(Axis: &crate::gp::Ax1, Radius: f64) -> crate::OwnedPtr<Self> {
+    /// **Source:** `GC_MakeCylindricalSurface.hxx`:102 - `GC_MakeCylindricalSurface::GC_MakeCylindricalSurface()`
+    /// Creates a cylindrical surface from axis and radius.
+    /// @param[in] theAxis cylinder axis
+    /// @param[in] theRadius cylinder radius
+    pub fn new_ax1_real(theAxis: &crate::gp::Ax1, theRadius: f64) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKGeomBase::GC_MakeCylindricalSurface_ctor_ax1_real(Axis, Radius),
+                crate::ffi_extern_TKGeomBase::GC_MakeCylindricalSurface_ctor_ax1_real(
+                    theAxis, theRadius,
+                ),
             ))
         }
     }
 
-    /// **Source:** `GC_MakeCylindricalSurface.hxx`:103 - `GC_MakeCylindricalSurface::GC_MakeCylindricalSurface()`
-    /// Make a CylindricalSurface by its circular base.
-    pub fn new_circ(Circ: &crate::gp::Circ) -> crate::OwnedPtr<Self> {
+    /// **Source:** `GC_MakeCylindricalSurface.hxx`:106 - `GC_MakeCylindricalSurface::GC_MakeCylindricalSurface()`
+    /// Creates a cylindrical surface from its circular base.
+    /// @param[in] theCirc base circle
+    pub fn new_circ(theCirc: &crate::gp::Circ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKGeomBase::GC_MakeCylindricalSurface_ctor_circ(Circ),
+                crate::ffi_extern_TKGeomBase::GC_MakeCylindricalSurface_ctor_circ(theCirc),
             ))
         }
     }
 
-    /// **Source:** `GC_MakeCylindricalSurface.hxx`:107 - `GC_MakeCylindricalSurface::Value()`
+    /// **Source:** `GC_MakeCylindricalSurface.hxx`:111 - `GC_MakeCylindricalSurface::Value()`
     /// Returns the constructed cylinder.
     /// Exceptions StdFail_NotDone if no cylinder is constructed.
-    pub fn value(&self) -> &crate::ffi_types::HandleGeomCylindricalSurface {
+    /// @return resulting cylindrical surface
+    pub fn value(&self) -> &crate::ffi_types::Handle_Geom_CylindricalSurface {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKGeomBase::GC_MakeCylindricalSurface_value(
                 self as *const Self,
@@ -1102,7 +2289,16 @@ impl MakeCylindricalSurface {
         })
     }
 
-    /// Inherited: **Source:** `GC_Root.hxx`:44 - `GC_Root::Status()`
+    /// Inherited: **Source:** `GC_Root.hxx`:41 - `GC_Root::IsError()`
+    pub fn is_error(&self) -> bool {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKGeomBase::GC_MakeCylindricalSurface_inherited_IsError(
+                self as *const Self,
+            )
+        })
+    }
+
+    /// Inherited: **Source:** `GC_Root.hxx`:47 - `GC_Root::Status()`
     pub fn status(&self) -> crate::gce::ErrorType {
         crate::gce::ErrorType::try_from(crate::check_result(unsafe {
             crate::ffi_extern_TKGeomBase::GC_MakeCylindricalSurface_inherited_Status(
@@ -1118,8 +2314,8 @@ impl MakeCylindricalSurface {
 // ========================
 
 /// **Source:** `GC_MakeEllipse.hxx`:38 - `GC_MakeEllipse`
-/// This class implements construction algorithms for an ellipse in
-/// 3D space. The result is a Geom_Ellipse ellipse.
+/// Implements construction algorithms for ellipses in 3D space.
+/// The result is a `Geom_Ellipse`.
 /// A MakeEllipse object provides a framework for:
 /// -   defining the construction of the ellipse,
 /// -   implementing the construction algorithm, and
@@ -1136,64 +2332,63 @@ unsafe impl crate::CppDeletable for MakeEllipse {
 }
 
 impl MakeEllipse {
-    /// **Source:** `GC_MakeEllipse.hxx`:44 - `GC_MakeEllipse::GC_MakeEllipse()`
-    /// Creates an ellipse from a non persistent ellipse E from package gp by its conversion.
-    pub fn new_elips(E: &crate::gp::Elips) -> crate::OwnedPtr<Self> {
+    /// **Source:** `GC_MakeEllipse.hxx`:45 - `GC_MakeEllipse::GC_MakeEllipse()`
+    /// Creates an ellipse from a `gp_Elips`.
+    /// @param[in] theE source ellipse
+    pub fn new_elips(theE: &crate::gp::Elips) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKGeomBase::GC_MakeEllipse_ctor_elips(E),
+                crate::ffi_extern_TKGeomBase::GC_MakeEllipse_ctor_elips(theE),
             ))
         }
     }
 
-    /// **Source:** `GC_MakeEllipse.hxx`:63 - `GC_MakeEllipse::GC_MakeEllipse()`
+    /// **Source:** `GC_MakeEllipse.hxx`:59 - `GC_MakeEllipse::GC_MakeEllipse()`
     /// Constructs an ellipse with major and minor radii MajorRadius and
     /// MinorRadius, and located in the plane defined by
     /// the "X Axis" and "Y Axis" of the coordinate system A2, where:
     /// -   its center is the origin of A2, and
     /// -   its major axis is the "X Axis" of A2;
-    /// Warnings :
-    /// The MakeEllipse class does not prevent the
-    /// construction of an ellipse where MajorRadius is equal to MinorRadius.
-    /// If an error occurs (that is, when IsDone returns
-    /// false), the Status function returns:
-    /// -   gce_InvertRadius if MajorRadius is less than MinorRadius;
-    /// -   gce_NegativeRadius if MinorRadius is less than 0.0;
-    /// -   gce_NullAxis if the points S1 and Center are coincident; or
-    /// -   gce_InvertAxis if:
-    /// -   the major radius computed with Center and S1
-    /// is less than the minor radius computed with Center, S1 and S2, or
-    /// -   Center, S1 and S2 are collinear.
+    /// @note Construction with `theMajorRadius == theMinorRadius` is allowed.
+    /// @note Construction fails with `gce_NegativeRadius` if `theMinorRadius < 0.0`.
+    /// @note Construction fails with `gce_InvertAxis` if
+    /// `theMajorRadius < theMinorRadius`.
+    /// @param[in] theA2 ellipse local coordinate system
+    /// @param[in] theMajorRadius major radius
+    /// @param[in] theMinorRadius minor radius
     pub fn new_ax2_real2(
-        A2: &crate::gp::Ax2,
-        MajorRadius: f64,
-        MinorRadius: f64,
+        theA2: &crate::gp::Ax2,
+        theMajorRadius: f64,
+        theMinorRadius: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKGeomBase::GC_MakeEllipse_ctor_ax2_real2(
-                    A2,
-                    MajorRadius,
-                    MinorRadius,
+                    theA2,
+                    theMajorRadius,
+                    theMinorRadius,
                 ),
             ))
         }
     }
 
-    /// **Source:** `GC_MakeEllipse.hxx`:72 - `GC_MakeEllipse::GC_MakeEllipse()`
+    /// **Source:** `GC_MakeEllipse.hxx`:71 - `GC_MakeEllipse::GC_MakeEllipse()`
     /// Constructs an ellipse centered on the point Center, where
     /// -   the plane of the ellipse is defined by Center, S1 and S2,
     /// -   its major axis is defined by Center and S1,
     /// -   its major radius is the distance between Center and S1, and
     /// -   its minor radius is the distance between S2 and the major axis.
+    /// @param[in] theS1 point defining the major axis
+    /// @param[in] theS2 point defining the minor radius
+    /// @param[in] theCenter ellipse center
     pub fn new_pnt3(
-        S1: &crate::gp::Pnt,
-        S2: &crate::gp::Pnt,
-        Center: &crate::gp::Pnt,
+        theS1: &crate::gp::Pnt,
+        theS2: &crate::gp::Pnt,
+        theCenter: &crate::gp::Pnt,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKGeomBase::GC_MakeEllipse_ctor_pnt3(S1, S2, Center),
+                crate::ffi_extern_TKGeomBase::GC_MakeEllipse_ctor_pnt3(theS1, theS2, theCenter),
             ))
         }
     }
@@ -1201,7 +2396,8 @@ impl MakeEllipse {
     /// **Source:** `GC_MakeEllipse.hxx`:76 - `GC_MakeEllipse::Value()`
     /// Returns the constructed ellipse.
     /// Exceptions StdFail_NotDone if no ellipse is constructed.
-    pub fn value(&self) -> &crate::ffi_types::HandleGeomEllipse {
+    /// @return resulting ellipse
+    pub fn value(&self) -> &crate::ffi_types::Handle_Geom_Ellipse {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKGeomBase::GC_MakeEllipse_value(
                 self as *const Self,
@@ -1234,10 +2430,189 @@ impl MakeEllipse {
         })
     }
 
-    /// Inherited: **Source:** `GC_Root.hxx`:44 - `GC_Root::Status()`
+    /// Inherited: **Source:** `GC_Root.hxx`:41 - `GC_Root::IsError()`
+    pub fn is_error(&self) -> bool {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKGeomBase::GC_MakeEllipse_inherited_IsError(self as *const Self)
+        })
+    }
+
+    /// Inherited: **Source:** `GC_Root.hxx`:47 - `GC_Root::Status()`
     pub fn status(&self) -> crate::gce::ErrorType {
         crate::gce::ErrorType::try_from(crate::check_result(unsafe {
             crate::ffi_extern_TKGeomBase::GC_MakeEllipse_inherited_Status(self as *const Self)
+        }))
+        .unwrap()
+    }
+}
+
+// ========================
+// From GC_MakeEllipse2d.hxx
+// ========================
+
+/// **Source:** `GC_MakeEllipse2d.hxx`:41 - `GC_MakeEllipse2d`
+/// This class implements construction algorithms for ellipses in the plane.
+/// The result is a `Geom2d_Ellipse`.
+/// A `GC_MakeEllipse2d` object provides a framework for:
+/// - defining the construction parameters;
+/// - running the construction algorithm;
+/// - querying the construction status and the resulting ellipse via `Value()`.
+/// @note Ellipse parameterization range is [0, 2*PI].
+/// @note The X axis of the local coordinate system is the major axis,
+/// and the Y axis is the minor axis.
+pub use crate::ffi_types::GC_MakeEllipse2d as MakeEllipse2d;
+
+unsafe impl crate::CppDeletable for MakeEllipse2d {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            crate::ffi_extern_TKGeomBase::GC_MakeEllipse2d_destructor(ptr);
+        }
+    }
+}
+
+impl MakeEllipse2d {
+    /// **Source:** `GC_MakeEllipse2d.hxx`:48 - `GC_MakeEllipse2d::GC_MakeEllipse2d()`
+    /// Creates an ellipse from a non-persistent one from package gp.
+    /// @param[in] theEllipse source ellipse
+    pub fn new_elips2d(theEllipse: &crate::gp::Elips2d) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomBase::GC_MakeEllipse2d_ctor_elips2d(theEllipse),
+            ))
+        }
+    }
+
+    /// **Source:** `GC_MakeEllipse2d.hxx`:57 - `GC_MakeEllipse2d::GC_MakeEllipse2d()`
+    /// Creates an ellipse from major axis placement and radii.
+    /// @param[in] theMajorAxis major axis placement
+    /// @param[in] theMajorRadius major radius value
+    /// @param[in] theMinorRadius minor radius value
+    /// @param[in] theSense orientation flag
+    /// @note Error status is provided by the underlying `gce_MakeElips2d`
+    /// (for example `gce_InvertRadius` or `gce_NegativeRadius`).
+    pub fn new_ax2d_real2_bool(
+        theMajorAxis: &crate::gp::Ax2d,
+        theMajorRadius: f64,
+        theMinorRadius: f64,
+        theSense: bool,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomBase::GC_MakeEllipse2d_ctor_ax2d_real2_bool(
+                    theMajorAxis,
+                    theMajorRadius,
+                    theMinorRadius,
+                    theSense,
+                ),
+            ))
+        }
+    }
+
+    /// **Source:** `GC_MakeEllipse2d.hxx`:68 - `GC_MakeEllipse2d::GC_MakeEllipse2d()`
+    /// Creates an ellipse from a local coordinate system and radii.
+    /// @param[in] theAxis local coordinate system
+    /// @param[in] theMajorRadius major radius value
+    /// @param[in] theMinorRadius minor radius value
+    /// @note Error status is provided by the underlying `gce_MakeElips2d`
+    /// (for example `gce_InvertRadius` or `gce_NegativeRadius`).
+    pub fn new_ax22d_real2(
+        theAxis: &crate::gp::Ax22d,
+        theMajorRadius: f64,
+        theMinorRadius: f64,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomBase::GC_MakeEllipse2d_ctor_ax22d_real2(
+                    theAxis,
+                    theMajorRadius,
+                    theMinorRadius,
+                ),
+            ))
+        }
+    }
+
+    /// **Source:** `GC_MakeEllipse2d.hxx`:77 - `GC_MakeEllipse2d::GC_MakeEllipse2d()`
+    /// Creates an ellipse from two apex points and center point.
+    /// @param[in] theS1 first apex point
+    /// @param[in] theS2 second point defining minor radius
+    /// @param[in] theCenter center point
+    /// @note Error status is provided by the underlying `gce_MakeElips2d`.
+    pub fn new_pnt2d3(
+        theS1: &crate::gp::Pnt2d,
+        theS2: &crate::gp::Pnt2d,
+        theCenter: &crate::gp::Pnt2d,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomBase::GC_MakeEllipse2d_ctor_pnt2d3(theS1, theS2, theCenter),
+            ))
+        }
+    }
+
+    /// **Source:** `GC_MakeEllipse2d.hxx`:57 - `GC_MakeEllipse2d::GC_MakeEllipse2d()`
+    /// Creates an ellipse from major axis placement and radii.
+    /// @param[in] theMajorAxis major axis placement
+    /// @param[in] theMajorRadius major radius value
+    /// @param[in] theMinorRadius minor radius value
+    /// @param[in] theSense orientation flag
+    /// @note Error status is provided by the underlying `gce_MakeElips2d`
+    /// (for example `gce_InvertRadius` or `gce_NegativeRadius`).
+    pub fn new_ax2d_real2(
+        theMajorAxis: &crate::gp::Ax2d,
+        theMajorRadius: f64,
+        theMinorRadius: f64,
+    ) -> crate::OwnedPtr<Self> {
+        Self::new_ax2d_real2_bool(theMajorAxis, theMajorRadius, theMinorRadius, true)
+    }
+
+    /// **Source:** `GC_MakeEllipse2d.hxx`:84 - `GC_MakeEllipse2d::Value()`
+    /// Returns the constructed ellipse.
+    /// Exceptions StdFail_NotDone if no ellipse is constructed.
+    /// @return resulting ellipse
+    pub fn value(&self) -> &crate::ffi_types::Handle_Geom2d_Ellipse {
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKGeomBase::GC_MakeEllipse2d_value(
+                self as *const Self,
+            )))
+        }
+    }
+
+    /// Upcast to GC_Root
+    pub fn as_root(&self) -> &Root {
+        unsafe {
+            &*crate::check_result(crate::ffi_extern_TKGeomBase::GC_MakeEllipse2d_as_GC_Root(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast to GC_Root (mutable)
+    pub fn as_root_mut(&mut self) -> &mut Root {
+        unsafe {
+            &mut *crate::check_result(
+                crate::ffi_extern_TKGeomBase::GC_MakeEllipse2d_as_GC_Root_mut(self as *mut Self),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `GC_Root.hxx`:38 - `GC_Root::IsDone()`
+    pub fn is_done(&self) -> bool {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKGeomBase::GC_MakeEllipse2d_inherited_IsDone(self as *const Self)
+        })
+    }
+
+    /// Inherited: **Source:** `GC_Root.hxx`:41 - `GC_Root::IsError()`
+    pub fn is_error(&self) -> bool {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKGeomBase::GC_MakeEllipse2d_inherited_IsError(self as *const Self)
+        })
+    }
+
+    /// Inherited: **Source:** `GC_Root.hxx`:47 - `GC_Root::Status()`
+    pub fn status(&self) -> crate::gce::ErrorType {
+        crate::gce::ErrorType::try_from(crate::check_result(unsafe {
+            crate::ffi_extern_TKGeomBase::GC_MakeEllipse2d_inherited_Status(self as *const Self)
         }))
         .unwrap()
     }
@@ -1248,14 +2623,14 @@ impl MakeEllipse {
 // ========================
 
 /// **Source:** `GC_MakeHyperbola.hxx`:61 - `GC_MakeHyperbola`
-/// This class implements construction algorithms for a hyperbola in
-/// 3D space. The result is a Geom_Hyperbola hyperbola.
+/// Implements construction algorithms for hyperbolas in 3D space.
+/// The result is a `Geom_Hyperbola`.
 /// A MakeHyperbola object provides a framework for:
 /// -   defining the construction of the hyperbola,
 /// -   implementing the construction algorithm, and
 /// -   consulting the results. In particular, the Value
 /// function returns the constructed hyperbola.
-/// To define the main branch of an hyperbola.
+/// To define the main branch of a hyperbola.
 /// The parameterization range is ]-infinite,+infinite[
 /// It is possible to get the other branch and the two conjugate
 /// branches of the main branch.
@@ -1289,59 +2664,67 @@ unsafe impl crate::CppDeletable for MakeHyperbola {
 }
 
 impl MakeHyperbola {
-    /// **Source:** `GC_MakeHyperbola.hxx`:67 - `GC_MakeHyperbola::GC_MakeHyperbola()`
-    /// Creates  an Hyperbola from a non persistent hyperbola  from package gp by conversion.
-    pub fn new_hypr(H: &crate::gp::Hypr) -> crate::OwnedPtr<Self> {
+    /// **Source:** `GC_MakeHyperbola.hxx`:68 - `GC_MakeHyperbola::GC_MakeHyperbola()`
+    /// Creates a hyperbola from a `gp_Hypr`.
+    /// @param[in] theH source hyperbola
+    pub fn new_hypr(theH: &crate::gp::Hypr) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKGeomBase::GC_MakeHyperbola_ctor_hypr(H),
+                crate::ffi_extern_TKGeomBase::GC_MakeHyperbola_ctor_hypr(theH),
             ))
         }
     }
 
-    /// **Source:** `GC_MakeHyperbola.hxx`:73 - `GC_MakeHyperbola::GC_MakeHyperbola()`
+    /// **Source:** `GC_MakeHyperbola.hxx`:77 - `GC_MakeHyperbola::GC_MakeHyperbola()`
     /// Constructs a hyperbola centered on the origin of the coordinate system
     /// A2, with major and minor radii MajorRadius and MinorRadius, where:
     /// the plane of the hyperbola is defined by the "X Axis" and "Y Axis" of A2,
     /// -   its major axis is the "X Axis" of A2.
+    /// @param[in] theA2 hyperbola local coordinate system
+    /// @param[in] theMajorRadius major radius
+    /// @param[in] theMinorRadius minor radius
     pub fn new_ax2_real2(
-        A2: &crate::gp::Ax2,
-        MajorRadius: f64,
-        MinorRadius: f64,
+        theA2: &crate::gp::Ax2,
+        theMajorRadius: f64,
+        theMinorRadius: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKGeomBase::GC_MakeHyperbola_ctor_ax2_real2(
-                    A2,
-                    MajorRadius,
-                    MinorRadius,
+                    theA2,
+                    theMajorRadius,
+                    theMinorRadius,
                 ),
             ))
         }
     }
 
-    /// **Source:** `GC_MakeHyperbola.hxx`:82 - `GC_MakeHyperbola::GC_MakeHyperbola()`
+    /// **Source:** `GC_MakeHyperbola.hxx`:89 - `GC_MakeHyperbola::GC_MakeHyperbola()`
     /// Constructs a hyperbola centered on the point Center, where
     /// -   the plane of the hyperbola is defined by Center, S1 and S2,
     /// -   its major axis is defined by Center and S1,
     /// -   its major radius is the distance between Center and S1, and
     /// -   its minor radius is the distance between S2 and the major axis;
+    /// @param[in] theS1 point defining the major axis
+    /// @param[in] theS2 point defining the minor radius
+    /// @param[in] theCenter hyperbola center
     pub fn new_pnt3(
-        S1: &crate::gp::Pnt,
-        S2: &crate::gp::Pnt,
-        Center: &crate::gp::Pnt,
+        theS1: &crate::gp::Pnt,
+        theS2: &crate::gp::Pnt,
+        theCenter: &crate::gp::Pnt,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKGeomBase::GC_MakeHyperbola_ctor_pnt3(S1, S2, Center),
+                crate::ffi_extern_TKGeomBase::GC_MakeHyperbola_ctor_pnt3(theS1, theS2, theCenter),
             ))
         }
     }
 
-    /// **Source:** `GC_MakeHyperbola.hxx`:86 - `GC_MakeHyperbola::Value()`
+    /// **Source:** `GC_MakeHyperbola.hxx`:96 - `GC_MakeHyperbola::Value()`
     /// Returns the constructed hyperbola.
     /// Exceptions StdFail_NotDone if no hyperbola is constructed.
-    pub fn value(&self) -> &crate::ffi_types::HandleGeomHyperbola {
+    /// @return resulting hyperbola
+    pub fn value(&self) -> &crate::ffi_types::Handle_Geom_Hyperbola {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKGeomBase::GC_MakeHyperbola_value(
                 self as *const Self,
@@ -1374,10 +2757,176 @@ impl MakeHyperbola {
         })
     }
 
-    /// Inherited: **Source:** `GC_Root.hxx`:44 - `GC_Root::Status()`
+    /// Inherited: **Source:** `GC_Root.hxx`:41 - `GC_Root::IsError()`
+    pub fn is_error(&self) -> bool {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKGeomBase::GC_MakeHyperbola_inherited_IsError(self as *const Self)
+        })
+    }
+
+    /// Inherited: **Source:** `GC_Root.hxx`:47 - `GC_Root::Status()`
     pub fn status(&self) -> crate::gce::ErrorType {
         crate::gce::ErrorType::try_from(crate::check_result(unsafe {
             crate::ffi_extern_TKGeomBase::GC_MakeHyperbola_inherited_Status(self as *const Self)
+        }))
+        .unwrap()
+    }
+}
+
+// ========================
+// From GC_MakeHyperbola2d.hxx
+// ========================
+
+/// **Source:** `GC_MakeHyperbola2d.hxx`:41 - `GC_MakeHyperbola2d`
+/// This class implements construction algorithms for hyperbolas in the plane.
+/// The result is a `Geom2d_Hyperbola` (main branch).
+/// A `GC_MakeHyperbola2d` object provides a framework for:
+/// - defining the construction parameters;
+/// - running the construction algorithm;
+/// - querying the construction status and the resulting hyperbola via `Value()`.
+/// @note Hyperbola parameterization range is ]-infinite, +infinite[.
+/// @note In the local coordinate system, the X axis is the major axis
+/// and the Y axis is the minor axis.
+pub use crate::ffi_types::GC_MakeHyperbola2d as MakeHyperbola2d;
+
+unsafe impl crate::CppDeletable for MakeHyperbola2d {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            crate::ffi_extern_TKGeomBase::GC_MakeHyperbola2d_destructor(ptr);
+        }
+    }
+}
+
+impl MakeHyperbola2d {
+    /// **Source:** `GC_MakeHyperbola2d.hxx`:48 - `GC_MakeHyperbola2d::GC_MakeHyperbola2d()`
+    /// Creates a hyperbola from a non-persistent one from package gp.
+    /// @param[in] theHyperbola source hyperbola
+    pub fn new_hypr2d(theHyperbola: &crate::gp::Hypr2d) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomBase::GC_MakeHyperbola2d_ctor_hypr2d(theHyperbola),
+            ))
+        }
+    }
+
+    /// **Source:** `GC_MakeHyperbola2d.hxx`:57 - `GC_MakeHyperbola2d::GC_MakeHyperbola2d()`
+    /// Creates a hyperbola from major axis placement and radii.
+    /// @param[in] theMajorAxis major axis placement
+    /// @param[in] theMajorRadius major radius value
+    /// @param[in] theMinorRadius minor radius value
+    /// @param[in] theSense orientation flag
+    /// @note Error status is provided by the underlying `gce_MakeHypr2d`
+    /// (for example `gce_NegativeRadius`).
+    pub fn new_ax2d_real2_bool(
+        theMajorAxis: &crate::gp::Ax2d,
+        theMajorRadius: f64,
+        theMinorRadius: f64,
+        theSense: bool,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomBase::GC_MakeHyperbola2d_ctor_ax2d_real2_bool(
+                    theMajorAxis,
+                    theMajorRadius,
+                    theMinorRadius,
+                    theSense,
+                ),
+            ))
+        }
+    }
+
+    /// **Source:** `GC_MakeHyperbola2d.hxx`:68 - `GC_MakeHyperbola2d::GC_MakeHyperbola2d()`
+    /// Creates a hyperbola from local coordinate system and radii.
+    /// @param[in] theAxis local coordinate system
+    /// @param[in] theMajorRadius major radius value
+    /// @param[in] theMinorRadius minor radius value
+    /// @note Error status is provided by the underlying `gce_MakeHypr2d`
+    /// (for example `gce_NegativeRadius`).
+    pub fn new_ax22d_real2(
+        theAxis: &crate::gp::Ax22d,
+        theMajorRadius: f64,
+        theMinorRadius: f64,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomBase::GC_MakeHyperbola2d_ctor_ax22d_real2(
+                    theAxis,
+                    theMajorRadius,
+                    theMinorRadius,
+                ),
+            ))
+        }
+    }
+
+    /// **Source:** `GC_MakeHyperbola2d.hxx`:78 - `GC_MakeHyperbola2d::GC_MakeHyperbola2d()`
+    /// Creates a hyperbola from two apex points and center point.
+    /// @param[in] theS1 first apex point
+    /// @param[in] theS2 second point defining conjugate radius
+    /// @param[in] theCenter center point
+    /// @note Error status is provided by the underlying `gce_MakeHypr2d`
+    /// (for example `gce_ConfusedPoints` or `gce_ColinearPoints`).
+    pub fn new_pnt2d3(
+        theS1: &crate::gp::Pnt2d,
+        theS2: &crate::gp::Pnt2d,
+        theCenter: &crate::gp::Pnt2d,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomBase::GC_MakeHyperbola2d_ctor_pnt2d3(
+                    theS1, theS2, theCenter,
+                ),
+            ))
+        }
+    }
+
+    /// **Source:** `GC_MakeHyperbola2d.hxx`:85 - `GC_MakeHyperbola2d::Value()`
+    /// Returns the constructed hyperbola.
+    /// Exceptions: StdFail_NotDone if no hyperbola is constructed.
+    /// @return resulting hyperbola
+    pub fn value(&self) -> &crate::ffi_types::Handle_Geom2d_Hyperbola {
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKGeomBase::GC_MakeHyperbola2d_value(
+                self as *const Self,
+            )))
+        }
+    }
+
+    /// Upcast to GC_Root
+    pub fn as_root(&self) -> &Root {
+        unsafe {
+            &*crate::check_result(crate::ffi_extern_TKGeomBase::GC_MakeHyperbola2d_as_GC_Root(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast to GC_Root (mutable)
+    pub fn as_root_mut(&mut self) -> &mut Root {
+        unsafe {
+            &mut *crate::check_result(
+                crate::ffi_extern_TKGeomBase::GC_MakeHyperbola2d_as_GC_Root_mut(self as *mut Self),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `GC_Root.hxx`:38 - `GC_Root::IsDone()`
+    pub fn is_done(&self) -> bool {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKGeomBase::GC_MakeHyperbola2d_inherited_IsDone(self as *const Self)
+        })
+    }
+
+    /// Inherited: **Source:** `GC_Root.hxx`:41 - `GC_Root::IsError()`
+    pub fn is_error(&self) -> bool {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKGeomBase::GC_MakeHyperbola2d_inherited_IsError(self as *const Self)
+        })
+    }
+
+    /// Inherited: **Source:** `GC_Root.hxx`:47 - `GC_Root::Status()`
+    pub fn status(&self) -> crate::gce::ErrorType {
+        crate::gce::ErrorType::try_from(crate::check_result(unsafe {
+            crate::ffi_extern_TKGeomBase::GC_MakeHyperbola2d_inherited_Status(self as *const Self)
         }))
         .unwrap()
     }
@@ -1409,67 +2958,74 @@ unsafe impl crate::CppDeletable for MakeLine {
 }
 
 impl MakeLine {
-    /// **Source:** `GC_MakeLine.hxx`:49 - `GC_MakeLine::GC_MakeLine()`
+    /// **Source:** `GC_MakeLine.hxx`:50 - `GC_MakeLine::GC_MakeLine()`
     /// Creates a line located in 3D space with the axis placement A1.
-    /// The Location of A1 is the origin of the line.
-    pub fn new_ax1(A1: &crate::gp::Ax1) -> crate::OwnedPtr<Self> {
+    /// @param[in] theA1 line axis placement
+    /// @note The location of `theA1` is the origin of the line.
+    pub fn new_ax1(theA1: &crate::gp::Ax1) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKGeomBase::GC_MakeLine_ctor_ax1(A1),
+                crate::ffi_extern_TKGeomBase::GC_MakeLine_ctor_ax1(theA1),
             ))
         }
     }
 
-    /// **Source:** `GC_MakeLine.hxx`:52 - `GC_MakeLine::GC_MakeLine()`
-    /// Creates a line from a non persistent line from package gp.
-    pub fn new_lin(L: &crate::gp::Lin) -> crate::OwnedPtr<Self> {
+    /// **Source:** `GC_MakeLine.hxx`:54 - `GC_MakeLine::GC_MakeLine()`
+    /// Creates a line from a non-persistent line from package gp.
+    /// @param[in] theL source line
+    pub fn new_lin(theL: &crate::gp::Lin) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKGeomBase::GC_MakeLine_ctor_lin(L),
-            ))
-        }
-    }
-
-    /// **Source:** `GC_MakeLine.hxx`:55 - `GC_MakeLine::GC_MakeLine()`
-    /// P is the origin and V is the direction of the line.
-    pub fn new_pnt_dir(P: &crate::gp::Pnt, V: &crate::gp::Dir) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKGeomBase::GC_MakeLine_ctor_pnt_dir(P, V),
+                crate::ffi_extern_TKGeomBase::GC_MakeLine_ctor_lin(theL),
             ))
         }
     }
 
     /// **Source:** `GC_MakeLine.hxx`:59 - `GC_MakeLine::GC_MakeLine()`
-    /// Make a Line from Geom <TheLin> parallel to another
-    /// Lin <Lin> and passing through a Pnt <Point>.
-    pub fn new_lin_pnt(Lin: &crate::gp::Lin, Point: &crate::gp::Pnt) -> crate::OwnedPtr<Self> {
+    /// Creates a line from point and direction.
+    /// @param[in] theP line origin
+    /// @param[in] theV line direction
+    pub fn new_pnt_dir(theP: &crate::gp::Pnt, theV: &crate::gp::Dir) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKGeomBase::GC_MakeLine_ctor_lin_pnt(Lin, Point),
+                crate::ffi_extern_TKGeomBase::GC_MakeLine_ctor_pnt_dir(theP, theV),
             ))
         }
     }
 
-    /// **Source:** `GC_MakeLine.hxx`:67 - `GC_MakeLine::GC_MakeLine()`
-    /// Make a Line from Geom <TheLin> passing through 2
-    /// Pnt <P1>,<P2>.
-    /// It returns false if <p1> and <P2> are confused.
-    /// Warning
-    /// If the points P1 and P2 are coincident (that is, when
-    /// IsDone returns false), the Status function returns gce_ConfusedPoints.
-    pub fn new_pnt2(P1: &crate::gp::Pnt, P2: &crate::gp::Pnt) -> crate::OwnedPtr<Self> {
+    /// **Source:** `GC_MakeLine.hxx`:64 - `GC_MakeLine::GC_MakeLine()`
+    /// Creates a line parallel to the input line and passing through the input point.
+    /// @param[in] theLin source line
+    /// @param[in] thePoint point on resulting line
+    pub fn new_lin_pnt(
+        theLin: &crate::gp::Lin,
+        thePoint: &crate::gp::Pnt,
+    ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKGeomBase::GC_MakeLine_ctor_pnt2(P1, P2),
+                crate::ffi_extern_TKGeomBase::GC_MakeLine_ctor_lin_pnt(theLin, thePoint),
             ))
         }
     }
 
-    /// **Source:** `GC_MakeLine.hxx`:71 - `GC_MakeLine::Value()`
+    /// **Source:** `GC_MakeLine.hxx`:70 - `GC_MakeLine::GC_MakeLine()`
+    /// Creates a line passing through two points.
+    /// @param[in] theP1 first point
+    /// @param[in] theP2 second point
+    /// @note Construction fails with `gce_ConfusedPoints` if the two points are coincident.
+    pub fn new_pnt2(theP1: &crate::gp::Pnt, theP2: &crate::gp::Pnt) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomBase::GC_MakeLine_ctor_pnt2(theP1, theP2),
+            ))
+        }
+    }
+
+    /// **Source:** `GC_MakeLine.hxx`:75 - `GC_MakeLine::Value()`
     /// Returns the constructed line.
     /// Exceptions StdFail_NotDone if no line is constructed.
-    pub fn value(&self) -> &crate::ffi_types::HandleGeomLine {
+    /// @return resulting line
+    pub fn value(&self) -> &crate::ffi_types::Handle_Geom_Line {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKGeomBase::GC_MakeLine_value(
                 self as *const Self,
@@ -1502,10 +3058,177 @@ impl MakeLine {
         })
     }
 
-    /// Inherited: **Source:** `GC_Root.hxx`:44 - `GC_Root::Status()`
+    /// Inherited: **Source:** `GC_Root.hxx`:41 - `GC_Root::IsError()`
+    pub fn is_error(&self) -> bool {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKGeomBase::GC_MakeLine_inherited_IsError(self as *const Self)
+        })
+    }
+
+    /// Inherited: **Source:** `GC_Root.hxx`:47 - `GC_Root::Status()`
     pub fn status(&self) -> crate::gce::ErrorType {
         crate::gce::ErrorType::try_from(crate::check_result(unsafe {
             crate::ffi_extern_TKGeomBase::GC_MakeLine_inherited_Status(self as *const Self)
+        }))
+        .unwrap()
+    }
+}
+
+// ========================
+// From GC_MakeLine2d.hxx
+// ========================
+
+/// **Source:** `GC_MakeLine2d.hxx`:45 - `GC_MakeLine2d`
+/// This class implements construction algorithms for lines in the plane.
+/// The result is a `Geom2d_Line`.
+/// A `GC_MakeLine2d` object provides a framework for:
+/// - defining the construction parameters;
+/// - running the construction algorithm;
+/// - querying the construction status and the resulting line via `Value()`.
+/// Supported constructions include:
+/// - line from axis placement;
+/// - line from existing `gp_Lin2d`;
+/// - line from point and direction;
+/// - line parallel to input line through a point;
+/// - line parallel to input line at signed distance;
+/// - line through two points.
+pub use crate::ffi_types::GC_MakeLine2d as MakeLine2d;
+
+unsafe impl crate::CppDeletable for MakeLine2d {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            crate::ffi_extern_TKGeomBase::GC_MakeLine2d_destructor(ptr);
+        }
+    }
+}
+
+impl MakeLine2d {
+    /// **Source:** `GC_MakeLine2d.hxx`:53 - `GC_MakeLine2d::GC_MakeLine2d()`
+    /// Creates a line from an axis placement.
+    /// @param[in] theAxis axis placement
+    /// @note The location of `theAxis` is the line origin.
+    pub fn new_ax2d(theAxis: &crate::gp::Ax2d) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomBase::GC_MakeLine2d_ctor_ax2d(theAxis),
+            ))
+        }
+    }
+
+    /// **Source:** `GC_MakeLine2d.hxx`:57 - `GC_MakeLine2d::GC_MakeLine2d()`
+    /// Creates a line from a non-persistent line from package gp.
+    /// @param[in] theLine source line
+    pub fn new_lin2d(theLine: &crate::gp::Lin2d) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomBase::GC_MakeLine2d_ctor_lin2d(theLine),
+            ))
+        }
+    }
+
+    /// **Source:** `GC_MakeLine2d.hxx`:62 - `GC_MakeLine2d::GC_MakeLine2d()`
+    /// Constructs a line from origin and direction.
+    /// @param[in] thePoint point on line
+    /// @param[in] theDir direction
+    pub fn new_pnt2d_dir2d(
+        thePoint: &crate::gp::Pnt2d,
+        theDir: &crate::gp::Dir2d,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomBase::GC_MakeLine2d_ctor_pnt2d_dir2d(thePoint, theDir),
+            ))
+        }
+    }
+
+    /// **Source:** `GC_MakeLine2d.hxx`:67 - `GC_MakeLine2d::GC_MakeLine2d()`
+    /// Constructs a line parallel to input line and passing through a point.
+    /// @param[in] theLine source line
+    /// @param[in] thePoint point on resulting line
+    pub fn new_lin2d_pnt2d(
+        theLine: &crate::gp::Lin2d,
+        thePoint: &crate::gp::Pnt2d,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomBase::GC_MakeLine2d_ctor_lin2d_pnt2d(theLine, thePoint),
+            ))
+        }
+    }
+
+    /// **Source:** `GC_MakeLine2d.hxx`:72 - `GC_MakeLine2d::GC_MakeLine2d()`
+    /// Constructs a line parallel to input line at signed distance.
+    /// @param[in] theLine source line
+    /// @param[in] theDist signed distance
+    pub fn new_lin2d_real(theLine: &crate::gp::Lin2d, theDist: f64) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomBase::GC_MakeLine2d_ctor_lin2d_real(theLine, theDist),
+            ))
+        }
+    }
+
+    /// **Source:** `GC_MakeLine2d.hxx`:78 - `GC_MakeLine2d::GC_MakeLine2d()`
+    /// Constructs a line passing through two points.
+    /// @param[in] theP1 first point
+    /// @param[in] theP2 second point
+    /// @note Status is `gce_ConfusedPoints` if points are coincident.
+    pub fn new_pnt2d2(theP1: &crate::gp::Pnt2d, theP2: &crate::gp::Pnt2d) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomBase::GC_MakeLine2d_ctor_pnt2d2(theP1, theP2),
+            ))
+        }
+    }
+
+    /// **Source:** `GC_MakeLine2d.hxx`:83 - `GC_MakeLine2d::Value()`
+    /// Returns the constructed line.
+    /// Exceptions StdFail_NotDone if no line is constructed.
+    /// @return resulting line
+    pub fn value(&self) -> &crate::ffi_types::Handle_Geom2d_Line {
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKGeomBase::GC_MakeLine2d_value(
+                self as *const Self,
+            )))
+        }
+    }
+
+    /// Upcast to GC_Root
+    pub fn as_root(&self) -> &Root {
+        unsafe {
+            &*crate::check_result(crate::ffi_extern_TKGeomBase::GC_MakeLine2d_as_GC_Root(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast to GC_Root (mutable)
+    pub fn as_root_mut(&mut self) -> &mut Root {
+        unsafe {
+            &mut *crate::check_result(crate::ffi_extern_TKGeomBase::GC_MakeLine2d_as_GC_Root_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `GC_Root.hxx`:38 - `GC_Root::IsDone()`
+    pub fn is_done(&self) -> bool {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKGeomBase::GC_MakeLine2d_inherited_IsDone(self as *const Self)
+        })
+    }
+
+    /// Inherited: **Source:** `GC_Root.hxx`:41 - `GC_Root::IsError()`
+    pub fn is_error(&self) -> bool {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKGeomBase::GC_MakeLine2d_inherited_IsError(self as *const Self)
+        })
+    }
+
+    /// Inherited: **Source:** `GC_Root.hxx`:47 - `GC_Root::Status()`
+    pub fn status(&self) -> crate::gce::ErrorType {
+        crate::gce::ErrorType::try_from(crate::check_result(unsafe {
+            crate::ffi_extern_TKGeomBase::GC_MakeLine2d_inherited_Status(self as *const Self)
         }))
         .unwrap()
     }
@@ -1534,67 +3257,80 @@ unsafe impl crate::CppDeletable for MakeMirror {
 }
 
 impl MakeMirror {
-    /// **Source:** `GC_MakeMirror.hxx`:44 - `GC_MakeMirror::GC_MakeMirror()`
-    pub fn new_pnt(Point: &crate::gp::Pnt) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKGeomBase::GC_MakeMirror_ctor_pnt(Point),
-            ))
-        }
-    }
-
     /// **Source:** `GC_MakeMirror.hxx`:46 - `GC_MakeMirror::GC_MakeMirror()`
-    pub fn new_ax1(Axis: &crate::gp::Ax1) -> crate::OwnedPtr<Self> {
+    /// Constructs a central symmetry about a point.
+    /// @param[in] thePoint center point
+    pub fn new_pnt(thePoint: &crate::gp::Pnt) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKGeomBase::GC_MakeMirror_ctor_ax1(Axis),
+                crate::ffi_extern_TKGeomBase::GC_MakeMirror_ctor_pnt(thePoint),
             ))
         }
     }
 
-    /// **Source:** `GC_MakeMirror.hxx`:48 - `GC_MakeMirror::GC_MakeMirror()`
-    pub fn new_lin(Line: &crate::gp::Lin) -> crate::OwnedPtr<Self> {
+    /// **Source:** `GC_MakeMirror.hxx`:50 - `GC_MakeMirror::GC_MakeMirror()`
+    /// Constructs an axial symmetry about an axis.
+    /// @param[in] theAxis mirror axis
+    pub fn new_ax1(theAxis: &crate::gp::Ax1) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKGeomBase::GC_MakeMirror_ctor_lin(Line),
+                crate::ffi_extern_TKGeomBase::GC_MakeMirror_ctor_ax1(theAxis),
             ))
         }
     }
 
-    /// **Source:** `GC_MakeMirror.hxx`:52 - `GC_MakeMirror::GC_MakeMirror()`
-    /// Make a symmetry transformation af axis defined by
-    /// <Point> and <Direc>.
-    pub fn new_pnt_dir(Point: &crate::gp::Pnt, Direc: &crate::gp::Dir) -> crate::OwnedPtr<Self> {
+    /// **Source:** `GC_MakeMirror.hxx`:54 - `GC_MakeMirror::GC_MakeMirror()`
+    /// Constructs an axial symmetry about a line.
+    /// @param[in] theLine mirror line
+    pub fn new_lin(theLine: &crate::gp::Lin) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKGeomBase::GC_MakeMirror_ctor_pnt_dir(Point, Direc),
+                crate::ffi_extern_TKGeomBase::GC_MakeMirror_ctor_lin(theLine),
             ))
         }
     }
 
-    /// **Source:** `GC_MakeMirror.hxx`:55 - `GC_MakeMirror::GC_MakeMirror()`
-    /// Make a symmetry transformation of plane <Plane>.
-    pub fn new_pln(Plane: &crate::gp::Pln) -> crate::OwnedPtr<Self> {
+    /// **Source:** `GC_MakeMirror.hxx`:59 - `GC_MakeMirror::GC_MakeMirror()`
+    /// Constructs an axial symmetry about an axis defined by point and direction.
+    /// @param[in] thePoint point on the axis
+    /// @param[in] theDirec axis direction
+    pub fn new_pnt_dir(
+        thePoint: &crate::gp::Pnt,
+        theDirec: &crate::gp::Dir,
+    ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKGeomBase::GC_MakeMirror_ctor_pln(Plane),
+                crate::ffi_extern_TKGeomBase::GC_MakeMirror_ctor_pnt_dir(thePoint, theDirec),
             ))
         }
     }
 
-    /// **Source:** `GC_MakeMirror.hxx`:58 - `GC_MakeMirror::GC_MakeMirror()`
-    /// Make a symmetry transformation of plane <Plane>.
-    pub fn new_ax2(Plane: &crate::gp::Ax2) -> crate::OwnedPtr<Self> {
+    /// **Source:** `GC_MakeMirror.hxx`:63 - `GC_MakeMirror::GC_MakeMirror()`
+    /// Constructs a planar symmetry about a plane.
+    /// @param[in] thePlane mirror plane
+    pub fn new_pln(thePlane: &crate::gp::Pln) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKGeomBase::GC_MakeMirror_ctor_ax2(Plane),
+                crate::ffi_extern_TKGeomBase::GC_MakeMirror_ctor_pln(thePlane),
             ))
         }
     }
 
-    /// **Source:** `GC_MakeMirror.hxx`:61 - `GC_MakeMirror::Value()`
+    /// **Source:** `GC_MakeMirror.hxx`:67 - `GC_MakeMirror::GC_MakeMirror()`
+    /// Constructs a planar symmetry about a plane.
+    /// @param[in] thePlane mirror plane
+    pub fn new_ax2(thePlane: &crate::gp::Ax2) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomBase::GC_MakeMirror_ctor_ax2(thePlane),
+            ))
+        }
+    }
+
+    /// **Source:** `GC_MakeMirror.hxx`:71 - `GC_MakeMirror::Value()`
     /// Returns the constructed transformation.
-    pub fn value(&self) -> &crate::ffi_types::HandleGeomTransformation {
+    /// @return resulting transformation
+    pub fn value(&self) -> &crate::ffi_types::Handle_Geom_Transformation {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKGeomBase::GC_MakeMirror_value(
                 self as *const Self,
@@ -1604,16 +3340,272 @@ impl MakeMirror {
 }
 
 // ========================
+// From GC_MakeMirror2d.hxx
+// ========================
+
+/// **Source:** `GC_MakeMirror2d.hxx`:37 - `GC_MakeMirror2d`
+/// This class implements elementary construction algorithms for
+/// symmetric transformations in 2D space about a point, axis, or line.
+/// The result is a `Geom2d_Transformation`.
+/// A `GC_MakeMirror2d` object provides a framework for:
+/// - defining the transformation parameters;
+/// - running the construction algorithm;
+/// - querying the resulting transformation via `Value()`.
+pub use crate::ffi_types::GC_MakeMirror2d as MakeMirror2d;
+
+unsafe impl crate::CppDeletable for MakeMirror2d {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            crate::ffi_extern_TKGeomBase::GC_MakeMirror2d_destructor(ptr);
+        }
+    }
+}
+
+impl MakeMirror2d {
+    /// **Source:** `GC_MakeMirror2d.hxx`:44 - `GC_MakeMirror2d::GC_MakeMirror2d()`
+    /// Constructs a central symmetry about a point.
+    /// @param[in] thePoint center point
+    pub fn new_pnt2d(thePoint: &crate::gp::Pnt2d) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomBase::GC_MakeMirror2d_ctor_pnt2d(thePoint),
+            ))
+        }
+    }
+
+    /// **Source:** `GC_MakeMirror2d.hxx`:48 - `GC_MakeMirror2d::GC_MakeMirror2d()`
+    /// Constructs an axial symmetry about an axis.
+    /// @param[in] theAxis symmetry axis
+    pub fn new_ax2d(theAxis: &crate::gp::Ax2d) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomBase::GC_MakeMirror2d_ctor_ax2d(theAxis),
+            ))
+        }
+    }
+
+    /// **Source:** `GC_MakeMirror2d.hxx`:52 - `GC_MakeMirror2d::GC_MakeMirror2d()`
+    /// Constructs an axial symmetry about a line.
+    /// @param[in] theLine symmetry line
+    pub fn new_lin2d(theLine: &crate::gp::Lin2d) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomBase::GC_MakeMirror2d_ctor_lin2d(theLine),
+            ))
+        }
+    }
+
+    /// **Source:** `GC_MakeMirror2d.hxx`:57 - `GC_MakeMirror2d::GC_MakeMirror2d()`
+    /// Constructs an axial symmetry about a line defined by point and direction.
+    /// @param[in] thePoint point on symmetry axis
+    /// @param[in] theDirec symmetry direction
+    pub fn new_pnt2d_dir2d(
+        thePoint: &crate::gp::Pnt2d,
+        theDirec: &crate::gp::Dir2d,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomBase::GC_MakeMirror2d_ctor_pnt2d_dir2d(thePoint, theDirec),
+            ))
+        }
+    }
+
+    /// **Source:** `GC_MakeMirror2d.hxx`:61 - `GC_MakeMirror2d::Value()`
+    /// Returns the constructed transformation.
+    /// @return resulting transformation
+    pub fn value(&self) -> &crate::ffi_types::Handle_Geom2d_Transformation {
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKGeomBase::GC_MakeMirror2d_value(
+                self as *const Self,
+            )))
+        }
+    }
+}
+
+// ========================
+// From GC_MakeParabola2d.hxx
+// ========================
+
+/// **Source:** `GC_MakeParabola2d.hxx`:41 - `GC_MakeParabola2d`
+/// This class implements construction algorithms for parabolas in the plane.
+/// The result is a `Geom2d_Parabola`.
+/// A `GC_MakeParabola2d` object provides a framework for:
+/// - defining the construction parameters;
+/// - running the construction algorithm;
+/// - querying the construction status and the resulting parabola via `Value()`.
+/// @note Parabola parameterization range is ]-infinite, +infinite[.
+/// @note In the local coordinate system, the parabola equation is
+/// Y**2 = (2*P) * X, where P is the parameter and F = P/2 is focal length.
+pub use crate::ffi_types::GC_MakeParabola2d as MakeParabola2d;
+
+unsafe impl crate::CppDeletable for MakeParabola2d {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            crate::ffi_extern_TKGeomBase::GC_MakeParabola2d_destructor(ptr);
+        }
+    }
+}
+
+impl MakeParabola2d {
+    /// **Source:** `GC_MakeParabola2d.hxx`:48 - `GC_MakeParabola2d::GC_MakeParabola2d()`
+    /// Creates a parabola from a non-persistent one from package gp.
+    /// @param[in] theParabola source parabola
+    pub fn new_parab2d(theParabola: &crate::gp::Parab2d) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomBase::GC_MakeParabola2d_ctor_parab2d(theParabola),
+            ))
+        }
+    }
+
+    /// **Source:** `GC_MakeParabola2d.hxx`:54 - `GC_MakeParabola2d::GC_MakeParabola2d()`
+    /// Creates a parabola from a local coordinate system and focal length.
+    /// @param[in] theAxis local coordinate system
+    /// @param[in] theFocal focal length
+    /// @note Construction fails with `gce_NullFocusLength` if `theFocal` is negative.
+    pub fn new_ax22d_real(theAxis: &crate::gp::Ax22d, theFocal: f64) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomBase::GC_MakeParabola2d_ctor_ax22d_real(theAxis, theFocal),
+            ))
+        }
+    }
+
+    /// **Source:** `GC_MakeParabola2d.hxx`:61 - `GC_MakeParabola2d::GC_MakeParabola2d()`
+    /// Creates a parabola from symmetry axis and focal length.
+    /// @param[in] theMirrorAxis symmetry axis placement
+    /// @param[in] theFocal focal length
+    /// @param[in] theSense orientation flag
+    /// @note Construction fails with `gce_NullFocusLength` if `theFocal` is negative.
+    pub fn new_ax2d_real_bool(
+        theMirrorAxis: &crate::gp::Ax2d,
+        theFocal: f64,
+        theSense: bool,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomBase::GC_MakeParabola2d_ctor_ax2d_real_bool(
+                    theMirrorAxis,
+                    theFocal,
+                    theSense,
+                ),
+            ))
+        }
+    }
+
+    /// **Source:** `GC_MakeParabola2d.hxx`:69 - `GC_MakeParabola2d::GC_MakeParabola2d()`
+    /// Creates a parabola from directrix and focus point.
+    /// @param[in] theDirectrix directrix axis
+    /// @param[in] theFocus focus point
+    /// @param[in] theSense orientation flag
+    pub fn new_ax2d_pnt2d_bool(
+        theDirectrix: &crate::gp::Ax2d,
+        theFocus: &crate::gp::Pnt2d,
+        theSense: bool,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomBase::GC_MakeParabola2d_ctor_ax2d_pnt2d_bool(
+                    theDirectrix,
+                    theFocus,
+                    theSense,
+                ),
+            ))
+        }
+    }
+
+    /// **Source:** `GC_MakeParabola2d.hxx`:78 - `GC_MakeParabola2d::GC_MakeParabola2d()`
+    /// Creates a parabola from focus and vertex points.
+    /// @param[in] theFocus focus point
+    /// @param[in] theVertex vertex point
+    /// @note Error status is provided by the underlying `gce_MakeParab2d`
+    /// (for example `gce_NullAxis`).
+    pub fn new_pnt2d2(
+        theFocus: &crate::gp::Pnt2d,
+        theVertex: &crate::gp::Pnt2d,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomBase::GC_MakeParabola2d_ctor_pnt2d2(theFocus, theVertex),
+            ))
+        }
+    }
+
+    /// **Source:** `GC_MakeParabola2d.hxx`:69 - `GC_MakeParabola2d::GC_MakeParabola2d()`
+    /// Creates a parabola from directrix and focus point.
+    /// @param[in] theDirectrix directrix axis
+    /// @param[in] theFocus focus point
+    /// @param[in] theSense orientation flag
+    pub fn new_ax2d_pnt2d(
+        theDirectrix: &crate::gp::Ax2d,
+        theFocus: &crate::gp::Pnt2d,
+    ) -> crate::OwnedPtr<Self> {
+        Self::new_ax2d_pnt2d_bool(theDirectrix, theFocus, true)
+    }
+
+    /// **Source:** `GC_MakeParabola2d.hxx`:83 - `GC_MakeParabola2d::Value()`
+    /// Returns the constructed parabola.
+    /// Exceptions StdFail_NotDone if no parabola is constructed.
+    /// @return resulting parabola
+    pub fn value(&self) -> &crate::ffi_types::Handle_Geom2d_Parabola {
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKGeomBase::GC_MakeParabola2d_value(
+                self as *const Self,
+            )))
+        }
+    }
+
+    /// Upcast to GC_Root
+    pub fn as_root(&self) -> &Root {
+        unsafe {
+            &*crate::check_result(crate::ffi_extern_TKGeomBase::GC_MakeParabola2d_as_GC_Root(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast to GC_Root (mutable)
+    pub fn as_root_mut(&mut self) -> &mut Root {
+        unsafe {
+            &mut *crate::check_result(
+                crate::ffi_extern_TKGeomBase::GC_MakeParabola2d_as_GC_Root_mut(self as *mut Self),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `GC_Root.hxx`:38 - `GC_Root::IsDone()`
+    pub fn is_done(&self) -> bool {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKGeomBase::GC_MakeParabola2d_inherited_IsDone(self as *const Self)
+        })
+    }
+
+    /// Inherited: **Source:** `GC_Root.hxx`:41 - `GC_Root::IsError()`
+    pub fn is_error(&self) -> bool {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKGeomBase::GC_MakeParabola2d_inherited_IsError(self as *const Self)
+        })
+    }
+
+    /// Inherited: **Source:** `GC_Root.hxx`:47 - `GC_Root::Status()`
+    pub fn status(&self) -> crate::gce::ErrorType {
+        crate::gce::ErrorType::try_from(crate::check_result(unsafe {
+            crate::ffi_extern_TKGeomBase::GC_MakeParabola2d_inherited_Status(self as *const Self)
+        }))
+        .unwrap()
+    }
+}
+
+// ========================
 // From GC_MakePlane.hxx
 // ========================
 
-/// **Source:** `GC_MakePlane.hxx`:43 - `GC_MakePlane`
-/// This class implements the following algorithms used
-/// to create a Plane from gp.
-/// * Create a Plane parallel to another and passing
-/// through a point.
-/// * Create a Plane passing through 3 points.
-/// * Create a Plane by its normal
+/// **Source:** `GC_MakePlane.hxx`:42 - `GC_MakePlane`
+/// Implements construction algorithms for planes in 3D space.
+/// Supported constructions include:
+/// - a plane parallel to another plane and passing through a point;
+/// - a plane passing through three points;
+/// - a plane defined by a point and normal direction.
 /// A MakePlane object provides a framework for:
 /// -   defining the construction of the plane,
 /// -   implementing the construction algorithm, and
@@ -1631,97 +3623,107 @@ unsafe impl crate::CppDeletable for MakePlane {
 
 impl MakePlane {
     /// **Source:** `GC_MakePlane.hxx`:49 - `GC_MakePlane::GC_MakePlane()`
-    /// Creates a plane from a non persistent plane from package gp.
-    pub fn new_pln(Pl: &crate::gp::Pln) -> crate::OwnedPtr<Self> {
+    /// Creates a plane from a non-persistent plane from package gp.
+    /// @param[in] thePl source plane
+    pub fn new_pln(thePl: &crate::gp::Pln) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKGeomBase::GC_MakePlane_ctor_pln(Pl),
+                crate::ffi_extern_TKGeomBase::GC_MakePlane_ctor_pln(thePl),
             ))
         }
     }
 
-    /// **Source:** `GC_MakePlane.hxx`:53 - `GC_MakePlane::GC_MakePlane()`
-    /// P is the "Location" point or origin of the plane.
-    /// V is the direction normal to the plane.
-    pub fn new_pnt_dir(P: &crate::gp::Pnt, V: &crate::gp::Dir) -> crate::OwnedPtr<Self> {
+    /// **Source:** `GC_MakePlane.hxx`:54 - `GC_MakePlane::GC_MakePlane()`
+    /// Creates a plane from point and normal direction.
+    /// @param[in] theP location point of the plane
+    /// @param[in] theV normal direction
+    pub fn new_pnt_dir(theP: &crate::gp::Pnt, theV: &crate::gp::Dir) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKGeomBase::GC_MakePlane_ctor_pnt_dir(P, V),
+                crate::ffi_extern_TKGeomBase::GC_MakePlane_ctor_pnt_dir(theP, theV),
             ))
         }
     }
 
-    /// **Source:** `GC_MakePlane.hxx`:59 - `GC_MakePlane::GC_MakePlane()`
-    /// Creates a plane from its cartesian equation :
-    /// Ax + By + Cz + D = 0.0
-    /// Status is "BadEquation" if Sqrt (A*A + B*B + C*C)
-    /// <= Resolution from gp
-    pub fn new_real4(A: f64, B: f64, C: f64, D: f64) -> crate::OwnedPtr<Self> {
+    /// **Source:** `GC_MakePlane.hxx`:64 - `GC_MakePlane::GC_MakePlane()`
+    /// Creates a plane from its cartesian equation:
+    /// `A * x + B * y + C * z + D = 0.0`.
+    /// @param[in] theA equation coefficient A
+    /// @param[in] theB equation coefficient B
+    /// @param[in] theC equation coefficient C
+    /// @param[in] theD equation coefficient D
+    /// @note Status is `gce_BadEquation` if `sqrt(theA*theA + theB*theB + theC*theC)`
+    /// is below gp resolution.
+    pub fn new_real4(theA: f64, theB: f64, theC: f64, theD: f64) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKGeomBase::GC_MakePlane_ctor_real4(A, B, C, D),
+                crate::ffi_extern_TKGeomBase::GC_MakePlane_ctor_real4(theA, theB, theC, theD),
             ))
         }
     }
 
-    /// **Source:** `GC_MakePlane.hxx`:66 - `GC_MakePlane::GC_MakePlane()`
-    /// Make a Plane from Geom <ThePlane> parallel to another
-    /// Pln <Pln> and passing through a Pnt <Point>.
-    pub fn new_pln_pnt(Pln: &crate::gp::Pln, Point: &crate::gp::Pnt) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKGeomBase::GC_MakePlane_ctor_pln_pnt(Pln, Point),
-            ))
-        }
-    }
-
-    /// **Source:** `GC_MakePlane.hxx`:75 - `GC_MakePlane::GC_MakePlane()`
-    /// Make a Plane from Geom <ThePlane> parallel to another
-    /// Pln <Pln> at the distance <Dist> which can be greater
-    /// or lower than zero.
-    /// In the first case the result is at the distance
-    /// <Dist> to the plane <Pln> in the direction of the
-    /// normal to <Pln>.
-    /// Otherwise it is in the opposite direction.
-    pub fn new_pln_real(Pln: &crate::gp::Pln, Dist: f64) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKGeomBase::GC_MakePlane_ctor_pln_real(Pln, Dist),
-            ))
-        }
-    }
-
-    /// **Source:** `GC_MakePlane.hxx`:80 - `GC_MakePlane::GC_MakePlane()`
-    /// Make a Plane from Geom <ThePlane> passing through 3
-    /// Pnt <P1>,<P2>,<P3>.
-    /// It returns false if <P1> <P2> <P3> are confused.
-    pub fn new_pnt3(
-        P1: &crate::gp::Pnt,
-        P2: &crate::gp::Pnt,
-        P3: &crate::gp::Pnt,
+    /// **Source:** `GC_MakePlane.hxx`:72 - `GC_MakePlane::GC_MakePlane()`
+    /// Creates a plane parallel to the input plane and passing through the input point.
+    /// @param[in] thePln source plane
+    /// @param[in] thePoint point on resulting plane
+    pub fn new_pln_pnt(
+        thePln: &crate::gp::Pln,
+        thePoint: &crate::gp::Pnt,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKGeomBase::GC_MakePlane_ctor_pnt3(P1, P2, P3),
+                crate::ffi_extern_TKGeomBase::GC_MakePlane_ctor_pln_pnt(thePln, thePoint),
             ))
         }
     }
 
-    /// **Source:** `GC_MakePlane.hxx`:84 - `GC_MakePlane::GC_MakePlane()`
-    /// Make a Plane  passing through the location of <Axis>and
-    /// normal to the Direction of <Axis>.
-    pub fn new_ax1(Axis: &crate::gp::Ax1) -> crate::OwnedPtr<Self> {
+    /// **Source:** `GC_MakePlane.hxx`:78 - `GC_MakePlane::GC_MakePlane()`
+    /// Creates a plane parallel to the input plane at signed distance.
+    /// @param[in] thePln source plane
+    /// @param[in] theDist signed distance
+    /// @note Positive distance follows the normal of the input plane.
+    pub fn new_pln_real(thePln: &crate::gp::Pln, theDist: f64) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKGeomBase::GC_MakePlane_ctor_ax1(Axis),
+                crate::ffi_extern_TKGeomBase::GC_MakePlane_ctor_pln_real(thePln, theDist),
             ))
         }
     }
 
-    /// **Source:** `GC_MakePlane.hxx`:88 - `GC_MakePlane::Value()`
+    /// **Source:** `GC_MakePlane.hxx`:85 - `GC_MakePlane::GC_MakePlane()`
+    /// Creates a plane passing through three points.
+    /// @param[in] theP1 first point
+    /// @param[in] theP2 second point
+    /// @param[in] theP3 third point
+    /// @note Construction fails when points are confused/collinear.
+    pub fn new_pnt3(
+        theP1: &crate::gp::Pnt,
+        theP2: &crate::gp::Pnt,
+        theP3: &crate::gp::Pnt,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomBase::GC_MakePlane_ctor_pnt3(theP1, theP2, theP3),
+            ))
+        }
+    }
+
+    /// **Source:** `GC_MakePlane.hxx`:89 - `GC_MakePlane::GC_MakePlane()`
+    /// Creates a plane through axis location and normal to axis direction.
+    /// @param[in] theAxis axis defining location and normal
+    pub fn new_ax1(theAxis: &crate::gp::Ax1) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomBase::GC_MakePlane_ctor_ax1(theAxis),
+            ))
+        }
+    }
+
+    /// **Source:** `GC_MakePlane.hxx`:94 - `GC_MakePlane::Value()`
     /// Returns the constructed plane.
     /// Exceptions StdFail_NotDone if no plane is constructed.
-    pub fn value(&self) -> &crate::ffi_types::HandleGeomPlane {
+    /// @return resulting plane
+    pub fn value(&self) -> &crate::ffi_types::Handle_Geom_Plane {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKGeomBase::GC_MakePlane_value(
                 self as *const Self,
@@ -1754,7 +3756,14 @@ impl MakePlane {
         })
     }
 
-    /// Inherited: **Source:** `GC_Root.hxx`:44 - `GC_Root::Status()`
+    /// Inherited: **Source:** `GC_Root.hxx`:41 - `GC_Root::IsError()`
+    pub fn is_error(&self) -> bool {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKGeomBase::GC_MakePlane_inherited_IsError(self as *const Self)
+        })
+    }
+
+    /// Inherited: **Source:** `GC_Root.hxx`:47 - `GC_Root::Status()`
     pub fn status(&self) -> crate::gce::ErrorType {
         crate::gce::ErrorType::try_from(crate::check_result(unsafe {
             crate::ffi_extern_TKGeomBase::GC_MakePlane_inherited_Status(self as *const Self)
@@ -1786,48 +3795,102 @@ unsafe impl crate::CppDeletable for MakeRotation {
 }
 
 impl MakeRotation {
-    /// **Source:** `GC_MakeRotation.hxx`:44 - `GC_MakeRotation::GC_MakeRotation()`
-    /// Constructs a rotation through angle Angle about the axis defined by the line Line.
-    pub fn new_lin_real(Line: &crate::gp::Lin, Angle: f64) -> crate::OwnedPtr<Self> {
+    /// **Source:** `GC_MakeRotation.hxx`:46 - `GC_MakeRotation::GC_MakeRotation()`
+    /// Constructs a rotation around the axis defined by a line.
+    /// @param[in] theLine rotation axis
+    /// @param[in] theAngle rotation angle in radians
+    pub fn new_lin_real(theLine: &crate::gp::Lin, theAngle: f64) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKGeomBase::GC_MakeRotation_ctor_lin_real(Line, Angle),
-            ))
-        }
-    }
-
-    /// **Source:** `GC_MakeRotation.hxx`:47 - `GC_MakeRotation::GC_MakeRotation()`
-    /// Constructs a rotation through angle Angle about the axis defined by the axis Axis.
-    pub fn new_ax1_real(Axis: &crate::gp::Ax1, Angle: f64) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKGeomBase::GC_MakeRotation_ctor_ax1_real(Axis, Angle),
+                crate::ffi_extern_TKGeomBase::GC_MakeRotation_ctor_lin_real(theLine, theAngle),
             ))
         }
     }
 
     /// **Source:** `GC_MakeRotation.hxx`:51 - `GC_MakeRotation::GC_MakeRotation()`
-    /// Constructs a rotation through angle Angle about the axis
-    /// defined by the point Point and the unit vector Direc.
+    /// Constructs a rotation around an axis.
+    /// @param[in] theAxis rotation axis
+    /// @param[in] theAngle rotation angle in radians
+    pub fn new_ax1_real(theAxis: &crate::gp::Ax1, theAngle: f64) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomBase::GC_MakeRotation_ctor_ax1_real(theAxis, theAngle),
+            ))
+        }
+    }
+
+    /// **Source:** `GC_MakeRotation.hxx`:57 - `GC_MakeRotation::GC_MakeRotation()`
+    /// Constructs a rotation around an axis defined by point and direction.
+    /// @param[in] thePoint point on the axis
+    /// @param[in] theDirec axis direction
+    /// @param[in] theAngle rotation angle in radians
     pub fn new_pnt_dir_real(
-        Point: &crate::gp::Pnt,
-        Direc: &crate::gp::Dir,
-        Angle: f64,
+        thePoint: &crate::gp::Pnt,
+        theDirec: &crate::gp::Dir,
+        theAngle: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKGeomBase::GC_MakeRotation_ctor_pnt_dir_real(
-                    Point, Direc, Angle,
+                    thePoint, theDirec, theAngle,
                 ),
             ))
         }
     }
 
-    /// **Source:** `GC_MakeRotation.hxx`:56 - `GC_MakeRotation::Value()`
+    /// **Source:** `GC_MakeRotation.hxx`:63 - `GC_MakeRotation::Value()`
     /// Returns the constructed transformation.
-    pub fn value(&self) -> &crate::ffi_types::HandleGeomTransformation {
+    /// @return resulting transformation
+    pub fn value(&self) -> &crate::ffi_types::Handle_Geom_Transformation {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKGeomBase::GC_MakeRotation_value(
+                self as *const Self,
+            )))
+        }
+    }
+}
+
+// ========================
+// From GC_MakeRotation2d.hxx
+// ========================
+
+/// **Source:** `GC_MakeRotation2d.hxx`:35 - `GC_MakeRotation2d`
+/// This class implements elementary construction algorithms for
+/// rotations in 2D space.
+/// The result is a `Geom2d_Transformation`.
+/// A `GC_MakeRotation2d` object provides a framework for:
+/// - defining the transformation parameters;
+/// - running the construction algorithm;
+/// - querying the resulting transformation via `Value()`.
+pub use crate::ffi_types::GC_MakeRotation2d as MakeRotation2d;
+
+unsafe impl crate::CppDeletable for MakeRotation2d {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            crate::ffi_extern_TKGeomBase::GC_MakeRotation2d_destructor(ptr);
+        }
+    }
+}
+
+impl MakeRotation2d {
+    /// **Source:** `GC_MakeRotation2d.hxx`:43 - `GC_MakeRotation2d::GC_MakeRotation2d()`
+    /// Constructs a rotation through angle Angle about the center Point.
+    /// @param[in] thePoint rotation center
+    /// @param[in] theAngle rotation angle in radians
+    pub fn new_pnt2d_real(thePoint: &crate::gp::Pnt2d, theAngle: f64) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomBase::GC_MakeRotation2d_ctor_pnt2d_real(thePoint, theAngle),
+            ))
+        }
+    }
+
+    /// **Source:** `GC_MakeRotation2d.hxx`:47 - `GC_MakeRotation2d::Value()`
+    /// Returns the constructed transformation.
+    /// @return resulting transformation
+    pub fn value(&self) -> &crate::ffi_types::Handle_Geom2d_Transformation {
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKGeomBase::GC_MakeRotation2d_value(
                 self as *const Self,
             )))
         }
@@ -1838,11 +3901,10 @@ impl MakeRotation {
 // From GC_MakeScale.hxx
 // ========================
 
-/// **Source:** `GC_MakeScale.hxx`:36 - `GC_MakeScale`
-/// This class implements an elementary construction algorithm for
-/// a scaling transformation in 3D space. The result is a
-/// Geom_Transformation transformation (a scaling transformation with
-/// the center point <Point> and the scaling value <Scale>).
+/// **Source:** `GC_MakeScale.hxx`:35 - `GC_MakeScale`
+/// Implements construction of a scaling transformation in 3D space.
+/// The result is a `Geom_Transformation` centered at `Point`
+/// with scale factor `Scale`.
 /// A MakeScale object provides a framework for:
 /// -   defining the construction of the transformation,
 /// -   implementing the construction algorithm, and
@@ -1858,23 +3920,71 @@ unsafe impl crate::CppDeletable for MakeScale {
 }
 
 impl MakeScale {
-    /// **Source:** `GC_MakeScale.hxx`:44 - `GC_MakeScale::GC_MakeScale()`
-    /// Constructs a scaling transformation with
-    /// -   Point as the center of the transformation, and
-    /// -   Scale as the scale factor.
-    pub fn new_pnt_real(Point: &crate::gp::Pnt, Scale: f64) -> crate::OwnedPtr<Self> {
+    /// **Source:** `GC_MakeScale.hxx`:43 - `GC_MakeScale::GC_MakeScale()`
+    /// Constructs a scaling transformation.
+    /// @param[in] thePoint center point of scaling
+    /// @param[in] theScale scale factor
+    pub fn new_pnt_real(thePoint: &crate::gp::Pnt, theScale: f64) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKGeomBase::GC_MakeScale_ctor_pnt_real(Point, Scale),
+                crate::ffi_extern_TKGeomBase::GC_MakeScale_ctor_pnt_real(thePoint, theScale),
             ))
         }
     }
 
     /// **Source:** `GC_MakeScale.hxx`:47 - `GC_MakeScale::Value()`
     /// Returns the constructed transformation.
-    pub fn value(&self) -> &crate::ffi_types::HandleGeomTransformation {
+    /// @return resulting transformation
+    pub fn value(&self) -> &crate::ffi_types::Handle_Geom_Transformation {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKGeomBase::GC_MakeScale_value(
+                self as *const Self,
+            )))
+        }
+    }
+}
+
+// ========================
+// From GC_MakeScale2d.hxx
+// ========================
+
+/// **Source:** `GC_MakeScale2d.hxx`:35 - `GC_MakeScale2d`
+/// This class implements elementary construction algorithms for
+/// scaling transformations in 2D space.
+/// The result is a `Geom2d_Transformation`.
+/// A `GC_MakeScale2d` object provides a framework for:
+/// - defining the transformation parameters;
+/// - running the construction algorithm;
+/// - querying the resulting transformation via `Value()`.
+pub use crate::ffi_types::GC_MakeScale2d as MakeScale2d;
+
+unsafe impl crate::CppDeletable for MakeScale2d {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            crate::ffi_extern_TKGeomBase::GC_MakeScale2d_destructor(ptr);
+        }
+    }
+}
+
+impl MakeScale2d {
+    /// **Source:** `GC_MakeScale2d.hxx`:43 - `GC_MakeScale2d::GC_MakeScale2d()`
+    /// Constructs a scaling transformation.
+    /// @param[in] thePoint center point
+    /// @param[in] theScale scale factor
+    pub fn new_pnt2d_real(thePoint: &crate::gp::Pnt2d, theScale: f64) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomBase::GC_MakeScale2d_ctor_pnt2d_real(thePoint, theScale),
+            ))
+        }
+    }
+
+    /// **Source:** `GC_MakeScale2d.hxx`:47 - `GC_MakeScale2d::Value()`
+    /// Returns the constructed transformation.
+    /// @return resulting transformation
+    pub fn value(&self) -> &crate::ffi_types::Handle_Geom2d_Transformation {
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKGeomBase::GC_MakeScale2d_value(
                 self as *const Self,
             )))
         }
@@ -1885,16 +3995,13 @@ impl MakeScale {
 // From GC_MakeSegment.hxx
 // ========================
 
-/// **Source:** `GC_MakeSegment.hxx`:39 - `GC_MakeSegment`
-/// Implements construction algorithms for a line
-/// segment in 3D space.
-/// Makes a segment of Line from the 2 points <P1> and <P2>.
-/// The result is a Geom_TrimmedCurve curve.
-/// A MakeSegment object provides a framework for:
-/// -   defining the construction of the line segment,
-/// -   implementing the construction algorithm, and
-/// -   consulting the results. In particular, the Value
-/// function returns the constructed line segment.
+/// **Source:** `GC_MakeSegment.hxx`:36 - `GC_MakeSegment`
+/// Implements construction algorithms for line segments in 3D space.
+/// The result is a `Geom_TrimmedCurve`.
+/// A `GC_MakeSegment` object provides a framework for:
+/// - defining the construction parameters;
+/// - running the construction algorithm;
+/// - querying the construction status and resulting segment via `Value()`.
 pub use crate::ffi_types::GC_MakeSegment as MakeSegment;
 
 unsafe impl crate::CppDeletable for MakeSegment {
@@ -1906,64 +4013,79 @@ unsafe impl crate::CppDeletable for MakeSegment {
 }
 
 impl MakeSegment {
-    /// **Source:** `GC_MakeSegment.hxx`:46 - `GC_MakeSegment::GC_MakeSegment()`
-    /// Make a segment of Line from the 2 points <P1> and <P2>.
-    /// It returns NullObject if <P1> and <P2> are confused.
-    pub fn new_pnt2(P1: &crate::gp::Pnt, P2: &crate::gp::Pnt) -> crate::OwnedPtr<Self> {
+    /// **Source:** `GC_MakeSegment.hxx`:45 - `GC_MakeSegment::GC_MakeSegment()`
+    /// Creates a segment of a line from two points.
+    /// @param[in] theP1 first point
+    /// @param[in] theP2 second point
+    /// @note Construction fails if the two points are coincident.
+    pub fn new_pnt2(theP1: &crate::gp::Pnt, theP2: &crate::gp::Pnt) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKGeomBase::GC_MakeSegment_ctor_pnt2(P1, P2),
+                crate::ffi_extern_TKGeomBase::GC_MakeSegment_ctor_pnt2(theP1, theP2),
             ))
         }
     }
 
-    /// **Source:** `GC_MakeSegment.hxx`:51 - `GC_MakeSegment::GC_MakeSegment()`
-    /// Make a segment of Line from the line <Line1>
-    /// between the two parameters U1 and U2.
-    /// It returns NullObject if <U1> is equal <U2>.
-    pub fn new_lin_real2(Line: &crate::gp::Lin, U1: f64, U2: f64) -> crate::OwnedPtr<Self> {
+    /// **Source:** `GC_MakeSegment.hxx`:52 - `GC_MakeSegment::GC_MakeSegment()`
+    /// Creates a segment of the input line between two parameters.
+    /// @param[in] theLine source line
+    /// @param[in] theU1 first parameter
+    /// @param[in] theU2 second parameter
+    /// @note Construction fails when both parameters are equal.
+    pub fn new_lin_real2(
+        theLine: &crate::gp::Lin,
+        theU1: f64,
+        theU2: f64,
+    ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKGeomBase::GC_MakeSegment_ctor_lin_real2(Line, U1, U2),
+                crate::ffi_extern_TKGeomBase::GC_MakeSegment_ctor_lin_real2(theLine, theU1, theU2),
             ))
         }
     }
 
-    /// **Source:** `GC_MakeSegment.hxx`:58 - `GC_MakeSegment::GC_MakeSegment()`
-    /// Make a segment of Line from the line <Line1>
-    /// between the point <Point> and the parameter Ulast.
-    /// It returns NullObject if <U1> is equal <U2>.
+    /// **Source:** `GC_MakeSegment.hxx`:59 - `GC_MakeSegment::GC_MakeSegment()`
+    /// Creates a segment of the input line between a point and a parameter.
+    /// @param[in] theLine source line
+    /// @param[in] thePoint start point on line
+    /// @param[in] theUlast end parameter
+    /// @note Construction fails if trimming parameters are equal.
     pub fn new_lin_pnt_real(
-        Line: &crate::gp::Lin,
-        Point: &crate::gp::Pnt,
-        Ulast: f64,
+        theLine: &crate::gp::Lin,
+        thePoint: &crate::gp::Pnt,
+        theUlast: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKGeomBase::GC_MakeSegment_ctor_lin_pnt_real(Line, Point, Ulast),
+                crate::ffi_extern_TKGeomBase::GC_MakeSegment_ctor_lin_pnt_real(
+                    theLine, thePoint, theUlast,
+                ),
             ))
         }
     }
 
-    /// **Source:** `GC_MakeSegment.hxx`:65 - `GC_MakeSegment::GC_MakeSegment()`
-    /// Make a segment of Line from the line <Line1>
-    /// between the two points <P1> and <P2>.
-    /// It returns NullObject if <U1> is equal <U2>.
+    /// **Source:** `GC_MakeSegment.hxx`:68 - `GC_MakeSegment::GC_MakeSegment()`
+    /// Creates a segment of the input line between two points.
+    /// @param[in] theLine source line
+    /// @param[in] theP1 first point
+    /// @param[in] theP2 second point
+    /// @note Construction fails if trimming parameters are equal.
     pub fn new_lin_pnt2(
-        Line: &crate::gp::Lin,
-        P1: &crate::gp::Pnt,
-        P2: &crate::gp::Pnt,
+        theLine: &crate::gp::Lin,
+        theP1: &crate::gp::Pnt,
+        theP2: &crate::gp::Pnt,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKGeomBase::GC_MakeSegment_ctor_lin_pnt2(Line, P1, P2),
+                crate::ffi_extern_TKGeomBase::GC_MakeSegment_ctor_lin_pnt2(theLine, theP1, theP2),
             ))
         }
     }
 
-    /// **Source:** `GC_MakeSegment.hxx`:68 - `GC_MakeSegment::Value()`
+    /// **Source:** `GC_MakeSegment.hxx`:72 - `GC_MakeSegment::Value()`
     /// Returns the constructed line segment.
-    pub fn value(&self) -> &crate::ffi_types::HandleGeomTrimmedCurve {
+    /// @return resulting line segment
+    pub fn value(&self) -> &crate::ffi_types::Handle_Geom_TrimmedCurve {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKGeomBase::GC_MakeSegment_value(
                 self as *const Self,
@@ -1996,10 +4118,185 @@ impl MakeSegment {
         })
     }
 
-    /// Inherited: **Source:** `GC_Root.hxx`:44 - `GC_Root::Status()`
+    /// Inherited: **Source:** `GC_Root.hxx`:41 - `GC_Root::IsError()`
+    pub fn is_error(&self) -> bool {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKGeomBase::GC_MakeSegment_inherited_IsError(self as *const Self)
+        })
+    }
+
+    /// Inherited: **Source:** `GC_Root.hxx`:47 - `GC_Root::Status()`
     pub fn status(&self) -> crate::gce::ErrorType {
         crate::gce::ErrorType::try_from(crate::check_result(unsafe {
             crate::ffi_extern_TKGeomBase::GC_MakeSegment_inherited_Status(self as *const Self)
+        }))
+        .unwrap()
+    }
+}
+
+// ========================
+// From GC_MakeSegment2d.hxx
+// ========================
+
+/// **Source:** `GC_MakeSegment2d.hxx`:37 - `GC_MakeSegment2d`
+/// This class implements construction algorithms for line segments in the plane.
+/// The result is a `Geom2d_TrimmedCurve`.
+/// A `GC_MakeSegment2d` object provides a framework for:
+/// - defining the construction parameters;
+/// - running the construction algorithm;
+/// - querying the construction status and the resulting segment via `Value()`.
+pub use crate::ffi_types::GC_MakeSegment2d as MakeSegment2d;
+
+unsafe impl crate::CppDeletable for MakeSegment2d {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            crate::ffi_extern_TKGeomBase::GC_MakeSegment2d_destructor(ptr);
+        }
+    }
+}
+
+impl MakeSegment2d {
+    /// **Source:** `GC_MakeSegment2d.hxx`:46 - `GC_MakeSegment2d::GC_MakeSegment2d()`
+    /// Creates a segment between two points.
+    /// @param[in] theP1 first point
+    /// @param[in] theP2 second point
+    /// @note Construction fails with `gce_ConfusedPoints` if points are coincident.
+    pub fn new_pnt2d2(theP1: &crate::gp::Pnt2d, theP2: &crate::gp::Pnt2d) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomBase::GC_MakeSegment2d_ctor_pnt2d2(theP1, theP2),
+            ))
+        }
+    }
+
+    /// **Source:** `GC_MakeSegment2d.hxx`:56 - `GC_MakeSegment2d::GC_MakeSegment2d()`
+    /// Creates a segment on a line defined by point and direction.
+    /// The segment starts at `theP1` and ends at the orthogonal projection
+    /// of `theP2` onto that line.
+    /// @param[in] theP1 first point
+    /// @param[in] theV direction vector
+    /// @param[in] theP2 second point
+    /// @note Construction fails with `gce_ConfusedPoints` if the projected
+    /// endpoint is coincident with `theP1` within resolution.
+    pub fn new_pnt2d_dir2d_pnt2d(
+        theP1: &crate::gp::Pnt2d,
+        theV: &crate::gp::Dir2d,
+        theP2: &crate::gp::Pnt2d,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomBase::GC_MakeSegment2d_ctor_pnt2d_dir2d_pnt2d(
+                    theP1, theV, theP2,
+                ),
+            ))
+        }
+    }
+
+    /// **Source:** `GC_MakeSegment2d.hxx`:64 - `GC_MakeSegment2d::GC_MakeSegment2d()`
+    /// Creates a segment on a line between two parameter values.
+    /// @param[in] theLine source line
+    /// @param[in] theU1 first parameter
+    /// @param[in] theU2 second parameter
+    pub fn new_lin2d_real2(
+        theLine: &crate::gp::Lin2d,
+        theU1: f64,
+        theU2: f64,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomBase::GC_MakeSegment2d_ctor_lin2d_real2(
+                    theLine, theU1, theU2,
+                ),
+            ))
+        }
+    }
+
+    /// **Source:** `GC_MakeSegment2d.hxx`:70 - `GC_MakeSegment2d::GC_MakeSegment2d()`
+    /// Creates a segment on a line between point parameter and target parameter.
+    /// @param[in] theLine source line
+    /// @param[in] thePoint first point on segment support line
+    /// @param[in] theUlast last parameter
+    pub fn new_lin2d_pnt2d_real(
+        theLine: &crate::gp::Lin2d,
+        thePoint: &crate::gp::Pnt2d,
+        theUlast: f64,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomBase::GC_MakeSegment2d_ctor_lin2d_pnt2d_real(
+                    theLine, thePoint, theUlast,
+                ),
+            ))
+        }
+    }
+
+    /// **Source:** `GC_MakeSegment2d.hxx`:78 - `GC_MakeSegment2d::GC_MakeSegment2d()`
+    /// Creates a segment on a line between projections of two points.
+    /// @param[in] theLine source line
+    /// @param[in] theP1 first point
+    /// @param[in] theP2 second point
+    pub fn new_lin2d_pnt2d2(
+        theLine: &crate::gp::Lin2d,
+        theP1: &crate::gp::Pnt2d,
+        theP2: &crate::gp::Pnt2d,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomBase::GC_MakeSegment2d_ctor_lin2d_pnt2d2(
+                    theLine, theP1, theP2,
+                ),
+            ))
+        }
+    }
+
+    /// **Source:** `GC_MakeSegment2d.hxx`:85 - `GC_MakeSegment2d::Value()`
+    /// Returns the constructed line segment.
+    /// Exceptions StdFail_NotDone if no line segment is constructed.
+    /// @return resulting trimmed curve
+    pub fn value(&self) -> &crate::ffi_types::Handle_Geom2d_TrimmedCurve {
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKGeomBase::GC_MakeSegment2d_value(
+                self as *const Self,
+            )))
+        }
+    }
+
+    /// Upcast to GC_Root
+    pub fn as_root(&self) -> &Root {
+        unsafe {
+            &*crate::check_result(crate::ffi_extern_TKGeomBase::GC_MakeSegment2d_as_GC_Root(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast to GC_Root (mutable)
+    pub fn as_root_mut(&mut self) -> &mut Root {
+        unsafe {
+            &mut *crate::check_result(
+                crate::ffi_extern_TKGeomBase::GC_MakeSegment2d_as_GC_Root_mut(self as *mut Self),
+            )
+        }
+    }
+
+    /// Inherited: **Source:** `GC_Root.hxx`:38 - `GC_Root::IsDone()`
+    pub fn is_done(&self) -> bool {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKGeomBase::GC_MakeSegment2d_inherited_IsDone(self as *const Self)
+        })
+    }
+
+    /// Inherited: **Source:** `GC_Root.hxx`:41 - `GC_Root::IsError()`
+    pub fn is_error(&self) -> bool {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKGeomBase::GC_MakeSegment2d_inherited_IsError(self as *const Self)
+        })
+    }
+
+    /// Inherited: **Source:** `GC_Root.hxx`:47 - `GC_Root::Status()`
+    pub fn status(&self) -> crate::gce::ErrorType {
+        crate::gce::ErrorType::try_from(crate::check_result(unsafe {
+            crate::ffi_extern_TKGeomBase::GC_MakeSegment2d_inherited_Status(self as *const Self)
         }))
         .unwrap()
     }
@@ -2028,32 +4325,101 @@ unsafe impl crate::CppDeletable for MakeTranslation {
 }
 
 impl MakeTranslation {
-    /// **Source:** `GC_MakeTranslation.hxx`:41 - `GC_MakeTranslation::GC_MakeTranslation()`
-    /// Constructs a translation along the vector " Vect "
-    pub fn new_vec(Vect: &crate::gp::Vec) -> crate::OwnedPtr<Self> {
+    /// **Source:** `GC_MakeTranslation.hxx`:42 - `GC_MakeTranslation::GC_MakeTranslation()`
+    /// Constructs a translation from a vector.
+    /// @param[in] theVect translation vector
+    pub fn new_vec(theVect: &crate::gp::Vec) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKGeomBase::GC_MakeTranslation_ctor_vec(Vect),
+                crate::ffi_extern_TKGeomBase::GC_MakeTranslation_ctor_vec(theVect),
             ))
         }
     }
 
-    /// **Source:** `GC_MakeTranslation.hxx`:45 - `GC_MakeTranslation::GC_MakeTranslation()`
-    /// Constructs a translation along the vector (Point1,Point2)
-    /// defined from the point Point1 to the point Point2.
-    pub fn new_pnt2(Point1: &crate::gp::Pnt, Point2: &crate::gp::Pnt) -> crate::OwnedPtr<Self> {
+    /// **Source:** `GC_MakeTranslation.hxx`:47 - `GC_MakeTranslation::GC_MakeTranslation()`
+    /// Constructs a translation from two points.
+    /// @param[in] thePoint1 start point
+    /// @param[in] thePoint2 end point
+    pub fn new_pnt2(
+        thePoint1: &crate::gp::Pnt,
+        thePoint2: &crate::gp::Pnt,
+    ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKGeomBase::GC_MakeTranslation_ctor_pnt2(Point1, Point2),
+                crate::ffi_extern_TKGeomBase::GC_MakeTranslation_ctor_pnt2(thePoint1, thePoint2),
             ))
         }
     }
 
-    /// **Source:** `GC_MakeTranslation.hxx`:48 - `GC_MakeTranslation::Value()`
+    /// **Source:** `GC_MakeTranslation.hxx`:51 - `GC_MakeTranslation::Value()`
     /// Returns the constructed transformation.
-    pub fn value(&self) -> &crate::ffi_types::HandleGeomTransformation {
+    /// @return resulting transformation
+    pub fn value(&self) -> &crate::ffi_types::Handle_Geom_Transformation {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKGeomBase::GC_MakeTranslation_value(
+                self as *const Self,
+            )))
+        }
+    }
+}
+
+// ========================
+// From GC_MakeTranslation2d.hxx
+// ========================
+
+/// **Source:** `GC_MakeTranslation2d.hxx`:35 - `GC_MakeTranslation2d`
+/// This class implements elementary construction algorithms for
+/// translations in 2D space.
+/// The result is a `Geom2d_Transformation`.
+/// A `GC_MakeTranslation2d` object provides a framework for:
+/// - defining the transformation parameters;
+/// - running the construction algorithm;
+/// - querying the resulting transformation via `Value()`.
+pub use crate::ffi_types::GC_MakeTranslation2d as MakeTranslation2d;
+
+unsafe impl crate::CppDeletable for MakeTranslation2d {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        unsafe {
+            crate::ffi_extern_TKGeomBase::GC_MakeTranslation2d_destructor(ptr);
+        }
+    }
+}
+
+impl MakeTranslation2d {
+    /// **Source:** `GC_MakeTranslation2d.hxx`:42 - `GC_MakeTranslation2d::GC_MakeTranslation2d()`
+    /// Constructs a translation along a vector.
+    /// @param[in] theVect translation vector
+    pub fn new_vec2d(theVect: &crate::gp::Vec2d) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomBase::GC_MakeTranslation2d_ctor_vec2d(theVect),
+            ))
+        }
+    }
+
+    /// **Source:** `GC_MakeTranslation2d.hxx`:47 - `GC_MakeTranslation2d::GC_MakeTranslation2d()`
+    /// Constructs a translation along the vector from one point to another.
+    /// @param[in] thePoint1 first point
+    /// @param[in] thePoint2 second point
+    pub fn new_pnt2d2(
+        thePoint1: &crate::gp::Pnt2d,
+        thePoint2: &crate::gp::Pnt2d,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomBase::GC_MakeTranslation2d_ctor_pnt2d2(
+                    thePoint1, thePoint2,
+                ),
+            ))
+        }
+    }
+
+    /// **Source:** `GC_MakeTranslation2d.hxx`:51 - `GC_MakeTranslation2d::Value()`
+    /// Returns the constructed transformation.
+    /// @return resulting transformation
+    pub fn value(&self) -> &crate::ffi_types::Handle_Geom2d_Transformation {
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKGeomBase::GC_MakeTranslation2d_value(
                 self as *const Self,
             )))
         }
@@ -2064,10 +4430,9 @@ impl MakeTranslation {
 // From GC_MakeTrimmedCone.hxx
 // ========================
 
-/// **Source:** `GC_MakeTrimmedCone.hxx`:37 - `GC_MakeTrimmedCone`
-/// Implements construction algorithms for a trimmed
-/// cone limited by two planes orthogonal to its axis. The
-/// result is a Geom_RectangularTrimmedSurface surface.
+/// **Source:** `GC_MakeTrimmedCone.hxx`:36 - `GC_MakeTrimmedCone`
+/// Implements construction algorithms for trimmed cones.
+/// The result is a `Geom_RectangularTrimmedSurface`.
 /// A MakeTrimmedCone provides a framework for:
 /// -   defining the construction of the trimmed cone,
 /// -   implementing the construction algorithm, and
@@ -2084,63 +4449,64 @@ unsafe impl crate::CppDeletable for MakeTrimmedCone {
 }
 
 impl MakeTrimmedCone {
-    /// **Source:** `GC_MakeTrimmedCone.hxx`:51 - `GC_MakeTrimmedCone::GC_MakeTrimmedCone()`
-    /// Make a RectangularTrimmedSurface <TheCone> from Geom
-    /// It is trimmed by P3 and P4.
-    /// Its axis is <P1P2> and the radius of its base is
-    /// the distance between <P3> and <P1P2>.
-    /// The distance between <P4> and <P1P2> is the radius of
-    /// the section passing through <P4>.
-    /// An error iss raised if <P1>,<P2>,<P3>,<P4> are
-    /// colinear or if <P3P4> is perpendicular to <P1P2> or
-    /// <P3P4> is colinear to <P1P2>.
+    /// **Source:** `GC_MakeTrimmedCone.hxx`:54 - `GC_MakeTrimmedCone::GC_MakeTrimmedCone()`
+    /// Creates a rectangular trimmed conical surface from four points.
+    /// @param[in] theP1 first axis point
+    /// @param[in] theP2 second axis point
+    /// @param[in] theP3 point defining first trimming section
+    /// @param[in] theP4 point defining second trimming section
+    /// @note The surface is trimmed by points P3 and P4.
+    /// @note The axis is defined by points P1 and P2; the base radius is
+    /// the distance from point P3 to that axis.
+    /// @note The distance from point P4 to that axis is the radius of
+    /// the section passing through P4.
+    /// @note Construction fails if points P1, P2, P3 and P4 are
+    /// collinear, or if vector P3P4 is perpendicular/collinear
+    /// to vector P1P2.
     pub fn new_pnt4(
-        P1: &crate::gp::Pnt,
-        P2: &crate::gp::Pnt,
-        P3: &crate::gp::Pnt,
-        P4: &crate::gp::Pnt,
+        theP1: &crate::gp::Pnt,
+        theP2: &crate::gp::Pnt,
+        theP3: &crate::gp::Pnt,
+        theP4: &crate::gp::Pnt,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKGeomBase::GC_MakeTrimmedCone_ctor_pnt4(P1, P2, P3, P4),
+                crate::ffi_extern_TKGeomBase::GC_MakeTrimmedCone_ctor_pnt4(
+                    theP1, theP2, theP3, theP4,
+                ),
             ))
         }
     }
 
-    /// **Source:** `GC_MakeTrimmedCone.hxx`:72 - `GC_MakeTrimmedCone::GC_MakeTrimmedCone()`
-    /// Make a RectangularTrimmedSurface from Geom <TheCone>
-    /// from a cone and trimmed by two points P1 and P2 and
-    /// the two radius <R1> and <R2> of the sections passing
-    /// through <P1> an <P2>.
-    /// Warning
-    /// If an error occurs (that is, when IsDone returns
-    /// false), the Status function returns:
-    /// -   gce_ConfusedPoints if points P1 and P2, or P3 and P4, are coincident;
-    /// -   gce_NullAngle if:
-    /// -   the lines joining P1 to P2 and P3 to P4 are parallel, or
-    /// -   R1 and R2 are equal (i.e. their difference is less than gp::Resolution());
-    /// -   gce_NullRadius if:
-    /// -   the line joining P1 to P2 is perpendicular to the line joining P3 to P4, or
-    /// -   the points P1, P2, P3 and P4 are collinear;
-    /// -   gce_NegativeRadius if R1 or R2 is negative; or
-    /// -   gce_NullAxis if points P1 and P2 are coincident (2nd syntax only).
+    /// **Source:** `GC_MakeTrimmedCone.hxx`:67 - `GC_MakeTrimmedCone::GC_MakeTrimmedCone()`
+    /// Creates a rectangular trimmed conical surface from two points and two radii.
+    /// @param[in] theP1 first axis point
+    /// @param[in] theP2 second axis point
+    /// @param[in] theR1 radius at P1
+    /// @param[in] theR2 radius at P2
+    /// @note The two radii correspond to sections passing through the two axis points.
+    /// @note On failure, status is propagated from
+    /// `GC_MakeConicalSurface(theP1, theP2, theR1, theR2)`.
     pub fn new_pnt2_real2(
-        P1: &crate::gp::Pnt,
-        P2: &crate::gp::Pnt,
-        R1: f64,
-        R2: f64,
+        theP1: &crate::gp::Pnt,
+        theP2: &crate::gp::Pnt,
+        theR1: f64,
+        theR2: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKGeomBase::GC_MakeTrimmedCone_ctor_pnt2_real2(P1, P2, R1, R2),
+                crate::ffi_extern_TKGeomBase::GC_MakeTrimmedCone_ctor_pnt2_real2(
+                    theP1, theP2, theR1, theR2,
+                ),
             ))
         }
     }
 
-    /// **Source:** `GC_MakeTrimmedCone.hxx`:79 - `GC_MakeTrimmedCone::Value()`
+    /// **Source:** `GC_MakeTrimmedCone.hxx`:75 - `GC_MakeTrimmedCone::Value()`
     /// Returns the constructed trimmed cone.
     /// StdFail_NotDone if no trimmed cone is constructed.
-    pub fn value(&self) -> &crate::ffi_types::HandleGeomRectangularTrimmedSurface {
+    /// @return resulting trimmed conical surface
+    pub fn value(&self) -> &crate::ffi_types::Handle_Geom_RectangularTrimmedSurface {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKGeomBase::GC_MakeTrimmedCone_value(
                 self as *const Self,
@@ -2173,7 +4539,14 @@ impl MakeTrimmedCone {
         })
     }
 
-    /// Inherited: **Source:** `GC_Root.hxx`:44 - `GC_Root::Status()`
+    /// Inherited: **Source:** `GC_Root.hxx`:41 - `GC_Root::IsError()`
+    pub fn is_error(&self) -> bool {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKGeomBase::GC_MakeTrimmedCone_inherited_IsError(self as *const Self)
+        })
+    }
+
+    /// Inherited: **Source:** `GC_Root.hxx`:47 - `GC_Root::Status()`
     pub fn status(&self) -> crate::gce::ErrorType {
         crate::gce::ErrorType::try_from(crate::check_result(unsafe {
             crate::ffi_extern_TKGeomBase::GC_MakeTrimmedCone_inherited_Status(self as *const Self)
@@ -2186,10 +4559,9 @@ impl MakeTrimmedCone {
 // From GC_MakeTrimmedCylinder.hxx
 // ========================
 
-/// **Source:** `GC_MakeTrimmedCylinder.hxx`:39 - `GC_MakeTrimmedCylinder`
-/// Implements construction algorithms for a trimmed
-/// cylinder limited by two planes orthogonal to its axis.
-/// The result is a Geom_RectangularTrimmedSurface surface.
+/// **Source:** `GC_MakeTrimmedCylinder.hxx`:38 - `GC_MakeTrimmedCylinder`
+/// Implements construction algorithms for trimmed cylinders.
+/// The result is a `Geom_RectangularTrimmedSurface`.
 /// A MakeTrimmedCylinder provides a framework for:
 /// -   defining the construction of the trimmed cylinder,
 /// -   implementing the construction algorithm, and
@@ -2206,61 +4578,75 @@ unsafe impl crate::CppDeletable for MakeTrimmedCylinder {
 }
 
 impl MakeTrimmedCylinder {
-    /// **Source:** `GC_MakeTrimmedCylinder.hxx`:48 - `GC_MakeTrimmedCylinder::GC_MakeTrimmedCylinder()`
-    /// Make a cylindricalSurface <Cyl> from Geom
-    /// Its axis is <P1P2> and its radius is the distance
-    /// between <P3> and <P1P2>.
-    /// The height is the distance between P1 and P2.
+    /// **Source:** `GC_MakeTrimmedCylinder.hxx`:50 - `GC_MakeTrimmedCylinder::GC_MakeTrimmedCylinder()`
+    /// Creates a trimmed cylindrical surface from three points.
+    /// @param[in] theP1 first axis point
+    /// @param[in] theP2 second axis point
+    /// @param[in] theP3 point defining radius
+    /// @note The axis is the line passing through `theP1` and `theP2`.
+    /// @note The radius is the distance from `theP3` to that axis.
+    /// @note The height is the distance between `theP1` and `theP2`.
     pub fn new_pnt3(
-        P1: &crate::gp::Pnt,
-        P2: &crate::gp::Pnt,
-        P3: &crate::gp::Pnt,
+        theP1: &crate::gp::Pnt,
+        theP2: &crate::gp::Pnt,
+        theP3: &crate::gp::Pnt,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKGeomBase::GC_MakeTrimmedCylinder_ctor_pnt3(P1, P2, P3),
+                crate::ffi_extern_TKGeomBase::GC_MakeTrimmedCylinder_ctor_pnt3(theP1, theP2, theP3),
             ))
         }
     }
 
-    /// **Source:** `GC_MakeTrimmedCylinder.hxx`:56 - `GC_MakeTrimmedCylinder::GC_MakeTrimmedCylinder()`
-    /// Make a cylindricalSurface <Cyl> from gp by its base <Circ>.
-    /// Its axis is the normal to the plane defined bi <Circ>.
-    /// <Height> can be greater than zero or lower than zero.
-    /// In the first case the V parametric direction of the
-    /// result has the same orientation as the normal to <Circ>.
-    /// In the other case it has the opposite orientation.
-    pub fn new_circ_real(Circ: &crate::gp::Circ, Height: f64) -> crate::OwnedPtr<Self> {
+    /// **Source:** `GC_MakeTrimmedCylinder.hxx`:62 - `GC_MakeTrimmedCylinder::GC_MakeTrimmedCylinder()`
+    /// Creates a trimmed cylindrical surface from a base circle and height.
+    /// @param[in] theCirc base circle
+    /// @param[in] theHeight trimming height
+    /// @note The axis is the normal to the plane defined by `theCirc`.
+    /// @note `theHeight` can be positive or negative.
+    /// @note If `theHeight` is positive, the V parametric direction of
+    /// result has the same orientation as the normal to `theCirc`.
+    /// @note If `theHeight` is negative, it has the opposite orientation.
+    pub fn new_circ_real(theCirc: &crate::gp::Circ, theHeight: f64) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKGeomBase::GC_MakeTrimmedCylinder_ctor_circ_real(Circ, Height),
-            ))
-        }
-    }
-
-    /// **Source:** `GC_MakeTrimmedCylinder.hxx`:65 - `GC_MakeTrimmedCylinder::GC_MakeTrimmedCylinder()`
-    /// Make a cylindricalSurface <Cyl> from gp by its
-    /// axis <A1> and its radius <Radius>.
-    /// It returns NullObject if <Radius> is lower than zero.
-    /// <Height> can be greater than zero or lower than zero.
-    /// In the first case the V parametric direction of the
-    /// result has the same orientation as <A1>.
-    /// In the other case it has the opposite orientation.
-    pub fn new_ax1_real2(A1: &crate::gp::Ax1, Radius: f64, Height: f64) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKGeomBase::GC_MakeTrimmedCylinder_ctor_ax1_real2(
-                    A1, Radius, Height,
+                crate::ffi_extern_TKGeomBase::GC_MakeTrimmedCylinder_ctor_circ_real(
+                    theCirc, theHeight,
                 ),
             ))
         }
     }
 
-    /// **Source:** `GC_MakeTrimmedCylinder.hxx`:72 - `GC_MakeTrimmedCylinder::Value()`
+    /// **Source:** `GC_MakeTrimmedCylinder.hxx`:73 - `GC_MakeTrimmedCylinder::GC_MakeTrimmedCylinder()`
+    /// Creates a trimmed cylindrical surface from axis, radius and height.
+    /// @param[in] theA1 cylinder axis
+    /// @param[in] theRadius cylinder radius
+    /// @param[in] theHeight trimming height
+    /// @note Status is `gce_NegativeRadius` if `theRadius` is less than zero.
+    /// @note `theHeight` can be positive or negative.
+    /// @note If `theHeight` is positive, the V parametric direction of
+    /// result has the same orientation as `theA1`.
+    /// @note If `theHeight` is negative, it has the opposite orientation.
+    pub fn new_ax1_real2(
+        theA1: &crate::gp::Ax1,
+        theRadius: f64,
+        theHeight: f64,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomBase::GC_MakeTrimmedCylinder_ctor_ax1_real2(
+                    theA1, theRadius, theHeight,
+                ),
+            ))
+        }
+    }
+
+    /// **Source:** `GC_MakeTrimmedCylinder.hxx`:81 - `GC_MakeTrimmedCylinder::Value()`
     /// Returns the constructed trimmed cylinder.
     /// Exceptions
     /// StdFail_NotDone if no trimmed cylinder is constructed.
-    pub fn value(&self) -> &crate::ffi_types::HandleGeomRectangularTrimmedSurface {
+    /// @return resulting trimmed cylindrical surface
+    pub fn value(&self) -> &crate::ffi_types::Handle_Geom_RectangularTrimmedSurface {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKGeomBase::GC_MakeTrimmedCylinder_value(
                 self as *const Self,
@@ -2297,7 +4683,16 @@ impl MakeTrimmedCylinder {
         })
     }
 
-    /// Inherited: **Source:** `GC_Root.hxx`:44 - `GC_Root::Status()`
+    /// Inherited: **Source:** `GC_Root.hxx`:41 - `GC_Root::IsError()`
+    pub fn is_error(&self) -> bool {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKGeomBase::GC_MakeTrimmedCylinder_inherited_IsError(
+                self as *const Self,
+            )
+        })
+    }
+
+    /// Inherited: **Source:** `GC_Root.hxx`:47 - `GC_Root::Status()`
     pub fn status(&self) -> crate::gce::ErrorType {
         crate::gce::ErrorType::try_from(crate::check_result(unsafe {
             crate::ffi_extern_TKGeomBase::GC_MakeTrimmedCylinder_inherited_Status(
@@ -2313,8 +4708,8 @@ impl MakeTrimmedCylinder {
 // ========================
 
 /// **Source:** `GC_Root.hxx`:32 - `GC_Root`
-/// This class implements the common services for
-/// all classes of gce which report error.
+/// Provides common status services for GC builders
+/// reporting construction errors.
 pub use crate::ffi_types::GC_Root as Root;
 
 unsafe impl crate::CppDeletable for Root {
@@ -2344,7 +4739,15 @@ impl Root {
         })
     }
 
-    /// **Source:** `GC_Root.hxx`:44 - `GC_Root::Status()`
+    /// **Source:** `GC_Root.hxx`:41 - `GC_Root::IsError()`
+    /// Returns true if the construction has failed.
+    pub fn is_error(&self) -> bool {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKGeomBase::GC_Root_is_error(self as *const Self)
+        })
+    }
+
+    /// **Source:** `GC_Root.hxx`:47 - `GC_Root::Status()`
     /// Returns the status of the construction:
     /// -   gce_Done, if the construction is successful, or
     /// -   another value of the gce_ErrorType enumeration

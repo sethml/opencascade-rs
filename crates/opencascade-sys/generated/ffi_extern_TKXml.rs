@@ -12,36 +12,36 @@ unsafe extern "C" {
     pub fn XmlDrivers_DocumentRetrievalDriver_destructor(
         self_: *mut XmlDrivers_DocumentRetrievalDriver,
     );
-    /// **Source:** `XmlDrivers_DocumentRetrievalDriver.hxx`:35 - `XmlDrivers_DocumentRetrievalDriver::XmlDrivers_DocumentRetrievalDriver()`
+    /// **Source:** `XmlDrivers_DocumentRetrievalDriver.hxx`:32 - `XmlDrivers_DocumentRetrievalDriver::XmlDrivers_DocumentRetrievalDriver()`
     pub fn XmlDrivers_DocumentRetrievalDriver_ctor(
     ) -> crate::OcctResult<*mut XmlDrivers_DocumentRetrievalDriver>;
-    /// **Source:** `XmlDrivers_DocumentRetrievalDriver.hxx`:37 - `XmlDrivers_DocumentRetrievalDriver::AttributeDrivers()`
+    /// **Source:** `XmlDrivers_DocumentRetrievalDriver.hxx`:34 - `XmlDrivers_DocumentRetrievalDriver::AttributeDrivers()`
     pub fn XmlDrivers_DocumentRetrievalDriver_attribute_drivers(
         self_: *mut XmlDrivers_DocumentRetrievalDriver,
-        theMsgDriver: *const HandleMessageMessenger,
-    ) -> crate::OcctResult<*mut HandleXmlMDFADriverTable>;
-    /// **Source:** `XmlDrivers_DocumentRetrievalDriver.hxx`:40 - `XmlDrivers_DocumentRetrievalDriver::ReadShapeSection()`
+        theMsgDriver: *const Handle_Message_Messenger,
+    ) -> crate::OcctResult<*mut Handle_XmlMDF_ADriverTable>;
+    /// **Source:** `XmlDrivers_DocumentRetrievalDriver.hxx`:37 - `XmlDrivers_DocumentRetrievalDriver::ReadShapeSection()`
     pub fn XmlDrivers_DocumentRetrievalDriver_read_shape_section(
         self_: *mut XmlDrivers_DocumentRetrievalDriver,
         thePDoc: *const LDOM_Element,
-        theMsgDriver: *const HandleMessageMessenger,
+        theMsgDriver: *const Handle_Message_Messenger,
         theRange: *const Message_ProgressRange,
-    ) -> crate::OcctResult<*mut HandleXmlMDFADriver>;
-    /// **Source:** `XmlDrivers_DocumentRetrievalDriver.hxx`:45 - `XmlDrivers_DocumentRetrievalDriver::ShapeSetCleaning()`
+    ) -> crate::OcctResult<*mut Handle_XmlMDF_ADriver>;
+    /// **Source:** `XmlDrivers_DocumentRetrievalDriver.hxx`:42 - `XmlDrivers_DocumentRetrievalDriver::ShapeSetCleaning()`
     pub fn XmlDrivers_DocumentRetrievalDriver_shape_set_cleaning(
         self_: *mut XmlDrivers_DocumentRetrievalDriver,
-        theDriver: *const HandleXmlMDFADriver,
+        theDriver: *const Handle_XmlMDF_ADriver,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `XmlDrivers_DocumentRetrievalDriver.hxx`:48 - `XmlDrivers_DocumentRetrievalDriver::DynamicType()`
+    /// **Source:** `XmlDrivers_DocumentRetrievalDriver.hxx`:44 - `XmlDrivers_DocumentRetrievalDriver::DynamicType()`
     pub fn XmlDrivers_DocumentRetrievalDriver_dynamic_type(
         self_: *const XmlDrivers_DocumentRetrievalDriver,
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// **Source:** `XmlDrivers_DocumentRetrievalDriver.hxx`:48 - `XmlDrivers_DocumentRetrievalDriver::get_type_name()`
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
+    /// **Source:** `XmlDrivers_DocumentRetrievalDriver.hxx`:44 - `XmlDrivers_DocumentRetrievalDriver::get_type_name()`
     pub fn XmlDrivers_DocumentRetrievalDriver_get_type_name(
     ) -> crate::OcctResult<*const std::ffi::c_char>;
-    /// **Source:** `XmlDrivers_DocumentRetrievalDriver.hxx`:48 - `XmlDrivers_DocumentRetrievalDriver::get_type_descriptor()`
+    /// **Source:** `XmlDrivers_DocumentRetrievalDriver.hxx`:44 - `XmlDrivers_DocumentRetrievalDriver::get_type_descriptor()`
     pub fn XmlDrivers_DocumentRetrievalDriver_get_type_descriptor(
-    ) -> crate::OcctResult<*const HandleStandardType>;
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast XmlDrivers_DocumentRetrievalDriver to XmlLDrivers_DocumentRetrievalDriver
     pub fn XmlDrivers_DocumentRetrievalDriver_as_XmlLDrivers_DocumentRetrievalDriver(
         self_: *const XmlDrivers_DocumentRetrievalDriver,
@@ -77,96 +77,96 @@ unsafe extern "C" {
     /// Wrap XmlDrivers_DocumentRetrievalDriver in a Handle
     pub fn XmlDrivers_DocumentRetrievalDriver_to_handle(
         obj: *mut XmlDrivers_DocumentRetrievalDriver,
-    ) -> crate::OcctResult<*mut HandleXmlDriversDocumentRetrievalDriver>;
+    ) -> crate::OcctResult<*mut Handle_XmlDrivers_DocumentRetrievalDriver>;
     /// Destroy Handle<XmlDrivers_DocumentRetrievalDriver>
-    pub fn HandleXmlDriversDocumentRetrievalDriver_destructor(
-        self_: *mut HandleXmlDriversDocumentRetrievalDriver,
+    pub fn Handle_XmlDrivers_DocumentRetrievalDriver_destructor(
+        self_: *mut Handle_XmlDrivers_DocumentRetrievalDriver,
     );
     /// Clone Handle<XmlDrivers_DocumentRetrievalDriver> (increments reference count)
-    pub fn HandleXmlDriversDocumentRetrievalDriver_clone(
-        self_: *const HandleXmlDriversDocumentRetrievalDriver,
-    ) -> crate::OcctResult<*mut HandleXmlDriversDocumentRetrievalDriver>;
+    pub fn Handle_XmlDrivers_DocumentRetrievalDriver_clone(
+        self_: *const Handle_XmlDrivers_DocumentRetrievalDriver,
+    ) -> crate::OcctResult<*mut Handle_XmlDrivers_DocumentRetrievalDriver>;
     /// Check if Handle<XmlDrivers_DocumentRetrievalDriver> is null
-    pub fn HandleXmlDriversDocumentRetrievalDriver_is_null(
-        self_: *const HandleXmlDriversDocumentRetrievalDriver,
+    pub fn Handle_XmlDrivers_DocumentRetrievalDriver_is_null(
+        self_: *const Handle_XmlDrivers_DocumentRetrievalDriver,
     ) -> bool;
     /// Dereference Handle to get *const XmlDrivers_DocumentRetrievalDriver
-    pub fn HandleXmlDriversDocumentRetrievalDriver_get(
-        handle: *const HandleXmlDriversDocumentRetrievalDriver,
+    pub fn Handle_XmlDrivers_DocumentRetrievalDriver_get(
+        handle: *const Handle_XmlDrivers_DocumentRetrievalDriver,
     ) -> crate::OcctResult<*const XmlDrivers_DocumentRetrievalDriver>;
     /// Dereference Handle to get *mut XmlDrivers_DocumentRetrievalDriver
-    pub fn HandleXmlDriversDocumentRetrievalDriver_get_mut(
-        handle: *mut HandleXmlDriversDocumentRetrievalDriver,
+    pub fn Handle_XmlDrivers_DocumentRetrievalDriver_get_mut(
+        handle: *mut Handle_XmlDrivers_DocumentRetrievalDriver,
     ) -> crate::OcctResult<*mut XmlDrivers_DocumentRetrievalDriver>;
     /// Upcast Handle<XmlDrivers_DocumentRetrievalDriver> to Handle<XmlLDrivers_DocumentRetrievalDriver>
-    pub fn HandleXmlDriversDocumentRetrievalDriver_to_HandleXmlLDriversDocumentRetrievalDriver(
-        self_: *const HandleXmlDriversDocumentRetrievalDriver,
-    ) -> crate::OcctResult<*mut HandleXmlLDriversDocumentRetrievalDriver>;
+    pub fn Handle_XmlDrivers_DocumentRetrievalDriver_to_Handle_XmlLDrivers_DocumentRetrievalDriver(
+        self_: *const Handle_XmlDrivers_DocumentRetrievalDriver,
+    ) -> crate::OcctResult<*mut Handle_XmlLDrivers_DocumentRetrievalDriver>;
     /// Upcast Handle<XmlDrivers_DocumentRetrievalDriver> to Handle<PCDM_RetrievalDriver>
-    pub fn HandleXmlDriversDocumentRetrievalDriver_to_HandlePCDMRetrievalDriver(
-        self_: *const HandleXmlDriversDocumentRetrievalDriver,
-    ) -> crate::OcctResult<*mut HandlePCDMRetrievalDriver>;
+    pub fn Handle_XmlDrivers_DocumentRetrievalDriver_to_Handle_PCDM_RetrievalDriver(
+        self_: *const Handle_XmlDrivers_DocumentRetrievalDriver,
+    ) -> crate::OcctResult<*mut Handle_PCDM_RetrievalDriver>;
     /// Upcast Handle<XmlDrivers_DocumentRetrievalDriver> to Handle<PCDM_Reader>
-    pub fn HandleXmlDriversDocumentRetrievalDriver_to_HandlePCDMReader(
-        self_: *const HandleXmlDriversDocumentRetrievalDriver,
-    ) -> crate::OcctResult<*mut HandlePCDMReader>;
+    pub fn Handle_XmlDrivers_DocumentRetrievalDriver_to_Handle_PCDM_Reader(
+        self_: *const Handle_XmlDrivers_DocumentRetrievalDriver,
+    ) -> crate::OcctResult<*mut Handle_PCDM_Reader>;
     /// Upcast Handle<XmlDrivers_DocumentRetrievalDriver> to Handle<Standard_Transient>
-    pub fn HandleXmlDriversDocumentRetrievalDriver_to_HandleStandardTransient(
-        self_: *const HandleXmlDriversDocumentRetrievalDriver,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
+    pub fn Handle_XmlDrivers_DocumentRetrievalDriver_to_Handle_Standard_Transient(
+        self_: *const Handle_XmlDrivers_DocumentRetrievalDriver,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
     /// Downcast Handle<XmlDrivers_DocumentRetrievalDriver> to Handle<XmlXCAFDrivers_DocumentRetrievalDriver> (returns null on failure)
-    pub fn HandleXmlDriversDocumentRetrievalDriver_downcast_to_HandleXmlXCAFDriversDocumentRetrievalDriver(
-        self_: *const HandleXmlDriversDocumentRetrievalDriver,
-    ) -> crate::OcctResult<*mut HandleXmlXCAFDriversDocumentRetrievalDriver>;
-    /// Inherited: **Source:** `XmlLDrivers_DocumentRetrievalDriver.hxx`:43 - `XmlLDrivers_DocumentRetrievalDriver::Read()`
+    pub fn Handle_XmlDrivers_DocumentRetrievalDriver_downcast_to_Handle_XmlXCAFDrivers_DocumentRetrievalDriver(
+        self_: *const Handle_XmlDrivers_DocumentRetrievalDriver,
+    ) -> crate::OcctResult<*mut Handle_XmlXCAFDrivers_DocumentRetrievalDriver>;
+    /// Inherited: **Source:** `XmlLDrivers_DocumentRetrievalDriver.hxx`:40 - `XmlLDrivers_DocumentRetrievalDriver::Read()`
     pub fn XmlDrivers_DocumentRetrievalDriver_inherited_Read(
         self_: *mut XmlDrivers_DocumentRetrievalDriver,
         theFileName: *const TCollection_ExtendedString,
-        theNewDocument: *const HandleCDMDocument,
-        theApplication: *const HandleCDMApplication,
-        theFilter: *const HandlePCDMReaderFilter,
+        theNewDocument: *const Handle_CDM_Document,
+        theApplication: *const Handle_CDM_Application,
+        theFilter: *const Handle_PCDM_ReaderFilter,
         theRange: *const Message_ProgressRange,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `PCDM_RetrievalDriver.hxx`:46 - `PCDM_RetrievalDriver::SetFormat()`
+    /// Inherited: **Source:** `PCDM_RetrievalDriver.hxx`:43 - `PCDM_RetrievalDriver::SetFormat()`
     pub fn XmlDrivers_DocumentRetrievalDriver_inherited_SetFormat(
         self_: *mut XmlDrivers_DocumentRetrievalDriver,
         aformat: *const TCollection_ExtendedString,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `PCDM_RetrievalDriver.hxx`:48 - `PCDM_RetrievalDriver::GetFormat()`
+    /// Inherited: **Source:** `PCDM_RetrievalDriver.hxx`:45 - `PCDM_RetrievalDriver::GetFormat()`
     pub fn XmlDrivers_DocumentRetrievalDriver_inherited_GetFormat(
         self_: *const XmlDrivers_DocumentRetrievalDriver,
     ) -> crate::OcctResult<*mut TCollection_ExtendedString>;
-    /// Inherited: **Source:** `PCDM_Reader.hxx`:57 - `PCDM_Reader::GetStatus()`
+    /// Inherited: **Source:** `PCDM_Reader.hxx`:54 - `PCDM_Reader::GetStatus()`
     pub fn XmlDrivers_DocumentRetrievalDriver_inherited_GetStatus(
         self_: *const XmlDrivers_DocumentRetrievalDriver,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn XmlDrivers_DocumentRetrievalDriver_inherited_IsInstance(
         self_: *const XmlDrivers_DocumentRetrievalDriver,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn XmlDrivers_DocumentRetrievalDriver_inherited_IsKind(
         self_: *const XmlDrivers_DocumentRetrievalDriver,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn XmlDrivers_DocumentRetrievalDriver_inherited_This(
         self_: *const XmlDrivers_DocumentRetrievalDriver,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn XmlDrivers_DocumentRetrievalDriver_inherited_GetRefCount(
         self_: *const XmlDrivers_DocumentRetrievalDriver,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn XmlDrivers_DocumentRetrievalDriver_inherited_IncrementRefCounter(
         self_: *mut XmlDrivers_DocumentRetrievalDriver,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn XmlDrivers_DocumentRetrievalDriver_inherited_DecrementRefCounter(
         self_: *mut XmlDrivers_DocumentRetrievalDriver,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn XmlDrivers_DocumentRetrievalDriver_inherited_Delete(
         self_: *const XmlDrivers_DocumentRetrievalDriver,
     ) -> *const std::ffi::c_char;
@@ -174,32 +174,32 @@ unsafe extern "C" {
     pub fn XmlDrivers_DocumentStorageDriver_destructor(
         self_: *mut XmlDrivers_DocumentStorageDriver,
     );
-    /// **Source:** `XmlDrivers_DocumentStorageDriver.hxx`:34 - `XmlDrivers_DocumentStorageDriver::XmlDrivers_DocumentStorageDriver()`
+    /// **Source:** `XmlDrivers_DocumentStorageDriver.hxx`:31 - `XmlDrivers_DocumentStorageDriver::XmlDrivers_DocumentStorageDriver()`
     pub fn XmlDrivers_DocumentStorageDriver_ctor_extendedstring(
         theCopyright: *const TCollection_ExtendedString,
     ) -> crate::OcctResult<*mut XmlDrivers_DocumentStorageDriver>;
-    /// **Source:** `XmlDrivers_DocumentStorageDriver.hxx`:36 - `XmlDrivers_DocumentStorageDriver::AttributeDrivers()`
+    /// **Source:** `XmlDrivers_DocumentStorageDriver.hxx`:33 - `XmlDrivers_DocumentStorageDriver::AttributeDrivers()`
     pub fn XmlDrivers_DocumentStorageDriver_attribute_drivers(
         self_: *mut XmlDrivers_DocumentStorageDriver,
-        theMsgDriver: *const HandleMessageMessenger,
-    ) -> crate::OcctResult<*mut HandleXmlMDFADriverTable>;
-    /// **Source:** `XmlDrivers_DocumentStorageDriver.hxx`:39 - `XmlDrivers_DocumentStorageDriver::WriteShapeSection()`
+        theMsgDriver: *const Handle_Message_Messenger,
+    ) -> crate::OcctResult<*mut Handle_XmlMDF_ADriverTable>;
+    /// **Source:** `XmlDrivers_DocumentStorageDriver.hxx`:36 - `XmlDrivers_DocumentStorageDriver::WriteShapeSection()`
     pub fn XmlDrivers_DocumentStorageDriver_write_shape_section(
         self_: *mut XmlDrivers_DocumentStorageDriver,
         thePDoc: *mut LDOM_Element,
         theStorageFormatVersion: i32,
         theRange: *const Message_ProgressRange,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `XmlDrivers_DocumentStorageDriver.hxx`:44 - `XmlDrivers_DocumentStorageDriver::DynamicType()`
+    /// **Source:** `XmlDrivers_DocumentStorageDriver.hxx`:41 - `XmlDrivers_DocumentStorageDriver::DynamicType()`
     pub fn XmlDrivers_DocumentStorageDriver_dynamic_type(
         self_: *const XmlDrivers_DocumentStorageDriver,
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// **Source:** `XmlDrivers_DocumentStorageDriver.hxx`:44 - `XmlDrivers_DocumentStorageDriver::get_type_name()`
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
+    /// **Source:** `XmlDrivers_DocumentStorageDriver.hxx`:41 - `XmlDrivers_DocumentStorageDriver::get_type_name()`
     pub fn XmlDrivers_DocumentStorageDriver_get_type_name(
     ) -> crate::OcctResult<*const std::ffi::c_char>;
-    /// **Source:** `XmlDrivers_DocumentStorageDriver.hxx`:44 - `XmlDrivers_DocumentStorageDriver::get_type_descriptor()`
+    /// **Source:** `XmlDrivers_DocumentStorageDriver.hxx`:41 - `XmlDrivers_DocumentStorageDriver::get_type_descriptor()`
     pub fn XmlDrivers_DocumentStorageDriver_get_type_descriptor(
-    ) -> crate::OcctResult<*const HandleStandardType>;
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast XmlDrivers_DocumentStorageDriver to XmlLDrivers_DocumentStorageDriver
     pub fn XmlDrivers_DocumentStorageDriver_as_XmlLDrivers_DocumentStorageDriver(
         self_: *const XmlDrivers_DocumentStorageDriver,
@@ -235,149 +235,149 @@ unsafe extern "C" {
     /// Wrap XmlDrivers_DocumentStorageDriver in a Handle
     pub fn XmlDrivers_DocumentStorageDriver_to_handle(
         obj: *mut XmlDrivers_DocumentStorageDriver,
-    ) -> crate::OcctResult<*mut HandleXmlDriversDocumentStorageDriver>;
+    ) -> crate::OcctResult<*mut Handle_XmlDrivers_DocumentStorageDriver>;
     /// Destroy Handle<XmlDrivers_DocumentStorageDriver>
-    pub fn HandleXmlDriversDocumentStorageDriver_destructor(
-        self_: *mut HandleXmlDriversDocumentStorageDriver,
+    pub fn Handle_XmlDrivers_DocumentStorageDriver_destructor(
+        self_: *mut Handle_XmlDrivers_DocumentStorageDriver,
     );
     /// Clone Handle<XmlDrivers_DocumentStorageDriver> (increments reference count)
-    pub fn HandleXmlDriversDocumentStorageDriver_clone(
-        self_: *const HandleXmlDriversDocumentStorageDriver,
-    ) -> crate::OcctResult<*mut HandleXmlDriversDocumentStorageDriver>;
+    pub fn Handle_XmlDrivers_DocumentStorageDriver_clone(
+        self_: *const Handle_XmlDrivers_DocumentStorageDriver,
+    ) -> crate::OcctResult<*mut Handle_XmlDrivers_DocumentStorageDriver>;
     /// Check if Handle<XmlDrivers_DocumentStorageDriver> is null
-    pub fn HandleXmlDriversDocumentStorageDriver_is_null(
-        self_: *const HandleXmlDriversDocumentStorageDriver,
+    pub fn Handle_XmlDrivers_DocumentStorageDriver_is_null(
+        self_: *const Handle_XmlDrivers_DocumentStorageDriver,
     ) -> bool;
     /// Dereference Handle to get *const XmlDrivers_DocumentStorageDriver
-    pub fn HandleXmlDriversDocumentStorageDriver_get(
-        handle: *const HandleXmlDriversDocumentStorageDriver,
+    pub fn Handle_XmlDrivers_DocumentStorageDriver_get(
+        handle: *const Handle_XmlDrivers_DocumentStorageDriver,
     ) -> crate::OcctResult<*const XmlDrivers_DocumentStorageDriver>;
     /// Dereference Handle to get *mut XmlDrivers_DocumentStorageDriver
-    pub fn HandleXmlDriversDocumentStorageDriver_get_mut(
-        handle: *mut HandleXmlDriversDocumentStorageDriver,
+    pub fn Handle_XmlDrivers_DocumentStorageDriver_get_mut(
+        handle: *mut Handle_XmlDrivers_DocumentStorageDriver,
     ) -> crate::OcctResult<*mut XmlDrivers_DocumentStorageDriver>;
     /// Upcast Handle<XmlDrivers_DocumentStorageDriver> to Handle<XmlLDrivers_DocumentStorageDriver>
-    pub fn HandleXmlDriversDocumentStorageDriver_to_HandleXmlLDriversDocumentStorageDriver(
-        self_: *const HandleXmlDriversDocumentStorageDriver,
-    ) -> crate::OcctResult<*mut HandleXmlLDriversDocumentStorageDriver>;
+    pub fn Handle_XmlDrivers_DocumentStorageDriver_to_Handle_XmlLDrivers_DocumentStorageDriver(
+        self_: *const Handle_XmlDrivers_DocumentStorageDriver,
+    ) -> crate::OcctResult<*mut Handle_XmlLDrivers_DocumentStorageDriver>;
     /// Upcast Handle<XmlDrivers_DocumentStorageDriver> to Handle<PCDM_StorageDriver>
-    pub fn HandleXmlDriversDocumentStorageDriver_to_HandlePCDMStorageDriver(
-        self_: *const HandleXmlDriversDocumentStorageDriver,
-    ) -> crate::OcctResult<*mut HandlePCDMStorageDriver>;
+    pub fn Handle_XmlDrivers_DocumentStorageDriver_to_Handle_PCDM_StorageDriver(
+        self_: *const Handle_XmlDrivers_DocumentStorageDriver,
+    ) -> crate::OcctResult<*mut Handle_PCDM_StorageDriver>;
     /// Upcast Handle<XmlDrivers_DocumentStorageDriver> to Handle<PCDM_Writer>
-    pub fn HandleXmlDriversDocumentStorageDriver_to_HandlePCDMWriter(
-        self_: *const HandleXmlDriversDocumentStorageDriver,
-    ) -> crate::OcctResult<*mut HandlePCDMWriter>;
+    pub fn Handle_XmlDrivers_DocumentStorageDriver_to_Handle_PCDM_Writer(
+        self_: *const Handle_XmlDrivers_DocumentStorageDriver,
+    ) -> crate::OcctResult<*mut Handle_PCDM_Writer>;
     /// Upcast Handle<XmlDrivers_DocumentStorageDriver> to Handle<Standard_Transient>
-    pub fn HandleXmlDriversDocumentStorageDriver_to_HandleStandardTransient(
-        self_: *const HandleXmlDriversDocumentStorageDriver,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
+    pub fn Handle_XmlDrivers_DocumentStorageDriver_to_Handle_Standard_Transient(
+        self_: *const Handle_XmlDrivers_DocumentStorageDriver,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
     /// Downcast Handle<XmlDrivers_DocumentStorageDriver> to Handle<XmlXCAFDrivers_DocumentStorageDriver> (returns null on failure)
-    pub fn HandleXmlDriversDocumentStorageDriver_downcast_to_HandleXmlXCAFDriversDocumentStorageDriver(
-        self_: *const HandleXmlDriversDocumentStorageDriver,
-    ) -> crate::OcctResult<*mut HandleXmlXCAFDriversDocumentStorageDriver>;
-    /// Inherited: **Source:** `XmlLDrivers_DocumentStorageDriver.hxx`:44 - `XmlLDrivers_DocumentStorageDriver::Write()`
+    pub fn Handle_XmlDrivers_DocumentStorageDriver_downcast_to_Handle_XmlXCAFDrivers_DocumentStorageDriver(
+        self_: *const Handle_XmlDrivers_DocumentStorageDriver,
+    ) -> crate::OcctResult<*mut Handle_XmlXCAFDrivers_DocumentStorageDriver>;
+    /// Inherited: **Source:** `XmlLDrivers_DocumentStorageDriver.hxx`:42 - `XmlLDrivers_DocumentStorageDriver::Write()`
     pub fn XmlDrivers_DocumentStorageDriver_inherited_Write(
         self_: *mut XmlDrivers_DocumentStorageDriver,
-        theDocument: *const HandleCDMDocument,
+        theDocument: *const Handle_CDM_Document,
         theFileName: *const TCollection_ExtendedString,
         theRange: *const Message_ProgressRange,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `PCDM_StorageDriver.hxx`:52 - `PCDM_StorageDriver::Make()`
+    /// Inherited: **Source:** `PCDM_StorageDriver.hxx`:50 - `PCDM_StorageDriver::Make()`
     pub fn XmlDrivers_DocumentStorageDriver_inherited_Make(
         self_: *mut XmlDrivers_DocumentStorageDriver,
-        aDocument: *const HandleCDMDocument,
-    ) -> crate::OcctResult<*mut HandlePCDMDocument>;
-    /// Inherited: **Source:** `PCDM_StorageDriver.hxx`:76 - `PCDM_StorageDriver::SetFormat()`
+        aDocument: *const Handle_CDM_Document,
+    ) -> crate::OcctResult<*mut Handle_PCDM_Document>;
+    /// Inherited: **Source:** `PCDM_StorageDriver.hxx`:75 - `PCDM_StorageDriver::SetFormat()`
     pub fn XmlDrivers_DocumentStorageDriver_inherited_SetFormat(
         self_: *mut XmlDrivers_DocumentStorageDriver,
         aformat: *const TCollection_ExtendedString,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `PCDM_StorageDriver.hxx`:78 - `PCDM_StorageDriver::GetFormat()`
+    /// Inherited: **Source:** `PCDM_StorageDriver.hxx`:77 - `PCDM_StorageDriver::GetFormat()`
     pub fn XmlDrivers_DocumentStorageDriver_inherited_GetFormat(
         self_: *const XmlDrivers_DocumentStorageDriver,
     ) -> crate::OcctResult<*mut TCollection_ExtendedString>;
-    /// Inherited: **Source:** `PCDM_StorageDriver.hxx`:80 - `PCDM_StorageDriver::IsError()`
+    /// Inherited: **Source:** `PCDM_StorageDriver.hxx`:79 - `PCDM_StorageDriver::IsError()`
     pub fn XmlDrivers_DocumentStorageDriver_inherited_IsError(
         self_: *const XmlDrivers_DocumentStorageDriver,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `PCDM_StorageDriver.hxx`:82 - `PCDM_StorageDriver::SetIsError()`
+    /// Inherited: **Source:** `PCDM_StorageDriver.hxx`:81 - `PCDM_StorageDriver::SetIsError()`
     pub fn XmlDrivers_DocumentStorageDriver_inherited_SetIsError(
         self_: *mut XmlDrivers_DocumentStorageDriver,
         theIsError: bool,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `PCDM_StorageDriver.hxx`:84 - `PCDM_StorageDriver::GetStoreStatus()`
+    /// Inherited: **Source:** `PCDM_StorageDriver.hxx`:83 - `PCDM_StorageDriver::GetStoreStatus()`
     pub fn XmlDrivers_DocumentStorageDriver_inherited_GetStoreStatus(
         self_: *const XmlDrivers_DocumentStorageDriver,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `PCDM_StorageDriver.hxx`:86 - `PCDM_StorageDriver::SetStoreStatus()`
+    /// Inherited: **Source:** `PCDM_StorageDriver.hxx`:85 - `PCDM_StorageDriver::SetStoreStatus()`
     pub fn XmlDrivers_DocumentStorageDriver_inherited_SetStoreStatus(
         self_: *mut XmlDrivers_DocumentStorageDriver,
         theStoreStatus: i32,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn XmlDrivers_DocumentStorageDriver_inherited_IsInstance(
         self_: *const XmlDrivers_DocumentStorageDriver,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn XmlDrivers_DocumentStorageDriver_inherited_IsKind(
         self_: *const XmlDrivers_DocumentStorageDriver,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn XmlDrivers_DocumentStorageDriver_inherited_This(
         self_: *const XmlDrivers_DocumentStorageDriver,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn XmlDrivers_DocumentStorageDriver_inherited_GetRefCount(
         self_: *const XmlDrivers_DocumentStorageDriver,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn XmlDrivers_DocumentStorageDriver_inherited_IncrementRefCounter(
         self_: *mut XmlDrivers_DocumentStorageDriver,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn XmlDrivers_DocumentStorageDriver_inherited_DecrementRefCounter(
         self_: *mut XmlDrivers_DocumentStorageDriver,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn XmlDrivers_DocumentStorageDriver_inherited_Delete(
         self_: *const XmlDrivers_DocumentStorageDriver,
     ) -> *const std::ffi::c_char;
     // ======================== XmlMDataXtd_ConstraintDriver ========================
     pub fn XmlMDataXtd_ConstraintDriver_destructor(self_: *mut XmlMDataXtd_ConstraintDriver);
-    /// **Source:** `XmlMDataXtd_ConstraintDriver.hxx`:37 - `XmlMDataXtd_ConstraintDriver::XmlMDataXtd_ConstraintDriver()`
+    /// **Source:** `XmlMDataXtd_ConstraintDriver.hxx`:34 - `XmlMDataXtd_ConstraintDriver::XmlMDataXtd_ConstraintDriver()`
     pub fn XmlMDataXtd_ConstraintDriver_ctor_handlemessagemessenger(
-        theMessageDriver: *const HandleMessageMessenger,
+        theMessageDriver: *const Handle_Message_Messenger,
     ) -> crate::OcctResult<*mut XmlMDataXtd_ConstraintDriver>;
-    /// **Source:** `XmlMDataXtd_ConstraintDriver.hxx`:39 - `XmlMDataXtd_ConstraintDriver::NewEmpty()`
+    /// **Source:** `XmlMDataXtd_ConstraintDriver.hxx`:37 - `XmlMDataXtd_ConstraintDriver::NewEmpty()`
     pub fn XmlMDataXtd_ConstraintDriver_new_empty(
         self_: *const XmlMDataXtd_ConstraintDriver,
-    ) -> crate::OcctResult<*mut HandleTDFAttribute>;
-    /// **Source:** `XmlMDataXtd_ConstraintDriver.hxx`:42 - `XmlMDataXtd_ConstraintDriver::Paste()`
+    ) -> crate::OcctResult<*mut Handle_TDF_Attribute>;
+    /// **Source:** `XmlMDataXtd_ConstraintDriver.hxx`:39 - `XmlMDataXtd_ConstraintDriver::Paste()`
     pub fn XmlMDataXtd_ConstraintDriver_paste_persistent_handletdfattribute_rrelocationtable(
         self_: *const XmlMDataXtd_ConstraintDriver,
         Source: *const XmlObjMgt_Persistent,
-        Target: *const HandleTDFAttribute,
+        Target: *const Handle_TDF_Attribute,
         RelocTable: *mut XmlObjMgt_RRelocationTable,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `XmlMDataXtd_ConstraintDriver.hxx`:46 - `XmlMDataXtd_ConstraintDriver::Paste()`
+    /// **Source:** `XmlMDataXtd_ConstraintDriver.hxx`:43 - `XmlMDataXtd_ConstraintDriver::Paste()`
     pub fn XmlMDataXtd_ConstraintDriver_paste_handletdfattribute_persistent_srelocationtable(
         self_: *const XmlMDataXtd_ConstraintDriver,
-        Source: *const HandleTDFAttribute,
+        Source: *const Handle_TDF_Attribute,
         Target: *mut XmlObjMgt_Persistent,
         RelocTable: *mut XmlObjMgt_SRelocationTable,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `XmlMDataXtd_ConstraintDriver.hxx`:50 - `XmlMDataXtd_ConstraintDriver::DynamicType()`
+    /// **Source:** `XmlMDataXtd_ConstraintDriver.hxx`:47 - `XmlMDataXtd_ConstraintDriver::DynamicType()`
     pub fn XmlMDataXtd_ConstraintDriver_dynamic_type(
         self_: *const XmlMDataXtd_ConstraintDriver,
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// **Source:** `XmlMDataXtd_ConstraintDriver.hxx`:50 - `XmlMDataXtd_ConstraintDriver::get_type_name()`
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
+    /// **Source:** `XmlMDataXtd_ConstraintDriver.hxx`:47 - `XmlMDataXtd_ConstraintDriver::get_type_name()`
     pub fn XmlMDataXtd_ConstraintDriver_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
-    /// **Source:** `XmlMDataXtd_ConstraintDriver.hxx`:50 - `XmlMDataXtd_ConstraintDriver::get_type_descriptor()`
+    /// **Source:** `XmlMDataXtd_ConstraintDriver.hxx`:47 - `XmlMDataXtd_ConstraintDriver::get_type_descriptor()`
     pub fn XmlMDataXtd_ConstraintDriver_get_type_descriptor(
-    ) -> crate::OcctResult<*const HandleStandardType>;
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast XmlMDataXtd_ConstraintDriver to XmlMDF_ADriver
     pub fn XmlMDataXtd_ConstraintDriver_as_XmlMDF_ADriver(
         self_: *const XmlMDataXtd_ConstraintDriver,
@@ -397,118 +397,118 @@ unsafe extern "C" {
     /// Wrap XmlMDataXtd_ConstraintDriver in a Handle
     pub fn XmlMDataXtd_ConstraintDriver_to_handle(
         obj: *mut XmlMDataXtd_ConstraintDriver,
-    ) -> crate::OcctResult<*mut HandleXmlMDataXtdConstraintDriver>;
+    ) -> crate::OcctResult<*mut Handle_XmlMDataXtd_ConstraintDriver>;
     /// Destroy Handle<XmlMDataXtd_ConstraintDriver>
-    pub fn HandleXmlMDataXtdConstraintDriver_destructor(
-        self_: *mut HandleXmlMDataXtdConstraintDriver,
+    pub fn Handle_XmlMDataXtd_ConstraintDriver_destructor(
+        self_: *mut Handle_XmlMDataXtd_ConstraintDriver,
     );
     /// Clone Handle<XmlMDataXtd_ConstraintDriver> (increments reference count)
-    pub fn HandleXmlMDataXtdConstraintDriver_clone(
-        self_: *const HandleXmlMDataXtdConstraintDriver,
-    ) -> crate::OcctResult<*mut HandleXmlMDataXtdConstraintDriver>;
+    pub fn Handle_XmlMDataXtd_ConstraintDriver_clone(
+        self_: *const Handle_XmlMDataXtd_ConstraintDriver,
+    ) -> crate::OcctResult<*mut Handle_XmlMDataXtd_ConstraintDriver>;
     /// Check if Handle<XmlMDataXtd_ConstraintDriver> is null
-    pub fn HandleXmlMDataXtdConstraintDriver_is_null(
-        self_: *const HandleXmlMDataXtdConstraintDriver,
+    pub fn Handle_XmlMDataXtd_ConstraintDriver_is_null(
+        self_: *const Handle_XmlMDataXtd_ConstraintDriver,
     ) -> bool;
     /// Dereference Handle to get *const XmlMDataXtd_ConstraintDriver
-    pub fn HandleXmlMDataXtdConstraintDriver_get(
-        handle: *const HandleXmlMDataXtdConstraintDriver,
+    pub fn Handle_XmlMDataXtd_ConstraintDriver_get(
+        handle: *const Handle_XmlMDataXtd_ConstraintDriver,
     ) -> crate::OcctResult<*const XmlMDataXtd_ConstraintDriver>;
     /// Dereference Handle to get *mut XmlMDataXtd_ConstraintDriver
-    pub fn HandleXmlMDataXtdConstraintDriver_get_mut(
-        handle: *mut HandleXmlMDataXtdConstraintDriver,
+    pub fn Handle_XmlMDataXtd_ConstraintDriver_get_mut(
+        handle: *mut Handle_XmlMDataXtd_ConstraintDriver,
     ) -> crate::OcctResult<*mut XmlMDataXtd_ConstraintDriver>;
     /// Upcast Handle<XmlMDataXtd_ConstraintDriver> to Handle<XmlMDF_ADriver>
-    pub fn HandleXmlMDataXtdConstraintDriver_to_HandleXmlMDFADriver(
-        self_: *const HandleXmlMDataXtdConstraintDriver,
-    ) -> crate::OcctResult<*mut HandleXmlMDFADriver>;
+    pub fn Handle_XmlMDataXtd_ConstraintDriver_to_Handle_XmlMDF_ADriver(
+        self_: *const Handle_XmlMDataXtd_ConstraintDriver,
+    ) -> crate::OcctResult<*mut Handle_XmlMDF_ADriver>;
     /// Upcast Handle<XmlMDataXtd_ConstraintDriver> to Handle<Standard_Transient>
-    pub fn HandleXmlMDataXtdConstraintDriver_to_HandleStandardTransient(
-        self_: *const HandleXmlMDataXtdConstraintDriver,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
-    /// Inherited: **Source:** `XmlMDF_ADriver.hxx`:42 - `XmlMDF_ADriver::VersionNumber()`
+    pub fn Handle_XmlMDataXtd_ConstraintDriver_to_Handle_Standard_Transient(
+        self_: *const Handle_XmlMDataXtd_ConstraintDriver,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
+    /// Inherited: **Source:** `XmlMDF_ADriver.hxx`:39 - `XmlMDF_ADriver::VersionNumber()`
     pub fn XmlMDataXtd_ConstraintDriver_inherited_VersionNumber(
         self_: *const XmlMDataXtd_ConstraintDriver,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `XmlMDF_ADriver.hxx`:49 - `XmlMDF_ADriver::SourceType()`
+    /// Inherited: **Source:** `XmlMDF_ADriver.hxx`:46 - `XmlMDF_ADriver::SourceType()`
     pub fn XmlMDataXtd_ConstraintDriver_inherited_SourceType(
         self_: *const XmlMDataXtd_ConstraintDriver,
-    ) -> crate::OcctResult<*mut HandleStandardType>;
-    /// Inherited: **Source:** `XmlMDF_ADriver.hxx`:52 - `XmlMDF_ADriver::TypeName()`
+    ) -> crate::OcctResult<*mut Handle_Standard_Type>;
+    /// Inherited: **Source:** `XmlMDF_ADriver.hxx`:49 - `XmlMDF_ADriver::TypeName()`
     pub fn XmlMDataXtd_ConstraintDriver_inherited_TypeName(
         self_: *const XmlMDataXtd_ConstraintDriver,
     ) -> crate::OcctResult<*const TCollection_AsciiString>;
-    /// Inherited: **Source:** `XmlMDF_ADriver.hxx`:55 - `XmlMDF_ADriver::Namespace()`
+    /// Inherited: **Source:** `XmlMDF_ADriver.hxx`:52 - `XmlMDF_ADriver::Namespace()`
     pub fn XmlMDataXtd_ConstraintDriver_inherited_Namespace(
         self_: *const XmlMDataXtd_ConstraintDriver,
     ) -> crate::OcctResult<*const TCollection_AsciiString>;
-    /// Inherited: **Source:** `XmlMDF_ADriver.hxx`:72 - `XmlMDF_ADriver::MessageDriver()`
+    /// Inherited: **Source:** `XmlMDF_ADriver.hxx`:69 - `XmlMDF_ADriver::MessageDriver()`
     pub fn XmlMDataXtd_ConstraintDriver_inherited_MessageDriver(
         self_: *const XmlMDataXtd_ConstraintDriver,
-    ) -> crate::OcctResult<*const HandleMessageMessenger>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    ) -> crate::OcctResult<*const Handle_Message_Messenger>;
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn XmlMDataXtd_ConstraintDriver_inherited_IsInstance(
         self_: *const XmlMDataXtd_ConstraintDriver,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn XmlMDataXtd_ConstraintDriver_inherited_IsKind(
         self_: *const XmlMDataXtd_ConstraintDriver,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn XmlMDataXtd_ConstraintDriver_inherited_This(
         self_: *const XmlMDataXtd_ConstraintDriver,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn XmlMDataXtd_ConstraintDriver_inherited_GetRefCount(
         self_: *const XmlMDataXtd_ConstraintDriver,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn XmlMDataXtd_ConstraintDriver_inherited_IncrementRefCounter(
         self_: *mut XmlMDataXtd_ConstraintDriver,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn XmlMDataXtd_ConstraintDriver_inherited_DecrementRefCounter(
         self_: *mut XmlMDataXtd_ConstraintDriver,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn XmlMDataXtd_ConstraintDriver_inherited_Delete(
         self_: *const XmlMDataXtd_ConstraintDriver,
     ) -> *const std::ffi::c_char;
     // ======================== XmlMDataXtd_GeometryDriver ========================
     pub fn XmlMDataXtd_GeometryDriver_destructor(self_: *mut XmlMDataXtd_GeometryDriver);
-    /// **Source:** `XmlMDataXtd_GeometryDriver.hxx`:37 - `XmlMDataXtd_GeometryDriver::XmlMDataXtd_GeometryDriver()`
+    /// **Source:** `XmlMDataXtd_GeometryDriver.hxx`:34 - `XmlMDataXtd_GeometryDriver::XmlMDataXtd_GeometryDriver()`
     pub fn XmlMDataXtd_GeometryDriver_ctor_handlemessagemessenger(
-        theMessageDriver: *const HandleMessageMessenger,
+        theMessageDriver: *const Handle_Message_Messenger,
     ) -> crate::OcctResult<*mut XmlMDataXtd_GeometryDriver>;
-    /// **Source:** `XmlMDataXtd_GeometryDriver.hxx`:39 - `XmlMDataXtd_GeometryDriver::NewEmpty()`
+    /// **Source:** `XmlMDataXtd_GeometryDriver.hxx`:37 - `XmlMDataXtd_GeometryDriver::NewEmpty()`
     pub fn XmlMDataXtd_GeometryDriver_new_empty(
         self_: *const XmlMDataXtd_GeometryDriver,
-    ) -> crate::OcctResult<*mut HandleTDFAttribute>;
-    /// **Source:** `XmlMDataXtd_GeometryDriver.hxx`:42 - `XmlMDataXtd_GeometryDriver::Paste()`
+    ) -> crate::OcctResult<*mut Handle_TDF_Attribute>;
+    /// **Source:** `XmlMDataXtd_GeometryDriver.hxx`:39 - `XmlMDataXtd_GeometryDriver::Paste()`
     pub fn XmlMDataXtd_GeometryDriver_paste_persistent_handletdfattribute_rrelocationtable(
         self_: *const XmlMDataXtd_GeometryDriver,
         Source: *const XmlObjMgt_Persistent,
-        Target: *const HandleTDFAttribute,
+        Target: *const Handle_TDF_Attribute,
         RelocTable: *mut XmlObjMgt_RRelocationTable,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `XmlMDataXtd_GeometryDriver.hxx`:46 - `XmlMDataXtd_GeometryDriver::Paste()`
+    /// **Source:** `XmlMDataXtd_GeometryDriver.hxx`:43 - `XmlMDataXtd_GeometryDriver::Paste()`
     pub fn XmlMDataXtd_GeometryDriver_paste_handletdfattribute_persistent_srelocationtable(
         self_: *const XmlMDataXtd_GeometryDriver,
-        Source: *const HandleTDFAttribute,
+        Source: *const Handle_TDF_Attribute,
         Target: *mut XmlObjMgt_Persistent,
         RelocTable: *mut XmlObjMgt_SRelocationTable,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `XmlMDataXtd_GeometryDriver.hxx`:50 - `XmlMDataXtd_GeometryDriver::DynamicType()`
+    /// **Source:** `XmlMDataXtd_GeometryDriver.hxx`:47 - `XmlMDataXtd_GeometryDriver::DynamicType()`
     pub fn XmlMDataXtd_GeometryDriver_dynamic_type(
         self_: *const XmlMDataXtd_GeometryDriver,
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// **Source:** `XmlMDataXtd_GeometryDriver.hxx`:50 - `XmlMDataXtd_GeometryDriver::get_type_name()`
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
+    /// **Source:** `XmlMDataXtd_GeometryDriver.hxx`:47 - `XmlMDataXtd_GeometryDriver::get_type_name()`
     pub fn XmlMDataXtd_GeometryDriver_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
-    /// **Source:** `XmlMDataXtd_GeometryDriver.hxx`:50 - `XmlMDataXtd_GeometryDriver::get_type_descriptor()`
+    /// **Source:** `XmlMDataXtd_GeometryDriver.hxx`:47 - `XmlMDataXtd_GeometryDriver::get_type_descriptor()`
     pub fn XmlMDataXtd_GeometryDriver_get_type_descriptor(
-    ) -> crate::OcctResult<*const HandleStandardType>;
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast XmlMDataXtd_GeometryDriver to XmlMDF_ADriver
     pub fn XmlMDataXtd_GeometryDriver_as_XmlMDF_ADriver(
         self_: *const XmlMDataXtd_GeometryDriver,
@@ -528,116 +528,118 @@ unsafe extern "C" {
     /// Wrap XmlMDataXtd_GeometryDriver in a Handle
     pub fn XmlMDataXtd_GeometryDriver_to_handle(
         obj: *mut XmlMDataXtd_GeometryDriver,
-    ) -> crate::OcctResult<*mut HandleXmlMDataXtdGeometryDriver>;
+    ) -> crate::OcctResult<*mut Handle_XmlMDataXtd_GeometryDriver>;
     /// Destroy Handle<XmlMDataXtd_GeometryDriver>
-    pub fn HandleXmlMDataXtdGeometryDriver_destructor(self_: *mut HandleXmlMDataXtdGeometryDriver);
+    pub fn Handle_XmlMDataXtd_GeometryDriver_destructor(
+        self_: *mut Handle_XmlMDataXtd_GeometryDriver,
+    );
     /// Clone Handle<XmlMDataXtd_GeometryDriver> (increments reference count)
-    pub fn HandleXmlMDataXtdGeometryDriver_clone(
-        self_: *const HandleXmlMDataXtdGeometryDriver,
-    ) -> crate::OcctResult<*mut HandleXmlMDataXtdGeometryDriver>;
+    pub fn Handle_XmlMDataXtd_GeometryDriver_clone(
+        self_: *const Handle_XmlMDataXtd_GeometryDriver,
+    ) -> crate::OcctResult<*mut Handle_XmlMDataXtd_GeometryDriver>;
     /// Check if Handle<XmlMDataXtd_GeometryDriver> is null
-    pub fn HandleXmlMDataXtdGeometryDriver_is_null(
-        self_: *const HandleXmlMDataXtdGeometryDriver,
+    pub fn Handle_XmlMDataXtd_GeometryDriver_is_null(
+        self_: *const Handle_XmlMDataXtd_GeometryDriver,
     ) -> bool;
     /// Dereference Handle to get *const XmlMDataXtd_GeometryDriver
-    pub fn HandleXmlMDataXtdGeometryDriver_get(
-        handle: *const HandleXmlMDataXtdGeometryDriver,
+    pub fn Handle_XmlMDataXtd_GeometryDriver_get(
+        handle: *const Handle_XmlMDataXtd_GeometryDriver,
     ) -> crate::OcctResult<*const XmlMDataXtd_GeometryDriver>;
     /// Dereference Handle to get *mut XmlMDataXtd_GeometryDriver
-    pub fn HandleXmlMDataXtdGeometryDriver_get_mut(
-        handle: *mut HandleXmlMDataXtdGeometryDriver,
+    pub fn Handle_XmlMDataXtd_GeometryDriver_get_mut(
+        handle: *mut Handle_XmlMDataXtd_GeometryDriver,
     ) -> crate::OcctResult<*mut XmlMDataXtd_GeometryDriver>;
     /// Upcast Handle<XmlMDataXtd_GeometryDriver> to Handle<XmlMDF_ADriver>
-    pub fn HandleXmlMDataXtdGeometryDriver_to_HandleXmlMDFADriver(
-        self_: *const HandleXmlMDataXtdGeometryDriver,
-    ) -> crate::OcctResult<*mut HandleXmlMDFADriver>;
+    pub fn Handle_XmlMDataXtd_GeometryDriver_to_Handle_XmlMDF_ADriver(
+        self_: *const Handle_XmlMDataXtd_GeometryDriver,
+    ) -> crate::OcctResult<*mut Handle_XmlMDF_ADriver>;
     /// Upcast Handle<XmlMDataXtd_GeometryDriver> to Handle<Standard_Transient>
-    pub fn HandleXmlMDataXtdGeometryDriver_to_HandleStandardTransient(
-        self_: *const HandleXmlMDataXtdGeometryDriver,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
-    /// Inherited: **Source:** `XmlMDF_ADriver.hxx`:42 - `XmlMDF_ADriver::VersionNumber()`
+    pub fn Handle_XmlMDataXtd_GeometryDriver_to_Handle_Standard_Transient(
+        self_: *const Handle_XmlMDataXtd_GeometryDriver,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
+    /// Inherited: **Source:** `XmlMDF_ADriver.hxx`:39 - `XmlMDF_ADriver::VersionNumber()`
     pub fn XmlMDataXtd_GeometryDriver_inherited_VersionNumber(
         self_: *const XmlMDataXtd_GeometryDriver,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `XmlMDF_ADriver.hxx`:49 - `XmlMDF_ADriver::SourceType()`
+    /// Inherited: **Source:** `XmlMDF_ADriver.hxx`:46 - `XmlMDF_ADriver::SourceType()`
     pub fn XmlMDataXtd_GeometryDriver_inherited_SourceType(
         self_: *const XmlMDataXtd_GeometryDriver,
-    ) -> crate::OcctResult<*mut HandleStandardType>;
-    /// Inherited: **Source:** `XmlMDF_ADriver.hxx`:52 - `XmlMDF_ADriver::TypeName()`
+    ) -> crate::OcctResult<*mut Handle_Standard_Type>;
+    /// Inherited: **Source:** `XmlMDF_ADriver.hxx`:49 - `XmlMDF_ADriver::TypeName()`
     pub fn XmlMDataXtd_GeometryDriver_inherited_TypeName(
         self_: *const XmlMDataXtd_GeometryDriver,
     ) -> crate::OcctResult<*const TCollection_AsciiString>;
-    /// Inherited: **Source:** `XmlMDF_ADriver.hxx`:55 - `XmlMDF_ADriver::Namespace()`
+    /// Inherited: **Source:** `XmlMDF_ADriver.hxx`:52 - `XmlMDF_ADriver::Namespace()`
     pub fn XmlMDataXtd_GeometryDriver_inherited_Namespace(
         self_: *const XmlMDataXtd_GeometryDriver,
     ) -> crate::OcctResult<*const TCollection_AsciiString>;
-    /// Inherited: **Source:** `XmlMDF_ADriver.hxx`:72 - `XmlMDF_ADriver::MessageDriver()`
+    /// Inherited: **Source:** `XmlMDF_ADriver.hxx`:69 - `XmlMDF_ADriver::MessageDriver()`
     pub fn XmlMDataXtd_GeometryDriver_inherited_MessageDriver(
         self_: *const XmlMDataXtd_GeometryDriver,
-    ) -> crate::OcctResult<*const HandleMessageMessenger>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    ) -> crate::OcctResult<*const Handle_Message_Messenger>;
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn XmlMDataXtd_GeometryDriver_inherited_IsInstance(
         self_: *const XmlMDataXtd_GeometryDriver,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn XmlMDataXtd_GeometryDriver_inherited_IsKind(
         self_: *const XmlMDataXtd_GeometryDriver,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn XmlMDataXtd_GeometryDriver_inherited_This(
         self_: *const XmlMDataXtd_GeometryDriver,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn XmlMDataXtd_GeometryDriver_inherited_GetRefCount(
         self_: *const XmlMDataXtd_GeometryDriver,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn XmlMDataXtd_GeometryDriver_inherited_IncrementRefCounter(
         self_: *mut XmlMDataXtd_GeometryDriver,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn XmlMDataXtd_GeometryDriver_inherited_DecrementRefCounter(
         self_: *mut XmlMDataXtd_GeometryDriver,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn XmlMDataXtd_GeometryDriver_inherited_Delete(
         self_: *const XmlMDataXtd_GeometryDriver,
     ) -> *const std::ffi::c_char;
     // ======================== XmlMDataXtd_PatternStdDriver ========================
     pub fn XmlMDataXtd_PatternStdDriver_destructor(self_: *mut XmlMDataXtd_PatternStdDriver);
-    /// **Source:** `XmlMDataXtd_PatternStdDriver.hxx`:37 - `XmlMDataXtd_PatternStdDriver::XmlMDataXtd_PatternStdDriver()`
+    /// **Source:** `XmlMDataXtd_PatternStdDriver.hxx`:34 - `XmlMDataXtd_PatternStdDriver::XmlMDataXtd_PatternStdDriver()`
     pub fn XmlMDataXtd_PatternStdDriver_ctor_handlemessagemessenger(
-        theMessageDriver: *const HandleMessageMessenger,
+        theMessageDriver: *const Handle_Message_Messenger,
     ) -> crate::OcctResult<*mut XmlMDataXtd_PatternStdDriver>;
-    /// **Source:** `XmlMDataXtd_PatternStdDriver.hxx`:39 - `XmlMDataXtd_PatternStdDriver::NewEmpty()`
+    /// **Source:** `XmlMDataXtd_PatternStdDriver.hxx`:37 - `XmlMDataXtd_PatternStdDriver::NewEmpty()`
     pub fn XmlMDataXtd_PatternStdDriver_new_empty(
         self_: *const XmlMDataXtd_PatternStdDriver,
-    ) -> crate::OcctResult<*mut HandleTDFAttribute>;
-    /// **Source:** `XmlMDataXtd_PatternStdDriver.hxx`:42 - `XmlMDataXtd_PatternStdDriver::Paste()`
+    ) -> crate::OcctResult<*mut Handle_TDF_Attribute>;
+    /// **Source:** `XmlMDataXtd_PatternStdDriver.hxx`:39 - `XmlMDataXtd_PatternStdDriver::Paste()`
     pub fn XmlMDataXtd_PatternStdDriver_paste_persistent_handletdfattribute_rrelocationtable(
         self_: *const XmlMDataXtd_PatternStdDriver,
         Source: *const XmlObjMgt_Persistent,
-        Target: *const HandleTDFAttribute,
+        Target: *const Handle_TDF_Attribute,
         RelocTable: *mut XmlObjMgt_RRelocationTable,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `XmlMDataXtd_PatternStdDriver.hxx`:46 - `XmlMDataXtd_PatternStdDriver::Paste()`
+    /// **Source:** `XmlMDataXtd_PatternStdDriver.hxx`:43 - `XmlMDataXtd_PatternStdDriver::Paste()`
     pub fn XmlMDataXtd_PatternStdDriver_paste_handletdfattribute_persistent_srelocationtable(
         self_: *const XmlMDataXtd_PatternStdDriver,
-        Source: *const HandleTDFAttribute,
+        Source: *const Handle_TDF_Attribute,
         Target: *mut XmlObjMgt_Persistent,
         RelocTable: *mut XmlObjMgt_SRelocationTable,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `XmlMDataXtd_PatternStdDriver.hxx`:50 - `XmlMDataXtd_PatternStdDriver::DynamicType()`
+    /// **Source:** `XmlMDataXtd_PatternStdDriver.hxx`:47 - `XmlMDataXtd_PatternStdDriver::DynamicType()`
     pub fn XmlMDataXtd_PatternStdDriver_dynamic_type(
         self_: *const XmlMDataXtd_PatternStdDriver,
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// **Source:** `XmlMDataXtd_PatternStdDriver.hxx`:50 - `XmlMDataXtd_PatternStdDriver::get_type_name()`
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
+    /// **Source:** `XmlMDataXtd_PatternStdDriver.hxx`:47 - `XmlMDataXtd_PatternStdDriver::get_type_name()`
     pub fn XmlMDataXtd_PatternStdDriver_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
-    /// **Source:** `XmlMDataXtd_PatternStdDriver.hxx`:50 - `XmlMDataXtd_PatternStdDriver::get_type_descriptor()`
+    /// **Source:** `XmlMDataXtd_PatternStdDriver.hxx`:47 - `XmlMDataXtd_PatternStdDriver::get_type_descriptor()`
     pub fn XmlMDataXtd_PatternStdDriver_get_type_descriptor(
-    ) -> crate::OcctResult<*const HandleStandardType>;
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast XmlMDataXtd_PatternStdDriver to XmlMDF_ADriver
     pub fn XmlMDataXtd_PatternStdDriver_as_XmlMDF_ADriver(
         self_: *const XmlMDataXtd_PatternStdDriver,
@@ -657,118 +659,118 @@ unsafe extern "C" {
     /// Wrap XmlMDataXtd_PatternStdDriver in a Handle
     pub fn XmlMDataXtd_PatternStdDriver_to_handle(
         obj: *mut XmlMDataXtd_PatternStdDriver,
-    ) -> crate::OcctResult<*mut HandleXmlMDataXtdPatternStdDriver>;
+    ) -> crate::OcctResult<*mut Handle_XmlMDataXtd_PatternStdDriver>;
     /// Destroy Handle<XmlMDataXtd_PatternStdDriver>
-    pub fn HandleXmlMDataXtdPatternStdDriver_destructor(
-        self_: *mut HandleXmlMDataXtdPatternStdDriver,
+    pub fn Handle_XmlMDataXtd_PatternStdDriver_destructor(
+        self_: *mut Handle_XmlMDataXtd_PatternStdDriver,
     );
     /// Clone Handle<XmlMDataXtd_PatternStdDriver> (increments reference count)
-    pub fn HandleXmlMDataXtdPatternStdDriver_clone(
-        self_: *const HandleXmlMDataXtdPatternStdDriver,
-    ) -> crate::OcctResult<*mut HandleXmlMDataXtdPatternStdDriver>;
+    pub fn Handle_XmlMDataXtd_PatternStdDriver_clone(
+        self_: *const Handle_XmlMDataXtd_PatternStdDriver,
+    ) -> crate::OcctResult<*mut Handle_XmlMDataXtd_PatternStdDriver>;
     /// Check if Handle<XmlMDataXtd_PatternStdDriver> is null
-    pub fn HandleXmlMDataXtdPatternStdDriver_is_null(
-        self_: *const HandleXmlMDataXtdPatternStdDriver,
+    pub fn Handle_XmlMDataXtd_PatternStdDriver_is_null(
+        self_: *const Handle_XmlMDataXtd_PatternStdDriver,
     ) -> bool;
     /// Dereference Handle to get *const XmlMDataXtd_PatternStdDriver
-    pub fn HandleXmlMDataXtdPatternStdDriver_get(
-        handle: *const HandleXmlMDataXtdPatternStdDriver,
+    pub fn Handle_XmlMDataXtd_PatternStdDriver_get(
+        handle: *const Handle_XmlMDataXtd_PatternStdDriver,
     ) -> crate::OcctResult<*const XmlMDataXtd_PatternStdDriver>;
     /// Dereference Handle to get *mut XmlMDataXtd_PatternStdDriver
-    pub fn HandleXmlMDataXtdPatternStdDriver_get_mut(
-        handle: *mut HandleXmlMDataXtdPatternStdDriver,
+    pub fn Handle_XmlMDataXtd_PatternStdDriver_get_mut(
+        handle: *mut Handle_XmlMDataXtd_PatternStdDriver,
     ) -> crate::OcctResult<*mut XmlMDataXtd_PatternStdDriver>;
     /// Upcast Handle<XmlMDataXtd_PatternStdDriver> to Handle<XmlMDF_ADriver>
-    pub fn HandleXmlMDataXtdPatternStdDriver_to_HandleXmlMDFADriver(
-        self_: *const HandleXmlMDataXtdPatternStdDriver,
-    ) -> crate::OcctResult<*mut HandleXmlMDFADriver>;
+    pub fn Handle_XmlMDataXtd_PatternStdDriver_to_Handle_XmlMDF_ADriver(
+        self_: *const Handle_XmlMDataXtd_PatternStdDriver,
+    ) -> crate::OcctResult<*mut Handle_XmlMDF_ADriver>;
     /// Upcast Handle<XmlMDataXtd_PatternStdDriver> to Handle<Standard_Transient>
-    pub fn HandleXmlMDataXtdPatternStdDriver_to_HandleStandardTransient(
-        self_: *const HandleXmlMDataXtdPatternStdDriver,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
-    /// Inherited: **Source:** `XmlMDF_ADriver.hxx`:42 - `XmlMDF_ADriver::VersionNumber()`
+    pub fn Handle_XmlMDataXtd_PatternStdDriver_to_Handle_Standard_Transient(
+        self_: *const Handle_XmlMDataXtd_PatternStdDriver,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
+    /// Inherited: **Source:** `XmlMDF_ADriver.hxx`:39 - `XmlMDF_ADriver::VersionNumber()`
     pub fn XmlMDataXtd_PatternStdDriver_inherited_VersionNumber(
         self_: *const XmlMDataXtd_PatternStdDriver,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `XmlMDF_ADriver.hxx`:49 - `XmlMDF_ADriver::SourceType()`
+    /// Inherited: **Source:** `XmlMDF_ADriver.hxx`:46 - `XmlMDF_ADriver::SourceType()`
     pub fn XmlMDataXtd_PatternStdDriver_inherited_SourceType(
         self_: *const XmlMDataXtd_PatternStdDriver,
-    ) -> crate::OcctResult<*mut HandleStandardType>;
-    /// Inherited: **Source:** `XmlMDF_ADriver.hxx`:52 - `XmlMDF_ADriver::TypeName()`
+    ) -> crate::OcctResult<*mut Handle_Standard_Type>;
+    /// Inherited: **Source:** `XmlMDF_ADriver.hxx`:49 - `XmlMDF_ADriver::TypeName()`
     pub fn XmlMDataXtd_PatternStdDriver_inherited_TypeName(
         self_: *const XmlMDataXtd_PatternStdDriver,
     ) -> crate::OcctResult<*const TCollection_AsciiString>;
-    /// Inherited: **Source:** `XmlMDF_ADriver.hxx`:55 - `XmlMDF_ADriver::Namespace()`
+    /// Inherited: **Source:** `XmlMDF_ADriver.hxx`:52 - `XmlMDF_ADriver::Namespace()`
     pub fn XmlMDataXtd_PatternStdDriver_inherited_Namespace(
         self_: *const XmlMDataXtd_PatternStdDriver,
     ) -> crate::OcctResult<*const TCollection_AsciiString>;
-    /// Inherited: **Source:** `XmlMDF_ADriver.hxx`:72 - `XmlMDF_ADriver::MessageDriver()`
+    /// Inherited: **Source:** `XmlMDF_ADriver.hxx`:69 - `XmlMDF_ADriver::MessageDriver()`
     pub fn XmlMDataXtd_PatternStdDriver_inherited_MessageDriver(
         self_: *const XmlMDataXtd_PatternStdDriver,
-    ) -> crate::OcctResult<*const HandleMessageMessenger>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    ) -> crate::OcctResult<*const Handle_Message_Messenger>;
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn XmlMDataXtd_PatternStdDriver_inherited_IsInstance(
         self_: *const XmlMDataXtd_PatternStdDriver,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn XmlMDataXtd_PatternStdDriver_inherited_IsKind(
         self_: *const XmlMDataXtd_PatternStdDriver,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn XmlMDataXtd_PatternStdDriver_inherited_This(
         self_: *const XmlMDataXtd_PatternStdDriver,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn XmlMDataXtd_PatternStdDriver_inherited_GetRefCount(
         self_: *const XmlMDataXtd_PatternStdDriver,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn XmlMDataXtd_PatternStdDriver_inherited_IncrementRefCounter(
         self_: *mut XmlMDataXtd_PatternStdDriver,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn XmlMDataXtd_PatternStdDriver_inherited_DecrementRefCounter(
         self_: *mut XmlMDataXtd_PatternStdDriver,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn XmlMDataXtd_PatternStdDriver_inherited_Delete(
         self_: *const XmlMDataXtd_PatternStdDriver,
     ) -> *const std::ffi::c_char;
     // ======================== XmlMDataXtd_PositionDriver ========================
     pub fn XmlMDataXtd_PositionDriver_destructor(self_: *mut XmlMDataXtd_PositionDriver);
-    /// **Source:** `XmlMDataXtd_PositionDriver.hxx`:36 - `XmlMDataXtd_PositionDriver::XmlMDataXtd_PositionDriver()`
+    /// **Source:** `XmlMDataXtd_PositionDriver.hxx`:33 - `XmlMDataXtd_PositionDriver::XmlMDataXtd_PositionDriver()`
     pub fn XmlMDataXtd_PositionDriver_ctor_handlemessagemessenger(
-        theMessageDriver: *const HandleMessageMessenger,
+        theMessageDriver: *const Handle_Message_Messenger,
     ) -> crate::OcctResult<*mut XmlMDataXtd_PositionDriver>;
-    /// **Source:** `XmlMDataXtd_PositionDriver.hxx`:38 - `XmlMDataXtd_PositionDriver::NewEmpty()`
+    /// **Source:** `XmlMDataXtd_PositionDriver.hxx`:36 - `XmlMDataXtd_PositionDriver::NewEmpty()`
     pub fn XmlMDataXtd_PositionDriver_new_empty(
         self_: *const XmlMDataXtd_PositionDriver,
-    ) -> crate::OcctResult<*mut HandleTDFAttribute>;
-    /// **Source:** `XmlMDataXtd_PositionDriver.hxx`:41 - `XmlMDataXtd_PositionDriver::Paste()`
+    ) -> crate::OcctResult<*mut Handle_TDF_Attribute>;
+    /// **Source:** `XmlMDataXtd_PositionDriver.hxx`:38 - `XmlMDataXtd_PositionDriver::Paste()`
     pub fn XmlMDataXtd_PositionDriver_paste_persistent_handletdfattribute_rrelocationtable(
         self_: *const XmlMDataXtd_PositionDriver,
         Source: *const XmlObjMgt_Persistent,
-        Target: *const HandleTDFAttribute,
+        Target: *const Handle_TDF_Attribute,
         RelocTable: *mut XmlObjMgt_RRelocationTable,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `XmlMDataXtd_PositionDriver.hxx`:45 - `XmlMDataXtd_PositionDriver::Paste()`
+    /// **Source:** `XmlMDataXtd_PositionDriver.hxx`:42 - `XmlMDataXtd_PositionDriver::Paste()`
     pub fn XmlMDataXtd_PositionDriver_paste_handletdfattribute_persistent_srelocationtable(
         self_: *const XmlMDataXtd_PositionDriver,
-        Source: *const HandleTDFAttribute,
+        Source: *const Handle_TDF_Attribute,
         Target: *mut XmlObjMgt_Persistent,
         RelocTable: *mut XmlObjMgt_SRelocationTable,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `XmlMDataXtd_PositionDriver.hxx`:49 - `XmlMDataXtd_PositionDriver::DynamicType()`
+    /// **Source:** `XmlMDataXtd_PositionDriver.hxx`:46 - `XmlMDataXtd_PositionDriver::DynamicType()`
     pub fn XmlMDataXtd_PositionDriver_dynamic_type(
         self_: *const XmlMDataXtd_PositionDriver,
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// **Source:** `XmlMDataXtd_PositionDriver.hxx`:49 - `XmlMDataXtd_PositionDriver::get_type_name()`
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
+    /// **Source:** `XmlMDataXtd_PositionDriver.hxx`:46 - `XmlMDataXtd_PositionDriver::get_type_name()`
     pub fn XmlMDataXtd_PositionDriver_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
-    /// **Source:** `XmlMDataXtd_PositionDriver.hxx`:49 - `XmlMDataXtd_PositionDriver::get_type_descriptor()`
+    /// **Source:** `XmlMDataXtd_PositionDriver.hxx`:46 - `XmlMDataXtd_PositionDriver::get_type_descriptor()`
     pub fn XmlMDataXtd_PositionDriver_get_type_descriptor(
-    ) -> crate::OcctResult<*const HandleStandardType>;
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast XmlMDataXtd_PositionDriver to XmlMDF_ADriver
     pub fn XmlMDataXtd_PositionDriver_as_XmlMDF_ADriver(
         self_: *const XmlMDataXtd_PositionDriver,
@@ -788,117 +790,119 @@ unsafe extern "C" {
     /// Wrap XmlMDataXtd_PositionDriver in a Handle
     pub fn XmlMDataXtd_PositionDriver_to_handle(
         obj: *mut XmlMDataXtd_PositionDriver,
-    ) -> crate::OcctResult<*mut HandleXmlMDataXtdPositionDriver>;
+    ) -> crate::OcctResult<*mut Handle_XmlMDataXtd_PositionDriver>;
     /// Destroy Handle<XmlMDataXtd_PositionDriver>
-    pub fn HandleXmlMDataXtdPositionDriver_destructor(self_: *mut HandleXmlMDataXtdPositionDriver);
+    pub fn Handle_XmlMDataXtd_PositionDriver_destructor(
+        self_: *mut Handle_XmlMDataXtd_PositionDriver,
+    );
     /// Clone Handle<XmlMDataXtd_PositionDriver> (increments reference count)
-    pub fn HandleXmlMDataXtdPositionDriver_clone(
-        self_: *const HandleXmlMDataXtdPositionDriver,
-    ) -> crate::OcctResult<*mut HandleXmlMDataXtdPositionDriver>;
+    pub fn Handle_XmlMDataXtd_PositionDriver_clone(
+        self_: *const Handle_XmlMDataXtd_PositionDriver,
+    ) -> crate::OcctResult<*mut Handle_XmlMDataXtd_PositionDriver>;
     /// Check if Handle<XmlMDataXtd_PositionDriver> is null
-    pub fn HandleXmlMDataXtdPositionDriver_is_null(
-        self_: *const HandleXmlMDataXtdPositionDriver,
+    pub fn Handle_XmlMDataXtd_PositionDriver_is_null(
+        self_: *const Handle_XmlMDataXtd_PositionDriver,
     ) -> bool;
     /// Dereference Handle to get *const XmlMDataXtd_PositionDriver
-    pub fn HandleXmlMDataXtdPositionDriver_get(
-        handle: *const HandleXmlMDataXtdPositionDriver,
+    pub fn Handle_XmlMDataXtd_PositionDriver_get(
+        handle: *const Handle_XmlMDataXtd_PositionDriver,
     ) -> crate::OcctResult<*const XmlMDataXtd_PositionDriver>;
     /// Dereference Handle to get *mut XmlMDataXtd_PositionDriver
-    pub fn HandleXmlMDataXtdPositionDriver_get_mut(
-        handle: *mut HandleXmlMDataXtdPositionDriver,
+    pub fn Handle_XmlMDataXtd_PositionDriver_get_mut(
+        handle: *mut Handle_XmlMDataXtd_PositionDriver,
     ) -> crate::OcctResult<*mut XmlMDataXtd_PositionDriver>;
     /// Upcast Handle<XmlMDataXtd_PositionDriver> to Handle<XmlMDF_ADriver>
-    pub fn HandleXmlMDataXtdPositionDriver_to_HandleXmlMDFADriver(
-        self_: *const HandleXmlMDataXtdPositionDriver,
-    ) -> crate::OcctResult<*mut HandleXmlMDFADriver>;
+    pub fn Handle_XmlMDataXtd_PositionDriver_to_Handle_XmlMDF_ADriver(
+        self_: *const Handle_XmlMDataXtd_PositionDriver,
+    ) -> crate::OcctResult<*mut Handle_XmlMDF_ADriver>;
     /// Upcast Handle<XmlMDataXtd_PositionDriver> to Handle<Standard_Transient>
-    pub fn HandleXmlMDataXtdPositionDriver_to_HandleStandardTransient(
-        self_: *const HandleXmlMDataXtdPositionDriver,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
-    /// Inherited: **Source:** `XmlMDF_ADriver.hxx`:42 - `XmlMDF_ADriver::VersionNumber()`
+    pub fn Handle_XmlMDataXtd_PositionDriver_to_Handle_Standard_Transient(
+        self_: *const Handle_XmlMDataXtd_PositionDriver,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
+    /// Inherited: **Source:** `XmlMDF_ADriver.hxx`:39 - `XmlMDF_ADriver::VersionNumber()`
     pub fn XmlMDataXtd_PositionDriver_inherited_VersionNumber(
         self_: *const XmlMDataXtd_PositionDriver,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `XmlMDF_ADriver.hxx`:49 - `XmlMDF_ADriver::SourceType()`
+    /// Inherited: **Source:** `XmlMDF_ADriver.hxx`:46 - `XmlMDF_ADriver::SourceType()`
     pub fn XmlMDataXtd_PositionDriver_inherited_SourceType(
         self_: *const XmlMDataXtd_PositionDriver,
-    ) -> crate::OcctResult<*mut HandleStandardType>;
-    /// Inherited: **Source:** `XmlMDF_ADriver.hxx`:52 - `XmlMDF_ADriver::TypeName()`
+    ) -> crate::OcctResult<*mut Handle_Standard_Type>;
+    /// Inherited: **Source:** `XmlMDF_ADriver.hxx`:49 - `XmlMDF_ADriver::TypeName()`
     pub fn XmlMDataXtd_PositionDriver_inherited_TypeName(
         self_: *const XmlMDataXtd_PositionDriver,
     ) -> crate::OcctResult<*const TCollection_AsciiString>;
-    /// Inherited: **Source:** `XmlMDF_ADriver.hxx`:55 - `XmlMDF_ADriver::Namespace()`
+    /// Inherited: **Source:** `XmlMDF_ADriver.hxx`:52 - `XmlMDF_ADriver::Namespace()`
     pub fn XmlMDataXtd_PositionDriver_inherited_Namespace(
         self_: *const XmlMDataXtd_PositionDriver,
     ) -> crate::OcctResult<*const TCollection_AsciiString>;
-    /// Inherited: **Source:** `XmlMDF_ADriver.hxx`:72 - `XmlMDF_ADriver::MessageDriver()`
+    /// Inherited: **Source:** `XmlMDF_ADriver.hxx`:69 - `XmlMDF_ADriver::MessageDriver()`
     pub fn XmlMDataXtd_PositionDriver_inherited_MessageDriver(
         self_: *const XmlMDataXtd_PositionDriver,
-    ) -> crate::OcctResult<*const HandleMessageMessenger>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    ) -> crate::OcctResult<*const Handle_Message_Messenger>;
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn XmlMDataXtd_PositionDriver_inherited_IsInstance(
         self_: *const XmlMDataXtd_PositionDriver,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn XmlMDataXtd_PositionDriver_inherited_IsKind(
         self_: *const XmlMDataXtd_PositionDriver,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn XmlMDataXtd_PositionDriver_inherited_This(
         self_: *const XmlMDataXtd_PositionDriver,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn XmlMDataXtd_PositionDriver_inherited_GetRefCount(
         self_: *const XmlMDataXtd_PositionDriver,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn XmlMDataXtd_PositionDriver_inherited_IncrementRefCounter(
         self_: *mut XmlMDataXtd_PositionDriver,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn XmlMDataXtd_PositionDriver_inherited_DecrementRefCounter(
         self_: *mut XmlMDataXtd_PositionDriver,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn XmlMDataXtd_PositionDriver_inherited_Delete(
         self_: *const XmlMDataXtd_PositionDriver,
     ) -> *const std::ffi::c_char;
     // ======================== XmlMDataXtd_PresentationDriver ========================
     pub fn XmlMDataXtd_PresentationDriver_destructor(self_: *mut XmlMDataXtd_PresentationDriver);
-    /// **Source:** `XmlMDataXtd_PresentationDriver.hxx`:36 - `XmlMDataXtd_PresentationDriver::XmlMDataXtd_PresentationDriver()`
+    /// **Source:** `XmlMDataXtd_PresentationDriver.hxx`:33 - `XmlMDataXtd_PresentationDriver::XmlMDataXtd_PresentationDriver()`
     pub fn XmlMDataXtd_PresentationDriver_ctor_handlemessagemessenger(
-        theMessageDriver: *const HandleMessageMessenger,
+        theMessageDriver: *const Handle_Message_Messenger,
     ) -> crate::OcctResult<*mut XmlMDataXtd_PresentationDriver>;
-    /// **Source:** `XmlMDataXtd_PresentationDriver.hxx`:38 - `XmlMDataXtd_PresentationDriver::NewEmpty()`
+    /// **Source:** `XmlMDataXtd_PresentationDriver.hxx`:36 - `XmlMDataXtd_PresentationDriver::NewEmpty()`
     pub fn XmlMDataXtd_PresentationDriver_new_empty(
         self_: *const XmlMDataXtd_PresentationDriver,
-    ) -> crate::OcctResult<*mut HandleTDFAttribute>;
-    /// **Source:** `XmlMDataXtd_PresentationDriver.hxx`:41 - `XmlMDataXtd_PresentationDriver::Paste()`
+    ) -> crate::OcctResult<*mut Handle_TDF_Attribute>;
+    /// **Source:** `XmlMDataXtd_PresentationDriver.hxx`:38 - `XmlMDataXtd_PresentationDriver::Paste()`
     pub fn XmlMDataXtd_PresentationDriver_paste_persistent_handletdfattribute_rrelocationtable(
         self_: *const XmlMDataXtd_PresentationDriver,
         Source: *const XmlObjMgt_Persistent,
-        Target: *const HandleTDFAttribute,
+        Target: *const Handle_TDF_Attribute,
         RelocTable: *mut XmlObjMgt_RRelocationTable,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `XmlMDataXtd_PresentationDriver.hxx`:45 - `XmlMDataXtd_PresentationDriver::Paste()`
+    /// **Source:** `XmlMDataXtd_PresentationDriver.hxx`:42 - `XmlMDataXtd_PresentationDriver::Paste()`
     pub fn XmlMDataXtd_PresentationDriver_paste_handletdfattribute_persistent_srelocationtable(
         self_: *const XmlMDataXtd_PresentationDriver,
-        Source: *const HandleTDFAttribute,
+        Source: *const Handle_TDF_Attribute,
         Target: *mut XmlObjMgt_Persistent,
         RelocTable: *mut XmlObjMgt_SRelocationTable,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `XmlMDataXtd_PresentationDriver.hxx`:49 - `XmlMDataXtd_PresentationDriver::DynamicType()`
+    /// **Source:** `XmlMDataXtd_PresentationDriver.hxx`:46 - `XmlMDataXtd_PresentationDriver::DynamicType()`
     pub fn XmlMDataXtd_PresentationDriver_dynamic_type(
         self_: *const XmlMDataXtd_PresentationDriver,
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// **Source:** `XmlMDataXtd_PresentationDriver.hxx`:49 - `XmlMDataXtd_PresentationDriver::get_type_name()`
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
+    /// **Source:** `XmlMDataXtd_PresentationDriver.hxx`:46 - `XmlMDataXtd_PresentationDriver::get_type_name()`
     pub fn XmlMDataXtd_PresentationDriver_get_type_name(
     ) -> crate::OcctResult<*const std::ffi::c_char>;
-    /// **Source:** `XmlMDataXtd_PresentationDriver.hxx`:49 - `XmlMDataXtd_PresentationDriver::get_type_descriptor()`
+    /// **Source:** `XmlMDataXtd_PresentationDriver.hxx`:46 - `XmlMDataXtd_PresentationDriver::get_type_descriptor()`
     pub fn XmlMDataXtd_PresentationDriver_get_type_descriptor(
-    ) -> crate::OcctResult<*const HandleStandardType>;
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast XmlMDataXtd_PresentationDriver to XmlMDF_ADriver
     pub fn XmlMDataXtd_PresentationDriver_as_XmlMDF_ADriver(
         self_: *const XmlMDataXtd_PresentationDriver,
@@ -918,119 +922,119 @@ unsafe extern "C" {
     /// Wrap XmlMDataXtd_PresentationDriver in a Handle
     pub fn XmlMDataXtd_PresentationDriver_to_handle(
         obj: *mut XmlMDataXtd_PresentationDriver,
-    ) -> crate::OcctResult<*mut HandleXmlMDataXtdPresentationDriver>;
+    ) -> crate::OcctResult<*mut Handle_XmlMDataXtd_PresentationDriver>;
     /// Destroy Handle<XmlMDataXtd_PresentationDriver>
-    pub fn HandleXmlMDataXtdPresentationDriver_destructor(
-        self_: *mut HandleXmlMDataXtdPresentationDriver,
+    pub fn Handle_XmlMDataXtd_PresentationDriver_destructor(
+        self_: *mut Handle_XmlMDataXtd_PresentationDriver,
     );
     /// Clone Handle<XmlMDataXtd_PresentationDriver> (increments reference count)
-    pub fn HandleXmlMDataXtdPresentationDriver_clone(
-        self_: *const HandleXmlMDataXtdPresentationDriver,
-    ) -> crate::OcctResult<*mut HandleXmlMDataXtdPresentationDriver>;
+    pub fn Handle_XmlMDataXtd_PresentationDriver_clone(
+        self_: *const Handle_XmlMDataXtd_PresentationDriver,
+    ) -> crate::OcctResult<*mut Handle_XmlMDataXtd_PresentationDriver>;
     /// Check if Handle<XmlMDataXtd_PresentationDriver> is null
-    pub fn HandleXmlMDataXtdPresentationDriver_is_null(
-        self_: *const HandleXmlMDataXtdPresentationDriver,
+    pub fn Handle_XmlMDataXtd_PresentationDriver_is_null(
+        self_: *const Handle_XmlMDataXtd_PresentationDriver,
     ) -> bool;
     /// Dereference Handle to get *const XmlMDataXtd_PresentationDriver
-    pub fn HandleXmlMDataXtdPresentationDriver_get(
-        handle: *const HandleXmlMDataXtdPresentationDriver,
+    pub fn Handle_XmlMDataXtd_PresentationDriver_get(
+        handle: *const Handle_XmlMDataXtd_PresentationDriver,
     ) -> crate::OcctResult<*const XmlMDataXtd_PresentationDriver>;
     /// Dereference Handle to get *mut XmlMDataXtd_PresentationDriver
-    pub fn HandleXmlMDataXtdPresentationDriver_get_mut(
-        handle: *mut HandleXmlMDataXtdPresentationDriver,
+    pub fn Handle_XmlMDataXtd_PresentationDriver_get_mut(
+        handle: *mut Handle_XmlMDataXtd_PresentationDriver,
     ) -> crate::OcctResult<*mut XmlMDataXtd_PresentationDriver>;
     /// Upcast Handle<XmlMDataXtd_PresentationDriver> to Handle<XmlMDF_ADriver>
-    pub fn HandleXmlMDataXtdPresentationDriver_to_HandleXmlMDFADriver(
-        self_: *const HandleXmlMDataXtdPresentationDriver,
-    ) -> crate::OcctResult<*mut HandleXmlMDFADriver>;
+    pub fn Handle_XmlMDataXtd_PresentationDriver_to_Handle_XmlMDF_ADriver(
+        self_: *const Handle_XmlMDataXtd_PresentationDriver,
+    ) -> crate::OcctResult<*mut Handle_XmlMDF_ADriver>;
     /// Upcast Handle<XmlMDataXtd_PresentationDriver> to Handle<Standard_Transient>
-    pub fn HandleXmlMDataXtdPresentationDriver_to_HandleStandardTransient(
-        self_: *const HandleXmlMDataXtdPresentationDriver,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
-    /// Inherited: **Source:** `XmlMDF_ADriver.hxx`:42 - `XmlMDF_ADriver::VersionNumber()`
+    pub fn Handle_XmlMDataXtd_PresentationDriver_to_Handle_Standard_Transient(
+        self_: *const Handle_XmlMDataXtd_PresentationDriver,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
+    /// Inherited: **Source:** `XmlMDF_ADriver.hxx`:39 - `XmlMDF_ADriver::VersionNumber()`
     pub fn XmlMDataXtd_PresentationDriver_inherited_VersionNumber(
         self_: *const XmlMDataXtd_PresentationDriver,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `XmlMDF_ADriver.hxx`:49 - `XmlMDF_ADriver::SourceType()`
+    /// Inherited: **Source:** `XmlMDF_ADriver.hxx`:46 - `XmlMDF_ADriver::SourceType()`
     pub fn XmlMDataXtd_PresentationDriver_inherited_SourceType(
         self_: *const XmlMDataXtd_PresentationDriver,
-    ) -> crate::OcctResult<*mut HandleStandardType>;
-    /// Inherited: **Source:** `XmlMDF_ADriver.hxx`:52 - `XmlMDF_ADriver::TypeName()`
+    ) -> crate::OcctResult<*mut Handle_Standard_Type>;
+    /// Inherited: **Source:** `XmlMDF_ADriver.hxx`:49 - `XmlMDF_ADriver::TypeName()`
     pub fn XmlMDataXtd_PresentationDriver_inherited_TypeName(
         self_: *const XmlMDataXtd_PresentationDriver,
     ) -> crate::OcctResult<*const TCollection_AsciiString>;
-    /// Inherited: **Source:** `XmlMDF_ADriver.hxx`:55 - `XmlMDF_ADriver::Namespace()`
+    /// Inherited: **Source:** `XmlMDF_ADriver.hxx`:52 - `XmlMDF_ADriver::Namespace()`
     pub fn XmlMDataXtd_PresentationDriver_inherited_Namespace(
         self_: *const XmlMDataXtd_PresentationDriver,
     ) -> crate::OcctResult<*const TCollection_AsciiString>;
-    /// Inherited: **Source:** `XmlMDF_ADriver.hxx`:72 - `XmlMDF_ADriver::MessageDriver()`
+    /// Inherited: **Source:** `XmlMDF_ADriver.hxx`:69 - `XmlMDF_ADriver::MessageDriver()`
     pub fn XmlMDataXtd_PresentationDriver_inherited_MessageDriver(
         self_: *const XmlMDataXtd_PresentationDriver,
-    ) -> crate::OcctResult<*const HandleMessageMessenger>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    ) -> crate::OcctResult<*const Handle_Message_Messenger>;
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn XmlMDataXtd_PresentationDriver_inherited_IsInstance(
         self_: *const XmlMDataXtd_PresentationDriver,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn XmlMDataXtd_PresentationDriver_inherited_IsKind(
         self_: *const XmlMDataXtd_PresentationDriver,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn XmlMDataXtd_PresentationDriver_inherited_This(
         self_: *const XmlMDataXtd_PresentationDriver,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn XmlMDataXtd_PresentationDriver_inherited_GetRefCount(
         self_: *const XmlMDataXtd_PresentationDriver,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn XmlMDataXtd_PresentationDriver_inherited_IncrementRefCounter(
         self_: *mut XmlMDataXtd_PresentationDriver,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn XmlMDataXtd_PresentationDriver_inherited_DecrementRefCounter(
         self_: *mut XmlMDataXtd_PresentationDriver,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn XmlMDataXtd_PresentationDriver_inherited_Delete(
         self_: *const XmlMDataXtd_PresentationDriver,
     ) -> *const std::ffi::c_char;
     // ======================== XmlMDataXtd_TriangulationDriver ========================
     pub fn XmlMDataXtd_TriangulationDriver_destructor(self_: *mut XmlMDataXtd_TriangulationDriver);
-    /// **Source:** `XmlMDataXtd_TriangulationDriver.hxx`:35 - `XmlMDataXtd_TriangulationDriver::XmlMDataXtd_TriangulationDriver()`
+    /// **Source:** `XmlMDataXtd_TriangulationDriver.hxx`:33 - `XmlMDataXtd_TriangulationDriver::XmlMDataXtd_TriangulationDriver()`
     pub fn XmlMDataXtd_TriangulationDriver_ctor_handlemessagemessenger(
-        theMessageDriver: *const HandleMessageMessenger,
+        theMessageDriver: *const Handle_Message_Messenger,
     ) -> crate::OcctResult<*mut XmlMDataXtd_TriangulationDriver>;
-    /// **Source:** `XmlMDataXtd_TriangulationDriver.hxx`:38 - `XmlMDataXtd_TriangulationDriver::NewEmpty()`
+    /// **Source:** `XmlMDataXtd_TriangulationDriver.hxx`:36 - `XmlMDataXtd_TriangulationDriver::NewEmpty()`
     pub fn XmlMDataXtd_TriangulationDriver_new_empty(
         self_: *const XmlMDataXtd_TriangulationDriver,
-    ) -> crate::OcctResult<*mut HandleTDFAttribute>;
-    /// **Source:** `XmlMDataXtd_TriangulationDriver.hxx`:41 - `XmlMDataXtd_TriangulationDriver::Paste()`
+    ) -> crate::OcctResult<*mut Handle_TDF_Attribute>;
+    /// **Source:** `XmlMDataXtd_TriangulationDriver.hxx`:38 - `XmlMDataXtd_TriangulationDriver::Paste()`
     pub fn XmlMDataXtd_TriangulationDriver_paste_persistent_handletdfattribute_rrelocationtable(
         self_: *const XmlMDataXtd_TriangulationDriver,
         Source: *const XmlObjMgt_Persistent,
-        Target: *const HandleTDFAttribute,
+        Target: *const Handle_TDF_Attribute,
         RelocTable: *mut XmlObjMgt_RRelocationTable,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `XmlMDataXtd_TriangulationDriver.hxx`:45 - `XmlMDataXtd_TriangulationDriver::Paste()`
+    /// **Source:** `XmlMDataXtd_TriangulationDriver.hxx`:42 - `XmlMDataXtd_TriangulationDriver::Paste()`
     pub fn XmlMDataXtd_TriangulationDriver_paste_handletdfattribute_persistent_srelocationtable(
         self_: *const XmlMDataXtd_TriangulationDriver,
-        Source: *const HandleTDFAttribute,
+        Source: *const Handle_TDF_Attribute,
         Target: *mut XmlObjMgt_Persistent,
         RelocTable: *mut XmlObjMgt_SRelocationTable,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `XmlMDataXtd_TriangulationDriver.hxx`:49 - `XmlMDataXtd_TriangulationDriver::DynamicType()`
+    /// **Source:** `XmlMDataXtd_TriangulationDriver.hxx`:46 - `XmlMDataXtd_TriangulationDriver::DynamicType()`
     pub fn XmlMDataXtd_TriangulationDriver_dynamic_type(
         self_: *const XmlMDataXtd_TriangulationDriver,
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// **Source:** `XmlMDataXtd_TriangulationDriver.hxx`:49 - `XmlMDataXtd_TriangulationDriver::get_type_name()`
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
+    /// **Source:** `XmlMDataXtd_TriangulationDriver.hxx`:46 - `XmlMDataXtd_TriangulationDriver::get_type_name()`
     pub fn XmlMDataXtd_TriangulationDriver_get_type_name(
     ) -> crate::OcctResult<*const std::ffi::c_char>;
-    /// **Source:** `XmlMDataXtd_TriangulationDriver.hxx`:49 - `XmlMDataXtd_TriangulationDriver::get_type_descriptor()`
+    /// **Source:** `XmlMDataXtd_TriangulationDriver.hxx`:46 - `XmlMDataXtd_TriangulationDriver::get_type_descriptor()`
     pub fn XmlMDataXtd_TriangulationDriver_get_type_descriptor(
-    ) -> crate::OcctResult<*const HandleStandardType>;
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast XmlMDataXtd_TriangulationDriver to XmlMDF_ADriver
     pub fn XmlMDataXtd_TriangulationDriver_as_XmlMDF_ADriver(
         self_: *const XmlMDataXtd_TriangulationDriver,
@@ -1050,139 +1054,139 @@ unsafe extern "C" {
     /// Wrap XmlMDataXtd_TriangulationDriver in a Handle
     pub fn XmlMDataXtd_TriangulationDriver_to_handle(
         obj: *mut XmlMDataXtd_TriangulationDriver,
-    ) -> crate::OcctResult<*mut HandleXmlMDataXtdTriangulationDriver>;
+    ) -> crate::OcctResult<*mut Handle_XmlMDataXtd_TriangulationDriver>;
     /// Destroy Handle<XmlMDataXtd_TriangulationDriver>
-    pub fn HandleXmlMDataXtdTriangulationDriver_destructor(
-        self_: *mut HandleXmlMDataXtdTriangulationDriver,
+    pub fn Handle_XmlMDataXtd_TriangulationDriver_destructor(
+        self_: *mut Handle_XmlMDataXtd_TriangulationDriver,
     );
     /// Clone Handle<XmlMDataXtd_TriangulationDriver> (increments reference count)
-    pub fn HandleXmlMDataXtdTriangulationDriver_clone(
-        self_: *const HandleXmlMDataXtdTriangulationDriver,
-    ) -> crate::OcctResult<*mut HandleXmlMDataXtdTriangulationDriver>;
+    pub fn Handle_XmlMDataXtd_TriangulationDriver_clone(
+        self_: *const Handle_XmlMDataXtd_TriangulationDriver,
+    ) -> crate::OcctResult<*mut Handle_XmlMDataXtd_TriangulationDriver>;
     /// Check if Handle<XmlMDataXtd_TriangulationDriver> is null
-    pub fn HandleXmlMDataXtdTriangulationDriver_is_null(
-        self_: *const HandleXmlMDataXtdTriangulationDriver,
+    pub fn Handle_XmlMDataXtd_TriangulationDriver_is_null(
+        self_: *const Handle_XmlMDataXtd_TriangulationDriver,
     ) -> bool;
     /// Dereference Handle to get *const XmlMDataXtd_TriangulationDriver
-    pub fn HandleXmlMDataXtdTriangulationDriver_get(
-        handle: *const HandleXmlMDataXtdTriangulationDriver,
+    pub fn Handle_XmlMDataXtd_TriangulationDriver_get(
+        handle: *const Handle_XmlMDataXtd_TriangulationDriver,
     ) -> crate::OcctResult<*const XmlMDataXtd_TriangulationDriver>;
     /// Dereference Handle to get *mut XmlMDataXtd_TriangulationDriver
-    pub fn HandleXmlMDataXtdTriangulationDriver_get_mut(
-        handle: *mut HandleXmlMDataXtdTriangulationDriver,
+    pub fn Handle_XmlMDataXtd_TriangulationDriver_get_mut(
+        handle: *mut Handle_XmlMDataXtd_TriangulationDriver,
     ) -> crate::OcctResult<*mut XmlMDataXtd_TriangulationDriver>;
     /// Upcast Handle<XmlMDataXtd_TriangulationDriver> to Handle<XmlMDF_ADriver>
-    pub fn HandleXmlMDataXtdTriangulationDriver_to_HandleXmlMDFADriver(
-        self_: *const HandleXmlMDataXtdTriangulationDriver,
-    ) -> crate::OcctResult<*mut HandleXmlMDFADriver>;
+    pub fn Handle_XmlMDataXtd_TriangulationDriver_to_Handle_XmlMDF_ADriver(
+        self_: *const Handle_XmlMDataXtd_TriangulationDriver,
+    ) -> crate::OcctResult<*mut Handle_XmlMDF_ADriver>;
     /// Upcast Handle<XmlMDataXtd_TriangulationDriver> to Handle<Standard_Transient>
-    pub fn HandleXmlMDataXtdTriangulationDriver_to_HandleStandardTransient(
-        self_: *const HandleXmlMDataXtdTriangulationDriver,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
-    /// Inherited: **Source:** `XmlMDF_ADriver.hxx`:42 - `XmlMDF_ADriver::VersionNumber()`
+    pub fn Handle_XmlMDataXtd_TriangulationDriver_to_Handle_Standard_Transient(
+        self_: *const Handle_XmlMDataXtd_TriangulationDriver,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
+    /// Inherited: **Source:** `XmlMDF_ADriver.hxx`:39 - `XmlMDF_ADriver::VersionNumber()`
     pub fn XmlMDataXtd_TriangulationDriver_inherited_VersionNumber(
         self_: *const XmlMDataXtd_TriangulationDriver,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `XmlMDF_ADriver.hxx`:49 - `XmlMDF_ADriver::SourceType()`
+    /// Inherited: **Source:** `XmlMDF_ADriver.hxx`:46 - `XmlMDF_ADriver::SourceType()`
     pub fn XmlMDataXtd_TriangulationDriver_inherited_SourceType(
         self_: *const XmlMDataXtd_TriangulationDriver,
-    ) -> crate::OcctResult<*mut HandleStandardType>;
-    /// Inherited: **Source:** `XmlMDF_ADriver.hxx`:52 - `XmlMDF_ADriver::TypeName()`
+    ) -> crate::OcctResult<*mut Handle_Standard_Type>;
+    /// Inherited: **Source:** `XmlMDF_ADriver.hxx`:49 - `XmlMDF_ADriver::TypeName()`
     pub fn XmlMDataXtd_TriangulationDriver_inherited_TypeName(
         self_: *const XmlMDataXtd_TriangulationDriver,
     ) -> crate::OcctResult<*const TCollection_AsciiString>;
-    /// Inherited: **Source:** `XmlMDF_ADriver.hxx`:55 - `XmlMDF_ADriver::Namespace()`
+    /// Inherited: **Source:** `XmlMDF_ADriver.hxx`:52 - `XmlMDF_ADriver::Namespace()`
     pub fn XmlMDataXtd_TriangulationDriver_inherited_Namespace(
         self_: *const XmlMDataXtd_TriangulationDriver,
     ) -> crate::OcctResult<*const TCollection_AsciiString>;
-    /// Inherited: **Source:** `XmlMDF_ADriver.hxx`:72 - `XmlMDF_ADriver::MessageDriver()`
+    /// Inherited: **Source:** `XmlMDF_ADriver.hxx`:69 - `XmlMDF_ADriver::MessageDriver()`
     pub fn XmlMDataXtd_TriangulationDriver_inherited_MessageDriver(
         self_: *const XmlMDataXtd_TriangulationDriver,
-    ) -> crate::OcctResult<*const HandleMessageMessenger>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    ) -> crate::OcctResult<*const Handle_Message_Messenger>;
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn XmlMDataXtd_TriangulationDriver_inherited_IsInstance(
         self_: *const XmlMDataXtd_TriangulationDriver,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn XmlMDataXtd_TriangulationDriver_inherited_IsKind(
         self_: *const XmlMDataXtd_TriangulationDriver,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn XmlMDataXtd_TriangulationDriver_inherited_This(
         self_: *const XmlMDataXtd_TriangulationDriver,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn XmlMDataXtd_TriangulationDriver_inherited_GetRefCount(
         self_: *const XmlMDataXtd_TriangulationDriver,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn XmlMDataXtd_TriangulationDriver_inherited_IncrementRefCounter(
         self_: *mut XmlMDataXtd_TriangulationDriver,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn XmlMDataXtd_TriangulationDriver_inherited_DecrementRefCounter(
         self_: *mut XmlMDataXtd_TriangulationDriver,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn XmlMDataXtd_TriangulationDriver_inherited_Delete(
         self_: *const XmlMDataXtd_TriangulationDriver,
     ) -> *const std::ffi::c_char;
     // ======================== XmlMNaming_NamedShapeDriver ========================
     pub fn XmlMNaming_NamedShapeDriver_destructor(self_: *mut XmlMNaming_NamedShapeDriver);
-    /// **Source:** `XmlMNaming_NamedShapeDriver.hxx`:39 - `XmlMNaming_NamedShapeDriver::XmlMNaming_NamedShapeDriver()`
+    /// **Source:** `XmlMNaming_NamedShapeDriver.hxx`:36 - `XmlMNaming_NamedShapeDriver::XmlMNaming_NamedShapeDriver()`
     pub fn XmlMNaming_NamedShapeDriver_ctor_handlemessagemessenger(
-        aMessageDriver: *const HandleMessageMessenger,
+        aMessageDriver: *const Handle_Message_Messenger,
     ) -> crate::OcctResult<*mut XmlMNaming_NamedShapeDriver>;
-    /// **Source:** `XmlMNaming_NamedShapeDriver.hxx`:41 - `XmlMNaming_NamedShapeDriver::NewEmpty()`
+    /// **Source:** `XmlMNaming_NamedShapeDriver.hxx`:38 - `XmlMNaming_NamedShapeDriver::NewEmpty()`
     pub fn XmlMNaming_NamedShapeDriver_new_empty(
         self_: *const XmlMNaming_NamedShapeDriver,
-    ) -> crate::OcctResult<*mut HandleTDFAttribute>;
-    /// **Source:** `XmlMNaming_NamedShapeDriver.hxx`:43 - `XmlMNaming_NamedShapeDriver::Paste()`
+    ) -> crate::OcctResult<*mut Handle_TDF_Attribute>;
+    /// **Source:** `XmlMNaming_NamedShapeDriver.hxx`:40 - `XmlMNaming_NamedShapeDriver::Paste()`
     pub fn XmlMNaming_NamedShapeDriver_paste_persistent_handletdfattribute_rrelocationtable(
         self_: *const XmlMNaming_NamedShapeDriver,
         theSource: *const XmlObjMgt_Persistent,
-        theTarget: *const HandleTDFAttribute,
+        theTarget: *const Handle_TDF_Attribute,
         theRelocTable: *mut XmlObjMgt_RRelocationTable,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `XmlMNaming_NamedShapeDriver.hxx`:48 - `XmlMNaming_NamedShapeDriver::Paste()`
+    /// **Source:** `XmlMNaming_NamedShapeDriver.hxx`:44 - `XmlMNaming_NamedShapeDriver::Paste()`
     pub fn XmlMNaming_NamedShapeDriver_paste_handletdfattribute_persistent_srelocationtable(
         self_: *const XmlMNaming_NamedShapeDriver,
-        theSource: *const HandleTDFAttribute,
+        theSource: *const Handle_TDF_Attribute,
         theTarget: *mut XmlObjMgt_Persistent,
         theRelocTable: *mut XmlObjMgt_SRelocationTable,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `XmlMNaming_NamedShapeDriver.hxx`:54 - `XmlMNaming_NamedShapeDriver::ReadShapeSection()`
+    /// **Source:** `XmlMNaming_NamedShapeDriver.hxx`:49 - `XmlMNaming_NamedShapeDriver::ReadShapeSection()`
     pub fn XmlMNaming_NamedShapeDriver_read_shape_section(
         self_: *mut XmlMNaming_NamedShapeDriver,
         anElement: *const LDOM_Element,
         theRange: *const Message_ProgressRange,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `XmlMNaming_NamedShapeDriver.hxx`:59 - `XmlMNaming_NamedShapeDriver::WriteShapeSection()`
+    /// **Source:** `XmlMNaming_NamedShapeDriver.hxx`:54 - `XmlMNaming_NamedShapeDriver::WriteShapeSection()`
     pub fn XmlMNaming_NamedShapeDriver_write_shape_section(
         self_: *mut XmlMNaming_NamedShapeDriver,
         anElement: *mut LDOM_Element,
         theStorageFormatVersion: i32,
         theRange: *const Message_ProgressRange,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `XmlMNaming_NamedShapeDriver.hxx`:65 - `XmlMNaming_NamedShapeDriver::Clear()`
+    /// **Source:** `XmlMNaming_NamedShapeDriver.hxx`:60 - `XmlMNaming_NamedShapeDriver::Clear()`
     pub fn XmlMNaming_NamedShapeDriver_clear(
         self_: *mut XmlMNaming_NamedShapeDriver,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `XmlMNaming_NamedShapeDriver.hxx`:68 - `XmlMNaming_NamedShapeDriver::GetShapesLocations()`
+    /// **Source:** `XmlMNaming_NamedShapeDriver.hxx`:63 - `XmlMNaming_NamedShapeDriver::GetShapesLocations()`
     pub fn XmlMNaming_NamedShapeDriver_get_shapes_locations(
         self_: *mut XmlMNaming_NamedShapeDriver,
     ) -> crate::OcctResult<*mut TopTools_LocationSet>;
-    /// **Source:** `XmlMNaming_NamedShapeDriver.hxx`:70 - `XmlMNaming_NamedShapeDriver::DynamicType()`
+    /// **Source:** `XmlMNaming_NamedShapeDriver.hxx`:65 - `XmlMNaming_NamedShapeDriver::DynamicType()`
     pub fn XmlMNaming_NamedShapeDriver_dynamic_type(
         self_: *const XmlMNaming_NamedShapeDriver,
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// **Source:** `XmlMNaming_NamedShapeDriver.hxx`:70 - `XmlMNaming_NamedShapeDriver::get_type_name()`
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
+    /// **Source:** `XmlMNaming_NamedShapeDriver.hxx`:65 - `XmlMNaming_NamedShapeDriver::get_type_name()`
     pub fn XmlMNaming_NamedShapeDriver_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
-    /// **Source:** `XmlMNaming_NamedShapeDriver.hxx`:70 - `XmlMNaming_NamedShapeDriver::get_type_descriptor()`
+    /// **Source:** `XmlMNaming_NamedShapeDriver.hxx`:65 - `XmlMNaming_NamedShapeDriver::get_type_descriptor()`
     pub fn XmlMNaming_NamedShapeDriver_get_type_descriptor(
-    ) -> crate::OcctResult<*const HandleStandardType>;
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast XmlMNaming_NamedShapeDriver to XmlMDF_ADriver
     pub fn XmlMNaming_NamedShapeDriver_as_XmlMDF_ADriver(
         self_: *const XmlMNaming_NamedShapeDriver,
@@ -1202,118 +1206,118 @@ unsafe extern "C" {
     /// Wrap XmlMNaming_NamedShapeDriver in a Handle
     pub fn XmlMNaming_NamedShapeDriver_to_handle(
         obj: *mut XmlMNaming_NamedShapeDriver,
-    ) -> crate::OcctResult<*mut HandleXmlMNamingNamedShapeDriver>;
+    ) -> crate::OcctResult<*mut Handle_XmlMNaming_NamedShapeDriver>;
     /// Destroy Handle<XmlMNaming_NamedShapeDriver>
-    pub fn HandleXmlMNamingNamedShapeDriver_destructor(
-        self_: *mut HandleXmlMNamingNamedShapeDriver,
+    pub fn Handle_XmlMNaming_NamedShapeDriver_destructor(
+        self_: *mut Handle_XmlMNaming_NamedShapeDriver,
     );
     /// Clone Handle<XmlMNaming_NamedShapeDriver> (increments reference count)
-    pub fn HandleXmlMNamingNamedShapeDriver_clone(
-        self_: *const HandleXmlMNamingNamedShapeDriver,
-    ) -> crate::OcctResult<*mut HandleXmlMNamingNamedShapeDriver>;
+    pub fn Handle_XmlMNaming_NamedShapeDriver_clone(
+        self_: *const Handle_XmlMNaming_NamedShapeDriver,
+    ) -> crate::OcctResult<*mut Handle_XmlMNaming_NamedShapeDriver>;
     /// Check if Handle<XmlMNaming_NamedShapeDriver> is null
-    pub fn HandleXmlMNamingNamedShapeDriver_is_null(
-        self_: *const HandleXmlMNamingNamedShapeDriver,
+    pub fn Handle_XmlMNaming_NamedShapeDriver_is_null(
+        self_: *const Handle_XmlMNaming_NamedShapeDriver,
     ) -> bool;
     /// Dereference Handle to get *const XmlMNaming_NamedShapeDriver
-    pub fn HandleXmlMNamingNamedShapeDriver_get(
-        handle: *const HandleXmlMNamingNamedShapeDriver,
+    pub fn Handle_XmlMNaming_NamedShapeDriver_get(
+        handle: *const Handle_XmlMNaming_NamedShapeDriver,
     ) -> crate::OcctResult<*const XmlMNaming_NamedShapeDriver>;
     /// Dereference Handle to get *mut XmlMNaming_NamedShapeDriver
-    pub fn HandleXmlMNamingNamedShapeDriver_get_mut(
-        handle: *mut HandleXmlMNamingNamedShapeDriver,
+    pub fn Handle_XmlMNaming_NamedShapeDriver_get_mut(
+        handle: *mut Handle_XmlMNaming_NamedShapeDriver,
     ) -> crate::OcctResult<*mut XmlMNaming_NamedShapeDriver>;
     /// Upcast Handle<XmlMNaming_NamedShapeDriver> to Handle<XmlMDF_ADriver>
-    pub fn HandleXmlMNamingNamedShapeDriver_to_HandleXmlMDFADriver(
-        self_: *const HandleXmlMNamingNamedShapeDriver,
-    ) -> crate::OcctResult<*mut HandleXmlMDFADriver>;
+    pub fn Handle_XmlMNaming_NamedShapeDriver_to_Handle_XmlMDF_ADriver(
+        self_: *const Handle_XmlMNaming_NamedShapeDriver,
+    ) -> crate::OcctResult<*mut Handle_XmlMDF_ADriver>;
     /// Upcast Handle<XmlMNaming_NamedShapeDriver> to Handle<Standard_Transient>
-    pub fn HandleXmlMNamingNamedShapeDriver_to_HandleStandardTransient(
-        self_: *const HandleXmlMNamingNamedShapeDriver,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
-    /// Inherited: **Source:** `XmlMDF_ADriver.hxx`:42 - `XmlMDF_ADriver::VersionNumber()`
+    pub fn Handle_XmlMNaming_NamedShapeDriver_to_Handle_Standard_Transient(
+        self_: *const Handle_XmlMNaming_NamedShapeDriver,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
+    /// Inherited: **Source:** `XmlMDF_ADriver.hxx`:39 - `XmlMDF_ADriver::VersionNumber()`
     pub fn XmlMNaming_NamedShapeDriver_inherited_VersionNumber(
         self_: *const XmlMNaming_NamedShapeDriver,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `XmlMDF_ADriver.hxx`:49 - `XmlMDF_ADriver::SourceType()`
+    /// Inherited: **Source:** `XmlMDF_ADriver.hxx`:46 - `XmlMDF_ADriver::SourceType()`
     pub fn XmlMNaming_NamedShapeDriver_inherited_SourceType(
         self_: *const XmlMNaming_NamedShapeDriver,
-    ) -> crate::OcctResult<*mut HandleStandardType>;
-    /// Inherited: **Source:** `XmlMDF_ADriver.hxx`:52 - `XmlMDF_ADriver::TypeName()`
+    ) -> crate::OcctResult<*mut Handle_Standard_Type>;
+    /// Inherited: **Source:** `XmlMDF_ADriver.hxx`:49 - `XmlMDF_ADriver::TypeName()`
     pub fn XmlMNaming_NamedShapeDriver_inherited_TypeName(
         self_: *const XmlMNaming_NamedShapeDriver,
     ) -> crate::OcctResult<*const TCollection_AsciiString>;
-    /// Inherited: **Source:** `XmlMDF_ADriver.hxx`:55 - `XmlMDF_ADriver::Namespace()`
+    /// Inherited: **Source:** `XmlMDF_ADriver.hxx`:52 - `XmlMDF_ADriver::Namespace()`
     pub fn XmlMNaming_NamedShapeDriver_inherited_Namespace(
         self_: *const XmlMNaming_NamedShapeDriver,
     ) -> crate::OcctResult<*const TCollection_AsciiString>;
-    /// Inherited: **Source:** `XmlMDF_ADriver.hxx`:72 - `XmlMDF_ADriver::MessageDriver()`
+    /// Inherited: **Source:** `XmlMDF_ADriver.hxx`:69 - `XmlMDF_ADriver::MessageDriver()`
     pub fn XmlMNaming_NamedShapeDriver_inherited_MessageDriver(
         self_: *const XmlMNaming_NamedShapeDriver,
-    ) -> crate::OcctResult<*const HandleMessageMessenger>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    ) -> crate::OcctResult<*const Handle_Message_Messenger>;
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn XmlMNaming_NamedShapeDriver_inherited_IsInstance(
         self_: *const XmlMNaming_NamedShapeDriver,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn XmlMNaming_NamedShapeDriver_inherited_IsKind(
         self_: *const XmlMNaming_NamedShapeDriver,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn XmlMNaming_NamedShapeDriver_inherited_This(
         self_: *const XmlMNaming_NamedShapeDriver,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn XmlMNaming_NamedShapeDriver_inherited_GetRefCount(
         self_: *const XmlMNaming_NamedShapeDriver,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn XmlMNaming_NamedShapeDriver_inherited_IncrementRefCounter(
         self_: *mut XmlMNaming_NamedShapeDriver,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn XmlMNaming_NamedShapeDriver_inherited_DecrementRefCounter(
         self_: *mut XmlMNaming_NamedShapeDriver,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn XmlMNaming_NamedShapeDriver_inherited_Delete(
         self_: *const XmlMNaming_NamedShapeDriver,
     ) -> *const std::ffi::c_char;
     // ======================== XmlMNaming_NamingDriver ========================
     pub fn XmlMNaming_NamingDriver_destructor(self_: *mut XmlMNaming_NamingDriver);
-    /// **Source:** `XmlMNaming_NamingDriver.hxx`:34 - `XmlMNaming_NamingDriver::XmlMNaming_NamingDriver()`
+    /// **Source:** `XmlMNaming_NamingDriver.hxx`:31 - `XmlMNaming_NamingDriver::XmlMNaming_NamingDriver()`
     pub fn XmlMNaming_NamingDriver_ctor_handlemessagemessenger(
-        aMessageDriver: *const HandleMessageMessenger,
+        aMessageDriver: *const Handle_Message_Messenger,
     ) -> crate::OcctResult<*mut XmlMNaming_NamingDriver>;
-    /// **Source:** `XmlMNaming_NamingDriver.hxx`:36 - `XmlMNaming_NamingDriver::NewEmpty()`
+    /// **Source:** `XmlMNaming_NamingDriver.hxx`:33 - `XmlMNaming_NamingDriver::NewEmpty()`
     pub fn XmlMNaming_NamingDriver_new_empty(
         self_: *const XmlMNaming_NamingDriver,
-    ) -> crate::OcctResult<*mut HandleTDFAttribute>;
-    /// **Source:** `XmlMNaming_NamingDriver.hxx`:39 - `XmlMNaming_NamingDriver::Paste()`
+    ) -> crate::OcctResult<*mut Handle_TDF_Attribute>;
+    /// **Source:** `XmlMNaming_NamingDriver.hxx`:35 - `XmlMNaming_NamingDriver::Paste()`
     pub fn XmlMNaming_NamingDriver_paste_persistent_handletdfattribute_rrelocationtable(
         self_: *const XmlMNaming_NamingDriver,
         theSource: *const XmlObjMgt_Persistent,
-        theTarget: *const HandleTDFAttribute,
+        theTarget: *const Handle_TDF_Attribute,
         theRelocTable: *mut XmlObjMgt_RRelocationTable,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `XmlMNaming_NamingDriver.hxx`:43 - `XmlMNaming_NamingDriver::Paste()`
+    /// **Source:** `XmlMNaming_NamingDriver.hxx`:39 - `XmlMNaming_NamingDriver::Paste()`
     pub fn XmlMNaming_NamingDriver_paste_handletdfattribute_persistent_srelocationtable(
         self_: *const XmlMNaming_NamingDriver,
-        theSource: *const HandleTDFAttribute,
+        theSource: *const Handle_TDF_Attribute,
         theTarget: *mut XmlObjMgt_Persistent,
         theRelocTable: *mut XmlObjMgt_SRelocationTable,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `XmlMNaming_NamingDriver.hxx`:47 - `XmlMNaming_NamingDriver::DynamicType()`
+    /// **Source:** `XmlMNaming_NamingDriver.hxx`:43 - `XmlMNaming_NamingDriver::DynamicType()`
     pub fn XmlMNaming_NamingDriver_dynamic_type(
         self_: *const XmlMNaming_NamingDriver,
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// **Source:** `XmlMNaming_NamingDriver.hxx`:47 - `XmlMNaming_NamingDriver::get_type_name()`
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
+    /// **Source:** `XmlMNaming_NamingDriver.hxx`:43 - `XmlMNaming_NamingDriver::get_type_name()`
     pub fn XmlMNaming_NamingDriver_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
-    /// **Source:** `XmlMNaming_NamingDriver.hxx`:47 - `XmlMNaming_NamingDriver::get_type_descriptor()`
+    /// **Source:** `XmlMNaming_NamingDriver.hxx`:43 - `XmlMNaming_NamingDriver::get_type_descriptor()`
     pub fn XmlMNaming_NamingDriver_get_type_descriptor(
-    ) -> crate::OcctResult<*const HandleStandardType>;
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast XmlMNaming_NamingDriver to XmlMDF_ADriver
     pub fn XmlMNaming_NamingDriver_as_XmlMDF_ADriver(
         self_: *const XmlMNaming_NamingDriver,
@@ -1333,79 +1337,80 @@ unsafe extern "C" {
     /// Wrap XmlMNaming_NamingDriver in a Handle
     pub fn XmlMNaming_NamingDriver_to_handle(
         obj: *mut XmlMNaming_NamingDriver,
-    ) -> crate::OcctResult<*mut HandleXmlMNamingNamingDriver>;
+    ) -> crate::OcctResult<*mut Handle_XmlMNaming_NamingDriver>;
     /// Destroy Handle<XmlMNaming_NamingDriver>
-    pub fn HandleXmlMNamingNamingDriver_destructor(self_: *mut HandleXmlMNamingNamingDriver);
+    pub fn Handle_XmlMNaming_NamingDriver_destructor(self_: *mut Handle_XmlMNaming_NamingDriver);
     /// Clone Handle<XmlMNaming_NamingDriver> (increments reference count)
-    pub fn HandleXmlMNamingNamingDriver_clone(
-        self_: *const HandleXmlMNamingNamingDriver,
-    ) -> crate::OcctResult<*mut HandleXmlMNamingNamingDriver>;
+    pub fn Handle_XmlMNaming_NamingDriver_clone(
+        self_: *const Handle_XmlMNaming_NamingDriver,
+    ) -> crate::OcctResult<*mut Handle_XmlMNaming_NamingDriver>;
     /// Check if Handle<XmlMNaming_NamingDriver> is null
-    pub fn HandleXmlMNamingNamingDriver_is_null(self_: *const HandleXmlMNamingNamingDriver)
-        -> bool;
+    pub fn Handle_XmlMNaming_NamingDriver_is_null(
+        self_: *const Handle_XmlMNaming_NamingDriver,
+    ) -> bool;
     /// Dereference Handle to get *const XmlMNaming_NamingDriver
-    pub fn HandleXmlMNamingNamingDriver_get(
-        handle: *const HandleXmlMNamingNamingDriver,
+    pub fn Handle_XmlMNaming_NamingDriver_get(
+        handle: *const Handle_XmlMNaming_NamingDriver,
     ) -> crate::OcctResult<*const XmlMNaming_NamingDriver>;
     /// Dereference Handle to get *mut XmlMNaming_NamingDriver
-    pub fn HandleXmlMNamingNamingDriver_get_mut(
-        handle: *mut HandleXmlMNamingNamingDriver,
+    pub fn Handle_XmlMNaming_NamingDriver_get_mut(
+        handle: *mut Handle_XmlMNaming_NamingDriver,
     ) -> crate::OcctResult<*mut XmlMNaming_NamingDriver>;
     /// Upcast Handle<XmlMNaming_NamingDriver> to Handle<XmlMDF_ADriver>
-    pub fn HandleXmlMNamingNamingDriver_to_HandleXmlMDFADriver(
-        self_: *const HandleXmlMNamingNamingDriver,
-    ) -> crate::OcctResult<*mut HandleXmlMDFADriver>;
+    pub fn Handle_XmlMNaming_NamingDriver_to_Handle_XmlMDF_ADriver(
+        self_: *const Handle_XmlMNaming_NamingDriver,
+    ) -> crate::OcctResult<*mut Handle_XmlMDF_ADriver>;
     /// Upcast Handle<XmlMNaming_NamingDriver> to Handle<Standard_Transient>
-    pub fn HandleXmlMNamingNamingDriver_to_HandleStandardTransient(
-        self_: *const HandleXmlMNamingNamingDriver,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
-    /// Inherited: **Source:** `XmlMDF_ADriver.hxx`:42 - `XmlMDF_ADriver::VersionNumber()`
+    pub fn Handle_XmlMNaming_NamingDriver_to_Handle_Standard_Transient(
+        self_: *const Handle_XmlMNaming_NamingDriver,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
+    /// Inherited: **Source:** `XmlMDF_ADriver.hxx`:39 - `XmlMDF_ADriver::VersionNumber()`
     pub fn XmlMNaming_NamingDriver_inherited_VersionNumber(
         self_: *const XmlMNaming_NamingDriver,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `XmlMDF_ADriver.hxx`:49 - `XmlMDF_ADriver::SourceType()`
+    /// Inherited: **Source:** `XmlMDF_ADriver.hxx`:46 - `XmlMDF_ADriver::SourceType()`
     pub fn XmlMNaming_NamingDriver_inherited_SourceType(
         self_: *const XmlMNaming_NamingDriver,
-    ) -> crate::OcctResult<*mut HandleStandardType>;
-    /// Inherited: **Source:** `XmlMDF_ADriver.hxx`:52 - `XmlMDF_ADriver::TypeName()`
+    ) -> crate::OcctResult<*mut Handle_Standard_Type>;
+    /// Inherited: **Source:** `XmlMDF_ADriver.hxx`:49 - `XmlMDF_ADriver::TypeName()`
     pub fn XmlMNaming_NamingDriver_inherited_TypeName(
         self_: *const XmlMNaming_NamingDriver,
     ) -> crate::OcctResult<*const TCollection_AsciiString>;
-    /// Inherited: **Source:** `XmlMDF_ADriver.hxx`:55 - `XmlMDF_ADriver::Namespace()`
+    /// Inherited: **Source:** `XmlMDF_ADriver.hxx`:52 - `XmlMDF_ADriver::Namespace()`
     pub fn XmlMNaming_NamingDriver_inherited_Namespace(
         self_: *const XmlMNaming_NamingDriver,
     ) -> crate::OcctResult<*const TCollection_AsciiString>;
-    /// Inherited: **Source:** `XmlMDF_ADriver.hxx`:72 - `XmlMDF_ADriver::MessageDriver()`
+    /// Inherited: **Source:** `XmlMDF_ADriver.hxx`:69 - `XmlMDF_ADriver::MessageDriver()`
     pub fn XmlMNaming_NamingDriver_inherited_MessageDriver(
         self_: *const XmlMNaming_NamingDriver,
-    ) -> crate::OcctResult<*const HandleMessageMessenger>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    ) -> crate::OcctResult<*const Handle_Message_Messenger>;
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn XmlMNaming_NamingDriver_inherited_IsInstance(
         self_: *const XmlMNaming_NamingDriver,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn XmlMNaming_NamingDriver_inherited_IsKind(
         self_: *const XmlMNaming_NamingDriver,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn XmlMNaming_NamingDriver_inherited_This(
         self_: *const XmlMNaming_NamingDriver,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn XmlMNaming_NamingDriver_inherited_GetRefCount(
         self_: *const XmlMNaming_NamingDriver,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn XmlMNaming_NamingDriver_inherited_IncrementRefCounter(
         self_: *mut XmlMNaming_NamingDriver,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn XmlMNaming_NamingDriver_inherited_DecrementRefCounter(
         self_: *mut XmlMNaming_NamingDriver,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn XmlMNaming_NamingDriver_inherited_Delete(
         self_: *const XmlMNaming_NamingDriver,
     ) -> *const std::ffi::c_char;
@@ -1441,7 +1446,7 @@ unsafe extern "C" {
         LocID: i32,
         Orient: i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `XmlMNaming_Shape1.hxx`:58 - `XmlMNaming_Shape1::SetVertex()`
+    /// **Source:** `XmlMNaming_Shape1.hxx`:56 - `XmlMNaming_Shape1::SetVertex()`
     pub fn XmlMNaming_Shape1_set_vertex(
         self_: *mut XmlMNaming_Shape1,
         theVertex: *const TopoDS_Shape,
@@ -1451,19 +1456,19 @@ unsafe extern "C" {
     /// **Source:** `XmlDrivers.hxx`:30 - `XmlDrivers::Factory`
     pub fn XmlDrivers_factory(
         theGUID: *const Standard_GUID,
-    ) -> crate::OcctResult<*const HandleStandardTransient>;
-    /// **Source:** `XmlDrivers.hxx`:34 - `XmlDrivers::DefineFormat`
+    ) -> crate::OcctResult<*const Handle_Standard_Transient>;
+    /// **Source:** `XmlDrivers.hxx`:35 - `XmlDrivers::DefineFormat`
     pub fn XmlDrivers_define_format(
-        theApp: *const HandleTDocStdApplication,
+        theApp: *const Handle_TDocStd_Application,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `XmlDrivers.hxx`:36 - `XmlDrivers::AttributeDrivers`
+    /// **Source:** `XmlDrivers.hxx`:37 - `XmlDrivers::AttributeDrivers`
     pub fn XmlDrivers_attribute_drivers(
-        theMsgDriver: *const HandleMessageMessenger,
-    ) -> crate::OcctResult<*mut HandleXmlMDFADriverTable>;
+        theMsgDriver: *const Handle_Message_Messenger,
+    ) -> crate::OcctResult<*mut Handle_XmlMDF_ADriverTable>;
     /// **Source:** `XmlMDataXtd.hxx`:33 - `XmlMDataXtd::AddDrivers`
     pub fn XmlMDataXtd_add_drivers_handlexmlmdfadrivertable_handlemessagemessenger_2(
-        aDriverTable: *const HandleXmlMDFADriverTable,
-        anMsgDrv: *const HandleMessageMessenger,
+        aDriverTable: *const Handle_XmlMDF_ADriverTable,
+        anMsgDrv: *const Handle_Message_Messenger,
     ) -> *const std::ffi::c_char;
     /// **Source:** `XmlMDataXtd.hxx`:36 - `XmlMDataXtd::SetDocumentVersion`
     pub fn XmlMDataXtd_set_document_version(DocVersion: i32) -> *const std::ffi::c_char;
@@ -1471,7 +1476,7 @@ unsafe extern "C" {
     pub fn XmlMDataXtd_document_version() -> crate::OcctResult<i32>;
     /// **Source:** `XmlMNaming.hxx`:33 - `XmlMNaming::AddDrivers`
     pub fn XmlMNaming_add_drivers_handlexmlmdfadrivertable_handlemessagemessenger_5(
-        aDriverTable: *const HandleXmlMDFADriverTable,
-        aMessageDriver: *const HandleMessageMessenger,
+        aDriverTable: *const Handle_XmlMDF_ADriverTable,
+        aMessageDriver: *const Handle_Message_Messenger,
     ) -> *const std::ffi::c_char;
 }

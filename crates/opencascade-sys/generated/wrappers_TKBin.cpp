@@ -33,104 +33,101 @@
 #include <PCDM_RetrievalDriver.hxx>
 #include <PCDM_StorageDriver.hxx>
 #include <PCDM_Writer.hxx>
-#include <Standard_GUID.hxx>
 #include <Standard_Handle.hxx>
 #include <Standard_IStream.hxx>
 #include <Standard_OStream.hxx>
 #include <Standard_Type.hxx>
-#include <TColStd_IndexedMapOfTransient.hxx>
-#include <TCollection_ExtendedString.hxx>
 #include <TDF_Attribute.hxx>
 #include <TDocStd_Application.hxx>
 #include <TDocStd_FormatVersion.hxx>
 
 // Handle type aliases
-typedef opencascade::handle<BinDrivers_DocumentRetrievalDriver> HandleBinDriversDocumentRetrievalDriver;
-typedef opencascade::handle<BinDrivers_DocumentStorageDriver> HandleBinDriversDocumentStorageDriver;
-typedef opencascade::handle<BinLDrivers_DocumentRetrievalDriver> HandleBinLDriversDocumentRetrievalDriver;
-typedef opencascade::handle<BinLDrivers_DocumentStorageDriver> HandleBinLDriversDocumentStorageDriver;
-typedef opencascade::handle<BinMDF_ADriver> HandleBinMDFADriver;
-typedef opencascade::handle<BinMDF_ADriverTable> HandleBinMDFADriverTable;
-typedef opencascade::handle<BinMDataXtd_ConstraintDriver> HandleBinMDataXtdConstraintDriver;
-typedef opencascade::handle<BinMDataXtd_GeometryDriver> HandleBinMDataXtdGeometryDriver;
-typedef opencascade::handle<BinMDataXtd_PatternStdDriver> HandleBinMDataXtdPatternStdDriver;
-typedef opencascade::handle<BinMDataXtd_PositionDriver> HandleBinMDataXtdPositionDriver;
-typedef opencascade::handle<BinMDataXtd_PresentationDriver> HandleBinMDataXtdPresentationDriver;
-typedef opencascade::handle<BinMDataXtd_TriangulationDriver> HandleBinMDataXtdTriangulationDriver;
-typedef opencascade::handle<BinMNaming_NamedShapeDriver> HandleBinMNamingNamedShapeDriver;
-typedef opencascade::handle<BinMNaming_NamingDriver> HandleBinMNamingNamingDriver;
-typedef opencascade::handle<BinXCAFDrivers_DocumentRetrievalDriver> HandleBinXCAFDriversDocumentRetrievalDriver;
-typedef opencascade::handle<BinXCAFDrivers_DocumentStorageDriver> HandleBinXCAFDriversDocumentStorageDriver;
-typedef opencascade::handle<Message_Messenger> HandleMessageMessenger;
-typedef opencascade::handle<PCDM_Reader> HandlePCDMReader;
-typedef opencascade::handle<PCDM_RetrievalDriver> HandlePCDMRetrievalDriver;
-typedef opencascade::handle<PCDM_StorageDriver> HandlePCDMStorageDriver;
-typedef opencascade::handle<PCDM_Writer> HandlePCDMWriter;
-typedef opencascade::handle<Standard_Transient> HandleStandardTransient;
-typedef opencascade::handle<Standard_Type> HandleStandardType;
-typedef opencascade::handle<TDF_Attribute> HandleTDFAttribute;
+typedef opencascade::handle<BinDrivers_DocumentRetrievalDriver> Handle_BinDrivers_DocumentRetrievalDriver;
+typedef opencascade::handle<BinDrivers_DocumentStorageDriver> Handle_BinDrivers_DocumentStorageDriver;
+typedef opencascade::handle<BinLDrivers_DocumentRetrievalDriver> Handle_BinLDrivers_DocumentRetrievalDriver;
+typedef opencascade::handle<BinLDrivers_DocumentStorageDriver> Handle_BinLDrivers_DocumentStorageDriver;
+typedef opencascade::handle<BinMDF_ADriver> Handle_BinMDF_ADriver;
+typedef opencascade::handle<BinMDF_ADriverTable> Handle_BinMDF_ADriverTable;
+typedef opencascade::handle<BinMDataXtd_ConstraintDriver> Handle_BinMDataXtd_ConstraintDriver;
+typedef opencascade::handle<BinMDataXtd_GeometryDriver> Handle_BinMDataXtd_GeometryDriver;
+typedef opencascade::handle<BinMDataXtd_PatternStdDriver> Handle_BinMDataXtd_PatternStdDriver;
+typedef opencascade::handle<BinMDataXtd_PositionDriver> Handle_BinMDataXtd_PositionDriver;
+typedef opencascade::handle<BinMDataXtd_PresentationDriver> Handle_BinMDataXtd_PresentationDriver;
+typedef opencascade::handle<BinMDataXtd_TriangulationDriver> Handle_BinMDataXtd_TriangulationDriver;
+typedef opencascade::handle<BinMNaming_NamedShapeDriver> Handle_BinMNaming_NamedShapeDriver;
+typedef opencascade::handle<BinMNaming_NamingDriver> Handle_BinMNaming_NamingDriver;
+typedef opencascade::handle<BinXCAFDrivers_DocumentRetrievalDriver> Handle_BinXCAFDrivers_DocumentRetrievalDriver;
+typedef opencascade::handle<BinXCAFDrivers_DocumentStorageDriver> Handle_BinXCAFDrivers_DocumentStorageDriver;
+typedef opencascade::handle<Message_Messenger> Handle_Message_Messenger;
+typedef opencascade::handle<PCDM_Reader> Handle_PCDM_Reader;
+typedef opencascade::handle<PCDM_RetrievalDriver> Handle_PCDM_RetrievalDriver;
+typedef opencascade::handle<PCDM_StorageDriver> Handle_PCDM_StorageDriver;
+typedef opencascade::handle<PCDM_Writer> Handle_PCDM_Writer;
+typedef opencascade::handle<Standard_Transient> Handle_Standard_Transient;
+typedef opencascade::handle<Standard_Type> Handle_Standard_Type;
+typedef opencascade::handle<TDF_Attribute> Handle_TDF_Attribute;
 
 // Handle type destructors, clone, and is_null functions
-extern "C" void HandleBinDriversDocumentRetrievalDriver_destructor(HandleBinDriversDocumentRetrievalDriver* self_) { delete self_; }
-extern "C" OcctResult<HandleBinDriversDocumentRetrievalDriver*> HandleBinDriversDocumentRetrievalDriver_clone(const HandleBinDriversDocumentRetrievalDriver* self_) {
-    try { return {new HandleBinDriversDocumentRetrievalDriver(*self_), nullptr}; }
+extern "C" void Handle_BinDrivers_DocumentRetrievalDriver_destructor(Handle_BinDrivers_DocumentRetrievalDriver* self_) { delete self_; }
+extern "C" OcctResult<Handle_BinDrivers_DocumentRetrievalDriver*> Handle_BinDrivers_DocumentRetrievalDriver_clone(const Handle_BinDrivers_DocumentRetrievalDriver* self_) {
+    try { return {new Handle_BinDrivers_DocumentRetrievalDriver(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleBinDriversDocumentRetrievalDriver_is_null(const HandleBinDriversDocumentRetrievalDriver* self_) { return self_->IsNull(); }
-extern "C" void HandleBinDriversDocumentStorageDriver_destructor(HandleBinDriversDocumentStorageDriver* self_) { delete self_; }
-extern "C" OcctResult<HandleBinDriversDocumentStorageDriver*> HandleBinDriversDocumentStorageDriver_clone(const HandleBinDriversDocumentStorageDriver* self_) {
-    try { return {new HandleBinDriversDocumentStorageDriver(*self_), nullptr}; }
+extern "C" bool Handle_BinDrivers_DocumentRetrievalDriver_is_null(const Handle_BinDrivers_DocumentRetrievalDriver* self_) { return self_->IsNull(); }
+extern "C" void Handle_BinDrivers_DocumentStorageDriver_destructor(Handle_BinDrivers_DocumentStorageDriver* self_) { delete self_; }
+extern "C" OcctResult<Handle_BinDrivers_DocumentStorageDriver*> Handle_BinDrivers_DocumentStorageDriver_clone(const Handle_BinDrivers_DocumentStorageDriver* self_) {
+    try { return {new Handle_BinDrivers_DocumentStorageDriver(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleBinDriversDocumentStorageDriver_is_null(const HandleBinDriversDocumentStorageDriver* self_) { return self_->IsNull(); }
-extern "C" void HandleBinMDataXtdConstraintDriver_destructor(HandleBinMDataXtdConstraintDriver* self_) { delete self_; }
-extern "C" OcctResult<HandleBinMDataXtdConstraintDriver*> HandleBinMDataXtdConstraintDriver_clone(const HandleBinMDataXtdConstraintDriver* self_) {
-    try { return {new HandleBinMDataXtdConstraintDriver(*self_), nullptr}; }
+extern "C" bool Handle_BinDrivers_DocumentStorageDriver_is_null(const Handle_BinDrivers_DocumentStorageDriver* self_) { return self_->IsNull(); }
+extern "C" void Handle_BinMDataXtd_ConstraintDriver_destructor(Handle_BinMDataXtd_ConstraintDriver* self_) { delete self_; }
+extern "C" OcctResult<Handle_BinMDataXtd_ConstraintDriver*> Handle_BinMDataXtd_ConstraintDriver_clone(const Handle_BinMDataXtd_ConstraintDriver* self_) {
+    try { return {new Handle_BinMDataXtd_ConstraintDriver(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleBinMDataXtdConstraintDriver_is_null(const HandleBinMDataXtdConstraintDriver* self_) { return self_->IsNull(); }
-extern "C" void HandleBinMDataXtdGeometryDriver_destructor(HandleBinMDataXtdGeometryDriver* self_) { delete self_; }
-extern "C" OcctResult<HandleBinMDataXtdGeometryDriver*> HandleBinMDataXtdGeometryDriver_clone(const HandleBinMDataXtdGeometryDriver* self_) {
-    try { return {new HandleBinMDataXtdGeometryDriver(*self_), nullptr}; }
+extern "C" bool Handle_BinMDataXtd_ConstraintDriver_is_null(const Handle_BinMDataXtd_ConstraintDriver* self_) { return self_->IsNull(); }
+extern "C" void Handle_BinMDataXtd_GeometryDriver_destructor(Handle_BinMDataXtd_GeometryDriver* self_) { delete self_; }
+extern "C" OcctResult<Handle_BinMDataXtd_GeometryDriver*> Handle_BinMDataXtd_GeometryDriver_clone(const Handle_BinMDataXtd_GeometryDriver* self_) {
+    try { return {new Handle_BinMDataXtd_GeometryDriver(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleBinMDataXtdGeometryDriver_is_null(const HandleBinMDataXtdGeometryDriver* self_) { return self_->IsNull(); }
-extern "C" void HandleBinMDataXtdPatternStdDriver_destructor(HandleBinMDataXtdPatternStdDriver* self_) { delete self_; }
-extern "C" OcctResult<HandleBinMDataXtdPatternStdDriver*> HandleBinMDataXtdPatternStdDriver_clone(const HandleBinMDataXtdPatternStdDriver* self_) {
-    try { return {new HandleBinMDataXtdPatternStdDriver(*self_), nullptr}; }
+extern "C" bool Handle_BinMDataXtd_GeometryDriver_is_null(const Handle_BinMDataXtd_GeometryDriver* self_) { return self_->IsNull(); }
+extern "C" void Handle_BinMDataXtd_PatternStdDriver_destructor(Handle_BinMDataXtd_PatternStdDriver* self_) { delete self_; }
+extern "C" OcctResult<Handle_BinMDataXtd_PatternStdDriver*> Handle_BinMDataXtd_PatternStdDriver_clone(const Handle_BinMDataXtd_PatternStdDriver* self_) {
+    try { return {new Handle_BinMDataXtd_PatternStdDriver(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleBinMDataXtdPatternStdDriver_is_null(const HandleBinMDataXtdPatternStdDriver* self_) { return self_->IsNull(); }
-extern "C" void HandleBinMDataXtdPositionDriver_destructor(HandleBinMDataXtdPositionDriver* self_) { delete self_; }
-extern "C" OcctResult<HandleBinMDataXtdPositionDriver*> HandleBinMDataXtdPositionDriver_clone(const HandleBinMDataXtdPositionDriver* self_) {
-    try { return {new HandleBinMDataXtdPositionDriver(*self_), nullptr}; }
+extern "C" bool Handle_BinMDataXtd_PatternStdDriver_is_null(const Handle_BinMDataXtd_PatternStdDriver* self_) { return self_->IsNull(); }
+extern "C" void Handle_BinMDataXtd_PositionDriver_destructor(Handle_BinMDataXtd_PositionDriver* self_) { delete self_; }
+extern "C" OcctResult<Handle_BinMDataXtd_PositionDriver*> Handle_BinMDataXtd_PositionDriver_clone(const Handle_BinMDataXtd_PositionDriver* self_) {
+    try { return {new Handle_BinMDataXtd_PositionDriver(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleBinMDataXtdPositionDriver_is_null(const HandleBinMDataXtdPositionDriver* self_) { return self_->IsNull(); }
-extern "C" void HandleBinMDataXtdPresentationDriver_destructor(HandleBinMDataXtdPresentationDriver* self_) { delete self_; }
-extern "C" OcctResult<HandleBinMDataXtdPresentationDriver*> HandleBinMDataXtdPresentationDriver_clone(const HandleBinMDataXtdPresentationDriver* self_) {
-    try { return {new HandleBinMDataXtdPresentationDriver(*self_), nullptr}; }
+extern "C" bool Handle_BinMDataXtd_PositionDriver_is_null(const Handle_BinMDataXtd_PositionDriver* self_) { return self_->IsNull(); }
+extern "C" void Handle_BinMDataXtd_PresentationDriver_destructor(Handle_BinMDataXtd_PresentationDriver* self_) { delete self_; }
+extern "C" OcctResult<Handle_BinMDataXtd_PresentationDriver*> Handle_BinMDataXtd_PresentationDriver_clone(const Handle_BinMDataXtd_PresentationDriver* self_) {
+    try { return {new Handle_BinMDataXtd_PresentationDriver(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleBinMDataXtdPresentationDriver_is_null(const HandleBinMDataXtdPresentationDriver* self_) { return self_->IsNull(); }
-extern "C" void HandleBinMDataXtdTriangulationDriver_destructor(HandleBinMDataXtdTriangulationDriver* self_) { delete self_; }
-extern "C" OcctResult<HandleBinMDataXtdTriangulationDriver*> HandleBinMDataXtdTriangulationDriver_clone(const HandleBinMDataXtdTriangulationDriver* self_) {
-    try { return {new HandleBinMDataXtdTriangulationDriver(*self_), nullptr}; }
+extern "C" bool Handle_BinMDataXtd_PresentationDriver_is_null(const Handle_BinMDataXtd_PresentationDriver* self_) { return self_->IsNull(); }
+extern "C" void Handle_BinMDataXtd_TriangulationDriver_destructor(Handle_BinMDataXtd_TriangulationDriver* self_) { delete self_; }
+extern "C" OcctResult<Handle_BinMDataXtd_TriangulationDriver*> Handle_BinMDataXtd_TriangulationDriver_clone(const Handle_BinMDataXtd_TriangulationDriver* self_) {
+    try { return {new Handle_BinMDataXtd_TriangulationDriver(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleBinMDataXtdTriangulationDriver_is_null(const HandleBinMDataXtdTriangulationDriver* self_) { return self_->IsNull(); }
-extern "C" void HandleBinMNamingNamedShapeDriver_destructor(HandleBinMNamingNamedShapeDriver* self_) { delete self_; }
-extern "C" OcctResult<HandleBinMNamingNamedShapeDriver*> HandleBinMNamingNamedShapeDriver_clone(const HandleBinMNamingNamedShapeDriver* self_) {
-    try { return {new HandleBinMNamingNamedShapeDriver(*self_), nullptr}; }
+extern "C" bool Handle_BinMDataXtd_TriangulationDriver_is_null(const Handle_BinMDataXtd_TriangulationDriver* self_) { return self_->IsNull(); }
+extern "C" void Handle_BinMNaming_NamedShapeDriver_destructor(Handle_BinMNaming_NamedShapeDriver* self_) { delete self_; }
+extern "C" OcctResult<Handle_BinMNaming_NamedShapeDriver*> Handle_BinMNaming_NamedShapeDriver_clone(const Handle_BinMNaming_NamedShapeDriver* self_) {
+    try { return {new Handle_BinMNaming_NamedShapeDriver(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleBinMNamingNamedShapeDriver_is_null(const HandleBinMNamingNamedShapeDriver* self_) { return self_->IsNull(); }
-extern "C" void HandleBinMNamingNamingDriver_destructor(HandleBinMNamingNamingDriver* self_) { delete self_; }
-extern "C" OcctResult<HandleBinMNamingNamingDriver*> HandleBinMNamingNamingDriver_clone(const HandleBinMNamingNamingDriver* self_) {
-    try { return {new HandleBinMNamingNamingDriver(*self_), nullptr}; }
+extern "C" bool Handle_BinMNaming_NamedShapeDriver_is_null(const Handle_BinMNaming_NamedShapeDriver* self_) { return self_->IsNull(); }
+extern "C" void Handle_BinMNaming_NamingDriver_destructor(Handle_BinMNaming_NamingDriver* self_) { delete self_; }
+extern "C" OcctResult<Handle_BinMNaming_NamingDriver*> Handle_BinMNaming_NamingDriver_clone(const Handle_BinMNaming_NamingDriver* self_) {
+    try { return {new Handle_BinMNaming_NamingDriver(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" bool HandleBinMNamingNamingDriver_is_null(const HandleBinMNamingNamingDriver* self_) { return self_->IsNull(); }
+extern "C" bool Handle_BinMNaming_NamingDriver_is_null(const Handle_BinMNaming_NamingDriver* self_) { return self_->IsNull(); }
 
 // ========================
 // BinDrivers_DocumentRetrievalDriver wrappers
@@ -180,39 +177,39 @@ extern "C" OcctResult<const PCDM_Reader*> BinDrivers_DocumentRetrievalDriver_as_
 extern "C" OcctResult<PCDM_Reader*> BinDrivers_DocumentRetrievalDriver_as_PCDM_Reader_mut(BinDrivers_DocumentRetrievalDriver* self_) { return {static_cast<PCDM_Reader*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> BinDrivers_DocumentRetrievalDriver_as_Standard_Transient(const BinDrivers_DocumentRetrievalDriver* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> BinDrivers_DocumentRetrievalDriver_as_Standard_Transient_mut(BinDrivers_DocumentRetrievalDriver* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleBinDriversDocumentRetrievalDriver*> BinDrivers_DocumentRetrievalDriver_to_handle(BinDrivers_DocumentRetrievalDriver* obj) {
-    try { return {new HandleBinDriversDocumentRetrievalDriver(obj), nullptr}; }
+extern "C" OcctResult<Handle_BinDrivers_DocumentRetrievalDriver*> BinDrivers_DocumentRetrievalDriver_to_handle(BinDrivers_DocumentRetrievalDriver* obj) {
+    try { return {new Handle_BinDrivers_DocumentRetrievalDriver(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const BinDrivers_DocumentRetrievalDriver*> HandleBinDriversDocumentRetrievalDriver_get(const HandleBinDriversDocumentRetrievalDriver* handle) {
+extern "C" OcctResult<const BinDrivers_DocumentRetrievalDriver*> Handle_BinDrivers_DocumentRetrievalDriver_get(const Handle_BinDrivers_DocumentRetrievalDriver* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<BinDrivers_DocumentRetrievalDriver*> HandleBinDriversDocumentRetrievalDriver_get_mut(HandleBinDriversDocumentRetrievalDriver* handle) {
+extern "C" OcctResult<BinDrivers_DocumentRetrievalDriver*> Handle_BinDrivers_DocumentRetrievalDriver_get_mut(Handle_BinDrivers_DocumentRetrievalDriver* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleBinLDriversDocumentRetrievalDriver*> HandleBinDriversDocumentRetrievalDriver_to_HandleBinLDriversDocumentRetrievalDriver(const HandleBinDriversDocumentRetrievalDriver* self_) {
-    try { return {new HandleBinLDriversDocumentRetrievalDriver(*self_), nullptr}; }
+extern "C" OcctResult<Handle_BinLDrivers_DocumentRetrievalDriver*> Handle_BinDrivers_DocumentRetrievalDriver_to_Handle_BinLDrivers_DocumentRetrievalDriver(const Handle_BinDrivers_DocumentRetrievalDriver* self_) {
+    try { return {new Handle_BinLDrivers_DocumentRetrievalDriver(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandlePCDMRetrievalDriver*> HandleBinDriversDocumentRetrievalDriver_to_HandlePCDMRetrievalDriver(const HandleBinDriversDocumentRetrievalDriver* self_) {
-    try { return {new HandlePCDMRetrievalDriver(*self_), nullptr}; }
+extern "C" OcctResult<Handle_PCDM_RetrievalDriver*> Handle_BinDrivers_DocumentRetrievalDriver_to_Handle_PCDM_RetrievalDriver(const Handle_BinDrivers_DocumentRetrievalDriver* self_) {
+    try { return {new Handle_PCDM_RetrievalDriver(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandlePCDMReader*> HandleBinDriversDocumentRetrievalDriver_to_HandlePCDMReader(const HandleBinDriversDocumentRetrievalDriver* self_) {
-    try { return {new HandlePCDMReader(*self_), nullptr}; }
+extern "C" OcctResult<Handle_PCDM_Reader*> Handle_BinDrivers_DocumentRetrievalDriver_to_Handle_PCDM_Reader(const Handle_BinDrivers_DocumentRetrievalDriver* self_) {
+    try { return {new Handle_PCDM_Reader(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleBinDriversDocumentRetrievalDriver_to_HandleStandardTransient(const HandleBinDriversDocumentRetrievalDriver* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_BinDrivers_DocumentRetrievalDriver_to_Handle_Standard_Transient(const Handle_BinDrivers_DocumentRetrievalDriver* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleBinXCAFDriversDocumentRetrievalDriver*> HandleBinDriversDocumentRetrievalDriver_downcast_to_HandleBinXCAFDriversDocumentRetrievalDriver(const HandleBinDriversDocumentRetrievalDriver* self_) {
+extern "C" OcctResult<Handle_BinXCAFDrivers_DocumentRetrievalDriver*> Handle_BinDrivers_DocumentRetrievalDriver_downcast_to_Handle_BinXCAFDrivers_DocumentRetrievalDriver(const Handle_BinDrivers_DocumentRetrievalDriver* self_) {
     try {
     opencascade::handle<BinXCAFDrivers_DocumentRetrievalDriver> result = opencascade::handle<BinXCAFDrivers_DocumentRetrievalDriver>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleBinXCAFDriversDocumentRetrievalDriver(result), nullptr};
+    return {new Handle_BinXCAFDrivers_DocumentRetrievalDriver(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
@@ -322,39 +319,39 @@ extern "C" OcctResult<const PCDM_Writer*> BinDrivers_DocumentStorageDriver_as_PC
 extern "C" OcctResult<PCDM_Writer*> BinDrivers_DocumentStorageDriver_as_PCDM_Writer_mut(BinDrivers_DocumentStorageDriver* self_) { return {static_cast<PCDM_Writer*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> BinDrivers_DocumentStorageDriver_as_Standard_Transient(const BinDrivers_DocumentStorageDriver* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> BinDrivers_DocumentStorageDriver_as_Standard_Transient_mut(BinDrivers_DocumentStorageDriver* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleBinDriversDocumentStorageDriver*> BinDrivers_DocumentStorageDriver_to_handle(BinDrivers_DocumentStorageDriver* obj) {
-    try { return {new HandleBinDriversDocumentStorageDriver(obj), nullptr}; }
+extern "C" OcctResult<Handle_BinDrivers_DocumentStorageDriver*> BinDrivers_DocumentStorageDriver_to_handle(BinDrivers_DocumentStorageDriver* obj) {
+    try { return {new Handle_BinDrivers_DocumentStorageDriver(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const BinDrivers_DocumentStorageDriver*> HandleBinDriversDocumentStorageDriver_get(const HandleBinDriversDocumentStorageDriver* handle) {
+extern "C" OcctResult<const BinDrivers_DocumentStorageDriver*> Handle_BinDrivers_DocumentStorageDriver_get(const Handle_BinDrivers_DocumentStorageDriver* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<BinDrivers_DocumentStorageDriver*> HandleBinDriversDocumentStorageDriver_get_mut(HandleBinDriversDocumentStorageDriver* handle) {
+extern "C" OcctResult<BinDrivers_DocumentStorageDriver*> Handle_BinDrivers_DocumentStorageDriver_get_mut(Handle_BinDrivers_DocumentStorageDriver* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleBinLDriversDocumentStorageDriver*> HandleBinDriversDocumentStorageDriver_to_HandleBinLDriversDocumentStorageDriver(const HandleBinDriversDocumentStorageDriver* self_) {
-    try { return {new HandleBinLDriversDocumentStorageDriver(*self_), nullptr}; }
+extern "C" OcctResult<Handle_BinLDrivers_DocumentStorageDriver*> Handle_BinDrivers_DocumentStorageDriver_to_Handle_BinLDrivers_DocumentStorageDriver(const Handle_BinDrivers_DocumentStorageDriver* self_) {
+    try { return {new Handle_BinLDrivers_DocumentStorageDriver(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandlePCDMStorageDriver*> HandleBinDriversDocumentStorageDriver_to_HandlePCDMStorageDriver(const HandleBinDriversDocumentStorageDriver* self_) {
-    try { return {new HandlePCDMStorageDriver(*self_), nullptr}; }
+extern "C" OcctResult<Handle_PCDM_StorageDriver*> Handle_BinDrivers_DocumentStorageDriver_to_Handle_PCDM_StorageDriver(const Handle_BinDrivers_DocumentStorageDriver* self_) {
+    try { return {new Handle_PCDM_StorageDriver(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandlePCDMWriter*> HandleBinDriversDocumentStorageDriver_to_HandlePCDMWriter(const HandleBinDriversDocumentStorageDriver* self_) {
-    try { return {new HandlePCDMWriter(*self_), nullptr}; }
+extern "C" OcctResult<Handle_PCDM_Writer*> Handle_BinDrivers_DocumentStorageDriver_to_Handle_PCDM_Writer(const Handle_BinDrivers_DocumentStorageDriver* self_) {
+    try { return {new Handle_PCDM_Writer(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleBinDriversDocumentStorageDriver_to_HandleStandardTransient(const HandleBinDriversDocumentStorageDriver* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_BinDrivers_DocumentStorageDriver_to_Handle_Standard_Transient(const Handle_BinDrivers_DocumentStorageDriver* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleBinXCAFDriversDocumentStorageDriver*> HandleBinDriversDocumentStorageDriver_downcast_to_HandleBinXCAFDriversDocumentStorageDriver(const HandleBinDriversDocumentStorageDriver* self_) {
+extern "C" OcctResult<Handle_BinXCAFDrivers_DocumentStorageDriver*> Handle_BinDrivers_DocumentStorageDriver_downcast_to_Handle_BinXCAFDrivers_DocumentStorageDriver(const Handle_BinDrivers_DocumentStorageDriver* self_) {
     try {
     opencascade::handle<BinXCAFDrivers_DocumentStorageDriver> result = opencascade::handle<BinXCAFDrivers_DocumentStorageDriver>::DownCast(*self_);
     if (result.IsNull()) { return {nullptr, nullptr}; }
-    return {new HandleBinXCAFDriversDocumentStorageDriver(result), nullptr};
+    return {new Handle_BinXCAFDrivers_DocumentStorageDriver(result), nullptr};
     }
     OCCT_CATCH_RETURN
 }
@@ -440,13 +437,9 @@ extern "C" OcctResult<Handle(TDF_Attribute)*> BinMDataXtd_ConstraintDriver_new_e
     try { return {new Handle(TDF_Attribute)(self_->NewEmpty()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<bool> BinMDataXtd_ConstraintDriver_paste_persistent_handletdfattribute_rrelocationtable(const BinMDataXtd_ConstraintDriver* self_, BinObjMgt_Persistent const* Source, Handle(TDF_Attribute) const* Target, BinObjMgt_RRelocationTable* RelocTable) {
+extern "C" OcctResult<bool> BinMDataXtd_ConstraintDriver_paste(const BinMDataXtd_ConstraintDriver* self_, BinObjMgt_Persistent const* Source, Handle(TDF_Attribute) const* Target, BinObjMgt_RRelocationTable* RelocTable) {
     try { return {self_->Paste(*Source, *Target, *RelocTable), nullptr}; }
     OCCT_CATCH_RETURN
-}
-extern "C" const char* BinMDataXtd_ConstraintDriver_paste_handletdfattribute_persistent_indexedmapoftransient(const BinMDataXtd_ConstraintDriver* self_, Handle(TDF_Attribute) const* Source, BinObjMgt_Persistent* Target, TColStd_IndexedMapOfTransient* RelocTable) {
-    try { self_->Paste(*Source, *Target, *RelocTable); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
 }
 extern "C" OcctResult<Handle(Standard_Type) const*> BinMDataXtd_ConstraintDriver_dynamic_type(const BinMDataXtd_ConstraintDriver* self_) {
     try { return {&(self_->DynamicType()), nullptr}; }
@@ -464,24 +457,24 @@ extern "C" OcctResult<const BinMDF_ADriver*> BinMDataXtd_ConstraintDriver_as_Bin
 extern "C" OcctResult<BinMDF_ADriver*> BinMDataXtd_ConstraintDriver_as_BinMDF_ADriver_mut(BinMDataXtd_ConstraintDriver* self_) { return {static_cast<BinMDF_ADriver*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> BinMDataXtd_ConstraintDriver_as_Standard_Transient(const BinMDataXtd_ConstraintDriver* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> BinMDataXtd_ConstraintDriver_as_Standard_Transient_mut(BinMDataXtd_ConstraintDriver* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleBinMDataXtdConstraintDriver*> BinMDataXtd_ConstraintDriver_to_handle(BinMDataXtd_ConstraintDriver* obj) {
-    try { return {new HandleBinMDataXtdConstraintDriver(obj), nullptr}; }
+extern "C" OcctResult<Handle_BinMDataXtd_ConstraintDriver*> BinMDataXtd_ConstraintDriver_to_handle(BinMDataXtd_ConstraintDriver* obj) {
+    try { return {new Handle_BinMDataXtd_ConstraintDriver(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const BinMDataXtd_ConstraintDriver*> HandleBinMDataXtdConstraintDriver_get(const HandleBinMDataXtdConstraintDriver* handle) {
+extern "C" OcctResult<const BinMDataXtd_ConstraintDriver*> Handle_BinMDataXtd_ConstraintDriver_get(const Handle_BinMDataXtd_ConstraintDriver* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<BinMDataXtd_ConstraintDriver*> HandleBinMDataXtdConstraintDriver_get_mut(HandleBinMDataXtdConstraintDriver* handle) {
+extern "C" OcctResult<BinMDataXtd_ConstraintDriver*> Handle_BinMDataXtd_ConstraintDriver_get_mut(Handle_BinMDataXtd_ConstraintDriver* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleBinMDFADriver*> HandleBinMDataXtdConstraintDriver_to_HandleBinMDFADriver(const HandleBinMDataXtdConstraintDriver* self_) {
-    try { return {new HandleBinMDFADriver(*self_), nullptr}; }
+extern "C" OcctResult<Handle_BinMDF_ADriver*> Handle_BinMDataXtd_ConstraintDriver_to_Handle_BinMDF_ADriver(const Handle_BinMDataXtd_ConstraintDriver* self_) {
+    try { return {new Handle_BinMDF_ADriver(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleBinMDataXtdConstraintDriver_to_HandleStandardTransient(const HandleBinMDataXtdConstraintDriver* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_BinMDataXtd_ConstraintDriver_to_Handle_Standard_Transient(const Handle_BinMDataXtd_ConstraintDriver* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(Standard_Type) const*> BinMDataXtd_ConstraintDriver_inherited_SourceType(const BinMDataXtd_ConstraintDriver* self) {
@@ -538,13 +531,9 @@ extern "C" OcctResult<Handle(TDF_Attribute)*> BinMDataXtd_GeometryDriver_new_emp
     try { return {new Handle(TDF_Attribute)(self_->NewEmpty()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<bool> BinMDataXtd_GeometryDriver_paste_persistent_handletdfattribute_rrelocationtable(const BinMDataXtd_GeometryDriver* self_, BinObjMgt_Persistent const* Source, Handle(TDF_Attribute) const* Target, BinObjMgt_RRelocationTable* RelocTable) {
+extern "C" OcctResult<bool> BinMDataXtd_GeometryDriver_paste(const BinMDataXtd_GeometryDriver* self_, BinObjMgt_Persistent const* Source, Handle(TDF_Attribute) const* Target, BinObjMgt_RRelocationTable* RelocTable) {
     try { return {self_->Paste(*Source, *Target, *RelocTable), nullptr}; }
     OCCT_CATCH_RETURN
-}
-extern "C" const char* BinMDataXtd_GeometryDriver_paste_handletdfattribute_persistent_indexedmapoftransient(const BinMDataXtd_GeometryDriver* self_, Handle(TDF_Attribute) const* Source, BinObjMgt_Persistent* Target, TColStd_IndexedMapOfTransient* RelocTable) {
-    try { self_->Paste(*Source, *Target, *RelocTable); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
 }
 extern "C" OcctResult<Handle(Standard_Type) const*> BinMDataXtd_GeometryDriver_dynamic_type(const BinMDataXtd_GeometryDriver* self_) {
     try { return {&(self_->DynamicType()), nullptr}; }
@@ -562,24 +551,24 @@ extern "C" OcctResult<const BinMDF_ADriver*> BinMDataXtd_GeometryDriver_as_BinMD
 extern "C" OcctResult<BinMDF_ADriver*> BinMDataXtd_GeometryDriver_as_BinMDF_ADriver_mut(BinMDataXtd_GeometryDriver* self_) { return {static_cast<BinMDF_ADriver*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> BinMDataXtd_GeometryDriver_as_Standard_Transient(const BinMDataXtd_GeometryDriver* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> BinMDataXtd_GeometryDriver_as_Standard_Transient_mut(BinMDataXtd_GeometryDriver* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleBinMDataXtdGeometryDriver*> BinMDataXtd_GeometryDriver_to_handle(BinMDataXtd_GeometryDriver* obj) {
-    try { return {new HandleBinMDataXtdGeometryDriver(obj), nullptr}; }
+extern "C" OcctResult<Handle_BinMDataXtd_GeometryDriver*> BinMDataXtd_GeometryDriver_to_handle(BinMDataXtd_GeometryDriver* obj) {
+    try { return {new Handle_BinMDataXtd_GeometryDriver(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const BinMDataXtd_GeometryDriver*> HandleBinMDataXtdGeometryDriver_get(const HandleBinMDataXtdGeometryDriver* handle) {
+extern "C" OcctResult<const BinMDataXtd_GeometryDriver*> Handle_BinMDataXtd_GeometryDriver_get(const Handle_BinMDataXtd_GeometryDriver* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<BinMDataXtd_GeometryDriver*> HandleBinMDataXtdGeometryDriver_get_mut(HandleBinMDataXtdGeometryDriver* handle) {
+extern "C" OcctResult<BinMDataXtd_GeometryDriver*> Handle_BinMDataXtd_GeometryDriver_get_mut(Handle_BinMDataXtd_GeometryDriver* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleBinMDFADriver*> HandleBinMDataXtdGeometryDriver_to_HandleBinMDFADriver(const HandleBinMDataXtdGeometryDriver* self_) {
-    try { return {new HandleBinMDFADriver(*self_), nullptr}; }
+extern "C" OcctResult<Handle_BinMDF_ADriver*> Handle_BinMDataXtd_GeometryDriver_to_Handle_BinMDF_ADriver(const Handle_BinMDataXtd_GeometryDriver* self_) {
+    try { return {new Handle_BinMDF_ADriver(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleBinMDataXtdGeometryDriver_to_HandleStandardTransient(const HandleBinMDataXtdGeometryDriver* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_BinMDataXtd_GeometryDriver_to_Handle_Standard_Transient(const Handle_BinMDataXtd_GeometryDriver* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(Standard_Type) const*> BinMDataXtd_GeometryDriver_inherited_SourceType(const BinMDataXtd_GeometryDriver* self) {
@@ -636,13 +625,9 @@ extern "C" OcctResult<Handle(TDF_Attribute)*> BinMDataXtd_PatternStdDriver_new_e
     try { return {new Handle(TDF_Attribute)(self_->NewEmpty()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<bool> BinMDataXtd_PatternStdDriver_paste_persistent_handletdfattribute_rrelocationtable(const BinMDataXtd_PatternStdDriver* self_, BinObjMgt_Persistent const* Source, Handle(TDF_Attribute) const* Target, BinObjMgt_RRelocationTable* RelocTable) {
+extern "C" OcctResult<bool> BinMDataXtd_PatternStdDriver_paste(const BinMDataXtd_PatternStdDriver* self_, BinObjMgt_Persistent const* Source, Handle(TDF_Attribute) const* Target, BinObjMgt_RRelocationTable* RelocTable) {
     try { return {self_->Paste(*Source, *Target, *RelocTable), nullptr}; }
     OCCT_CATCH_RETURN
-}
-extern "C" const char* BinMDataXtd_PatternStdDriver_paste_handletdfattribute_persistent_indexedmapoftransient(const BinMDataXtd_PatternStdDriver* self_, Handle(TDF_Attribute) const* Source, BinObjMgt_Persistent* Target, TColStd_IndexedMapOfTransient* RelocTable) {
-    try { self_->Paste(*Source, *Target, *RelocTable); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
 }
 extern "C" OcctResult<Handle(Standard_Type) const*> BinMDataXtd_PatternStdDriver_dynamic_type(const BinMDataXtd_PatternStdDriver* self_) {
     try { return {&(self_->DynamicType()), nullptr}; }
@@ -660,24 +645,24 @@ extern "C" OcctResult<const BinMDF_ADriver*> BinMDataXtd_PatternStdDriver_as_Bin
 extern "C" OcctResult<BinMDF_ADriver*> BinMDataXtd_PatternStdDriver_as_BinMDF_ADriver_mut(BinMDataXtd_PatternStdDriver* self_) { return {static_cast<BinMDF_ADriver*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> BinMDataXtd_PatternStdDriver_as_Standard_Transient(const BinMDataXtd_PatternStdDriver* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> BinMDataXtd_PatternStdDriver_as_Standard_Transient_mut(BinMDataXtd_PatternStdDriver* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleBinMDataXtdPatternStdDriver*> BinMDataXtd_PatternStdDriver_to_handle(BinMDataXtd_PatternStdDriver* obj) {
-    try { return {new HandleBinMDataXtdPatternStdDriver(obj), nullptr}; }
+extern "C" OcctResult<Handle_BinMDataXtd_PatternStdDriver*> BinMDataXtd_PatternStdDriver_to_handle(BinMDataXtd_PatternStdDriver* obj) {
+    try { return {new Handle_BinMDataXtd_PatternStdDriver(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const BinMDataXtd_PatternStdDriver*> HandleBinMDataXtdPatternStdDriver_get(const HandleBinMDataXtdPatternStdDriver* handle) {
+extern "C" OcctResult<const BinMDataXtd_PatternStdDriver*> Handle_BinMDataXtd_PatternStdDriver_get(const Handle_BinMDataXtd_PatternStdDriver* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<BinMDataXtd_PatternStdDriver*> HandleBinMDataXtdPatternStdDriver_get_mut(HandleBinMDataXtdPatternStdDriver* handle) {
+extern "C" OcctResult<BinMDataXtd_PatternStdDriver*> Handle_BinMDataXtd_PatternStdDriver_get_mut(Handle_BinMDataXtd_PatternStdDriver* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleBinMDFADriver*> HandleBinMDataXtdPatternStdDriver_to_HandleBinMDFADriver(const HandleBinMDataXtdPatternStdDriver* self_) {
-    try { return {new HandleBinMDFADriver(*self_), nullptr}; }
+extern "C" OcctResult<Handle_BinMDF_ADriver*> Handle_BinMDataXtd_PatternStdDriver_to_Handle_BinMDF_ADriver(const Handle_BinMDataXtd_PatternStdDriver* self_) {
+    try { return {new Handle_BinMDF_ADriver(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleBinMDataXtdPatternStdDriver_to_HandleStandardTransient(const HandleBinMDataXtdPatternStdDriver* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_BinMDataXtd_PatternStdDriver_to_Handle_Standard_Transient(const Handle_BinMDataXtd_PatternStdDriver* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(Standard_Type) const*> BinMDataXtd_PatternStdDriver_inherited_SourceType(const BinMDataXtd_PatternStdDriver* self) {
@@ -734,13 +719,9 @@ extern "C" OcctResult<Handle(TDF_Attribute)*> BinMDataXtd_PositionDriver_new_emp
     try { return {new Handle(TDF_Attribute)(self_->NewEmpty()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<bool> BinMDataXtd_PositionDriver_paste_persistent_handletdfattribute_rrelocationtable(const BinMDataXtd_PositionDriver* self_, BinObjMgt_Persistent const* Source, Handle(TDF_Attribute) const* Target, BinObjMgt_RRelocationTable* RelocTable) {
+extern "C" OcctResult<bool> BinMDataXtd_PositionDriver_paste(const BinMDataXtd_PositionDriver* self_, BinObjMgt_Persistent const* Source, Handle(TDF_Attribute) const* Target, BinObjMgt_RRelocationTable* RelocTable) {
     try { return {self_->Paste(*Source, *Target, *RelocTable), nullptr}; }
     OCCT_CATCH_RETURN
-}
-extern "C" const char* BinMDataXtd_PositionDriver_paste_handletdfattribute_persistent_indexedmapoftransient(const BinMDataXtd_PositionDriver* self_, Handle(TDF_Attribute) const* Source, BinObjMgt_Persistent* Target, TColStd_IndexedMapOfTransient* RelocTable) {
-    try { self_->Paste(*Source, *Target, *RelocTable); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
 }
 extern "C" OcctResult<Handle(Standard_Type) const*> BinMDataXtd_PositionDriver_dynamic_type(const BinMDataXtd_PositionDriver* self_) {
     try { return {&(self_->DynamicType()), nullptr}; }
@@ -758,24 +739,24 @@ extern "C" OcctResult<const BinMDF_ADriver*> BinMDataXtd_PositionDriver_as_BinMD
 extern "C" OcctResult<BinMDF_ADriver*> BinMDataXtd_PositionDriver_as_BinMDF_ADriver_mut(BinMDataXtd_PositionDriver* self_) { return {static_cast<BinMDF_ADriver*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> BinMDataXtd_PositionDriver_as_Standard_Transient(const BinMDataXtd_PositionDriver* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> BinMDataXtd_PositionDriver_as_Standard_Transient_mut(BinMDataXtd_PositionDriver* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleBinMDataXtdPositionDriver*> BinMDataXtd_PositionDriver_to_handle(BinMDataXtd_PositionDriver* obj) {
-    try { return {new HandleBinMDataXtdPositionDriver(obj), nullptr}; }
+extern "C" OcctResult<Handle_BinMDataXtd_PositionDriver*> BinMDataXtd_PositionDriver_to_handle(BinMDataXtd_PositionDriver* obj) {
+    try { return {new Handle_BinMDataXtd_PositionDriver(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const BinMDataXtd_PositionDriver*> HandleBinMDataXtdPositionDriver_get(const HandleBinMDataXtdPositionDriver* handle) {
+extern "C" OcctResult<const BinMDataXtd_PositionDriver*> Handle_BinMDataXtd_PositionDriver_get(const Handle_BinMDataXtd_PositionDriver* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<BinMDataXtd_PositionDriver*> HandleBinMDataXtdPositionDriver_get_mut(HandleBinMDataXtdPositionDriver* handle) {
+extern "C" OcctResult<BinMDataXtd_PositionDriver*> Handle_BinMDataXtd_PositionDriver_get_mut(Handle_BinMDataXtd_PositionDriver* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleBinMDFADriver*> HandleBinMDataXtdPositionDriver_to_HandleBinMDFADriver(const HandleBinMDataXtdPositionDriver* self_) {
-    try { return {new HandleBinMDFADriver(*self_), nullptr}; }
+extern "C" OcctResult<Handle_BinMDF_ADriver*> Handle_BinMDataXtd_PositionDriver_to_Handle_BinMDF_ADriver(const Handle_BinMDataXtd_PositionDriver* self_) {
+    try { return {new Handle_BinMDF_ADriver(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleBinMDataXtdPositionDriver_to_HandleStandardTransient(const HandleBinMDataXtdPositionDriver* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_BinMDataXtd_PositionDriver_to_Handle_Standard_Transient(const Handle_BinMDataXtd_PositionDriver* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(Standard_Type) const*> BinMDataXtd_PositionDriver_inherited_SourceType(const BinMDataXtd_PositionDriver* self) {
@@ -832,13 +813,9 @@ extern "C" OcctResult<Handle(TDF_Attribute)*> BinMDataXtd_PresentationDriver_new
     try { return {new Handle(TDF_Attribute)(self_->NewEmpty()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<bool> BinMDataXtd_PresentationDriver_paste_persistent_handletdfattribute_rrelocationtable(const BinMDataXtd_PresentationDriver* self_, BinObjMgt_Persistent const* Source, Handle(TDF_Attribute) const* Target, BinObjMgt_RRelocationTable* RelocTable) {
+extern "C" OcctResult<bool> BinMDataXtd_PresentationDriver_paste(const BinMDataXtd_PresentationDriver* self_, BinObjMgt_Persistent const* Source, Handle(TDF_Attribute) const* Target, BinObjMgt_RRelocationTable* RelocTable) {
     try { return {self_->Paste(*Source, *Target, *RelocTable), nullptr}; }
     OCCT_CATCH_RETURN
-}
-extern "C" const char* BinMDataXtd_PresentationDriver_paste_handletdfattribute_persistent_indexedmapoftransient(const BinMDataXtd_PresentationDriver* self_, Handle(TDF_Attribute) const* Source, BinObjMgt_Persistent* Target, TColStd_IndexedMapOfTransient* RelocTable) {
-    try { self_->Paste(*Source, *Target, *RelocTable); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
 }
 extern "C" OcctResult<Handle(Standard_Type) const*> BinMDataXtd_PresentationDriver_dynamic_type(const BinMDataXtd_PresentationDriver* self_) {
     try { return {&(self_->DynamicType()), nullptr}; }
@@ -856,24 +833,24 @@ extern "C" OcctResult<const BinMDF_ADriver*> BinMDataXtd_PresentationDriver_as_B
 extern "C" OcctResult<BinMDF_ADriver*> BinMDataXtd_PresentationDriver_as_BinMDF_ADriver_mut(BinMDataXtd_PresentationDriver* self_) { return {static_cast<BinMDF_ADriver*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> BinMDataXtd_PresentationDriver_as_Standard_Transient(const BinMDataXtd_PresentationDriver* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> BinMDataXtd_PresentationDriver_as_Standard_Transient_mut(BinMDataXtd_PresentationDriver* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleBinMDataXtdPresentationDriver*> BinMDataXtd_PresentationDriver_to_handle(BinMDataXtd_PresentationDriver* obj) {
-    try { return {new HandleBinMDataXtdPresentationDriver(obj), nullptr}; }
+extern "C" OcctResult<Handle_BinMDataXtd_PresentationDriver*> BinMDataXtd_PresentationDriver_to_handle(BinMDataXtd_PresentationDriver* obj) {
+    try { return {new Handle_BinMDataXtd_PresentationDriver(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const BinMDataXtd_PresentationDriver*> HandleBinMDataXtdPresentationDriver_get(const HandleBinMDataXtdPresentationDriver* handle) {
+extern "C" OcctResult<const BinMDataXtd_PresentationDriver*> Handle_BinMDataXtd_PresentationDriver_get(const Handle_BinMDataXtd_PresentationDriver* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<BinMDataXtd_PresentationDriver*> HandleBinMDataXtdPresentationDriver_get_mut(HandleBinMDataXtdPresentationDriver* handle) {
+extern "C" OcctResult<BinMDataXtd_PresentationDriver*> Handle_BinMDataXtd_PresentationDriver_get_mut(Handle_BinMDataXtd_PresentationDriver* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleBinMDFADriver*> HandleBinMDataXtdPresentationDriver_to_HandleBinMDFADriver(const HandleBinMDataXtdPresentationDriver* self_) {
-    try { return {new HandleBinMDFADriver(*self_), nullptr}; }
+extern "C" OcctResult<Handle_BinMDF_ADriver*> Handle_BinMDataXtd_PresentationDriver_to_Handle_BinMDF_ADriver(const Handle_BinMDataXtd_PresentationDriver* self_) {
+    try { return {new Handle_BinMDF_ADriver(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleBinMDataXtdPresentationDriver_to_HandleStandardTransient(const HandleBinMDataXtdPresentationDriver* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_BinMDataXtd_PresentationDriver_to_Handle_Standard_Transient(const Handle_BinMDataXtd_PresentationDriver* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(Standard_Type) const*> BinMDataXtd_PresentationDriver_inherited_SourceType(const BinMDataXtd_PresentationDriver* self) {
@@ -930,13 +907,9 @@ extern "C" OcctResult<Handle(TDF_Attribute)*> BinMDataXtd_TriangulationDriver_ne
     try { return {new Handle(TDF_Attribute)(self_->NewEmpty()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<bool> BinMDataXtd_TriangulationDriver_paste_persistent_handletdfattribute_rrelocationtable(const BinMDataXtd_TriangulationDriver* self_, BinObjMgt_Persistent const* Source, Handle(TDF_Attribute) const* Target, BinObjMgt_RRelocationTable* RelocTable) {
+extern "C" OcctResult<bool> BinMDataXtd_TriangulationDriver_paste(const BinMDataXtd_TriangulationDriver* self_, BinObjMgt_Persistent const* Source, Handle(TDF_Attribute) const* Target, BinObjMgt_RRelocationTable* RelocTable) {
     try { return {self_->Paste(*Source, *Target, *RelocTable), nullptr}; }
     OCCT_CATCH_RETURN
-}
-extern "C" const char* BinMDataXtd_TriangulationDriver_paste_handletdfattribute_persistent_indexedmapoftransient(const BinMDataXtd_TriangulationDriver* self_, Handle(TDF_Attribute) const* Source, BinObjMgt_Persistent* Target, TColStd_IndexedMapOfTransient* RelocTable) {
-    try { self_->Paste(*Source, *Target, *RelocTable); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
 }
 extern "C" OcctResult<Handle(Standard_Type) const*> BinMDataXtd_TriangulationDriver_dynamic_type(const BinMDataXtd_TriangulationDriver* self_) {
     try { return {&(self_->DynamicType()), nullptr}; }
@@ -954,24 +927,24 @@ extern "C" OcctResult<const BinMDF_ADriver*> BinMDataXtd_TriangulationDriver_as_
 extern "C" OcctResult<BinMDF_ADriver*> BinMDataXtd_TriangulationDriver_as_BinMDF_ADriver_mut(BinMDataXtd_TriangulationDriver* self_) { return {static_cast<BinMDF_ADriver*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> BinMDataXtd_TriangulationDriver_as_Standard_Transient(const BinMDataXtd_TriangulationDriver* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> BinMDataXtd_TriangulationDriver_as_Standard_Transient_mut(BinMDataXtd_TriangulationDriver* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleBinMDataXtdTriangulationDriver*> BinMDataXtd_TriangulationDriver_to_handle(BinMDataXtd_TriangulationDriver* obj) {
-    try { return {new HandleBinMDataXtdTriangulationDriver(obj), nullptr}; }
+extern "C" OcctResult<Handle_BinMDataXtd_TriangulationDriver*> BinMDataXtd_TriangulationDriver_to_handle(BinMDataXtd_TriangulationDriver* obj) {
+    try { return {new Handle_BinMDataXtd_TriangulationDriver(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const BinMDataXtd_TriangulationDriver*> HandleBinMDataXtdTriangulationDriver_get(const HandleBinMDataXtdTriangulationDriver* handle) {
+extern "C" OcctResult<const BinMDataXtd_TriangulationDriver*> Handle_BinMDataXtd_TriangulationDriver_get(const Handle_BinMDataXtd_TriangulationDriver* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<BinMDataXtd_TriangulationDriver*> HandleBinMDataXtdTriangulationDriver_get_mut(HandleBinMDataXtdTriangulationDriver* handle) {
+extern "C" OcctResult<BinMDataXtd_TriangulationDriver*> Handle_BinMDataXtd_TriangulationDriver_get_mut(Handle_BinMDataXtd_TriangulationDriver* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleBinMDFADriver*> HandleBinMDataXtdTriangulationDriver_to_HandleBinMDFADriver(const HandleBinMDataXtdTriangulationDriver* self_) {
-    try { return {new HandleBinMDFADriver(*self_), nullptr}; }
+extern "C" OcctResult<Handle_BinMDF_ADriver*> Handle_BinMDataXtd_TriangulationDriver_to_Handle_BinMDF_ADriver(const Handle_BinMDataXtd_TriangulationDriver* self_) {
+    try { return {new Handle_BinMDF_ADriver(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleBinMDataXtdTriangulationDriver_to_HandleStandardTransient(const HandleBinMDataXtdTriangulationDriver* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_BinMDataXtd_TriangulationDriver_to_Handle_Standard_Transient(const Handle_BinMDataXtd_TriangulationDriver* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(Standard_Type) const*> BinMDataXtd_TriangulationDriver_inherited_SourceType(const BinMDataXtd_TriangulationDriver* self) {
@@ -1028,13 +1001,9 @@ extern "C" OcctResult<Handle(TDF_Attribute)*> BinMNaming_NamedShapeDriver_new_em
     try { return {new Handle(TDF_Attribute)(self_->NewEmpty()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<bool> BinMNaming_NamedShapeDriver_paste_persistent_handletdfattribute_rrelocationtable(const BinMNaming_NamedShapeDriver* self_, BinObjMgt_Persistent const* Source, Handle(TDF_Attribute) const* Target, BinObjMgt_RRelocationTable* RelocTable) {
+extern "C" OcctResult<bool> BinMNaming_NamedShapeDriver_paste(const BinMNaming_NamedShapeDriver* self_, BinObjMgt_Persistent const* Source, Handle(TDF_Attribute) const* Target, BinObjMgt_RRelocationTable* RelocTable) {
     try { return {self_->Paste(*Source, *Target, *RelocTable), nullptr}; }
     OCCT_CATCH_RETURN
-}
-extern "C" const char* BinMNaming_NamedShapeDriver_paste_handletdfattribute_persistent_indexedmapoftransient(const BinMNaming_NamedShapeDriver* self_, Handle(TDF_Attribute) const* Source, BinObjMgt_Persistent* Target, TColStd_IndexedMapOfTransient* RelocTable) {
-    try { self_->Paste(*Source, *Target, *RelocTable); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
 }
 extern "C" const char* BinMNaming_NamedShapeDriver_read_shape_section(BinMNaming_NamedShapeDriver* self_, Standard_IStream* theIS, Message_ProgressRange const* therange) {
     try { self_->ReadShapeSection(*theIS, *therange); return nullptr; }
@@ -1096,24 +1065,24 @@ extern "C" OcctResult<const BinMDF_ADriver*> BinMNaming_NamedShapeDriver_as_BinM
 extern "C" OcctResult<BinMDF_ADriver*> BinMNaming_NamedShapeDriver_as_BinMDF_ADriver_mut(BinMNaming_NamedShapeDriver* self_) { return {static_cast<BinMDF_ADriver*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> BinMNaming_NamedShapeDriver_as_Standard_Transient(const BinMNaming_NamedShapeDriver* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> BinMNaming_NamedShapeDriver_as_Standard_Transient_mut(BinMNaming_NamedShapeDriver* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleBinMNamingNamedShapeDriver*> BinMNaming_NamedShapeDriver_to_handle(BinMNaming_NamedShapeDriver* obj) {
-    try { return {new HandleBinMNamingNamedShapeDriver(obj), nullptr}; }
+extern "C" OcctResult<Handle_BinMNaming_NamedShapeDriver*> BinMNaming_NamedShapeDriver_to_handle(BinMNaming_NamedShapeDriver* obj) {
+    try { return {new Handle_BinMNaming_NamedShapeDriver(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const BinMNaming_NamedShapeDriver*> HandleBinMNamingNamedShapeDriver_get(const HandleBinMNamingNamedShapeDriver* handle) {
+extern "C" OcctResult<const BinMNaming_NamedShapeDriver*> Handle_BinMNaming_NamedShapeDriver_get(const Handle_BinMNaming_NamedShapeDriver* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<BinMNaming_NamedShapeDriver*> HandleBinMNamingNamedShapeDriver_get_mut(HandleBinMNamingNamedShapeDriver* handle) {
+extern "C" OcctResult<BinMNaming_NamedShapeDriver*> Handle_BinMNaming_NamedShapeDriver_get_mut(Handle_BinMNaming_NamedShapeDriver* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleBinMDFADriver*> HandleBinMNamingNamedShapeDriver_to_HandleBinMDFADriver(const HandleBinMNamingNamedShapeDriver* self_) {
-    try { return {new HandleBinMDFADriver(*self_), nullptr}; }
+extern "C" OcctResult<Handle_BinMDF_ADriver*> Handle_BinMNaming_NamedShapeDriver_to_Handle_BinMDF_ADriver(const Handle_BinMNaming_NamedShapeDriver* self_) {
+    try { return {new Handle_BinMDF_ADriver(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleBinMNamingNamedShapeDriver_to_HandleStandardTransient(const HandleBinMNamingNamedShapeDriver* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_BinMNaming_NamedShapeDriver_to_Handle_Standard_Transient(const Handle_BinMNaming_NamedShapeDriver* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(Standard_Type) const*> BinMNaming_NamedShapeDriver_inherited_SourceType(const BinMNaming_NamedShapeDriver* self) {
@@ -1170,13 +1139,9 @@ extern "C" OcctResult<Handle(TDF_Attribute)*> BinMNaming_NamingDriver_new_empty(
     try { return {new Handle(TDF_Attribute)(self_->NewEmpty()), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<bool> BinMNaming_NamingDriver_paste_persistent_handletdfattribute_rrelocationtable(const BinMNaming_NamingDriver* self_, BinObjMgt_Persistent const* Source, Handle(TDF_Attribute) const* Target, BinObjMgt_RRelocationTable* RelocTable) {
+extern "C" OcctResult<bool> BinMNaming_NamingDriver_paste(const BinMNaming_NamingDriver* self_, BinObjMgt_Persistent const* Source, Handle(TDF_Attribute) const* Target, BinObjMgt_RRelocationTable* RelocTable) {
     try { return {self_->Paste(*Source, *Target, *RelocTable), nullptr}; }
     OCCT_CATCH_RETURN
-}
-extern "C" const char* BinMNaming_NamingDriver_paste_handletdfattribute_persistent_indexedmapoftransient(const BinMNaming_NamingDriver* self_, Handle(TDF_Attribute) const* Source, BinObjMgt_Persistent* Target, TColStd_IndexedMapOfTransient* RelocTable) {
-    try { self_->Paste(*Source, *Target, *RelocTable); return nullptr; }
-    OCCT_CATCH_RETURN_VOID
 }
 extern "C" OcctResult<Handle(Standard_Type) const*> BinMNaming_NamingDriver_dynamic_type(const BinMNaming_NamingDriver* self_) {
     try { return {&(self_->DynamicType()), nullptr}; }
@@ -1194,24 +1159,24 @@ extern "C" OcctResult<const BinMDF_ADriver*> BinMNaming_NamingDriver_as_BinMDF_A
 extern "C" OcctResult<BinMDF_ADriver*> BinMNaming_NamingDriver_as_BinMDF_ADriver_mut(BinMNaming_NamingDriver* self_) { return {static_cast<BinMDF_ADriver*>(self_), nullptr}; }
 extern "C" OcctResult<const Standard_Transient*> BinMNaming_NamingDriver_as_Standard_Transient(const BinMNaming_NamingDriver* self_) { return {static_cast<const Standard_Transient*>(self_), nullptr}; }
 extern "C" OcctResult<Standard_Transient*> BinMNaming_NamingDriver_as_Standard_Transient_mut(BinMNaming_NamingDriver* self_) { return {static_cast<Standard_Transient*>(self_), nullptr}; }
-extern "C" OcctResult<HandleBinMNamingNamingDriver*> BinMNaming_NamingDriver_to_handle(BinMNaming_NamingDriver* obj) {
-    try { return {new HandleBinMNamingNamingDriver(obj), nullptr}; }
+extern "C" OcctResult<Handle_BinMNaming_NamingDriver*> BinMNaming_NamingDriver_to_handle(BinMNaming_NamingDriver* obj) {
+    try { return {new Handle_BinMNaming_NamingDriver(obj), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<const BinMNaming_NamingDriver*> HandleBinMNamingNamingDriver_get(const HandleBinMNamingNamingDriver* handle) {
+extern "C" OcctResult<const BinMNaming_NamingDriver*> Handle_BinMNaming_NamingDriver_get(const Handle_BinMNaming_NamingDriver* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<BinMNaming_NamingDriver*> HandleBinMNamingNamingDriver_get_mut(HandleBinMNamingNamingDriver* handle) {
+extern "C" OcctResult<BinMNaming_NamingDriver*> Handle_BinMNaming_NamingDriver_get_mut(Handle_BinMNaming_NamingDriver* handle) {
     try { return {(*handle).get(), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleBinMDFADriver*> HandleBinMNamingNamingDriver_to_HandleBinMDFADriver(const HandleBinMNamingNamingDriver* self_) {
-    try { return {new HandleBinMDFADriver(*self_), nullptr}; }
+extern "C" OcctResult<Handle_BinMDF_ADriver*> Handle_BinMNaming_NamingDriver_to_Handle_BinMDF_ADriver(const Handle_BinMNaming_NamingDriver* self_) {
+    try { return {new Handle_BinMDF_ADriver(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
-extern "C" OcctResult<HandleStandardTransient*> HandleBinMNamingNamingDriver_to_HandleStandardTransient(const HandleBinMNamingNamingDriver* self_) {
-    try { return {new HandleStandardTransient(*self_), nullptr}; }
+extern "C" OcctResult<Handle_Standard_Transient*> Handle_BinMNaming_NamingDriver_to_Handle_Standard_Transient(const Handle_BinMNaming_NamingDriver* self_) {
+    try { return {new Handle_Standard_Transient(*self_), nullptr}; }
     OCCT_CATCH_RETURN
 }
 extern "C" OcctResult<Handle(Standard_Type) const*> BinMNaming_NamingDriver_inherited_SourceType(const BinMNaming_NamingDriver* self) {

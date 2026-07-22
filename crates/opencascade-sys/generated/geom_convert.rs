@@ -6,16 +6,16 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 
-/// **Source:** `GeomConvert.hxx`:83 - `GeomConvert::SplitBSplineCurve`
+/// **Source:** `GeomConvert.hxx`:82 - `GeomConvert::SplitBSplineCurve`
 /// Convert a curve from Geom by an approximation method
 ///
 /// This method computes the arc of B-spline curve between the two
-/// knots FromK1 and ToK2.  If C is periodic the arc has the same
-/// orientation as C if SameOrientation = Standard_True.
-/// If C is not periodic  SameOrientation is not used for the
+/// knots FromK1 and ToK2. If C is periodic the arc has the same
+/// orientation as C if SameOrientation = true.
+/// If C is not periodic SameOrientation is not used for the
 /// computation and C is oriented from the knot fromK1 to the knot toK2.
 /// We just keep the local definition of C between the knots
-/// FromK1 and ToK2.  The returned B-spline curve has its first
+/// FromK1 and ToK2. The returned B-spline curve has its first
 /// and last knots with a multiplicity equal to degree + 1, where
 /// degree is the polynomial degree of C.
 /// The indexes of the knots FromK1 and ToK2 doesn't include the
@@ -24,16 +24,16 @@
 /// Raised if FromK1 or ToK2 are out of the bounds
 /// [FirstUKnotIndex, LastUKnotIndex]
 pub fn split_b_spline_curve_handlegeombsplinecurve_int2_bool(
-    C: &crate::ffi_types::HandleGeomBSplineCurve,
+    C: &crate::ffi_types::Handle_Geom_BSplineCurve,
     FromK1: i32,
     ToK2: i32,
     SameOrientation: bool,
-) -> crate::OwnedPtr<crate::ffi_types::HandleGeomBSplineCurve> {
+) -> crate::OwnedPtr<crate::ffi_types::Handle_Geom_BSplineCurve> {
     unsafe {
         crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomBase::GeomConvert_split_b_spline_curve_handlegeombsplinecurve_int2_bool(C, FromK1, ToK2, SameOrientation)))
     }
 }
-/// **Source:** `GeomConvert.hxx`:104 - `GeomConvert::SplitBSplineCurve`
+/// **Source:** `GeomConvert.hxx`:103 - `GeomConvert::SplitBSplineCurve`
 /// This function computes the segment of B-spline curve between the
 /// parametric values FromU1, ToU2.
 /// If C is periodic the arc has the same orientation as C if
@@ -42,7 +42,7 @@ pub fn split_b_spline_curve_handlegeombsplinecurve_int2_bool(
 /// computation and C is oriented fromU1 toU2.
 /// If U1 and U2 and two parametric values we consider that
 /// U1 = U2 if Abs (U1 - U2) <= ParametricTolerance and
-/// ParametricTolerance must  be greater or equal to Resolution
+/// ParametricTolerance must be greater or equal to Resolution
 /// from package gp.
 ///
 /// Raised if FromU1 or ToU2 are out of the parametric bounds of the
@@ -50,17 +50,17 @@ pub fn split_b_spline_curve_handlegeombsplinecurve_int2_bool(
 /// Raised if Abs (FromU1 - ToU2) <= ParametricTolerance
 /// Raised if ParametricTolerance < Resolution from gp.
 pub fn split_b_spline_curve_handlegeombsplinecurve_real3_bool(
-    C: &crate::ffi_types::HandleGeomBSplineCurve,
+    C: &crate::ffi_types::Handle_Geom_BSplineCurve,
     FromU1: f64,
     ToU2: f64,
     ParametricTolerance: f64,
     SameOrientation: bool,
-) -> crate::OwnedPtr<crate::ffi_types::HandleGeomBSplineCurve> {
+) -> crate::OwnedPtr<crate::ffi_types::Handle_Geom_BSplineCurve> {
     unsafe {
         crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomBase::GeomConvert_split_b_spline_curve_handlegeombsplinecurve_real3_bool(C, FromU1, ToU2, ParametricTolerance, SameOrientation)))
     }
 }
-/// **Source:** `GeomConvert.hxx`:125 - `GeomConvert::SplitBSplineSurface`
+/// **Source:** `GeomConvert.hxx`:124 - `GeomConvert::SplitBSplineSurface`
 /// Computes the B-spline surface patche between the knots values
 /// FromUK1, ToUK2, FromVK1, ToVK2.
 /// If S is periodic in one direction the patche has the same
@@ -76,19 +76,19 @@ pub fn split_b_spline_curve_handlegeombsplinecurve_real3_bool(
 /// FromVK1 or ToVK2 are out of the bounds
 /// [FirstVKnotIndex, LastVKnotIndex]
 pub fn split_b_spline_surface_handlegeombsplinesurface_int4_bool2(
-    S: &crate::ffi_types::HandleGeomBSplineSurface,
+    S: &crate::ffi_types::Handle_Geom_BSplineSurface,
     FromUK1: i32,
     ToUK2: i32,
     FromVK1: i32,
     ToVK2: i32,
     SameUOrientation: bool,
     SameVOrientation: bool,
-) -> crate::OwnedPtr<crate::ffi_types::HandleGeomBSplineSurface> {
+) -> crate::OwnedPtr<crate::ffi_types::Handle_Geom_BSplineSurface> {
     unsafe {
         crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomBase::GeomConvert_split_b_spline_surface_handlegeombsplinesurface_int4_bool2(S, FromUK1, ToUK2, FromVK1, ToVK2, SameUOrientation, SameVOrientation)))
     }
 }
-/// **Source:** `GeomConvert.hxx`:146 - `GeomConvert::SplitBSplineSurface`
+/// **Source:** `GeomConvert.hxx`:145 - `GeomConvert::SplitBSplineSurface`
 /// This method splits a B-spline surface patche between the
 /// knots values FromK1, ToK2 in one direction.
 /// If USplit = True then the splitting direction is the U parametric
@@ -102,17 +102,17 @@ pub fn split_b_spline_surface_handlegeombsplinesurface_int4_bool2(
 /// [FirstUKnotIndex, LastUKnotIndex] in the
 /// considered parametric direction.
 pub fn split_b_spline_surface_handlegeombsplinesurface_int2_bool2(
-    S: &crate::ffi_types::HandleGeomBSplineSurface,
+    S: &crate::ffi_types::Handle_Geom_BSplineSurface,
     FromK1: i32,
     ToK2: i32,
     USplit: bool,
     SameOrientation: bool,
-) -> crate::OwnedPtr<crate::ffi_types::HandleGeomBSplineSurface> {
+) -> crate::OwnedPtr<crate::ffi_types::Handle_Geom_BSplineSurface> {
     unsafe {
         crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomBase::GeomConvert_split_b_spline_surface_handlegeombsplinesurface_int2_bool2(S, FromK1, ToK2, USplit, SameOrientation)))
     }
 }
-/// **Source:** `GeomConvert.hxx`:171 - `GeomConvert::SplitBSplineSurface`
+/// **Source:** `GeomConvert.hxx`:170 - `GeomConvert::SplitBSplineSurface`
 /// This method computes the B-spline surface patche between the
 /// parametric values FromU1, ToU2, FromV1, ToV2.
 /// If S is periodic in one direction the patche has the same
@@ -132,7 +132,7 @@ pub fn split_b_spline_surface_handlegeombsplinesurface_int2_bool2(
 /// Abs (FromV1 - ToV2) <= ParametricTolerance.
 /// Raised if ParametricTolerance < Resolution.
 pub fn split_b_spline_surface_handlegeombsplinesurface_real5_bool2(
-    S: &crate::ffi_types::HandleGeomBSplineSurface,
+    S: &crate::ffi_types::Handle_Geom_BSplineSurface,
     FromU1: f64,
     ToU2: f64,
     FromV1: f64,
@@ -140,12 +140,12 @@ pub fn split_b_spline_surface_handlegeombsplinesurface_real5_bool2(
     ParametricTolerance: f64,
     SameUOrientation: bool,
     SameVOrientation: bool,
-) -> crate::OwnedPtr<crate::ffi_types::HandleGeomBSplineSurface> {
+) -> crate::OwnedPtr<crate::ffi_types::Handle_Geom_BSplineSurface> {
     unsafe {
         crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomBase::GeomConvert_split_b_spline_surface_handlegeombsplinesurface_real5_bool2(S, FromU1, ToU2, FromV1, ToV2, ParametricTolerance, SameUOrientation, SameVOrientation)))
     }
 }
-/// **Source:** `GeomConvert.hxx`:198 - `GeomConvert::SplitBSplineSurface`
+/// **Source:** `GeomConvert.hxx`:197 - `GeomConvert::SplitBSplineSurface`
 /// This method splits the B-spline surface S in one direction
 /// between the parametric values FromParam1, ToParam2.
 /// If USplit = True then the Splitting direction is the U parametric
@@ -164,32 +164,32 @@ pub fn split_b_spline_surface_handlegeombsplinesurface_real5_bool2(
 /// of the surface in the considered direction.
 /// Raises if Abs (FromParam1 - ToParam2) <= ParametricTolerance.
 pub fn split_b_spline_surface_handlegeombsplinesurface_real2_bool_real_bool(
-    S: &crate::ffi_types::HandleGeomBSplineSurface,
+    S: &crate::ffi_types::Handle_Geom_BSplineSurface,
     FromParam1: f64,
     ToParam2: f64,
     USplit: bool,
     ParametricTolerance: f64,
     SameOrientation: bool,
-) -> crate::OwnedPtr<crate::ffi_types::HandleGeomBSplineSurface> {
+) -> crate::OwnedPtr<crate::ffi_types::Handle_Geom_BSplineSurface> {
     unsafe {
         crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomBase::GeomConvert_split_b_spline_surface_handlegeombsplinesurface_real2_bool_real_bool(S, FromParam1, ToParam2, USplit, ParametricTolerance, SameOrientation)))
     }
 }
-/// **Source:** `GeomConvert.hxx`:271 - `GeomConvert::CurveToBSplineCurve`
+/// **Source:** `GeomConvert.hxx`:270 - `GeomConvert::CurveToBSplineCurve`
 /// This function converts a non infinite curve from
-/// Geom into a  B-spline curve.  C must be   an ellipse or  a
-/// circle  or a trimmed conic  or a trimmed  line or a Bezier
-/// curve or a trimmed  Bezier curve or a  BSpline curve or  a
-/// trimmed  BSpline curve or  an  OffsetCurve.  The returned  B-spline is
-/// not periodic except  if C is a Circle  or an  Ellipse.  If
-/// the  Parameterisation is  QuasiAngular than  the returned
-/// curve is NOT periodic  in case a  periodic Geom_Circle or
-/// Geom_Ellipse.  For TgtThetaOver2_1 and TgtThetaOver2_2 the
-/// method   raises  an exception  in    case  of a  periodic
+/// Geom into a B-spline curve. C must be an ellipse or a
+/// circle or a trimmed conic or a trimmed line or a Bezier
+/// curve or a trimmed Bezier curve or a BSpline curve or a
+/// trimmed BSpline curve or an OffsetCurve. The returned B-spline is
+/// not periodic except if C is a Circle or an Ellipse. If
+/// the Parameterisation is QuasiAngular than the returned
+/// curve is NOT periodic in case a periodic Geom_Circle or
+/// Geom_Ellipse. For TgtThetaOver2_1 and TgtThetaOver2_2 the
+/// method raises an exception in case of a periodic
 /// Geom_Circle or a Geom_Ellipse ParameterisationType applies
-/// only    if  the curve  is   a  Circle  or  an   ellipse :
-/// TgtThetaOver2,  -- TgtThetaOver2_1, -- TgtThetaOver2_2, --
-/// TgtThetaOver2_3, -- TgtThetaOver2_4,
+/// only if the curve is a Circle or an ellipse:
+/// TgtThetaOver2, TgtThetaOver2_1, TgtThetaOver2_2,
+/// TgtThetaOver2_3, TgtThetaOver2_4,
 ///
 /// Purpose: this is the classical rational parameterisation
 /// 2
@@ -205,9 +205,9 @@ pub fn split_b_spline_surface_handlegeombsplinesurface_real2_bool_real_bool(
 ///
 /// t = tan (theta/2)
 ///
-/// with TgtThetaOver2  the routine will compute the number of spans
+/// with TgtThetaOver2 the routine will compute the number of spans
 /// using the rule num_spans = [ (ULast - UFirst) / 1.2 ] + 1
-/// with TgtThetaOver2_N, N  spans will be forced: an error will
+/// with TgtThetaOver2_N, N spans will be forced: an error will
 /// be raized if (ULast - UFirst) >= PI and N = 1,
 /// ULast - UFirst >= 2 PI and N = 2
 ///
@@ -242,41 +242,41 @@ pub fn split_b_spline_surface_handlegeombsplinesurface_real2_bool_real_bool(
 /// trimmed curve (this method of parameterization
 /// cannot be used to convert a quasi-complete circle or ellipse).
 pub fn curve_to_b_spline_curve_handlegeomcurve_parameterisationtype(
-    C: &crate::ffi_types::HandleGeomCurve,
+    C: &crate::ffi_types::Handle_Geom_Curve,
     Parameterisation: crate::convert::ParameterisationType,
-) -> crate::OwnedPtr<crate::ffi_types::HandleGeomBSplineCurve> {
+) -> crate::OwnedPtr<crate::ffi_types::Handle_Geom_BSplineCurve> {
     unsafe {
         crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomBase::GeomConvert_curve_to_b_spline_curve_handlegeomcurve_parameterisationtype(C, Parameterisation.into())))
     }
 }
-/// **Source:** `GeomConvert.hxx`:283 - `GeomConvert::SurfaceToBSplineSurface`
+/// **Source:** `GeomConvert.hxx`:282 - `GeomConvert::SurfaceToBSplineSurface`
 /// This algorithm converts a non infinite surface from Geom
 /// into a B-spline surface.
 /// S must be a trimmed plane or a trimmed cylinder or a trimmed cone
 /// or a trimmed sphere or a trimmed torus or a sphere or a torus or
 /// a Bezier surface of a trimmed Bezier surface or a trimmed swept
 /// surface with a corresponding basis curve which can be turned into
-/// a B-spline curve   (see the method CurveToBSplineCurve).
+/// a B-spline curve (see the method CurveToBSplineCurve).
 /// Raises DomainError if the type of the surface is not previously defined.
 pub fn surface_to_b_spline_surface(
-    S: &crate::ffi_types::HandleGeomSurface,
-) -> crate::OwnedPtr<crate::ffi_types::HandleGeomBSplineSurface> {
+    S: &crate::ffi_types::Handle_Geom_Surface,
+) -> crate::OwnedPtr<crate::ffi_types::Handle_Geom_BSplineSurface> {
     unsafe {
         crate::OwnedPtr::from_raw(crate::check_result(
             crate::ffi_extern_TKGeomBase::GeomConvert_surface_to_b_spline_surface(S),
         ))
     }
 }
-/// **Source:** `GeomConvert.hxx`:350 - `GeomConvert::C0BSplineToC1BSplineCurve`
-/// This  Method reduces as far as   it is possible the
-/// multiplicities of  the  knots of  the BSpline BS.(keeping  the
-/// geometry).  It returns a new BSpline which  could still be C0.
-/// tolerance is a  geometrical tolerance.
-/// The  Angular toleranceis in radians  and measures  the angle of
-/// the tangents  on  the left and on  the right  to decide if  the
+/// **Source:** `GeomConvert.hxx`:352 - `GeomConvert::C0BSplineToC1BSplineCurve`
+/// This Method reduces as far as it is possible the
+/// multiplicities of the knots of the BSpline BS.(keeping the
+/// geometry). It returns a new BSpline which could still be C0.
+/// tolerance is a geometrical tolerance.
+/// The Angular toleranceis in radians and measures the angle of
+/// the tangents on the left and on the right to decide if the
 /// curve is G1 or not at a given point
 pub fn c0b_spline_to_c1b_spline_curve_handlegeombsplinecurve_real2(
-    BS: &mut crate::ffi_types::HandleGeomBSplineCurve,
+    BS: &mut crate::ffi_types::Handle_Geom_BSplineCurve,
     tolerance: f64,
     AngularTolerance: f64,
 ) {
@@ -284,35 +284,35 @@ pub fn c0b_spline_to_c1b_spline_curve_handlegeombsplinecurve_real2(
         crate::ffi_extern_TKGeomBase::GeomConvert_c0b_spline_to_c1b_spline_curve_handlegeombsplinecurve_real2(BS, tolerance, AngularTolerance)
     })
 }
-/// **Source:** `GeomConvert.hxx`:358 - `GeomConvert::C0BSplineToArrayOfC1BSplineCurve`
-/// This Method   reduces as far  as  it is possible  the
-/// multiplicities  of  the knots  of the BSpline  BS.(keeping the geometry).
+/// **Source:** `GeomConvert.hxx`:359 - `GeomConvert::C0BSplineToArrayOfC1BSplineCurve`
+/// This Method reduces as far as it is possible the
+/// multiplicities of the knots of the BSpline BS.(keeping the geometry).
 /// It returns an array of BSpline C1. tolerance is a geometrical tolerance.
-pub fn c0b_spline_to_array_of_c1b_spline_curve_handlegeombsplinecurve_handletcolgeomharray1ofbsplinecurve_real(
-    BS: &crate::ffi_types::HandleGeomBSplineCurve,
-    tabBS: &mut crate::ffi_types::HandleTColGeomHArray1OfBSplineCurve,
+pub fn c0b_spline_to_array_of_c1b_spline_curve_handlegeombsplinecurve_handlencollectionharray1opencascadehandlegeombsplinecurve_real(
+    BS: &crate::ffi_types::Handle_Geom_BSplineCurve,
+    tabBS: &mut crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_Geom_BSplineCurve,
     tolerance: f64,
 ) {
     crate::check_void_result(unsafe {
-        crate::ffi_extern_TKGeomBase::GeomConvert_c0b_spline_to_array_of_c1b_spline_curve_handlegeombsplinecurve_handletcolgeomharray1ofbsplinecurve_real(BS, tabBS, tolerance)
+        crate::ffi_extern_TKGeomBase::GeomConvert_c0b_spline_to_array_of_c1b_spline_curve_handlegeombsplinecurve_handlencollectionharray1opencascadehandlegeombsplinecurve_real(BS, tabBS, tolerance)
     })
 }
-/// **Source:** `GeomConvert.hxx`:370 - `GeomConvert::C0BSplineToArrayOfC1BSplineCurve`
-/// This   Method reduces as far   as it is  possible the
-/// multiplicities of  the  knots of  the  BSpline BS.(keeping the
-/// geometry).  It returns an array of BSpline C1.  tolerance is a
-/// geometrical tolerance : it  allows for the maximum deformation
-/// The  Angular tolerance is in  radians and measures the angle of
+/// **Source:** `GeomConvert.hxx`:371 - `GeomConvert::C0BSplineToArrayOfC1BSplineCurve`
+/// This Method reduces as far as it is possible the
+/// multiplicities of the knots of the BSpline BS.(keeping the
+/// geometry). It returns an array of BSpline C1. tolerance is a
+/// geometrical tolerance : it allows for the maximum deformation
+/// The Angular tolerance is in radians and measures the angle of
 /// the tangents on the left and on the right to decide if the curve
 /// is C1 or not at a given point
-pub fn c0b_spline_to_array_of_c1b_spline_curve_handlegeombsplinecurve_handletcolgeomharray1ofbsplinecurve_real2(
-    BS: &crate::ffi_types::HandleGeomBSplineCurve,
-    tabBS: &mut crate::ffi_types::HandleTColGeomHArray1OfBSplineCurve,
+pub fn c0b_spline_to_array_of_c1b_spline_curve_handlegeombsplinecurve_handlencollectionharray1opencascadehandlegeombsplinecurve_real2(
+    BS: &crate::ffi_types::Handle_Geom_BSplineCurve,
+    tabBS: &mut crate::ffi_types::Handle_NCollection_HArray1_opencascade_handle_Geom_BSplineCurve,
     AngularTolerance: f64,
     tolerance: f64,
 ) {
     crate::check_void_result(unsafe {
-        crate::ffi_extern_TKGeomBase::GeomConvert_c0b_spline_to_array_of_c1b_spline_curve_handlegeombsplinecurve_handletcolgeomharray1ofbsplinecurve_real2(BS, tabBS, AngularTolerance, tolerance)
+        crate::ffi_extern_TKGeomBase::GeomConvert_c0b_spline_to_array_of_c1b_spline_curve_handlegeombsplinecurve_handlencollectionharray1opencascadehandlegeombsplinecurve_real2(BS, tabBS, AngularTolerance, tolerance)
     })
 }
 
@@ -372,7 +372,7 @@ impl ApproxCurve {
     /// -      the highest degree MaxDeg which the
     /// polynomial defining the BSpline curve may have.
     pub fn new_handlegeomcurve_real_shape_int2(
-        Curve: &crate::ffi_types::HandleGeomCurve,
+        Curve: &crate::ffi_types::Handle_Geom_Curve,
         Tol3d: f64,
         Order: crate::geom_abs::Shape,
         MaxSegments: i32,
@@ -393,7 +393,7 @@ impl ApproxCurve {
     /// -      the highest degree MaxDeg which the
     /// polynomial defining the BSpline curve may have.
     pub fn new_handleadaptor3dcurve_real_shape_int2(
-        Curve: &crate::ffi_types::HandleAdaptor3dCurve,
+        Curve: &crate::ffi_types::Handle_Adaptor3d_Curve,
         Tol3d: f64,
         Order: crate::geom_abs::Shape,
         MaxSegments: i32,
@@ -406,7 +406,7 @@ impl ApproxCurve {
 
     /// **Source:** `GeomConvert_ApproxCurve.hxx`:63 - `GeomConvert_ApproxCurve::Curve()`
     /// Returns the BSpline curve resulting from the approximation algorithm.
-    pub fn curve(&self) -> crate::OwnedPtr<crate::ffi_types::HandleGeomBSplineCurve> {
+    pub fn curve(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_Geom_BSplineCurve> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKGeomBase::GeomConvert_ApproxCurve_curve(self as *const Self),
@@ -415,8 +415,8 @@ impl ApproxCurve {
     }
 
     /// **Source:** `GeomConvert_ApproxCurve.hxx`:67 - `GeomConvert_ApproxCurve::IsDone()`
-    /// returns  Standard_True  if  the  approximation  has
-    /// been  done  within  required tolerance
+    /// returns true if the approximation has
+    /// been done within required tolerance
     pub fn is_done(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomBase::GeomConvert_ApproxCurve_is_done(self as *const Self)
@@ -424,8 +424,8 @@ impl ApproxCurve {
     }
 
     /// **Source:** `GeomConvert_ApproxCurve.hxx`:71 - `GeomConvert_ApproxCurve::HasResult()`
-    /// Returns  Standard_True if the approximation did come out
-    /// with a result that  is not NECESSARELY within the required tolerance
+    /// Returns true if the approximation did come out
+    /// with a result that is not NECESSARELY within the required tolerance
     pub fn has_result(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomBase::GeomConvert_ApproxCurve_has_result(self as *const Self)
@@ -436,7 +436,7 @@ impl ApproxCurve {
     /// Returns the greatest distance between a point on the
     /// source conic and the BSpline curve resulting from the
     /// approximation. (>0 when an approximation
-    /// has  been  done, 0  if  no  approximation)
+    /// has been done, 0 if no approximation)
     pub fn max_error(&self) -> f64 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomBase::GeomConvert_ApproxCurve_max_error(self as *const Self)
@@ -444,7 +444,7 @@ impl ApproxCurve {
     }
 
     /// **Source:** `GeomConvert_ApproxCurve.hxx`:80 - `GeomConvert_ApproxCurve::Dump()`
-    /// Print on the stream  o  information about the object
+    /// Print on the stream o information about the object
     pub fn dump(&self, o: &mut crate::ffi_types::Standard_OStream) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomBase::GeomConvert_ApproxCurve_dump(self as *const Self, o)
@@ -484,7 +484,7 @@ impl ApproxSurface {
     /// allowed in the resulting BSpline curve
     /// -   the index of precision PrecisCode.
     pub fn new_handlegeomsurface_real_shape2_int4(
-        Surf: &crate::ffi_types::HandleGeomSurface,
+        Surf: &crate::ffi_types::Handle_Geom_Surface,
         Tol3d: f64,
         UContinuity: crate::geom_abs::Shape,
         VContinuity: crate::geom_abs::Shape,
@@ -511,7 +511,7 @@ impl ApproxSurface {
     /// allowed in the resulting BSpline curve
     /// -   the index of precision PrecisCode.
     pub fn new_handleadaptor3dsurface_real_shape2_int4(
-        Surf: &crate::ffi_types::HandleAdaptor3dSurface,
+        Surf: &crate::ffi_types::Handle_Adaptor3d_Surface,
         Tol3d: f64,
         UContinuity: crate::geom_abs::Shape,
         VContinuity: crate::geom_abs::Shape,
@@ -527,7 +527,7 @@ impl ApproxSurface {
 
     /// **Source:** `GeomConvert_ApproxSurface.hxx`:76 - `GeomConvert_ApproxSurface::Surface()`
     /// Returns the BSpline surface resulting from the approximation algorithm.
-    pub fn surface(&self) -> crate::OwnedPtr<crate::ffi_types::HandleGeomBSplineSurface> {
+    pub fn surface(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_Geom_BSplineSurface> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKGeomBase::GeomConvert_ApproxSurface_surface(
@@ -538,7 +538,7 @@ impl ApproxSurface {
     }
 
     /// **Source:** `GeomConvert_ApproxSurface.hxx`:79 - `GeomConvert_ApproxSurface::IsDone()`
-    /// Returns Standard_True if the approximation has be done
+    /// Returns true if the approximation has be done
     pub fn is_done(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomBase::GeomConvert_ApproxSurface_is_done(self as *const Self)
@@ -623,7 +623,7 @@ impl BSplineCurveKnotSplitting {
     /// Exceptions
     /// Standard_RangeError if ContinuityRange is less than zero.
     pub fn new_handlegeombsplinecurve_int(
-        BasisCurve: &crate::ffi_types::HandleGeomBSplineCurve,
+        BasisCurve: &crate::ffi_types::Handle_Geom_BSplineCurve,
         ContinuityRange: i32,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -631,7 +631,7 @@ impl BSplineCurveKnotSplitting {
         }
     }
 
-    /// **Source:** `GeomConvert_BSplineCurveKnotSplitting.hxx`:72 - `GeomConvert_BSplineCurveKnotSplitting::NbSplits()`
+    /// **Source:** `GeomConvert_BSplineCurveKnotSplitting.hxx`:73 - `GeomConvert_BSplineCurveKnotSplitting::NbSplits()`
     /// Returns the number of points at which the analyzed
     /// BSpline curve should be split, in order to obtain arcs
     /// with the continuity required by this framework.
@@ -646,7 +646,7 @@ impl BSplineCurveKnotSplitting {
         })
     }
 
-    /// **Source:** `GeomConvert_BSplineCurveKnotSplitting.hxx`:90 - `GeomConvert_BSplineCurveKnotSplitting::Splitting()`
+    /// **Source:** `GeomConvert_BSplineCurveKnotSplitting.hxx`:91 - `GeomConvert_BSplineCurveKnotSplitting::Splitting()`
     /// Loads the SplitValues table with the split knots
     /// values computed in this framework. Each value in the
     /// table is an index in the knots table of the BSpline
@@ -663,7 +663,7 @@ impl BSplineCurveKnotSplitting {
     /// -   1, and
     /// -   the number of split points computed in this
     /// framework (as given by the function NbSplits).
-    pub fn splitting(&self, SplitValues: &mut crate::ffi_types::TColStd_Array1OfInteger) {
+    pub fn splitting(&self, SplitValues: &mut crate::ffi_types::NCollection_Array1_int) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomBase::GeomConvert_BSplineCurveKnotSplitting_splitting(
                 self as *const Self,
@@ -672,7 +672,7 @@ impl BSplineCurveKnotSplitting {
         })
     }
 
-    /// **Source:** `GeomConvert_BSplineCurveKnotSplitting.hxx`:105 - `GeomConvert_BSplineCurveKnotSplitting::SplitValue()`
+    /// **Source:** `GeomConvert_BSplineCurveKnotSplitting.hxx`:106 - `GeomConvert_BSplineCurveKnotSplitting::SplitValue()`
     /// Returns the split knot of index Index to the split knots
     /// table computed in this framework. The returned value
     /// is an index in the knots table of the BSpline curve
@@ -725,7 +725,7 @@ impl BSplineCurveToBezierCurve {
     /// Computes all the data needed to convert the
     /// BSpline curve BasisCurve into a series of adjacent Bezier arcs.
     pub fn new_handlegeombsplinecurve(
-        BasisCurve: &crate::ffi_types::HandleGeomBSplineCurve,
+        BasisCurve: &crate::ffi_types::Handle_Geom_BSplineCurve,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomBase::GeomConvert_BSplineCurveToBezierCurve_ctor_handlegeombsplinecurve(BasisCurve)))
@@ -747,7 +747,7 @@ impl BSplineCurveToBezierCurve {
     /// is ParametricTolerance.
     /// Raised if Abs (U2 - U1) <= ParametricTolerance.
     pub fn new_handlegeombsplinecurve_real3(
-        BasisCurve: &crate::ffi_types::HandleGeomBSplineCurve,
+        BasisCurve: &crate::ffi_types::Handle_Geom_BSplineCurve,
         U1: f64,
         U2: f64,
         ParametricTolerance: f64,
@@ -757,7 +757,7 @@ impl BSplineCurveToBezierCurve {
         }
     }
 
-    /// **Source:** `GeomConvert_BSplineCurveToBezierCurve.hxx`:76 - `GeomConvert_BSplineCurveToBezierCurve::Arc()`
+    /// **Source:** `GeomConvert_BSplineCurveToBezierCurve.hxx`:77 - `GeomConvert_BSplineCurveToBezierCurve::Arc()`
     /// Constructs and returns the Bezier curve of index
     /// Index to the table of adjacent Bezier arcs
     /// computed by this algorithm.
@@ -767,7 +767,10 @@ impl BSplineCurveToBezierCurve {
     /// Standard_OutOfRange if Index is less than 1 or
     /// greater than the number of adjacent Bezier arcs
     /// computed by this algorithm.
-    pub fn arc(&mut self, Index: i32) -> crate::OwnedPtr<crate::ffi_types::HandleGeomBezierCurve> {
+    pub fn arc(
+        &mut self,
+        Index: i32,
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Geom_BezierCurve> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKGeomBase::GeomConvert_BSplineCurveToBezierCurve_arc(
@@ -778,32 +781,12 @@ impl BSplineCurveToBezierCurve {
         }
     }
 
-    /// **Source:** `GeomConvert_BSplineCurveToBezierCurve.hxx`:88 - `GeomConvert_BSplineCurveToBezierCurve::Arcs()`
-    /// Constructs all the Bezier curves whose data is
-    /// computed by this algorithm and loads these curves into the Curves table.
-    /// The Bezier curves have the same orientation as the
-    /// BSpline curve analyzed in this framework.
-    /// Exceptions
-    /// Standard_DimensionError if the Curves array was
-    /// not created with the following bounds:
-    /// -   1 , and
-    /// -   the number of adjacent Bezier arcs computed by
-    /// this algorithm (as given by the function NbArcs).
-    pub fn arcs(&mut self, Curves: &mut crate::ffi_types::TColGeom_Array1OfBezierCurve) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKGeomBase::GeomConvert_BSplineCurveToBezierCurve_arcs(
-                self as *mut Self,
-                Curves,
-            )
-        })
-    }
-
-    /// **Source:** `GeomConvert_BSplineCurveToBezierCurve.hxx`:94 - `GeomConvert_BSplineCurveToBezierCurve::Knots()`
+    /// **Source:** `GeomConvert_BSplineCurveToBezierCurve.hxx`:95 - `GeomConvert_BSplineCurveToBezierCurve::Knots()`
     /// This methode returns the bspline's knots associated to
     /// the converted arcs
-    /// Raised  if the length  of Curves is not equal to
-    /// NbArcs +  1.
-    pub fn knots(&self, TKnots: &mut crate::ffi_types::TColStd_Array1OfReal) {
+    /// Raised if the length of Curves is not equal to
+    /// NbArcs + 1
+    pub fn knots(&self, TKnots: &mut crate::ffi_types::NCollection_Array1_double) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomBase::GeomConvert_BSplineCurveToBezierCurve_knots(
                 self as *const Self,
@@ -812,7 +795,7 @@ impl BSplineCurveToBezierCurve {
         })
     }
 
-    /// **Source:** `GeomConvert_BSplineCurveToBezierCurve.hxx`:104 - `GeomConvert_BSplineCurveToBezierCurve::NbArcs()`
+    /// **Source:** `GeomConvert_BSplineCurveToBezierCurve.hxx`:105 - `GeomConvert_BSplineCurveToBezierCurve::NbArcs()`
     /// Returns the number of BezierCurve arcs.
     /// If at the creation time you have decomposed the basis curve
     /// between the parametric values UFirst, ULast the number of
@@ -830,6 +813,15 @@ impl BSplineCurveToBezierCurve {
     }
 }
 
+// ── Skipped symbols for BSplineCurveToBezierCurve (1 total) ──
+// SKIPPED: **Source:** `GeomConvert_BSplineCurveToBezierCurve.hxx`:89 - `GeomConvert_BSplineCurveToBezierCurve::Arcs`
+//   method: Constructs all the Bezier curves whose data is
+//   method: computed by this algorithm and loads these curves into the Curves table.
+//   method: The Bezier curves have the same orientation as the
+//   Reason: has unbindable types: param 'Curves': unresolved template type (NCollection_Array1<occ::handle<Geom_BezierCurve>>&)
+//   // pub fn arcs(&mut self, Curves: /* NCollection_Array1<occ::handle<Geom_BezierCurve>>& */);
+//
+
 // ========================
 // From GeomConvert_BSplineSurfaceKnotSplitting.hxx
 // ========================
@@ -843,9 +835,9 @@ impl BSplineCurveToBezierCurve {
 /// SplitBSplineSurface.
 /// For a B-spline surface the discontinuities are localised at
 /// the knot values. Between two knots values the B-spline is
-/// infinitely continuously differentiable.  For each parametric
+/// infinitely continuously differentiable. For each parametric
 /// direction at a knot of range index the continuity in this
-/// direction is equal to :  Degree - Mult (Index)   where  Degree
+/// direction is equal to: Degree - Mult (Index) where Degree
 /// is the degree of the basis B-spline functions and Mult the
 /// multiplicity of the knot of range Index in the given direction.
 /// If for your computation you need to have B-spline surface with a
@@ -888,7 +880,7 @@ impl BSplineSurfaceKnotSplitting {
     /// Standard_RangeError if UContinuityRange or
     /// VContinuityRange is less than zero.
     pub fn new_handlegeombsplinesurface_int2(
-        BasisSurface: &crate::ffi_types::HandleGeomBSplineSurface,
+        BasisSurface: &crate::ffi_types::Handle_Geom_BSplineSurface,
         UContinuityRange: i32,
         VContinuityRange: i32,
     ) -> crate::OwnedPtr<Self> {
@@ -960,8 +952,8 @@ impl BSplineSurfaceKnotSplitting {
     /// by the function NbVSplits).
     pub fn splitting(
         &self,
-        USplit: &mut crate::ffi_types::TColStd_Array1OfInteger,
-        VSplit: &mut crate::ffi_types::TColStd_Array1OfInteger,
+        USplit: &mut crate::ffi_types::NCollection_Array1_int,
+        VSplit: &mut crate::ffi_types::NCollection_Array1_int,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomBase::GeomConvert_BSplineSurfaceKnotSplitting_splitting(
@@ -974,7 +966,7 @@ impl BSplineSurfaceKnotSplitting {
 
     /// **Source:** `GeomConvert_BSplineSurfaceKnotSplitting.hxx`:139 - `GeomConvert_BSplineSurfaceKnotSplitting::USplitValue()`
     /// Returns the split knot of index UIndex
-    /// to the split knots table for the u  parametric direction
+    /// to the split knots table for the u parametric direction
     /// computed in this framework. The returned value is
     /// an index in the knots table relative to the u
     /// parametric direction of the BSpline surface analysed by this algorithm.
@@ -983,7 +975,7 @@ impl BSplineSurfaceKnotSplitting {
     /// this framework, the corresponding knot gives the
     /// parameter of one of the bounding curves of the surface.
     /// Exceptions
-    /// Standard_RangeError if UIndex  is less than 1 or greater than the number
+    /// Standard_RangeError if UIndex is less than 1 or greater than the number
     /// of split knots for the u parametric direction computed in this framework.
     pub fn u_split_value(&self, UIndex: i32) -> i32 {
         crate::check_result(unsafe {
@@ -996,7 +988,7 @@ impl BSplineSurfaceKnotSplitting {
 
     /// **Source:** `GeomConvert_BSplineSurfaceKnotSplitting.hxx`:153 - `GeomConvert_BSplineSurfaceKnotSplitting::VSplitValue()`
     /// Returns the split knot of index VIndex
-    /// to the split knots table for the v  parametric direction
+    /// to the split knots table for the v parametric direction
     /// computed in this framework. The returned value is
     /// an index in the knots table relative to the v
     /// parametric direction of the BSpline surface analysed by this algorithm.
@@ -1005,7 +997,7 @@ impl BSplineSurfaceKnotSplitting {
     /// this framework, the corresponding knot gives the
     /// parameter of one of the bounding curves of the surface.
     /// Exceptions
-    /// Standard_RangeError if VIndex  is less than 1 or greater than the number
+    /// Standard_RangeError if VIndex is less than 1 or greater than the number
     /// of split knots for the v parametric direction computed in this framework.
     pub fn v_split_value(&self, VIndex: i32) -> i32 {
         crate::check_result(unsafe {
@@ -1021,7 +1013,7 @@ impl BSplineSurfaceKnotSplitting {
 // From GeomConvert_BSplineSurfaceToBezierSurface.hxx
 // ========================
 
-/// **Source:** `GeomConvert_BSplineSurfaceToBezierSurface.hxx`:39 - `GeomConvert_BSplineSurfaceToBezierSurface`
+/// **Source:** `GeomConvert_BSplineSurfaceToBezierSurface.hxx`:40 - `GeomConvert_BSplineSurfaceToBezierSurface`
 /// This algorithm converts a B-spline surface into several
 /// Bezier surfaces. It uses an algorithm of knot insertion.
 /// A BSplineSurfaceToBezierSurface object provides a framework for:
@@ -1042,7 +1034,7 @@ unsafe impl crate::CppDeletable for BSplineSurfaceToBezierSurface {
 }
 
 impl BSplineSurfaceToBezierSurface {
-    /// **Source:** `GeomConvert_BSplineSurfaceToBezierSurface.hxx`:58 - `GeomConvert_BSplineSurfaceToBezierSurface::GeomConvert_BSplineSurfaceToBezierSurface()`
+    /// **Source:** `GeomConvert_BSplineSurfaceToBezierSurface.hxx`:59 - `GeomConvert_BSplineSurfaceToBezierSurface::GeomConvert_BSplineSurfaceToBezierSurface()`
     /// Computes all the data needed to convert
     /// -   the BSpline surface BasisSurface into a series of adjacent Bezier surfaces.
     /// The result consists of a grid of BasisSurface patches
@@ -1058,14 +1050,14 @@ impl BSplineSurfaceToBezierSurface {
     /// construct each individual Bezier surface (or all Bezier surfaces).
     /// Note: ParametricTolerance is not used.
     pub fn new_handlegeombsplinesurface(
-        BasisSurface: &crate::ffi_types::HandleGeomBSplineSurface,
+        BasisSurface: &crate::ffi_types::Handle_Geom_BSplineSurface,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomBase::GeomConvert_BSplineSurfaceToBezierSurface_ctor_handlegeombsplinesurface(BasisSurface)))
         }
     }
 
-    /// **Source:** `GeomConvert_BSplineSurfaceToBezierSurface.hxx`:85 - `GeomConvert_BSplineSurfaceToBezierSurface::GeomConvert_BSplineSurfaceToBezierSurface()`
+    /// **Source:** `GeomConvert_BSplineSurfaceToBezierSurface.hxx`:86 - `GeomConvert_BSplineSurfaceToBezierSurface::GeomConvert_BSplineSurfaceToBezierSurface()`
     /// Computes all the data needed to convert
     /// the patch of the BSpline surface BasisSurface
     /// limited by the two parameter values U1 and U2 in
@@ -1083,7 +1075,7 @@ impl BSplineSurfaceToBezierSurface {
     /// Use the available interrogation functions to ascertain
     /// the number of computed Bezier patches, and then to
     /// construct each individual Bezier surface (or all Bezier surfaces).
-    /// Note: ParametricTolerance is not used.  Raises DomainError
+    /// Note: ParametricTolerance is not used. Raises DomainError
     /// if U1 or U2 or V1 or V2 are out of the parametric bounds
     /// of the basis surface [FirstUKnotIndex, LastUKnotIndex] ,
     /// [FirstVKnotIndex, LastVKnotIndex] The tolerance criterion is
@@ -1091,7 +1083,7 @@ impl BSplineSurfaceToBezierSurface {
     /// Raised if U2 - U1 <= ParametricTolerance or
     /// V2 - V1 <= ParametricTolerance.
     pub fn new_handlegeombsplinesurface_real5(
-        BasisSurface: &crate::ffi_types::HandleGeomBSplineSurface,
+        BasisSurface: &crate::ffi_types::Handle_Geom_BSplineSurface,
         U1: f64,
         U2: f64,
         V1: f64,
@@ -1103,7 +1095,7 @@ impl BSplineSurfaceToBezierSurface {
         }
     }
 
-    /// **Source:** `GeomConvert_BSplineSurfaceToBezierSurface.hxx`:116 - `GeomConvert_BSplineSurfaceToBezierSurface::Patch()`
+    /// **Source:** `GeomConvert_BSplineSurfaceToBezierSurface.hxx`:117 - `GeomConvert_BSplineSurfaceToBezierSurface::Patch()`
     /// Constructs and returns the Bezier surface of indices
     /// (UIndex, VIndex) to the patch grid computed on the
     /// BSpline surface analyzed by this algorithm.
@@ -1131,7 +1123,7 @@ impl BSplineSurfaceToBezierSurface {
         &mut self,
         UIndex: i32,
         VIndex: i32,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleGeomBezierSurface> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Geom_BezierSurface> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKGeomBase::GeomConvert_BSplineSurfaceToBezierSurface_patch(
@@ -1143,45 +1135,12 @@ impl BSplineSurfaceToBezierSurface {
         }
     }
 
-    /// **Source:** `GeomConvert_BSplineSurfaceToBezierSurface.hxx`:142 - `GeomConvert_BSplineSurfaceToBezierSurface::Patches()`
-    /// Constructs all the Bezier surfaces whose data is
-    /// computed by this algorithm, and loads them into the Surfaces table.
-    /// These Bezier surfaces have the same orientation as
-    /// the BSpline surface analyzed in this framework.
-    /// The Surfaces array is organised in the same way as
-    /// the patch grid computed on the BSpline surface
-    /// analyzed by this algorithm. A row in the array
-    /// corresponds to a series of adjacent patches, all
-    /// limited by the same two u-isoparametric curves of
-    /// the surface. A column in the array corresponds to a
-    /// series of adjacent patches, all limited by the same two
-    /// v-isoparametric curves of the surface.
-    /// Exceptions
-    /// Standard_DimensionError if the Surfaces array
-    /// was not created with the following bounds:
-    /// -   1, and the number of adjacent patch series in the
-    /// u parametric direction of the patch grid computed
-    /// on the BSpline surface, analyzed by this algorithm
-    /// (as given by the function NbUPatches) as row bounds,
-    /// -   1, and the number of adjacent patch series in the
-    /// v parametric direction of the patch grid computed
-    /// on the BSpline surface, analyzed by this algorithm
-    /// (as given by the function NbVPatches) as column bounds.
-    pub fn patches(&mut self, Surfaces: &mut crate::ffi_types::TColGeom_Array2OfBezierSurface) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKGeomBase::GeomConvert_BSplineSurfaceToBezierSurface_patches(
-                self as *mut Self,
-                Surfaces,
-            )
-        })
-    }
-
     /// **Source:** `GeomConvert_BSplineSurfaceToBezierSurface.hxx`:148 - `GeomConvert_BSplineSurfaceToBezierSurface::UKnots()`
     /// This methode returns the bspline's u-knots associated to
     /// the converted Patches
-    /// Raised  if the length  of Curves is not equal to
-    /// NbUPatches +  1.
-    pub fn u_knots(&self, TKnots: &mut crate::ffi_types::TColStd_Array1OfReal) {
+    /// Raised if the length of Curves is not equal to
+    /// NbUPatches + 1
+    pub fn u_knots(&self, TKnots: &mut crate::ffi_types::NCollection_Array1_double) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomBase::GeomConvert_BSplineSurfaceToBezierSurface_u_knots(
                 self as *const Self,
@@ -1193,9 +1152,9 @@ impl BSplineSurfaceToBezierSurface {
     /// **Source:** `GeomConvert_BSplineSurfaceToBezierSurface.hxx`:154 - `GeomConvert_BSplineSurfaceToBezierSurface::VKnots()`
     /// This methode returns the bspline's v-knots associated to
     /// the converted Patches
-    /// Raised  if the length  of Curves is not equal to
-    /// NbVPatches +  1.
-    pub fn v_knots(&self, TKnots: &mut crate::ffi_types::TColStd_Array1OfReal) {
+    /// Raised if the length of Curves is not equal to
+    /// NbVPatches + 1
+    pub fn v_knots(&self, TKnots: &mut crate::ffi_types::NCollection_Array1_double) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomBase::GeomConvert_BSplineSurfaceToBezierSurface_v_knots(
                 self as *const Self,
@@ -1239,11 +1198,20 @@ impl BSplineSurfaceToBezierSurface {
     }
 }
 
+// ── Skipped symbols for BSplineSurfaceToBezierSurface (1 total) ──
+// SKIPPED: **Source:** `GeomConvert_BSplineSurfaceToBezierSurface.hxx`:142 - `GeomConvert_BSplineSurfaceToBezierSurface::Patches`
+//   method: Constructs all the Bezier surfaces whose data is
+//   method: computed by this algorithm, and loads them into the Surfaces table.
+//   method: These Bezier surfaces have the same orientation as
+//   Reason: has unbindable types: param 'Surfaces': unresolved template type (NCollection_Array2<occ::handle<Geom_BezierSurface>>&)
+//   // pub fn patches(&mut self, Surfaces: /* NCollection_Array2<occ::handle<Geom_BezierSurface>>& */);
+//
+
 // ========================
 // From GeomConvert_CompBezierSurfacesToBSplineSurface.hxx
 // ========================
 
-/// **Source:** `GeomConvert_CompBezierSurfacesToBSplineSurface.hxx`:55 - `GeomConvert_CompBezierSurfacesToBSplineSurface`
+/// **Source:** `GeomConvert_CompBezierSurfacesToBSplineSurface.hxx`:56 - `GeomConvert_CompBezierSurfacesToBSplineSurface`
 /// An algorithm to convert a grid of adjacent
 /// non-rational Bezier surfaces (with continuity CM) into a
 /// BSpline surface (with continuity CM).
@@ -1264,7 +1232,7 @@ impl BSplineSurfaceToBezierSurface {
 /// -----------------------
 /// 3    |    |    |    |      |
 /// -----------------------
-/// UIndex [1, NbUPatches]  Udirection
+/// UIndex [1, NbUPatches] Udirection
 ///
 /// Warning! Patches must have compatible parametrization
 pub use crate::ffi_types::GeomConvert_CompBezierSurfacesToBSplineSurface as CompBezierSurfacesToBSplineSurface;
@@ -1280,301 +1248,7 @@ unsafe impl crate::CppDeletable for CompBezierSurfacesToBSplineSurface {
 }
 
 impl CompBezierSurfacesToBSplineSurface {
-    /// **Source:** `GeomConvert_CompBezierSurfacesToBSplineSurface.hxx`:114 - `GeomConvert_CompBezierSurfacesToBSplineSurface::GeomConvert_CompBezierSurfacesToBSplineSurface()`
-    /// Computes all the data needed to build a "C0"
-    /// continuous BSpline surface equivalent to the grid of
-    /// adjacent non-rational Bezier surfaces Beziers.
-    /// Each surface in the Beziers grid becomes a natural
-    /// patch, limited by knots values, on the BSpline surface
-    /// whose data is computed. Surfaces in the grid must
-    /// satisfy the following conditions:
-    /// -   Coincident bounding curves between two
-    /// consecutive surfaces in a row of the Beziers grid
-    /// must be u-isoparametric bounding curves of these two surfaces.
-    /// -   Coincident bounding curves between two
-    /// consecutive surfaces in a column of the Beziers
-    /// grid must be v-isoparametric bounding curves of these two surfaces.
-    /// The BSpline surface whose data is computed has the
-    /// following characteristics:
-    /// -   Its degree in the u (respectively v) parametric
-    /// direction is equal to that of the Bezier surface
-    /// which has the highest degree in the u
-    /// (respectively v) parametric direction in the Beziers grid.
-    /// -   It is a "Piecewise Bezier" in both u and v
-    /// parametric directions, i.e.:
-    /// -   the knots are regularly spaced in each
-    /// parametric direction (i.e. the difference between
-    /// two consecutive knots is a constant), and
-    /// -   all the multiplicities of the surface knots in a
-    /// given parametric direction are equal to
-    /// Degree, which is the degree of the BSpline
-    /// surface in this parametric direction, except for
-    /// the first and last knots for which the multiplicity is
-    /// equal to Degree + 1.
-    /// -   Coincident bounding curves between two
-    /// consecutive columns of Bezier surfaces in the
-    /// Beziers grid become u-isoparametric curves,
-    /// corresponding to knots values of the BSpline surface.
-    /// -   Coincident bounding curves between two
-    /// consecutive rows of Bezier surfaces in the Beziers
-    /// grid become v-isoparametric curves
-    /// corresponding to knots values of the BSpline surface.
-    /// Use the available consultation functions to access the
-    /// computed data. This data may be used to construct the BSpline surface.
-    /// Warning
-    /// The surfaces in the Beziers grid must be adjacent, i.e.
-    /// two consecutive Bezier surfaces in the grid (in a row
-    /// or column) must have a coincident bounding curve. In
-    /// addition, the location of the parameterization on each
-    /// of these surfaces (i.e. the relative location of u and v
-    /// isoparametric curves on the surface) is of importance
-    /// with regard to the positioning of the surfaces in the
-    /// Beziers grid. Care must be taken with respect to the
-    /// above, as these properties are not checked and an
-    /// error may occur if they are not satisfied.
-    /// Exceptions
-    /// Standard_NotImplemented if one of the Bezier
-    /// surfaces of the Beziers grid is rational.
-    pub fn new_array2ofbeziersurface(
-        Beziers: &crate::ffi_types::TColGeom_Array2OfBezierSurface,
-    ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomBase::GeomConvert_CompBezierSurfacesToBSplineSurface_ctor_array2ofbeziersurface(Beziers)))
-        }
-    }
-
-    /// **Source:** `GeomConvert_CompBezierSurfacesToBSplineSurface.hxx`:121 - `GeomConvert_CompBezierSurfacesToBSplineSurface::GeomConvert_CompBezierSurfacesToBSplineSurface()`
-    /// Build an Ci uniform (Rational) BSpline surface
-    /// The highest Continuity Ci is imposed, like the
-    /// maximal deformation is lower than <Tolerance>.
-    /// Warning:  The Continuity C0 is imposed without any check.
-    pub fn new_array2ofbeziersurface_real_bool(
-        Beziers: &crate::ffi_types::TColGeom_Array2OfBezierSurface,
-        Tolerance: f64,
-        RemoveKnots: bool,
-    ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomBase::GeomConvert_CompBezierSurfacesToBSplineSurface_ctor_array2ofbeziersurface_real_bool(Beziers, Tolerance, RemoveKnots)))
-        }
-    }
-
-    /// **Source:** `GeomConvert_CompBezierSurfacesToBSplineSurface.hxx`:212 - `GeomConvert_CompBezierSurfacesToBSplineSurface::GeomConvert_CompBezierSurfacesToBSplineSurface()`
-    /// Computes all the data needed to construct a BSpline
-    /// surface equivalent to the adjacent non-rational
-    /// Bezier surfaces Beziers grid.
-    /// Each surface in the Beziers grid becomes a natural
-    /// patch, limited by knots values, on the BSpline surface
-    /// whose data is computed. Surfaces in the grid must
-    /// satisfy the following conditions:
-    /// -   Coincident bounding curves between two
-    /// consecutive surfaces in a row of the Beziers grid
-    /// must be u-isoparametric bounding curves of these two surfaces.
-    /// -   Coincident bounding curves between two
-    /// consecutive surfaces in a column of the Beziers
-    /// grid must be v-isoparametric bounding curves of these two surfaces.
-    /// The BSpline surface whose data is computed has the
-    /// following characteristics:
-    /// -   Its degree in the u (respectively v) parametric
-    /// direction is equal to that of the Bezier surface
-    /// which has the highest degree in the u
-    /// (respectively v) parametric direction in the Beziers grid.
-    /// -   Coincident bounding curves between two
-    /// consecutive columns of Bezier surfaces in the
-    /// Beziers grid become u-isoparametric curves
-    /// corresponding to knots values of the BSpline surface.
-    /// -   Coincident bounding curves between two
-    /// consecutive rows of Bezier surfaces in the Beziers
-    /// grid become v-isoparametric curves
-    /// corresponding to knots values of the BSpline surface.
-    /// Knots values of the BSpline surface are given in the two tables:
-    /// -   UKnots for the u parametric direction (which
-    /// corresponds to the order of Bezier surface columns in the Beziers grid), and
-    /// -   VKnots for the v parametric direction (which
-    /// corresponds to the order of Bezier surface rows in the Beziers grid).
-    /// The dimensions of UKnots (respectively VKnots)
-    /// must be equal to the number of columns (respectively,
-    /// rows) of the Beziers grid, plus 1 .
-    /// UContinuity and VContinuity, which are both
-    /// defaulted to GeomAbs_C0, specify the required
-    /// continuity on the BSpline surface. If the required
-    /// degree of continuity is greater than 0 in a given
-    /// parametric direction, a deformation is applied locally
-    /// on the initial surface (as defined by the Beziers grid)
-    /// to satisfy this condition. This local deformation is not
-    /// applied however, if it is greater than Tolerance
-    /// (defaulted to 1.0 e-7). In such cases, the
-    /// continuity condition is not satisfied, and the function
-    /// IsDone will return false. A small tolerance value
-    /// prevents any modification of the surface and a large
-    /// tolerance value "smoothes" the surface.
-    /// Use the available consultation functions to access the
-    /// computed data. This data may be used to construct the BSpline surface.
-    /// Warning
-    /// The surfaces in the Beziers grid must be adjacent, i.e.
-    /// two consecutive Bezier surfaces in the grid (in a row
-    /// or column) must have a coincident bounding curve. In
-    /// addition, the location of the parameterization on each
-    /// of these surfaces (i.e. the relative location of u and v
-    /// isoparametric curves on the surface) is of importance
-    /// with regard to the positioning of the surfaces in the
-    /// Beziers grid. Care must be taken with respect to the
-    /// above, as these properties are not checked and an
-    /// error may occur if they are not satisfied.
-    /// Exceptions
-    /// Standard_DimensionMismatch:
-    /// -   if the number of knots in the UKnots table (i.e. the
-    /// length of the UKnots array) is not equal to the
-    /// number of columns of Bezier surfaces in the
-    /// Beziers grid plus 1, or
-    /// -   if the number of knots in the VKnots table (i.e. the
-    /// length of the VKnots array) is not equal to the
-    /// number of rows of Bezier surfaces in the Beziers grid, plus 1.
-    /// Standard_ConstructionError:
-    /// -   if UContinuity and VContinuity are not equal to
-    /// one of the following values: GeomAbs_C0,
-    /// GeomAbs_C1, GeomAbs_C2 and GeomAbs_C3; or
-    /// -   if the number of columns in the Beziers grid is
-    /// greater than 1, and the required degree of
-    /// continuity in the u parametric direction is greater
-    /// than that of the Bezier surface with the highest
-    /// degree in the u parametric direction (in the Beziers grid), minus 1; or
-    /// -   if the number of rows in the Beziers grid is
-    /// greater than 1, and the required degree of
-    /// continuity in the v parametric direction is greater
-    /// than that of the Bezier surface with the highest
-    /// degree in the v parametric direction (in the Beziers grid), minus 1 .
-    /// Standard_NotImplemented if one of the Bezier
-    /// surfaces in the Beziers grid is rational.
-    pub fn new_array2ofbeziersurface_array1ofreal2_shape2_real(
-        Beziers: &crate::ffi_types::TColGeom_Array2OfBezierSurface,
-        UKnots: &crate::ffi_types::TColStd_Array1OfReal,
-        VKnots: &crate::ffi_types::TColStd_Array1OfReal,
-        UContinuity: crate::geom_abs::Shape,
-        VContinuity: crate::geom_abs::Shape,
-        Tolerance: f64,
-    ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomBase::GeomConvert_CompBezierSurfacesToBSplineSurface_ctor_array2ofbeziersurface_array1ofreal2_shape2_real(Beziers, UKnots, VKnots, UContinuity.into(), VContinuity.into(), Tolerance)))
-        }
-    }
-
-    /// **Source:** `GeomConvert_CompBezierSurfacesToBSplineSurface.hxx`:121 - `GeomConvert_CompBezierSurfacesToBSplineSurface::GeomConvert_CompBezierSurfacesToBSplineSurface()`
-    /// Build an Ci uniform (Rational) BSpline surface
-    /// The highest Continuity Ci is imposed, like the
-    /// maximal deformation is lower than <Tolerance>.
-    /// Warning:  The Continuity C0 is imposed without any check.
-    pub fn new_array2ofbeziersurface_real(
-        Beziers: &crate::ffi_types::TColGeom_Array2OfBezierSurface,
-        Tolerance: f64,
-    ) -> crate::OwnedPtr<Self> {
-        Self::new_array2ofbeziersurface_real_bool(Beziers, Tolerance, true)
-    }
-
-    /// **Source:** `GeomConvert_CompBezierSurfacesToBSplineSurface.hxx`:212 - `GeomConvert_CompBezierSurfacesToBSplineSurface::GeomConvert_CompBezierSurfacesToBSplineSurface()`
-    /// Computes all the data needed to construct a BSpline
-    /// surface equivalent to the adjacent non-rational
-    /// Bezier surfaces Beziers grid.
-    /// Each surface in the Beziers grid becomes a natural
-    /// patch, limited by knots values, on the BSpline surface
-    /// whose data is computed. Surfaces in the grid must
-    /// satisfy the following conditions:
-    /// -   Coincident bounding curves between two
-    /// consecutive surfaces in a row of the Beziers grid
-    /// must be u-isoparametric bounding curves of these two surfaces.
-    /// -   Coincident bounding curves between two
-    /// consecutive surfaces in a column of the Beziers
-    /// grid must be v-isoparametric bounding curves of these two surfaces.
-    /// The BSpline surface whose data is computed has the
-    /// following characteristics:
-    /// -   Its degree in the u (respectively v) parametric
-    /// direction is equal to that of the Bezier surface
-    /// which has the highest degree in the u
-    /// (respectively v) parametric direction in the Beziers grid.
-    /// -   Coincident bounding curves between two
-    /// consecutive columns of Bezier surfaces in the
-    /// Beziers grid become u-isoparametric curves
-    /// corresponding to knots values of the BSpline surface.
-    /// -   Coincident bounding curves between two
-    /// consecutive rows of Bezier surfaces in the Beziers
-    /// grid become v-isoparametric curves
-    /// corresponding to knots values of the BSpline surface.
-    /// Knots values of the BSpline surface are given in the two tables:
-    /// -   UKnots for the u parametric direction (which
-    /// corresponds to the order of Bezier surface columns in the Beziers grid), and
-    /// -   VKnots for the v parametric direction (which
-    /// corresponds to the order of Bezier surface rows in the Beziers grid).
-    /// The dimensions of UKnots (respectively VKnots)
-    /// must be equal to the number of columns (respectively,
-    /// rows) of the Beziers grid, plus 1 .
-    /// UContinuity and VContinuity, which are both
-    /// defaulted to GeomAbs_C0, specify the required
-    /// continuity on the BSpline surface. If the required
-    /// degree of continuity is greater than 0 in a given
-    /// parametric direction, a deformation is applied locally
-    /// on the initial surface (as defined by the Beziers grid)
-    /// to satisfy this condition. This local deformation is not
-    /// applied however, if it is greater than Tolerance
-    /// (defaulted to 1.0 e-7). In such cases, the
-    /// continuity condition is not satisfied, and the function
-    /// IsDone will return false. A small tolerance value
-    /// prevents any modification of the surface and a large
-    /// tolerance value "smoothes" the surface.
-    /// Use the available consultation functions to access the
-    /// computed data. This data may be used to construct the BSpline surface.
-    /// Warning
-    /// The surfaces in the Beziers grid must be adjacent, i.e.
-    /// two consecutive Bezier surfaces in the grid (in a row
-    /// or column) must have a coincident bounding curve. In
-    /// addition, the location of the parameterization on each
-    /// of these surfaces (i.e. the relative location of u and v
-    /// isoparametric curves on the surface) is of importance
-    /// with regard to the positioning of the surfaces in the
-    /// Beziers grid. Care must be taken with respect to the
-    /// above, as these properties are not checked and an
-    /// error may occur if they are not satisfied.
-    /// Exceptions
-    /// Standard_DimensionMismatch:
-    /// -   if the number of knots in the UKnots table (i.e. the
-    /// length of the UKnots array) is not equal to the
-    /// number of columns of Bezier surfaces in the
-    /// Beziers grid plus 1, or
-    /// -   if the number of knots in the VKnots table (i.e. the
-    /// length of the VKnots array) is not equal to the
-    /// number of rows of Bezier surfaces in the Beziers grid, plus 1.
-    /// Standard_ConstructionError:
-    /// -   if UContinuity and VContinuity are not equal to
-    /// one of the following values: GeomAbs_C0,
-    /// GeomAbs_C1, GeomAbs_C2 and GeomAbs_C3; or
-    /// -   if the number of columns in the Beziers grid is
-    /// greater than 1, and the required degree of
-    /// continuity in the u parametric direction is greater
-    /// than that of the Bezier surface with the highest
-    /// degree in the u parametric direction (in the Beziers grid), minus 1; or
-    /// -   if the number of rows in the Beziers grid is
-    /// greater than 1, and the required degree of
-    /// continuity in the v parametric direction is greater
-    /// than that of the Bezier surface with the highest
-    /// degree in the v parametric direction (in the Beziers grid), minus 1 .
-    /// Standard_NotImplemented if one of the Bezier
-    /// surfaces in the Beziers grid is rational.
-    pub fn new_array2ofbeziersurface_array1ofreal2_shape2(
-        Beziers: &crate::ffi_types::TColGeom_Array2OfBezierSurface,
-        UKnots: &crate::ffi_types::TColStd_Array1OfReal,
-        VKnots: &crate::ffi_types::TColStd_Array1OfReal,
-        UContinuity: crate::geom_abs::Shape,
-        VContinuity: crate::geom_abs::Shape,
-    ) -> crate::OwnedPtr<Self> {
-        Self::new_array2ofbeziersurface_array1ofreal2_shape2_real(
-            Beziers,
-            UKnots,
-            VKnots,
-            UContinuity,
-            VContinuity,
-            1.0e-4,
-        )
-    }
-
-    /// **Source:** `GeomConvert_CompBezierSurfacesToBSplineSurface.hxx`:222 - `GeomConvert_CompBezierSurfacesToBSplineSurface::NbUKnots()`
+    /// **Source:** `GeomConvert_CompBezierSurfacesToBSplineSurface.hxx`:223 - `GeomConvert_CompBezierSurfacesToBSplineSurface::NbUKnots()`
     /// Returns the number of knots in the U direction
     /// of the BSpline surface whose data is computed in this framework.
     pub fn nb_u_knots(&self) -> i32 {
@@ -1585,7 +1259,7 @@ impl CompBezierSurfacesToBSplineSurface {
         })
     }
 
-    /// **Source:** `GeomConvert_CompBezierSurfacesToBSplineSurface.hxx`:226 - `GeomConvert_CompBezierSurfacesToBSplineSurface::NbUPoles()`
+    /// **Source:** `GeomConvert_CompBezierSurfacesToBSplineSurface.hxx`:227 - `GeomConvert_CompBezierSurfacesToBSplineSurface::NbUPoles()`
     /// Returns number of poles in the U direction
     /// of the BSpline surface whose data is computed in this framework.
     pub fn nb_u_poles(&self) -> i32 {
@@ -1596,7 +1270,7 @@ impl CompBezierSurfacesToBSplineSurface {
         })
     }
 
-    /// **Source:** `GeomConvert_CompBezierSurfacesToBSplineSurface.hxx`:230 - `GeomConvert_CompBezierSurfacesToBSplineSurface::NbVKnots()`
+    /// **Source:** `GeomConvert_CompBezierSurfacesToBSplineSurface.hxx`:231 - `GeomConvert_CompBezierSurfacesToBSplineSurface::NbVKnots()`
     /// Returns the number of knots in the V direction
     /// of the BSpline surface whose data is computed in this framework.
     pub fn nb_v_knots(&self) -> i32 {
@@ -1607,7 +1281,7 @@ impl CompBezierSurfacesToBSplineSurface {
         })
     }
 
-    /// **Source:** `GeomConvert_CompBezierSurfacesToBSplineSurface.hxx`:234 - `GeomConvert_CompBezierSurfacesToBSplineSurface::NbVPoles()`
+    /// **Source:** `GeomConvert_CompBezierSurfacesToBSplineSurface.hxx`:235 - `GeomConvert_CompBezierSurfacesToBSplineSurface::NbVPoles()`
     /// Returns the number of poles in the V direction
     /// of the BSpline surface whose data is computed in this framework.
     pub fn nb_v_poles(&self) -> i32 {
@@ -1618,10 +1292,10 @@ impl CompBezierSurfacesToBSplineSurface {
         })
     }
 
-    /// **Source:** `GeomConvert_CompBezierSurfacesToBSplineSurface.hxx`:238 - `GeomConvert_CompBezierSurfacesToBSplineSurface::Poles()`
+    /// **Source:** `GeomConvert_CompBezierSurfacesToBSplineSurface.hxx`:239 - `GeomConvert_CompBezierSurfacesToBSplineSurface::Poles()`
     /// Returns the table of poles of the BSpline surface
     /// whose data is computed in this framework.
-    pub fn poles(&self) -> &crate::ffi_types::HandleTColgpHArray2OfPnt {
+    pub fn poles(&self) -> &crate::ffi_types::Handle_NCollection_HArray2_gp_Pnt {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKGeomBase::GeomConvert_CompBezierSurfacesToBSplineSurface_poles(
@@ -1631,17 +1305,17 @@ impl CompBezierSurfacesToBSplineSurface {
         }
     }
 
-    /// **Source:** `GeomConvert_CompBezierSurfacesToBSplineSurface.hxx`:242 - `GeomConvert_CompBezierSurfacesToBSplineSurface::UKnots()`
+    /// **Source:** `GeomConvert_CompBezierSurfacesToBSplineSurface.hxx`:243 - `GeomConvert_CompBezierSurfacesToBSplineSurface::UKnots()`
     /// Returns the knots table for the u parametric
     /// direction of the BSpline surface whose data is computed in this framework.
-    pub fn u_knots(&self) -> &crate::ffi_types::HandleTColStdHArray1OfReal {
+    pub fn u_knots(&self) -> &crate::ffi_types::Handle_NCollection_HArray1_double {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKGeomBase::GeomConvert_CompBezierSurfacesToBSplineSurface_u_knots(self as *const Self)))
         }
     }
 
-    /// **Source:** `GeomConvert_CompBezierSurfacesToBSplineSurface.hxx`:246 - `GeomConvert_CompBezierSurfacesToBSplineSurface::UDegree()`
-    /// Returns the degree for the u  parametric
+    /// **Source:** `GeomConvert_CompBezierSurfacesToBSplineSurface.hxx`:247 - `GeomConvert_CompBezierSurfacesToBSplineSurface::UDegree()`
+    /// Returns the degree for the u parametric
     /// direction of the BSpline surface whose data is computed in this framework.
     pub fn u_degree(&self) -> i32 {
         crate::check_result(unsafe {
@@ -1651,17 +1325,17 @@ impl CompBezierSurfacesToBSplineSurface {
         })
     }
 
-    /// **Source:** `GeomConvert_CompBezierSurfacesToBSplineSurface.hxx`:250 - `GeomConvert_CompBezierSurfacesToBSplineSurface::VKnots()`
+    /// **Source:** `GeomConvert_CompBezierSurfacesToBSplineSurface.hxx`:251 - `GeomConvert_CompBezierSurfacesToBSplineSurface::VKnots()`
     /// Returns the knots table for the v parametric
     /// direction of the BSpline surface whose data is computed in this framework.
-    pub fn v_knots(&self) -> &crate::ffi_types::HandleTColStdHArray1OfReal {
+    pub fn v_knots(&self) -> &crate::ffi_types::Handle_NCollection_HArray1_double {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKGeomBase::GeomConvert_CompBezierSurfacesToBSplineSurface_v_knots(self as *const Self)))
         }
     }
 
-    /// **Source:** `GeomConvert_CompBezierSurfacesToBSplineSurface.hxx`:254 - `GeomConvert_CompBezierSurfacesToBSplineSurface::VDegree()`
-    /// Returns the degree for the v  parametric
+    /// **Source:** `GeomConvert_CompBezierSurfacesToBSplineSurface.hxx`:255 - `GeomConvert_CompBezierSurfacesToBSplineSurface::VDegree()`
+    /// Returns the degree for the v parametric
     /// direction of the BSpline surface whose data is computed in this framework.
     pub fn v_degree(&self) -> i32 {
         crate::check_result(unsafe {
@@ -1671,27 +1345,27 @@ impl CompBezierSurfacesToBSplineSurface {
         })
     }
 
-    /// **Source:** `GeomConvert_CompBezierSurfacesToBSplineSurface.hxx`:259 - `GeomConvert_CompBezierSurfacesToBSplineSurface::UMultiplicities()`
+    /// **Source:** `GeomConvert_CompBezierSurfacesToBSplineSurface.hxx`:260 - `GeomConvert_CompBezierSurfacesToBSplineSurface::UMultiplicities()`
     /// Returns the multiplicities table for the u
     /// parametric direction of the knots of the BSpline
     /// surface whose data is computed in this framework.
-    pub fn u_multiplicities(&self) -> &crate::ffi_types::HandleTColStdHArray1OfInteger {
+    pub fn u_multiplicities(&self) -> &crate::ffi_types::Handle_NCollection_HArray1_int {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKGeomBase::GeomConvert_CompBezierSurfacesToBSplineSurface_u_multiplicities(self as *const Self)))
         }
     }
 
-    /// **Source:** `GeomConvert_CompBezierSurfacesToBSplineSurface.hxx`:264 - `GeomConvert_CompBezierSurfacesToBSplineSurface::VMultiplicities()`
+    /// **Source:** `GeomConvert_CompBezierSurfacesToBSplineSurface.hxx`:265 - `GeomConvert_CompBezierSurfacesToBSplineSurface::VMultiplicities()`
     /// -- Returns the multiplicities table for the v
     /// parametric direction of the knots of the BSpline
     /// surface whose data is computed in this framework.
-    pub fn v_multiplicities(&self) -> &crate::ffi_types::HandleTColStdHArray1OfInteger {
+    pub fn v_multiplicities(&self) -> &crate::ffi_types::Handle_NCollection_HArray1_int {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKGeomBase::GeomConvert_CompBezierSurfacesToBSplineSurface_v_multiplicities(self as *const Self)))
         }
     }
 
-    /// **Source:** `GeomConvert_CompBezierSurfacesToBSplineSurface.hxx`:277 - `GeomConvert_CompBezierSurfacesToBSplineSurface::IsDone()`
+    /// **Source:** `GeomConvert_CompBezierSurfacesToBSplineSurface.hxx`:278 - `GeomConvert_CompBezierSurfacesToBSplineSurface::IsDone()`
     /// Returns true if the conversion was successful.
     /// Unless an exception was raised at the time of
     /// construction, the conversion of the Bezier surface
@@ -1712,6 +1386,29 @@ impl CompBezierSurfacesToBSplineSurface {
     }
 }
 
+// ── Skipped symbols for CompBezierSurfacesToBSplineSurface (3 total) ──
+// SKIPPED: **Source:** `GeomConvert_CompBezierSurfacesToBSplineSurface.hxx`:115 - `GeomConvert_CompBezierSurfacesToBSplineSurface::GeomConvert_CompBezierSurfacesToBSplineSurface`
+//   constructor: Computes all the data needed to build a "C0"
+//   constructor: continuous BSpline surface equivalent to the grid of
+//   constructor: adjacent non-rational Bezier surfaces Beziers.
+//   Reason: has unbindable types: param 'Beziers': unresolved template type (NCollection_Array2<occ::handle<Geom_BezierSurface>> const&)
+//   // pub fn new_beziersurface>>(Beziers: /* NCollection_Array2<occ::handle<Geom_BezierSurface>> const& */) -> OwnedPtr<Self>;
+//
+// SKIPPED: **Source:** `GeomConvert_CompBezierSurfacesToBSplineSurface.hxx`:122 - `GeomConvert_CompBezierSurfacesToBSplineSurface::GeomConvert_CompBezierSurfacesToBSplineSurface`
+//   constructor: Build an Ci uniform (Rational) BSpline surface
+//   constructor: The highest Continuity Ci is imposed, like the
+//   constructor: maximal deformation is lower than <Tolerance>.
+//   Reason: has unbindable types: param 'Beziers': unresolved template type (NCollection_Array2<occ::handle<Geom_BezierSurface>> const&)
+//   // pub fn new_beziersurface>>_real_bool(Beziers: /* NCollection_Array2<occ::handle<Geom_BezierSurface>> const& */, Tolerance: f64, RemoveKnots: bool) -> OwnedPtr<Self>;
+//
+// SKIPPED: **Source:** `GeomConvert_CompBezierSurfacesToBSplineSurface.hxx`:213 - `GeomConvert_CompBezierSurfacesToBSplineSurface::GeomConvert_CompBezierSurfacesToBSplineSurface`
+//   constructor: Computes all the data needed to construct a BSpline
+//   constructor: surface equivalent to the adjacent non-rational
+//   constructor: Bezier surfaces Beziers grid.
+//   Reason: has unbindable types: param 'Beziers': unresolved template type (NCollection_Array2<occ::handle<Geom_BezierSurface>> const&)
+//   // pub fn new_beziersurface>>_arr1_double2_shape2_real(Beziers: /* NCollection_Array2<occ::handle<Geom_BezierSurface>> const& */, UKnots: &Array1_double, VKnots: &Array1_double, UContinuity: Shape, VContinuity: Shape, Tolerance: f64) -> OwnedPtr<Self>;
+//
+
 // ========================
 // From GeomConvert_CompCurveToBSplineCurve.hxx
 // ========================
@@ -1730,7 +1427,7 @@ unsafe impl crate::CppDeletable for CompCurveToBSplineCurve {
 
 impl CompCurveToBSplineCurve {
     /// **Source:** `GeomConvert_CompCurveToBSplineCurve.hxx`:37 - `GeomConvert_CompCurveToBSplineCurve::GeomConvert_CompCurveToBSplineCurve()`
-    /// Initialize the algorithme
+    /// Initialize the algorithm
     /// - Parameterisation is used to convert
     pub fn new_parameterisationtype(
         Parameterisation: crate::convert::ParameterisationType,
@@ -1741,10 +1438,10 @@ impl CompCurveToBSplineCurve {
     }
 
     /// **Source:** `GeomConvert_CompCurveToBSplineCurve.hxx`:42 - `GeomConvert_CompCurveToBSplineCurve::GeomConvert_CompCurveToBSplineCurve()`
-    /// Initialize the algorithme with one curve
+    /// Initialize the algorithm with one curve
     /// - Parameterisation is used to convert
     pub fn new_handlegeomboundedcurve_parameterisationtype(
-        BasisCurve: &crate::ffi_types::HandleGeomBoundedCurve,
+        BasisCurve: &crate::ffi_types::Handle_Geom_BoundedCurve,
         Parameterisation: crate::convert::ParameterisationType,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -1753,19 +1450,19 @@ impl CompCurveToBSplineCurve {
     }
 
     /// **Source:** `GeomConvert_CompCurveToBSplineCurve.hxx`:56 - `GeomConvert_CompCurveToBSplineCurve::Add()`
-    /// Append a curve in  the BSpline Return False if the
-    /// curve is not G0  with the BSplineCurve.  Tolerance
-    /// is   used to   check   continuity  and decrease
+    /// Append a curve in the BSpline Return False if the
+    /// curve is not G0 with the BSplineCurve. Tolerance
+    /// is used to check continuity and decrease
     /// Multiplicity at the common Knot until MinM
     /// if MinM = 0, the common Knot can be removed
     ///
     /// WithRatio defines whether the resulting curve should have a uniform
-    /// parameterization. Setting WithRatio to Standard_False may greatly
+    /// parameterization. Setting WithRatio to false may greatly
     /// decrease the speed of algorithms like CPnts_AbscissaPoint::AdvPerform
     /// when applied to the resulting curve.
     pub fn add(
         &mut self,
-        NewCurve: &crate::ffi_types::HandleGeomBoundedCurve,
+        NewCurve: &crate::ffi_types::Handle_Geom_BoundedCurve,
         Tolerance: f64,
         After: bool,
         WithRatio: bool,
@@ -1784,7 +1481,7 @@ impl CompCurveToBSplineCurve {
     }
 
     /// **Source:** `GeomConvert_CompCurveToBSplineCurve.hxx`:62 - `GeomConvert_CompCurveToBSplineCurve::BSplineCurve()`
-    pub fn b_spline_curve(&self) -> crate::OwnedPtr<crate::ffi_types::HandleGeomBSplineCurve> {
+    pub fn b_spline_curve(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_Geom_BSplineCurve> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKGeomBase::GeomConvert_CompCurveToBSplineCurve_b_spline_curve(
@@ -1809,7 +1506,7 @@ impl CompCurveToBSplineCurve {
 // From GeomConvert_CurveToAnaCurve.hxx
 // ========================
 
-/// **Source:** `GeomConvert_CurveToAnaCurve.hxx`:35 - `GeomConvert_CurveToAnaCurve`
+/// **Source:** `GeomConvert_CurveToAnaCurve.hxx`:36 - `GeomConvert_CurveToAnaCurve`
 pub use crate::ffi_types::GeomConvert_CurveToAnaCurve as CurveToAnaCurve;
 
 unsafe impl crate::CppDeletable for CurveToAnaCurve {
@@ -1821,7 +1518,7 @@ unsafe impl crate::CppDeletable for CurveToAnaCurve {
 }
 
 impl CurveToAnaCurve {
-    /// **Source:** `GeomConvert_CurveToAnaCurve.hxx`:40 - `GeomConvert_CurveToAnaCurve::GeomConvert_CurveToAnaCurve()`
+    /// **Source:** `GeomConvert_CurveToAnaCurve.hxx`:41 - `GeomConvert_CurveToAnaCurve::GeomConvert_CurveToAnaCurve()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -1830,8 +1527,8 @@ impl CurveToAnaCurve {
         }
     }
 
-    /// **Source:** `GeomConvert_CurveToAnaCurve.hxx`:42 - `GeomConvert_CurveToAnaCurve::GeomConvert_CurveToAnaCurve()`
-    pub fn new_handlegeomcurve(C: &crate::ffi_types::HandleGeomCurve) -> crate::OwnedPtr<Self> {
+    /// **Source:** `GeomConvert_CurveToAnaCurve.hxx`:43 - `GeomConvert_CurveToAnaCurve::GeomConvert_CurveToAnaCurve()`
+    pub fn new_handlegeomcurve(C: &crate::ffi_types::Handle_Geom_Curve) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKGeomBase::GeomConvert_CurveToAnaCurve_ctor_handlegeomcurve(C),
@@ -1839,21 +1536,21 @@ impl CurveToAnaCurve {
         }
     }
 
-    /// **Source:** `GeomConvert_CurveToAnaCurve.hxx`:44 - `GeomConvert_CurveToAnaCurve::Init()`
-    pub fn init(&mut self, C: &crate::ffi_types::HandleGeomCurve) {
+    /// **Source:** `GeomConvert_CurveToAnaCurve.hxx`:45 - `GeomConvert_CurveToAnaCurve::Init()`
+    pub fn init(&mut self, C: &crate::ffi_types::Handle_Geom_Curve) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomBase::GeomConvert_CurveToAnaCurve_init(self as *mut Self, C)
         })
     }
 
-    /// **Source:** `GeomConvert_CurveToAnaCurve.hxx`:49 - `GeomConvert_CurveToAnaCurve::ConvertToAnalytical()`
+    /// **Source:** `GeomConvert_CurveToAnaCurve.hxx`:50 - `GeomConvert_CurveToAnaCurve::ConvertToAnalytical()`
     /// Converts me to analytical if possible with given
     /// tolerance. The new first and last parameters are
     /// returned to newF, newL
     pub fn convert_to_analytical(
         &mut self,
         theTol: f64,
-        theResultCurve: &mut crate::ffi_types::HandleGeomCurve,
+        theResultCurve: &mut crate::ffi_types::Handle_Geom_Curve,
         F: f64,
         L: f64,
         newF: &mut f64,
@@ -1872,7 +1569,7 @@ impl CurveToAnaCurve {
         })
     }
 
-    /// **Source:** `GeomConvert_CurveToAnaCurve.hxx`:121 - `GeomConvert_CurveToAnaCurve::Gap()`
+    /// **Source:** `GeomConvert_CurveToAnaCurve.hxx`:120 - `GeomConvert_CurveToAnaCurve::Gap()`
     /// Returns maximal deviation of converted surface from the original
     /// one computed by last call to ConvertToAnalytical
     pub fn gap(&self) -> f64 {
@@ -1881,7 +1578,7 @@ impl CurveToAnaCurve {
         })
     }
 
-    /// **Source:** `GeomConvert_CurveToAnaCurve.hxx`:124 - `GeomConvert_CurveToAnaCurve::GetConvType()`
+    /// **Source:** `GeomConvert_CurveToAnaCurve.hxx`:123 - `GeomConvert_CurveToAnaCurve::GetConvType()`
     /// Returns conversion type
     pub fn get_conv_type(&self) -> crate::geom_convert::ConvType {
         crate::geom_convert::ConvType::try_from(crate::check_result(unsafe {
@@ -1892,7 +1589,7 @@ impl CurveToAnaCurve {
         .unwrap()
     }
 
-    /// **Source:** `GeomConvert_CurveToAnaCurve.hxx`:127 - `GeomConvert_CurveToAnaCurve::SetConvType()`
+    /// **Source:** `GeomConvert_CurveToAnaCurve.hxx`:126 - `GeomConvert_CurveToAnaCurve::SetConvType()`
     /// Sets type of conversion
     pub fn set_conv_type(&mut self, theConvType: crate::geom_convert::ConvType) {
         crate::check_void_result(unsafe {
@@ -1903,7 +1600,7 @@ impl CurveToAnaCurve {
         })
     }
 
-    /// **Source:** `GeomConvert_CurveToAnaCurve.hxx`:130 - `GeomConvert_CurveToAnaCurve::GetTarget()`
+    /// **Source:** `GeomConvert_CurveToAnaCurve.hxx`:129 - `GeomConvert_CurveToAnaCurve::GetTarget()`
     /// Returns target curve type
     pub fn get_target(&self) -> crate::geom_abs::CurveType {
         crate::geom_abs::CurveType::try_from(crate::check_result(unsafe {
@@ -1914,7 +1611,7 @@ impl CurveToAnaCurve {
         .unwrap()
     }
 
-    /// **Source:** `GeomConvert_CurveToAnaCurve.hxx`:133 - `GeomConvert_CurveToAnaCurve::SetTarget()`
+    /// **Source:** `GeomConvert_CurveToAnaCurve.hxx`:132 - `GeomConvert_CurveToAnaCurve::SetTarget()`
     /// Sets target curve type
     pub fn set_target(&mut self, theTarget: crate::geom_abs::CurveType) {
         crate::check_void_result(unsafe {
@@ -1925,9 +1622,9 @@ impl CurveToAnaCurve {
         })
     }
 
-    /// **Source:** `GeomConvert_CurveToAnaCurve.hxx`:56 - `GeomConvert_CurveToAnaCurve::ComputeCurve()`
+    /// **Source:** `GeomConvert_CurveToAnaCurve.hxx`:57 - `GeomConvert_CurveToAnaCurve::ComputeCurve()`
     pub fn compute_curve(
-        curve: &crate::ffi_types::HandleGeomCurve,
+        curve: &crate::ffi_types::Handle_Geom_Curve,
         tolerance: f64,
         c1: f64,
         c2: f64,
@@ -1936,7 +1633,7 @@ impl CurveToAnaCurve {
         theGap: &mut f64,
         theCurvType: crate::geom_convert::ConvType,
         theTarget: crate::geom_abs::CurveType,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleGeomCurve> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Geom_Curve> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKGeomBase::GeomConvert_CurveToAnaCurve_compute_curve(
@@ -1954,19 +1651,19 @@ impl CurveToAnaCurve {
         }
     }
 
-    /// **Source:** `GeomConvert_CurveToAnaCurve.hxx`:70 - `GeomConvert_CurveToAnaCurve::ComputeCircle()`
+    /// **Source:** `GeomConvert_CurveToAnaCurve.hxx`:71 - `GeomConvert_CurveToAnaCurve::ComputeCircle()`
     /// Tries to convert the given curve to circle with given
     /// tolerance. Returns NULL curve if conversion is
     /// not possible.
     pub fn compute_circle(
-        curve: &crate::ffi_types::HandleGeomCurve,
+        curve: &crate::ffi_types::Handle_Geom_Curve,
         tolerance: f64,
         c1: f64,
         c2: f64,
         cf: &mut f64,
         cl: &mut f64,
         Deviation: &mut f64,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleGeomCurve> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Geom_Curve> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKGeomBase::GeomConvert_CurveToAnaCurve_compute_circle(
@@ -1976,19 +1673,19 @@ impl CurveToAnaCurve {
         }
     }
 
-    /// **Source:** `GeomConvert_CurveToAnaCurve.hxx`:81 - `GeomConvert_CurveToAnaCurve::ComputeEllipse()`
+    /// **Source:** `GeomConvert_CurveToAnaCurve.hxx`:82 - `GeomConvert_CurveToAnaCurve::ComputeEllipse()`
     /// Tries to convert the given curve to ellipse with given
     /// tolerance. Returns NULL curve if conversion is
     /// not possible.
     pub fn compute_ellipse(
-        curve: &crate::ffi_types::HandleGeomCurve,
+        curve: &crate::ffi_types::Handle_Geom_Curve,
         tolerance: f64,
         c1: f64,
         c2: f64,
         cf: &mut f64,
         cl: &mut f64,
         Deviation: &mut f64,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleGeomCurve> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Geom_Curve> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKGeomBase::GeomConvert_CurveToAnaCurve_compute_ellipse(
@@ -1998,19 +1695,19 @@ impl CurveToAnaCurve {
         }
     }
 
-    /// **Source:** `GeomConvert_CurveToAnaCurve.hxx`:92 - `GeomConvert_CurveToAnaCurve::ComputeLine()`
+    /// **Source:** `GeomConvert_CurveToAnaCurve.hxx`:94 - `GeomConvert_CurveToAnaCurve::ComputeLine()`
     /// Tries to convert the given curve to line with given
     /// tolerance. Returns NULL curve if conversion is
     /// not possible.
     pub fn compute_line(
-        curve: &crate::ffi_types::HandleGeomCurve,
+        curve: &crate::ffi_types::Handle_Geom_Curve,
         tolerance: f64,
         c1: f64,
         c2: f64,
         cf: &mut f64,
         cl: &mut f64,
         Deviation: &mut f64,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleGeomLine> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Geom_Line> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKGeomBase::GeomConvert_CurveToAnaCurve_compute_line(
@@ -2020,11 +1717,11 @@ impl CurveToAnaCurve {
         }
     }
 
-    /// **Source:** `GeomConvert_CurveToAnaCurve.hxx`:102 - `GeomConvert_CurveToAnaCurve::IsLinear()`
+    /// **Source:** `GeomConvert_CurveToAnaCurve.hxx`:104 - `GeomConvert_CurveToAnaCurve::IsLinear()`
     /// Returns true if the set of points is linear with given
     /// tolerance
     pub fn is_linear(
-        aPoints: &crate::ffi_types::TColgp_Array1OfPnt,
+        aPoints: &crate::ffi_types::NCollection_Array1_gp_Pnt,
         tolerance: f64,
         Deviation: &mut f64,
     ) -> bool {
@@ -2035,7 +1732,7 @@ impl CurveToAnaCurve {
         })
     }
 
-    /// **Source:** `GeomConvert_CurveToAnaCurve.hxx`:108 - `GeomConvert_CurveToAnaCurve::GetLine()`
+    /// **Source:** `GeomConvert_CurveToAnaCurve.hxx`:110 - `GeomConvert_CurveToAnaCurve::GetLine()`
     /// Creates line on two points.
     /// Resulting parameters returned
     pub fn get_line(
@@ -2051,7 +1748,7 @@ impl CurveToAnaCurve {
         }
     }
 
-    /// **Source:** `GeomConvert_CurveToAnaCurve.hxx`:114 - `GeomConvert_CurveToAnaCurve::GetCircle()`
+    /// **Source:** `GeomConvert_CurveToAnaCurve.hxx`:113 - `GeomConvert_CurveToAnaCurve::GetCircle()`
     /// Creates circle on points. Returns true if OK.
     pub fn get_circle(
         Circ: &mut crate::gp::Circ,
@@ -2073,7 +1770,6 @@ impl CurveToAnaCurve {
 /// Function for search of Cone canonic parameters: coordinates of center local coordinate system,
 /// direction of axis, radius and semi-angle from set of points
 /// by least square method.
-///
 pub use crate::ffi_types::GeomConvert_FuncConeLSDist as FuncConeLSDist;
 
 unsafe impl crate::CppDeletable for FuncConeLSDist {
@@ -2096,17 +1792,21 @@ impl FuncConeLSDist {
     }
 
     /// **Source:** `GeomConvert_FuncConeLSDist.hxx`:39 - `GeomConvert_FuncConeLSDist::GeomConvert_FuncConeLSDist()`
-    pub fn new_handletcolgpharray1ofxyz_dir(
-        thePoints: &crate::ffi_types::HandleTColgpHArray1OfXYZ,
+    pub fn new_harr1_xyz_dir(
+        thePoints: &crate::ffi_types::Handle_NCollection_HArray1_gp_XYZ,
         theDir: &crate::gp::Dir,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomBase::GeomConvert_FuncConeLSDist_ctor_handletcolgpharray1ofxyz_dir(thePoints, theDir)))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomBase::GeomConvert_FuncConeLSDist_ctor_harr1_xyz_dir(
+                    thePoints, theDir,
+                ),
+            ))
         }
     }
 
-    /// **Source:** `GeomConvert_FuncConeLSDist.hxx`:42 - `GeomConvert_FuncConeLSDist::SetPoints()`
-    pub fn set_points(&mut self, thePoints: &crate::ffi_types::HandleTColgpHArray1OfXYZ) {
+    /// **Source:** `GeomConvert_FuncConeLSDist.hxx`:43 - `GeomConvert_FuncConeLSDist::SetPoints()`
+    pub fn set_points(&mut self, thePoints: &crate::ffi_types::Handle_NCollection_HArray1_gp_XYZ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomBase::GeomConvert_FuncConeLSDist_set_points(
                 self as *mut Self,
@@ -2115,7 +1815,7 @@ impl FuncConeLSDist {
         })
     }
 
-    /// **Source:** `GeomConvert_FuncConeLSDist.hxx`:44 - `GeomConvert_FuncConeLSDist::SetDir()`
+    /// **Source:** `GeomConvert_FuncConeLSDist.hxx`:48 - `GeomConvert_FuncConeLSDist::SetDir()`
     pub fn set_dir(&mut self, theDir: &crate::gp::Dir) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomBase::GeomConvert_FuncConeLSDist_set_dir(
@@ -2125,7 +1825,7 @@ impl FuncConeLSDist {
         })
     }
 
-    /// **Source:** `GeomConvert_FuncConeLSDist.hxx`:47 - `GeomConvert_FuncConeLSDist::NbVariables()`
+    /// **Source:** `GeomConvert_FuncConeLSDist.hxx`:51 - `GeomConvert_FuncConeLSDist::NbVariables()`
     /// Number of variables.
     pub fn nb_variables(&self) -> i32 {
         crate::check_result(unsafe {
@@ -2135,7 +1835,7 @@ impl FuncConeLSDist {
         })
     }
 
-    /// **Source:** `GeomConvert_FuncConeLSDist.hxx`:50 - `GeomConvert_FuncConeLSDist::Value()`
+    /// **Source:** `GeomConvert_FuncConeLSDist.hxx`:54 - `GeomConvert_FuncConeLSDist::Value()`
     /// Value.
     pub fn value(&mut self, X: &crate::ffi_types::math_Vector, F: &mut f64) -> bool {
         crate::check_result(unsafe {
@@ -2171,7 +1871,7 @@ impl FuncConeLSDist {
 // From GeomConvert_FuncCylinderLSDist.hxx
 // ========================
 
-/// **Source:** `GeomConvert_FuncCylinderLSDist.hxx`:57 - `GeomConvert_FuncCylinderLSDist`
+/// **Source:** `GeomConvert_FuncCylinderLSDist.hxx`:59 - `GeomConvert_FuncCylinderLSDist`
 /// Function for search of cylinder canonic parameters: coordinates of center local coordinate
 /// system, direction of axis and radius from set of points by least square method.
 ///
@@ -2214,7 +1914,7 @@ unsafe impl crate::CppDeletable for FuncCylinderLSDist {
 }
 
 impl FuncCylinderLSDist {
-    /// **Source:** `GeomConvert_FuncCylinderLSDist.hxx`:63 - `GeomConvert_FuncCylinderLSDist::GeomConvert_FuncCylinderLSDist()`
+    /// **Source:** `GeomConvert_FuncCylinderLSDist.hxx`:65 - `GeomConvert_FuncCylinderLSDist::GeomConvert_FuncCylinderLSDist()`
     /// Constructor.
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
@@ -2224,18 +1924,22 @@ impl FuncCylinderLSDist {
         }
     }
 
-    /// **Source:** `GeomConvert_FuncCylinderLSDist.hxx`:65 - `GeomConvert_FuncCylinderLSDist::GeomConvert_FuncCylinderLSDist()`
-    pub fn new_handletcolgpharray1ofxyz_dir(
-        thePoints: &crate::ffi_types::HandleTColgpHArray1OfXYZ,
+    /// **Source:** `GeomConvert_FuncCylinderLSDist.hxx`:67 - `GeomConvert_FuncCylinderLSDist::GeomConvert_FuncCylinderLSDist()`
+    pub fn new_harr1_xyz_dir(
+        thePoints: &crate::ffi_types::Handle_NCollection_HArray1_gp_XYZ,
         theDir: &crate::gp::Dir,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomBase::GeomConvert_FuncCylinderLSDist_ctor_handletcolgpharray1ofxyz_dir(thePoints, theDir)))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomBase::GeomConvert_FuncCylinderLSDist_ctor_harr1_xyz_dir(
+                    thePoints, theDir,
+                ),
+            ))
         }
     }
 
-    /// **Source:** `GeomConvert_FuncCylinderLSDist.hxx`:68 - `GeomConvert_FuncCylinderLSDist::SetPoints()`
-    pub fn set_points(&mut self, thePoints: &crate::ffi_types::HandleTColgpHArray1OfXYZ) {
+    /// **Source:** `GeomConvert_FuncCylinderLSDist.hxx`:71 - `GeomConvert_FuncCylinderLSDist::SetPoints()`
+    pub fn set_points(&mut self, thePoints: &crate::ffi_types::Handle_NCollection_HArray1_gp_XYZ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomBase::GeomConvert_FuncCylinderLSDist_set_points(
                 self as *mut Self,
@@ -2244,7 +1948,7 @@ impl FuncCylinderLSDist {
         })
     }
 
-    /// **Source:** `GeomConvert_FuncCylinderLSDist.hxx`:70 - `GeomConvert_FuncCylinderLSDist::SetDir()`
+    /// **Source:** `GeomConvert_FuncCylinderLSDist.hxx`:76 - `GeomConvert_FuncCylinderLSDist::SetDir()`
     pub fn set_dir(&mut self, theDir: &crate::gp::Dir) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomBase::GeomConvert_FuncCylinderLSDist_set_dir(
@@ -2254,7 +1958,7 @@ impl FuncCylinderLSDist {
         })
     }
 
-    /// **Source:** `GeomConvert_FuncCylinderLSDist.hxx`:73 - `GeomConvert_FuncCylinderLSDist::NbVariables()`
+    /// **Source:** `GeomConvert_FuncCylinderLSDist.hxx`:79 - `GeomConvert_FuncCylinderLSDist::NbVariables()`
     /// Number of variables.
     pub fn nb_variables(&self) -> i32 {
         crate::check_result(unsafe {
@@ -2264,7 +1968,7 @@ impl FuncCylinderLSDist {
         })
     }
 
-    /// **Source:** `GeomConvert_FuncCylinderLSDist.hxx`:76 - `GeomConvert_FuncCylinderLSDist::Value()`
+    /// **Source:** `GeomConvert_FuncCylinderLSDist.hxx`:82 - `GeomConvert_FuncCylinderLSDist::Value()`
     /// Value.
     pub fn value(&mut self, X: &crate::ffi_types::math_Vector, F: &mut f64) -> bool {
         crate::check_result(unsafe {
@@ -2276,7 +1980,7 @@ impl FuncCylinderLSDist {
         })
     }
 
-    /// **Source:** `GeomConvert_FuncCylinderLSDist.hxx`:79 - `GeomConvert_FuncCylinderLSDist::Gradient()`
+    /// **Source:** `GeomConvert_FuncCylinderLSDist.hxx`:85 - `GeomConvert_FuncCylinderLSDist::Gradient()`
     /// Gradient.
     pub fn gradient(
         &mut self,
@@ -2292,7 +1996,7 @@ impl FuncCylinderLSDist {
         })
     }
 
-    /// **Source:** `GeomConvert_FuncCylinderLSDist.hxx`:82 - `GeomConvert_FuncCylinderLSDist::Values()`
+    /// **Source:** `GeomConvert_FuncCylinderLSDist.hxx`:88 - `GeomConvert_FuncCylinderLSDist::Values()`
     /// Value and gradient.
     pub fn values(
         &mut self,
@@ -2356,7 +2060,7 @@ impl FuncCylinderLSDist {
 // From GeomConvert_FuncSphereLSDist.hxx
 // ========================
 
-/// **Source:** `GeomConvert_FuncSphereLSDist.hxx`:44 - `GeomConvert_FuncSphereLSDist`
+/// **Source:** `GeomConvert_FuncSphereLSDist.hxx`:46 - `GeomConvert_FuncSphereLSDist`
 /// Function for search of sphere canonic parameters: coordinates of center and radius from set of
 /// moints by least square method.
 /// //!
@@ -2385,7 +2089,7 @@ unsafe impl crate::CppDeletable for FuncSphereLSDist {
 }
 
 impl FuncSphereLSDist {
-    /// **Source:** `GeomConvert_FuncSphereLSDist.hxx`:50 - `GeomConvert_FuncSphereLSDist::GeomConvert_FuncSphereLSDist()`
+    /// **Source:** `GeomConvert_FuncSphereLSDist.hxx`:52 - `GeomConvert_FuncSphereLSDist::GeomConvert_FuncSphereLSDist()`
     /// Constructor.
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
@@ -2395,17 +2099,21 @@ impl FuncSphereLSDist {
         }
     }
 
-    /// **Source:** `GeomConvert_FuncSphereLSDist.hxx`:52 - `GeomConvert_FuncSphereLSDist::GeomConvert_FuncSphereLSDist()`
-    pub fn new_handletcolgpharray1ofxyz(
-        thePoints: &crate::ffi_types::HandleTColgpHArray1OfXYZ,
+    /// **Source:** `GeomConvert_FuncSphereLSDist.hxx`:54 - `GeomConvert_FuncSphereLSDist::GeomConvert_FuncSphereLSDist()`
+    pub fn new_harr1_xyz(
+        thePoints: &crate::ffi_types::Handle_NCollection_HArray1_gp_XYZ,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomBase::GeomConvert_FuncSphereLSDist_ctor_handletcolgpharray1ofxyz(thePoints)))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomBase::GeomConvert_FuncSphereLSDist_ctor_harr1_xyz(
+                    thePoints,
+                ),
+            ))
         }
     }
 
-    /// **Source:** `GeomConvert_FuncSphereLSDist.hxx`:54 - `GeomConvert_FuncSphereLSDist::SetPoints()`
-    pub fn set_points(&mut self, thePoints: &crate::ffi_types::HandleTColgpHArray1OfXYZ) {
+    /// **Source:** `GeomConvert_FuncSphereLSDist.hxx`:57 - `GeomConvert_FuncSphereLSDist::SetPoints()`
+    pub fn set_points(&mut self, thePoints: &crate::ffi_types::Handle_NCollection_HArray1_gp_XYZ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomBase::GeomConvert_FuncSphereLSDist_set_points(
                 self as *mut Self,
@@ -2414,7 +2122,7 @@ impl FuncSphereLSDist {
         })
     }
 
-    /// **Source:** `GeomConvert_FuncSphereLSDist.hxx`:57 - `GeomConvert_FuncSphereLSDist::NbVariables()`
+    /// **Source:** `GeomConvert_FuncSphereLSDist.hxx`:63 - `GeomConvert_FuncSphereLSDist::NbVariables()`
     /// Number of variables.
     pub fn nb_variables(&self) -> i32 {
         crate::check_result(unsafe {
@@ -2424,7 +2132,7 @@ impl FuncSphereLSDist {
         })
     }
 
-    /// **Source:** `GeomConvert_FuncSphereLSDist.hxx`:60 - `GeomConvert_FuncSphereLSDist::Value()`
+    /// **Source:** `GeomConvert_FuncSphereLSDist.hxx`:66 - `GeomConvert_FuncSphereLSDist::Value()`
     /// Value.
     pub fn value(&mut self, X: &crate::ffi_types::math_Vector, F: &mut f64) -> bool {
         crate::check_result(unsafe {
@@ -2436,7 +2144,7 @@ impl FuncSphereLSDist {
         })
     }
 
-    /// **Source:** `GeomConvert_FuncSphereLSDist.hxx`:63 - `GeomConvert_FuncSphereLSDist::Gradient()`
+    /// **Source:** `GeomConvert_FuncSphereLSDist.hxx`:69 - `GeomConvert_FuncSphereLSDist::Gradient()`
     /// Gradient.
     pub fn gradient(
         &mut self,
@@ -2452,7 +2160,7 @@ impl FuncSphereLSDist {
         })
     }
 
-    /// **Source:** `GeomConvert_FuncSphereLSDist.hxx`:66 - `GeomConvert_FuncSphereLSDist::Values()`
+    /// **Source:** `GeomConvert_FuncSphereLSDist.hxx`:72 - `GeomConvert_FuncSphereLSDist::Values()`
     /// Value and gradient.
     pub fn values(
         &mut self,
@@ -2516,7 +2224,7 @@ impl FuncSphereLSDist {
 // From GeomConvert_SurfToAnaSurf.hxx
 // ========================
 
-/// **Source:** `GeomConvert_SurfToAnaSurf.hxx`:37 - `GeomConvert_SurfToAnaSurf`
+/// **Source:** `GeomConvert_SurfToAnaSurf.hxx`:39 - `GeomConvert_SurfToAnaSurf`
 /// Converts a surface to the analytical form with given
 /// precision. Conversion is done only the surface is bspline
 /// of bezier and this can be approximated by some analytical
@@ -2532,7 +2240,7 @@ unsafe impl crate::CppDeletable for SurfToAnaSurf {
 }
 
 impl SurfToAnaSurf {
-    /// **Source:** `GeomConvert_SurfToAnaSurf.hxx`:42 - `GeomConvert_SurfToAnaSurf::GeomConvert_SurfToAnaSurf()`
+    /// **Source:** `GeomConvert_SurfToAnaSurf.hxx`:44 - `GeomConvert_SurfToAnaSurf::GeomConvert_SurfToAnaSurf()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -2541,8 +2249,10 @@ impl SurfToAnaSurf {
         }
     }
 
-    /// **Source:** `GeomConvert_SurfToAnaSurf.hxx`:44 - `GeomConvert_SurfToAnaSurf::GeomConvert_SurfToAnaSurf()`
-    pub fn new_handlegeomsurface(S: &crate::ffi_types::HandleGeomSurface) -> crate::OwnedPtr<Self> {
+    /// **Source:** `GeomConvert_SurfToAnaSurf.hxx`:46 - `GeomConvert_SurfToAnaSurf::GeomConvert_SurfToAnaSurf()`
+    pub fn new_handlegeomsurface(
+        S: &crate::ffi_types::Handle_Geom_Surface,
+    ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKGeomBase::GeomConvert_SurfToAnaSurf_ctor_handlegeomsurface(S),
@@ -2550,14 +2260,14 @@ impl SurfToAnaSurf {
         }
     }
 
-    /// **Source:** `GeomConvert_SurfToAnaSurf.hxx`:46 - `GeomConvert_SurfToAnaSurf::Init()`
-    pub fn init(&mut self, S: &crate::ffi_types::HandleGeomSurface) {
+    /// **Source:** `GeomConvert_SurfToAnaSurf.hxx`:48 - `GeomConvert_SurfToAnaSurf::Init()`
+    pub fn init(&mut self, S: &crate::ffi_types::Handle_Geom_Surface) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomBase::GeomConvert_SurfToAnaSurf_init(self as *mut Self, S)
         })
     }
 
-    /// **Source:** `GeomConvert_SurfToAnaSurf.hxx`:48 - `GeomConvert_SurfToAnaSurf::SetConvType()`
+    /// **Source:** `GeomConvert_SurfToAnaSurf.hxx`:50 - `GeomConvert_SurfToAnaSurf::SetConvType()`
     pub fn set_conv_type(&mut self, theConvType: crate::geom_convert::ConvType) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomBase::GeomConvert_SurfToAnaSurf_set_conv_type(
@@ -2567,7 +2277,7 @@ impl SurfToAnaSurf {
         })
     }
 
-    /// **Source:** `GeomConvert_SurfToAnaSurf.hxx`:53 - `GeomConvert_SurfToAnaSurf::SetTarget()`
+    /// **Source:** `GeomConvert_SurfToAnaSurf.hxx`:55 - `GeomConvert_SurfToAnaSurf::SetTarget()`
     pub fn set_target(&mut self, theSurfType: crate::geom_abs::SurfaceType) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKGeomBase::GeomConvert_SurfToAnaSurf_set_target(
@@ -2577,7 +2287,7 @@ impl SurfToAnaSurf {
         })
     }
 
-    /// **Source:** `GeomConvert_SurfToAnaSurf.hxx`:57 - `GeomConvert_SurfToAnaSurf::Gap()`
+    /// **Source:** `GeomConvert_SurfToAnaSurf.hxx`:59 - `GeomConvert_SurfToAnaSurf::Gap()`
     /// Returns maximal deviation of converted surface from the original
     /// one computed by last call to ConvertToAnalytical
     pub fn gap(&self) -> f64 {
@@ -2586,14 +2296,14 @@ impl SurfToAnaSurf {
         })
     }
 
-    /// **Source:** `GeomConvert_SurfToAnaSurf.hxx`:63 - `GeomConvert_SurfToAnaSurf::ConvertToAnalytical()`
+    /// **Source:** `GeomConvert_SurfToAnaSurf.hxx`:65 - `GeomConvert_SurfToAnaSurf::ConvertToAnalytical()`
     /// Tries to convert the Surface to an Analytic form
     /// Returns the result
     /// In case of failure, returns a Null Handle
     pub fn convert_to_analytical_real(
         &mut self,
         InitialToler: f64,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleGeomSurface> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Geom_Surface> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKGeomBase::GeomConvert_SurfToAnaSurf_convert_to_analytical_real(
@@ -2604,7 +2314,7 @@ impl SurfToAnaSurf {
         }
     }
 
-    /// **Source:** `GeomConvert_SurfToAnaSurf.hxx`:64 - `GeomConvert_SurfToAnaSurf::ConvertToAnalytical()`
+    /// **Source:** `GeomConvert_SurfToAnaSurf.hxx`:66 - `GeomConvert_SurfToAnaSurf::ConvertToAnalytical()`
     pub fn convert_to_analytical_real5(
         &mut self,
         InitialToler: f64,
@@ -2612,7 +2322,7 @@ impl SurfToAnaSurf {
         Umax: f64,
         Vmin: f64,
         Vmax: f64,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleGeomSurface> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Geom_Surface> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKGeomBase::GeomConvert_SurfToAnaSurf_convert_to_analytical_real5(
@@ -2627,11 +2337,11 @@ impl SurfToAnaSurf {
         }
     }
 
-    /// **Source:** `GeomConvert_SurfToAnaSurf.hxx`:71 - `GeomConvert_SurfToAnaSurf::IsSame()`
+    /// **Source:** `GeomConvert_SurfToAnaSurf.hxx`:73 - `GeomConvert_SurfToAnaSurf::IsSame()`
     /// Returns true if surfaces is same with the given tolerance
     pub fn is_same(
-        S1: &crate::ffi_types::HandleGeomSurface,
-        S2: &crate::ffi_types::HandleGeomSurface,
+        S1: &crate::ffi_types::Handle_Geom_Surface,
+        S2: &crate::ffi_types::Handle_Geom_Surface,
         tol: f64,
     ) -> bool {
         crate::check_result(unsafe {
@@ -2639,9 +2349,9 @@ impl SurfToAnaSurf {
         })
     }
 
-    /// **Source:** `GeomConvert_SurfToAnaSurf.hxx`:76 - `GeomConvert_SurfToAnaSurf::IsCanonical()`
+    /// **Source:** `GeomConvert_SurfToAnaSurf.hxx`:78 - `GeomConvert_SurfToAnaSurf::IsCanonical()`
     /// Returns true, if surface is canonical
-    pub fn is_canonical(S: &crate::ffi_types::HandleGeomSurface) -> bool {
+    pub fn is_canonical(S: &crate::ffi_types::Handle_Geom_Surface) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomBase::GeomConvert_SurfToAnaSurf_is_canonical(S)
         })
@@ -2678,11 +2388,11 @@ impl Units {
     /// **Source:** `GeomConvert_Units.hxx`:28 - `GeomConvert_Units::RadianToDegree()`
     /// Convert 2d curve for change angle unit from radian to degree
     pub fn radian_to_degree(
-        theCurve: &crate::ffi_types::HandleGeom2dCurve,
-        theSurface: &crate::ffi_types::HandleGeomSurface,
+        theCurve: &crate::ffi_types::Handle_Geom2d_Curve,
+        theSurface: &crate::ffi_types::Handle_Geom_Surface,
         theLengthFactor: f64,
         theFactorRadianDegree: f64,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleGeom2dCurve> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Geom2d_Curve> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKGeomBase::GeomConvert_Units_radian_to_degree(
@@ -2698,11 +2408,11 @@ impl Units {
     /// **Source:** `GeomConvert_Units.hxx`:35 - `GeomConvert_Units::DegreeToRadian()`
     /// Convert 2d curve for change angle unit from degree to radian
     pub fn degree_to_radian(
-        theCurve: &crate::ffi_types::HandleGeom2dCurve,
-        theSurface: &crate::ffi_types::HandleGeomSurface,
+        theCurve: &crate::ffi_types::Handle_Geom2d_Curve,
+        theSurface: &crate::ffi_types::Handle_Geom_Surface,
         theLengthFactor: f64,
         theFactorRadianDegree: f64,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleGeom2dCurve> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Geom2d_Curve> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKGeomBase::GeomConvert_Units_degree_to_radian(
@@ -2718,8 +2428,8 @@ impl Units {
     /// **Source:** `GeomConvert_Units.hxx`:42 - `GeomConvert_Units::MirrorPCurve()`
     /// return 2d curve as 'mirror' for given
     pub fn mirror_p_curve(
-        theCurve: &crate::ffi_types::HandleGeom2dCurve,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleGeom2dCurve> {
+        theCurve: &crate::ffi_types::Handle_Geom2d_Curve,
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Geom2d_Curve> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKGeomBase::GeomConvert_Units_mirror_p_curve(theCurve),

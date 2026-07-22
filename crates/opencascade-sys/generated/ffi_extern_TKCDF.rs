@@ -10,59 +10,59 @@ use crate::ffi_types::*;
 unsafe extern "C" {
     // ======================== CDF_Application ========================
     pub fn CDF_Application_destructor(self_: *mut CDF_Application);
-    /// **Source:** `CDF_Application.hxx`:61 - `CDF_Application::NewDocument()`
+    /// **Source:** `CDF_Application.hxx`:59 - `CDF_Application::NewDocument()`
     pub fn CDF_Application_new_document(
         self_: *mut CDF_Application,
         theFormat: *const TCollection_ExtendedString,
-        theDoc: *mut HandleCDMDocument,
+        theDoc: *mut Handle_CDM_Document,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `CDF_Application.hxx`:67 - `CDF_Application::InitDocument()`
+    /// **Source:** `CDF_Application.hxx`:65 - `CDF_Application::InitDocument()`
     pub fn CDF_Application_init_document(
         self_: *const CDF_Application,
-        theDoc: *const HandleCDMDocument,
+        theDoc: *const Handle_CDM_Document,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `CDF_Application.hxx`:71 - `CDF_Application::Open()`
+    /// **Source:** `CDF_Application.hxx`:69 - `CDF_Application::Open()`
     pub fn CDF_Application_open(
         self_: *mut CDF_Application,
-        aDocument: *const HandleCDMDocument,
+        aDocument: *const Handle_CDM_Document,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `CDF_Application.hxx`:73 - `CDF_Application::CanClose()`
+    /// **Source:** `CDF_Application.hxx`:71 - `CDF_Application::CanClose()`
     pub fn CDF_Application_can_close(
         self_: *mut CDF_Application,
-        aDocument: *const HandleCDMDocument,
+        aDocument: *const Handle_CDM_Document,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `CDF_Application.hxx`:77 - `CDF_Application::Close()`
+    /// **Source:** `CDF_Application.hxx`:75 - `CDF_Application::Close()`
     pub fn CDF_Application_close(
         self_: *mut CDF_Application,
-        aDocument: *const HandleCDMDocument,
+        aDocument: *const Handle_CDM_Document,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `CDF_Application.hxx`:97 - `CDF_Application::Retrieve()`
+    /// **Source:** `CDF_Application.hxx`:95 - `CDF_Application::Retrieve()`
     pub fn CDF_Application_retrieve_extendedstring2_bool_handlepcdmreaderfilter_progressrange(
         self_: *mut CDF_Application,
         aFolder: *const TCollection_ExtendedString,
         aName: *const TCollection_ExtendedString,
         UseStorageConfiguration: bool,
-        theFilter: *const HandlePCDMReaderFilter,
+        theFilter: *const Handle_PCDM_ReaderFilter,
         theRange: *const Message_ProgressRange,
-    ) -> crate::OcctResult<*mut HandleCDMDocument>;
-    /// **Source:** `CDF_Application.hxx`:118 - `CDF_Application::Retrieve()`
+    ) -> crate::OcctResult<*mut Handle_CDM_Document>;
+    /// **Source:** `CDF_Application.hxx`:116 - `CDF_Application::Retrieve()`
     pub fn CDF_Application_retrieve_extendedstring3_bool_handlepcdmreaderfilter_progressrange(
         self_: *mut CDF_Application,
         aFolder: *const TCollection_ExtendedString,
         aName: *const TCollection_ExtendedString,
         aVersion: *const TCollection_ExtendedString,
         UseStorageConfiguration: bool,
-        theFilter: *const HandlePCDMReaderFilter,
+        theFilter: *const Handle_PCDM_ReaderFilter,
         theRange: *const Message_ProgressRange,
-    ) -> crate::OcctResult<*mut HandleCDMDocument>;
-    /// **Source:** `CDF_Application.hxx`:126 - `CDF_Application::CanRetrieve()`
+    ) -> crate::OcctResult<*mut Handle_CDM_Document>;
+    /// **Source:** `CDF_Application.hxx`:124 - `CDF_Application::CanRetrieve()`
     pub fn CDF_Application_can_retrieve_extendedstring2_bool(
         self_: *mut CDF_Application,
         theFolder: *const TCollection_ExtendedString,
         theName: *const TCollection_ExtendedString,
         theAppendMode: bool,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `CDF_Application.hxx`:130 - `CDF_Application::CanRetrieve()`
+    /// **Source:** `CDF_Application.hxx`:128 - `CDF_Application::CanRetrieve()`
     pub fn CDF_Application_can_retrieve_extendedstring3_bool(
         self_: *mut CDF_Application,
         theFolder: *const TCollection_ExtendedString,
@@ -70,59 +70,59 @@ unsafe extern "C" {
         theVersion: *const TCollection_ExtendedString,
         theAppendMode: bool,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `CDF_Application.hxx`:136 - `CDF_Application::GetRetrieveStatus()`
+    /// **Source:** `CDF_Application.hxx`:134 - `CDF_Application::GetRetrieveStatus()`
     pub fn CDF_Application_get_retrieve_status(
         self_: *const CDF_Application,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `CDF_Application.hxx`:140 - `CDF_Application::Read()`
+    /// **Source:** `CDF_Application.hxx`:138 - `CDF_Application::Read()`
     pub fn CDF_Application_read(
         self_: *mut CDF_Application,
         theIStream: *mut Standard_IStream,
-        theDocument: *mut HandleCDMDocument,
-        theFilter: *const HandlePCDMReaderFilter,
+        theDocument: *mut Handle_CDM_Document,
+        theFilter: *const Handle_PCDM_ReaderFilter,
         theRange: *const Message_ProgressRange,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `CDF_Application.hxx`:158 - `CDF_Application::ReaderFromFormat()`
+    /// **Source:** `CDF_Application.hxx`:156 - `CDF_Application::ReaderFromFormat()`
     pub fn CDF_Application_reader_from_format(
         self_: *mut CDF_Application,
         aFormat: *const TCollection_ExtendedString,
-    ) -> crate::OcctResult<*mut HandlePCDMReader>;
-    /// **Source:** `CDF_Application.hxx`:173 - `CDF_Application::WriterFromFormat()`
+    ) -> crate::OcctResult<*mut Handle_PCDM_Reader>;
+    /// **Source:** `CDF_Application.hxx`:171 - `CDF_Application::WriterFromFormat()`
     pub fn CDF_Application_writer_from_format(
         self_: *mut CDF_Application,
         aFormat: *const TCollection_ExtendedString,
-    ) -> crate::OcctResult<*mut HandlePCDMStorageDriver>;
-    /// **Source:** `CDF_Application.hxx`:179 - `CDF_Application::Format()`
+    ) -> crate::OcctResult<*mut Handle_PCDM_StorageDriver>;
+    /// **Source:** `CDF_Application.hxx`:177 - `CDF_Application::Format()`
     pub fn CDF_Application_format(
         self_: *mut CDF_Application,
         aFileName: *const TCollection_ExtendedString,
         theFormat: *mut TCollection_ExtendedString,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `CDF_Application.hxx`:182 - `CDF_Application::DefaultFolder()`
+    /// **Source:** `CDF_Application.hxx`:180 - `CDF_Application::DefaultFolder()`
     pub fn CDF_Application_default_folder(
         self_: *mut CDF_Application,
     ) -> crate::OcctResult<*const u16>;
-    /// **Source:** `CDF_Application.hxx`:184 - `CDF_Application::SetDefaultFolder()`
+    /// **Source:** `CDF_Application.hxx`:182 - `CDF_Application::SetDefaultFolder()`
     pub fn CDF_Application_set_default_folder(
         self_: *mut CDF_Application,
         aFolder: *const u16,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `CDF_Application.hxx`:187 - `CDF_Application::MetaDataDriver()`
+    /// **Source:** `CDF_Application.hxx`:185 - `CDF_Application::MetaDataDriver()`
     pub fn CDF_Application_meta_data_driver(
         self_: *const CDF_Application,
-    ) -> crate::OcctResult<*mut HandleCDFMetaDataDriver>;
-    /// **Source:** `CDF_Application.hxx`:189 - `CDF_Application::DynamicType()`
+    ) -> crate::OcctResult<*mut Handle_CDF_MetaDataDriver>;
+    /// **Source:** `CDF_Application.hxx`:187 - `CDF_Application::DynamicType()`
     pub fn CDF_Application_dynamic_type(
         self_: *const CDF_Application,
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// **Source:** `CDF_Application.hxx`:54 - `CDF_Application::Load()`
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
+    /// **Source:** `CDF_Application.hxx`:52 - `CDF_Application::Load()`
     pub fn CDF_Application_load(
         aGUID: *const Standard_GUID,
-    ) -> crate::OcctResult<*mut HandleCDFApplication>;
-    /// **Source:** `CDF_Application.hxx`:189 - `CDF_Application::get_type_name()`
+    ) -> crate::OcctResult<*mut Handle_CDF_Application>;
+    /// **Source:** `CDF_Application.hxx`:187 - `CDF_Application::get_type_name()`
     pub fn CDF_Application_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
-    /// **Source:** `CDF_Application.hxx`:189 - `CDF_Application::get_type_descriptor()`
-    pub fn CDF_Application_get_type_descriptor() -> crate::OcctResult<*const HandleStandardType>;
+    /// **Source:** `CDF_Application.hxx`:187 - `CDF_Application::get_type_descriptor()`
+    pub fn CDF_Application_get_type_descriptor() -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast CDF_Application to CDM_Application
     pub fn CDF_Application_as_CDM_Application(
         self_: *const CDF_Application,
@@ -140,146 +140,142 @@ unsafe extern "C" {
         self_: *mut CDF_Application,
     ) -> crate::OcctResult<*mut Standard_Transient>;
     /// Destroy Handle<CDF_Application>
-    pub fn HandleCDFApplication_destructor(self_: *mut HandleCDFApplication);
+    pub fn Handle_CDF_Application_destructor(self_: *mut Handle_CDF_Application);
     /// Clone Handle<CDF_Application> (increments reference count)
-    pub fn HandleCDFApplication_clone(
-        self_: *const HandleCDFApplication,
-    ) -> crate::OcctResult<*mut HandleCDFApplication>;
+    pub fn Handle_CDF_Application_clone(
+        self_: *const Handle_CDF_Application,
+    ) -> crate::OcctResult<*mut Handle_CDF_Application>;
     /// Check if Handle<CDF_Application> is null
-    pub fn HandleCDFApplication_is_null(self_: *const HandleCDFApplication) -> bool;
+    pub fn Handle_CDF_Application_is_null(self_: *const Handle_CDF_Application) -> bool;
     /// Dereference Handle to get *const CDF_Application
-    pub fn HandleCDFApplication_get(
-        handle: *const HandleCDFApplication,
+    pub fn Handle_CDF_Application_get(
+        handle: *const Handle_CDF_Application,
     ) -> crate::OcctResult<*const CDF_Application>;
     /// Dereference Handle to get *mut CDF_Application
-    pub fn HandleCDFApplication_get_mut(
-        handle: *mut HandleCDFApplication,
+    pub fn Handle_CDF_Application_get_mut(
+        handle: *mut Handle_CDF_Application,
     ) -> crate::OcctResult<*mut CDF_Application>;
     /// Upcast Handle<CDF_Application> to Handle<CDM_Application>
-    pub fn HandleCDFApplication_to_HandleCDMApplication(
-        self_: *const HandleCDFApplication,
-    ) -> crate::OcctResult<*mut HandleCDMApplication>;
+    pub fn Handle_CDF_Application_to_Handle_CDM_Application(
+        self_: *const Handle_CDF_Application,
+    ) -> crate::OcctResult<*mut Handle_CDM_Application>;
     /// Upcast Handle<CDF_Application> to Handle<Standard_Transient>
-    pub fn HandleCDFApplication_to_HandleStandardTransient(
-        self_: *const HandleCDFApplication,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
+    pub fn Handle_CDF_Application_to_Handle_Standard_Transient(
+        self_: *const Handle_CDF_Application,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
     /// Downcast Handle<CDF_Application> to Handle<AppStdL_Application> (returns null on failure)
-    pub fn HandleCDFApplication_downcast_to_HandleAppStdLApplication(
-        self_: *const HandleCDFApplication,
-    ) -> crate::OcctResult<*mut HandleAppStdLApplication>;
+    pub fn Handle_CDF_Application_downcast_to_Handle_AppStdL_Application(
+        self_: *const Handle_CDF_Application,
+    ) -> crate::OcctResult<*mut Handle_AppStdL_Application>;
     /// Downcast Handle<CDF_Application> to Handle<AppStd_Application> (returns null on failure)
-    pub fn HandleCDFApplication_downcast_to_HandleAppStdApplication(
-        self_: *const HandleCDFApplication,
-    ) -> crate::OcctResult<*mut HandleAppStdApplication>;
+    pub fn Handle_CDF_Application_downcast_to_Handle_AppStd_Application(
+        self_: *const Handle_CDF_Application,
+    ) -> crate::OcctResult<*mut Handle_AppStd_Application>;
     /// Downcast Handle<CDF_Application> to Handle<TDocStd_Application> (returns null on failure)
-    pub fn HandleCDFApplication_downcast_to_HandleTDocStdApplication(
-        self_: *const HandleCDFApplication,
-    ) -> crate::OcctResult<*mut HandleTDocStdApplication>;
+    pub fn Handle_CDF_Application_downcast_to_Handle_TDocStd_Application(
+        self_: *const Handle_CDF_Application,
+    ) -> crate::OcctResult<*mut Handle_TDocStd_Application>;
     /// Downcast Handle<CDF_Application> to Handle<TObj_Application> (returns null on failure)
-    pub fn HandleCDFApplication_downcast_to_HandleTObjApplication(
-        self_: *const HandleCDFApplication,
-    ) -> crate::OcctResult<*mut HandleTObjApplication>;
+    pub fn Handle_CDF_Application_downcast_to_Handle_TObj_Application(
+        self_: *const Handle_CDF_Application,
+    ) -> crate::OcctResult<*mut Handle_TObj_Application>;
     /// Downcast Handle<CDF_Application> to Handle<XCAFApp_Application> (returns null on failure)
-    pub fn HandleCDFApplication_downcast_to_HandleXCAFAppApplication(
-        self_: *const HandleCDFApplication,
-    ) -> crate::OcctResult<*mut HandleXCAFAppApplication>;
-    /// Inherited: **Source:** `CDM_Application.hxx`:42 - `CDM_Application::Resources()`
+    pub fn Handle_CDF_Application_downcast_to_Handle_XCAFApp_Application(
+        self_: *const Handle_CDF_Application,
+    ) -> crate::OcctResult<*mut Handle_XCAFApp_Application>;
+    /// Inherited: **Source:** `CDM_Application.hxx`:40 - `CDM_Application::Resources()`
     pub fn CDF_Application_inherited_Resources(
         self_: *mut CDF_Application,
-    ) -> crate::OcctResult<*mut HandleResourceManager>;
-    /// Inherited: **Source:** `CDM_Application.hxx`:45 - `CDM_Application::MessageDriver()`
+    ) -> crate::OcctResult<*mut Handle_Resource_Manager>;
+    /// Inherited: **Source:** `CDM_Application.hxx`:43 - `CDM_Application::MessageDriver()`
     pub fn CDF_Application_inherited_MessageDriver(
         self_: *mut CDF_Application,
-    ) -> crate::OcctResult<*mut HandleMessageMessenger>;
-    /// Inherited: **Source:** `CDM_Application.hxx`:49 - `CDM_Application::BeginOfUpdate()`
+    ) -> crate::OcctResult<*mut Handle_Message_Messenger>;
+    /// Inherited: **Source:** `CDM_Application.hxx`:47 - `CDM_Application::BeginOfUpdate()`
     pub fn CDF_Application_inherited_BeginOfUpdate(
         self_: *mut CDF_Application,
-        aDocument: *const HandleCDMDocument,
+        aDocument: *const Handle_CDM_Document,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `CDM_Application.hxx`:53 - `CDM_Application::EndOfUpdate()`
+    /// Inherited: **Source:** `CDM_Application.hxx`:51 - `CDM_Application::EndOfUpdate()`
     pub fn CDF_Application_inherited_EndOfUpdate(
         self_: *mut CDF_Application,
-        aDocument: *const HandleCDMDocument,
+        aDocument: *const Handle_CDM_Document,
         theStatus: bool,
         ErrorString: *const TCollection_ExtendedString,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `CDM_Application.hxx`:61 - `CDM_Application::Name()`
+    /// Inherited: **Source:** `CDM_Application.hxx`:59 - `CDM_Application::Name()`
     pub fn CDF_Application_inherited_Name(
         self_: *const CDF_Application,
     ) -> crate::OcctResult<*mut TCollection_ExtendedString>;
-    /// Inherited: **Source:** `CDM_Application.hxx`:64 - `CDM_Application::Version()`
+    /// Inherited: **Source:** `CDM_Application.hxx`:62 - `CDM_Application::Version()`
     pub fn CDF_Application_inherited_Version(
         self_: *const CDF_Application,
     ) -> crate::OcctResult<*mut TCollection_AsciiString>;
-    /// Inherited: **Source:** `CDM_Application.hxx`:67 - `CDM_Application::MetaDataLookUpTable()`
-    pub fn CDF_Application_inherited_MetaDataLookUpTable(
-        self_: *mut CDF_Application,
-    ) -> crate::OcctResult<*mut CDM_MetaDataLookUpTable>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn CDF_Application_inherited_IsInstance(
         self_: *const CDF_Application,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn CDF_Application_inherited_IsKind(
         self_: *const CDF_Application,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn CDF_Application_inherited_This(
         self_: *const CDF_Application,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn CDF_Application_inherited_GetRefCount(
         self_: *const CDF_Application,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn CDF_Application_inherited_IncrementRefCounter(
         self_: *mut CDF_Application,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn CDF_Application_inherited_DecrementRefCounter(
         self_: *mut CDF_Application,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn CDF_Application_inherited_Delete(
         self_: *const CDF_Application,
     ) -> *const std::ffi::c_char;
     // ======================== CDF_Directory ========================
     pub fn CDF_Directory_destructor(self_: *mut CDF_Directory);
-    /// **Source:** `CDF_Directory.hxx`:38 - `CDF_Directory::CDF_Directory()`
+    /// **Source:** `CDF_Directory.hxx`:36 - `CDF_Directory::CDF_Directory()`
     pub fn CDF_Directory_ctor() -> crate::OcctResult<*mut CDF_Directory>;
-    /// **Source:** `CDF_Directory.hxx`:41 - `CDF_Directory::Add()`
+    /// **Source:** `CDF_Directory.hxx`:39 - `CDF_Directory::Add()`
     pub fn CDF_Directory_add(
         self_: *mut CDF_Directory,
-        aDocument: *const HandleCDMDocument,
+        aDocument: *const Handle_CDM_Document,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `CDF_Directory.hxx`:44 - `CDF_Directory::Remove()`
+    /// **Source:** `CDF_Directory.hxx`:42 - `CDF_Directory::Remove()`
     pub fn CDF_Directory_remove(
         self_: *mut CDF_Directory,
-        aDocument: *const HandleCDMDocument,
+        aDocument: *const Handle_CDM_Document,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `CDF_Directory.hxx`:47 - `CDF_Directory::Contains()`
+    /// **Source:** `CDF_Directory.hxx`:45 - `CDF_Directory::Contains()`
     pub fn CDF_Directory_contains(
         self_: *const CDF_Directory,
-        aDocument: *const HandleCDMDocument,
+        aDocument: *const Handle_CDM_Document,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `CDF_Directory.hxx`:51 - `CDF_Directory::Last()`
+    /// **Source:** `CDF_Directory.hxx`:49 - `CDF_Directory::Last()`
     pub fn CDF_Directory_last(
         self_: *mut CDF_Directory,
-    ) -> crate::OcctResult<*mut HandleCDMDocument>;
-    /// **Source:** `CDF_Directory.hxx`:54 - `CDF_Directory::Length()`
+    ) -> crate::OcctResult<*mut Handle_CDM_Document>;
+    /// **Source:** `CDF_Directory.hxx`:52 - `CDF_Directory::Length()`
     pub fn CDF_Directory_length(self_: *const CDF_Directory) -> crate::OcctResult<i32>;
-    /// **Source:** `CDF_Directory.hxx`:57 - `CDF_Directory::IsEmpty()`
+    /// **Source:** `CDF_Directory.hxx`:55 - `CDF_Directory::IsEmpty()`
     pub fn CDF_Directory_is_empty(self_: *const CDF_Directory) -> crate::OcctResult<bool>;
-    /// **Source:** `CDF_Directory.hxx`:61 - `CDF_Directory::DynamicType()`
+    /// **Source:** `CDF_Directory.hxx`:59 - `CDF_Directory::DynamicType()`
     pub fn CDF_Directory_dynamic_type(
         self_: *const CDF_Directory,
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// **Source:** `CDF_Directory.hxx`:61 - `CDF_Directory::get_type_name()`
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
+    /// **Source:** `CDF_Directory.hxx`:59 - `CDF_Directory::get_type_name()`
     pub fn CDF_Directory_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
-    /// **Source:** `CDF_Directory.hxx`:61 - `CDF_Directory::get_type_descriptor()`
-    pub fn CDF_Directory_get_type_descriptor() -> crate::OcctResult<*const HandleStandardType>;
+    /// **Source:** `CDF_Directory.hxx`:59 - `CDF_Directory::get_type_descriptor()`
+    pub fn CDF_Directory_get_type_descriptor() -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast CDF_Directory to Standard_Transient
     pub fn CDF_Directory_as_Standard_Transient(
         self_: *const CDF_Directory,
@@ -291,123 +287,119 @@ unsafe extern "C" {
     /// Wrap CDF_Directory in a Handle
     pub fn CDF_Directory_to_handle(
         obj: *mut CDF_Directory,
-    ) -> crate::OcctResult<*mut HandleCDFDirectory>;
+    ) -> crate::OcctResult<*mut Handle_CDF_Directory>;
     /// Destroy Handle<CDF_Directory>
-    pub fn HandleCDFDirectory_destructor(self_: *mut HandleCDFDirectory);
+    pub fn Handle_CDF_Directory_destructor(self_: *mut Handle_CDF_Directory);
     /// Clone Handle<CDF_Directory> (increments reference count)
-    pub fn HandleCDFDirectory_clone(
-        self_: *const HandleCDFDirectory,
-    ) -> crate::OcctResult<*mut HandleCDFDirectory>;
+    pub fn Handle_CDF_Directory_clone(
+        self_: *const Handle_CDF_Directory,
+    ) -> crate::OcctResult<*mut Handle_CDF_Directory>;
     /// Check if Handle<CDF_Directory> is null
-    pub fn HandleCDFDirectory_is_null(self_: *const HandleCDFDirectory) -> bool;
+    pub fn Handle_CDF_Directory_is_null(self_: *const Handle_CDF_Directory) -> bool;
     /// Dereference Handle to get *const CDF_Directory
-    pub fn HandleCDFDirectory_get(
-        handle: *const HandleCDFDirectory,
+    pub fn Handle_CDF_Directory_get(
+        handle: *const Handle_CDF_Directory,
     ) -> crate::OcctResult<*const CDF_Directory>;
     /// Dereference Handle to get *mut CDF_Directory
-    pub fn HandleCDFDirectory_get_mut(
-        handle: *mut HandleCDFDirectory,
+    pub fn Handle_CDF_Directory_get_mut(
+        handle: *mut Handle_CDF_Directory,
     ) -> crate::OcctResult<*mut CDF_Directory>;
     /// Upcast Handle<CDF_Directory> to Handle<Standard_Transient>
-    pub fn HandleCDFDirectory_to_HandleStandardTransient(
-        self_: *const HandleCDFDirectory,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn Handle_CDF_Directory_to_Handle_Standard_Transient(
+        self_: *const Handle_CDF_Directory,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn CDF_Directory_inherited_IsInstance(
         self_: *const CDF_Directory,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn CDF_Directory_inherited_IsKind(
         self_: *const CDF_Directory,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn CDF_Directory_inherited_This(
         self_: *const CDF_Directory,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn CDF_Directory_inherited_GetRefCount(
         self_: *const CDF_Directory,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn CDF_Directory_inherited_IncrementRefCounter(
         self_: *mut CDF_Directory,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn CDF_Directory_inherited_DecrementRefCounter(
         self_: *mut CDF_Directory,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn CDF_Directory_inherited_Delete(self_: *const CDF_Directory) -> *const std::ffi::c_char;
     // ======================== CDF_DirectoryIterator ========================
     pub fn CDF_DirectoryIterator_destructor(self_: *mut CDF_DirectoryIterator);
-    /// **Source:** `CDF_DirectoryIterator.hxx`:35 - `CDF_DirectoryIterator::CDF_DirectoryIterator()`
-    pub fn CDF_DirectoryIterator_ctor() -> crate::OcctResult<*mut CDF_DirectoryIterator>;
     /// **Source:** `CDF_DirectoryIterator.hxx`:37 - `CDF_DirectoryIterator::CDF_DirectoryIterator()`
+    pub fn CDF_DirectoryIterator_ctor() -> crate::OcctResult<*mut CDF_DirectoryIterator>;
+    /// **Source:** `CDF_DirectoryIterator.hxx`:39 - `CDF_DirectoryIterator::CDF_DirectoryIterator()`
     pub fn CDF_DirectoryIterator_ctor_handlecdfdirectory(
-        aDirectory: *const HandleCDFDirectory,
+        aDirectory: *const Handle_CDF_Directory,
     ) -> crate::OcctResult<*mut CDF_DirectoryIterator>;
-    /// **Source:** `CDF_DirectoryIterator.hxx`:40 - `CDF_DirectoryIterator::MoreDocument()`
+    /// **Source:** `CDF_DirectoryIterator.hxx`:42 - `CDF_DirectoryIterator::MoreDocument()`
     pub fn CDF_DirectoryIterator_more_document(
         self_: *mut CDF_DirectoryIterator,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `CDF_DirectoryIterator.hxx`:44 - `CDF_DirectoryIterator::NextDocument()`
+    /// **Source:** `CDF_DirectoryIterator.hxx`:46 - `CDF_DirectoryIterator::NextDocument()`
     pub fn CDF_DirectoryIterator_next_document(
         self_: *mut CDF_DirectoryIterator,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `CDF_DirectoryIterator.hxx`:47 - `CDF_DirectoryIterator::Document()`
+    /// **Source:** `CDF_DirectoryIterator.hxx`:49 - `CDF_DirectoryIterator::Document()`
     pub fn CDF_DirectoryIterator_document(
         self_: *mut CDF_DirectoryIterator,
-    ) -> crate::OcctResult<*mut HandleCDMDocument>;
+    ) -> crate::OcctResult<*mut Handle_CDM_Document>;
     // ======================== CDF_FWOSDriver ========================
     pub fn CDF_FWOSDriver_destructor(self_: *mut CDF_FWOSDriver);
-    /// **Source:** `CDF_FWOSDriver.hxx`:39 - `CDF_FWOSDriver::CDF_FWOSDriver()`
-    pub fn CDF_FWOSDriver_ctor_metadatalookuptable(
-        theLookUpTable: *mut CDM_MetaDataLookUpTable,
-    ) -> crate::OcctResult<*mut CDF_FWOSDriver>;
-    /// **Source:** `CDF_FWOSDriver.hxx`:42 - `CDF_FWOSDriver::Find()`
+    /// **Source:** `CDF_FWOSDriver.hxx`:41 - `CDF_FWOSDriver::Find()`
     pub fn CDF_FWOSDriver_find(
         self_: *mut CDF_FWOSDriver,
         aFolder: *const TCollection_ExtendedString,
         aName: *const TCollection_ExtendedString,
         aVersion: *const TCollection_ExtendedString,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `CDF_FWOSDriver.hxx`:47 - `CDF_FWOSDriver::HasReadPermission()`
+    /// **Source:** `CDF_FWOSDriver.hxx`:45 - `CDF_FWOSDriver::HasReadPermission()`
     pub fn CDF_FWOSDriver_has_read_permission(
         self_: *mut CDF_FWOSDriver,
         aFolder: *const TCollection_ExtendedString,
         aName: *const TCollection_ExtendedString,
         aVersion: *const TCollection_ExtendedString,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `CDF_FWOSDriver.hxx`:52 - `CDF_FWOSDriver::FindFolder()`
+    /// **Source:** `CDF_FWOSDriver.hxx`:49 - `CDF_FWOSDriver::FindFolder()`
     pub fn CDF_FWOSDriver_find_folder(
         self_: *mut CDF_FWOSDriver,
         aFolder: *const TCollection_ExtendedString,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `CDF_FWOSDriver.hxx`:55 - `CDF_FWOSDriver::DefaultFolder()`
+    /// **Source:** `CDF_FWOSDriver.hxx`:51 - `CDF_FWOSDriver::DefaultFolder()`
     pub fn CDF_FWOSDriver_default_folder(
         self_: *mut CDF_FWOSDriver,
     ) -> crate::OcctResult<*mut TCollection_ExtendedString>;
-    /// **Source:** `CDF_FWOSDriver.hxx`:57 - `CDF_FWOSDriver::BuildFileName()`
+    /// **Source:** `CDF_FWOSDriver.hxx`:54 - `CDF_FWOSDriver::BuildFileName()`
     pub fn CDF_FWOSDriver_build_file_name(
         self_: *mut CDF_FWOSDriver,
-        aDocument: *const HandleCDMDocument,
+        aDocument: *const Handle_CDM_Document,
     ) -> crate::OcctResult<*mut TCollection_ExtendedString>;
-    /// **Source:** `CDF_FWOSDriver.hxx`:60 - `CDF_FWOSDriver::SetName()`
+    /// **Source:** `CDF_FWOSDriver.hxx`:57 - `CDF_FWOSDriver::SetName()`
     pub fn CDF_FWOSDriver_set_name(
         self_: *mut CDF_FWOSDriver,
-        aDocument: *const HandleCDMDocument,
+        aDocument: *const Handle_CDM_Document,
         aName: *const TCollection_ExtendedString,
     ) -> crate::OcctResult<*mut TCollection_ExtendedString>;
-    /// **Source:** `CDF_FWOSDriver.hxx`:64 - `CDF_FWOSDriver::DynamicType()`
+    /// **Source:** `CDF_FWOSDriver.hxx`:60 - `CDF_FWOSDriver::DynamicType()`
     pub fn CDF_FWOSDriver_dynamic_type(
         self_: *const CDF_FWOSDriver,
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// **Source:** `CDF_FWOSDriver.hxx`:64 - `CDF_FWOSDriver::get_type_name()`
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
+    /// **Source:** `CDF_FWOSDriver.hxx`:60 - `CDF_FWOSDriver::get_type_name()`
     pub fn CDF_FWOSDriver_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
-    /// **Source:** `CDF_FWOSDriver.hxx`:64 - `CDF_FWOSDriver::get_type_descriptor()`
-    pub fn CDF_FWOSDriver_get_type_descriptor() -> crate::OcctResult<*const HandleStandardType>;
+    /// **Source:** `CDF_FWOSDriver.hxx`:60 - `CDF_FWOSDriver::get_type_descriptor()`
+    pub fn CDF_FWOSDriver_get_type_descriptor() -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast CDF_FWOSDriver to CDF_MetaDataDriver
     pub fn CDF_FWOSDriver_as_CDF_MetaDataDriver(
         self_: *const CDF_FWOSDriver,
@@ -427,197 +419,197 @@ unsafe extern "C" {
     /// Wrap CDF_FWOSDriver in a Handle
     pub fn CDF_FWOSDriver_to_handle(
         obj: *mut CDF_FWOSDriver,
-    ) -> crate::OcctResult<*mut HandleCDFFWOSDriver>;
+    ) -> crate::OcctResult<*mut Handle_CDF_FWOSDriver>;
     /// Destroy Handle<CDF_FWOSDriver>
-    pub fn HandleCDFFWOSDriver_destructor(self_: *mut HandleCDFFWOSDriver);
+    pub fn Handle_CDF_FWOSDriver_destructor(self_: *mut Handle_CDF_FWOSDriver);
     /// Clone Handle<CDF_FWOSDriver> (increments reference count)
-    pub fn HandleCDFFWOSDriver_clone(
-        self_: *const HandleCDFFWOSDriver,
-    ) -> crate::OcctResult<*mut HandleCDFFWOSDriver>;
+    pub fn Handle_CDF_FWOSDriver_clone(
+        self_: *const Handle_CDF_FWOSDriver,
+    ) -> crate::OcctResult<*mut Handle_CDF_FWOSDriver>;
     /// Check if Handle<CDF_FWOSDriver> is null
-    pub fn HandleCDFFWOSDriver_is_null(self_: *const HandleCDFFWOSDriver) -> bool;
+    pub fn Handle_CDF_FWOSDriver_is_null(self_: *const Handle_CDF_FWOSDriver) -> bool;
     /// Dereference Handle to get *const CDF_FWOSDriver
-    pub fn HandleCDFFWOSDriver_get(
-        handle: *const HandleCDFFWOSDriver,
+    pub fn Handle_CDF_FWOSDriver_get(
+        handle: *const Handle_CDF_FWOSDriver,
     ) -> crate::OcctResult<*const CDF_FWOSDriver>;
     /// Dereference Handle to get *mut CDF_FWOSDriver
-    pub fn HandleCDFFWOSDriver_get_mut(
-        handle: *mut HandleCDFFWOSDriver,
+    pub fn Handle_CDF_FWOSDriver_get_mut(
+        handle: *mut Handle_CDF_FWOSDriver,
     ) -> crate::OcctResult<*mut CDF_FWOSDriver>;
     /// Upcast Handle<CDF_FWOSDriver> to Handle<CDF_MetaDataDriver>
-    pub fn HandleCDFFWOSDriver_to_HandleCDFMetaDataDriver(
-        self_: *const HandleCDFFWOSDriver,
-    ) -> crate::OcctResult<*mut HandleCDFMetaDataDriver>;
+    pub fn Handle_CDF_FWOSDriver_to_Handle_CDF_MetaDataDriver(
+        self_: *const Handle_CDF_FWOSDriver,
+    ) -> crate::OcctResult<*mut Handle_CDF_MetaDataDriver>;
     /// Upcast Handle<CDF_FWOSDriver> to Handle<Standard_Transient>
-    pub fn HandleCDFFWOSDriver_to_HandleStandardTransient(
-        self_: *const HandleCDFFWOSDriver,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
-    /// Inherited: **Source:** `CDF_MetaDataDriver.hxx`:40 - `CDF_MetaDataDriver::HasVersionCapability()`
+    pub fn Handle_CDF_FWOSDriver_to_Handle_Standard_Transient(
+        self_: *const Handle_CDF_FWOSDriver,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
+    /// Inherited: **Source:** `CDF_MetaDataDriver.hxx`:37 - `CDF_MetaDataDriver::HasVersionCapability()`
     pub fn CDF_FWOSDriver_inherited_HasVersionCapability(
         self_: *mut CDF_FWOSDriver,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `CDF_MetaDataDriver.hxx`:44 - `CDF_MetaDataDriver::CreateDependsOn()`
+    /// Inherited: **Source:** `CDF_MetaDataDriver.hxx`:41 - `CDF_MetaDataDriver::CreateDependsOn()`
     pub fn CDF_FWOSDriver_inherited_CreateDependsOn(
         self_: *mut CDF_FWOSDriver,
-        aFirstData: *const HandleCDMMetaData,
-        aSecondData: *const HandleCDMMetaData,
+        aFirstData: *const Handle_CDM_MetaData,
+        aSecondData: *const Handle_CDM_MetaData,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `CDF_MetaDataDriver.hxx`:47 - `CDF_MetaDataDriver::CreateReference()`
+    /// Inherited: **Source:** `CDF_MetaDataDriver.hxx`:44 - `CDF_MetaDataDriver::CreateReference()`
     pub fn CDF_FWOSDriver_inherited_CreateReference(
         self_: *mut CDF_FWOSDriver,
-        aFrom: *const HandleCDMMetaData,
-        aTo: *const HandleCDMMetaData,
+        aFrom: *const Handle_CDM_MetaData,
+        aTo: *const Handle_CDM_MetaData,
         aReferenceIdentifier: i32,
         aToDocumentVersion: i32,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `CDF_MetaDataDriver.hxx`:53 - `CDF_MetaDataDriver::HasVersion()`
+    /// Inherited: **Source:** `CDF_MetaDataDriver.hxx`:50 - `CDF_MetaDataDriver::HasVersion()`
     pub fn CDF_FWOSDriver_inherited_HasVersion(
         self_: *mut CDF_FWOSDriver,
         aFolder: *const TCollection_ExtendedString,
         aName: *const TCollection_ExtendedString,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `CDF_MetaDataDriver.hxx`:99 - `CDF_MetaDataDriver::LastVersion()`
+    /// Inherited: **Source:** `CDF_MetaDataDriver.hxx`:95 - `CDF_MetaDataDriver::LastVersion()`
     pub fn CDF_FWOSDriver_inherited_LastVersion(
         self_: *mut CDF_FWOSDriver,
-        aMetaData: *const HandleCDMMetaData,
-    ) -> crate::OcctResult<*mut HandleCDMMetaData>;
-    /// Inherited: **Source:** `CDF_MetaDataDriver.hxx`:115 - `CDF_MetaDataDriver::ReferenceIterator()`
+        aMetaData: *const Handle_CDM_MetaData,
+    ) -> crate::OcctResult<*mut Handle_CDM_MetaData>;
+    /// Inherited: **Source:** `CDF_MetaDataDriver.hxx`:111 - `CDF_MetaDataDriver::ReferenceIterator()`
     pub fn CDF_FWOSDriver_inherited_ReferenceIterator(
         self_: *mut CDF_FWOSDriver,
-        theMessageDriver: *const HandleMessageMessenger,
-    ) -> crate::OcctResult<*mut HandlePCDMReferenceIterator>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+        theMessageDriver: *const Handle_Message_Messenger,
+    ) -> crate::OcctResult<*mut Handle_PCDM_ReferenceIterator>;
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn CDF_FWOSDriver_inherited_IsInstance(
         self_: *const CDF_FWOSDriver,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn CDF_FWOSDriver_inherited_IsKind(
         self_: *const CDF_FWOSDriver,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn CDF_FWOSDriver_inherited_This(
         self_: *const CDF_FWOSDriver,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn CDF_FWOSDriver_inherited_GetRefCount(
         self_: *const CDF_FWOSDriver,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn CDF_FWOSDriver_inherited_IncrementRefCounter(
         self_: *mut CDF_FWOSDriver,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn CDF_FWOSDriver_inherited_DecrementRefCounter(
         self_: *mut CDF_FWOSDriver,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn CDF_FWOSDriver_inherited_Delete(self_: *const CDF_FWOSDriver)
         -> *const std::ffi::c_char;
     // ======================== CDF_MetaDataDriver ========================
     pub fn CDF_MetaDataDriver_destructor(self_: *mut CDF_MetaDataDriver);
-    /// **Source:** `CDF_MetaDataDriver.hxx`:40 - `CDF_MetaDataDriver::HasVersionCapability()`
+    /// **Source:** `CDF_MetaDataDriver.hxx`:37 - `CDF_MetaDataDriver::HasVersionCapability()`
     pub fn CDF_MetaDataDriver_has_version_capability(
         self_: *mut CDF_MetaDataDriver,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `CDF_MetaDataDriver.hxx`:44 - `CDF_MetaDataDriver::CreateDependsOn()`
+    /// **Source:** `CDF_MetaDataDriver.hxx`:41 - `CDF_MetaDataDriver::CreateDependsOn()`
     pub fn CDF_MetaDataDriver_create_depends_on(
         self_: *mut CDF_MetaDataDriver,
-        aFirstData: *const HandleCDMMetaData,
-        aSecondData: *const HandleCDMMetaData,
+        aFirstData: *const Handle_CDM_MetaData,
+        aSecondData: *const Handle_CDM_MetaData,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `CDF_MetaDataDriver.hxx`:47 - `CDF_MetaDataDriver::CreateReference()`
+    /// **Source:** `CDF_MetaDataDriver.hxx`:44 - `CDF_MetaDataDriver::CreateReference()`
     pub fn CDF_MetaDataDriver_create_reference(
         self_: *mut CDF_MetaDataDriver,
-        aFrom: *const HandleCDMMetaData,
-        aTo: *const HandleCDMMetaData,
+        aFrom: *const Handle_CDM_MetaData,
+        aTo: *const Handle_CDM_MetaData,
         aReferenceIdentifier: i32,
         aToDocumentVersion: i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `CDF_MetaDataDriver.hxx`:53 - `CDF_MetaDataDriver::HasVersion()`
+    /// **Source:** `CDF_MetaDataDriver.hxx`:50 - `CDF_MetaDataDriver::HasVersion()`
     pub fn CDF_MetaDataDriver_has_version(
         self_: *mut CDF_MetaDataDriver,
         aFolder: *const TCollection_ExtendedString,
         aName: *const TCollection_ExtendedString,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `CDF_MetaDataDriver.hxx`:56 - `CDF_MetaDataDriver::BuildFileName()`
+    /// **Source:** `CDF_MetaDataDriver.hxx`:53 - `CDF_MetaDataDriver::BuildFileName()`
     pub fn CDF_MetaDataDriver_build_file_name(
         self_: *mut CDF_MetaDataDriver,
-        aDocument: *const HandleCDMDocument,
+        aDocument: *const Handle_CDM_Document,
     ) -> crate::OcctResult<*mut TCollection_ExtendedString>;
-    /// **Source:** `CDF_MetaDataDriver.hxx`:63 - `CDF_MetaDataDriver::SetName()`
+    /// **Source:** `CDF_MetaDataDriver.hxx`:60 - `CDF_MetaDataDriver::SetName()`
     pub fn CDF_MetaDataDriver_set_name(
         self_: *mut CDF_MetaDataDriver,
-        aDocument: *const HandleCDMDocument,
+        aDocument: *const Handle_CDM_Document,
         aName: *const TCollection_ExtendedString,
     ) -> crate::OcctResult<*mut TCollection_ExtendedString>;
-    /// **Source:** `CDF_MetaDataDriver.hxx`:70 - `CDF_MetaDataDriver::Find()`
+    /// **Source:** `CDF_MetaDataDriver.hxx`:67 - `CDF_MetaDataDriver::Find()`
     pub fn CDF_MetaDataDriver_find_extendedstring3(
         self_: *mut CDF_MetaDataDriver,
         aFolder: *const TCollection_ExtendedString,
         aName: *const TCollection_ExtendedString,
         aVersion: *const TCollection_ExtendedString,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `CDF_MetaDataDriver.hxx`:74 - `CDF_MetaDataDriver::HasReadPermission()`
+    /// **Source:** `CDF_MetaDataDriver.hxx`:71 - `CDF_MetaDataDriver::HasReadPermission()`
     pub fn CDF_MetaDataDriver_has_read_permission(
         self_: *mut CDF_MetaDataDriver,
         aFolder: *const TCollection_ExtendedString,
         aName: *const TCollection_ExtendedString,
         aVersion: *const TCollection_ExtendedString,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `CDF_MetaDataDriver.hxx`:86 - `CDF_MetaDataDriver::MetaData()`
+    /// **Source:** `CDF_MetaDataDriver.hxx`:82 - `CDF_MetaDataDriver::MetaData()`
     pub fn CDF_MetaDataDriver_meta_data_extendedstring3(
         self_: *mut CDF_MetaDataDriver,
         aFolder: *const TCollection_ExtendedString,
         aName: *const TCollection_ExtendedString,
         aVersion: *const TCollection_ExtendedString,
-    ) -> crate::OcctResult<*mut HandleCDMMetaData>;
-    /// **Source:** `CDF_MetaDataDriver.hxx`:99 - `CDF_MetaDataDriver::LastVersion()`
+    ) -> crate::OcctResult<*mut Handle_CDM_MetaData>;
+    /// **Source:** `CDF_MetaDataDriver.hxx`:95 - `CDF_MetaDataDriver::LastVersion()`
     pub fn CDF_MetaDataDriver_last_version(
         self_: *mut CDF_MetaDataDriver,
-        aMetaData: *const HandleCDMMetaData,
-    ) -> crate::OcctResult<*mut HandleCDMMetaData>;
-    /// **Source:** `CDF_MetaDataDriver.hxx`:106 - `CDF_MetaDataDriver::CreateMetaData()`
+        aMetaData: *const Handle_CDM_MetaData,
+    ) -> crate::OcctResult<*mut Handle_CDM_MetaData>;
+    /// **Source:** `CDF_MetaDataDriver.hxx`:103 - `CDF_MetaDataDriver::CreateMetaData()`
     pub fn CDF_MetaDataDriver_create_meta_data(
         self_: *mut CDF_MetaDataDriver,
-        aDocument: *const HandleCDMDocument,
+        aDocument: *const Handle_CDM_Document,
         aFileName: *const TCollection_ExtendedString,
-    ) -> crate::OcctResult<*mut HandleCDMMetaData>;
-    /// **Source:** `CDF_MetaDataDriver.hxx`:110 - `CDF_MetaDataDriver::FindFolder()`
+    ) -> crate::OcctResult<*mut Handle_CDM_MetaData>;
+    /// **Source:** `CDF_MetaDataDriver.hxx`:107 - `CDF_MetaDataDriver::FindFolder()`
     pub fn CDF_MetaDataDriver_find_folder(
         self_: *mut CDF_MetaDataDriver,
         aFolder: *const TCollection_ExtendedString,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `CDF_MetaDataDriver.hxx`:113 - `CDF_MetaDataDriver::DefaultFolder()`
+    /// **Source:** `CDF_MetaDataDriver.hxx`:109 - `CDF_MetaDataDriver::DefaultFolder()`
     pub fn CDF_MetaDataDriver_default_folder(
         self_: *mut CDF_MetaDataDriver,
     ) -> crate::OcctResult<*mut TCollection_ExtendedString>;
-    /// **Source:** `CDF_MetaDataDriver.hxx`:115 - `CDF_MetaDataDriver::ReferenceIterator()`
+    /// **Source:** `CDF_MetaDataDriver.hxx`:111 - `CDF_MetaDataDriver::ReferenceIterator()`
     pub fn CDF_MetaDataDriver_reference_iterator(
         self_: *mut CDF_MetaDataDriver,
-        theMessageDriver: *const HandleMessageMessenger,
-    ) -> crate::OcctResult<*mut HandlePCDMReferenceIterator>;
-    /// **Source:** `CDF_MetaDataDriver.hxx`:119 - `CDF_MetaDataDriver::Find()`
+        theMessageDriver: *const Handle_Message_Messenger,
+    ) -> crate::OcctResult<*mut Handle_PCDM_ReferenceIterator>;
+    /// **Source:** `CDF_MetaDataDriver.hxx`:115 - `CDF_MetaDataDriver::Find()`
     pub fn CDF_MetaDataDriver_find_extendedstring2(
         self_: *mut CDF_MetaDataDriver,
         aFolder: *const TCollection_ExtendedString,
         aName: *const TCollection_ExtendedString,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `CDF_MetaDataDriver.hxx`:123 - `CDF_MetaDataDriver::MetaData()`
+    /// **Source:** `CDF_MetaDataDriver.hxx`:119 - `CDF_MetaDataDriver::MetaData()`
     pub fn CDF_MetaDataDriver_meta_data_extendedstring2(
         self_: *mut CDF_MetaDataDriver,
         aFolder: *const TCollection_ExtendedString,
         aName: *const TCollection_ExtendedString,
-    ) -> crate::OcctResult<*mut HandleCDMMetaData>;
-    /// **Source:** `CDF_MetaDataDriver.hxx`:126 - `CDF_MetaDataDriver::DynamicType()`
+    ) -> crate::OcctResult<*mut Handle_CDM_MetaData>;
+    /// **Source:** `CDF_MetaDataDriver.hxx`:122 - `CDF_MetaDataDriver::DynamicType()`
     pub fn CDF_MetaDataDriver_dynamic_type(
         self_: *const CDF_MetaDataDriver,
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// **Source:** `CDF_MetaDataDriver.hxx`:126 - `CDF_MetaDataDriver::get_type_name()`
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
+    /// **Source:** `CDF_MetaDataDriver.hxx`:122 - `CDF_MetaDataDriver::get_type_name()`
     pub fn CDF_MetaDataDriver_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
-    /// **Source:** `CDF_MetaDataDriver.hxx`:126 - `CDF_MetaDataDriver::get_type_descriptor()`
-    pub fn CDF_MetaDataDriver_get_type_descriptor() -> crate::OcctResult<*const HandleStandardType>;
+    /// **Source:** `CDF_MetaDataDriver.hxx`:122 - `CDF_MetaDataDriver::get_type_descriptor()`
+    pub fn CDF_MetaDataDriver_get_type_descriptor() -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast CDF_MetaDataDriver to Standard_Transient
     pub fn CDF_MetaDataDriver_as_Standard_Transient(
         self_: *const CDF_MetaDataDriver,
@@ -627,74 +619,74 @@ unsafe extern "C" {
         self_: *mut CDF_MetaDataDriver,
     ) -> crate::OcctResult<*mut Standard_Transient>;
     /// Destroy Handle<CDF_MetaDataDriver>
-    pub fn HandleCDFMetaDataDriver_destructor(self_: *mut HandleCDFMetaDataDriver);
+    pub fn Handle_CDF_MetaDataDriver_destructor(self_: *mut Handle_CDF_MetaDataDriver);
     /// Clone Handle<CDF_MetaDataDriver> (increments reference count)
-    pub fn HandleCDFMetaDataDriver_clone(
-        self_: *const HandleCDFMetaDataDriver,
-    ) -> crate::OcctResult<*mut HandleCDFMetaDataDriver>;
+    pub fn Handle_CDF_MetaDataDriver_clone(
+        self_: *const Handle_CDF_MetaDataDriver,
+    ) -> crate::OcctResult<*mut Handle_CDF_MetaDataDriver>;
     /// Check if Handle<CDF_MetaDataDriver> is null
-    pub fn HandleCDFMetaDataDriver_is_null(self_: *const HandleCDFMetaDataDriver) -> bool;
+    pub fn Handle_CDF_MetaDataDriver_is_null(self_: *const Handle_CDF_MetaDataDriver) -> bool;
     /// Dereference Handle to get *const CDF_MetaDataDriver
-    pub fn HandleCDFMetaDataDriver_get(
-        handle: *const HandleCDFMetaDataDriver,
+    pub fn Handle_CDF_MetaDataDriver_get(
+        handle: *const Handle_CDF_MetaDataDriver,
     ) -> crate::OcctResult<*const CDF_MetaDataDriver>;
     /// Dereference Handle to get *mut CDF_MetaDataDriver
-    pub fn HandleCDFMetaDataDriver_get_mut(
-        handle: *mut HandleCDFMetaDataDriver,
+    pub fn Handle_CDF_MetaDataDriver_get_mut(
+        handle: *mut Handle_CDF_MetaDataDriver,
     ) -> crate::OcctResult<*mut CDF_MetaDataDriver>;
     /// Upcast Handle<CDF_MetaDataDriver> to Handle<Standard_Transient>
-    pub fn HandleCDFMetaDataDriver_to_HandleStandardTransient(
-        self_: *const HandleCDFMetaDataDriver,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
+    pub fn Handle_CDF_MetaDataDriver_to_Handle_Standard_Transient(
+        self_: *const Handle_CDF_MetaDataDriver,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
     /// Downcast Handle<CDF_MetaDataDriver> to Handle<CDF_FWOSDriver> (returns null on failure)
-    pub fn HandleCDFMetaDataDriver_downcast_to_HandleCDFFWOSDriver(
-        self_: *const HandleCDFMetaDataDriver,
-    ) -> crate::OcctResult<*mut HandleCDFFWOSDriver>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn Handle_CDF_MetaDataDriver_downcast_to_Handle_CDF_FWOSDriver(
+        self_: *const Handle_CDF_MetaDataDriver,
+    ) -> crate::OcctResult<*mut Handle_CDF_FWOSDriver>;
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn CDF_MetaDataDriver_inherited_IsInstance(
         self_: *const CDF_MetaDataDriver,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn CDF_MetaDataDriver_inherited_IsKind(
         self_: *const CDF_MetaDataDriver,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn CDF_MetaDataDriver_inherited_This(
         self_: *const CDF_MetaDataDriver,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn CDF_MetaDataDriver_inherited_GetRefCount(
         self_: *const CDF_MetaDataDriver,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn CDF_MetaDataDriver_inherited_IncrementRefCounter(
         self_: *mut CDF_MetaDataDriver,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn CDF_MetaDataDriver_inherited_DecrementRefCounter(
         self_: *mut CDF_MetaDataDriver,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn CDF_MetaDataDriver_inherited_Delete(
         self_: *const CDF_MetaDataDriver,
     ) -> *const std::ffi::c_char;
     // ======================== CDF_MetaDataDriverFactory ========================
     pub fn CDF_MetaDataDriverFactory_destructor(self_: *mut CDF_MetaDataDriverFactory);
-    /// **Source:** `CDF_MetaDataDriverFactory.hxx`:33 - `CDF_MetaDataDriverFactory::Build()`
+    /// **Source:** `CDF_MetaDataDriverFactory.hxx`:30 - `CDF_MetaDataDriverFactory::Build()`
     pub fn CDF_MetaDataDriverFactory_build(
         self_: *const CDF_MetaDataDriverFactory,
-    ) -> crate::OcctResult<*mut HandleCDFMetaDataDriver>;
-    /// **Source:** `CDF_MetaDataDriverFactory.hxx`:35 - `CDF_MetaDataDriverFactory::DynamicType()`
+    ) -> crate::OcctResult<*mut Handle_CDF_MetaDataDriver>;
+    /// **Source:** `CDF_MetaDataDriverFactory.hxx`:32 - `CDF_MetaDataDriverFactory::DynamicType()`
     pub fn CDF_MetaDataDriverFactory_dynamic_type(
         self_: *const CDF_MetaDataDriverFactory,
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// **Source:** `CDF_MetaDataDriverFactory.hxx`:35 - `CDF_MetaDataDriverFactory::get_type_name()`
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
+    /// **Source:** `CDF_MetaDataDriverFactory.hxx`:32 - `CDF_MetaDataDriverFactory::get_type_name()`
     pub fn CDF_MetaDataDriverFactory_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
-    /// **Source:** `CDF_MetaDataDriverFactory.hxx`:35 - `CDF_MetaDataDriverFactory::get_type_descriptor()`
+    /// **Source:** `CDF_MetaDataDriverFactory.hxx`:32 - `CDF_MetaDataDriverFactory::get_type_descriptor()`
     pub fn CDF_MetaDataDriverFactory_get_type_descriptor(
-    ) -> crate::OcctResult<*const HandleStandardType>;
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast CDF_MetaDataDriverFactory to Standard_Transient
     pub fn CDF_MetaDataDriverFactory_as_Standard_Transient(
         self_: *const CDF_MetaDataDriverFactory,
@@ -704,54 +696,56 @@ unsafe extern "C" {
         self_: *mut CDF_MetaDataDriverFactory,
     ) -> crate::OcctResult<*mut Standard_Transient>;
     /// Destroy Handle<CDF_MetaDataDriverFactory>
-    pub fn HandleCDFMetaDataDriverFactory_destructor(self_: *mut HandleCDFMetaDataDriverFactory);
+    pub fn Handle_CDF_MetaDataDriverFactory_destructor(
+        self_: *mut Handle_CDF_MetaDataDriverFactory,
+    );
     /// Clone Handle<CDF_MetaDataDriverFactory> (increments reference count)
-    pub fn HandleCDFMetaDataDriverFactory_clone(
-        self_: *const HandleCDFMetaDataDriverFactory,
-    ) -> crate::OcctResult<*mut HandleCDFMetaDataDriverFactory>;
+    pub fn Handle_CDF_MetaDataDriverFactory_clone(
+        self_: *const Handle_CDF_MetaDataDriverFactory,
+    ) -> crate::OcctResult<*mut Handle_CDF_MetaDataDriverFactory>;
     /// Check if Handle<CDF_MetaDataDriverFactory> is null
-    pub fn HandleCDFMetaDataDriverFactory_is_null(
-        self_: *const HandleCDFMetaDataDriverFactory,
+    pub fn Handle_CDF_MetaDataDriverFactory_is_null(
+        self_: *const Handle_CDF_MetaDataDriverFactory,
     ) -> bool;
     /// Dereference Handle to get *const CDF_MetaDataDriverFactory
-    pub fn HandleCDFMetaDataDriverFactory_get(
-        handle: *const HandleCDFMetaDataDriverFactory,
+    pub fn Handle_CDF_MetaDataDriverFactory_get(
+        handle: *const Handle_CDF_MetaDataDriverFactory,
     ) -> crate::OcctResult<*const CDF_MetaDataDriverFactory>;
     /// Dereference Handle to get *mut CDF_MetaDataDriverFactory
-    pub fn HandleCDFMetaDataDriverFactory_get_mut(
-        handle: *mut HandleCDFMetaDataDriverFactory,
+    pub fn Handle_CDF_MetaDataDriverFactory_get_mut(
+        handle: *mut Handle_CDF_MetaDataDriverFactory,
     ) -> crate::OcctResult<*mut CDF_MetaDataDriverFactory>;
     /// Upcast Handle<CDF_MetaDataDriverFactory> to Handle<Standard_Transient>
-    pub fn HandleCDFMetaDataDriverFactory_to_HandleStandardTransient(
-        self_: *const HandleCDFMetaDataDriverFactory,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn Handle_CDF_MetaDataDriverFactory_to_Handle_Standard_Transient(
+        self_: *const Handle_CDF_MetaDataDriverFactory,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn CDF_MetaDataDriverFactory_inherited_IsInstance(
         self_: *const CDF_MetaDataDriverFactory,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn CDF_MetaDataDriverFactory_inherited_IsKind(
         self_: *const CDF_MetaDataDriverFactory,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn CDF_MetaDataDriverFactory_inherited_This(
         self_: *const CDF_MetaDataDriverFactory,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn CDF_MetaDataDriverFactory_inherited_GetRefCount(
         self_: *const CDF_MetaDataDriverFactory,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn CDF_MetaDataDriverFactory_inherited_IncrementRefCounter(
         self_: *mut CDF_MetaDataDriverFactory,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn CDF_MetaDataDriverFactory_inherited_DecrementRefCounter(
         self_: *mut CDF_MetaDataDriverFactory,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn CDF_MetaDataDriverFactory_inherited_Delete(
         self_: *const CDF_MetaDataDriverFactory,
     ) -> *const std::ffi::c_char;
@@ -759,16 +753,16 @@ unsafe extern "C" {
     pub fn CDF_Store_destructor(self_: *mut CDF_Store);
     /// **Source:** `CDF_Store.hxx`:40 - `CDF_Store::CDF_Store()`
     pub fn CDF_Store_ctor_handlecdmdocument(
-        aDocument: *const HandleCDMDocument,
+        aDocument: *const Handle_CDM_Document,
     ) -> crate::OcctResult<*mut CDF_Store>;
     /// **Source:** `CDF_Store.hxx`:43 - `CDF_Store::Folder()`
     pub fn CDF_Store_folder(
         self_: *const CDF_Store,
-    ) -> crate::OcctResult<*mut HandleTCollectionHExtendedString>;
+    ) -> crate::OcctResult<*mut Handle_TCollection_HExtendedString>;
     /// **Source:** `CDF_Store.hxx`:46 - `CDF_Store::Name()`
     pub fn CDF_Store_name(
         self_: *const CDF_Store,
-    ) -> crate::OcctResult<*mut HandleTCollectionHExtendedString>;
+    ) -> crate::OcctResult<*mut Handle_TCollection_HExtendedString>;
     /// **Source:** `CDF_Store.hxx`:49 - `CDF_Store::IsStored()`
     pub fn CDF_Store_is_stored(self_: *const CDF_Store) -> crate::OcctResult<bool>;
     /// **Source:** `CDF_Store.hxx`:51 - `CDF_Store::IsModified()`
@@ -782,7 +776,7 @@ unsafe extern "C" {
     /// **Source:** `CDF_Store.hxx`:59 - `CDF_Store::PreviousVersion()`
     pub fn CDF_Store_previous_version(
         self_: *const CDF_Store,
-    ) -> crate::OcctResult<*mut HandleTCollectionHExtendedString>;
+    ) -> crate::OcctResult<*mut Handle_TCollection_HExtendedString>;
     /// **Source:** `CDF_Store.hxx`:63 - `CDF_Store::IsMainDocument()`
     pub fn CDF_Store_is_main_document(self_: *const CDF_Store) -> crate::OcctResult<bool>;
     /// **Source:** `CDF_Store.hxx`:68 - `CDF_Store::SetFolder()`
@@ -803,7 +797,7 @@ unsafe extern "C" {
     /// **Source:** `CDF_Store.hxx`:75 - `CDF_Store::Comment()`
     pub fn CDF_Store_comment(
         self_: *const CDF_Store,
-    ) -> crate::OcctResult<*mut HandleTCollectionHExtendedString>;
+    ) -> crate::OcctResult<*mut Handle_TCollection_HExtendedString>;
     /// **Source:** `CDF_Store.hxx`:79 - `CDF_Store::RecheckName()`
     pub fn CDF_Store_recheck_name(self_: *mut CDF_Store) -> crate::OcctResult<i32>;
     /// **Source:** `CDF_Store.hxx`:81 - `CDF_Store::SetPreviousVersion()`
@@ -821,11 +815,11 @@ unsafe extern "C" {
     /// **Source:** `CDF_Store.hxx`:90 - `CDF_Store::MetaDataPath()`
     pub fn CDF_Store_meta_data_path(
         self_: *const CDF_Store,
-    ) -> crate::OcctResult<*mut HandleTCollectionHExtendedString>;
+    ) -> crate::OcctResult<*mut Handle_TCollection_HExtendedString>;
     /// **Source:** `CDF_Store.hxx`:93 - `CDF_Store::Description()`
     pub fn CDF_Store_description(
         self_: *const CDF_Store,
-    ) -> crate::OcctResult<*mut HandleTCollectionHExtendedString>;
+    ) -> crate::OcctResult<*mut Handle_TCollection_HExtendedString>;
     /// **Source:** `CDF_Store.hxx`:95 - `CDF_Store::SetCurrent()`
     pub fn CDF_Store_set_current(
         self_: *mut CDF_Store,
@@ -851,37 +845,37 @@ unsafe extern "C" {
     ) -> crate::OcctResult<bool>;
     // ======================== CDF_StoreList ========================
     pub fn CDF_StoreList_destructor(self_: *mut CDF_StoreList);
-    /// **Source:** `CDF_StoreList.hxx`:39 - `CDF_StoreList::CDF_StoreList()`
+    /// **Source:** `CDF_StoreList.hxx`:37 - `CDF_StoreList::CDF_StoreList()`
     pub fn CDF_StoreList_ctor_handlecdmdocument(
-        aDocument: *const HandleCDMDocument,
+        aDocument: *const Handle_CDM_Document,
     ) -> crate::OcctResult<*mut CDF_StoreList>;
-    /// **Source:** `CDF_StoreList.hxx`:41 - `CDF_StoreList::IsConsistent()`
+    /// **Source:** `CDF_StoreList.hxx`:39 - `CDF_StoreList::IsConsistent()`
     pub fn CDF_StoreList_is_consistent(self_: *const CDF_StoreList) -> crate::OcctResult<bool>;
-    /// **Source:** `CDF_StoreList.hxx`:46 - `CDF_StoreList::Store()`
+    /// **Source:** `CDF_StoreList.hxx`:44 - `CDF_StoreList::Store()`
     pub fn CDF_StoreList_store(
         self_: *mut CDF_StoreList,
-        aMetaData: *mut HandleCDMMetaData,
+        aMetaData: *mut Handle_CDM_MetaData,
         aStatusAssociatedText: *mut TCollection_ExtendedString,
         theRange: *const Message_ProgressRange,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `CDF_StoreList.hxx`:50 - `CDF_StoreList::Init()`
+    /// **Source:** `CDF_StoreList.hxx`:48 - `CDF_StoreList::Init()`
     pub fn CDF_StoreList_init(self_: *mut CDF_StoreList) -> *const std::ffi::c_char;
-    /// **Source:** `CDF_StoreList.hxx`:52 - `CDF_StoreList::More()`
+    /// **Source:** `CDF_StoreList.hxx`:50 - `CDF_StoreList::More()`
     pub fn CDF_StoreList_more(self_: *const CDF_StoreList) -> crate::OcctResult<bool>;
-    /// **Source:** `CDF_StoreList.hxx`:54 - `CDF_StoreList::Next()`
+    /// **Source:** `CDF_StoreList.hxx`:52 - `CDF_StoreList::Next()`
     pub fn CDF_StoreList_next(self_: *mut CDF_StoreList) -> *const std::ffi::c_char;
-    /// **Source:** `CDF_StoreList.hxx`:56 - `CDF_StoreList::Value()`
+    /// **Source:** `CDF_StoreList.hxx`:54 - `CDF_StoreList::Value()`
     pub fn CDF_StoreList_value(
         self_: *const CDF_StoreList,
-    ) -> crate::OcctResult<*mut HandleCDMDocument>;
-    /// **Source:** `CDF_StoreList.hxx`:58 - `CDF_StoreList::DynamicType()`
+    ) -> crate::OcctResult<*mut Handle_CDM_Document>;
+    /// **Source:** `CDF_StoreList.hxx`:56 - `CDF_StoreList::DynamicType()`
     pub fn CDF_StoreList_dynamic_type(
         self_: *const CDF_StoreList,
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// **Source:** `CDF_StoreList.hxx`:58 - `CDF_StoreList::get_type_name()`
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
+    /// **Source:** `CDF_StoreList.hxx`:56 - `CDF_StoreList::get_type_name()`
     pub fn CDF_StoreList_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
-    /// **Source:** `CDF_StoreList.hxx`:58 - `CDF_StoreList::get_type_descriptor()`
-    pub fn CDF_StoreList_get_type_descriptor() -> crate::OcctResult<*const HandleStandardType>;
+    /// **Source:** `CDF_StoreList.hxx`:56 - `CDF_StoreList::get_type_descriptor()`
+    pub fn CDF_StoreList_get_type_descriptor() -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast CDF_StoreList to Standard_Transient
     pub fn CDF_StoreList_as_Standard_Transient(
         self_: *const CDF_StoreList,
@@ -893,102 +887,98 @@ unsafe extern "C" {
     /// Wrap CDF_StoreList in a Handle
     pub fn CDF_StoreList_to_handle(
         obj: *mut CDF_StoreList,
-    ) -> crate::OcctResult<*mut HandleCDFStoreList>;
+    ) -> crate::OcctResult<*mut Handle_CDF_StoreList>;
     /// Destroy Handle<CDF_StoreList>
-    pub fn HandleCDFStoreList_destructor(self_: *mut HandleCDFStoreList);
+    pub fn Handle_CDF_StoreList_destructor(self_: *mut Handle_CDF_StoreList);
     /// Clone Handle<CDF_StoreList> (increments reference count)
-    pub fn HandleCDFStoreList_clone(
-        self_: *const HandleCDFStoreList,
-    ) -> crate::OcctResult<*mut HandleCDFStoreList>;
+    pub fn Handle_CDF_StoreList_clone(
+        self_: *const Handle_CDF_StoreList,
+    ) -> crate::OcctResult<*mut Handle_CDF_StoreList>;
     /// Check if Handle<CDF_StoreList> is null
-    pub fn HandleCDFStoreList_is_null(self_: *const HandleCDFStoreList) -> bool;
+    pub fn Handle_CDF_StoreList_is_null(self_: *const Handle_CDF_StoreList) -> bool;
     /// Dereference Handle to get *const CDF_StoreList
-    pub fn HandleCDFStoreList_get(
-        handle: *const HandleCDFStoreList,
+    pub fn Handle_CDF_StoreList_get(
+        handle: *const Handle_CDF_StoreList,
     ) -> crate::OcctResult<*const CDF_StoreList>;
     /// Dereference Handle to get *mut CDF_StoreList
-    pub fn HandleCDFStoreList_get_mut(
-        handle: *mut HandleCDFStoreList,
+    pub fn Handle_CDF_StoreList_get_mut(
+        handle: *mut Handle_CDF_StoreList,
     ) -> crate::OcctResult<*mut CDF_StoreList>;
     /// Upcast Handle<CDF_StoreList> to Handle<Standard_Transient>
-    pub fn HandleCDFStoreList_to_HandleStandardTransient(
-        self_: *const HandleCDFStoreList,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn Handle_CDF_StoreList_to_Handle_Standard_Transient(
+        self_: *const Handle_CDF_StoreList,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn CDF_StoreList_inherited_IsInstance(
         self_: *const CDF_StoreList,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn CDF_StoreList_inherited_IsKind(
         self_: *const CDF_StoreList,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn CDF_StoreList_inherited_This(
         self_: *const CDF_StoreList,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn CDF_StoreList_inherited_GetRefCount(
         self_: *const CDF_StoreList,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn CDF_StoreList_inherited_IncrementRefCounter(
         self_: *mut CDF_StoreList,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn CDF_StoreList_inherited_DecrementRefCounter(
         self_: *mut CDF_StoreList,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn CDF_StoreList_inherited_Delete(self_: *const CDF_StoreList) -> *const std::ffi::c_char;
     // ======================== CDM_Application ========================
     pub fn CDM_Application_destructor(self_: *mut CDM_Application);
-    /// **Source:** `CDM_Application.hxx`:42 - `CDM_Application::Resources()`
+    /// **Source:** `CDM_Application.hxx`:40 - `CDM_Application::Resources()`
     pub fn CDM_Application_resources(
         self_: *mut CDM_Application,
-    ) -> crate::OcctResult<*mut HandleResourceManager>;
-    /// **Source:** `CDM_Application.hxx`:45 - `CDM_Application::MessageDriver()`
+    ) -> crate::OcctResult<*mut Handle_Resource_Manager>;
+    /// **Source:** `CDM_Application.hxx`:43 - `CDM_Application::MessageDriver()`
     pub fn CDM_Application_message_driver(
         self_: *mut CDM_Application,
-    ) -> crate::OcctResult<*mut HandleMessageMessenger>;
-    /// **Source:** `CDM_Application.hxx`:49 - `CDM_Application::BeginOfUpdate()`
+    ) -> crate::OcctResult<*mut Handle_Message_Messenger>;
+    /// **Source:** `CDM_Application.hxx`:47 - `CDM_Application::BeginOfUpdate()`
     pub fn CDM_Application_begin_of_update(
         self_: *mut CDM_Application,
-        aDocument: *const HandleCDMDocument,
+        aDocument: *const Handle_CDM_Document,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `CDM_Application.hxx`:53 - `CDM_Application::EndOfUpdate()`
+    /// **Source:** `CDM_Application.hxx`:51 - `CDM_Application::EndOfUpdate()`
     pub fn CDM_Application_end_of_update(
         self_: *mut CDM_Application,
-        aDocument: *const HandleCDMDocument,
+        aDocument: *const Handle_CDM_Document,
         theStatus: bool,
         ErrorString: *const TCollection_ExtendedString,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `CDM_Application.hxx`:58 - `CDM_Application::Write()`
+    /// **Source:** `CDM_Application.hxx`:56 - `CDM_Application::Write()`
     pub fn CDM_Application_write(
         self_: *mut CDM_Application,
         aString: *const u16,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `CDM_Application.hxx`:61 - `CDM_Application::Name()`
+    /// **Source:** `CDM_Application.hxx`:59 - `CDM_Application::Name()`
     pub fn CDM_Application_name(
         self_: *const CDM_Application,
     ) -> crate::OcctResult<*mut TCollection_ExtendedString>;
-    /// **Source:** `CDM_Application.hxx`:64 - `CDM_Application::Version()`
+    /// **Source:** `CDM_Application.hxx`:62 - `CDM_Application::Version()`
     pub fn CDM_Application_version(
         self_: *const CDM_Application,
     ) -> crate::OcctResult<*mut TCollection_AsciiString>;
-    /// **Source:** `CDM_Application.hxx`:67 - `CDM_Application::MetaDataLookUpTable()`
-    pub fn CDM_Application_meta_data_look_up_table(
-        self_: *mut CDM_Application,
-    ) -> crate::OcctResult<*mut CDM_MetaDataLookUpTable>;
     /// **Source:** `CDM_Application.hxx`:75 - `CDM_Application::DynamicType()`
     pub fn CDM_Application_dynamic_type(
         self_: *const CDM_Application,
-    ) -> crate::OcctResult<*const HandleStandardType>;
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// **Source:** `CDM_Application.hxx`:75 - `CDM_Application::get_type_name()`
     pub fn CDM_Application_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
     /// **Source:** `CDM_Application.hxx`:75 - `CDM_Application::get_type_descriptor()`
-    pub fn CDM_Application_get_type_descriptor() -> crate::OcctResult<*const HandleStandardType>;
+    pub fn CDM_Application_get_type_descriptor() -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast CDM_Application to Standard_Transient
     pub fn CDM_Application_as_Standard_Transient(
         self_: *const CDM_Application,
@@ -998,378 +988,378 @@ unsafe extern "C" {
         self_: *mut CDM_Application,
     ) -> crate::OcctResult<*mut Standard_Transient>;
     /// Destroy Handle<CDM_Application>
-    pub fn HandleCDMApplication_destructor(self_: *mut HandleCDMApplication);
+    pub fn Handle_CDM_Application_destructor(self_: *mut Handle_CDM_Application);
     /// Clone Handle<CDM_Application> (increments reference count)
-    pub fn HandleCDMApplication_clone(
-        self_: *const HandleCDMApplication,
-    ) -> crate::OcctResult<*mut HandleCDMApplication>;
+    pub fn Handle_CDM_Application_clone(
+        self_: *const Handle_CDM_Application,
+    ) -> crate::OcctResult<*mut Handle_CDM_Application>;
     /// Check if Handle<CDM_Application> is null
-    pub fn HandleCDMApplication_is_null(self_: *const HandleCDMApplication) -> bool;
+    pub fn Handle_CDM_Application_is_null(self_: *const Handle_CDM_Application) -> bool;
     /// Dereference Handle to get *const CDM_Application
-    pub fn HandleCDMApplication_get(
-        handle: *const HandleCDMApplication,
+    pub fn Handle_CDM_Application_get(
+        handle: *const Handle_CDM_Application,
     ) -> crate::OcctResult<*const CDM_Application>;
     /// Dereference Handle to get *mut CDM_Application
-    pub fn HandleCDMApplication_get_mut(
-        handle: *mut HandleCDMApplication,
+    pub fn Handle_CDM_Application_get_mut(
+        handle: *mut Handle_CDM_Application,
     ) -> crate::OcctResult<*mut CDM_Application>;
     /// Upcast Handle<CDM_Application> to Handle<Standard_Transient>
-    pub fn HandleCDMApplication_to_HandleStandardTransient(
-        self_: *const HandleCDMApplication,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
+    pub fn Handle_CDM_Application_to_Handle_Standard_Transient(
+        self_: *const Handle_CDM_Application,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
     /// Downcast Handle<CDM_Application> to Handle<AppStdL_Application> (returns null on failure)
-    pub fn HandleCDMApplication_downcast_to_HandleAppStdLApplication(
-        self_: *const HandleCDMApplication,
-    ) -> crate::OcctResult<*mut HandleAppStdLApplication>;
+    pub fn Handle_CDM_Application_downcast_to_Handle_AppStdL_Application(
+        self_: *const Handle_CDM_Application,
+    ) -> crate::OcctResult<*mut Handle_AppStdL_Application>;
     /// Downcast Handle<CDM_Application> to Handle<AppStd_Application> (returns null on failure)
-    pub fn HandleCDMApplication_downcast_to_HandleAppStdApplication(
-        self_: *const HandleCDMApplication,
-    ) -> crate::OcctResult<*mut HandleAppStdApplication>;
+    pub fn Handle_CDM_Application_downcast_to_Handle_AppStd_Application(
+        self_: *const Handle_CDM_Application,
+    ) -> crate::OcctResult<*mut Handle_AppStd_Application>;
     /// Downcast Handle<CDM_Application> to Handle<CDF_Application> (returns null on failure)
-    pub fn HandleCDMApplication_downcast_to_HandleCDFApplication(
-        self_: *const HandleCDMApplication,
-    ) -> crate::OcctResult<*mut HandleCDFApplication>;
+    pub fn Handle_CDM_Application_downcast_to_Handle_CDF_Application(
+        self_: *const Handle_CDM_Application,
+    ) -> crate::OcctResult<*mut Handle_CDF_Application>;
     /// Downcast Handle<CDM_Application> to Handle<TDocStd_Application> (returns null on failure)
-    pub fn HandleCDMApplication_downcast_to_HandleTDocStdApplication(
-        self_: *const HandleCDMApplication,
-    ) -> crate::OcctResult<*mut HandleTDocStdApplication>;
+    pub fn Handle_CDM_Application_downcast_to_Handle_TDocStd_Application(
+        self_: *const Handle_CDM_Application,
+    ) -> crate::OcctResult<*mut Handle_TDocStd_Application>;
     /// Downcast Handle<CDM_Application> to Handle<TObj_Application> (returns null on failure)
-    pub fn HandleCDMApplication_downcast_to_HandleTObjApplication(
-        self_: *const HandleCDMApplication,
-    ) -> crate::OcctResult<*mut HandleTObjApplication>;
+    pub fn Handle_CDM_Application_downcast_to_Handle_TObj_Application(
+        self_: *const Handle_CDM_Application,
+    ) -> crate::OcctResult<*mut Handle_TObj_Application>;
     /// Downcast Handle<CDM_Application> to Handle<XCAFApp_Application> (returns null on failure)
-    pub fn HandleCDMApplication_downcast_to_HandleXCAFAppApplication(
-        self_: *const HandleCDMApplication,
-    ) -> crate::OcctResult<*mut HandleXCAFAppApplication>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn Handle_CDM_Application_downcast_to_Handle_XCAFApp_Application(
+        self_: *const Handle_CDM_Application,
+    ) -> crate::OcctResult<*mut Handle_XCAFApp_Application>;
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn CDM_Application_inherited_IsInstance(
         self_: *const CDM_Application,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn CDM_Application_inherited_IsKind(
         self_: *const CDM_Application,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn CDM_Application_inherited_This(
         self_: *const CDM_Application,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn CDM_Application_inherited_GetRefCount(
         self_: *const CDM_Application,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn CDM_Application_inherited_IncrementRefCounter(
         self_: *mut CDM_Application,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn CDM_Application_inherited_DecrementRefCounter(
         self_: *mut CDM_Application,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn CDM_Application_inherited_Delete(
         self_: *const CDM_Application,
     ) -> *const std::ffi::c_char;
     // ======================== CDM_Document ========================
-    /// **Source:** `CDM_Document.hxx`:76 - `CDM_Document::Update()`
-    pub fn CDM_Document_update_handlecdmdocument_int_address(
+    /// **Source:** `CDM_Document.hxx`:73 - `CDM_Document::Update()`
+    pub fn CDM_Document_update_handlecdmdocument_int_voidptr(
         self_: *mut CDM_Document,
-        aToDocument: *const HandleCDMDocument,
+        aToDocument: *const Handle_CDM_Document,
         aReferenceIdentifier: i32,
         aModifContext: *mut std::ffi::c_void,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `CDM_Document.hxx`:87 - `CDM_Document::Update()`
+    /// **Source:** `CDM_Document.hxx`:84 - `CDM_Document::Update()`
     pub fn CDM_Document_update_extendedstring(
         self_: *mut CDM_Document,
         ErrorString: *mut TCollection_ExtendedString,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `CDM_Document.hxx`:92 - `CDM_Document::StorageFormat()`
+    /// **Source:** `CDM_Document.hxx`:89 - `CDM_Document::StorageFormat()`
     pub fn CDM_Document_storage_format(
         self_: *const CDM_Document,
     ) -> crate::OcctResult<*mut TCollection_ExtendedString>;
-    /// **Source:** `CDM_Document.hxx`:95 - `CDM_Document::Extensions()`
+    /// **Source:** `CDM_Document.hxx`:92 - `CDM_Document::Extensions()`
     pub fn CDM_Document_extensions(
         self_: *const CDM_Document,
-        Extensions: *mut TColStd_SequenceOfExtendedString,
+        Extensions: *mut NCollection_Sequence_TCollection_ExtendedString,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `CDM_Document.hxx`:100 - `CDM_Document::GetAlternativeDocument()`
+    /// **Source:** `CDM_Document.hxx`:98 - `CDM_Document::GetAlternativeDocument()`
     pub fn CDM_Document_get_alternative_document(
         self_: *mut CDM_Document,
         aFormat: *const TCollection_ExtendedString,
-        anAlternativeDocument: *mut HandleCDMDocument,
+        anAlternativeDocument: *mut Handle_CDM_Document,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `CDM_Document.hxx`:111 - `CDM_Document::CreateReference()`
+    /// **Source:** `CDM_Document.hxx`:109 - `CDM_Document::CreateReference()`
     pub fn CDM_Document_create_reference_handlecdmdocument(
         self_: *mut CDM_Document,
-        anOtherDocument: *const HandleCDMDocument,
+        anOtherDocument: *const Handle_CDM_Document,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `CDM_Document.hxx`:115 - `CDM_Document::RemoveReference()`
+    /// **Source:** `CDM_Document.hxx`:113 - `CDM_Document::RemoveReference()`
     pub fn CDM_Document_remove_reference(
         self_: *mut CDM_Document,
         aReferenceIdentifier: i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `CDM_Document.hxx`:118 - `CDM_Document::RemoveAllReferences()`
+    /// **Source:** `CDM_Document.hxx`:116 - `CDM_Document::RemoveAllReferences()`
     pub fn CDM_Document_remove_all_references(self_: *mut CDM_Document) -> *const std::ffi::c_char;
-    /// **Source:** `CDM_Document.hxx`:123 - `CDM_Document::Document()`
+    /// **Source:** `CDM_Document.hxx`:121 - `CDM_Document::Document()`
     pub fn CDM_Document_document(
         self_: *const CDM_Document,
         aReferenceIdentifier: i32,
-    ) -> crate::OcctResult<*mut HandleCDMDocument>;
-    /// **Source:** `CDM_Document.hxx`:128 - `CDM_Document::IsInSession()`
+    ) -> crate::OcctResult<*mut Handle_CDM_Document>;
+    /// **Source:** `CDM_Document.hxx`:126 - `CDM_Document::IsInSession()`
     pub fn CDM_Document_is_in_session(
         self_: *const CDM_Document,
         aReferenceIdentifier: i32,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `CDM_Document.hxx`:133 - `CDM_Document::IsStored()`
+    /// **Source:** `CDM_Document.hxx`:131 - `CDM_Document::IsStored()`
     pub fn CDM_Document_is_stored_int(
         self_: *const CDM_Document,
         aReferenceIdentifier: i32,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `CDM_Document.hxx`:138 - `CDM_Document::Name()`
+    /// **Source:** `CDM_Document.hxx`:135 - `CDM_Document::Name()`
     pub fn CDM_Document_name(
         self_: *const CDM_Document,
         aReferenceIdentifier: i32,
     ) -> crate::OcctResult<*mut TCollection_ExtendedString>;
-    /// **Source:** `CDM_Document.hxx`:148 - `CDM_Document::UpdateFromDocuments()`
+    /// **Source:** `CDM_Document.hxx`:145 - `CDM_Document::UpdateFromDocuments()`
     pub fn CDM_Document_update_from_documents(
         self_: *const CDM_Document,
         aModifContext: *mut std::ffi::c_void,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `CDM_Document.hxx`:152 - `CDM_Document::ToReferencesNumber()`
+    /// **Source:** `CDM_Document.hxx`:149 - `CDM_Document::ToReferencesNumber()`
     pub fn CDM_Document_to_references_number(self_: *const CDM_Document) -> crate::OcctResult<i32>;
-    /// **Source:** `CDM_Document.hxx`:156 - `CDM_Document::FromReferencesNumber()`
+    /// **Source:** `CDM_Document.hxx`:153 - `CDM_Document::FromReferencesNumber()`
     pub fn CDM_Document_from_references_number(
         self_: *const CDM_Document,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `CDM_Document.hxx`:159 - `CDM_Document::ShallowReferences()`
+    /// **Source:** `CDM_Document.hxx`:156 - `CDM_Document::ShallowReferences()`
     pub fn CDM_Document_shallow_references(
         self_: *const CDM_Document,
-        aDocument: *const HandleCDMDocument,
+        aDocument: *const Handle_CDM_Document,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `CDM_Document.hxx`:162 - `CDM_Document::DeepReferences()`
+    /// **Source:** `CDM_Document.hxx`:159 - `CDM_Document::DeepReferences()`
     pub fn CDM_Document_deep_references(
         self_: *const CDM_Document,
-        aDocument: *const HandleCDMDocument,
+        aDocument: *const Handle_CDM_Document,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `CDM_Document.hxx`:168 - `CDM_Document::CopyReference()`
+    /// **Source:** `CDM_Document.hxx`:165 - `CDM_Document::CopyReference()`
     pub fn CDM_Document_copy_reference(
         self_: *mut CDM_Document,
-        aFromDocument: *const HandleCDMDocument,
+        aFromDocument: *const Handle_CDM_Document,
         aReferenceIdentifier: i32,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `CDM_Document.hxx`:172 - `CDM_Document::IsReadOnly()`
+    /// **Source:** `CDM_Document.hxx`:169 - `CDM_Document::IsReadOnly()`
     pub fn CDM_Document_is_read_only(self_: *const CDM_Document) -> crate::OcctResult<bool>;
-    /// **Source:** `CDM_Document.hxx`:175 - `CDM_Document::IsReadOnly()`
+    /// **Source:** `CDM_Document.hxx`:172 - `CDM_Document::IsReadOnly()`
     pub fn CDM_Document_is_read_only_int(
         self_: *const CDM_Document,
         aReferenceIdentifier: i32,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `CDM_Document.hxx`:177 - `CDM_Document::SetIsReadOnly()`
+    /// **Source:** `CDM_Document.hxx`:174 - `CDM_Document::SetIsReadOnly()`
     pub fn CDM_Document_set_is_read_only(self_: *mut CDM_Document) -> *const std::ffi::c_char;
-    /// **Source:** `CDM_Document.hxx`:179 - `CDM_Document::UnsetIsReadOnly()`
+    /// **Source:** `CDM_Document.hxx`:176 - `CDM_Document::UnsetIsReadOnly()`
     pub fn CDM_Document_unset_is_read_only(self_: *mut CDM_Document) -> *const std::ffi::c_char;
-    /// **Source:** `CDM_Document.hxx`:183 - `CDM_Document::Modify()`
+    /// **Source:** `CDM_Document.hxx`:180 - `CDM_Document::Modify()`
     pub fn CDM_Document_modify(self_: *mut CDM_Document) -> *const std::ffi::c_char;
-    /// **Source:** `CDM_Document.hxx`:186 - `CDM_Document::Modifications()`
+    /// **Source:** `CDM_Document.hxx`:183 - `CDM_Document::Modifications()`
     pub fn CDM_Document_modifications(self_: *const CDM_Document) -> crate::OcctResult<i32>;
-    /// **Source:** `CDM_Document.hxx`:188 - `CDM_Document::UnModify()`
+    /// **Source:** `CDM_Document.hxx`:185 - `CDM_Document::UnModify()`
     pub fn CDM_Document_un_modify(self_: *mut CDM_Document) -> *const std::ffi::c_char;
-    /// **Source:** `CDM_Document.hxx`:194 - `CDM_Document::IsUpToDate()`
+    /// **Source:** `CDM_Document.hxx`:191 - `CDM_Document::IsUpToDate()`
     pub fn CDM_Document_is_up_to_date(
         self_: *const CDM_Document,
         aReferenceIdentifier: i32,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `CDM_Document.hxx`:200 - `CDM_Document::SetIsUpToDate()`
+    /// **Source:** `CDM_Document.hxx`:197 - `CDM_Document::SetIsUpToDate()`
     pub fn CDM_Document_set_is_up_to_date(
         self_: *mut CDM_Document,
         aReferenceIdentifier: i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `CDM_Document.hxx`:203 - `CDM_Document::SetComment()`
+    /// **Source:** `CDM_Document.hxx`:200 - `CDM_Document::SetComment()`
     pub fn CDM_Document_set_comment(
         self_: *mut CDM_Document,
         aComment: *const TCollection_ExtendedString,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `CDM_Document.hxx`:206 - `CDM_Document::AddComment()`
+    /// **Source:** `CDM_Document.hxx`:203 - `CDM_Document::AddComment()`
     pub fn CDM_Document_add_comment(
         self_: *mut CDM_Document,
         aComment: *const TCollection_ExtendedString,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `CDM_Document.hxx`:209 - `CDM_Document::SetComments()`
+    /// **Source:** `CDM_Document.hxx`:206 - `CDM_Document::SetComments()`
     pub fn CDM_Document_set_comments(
         self_: *mut CDM_Document,
-        aComments: *const TColStd_SequenceOfExtendedString,
+        aComments: *const NCollection_Sequence_TCollection_ExtendedString,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `CDM_Document.hxx`:213 - `CDM_Document::Comments()`
+    /// **Source:** `CDM_Document.hxx`:211 - `CDM_Document::Comments()`
     pub fn CDM_Document_comments(
         self_: *const CDM_Document,
-        aComments: *mut TColStd_SequenceOfExtendedString,
+        aComments: *mut NCollection_Sequence_TCollection_ExtendedString,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `CDM_Document.hxx`:217 - `CDM_Document::Comment()`
+    /// **Source:** `CDM_Document.hxx`:215 - `CDM_Document::Comment()`
     pub fn CDM_Document_comment(self_: *const CDM_Document) -> crate::OcctResult<*const u16>;
-    /// **Source:** `CDM_Document.hxx`:219 - `CDM_Document::IsStored()`
+    /// **Source:** `CDM_Document.hxx`:217 - `CDM_Document::IsStored()`
     pub fn CDM_Document_is_stored(self_: *const CDM_Document) -> crate::OcctResult<bool>;
-    /// **Source:** `CDM_Document.hxx`:223 - `CDM_Document::StorageVersion()`
+    /// **Source:** `CDM_Document.hxx`:221 - `CDM_Document::StorageVersion()`
     pub fn CDM_Document_storage_version(self_: *const CDM_Document) -> crate::OcctResult<i32>;
-    /// **Source:** `CDM_Document.hxx`:228 - `CDM_Document::SetMetaData()`
+    /// **Source:** `CDM_Document.hxx`:226 - `CDM_Document::SetMetaData()`
     pub fn CDM_Document_set_meta_data(
         self_: *mut CDM_Document,
-        aMetaData: *const HandleCDMMetaData,
+        aMetaData: *const Handle_CDM_MetaData,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `CDM_Document.hxx`:230 - `CDM_Document::UnsetIsStored()`
+    /// **Source:** `CDM_Document.hxx`:228 - `CDM_Document::UnsetIsStored()`
     pub fn CDM_Document_unset_is_stored(self_: *mut CDM_Document) -> *const std::ffi::c_char;
-    /// **Source:** `CDM_Document.hxx`:232 - `CDM_Document::MetaData()`
+    /// **Source:** `CDM_Document.hxx`:230 - `CDM_Document::MetaData()`
     pub fn CDM_Document_meta_data(
         self_: *const CDM_Document,
-    ) -> crate::OcctResult<*mut HandleCDMMetaData>;
-    /// **Source:** `CDM_Document.hxx`:234 - `CDM_Document::Folder()`
+    ) -> crate::OcctResult<*mut Handle_CDM_MetaData>;
+    /// **Source:** `CDM_Document.hxx`:232 - `CDM_Document::Folder()`
     pub fn CDM_Document_folder(
         self_: *const CDM_Document,
     ) -> crate::OcctResult<*mut TCollection_ExtendedString>;
-    /// **Source:** `CDM_Document.hxx`:237 - `CDM_Document::SetRequestedFolder()`
+    /// **Source:** `CDM_Document.hxx`:235 - `CDM_Document::SetRequestedFolder()`
     pub fn CDM_Document_set_requested_folder(
         self_: *mut CDM_Document,
         aFolder: *const TCollection_ExtendedString,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `CDM_Document.hxx`:239 - `CDM_Document::RequestedFolder()`
+    /// **Source:** `CDM_Document.hxx`:237 - `CDM_Document::RequestedFolder()`
     pub fn CDM_Document_requested_folder(
         self_: *const CDM_Document,
     ) -> crate::OcctResult<*mut TCollection_ExtendedString>;
-    /// **Source:** `CDM_Document.hxx`:241 - `CDM_Document::HasRequestedFolder()`
+    /// **Source:** `CDM_Document.hxx`:239 - `CDM_Document::HasRequestedFolder()`
     pub fn CDM_Document_has_requested_folder(self_: *const CDM_Document)
         -> crate::OcctResult<bool>;
-    /// **Source:** `CDM_Document.hxx`:244 - `CDM_Document::SetRequestedName()`
+    /// **Source:** `CDM_Document.hxx`:242 - `CDM_Document::SetRequestedName()`
     pub fn CDM_Document_set_requested_name(
         self_: *mut CDM_Document,
         aName: *const TCollection_ExtendedString,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `CDM_Document.hxx`:249 - `CDM_Document::RequestedName()`
+    /// **Source:** `CDM_Document.hxx`:247 - `CDM_Document::RequestedName()`
     pub fn CDM_Document_requested_name(
         self_: *mut CDM_Document,
     ) -> crate::OcctResult<*mut TCollection_ExtendedString>;
-    /// **Source:** `CDM_Document.hxx`:251 - `CDM_Document::SetRequestedPreviousVersion()`
+    /// **Source:** `CDM_Document.hxx`:249 - `CDM_Document::SetRequestedPreviousVersion()`
     pub fn CDM_Document_set_requested_previous_version(
         self_: *mut CDM_Document,
         aPreviousVersion: *const TCollection_ExtendedString,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `CDM_Document.hxx`:254 - `CDM_Document::UnsetRequestedPreviousVersion()`
+    /// **Source:** `CDM_Document.hxx`:252 - `CDM_Document::UnsetRequestedPreviousVersion()`
     pub fn CDM_Document_unset_requested_previous_version(
         self_: *mut CDM_Document,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `CDM_Document.hxx`:256 - `CDM_Document::HasRequestedPreviousVersion()`
+    /// **Source:** `CDM_Document.hxx`:254 - `CDM_Document::HasRequestedPreviousVersion()`
     pub fn CDM_Document_has_requested_previous_version(
         self_: *const CDM_Document,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `CDM_Document.hxx`:258 - `CDM_Document::RequestedPreviousVersion()`
+    /// **Source:** `CDM_Document.hxx`:256 - `CDM_Document::RequestedPreviousVersion()`
     pub fn CDM_Document_requested_previous_version(
         self_: *const CDM_Document,
     ) -> crate::OcctResult<*mut TCollection_ExtendedString>;
-    /// **Source:** `CDM_Document.hxx`:261 - `CDM_Document::SetRequestedComment()`
+    /// **Source:** `CDM_Document.hxx`:259 - `CDM_Document::SetRequestedComment()`
     pub fn CDM_Document_set_requested_comment(
         self_: *mut CDM_Document,
         aComment: *const TCollection_ExtendedString,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `CDM_Document.hxx`:263 - `CDM_Document::RequestedComment()`
+    /// **Source:** `CDM_Document.hxx`:261 - `CDM_Document::RequestedComment()`
     pub fn CDM_Document_requested_comment(
         self_: *const CDM_Document,
     ) -> crate::OcctResult<*mut TCollection_ExtendedString>;
-    /// **Source:** `CDM_Document.hxx`:266 - `CDM_Document::LoadResources()`
+    /// **Source:** `CDM_Document.hxx`:264 - `CDM_Document::LoadResources()`
     pub fn CDM_Document_load_resources(self_: *mut CDM_Document) -> *const std::ffi::c_char;
-    /// **Source:** `CDM_Document.hxx`:268 - `CDM_Document::FindFileExtension()`
+    /// **Source:** `CDM_Document.hxx`:266 - `CDM_Document::FindFileExtension()`
     pub fn CDM_Document_find_file_extension(self_: *mut CDM_Document) -> crate::OcctResult<bool>;
-    /// **Source:** `CDM_Document.hxx`:271 - `CDM_Document::FileExtension()`
+    /// **Source:** `CDM_Document.hxx`:269 - `CDM_Document::FileExtension()`
     pub fn CDM_Document_file_extension(
         self_: *mut CDM_Document,
     ) -> crate::OcctResult<*mut TCollection_ExtendedString>;
-    /// **Source:** `CDM_Document.hxx`:273 - `CDM_Document::FindDescription()`
+    /// **Source:** `CDM_Document.hxx`:271 - `CDM_Document::FindDescription()`
     pub fn CDM_Document_find_description(self_: *mut CDM_Document) -> crate::OcctResult<bool>;
-    /// **Source:** `CDM_Document.hxx`:276 - `CDM_Document::Description()`
+    /// **Source:** `CDM_Document.hxx`:274 - `CDM_Document::Description()`
     pub fn CDM_Document_description(
         self_: *mut CDM_Document,
     ) -> crate::OcctResult<*mut TCollection_ExtendedString>;
-    /// **Source:** `CDM_Document.hxx`:280 - `CDM_Document::IsModified()`
+    /// **Source:** `CDM_Document.hxx`:278 - `CDM_Document::IsModified()`
     pub fn CDM_Document_is_modified(self_: *const CDM_Document) -> crate::OcctResult<bool>;
-    /// **Source:** `CDM_Document.hxx`:282 - `CDM_Document::Print()`
+    /// **Source:** `CDM_Document.hxx`:280 - `CDM_Document::Print()`
     pub fn CDM_Document_print(
         self_: *mut CDM_Document,
         anOStream: *mut Standard_OStream,
     ) -> crate::OcctResult<*mut Standard_OStream>;
-    /// **Source:** `CDM_Document.hxx`:285 - `CDM_Document::IsOpened()`
+    /// **Source:** `CDM_Document.hxx`:283 - `CDM_Document::IsOpened()`
     pub fn CDM_Document_is_opened(self_: *const CDM_Document) -> crate::OcctResult<bool>;
-    /// **Source:** `CDM_Document.hxx`:287 - `CDM_Document::Open()`
+    /// **Source:** `CDM_Document.hxx`:285 - `CDM_Document::Open()`
     pub fn CDM_Document_open(
         self_: *mut CDM_Document,
-        anApplication: *const HandleCDMApplication,
+        anApplication: *const Handle_CDM_Application,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `CDM_Document.hxx`:289 - `CDM_Document::CanClose()`
+    /// **Source:** `CDM_Document.hxx`:287 - `CDM_Document::CanClose()`
     pub fn CDM_Document_can_close(self_: *const CDM_Document) -> crate::OcctResult<i32>;
-    /// **Source:** `CDM_Document.hxx`:291 - `CDM_Document::Close()`
+    /// **Source:** `CDM_Document.hxx`:289 - `CDM_Document::Close()`
     pub fn CDM_Document_close(self_: *mut CDM_Document) -> *const std::ffi::c_char;
-    /// **Source:** `CDM_Document.hxx`:293 - `CDM_Document::Application()`
+    /// **Source:** `CDM_Document.hxx`:291 - `CDM_Document::Application()`
     pub fn CDM_Document_application(
         self_: *const CDM_Document,
-    ) -> crate::OcctResult<*const HandleCDMApplication>;
-    /// **Source:** `CDM_Document.hxx`:299 - `CDM_Document::CanCloseReference()`
+    ) -> crate::OcctResult<*const Handle_CDM_Application>;
+    /// **Source:** `CDM_Document.hxx`:297 - `CDM_Document::CanCloseReference()`
     pub fn CDM_Document_can_close_reference(
         self_: *const CDM_Document,
-        aDocument: *const HandleCDMDocument,
+        aDocument: *const Handle_CDM_Document,
         aReferenceIdentifier: i32,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `CDM_Document.hxx`:307 - `CDM_Document::CloseReference()`
+    /// **Source:** `CDM_Document.hxx`:304 - `CDM_Document::CloseReference()`
     pub fn CDM_Document_close_reference(
         self_: *mut CDM_Document,
-        aDocument: *const HandleCDMDocument,
+        aDocument: *const Handle_CDM_Document,
         aReferenceIdentifier: i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `CDM_Document.hxx`:314 - `CDM_Document::IsOpened()`
+    /// **Source:** `CDM_Document.hxx`:311 - `CDM_Document::IsOpened()`
     pub fn CDM_Document_is_opened_int(
         self_: *const CDM_Document,
         aReferenceIdentifier: i32,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `CDM_Document.hxx`:316 - `CDM_Document::CreateReference()`
+    /// **Source:** `CDM_Document.hxx`:313 - `CDM_Document::CreateReference()`
     pub fn CDM_Document_create_reference_handlecdmmetadata_int_handlecdmapplication_int_bool(
         self_: *mut CDM_Document,
-        aMetaData: *const HandleCDMMetaData,
+        aMetaData: *const Handle_CDM_MetaData,
         aReferenceIdentifier: i32,
-        anApplication: *const HandleCDMApplication,
+        anApplication: *const Handle_CDM_Application,
         aToDocumentVersion: i32,
         UseStorageConfiguration: bool,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `CDM_Document.hxx`:322 - `CDM_Document::CreateReference()`
+    /// **Source:** `CDM_Document.hxx`:319 - `CDM_Document::CreateReference()`
     pub fn CDM_Document_create_reference_handlecdmmetadata_handlecdmapplication_int_bool(
         self_: *mut CDM_Document,
-        aMetaData: *const HandleCDMMetaData,
-        anApplication: *const HandleCDMApplication,
+        aMetaData: *const Handle_CDM_MetaData,
+        anApplication: *const Handle_CDM_Application,
         aDocumentVersion: i32,
         UseStorageConfiguration: bool,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `CDM_Document.hxx`:327 - `CDM_Document::ReferenceCounter()`
+    /// **Source:** `CDM_Document.hxx`:324 - `CDM_Document::ReferenceCounter()`
     pub fn CDM_Document_reference_counter(self_: *const CDM_Document) -> crate::OcctResult<i32>;
-    /// **Source:** `CDM_Document.hxx`:333 - `CDM_Document::Update()`
+    /// **Source:** `CDM_Document.hxx`:330 - `CDM_Document::Update()`
     pub fn CDM_Document_update(self_: *mut CDM_Document) -> *const std::ffi::c_char;
-    /// **Source:** `CDM_Document.hxx`:335 - `CDM_Document::Reference()`
+    /// **Source:** `CDM_Document.hxx`:332 - `CDM_Document::Reference()`
     pub fn CDM_Document_reference(
         self_: *const CDM_Document,
         aReferenceIdentifier: i32,
-    ) -> crate::OcctResult<*mut HandleCDMReference>;
-    /// **Source:** `CDM_Document.hxx`:338 - `CDM_Document::SetModifications()`
+    ) -> crate::OcctResult<*mut Handle_CDM_Reference>;
+    /// **Source:** `CDM_Document.hxx`:334 - `CDM_Document::SetModifications()`
     pub fn CDM_Document_set_modifications(
         self_: *mut CDM_Document,
         Modifications: i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `CDM_Document.hxx`:340 - `CDM_Document::SetReferenceCounter()`
+    /// **Source:** `CDM_Document.hxx`:336 - `CDM_Document::SetReferenceCounter()`
     pub fn CDM_Document_set_reference_counter(
         self_: *mut CDM_Document,
         aReferenceCounter: i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `CDM_Document.hxx`:349 - `CDM_Document::DynamicType()`
+    /// **Source:** `CDM_Document.hxx`:345 - `CDM_Document::DynamicType()`
     pub fn CDM_Document_dynamic_type(
         self_: *const CDM_Document,
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// **Source:** `CDM_Document.hxx`:349 - `CDM_Document::get_type_name()`
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
+    /// **Source:** `CDM_Document.hxx`:345 - `CDM_Document::get_type_name()`
     pub fn CDM_Document_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
-    /// **Source:** `CDM_Document.hxx`:349 - `CDM_Document::get_type_descriptor()`
-    pub fn CDM_Document_get_type_descriptor() -> crate::OcctResult<*const HandleStandardType>;
+    /// **Source:** `CDM_Document.hxx`:345 - `CDM_Document::get_type_descriptor()`
+    pub fn CDM_Document_get_type_descriptor() -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast CDM_Document to Standard_Transient
     pub fn CDM_Document_as_Standard_Transient(
         self_: *const CDM_Document,
@@ -1379,29 +1369,29 @@ unsafe extern "C" {
         self_: *mut CDM_Document,
     ) -> crate::OcctResult<*mut Standard_Transient>;
     /// Destroy Handle<CDM_Document>
-    pub fn HandleCDMDocument_destructor(self_: *mut HandleCDMDocument);
+    pub fn Handle_CDM_Document_destructor(self_: *mut Handle_CDM_Document);
     /// Clone Handle<CDM_Document> (increments reference count)
-    pub fn HandleCDMDocument_clone(
-        self_: *const HandleCDMDocument,
-    ) -> crate::OcctResult<*mut HandleCDMDocument>;
+    pub fn Handle_CDM_Document_clone(
+        self_: *const Handle_CDM_Document,
+    ) -> crate::OcctResult<*mut Handle_CDM_Document>;
     /// Check if Handle<CDM_Document> is null
-    pub fn HandleCDMDocument_is_null(self_: *const HandleCDMDocument) -> bool;
+    pub fn Handle_CDM_Document_is_null(self_: *const Handle_CDM_Document) -> bool;
     /// Dereference Handle to get *const CDM_Document
-    pub fn HandleCDMDocument_get(
-        handle: *const HandleCDMDocument,
+    pub fn Handle_CDM_Document_get(
+        handle: *const Handle_CDM_Document,
     ) -> crate::OcctResult<*const CDM_Document>;
     /// Dereference Handle to get *mut CDM_Document
-    pub fn HandleCDMDocument_get_mut(
-        handle: *mut HandleCDMDocument,
+    pub fn Handle_CDM_Document_get_mut(
+        handle: *mut Handle_CDM_Document,
     ) -> crate::OcctResult<*mut CDM_Document>;
     /// Upcast Handle<CDM_Document> to Handle<Standard_Transient>
-    pub fn HandleCDMDocument_to_HandleStandardTransient(
-        self_: *const HandleCDMDocument,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
+    pub fn Handle_CDM_Document_to_Handle_Standard_Transient(
+        self_: *const Handle_CDM_Document,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
     /// Downcast Handle<CDM_Document> to Handle<TDocStd_Document> (returns null on failure)
-    pub fn HandleCDMDocument_downcast_to_HandleTDocStdDocument(
-        self_: *const HandleCDMDocument,
-    ) -> crate::OcctResult<*mut HandleTDocStdDocument>;
+    pub fn Handle_CDM_Document_downcast_to_Handle_TDocStd_Document(
+        self_: *const Handle_CDM_Document,
+    ) -> crate::OcctResult<*mut Handle_TDocStd_Document>;
     // ======================== CDM_MetaData ========================
     pub fn CDM_MetaData_destructor(self_: *mut CDM_MetaData);
     /// **Source:** `CDM_MetaData.hxx`:54 - `CDM_MetaData::IsRetrieved()`
@@ -1409,7 +1399,7 @@ unsafe extern "C" {
     /// **Source:** `CDM_MetaData.hxx`:56 - `CDM_MetaData::Document()`
     pub fn CDM_MetaData_document(
         self_: *const CDM_MetaData,
-    ) -> crate::OcctResult<*mut HandleCDMDocument>;
+    ) -> crate::OcctResult<*mut Handle_CDM_Document>;
     /// **Source:** `CDM_MetaData.hxx`:60 - `CDM_MetaData::Folder()`
     pub fn CDM_MetaData_folder(
         self_: *const CDM_MetaData,
@@ -1448,30 +1438,11 @@ unsafe extern "C" {
     /// **Source:** `CDM_MetaData.hxx`:103 - `CDM_MetaData::DynamicType()`
     pub fn CDM_MetaData_dynamic_type(
         self_: *const CDM_MetaData,
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// **Source:** `CDM_MetaData.hxx`:39 - `CDM_MetaData::LookUp()`
-    pub fn CDM_MetaData_look_up_metadatalookuptable_extendedstring4_bool(
-        theLookUpTable: *mut CDM_MetaDataLookUpTable,
-        aFolder: *const TCollection_ExtendedString,
-        aName: *const TCollection_ExtendedString,
-        aPath: *const TCollection_ExtendedString,
-        aFileName: *const TCollection_ExtendedString,
-        ReadOnly: bool,
-    ) -> crate::OcctResult<*mut HandleCDMMetaData>;
-    /// **Source:** `CDM_MetaData.hxx`:46 - `CDM_MetaData::LookUp()`
-    pub fn CDM_MetaData_look_up_metadatalookuptable_extendedstring5_bool(
-        theLookUpTable: *mut CDM_MetaDataLookUpTable,
-        aFolder: *const TCollection_ExtendedString,
-        aName: *const TCollection_ExtendedString,
-        aPath: *const TCollection_ExtendedString,
-        aVersion: *const TCollection_ExtendedString,
-        aFileName: *const TCollection_ExtendedString,
-        ReadOnly: bool,
-    ) -> crate::OcctResult<*mut HandleCDMMetaData>;
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// **Source:** `CDM_MetaData.hxx`:103 - `CDM_MetaData::get_type_name()`
     pub fn CDM_MetaData_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
     /// **Source:** `CDM_MetaData.hxx`:103 - `CDM_MetaData::get_type_descriptor()`
-    pub fn CDM_MetaData_get_type_descriptor() -> crate::OcctResult<*const HandleStandardType>;
+    pub fn CDM_MetaData_get_type_descriptor() -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast CDM_MetaData to Standard_Transient
     pub fn CDM_MetaData_as_Standard_Transient(
         self_: *const CDM_MetaData,
@@ -1483,78 +1454,78 @@ unsafe extern "C" {
     /// Wrap CDM_MetaData in a Handle
     pub fn CDM_MetaData_to_handle(
         obj: *mut CDM_MetaData,
-    ) -> crate::OcctResult<*mut HandleCDMMetaData>;
+    ) -> crate::OcctResult<*mut Handle_CDM_MetaData>;
     /// Destroy Handle<CDM_MetaData>
-    pub fn HandleCDMMetaData_destructor(self_: *mut HandleCDMMetaData);
+    pub fn Handle_CDM_MetaData_destructor(self_: *mut Handle_CDM_MetaData);
     /// Clone Handle<CDM_MetaData> (increments reference count)
-    pub fn HandleCDMMetaData_clone(
-        self_: *const HandleCDMMetaData,
-    ) -> crate::OcctResult<*mut HandleCDMMetaData>;
+    pub fn Handle_CDM_MetaData_clone(
+        self_: *const Handle_CDM_MetaData,
+    ) -> crate::OcctResult<*mut Handle_CDM_MetaData>;
     /// Check if Handle<CDM_MetaData> is null
-    pub fn HandleCDMMetaData_is_null(self_: *const HandleCDMMetaData) -> bool;
+    pub fn Handle_CDM_MetaData_is_null(self_: *const Handle_CDM_MetaData) -> bool;
     /// Dereference Handle to get *const CDM_MetaData
-    pub fn HandleCDMMetaData_get(
-        handle: *const HandleCDMMetaData,
+    pub fn Handle_CDM_MetaData_get(
+        handle: *const Handle_CDM_MetaData,
     ) -> crate::OcctResult<*const CDM_MetaData>;
     /// Dereference Handle to get *mut CDM_MetaData
-    pub fn HandleCDMMetaData_get_mut(
-        handle: *mut HandleCDMMetaData,
+    pub fn Handle_CDM_MetaData_get_mut(
+        handle: *mut Handle_CDM_MetaData,
     ) -> crate::OcctResult<*mut CDM_MetaData>;
     /// Upcast Handle<CDM_MetaData> to Handle<Standard_Transient>
-    pub fn HandleCDMMetaData_to_HandleStandardTransient(
-        self_: *const HandleCDMMetaData,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn Handle_CDM_MetaData_to_Handle_Standard_Transient(
+        self_: *const Handle_CDM_MetaData,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn CDM_MetaData_inherited_IsInstance(
         self_: *const CDM_MetaData,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn CDM_MetaData_inherited_IsKind(
         self_: *const CDM_MetaData,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn CDM_MetaData_inherited_This(
         self_: *const CDM_MetaData,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn CDM_MetaData_inherited_GetRefCount(self_: *const CDM_MetaData)
         -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn CDM_MetaData_inherited_IncrementRefCounter(
         self_: *mut CDM_MetaData,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn CDM_MetaData_inherited_DecrementRefCounter(
         self_: *mut CDM_MetaData,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn CDM_MetaData_inherited_Delete(self_: *const CDM_MetaData) -> *const std::ffi::c_char;
     // ======================== CDM_Reference ========================
     pub fn CDM_Reference_destructor(self_: *mut CDM_Reference);
-    /// **Source:** `CDM_Reference.hxx`:37 - `CDM_Reference::FromDocument()`
+    /// **Source:** `CDM_Reference.hxx`:34 - `CDM_Reference::FromDocument()`
     pub fn CDM_Reference_from_document(
         self_: *mut CDM_Reference,
-    ) -> crate::OcctResult<*mut HandleCDMDocument>;
-    /// **Source:** `CDM_Reference.hxx`:39 - `CDM_Reference::ToDocument()`
+    ) -> crate::OcctResult<*mut Handle_CDM_Document>;
+    /// **Source:** `CDM_Reference.hxx`:36 - `CDM_Reference::ToDocument()`
     pub fn CDM_Reference_to_document(
         self_: *mut CDM_Reference,
-    ) -> crate::OcctResult<*mut HandleCDMDocument>;
-    /// **Source:** `CDM_Reference.hxx`:41 - `CDM_Reference::ReferenceIdentifier()`
+    ) -> crate::OcctResult<*mut Handle_CDM_Document>;
+    /// **Source:** `CDM_Reference.hxx`:38 - `CDM_Reference::ReferenceIdentifier()`
     pub fn CDM_Reference_reference_identifier(self_: *mut CDM_Reference) -> crate::OcctResult<i32>;
-    /// **Source:** `CDM_Reference.hxx`:43 - `CDM_Reference::DocumentVersion()`
+    /// **Source:** `CDM_Reference.hxx`:40 - `CDM_Reference::DocumentVersion()`
     pub fn CDM_Reference_document_version(self_: *const CDM_Reference) -> crate::OcctResult<i32>;
-    /// **Source:** `CDM_Reference.hxx`:45 - `CDM_Reference::IsReadOnly()`
+    /// **Source:** `CDM_Reference.hxx`:42 - `CDM_Reference::IsReadOnly()`
     pub fn CDM_Reference_is_read_only(self_: *const CDM_Reference) -> crate::OcctResult<bool>;
-    /// **Source:** `CDM_Reference.hxx`:52 - `CDM_Reference::DynamicType()`
+    /// **Source:** `CDM_Reference.hxx`:49 - `CDM_Reference::DynamicType()`
     pub fn CDM_Reference_dynamic_type(
         self_: *const CDM_Reference,
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// **Source:** `CDM_Reference.hxx`:52 - `CDM_Reference::get_type_name()`
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
+    /// **Source:** `CDM_Reference.hxx`:49 - `CDM_Reference::get_type_name()`
     pub fn CDM_Reference_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
-    /// **Source:** `CDM_Reference.hxx`:52 - `CDM_Reference::get_type_descriptor()`
-    pub fn CDM_Reference_get_type_descriptor() -> crate::OcctResult<*const HandleStandardType>;
+    /// **Source:** `CDM_Reference.hxx`:49 - `CDM_Reference::get_type_descriptor()`
+    pub fn CDM_Reference_get_type_descriptor() -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast CDM_Reference to Standard_Transient
     pub fn CDM_Reference_as_Standard_Transient(
         self_: *const CDM_Reference,
@@ -1566,77 +1537,77 @@ unsafe extern "C" {
     /// Wrap CDM_Reference in a Handle
     pub fn CDM_Reference_to_handle(
         obj: *mut CDM_Reference,
-    ) -> crate::OcctResult<*mut HandleCDMReference>;
+    ) -> crate::OcctResult<*mut Handle_CDM_Reference>;
     /// Destroy Handle<CDM_Reference>
-    pub fn HandleCDMReference_destructor(self_: *mut HandleCDMReference);
+    pub fn Handle_CDM_Reference_destructor(self_: *mut Handle_CDM_Reference);
     /// Clone Handle<CDM_Reference> (increments reference count)
-    pub fn HandleCDMReference_clone(
-        self_: *const HandleCDMReference,
-    ) -> crate::OcctResult<*mut HandleCDMReference>;
+    pub fn Handle_CDM_Reference_clone(
+        self_: *const Handle_CDM_Reference,
+    ) -> crate::OcctResult<*mut Handle_CDM_Reference>;
     /// Check if Handle<CDM_Reference> is null
-    pub fn HandleCDMReference_is_null(self_: *const HandleCDMReference) -> bool;
+    pub fn Handle_CDM_Reference_is_null(self_: *const Handle_CDM_Reference) -> bool;
     /// Dereference Handle to get *const CDM_Reference
-    pub fn HandleCDMReference_get(
-        handle: *const HandleCDMReference,
+    pub fn Handle_CDM_Reference_get(
+        handle: *const Handle_CDM_Reference,
     ) -> crate::OcctResult<*const CDM_Reference>;
     /// Dereference Handle to get *mut CDM_Reference
-    pub fn HandleCDMReference_get_mut(
-        handle: *mut HandleCDMReference,
+    pub fn Handle_CDM_Reference_get_mut(
+        handle: *mut Handle_CDM_Reference,
     ) -> crate::OcctResult<*mut CDM_Reference>;
     /// Upcast Handle<CDM_Reference> to Handle<Standard_Transient>
-    pub fn HandleCDMReference_to_HandleStandardTransient(
-        self_: *const HandleCDMReference,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn Handle_CDM_Reference_to_Handle_Standard_Transient(
+        self_: *const Handle_CDM_Reference,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn CDM_Reference_inherited_IsInstance(
         self_: *const CDM_Reference,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn CDM_Reference_inherited_IsKind(
         self_: *const CDM_Reference,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn CDM_Reference_inherited_This(
         self_: *const CDM_Reference,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn CDM_Reference_inherited_GetRefCount(
         self_: *const CDM_Reference,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn CDM_Reference_inherited_IncrementRefCounter(
         self_: *mut CDM_Reference,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn CDM_Reference_inherited_DecrementRefCounter(
         self_: *mut CDM_Reference,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn CDM_Reference_inherited_Delete(self_: *const CDM_Reference) -> *const std::ffi::c_char;
     // ======================== CDM_ReferenceIterator ========================
     pub fn CDM_ReferenceIterator_destructor(self_: *mut CDM_ReferenceIterator);
-    /// **Source:** `CDM_ReferenceIterator.hxx`:33 - `CDM_ReferenceIterator::CDM_ReferenceIterator()`
+    /// **Source:** `CDM_ReferenceIterator.hxx`:35 - `CDM_ReferenceIterator::CDM_ReferenceIterator()`
     pub fn CDM_ReferenceIterator_ctor_handlecdmdocument(
-        aDocument: *const HandleCDMDocument,
+        aDocument: *const Handle_CDM_Document,
     ) -> crate::OcctResult<*mut CDM_ReferenceIterator>;
-    /// **Source:** `CDM_ReferenceIterator.hxx`:35 - `CDM_ReferenceIterator::More()`
+    /// **Source:** `CDM_ReferenceIterator.hxx`:37 - `CDM_ReferenceIterator::More()`
     pub fn CDM_ReferenceIterator_more(
         self_: *const CDM_ReferenceIterator,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `CDM_ReferenceIterator.hxx`:37 - `CDM_ReferenceIterator::Next()`
+    /// **Source:** `CDM_ReferenceIterator.hxx`:39 - `CDM_ReferenceIterator::Next()`
     pub fn CDM_ReferenceIterator_next(self_: *mut CDM_ReferenceIterator)
         -> *const std::ffi::c_char;
-    /// **Source:** `CDM_ReferenceIterator.hxx`:39 - `CDM_ReferenceIterator::Document()`
+    /// **Source:** `CDM_ReferenceIterator.hxx`:41 - `CDM_ReferenceIterator::Document()`
     pub fn CDM_ReferenceIterator_document(
         self_: *const CDM_ReferenceIterator,
-    ) -> crate::OcctResult<*mut HandleCDMDocument>;
-    /// **Source:** `CDM_ReferenceIterator.hxx`:41 - `CDM_ReferenceIterator::ReferenceIdentifier()`
+    ) -> crate::OcctResult<*mut Handle_CDM_Document>;
+    /// **Source:** `CDM_ReferenceIterator.hxx`:43 - `CDM_ReferenceIterator::ReferenceIdentifier()`
     pub fn CDM_ReferenceIterator_reference_identifier(
         self_: *const CDM_ReferenceIterator,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `CDM_ReferenceIterator.hxx`:44 - `CDM_ReferenceIterator::DocumentVersion()`
+    /// **Source:** `CDM_ReferenceIterator.hxx`:46 - `CDM_ReferenceIterator::DocumentVersion()`
     pub fn CDM_ReferenceIterator_document_version(
         self_: *const CDM_ReferenceIterator,
     ) -> crate::OcctResult<i32>;
@@ -1644,11 +1615,11 @@ unsafe extern "C" {
     pub fn LDOM_Attr_destructor(self_: *mut LDOM_Attr);
     /// **Source:** `LDOM_Attr.hxx`:31 - `LDOM_Attr::LDOM_Attr()`
     pub fn LDOM_Attr_ctor() -> crate::OcctResult<*mut LDOM_Attr>;
-    /// **Source:** `LDOM_Attr.hxx`:56 - `LDOM_Attr::getName()`
+    /// **Source:** `LDOM_Attr.hxx`:55 - `LDOM_Attr::getName()`
     pub fn LDOM_Attr_get_name(self_: *const LDOM_Attr) -> crate::OcctResult<*mut LDOMString>;
-    /// **Source:** `LDOM_Attr.hxx`:58 - `LDOM_Attr::getValue()`
+    /// **Source:** `LDOM_Attr.hxx`:57 - `LDOM_Attr::getValue()`
     pub fn LDOM_Attr_get_value(self_: *const LDOM_Attr) -> crate::OcctResult<*mut LDOMString>;
-    /// **Source:** `LDOM_Attr.hxx`:60 - `LDOM_Attr::setValue()`
+    /// **Source:** `LDOM_Attr.hxx`:59 - `LDOM_Attr::setValue()`
     pub fn LDOM_Attr_set_value(
         self_: *mut LDOM_Attr,
         aValue: *const LDOMString,
@@ -1659,49 +1630,49 @@ unsafe extern "C" {
     pub fn LDOM_Attr_as_LDOM_Node_mut(self_: *mut LDOM_Attr) -> crate::OcctResult<*mut LDOM_Node>;
     /// Clone via copy constructor
     pub fn LDOM_Attr_clone(self_: *const LDOM_Attr) -> crate::OcctResult<*mut LDOM_Attr>;
-    /// Inherited: **Source:** `LDOM_Node.hxx`:66 - `LDOM_Node::getOwnerDocument()`
+    /// Inherited: **Source:** `LDOM_Node.hxx`:63 - `LDOM_Node::getOwnerDocument()`
     pub fn LDOM_Attr_inherited_getOwnerDocument(
         self_: *const LDOM_Attr,
     ) -> crate::OcctResult<*const LDOM_MemManager>;
-    /// Inherited: **Source:** `LDOM_Node.hxx`:80 - `LDOM_Node::isNull()`
+    /// Inherited: **Source:** `LDOM_Node.hxx`:77 - `LDOM_Node::isNull()`
     pub fn LDOM_Attr_inherited_isNull(self_: *const LDOM_Attr) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `LDOM_Node.hxx`:82 - `LDOM_Node::getNodeType()`
+    /// Inherited: **Source:** `LDOM_Node.hxx`:79 - `LDOM_Node::getNodeType()`
     pub fn LDOM_Attr_inherited_getNodeType(
         self_: *const LDOM_Attr,
     ) -> crate::OcctResult<*mut LDOM_Node_NodeType>;
-    /// Inherited: **Source:** `LDOM_Node.hxx`:84 - `LDOM_Node::getNodeName()`
+    /// Inherited: **Source:** `LDOM_Node.hxx`:81 - `LDOM_Node::getNodeName()`
     pub fn LDOM_Attr_inherited_getNodeName(
         self_: *const LDOM_Attr,
     ) -> crate::OcctResult<*mut LDOMString>;
-    /// Inherited: **Source:** `LDOM_Node.hxx`:86 - `LDOM_Node::getNodeValue()`
+    /// Inherited: **Source:** `LDOM_Node.hxx`:83 - `LDOM_Node::getNodeValue()`
     pub fn LDOM_Attr_inherited_getNodeValue(
         self_: *const LDOM_Attr,
     ) -> crate::OcctResult<*mut LDOMString>;
-    /// Inherited: **Source:** `LDOM_Node.hxx`:88 - `LDOM_Node::getFirstChild()`
+    /// Inherited: **Source:** `LDOM_Node.hxx`:85 - `LDOM_Node::getFirstChild()`
     pub fn LDOM_Attr_inherited_getFirstChild(
         self_: *const LDOM_Attr,
     ) -> crate::OcctResult<*mut LDOM_Node>;
-    /// Inherited: **Source:** `LDOM_Node.hxx`:90 - `LDOM_Node::getLastChild()`
+    /// Inherited: **Source:** `LDOM_Node.hxx`:87 - `LDOM_Node::getLastChild()`
     pub fn LDOM_Attr_inherited_getLastChild(
         self_: *const LDOM_Attr,
     ) -> crate::OcctResult<*mut LDOM_Node>;
-    /// Inherited: **Source:** `LDOM_Node.hxx`:92 - `LDOM_Node::getNextSibling()`
+    /// Inherited: **Source:** `LDOM_Node.hxx`:89 - `LDOM_Node::getNextSibling()`
     pub fn LDOM_Attr_inherited_getNextSibling(
         self_: *const LDOM_Attr,
     ) -> crate::OcctResult<*mut LDOM_Node>;
-    /// Inherited: **Source:** `LDOM_Node.hxx`:94 - `LDOM_Node::removeChild()`
+    /// Inherited: **Source:** `LDOM_Node.hxx`:91 - `LDOM_Node::removeChild()`
     pub fn LDOM_Attr_inherited_removeChild(
         self_: *mut LDOM_Attr,
         aChild: *const LDOM_Node,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `LDOM_Node.hxx`:96 - `LDOM_Node::appendChild()`
+    /// Inherited: **Source:** `LDOM_Node.hxx`:93 - `LDOM_Node::appendChild()`
     pub fn LDOM_Attr_inherited_appendChild(
         self_: *mut LDOM_Attr,
         aChild: *const LDOM_Node,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `LDOM_Node.hxx`:98 - `LDOM_Node::hasChildNodes()`
+    /// Inherited: **Source:** `LDOM_Node.hxx`:95 - `LDOM_Node::hasChildNodes()`
     pub fn LDOM_Attr_inherited_hasChildNodes(self_: *const LDOM_Attr) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `LDOM_Node.hxx`:100 - `LDOM_Node::SetValueClear()`
+    /// Inherited: **Source:** `LDOM_Node.hxx`:97 - `LDOM_Node::SetValueClear()`
     pub fn LDOM_Attr_inherited_SetValueClear(self_: *const LDOM_Attr) -> *const std::ffi::c_char;
     // ======================== LDOM_BasicAttribute ========================
     pub fn LDOM_BasicAttribute_destructor(self_: *mut LDOM_BasicAttribute);
@@ -1719,7 +1690,7 @@ unsafe extern "C" {
     pub fn LDOM_BasicAttribute_set_value(
         self_: *mut LDOM_BasicAttribute,
         aValue: *const LDOMBasicString,
-        aDoc: *const HandleLDOMMemManager,
+        aDoc: *const Handle_LDOM_MemManager,
     ) -> *const std::ffi::c_char;
     /// Upcast LDOM_BasicAttribute to LDOM_BasicNode
     pub fn LDOM_BasicAttribute_as_LDOM_BasicNode(
@@ -1767,7 +1738,7 @@ unsafe extern "C" {
     pub fn LDOM_BasicElement_create(
         aName: *const std::ffi::c_char,
         aLength: i32,
-        aDoc: *const HandleLDOMMemManager,
+        aDoc: *const Handle_LDOM_MemManager,
     ) -> crate::OcctResult<*mut LDOM_BasicElement>;
     /// Upcast LDOM_BasicElement to LDOM_BasicNode
     pub fn LDOM_BasicElement_as_LDOM_BasicNode(
@@ -1813,7 +1784,7 @@ unsafe extern "C" {
     pub fn LDOM_BasicText_set_data(
         self_: *mut LDOM_BasicText,
         aValue: *const LDOMBasicString,
-        aDoc: *const HandleLDOMMemManager,
+        aDoc: *const Handle_LDOM_MemManager,
     ) -> *const std::ffi::c_char;
     /// Upcast LDOM_BasicText to LDOM_BasicNode
     pub fn LDOM_BasicText_as_LDOM_BasicNode(
@@ -1879,53 +1850,53 @@ unsafe extern "C" {
     pub fn LDOM_CDATASection_inherited_getLength(
         self_: *const LDOM_CDATASection,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `LDOM_Node.hxx`:66 - `LDOM_Node::getOwnerDocument()`
+    /// Inherited: **Source:** `LDOM_Node.hxx`:63 - `LDOM_Node::getOwnerDocument()`
     pub fn LDOM_CDATASection_inherited_getOwnerDocument(
         self_: *const LDOM_CDATASection,
     ) -> crate::OcctResult<*const LDOM_MemManager>;
-    /// Inherited: **Source:** `LDOM_Node.hxx`:80 - `LDOM_Node::isNull()`
+    /// Inherited: **Source:** `LDOM_Node.hxx`:77 - `LDOM_Node::isNull()`
     pub fn LDOM_CDATASection_inherited_isNull(
         self_: *const LDOM_CDATASection,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `LDOM_Node.hxx`:82 - `LDOM_Node::getNodeType()`
+    /// Inherited: **Source:** `LDOM_Node.hxx`:79 - `LDOM_Node::getNodeType()`
     pub fn LDOM_CDATASection_inherited_getNodeType(
         self_: *const LDOM_CDATASection,
     ) -> crate::OcctResult<*mut LDOM_Node_NodeType>;
-    /// Inherited: **Source:** `LDOM_Node.hxx`:84 - `LDOM_Node::getNodeName()`
+    /// Inherited: **Source:** `LDOM_Node.hxx`:81 - `LDOM_Node::getNodeName()`
     pub fn LDOM_CDATASection_inherited_getNodeName(
         self_: *const LDOM_CDATASection,
     ) -> crate::OcctResult<*mut LDOMString>;
-    /// Inherited: **Source:** `LDOM_Node.hxx`:86 - `LDOM_Node::getNodeValue()`
+    /// Inherited: **Source:** `LDOM_Node.hxx`:83 - `LDOM_Node::getNodeValue()`
     pub fn LDOM_CDATASection_inherited_getNodeValue(
         self_: *const LDOM_CDATASection,
     ) -> crate::OcctResult<*mut LDOMString>;
-    /// Inherited: **Source:** `LDOM_Node.hxx`:88 - `LDOM_Node::getFirstChild()`
+    /// Inherited: **Source:** `LDOM_Node.hxx`:85 - `LDOM_Node::getFirstChild()`
     pub fn LDOM_CDATASection_inherited_getFirstChild(
         self_: *const LDOM_CDATASection,
     ) -> crate::OcctResult<*mut LDOM_Node>;
-    /// Inherited: **Source:** `LDOM_Node.hxx`:90 - `LDOM_Node::getLastChild()`
+    /// Inherited: **Source:** `LDOM_Node.hxx`:87 - `LDOM_Node::getLastChild()`
     pub fn LDOM_CDATASection_inherited_getLastChild(
         self_: *const LDOM_CDATASection,
     ) -> crate::OcctResult<*mut LDOM_Node>;
-    /// Inherited: **Source:** `LDOM_Node.hxx`:92 - `LDOM_Node::getNextSibling()`
+    /// Inherited: **Source:** `LDOM_Node.hxx`:89 - `LDOM_Node::getNextSibling()`
     pub fn LDOM_CDATASection_inherited_getNextSibling(
         self_: *const LDOM_CDATASection,
     ) -> crate::OcctResult<*mut LDOM_Node>;
-    /// Inherited: **Source:** `LDOM_Node.hxx`:94 - `LDOM_Node::removeChild()`
+    /// Inherited: **Source:** `LDOM_Node.hxx`:91 - `LDOM_Node::removeChild()`
     pub fn LDOM_CDATASection_inherited_removeChild(
         self_: *mut LDOM_CDATASection,
         aChild: *const LDOM_Node,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `LDOM_Node.hxx`:96 - `LDOM_Node::appendChild()`
+    /// Inherited: **Source:** `LDOM_Node.hxx`:93 - `LDOM_Node::appendChild()`
     pub fn LDOM_CDATASection_inherited_appendChild(
         self_: *mut LDOM_CDATASection,
         aChild: *const LDOM_Node,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `LDOM_Node.hxx`:98 - `LDOM_Node::hasChildNodes()`
+    /// Inherited: **Source:** `LDOM_Node.hxx`:95 - `LDOM_Node::hasChildNodes()`
     pub fn LDOM_CDATASection_inherited_hasChildNodes(
         self_: *const LDOM_CDATASection,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `LDOM_Node.hxx`:100 - `LDOM_Node::SetValueClear()`
+    /// Inherited: **Source:** `LDOM_Node.hxx`:97 - `LDOM_Node::SetValueClear()`
     pub fn LDOM_CDATASection_inherited_SetValueClear(
         self_: *const LDOM_CDATASection,
     ) -> *const std::ffi::c_char;
@@ -1973,53 +1944,53 @@ unsafe extern "C" {
     pub fn LDOM_CharacterData_clone(
         self_: *const LDOM_CharacterData,
     ) -> crate::OcctResult<*mut LDOM_CharacterData>;
-    /// Inherited: **Source:** `LDOM_Node.hxx`:66 - `LDOM_Node::getOwnerDocument()`
+    /// Inherited: **Source:** `LDOM_Node.hxx`:63 - `LDOM_Node::getOwnerDocument()`
     pub fn LDOM_CharacterData_inherited_getOwnerDocument(
         self_: *const LDOM_CharacterData,
     ) -> crate::OcctResult<*const LDOM_MemManager>;
-    /// Inherited: **Source:** `LDOM_Node.hxx`:80 - `LDOM_Node::isNull()`
+    /// Inherited: **Source:** `LDOM_Node.hxx`:77 - `LDOM_Node::isNull()`
     pub fn LDOM_CharacterData_inherited_isNull(
         self_: *const LDOM_CharacterData,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `LDOM_Node.hxx`:82 - `LDOM_Node::getNodeType()`
+    /// Inherited: **Source:** `LDOM_Node.hxx`:79 - `LDOM_Node::getNodeType()`
     pub fn LDOM_CharacterData_inherited_getNodeType(
         self_: *const LDOM_CharacterData,
     ) -> crate::OcctResult<*mut LDOM_Node_NodeType>;
-    /// Inherited: **Source:** `LDOM_Node.hxx`:84 - `LDOM_Node::getNodeName()`
+    /// Inherited: **Source:** `LDOM_Node.hxx`:81 - `LDOM_Node::getNodeName()`
     pub fn LDOM_CharacterData_inherited_getNodeName(
         self_: *const LDOM_CharacterData,
     ) -> crate::OcctResult<*mut LDOMString>;
-    /// Inherited: **Source:** `LDOM_Node.hxx`:86 - `LDOM_Node::getNodeValue()`
+    /// Inherited: **Source:** `LDOM_Node.hxx`:83 - `LDOM_Node::getNodeValue()`
     pub fn LDOM_CharacterData_inherited_getNodeValue(
         self_: *const LDOM_CharacterData,
     ) -> crate::OcctResult<*mut LDOMString>;
-    /// Inherited: **Source:** `LDOM_Node.hxx`:88 - `LDOM_Node::getFirstChild()`
+    /// Inherited: **Source:** `LDOM_Node.hxx`:85 - `LDOM_Node::getFirstChild()`
     pub fn LDOM_CharacterData_inherited_getFirstChild(
         self_: *const LDOM_CharacterData,
     ) -> crate::OcctResult<*mut LDOM_Node>;
-    /// Inherited: **Source:** `LDOM_Node.hxx`:90 - `LDOM_Node::getLastChild()`
+    /// Inherited: **Source:** `LDOM_Node.hxx`:87 - `LDOM_Node::getLastChild()`
     pub fn LDOM_CharacterData_inherited_getLastChild(
         self_: *const LDOM_CharacterData,
     ) -> crate::OcctResult<*mut LDOM_Node>;
-    /// Inherited: **Source:** `LDOM_Node.hxx`:92 - `LDOM_Node::getNextSibling()`
+    /// Inherited: **Source:** `LDOM_Node.hxx`:89 - `LDOM_Node::getNextSibling()`
     pub fn LDOM_CharacterData_inherited_getNextSibling(
         self_: *const LDOM_CharacterData,
     ) -> crate::OcctResult<*mut LDOM_Node>;
-    /// Inherited: **Source:** `LDOM_Node.hxx`:94 - `LDOM_Node::removeChild()`
+    /// Inherited: **Source:** `LDOM_Node.hxx`:91 - `LDOM_Node::removeChild()`
     pub fn LDOM_CharacterData_inherited_removeChild(
         self_: *mut LDOM_CharacterData,
         aChild: *const LDOM_Node,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `LDOM_Node.hxx`:96 - `LDOM_Node::appendChild()`
+    /// Inherited: **Source:** `LDOM_Node.hxx`:93 - `LDOM_Node::appendChild()`
     pub fn LDOM_CharacterData_inherited_appendChild(
         self_: *mut LDOM_CharacterData,
         aChild: *const LDOM_Node,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `LDOM_Node.hxx`:98 - `LDOM_Node::hasChildNodes()`
+    /// Inherited: **Source:** `LDOM_Node.hxx`:95 - `LDOM_Node::hasChildNodes()`
     pub fn LDOM_CharacterData_inherited_hasChildNodes(
         self_: *const LDOM_CharacterData,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `LDOM_Node.hxx`:100 - `LDOM_Node::SetValueClear()`
+    /// Inherited: **Source:** `LDOM_Node.hxx`:97 - `LDOM_Node::SetValueClear()`
     pub fn LDOM_CharacterData_inherited_SetValueClear(
         self_: *const LDOM_CharacterData,
     ) -> *const std::ffi::c_char;
@@ -2056,51 +2027,51 @@ unsafe extern "C" {
     ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `LDOM_CharacterData.hxx`:60 - `LDOM_CharacterData::getLength()`
     pub fn LDOM_Comment_inherited_getLength(self_: *const LDOM_Comment) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `LDOM_Node.hxx`:66 - `LDOM_Node::getOwnerDocument()`
+    /// Inherited: **Source:** `LDOM_Node.hxx`:63 - `LDOM_Node::getOwnerDocument()`
     pub fn LDOM_Comment_inherited_getOwnerDocument(
         self_: *const LDOM_Comment,
     ) -> crate::OcctResult<*const LDOM_MemManager>;
-    /// Inherited: **Source:** `LDOM_Node.hxx`:80 - `LDOM_Node::isNull()`
+    /// Inherited: **Source:** `LDOM_Node.hxx`:77 - `LDOM_Node::isNull()`
     pub fn LDOM_Comment_inherited_isNull(self_: *const LDOM_Comment) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `LDOM_Node.hxx`:82 - `LDOM_Node::getNodeType()`
+    /// Inherited: **Source:** `LDOM_Node.hxx`:79 - `LDOM_Node::getNodeType()`
     pub fn LDOM_Comment_inherited_getNodeType(
         self_: *const LDOM_Comment,
     ) -> crate::OcctResult<*mut LDOM_Node_NodeType>;
-    /// Inherited: **Source:** `LDOM_Node.hxx`:84 - `LDOM_Node::getNodeName()`
+    /// Inherited: **Source:** `LDOM_Node.hxx`:81 - `LDOM_Node::getNodeName()`
     pub fn LDOM_Comment_inherited_getNodeName(
         self_: *const LDOM_Comment,
     ) -> crate::OcctResult<*mut LDOMString>;
-    /// Inherited: **Source:** `LDOM_Node.hxx`:86 - `LDOM_Node::getNodeValue()`
+    /// Inherited: **Source:** `LDOM_Node.hxx`:83 - `LDOM_Node::getNodeValue()`
     pub fn LDOM_Comment_inherited_getNodeValue(
         self_: *const LDOM_Comment,
     ) -> crate::OcctResult<*mut LDOMString>;
-    /// Inherited: **Source:** `LDOM_Node.hxx`:88 - `LDOM_Node::getFirstChild()`
+    /// Inherited: **Source:** `LDOM_Node.hxx`:85 - `LDOM_Node::getFirstChild()`
     pub fn LDOM_Comment_inherited_getFirstChild(
         self_: *const LDOM_Comment,
     ) -> crate::OcctResult<*mut LDOM_Node>;
-    /// Inherited: **Source:** `LDOM_Node.hxx`:90 - `LDOM_Node::getLastChild()`
+    /// Inherited: **Source:** `LDOM_Node.hxx`:87 - `LDOM_Node::getLastChild()`
     pub fn LDOM_Comment_inherited_getLastChild(
         self_: *const LDOM_Comment,
     ) -> crate::OcctResult<*mut LDOM_Node>;
-    /// Inherited: **Source:** `LDOM_Node.hxx`:92 - `LDOM_Node::getNextSibling()`
+    /// Inherited: **Source:** `LDOM_Node.hxx`:89 - `LDOM_Node::getNextSibling()`
     pub fn LDOM_Comment_inherited_getNextSibling(
         self_: *const LDOM_Comment,
     ) -> crate::OcctResult<*mut LDOM_Node>;
-    /// Inherited: **Source:** `LDOM_Node.hxx`:94 - `LDOM_Node::removeChild()`
+    /// Inherited: **Source:** `LDOM_Node.hxx`:91 - `LDOM_Node::removeChild()`
     pub fn LDOM_Comment_inherited_removeChild(
         self_: *mut LDOM_Comment,
         aChild: *const LDOM_Node,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `LDOM_Node.hxx`:96 - `LDOM_Node::appendChild()`
+    /// Inherited: **Source:** `LDOM_Node.hxx`:93 - `LDOM_Node::appendChild()`
     pub fn LDOM_Comment_inherited_appendChild(
         self_: *mut LDOM_Comment,
         aChild: *const LDOM_Node,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `LDOM_Node.hxx`:98 - `LDOM_Node::hasChildNodes()`
+    /// Inherited: **Source:** `LDOM_Node.hxx`:95 - `LDOM_Node::hasChildNodes()`
     pub fn LDOM_Comment_inherited_hasChildNodes(
         self_: *const LDOM_Comment,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `LDOM_Node.hxx`:100 - `LDOM_Node::SetValueClear()`
+    /// Inherited: **Source:** `LDOM_Node.hxx`:97 - `LDOM_Node::SetValueClear()`
     pub fn LDOM_Comment_inherited_SetValueClear(
         self_: *const LDOM_Comment,
     ) -> *const std::ffi::c_char;
@@ -2155,56 +2126,56 @@ unsafe extern "C" {
     pub fn LDOM_Element_destructor(self_: *mut LDOM_Element);
     /// **Source:** `LDOM_Element.hxx`:32 - `LDOM_Element::LDOM_Element()`
     pub fn LDOM_Element_ctor() -> crate::OcctResult<*mut LDOM_Element>;
-    /// **Source:** `LDOM_Element.hxx`:57 - `LDOM_Element::getTagName()`
+    /// **Source:** `LDOM_Element.hxx`:56 - `LDOM_Element::getTagName()`
     pub fn LDOM_Element_get_tag_name(
         self_: *const LDOM_Element,
     ) -> crate::OcctResult<*mut LDOMString>;
-    /// **Source:** `LDOM_Element.hxx`:59 - `LDOM_Element::getAttribute()`
+    /// **Source:** `LDOM_Element.hxx`:58 - `LDOM_Element::getAttribute()`
     pub fn LDOM_Element_get_attribute(
         self_: *const LDOM_Element,
         aName: *const LDOMString,
     ) -> crate::OcctResult<*mut LDOMString>;
-    /// **Source:** `LDOM_Element.hxx`:61 - `LDOM_Element::getAttributeNode()`
+    /// **Source:** `LDOM_Element.hxx`:60 - `LDOM_Element::getAttributeNode()`
     pub fn LDOM_Element_get_attribute_node(
         self_: *const LDOM_Element,
         aName: *const LDOMString,
     ) -> crate::OcctResult<*mut LDOM_Attr>;
-    /// **Source:** `LDOM_Element.hxx`:63 - `LDOM_Element::getElementsByTagName()`
+    /// **Source:** `LDOM_Element.hxx`:62 - `LDOM_Element::getElementsByTagName()`
     pub fn LDOM_Element_get_elements_by_tag_name(
         self_: *const LDOM_Element,
         aName: *const LDOMString,
     ) -> crate::OcctResult<*mut LDOM_NodeList>;
-    /// **Source:** `LDOM_Element.hxx`:65 - `LDOM_Element::setAttribute()`
+    /// **Source:** `LDOM_Element.hxx`:64 - `LDOM_Element::setAttribute()`
     pub fn LDOM_Element_set_attribute(
         self_: *mut LDOM_Element,
         aName: *const LDOMString,
         aValue: *const LDOMString,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `LDOM_Element.hxx`:67 - `LDOM_Element::setAttributeNode()`
+    /// **Source:** `LDOM_Element.hxx`:66 - `LDOM_Element::setAttributeNode()`
     pub fn LDOM_Element_set_attribute_node(
         self_: *mut LDOM_Element,
         aNewAttr: *const LDOM_Attr,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `LDOM_Element.hxx`:69 - `LDOM_Element::removeAttribute()`
+    /// **Source:** `LDOM_Element.hxx`:68 - `LDOM_Element::removeAttribute()`
     pub fn LDOM_Element_remove_attribute(
         self_: *mut LDOM_Element,
         aName: *const LDOMString,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `LDOM_Element.hxx`:72 - `LDOM_Element::GetChildByTagName()`
+    /// **Source:** `LDOM_Element.hxx`:71 - `LDOM_Element::GetChildByTagName()`
     pub fn LDOM_Element_get_child_by_tag_name(
         self_: *const LDOM_Element,
         aTagName: *const LDOMString,
     ) -> crate::OcctResult<*mut LDOM_Element>;
-    /// **Source:** `LDOM_Element.hxx`:74 - `LDOM_Element::GetSiblingByTagName()`
+    /// **Source:** `LDOM_Element.hxx`:73 - `LDOM_Element::GetSiblingByTagName()`
     pub fn LDOM_Element_get_sibling_by_tag_name(
         self_: *const LDOM_Element,
     ) -> crate::OcctResult<*mut LDOM_Element>;
-    /// **Source:** `LDOM_Element.hxx`:76 - `LDOM_Element::ReplaceElement()`
+    /// **Source:** `LDOM_Element.hxx`:75 - `LDOM_Element::ReplaceElement()`
     pub fn LDOM_Element_replace_element(
         self_: *mut LDOM_Element,
         anOther: *const LDOM_Element,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `LDOM_Element.hxx`:79 - `LDOM_Element::GetAttributesList()`
+    /// **Source:** `LDOM_Element.hxx`:78 - `LDOM_Element::GetAttributesList()`
     pub fn LDOM_Element_get_attributes_list(
         self_: *const LDOM_Element,
     ) -> crate::OcctResult<*mut LDOM_NodeList>;
@@ -2218,51 +2189,51 @@ unsafe extern "C" {
     ) -> crate::OcctResult<*mut LDOM_Node>;
     /// Clone via copy constructor
     pub fn LDOM_Element_clone(self_: *const LDOM_Element) -> crate::OcctResult<*mut LDOM_Element>;
-    /// Inherited: **Source:** `LDOM_Node.hxx`:66 - `LDOM_Node::getOwnerDocument()`
+    /// Inherited: **Source:** `LDOM_Node.hxx`:63 - `LDOM_Node::getOwnerDocument()`
     pub fn LDOM_Element_inherited_getOwnerDocument(
         self_: *const LDOM_Element,
     ) -> crate::OcctResult<*const LDOM_MemManager>;
-    /// Inherited: **Source:** `LDOM_Node.hxx`:80 - `LDOM_Node::isNull()`
+    /// Inherited: **Source:** `LDOM_Node.hxx`:77 - `LDOM_Node::isNull()`
     pub fn LDOM_Element_inherited_isNull(self_: *const LDOM_Element) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `LDOM_Node.hxx`:82 - `LDOM_Node::getNodeType()`
+    /// Inherited: **Source:** `LDOM_Node.hxx`:79 - `LDOM_Node::getNodeType()`
     pub fn LDOM_Element_inherited_getNodeType(
         self_: *const LDOM_Element,
     ) -> crate::OcctResult<*mut LDOM_Node_NodeType>;
-    /// Inherited: **Source:** `LDOM_Node.hxx`:84 - `LDOM_Node::getNodeName()`
+    /// Inherited: **Source:** `LDOM_Node.hxx`:81 - `LDOM_Node::getNodeName()`
     pub fn LDOM_Element_inherited_getNodeName(
         self_: *const LDOM_Element,
     ) -> crate::OcctResult<*mut LDOMString>;
-    /// Inherited: **Source:** `LDOM_Node.hxx`:86 - `LDOM_Node::getNodeValue()`
+    /// Inherited: **Source:** `LDOM_Node.hxx`:83 - `LDOM_Node::getNodeValue()`
     pub fn LDOM_Element_inherited_getNodeValue(
         self_: *const LDOM_Element,
     ) -> crate::OcctResult<*mut LDOMString>;
-    /// Inherited: **Source:** `LDOM_Node.hxx`:88 - `LDOM_Node::getFirstChild()`
+    /// Inherited: **Source:** `LDOM_Node.hxx`:85 - `LDOM_Node::getFirstChild()`
     pub fn LDOM_Element_inherited_getFirstChild(
         self_: *const LDOM_Element,
     ) -> crate::OcctResult<*mut LDOM_Node>;
-    /// Inherited: **Source:** `LDOM_Node.hxx`:90 - `LDOM_Node::getLastChild()`
+    /// Inherited: **Source:** `LDOM_Node.hxx`:87 - `LDOM_Node::getLastChild()`
     pub fn LDOM_Element_inherited_getLastChild(
         self_: *const LDOM_Element,
     ) -> crate::OcctResult<*mut LDOM_Node>;
-    /// Inherited: **Source:** `LDOM_Node.hxx`:92 - `LDOM_Node::getNextSibling()`
+    /// Inherited: **Source:** `LDOM_Node.hxx`:89 - `LDOM_Node::getNextSibling()`
     pub fn LDOM_Element_inherited_getNextSibling(
         self_: *const LDOM_Element,
     ) -> crate::OcctResult<*mut LDOM_Node>;
-    /// Inherited: **Source:** `LDOM_Node.hxx`:94 - `LDOM_Node::removeChild()`
+    /// Inherited: **Source:** `LDOM_Node.hxx`:91 - `LDOM_Node::removeChild()`
     pub fn LDOM_Element_inherited_removeChild(
         self_: *mut LDOM_Element,
         aChild: *const LDOM_Node,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `LDOM_Node.hxx`:96 - `LDOM_Node::appendChild()`
+    /// Inherited: **Source:** `LDOM_Node.hxx`:93 - `LDOM_Node::appendChild()`
     pub fn LDOM_Element_inherited_appendChild(
         self_: *mut LDOM_Element,
         aChild: *const LDOM_Node,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `LDOM_Node.hxx`:98 - `LDOM_Node::hasChildNodes()`
+    /// Inherited: **Source:** `LDOM_Node.hxx`:95 - `LDOM_Node::hasChildNodes()`
     pub fn LDOM_Element_inherited_hasChildNodes(
         self_: *const LDOM_Element,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `LDOM_Node.hxx`:100 - `LDOM_Node::SetValueClear()`
+    /// Inherited: **Source:** `LDOM_Node.hxx`:97 - `LDOM_Node::SetValueClear()`
     pub fn LDOM_Element_inherited_SetValueClear(
         self_: *const LDOM_Element,
     ) -> *const std::ffi::c_char;
@@ -2278,54 +2249,54 @@ unsafe extern "C" {
     ) -> crate::OcctResult<*mut LDOM_Document>;
     // ======================== LDOM_MemManager ========================
     pub fn LDOM_MemManager_destructor(self_: *mut LDOM_MemManager);
-    /// **Source:** `LDOM_MemManager.hxx`:37 - `LDOM_MemManager::LDOM_MemManager()`
+    /// **Source:** `LDOM_MemManager.hxx`:35 - `LDOM_MemManager::LDOM_MemManager()`
     pub fn LDOM_MemManager_ctor_int(aBlockSize: i32) -> crate::OcctResult<*mut LDOM_MemManager>;
-    /// **Source:** `LDOM_MemManager.hxx`:43 - `LDOM_MemManager::Allocate()`
+    /// **Source:** `LDOM_MemManager.hxx`:41 - `LDOM_MemManager::Allocate()`
     pub fn LDOM_MemManager_allocate(
         self_: *mut LDOM_MemManager,
         aSize: i32,
     ) -> crate::OcctResult<*mut std::ffi::c_void>;
-    /// **Source:** `LDOM_MemManager.hxx`:46 - `LDOM_MemManager::HashedAllocate()`
+    /// **Source:** `LDOM_MemManager.hxx`:44 - `LDOM_MemManager::HashedAllocate()`
     pub fn LDOM_MemManager_hashed_allocate_charptr_int2(
         self_: *mut LDOM_MemManager,
         aString: *const std::ffi::c_char,
         theLen: i32,
         theHash: *mut i32,
     ) -> crate::OcctResult<*const std::ffi::c_char>;
-    /// **Source:** `LDOM_MemManager.hxx`:52 - `LDOM_MemManager::HashedAllocate()`
+    /// **Source:** `LDOM_MemManager.hxx`:48 - `LDOM_MemManager::HashedAllocate()`
     pub fn LDOM_MemManager_hashed_allocate_charptr_int_ldombasicstring(
         self_: *mut LDOM_MemManager,
         aString: *const std::ffi::c_char,
         theLen: i32,
         theResult: *mut LDOMBasicString,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `LDOM_MemManager.hxx`:71 - `LDOM_MemManager::Self()`
+    /// **Source:** `LDOM_MemManager.hxx`:65 - `LDOM_MemManager::Self()`
     pub fn LDOM_MemManager_self_(
         self_: *const LDOM_MemManager,
     ) -> crate::OcctResult<*const LDOM_MemManager>;
-    /// **Source:** `LDOM_MemManager.hxx`:73 - `LDOM_MemManager::RootElement()`
+    /// **Source:** `LDOM_MemManager.hxx`:67 - `LDOM_MemManager::RootElement()`
     pub fn LDOM_MemManager_root_element(
         self_: *const LDOM_MemManager,
     ) -> crate::OcctResult<*const LDOM_BasicElement>;
-    /// **Source:** `LDOM_MemManager.hxx`:135 - `LDOM_MemManager::DynamicType()`
+    /// **Source:** `LDOM_MemManager.hxx`:126 - `LDOM_MemManager::DynamicType()`
     pub fn LDOM_MemManager_dynamic_type(
         self_: *const LDOM_MemManager,
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// **Source:** `LDOM_MemManager.hxx`:59 - `LDOM_MemManager::Hash()`
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
+    /// **Source:** `LDOM_MemManager.hxx`:53 - `LDOM_MemManager::Hash()`
     pub fn LDOM_MemManager_hash(
         theString: *const std::ffi::c_char,
         theLen: i32,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `LDOM_MemManager.hxx`:64 - `LDOM_MemManager::CompareStrings()`
+    /// **Source:** `LDOM_MemManager.hxx`:58 - `LDOM_MemManager::CompareStrings()`
     pub fn LDOM_MemManager_compare_strings(
         theString: *const std::ffi::c_char,
         theHashValue: i32,
         theHashedStr: *const std::ffi::c_char,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `LDOM_MemManager.hxx`:135 - `LDOM_MemManager::get_type_name()`
+    /// **Source:** `LDOM_MemManager.hxx`:126 - `LDOM_MemManager::get_type_name()`
     pub fn LDOM_MemManager_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
-    /// **Source:** `LDOM_MemManager.hxx`:135 - `LDOM_MemManager::get_type_descriptor()`
-    pub fn LDOM_MemManager_get_type_descriptor() -> crate::OcctResult<*const HandleStandardType>;
+    /// **Source:** `LDOM_MemManager.hxx`:126 - `LDOM_MemManager::get_type_descriptor()`
+    pub fn LDOM_MemManager_get_type_descriptor() -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast LDOM_MemManager to Standard_Transient
     pub fn LDOM_MemManager_as_Standard_Transient(
         self_: *const LDOM_MemManager,
@@ -2337,54 +2308,54 @@ unsafe extern "C" {
     /// Wrap LDOM_MemManager in a Handle
     pub fn LDOM_MemManager_to_handle(
         obj: *mut LDOM_MemManager,
-    ) -> crate::OcctResult<*mut HandleLDOMMemManager>;
+    ) -> crate::OcctResult<*mut Handle_LDOM_MemManager>;
     /// Destroy Handle<LDOM_MemManager>
-    pub fn HandleLDOMMemManager_destructor(self_: *mut HandleLDOMMemManager);
+    pub fn Handle_LDOM_MemManager_destructor(self_: *mut Handle_LDOM_MemManager);
     /// Clone Handle<LDOM_MemManager> (increments reference count)
-    pub fn HandleLDOMMemManager_clone(
-        self_: *const HandleLDOMMemManager,
-    ) -> crate::OcctResult<*mut HandleLDOMMemManager>;
+    pub fn Handle_LDOM_MemManager_clone(
+        self_: *const Handle_LDOM_MemManager,
+    ) -> crate::OcctResult<*mut Handle_LDOM_MemManager>;
     /// Check if Handle<LDOM_MemManager> is null
-    pub fn HandleLDOMMemManager_is_null(self_: *const HandleLDOMMemManager) -> bool;
+    pub fn Handle_LDOM_MemManager_is_null(self_: *const Handle_LDOM_MemManager) -> bool;
     /// Dereference Handle to get *const LDOM_MemManager
-    pub fn HandleLDOMMemManager_get(
-        handle: *const HandleLDOMMemManager,
+    pub fn Handle_LDOM_MemManager_get(
+        handle: *const Handle_LDOM_MemManager,
     ) -> crate::OcctResult<*const LDOM_MemManager>;
     /// Dereference Handle to get *mut LDOM_MemManager
-    pub fn HandleLDOMMemManager_get_mut(
-        handle: *mut HandleLDOMMemManager,
+    pub fn Handle_LDOM_MemManager_get_mut(
+        handle: *mut Handle_LDOM_MemManager,
     ) -> crate::OcctResult<*mut LDOM_MemManager>;
     /// Upcast Handle<LDOM_MemManager> to Handle<Standard_Transient>
-    pub fn HandleLDOMMemManager_to_HandleStandardTransient(
-        self_: *const HandleLDOMMemManager,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn Handle_LDOM_MemManager_to_Handle_Standard_Transient(
+        self_: *const Handle_LDOM_MemManager,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn LDOM_MemManager_inherited_IsInstance(
         self_: *const LDOM_MemManager,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn LDOM_MemManager_inherited_IsKind(
         self_: *const LDOM_MemManager,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn LDOM_MemManager_inherited_This(
         self_: *const LDOM_MemManager,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn LDOM_MemManager_inherited_GetRefCount(
         self_: *const LDOM_MemManager,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn LDOM_MemManager_inherited_IncrementRefCounter(
         self_: *mut LDOM_MemManager,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn LDOM_MemManager_inherited_DecrementRefCounter(
         self_: *mut LDOM_MemManager,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn LDOM_MemManager_inherited_Delete(
         self_: *const LDOM_MemManager,
     ) -> *const std::ffi::c_char;
@@ -2392,40 +2363,40 @@ unsafe extern "C" {
     pub fn LDOM_Node_destructor(self_: *mut LDOM_Node);
     /// **Source:** `LDOM_Node.hxx`:49 - `LDOM_Node::LDOM_Node()`
     pub fn LDOM_Node_ctor() -> crate::OcctResult<*mut LDOM_Node>;
-    /// **Source:** `LDOM_Node.hxx`:66 - `LDOM_Node::getOwnerDocument()`
+    /// **Source:** `LDOM_Node.hxx`:63 - `LDOM_Node::getOwnerDocument()`
     pub fn LDOM_Node_get_owner_document(
         self_: *const LDOM_Node,
     ) -> crate::OcctResult<*const LDOM_MemManager>;
-    /// **Source:** `LDOM_Node.hxx`:80 - `LDOM_Node::isNull()`
+    /// **Source:** `LDOM_Node.hxx`:77 - `LDOM_Node::isNull()`
     pub fn LDOM_Node_is_null(self_: *const LDOM_Node) -> crate::OcctResult<bool>;
-    /// **Source:** `LDOM_Node.hxx`:82 - `LDOM_Node::getNodeType()`
+    /// **Source:** `LDOM_Node.hxx`:79 - `LDOM_Node::getNodeType()`
     pub fn LDOM_Node_get_node_type(
         self_: *const LDOM_Node,
     ) -> crate::OcctResult<*mut LDOM_Node_NodeType>;
-    /// **Source:** `LDOM_Node.hxx`:84 - `LDOM_Node::getNodeName()`
+    /// **Source:** `LDOM_Node.hxx`:81 - `LDOM_Node::getNodeName()`
     pub fn LDOM_Node_get_node_name(self_: *const LDOM_Node) -> crate::OcctResult<*mut LDOMString>;
-    /// **Source:** `LDOM_Node.hxx`:86 - `LDOM_Node::getNodeValue()`
+    /// **Source:** `LDOM_Node.hxx`:83 - `LDOM_Node::getNodeValue()`
     pub fn LDOM_Node_get_node_value(self_: *const LDOM_Node) -> crate::OcctResult<*mut LDOMString>;
-    /// **Source:** `LDOM_Node.hxx`:88 - `LDOM_Node::getFirstChild()`
+    /// **Source:** `LDOM_Node.hxx`:85 - `LDOM_Node::getFirstChild()`
     pub fn LDOM_Node_get_first_child(self_: *const LDOM_Node) -> crate::OcctResult<*mut LDOM_Node>;
-    /// **Source:** `LDOM_Node.hxx`:90 - `LDOM_Node::getLastChild()`
+    /// **Source:** `LDOM_Node.hxx`:87 - `LDOM_Node::getLastChild()`
     pub fn LDOM_Node_get_last_child(self_: *const LDOM_Node) -> crate::OcctResult<*mut LDOM_Node>;
-    /// **Source:** `LDOM_Node.hxx`:92 - `LDOM_Node::getNextSibling()`
+    /// **Source:** `LDOM_Node.hxx`:89 - `LDOM_Node::getNextSibling()`
     pub fn LDOM_Node_get_next_sibling(self_: *const LDOM_Node)
         -> crate::OcctResult<*mut LDOM_Node>;
-    /// **Source:** `LDOM_Node.hxx`:94 - `LDOM_Node::removeChild()`
+    /// **Source:** `LDOM_Node.hxx`:91 - `LDOM_Node::removeChild()`
     pub fn LDOM_Node_remove_child(
         self_: *mut LDOM_Node,
         aChild: *const LDOM_Node,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `LDOM_Node.hxx`:96 - `LDOM_Node::appendChild()`
+    /// **Source:** `LDOM_Node.hxx`:93 - `LDOM_Node::appendChild()`
     pub fn LDOM_Node_append_child(
         self_: *mut LDOM_Node,
         aChild: *const LDOM_Node,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `LDOM_Node.hxx`:98 - `LDOM_Node::hasChildNodes()`
+    /// **Source:** `LDOM_Node.hxx`:95 - `LDOM_Node::hasChildNodes()`
     pub fn LDOM_Node_has_child_nodes(self_: *const LDOM_Node) -> crate::OcctResult<bool>;
-    /// **Source:** `LDOM_Node.hxx`:100 - `LDOM_Node::SetValueClear()`
+    /// **Source:** `LDOM_Node.hxx`:97 - `LDOM_Node::SetValueClear()`
     pub fn LDOM_Node_set_value_clear(self_: *const LDOM_Node) -> *const std::ffi::c_char;
     /// Clone via copy constructor
     pub fn LDOM_Node_clone(self_: *const LDOM_Node) -> crate::OcctResult<*mut LDOM_Node>;
@@ -2462,15 +2433,15 @@ unsafe extern "C" {
     pub fn LDOM_SBuffer_underflow(self_: *mut LDOM_SBuffer) -> crate::OcctResult<i32>;
     // ======================== LDOM_OSStream ========================
     pub fn LDOM_OSStream_destructor(self_: *mut LDOM_OSStream);
-    /// **Source:** `LDOM_OSStream.hxx`:101 - `LDOM_OSStream::LDOM_OSStream()`
+    /// **Source:** `LDOM_OSStream.hxx`:100 - `LDOM_OSStream::LDOM_OSStream()`
     pub fn LDOM_OSStream_ctor_int(theMaxBuf: i32) -> crate::OcctResult<*mut LDOM_OSStream>;
-    /// **Source:** `LDOM_OSStream.hxx`:105 - `LDOM_OSStream::str()`
+    /// **Source:** `LDOM_OSStream.hxx`:104 - `LDOM_OSStream::str()`
     pub fn LDOM_OSStream_str(
         self_: *const LDOM_OSStream,
     ) -> crate::OcctResult<*const std::ffi::c_char>;
-    /// **Source:** `LDOM_OSStream.hxx`:107 - `LDOM_OSStream::Length()`
+    /// **Source:** `LDOM_OSStream.hxx`:106 - `LDOM_OSStream::Length()`
     pub fn LDOM_OSStream_length(self_: *const LDOM_OSStream) -> crate::OcctResult<i32>;
-    /// **Source:** `LDOM_OSStream.hxx`:109 - `LDOM_OSStream::Clear()`
+    /// **Source:** `LDOM_OSStream.hxx`:108 - `LDOM_OSStream::Clear()`
     pub fn LDOM_OSStream_clear(self_: *mut LDOM_OSStream) -> *const std::ffi::c_char;
     /// Upcast LDOM_OSStream to Standard_OStream
     pub fn LDOM_OSStream_as_Standard_OStream(
@@ -2509,55 +2480,55 @@ unsafe extern "C" {
     ) -> *const std::ffi::c_char;
     /// Inherited: **Source:** `LDOM_CharacterData.hxx`:60 - `LDOM_CharacterData::getLength()`
     pub fn LDOM_Text_inherited_getLength(self_: *const LDOM_Text) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `LDOM_Node.hxx`:66 - `LDOM_Node::getOwnerDocument()`
+    /// Inherited: **Source:** `LDOM_Node.hxx`:63 - `LDOM_Node::getOwnerDocument()`
     pub fn LDOM_Text_inherited_getOwnerDocument(
         self_: *const LDOM_Text,
     ) -> crate::OcctResult<*const LDOM_MemManager>;
-    /// Inherited: **Source:** `LDOM_Node.hxx`:80 - `LDOM_Node::isNull()`
+    /// Inherited: **Source:** `LDOM_Node.hxx`:77 - `LDOM_Node::isNull()`
     pub fn LDOM_Text_inherited_isNull(self_: *const LDOM_Text) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `LDOM_Node.hxx`:82 - `LDOM_Node::getNodeType()`
+    /// Inherited: **Source:** `LDOM_Node.hxx`:79 - `LDOM_Node::getNodeType()`
     pub fn LDOM_Text_inherited_getNodeType(
         self_: *const LDOM_Text,
     ) -> crate::OcctResult<*mut LDOM_Node_NodeType>;
-    /// Inherited: **Source:** `LDOM_Node.hxx`:84 - `LDOM_Node::getNodeName()`
+    /// Inherited: **Source:** `LDOM_Node.hxx`:81 - `LDOM_Node::getNodeName()`
     pub fn LDOM_Text_inherited_getNodeName(
         self_: *const LDOM_Text,
     ) -> crate::OcctResult<*mut LDOMString>;
-    /// Inherited: **Source:** `LDOM_Node.hxx`:86 - `LDOM_Node::getNodeValue()`
+    /// Inherited: **Source:** `LDOM_Node.hxx`:83 - `LDOM_Node::getNodeValue()`
     pub fn LDOM_Text_inherited_getNodeValue(
         self_: *const LDOM_Text,
     ) -> crate::OcctResult<*mut LDOMString>;
-    /// Inherited: **Source:** `LDOM_Node.hxx`:88 - `LDOM_Node::getFirstChild()`
+    /// Inherited: **Source:** `LDOM_Node.hxx`:85 - `LDOM_Node::getFirstChild()`
     pub fn LDOM_Text_inherited_getFirstChild(
         self_: *const LDOM_Text,
     ) -> crate::OcctResult<*mut LDOM_Node>;
-    /// Inherited: **Source:** `LDOM_Node.hxx`:90 - `LDOM_Node::getLastChild()`
+    /// Inherited: **Source:** `LDOM_Node.hxx`:87 - `LDOM_Node::getLastChild()`
     pub fn LDOM_Text_inherited_getLastChild(
         self_: *const LDOM_Text,
     ) -> crate::OcctResult<*mut LDOM_Node>;
-    /// Inherited: **Source:** `LDOM_Node.hxx`:92 - `LDOM_Node::getNextSibling()`
+    /// Inherited: **Source:** `LDOM_Node.hxx`:89 - `LDOM_Node::getNextSibling()`
     pub fn LDOM_Text_inherited_getNextSibling(
         self_: *const LDOM_Text,
     ) -> crate::OcctResult<*mut LDOM_Node>;
-    /// Inherited: **Source:** `LDOM_Node.hxx`:94 - `LDOM_Node::removeChild()`
+    /// Inherited: **Source:** `LDOM_Node.hxx`:91 - `LDOM_Node::removeChild()`
     pub fn LDOM_Text_inherited_removeChild(
         self_: *mut LDOM_Text,
         aChild: *const LDOM_Node,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `LDOM_Node.hxx`:96 - `LDOM_Node::appendChild()`
+    /// Inherited: **Source:** `LDOM_Node.hxx`:93 - `LDOM_Node::appendChild()`
     pub fn LDOM_Text_inherited_appendChild(
         self_: *mut LDOM_Text,
         aChild: *const LDOM_Node,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `LDOM_Node.hxx`:98 - `LDOM_Node::hasChildNodes()`
+    /// Inherited: **Source:** `LDOM_Node.hxx`:95 - `LDOM_Node::hasChildNodes()`
     pub fn LDOM_Text_inherited_hasChildNodes(self_: *const LDOM_Text) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `LDOM_Node.hxx`:100 - `LDOM_Node::SetValueClear()`
+    /// Inherited: **Source:** `LDOM_Node.hxx`:97 - `LDOM_Node::SetValueClear()`
     pub fn LDOM_Text_inherited_SetValueClear(self_: *const LDOM_Text) -> *const std::ffi::c_char;
     // ======================== LDOM_XmlReader ========================
     pub fn LDOM_XmlReader_destructor(self_: *mut LDOM_XmlReader);
     /// **Source:** `LDOM_XmlReader.hxx`:51 - `LDOM_XmlReader::LDOM_XmlReader()`
     pub fn LDOM_XmlReader_ctor_handleldommemmanager_asciistring_bool(
-        aDocument: *const HandleLDOMMemManager,
+        aDocument: *const Handle_LDOM_MemManager,
         anErrorString: *mut TCollection_AsciiString,
         theTagPerStep: bool,
     ) -> crate::OcctResult<*mut LDOM_XmlReader>;
@@ -2568,21 +2539,21 @@ unsafe extern "C" {
         theData: *mut LDOM_OSStream,
         theDocStart: *mut bool,
     ) -> crate::OcctResult<*mut LDOM_XmlReader_RecordType>;
-    /// **Source:** `LDOM_XmlReader.hxx`:63 - `LDOM_XmlReader::GetElement()`
+    /// **Source:** `LDOM_XmlReader.hxx`:61 - `LDOM_XmlReader::GetElement()`
     pub fn LDOM_XmlReader_get_element(
         self_: *mut LDOM_XmlReader,
     ) -> crate::OcctResult<*mut LDOM_BasicElement>;
-    /// **Source:** `LDOM_XmlReader.hxx`:67 - `LDOM_XmlReader::CreateElement()`
+    /// **Source:** `LDOM_XmlReader.hxx`:65 - `LDOM_XmlReader::CreateElement()`
     pub fn LDOM_XmlReader_create_element(
         self_: *mut LDOM_XmlReader,
         theName: *const std::ffi::c_char,
         theLen: i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `LDOM_XmlReader.hxx`:76 - `LDOM_XmlReader::GetBOM()`
+    /// **Source:** `LDOM_XmlReader.hxx`:72 - `LDOM_XmlReader::GetBOM()`
     pub fn LDOM_XmlReader_get_bom(
         self_: *const LDOM_XmlReader,
     ) -> crate::OcctResult<*mut LDOM_OSStream_BOMType>;
-    /// **Source:** `LDOM_XmlReader.hxx`:69 - `LDOM_XmlReader::getInteger()`
+    /// **Source:** `LDOM_XmlReader.hxx`:67 - `LDOM_XmlReader::getInteger()`
     pub fn LDOM_XmlReader_get_integer(
         theValue: *mut LDOMBasicString,
         theStart: *const std::ffi::c_char,
@@ -2641,14 +2612,14 @@ unsafe extern "C" {
     pub fn PCDM_Document_destructor(self_: *mut PCDM_Document);
     /// **Source:** `PCDM_Document.hxx` - `PCDM_Document::PCDM_Document()`
     pub fn PCDM_Document_ctor() -> crate::OcctResult<*mut PCDM_Document>;
-    /// **Source:** `PCDM_Document.hxx`:32 - `PCDM_Document::DynamicType()`
+    /// **Source:** `PCDM_Document.hxx`:29 - `PCDM_Document::DynamicType()`
     pub fn PCDM_Document_dynamic_type(
         self_: *const PCDM_Document,
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// **Source:** `PCDM_Document.hxx`:32 - `PCDM_Document::get_type_name()`
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
+    /// **Source:** `PCDM_Document.hxx`:29 - `PCDM_Document::get_type_name()`
     pub fn PCDM_Document_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
-    /// **Source:** `PCDM_Document.hxx`:32 - `PCDM_Document::get_type_descriptor()`
-    pub fn PCDM_Document_get_type_descriptor() -> crate::OcctResult<*const HandleStandardType>;
+    /// **Source:** `PCDM_Document.hxx`:29 - `PCDM_Document::get_type_descriptor()`
+    pub fn PCDM_Document_get_type_descriptor() -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast PCDM_Document to Standard_Persistent
     pub fn PCDM_Document_as_Standard_Persistent(
         self_: *const PCDM_Document,
@@ -2668,101 +2639,78 @@ unsafe extern "C" {
     /// Wrap PCDM_Document in a Handle
     pub fn PCDM_Document_to_handle(
         obj: *mut PCDM_Document,
-    ) -> crate::OcctResult<*mut HandlePCDMDocument>;
+    ) -> crate::OcctResult<*mut Handle_PCDM_Document>;
     /// Destroy Handle<PCDM_Document>
-    pub fn HandlePCDMDocument_destructor(self_: *mut HandlePCDMDocument);
+    pub fn Handle_PCDM_Document_destructor(self_: *mut Handle_PCDM_Document);
     /// Clone Handle<PCDM_Document> (increments reference count)
-    pub fn HandlePCDMDocument_clone(
-        self_: *const HandlePCDMDocument,
-    ) -> crate::OcctResult<*mut HandlePCDMDocument>;
+    pub fn Handle_PCDM_Document_clone(
+        self_: *const Handle_PCDM_Document,
+    ) -> crate::OcctResult<*mut Handle_PCDM_Document>;
     /// Check if Handle<PCDM_Document> is null
-    pub fn HandlePCDMDocument_is_null(self_: *const HandlePCDMDocument) -> bool;
+    pub fn Handle_PCDM_Document_is_null(self_: *const Handle_PCDM_Document) -> bool;
     /// Dereference Handle to get *const PCDM_Document
-    pub fn HandlePCDMDocument_get(
-        handle: *const HandlePCDMDocument,
+    pub fn Handle_PCDM_Document_get(
+        handle: *const Handle_PCDM_Document,
     ) -> crate::OcctResult<*const PCDM_Document>;
     /// Dereference Handle to get *mut PCDM_Document
-    pub fn HandlePCDMDocument_get_mut(
-        handle: *mut HandlePCDMDocument,
+    pub fn Handle_PCDM_Document_get_mut(
+        handle: *mut Handle_PCDM_Document,
     ) -> crate::OcctResult<*mut PCDM_Document>;
     /// Upcast Handle<PCDM_Document> to Handle<Standard_Persistent>
-    pub fn HandlePCDMDocument_to_HandleStandardPersistent(
-        self_: *const HandlePCDMDocument,
-    ) -> crate::OcctResult<*mut HandleStandardPersistent>;
+    pub fn Handle_PCDM_Document_to_Handle_Standard_Persistent(
+        self_: *const Handle_PCDM_Document,
+    ) -> crate::OcctResult<*mut Handle_Standard_Persistent>;
     /// Upcast Handle<PCDM_Document> to Handle<Standard_Transient>
-    pub fn HandlePCDMDocument_to_HandleStandardTransient(
-        self_: *const HandlePCDMDocument,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
+    pub fn Handle_PCDM_Document_to_Handle_Standard_Transient(
+        self_: *const Handle_PCDM_Document,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
     /// Inherited: **Source:** `Standard_Persistent.hxx`:35 - `Standard_Persistent::TypeNum()`
     pub fn PCDM_Document_inherited_TypeNum(
         self_: *mut PCDM_Document,
     ) -> crate::OcctResult<*mut i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn PCDM_Document_inherited_IsInstance(
         self_: *const PCDM_Document,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn PCDM_Document_inherited_IsKind(
         self_: *const PCDM_Document,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn PCDM_Document_inherited_This(
         self_: *const PCDM_Document,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn PCDM_Document_inherited_GetRefCount(
         self_: *const PCDM_Document,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn PCDM_Document_inherited_IncrementRefCounter(
         self_: *mut PCDM_Document,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn PCDM_Document_inherited_DecrementRefCounter(
         self_: *mut PCDM_Document,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn PCDM_Document_inherited_Delete(self_: *const PCDM_Document) -> *const std::ffi::c_char;
     // ======================== PCDM_DriverError ========================
     pub fn PCDM_DriverError_destructor(self_: *mut PCDM_DriverError);
-    /// **Source:** `PCDM_DriverError.hxx`:36 - `PCDM_DriverError::PCDM_DriverError()`
-    pub fn PCDM_DriverError_ctor() -> crate::OcctResult<*mut PCDM_DriverError>;
-    /// **Source:** `PCDM_DriverError.hxx`:36 - `PCDM_DriverError::PCDM_DriverError()`
+    /// **Source:** `PCDM_DriverError.hxx`:32 - `PCDM_DriverError::PCDM_DriverError()`
     pub fn PCDM_DriverError_ctor_charptr(
         theMessage: *const std::ffi::c_char,
     ) -> crate::OcctResult<*mut PCDM_DriverError>;
-    /// **Source:** `PCDM_DriverError.hxx`:36 - `PCDM_DriverError::PCDM_DriverError()`
+    /// **Source:** `PCDM_DriverError.hxx`:32 - `PCDM_DriverError::PCDM_DriverError()`
     pub fn PCDM_DriverError_ctor_charptr2(
         theMessage: *const std::ffi::c_char,
         theStackTrace: *const std::ffi::c_char,
     ) -> crate::OcctResult<*mut PCDM_DriverError>;
-    /// **Source:** `PCDM_DriverError.hxx`:36 - `PCDM_DriverError::DynamicType()`
-    pub fn PCDM_DriverError_dynamic_type(
+    /// **Source:** `PCDM_DriverError.hxx`:32 - `PCDM_DriverError::ExceptionType()`
+    pub fn PCDM_DriverError_exception_type(
         self_: *const PCDM_DriverError,
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// **Source:** `PCDM_DriverError.hxx`:36 - `PCDM_DriverError::Raise()`
-    pub fn PCDM_DriverError_raise_charptr(
-        theMessage: *const std::ffi::c_char,
-    ) -> *const std::ffi::c_char;
-    /// **Source:** `PCDM_DriverError.hxx`:36 - `PCDM_DriverError::Raise()`
-    pub fn PCDM_DriverError_raise_sstream(
-        theMessage: *mut Standard_SStream,
-    ) -> *const std::ffi::c_char;
-    /// **Source:** `PCDM_DriverError.hxx`:36 - `PCDM_DriverError::NewInstance()`
-    pub fn PCDM_DriverError_new_instance_charptr(
-        theMessage: *const std::ffi::c_char,
-    ) -> crate::OcctResult<*mut HandlePCDMDriverError>;
-    /// **Source:** `PCDM_DriverError.hxx`:36 - `PCDM_DriverError::NewInstance()`
-    pub fn PCDM_DriverError_new_instance_charptr2(
-        theMessage: *const std::ffi::c_char,
-        theStackTrace: *const std::ffi::c_char,
-    ) -> crate::OcctResult<*mut HandlePCDMDriverError>;
-    /// **Source:** `PCDM_DriverError.hxx`:36 - `PCDM_DriverError::get_type_name()`
-    pub fn PCDM_DriverError_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
-    /// **Source:** `PCDM_DriverError.hxx`:36 - `PCDM_DriverError::get_type_descriptor()`
-    pub fn PCDM_DriverError_get_type_descriptor() -> crate::OcctResult<*const HandleStandardType>;
+    ) -> crate::OcctResult<*const std::ffi::c_char>;
     /// Upcast PCDM_DriverError to Standard_Failure
     pub fn PCDM_DriverError_as_Standard_Failure(
         self_: *const PCDM_DriverError,
@@ -2771,175 +2719,102 @@ unsafe extern "C" {
     pub fn PCDM_DriverError_as_Standard_Failure_mut(
         self_: *mut PCDM_DriverError,
     ) -> crate::OcctResult<*mut Standard_Failure>;
-    /// Upcast PCDM_DriverError to Standard_Transient
-    pub fn PCDM_DriverError_as_Standard_Transient(
-        self_: *const PCDM_DriverError,
-    ) -> crate::OcctResult<*const Standard_Transient>;
-    /// Upcast PCDM_DriverError to Standard_Transient (mutable)
-    pub fn PCDM_DriverError_as_Standard_Transient_mut(
-        self_: *mut PCDM_DriverError,
-    ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Wrap PCDM_DriverError in a Handle
-    pub fn PCDM_DriverError_to_handle(
-        obj: *mut PCDM_DriverError,
-    ) -> crate::OcctResult<*mut HandlePCDMDriverError>;
-    /// Destroy Handle<PCDM_DriverError>
-    pub fn HandlePCDMDriverError_destructor(self_: *mut HandlePCDMDriverError);
-    /// Clone Handle<PCDM_DriverError> (increments reference count)
-    pub fn HandlePCDMDriverError_clone(
-        self_: *const HandlePCDMDriverError,
-    ) -> crate::OcctResult<*mut HandlePCDMDriverError>;
-    /// Check if Handle<PCDM_DriverError> is null
-    pub fn HandlePCDMDriverError_is_null(self_: *const HandlePCDMDriverError) -> bool;
-    /// Dereference Handle to get *const PCDM_DriverError
-    pub fn HandlePCDMDriverError_get(
-        handle: *const HandlePCDMDriverError,
-    ) -> crate::OcctResult<*const PCDM_DriverError>;
-    /// Dereference Handle to get *mut PCDM_DriverError
-    pub fn HandlePCDMDriverError_get_mut(
-        handle: *mut HandlePCDMDriverError,
-    ) -> crate::OcctResult<*mut PCDM_DriverError>;
-    /// Upcast Handle<PCDM_DriverError> to Handle<Standard_Failure>
-    pub fn HandlePCDMDriverError_to_HandleStandardFailure(
-        self_: *const HandlePCDMDriverError,
-    ) -> crate::OcctResult<*mut HandleStandardFailure>;
-    /// Upcast Handle<PCDM_DriverError> to Handle<Standard_Transient>
-    pub fn HandlePCDMDriverError_to_HandleStandardTransient(
-        self_: *const HandlePCDMDriverError,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
-    /// Inherited: **Source:** `Standard_Failure.hxx`:58 - `Standard_Failure::Print()`
+    /// Inherited: **Source:** `Standard_Failure.hxx`:73 - `Standard_Failure::Print()`
     pub fn PCDM_DriverError_inherited_Print(
         self_: *const PCDM_DriverError,
         theStream: *mut Standard_OStream,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Failure.hxx`:72 - `Standard_Failure::Reraise()`
-    pub fn PCDM_DriverError_inherited_Reraise(
-        self_: *mut PCDM_DriverError,
-    ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Failure.hxx`:112 - `Standard_Failure::Jump()`
-    pub fn PCDM_DriverError_inherited_Jump(self_: *mut PCDM_DriverError)
-        -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn PCDM_DriverError_inherited_IsInstance(
-        self_: *const PCDM_DriverError,
-        theType: *const HandleStandardType,
-    ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn PCDM_DriverError_inherited_IsKind(
-        self_: *const PCDM_DriverError,
-        theType: *const HandleStandardType,
-    ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
-    pub fn PCDM_DriverError_inherited_This(
-        self_: *const PCDM_DriverError,
-    ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
-    pub fn PCDM_DriverError_inherited_GetRefCount(
-        self_: *const PCDM_DriverError,
-    ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
-    pub fn PCDM_DriverError_inherited_IncrementRefCounter(
-        self_: *mut PCDM_DriverError,
-    ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
-    pub fn PCDM_DriverError_inherited_DecrementRefCounter(
-        self_: *mut PCDM_DriverError,
-    ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
-    pub fn PCDM_DriverError_inherited_Delete(
-        self_: *const PCDM_DriverError,
-    ) -> *const std::ffi::c_char;
     // ======================== PCDM_ReadWriter ========================
     pub fn PCDM_ReadWriter_destructor(self_: *mut PCDM_ReadWriter);
-    /// **Source:** `PCDM_ReadWriter.hxx`:43 - `PCDM_ReadWriter::Version()`
+    /// **Source:** `PCDM_ReadWriter.hxx`:41 - `PCDM_ReadWriter::Version()`
     pub fn PCDM_ReadWriter_version(
         self_: *const PCDM_ReadWriter,
     ) -> crate::OcctResult<*mut TCollection_AsciiString>;
-    /// **Source:** `PCDM_ReadWriter.hxx`:45 - `PCDM_ReadWriter::WriteReferenceCounter()`
+    /// **Source:** `PCDM_ReadWriter.hxx`:43 - `PCDM_ReadWriter::WriteReferenceCounter()`
     pub fn PCDM_ReadWriter_write_reference_counter(
         self_: *const PCDM_ReadWriter,
-        aData: *const HandleStorageData,
-        aDocument: *const HandleCDMDocument,
+        aData: *const Handle_Storage_Data,
+        aDocument: *const Handle_CDM_Document,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `PCDM_ReadWriter.hxx`:49 - `PCDM_ReadWriter::WriteReferences()`
+    /// **Source:** `PCDM_ReadWriter.hxx`:47 - `PCDM_ReadWriter::WriteReferences()`
     pub fn PCDM_ReadWriter_write_references(
         self_: *const PCDM_ReadWriter,
-        aData: *const HandleStorageData,
-        aDocument: *const HandleCDMDocument,
+        aData: *const Handle_Storage_Data,
+        aDocument: *const Handle_CDM_Document,
         theReferencerFileName: *const TCollection_ExtendedString,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `PCDM_ReadWriter.hxx`:54 - `PCDM_ReadWriter::WriteExtensions()`
+    /// **Source:** `PCDM_ReadWriter.hxx`:52 - `PCDM_ReadWriter::WriteExtensions()`
     pub fn PCDM_ReadWriter_write_extensions(
         self_: *const PCDM_ReadWriter,
-        aData: *const HandleStorageData,
-        aDocument: *const HandleCDMDocument,
+        aData: *const Handle_Storage_Data,
+        aDocument: *const Handle_CDM_Document,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `PCDM_ReadWriter.hxx`:57 - `PCDM_ReadWriter::WriteVersion()`
+    /// **Source:** `PCDM_ReadWriter.hxx`:56 - `PCDM_ReadWriter::WriteVersion()`
     pub fn PCDM_ReadWriter_write_version(
         self_: *const PCDM_ReadWriter,
-        aData: *const HandleStorageData,
-        aDocument: *const HandleCDMDocument,
+        aData: *const Handle_Storage_Data,
+        aDocument: *const Handle_CDM_Document,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `PCDM_ReadWriter.hxx`:60 - `PCDM_ReadWriter::ReadReferenceCounter()`
+    /// **Source:** `PCDM_ReadWriter.hxx`:59 - `PCDM_ReadWriter::ReadReferenceCounter()`
     pub fn PCDM_ReadWriter_read_reference_counter(
         self_: *const PCDM_ReadWriter,
         theFileName: *const TCollection_ExtendedString,
-        theMsgDriver: *const HandleMessageMessenger,
+        theMsgDriver: *const Handle_Message_Messenger,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `PCDM_ReadWriter.hxx`:64 - `PCDM_ReadWriter::ReadReferences()`
+    /// **Source:** `PCDM_ReadWriter.hxx`:63 - `PCDM_ReadWriter::ReadReferences()`
     pub fn PCDM_ReadWriter_read_references(
         self_: *const PCDM_ReadWriter,
         aFileName: *const TCollection_ExtendedString,
-        theReferences: *mut PCDM_SequenceOfReference,
-        theMsgDriver: *const HandleMessageMessenger,
+        theReferences: *mut NCollection_Sequence_PCDM_Reference,
+        theMsgDriver: *const Handle_Message_Messenger,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `PCDM_ReadWriter.hxx`:69 - `PCDM_ReadWriter::ReadExtensions()`
+    /// **Source:** `PCDM_ReadWriter.hxx`:68 - `PCDM_ReadWriter::ReadExtensions()`
     pub fn PCDM_ReadWriter_read_extensions(
         self_: *const PCDM_ReadWriter,
         aFileName: *const TCollection_ExtendedString,
-        theExtensions: *mut TColStd_SequenceOfExtendedString,
-        theMsgDriver: *const HandleMessageMessenger,
+        theExtensions: *mut NCollection_Sequence_TCollection_ExtendedString,
+        theMsgDriver: *const Handle_Message_Messenger,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `PCDM_ReadWriter.hxx`:74 - `PCDM_ReadWriter::ReadDocumentVersion()`
+    /// **Source:** `PCDM_ReadWriter.hxx`:73 - `PCDM_ReadWriter::ReadDocumentVersion()`
     pub fn PCDM_ReadWriter_read_document_version(
         self_: *const PCDM_ReadWriter,
         aFileName: *const TCollection_ExtendedString,
-        theMsgDriver: *const HandleMessageMessenger,
+        theMsgDriver: *const Handle_Message_Messenger,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `PCDM_ReadWriter.hxx`:103 - `PCDM_ReadWriter::DynamicType()`
+    /// **Source:** `PCDM_ReadWriter.hxx`:102 - `PCDM_ReadWriter::DynamicType()`
     pub fn PCDM_ReadWriter_dynamic_type(
         self_: *const PCDM_ReadWriter,
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// **Source:** `PCDM_ReadWriter.hxx`:78 - `PCDM_ReadWriter::Open()`
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
+    /// **Source:** `PCDM_ReadWriter.hxx`:77 - `PCDM_ReadWriter::Open()`
     pub fn PCDM_ReadWriter_open(
-        aDriver: *const HandleStorageBaseDriver,
+        aDriver: *const Handle_Storage_BaseDriver,
         aFileName: *const TCollection_ExtendedString,
         anOpenMode: i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `PCDM_ReadWriter.hxx`:83 - `PCDM_ReadWriter::Reader()`
+    /// **Source:** `PCDM_ReadWriter.hxx`:82 - `PCDM_ReadWriter::Reader()`
     pub fn PCDM_ReadWriter_reader(
         aFileName: *const TCollection_ExtendedString,
-    ) -> crate::OcctResult<*mut HandlePCDMReadWriter>;
-    /// **Source:** `PCDM_ReadWriter.hxx`:86 - `PCDM_ReadWriter::Writer()`
-    pub fn PCDM_ReadWriter_writer() -> crate::OcctResult<*mut HandlePCDMReadWriter>;
-    /// **Source:** `PCDM_ReadWriter.hxx`:88 - `PCDM_ReadWriter::WriteFileFormat()`
+    ) -> crate::OcctResult<*mut Handle_PCDM_ReadWriter>;
+    /// **Source:** `PCDM_ReadWriter.hxx`:85 - `PCDM_ReadWriter::Writer()`
+    pub fn PCDM_ReadWriter_writer() -> crate::OcctResult<*mut Handle_PCDM_ReadWriter>;
+    /// **Source:** `PCDM_ReadWriter.hxx`:87 - `PCDM_ReadWriter::WriteFileFormat()`
     pub fn PCDM_ReadWriter_write_file_format(
-        aData: *const HandleStorageData,
-        aDocument: *const HandleCDMDocument,
+        aData: *const Handle_Storage_Data,
+        aDocument: *const Handle_CDM_Document,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `PCDM_ReadWriter.hxx`:94 - `PCDM_ReadWriter::FileFormat()`
+    /// **Source:** `PCDM_ReadWriter.hxx`:93 - `PCDM_ReadWriter::FileFormat()`
     pub fn PCDM_ReadWriter_file_format_extendedstring(
         aFileName: *const TCollection_ExtendedString,
     ) -> crate::OcctResult<*mut TCollection_ExtendedString>;
-    /// **Source:** `PCDM_ReadWriter.hxx`:100 - `PCDM_ReadWriter::FileFormat()`
+    /// **Source:** `PCDM_ReadWriter.hxx`:99 - `PCDM_ReadWriter::FileFormat()`
     pub fn PCDM_ReadWriter_file_format_istream_handlestoragedata(
         theIStream: *mut Standard_IStream,
-        theData: *mut HandleStorageData,
+        theData: *mut Handle_Storage_Data,
     ) -> crate::OcctResult<*mut TCollection_ExtendedString>;
-    /// **Source:** `PCDM_ReadWriter.hxx`:103 - `PCDM_ReadWriter::get_type_name()`
+    /// **Source:** `PCDM_ReadWriter.hxx`:102 - `PCDM_ReadWriter::get_type_name()`
     pub fn PCDM_ReadWriter_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
-    /// **Source:** `PCDM_ReadWriter.hxx`:103 - `PCDM_ReadWriter::get_type_descriptor()`
-    pub fn PCDM_ReadWriter_get_type_descriptor() -> crate::OcctResult<*const HandleStandardType>;
+    /// **Source:** `PCDM_ReadWriter.hxx`:102 - `PCDM_ReadWriter::get_type_descriptor()`
+    pub fn PCDM_ReadWriter_get_type_descriptor() -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast PCDM_ReadWriter to Standard_Transient
     pub fn PCDM_ReadWriter_as_Standard_Transient(
         self_: *const PCDM_ReadWriter,
@@ -2949,126 +2824,126 @@ unsafe extern "C" {
         self_: *mut PCDM_ReadWriter,
     ) -> crate::OcctResult<*mut Standard_Transient>;
     /// Destroy Handle<PCDM_ReadWriter>
-    pub fn HandlePCDMReadWriter_destructor(self_: *mut HandlePCDMReadWriter);
+    pub fn Handle_PCDM_ReadWriter_destructor(self_: *mut Handle_PCDM_ReadWriter);
     /// Clone Handle<PCDM_ReadWriter> (increments reference count)
-    pub fn HandlePCDMReadWriter_clone(
-        self_: *const HandlePCDMReadWriter,
-    ) -> crate::OcctResult<*mut HandlePCDMReadWriter>;
+    pub fn Handle_PCDM_ReadWriter_clone(
+        self_: *const Handle_PCDM_ReadWriter,
+    ) -> crate::OcctResult<*mut Handle_PCDM_ReadWriter>;
     /// Check if Handle<PCDM_ReadWriter> is null
-    pub fn HandlePCDMReadWriter_is_null(self_: *const HandlePCDMReadWriter) -> bool;
+    pub fn Handle_PCDM_ReadWriter_is_null(self_: *const Handle_PCDM_ReadWriter) -> bool;
     /// Dereference Handle to get *const PCDM_ReadWriter
-    pub fn HandlePCDMReadWriter_get(
-        handle: *const HandlePCDMReadWriter,
+    pub fn Handle_PCDM_ReadWriter_get(
+        handle: *const Handle_PCDM_ReadWriter,
     ) -> crate::OcctResult<*const PCDM_ReadWriter>;
     /// Dereference Handle to get *mut PCDM_ReadWriter
-    pub fn HandlePCDMReadWriter_get_mut(
-        handle: *mut HandlePCDMReadWriter,
+    pub fn Handle_PCDM_ReadWriter_get_mut(
+        handle: *mut Handle_PCDM_ReadWriter,
     ) -> crate::OcctResult<*mut PCDM_ReadWriter>;
     /// Upcast Handle<PCDM_ReadWriter> to Handle<Standard_Transient>
-    pub fn HandlePCDMReadWriter_to_HandleStandardTransient(
-        self_: *const HandlePCDMReadWriter,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
+    pub fn Handle_PCDM_ReadWriter_to_Handle_Standard_Transient(
+        self_: *const Handle_PCDM_ReadWriter,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
     /// Downcast Handle<PCDM_ReadWriter> to Handle<PCDM_ReadWriter_1> (returns null on failure)
-    pub fn HandlePCDMReadWriter_downcast_to_HandlePCDMReadWriter1(
-        self_: *const HandlePCDMReadWriter,
-    ) -> crate::OcctResult<*mut HandlePCDMReadWriter1>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn Handle_PCDM_ReadWriter_downcast_to_Handle_PCDM_ReadWriter_1(
+        self_: *const Handle_PCDM_ReadWriter,
+    ) -> crate::OcctResult<*mut Handle_PCDM_ReadWriter_1>;
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn PCDM_ReadWriter_inherited_IsInstance(
         self_: *const PCDM_ReadWriter,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn PCDM_ReadWriter_inherited_IsKind(
         self_: *const PCDM_ReadWriter,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn PCDM_ReadWriter_inherited_This(
         self_: *const PCDM_ReadWriter,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn PCDM_ReadWriter_inherited_GetRefCount(
         self_: *const PCDM_ReadWriter,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn PCDM_ReadWriter_inherited_IncrementRefCounter(
         self_: *mut PCDM_ReadWriter,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn PCDM_ReadWriter_inherited_DecrementRefCounter(
         self_: *mut PCDM_ReadWriter,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn PCDM_ReadWriter_inherited_Delete(
         self_: *const PCDM_ReadWriter,
     ) -> *const std::ffi::c_char;
     // ======================== PCDM_ReadWriter_1 ========================
     pub fn PCDM_ReadWriter_1_destructor(self_: *mut PCDM_ReadWriter_1);
-    /// **Source:** `PCDM_ReadWriter_1.hxx`:40 - `PCDM_ReadWriter_1::PCDM_ReadWriter_1()`
+    /// **Source:** `PCDM_ReadWriter_1.hxx`:38 - `PCDM_ReadWriter_1::PCDM_ReadWriter_1()`
     pub fn PCDM_ReadWriter_1_ctor() -> crate::OcctResult<*mut PCDM_ReadWriter_1>;
-    /// **Source:** `PCDM_ReadWriter_1.hxx`:43 - `PCDM_ReadWriter_1::Version()`
+    /// **Source:** `PCDM_ReadWriter_1.hxx`:41 - `PCDM_ReadWriter_1::Version()`
     pub fn PCDM_ReadWriter_1_version(
         self_: *const PCDM_ReadWriter_1,
     ) -> crate::OcctResult<*mut TCollection_AsciiString>;
-    /// **Source:** `PCDM_ReadWriter_1.hxx`:45 - `PCDM_ReadWriter_1::WriteReferenceCounter()`
+    /// **Source:** `PCDM_ReadWriter_1.hxx`:43 - `PCDM_ReadWriter_1::WriteReferenceCounter()`
     pub fn PCDM_ReadWriter_1_write_reference_counter(
         self_: *const PCDM_ReadWriter_1,
-        aData: *const HandleStorageData,
-        aDocument: *const HandleCDMDocument,
+        aData: *const Handle_Storage_Data,
+        aDocument: *const Handle_CDM_Document,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `PCDM_ReadWriter_1.hxx`:49 - `PCDM_ReadWriter_1::WriteReferences()`
+    /// **Source:** `PCDM_ReadWriter_1.hxx`:47 - `PCDM_ReadWriter_1::WriteReferences()`
     pub fn PCDM_ReadWriter_1_write_references(
         self_: *const PCDM_ReadWriter_1,
-        aData: *const HandleStorageData,
-        aDocument: *const HandleCDMDocument,
+        aData: *const Handle_Storage_Data,
+        aDocument: *const Handle_CDM_Document,
         theReferencerFileName: *const TCollection_ExtendedString,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `PCDM_ReadWriter_1.hxx`:54 - `PCDM_ReadWriter_1::WriteExtensions()`
+    /// **Source:** `PCDM_ReadWriter_1.hxx`:52 - `PCDM_ReadWriter_1::WriteExtensions()`
     pub fn PCDM_ReadWriter_1_write_extensions(
         self_: *const PCDM_ReadWriter_1,
-        aData: *const HandleStorageData,
-        aDocument: *const HandleCDMDocument,
+        aData: *const Handle_Storage_Data,
+        aDocument: *const Handle_CDM_Document,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `PCDM_ReadWriter_1.hxx`:58 - `PCDM_ReadWriter_1::WriteVersion()`
+    /// **Source:** `PCDM_ReadWriter_1.hxx`:55 - `PCDM_ReadWriter_1::WriteVersion()`
     pub fn PCDM_ReadWriter_1_write_version(
         self_: *const PCDM_ReadWriter_1,
-        aData: *const HandleStorageData,
-        aDocument: *const HandleCDMDocument,
+        aData: *const Handle_Storage_Data,
+        aDocument: *const Handle_CDM_Document,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `PCDM_ReadWriter_1.hxx`:62 - `PCDM_ReadWriter_1::ReadReferenceCounter()`
+    /// **Source:** `PCDM_ReadWriter_1.hxx`:58 - `PCDM_ReadWriter_1::ReadReferenceCounter()`
     pub fn PCDM_ReadWriter_1_read_reference_counter(
         self_: *const PCDM_ReadWriter_1,
         aFileName: *const TCollection_ExtendedString,
-        theMsgDriver: *const HandleMessageMessenger,
+        theMsgDriver: *const Handle_Message_Messenger,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `PCDM_ReadWriter_1.hxx`:65 - `PCDM_ReadWriter_1::ReadReferences()`
+    /// **Source:** `PCDM_ReadWriter_1.hxx`:62 - `PCDM_ReadWriter_1::ReadReferences()`
     pub fn PCDM_ReadWriter_1_read_references(
         self_: *const PCDM_ReadWriter_1,
         aFileName: *const TCollection_ExtendedString,
-        theReferences: *mut PCDM_SequenceOfReference,
-        theMsgDriver: *const HandleMessageMessenger,
+        theReferences: *mut NCollection_Sequence_PCDM_Reference,
+        theMsgDriver: *const Handle_Message_Messenger,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `PCDM_ReadWriter_1.hxx`:70 - `PCDM_ReadWriter_1::ReadExtensions()`
+    /// **Source:** `PCDM_ReadWriter_1.hxx`:67 - `PCDM_ReadWriter_1::ReadExtensions()`
     pub fn PCDM_ReadWriter_1_read_extensions(
         self_: *const PCDM_ReadWriter_1,
         aFileName: *const TCollection_ExtendedString,
-        theExtensions: *mut TColStd_SequenceOfExtendedString,
-        theMsgDriver: *const HandleMessageMessenger,
+        theExtensions: *mut NCollection_Sequence_TCollection_ExtendedString,
+        theMsgDriver: *const Handle_Message_Messenger,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `PCDM_ReadWriter_1.hxx`:76 - `PCDM_ReadWriter_1::ReadDocumentVersion()`
+    /// **Source:** `PCDM_ReadWriter_1.hxx`:72 - `PCDM_ReadWriter_1::ReadDocumentVersion()`
     pub fn PCDM_ReadWriter_1_read_document_version(
         self_: *const PCDM_ReadWriter_1,
         aFileName: *const TCollection_ExtendedString,
-        theMsgDriver: *const HandleMessageMessenger,
+        theMsgDriver: *const Handle_Message_Messenger,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `PCDM_ReadWriter_1.hxx`:79 - `PCDM_ReadWriter_1::DynamicType()`
+    /// **Source:** `PCDM_ReadWriter_1.hxx`:76 - `PCDM_ReadWriter_1::DynamicType()`
     pub fn PCDM_ReadWriter_1_dynamic_type(
         self_: *const PCDM_ReadWriter_1,
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// **Source:** `PCDM_ReadWriter_1.hxx`:79 - `PCDM_ReadWriter_1::get_type_name()`
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
+    /// **Source:** `PCDM_ReadWriter_1.hxx`:76 - `PCDM_ReadWriter_1::get_type_name()`
     pub fn PCDM_ReadWriter_1_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
-    /// **Source:** `PCDM_ReadWriter_1.hxx`:79 - `PCDM_ReadWriter_1::get_type_descriptor()`
-    pub fn PCDM_ReadWriter_1_get_type_descriptor() -> crate::OcctResult<*const HandleStandardType>;
+    /// **Source:** `PCDM_ReadWriter_1.hxx`:76 - `PCDM_ReadWriter_1::get_type_descriptor()`
+    pub fn PCDM_ReadWriter_1_get_type_descriptor() -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast PCDM_ReadWriter_1 to PCDM_ReadWriter
     pub fn PCDM_ReadWriter_1_as_PCDM_ReadWriter(
         self_: *const PCDM_ReadWriter_1,
@@ -3088,92 +2963,92 @@ unsafe extern "C" {
     /// Wrap PCDM_ReadWriter_1 in a Handle
     pub fn PCDM_ReadWriter_1_to_handle(
         obj: *mut PCDM_ReadWriter_1,
-    ) -> crate::OcctResult<*mut HandlePCDMReadWriter1>;
+    ) -> crate::OcctResult<*mut Handle_PCDM_ReadWriter_1>;
     /// Destroy Handle<PCDM_ReadWriter_1>
-    pub fn HandlePCDMReadWriter1_destructor(self_: *mut HandlePCDMReadWriter1);
+    pub fn Handle_PCDM_ReadWriter_1_destructor(self_: *mut Handle_PCDM_ReadWriter_1);
     /// Clone Handle<PCDM_ReadWriter_1> (increments reference count)
-    pub fn HandlePCDMReadWriter1_clone(
-        self_: *const HandlePCDMReadWriter1,
-    ) -> crate::OcctResult<*mut HandlePCDMReadWriter1>;
+    pub fn Handle_PCDM_ReadWriter_1_clone(
+        self_: *const Handle_PCDM_ReadWriter_1,
+    ) -> crate::OcctResult<*mut Handle_PCDM_ReadWriter_1>;
     /// Check if Handle<PCDM_ReadWriter_1> is null
-    pub fn HandlePCDMReadWriter1_is_null(self_: *const HandlePCDMReadWriter1) -> bool;
+    pub fn Handle_PCDM_ReadWriter_1_is_null(self_: *const Handle_PCDM_ReadWriter_1) -> bool;
     /// Dereference Handle to get *const PCDM_ReadWriter_1
-    pub fn HandlePCDMReadWriter1_get(
-        handle: *const HandlePCDMReadWriter1,
+    pub fn Handle_PCDM_ReadWriter_1_get(
+        handle: *const Handle_PCDM_ReadWriter_1,
     ) -> crate::OcctResult<*const PCDM_ReadWriter_1>;
     /// Dereference Handle to get *mut PCDM_ReadWriter_1
-    pub fn HandlePCDMReadWriter1_get_mut(
-        handle: *mut HandlePCDMReadWriter1,
+    pub fn Handle_PCDM_ReadWriter_1_get_mut(
+        handle: *mut Handle_PCDM_ReadWriter_1,
     ) -> crate::OcctResult<*mut PCDM_ReadWriter_1>;
     /// Upcast Handle<PCDM_ReadWriter_1> to Handle<PCDM_ReadWriter>
-    pub fn HandlePCDMReadWriter1_to_HandlePCDMReadWriter(
-        self_: *const HandlePCDMReadWriter1,
-    ) -> crate::OcctResult<*mut HandlePCDMReadWriter>;
+    pub fn Handle_PCDM_ReadWriter_1_to_Handle_PCDM_ReadWriter(
+        self_: *const Handle_PCDM_ReadWriter_1,
+    ) -> crate::OcctResult<*mut Handle_PCDM_ReadWriter>;
     /// Upcast Handle<PCDM_ReadWriter_1> to Handle<Standard_Transient>
-    pub fn HandlePCDMReadWriter1_to_HandleStandardTransient(
-        self_: *const HandlePCDMReadWriter1,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn Handle_PCDM_ReadWriter_1_to_Handle_Standard_Transient(
+        self_: *const Handle_PCDM_ReadWriter_1,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn PCDM_ReadWriter_1_inherited_IsInstance(
         self_: *const PCDM_ReadWriter_1,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn PCDM_ReadWriter_1_inherited_IsKind(
         self_: *const PCDM_ReadWriter_1,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn PCDM_ReadWriter_1_inherited_This(
         self_: *const PCDM_ReadWriter_1,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn PCDM_ReadWriter_1_inherited_GetRefCount(
         self_: *const PCDM_ReadWriter_1,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn PCDM_ReadWriter_1_inherited_IncrementRefCounter(
         self_: *mut PCDM_ReadWriter_1,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn PCDM_ReadWriter_1_inherited_DecrementRefCounter(
         self_: *mut PCDM_ReadWriter_1,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn PCDM_ReadWriter_1_inherited_Delete(
         self_: *const PCDM_ReadWriter_1,
     ) -> *const std::ffi::c_char;
     // ======================== PCDM_Reader ========================
     pub fn PCDM_Reader_destructor(self_: *mut PCDM_Reader);
-    /// **Source:** `PCDM_Reader.hxx`:42 - `PCDM_Reader::Read()`
+    /// **Source:** `PCDM_Reader.hxx`:39 - `PCDM_Reader::Read()`
     pub fn PCDM_Reader_read_extendedstring_handlecdmdocument_handlecdmapplication_handlepcdmreaderfilter_progressrange(
         self_: *mut PCDM_Reader,
         aFileName: *const TCollection_ExtendedString,
-        aNewDocument: *const HandleCDMDocument,
-        anApplication: *const HandleCDMApplication,
-        theFilter: *const HandlePCDMReaderFilter,
+        aNewDocument: *const Handle_CDM_Document,
+        anApplication: *const Handle_CDM_Application,
+        theFilter: *const Handle_PCDM_ReaderFilter,
         theProgress: *const Message_ProgressRange,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `PCDM_Reader.hxx`:49 - `PCDM_Reader::Read()`
+    /// **Source:** `PCDM_Reader.hxx`:46 - `PCDM_Reader::Read()`
     pub fn PCDM_Reader_read_istream_handlestoragedata_handlecdmdocument_handlecdmapplication_handlepcdmreaderfilter_progressrange(
         self_: *mut PCDM_Reader,
         theIStream: *mut Standard_IStream,
-        theStorageData: *const HandleStorageData,
-        theDoc: *const HandleCDMDocument,
-        theApplication: *const HandleCDMApplication,
-        theFilter: *const HandlePCDMReaderFilter,
+        theStorageData: *const Handle_Storage_Data,
+        theDoc: *const Handle_CDM_Document,
+        theApplication: *const Handle_CDM_Application,
+        theFilter: *const Handle_PCDM_ReaderFilter,
         theProgress: *const Message_ProgressRange,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `PCDM_Reader.hxx`:57 - `PCDM_Reader::GetStatus()`
+    /// **Source:** `PCDM_Reader.hxx`:54 - `PCDM_Reader::GetStatus()`
     pub fn PCDM_Reader_get_status(self_: *const PCDM_Reader) -> crate::OcctResult<i32>;
-    /// **Source:** `PCDM_Reader.hxx`:59 - `PCDM_Reader::DynamicType()`
+    /// **Source:** `PCDM_Reader.hxx`:56 - `PCDM_Reader::DynamicType()`
     pub fn PCDM_Reader_dynamic_type(
         self_: *const PCDM_Reader,
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// **Source:** `PCDM_Reader.hxx`:59 - `PCDM_Reader::get_type_name()`
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
+    /// **Source:** `PCDM_Reader.hxx`:56 - `PCDM_Reader::get_type_name()`
     pub fn PCDM_Reader_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
-    /// **Source:** `PCDM_Reader.hxx`:59 - `PCDM_Reader::get_type_descriptor()`
-    pub fn PCDM_Reader_get_type_descriptor() -> crate::OcctResult<*const HandleStandardType>;
+    /// **Source:** `PCDM_Reader.hxx`:56 - `PCDM_Reader::get_type_descriptor()`
+    pub fn PCDM_Reader_get_type_descriptor() -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast PCDM_Reader to Standard_Transient
     pub fn PCDM_Reader_as_Standard_Transient(
         self_: *const PCDM_Reader,
@@ -3183,194 +3058,194 @@ unsafe extern "C" {
         self_: *mut PCDM_Reader,
     ) -> crate::OcctResult<*mut Standard_Transient>;
     /// Destroy Handle<PCDM_Reader>
-    pub fn HandlePCDMReader_destructor(self_: *mut HandlePCDMReader);
+    pub fn Handle_PCDM_Reader_destructor(self_: *mut Handle_PCDM_Reader);
     /// Clone Handle<PCDM_Reader> (increments reference count)
-    pub fn HandlePCDMReader_clone(
-        self_: *const HandlePCDMReader,
-    ) -> crate::OcctResult<*mut HandlePCDMReader>;
+    pub fn Handle_PCDM_Reader_clone(
+        self_: *const Handle_PCDM_Reader,
+    ) -> crate::OcctResult<*mut Handle_PCDM_Reader>;
     /// Check if Handle<PCDM_Reader> is null
-    pub fn HandlePCDMReader_is_null(self_: *const HandlePCDMReader) -> bool;
+    pub fn Handle_PCDM_Reader_is_null(self_: *const Handle_PCDM_Reader) -> bool;
     /// Dereference Handle to get *const PCDM_Reader
-    pub fn HandlePCDMReader_get(
-        handle: *const HandlePCDMReader,
+    pub fn Handle_PCDM_Reader_get(
+        handle: *const Handle_PCDM_Reader,
     ) -> crate::OcctResult<*const PCDM_Reader>;
     /// Dereference Handle to get *mut PCDM_Reader
-    pub fn HandlePCDMReader_get_mut(
-        handle: *mut HandlePCDMReader,
+    pub fn Handle_PCDM_Reader_get_mut(
+        handle: *mut Handle_PCDM_Reader,
     ) -> crate::OcctResult<*mut PCDM_Reader>;
     /// Upcast Handle<PCDM_Reader> to Handle<Standard_Transient>
-    pub fn HandlePCDMReader_to_HandleStandardTransient(
-        self_: *const HandlePCDMReader,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
+    pub fn Handle_PCDM_Reader_to_Handle_Standard_Transient(
+        self_: *const Handle_PCDM_Reader,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
     /// Downcast Handle<PCDM_Reader> to Handle<BinDrivers_DocumentRetrievalDriver> (returns null on failure)
-    pub fn HandlePCDMReader_downcast_to_HandleBinDriversDocumentRetrievalDriver(
-        self_: *const HandlePCDMReader,
-    ) -> crate::OcctResult<*mut HandleBinDriversDocumentRetrievalDriver>;
+    pub fn Handle_PCDM_Reader_downcast_to_Handle_BinDrivers_DocumentRetrievalDriver(
+        self_: *const Handle_PCDM_Reader,
+    ) -> crate::OcctResult<*mut Handle_BinDrivers_DocumentRetrievalDriver>;
     /// Downcast Handle<PCDM_Reader> to Handle<BinLDrivers_DocumentRetrievalDriver> (returns null on failure)
-    pub fn HandlePCDMReader_downcast_to_HandleBinLDriversDocumentRetrievalDriver(
-        self_: *const HandlePCDMReader,
-    ) -> crate::OcctResult<*mut HandleBinLDriversDocumentRetrievalDriver>;
+    pub fn Handle_PCDM_Reader_downcast_to_Handle_BinLDrivers_DocumentRetrievalDriver(
+        self_: *const Handle_PCDM_Reader,
+    ) -> crate::OcctResult<*mut Handle_BinLDrivers_DocumentRetrievalDriver>;
     /// Downcast Handle<PCDM_Reader> to Handle<BinTObjDrivers_DocumentRetrievalDriver> (returns null on failure)
-    pub fn HandlePCDMReader_downcast_to_HandleBinTObjDriversDocumentRetrievalDriver(
-        self_: *const HandlePCDMReader,
-    ) -> crate::OcctResult<*mut HandleBinTObjDriversDocumentRetrievalDriver>;
+    pub fn Handle_PCDM_Reader_downcast_to_Handle_BinTObjDrivers_DocumentRetrievalDriver(
+        self_: *const Handle_PCDM_Reader,
+    ) -> crate::OcctResult<*mut Handle_BinTObjDrivers_DocumentRetrievalDriver>;
     /// Downcast Handle<PCDM_Reader> to Handle<BinXCAFDrivers_DocumentRetrievalDriver> (returns null on failure)
-    pub fn HandlePCDMReader_downcast_to_HandleBinXCAFDriversDocumentRetrievalDriver(
-        self_: *const HandlePCDMReader,
-    ) -> crate::OcctResult<*mut HandleBinXCAFDriversDocumentRetrievalDriver>;
+    pub fn Handle_PCDM_Reader_downcast_to_Handle_BinXCAFDrivers_DocumentRetrievalDriver(
+        self_: *const Handle_PCDM_Reader,
+    ) -> crate::OcctResult<*mut Handle_BinXCAFDrivers_DocumentRetrievalDriver>;
     /// Downcast Handle<PCDM_Reader> to Handle<PCDM_RetrievalDriver> (returns null on failure)
-    pub fn HandlePCDMReader_downcast_to_HandlePCDMRetrievalDriver(
-        self_: *const HandlePCDMReader,
-    ) -> crate::OcctResult<*mut HandlePCDMRetrievalDriver>;
+    pub fn Handle_PCDM_Reader_downcast_to_Handle_PCDM_RetrievalDriver(
+        self_: *const Handle_PCDM_Reader,
+    ) -> crate::OcctResult<*mut Handle_PCDM_RetrievalDriver>;
     /// Downcast Handle<PCDM_Reader> to Handle<StdDrivers_DocumentRetrievalDriver> (returns null on failure)
-    pub fn HandlePCDMReader_downcast_to_HandleStdDriversDocumentRetrievalDriver(
-        self_: *const HandlePCDMReader,
-    ) -> crate::OcctResult<*mut HandleStdDriversDocumentRetrievalDriver>;
+    pub fn Handle_PCDM_Reader_downcast_to_Handle_StdDrivers_DocumentRetrievalDriver(
+        self_: *const Handle_PCDM_Reader,
+    ) -> crate::OcctResult<*mut Handle_StdDrivers_DocumentRetrievalDriver>;
     /// Downcast Handle<PCDM_Reader> to Handle<StdLDrivers_DocumentRetrievalDriver> (returns null on failure)
-    pub fn HandlePCDMReader_downcast_to_HandleStdLDriversDocumentRetrievalDriver(
-        self_: *const HandlePCDMReader,
-    ) -> crate::OcctResult<*mut HandleStdLDriversDocumentRetrievalDriver>;
+    pub fn Handle_PCDM_Reader_downcast_to_Handle_StdLDrivers_DocumentRetrievalDriver(
+        self_: *const Handle_PCDM_Reader,
+    ) -> crate::OcctResult<*mut Handle_StdLDrivers_DocumentRetrievalDriver>;
     /// Downcast Handle<PCDM_Reader> to Handle<XmlDrivers_DocumentRetrievalDriver> (returns null on failure)
-    pub fn HandlePCDMReader_downcast_to_HandleXmlDriversDocumentRetrievalDriver(
-        self_: *const HandlePCDMReader,
-    ) -> crate::OcctResult<*mut HandleXmlDriversDocumentRetrievalDriver>;
+    pub fn Handle_PCDM_Reader_downcast_to_Handle_XmlDrivers_DocumentRetrievalDriver(
+        self_: *const Handle_PCDM_Reader,
+    ) -> crate::OcctResult<*mut Handle_XmlDrivers_DocumentRetrievalDriver>;
     /// Downcast Handle<PCDM_Reader> to Handle<XmlLDrivers_DocumentRetrievalDriver> (returns null on failure)
-    pub fn HandlePCDMReader_downcast_to_HandleXmlLDriversDocumentRetrievalDriver(
-        self_: *const HandlePCDMReader,
-    ) -> crate::OcctResult<*mut HandleXmlLDriversDocumentRetrievalDriver>;
+    pub fn Handle_PCDM_Reader_downcast_to_Handle_XmlLDrivers_DocumentRetrievalDriver(
+        self_: *const Handle_PCDM_Reader,
+    ) -> crate::OcctResult<*mut Handle_XmlLDrivers_DocumentRetrievalDriver>;
     /// Downcast Handle<PCDM_Reader> to Handle<XmlTObjDrivers_DocumentRetrievalDriver> (returns null on failure)
-    pub fn HandlePCDMReader_downcast_to_HandleXmlTObjDriversDocumentRetrievalDriver(
-        self_: *const HandlePCDMReader,
-    ) -> crate::OcctResult<*mut HandleXmlTObjDriversDocumentRetrievalDriver>;
+    pub fn Handle_PCDM_Reader_downcast_to_Handle_XmlTObjDrivers_DocumentRetrievalDriver(
+        self_: *const Handle_PCDM_Reader,
+    ) -> crate::OcctResult<*mut Handle_XmlTObjDrivers_DocumentRetrievalDriver>;
     /// Downcast Handle<PCDM_Reader> to Handle<XmlXCAFDrivers_DocumentRetrievalDriver> (returns null on failure)
-    pub fn HandlePCDMReader_downcast_to_HandleXmlXCAFDriversDocumentRetrievalDriver(
-        self_: *const HandlePCDMReader,
-    ) -> crate::OcctResult<*mut HandleXmlXCAFDriversDocumentRetrievalDriver>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn Handle_PCDM_Reader_downcast_to_Handle_XmlXCAFDrivers_DocumentRetrievalDriver(
+        self_: *const Handle_PCDM_Reader,
+    ) -> crate::OcctResult<*mut Handle_XmlXCAFDrivers_DocumentRetrievalDriver>;
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn PCDM_Reader_inherited_IsInstance(
         self_: *const PCDM_Reader,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn PCDM_Reader_inherited_IsKind(
         self_: *const PCDM_Reader,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn PCDM_Reader_inherited_This(
         self_: *const PCDM_Reader,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn PCDM_Reader_inherited_GetRefCount(self_: *const PCDM_Reader) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn PCDM_Reader_inherited_IncrementRefCounter(
         self_: *mut PCDM_Reader,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn PCDM_Reader_inherited_DecrementRefCounter(
         self_: *mut PCDM_Reader,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn PCDM_Reader_inherited_Delete(self_: *const PCDM_Reader) -> *const std::ffi::c_char;
     // ======================== PCDM_ReaderFilter ========================
     pub fn PCDM_ReaderFilter_destructor(self_: *mut PCDM_ReaderFilter);
-    /// **Source:** `PCDM_ReaderFilter.hxx`:44 - `PCDM_ReaderFilter::PCDM_ReaderFilter()`
+    /// **Source:** `PCDM_ReaderFilter.hxx`:41 - `PCDM_ReaderFilter::PCDM_ReaderFilter()`
     pub fn PCDM_ReaderFilter_ctor() -> crate::OcctResult<*mut PCDM_ReaderFilter>;
-    /// **Source:** `PCDM_ReaderFilter.hxx`:50 - `PCDM_ReaderFilter::PCDM_ReaderFilter()`
+    /// **Source:** `PCDM_ReaderFilter.hxx`:47 - `PCDM_ReaderFilter::PCDM_ReaderFilter()`
     pub fn PCDM_ReaderFilter_ctor_handlestandardtype(
-        theSkipped: *const HandleStandardType,
+        theSkipped: *const Handle_Standard_Type,
     ) -> crate::OcctResult<*mut PCDM_ReaderFilter>;
-    /// **Source:** `PCDM_ReaderFilter.hxx`:54 - `PCDM_ReaderFilter::PCDM_ReaderFilter()`
+    /// **Source:** `PCDM_ReaderFilter.hxx`:51 - `PCDM_ReaderFilter::PCDM_ReaderFilter()`
     pub fn PCDM_ReaderFilter_ctor_asciistring(
         theEntryToRead: *const TCollection_AsciiString,
     ) -> crate::OcctResult<*mut PCDM_ReaderFilter>;
-    /// **Source:** `PCDM_ReaderFilter.hxx`:57 - `PCDM_ReaderFilter::PCDM_ReaderFilter()`
+    /// **Source:** `PCDM_ReaderFilter.hxx`:54 - `PCDM_ReaderFilter::PCDM_ReaderFilter()`
     pub fn PCDM_ReaderFilter_ctor_appendmode(
         theAppend: *const PCDM_ReaderFilter_AppendMode,
     ) -> crate::OcctResult<*mut PCDM_ReaderFilter>;
-    /// **Source:** `PCDM_ReaderFilter.hxx`:63 - `PCDM_ReaderFilter::AddSkipped()`
+    /// **Source:** `PCDM_ReaderFilter.hxx`:60 - `PCDM_ReaderFilter::AddSkipped()`
     pub fn PCDM_ReaderFilter_add_skipped_handlestandardtype(
         self_: *mut PCDM_ReaderFilter,
-        theSkipped: *const HandleStandardType,
+        theSkipped: *const Handle_Standard_Type,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `PCDM_ReaderFilter.hxx`:69 - `PCDM_ReaderFilter::AddSkipped()`
+    /// **Source:** `PCDM_ReaderFilter.hxx`:66 - `PCDM_ReaderFilter::AddSkipped()`
     pub fn PCDM_ReaderFilter_add_skipped_asciistring(
         self_: *mut PCDM_ReaderFilter,
         theSkipped: *const TCollection_AsciiString,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `PCDM_ReaderFilter.hxx`:75 - `PCDM_ReaderFilter::AddRead()`
+    /// **Source:** `PCDM_ReaderFilter.hxx`:72 - `PCDM_ReaderFilter::AddRead()`
     pub fn PCDM_ReaderFilter_add_read_handlestandardtype(
         self_: *mut PCDM_ReaderFilter,
-        theRead: *const HandleStandardType,
+        theRead: *const Handle_Standard_Type,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `PCDM_ReaderFilter.hxx`:81 - `PCDM_ReaderFilter::AddRead()`
+    /// **Source:** `PCDM_ReaderFilter.hxx`:78 - `PCDM_ReaderFilter::AddRead()`
     pub fn PCDM_ReaderFilter_add_read_asciistring(
         self_: *mut PCDM_ReaderFilter,
         theRead: *const TCollection_AsciiString,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `PCDM_ReaderFilter.hxx`:84 - `PCDM_ReaderFilter::AddPath()`
+    /// **Source:** `PCDM_ReaderFilter.hxx`:81 - `PCDM_ReaderFilter::AddPath()`
     pub fn PCDM_ReaderFilter_add_path(
         self_: *mut PCDM_ReaderFilter,
         theEntryToRead: *const TCollection_AsciiString,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `PCDM_ReaderFilter.hxx`:90 - `PCDM_ReaderFilter::Clear()`
+    /// **Source:** `PCDM_ReaderFilter.hxx`:87 - `PCDM_ReaderFilter::Clear()`
     pub fn PCDM_ReaderFilter_clear(self_: *mut PCDM_ReaderFilter) -> *const std::ffi::c_char;
-    /// **Source:** `PCDM_ReaderFilter.hxx`:93 - `PCDM_ReaderFilter::IsPassed()`
+    /// **Source:** `PCDM_ReaderFilter.hxx`:90 - `PCDM_ReaderFilter::IsPassed()`
     pub fn PCDM_ReaderFilter_is_passed_handlestandardtype(
         self_: *const PCDM_ReaderFilter,
-        theAttributeID: *const HandleStandardType,
+        theAttributeID: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `PCDM_ReaderFilter.hxx`:96 - `PCDM_ReaderFilter::IsPassedAttr()`
+    /// **Source:** `PCDM_ReaderFilter.hxx`:92 - `PCDM_ReaderFilter::IsPassedAttr()`
     pub fn PCDM_ReaderFilter_is_passed_attr(
         self_: *const PCDM_ReaderFilter,
         theAttributeType: *const TCollection_AsciiString,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `PCDM_ReaderFilter.hxx`:99 - `PCDM_ReaderFilter::IsPassed()`
+    /// **Source:** `PCDM_ReaderFilter.hxx`:94 - `PCDM_ReaderFilter::IsPassed()`
     pub fn PCDM_ReaderFilter_is_passed_asciistring(
         self_: *const PCDM_ReaderFilter,
         theEntry: *const TCollection_AsciiString,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `PCDM_ReaderFilter.hxx`:101 - `PCDM_ReaderFilter::IsSubPassed()`
+    /// **Source:** `PCDM_ReaderFilter.hxx`:96 - `PCDM_ReaderFilter::IsSubPassed()`
     pub fn PCDM_ReaderFilter_is_sub_passed_asciistring(
         self_: *const PCDM_ReaderFilter,
         theEntry: *const TCollection_AsciiString,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `PCDM_ReaderFilter.hxx`:104 - `PCDM_ReaderFilter::IsPartTree()`
+    /// **Source:** `PCDM_ReaderFilter.hxx`:98 - `PCDM_ReaderFilter::IsPartTree()`
     pub fn PCDM_ReaderFilter_is_part_tree(self_: *mut PCDM_ReaderFilter)
         -> crate::OcctResult<bool>;
-    /// **Source:** `PCDM_ReaderFilter.hxx`:107 - `PCDM_ReaderFilter::Mode()`
+    /// **Source:** `PCDM_ReaderFilter.hxx`:101 - `PCDM_ReaderFilter::Mode()`
     pub fn PCDM_ReaderFilter_mode(
         self_: *mut PCDM_ReaderFilter,
     ) -> crate::OcctResult<*mut PCDM_ReaderFilter_AppendMode>;
-    /// **Source:** `PCDM_ReaderFilter.hxx`:110 - `PCDM_ReaderFilter::IsAppendMode()`
+    /// **Source:** `PCDM_ReaderFilter.hxx`:104 - `PCDM_ReaderFilter::IsAppendMode()`
     pub fn PCDM_ReaderFilter_is_append_mode(
         self_: *mut PCDM_ReaderFilter,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `PCDM_ReaderFilter.hxx`:118 - `PCDM_ReaderFilter::StartIteration()`
+    /// **Source:** `PCDM_ReaderFilter.hxx`:109 - `PCDM_ReaderFilter::StartIteration()`
     pub fn PCDM_ReaderFilter_start_iteration(
         self_: *mut PCDM_ReaderFilter,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `PCDM_ReaderFilter.hxx`:120 - `PCDM_ReaderFilter::Up()`
+    /// **Source:** `PCDM_ReaderFilter.hxx`:111 - `PCDM_ReaderFilter::Up()`
     pub fn PCDM_ReaderFilter_up(self_: *mut PCDM_ReaderFilter) -> *const std::ffi::c_char;
-    /// **Source:** `PCDM_ReaderFilter.hxx`:122 - `PCDM_ReaderFilter::Down()`
+    /// **Source:** `PCDM_ReaderFilter.hxx`:113 - `PCDM_ReaderFilter::Down()`
     pub fn PCDM_ReaderFilter_down(
         self_: *mut PCDM_ReaderFilter,
         theTag: *const i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `PCDM_ReaderFilter.hxx`:124 - `PCDM_ReaderFilter::IsPassed()`
+    /// **Source:** `PCDM_ReaderFilter.hxx`:115 - `PCDM_ReaderFilter::IsPassed()`
     pub fn PCDM_ReaderFilter_is_passed(self_: *const PCDM_ReaderFilter) -> crate::OcctResult<bool>;
-    /// **Source:** `PCDM_ReaderFilter.hxx`:126 - `PCDM_ReaderFilter::IsSubPassed()`
+    /// **Source:** `PCDM_ReaderFilter.hxx`:117 - `PCDM_ReaderFilter::IsSubPassed()`
     pub fn PCDM_ReaderFilter_is_sub_passed(
         self_: *const PCDM_ReaderFilter,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `PCDM_ReaderFilter.hxx`:128 - `PCDM_ReaderFilter::DynamicType()`
+    /// **Source:** `PCDM_ReaderFilter.hxx`:119 - `PCDM_ReaderFilter::DynamicType()`
     pub fn PCDM_ReaderFilter_dynamic_type(
         self_: *const PCDM_ReaderFilter,
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// **Source:** `PCDM_ReaderFilter.hxx`:128 - `PCDM_ReaderFilter::get_type_name()`
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
+    /// **Source:** `PCDM_ReaderFilter.hxx`:119 - `PCDM_ReaderFilter::get_type_name()`
     pub fn PCDM_ReaderFilter_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
-    /// **Source:** `PCDM_ReaderFilter.hxx`:128 - `PCDM_ReaderFilter::get_type_descriptor()`
-    pub fn PCDM_ReaderFilter_get_type_descriptor() -> crate::OcctResult<*const HandleStandardType>;
+    /// **Source:** `PCDM_ReaderFilter.hxx`:119 - `PCDM_ReaderFilter::get_type_descriptor()`
+    pub fn PCDM_ReaderFilter_get_type_descriptor() -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast PCDM_ReaderFilter to Standard_Transient
     pub fn PCDM_ReaderFilter_as_Standard_Transient(
         self_: *const PCDM_ReaderFilter,
@@ -3382,54 +3257,54 @@ unsafe extern "C" {
     /// Wrap PCDM_ReaderFilter in a Handle
     pub fn PCDM_ReaderFilter_to_handle(
         obj: *mut PCDM_ReaderFilter,
-    ) -> crate::OcctResult<*mut HandlePCDMReaderFilter>;
+    ) -> crate::OcctResult<*mut Handle_PCDM_ReaderFilter>;
     /// Destroy Handle<PCDM_ReaderFilter>
-    pub fn HandlePCDMReaderFilter_destructor(self_: *mut HandlePCDMReaderFilter);
+    pub fn Handle_PCDM_ReaderFilter_destructor(self_: *mut Handle_PCDM_ReaderFilter);
     /// Clone Handle<PCDM_ReaderFilter> (increments reference count)
-    pub fn HandlePCDMReaderFilter_clone(
-        self_: *const HandlePCDMReaderFilter,
-    ) -> crate::OcctResult<*mut HandlePCDMReaderFilter>;
+    pub fn Handle_PCDM_ReaderFilter_clone(
+        self_: *const Handle_PCDM_ReaderFilter,
+    ) -> crate::OcctResult<*mut Handle_PCDM_ReaderFilter>;
     /// Check if Handle<PCDM_ReaderFilter> is null
-    pub fn HandlePCDMReaderFilter_is_null(self_: *const HandlePCDMReaderFilter) -> bool;
+    pub fn Handle_PCDM_ReaderFilter_is_null(self_: *const Handle_PCDM_ReaderFilter) -> bool;
     /// Dereference Handle to get *const PCDM_ReaderFilter
-    pub fn HandlePCDMReaderFilter_get(
-        handle: *const HandlePCDMReaderFilter,
+    pub fn Handle_PCDM_ReaderFilter_get(
+        handle: *const Handle_PCDM_ReaderFilter,
     ) -> crate::OcctResult<*const PCDM_ReaderFilter>;
     /// Dereference Handle to get *mut PCDM_ReaderFilter
-    pub fn HandlePCDMReaderFilter_get_mut(
-        handle: *mut HandlePCDMReaderFilter,
+    pub fn Handle_PCDM_ReaderFilter_get_mut(
+        handle: *mut Handle_PCDM_ReaderFilter,
     ) -> crate::OcctResult<*mut PCDM_ReaderFilter>;
     /// Upcast Handle<PCDM_ReaderFilter> to Handle<Standard_Transient>
-    pub fn HandlePCDMReaderFilter_to_HandleStandardTransient(
-        self_: *const HandlePCDMReaderFilter,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn Handle_PCDM_ReaderFilter_to_Handle_Standard_Transient(
+        self_: *const Handle_PCDM_ReaderFilter,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn PCDM_ReaderFilter_inherited_IsInstance(
         self_: *const PCDM_ReaderFilter,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn PCDM_ReaderFilter_inherited_IsKind(
         self_: *const PCDM_ReaderFilter,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn PCDM_ReaderFilter_inherited_This(
         self_: *const PCDM_ReaderFilter,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn PCDM_ReaderFilter_inherited_GetRefCount(
         self_: *const PCDM_ReaderFilter,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn PCDM_ReaderFilter_inherited_IncrementRefCounter(
         self_: *mut PCDM_ReaderFilter,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn PCDM_ReaderFilter_inherited_DecrementRefCounter(
         self_: *mut PCDM_ReaderFilter,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn PCDM_ReaderFilter_inherited_Delete(
         self_: *const PCDM_ReaderFilter,
     ) -> *const std::ffi::c_char;
@@ -3455,32 +3330,32 @@ unsafe extern "C" {
     pub fn PCDM_Reference_document_version(self_: *const PCDM_Reference) -> crate::OcctResult<i32>;
     // ======================== PCDM_ReferenceIterator ========================
     pub fn PCDM_ReferenceIterator_destructor(self_: *mut PCDM_ReferenceIterator);
-    /// **Source:** `PCDM_ReferenceIterator.hxx`:39 - `PCDM_ReferenceIterator::PCDM_ReferenceIterator()`
+    /// **Source:** `PCDM_ReferenceIterator.hxx`:38 - `PCDM_ReferenceIterator::PCDM_ReferenceIterator()`
     pub fn PCDM_ReferenceIterator_ctor_handlemessagemessenger(
-        theMessageDriver: *const HandleMessageMessenger,
+        theMessageDriver: *const Handle_Message_Messenger,
     ) -> crate::OcctResult<*mut PCDM_ReferenceIterator>;
-    /// **Source:** `PCDM_ReferenceIterator.hxx`:41 - `PCDM_ReferenceIterator::LoadReferences()`
+    /// **Source:** `PCDM_ReferenceIterator.hxx`:40 - `PCDM_ReferenceIterator::LoadReferences()`
     pub fn PCDM_ReferenceIterator_load_references(
         self_: *mut PCDM_ReferenceIterator,
-        aDocument: *const HandleCDMDocument,
-        aMetaData: *const HandleCDMMetaData,
-        anApplication: *const HandleCDMApplication,
+        aDocument: *const Handle_CDM_Document,
+        aMetaData: *const Handle_CDM_MetaData,
+        anApplication: *const Handle_CDM_Application,
         UseStorageConfiguration: bool,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `PCDM_ReferenceIterator.hxx`:46 - `PCDM_ReferenceIterator::Init()`
+    /// **Source:** `PCDM_ReferenceIterator.hxx`:45 - `PCDM_ReferenceIterator::Init()`
     pub fn PCDM_ReferenceIterator_init(
         self_: *mut PCDM_ReferenceIterator,
-        aMetaData: *const HandleCDMMetaData,
+        aMetaData: *const Handle_CDM_MetaData,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `PCDM_ReferenceIterator.hxx`:48 - `PCDM_ReferenceIterator::DynamicType()`
+    /// **Source:** `PCDM_ReferenceIterator.hxx`:47 - `PCDM_ReferenceIterator::DynamicType()`
     pub fn PCDM_ReferenceIterator_dynamic_type(
         self_: *const PCDM_ReferenceIterator,
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// **Source:** `PCDM_ReferenceIterator.hxx`:48 - `PCDM_ReferenceIterator::get_type_name()`
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
+    /// **Source:** `PCDM_ReferenceIterator.hxx`:47 - `PCDM_ReferenceIterator::get_type_name()`
     pub fn PCDM_ReferenceIterator_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
-    /// **Source:** `PCDM_ReferenceIterator.hxx`:48 - `PCDM_ReferenceIterator::get_type_descriptor()`
+    /// **Source:** `PCDM_ReferenceIterator.hxx`:47 - `PCDM_ReferenceIterator::get_type_descriptor()`
     pub fn PCDM_ReferenceIterator_get_type_descriptor(
-    ) -> crate::OcctResult<*const HandleStandardType>;
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast PCDM_ReferenceIterator to Standard_Transient
     pub fn PCDM_ReferenceIterator_as_Standard_Transient(
         self_: *const PCDM_ReferenceIterator,
@@ -3492,86 +3367,89 @@ unsafe extern "C" {
     /// Wrap PCDM_ReferenceIterator in a Handle
     pub fn PCDM_ReferenceIterator_to_handle(
         obj: *mut PCDM_ReferenceIterator,
-    ) -> crate::OcctResult<*mut HandlePCDMReferenceIterator>;
+    ) -> crate::OcctResult<*mut Handle_PCDM_ReferenceIterator>;
     /// Destroy Handle<PCDM_ReferenceIterator>
-    pub fn HandlePCDMReferenceIterator_destructor(self_: *mut HandlePCDMReferenceIterator);
+    pub fn Handle_PCDM_ReferenceIterator_destructor(self_: *mut Handle_PCDM_ReferenceIterator);
     /// Clone Handle<PCDM_ReferenceIterator> (increments reference count)
-    pub fn HandlePCDMReferenceIterator_clone(
-        self_: *const HandlePCDMReferenceIterator,
-    ) -> crate::OcctResult<*mut HandlePCDMReferenceIterator>;
+    pub fn Handle_PCDM_ReferenceIterator_clone(
+        self_: *const Handle_PCDM_ReferenceIterator,
+    ) -> crate::OcctResult<*mut Handle_PCDM_ReferenceIterator>;
     /// Check if Handle<PCDM_ReferenceIterator> is null
-    pub fn HandlePCDMReferenceIterator_is_null(self_: *const HandlePCDMReferenceIterator) -> bool;
+    pub fn Handle_PCDM_ReferenceIterator_is_null(
+        self_: *const Handle_PCDM_ReferenceIterator,
+    ) -> bool;
     /// Dereference Handle to get *const PCDM_ReferenceIterator
-    pub fn HandlePCDMReferenceIterator_get(
-        handle: *const HandlePCDMReferenceIterator,
+    pub fn Handle_PCDM_ReferenceIterator_get(
+        handle: *const Handle_PCDM_ReferenceIterator,
     ) -> crate::OcctResult<*const PCDM_ReferenceIterator>;
     /// Dereference Handle to get *mut PCDM_ReferenceIterator
-    pub fn HandlePCDMReferenceIterator_get_mut(
-        handle: *mut HandlePCDMReferenceIterator,
+    pub fn Handle_PCDM_ReferenceIterator_get_mut(
+        handle: *mut Handle_PCDM_ReferenceIterator,
     ) -> crate::OcctResult<*mut PCDM_ReferenceIterator>;
     /// Upcast Handle<PCDM_ReferenceIterator> to Handle<Standard_Transient>
-    pub fn HandlePCDMReferenceIterator_to_HandleStandardTransient(
-        self_: *const HandlePCDMReferenceIterator,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn Handle_PCDM_ReferenceIterator_to_Handle_Standard_Transient(
+        self_: *const Handle_PCDM_ReferenceIterator,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn PCDM_ReferenceIterator_inherited_IsInstance(
         self_: *const PCDM_ReferenceIterator,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn PCDM_ReferenceIterator_inherited_IsKind(
         self_: *const PCDM_ReferenceIterator,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn PCDM_ReferenceIterator_inherited_This(
         self_: *const PCDM_ReferenceIterator,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn PCDM_ReferenceIterator_inherited_GetRefCount(
         self_: *const PCDM_ReferenceIterator,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn PCDM_ReferenceIterator_inherited_IncrementRefCounter(
         self_: *mut PCDM_ReferenceIterator,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn PCDM_ReferenceIterator_inherited_DecrementRefCounter(
         self_: *mut PCDM_ReferenceIterator,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn PCDM_ReferenceIterator_inherited_Delete(
         self_: *const PCDM_ReferenceIterator,
     ) -> *const std::ffi::c_char;
     // ======================== PCDM_RetrievalDriver ========================
     pub fn PCDM_RetrievalDriver_destructor(self_: *mut PCDM_RetrievalDriver);
-    /// **Source:** `PCDM_RetrievalDriver.hxx`:46 - `PCDM_RetrievalDriver::SetFormat()`
+    /// **Source:** `PCDM_RetrievalDriver.hxx`:43 - `PCDM_RetrievalDriver::SetFormat()`
     pub fn PCDM_RetrievalDriver_set_format(
         self_: *mut PCDM_RetrievalDriver,
         aformat: *const TCollection_ExtendedString,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `PCDM_RetrievalDriver.hxx`:48 - `PCDM_RetrievalDriver::GetFormat()`
+    /// **Source:** `PCDM_RetrievalDriver.hxx`:45 - `PCDM_RetrievalDriver::GetFormat()`
     pub fn PCDM_RetrievalDriver_get_format(
         self_: *const PCDM_RetrievalDriver,
     ) -> crate::OcctResult<*mut TCollection_ExtendedString>;
-    /// **Source:** `PCDM_RetrievalDriver.hxx`:50 - `PCDM_RetrievalDriver::DynamicType()`
+    /// **Source:** `PCDM_RetrievalDriver.hxx`:47 - `PCDM_RetrievalDriver::DynamicType()`
     pub fn PCDM_RetrievalDriver_dynamic_type(
         self_: *const PCDM_RetrievalDriver,
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// **Source:** `PCDM_RetrievalDriver.hxx`:38 - `PCDM_RetrievalDriver::DocumentVersion()`
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
+    /// **Source:** `PCDM_RetrievalDriver.hxx`:37 - `PCDM_RetrievalDriver::DocumentVersion()`
     pub fn PCDM_RetrievalDriver_document_version(
         theFileName: *const TCollection_ExtendedString,
-        theMsgDriver: *const HandleMessageMessenger,
+        theMsgDriver: *const Handle_Message_Messenger,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `PCDM_RetrievalDriver.hxx`:42 - `PCDM_RetrievalDriver::ReferenceCounter()`
+    /// **Source:** `PCDM_RetrievalDriver.hxx`:40 - `PCDM_RetrievalDriver::ReferenceCounter()`
     pub fn PCDM_RetrievalDriver_reference_counter(
         theFileName: *const TCollection_ExtendedString,
-        theMsgDriver: *const HandleMessageMessenger,
+        theMsgDriver: *const Handle_Message_Messenger,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `PCDM_RetrievalDriver.hxx`:50 - `PCDM_RetrievalDriver::get_type_name()`
+    /// **Source:** `PCDM_RetrievalDriver.hxx`:47 - `PCDM_RetrievalDriver::get_type_name()`
     pub fn PCDM_RetrievalDriver_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
-    /// **Source:** `PCDM_RetrievalDriver.hxx`:50 - `PCDM_RetrievalDriver::get_type_descriptor()`
-    pub fn PCDM_RetrievalDriver_get_type_descriptor() -> crate::OcctResult<*const HandleStandardType>;
+    /// **Source:** `PCDM_RetrievalDriver.hxx`:47 - `PCDM_RetrievalDriver::get_type_descriptor()`
+    pub fn PCDM_RetrievalDriver_get_type_descriptor(
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast PCDM_RetrievalDriver to PCDM_Reader
     pub fn PCDM_RetrievalDriver_as_PCDM_Reader(
         self_: *const PCDM_RetrievalDriver,
@@ -3589,109 +3467,109 @@ unsafe extern "C" {
         self_: *mut PCDM_RetrievalDriver,
     ) -> crate::OcctResult<*mut Standard_Transient>;
     /// Destroy Handle<PCDM_RetrievalDriver>
-    pub fn HandlePCDMRetrievalDriver_destructor(self_: *mut HandlePCDMRetrievalDriver);
+    pub fn Handle_PCDM_RetrievalDriver_destructor(self_: *mut Handle_PCDM_RetrievalDriver);
     /// Clone Handle<PCDM_RetrievalDriver> (increments reference count)
-    pub fn HandlePCDMRetrievalDriver_clone(
-        self_: *const HandlePCDMRetrievalDriver,
-    ) -> crate::OcctResult<*mut HandlePCDMRetrievalDriver>;
+    pub fn Handle_PCDM_RetrievalDriver_clone(
+        self_: *const Handle_PCDM_RetrievalDriver,
+    ) -> crate::OcctResult<*mut Handle_PCDM_RetrievalDriver>;
     /// Check if Handle<PCDM_RetrievalDriver> is null
-    pub fn HandlePCDMRetrievalDriver_is_null(self_: *const HandlePCDMRetrievalDriver) -> bool;
+    pub fn Handle_PCDM_RetrievalDriver_is_null(self_: *const Handle_PCDM_RetrievalDriver) -> bool;
     /// Dereference Handle to get *const PCDM_RetrievalDriver
-    pub fn HandlePCDMRetrievalDriver_get(
-        handle: *const HandlePCDMRetrievalDriver,
+    pub fn Handle_PCDM_RetrievalDriver_get(
+        handle: *const Handle_PCDM_RetrievalDriver,
     ) -> crate::OcctResult<*const PCDM_RetrievalDriver>;
     /// Dereference Handle to get *mut PCDM_RetrievalDriver
-    pub fn HandlePCDMRetrievalDriver_get_mut(
-        handle: *mut HandlePCDMRetrievalDriver,
+    pub fn Handle_PCDM_RetrievalDriver_get_mut(
+        handle: *mut Handle_PCDM_RetrievalDriver,
     ) -> crate::OcctResult<*mut PCDM_RetrievalDriver>;
     /// Upcast Handle<PCDM_RetrievalDriver> to Handle<PCDM_Reader>
-    pub fn HandlePCDMRetrievalDriver_to_HandlePCDMReader(
-        self_: *const HandlePCDMRetrievalDriver,
-    ) -> crate::OcctResult<*mut HandlePCDMReader>;
+    pub fn Handle_PCDM_RetrievalDriver_to_Handle_PCDM_Reader(
+        self_: *const Handle_PCDM_RetrievalDriver,
+    ) -> crate::OcctResult<*mut Handle_PCDM_Reader>;
     /// Upcast Handle<PCDM_RetrievalDriver> to Handle<Standard_Transient>
-    pub fn HandlePCDMRetrievalDriver_to_HandleStandardTransient(
-        self_: *const HandlePCDMRetrievalDriver,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
+    pub fn Handle_PCDM_RetrievalDriver_to_Handle_Standard_Transient(
+        self_: *const Handle_PCDM_RetrievalDriver,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
     /// Downcast Handle<PCDM_RetrievalDriver> to Handle<BinDrivers_DocumentRetrievalDriver> (returns null on failure)
-    pub fn HandlePCDMRetrievalDriver_downcast_to_HandleBinDriversDocumentRetrievalDriver(
-        self_: *const HandlePCDMRetrievalDriver,
-    ) -> crate::OcctResult<*mut HandleBinDriversDocumentRetrievalDriver>;
+    pub fn Handle_PCDM_RetrievalDriver_downcast_to_Handle_BinDrivers_DocumentRetrievalDriver(
+        self_: *const Handle_PCDM_RetrievalDriver,
+    ) -> crate::OcctResult<*mut Handle_BinDrivers_DocumentRetrievalDriver>;
     /// Downcast Handle<PCDM_RetrievalDriver> to Handle<BinLDrivers_DocumentRetrievalDriver> (returns null on failure)
-    pub fn HandlePCDMRetrievalDriver_downcast_to_HandleBinLDriversDocumentRetrievalDriver(
-        self_: *const HandlePCDMRetrievalDriver,
-    ) -> crate::OcctResult<*mut HandleBinLDriversDocumentRetrievalDriver>;
+    pub fn Handle_PCDM_RetrievalDriver_downcast_to_Handle_BinLDrivers_DocumentRetrievalDriver(
+        self_: *const Handle_PCDM_RetrievalDriver,
+    ) -> crate::OcctResult<*mut Handle_BinLDrivers_DocumentRetrievalDriver>;
     /// Downcast Handle<PCDM_RetrievalDriver> to Handle<BinTObjDrivers_DocumentRetrievalDriver> (returns null on failure)
-    pub fn HandlePCDMRetrievalDriver_downcast_to_HandleBinTObjDriversDocumentRetrievalDriver(
-        self_: *const HandlePCDMRetrievalDriver,
-    ) -> crate::OcctResult<*mut HandleBinTObjDriversDocumentRetrievalDriver>;
+    pub fn Handle_PCDM_RetrievalDriver_downcast_to_Handle_BinTObjDrivers_DocumentRetrievalDriver(
+        self_: *const Handle_PCDM_RetrievalDriver,
+    ) -> crate::OcctResult<*mut Handle_BinTObjDrivers_DocumentRetrievalDriver>;
     /// Downcast Handle<PCDM_RetrievalDriver> to Handle<BinXCAFDrivers_DocumentRetrievalDriver> (returns null on failure)
-    pub fn HandlePCDMRetrievalDriver_downcast_to_HandleBinXCAFDriversDocumentRetrievalDriver(
-        self_: *const HandlePCDMRetrievalDriver,
-    ) -> crate::OcctResult<*mut HandleBinXCAFDriversDocumentRetrievalDriver>;
+    pub fn Handle_PCDM_RetrievalDriver_downcast_to_Handle_BinXCAFDrivers_DocumentRetrievalDriver(
+        self_: *const Handle_PCDM_RetrievalDriver,
+    ) -> crate::OcctResult<*mut Handle_BinXCAFDrivers_DocumentRetrievalDriver>;
     /// Downcast Handle<PCDM_RetrievalDriver> to Handle<StdDrivers_DocumentRetrievalDriver> (returns null on failure)
-    pub fn HandlePCDMRetrievalDriver_downcast_to_HandleStdDriversDocumentRetrievalDriver(
-        self_: *const HandlePCDMRetrievalDriver,
-    ) -> crate::OcctResult<*mut HandleStdDriversDocumentRetrievalDriver>;
+    pub fn Handle_PCDM_RetrievalDriver_downcast_to_Handle_StdDrivers_DocumentRetrievalDriver(
+        self_: *const Handle_PCDM_RetrievalDriver,
+    ) -> crate::OcctResult<*mut Handle_StdDrivers_DocumentRetrievalDriver>;
     /// Downcast Handle<PCDM_RetrievalDriver> to Handle<StdLDrivers_DocumentRetrievalDriver> (returns null on failure)
-    pub fn HandlePCDMRetrievalDriver_downcast_to_HandleStdLDriversDocumentRetrievalDriver(
-        self_: *const HandlePCDMRetrievalDriver,
-    ) -> crate::OcctResult<*mut HandleStdLDriversDocumentRetrievalDriver>;
+    pub fn Handle_PCDM_RetrievalDriver_downcast_to_Handle_StdLDrivers_DocumentRetrievalDriver(
+        self_: *const Handle_PCDM_RetrievalDriver,
+    ) -> crate::OcctResult<*mut Handle_StdLDrivers_DocumentRetrievalDriver>;
     /// Downcast Handle<PCDM_RetrievalDriver> to Handle<XmlDrivers_DocumentRetrievalDriver> (returns null on failure)
-    pub fn HandlePCDMRetrievalDriver_downcast_to_HandleXmlDriversDocumentRetrievalDriver(
-        self_: *const HandlePCDMRetrievalDriver,
-    ) -> crate::OcctResult<*mut HandleXmlDriversDocumentRetrievalDriver>;
+    pub fn Handle_PCDM_RetrievalDriver_downcast_to_Handle_XmlDrivers_DocumentRetrievalDriver(
+        self_: *const Handle_PCDM_RetrievalDriver,
+    ) -> crate::OcctResult<*mut Handle_XmlDrivers_DocumentRetrievalDriver>;
     /// Downcast Handle<PCDM_RetrievalDriver> to Handle<XmlLDrivers_DocumentRetrievalDriver> (returns null on failure)
-    pub fn HandlePCDMRetrievalDriver_downcast_to_HandleXmlLDriversDocumentRetrievalDriver(
-        self_: *const HandlePCDMRetrievalDriver,
-    ) -> crate::OcctResult<*mut HandleXmlLDriversDocumentRetrievalDriver>;
+    pub fn Handle_PCDM_RetrievalDriver_downcast_to_Handle_XmlLDrivers_DocumentRetrievalDriver(
+        self_: *const Handle_PCDM_RetrievalDriver,
+    ) -> crate::OcctResult<*mut Handle_XmlLDrivers_DocumentRetrievalDriver>;
     /// Downcast Handle<PCDM_RetrievalDriver> to Handle<XmlTObjDrivers_DocumentRetrievalDriver> (returns null on failure)
-    pub fn HandlePCDMRetrievalDriver_downcast_to_HandleXmlTObjDriversDocumentRetrievalDriver(
-        self_: *const HandlePCDMRetrievalDriver,
-    ) -> crate::OcctResult<*mut HandleXmlTObjDriversDocumentRetrievalDriver>;
+    pub fn Handle_PCDM_RetrievalDriver_downcast_to_Handle_XmlTObjDrivers_DocumentRetrievalDriver(
+        self_: *const Handle_PCDM_RetrievalDriver,
+    ) -> crate::OcctResult<*mut Handle_XmlTObjDrivers_DocumentRetrievalDriver>;
     /// Downcast Handle<PCDM_RetrievalDriver> to Handle<XmlXCAFDrivers_DocumentRetrievalDriver> (returns null on failure)
-    pub fn HandlePCDMRetrievalDriver_downcast_to_HandleXmlXCAFDriversDocumentRetrievalDriver(
-        self_: *const HandlePCDMRetrievalDriver,
-    ) -> crate::OcctResult<*mut HandleXmlXCAFDriversDocumentRetrievalDriver>;
-    /// Inherited: **Source:** `PCDM_Reader.hxx`:42 - `PCDM_Reader::Read()`
+    pub fn Handle_PCDM_RetrievalDriver_downcast_to_Handle_XmlXCAFDrivers_DocumentRetrievalDriver(
+        self_: *const Handle_PCDM_RetrievalDriver,
+    ) -> crate::OcctResult<*mut Handle_XmlXCAFDrivers_DocumentRetrievalDriver>;
+    /// Inherited: **Source:** `PCDM_Reader.hxx`:39 - `PCDM_Reader::Read()`
     pub fn PCDM_RetrievalDriver_inherited_Read(
         self_: *mut PCDM_RetrievalDriver,
         aFileName: *const TCollection_ExtendedString,
-        aNewDocument: *const HandleCDMDocument,
-        anApplication: *const HandleCDMApplication,
-        theFilter: *const HandlePCDMReaderFilter,
+        aNewDocument: *const Handle_CDM_Document,
+        anApplication: *const Handle_CDM_Application,
+        theFilter: *const Handle_PCDM_ReaderFilter,
         theProgress: *const Message_ProgressRange,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `PCDM_Reader.hxx`:57 - `PCDM_Reader::GetStatus()`
+    /// Inherited: **Source:** `PCDM_Reader.hxx`:54 - `PCDM_Reader::GetStatus()`
     pub fn PCDM_RetrievalDriver_inherited_GetStatus(
         self_: *const PCDM_RetrievalDriver,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn PCDM_RetrievalDriver_inherited_IsInstance(
         self_: *const PCDM_RetrievalDriver,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn PCDM_RetrievalDriver_inherited_IsKind(
         self_: *const PCDM_RetrievalDriver,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn PCDM_RetrievalDriver_inherited_This(
         self_: *const PCDM_RetrievalDriver,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn PCDM_RetrievalDriver_inherited_GetRefCount(
         self_: *const PCDM_RetrievalDriver,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn PCDM_RetrievalDriver_inherited_IncrementRefCounter(
         self_: *mut PCDM_RetrievalDriver,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn PCDM_RetrievalDriver_inherited_DecrementRefCounter(
         self_: *mut PCDM_RetrievalDriver,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn PCDM_RetrievalDriver_inherited_Delete(
         self_: *const PCDM_RetrievalDriver,
     ) -> *const std::ffi::c_char;
@@ -3699,65 +3577,59 @@ unsafe extern "C" {
     pub fn PCDM_StorageDriver_destructor(self_: *mut PCDM_StorageDriver);
     /// **Source:** `PCDM_StorageDriver.hxx` - `PCDM_StorageDriver::PCDM_StorageDriver()`
     pub fn PCDM_StorageDriver_ctor() -> crate::OcctResult<*mut PCDM_StorageDriver>;
-    /// **Source:** `PCDM_StorageDriver.hxx`:52 - `PCDM_StorageDriver::Make()`
-    pub fn PCDM_StorageDriver_make_handlecdmdocument(
+    /// **Source:** `PCDM_StorageDriver.hxx`:50 - `PCDM_StorageDriver::Make()`
+    pub fn PCDM_StorageDriver_make(
         self_: *mut PCDM_StorageDriver,
-        aDocument: *const HandleCDMDocument,
-    ) -> crate::OcctResult<*mut HandlePCDMDocument>;
-    /// **Source:** `PCDM_StorageDriver.hxx`:56 - `PCDM_StorageDriver::Make()`
-    pub fn PCDM_StorageDriver_make_handlecdmdocument_sequenceofdocument(
-        self_: *mut PCDM_StorageDriver,
-        aDocument: *const HandleCDMDocument,
-        Documents: *mut PCDM_SequenceOfDocument,
-    ) -> *const std::ffi::c_char;
-    /// **Source:** `PCDM_StorageDriver.hxx`:65 - `PCDM_StorageDriver::Write()`
+        aDocument: *const Handle_CDM_Document,
+    ) -> crate::OcctResult<*mut Handle_PCDM_Document>;
+    /// **Source:** `PCDM_StorageDriver.hxx`:64 - `PCDM_StorageDriver::Write()`
     pub fn PCDM_StorageDriver_write_handlecdmdocument_extendedstring_progressrange(
         self_: *mut PCDM_StorageDriver,
-        aDocument: *const HandleCDMDocument,
+        aDocument: *const Handle_CDM_Document,
         aFileName: *const TCollection_ExtendedString,
         theRange: *const Message_ProgressRange,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `PCDM_StorageDriver.hxx`:71 - `PCDM_StorageDriver::Write()`
+    /// **Source:** `PCDM_StorageDriver.hxx`:70 - `PCDM_StorageDriver::Write()`
     pub fn PCDM_StorageDriver_write_handlecdmdocument_ostream_progressrange(
         self_: *mut PCDM_StorageDriver,
-        theDocument: *const HandleCDMDocument,
+        theDocument: *const Handle_CDM_Document,
         theOStream: *mut Standard_OStream,
         theRange: *const Message_ProgressRange,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `PCDM_StorageDriver.hxx`:76 - `PCDM_StorageDriver::SetFormat()`
+    /// **Source:** `PCDM_StorageDriver.hxx`:75 - `PCDM_StorageDriver::SetFormat()`
     pub fn PCDM_StorageDriver_set_format(
         self_: *mut PCDM_StorageDriver,
         aformat: *const TCollection_ExtendedString,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `PCDM_StorageDriver.hxx`:78 - `PCDM_StorageDriver::GetFormat()`
+    /// **Source:** `PCDM_StorageDriver.hxx`:77 - `PCDM_StorageDriver::GetFormat()`
     pub fn PCDM_StorageDriver_get_format(
         self_: *const PCDM_StorageDriver,
     ) -> crate::OcctResult<*mut TCollection_ExtendedString>;
-    /// **Source:** `PCDM_StorageDriver.hxx`:80 - `PCDM_StorageDriver::IsError()`
+    /// **Source:** `PCDM_StorageDriver.hxx`:79 - `PCDM_StorageDriver::IsError()`
     pub fn PCDM_StorageDriver_is_error(self_: *const PCDM_StorageDriver)
         -> crate::OcctResult<bool>;
-    /// **Source:** `PCDM_StorageDriver.hxx`:82 - `PCDM_StorageDriver::SetIsError()`
+    /// **Source:** `PCDM_StorageDriver.hxx`:81 - `PCDM_StorageDriver::SetIsError()`
     pub fn PCDM_StorageDriver_set_is_error(
         self_: *mut PCDM_StorageDriver,
         theIsError: bool,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `PCDM_StorageDriver.hxx`:84 - `PCDM_StorageDriver::GetStoreStatus()`
+    /// **Source:** `PCDM_StorageDriver.hxx`:83 - `PCDM_StorageDriver::GetStoreStatus()`
     pub fn PCDM_StorageDriver_get_store_status(
         self_: *const PCDM_StorageDriver,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `PCDM_StorageDriver.hxx`:86 - `PCDM_StorageDriver::SetStoreStatus()`
+    /// **Source:** `PCDM_StorageDriver.hxx`:85 - `PCDM_StorageDriver::SetStoreStatus()`
     pub fn PCDM_StorageDriver_set_store_status(
         self_: *mut PCDM_StorageDriver,
         theStoreStatus: i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `PCDM_StorageDriver.hxx`:88 - `PCDM_StorageDriver::DynamicType()`
+    /// **Source:** `PCDM_StorageDriver.hxx`:87 - `PCDM_StorageDriver::DynamicType()`
     pub fn PCDM_StorageDriver_dynamic_type(
         self_: *const PCDM_StorageDriver,
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// **Source:** `PCDM_StorageDriver.hxx`:88 - `PCDM_StorageDriver::get_type_name()`
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
+    /// **Source:** `PCDM_StorageDriver.hxx`:87 - `PCDM_StorageDriver::get_type_name()`
     pub fn PCDM_StorageDriver_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
-    /// **Source:** `PCDM_StorageDriver.hxx`:88 - `PCDM_StorageDriver::get_type_descriptor()`
-    pub fn PCDM_StorageDriver_get_type_descriptor() -> crate::OcctResult<*const HandleStandardType>;
+    /// **Source:** `PCDM_StorageDriver.hxx`:87 - `PCDM_StorageDriver::get_type_descriptor()`
+    pub fn PCDM_StorageDriver_get_type_descriptor() -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast PCDM_StorageDriver to PCDM_Writer
     pub fn PCDM_StorageDriver_as_PCDM_Writer(
         self_: *const PCDM_StorageDriver,
@@ -3777,117 +3649,117 @@ unsafe extern "C" {
     /// Wrap PCDM_StorageDriver in a Handle
     pub fn PCDM_StorageDriver_to_handle(
         obj: *mut PCDM_StorageDriver,
-    ) -> crate::OcctResult<*mut HandlePCDMStorageDriver>;
+    ) -> crate::OcctResult<*mut Handle_PCDM_StorageDriver>;
     /// Destroy Handle<PCDM_StorageDriver>
-    pub fn HandlePCDMStorageDriver_destructor(self_: *mut HandlePCDMStorageDriver);
+    pub fn Handle_PCDM_StorageDriver_destructor(self_: *mut Handle_PCDM_StorageDriver);
     /// Clone Handle<PCDM_StorageDriver> (increments reference count)
-    pub fn HandlePCDMStorageDriver_clone(
-        self_: *const HandlePCDMStorageDriver,
-    ) -> crate::OcctResult<*mut HandlePCDMStorageDriver>;
+    pub fn Handle_PCDM_StorageDriver_clone(
+        self_: *const Handle_PCDM_StorageDriver,
+    ) -> crate::OcctResult<*mut Handle_PCDM_StorageDriver>;
     /// Check if Handle<PCDM_StorageDriver> is null
-    pub fn HandlePCDMStorageDriver_is_null(self_: *const HandlePCDMStorageDriver) -> bool;
+    pub fn Handle_PCDM_StorageDriver_is_null(self_: *const Handle_PCDM_StorageDriver) -> bool;
     /// Dereference Handle to get *const PCDM_StorageDriver
-    pub fn HandlePCDMStorageDriver_get(
-        handle: *const HandlePCDMStorageDriver,
+    pub fn Handle_PCDM_StorageDriver_get(
+        handle: *const Handle_PCDM_StorageDriver,
     ) -> crate::OcctResult<*const PCDM_StorageDriver>;
     /// Dereference Handle to get *mut PCDM_StorageDriver
-    pub fn HandlePCDMStorageDriver_get_mut(
-        handle: *mut HandlePCDMStorageDriver,
+    pub fn Handle_PCDM_StorageDriver_get_mut(
+        handle: *mut Handle_PCDM_StorageDriver,
     ) -> crate::OcctResult<*mut PCDM_StorageDriver>;
     /// Upcast Handle<PCDM_StorageDriver> to Handle<PCDM_Writer>
-    pub fn HandlePCDMStorageDriver_to_HandlePCDMWriter(
-        self_: *const HandlePCDMStorageDriver,
-    ) -> crate::OcctResult<*mut HandlePCDMWriter>;
+    pub fn Handle_PCDM_StorageDriver_to_Handle_PCDM_Writer(
+        self_: *const Handle_PCDM_StorageDriver,
+    ) -> crate::OcctResult<*mut Handle_PCDM_Writer>;
     /// Upcast Handle<PCDM_StorageDriver> to Handle<Standard_Transient>
-    pub fn HandlePCDMStorageDriver_to_HandleStandardTransient(
-        self_: *const HandlePCDMStorageDriver,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
+    pub fn Handle_PCDM_StorageDriver_to_Handle_Standard_Transient(
+        self_: *const Handle_PCDM_StorageDriver,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
     /// Downcast Handle<PCDM_StorageDriver> to Handle<BinDrivers_DocumentStorageDriver> (returns null on failure)
-    pub fn HandlePCDMStorageDriver_downcast_to_HandleBinDriversDocumentStorageDriver(
-        self_: *const HandlePCDMStorageDriver,
-    ) -> crate::OcctResult<*mut HandleBinDriversDocumentStorageDriver>;
+    pub fn Handle_PCDM_StorageDriver_downcast_to_Handle_BinDrivers_DocumentStorageDriver(
+        self_: *const Handle_PCDM_StorageDriver,
+    ) -> crate::OcctResult<*mut Handle_BinDrivers_DocumentStorageDriver>;
     /// Downcast Handle<PCDM_StorageDriver> to Handle<BinLDrivers_DocumentStorageDriver> (returns null on failure)
-    pub fn HandlePCDMStorageDriver_downcast_to_HandleBinLDriversDocumentStorageDriver(
-        self_: *const HandlePCDMStorageDriver,
-    ) -> crate::OcctResult<*mut HandleBinLDriversDocumentStorageDriver>;
+    pub fn Handle_PCDM_StorageDriver_downcast_to_Handle_BinLDrivers_DocumentStorageDriver(
+        self_: *const Handle_PCDM_StorageDriver,
+    ) -> crate::OcctResult<*mut Handle_BinLDrivers_DocumentStorageDriver>;
     /// Downcast Handle<PCDM_StorageDriver> to Handle<BinTObjDrivers_DocumentStorageDriver> (returns null on failure)
-    pub fn HandlePCDMStorageDriver_downcast_to_HandleBinTObjDriversDocumentStorageDriver(
-        self_: *const HandlePCDMStorageDriver,
-    ) -> crate::OcctResult<*mut HandleBinTObjDriversDocumentStorageDriver>;
+    pub fn Handle_PCDM_StorageDriver_downcast_to_Handle_BinTObjDrivers_DocumentStorageDriver(
+        self_: *const Handle_PCDM_StorageDriver,
+    ) -> crate::OcctResult<*mut Handle_BinTObjDrivers_DocumentStorageDriver>;
     /// Downcast Handle<PCDM_StorageDriver> to Handle<BinXCAFDrivers_DocumentStorageDriver> (returns null on failure)
-    pub fn HandlePCDMStorageDriver_downcast_to_HandleBinXCAFDriversDocumentStorageDriver(
-        self_: *const HandlePCDMStorageDriver,
-    ) -> crate::OcctResult<*mut HandleBinXCAFDriversDocumentStorageDriver>;
+    pub fn Handle_PCDM_StorageDriver_downcast_to_Handle_BinXCAFDrivers_DocumentStorageDriver(
+        self_: *const Handle_PCDM_StorageDriver,
+    ) -> crate::OcctResult<*mut Handle_BinXCAFDrivers_DocumentStorageDriver>;
     /// Downcast Handle<PCDM_StorageDriver> to Handle<XmlDrivers_DocumentStorageDriver> (returns null on failure)
-    pub fn HandlePCDMStorageDriver_downcast_to_HandleXmlDriversDocumentStorageDriver(
-        self_: *const HandlePCDMStorageDriver,
-    ) -> crate::OcctResult<*mut HandleXmlDriversDocumentStorageDriver>;
+    pub fn Handle_PCDM_StorageDriver_downcast_to_Handle_XmlDrivers_DocumentStorageDriver(
+        self_: *const Handle_PCDM_StorageDriver,
+    ) -> crate::OcctResult<*mut Handle_XmlDrivers_DocumentStorageDriver>;
     /// Downcast Handle<PCDM_StorageDriver> to Handle<XmlLDrivers_DocumentStorageDriver> (returns null on failure)
-    pub fn HandlePCDMStorageDriver_downcast_to_HandleXmlLDriversDocumentStorageDriver(
-        self_: *const HandlePCDMStorageDriver,
-    ) -> crate::OcctResult<*mut HandleXmlLDriversDocumentStorageDriver>;
+    pub fn Handle_PCDM_StorageDriver_downcast_to_Handle_XmlLDrivers_DocumentStorageDriver(
+        self_: *const Handle_PCDM_StorageDriver,
+    ) -> crate::OcctResult<*mut Handle_XmlLDrivers_DocumentStorageDriver>;
     /// Downcast Handle<PCDM_StorageDriver> to Handle<XmlTObjDrivers_DocumentStorageDriver> (returns null on failure)
-    pub fn HandlePCDMStorageDriver_downcast_to_HandleXmlTObjDriversDocumentStorageDriver(
-        self_: *const HandlePCDMStorageDriver,
-    ) -> crate::OcctResult<*mut HandleXmlTObjDriversDocumentStorageDriver>;
+    pub fn Handle_PCDM_StorageDriver_downcast_to_Handle_XmlTObjDrivers_DocumentStorageDriver(
+        self_: *const Handle_PCDM_StorageDriver,
+    ) -> crate::OcctResult<*mut Handle_XmlTObjDrivers_DocumentStorageDriver>;
     /// Downcast Handle<PCDM_StorageDriver> to Handle<XmlXCAFDrivers_DocumentStorageDriver> (returns null on failure)
-    pub fn HandlePCDMStorageDriver_downcast_to_HandleXmlXCAFDriversDocumentStorageDriver(
-        self_: *const HandlePCDMStorageDriver,
-    ) -> crate::OcctResult<*mut HandleXmlXCAFDriversDocumentStorageDriver>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn Handle_PCDM_StorageDriver_downcast_to_Handle_XmlXCAFDrivers_DocumentStorageDriver(
+        self_: *const Handle_PCDM_StorageDriver,
+    ) -> crate::OcctResult<*mut Handle_XmlXCAFDrivers_DocumentStorageDriver>;
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn PCDM_StorageDriver_inherited_IsInstance(
         self_: *const PCDM_StorageDriver,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn PCDM_StorageDriver_inherited_IsKind(
         self_: *const PCDM_StorageDriver,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn PCDM_StorageDriver_inherited_This(
         self_: *const PCDM_StorageDriver,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn PCDM_StorageDriver_inherited_GetRefCount(
         self_: *const PCDM_StorageDriver,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn PCDM_StorageDriver_inherited_IncrementRefCounter(
         self_: *mut PCDM_StorageDriver,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn PCDM_StorageDriver_inherited_DecrementRefCounter(
         self_: *mut PCDM_StorageDriver,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn PCDM_StorageDriver_inherited_Delete(
         self_: *const PCDM_StorageDriver,
     ) -> *const std::ffi::c_char;
     // ======================== PCDM_Writer ========================
     pub fn PCDM_Writer_destructor(self_: *mut PCDM_Writer);
-    /// **Source:** `PCDM_Writer.hxx`:36 - `PCDM_Writer::Write()`
+    /// **Source:** `PCDM_Writer.hxx`:33 - `PCDM_Writer::Write()`
     pub fn PCDM_Writer_write_handlecdmdocument_extendedstring_progressrange(
         self_: *mut PCDM_Writer,
-        aDocument: *const HandleCDMDocument,
+        aDocument: *const Handle_CDM_Document,
         aFileName: *const TCollection_ExtendedString,
         theRange: *const Message_ProgressRange,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `PCDM_Writer.hxx`:42 - `PCDM_Writer::Write()`
+    /// **Source:** `PCDM_Writer.hxx`:39 - `PCDM_Writer::Write()`
     pub fn PCDM_Writer_write_handlecdmdocument_ostream_progressrange(
         self_: *mut PCDM_Writer,
-        theDocument: *const HandleCDMDocument,
+        theDocument: *const Handle_CDM_Document,
         theOStream: *mut Standard_OStream,
         theRange: *const Message_ProgressRange,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `PCDM_Writer.hxx`:47 - `PCDM_Writer::DynamicType()`
+    /// **Source:** `PCDM_Writer.hxx`:44 - `PCDM_Writer::DynamicType()`
     pub fn PCDM_Writer_dynamic_type(
         self_: *const PCDM_Writer,
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// **Source:** `PCDM_Writer.hxx`:47 - `PCDM_Writer::get_type_name()`
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
+    /// **Source:** `PCDM_Writer.hxx`:44 - `PCDM_Writer::get_type_name()`
     pub fn PCDM_Writer_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
-    /// **Source:** `PCDM_Writer.hxx`:47 - `PCDM_Writer::get_type_descriptor()`
-    pub fn PCDM_Writer_get_type_descriptor() -> crate::OcctResult<*const HandleStandardType>;
+    /// **Source:** `PCDM_Writer.hxx`:44 - `PCDM_Writer::get_type_descriptor()`
+    pub fn PCDM_Writer_get_type_descriptor() -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast PCDM_Writer to Standard_Transient
     pub fn PCDM_Writer_as_Standard_Transient(
         self_: *const PCDM_Writer,
@@ -3897,98 +3769,98 @@ unsafe extern "C" {
         self_: *mut PCDM_Writer,
     ) -> crate::OcctResult<*mut Standard_Transient>;
     /// Destroy Handle<PCDM_Writer>
-    pub fn HandlePCDMWriter_destructor(self_: *mut HandlePCDMWriter);
+    pub fn Handle_PCDM_Writer_destructor(self_: *mut Handle_PCDM_Writer);
     /// Clone Handle<PCDM_Writer> (increments reference count)
-    pub fn HandlePCDMWriter_clone(
-        self_: *const HandlePCDMWriter,
-    ) -> crate::OcctResult<*mut HandlePCDMWriter>;
+    pub fn Handle_PCDM_Writer_clone(
+        self_: *const Handle_PCDM_Writer,
+    ) -> crate::OcctResult<*mut Handle_PCDM_Writer>;
     /// Check if Handle<PCDM_Writer> is null
-    pub fn HandlePCDMWriter_is_null(self_: *const HandlePCDMWriter) -> bool;
+    pub fn Handle_PCDM_Writer_is_null(self_: *const Handle_PCDM_Writer) -> bool;
     /// Dereference Handle to get *const PCDM_Writer
-    pub fn HandlePCDMWriter_get(
-        handle: *const HandlePCDMWriter,
+    pub fn Handle_PCDM_Writer_get(
+        handle: *const Handle_PCDM_Writer,
     ) -> crate::OcctResult<*const PCDM_Writer>;
     /// Dereference Handle to get *mut PCDM_Writer
-    pub fn HandlePCDMWriter_get_mut(
-        handle: *mut HandlePCDMWriter,
+    pub fn Handle_PCDM_Writer_get_mut(
+        handle: *mut Handle_PCDM_Writer,
     ) -> crate::OcctResult<*mut PCDM_Writer>;
     /// Upcast Handle<PCDM_Writer> to Handle<Standard_Transient>
-    pub fn HandlePCDMWriter_to_HandleStandardTransient(
-        self_: *const HandlePCDMWriter,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
+    pub fn Handle_PCDM_Writer_to_Handle_Standard_Transient(
+        self_: *const Handle_PCDM_Writer,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
     /// Downcast Handle<PCDM_Writer> to Handle<BinDrivers_DocumentStorageDriver> (returns null on failure)
-    pub fn HandlePCDMWriter_downcast_to_HandleBinDriversDocumentStorageDriver(
-        self_: *const HandlePCDMWriter,
-    ) -> crate::OcctResult<*mut HandleBinDriversDocumentStorageDriver>;
+    pub fn Handle_PCDM_Writer_downcast_to_Handle_BinDrivers_DocumentStorageDriver(
+        self_: *const Handle_PCDM_Writer,
+    ) -> crate::OcctResult<*mut Handle_BinDrivers_DocumentStorageDriver>;
     /// Downcast Handle<PCDM_Writer> to Handle<BinLDrivers_DocumentStorageDriver> (returns null on failure)
-    pub fn HandlePCDMWriter_downcast_to_HandleBinLDriversDocumentStorageDriver(
-        self_: *const HandlePCDMWriter,
-    ) -> crate::OcctResult<*mut HandleBinLDriversDocumentStorageDriver>;
+    pub fn Handle_PCDM_Writer_downcast_to_Handle_BinLDrivers_DocumentStorageDriver(
+        self_: *const Handle_PCDM_Writer,
+    ) -> crate::OcctResult<*mut Handle_BinLDrivers_DocumentStorageDriver>;
     /// Downcast Handle<PCDM_Writer> to Handle<BinTObjDrivers_DocumentStorageDriver> (returns null on failure)
-    pub fn HandlePCDMWriter_downcast_to_HandleBinTObjDriversDocumentStorageDriver(
-        self_: *const HandlePCDMWriter,
-    ) -> crate::OcctResult<*mut HandleBinTObjDriversDocumentStorageDriver>;
+    pub fn Handle_PCDM_Writer_downcast_to_Handle_BinTObjDrivers_DocumentStorageDriver(
+        self_: *const Handle_PCDM_Writer,
+    ) -> crate::OcctResult<*mut Handle_BinTObjDrivers_DocumentStorageDriver>;
     /// Downcast Handle<PCDM_Writer> to Handle<BinXCAFDrivers_DocumentStorageDriver> (returns null on failure)
-    pub fn HandlePCDMWriter_downcast_to_HandleBinXCAFDriversDocumentStorageDriver(
-        self_: *const HandlePCDMWriter,
-    ) -> crate::OcctResult<*mut HandleBinXCAFDriversDocumentStorageDriver>;
+    pub fn Handle_PCDM_Writer_downcast_to_Handle_BinXCAFDrivers_DocumentStorageDriver(
+        self_: *const Handle_PCDM_Writer,
+    ) -> crate::OcctResult<*mut Handle_BinXCAFDrivers_DocumentStorageDriver>;
     /// Downcast Handle<PCDM_Writer> to Handle<PCDM_StorageDriver> (returns null on failure)
-    pub fn HandlePCDMWriter_downcast_to_HandlePCDMStorageDriver(
-        self_: *const HandlePCDMWriter,
-    ) -> crate::OcctResult<*mut HandlePCDMStorageDriver>;
+    pub fn Handle_PCDM_Writer_downcast_to_Handle_PCDM_StorageDriver(
+        self_: *const Handle_PCDM_Writer,
+    ) -> crate::OcctResult<*mut Handle_PCDM_StorageDriver>;
     /// Downcast Handle<PCDM_Writer> to Handle<XmlDrivers_DocumentStorageDriver> (returns null on failure)
-    pub fn HandlePCDMWriter_downcast_to_HandleXmlDriversDocumentStorageDriver(
-        self_: *const HandlePCDMWriter,
-    ) -> crate::OcctResult<*mut HandleXmlDriversDocumentStorageDriver>;
+    pub fn Handle_PCDM_Writer_downcast_to_Handle_XmlDrivers_DocumentStorageDriver(
+        self_: *const Handle_PCDM_Writer,
+    ) -> crate::OcctResult<*mut Handle_XmlDrivers_DocumentStorageDriver>;
     /// Downcast Handle<PCDM_Writer> to Handle<XmlLDrivers_DocumentStorageDriver> (returns null on failure)
-    pub fn HandlePCDMWriter_downcast_to_HandleXmlLDriversDocumentStorageDriver(
-        self_: *const HandlePCDMWriter,
-    ) -> crate::OcctResult<*mut HandleXmlLDriversDocumentStorageDriver>;
+    pub fn Handle_PCDM_Writer_downcast_to_Handle_XmlLDrivers_DocumentStorageDriver(
+        self_: *const Handle_PCDM_Writer,
+    ) -> crate::OcctResult<*mut Handle_XmlLDrivers_DocumentStorageDriver>;
     /// Downcast Handle<PCDM_Writer> to Handle<XmlTObjDrivers_DocumentStorageDriver> (returns null on failure)
-    pub fn HandlePCDMWriter_downcast_to_HandleXmlTObjDriversDocumentStorageDriver(
-        self_: *const HandlePCDMWriter,
-    ) -> crate::OcctResult<*mut HandleXmlTObjDriversDocumentStorageDriver>;
+    pub fn Handle_PCDM_Writer_downcast_to_Handle_XmlTObjDrivers_DocumentStorageDriver(
+        self_: *const Handle_PCDM_Writer,
+    ) -> crate::OcctResult<*mut Handle_XmlTObjDrivers_DocumentStorageDriver>;
     /// Downcast Handle<PCDM_Writer> to Handle<XmlXCAFDrivers_DocumentStorageDriver> (returns null on failure)
-    pub fn HandlePCDMWriter_downcast_to_HandleXmlXCAFDriversDocumentStorageDriver(
-        self_: *const HandlePCDMWriter,
-    ) -> crate::OcctResult<*mut HandleXmlXCAFDriversDocumentStorageDriver>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn Handle_PCDM_Writer_downcast_to_Handle_XmlXCAFDrivers_DocumentStorageDriver(
+        self_: *const Handle_PCDM_Writer,
+    ) -> crate::OcctResult<*mut Handle_XmlXCAFDrivers_DocumentStorageDriver>;
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn PCDM_Writer_inherited_IsInstance(
         self_: *const PCDM_Writer,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn PCDM_Writer_inherited_IsKind(
         self_: *const PCDM_Writer,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn PCDM_Writer_inherited_This(
         self_: *const PCDM_Writer,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn PCDM_Writer_inherited_GetRefCount(self_: *const PCDM_Writer) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn PCDM_Writer_inherited_IncrementRefCounter(
         self_: *mut PCDM_Writer,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn PCDM_Writer_inherited_DecrementRefCounter(
         self_: *mut PCDM_Writer,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn PCDM_Writer_inherited_Delete(self_: *const PCDM_Writer) -> *const std::ffi::c_char;
 
     // Free functions
     /// **Source:** `PCDM.hxx`:28 - `PCDM::FileDriverType`
     pub fn PCDM_file_driver_type_asciistring_handlestoragebasedriver(
         aFileName: *const TCollection_AsciiString,
-        aBaseDriver: *mut HandleStorageBaseDriver,
+        aBaseDriver: *mut Handle_Storage_BaseDriver,
     ) -> crate::OcctResult<i32>;
     /// **Source:** `PCDM.hxx`:32 - `PCDM::FileDriverType`
     pub fn PCDM_file_driver_type_istream_handlestoragebasedriver(
         theIStream: *mut Standard_IStream,
-        theBaseDriver: *mut HandleStorageBaseDriver,
+        theBaseDriver: *mut Handle_Storage_BaseDriver,
     ) -> crate::OcctResult<i32>;
     /// **Source:** `UTL.hxx`:42 - `UTL::xgetenv`
     pub fn UTL_xgetenv(
@@ -3996,13 +3868,13 @@ unsafe extern "C" {
     ) -> crate::OcctResult<*mut TCollection_ExtendedString>;
     /// **Source:** `UTL.hxx`:44 - `UTL::OpenFile`
     pub fn UTL_open_file(
-        aFile: *const HandleStorageBaseDriver,
+        aFile: *const Handle_Storage_BaseDriver,
         aName: *const TCollection_ExtendedString,
         aMode: i32,
     ) -> crate::OcctResult<i32>;
     /// **Source:** `UTL.hxx`:48 - `UTL::AddToUserInfo`
     pub fn UTL_add_to_user_info(
-        aData: *const HandleStorageData,
+        aData: *const Handle_Storage_Data,
         anInfo: *const TCollection_ExtendedString,
     ) -> *const std::ffi::c_char;
     /// **Source:** `UTL.hxx`:51 - `UTL::Path`
@@ -4040,33 +3912,30 @@ unsafe extern "C" {
     ) -> crate::OcctResult<*mut Standard_GUID>;
     /// **Source:** `UTL.hxx`:74 - `UTL::Find`
     pub fn UTL_find(
-        aResourceManager: *const HandleResourceManager,
+        aResourceManager: *const Handle_Resource_Manager,
         aResourceName: *const TCollection_ExtendedString,
     ) -> crate::OcctResult<bool>;
     /// **Source:** `UTL.hxx`:77 - `UTL::Value`
     pub fn UTL_value_handleresourcemanager_extendedstring(
-        aResourceManager: *const HandleResourceManager,
+        aResourceManager: *const Handle_Resource_Manager,
         aResourceName: *const TCollection_ExtendedString,
     ) -> crate::OcctResult<*mut TCollection_ExtendedString>;
     /// **Source:** `UTL.hxx`:81 - `UTL::IntegerValue`
     pub fn UTL_integer_value(
         anExtendedString: *const TCollection_ExtendedString,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `UTL.hxx`:84 - `UTL::CString`
+    /// **Source:** `UTL.hxx`:83 - `UTL::CString`
     pub fn UTL_c_string(
         anExtendedString: *const TCollection_ExtendedString,
     ) -> crate::OcctResult<*const std::ffi::c_char>;
-    /// **Source:** `UTL.hxx`:87 - `UTL::IsReadOnly`
+    /// **Source:** `UTL.hxx`:85 - `UTL::IsReadOnly`
     pub fn UTL_is_read_only(
         aFileName: *const TCollection_ExtendedString,
     ) -> crate::OcctResult<bool>;
 
     // Nested type & typedef type destructors
-    pub fn CDM_MetaDataLookUpTable_destructor(self_: *mut CDM_MetaDataLookUpTable);
     pub fn LDOM_Node_NodeType_destructor(self_: *mut LDOM_Node_NodeType);
     pub fn LDOM_OSStream_BOMType_destructor(self_: *mut LDOM_OSStream_BOMType);
     pub fn LDOM_XmlReader_RecordType_destructor(self_: *mut LDOM_XmlReader_RecordType);
     pub fn PCDM_ReaderFilter_AppendMode_destructor(self_: *mut PCDM_ReaderFilter_AppendMode);
-    pub fn PCDM_SequenceOfDocument_destructor(self_: *mut PCDM_SequenceOfDocument);
-    pub fn PCDM_SequenceOfReference_destructor(self_: *mut PCDM_SequenceOfReference);
 }

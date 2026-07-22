@@ -19,7 +19,7 @@
 /// Message::SendWarning() << "My Warning with " << theCounter << " arguments";
 /// Message::SendFail ("My Failure"); // short-cut for Message_Fail
 /// @endcode
-pub fn default_messenger() -> crate::OwnedPtr<crate::ffi_types::HandleMessageMessenger> {
+pub fn default_messenger() -> crate::OwnedPtr<crate::ffi_types::Handle_Message_Messenger> {
     unsafe {
         crate::OwnedPtr::from_raw(crate::check_result(
             crate::ffi_extern_TKernel::Message_default_messenger(),
@@ -136,7 +136,9 @@ pub fn fill_time(
 /// **Source:** `Message.hxx`:113 - `Message::DefaultReport`
 /// returns the only one instance of Report
 /// When theToCreate is true - automatically creates message report when not exist.
-pub fn default_report(theToCreate: bool) -> crate::OwnedPtr<crate::ffi_types::HandleMessageReport> {
+pub fn default_report(
+    theToCreate: bool,
+) -> crate::OwnedPtr<crate::ffi_types::Handle_Message_Report> {
     unsafe {
         crate::OwnedPtr::from_raw(crate::check_result(
             crate::ffi_extern_TKernel::Message_default_report(theToCreate),
@@ -776,35 +778,36 @@ impl TryFrom<i32> for StatusType {
 
 // Handle type re-exports (targets of handle upcasts/downcasts)
 pub use crate::ffi_types::{
-    HandleBOPAlgoAlertAcquiredSelfIntersection, HandleBOPAlgoAlertBOPNotAllowed,
-    HandleBOPAlgoAlertBOPNotSet, HandleBOPAlgoAlertBadPositioning, HandleBOPAlgoAlertBuilderFailed,
-    HandleBOPAlgoAlertBuildingPCurveFailed, HandleBOPAlgoAlertEmptyShape,
-    HandleBOPAlgoAlertFaceBuilderUnusedEdges, HandleBOPAlgoAlertIntersectionFailed,
-    HandleBOPAlgoAlertIntersectionOfPairOfShapesFailed,
-    HandleBOPAlgoAlertMultiDimensionalArguments, HandleBOPAlgoAlertMultipleArguments,
-    HandleBOPAlgoAlertNoFacesToRemove, HandleBOPAlgoAlertNoFiller,
-    HandleBOPAlgoAlertNoPeriodicityRequired, HandleBOPAlgoAlertNotSplittableEdge,
-    HandleBOPAlgoAlertNullInputShapes, HandleBOPAlgoAlertPostTreatFF,
-    HandleBOPAlgoAlertRemovalOfIBForEdgesFailed, HandleBOPAlgoAlertRemovalOfIBForFacesFailed,
-    HandleBOPAlgoAlertRemovalOfIBForMDimShapes, HandleBOPAlgoAlertRemovalOfIBForSolidsFailed,
-    HandleBOPAlgoAlertRemoveFeaturesFailed, HandleBOPAlgoAlertSelfInterferingShape,
-    HandleBOPAlgoAlertShapeIsNotPeriodic, HandleBOPAlgoAlertShellSplitterFailed,
-    HandleBOPAlgoAlertSolidBuilderFailed, HandleBOPAlgoAlertSolidBuilderUnusedFaces,
-    HandleBOPAlgoAlertTooFewArguments, HandleBOPAlgoAlertTooSmallEdge,
-    HandleBOPAlgoAlertUnableToGlue, HandleBOPAlgoAlertUnableToMakeClosedEdgeOnFace,
-    HandleBOPAlgoAlertUnableToMakeIdentical, HandleBOPAlgoAlertUnableToMakePeriodic,
-    HandleBOPAlgoAlertUnableToOrientTheShape, HandleBOPAlgoAlertUnableToRemoveTheFeature,
-    HandleBOPAlgoAlertUnableToRepeat, HandleBOPAlgoAlertUnableToTrim,
-    HandleBOPAlgoAlertUnknownShape, HandleBOPAlgoAlertUnsupportedType, HandleBOPAlgoAlertUserBreak,
-    HandleBRepMeshModelBuilder, HandleIMeshToolsMeshBuilder, HandleStandardTransient,
-    HandleTObjCheckModel, HandleTopoDSAlertAttribute, HandleTopoDSAlertWithShape,
+    Handle_BOPAlgo_AlertAcquiredSelfIntersection, Handle_BOPAlgo_AlertBOPNotAllowed,
+    Handle_BOPAlgo_AlertBOPNotSet, Handle_BOPAlgo_AlertBadPositioning,
+    Handle_BOPAlgo_AlertBuilderFailed, Handle_BOPAlgo_AlertBuildingPCurveFailed,
+    Handle_BOPAlgo_AlertEmptyShape, Handle_BOPAlgo_AlertFaceBuilderUnusedEdges,
+    Handle_BOPAlgo_AlertIntersectionFailed, Handle_BOPAlgo_AlertIntersectionOfPairOfShapesFailed,
+    Handle_BOPAlgo_AlertMultiDimensionalArguments, Handle_BOPAlgo_AlertMultipleArguments,
+    Handle_BOPAlgo_AlertNoFacesToRemove, Handle_BOPAlgo_AlertNoFiller,
+    Handle_BOPAlgo_AlertNoPeriodicityRequired, Handle_BOPAlgo_AlertNotSplittableEdge,
+    Handle_BOPAlgo_AlertNullInputShapes, Handle_BOPAlgo_AlertPostTreatFF,
+    Handle_BOPAlgo_AlertRemovalOfIBForEdgesFailed, Handle_BOPAlgo_AlertRemovalOfIBForFacesFailed,
+    Handle_BOPAlgo_AlertRemovalOfIBForMDimShapes, Handle_BOPAlgo_AlertRemovalOfIBForSolidsFailed,
+    Handle_BOPAlgo_AlertRemoveFeaturesFailed, Handle_BOPAlgo_AlertSelfInterferingShape,
+    Handle_BOPAlgo_AlertShapeIsNotPeriodic, Handle_BOPAlgo_AlertShellSplitterFailed,
+    Handle_BOPAlgo_AlertSolidBuilderFailed, Handle_BOPAlgo_AlertSolidBuilderUnusedFaces,
+    Handle_BOPAlgo_AlertTooFewArguments, Handle_BOPAlgo_AlertTooSmallEdge,
+    Handle_BOPAlgo_AlertUnableToGlue, Handle_BOPAlgo_AlertUnableToMakeClosedEdgeOnFace,
+    Handle_BOPAlgo_AlertUnableToMakeIdentical, Handle_BOPAlgo_AlertUnableToMakePeriodic,
+    Handle_BOPAlgo_AlertUnableToOrientTheShape, Handle_BOPAlgo_AlertUnableToRemoveTheFeature,
+    Handle_BOPAlgo_AlertUnableToRepeat, Handle_BOPAlgo_AlertUnableToTrim,
+    Handle_BOPAlgo_AlertUnknownShape, Handle_BOPAlgo_AlertUnsupportedType,
+    Handle_BOPAlgo_AlertUserBreak, Handle_BRepMesh_ModelBuilder, Handle_IMeshTools_MeshBuilder,
+    Handle_Standard_Transient, Handle_TObj_CheckModel, Handle_TopoDS_AlertAttribute,
+    Handle_TopoDS_AlertWithShape,
 };
 
 // ========================
 // From Message_Alert.hxx
 // ========================
 
-/// **Source:** `Message_Alert.hxx`:34 - `Message_Alert`
+/// **Source:** `Message_Alert.hxx`:32 - `Message_Alert`
 /// Base class of the hierarchy of classes describing various situations
 /// occurring during execution of some algorithm or procedure.
 ///
@@ -837,7 +840,7 @@ impl Alert {
         }
     }
 
-    /// **Source:** `Message_Alert.hxx`:42 - `Message_Alert::GetMessageKey()`
+    /// **Source:** `Message_Alert.hxx`:40 - `Message_Alert::GetMessageKey()`
     /// Return a C string to be used as a key for generating text user
     /// messages describing this alert.
     /// The messages are generated with help of Message_Msg class, in
@@ -853,7 +856,7 @@ impl Alert {
         .into_owned()
     }
 
-    /// **Source:** `Message_Alert.hxx`:47 - `Message_Alert::SupportsMerge()`
+    /// **Source:** `Message_Alert.hxx`:45 - `Message_Alert::SupportsMerge()`
     /// Return true if this type of alert can be merged with other
     /// of the same type to avoid duplication.
     /// Basis implementation returns true.
@@ -863,18 +866,18 @@ impl Alert {
         })
     }
 
-    /// **Source:** `Message_Alert.hxx`:52 - `Message_Alert::Merge()`
+    /// **Source:** `Message_Alert.hxx`:50 - `Message_Alert::Merge()`
     /// If possible, merge data contained in this alert to theTarget.
     /// @return True if merged.
     /// Base implementation always returns true.
-    pub fn merge(&mut self, theTarget: &crate::ffi_types::HandleMessageAlert) -> bool {
+    pub fn merge(&mut self, theTarget: &crate::ffi_types::Handle_Message_Alert) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKernel::Message_Alert_merge(self as *mut Self, theTarget)
         })
     }
 
-    /// **Source:** `Message_Alert.hxx`:59 - `Message_Alert::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `Message_Alert.hxx`:56 - `Message_Alert::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKernel::Message_Alert_dynamic_type(
                 self as *const Self,
@@ -882,7 +885,7 @@ impl Alert {
         }
     }
 
-    /// **Source:** `Message_Alert.hxx`:59 - `Message_Alert::get_type_name()`
+    /// **Source:** `Message_Alert.hxx`:56 - `Message_Alert::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -893,8 +896,8 @@ impl Alert {
         .into_owned()
     }
 
-    /// **Source:** `Message_Alert.hxx`:59 - `Message_Alert::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    /// **Source:** `Message_Alert.hxx`:56 - `Message_Alert::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKernel::Message_Alert_get_type_descriptor()))
         }
@@ -923,7 +926,7 @@ impl Alert {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleMessageAlert> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Message_Alert> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKernel::Message_Alert_to_handle(obj.into_raw()),
@@ -931,8 +934,8 @@ impl Alert {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKernel::Message_Alert_inherited_IsInstance(
                 self as *const Self,
@@ -941,14 +944,14 @@ impl Alert {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKernel::Message_Alert_inherited_IsKind(self as *const Self, theType)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -962,14 +965,14 @@ impl Alert {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKernel::Message_Alert_inherited_GetRefCount(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKernel::Message_Alert_inherited_IncrementRefCounter(
@@ -978,7 +981,7 @@ impl Alert {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKernel::Message_Alert_inherited_DecrementRefCounter(
@@ -987,7 +990,7 @@ impl Alert {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKernel::Message_Alert_inherited_Delete(self as *const Self)
@@ -995,32 +998,32 @@ impl Alert {
     }
 }
 
-pub use crate::ffi_types::HandleMessageAlert;
+pub use crate::ffi_types::Handle_Message_Alert;
 
-unsafe impl crate::CppDeletable for HandleMessageAlert {
+unsafe impl crate::CppDeletable for Handle_Message_Alert {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKernel::HandleMessageAlert_destructor(ptr);
+            crate::ffi_extern_TKernel::Handle_Message_Alert_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleMessageAlert {
+unsafe impl crate::CppCopyable for Handle_Message_Alert {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        unsafe { crate::check_result(crate::ffi_extern_TKernel::HandleMessageAlert_clone(ptr)) }
+        unsafe { crate::check_result(crate::ffi_extern_TKernel::Handle_Message_Alert_clone(ptr)) }
     }
 }
 
-impl HandleMessageAlert {
+impl Handle_Message_Alert {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
-        unsafe { crate::ffi_extern_TKernel::HandleMessageAlert_is_null(self as *const Self) }
+        unsafe { crate::ffi_extern_TKernel::Handle_Message_Alert_is_null(self as *const Self) }
     }
 
     /// Dereference this Handle to access the underlying Message_Alert
     pub fn get(&self) -> &crate::ffi_types::Message_Alert {
         unsafe {
-            &*crate::check_result(crate::ffi_extern_TKernel::HandleMessageAlert_get(
+            &*crate::check_result(crate::ffi_extern_TKernel::Handle_Message_Alert_get(
                 self as *const Self,
             ))
         }
@@ -1029,7 +1032,7 @@ impl HandleMessageAlert {
     /// Dereference this Handle to mutably access the underlying Message_Alert
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::Message_Alert {
         unsafe {
-            &mut *crate::check_result(crate::ffi_extern_TKernel::HandleMessageAlert_get_mut(
+            &mut *crate::check_result(crate::ffi_extern_TKernel::Handle_Message_Alert_get_mut(
                 self as *mut Self,
             ))
         }
@@ -1038,10 +1041,10 @@ impl HandleMessageAlert {
     /// Upcast Handle<Message_Alert> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKernel::HandleMessageAlert_to_HandleStandardTransient(
+                crate::ffi_extern_TKernel::Handle_Message_Alert_to_Handle_Standard_Transient(
                     self as *const Self,
                 ),
             ))
@@ -1053,9 +1056,10 @@ impl HandleMessageAlert {
     /// Returns `None` if the handle does not point to a `BOPAlgo_AlertAcquiredSelfIntersection` (or subclass).
     pub fn downcast_to_alert_acquired_self_intersection(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleBOPAlgoAlertAcquiredSelfIntersection>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_BOPAlgo_AlertAcquiredSelfIntersection>>
+    {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKernel::HandleMessageAlert_downcast_to_HandleBOPAlgoAlertAcquiredSelfIntersection(self as *const Self)
+            crate::ffi_extern_TKernel::Handle_Message_Alert_downcast_to_Handle_BOPAlgo_AlertAcquiredSelfIntersection(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -1069,9 +1073,9 @@ impl HandleMessageAlert {
     /// Returns `None` if the handle does not point to a `BOPAlgo_AlertBOPNotAllowed` (or subclass).
     pub fn downcast_to_alert_bop_not_allowed(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleBOPAlgoAlertBOPNotAllowed>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_BOPAlgo_AlertBOPNotAllowed>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKernel::HandleMessageAlert_downcast_to_HandleBOPAlgoAlertBOPNotAllowed(self as *const Self)
+            crate::ffi_extern_TKernel::Handle_Message_Alert_downcast_to_Handle_BOPAlgo_AlertBOPNotAllowed(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -1085,11 +1089,9 @@ impl HandleMessageAlert {
     /// Returns `None` if the handle does not point to a `BOPAlgo_AlertBOPNotSet` (or subclass).
     pub fn downcast_to_alert_bop_not_set(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleBOPAlgoAlertBOPNotSet>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_BOPAlgo_AlertBOPNotSet>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKernel::HandleMessageAlert_downcast_to_HandleBOPAlgoAlertBOPNotSet(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKernel::Handle_Message_Alert_downcast_to_Handle_BOPAlgo_AlertBOPNotSet(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -1103,9 +1105,9 @@ impl HandleMessageAlert {
     /// Returns `None` if the handle does not point to a `BOPAlgo_AlertBadPositioning` (or subclass).
     pub fn downcast_to_alert_bad_positioning(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleBOPAlgoAlertBadPositioning>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_BOPAlgo_AlertBadPositioning>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKernel::HandleMessageAlert_downcast_to_HandleBOPAlgoAlertBadPositioning(self as *const Self)
+            crate::ffi_extern_TKernel::Handle_Message_Alert_downcast_to_Handle_BOPAlgo_AlertBadPositioning(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -1119,9 +1121,9 @@ impl HandleMessageAlert {
     /// Returns `None` if the handle does not point to a `BOPAlgo_AlertBuilderFailed` (or subclass).
     pub fn downcast_to_alert_builder_failed(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleBOPAlgoAlertBuilderFailed>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_BOPAlgo_AlertBuilderFailed>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKernel::HandleMessageAlert_downcast_to_HandleBOPAlgoAlertBuilderFailed(self as *const Self)
+            crate::ffi_extern_TKernel::Handle_Message_Alert_downcast_to_Handle_BOPAlgo_AlertBuilderFailed(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -1135,9 +1137,9 @@ impl HandleMessageAlert {
     /// Returns `None` if the handle does not point to a `BOPAlgo_AlertBuildingPCurveFailed` (or subclass).
     pub fn downcast_to_alert_building_p_curve_failed(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleBOPAlgoAlertBuildingPCurveFailed>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_BOPAlgo_AlertBuildingPCurveFailed>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKernel::HandleMessageAlert_downcast_to_HandleBOPAlgoAlertBuildingPCurveFailed(self as *const Self)
+            crate::ffi_extern_TKernel::Handle_Message_Alert_downcast_to_Handle_BOPAlgo_AlertBuildingPCurveFailed(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -1151,11 +1153,9 @@ impl HandleMessageAlert {
     /// Returns `None` if the handle does not point to a `BOPAlgo_AlertEmptyShape` (or subclass).
     pub fn downcast_to_alert_empty_shape(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleBOPAlgoAlertEmptyShape>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_BOPAlgo_AlertEmptyShape>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKernel::HandleMessageAlert_downcast_to_HandleBOPAlgoAlertEmptyShape(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKernel::Handle_Message_Alert_downcast_to_Handle_BOPAlgo_AlertEmptyShape(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -1169,9 +1169,9 @@ impl HandleMessageAlert {
     /// Returns `None` if the handle does not point to a `BOPAlgo_AlertFaceBuilderUnusedEdges` (or subclass).
     pub fn downcast_to_alert_face_builder_unused_edges(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleBOPAlgoAlertFaceBuilderUnusedEdges>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_BOPAlgo_AlertFaceBuilderUnusedEdges>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKernel::HandleMessageAlert_downcast_to_HandleBOPAlgoAlertFaceBuilderUnusedEdges(self as *const Self)
+            crate::ffi_extern_TKernel::Handle_Message_Alert_downcast_to_Handle_BOPAlgo_AlertFaceBuilderUnusedEdges(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -1185,9 +1185,9 @@ impl HandleMessageAlert {
     /// Returns `None` if the handle does not point to a `BOPAlgo_AlertIntersectionFailed` (or subclass).
     pub fn downcast_to_alert_intersection_failed(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleBOPAlgoAlertIntersectionFailed>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_BOPAlgo_AlertIntersectionFailed>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKernel::HandleMessageAlert_downcast_to_HandleBOPAlgoAlertIntersectionFailed(self as *const Self)
+            crate::ffi_extern_TKernel::Handle_Message_Alert_downcast_to_Handle_BOPAlgo_AlertIntersectionFailed(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -1201,10 +1201,11 @@ impl HandleMessageAlert {
     /// Returns `None` if the handle does not point to a `BOPAlgo_AlertIntersectionOfPairOfShapesFailed` (or subclass).
     pub fn downcast_to_alert_intersection_of_pair_of_shapes_failed(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleBOPAlgoAlertIntersectionOfPairOfShapesFailed>>
-    {
+    ) -> Option<
+        crate::OwnedPtr<crate::ffi_types::Handle_BOPAlgo_AlertIntersectionOfPairOfShapesFailed>,
+    > {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKernel::HandleMessageAlert_downcast_to_HandleBOPAlgoAlertIntersectionOfPairOfShapesFailed(self as *const Self)
+            crate::ffi_extern_TKernel::Handle_Message_Alert_downcast_to_Handle_BOPAlgo_AlertIntersectionOfPairOfShapesFailed(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -1218,10 +1219,10 @@ impl HandleMessageAlert {
     /// Returns `None` if the handle does not point to a `BOPAlgo_AlertMultiDimensionalArguments` (or subclass).
     pub fn downcast_to_alert_multi_dimensional_arguments(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleBOPAlgoAlertMultiDimensionalArguments>>
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_BOPAlgo_AlertMultiDimensionalArguments>>
     {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKernel::HandleMessageAlert_downcast_to_HandleBOPAlgoAlertMultiDimensionalArguments(self as *const Self)
+            crate::ffi_extern_TKernel::Handle_Message_Alert_downcast_to_Handle_BOPAlgo_AlertMultiDimensionalArguments(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -1235,9 +1236,9 @@ impl HandleMessageAlert {
     /// Returns `None` if the handle does not point to a `BOPAlgo_AlertMultipleArguments` (or subclass).
     pub fn downcast_to_alert_multiple_arguments(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleBOPAlgoAlertMultipleArguments>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_BOPAlgo_AlertMultipleArguments>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKernel::HandleMessageAlert_downcast_to_HandleBOPAlgoAlertMultipleArguments(self as *const Self)
+            crate::ffi_extern_TKernel::Handle_Message_Alert_downcast_to_Handle_BOPAlgo_AlertMultipleArguments(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -1251,9 +1252,9 @@ impl HandleMessageAlert {
     /// Returns `None` if the handle does not point to a `BOPAlgo_AlertNoFacesToRemove` (or subclass).
     pub fn downcast_to_alert_no_faces_to_remove(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleBOPAlgoAlertNoFacesToRemove>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_BOPAlgo_AlertNoFacesToRemove>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKernel::HandleMessageAlert_downcast_to_HandleBOPAlgoAlertNoFacesToRemove(self as *const Self)
+            crate::ffi_extern_TKernel::Handle_Message_Alert_downcast_to_Handle_BOPAlgo_AlertNoFacesToRemove(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -1267,9 +1268,9 @@ impl HandleMessageAlert {
     /// Returns `None` if the handle does not point to a `BOPAlgo_AlertNoFiller` (or subclass).
     pub fn downcast_to_alert_no_filler(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleBOPAlgoAlertNoFiller>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_BOPAlgo_AlertNoFiller>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKernel::HandleMessageAlert_downcast_to_HandleBOPAlgoAlertNoFiller(
+            crate::ffi_extern_TKernel::Handle_Message_Alert_downcast_to_Handle_BOPAlgo_AlertNoFiller(
                 self as *const Self,
             )
         });
@@ -1285,9 +1286,9 @@ impl HandleMessageAlert {
     /// Returns `None` if the handle does not point to a `BOPAlgo_AlertNoPeriodicityRequired` (or subclass).
     pub fn downcast_to_alert_no_periodicity_required(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleBOPAlgoAlertNoPeriodicityRequired>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_BOPAlgo_AlertNoPeriodicityRequired>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKernel::HandleMessageAlert_downcast_to_HandleBOPAlgoAlertNoPeriodicityRequired(self as *const Self)
+            crate::ffi_extern_TKernel::Handle_Message_Alert_downcast_to_Handle_BOPAlgo_AlertNoPeriodicityRequired(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -1301,9 +1302,9 @@ impl HandleMessageAlert {
     /// Returns `None` if the handle does not point to a `BOPAlgo_AlertNotSplittableEdge` (or subclass).
     pub fn downcast_to_alert_not_splittable_edge(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleBOPAlgoAlertNotSplittableEdge>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_BOPAlgo_AlertNotSplittableEdge>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKernel::HandleMessageAlert_downcast_to_HandleBOPAlgoAlertNotSplittableEdge(self as *const Self)
+            crate::ffi_extern_TKernel::Handle_Message_Alert_downcast_to_Handle_BOPAlgo_AlertNotSplittableEdge(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -1317,9 +1318,9 @@ impl HandleMessageAlert {
     /// Returns `None` if the handle does not point to a `BOPAlgo_AlertNullInputShapes` (or subclass).
     pub fn downcast_to_alert_null_input_shapes(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleBOPAlgoAlertNullInputShapes>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_BOPAlgo_AlertNullInputShapes>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKernel::HandleMessageAlert_downcast_to_HandleBOPAlgoAlertNullInputShapes(self as *const Self)
+            crate::ffi_extern_TKernel::Handle_Message_Alert_downcast_to_Handle_BOPAlgo_AlertNullInputShapes(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -1333,11 +1334,9 @@ impl HandleMessageAlert {
     /// Returns `None` if the handle does not point to a `BOPAlgo_AlertPostTreatFF` (or subclass).
     pub fn downcast_to_alert_post_treat_ff(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleBOPAlgoAlertPostTreatFF>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_BOPAlgo_AlertPostTreatFF>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKernel::HandleMessageAlert_downcast_to_HandleBOPAlgoAlertPostTreatFF(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKernel::Handle_Message_Alert_downcast_to_Handle_BOPAlgo_AlertPostTreatFF(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -1351,10 +1350,10 @@ impl HandleMessageAlert {
     /// Returns `None` if the handle does not point to a `BOPAlgo_AlertRemovalOfIBForEdgesFailed` (or subclass).
     pub fn downcast_to_alert_removal_of_ib_for_edges_failed(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleBOPAlgoAlertRemovalOfIBForEdgesFailed>>
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_BOPAlgo_AlertRemovalOfIBForEdgesFailed>>
     {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKernel::HandleMessageAlert_downcast_to_HandleBOPAlgoAlertRemovalOfIBForEdgesFailed(self as *const Self)
+            crate::ffi_extern_TKernel::Handle_Message_Alert_downcast_to_Handle_BOPAlgo_AlertRemovalOfIBForEdgesFailed(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -1368,10 +1367,10 @@ impl HandleMessageAlert {
     /// Returns `None` if the handle does not point to a `BOPAlgo_AlertRemovalOfIBForFacesFailed` (or subclass).
     pub fn downcast_to_alert_removal_of_ib_for_faces_failed(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleBOPAlgoAlertRemovalOfIBForFacesFailed>>
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_BOPAlgo_AlertRemovalOfIBForFacesFailed>>
     {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKernel::HandleMessageAlert_downcast_to_HandleBOPAlgoAlertRemovalOfIBForFacesFailed(self as *const Self)
+            crate::ffi_extern_TKernel::Handle_Message_Alert_downcast_to_Handle_BOPAlgo_AlertRemovalOfIBForFacesFailed(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -1385,9 +1384,10 @@ impl HandleMessageAlert {
     /// Returns `None` if the handle does not point to a `BOPAlgo_AlertRemovalOfIBForMDimShapes` (or subclass).
     pub fn downcast_to_alert_removal_of_ib_for_m_dim_shapes(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleBOPAlgoAlertRemovalOfIBForMDimShapes>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_BOPAlgo_AlertRemovalOfIBForMDimShapes>>
+    {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKernel::HandleMessageAlert_downcast_to_HandleBOPAlgoAlertRemovalOfIBForMDimShapes(self as *const Self)
+            crate::ffi_extern_TKernel::Handle_Message_Alert_downcast_to_Handle_BOPAlgo_AlertRemovalOfIBForMDimShapes(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -1401,10 +1401,10 @@ impl HandleMessageAlert {
     /// Returns `None` if the handle does not point to a `BOPAlgo_AlertRemovalOfIBForSolidsFailed` (or subclass).
     pub fn downcast_to_alert_removal_of_ib_for_solids_failed(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleBOPAlgoAlertRemovalOfIBForSolidsFailed>>
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_BOPAlgo_AlertRemovalOfIBForSolidsFailed>>
     {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKernel::HandleMessageAlert_downcast_to_HandleBOPAlgoAlertRemovalOfIBForSolidsFailed(self as *const Self)
+            crate::ffi_extern_TKernel::Handle_Message_Alert_downcast_to_Handle_BOPAlgo_AlertRemovalOfIBForSolidsFailed(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -1418,9 +1418,9 @@ impl HandleMessageAlert {
     /// Returns `None` if the handle does not point to a `BOPAlgo_AlertRemoveFeaturesFailed` (or subclass).
     pub fn downcast_to_alert_remove_features_failed(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleBOPAlgoAlertRemoveFeaturesFailed>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_BOPAlgo_AlertRemoveFeaturesFailed>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKernel::HandleMessageAlert_downcast_to_HandleBOPAlgoAlertRemoveFeaturesFailed(self as *const Self)
+            crate::ffi_extern_TKernel::Handle_Message_Alert_downcast_to_Handle_BOPAlgo_AlertRemoveFeaturesFailed(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -1434,9 +1434,9 @@ impl HandleMessageAlert {
     /// Returns `None` if the handle does not point to a `BOPAlgo_AlertSelfInterferingShape` (or subclass).
     pub fn downcast_to_alert_self_interfering_shape(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleBOPAlgoAlertSelfInterferingShape>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_BOPAlgo_AlertSelfInterferingShape>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKernel::HandleMessageAlert_downcast_to_HandleBOPAlgoAlertSelfInterferingShape(self as *const Self)
+            crate::ffi_extern_TKernel::Handle_Message_Alert_downcast_to_Handle_BOPAlgo_AlertSelfInterferingShape(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -1450,9 +1450,9 @@ impl HandleMessageAlert {
     /// Returns `None` if the handle does not point to a `BOPAlgo_AlertShapeIsNotPeriodic` (or subclass).
     pub fn downcast_to_alert_shape_is_not_periodic(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleBOPAlgoAlertShapeIsNotPeriodic>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_BOPAlgo_AlertShapeIsNotPeriodic>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKernel::HandleMessageAlert_downcast_to_HandleBOPAlgoAlertShapeIsNotPeriodic(self as *const Self)
+            crate::ffi_extern_TKernel::Handle_Message_Alert_downcast_to_Handle_BOPAlgo_AlertShapeIsNotPeriodic(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -1466,9 +1466,9 @@ impl HandleMessageAlert {
     /// Returns `None` if the handle does not point to a `BOPAlgo_AlertShellSplitterFailed` (or subclass).
     pub fn downcast_to_alert_shell_splitter_failed(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleBOPAlgoAlertShellSplitterFailed>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_BOPAlgo_AlertShellSplitterFailed>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKernel::HandleMessageAlert_downcast_to_HandleBOPAlgoAlertShellSplitterFailed(self as *const Self)
+            crate::ffi_extern_TKernel::Handle_Message_Alert_downcast_to_Handle_BOPAlgo_AlertShellSplitterFailed(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -1482,9 +1482,9 @@ impl HandleMessageAlert {
     /// Returns `None` if the handle does not point to a `BOPAlgo_AlertSolidBuilderFailed` (or subclass).
     pub fn downcast_to_alert_solid_builder_failed(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleBOPAlgoAlertSolidBuilderFailed>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_BOPAlgo_AlertSolidBuilderFailed>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKernel::HandleMessageAlert_downcast_to_HandleBOPAlgoAlertSolidBuilderFailed(self as *const Self)
+            crate::ffi_extern_TKernel::Handle_Message_Alert_downcast_to_Handle_BOPAlgo_AlertSolidBuilderFailed(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -1498,9 +1498,10 @@ impl HandleMessageAlert {
     /// Returns `None` if the handle does not point to a `BOPAlgo_AlertSolidBuilderUnusedFaces` (or subclass).
     pub fn downcast_to_alert_solid_builder_unused_faces(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleBOPAlgoAlertSolidBuilderUnusedFaces>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_BOPAlgo_AlertSolidBuilderUnusedFaces>>
+    {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKernel::HandleMessageAlert_downcast_to_HandleBOPAlgoAlertSolidBuilderUnusedFaces(self as *const Self)
+            crate::ffi_extern_TKernel::Handle_Message_Alert_downcast_to_Handle_BOPAlgo_AlertSolidBuilderUnusedFaces(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -1514,9 +1515,9 @@ impl HandleMessageAlert {
     /// Returns `None` if the handle does not point to a `BOPAlgo_AlertTooFewArguments` (or subclass).
     pub fn downcast_to_alert_too_few_arguments(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleBOPAlgoAlertTooFewArguments>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_BOPAlgo_AlertTooFewArguments>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKernel::HandleMessageAlert_downcast_to_HandleBOPAlgoAlertTooFewArguments(self as *const Self)
+            crate::ffi_extern_TKernel::Handle_Message_Alert_downcast_to_Handle_BOPAlgo_AlertTooFewArguments(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -1530,11 +1531,9 @@ impl HandleMessageAlert {
     /// Returns `None` if the handle does not point to a `BOPAlgo_AlertTooSmallEdge` (or subclass).
     pub fn downcast_to_alert_too_small_edge(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleBOPAlgoAlertTooSmallEdge>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_BOPAlgo_AlertTooSmallEdge>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKernel::HandleMessageAlert_downcast_to_HandleBOPAlgoAlertTooSmallEdge(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKernel::Handle_Message_Alert_downcast_to_Handle_BOPAlgo_AlertTooSmallEdge(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -1548,11 +1547,9 @@ impl HandleMessageAlert {
     /// Returns `None` if the handle does not point to a `BOPAlgo_AlertUnableToGlue` (or subclass).
     pub fn downcast_to_alert_unable_to_glue(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleBOPAlgoAlertUnableToGlue>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_BOPAlgo_AlertUnableToGlue>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKernel::HandleMessageAlert_downcast_to_HandleBOPAlgoAlertUnableToGlue(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKernel::Handle_Message_Alert_downcast_to_Handle_BOPAlgo_AlertUnableToGlue(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -1566,10 +1563,10 @@ impl HandleMessageAlert {
     /// Returns `None` if the handle does not point to a `BOPAlgo_AlertUnableToMakeClosedEdgeOnFace` (or subclass).
     pub fn downcast_to_alert_unable_to_make_closed_edge_on_face(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleBOPAlgoAlertUnableToMakeClosedEdgeOnFace>>
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_BOPAlgo_AlertUnableToMakeClosedEdgeOnFace>>
     {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKernel::HandleMessageAlert_downcast_to_HandleBOPAlgoAlertUnableToMakeClosedEdgeOnFace(self as *const Self)
+            crate::ffi_extern_TKernel::Handle_Message_Alert_downcast_to_Handle_BOPAlgo_AlertUnableToMakeClosedEdgeOnFace(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -1583,9 +1580,9 @@ impl HandleMessageAlert {
     /// Returns `None` if the handle does not point to a `BOPAlgo_AlertUnableToMakeIdentical` (or subclass).
     pub fn downcast_to_alert_unable_to_make_identical(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleBOPAlgoAlertUnableToMakeIdentical>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_BOPAlgo_AlertUnableToMakeIdentical>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKernel::HandleMessageAlert_downcast_to_HandleBOPAlgoAlertUnableToMakeIdentical(self as *const Self)
+            crate::ffi_extern_TKernel::Handle_Message_Alert_downcast_to_Handle_BOPAlgo_AlertUnableToMakeIdentical(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -1599,9 +1596,9 @@ impl HandleMessageAlert {
     /// Returns `None` if the handle does not point to a `BOPAlgo_AlertUnableToMakePeriodic` (or subclass).
     pub fn downcast_to_alert_unable_to_make_periodic(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleBOPAlgoAlertUnableToMakePeriodic>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_BOPAlgo_AlertUnableToMakePeriodic>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKernel::HandleMessageAlert_downcast_to_HandleBOPAlgoAlertUnableToMakePeriodic(self as *const Self)
+            crate::ffi_extern_TKernel::Handle_Message_Alert_downcast_to_Handle_BOPAlgo_AlertUnableToMakePeriodic(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -1615,9 +1612,9 @@ impl HandleMessageAlert {
     /// Returns `None` if the handle does not point to a `BOPAlgo_AlertUnableToOrientTheShape` (or subclass).
     pub fn downcast_to_alert_unable_to_orient_the_shape(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleBOPAlgoAlertUnableToOrientTheShape>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_BOPAlgo_AlertUnableToOrientTheShape>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKernel::HandleMessageAlert_downcast_to_HandleBOPAlgoAlertUnableToOrientTheShape(self as *const Self)
+            crate::ffi_extern_TKernel::Handle_Message_Alert_downcast_to_Handle_BOPAlgo_AlertUnableToOrientTheShape(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -1631,9 +1628,10 @@ impl HandleMessageAlert {
     /// Returns `None` if the handle does not point to a `BOPAlgo_AlertUnableToRemoveTheFeature` (or subclass).
     pub fn downcast_to_alert_unable_to_remove_the_feature(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleBOPAlgoAlertUnableToRemoveTheFeature>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_BOPAlgo_AlertUnableToRemoveTheFeature>>
+    {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKernel::HandleMessageAlert_downcast_to_HandleBOPAlgoAlertUnableToRemoveTheFeature(self as *const Self)
+            crate::ffi_extern_TKernel::Handle_Message_Alert_downcast_to_Handle_BOPAlgo_AlertUnableToRemoveTheFeature(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -1647,9 +1645,9 @@ impl HandleMessageAlert {
     /// Returns `None` if the handle does not point to a `BOPAlgo_AlertUnableToRepeat` (or subclass).
     pub fn downcast_to_alert_unable_to_repeat(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleBOPAlgoAlertUnableToRepeat>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_BOPAlgo_AlertUnableToRepeat>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKernel::HandleMessageAlert_downcast_to_HandleBOPAlgoAlertUnableToRepeat(self as *const Self)
+            crate::ffi_extern_TKernel::Handle_Message_Alert_downcast_to_Handle_BOPAlgo_AlertUnableToRepeat(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -1663,11 +1661,9 @@ impl HandleMessageAlert {
     /// Returns `None` if the handle does not point to a `BOPAlgo_AlertUnableToTrim` (or subclass).
     pub fn downcast_to_alert_unable_to_trim(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleBOPAlgoAlertUnableToTrim>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_BOPAlgo_AlertUnableToTrim>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKernel::HandleMessageAlert_downcast_to_HandleBOPAlgoAlertUnableToTrim(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKernel::Handle_Message_Alert_downcast_to_Handle_BOPAlgo_AlertUnableToTrim(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -1681,11 +1677,9 @@ impl HandleMessageAlert {
     /// Returns `None` if the handle does not point to a `BOPAlgo_AlertUnknownShape` (or subclass).
     pub fn downcast_to_alert_unknown_shape(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleBOPAlgoAlertUnknownShape>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_BOPAlgo_AlertUnknownShape>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKernel::HandleMessageAlert_downcast_to_HandleBOPAlgoAlertUnknownShape(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKernel::Handle_Message_Alert_downcast_to_Handle_BOPAlgo_AlertUnknownShape(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -1699,9 +1693,9 @@ impl HandleMessageAlert {
     /// Returns `None` if the handle does not point to a `BOPAlgo_AlertUnsupportedType` (or subclass).
     pub fn downcast_to_alert_unsupported_type(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleBOPAlgoAlertUnsupportedType>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_BOPAlgo_AlertUnsupportedType>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKernel::HandleMessageAlert_downcast_to_HandleBOPAlgoAlertUnsupportedType(self as *const Self)
+            crate::ffi_extern_TKernel::Handle_Message_Alert_downcast_to_Handle_BOPAlgo_AlertUnsupportedType(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -1715,11 +1709,9 @@ impl HandleMessageAlert {
     /// Returns `None` if the handle does not point to a `BOPAlgo_AlertUserBreak` (or subclass).
     pub fn downcast_to_alert_user_break(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleBOPAlgoAlertUserBreak>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_BOPAlgo_AlertUserBreak>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKernel::HandleMessageAlert_downcast_to_HandleBOPAlgoAlertUserBreak(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKernel::Handle_Message_Alert_downcast_to_Handle_BOPAlgo_AlertUserBreak(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -1733,9 +1725,9 @@ impl HandleMessageAlert {
     /// Returns `None` if the handle does not point to a `Message_AlertExtended` (or subclass).
     pub fn downcast_to_alert_extended(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleMessageAlertExtended>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_Message_AlertExtended>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKernel::HandleMessageAlert_downcast_to_HandleMessageAlertExtended(
+            crate::ffi_extern_TKernel::Handle_Message_Alert_downcast_to_Handle_Message_AlertExtended(
                 self as *const Self,
             )
         });
@@ -1751,9 +1743,9 @@ impl HandleMessageAlert {
     /// Returns `None` if the handle does not point to a `TopoDS_AlertWithShape` (or subclass).
     pub fn downcast_to_alert_with_shape(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleTopoDSAlertWithShape>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_TopoDS_AlertWithShape>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKernel::HandleMessageAlert_downcast_to_HandleTopoDSAlertWithShape(
+            crate::ffi_extern_TKernel::Handle_Message_Alert_downcast_to_Handle_TopoDS_AlertWithShape(
                 self as *const Self,
             )
         });
@@ -1813,7 +1805,7 @@ impl AlertExtended {
 
     /// **Source:** `Message_AlertExtended.hxx`:56 - `Message_AlertExtended::Attribute()`
     /// Returns container of the alert attributes
-    pub fn attribute(&self) -> &crate::ffi_types::HandleMessageAttribute {
+    pub fn attribute(&self) -> &crate::ffi_types::Handle_Message_Attribute {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKernel::Message_AlertExtended_attribute(
                 self as *const Self,
@@ -1824,7 +1816,7 @@ impl AlertExtended {
     /// **Source:** `Message_AlertExtended.hxx`:60 - `Message_AlertExtended::SetAttribute()`
     /// Sets container of the alert attributes
     /// @param theAttributes an attribute values
-    pub fn set_attribute(&mut self, theAttribute: &crate::ffi_types::HandleMessageAttribute) {
+    pub fn set_attribute(&mut self, theAttribute: &crate::ffi_types::Handle_Message_Attribute) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKernel::Message_AlertExtended_set_attribute(
                 self as *mut Self,
@@ -1833,7 +1825,7 @@ impl AlertExtended {
         })
     }
 
-    /// **Source:** `Message_AlertExtended.hxx`:66 - `Message_AlertExtended::CompositeAlerts()`
+    /// **Source:** `Message_AlertExtended.hxx`:69 - `Message_AlertExtended::CompositeAlerts()`
     /// Returns class provided hierarchy of alerts if created or create if the parameter is true
     /// @param theToCreate if composite alert has not been created for this alert, it should be
     /// created
@@ -1841,7 +1833,7 @@ impl AlertExtended {
     pub fn composite_alerts(
         &mut self,
         theToCreate: bool,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleMessageCompositeAlerts> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Message_CompositeAlerts> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKernel::Message_AlertExtended_composite_alerts(
@@ -1852,7 +1844,7 @@ impl AlertExtended {
         }
     }
 
-    /// **Source:** `Message_AlertExtended.hxx`:73 - `Message_AlertExtended::SupportsMerge()`
+    /// **Source:** `Message_AlertExtended.hxx`:76 - `Message_AlertExtended::SupportsMerge()`
     /// Return true if this type of alert can be merged with other
     /// of the same type to avoid duplication.
     /// Hierarchical alerts can not be merged
@@ -1863,18 +1855,18 @@ impl AlertExtended {
         })
     }
 
-    /// **Source:** `Message_AlertExtended.hxx`:78 - `Message_AlertExtended::Merge()`
+    /// **Source:** `Message_AlertExtended.hxx`:81 - `Message_AlertExtended::Merge()`
     /// If possible, merge data contained in this alert to theTarget.
     /// Base implementation always returns false.
     /// @return True if merged
-    pub fn merge(&mut self, theTarget: &crate::ffi_types::HandleMessageAlert) -> bool {
+    pub fn merge(&mut self, theTarget: &crate::ffi_types::Handle_Message_Alert) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKernel::Message_AlertExtended_merge(self as *mut Self, theTarget)
         })
     }
 
-    /// **Source:** `Message_AlertExtended.hxx`:85 - `Message_AlertExtended::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `Message_AlertExtended.hxx`:86 - `Message_AlertExtended::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKernel::Message_AlertExtended_dynamic_type(
                 self as *const Self,
@@ -1889,10 +1881,10 @@ impl AlertExtended {
     /// @param theAttribute container of additional values of the alert
     /// @return created alert or NULL if Message_Info is not active in report
     pub fn add_alert(
-        theReport: &crate::ffi_types::HandleMessageReport,
-        theAttribute: &crate::ffi_types::HandleMessageAttribute,
+        theReport: &crate::ffi_types::Handle_Message_Report,
+        theAttribute: &crate::ffi_types::Handle_Message_Attribute,
         theGravity: crate::message::Gravity,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleMessageAlert> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Message_Alert> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKernel::Message_AlertExtended_add_alert(
@@ -1904,7 +1896,7 @@ impl AlertExtended {
         }
     }
 
-    /// **Source:** `Message_AlertExtended.hxx`:85 - `Message_AlertExtended::get_type_name()`
+    /// **Source:** `Message_AlertExtended.hxx`:86 - `Message_AlertExtended::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -1915,8 +1907,8 @@ impl AlertExtended {
         .into_owned()
     }
 
-    /// **Source:** `Message_AlertExtended.hxx`:85 - `Message_AlertExtended::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    /// **Source:** `Message_AlertExtended.hxx`:86 - `Message_AlertExtended::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKernel::Message_AlertExtended_get_type_descriptor(),
@@ -1971,7 +1963,7 @@ impl AlertExtended {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleMessageAlertExtended> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Message_AlertExtended> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKernel::Message_AlertExtended_to_handle(obj.into_raw()),
@@ -1979,8 +1971,8 @@ impl AlertExtended {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKernel::Message_AlertExtended_inherited_IsInstance(
                 self as *const Self,
@@ -1989,8 +1981,8 @@ impl AlertExtended {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKernel::Message_AlertExtended_inherited_IsKind(
                 self as *const Self,
@@ -1999,7 +1991,7 @@ impl AlertExtended {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -2013,7 +2005,7 @@ impl AlertExtended {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKernel::Message_AlertExtended_inherited_GetRefCount(
@@ -2022,7 +2014,7 @@ impl AlertExtended {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKernel::Message_AlertExtended_inherited_IncrementRefCounter(
@@ -2031,7 +2023,7 @@ impl AlertExtended {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKernel::Message_AlertExtended_inherited_DecrementRefCounter(
@@ -2040,7 +2032,7 @@ impl AlertExtended {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKernel::Message_AlertExtended_inherited_Delete(self as *const Self)
@@ -2048,36 +2040,36 @@ impl AlertExtended {
     }
 }
 
-pub use crate::ffi_types::HandleMessageAlertExtended;
+pub use crate::ffi_types::Handle_Message_AlertExtended;
 
-unsafe impl crate::CppDeletable for HandleMessageAlertExtended {
+unsafe impl crate::CppDeletable for Handle_Message_AlertExtended {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKernel::HandleMessageAlertExtended_destructor(ptr);
+            crate::ffi_extern_TKernel::Handle_Message_AlertExtended_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleMessageAlertExtended {
+unsafe impl crate::CppCopyable for Handle_Message_AlertExtended {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
         unsafe {
-            crate::check_result(crate::ffi_extern_TKernel::HandleMessageAlertExtended_clone(ptr))
+            crate::check_result(crate::ffi_extern_TKernel::Handle_Message_AlertExtended_clone(ptr))
         }
     }
 }
 
-impl HandleMessageAlertExtended {
+impl Handle_Message_AlertExtended {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
         unsafe {
-            crate::ffi_extern_TKernel::HandleMessageAlertExtended_is_null(self as *const Self)
+            crate::ffi_extern_TKernel::Handle_Message_AlertExtended_is_null(self as *const Self)
         }
     }
 
     /// Dereference this Handle to access the underlying Message_AlertExtended
     pub fn get(&self) -> &crate::ffi_types::Message_AlertExtended {
         unsafe {
-            &*crate::check_result(crate::ffi_extern_TKernel::HandleMessageAlertExtended_get(
+            &*crate::check_result(crate::ffi_extern_TKernel::Handle_Message_AlertExtended_get(
                 self as *const Self,
             ))
         }
@@ -2087,16 +2079,16 @@ impl HandleMessageAlertExtended {
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::Message_AlertExtended {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi_extern_TKernel::HandleMessageAlertExtended_get_mut(self as *mut Self),
+                crate::ffi_extern_TKernel::Handle_Message_AlertExtended_get_mut(self as *mut Self),
             )
         }
     }
 
     /// Upcast Handle<Message_AlertExtended> to Handle<Message_Alert>
-    pub fn to_handle_alert(&self) -> crate::OwnedPtr<crate::ffi_types::HandleMessageAlert> {
+    pub fn to_handle_alert(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_Message_Alert> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKernel::HandleMessageAlertExtended_to_HandleMessageAlert(
+                crate::ffi_extern_TKernel::Handle_Message_AlertExtended_to_Handle_Message_Alert(
                     self as *const Self,
                 ),
             ))
@@ -2106,13 +2098,9 @@ impl HandleMessageAlertExtended {
     /// Upcast Handle<Message_AlertExtended> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKernel::HandleMessageAlertExtended_to_HandleStandardTransient(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKernel::Handle_Message_AlertExtended_to_Handle_Standard_Transient(self as *const Self)))
         }
     }
 }
@@ -2121,7 +2109,7 @@ impl HandleMessageAlertExtended {
 // From Message_Algorithm.hxx
 // ========================
 
-/// **Source:** `Message_Algorithm.hxx`:87 - `Message_Algorithm`
+/// **Source:** `Message_Algorithm.hxx`:86 - `Message_Algorithm`
 /// Class Message_Algorithm is intended to be the base class for
 /// classes implementing algorithms or any operations that need
 /// to provide extended information on its execution to the
@@ -2174,7 +2162,7 @@ unsafe impl crate::CppDeletable for Algorithm {
 }
 
 impl Algorithm {
-    /// **Source:** `Message_Algorithm.hxx`:92 - `Message_Algorithm::Message_Algorithm()`
+    /// **Source:** `Message_Algorithm.hxx`:91 - `Message_Algorithm::Message_Algorithm()`
     /// Empty constructor
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
@@ -2184,7 +2172,7 @@ impl Algorithm {
         }
     }
 
-    /// **Source:** `Message_Algorithm.hxx`:95 - `Message_Algorithm::SetStatus()`
+    /// **Source:** `Message_Algorithm.hxx`:94 - `Message_Algorithm::SetStatus()`
     /// Sets status with no parameter
     pub fn set_status_status(&mut self, theStat: crate::message::Status) {
         crate::check_void_result(unsafe {
@@ -2195,7 +2183,7 @@ impl Algorithm {
         })
     }
 
-    /// **Source:** `Message_Algorithm.hxx`:98 - `Message_Algorithm::SetStatus()`
+    /// **Source:** `Message_Algorithm.hxx`:97 - `Message_Algorithm::SetStatus()`
     /// Sets status with integer parameter
     pub fn set_status_status_int(&mut self, theStat: crate::message::Status, theInt: i32) {
         crate::check_void_result(unsafe {
@@ -2207,7 +2195,7 @@ impl Algorithm {
         })
     }
 
-    /// **Source:** `Message_Algorithm.hxx`:103 - `Message_Algorithm::SetStatus()`
+    /// **Source:** `Message_Algorithm.hxx`:102 - `Message_Algorithm::SetStatus()`
     /// Sets status with string parameter.
     /// If noRepetitions is True, the parameter will be added only
     /// if it has not been yet recorded for the same status flag
@@ -2228,7 +2216,7 @@ impl Algorithm {
         })
     }
 
-    /// **Source:** `Message_Algorithm.hxx`:110 - `Message_Algorithm::SetStatus()`
+    /// **Source:** `Message_Algorithm.hxx`:109 - `Message_Algorithm::SetStatus()`
     /// Sets status with string parameter
     /// If noRepetitions is True, the parameter will be added only
     /// if it has not been yet recorded for the same status flag
@@ -2248,14 +2236,14 @@ impl Algorithm {
         })
     }
 
-    /// **Source:** `Message_Algorithm.hxx`:117 - `Message_Algorithm::SetStatus()`
+    /// **Source:** `Message_Algorithm.hxx`:116 - `Message_Algorithm::SetStatus()`
     /// Sets status with string parameter
     /// If noRepetitions is True, the parameter will be added only
     /// if it has not been yet recorded for the same status flag
     pub fn set_status_status_handletcollectionhasciistring_bool(
         &mut self,
         theStat: crate::message::Status,
-        theStr: &crate::ffi_types::HandleTCollectionHAsciiString,
+        theStr: &crate::ffi_types::Handle_TCollection_HAsciiString,
         noRepetitions: bool,
     ) {
         crate::check_void_result(unsafe {
@@ -2263,7 +2251,7 @@ impl Algorithm {
         })
     }
 
-    /// **Source:** `Message_Algorithm.hxx`:124 - `Message_Algorithm::SetStatus()`
+    /// **Source:** `Message_Algorithm.hxx`:123 - `Message_Algorithm::SetStatus()`
     /// Sets status with string parameter
     /// If noRepetitions is True, the parameter will be added only
     /// if it has not been yet recorded for the same status flag
@@ -2283,14 +2271,14 @@ impl Algorithm {
         })
     }
 
-    /// **Source:** `Message_Algorithm.hxx`:131 - `Message_Algorithm::SetStatus()`
+    /// **Source:** `Message_Algorithm.hxx`:130 - `Message_Algorithm::SetStatus()`
     /// Sets status with string parameter
     /// If noRepetitions is True, the parameter will be added only
     /// if it has not been yet recorded for the same status flag
     pub fn set_status_status_handletcollectionhextendedstring_bool(
         &mut self,
         theStat: crate::message::Status,
-        theStr: &crate::ffi_types::HandleTCollectionHExtendedString,
+        theStr: &crate::ffi_types::Handle_TCollection_HExtendedString,
         noRepetitions: bool,
     ) {
         crate::check_void_result(unsafe {
@@ -2298,7 +2286,7 @@ impl Algorithm {
         })
     }
 
-    /// **Source:** `Message_Algorithm.hxx`:138 - `Message_Algorithm::SetStatus()`
+    /// **Source:** `Message_Algorithm.hxx`:137 - `Message_Algorithm::SetStatus()`
     /// Sets status with preformatted message. This message will be
     /// used directly to report the status; automatic generation of
     /// status messages will be disabled for it.
@@ -2312,7 +2300,7 @@ impl Algorithm {
         })
     }
 
-    /// **Source:** `Message_Algorithm.hxx`:141 - `Message_Algorithm::GetStatus()`
+    /// **Source:** `Message_Algorithm.hxx`:140 - `Message_Algorithm::GetStatus()`
     /// Returns copy of exec status of algorithm
     pub fn get_status(&self) -> &ExecStatus {
         unsafe {
@@ -2322,7 +2310,7 @@ impl Algorithm {
         }
     }
 
-    /// **Source:** `Message_Algorithm.hxx`:144 - `Message_Algorithm::ChangeStatus()`
+    /// **Source:** `Message_Algorithm.hxx`:143 - `Message_Algorithm::ChangeStatus()`
     /// Returns exec status of algorithm
     pub fn change_status(&mut self) -> &mut ExecStatus {
         unsafe {
@@ -2332,7 +2320,7 @@ impl Algorithm {
         }
     }
 
-    /// **Source:** `Message_Algorithm.hxx`:147 - `Message_Algorithm::ClearStatus()`
+    /// **Source:** `Message_Algorithm.hxx`:146 - `Message_Algorithm::ClearStatus()`
     /// Clear exec status of algorithm
     pub fn clear_status(&mut self) {
         crate::check_void_result(unsafe {
@@ -2340,19 +2328,19 @@ impl Algorithm {
         })
     }
 
-    /// **Source:** `Message_Algorithm.hxx`:150 - `Message_Algorithm::SetMessenger()`
+    /// **Source:** `Message_Algorithm.hxx`:149 - `Message_Algorithm::SetMessenger()`
     /// Sets messenger to algorithm
-    pub fn set_messenger(&mut self, theMsgr: &crate::ffi_types::HandleMessageMessenger) {
+    pub fn set_messenger(&mut self, theMsgr: &crate::ffi_types::Handle_Message_Messenger) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKernel::Message_Algorithm_set_messenger(self as *mut Self, theMsgr)
         })
     }
 
-    /// **Source:** `Message_Algorithm.hxx`:155 - `Message_Algorithm::GetMessenger()`
+    /// **Source:** `Message_Algorithm.hxx`:154 - `Message_Algorithm::GetMessenger()`
     /// Returns messenger of algorithm.
     /// The returned handle is always non-null and can
     /// be used for sending messages.
-    pub fn get_messenger(&self) -> crate::OwnedPtr<crate::ffi_types::HandleMessageMessenger> {
+    pub fn get_messenger(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_Message_Messenger> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKernel::Message_Algorithm_get_messenger(self as *const Self),
@@ -2360,7 +2348,7 @@ impl Algorithm {
         }
     }
 
-    /// **Source:** `Message_Algorithm.hxx`:174 - `Message_Algorithm::SendStatusMessages()`
+    /// **Source:** `Message_Algorithm.hxx`:173 - `Message_Algorithm::SendStatusMessages()`
     /// Print messages for all status flags that have been set during
     /// algorithm execution, excluding statuses that are NOT set
     /// in theFilter.
@@ -2394,7 +2382,7 @@ impl Algorithm {
         })
     }
 
-    /// **Source:** `Message_Algorithm.hxx`:182 - `Message_Algorithm::SendMessages()`
+    /// **Source:** `Message_Algorithm.hxx`:181 - `Message_Algorithm::SendMessages()`
     /// Convenient variant of SendStatusMessages() with theFilter
     /// having defined all WARN, ALARM, and FAIL (but not DONE)
     /// status flags
@@ -2408,12 +2396,12 @@ impl Algorithm {
         })
     }
 
-    /// **Source:** `Message_Algorithm.hxx`:187 - `Message_Algorithm::AddStatus()`
+    /// **Source:** `Message_Algorithm.hxx`:186 - `Message_Algorithm::AddStatus()`
     /// Add statuses to this algorithm from other algorithm
     /// (including messages)
     pub fn add_status_handlemessagealgorithm(
         &mut self,
-        theOther: &crate::ffi_types::HandleMessageAlgorithm,
+        theOther: &crate::ffi_types::Handle_Message_Algorithm,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKernel::Message_Algorithm_add_status_handlemessagealgorithm(
@@ -2423,27 +2411,27 @@ impl Algorithm {
         })
     }
 
-    /// **Source:** `Message_Algorithm.hxx`:192 - `Message_Algorithm::AddStatus()`
+    /// **Source:** `Message_Algorithm.hxx`:191 - `Message_Algorithm::AddStatus()`
     /// Add statuses to this algorithm from other algorithm, but
     /// only those items are moved that correspond to statuses
     /// set in theStatus
     pub fn add_status_execstatus_handlemessagealgorithm(
         &mut self,
         theStatus: &ExecStatus,
-        theOther: &crate::ffi_types::HandleMessageAlgorithm,
+        theOther: &crate::ffi_types::Handle_Message_Algorithm,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKernel::Message_Algorithm_add_status_execstatus_handlemessagealgorithm(self as *mut Self, theStatus, theOther)
         })
     }
 
-    /// **Source:** `Message_Algorithm.hxx`:197 - `Message_Algorithm::GetMessageNumbers()`
+    /// **Source:** `Message_Algorithm.hxx`:196 - `Message_Algorithm::GetMessageNumbers()`
     /// Return the numbers associated with the indicated status;
     /// Null handle if no such status or no numbers associated with it
     pub fn get_message_numbers(
         &self,
         theStatus: crate::message::Status,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleTColStdHPackedMapOfInteger> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_TColStd_HPackedMapOfInteger> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKernel::Message_Algorithm_get_message_numbers(
@@ -2457,10 +2445,7 @@ impl Algorithm {
     /// **Source:** `Message_Algorithm.hxx`:202 - `Message_Algorithm::GetMessageStrings()`
     /// Return the strings associated with the indicated status;
     /// Null handle if no such status or no strings associated with it
-    pub fn get_message_strings(
-        &self,
-        theStatus: crate::message::Status,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleTColStdHSequenceOfHExtendedString> {
+    pub fn get_message_strings(&self, theStatus: crate::message::Status) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HSequence_opencascade_handle_TCollection_HExtendedString>{
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKernel::Message_Algorithm_get_message_strings(
@@ -2471,8 +2456,8 @@ impl Algorithm {
         }
     }
 
-    /// **Source:** `Message_Algorithm.hxx`:217 - `Message_Algorithm::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `Message_Algorithm.hxx`:216 - `Message_Algorithm::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKernel::Message_Algorithm_dynamic_type(
                 self as *const Self,
@@ -2480,31 +2465,21 @@ impl Algorithm {
         }
     }
 
-    /// **Source:** `Message_Algorithm.hxx`:207 - `Message_Algorithm::PrepareReport()`
+    /// **Source:** `Message_Algorithm.hxx`:206 - `Message_Algorithm::PrepareReport()`
     /// Prepares a string containing a list of integers contained
     /// in theError map, but not more than theMaxCount
-    pub fn prepare_report_handletcolstdhpackedmapofinteger_int(
-        theError: &crate::ffi_types::HandleTColStdHPackedMapOfInteger,
+    pub fn prepare_report(
+        theError: &crate::ffi_types::Handle_TColStd_HPackedMapOfInteger,
         theMaxCount: i32,
     ) -> crate::OwnedPtr<crate::t_collection::ExtendedString> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKernel::Message_Algorithm_prepare_report_handletcolstdhpackedmapofinteger_int(theError, theMaxCount)))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKernel::Message_Algorithm_prepare_report(theError, theMaxCount),
+            ))
         }
     }
 
-    /// **Source:** `Message_Algorithm.hxx`:213 - `Message_Algorithm::PrepareReport()`
-    /// Prepares a string containing a list of names contained
-    /// in theReportSeq sequence, but not more than theMaxCount
-    pub fn prepare_report_sequenceofhextendedstring_int(
-        theReportSeq: &crate::ffi_types::TColStd_SequenceOfHExtendedString,
-        theMaxCount: i32,
-    ) -> crate::OwnedPtr<crate::t_collection::ExtendedString> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKernel::Message_Algorithm_prepare_report_sequenceofhextendedstring_int(theReportSeq, theMaxCount)))
-        }
-    }
-
-    /// **Source:** `Message_Algorithm.hxx`:217 - `Message_Algorithm::get_type_name()`
+    /// **Source:** `Message_Algorithm.hxx`:216 - `Message_Algorithm::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -2515,8 +2490,8 @@ impl Algorithm {
         .into_owned()
     }
 
-    /// **Source:** `Message_Algorithm.hxx`:217 - `Message_Algorithm::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    /// **Source:** `Message_Algorithm.hxx`:216 - `Message_Algorithm::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKernel::Message_Algorithm_get_type_descriptor(),
@@ -2549,7 +2524,7 @@ impl Algorithm {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleMessageAlgorithm> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Message_Algorithm> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKernel::Message_Algorithm_to_handle(obj.into_raw()),
@@ -2557,8 +2532,8 @@ impl Algorithm {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKernel::Message_Algorithm_inherited_IsInstance(
                 self as *const Self,
@@ -2567,8 +2542,8 @@ impl Algorithm {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKernel::Message_Algorithm_inherited_IsKind(
                 self as *const Self,
@@ -2577,7 +2552,7 @@ impl Algorithm {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -2591,14 +2566,14 @@ impl Algorithm {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKernel::Message_Algorithm_inherited_GetRefCount(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKernel::Message_Algorithm_inherited_IncrementRefCounter(
@@ -2607,7 +2582,7 @@ impl Algorithm {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKernel::Message_Algorithm_inherited_DecrementRefCounter(
@@ -2616,7 +2591,7 @@ impl Algorithm {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKernel::Message_Algorithm_inherited_Delete(self as *const Self)
@@ -2624,32 +2599,34 @@ impl Algorithm {
     }
 }
 
-pub use crate::ffi_types::HandleMessageAlgorithm;
+pub use crate::ffi_types::Handle_Message_Algorithm;
 
-unsafe impl crate::CppDeletable for HandleMessageAlgorithm {
+unsafe impl crate::CppDeletable for Handle_Message_Algorithm {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKernel::HandleMessageAlgorithm_destructor(ptr);
+            crate::ffi_extern_TKernel::Handle_Message_Algorithm_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleMessageAlgorithm {
+unsafe impl crate::CppCopyable for Handle_Message_Algorithm {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        unsafe { crate::check_result(crate::ffi_extern_TKernel::HandleMessageAlgorithm_clone(ptr)) }
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKernel::Handle_Message_Algorithm_clone(ptr))
+        }
     }
 }
 
-impl HandleMessageAlgorithm {
+impl Handle_Message_Algorithm {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
-        unsafe { crate::ffi_extern_TKernel::HandleMessageAlgorithm_is_null(self as *const Self) }
+        unsafe { crate::ffi_extern_TKernel::Handle_Message_Algorithm_is_null(self as *const Self) }
     }
 
     /// Dereference this Handle to access the underlying Message_Algorithm
     pub fn get(&self) -> &crate::ffi_types::Message_Algorithm {
         unsafe {
-            &*crate::check_result(crate::ffi_extern_TKernel::HandleMessageAlgorithm_get(
+            &*crate::check_result(crate::ffi_extern_TKernel::Handle_Message_Algorithm_get(
                 self as *const Self,
             ))
         }
@@ -2658,7 +2635,7 @@ impl HandleMessageAlgorithm {
     /// Dereference this Handle to mutably access the underlying Message_Algorithm
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::Message_Algorithm {
         unsafe {
-            &mut *crate::check_result(crate::ffi_extern_TKernel::HandleMessageAlgorithm_get_mut(
+            &mut *crate::check_result(crate::ffi_extern_TKernel::Handle_Message_Algorithm_get_mut(
                 self as *mut Self,
             ))
         }
@@ -2667,10 +2644,10 @@ impl HandleMessageAlgorithm {
     /// Upcast Handle<Message_Algorithm> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKernel::HandleMessageAlgorithm_to_HandleStandardTransient(
+                crate::ffi_extern_TKernel::Handle_Message_Algorithm_to_Handle_Standard_Transient(
                     self as *const Self,
                 ),
             ))
@@ -2682,11 +2659,9 @@ impl HandleMessageAlgorithm {
     /// Returns `None` if the handle does not point to a `BRepMesh_ModelBuilder` (or subclass).
     pub fn downcast_to_model_builder(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleBRepMeshModelBuilder>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_BRepMesh_ModelBuilder>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKernel::HandleMessageAlgorithm_downcast_to_HandleBRepMeshModelBuilder(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKernel::Handle_Message_Algorithm_downcast_to_Handle_BRepMesh_ModelBuilder(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -2700,9 +2675,9 @@ impl HandleMessageAlgorithm {
     /// Returns `None` if the handle does not point to a `IMeshTools_MeshBuilder` (or subclass).
     pub fn downcast_to_mesh_builder(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleIMeshToolsMeshBuilder>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_IMeshTools_MeshBuilder>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKernel::HandleMessageAlgorithm_downcast_to_HandleIMeshToolsMeshBuilder(self as *const Self)
+            crate::ffi_extern_TKernel::Handle_Message_Algorithm_downcast_to_Handle_IMeshTools_MeshBuilder(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -2716,9 +2691,9 @@ impl HandleMessageAlgorithm {
     /// Returns `None` if the handle does not point to a `TObj_CheckModel` (or subclass).
     pub fn downcast_to_check_model(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleTObjCheckModel>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_TObj_CheckModel>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKernel::HandleMessageAlgorithm_downcast_to_HandleTObjCheckModel(
+            crate::ffi_extern_TKernel::Handle_Message_Algorithm_downcast_to_Handle_TObj_CheckModel(
                 self as *const Self,
             )
         });
@@ -2730,11 +2705,19 @@ impl HandleMessageAlgorithm {
     }
 }
 
+// ── Skipped symbols for Algorithm (1 total) ──
+// SKIPPED: **Source:** `Message_Algorithm.hxx`:212 - `Message_Algorithm::PrepareReport`
+//   static_method: Prepares a string containing a list of names contained
+//   static_method: in theReportSeq sequence, but not more than theMaxCount
+//   Reason: has unbindable types: param 'theReportSeq': unresolved template type (NCollection_Sequence<occ::handle<TCollection_HExtendedString>> const&)
+//   // pub fn prepare_report(theReportSeq: /* NCollection_Sequence<occ::handle<TCollection_HExtendedString>> const& */, theMaxCount: i32) -> OwnedPtr<TCollection_ExtendedString>;
+//
+
 // ========================
 // From Message_Attribute.hxx
 // ========================
 
-/// **Source:** `Message_Attribute.hxx`:25 - `Message_Attribute`
+/// **Source:** `Message_Attribute.hxx`:23 - `Message_Attribute`
 /// Additional information of extended alert attribute
 /// To provide other custom attribute container, it might be redefined.
 pub use crate::ffi_types::Message_Attribute as Attribute;
@@ -2748,7 +2731,7 @@ unsafe impl crate::CppDeletable for Attribute {
 }
 
 impl Attribute {
-    /// **Source:** `Message_Attribute.hxx`:30 - `Message_Attribute::Message_Attribute()`
+    /// **Source:** `Message_Attribute.hxx`:28 - `Message_Attribute::Message_Attribute()`
     /// Empty constructor
     pub fn new_asciistring(theName: &crate::t_collection::AsciiString) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -2758,8 +2741,8 @@ impl Attribute {
         }
     }
 
-    /// **Source:** `Message_Attribute.hxx`:27 - `Message_Attribute::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `Message_Attribute.hxx`:25 - `Message_Attribute::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKernel::Message_Attribute_dynamic_type(
                 self as *const Self,
@@ -2767,7 +2750,7 @@ impl Attribute {
         }
     }
 
-    /// **Source:** `Message_Attribute.hxx`:36 - `Message_Attribute::GetMessageKey()`
+    /// **Source:** `Message_Attribute.hxx`:34 - `Message_Attribute::GetMessageKey()`
     /// Return a C string to be used as a key for generating text user messages describing this alert.
     /// The messages are generated with help of Message_Msg class, in Message_Report::Dump().
     /// Base implementation returns dynamic type name of the instance.
@@ -2781,7 +2764,7 @@ impl Attribute {
         .into_owned()
     }
 
-    /// **Source:** `Message_Attribute.hxx`:40 - `Message_Attribute::GetName()`
+    /// **Source:** `Message_Attribute.hxx`:38 - `Message_Attribute::GetName()`
     /// Returns custom name of alert if it is set
     /// @return alert name
     pub fn get_name(&self) -> &crate::t_collection::AsciiString {
@@ -2792,7 +2775,7 @@ impl Attribute {
         }
     }
 
-    /// **Source:** `Message_Attribute.hxx`:44 - `Message_Attribute::SetName()`
+    /// **Source:** `Message_Attribute.hxx`:42 - `Message_Attribute::SetName()`
     /// Sets the custom name of alert
     /// @param theName a name for the alert
     pub fn set_name(&mut self, theName: &crate::t_collection::AsciiString) {
@@ -2801,7 +2784,7 @@ impl Attribute {
         })
     }
 
-    /// **Source:** `Message_Attribute.hxx`:27 - `Message_Attribute::get_type_name()`
+    /// **Source:** `Message_Attribute.hxx`:25 - `Message_Attribute::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -2812,8 +2795,8 @@ impl Attribute {
         .into_owned()
     }
 
-    /// **Source:** `Message_Attribute.hxx`:27 - `Message_Attribute::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    /// **Source:** `Message_Attribute.hxx`:25 - `Message_Attribute::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKernel::Message_Attribute_get_type_descriptor(),
@@ -2846,7 +2829,7 @@ impl Attribute {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleMessageAttribute> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Message_Attribute> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKernel::Message_Attribute_to_handle(obj.into_raw()),
@@ -2854,8 +2837,8 @@ impl Attribute {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKernel::Message_Attribute_inherited_IsInstance(
                 self as *const Self,
@@ -2864,8 +2847,8 @@ impl Attribute {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKernel::Message_Attribute_inherited_IsKind(
                 self as *const Self,
@@ -2874,7 +2857,7 @@ impl Attribute {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -2888,14 +2871,14 @@ impl Attribute {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKernel::Message_Attribute_inherited_GetRefCount(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKernel::Message_Attribute_inherited_IncrementRefCounter(
@@ -2904,7 +2887,7 @@ impl Attribute {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKernel::Message_Attribute_inherited_DecrementRefCounter(
@@ -2913,7 +2896,7 @@ impl Attribute {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKernel::Message_Attribute_inherited_Delete(self as *const Self)
@@ -2921,32 +2904,34 @@ impl Attribute {
     }
 }
 
-pub use crate::ffi_types::HandleMessageAttribute;
+pub use crate::ffi_types::Handle_Message_Attribute;
 
-unsafe impl crate::CppDeletable for HandleMessageAttribute {
+unsafe impl crate::CppDeletable for Handle_Message_Attribute {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKernel::HandleMessageAttribute_destructor(ptr);
+            crate::ffi_extern_TKernel::Handle_Message_Attribute_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleMessageAttribute {
+unsafe impl crate::CppCopyable for Handle_Message_Attribute {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        unsafe { crate::check_result(crate::ffi_extern_TKernel::HandleMessageAttribute_clone(ptr)) }
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKernel::Handle_Message_Attribute_clone(ptr))
+        }
     }
 }
 
-impl HandleMessageAttribute {
+impl Handle_Message_Attribute {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
-        unsafe { crate::ffi_extern_TKernel::HandleMessageAttribute_is_null(self as *const Self) }
+        unsafe { crate::ffi_extern_TKernel::Handle_Message_Attribute_is_null(self as *const Self) }
     }
 
     /// Dereference this Handle to access the underlying Message_Attribute
     pub fn get(&self) -> &crate::ffi_types::Message_Attribute {
         unsafe {
-            &*crate::check_result(crate::ffi_extern_TKernel::HandleMessageAttribute_get(
+            &*crate::check_result(crate::ffi_extern_TKernel::Handle_Message_Attribute_get(
                 self as *const Self,
             ))
         }
@@ -2955,7 +2940,7 @@ impl HandleMessageAttribute {
     /// Dereference this Handle to mutably access the underlying Message_Attribute
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::Message_Attribute {
         unsafe {
-            &mut *crate::check_result(crate::ffi_extern_TKernel::HandleMessageAttribute_get_mut(
+            &mut *crate::check_result(crate::ffi_extern_TKernel::Handle_Message_Attribute_get_mut(
                 self as *mut Self,
             ))
         }
@@ -2964,10 +2949,10 @@ impl HandleMessageAttribute {
     /// Upcast Handle<Message_Attribute> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKernel::HandleMessageAttribute_to_HandleStandardTransient(
+                crate::ffi_extern_TKernel::Handle_Message_Attribute_to_Handle_Standard_Transient(
                     self as *const Self,
                 ),
             ))
@@ -2979,9 +2964,9 @@ impl HandleMessageAttribute {
     /// Returns `None` if the handle does not point to a `Message_AttributeMeter` (or subclass).
     pub fn downcast_to_attribute_meter(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleMessageAttributeMeter>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_Message_AttributeMeter>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKernel::HandleMessageAttribute_downcast_to_HandleMessageAttributeMeter(self as *const Self)
+            crate::ffi_extern_TKernel::Handle_Message_Attribute_downcast_to_Handle_Message_AttributeMeter(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -2995,9 +2980,9 @@ impl HandleMessageAttribute {
     /// Returns `None` if the handle does not point to a `Message_AttributeObject` (or subclass).
     pub fn downcast_to_attribute_object(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleMessageAttributeObject>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_Message_AttributeObject>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKernel::HandleMessageAttribute_downcast_to_HandleMessageAttributeObject(self as *const Self)
+            crate::ffi_extern_TKernel::Handle_Message_Attribute_downcast_to_Handle_Message_AttributeObject(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -3011,9 +2996,9 @@ impl HandleMessageAttribute {
     /// Returns `None` if the handle does not point to a `Message_AttributeStream` (or subclass).
     pub fn downcast_to_attribute_stream(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleMessageAttributeStream>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_Message_AttributeStream>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKernel::HandleMessageAttribute_downcast_to_HandleMessageAttributeStream(self as *const Self)
+            crate::ffi_extern_TKernel::Handle_Message_Attribute_downcast_to_Handle_Message_AttributeStream(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -3027,11 +3012,9 @@ impl HandleMessageAttribute {
     /// Returns `None` if the handle does not point to a `TopoDS_AlertAttribute` (or subclass).
     pub fn downcast_to_alert_attribute(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleTopoDSAlertAttribute>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_TopoDS_AlertAttribute>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKernel::HandleMessageAttribute_downcast_to_HandleTopoDSAlertAttribute(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKernel::Handle_Message_Attribute_downcast_to_Handle_TopoDS_AlertAttribute(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -3045,7 +3028,7 @@ impl HandleMessageAttribute {
 // From Message_AttributeMeter.hxx
 // ========================
 
-/// **Source:** `Message_AttributeMeter.hxx`:26 - `Message_AttributeMeter`
+/// **Source:** `Message_AttributeMeter.hxx`:27 - `Message_AttributeMeter`
 /// Alert object storing alert metrics values.
 /// Start and stop values for each metric.
 pub use crate::ffi_types::Message_AttributeMeter as AttributeMeter;
@@ -3059,7 +3042,7 @@ unsafe impl crate::CppDeletable for AttributeMeter {
 }
 
 impl AttributeMeter {
-    /// **Source:** `Message_AttributeMeter.hxx`:35 - `Message_AttributeMeter::Message_AttributeMeter()`
+    /// **Source:** `Message_AttributeMeter.hxx`:36 - `Message_AttributeMeter::Message_AttributeMeter()`
     /// Constructor with string argument
     pub fn new_asciistring(theName: &crate::t_collection::AsciiString) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -3069,7 +3052,7 @@ impl AttributeMeter {
         }
     }
 
-    /// **Source:** `Message_AttributeMeter.hxx`:41 - `Message_AttributeMeter::HasMetric()`
+    /// **Source:** `Message_AttributeMeter.hxx`:42 - `Message_AttributeMeter::HasMetric()`
     /// Checks whether the attribute has values for the metric
     /// @param[in] theMetric  metric type
     /// @return true if the metric values exist in the attribute
@@ -3082,7 +3065,7 @@ impl AttributeMeter {
         })
     }
 
-    /// **Source:** `Message_AttributeMeter.hxx`:46 - `Message_AttributeMeter::IsMetricValid()`
+    /// **Source:** `Message_AttributeMeter.hxx`:47 - `Message_AttributeMeter::IsMetricValid()`
     /// Returns true when both values of the metric are set.
     /// @param[in] theMetric  metric type
     /// @return true if metric values are valid
@@ -3095,7 +3078,7 @@ impl AttributeMeter {
         })
     }
 
-    /// **Source:** `Message_AttributeMeter.hxx`:51 - `Message_AttributeMeter::StartValue()`
+    /// **Source:** `Message_AttributeMeter.hxx`:52 - `Message_AttributeMeter::StartValue()`
     /// Returns start value for the metric
     /// @param[in] theMetric  metric type
     /// @return real value
@@ -3108,7 +3091,7 @@ impl AttributeMeter {
         })
     }
 
-    /// **Source:** `Message_AttributeMeter.hxx`:55 - `Message_AttributeMeter::SetStartValue()`
+    /// **Source:** `Message_AttributeMeter.hxx`:56 - `Message_AttributeMeter::SetStartValue()`
     /// Sets start values for the metric
     /// @param[in] theMetric  metric type
     pub fn set_start_value(&mut self, theMetric: crate::message::MetricType, theValue: f64) {
@@ -3147,8 +3130,8 @@ impl AttributeMeter {
         })
     }
 
-    /// **Source:** `Message_AttributeMeter.hxx`:94 - `Message_AttributeMeter::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `Message_AttributeMeter.hxx`:92 - `Message_AttributeMeter::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKernel::Message_AttributeMeter_dynamic_type(
                 self as *const Self,
@@ -3156,7 +3139,7 @@ impl AttributeMeter {
         }
     }
 
-    /// **Source:** `Message_AttributeMeter.hxx`:31 - `Message_AttributeMeter::UndefinedMetricValue()`
+    /// **Source:** `Message_AttributeMeter.hxx`:32 - `Message_AttributeMeter::UndefinedMetricValue()`
     /// Returns default value of the metric when it is not defined
     /// @return undefined value
     pub fn undefined_metric_value() -> f64 {
@@ -3165,31 +3148,31 @@ impl AttributeMeter {
         })
     }
 
-    /// **Source:** `Message_AttributeMeter.hxx`:71 - `Message_AttributeMeter::StartAlert()`
+    /// **Source:** `Message_AttributeMeter.hxx`:70 - `Message_AttributeMeter::StartAlert()`
     /// Sets start values of default report metrics into the alert
     /// @param theAlert an alert
-    pub fn start_alert(theAlert: &crate::ffi_types::HandleMessageAlertExtended) {
+    pub fn start_alert(theAlert: &crate::ffi_types::Handle_Message_AlertExtended) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKernel::Message_AttributeMeter_start_alert(theAlert)
         })
     }
 
-    /// **Source:** `Message_AttributeMeter.hxx`:78 - `Message_AttributeMeter::StopAlert()`
+    /// **Source:** `Message_AttributeMeter.hxx`:77 - `Message_AttributeMeter::StopAlert()`
     /// Sets stop values of default report metrics into the alert
     /// @param theAlert an alert
-    pub fn stop_alert(theAlert: &crate::ffi_types::HandleMessageAlertExtended) {
+    pub fn stop_alert(theAlert: &crate::ffi_types::Handle_Message_AlertExtended) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKernel::Message_AttributeMeter_stop_alert(theAlert)
         })
     }
 
-    /// **Source:** `Message_AttributeMeter.hxx`:87 - `Message_AttributeMeter::SetAlertMetrics()`
+    /// **Source:** `Message_AttributeMeter.hxx`:86 - `Message_AttributeMeter::SetAlertMetrics()`
     /// Sets current values of default report metrics into the alert.
     /// Processed only alert with Message_AttributeMeter attribute
     /// @param theAlert an alert
     /// @param theStartValue flag, if true, the start value is collected otherwise stop
     pub fn set_alert_metrics(
-        theAlert: &crate::ffi_types::HandleMessageAlertExtended,
+        theAlert: &crate::ffi_types::Handle_Message_AlertExtended,
         theStartValue: bool,
     ) {
         crate::check_void_result(unsafe {
@@ -3200,7 +3183,7 @@ impl AttributeMeter {
         })
     }
 
-    /// **Source:** `Message_AttributeMeter.hxx`:94 - `Message_AttributeMeter::get_type_name()`
+    /// **Source:** `Message_AttributeMeter.hxx`:92 - `Message_AttributeMeter::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -3211,8 +3194,8 @@ impl AttributeMeter {
         .into_owned()
     }
 
-    /// **Source:** `Message_AttributeMeter.hxx`:94 - `Message_AttributeMeter::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    /// **Source:** `Message_AttributeMeter.hxx`:92 - `Message_AttributeMeter::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKernel::Message_AttributeMeter_get_type_descriptor(),
@@ -3267,7 +3250,7 @@ impl AttributeMeter {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleMessageAttributeMeter> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Message_AttributeMeter> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKernel::Message_AttributeMeter_to_handle(obj.into_raw()),
@@ -3275,7 +3258,7 @@ impl AttributeMeter {
         }
     }
 
-    /// Inherited: **Source:** `Message_Attribute.hxx`:40 - `Message_Attribute::GetName()`
+    /// Inherited: **Source:** `Message_Attribute.hxx`:38 - `Message_Attribute::GetName()`
     pub fn get_name(&self) -> &crate::t_collection::AsciiString {
         unsafe {
             &*(crate::check_result(
@@ -3286,7 +3269,7 @@ impl AttributeMeter {
         }
     }
 
-    /// Inherited: **Source:** `Message_Attribute.hxx`:44 - `Message_Attribute::SetName()`
+    /// Inherited: **Source:** `Message_Attribute.hxx`:42 - `Message_Attribute::SetName()`
     pub fn set_name(&mut self, theName: &crate::t_collection::AsciiString) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKernel::Message_AttributeMeter_inherited_SetName(
@@ -3296,8 +3279,8 @@ impl AttributeMeter {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKernel::Message_AttributeMeter_inherited_IsInstance(
                 self as *const Self,
@@ -3306,8 +3289,8 @@ impl AttributeMeter {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKernel::Message_AttributeMeter_inherited_IsKind(
                 self as *const Self,
@@ -3316,7 +3299,7 @@ impl AttributeMeter {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -3332,7 +3315,7 @@ impl AttributeMeter {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKernel::Message_AttributeMeter_inherited_GetRefCount(
@@ -3341,7 +3324,7 @@ impl AttributeMeter {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKernel::Message_AttributeMeter_inherited_IncrementRefCounter(
@@ -3350,7 +3333,7 @@ impl AttributeMeter {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKernel::Message_AttributeMeter_inherited_DecrementRefCounter(
@@ -3359,7 +3342,7 @@ impl AttributeMeter {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKernel::Message_AttributeMeter_inherited_Delete(self as *const Self)
@@ -3367,36 +3350,36 @@ impl AttributeMeter {
     }
 }
 
-pub use crate::ffi_types::HandleMessageAttributeMeter;
+pub use crate::ffi_types::Handle_Message_AttributeMeter;
 
-unsafe impl crate::CppDeletable for HandleMessageAttributeMeter {
+unsafe impl crate::CppDeletable for Handle_Message_AttributeMeter {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKernel::HandleMessageAttributeMeter_destructor(ptr);
+            crate::ffi_extern_TKernel::Handle_Message_AttributeMeter_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleMessageAttributeMeter {
+unsafe impl crate::CppCopyable for Handle_Message_AttributeMeter {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
         unsafe {
-            crate::check_result(crate::ffi_extern_TKernel::HandleMessageAttributeMeter_clone(ptr))
+            crate::check_result(crate::ffi_extern_TKernel::Handle_Message_AttributeMeter_clone(ptr))
         }
     }
 }
 
-impl HandleMessageAttributeMeter {
+impl Handle_Message_AttributeMeter {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
         unsafe {
-            crate::ffi_extern_TKernel::HandleMessageAttributeMeter_is_null(self as *const Self)
+            crate::ffi_extern_TKernel::Handle_Message_AttributeMeter_is_null(self as *const Self)
         }
     }
 
     /// Dereference this Handle to access the underlying Message_AttributeMeter
     pub fn get(&self) -> &crate::ffi_types::Message_AttributeMeter {
         unsafe {
-            &*crate::check_result(crate::ffi_extern_TKernel::HandleMessageAttributeMeter_get(
+            &*crate::check_result(crate::ffi_extern_TKernel::Handle_Message_AttributeMeter_get(
                 self as *const Self,
             ))
         }
@@ -3406,32 +3389,26 @@ impl HandleMessageAttributeMeter {
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::Message_AttributeMeter {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi_extern_TKernel::HandleMessageAttributeMeter_get_mut(self as *mut Self),
+                crate::ffi_extern_TKernel::Handle_Message_AttributeMeter_get_mut(self as *mut Self),
             )
         }
     }
 
     /// Upcast Handle<Message_AttributeMeter> to Handle<Message_Attribute>
-    pub fn to_handle_attribute(&self) -> crate::OwnedPtr<crate::ffi_types::HandleMessageAttribute> {
+    pub fn to_handle_attribute(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Message_Attribute> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKernel::HandleMessageAttributeMeter_to_HandleMessageAttribute(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKernel::Handle_Message_AttributeMeter_to_Handle_Message_Attribute(self as *const Self)))
         }
     }
 
     /// Upcast Handle<Message_AttributeMeter> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKernel::HandleMessageAttributeMeter_to_HandleStandardTransient(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKernel::Handle_Message_AttributeMeter_to_Handle_Standard_Transient(self as *const Self)))
         }
     }
 }
@@ -3440,7 +3417,7 @@ impl HandleMessageAttributeMeter {
 // From Message_AttributeObject.hxx
 // ========================
 
-/// **Source:** `Message_AttributeObject.hxx`:21 - `Message_AttributeObject`
+/// **Source:** `Message_AttributeObject.hxx`:22 - `Message_AttributeObject`
 /// Alert object storing a transient object
 pub use crate::ffi_types::Message_AttributeObject as AttributeObject;
 
@@ -3453,10 +3430,10 @@ unsafe impl crate::CppDeletable for AttributeObject {
 }
 
 impl AttributeObject {
-    /// **Source:** `Message_AttributeObject.hxx`:26 - `Message_AttributeObject::Message_AttributeObject()`
+    /// **Source:** `Message_AttributeObject.hxx`:27 - `Message_AttributeObject::Message_AttributeObject()`
     /// Constructor with string argument
     pub fn new_handlestandardtransient_asciistring(
-        theObject: &crate::ffi_types::HandleStandardTransient,
+        theObject: &crate::ffi_types::Handle_Standard_Transient,
         theName: &crate::t_collection::AsciiString,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -3464,8 +3441,8 @@ impl AttributeObject {
         }
     }
 
-    /// **Source:** `Message_AttributeObject.hxx`:23 - `Message_AttributeObject::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `Message_AttributeObject.hxx`:24 - `Message_AttributeObject::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKernel::Message_AttributeObject_dynamic_type(
@@ -3475,10 +3452,10 @@ impl AttributeObject {
         }
     }
 
-    /// **Source:** `Message_AttributeObject.hxx`:32 - `Message_AttributeObject::Object()`
+    /// **Source:** `Message_AttributeObject.hxx`:33 - `Message_AttributeObject::Object()`
     /// Returns object
     /// @return the object instance
-    pub fn object(&self) -> &crate::ffi_types::HandleStandardTransient {
+    pub fn object(&self) -> &crate::ffi_types::Handle_Standard_Transient {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKernel::Message_AttributeObject_object(
                 self as *const Self,
@@ -3486,10 +3463,10 @@ impl AttributeObject {
         }
     }
 
-    /// **Source:** `Message_AttributeObject.hxx`:36 - `Message_AttributeObject::SetObject()`
+    /// **Source:** `Message_AttributeObject.hxx`:37 - `Message_AttributeObject::SetObject()`
     /// Sets the object
     /// @param theObject an instance
-    pub fn set_object(&mut self, theObject: &crate::ffi_types::HandleStandardTransient) {
+    pub fn set_object(&mut self, theObject: &crate::ffi_types::Handle_Standard_Transient) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKernel::Message_AttributeObject_set_object(
                 self as *mut Self,
@@ -3498,7 +3475,7 @@ impl AttributeObject {
         })
     }
 
-    /// **Source:** `Message_AttributeObject.hxx`:23 - `Message_AttributeObject::get_type_name()`
+    /// **Source:** `Message_AttributeObject.hxx`:24 - `Message_AttributeObject::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -3509,8 +3486,8 @@ impl AttributeObject {
         .into_owned()
     }
 
-    /// **Source:** `Message_AttributeObject.hxx`:23 - `Message_AttributeObject::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    /// **Source:** `Message_AttributeObject.hxx`:24 - `Message_AttributeObject::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKernel::Message_AttributeObject_get_type_descriptor(),
@@ -3565,7 +3542,7 @@ impl AttributeObject {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleMessageAttributeObject> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Message_AttributeObject> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKernel::Message_AttributeObject_to_handle(obj.into_raw()),
@@ -3573,7 +3550,7 @@ impl AttributeObject {
         }
     }
 
-    /// Inherited: **Source:** `Message_Attribute.hxx`:40 - `Message_Attribute::GetName()`
+    /// Inherited: **Source:** `Message_Attribute.hxx`:38 - `Message_Attribute::GetName()`
     pub fn get_name(&self) -> &crate::t_collection::AsciiString {
         unsafe {
             &*(crate::check_result(
@@ -3584,7 +3561,7 @@ impl AttributeObject {
         }
     }
 
-    /// Inherited: **Source:** `Message_Attribute.hxx`:44 - `Message_Attribute::SetName()`
+    /// Inherited: **Source:** `Message_Attribute.hxx`:42 - `Message_Attribute::SetName()`
     pub fn set_name(&mut self, theName: &crate::t_collection::AsciiString) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKernel::Message_AttributeObject_inherited_SetName(
@@ -3594,8 +3571,8 @@ impl AttributeObject {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKernel::Message_AttributeObject_inherited_IsInstance(
                 self as *const Self,
@@ -3604,8 +3581,8 @@ impl AttributeObject {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKernel::Message_AttributeObject_inherited_IsKind(
                 self as *const Self,
@@ -3614,7 +3591,7 @@ impl AttributeObject {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -3630,7 +3607,7 @@ impl AttributeObject {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKernel::Message_AttributeObject_inherited_GetRefCount(
@@ -3639,7 +3616,7 @@ impl AttributeObject {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKernel::Message_AttributeObject_inherited_IncrementRefCounter(
@@ -3648,7 +3625,7 @@ impl AttributeObject {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKernel::Message_AttributeObject_inherited_DecrementRefCounter(
@@ -3657,7 +3634,7 @@ impl AttributeObject {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKernel::Message_AttributeObject_inherited_Delete(self as *const Self)
@@ -3665,36 +3642,38 @@ impl AttributeObject {
     }
 }
 
-pub use crate::ffi_types::HandleMessageAttributeObject;
+pub use crate::ffi_types::Handle_Message_AttributeObject;
 
-unsafe impl crate::CppDeletable for HandleMessageAttributeObject {
+unsafe impl crate::CppDeletable for Handle_Message_AttributeObject {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKernel::HandleMessageAttributeObject_destructor(ptr);
+            crate::ffi_extern_TKernel::Handle_Message_AttributeObject_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleMessageAttributeObject {
+unsafe impl crate::CppCopyable for Handle_Message_AttributeObject {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
         unsafe {
-            crate::check_result(crate::ffi_extern_TKernel::HandleMessageAttributeObject_clone(ptr))
+            crate::check_result(crate::ffi_extern_TKernel::Handle_Message_AttributeObject_clone(
+                ptr,
+            ))
         }
     }
 }
 
-impl HandleMessageAttributeObject {
+impl Handle_Message_AttributeObject {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
         unsafe {
-            crate::ffi_extern_TKernel::HandleMessageAttributeObject_is_null(self as *const Self)
+            crate::ffi_extern_TKernel::Handle_Message_AttributeObject_is_null(self as *const Self)
         }
     }
 
     /// Dereference this Handle to access the underlying Message_AttributeObject
     pub fn get(&self) -> &crate::ffi_types::Message_AttributeObject {
         unsafe {
-            &*crate::check_result(crate::ffi_extern_TKernel::HandleMessageAttributeObject_get(
+            &*crate::check_result(crate::ffi_extern_TKernel::Handle_Message_AttributeObject_get(
                 self as *const Self,
             ))
         }
@@ -3704,32 +3683,28 @@ impl HandleMessageAttributeObject {
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::Message_AttributeObject {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi_extern_TKernel::HandleMessageAttributeObject_get_mut(self as *mut Self),
+                crate::ffi_extern_TKernel::Handle_Message_AttributeObject_get_mut(
+                    self as *mut Self,
+                ),
             )
         }
     }
 
     /// Upcast Handle<Message_AttributeObject> to Handle<Message_Attribute>
-    pub fn to_handle_attribute(&self) -> crate::OwnedPtr<crate::ffi_types::HandleMessageAttribute> {
+    pub fn to_handle_attribute(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Message_Attribute> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKernel::HandleMessageAttributeObject_to_HandleMessageAttribute(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKernel::Handle_Message_AttributeObject_to_Handle_Message_Attribute(self as *const Self)))
         }
     }
 
     /// Upcast Handle<Message_AttributeObject> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKernel::HandleMessageAttributeObject_to_HandleStandardTransient(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKernel::Handle_Message_AttributeObject_to_Handle_Standard_Transient(self as *const Self)))
         }
     }
 }
@@ -3738,7 +3713,7 @@ impl HandleMessageAttributeObject {
 // From Message_AttributeStream.hxx
 // ========================
 
-/// **Source:** `Message_AttributeStream.hxx`:22 - `Message_AttributeStream`
+/// **Source:** `Message_AttributeStream.hxx`:23 - `Message_AttributeStream`
 /// Alert object storing stream value
 pub use crate::ffi_types::Message_AttributeStream as AttributeStream;
 
@@ -3751,7 +3726,7 @@ unsafe impl crate::CppDeletable for AttributeStream {
 }
 
 impl AttributeStream {
-    /// **Source:** `Message_AttributeStream.hxx`:27 - `Message_AttributeStream::Message_AttributeStream()`
+    /// **Source:** `Message_AttributeStream.hxx`:28 - `Message_AttributeStream::Message_AttributeStream()`
     /// Constructor with string argument
     pub fn new_sstream_asciistring(
         theStream: &crate::ffi_types::Standard_SStream,
@@ -3766,8 +3741,8 @@ impl AttributeStream {
         }
     }
 
-    /// **Source:** `Message_AttributeStream.hxx`:24 - `Message_AttributeStream::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `Message_AttributeStream.hxx`:25 - `Message_AttributeStream::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKernel::Message_AttributeStream_dynamic_type(
@@ -3777,7 +3752,7 @@ impl AttributeStream {
         }
     }
 
-    /// **Source:** `Message_AttributeStream.hxx`:32 - `Message_AttributeStream::Stream()`
+    /// **Source:** `Message_AttributeStream.hxx`:33 - `Message_AttributeStream::Stream()`
     /// Returns stream value
     pub fn stream(&self) -> &crate::ffi_types::Standard_SStream {
         unsafe {
@@ -3787,7 +3762,7 @@ impl AttributeStream {
         }
     }
 
-    /// **Source:** `Message_AttributeStream.hxx`:35 - `Message_AttributeStream::SetStream()`
+    /// **Source:** `Message_AttributeStream.hxx`:36 - `Message_AttributeStream::SetStream()`
     /// Sets stream value
     pub fn set_stream(&mut self, theStream: &crate::ffi_types::Standard_SStream) {
         crate::check_void_result(unsafe {
@@ -3798,7 +3773,7 @@ impl AttributeStream {
         })
     }
 
-    /// **Source:** `Message_AttributeStream.hxx`:24 - `Message_AttributeStream::get_type_name()`
+    /// **Source:** `Message_AttributeStream.hxx`:25 - `Message_AttributeStream::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -3809,8 +3784,8 @@ impl AttributeStream {
         .into_owned()
     }
 
-    /// **Source:** `Message_AttributeStream.hxx`:24 - `Message_AttributeStream::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    /// **Source:** `Message_AttributeStream.hxx`:25 - `Message_AttributeStream::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKernel::Message_AttributeStream_get_type_descriptor(),
@@ -3865,7 +3840,7 @@ impl AttributeStream {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleMessageAttributeStream> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Message_AttributeStream> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKernel::Message_AttributeStream_to_handle(obj.into_raw()),
@@ -3873,7 +3848,7 @@ impl AttributeStream {
         }
     }
 
-    /// Inherited: **Source:** `Message_Attribute.hxx`:40 - `Message_Attribute::GetName()`
+    /// Inherited: **Source:** `Message_Attribute.hxx`:38 - `Message_Attribute::GetName()`
     pub fn get_name(&self) -> &crate::t_collection::AsciiString {
         unsafe {
             &*(crate::check_result(
@@ -3884,7 +3859,7 @@ impl AttributeStream {
         }
     }
 
-    /// Inherited: **Source:** `Message_Attribute.hxx`:44 - `Message_Attribute::SetName()`
+    /// Inherited: **Source:** `Message_Attribute.hxx`:42 - `Message_Attribute::SetName()`
     pub fn set_name(&mut self, theName: &crate::t_collection::AsciiString) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKernel::Message_AttributeStream_inherited_SetName(
@@ -3894,8 +3869,8 @@ impl AttributeStream {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKernel::Message_AttributeStream_inherited_IsInstance(
                 self as *const Self,
@@ -3904,8 +3879,8 @@ impl AttributeStream {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKernel::Message_AttributeStream_inherited_IsKind(
                 self as *const Self,
@@ -3914,7 +3889,7 @@ impl AttributeStream {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -3930,7 +3905,7 @@ impl AttributeStream {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKernel::Message_AttributeStream_inherited_GetRefCount(
@@ -3939,7 +3914,7 @@ impl AttributeStream {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKernel::Message_AttributeStream_inherited_IncrementRefCounter(
@@ -3948,7 +3923,7 @@ impl AttributeStream {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKernel::Message_AttributeStream_inherited_DecrementRefCounter(
@@ -3957,7 +3932,7 @@ impl AttributeStream {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKernel::Message_AttributeStream_inherited_Delete(self as *const Self)
@@ -3965,36 +3940,38 @@ impl AttributeStream {
     }
 }
 
-pub use crate::ffi_types::HandleMessageAttributeStream;
+pub use crate::ffi_types::Handle_Message_AttributeStream;
 
-unsafe impl crate::CppDeletable for HandleMessageAttributeStream {
+unsafe impl crate::CppDeletable for Handle_Message_AttributeStream {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKernel::HandleMessageAttributeStream_destructor(ptr);
+            crate::ffi_extern_TKernel::Handle_Message_AttributeStream_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleMessageAttributeStream {
+unsafe impl crate::CppCopyable for Handle_Message_AttributeStream {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
         unsafe {
-            crate::check_result(crate::ffi_extern_TKernel::HandleMessageAttributeStream_clone(ptr))
+            crate::check_result(crate::ffi_extern_TKernel::Handle_Message_AttributeStream_clone(
+                ptr,
+            ))
         }
     }
 }
 
-impl HandleMessageAttributeStream {
+impl Handle_Message_AttributeStream {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
         unsafe {
-            crate::ffi_extern_TKernel::HandleMessageAttributeStream_is_null(self as *const Self)
+            crate::ffi_extern_TKernel::Handle_Message_AttributeStream_is_null(self as *const Self)
         }
     }
 
     /// Dereference this Handle to access the underlying Message_AttributeStream
     pub fn get(&self) -> &crate::ffi_types::Message_AttributeStream {
         unsafe {
-            &*crate::check_result(crate::ffi_extern_TKernel::HandleMessageAttributeStream_get(
+            &*crate::check_result(crate::ffi_extern_TKernel::Handle_Message_AttributeStream_get(
                 self as *const Self,
             ))
         }
@@ -4004,32 +3981,28 @@ impl HandleMessageAttributeStream {
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::Message_AttributeStream {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi_extern_TKernel::HandleMessageAttributeStream_get_mut(self as *mut Self),
+                crate::ffi_extern_TKernel::Handle_Message_AttributeStream_get_mut(
+                    self as *mut Self,
+                ),
             )
         }
     }
 
     /// Upcast Handle<Message_AttributeStream> to Handle<Message_Attribute>
-    pub fn to_handle_attribute(&self) -> crate::OwnedPtr<crate::ffi_types::HandleMessageAttribute> {
+    pub fn to_handle_attribute(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Message_Attribute> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKernel::HandleMessageAttributeStream_to_HandleMessageAttribute(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKernel::Handle_Message_AttributeStream_to_Handle_Message_Attribute(self as *const Self)))
         }
     }
 
     /// Upcast Handle<Message_AttributeStream> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKernel::HandleMessageAttributeStream_to_HandleStandardTransient(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKernel::Handle_Message_AttributeStream_to_Handle_Standard_Transient(self as *const Self)))
         }
     }
 
@@ -4038,9 +4011,9 @@ impl HandleMessageAttributeStream {
     /// Returns `None` if the handle does not point to a `TopoDS_AlertAttribute` (or subclass).
     pub fn downcast_to_alert_attribute(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleTopoDSAlertAttribute>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_TopoDS_AlertAttribute>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKernel::HandleMessageAttributeStream_downcast_to_HandleTopoDSAlertAttribute(self as *const Self)
+            crate::ffi_extern_TKernel::Handle_Message_AttributeStream_downcast_to_Handle_TopoDS_AlertAttribute(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -4078,7 +4051,7 @@ impl CompositeAlerts {
     }
 
     /// **Source:** `Message_CompositeAlerts.hxx`:25 - `Message_CompositeAlerts::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKernel::Message_CompositeAlerts_dynamic_type(
@@ -4088,21 +4061,7 @@ impl CompositeAlerts {
         }
     }
 
-    /// **Source:** `Message_CompositeAlerts.hxx`:31 - `Message_CompositeAlerts::Alerts()`
-    /// Returns list of collected alerts with specified gravity
-    pub fn alerts(
-        &self,
-        theGravity: crate::message::Gravity,
-    ) -> &crate::ffi_types::Message_ListOfAlert {
-        unsafe {
-            &*(crate::check_result(crate::ffi_extern_TKernel::Message_CompositeAlerts_alerts(
-                self as *const Self,
-                theGravity.into(),
-            )))
-        }
-    }
-
-    /// **Source:** `Message_CompositeAlerts.hxx`:37 - `Message_CompositeAlerts::AddAlert()`
+    /// **Source:** `Message_CompositeAlerts.hxx`:38 - `Message_CompositeAlerts::AddAlert()`
     /// Add alert with specified gravity. If the alert supports merge it will be merged.
     /// @param theGravity an alert gravity
     /// @param theAlert an alert to be added as a child alert
@@ -4110,7 +4069,7 @@ impl CompositeAlerts {
     pub fn add_alert(
         &mut self,
         theGravity: crate::message::Gravity,
-        theAlert: &crate::ffi_types::HandleMessageAlert,
+        theAlert: &crate::ffi_types::Handle_Message_Alert,
     ) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKernel::Message_CompositeAlerts_add_alert(
@@ -4121,7 +4080,7 @@ impl CompositeAlerts {
         })
     }
 
-    /// **Source:** `Message_CompositeAlerts.hxx`:44 - `Message_CompositeAlerts::RemoveAlert()`
+    /// **Source:** `Message_CompositeAlerts.hxx`:45 - `Message_CompositeAlerts::RemoveAlert()`
     /// Removes alert with specified gravity.
     /// @param theGravity an alert gravity
     /// @param theAlert an alert to be removed from the children
@@ -4129,7 +4088,7 @@ impl CompositeAlerts {
     pub fn remove_alert(
         &mut self,
         theGravity: crate::message::Gravity,
-        theAlert: &crate::ffi_types::HandleMessageAlert,
+        theAlert: &crate::ffi_types::Handle_Message_Alert,
     ) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKernel::Message_CompositeAlerts_remove_alert(
@@ -4140,13 +4099,13 @@ impl CompositeAlerts {
         })
     }
 
-    /// **Source:** `Message_CompositeAlerts.hxx`:50 - `Message_CompositeAlerts::HasAlert()`
+    /// **Source:** `Message_CompositeAlerts.hxx`:51 - `Message_CompositeAlerts::HasAlert()`
     /// Returns true if the alert belong the list of the child alerts.
     /// @param theAlert an alert to be checked as a child alert
     /// @return true if the alert is found in a container of children
     pub fn has_alert_handlemessagealert(
         &mut self,
-        theAlert: &crate::ffi_types::HandleMessageAlert,
+        theAlert: &crate::ffi_types::Handle_Message_Alert,
     ) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKernel::Message_CompositeAlerts_has_alert_handlemessagealert(
@@ -4156,14 +4115,14 @@ impl CompositeAlerts {
         })
     }
 
-    /// **Source:** `Message_CompositeAlerts.hxx`:56 - `Message_CompositeAlerts::HasAlert()`
+    /// **Source:** `Message_CompositeAlerts.hxx`:57 - `Message_CompositeAlerts::HasAlert()`
     /// Returns true if specific type of alert is recorded with specified gravity
     /// @param theType an alert type
     /// @param theGravity an alert gravity
     /// @return true if the alert is found in a container of children
     pub fn has_alert_handlestandardtype_gravity(
         &mut self,
-        theType: &crate::ffi_types::HandleStandardType,
+        theType: &crate::ffi_types::Handle_Standard_Type,
         theGravity: crate::message::Gravity,
     ) -> bool {
         crate::check_result(unsafe {
@@ -4175,7 +4134,7 @@ impl CompositeAlerts {
         })
     }
 
-    /// **Source:** `Message_CompositeAlerts.hxx`:60 - `Message_CompositeAlerts::Clear()`
+    /// **Source:** `Message_CompositeAlerts.hxx`:61 - `Message_CompositeAlerts::Clear()`
     /// Clears all collected alerts
     pub fn clear(&mut self) {
         crate::check_void_result(unsafe {
@@ -4183,7 +4142,7 @@ impl CompositeAlerts {
         })
     }
 
-    /// **Source:** `Message_CompositeAlerts.hxx`:64 - `Message_CompositeAlerts::Clear()`
+    /// **Source:** `Message_CompositeAlerts.hxx`:65 - `Message_CompositeAlerts::Clear()`
     /// Clears collected alerts with specified gravity
     /// @param theGravity an alert gravity
     pub fn clear_gravity(&mut self, theGravity: crate::message::Gravity) {
@@ -4195,10 +4154,10 @@ impl CompositeAlerts {
         })
     }
 
-    /// **Source:** `Message_CompositeAlerts.hxx`:68 - `Message_CompositeAlerts::Clear()`
+    /// **Source:** `Message_CompositeAlerts.hxx`:69 - `Message_CompositeAlerts::Clear()`
     /// Clears collected alerts with specified type
     /// @param theType an alert type
-    pub fn clear_handlestandardtype(&mut self, theType: &crate::ffi_types::HandleStandardType) {
+    pub fn clear_handlestandardtype(&mut self, theType: &crate::ffi_types::Handle_Standard_Type) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKernel::Message_CompositeAlerts_clear_handlestandardtype(
                 self as *mut Self,
@@ -4219,7 +4178,7 @@ impl CompositeAlerts {
     }
 
     /// **Source:** `Message_CompositeAlerts.hxx`:25 - `Message_CompositeAlerts::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKernel::Message_CompositeAlerts_get_type_descriptor(),
@@ -4252,7 +4211,7 @@ impl CompositeAlerts {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleMessageCompositeAlerts> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Message_CompositeAlerts> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKernel::Message_CompositeAlerts_to_handle(obj.into_raw()),
@@ -4260,8 +4219,8 @@ impl CompositeAlerts {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKernel::Message_CompositeAlerts_inherited_IsInstance(
                 self as *const Self,
@@ -4270,8 +4229,8 @@ impl CompositeAlerts {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKernel::Message_CompositeAlerts_inherited_IsKind(
                 self as *const Self,
@@ -4280,7 +4239,7 @@ impl CompositeAlerts {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -4296,7 +4255,7 @@ impl CompositeAlerts {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKernel::Message_CompositeAlerts_inherited_GetRefCount(
@@ -4305,7 +4264,7 @@ impl CompositeAlerts {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKernel::Message_CompositeAlerts_inherited_IncrementRefCounter(
@@ -4314,7 +4273,7 @@ impl CompositeAlerts {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKernel::Message_CompositeAlerts_inherited_DecrementRefCounter(
@@ -4323,7 +4282,7 @@ impl CompositeAlerts {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKernel::Message_CompositeAlerts_inherited_Delete(self as *const Self)
@@ -4331,36 +4290,38 @@ impl CompositeAlerts {
     }
 }
 
-pub use crate::ffi_types::HandleMessageCompositeAlerts;
+pub use crate::ffi_types::Handle_Message_CompositeAlerts;
 
-unsafe impl crate::CppDeletable for HandleMessageCompositeAlerts {
+unsafe impl crate::CppDeletable for Handle_Message_CompositeAlerts {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKernel::HandleMessageCompositeAlerts_destructor(ptr);
+            crate::ffi_extern_TKernel::Handle_Message_CompositeAlerts_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleMessageCompositeAlerts {
+unsafe impl crate::CppCopyable for Handle_Message_CompositeAlerts {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
         unsafe {
-            crate::check_result(crate::ffi_extern_TKernel::HandleMessageCompositeAlerts_clone(ptr))
+            crate::check_result(crate::ffi_extern_TKernel::Handle_Message_CompositeAlerts_clone(
+                ptr,
+            ))
         }
     }
 }
 
-impl HandleMessageCompositeAlerts {
+impl Handle_Message_CompositeAlerts {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
         unsafe {
-            crate::ffi_extern_TKernel::HandleMessageCompositeAlerts_is_null(self as *const Self)
+            crate::ffi_extern_TKernel::Handle_Message_CompositeAlerts_is_null(self as *const Self)
         }
     }
 
     /// Dereference this Handle to access the underlying Message_CompositeAlerts
     pub fn get(&self) -> &crate::ffi_types::Message_CompositeAlerts {
         unsafe {
-            &*crate::check_result(crate::ffi_extern_TKernel::HandleMessageCompositeAlerts_get(
+            &*crate::check_result(crate::ffi_extern_TKernel::Handle_Message_CompositeAlerts_get(
                 self as *const Self,
             ))
         }
@@ -4370,7 +4331,9 @@ impl HandleMessageCompositeAlerts {
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::Message_CompositeAlerts {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi_extern_TKernel::HandleMessageCompositeAlerts_get_mut(self as *mut Self),
+                crate::ffi_extern_TKernel::Handle_Message_CompositeAlerts_get_mut(
+                    self as *mut Self,
+                ),
             )
         }
     }
@@ -4378,16 +4341,19 @@ impl HandleMessageCompositeAlerts {
     /// Upcast Handle<Message_CompositeAlerts> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKernel::HandleMessageCompositeAlerts_to_HandleStandardTransient(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKernel::Handle_Message_CompositeAlerts_to_Handle_Standard_Transient(self as *const Self)))
         }
     }
 }
+
+// ── Skipped symbols for CompositeAlerts (1 total) ──
+// SKIPPED: **Source:** `Message_CompositeAlerts.hxx`:31 - `Message_CompositeAlerts::Alerts`
+//   method: Returns list of collected alerts with specified gravity
+//   Reason: has unbindable types: return: unresolved template type (NCollection_List<occ::handle<Message_Alert>> const&)
+//   // pub fn alerts(&self, theGravity: Gravity) -> /* NCollection_List<occ::handle<Message_Alert>> const& */;
+//
 
 // ========================
 // From Message_ExecStatus.hxx
@@ -4632,32 +4598,6 @@ impl ExecStatus {
 /// constructor, so that displayed progress is updated at larger steps.
 pub use crate::ffi_types::Message_LazyProgressScope as LazyProgressScope;
 
-impl LazyProgressScope {
-    /// **Source:** `Message_LazyProgressScope.hxx`:49 - `Message_LazyProgressScope::Next()`
-    /// Increment progress with 1.
-    pub fn next(&mut self) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKernel::Message_LazyProgressScope_next(self as *mut Self)
-        })
-    }
-
-    /// **Source:** `Message_LazyProgressScope.hxx`:62 - `Message_LazyProgressScope::More()`
-    /// Return TRUE if progress has been aborted - return the cached state lazily updated.
-    pub fn more(&self) -> bool {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKernel::Message_LazyProgressScope_more(self as *const Self)
-        })
-    }
-
-    /// **Source:** `Message_LazyProgressScope.hxx`:65 - `Message_LazyProgressScope::IsAborted()`
-    /// Return TRUE if progress has been aborted - fetches actual value from the Progress.
-    pub fn is_aborted(&mut self) -> bool {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKernel::Message_LazyProgressScope_is_aborted(self as *mut Self)
-        })
-    }
-}
-
 // ── Skipped symbols for LazyProgressScope (1 total) ──
 // SKIPPED: **Source:** `Message_LazyProgressScope.hxx`:36 - `Message_LazyProgressScope::Message_LazyProgressScope`
 //   constructor: Main constructor.
@@ -4671,7 +4611,7 @@ impl LazyProgressScope {
 // From Message_Level.hxx
 // ========================
 
-/// **Source:** `Message_Level.hxx`:37 - `Message_Level`
+/// **Source:** `Message_Level.hxx`:38 - `Message_Level`
 /// This class is an instance of Sentry to create a level in a message report
 /// Constructor of the class add new (active) level in the report, destructor removes it
 /// While the level is active in the report, new alerts are added below the level root alert.
@@ -4696,7 +4636,7 @@ unsafe impl crate::CppDeletable for Level {
 }
 
 impl Level {
-    /// **Source:** `Message_Level.hxx`:43 - `Message_Level::Message_Level()`
+    /// **Source:** `Message_Level.hxx`:44 - `Message_Level::Message_Level()`
     /// Constructor.
     /// One string key is used for all alert meters.
     /// The perf meter is not started automatically, it will be done in AddAlert() method
@@ -4708,10 +4648,10 @@ impl Level {
         }
     }
 
-    /// **Source:** `Message_Level.hxx`:50 - `Message_Level::RootAlert()`
+    /// **Source:** `Message_Level.hxx`:52 - `Message_Level::RootAlert()`
     /// Returns root alert of the level
     /// @return alert instance or NULL
-    pub fn root_alert(&self) -> &crate::ffi_types::HandleMessageAlertExtended {
+    pub fn root_alert(&self) -> &crate::ffi_types::Handle_Message_AlertExtended {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKernel::Message_Level_root_alert(
                 self as *const Self,
@@ -4719,12 +4659,12 @@ impl Level {
         }
     }
 
-    /// **Source:** `Message_Level.hxx`:54 - `Message_Level::SetRootAlert()`
+    /// **Source:** `Message_Level.hxx`:56 - `Message_Level::SetRootAlert()`
     /// Sets the root alert. Starts collects alert metrics if active.
     /// @param theAlert an alert
     pub fn set_root_alert(
         &mut self,
-        theAlert: &crate::ffi_types::HandleMessageAlertExtended,
+        theAlert: &crate::ffi_types::Handle_Message_AlertExtended,
         isRequiredToStart: bool,
     ) {
         crate::check_void_result(unsafe {
@@ -4736,7 +4676,7 @@ impl Level {
         })
     }
 
-    /// **Source:** `Message_Level.hxx`:63 - `Message_Level::AddAlert()`
+    /// **Source:** `Message_Level.hxx`:65 - `Message_Level::AddAlert()`
     /// Adds new alert on the level. Stops the last alert metric, appends the alert and starts the
     /// alert metrics collecting. Sets root alert beforehand this method using, if the root is NULL,
     /// it does nothing.
@@ -4746,7 +4686,7 @@ impl Level {
     pub fn add_alert(
         &mut self,
         theGravity: crate::message::Gravity,
-        theAlert: &crate::ffi_types::HandleMessageAlert,
+        theAlert: &crate::ffi_types::Handle_Message_Alert,
     ) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKernel::Message_Level_add_alert(
@@ -4762,7 +4702,7 @@ impl Level {
 // From Message_Messenger.hxx
 // ========================
 
-/// **Source:** `Message_Messenger.hxx`:53 - `Message_Messenger`
+/// **Source:** `Message_Messenger.hxx`:51 - `Message_Messenger`
 /// Messenger is API class providing general-purpose interface for
 /// libraries that may issue text messages without knowledge
 /// of how these messages will be further processed.
@@ -4793,7 +4733,7 @@ unsafe impl crate::CppDeletable for Messenger {
 }
 
 impl Messenger {
-    /// **Source:** `Message_Messenger.hxx`:148 - `Message_Messenger::Message_Messenger()`
+    /// **Source:** `Message_Messenger.hxx`:146 - `Message_Messenger::Message_Messenger()`
     /// Empty constructor; initializes by single printer directed to std::cout.
     /// Note: the default messenger is not empty but directed to cout
     /// in order to protect against possibility to forget defining printers.
@@ -4806,10 +4746,10 @@ impl Messenger {
         }
     }
 
-    /// **Source:** `Message_Messenger.hxx`:151 - `Message_Messenger::Message_Messenger()`
+    /// **Source:** `Message_Messenger.hxx`:149 - `Message_Messenger::Message_Messenger()`
     /// Create messenger with single printer
     pub fn new_handlemessageprinter(
-        thePrinter: &crate::ffi_types::HandleMessagePrinter,
+        thePrinter: &crate::ffi_types::Handle_Message_Printer,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -4818,8 +4758,8 @@ impl Messenger {
         }
     }
 
-    /// **Source:** `Message_Messenger.hxx`:55 - `Message_Messenger::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `Message_Messenger.hxx`:53 - `Message_Messenger::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKernel::Message_Messenger_dynamic_type(
                 self as *const Self,
@@ -4827,21 +4767,24 @@ impl Messenger {
         }
     }
 
-    /// **Source:** `Message_Messenger.hxx`:156 - `Message_Messenger::AddPrinter()`
+    /// **Source:** `Message_Messenger.hxx`:154 - `Message_Messenger::AddPrinter()`
     /// Add a printer to the messenger.
     /// The printer will be added only if it is not yet in the list.
     /// Returns True if printer has been added.
-    pub fn add_printer(&mut self, thePrinter: &crate::ffi_types::HandleMessagePrinter) -> bool {
+    pub fn add_printer(&mut self, thePrinter: &crate::ffi_types::Handle_Message_Printer) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKernel::Message_Messenger_add_printer(self as *mut Self, thePrinter)
         })
     }
 
-    /// **Source:** `Message_Messenger.hxx`:161 - `Message_Messenger::RemovePrinter()`
+    /// **Source:** `Message_Messenger.hxx`:159 - `Message_Messenger::RemovePrinter()`
     /// Removes specified printer from the messenger.
     /// Returns True if this printer has been found in the list
     /// and removed.
-    pub fn remove_printer(&mut self, thePrinter: &crate::ffi_types::HandleMessagePrinter) -> bool {
+    pub fn remove_printer(
+        &mut self,
+        thePrinter: &crate::ffi_types::Handle_Message_Printer,
+    ) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKernel::Message_Messenger_remove_printer(
                 self as *mut Self,
@@ -4850,38 +4793,17 @@ impl Messenger {
         })
     }
 
-    /// **Source:** `Message_Messenger.hxx`:166 - `Message_Messenger::RemovePrinters()`
+    /// **Source:** `Message_Messenger.hxx`:164 - `Message_Messenger::RemovePrinters()`
     /// Removes printers of specified type (including derived classes)
     /// from the messenger.
     /// Returns number of removed printers.
-    pub fn remove_printers(&mut self, theType: &crate::ffi_types::HandleStandardType) -> i32 {
+    pub fn remove_printers(&mut self, theType: &crate::ffi_types::Handle_Standard_Type) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKernel::Message_Messenger_remove_printers(self as *mut Self, theType)
         })
     }
 
-    /// **Source:** `Message_Messenger.hxx`:169 - `Message_Messenger::Printers()`
-    /// Returns current sequence of printers
-    pub fn printers(&self) -> &crate::ffi_types::Message_SequenceOfPrinters {
-        unsafe {
-            &*(crate::check_result(crate::ffi_extern_TKernel::Message_Messenger_printers(
-                self as *const Self,
-            )))
-        }
-    }
-
-    /// **Source:** `Message_Messenger.hxx`:173 - `Message_Messenger::ChangePrinters()`
-    /// Returns sequence of printers
-    /// The sequence can be modified.
-    pub fn change_printers(&mut self) -> &mut crate::ffi_types::Message_SequenceOfPrinters {
-        unsafe {
-            &mut *(crate::check_result(
-                crate::ffi_extern_TKernel::Message_Messenger_change_printers(self as *mut Self),
-            ))
-        }
-    }
-
-    /// **Source:** `Message_Messenger.hxx`:178 - `Message_Messenger::Send()`
+    /// **Source:** `Message_Messenger.hxx`:176 - `Message_Messenger::Send()`
     /// Dispatch a message to all the printers in the list.
     /// Three versions of string representations are accepted for
     /// convenience, by default all are converted to ExtendedString.
@@ -4896,7 +4818,7 @@ impl Messenger {
         })
     }
 
-    /// **Source:** `Message_Messenger.hxx`:182 - `Message_Messenger::Send()`
+    /// **Source:** `Message_Messenger.hxx`:180 - `Message_Messenger::Send()`
     /// See above
     pub fn send_sstream_gravity(
         &self,
@@ -4912,7 +4834,7 @@ impl Messenger {
         })
     }
 
-    /// **Source:** `Message_Messenger.hxx`:186 - `Message_Messenger::Send()`
+    /// **Source:** `Message_Messenger.hxx`:184 - `Message_Messenger::Send()`
     /// See above
     pub fn send_asciistring_gravity(
         &self,
@@ -4928,7 +4850,7 @@ impl Messenger {
         })
     }
 
-    /// **Source:** `Message_Messenger.hxx`:190 - `Message_Messenger::Send()`
+    /// **Source:** `Message_Messenger.hxx`:188 - `Message_Messenger::Send()`
     /// See above
     pub fn send_extendedstring_gravity(
         &self,
@@ -4944,7 +4866,7 @@ impl Messenger {
         })
     }
 
-    /// **Source:** `Message_Messenger.hxx`:194 - `Message_Messenger::Send()`
+    /// **Source:** `Message_Messenger.hxx`:192 - `Message_Messenger::Send()`
     /// Create string buffer for message of specified type
     pub fn send_gravity(
         &mut self,
@@ -4960,11 +4882,11 @@ impl Messenger {
         }
     }
 
-    /// **Source:** `Message_Messenger.hxx`:197 - `Message_Messenger::Send()`
+    /// **Source:** `Message_Messenger.hxx`:195 - `Message_Messenger::Send()`
     /// See above
     pub fn send_handlestandardtransient_gravity(
         &self,
-        theObject: &crate::ffi_types::HandleStandardTransient,
+        theObject: &crate::ffi_types::Handle_Standard_Transient,
         theGravity: crate::message::Gravity,
     ) {
         crate::check_void_result(unsafe {
@@ -4976,7 +4898,7 @@ impl Messenger {
         })
     }
 
-    /// **Source:** `Message_Messenger.hxx`:201 - `Message_Messenger::SendFail()`
+    /// **Source:** `Message_Messenger.hxx`:199 - `Message_Messenger::SendFail()`
     /// Create string buffer for sending Fail message
     pub fn send_fail(&mut self) -> crate::OwnedPtr<Messenger_StreamBuffer> {
         unsafe {
@@ -4986,7 +4908,7 @@ impl Messenger {
         }
     }
 
-    /// **Source:** `Message_Messenger.hxx`:204 - `Message_Messenger::SendAlarm()`
+    /// **Source:** `Message_Messenger.hxx`:202 - `Message_Messenger::SendAlarm()`
     /// Create string buffer for sending Alarm message
     pub fn send_alarm(&mut self) -> crate::OwnedPtr<Messenger_StreamBuffer> {
         unsafe {
@@ -4996,7 +4918,7 @@ impl Messenger {
         }
     }
 
-    /// **Source:** `Message_Messenger.hxx`:207 - `Message_Messenger::SendWarning()`
+    /// **Source:** `Message_Messenger.hxx`:205 - `Message_Messenger::SendWarning()`
     /// Create string buffer for sending Warning message
     pub fn send_warning(&mut self) -> crate::OwnedPtr<Messenger_StreamBuffer> {
         unsafe {
@@ -5006,7 +4928,7 @@ impl Messenger {
         }
     }
 
-    /// **Source:** `Message_Messenger.hxx`:210 - `Message_Messenger::SendInfo()`
+    /// **Source:** `Message_Messenger.hxx`:208 - `Message_Messenger::SendInfo()`
     /// Create string buffer for sending Info message
     pub fn send_info(&mut self) -> crate::OwnedPtr<Messenger_StreamBuffer> {
         unsafe {
@@ -5016,7 +4938,7 @@ impl Messenger {
         }
     }
 
-    /// **Source:** `Message_Messenger.hxx`:213 - `Message_Messenger::SendTrace()`
+    /// **Source:** `Message_Messenger.hxx`:211 - `Message_Messenger::SendTrace()`
     /// Create string buffer for sending Trace message
     pub fn send_trace(&mut self) -> crate::OwnedPtr<Messenger_StreamBuffer> {
         unsafe {
@@ -5026,7 +4948,7 @@ impl Messenger {
         }
     }
 
-    /// **Source:** `Message_Messenger.hxx`:216 - `Message_Messenger::SendFail()`
+    /// **Source:** `Message_Messenger.hxx`:214 - `Message_Messenger::SendFail()`
     /// Short-cut to Send (theMessage, Message_Fail)
     pub fn send_fail_asciistring(&mut self, theMessage: &crate::t_collection::AsciiString) {
         crate::check_void_result(unsafe {
@@ -5037,7 +4959,7 @@ impl Messenger {
         })
     }
 
-    /// **Source:** `Message_Messenger.hxx`:219 - `Message_Messenger::SendAlarm()`
+    /// **Source:** `Message_Messenger.hxx`:217 - `Message_Messenger::SendAlarm()`
     /// Short-cut to Send (theMessage, Message_Alarm)
     pub fn send_alarm_asciistring(&mut self, theMessage: &crate::t_collection::AsciiString) {
         crate::check_void_result(unsafe {
@@ -5048,7 +4970,7 @@ impl Messenger {
         })
     }
 
-    /// **Source:** `Message_Messenger.hxx`:222 - `Message_Messenger::SendWarning()`
+    /// **Source:** `Message_Messenger.hxx`:220 - `Message_Messenger::SendWarning()`
     /// Short-cut to Send (theMessage, Message_Warning)
     pub fn send_warning_asciistring(&mut self, theMessage: &crate::t_collection::AsciiString) {
         crate::check_void_result(unsafe {
@@ -5059,7 +4981,7 @@ impl Messenger {
         })
     }
 
-    /// **Source:** `Message_Messenger.hxx`:225 - `Message_Messenger::SendInfo()`
+    /// **Source:** `Message_Messenger.hxx`:223 - `Message_Messenger::SendInfo()`
     /// Short-cut to Send (theMessage, Message_Info)
     pub fn send_info_asciistring(&mut self, theMessage: &crate::t_collection::AsciiString) {
         crate::check_void_result(unsafe {
@@ -5070,7 +4992,7 @@ impl Messenger {
         })
     }
 
-    /// **Source:** `Message_Messenger.hxx`:228 - `Message_Messenger::SendTrace()`
+    /// **Source:** `Message_Messenger.hxx`:226 - `Message_Messenger::SendTrace()`
     /// Short-cut to Send (theMessage, Message_Trace)
     pub fn send_trace_asciistring(&mut self, theMessage: &crate::t_collection::AsciiString) {
         crate::check_void_result(unsafe {
@@ -5081,7 +5003,7 @@ impl Messenger {
         })
     }
 
-    /// **Source:** `Message_Messenger.hxx`:55 - `Message_Messenger::get_type_name()`
+    /// **Source:** `Message_Messenger.hxx`:53 - `Message_Messenger::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -5092,8 +5014,8 @@ impl Messenger {
         .into_owned()
     }
 
-    /// **Source:** `Message_Messenger.hxx`:55 - `Message_Messenger::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    /// **Source:** `Message_Messenger.hxx`:53 - `Message_Messenger::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKernel::Message_Messenger_get_type_descriptor(),
@@ -5126,7 +5048,7 @@ impl Messenger {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleMessageMessenger> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Message_Messenger> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKernel::Message_Messenger_to_handle(obj.into_raw()),
@@ -5134,8 +5056,8 @@ impl Messenger {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKernel::Message_Messenger_inherited_IsInstance(
                 self as *const Self,
@@ -5144,8 +5066,8 @@ impl Messenger {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKernel::Message_Messenger_inherited_IsKind(
                 self as *const Self,
@@ -5154,7 +5076,7 @@ impl Messenger {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -5168,14 +5090,14 @@ impl Messenger {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKernel::Message_Messenger_inherited_GetRefCount(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKernel::Message_Messenger_inherited_IncrementRefCounter(
@@ -5184,7 +5106,7 @@ impl Messenger {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKernel::Message_Messenger_inherited_DecrementRefCounter(
@@ -5193,7 +5115,7 @@ impl Messenger {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKernel::Message_Messenger_inherited_Delete(self as *const Self)
@@ -5201,32 +5123,34 @@ impl Messenger {
     }
 }
 
-pub use crate::ffi_types::HandleMessageMessenger;
+pub use crate::ffi_types::Handle_Message_Messenger;
 
-unsafe impl crate::CppDeletable for HandleMessageMessenger {
+unsafe impl crate::CppDeletable for Handle_Message_Messenger {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKernel::HandleMessageMessenger_destructor(ptr);
+            crate::ffi_extern_TKernel::Handle_Message_Messenger_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleMessageMessenger {
+unsafe impl crate::CppCopyable for Handle_Message_Messenger {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        unsafe { crate::check_result(crate::ffi_extern_TKernel::HandleMessageMessenger_clone(ptr)) }
+        unsafe {
+            crate::check_result(crate::ffi_extern_TKernel::Handle_Message_Messenger_clone(ptr))
+        }
     }
 }
 
-impl HandleMessageMessenger {
+impl Handle_Message_Messenger {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
-        unsafe { crate::ffi_extern_TKernel::HandleMessageMessenger_is_null(self as *const Self) }
+        unsafe { crate::ffi_extern_TKernel::Handle_Message_Messenger_is_null(self as *const Self) }
     }
 
     /// Dereference this Handle to access the underlying Message_Messenger
     pub fn get(&self) -> &crate::ffi_types::Message_Messenger {
         unsafe {
-            &*crate::check_result(crate::ffi_extern_TKernel::HandleMessageMessenger_get(
+            &*crate::check_result(crate::ffi_extern_TKernel::Handle_Message_Messenger_get(
                 self as *const Self,
             ))
         }
@@ -5235,7 +5159,7 @@ impl HandleMessageMessenger {
     /// Dereference this Handle to mutably access the underlying Message_Messenger
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::Message_Messenger {
         unsafe {
-            &mut *crate::check_result(crate::ffi_extern_TKernel::HandleMessageMessenger_get_mut(
+            &mut *crate::check_result(crate::ffi_extern_TKernel::Handle_Message_Messenger_get_mut(
                 self as *mut Self,
             ))
         }
@@ -5244,10 +5168,10 @@ impl HandleMessageMessenger {
     /// Upcast Handle<Message_Messenger> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKernel::HandleMessageMessenger_to_HandleStandardTransient(
+                crate::ffi_extern_TKernel::Handle_Message_Messenger_to_Handle_Standard_Transient(
                     self as *const Self,
                 ),
             ))
@@ -5255,7 +5179,20 @@ impl HandleMessageMessenger {
     }
 }
 
-/// **Source:** `Message_Messenger.hxx`:63 - `Message_Messenger_StreamBuffer`
+// ── Skipped symbols for Messenger (2 total) ──
+// SKIPPED: **Source:** `Message_Messenger.hxx`:167 - `Message_Messenger::Printers`
+//   method: Returns current sequence of printers
+//   Reason: has unbindable types: return: unresolved template type (NCollection_Sequence<occ::handle<Message_Printer>> const&)
+//   // pub fn printers(&self) -> /* NCollection_Sequence<occ::handle<Message_Printer>> const& */;
+//
+// SKIPPED: **Source:** `Message_Messenger.hxx`:171 - `Message_Messenger::ChangePrinters`
+//   method: Returns sequence of printers
+//   method: The sequence can be modified.
+//   Reason: has unbindable types: return: unresolved template type (NCollection_Sequence<occ::handle<Message_Printer>>&)
+//   // pub fn change_printers(&mut self) -> /* NCollection_Sequence<occ::handle<Message_Printer>>& */;
+//
+
+/// **Source:** `Message_Messenger.hxx`:61 - `Message_Messenger_StreamBuffer`
 /// Auxiliary class wrapping std::stringstream thus allowing constructing
 /// message via stream interface, and putting result into its creator
 /// Message_Messenger within destructor.
@@ -5293,7 +5230,7 @@ impl std::borrow::ToOwned for Messenger_StreamBuffer {
 }
 
 impl Messenger_StreamBuffer {
-    /// **Source:** `Message_Messenger.hxx`:70 - `Message_Messenger_StreamBuffer::Flush()`
+    /// **Source:** `Message_Messenger.hxx`:68 - `Message_Messenger_StreamBuffer::Flush()`
     /// Flush collected string to messenger
     pub fn flush(&mut self, doForce: bool) {
         crate::check_void_result(unsafe {
@@ -5304,7 +5241,7 @@ impl Messenger_StreamBuffer {
         })
     }
 
-    /// **Source:** `Message_Messenger.hxx`:116 - `Message_Messenger_StreamBuffer::Stream()`
+    /// **Source:** `Message_Messenger.hxx`:114 - `Message_Messenger_StreamBuffer::Stream()`
     /// Access to the stream object
     pub fn stream(&mut self) -> &mut crate::ffi_types::Standard_SStream {
         unsafe {
@@ -5314,7 +5251,7 @@ impl Messenger_StreamBuffer {
         }
     }
 
-    /// **Source:** `Message_Messenger.hxx`:122 - `Message_Messenger_StreamBuffer::Messenger()`
+    /// **Source:** `Message_Messenger.hxx`:120 - `Message_Messenger_StreamBuffer::Messenger()`
     /// Access to the messenger
     pub fn messenger(&mut self) -> Option<&mut Messenger> {
         {
@@ -5336,7 +5273,7 @@ impl Messenger_StreamBuffer {
 // From Message_Msg.hxx
 // ========================
 
-/// **Source:** `Message_Msg.hxx`:51 - `Message_Msg`
+/// **Source:** `Message_Msg.hxx`:52 - `Message_Msg`
 /// This class provides a tool for constructing the parametrized message
 /// basing on resources loaded by Message_MsgFile tool.
 ///
@@ -5384,7 +5321,7 @@ impl std::borrow::ToOwned for Msg {
 }
 
 impl Msg {
-    /// **Source:** `Message_Msg.hxx`:57 - `Message_Msg::Message_Msg()`
+    /// **Source:** `Message_Msg.hxx`:58 - `Message_Msg::Message_Msg()`
     /// Empty constructor
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
@@ -5394,7 +5331,7 @@ impl Msg {
         }
     }
 
-    /// **Source:** `Message_Msg.hxx`:63 - `Message_Msg::Message_Msg()`
+    /// **Source:** `Message_Msg.hxx`:64 - `Message_Msg::Message_Msg()`
     /// Create a message using a corresponding entry in Message_MsgFile
     pub fn new_charptr(theKey: &str) -> crate::OwnedPtr<Self> {
         let c_theKey = std::ffi::CString::new(theKey).unwrap();
@@ -5405,7 +5342,7 @@ impl Msg {
         }
     }
 
-    /// **Source:** `Message_Msg.hxx`:66 - `Message_Msg::Message_Msg()`
+    /// **Source:** `Message_Msg.hxx`:67 - `Message_Msg::Message_Msg()`
     /// Create a message using a corresponding entry in Message_MsgFile
     pub fn new_extendedstring(
         theKey: &crate::t_collection::ExtendedString,
@@ -5417,7 +5354,7 @@ impl Msg {
         }
     }
 
-    /// **Source:** `Message_Msg.hxx`:70 - `Message_Msg::Set()`
+    /// **Source:** `Message_Msg.hxx`:71 - `Message_Msg::Set()`
     /// Set a message body text -- can be used as alternative to
     /// using messages from resource file
     pub fn set_charptr(&mut self, theMsg: &str) {
@@ -5427,7 +5364,7 @@ impl Msg {
         })
     }
 
-    /// **Source:** `Message_Msg.hxx`:74 - `Message_Msg::Set()`
+    /// **Source:** `Message_Msg.hxx`:75 - `Message_Msg::Set()`
     /// Set a message body text -- can be used as alternative to
     /// using messages from resource file
     pub fn set_extendedstring(&mut self, theMsg: &crate::t_collection::ExtendedString) {
@@ -5436,7 +5373,7 @@ impl Msg {
         })
     }
 
-    /// **Source:** `Message_Msg.hxx`:77 - `Message_Msg::Arg()`
+    /// **Source:** `Message_Msg.hxx`:78 - `Message_Msg::Arg()`
     /// Set a value for %..s conversion
     ///
     /// # Safety
@@ -5454,7 +5391,7 @@ impl Msg {
         }
     }
 
-    /// **Source:** `Message_Msg.hxx`:82 - `Message_Msg::Arg()`
+    /// **Source:** `Message_Msg.hxx`:83 - `Message_Msg::Arg()`
     /// Set a value for %..s conversion
     ///
     /// # Safety
@@ -5474,7 +5411,7 @@ impl Msg {
         }
     }
 
-    /// **Source:** `Message_Msg.hxx`:87 - `Message_Msg::Arg()`
+    /// **Source:** `Message_Msg.hxx`:88 - `Message_Msg::Arg()`
     /// Set a value for %..s conversion
     ///
     /// # Safety
@@ -5484,7 +5421,7 @@ impl Msg {
     /// not outlive whichever source it actually borrows from.
     pub unsafe fn arg_handletcollectionhasciistring(
         &mut self,
-        theString: &crate::ffi_types::HandleTCollectionHAsciiString,
+        theString: &crate::ffi_types::Handle_TCollection_HAsciiString,
     ) -> &mut Msg {
         unsafe {
             &mut *(crate::check_result(
@@ -5496,7 +5433,7 @@ impl Msg {
         }
     }
 
-    /// **Source:** `Message_Msg.hxx`:95 - `Message_Msg::Arg()`
+    /// **Source:** `Message_Msg.hxx`:96 - `Message_Msg::Arg()`
     /// Set a value for %..s conversion
     ///
     /// # Safety
@@ -5516,7 +5453,7 @@ impl Msg {
         }
     }
 
-    /// **Source:** `Message_Msg.hxx`:100 - `Message_Msg::Arg()`
+    /// **Source:** `Message_Msg.hxx`:101 - `Message_Msg::Arg()`
     /// Set a value for %..s conversion
     ///
     /// # Safety
@@ -5526,7 +5463,7 @@ impl Msg {
     /// not outlive whichever source it actually borrows from.
     pub unsafe fn arg_handletcollectionhextendedstring(
         &mut self,
-        theString: &crate::ffi_types::HandleTCollectionHExtendedString,
+        theString: &crate::ffi_types::Handle_TCollection_HExtendedString,
     ) -> &mut Msg {
         unsafe {
             &mut *(crate::check_result(
@@ -5538,7 +5475,7 @@ impl Msg {
         }
     }
 
-    /// **Source:** `Message_Msg.hxx`:108 - `Message_Msg::Arg()`
+    /// **Source:** `Message_Msg.hxx`:109 - `Message_Msg::Arg()`
     /// Set a value for %..d, %..i, %..o, %..u, %..x or %..X conversion
     pub fn arg_int(&mut self, theInt: i32) -> &mut Msg {
         unsafe {
@@ -5549,7 +5486,7 @@ impl Msg {
         }
     }
 
-    /// **Source:** `Message_Msg.hxx`:113 - `Message_Msg::Arg()`
+    /// **Source:** `Message_Msg.hxx`:114 - `Message_Msg::Arg()`
     /// Set a value for %..f, %..e, %..E, %..g or %..G conversion
     pub fn arg_real(&mut self, theReal: f64) -> &mut Msg {
         unsafe {
@@ -5560,7 +5497,7 @@ impl Msg {
         }
     }
 
-    /// **Source:** `Message_Msg.hxx`:118 - `Message_Msg::Original()`
+    /// **Source:** `Message_Msg.hxx`:119 - `Message_Msg::Original()`
     /// Returns the original message text
     pub fn original(&self) -> &crate::t_collection::ExtendedString {
         unsafe {
@@ -5570,7 +5507,7 @@ impl Msg {
         }
     }
 
-    /// **Source:** `Message_Msg.hxx`:122 - `Message_Msg::Value()`
+    /// **Source:** `Message_Msg.hxx`:123 - `Message_Msg::Value()`
     /// Returns current state of the message text with
     /// parameters to the moment
     pub fn value(&self) -> &crate::t_collection::ExtendedString {
@@ -5581,7 +5518,7 @@ impl Msg {
         }
     }
 
-    /// **Source:** `Message_Msg.hxx`:125 - `Message_Msg::IsEdited()`
+    /// **Source:** `Message_Msg.hxx`:126 - `Message_Msg::IsEdited()`
     /// Tells if Value differs from Original
     pub fn is_edited(&self) -> bool {
         crate::check_result(unsafe {
@@ -5589,7 +5526,7 @@ impl Msg {
         })
     }
 
-    /// **Source:** `Message_Msg.hxx`:131 - `Message_Msg::Get()`
+    /// **Source:** `Message_Msg.hxx`:132 - `Message_Msg::Get()`
     /// Return the resulting message string with all parameters
     /// filled. If some parameters were not yet filled by calls
     /// to methods Arg (or <<), these parameters are filled by
@@ -5666,7 +5603,7 @@ impl MsgFile {
         })
     }
 
-    /// **Source:** `Message_MsgFile.hxx`:65 - `Message_MsgFile::LoadFile()`
+    /// **Source:** `Message_MsgFile.hxx`:64 - `Message_MsgFile::LoadFile()`
     /// Load the messages from the given file, additive to any previously
     /// loaded messages. Messages with same keywords, if already present,
     /// are replaced with the new ones.
@@ -5677,7 +5614,7 @@ impl MsgFile {
         })
     }
 
-    /// **Source:** `Message_MsgFile.hxx`:75 - `Message_MsgFile::LoadFromEnv()`
+    /// **Source:** `Message_MsgFile.hxx`:74 - `Message_MsgFile::LoadFromEnv()`
     /// Loads the messages from the file with name (without extension) given by environment variable.
     /// Extension of the file name is given separately. If its not defined, it is taken:
     /// - by default from environment CSF_LANGUAGE,
@@ -5699,7 +5636,7 @@ impl MsgFile {
         })
     }
 
-    /// **Source:** `Message_MsgFile.hxx`:83 - `Message_MsgFile::LoadFromString()`
+    /// **Source:** `Message_MsgFile.hxx`:82 - `Message_MsgFile::LoadFromString()`
     /// Loads the messages from the given text buffer.
     /// @param theContent string containing the messages
     /// @param theLength  length of the buffer;
@@ -5714,7 +5651,7 @@ impl MsgFile {
         })
     }
 
-    /// **Source:** `Message_MsgFile.hxx`:90 - `Message_MsgFile::AddMsg()`
+    /// **Source:** `Message_MsgFile.hxx`:89 - `Message_MsgFile::AddMsg()`
     /// Adds new message to the map. Parameter <key> gives
     /// the key of the message, <text> defines the message itself.
     /// If there already was defined the message identified by the
@@ -5728,13 +5665,13 @@ impl MsgFile {
         })
     }
 
-    /// **Source:** `Message_MsgFile.hxx`:94 - `Message_MsgFile::HasMsg()`
+    /// **Source:** `Message_MsgFile.hxx`:93 - `Message_MsgFile::HasMsg()`
     /// Returns True if message with specified keyword is registered
     pub fn has_msg(key: &crate::t_collection::AsciiString) -> bool {
         crate::check_result(unsafe { crate::ffi_extern_TKernel::Message_MsgFile_has_msg(key) })
     }
 
-    /// **Source:** `Message_MsgFile.hxx`:96 - `Message_MsgFile::Msg()`
+    /// **Source:** `Message_MsgFile.hxx`:95 - `Message_MsgFile::Msg()`
     pub fn msg_charptr(key: &str) -> &'static crate::t_collection::ExtendedString {
         let c_key = std::ffi::CString::new(key).unwrap();
         unsafe {
@@ -5744,7 +5681,7 @@ impl MsgFile {
         }
     }
 
-    /// **Source:** `Message_MsgFile.hxx`:103 - `Message_MsgFile::Msg()`
+    /// **Source:** `Message_MsgFile.hxx`:102 - `Message_MsgFile::Msg()`
     /// Gives the text for the message identified by the keyword <key>.
     /// If there are no messages with such keyword defined, the error message is returned.
     /// In that case reference to static string is returned, it can be changed with next call(s) to
@@ -5763,7 +5700,7 @@ impl MsgFile {
 // From Message_Printer.hxx
 // ========================
 
-/// **Source:** `Message_Printer.hxx`:36 - `Message_Printer`
+/// **Source:** `Message_Printer.hxx`:33 - `Message_Printer`
 /// Abstract interface class defining printer as output context for text messages
 ///
 /// The message, besides being text string, has associated gravity
@@ -5779,8 +5716,8 @@ unsafe impl crate::CppDeletable for Printer {
 }
 
 impl Printer {
-    /// **Source:** `Message_Printer.hxx`:38 - `Message_Printer::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `Message_Printer.hxx`:35 - `Message_Printer::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKernel::Message_Printer_dynamic_type(
                 self as *const Self,
@@ -5788,7 +5725,7 @@ impl Printer {
         }
     }
 
-    /// **Source:** `Message_Printer.hxx`:42 - `Message_Printer::GetTraceLevel()`
+    /// **Source:** `Message_Printer.hxx`:39 - `Message_Printer::GetTraceLevel()`
     /// Return trace level used for filtering messages;
     /// messages with lover gravity will be ignored.
     pub fn get_trace_level(&self) -> crate::message::Gravity {
@@ -5798,7 +5735,7 @@ impl Printer {
         .unwrap()
     }
 
-    /// **Source:** `Message_Printer.hxx`:46 - `Message_Printer::SetTraceLevel()`
+    /// **Source:** `Message_Printer.hxx`:43 - `Message_Printer::SetTraceLevel()`
     /// Set trace level used for filtering messages.
     /// By default, trace level is Message_Info, so that all messages are output
     pub fn set_trace_level(&mut self, theTraceLevel: crate::message::Gravity) {
@@ -5810,7 +5747,7 @@ impl Printer {
         })
     }
 
-    /// **Source:** `Message_Printer.hxx`:51 - `Message_Printer::Send()`
+    /// **Source:** `Message_Printer.hxx`:48 - `Message_Printer::Send()`
     /// Send a string message with specified trace level.
     /// The last Boolean argument is deprecated and unused.
     /// Default implementation redirects to send().
@@ -5828,7 +5765,7 @@ impl Printer {
         })
     }
 
-    /// **Source:** `Message_Printer.hxx`:57 - `Message_Printer::Send()`
+    /// **Source:** `Message_Printer.hxx`:54 - `Message_Printer::Send()`
     /// Send a string message with specified trace level.
     /// The last Boolean argument is deprecated and unused.
     /// Default implementation redirects to send().
@@ -5843,7 +5780,7 @@ impl Printer {
         })
     }
 
-    /// **Source:** `Message_Printer.hxx`:63 - `Message_Printer::Send()`
+    /// **Source:** `Message_Printer.hxx`:60 - `Message_Printer::Send()`
     /// Send a string message with specified trace level.
     /// The last Boolean argument is deprecated and unused.
     /// Default implementation redirects to send().
@@ -5861,7 +5798,7 @@ impl Printer {
         })
     }
 
-    /// **Source:** `Message_Printer.hxx`:69 - `Message_Printer::SendStringStream()`
+    /// **Source:** `Message_Printer.hxx`:66 - `Message_Printer::SendStringStream()`
     /// Send a string message with specified trace level.
     /// Stream is converted to string value.
     /// Default implementation calls first method Send().
@@ -5879,13 +5816,13 @@ impl Printer {
         })
     }
 
-    /// **Source:** `Message_Printer.hxx`:75 - `Message_Printer::SendObject()`
+    /// **Source:** `Message_Printer.hxx`:72 - `Message_Printer::SendObject()`
     /// Send a string message with specified trace level.
     /// The object is converted to string in format: <object kind> : <object pointer>.
     /// Default implementation calls first method Send().
     pub fn send_object(
         &self,
-        theObject: &crate::ffi_types::HandleStandardTransient,
+        theObject: &crate::ffi_types::Handle_Standard_Transient,
         theGravity: crate::message::Gravity,
     ) {
         crate::check_void_result(unsafe {
@@ -5897,7 +5834,7 @@ impl Printer {
         })
     }
 
-    /// **Source:** `Message_Printer.hxx`:38 - `Message_Printer::get_type_name()`
+    /// **Source:** `Message_Printer.hxx`:35 - `Message_Printer::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -5908,8 +5845,8 @@ impl Printer {
         .into_owned()
     }
 
-    /// **Source:** `Message_Printer.hxx`:38 - `Message_Printer::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    /// **Source:** `Message_Printer.hxx`:35 - `Message_Printer::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKernel::Message_Printer_get_type_descriptor()))
         }
@@ -5935,8 +5872,8 @@ impl Printer {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKernel::Message_Printer_inherited_IsInstance(
                 self as *const Self,
@@ -5945,8 +5882,8 @@ impl Printer {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKernel::Message_Printer_inherited_IsKind(
                 self as *const Self,
@@ -5955,7 +5892,7 @@ impl Printer {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -5969,14 +5906,14 @@ impl Printer {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKernel::Message_Printer_inherited_GetRefCount(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKernel::Message_Printer_inherited_IncrementRefCounter(
@@ -5985,7 +5922,7 @@ impl Printer {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKernel::Message_Printer_inherited_DecrementRefCounter(
@@ -5994,7 +5931,7 @@ impl Printer {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKernel::Message_Printer_inherited_Delete(self as *const Self)
@@ -6002,32 +5939,32 @@ impl Printer {
     }
 }
 
-pub use crate::ffi_types::HandleMessagePrinter;
+pub use crate::ffi_types::Handle_Message_Printer;
 
-unsafe impl crate::CppDeletable for HandleMessagePrinter {
+unsafe impl crate::CppDeletable for Handle_Message_Printer {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKernel::HandleMessagePrinter_destructor(ptr);
+            crate::ffi_extern_TKernel::Handle_Message_Printer_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleMessagePrinter {
+unsafe impl crate::CppCopyable for Handle_Message_Printer {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        unsafe { crate::check_result(crate::ffi_extern_TKernel::HandleMessagePrinter_clone(ptr)) }
+        unsafe { crate::check_result(crate::ffi_extern_TKernel::Handle_Message_Printer_clone(ptr)) }
     }
 }
 
-impl HandleMessagePrinter {
+impl Handle_Message_Printer {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
-        unsafe { crate::ffi_extern_TKernel::HandleMessagePrinter_is_null(self as *const Self) }
+        unsafe { crate::ffi_extern_TKernel::Handle_Message_Printer_is_null(self as *const Self) }
     }
 
     /// Dereference this Handle to access the underlying Message_Printer
     pub fn get(&self) -> &crate::ffi_types::Message_Printer {
         unsafe {
-            &*crate::check_result(crate::ffi_extern_TKernel::HandleMessagePrinter_get(
+            &*crate::check_result(crate::ffi_extern_TKernel::Handle_Message_Printer_get(
                 self as *const Self,
             ))
         }
@@ -6036,7 +5973,7 @@ impl HandleMessagePrinter {
     /// Dereference this Handle to mutably access the underlying Message_Printer
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::Message_Printer {
         unsafe {
-            &mut *crate::check_result(crate::ffi_extern_TKernel::HandleMessagePrinter_get_mut(
+            &mut *crate::check_result(crate::ffi_extern_TKernel::Handle_Message_Printer_get_mut(
                 self as *mut Self,
             ))
         }
@@ -6045,10 +5982,10 @@ impl HandleMessagePrinter {
     /// Upcast Handle<Message_Printer> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKernel::HandleMessagePrinter_to_HandleStandardTransient(
+                crate::ffi_extern_TKernel::Handle_Message_Printer_to_Handle_Standard_Transient(
                     self as *const Self,
                 ),
             ))
@@ -6060,11 +5997,9 @@ impl HandleMessagePrinter {
     /// Returns `None` if the handle does not point to a `Message_PrinterOStream` (or subclass).
     pub fn downcast_to_printer_o_stream(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleMessagePrinterOStream>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_Message_PrinterOStream>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKernel::HandleMessagePrinter_downcast_to_HandleMessagePrinterOStream(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKernel::Handle_Message_Printer_downcast_to_Handle_Message_PrinterOStream(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -6078,9 +6013,9 @@ impl HandleMessagePrinter {
     /// Returns `None` if the handle does not point to a `Message_PrinterSystemLog` (or subclass).
     pub fn downcast_to_printer_system_log(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleMessagePrinterSystemLog>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_Message_PrinterSystemLog>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKernel::HandleMessagePrinter_downcast_to_HandleMessagePrinterSystemLog(self as *const Self)
+            crate::ffi_extern_TKernel::Handle_Message_Printer_downcast_to_Handle_Message_PrinterSystemLog(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -6094,11 +6029,9 @@ impl HandleMessagePrinter {
     /// Returns `None` if the handle does not point to a `Message_PrinterToReport` (or subclass).
     pub fn downcast_to_printer_to_report(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleMessagePrinterToReport>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::Handle_Message_PrinterToReport>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi_extern_TKernel::HandleMessagePrinter_downcast_to_HandleMessagePrinterToReport(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKernel::Handle_Message_Printer_downcast_to_Handle_Message_PrinterToReport(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -6112,7 +6045,7 @@ impl HandleMessagePrinter {
 // From Message_PrinterOStream.hxx
 // ========================
 
-/// **Source:** `Message_PrinterOStream.hxx`:29 - `Message_PrinterOStream`
+/// **Source:** `Message_PrinterOStream.hxx`:26 - `Message_PrinterOStream`
 /// Implementation of a message printer associated with an std::ostream
 /// The std::ostream may be either externally defined one (e.g. std::cout),
 /// or file stream maintained internally (depending on constructor).
@@ -6127,7 +6060,7 @@ unsafe impl crate::CppDeletable for PrinterOStream {
 }
 
 impl PrinterOStream {
-    /// **Source:** `Message_PrinterOStream.hxx`:48 - `Message_PrinterOStream::Message_PrinterOStream()`
+    /// **Source:** `Message_PrinterOStream.hxx`:45 - `Message_PrinterOStream::Message_PrinterOStream()`
     /// Empty constructor, defaulting to cout
     pub fn new_gravity(theTraceLevel: crate::message::Gravity) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -6139,7 +6072,7 @@ impl PrinterOStream {
         }
     }
 
-    /// **Source:** `Message_PrinterOStream.hxx`:54 - `Message_PrinterOStream::Message_PrinterOStream()`
+    /// **Source:** `Message_PrinterOStream.hxx`:51 - `Message_PrinterOStream::Message_PrinterOStream()`
     /// Create printer for output to a specified file.
     /// The option theDoAppend specifies whether file should be
     /// appended or rewritten.
@@ -6161,8 +6094,8 @@ impl PrinterOStream {
         }
     }
 
-    /// **Source:** `Message_PrinterOStream.hxx`:31 - `Message_PrinterOStream::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `Message_PrinterOStream.hxx`:28 - `Message_PrinterOStream::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKernel::Message_PrinterOStream_dynamic_type(
                 self as *const Self,
@@ -6170,7 +6103,7 @@ impl PrinterOStream {
         }
     }
 
-    /// **Source:** `Message_PrinterOStream.hxx`:61 - `Message_PrinterOStream::Close()`
+    /// **Source:** `Message_PrinterOStream.hxx`:58 - `Message_PrinterOStream::Close()`
     /// Flushes the output stream and destroys it if it has been
     /// specified externally with option doFree (or if it is internal
     /// file stream)
@@ -6180,7 +6113,7 @@ impl PrinterOStream {
         })
     }
 
-    /// **Source:** `Message_PrinterOStream.hxx`:66 - `Message_PrinterOStream::GetStream()`
+    /// **Source:** `Message_PrinterOStream.hxx`:63 - `Message_PrinterOStream::GetStream()`
     /// Returns reference to the output stream
     pub fn get_stream(&mut self) -> &mut crate::ffi_types::Standard_OStream {
         unsafe {
@@ -6190,7 +6123,7 @@ impl PrinterOStream {
         }
     }
 
-    /// **Source:** `Message_PrinterOStream.hxx`:70 - `Message_PrinterOStream::ToColorize()`
+    /// **Source:** `Message_PrinterOStream.hxx`:67 - `Message_PrinterOStream::ToColorize()`
     /// Returns TRUE if text output into console should be colorized depending on message gravity;
     /// TRUE by default.
     pub fn to_colorize(&self) -> bool {
@@ -6199,7 +6132,7 @@ impl PrinterOStream {
         })
     }
 
-    /// **Source:** `Message_PrinterOStream.hxx`:73 - `Message_PrinterOStream::SetToColorize()`
+    /// **Source:** `Message_PrinterOStream.hxx`:70 - `Message_PrinterOStream::SetToColorize()`
     /// Set if text output into console should be colorized depending on message gravity.
     pub fn set_to_colorize(&mut self, theToColorize: bool) {
         crate::check_void_result(unsafe {
@@ -6210,7 +6143,7 @@ impl PrinterOStream {
         })
     }
 
-    /// **Source:** `Message_PrinterOStream.hxx`:31 - `Message_PrinterOStream::get_type_name()`
+    /// **Source:** `Message_PrinterOStream.hxx`:28 - `Message_PrinterOStream::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -6221,8 +6154,8 @@ impl PrinterOStream {
         .into_owned()
     }
 
-    /// **Source:** `Message_PrinterOStream.hxx`:31 - `Message_PrinterOStream::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    /// **Source:** `Message_PrinterOStream.hxx`:28 - `Message_PrinterOStream::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKernel::Message_PrinterOStream_get_type_descriptor(),
@@ -6230,7 +6163,7 @@ impl PrinterOStream {
         }
     }
 
-    /// **Source:** `Message_PrinterOStream.hxx`:42 - `Message_PrinterOStream::SetConsoleTextColor()`
+    /// **Source:** `Message_PrinterOStream.hxx`:39 - `Message_PrinterOStream::SetConsoleTextColor()`
     /// Setup console text color.
     ///
     /// On Windows, this would affect active terminal color output.
@@ -6301,7 +6234,7 @@ impl PrinterOStream {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleMessagePrinterOStream> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Message_PrinterOStream> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKernel::Message_PrinterOStream_to_handle(obj.into_raw()),
@@ -6309,7 +6242,7 @@ impl PrinterOStream {
         }
     }
 
-    /// Inherited: **Source:** `Message_Printer.hxx`:42 - `Message_Printer::GetTraceLevel()`
+    /// Inherited: **Source:** `Message_Printer.hxx`:39 - `Message_Printer::GetTraceLevel()`
     pub fn get_trace_level(&self) -> crate::message::Gravity {
         crate::message::Gravity::try_from(crate::check_result(unsafe {
             crate::ffi_extern_TKernel::Message_PrinterOStream_inherited_GetTraceLevel(
@@ -6319,7 +6252,7 @@ impl PrinterOStream {
         .unwrap()
     }
 
-    /// Inherited: **Source:** `Message_Printer.hxx`:46 - `Message_Printer::SetTraceLevel()`
+    /// Inherited: **Source:** `Message_Printer.hxx`:43 - `Message_Printer::SetTraceLevel()`
     pub fn set_trace_level(&mut self, theTraceLevel: crate::message::Gravity) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKernel::Message_PrinterOStream_inherited_SetTraceLevel(
@@ -6329,7 +6262,7 @@ impl PrinterOStream {
         })
     }
 
-    /// Inherited: **Source:** `Message_Printer.hxx`:51 - `Message_Printer::Send()`
+    /// Inherited: **Source:** `Message_Printer.hxx`:48 - `Message_Printer::Send()`
     pub fn send(
         &self,
         theString: &crate::t_collection::ExtendedString,
@@ -6344,7 +6277,7 @@ impl PrinterOStream {
         })
     }
 
-    /// Inherited: **Source:** `Message_Printer.hxx`:69 - `Message_Printer::SendStringStream()`
+    /// Inherited: **Source:** `Message_Printer.hxx`:66 - `Message_Printer::SendStringStream()`
     pub fn send_string_stream(
         &self,
         theStream: &crate::ffi_types::Standard_SStream,
@@ -6359,10 +6292,10 @@ impl PrinterOStream {
         })
     }
 
-    /// Inherited: **Source:** `Message_Printer.hxx`:75 - `Message_Printer::SendObject()`
+    /// Inherited: **Source:** `Message_Printer.hxx`:72 - `Message_Printer::SendObject()`
     pub fn send_object(
         &self,
-        theObject: &crate::ffi_types::HandleStandardTransient,
+        theObject: &crate::ffi_types::Handle_Standard_Transient,
         theGravity: crate::message::Gravity,
     ) {
         crate::check_void_result(unsafe {
@@ -6374,8 +6307,8 @@ impl PrinterOStream {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKernel::Message_PrinterOStream_inherited_IsInstance(
                 self as *const Self,
@@ -6384,8 +6317,8 @@ impl PrinterOStream {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKernel::Message_PrinterOStream_inherited_IsKind(
                 self as *const Self,
@@ -6394,7 +6327,7 @@ impl PrinterOStream {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -6410,7 +6343,7 @@ impl PrinterOStream {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKernel::Message_PrinterOStream_inherited_GetRefCount(
@@ -6419,7 +6352,7 @@ impl PrinterOStream {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKernel::Message_PrinterOStream_inherited_IncrementRefCounter(
@@ -6428,7 +6361,7 @@ impl PrinterOStream {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKernel::Message_PrinterOStream_inherited_DecrementRefCounter(
@@ -6437,7 +6370,7 @@ impl PrinterOStream {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKernel::Message_PrinterOStream_inherited_Delete(self as *const Self)
@@ -6445,36 +6378,36 @@ impl PrinterOStream {
     }
 }
 
-pub use crate::ffi_types::HandleMessagePrinterOStream;
+pub use crate::ffi_types::Handle_Message_PrinterOStream;
 
-unsafe impl crate::CppDeletable for HandleMessagePrinterOStream {
+unsafe impl crate::CppDeletable for Handle_Message_PrinterOStream {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKernel::HandleMessagePrinterOStream_destructor(ptr);
+            crate::ffi_extern_TKernel::Handle_Message_PrinterOStream_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleMessagePrinterOStream {
+unsafe impl crate::CppCopyable for Handle_Message_PrinterOStream {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
         unsafe {
-            crate::check_result(crate::ffi_extern_TKernel::HandleMessagePrinterOStream_clone(ptr))
+            crate::check_result(crate::ffi_extern_TKernel::Handle_Message_PrinterOStream_clone(ptr))
         }
     }
 }
 
-impl HandleMessagePrinterOStream {
+impl Handle_Message_PrinterOStream {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
         unsafe {
-            crate::ffi_extern_TKernel::HandleMessagePrinterOStream_is_null(self as *const Self)
+            crate::ffi_extern_TKernel::Handle_Message_PrinterOStream_is_null(self as *const Self)
         }
     }
 
     /// Dereference this Handle to access the underlying Message_PrinterOStream
     pub fn get(&self) -> &crate::ffi_types::Message_PrinterOStream {
         unsafe {
-            &*crate::check_result(crate::ffi_extern_TKernel::HandleMessagePrinterOStream_get(
+            &*crate::check_result(crate::ffi_extern_TKernel::Handle_Message_PrinterOStream_get(
                 self as *const Self,
             ))
         }
@@ -6484,16 +6417,16 @@ impl HandleMessagePrinterOStream {
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::Message_PrinterOStream {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi_extern_TKernel::HandleMessagePrinterOStream_get_mut(self as *mut Self),
+                crate::ffi_extern_TKernel::Handle_Message_PrinterOStream_get_mut(self as *mut Self),
             )
         }
     }
 
     /// Upcast Handle<Message_PrinterOStream> to Handle<Message_Printer>
-    pub fn to_handle_printer(&self) -> crate::OwnedPtr<crate::ffi_types::HandleMessagePrinter> {
+    pub fn to_handle_printer(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_Message_Printer> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKernel::HandleMessagePrinterOStream_to_HandleMessagePrinter(
+                crate::ffi_extern_TKernel::Handle_Message_PrinterOStream_to_Handle_Message_Printer(
                     self as *const Self,
                 ),
             ))
@@ -6503,13 +6436,9 @@ impl HandleMessagePrinterOStream {
     /// Upcast Handle<Message_PrinterOStream> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKernel::HandleMessagePrinterOStream_to_HandleStandardTransient(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKernel::Handle_Message_PrinterOStream_to_Handle_Standard_Transient(self as *const Self)))
         }
     }
 }
@@ -6518,7 +6447,7 @@ impl HandleMessagePrinterOStream {
 // From Message_PrinterSystemLog.hxx
 // ========================
 
-/// **Source:** `Message_PrinterSystemLog.hxx`:27 - `Message_PrinterSystemLog`
+/// **Source:** `Message_PrinterSystemLog.hxx`:25 - `Message_PrinterSystemLog`
 /// Implementation of a message printer associated with system log.
 /// Implemented for the following systems:
 /// - Windows, through ReportEventW().
@@ -6535,7 +6464,7 @@ unsafe impl crate::CppDeletable for PrinterSystemLog {
 }
 
 impl PrinterSystemLog {
-    /// **Source:** `Message_PrinterSystemLog.hxx`:32 - `Message_PrinterSystemLog::Message_PrinterSystemLog()`
+    /// **Source:** `Message_PrinterSystemLog.hxx`:30 - `Message_PrinterSystemLog::Message_PrinterSystemLog()`
     /// Main constructor.
     pub fn new_asciistring_gravity(
         theEventSourceName: &crate::t_collection::AsciiString,
@@ -6551,8 +6480,8 @@ impl PrinterSystemLog {
         }
     }
 
-    /// **Source:** `Message_PrinterSystemLog.hxx`:29 - `Message_PrinterSystemLog::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `Message_PrinterSystemLog.hxx`:27 - `Message_PrinterSystemLog::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKernel::Message_PrinterSystemLog_dynamic_type(
@@ -6562,7 +6491,7 @@ impl PrinterSystemLog {
         }
     }
 
-    /// **Source:** `Message_PrinterSystemLog.hxx`:29 - `Message_PrinterSystemLog::get_type_name()`
+    /// **Source:** `Message_PrinterSystemLog.hxx`:27 - `Message_PrinterSystemLog::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -6573,8 +6502,8 @@ impl PrinterSystemLog {
         .into_owned()
     }
 
-    /// **Source:** `Message_PrinterSystemLog.hxx`:29 - `Message_PrinterSystemLog::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    /// **Source:** `Message_PrinterSystemLog.hxx`:27 - `Message_PrinterSystemLog::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKernel::Message_PrinterSystemLog_get_type_descriptor(),
@@ -6629,7 +6558,7 @@ impl PrinterSystemLog {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleMessagePrinterSystemLog> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Message_PrinterSystemLog> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKernel::Message_PrinterSystemLog_to_handle(obj.into_raw()),
@@ -6637,7 +6566,7 @@ impl PrinterSystemLog {
         }
     }
 
-    /// Inherited: **Source:** `Message_Printer.hxx`:42 - `Message_Printer::GetTraceLevel()`
+    /// Inherited: **Source:** `Message_Printer.hxx`:39 - `Message_Printer::GetTraceLevel()`
     pub fn get_trace_level(&self) -> crate::message::Gravity {
         crate::message::Gravity::try_from(crate::check_result(unsafe {
             crate::ffi_extern_TKernel::Message_PrinterSystemLog_inherited_GetTraceLevel(
@@ -6647,7 +6576,7 @@ impl PrinterSystemLog {
         .unwrap()
     }
 
-    /// Inherited: **Source:** `Message_Printer.hxx`:46 - `Message_Printer::SetTraceLevel()`
+    /// Inherited: **Source:** `Message_Printer.hxx`:43 - `Message_Printer::SetTraceLevel()`
     pub fn set_trace_level(&mut self, theTraceLevel: crate::message::Gravity) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKernel::Message_PrinterSystemLog_inherited_SetTraceLevel(
@@ -6657,7 +6586,7 @@ impl PrinterSystemLog {
         })
     }
 
-    /// Inherited: **Source:** `Message_Printer.hxx`:51 - `Message_Printer::Send()`
+    /// Inherited: **Source:** `Message_Printer.hxx`:48 - `Message_Printer::Send()`
     pub fn send(
         &self,
         theString: &crate::t_collection::ExtendedString,
@@ -6672,7 +6601,7 @@ impl PrinterSystemLog {
         })
     }
 
-    /// Inherited: **Source:** `Message_Printer.hxx`:69 - `Message_Printer::SendStringStream()`
+    /// Inherited: **Source:** `Message_Printer.hxx`:66 - `Message_Printer::SendStringStream()`
     pub fn send_string_stream(
         &self,
         theStream: &crate::ffi_types::Standard_SStream,
@@ -6687,10 +6616,10 @@ impl PrinterSystemLog {
         })
     }
 
-    /// Inherited: **Source:** `Message_Printer.hxx`:75 - `Message_Printer::SendObject()`
+    /// Inherited: **Source:** `Message_Printer.hxx`:72 - `Message_Printer::SendObject()`
     pub fn send_object(
         &self,
-        theObject: &crate::ffi_types::HandleStandardTransient,
+        theObject: &crate::ffi_types::Handle_Standard_Transient,
         theGravity: crate::message::Gravity,
     ) {
         crate::check_void_result(unsafe {
@@ -6702,8 +6631,8 @@ impl PrinterSystemLog {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKernel::Message_PrinterSystemLog_inherited_IsInstance(
                 self as *const Self,
@@ -6712,8 +6641,8 @@ impl PrinterSystemLog {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKernel::Message_PrinterSystemLog_inherited_IsKind(
                 self as *const Self,
@@ -6722,7 +6651,7 @@ impl PrinterSystemLog {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -6738,7 +6667,7 @@ impl PrinterSystemLog {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKernel::Message_PrinterSystemLog_inherited_GetRefCount(
@@ -6747,7 +6676,7 @@ impl PrinterSystemLog {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKernel::Message_PrinterSystemLog_inherited_IncrementRefCounter(
@@ -6756,7 +6685,7 @@ impl PrinterSystemLog {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKernel::Message_PrinterSystemLog_inherited_DecrementRefCounter(
@@ -6765,7 +6694,7 @@ impl PrinterSystemLog {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKernel::Message_PrinterSystemLog_inherited_Delete(
@@ -6775,36 +6704,38 @@ impl PrinterSystemLog {
     }
 }
 
-pub use crate::ffi_types::HandleMessagePrinterSystemLog;
+pub use crate::ffi_types::Handle_Message_PrinterSystemLog;
 
-unsafe impl crate::CppDeletable for HandleMessagePrinterSystemLog {
+unsafe impl crate::CppDeletable for Handle_Message_PrinterSystemLog {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKernel::HandleMessagePrinterSystemLog_destructor(ptr);
+            crate::ffi_extern_TKernel::Handle_Message_PrinterSystemLog_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleMessagePrinterSystemLog {
+unsafe impl crate::CppCopyable for Handle_Message_PrinterSystemLog {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
         unsafe {
-            crate::check_result(crate::ffi_extern_TKernel::HandleMessagePrinterSystemLog_clone(ptr))
+            crate::check_result(crate::ffi_extern_TKernel::Handle_Message_PrinterSystemLog_clone(
+                ptr,
+            ))
         }
     }
 }
 
-impl HandleMessagePrinterSystemLog {
+impl Handle_Message_PrinterSystemLog {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
         unsafe {
-            crate::ffi_extern_TKernel::HandleMessagePrinterSystemLog_is_null(self as *const Self)
+            crate::ffi_extern_TKernel::Handle_Message_PrinterSystemLog_is_null(self as *const Self)
         }
     }
 
     /// Dereference this Handle to access the underlying Message_PrinterSystemLog
     pub fn get(&self) -> &crate::ffi_types::Message_PrinterSystemLog {
         unsafe {
-            &*crate::check_result(crate::ffi_extern_TKernel::HandleMessagePrinterSystemLog_get(
+            &*crate::check_result(crate::ffi_extern_TKernel::Handle_Message_PrinterSystemLog_get(
                 self as *const Self,
             ))
         }
@@ -6814,32 +6745,26 @@ impl HandleMessagePrinterSystemLog {
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::Message_PrinterSystemLog {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi_extern_TKernel::HandleMessagePrinterSystemLog_get_mut(self as *mut Self),
+                crate::ffi_extern_TKernel::Handle_Message_PrinterSystemLog_get_mut(
+                    self as *mut Self,
+                ),
             )
         }
     }
 
     /// Upcast Handle<Message_PrinterSystemLog> to Handle<Message_Printer>
-    pub fn to_handle_printer(&self) -> crate::OwnedPtr<crate::ffi_types::HandleMessagePrinter> {
+    pub fn to_handle_printer(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_Message_Printer> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKernel::HandleMessagePrinterSystemLog_to_HandleMessagePrinter(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKernel::Handle_Message_PrinterSystemLog_to_Handle_Message_Printer(self as *const Self)))
         }
     }
 
     /// Upcast Handle<Message_PrinterSystemLog> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKernel::HandleMessagePrinterSystemLog_to_HandleStandardTransient(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKernel::Handle_Message_PrinterSystemLog_to_Handle_Standard_Transient(self as *const Self)))
         }
     }
 }
@@ -6874,7 +6799,7 @@ impl PrinterToReport {
     }
 
     /// **Source:** `Message_PrinterToReport.hxx`:27 - `Message_PrinterToReport::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKernel::Message_PrinterToReport_dynamic_type(
@@ -6886,7 +6811,7 @@ impl PrinterToReport {
 
     /// **Source:** `Message_PrinterToReport.hxx`:36 - `Message_PrinterToReport::Report()`
     /// Returns the current or default report
-    pub fn report(&self) -> &crate::ffi_types::HandleMessageReport {
+    pub fn report(&self) -> &crate::ffi_types::Handle_Message_Report {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKernel::Message_PrinterToReport_report(
                 self as *const Self,
@@ -6897,7 +6822,7 @@ impl PrinterToReport {
     /// **Source:** `Message_PrinterToReport.hxx`:40 - `Message_PrinterToReport::SetReport()`
     /// Sets the printer report
     /// @param theReport report for messages processing, if NULL, the default report is used
-    pub fn set_report(&mut self, theReport: &crate::ffi_types::HandleMessageReport) {
+    pub fn set_report(&mut self, theReport: &crate::ffi_types::Handle_Message_Report) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKernel::Message_PrinterToReport_set_report(
                 self as *mut Self,
@@ -6924,14 +6849,14 @@ impl PrinterToReport {
         })
     }
 
-    /// **Source:** `Message_PrinterToReport.hxx`:53 - `Message_PrinterToReport::SendObject()`
+    /// **Source:** `Message_PrinterToReport.hxx`:52 - `Message_PrinterToReport::SendObject()`
     /// Send a string message with specified trace level.
     /// The object is converted to string in format: <object kind> : <object pointer>.
     /// The parameter theToPutEol specified whether end-of-line should be added to the end of the
     /// message. Default implementation calls first method Send().
     pub fn send_object(
         &self,
-        theObject: &crate::ffi_types::HandleStandardTransient,
+        theObject: &crate::ffi_types::Handle_Standard_Transient,
         theGravity: crate::message::Gravity,
     ) {
         crate::check_void_result(unsafe {
@@ -6955,7 +6880,7 @@ impl PrinterToReport {
     }
 
     /// **Source:** `Message_PrinterToReport.hxx`:27 - `Message_PrinterToReport::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKernel::Message_PrinterToReport_get_type_descriptor(),
@@ -7010,7 +6935,7 @@ impl PrinterToReport {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleMessagePrinterToReport> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Message_PrinterToReport> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKernel::Message_PrinterToReport_to_handle(obj.into_raw()),
@@ -7018,7 +6943,7 @@ impl PrinterToReport {
         }
     }
 
-    /// Inherited: **Source:** `Message_Printer.hxx`:42 - `Message_Printer::GetTraceLevel()`
+    /// Inherited: **Source:** `Message_Printer.hxx`:39 - `Message_Printer::GetTraceLevel()`
     pub fn get_trace_level(&self) -> crate::message::Gravity {
         crate::message::Gravity::try_from(crate::check_result(unsafe {
             crate::ffi_extern_TKernel::Message_PrinterToReport_inherited_GetTraceLevel(
@@ -7028,7 +6953,7 @@ impl PrinterToReport {
         .unwrap()
     }
 
-    /// Inherited: **Source:** `Message_Printer.hxx`:46 - `Message_Printer::SetTraceLevel()`
+    /// Inherited: **Source:** `Message_Printer.hxx`:43 - `Message_Printer::SetTraceLevel()`
     pub fn set_trace_level(&mut self, theTraceLevel: crate::message::Gravity) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKernel::Message_PrinterToReport_inherited_SetTraceLevel(
@@ -7038,7 +6963,7 @@ impl PrinterToReport {
         })
     }
 
-    /// Inherited: **Source:** `Message_Printer.hxx`:51 - `Message_Printer::Send()`
+    /// Inherited: **Source:** `Message_Printer.hxx`:48 - `Message_Printer::Send()`
     pub fn send(
         &self,
         theString: &crate::t_collection::ExtendedString,
@@ -7053,8 +6978,8 @@ impl PrinterToReport {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKernel::Message_PrinterToReport_inherited_IsInstance(
                 self as *const Self,
@@ -7063,8 +6988,8 @@ impl PrinterToReport {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKernel::Message_PrinterToReport_inherited_IsKind(
                 self as *const Self,
@@ -7073,7 +6998,7 @@ impl PrinterToReport {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -7089,7 +7014,7 @@ impl PrinterToReport {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKernel::Message_PrinterToReport_inherited_GetRefCount(
@@ -7098,7 +7023,7 @@ impl PrinterToReport {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKernel::Message_PrinterToReport_inherited_IncrementRefCounter(
@@ -7107,7 +7032,7 @@ impl PrinterToReport {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKernel::Message_PrinterToReport_inherited_DecrementRefCounter(
@@ -7116,7 +7041,7 @@ impl PrinterToReport {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKernel::Message_PrinterToReport_inherited_Delete(self as *const Self)
@@ -7124,36 +7049,38 @@ impl PrinterToReport {
     }
 }
 
-pub use crate::ffi_types::HandleMessagePrinterToReport;
+pub use crate::ffi_types::Handle_Message_PrinterToReport;
 
-unsafe impl crate::CppDeletable for HandleMessagePrinterToReport {
+unsafe impl crate::CppDeletable for Handle_Message_PrinterToReport {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKernel::HandleMessagePrinterToReport_destructor(ptr);
+            crate::ffi_extern_TKernel::Handle_Message_PrinterToReport_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleMessagePrinterToReport {
+unsafe impl crate::CppCopyable for Handle_Message_PrinterToReport {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
         unsafe {
-            crate::check_result(crate::ffi_extern_TKernel::HandleMessagePrinterToReport_clone(ptr))
+            crate::check_result(crate::ffi_extern_TKernel::Handle_Message_PrinterToReport_clone(
+                ptr,
+            ))
         }
     }
 }
 
-impl HandleMessagePrinterToReport {
+impl Handle_Message_PrinterToReport {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
         unsafe {
-            crate::ffi_extern_TKernel::HandleMessagePrinterToReport_is_null(self as *const Self)
+            crate::ffi_extern_TKernel::Handle_Message_PrinterToReport_is_null(self as *const Self)
         }
     }
 
     /// Dereference this Handle to access the underlying Message_PrinterToReport
     pub fn get(&self) -> &crate::ffi_types::Message_PrinterToReport {
         unsafe {
-            &*crate::check_result(crate::ffi_extern_TKernel::HandleMessagePrinterToReport_get(
+            &*crate::check_result(crate::ffi_extern_TKernel::Handle_Message_PrinterToReport_get(
                 self as *const Self,
             ))
         }
@@ -7163,16 +7090,18 @@ impl HandleMessagePrinterToReport {
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::Message_PrinterToReport {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi_extern_TKernel::HandleMessagePrinterToReport_get_mut(self as *mut Self),
+                crate::ffi_extern_TKernel::Handle_Message_PrinterToReport_get_mut(
+                    self as *mut Self,
+                ),
             )
         }
     }
 
     /// Upcast Handle<Message_PrinterToReport> to Handle<Message_Printer>
-    pub fn to_handle_printer(&self) -> crate::OwnedPtr<crate::ffi_types::HandleMessagePrinter> {
+    pub fn to_handle_printer(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_Message_Printer> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKernel::HandleMessagePrinterToReport_to_HandleMessagePrinter(
+                crate::ffi_extern_TKernel::Handle_Message_PrinterToReport_to_Handle_Message_Printer(
                     self as *const Self,
                 ),
             ))
@@ -7182,13 +7111,9 @@ impl HandleMessagePrinterToReport {
     /// Upcast Handle<Message_PrinterToReport> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKernel::HandleMessagePrinterToReport_to_HandleStandardTransient(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKernel::Handle_Message_PrinterToReport_to_Handle_Standard_Transient(self as *const Self)))
         }
     }
 }
@@ -7197,7 +7122,7 @@ impl HandleMessagePrinterToReport {
 // From Message_ProgressIndicator.hxx
 // ========================
 
-/// **Source:** `Message_ProgressIndicator.hxx`:58 - `Message_ProgressIndicator`
+/// **Source:** `Message_ProgressIndicator.hxx`:59 - `Message_ProgressIndicator`
 /// Defines abstract interface from program to the user.
 /// This includes progress indication and user break mechanisms.
 ///
@@ -7207,7 +7132,7 @@ impl HandleMessagePrinterToReport {
 /// to reset progress indicator and get access to the root range:
 ///
 /// @code{.cpp}
-/// Handle(Message_ProgressIndicator) aProgress = ...;
+/// occ::handle<Message_ProgressIndicator> aProgress = ...;
 /// anAlgorithm.Perform (aProgress->Start());
 /// @endcode
 ///
@@ -7239,8 +7164,8 @@ unsafe impl crate::CppDeletable for ProgressIndicator {
 }
 
 impl ProgressIndicator {
-    /// **Source:** `Message_ProgressIndicator.hxx`:60 - `Message_ProgressIndicator::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `Message_ProgressIndicator.hxx`:61 - `Message_ProgressIndicator::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKernel::Message_ProgressIndicator_dynamic_type(
@@ -7250,7 +7175,7 @@ impl ProgressIndicator {
         }
     }
 
-    /// **Source:** `Message_ProgressIndicator.hxx`:68 - `Message_ProgressIndicator::Start()`
+    /// **Source:** `Message_ProgressIndicator.hxx`:69 - `Message_ProgressIndicator::Start()`
     /// Resets the indicator to zero, calls Reset(), and returns the range.
     /// This range refers to the scope that has no name and is initialized
     /// with max value 1 and step 1.
@@ -7263,7 +7188,7 @@ impl ProgressIndicator {
         }
     }
 
-    /// **Source:** `Message_ProgressIndicator.hxx`:120 - `Message_ProgressIndicator::GetPosition()`
+    /// **Source:** `Message_ProgressIndicator.hxx`:121 - `Message_ProgressIndicator::GetPosition()`
     /// Returns total progress position ranged from 0 to 1.
     /// Should not be called concurrently while the progress is advancing,
     /// except from implementation of method Show().
@@ -7273,7 +7198,7 @@ impl ProgressIndicator {
         })
     }
 
-    /// **Source:** `Message_ProgressIndicator.hxx`:60 - `Message_ProgressIndicator::get_type_name()`
+    /// **Source:** `Message_ProgressIndicator.hxx`:61 - `Message_ProgressIndicator::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -7284,8 +7209,8 @@ impl ProgressIndicator {
         .into_owned()
     }
 
-    /// **Source:** `Message_ProgressIndicator.hxx`:60 - `Message_ProgressIndicator::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    /// **Source:** `Message_ProgressIndicator.hxx`:61 - `Message_ProgressIndicator::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKernel::Message_ProgressIndicator_get_type_descriptor(),
@@ -7293,12 +7218,12 @@ impl ProgressIndicator {
         }
     }
 
-    /// **Source:** `Message_ProgressIndicator.hxx`:73 - `Message_ProgressIndicator::Start()`
+    /// **Source:** `Message_ProgressIndicator.hxx`:74 - `Message_ProgressIndicator::Start()`
     /// If argument is non-null handle, returns theProgress->Start().
     /// Otherwise, returns dummy range that can be safely used in the algorithms
     /// but not bound to progress indicator.
     pub fn start_handlemessageprogressindicator(
-        theProgress: &crate::ffi_types::HandleMessageProgressIndicator,
+        theProgress: &crate::ffi_types::Handle_Message_ProgressIndicator,
     ) -> crate::OwnedPtr<ProgressRange> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKernel::Message_ProgressIndicator_start_handlemessageprogressindicator(theProgress)))
@@ -7327,8 +7252,8 @@ impl ProgressIndicator {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKernel::Message_ProgressIndicator_inherited_IsInstance(
                 self as *const Self,
@@ -7337,8 +7262,8 @@ impl ProgressIndicator {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKernel::Message_ProgressIndicator_inherited_IsKind(
                 self as *const Self,
@@ -7347,7 +7272,7 @@ impl ProgressIndicator {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -7363,7 +7288,7 @@ impl ProgressIndicator {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKernel::Message_ProgressIndicator_inherited_GetRefCount(
@@ -7372,7 +7297,7 @@ impl ProgressIndicator {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKernel::Message_ProgressIndicator_inherited_IncrementRefCounter(
@@ -7381,7 +7306,7 @@ impl ProgressIndicator {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKernel::Message_ProgressIndicator_inherited_DecrementRefCounter(
@@ -7390,7 +7315,7 @@ impl ProgressIndicator {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKernel::Message_ProgressIndicator_inherited_Delete(
@@ -7400,38 +7325,38 @@ impl ProgressIndicator {
     }
 }
 
-pub use crate::ffi_types::HandleMessageProgressIndicator;
+pub use crate::ffi_types::Handle_Message_ProgressIndicator;
 
-unsafe impl crate::CppDeletable for HandleMessageProgressIndicator {
+unsafe impl crate::CppDeletable for Handle_Message_ProgressIndicator {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKernel::HandleMessageProgressIndicator_destructor(ptr);
+            crate::ffi_extern_TKernel::Handle_Message_ProgressIndicator_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleMessageProgressIndicator {
+unsafe impl crate::CppCopyable for Handle_Message_ProgressIndicator {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
         unsafe {
-            crate::check_result(crate::ffi_extern_TKernel::HandleMessageProgressIndicator_clone(
+            crate::check_result(crate::ffi_extern_TKernel::Handle_Message_ProgressIndicator_clone(
                 ptr,
             ))
         }
     }
 }
 
-impl HandleMessageProgressIndicator {
+impl Handle_Message_ProgressIndicator {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
         unsafe {
-            crate::ffi_extern_TKernel::HandleMessageProgressIndicator_is_null(self as *const Self)
+            crate::ffi_extern_TKernel::Handle_Message_ProgressIndicator_is_null(self as *const Self)
         }
     }
 
     /// Dereference this Handle to access the underlying Message_ProgressIndicator
     pub fn get(&self) -> &crate::ffi_types::Message_ProgressIndicator {
         unsafe {
-            &*crate::check_result(crate::ffi_extern_TKernel::HandleMessageProgressIndicator_get(
+            &*crate::check_result(crate::ffi_extern_TKernel::Handle_Message_ProgressIndicator_get(
                 self as *const Self,
             ))
         }
@@ -7441,7 +7366,7 @@ impl HandleMessageProgressIndicator {
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::Message_ProgressIndicator {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi_extern_TKernel::HandleMessageProgressIndicator_get_mut(
+                crate::ffi_extern_TKernel::Handle_Message_ProgressIndicator_get_mut(
                     self as *mut Self,
                 ),
             )
@@ -7451,9 +7376,9 @@ impl HandleMessageProgressIndicator {
     /// Upcast Handle<Message_ProgressIndicator> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKernel::HandleMessageProgressIndicator_to_HandleStandardTransient(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKernel::Handle_Message_ProgressIndicator_to_Handle_Standard_Transient(self as *const Self)))
         }
     }
 }
@@ -7591,7 +7516,7 @@ impl ProgressRange {
 /// Then the progress is advanced within each task using its own range object.
 /// See example below.
 ///
-/// Note that while a range of the scope is specified using Standard_Real
+/// Note that while a range of the scope is specified using double
 /// (double) parameter, it is expected to be a positive integer value.
 /// If the range is not an integer, method Next() shall be called with
 /// explicit step argument, and the rounded value returned by method Value()
@@ -7610,7 +7535,7 @@ impl ProgressRange {
 /// Example of preparation of progress indicator:
 ///
 /// @code{.cpp}
-/// Handle(Message_ProgressIndicator) aProgress = ...; // assume it can be null
+/// occ::handle<Message_ProgressIndicator> aProgress = ...; // assume it can be null
 /// func (Message_ProgressIndicator::Start (aProgress));
 /// @endcode
 ///
@@ -7635,11 +7560,11 @@ impl ProgressRange {
 /// @code{.cpp}
 /// // Outer cycle
 /// Message_ProgressScope anOuter (theProgress, "Outer", nbOuter);
-/// for (Standard_Integer i = 0; i < nbOuter && anOuter.More(); i++)
+/// for (int i = 0; i < nbOuter && anOuter.More(); i++)
 /// {
 /// // Inner cycle
 /// Message_ProgressScope anInner (anOuter.Next(), "Inner", nbInner);
-/// for (Standard_Integer j = 0; j < nbInner && anInner.More(); j++)
+/// for (int j = 0; j < nbInner && anInner.More(); j++)
 /// {
 /// // Cycle body
 /// func (anInner.Next());
@@ -7656,7 +7581,7 @@ impl ProgressRange {
 /// // Create local scope covering the given progress range.
 /// // Set this scope to count aNbSteps steps.
 /// Message_ProgressScope aScope (theProgress, "", aNbSteps);
-/// for (Standard_Integer i = 0; i < aNbSteps && aScope.More(); i++)
+/// for (int i = 0; i < aNbSteps && aScope.More(); i++)
 /// {
 /// // Optional: pass range returned by method Next() to the nested algorithm
 /// // to allow it to show its progress too (by creating its own scope object).
@@ -7683,7 +7608,7 @@ impl ProgressRange {
 /// {
 /// // Note: it is essential that this method is executed only once for the same Task object
 /// Message_ProgressScope aPS (theTask.Range, NULL, theTask.Data.NbItems);
-/// for (Standard_Integer i = 0; i < theTask.Data.NbSteps && aPS.More(); i++)
+/// for (int i = 0; i < theTask.Data.NbSteps && aPS.More(); i++)
 /// {
 /// do_job (theTask.Data.Item[i], aPS.Next());
 /// }
@@ -7695,7 +7620,7 @@ impl ProgressRange {
 /// std::vector<Task> aTasks;
 ///
 /// Message_ProgressScope aPS (aRootRange, "Data processing", aData.size());
-/// for (Standard_Integer i = 0; i < aData.size(); ++i)
+/// for (int i = 0; i < aData.size(); ++i)
 /// aTasks.push_back (Task (aData[i], aPS.Next()));
 ///
 /// OSD_Parallel::ForEach (aTasks.begin(), aTasks.end(), Functor());
@@ -7934,7 +7859,7 @@ impl ProgressScope {
 // From Message_Report.hxx
 // ========================
 
-/// **Source:** `Message_Report.hxx`:56 - `Message_Report`
+/// **Source:** `Message_Report.hxx`:54 - `Message_Report`
 /// Container for alert messages, sorted according to their gravity.
 ///
 /// For each gravity level, alerts are stored in simple list.
@@ -7969,7 +7894,7 @@ unsafe impl crate::CppDeletable for Report {
 }
 
 impl Report {
-    /// **Source:** `Message_Report.hxx`:60 - `Message_Report::Message_Report()`
+    /// **Source:** `Message_Report.hxx`:58 - `Message_Report::Message_Report()`
     /// Empty constructor
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
@@ -7979,13 +7904,13 @@ impl Report {
         }
     }
 
-    /// **Source:** `Message_Report.hxx`:64 - `Message_Report::AddAlert()`
+    /// **Source:** `Message_Report.hxx`:62 - `Message_Report::AddAlert()`
     /// Add alert with specified gravity.
     /// This method is thread-safe, i.e. alerts can be added from parallel threads safely.
     pub fn add_alert(
         &mut self,
         theGravity: crate::message::Gravity,
-        theAlert: &crate::ffi_types::HandleMessageAlert,
+        theAlert: &crate::ffi_types::Handle_Message_Alert,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKernel::Message_Report_add_alert(
@@ -7996,25 +7921,11 @@ impl Report {
         })
     }
 
-    /// **Source:** `Message_Report.hxx`:67 - `Message_Report::GetAlerts()`
-    /// Returns list of collected alerts with specified gravity
-    pub fn get_alerts(
-        &self,
-        theGravity: crate::message::Gravity,
-    ) -> &crate::ffi_types::Message_ListOfAlert {
-        unsafe {
-            &*(crate::check_result(crate::ffi_extern_TKernel::Message_Report_get_alerts(
-                self as *const Self,
-                theGravity.into(),
-            )))
-        }
-    }
-
     /// **Source:** `Message_Report.hxx`:70 - `Message_Report::HasAlert()`
     /// Returns true if specific type of alert is recorded
     pub fn has_alert_handlestandardtype(
         &mut self,
-        theType: &crate::ffi_types::HandleStandardType,
+        theType: &crate::ffi_types::Handle_Standard_Type,
     ) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKernel::Message_Report_has_alert_handlestandardtype(
@@ -8028,7 +7939,7 @@ impl Report {
     /// Returns true if specific type of alert is recorded with specified gravity
     pub fn has_alert_handlestandardtype_gravity(
         &mut self,
-        theType: &crate::ffi_types::HandleStandardType,
+        theType: &crate::ffi_types::Handle_Standard_Type,
         theGravity: crate::message::Gravity,
     ) -> bool {
         crate::check_result(unsafe {
@@ -8040,12 +7951,12 @@ impl Report {
         })
     }
 
-    /// **Source:** `Message_Report.hxx`:79 - `Message_Report::IsActiveInMessenger()`
+    /// **Source:** `Message_Report.hxx`:78 - `Message_Report::IsActiveInMessenger()`
     /// Returns true if a report printer for the current report is registered in the messenger
     /// @param theMessenger the messenger. If it's NULL, the default messenger is used
     pub fn is_active_in_messenger(
         &self,
-        theMessenger: &crate::ffi_types::HandleMessageMessenger,
+        theMessenger: &crate::ffi_types::Handle_Message_Messenger,
     ) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKernel::Message_Report_is_active_in_messenger(
@@ -8063,7 +7974,7 @@ impl Report {
     pub fn activate_in_messenger(
         &mut self,
         toActivate: bool,
-        theMessenger: &crate::ffi_types::HandleMessageMessenger,
+        theMessenger: &crate::ffi_types::Handle_Message_Messenger,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKernel::Message_Report_activate_in_messenger(
@@ -8074,13 +7985,13 @@ impl Report {
         })
     }
 
-    /// **Source:** `Message_Report.hxx`:91 - `Message_Report::UpdateActiveInMessenger()`
+    /// **Source:** `Message_Report.hxx`:92 - `Message_Report::UpdateActiveInMessenger()`
     /// Updates internal flag IsActiveInMessenger.
     /// It becomes true if messenger contains at least one instance of Message_PrinterToReport.
     /// @param theMessenger the messenger. If it's NULL, the default messenger is used
     pub fn update_active_in_messenger(
         &mut self,
-        theMessenger: &crate::ffi_types::HandleMessageMessenger,
+        theMessenger: &crate::ffi_types::Handle_Message_Messenger,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKernel::Message_Report_update_active_in_messenger(
@@ -8090,7 +8001,7 @@ impl Report {
         })
     }
 
-    /// **Source:** `Message_Report.hxx`:96 - `Message_Report::AddLevel()`
+    /// **Source:** `Message_Report.hxx`:97 - `Message_Report::AddLevel()`
     /// Add new level of alerts
     /// @param theLevel a level
     pub fn add_level(&mut self, theLevel: &mut Level, theName: &crate::t_collection::AsciiString) {
@@ -8103,7 +8014,7 @@ impl Report {
         })
     }
 
-    /// **Source:** `Message_Report.hxx`:99 - `Message_Report::RemoveLevel()`
+    /// **Source:** `Message_Report.hxx`:100 - `Message_Report::RemoveLevel()`
     /// Remove level of alerts
     pub fn remove_level(&mut self, theLevel: &mut Level) {
         crate::check_void_result(unsafe {
@@ -8114,7 +8025,7 @@ impl Report {
         })
     }
 
-    /// **Source:** `Message_Report.hxx`:102 - `Message_Report::Clear()`
+    /// **Source:** `Message_Report.hxx`:103 - `Message_Report::Clear()`
     /// Clears all collected alerts
     pub fn clear(&mut self) {
         crate::check_void_result(unsafe {
@@ -8122,7 +8033,7 @@ impl Report {
         })
     }
 
-    /// **Source:** `Message_Report.hxx`:105 - `Message_Report::Clear()`
+    /// **Source:** `Message_Report.hxx`:106 - `Message_Report::Clear()`
     /// Clears collected alerts with specified gravity
     pub fn clear_gravity(&mut self, theGravity: crate::message::Gravity) {
         crate::check_void_result(unsafe {
@@ -8133,9 +8044,9 @@ impl Report {
         })
     }
 
-    /// **Source:** `Message_Report.hxx`:108 - `Message_Report::Clear()`
+    /// **Source:** `Message_Report.hxx`:109 - `Message_Report::Clear()`
     /// Clears collected alerts with specified type
-    pub fn clear_handlestandardtype(&mut self, theType: &crate::ffi_types::HandleStandardType) {
+    pub fn clear_handlestandardtype(&mut self, theType: &crate::ffi_types::Handle_Standard_Type) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKernel::Message_Report_clear_handlestandardtype(
                 self as *mut Self,
@@ -8144,7 +8055,7 @@ impl Report {
         })
     }
 
-    /// **Source:** `Message_Report.hxx`:111 - `Message_Report::ActiveMetrics()`
+    /// **Source:** `Message_Report.hxx`:112 - `Message_Report::ActiveMetrics()`
     /// Returns computed metrics when alerts are performed
     pub fn active_metrics(&self) -> &crate::ffi_types::NCollection_IndexedMap_Message_MetricType {
         unsafe {
@@ -8154,7 +8065,7 @@ impl Report {
         }
     }
 
-    /// **Source:** `Message_Report.hxx`:118 - `Message_Report::SetActiveMetric()`
+    /// **Source:** `Message_Report.hxx`:119 - `Message_Report::SetActiveMetric()`
     /// Sets metrics to compute when alerts are performed
     /// @param theMetrics container of metrics
     pub fn set_active_metric(
@@ -8171,7 +8082,7 @@ impl Report {
         })
     }
 
-    /// **Source:** `Message_Report.hxx`:122 - `Message_Report::ClearMetrics()`
+    /// **Source:** `Message_Report.hxx`:123 - `Message_Report::ClearMetrics()`
     /// Removes all activated metrics
     pub fn clear_metrics(&mut self) {
         crate::check_void_result(unsafe {
@@ -8179,7 +8090,7 @@ impl Report {
         })
     }
 
-    /// **Source:** `Message_Report.hxx`:127 - `Message_Report::Limit()`
+    /// **Source:** `Message_Report.hxx`:128 - `Message_Report::Limit()`
     /// Returns maximum number of collecting alerts. If the limit is achieved,
     /// first alert is removed, the new alert is added in the container.
     /// @return the limit value
@@ -8189,7 +8100,7 @@ impl Report {
         })
     }
 
-    /// **Source:** `Message_Report.hxx`:131 - `Message_Report::SetLimit()`
+    /// **Source:** `Message_Report.hxx`:132 - `Message_Report::SetLimit()`
     /// Sets maximum number of collecting alerts.
     /// @param theLimit limit value
     pub fn set_limit(&mut self, theLimit: i32) {
@@ -8198,7 +8109,7 @@ impl Report {
         })
     }
 
-    /// **Source:** `Message_Report.hxx`:134 - `Message_Report::Dump()`
+    /// **Source:** `Message_Report.hxx`:135 - `Message_Report::Dump()`
     /// Dumps all collected alerts to stream
     pub fn dump_ostream(&mut self, theOS: &mut crate::ffi_types::Standard_OStream) {
         crate::check_void_result(unsafe {
@@ -8206,7 +8117,7 @@ impl Report {
         })
     }
 
-    /// **Source:** `Message_Report.hxx`:137 - `Message_Report::Dump()`
+    /// **Source:** `Message_Report.hxx`:138 - `Message_Report::Dump()`
     /// Dumps collected alerts with specified gravity to stream
     pub fn dump_ostream_gravity(
         &mut self,
@@ -8222,11 +8133,11 @@ impl Report {
         })
     }
 
-    /// **Source:** `Message_Report.hxx`:140 - `Message_Report::SendMessages()`
+    /// **Source:** `Message_Report.hxx`:141 - `Message_Report::SendMessages()`
     /// Sends all collected alerts to messenger.
     pub fn send_messages_handlemessagemessenger(
         &mut self,
-        theMessenger: &crate::ffi_types::HandleMessageMessenger,
+        theMessenger: &crate::ffi_types::Handle_Message_Messenger,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKernel::Message_Report_send_messages_handlemessagemessenger(
@@ -8236,13 +8147,13 @@ impl Report {
         })
     }
 
-    /// **Source:** `Message_Report.hxx`:145 - `Message_Report::SendMessages()`
+    /// **Source:** `Message_Report.hxx`:146 - `Message_Report::SendMessages()`
     /// Dumps collected alerts with specified gravity to messenger.
     /// Default implementation creates Message_Msg object with a message
     /// key returned by alert, and sends it in the messenger.
     pub fn send_messages_handlemessagemessenger_gravity(
         &mut self,
-        theMessenger: &crate::ffi_types::HandleMessageMessenger,
+        theMessenger: &crate::ffi_types::Handle_Message_Messenger,
         theGravity: crate::message::Gravity,
     ) {
         crate::check_void_result(unsafe {
@@ -8254,9 +8165,12 @@ impl Report {
         })
     }
 
-    /// **Source:** `Message_Report.hxx`:149 - `Message_Report::Merge()`
+    /// **Source:** `Message_Report.hxx`:150 - `Message_Report::Merge()`
     /// Merges data from theOther report into this
-    pub fn merge_handlemessagereport(&mut self, theOther: &crate::ffi_types::HandleMessageReport) {
+    pub fn merge_handlemessagereport(
+        &mut self,
+        theOther: &crate::ffi_types::Handle_Message_Report,
+    ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKernel::Message_Report_merge_handlemessagereport(
                 self as *mut Self,
@@ -8265,11 +8179,11 @@ impl Report {
         })
     }
 
-    /// **Source:** `Message_Report.hxx`:152 - `Message_Report::Merge()`
+    /// **Source:** `Message_Report.hxx`:153 - `Message_Report::Merge()`
     /// Merges alerts with specified gravity from theOther report into this
     pub fn merge_handlemessagereport_gravity(
         &mut self,
-        theOther: &crate::ffi_types::HandleMessageReport,
+        theOther: &crate::ffi_types::Handle_Message_Report,
         theGravity: crate::message::Gravity,
     ) {
         crate::check_void_result(unsafe {
@@ -8281,8 +8195,8 @@ impl Report {
         })
     }
 
-    /// **Source:** `Message_Report.hxx`:158 - `Message_Report::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+    /// **Source:** `Message_Report.hxx`:160 - `Message_Report::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKernel::Message_Report_dynamic_type(
                 self as *const Self,
@@ -8290,7 +8204,7 @@ impl Report {
         }
     }
 
-    /// **Source:** `Message_Report.hxx`:158 - `Message_Report::get_type_name()`
+    /// **Source:** `Message_Report.hxx`:160 - `Message_Report::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
@@ -8301,8 +8215,8 @@ impl Report {
         .into_owned()
     }
 
-    /// **Source:** `Message_Report.hxx`:158 - `Message_Report::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+    /// **Source:** `Message_Report.hxx`:160 - `Message_Report::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::Handle_Standard_Type {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKernel::Message_Report_get_type_descriptor()))
         }
@@ -8331,7 +8245,7 @@ impl Report {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleMessageReport> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Message_Report> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKernel::Message_Report_to_handle(obj.into_raw()),
@@ -8339,8 +8253,8 @@ impl Report {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKernel::Message_Report_inherited_IsInstance(
                 self as *const Self,
@@ -8349,14 +8263,14 @@ impl Report {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::Handle_Standard_Type) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKernel::Message_Report_inherited_IsKind(self as *const Self, theType)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
@@ -8370,14 +8284,14 @@ impl Report {
         }
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKernel::Message_Report_inherited_GetRefCount(self as *const Self)
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKernel::Message_Report_inherited_IncrementRefCounter(
@@ -8386,7 +8300,7 @@ impl Report {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKernel::Message_Report_inherited_DecrementRefCounter(
@@ -8395,7 +8309,7 @@ impl Report {
         })
     }
 
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKernel::Message_Report_inherited_Delete(self as *const Self)
@@ -8403,32 +8317,32 @@ impl Report {
     }
 }
 
-pub use crate::ffi_types::HandleMessageReport;
+pub use crate::ffi_types::Handle_Message_Report;
 
-unsafe impl crate::CppDeletable for HandleMessageReport {
+unsafe impl crate::CppDeletable for Handle_Message_Report {
     unsafe fn cpp_delete(ptr: *mut Self) {
         unsafe {
-            crate::ffi_extern_TKernel::HandleMessageReport_destructor(ptr);
+            crate::ffi_extern_TKernel::Handle_Message_Report_destructor(ptr);
         }
     }
 }
 
-unsafe impl crate::CppCopyable for HandleMessageReport {
+unsafe impl crate::CppCopyable for Handle_Message_Report {
     unsafe fn cpp_copy(ptr: *const Self) -> *mut Self {
-        unsafe { crate::check_result(crate::ffi_extern_TKernel::HandleMessageReport_clone(ptr)) }
+        unsafe { crate::check_result(crate::ffi_extern_TKernel::Handle_Message_Report_clone(ptr)) }
     }
 }
 
-impl HandleMessageReport {
+impl Handle_Message_Report {
     /// Returns `true` if this Handle is null (doesn't point to any object).
     pub fn is_null(&self) -> bool {
-        unsafe { crate::ffi_extern_TKernel::HandleMessageReport_is_null(self as *const Self) }
+        unsafe { crate::ffi_extern_TKernel::Handle_Message_Report_is_null(self as *const Self) }
     }
 
     /// Dereference this Handle to access the underlying Message_Report
     pub fn get(&self) -> &crate::ffi_types::Message_Report {
         unsafe {
-            &*crate::check_result(crate::ffi_extern_TKernel::HandleMessageReport_get(
+            &*crate::check_result(crate::ffi_extern_TKernel::Handle_Message_Report_get(
                 self as *const Self,
             ))
         }
@@ -8437,7 +8351,7 @@ impl HandleMessageReport {
     /// Dereference this Handle to mutably access the underlying Message_Report
     pub fn get_mut(&mut self) -> &mut crate::ffi_types::Message_Report {
         unsafe {
-            &mut *crate::check_result(crate::ffi_extern_TKernel::HandleMessageReport_get_mut(
+            &mut *crate::check_result(crate::ffi_extern_TKernel::Handle_Message_Report_get_mut(
                 self as *mut Self,
             ))
         }
@@ -8446,10 +8360,10 @@ impl HandleMessageReport {
     /// Upcast Handle<Message_Report> to Handle<Standard_Transient>
     pub fn to_handle_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_Standard_Transient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKernel::HandleMessageReport_to_HandleStandardTransient(
+                crate::ffi_extern_TKernel::Handle_Message_Report_to_Handle_Standard_Transient(
                     self as *const Self,
                 ),
             ))
@@ -8457,10 +8371,9 @@ impl HandleMessageReport {
     }
 }
 
-// ========================
-// Additional type re-exports
-// ========================
-
-pub use crate::ffi_types::{
-    Message_ListOfAlert as ListOfAlert, Message_SequenceOfPrinters as SequenceOfPrinters,
-};
+// ── Skipped symbols for Report (1 total) ──
+// SKIPPED: **Source:** `Message_Report.hxx`:66 - `Message_Report::GetAlerts`
+//   method: Returns list of collected alerts with specified gravity
+//   Reason: has unbindable types: return: unresolved template type (NCollection_List<occ::handle<Message_Alert>> const&)
+//   // pub fn get_alerts(&self, theGravity: Gravity) -> /* NCollection_List<occ::handle<Message_Alert>> const& */;
+//

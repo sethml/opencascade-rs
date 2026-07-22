@@ -9,7 +9,7 @@
 /// **Source:** `TopoDSToStep.hxx`:54 - `TopoDSToStep::DecodeBuilderError`
 pub fn decode_builder_error_buildererror_2(
     E: crate::topo_ds_to_step::BuilderError,
-) -> crate::OwnedPtr<crate::ffi_types::HandleTCollectionHAsciiString> {
+) -> crate::OwnedPtr<crate::ffi_types::Handle_TCollection_HAsciiString> {
     unsafe {
         crate::OwnedPtr::from_raw(crate::check_result(
             crate::ffi_extern_TKDESTEP::TopoDSToStep_decode_builder_error_buildererror_2(E.into()),
@@ -19,7 +19,7 @@ pub fn decode_builder_error_buildererror_2(
 /// **Source:** `TopoDSToStep.hxx`:57 - `TopoDSToStep::DecodeFaceError`
 pub fn decode_face_error_makefaceerror(
     E: crate::topo_ds_to_step::MakeFaceError,
-) -> crate::OwnedPtr<crate::ffi_types::HandleTCollectionHAsciiString> {
+) -> crate::OwnedPtr<crate::ffi_types::Handle_TCollection_HAsciiString> {
     unsafe {
         crate::OwnedPtr::from_raw(crate::check_result(
             crate::ffi_extern_TKDESTEP::TopoDSToStep_decode_face_error_makefaceerror(E.into()),
@@ -29,7 +29,7 @@ pub fn decode_face_error_makefaceerror(
 /// **Source:** `TopoDSToStep.hxx`:60 - `TopoDSToStep::DecodeWireError`
 pub fn decode_wire_error(
     E: crate::topo_ds_to_step::MakeWireError,
-) -> crate::OwnedPtr<crate::ffi_types::HandleTCollectionHAsciiString> {
+) -> crate::OwnedPtr<crate::ffi_types::Handle_TCollection_HAsciiString> {
     unsafe {
         crate::OwnedPtr::from_raw(crate::check_result(
             crate::ffi_extern_TKDESTEP::TopoDSToStep_decode_wire_error(E.into()),
@@ -39,7 +39,7 @@ pub fn decode_wire_error(
 /// **Source:** `TopoDSToStep.hxx`:63 - `TopoDSToStep::DecodeEdgeError`
 pub fn decode_edge_error_makeedgeerror(
     E: crate::topo_ds_to_step::MakeEdgeError,
-) -> crate::OwnedPtr<crate::ffi_types::HandleTCollectionHAsciiString> {
+) -> crate::OwnedPtr<crate::ffi_types::Handle_TCollection_HAsciiString> {
     unsafe {
         crate::OwnedPtr::from_raw(crate::check_result(
             crate::ffi_extern_TKDESTEP::TopoDSToStep_decode_edge_error_makeedgeerror(E.into()),
@@ -50,7 +50,7 @@ pub fn decode_edge_error_makeedgeerror(
 /// Returns a new shape without undirect surfaces.
 pub fn decode_vertex_error_makevertexerror(
     E: crate::topo_ds_to_step::MakeVertexError,
-) -> crate::OwnedPtr<crate::ffi_types::HandleTCollectionHAsciiString> {
+) -> crate::OwnedPtr<crate::ffi_types::Handle_TCollection_HAsciiString> {
     unsafe {
         crate::OwnedPtr::from_raw(crate::check_result(
             crate::ffi_extern_TKDESTEP::TopoDSToStep_decode_vertex_error_makevertexerror(E.into()),
@@ -61,9 +61,9 @@ pub fn decode_vertex_error_makevertexerror(
 /// Adds an entity into the list of results (binders) for
 /// shape stored in FinderProcess
 pub fn add_result_handletransferfinderprocess_shape_handlestandardtransient(
-    FP: &crate::ffi_types::HandleTransferFinderProcess,
+    FP: &crate::ffi_types::Handle_Transfer_FinderProcess,
     Shape: &crate::topo_ds::Shape,
-    entity: &crate::ffi_types::HandleStandardTransient,
+    entity: &crate::ffi_types::Handle_Standard_Transient,
 ) {
     crate::check_void_result(unsafe {
         crate::ffi_extern_TKDESTEP::TopoDSToStep_add_result_handletransferfinderprocess_shape_handlestandardtransient(FP, Shape, entity)
@@ -73,7 +73,7 @@ pub fn add_result_handletransferfinderprocess_shape_handlestandardtransient(
 /// Adds all entities recorded in Tool into the map of results
 /// (binders) stored in FinderProcess
 pub fn add_result_handletransferfinderprocess_tool(
-    FP: &crate::ffi_types::HandleTransferFinderProcess,
+    FP: &crate::ffi_types::Handle_Transfer_FinderProcess,
     Tool: &Tool,
 ) {
     crate::check_void_result(unsafe {
@@ -284,7 +284,7 @@ impl Builder {
     pub fn new_shape_tool_handletransferfinderprocess_int_factors_progressrange(
         S: &crate::topo_ds::Shape,
         T: &mut Tool,
-        FP: &crate::ffi_types::HandleTransferFinderProcess,
+        FP: &crate::ffi_types::Handle_Transfer_FinderProcess,
         theTessellatedGeomParam: i32,
         theLocalFactors: &crate::step_data::Factors,
         theProgress: &crate::message::ProgressRange,
@@ -299,7 +299,7 @@ impl Builder {
         &mut self,
         S: &crate::topo_ds::Shape,
         T: &mut Tool,
-        FP: &crate::ffi_types::HandleTransferFinderProcess,
+        FP: &crate::ffi_types::Handle_Transfer_FinderProcess,
         theTessellatedGeomParam: i32,
         theLocalFactors: &crate::step_data::Factors,
         theProgress: &crate::message::ProgressRange,
@@ -326,7 +326,7 @@ impl Builder {
     }
 
     /// **Source:** `TopoDSToStep_Builder.hxx`:61 - `TopoDSToStep_Builder::Value()`
-    pub fn value(&self) -> &crate::ffi_types::HandleStepShapeTopologicalRepresentationItem {
+    pub fn value(&self) -> &crate::ffi_types::Handle_StepShape_TopologicalRepresentationItem {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKDESTEP::TopoDSToStep_Builder_value(
                 self as *const Self,
@@ -335,7 +335,7 @@ impl Builder {
     }
 
     /// **Source:** `TopoDSToStep_Builder.hxx`:62 - `TopoDSToStep_Builder::TessellatedValue()`
-    pub fn tessellated_value(&self) -> &crate::ffi_types::HandleStepVisualTessellatedItem {
+    pub fn tessellated_value(&self) -> &crate::ffi_types::Handle_StepVisual_TessellatedItem {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKDESTEP::TopoDSToStep_Builder_tessellated_value(
@@ -447,7 +447,7 @@ impl MakeBrepWithVoids {
     /// **Source:** `TopoDSToStep_MakeBrepWithVoids.hxx`:42 - `TopoDSToStep_MakeBrepWithVoids::TopoDSToStep_MakeBrepWithVoids()`
     pub fn new_solid_handletransferfinderprocess_factors_progressrange(
         S: &crate::topo_ds::Solid,
-        FP: &crate::ffi_types::HandleTransferFinderProcess,
+        FP: &crate::ffi_types::Handle_Transfer_FinderProcess,
         theLocalFactors: &crate::step_data::Factors,
         theProgress: &crate::message::ProgressRange,
     ) -> crate::OwnedPtr<Self> {
@@ -457,7 +457,7 @@ impl MakeBrepWithVoids {
     }
 
     /// **Source:** `TopoDSToStep_MakeBrepWithVoids.hxx`:48 - `TopoDSToStep_MakeBrepWithVoids::Value()`
-    pub fn value(&self) -> &crate::ffi_types::HandleStepShapeBrepWithVoids {
+    pub fn value(&self) -> &crate::ffi_types::Handle_StepShape_BrepWithVoids {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKDESTEP::TopoDSToStep_MakeBrepWithVoids_value(
@@ -468,7 +468,7 @@ impl MakeBrepWithVoids {
     }
 
     /// **Source:** `TopoDSToStep_MakeBrepWithVoids.hxx`:49 - `TopoDSToStep_MakeBrepWithVoids::TessellatedValue()`
-    pub fn tessellated_value(&self) -> &crate::ffi_types::HandleStepVisualTessellatedItem {
+    pub fn tessellated_value(&self) -> &crate::ffi_types::Handle_StepVisual_TessellatedItem {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKDESTEP::TopoDSToStep_MakeBrepWithVoids_tessellated_value(
@@ -545,7 +545,7 @@ impl MakeFacetedBrep {
     /// **Source:** `TopoDSToStep_MakeFacetedBrep.hxx`:43 - `TopoDSToStep_MakeFacetedBrep::TopoDSToStep_MakeFacetedBrep()`
     pub fn new_shell_handletransferfinderprocess_factors_progressrange(
         S: &crate::topo_ds::Shell,
-        FP: &crate::ffi_types::HandleTransferFinderProcess,
+        FP: &crate::ffi_types::Handle_Transfer_FinderProcess,
         theLocalFactors: &crate::step_data::Factors,
         theProgress: &crate::message::ProgressRange,
     ) -> crate::OwnedPtr<Self> {
@@ -557,7 +557,7 @@ impl MakeFacetedBrep {
     /// **Source:** `TopoDSToStep_MakeFacetedBrep.hxx`:49 - `TopoDSToStep_MakeFacetedBrep::TopoDSToStep_MakeFacetedBrep()`
     pub fn new_solid_handletransferfinderprocess_factors_progressrange(
         S: &crate::topo_ds::Solid,
-        FP: &crate::ffi_types::HandleTransferFinderProcess,
+        FP: &crate::ffi_types::Handle_Transfer_FinderProcess,
         theLocalFactors: &crate::step_data::Factors,
         theProgress: &crate::message::ProgressRange,
     ) -> crate::OwnedPtr<Self> {
@@ -567,7 +567,7 @@ impl MakeFacetedBrep {
     }
 
     /// **Source:** `TopoDSToStep_MakeFacetedBrep.hxx`:55 - `TopoDSToStep_MakeFacetedBrep::Value()`
-    pub fn value(&self) -> &crate::ffi_types::HandleStepShapeFacetedBrep {
+    pub fn value(&self) -> &crate::ffi_types::Handle_StepShape_FacetedBrep {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKDESTEP::TopoDSToStep_MakeFacetedBrep_value(
                 self as *const Self,
@@ -576,7 +576,7 @@ impl MakeFacetedBrep {
     }
 
     /// **Source:** `TopoDSToStep_MakeFacetedBrep.hxx`:56 - `TopoDSToStep_MakeFacetedBrep::TessellatedValue()`
-    pub fn tessellated_value(&self) -> &crate::ffi_types::HandleStepVisualTessellatedItem {
+    pub fn tessellated_value(&self) -> &crate::ffi_types::Handle_StepVisual_TessellatedItem {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKDESTEP::TopoDSToStep_MakeFacetedBrep_tessellated_value(
@@ -655,7 +655,7 @@ impl MakeFacetedBrepAndBrepWithVoids {
     /// **Source:** `TopoDSToStep_MakeFacetedBrepAndBrepWithVoids.hxx`:42 - `TopoDSToStep_MakeFacetedBrepAndBrepWithVoids::TopoDSToStep_MakeFacetedBrepAndBrepWithVoids()`
     pub fn new_solid_handletransferfinderprocess_factors_progressrange(
         S: &crate::topo_ds::Solid,
-        FP: &crate::ffi_types::HandleTransferFinderProcess,
+        FP: &crate::ffi_types::Handle_Transfer_FinderProcess,
         theLocalFactors: &crate::step_data::Factors,
         theProgress: &crate::message::ProgressRange,
     ) -> crate::OwnedPtr<Self> {
@@ -665,7 +665,7 @@ impl MakeFacetedBrepAndBrepWithVoids {
     }
 
     /// **Source:** `TopoDSToStep_MakeFacetedBrepAndBrepWithVoids.hxx`:48 - `TopoDSToStep_MakeFacetedBrepAndBrepWithVoids::Value()`
-    pub fn value(&self) -> &crate::ffi_types::HandleStepShapeFacetedBrepAndBrepWithVoids {
+    pub fn value(&self) -> &crate::ffi_types::Handle_StepShape_FacetedBrepAndBrepWithVoids {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKDESTEP::TopoDSToStep_MakeFacetedBrepAndBrepWithVoids_value(
@@ -676,7 +676,7 @@ impl MakeFacetedBrepAndBrepWithVoids {
     }
 
     /// **Source:** `TopoDSToStep_MakeFacetedBrepAndBrepWithVoids.hxx`:49 - `TopoDSToStep_MakeFacetedBrepAndBrepWithVoids::TessellatedValue()`
-    pub fn tessellated_value(&self) -> &crate::ffi_types::HandleStepVisualTessellatedItem {
+    pub fn tessellated_value(&self) -> &crate::ffi_types::Handle_StepVisual_TessellatedItem {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKDESTEP::TopoDSToStep_MakeFacetedBrepAndBrepWithVoids_tessellated_value(self as *const Self)))
         }
@@ -733,7 +733,7 @@ impl MakeGeometricCurveSet {
     /// **Source:** `TopoDSToStep_MakeGeometricCurveSet.hxx`:37 - `TopoDSToStep_MakeGeometricCurveSet::TopoDSToStep_MakeGeometricCurveSet()`
     pub fn new_shape_handletransferfinderprocess_factors(
         SH: &crate::topo_ds::Shape,
-        FP: &crate::ffi_types::HandleTransferFinderProcess,
+        FP: &crate::ffi_types::Handle_Transfer_FinderProcess,
         theLocalFactors: &crate::step_data::Factors,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -742,7 +742,7 @@ impl MakeGeometricCurveSet {
     }
 
     /// **Source:** `TopoDSToStep_MakeGeometricCurveSet.hxx`:42 - `TopoDSToStep_MakeGeometricCurveSet::Value()`
-    pub fn value(&self) -> &crate::ffi_types::HandleStepShapeGeometricCurveSet {
+    pub fn value(&self) -> &crate::ffi_types::Handle_StepShape_GeometricCurveSet {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKDESTEP::TopoDSToStep_MakeGeometricCurveSet_value(
@@ -815,7 +815,7 @@ impl MakeManifoldSolidBrep {
     /// **Source:** `TopoDSToStep_MakeManifoldSolidBrep.hxx`:43 - `TopoDSToStep_MakeManifoldSolidBrep::TopoDSToStep_MakeManifoldSolidBrep()`
     pub fn new_shell_handletransferfinderprocess_factors_progressrange(
         S: &crate::topo_ds::Shell,
-        FP: &crate::ffi_types::HandleTransferFinderProcess,
+        FP: &crate::ffi_types::Handle_Transfer_FinderProcess,
         theLocalFactors: &crate::step_data::Factors,
         theProgress: &crate::message::ProgressRange,
     ) -> crate::OwnedPtr<Self> {
@@ -827,7 +827,7 @@ impl MakeManifoldSolidBrep {
     /// **Source:** `TopoDSToStep_MakeManifoldSolidBrep.hxx`:49 - `TopoDSToStep_MakeManifoldSolidBrep::TopoDSToStep_MakeManifoldSolidBrep()`
     pub fn new_solid_handletransferfinderprocess_factors_progressrange(
         S: &crate::topo_ds::Solid,
-        FP: &crate::ffi_types::HandleTransferFinderProcess,
+        FP: &crate::ffi_types::Handle_Transfer_FinderProcess,
         theLocalFactors: &crate::step_data::Factors,
         theProgress: &crate::message::ProgressRange,
     ) -> crate::OwnedPtr<Self> {
@@ -837,7 +837,7 @@ impl MakeManifoldSolidBrep {
     }
 
     /// **Source:** `TopoDSToStep_MakeManifoldSolidBrep.hxx`:55 - `TopoDSToStep_MakeManifoldSolidBrep::Value()`
-    pub fn value(&self) -> &crate::ffi_types::HandleStepShapeManifoldSolidBrep {
+    pub fn value(&self) -> &crate::ffi_types::Handle_StepShape_ManifoldSolidBrep {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKDESTEP::TopoDSToStep_MakeManifoldSolidBrep_value(
@@ -848,7 +848,7 @@ impl MakeManifoldSolidBrep {
     }
 
     /// **Source:** `TopoDSToStep_MakeManifoldSolidBrep.hxx`:56 - `TopoDSToStep_MakeManifoldSolidBrep::TessellatedValue()`
-    pub fn tessellated_value(&self) -> &crate::ffi_types::HandleStepVisualTessellatedItem {
+    pub fn tessellated_value(&self) -> &crate::ffi_types::Handle_StepVisual_TessellatedItem {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKDESTEP::TopoDSToStep_MakeManifoldSolidBrep_tessellated_value(
@@ -920,7 +920,7 @@ impl MakeShellBasedSurfaceModel {
     /// **Source:** `TopoDSToStep_MakeShellBasedSurfaceModel.hxx`:43 - `TopoDSToStep_MakeShellBasedSurfaceModel::TopoDSToStep_MakeShellBasedSurfaceModel()`
     pub fn new_face_handletransferfinderprocess_factors_progressrange(
         F: &crate::topo_ds::Face,
-        FP: &crate::ffi_types::HandleTransferFinderProcess,
+        FP: &crate::ffi_types::Handle_Transfer_FinderProcess,
         theLocalFactors: &crate::step_data::Factors,
         theProgress: &crate::message::ProgressRange,
     ) -> crate::OwnedPtr<Self> {
@@ -932,7 +932,7 @@ impl MakeShellBasedSurfaceModel {
     /// **Source:** `TopoDSToStep_MakeShellBasedSurfaceModel.hxx`:49 - `TopoDSToStep_MakeShellBasedSurfaceModel::TopoDSToStep_MakeShellBasedSurfaceModel()`
     pub fn new_shell_handletransferfinderprocess_factors_progressrange(
         S: &crate::topo_ds::Shell,
-        FP: &crate::ffi_types::HandleTransferFinderProcess,
+        FP: &crate::ffi_types::Handle_Transfer_FinderProcess,
         theLocalFactors: &crate::step_data::Factors,
         theProgress: &crate::message::ProgressRange,
     ) -> crate::OwnedPtr<Self> {
@@ -944,7 +944,7 @@ impl MakeShellBasedSurfaceModel {
     /// **Source:** `TopoDSToStep_MakeShellBasedSurfaceModel.hxx`:55 - `TopoDSToStep_MakeShellBasedSurfaceModel::TopoDSToStep_MakeShellBasedSurfaceModel()`
     pub fn new_solid_handletransferfinderprocess_factors_progressrange(
         S: &crate::topo_ds::Solid,
-        FP: &crate::ffi_types::HandleTransferFinderProcess,
+        FP: &crate::ffi_types::Handle_Transfer_FinderProcess,
         theLocalFactors: &crate::step_data::Factors,
         theProgress: &crate::message::ProgressRange,
     ) -> crate::OwnedPtr<Self> {
@@ -954,7 +954,7 @@ impl MakeShellBasedSurfaceModel {
     }
 
     /// **Source:** `TopoDSToStep_MakeShellBasedSurfaceModel.hxx`:61 - `TopoDSToStep_MakeShellBasedSurfaceModel::Value()`
-    pub fn value(&self) -> &crate::ffi_types::HandleStepShapeShellBasedSurfaceModel {
+    pub fn value(&self) -> &crate::ffi_types::Handle_StepShape_ShellBasedSurfaceModel {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKDESTEP::TopoDSToStep_MakeShellBasedSurfaceModel_value(
@@ -965,7 +965,7 @@ impl MakeShellBasedSurfaceModel {
     }
 
     /// **Source:** `TopoDSToStep_MakeShellBasedSurfaceModel.hxx`:62 - `TopoDSToStep_MakeShellBasedSurfaceModel::TessellatedValue()`
-    pub fn tessellated_value(&self) -> &crate::ffi_types::HandleStepVisualTessellatedItem {
+    pub fn tessellated_value(&self) -> &crate::ffi_types::Handle_StepVisual_TessellatedItem {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKDESTEP::TopoDSToStep_MakeShellBasedSurfaceModel_tessellated_value(self as *const Self)))
         }
@@ -1034,7 +1034,7 @@ impl MakeStepEdge {
     pub fn new_edge_tool_handletransferfinderprocess_factors(
         E: &crate::topo_ds::Edge,
         T: &mut Tool,
-        FP: &crate::ffi_types::HandleTransferFinderProcess,
+        FP: &crate::ffi_types::Handle_Transfer_FinderProcess,
         theLocalFactors: &crate::step_data::Factors,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -1047,7 +1047,7 @@ impl MakeStepEdge {
         &mut self,
         E: &crate::topo_ds::Edge,
         T: &mut Tool,
-        FP: &crate::ffi_types::HandleTransferFinderProcess,
+        FP: &crate::ffi_types::Handle_Transfer_FinderProcess,
         theLocalFactors: &crate::step_data::Factors,
     ) {
         crate::check_void_result(unsafe {
@@ -1062,7 +1062,7 @@ impl MakeStepEdge {
     }
 
     /// **Source:** `TopoDSToStep_MakeStepEdge.hxx`:52 - `TopoDSToStep_MakeStepEdge::Value()`
-    pub fn value(&self) -> &crate::ffi_types::HandleStepShapeTopologicalRepresentationItem {
+    pub fn value(&self) -> &crate::ffi_types::Handle_StepShape_TopologicalRepresentationItem {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKDESTEP::TopoDSToStep_MakeStepEdge_value(
                 self as *const Self,
@@ -1153,7 +1153,7 @@ impl MakeStepFace {
     pub fn new_face_tool_handletransferfinderprocess_factors(
         F: &crate::topo_ds::Face,
         T: &mut Tool,
-        FP: &crate::ffi_types::HandleTransferFinderProcess,
+        FP: &crate::ffi_types::Handle_Transfer_FinderProcess,
         theLocalFactors: &crate::step_data::Factors,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -1166,7 +1166,7 @@ impl MakeStepFace {
         &mut self,
         F: &crate::topo_ds::Face,
         T: &mut Tool,
-        FP: &crate::ffi_types::HandleTransferFinderProcess,
+        FP: &crate::ffi_types::Handle_Transfer_FinderProcess,
         theLocalFactors: &crate::step_data::Factors,
     ) {
         crate::check_void_result(unsafe {
@@ -1181,7 +1181,7 @@ impl MakeStepFace {
     }
 
     /// **Source:** `TopoDSToStep_MakeStepFace.hxx`:52 - `TopoDSToStep_MakeStepFace::Value()`
-    pub fn value(&self) -> &crate::ffi_types::HandleStepShapeTopologicalRepresentationItem {
+    pub fn value(&self) -> &crate::ffi_types::Handle_StepShape_TopologicalRepresentationItem {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKDESTEP::TopoDSToStep_MakeStepFace_value(
                 self as *const Self,
@@ -1272,7 +1272,7 @@ impl MakeStepVertex {
     pub fn new_vertex_tool_handletransferfinderprocess_factors(
         V: &crate::topo_ds::Vertex,
         T: &mut Tool,
-        FP: &crate::ffi_types::HandleTransferFinderProcess,
+        FP: &crate::ffi_types::Handle_Transfer_FinderProcess,
         theLocalFactors: &crate::step_data::Factors,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -1285,7 +1285,7 @@ impl MakeStepVertex {
         &mut self,
         V: &crate::topo_ds::Vertex,
         T: &mut Tool,
-        FP: &crate::ffi_types::HandleTransferFinderProcess,
+        FP: &crate::ffi_types::Handle_Transfer_FinderProcess,
         theLocalFactors: &crate::step_data::Factors,
     ) {
         crate::check_void_result(unsafe {
@@ -1300,7 +1300,7 @@ impl MakeStepVertex {
     }
 
     /// **Source:** `TopoDSToStep_MakeStepVertex.hxx`:52 - `TopoDSToStep_MakeStepVertex::Value()`
-    pub fn value(&self) -> &crate::ffi_types::HandleStepShapeTopologicalRepresentationItem {
+    pub fn value(&self) -> &crate::ffi_types::Handle_StepShape_TopologicalRepresentationItem {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKDESTEP::TopoDSToStep_MakeStepVertex_value(
                 self as *const Self,
@@ -1391,7 +1391,7 @@ impl MakeStepWire {
     pub fn new_wire_tool_handletransferfinderprocess_factors(
         W: &crate::topo_ds::Wire,
         T: &mut Tool,
-        FP: &crate::ffi_types::HandleTransferFinderProcess,
+        FP: &crate::ffi_types::Handle_Transfer_FinderProcess,
         theLocalFactors: &crate::step_data::Factors,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
@@ -1404,7 +1404,7 @@ impl MakeStepWire {
         &mut self,
         W: &crate::topo_ds::Wire,
         T: &mut Tool,
-        FP: &crate::ffi_types::HandleTransferFinderProcess,
+        FP: &crate::ffi_types::Handle_Transfer_FinderProcess,
         theLocalFactors: &crate::step_data::Factors,
     ) {
         crate::check_void_result(unsafe {
@@ -1419,7 +1419,7 @@ impl MakeStepWire {
     }
 
     /// **Source:** `TopoDSToStep_MakeStepWire.hxx`:52 - `TopoDSToStep_MakeStepWire::Value()`
-    pub fn value(&self) -> &crate::ffi_types::HandleStepShapeTopologicalRepresentationItem {
+    pub fn value(&self) -> &crate::ffi_types::Handle_StepShape_TopologicalRepresentationItem {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKDESTEP::TopoDSToStep_MakeStepWire_value(
                 self as *const Self,
@@ -1482,7 +1482,7 @@ impl MakeStepWire {
 // From TopoDSToStep_MakeTessellatedItem.hxx
 // ========================
 
-/// **Source:** `TopoDSToStep_MakeTessellatedItem.hxx`:31 - `TopoDSToStep_MakeTessellatedItem`
+/// **Source:** `TopoDSToStep_MakeTessellatedItem.hxx`:32 - `TopoDSToStep_MakeTessellatedItem`
 /// This class implements the mapping between
 /// Face, Shell fromTopoDS and TriangulatedFace from StepVisual.
 pub use crate::ffi_types::TopoDSToStep_MakeTessellatedItem as MakeTessellatedItem;
@@ -1496,7 +1496,7 @@ unsafe impl crate::CppDeletable for MakeTessellatedItem {
 }
 
 impl MakeTessellatedItem {
-    /// **Source:** `TopoDSToStep_MakeTessellatedItem.hxx`:36 - `TopoDSToStep_MakeTessellatedItem::TopoDSToStep_MakeTessellatedItem()`
+    /// **Source:** `TopoDSToStep_MakeTessellatedItem.hxx`:37 - `TopoDSToStep_MakeTessellatedItem::TopoDSToStep_MakeTessellatedItem()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -1505,60 +1505,64 @@ impl MakeTessellatedItem {
         }
     }
 
-    /// **Source:** `TopoDSToStep_MakeTessellatedItem.hxx`:38 - `TopoDSToStep_MakeTessellatedItem::TopoDSToStep_MakeTessellatedItem()`
-    pub fn new_face_tool_handletransferfinderprocess_bool_progressrange(
+    /// **Source:** `TopoDSToStep_MakeTessellatedItem.hxx`:39 - `TopoDSToStep_MakeTessellatedItem::TopoDSToStep_MakeTessellatedItem()`
+    pub fn new_face_tool_handletransferfinderprocess_bool_factors_progressrange(
         theFace: &crate::topo_ds::Face,
         theTool: &mut Tool,
-        theFP: &crate::ffi_types::HandleTransferFinderProcess,
+        theFP: &crate::ffi_types::Handle_Transfer_FinderProcess,
         theToPreferSurfaceSet: bool,
+        theLocalFactors: &crate::step_data::Factors,
         theProgress: &crate::message::ProgressRange,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::TopoDSToStep_MakeTessellatedItem_ctor_face_tool_handletransferfinderprocess_bool_progressrange(theFace, theTool, theFP, theToPreferSurfaceSet, theProgress)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::TopoDSToStep_MakeTessellatedItem_ctor_face_tool_handletransferfinderprocess_bool_factors_progressrange(theFace, theTool, theFP, theToPreferSurfaceSet, theLocalFactors, theProgress)))
         }
     }
 
-    /// **Source:** `TopoDSToStep_MakeTessellatedItem.hxx`:45 - `TopoDSToStep_MakeTessellatedItem::TopoDSToStep_MakeTessellatedItem()`
-    pub fn new_shell_tool_handletransferfinderprocess_progressrange(
+    /// **Source:** `TopoDSToStep_MakeTessellatedItem.hxx`:47 - `TopoDSToStep_MakeTessellatedItem::TopoDSToStep_MakeTessellatedItem()`
+    pub fn new_shell_tool_handletransferfinderprocess_factors_progressrange(
         theShell: &crate::topo_ds::Shell,
         theTool: &mut Tool,
-        theFP: &crate::ffi_types::HandleTransferFinderProcess,
+        theFP: &crate::ffi_types::Handle_Transfer_FinderProcess,
+        theLocalFactors: &crate::step_data::Factors,
         theProgress: &crate::message::ProgressRange,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::TopoDSToStep_MakeTessellatedItem_ctor_shell_tool_handletransferfinderprocess_progressrange(theShell, theTool, theFP, theProgress)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::TopoDSToStep_MakeTessellatedItem_ctor_shell_tool_handletransferfinderprocess_factors_progressrange(theShell, theTool, theFP, theLocalFactors, theProgress)))
         }
     }
 
-    /// **Source:** `TopoDSToStep_MakeTessellatedItem.hxx`:51 - `TopoDSToStep_MakeTessellatedItem::Init()`
-    pub fn init_face_tool_handletransferfinderprocess_bool_progressrange(
+    /// **Source:** `TopoDSToStep_MakeTessellatedItem.hxx`:54 - `TopoDSToStep_MakeTessellatedItem::Init()`
+    pub fn init_face_tool_handletransferfinderprocess_bool_factors_progressrange(
         &mut self,
         theFace: &crate::topo_ds::Face,
         theTool: &mut Tool,
-        theFP: &crate::ffi_types::HandleTransferFinderProcess,
+        theFP: &crate::ffi_types::Handle_Transfer_FinderProcess,
         theToPreferSurfaceSet: bool,
+        theLocalFactors: &crate::step_data::Factors,
         theProgress: &crate::message::ProgressRange,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi_extern_TKDESTEP::TopoDSToStep_MakeTessellatedItem_init_face_tool_handletransferfinderprocess_bool_progressrange(self as *mut Self, theFace, theTool, theFP, theToPreferSurfaceSet, theProgress)
+            crate::ffi_extern_TKDESTEP::TopoDSToStep_MakeTessellatedItem_init_face_tool_handletransferfinderprocess_bool_factors_progressrange(self as *mut Self, theFace, theTool, theFP, theToPreferSurfaceSet, theLocalFactors, theProgress)
         })
     }
 
-    /// **Source:** `TopoDSToStep_MakeTessellatedItem.hxx`:57 - `TopoDSToStep_MakeTessellatedItem::Init()`
-    pub fn init_shell_tool_handletransferfinderprocess_progressrange(
+    /// **Source:** `TopoDSToStep_MakeTessellatedItem.hxx`:61 - `TopoDSToStep_MakeTessellatedItem::Init()`
+    pub fn init_shell_tool_handletransferfinderprocess_factors_progressrange(
         &mut self,
         theShell: &crate::topo_ds::Shell,
         theTool: &mut Tool,
-        theFP: &crate::ffi_types::HandleTransferFinderProcess,
+        theFP: &crate::ffi_types::Handle_Transfer_FinderProcess,
+        theLocalFactors: &crate::step_data::Factors,
         theProgress: &crate::message::ProgressRange,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi_extern_TKDESTEP::TopoDSToStep_MakeTessellatedItem_init_shell_tool_handletransferfinderprocess_progressrange(self as *mut Self, theShell, theTool, theFP, theProgress)
+            crate::ffi_extern_TKDESTEP::TopoDSToStep_MakeTessellatedItem_init_shell_tool_handletransferfinderprocess_factors_progressrange(self as *mut Self, theShell, theTool, theFP, theLocalFactors, theProgress)
         })
     }
 
-    /// **Source:** `TopoDSToStep_MakeTessellatedItem.hxx`:62 - `TopoDSToStep_MakeTessellatedItem::Value()`
-    pub fn value(&self) -> &crate::ffi_types::HandleStepVisualTessellatedItem {
+    /// **Source:** `TopoDSToStep_MakeTessellatedItem.hxx`:67 - `TopoDSToStep_MakeTessellatedItem::Value()`
+    pub fn value(&self) -> &crate::ffi_types::Handle_StepVisual_TessellatedItem {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKDESTEP::TopoDSToStep_MakeTessellatedItem_value(
@@ -1648,7 +1652,7 @@ impl Root {
 // From TopoDSToStep_Tool.hxx
 // ========================
 
-/// **Source:** `TopoDSToStep_Tool.hxx`:37 - `TopoDSToStep_Tool`
+/// **Source:** `TopoDSToStep_Tool.hxx`:40 - `TopoDSToStep_Tool`
 /// This Tool Class provides Information to build
 /// a ProSTEP Shape model from a Cas.Cad BRep.
 pub use crate::ffi_types::TopoDSToStep_Tool as Tool;
@@ -1662,9 +1666,9 @@ unsafe impl crate::CppDeletable for Tool {
 }
 
 impl Tool {
-    /// **Source:** `TopoDSToStep_Tool.hxx`:42 - `TopoDSToStep_Tool::TopoDSToStep_Tool()`
+    /// **Source:** `TopoDSToStep_Tool.hxx`:45 - `TopoDSToStep_Tool::TopoDSToStep_Tool()`
     pub fn new_handlestepdatastepmodel(
-        theModel: &crate::ffi_types::HandleStepDataStepModel,
+        theModel: &crate::ffi_types::Handle_StepData_StepModel,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -1675,63 +1679,29 @@ impl Tool {
         }
     }
 
-    /// **Source:** `TopoDSToStep_Tool.hxx`:44 - `TopoDSToStep_Tool::TopoDSToStep_Tool()`
-    pub fn new_datamapofshapetransient_bool_int(
-        M: &crate::ffi_types::MoniTool_DataMapOfShapeTransient,
-        FacetedContext: bool,
-        theSurfCurveMode: i32,
-    ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKDESTEP::TopoDSToStep_Tool_ctor_datamapofshapetransient_bool_int(
-                    M,
-                    FacetedContext,
-                    theSurfCurveMode,
-                ),
-            ))
-        }
-    }
-
-    /// **Source:** `TopoDSToStep_Tool.hxx`:48 - `TopoDSToStep_Tool::Init()`
-    pub fn init(
-        &mut self,
-        M: &crate::ffi_types::MoniTool_DataMapOfShapeTransient,
-        FacetedContext: bool,
-        theSurfCurveMode: i32,
-    ) {
-        crate::check_void_result(unsafe {
-            crate::ffi_extern_TKDESTEP::TopoDSToStep_Tool_init(
-                self as *mut Self,
-                M,
-                FacetedContext,
-                theSurfCurveMode,
-            )
-        })
-    }
-
-    /// **Source:** `TopoDSToStep_Tool.hxx`:52 - `TopoDSToStep_Tool::IsBound()`
+    /// **Source:** `TopoDSToStep_Tool.hxx`:59 - `TopoDSToStep_Tool::IsBound()`
     pub fn is_bound(&mut self, S: &crate::topo_ds::Shape) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDESTEP::TopoDSToStep_Tool_is_bound(self as *mut Self, S)
         })
     }
 
-    /// **Source:** `TopoDSToStep_Tool.hxx`:54 - `TopoDSToStep_Tool::Bind()`
+    /// **Source:** `TopoDSToStep_Tool.hxx`:61 - `TopoDSToStep_Tool::Bind()`
     pub fn bind(
         &mut self,
         S: &crate::topo_ds::Shape,
-        T: &crate::ffi_types::HandleStepShapeTopologicalRepresentationItem,
+        T: &crate::ffi_types::Handle_StepShape_TopologicalRepresentationItem,
     ) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::TopoDSToStep_Tool_bind(self as *mut Self, S, T)
         })
     }
 
-    /// **Source:** `TopoDSToStep_Tool.hxx`:57 - `TopoDSToStep_Tool::Find()`
+    /// **Source:** `TopoDSToStep_Tool.hxx`:64 - `TopoDSToStep_Tool::Find()`
     pub fn find(
         &mut self,
         S: &crate::topo_ds::Shape,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleStepShapeTopologicalRepresentationItem> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_StepShape_TopologicalRepresentationItem> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKDESTEP::TopoDSToStep_Tool_find(self as *mut Self, S),
@@ -1739,21 +1709,21 @@ impl Tool {
         }
     }
 
-    /// **Source:** `TopoDSToStep_Tool.hxx`:59 - `TopoDSToStep_Tool::Faceted()`
+    /// **Source:** `TopoDSToStep_Tool.hxx`:66 - `TopoDSToStep_Tool::Faceted()`
     pub fn faceted(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDESTEP::TopoDSToStep_Tool_faceted(self as *const Self)
         })
     }
 
-    /// **Source:** `TopoDSToStep_Tool.hxx`:61 - `TopoDSToStep_Tool::SetCurrentShell()`
+    /// **Source:** `TopoDSToStep_Tool.hxx`:68 - `TopoDSToStep_Tool::SetCurrentShell()`
     pub fn set_current_shell(&mut self, S: &crate::topo_ds::Shell) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::TopoDSToStep_Tool_set_current_shell(self as *mut Self, S)
         })
     }
 
-    /// **Source:** `TopoDSToStep_Tool.hxx`:63 - `TopoDSToStep_Tool::CurrentShell()`
+    /// **Source:** `TopoDSToStep_Tool.hxx`:70 - `TopoDSToStep_Tool::CurrentShell()`
     pub fn current_shell(&self) -> &crate::topo_ds::Shell {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKDESTEP::TopoDSToStep_Tool_current_shell(
@@ -1762,14 +1732,14 @@ impl Tool {
         }
     }
 
-    /// **Source:** `TopoDSToStep_Tool.hxx`:65 - `TopoDSToStep_Tool::SetCurrentFace()`
+    /// **Source:** `TopoDSToStep_Tool.hxx`:72 - `TopoDSToStep_Tool::SetCurrentFace()`
     pub fn set_current_face(&mut self, F: &crate::topo_ds::Face) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::TopoDSToStep_Tool_set_current_face(self as *mut Self, F)
         })
     }
 
-    /// **Source:** `TopoDSToStep_Tool.hxx`:67 - `TopoDSToStep_Tool::CurrentFace()`
+    /// **Source:** `TopoDSToStep_Tool.hxx`:74 - `TopoDSToStep_Tool::CurrentFace()`
     pub fn current_face(&self) -> &crate::topo_ds::Face {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKDESTEP::TopoDSToStep_Tool_current_face(
@@ -1778,14 +1748,14 @@ impl Tool {
         }
     }
 
-    /// **Source:** `TopoDSToStep_Tool.hxx`:69 - `TopoDSToStep_Tool::SetCurrentWire()`
+    /// **Source:** `TopoDSToStep_Tool.hxx`:76 - `TopoDSToStep_Tool::SetCurrentWire()`
     pub fn set_current_wire(&mut self, W: &crate::topo_ds::Wire) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::TopoDSToStep_Tool_set_current_wire(self as *mut Self, W)
         })
     }
 
-    /// **Source:** `TopoDSToStep_Tool.hxx`:71 - `TopoDSToStep_Tool::CurrentWire()`
+    /// **Source:** `TopoDSToStep_Tool.hxx`:78 - `TopoDSToStep_Tool::CurrentWire()`
     pub fn current_wire(&self) -> &crate::topo_ds::Wire {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKDESTEP::TopoDSToStep_Tool_current_wire(
@@ -1794,14 +1764,14 @@ impl Tool {
         }
     }
 
-    /// **Source:** `TopoDSToStep_Tool.hxx`:73 - `TopoDSToStep_Tool::SetCurrentEdge()`
+    /// **Source:** `TopoDSToStep_Tool.hxx`:80 - `TopoDSToStep_Tool::SetCurrentEdge()`
     pub fn set_current_edge(&mut self, E: &crate::topo_ds::Edge) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::TopoDSToStep_Tool_set_current_edge(self as *mut Self, E)
         })
     }
 
-    /// **Source:** `TopoDSToStep_Tool.hxx`:75 - `TopoDSToStep_Tool::CurrentEdge()`
+    /// **Source:** `TopoDSToStep_Tool.hxx`:82 - `TopoDSToStep_Tool::CurrentEdge()`
     pub fn current_edge(&self) -> &crate::topo_ds::Edge {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKDESTEP::TopoDSToStep_Tool_current_edge(
@@ -1810,14 +1780,14 @@ impl Tool {
         }
     }
 
-    /// **Source:** `TopoDSToStep_Tool.hxx`:77 - `TopoDSToStep_Tool::SetCurrentVertex()`
+    /// **Source:** `TopoDSToStep_Tool.hxx`:84 - `TopoDSToStep_Tool::SetCurrentVertex()`
     pub fn set_current_vertex(&mut self, V: &crate::topo_ds::Vertex) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::TopoDSToStep_Tool_set_current_vertex(self as *mut Self, V)
         })
     }
 
-    /// **Source:** `TopoDSToStep_Tool.hxx`:79 - `TopoDSToStep_Tool::CurrentVertex()`
+    /// **Source:** `TopoDSToStep_Tool.hxx`:86 - `TopoDSToStep_Tool::CurrentVertex()`
     pub fn current_vertex(&self) -> &crate::topo_ds::Vertex {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_TKDESTEP::TopoDSToStep_Tool_current_vertex(
@@ -1826,37 +1796,28 @@ impl Tool {
         }
     }
 
-    /// **Source:** `TopoDSToStep_Tool.hxx`:81 - `TopoDSToStep_Tool::Lowest3DTolerance()`
+    /// **Source:** `TopoDSToStep_Tool.hxx`:88 - `TopoDSToStep_Tool::Lowest3DTolerance()`
     pub fn lowest3_d_tolerance(&self) -> f64 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDESTEP::TopoDSToStep_Tool_lowest3_d_tolerance(self as *const Self)
         })
     }
 
-    /// **Source:** `TopoDSToStep_Tool.hxx`:83 - `TopoDSToStep_Tool::SetSurfaceReversed()`
+    /// **Source:** `TopoDSToStep_Tool.hxx`:90 - `TopoDSToStep_Tool::SetSurfaceReversed()`
     pub fn set_surface_reversed(&mut self, B: bool) {
         crate::check_void_result(unsafe {
             crate::ffi_extern_TKDESTEP::TopoDSToStep_Tool_set_surface_reversed(self as *mut Self, B)
         })
     }
 
-    /// **Source:** `TopoDSToStep_Tool.hxx`:85 - `TopoDSToStep_Tool::SurfaceReversed()`
+    /// **Source:** `TopoDSToStep_Tool.hxx`:92 - `TopoDSToStep_Tool::SurfaceReversed()`
     pub fn surface_reversed(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKDESTEP::TopoDSToStep_Tool_surface_reversed(self as *const Self)
         })
     }
 
-    /// **Source:** `TopoDSToStep_Tool.hxx`:87 - `TopoDSToStep_Tool::Map()`
-    pub fn map(&self) -> &crate::ffi_types::MoniTool_DataMapOfShapeTransient {
-        unsafe {
-            &*(crate::check_result(crate::ffi_extern_TKDESTEP::TopoDSToStep_Tool_map(
-                self as *const Self,
-            )))
-        }
-    }
-
-    /// **Source:** `TopoDSToStep_Tool.hxx`:91 - `TopoDSToStep_Tool::PCurveMode()`
+    /// **Source:** `TopoDSToStep_Tool.hxx`:101 - `TopoDSToStep_Tool::PCurveMode()`
     /// Returns mode for writing pcurves
     /// (initialized by parameter write.surfacecurve.mode)
     pub fn p_curve_mode(&self) -> i32 {
@@ -1866,11 +1827,25 @@ impl Tool {
     }
 }
 
+// ── Skipped symbols for Tool (3 total) ──
+// SKIPPED: **Source:** `TopoDSToStep_Tool.hxx`:47 - `TopoDSToStep_Tool::TopoDSToStep_Tool`
+//   Reason: has unbindable types: param 'M': unresolved template type (NCollection_DataMap<TopoDS_Shape, occ::handle<Standard_Transient>, TopTools_ShapeMapHasher> const&)
+//   // pub fn new_transient>, toptools_shapemaphasher>_bool_int(M: /* NCollection_DataMap<TopoDS_Shape, occ::handle<Standard_Transient>, TopTools_ShapeMapHasher> const& */, FacetedContext: bool, theSurfCurveMode: i32) -> OwnedPtr<Self>;
+//
+// SKIPPED: **Source:** `TopoDSToStep_Tool.hxx`:53 - `TopoDSToStep_Tool::Init`
+//   Reason: has unbindable types: param 'M': unresolved template type (NCollection_DataMap<TopoDS_Shape, occ::handle<Standard_Transient>, TopTools_ShapeMapHasher> const&)
+//   // pub fn init(&mut self, M: /* NCollection_DataMap<TopoDS_Shape, occ::handle<Standard_Transient>, TopTools_ShapeMapHasher> const& */, FacetedContext: bool, theSurfCurveMode: i32);
+//
+// SKIPPED: **Source:** `TopoDSToStep_Tool.hxx`:97 - `TopoDSToStep_Tool::Map`
+//   Reason: has unbindable types: return: unresolved template type (NCollection_DataMap<TopoDS_Shape, occ::handle<Standard_Transient>, TopTools_ShapeMapHasher> const&)
+//   // pub fn map(&self) -> /* NCollection_DataMap<TopoDS_Shape, occ::handle<Standard_Transient>, TopTools_ShapeMapHasher> const& */;
+//
+
 // ========================
 // From TopoDSToStep_WireframeBuilder.hxx
 // ========================
 
-/// **Source:** `TopoDSToStep_WireframeBuilder.hxx`:36 - `TopoDSToStep_WireframeBuilder`
+/// **Source:** `TopoDSToStep_WireframeBuilder.hxx`:40 - `TopoDSToStep_WireframeBuilder`
 /// This builder Class provides services to build
 /// a ProSTEP Wireframemodel from a Cas.Cad BRep.
 pub use crate::ffi_types::TopoDSToStep_WireframeBuilder as WireframeBuilder;
@@ -1884,7 +1859,7 @@ unsafe impl crate::CppDeletable for WireframeBuilder {
 }
 
 impl WireframeBuilder {
-    /// **Source:** `TopoDSToStep_WireframeBuilder.hxx`:41 - `TopoDSToStep_WireframeBuilder::TopoDSToStep_WireframeBuilder()`
+    /// **Source:** `TopoDSToStep_WireframeBuilder.hxx`:45 - `TopoDSToStep_WireframeBuilder::TopoDSToStep_WireframeBuilder()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -1893,7 +1868,7 @@ impl WireframeBuilder {
         }
     }
 
-    /// **Source:** `TopoDSToStep_WireframeBuilder.hxx`:43 - `TopoDSToStep_WireframeBuilder::TopoDSToStep_WireframeBuilder()`
+    /// **Source:** `TopoDSToStep_WireframeBuilder.hxx`:47 - `TopoDSToStep_WireframeBuilder::TopoDSToStep_WireframeBuilder()`
     pub fn new_shape_tool_factors(
         S: &crate::topo_ds::Shape,
         T: &mut Tool,
@@ -1910,7 +1885,7 @@ impl WireframeBuilder {
         }
     }
 
-    /// **Source:** `TopoDSToStep_WireframeBuilder.hxx`:48 - `TopoDSToStep_WireframeBuilder::Init()`
+    /// **Source:** `TopoDSToStep_WireframeBuilder.hxx`:52 - `TopoDSToStep_WireframeBuilder::Init()`
     pub fn init(
         &mut self,
         S: &crate::topo_ds::Shape,
@@ -1927,7 +1902,7 @@ impl WireframeBuilder {
         })
     }
 
-    /// **Source:** `TopoDSToStep_WireframeBuilder.hxx`:52 - `TopoDSToStep_WireframeBuilder::Error()`
+    /// **Source:** `TopoDSToStep_WireframeBuilder.hxx`:56 - `TopoDSToStep_WireframeBuilder::Error()`
     pub fn error(&self) -> crate::topo_ds_to_step::BuilderError {
         crate::topo_ds_to_step::BuilderError::try_from(crate::check_result(unsafe {
             crate::ffi_extern_TKDESTEP::TopoDSToStep_WireframeBuilder_error(self as *const Self)
@@ -1935,8 +1910,10 @@ impl WireframeBuilder {
         .unwrap()
     }
 
-    /// **Source:** `TopoDSToStep_WireframeBuilder.hxx`:54 - `TopoDSToStep_WireframeBuilder::Value()`
-    pub fn value(&self) -> &crate::ffi_types::HandleTColStdHSequenceOfTransient {
+    /// **Source:** `TopoDSToStep_WireframeBuilder.hxx`:58 - `TopoDSToStep_WireframeBuilder::Value()`
+    pub fn value(
+        &self,
+    ) -> &crate::ffi_types::Handle_NCollection_HSequence_opencascade_handle_Standard_Transient {
         unsafe {
             &*(crate::check_result(
                 crate::ffi_extern_TKDESTEP::TopoDSToStep_WireframeBuilder_value(
@@ -1944,71 +1921,6 @@ impl WireframeBuilder {
                 ),
             ))
         }
-    }
-
-    /// **Source:** `TopoDSToStep_WireframeBuilder.hxx`:59 - `TopoDSToStep_WireframeBuilder::GetTrimmedCurveFromEdge()`
-    /// Extraction of Trimmed Curves from TopoDS_Edge for the
-    /// Creation of a GeometricallyBoundedWireframeRepresentation
-    pub fn get_trimmed_curve_from_edge(
-        &self,
-        E: &crate::topo_ds::Edge,
-        F: &crate::topo_ds::Face,
-        M: &mut crate::ffi_types::MoniTool_DataMapOfShapeTransient,
-        L: &mut crate::ffi_types::HandleTColStdHSequenceOfTransient,
-        theLocalFactors: &crate::step_data::Factors,
-    ) -> bool {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKDESTEP::TopoDSToStep_WireframeBuilder_get_trimmed_curve_from_edge(
-                self as *const Self,
-                E,
-                F,
-                M,
-                L,
-                theLocalFactors,
-            )
-        })
-    }
-
-    /// **Source:** `TopoDSToStep_WireframeBuilder.hxx`:68 - `TopoDSToStep_WireframeBuilder::GetTrimmedCurveFromFace()`
-    /// Extraction of Trimmed Curves from TopoDS_Face for the
-    /// Creation of a GeometricallyBoundedWireframeRepresentation
-    pub fn get_trimmed_curve_from_face(
-        &self,
-        F: &crate::topo_ds::Face,
-        M: &mut crate::ffi_types::MoniTool_DataMapOfShapeTransient,
-        L: &mut crate::ffi_types::HandleTColStdHSequenceOfTransient,
-        theLocalFactors: &crate::step_data::Factors,
-    ) -> bool {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKDESTEP::TopoDSToStep_WireframeBuilder_get_trimmed_curve_from_face(
-                self as *const Self,
-                F,
-                M,
-                L,
-                theLocalFactors,
-            )
-        })
-    }
-
-    /// **Source:** `TopoDSToStep_WireframeBuilder.hxx`:76 - `TopoDSToStep_WireframeBuilder::GetTrimmedCurveFromShape()`
-    /// Extraction of Trimmed Curves from any TopoDS_Shape for the
-    /// Creation of a GeometricallyBoundedWireframeRepresentation
-    pub fn get_trimmed_curve_from_shape(
-        &self,
-        S: &crate::topo_ds::Shape,
-        M: &mut crate::ffi_types::MoniTool_DataMapOfShapeTransient,
-        L: &mut crate::ffi_types::HandleTColStdHSequenceOfTransient,
-        theLocalFactors: &crate::step_data::Factors,
-    ) -> bool {
-        crate::check_result(unsafe {
-            crate::ffi_extern_TKDESTEP::TopoDSToStep_WireframeBuilder_get_trimmed_curve_from_shape(
-                self as *const Self,
-                S,
-                M,
-                L,
-                theLocalFactors,
-            )
-        })
     }
 
     /// Upcast to TopoDSToStep_Root
@@ -2053,3 +1965,23 @@ impl WireframeBuilder {
         })
     }
 }
+
+// ── Skipped symbols for WireframeBuilder (3 total) ──
+// SKIPPED: **Source:** `TopoDSToStep_WireframeBuilder.hxx`:63 - `TopoDSToStep_WireframeBuilder::GetTrimmedCurveFromEdge`
+//   method: Extraction of Trimmed Curves from TopoDS_Edge for the
+//   method: Creation of a GeometricallyBoundedWireframeRepresentation
+//   Reason: has unbindable types: param 'M': unresolved template type (NCollection_DataMap<TopoDS_Shape, occ::handle<Standard_Transient>, TopTools_ShapeMapHasher>&)
+//   // pub fn get_trimmed_curve_from_edge(&self, E: &Edge, F: &Face, M: /* NCollection_DataMap<TopoDS_Shape, occ::handle<Standard_Transient>, TopTools_ShapeMapHasher>& */, L: &mut HandleHSequence_opencascade_handle_Standard_Transient, theLocalFactors: &Factors) -> bool;
+//
+// SKIPPED: **Source:** `TopoDSToStep_WireframeBuilder.hxx`:72 - `TopoDSToStep_WireframeBuilder::GetTrimmedCurveFromFace`
+//   method: Extraction of Trimmed Curves from TopoDS_Face for the
+//   method: Creation of a GeometricallyBoundedWireframeRepresentation
+//   Reason: has unbindable types: param 'M': unresolved template type (NCollection_DataMap<TopoDS_Shape, occ::handle<Standard_Transient>, TopTools_ShapeMapHasher>&)
+//   // pub fn get_trimmed_curve_from_face(&self, F: &Face, M: /* NCollection_DataMap<TopoDS_Shape, occ::handle<Standard_Transient>, TopTools_ShapeMapHasher>& */, L: &mut HandleHSequence_opencascade_handle_Standard_Transient, theLocalFactors: &Factors) -> bool;
+//
+// SKIPPED: **Source:** `TopoDSToStep_WireframeBuilder.hxx`:80 - `TopoDSToStep_WireframeBuilder::GetTrimmedCurveFromShape`
+//   method: Extraction of Trimmed Curves from any TopoDS_Shape for the
+//   method: Creation of a GeometricallyBoundedWireframeRepresentation
+//   Reason: has unbindable types: param 'M': unresolved template type (NCollection_DataMap<TopoDS_Shape, occ::handle<Standard_Transient>, TopTools_ShapeMapHasher>&)
+//   // pub fn get_trimmed_curve_from_shape(&self, S: &Shape, M: /* NCollection_DataMap<TopoDS_Shape, occ::handle<Standard_Transient>, TopTools_ShapeMapHasher>& */, L: &mut HandleHSequence_opencascade_handle_Standard_Transient, theLocalFactors: &Factors) -> bool;
+//

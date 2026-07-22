@@ -30,7 +30,7 @@ unsafe impl crate::CppDeletable for AbscissaPoint {
 }
 
 impl AbscissaPoint {
-    /// **Source:** `CPnts_AbscissaPoint.hxx`:75 - `CPnts_AbscissaPoint::CPnts_AbscissaPoint()`
+    /// **Source:** `CPnts_AbscissaPoint.hxx`:73 - `CPnts_AbscissaPoint::CPnts_AbscissaPoint()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -39,7 +39,7 @@ impl AbscissaPoint {
         }
     }
 
-    /// **Source:** `CPnts_AbscissaPoint.hxx`:81 - `CPnts_AbscissaPoint::CPnts_AbscissaPoint()`
+    /// **Source:** `CPnts_AbscissaPoint.hxx`:79 - `CPnts_AbscissaPoint::CPnts_AbscissaPoint()`
     /// the algorithm computes a point on a curve <Curve> at the
     /// distance <Abscissa> from the point of parameter <U0>.
     /// <Resolution> is the error allowed in the computation.
@@ -59,7 +59,7 @@ impl AbscissaPoint {
         }
     }
 
-    /// **Source:** `CPnts_AbscissaPoint.hxx`:90 - `CPnts_AbscissaPoint::CPnts_AbscissaPoint()`
+    /// **Source:** `CPnts_AbscissaPoint.hxx`:88 - `CPnts_AbscissaPoint::CPnts_AbscissaPoint()`
     /// the algorithm computes a point on a curve <Curve> at the
     /// distance <Abscissa> from the point of parameter <U0>.
     /// <Resolution> is the error allowed in the computation.
@@ -79,7 +79,7 @@ impl AbscissaPoint {
         }
     }
 
-    /// **Source:** `CPnts_AbscissaPoint.hxx`:102 - `CPnts_AbscissaPoint::CPnts_AbscissaPoint()`
+    /// **Source:** `CPnts_AbscissaPoint.hxx`:100 - `CPnts_AbscissaPoint::CPnts_AbscissaPoint()`
     /// the algorithm computes a point on a curve <Curve> at the
     /// distance <Abscissa> from the point of parameter <U0>.
     /// <Ui> is the starting value used in the iterative process
@@ -103,7 +103,7 @@ impl AbscissaPoint {
         }
     }
 
-    /// **Source:** `CPnts_AbscissaPoint.hxx`:115 - `CPnts_AbscissaPoint::CPnts_AbscissaPoint()`
+    /// **Source:** `CPnts_AbscissaPoint.hxx`:113 - `CPnts_AbscissaPoint::CPnts_AbscissaPoint()`
     /// the algorithm computes a point on a curve <Curve> at the
     /// distance <Abscissa> from the point of parameter <U0>.
     /// <Ui> is the starting value used in the iterative process
@@ -127,7 +127,7 @@ impl AbscissaPoint {
         }
     }
 
-    /// **Source:** `CPnts_AbscissaPoint.hxx`:122 - `CPnts_AbscissaPoint::Init()`
+    /// **Source:** `CPnts_AbscissaPoint.hxx`:120 - `CPnts_AbscissaPoint::Init()`
     /// Initializes the resolution function with <C>.
     pub fn init_curve(&mut self, C: &crate::adaptor3d::Curve) {
         crate::check_void_result(unsafe {
@@ -135,7 +135,7 @@ impl AbscissaPoint {
         })
     }
 
-    /// **Source:** `CPnts_AbscissaPoint.hxx`:125 - `CPnts_AbscissaPoint::Init()`
+    /// **Source:** `CPnts_AbscissaPoint.hxx`:123 - `CPnts_AbscissaPoint::Init()`
     /// Initializes the resolution function with <C>.
     pub fn init_curve2d(&mut self, C: &crate::adaptor2d::Curve2d) {
         crate::check_void_result(unsafe {
@@ -143,7 +143,7 @@ impl AbscissaPoint {
         })
     }
 
-    /// **Source:** `CPnts_AbscissaPoint.hxx`:128 - `CPnts_AbscissaPoint::Init()`
+    /// **Source:** `CPnts_AbscissaPoint.hxx`:126 - `CPnts_AbscissaPoint::Init()`
     /// Initializes the resolution function with <C>.
     pub fn init_curve_real(&mut self, C: &crate::adaptor3d::Curve, Tol: f64) {
         crate::check_void_result(unsafe {
@@ -155,7 +155,7 @@ impl AbscissaPoint {
         })
     }
 
-    /// **Source:** `CPnts_AbscissaPoint.hxx`:131 - `CPnts_AbscissaPoint::Init()`
+    /// **Source:** `CPnts_AbscissaPoint.hxx`:129 - `CPnts_AbscissaPoint::Init()`
     /// Initializes the resolution function with <C>.
     pub fn init_curve2d_real(&mut self, C: &crate::adaptor2d::Curve2d, Tol: f64) {
         crate::check_void_result(unsafe {
@@ -167,7 +167,7 @@ impl AbscissaPoint {
         })
     }
 
-    /// **Source:** `CPnts_AbscissaPoint.hxx`:135 - `CPnts_AbscissaPoint::Init()`
+    /// **Source:** `CPnts_AbscissaPoint.hxx`:133 - `CPnts_AbscissaPoint::Init()`
     /// Initializes the resolution function with <C>
     /// between U1 and U2.
     pub fn init_curve_real2(&mut self, C: &crate::adaptor3d::Curve, U1: f64, U2: f64) {
@@ -181,7 +181,7 @@ impl AbscissaPoint {
         })
     }
 
-    /// **Source:** `CPnts_AbscissaPoint.hxx`:141 - `CPnts_AbscissaPoint::Init()`
+    /// **Source:** `CPnts_AbscissaPoint.hxx`:137 - `CPnts_AbscissaPoint::Init()`
     /// Initializes the resolution function with <C>
     /// between U1 and U2.
     pub fn init_curve2d_real2(&mut self, C: &crate::adaptor2d::Curve2d, U1: f64, U2: f64) {
@@ -195,7 +195,7 @@ impl AbscissaPoint {
         })
     }
 
-    /// **Source:** `CPnts_AbscissaPoint.hxx`:147 - `CPnts_AbscissaPoint::Init()`
+    /// **Source:** `CPnts_AbscissaPoint.hxx`:141 - `CPnts_AbscissaPoint::Init()`
     /// Initializes the resolution function with <C>
     /// between U1 and U2.
     pub fn init_curve_real3(&mut self, C: &crate::adaptor3d::Curve, U1: f64, U2: f64, Tol: f64) {
@@ -210,7 +210,7 @@ impl AbscissaPoint {
         })
     }
 
-    /// **Source:** `CPnts_AbscissaPoint.hxx`:154 - `CPnts_AbscissaPoint::Init()`
+    /// **Source:** `CPnts_AbscissaPoint.hxx`:148 - `CPnts_AbscissaPoint::Init()`
     /// Initializes the resolution function with <C>
     /// between U1 and U2.
     pub fn init_curve2d_real3(
@@ -231,7 +231,7 @@ impl AbscissaPoint {
         })
     }
 
-    /// **Source:** `CPnts_AbscissaPoint.hxx`:163 - `CPnts_AbscissaPoint::Perform()`
+    /// **Source:** `CPnts_AbscissaPoint.hxx`:157 - `CPnts_AbscissaPoint::Perform()`
     /// Computes the point at the distance <Abscissa> of
     /// the curve.
     /// U0 is the parameter of the point from which the distance
@@ -247,7 +247,7 @@ impl AbscissaPoint {
         })
     }
 
-    /// **Source:** `CPnts_AbscissaPoint.hxx`:172 - `CPnts_AbscissaPoint::Perform()`
+    /// **Source:** `CPnts_AbscissaPoint.hxx`:164 - `CPnts_AbscissaPoint::Perform()`
     /// Computes the point at the distance <Abscissa> of
     /// the curve.
     /// U0 is the parameter of the point from which the distance
@@ -265,7 +265,7 @@ impl AbscissaPoint {
         })
     }
 
-    /// **Source:** `CPnts_AbscissaPoint.hxx`:185 - `CPnts_AbscissaPoint::AdvPerform()`
+    /// **Source:** `CPnts_AbscissaPoint.hxx`:177 - `CPnts_AbscissaPoint::AdvPerform()`
     /// Computes the point at the distance <Abscissa> of
     /// the curve; performs more appropriate tolerance management;
     /// to use this method in right way it is necessary to call
@@ -286,7 +286,7 @@ impl AbscissaPoint {
         })
     }
 
-    /// **Source:** `CPnts_AbscissaPoint.hxx`:191 - `CPnts_AbscissaPoint::IsDone()`
+    /// **Source:** `CPnts_AbscissaPoint.hxx`:183 - `CPnts_AbscissaPoint::IsDone()`
     /// True if the computation was successful, False otherwise.
     pub fn is_done(&self) -> bool {
         crate::check_result(unsafe {
@@ -294,7 +294,7 @@ impl AbscissaPoint {
         })
     }
 
-    /// **Source:** `CPnts_AbscissaPoint.hxx`:194 - `CPnts_AbscissaPoint::Parameter()`
+    /// **Source:** `CPnts_AbscissaPoint.hxx`:186 - `CPnts_AbscissaPoint::Parameter()`
     /// Returns the parameter of the solution.
     pub fn parameter(&self) -> f64 {
         crate::check_result(unsafe {
@@ -302,7 +302,7 @@ impl AbscissaPoint {
         })
     }
 
-    /// **Source:** `CPnts_AbscissaPoint.hxx`:197 - `CPnts_AbscissaPoint::SetParameter()`
+    /// **Source:** `CPnts_AbscissaPoint.hxx`:189 - `CPnts_AbscissaPoint::SetParameter()`
     /// Enforce the solution, used by GCPnts.
     pub fn set_parameter(&mut self, P: f64) {
         crate::check_void_result(unsafe {
@@ -350,7 +350,7 @@ impl AbscissaPoint {
         })
     }
 
-    /// **Source:** `CPnts_AbscissaPoint.hxx`:58 - `CPnts_AbscissaPoint::Length()`
+    /// **Source:** `CPnts_AbscissaPoint.hxx`:56 - `CPnts_AbscissaPoint::Length()`
     /// Computes the length of the Curve <C> between <U1> and <U2>.
     pub fn length_curve2d_real2(C: &crate::adaptor2d::Curve2d, U1: f64, U2: f64) -> f64 {
         crate::check_result(unsafe {
@@ -358,7 +358,7 @@ impl AbscissaPoint {
         })
     }
 
-    /// **Source:** `CPnts_AbscissaPoint.hxx`:63 - `CPnts_AbscissaPoint::Length()`
+    /// **Source:** `CPnts_AbscissaPoint.hxx`:61 - `CPnts_AbscissaPoint::Length()`
     /// Computes the length of the Curve <C> between <U1> and <U2> with the given tolerance.
     pub fn length_curve_real3(C: &crate::adaptor3d::Curve, U1: f64, U2: f64, Tol: f64) -> f64 {
         crate::check_result(unsafe {
@@ -366,7 +366,7 @@ impl AbscissaPoint {
         })
     }
 
-    /// **Source:** `CPnts_AbscissaPoint.hxx`:70 - `CPnts_AbscissaPoint::Length()`
+    /// **Source:** `CPnts_AbscissaPoint.hxx`:68 - `CPnts_AbscissaPoint::Length()`
     /// Computes the length of the Curve <C> between <U1> and <U2> with the given tolerance.
     /// creation of a indefinite AbscissaPoint.
     pub fn length_curve2d_real3(C: &crate::adaptor2d::Curve2d, U1: f64, U2: f64, Tol: f64) -> f64 {
@@ -443,10 +443,10 @@ impl MyGaussFunction {
 
 // ── Skipped symbols for MyGaussFunction (1 total) ──
 // SKIPPED: **Source:** `CPnts_MyGaussFunction.hxx`:39 - `CPnts_MyGaussFunction::Init`
-//   method: F  is a pointer on a  function  D is a client data
+//   method: F is a pointer on a function D is a client data
 //   method: Each value is computed with F(D)
 //   Reason: param 'F' uses unknown type 'CPnts_RealFunction const&'
-//   // pub fn init(&mut self, F: &RealFunction, D: Address);
+//   // pub fn init(&mut self, F: &RealFunction, D: *mut void);
 //
 
 // ========================
@@ -456,7 +456,7 @@ impl MyGaussFunction {
 /// **Source:** `CPnts_MyRootFunction.hxx`:32 - `CPnts_MyRootFunction`
 /// Implements a function for the Newton algorithm to find the
 /// solution of Integral(F) = L
-/// (compute Length  and Derivative of the curve for Newton)
+/// (compute Length and Derivative of the curve for Newton)
 pub use crate::ffi_types::CPnts_MyRootFunction as MyRootFunction;
 
 unsafe impl crate::CppDeletable for MyRootFunction {
@@ -477,7 +477,7 @@ impl MyRootFunction {
         }
     }
 
-    /// **Source:** `CPnts_MyRootFunction.hxx`:46 - `CPnts_MyRootFunction::Init()`
+    /// **Source:** `CPnts_MyRootFunction.hxx`:44 - `CPnts_MyRootFunction::Init()`
     /// We want to solve Integral(X0,X,F(X,D)) = L
     pub fn init_real2(&mut self, X0: f64, L: f64) {
         crate::check_void_result(unsafe {
@@ -485,7 +485,7 @@ impl MyRootFunction {
         })
     }
 
-    /// **Source:** `CPnts_MyRootFunction.hxx`:50 - `CPnts_MyRootFunction::Init()`
+    /// **Source:** `CPnts_MyRootFunction.hxx`:48 - `CPnts_MyRootFunction::Init()`
     /// We want to solve Integral(X0,X,F(X,D)) = L
     /// with given tolerance
     pub fn init_real3(&mut self, X0: f64, L: f64, Tol: f64) {
@@ -499,7 +499,7 @@ impl MyRootFunction {
         })
     }
 
-    /// **Source:** `CPnts_MyRootFunction.hxx`:53 - `CPnts_MyRootFunction::Value()`
+    /// **Source:** `CPnts_MyRootFunction.hxx`:51 - `CPnts_MyRootFunction::Value()`
     /// This is Integral(X0,X,F(X,D)) - L
     pub fn value(&mut self, X: f64, F: &mut f64) -> bool {
         crate::check_result(unsafe {
@@ -507,7 +507,7 @@ impl MyRootFunction {
         })
     }
 
-    /// **Source:** `CPnts_MyRootFunction.hxx`:56 - `CPnts_MyRootFunction::Derivative()`
+    /// **Source:** `CPnts_MyRootFunction.hxx`:54 - `CPnts_MyRootFunction::Derivative()`
     /// This is F(X,D)
     pub fn derivative(&mut self, X: f64, Df: &mut f64) -> bool {
         crate::check_result(unsafe {
@@ -515,7 +515,7 @@ impl MyRootFunction {
         })
     }
 
-    /// **Source:** `CPnts_MyRootFunction.hxx`:58 - `CPnts_MyRootFunction::Values()`
+    /// **Source:** `CPnts_MyRootFunction.hxx`:56 - `CPnts_MyRootFunction::Values()`
     pub fn values(&mut self, X: f64, F: &mut f64, Df: &mut f64) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKGeomBase::CPnts_MyRootFunction_values(self as *mut Self, X, F, Df)
@@ -576,10 +576,10 @@ impl MyRootFunction {
 
 // ── Skipped symbols for MyRootFunction (1 total) ──
 // SKIPPED: **Source:** `CPnts_MyRootFunction.hxx`:41 - `CPnts_MyRootFunction::Init`
-//   method: F  is a pointer on a  function  D is a client data
+//   method: F is a pointer on a function D is a client data
 //   method: Order is the order of integration to use
 //   Reason: param 'F' uses unknown type 'CPnts_RealFunction const&'
-//   // pub fn init(&mut self, F: &RealFunction, D: Address, Order: i32);
+//   // pub fn init(&mut self, F: &RealFunction, D: *mut void, Order: i32);
 //
 
 // ========================
@@ -644,7 +644,7 @@ impl UniformDeflection {
     /// deflection
     /// when the curve is singular at the point P(u),the algorithm
     /// computes the next point as
-    /// P(u + Max(CurrentStep,Abs(LastParameter-FirstParameter)))
+    /// P(u + std::max(CurrentStep,std::abs(LastParameter-FirstParameter)))
     /// if the singularity is at the first point ,the next point
     /// calculated is the P(LastParameter)
     pub fn new_curve_real2_bool(

@@ -10,7 +10,7 @@
 // From AdvApprox_ApproxAFunction.hxx
 // ========================
 
-/// **Source:** `AdvApprox_ApproxAFunction.hxx`:42 - `AdvApprox_ApproxAFunction`
+/// **Source:** `AdvApprox_ApproxAFunction.hxx`:39 - `AdvApprox_ApproxAFunction`
 /// this approximate a given function
 pub use crate::ffi_types::AdvApprox_ApproxAFunction as ApproxAFunction;
 
@@ -23,7 +23,7 @@ unsafe impl crate::CppDeletable for ApproxAFunction {
 }
 
 impl ApproxAFunction {
-    /// **Source:** `AdvApprox_ApproxAFunction.hxx`:66 - `AdvApprox_ApproxAFunction::AdvApprox_ApproxAFunction()`
+    /// **Source:** `AdvApprox_ApproxAFunction.hxx`:63 - `AdvApprox_ApproxAFunction::AdvApprox_ApproxAFunction()`
     /// Constructs approximator tool.
     ///
     /// Warning:
@@ -38,18 +38,18 @@ impl ApproxAFunction {
     /// the order in which each Subspace appears should be consistent
     /// with the tolerances given in the create function and the
     /// results will be given in that order as well that is :
-    /// Curve2d(n)  will correspond to the nth entry
+    /// Curve2d(n) will correspond to the nth entry
     /// described by Num2DSS, Curve(n) will correspond to
     /// the nth entry described by Num3DSS
     /// The same type of schema applies to the Poles1d, Poles2d and
     /// Poles.
-    pub fn new_int3_handletcolstdharray1ofreal3_real2_shape_int2_evaluatorfunction(
+    pub fn new_int3_harr1_double3_real2_shape_int2_evaluatorfunction(
         Num1DSS: i32,
         Num2DSS: i32,
         Num3DSS: i32,
-        OneDTol: &crate::ffi_types::HandleTColStdHArray1OfReal,
-        TwoDTol: &crate::ffi_types::HandleTColStdHArray1OfReal,
-        ThreeDTol: &crate::ffi_types::HandleTColStdHArray1OfReal,
+        OneDTol: &crate::ffi_types::Handle_NCollection_HArray1_double,
+        TwoDTol: &crate::ffi_types::Handle_NCollection_HArray1_double,
+        ThreeDTol: &crate::ffi_types::Handle_NCollection_HArray1_double,
         First: f64,
         Last: f64,
         Continuity: crate::geom_abs::Shape,
@@ -58,19 +58,19 @@ impl ApproxAFunction {
         Func: &EvaluatorFunction,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKG3d::AdvApprox_ApproxAFunction_ctor_int3_handletcolstdharray1ofreal3_real2_shape_int2_evaluatorfunction(Num1DSS, Num2DSS, Num3DSS, OneDTol, TwoDTol, ThreeDTol, First, Last, Continuity.into(), MaxDeg, MaxSeg, Func)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKG3d::AdvApprox_ApproxAFunction_ctor_int3_harr1_double3_real2_shape_int2_evaluatorfunction(Num1DSS, Num2DSS, Num3DSS, OneDTol, TwoDTol, ThreeDTol, First, Last, Continuity.into(), MaxDeg, MaxSeg, Func)))
         }
     }
 
-    /// **Source:** `AdvApprox_ApproxAFunction.hxx`:80 - `AdvApprox_ApproxAFunction::AdvApprox_ApproxAFunction()`
-    /// Approximation with user methode of cutting
-    pub fn new_int3_handletcolstdharray1ofreal3_real2_shape_int2_evaluatorfunction_cutting(
+    /// **Source:** `AdvApprox_ApproxAFunction.hxx`:78 - `AdvApprox_ApproxAFunction::AdvApprox_ApproxAFunction()`
+    /// Approximation with user method of cutting
+    pub fn new_int3_harr1_double3_real2_shape_int2_evaluatorfunction_cutting(
         Num1DSS: i32,
         Num2DSS: i32,
         Num3DSS: i32,
-        OneDTol: &crate::ffi_types::HandleTColStdHArray1OfReal,
-        TwoDTol: &crate::ffi_types::HandleTColStdHArray1OfReal,
-        ThreeDTol: &crate::ffi_types::HandleTColStdHArray1OfReal,
+        OneDTol: &crate::ffi_types::Handle_NCollection_HArray1_double,
+        TwoDTol: &crate::ffi_types::Handle_NCollection_HArray1_double,
+        ThreeDTol: &crate::ffi_types::Handle_NCollection_HArray1_double,
         First: f64,
         Last: f64,
         Continuity: crate::geom_abs::Shape,
@@ -80,27 +80,27 @@ impl ApproxAFunction {
         CutTool: &Cutting,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKG3d::AdvApprox_ApproxAFunction_ctor_int3_handletcolstdharray1ofreal3_real2_shape_int2_evaluatorfunction_cutting(Num1DSS, Num2DSS, Num3DSS, OneDTol, TwoDTol, ThreeDTol, First, Last, Continuity.into(), MaxDeg, MaxSeg, Func, CutTool)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKG3d::AdvApprox_ApproxAFunction_ctor_int3_harr1_double3_real2_shape_int2_evaluatorfunction_cutting(Num1DSS, Num2DSS, Num3DSS, OneDTol, TwoDTol, ThreeDTol, First, Last, Continuity.into(), MaxDeg, MaxSeg, Func, CutTool)))
         }
     }
 
-    /// **Source:** `AdvApprox_ApproxAFunction.hxx`:114 - `AdvApprox_ApproxAFunction::IsDone()`
+    /// **Source:** `AdvApprox_ApproxAFunction.hxx`:113 - `AdvApprox_ApproxAFunction::IsDone()`
     pub fn is_done(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKG3d::AdvApprox_ApproxAFunction_is_done(self as *const Self)
         })
     }
 
-    /// **Source:** `AdvApprox_ApproxAFunction.hxx`:116 - `AdvApprox_ApproxAFunction::HasResult()`
+    /// **Source:** `AdvApprox_ApproxAFunction.hxx`:115 - `AdvApprox_ApproxAFunction::HasResult()`
     pub fn has_result(&self) -> bool {
         crate::check_result(unsafe {
             crate::ffi_extern_TKG3d::AdvApprox_ApproxAFunction_has_result(self as *const Self)
         })
     }
 
-    /// **Source:** `AdvApprox_ApproxAFunction.hxx`:119 - `AdvApprox_ApproxAFunction::Poles1d()`
+    /// **Source:** `AdvApprox_ApproxAFunction.hxx`:118 - `AdvApprox_ApproxAFunction::Poles1d()`
     /// returns the poles from the algorithms as is
-    pub fn poles1d(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTColStdHArray2OfReal> {
+    pub fn poles1d(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HArray2_double> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKG3d::AdvApprox_ApproxAFunction_poles1d(self as *const Self),
@@ -108,9 +108,11 @@ impl ApproxAFunction {
         }
     }
 
-    /// **Source:** `AdvApprox_ApproxAFunction.hxx`:122 - `AdvApprox_ApproxAFunction::Poles2d()`
+    /// **Source:** `AdvApprox_ApproxAFunction.hxx`:121 - `AdvApprox_ApproxAFunction::Poles2d()`
     /// returns the poles from the algorithms as is
-    pub fn poles2d(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTColgpHArray2OfPnt2d> {
+    pub fn poles2d(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HArray2_gp_Pnt2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKG3d::AdvApprox_ApproxAFunction_poles2d(self as *const Self),
@@ -118,9 +120,9 @@ impl ApproxAFunction {
         }
     }
 
-    /// **Source:** `AdvApprox_ApproxAFunction.hxx`:125 - `AdvApprox_ApproxAFunction::Poles()`
+    /// **Source:** `AdvApprox_ApproxAFunction.hxx`:124 - `AdvApprox_ApproxAFunction::Poles()`
     /// -- returns the poles from the algorithms as is
-    pub fn poles(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTColgpHArray2OfPnt> {
+    pub fn poles(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HArray2_gp_Pnt> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKG3d::AdvApprox_ApproxAFunction_poles(self as *const Self),
@@ -128,7 +130,7 @@ impl ApproxAFunction {
         }
     }
 
-    /// **Source:** `AdvApprox_ApproxAFunction.hxx`:128 - `AdvApprox_ApproxAFunction::NbPoles()`
+    /// **Source:** `AdvApprox_ApproxAFunction.hxx`:127 - `AdvApprox_ApproxAFunction::NbPoles()`
     /// as the name says
     pub fn nb_poles(&self) -> i32 {
         crate::check_result(unsafe {
@@ -136,15 +138,15 @@ impl ApproxAFunction {
         })
     }
 
-    /// **Source:** `AdvApprox_ApproxAFunction.hxx`:131 - `AdvApprox_ApproxAFunction::Poles1d()`
+    /// **Source:** `AdvApprox_ApproxAFunction.hxx`:130 - `AdvApprox_ApproxAFunction::Poles1d()`
     /// returns the poles at Index from the 1d subspace
-    pub fn poles1d_int_array1ofreal(
+    pub fn poles1d_int_arr1_double(
         &self,
         Index: i32,
-        P: &mut crate::ffi_types::TColStd_Array1OfReal,
+        P: &mut crate::ffi_types::NCollection_Array1_double,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi_extern_TKG3d::AdvApprox_ApproxAFunction_poles1d_int_array1ofreal(
+            crate::ffi_extern_TKG3d::AdvApprox_ApproxAFunction_poles1d_int_arr1_double(
                 self as *const Self,
                 Index,
                 P,
@@ -152,15 +154,15 @@ impl ApproxAFunction {
         })
     }
 
-    /// **Source:** `AdvApprox_ApproxAFunction.hxx`:134 - `AdvApprox_ApproxAFunction::Poles2d()`
+    /// **Source:** `AdvApprox_ApproxAFunction.hxx`:133 - `AdvApprox_ApproxAFunction::Poles2d()`
     /// returns the poles at Index from the 2d subspace
-    pub fn poles2d_int_array1ofpnt2d(
+    pub fn poles2d_int_arr1_pnt2d(
         &self,
         Index: i32,
-        P: &mut crate::ffi_types::TColgp_Array1OfPnt2d,
+        P: &mut crate::ffi_types::NCollection_Array1_gp_Pnt2d,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi_extern_TKG3d::AdvApprox_ApproxAFunction_poles2d_int_array1ofpnt2d(
+            crate::ffi_extern_TKG3d::AdvApprox_ApproxAFunction_poles2d_int_arr1_pnt2d(
                 self as *const Self,
                 Index,
                 P,
@@ -168,11 +170,15 @@ impl ApproxAFunction {
         })
     }
 
-    /// **Source:** `AdvApprox_ApproxAFunction.hxx`:137 - `AdvApprox_ApproxAFunction::Poles()`
+    /// **Source:** `AdvApprox_ApproxAFunction.hxx`:136 - `AdvApprox_ApproxAFunction::Poles()`
     /// returns the poles at Index from the 3d subspace
-    pub fn poles_int_array1ofpnt(&self, Index: i32, P: &mut crate::ffi_types::TColgp_Array1OfPnt) {
+    pub fn poles_int_arr1_pnt(
+        &self,
+        Index: i32,
+        P: &mut crate::ffi_types::NCollection_Array1_gp_Pnt,
+    ) {
         crate::check_void_result(unsafe {
-            crate::ffi_extern_TKG3d::AdvApprox_ApproxAFunction_poles_int_array1ofpnt(
+            crate::ffi_extern_TKG3d::AdvApprox_ApproxAFunction_poles_int_arr1_pnt(
                 self as *const Self,
                 Index,
                 P,
@@ -180,21 +186,21 @@ impl ApproxAFunction {
         })
     }
 
-    /// **Source:** `AdvApprox_ApproxAFunction.hxx`:139 - `AdvApprox_ApproxAFunction::Degree()`
+    /// **Source:** `AdvApprox_ApproxAFunction.hxx`:138 - `AdvApprox_ApproxAFunction::Degree()`
     pub fn degree(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKG3d::AdvApprox_ApproxAFunction_degree(self as *const Self)
         })
     }
 
-    /// **Source:** `AdvApprox_ApproxAFunction.hxx`:141 - `AdvApprox_ApproxAFunction::NbKnots()`
+    /// **Source:** `AdvApprox_ApproxAFunction.hxx`:140 - `AdvApprox_ApproxAFunction::NbKnots()`
     pub fn nb_knots(&self) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKG3d::AdvApprox_ApproxAFunction_nb_knots(self as *const Self)
         })
     }
 
-    /// **Source:** `AdvApprox_ApproxAFunction.hxx`:143 - `AdvApprox_ApproxAFunction::NumSubSpaces()`
+    /// **Source:** `AdvApprox_ApproxAFunction.hxx`:142 - `AdvApprox_ApproxAFunction::NumSubSpaces()`
     pub fn num_sub_spaces(&self, Dimension: i32) -> i32 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKG3d::AdvApprox_ApproxAFunction_num_sub_spaces(
@@ -204,8 +210,8 @@ impl ApproxAFunction {
         })
     }
 
-    /// **Source:** `AdvApprox_ApproxAFunction.hxx`:145 - `AdvApprox_ApproxAFunction::Knots()`
-    pub fn knots(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTColStdHArray1OfReal> {
+    /// **Source:** `AdvApprox_ApproxAFunction.hxx`:144 - `AdvApprox_ApproxAFunction::Knots()`
+    pub fn knots(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HArray1_double> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKG3d::AdvApprox_ApproxAFunction_knots(self as *const Self),
@@ -213,10 +219,10 @@ impl ApproxAFunction {
         }
     }
 
-    /// **Source:** `AdvApprox_ApproxAFunction.hxx`:147 - `AdvApprox_ApproxAFunction::Multiplicities()`
+    /// **Source:** `AdvApprox_ApproxAFunction.hxx`:146 - `AdvApprox_ApproxAFunction::Multiplicities()`
     pub fn multiplicities(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleTColStdHArray1OfInteger> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HArray1_int> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKG3d::AdvApprox_ApproxAFunction_multiplicities(
@@ -226,12 +232,12 @@ impl ApproxAFunction {
         }
     }
 
-    /// **Source:** `AdvApprox_ApproxAFunction.hxx`:150 - `AdvApprox_ApproxAFunction::MaxError()`
+    /// **Source:** `AdvApprox_ApproxAFunction.hxx`:149 - `AdvApprox_ApproxAFunction::MaxError()`
     /// returns the error as is in the algorithms
     pub fn max_error_int(
         &self,
         Dimension: i32,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleTColStdHArray1OfReal> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HArray1_double> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKG3d::AdvApprox_ApproxAFunction_max_error_int(
@@ -242,12 +248,12 @@ impl ApproxAFunction {
         }
     }
 
-    /// **Source:** `AdvApprox_ApproxAFunction.hxx`:153 - `AdvApprox_ApproxAFunction::AverageError()`
+    /// **Source:** `AdvApprox_ApproxAFunction.hxx`:152 - `AdvApprox_ApproxAFunction::AverageError()`
     /// returns the error as is in the algorithms
     pub fn average_error_int(
         &self,
         Dimension: i32,
-    ) -> crate::OwnedPtr<crate::ffi_types::HandleTColStdHArray1OfReal> {
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HArray1_double> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKG3d::AdvApprox_ApproxAFunction_average_error_int(
@@ -258,7 +264,7 @@ impl ApproxAFunction {
         }
     }
 
-    /// **Source:** `AdvApprox_ApproxAFunction.hxx`:156 - `AdvApprox_ApproxAFunction::MaxError()`
+    /// **Source:** `AdvApprox_ApproxAFunction.hxx`:154 - `AdvApprox_ApproxAFunction::MaxError()`
     pub fn max_error_int2(&self, Dimension: i32, Index: i32) -> f64 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKG3d::AdvApprox_ApproxAFunction_max_error_int2(
@@ -269,7 +275,7 @@ impl ApproxAFunction {
         })
     }
 
-    /// **Source:** `AdvApprox_ApproxAFunction.hxx`:159 - `AdvApprox_ApproxAFunction::AverageError()`
+    /// **Source:** `AdvApprox_ApproxAFunction.hxx`:156 - `AdvApprox_ApproxAFunction::AverageError()`
     pub fn average_error_int2(&self, Dimension: i32, Index: i32) -> f64 {
         crate::check_result(unsafe {
             crate::ffi_extern_TKG3d::AdvApprox_ApproxAFunction_average_error_int2(
@@ -280,7 +286,7 @@ impl ApproxAFunction {
         })
     }
 
-    /// **Source:** `AdvApprox_ApproxAFunction.hxx`:163 - `AdvApprox_ApproxAFunction::Dump()`
+    /// **Source:** `AdvApprox_ApproxAFunction.hxx`:159 - `AdvApprox_ApproxAFunction::Dump()`
     /// display information on approximation.
     pub fn dump(&self, o: &mut crate::ffi_types::Standard_OStream) {
         crate::check_void_result(unsafe {
@@ -288,11 +294,11 @@ impl ApproxAFunction {
         })
     }
 
-    /// **Source:** `AdvApprox_ApproxAFunction.hxx`:94 - `AdvApprox_ApproxAFunction::Approximation()`
+    /// **Source:** `AdvApprox_ApproxAFunction.hxx`:93 - `AdvApprox_ApproxAFunction::Approximation()`
     pub fn approximation(
         TotalDimension: i32,
         TotalNumSS: i32,
-        LocalDimension: &crate::ffi_types::TColStd_Array1OfInteger,
+        LocalDimension: &crate::ffi_types::NCollection_Array1_int,
         First: f64,
         Last: f64,
         Evaluator: &mut EvaluatorFunction,
@@ -300,14 +306,14 @@ impl ApproxAFunction {
         ContinuityOrder: i32,
         NumMaxCoeffs: i32,
         MaxSegments: i32,
-        TolerancesArray: &crate::ffi_types::TColStd_Array1OfReal,
+        TolerancesArray: &crate::ffi_types::NCollection_Array1_double,
         code_precis: i32,
         NumCurves: &mut i32,
-        NumCoeffPerCurveArray: &mut crate::ffi_types::TColStd_Array1OfInteger,
-        LocalCoefficientArray: &mut crate::ffi_types::TColStd_Array1OfReal,
-        IntervalsArray: &mut crate::ffi_types::TColStd_Array1OfReal,
-        ErrorMaxArray: &mut crate::ffi_types::TColStd_Array1OfReal,
-        AverageErrorArray: &mut crate::ffi_types::TColStd_Array1OfReal,
+        NumCoeffPerCurveArray: &mut crate::ffi_types::NCollection_Array1_int,
+        LocalCoefficientArray: &mut crate::ffi_types::NCollection_Array1_double,
+        IntervalsArray: &mut crate::ffi_types::NCollection_Array1_double,
+        ErrorMaxArray: &mut crate::ffi_types::NCollection_Array1_double,
+        AverageErrorArray: &mut crate::ffi_types::NCollection_Array1_double,
         ErrorCode: &mut i32,
     ) {
         crate::check_void_result(unsafe {
@@ -431,7 +437,7 @@ impl DichoCutting {
 // From AdvApprox_EvaluatorFunction.hxx
 // ========================
 
-/// **Source:** `AdvApprox_EvaluatorFunction.hxx`:27 - `AdvApprox_EvaluatorFunction`
+/// **Source:** `AdvApprox_EvaluatorFunction.hxx`:43 - `AdvApprox_EvaluatorFunction`
 /// Interface for a class implementing a function to be approximated
 /// by AdvApprox_ApproxAFunction
 pub use crate::ffi_types::AdvApprox_EvaluatorFunction as EvaluatorFunction;
@@ -445,7 +451,7 @@ unsafe impl crate::CppDeletable for EvaluatorFunction {
 }
 
 impl EvaluatorFunction {
-    /// **Source:** `AdvApprox_EvaluatorFunction.hxx`:37 - `AdvApprox_EvaluatorFunction::Evaluate()`
+    /// **Source:** `AdvApprox_EvaluatorFunction.hxx`:53 - `AdvApprox_EvaluatorFunction::Evaluate()`
     /// Function evaluation method to be defined by descendant
     pub unsafe fn evaluate(
         &mut self,
@@ -490,14 +496,14 @@ unsafe impl crate::CppDeletable for PrefAndRec {
 
 impl PrefAndRec {
     /// **Source:** `AdvApprox_PrefAndRec.hxx`:36 - `AdvApprox_PrefAndRec::AdvApprox_PrefAndRec()`
-    pub fn new_array1ofreal2_real(
-        RecomendedCut: &crate::ffi_types::TColStd_Array1OfReal,
-        PrefferedCut: &crate::ffi_types::TColStd_Array1OfReal,
+    pub fn new_arr1_double2_real(
+        RecomendedCut: &crate::ffi_types::NCollection_Array1_double,
+        PrefferedCut: &crate::ffi_types::NCollection_Array1_double,
         Weight: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKG3d::AdvApprox_PrefAndRec_ctor_array1ofreal2_real(
+                crate::ffi_extern_TKG3d::AdvApprox_PrefAndRec_ctor_arr1_double2_real(
                     RecomendedCut,
                     PrefferedCut,
                     Weight,
@@ -507,11 +513,11 @@ impl PrefAndRec {
     }
 
     /// **Source:** `AdvApprox_PrefAndRec.hxx`:36 - `AdvApprox_PrefAndRec::AdvApprox_PrefAndRec()`
-    pub fn new_array1ofreal2(
-        RecomendedCut: &crate::ffi_types::TColStd_Array1OfReal,
-        PrefferedCut: &crate::ffi_types::TColStd_Array1OfReal,
+    pub fn new_arr1_double2(
+        RecomendedCut: &crate::ffi_types::NCollection_Array1_double,
+        PrefferedCut: &crate::ffi_types::NCollection_Array1_double,
     ) -> crate::OwnedPtr<Self> {
-        Self::new_array1ofreal2_real(RecomendedCut, PrefferedCut, 5.0)
+        Self::new_arr1_double2_real(RecomendedCut, PrefferedCut, 5.0)
     }
 
     /// **Source:** `AdvApprox_PrefAndRec.hxx`:46 - `AdvApprox_PrefAndRec::Value()`
@@ -574,12 +580,12 @@ unsafe impl crate::CppDeletable for PrefCutting {
 
 impl PrefCutting {
     /// **Source:** `AdvApprox_PrefCutting.hxx`:35 - `AdvApprox_PrefCutting::AdvApprox_PrefCutting()`
-    pub fn new_array1ofreal(
-        CutPnts: &crate::ffi_types::TColStd_Array1OfReal,
+    pub fn new_arr1_double(
+        CutPnts: &crate::ffi_types::NCollection_Array1_double,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi_extern_TKG3d::AdvApprox_PrefCutting_ctor_array1ofreal(CutPnts),
+                crate::ffi_extern_TKG3d::AdvApprox_PrefCutting_ctor_arr1_double(CutPnts),
             ))
         }
     }
@@ -624,11 +630,11 @@ impl PrefCutting {
 // ========================
 
 /// **Source:** `AdvApprox_SimpleApprox.hxx`:39 - `AdvApprox_SimpleApprox`
-/// Approximate  a function on   an interval [First,Last]
-/// The result  is  a simple  polynomial  whose  degree is  as low as
-/// possible  to   satisfy  the required  tolerance  and  the
-/// maximum degree.  The maximum  error and the averrage error
-/// resulting from  approximating the function by the polynomial are computed
+/// Approximate a function on an interval [First,Last]
+/// The result is a simple polynomial whose degree is as low as
+/// possible to satisfy the required tolerance and the
+/// maximum degree. The maximum error and the average error
+/// resulting from approximating the function by the polynomial are computed
 pub use crate::ffi_types::AdvApprox_SimpleApprox as SimpleApprox;
 
 unsafe impl crate::CppDeletable for SimpleApprox {
@@ -641,17 +647,17 @@ unsafe impl crate::CppDeletable for SimpleApprox {
 
 impl SimpleApprox {
     /// **Source:** `AdvApprox_SimpleApprox.hxx`:44 - `AdvApprox_SimpleApprox::AdvApprox_SimpleApprox()`
-    pub fn new_int2_shape_int2_handleplibjacobipolynomial_evaluatorfunction(
+    pub fn new_int2_shape_int2_jacobipolynomial_evaluatorfunction(
         TotalDimension: i32,
         TotalNumSS: i32,
         Continuity: crate::geom_abs::Shape,
         WorkDegree: i32,
         NbGaussPoints: i32,
-        JacobiBase: &crate::ffi_types::HandlePLibJacobiPolynomial,
+        JacobiBase: &crate::p_lib::JacobiPolynomial,
         Func: &EvaluatorFunction,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKG3d::AdvApprox_SimpleApprox_ctor_int2_shape_int2_handleplibjacobipolynomial_evaluatorfunction(TotalDimension, TotalNumSS, Continuity.into(), WorkDegree, NbGaussPoints, JacobiBase, Func)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKG3d::AdvApprox_SimpleApprox_ctor_int2_shape_int2_jacobipolynomial_evaluatorfunction(TotalDimension, TotalNumSS, Continuity.into(), WorkDegree, NbGaussPoints, JacobiBase, Func)))
         }
     }
 
@@ -664,8 +670,8 @@ impl SimpleApprox {
     /// with life time longer than that of the approximator tool;
     pub fn perform(
         &mut self,
-        LocalDimension: &crate::ffi_types::TColStd_Array1OfInteger,
-        LocalTolerancesArray: &crate::ffi_types::TColStd_Array1OfReal,
+        LocalDimension: &crate::ffi_types::NCollection_Array1_int,
+        LocalTolerancesArray: &crate::ffi_types::NCollection_Array1_double,
         First: f64,
         Last: f64,
         MaxDegree: i32,
@@ -698,7 +704,9 @@ impl SimpleApprox {
 
     /// **Source:** `AdvApprox_SimpleApprox.hxx`:69 - `AdvApprox_SimpleApprox::Coefficients()`
     /// returns the coefficients in the Jacobi Base
-    pub fn coefficients(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTColStdHArray1OfReal> {
+    pub fn coefficients(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HArray1_double> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKG3d::AdvApprox_SimpleApprox_coefficients(self as *const Self),
@@ -708,7 +716,9 @@ impl SimpleApprox {
 
     /// **Source:** `AdvApprox_SimpleApprox.hxx`:72 - `AdvApprox_SimpleApprox::FirstConstr()`
     /// returns the constraints at First
-    pub fn first_constr(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTColStdHArray2OfReal> {
+    pub fn first_constr(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HArray2_double> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKG3d::AdvApprox_SimpleApprox_first_constr(self as *const Self),
@@ -718,7 +728,9 @@ impl SimpleApprox {
 
     /// **Source:** `AdvApprox_SimpleApprox.hxx`:75 - `AdvApprox_SimpleApprox::LastConstr()`
     /// returns the constraints at Last
-    pub fn last_constr(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTColStdHArray2OfReal> {
+    pub fn last_constr(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HArray2_double> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKG3d::AdvApprox_SimpleApprox_last_constr(self as *const Self),
@@ -727,7 +739,7 @@ impl SimpleApprox {
     }
 
     /// **Source:** `AdvApprox_SimpleApprox.hxx`:77 - `AdvApprox_SimpleApprox::SomTab()`
-    pub fn som_tab(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTColStdHArray1OfReal> {
+    pub fn som_tab(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HArray1_double> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKG3d::AdvApprox_SimpleApprox_som_tab(self as *const Self),
@@ -736,7 +748,7 @@ impl SimpleApprox {
     }
 
     /// **Source:** `AdvApprox_SimpleApprox.hxx`:79 - `AdvApprox_SimpleApprox::DifTab()`
-    pub fn dif_tab(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTColStdHArray1OfReal> {
+    pub fn dif_tab(&self) -> crate::OwnedPtr<crate::ffi_types::Handle_NCollection_HArray1_double> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
                 crate::ffi_extern_TKG3d::AdvApprox_SimpleApprox_dif_tab(self as *const Self),

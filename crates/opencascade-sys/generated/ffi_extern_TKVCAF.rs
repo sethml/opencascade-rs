@@ -10,231 +10,222 @@ use crate::ffi_types::*;
 unsafe extern "C" {
     // ======================== TPrsStd_AISPresentation ========================
     pub fn TPrsStd_AISPresentation_destructor(self_: *mut TPrsStd_AISPresentation);
-    /// **Source:** `TPrsStd_AISPresentation.hxx`:68 - `TPrsStd_AISPresentation::TPrsStd_AISPresentation()`
+    /// **Source:** `TPrsStd_AISPresentation.hxx`:66 - `TPrsStd_AISPresentation::TPrsStd_AISPresentation()`
     pub fn TPrsStd_AISPresentation_ctor() -> crate::OcctResult<*mut TPrsStd_AISPresentation>;
-    /// **Source:** `TPrsStd_AISPresentation.hxx`:70 - `TPrsStd_AISPresentation::SetDisplayed()`
+    /// **Source:** `TPrsStd_AISPresentation.hxx`:68 - `TPrsStd_AISPresentation::SetDisplayed()`
     pub fn TPrsStd_AISPresentation_set_displayed(
         self_: *mut TPrsStd_AISPresentation,
         B: bool,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `TPrsStd_AISPresentation.hxx`:75 - `TPrsStd_AISPresentation::Display()`
+    /// **Source:** `TPrsStd_AISPresentation.hxx`:73 - `TPrsStd_AISPresentation::Display()`
     pub fn TPrsStd_AISPresentation_display(
         self_: *mut TPrsStd_AISPresentation,
         update: bool,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `TPrsStd_AISPresentation.hxx`:81 - `TPrsStd_AISPresentation::Erase()`
+    /// **Source:** `TPrsStd_AISPresentation.hxx`:79 - `TPrsStd_AISPresentation::Erase()`
     pub fn TPrsStd_AISPresentation_erase(
         self_: *mut TPrsStd_AISPresentation,
         remove: bool,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `TPrsStd_AISPresentation.hxx`:84 - `TPrsStd_AISPresentation::Update()`
+    /// **Source:** `TPrsStd_AISPresentation.hxx`:82 - `TPrsStd_AISPresentation::Update()`
     pub fn TPrsStd_AISPresentation_update(
         self_: *mut TPrsStd_AISPresentation,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `TPrsStd_AISPresentation.hxx`:86 - `TPrsStd_AISPresentation::GetDriverGUID()`
+    /// **Source:** `TPrsStd_AISPresentation.hxx`:84 - `TPrsStd_AISPresentation::GetDriverGUID()`
     pub fn TPrsStd_AISPresentation_get_driver_guid(
         self_: *const TPrsStd_AISPresentation,
     ) -> crate::OcctResult<*mut Standard_GUID>;
-    /// **Source:** `TPrsStd_AISPresentation.hxx`:88 - `TPrsStd_AISPresentation::SetDriverGUID()`
+    /// **Source:** `TPrsStd_AISPresentation.hxx`:86 - `TPrsStd_AISPresentation::SetDriverGUID()`
     pub fn TPrsStd_AISPresentation_set_driver_guid(
         self_: *mut TPrsStd_AISPresentation,
         guid: *const Standard_GUID,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `TPrsStd_AISPresentation.hxx`:91 - `TPrsStd_AISPresentation::IsDisplayed()`
+    /// **Source:** `TPrsStd_AISPresentation.hxx`:89 - `TPrsStd_AISPresentation::IsDisplayed()`
     pub fn TPrsStd_AISPresentation_is_displayed(
         self_: *const TPrsStd_AISPresentation,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `TPrsStd_AISPresentation.hxx`:94 - `TPrsStd_AISPresentation::GetAIS()`
+    /// **Source:** `TPrsStd_AISPresentation.hxx`:92 - `TPrsStd_AISPresentation::GetAIS()`
     pub fn TPrsStd_AISPresentation_get_ais(
         self_: *const TPrsStd_AISPresentation,
-    ) -> crate::OcctResult<*mut HandleAISInteractiveObject>;
-    /// **Source:** `TPrsStd_AISPresentation.hxx`:97 - `TPrsStd_AISPresentation::Material()`
-    pub fn TPrsStd_AISPresentation_material(
-        self_: *const TPrsStd_AISPresentation,
-    ) -> crate::OcctResult<i32>;
-    /// **Source:** `TPrsStd_AISPresentation.hxx`:100 - `TPrsStd_AISPresentation::SetMaterial()`
-    pub fn TPrsStd_AISPresentation_set_material(
-        self_: *mut TPrsStd_AISPresentation,
-        aName: i32,
-    ) -> *const std::ffi::c_char;
-    /// **Source:** `TPrsStd_AISPresentation.hxx`:103 - `TPrsStd_AISPresentation::HasOwnMaterial()`
+    ) -> crate::OcctResult<*mut Handle_AIS_InteractiveObject>;
+    /// **Source:** `TPrsStd_AISPresentation.hxx`:101 - `TPrsStd_AISPresentation::HasOwnMaterial()`
     pub fn TPrsStd_AISPresentation_has_own_material(
         self_: *const TPrsStd_AISPresentation,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `TPrsStd_AISPresentation.hxx`:106 - `TPrsStd_AISPresentation::UnsetMaterial()`
+    /// **Source:** `TPrsStd_AISPresentation.hxx`:104 - `TPrsStd_AISPresentation::UnsetMaterial()`
     pub fn TPrsStd_AISPresentation_unset_material(
         self_: *mut TPrsStd_AISPresentation,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `TPrsStd_AISPresentation.hxx`:111 - `TPrsStd_AISPresentation::SetTransparency()`
+    /// **Source:** `TPrsStd_AISPresentation.hxx`:109 - `TPrsStd_AISPresentation::SetTransparency()`
     pub fn TPrsStd_AISPresentation_set_transparency(
         self_: *mut TPrsStd_AISPresentation,
         aValue: f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `TPrsStd_AISPresentation.hxx`:113 - `TPrsStd_AISPresentation::Transparency()`
+    /// **Source:** `TPrsStd_AISPresentation.hxx`:111 - `TPrsStd_AISPresentation::Transparency()`
     pub fn TPrsStd_AISPresentation_transparency(
         self_: *const TPrsStd_AISPresentation,
     ) -> crate::OcctResult<f64>;
-    /// **Source:** `TPrsStd_AISPresentation.hxx`:116 - `TPrsStd_AISPresentation::HasOwnTransparency()`
+    /// **Source:** `TPrsStd_AISPresentation.hxx`:114 - `TPrsStd_AISPresentation::HasOwnTransparency()`
     pub fn TPrsStd_AISPresentation_has_own_transparency(
         self_: *const TPrsStd_AISPresentation,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `TPrsStd_AISPresentation.hxx`:119 - `TPrsStd_AISPresentation::UnsetTransparency()`
+    /// **Source:** `TPrsStd_AISPresentation.hxx`:117 - `TPrsStd_AISPresentation::UnsetTransparency()`
     pub fn TPrsStd_AISPresentation_unset_transparency(
         self_: *mut TPrsStd_AISPresentation,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `TPrsStd_AISPresentation.hxx`:121 - `TPrsStd_AISPresentation::Color()`
+    /// **Source:** `TPrsStd_AISPresentation.hxx`:119 - `TPrsStd_AISPresentation::Color()`
     pub fn TPrsStd_AISPresentation_color(
         self_: *const TPrsStd_AISPresentation,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `TPrsStd_AISPresentation.hxx`:124 - `TPrsStd_AISPresentation::SetColor()`
+    /// **Source:** `TPrsStd_AISPresentation.hxx`:122 - `TPrsStd_AISPresentation::SetColor()`
     pub fn TPrsStd_AISPresentation_set_color(
         self_: *mut TPrsStd_AISPresentation,
         aColor: i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `TPrsStd_AISPresentation.hxx`:127 - `TPrsStd_AISPresentation::HasOwnColor()`
+    /// **Source:** `TPrsStd_AISPresentation.hxx`:125 - `TPrsStd_AISPresentation::HasOwnColor()`
     pub fn TPrsStd_AISPresentation_has_own_color(
         self_: *const TPrsStd_AISPresentation,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `TPrsStd_AISPresentation.hxx`:130 - `TPrsStd_AISPresentation::UnsetColor()`
+    /// **Source:** `TPrsStd_AISPresentation.hxx`:128 - `TPrsStd_AISPresentation::UnsetColor()`
     pub fn TPrsStd_AISPresentation_unset_color(
         self_: *mut TPrsStd_AISPresentation,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `TPrsStd_AISPresentation.hxx`:132 - `TPrsStd_AISPresentation::Width()`
+    /// **Source:** `TPrsStd_AISPresentation.hxx`:130 - `TPrsStd_AISPresentation::Width()`
     pub fn TPrsStd_AISPresentation_width(
         self_: *const TPrsStd_AISPresentation,
     ) -> crate::OcctResult<f64>;
-    /// **Source:** `TPrsStd_AISPresentation.hxx`:135 - `TPrsStd_AISPresentation::SetWidth()`
+    /// **Source:** `TPrsStd_AISPresentation.hxx`:133 - `TPrsStd_AISPresentation::SetWidth()`
     pub fn TPrsStd_AISPresentation_set_width(
         self_: *mut TPrsStd_AISPresentation,
         aWidth: f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `TPrsStd_AISPresentation.hxx`:138 - `TPrsStd_AISPresentation::HasOwnWidth()`
+    /// **Source:** `TPrsStd_AISPresentation.hxx`:136 - `TPrsStd_AISPresentation::HasOwnWidth()`
     pub fn TPrsStd_AISPresentation_has_own_width(
         self_: *const TPrsStd_AISPresentation,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `TPrsStd_AISPresentation.hxx`:141 - `TPrsStd_AISPresentation::UnsetWidth()`
+    /// **Source:** `TPrsStd_AISPresentation.hxx`:139 - `TPrsStd_AISPresentation::UnsetWidth()`
     pub fn TPrsStd_AISPresentation_unset_width(
         self_: *mut TPrsStd_AISPresentation,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `TPrsStd_AISPresentation.hxx`:143 - `TPrsStd_AISPresentation::Mode()`
+    /// **Source:** `TPrsStd_AISPresentation.hxx`:141 - `TPrsStd_AISPresentation::Mode()`
     pub fn TPrsStd_AISPresentation_mode(
         self_: *const TPrsStd_AISPresentation,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `TPrsStd_AISPresentation.hxx`:145 - `TPrsStd_AISPresentation::SetMode()`
+    /// **Source:** `TPrsStd_AISPresentation.hxx`:143 - `TPrsStd_AISPresentation::SetMode()`
     pub fn TPrsStd_AISPresentation_set_mode(
         self_: *mut TPrsStd_AISPresentation,
         theMode: i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `TPrsStd_AISPresentation.hxx`:147 - `TPrsStd_AISPresentation::HasOwnMode()`
+    /// **Source:** `TPrsStd_AISPresentation.hxx`:145 - `TPrsStd_AISPresentation::HasOwnMode()`
     pub fn TPrsStd_AISPresentation_has_own_mode(
         self_: *const TPrsStd_AISPresentation,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `TPrsStd_AISPresentation.hxx`:149 - `TPrsStd_AISPresentation::UnsetMode()`
+    /// **Source:** `TPrsStd_AISPresentation.hxx`:147 - `TPrsStd_AISPresentation::UnsetMode()`
     pub fn TPrsStd_AISPresentation_unset_mode(
         self_: *mut TPrsStd_AISPresentation,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `TPrsStd_AISPresentation.hxx`:153 - `TPrsStd_AISPresentation::GetNbSelectionModes()`
+    /// **Source:** `TPrsStd_AISPresentation.hxx`:151 - `TPrsStd_AISPresentation::GetNbSelectionModes()`
     pub fn TPrsStd_AISPresentation_get_nb_selection_modes(
         self_: *const TPrsStd_AISPresentation,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `TPrsStd_AISPresentation.hxx`:154 - `TPrsStd_AISPresentation::SelectionMode()`
+    /// **Source:** `TPrsStd_AISPresentation.hxx`:152 - `TPrsStd_AISPresentation::SelectionMode()`
     pub fn TPrsStd_AISPresentation_selection_mode(
         self_: *const TPrsStd_AISPresentation,
         index: i32,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `TPrsStd_AISPresentation.hxx`:161 - `TPrsStd_AISPresentation::SetSelectionMode()`
+    /// **Source:** `TPrsStd_AISPresentation.hxx`:159 - `TPrsStd_AISPresentation::SetSelectionMode()`
     pub fn TPrsStd_AISPresentation_set_selection_mode(
         self_: *mut TPrsStd_AISPresentation,
         theSelectionMode: i32,
         theTransaction: bool,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `TPrsStd_AISPresentation.hxx`:163 - `TPrsStd_AISPresentation::AddSelectionMode()`
+    /// **Source:** `TPrsStd_AISPresentation.hxx`:161 - `TPrsStd_AISPresentation::AddSelectionMode()`
     pub fn TPrsStd_AISPresentation_add_selection_mode(
         self_: *mut TPrsStd_AISPresentation,
         theSelectionMode: i32,
         theTransaction: bool,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `TPrsStd_AISPresentation.hxx`:166 - `TPrsStd_AISPresentation::HasOwnSelectionMode()`
+    /// **Source:** `TPrsStd_AISPresentation.hxx`:164 - `TPrsStd_AISPresentation::HasOwnSelectionMode()`
     pub fn TPrsStd_AISPresentation_has_own_selection_mode(
         self_: *const TPrsStd_AISPresentation,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `TPrsStd_AISPresentation.hxx`:169 - `TPrsStd_AISPresentation::UnsetSelectionMode()`
+    /// **Source:** `TPrsStd_AISPresentation.hxx`:167 - `TPrsStd_AISPresentation::UnsetSelectionMode()`
     pub fn TPrsStd_AISPresentation_unset_selection_mode(
         self_: *mut TPrsStd_AISPresentation,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `TPrsStd_AISPresentation.hxx`:171 - `TPrsStd_AISPresentation::ID()`
+    /// **Source:** `TPrsStd_AISPresentation.hxx`:169 - `TPrsStd_AISPresentation::ID()`
     pub fn TPrsStd_AISPresentation_id(
         self_: *const TPrsStd_AISPresentation,
     ) -> crate::OcctResult<*const Standard_GUID>;
-    /// **Source:** `TPrsStd_AISPresentation.hxx`:173 - `TPrsStd_AISPresentation::NewEmpty()`
+    /// **Source:** `TPrsStd_AISPresentation.hxx`:171 - `TPrsStd_AISPresentation::NewEmpty()`
     pub fn TPrsStd_AISPresentation_new_empty(
         self_: *const TPrsStd_AISPresentation,
-    ) -> crate::OcctResult<*mut HandleTDFAttribute>;
-    /// **Source:** `TPrsStd_AISPresentation.hxx`:175 - `TPrsStd_AISPresentation::Restore()`
+    ) -> crate::OcctResult<*mut Handle_TDF_Attribute>;
+    /// **Source:** `TPrsStd_AISPresentation.hxx`:173 - `TPrsStd_AISPresentation::Restore()`
     pub fn TPrsStd_AISPresentation_restore(
         self_: *mut TPrsStd_AISPresentation,
-        with: *const HandleTDFAttribute,
+        with: *const Handle_TDF_Attribute,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `TPrsStd_AISPresentation.hxx`:177 - `TPrsStd_AISPresentation::Paste()`
+    /// **Source:** `TPrsStd_AISPresentation.hxx`:175 - `TPrsStd_AISPresentation::Paste()`
     pub fn TPrsStd_AISPresentation_paste(
         self_: *const TPrsStd_AISPresentation,
-        into: *const HandleTDFAttribute,
-        RT: *const HandleTDFRelocationTable,
+        into: *const Handle_TDF_Attribute,
+        RT: *const Handle_TDF_RelocationTable,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `TPrsStd_AISPresentation.hxx`:180 - `TPrsStd_AISPresentation::BackupCopy()`
+    /// **Source:** `TPrsStd_AISPresentation.hxx`:178 - `TPrsStd_AISPresentation::BackupCopy()`
     pub fn TPrsStd_AISPresentation_backup_copy(
         self_: *const TPrsStd_AISPresentation,
-    ) -> crate::OcctResult<*mut HandleTDFAttribute>;
-    /// **Source:** `TPrsStd_AISPresentation.hxx`:182 - `TPrsStd_AISPresentation::AfterAddition()`
+    ) -> crate::OcctResult<*mut Handle_TDF_Attribute>;
+    /// **Source:** `TPrsStd_AISPresentation.hxx`:180 - `TPrsStd_AISPresentation::AfterAddition()`
     pub fn TPrsStd_AISPresentation_after_addition(
         self_: *mut TPrsStd_AISPresentation,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `TPrsStd_AISPresentation.hxx`:184 - `TPrsStd_AISPresentation::BeforeRemoval()`
+    /// **Source:** `TPrsStd_AISPresentation.hxx`:182 - `TPrsStd_AISPresentation::BeforeRemoval()`
     pub fn TPrsStd_AISPresentation_before_removal(
         self_: *mut TPrsStd_AISPresentation,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `TPrsStd_AISPresentation.hxx`:186 - `TPrsStd_AISPresentation::BeforeForget()`
+    /// **Source:** `TPrsStd_AISPresentation.hxx`:184 - `TPrsStd_AISPresentation::BeforeForget()`
     pub fn TPrsStd_AISPresentation_before_forget(
         self_: *mut TPrsStd_AISPresentation,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `TPrsStd_AISPresentation.hxx`:188 - `TPrsStd_AISPresentation::AfterResume()`
+    /// **Source:** `TPrsStd_AISPresentation.hxx`:186 - `TPrsStd_AISPresentation::AfterResume()`
     pub fn TPrsStd_AISPresentation_after_resume(
         self_: *mut TPrsStd_AISPresentation,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `TPrsStd_AISPresentation.hxx`:190 - `TPrsStd_AISPresentation::BeforeUndo()`
+    /// **Source:** `TPrsStd_AISPresentation.hxx`:188 - `TPrsStd_AISPresentation::BeforeUndo()`
     pub fn TPrsStd_AISPresentation_before_undo(
         self_: *mut TPrsStd_AISPresentation,
-        anAttDelta: *const HandleTDFAttributeDelta,
+        anAttDelta: *const Handle_TDF_AttributeDelta,
         forceIt: bool,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `TPrsStd_AISPresentation.hxx`:195 - `TPrsStd_AISPresentation::AfterUndo()`
+    /// **Source:** `TPrsStd_AISPresentation.hxx`:192 - `TPrsStd_AISPresentation::AfterUndo()`
     pub fn TPrsStd_AISPresentation_after_undo(
         self_: *mut TPrsStd_AISPresentation,
-        anAttDelta: *const HandleTDFAttributeDelta,
+        anAttDelta: *const Handle_TDF_AttributeDelta,
         forceIt: bool,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `TPrsStd_AISPresentation.hxx`:203 - `TPrsStd_AISPresentation::DynamicType()`
+    /// **Source:** `TPrsStd_AISPresentation.hxx`:198 - `TPrsStd_AISPresentation::DynamicType()`
     pub fn TPrsStd_AISPresentation_dynamic_type(
         self_: *const TPrsStd_AISPresentation,
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// **Source:** `TPrsStd_AISPresentation.hxx`:52 - `TPrsStd_AISPresentation::GetID()`
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
+    /// **Source:** `TPrsStd_AISPresentation.hxx`:49 - `TPrsStd_AISPresentation::GetID()`
     pub fn TPrsStd_AISPresentation_get_id() -> crate::OcctResult<*const Standard_GUID>;
-    /// **Source:** `TPrsStd_AISPresentation.hxx`:56 - `TPrsStd_AISPresentation::Set()`
+    /// **Source:** `TPrsStd_AISPresentation.hxx`:53 - `TPrsStd_AISPresentation::Set()`
     pub fn TPrsStd_AISPresentation_set_label_guid(
         L: *const TDF_Label,
         driver: *const Standard_GUID,
-    ) -> crate::OcctResult<*mut HandleTPrsStdAISPresentation>;
-    /// **Source:** `TPrsStd_AISPresentation.hxx`:60 - `TPrsStd_AISPresentation::Unset()`
+    ) -> crate::OcctResult<*mut Handle_TPrsStd_AISPresentation>;
+    /// **Source:** `TPrsStd_AISPresentation.hxx`:57 - `TPrsStd_AISPresentation::Unset()`
     pub fn TPrsStd_AISPresentation_unset(L: *const TDF_Label) -> *const std::ffi::c_char;
-    /// **Source:** `TPrsStd_AISPresentation.hxx`:66 - `TPrsStd_AISPresentation::Set()`
+    /// **Source:** `TPrsStd_AISPresentation.hxx`:63 - `TPrsStd_AISPresentation::Set()`
     pub fn TPrsStd_AISPresentation_set_handletdfattribute(
-        master: *const HandleTDFAttribute,
-    ) -> crate::OcctResult<*mut HandleTPrsStdAISPresentation>;
-    /// **Source:** `TPrsStd_AISPresentation.hxx`:203 - `TPrsStd_AISPresentation::get_type_name()`
+        master: *const Handle_TDF_Attribute,
+    ) -> crate::OcctResult<*mut Handle_TPrsStd_AISPresentation>;
+    /// **Source:** `TPrsStd_AISPresentation.hxx`:198 - `TPrsStd_AISPresentation::get_type_name()`
     pub fn TPrsStd_AISPresentation_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
-    /// **Source:** `TPrsStd_AISPresentation.hxx`:203 - `TPrsStd_AISPresentation::get_type_descriptor()`
+    /// **Source:** `TPrsStd_AISPresentation.hxx`:198 - `TPrsStd_AISPresentation::get_type_descriptor()`
     pub fn TPrsStd_AISPresentation_get_type_descriptor(
-    ) -> crate::OcctResult<*const HandleStandardType>;
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast TPrsStd_AISPresentation to TDF_Attribute
     pub fn TPrsStd_AISPresentation_as_TDF_Attribute(
         self_: *const TPrsStd_AISPresentation,
@@ -254,245 +245,239 @@ unsafe extern "C" {
     /// Wrap TPrsStd_AISPresentation in a Handle
     pub fn TPrsStd_AISPresentation_to_handle(
         obj: *mut TPrsStd_AISPresentation,
-    ) -> crate::OcctResult<*mut HandleTPrsStdAISPresentation>;
+    ) -> crate::OcctResult<*mut Handle_TPrsStd_AISPresentation>;
     /// Destroy Handle<TPrsStd_AISPresentation>
-    pub fn HandleTPrsStdAISPresentation_destructor(self_: *mut HandleTPrsStdAISPresentation);
+    pub fn Handle_TPrsStd_AISPresentation_destructor(self_: *mut Handle_TPrsStd_AISPresentation);
     /// Clone Handle<TPrsStd_AISPresentation> (increments reference count)
-    pub fn HandleTPrsStdAISPresentation_clone(
-        self_: *const HandleTPrsStdAISPresentation,
-    ) -> crate::OcctResult<*mut HandleTPrsStdAISPresentation>;
+    pub fn Handle_TPrsStd_AISPresentation_clone(
+        self_: *const Handle_TPrsStd_AISPresentation,
+    ) -> crate::OcctResult<*mut Handle_TPrsStd_AISPresentation>;
     /// Check if Handle<TPrsStd_AISPresentation> is null
-    pub fn HandleTPrsStdAISPresentation_is_null(self_: *const HandleTPrsStdAISPresentation)
-        -> bool;
+    pub fn Handle_TPrsStd_AISPresentation_is_null(
+        self_: *const Handle_TPrsStd_AISPresentation,
+    ) -> bool;
     /// Dereference Handle to get *const TPrsStd_AISPresentation
-    pub fn HandleTPrsStdAISPresentation_get(
-        handle: *const HandleTPrsStdAISPresentation,
+    pub fn Handle_TPrsStd_AISPresentation_get(
+        handle: *const Handle_TPrsStd_AISPresentation,
     ) -> crate::OcctResult<*const TPrsStd_AISPresentation>;
     /// Dereference Handle to get *mut TPrsStd_AISPresentation
-    pub fn HandleTPrsStdAISPresentation_get_mut(
-        handle: *mut HandleTPrsStdAISPresentation,
+    pub fn Handle_TPrsStd_AISPresentation_get_mut(
+        handle: *mut Handle_TPrsStd_AISPresentation,
     ) -> crate::OcctResult<*mut TPrsStd_AISPresentation>;
     /// Upcast Handle<TPrsStd_AISPresentation> to Handle<TDF_Attribute>
-    pub fn HandleTPrsStdAISPresentation_to_HandleTDFAttribute(
-        self_: *const HandleTPrsStdAISPresentation,
-    ) -> crate::OcctResult<*mut HandleTDFAttribute>;
+    pub fn Handle_TPrsStd_AISPresentation_to_Handle_TDF_Attribute(
+        self_: *const Handle_TPrsStd_AISPresentation,
+    ) -> crate::OcctResult<*mut Handle_TDF_Attribute>;
     /// Upcast Handle<TPrsStd_AISPresentation> to Handle<Standard_Transient>
-    pub fn HandleTPrsStdAISPresentation_to_HandleStandardTransient(
-        self_: *const HandleTPrsStdAISPresentation,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:138 - `TDF_Attribute::SetID()`
+    pub fn Handle_TPrsStd_AISPresentation_to_Handle_Standard_Transient(
+        self_: *const Handle_TPrsStd_AISPresentation,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:135 - `TDF_Attribute::SetID()`
     pub fn TPrsStd_AISPresentation_inherited_SetID(
         self_: *mut TPrsStd_AISPresentation,
         arg0: *const Standard_GUID,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:150 - `TDF_Attribute::Label()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:147 - `TDF_Attribute::Label()`
     pub fn TPrsStd_AISPresentation_inherited_Label(
         self_: *const TPrsStd_AISPresentation,
     ) -> crate::OcctResult<*mut TDF_Label>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:154 - `TDF_Attribute::Transaction()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:151 - `TDF_Attribute::Transaction()`
     pub fn TPrsStd_AISPresentation_inherited_Transaction(
         self_: *const TPrsStd_AISPresentation,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:160 - `TDF_Attribute::UntilTransaction()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:157 - `TDF_Attribute::UntilTransaction()`
     pub fn TPrsStd_AISPresentation_inherited_UntilTransaction(
         self_: *const TPrsStd_AISPresentation,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:164 - `TDF_Attribute::IsValid()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:161 - `TDF_Attribute::IsValid()`
     pub fn TPrsStd_AISPresentation_inherited_IsValid(
         self_: *const TPrsStd_AISPresentation,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:167 - `TDF_Attribute::IsNew()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:164 - `TDF_Attribute::IsNew()`
     pub fn TPrsStd_AISPresentation_inherited_IsNew(
         self_: *const TPrsStd_AISPresentation,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:174 - `TDF_Attribute::IsForgotten()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:171 - `TDF_Attribute::IsForgotten()`
     pub fn TPrsStd_AISPresentation_inherited_IsForgotten(
         self_: *const TPrsStd_AISPresentation,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:178 - `TDF_Attribute::IsAttribute()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:175 - `TDF_Attribute::IsAttribute()`
     pub fn TPrsStd_AISPresentation_inherited_IsAttribute(
         self_: *const TPrsStd_AISPresentation,
         anID: *const Standard_GUID,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:185 - `TDF_Attribute::FindAttribute()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:182 - `TDF_Attribute::FindAttribute()`
     pub fn TPrsStd_AISPresentation_inherited_FindAttribute(
         self_: *const TPrsStd_AISPresentation,
         anID: *const Standard_GUID,
-        anAttribute: *mut HandleTDFAttribute,
+        anAttribute: *mut Handle_TDF_Attribute,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:199 - `TDF_Attribute::AddAttribute()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:196 - `TDF_Attribute::AddAttribute()`
     pub fn TPrsStd_AISPresentation_inherited_AddAttribute(
         self_: *const TPrsStd_AISPresentation,
-        other: *const HandleTDFAttribute,
+        other: *const Handle_TDF_Attribute,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:206 - `TDF_Attribute::ForgetAttribute()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:203 - `TDF_Attribute::ForgetAttribute()`
     pub fn TPrsStd_AISPresentation_inherited_ForgetAttribute(
         self_: *const TPrsStd_AISPresentation,
         aguid: *const Standard_GUID,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:214 - `TDF_Attribute::ForgetAllAttributes()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:211 - `TDF_Attribute::ForgetAllAttributes()`
     pub fn TPrsStd_AISPresentation_inherited_ForgetAllAttributes(
         self_: *const TPrsStd_AISPresentation,
         clearChildren: bool,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:239 - `TDF_Attribute::AfterRetrieval()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:235 - `TDF_Attribute::AfterRetrieval()`
     pub fn TPrsStd_AISPresentation_inherited_AfterRetrieval(
         self_: *mut TPrsStd_AISPresentation,
         forceIt: bool,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:265 - `TDF_Attribute::BeforeCommitTransaction()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:258 - `TDF_Attribute::BeforeCommitTransaction()`
     pub fn TPrsStd_AISPresentation_inherited_BeforeCommitTransaction(
         self_: *mut TPrsStd_AISPresentation,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:277 - `TDF_Attribute::Backup()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:270 - `TDF_Attribute::Backup()`
     pub fn TPrsStd_AISPresentation_inherited_Backup(
         self_: *mut TPrsStd_AISPresentation,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:282 - `TDF_Attribute::IsBackuped()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:275 - `TDF_Attribute::IsBackuped()`
     pub fn TPrsStd_AISPresentation_inherited_IsBackuped(
         self_: *const TPrsStd_AISPresentation,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:296 - `TDF_Attribute::DeltaOnAddition()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:289 - `TDF_Attribute::DeltaOnAddition()`
     pub fn TPrsStd_AISPresentation_inherited_DeltaOnAddition(
         self_: *const TPrsStd_AISPresentation,
-    ) -> crate::OcctResult<*mut HandleTDFDeltaOnAddition>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:300 - `TDF_Attribute::DeltaOnForget()`
+    ) -> crate::OcctResult<*mut Handle_TDF_DeltaOnAddition>;
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:293 - `TDF_Attribute::DeltaOnForget()`
     pub fn TPrsStd_AISPresentation_inherited_DeltaOnForget(
         self_: *const TPrsStd_AISPresentation,
-    ) -> crate::OcctResult<*mut HandleTDFDeltaOnForget>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:304 - `TDF_Attribute::DeltaOnResume()`
+    ) -> crate::OcctResult<*mut Handle_TDF_DeltaOnForget>;
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:297 - `TDF_Attribute::DeltaOnResume()`
     pub fn TPrsStd_AISPresentation_inherited_DeltaOnResume(
         self_: *const TPrsStd_AISPresentation,
-    ) -> crate::OcctResult<*mut HandleTDFDeltaOnResume>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:308 - `TDF_Attribute::DeltaOnModification()`
+    ) -> crate::OcctResult<*mut Handle_TDF_DeltaOnResume>;
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:301 - `TDF_Attribute::DeltaOnModification()`
     pub fn TPrsStd_AISPresentation_inherited_DeltaOnModification(
         self_: *const TPrsStd_AISPresentation,
-        anOldAttribute: *const HandleTDFAttribute,
-    ) -> crate::OcctResult<*mut HandleTDFDeltaOnModification>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:316 - `TDF_Attribute::DeltaOnRemoval()`
+        anOldAttribute: *const Handle_TDF_Attribute,
+    ) -> crate::OcctResult<*mut Handle_TDF_DeltaOnModification>;
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:310 - `TDF_Attribute::DeltaOnRemoval()`
     pub fn TPrsStd_AISPresentation_inherited_DeltaOnRemoval(
         self_: *const TPrsStd_AISPresentation,
-    ) -> crate::OcctResult<*mut HandleTDFDeltaOnRemoval>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:345 - `TDF_Attribute::References()`
+    ) -> crate::OcctResult<*mut Handle_TDF_DeltaOnRemoval>;
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:340 - `TDF_Attribute::References()`
     pub fn TPrsStd_AISPresentation_inherited_References(
         self_: *const TPrsStd_AISPresentation,
-        aDataSet: *const HandleTDFDataSet,
+        aDataSet: *const Handle_TDF_DataSet,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:358 - `TDF_Attribute::ExtendedDump()`
-    pub fn TPrsStd_AISPresentation_inherited_ExtendedDump(
-        self_: *const TPrsStd_AISPresentation,
-        anOS: *mut Standard_OStream,
-        aFilter: *const TDF_IDFilter,
-        aMap: *mut TDF_AttributeIndexedMap,
-    ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:374 - `TDF_Attribute::Forget()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:370 - `TDF_Attribute::Forget()`
     pub fn TPrsStd_AISPresentation_inherited_Forget(
         self_: *mut TPrsStd_AISPresentation,
         aTransaction: i32,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn TPrsStd_AISPresentation_inherited_IsInstance(
         self_: *const TPrsStd_AISPresentation,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn TPrsStd_AISPresentation_inherited_IsKind(
         self_: *const TPrsStd_AISPresentation,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn TPrsStd_AISPresentation_inherited_This(
         self_: *const TPrsStd_AISPresentation,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn TPrsStd_AISPresentation_inherited_GetRefCount(
         self_: *const TPrsStd_AISPresentation,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn TPrsStd_AISPresentation_inherited_IncrementRefCounter(
         self_: *mut TPrsStd_AISPresentation,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn TPrsStd_AISPresentation_inherited_DecrementRefCounter(
         self_: *mut TPrsStd_AISPresentation,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn TPrsStd_AISPresentation_inherited_Delete(
         self_: *const TPrsStd_AISPresentation,
     ) -> *const std::ffi::c_char;
     // ======================== TPrsStd_AISViewer ========================
     pub fn TPrsStd_AISViewer_destructor(self_: *mut TPrsStd_AISViewer);
-    /// **Source:** `TPrsStd_AISViewer.hxx`:74 - `TPrsStd_AISViewer::TPrsStd_AISViewer()`
+    /// **Source:** `TPrsStd_AISViewer.hxx`:69 - `TPrsStd_AISViewer::TPrsStd_AISViewer()`
     pub fn TPrsStd_AISViewer_ctor() -> crate::OcctResult<*mut TPrsStd_AISViewer>;
-    /// **Source:** `TPrsStd_AISViewer.hxx`:78 - `TPrsStd_AISViewer::Update()`
+    /// **Source:** `TPrsStd_AISViewer.hxx`:73 - `TPrsStd_AISViewer::Update()`
     pub fn TPrsStd_AISViewer_update(self_: *const TPrsStd_AISViewer) -> *const std::ffi::c_char;
-    /// **Source:** `TPrsStd_AISViewer.hxx`:81 - `TPrsStd_AISViewer::SetInteractiveContext()`
+    /// **Source:** `TPrsStd_AISViewer.hxx`:76 - `TPrsStd_AISViewer::SetInteractiveContext()`
     pub fn TPrsStd_AISViewer_set_interactive_context(
         self_: *mut TPrsStd_AISViewer,
-        ctx: *const HandleAISInteractiveContext,
+        ctx: *const Handle_AIS_InteractiveContext,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `TPrsStd_AISViewer.hxx`:84 - `TPrsStd_AISViewer::GetInteractiveContext()`
+    /// **Source:** `TPrsStd_AISViewer.hxx`:79 - `TPrsStd_AISViewer::GetInteractiveContext()`
     pub fn TPrsStd_AISViewer_get_interactive_context(
         self_: *const TPrsStd_AISViewer,
-    ) -> crate::OcctResult<*mut HandleAISInteractiveContext>;
-    /// **Source:** `TPrsStd_AISViewer.hxx`:86 - `TPrsStd_AISViewer::ID()`
+    ) -> crate::OcctResult<*mut Handle_AIS_InteractiveContext>;
+    /// **Source:** `TPrsStd_AISViewer.hxx`:81 - `TPrsStd_AISViewer::ID()`
     pub fn TPrsStd_AISViewer_id(
         self_: *const TPrsStd_AISViewer,
     ) -> crate::OcctResult<*const Standard_GUID>;
-    /// **Source:** `TPrsStd_AISViewer.hxx`:88 - `TPrsStd_AISViewer::Restore()`
+    /// **Source:** `TPrsStd_AISViewer.hxx`:83 - `TPrsStd_AISViewer::Restore()`
     pub fn TPrsStd_AISViewer_restore(
         self_: *mut TPrsStd_AISViewer,
-        with: *const HandleTDFAttribute,
+        with: *const Handle_TDF_Attribute,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `TPrsStd_AISViewer.hxx`:90 - `TPrsStd_AISViewer::NewEmpty()`
+    /// **Source:** `TPrsStd_AISViewer.hxx`:85 - `TPrsStd_AISViewer::NewEmpty()`
     pub fn TPrsStd_AISViewer_new_empty(
         self_: *const TPrsStd_AISViewer,
-    ) -> crate::OcctResult<*mut HandleTDFAttribute>;
-    /// **Source:** `TPrsStd_AISViewer.hxx`:92 - `TPrsStd_AISViewer::Paste()`
+    ) -> crate::OcctResult<*mut Handle_TDF_Attribute>;
+    /// **Source:** `TPrsStd_AISViewer.hxx`:87 - `TPrsStd_AISViewer::Paste()`
     pub fn TPrsStd_AISViewer_paste(
         self_: *const TPrsStd_AISViewer,
-        into: *const HandleTDFAttribute,
-        RT: *const HandleTDFRelocationTable,
+        into: *const Handle_TDF_Attribute,
+        RT: *const Handle_TDF_RelocationTable,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `TPrsStd_AISViewer.hxx`:99 - `TPrsStd_AISViewer::DynamicType()`
+    /// **Source:** `TPrsStd_AISViewer.hxx`:93 - `TPrsStd_AISViewer::DynamicType()`
     pub fn TPrsStd_AISViewer_dynamic_type(
         self_: *const TPrsStd_AISViewer,
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// **Source:** `TPrsStd_AISViewer.hxx`:42 - `TPrsStd_AISViewer::GetID()`
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
+    /// **Source:** `TPrsStd_AISViewer.hxx`:39 - `TPrsStd_AISViewer::GetID()`
     pub fn TPrsStd_AISViewer_get_id() -> crate::OcctResult<*const Standard_GUID>;
-    /// **Source:** `TPrsStd_AISViewer.hxx`:46 - `TPrsStd_AISViewer::Has()`
+    /// **Source:** `TPrsStd_AISViewer.hxx`:43 - `TPrsStd_AISViewer::Has()`
     pub fn TPrsStd_AISViewer_has(acces: *const TDF_Label) -> crate::OcctResult<bool>;
-    /// **Source:** `TPrsStd_AISViewer.hxx`:50 - `TPrsStd_AISViewer::New()`
+    /// **Source:** `TPrsStd_AISViewer.hxx`:47 - `TPrsStd_AISViewer::New()`
     pub fn TPrsStd_AISViewer_new_label_handleaisinteractivecontext(
         access: *const TDF_Label,
-        selector: *const HandleAISInteractiveContext,
-    ) -> crate::OcctResult<*mut HandleTPrsStdAISViewer>;
-    /// **Source:** `TPrsStd_AISViewer.hxx`:57 - `TPrsStd_AISViewer::New()`
+        selector: *const Handle_AIS_InteractiveContext,
+    ) -> crate::OcctResult<*mut Handle_TPrsStd_AISViewer>;
+    /// **Source:** `TPrsStd_AISViewer.hxx`:54 - `TPrsStd_AISViewer::New()`
     pub fn TPrsStd_AISViewer_new_label_handlev3dviewer(
         acces: *const TDF_Label,
-        viewer: *const HandleV3dViewer,
-    ) -> crate::OcctResult<*mut HandleTPrsStdAISViewer>;
-    /// **Source:** `TPrsStd_AISViewer.hxx`:62 - `TPrsStd_AISViewer::Find()`
+        viewer: *const Handle_V3d_Viewer,
+    ) -> crate::OcctResult<*mut Handle_TPrsStd_AISViewer>;
+    /// **Source:** `TPrsStd_AISViewer.hxx`:59 - `TPrsStd_AISViewer::Find()`
     pub fn TPrsStd_AISViewer_find_label_handletprsstdaisviewer(
         acces: *const TDF_Label,
-        A: *mut HandleTPrsStdAISViewer,
+        A: *mut Handle_TPrsStd_AISViewer,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `TPrsStd_AISViewer.hxx`:65 - `TPrsStd_AISViewer::Find()`
+    /// **Source:** `TPrsStd_AISViewer.hxx`:61 - `TPrsStd_AISViewer::Find()`
     pub fn TPrsStd_AISViewer_find_label_handleaisinteractivecontext(
         acces: *const TDF_Label,
-        IC: *mut HandleAISInteractiveContext,
+        IC: *mut Handle_AIS_InteractiveContext,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `TPrsStd_AISViewer.hxx`:68 - `TPrsStd_AISViewer::Find()`
+    /// **Source:** `TPrsStd_AISViewer.hxx`:63 - `TPrsStd_AISViewer::Find()`
     pub fn TPrsStd_AISViewer_find_label_handlev3dviewer(
         acces: *const TDF_Label,
-        V: *mut HandleV3dViewer,
+        V: *mut Handle_V3d_Viewer,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `TPrsStd_AISViewer.hxx`:72 - `TPrsStd_AISViewer::Update()`
+    /// **Source:** `TPrsStd_AISViewer.hxx`:67 - `TPrsStd_AISViewer::Update()`
     pub fn TPrsStd_AISViewer_update_label(acces: *const TDF_Label) -> *const std::ffi::c_char;
-    /// **Source:** `TPrsStd_AISViewer.hxx`:99 - `TPrsStd_AISViewer::get_type_name()`
+    /// **Source:** `TPrsStd_AISViewer.hxx`:93 - `TPrsStd_AISViewer::get_type_name()`
     pub fn TPrsStd_AISViewer_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
-    /// **Source:** `TPrsStd_AISViewer.hxx`:99 - `TPrsStd_AISViewer::get_type_descriptor()`
-    pub fn TPrsStd_AISViewer_get_type_descriptor() -> crate::OcctResult<*const HandleStandardType>;
+    /// **Source:** `TPrsStd_AISViewer.hxx`:93 - `TPrsStd_AISViewer::get_type_descriptor()`
+    pub fn TPrsStd_AISViewer_get_type_descriptor() -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast TPrsStd_AISViewer to TDF_Attribute
     pub fn TPrsStd_AISViewer_as_TDF_Attribute(
         self_: *const TPrsStd_AISViewer,
@@ -512,221 +497,214 @@ unsafe extern "C" {
     /// Wrap TPrsStd_AISViewer in a Handle
     pub fn TPrsStd_AISViewer_to_handle(
         obj: *mut TPrsStd_AISViewer,
-    ) -> crate::OcctResult<*mut HandleTPrsStdAISViewer>;
+    ) -> crate::OcctResult<*mut Handle_TPrsStd_AISViewer>;
     /// Destroy Handle<TPrsStd_AISViewer>
-    pub fn HandleTPrsStdAISViewer_destructor(self_: *mut HandleTPrsStdAISViewer);
+    pub fn Handle_TPrsStd_AISViewer_destructor(self_: *mut Handle_TPrsStd_AISViewer);
     /// Clone Handle<TPrsStd_AISViewer> (increments reference count)
-    pub fn HandleTPrsStdAISViewer_clone(
-        self_: *const HandleTPrsStdAISViewer,
-    ) -> crate::OcctResult<*mut HandleTPrsStdAISViewer>;
+    pub fn Handle_TPrsStd_AISViewer_clone(
+        self_: *const Handle_TPrsStd_AISViewer,
+    ) -> crate::OcctResult<*mut Handle_TPrsStd_AISViewer>;
     /// Check if Handle<TPrsStd_AISViewer> is null
-    pub fn HandleTPrsStdAISViewer_is_null(self_: *const HandleTPrsStdAISViewer) -> bool;
+    pub fn Handle_TPrsStd_AISViewer_is_null(self_: *const Handle_TPrsStd_AISViewer) -> bool;
     /// Dereference Handle to get *const TPrsStd_AISViewer
-    pub fn HandleTPrsStdAISViewer_get(
-        handle: *const HandleTPrsStdAISViewer,
+    pub fn Handle_TPrsStd_AISViewer_get(
+        handle: *const Handle_TPrsStd_AISViewer,
     ) -> crate::OcctResult<*const TPrsStd_AISViewer>;
     /// Dereference Handle to get *mut TPrsStd_AISViewer
-    pub fn HandleTPrsStdAISViewer_get_mut(
-        handle: *mut HandleTPrsStdAISViewer,
+    pub fn Handle_TPrsStd_AISViewer_get_mut(
+        handle: *mut Handle_TPrsStd_AISViewer,
     ) -> crate::OcctResult<*mut TPrsStd_AISViewer>;
     /// Upcast Handle<TPrsStd_AISViewer> to Handle<TDF_Attribute>
-    pub fn HandleTPrsStdAISViewer_to_HandleTDFAttribute(
-        self_: *const HandleTPrsStdAISViewer,
-    ) -> crate::OcctResult<*mut HandleTDFAttribute>;
+    pub fn Handle_TPrsStd_AISViewer_to_Handle_TDF_Attribute(
+        self_: *const Handle_TPrsStd_AISViewer,
+    ) -> crate::OcctResult<*mut Handle_TDF_Attribute>;
     /// Upcast Handle<TPrsStd_AISViewer> to Handle<Standard_Transient>
-    pub fn HandleTPrsStdAISViewer_to_HandleStandardTransient(
-        self_: *const HandleTPrsStdAISViewer,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:138 - `TDF_Attribute::SetID()`
+    pub fn Handle_TPrsStd_AISViewer_to_Handle_Standard_Transient(
+        self_: *const Handle_TPrsStd_AISViewer,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:135 - `TDF_Attribute::SetID()`
     pub fn TPrsStd_AISViewer_inherited_SetID(
         self_: *mut TPrsStd_AISViewer,
         arg0: *const Standard_GUID,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:150 - `TDF_Attribute::Label()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:147 - `TDF_Attribute::Label()`
     pub fn TPrsStd_AISViewer_inherited_Label(
         self_: *const TPrsStd_AISViewer,
     ) -> crate::OcctResult<*mut TDF_Label>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:154 - `TDF_Attribute::Transaction()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:151 - `TDF_Attribute::Transaction()`
     pub fn TPrsStd_AISViewer_inherited_Transaction(
         self_: *const TPrsStd_AISViewer,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:160 - `TDF_Attribute::UntilTransaction()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:157 - `TDF_Attribute::UntilTransaction()`
     pub fn TPrsStd_AISViewer_inherited_UntilTransaction(
         self_: *const TPrsStd_AISViewer,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:164 - `TDF_Attribute::IsValid()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:161 - `TDF_Attribute::IsValid()`
     pub fn TPrsStd_AISViewer_inherited_IsValid(
         self_: *const TPrsStd_AISViewer,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:167 - `TDF_Attribute::IsNew()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:164 - `TDF_Attribute::IsNew()`
     pub fn TPrsStd_AISViewer_inherited_IsNew(
         self_: *const TPrsStd_AISViewer,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:174 - `TDF_Attribute::IsForgotten()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:171 - `TDF_Attribute::IsForgotten()`
     pub fn TPrsStd_AISViewer_inherited_IsForgotten(
         self_: *const TPrsStd_AISViewer,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:178 - `TDF_Attribute::IsAttribute()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:175 - `TDF_Attribute::IsAttribute()`
     pub fn TPrsStd_AISViewer_inherited_IsAttribute(
         self_: *const TPrsStd_AISViewer,
         anID: *const Standard_GUID,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:185 - `TDF_Attribute::FindAttribute()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:182 - `TDF_Attribute::FindAttribute()`
     pub fn TPrsStd_AISViewer_inherited_FindAttribute(
         self_: *const TPrsStd_AISViewer,
         anID: *const Standard_GUID,
-        anAttribute: *mut HandleTDFAttribute,
+        anAttribute: *mut Handle_TDF_Attribute,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:199 - `TDF_Attribute::AddAttribute()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:196 - `TDF_Attribute::AddAttribute()`
     pub fn TPrsStd_AISViewer_inherited_AddAttribute(
         self_: *const TPrsStd_AISViewer,
-        other: *const HandleTDFAttribute,
+        other: *const Handle_TDF_Attribute,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:206 - `TDF_Attribute::ForgetAttribute()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:203 - `TDF_Attribute::ForgetAttribute()`
     pub fn TPrsStd_AISViewer_inherited_ForgetAttribute(
         self_: *const TPrsStd_AISViewer,
         aguid: *const Standard_GUID,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:214 - `TDF_Attribute::ForgetAllAttributes()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:211 - `TDF_Attribute::ForgetAllAttributes()`
     pub fn TPrsStd_AISViewer_inherited_ForgetAllAttributes(
         self_: *const TPrsStd_AISViewer,
         clearChildren: bool,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:218 - `TDF_Attribute::AfterAddition()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:214 - `TDF_Attribute::AfterAddition()`
     pub fn TPrsStd_AISViewer_inherited_AfterAddition(
         self_: *mut TPrsStd_AISViewer,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:222 - `TDF_Attribute::BeforeRemoval()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:218 - `TDF_Attribute::BeforeRemoval()`
     pub fn TPrsStd_AISViewer_inherited_BeforeRemoval(
         self_: *mut TPrsStd_AISViewer,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:226 - `TDF_Attribute::BeforeForget()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:222 - `TDF_Attribute::BeforeForget()`
     pub fn TPrsStd_AISViewer_inherited_BeforeForget(
         self_: *mut TPrsStd_AISViewer,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:230 - `TDF_Attribute::AfterResume()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:226 - `TDF_Attribute::AfterResume()`
     pub fn TPrsStd_AISViewer_inherited_AfterResume(
         self_: *mut TPrsStd_AISViewer,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:239 - `TDF_Attribute::AfterRetrieval()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:235 - `TDF_Attribute::AfterRetrieval()`
     pub fn TPrsStd_AISViewer_inherited_AfterRetrieval(
         self_: *mut TPrsStd_AISViewer,
         forceIt: bool,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:248 - `TDF_Attribute::BeforeUndo()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:243 - `TDF_Attribute::BeforeUndo()`
     pub fn TPrsStd_AISViewer_inherited_BeforeUndo(
         self_: *mut TPrsStd_AISViewer,
-        anAttDelta: *const HandleTDFAttributeDelta,
+        anAttDelta: *const Handle_TDF_AttributeDelta,
         forceIt: bool,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:258 - `TDF_Attribute::AfterUndo()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:252 - `TDF_Attribute::AfterUndo()`
     pub fn TPrsStd_AISViewer_inherited_AfterUndo(
         self_: *mut TPrsStd_AISViewer,
-        anAttDelta: *const HandleTDFAttributeDelta,
+        anAttDelta: *const Handle_TDF_AttributeDelta,
         forceIt: bool,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:265 - `TDF_Attribute::BeforeCommitTransaction()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:258 - `TDF_Attribute::BeforeCommitTransaction()`
     pub fn TPrsStd_AISViewer_inherited_BeforeCommitTransaction(
         self_: *mut TPrsStd_AISViewer,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:277 - `TDF_Attribute::Backup()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:270 - `TDF_Attribute::Backup()`
     pub fn TPrsStd_AISViewer_inherited_Backup(
         self_: *mut TPrsStd_AISViewer,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:282 - `TDF_Attribute::IsBackuped()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:275 - `TDF_Attribute::IsBackuped()`
     pub fn TPrsStd_AISViewer_inherited_IsBackuped(
         self_: *const TPrsStd_AISViewer,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:286 - `TDF_Attribute::BackupCopy()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:279 - `TDF_Attribute::BackupCopy()`
     pub fn TPrsStd_AISViewer_inherited_BackupCopy(
         self_: *const TPrsStd_AISViewer,
-    ) -> crate::OcctResult<*mut HandleTDFAttribute>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:296 - `TDF_Attribute::DeltaOnAddition()`
+    ) -> crate::OcctResult<*mut Handle_TDF_Attribute>;
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:289 - `TDF_Attribute::DeltaOnAddition()`
     pub fn TPrsStd_AISViewer_inherited_DeltaOnAddition(
         self_: *const TPrsStd_AISViewer,
-    ) -> crate::OcctResult<*mut HandleTDFDeltaOnAddition>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:300 - `TDF_Attribute::DeltaOnForget()`
+    ) -> crate::OcctResult<*mut Handle_TDF_DeltaOnAddition>;
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:293 - `TDF_Attribute::DeltaOnForget()`
     pub fn TPrsStd_AISViewer_inherited_DeltaOnForget(
         self_: *const TPrsStd_AISViewer,
-    ) -> crate::OcctResult<*mut HandleTDFDeltaOnForget>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:304 - `TDF_Attribute::DeltaOnResume()`
+    ) -> crate::OcctResult<*mut Handle_TDF_DeltaOnForget>;
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:297 - `TDF_Attribute::DeltaOnResume()`
     pub fn TPrsStd_AISViewer_inherited_DeltaOnResume(
         self_: *const TPrsStd_AISViewer,
-    ) -> crate::OcctResult<*mut HandleTDFDeltaOnResume>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:308 - `TDF_Attribute::DeltaOnModification()`
+    ) -> crate::OcctResult<*mut Handle_TDF_DeltaOnResume>;
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:301 - `TDF_Attribute::DeltaOnModification()`
     pub fn TPrsStd_AISViewer_inherited_DeltaOnModification(
         self_: *const TPrsStd_AISViewer,
-        anOldAttribute: *const HandleTDFAttribute,
-    ) -> crate::OcctResult<*mut HandleTDFDeltaOnModification>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:316 - `TDF_Attribute::DeltaOnRemoval()`
+        anOldAttribute: *const Handle_TDF_Attribute,
+    ) -> crate::OcctResult<*mut Handle_TDF_DeltaOnModification>;
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:310 - `TDF_Attribute::DeltaOnRemoval()`
     pub fn TPrsStd_AISViewer_inherited_DeltaOnRemoval(
         self_: *const TPrsStd_AISViewer,
-    ) -> crate::OcctResult<*mut HandleTDFDeltaOnRemoval>;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:345 - `TDF_Attribute::References()`
+    ) -> crate::OcctResult<*mut Handle_TDF_DeltaOnRemoval>;
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:340 - `TDF_Attribute::References()`
     pub fn TPrsStd_AISViewer_inherited_References(
         self_: *const TPrsStd_AISViewer,
-        aDataSet: *const HandleTDFDataSet,
+        aDataSet: *const Handle_TDF_DataSet,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:358 - `TDF_Attribute::ExtendedDump()`
-    pub fn TPrsStd_AISViewer_inherited_ExtendedDump(
-        self_: *const TPrsStd_AISViewer,
-        anOS: *mut Standard_OStream,
-        aFilter: *const TDF_IDFilter,
-        aMap: *mut TDF_AttributeIndexedMap,
-    ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `TDF_Attribute.hxx`:374 - `TDF_Attribute::Forget()`
+    /// Inherited: **Source:** `TDF_Attribute.hxx`:370 - `TDF_Attribute::Forget()`
     pub fn TPrsStd_AISViewer_inherited_Forget(
         self_: *mut TPrsStd_AISViewer,
         aTransaction: i32,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn TPrsStd_AISViewer_inherited_IsInstance(
         self_: *const TPrsStd_AISViewer,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn TPrsStd_AISViewer_inherited_IsKind(
         self_: *const TPrsStd_AISViewer,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn TPrsStd_AISViewer_inherited_This(
         self_: *const TPrsStd_AISViewer,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn TPrsStd_AISViewer_inherited_GetRefCount(
         self_: *const TPrsStd_AISViewer,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn TPrsStd_AISViewer_inherited_IncrementRefCounter(
         self_: *mut TPrsStd_AISViewer,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn TPrsStd_AISViewer_inherited_DecrementRefCounter(
         self_: *mut TPrsStd_AISViewer,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn TPrsStd_AISViewer_inherited_Delete(
         self_: *const TPrsStd_AISViewer,
     ) -> *const std::ffi::c_char;
     // ======================== TPrsStd_AxisDriver ========================
     pub fn TPrsStd_AxisDriver_destructor(self_: *mut TPrsStd_AxisDriver);
-    /// **Source:** `TPrsStd_AxisDriver.hxx`:36 - `TPrsStd_AxisDriver::TPrsStd_AxisDriver()`
+    /// **Source:** `TPrsStd_AxisDriver.hxx`:33 - `TPrsStd_AxisDriver::TPrsStd_AxisDriver()`
     pub fn TPrsStd_AxisDriver_ctor() -> crate::OcctResult<*mut TPrsStd_AxisDriver>;
-    /// **Source:** `TPrsStd_AxisDriver.hxx`:42 - `TPrsStd_AxisDriver::Update()`
+    /// **Source:** `TPrsStd_AxisDriver.hxx`:39 - `TPrsStd_AxisDriver::Update()`
     pub fn TPrsStd_AxisDriver_update(
         self_: *mut TPrsStd_AxisDriver,
         aLabel: *const TDF_Label,
-        anAISObject: *mut HandleAISInteractiveObject,
+        anAISObject: *mut Handle_AIS_InteractiveObject,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `TPrsStd_AxisDriver.hxx`:46 - `TPrsStd_AxisDriver::DynamicType()`
+    /// **Source:** `TPrsStd_AxisDriver.hxx`:42 - `TPrsStd_AxisDriver::DynamicType()`
     pub fn TPrsStd_AxisDriver_dynamic_type(
         self_: *const TPrsStd_AxisDriver,
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// **Source:** `TPrsStd_AxisDriver.hxx`:46 - `TPrsStd_AxisDriver::get_type_name()`
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
+    /// **Source:** `TPrsStd_AxisDriver.hxx`:42 - `TPrsStd_AxisDriver::get_type_name()`
     pub fn TPrsStd_AxisDriver_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
-    /// **Source:** `TPrsStd_AxisDriver.hxx`:46 - `TPrsStd_AxisDriver::get_type_descriptor()`
-    pub fn TPrsStd_AxisDriver_get_type_descriptor() -> crate::OcctResult<*const HandleStandardType>;
+    /// **Source:** `TPrsStd_AxisDriver.hxx`:42 - `TPrsStd_AxisDriver::get_type_descriptor()`
+    pub fn TPrsStd_AxisDriver_get_type_descriptor() -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast TPrsStd_AxisDriver to TPrsStd_Driver
     pub fn TPrsStd_AxisDriver_as_TPrsStd_Driver(
         self_: *const TPrsStd_AxisDriver,
@@ -746,80 +724,80 @@ unsafe extern "C" {
     /// Wrap TPrsStd_AxisDriver in a Handle
     pub fn TPrsStd_AxisDriver_to_handle(
         obj: *mut TPrsStd_AxisDriver,
-    ) -> crate::OcctResult<*mut HandleTPrsStdAxisDriver>;
+    ) -> crate::OcctResult<*mut Handle_TPrsStd_AxisDriver>;
     /// Destroy Handle<TPrsStd_AxisDriver>
-    pub fn HandleTPrsStdAxisDriver_destructor(self_: *mut HandleTPrsStdAxisDriver);
+    pub fn Handle_TPrsStd_AxisDriver_destructor(self_: *mut Handle_TPrsStd_AxisDriver);
     /// Clone Handle<TPrsStd_AxisDriver> (increments reference count)
-    pub fn HandleTPrsStdAxisDriver_clone(
-        self_: *const HandleTPrsStdAxisDriver,
-    ) -> crate::OcctResult<*mut HandleTPrsStdAxisDriver>;
+    pub fn Handle_TPrsStd_AxisDriver_clone(
+        self_: *const Handle_TPrsStd_AxisDriver,
+    ) -> crate::OcctResult<*mut Handle_TPrsStd_AxisDriver>;
     /// Check if Handle<TPrsStd_AxisDriver> is null
-    pub fn HandleTPrsStdAxisDriver_is_null(self_: *const HandleTPrsStdAxisDriver) -> bool;
+    pub fn Handle_TPrsStd_AxisDriver_is_null(self_: *const Handle_TPrsStd_AxisDriver) -> bool;
     /// Dereference Handle to get *const TPrsStd_AxisDriver
-    pub fn HandleTPrsStdAxisDriver_get(
-        handle: *const HandleTPrsStdAxisDriver,
+    pub fn Handle_TPrsStd_AxisDriver_get(
+        handle: *const Handle_TPrsStd_AxisDriver,
     ) -> crate::OcctResult<*const TPrsStd_AxisDriver>;
     /// Dereference Handle to get *mut TPrsStd_AxisDriver
-    pub fn HandleTPrsStdAxisDriver_get_mut(
-        handle: *mut HandleTPrsStdAxisDriver,
+    pub fn Handle_TPrsStd_AxisDriver_get_mut(
+        handle: *mut Handle_TPrsStd_AxisDriver,
     ) -> crate::OcctResult<*mut TPrsStd_AxisDriver>;
     /// Upcast Handle<TPrsStd_AxisDriver> to Handle<TPrsStd_Driver>
-    pub fn HandleTPrsStdAxisDriver_to_HandleTPrsStdDriver(
-        self_: *const HandleTPrsStdAxisDriver,
-    ) -> crate::OcctResult<*mut HandleTPrsStdDriver>;
+    pub fn Handle_TPrsStd_AxisDriver_to_Handle_TPrsStd_Driver(
+        self_: *const Handle_TPrsStd_AxisDriver,
+    ) -> crate::OcctResult<*mut Handle_TPrsStd_Driver>;
     /// Upcast Handle<TPrsStd_AxisDriver> to Handle<Standard_Transient>
-    pub fn HandleTPrsStdAxisDriver_to_HandleStandardTransient(
-        self_: *const HandleTPrsStdAxisDriver,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn Handle_TPrsStd_AxisDriver_to_Handle_Standard_Transient(
+        self_: *const Handle_TPrsStd_AxisDriver,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn TPrsStd_AxisDriver_inherited_IsInstance(
         self_: *const TPrsStd_AxisDriver,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn TPrsStd_AxisDriver_inherited_IsKind(
         self_: *const TPrsStd_AxisDriver,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn TPrsStd_AxisDriver_inherited_This(
         self_: *const TPrsStd_AxisDriver,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn TPrsStd_AxisDriver_inherited_GetRefCount(
         self_: *const TPrsStd_AxisDriver,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn TPrsStd_AxisDriver_inherited_IncrementRefCounter(
         self_: *mut TPrsStd_AxisDriver,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn TPrsStd_AxisDriver_inherited_DecrementRefCounter(
         self_: *mut TPrsStd_AxisDriver,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn TPrsStd_AxisDriver_inherited_Delete(
         self_: *const TPrsStd_AxisDriver,
     ) -> *const std::ffi::c_char;
     // ======================== TPrsStd_ConstraintDriver ========================
     pub fn TPrsStd_ConstraintDriver_destructor(self_: *mut TPrsStd_ConstraintDriver);
-    /// **Source:** `TPrsStd_ConstraintDriver.hxx`:36 - `TPrsStd_ConstraintDriver::TPrsStd_ConstraintDriver()`
+    /// **Source:** `TPrsStd_ConstraintDriver.hxx`:33 - `TPrsStd_ConstraintDriver::TPrsStd_ConstraintDriver()`
     pub fn TPrsStd_ConstraintDriver_ctor() -> crate::OcctResult<*mut TPrsStd_ConstraintDriver>;
-    /// **Source:** `TPrsStd_ConstraintDriver.hxx`:42 - `TPrsStd_ConstraintDriver::Update()`
+    /// **Source:** `TPrsStd_ConstraintDriver.hxx`:39 - `TPrsStd_ConstraintDriver::Update()`
     pub fn TPrsStd_ConstraintDriver_update(
         self_: *mut TPrsStd_ConstraintDriver,
         aLabel: *const TDF_Label,
-        anAISObject: *mut HandleAISInteractiveObject,
+        anAISObject: *mut Handle_AIS_InteractiveObject,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `TPrsStd_ConstraintDriver.hxx`:46 - `TPrsStd_ConstraintDriver::DynamicType()`
+    /// **Source:** `TPrsStd_ConstraintDriver.hxx`:42 - `TPrsStd_ConstraintDriver::DynamicType()`
     pub fn TPrsStd_ConstraintDriver_dynamic_type(
         self_: *const TPrsStd_ConstraintDriver,
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// **Source:** `TPrsStd_ConstraintDriver.hxx`:46 - `TPrsStd_ConstraintDriver::get_type_name()`
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
+    /// **Source:** `TPrsStd_ConstraintDriver.hxx`:42 - `TPrsStd_ConstraintDriver::get_type_name()`
     pub fn TPrsStd_ConstraintDriver_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
-    /// **Source:** `TPrsStd_ConstraintDriver.hxx`:46 - `TPrsStd_ConstraintDriver::get_type_descriptor()`
+    /// **Source:** `TPrsStd_ConstraintDriver.hxx`:42 - `TPrsStd_ConstraintDriver::get_type_descriptor()`
     pub fn TPrsStd_ConstraintDriver_get_type_descriptor(
-    ) -> crate::OcctResult<*const HandleStandardType>;
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast TPrsStd_ConstraintDriver to TPrsStd_Driver
     pub fn TPrsStd_ConstraintDriver_as_TPrsStd_Driver(
         self_: *const TPrsStd_ConstraintDriver,
@@ -839,60 +817,60 @@ unsafe extern "C" {
     /// Wrap TPrsStd_ConstraintDriver in a Handle
     pub fn TPrsStd_ConstraintDriver_to_handle(
         obj: *mut TPrsStd_ConstraintDriver,
-    ) -> crate::OcctResult<*mut HandleTPrsStdConstraintDriver>;
+    ) -> crate::OcctResult<*mut Handle_TPrsStd_ConstraintDriver>;
     /// Destroy Handle<TPrsStd_ConstraintDriver>
-    pub fn HandleTPrsStdConstraintDriver_destructor(self_: *mut HandleTPrsStdConstraintDriver);
+    pub fn Handle_TPrsStd_ConstraintDriver_destructor(self_: *mut Handle_TPrsStd_ConstraintDriver);
     /// Clone Handle<TPrsStd_ConstraintDriver> (increments reference count)
-    pub fn HandleTPrsStdConstraintDriver_clone(
-        self_: *const HandleTPrsStdConstraintDriver,
-    ) -> crate::OcctResult<*mut HandleTPrsStdConstraintDriver>;
+    pub fn Handle_TPrsStd_ConstraintDriver_clone(
+        self_: *const Handle_TPrsStd_ConstraintDriver,
+    ) -> crate::OcctResult<*mut Handle_TPrsStd_ConstraintDriver>;
     /// Check if Handle<TPrsStd_ConstraintDriver> is null
-    pub fn HandleTPrsStdConstraintDriver_is_null(
-        self_: *const HandleTPrsStdConstraintDriver,
+    pub fn Handle_TPrsStd_ConstraintDriver_is_null(
+        self_: *const Handle_TPrsStd_ConstraintDriver,
     ) -> bool;
     /// Dereference Handle to get *const TPrsStd_ConstraintDriver
-    pub fn HandleTPrsStdConstraintDriver_get(
-        handle: *const HandleTPrsStdConstraintDriver,
+    pub fn Handle_TPrsStd_ConstraintDriver_get(
+        handle: *const Handle_TPrsStd_ConstraintDriver,
     ) -> crate::OcctResult<*const TPrsStd_ConstraintDriver>;
     /// Dereference Handle to get *mut TPrsStd_ConstraintDriver
-    pub fn HandleTPrsStdConstraintDriver_get_mut(
-        handle: *mut HandleTPrsStdConstraintDriver,
+    pub fn Handle_TPrsStd_ConstraintDriver_get_mut(
+        handle: *mut Handle_TPrsStd_ConstraintDriver,
     ) -> crate::OcctResult<*mut TPrsStd_ConstraintDriver>;
     /// Upcast Handle<TPrsStd_ConstraintDriver> to Handle<TPrsStd_Driver>
-    pub fn HandleTPrsStdConstraintDriver_to_HandleTPrsStdDriver(
-        self_: *const HandleTPrsStdConstraintDriver,
-    ) -> crate::OcctResult<*mut HandleTPrsStdDriver>;
+    pub fn Handle_TPrsStd_ConstraintDriver_to_Handle_TPrsStd_Driver(
+        self_: *const Handle_TPrsStd_ConstraintDriver,
+    ) -> crate::OcctResult<*mut Handle_TPrsStd_Driver>;
     /// Upcast Handle<TPrsStd_ConstraintDriver> to Handle<Standard_Transient>
-    pub fn HandleTPrsStdConstraintDriver_to_HandleStandardTransient(
-        self_: *const HandleTPrsStdConstraintDriver,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn Handle_TPrsStd_ConstraintDriver_to_Handle_Standard_Transient(
+        self_: *const Handle_TPrsStd_ConstraintDriver,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn TPrsStd_ConstraintDriver_inherited_IsInstance(
         self_: *const TPrsStd_ConstraintDriver,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn TPrsStd_ConstraintDriver_inherited_IsKind(
         self_: *const TPrsStd_ConstraintDriver,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn TPrsStd_ConstraintDriver_inherited_This(
         self_: *const TPrsStd_ConstraintDriver,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn TPrsStd_ConstraintDriver_inherited_GetRefCount(
         self_: *const TPrsStd_ConstraintDriver,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn TPrsStd_ConstraintDriver_inherited_IncrementRefCounter(
         self_: *mut TPrsStd_ConstraintDriver,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn TPrsStd_ConstraintDriver_inherited_DecrementRefCounter(
         self_: *mut TPrsStd_ConstraintDriver,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn TPrsStd_ConstraintDriver_inherited_Delete(
         self_: *const TPrsStd_ConstraintDriver,
     ) -> *const std::ffi::c_char;
@@ -902,137 +880,116 @@ unsafe extern "C" {
     pub fn TPrsStd_ConstraintTools_ctor() -> crate::OcctResult<*mut TPrsStd_ConstraintTools>;
     /// **Source:** `TPrsStd_ConstraintTools.hxx`:37 - `TPrsStd_ConstraintTools::UpdateOnlyValue()`
     pub fn TPrsStd_ConstraintTools_update_only_value(
-        aConst: *const HandleTDataXtdConstraint,
-        anAIS: *const HandleAISInteractiveObject,
+        aConst: *const Handle_TDataXtd_Constraint,
+        anAIS: *const Handle_AIS_InteractiveObject,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `TPrsStd_ConstraintTools.hxx`:40 - `TPrsStd_ConstraintTools::ComputeDistance()`
+    /// **Source:** `TPrsStd_ConstraintTools.hxx`:43 - `TPrsStd_ConstraintTools::ComputeDistance()`
     pub fn TPrsStd_ConstraintTools_compute_distance(
-        aConst: *const HandleTDataXtdConstraint,
-        anAIS: *mut HandleAISInteractiveObject,
-    ) -> *const std::ffi::c_char;
-    /// **Source:** `TPrsStd_ConstraintTools.hxx`:43 - `TPrsStd_ConstraintTools::ComputeParallel()`
+        aConst: *const Handle_TDataXtd_Constraint,
+    ) -> crate::OcctResult<*mut Handle_AIS_InteractiveObject>;
+    /// **Source:** `TPrsStd_ConstraintTools.hxx`:54 - `TPrsStd_ConstraintTools::ComputeParallel()`
     pub fn TPrsStd_ConstraintTools_compute_parallel(
-        aConst: *const HandleTDataXtdConstraint,
-        anAIS: *mut HandleAISInteractiveObject,
-    ) -> *const std::ffi::c_char;
-    /// **Source:** `TPrsStd_ConstraintTools.hxx`:46 - `TPrsStd_ConstraintTools::ComputeTangent()`
+        aConst: *const Handle_TDataXtd_Constraint,
+    ) -> crate::OcctResult<*mut Handle_AIS_InteractiveObject>;
+    /// **Source:** `TPrsStd_ConstraintTools.hxx`:65 - `TPrsStd_ConstraintTools::ComputeTangent()`
     pub fn TPrsStd_ConstraintTools_compute_tangent(
-        aConst: *const HandleTDataXtdConstraint,
-        anAIS: *mut HandleAISInteractiveObject,
-    ) -> *const std::ffi::c_char;
-    /// **Source:** `TPrsStd_ConstraintTools.hxx`:49 - `TPrsStd_ConstraintTools::ComputePerpendicular()`
+        aConst: *const Handle_TDataXtd_Constraint,
+    ) -> crate::OcctResult<*mut Handle_AIS_InteractiveObject>;
+    /// **Source:** `TPrsStd_ConstraintTools.hxx`:76 - `TPrsStd_ConstraintTools::ComputePerpendicular()`
     pub fn TPrsStd_ConstraintTools_compute_perpendicular(
-        aConst: *const HandleTDataXtdConstraint,
-        anAIS: *mut HandleAISInteractiveObject,
-    ) -> *const std::ffi::c_char;
-    /// **Source:** `TPrsStd_ConstraintTools.hxx`:52 - `TPrsStd_ConstraintTools::ComputeConcentric()`
+        aConst: *const Handle_TDataXtd_Constraint,
+    ) -> crate::OcctResult<*mut Handle_AIS_InteractiveObject>;
+    /// **Source:** `TPrsStd_ConstraintTools.hxx`:87 - `TPrsStd_ConstraintTools::ComputeConcentric()`
     pub fn TPrsStd_ConstraintTools_compute_concentric(
-        aConst: *const HandleTDataXtdConstraint,
-        anAIS: *mut HandleAISInteractiveObject,
-    ) -> *const std::ffi::c_char;
-    /// **Source:** `TPrsStd_ConstraintTools.hxx`:55 - `TPrsStd_ConstraintTools::ComputeSymmetry()`
+        aConst: *const Handle_TDataXtd_Constraint,
+    ) -> crate::OcctResult<*mut Handle_AIS_InteractiveObject>;
+    /// **Source:** `TPrsStd_ConstraintTools.hxx`:98 - `TPrsStd_ConstraintTools::ComputeSymmetry()`
     pub fn TPrsStd_ConstraintTools_compute_symmetry(
-        aConst: *const HandleTDataXtdConstraint,
-        anAIS: *mut HandleAISInteractiveObject,
-    ) -> *const std::ffi::c_char;
-    /// **Source:** `TPrsStd_ConstraintTools.hxx`:58 - `TPrsStd_ConstraintTools::ComputeMidPoint()`
+        aConst: *const Handle_TDataXtd_Constraint,
+    ) -> crate::OcctResult<*mut Handle_AIS_InteractiveObject>;
+    /// **Source:** `TPrsStd_ConstraintTools.hxx`:109 - `TPrsStd_ConstraintTools::ComputeMidPoint()`
     pub fn TPrsStd_ConstraintTools_compute_mid_point(
-        aConst: *const HandleTDataXtdConstraint,
-        anAIS: *mut HandleAISInteractiveObject,
-    ) -> *const std::ffi::c_char;
-    /// **Source:** `TPrsStd_ConstraintTools.hxx`:61 - `TPrsStd_ConstraintTools::ComputeAngle()`
+        aConst: *const Handle_TDataXtd_Constraint,
+    ) -> crate::OcctResult<*mut Handle_AIS_InteractiveObject>;
+    /// **Source:** `TPrsStd_ConstraintTools.hxx`:120 - `TPrsStd_ConstraintTools::ComputeAngle()`
     pub fn TPrsStd_ConstraintTools_compute_angle(
-        aConst: *const HandleTDataXtdConstraint,
-        anAIS: *mut HandleAISInteractiveObject,
-    ) -> *const std::ffi::c_char;
-    /// **Source:** `TPrsStd_ConstraintTools.hxx`:64 - `TPrsStd_ConstraintTools::ComputeRadius()`
+        aConst: *const Handle_TDataXtd_Constraint,
+    ) -> crate::OcctResult<*mut Handle_AIS_InteractiveObject>;
+    /// **Source:** `TPrsStd_ConstraintTools.hxx`:131 - `TPrsStd_ConstraintTools::ComputeRadius()`
     pub fn TPrsStd_ConstraintTools_compute_radius(
-        aConst: *const HandleTDataXtdConstraint,
-        anAIS: *mut HandleAISInteractiveObject,
-    ) -> *const std::ffi::c_char;
-    /// **Source:** `TPrsStd_ConstraintTools.hxx`:67 - `TPrsStd_ConstraintTools::ComputeMinRadius()`
+        aConst: *const Handle_TDataXtd_Constraint,
+    ) -> crate::OcctResult<*mut Handle_AIS_InteractiveObject>;
+    /// **Source:** `TPrsStd_ConstraintTools.hxx`:142 - `TPrsStd_ConstraintTools::ComputeMinRadius()`
     pub fn TPrsStd_ConstraintTools_compute_min_radius(
-        aConst: *const HandleTDataXtdConstraint,
-        anAIS: *mut HandleAISInteractiveObject,
-    ) -> *const std::ffi::c_char;
-    /// **Source:** `TPrsStd_ConstraintTools.hxx`:70 - `TPrsStd_ConstraintTools::ComputeMaxRadius()`
+        aConst: *const Handle_TDataXtd_Constraint,
+    ) -> crate::OcctResult<*mut Handle_AIS_InteractiveObject>;
+    /// **Source:** `TPrsStd_ConstraintTools.hxx`:153 - `TPrsStd_ConstraintTools::ComputeMaxRadius()`
     pub fn TPrsStd_ConstraintTools_compute_max_radius(
-        aConst: *const HandleTDataXtdConstraint,
-        anAIS: *mut HandleAISInteractiveObject,
-    ) -> *const std::ffi::c_char;
-    /// **Source:** `TPrsStd_ConstraintTools.hxx`:73 - `TPrsStd_ConstraintTools::ComputeEqualDistance()`
+        aConst: *const Handle_TDataXtd_Constraint,
+    ) -> crate::OcctResult<*mut Handle_AIS_InteractiveObject>;
+    /// **Source:** `TPrsStd_ConstraintTools.hxx`:164 - `TPrsStd_ConstraintTools::ComputeEqualDistance()`
     pub fn TPrsStd_ConstraintTools_compute_equal_distance(
-        aConst: *const HandleTDataXtdConstraint,
-        anAIS: *mut HandleAISInteractiveObject,
-    ) -> *const std::ffi::c_char;
-    /// **Source:** `TPrsStd_ConstraintTools.hxx`:76 - `TPrsStd_ConstraintTools::ComputeEqualRadius()`
+        aConst: *const Handle_TDataXtd_Constraint,
+    ) -> crate::OcctResult<*mut Handle_AIS_InteractiveObject>;
+    /// **Source:** `TPrsStd_ConstraintTools.hxx`:175 - `TPrsStd_ConstraintTools::ComputeEqualRadius()`
     pub fn TPrsStd_ConstraintTools_compute_equal_radius(
-        aConst: *const HandleTDataXtdConstraint,
-        anAIS: *mut HandleAISInteractiveObject,
-    ) -> *const std::ffi::c_char;
-    /// **Source:** `TPrsStd_ConstraintTools.hxx`:79 - `TPrsStd_ConstraintTools::ComputeFix()`
+        aConst: *const Handle_TDataXtd_Constraint,
+    ) -> crate::OcctResult<*mut Handle_AIS_InteractiveObject>;
+    /// **Source:** `TPrsStd_ConstraintTools.hxx`:186 - `TPrsStd_ConstraintTools::ComputeFix()`
     pub fn TPrsStd_ConstraintTools_compute_fix(
-        aConst: *const HandleTDataXtdConstraint,
-        anAIS: *mut HandleAISInteractiveObject,
-    ) -> *const std::ffi::c_char;
-    /// **Source:** `TPrsStd_ConstraintTools.hxx`:82 - `TPrsStd_ConstraintTools::ComputeDiameter()`
+        aConst: *const Handle_TDataXtd_Constraint,
+    ) -> crate::OcctResult<*mut Handle_AIS_InteractiveObject>;
+    /// **Source:** `TPrsStd_ConstraintTools.hxx`:197 - `TPrsStd_ConstraintTools::ComputeDiameter()`
     pub fn TPrsStd_ConstraintTools_compute_diameter(
-        aConst: *const HandleTDataXtdConstraint,
-        anAIS: *mut HandleAISInteractiveObject,
-    ) -> *const std::ffi::c_char;
-    /// **Source:** `TPrsStd_ConstraintTools.hxx`:85 - `TPrsStd_ConstraintTools::ComputeOffset()`
+        aConst: *const Handle_TDataXtd_Constraint,
+    ) -> crate::OcctResult<*mut Handle_AIS_InteractiveObject>;
+    /// **Source:** `TPrsStd_ConstraintTools.hxx`:208 - `TPrsStd_ConstraintTools::ComputeOffset()`
     pub fn TPrsStd_ConstraintTools_compute_offset(
-        aConst: *const HandleTDataXtdConstraint,
-        anAIS: *mut HandleAISInteractiveObject,
-    ) -> *const std::ffi::c_char;
-    /// **Source:** `TPrsStd_ConstraintTools.hxx`:88 - `TPrsStd_ConstraintTools::ComputePlacement()`
+        aConst: *const Handle_TDataXtd_Constraint,
+    ) -> crate::OcctResult<*mut Handle_AIS_InteractiveObject>;
+    /// **Source:** `TPrsStd_ConstraintTools.hxx`:219 - `TPrsStd_ConstraintTools::ComputePlacement()`
     pub fn TPrsStd_ConstraintTools_compute_placement(
-        aConst: *const HandleTDataXtdConstraint,
-        anAIS: *mut HandleAISInteractiveObject,
-    ) -> *const std::ffi::c_char;
-    /// **Source:** `TPrsStd_ConstraintTools.hxx`:91 - `TPrsStd_ConstraintTools::ComputeCoincident()`
+        aConst: *const Handle_TDataXtd_Constraint,
+    ) -> crate::OcctResult<*mut Handle_AIS_InteractiveObject>;
+    /// **Source:** `TPrsStd_ConstraintTools.hxx`:230 - `TPrsStd_ConstraintTools::ComputeCoincident()`
     pub fn TPrsStd_ConstraintTools_compute_coincident(
-        aConst: *const HandleTDataXtdConstraint,
-        anAIS: *mut HandleAISInteractiveObject,
-    ) -> *const std::ffi::c_char;
-    /// **Source:** `TPrsStd_ConstraintTools.hxx`:94 - `TPrsStd_ConstraintTools::ComputeRound()`
+        aConst: *const Handle_TDataXtd_Constraint,
+    ) -> crate::OcctResult<*mut Handle_AIS_InteractiveObject>;
+    /// **Source:** `TPrsStd_ConstraintTools.hxx`:241 - `TPrsStd_ConstraintTools::ComputeRound()`
     pub fn TPrsStd_ConstraintTools_compute_round(
-        aConst: *const HandleTDataXtdConstraint,
-        anAIS: *mut HandleAISInteractiveObject,
-    ) -> *const std::ffi::c_char;
-    /// **Source:** `TPrsStd_ConstraintTools.hxx`:97 - `TPrsStd_ConstraintTools::ComputeOthers()`
+        aConst: *const Handle_TDataXtd_Constraint,
+    ) -> crate::OcctResult<*mut Handle_AIS_InteractiveObject>;
+    /// **Source:** `TPrsStd_ConstraintTools.hxx`:252 - `TPrsStd_ConstraintTools::ComputeOthers()`
     pub fn TPrsStd_ConstraintTools_compute_others(
-        aConst: *const HandleTDataXtdConstraint,
-        anAIS: *mut HandleAISInteractiveObject,
-    ) -> *const std::ffi::c_char;
-    /// **Source:** `TPrsStd_ConstraintTools.hxx`:100 - `TPrsStd_ConstraintTools::ComputeTextAndValue()`
+        aConst: *const Handle_TDataXtd_Constraint,
+    ) -> crate::OcctResult<*mut Handle_AIS_InteractiveObject>;
+    /// **Source:** `TPrsStd_ConstraintTools.hxx`:260 - `TPrsStd_ConstraintTools::ComputeTextAndValue()`
     pub fn TPrsStd_ConstraintTools_compute_text_and_value(
-        aConst: *const HandleTDataXtdConstraint,
+        aConst: *const Handle_TDataXtd_Constraint,
         aValue: *mut f64,
         aText: *mut TCollection_ExtendedString,
         anIsAngle: bool,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `TPrsStd_ConstraintTools.hxx`:105 - `TPrsStd_ConstraintTools::ComputeAngleForOneFace()`
+    /// **Source:** `TPrsStd_ConstraintTools.hxx`:268 - `TPrsStd_ConstraintTools::ComputeAngleForOneFace()`
     pub fn TPrsStd_ConstraintTools_compute_angle_for_one_face(
-        aConst: *const HandleTDataXtdConstraint,
-        anAIS: *mut HandleAISInteractiveObject,
-    ) -> *const std::ffi::c_char;
+        aConst: *const Handle_TDataXtd_Constraint,
+    ) -> crate::OcctResult<*mut Handle_AIS_InteractiveObject>;
     // ======================== TPrsStd_Driver ========================
     pub fn TPrsStd_Driver_destructor(self_: *mut TPrsStd_Driver);
-    /// **Source:** `TPrsStd_Driver.hxx`:51 - `TPrsStd_Driver::Update()`
+    /// **Source:** `TPrsStd_Driver.hxx`:48 - `TPrsStd_Driver::Update()`
     pub fn TPrsStd_Driver_update(
         self_: *mut TPrsStd_Driver,
         L: *const TDF_Label,
-        ais: *mut HandleAISInteractiveObject,
+        ais: *mut Handle_AIS_InteractiveObject,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `TPrsStd_Driver.hxx`:54 - `TPrsStd_Driver::DynamicType()`
+    /// **Source:** `TPrsStd_Driver.hxx`:51 - `TPrsStd_Driver::DynamicType()`
     pub fn TPrsStd_Driver_dynamic_type(
         self_: *const TPrsStd_Driver,
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// **Source:** `TPrsStd_Driver.hxx`:54 - `TPrsStd_Driver::get_type_name()`
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
+    /// **Source:** `TPrsStd_Driver.hxx`:51 - `TPrsStd_Driver::get_type_name()`
     pub fn TPrsStd_Driver_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
-    /// **Source:** `TPrsStd_Driver.hxx`:54 - `TPrsStd_Driver::get_type_descriptor()`
-    pub fn TPrsStd_Driver_get_type_descriptor() -> crate::OcctResult<*const HandleStandardType>;
+    /// **Source:** `TPrsStd_Driver.hxx`:51 - `TPrsStd_Driver::get_type_descriptor()`
+    pub fn TPrsStd_Driver_get_type_descriptor() -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast TPrsStd_Driver to Standard_Transient
     pub fn TPrsStd_Driver_as_Standard_Transient(
         self_: *const TPrsStd_Driver,
@@ -1042,119 +999,120 @@ unsafe extern "C" {
         self_: *mut TPrsStd_Driver,
     ) -> crate::OcctResult<*mut Standard_Transient>;
     /// Destroy Handle<TPrsStd_Driver>
-    pub fn HandleTPrsStdDriver_destructor(self_: *mut HandleTPrsStdDriver);
+    pub fn Handle_TPrsStd_Driver_destructor(self_: *mut Handle_TPrsStd_Driver);
     /// Clone Handle<TPrsStd_Driver> (increments reference count)
-    pub fn HandleTPrsStdDriver_clone(
-        self_: *const HandleTPrsStdDriver,
-    ) -> crate::OcctResult<*mut HandleTPrsStdDriver>;
+    pub fn Handle_TPrsStd_Driver_clone(
+        self_: *const Handle_TPrsStd_Driver,
+    ) -> crate::OcctResult<*mut Handle_TPrsStd_Driver>;
     /// Check if Handle<TPrsStd_Driver> is null
-    pub fn HandleTPrsStdDriver_is_null(self_: *const HandleTPrsStdDriver) -> bool;
+    pub fn Handle_TPrsStd_Driver_is_null(self_: *const Handle_TPrsStd_Driver) -> bool;
     /// Dereference Handle to get *const TPrsStd_Driver
-    pub fn HandleTPrsStdDriver_get(
-        handle: *const HandleTPrsStdDriver,
+    pub fn Handle_TPrsStd_Driver_get(
+        handle: *const Handle_TPrsStd_Driver,
     ) -> crate::OcctResult<*const TPrsStd_Driver>;
     /// Dereference Handle to get *mut TPrsStd_Driver
-    pub fn HandleTPrsStdDriver_get_mut(
-        handle: *mut HandleTPrsStdDriver,
+    pub fn Handle_TPrsStd_Driver_get_mut(
+        handle: *mut Handle_TPrsStd_Driver,
     ) -> crate::OcctResult<*mut TPrsStd_Driver>;
     /// Upcast Handle<TPrsStd_Driver> to Handle<Standard_Transient>
-    pub fn HandleTPrsStdDriver_to_HandleStandardTransient(
-        self_: *const HandleTPrsStdDriver,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
+    pub fn Handle_TPrsStd_Driver_to_Handle_Standard_Transient(
+        self_: *const Handle_TPrsStd_Driver,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
     /// Downcast Handle<TPrsStd_Driver> to Handle<TPrsStd_AxisDriver> (returns null on failure)
-    pub fn HandleTPrsStdDriver_downcast_to_HandleTPrsStdAxisDriver(
-        self_: *const HandleTPrsStdDriver,
-    ) -> crate::OcctResult<*mut HandleTPrsStdAxisDriver>;
+    pub fn Handle_TPrsStd_Driver_downcast_to_Handle_TPrsStd_AxisDriver(
+        self_: *const Handle_TPrsStd_Driver,
+    ) -> crate::OcctResult<*mut Handle_TPrsStd_AxisDriver>;
     /// Downcast Handle<TPrsStd_Driver> to Handle<TPrsStd_ConstraintDriver> (returns null on failure)
-    pub fn HandleTPrsStdDriver_downcast_to_HandleTPrsStdConstraintDriver(
-        self_: *const HandleTPrsStdDriver,
-    ) -> crate::OcctResult<*mut HandleTPrsStdConstraintDriver>;
+    pub fn Handle_TPrsStd_Driver_downcast_to_Handle_TPrsStd_ConstraintDriver(
+        self_: *const Handle_TPrsStd_Driver,
+    ) -> crate::OcctResult<*mut Handle_TPrsStd_ConstraintDriver>;
     /// Downcast Handle<TPrsStd_Driver> to Handle<TPrsStd_GeometryDriver> (returns null on failure)
-    pub fn HandleTPrsStdDriver_downcast_to_HandleTPrsStdGeometryDriver(
-        self_: *const HandleTPrsStdDriver,
-    ) -> crate::OcctResult<*mut HandleTPrsStdGeometryDriver>;
+    pub fn Handle_TPrsStd_Driver_downcast_to_Handle_TPrsStd_GeometryDriver(
+        self_: *const Handle_TPrsStd_Driver,
+    ) -> crate::OcctResult<*mut Handle_TPrsStd_GeometryDriver>;
     /// Downcast Handle<TPrsStd_Driver> to Handle<TPrsStd_NamedShapeDriver> (returns null on failure)
-    pub fn HandleTPrsStdDriver_downcast_to_HandleTPrsStdNamedShapeDriver(
-        self_: *const HandleTPrsStdDriver,
-    ) -> crate::OcctResult<*mut HandleTPrsStdNamedShapeDriver>;
+    pub fn Handle_TPrsStd_Driver_downcast_to_Handle_TPrsStd_NamedShapeDriver(
+        self_: *const Handle_TPrsStd_Driver,
+    ) -> crate::OcctResult<*mut Handle_TPrsStd_NamedShapeDriver>;
     /// Downcast Handle<TPrsStd_Driver> to Handle<TPrsStd_PlaneDriver> (returns null on failure)
-    pub fn HandleTPrsStdDriver_downcast_to_HandleTPrsStdPlaneDriver(
-        self_: *const HandleTPrsStdDriver,
-    ) -> crate::OcctResult<*mut HandleTPrsStdPlaneDriver>;
+    pub fn Handle_TPrsStd_Driver_downcast_to_Handle_TPrsStd_PlaneDriver(
+        self_: *const Handle_TPrsStd_Driver,
+    ) -> crate::OcctResult<*mut Handle_TPrsStd_PlaneDriver>;
     /// Downcast Handle<TPrsStd_Driver> to Handle<TPrsStd_PointDriver> (returns null on failure)
-    pub fn HandleTPrsStdDriver_downcast_to_HandleTPrsStdPointDriver(
-        self_: *const HandleTPrsStdDriver,
-    ) -> crate::OcctResult<*mut HandleTPrsStdPointDriver>;
+    pub fn Handle_TPrsStd_Driver_downcast_to_Handle_TPrsStd_PointDriver(
+        self_: *const Handle_TPrsStd_Driver,
+    ) -> crate::OcctResult<*mut Handle_TPrsStd_PointDriver>;
     /// Downcast Handle<TPrsStd_Driver> to Handle<XCAFPrs_Driver> (returns null on failure)
-    pub fn HandleTPrsStdDriver_downcast_to_HandleXCAFPrsDriver(
-        self_: *const HandleTPrsStdDriver,
-    ) -> crate::OcctResult<*mut HandleXCAFPrsDriver>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn Handle_TPrsStd_Driver_downcast_to_Handle_XCAFPrs_Driver(
+        self_: *const Handle_TPrsStd_Driver,
+    ) -> crate::OcctResult<*mut Handle_XCAFPrs_Driver>;
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn TPrsStd_Driver_inherited_IsInstance(
         self_: *const TPrsStd_Driver,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn TPrsStd_Driver_inherited_IsKind(
         self_: *const TPrsStd_Driver,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn TPrsStd_Driver_inherited_This(
         self_: *const TPrsStd_Driver,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn TPrsStd_Driver_inherited_GetRefCount(
         self_: *const TPrsStd_Driver,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn TPrsStd_Driver_inherited_IncrementRefCounter(
         self_: *mut TPrsStd_Driver,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn TPrsStd_Driver_inherited_DecrementRefCounter(
         self_: *mut TPrsStd_Driver,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn TPrsStd_Driver_inherited_Delete(self_: *const TPrsStd_Driver)
         -> *const std::ffi::c_char;
     // ======================== TPrsStd_DriverTable ========================
     pub fn TPrsStd_DriverTable_destructor(self_: *mut TPrsStd_DriverTable);
-    /// **Source:** `TPrsStd_DriverTable.hxx`:44 - `TPrsStd_DriverTable::TPrsStd_DriverTable()`
+    /// **Source:** `TPrsStd_DriverTable.hxx`:43 - `TPrsStd_DriverTable::TPrsStd_DriverTable()`
     pub fn TPrsStd_DriverTable_ctor() -> crate::OcctResult<*mut TPrsStd_DriverTable>;
-    /// **Source:** `TPrsStd_DriverTable.hxx`:47 - `TPrsStd_DriverTable::InitStandardDrivers()`
+    /// **Source:** `TPrsStd_DriverTable.hxx`:46 - `TPrsStd_DriverTable::InitStandardDrivers()`
     pub fn TPrsStd_DriverTable_init_standard_drivers(
         self_: *mut TPrsStd_DriverTable,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `TPrsStd_DriverTable.hxx`:50 - `TPrsStd_DriverTable::AddDriver()`
+    /// **Source:** `TPrsStd_DriverTable.hxx`:49 - `TPrsStd_DriverTable::AddDriver()`
     pub fn TPrsStd_DriverTable_add_driver(
         self_: *mut TPrsStd_DriverTable,
         guid: *const Standard_GUID,
-        driver: *const HandleTPrsStdDriver,
+        driver: *const Handle_TPrsStd_Driver,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `TPrsStd_DriverTable.hxx`:54 - `TPrsStd_DriverTable::FindDriver()`
+    /// **Source:** `TPrsStd_DriverTable.hxx`:53 - `TPrsStd_DriverTable::FindDriver()`
     pub fn TPrsStd_DriverTable_find_driver(
         self_: *const TPrsStd_DriverTable,
         guid: *const Standard_GUID,
-        driver: *mut HandleTPrsStdDriver,
+        driver: *mut Handle_TPrsStd_Driver,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `TPrsStd_DriverTable.hxx`:59 - `TPrsStd_DriverTable::RemoveDriver()`
+    /// **Source:** `TPrsStd_DriverTable.hxx`:58 - `TPrsStd_DriverTable::RemoveDriver()`
     pub fn TPrsStd_DriverTable_remove_driver(
         self_: *mut TPrsStd_DriverTable,
         guid: *const Standard_GUID,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `TPrsStd_DriverTable.hxx`:65 - `TPrsStd_DriverTable::Clear()`
+    /// **Source:** `TPrsStd_DriverTable.hxx`:64 - `TPrsStd_DriverTable::Clear()`
     pub fn TPrsStd_DriverTable_clear(self_: *mut TPrsStd_DriverTable) -> *const std::ffi::c_char;
-    /// **Source:** `TPrsStd_DriverTable.hxx`:67 - `TPrsStd_DriverTable::DynamicType()`
+    /// **Source:** `TPrsStd_DriverTable.hxx`:66 - `TPrsStd_DriverTable::DynamicType()`
     pub fn TPrsStd_DriverTable_dynamic_type(
         self_: *const TPrsStd_DriverTable,
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// **Source:** `TPrsStd_DriverTable.hxx`:41 - `TPrsStd_DriverTable::Get()`
-    pub fn TPrsStd_DriverTable_get() -> crate::OcctResult<*mut HandleTPrsStdDriverTable>;
-    /// **Source:** `TPrsStd_DriverTable.hxx`:67 - `TPrsStd_DriverTable::get_type_name()`
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
+    /// **Source:** `TPrsStd_DriverTable.hxx`:40 - `TPrsStd_DriverTable::Get()`
+    pub fn TPrsStd_DriverTable_get() -> crate::OcctResult<*mut Handle_TPrsStd_DriverTable>;
+    /// **Source:** `TPrsStd_DriverTable.hxx`:66 - `TPrsStd_DriverTable::get_type_name()`
     pub fn TPrsStd_DriverTable_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
-    /// **Source:** `TPrsStd_DriverTable.hxx`:67 - `TPrsStd_DriverTable::get_type_descriptor()`
-    pub fn TPrsStd_DriverTable_get_type_descriptor() -> crate::OcctResult<*const HandleStandardType>;
+    /// **Source:** `TPrsStd_DriverTable.hxx`:66 - `TPrsStd_DriverTable::get_type_descriptor()`
+    pub fn TPrsStd_DriverTable_get_type_descriptor(
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast TPrsStd_DriverTable to Standard_Transient
     pub fn TPrsStd_DriverTable_as_Standard_Transient(
         self_: *const TPrsStd_DriverTable,
@@ -1166,76 +1124,76 @@ unsafe extern "C" {
     /// Wrap TPrsStd_DriverTable in a Handle
     pub fn TPrsStd_DriverTable_to_handle(
         obj: *mut TPrsStd_DriverTable,
-    ) -> crate::OcctResult<*mut HandleTPrsStdDriverTable>;
+    ) -> crate::OcctResult<*mut Handle_TPrsStd_DriverTable>;
     /// Destroy Handle<TPrsStd_DriverTable>
-    pub fn HandleTPrsStdDriverTable_destructor(self_: *mut HandleTPrsStdDriverTable);
+    pub fn Handle_TPrsStd_DriverTable_destructor(self_: *mut Handle_TPrsStd_DriverTable);
     /// Clone Handle<TPrsStd_DriverTable> (increments reference count)
-    pub fn HandleTPrsStdDriverTable_clone(
-        self_: *const HandleTPrsStdDriverTable,
-    ) -> crate::OcctResult<*mut HandleTPrsStdDriverTable>;
+    pub fn Handle_TPrsStd_DriverTable_clone(
+        self_: *const Handle_TPrsStd_DriverTable,
+    ) -> crate::OcctResult<*mut Handle_TPrsStd_DriverTable>;
     /// Check if Handle<TPrsStd_DriverTable> is null
-    pub fn HandleTPrsStdDriverTable_is_null(self_: *const HandleTPrsStdDriverTable) -> bool;
+    pub fn Handle_TPrsStd_DriverTable_is_null(self_: *const Handle_TPrsStd_DriverTable) -> bool;
     /// Dereference Handle to get *const TPrsStd_DriverTable
-    pub fn HandleTPrsStdDriverTable_get(
-        handle: *const HandleTPrsStdDriverTable,
+    pub fn Handle_TPrsStd_DriverTable_get(
+        handle: *const Handle_TPrsStd_DriverTable,
     ) -> crate::OcctResult<*const TPrsStd_DriverTable>;
     /// Dereference Handle to get *mut TPrsStd_DriverTable
-    pub fn HandleTPrsStdDriverTable_get_mut(
-        handle: *mut HandleTPrsStdDriverTable,
+    pub fn Handle_TPrsStd_DriverTable_get_mut(
+        handle: *mut Handle_TPrsStd_DriverTable,
     ) -> crate::OcctResult<*mut TPrsStd_DriverTable>;
     /// Upcast Handle<TPrsStd_DriverTable> to Handle<Standard_Transient>
-    pub fn HandleTPrsStdDriverTable_to_HandleStandardTransient(
-        self_: *const HandleTPrsStdDriverTable,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn Handle_TPrsStd_DriverTable_to_Handle_Standard_Transient(
+        self_: *const Handle_TPrsStd_DriverTable,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn TPrsStd_DriverTable_inherited_IsInstance(
         self_: *const TPrsStd_DriverTable,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn TPrsStd_DriverTable_inherited_IsKind(
         self_: *const TPrsStd_DriverTable,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn TPrsStd_DriverTable_inherited_This(
         self_: *const TPrsStd_DriverTable,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn TPrsStd_DriverTable_inherited_GetRefCount(
         self_: *const TPrsStd_DriverTable,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn TPrsStd_DriverTable_inherited_IncrementRefCounter(
         self_: *mut TPrsStd_DriverTable,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn TPrsStd_DriverTable_inherited_DecrementRefCounter(
         self_: *mut TPrsStd_DriverTable,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn TPrsStd_DriverTable_inherited_Delete(
         self_: *const TPrsStd_DriverTable,
     ) -> *const std::ffi::c_char;
     // ======================== TPrsStd_GeometryDriver ========================
     pub fn TPrsStd_GeometryDriver_destructor(self_: *mut TPrsStd_GeometryDriver);
-    /// **Source:** `TPrsStd_GeometryDriver.hxx`:36 - `TPrsStd_GeometryDriver::TPrsStd_GeometryDriver()`
+    /// **Source:** `TPrsStd_GeometryDriver.hxx`:33 - `TPrsStd_GeometryDriver::TPrsStd_GeometryDriver()`
     pub fn TPrsStd_GeometryDriver_ctor() -> crate::OcctResult<*mut TPrsStd_GeometryDriver>;
-    /// **Source:** `TPrsStd_GeometryDriver.hxx`:42 - `TPrsStd_GeometryDriver::Update()`
+    /// **Source:** `TPrsStd_GeometryDriver.hxx`:39 - `TPrsStd_GeometryDriver::Update()`
     pub fn TPrsStd_GeometryDriver_update(
         self_: *mut TPrsStd_GeometryDriver,
         aLabel: *const TDF_Label,
-        anAISObject: *mut HandleAISInteractiveObject,
+        anAISObject: *mut Handle_AIS_InteractiveObject,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `TPrsStd_GeometryDriver.hxx`:46 - `TPrsStd_GeometryDriver::DynamicType()`
+    /// **Source:** `TPrsStd_GeometryDriver.hxx`:42 - `TPrsStd_GeometryDriver::DynamicType()`
     pub fn TPrsStd_GeometryDriver_dynamic_type(
         self_: *const TPrsStd_GeometryDriver,
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// **Source:** `TPrsStd_GeometryDriver.hxx`:46 - `TPrsStd_GeometryDriver::get_type_name()`
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
+    /// **Source:** `TPrsStd_GeometryDriver.hxx`:42 - `TPrsStd_GeometryDriver::get_type_name()`
     pub fn TPrsStd_GeometryDriver_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
-    /// **Source:** `TPrsStd_GeometryDriver.hxx`:46 - `TPrsStd_GeometryDriver::get_type_descriptor()`
+    /// **Source:** `TPrsStd_GeometryDriver.hxx`:42 - `TPrsStd_GeometryDriver::get_type_descriptor()`
     pub fn TPrsStd_GeometryDriver_get_type_descriptor(
-    ) -> crate::OcctResult<*const HandleStandardType>;
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast TPrsStd_GeometryDriver to TPrsStd_Driver
     pub fn TPrsStd_GeometryDriver_as_TPrsStd_Driver(
         self_: *const TPrsStd_GeometryDriver,
@@ -1255,80 +1213,82 @@ unsafe extern "C" {
     /// Wrap TPrsStd_GeometryDriver in a Handle
     pub fn TPrsStd_GeometryDriver_to_handle(
         obj: *mut TPrsStd_GeometryDriver,
-    ) -> crate::OcctResult<*mut HandleTPrsStdGeometryDriver>;
+    ) -> crate::OcctResult<*mut Handle_TPrsStd_GeometryDriver>;
     /// Destroy Handle<TPrsStd_GeometryDriver>
-    pub fn HandleTPrsStdGeometryDriver_destructor(self_: *mut HandleTPrsStdGeometryDriver);
+    pub fn Handle_TPrsStd_GeometryDriver_destructor(self_: *mut Handle_TPrsStd_GeometryDriver);
     /// Clone Handle<TPrsStd_GeometryDriver> (increments reference count)
-    pub fn HandleTPrsStdGeometryDriver_clone(
-        self_: *const HandleTPrsStdGeometryDriver,
-    ) -> crate::OcctResult<*mut HandleTPrsStdGeometryDriver>;
+    pub fn Handle_TPrsStd_GeometryDriver_clone(
+        self_: *const Handle_TPrsStd_GeometryDriver,
+    ) -> crate::OcctResult<*mut Handle_TPrsStd_GeometryDriver>;
     /// Check if Handle<TPrsStd_GeometryDriver> is null
-    pub fn HandleTPrsStdGeometryDriver_is_null(self_: *const HandleTPrsStdGeometryDriver) -> bool;
+    pub fn Handle_TPrsStd_GeometryDriver_is_null(
+        self_: *const Handle_TPrsStd_GeometryDriver,
+    ) -> bool;
     /// Dereference Handle to get *const TPrsStd_GeometryDriver
-    pub fn HandleTPrsStdGeometryDriver_get(
-        handle: *const HandleTPrsStdGeometryDriver,
+    pub fn Handle_TPrsStd_GeometryDriver_get(
+        handle: *const Handle_TPrsStd_GeometryDriver,
     ) -> crate::OcctResult<*const TPrsStd_GeometryDriver>;
     /// Dereference Handle to get *mut TPrsStd_GeometryDriver
-    pub fn HandleTPrsStdGeometryDriver_get_mut(
-        handle: *mut HandleTPrsStdGeometryDriver,
+    pub fn Handle_TPrsStd_GeometryDriver_get_mut(
+        handle: *mut Handle_TPrsStd_GeometryDriver,
     ) -> crate::OcctResult<*mut TPrsStd_GeometryDriver>;
     /// Upcast Handle<TPrsStd_GeometryDriver> to Handle<TPrsStd_Driver>
-    pub fn HandleTPrsStdGeometryDriver_to_HandleTPrsStdDriver(
-        self_: *const HandleTPrsStdGeometryDriver,
-    ) -> crate::OcctResult<*mut HandleTPrsStdDriver>;
+    pub fn Handle_TPrsStd_GeometryDriver_to_Handle_TPrsStd_Driver(
+        self_: *const Handle_TPrsStd_GeometryDriver,
+    ) -> crate::OcctResult<*mut Handle_TPrsStd_Driver>;
     /// Upcast Handle<TPrsStd_GeometryDriver> to Handle<Standard_Transient>
-    pub fn HandleTPrsStdGeometryDriver_to_HandleStandardTransient(
-        self_: *const HandleTPrsStdGeometryDriver,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn Handle_TPrsStd_GeometryDriver_to_Handle_Standard_Transient(
+        self_: *const Handle_TPrsStd_GeometryDriver,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn TPrsStd_GeometryDriver_inherited_IsInstance(
         self_: *const TPrsStd_GeometryDriver,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn TPrsStd_GeometryDriver_inherited_IsKind(
         self_: *const TPrsStd_GeometryDriver,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn TPrsStd_GeometryDriver_inherited_This(
         self_: *const TPrsStd_GeometryDriver,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn TPrsStd_GeometryDriver_inherited_GetRefCount(
         self_: *const TPrsStd_GeometryDriver,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn TPrsStd_GeometryDriver_inherited_IncrementRefCounter(
         self_: *mut TPrsStd_GeometryDriver,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn TPrsStd_GeometryDriver_inherited_DecrementRefCounter(
         self_: *mut TPrsStd_GeometryDriver,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn TPrsStd_GeometryDriver_inherited_Delete(
         self_: *const TPrsStd_GeometryDriver,
     ) -> *const std::ffi::c_char;
     // ======================== TPrsStd_NamedShapeDriver ========================
     pub fn TPrsStd_NamedShapeDriver_destructor(self_: *mut TPrsStd_NamedShapeDriver);
-    /// **Source:** `TPrsStd_NamedShapeDriver.hxx`:36 - `TPrsStd_NamedShapeDriver::TPrsStd_NamedShapeDriver()`
+    /// **Source:** `TPrsStd_NamedShapeDriver.hxx`:33 - `TPrsStd_NamedShapeDriver::TPrsStd_NamedShapeDriver()`
     pub fn TPrsStd_NamedShapeDriver_ctor() -> crate::OcctResult<*mut TPrsStd_NamedShapeDriver>;
-    /// **Source:** `TPrsStd_NamedShapeDriver.hxx`:42 - `TPrsStd_NamedShapeDriver::Update()`
+    /// **Source:** `TPrsStd_NamedShapeDriver.hxx`:39 - `TPrsStd_NamedShapeDriver::Update()`
     pub fn TPrsStd_NamedShapeDriver_update(
         self_: *mut TPrsStd_NamedShapeDriver,
         aLabel: *const TDF_Label,
-        anAISObject: *mut HandleAISInteractiveObject,
+        anAISObject: *mut Handle_AIS_InteractiveObject,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `TPrsStd_NamedShapeDriver.hxx`:46 - `TPrsStd_NamedShapeDriver::DynamicType()`
+    /// **Source:** `TPrsStd_NamedShapeDriver.hxx`:42 - `TPrsStd_NamedShapeDriver::DynamicType()`
     pub fn TPrsStd_NamedShapeDriver_dynamic_type(
         self_: *const TPrsStd_NamedShapeDriver,
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// **Source:** `TPrsStd_NamedShapeDriver.hxx`:46 - `TPrsStd_NamedShapeDriver::get_type_name()`
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
+    /// **Source:** `TPrsStd_NamedShapeDriver.hxx`:42 - `TPrsStd_NamedShapeDriver::get_type_name()`
     pub fn TPrsStd_NamedShapeDriver_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
-    /// **Source:** `TPrsStd_NamedShapeDriver.hxx`:46 - `TPrsStd_NamedShapeDriver::get_type_descriptor()`
+    /// **Source:** `TPrsStd_NamedShapeDriver.hxx`:42 - `TPrsStd_NamedShapeDriver::get_type_descriptor()`
     pub fn TPrsStd_NamedShapeDriver_get_type_descriptor(
-    ) -> crate::OcctResult<*const HandleStandardType>;
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast TPrsStd_NamedShapeDriver to TPrsStd_Driver
     pub fn TPrsStd_NamedShapeDriver_as_TPrsStd_Driver(
         self_: *const TPrsStd_NamedShapeDriver,
@@ -1348,81 +1308,82 @@ unsafe extern "C" {
     /// Wrap TPrsStd_NamedShapeDriver in a Handle
     pub fn TPrsStd_NamedShapeDriver_to_handle(
         obj: *mut TPrsStd_NamedShapeDriver,
-    ) -> crate::OcctResult<*mut HandleTPrsStdNamedShapeDriver>;
+    ) -> crate::OcctResult<*mut Handle_TPrsStd_NamedShapeDriver>;
     /// Destroy Handle<TPrsStd_NamedShapeDriver>
-    pub fn HandleTPrsStdNamedShapeDriver_destructor(self_: *mut HandleTPrsStdNamedShapeDriver);
+    pub fn Handle_TPrsStd_NamedShapeDriver_destructor(self_: *mut Handle_TPrsStd_NamedShapeDriver);
     /// Clone Handle<TPrsStd_NamedShapeDriver> (increments reference count)
-    pub fn HandleTPrsStdNamedShapeDriver_clone(
-        self_: *const HandleTPrsStdNamedShapeDriver,
-    ) -> crate::OcctResult<*mut HandleTPrsStdNamedShapeDriver>;
+    pub fn Handle_TPrsStd_NamedShapeDriver_clone(
+        self_: *const Handle_TPrsStd_NamedShapeDriver,
+    ) -> crate::OcctResult<*mut Handle_TPrsStd_NamedShapeDriver>;
     /// Check if Handle<TPrsStd_NamedShapeDriver> is null
-    pub fn HandleTPrsStdNamedShapeDriver_is_null(
-        self_: *const HandleTPrsStdNamedShapeDriver,
+    pub fn Handle_TPrsStd_NamedShapeDriver_is_null(
+        self_: *const Handle_TPrsStd_NamedShapeDriver,
     ) -> bool;
     /// Dereference Handle to get *const TPrsStd_NamedShapeDriver
-    pub fn HandleTPrsStdNamedShapeDriver_get(
-        handle: *const HandleTPrsStdNamedShapeDriver,
+    pub fn Handle_TPrsStd_NamedShapeDriver_get(
+        handle: *const Handle_TPrsStd_NamedShapeDriver,
     ) -> crate::OcctResult<*const TPrsStd_NamedShapeDriver>;
     /// Dereference Handle to get *mut TPrsStd_NamedShapeDriver
-    pub fn HandleTPrsStdNamedShapeDriver_get_mut(
-        handle: *mut HandleTPrsStdNamedShapeDriver,
+    pub fn Handle_TPrsStd_NamedShapeDriver_get_mut(
+        handle: *mut Handle_TPrsStd_NamedShapeDriver,
     ) -> crate::OcctResult<*mut TPrsStd_NamedShapeDriver>;
     /// Upcast Handle<TPrsStd_NamedShapeDriver> to Handle<TPrsStd_Driver>
-    pub fn HandleTPrsStdNamedShapeDriver_to_HandleTPrsStdDriver(
-        self_: *const HandleTPrsStdNamedShapeDriver,
-    ) -> crate::OcctResult<*mut HandleTPrsStdDriver>;
+    pub fn Handle_TPrsStd_NamedShapeDriver_to_Handle_TPrsStd_Driver(
+        self_: *const Handle_TPrsStd_NamedShapeDriver,
+    ) -> crate::OcctResult<*mut Handle_TPrsStd_Driver>;
     /// Upcast Handle<TPrsStd_NamedShapeDriver> to Handle<Standard_Transient>
-    pub fn HandleTPrsStdNamedShapeDriver_to_HandleStandardTransient(
-        self_: *const HandleTPrsStdNamedShapeDriver,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn Handle_TPrsStd_NamedShapeDriver_to_Handle_Standard_Transient(
+        self_: *const Handle_TPrsStd_NamedShapeDriver,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn TPrsStd_NamedShapeDriver_inherited_IsInstance(
         self_: *const TPrsStd_NamedShapeDriver,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn TPrsStd_NamedShapeDriver_inherited_IsKind(
         self_: *const TPrsStd_NamedShapeDriver,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn TPrsStd_NamedShapeDriver_inherited_This(
         self_: *const TPrsStd_NamedShapeDriver,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn TPrsStd_NamedShapeDriver_inherited_GetRefCount(
         self_: *const TPrsStd_NamedShapeDriver,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn TPrsStd_NamedShapeDriver_inherited_IncrementRefCounter(
         self_: *mut TPrsStd_NamedShapeDriver,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn TPrsStd_NamedShapeDriver_inherited_DecrementRefCounter(
         self_: *mut TPrsStd_NamedShapeDriver,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn TPrsStd_NamedShapeDriver_inherited_Delete(
         self_: *const TPrsStd_NamedShapeDriver,
     ) -> *const std::ffi::c_char;
     // ======================== TPrsStd_PlaneDriver ========================
     pub fn TPrsStd_PlaneDriver_destructor(self_: *mut TPrsStd_PlaneDriver);
-    /// **Source:** `TPrsStd_PlaneDriver.hxx`:36 - `TPrsStd_PlaneDriver::TPrsStd_PlaneDriver()`
+    /// **Source:** `TPrsStd_PlaneDriver.hxx`:33 - `TPrsStd_PlaneDriver::TPrsStd_PlaneDriver()`
     pub fn TPrsStd_PlaneDriver_ctor() -> crate::OcctResult<*mut TPrsStd_PlaneDriver>;
-    /// **Source:** `TPrsStd_PlaneDriver.hxx`:42 - `TPrsStd_PlaneDriver::Update()`
+    /// **Source:** `TPrsStd_PlaneDriver.hxx`:39 - `TPrsStd_PlaneDriver::Update()`
     pub fn TPrsStd_PlaneDriver_update(
         self_: *mut TPrsStd_PlaneDriver,
         aLabel: *const TDF_Label,
-        anAISObject: *mut HandleAISInteractiveObject,
+        anAISObject: *mut Handle_AIS_InteractiveObject,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `TPrsStd_PlaneDriver.hxx`:46 - `TPrsStd_PlaneDriver::DynamicType()`
+    /// **Source:** `TPrsStd_PlaneDriver.hxx`:42 - `TPrsStd_PlaneDriver::DynamicType()`
     pub fn TPrsStd_PlaneDriver_dynamic_type(
         self_: *const TPrsStd_PlaneDriver,
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// **Source:** `TPrsStd_PlaneDriver.hxx`:46 - `TPrsStd_PlaneDriver::get_type_name()`
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
+    /// **Source:** `TPrsStd_PlaneDriver.hxx`:42 - `TPrsStd_PlaneDriver::get_type_name()`
     pub fn TPrsStd_PlaneDriver_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
-    /// **Source:** `TPrsStd_PlaneDriver.hxx`:46 - `TPrsStd_PlaneDriver::get_type_descriptor()`
-    pub fn TPrsStd_PlaneDriver_get_type_descriptor() -> crate::OcctResult<*const HandleStandardType>;
+    /// **Source:** `TPrsStd_PlaneDriver.hxx`:42 - `TPrsStd_PlaneDriver::get_type_descriptor()`
+    pub fn TPrsStd_PlaneDriver_get_type_descriptor(
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast TPrsStd_PlaneDriver to TPrsStd_Driver
     pub fn TPrsStd_PlaneDriver_as_TPrsStd_Driver(
         self_: *const TPrsStd_PlaneDriver,
@@ -1442,79 +1403,80 @@ unsafe extern "C" {
     /// Wrap TPrsStd_PlaneDriver in a Handle
     pub fn TPrsStd_PlaneDriver_to_handle(
         obj: *mut TPrsStd_PlaneDriver,
-    ) -> crate::OcctResult<*mut HandleTPrsStdPlaneDriver>;
+    ) -> crate::OcctResult<*mut Handle_TPrsStd_PlaneDriver>;
     /// Destroy Handle<TPrsStd_PlaneDriver>
-    pub fn HandleTPrsStdPlaneDriver_destructor(self_: *mut HandleTPrsStdPlaneDriver);
+    pub fn Handle_TPrsStd_PlaneDriver_destructor(self_: *mut Handle_TPrsStd_PlaneDriver);
     /// Clone Handle<TPrsStd_PlaneDriver> (increments reference count)
-    pub fn HandleTPrsStdPlaneDriver_clone(
-        self_: *const HandleTPrsStdPlaneDriver,
-    ) -> crate::OcctResult<*mut HandleTPrsStdPlaneDriver>;
+    pub fn Handle_TPrsStd_PlaneDriver_clone(
+        self_: *const Handle_TPrsStd_PlaneDriver,
+    ) -> crate::OcctResult<*mut Handle_TPrsStd_PlaneDriver>;
     /// Check if Handle<TPrsStd_PlaneDriver> is null
-    pub fn HandleTPrsStdPlaneDriver_is_null(self_: *const HandleTPrsStdPlaneDriver) -> bool;
+    pub fn Handle_TPrsStd_PlaneDriver_is_null(self_: *const Handle_TPrsStd_PlaneDriver) -> bool;
     /// Dereference Handle to get *const TPrsStd_PlaneDriver
-    pub fn HandleTPrsStdPlaneDriver_get(
-        handle: *const HandleTPrsStdPlaneDriver,
+    pub fn Handle_TPrsStd_PlaneDriver_get(
+        handle: *const Handle_TPrsStd_PlaneDriver,
     ) -> crate::OcctResult<*const TPrsStd_PlaneDriver>;
     /// Dereference Handle to get *mut TPrsStd_PlaneDriver
-    pub fn HandleTPrsStdPlaneDriver_get_mut(
-        handle: *mut HandleTPrsStdPlaneDriver,
+    pub fn Handle_TPrsStd_PlaneDriver_get_mut(
+        handle: *mut Handle_TPrsStd_PlaneDriver,
     ) -> crate::OcctResult<*mut TPrsStd_PlaneDriver>;
     /// Upcast Handle<TPrsStd_PlaneDriver> to Handle<TPrsStd_Driver>
-    pub fn HandleTPrsStdPlaneDriver_to_HandleTPrsStdDriver(
-        self_: *const HandleTPrsStdPlaneDriver,
-    ) -> crate::OcctResult<*mut HandleTPrsStdDriver>;
+    pub fn Handle_TPrsStd_PlaneDriver_to_Handle_TPrsStd_Driver(
+        self_: *const Handle_TPrsStd_PlaneDriver,
+    ) -> crate::OcctResult<*mut Handle_TPrsStd_Driver>;
     /// Upcast Handle<TPrsStd_PlaneDriver> to Handle<Standard_Transient>
-    pub fn HandleTPrsStdPlaneDriver_to_HandleStandardTransient(
-        self_: *const HandleTPrsStdPlaneDriver,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn Handle_TPrsStd_PlaneDriver_to_Handle_Standard_Transient(
+        self_: *const Handle_TPrsStd_PlaneDriver,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn TPrsStd_PlaneDriver_inherited_IsInstance(
         self_: *const TPrsStd_PlaneDriver,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn TPrsStd_PlaneDriver_inherited_IsKind(
         self_: *const TPrsStd_PlaneDriver,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn TPrsStd_PlaneDriver_inherited_This(
         self_: *const TPrsStd_PlaneDriver,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn TPrsStd_PlaneDriver_inherited_GetRefCount(
         self_: *const TPrsStd_PlaneDriver,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn TPrsStd_PlaneDriver_inherited_IncrementRefCounter(
         self_: *mut TPrsStd_PlaneDriver,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn TPrsStd_PlaneDriver_inherited_DecrementRefCounter(
         self_: *mut TPrsStd_PlaneDriver,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn TPrsStd_PlaneDriver_inherited_Delete(
         self_: *const TPrsStd_PlaneDriver,
     ) -> *const std::ffi::c_char;
     // ======================== TPrsStd_PointDriver ========================
     pub fn TPrsStd_PointDriver_destructor(self_: *mut TPrsStd_PointDriver);
-    /// **Source:** `TPrsStd_PointDriver.hxx`:36 - `TPrsStd_PointDriver::TPrsStd_PointDriver()`
+    /// **Source:** `TPrsStd_PointDriver.hxx`:33 - `TPrsStd_PointDriver::TPrsStd_PointDriver()`
     pub fn TPrsStd_PointDriver_ctor() -> crate::OcctResult<*mut TPrsStd_PointDriver>;
-    /// **Source:** `TPrsStd_PointDriver.hxx`:42 - `TPrsStd_PointDriver::Update()`
+    /// **Source:** `TPrsStd_PointDriver.hxx`:39 - `TPrsStd_PointDriver::Update()`
     pub fn TPrsStd_PointDriver_update(
         self_: *mut TPrsStd_PointDriver,
         aLabel: *const TDF_Label,
-        anAISObject: *mut HandleAISInteractiveObject,
+        anAISObject: *mut Handle_AIS_InteractiveObject,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `TPrsStd_PointDriver.hxx`:46 - `TPrsStd_PointDriver::DynamicType()`
+    /// **Source:** `TPrsStd_PointDriver.hxx`:42 - `TPrsStd_PointDriver::DynamicType()`
     pub fn TPrsStd_PointDriver_dynamic_type(
         self_: *const TPrsStd_PointDriver,
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// **Source:** `TPrsStd_PointDriver.hxx`:46 - `TPrsStd_PointDriver::get_type_name()`
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
+    /// **Source:** `TPrsStd_PointDriver.hxx`:42 - `TPrsStd_PointDriver::get_type_name()`
     pub fn TPrsStd_PointDriver_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
-    /// **Source:** `TPrsStd_PointDriver.hxx`:46 - `TPrsStd_PointDriver::get_type_descriptor()`
-    pub fn TPrsStd_PointDriver_get_type_descriptor() -> crate::OcctResult<*const HandleStandardType>;
+    /// **Source:** `TPrsStd_PointDriver.hxx`:42 - `TPrsStd_PointDriver::get_type_descriptor()`
+    pub fn TPrsStd_PointDriver_get_type_descriptor(
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast TPrsStd_PointDriver to TPrsStd_Driver
     pub fn TPrsStd_PointDriver_as_TPrsStd_Driver(
         self_: *const TPrsStd_PointDriver,
@@ -1534,58 +1496,58 @@ unsafe extern "C" {
     /// Wrap TPrsStd_PointDriver in a Handle
     pub fn TPrsStd_PointDriver_to_handle(
         obj: *mut TPrsStd_PointDriver,
-    ) -> crate::OcctResult<*mut HandleTPrsStdPointDriver>;
+    ) -> crate::OcctResult<*mut Handle_TPrsStd_PointDriver>;
     /// Destroy Handle<TPrsStd_PointDriver>
-    pub fn HandleTPrsStdPointDriver_destructor(self_: *mut HandleTPrsStdPointDriver);
+    pub fn Handle_TPrsStd_PointDriver_destructor(self_: *mut Handle_TPrsStd_PointDriver);
     /// Clone Handle<TPrsStd_PointDriver> (increments reference count)
-    pub fn HandleTPrsStdPointDriver_clone(
-        self_: *const HandleTPrsStdPointDriver,
-    ) -> crate::OcctResult<*mut HandleTPrsStdPointDriver>;
+    pub fn Handle_TPrsStd_PointDriver_clone(
+        self_: *const Handle_TPrsStd_PointDriver,
+    ) -> crate::OcctResult<*mut Handle_TPrsStd_PointDriver>;
     /// Check if Handle<TPrsStd_PointDriver> is null
-    pub fn HandleTPrsStdPointDriver_is_null(self_: *const HandleTPrsStdPointDriver) -> bool;
+    pub fn Handle_TPrsStd_PointDriver_is_null(self_: *const Handle_TPrsStd_PointDriver) -> bool;
     /// Dereference Handle to get *const TPrsStd_PointDriver
-    pub fn HandleTPrsStdPointDriver_get(
-        handle: *const HandleTPrsStdPointDriver,
+    pub fn Handle_TPrsStd_PointDriver_get(
+        handle: *const Handle_TPrsStd_PointDriver,
     ) -> crate::OcctResult<*const TPrsStd_PointDriver>;
     /// Dereference Handle to get *mut TPrsStd_PointDriver
-    pub fn HandleTPrsStdPointDriver_get_mut(
-        handle: *mut HandleTPrsStdPointDriver,
+    pub fn Handle_TPrsStd_PointDriver_get_mut(
+        handle: *mut Handle_TPrsStd_PointDriver,
     ) -> crate::OcctResult<*mut TPrsStd_PointDriver>;
     /// Upcast Handle<TPrsStd_PointDriver> to Handle<TPrsStd_Driver>
-    pub fn HandleTPrsStdPointDriver_to_HandleTPrsStdDriver(
-        self_: *const HandleTPrsStdPointDriver,
-    ) -> crate::OcctResult<*mut HandleTPrsStdDriver>;
+    pub fn Handle_TPrsStd_PointDriver_to_Handle_TPrsStd_Driver(
+        self_: *const Handle_TPrsStd_PointDriver,
+    ) -> crate::OcctResult<*mut Handle_TPrsStd_Driver>;
     /// Upcast Handle<TPrsStd_PointDriver> to Handle<Standard_Transient>
-    pub fn HandleTPrsStdPointDriver_to_HandleStandardTransient(
-        self_: *const HandleTPrsStdPointDriver,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn Handle_TPrsStd_PointDriver_to_Handle_Standard_Transient(
+        self_: *const Handle_TPrsStd_PointDriver,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn TPrsStd_PointDriver_inherited_IsInstance(
         self_: *const TPrsStd_PointDriver,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn TPrsStd_PointDriver_inherited_IsKind(
         self_: *const TPrsStd_PointDriver,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn TPrsStd_PointDriver_inherited_This(
         self_: *const TPrsStd_PointDriver,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn TPrsStd_PointDriver_inherited_GetRefCount(
         self_: *const TPrsStd_PointDriver,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn TPrsStd_PointDriver_inherited_IncrementRefCounter(
         self_: *mut TPrsStd_PointDriver,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn TPrsStd_PointDriver_inherited_DecrementRefCounter(
         self_: *mut TPrsStd_PointDriver,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn TPrsStd_PointDriver_inherited_Delete(
         self_: *const TPrsStd_PointDriver,
     ) -> *const std::ffi::c_char;

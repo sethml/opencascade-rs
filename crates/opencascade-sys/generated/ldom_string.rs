@@ -47,7 +47,7 @@ impl LDOMString {
         }
     }
 
-    /// **Source:** `LDOMString.hxx`:50 - `LDOMString::LDOMString()`
+    /// **Source:** `LDOMString.hxx`:48 - `LDOMString::LDOMString()`
     pub fn new_int(aValue: i32) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
@@ -56,7 +56,7 @@ impl LDOMString {
         }
     }
 
-    /// **Source:** `LDOMString.hxx`:60 - `LDOMString::LDOMString()`
+    /// **Source:** `LDOMString.hxx`:58 - `LDOMString::LDOMString()`
     pub fn new_charptr(aValue: &str) -> crate::OwnedPtr<Self> {
         let c_aValue = std::ffi::CString::new(aValue).unwrap();
         unsafe {
@@ -66,7 +66,7 @@ impl LDOMString {
         }
     }
 
-    /// **Source:** `LDOMString.hxx`:68 - `LDOMString::getOwnerDocument()`
+    /// **Source:** `LDOMString.hxx`:66 - `LDOMString::getOwnerDocument()`
     pub fn get_owner_document(&self) -> &crate::ldom::MemManager {
         unsafe {
             &*(crate::check_result(crate::ffi_extern_misc::LDOMString_get_owner_document(

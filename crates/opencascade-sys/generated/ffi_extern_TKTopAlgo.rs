@@ -17,7 +17,7 @@ unsafe extern "C" {
         self_: *mut BRepApprox_Approx,
         Surf1: *const BRepAdaptor_Surface,
         Surf2: *const BRepAdaptor_Surface,
-        aLine: *const HandleBRepApproxApproxLine,
+        aLine: *const Handle_BRepApprox_ApproxLine,
         ApproxXYZ: bool,
         ApproxU1V1: bool,
         ApproxU2V2: bool,
@@ -27,7 +27,7 @@ unsafe extern "C" {
     /// **Source:** `BRepApprox_Approx.hxx`:96 - `BRepApprox_Approx::Perform()`
     pub fn BRepApprox_Approx_perform_handlebrepapproxapproxline_bool3_int2(
         self_: *mut BRepApprox_Approx,
-        aLine: *const HandleBRepApproxApproxLine,
+        aLine: *const Handle_BRepApprox_ApproxLine,
         ApproxXYZ: bool,
         ApproxU1V1: bool,
         ApproxU2V2: bool,
@@ -77,35 +77,35 @@ unsafe extern "C" {
     ) -> *const std::ffi::c_char;
     // ======================== BRepApprox_ApproxLine ========================
     pub fn BRepApprox_ApproxLine_destructor(self_: *mut BRepApprox_ApproxLine);
-    /// **Source:** `BRepApprox_ApproxLine.hxx`:37 - `BRepApprox_ApproxLine::BRepApprox_ApproxLine()`
+    /// **Source:** `BRepApprox_ApproxLine.hxx`:34 - `BRepApprox_ApproxLine::BRepApprox_ApproxLine()`
     pub fn BRepApprox_ApproxLine_ctor_handlegeombsplinecurve_handlegeom2dbsplinecurve2(
-        CurveXYZ: *const HandleGeomBSplineCurve,
-        CurveUV1: *const HandleGeom2dBSplineCurve,
-        CurveUV2: *const HandleGeom2dBSplineCurve,
+        CurveXYZ: *const Handle_Geom_BSplineCurve,
+        CurveUV1: *const Handle_Geom2d_BSplineCurve,
+        CurveUV2: *const Handle_Geom2d_BSplineCurve,
     ) -> crate::OcctResult<*mut BRepApprox_ApproxLine>;
-    /// **Source:** `BRepApprox_ApproxLine.hxx`:43 - `BRepApprox_ApproxLine::BRepApprox_ApproxLine()`
+    /// **Source:** `BRepApprox_ApproxLine.hxx`:40 - `BRepApprox_ApproxLine::BRepApprox_ApproxLine()`
     pub fn BRepApprox_ApproxLine_ctor_handleintsurflineon2s_bool(
-        lin: *const HandleIntSurfLineOn2S,
+        lin: *const Handle_IntSurf_LineOn2S,
         theTang: bool,
     ) -> crate::OcctResult<*mut BRepApprox_ApproxLine>;
-    /// **Source:** `BRepApprox_ApproxLine.hxx`:46 - `BRepApprox_ApproxLine::NbPnts()`
+    /// **Source:** `BRepApprox_ApproxLine.hxx`:43 - `BRepApprox_ApproxLine::NbPnts()`
     pub fn BRepApprox_ApproxLine_nb_pnts(
         self_: *const BRepApprox_ApproxLine,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `BRepApprox_ApproxLine.hxx`:48 - `BRepApprox_ApproxLine::Point()`
+    /// **Source:** `BRepApprox_ApproxLine.hxx`:45 - `BRepApprox_ApproxLine::Point()`
     pub fn BRepApprox_ApproxLine_point(
         self_: *mut BRepApprox_ApproxLine,
         Index: i32,
     ) -> crate::OcctResult<*mut IntSurf_PntOn2S>;
-    /// **Source:** `BRepApprox_ApproxLine.hxx`:50 - `BRepApprox_ApproxLine::DynamicType()`
+    /// **Source:** `BRepApprox_ApproxLine.hxx`:47 - `BRepApprox_ApproxLine::DynamicType()`
     pub fn BRepApprox_ApproxLine_dynamic_type(
         self_: *const BRepApprox_ApproxLine,
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// **Source:** `BRepApprox_ApproxLine.hxx`:50 - `BRepApprox_ApproxLine::get_type_name()`
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
+    /// **Source:** `BRepApprox_ApproxLine.hxx`:47 - `BRepApprox_ApproxLine::get_type_name()`
     pub fn BRepApprox_ApproxLine_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
-    /// **Source:** `BRepApprox_ApproxLine.hxx`:50 - `BRepApprox_ApproxLine::get_type_descriptor()`
+    /// **Source:** `BRepApprox_ApproxLine.hxx`:47 - `BRepApprox_ApproxLine::get_type_descriptor()`
     pub fn BRepApprox_ApproxLine_get_type_descriptor(
-    ) -> crate::OcctResult<*const HandleStandardType>;
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast BRepApprox_ApproxLine to Standard_Transient
     pub fn BRepApprox_ApproxLine_as_Standard_Transient(
         self_: *const BRepApprox_ApproxLine,
@@ -117,54 +117,55 @@ unsafe extern "C" {
     /// Wrap BRepApprox_ApproxLine in a Handle
     pub fn BRepApprox_ApproxLine_to_handle(
         obj: *mut BRepApprox_ApproxLine,
-    ) -> crate::OcctResult<*mut HandleBRepApproxApproxLine>;
+    ) -> crate::OcctResult<*mut Handle_BRepApprox_ApproxLine>;
     /// Destroy Handle<BRepApprox_ApproxLine>
-    pub fn HandleBRepApproxApproxLine_destructor(self_: *mut HandleBRepApproxApproxLine);
+    pub fn Handle_BRepApprox_ApproxLine_destructor(self_: *mut Handle_BRepApprox_ApproxLine);
     /// Clone Handle<BRepApprox_ApproxLine> (increments reference count)
-    pub fn HandleBRepApproxApproxLine_clone(
-        self_: *const HandleBRepApproxApproxLine,
-    ) -> crate::OcctResult<*mut HandleBRepApproxApproxLine>;
+    pub fn Handle_BRepApprox_ApproxLine_clone(
+        self_: *const Handle_BRepApprox_ApproxLine,
+    ) -> crate::OcctResult<*mut Handle_BRepApprox_ApproxLine>;
     /// Check if Handle<BRepApprox_ApproxLine> is null
-    pub fn HandleBRepApproxApproxLine_is_null(self_: *const HandleBRepApproxApproxLine) -> bool;
+    pub fn Handle_BRepApprox_ApproxLine_is_null(self_: *const Handle_BRepApprox_ApproxLine)
+        -> bool;
     /// Dereference Handle to get *const BRepApprox_ApproxLine
-    pub fn HandleBRepApproxApproxLine_get(
-        handle: *const HandleBRepApproxApproxLine,
+    pub fn Handle_BRepApprox_ApproxLine_get(
+        handle: *const Handle_BRepApprox_ApproxLine,
     ) -> crate::OcctResult<*const BRepApprox_ApproxLine>;
     /// Dereference Handle to get *mut BRepApprox_ApproxLine
-    pub fn HandleBRepApproxApproxLine_get_mut(
-        handle: *mut HandleBRepApproxApproxLine,
+    pub fn Handle_BRepApprox_ApproxLine_get_mut(
+        handle: *mut Handle_BRepApprox_ApproxLine,
     ) -> crate::OcctResult<*mut BRepApprox_ApproxLine>;
     /// Upcast Handle<BRepApprox_ApproxLine> to Handle<Standard_Transient>
-    pub fn HandleBRepApproxApproxLine_to_HandleStandardTransient(
-        self_: *const HandleBRepApproxApproxLine,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn Handle_BRepApprox_ApproxLine_to_Handle_Standard_Transient(
+        self_: *const Handle_BRepApprox_ApproxLine,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn BRepApprox_ApproxLine_inherited_IsInstance(
         self_: *const BRepApprox_ApproxLine,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn BRepApprox_ApproxLine_inherited_IsKind(
         self_: *const BRepApprox_ApproxLine,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn BRepApprox_ApproxLine_inherited_This(
         self_: *const BRepApprox_ApproxLine,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn BRepApprox_ApproxLine_inherited_GetRefCount(
         self_: *const BRepApprox_ApproxLine,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn BRepApprox_ApproxLine_inherited_IncrementRefCounter(
         self_: *mut BRepApprox_ApproxLine,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn BRepApprox_ApproxLine_inherited_DecrementRefCounter(
         self_: *mut BRepApprox_ApproxLine,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn BRepApprox_ApproxLine_inherited_Delete(
         self_: *const BRepApprox_ApproxLine,
     ) -> *const std::ffi::c_char;
@@ -206,27 +207,27 @@ unsafe extern "C" {
         F: *mut math_MultipleVarFunctionWithGradient,
         StartingPoint: *const math_Vector,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `math_BFGS.hxx`:78 - `math_BFGS::IsDone()`
+    /// Inherited: **Source:** `math_BFGS.hxx`:77 - `math_BFGS::IsDone()`
     pub fn BRepApprox_BSpGradient_BFGSOfMyBSplGradientOfTheComputeLineOfApprox_inherited_IsDone(
         self_: *const BRepApprox_BSpGradient_BFGSOfMyBSplGradientOfTheComputeLineOfApprox,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `math_BFGS.hxx`:82 - `math_BFGS::Location()`
+    /// Inherited: **Source:** `math_BFGS.hxx`:81 - `math_BFGS::Location()`
     pub fn BRepApprox_BSpGradient_BFGSOfMyBSplGradientOfTheComputeLineOfApprox_inherited_Location(
         self_: *const BRepApprox_BSpGradient_BFGSOfMyBSplGradientOfTheComputeLineOfApprox,
     ) -> crate::OcctResult<*const math_Vector>;
-    /// Inherited: **Source:** `math_BFGS.hxx`:92 - `math_BFGS::Minimum()`
+    /// Inherited: **Source:** `math_BFGS.hxx`:91 - `math_BFGS::Minimum()`
     pub fn BRepApprox_BSpGradient_BFGSOfMyBSplGradientOfTheComputeLineOfApprox_inherited_Minimum(
         self_: *const BRepApprox_BSpGradient_BFGSOfMyBSplGradientOfTheComputeLineOfApprox,
     ) -> crate::OcctResult<f64>;
-    /// Inherited: **Source:** `math_BFGS.hxx`:96 - `math_BFGS::Gradient()`
+    /// Inherited: **Source:** `math_BFGS.hxx`:95 - `math_BFGS::Gradient()`
     pub fn BRepApprox_BSpGradient_BFGSOfMyBSplGradientOfTheComputeLineOfApprox_inherited_Gradient(
         self_: *const BRepApprox_BSpGradient_BFGSOfMyBSplGradientOfTheComputeLineOfApprox,
     ) -> crate::OcctResult<*const math_Vector>;
-    /// Inherited: **Source:** `math_BFGS.hxx`:107 - `math_BFGS::NbIterations()`
+    /// Inherited: **Source:** `math_BFGS.hxx`:106 - `math_BFGS::NbIterations()`
     pub fn BRepApprox_BSpGradient_BFGSOfMyBSplGradientOfTheComputeLineOfApprox_inherited_NbIterations(
         self_: *const BRepApprox_BSpGradient_BFGSOfMyBSplGradientOfTheComputeLineOfApprox,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `math_BFGS.hxx`:112 - `math_BFGS::Dump()`
+    /// Inherited: **Source:** `math_BFGS.hxx`:111 - `math_BFGS::Dump()`
     pub fn BRepApprox_BSpGradient_BFGSOfMyBSplGradientOfTheComputeLineOfApprox_inherited_Dump(
         self_: *const BRepApprox_BSpGradient_BFGSOfMyBSplGradientOfTheComputeLineOfApprox,
         o: *mut Standard_OStream,
@@ -235,92 +236,92 @@ unsafe extern "C" {
     pub fn BRepApprox_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox_destructor(
         self_: *mut BRepApprox_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox,
     );
-    /// **Source:** `BRepApprox_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox.hxx`:49 - `BRepApprox_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox::BRepApprox_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox()`
-    pub fn BRepApprox_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox_ctor_themultilineofapprox_int2_handleappparcurvesharray1ofconstraintcouple_vector_array1ofreal_array1ofinteger_int(
+    /// **Source:** `BRepApprox_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox.hxx`:48 - `BRepApprox_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox::BRepApprox_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox()`
+    pub fn BRepApprox_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox_ctor_themultilineofapprox_int2_harr1_constraintcouple_vector_arr1_double_arr1_int_int(
         SSP: *const BRepApprox_TheMultiLineOfApprox,
         FirstPoint: i32,
         LastPoint: i32,
-        TheConstraints: *const HandleAppParCurvesHArray1OfConstraintCouple,
+        TheConstraints: *const Handle_NCollection_HArray1_AppParCurves_ConstraintCouple,
         Parameters: *const math_Vector,
-        Knots: *const TColStd_Array1OfReal,
-        Mults: *const TColStd_Array1OfInteger,
+        Knots: *const NCollection_Array1_double,
+        Mults: *const NCollection_Array1_int,
         NbPol: i32,
     ) -> crate::OcctResult<*mut BRepApprox_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox>;
-    /// **Source:** `BRepApprox_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox.hxx`:61 - `BRepApprox_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox::NbVariables()`
+    /// **Source:** `BRepApprox_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox.hxx`:60 - `BRepApprox_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox::NbVariables()`
     pub fn BRepApprox_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox_nb_variables(
         self_: *const BRepApprox_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `BRepApprox_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox.hxx`:67 - `BRepApprox_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox::Value()`
+    /// **Source:** `BRepApprox_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox.hxx`:66 - `BRepApprox_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox::Value()`
     pub fn BRepApprox_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox_value(
         self_: *mut BRepApprox_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox,
         X: *const math_Vector,
         F: *mut f64,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BRepApprox_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox.hxx`:71 - `BRepApprox_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox::Gradient()`
+    /// **Source:** `BRepApprox_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox.hxx`:70 - `BRepApprox_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox::Gradient()`
     pub fn BRepApprox_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox_gradient(
         self_: *mut BRepApprox_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox,
         X: *const math_Vector,
         G: *mut math_Vector,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BRepApprox_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox.hxx`:75 - `BRepApprox_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox::Values()`
+    /// **Source:** `BRepApprox_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox.hxx`:74 - `BRepApprox_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox::Values()`
     pub fn BRepApprox_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox_values(
         self_: *mut BRepApprox_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox,
         X: *const math_Vector,
         F: *mut f64,
         G: *mut math_Vector,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BRepApprox_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox.hxx`:78 - `BRepApprox_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox::NewParameters()`
+    /// **Source:** `BRepApprox_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox.hxx`:77 - `BRepApprox_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox::NewParameters()`
     pub fn BRepApprox_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox_new_parameters(
         self_: *const BRepApprox_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox,
     ) -> crate::OcctResult<*const math_Vector>;
-    /// **Source:** `BRepApprox_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox.hxx`:82 - `BRepApprox_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox::CurveValue()`
+    /// **Source:** `BRepApprox_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox.hxx`:81 - `BRepApprox_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox::CurveValue()`
     pub fn BRepApprox_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox_curve_value(
         self_: *mut BRepApprox_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox,
     ) -> crate::OcctResult<*mut AppParCurves_MultiBSpCurve>;
-    /// **Source:** `BRepApprox_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox.hxx`:86 - `BRepApprox_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox::Error()`
+    /// **Source:** `BRepApprox_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox.hxx`:85 - `BRepApprox_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox::Error()`
     pub fn BRepApprox_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox_error(
         self_: *mut BRepApprox_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox,
         IPoint: i32,
         CurveIndex: i32,
     ) -> crate::OcctResult<f64>;
-    /// **Source:** `BRepApprox_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox.hxx`:91 - `BRepApprox_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox::MaxError3d()`
+    /// **Source:** `BRepApprox_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox.hxx`:89 - `BRepApprox_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox::MaxError3d()`
     pub fn BRepApprox_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox_max_error3d(
         self_: *const BRepApprox_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox,
     ) -> crate::OcctResult<f64>;
-    /// **Source:** `BRepApprox_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox.hxx`:95 - `BRepApprox_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox::MaxError2d()`
+    /// **Source:** `BRepApprox_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox.hxx`:93 - `BRepApprox_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox::MaxError2d()`
     pub fn BRepApprox_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox_max_error2d(
         self_: *const BRepApprox_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox,
     ) -> crate::OcctResult<f64>;
-    /// **Source:** `BRepApprox_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox.hxx`:99 - `BRepApprox_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox::FunctionMatrix()`
+    /// **Source:** `BRepApprox_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox.hxx`:97 - `BRepApprox_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox::FunctionMatrix()`
     pub fn BRepApprox_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox_function_matrix(
         self_: *const BRepApprox_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox,
     ) -> crate::OcctResult<*const math_Matrix>;
-    /// **Source:** `BRepApprox_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox.hxx`:103 - `BRepApprox_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox::DerivativeFunctionMatrix()`
+    /// **Source:** `BRepApprox_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox.hxx`:101 - `BRepApprox_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox::DerivativeFunctionMatrix()`
     pub fn BRepApprox_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox_derivative_function_matrix(
         self_: *const BRepApprox_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox,
     ) -> crate::OcctResult<*const math_Matrix>;
-    /// **Source:** `BRepApprox_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox.hxx`:109 - `BRepApprox_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox::Index()`
+    /// **Source:** `BRepApprox_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox.hxx`:107 - `BRepApprox_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox::Index()`
     pub fn BRepApprox_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox_index(
         self_: *const BRepApprox_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox,
     ) -> crate::OcctResult<*const math_IntegerVector>;
-    /// **Source:** `BRepApprox_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox.hxx`:112 - `BRepApprox_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox::FirstConstraint()`
+    /// **Source:** `BRepApprox_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox.hxx`:109 - `BRepApprox_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox::FirstConstraint()`
     pub fn BRepApprox_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox_first_constraint(
         self_: *const BRepApprox_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox,
-        TheConstraints: *const HandleAppParCurvesHArray1OfConstraintCouple,
+        TheConstraints: *const Handle_NCollection_HArray1_AppParCurves_ConstraintCouple,
         FirstPoint: i32,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `BRepApprox_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox.hxx`:116 - `BRepApprox_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox::LastConstraint()`
+    /// **Source:** `BRepApprox_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox.hxx`:113 - `BRepApprox_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox::LastConstraint()`
     pub fn BRepApprox_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox_last_constraint(
         self_: *const BRepApprox_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox,
-        TheConstraints: *const HandleAppParCurvesHArray1OfConstraintCouple,
+        TheConstraints: *const Handle_NCollection_HArray1_AppParCurves_ConstraintCouple,
         LastPoint: i32,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `BRepApprox_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox.hxx`:119 - `BRepApprox_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox::SetFirstLambda()`
+    /// **Source:** `BRepApprox_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox.hxx`:117 - `BRepApprox_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox::SetFirstLambda()`
     pub fn BRepApprox_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox_set_first_lambda(
         self_: *mut BRepApprox_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox,
         l1: f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepApprox_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox.hxx`:121 - `BRepApprox_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox::SetLastLambda()`
+    /// **Source:** `BRepApprox_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox.hxx`:119 - `BRepApprox_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox::SetLastLambda()`
     pub fn BRepApprox_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox_set_last_lambda(
         self_: *mut BRepApprox_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox,
         l2: f64,
@@ -349,7 +350,7 @@ unsafe extern "C" {
     pub fn BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox_destructor(
         self_: *mut BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox,
     );
-    /// **Source:** `BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox.hxx`:66 - `BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox::BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox()`
+    /// **Source:** `BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox.hxx`:64 - `BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox::BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox()`
     pub fn BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox_ctor_themultilineofapprox_int2_constraint2_vector_int(
         SSP: *const BRepApprox_TheMultiLineOfApprox,
         FirstPoint: i32,
@@ -359,7 +360,7 @@ unsafe extern "C" {
         Parameters: *const math_Vector,
         NbPol: i32,
     ) -> crate::OcctResult<*mut BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox>;
-    /// **Source:** `BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox.hxx`:76 - `BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox::BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox()`
+    /// **Source:** `BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox.hxx`:74 - `BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox::BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox()`
     pub fn BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox_ctor_themultilineofapprox_int2_constraint2_int(
         SSP: *const BRepApprox_TheMultiLineOfApprox,
         FirstPoint: i32,
@@ -368,11 +369,11 @@ unsafe extern "C" {
         LastCons: i32,
         NbPol: i32,
     ) -> crate::OcctResult<*mut BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox>;
-    /// **Source:** `BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox.hxx`:99 - `BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox::BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox()`
-    pub fn BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox_ctor_themultilineofapprox_array1ofreal_array1ofinteger_int2_constraint2_vector_int(
+    /// **Source:** `BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox.hxx`:97 - `BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox::BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox()`
+    pub fn BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox_ctor_themultilineofapprox_arr1_double_arr1_int_int2_constraint2_vector_int(
         SSP: *const BRepApprox_TheMultiLineOfApprox,
-        Knots: *const TColStd_Array1OfReal,
-        Mults: *const TColStd_Array1OfInteger,
+        Knots: *const NCollection_Array1_double,
+        Mults: *const NCollection_Array1_int,
         FirstPoint: i32,
         LastPoint: i32,
         FirstCons: i32,
@@ -380,30 +381,30 @@ unsafe extern "C" {
         Parameters: *const math_Vector,
         NbPol: i32,
     ) -> crate::OcctResult<*mut BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox>;
-    /// **Source:** `BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox.hxx`:111 - `BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox::BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox()`
-    pub fn BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox_ctor_themultilineofapprox_array1ofreal_array1ofinteger_int2_constraint2_int(
+    /// **Source:** `BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox.hxx`:109 - `BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox::BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox()`
+    pub fn BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox_ctor_themultilineofapprox_arr1_double_arr1_int_int2_constraint2_int(
         SSP: *const BRepApprox_TheMultiLineOfApprox,
-        Knots: *const TColStd_Array1OfReal,
-        Mults: *const TColStd_Array1OfInteger,
+        Knots: *const NCollection_Array1_double,
+        Mults: *const NCollection_Array1_int,
         FirstPoint: i32,
         LastPoint: i32,
         FirstCons: i32,
         LastCons: i32,
         NbPol: i32,
     ) -> crate::OcctResult<*mut BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox>;
-    /// **Source:** `BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox.hxx`:123 - `BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox::Perform()`
+    /// **Source:** `BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox.hxx`:121 - `BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox::Perform()`
     pub fn BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox_perform_vector(
         self_: *mut BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox,
         Parameters: *const math_Vector,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox.hxx`:126 - `BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox::Perform()`
+    /// **Source:** `BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox.hxx`:124 - `BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox::Perform()`
     pub fn BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox_perform_vector_real2(
         self_: *mut BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox,
         Parameters: *const math_Vector,
         l1: f64,
         l2: f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox.hxx`:133 - `BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox::Perform()`
+    /// **Source:** `BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox.hxx`:129 - `BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox::Perform()`
     pub fn BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox_perform_vector3_real2(
         self_: *mut BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox,
         Parameters: *const math_Vector,
@@ -412,7 +413,7 @@ unsafe extern "C" {
         l1: f64,
         l2: f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox.hxx`:144 - `BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox::Perform()`
+    /// **Source:** `BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox.hxx`:140 - `BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox::Perform()`
     pub fn BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox_perform_vector5_real2(
         self_: *mut BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox,
         Parameters: *const math_Vector,
@@ -423,27 +424,27 @@ unsafe extern "C" {
         l1: f64,
         l2: f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox.hxx`:153 - `BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox::IsDone()`
+    /// **Source:** `BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox.hxx`:149 - `BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox::IsDone()`
     pub fn BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox_is_done(
         self_: *const BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox.hxx`:158 - `BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox::BezierValue()`
+    /// **Source:** `BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox.hxx`:154 - `BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox::BezierValue()`
     pub fn BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox_bezier_value(
         self_: *mut BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox,
     ) -> crate::OcctResult<*mut AppParCurves_MultiCurve>;
-    /// **Source:** `BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox.hxx`:163 - `BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox::BSplineValue()`
+    /// **Source:** `BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox.hxx`:159 - `BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox::BSplineValue()`
     pub fn BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox_b_spline_value(
         self_: *mut BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox,
     ) -> crate::OcctResult<*const AppParCurves_MultiBSpCurve>;
-    /// **Source:** `BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox.hxx`:167 - `BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox::FunctionMatrix()`
+    /// **Source:** `BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox.hxx`:163 - `BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox::FunctionMatrix()`
     pub fn BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox_function_matrix(
         self_: *const BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox,
     ) -> crate::OcctResult<*const math_Matrix>;
-    /// **Source:** `BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox.hxx`:171 - `BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox::DerivativeFunctionMatrix()`
+    /// **Source:** `BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox.hxx`:167 - `BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox::DerivativeFunctionMatrix()`
     pub fn BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox_derivative_function_matrix(
         self_: *const BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox,
     ) -> crate::OcctResult<*const math_Matrix>;
-    /// **Source:** `BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox.hxx`:177 - `BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox::ErrorGradient()`
+    /// **Source:** `BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox.hxx`:173 - `BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox::ErrorGradient()`
     pub fn BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox_error_gradient(
         self_: *mut BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox,
         Grad: *mut math_Vector,
@@ -451,34 +452,34 @@ unsafe extern "C" {
         MaxE3d: *mut f64,
         MaxE2d: *mut f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox.hxx`:184 - `BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox::Distance()`
+    /// **Source:** `BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox.hxx`:177 - `BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox::Distance()`
     pub fn BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox_distance(
         self_: *mut BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox,
     ) -> crate::OcctResult<*const math_Matrix>;
-    /// **Source:** `BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox.hxx`:189 - `BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox::Error()`
+    /// **Source:** `BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox.hxx`:182 - `BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox::Error()`
     pub fn BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox_error(
         self_: *mut BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox,
         F: *mut f64,
         MaxE3d: *mut f64,
         MaxE2d: *mut f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox.hxx`:193 - `BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox::FirstLambda()`
+    /// **Source:** `BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox.hxx`:186 - `BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox::FirstLambda()`
     pub fn BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox_first_lambda(
         self_: *const BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox,
     ) -> crate::OcctResult<f64>;
-    /// **Source:** `BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox.hxx`:197 - `BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox::LastLambda()`
+    /// **Source:** `BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox.hxx`:190 - `BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox::LastLambda()`
     pub fn BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox_last_lambda(
         self_: *const BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox,
     ) -> crate::OcctResult<f64>;
-    /// **Source:** `BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox.hxx`:200 - `BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox::Points()`
+    /// **Source:** `BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox.hxx`:193 - `BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox::Points()`
     pub fn BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox_points(
         self_: *const BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox,
     ) -> crate::OcctResult<*const math_Matrix>;
-    /// **Source:** `BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox.hxx`:203 - `BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox::Poles()`
+    /// **Source:** `BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox.hxx`:196 - `BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox::Poles()`
     pub fn BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox_poles(
         self_: *const BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox,
     ) -> crate::OcctResult<*const math_Matrix>;
-    /// **Source:** `BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox.hxx`:209 - `BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox::KIndex()`
+    /// **Source:** `BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox.hxx`:202 - `BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox::KIndex()`
     pub fn BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox_k_index(
         self_: *const BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox,
     ) -> crate::OcctResult<*const math_IntegerVector>;
@@ -520,27 +521,27 @@ unsafe extern "C" {
         F: *mut math_MultipleVarFunctionWithGradient,
         StartingPoint: *const math_Vector,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `math_BFGS.hxx`:78 - `math_BFGS::IsDone()`
+    /// Inherited: **Source:** `math_BFGS.hxx`:77 - `math_BFGS::IsDone()`
     pub fn BRepApprox_Gradient_BFGSOfMyGradientOfTheComputeLineBezierOfApprox_inherited_IsDone(
         self_: *const BRepApprox_Gradient_BFGSOfMyGradientOfTheComputeLineBezierOfApprox,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `math_BFGS.hxx`:82 - `math_BFGS::Location()`
+    /// Inherited: **Source:** `math_BFGS.hxx`:81 - `math_BFGS::Location()`
     pub fn BRepApprox_Gradient_BFGSOfMyGradientOfTheComputeLineBezierOfApprox_inherited_Location(
         self_: *const BRepApprox_Gradient_BFGSOfMyGradientOfTheComputeLineBezierOfApprox,
     ) -> crate::OcctResult<*const math_Vector>;
-    /// Inherited: **Source:** `math_BFGS.hxx`:92 - `math_BFGS::Minimum()`
+    /// Inherited: **Source:** `math_BFGS.hxx`:91 - `math_BFGS::Minimum()`
     pub fn BRepApprox_Gradient_BFGSOfMyGradientOfTheComputeLineBezierOfApprox_inherited_Minimum(
         self_: *const BRepApprox_Gradient_BFGSOfMyGradientOfTheComputeLineBezierOfApprox,
     ) -> crate::OcctResult<f64>;
-    /// Inherited: **Source:** `math_BFGS.hxx`:96 - `math_BFGS::Gradient()`
+    /// Inherited: **Source:** `math_BFGS.hxx`:95 - `math_BFGS::Gradient()`
     pub fn BRepApprox_Gradient_BFGSOfMyGradientOfTheComputeLineBezierOfApprox_inherited_Gradient(
         self_: *const BRepApprox_Gradient_BFGSOfMyGradientOfTheComputeLineBezierOfApprox,
     ) -> crate::OcctResult<*const math_Vector>;
-    /// Inherited: **Source:** `math_BFGS.hxx`:107 - `math_BFGS::NbIterations()`
+    /// Inherited: **Source:** `math_BFGS.hxx`:106 - `math_BFGS::NbIterations()`
     pub fn BRepApprox_Gradient_BFGSOfMyGradientOfTheComputeLineBezierOfApprox_inherited_NbIterations(
         self_: *const BRepApprox_Gradient_BFGSOfMyGradientOfTheComputeLineBezierOfApprox,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `math_BFGS.hxx`:112 - `math_BFGS::Dump()`
+    /// Inherited: **Source:** `math_BFGS.hxx`:111 - `math_BFGS::Dump()`
     pub fn BRepApprox_Gradient_BFGSOfMyGradientOfTheComputeLineBezierOfApprox_inherited_Dump(
         self_: *const BRepApprox_Gradient_BFGSOfMyGradientOfTheComputeLineBezierOfApprox,
         o: *mut Standard_OStream,
@@ -583,27 +584,27 @@ unsafe extern "C" {
         F: *mut math_MultipleVarFunctionWithGradient,
         StartingPoint: *const math_Vector,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `math_BFGS.hxx`:78 - `math_BFGS::IsDone()`
+    /// Inherited: **Source:** `math_BFGS.hxx`:77 - `math_BFGS::IsDone()`
     pub fn BRepApprox_Gradient_BFGSOfMyGradientbisOfTheComputeLineOfApprox_inherited_IsDone(
         self_: *const BRepApprox_Gradient_BFGSOfMyGradientbisOfTheComputeLineOfApprox,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `math_BFGS.hxx`:82 - `math_BFGS::Location()`
+    /// Inherited: **Source:** `math_BFGS.hxx`:81 - `math_BFGS::Location()`
     pub fn BRepApprox_Gradient_BFGSOfMyGradientbisOfTheComputeLineOfApprox_inherited_Location(
         self_: *const BRepApprox_Gradient_BFGSOfMyGradientbisOfTheComputeLineOfApprox,
     ) -> crate::OcctResult<*const math_Vector>;
-    /// Inherited: **Source:** `math_BFGS.hxx`:92 - `math_BFGS::Minimum()`
+    /// Inherited: **Source:** `math_BFGS.hxx`:91 - `math_BFGS::Minimum()`
     pub fn BRepApprox_Gradient_BFGSOfMyGradientbisOfTheComputeLineOfApprox_inherited_Minimum(
         self_: *const BRepApprox_Gradient_BFGSOfMyGradientbisOfTheComputeLineOfApprox,
     ) -> crate::OcctResult<f64>;
-    /// Inherited: **Source:** `math_BFGS.hxx`:96 - `math_BFGS::Gradient()`
+    /// Inherited: **Source:** `math_BFGS.hxx`:95 - `math_BFGS::Gradient()`
     pub fn BRepApprox_Gradient_BFGSOfMyGradientbisOfTheComputeLineOfApprox_inherited_Gradient(
         self_: *const BRepApprox_Gradient_BFGSOfMyGradientbisOfTheComputeLineOfApprox,
     ) -> crate::OcctResult<*const math_Vector>;
-    /// Inherited: **Source:** `math_BFGS.hxx`:107 - `math_BFGS::NbIterations()`
+    /// Inherited: **Source:** `math_BFGS.hxx`:106 - `math_BFGS::NbIterations()`
     pub fn BRepApprox_Gradient_BFGSOfMyGradientbisOfTheComputeLineOfApprox_inherited_NbIterations(
         self_: *const BRepApprox_Gradient_BFGSOfMyGradientbisOfTheComputeLineOfApprox,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `math_BFGS.hxx`:112 - `math_BFGS::Dump()`
+    /// Inherited: **Source:** `math_BFGS.hxx`:111 - `math_BFGS::Dump()`
     pub fn BRepApprox_Gradient_BFGSOfMyGradientbisOfTheComputeLineOfApprox_inherited_Dump(
         self_: *const BRepApprox_Gradient_BFGSOfMyGradientbisOfTheComputeLineOfApprox,
         o: *mut Standard_OStream,
@@ -613,28 +614,28 @@ unsafe extern "C" {
         self_: *mut BRepApprox_MyBSplGradientOfTheComputeLineOfApprox,
     );
     /// **Source:** `BRepApprox_MyBSplGradientOfTheComputeLineOfApprox.hxx`:51 - `BRepApprox_MyBSplGradientOfTheComputeLineOfApprox::BRepApprox_MyBSplGradientOfTheComputeLineOfApprox()`
-    pub fn BRepApprox_MyBSplGradientOfTheComputeLineOfApprox_ctor_themultilineofapprox_int2_handleappparcurvesharray1ofconstraintcouple_vector_array1ofreal_array1ofinteger_int_real2_int(
+    pub fn BRepApprox_MyBSplGradientOfTheComputeLineOfApprox_ctor_themultilineofapprox_int2_harr1_constraintcouple_vector_arr1_double_arr1_int_int_real2_int(
         SSP: *const BRepApprox_TheMultiLineOfApprox,
         FirstPoint: i32,
         LastPoint: i32,
-        TheConstraints: *const HandleAppParCurvesHArray1OfConstraintCouple,
+        TheConstraints: *const Handle_NCollection_HArray1_AppParCurves_ConstraintCouple,
         Parameters: *mut math_Vector,
-        Knots: *const TColStd_Array1OfReal,
-        Mults: *const TColStd_Array1OfInteger,
+        Knots: *const NCollection_Array1_double,
+        Mults: *const NCollection_Array1_int,
         Deg: i32,
         Tol3d: f64,
         Tol2d: f64,
         NbIterations: i32,
     ) -> crate::OcctResult<*mut BRepApprox_MyBSplGradientOfTheComputeLineOfApprox>;
     /// **Source:** `BRepApprox_MyBSplGradientOfTheComputeLineOfApprox.hxx`:70 - `BRepApprox_MyBSplGradientOfTheComputeLineOfApprox::BRepApprox_MyBSplGradientOfTheComputeLineOfApprox()`
-    pub fn BRepApprox_MyBSplGradientOfTheComputeLineOfApprox_ctor_themultilineofapprox_int2_handleappparcurvesharray1ofconstraintcouple_vector_array1ofreal_array1ofinteger_int_real2_int_real2(
+    pub fn BRepApprox_MyBSplGradientOfTheComputeLineOfApprox_ctor_themultilineofapprox_int2_harr1_constraintcouple_vector_arr1_double_arr1_int_int_real2_int_real2(
         SSP: *const BRepApprox_TheMultiLineOfApprox,
         FirstPoint: i32,
         LastPoint: i32,
-        TheConstraints: *const HandleAppParCurvesHArray1OfConstraintCouple,
+        TheConstraints: *const Handle_NCollection_HArray1_AppParCurves_ConstraintCouple,
         Parameters: *mut math_Vector,
-        Knots: *const TColStd_Array1OfReal,
-        Mults: *const TColStd_Array1OfInteger,
+        Knots: *const NCollection_Array1_double,
+        Mults: *const NCollection_Array1_int,
         Deg: i32,
         Tol3d: f64,
         Tol2d: f64,
@@ -671,40 +672,40 @@ unsafe extern "C" {
     pub fn BRepApprox_MyGradientOfTheComputeLineBezierOfApprox_destructor(
         self_: *mut BRepApprox_MyGradientOfTheComputeLineBezierOfApprox,
     );
-    /// **Source:** `BRepApprox_MyGradientOfTheComputeLineBezierOfApprox.hxx`:50 - `BRepApprox_MyGradientOfTheComputeLineBezierOfApprox::BRepApprox_MyGradientOfTheComputeLineBezierOfApprox()`
-    pub fn BRepApprox_MyGradientOfTheComputeLineBezierOfApprox_ctor_themultilineofapprox_int2_handleappparcurvesharray1ofconstraintcouple_vector_int_real2_int(
+    /// **Source:** `BRepApprox_MyGradientOfTheComputeLineBezierOfApprox.hxx`:52 - `BRepApprox_MyGradientOfTheComputeLineBezierOfApprox::BRepApprox_MyGradientOfTheComputeLineBezierOfApprox()`
+    pub fn BRepApprox_MyGradientOfTheComputeLineBezierOfApprox_ctor_themultilineofapprox_int2_harr1_constraintcouple_vector_int_real2_int(
         SSP: *const BRepApprox_TheMultiLineOfApprox,
         FirstPoint: i32,
         LastPoint: i32,
-        TheConstraints: *const HandleAppParCurvesHArray1OfConstraintCouple,
+        TheConstraints: *const Handle_NCollection_HArray1_AppParCurves_ConstraintCouple,
         Parameters: *mut math_Vector,
         Deg: i32,
         Tol3d: f64,
         Tol2d: f64,
         NbIterations: i32,
     ) -> crate::OcctResult<*mut BRepApprox_MyGradientOfTheComputeLineBezierOfApprox>;
-    /// **Source:** `BRepApprox_MyGradientOfTheComputeLineBezierOfApprox.hxx`:62 - `BRepApprox_MyGradientOfTheComputeLineBezierOfApprox::IsDone()`
+    /// **Source:** `BRepApprox_MyGradientOfTheComputeLineBezierOfApprox.hxx`:64 - `BRepApprox_MyGradientOfTheComputeLineBezierOfApprox::IsDone()`
     pub fn BRepApprox_MyGradientOfTheComputeLineBezierOfApprox_is_done(
         self_: *const BRepApprox_MyGradientOfTheComputeLineBezierOfApprox,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BRepApprox_MyGradientOfTheComputeLineBezierOfApprox.hxx`:66 - `BRepApprox_MyGradientOfTheComputeLineBezierOfApprox::Value()`
+    /// **Source:** `BRepApprox_MyGradientOfTheComputeLineBezierOfApprox.hxx`:68 - `BRepApprox_MyGradientOfTheComputeLineBezierOfApprox::Value()`
     pub fn BRepApprox_MyGradientOfTheComputeLineBezierOfApprox_value(
         self_: *const BRepApprox_MyGradientOfTheComputeLineBezierOfApprox,
     ) -> crate::OcctResult<*mut AppParCurves_MultiCurve>;
-    /// **Source:** `BRepApprox_MyGradientOfTheComputeLineBezierOfApprox.hxx`:72 - `BRepApprox_MyGradientOfTheComputeLineBezierOfApprox::Error()`
+    /// **Source:** `BRepApprox_MyGradientOfTheComputeLineBezierOfApprox.hxx`:74 - `BRepApprox_MyGradientOfTheComputeLineBezierOfApprox::Error()`
     pub fn BRepApprox_MyGradientOfTheComputeLineBezierOfApprox_error(
         self_: *const BRepApprox_MyGradientOfTheComputeLineBezierOfApprox,
         Index: i32,
     ) -> crate::OcctResult<f64>;
-    /// **Source:** `BRepApprox_MyGradientOfTheComputeLineBezierOfApprox.hxx`:76 - `BRepApprox_MyGradientOfTheComputeLineBezierOfApprox::MaxError3d()`
+    /// **Source:** `BRepApprox_MyGradientOfTheComputeLineBezierOfApprox.hxx`:78 - `BRepApprox_MyGradientOfTheComputeLineBezierOfApprox::MaxError3d()`
     pub fn BRepApprox_MyGradientOfTheComputeLineBezierOfApprox_max_error3d(
         self_: *const BRepApprox_MyGradientOfTheComputeLineBezierOfApprox,
     ) -> crate::OcctResult<f64>;
-    /// **Source:** `BRepApprox_MyGradientOfTheComputeLineBezierOfApprox.hxx`:80 - `BRepApprox_MyGradientOfTheComputeLineBezierOfApprox::MaxError2d()`
+    /// **Source:** `BRepApprox_MyGradientOfTheComputeLineBezierOfApprox.hxx`:82 - `BRepApprox_MyGradientOfTheComputeLineBezierOfApprox::MaxError2d()`
     pub fn BRepApprox_MyGradientOfTheComputeLineBezierOfApprox_max_error2d(
         self_: *const BRepApprox_MyGradientOfTheComputeLineBezierOfApprox,
     ) -> crate::OcctResult<f64>;
-    /// **Source:** `BRepApprox_MyGradientOfTheComputeLineBezierOfApprox.hxx`:84 - `BRepApprox_MyGradientOfTheComputeLineBezierOfApprox::AverageError()`
+    /// **Source:** `BRepApprox_MyGradientOfTheComputeLineBezierOfApprox.hxx`:86 - `BRepApprox_MyGradientOfTheComputeLineBezierOfApprox::AverageError()`
     pub fn BRepApprox_MyGradientOfTheComputeLineBezierOfApprox_average_error(
         self_: *const BRepApprox_MyGradientOfTheComputeLineBezierOfApprox,
     ) -> crate::OcctResult<f64>;
@@ -712,40 +713,40 @@ unsafe extern "C" {
     pub fn BRepApprox_MyGradientbisOfTheComputeLineOfApprox_destructor(
         self_: *mut BRepApprox_MyGradientbisOfTheComputeLineOfApprox,
     );
-    /// **Source:** `BRepApprox_MyGradientbisOfTheComputeLineOfApprox.hxx`:50 - `BRepApprox_MyGradientbisOfTheComputeLineOfApprox::BRepApprox_MyGradientbisOfTheComputeLineOfApprox()`
-    pub fn BRepApprox_MyGradientbisOfTheComputeLineOfApprox_ctor_themultilineofapprox_int2_handleappparcurvesharray1ofconstraintcouple_vector_int_real2_int(
+    /// **Source:** `BRepApprox_MyGradientbisOfTheComputeLineOfApprox.hxx`:52 - `BRepApprox_MyGradientbisOfTheComputeLineOfApprox::BRepApprox_MyGradientbisOfTheComputeLineOfApprox()`
+    pub fn BRepApprox_MyGradientbisOfTheComputeLineOfApprox_ctor_themultilineofapprox_int2_harr1_constraintcouple_vector_int_real2_int(
         SSP: *const BRepApprox_TheMultiLineOfApprox,
         FirstPoint: i32,
         LastPoint: i32,
-        TheConstraints: *const HandleAppParCurvesHArray1OfConstraintCouple,
+        TheConstraints: *const Handle_NCollection_HArray1_AppParCurves_ConstraintCouple,
         Parameters: *mut math_Vector,
         Deg: i32,
         Tol3d: f64,
         Tol2d: f64,
         NbIterations: i32,
     ) -> crate::OcctResult<*mut BRepApprox_MyGradientbisOfTheComputeLineOfApprox>;
-    /// **Source:** `BRepApprox_MyGradientbisOfTheComputeLineOfApprox.hxx`:62 - `BRepApprox_MyGradientbisOfTheComputeLineOfApprox::IsDone()`
+    /// **Source:** `BRepApprox_MyGradientbisOfTheComputeLineOfApprox.hxx`:64 - `BRepApprox_MyGradientbisOfTheComputeLineOfApprox::IsDone()`
     pub fn BRepApprox_MyGradientbisOfTheComputeLineOfApprox_is_done(
         self_: *const BRepApprox_MyGradientbisOfTheComputeLineOfApprox,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BRepApprox_MyGradientbisOfTheComputeLineOfApprox.hxx`:66 - `BRepApprox_MyGradientbisOfTheComputeLineOfApprox::Value()`
+    /// **Source:** `BRepApprox_MyGradientbisOfTheComputeLineOfApprox.hxx`:68 - `BRepApprox_MyGradientbisOfTheComputeLineOfApprox::Value()`
     pub fn BRepApprox_MyGradientbisOfTheComputeLineOfApprox_value(
         self_: *const BRepApprox_MyGradientbisOfTheComputeLineOfApprox,
     ) -> crate::OcctResult<*mut AppParCurves_MultiCurve>;
-    /// **Source:** `BRepApprox_MyGradientbisOfTheComputeLineOfApprox.hxx`:72 - `BRepApprox_MyGradientbisOfTheComputeLineOfApprox::Error()`
+    /// **Source:** `BRepApprox_MyGradientbisOfTheComputeLineOfApprox.hxx`:74 - `BRepApprox_MyGradientbisOfTheComputeLineOfApprox::Error()`
     pub fn BRepApprox_MyGradientbisOfTheComputeLineOfApprox_error(
         self_: *const BRepApprox_MyGradientbisOfTheComputeLineOfApprox,
         Index: i32,
     ) -> crate::OcctResult<f64>;
-    /// **Source:** `BRepApprox_MyGradientbisOfTheComputeLineOfApprox.hxx`:76 - `BRepApprox_MyGradientbisOfTheComputeLineOfApprox::MaxError3d()`
+    /// **Source:** `BRepApprox_MyGradientbisOfTheComputeLineOfApprox.hxx`:78 - `BRepApprox_MyGradientbisOfTheComputeLineOfApprox::MaxError3d()`
     pub fn BRepApprox_MyGradientbisOfTheComputeLineOfApprox_max_error3d(
         self_: *const BRepApprox_MyGradientbisOfTheComputeLineOfApprox,
     ) -> crate::OcctResult<f64>;
-    /// **Source:** `BRepApprox_MyGradientbisOfTheComputeLineOfApprox.hxx`:80 - `BRepApprox_MyGradientbisOfTheComputeLineOfApprox::MaxError2d()`
+    /// **Source:** `BRepApprox_MyGradientbisOfTheComputeLineOfApprox.hxx`:82 - `BRepApprox_MyGradientbisOfTheComputeLineOfApprox::MaxError2d()`
     pub fn BRepApprox_MyGradientbisOfTheComputeLineOfApprox_max_error2d(
         self_: *const BRepApprox_MyGradientbisOfTheComputeLineOfApprox,
     ) -> crate::OcctResult<f64>;
-    /// **Source:** `BRepApprox_MyGradientbisOfTheComputeLineOfApprox.hxx`:84 - `BRepApprox_MyGradientbisOfTheComputeLineOfApprox::AverageError()`
+    /// **Source:** `BRepApprox_MyGradientbisOfTheComputeLineOfApprox.hxx`:86 - `BRepApprox_MyGradientbisOfTheComputeLineOfApprox::AverageError()`
     pub fn BRepApprox_MyGradientbisOfTheComputeLineOfApprox_average_error(
         self_: *const BRepApprox_MyGradientbisOfTheComputeLineOfApprox,
     ) -> crate::OcctResult<f64>;
@@ -753,47 +754,47 @@ unsafe extern "C" {
     pub fn BRepApprox_ParFunctionOfMyGradientOfTheComputeLineBezierOfApprox_destructor(
         self_: *mut BRepApprox_ParFunctionOfMyGradientOfTheComputeLineBezierOfApprox,
     );
-    /// **Source:** `BRepApprox_ParFunctionOfMyGradientOfTheComputeLineBezierOfApprox.hxx`:46 - `BRepApprox_ParFunctionOfMyGradientOfTheComputeLineBezierOfApprox::BRepApprox_ParFunctionOfMyGradientOfTheComputeLineBezierOfApprox()`
-    pub fn BRepApprox_ParFunctionOfMyGradientOfTheComputeLineBezierOfApprox_ctor_themultilineofapprox_int2_handleappparcurvesharray1ofconstraintcouple_vector_int(
+    /// **Source:** `BRepApprox_ParFunctionOfMyGradientOfTheComputeLineBezierOfApprox.hxx`:47 - `BRepApprox_ParFunctionOfMyGradientOfTheComputeLineBezierOfApprox::BRepApprox_ParFunctionOfMyGradientOfTheComputeLineBezierOfApprox()`
+    pub fn BRepApprox_ParFunctionOfMyGradientOfTheComputeLineBezierOfApprox_ctor_themultilineofapprox_int2_harr1_constraintcouple_vector_int(
         SSP: *const BRepApprox_TheMultiLineOfApprox,
         FirstPoint: i32,
         LastPoint: i32,
-        TheConstraints: *const HandleAppParCurvesHArray1OfConstraintCouple,
+        TheConstraints: *const Handle_NCollection_HArray1_AppParCurves_ConstraintCouple,
         Parameters: *const math_Vector,
         Deg: i32,
     ) -> crate::OcctResult<*mut BRepApprox_ParFunctionOfMyGradientOfTheComputeLineBezierOfApprox>;
-    /// **Source:** `BRepApprox_ParFunctionOfMyGradientOfTheComputeLineBezierOfApprox.hxx`:56 - `BRepApprox_ParFunctionOfMyGradientOfTheComputeLineBezierOfApprox::NbVariables()`
+    /// **Source:** `BRepApprox_ParFunctionOfMyGradientOfTheComputeLineBezierOfApprox.hxx`:57 - `BRepApprox_ParFunctionOfMyGradientOfTheComputeLineBezierOfApprox::NbVariables()`
     pub fn BRepApprox_ParFunctionOfMyGradientOfTheComputeLineBezierOfApprox_nb_variables(
         self_: *const BRepApprox_ParFunctionOfMyGradientOfTheComputeLineBezierOfApprox,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `BRepApprox_ParFunctionOfMyGradientOfTheComputeLineBezierOfApprox.hxx`:62 - `BRepApprox_ParFunctionOfMyGradientOfTheComputeLineBezierOfApprox::Value()`
+    /// **Source:** `BRepApprox_ParFunctionOfMyGradientOfTheComputeLineBezierOfApprox.hxx`:63 - `BRepApprox_ParFunctionOfMyGradientOfTheComputeLineBezierOfApprox::Value()`
     pub fn BRepApprox_ParFunctionOfMyGradientOfTheComputeLineBezierOfApprox_value(
         self_: *mut BRepApprox_ParFunctionOfMyGradientOfTheComputeLineBezierOfApprox,
         X: *const math_Vector,
         F: *mut f64,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BRepApprox_ParFunctionOfMyGradientOfTheComputeLineBezierOfApprox.hxx`:66 - `BRepApprox_ParFunctionOfMyGradientOfTheComputeLineBezierOfApprox::Gradient()`
+    /// **Source:** `BRepApprox_ParFunctionOfMyGradientOfTheComputeLineBezierOfApprox.hxx`:67 - `BRepApprox_ParFunctionOfMyGradientOfTheComputeLineBezierOfApprox::Gradient()`
     pub fn BRepApprox_ParFunctionOfMyGradientOfTheComputeLineBezierOfApprox_gradient(
         self_: *mut BRepApprox_ParFunctionOfMyGradientOfTheComputeLineBezierOfApprox,
         X: *const math_Vector,
         G: *mut math_Vector,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BRepApprox_ParFunctionOfMyGradientOfTheComputeLineBezierOfApprox.hxx`:70 - `BRepApprox_ParFunctionOfMyGradientOfTheComputeLineBezierOfApprox::Values()`
+    /// **Source:** `BRepApprox_ParFunctionOfMyGradientOfTheComputeLineBezierOfApprox.hxx`:71 - `BRepApprox_ParFunctionOfMyGradientOfTheComputeLineBezierOfApprox::Values()`
     pub fn BRepApprox_ParFunctionOfMyGradientOfTheComputeLineBezierOfApprox_values(
         self_: *mut BRepApprox_ParFunctionOfMyGradientOfTheComputeLineBezierOfApprox,
         X: *const math_Vector,
         F: *mut f64,
         G: *mut math_Vector,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BRepApprox_ParFunctionOfMyGradientOfTheComputeLineBezierOfApprox.hxx`:73 - `BRepApprox_ParFunctionOfMyGradientOfTheComputeLineBezierOfApprox::NewParameters()`
+    /// **Source:** `BRepApprox_ParFunctionOfMyGradientOfTheComputeLineBezierOfApprox.hxx`:74 - `BRepApprox_ParFunctionOfMyGradientOfTheComputeLineBezierOfApprox::NewParameters()`
     pub fn BRepApprox_ParFunctionOfMyGradientOfTheComputeLineBezierOfApprox_new_parameters(
         self_: *const BRepApprox_ParFunctionOfMyGradientOfTheComputeLineBezierOfApprox,
     ) -> crate::OcctResult<*const math_Vector>;
-    /// **Source:** `BRepApprox_ParFunctionOfMyGradientOfTheComputeLineBezierOfApprox.hxx`:77 - `BRepApprox_ParFunctionOfMyGradientOfTheComputeLineBezierOfApprox::CurveValue()`
+    /// **Source:** `BRepApprox_ParFunctionOfMyGradientOfTheComputeLineBezierOfApprox.hxx`:78 - `BRepApprox_ParFunctionOfMyGradientOfTheComputeLineBezierOfApprox::CurveValue()`
     pub fn BRepApprox_ParFunctionOfMyGradientOfTheComputeLineBezierOfApprox_curve_value(
         self_: *mut BRepApprox_ParFunctionOfMyGradientOfTheComputeLineBezierOfApprox,
     ) -> crate::OcctResult<*const AppParCurves_MultiCurve>;
-    /// **Source:** `BRepApprox_ParFunctionOfMyGradientOfTheComputeLineBezierOfApprox.hxx`:81 - `BRepApprox_ParFunctionOfMyGradientOfTheComputeLineBezierOfApprox::Error()`
+    /// **Source:** `BRepApprox_ParFunctionOfMyGradientOfTheComputeLineBezierOfApprox.hxx`:82 - `BRepApprox_ParFunctionOfMyGradientOfTheComputeLineBezierOfApprox::Error()`
     pub fn BRepApprox_ParFunctionOfMyGradientOfTheComputeLineBezierOfApprox_error(
         self_: *const BRepApprox_ParFunctionOfMyGradientOfTheComputeLineBezierOfApprox,
         IPoint: i32,
@@ -807,16 +808,16 @@ unsafe extern "C" {
     pub fn BRepApprox_ParFunctionOfMyGradientOfTheComputeLineBezierOfApprox_max_error2d(
         self_: *const BRepApprox_ParFunctionOfMyGradientOfTheComputeLineBezierOfApprox,
     ) -> crate::OcctResult<f64>;
-    /// **Source:** `BRepApprox_ParFunctionOfMyGradientOfTheComputeLineBezierOfApprox.hxx`:93 - `BRepApprox_ParFunctionOfMyGradientOfTheComputeLineBezierOfApprox::FirstConstraint()`
+    /// **Source:** `BRepApprox_ParFunctionOfMyGradientOfTheComputeLineBezierOfApprox.hxx`:92 - `BRepApprox_ParFunctionOfMyGradientOfTheComputeLineBezierOfApprox::FirstConstraint()`
     pub fn BRepApprox_ParFunctionOfMyGradientOfTheComputeLineBezierOfApprox_first_constraint(
         self_: *const BRepApprox_ParFunctionOfMyGradientOfTheComputeLineBezierOfApprox,
-        TheConstraints: *const HandleAppParCurvesHArray1OfConstraintCouple,
+        TheConstraints: *const Handle_NCollection_HArray1_AppParCurves_ConstraintCouple,
         FirstPoint: i32,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `BRepApprox_ParFunctionOfMyGradientOfTheComputeLineBezierOfApprox.hxx`:97 - `BRepApprox_ParFunctionOfMyGradientOfTheComputeLineBezierOfApprox::LastConstraint()`
+    /// **Source:** `BRepApprox_ParFunctionOfMyGradientOfTheComputeLineBezierOfApprox.hxx`:96 - `BRepApprox_ParFunctionOfMyGradientOfTheComputeLineBezierOfApprox::LastConstraint()`
     pub fn BRepApprox_ParFunctionOfMyGradientOfTheComputeLineBezierOfApprox_last_constraint(
         self_: *const BRepApprox_ParFunctionOfMyGradientOfTheComputeLineBezierOfApprox,
-        TheConstraints: *const HandleAppParCurvesHArray1OfConstraintCouple,
+        TheConstraints: *const Handle_NCollection_HArray1_AppParCurves_ConstraintCouple,
         LastPoint: i32,
     ) -> crate::OcctResult<i32>;
     /// Upcast BRepApprox_ParFunctionOfMyGradientOfTheComputeLineBezierOfApprox to math_MultipleVarFunctionWithGradient
@@ -843,47 +844,47 @@ unsafe extern "C" {
     pub fn BRepApprox_ParFunctionOfMyGradientbisOfTheComputeLineOfApprox_destructor(
         self_: *mut BRepApprox_ParFunctionOfMyGradientbisOfTheComputeLineOfApprox,
     );
-    /// **Source:** `BRepApprox_ParFunctionOfMyGradientbisOfTheComputeLineOfApprox.hxx`:46 - `BRepApprox_ParFunctionOfMyGradientbisOfTheComputeLineOfApprox::BRepApprox_ParFunctionOfMyGradientbisOfTheComputeLineOfApprox()`
-    pub fn BRepApprox_ParFunctionOfMyGradientbisOfTheComputeLineOfApprox_ctor_themultilineofapprox_int2_handleappparcurvesharray1ofconstraintcouple_vector_int(
+    /// **Source:** `BRepApprox_ParFunctionOfMyGradientbisOfTheComputeLineOfApprox.hxx`:47 - `BRepApprox_ParFunctionOfMyGradientbisOfTheComputeLineOfApprox::BRepApprox_ParFunctionOfMyGradientbisOfTheComputeLineOfApprox()`
+    pub fn BRepApprox_ParFunctionOfMyGradientbisOfTheComputeLineOfApprox_ctor_themultilineofapprox_int2_harr1_constraintcouple_vector_int(
         SSP: *const BRepApprox_TheMultiLineOfApprox,
         FirstPoint: i32,
         LastPoint: i32,
-        TheConstraints: *const HandleAppParCurvesHArray1OfConstraintCouple,
+        TheConstraints: *const Handle_NCollection_HArray1_AppParCurves_ConstraintCouple,
         Parameters: *const math_Vector,
         Deg: i32,
     ) -> crate::OcctResult<*mut BRepApprox_ParFunctionOfMyGradientbisOfTheComputeLineOfApprox>;
-    /// **Source:** `BRepApprox_ParFunctionOfMyGradientbisOfTheComputeLineOfApprox.hxx`:56 - `BRepApprox_ParFunctionOfMyGradientbisOfTheComputeLineOfApprox::NbVariables()`
+    /// **Source:** `BRepApprox_ParFunctionOfMyGradientbisOfTheComputeLineOfApprox.hxx`:57 - `BRepApprox_ParFunctionOfMyGradientbisOfTheComputeLineOfApprox::NbVariables()`
     pub fn BRepApprox_ParFunctionOfMyGradientbisOfTheComputeLineOfApprox_nb_variables(
         self_: *const BRepApprox_ParFunctionOfMyGradientbisOfTheComputeLineOfApprox,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `BRepApprox_ParFunctionOfMyGradientbisOfTheComputeLineOfApprox.hxx`:62 - `BRepApprox_ParFunctionOfMyGradientbisOfTheComputeLineOfApprox::Value()`
+    /// **Source:** `BRepApprox_ParFunctionOfMyGradientbisOfTheComputeLineOfApprox.hxx`:63 - `BRepApprox_ParFunctionOfMyGradientbisOfTheComputeLineOfApprox::Value()`
     pub fn BRepApprox_ParFunctionOfMyGradientbisOfTheComputeLineOfApprox_value(
         self_: *mut BRepApprox_ParFunctionOfMyGradientbisOfTheComputeLineOfApprox,
         X: *const math_Vector,
         F: *mut f64,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BRepApprox_ParFunctionOfMyGradientbisOfTheComputeLineOfApprox.hxx`:66 - `BRepApprox_ParFunctionOfMyGradientbisOfTheComputeLineOfApprox::Gradient()`
+    /// **Source:** `BRepApprox_ParFunctionOfMyGradientbisOfTheComputeLineOfApprox.hxx`:67 - `BRepApprox_ParFunctionOfMyGradientbisOfTheComputeLineOfApprox::Gradient()`
     pub fn BRepApprox_ParFunctionOfMyGradientbisOfTheComputeLineOfApprox_gradient(
         self_: *mut BRepApprox_ParFunctionOfMyGradientbisOfTheComputeLineOfApprox,
         X: *const math_Vector,
         G: *mut math_Vector,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BRepApprox_ParFunctionOfMyGradientbisOfTheComputeLineOfApprox.hxx`:70 - `BRepApprox_ParFunctionOfMyGradientbisOfTheComputeLineOfApprox::Values()`
+    /// **Source:** `BRepApprox_ParFunctionOfMyGradientbisOfTheComputeLineOfApprox.hxx`:71 - `BRepApprox_ParFunctionOfMyGradientbisOfTheComputeLineOfApprox::Values()`
     pub fn BRepApprox_ParFunctionOfMyGradientbisOfTheComputeLineOfApprox_values(
         self_: *mut BRepApprox_ParFunctionOfMyGradientbisOfTheComputeLineOfApprox,
         X: *const math_Vector,
         F: *mut f64,
         G: *mut math_Vector,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BRepApprox_ParFunctionOfMyGradientbisOfTheComputeLineOfApprox.hxx`:73 - `BRepApprox_ParFunctionOfMyGradientbisOfTheComputeLineOfApprox::NewParameters()`
+    /// **Source:** `BRepApprox_ParFunctionOfMyGradientbisOfTheComputeLineOfApprox.hxx`:74 - `BRepApprox_ParFunctionOfMyGradientbisOfTheComputeLineOfApprox::NewParameters()`
     pub fn BRepApprox_ParFunctionOfMyGradientbisOfTheComputeLineOfApprox_new_parameters(
         self_: *const BRepApprox_ParFunctionOfMyGradientbisOfTheComputeLineOfApprox,
     ) -> crate::OcctResult<*const math_Vector>;
-    /// **Source:** `BRepApprox_ParFunctionOfMyGradientbisOfTheComputeLineOfApprox.hxx`:77 - `BRepApprox_ParFunctionOfMyGradientbisOfTheComputeLineOfApprox::CurveValue()`
+    /// **Source:** `BRepApprox_ParFunctionOfMyGradientbisOfTheComputeLineOfApprox.hxx`:78 - `BRepApprox_ParFunctionOfMyGradientbisOfTheComputeLineOfApprox::CurveValue()`
     pub fn BRepApprox_ParFunctionOfMyGradientbisOfTheComputeLineOfApprox_curve_value(
         self_: *mut BRepApprox_ParFunctionOfMyGradientbisOfTheComputeLineOfApprox,
     ) -> crate::OcctResult<*const AppParCurves_MultiCurve>;
-    /// **Source:** `BRepApprox_ParFunctionOfMyGradientbisOfTheComputeLineOfApprox.hxx`:81 - `BRepApprox_ParFunctionOfMyGradientbisOfTheComputeLineOfApprox::Error()`
+    /// **Source:** `BRepApprox_ParFunctionOfMyGradientbisOfTheComputeLineOfApprox.hxx`:82 - `BRepApprox_ParFunctionOfMyGradientbisOfTheComputeLineOfApprox::Error()`
     pub fn BRepApprox_ParFunctionOfMyGradientbisOfTheComputeLineOfApprox_error(
         self_: *const BRepApprox_ParFunctionOfMyGradientbisOfTheComputeLineOfApprox,
         IPoint: i32,
@@ -897,16 +898,16 @@ unsafe extern "C" {
     pub fn BRepApprox_ParFunctionOfMyGradientbisOfTheComputeLineOfApprox_max_error2d(
         self_: *const BRepApprox_ParFunctionOfMyGradientbisOfTheComputeLineOfApprox,
     ) -> crate::OcctResult<f64>;
-    /// **Source:** `BRepApprox_ParFunctionOfMyGradientbisOfTheComputeLineOfApprox.hxx`:93 - `BRepApprox_ParFunctionOfMyGradientbisOfTheComputeLineOfApprox::FirstConstraint()`
+    /// **Source:** `BRepApprox_ParFunctionOfMyGradientbisOfTheComputeLineOfApprox.hxx`:92 - `BRepApprox_ParFunctionOfMyGradientbisOfTheComputeLineOfApprox::FirstConstraint()`
     pub fn BRepApprox_ParFunctionOfMyGradientbisOfTheComputeLineOfApprox_first_constraint(
         self_: *const BRepApprox_ParFunctionOfMyGradientbisOfTheComputeLineOfApprox,
-        TheConstraints: *const HandleAppParCurvesHArray1OfConstraintCouple,
+        TheConstraints: *const Handle_NCollection_HArray1_AppParCurves_ConstraintCouple,
         FirstPoint: i32,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `BRepApprox_ParFunctionOfMyGradientbisOfTheComputeLineOfApprox.hxx`:97 - `BRepApprox_ParFunctionOfMyGradientbisOfTheComputeLineOfApprox::LastConstraint()`
+    /// **Source:** `BRepApprox_ParFunctionOfMyGradientbisOfTheComputeLineOfApprox.hxx`:96 - `BRepApprox_ParFunctionOfMyGradientbisOfTheComputeLineOfApprox::LastConstraint()`
     pub fn BRepApprox_ParFunctionOfMyGradientbisOfTheComputeLineOfApprox_last_constraint(
         self_: *const BRepApprox_ParFunctionOfMyGradientbisOfTheComputeLineOfApprox,
-        TheConstraints: *const HandleAppParCurvesHArray1OfConstraintCouple,
+        TheConstraints: *const Handle_NCollection_HArray1_AppParCurves_ConstraintCouple,
         LastPoint: i32,
     ) -> crate::OcctResult<i32>;
     /// Upcast BRepApprox_ParFunctionOfMyGradientbisOfTheComputeLineOfApprox to math_MultipleVarFunctionWithGradient
@@ -933,7 +934,7 @@ unsafe extern "C" {
     pub fn BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox_destructor(
         self_: *mut BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox,
     );
-    /// **Source:** `BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox.hxx`:66 - `BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox::BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox()`
+    /// **Source:** `BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox.hxx`:64 - `BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox::BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox()`
     pub fn BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox_ctor_themultilineofapprox_int2_constraint2_vector_int(
         SSP: *const BRepApprox_TheMultiLineOfApprox,
         FirstPoint: i32,
@@ -943,7 +944,7 @@ unsafe extern "C" {
         Parameters: *const math_Vector,
         NbPol: i32,
     ) -> crate::OcctResult<*mut BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox>;
-    /// **Source:** `BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox.hxx`:76 - `BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox::BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox()`
+    /// **Source:** `BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox.hxx`:74 - `BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox::BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox()`
     pub fn BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox_ctor_themultilineofapprox_int2_constraint2_int(
         SSP: *const BRepApprox_TheMultiLineOfApprox,
         FirstPoint: i32,
@@ -952,11 +953,11 @@ unsafe extern "C" {
         LastCons: i32,
         NbPol: i32,
     ) -> crate::OcctResult<*mut BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox>;
-    /// **Source:** `BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox.hxx`:99 - `BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox::BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox()`
-    pub fn BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox_ctor_themultilineofapprox_array1ofreal_array1ofinteger_int2_constraint2_vector_int(
+    /// **Source:** `BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox.hxx`:97 - `BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox::BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox()`
+    pub fn BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox_ctor_themultilineofapprox_arr1_double_arr1_int_int2_constraint2_vector_int(
         SSP: *const BRepApprox_TheMultiLineOfApprox,
-        Knots: *const TColStd_Array1OfReal,
-        Mults: *const TColStd_Array1OfInteger,
+        Knots: *const NCollection_Array1_double,
+        Mults: *const NCollection_Array1_int,
         FirstPoint: i32,
         LastPoint: i32,
         FirstCons: i32,
@@ -964,30 +965,30 @@ unsafe extern "C" {
         Parameters: *const math_Vector,
         NbPol: i32,
     ) -> crate::OcctResult<*mut BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox>;
-    /// **Source:** `BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox.hxx`:111 - `BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox::BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox()`
-    pub fn BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox_ctor_themultilineofapprox_array1ofreal_array1ofinteger_int2_constraint2_int(
+    /// **Source:** `BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox.hxx`:109 - `BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox::BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox()`
+    pub fn BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox_ctor_themultilineofapprox_arr1_double_arr1_int_int2_constraint2_int(
         SSP: *const BRepApprox_TheMultiLineOfApprox,
-        Knots: *const TColStd_Array1OfReal,
-        Mults: *const TColStd_Array1OfInteger,
+        Knots: *const NCollection_Array1_double,
+        Mults: *const NCollection_Array1_int,
         FirstPoint: i32,
         LastPoint: i32,
         FirstCons: i32,
         LastCons: i32,
         NbPol: i32,
     ) -> crate::OcctResult<*mut BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox>;
-    /// **Source:** `BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox.hxx`:123 - `BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox::Perform()`
+    /// **Source:** `BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox.hxx`:121 - `BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox::Perform()`
     pub fn BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox_perform_vector(
         self_: *mut BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox,
         Parameters: *const math_Vector,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox.hxx`:126 - `BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox::Perform()`
+    /// **Source:** `BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox.hxx`:124 - `BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox::Perform()`
     pub fn BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox_perform_vector_real2(
         self_: *mut BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox,
         Parameters: *const math_Vector,
         l1: f64,
         l2: f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox.hxx`:133 - `BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox::Perform()`
+    /// **Source:** `BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox.hxx`:129 - `BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox::Perform()`
     pub fn BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox_perform_vector3_real2(
         self_: *mut BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox,
         Parameters: *const math_Vector,
@@ -996,7 +997,7 @@ unsafe extern "C" {
         l1: f64,
         l2: f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox.hxx`:144 - `BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox::Perform()`
+    /// **Source:** `BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox.hxx`:140 - `BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox::Perform()`
     pub fn BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox_perform_vector5_real2(
         self_: *mut BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox,
         Parameters: *const math_Vector,
@@ -1007,27 +1008,27 @@ unsafe extern "C" {
         l1: f64,
         l2: f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox.hxx`:153 - `BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox::IsDone()`
+    /// **Source:** `BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox.hxx`:149 - `BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox::IsDone()`
     pub fn BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox_is_done(
         self_: *const BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox.hxx`:158 - `BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox::BezierValue()`
+    /// **Source:** `BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox.hxx`:154 - `BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox::BezierValue()`
     pub fn BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox_bezier_value(
         self_: *mut BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox,
     ) -> crate::OcctResult<*mut AppParCurves_MultiCurve>;
-    /// **Source:** `BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox.hxx`:163 - `BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox::BSplineValue()`
+    /// **Source:** `BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox.hxx`:159 - `BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox::BSplineValue()`
     pub fn BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox_b_spline_value(
         self_: *mut BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox,
     ) -> crate::OcctResult<*const AppParCurves_MultiBSpCurve>;
-    /// **Source:** `BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox.hxx`:167 - `BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox::FunctionMatrix()`
+    /// **Source:** `BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox.hxx`:163 - `BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox::FunctionMatrix()`
     pub fn BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox_function_matrix(
         self_: *const BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox,
     ) -> crate::OcctResult<*const math_Matrix>;
-    /// **Source:** `BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox.hxx`:171 - `BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox::DerivativeFunctionMatrix()`
+    /// **Source:** `BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox.hxx`:167 - `BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox::DerivativeFunctionMatrix()`
     pub fn BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox_derivative_function_matrix(
         self_: *const BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox,
     ) -> crate::OcctResult<*const math_Matrix>;
-    /// **Source:** `BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox.hxx`:177 - `BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox::ErrorGradient()`
+    /// **Source:** `BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox.hxx`:173 - `BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox::ErrorGradient()`
     pub fn BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox_error_gradient(
         self_: *mut BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox,
         Grad: *mut math_Vector,
@@ -1035,34 +1036,34 @@ unsafe extern "C" {
         MaxE3d: *mut f64,
         MaxE2d: *mut f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox.hxx`:184 - `BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox::Distance()`
+    /// **Source:** `BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox.hxx`:177 - `BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox::Distance()`
     pub fn BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox_distance(
         self_: *mut BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox,
     ) -> crate::OcctResult<*const math_Matrix>;
-    /// **Source:** `BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox.hxx`:189 - `BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox::Error()`
+    /// **Source:** `BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox.hxx`:182 - `BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox::Error()`
     pub fn BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox_error(
         self_: *mut BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox,
         F: *mut f64,
         MaxE3d: *mut f64,
         MaxE2d: *mut f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox.hxx`:193 - `BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox::FirstLambda()`
+    /// **Source:** `BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox.hxx`:186 - `BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox::FirstLambda()`
     pub fn BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox_first_lambda(
         self_: *const BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox,
     ) -> crate::OcctResult<f64>;
-    /// **Source:** `BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox.hxx`:197 - `BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox::LastLambda()`
+    /// **Source:** `BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox.hxx`:190 - `BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox::LastLambda()`
     pub fn BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox_last_lambda(
         self_: *const BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox,
     ) -> crate::OcctResult<f64>;
-    /// **Source:** `BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox.hxx`:200 - `BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox::Points()`
+    /// **Source:** `BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox.hxx`:193 - `BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox::Points()`
     pub fn BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox_points(
         self_: *const BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox,
     ) -> crate::OcctResult<*const math_Matrix>;
-    /// **Source:** `BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox.hxx`:203 - `BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox::Poles()`
+    /// **Source:** `BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox.hxx`:196 - `BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox::Poles()`
     pub fn BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox_poles(
         self_: *const BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox,
     ) -> crate::OcctResult<*const math_Matrix>;
-    /// **Source:** `BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox.hxx`:209 - `BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox::KIndex()`
+    /// **Source:** `BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox.hxx`:202 - `BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox::KIndex()`
     pub fn BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox_k_index(
         self_: *const BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox,
     ) -> crate::OcctResult<*const math_IntegerVector>;
@@ -1070,7 +1071,7 @@ unsafe extern "C" {
     pub fn BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox_destructor(
         self_: *mut BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox,
     );
-    /// **Source:** `BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox.hxx`:66 - `BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox::BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox()`
+    /// **Source:** `BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox.hxx`:64 - `BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox::BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox()`
     pub fn BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox_ctor_themultilineofapprox_int2_constraint2_vector_int(
         SSP: *const BRepApprox_TheMultiLineOfApprox,
         FirstPoint: i32,
@@ -1080,7 +1081,7 @@ unsafe extern "C" {
         Parameters: *const math_Vector,
         NbPol: i32,
     ) -> crate::OcctResult<*mut BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox>;
-    /// **Source:** `BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox.hxx`:76 - `BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox::BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox()`
+    /// **Source:** `BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox.hxx`:74 - `BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox::BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox()`
     pub fn BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox_ctor_themultilineofapprox_int2_constraint2_int(
         SSP: *const BRepApprox_TheMultiLineOfApprox,
         FirstPoint: i32,
@@ -1089,11 +1090,11 @@ unsafe extern "C" {
         LastCons: i32,
         NbPol: i32,
     ) -> crate::OcctResult<*mut BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox>;
-    /// **Source:** `BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox.hxx`:99 - `BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox::BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox()`
-    pub fn BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox_ctor_themultilineofapprox_array1ofreal_array1ofinteger_int2_constraint2_vector_int(
+    /// **Source:** `BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox.hxx`:97 - `BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox::BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox()`
+    pub fn BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox_ctor_themultilineofapprox_arr1_double_arr1_int_int2_constraint2_vector_int(
         SSP: *const BRepApprox_TheMultiLineOfApprox,
-        Knots: *const TColStd_Array1OfReal,
-        Mults: *const TColStd_Array1OfInteger,
+        Knots: *const NCollection_Array1_double,
+        Mults: *const NCollection_Array1_int,
         FirstPoint: i32,
         LastPoint: i32,
         FirstCons: i32,
@@ -1101,30 +1102,30 @@ unsafe extern "C" {
         Parameters: *const math_Vector,
         NbPol: i32,
     ) -> crate::OcctResult<*mut BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox>;
-    /// **Source:** `BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox.hxx`:111 - `BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox::BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox()`
-    pub fn BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox_ctor_themultilineofapprox_array1ofreal_array1ofinteger_int2_constraint2_int(
+    /// **Source:** `BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox.hxx`:109 - `BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox::BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox()`
+    pub fn BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox_ctor_themultilineofapprox_arr1_double_arr1_int_int2_constraint2_int(
         SSP: *const BRepApprox_TheMultiLineOfApprox,
-        Knots: *const TColStd_Array1OfReal,
-        Mults: *const TColStd_Array1OfInteger,
+        Knots: *const NCollection_Array1_double,
+        Mults: *const NCollection_Array1_int,
         FirstPoint: i32,
         LastPoint: i32,
         FirstCons: i32,
         LastCons: i32,
         NbPol: i32,
     ) -> crate::OcctResult<*mut BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox>;
-    /// **Source:** `BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox.hxx`:123 - `BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox::Perform()`
+    /// **Source:** `BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox.hxx`:121 - `BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox::Perform()`
     pub fn BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox_perform_vector(
         self_: *mut BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox,
         Parameters: *const math_Vector,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox.hxx`:126 - `BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox::Perform()`
+    /// **Source:** `BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox.hxx`:124 - `BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox::Perform()`
     pub fn BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox_perform_vector_real2(
         self_: *mut BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox,
         Parameters: *const math_Vector,
         l1: f64,
         l2: f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox.hxx`:133 - `BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox::Perform()`
+    /// **Source:** `BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox.hxx`:129 - `BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox::Perform()`
     pub fn BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox_perform_vector3_real2(
         self_: *mut BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox,
         Parameters: *const math_Vector,
@@ -1133,7 +1134,7 @@ unsafe extern "C" {
         l1: f64,
         l2: f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox.hxx`:144 - `BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox::Perform()`
+    /// **Source:** `BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox.hxx`:140 - `BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox::Perform()`
     pub fn BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox_perform_vector5_real2(
         self_: *mut BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox,
         Parameters: *const math_Vector,
@@ -1144,27 +1145,27 @@ unsafe extern "C" {
         l1: f64,
         l2: f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox.hxx`:153 - `BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox::IsDone()`
+    /// **Source:** `BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox.hxx`:149 - `BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox::IsDone()`
     pub fn BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox_is_done(
         self_: *const BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox.hxx`:158 - `BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox::BezierValue()`
+    /// **Source:** `BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox.hxx`:154 - `BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox::BezierValue()`
     pub fn BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox_bezier_value(
         self_: *mut BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox,
     ) -> crate::OcctResult<*mut AppParCurves_MultiCurve>;
-    /// **Source:** `BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox.hxx`:163 - `BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox::BSplineValue()`
+    /// **Source:** `BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox.hxx`:159 - `BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox::BSplineValue()`
     pub fn BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox_b_spline_value(
         self_: *mut BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox,
     ) -> crate::OcctResult<*const AppParCurves_MultiBSpCurve>;
-    /// **Source:** `BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox.hxx`:167 - `BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox::FunctionMatrix()`
+    /// **Source:** `BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox.hxx`:163 - `BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox::FunctionMatrix()`
     pub fn BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox_function_matrix(
         self_: *const BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox,
     ) -> crate::OcctResult<*const math_Matrix>;
-    /// **Source:** `BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox.hxx`:171 - `BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox::DerivativeFunctionMatrix()`
+    /// **Source:** `BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox.hxx`:167 - `BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox::DerivativeFunctionMatrix()`
     pub fn BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox_derivative_function_matrix(
         self_: *const BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox,
     ) -> crate::OcctResult<*const math_Matrix>;
-    /// **Source:** `BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox.hxx`:177 - `BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox::ErrorGradient()`
+    /// **Source:** `BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox.hxx`:173 - `BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox::ErrorGradient()`
     pub fn BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox_error_gradient(
         self_: *mut BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox,
         Grad: *mut math_Vector,
@@ -1172,34 +1173,34 @@ unsafe extern "C" {
         MaxE3d: *mut f64,
         MaxE2d: *mut f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox.hxx`:184 - `BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox::Distance()`
+    /// **Source:** `BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox.hxx`:177 - `BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox::Distance()`
     pub fn BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox_distance(
         self_: *mut BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox,
     ) -> crate::OcctResult<*const math_Matrix>;
-    /// **Source:** `BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox.hxx`:189 - `BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox::Error()`
+    /// **Source:** `BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox.hxx`:182 - `BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox::Error()`
     pub fn BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox_error(
         self_: *mut BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox,
         F: *mut f64,
         MaxE3d: *mut f64,
         MaxE2d: *mut f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox.hxx`:193 - `BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox::FirstLambda()`
+    /// **Source:** `BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox.hxx`:186 - `BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox::FirstLambda()`
     pub fn BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox_first_lambda(
         self_: *const BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox,
     ) -> crate::OcctResult<f64>;
-    /// **Source:** `BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox.hxx`:197 - `BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox::LastLambda()`
+    /// **Source:** `BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox.hxx`:190 - `BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox::LastLambda()`
     pub fn BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox_last_lambda(
         self_: *const BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox,
     ) -> crate::OcctResult<f64>;
-    /// **Source:** `BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox.hxx`:200 - `BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox::Points()`
+    /// **Source:** `BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox.hxx`:193 - `BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox::Points()`
     pub fn BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox_points(
         self_: *const BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox,
     ) -> crate::OcctResult<*const math_Matrix>;
-    /// **Source:** `BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox.hxx`:203 - `BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox::Poles()`
+    /// **Source:** `BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox.hxx`:196 - `BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox::Poles()`
     pub fn BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox_poles(
         self_: *const BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox,
     ) -> crate::OcctResult<*const math_Matrix>;
-    /// **Source:** `BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox.hxx`:209 - `BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox::KIndex()`
+    /// **Source:** `BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox.hxx`:202 - `BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox::KIndex()`
     pub fn BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox_k_index(
         self_: *const BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox,
     ) -> crate::OcctResult<*const math_IntegerVector>;
@@ -1207,34 +1208,34 @@ unsafe extern "C" {
     pub fn BRepApprox_ResConstraintOfMyGradientOfTheComputeLineBezierOfApprox_destructor(
         self_: *mut BRepApprox_ResConstraintOfMyGradientOfTheComputeLineBezierOfApprox,
     );
-    /// **Source:** `BRepApprox_ResConstraintOfMyGradientOfTheComputeLineBezierOfApprox.hxx`:51 - `BRepApprox_ResConstraintOfMyGradientOfTheComputeLineBezierOfApprox::BRepApprox_ResConstraintOfMyGradientOfTheComputeLineBezierOfApprox()`
-    pub fn BRepApprox_ResConstraintOfMyGradientOfTheComputeLineBezierOfApprox_ctor_themultilineofapprox_multicurve_int2_handleappparcurvesharray1ofconstraintcouple_matrix2_real(
+    /// **Source:** `BRepApprox_ResConstraintOfMyGradientOfTheComputeLineBezierOfApprox.hxx`:52 - `BRepApprox_ResConstraintOfMyGradientOfTheComputeLineBezierOfApprox::BRepApprox_ResConstraintOfMyGradientOfTheComputeLineBezierOfApprox()`
+    pub fn BRepApprox_ResConstraintOfMyGradientOfTheComputeLineBezierOfApprox_ctor_themultilineofapprox_multicurve_int2_harr1_constraintcouple_matrix2_real(
         SSP: *const BRepApprox_TheMultiLineOfApprox,
         SCurv: *mut AppParCurves_MultiCurve,
         FirstPoint: i32,
         LastPoint: i32,
-        Constraints: *const HandleAppParCurvesHArray1OfConstraintCouple,
+        Constraints: *const Handle_NCollection_HArray1_AppParCurves_ConstraintCouple,
         Bern: *const math_Matrix,
         DerivativeBern: *const math_Matrix,
         Tolerance: f64,
     ) -> crate::OcctResult<*mut BRepApprox_ResConstraintOfMyGradientOfTheComputeLineBezierOfApprox>;
-    /// **Source:** `BRepApprox_ResConstraintOfMyGradientOfTheComputeLineBezierOfApprox.hxx`:62 - `BRepApprox_ResConstraintOfMyGradientOfTheComputeLineBezierOfApprox::IsDone()`
+    /// **Source:** `BRepApprox_ResConstraintOfMyGradientOfTheComputeLineBezierOfApprox.hxx`:63 - `BRepApprox_ResConstraintOfMyGradientOfTheComputeLineBezierOfApprox::IsDone()`
     pub fn BRepApprox_ResConstraintOfMyGradientOfTheComputeLineBezierOfApprox_is_done(
         self_: *const BRepApprox_ResConstraintOfMyGradientOfTheComputeLineBezierOfApprox,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BRepApprox_ResConstraintOfMyGradientOfTheComputeLineBezierOfApprox.hxx`:66 - `BRepApprox_ResConstraintOfMyGradientOfTheComputeLineBezierOfApprox::Error()`
+    /// **Source:** `BRepApprox_ResConstraintOfMyGradientOfTheComputeLineBezierOfApprox.hxx`:67 - `BRepApprox_ResConstraintOfMyGradientOfTheComputeLineBezierOfApprox::Error()`
     pub fn BRepApprox_ResConstraintOfMyGradientOfTheComputeLineBezierOfApprox_error(
         self_: *const BRepApprox_ResConstraintOfMyGradientOfTheComputeLineBezierOfApprox,
     ) -> crate::OcctResult<f64>;
-    /// **Source:** `BRepApprox_ResConstraintOfMyGradientOfTheComputeLineBezierOfApprox.hxx`:68 - `BRepApprox_ResConstraintOfMyGradientOfTheComputeLineBezierOfApprox::ConstraintMatrix()`
+    /// **Source:** `BRepApprox_ResConstraintOfMyGradientOfTheComputeLineBezierOfApprox.hxx`:69 - `BRepApprox_ResConstraintOfMyGradientOfTheComputeLineBezierOfApprox::ConstraintMatrix()`
     pub fn BRepApprox_ResConstraintOfMyGradientOfTheComputeLineBezierOfApprox_constraint_matrix(
         self_: *const BRepApprox_ResConstraintOfMyGradientOfTheComputeLineBezierOfApprox,
     ) -> crate::OcctResult<*const math_Matrix>;
-    /// **Source:** `BRepApprox_ResConstraintOfMyGradientOfTheComputeLineBezierOfApprox.hxx`:71 - `BRepApprox_ResConstraintOfMyGradientOfTheComputeLineBezierOfApprox::Duale()`
+    /// **Source:** `BRepApprox_ResConstraintOfMyGradientOfTheComputeLineBezierOfApprox.hxx`:72 - `BRepApprox_ResConstraintOfMyGradientOfTheComputeLineBezierOfApprox::Duale()`
     pub fn BRepApprox_ResConstraintOfMyGradientOfTheComputeLineBezierOfApprox_duale(
         self_: *const BRepApprox_ResConstraintOfMyGradientOfTheComputeLineBezierOfApprox,
     ) -> crate::OcctResult<*const math_Vector>;
-    /// **Source:** `BRepApprox_ResConstraintOfMyGradientOfTheComputeLineBezierOfApprox.hxx`:74 - `BRepApprox_ResConstraintOfMyGradientOfTheComputeLineBezierOfApprox::ConstraintDerivative()`
+    /// **Source:** `BRepApprox_ResConstraintOfMyGradientOfTheComputeLineBezierOfApprox.hxx`:75 - `BRepApprox_ResConstraintOfMyGradientOfTheComputeLineBezierOfApprox::ConstraintDerivative()`
     pub fn BRepApprox_ResConstraintOfMyGradientOfTheComputeLineBezierOfApprox_constraint_derivative(
         self_: *mut BRepApprox_ResConstraintOfMyGradientOfTheComputeLineBezierOfApprox,
         SSP: *const BRepApprox_TheMultiLineOfApprox,
@@ -1242,7 +1243,7 @@ unsafe extern "C" {
         Deg: i32,
         DA: *const math_Matrix,
     ) -> crate::OcctResult<*const math_Matrix>;
-    /// **Source:** `BRepApprox_ResConstraintOfMyGradientOfTheComputeLineBezierOfApprox.hxx`:82 - `BRepApprox_ResConstraintOfMyGradientOfTheComputeLineBezierOfApprox::InverseMatrix()`
+    /// **Source:** `BRepApprox_ResConstraintOfMyGradientOfTheComputeLineBezierOfApprox.hxx`:83 - `BRepApprox_ResConstraintOfMyGradientOfTheComputeLineBezierOfApprox::InverseMatrix()`
     pub fn BRepApprox_ResConstraintOfMyGradientOfTheComputeLineBezierOfApprox_inverse_matrix(
         self_: *const BRepApprox_ResConstraintOfMyGradientOfTheComputeLineBezierOfApprox,
     ) -> crate::OcctResult<*const math_Matrix>;
@@ -1250,34 +1251,34 @@ unsafe extern "C" {
     pub fn BRepApprox_ResConstraintOfMyGradientbisOfTheComputeLineOfApprox_destructor(
         self_: *mut BRepApprox_ResConstraintOfMyGradientbisOfTheComputeLineOfApprox,
     );
-    /// **Source:** `BRepApprox_ResConstraintOfMyGradientbisOfTheComputeLineOfApprox.hxx`:51 - `BRepApprox_ResConstraintOfMyGradientbisOfTheComputeLineOfApprox::BRepApprox_ResConstraintOfMyGradientbisOfTheComputeLineOfApprox()`
-    pub fn BRepApprox_ResConstraintOfMyGradientbisOfTheComputeLineOfApprox_ctor_themultilineofapprox_multicurve_int2_handleappparcurvesharray1ofconstraintcouple_matrix2_real(
+    /// **Source:** `BRepApprox_ResConstraintOfMyGradientbisOfTheComputeLineOfApprox.hxx`:52 - `BRepApprox_ResConstraintOfMyGradientbisOfTheComputeLineOfApprox::BRepApprox_ResConstraintOfMyGradientbisOfTheComputeLineOfApprox()`
+    pub fn BRepApprox_ResConstraintOfMyGradientbisOfTheComputeLineOfApprox_ctor_themultilineofapprox_multicurve_int2_harr1_constraintcouple_matrix2_real(
         SSP: *const BRepApprox_TheMultiLineOfApprox,
         SCurv: *mut AppParCurves_MultiCurve,
         FirstPoint: i32,
         LastPoint: i32,
-        Constraints: *const HandleAppParCurvesHArray1OfConstraintCouple,
+        Constraints: *const Handle_NCollection_HArray1_AppParCurves_ConstraintCouple,
         Bern: *const math_Matrix,
         DerivativeBern: *const math_Matrix,
         Tolerance: f64,
     ) -> crate::OcctResult<*mut BRepApprox_ResConstraintOfMyGradientbisOfTheComputeLineOfApprox>;
-    /// **Source:** `BRepApprox_ResConstraintOfMyGradientbisOfTheComputeLineOfApprox.hxx`:62 - `BRepApprox_ResConstraintOfMyGradientbisOfTheComputeLineOfApprox::IsDone()`
+    /// **Source:** `BRepApprox_ResConstraintOfMyGradientbisOfTheComputeLineOfApprox.hxx`:63 - `BRepApprox_ResConstraintOfMyGradientbisOfTheComputeLineOfApprox::IsDone()`
     pub fn BRepApprox_ResConstraintOfMyGradientbisOfTheComputeLineOfApprox_is_done(
         self_: *const BRepApprox_ResConstraintOfMyGradientbisOfTheComputeLineOfApprox,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BRepApprox_ResConstraintOfMyGradientbisOfTheComputeLineOfApprox.hxx`:66 - `BRepApprox_ResConstraintOfMyGradientbisOfTheComputeLineOfApprox::Error()`
+    /// **Source:** `BRepApprox_ResConstraintOfMyGradientbisOfTheComputeLineOfApprox.hxx`:67 - `BRepApprox_ResConstraintOfMyGradientbisOfTheComputeLineOfApprox::Error()`
     pub fn BRepApprox_ResConstraintOfMyGradientbisOfTheComputeLineOfApprox_error(
         self_: *const BRepApprox_ResConstraintOfMyGradientbisOfTheComputeLineOfApprox,
     ) -> crate::OcctResult<f64>;
-    /// **Source:** `BRepApprox_ResConstraintOfMyGradientbisOfTheComputeLineOfApprox.hxx`:68 - `BRepApprox_ResConstraintOfMyGradientbisOfTheComputeLineOfApprox::ConstraintMatrix()`
+    /// **Source:** `BRepApprox_ResConstraintOfMyGradientbisOfTheComputeLineOfApprox.hxx`:69 - `BRepApprox_ResConstraintOfMyGradientbisOfTheComputeLineOfApprox::ConstraintMatrix()`
     pub fn BRepApprox_ResConstraintOfMyGradientbisOfTheComputeLineOfApprox_constraint_matrix(
         self_: *const BRepApprox_ResConstraintOfMyGradientbisOfTheComputeLineOfApprox,
     ) -> crate::OcctResult<*const math_Matrix>;
-    /// **Source:** `BRepApprox_ResConstraintOfMyGradientbisOfTheComputeLineOfApprox.hxx`:71 - `BRepApprox_ResConstraintOfMyGradientbisOfTheComputeLineOfApprox::Duale()`
+    /// **Source:** `BRepApprox_ResConstraintOfMyGradientbisOfTheComputeLineOfApprox.hxx`:72 - `BRepApprox_ResConstraintOfMyGradientbisOfTheComputeLineOfApprox::Duale()`
     pub fn BRepApprox_ResConstraintOfMyGradientbisOfTheComputeLineOfApprox_duale(
         self_: *const BRepApprox_ResConstraintOfMyGradientbisOfTheComputeLineOfApprox,
     ) -> crate::OcctResult<*const math_Vector>;
-    /// **Source:** `BRepApprox_ResConstraintOfMyGradientbisOfTheComputeLineOfApprox.hxx`:74 - `BRepApprox_ResConstraintOfMyGradientbisOfTheComputeLineOfApprox::ConstraintDerivative()`
+    /// **Source:** `BRepApprox_ResConstraintOfMyGradientbisOfTheComputeLineOfApprox.hxx`:75 - `BRepApprox_ResConstraintOfMyGradientbisOfTheComputeLineOfApprox::ConstraintDerivative()`
     pub fn BRepApprox_ResConstraintOfMyGradientbisOfTheComputeLineOfApprox_constraint_derivative(
         self_: *mut BRepApprox_ResConstraintOfMyGradientbisOfTheComputeLineOfApprox,
         SSP: *const BRepApprox_TheMultiLineOfApprox,
@@ -1285,7 +1286,7 @@ unsafe extern "C" {
         Deg: i32,
         DA: *const math_Matrix,
     ) -> crate::OcctResult<*const math_Matrix>;
-    /// **Source:** `BRepApprox_ResConstraintOfMyGradientbisOfTheComputeLineOfApprox.hxx`:82 - `BRepApprox_ResConstraintOfMyGradientbisOfTheComputeLineOfApprox::InverseMatrix()`
+    /// **Source:** `BRepApprox_ResConstraintOfMyGradientbisOfTheComputeLineOfApprox.hxx`:83 - `BRepApprox_ResConstraintOfMyGradientbisOfTheComputeLineOfApprox::InverseMatrix()`
     pub fn BRepApprox_ResConstraintOfMyGradientbisOfTheComputeLineOfApprox_inverse_matrix(
         self_: *const BRepApprox_ResConstraintOfMyGradientbisOfTheComputeLineOfApprox,
     ) -> crate::OcctResult<*const math_Matrix>;
@@ -1322,13 +1323,13 @@ unsafe extern "C" {
     /// **Source:** `BRepApprox_SurfaceTool.hxx`:54 - `BRepApprox_SurfaceTool::UIntervals()`
     pub fn BRepApprox_SurfaceTool_u_intervals(
         S: *const BRepAdaptor_Surface,
-        T: *mut TColStd_Array1OfReal,
+        T: *mut NCollection_Array1_double,
         Sh: i32,
     ) -> *const std::ffi::c_char;
     /// **Source:** `BRepApprox_SurfaceTool.hxx`:58 - `BRepApprox_SurfaceTool::VIntervals()`
     pub fn BRepApprox_SurfaceTool_v_intervals(
         S: *const BRepAdaptor_Surface,
-        T: *mut TColStd_Array1OfReal,
+        T: *mut NCollection_Array1_double,
         Sh: i32,
     ) -> *const std::ffi::c_char;
     /// **Source:** `BRepApprox_SurfaceTool.hxx`:63 - `BRepApprox_SurfaceTool::UTrim()`
@@ -1337,14 +1338,14 @@ unsafe extern "C" {
         First: f64,
         Last: f64,
         Tol: f64,
-    ) -> crate::OcctResult<*mut HandleAdaptor3dSurface>;
+    ) -> crate::OcctResult<*mut Handle_Adaptor3d_Surface>;
     /// **Source:** `BRepApprox_SurfaceTool.hxx`:69 - `BRepApprox_SurfaceTool::VTrim()`
     pub fn BRepApprox_SurfaceTool_v_trim(
         S: *const BRepAdaptor_Surface,
         First: f64,
         Last: f64,
         Tol: f64,
-    ) -> crate::OcctResult<*mut HandleAdaptor3dSurface>;
+    ) -> crate::OcctResult<*mut Handle_Adaptor3d_Surface>;
     /// **Source:** `BRepApprox_SurfaceTool.hxx`:74 - `BRepApprox_SurfaceTool::IsUClosed()`
     pub fn BRepApprox_SurfaceTool_is_u_closed(
         S: *const BRepAdaptor_Surface,
@@ -1380,7 +1381,7 @@ unsafe extern "C" {
         v: f64,
         P: *mut gp_Pnt,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepApprox_SurfaceTool.hxx`:93 - `BRepApprox_SurfaceTool::D1()`
+    /// **Source:** `BRepApprox_SurfaceTool.hxx`:90 - `BRepApprox_SurfaceTool::D1()`
     pub fn BRepApprox_SurfaceTool_d1(
         S: *const BRepAdaptor_Surface,
         u: f64,
@@ -1389,7 +1390,7 @@ unsafe extern "C" {
         D1u: *mut gp_Vec,
         D1v: *mut gp_Vec,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepApprox_SurfaceTool.hxx`:100 - `BRepApprox_SurfaceTool::D2()`
+    /// **Source:** `BRepApprox_SurfaceTool.hxx`:97 - `BRepApprox_SurfaceTool::D2()`
     pub fn BRepApprox_SurfaceTool_d2(
         S: *const BRepAdaptor_Surface,
         u: f64,
@@ -1401,7 +1402,7 @@ unsafe extern "C" {
         D2V: *mut gp_Vec,
         D2UV: *mut gp_Vec,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepApprox_SurfaceTool.hxx`:110 - `BRepApprox_SurfaceTool::D3()`
+    /// **Source:** `BRepApprox_SurfaceTool.hxx`:107 - `BRepApprox_SurfaceTool::D3()`
     pub fn BRepApprox_SurfaceTool_d3(
         S: *const BRepAdaptor_Surface,
         u: f64,
@@ -1417,7 +1418,7 @@ unsafe extern "C" {
         D3UUV: *mut gp_Vec,
         D3UVV: *mut gp_Vec,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepApprox_SurfaceTool.hxx`:124 - `BRepApprox_SurfaceTool::DN()`
+    /// **Source:** `BRepApprox_SurfaceTool.hxx`:121 - `BRepApprox_SurfaceTool::DN()`
     pub fn BRepApprox_SurfaceTool_dn(
         S: *const BRepAdaptor_Surface,
         u: f64,
@@ -1425,74 +1426,74 @@ unsafe extern "C" {
         Nu: i32,
         Nv: i32,
     ) -> crate::OcctResult<*mut gp_Vec>;
-    /// **Source:** `BRepApprox_SurfaceTool.hxx`:130 - `BRepApprox_SurfaceTool::UResolution()`
+    /// **Source:** `BRepApprox_SurfaceTool.hxx`:127 - `BRepApprox_SurfaceTool::UResolution()`
     pub fn BRepApprox_SurfaceTool_u_resolution(
         S: *const BRepAdaptor_Surface,
         R3d: f64,
     ) -> crate::OcctResult<f64>;
-    /// **Source:** `BRepApprox_SurfaceTool.hxx`:132 - `BRepApprox_SurfaceTool::VResolution()`
+    /// **Source:** `BRepApprox_SurfaceTool.hxx`:129 - `BRepApprox_SurfaceTool::VResolution()`
     pub fn BRepApprox_SurfaceTool_v_resolution(
         S: *const BRepAdaptor_Surface,
         R3d: f64,
     ) -> crate::OcctResult<f64>;
-    /// **Source:** `BRepApprox_SurfaceTool.hxx`:134 - `BRepApprox_SurfaceTool::GetType()`
+    /// **Source:** `BRepApprox_SurfaceTool.hxx`:131 - `BRepApprox_SurfaceTool::GetType()`
     pub fn BRepApprox_SurfaceTool_get_type(S: *const BRepAdaptor_Surface)
         -> crate::OcctResult<i32>;
-    /// **Source:** `BRepApprox_SurfaceTool.hxx`:136 - `BRepApprox_SurfaceTool::Plane()`
+    /// **Source:** `BRepApprox_SurfaceTool.hxx`:133 - `BRepApprox_SurfaceTool::Plane()`
     pub fn BRepApprox_SurfaceTool_plane(
         S: *const BRepAdaptor_Surface,
     ) -> crate::OcctResult<*mut gp_Pln>;
-    /// **Source:** `BRepApprox_SurfaceTool.hxx`:138 - `BRepApprox_SurfaceTool::Cylinder()`
+    /// **Source:** `BRepApprox_SurfaceTool.hxx`:135 - `BRepApprox_SurfaceTool::Cylinder()`
     pub fn BRepApprox_SurfaceTool_cylinder(
         S: *const BRepAdaptor_Surface,
     ) -> crate::OcctResult<*mut gp_Cylinder>;
-    /// **Source:** `BRepApprox_SurfaceTool.hxx`:140 - `BRepApprox_SurfaceTool::Cone()`
+    /// **Source:** `BRepApprox_SurfaceTool.hxx`:137 - `BRepApprox_SurfaceTool::Cone()`
     pub fn BRepApprox_SurfaceTool_cone(
         S: *const BRepAdaptor_Surface,
     ) -> crate::OcctResult<*mut gp_Cone>;
-    /// **Source:** `BRepApprox_SurfaceTool.hxx`:142 - `BRepApprox_SurfaceTool::Torus()`
+    /// **Source:** `BRepApprox_SurfaceTool.hxx`:139 - `BRepApprox_SurfaceTool::Torus()`
     pub fn BRepApprox_SurfaceTool_torus(
         S: *const BRepAdaptor_Surface,
     ) -> crate::OcctResult<*mut gp_Torus>;
-    /// **Source:** `BRepApprox_SurfaceTool.hxx`:144 - `BRepApprox_SurfaceTool::Sphere()`
+    /// **Source:** `BRepApprox_SurfaceTool.hxx`:141 - `BRepApprox_SurfaceTool::Sphere()`
     pub fn BRepApprox_SurfaceTool_sphere(
         S: *const BRepAdaptor_Surface,
     ) -> crate::OcctResult<*mut gp_Sphere>;
-    /// **Source:** `BRepApprox_SurfaceTool.hxx`:146 - `BRepApprox_SurfaceTool::Bezier()`
+    /// **Source:** `BRepApprox_SurfaceTool.hxx`:143 - `BRepApprox_SurfaceTool::Bezier()`
     pub fn BRepApprox_SurfaceTool_bezier(
         S: *const BRepAdaptor_Surface,
-    ) -> crate::OcctResult<*mut HandleGeomBezierSurface>;
-    /// **Source:** `BRepApprox_SurfaceTool.hxx`:148 - `BRepApprox_SurfaceTool::BSpline()`
+    ) -> crate::OcctResult<*mut Handle_Geom_BezierSurface>;
+    /// **Source:** `BRepApprox_SurfaceTool.hxx`:145 - `BRepApprox_SurfaceTool::BSpline()`
     pub fn BRepApprox_SurfaceTool_b_spline(
         S: *const BRepAdaptor_Surface,
-    ) -> crate::OcctResult<*mut HandleGeomBSplineSurface>;
-    /// **Source:** `BRepApprox_SurfaceTool.hxx`:150 - `BRepApprox_SurfaceTool::AxeOfRevolution()`
+    ) -> crate::OcctResult<*mut Handle_Geom_BSplineSurface>;
+    /// **Source:** `BRepApprox_SurfaceTool.hxx`:147 - `BRepApprox_SurfaceTool::AxeOfRevolution()`
     pub fn BRepApprox_SurfaceTool_axe_of_revolution(
         S: *const BRepAdaptor_Surface,
     ) -> crate::OcctResult<*mut gp_Ax1>;
-    /// **Source:** `BRepApprox_SurfaceTool.hxx`:152 - `BRepApprox_SurfaceTool::Direction()`
+    /// **Source:** `BRepApprox_SurfaceTool.hxx`:149 - `BRepApprox_SurfaceTool::Direction()`
     pub fn BRepApprox_SurfaceTool_direction(
         S: *const BRepAdaptor_Surface,
     ) -> crate::OcctResult<*mut gp_Dir>;
-    /// **Source:** `BRepApprox_SurfaceTool.hxx`:154 - `BRepApprox_SurfaceTool::BasisCurve()`
+    /// **Source:** `BRepApprox_SurfaceTool.hxx`:151 - `BRepApprox_SurfaceTool::BasisCurve()`
     pub fn BRepApprox_SurfaceTool_basis_curve(
         S: *const BRepAdaptor_Surface,
-    ) -> crate::OcctResult<*mut HandleAdaptor3dCurve>;
-    /// **Source:** `BRepApprox_SurfaceTool.hxx`:156 - `BRepApprox_SurfaceTool::NbSamplesU()`
+    ) -> crate::OcctResult<*mut Handle_Adaptor3d_Curve>;
+    /// **Source:** `BRepApprox_SurfaceTool.hxx`:153 - `BRepApprox_SurfaceTool::NbSamplesU()`
     pub fn BRepApprox_SurfaceTool_nb_samples_u_surface(
         S: *const BRepAdaptor_Surface,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `BRepApprox_SurfaceTool.hxx`:158 - `BRepApprox_SurfaceTool::NbSamplesV()`
+    /// **Source:** `BRepApprox_SurfaceTool.hxx`:155 - `BRepApprox_SurfaceTool::NbSamplesV()`
     pub fn BRepApprox_SurfaceTool_nb_samples_v_surface(
         S: *const BRepAdaptor_Surface,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `BRepApprox_SurfaceTool.hxx`:160 - `BRepApprox_SurfaceTool::NbSamplesU()`
+    /// **Source:** `BRepApprox_SurfaceTool.hxx`:157 - `BRepApprox_SurfaceTool::NbSamplesU()`
     pub fn BRepApprox_SurfaceTool_nb_samples_u_surface_real2(
         S: *const BRepAdaptor_Surface,
         u1: f64,
         u2: f64,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `BRepApprox_SurfaceTool.hxx`:164 - `BRepApprox_SurfaceTool::NbSamplesV()`
+    /// **Source:** `BRepApprox_SurfaceTool.hxx`:161 - `BRepApprox_SurfaceTool::NbSamplesV()`
     pub fn BRepApprox_SurfaceTool_nb_samples_v_surface_real2(
         S: *const BRepAdaptor_Surface,
         v1: f64,
@@ -1502,7 +1503,7 @@ unsafe extern "C" {
     pub fn BRepApprox_TheComputeLineBezierOfApprox_destructor(
         self_: *mut BRepApprox_TheComputeLineBezierOfApprox,
     );
-    /// **Source:** `BRepApprox_TheComputeLineBezierOfApprox.hxx`:57 - `BRepApprox_TheComputeLineBezierOfApprox::BRepApprox_TheComputeLineBezierOfApprox()`
+    /// **Source:** `BRepApprox_TheComputeLineBezierOfApprox.hxx`:55 - `BRepApprox_TheComputeLineBezierOfApprox::BRepApprox_TheComputeLineBezierOfApprox()`
     pub fn BRepApprox_TheComputeLineBezierOfApprox_ctor_themultilineofapprox_int2_real2_int_bool_parametrizationtype_bool(
         Line: *const BRepApprox_TheMultiLineOfApprox,
         degreemin: i32,
@@ -1514,7 +1515,7 @@ unsafe extern "C" {
         parametrization: i32,
         Squares: bool,
     ) -> crate::OcctResult<*mut BRepApprox_TheComputeLineBezierOfApprox>;
-    /// **Source:** `BRepApprox_TheComputeLineBezierOfApprox.hxx`:74 - `BRepApprox_TheComputeLineBezierOfApprox::BRepApprox_TheComputeLineBezierOfApprox()`
+    /// **Source:** `BRepApprox_TheComputeLineBezierOfApprox.hxx`:72 - `BRepApprox_TheComputeLineBezierOfApprox::BRepApprox_TheComputeLineBezierOfApprox()`
     pub fn BRepApprox_TheComputeLineBezierOfApprox_ctor_themultilineofapprox_vector_int2_real2_int_bool2(
         Line: *const BRepApprox_TheMultiLineOfApprox,
         Parameters: *const math_Vector,
@@ -1526,7 +1527,7 @@ unsafe extern "C" {
         cutting: bool,
         Squares: bool,
     ) -> crate::OcctResult<*mut BRepApprox_TheComputeLineBezierOfApprox>;
-    /// **Source:** `BRepApprox_TheComputeLineBezierOfApprox.hxx`:86 - `BRepApprox_TheComputeLineBezierOfApprox::BRepApprox_TheComputeLineBezierOfApprox()`
+    /// **Source:** `BRepApprox_TheComputeLineBezierOfApprox.hxx`:84 - `BRepApprox_TheComputeLineBezierOfApprox::BRepApprox_TheComputeLineBezierOfApprox()`
     pub fn BRepApprox_TheComputeLineBezierOfApprox_ctor_vector_int2_real2_int_bool2(
         Parameters: *const math_Vector,
         degreemin: i32,
@@ -1537,7 +1538,7 @@ unsafe extern "C" {
         cutting: bool,
         Squares: bool,
     ) -> crate::OcctResult<*mut BRepApprox_TheComputeLineBezierOfApprox>;
-    /// **Source:** `BRepApprox_TheComputeLineBezierOfApprox.hxx`:97 - `BRepApprox_TheComputeLineBezierOfApprox::BRepApprox_TheComputeLineBezierOfApprox()`
+    /// **Source:** `BRepApprox_TheComputeLineBezierOfApprox.hxx`:94 - `BRepApprox_TheComputeLineBezierOfApprox::BRepApprox_TheComputeLineBezierOfApprox()`
     pub fn BRepApprox_TheComputeLineBezierOfApprox_ctor_int2_real2_int_bool_parametrizationtype_bool(
         degreemin: i32,
         degreemax: i32,
@@ -1548,7 +1549,7 @@ unsafe extern "C" {
         parametrization: i32,
         Squares: bool,
     ) -> crate::OcctResult<*mut BRepApprox_TheComputeLineBezierOfApprox>;
-    /// **Source:** `BRepApprox_TheComputeLineBezierOfApprox.hxx`:108 - `BRepApprox_TheComputeLineBezierOfApprox::Init()`
+    /// **Source:** `BRepApprox_TheComputeLineBezierOfApprox.hxx`:105 - `BRepApprox_TheComputeLineBezierOfApprox::Init()`
     pub fn BRepApprox_TheComputeLineBezierOfApprox_init(
         self_: *mut BRepApprox_TheComputeLineBezierOfApprox,
         degreemin: i32,
@@ -1560,76 +1561,76 @@ unsafe extern "C" {
         parametrization: i32,
         Squares: bool,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepApprox_TheComputeLineBezierOfApprox.hxx`:118 - `BRepApprox_TheComputeLineBezierOfApprox::Perform()`
+    /// **Source:** `BRepApprox_TheComputeLineBezierOfApprox.hxx`:115 - `BRepApprox_TheComputeLineBezierOfApprox::Perform()`
     pub fn BRepApprox_TheComputeLineBezierOfApprox_perform(
         self_: *mut BRepApprox_TheComputeLineBezierOfApprox,
         Line: *const BRepApprox_TheMultiLineOfApprox,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepApprox_TheComputeLineBezierOfApprox.hxx`:121 - `BRepApprox_TheComputeLineBezierOfApprox::SetDegrees()`
+    /// **Source:** `BRepApprox_TheComputeLineBezierOfApprox.hxx`:118 - `BRepApprox_TheComputeLineBezierOfApprox::SetDegrees()`
     pub fn BRepApprox_TheComputeLineBezierOfApprox_set_degrees(
         self_: *mut BRepApprox_TheComputeLineBezierOfApprox,
         degreemin: i32,
         degreemax: i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepApprox_TheComputeLineBezierOfApprox.hxx`:125 - `BRepApprox_TheComputeLineBezierOfApprox::SetTolerances()`
+    /// **Source:** `BRepApprox_TheComputeLineBezierOfApprox.hxx`:121 - `BRepApprox_TheComputeLineBezierOfApprox::SetTolerances()`
     pub fn BRepApprox_TheComputeLineBezierOfApprox_set_tolerances(
         self_: *mut BRepApprox_TheComputeLineBezierOfApprox,
         Tolerance3d: f64,
         Tolerance2d: f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepApprox_TheComputeLineBezierOfApprox.hxx`:129 - `BRepApprox_TheComputeLineBezierOfApprox::SetConstraints()`
+    /// **Source:** `BRepApprox_TheComputeLineBezierOfApprox.hxx`:124 - `BRepApprox_TheComputeLineBezierOfApprox::SetConstraints()`
     pub fn BRepApprox_TheComputeLineBezierOfApprox_set_constraints(
         self_: *mut BRepApprox_TheComputeLineBezierOfApprox,
         firstC: i32,
         lastC: i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepApprox_TheComputeLineBezierOfApprox.hxx`:135 - `BRepApprox_TheComputeLineBezierOfApprox::IsAllApproximated()`
+    /// **Source:** `BRepApprox_TheComputeLineBezierOfApprox.hxx`:130 - `BRepApprox_TheComputeLineBezierOfApprox::IsAllApproximated()`
     pub fn BRepApprox_TheComputeLineBezierOfApprox_is_all_approximated(
         self_: *const BRepApprox_TheComputeLineBezierOfApprox,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BRepApprox_TheComputeLineBezierOfApprox.hxx`:138 - `BRepApprox_TheComputeLineBezierOfApprox::IsToleranceReached()`
+    /// **Source:** `BRepApprox_TheComputeLineBezierOfApprox.hxx`:133 - `BRepApprox_TheComputeLineBezierOfApprox::IsToleranceReached()`
     pub fn BRepApprox_TheComputeLineBezierOfApprox_is_tolerance_reached(
         self_: *const BRepApprox_TheComputeLineBezierOfApprox,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BRepApprox_TheComputeLineBezierOfApprox.hxx`:141 - `BRepApprox_TheComputeLineBezierOfApprox::Error()`
+    /// **Source:** `BRepApprox_TheComputeLineBezierOfApprox.hxx`:136 - `BRepApprox_TheComputeLineBezierOfApprox::Error()`
     pub fn BRepApprox_TheComputeLineBezierOfApprox_error(
         self_: *const BRepApprox_TheComputeLineBezierOfApprox,
         Index: i32,
         tol3d: *mut f64,
         tol2d: *mut f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepApprox_TheComputeLineBezierOfApprox.hxx`:147 - `BRepApprox_TheComputeLineBezierOfApprox::NbMultiCurves()`
+    /// **Source:** `BRepApprox_TheComputeLineBezierOfApprox.hxx`:140 - `BRepApprox_TheComputeLineBezierOfApprox::NbMultiCurves()`
     pub fn BRepApprox_TheComputeLineBezierOfApprox_nb_multi_curves(
         self_: *const BRepApprox_TheComputeLineBezierOfApprox,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `BRepApprox_TheComputeLineBezierOfApprox.hxx`:150 - `BRepApprox_TheComputeLineBezierOfApprox::Value()`
+    /// **Source:** `BRepApprox_TheComputeLineBezierOfApprox.hxx`:143 - `BRepApprox_TheComputeLineBezierOfApprox::Value()`
     pub fn BRepApprox_TheComputeLineBezierOfApprox_value(
         self_: *const BRepApprox_TheComputeLineBezierOfApprox,
         Index: i32,
     ) -> crate::OcctResult<*const AppParCurves_MultiCurve>;
-    /// **Source:** `BRepApprox_TheComputeLineBezierOfApprox.hxx`:153 - `BRepApprox_TheComputeLineBezierOfApprox::ChangeValue()`
+    /// **Source:** `BRepApprox_TheComputeLineBezierOfApprox.hxx`:146 - `BRepApprox_TheComputeLineBezierOfApprox::ChangeValue()`
     pub fn BRepApprox_TheComputeLineBezierOfApprox_change_value(
         self_: *mut BRepApprox_TheComputeLineBezierOfApprox,
         Index: i32,
     ) -> crate::OcctResult<*mut AppParCurves_MultiCurve>;
-    /// **Source:** `BRepApprox_TheComputeLineBezierOfApprox.hxx`:156 - `BRepApprox_TheComputeLineBezierOfApprox::SplineValue()`
+    /// **Source:** `BRepApprox_TheComputeLineBezierOfApprox.hxx`:149 - `BRepApprox_TheComputeLineBezierOfApprox::SplineValue()`
     pub fn BRepApprox_TheComputeLineBezierOfApprox_spline_value(
         self_: *mut BRepApprox_TheComputeLineBezierOfApprox,
     ) -> crate::OcctResult<*const AppParCurves_MultiBSpCurve>;
-    /// **Source:** `BRepApprox_TheComputeLineBezierOfApprox.hxx`:159 - `BRepApprox_TheComputeLineBezierOfApprox::Parametrization()`
+    /// **Source:** `BRepApprox_TheComputeLineBezierOfApprox.hxx`:152 - `BRepApprox_TheComputeLineBezierOfApprox::Parametrization()`
     pub fn BRepApprox_TheComputeLineBezierOfApprox_parametrization(
         self_: *const BRepApprox_TheComputeLineBezierOfApprox,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `BRepApprox_TheComputeLineBezierOfApprox.hxx`:163 - `BRepApprox_TheComputeLineBezierOfApprox::Parameters()`
+    /// **Source:** `BRepApprox_TheComputeLineBezierOfApprox.hxx`:156 - `BRepApprox_TheComputeLineBezierOfApprox::Parameters()`
     pub fn BRepApprox_TheComputeLineBezierOfApprox_parameters(
         self_: *const BRepApprox_TheComputeLineBezierOfApprox,
         Index: i32,
-    ) -> crate::OcctResult<*const TColStd_Array1OfReal>;
+    ) -> crate::OcctResult<*const NCollection_Array1_double>;
     // ======================== BRepApprox_TheComputeLineOfApprox ========================
     pub fn BRepApprox_TheComputeLineOfApprox_destructor(
         self_: *mut BRepApprox_TheComputeLineOfApprox,
     );
-    /// **Source:** `BRepApprox_TheComputeLineOfApprox.hxx`:62 - `BRepApprox_TheComputeLineOfApprox::BRepApprox_TheComputeLineOfApprox()`
+    /// **Source:** `BRepApprox_TheComputeLineOfApprox.hxx`:60 - `BRepApprox_TheComputeLineOfApprox::BRepApprox_TheComputeLineOfApprox()`
     pub fn BRepApprox_TheComputeLineOfApprox_ctor_themultilineofapprox_int2_real2_int_bool_parametrizationtype_bool(
         Line: *const BRepApprox_TheMultiLineOfApprox,
         degreemin: i32,
@@ -1641,7 +1642,7 @@ unsafe extern "C" {
         parametrization: i32,
         Squares: bool,
     ) -> crate::OcctResult<*mut BRepApprox_TheComputeLineOfApprox>;
-    /// **Source:** `BRepApprox_TheComputeLineOfApprox.hxx`:79 - `BRepApprox_TheComputeLineOfApprox::BRepApprox_TheComputeLineOfApprox()`
+    /// **Source:** `BRepApprox_TheComputeLineOfApprox.hxx`:77 - `BRepApprox_TheComputeLineOfApprox::BRepApprox_TheComputeLineOfApprox()`
     pub fn BRepApprox_TheComputeLineOfApprox_ctor_themultilineofapprox_vector_int2_real2_int_bool2(
         Line: *const BRepApprox_TheMultiLineOfApprox,
         Parameters: *const math_Vector,
@@ -1653,7 +1654,7 @@ unsafe extern "C" {
         cutting: bool,
         Squares: bool,
     ) -> crate::OcctResult<*mut BRepApprox_TheComputeLineOfApprox>;
-    /// **Source:** `BRepApprox_TheComputeLineOfApprox.hxx`:91 - `BRepApprox_TheComputeLineOfApprox::BRepApprox_TheComputeLineOfApprox()`
+    /// **Source:** `BRepApprox_TheComputeLineOfApprox.hxx`:88 - `BRepApprox_TheComputeLineOfApprox::BRepApprox_TheComputeLineOfApprox()`
     pub fn BRepApprox_TheComputeLineOfApprox_ctor_vector_int2_real2_int_bool2(
         Parameters: *const math_Vector,
         degreemin: i32,
@@ -1664,7 +1665,7 @@ unsafe extern "C" {
         cutting: bool,
         Squares: bool,
     ) -> crate::OcctResult<*mut BRepApprox_TheComputeLineOfApprox>;
-    /// **Source:** `BRepApprox_TheComputeLineOfApprox.hxx`:102 - `BRepApprox_TheComputeLineOfApprox::BRepApprox_TheComputeLineOfApprox()`
+    /// **Source:** `BRepApprox_TheComputeLineOfApprox.hxx`:98 - `BRepApprox_TheComputeLineOfApprox::BRepApprox_TheComputeLineOfApprox()`
     pub fn BRepApprox_TheComputeLineOfApprox_ctor_int2_real2_int_bool_parametrizationtype_bool(
         degreemin: i32,
         degreemax: i32,
@@ -1675,12 +1676,12 @@ unsafe extern "C" {
         parametrization: i32,
         Squares: bool,
     ) -> crate::OcctResult<*mut BRepApprox_TheComputeLineOfApprox>;
-    /// **Source:** `BRepApprox_TheComputeLineOfApprox.hxx`:114 - `BRepApprox_TheComputeLineOfApprox::Interpol()`
+    /// **Source:** `BRepApprox_TheComputeLineOfApprox.hxx`:110 - `BRepApprox_TheComputeLineOfApprox::Interpol()`
     pub fn BRepApprox_TheComputeLineOfApprox_interpol(
         self_: *mut BRepApprox_TheComputeLineOfApprox,
         Line: *const BRepApprox_TheMultiLineOfApprox,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepApprox_TheComputeLineOfApprox.hxx`:117 - `BRepApprox_TheComputeLineOfApprox::Init()`
+    /// **Source:** `BRepApprox_TheComputeLineOfApprox.hxx`:113 - `BRepApprox_TheComputeLineOfApprox::Init()`
     pub fn BRepApprox_TheComputeLineOfApprox_init(
         self_: *mut BRepApprox_TheComputeLineOfApprox,
         degreemin: i32,
@@ -1692,81 +1693,81 @@ unsafe extern "C" {
         parametrization: i32,
         Squares: bool,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepApprox_TheComputeLineOfApprox.hxx`:127 - `BRepApprox_TheComputeLineOfApprox::Perform()`
+    /// **Source:** `BRepApprox_TheComputeLineOfApprox.hxx`:123 - `BRepApprox_TheComputeLineOfApprox::Perform()`
     pub fn BRepApprox_TheComputeLineOfApprox_perform(
         self_: *mut BRepApprox_TheComputeLineOfApprox,
         Line: *const BRepApprox_TheMultiLineOfApprox,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepApprox_TheComputeLineOfApprox.hxx`:131 - `BRepApprox_TheComputeLineOfApprox::SetParameters()`
+    /// **Source:** `BRepApprox_TheComputeLineOfApprox.hxx`:127 - `BRepApprox_TheComputeLineOfApprox::SetParameters()`
     pub fn BRepApprox_TheComputeLineOfApprox_set_parameters(
         self_: *mut BRepApprox_TheComputeLineOfApprox,
         ThePar: *const math_Vector,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepApprox_TheComputeLineOfApprox.hxx`:136 - `BRepApprox_TheComputeLineOfApprox::SetKnots()`
+    /// **Source:** `BRepApprox_TheComputeLineOfApprox.hxx`:132 - `BRepApprox_TheComputeLineOfApprox::SetKnots()`
     pub fn BRepApprox_TheComputeLineOfApprox_set_knots(
         self_: *mut BRepApprox_TheComputeLineOfApprox,
-        Knots: *const TColStd_Array1OfReal,
+        Knots: *const NCollection_Array1_double,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepApprox_TheComputeLineOfApprox.hxx`:140 - `BRepApprox_TheComputeLineOfApprox::SetKnotsAndMultiplicities()`
+    /// **Source:** `BRepApprox_TheComputeLineOfApprox.hxx`:136 - `BRepApprox_TheComputeLineOfApprox::SetKnotsAndMultiplicities()`
     pub fn BRepApprox_TheComputeLineOfApprox_set_knots_and_multiplicities(
         self_: *mut BRepApprox_TheComputeLineOfApprox,
-        Knots: *const TColStd_Array1OfReal,
-        Mults: *const TColStd_Array1OfInteger,
+        Knots: *const NCollection_Array1_double,
+        Mults: *const NCollection_Array1_int,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepApprox_TheComputeLineOfApprox.hxx`:144 - `BRepApprox_TheComputeLineOfApprox::SetDegrees()`
+    /// **Source:** `BRepApprox_TheComputeLineOfApprox.hxx`:140 - `BRepApprox_TheComputeLineOfApprox::SetDegrees()`
     pub fn BRepApprox_TheComputeLineOfApprox_set_degrees(
         self_: *mut BRepApprox_TheComputeLineOfApprox,
         degreemin: i32,
         degreemax: i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepApprox_TheComputeLineOfApprox.hxx`:148 - `BRepApprox_TheComputeLineOfApprox::SetTolerances()`
+    /// **Source:** `BRepApprox_TheComputeLineOfApprox.hxx`:143 - `BRepApprox_TheComputeLineOfApprox::SetTolerances()`
     pub fn BRepApprox_TheComputeLineOfApprox_set_tolerances(
         self_: *mut BRepApprox_TheComputeLineOfApprox,
         Tolerance3d: f64,
         Tolerance2d: f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepApprox_TheComputeLineOfApprox.hxx`:153 - `BRepApprox_TheComputeLineOfApprox::SetContinuity()`
+    /// **Source:** `BRepApprox_TheComputeLineOfApprox.hxx`:147 - `BRepApprox_TheComputeLineOfApprox::SetContinuity()`
     pub fn BRepApprox_TheComputeLineOfApprox_set_continuity(
         self_: *mut BRepApprox_TheComputeLineOfApprox,
         C: i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepApprox_TheComputeLineOfApprox.hxx`:156 - `BRepApprox_TheComputeLineOfApprox::SetConstraints()`
+    /// **Source:** `BRepApprox_TheComputeLineOfApprox.hxx`:150 - `BRepApprox_TheComputeLineOfApprox::SetConstraints()`
     pub fn BRepApprox_TheComputeLineOfApprox_set_constraints(
         self_: *mut BRepApprox_TheComputeLineOfApprox,
         firstC: i32,
         lastC: i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepApprox_TheComputeLineOfApprox.hxx`:163 - `BRepApprox_TheComputeLineOfApprox::SetPeriodic()`
+    /// **Source:** `BRepApprox_TheComputeLineOfApprox.hxx`:157 - `BRepApprox_TheComputeLineOfApprox::SetPeriodic()`
     pub fn BRepApprox_TheComputeLineOfApprox_set_periodic(
         self_: *mut BRepApprox_TheComputeLineOfApprox,
         thePeriodic: bool,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepApprox_TheComputeLineOfApprox.hxx`:168 - `BRepApprox_TheComputeLineOfApprox::IsAllApproximated()`
+    /// **Source:** `BRepApprox_TheComputeLineOfApprox.hxx`:162 - `BRepApprox_TheComputeLineOfApprox::IsAllApproximated()`
     pub fn BRepApprox_TheComputeLineOfApprox_is_all_approximated(
         self_: *const BRepApprox_TheComputeLineOfApprox,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BRepApprox_TheComputeLineOfApprox.hxx`:171 - `BRepApprox_TheComputeLineOfApprox::IsToleranceReached()`
+    /// **Source:** `BRepApprox_TheComputeLineOfApprox.hxx`:165 - `BRepApprox_TheComputeLineOfApprox::IsToleranceReached()`
     pub fn BRepApprox_TheComputeLineOfApprox_is_tolerance_reached(
         self_: *const BRepApprox_TheComputeLineOfApprox,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BRepApprox_TheComputeLineOfApprox.hxx`:174 - `BRepApprox_TheComputeLineOfApprox::Error()`
+    /// **Source:** `BRepApprox_TheComputeLineOfApprox.hxx`:168 - `BRepApprox_TheComputeLineOfApprox::Error()`
     pub fn BRepApprox_TheComputeLineOfApprox_error(
         self_: *const BRepApprox_TheComputeLineOfApprox,
         tol3d: *mut f64,
         tol2d: *mut f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepApprox_TheComputeLineOfApprox.hxx`:177 - `BRepApprox_TheComputeLineOfApprox::Value()`
+    /// **Source:** `BRepApprox_TheComputeLineOfApprox.hxx`:171 - `BRepApprox_TheComputeLineOfApprox::Value()`
     pub fn BRepApprox_TheComputeLineOfApprox_value(
         self_: *const BRepApprox_TheComputeLineOfApprox,
     ) -> crate::OcctResult<*const AppParCurves_MultiBSpCurve>;
-    /// **Source:** `BRepApprox_TheComputeLineOfApprox.hxx`:180 - `BRepApprox_TheComputeLineOfApprox::ChangeValue()`
+    /// **Source:** `BRepApprox_TheComputeLineOfApprox.hxx`:174 - `BRepApprox_TheComputeLineOfApprox::ChangeValue()`
     pub fn BRepApprox_TheComputeLineOfApprox_change_value(
         self_: *mut BRepApprox_TheComputeLineOfApprox,
     ) -> crate::OcctResult<*mut AppParCurves_MultiBSpCurve>;
-    /// **Source:** `BRepApprox_TheComputeLineOfApprox.hxx`:184 - `BRepApprox_TheComputeLineOfApprox::Parameters()`
+    /// **Source:** `BRepApprox_TheComputeLineOfApprox.hxx`:178 - `BRepApprox_TheComputeLineOfApprox::Parameters()`
     pub fn BRepApprox_TheComputeLineOfApprox_parameters(
         self_: *const BRepApprox_TheComputeLineOfApprox,
-    ) -> crate::OcctResult<*const TColStd_Array1OfReal>;
+    ) -> crate::OcctResult<*const NCollection_Array1_double>;
     // ======================== BRepApprox_TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfApprox ========================
     pub fn BRepApprox_TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfApprox_destructor(
         self_: *mut BRepApprox_TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfApprox,
@@ -1807,7 +1808,7 @@ unsafe extern "C" {
     pub fn BRepApprox_TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfApprox_compute_parameters(
         self_: *mut BRepApprox_TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfApprox,
         ChoixIso: i32,
-        Param: *const TColStd_Array1OfReal,
+        Param: *const NCollection_Array1_double,
         UVap: *mut math_Vector,
         BornInf: *mut math_Vector,
         BornSup: *mut math_Vector,
@@ -1825,7 +1826,7 @@ unsafe extern "C" {
     pub fn BRepApprox_TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfApprox_is_tangent(
         self_: *mut BRepApprox_TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfApprox,
         UVap: *const math_Vector,
-        Param: *mut TColStd_Array1OfReal,
+        Param: *mut NCollection_Array1_double,
         BestChoix: &mut i32,
     ) -> crate::OcctResult<bool>;
     /// **Source:** `BRepApprox_TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfApprox.hxx`:73 - `BRepApprox_TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfApprox::Direction()`
@@ -1976,8 +1977,8 @@ unsafe extern "C" {
         self_: *mut BRepApprox_TheInt2SOfThePrmPrmSvSurfacesOfApprox,
     );
     /// **Source:** `BRepApprox_TheInt2SOfThePrmPrmSvSurfacesOfApprox.hxx`:47 - `BRepApprox_TheInt2SOfThePrmPrmSvSurfacesOfApprox::BRepApprox_TheInt2SOfThePrmPrmSvSurfacesOfApprox()`
-    pub fn BRepApprox_TheInt2SOfThePrmPrmSvSurfacesOfApprox_ctor_array1ofreal_surface2_real(
-        Param: *const TColStd_Array1OfReal,
+    pub fn BRepApprox_TheInt2SOfThePrmPrmSvSurfacesOfApprox_ctor_arr1_double_surface2_real(
+        Param: *const NCollection_Array1_double,
         S1: *const BRepAdaptor_Surface,
         S2: *const BRepAdaptor_Surface,
         TolTangency: f64,
@@ -1989,15 +1990,15 @@ unsafe extern "C" {
         TolTangency: f64,
     ) -> crate::OcctResult<*mut BRepApprox_TheInt2SOfThePrmPrmSvSurfacesOfApprox>;
     /// **Source:** `BRepApprox_TheInt2SOfThePrmPrmSvSurfacesOfApprox.hxx`:72 - `BRepApprox_TheInt2SOfThePrmPrmSvSurfacesOfApprox::Perform()`
-    pub fn BRepApprox_TheInt2SOfThePrmPrmSvSurfacesOfApprox_perform_array1ofreal_functionsetroot(
+    pub fn BRepApprox_TheInt2SOfThePrmPrmSvSurfacesOfApprox_perform_arr1_double_functionsetroot(
         self_: *mut BRepApprox_TheInt2SOfThePrmPrmSvSurfacesOfApprox,
-        Param: *const TColStd_Array1OfReal,
+        Param: *const NCollection_Array1_double,
         Rsnld: *mut math_FunctionSetRoot,
     ) -> crate::OcctResult<i32>;
     /// **Source:** `BRepApprox_TheInt2SOfThePrmPrmSvSurfacesOfApprox.hxx`:80 - `BRepApprox_TheInt2SOfThePrmPrmSvSurfacesOfApprox::Perform()`
-    pub fn BRepApprox_TheInt2SOfThePrmPrmSvSurfacesOfApprox_perform_array1ofreal_functionsetroot_constisoparametric(
+    pub fn BRepApprox_TheInt2SOfThePrmPrmSvSurfacesOfApprox_perform_arr1_double_functionsetroot_constisoparametric(
         self_: *mut BRepApprox_TheInt2SOfThePrmPrmSvSurfacesOfApprox,
-        Param: *const TColStd_Array1OfReal,
+        Param: *const NCollection_Array1_double,
         Rsnld: *mut math_FunctionSetRoot,
         ChoixIso: i32,
     ) -> crate::OcctResult<i32>;
@@ -2039,12 +2040,12 @@ unsafe extern "C" {
     ) -> crate::OcctResult<*mut IntSurf_PntOn2S>;
     // ======================== BRepApprox_TheMultiLineOfApprox ========================
     pub fn BRepApprox_TheMultiLineOfApprox_destructor(self_: *mut BRepApprox_TheMultiLineOfApprox);
-    /// **Source:** `BRepApprox_TheMultiLineOfApprox.hxx`:40 - `BRepApprox_TheMultiLineOfApprox::BRepApprox_TheMultiLineOfApprox()`
+    /// **Source:** `BRepApprox_TheMultiLineOfApprox.hxx`:41 - `BRepApprox_TheMultiLineOfApprox::BRepApprox_TheMultiLineOfApprox()`
     pub fn BRepApprox_TheMultiLineOfApprox_ctor(
     ) -> crate::OcctResult<*mut BRepApprox_TheMultiLineOfApprox>;
-    /// **Source:** `BRepApprox_TheMultiLineOfApprox.hxx`:48 - `BRepApprox_TheMultiLineOfApprox::BRepApprox_TheMultiLineOfApprox()`
-    pub fn BRepApprox_TheMultiLineOfApprox_ctor_handlebrepapproxapproxline_address_int2_bool2_real7_bool_int2(
-        line: *const HandleBRepApproxApproxLine,
+    /// **Source:** `BRepApprox_TheMultiLineOfApprox.hxx`:49 - `BRepApprox_TheMultiLineOfApprox::BRepApprox_TheMultiLineOfApprox()`
+    pub fn BRepApprox_TheMultiLineOfApprox_ctor_handlebrepapproxapproxline_voidptr_int2_bool2_real7_bool_int2(
+        line: *const Handle_BRepApprox_ApproxLine,
         PtrSvSurfaces: *mut std::ffi::c_void,
         NbP3d: i32,
         NbP2d: i32,
@@ -2061,9 +2062,9 @@ unsafe extern "C" {
         IndMin: i32,
         IndMax: i32,
     ) -> crate::OcctResult<*mut BRepApprox_TheMultiLineOfApprox>;
-    /// **Source:** `BRepApprox_TheMultiLineOfApprox.hxx`:66 - `BRepApprox_TheMultiLineOfApprox::BRepApprox_TheMultiLineOfApprox()`
+    /// **Source:** `BRepApprox_TheMultiLineOfApprox.hxx`:67 - `BRepApprox_TheMultiLineOfApprox::BRepApprox_TheMultiLineOfApprox()`
     pub fn BRepApprox_TheMultiLineOfApprox_ctor_handlebrepapproxapproxline_int2_bool2_real7_bool_int2(
-        line: *const HandleBRepApproxApproxLine,
+        line: *const Handle_BRepApprox_ApproxLine,
         NbP3d: i32,
         NbP2d: i32,
         ApproxU1V1: bool,
@@ -2079,72 +2080,72 @@ unsafe extern "C" {
         IndMin: i32,
         IndMax: i32,
     ) -> crate::OcctResult<*mut BRepApprox_TheMultiLineOfApprox>;
-    /// **Source:** `BRepApprox_TheMultiLineOfApprox.hxx`:82 - `BRepApprox_TheMultiLineOfApprox::FirstPoint()`
+    /// **Source:** `BRepApprox_TheMultiLineOfApprox.hxx`:83 - `BRepApprox_TheMultiLineOfApprox::FirstPoint()`
     pub fn BRepApprox_TheMultiLineOfApprox_first_point(
         self_: *const BRepApprox_TheMultiLineOfApprox,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `BRepApprox_TheMultiLineOfApprox.hxx`:84 - `BRepApprox_TheMultiLineOfApprox::LastPoint()`
+    /// **Source:** `BRepApprox_TheMultiLineOfApprox.hxx`:85 - `BRepApprox_TheMultiLineOfApprox::LastPoint()`
     pub fn BRepApprox_TheMultiLineOfApprox_last_point(
         self_: *const BRepApprox_TheMultiLineOfApprox,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `BRepApprox_TheMultiLineOfApprox.hxx`:87 - `BRepApprox_TheMultiLineOfApprox::NbP2d()`
+    /// **Source:** `BRepApprox_TheMultiLineOfApprox.hxx`:88 - `BRepApprox_TheMultiLineOfApprox::NbP2d()`
     pub fn BRepApprox_TheMultiLineOfApprox_nb_p2d(
         self_: *const BRepApprox_TheMultiLineOfApprox,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `BRepApprox_TheMultiLineOfApprox.hxx`:90 - `BRepApprox_TheMultiLineOfApprox::NbP3d()`
+    /// **Source:** `BRepApprox_TheMultiLineOfApprox.hxx`:91 - `BRepApprox_TheMultiLineOfApprox::NbP3d()`
     pub fn BRepApprox_TheMultiLineOfApprox_nb_p3d(
         self_: *const BRepApprox_TheMultiLineOfApprox,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `BRepApprox_TheMultiLineOfApprox.hxx`:92 - `BRepApprox_TheMultiLineOfApprox::WhatStatus()`
+    /// **Source:** `BRepApprox_TheMultiLineOfApprox.hxx`:93 - `BRepApprox_TheMultiLineOfApprox::WhatStatus()`
     pub fn BRepApprox_TheMultiLineOfApprox_what_status(
         self_: *const BRepApprox_TheMultiLineOfApprox,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `BRepApprox_TheMultiLineOfApprox.hxx`:95 - `BRepApprox_TheMultiLineOfApprox::Value()`
-    pub fn BRepApprox_TheMultiLineOfApprox_value_int_array1ofpnt(
+    /// **Source:** `BRepApprox_TheMultiLineOfApprox.hxx`:96 - `BRepApprox_TheMultiLineOfApprox::Value()`
+    pub fn BRepApprox_TheMultiLineOfApprox_value_int_arr1_pnt(
         self_: *const BRepApprox_TheMultiLineOfApprox,
         MPointIndex: i32,
-        tabPt: *mut TColgp_Array1OfPnt,
+        tabPt: *mut NCollection_Array1_gp_Pnt,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepApprox_TheMultiLineOfApprox.hxx`:98 - `BRepApprox_TheMultiLineOfApprox::Value()`
-    pub fn BRepApprox_TheMultiLineOfApprox_value_int_array1ofpnt2d(
+    /// **Source:** `BRepApprox_TheMultiLineOfApprox.hxx`:99 - `BRepApprox_TheMultiLineOfApprox::Value()`
+    pub fn BRepApprox_TheMultiLineOfApprox_value_int_arr1_pnt2d(
         self_: *const BRepApprox_TheMultiLineOfApprox,
         MPointIndex: i32,
-        tabPt2d: *mut TColgp_Array1OfPnt2d,
+        tabPt2d: *mut NCollection_Array1_gp_Pnt2d,
     ) -> *const std::ffi::c_char;
     /// **Source:** `BRepApprox_TheMultiLineOfApprox.hxx`:102 - `BRepApprox_TheMultiLineOfApprox::Value()`
-    pub fn BRepApprox_TheMultiLineOfApprox_value_int_array1ofpnt_array1ofpnt2d(
+    pub fn BRepApprox_TheMultiLineOfApprox_value_int_arr1_pnt_arr1_pnt2d(
         self_: *const BRepApprox_TheMultiLineOfApprox,
         MPointIndex: i32,
-        tabPt: *mut TColgp_Array1OfPnt,
-        tabPt2d: *mut TColgp_Array1OfPnt2d,
+        tabPt: *mut NCollection_Array1_gp_Pnt,
+        tabPt2d: *mut NCollection_Array1_gp_Pnt2d,
     ) -> *const std::ffi::c_char;
     /// **Source:** `BRepApprox_TheMultiLineOfApprox.hxx`:107 - `BRepApprox_TheMultiLineOfApprox::Tangency()`
-    pub fn BRepApprox_TheMultiLineOfApprox_tangency_int_array1ofvec(
+    pub fn BRepApprox_TheMultiLineOfApprox_tangency_int_arr1_vec(
         self_: *const BRepApprox_TheMultiLineOfApprox,
         MPointIndex: i32,
-        tabV: *mut TColgp_Array1OfVec,
+        tabV: *mut NCollection_Array1_gp_Vec,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BRepApprox_TheMultiLineOfApprox.hxx`:111 - `BRepApprox_TheMultiLineOfApprox::Tangency()`
-    pub fn BRepApprox_TheMultiLineOfApprox_tangency_int_array1ofvec2d(
+    /// **Source:** `BRepApprox_TheMultiLineOfApprox.hxx`:110 - `BRepApprox_TheMultiLineOfApprox::Tangency()`
+    pub fn BRepApprox_TheMultiLineOfApprox_tangency_int_arr1_vec2d(
         self_: *const BRepApprox_TheMultiLineOfApprox,
         MPointIndex: i32,
-        tabV2d: *mut TColgp_Array1OfVec2d,
+        tabV2d: *mut NCollection_Array1_gp_Vec2d,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BRepApprox_TheMultiLineOfApprox.hxx`:115 - `BRepApprox_TheMultiLineOfApprox::Tangency()`
-    pub fn BRepApprox_TheMultiLineOfApprox_tangency_int_array1ofvec_array1ofvec2d(
+    /// **Source:** `BRepApprox_TheMultiLineOfApprox.hxx`:113 - `BRepApprox_TheMultiLineOfApprox::Tangency()`
+    pub fn BRepApprox_TheMultiLineOfApprox_tangency_int_arr1_vec_arr1_vec2d(
         self_: *const BRepApprox_TheMultiLineOfApprox,
         MPointIndex: i32,
-        tabV: *mut TColgp_Array1OfVec,
-        tabV2d: *mut TColgp_Array1OfVec2d,
+        tabV: *mut NCollection_Array1_gp_Vec,
+        tabV2d: *mut NCollection_Array1_gp_Vec2d,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BRepApprox_TheMultiLineOfApprox.hxx`:122 - `BRepApprox_TheMultiLineOfApprox::MakeMLBetween()`
+    /// **Source:** `BRepApprox_TheMultiLineOfApprox.hxx`:119 - `BRepApprox_TheMultiLineOfApprox::MakeMLBetween()`
     pub fn BRepApprox_TheMultiLineOfApprox_make_ml_between(
         self_: *const BRepApprox_TheMultiLineOfApprox,
         Low: i32,
         High: i32,
         NbPointsToInsert: i32,
     ) -> crate::OcctResult<*mut BRepApprox_TheMultiLineOfApprox>;
-    /// **Source:** `BRepApprox_TheMultiLineOfApprox.hxx`:129 - `BRepApprox_TheMultiLineOfApprox::MakeMLOneMorePoint()`
+    /// **Source:** `BRepApprox_TheMultiLineOfApprox.hxx`:125 - `BRepApprox_TheMultiLineOfApprox::MakeMLOneMorePoint()`
     pub fn BRepApprox_TheMultiLineOfApprox_make_ml_one_more_point(
         self_: *const BRepApprox_TheMultiLineOfApprox,
         Low: i32,
@@ -2152,7 +2153,7 @@ unsafe extern "C" {
         indbad: i32,
         OtherLine: *mut BRepApprox_TheMultiLineOfApprox,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BRepApprox_TheMultiLineOfApprox.hxx`:135 - `BRepApprox_TheMultiLineOfApprox::Dump()`
+    /// **Source:** `BRepApprox_TheMultiLineOfApprox.hxx`:131 - `BRepApprox_TheMultiLineOfApprox::Dump()`
     pub fn BRepApprox_TheMultiLineOfApprox_dump(
         self_: *const BRepApprox_TheMultiLineOfApprox,
     ) -> *const std::ffi::c_char;
@@ -2163,87 +2164,87 @@ unsafe extern "C" {
     /// **Source:** `BRepApprox_TheMultiLineToolOfApprox.hxx` - `BRepApprox_TheMultiLineToolOfApprox::BRepApprox_TheMultiLineToolOfApprox()`
     pub fn BRepApprox_TheMultiLineToolOfApprox_ctor(
     ) -> crate::OcctResult<*mut BRepApprox_TheMultiLineToolOfApprox>;
-    /// **Source:** `BRepApprox_TheMultiLineToolOfApprox.hxx`:35 - `BRepApprox_TheMultiLineToolOfApprox::FirstPoint()`
+    /// **Source:** `BRepApprox_TheMultiLineToolOfApprox.hxx`:36 - `BRepApprox_TheMultiLineToolOfApprox::FirstPoint()`
     pub fn BRepApprox_TheMultiLineToolOfApprox_first_point(
         ML: *const BRepApprox_TheMultiLineOfApprox,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `BRepApprox_TheMultiLineToolOfApprox.hxx`:38 - `BRepApprox_TheMultiLineToolOfApprox::LastPoint()`
+    /// **Source:** `BRepApprox_TheMultiLineToolOfApprox.hxx`:39 - `BRepApprox_TheMultiLineToolOfApprox::LastPoint()`
     pub fn BRepApprox_TheMultiLineToolOfApprox_last_point(
         ML: *const BRepApprox_TheMultiLineOfApprox,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `BRepApprox_TheMultiLineToolOfApprox.hxx`:41 - `BRepApprox_TheMultiLineToolOfApprox::NbP2d()`
+    /// **Source:** `BRepApprox_TheMultiLineToolOfApprox.hxx`:42 - `BRepApprox_TheMultiLineToolOfApprox::NbP2d()`
     pub fn BRepApprox_TheMultiLineToolOfApprox_nb_p2d(
         ML: *const BRepApprox_TheMultiLineOfApprox,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `BRepApprox_TheMultiLineToolOfApprox.hxx`:44 - `BRepApprox_TheMultiLineToolOfApprox::NbP3d()`
+    /// **Source:** `BRepApprox_TheMultiLineToolOfApprox.hxx`:45 - `BRepApprox_TheMultiLineToolOfApprox::NbP3d()`
     pub fn BRepApprox_TheMultiLineToolOfApprox_nb_p3d(
         ML: *const BRepApprox_TheMultiLineOfApprox,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `BRepApprox_TheMultiLineToolOfApprox.hxx`:48 - `BRepApprox_TheMultiLineToolOfApprox::Value()`
-    pub fn BRepApprox_TheMultiLineToolOfApprox_value_themultilineofapprox_int_array1ofpnt(
+    /// **Source:** `BRepApprox_TheMultiLineToolOfApprox.hxx`:49 - `BRepApprox_TheMultiLineToolOfApprox::Value()`
+    pub fn BRepApprox_TheMultiLineToolOfApprox_value_themultilineofapprox_int_arr1_pnt(
         ML: *const BRepApprox_TheMultiLineOfApprox,
         MPointIndex: i32,
-        tabPt: *mut TColgp_Array1OfPnt,
+        tabPt: *mut NCollection_Array1_gp_Pnt,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepApprox_TheMultiLineToolOfApprox.hxx`:54 - `BRepApprox_TheMultiLineToolOfApprox::Value()`
-    pub fn BRepApprox_TheMultiLineToolOfApprox_value_themultilineofapprox_int_array1ofpnt2d(
+    /// **Source:** `BRepApprox_TheMultiLineToolOfApprox.hxx`:55 - `BRepApprox_TheMultiLineToolOfApprox::Value()`
+    pub fn BRepApprox_TheMultiLineToolOfApprox_value_themultilineofapprox_int_arr1_pnt2d(
         ML: *const BRepApprox_TheMultiLineOfApprox,
         MPointIndex: i32,
-        tabPt2d: *mut TColgp_Array1OfPnt2d,
+        tabPt2d: *mut NCollection_Array1_gp_Pnt2d,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepApprox_TheMultiLineToolOfApprox.hxx`:60 - `BRepApprox_TheMultiLineToolOfApprox::Value()`
-    pub fn BRepApprox_TheMultiLineToolOfApprox_value_themultilineofapprox_int_array1ofpnt_array1ofpnt2d(
+    /// **Source:** `BRepApprox_TheMultiLineToolOfApprox.hxx`:61 - `BRepApprox_TheMultiLineToolOfApprox::Value()`
+    pub fn BRepApprox_TheMultiLineToolOfApprox_value_themultilineofapprox_int_arr1_pnt_arr1_pnt2d(
         ML: *const BRepApprox_TheMultiLineOfApprox,
         MPointIndex: i32,
-        tabPt: *mut TColgp_Array1OfPnt,
-        tabPt2d: *mut TColgp_Array1OfPnt2d,
+        tabPt: *mut NCollection_Array1_gp_Pnt,
+        tabPt2d: *mut NCollection_Array1_gp_Pnt2d,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepApprox_TheMultiLineToolOfApprox.hxx`:67 - `BRepApprox_TheMultiLineToolOfApprox::Tangency()`
-    pub fn BRepApprox_TheMultiLineToolOfApprox_tangency_themultilineofapprox_int_array1ofvec(
+    /// **Source:** `BRepApprox_TheMultiLineToolOfApprox.hxx`:68 - `BRepApprox_TheMultiLineToolOfApprox::Tangency()`
+    pub fn BRepApprox_TheMultiLineToolOfApprox_tangency_themultilineofapprox_int_arr1_vec(
         ML: *const BRepApprox_TheMultiLineOfApprox,
         MPointIndex: i32,
-        tabV: *mut TColgp_Array1OfVec,
+        tabV: *mut NCollection_Array1_gp_Vec,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BRepApprox_TheMultiLineToolOfApprox.hxx`:73 - `BRepApprox_TheMultiLineToolOfApprox::Tangency()`
-    pub fn BRepApprox_TheMultiLineToolOfApprox_tangency_themultilineofapprox_int_array1ofvec2d(
+    /// **Source:** `BRepApprox_TheMultiLineToolOfApprox.hxx`:74 - `BRepApprox_TheMultiLineToolOfApprox::Tangency()`
+    pub fn BRepApprox_TheMultiLineToolOfApprox_tangency_themultilineofapprox_int_arr1_vec2d(
         ML: *const BRepApprox_TheMultiLineOfApprox,
         MPointIndex: i32,
-        tabV2d: *mut TColgp_Array1OfVec2d,
+        tabV2d: *mut NCollection_Array1_gp_Vec2d,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BRepApprox_TheMultiLineToolOfApprox.hxx`:79 - `BRepApprox_TheMultiLineToolOfApprox::Tangency()`
-    pub fn BRepApprox_TheMultiLineToolOfApprox_tangency_themultilineofapprox_int_array1ofvec_array1ofvec2d(
+    /// **Source:** `BRepApprox_TheMultiLineToolOfApprox.hxx`:80 - `BRepApprox_TheMultiLineToolOfApprox::Tangency()`
+    pub fn BRepApprox_TheMultiLineToolOfApprox_tangency_themultilineofapprox_int_arr1_vec_arr1_vec2d(
         ML: *const BRepApprox_TheMultiLineOfApprox,
         MPointIndex: i32,
-        tabV: *mut TColgp_Array1OfVec,
-        tabV2d: *mut TColgp_Array1OfVec2d,
+        tabV: *mut NCollection_Array1_gp_Vec,
+        tabV2d: *mut NCollection_Array1_gp_Vec2d,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BRepApprox_TheMultiLineToolOfApprox.hxx`:86 - `BRepApprox_TheMultiLineToolOfApprox::Curvature()`
-    pub fn BRepApprox_TheMultiLineToolOfApprox_curvature_themultilineofapprox_int_array1ofvec(
+    /// **Source:** `BRepApprox_TheMultiLineToolOfApprox.hxx`:87 - `BRepApprox_TheMultiLineToolOfApprox::Curvature()`
+    pub fn BRepApprox_TheMultiLineToolOfApprox_curvature_themultilineofapprox_int_arr1_vec(
         ML: *const BRepApprox_TheMultiLineOfApprox,
         MPointIndex: i32,
-        tabV: *mut TColgp_Array1OfVec,
+        tabV: *mut NCollection_Array1_gp_Vec,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BRepApprox_TheMultiLineToolOfApprox.hxx`:92 - `BRepApprox_TheMultiLineToolOfApprox::Curvature()`
-    pub fn BRepApprox_TheMultiLineToolOfApprox_curvature_themultilineofapprox_int_array1ofvec2d(
+    /// **Source:** `BRepApprox_TheMultiLineToolOfApprox.hxx`:93 - `BRepApprox_TheMultiLineToolOfApprox::Curvature()`
+    pub fn BRepApprox_TheMultiLineToolOfApprox_curvature_themultilineofapprox_int_arr1_vec2d(
         ML: *const BRepApprox_TheMultiLineOfApprox,
         MPointIndex: i32,
-        tabV2d: *mut TColgp_Array1OfVec2d,
+        tabV2d: *mut NCollection_Array1_gp_Vec2d,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BRepApprox_TheMultiLineToolOfApprox.hxx`:98 - `BRepApprox_TheMultiLineToolOfApprox::Curvature()`
-    pub fn BRepApprox_TheMultiLineToolOfApprox_curvature_themultilineofapprox_int_array1ofvec_array1ofvec2d(
+    /// **Source:** `BRepApprox_TheMultiLineToolOfApprox.hxx`:99 - `BRepApprox_TheMultiLineToolOfApprox::Curvature()`
+    pub fn BRepApprox_TheMultiLineToolOfApprox_curvature_themultilineofapprox_int_arr1_vec_arr1_vec2d(
         ML: *const BRepApprox_TheMultiLineOfApprox,
         MPointIndex: i32,
-        tabV: *mut TColgp_Array1OfVec,
-        tabV2d: *mut TColgp_Array1OfVec2d,
+        tabV: *mut NCollection_Array1_gp_Vec,
+        tabV2d: *mut NCollection_Array1_gp_Vec2d,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BRepApprox_TheMultiLineToolOfApprox.hxx`:104 - `BRepApprox_TheMultiLineToolOfApprox::MakeMLBetween()`
+    /// **Source:** `BRepApprox_TheMultiLineToolOfApprox.hxx`:105 - `BRepApprox_TheMultiLineToolOfApprox::MakeMLBetween()`
     pub fn BRepApprox_TheMultiLineToolOfApprox_make_ml_between(
         ML: *const BRepApprox_TheMultiLineOfApprox,
         I1: i32,
         I2: i32,
         NbPMin: i32,
     ) -> crate::OcctResult<*mut BRepApprox_TheMultiLineOfApprox>;
-    /// **Source:** `BRepApprox_TheMultiLineToolOfApprox.hxx`:110 - `BRepApprox_TheMultiLineToolOfApprox::MakeMLOneMorePoint()`
+    /// **Source:** `BRepApprox_TheMultiLineToolOfApprox.hxx`:111 - `BRepApprox_TheMultiLineToolOfApprox::MakeMLOneMorePoint()`
     pub fn BRepApprox_TheMultiLineToolOfApprox_make_ml_one_more_point(
         ML: *const BRepApprox_TheMultiLineOfApprox,
         I1: i32,
@@ -2251,13 +2252,13 @@ unsafe extern "C" {
         indbad: i32,
         OtherLine: *mut BRepApprox_TheMultiLineOfApprox,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BRepApprox_TheMultiLineToolOfApprox.hxx`:116 - `BRepApprox_TheMultiLineToolOfApprox::WhatStatus()`
+    /// **Source:** `BRepApprox_TheMultiLineToolOfApprox.hxx`:117 - `BRepApprox_TheMultiLineToolOfApprox::WhatStatus()`
     pub fn BRepApprox_TheMultiLineToolOfApprox_what_status(
         ML: *const BRepApprox_TheMultiLineOfApprox,
         I1: i32,
         I2: i32,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `BRepApprox_TheMultiLineToolOfApprox.hxx`:121 - `BRepApprox_TheMultiLineToolOfApprox::Dump()`
+    /// **Source:** `BRepApprox_TheMultiLineToolOfApprox.hxx`:122 - `BRepApprox_TheMultiLineToolOfApprox::Dump()`
     pub fn BRepApprox_TheMultiLineToolOfApprox_dump(
         ML: *const BRepApprox_TheMultiLineOfApprox,
     ) -> *const std::ffi::c_char;
@@ -2458,67 +2459,63 @@ unsafe extern "C" {
     pub fn BRepBuilderAPI_BndBoxTreeSelector_destructor(
         self_: *mut BRepBuilderAPI_BndBoxTreeSelector,
     );
-    /// **Source:** `BRepBuilderAPI_BndBoxTreeSelector.hxx`:37 - `BRepBuilderAPI_BndBoxTreeSelector::BRepBuilderAPI_BndBoxTreeSelector()`
+    /// **Source:** `BRepBuilderAPI_BndBoxTreeSelector.hxx`:36 - `BRepBuilderAPI_BndBoxTreeSelector::BRepBuilderAPI_BndBoxTreeSelector()`
     pub fn BRepBuilderAPI_BndBoxTreeSelector_ctor(
     ) -> crate::OcctResult<*mut BRepBuilderAPI_BndBoxTreeSelector>;
-    /// **Source:** `BRepBuilderAPI_BndBoxTreeSelector.hxx`:45 - `BRepBuilderAPI_BndBoxTreeSelector::Reject()`
+    /// **Source:** `BRepBuilderAPI_BndBoxTreeSelector.hxx`:43 - `BRepBuilderAPI_BndBoxTreeSelector::Reject()`
     pub fn BRepBuilderAPI_BndBoxTreeSelector_reject(
         self_: *const BRepBuilderAPI_BndBoxTreeSelector,
         theBox: *const Bnd_Box,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BRepBuilderAPI_BndBoxTreeSelector.hxx`:52 - `BRepBuilderAPI_BndBoxTreeSelector::Accept()`
+    /// **Source:** `BRepBuilderAPI_BndBoxTreeSelector.hxx`:50 - `BRepBuilderAPI_BndBoxTreeSelector::Accept()`
     pub fn BRepBuilderAPI_BndBoxTreeSelector_accept(
         self_: *mut BRepBuilderAPI_BndBoxTreeSelector,
         theObj: *const i32,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BRepBuilderAPI_BndBoxTreeSelector.hxx`:59 - `BRepBuilderAPI_BndBoxTreeSelector::ClearResList()`
+    /// **Source:** `BRepBuilderAPI_BndBoxTreeSelector.hxx`:57 - `BRepBuilderAPI_BndBoxTreeSelector::ClearResList()`
     pub fn BRepBuilderAPI_BndBoxTreeSelector_clear_res_list(
         self_: *mut BRepBuilderAPI_BndBoxTreeSelector,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepBuilderAPI_BndBoxTreeSelector.hxx`:62 - `BRepBuilderAPI_BndBoxTreeSelector::SetCurrent()`
+    /// **Source:** `BRepBuilderAPI_BndBoxTreeSelector.hxx`:60 - `BRepBuilderAPI_BndBoxTreeSelector::SetCurrent()`
     pub fn BRepBuilderAPI_BndBoxTreeSelector_set_current(
         self_: *mut BRepBuilderAPI_BndBoxTreeSelector,
         theBox: *const Bnd_Box,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepBuilderAPI_BndBoxTreeSelector.hxx`:65 - `BRepBuilderAPI_BndBoxTreeSelector::ResInd()`
+    /// **Source:** `BRepBuilderAPI_BndBoxTreeSelector.hxx`:63 - `BRepBuilderAPI_BndBoxTreeSelector::ResInd()`
     pub fn BRepBuilderAPI_BndBoxTreeSelector_res_ind(
         self_: *mut BRepBuilderAPI_BndBoxTreeSelector,
-    ) -> crate::OcctResult<*const TColStd_ListOfInteger>;
+    ) -> crate::OcctResult<*const NCollection_List_int>;
     // ======================== BRepBuilderAPI_Collect ========================
     pub fn BRepBuilderAPI_Collect_destructor(self_: *mut BRepBuilderAPI_Collect);
-    /// **Source:** `BRepBuilderAPI_Collect.hxx`:34 - `BRepBuilderAPI_Collect::BRepBuilderAPI_Collect()`
+    /// **Source:** `BRepBuilderAPI_Collect.hxx`:36 - `BRepBuilderAPI_Collect::BRepBuilderAPI_Collect()`
     pub fn BRepBuilderAPI_Collect_ctor() -> crate::OcctResult<*mut BRepBuilderAPI_Collect>;
-    /// **Source:** `BRepBuilderAPI_Collect.hxx`:36 - `BRepBuilderAPI_Collect::Add()`
+    /// **Source:** `BRepBuilderAPI_Collect.hxx`:38 - `BRepBuilderAPI_Collect::Add()`
     pub fn BRepBuilderAPI_Collect_add(
         self_: *mut BRepBuilderAPI_Collect,
         SI: *const TopoDS_Shape,
         MKS: *mut BRepBuilderAPI_MakeShape,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepBuilderAPI_Collect.hxx`:38 - `BRepBuilderAPI_Collect::AddGenerated()`
+    /// **Source:** `BRepBuilderAPI_Collect.hxx`:40 - `BRepBuilderAPI_Collect::AddGenerated()`
     pub fn BRepBuilderAPI_Collect_add_generated(
         self_: *mut BRepBuilderAPI_Collect,
         S: *const TopoDS_Shape,
         Gen: *const TopoDS_Shape,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepBuilderAPI_Collect.hxx`:40 - `BRepBuilderAPI_Collect::AddModif()`
+    /// **Source:** `BRepBuilderAPI_Collect.hxx`:42 - `BRepBuilderAPI_Collect::AddModif()`
     pub fn BRepBuilderAPI_Collect_add_modif(
         self_: *mut BRepBuilderAPI_Collect,
         S: *const TopoDS_Shape,
         Mod: *const TopoDS_Shape,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepBuilderAPI_Collect.hxx`:42 - `BRepBuilderAPI_Collect::Filter()`
+    /// **Source:** `BRepBuilderAPI_Collect.hxx`:44 - `BRepBuilderAPI_Collect::Filter()`
     pub fn BRepBuilderAPI_Collect_filter(
         self_: *mut BRepBuilderAPI_Collect,
         SF: *const TopoDS_Shape,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepBuilderAPI_Collect.hxx`:44 - `BRepBuilderAPI_Collect::Modification()`
-    pub fn BRepBuilderAPI_Collect_modification(
-        self_: *const BRepBuilderAPI_Collect,
-    ) -> crate::OcctResult<*const TopTools_DataMapOfShapeListOfShape>;
-    /// **Source:** `BRepBuilderAPI_Collect.hxx`:46 - `BRepBuilderAPI_Collect::Generated()`
-    pub fn BRepBuilderAPI_Collect_generated(
-        self_: *const BRepBuilderAPI_Collect,
-    ) -> crate::OcctResult<*const TopTools_DataMapOfShapeListOfShape>;
+    /// **Source:** `BRepBuilderAPI_Collect.hxx`:49 - `BRepBuilderAPI_Collect::Modification()`
+    pub fn BRepBuilderAPI_Collect_modification(self_: *const BRepBuilderAPI_Collect) -> crate::OcctResult<*const NCollection_DataMap_TopoDS_Shape_NCollection_List_TopoDS_Shape_TopTools_ShapeMapHasher>;
+    /// **Source:** `BRepBuilderAPI_Collect.hxx`:54 - `BRepBuilderAPI_Collect::Generated()`
+    pub fn BRepBuilderAPI_Collect_generated(self_: *const BRepBuilderAPI_Collect) -> crate::OcctResult<*const NCollection_DataMap_TopoDS_Shape_NCollection_List_TopoDS_Shape_TopTools_ShapeMapHasher>;
     // ======================== BRepBuilderAPI_Command ========================
     pub fn BRepBuilderAPI_Command_destructor(self_: *mut BRepBuilderAPI_Command);
     /// **Source:** `BRepBuilderAPI_Command.hxx`:42 - `BRepBuilderAPI_Command::IsDone()`
@@ -2570,7 +2567,7 @@ unsafe extern "C" {
     pub fn BRepBuilderAPI_Copy_as_BRepBuilderAPI_Command_mut(
         self_: *mut BRepBuilderAPI_Copy,
     ) -> crate::OcctResult<*mut BRepBuilderAPI_Command>;
-    /// Inherited: **Source:** `BRepBuilderAPI_ModifyShape.hxx`:63 - `BRepBuilderAPI_ModifyShape::ModifiedShape()`
+    /// Inherited: **Source:** `BRepBuilderAPI_ModifyShape.hxx`:62 - `BRepBuilderAPI_ModifyShape::ModifiedShape()`
     pub fn BRepBuilderAPI_Copy_inherited_ModifiedShape(
         self_: *const BRepBuilderAPI_Copy,
         S: *const TopoDS_Shape,
@@ -2611,7 +2608,7 @@ unsafe extern "C" {
     /// **Source:** `BRepBuilderAPI_FastSewing.hxx`:73 - `BRepBuilderAPI_FastSewing::Add()`
     pub fn BRepBuilderAPI_FastSewing_add_handlegeomsurface(
         self_: *mut BRepBuilderAPI_FastSewing,
-        theSurface: *const HandleGeomSurface,
+        theSurface: *const Handle_Geom_Surface,
     ) -> crate::OcctResult<bool>;
     /// **Source:** `BRepBuilderAPI_FastSewing.hxx`:76 - `BRepBuilderAPI_FastSewing::Perform()`
     pub fn BRepBuilderAPI_FastSewing_perform(
@@ -2638,12 +2635,12 @@ unsafe extern "C" {
     /// **Source:** `BRepBuilderAPI_FastSewing.hxx`:90 - `BRepBuilderAPI_FastSewing::DynamicType()`
     pub fn BRepBuilderAPI_FastSewing_dynamic_type(
         self_: *const BRepBuilderAPI_FastSewing,
-    ) -> crate::OcctResult<*const HandleStandardType>;
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// **Source:** `BRepBuilderAPI_FastSewing.hxx`:90 - `BRepBuilderAPI_FastSewing::get_type_name()`
     pub fn BRepBuilderAPI_FastSewing_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
     /// **Source:** `BRepBuilderAPI_FastSewing.hxx`:90 - `BRepBuilderAPI_FastSewing::get_type_descriptor()`
     pub fn BRepBuilderAPI_FastSewing_get_type_descriptor(
-    ) -> crate::OcctResult<*const HandleStandardType>;
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast BRepBuilderAPI_FastSewing to Standard_Transient
     pub fn BRepBuilderAPI_FastSewing_as_Standard_Transient(
         self_: *const BRepBuilderAPI_FastSewing,
@@ -2655,56 +2652,58 @@ unsafe extern "C" {
     /// Wrap BRepBuilderAPI_FastSewing in a Handle
     pub fn BRepBuilderAPI_FastSewing_to_handle(
         obj: *mut BRepBuilderAPI_FastSewing,
-    ) -> crate::OcctResult<*mut HandleBRepBuilderAPIFastSewing>;
+    ) -> crate::OcctResult<*mut Handle_BRepBuilderAPI_FastSewing>;
     /// Destroy Handle<BRepBuilderAPI_FastSewing>
-    pub fn HandleBRepBuilderAPIFastSewing_destructor(self_: *mut HandleBRepBuilderAPIFastSewing);
+    pub fn Handle_BRepBuilderAPI_FastSewing_destructor(
+        self_: *mut Handle_BRepBuilderAPI_FastSewing,
+    );
     /// Clone Handle<BRepBuilderAPI_FastSewing> (increments reference count)
-    pub fn HandleBRepBuilderAPIFastSewing_clone(
-        self_: *const HandleBRepBuilderAPIFastSewing,
-    ) -> crate::OcctResult<*mut HandleBRepBuilderAPIFastSewing>;
+    pub fn Handle_BRepBuilderAPI_FastSewing_clone(
+        self_: *const Handle_BRepBuilderAPI_FastSewing,
+    ) -> crate::OcctResult<*mut Handle_BRepBuilderAPI_FastSewing>;
     /// Check if Handle<BRepBuilderAPI_FastSewing> is null
-    pub fn HandleBRepBuilderAPIFastSewing_is_null(
-        self_: *const HandleBRepBuilderAPIFastSewing,
+    pub fn Handle_BRepBuilderAPI_FastSewing_is_null(
+        self_: *const Handle_BRepBuilderAPI_FastSewing,
     ) -> bool;
     /// Dereference Handle to get *const BRepBuilderAPI_FastSewing
-    pub fn HandleBRepBuilderAPIFastSewing_get(
-        handle: *const HandleBRepBuilderAPIFastSewing,
+    pub fn Handle_BRepBuilderAPI_FastSewing_get(
+        handle: *const Handle_BRepBuilderAPI_FastSewing,
     ) -> crate::OcctResult<*const BRepBuilderAPI_FastSewing>;
     /// Dereference Handle to get *mut BRepBuilderAPI_FastSewing
-    pub fn HandleBRepBuilderAPIFastSewing_get_mut(
-        handle: *mut HandleBRepBuilderAPIFastSewing,
+    pub fn Handle_BRepBuilderAPI_FastSewing_get_mut(
+        handle: *mut Handle_BRepBuilderAPI_FastSewing,
     ) -> crate::OcctResult<*mut BRepBuilderAPI_FastSewing>;
     /// Upcast Handle<BRepBuilderAPI_FastSewing> to Handle<Standard_Transient>
-    pub fn HandleBRepBuilderAPIFastSewing_to_HandleStandardTransient(
-        self_: *const HandleBRepBuilderAPIFastSewing,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn Handle_BRepBuilderAPI_FastSewing_to_Handle_Standard_Transient(
+        self_: *const Handle_BRepBuilderAPI_FastSewing,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn BRepBuilderAPI_FastSewing_inherited_IsInstance(
         self_: *const BRepBuilderAPI_FastSewing,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn BRepBuilderAPI_FastSewing_inherited_IsKind(
         self_: *const BRepBuilderAPI_FastSewing,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn BRepBuilderAPI_FastSewing_inherited_This(
         self_: *const BRepBuilderAPI_FastSewing,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn BRepBuilderAPI_FastSewing_inherited_GetRefCount(
         self_: *const BRepBuilderAPI_FastSewing,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn BRepBuilderAPI_FastSewing_inherited_IncrementRefCounter(
         self_: *mut BRepBuilderAPI_FastSewing,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn BRepBuilderAPI_FastSewing_inherited_DecrementRefCounter(
         self_: *mut BRepBuilderAPI_FastSewing,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn BRepBuilderAPI_FastSewing_inherited_Delete(
         self_: *const BRepBuilderAPI_FastSewing,
     ) -> *const std::ffi::c_char;
@@ -2730,30 +2729,30 @@ unsafe extern "C" {
     /// **Source:** `BRepBuilderAPI_FindPlane.hxx`:69 - `BRepBuilderAPI_FindPlane::Plane()`
     pub fn BRepBuilderAPI_FindPlane_plane(
         self_: *const BRepBuilderAPI_FindPlane,
-    ) -> crate::OcctResult<*mut HandleGeomPlane>;
+    ) -> crate::OcctResult<*mut Handle_Geom_Plane>;
     // ======================== BRepBuilderAPI_GTransform ========================
     pub fn BRepBuilderAPI_GTransform_destructor(self_: *mut BRepBuilderAPI_GTransform);
-    /// **Source:** `BRepBuilderAPI_GTransform.hxx`:59 - `BRepBuilderAPI_GTransform::BRepBuilderAPI_GTransform()`
+    /// **Source:** `BRepBuilderAPI_GTransform.hxx`:60 - `BRepBuilderAPI_GTransform::BRepBuilderAPI_GTransform()`
     pub fn BRepBuilderAPI_GTransform_ctor_gtrsf(
         T: *const gp_GTrsf,
     ) -> crate::OcctResult<*mut BRepBuilderAPI_GTransform>;
-    /// **Source:** `BRepBuilderAPI_GTransform.hxx`:74 - `BRepBuilderAPI_GTransform::BRepBuilderAPI_GTransform()`
+    /// **Source:** `BRepBuilderAPI_GTransform.hxx`:75 - `BRepBuilderAPI_GTransform::BRepBuilderAPI_GTransform()`
     pub fn BRepBuilderAPI_GTransform_ctor_shape_gtrsf_bool(
         S: *const TopoDS_Shape,
         T: *const gp_GTrsf,
         Copy: bool,
     ) -> crate::OcctResult<*mut BRepBuilderAPI_GTransform>;
-    /// **Source:** `BRepBuilderAPI_GTransform.hxx`:90 - `BRepBuilderAPI_GTransform::Perform()`
+    /// **Source:** `BRepBuilderAPI_GTransform.hxx`:91 - `BRepBuilderAPI_GTransform::Perform()`
     pub fn BRepBuilderAPI_GTransform_perform(
         self_: *mut BRepBuilderAPI_GTransform,
         S: *const TopoDS_Shape,
         Copy: bool,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepBuilderAPI_GTransform.hxx`:94 - `BRepBuilderAPI_GTransform::Modified()`
+    /// **Source:** `BRepBuilderAPI_GTransform.hxx`:95 - `BRepBuilderAPI_GTransform::Modified()`
     pub fn BRepBuilderAPI_GTransform_modified(
         self_: *mut BRepBuilderAPI_GTransform,
         S: *const TopoDS_Shape,
-    ) -> crate::OcctResult<*const TopTools_ListOfShape>;
+    ) -> crate::OcctResult<*const NCollection_List_TopoDS_Shape>;
     /// **Source:** `BRepBuilderAPI_GTransform.hxx`:98 - `BRepBuilderAPI_GTransform::ModifiedShape()`
     pub fn BRepBuilderAPI_GTransform_modified_shape(
         self_: *const BRepBuilderAPI_GTransform,
@@ -2829,299 +2828,299 @@ unsafe extern "C" {
         p1: f64,
         p2: f64,
     ) -> crate::OcctResult<*mut BRepBuilderAPI_MakeEdge>;
-    /// **Source:** `BRepBuilderAPI_MakeEdge.hxx`:88 - `BRepBuilderAPI_MakeEdge::BRepBuilderAPI_MakeEdge()`
+    /// **Source:** `BRepBuilderAPI_MakeEdge.hxx`:86 - `BRepBuilderAPI_MakeEdge::BRepBuilderAPI_MakeEdge()`
     pub fn BRepBuilderAPI_MakeEdge_ctor_lin_pnt2(
         L: *const gp_Lin,
         P1: *const gp_Pnt,
         P2: *const gp_Pnt,
     ) -> crate::OcctResult<*mut BRepBuilderAPI_MakeEdge>;
-    /// **Source:** `BRepBuilderAPI_MakeEdge.hxx`:90 - `BRepBuilderAPI_MakeEdge::BRepBuilderAPI_MakeEdge()`
+    /// **Source:** `BRepBuilderAPI_MakeEdge.hxx`:88 - `BRepBuilderAPI_MakeEdge::BRepBuilderAPI_MakeEdge()`
     pub fn BRepBuilderAPI_MakeEdge_ctor_lin_vertex2(
         L: *const gp_Lin,
         V1: *const TopoDS_Vertex,
         V2: *const TopoDS_Vertex,
     ) -> crate::OcctResult<*mut BRepBuilderAPI_MakeEdge>;
-    /// **Source:** `BRepBuilderAPI_MakeEdge.hxx`:94 - `BRepBuilderAPI_MakeEdge::BRepBuilderAPI_MakeEdge()`
+    /// **Source:** `BRepBuilderAPI_MakeEdge.hxx`:92 - `BRepBuilderAPI_MakeEdge::BRepBuilderAPI_MakeEdge()`
     pub fn BRepBuilderAPI_MakeEdge_ctor_circ(
         L: *const gp_Circ,
     ) -> crate::OcctResult<*mut BRepBuilderAPI_MakeEdge>;
-    /// **Source:** `BRepBuilderAPI_MakeEdge.hxx`:96 - `BRepBuilderAPI_MakeEdge::BRepBuilderAPI_MakeEdge()`
+    /// **Source:** `BRepBuilderAPI_MakeEdge.hxx`:94 - `BRepBuilderAPI_MakeEdge::BRepBuilderAPI_MakeEdge()`
     pub fn BRepBuilderAPI_MakeEdge_ctor_circ_real2(
         L: *const gp_Circ,
         p1: f64,
         p2: f64,
     ) -> crate::OcctResult<*mut BRepBuilderAPI_MakeEdge>;
-    /// **Source:** `BRepBuilderAPI_MakeEdge.hxx`:100 - `BRepBuilderAPI_MakeEdge::BRepBuilderAPI_MakeEdge()`
+    /// **Source:** `BRepBuilderAPI_MakeEdge.hxx`:96 - `BRepBuilderAPI_MakeEdge::BRepBuilderAPI_MakeEdge()`
     pub fn BRepBuilderAPI_MakeEdge_ctor_circ_pnt2(
         L: *const gp_Circ,
         P1: *const gp_Pnt,
         P2: *const gp_Pnt,
     ) -> crate::OcctResult<*mut BRepBuilderAPI_MakeEdge>;
-    /// **Source:** `BRepBuilderAPI_MakeEdge.hxx`:102 - `BRepBuilderAPI_MakeEdge::BRepBuilderAPI_MakeEdge()`
+    /// **Source:** `BRepBuilderAPI_MakeEdge.hxx`:98 - `BRepBuilderAPI_MakeEdge::BRepBuilderAPI_MakeEdge()`
     pub fn BRepBuilderAPI_MakeEdge_ctor_circ_vertex2(
         L: *const gp_Circ,
         V1: *const TopoDS_Vertex,
         V2: *const TopoDS_Vertex,
     ) -> crate::OcctResult<*mut BRepBuilderAPI_MakeEdge>;
-    /// **Source:** `BRepBuilderAPI_MakeEdge.hxx`:106 - `BRepBuilderAPI_MakeEdge::BRepBuilderAPI_MakeEdge()`
+    /// **Source:** `BRepBuilderAPI_MakeEdge.hxx`:102 - `BRepBuilderAPI_MakeEdge::BRepBuilderAPI_MakeEdge()`
     pub fn BRepBuilderAPI_MakeEdge_ctor_elips(
         L: *const gp_Elips,
     ) -> crate::OcctResult<*mut BRepBuilderAPI_MakeEdge>;
-    /// **Source:** `BRepBuilderAPI_MakeEdge.hxx`:108 - `BRepBuilderAPI_MakeEdge::BRepBuilderAPI_MakeEdge()`
+    /// **Source:** `BRepBuilderAPI_MakeEdge.hxx`:104 - `BRepBuilderAPI_MakeEdge::BRepBuilderAPI_MakeEdge()`
     pub fn BRepBuilderAPI_MakeEdge_ctor_elips_real2(
         L: *const gp_Elips,
         p1: f64,
         p2: f64,
     ) -> crate::OcctResult<*mut BRepBuilderAPI_MakeEdge>;
-    /// **Source:** `BRepBuilderAPI_MakeEdge.hxx`:112 - `BRepBuilderAPI_MakeEdge::BRepBuilderAPI_MakeEdge()`
+    /// **Source:** `BRepBuilderAPI_MakeEdge.hxx`:106 - `BRepBuilderAPI_MakeEdge::BRepBuilderAPI_MakeEdge()`
     pub fn BRepBuilderAPI_MakeEdge_ctor_elips_pnt2(
         L: *const gp_Elips,
         P1: *const gp_Pnt,
         P2: *const gp_Pnt,
     ) -> crate::OcctResult<*mut BRepBuilderAPI_MakeEdge>;
-    /// **Source:** `BRepBuilderAPI_MakeEdge.hxx`:114 - `BRepBuilderAPI_MakeEdge::BRepBuilderAPI_MakeEdge()`
+    /// **Source:** `BRepBuilderAPI_MakeEdge.hxx`:108 - `BRepBuilderAPI_MakeEdge::BRepBuilderAPI_MakeEdge()`
     pub fn BRepBuilderAPI_MakeEdge_ctor_elips_vertex2(
         L: *const gp_Elips,
         V1: *const TopoDS_Vertex,
         V2: *const TopoDS_Vertex,
     ) -> crate::OcctResult<*mut BRepBuilderAPI_MakeEdge>;
-    /// **Source:** `BRepBuilderAPI_MakeEdge.hxx`:118 - `BRepBuilderAPI_MakeEdge::BRepBuilderAPI_MakeEdge()`
+    /// **Source:** `BRepBuilderAPI_MakeEdge.hxx`:112 - `BRepBuilderAPI_MakeEdge::BRepBuilderAPI_MakeEdge()`
     pub fn BRepBuilderAPI_MakeEdge_ctor_hypr(
         L: *const gp_Hypr,
     ) -> crate::OcctResult<*mut BRepBuilderAPI_MakeEdge>;
-    /// **Source:** `BRepBuilderAPI_MakeEdge.hxx`:120 - `BRepBuilderAPI_MakeEdge::BRepBuilderAPI_MakeEdge()`
+    /// **Source:** `BRepBuilderAPI_MakeEdge.hxx`:114 - `BRepBuilderAPI_MakeEdge::BRepBuilderAPI_MakeEdge()`
     pub fn BRepBuilderAPI_MakeEdge_ctor_hypr_real2(
         L: *const gp_Hypr,
         p1: f64,
         p2: f64,
     ) -> crate::OcctResult<*mut BRepBuilderAPI_MakeEdge>;
-    /// **Source:** `BRepBuilderAPI_MakeEdge.hxx`:124 - `BRepBuilderAPI_MakeEdge::BRepBuilderAPI_MakeEdge()`
+    /// **Source:** `BRepBuilderAPI_MakeEdge.hxx`:116 - `BRepBuilderAPI_MakeEdge::BRepBuilderAPI_MakeEdge()`
     pub fn BRepBuilderAPI_MakeEdge_ctor_hypr_pnt2(
         L: *const gp_Hypr,
         P1: *const gp_Pnt,
         P2: *const gp_Pnt,
     ) -> crate::OcctResult<*mut BRepBuilderAPI_MakeEdge>;
-    /// **Source:** `BRepBuilderAPI_MakeEdge.hxx`:126 - `BRepBuilderAPI_MakeEdge::BRepBuilderAPI_MakeEdge()`
+    /// **Source:** `BRepBuilderAPI_MakeEdge.hxx`:118 - `BRepBuilderAPI_MakeEdge::BRepBuilderAPI_MakeEdge()`
     pub fn BRepBuilderAPI_MakeEdge_ctor_hypr_vertex2(
         L: *const gp_Hypr,
         V1: *const TopoDS_Vertex,
         V2: *const TopoDS_Vertex,
     ) -> crate::OcctResult<*mut BRepBuilderAPI_MakeEdge>;
-    /// **Source:** `BRepBuilderAPI_MakeEdge.hxx`:130 - `BRepBuilderAPI_MakeEdge::BRepBuilderAPI_MakeEdge()`
+    /// **Source:** `BRepBuilderAPI_MakeEdge.hxx`:122 - `BRepBuilderAPI_MakeEdge::BRepBuilderAPI_MakeEdge()`
     pub fn BRepBuilderAPI_MakeEdge_ctor_parab(
         L: *const gp_Parab,
     ) -> crate::OcctResult<*mut BRepBuilderAPI_MakeEdge>;
-    /// **Source:** `BRepBuilderAPI_MakeEdge.hxx`:132 - `BRepBuilderAPI_MakeEdge::BRepBuilderAPI_MakeEdge()`
+    /// **Source:** `BRepBuilderAPI_MakeEdge.hxx`:124 - `BRepBuilderAPI_MakeEdge::BRepBuilderAPI_MakeEdge()`
     pub fn BRepBuilderAPI_MakeEdge_ctor_parab_real2(
         L: *const gp_Parab,
         p1: f64,
         p2: f64,
     ) -> crate::OcctResult<*mut BRepBuilderAPI_MakeEdge>;
-    /// **Source:** `BRepBuilderAPI_MakeEdge.hxx`:136 - `BRepBuilderAPI_MakeEdge::BRepBuilderAPI_MakeEdge()`
+    /// **Source:** `BRepBuilderAPI_MakeEdge.hxx`:126 - `BRepBuilderAPI_MakeEdge::BRepBuilderAPI_MakeEdge()`
     pub fn BRepBuilderAPI_MakeEdge_ctor_parab_pnt2(
         L: *const gp_Parab,
         P1: *const gp_Pnt,
         P2: *const gp_Pnt,
     ) -> crate::OcctResult<*mut BRepBuilderAPI_MakeEdge>;
-    /// **Source:** `BRepBuilderAPI_MakeEdge.hxx`:138 - `BRepBuilderAPI_MakeEdge::BRepBuilderAPI_MakeEdge()`
+    /// **Source:** `BRepBuilderAPI_MakeEdge.hxx`:128 - `BRepBuilderAPI_MakeEdge::BRepBuilderAPI_MakeEdge()`
     pub fn BRepBuilderAPI_MakeEdge_ctor_parab_vertex2(
         L: *const gp_Parab,
         V1: *const TopoDS_Vertex,
         V2: *const TopoDS_Vertex,
     ) -> crate::OcctResult<*mut BRepBuilderAPI_MakeEdge>;
-    /// **Source:** `BRepBuilderAPI_MakeEdge.hxx`:142 - `BRepBuilderAPI_MakeEdge::BRepBuilderAPI_MakeEdge()`
+    /// **Source:** `BRepBuilderAPI_MakeEdge.hxx`:132 - `BRepBuilderAPI_MakeEdge::BRepBuilderAPI_MakeEdge()`
     pub fn BRepBuilderAPI_MakeEdge_ctor_handlegeomcurve(
-        L: *const HandleGeomCurve,
+        L: *const Handle_Geom_Curve,
     ) -> crate::OcctResult<*mut BRepBuilderAPI_MakeEdge>;
-    /// **Source:** `BRepBuilderAPI_MakeEdge.hxx`:144 - `BRepBuilderAPI_MakeEdge::BRepBuilderAPI_MakeEdge()`
+    /// **Source:** `BRepBuilderAPI_MakeEdge.hxx`:134 - `BRepBuilderAPI_MakeEdge::BRepBuilderAPI_MakeEdge()`
     pub fn BRepBuilderAPI_MakeEdge_ctor_handlegeomcurve_real2(
-        L: *const HandleGeomCurve,
+        L: *const Handle_Geom_Curve,
         p1: f64,
         p2: f64,
     ) -> crate::OcctResult<*mut BRepBuilderAPI_MakeEdge>;
-    /// **Source:** `BRepBuilderAPI_MakeEdge.hxx`:148 - `BRepBuilderAPI_MakeEdge::BRepBuilderAPI_MakeEdge()`
+    /// **Source:** `BRepBuilderAPI_MakeEdge.hxx`:138 - `BRepBuilderAPI_MakeEdge::BRepBuilderAPI_MakeEdge()`
     pub fn BRepBuilderAPI_MakeEdge_ctor_handlegeomcurve_pnt2(
-        L: *const HandleGeomCurve,
+        L: *const Handle_Geom_Curve,
         P1: *const gp_Pnt,
         P2: *const gp_Pnt,
+    ) -> crate::OcctResult<*mut BRepBuilderAPI_MakeEdge>;
+    /// **Source:** `BRepBuilderAPI_MakeEdge.hxx`:142 - `BRepBuilderAPI_MakeEdge::BRepBuilderAPI_MakeEdge()`
+    pub fn BRepBuilderAPI_MakeEdge_ctor_handlegeomcurve_vertex2(
+        L: *const Handle_Geom_Curve,
+        V1: *const TopoDS_Vertex,
+        V2: *const TopoDS_Vertex,
+    ) -> crate::OcctResult<*mut BRepBuilderAPI_MakeEdge>;
+    /// **Source:** `BRepBuilderAPI_MakeEdge.hxx`:146 - `BRepBuilderAPI_MakeEdge::BRepBuilderAPI_MakeEdge()`
+    pub fn BRepBuilderAPI_MakeEdge_ctor_handlegeomcurve_pnt2_real2(
+        L: *const Handle_Geom_Curve,
+        P1: *const gp_Pnt,
+        P2: *const gp_Pnt,
+        p1: f64,
+        p2: f64,
     ) -> crate::OcctResult<*mut BRepBuilderAPI_MakeEdge>;
     /// **Source:** `BRepBuilderAPI_MakeEdge.hxx`:152 - `BRepBuilderAPI_MakeEdge::BRepBuilderAPI_MakeEdge()`
-    pub fn BRepBuilderAPI_MakeEdge_ctor_handlegeomcurve_vertex2(
-        L: *const HandleGeomCurve,
+    pub fn BRepBuilderAPI_MakeEdge_ctor_handlegeomcurve_vertex2_real2(
+        L: *const Handle_Geom_Curve,
         V1: *const TopoDS_Vertex,
         V2: *const TopoDS_Vertex,
+        p1: f64,
+        p2: f64,
     ) -> crate::OcctResult<*mut BRepBuilderAPI_MakeEdge>;
-    /// **Source:** `BRepBuilderAPI_MakeEdge.hxx`:156 - `BRepBuilderAPI_MakeEdge::BRepBuilderAPI_MakeEdge()`
-    pub fn BRepBuilderAPI_MakeEdge_ctor_handlegeomcurve_pnt2_real2(
-        L: *const HandleGeomCurve,
+    /// **Source:** `BRepBuilderAPI_MakeEdge.hxx`:158 - `BRepBuilderAPI_MakeEdge::BRepBuilderAPI_MakeEdge()`
+    pub fn BRepBuilderAPI_MakeEdge_ctor_handlegeom2dcurve_handlegeomsurface(
+        L: *const Handle_Geom2d_Curve,
+        S: *const Handle_Geom_Surface,
+    ) -> crate::OcctResult<*mut BRepBuilderAPI_MakeEdge>;
+    /// **Source:** `BRepBuilderAPI_MakeEdge.hxx`:161 - `BRepBuilderAPI_MakeEdge::BRepBuilderAPI_MakeEdge()`
+    pub fn BRepBuilderAPI_MakeEdge_ctor_handlegeom2dcurve_handlegeomsurface_real2(
+        L: *const Handle_Geom2d_Curve,
+        S: *const Handle_Geom_Surface,
+        p1: f64,
+        p2: f64,
+    ) -> crate::OcctResult<*mut BRepBuilderAPI_MakeEdge>;
+    /// **Source:** `BRepBuilderAPI_MakeEdge.hxx`:166 - `BRepBuilderAPI_MakeEdge::BRepBuilderAPI_MakeEdge()`
+    pub fn BRepBuilderAPI_MakeEdge_ctor_handlegeom2dcurve_handlegeomsurface_pnt2(
+        L: *const Handle_Geom2d_Curve,
+        S: *const Handle_Geom_Surface,
         P1: *const gp_Pnt,
         P2: *const gp_Pnt,
-        p1: f64,
-        p2: f64,
-    ) -> crate::OcctResult<*mut BRepBuilderAPI_MakeEdge>;
-    /// **Source:** `BRepBuilderAPI_MakeEdge.hxx`:162 - `BRepBuilderAPI_MakeEdge::BRepBuilderAPI_MakeEdge()`
-    pub fn BRepBuilderAPI_MakeEdge_ctor_handlegeomcurve_vertex2_real2(
-        L: *const HandleGeomCurve,
-        V1: *const TopoDS_Vertex,
-        V2: *const TopoDS_Vertex,
-        p1: f64,
-        p2: f64,
-    ) -> crate::OcctResult<*mut BRepBuilderAPI_MakeEdge>;
-    /// **Source:** `BRepBuilderAPI_MakeEdge.hxx`:168 - `BRepBuilderAPI_MakeEdge::BRepBuilderAPI_MakeEdge()`
-    pub fn BRepBuilderAPI_MakeEdge_ctor_handlegeom2dcurve_handlegeomsurface(
-        L: *const HandleGeom2dCurve,
-        S: *const HandleGeomSurface,
     ) -> crate::OcctResult<*mut BRepBuilderAPI_MakeEdge>;
     /// **Source:** `BRepBuilderAPI_MakeEdge.hxx`:171 - `BRepBuilderAPI_MakeEdge::BRepBuilderAPI_MakeEdge()`
-    pub fn BRepBuilderAPI_MakeEdge_ctor_handlegeom2dcurve_handlegeomsurface_real2(
-        L: *const HandleGeom2dCurve,
-        S: *const HandleGeomSurface,
-        p1: f64,
-        p2: f64,
+    pub fn BRepBuilderAPI_MakeEdge_ctor_handlegeom2dcurve_handlegeomsurface_vertex2(
+        L: *const Handle_Geom2d_Curve,
+        S: *const Handle_Geom_Surface,
+        V1: *const TopoDS_Vertex,
+        V2: *const TopoDS_Vertex,
     ) -> crate::OcctResult<*mut BRepBuilderAPI_MakeEdge>;
     /// **Source:** `BRepBuilderAPI_MakeEdge.hxx`:176 - `BRepBuilderAPI_MakeEdge::BRepBuilderAPI_MakeEdge()`
-    pub fn BRepBuilderAPI_MakeEdge_ctor_handlegeom2dcurve_handlegeomsurface_pnt2(
-        L: *const HandleGeom2dCurve,
-        S: *const HandleGeomSurface,
-        P1: *const gp_Pnt,
-        P2: *const gp_Pnt,
-    ) -> crate::OcctResult<*mut BRepBuilderAPI_MakeEdge>;
-    /// **Source:** `BRepBuilderAPI_MakeEdge.hxx`:181 - `BRepBuilderAPI_MakeEdge::BRepBuilderAPI_MakeEdge()`
-    pub fn BRepBuilderAPI_MakeEdge_ctor_handlegeom2dcurve_handlegeomsurface_vertex2(
-        L: *const HandleGeom2dCurve,
-        S: *const HandleGeomSurface,
-        V1: *const TopoDS_Vertex,
-        V2: *const TopoDS_Vertex,
-    ) -> crate::OcctResult<*mut BRepBuilderAPI_MakeEdge>;
-    /// **Source:** `BRepBuilderAPI_MakeEdge.hxx`:186 - `BRepBuilderAPI_MakeEdge::BRepBuilderAPI_MakeEdge()`
     pub fn BRepBuilderAPI_MakeEdge_ctor_handlegeom2dcurve_handlegeomsurface_pnt2_real2(
-        L: *const HandleGeom2dCurve,
-        S: *const HandleGeomSurface,
+        L: *const Handle_Geom2d_Curve,
+        S: *const Handle_Geom_Surface,
         P1: *const gp_Pnt,
         P2: *const gp_Pnt,
         p1: f64,
         p2: f64,
     ) -> crate::OcctResult<*mut BRepBuilderAPI_MakeEdge>;
-    /// **Source:** `BRepBuilderAPI_MakeEdge.hxx`:257 - `BRepBuilderAPI_MakeEdge::BRepBuilderAPI_MakeEdge()`
+    /// **Source:** `BRepBuilderAPI_MakeEdge.hxx`:247 - `BRepBuilderAPI_MakeEdge::BRepBuilderAPI_MakeEdge()`
     pub fn BRepBuilderAPI_MakeEdge_ctor_handlegeom2dcurve_handlegeomsurface_vertex2_real2(
-        L: *const HandleGeom2dCurve,
-        S: *const HandleGeomSurface,
+        L: *const Handle_Geom2d_Curve,
+        S: *const Handle_Geom_Surface,
         V1: *const TopoDS_Vertex,
         V2: *const TopoDS_Vertex,
         p1: f64,
         p2: f64,
     ) -> crate::OcctResult<*mut BRepBuilderAPI_MakeEdge>;
-    /// **Source:** `BRepBuilderAPI_MakeEdge.hxx`:264 - `BRepBuilderAPI_MakeEdge::Init()`
+    /// **Source:** `BRepBuilderAPI_MakeEdge.hxx`:254 - `BRepBuilderAPI_MakeEdge::Init()`
     pub fn BRepBuilderAPI_MakeEdge_init_handlegeomcurve(
         self_: *mut BRepBuilderAPI_MakeEdge,
-        C: *const HandleGeomCurve,
+        C: *const Handle_Geom_Curve,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepBuilderAPI_MakeEdge.hxx`:266 - `BRepBuilderAPI_MakeEdge::Init()`
+    /// **Source:** `BRepBuilderAPI_MakeEdge.hxx`:256 - `BRepBuilderAPI_MakeEdge::Init()`
     pub fn BRepBuilderAPI_MakeEdge_init_handlegeomcurve_real2(
         self_: *mut BRepBuilderAPI_MakeEdge,
-        C: *const HandleGeomCurve,
+        C: *const Handle_Geom_Curve,
+        p1: f64,
+        p2: f64,
+    ) -> *const std::ffi::c_char;
+    /// **Source:** `BRepBuilderAPI_MakeEdge.hxx`:258 - `BRepBuilderAPI_MakeEdge::Init()`
+    pub fn BRepBuilderAPI_MakeEdge_init_handlegeomcurve_pnt2(
+        self_: *mut BRepBuilderAPI_MakeEdge,
+        C: *const Handle_Geom_Curve,
+        P1: *const gp_Pnt,
+        P2: *const gp_Pnt,
+    ) -> *const std::ffi::c_char;
+    /// **Source:** `BRepBuilderAPI_MakeEdge.hxx`:260 - `BRepBuilderAPI_MakeEdge::Init()`
+    pub fn BRepBuilderAPI_MakeEdge_init_handlegeomcurve_vertex2(
+        self_: *mut BRepBuilderAPI_MakeEdge,
+        C: *const Handle_Geom_Curve,
+        V1: *const TopoDS_Vertex,
+        V2: *const TopoDS_Vertex,
+    ) -> *const std::ffi::c_char;
+    /// **Source:** `BRepBuilderAPI_MakeEdge.hxx`:264 - `BRepBuilderAPI_MakeEdge::Init()`
+    pub fn BRepBuilderAPI_MakeEdge_init_handlegeomcurve_pnt2_real2(
+        self_: *mut BRepBuilderAPI_MakeEdge,
+        C: *const Handle_Geom_Curve,
+        P1: *const gp_Pnt,
+        P2: *const gp_Pnt,
         p1: f64,
         p2: f64,
     ) -> *const std::ffi::c_char;
     /// **Source:** `BRepBuilderAPI_MakeEdge.hxx`:270 - `BRepBuilderAPI_MakeEdge::Init()`
-    pub fn BRepBuilderAPI_MakeEdge_init_handlegeomcurve_pnt2(
-        self_: *mut BRepBuilderAPI_MakeEdge,
-        C: *const HandleGeomCurve,
-        P1: *const gp_Pnt,
-        P2: *const gp_Pnt,
-    ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepBuilderAPI_MakeEdge.hxx`:272 - `BRepBuilderAPI_MakeEdge::Init()`
-    pub fn BRepBuilderAPI_MakeEdge_init_handlegeomcurve_vertex2(
-        self_: *mut BRepBuilderAPI_MakeEdge,
-        C: *const HandleGeomCurve,
-        V1: *const TopoDS_Vertex,
-        V2: *const TopoDS_Vertex,
-    ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepBuilderAPI_MakeEdge.hxx`:276 - `BRepBuilderAPI_MakeEdge::Init()`
-    pub fn BRepBuilderAPI_MakeEdge_init_handlegeomcurve_pnt2_real2(
-        self_: *mut BRepBuilderAPI_MakeEdge,
-        C: *const HandleGeomCurve,
-        P1: *const gp_Pnt,
-        P2: *const gp_Pnt,
-        p1: f64,
-        p2: f64,
-    ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepBuilderAPI_MakeEdge.hxx`:282 - `BRepBuilderAPI_MakeEdge::Init()`
     pub fn BRepBuilderAPI_MakeEdge_init_handlegeomcurve_vertex2_real2(
         self_: *mut BRepBuilderAPI_MakeEdge,
-        C: *const HandleGeomCurve,
+        C: *const Handle_Geom_Curve,
         V1: *const TopoDS_Vertex,
         V2: *const TopoDS_Vertex,
         p1: f64,
         p2: f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepBuilderAPI_MakeEdge.hxx`:288 - `BRepBuilderAPI_MakeEdge::Init()`
+    /// **Source:** `BRepBuilderAPI_MakeEdge.hxx`:276 - `BRepBuilderAPI_MakeEdge::Init()`
     pub fn BRepBuilderAPI_MakeEdge_init_handlegeom2dcurve_handlegeomsurface(
         self_: *mut BRepBuilderAPI_MakeEdge,
-        C: *const HandleGeom2dCurve,
-        S: *const HandleGeomSurface,
+        C: *const Handle_Geom2d_Curve,
+        S: *const Handle_Geom_Surface,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepBuilderAPI_MakeEdge.hxx`:290 - `BRepBuilderAPI_MakeEdge::Init()`
+    /// **Source:** `BRepBuilderAPI_MakeEdge.hxx`:278 - `BRepBuilderAPI_MakeEdge::Init()`
     pub fn BRepBuilderAPI_MakeEdge_init_handlegeom2dcurve_handlegeomsurface_real2(
         self_: *mut BRepBuilderAPI_MakeEdge,
-        C: *const HandleGeom2dCurve,
-        S: *const HandleGeomSurface,
+        C: *const Handle_Geom2d_Curve,
+        S: *const Handle_Geom_Surface,
         p1: f64,
         p2: f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepBuilderAPI_MakeEdge.hxx`:295 - `BRepBuilderAPI_MakeEdge::Init()`
+    /// **Source:** `BRepBuilderAPI_MakeEdge.hxx`:283 - `BRepBuilderAPI_MakeEdge::Init()`
     pub fn BRepBuilderAPI_MakeEdge_init_handlegeom2dcurve_handlegeomsurface_pnt2(
         self_: *mut BRepBuilderAPI_MakeEdge,
-        C: *const HandleGeom2dCurve,
-        S: *const HandleGeomSurface,
+        C: *const Handle_Geom2d_Curve,
+        S: *const Handle_Geom_Surface,
         P1: *const gp_Pnt,
         P2: *const gp_Pnt,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepBuilderAPI_MakeEdge.hxx`:300 - `BRepBuilderAPI_MakeEdge::Init()`
+    /// **Source:** `BRepBuilderAPI_MakeEdge.hxx`:288 - `BRepBuilderAPI_MakeEdge::Init()`
     pub fn BRepBuilderAPI_MakeEdge_init_handlegeom2dcurve_handlegeomsurface_vertex2(
         self_: *mut BRepBuilderAPI_MakeEdge,
-        C: *const HandleGeom2dCurve,
-        S: *const HandleGeomSurface,
+        C: *const Handle_Geom2d_Curve,
+        S: *const Handle_Geom_Surface,
         V1: *const TopoDS_Vertex,
         V2: *const TopoDS_Vertex,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepBuilderAPI_MakeEdge.hxx`:305 - `BRepBuilderAPI_MakeEdge::Init()`
+    /// **Source:** `BRepBuilderAPI_MakeEdge.hxx`:293 - `BRepBuilderAPI_MakeEdge::Init()`
     pub fn BRepBuilderAPI_MakeEdge_init_handlegeom2dcurve_handlegeomsurface_pnt2_real2(
         self_: *mut BRepBuilderAPI_MakeEdge,
-        C: *const HandleGeom2dCurve,
-        S: *const HandleGeomSurface,
+        C: *const Handle_Geom2d_Curve,
+        S: *const Handle_Geom_Surface,
         P1: *const gp_Pnt,
         P2: *const gp_Pnt,
         p1: f64,
         p2: f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepBuilderAPI_MakeEdge.hxx`:314 - `BRepBuilderAPI_MakeEdge::Init()`
+    /// **Source:** `BRepBuilderAPI_MakeEdge.hxx`:302 - `BRepBuilderAPI_MakeEdge::Init()`
     pub fn BRepBuilderAPI_MakeEdge_init_handlegeom2dcurve_handlegeomsurface_vertex2_real2(
         self_: *mut BRepBuilderAPI_MakeEdge,
-        C: *const HandleGeom2dCurve,
-        S: *const HandleGeomSurface,
+        C: *const Handle_Geom2d_Curve,
+        S: *const Handle_Geom_Surface,
         V1: *const TopoDS_Vertex,
         V2: *const TopoDS_Vertex,
         p1: f64,
         p2: f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepBuilderAPI_MakeEdge.hxx`:322 - `BRepBuilderAPI_MakeEdge::IsDone()`
+    /// **Source:** `BRepBuilderAPI_MakeEdge.hxx`:310 - `BRepBuilderAPI_MakeEdge::IsDone()`
     pub fn BRepBuilderAPI_MakeEdge_is_done(
         self_: *const BRepBuilderAPI_MakeEdge,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BRepBuilderAPI_MakeEdge.hxx`:328 - `BRepBuilderAPI_MakeEdge::Error()`
+    /// **Source:** `BRepBuilderAPI_MakeEdge.hxx`:316 - `BRepBuilderAPI_MakeEdge::Error()`
     pub fn BRepBuilderAPI_MakeEdge_error(
         self_: *const BRepBuilderAPI_MakeEdge,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `BRepBuilderAPI_MakeEdge.hxx`:332 - `BRepBuilderAPI_MakeEdge::Edge()`
+    /// **Source:** `BRepBuilderAPI_MakeEdge.hxx`:320 - `BRepBuilderAPI_MakeEdge::Edge()`
     pub fn BRepBuilderAPI_MakeEdge_edge(
         self_: *mut BRepBuilderAPI_MakeEdge,
     ) -> crate::OcctResult<*const TopoDS_Edge>;
-    /// **Source:** `BRepBuilderAPI_MakeEdge.hxx`:336 - `BRepBuilderAPI_MakeEdge::Vertex1()`
+    /// **Source:** `BRepBuilderAPI_MakeEdge.hxx`:324 - `BRepBuilderAPI_MakeEdge::Vertex1()`
     pub fn BRepBuilderAPI_MakeEdge_vertex1(
         self_: *const BRepBuilderAPI_MakeEdge,
     ) -> crate::OcctResult<*const TopoDS_Vertex>;
-    /// **Source:** `BRepBuilderAPI_MakeEdge.hxx`:348 - `BRepBuilderAPI_MakeEdge::Vertex2()`
+    /// **Source:** `BRepBuilderAPI_MakeEdge.hxx`:336 - `BRepBuilderAPI_MakeEdge::Vertex2()`
     pub fn BRepBuilderAPI_MakeEdge_vertex2(
         self_: *const BRepBuilderAPI_MakeEdge,
     ) -> crate::OcctResult<*const TopoDS_Vertex>;
@@ -3181,205 +3180,205 @@ unsafe extern "C" {
         p1: f64,
         p2: f64,
     ) -> crate::OcctResult<*mut BRepBuilderAPI_MakeEdge2d>;
-    /// **Source:** `BRepBuilderAPI_MakeEdge2d.hxx`:84 - `BRepBuilderAPI_MakeEdge2d::BRepBuilderAPI_MakeEdge2d()`
+    /// **Source:** `BRepBuilderAPI_MakeEdge2d.hxx`:82 - `BRepBuilderAPI_MakeEdge2d::BRepBuilderAPI_MakeEdge2d()`
     pub fn BRepBuilderAPI_MakeEdge2d_ctor_lin2d_pnt2d2(
         L: *const gp_Lin2d,
         P1: *const gp_Pnt2d,
         P2: *const gp_Pnt2d,
     ) -> crate::OcctResult<*mut BRepBuilderAPI_MakeEdge2d>;
-    /// **Source:** `BRepBuilderAPI_MakeEdge2d.hxx`:88 - `BRepBuilderAPI_MakeEdge2d::BRepBuilderAPI_MakeEdge2d()`
+    /// **Source:** `BRepBuilderAPI_MakeEdge2d.hxx`:86 - `BRepBuilderAPI_MakeEdge2d::BRepBuilderAPI_MakeEdge2d()`
     pub fn BRepBuilderAPI_MakeEdge2d_ctor_lin2d_vertex2(
         L: *const gp_Lin2d,
         V1: *const TopoDS_Vertex,
         V2: *const TopoDS_Vertex,
     ) -> crate::OcctResult<*mut BRepBuilderAPI_MakeEdge2d>;
-    /// **Source:** `BRepBuilderAPI_MakeEdge2d.hxx`:92 - `BRepBuilderAPI_MakeEdge2d::BRepBuilderAPI_MakeEdge2d()`
+    /// **Source:** `BRepBuilderAPI_MakeEdge2d.hxx`:90 - `BRepBuilderAPI_MakeEdge2d::BRepBuilderAPI_MakeEdge2d()`
     pub fn BRepBuilderAPI_MakeEdge2d_ctor_circ2d(
         L: *const gp_Circ2d,
     ) -> crate::OcctResult<*mut BRepBuilderAPI_MakeEdge2d>;
-    /// **Source:** `BRepBuilderAPI_MakeEdge2d.hxx`:94 - `BRepBuilderAPI_MakeEdge2d::BRepBuilderAPI_MakeEdge2d()`
+    /// **Source:** `BRepBuilderAPI_MakeEdge2d.hxx`:92 - `BRepBuilderAPI_MakeEdge2d::BRepBuilderAPI_MakeEdge2d()`
     pub fn BRepBuilderAPI_MakeEdge2d_ctor_circ2d_real2(
         L: *const gp_Circ2d,
         p1: f64,
         p2: f64,
     ) -> crate::OcctResult<*mut BRepBuilderAPI_MakeEdge2d>;
-    /// **Source:** `BRepBuilderAPI_MakeEdge2d.hxx`:98 - `BRepBuilderAPI_MakeEdge2d::BRepBuilderAPI_MakeEdge2d()`
+    /// **Source:** `BRepBuilderAPI_MakeEdge2d.hxx`:94 - `BRepBuilderAPI_MakeEdge2d::BRepBuilderAPI_MakeEdge2d()`
     pub fn BRepBuilderAPI_MakeEdge2d_ctor_circ2d_pnt2d2(
         L: *const gp_Circ2d,
         P1: *const gp_Pnt2d,
         P2: *const gp_Pnt2d,
     ) -> crate::OcctResult<*mut BRepBuilderAPI_MakeEdge2d>;
-    /// **Source:** `BRepBuilderAPI_MakeEdge2d.hxx`:102 - `BRepBuilderAPI_MakeEdge2d::BRepBuilderAPI_MakeEdge2d()`
+    /// **Source:** `BRepBuilderAPI_MakeEdge2d.hxx`:98 - `BRepBuilderAPI_MakeEdge2d::BRepBuilderAPI_MakeEdge2d()`
     pub fn BRepBuilderAPI_MakeEdge2d_ctor_circ2d_vertex2(
         L: *const gp_Circ2d,
         V1: *const TopoDS_Vertex,
         V2: *const TopoDS_Vertex,
     ) -> crate::OcctResult<*mut BRepBuilderAPI_MakeEdge2d>;
-    /// **Source:** `BRepBuilderAPI_MakeEdge2d.hxx`:106 - `BRepBuilderAPI_MakeEdge2d::BRepBuilderAPI_MakeEdge2d()`
+    /// **Source:** `BRepBuilderAPI_MakeEdge2d.hxx`:102 - `BRepBuilderAPI_MakeEdge2d::BRepBuilderAPI_MakeEdge2d()`
     pub fn BRepBuilderAPI_MakeEdge2d_ctor_elips2d(
         L: *const gp_Elips2d,
     ) -> crate::OcctResult<*mut BRepBuilderAPI_MakeEdge2d>;
-    /// **Source:** `BRepBuilderAPI_MakeEdge2d.hxx`:108 - `BRepBuilderAPI_MakeEdge2d::BRepBuilderAPI_MakeEdge2d()`
+    /// **Source:** `BRepBuilderAPI_MakeEdge2d.hxx`:104 - `BRepBuilderAPI_MakeEdge2d::BRepBuilderAPI_MakeEdge2d()`
     pub fn BRepBuilderAPI_MakeEdge2d_ctor_elips2d_real2(
         L: *const gp_Elips2d,
         p1: f64,
         p2: f64,
     ) -> crate::OcctResult<*mut BRepBuilderAPI_MakeEdge2d>;
-    /// **Source:** `BRepBuilderAPI_MakeEdge2d.hxx`:112 - `BRepBuilderAPI_MakeEdge2d::BRepBuilderAPI_MakeEdge2d()`
+    /// **Source:** `BRepBuilderAPI_MakeEdge2d.hxx`:106 - `BRepBuilderAPI_MakeEdge2d::BRepBuilderAPI_MakeEdge2d()`
     pub fn BRepBuilderAPI_MakeEdge2d_ctor_elips2d_pnt2d2(
         L: *const gp_Elips2d,
         P1: *const gp_Pnt2d,
         P2: *const gp_Pnt2d,
     ) -> crate::OcctResult<*mut BRepBuilderAPI_MakeEdge2d>;
-    /// **Source:** `BRepBuilderAPI_MakeEdge2d.hxx`:116 - `BRepBuilderAPI_MakeEdge2d::BRepBuilderAPI_MakeEdge2d()`
+    /// **Source:** `BRepBuilderAPI_MakeEdge2d.hxx`:110 - `BRepBuilderAPI_MakeEdge2d::BRepBuilderAPI_MakeEdge2d()`
     pub fn BRepBuilderAPI_MakeEdge2d_ctor_elips2d_vertex2(
         L: *const gp_Elips2d,
         V1: *const TopoDS_Vertex,
         V2: *const TopoDS_Vertex,
     ) -> crate::OcctResult<*mut BRepBuilderAPI_MakeEdge2d>;
-    /// **Source:** `BRepBuilderAPI_MakeEdge2d.hxx`:120 - `BRepBuilderAPI_MakeEdge2d::BRepBuilderAPI_MakeEdge2d()`
+    /// **Source:** `BRepBuilderAPI_MakeEdge2d.hxx`:114 - `BRepBuilderAPI_MakeEdge2d::BRepBuilderAPI_MakeEdge2d()`
     pub fn BRepBuilderAPI_MakeEdge2d_ctor_hypr2d(
         L: *const gp_Hypr2d,
     ) -> crate::OcctResult<*mut BRepBuilderAPI_MakeEdge2d>;
-    /// **Source:** `BRepBuilderAPI_MakeEdge2d.hxx`:122 - `BRepBuilderAPI_MakeEdge2d::BRepBuilderAPI_MakeEdge2d()`
+    /// **Source:** `BRepBuilderAPI_MakeEdge2d.hxx`:116 - `BRepBuilderAPI_MakeEdge2d::BRepBuilderAPI_MakeEdge2d()`
     pub fn BRepBuilderAPI_MakeEdge2d_ctor_hypr2d_real2(
         L: *const gp_Hypr2d,
         p1: f64,
         p2: f64,
     ) -> crate::OcctResult<*mut BRepBuilderAPI_MakeEdge2d>;
-    /// **Source:** `BRepBuilderAPI_MakeEdge2d.hxx`:126 - `BRepBuilderAPI_MakeEdge2d::BRepBuilderAPI_MakeEdge2d()`
+    /// **Source:** `BRepBuilderAPI_MakeEdge2d.hxx`:118 - `BRepBuilderAPI_MakeEdge2d::BRepBuilderAPI_MakeEdge2d()`
     pub fn BRepBuilderAPI_MakeEdge2d_ctor_hypr2d_pnt2d2(
         L: *const gp_Hypr2d,
         P1: *const gp_Pnt2d,
         P2: *const gp_Pnt2d,
     ) -> crate::OcctResult<*mut BRepBuilderAPI_MakeEdge2d>;
-    /// **Source:** `BRepBuilderAPI_MakeEdge2d.hxx`:130 - `BRepBuilderAPI_MakeEdge2d::BRepBuilderAPI_MakeEdge2d()`
+    /// **Source:** `BRepBuilderAPI_MakeEdge2d.hxx`:122 - `BRepBuilderAPI_MakeEdge2d::BRepBuilderAPI_MakeEdge2d()`
     pub fn BRepBuilderAPI_MakeEdge2d_ctor_hypr2d_vertex2(
         L: *const gp_Hypr2d,
         V1: *const TopoDS_Vertex,
         V2: *const TopoDS_Vertex,
     ) -> crate::OcctResult<*mut BRepBuilderAPI_MakeEdge2d>;
-    /// **Source:** `BRepBuilderAPI_MakeEdge2d.hxx`:134 - `BRepBuilderAPI_MakeEdge2d::BRepBuilderAPI_MakeEdge2d()`
+    /// **Source:** `BRepBuilderAPI_MakeEdge2d.hxx`:126 - `BRepBuilderAPI_MakeEdge2d::BRepBuilderAPI_MakeEdge2d()`
     pub fn BRepBuilderAPI_MakeEdge2d_ctor_parab2d(
         L: *const gp_Parab2d,
     ) -> crate::OcctResult<*mut BRepBuilderAPI_MakeEdge2d>;
-    /// **Source:** `BRepBuilderAPI_MakeEdge2d.hxx`:136 - `BRepBuilderAPI_MakeEdge2d::BRepBuilderAPI_MakeEdge2d()`
+    /// **Source:** `BRepBuilderAPI_MakeEdge2d.hxx`:128 - `BRepBuilderAPI_MakeEdge2d::BRepBuilderAPI_MakeEdge2d()`
     pub fn BRepBuilderAPI_MakeEdge2d_ctor_parab2d_real2(
         L: *const gp_Parab2d,
         p1: f64,
         p2: f64,
     ) -> crate::OcctResult<*mut BRepBuilderAPI_MakeEdge2d>;
-    /// **Source:** `BRepBuilderAPI_MakeEdge2d.hxx`:140 - `BRepBuilderAPI_MakeEdge2d::BRepBuilderAPI_MakeEdge2d()`
+    /// **Source:** `BRepBuilderAPI_MakeEdge2d.hxx`:130 - `BRepBuilderAPI_MakeEdge2d::BRepBuilderAPI_MakeEdge2d()`
     pub fn BRepBuilderAPI_MakeEdge2d_ctor_parab2d_pnt2d2(
         L: *const gp_Parab2d,
         P1: *const gp_Pnt2d,
         P2: *const gp_Pnt2d,
     ) -> crate::OcctResult<*mut BRepBuilderAPI_MakeEdge2d>;
-    /// **Source:** `BRepBuilderAPI_MakeEdge2d.hxx`:144 - `BRepBuilderAPI_MakeEdge2d::BRepBuilderAPI_MakeEdge2d()`
+    /// **Source:** `BRepBuilderAPI_MakeEdge2d.hxx`:134 - `BRepBuilderAPI_MakeEdge2d::BRepBuilderAPI_MakeEdge2d()`
     pub fn BRepBuilderAPI_MakeEdge2d_ctor_parab2d_vertex2(
         L: *const gp_Parab2d,
         V1: *const TopoDS_Vertex,
         V2: *const TopoDS_Vertex,
     ) -> crate::OcctResult<*mut BRepBuilderAPI_MakeEdge2d>;
-    /// **Source:** `BRepBuilderAPI_MakeEdge2d.hxx`:148 - `BRepBuilderAPI_MakeEdge2d::BRepBuilderAPI_MakeEdge2d()`
+    /// **Source:** `BRepBuilderAPI_MakeEdge2d.hxx`:138 - `BRepBuilderAPI_MakeEdge2d::BRepBuilderAPI_MakeEdge2d()`
     pub fn BRepBuilderAPI_MakeEdge2d_ctor_handlegeom2dcurve(
-        L: *const HandleGeom2dCurve,
+        L: *const Handle_Geom2d_Curve,
     ) -> crate::OcctResult<*mut BRepBuilderAPI_MakeEdge2d>;
-    /// **Source:** `BRepBuilderAPI_MakeEdge2d.hxx`:150 - `BRepBuilderAPI_MakeEdge2d::BRepBuilderAPI_MakeEdge2d()`
+    /// **Source:** `BRepBuilderAPI_MakeEdge2d.hxx`:140 - `BRepBuilderAPI_MakeEdge2d::BRepBuilderAPI_MakeEdge2d()`
     pub fn BRepBuilderAPI_MakeEdge2d_ctor_handlegeom2dcurve_real2(
-        L: *const HandleGeom2dCurve,
+        L: *const Handle_Geom2d_Curve,
         p1: f64,
         p2: f64,
     ) -> crate::OcctResult<*mut BRepBuilderAPI_MakeEdge2d>;
-    /// **Source:** `BRepBuilderAPI_MakeEdge2d.hxx`:154 - `BRepBuilderAPI_MakeEdge2d::BRepBuilderAPI_MakeEdge2d()`
+    /// **Source:** `BRepBuilderAPI_MakeEdge2d.hxx`:144 - `BRepBuilderAPI_MakeEdge2d::BRepBuilderAPI_MakeEdge2d()`
     pub fn BRepBuilderAPI_MakeEdge2d_ctor_handlegeom2dcurve_pnt2d2(
-        L: *const HandleGeom2dCurve,
+        L: *const Handle_Geom2d_Curve,
         P1: *const gp_Pnt2d,
         P2: *const gp_Pnt2d,
+    ) -> crate::OcctResult<*mut BRepBuilderAPI_MakeEdge2d>;
+    /// **Source:** `BRepBuilderAPI_MakeEdge2d.hxx`:148 - `BRepBuilderAPI_MakeEdge2d::BRepBuilderAPI_MakeEdge2d()`
+    pub fn BRepBuilderAPI_MakeEdge2d_ctor_handlegeom2dcurve_vertex2(
+        L: *const Handle_Geom2d_Curve,
+        V1: *const TopoDS_Vertex,
+        V2: *const TopoDS_Vertex,
+    ) -> crate::OcctResult<*mut BRepBuilderAPI_MakeEdge2d>;
+    /// **Source:** `BRepBuilderAPI_MakeEdge2d.hxx`:152 - `BRepBuilderAPI_MakeEdge2d::BRepBuilderAPI_MakeEdge2d()`
+    pub fn BRepBuilderAPI_MakeEdge2d_ctor_handlegeom2dcurve_pnt2d2_real2(
+        L: *const Handle_Geom2d_Curve,
+        P1: *const gp_Pnt2d,
+        P2: *const gp_Pnt2d,
+        p1: f64,
+        p2: f64,
     ) -> crate::OcctResult<*mut BRepBuilderAPI_MakeEdge2d>;
     /// **Source:** `BRepBuilderAPI_MakeEdge2d.hxx`:158 - `BRepBuilderAPI_MakeEdge2d::BRepBuilderAPI_MakeEdge2d()`
-    pub fn BRepBuilderAPI_MakeEdge2d_ctor_handlegeom2dcurve_vertex2(
-        L: *const HandleGeom2dCurve,
-        V1: *const TopoDS_Vertex,
-        V2: *const TopoDS_Vertex,
-    ) -> crate::OcctResult<*mut BRepBuilderAPI_MakeEdge2d>;
-    /// **Source:** `BRepBuilderAPI_MakeEdge2d.hxx`:162 - `BRepBuilderAPI_MakeEdge2d::BRepBuilderAPI_MakeEdge2d()`
-    pub fn BRepBuilderAPI_MakeEdge2d_ctor_handlegeom2dcurve_pnt2d2_real2(
-        L: *const HandleGeom2dCurve,
-        P1: *const gp_Pnt2d,
-        P2: *const gp_Pnt2d,
-        p1: f64,
-        p2: f64,
-    ) -> crate::OcctResult<*mut BRepBuilderAPI_MakeEdge2d>;
-    /// **Source:** `BRepBuilderAPI_MakeEdge2d.hxx`:168 - `BRepBuilderAPI_MakeEdge2d::BRepBuilderAPI_MakeEdge2d()`
     pub fn BRepBuilderAPI_MakeEdge2d_ctor_handlegeom2dcurve_vertex2_real2(
-        L: *const HandleGeom2dCurve,
+        L: *const Handle_Geom2d_Curve,
         V1: *const TopoDS_Vertex,
         V2: *const TopoDS_Vertex,
         p1: f64,
         p2: f64,
     ) -> crate::OcctResult<*mut BRepBuilderAPI_MakeEdge2d>;
-    /// **Source:** `BRepBuilderAPI_MakeEdge2d.hxx`:174 - `BRepBuilderAPI_MakeEdge2d::Init()`
+    /// **Source:** `BRepBuilderAPI_MakeEdge2d.hxx`:164 - `BRepBuilderAPI_MakeEdge2d::Init()`
     pub fn BRepBuilderAPI_MakeEdge2d_init_handlegeom2dcurve(
         self_: *mut BRepBuilderAPI_MakeEdge2d,
-        C: *const HandleGeom2dCurve,
+        C: *const Handle_Geom2d_Curve,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepBuilderAPI_MakeEdge2d.hxx`:176 - `BRepBuilderAPI_MakeEdge2d::Init()`
+    /// **Source:** `BRepBuilderAPI_MakeEdge2d.hxx`:166 - `BRepBuilderAPI_MakeEdge2d::Init()`
     pub fn BRepBuilderAPI_MakeEdge2d_init_handlegeom2dcurve_real2(
         self_: *mut BRepBuilderAPI_MakeEdge2d,
-        C: *const HandleGeom2dCurve,
+        C: *const Handle_Geom2d_Curve,
         p1: f64,
         p2: f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepBuilderAPI_MakeEdge2d.hxx`:180 - `BRepBuilderAPI_MakeEdge2d::Init()`
+    /// **Source:** `BRepBuilderAPI_MakeEdge2d.hxx`:168 - `BRepBuilderAPI_MakeEdge2d::Init()`
     pub fn BRepBuilderAPI_MakeEdge2d_init_handlegeom2dcurve_pnt2d2(
         self_: *mut BRepBuilderAPI_MakeEdge2d,
-        C: *const HandleGeom2dCurve,
+        C: *const Handle_Geom2d_Curve,
         P1: *const gp_Pnt2d,
         P2: *const gp_Pnt2d,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepBuilderAPI_MakeEdge2d.hxx`:182 - `BRepBuilderAPI_MakeEdge2d::Init()`
+    /// **Source:** `BRepBuilderAPI_MakeEdge2d.hxx`:172 - `BRepBuilderAPI_MakeEdge2d::Init()`
     pub fn BRepBuilderAPI_MakeEdge2d_init_handlegeom2dcurve_vertex2(
         self_: *mut BRepBuilderAPI_MakeEdge2d,
-        C: *const HandleGeom2dCurve,
+        C: *const Handle_Geom2d_Curve,
         V1: *const TopoDS_Vertex,
         V2: *const TopoDS_Vertex,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepBuilderAPI_MakeEdge2d.hxx`:186 - `BRepBuilderAPI_MakeEdge2d::Init()`
+    /// **Source:** `BRepBuilderAPI_MakeEdge2d.hxx`:176 - `BRepBuilderAPI_MakeEdge2d::Init()`
     pub fn BRepBuilderAPI_MakeEdge2d_init_handlegeom2dcurve_pnt2d2_real2(
         self_: *mut BRepBuilderAPI_MakeEdge2d,
-        C: *const HandleGeom2dCurve,
+        C: *const Handle_Geom2d_Curve,
         P1: *const gp_Pnt2d,
         P2: *const gp_Pnt2d,
         p1: f64,
         p2: f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepBuilderAPI_MakeEdge2d.hxx`:192 - `BRepBuilderAPI_MakeEdge2d::Init()`
+    /// **Source:** `BRepBuilderAPI_MakeEdge2d.hxx`:182 - `BRepBuilderAPI_MakeEdge2d::Init()`
     pub fn BRepBuilderAPI_MakeEdge2d_init_handlegeom2dcurve_vertex2_real2(
         self_: *mut BRepBuilderAPI_MakeEdge2d,
-        C: *const HandleGeom2dCurve,
+        C: *const Handle_Geom2d_Curve,
         V1: *const TopoDS_Vertex,
         V2: *const TopoDS_Vertex,
         p1: f64,
         p2: f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepBuilderAPI_MakeEdge2d.hxx`:198 - `BRepBuilderAPI_MakeEdge2d::IsDone()`
+    /// **Source:** `BRepBuilderAPI_MakeEdge2d.hxx`:188 - `BRepBuilderAPI_MakeEdge2d::IsDone()`
     pub fn BRepBuilderAPI_MakeEdge2d_is_done(
         self_: *const BRepBuilderAPI_MakeEdge2d,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BRepBuilderAPI_MakeEdge2d.hxx`:201 - `BRepBuilderAPI_MakeEdge2d::Error()`
+    /// **Source:** `BRepBuilderAPI_MakeEdge2d.hxx`:191 - `BRepBuilderAPI_MakeEdge2d::Error()`
     pub fn BRepBuilderAPI_MakeEdge2d_error(
         self_: *const BRepBuilderAPI_MakeEdge2d,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `BRepBuilderAPI_MakeEdge2d.hxx`:203 - `BRepBuilderAPI_MakeEdge2d::Edge()`
+    /// **Source:** `BRepBuilderAPI_MakeEdge2d.hxx`:193 - `BRepBuilderAPI_MakeEdge2d::Edge()`
     pub fn BRepBuilderAPI_MakeEdge2d_edge(
         self_: *mut BRepBuilderAPI_MakeEdge2d,
     ) -> crate::OcctResult<*const TopoDS_Edge>;
-    /// **Source:** `BRepBuilderAPI_MakeEdge2d.hxx`:207 - `BRepBuilderAPI_MakeEdge2d::Vertex1()`
+    /// **Source:** `BRepBuilderAPI_MakeEdge2d.hxx`:197 - `BRepBuilderAPI_MakeEdge2d::Vertex1()`
     pub fn BRepBuilderAPI_MakeEdge2d_vertex1(
         self_: *const BRepBuilderAPI_MakeEdge2d,
     ) -> crate::OcctResult<*const TopoDS_Vertex>;
-    /// **Source:** `BRepBuilderAPI_MakeEdge2d.hxx`:210 - `BRepBuilderAPI_MakeEdge2d::Vertex2()`
+    /// **Source:** `BRepBuilderAPI_MakeEdge2d.hxx`:200 - `BRepBuilderAPI_MakeEdge2d::Vertex2()`
     pub fn BRepBuilderAPI_MakeEdge2d_vertex2(
         self_: *const BRepBuilderAPI_MakeEdge2d,
     ) -> crate::OcctResult<*const TopoDS_Vertex>;
@@ -3447,7 +3446,7 @@ unsafe extern "C" {
     ) -> crate::OcctResult<*mut BRepBuilderAPI_MakeFace>;
     /// **Source:** `BRepBuilderAPI_MakeFace.hxx`:90 - `BRepBuilderAPI_MakeFace::BRepBuilderAPI_MakeFace()`
     pub fn BRepBuilderAPI_MakeFace_ctor_handlegeomsurface_real(
-        S: *const HandleGeomSurface,
+        S: *const Handle_Geom_Surface,
         TolDegen: f64,
     ) -> crate::OcctResult<*mut BRepBuilderAPI_MakeFace>;
     /// **Source:** `BRepBuilderAPI_MakeFace.hxx`:94 - `BRepBuilderAPI_MakeFace::BRepBuilderAPI_MakeFace()`
@@ -3492,7 +3491,7 @@ unsafe extern "C" {
     ) -> crate::OcctResult<*mut BRepBuilderAPI_MakeFace>;
     /// **Source:** `BRepBuilderAPI_MakeFace.hxx`:130 - `BRepBuilderAPI_MakeFace::BRepBuilderAPI_MakeFace()`
     pub fn BRepBuilderAPI_MakeFace_ctor_handlegeomsurface_real5(
-        S: *const HandleGeomSurface,
+        S: *const Handle_Geom_Surface,
         UMin: f64,
         UMax: f64,
         VMin: f64,
@@ -3504,83 +3503,83 @@ unsafe extern "C" {
         W: *const TopoDS_Wire,
         OnlyPlane: bool,
     ) -> crate::OcctResult<*mut BRepBuilderAPI_MakeFace>;
-    /// **Source:** `BRepBuilderAPI_MakeFace.hxx`:145 - `BRepBuilderAPI_MakeFace::BRepBuilderAPI_MakeFace()`
+    /// **Source:** `BRepBuilderAPI_MakeFace.hxx`:144 - `BRepBuilderAPI_MakeFace::BRepBuilderAPI_MakeFace()`
     pub fn BRepBuilderAPI_MakeFace_ctor_pln_wire_bool(
         P: *const gp_Pln,
         W: *const TopoDS_Wire,
         Inside: bool,
     ) -> crate::OcctResult<*mut BRepBuilderAPI_MakeFace>;
-    /// **Source:** `BRepBuilderAPI_MakeFace.hxx`:150 - `BRepBuilderAPI_MakeFace::BRepBuilderAPI_MakeFace()`
+    /// **Source:** `BRepBuilderAPI_MakeFace.hxx`:149 - `BRepBuilderAPI_MakeFace::BRepBuilderAPI_MakeFace()`
     pub fn BRepBuilderAPI_MakeFace_ctor_cylinder_wire_bool(
         C: *const gp_Cylinder,
         W: *const TopoDS_Wire,
         Inside: bool,
     ) -> crate::OcctResult<*mut BRepBuilderAPI_MakeFace>;
-    /// **Source:** `BRepBuilderAPI_MakeFace.hxx`:155 - `BRepBuilderAPI_MakeFace::BRepBuilderAPI_MakeFace()`
+    /// **Source:** `BRepBuilderAPI_MakeFace.hxx`:154 - `BRepBuilderAPI_MakeFace::BRepBuilderAPI_MakeFace()`
     pub fn BRepBuilderAPI_MakeFace_ctor_cone_wire_bool(
         C: *const gp_Cone,
         W: *const TopoDS_Wire,
         Inside: bool,
     ) -> crate::OcctResult<*mut BRepBuilderAPI_MakeFace>;
-    /// **Source:** `BRepBuilderAPI_MakeFace.hxx`:160 - `BRepBuilderAPI_MakeFace::BRepBuilderAPI_MakeFace()`
+    /// **Source:** `BRepBuilderAPI_MakeFace.hxx`:159 - `BRepBuilderAPI_MakeFace::BRepBuilderAPI_MakeFace()`
     pub fn BRepBuilderAPI_MakeFace_ctor_sphere_wire_bool(
         S: *const gp_Sphere,
         W: *const TopoDS_Wire,
         Inside: bool,
     ) -> crate::OcctResult<*mut BRepBuilderAPI_MakeFace>;
-    /// **Source:** `BRepBuilderAPI_MakeFace.hxx`:165 - `BRepBuilderAPI_MakeFace::BRepBuilderAPI_MakeFace()`
+    /// **Source:** `BRepBuilderAPI_MakeFace.hxx`:164 - `BRepBuilderAPI_MakeFace::BRepBuilderAPI_MakeFace()`
     pub fn BRepBuilderAPI_MakeFace_ctor_torus_wire_bool(
         C: *const gp_Torus,
         W: *const TopoDS_Wire,
         Inside: bool,
     ) -> crate::OcctResult<*mut BRepBuilderAPI_MakeFace>;
-    /// **Source:** `BRepBuilderAPI_MakeFace.hxx`:173 - `BRepBuilderAPI_MakeFace::BRepBuilderAPI_MakeFace()`
+    /// **Source:** `BRepBuilderAPI_MakeFace.hxx`:172 - `BRepBuilderAPI_MakeFace::BRepBuilderAPI_MakeFace()`
     pub fn BRepBuilderAPI_MakeFace_ctor_handlegeomsurface_wire_bool(
-        S: *const HandleGeomSurface,
+        S: *const Handle_Geom_Surface,
         W: *const TopoDS_Wire,
         Inside: bool,
     ) -> crate::OcctResult<*mut BRepBuilderAPI_MakeFace>;
-    /// **Source:** `BRepBuilderAPI_MakeFace.hxx`:220 - `BRepBuilderAPI_MakeFace::BRepBuilderAPI_MakeFace()`
+    /// **Source:** `BRepBuilderAPI_MakeFace.hxx`:219 - `BRepBuilderAPI_MakeFace::BRepBuilderAPI_MakeFace()`
     pub fn BRepBuilderAPI_MakeFace_ctor_face_wire(
         F: *const TopoDS_Face,
         W: *const TopoDS_Wire,
     ) -> crate::OcctResult<*mut BRepBuilderAPI_MakeFace>;
-    /// **Source:** `BRepBuilderAPI_MakeFace.hxx`:227 - `BRepBuilderAPI_MakeFace::Init()`
+    /// **Source:** `BRepBuilderAPI_MakeFace.hxx`:226 - `BRepBuilderAPI_MakeFace::Init()`
     pub fn BRepBuilderAPI_MakeFace_init_face(
         self_: *mut BRepBuilderAPI_MakeFace,
         F: *const TopoDS_Face,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepBuilderAPI_MakeFace.hxx`:238 - `BRepBuilderAPI_MakeFace::Init()`
+    /// **Source:** `BRepBuilderAPI_MakeFace.hxx`:237 - `BRepBuilderAPI_MakeFace::Init()`
     pub fn BRepBuilderAPI_MakeFace_init_handlegeomsurface_bool_real(
         self_: *mut BRepBuilderAPI_MakeFace,
-        S: *const HandleGeomSurface,
+        S: *const Handle_Geom_Surface,
         Bound: bool,
         TolDegen: f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepBuilderAPI_MakeFace.hxx`:252 - `BRepBuilderAPI_MakeFace::Init()`
+    /// **Source:** `BRepBuilderAPI_MakeFace.hxx`:251 - `BRepBuilderAPI_MakeFace::Init()`
     pub fn BRepBuilderAPI_MakeFace_init_handlegeomsurface_real5(
         self_: *mut BRepBuilderAPI_MakeFace,
-        S: *const HandleGeomSurface,
+        S: *const Handle_Geom_Surface,
         UMin: f64,
         UMax: f64,
         VMin: f64,
         VMax: f64,
         TolDegen: f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepBuilderAPI_MakeFace.hxx`:272 - `BRepBuilderAPI_MakeFace::Add()`
+    /// **Source:** `BRepBuilderAPI_MakeFace.hxx`:271 - `BRepBuilderAPI_MakeFace::Add()`
     pub fn BRepBuilderAPI_MakeFace_add(
         self_: *mut BRepBuilderAPI_MakeFace,
         W: *const TopoDS_Wire,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepBuilderAPI_MakeFace.hxx`:275 - `BRepBuilderAPI_MakeFace::IsDone()`
+    /// **Source:** `BRepBuilderAPI_MakeFace.hxx`:274 - `BRepBuilderAPI_MakeFace::IsDone()`
     pub fn BRepBuilderAPI_MakeFace_is_done(
         self_: *const BRepBuilderAPI_MakeFace,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BRepBuilderAPI_MakeFace.hxx`:283 - `BRepBuilderAPI_MakeFace::Error()`
+    /// **Source:** `BRepBuilderAPI_MakeFace.hxx`:282 - `BRepBuilderAPI_MakeFace::Error()`
     pub fn BRepBuilderAPI_MakeFace_error(
         self_: *const BRepBuilderAPI_MakeFace,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `BRepBuilderAPI_MakeFace.hxx`:288 - `BRepBuilderAPI_MakeFace::Face()`
+    /// **Source:** `BRepBuilderAPI_MakeFace.hxx`:287 - `BRepBuilderAPI_MakeFace::Face()`
     pub fn BRepBuilderAPI_MakeFace_face(
         self_: *const BRepBuilderAPI_MakeFace,
     ) -> crate::OcctResult<*const TopoDS_Face>;
@@ -3749,12 +3748,12 @@ unsafe extern "C" {
     pub fn BRepBuilderAPI_MakeShape_generated(
         self_: *mut BRepBuilderAPI_MakeShape,
         S: *const TopoDS_Shape,
-    ) -> crate::OcctResult<*const TopTools_ListOfShape>;
+    ) -> crate::OcctResult<*const NCollection_List_TopoDS_Shape>;
     /// **Source:** `BRepBuilderAPI_MakeShape.hxx`:55 - `BRepBuilderAPI_MakeShape::Modified()`
     pub fn BRepBuilderAPI_MakeShape_modified(
         self_: *mut BRepBuilderAPI_MakeShape,
         S: *const TopoDS_Shape,
-    ) -> crate::OcctResult<*const TopTools_ListOfShape>;
+    ) -> crate::OcctResult<*const NCollection_List_TopoDS_Shape>;
     /// **Source:** `BRepBuilderAPI_MakeShape.hxx`:58 - `BRepBuilderAPI_MakeShape::IsDeleted()`
     pub fn BRepBuilderAPI_MakeShape_is_deleted(
         self_: *mut BRepBuilderAPI_MakeShape,
@@ -3780,7 +3779,7 @@ unsafe extern "C" {
     pub fn BRepBuilderAPI_MakeShapeOnMesh_destructor(self_: *mut BRepBuilderAPI_MakeShapeOnMesh);
     /// **Source:** `BRepBuilderAPI_MakeShapeOnMesh.hxx`:32 - `BRepBuilderAPI_MakeShapeOnMesh::BRepBuilderAPI_MakeShapeOnMesh()`
     pub fn BRepBuilderAPI_MakeShapeOnMesh_ctor_handlepolytriangulation(
-        theMesh: *const HandlePolyTriangulation,
+        theMesh: *const Handle_Poly_Triangulation,
     ) -> crate::OcctResult<*mut BRepBuilderAPI_MakeShapeOnMesh>;
     /// **Source:** `BRepBuilderAPI_MakeShapeOnMesh.hxx`:38 - `BRepBuilderAPI_MakeShapeOnMesh::Build()`
     pub fn BRepBuilderAPI_MakeShapeOnMesh_build(
@@ -3826,12 +3825,12 @@ unsafe extern "C" {
     pub fn BRepBuilderAPI_MakeShell_ctor() -> crate::OcctResult<*mut BRepBuilderAPI_MakeShell>;
     /// **Source:** `BRepBuilderAPI_MakeShell.hxx`:67 - `BRepBuilderAPI_MakeShell::BRepBuilderAPI_MakeShell()`
     pub fn BRepBuilderAPI_MakeShell_ctor_handlegeomsurface_bool(
-        S: *const HandleGeomSurface,
+        S: *const Handle_Geom_Surface,
         Segment: bool,
     ) -> crate::OcctResult<*mut BRepBuilderAPI_MakeShell>;
     /// **Source:** `BRepBuilderAPI_MakeShell.hxx`:74 - `BRepBuilderAPI_MakeShell::BRepBuilderAPI_MakeShell()`
     pub fn BRepBuilderAPI_MakeShell_ctor_handlegeomsurface_real4_bool(
-        S: *const HandleGeomSurface,
+        S: *const Handle_Geom_Surface,
         UMin: f64,
         UMax: f64,
         VMin: f64,
@@ -3841,7 +3840,7 @@ unsafe extern "C" {
     /// **Source:** `BRepBuilderAPI_MakeShell.hxx`:91 - `BRepBuilderAPI_MakeShell::Init()`
     pub fn BRepBuilderAPI_MakeShell_init(
         self_: *mut BRepBuilderAPI_MakeShell,
-        S: *const HandleGeomSurface,
+        S: *const Handle_Geom_Surface,
         UMin: f64,
         UMax: f64,
         VMin: f64,
@@ -4023,71 +4022,71 @@ unsafe extern "C" {
     ) -> *const std::ffi::c_char;
     // ======================== BRepBuilderAPI_MakeWire ========================
     pub fn BRepBuilderAPI_MakeWire_destructor(self_: *mut BRepBuilderAPI_MakeWire);
-    /// **Source:** `BRepBuilderAPI_MakeWire.hxx`:76 - `BRepBuilderAPI_MakeWire::BRepBuilderAPI_MakeWire()`
+    /// **Source:** `BRepBuilderAPI_MakeWire.hxx`:77 - `BRepBuilderAPI_MakeWire::BRepBuilderAPI_MakeWire()`
     pub fn BRepBuilderAPI_MakeWire_ctor() -> crate::OcctResult<*mut BRepBuilderAPI_MakeWire>;
-    /// **Source:** `BRepBuilderAPI_MakeWire.hxx`:79 - `BRepBuilderAPI_MakeWire::BRepBuilderAPI_MakeWire()`
+    /// **Source:** `BRepBuilderAPI_MakeWire.hxx`:80 - `BRepBuilderAPI_MakeWire::BRepBuilderAPI_MakeWire()`
     pub fn BRepBuilderAPI_MakeWire_ctor_edge(
         E: *const TopoDS_Edge,
     ) -> crate::OcctResult<*mut BRepBuilderAPI_MakeWire>;
-    /// **Source:** `BRepBuilderAPI_MakeWire.hxx`:82 - `BRepBuilderAPI_MakeWire::BRepBuilderAPI_MakeWire()`
+    /// **Source:** `BRepBuilderAPI_MakeWire.hxx`:83 - `BRepBuilderAPI_MakeWire::BRepBuilderAPI_MakeWire()`
     pub fn BRepBuilderAPI_MakeWire_ctor_edge2(
         E1: *const TopoDS_Edge,
         E2: *const TopoDS_Edge,
     ) -> crate::OcctResult<*mut BRepBuilderAPI_MakeWire>;
-    /// **Source:** `BRepBuilderAPI_MakeWire.hxx`:85 - `BRepBuilderAPI_MakeWire::BRepBuilderAPI_MakeWire()`
+    /// **Source:** `BRepBuilderAPI_MakeWire.hxx`:86 - `BRepBuilderAPI_MakeWire::BRepBuilderAPI_MakeWire()`
     pub fn BRepBuilderAPI_MakeWire_ctor_edge3(
         E1: *const TopoDS_Edge,
         E2: *const TopoDS_Edge,
         E3: *const TopoDS_Edge,
     ) -> crate::OcctResult<*mut BRepBuilderAPI_MakeWire>;
-    /// **Source:** `BRepBuilderAPI_MakeWire.hxx`:110 - `BRepBuilderAPI_MakeWire::BRepBuilderAPI_MakeWire()`
+    /// **Source:** `BRepBuilderAPI_MakeWire.hxx`:111 - `BRepBuilderAPI_MakeWire::BRepBuilderAPI_MakeWire()`
     pub fn BRepBuilderAPI_MakeWire_ctor_edge4(
         E1: *const TopoDS_Edge,
         E2: *const TopoDS_Edge,
         E3: *const TopoDS_Edge,
         E4: *const TopoDS_Edge,
     ) -> crate::OcctResult<*mut BRepBuilderAPI_MakeWire>;
-    /// **Source:** `BRepBuilderAPI_MakeWire.hxx`:116 - `BRepBuilderAPI_MakeWire::BRepBuilderAPI_MakeWire()`
+    /// **Source:** `BRepBuilderAPI_MakeWire.hxx`:117 - `BRepBuilderAPI_MakeWire::BRepBuilderAPI_MakeWire()`
     pub fn BRepBuilderAPI_MakeWire_ctor_wire(
         W: *const TopoDS_Wire,
     ) -> crate::OcctResult<*mut BRepBuilderAPI_MakeWire>;
-    /// **Source:** `BRepBuilderAPI_MakeWire.hxx`:119 - `BRepBuilderAPI_MakeWire::BRepBuilderAPI_MakeWire()`
+    /// **Source:** `BRepBuilderAPI_MakeWire.hxx`:120 - `BRepBuilderAPI_MakeWire::BRepBuilderAPI_MakeWire()`
     pub fn BRepBuilderAPI_MakeWire_ctor_wire_edge(
         W: *const TopoDS_Wire,
         E: *const TopoDS_Edge,
     ) -> crate::OcctResult<*mut BRepBuilderAPI_MakeWire>;
-    /// **Source:** `BRepBuilderAPI_MakeWire.hxx`:134 - `BRepBuilderAPI_MakeWire::Add()`
+    /// **Source:** `BRepBuilderAPI_MakeWire.hxx`:135 - `BRepBuilderAPI_MakeWire::Add()`
     pub fn BRepBuilderAPI_MakeWire_add_edge(
         self_: *mut BRepBuilderAPI_MakeWire,
         E: *const TopoDS_Edge,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepBuilderAPI_MakeWire.hxx`:137 - `BRepBuilderAPI_MakeWire::Add()`
+    /// **Source:** `BRepBuilderAPI_MakeWire.hxx`:138 - `BRepBuilderAPI_MakeWire::Add()`
     pub fn BRepBuilderAPI_MakeWire_add_wire(
         self_: *mut BRepBuilderAPI_MakeWire,
         W: *const TopoDS_Wire,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepBuilderAPI_MakeWire.hxx`:146 - `BRepBuilderAPI_MakeWire::Add()`
-    pub fn BRepBuilderAPI_MakeWire_add_listofshape(
+    /// **Source:** `BRepBuilderAPI_MakeWire.hxx`:147 - `BRepBuilderAPI_MakeWire::Add()`
+    pub fn BRepBuilderAPI_MakeWire_add_list_shape(
         self_: *mut BRepBuilderAPI_MakeWire,
-        L: *const TopTools_ListOfShape,
+        L: *const NCollection_List_TopoDS_Shape,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepBuilderAPI_MakeWire.hxx`:152 - `BRepBuilderAPI_MakeWire::IsDone()`
+    /// **Source:** `BRepBuilderAPI_MakeWire.hxx`:153 - `BRepBuilderAPI_MakeWire::IsDone()`
     pub fn BRepBuilderAPI_MakeWire_is_done(
         self_: *const BRepBuilderAPI_MakeWire,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BRepBuilderAPI_MakeWire.hxx`:158 - `BRepBuilderAPI_MakeWire::Error()`
+    /// **Source:** `BRepBuilderAPI_MakeWire.hxx`:159 - `BRepBuilderAPI_MakeWire::Error()`
     pub fn BRepBuilderAPI_MakeWire_error(
         self_: *const BRepBuilderAPI_MakeWire,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `BRepBuilderAPI_MakeWire.hxx`:163 - `BRepBuilderAPI_MakeWire::Wire()`
+    /// **Source:** `BRepBuilderAPI_MakeWire.hxx`:164 - `BRepBuilderAPI_MakeWire::Wire()`
     pub fn BRepBuilderAPI_MakeWire_wire(
         self_: *mut BRepBuilderAPI_MakeWire,
     ) -> crate::OcctResult<*const TopoDS_Wire>;
-    /// **Source:** `BRepBuilderAPI_MakeWire.hxx`:173 - `BRepBuilderAPI_MakeWire::Edge()`
+    /// **Source:** `BRepBuilderAPI_MakeWire.hxx`:174 - `BRepBuilderAPI_MakeWire::Edge()`
     pub fn BRepBuilderAPI_MakeWire_edge(
         self_: *const BRepBuilderAPI_MakeWire,
     ) -> crate::OcctResult<*const TopoDS_Edge>;
-    /// **Source:** `BRepBuilderAPI_MakeWire.hxx`:181 - `BRepBuilderAPI_MakeWire::Vertex()`
+    /// **Source:** `BRepBuilderAPI_MakeWire.hxx`:182 - `BRepBuilderAPI_MakeWire::Vertex()`
     pub fn BRepBuilderAPI_MakeWire_vertex(
         self_: *const BRepBuilderAPI_MakeWire,
     ) -> crate::OcctResult<*const TopoDS_Vertex>;
@@ -4131,8 +4130,8 @@ unsafe extern "C" {
     pub fn BRepBuilderAPI_ModifyShape_modified(
         self_: *mut BRepBuilderAPI_ModifyShape,
         S: *const TopoDS_Shape,
-    ) -> crate::OcctResult<*const TopTools_ListOfShape>;
-    /// **Source:** `BRepBuilderAPI_ModifyShape.hxx`:63 - `BRepBuilderAPI_ModifyShape::ModifiedShape()`
+    ) -> crate::OcctResult<*const NCollection_List_TopoDS_Shape>;
+    /// **Source:** `BRepBuilderAPI_ModifyShape.hxx`:62 - `BRepBuilderAPI_ModifyShape::ModifiedShape()`
     pub fn BRepBuilderAPI_ModifyShape_modified_shape(
         self_: *const BRepBuilderAPI_ModifyShape,
         S: *const TopoDS_Shape,
@@ -4177,25 +4176,25 @@ unsafe extern "C" {
     ) -> *const std::ffi::c_char;
     // ======================== BRepBuilderAPI_NurbsConvert ========================
     pub fn BRepBuilderAPI_NurbsConvert_destructor(self_: *mut BRepBuilderAPI_NurbsConvert);
-    /// **Source:** `BRepBuilderAPI_NurbsConvert.hxx`:43 - `BRepBuilderAPI_NurbsConvert::BRepBuilderAPI_NurbsConvert()`
+    /// **Source:** `BRepBuilderAPI_NurbsConvert.hxx`:45 - `BRepBuilderAPI_NurbsConvert::BRepBuilderAPI_NurbsConvert()`
     pub fn BRepBuilderAPI_NurbsConvert_ctor() -> crate::OcctResult<*mut BRepBuilderAPI_NurbsConvert>;
-    /// **Source:** `BRepBuilderAPI_NurbsConvert.hxx`:54 - `BRepBuilderAPI_NurbsConvert::BRepBuilderAPI_NurbsConvert()`
+    /// **Source:** `BRepBuilderAPI_NurbsConvert.hxx`:56 - `BRepBuilderAPI_NurbsConvert::BRepBuilderAPI_NurbsConvert()`
     pub fn BRepBuilderAPI_NurbsConvert_ctor_shape_bool(
         S: *const TopoDS_Shape,
         Copy: bool,
     ) -> crate::OcctResult<*mut BRepBuilderAPI_NurbsConvert>;
-    /// **Source:** `BRepBuilderAPI_NurbsConvert.hxx`:65 - `BRepBuilderAPI_NurbsConvert::Perform()`
+    /// **Source:** `BRepBuilderAPI_NurbsConvert.hxx`:66 - `BRepBuilderAPI_NurbsConvert::Perform()`
     pub fn BRepBuilderAPI_NurbsConvert_perform(
         self_: *mut BRepBuilderAPI_NurbsConvert,
         S: *const TopoDS_Shape,
         Copy: bool,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepBuilderAPI_NurbsConvert.hxx`:69 - `BRepBuilderAPI_NurbsConvert::Modified()`
+    /// **Source:** `BRepBuilderAPI_NurbsConvert.hxx`:70 - `BRepBuilderAPI_NurbsConvert::Modified()`
     pub fn BRepBuilderAPI_NurbsConvert_modified(
         self_: *mut BRepBuilderAPI_NurbsConvert,
         S: *const TopoDS_Shape,
-    ) -> crate::OcctResult<*const TopTools_ListOfShape>;
-    /// **Source:** `BRepBuilderAPI_NurbsConvert.hxx`:77 - `BRepBuilderAPI_NurbsConvert::ModifiedShape()`
+    ) -> crate::OcctResult<*const NCollection_List_TopoDS_Shape>;
+    /// **Source:** `BRepBuilderAPI_NurbsConvert.hxx`:78 - `BRepBuilderAPI_NurbsConvert::ModifiedShape()`
     pub fn BRepBuilderAPI_NurbsConvert_modified_shape(
         self_: *const BRepBuilderAPI_NurbsConvert,
         S: *const TopoDS_Shape,
@@ -4248,7 +4247,7 @@ unsafe extern "C" {
     ) -> *const std::ffi::c_char;
     // ======================== BRepBuilderAPI_Sewing ========================
     pub fn BRepBuilderAPI_Sewing_destructor(self_: *mut BRepBuilderAPI_Sewing);
-    /// **Source:** `BRepBuilderAPI_Sewing.hxx`:87 - `BRepBuilderAPI_Sewing::BRepBuilderAPI_Sewing()`
+    /// **Source:** `BRepBuilderAPI_Sewing.hxx`:78 - `BRepBuilderAPI_Sewing::BRepBuilderAPI_Sewing()`
     pub fn BRepBuilderAPI_Sewing_ctor_real_bool4(
         tolerance: f64,
         option1: bool,
@@ -4256,7 +4255,7 @@ unsafe extern "C" {
         option3: bool,
         option4: bool,
     ) -> crate::OcctResult<*mut BRepBuilderAPI_Sewing>;
-    /// **Source:** `BRepBuilderAPI_Sewing.hxx`:94 - `BRepBuilderAPI_Sewing::Init()`
+    /// **Source:** `BRepBuilderAPI_Sewing.hxx`:85 - `BRepBuilderAPI_Sewing::Init()`
     pub fn BRepBuilderAPI_Sewing_init(
         self_: *mut BRepBuilderAPI_Sewing,
         tolerance: f64,
@@ -4265,210 +4264,210 @@ unsafe extern "C" {
         option3: bool,
         option4: bool,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepBuilderAPI_Sewing.hxx`:101 - `BRepBuilderAPI_Sewing::Load()`
+    /// **Source:** `BRepBuilderAPI_Sewing.hxx`:92 - `BRepBuilderAPI_Sewing::Load()`
     pub fn BRepBuilderAPI_Sewing_load(
         self_: *mut BRepBuilderAPI_Sewing,
         shape: *const TopoDS_Shape,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepBuilderAPI_Sewing.hxx`:104 - `BRepBuilderAPI_Sewing::Add()`
+    /// **Source:** `BRepBuilderAPI_Sewing.hxx`:95 - `BRepBuilderAPI_Sewing::Add()`
     pub fn BRepBuilderAPI_Sewing_add(
         self_: *mut BRepBuilderAPI_Sewing,
         shape: *const TopoDS_Shape,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepBuilderAPI_Sewing.hxx`:108 - `BRepBuilderAPI_Sewing::Perform()`
+    /// **Source:** `BRepBuilderAPI_Sewing.hxx`:99 - `BRepBuilderAPI_Sewing::Perform()`
     pub fn BRepBuilderAPI_Sewing_perform(
         self_: *mut BRepBuilderAPI_Sewing,
         theProgress: *const Message_ProgressRange,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepBuilderAPI_Sewing.hxx`:113 - `BRepBuilderAPI_Sewing::SewedShape()`
+    /// **Source:** `BRepBuilderAPI_Sewing.hxx`:104 - `BRepBuilderAPI_Sewing::SewedShape()`
     pub fn BRepBuilderAPI_Sewing_sewed_shape(
         self_: *const BRepBuilderAPI_Sewing,
     ) -> crate::OcctResult<*const TopoDS_Shape>;
-    /// **Source:** `BRepBuilderAPI_Sewing.hxx`:116 - `BRepBuilderAPI_Sewing::SetContext()`
+    /// **Source:** `BRepBuilderAPI_Sewing.hxx`:107 - `BRepBuilderAPI_Sewing::SetContext()`
     pub fn BRepBuilderAPI_Sewing_set_context(
         self_: *mut BRepBuilderAPI_Sewing,
-        theContext: *const HandleBRepToolsReShape,
+        theContext: *const Handle_BRepTools_ReShape,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepBuilderAPI_Sewing.hxx`:119 - `BRepBuilderAPI_Sewing::GetContext()`
+    /// **Source:** `BRepBuilderAPI_Sewing.hxx`:110 - `BRepBuilderAPI_Sewing::GetContext()`
     pub fn BRepBuilderAPI_Sewing_get_context(
         self_: *const BRepBuilderAPI_Sewing,
-    ) -> crate::OcctResult<*const HandleBRepToolsReShape>;
-    /// **Source:** `BRepBuilderAPI_Sewing.hxx`:122 - `BRepBuilderAPI_Sewing::NbFreeEdges()`
+    ) -> crate::OcctResult<*const Handle_BRepTools_ReShape>;
+    /// **Source:** `BRepBuilderAPI_Sewing.hxx`:113 - `BRepBuilderAPI_Sewing::NbFreeEdges()`
     pub fn BRepBuilderAPI_Sewing_nb_free_edges(
         self_: *const BRepBuilderAPI_Sewing,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `BRepBuilderAPI_Sewing.hxx`:125 - `BRepBuilderAPI_Sewing::FreeEdge()`
+    /// **Source:** `BRepBuilderAPI_Sewing.hxx`:116 - `BRepBuilderAPI_Sewing::FreeEdge()`
     pub fn BRepBuilderAPI_Sewing_free_edge(
         self_: *const BRepBuilderAPI_Sewing,
         index: i32,
     ) -> crate::OcctResult<*const TopoDS_Edge>;
-    /// **Source:** `BRepBuilderAPI_Sewing.hxx`:129 - `BRepBuilderAPI_Sewing::NbMultipleEdges()`
+    /// **Source:** `BRepBuilderAPI_Sewing.hxx`:120 - `BRepBuilderAPI_Sewing::NbMultipleEdges()`
     pub fn BRepBuilderAPI_Sewing_nb_multiple_edges(
         self_: *const BRepBuilderAPI_Sewing,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `BRepBuilderAPI_Sewing.hxx`:132 - `BRepBuilderAPI_Sewing::MultipleEdge()`
+    /// **Source:** `BRepBuilderAPI_Sewing.hxx`:123 - `BRepBuilderAPI_Sewing::MultipleEdge()`
     pub fn BRepBuilderAPI_Sewing_multiple_edge(
         self_: *const BRepBuilderAPI_Sewing,
         index: i32,
     ) -> crate::OcctResult<*const TopoDS_Edge>;
-    /// **Source:** `BRepBuilderAPI_Sewing.hxx`:135 - `BRepBuilderAPI_Sewing::NbContigousEdges()`
+    /// **Source:** `BRepBuilderAPI_Sewing.hxx`:126 - `BRepBuilderAPI_Sewing::NbContigousEdges()`
     pub fn BRepBuilderAPI_Sewing_nb_contigous_edges(
         self_: *const BRepBuilderAPI_Sewing,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `BRepBuilderAPI_Sewing.hxx`:138 - `BRepBuilderAPI_Sewing::ContigousEdge()`
+    /// **Source:** `BRepBuilderAPI_Sewing.hxx`:129 - `BRepBuilderAPI_Sewing::ContigousEdge()`
     pub fn BRepBuilderAPI_Sewing_contigous_edge(
         self_: *const BRepBuilderAPI_Sewing,
         index: i32,
     ) -> crate::OcctResult<*const TopoDS_Edge>;
-    /// **Source:** `BRepBuilderAPI_Sewing.hxx`:141 - `BRepBuilderAPI_Sewing::ContigousEdgeCouple()`
+    /// **Source:** `BRepBuilderAPI_Sewing.hxx`:132 - `BRepBuilderAPI_Sewing::ContigousEdgeCouple()`
     pub fn BRepBuilderAPI_Sewing_contigous_edge_couple(
         self_: *const BRepBuilderAPI_Sewing,
         index: i32,
-    ) -> crate::OcctResult<*const TopTools_ListOfShape>;
-    /// **Source:** `BRepBuilderAPI_Sewing.hxx`:145 - `BRepBuilderAPI_Sewing::IsSectionBound()`
+    ) -> crate::OcctResult<*const NCollection_List_TopoDS_Shape>;
+    /// **Source:** `BRepBuilderAPI_Sewing.hxx`:135 - `BRepBuilderAPI_Sewing::IsSectionBound()`
     pub fn BRepBuilderAPI_Sewing_is_section_bound(
         self_: *const BRepBuilderAPI_Sewing,
         section: *const TopoDS_Edge,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BRepBuilderAPI_Sewing.hxx`:152 - `BRepBuilderAPI_Sewing::SectionToBoundary()`
+    /// **Source:** `BRepBuilderAPI_Sewing.hxx`:142 - `BRepBuilderAPI_Sewing::SectionToBoundary()`
     pub fn BRepBuilderAPI_Sewing_section_to_boundary(
         self_: *const BRepBuilderAPI_Sewing,
         section: *const TopoDS_Edge,
     ) -> crate::OcctResult<*const TopoDS_Edge>;
-    /// **Source:** `BRepBuilderAPI_Sewing.hxx`:155 - `BRepBuilderAPI_Sewing::NbDegeneratedShapes()`
+    /// **Source:** `BRepBuilderAPI_Sewing.hxx`:145 - `BRepBuilderAPI_Sewing::NbDegeneratedShapes()`
     pub fn BRepBuilderAPI_Sewing_nb_degenerated_shapes(
         self_: *const BRepBuilderAPI_Sewing,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `BRepBuilderAPI_Sewing.hxx`:158 - `BRepBuilderAPI_Sewing::DegeneratedShape()`
+    /// **Source:** `BRepBuilderAPI_Sewing.hxx`:148 - `BRepBuilderAPI_Sewing::DegeneratedShape()`
     pub fn BRepBuilderAPI_Sewing_degenerated_shape(
         self_: *const BRepBuilderAPI_Sewing,
         index: i32,
     ) -> crate::OcctResult<*const TopoDS_Shape>;
-    /// **Source:** `BRepBuilderAPI_Sewing.hxx`:161 - `BRepBuilderAPI_Sewing::IsDegenerated()`
+    /// **Source:** `BRepBuilderAPI_Sewing.hxx`:151 - `BRepBuilderAPI_Sewing::IsDegenerated()`
     pub fn BRepBuilderAPI_Sewing_is_degenerated(
         self_: *const BRepBuilderAPI_Sewing,
         shape: *const TopoDS_Shape,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BRepBuilderAPI_Sewing.hxx`:164 - `BRepBuilderAPI_Sewing::IsModified()`
+    /// **Source:** `BRepBuilderAPI_Sewing.hxx`:154 - `BRepBuilderAPI_Sewing::IsModified()`
     pub fn BRepBuilderAPI_Sewing_is_modified(
         self_: *const BRepBuilderAPI_Sewing,
         shape: *const TopoDS_Shape,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BRepBuilderAPI_Sewing.hxx`:167 - `BRepBuilderAPI_Sewing::Modified()`
+    /// **Source:** `BRepBuilderAPI_Sewing.hxx`:157 - `BRepBuilderAPI_Sewing::Modified()`
     pub fn BRepBuilderAPI_Sewing_modified(
         self_: *const BRepBuilderAPI_Sewing,
         shape: *const TopoDS_Shape,
     ) -> crate::OcctResult<*const TopoDS_Shape>;
-    /// **Source:** `BRepBuilderAPI_Sewing.hxx`:170 - `BRepBuilderAPI_Sewing::IsModifiedSubShape()`
+    /// **Source:** `BRepBuilderAPI_Sewing.hxx`:160 - `BRepBuilderAPI_Sewing::IsModifiedSubShape()`
     pub fn BRepBuilderAPI_Sewing_is_modified_sub_shape(
         self_: *const BRepBuilderAPI_Sewing,
         shape: *const TopoDS_Shape,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BRepBuilderAPI_Sewing.hxx`:173 - `BRepBuilderAPI_Sewing::ModifiedSubShape()`
+    /// **Source:** `BRepBuilderAPI_Sewing.hxx`:163 - `BRepBuilderAPI_Sewing::ModifiedSubShape()`
     pub fn BRepBuilderAPI_Sewing_modified_sub_shape(
         self_: *const BRepBuilderAPI_Sewing,
         shape: *const TopoDS_Shape,
     ) -> crate::OcctResult<*mut TopoDS_Shape>;
-    /// **Source:** `BRepBuilderAPI_Sewing.hxx`:176 - `BRepBuilderAPI_Sewing::Dump()`
+    /// **Source:** `BRepBuilderAPI_Sewing.hxx`:166 - `BRepBuilderAPI_Sewing::Dump()`
     pub fn BRepBuilderAPI_Sewing_dump(
         self_: *const BRepBuilderAPI_Sewing,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepBuilderAPI_Sewing.hxx`:179 - `BRepBuilderAPI_Sewing::NbDeletedFaces()`
+    /// **Source:** `BRepBuilderAPI_Sewing.hxx`:169 - `BRepBuilderAPI_Sewing::NbDeletedFaces()`
     pub fn BRepBuilderAPI_Sewing_nb_deleted_faces(
         self_: *const BRepBuilderAPI_Sewing,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `BRepBuilderAPI_Sewing.hxx`:182 - `BRepBuilderAPI_Sewing::DeletedFace()`
+    /// **Source:** `BRepBuilderAPI_Sewing.hxx`:172 - `BRepBuilderAPI_Sewing::DeletedFace()`
     pub fn BRepBuilderAPI_Sewing_deleted_face(
         self_: *const BRepBuilderAPI_Sewing,
         index: i32,
     ) -> crate::OcctResult<*const TopoDS_Face>;
-    /// **Source:** `BRepBuilderAPI_Sewing.hxx`:185 - `BRepBuilderAPI_Sewing::WhichFace()`
+    /// **Source:** `BRepBuilderAPI_Sewing.hxx`:175 - `BRepBuilderAPI_Sewing::WhichFace()`
     pub fn BRepBuilderAPI_Sewing_which_face(
         self_: *const BRepBuilderAPI_Sewing,
         theEdg: *const TopoDS_Edge,
         index: i32,
     ) -> crate::OcctResult<*mut TopoDS_Face>;
-    /// **Source:** `BRepBuilderAPI_Sewing.hxx`:189 - `BRepBuilderAPI_Sewing::SameParameterMode()`
+    /// **Source:** `BRepBuilderAPI_Sewing.hxx`:178 - `BRepBuilderAPI_Sewing::SameParameterMode()`
     pub fn BRepBuilderAPI_Sewing_same_parameter_mode(
         self_: *const BRepBuilderAPI_Sewing,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BRepBuilderAPI_Sewing.hxx`:192 - `BRepBuilderAPI_Sewing::SetSameParameterMode()`
+    /// **Source:** `BRepBuilderAPI_Sewing.hxx`:181 - `BRepBuilderAPI_Sewing::SetSameParameterMode()`
     pub fn BRepBuilderAPI_Sewing_set_same_parameter_mode(
         self_: *mut BRepBuilderAPI_Sewing,
         SameParameterMode: bool,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepBuilderAPI_Sewing.hxx`:195 - `BRepBuilderAPI_Sewing::Tolerance()`
+    /// **Source:** `BRepBuilderAPI_Sewing.hxx`:184 - `BRepBuilderAPI_Sewing::Tolerance()`
     pub fn BRepBuilderAPI_Sewing_tolerance(
         self_: *const BRepBuilderAPI_Sewing,
     ) -> crate::OcctResult<f64>;
-    /// **Source:** `BRepBuilderAPI_Sewing.hxx`:198 - `BRepBuilderAPI_Sewing::SetTolerance()`
+    /// **Source:** `BRepBuilderAPI_Sewing.hxx`:187 - `BRepBuilderAPI_Sewing::SetTolerance()`
     pub fn BRepBuilderAPI_Sewing_set_tolerance(
         self_: *mut BRepBuilderAPI_Sewing,
         theToler: f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepBuilderAPI_Sewing.hxx`:201 - `BRepBuilderAPI_Sewing::MinTolerance()`
+    /// **Source:** `BRepBuilderAPI_Sewing.hxx`:190 - `BRepBuilderAPI_Sewing::MinTolerance()`
     pub fn BRepBuilderAPI_Sewing_min_tolerance(
         self_: *const BRepBuilderAPI_Sewing,
     ) -> crate::OcctResult<f64>;
-    /// **Source:** `BRepBuilderAPI_Sewing.hxx`:204 - `BRepBuilderAPI_Sewing::SetMinTolerance()`
+    /// **Source:** `BRepBuilderAPI_Sewing.hxx`:193 - `BRepBuilderAPI_Sewing::SetMinTolerance()`
     pub fn BRepBuilderAPI_Sewing_set_min_tolerance(
         self_: *mut BRepBuilderAPI_Sewing,
         theMinToler: f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepBuilderAPI_Sewing.hxx`:207 - `BRepBuilderAPI_Sewing::MaxTolerance()`
+    /// **Source:** `BRepBuilderAPI_Sewing.hxx`:196 - `BRepBuilderAPI_Sewing::MaxTolerance()`
     pub fn BRepBuilderAPI_Sewing_max_tolerance(
         self_: *const BRepBuilderAPI_Sewing,
     ) -> crate::OcctResult<f64>;
-    /// **Source:** `BRepBuilderAPI_Sewing.hxx`:210 - `BRepBuilderAPI_Sewing::SetMaxTolerance()`
+    /// **Source:** `BRepBuilderAPI_Sewing.hxx`:199 - `BRepBuilderAPI_Sewing::SetMaxTolerance()`
     pub fn BRepBuilderAPI_Sewing_set_max_tolerance(
         self_: *mut BRepBuilderAPI_Sewing,
         theMaxToler: f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepBuilderAPI_Sewing.hxx`:213 - `BRepBuilderAPI_Sewing::FaceMode()`
+    /// **Source:** `BRepBuilderAPI_Sewing.hxx`:202 - `BRepBuilderAPI_Sewing::FaceMode()`
     pub fn BRepBuilderAPI_Sewing_face_mode(
         self_: *const BRepBuilderAPI_Sewing,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BRepBuilderAPI_Sewing.hxx`:216 - `BRepBuilderAPI_Sewing::SetFaceMode()`
+    /// **Source:** `BRepBuilderAPI_Sewing.hxx`:205 - `BRepBuilderAPI_Sewing::SetFaceMode()`
     pub fn BRepBuilderAPI_Sewing_set_face_mode(
         self_: *mut BRepBuilderAPI_Sewing,
         theFaceMode: bool,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepBuilderAPI_Sewing.hxx`:219 - `BRepBuilderAPI_Sewing::FloatingEdgesMode()`
+    /// **Source:** `BRepBuilderAPI_Sewing.hxx`:208 - `BRepBuilderAPI_Sewing::FloatingEdgesMode()`
     pub fn BRepBuilderAPI_Sewing_floating_edges_mode(
         self_: *const BRepBuilderAPI_Sewing,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BRepBuilderAPI_Sewing.hxx`:224 - `BRepBuilderAPI_Sewing::SetFloatingEdgesMode()`
+    /// **Source:** `BRepBuilderAPI_Sewing.hxx`:213 - `BRepBuilderAPI_Sewing::SetFloatingEdgesMode()`
     pub fn BRepBuilderAPI_Sewing_set_floating_edges_mode(
         self_: *mut BRepBuilderAPI_Sewing,
         theFloatingEdgesMode: bool,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepBuilderAPI_Sewing.hxx`:228 - `BRepBuilderAPI_Sewing::LocalTolerancesMode()`
+    /// **Source:** `BRepBuilderAPI_Sewing.hxx`:217 - `BRepBuilderAPI_Sewing::LocalTolerancesMode()`
     pub fn BRepBuilderAPI_Sewing_local_tolerances_mode(
         self_: *const BRepBuilderAPI_Sewing,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BRepBuilderAPI_Sewing.hxx`:233 - `BRepBuilderAPI_Sewing::SetLocalTolerancesMode()`
+    /// **Source:** `BRepBuilderAPI_Sewing.hxx`:222 - `BRepBuilderAPI_Sewing::SetLocalTolerancesMode()`
     pub fn BRepBuilderAPI_Sewing_set_local_tolerances_mode(
         self_: *mut BRepBuilderAPI_Sewing,
         theLocalTolerancesMode: bool,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepBuilderAPI_Sewing.hxx`:236 - `BRepBuilderAPI_Sewing::SetNonManifoldMode()`
+    /// **Source:** `BRepBuilderAPI_Sewing.hxx`:225 - `BRepBuilderAPI_Sewing::SetNonManifoldMode()`
     pub fn BRepBuilderAPI_Sewing_set_non_manifold_mode(
         self_: *mut BRepBuilderAPI_Sewing,
         theNonManifoldMode: bool,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepBuilderAPI_Sewing.hxx`:241 - `BRepBuilderAPI_Sewing::NonManifoldMode()`
+    /// **Source:** `BRepBuilderAPI_Sewing.hxx`:230 - `BRepBuilderAPI_Sewing::NonManifoldMode()`
     pub fn BRepBuilderAPI_Sewing_non_manifold_mode(
         self_: *const BRepBuilderAPI_Sewing,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BRepBuilderAPI_Sewing.hxx`:243 - `BRepBuilderAPI_Sewing::DynamicType()`
+    /// **Source:** `BRepBuilderAPI_Sewing.hxx`:232 - `BRepBuilderAPI_Sewing::DynamicType()`
     pub fn BRepBuilderAPI_Sewing_dynamic_type(
         self_: *const BRepBuilderAPI_Sewing,
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// **Source:** `BRepBuilderAPI_Sewing.hxx`:243 - `BRepBuilderAPI_Sewing::get_type_name()`
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
+    /// **Source:** `BRepBuilderAPI_Sewing.hxx`:232 - `BRepBuilderAPI_Sewing::get_type_name()`
     pub fn BRepBuilderAPI_Sewing_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
-    /// **Source:** `BRepBuilderAPI_Sewing.hxx`:243 - `BRepBuilderAPI_Sewing::get_type_descriptor()`
+    /// **Source:** `BRepBuilderAPI_Sewing.hxx`:232 - `BRepBuilderAPI_Sewing::get_type_descriptor()`
     pub fn BRepBuilderAPI_Sewing_get_type_descriptor(
-    ) -> crate::OcctResult<*const HandleStandardType>;
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast BRepBuilderAPI_Sewing to Standard_Transient
     pub fn BRepBuilderAPI_Sewing_as_Standard_Transient(
         self_: *const BRepBuilderAPI_Sewing,
@@ -4480,87 +4479,88 @@ unsafe extern "C" {
     /// Wrap BRepBuilderAPI_Sewing in a Handle
     pub fn BRepBuilderAPI_Sewing_to_handle(
         obj: *mut BRepBuilderAPI_Sewing,
-    ) -> crate::OcctResult<*mut HandleBRepBuilderAPISewing>;
+    ) -> crate::OcctResult<*mut Handle_BRepBuilderAPI_Sewing>;
     /// Destroy Handle<BRepBuilderAPI_Sewing>
-    pub fn HandleBRepBuilderAPISewing_destructor(self_: *mut HandleBRepBuilderAPISewing);
+    pub fn Handle_BRepBuilderAPI_Sewing_destructor(self_: *mut Handle_BRepBuilderAPI_Sewing);
     /// Clone Handle<BRepBuilderAPI_Sewing> (increments reference count)
-    pub fn HandleBRepBuilderAPISewing_clone(
-        self_: *const HandleBRepBuilderAPISewing,
-    ) -> crate::OcctResult<*mut HandleBRepBuilderAPISewing>;
+    pub fn Handle_BRepBuilderAPI_Sewing_clone(
+        self_: *const Handle_BRepBuilderAPI_Sewing,
+    ) -> crate::OcctResult<*mut Handle_BRepBuilderAPI_Sewing>;
     /// Check if Handle<BRepBuilderAPI_Sewing> is null
-    pub fn HandleBRepBuilderAPISewing_is_null(self_: *const HandleBRepBuilderAPISewing) -> bool;
+    pub fn Handle_BRepBuilderAPI_Sewing_is_null(self_: *const Handle_BRepBuilderAPI_Sewing)
+        -> bool;
     /// Dereference Handle to get *const BRepBuilderAPI_Sewing
-    pub fn HandleBRepBuilderAPISewing_get(
-        handle: *const HandleBRepBuilderAPISewing,
+    pub fn Handle_BRepBuilderAPI_Sewing_get(
+        handle: *const Handle_BRepBuilderAPI_Sewing,
     ) -> crate::OcctResult<*const BRepBuilderAPI_Sewing>;
     /// Dereference Handle to get *mut BRepBuilderAPI_Sewing
-    pub fn HandleBRepBuilderAPISewing_get_mut(
-        handle: *mut HandleBRepBuilderAPISewing,
+    pub fn Handle_BRepBuilderAPI_Sewing_get_mut(
+        handle: *mut Handle_BRepBuilderAPI_Sewing,
     ) -> crate::OcctResult<*mut BRepBuilderAPI_Sewing>;
     /// Upcast Handle<BRepBuilderAPI_Sewing> to Handle<Standard_Transient>
-    pub fn HandleBRepBuilderAPISewing_to_HandleStandardTransient(
-        self_: *const HandleBRepBuilderAPISewing,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn Handle_BRepBuilderAPI_Sewing_to_Handle_Standard_Transient(
+        self_: *const Handle_BRepBuilderAPI_Sewing,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn BRepBuilderAPI_Sewing_inherited_IsInstance(
         self_: *const BRepBuilderAPI_Sewing,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn BRepBuilderAPI_Sewing_inherited_IsKind(
         self_: *const BRepBuilderAPI_Sewing,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn BRepBuilderAPI_Sewing_inherited_This(
         self_: *const BRepBuilderAPI_Sewing,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn BRepBuilderAPI_Sewing_inherited_GetRefCount(
         self_: *const BRepBuilderAPI_Sewing,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn BRepBuilderAPI_Sewing_inherited_IncrementRefCounter(
         self_: *mut BRepBuilderAPI_Sewing,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn BRepBuilderAPI_Sewing_inherited_DecrementRefCounter(
         self_: *mut BRepBuilderAPI_Sewing,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn BRepBuilderAPI_Sewing_inherited_Delete(
         self_: *const BRepBuilderAPI_Sewing,
     ) -> *const std::ffi::c_char;
     // ======================== BRepBuilderAPI_Transform ========================
     pub fn BRepBuilderAPI_Transform_destructor(self_: *mut BRepBuilderAPI_Transform);
-    /// **Source:** `BRepBuilderAPI_Transform.hxx`:48 - `BRepBuilderAPI_Transform::BRepBuilderAPI_Transform()`
+    /// **Source:** `BRepBuilderAPI_Transform.hxx`:49 - `BRepBuilderAPI_Transform::BRepBuilderAPI_Transform()`
     pub fn BRepBuilderAPI_Transform_ctor_trsf(
         T: *const gp_Trsf,
     ) -> crate::OcctResult<*mut BRepBuilderAPI_Transform>;
-    /// **Source:** `BRepBuilderAPI_Transform.hxx`:59 - `BRepBuilderAPI_Transform::BRepBuilderAPI_Transform()`
+    /// **Source:** `BRepBuilderAPI_Transform.hxx`:60 - `BRepBuilderAPI_Transform::BRepBuilderAPI_Transform()`
     pub fn BRepBuilderAPI_Transform_ctor_shape_trsf_bool2(
         theShape: *const TopoDS_Shape,
         theTrsf: *const gp_Trsf,
         theCopyGeom: bool,
         theCopyMesh: bool,
     ) -> crate::OcctResult<*mut BRepBuilderAPI_Transform>;
-    /// **Source:** `BRepBuilderAPI_Transform.hxx`:78 - `BRepBuilderAPI_Transform::Perform()`
+    /// **Source:** `BRepBuilderAPI_Transform.hxx`:79 - `BRepBuilderAPI_Transform::Perform()`
     pub fn BRepBuilderAPI_Transform_perform(
         self_: *mut BRepBuilderAPI_Transform,
         theShape: *const TopoDS_Shape,
         theCopyGeom: bool,
         theCopyMesh: bool,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepBuilderAPI_Transform.hxx`:83 - `BRepBuilderAPI_Transform::ModifiedShape()`
+    /// **Source:** `BRepBuilderAPI_Transform.hxx`:84 - `BRepBuilderAPI_Transform::ModifiedShape()`
     pub fn BRepBuilderAPI_Transform_modified_shape(
         self_: *const BRepBuilderAPI_Transform,
         S: *const TopoDS_Shape,
     ) -> crate::OcctResult<*mut TopoDS_Shape>;
-    /// **Source:** `BRepBuilderAPI_Transform.hxx`:87 - `BRepBuilderAPI_Transform::Modified()`
+    /// **Source:** `BRepBuilderAPI_Transform.hxx`:88 - `BRepBuilderAPI_Transform::Modified()`
     pub fn BRepBuilderAPI_Transform_modified(
         self_: *mut BRepBuilderAPI_Transform,
         S: *const TopoDS_Shape,
-    ) -> crate::OcctResult<*const TopTools_ListOfShape>;
+    ) -> crate::OcctResult<*const NCollection_List_TopoDS_Shape>;
     /// Upcast BRepBuilderAPI_Transform to BRepBuilderAPI_ModifyShape
     pub fn BRepBuilderAPI_Transform_as_BRepBuilderAPI_ModifyShape(
         self_: *const BRepBuilderAPI_Transform,
@@ -4609,14 +4609,14 @@ unsafe extern "C" {
     ) -> *const std::ffi::c_char;
     // ======================== BRepCheck_Analyzer ========================
     pub fn BRepCheck_Analyzer_destructor(self_: *mut BRepCheck_Analyzer);
-    /// **Source:** `BRepCheck_Analyzer.hxx`:58 - `BRepCheck_Analyzer::BRepCheck_Analyzer()`
+    /// **Source:** `BRepCheck_Analyzer.hxx`:59 - `BRepCheck_Analyzer::BRepCheck_Analyzer()`
     pub fn BRepCheck_Analyzer_ctor_shape_bool3(
         S: *const TopoDS_Shape,
         GeomControls: bool,
         theIsParallel: bool,
         theIsExact: bool,
     ) -> crate::OcctResult<*mut BRepCheck_Analyzer>;
-    /// **Source:** `BRepCheck_Analyzer.hxx`:84 - `BRepCheck_Analyzer::Init()`
+    /// **Source:** `BRepCheck_Analyzer.hxx`:85 - `BRepCheck_Analyzer::Init()`
     pub fn BRepCheck_Analyzer_init(
         self_: *mut BRepCheck_Analyzer,
         S: *const TopoDS_Shape,
@@ -4652,58 +4652,58 @@ unsafe extern "C" {
     pub fn BRepCheck_Analyzer_result(
         self_: *const BRepCheck_Analyzer,
         theSubS: *const TopoDS_Shape,
-    ) -> crate::OcctResult<*const HandleBRepCheckResult>;
+    ) -> crate::OcctResult<*const Handle_BRepCheck_Result>;
     // ======================== BRepCheck_Edge ========================
     pub fn BRepCheck_Edge_destructor(self_: *mut BRepCheck_Edge);
-    /// **Source:** `BRepCheck_Edge.hxx`:35 - `BRepCheck_Edge::BRepCheck_Edge()`
+    /// **Source:** `BRepCheck_Edge.hxx`:32 - `BRepCheck_Edge::BRepCheck_Edge()`
     pub fn BRepCheck_Edge_ctor_edge(
         E: *const TopoDS_Edge,
     ) -> crate::OcctResult<*mut BRepCheck_Edge>;
-    /// **Source:** `BRepCheck_Edge.hxx`:37 - `BRepCheck_Edge::InContext()`
+    /// **Source:** `BRepCheck_Edge.hxx`:34 - `BRepCheck_Edge::InContext()`
     pub fn BRepCheck_Edge_in_context(
         self_: *mut BRepCheck_Edge,
         ContextShape: *const TopoDS_Shape,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepCheck_Edge.hxx`:39 - `BRepCheck_Edge::Minimum()`
+    /// **Source:** `BRepCheck_Edge.hxx`:36 - `BRepCheck_Edge::Minimum()`
     pub fn BRepCheck_Edge_minimum(self_: *mut BRepCheck_Edge) -> *const std::ffi::c_char;
-    /// **Source:** `BRepCheck_Edge.hxx`:41 - `BRepCheck_Edge::Blind()`
+    /// **Source:** `BRepCheck_Edge.hxx`:38 - `BRepCheck_Edge::Blind()`
     pub fn BRepCheck_Edge_blind(self_: *mut BRepCheck_Edge) -> *const std::ffi::c_char;
-    /// **Source:** `BRepCheck_Edge.hxx`:43 - `BRepCheck_Edge::GeometricControls()`
+    /// **Source:** `BRepCheck_Edge.hxx`:40 - `BRepCheck_Edge::GeometricControls()`
     pub fn BRepCheck_Edge_geometric_controls(
         self_: *const BRepCheck_Edge,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BRepCheck_Edge.hxx`:45 - `BRepCheck_Edge::GeometricControls()`
+    /// **Source:** `BRepCheck_Edge.hxx`:42 - `BRepCheck_Edge::GeometricControls()`
     pub fn BRepCheck_Edge_geometric_controls_bool(
         self_: *mut BRepCheck_Edge,
         B: bool,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepCheck_Edge.hxx`:47 - `BRepCheck_Edge::Tolerance()`
+    /// **Source:** `BRepCheck_Edge.hxx`:44 - `BRepCheck_Edge::Tolerance()`
     pub fn BRepCheck_Edge_tolerance(self_: *mut BRepCheck_Edge) -> crate::OcctResult<f64>;
-    /// **Source:** `BRepCheck_Edge.hxx`:50 - `BRepCheck_Edge::SetStatus()`
+    /// **Source:** `BRepCheck_Edge.hxx`:47 - `BRepCheck_Edge::SetStatus()`
     pub fn BRepCheck_Edge_set_status(
         self_: *mut BRepCheck_Edge,
         theStatus: i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepCheck_Edge.hxx`:57 - `BRepCheck_Edge::SetExactMethod()`
+    /// **Source:** `BRepCheck_Edge.hxx`:54 - `BRepCheck_Edge::SetExactMethod()`
     pub fn BRepCheck_Edge_set_exact_method(
         self_: *mut BRepCheck_Edge,
         theIsExact: bool,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepCheck_Edge.hxx`:60 - `BRepCheck_Edge::IsExactMethod()`
+    /// **Source:** `BRepCheck_Edge.hxx`:57 - `BRepCheck_Edge::IsExactMethod()`
     pub fn BRepCheck_Edge_is_exact_method(self_: *mut BRepCheck_Edge) -> crate::OcctResult<bool>;
-    /// **Source:** `BRepCheck_Edge.hxx`:64 - `BRepCheck_Edge::CheckPolygonOnTriangulation()`
+    /// **Source:** `BRepCheck_Edge.hxx`:61 - `BRepCheck_Edge::CheckPolygonOnTriangulation()`
     pub fn BRepCheck_Edge_check_polygon_on_triangulation(
         self_: *mut BRepCheck_Edge,
         theEdge: *const TopoDS_Edge,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `BRepCheck_Edge.hxx`:66 - `BRepCheck_Edge::DynamicType()`
+    /// **Source:** `BRepCheck_Edge.hxx`:63 - `BRepCheck_Edge::DynamicType()`
     pub fn BRepCheck_Edge_dynamic_type(
         self_: *const BRepCheck_Edge,
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// **Source:** `BRepCheck_Edge.hxx`:66 - `BRepCheck_Edge::get_type_name()`
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
+    /// **Source:** `BRepCheck_Edge.hxx`:63 - `BRepCheck_Edge::get_type_name()`
     pub fn BRepCheck_Edge_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
-    /// **Source:** `BRepCheck_Edge.hxx`:66 - `BRepCheck_Edge::get_type_descriptor()`
-    pub fn BRepCheck_Edge_get_type_descriptor() -> crate::OcctResult<*const HandleStandardType>;
+    /// **Source:** `BRepCheck_Edge.hxx`:63 - `BRepCheck_Edge::get_type_descriptor()`
+    pub fn BRepCheck_Edge_get_type_descriptor() -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast BRepCheck_Edge to BRepCheck_Result
     pub fn BRepCheck_Edge_as_BRepCheck_Result(
         self_: *const BRepCheck_Edge,
@@ -4723,110 +4723,114 @@ unsafe extern "C" {
     /// Wrap BRepCheck_Edge in a Handle
     pub fn BRepCheck_Edge_to_handle(
         obj: *mut BRepCheck_Edge,
-    ) -> crate::OcctResult<*mut HandleBRepCheckEdge>;
+    ) -> crate::OcctResult<*mut Handle_BRepCheck_Edge>;
     /// Destroy Handle<BRepCheck_Edge>
-    pub fn HandleBRepCheckEdge_destructor(self_: *mut HandleBRepCheckEdge);
+    pub fn Handle_BRepCheck_Edge_destructor(self_: *mut Handle_BRepCheck_Edge);
     /// Clone Handle<BRepCheck_Edge> (increments reference count)
-    pub fn HandleBRepCheckEdge_clone(
-        self_: *const HandleBRepCheckEdge,
-    ) -> crate::OcctResult<*mut HandleBRepCheckEdge>;
+    pub fn Handle_BRepCheck_Edge_clone(
+        self_: *const Handle_BRepCheck_Edge,
+    ) -> crate::OcctResult<*mut Handle_BRepCheck_Edge>;
     /// Check if Handle<BRepCheck_Edge> is null
-    pub fn HandleBRepCheckEdge_is_null(self_: *const HandleBRepCheckEdge) -> bool;
+    pub fn Handle_BRepCheck_Edge_is_null(self_: *const Handle_BRepCheck_Edge) -> bool;
     /// Dereference Handle to get *const BRepCheck_Edge
-    pub fn HandleBRepCheckEdge_get(
-        handle: *const HandleBRepCheckEdge,
+    pub fn Handle_BRepCheck_Edge_get(
+        handle: *const Handle_BRepCheck_Edge,
     ) -> crate::OcctResult<*const BRepCheck_Edge>;
     /// Dereference Handle to get *mut BRepCheck_Edge
-    pub fn HandleBRepCheckEdge_get_mut(
-        handle: *mut HandleBRepCheckEdge,
+    pub fn Handle_BRepCheck_Edge_get_mut(
+        handle: *mut Handle_BRepCheck_Edge,
     ) -> crate::OcctResult<*mut BRepCheck_Edge>;
     /// Upcast Handle<BRepCheck_Edge> to Handle<BRepCheck_Result>
-    pub fn HandleBRepCheckEdge_to_HandleBRepCheckResult(
-        self_: *const HandleBRepCheckEdge,
-    ) -> crate::OcctResult<*mut HandleBRepCheckResult>;
+    pub fn Handle_BRepCheck_Edge_to_Handle_BRepCheck_Result(
+        self_: *const Handle_BRepCheck_Edge,
+    ) -> crate::OcctResult<*mut Handle_BRepCheck_Result>;
     /// Upcast Handle<BRepCheck_Edge> to Handle<Standard_Transient>
-    pub fn HandleBRepCheckEdge_to_HandleStandardTransient(
-        self_: *const HandleBRepCheckEdge,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
-    /// Inherited: **Source:** `BRepCheck_Result.hxx`:33 - `BRepCheck_Result::Init()`
+    pub fn Handle_BRepCheck_Edge_to_Handle_Standard_Transient(
+        self_: *const Handle_BRepCheck_Edge,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
+    /// Inherited: **Source:** `BRepCheck_Result.hxx`:35 - `BRepCheck_Result::Init()`
     pub fn BRepCheck_Edge_inherited_Init(
         self_: *mut BRepCheck_Edge,
         S: *const TopoDS_Shape,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BRepCheck_Result.hxx`:41 - `BRepCheck_Result::SetFailStatus()`
+    /// Inherited: **Source:** `BRepCheck_Result.hxx`:43 - `BRepCheck_Result::SetFailStatus()`
     pub fn BRepCheck_Edge_inherited_SetFailStatus(
         self_: *mut BRepCheck_Edge,
         S: *const TopoDS_Shape,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BRepCheck_Result.hxx`:43 - `BRepCheck_Result::Status()`
+    /// Inherited: **Source:** `BRepCheck_Result.hxx`:45 - `BRepCheck_Result::Status()`
     pub fn BRepCheck_Edge_inherited_Status(
         self_: *const BRepCheck_Edge,
-    ) -> crate::OcctResult<*const BRepCheck_ListOfStatus>;
-    /// Inherited: **Source:** `BRepCheck_Result.hxx`:45 - `BRepCheck_Result::IsMinimum()`
+    ) -> crate::OcctResult<*const NCollection_List_BRepCheck_Status>;
+    /// Inherited: **Source:** `BRepCheck_Result.hxx`:47 - `BRepCheck_Result::IsMinimum()`
     pub fn BRepCheck_Edge_inherited_IsMinimum(
         self_: *const BRepCheck_Edge,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `BRepCheck_Result.hxx`:47 - `BRepCheck_Result::IsBlind()`
+    /// Inherited: **Source:** `BRepCheck_Result.hxx`:49 - `BRepCheck_Result::IsBlind()`
     pub fn BRepCheck_Edge_inherited_IsBlind(
         self_: *const BRepCheck_Edge,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `BRepCheck_Result.hxx`:49 - `BRepCheck_Result::InitContextIterator()`
+    /// Inherited: **Source:** `BRepCheck_Result.hxx`:51 - `BRepCheck_Result::InitContextIterator()`
     pub fn BRepCheck_Edge_inherited_InitContextIterator(
         self_: *mut BRepCheck_Edge,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BRepCheck_Result.hxx`:51 - `BRepCheck_Result::MoreShapeInContext()`
+    /// Inherited: **Source:** `BRepCheck_Result.hxx`:53 - `BRepCheck_Result::MoreShapeInContext()`
     pub fn BRepCheck_Edge_inherited_MoreShapeInContext(
         self_: *const BRepCheck_Edge,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `BRepCheck_Result.hxx`:53 - `BRepCheck_Result::ContextualShape()`
+    /// Inherited: **Source:** `BRepCheck_Result.hxx`:55 - `BRepCheck_Result::ContextualShape()`
     pub fn BRepCheck_Edge_inherited_ContextualShape(
         self_: *const BRepCheck_Edge,
     ) -> crate::OcctResult<*const TopoDS_Shape>;
-    /// Inherited: **Source:** `BRepCheck_Result.hxx`:55 - `BRepCheck_Result::StatusOnShape()`
+    /// Inherited: **Source:** `BRepCheck_Result.hxx`:57 - `BRepCheck_Result::StatusOnShape()`
     pub fn BRepCheck_Edge_inherited_StatusOnShape(
         self_: *const BRepCheck_Edge,
-    ) -> crate::OcctResult<*const BRepCheck_ListOfStatus>;
-    /// Inherited: **Source:** `BRepCheck_Result.hxx`:57 - `BRepCheck_Result::NextShapeInContext()`
+    ) -> crate::OcctResult<*const NCollection_List_BRepCheck_Status>;
+    /// Inherited: **Source:** `BRepCheck_Result.hxx`:59 - `BRepCheck_Result::NextShapeInContext()`
     pub fn BRepCheck_Edge_inherited_NextShapeInContext(
         self_: *mut BRepCheck_Edge,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BRepCheck_Result.hxx`:59 - `BRepCheck_Result::SetParallel()`
+    /// Inherited: **Source:** `BRepCheck_Result.hxx`:62 - `BRepCheck_Result::SetParallel()`
     pub fn BRepCheck_Edge_inherited_SetParallel(
         self_: *mut BRepCheck_Edge,
         theIsParallel: bool,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BRepCheck_Result.hxx`:61 - `BRepCheck_Result::IsStatusOnShape()`
+    /// Inherited: **Source:** `BRepCheck_Result.hxx`:65 - `BRepCheck_Result::IsParallel()`
+    pub fn BRepCheck_Edge_inherited_IsParallel(
+        self_: *const BRepCheck_Edge,
+    ) -> crate::OcctResult<bool>;
+    /// Inherited: **Source:** `BRepCheck_Result.hxx`:67 - `BRepCheck_Result::IsStatusOnShape()`
     pub fn BRepCheck_Edge_inherited_IsStatusOnShape(
         self_: *const BRepCheck_Edge,
         theShape: *const TopoDS_Shape,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn BRepCheck_Edge_inherited_IsInstance(
         self_: *const BRepCheck_Edge,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn BRepCheck_Edge_inherited_IsKind(
         self_: *const BRepCheck_Edge,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn BRepCheck_Edge_inherited_This(
         self_: *const BRepCheck_Edge,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn BRepCheck_Edge_inherited_GetRefCount(
         self_: *const BRepCheck_Edge,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn BRepCheck_Edge_inherited_IncrementRefCounter(
         self_: *mut BRepCheck_Edge,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn BRepCheck_Edge_inherited_DecrementRefCounter(
         self_: *mut BRepCheck_Edge,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn BRepCheck_Edge_inherited_Delete(self_: *const BRepCheck_Edge)
         -> *const std::ffi::c_char;
     // ======================== BRepCheck_Face ========================
@@ -4854,37 +4858,37 @@ unsafe extern "C" {
         self_: *mut BRepCheck_Face,
         Update: bool,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `BRepCheck_Face.hxx`:49 - `BRepCheck_Face::OrientationOfWires()`
+    /// **Source:** `BRepCheck_Face.hxx`:48 - `BRepCheck_Face::OrientationOfWires()`
     pub fn BRepCheck_Face_orientation_of_wires(
         self_: *mut BRepCheck_Face,
         Update: bool,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `BRepCheck_Face.hxx`:51 - `BRepCheck_Face::SetUnorientable()`
+    /// **Source:** `BRepCheck_Face.hxx`:50 - `BRepCheck_Face::SetUnorientable()`
     pub fn BRepCheck_Face_set_unorientable(self_: *mut BRepCheck_Face) -> *const std::ffi::c_char;
-    /// **Source:** `BRepCheck_Face.hxx`:54 - `BRepCheck_Face::SetStatus()`
+    /// **Source:** `BRepCheck_Face.hxx`:53 - `BRepCheck_Face::SetStatus()`
     pub fn BRepCheck_Face_set_status(
         self_: *mut BRepCheck_Face,
         theStatus: i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepCheck_Face.hxx`:56 - `BRepCheck_Face::IsUnorientable()`
+    /// **Source:** `BRepCheck_Face.hxx`:55 - `BRepCheck_Face::IsUnorientable()`
     pub fn BRepCheck_Face_is_unorientable(self_: *const BRepCheck_Face) -> crate::OcctResult<bool>;
-    /// **Source:** `BRepCheck_Face.hxx`:58 - `BRepCheck_Face::GeometricControls()`
+    /// **Source:** `BRepCheck_Face.hxx`:57 - `BRepCheck_Face::GeometricControls()`
     pub fn BRepCheck_Face_geometric_controls(
         self_: *const BRepCheck_Face,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BRepCheck_Face.hxx`:60 - `BRepCheck_Face::GeometricControls()`
+    /// **Source:** `BRepCheck_Face.hxx`:59 - `BRepCheck_Face::GeometricControls()`
     pub fn BRepCheck_Face_geometric_controls_bool(
         self_: *mut BRepCheck_Face,
         B: bool,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepCheck_Face.hxx`:62 - `BRepCheck_Face::DynamicType()`
+    /// **Source:** `BRepCheck_Face.hxx`:61 - `BRepCheck_Face::DynamicType()`
     pub fn BRepCheck_Face_dynamic_type(
         self_: *const BRepCheck_Face,
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// **Source:** `BRepCheck_Face.hxx`:62 - `BRepCheck_Face::get_type_name()`
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
+    /// **Source:** `BRepCheck_Face.hxx`:61 - `BRepCheck_Face::get_type_name()`
     pub fn BRepCheck_Face_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
-    /// **Source:** `BRepCheck_Face.hxx`:62 - `BRepCheck_Face::get_type_descriptor()`
-    pub fn BRepCheck_Face_get_type_descriptor() -> crate::OcctResult<*const HandleStandardType>;
+    /// **Source:** `BRepCheck_Face.hxx`:61 - `BRepCheck_Face::get_type_descriptor()`
+    pub fn BRepCheck_Face_get_type_descriptor() -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast BRepCheck_Face to BRepCheck_Result
     pub fn BRepCheck_Face_as_BRepCheck_Result(
         self_: *const BRepCheck_Face,
@@ -4904,184 +4908,190 @@ unsafe extern "C" {
     /// Wrap BRepCheck_Face in a Handle
     pub fn BRepCheck_Face_to_handle(
         obj: *mut BRepCheck_Face,
-    ) -> crate::OcctResult<*mut HandleBRepCheckFace>;
+    ) -> crate::OcctResult<*mut Handle_BRepCheck_Face>;
     /// Destroy Handle<BRepCheck_Face>
-    pub fn HandleBRepCheckFace_destructor(self_: *mut HandleBRepCheckFace);
+    pub fn Handle_BRepCheck_Face_destructor(self_: *mut Handle_BRepCheck_Face);
     /// Clone Handle<BRepCheck_Face> (increments reference count)
-    pub fn HandleBRepCheckFace_clone(
-        self_: *const HandleBRepCheckFace,
-    ) -> crate::OcctResult<*mut HandleBRepCheckFace>;
+    pub fn Handle_BRepCheck_Face_clone(
+        self_: *const Handle_BRepCheck_Face,
+    ) -> crate::OcctResult<*mut Handle_BRepCheck_Face>;
     /// Check if Handle<BRepCheck_Face> is null
-    pub fn HandleBRepCheckFace_is_null(self_: *const HandleBRepCheckFace) -> bool;
+    pub fn Handle_BRepCheck_Face_is_null(self_: *const Handle_BRepCheck_Face) -> bool;
     /// Dereference Handle to get *const BRepCheck_Face
-    pub fn HandleBRepCheckFace_get(
-        handle: *const HandleBRepCheckFace,
+    pub fn Handle_BRepCheck_Face_get(
+        handle: *const Handle_BRepCheck_Face,
     ) -> crate::OcctResult<*const BRepCheck_Face>;
     /// Dereference Handle to get *mut BRepCheck_Face
-    pub fn HandleBRepCheckFace_get_mut(
-        handle: *mut HandleBRepCheckFace,
+    pub fn Handle_BRepCheck_Face_get_mut(
+        handle: *mut Handle_BRepCheck_Face,
     ) -> crate::OcctResult<*mut BRepCheck_Face>;
     /// Upcast Handle<BRepCheck_Face> to Handle<BRepCheck_Result>
-    pub fn HandleBRepCheckFace_to_HandleBRepCheckResult(
-        self_: *const HandleBRepCheckFace,
-    ) -> crate::OcctResult<*mut HandleBRepCheckResult>;
+    pub fn Handle_BRepCheck_Face_to_Handle_BRepCheck_Result(
+        self_: *const Handle_BRepCheck_Face,
+    ) -> crate::OcctResult<*mut Handle_BRepCheck_Result>;
     /// Upcast Handle<BRepCheck_Face> to Handle<Standard_Transient>
-    pub fn HandleBRepCheckFace_to_HandleStandardTransient(
-        self_: *const HandleBRepCheckFace,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
-    /// Inherited: **Source:** `BRepCheck_Result.hxx`:33 - `BRepCheck_Result::Init()`
+    pub fn Handle_BRepCheck_Face_to_Handle_Standard_Transient(
+        self_: *const Handle_BRepCheck_Face,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
+    /// Inherited: **Source:** `BRepCheck_Result.hxx`:35 - `BRepCheck_Result::Init()`
     pub fn BRepCheck_Face_inherited_Init(
         self_: *mut BRepCheck_Face,
         S: *const TopoDS_Shape,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BRepCheck_Result.hxx`:41 - `BRepCheck_Result::SetFailStatus()`
+    /// Inherited: **Source:** `BRepCheck_Result.hxx`:43 - `BRepCheck_Result::SetFailStatus()`
     pub fn BRepCheck_Face_inherited_SetFailStatus(
         self_: *mut BRepCheck_Face,
         S: *const TopoDS_Shape,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BRepCheck_Result.hxx`:43 - `BRepCheck_Result::Status()`
+    /// Inherited: **Source:** `BRepCheck_Result.hxx`:45 - `BRepCheck_Result::Status()`
     pub fn BRepCheck_Face_inherited_Status(
         self_: *const BRepCheck_Face,
-    ) -> crate::OcctResult<*const BRepCheck_ListOfStatus>;
-    /// Inherited: **Source:** `BRepCheck_Result.hxx`:45 - `BRepCheck_Result::IsMinimum()`
+    ) -> crate::OcctResult<*const NCollection_List_BRepCheck_Status>;
+    /// Inherited: **Source:** `BRepCheck_Result.hxx`:47 - `BRepCheck_Result::IsMinimum()`
     pub fn BRepCheck_Face_inherited_IsMinimum(
         self_: *const BRepCheck_Face,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `BRepCheck_Result.hxx`:47 - `BRepCheck_Result::IsBlind()`
+    /// Inherited: **Source:** `BRepCheck_Result.hxx`:49 - `BRepCheck_Result::IsBlind()`
     pub fn BRepCheck_Face_inherited_IsBlind(
         self_: *const BRepCheck_Face,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `BRepCheck_Result.hxx`:49 - `BRepCheck_Result::InitContextIterator()`
+    /// Inherited: **Source:** `BRepCheck_Result.hxx`:51 - `BRepCheck_Result::InitContextIterator()`
     pub fn BRepCheck_Face_inherited_InitContextIterator(
         self_: *mut BRepCheck_Face,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BRepCheck_Result.hxx`:51 - `BRepCheck_Result::MoreShapeInContext()`
+    /// Inherited: **Source:** `BRepCheck_Result.hxx`:53 - `BRepCheck_Result::MoreShapeInContext()`
     pub fn BRepCheck_Face_inherited_MoreShapeInContext(
         self_: *const BRepCheck_Face,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `BRepCheck_Result.hxx`:53 - `BRepCheck_Result::ContextualShape()`
+    /// Inherited: **Source:** `BRepCheck_Result.hxx`:55 - `BRepCheck_Result::ContextualShape()`
     pub fn BRepCheck_Face_inherited_ContextualShape(
         self_: *const BRepCheck_Face,
     ) -> crate::OcctResult<*const TopoDS_Shape>;
-    /// Inherited: **Source:** `BRepCheck_Result.hxx`:55 - `BRepCheck_Result::StatusOnShape()`
+    /// Inherited: **Source:** `BRepCheck_Result.hxx`:57 - `BRepCheck_Result::StatusOnShape()`
     pub fn BRepCheck_Face_inherited_StatusOnShape(
         self_: *const BRepCheck_Face,
-    ) -> crate::OcctResult<*const BRepCheck_ListOfStatus>;
-    /// Inherited: **Source:** `BRepCheck_Result.hxx`:57 - `BRepCheck_Result::NextShapeInContext()`
+    ) -> crate::OcctResult<*const NCollection_List_BRepCheck_Status>;
+    /// Inherited: **Source:** `BRepCheck_Result.hxx`:59 - `BRepCheck_Result::NextShapeInContext()`
     pub fn BRepCheck_Face_inherited_NextShapeInContext(
         self_: *mut BRepCheck_Face,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BRepCheck_Result.hxx`:59 - `BRepCheck_Result::SetParallel()`
+    /// Inherited: **Source:** `BRepCheck_Result.hxx`:62 - `BRepCheck_Result::SetParallel()`
     pub fn BRepCheck_Face_inherited_SetParallel(
         self_: *mut BRepCheck_Face,
         theIsParallel: bool,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BRepCheck_Result.hxx`:61 - `BRepCheck_Result::IsStatusOnShape()`
+    /// Inherited: **Source:** `BRepCheck_Result.hxx`:65 - `BRepCheck_Result::IsParallel()`
+    pub fn BRepCheck_Face_inherited_IsParallel(
+        self_: *const BRepCheck_Face,
+    ) -> crate::OcctResult<bool>;
+    /// Inherited: **Source:** `BRepCheck_Result.hxx`:67 - `BRepCheck_Result::IsStatusOnShape()`
     pub fn BRepCheck_Face_inherited_IsStatusOnShape(
         self_: *const BRepCheck_Face,
         theShape: *const TopoDS_Shape,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn BRepCheck_Face_inherited_IsInstance(
         self_: *const BRepCheck_Face,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn BRepCheck_Face_inherited_IsKind(
         self_: *const BRepCheck_Face,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn BRepCheck_Face_inherited_This(
         self_: *const BRepCheck_Face,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn BRepCheck_Face_inherited_GetRefCount(
         self_: *const BRepCheck_Face,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn BRepCheck_Face_inherited_IncrementRefCounter(
         self_: *mut BRepCheck_Face,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn BRepCheck_Face_inherited_DecrementRefCounter(
         self_: *mut BRepCheck_Face,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn BRepCheck_Face_inherited_Delete(self_: *const BRepCheck_Face)
         -> *const std::ffi::c_char;
     // ======================== BRepCheck_Result ========================
     pub fn BRepCheck_Result_destructor(self_: *mut BRepCheck_Result);
-    /// **Source:** `BRepCheck_Result.hxx`:33 - `BRepCheck_Result::Init()`
+    /// **Source:** `BRepCheck_Result.hxx`:35 - `BRepCheck_Result::Init()`
     pub fn BRepCheck_Result_init(
         self_: *mut BRepCheck_Result,
         S: *const TopoDS_Shape,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepCheck_Result.hxx`:35 - `BRepCheck_Result::InContext()`
+    /// **Source:** `BRepCheck_Result.hxx`:37 - `BRepCheck_Result::InContext()`
     pub fn BRepCheck_Result_in_context(
         self_: *mut BRepCheck_Result,
         ContextShape: *const TopoDS_Shape,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepCheck_Result.hxx`:37 - `BRepCheck_Result::Minimum()`
+    /// **Source:** `BRepCheck_Result.hxx`:39 - `BRepCheck_Result::Minimum()`
     pub fn BRepCheck_Result_minimum(self_: *mut BRepCheck_Result) -> *const std::ffi::c_char;
-    /// **Source:** `BRepCheck_Result.hxx`:39 - `BRepCheck_Result::Blind()`
+    /// **Source:** `BRepCheck_Result.hxx`:41 - `BRepCheck_Result::Blind()`
     pub fn BRepCheck_Result_blind(self_: *mut BRepCheck_Result) -> *const std::ffi::c_char;
-    /// **Source:** `BRepCheck_Result.hxx`:41 - `BRepCheck_Result::SetFailStatus()`
+    /// **Source:** `BRepCheck_Result.hxx`:43 - `BRepCheck_Result::SetFailStatus()`
     pub fn BRepCheck_Result_set_fail_status(
         self_: *mut BRepCheck_Result,
         S: *const TopoDS_Shape,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepCheck_Result.hxx`:43 - `BRepCheck_Result::Status()`
+    /// **Source:** `BRepCheck_Result.hxx`:45 - `BRepCheck_Result::Status()`
     pub fn BRepCheck_Result_status(
         self_: *const BRepCheck_Result,
-    ) -> crate::OcctResult<*const BRepCheck_ListOfStatus>;
-    /// **Source:** `BRepCheck_Result.hxx`:45 - `BRepCheck_Result::IsMinimum()`
+    ) -> crate::OcctResult<*const NCollection_List_BRepCheck_Status>;
+    /// **Source:** `BRepCheck_Result.hxx`:47 - `BRepCheck_Result::IsMinimum()`
     pub fn BRepCheck_Result_is_minimum(self_: *const BRepCheck_Result) -> crate::OcctResult<bool>;
-    /// **Source:** `BRepCheck_Result.hxx`:47 - `BRepCheck_Result::IsBlind()`
+    /// **Source:** `BRepCheck_Result.hxx`:49 - `BRepCheck_Result::IsBlind()`
     pub fn BRepCheck_Result_is_blind(self_: *const BRepCheck_Result) -> crate::OcctResult<bool>;
-    /// **Source:** `BRepCheck_Result.hxx`:49 - `BRepCheck_Result::InitContextIterator()`
+    /// **Source:** `BRepCheck_Result.hxx`:51 - `BRepCheck_Result::InitContextIterator()`
     pub fn BRepCheck_Result_init_context_iterator(
         self_: *mut BRepCheck_Result,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepCheck_Result.hxx`:51 - `BRepCheck_Result::MoreShapeInContext()`
+    /// **Source:** `BRepCheck_Result.hxx`:53 - `BRepCheck_Result::MoreShapeInContext()`
     pub fn BRepCheck_Result_more_shape_in_context(
         self_: *const BRepCheck_Result,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BRepCheck_Result.hxx`:53 - `BRepCheck_Result::ContextualShape()`
+    /// **Source:** `BRepCheck_Result.hxx`:55 - `BRepCheck_Result::ContextualShape()`
     pub fn BRepCheck_Result_contextual_shape(
         self_: *const BRepCheck_Result,
     ) -> crate::OcctResult<*const TopoDS_Shape>;
-    /// **Source:** `BRepCheck_Result.hxx`:55 - `BRepCheck_Result::StatusOnShape()`
+    /// **Source:** `BRepCheck_Result.hxx`:57 - `BRepCheck_Result::StatusOnShape()`
     pub fn BRepCheck_Result_status_on_shape(
         self_: *const BRepCheck_Result,
-    ) -> crate::OcctResult<*const BRepCheck_ListOfStatus>;
-    /// **Source:** `BRepCheck_Result.hxx`:57 - `BRepCheck_Result::NextShapeInContext()`
+    ) -> crate::OcctResult<*const NCollection_List_BRepCheck_Status>;
+    /// **Source:** `BRepCheck_Result.hxx`:59 - `BRepCheck_Result::NextShapeInContext()`
     pub fn BRepCheck_Result_next_shape_in_context(
         self_: *mut BRepCheck_Result,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepCheck_Result.hxx`:59 - `BRepCheck_Result::SetParallel()`
+    /// **Source:** `BRepCheck_Result.hxx`:62 - `BRepCheck_Result::SetParallel()`
     pub fn BRepCheck_Result_set_parallel(
         self_: *mut BRepCheck_Result,
         theIsParallel: bool,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepCheck_Result.hxx`:61 - `BRepCheck_Result::IsStatusOnShape()`
+    /// **Source:** `BRepCheck_Result.hxx`:65 - `BRepCheck_Result::IsParallel()`
+    pub fn BRepCheck_Result_is_parallel(self_: *const BRepCheck_Result) -> crate::OcctResult<bool>;
+    /// **Source:** `BRepCheck_Result.hxx`:67 - `BRepCheck_Result::IsStatusOnShape()`
     pub fn BRepCheck_Result_is_status_on_shape(
         self_: *const BRepCheck_Result,
         theShape: *const TopoDS_Shape,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BRepCheck_Result.hxx`:66 - `BRepCheck_Result::StatusOnShape()`
+    /// **Source:** `BRepCheck_Result.hxx`:69 - `BRepCheck_Result::StatusOnShape()`
     pub fn BRepCheck_Result_status_on_shape_shape(
         self_: *const BRepCheck_Result,
         theShape: *const TopoDS_Shape,
-    ) -> crate::OcctResult<*const BRepCheck_ListOfStatus>;
-    /// **Source:** `BRepCheck_Result.hxx`:73 - `BRepCheck_Result::DynamicType()`
+    ) -> crate::OcctResult<*const NCollection_List_BRepCheck_Status>;
+    /// **Source:** `BRepCheck_Result.hxx`:76 - `BRepCheck_Result::DynamicType()`
     pub fn BRepCheck_Result_dynamic_type(
         self_: *const BRepCheck_Result,
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// **Source:** `BRepCheck_Result.hxx`:73 - `BRepCheck_Result::get_type_name()`
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
+    /// **Source:** `BRepCheck_Result.hxx`:76 - `BRepCheck_Result::get_type_name()`
     pub fn BRepCheck_Result_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
-    /// **Source:** `BRepCheck_Result.hxx`:73 - `BRepCheck_Result::get_type_descriptor()`
-    pub fn BRepCheck_Result_get_type_descriptor() -> crate::OcctResult<*const HandleStandardType>;
+    /// **Source:** `BRepCheck_Result.hxx`:76 - `BRepCheck_Result::get_type_descriptor()`
+    pub fn BRepCheck_Result_get_type_descriptor() -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast BRepCheck_Result to Standard_Transient
     pub fn BRepCheck_Result_as_Standard_Transient(
         self_: *const BRepCheck_Result,
@@ -5091,124 +5101,124 @@ unsafe extern "C" {
         self_: *mut BRepCheck_Result,
     ) -> crate::OcctResult<*mut Standard_Transient>;
     /// Destroy Handle<BRepCheck_Result>
-    pub fn HandleBRepCheckResult_destructor(self_: *mut HandleBRepCheckResult);
+    pub fn Handle_BRepCheck_Result_destructor(self_: *mut Handle_BRepCheck_Result);
     /// Clone Handle<BRepCheck_Result> (increments reference count)
-    pub fn HandleBRepCheckResult_clone(
-        self_: *const HandleBRepCheckResult,
-    ) -> crate::OcctResult<*mut HandleBRepCheckResult>;
+    pub fn Handle_BRepCheck_Result_clone(
+        self_: *const Handle_BRepCheck_Result,
+    ) -> crate::OcctResult<*mut Handle_BRepCheck_Result>;
     /// Check if Handle<BRepCheck_Result> is null
-    pub fn HandleBRepCheckResult_is_null(self_: *const HandleBRepCheckResult) -> bool;
+    pub fn Handle_BRepCheck_Result_is_null(self_: *const Handle_BRepCheck_Result) -> bool;
     /// Dereference Handle to get *const BRepCheck_Result
-    pub fn HandleBRepCheckResult_get(
-        handle: *const HandleBRepCheckResult,
+    pub fn Handle_BRepCheck_Result_get(
+        handle: *const Handle_BRepCheck_Result,
     ) -> crate::OcctResult<*const BRepCheck_Result>;
     /// Dereference Handle to get *mut BRepCheck_Result
-    pub fn HandleBRepCheckResult_get_mut(
-        handle: *mut HandleBRepCheckResult,
+    pub fn Handle_BRepCheck_Result_get_mut(
+        handle: *mut Handle_BRepCheck_Result,
     ) -> crate::OcctResult<*mut BRepCheck_Result>;
     /// Upcast Handle<BRepCheck_Result> to Handle<Standard_Transient>
-    pub fn HandleBRepCheckResult_to_HandleStandardTransient(
-        self_: *const HandleBRepCheckResult,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
+    pub fn Handle_BRepCheck_Result_to_Handle_Standard_Transient(
+        self_: *const Handle_BRepCheck_Result,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
     /// Downcast Handle<BRepCheck_Result> to Handle<BRepCheck_Edge> (returns null on failure)
-    pub fn HandleBRepCheckResult_downcast_to_HandleBRepCheckEdge(
-        self_: *const HandleBRepCheckResult,
-    ) -> crate::OcctResult<*mut HandleBRepCheckEdge>;
+    pub fn Handle_BRepCheck_Result_downcast_to_Handle_BRepCheck_Edge(
+        self_: *const Handle_BRepCheck_Result,
+    ) -> crate::OcctResult<*mut Handle_BRepCheck_Edge>;
     /// Downcast Handle<BRepCheck_Result> to Handle<BRepCheck_Face> (returns null on failure)
-    pub fn HandleBRepCheckResult_downcast_to_HandleBRepCheckFace(
-        self_: *const HandleBRepCheckResult,
-    ) -> crate::OcctResult<*mut HandleBRepCheckFace>;
+    pub fn Handle_BRepCheck_Result_downcast_to_Handle_BRepCheck_Face(
+        self_: *const Handle_BRepCheck_Result,
+    ) -> crate::OcctResult<*mut Handle_BRepCheck_Face>;
     /// Downcast Handle<BRepCheck_Result> to Handle<BRepCheck_Shell> (returns null on failure)
-    pub fn HandleBRepCheckResult_downcast_to_HandleBRepCheckShell(
-        self_: *const HandleBRepCheckResult,
-    ) -> crate::OcctResult<*mut HandleBRepCheckShell>;
+    pub fn Handle_BRepCheck_Result_downcast_to_Handle_BRepCheck_Shell(
+        self_: *const Handle_BRepCheck_Result,
+    ) -> crate::OcctResult<*mut Handle_BRepCheck_Shell>;
     /// Downcast Handle<BRepCheck_Result> to Handle<BRepCheck_Solid> (returns null on failure)
-    pub fn HandleBRepCheckResult_downcast_to_HandleBRepCheckSolid(
-        self_: *const HandleBRepCheckResult,
-    ) -> crate::OcctResult<*mut HandleBRepCheckSolid>;
+    pub fn Handle_BRepCheck_Result_downcast_to_Handle_BRepCheck_Solid(
+        self_: *const Handle_BRepCheck_Result,
+    ) -> crate::OcctResult<*mut Handle_BRepCheck_Solid>;
     /// Downcast Handle<BRepCheck_Result> to Handle<BRepCheck_Vertex> (returns null on failure)
-    pub fn HandleBRepCheckResult_downcast_to_HandleBRepCheckVertex(
-        self_: *const HandleBRepCheckResult,
-    ) -> crate::OcctResult<*mut HandleBRepCheckVertex>;
+    pub fn Handle_BRepCheck_Result_downcast_to_Handle_BRepCheck_Vertex(
+        self_: *const Handle_BRepCheck_Result,
+    ) -> crate::OcctResult<*mut Handle_BRepCheck_Vertex>;
     /// Downcast Handle<BRepCheck_Result> to Handle<BRepCheck_Wire> (returns null on failure)
-    pub fn HandleBRepCheckResult_downcast_to_HandleBRepCheckWire(
-        self_: *const HandleBRepCheckResult,
-    ) -> crate::OcctResult<*mut HandleBRepCheckWire>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn Handle_BRepCheck_Result_downcast_to_Handle_BRepCheck_Wire(
+        self_: *const Handle_BRepCheck_Result,
+    ) -> crate::OcctResult<*mut Handle_BRepCheck_Wire>;
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn BRepCheck_Result_inherited_IsInstance(
         self_: *const BRepCheck_Result,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn BRepCheck_Result_inherited_IsKind(
         self_: *const BRepCheck_Result,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn BRepCheck_Result_inherited_This(
         self_: *const BRepCheck_Result,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn BRepCheck_Result_inherited_GetRefCount(
         self_: *const BRepCheck_Result,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn BRepCheck_Result_inherited_IncrementRefCounter(
         self_: *mut BRepCheck_Result,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn BRepCheck_Result_inherited_DecrementRefCounter(
         self_: *mut BRepCheck_Result,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn BRepCheck_Result_inherited_Delete(
         self_: *const BRepCheck_Result,
     ) -> *const std::ffi::c_char;
     // ======================== BRepCheck_Shell ========================
     pub fn BRepCheck_Shell_destructor(self_: *mut BRepCheck_Shell);
-    /// **Source:** `BRepCheck_Shell.hxx`:36 - `BRepCheck_Shell::BRepCheck_Shell()`
+    /// **Source:** `BRepCheck_Shell.hxx`:35 - `BRepCheck_Shell::BRepCheck_Shell()`
     pub fn BRepCheck_Shell_ctor_shell(
         S: *const TopoDS_Shell,
     ) -> crate::OcctResult<*mut BRepCheck_Shell>;
-    /// **Source:** `BRepCheck_Shell.hxx`:38 - `BRepCheck_Shell::InContext()`
+    /// **Source:** `BRepCheck_Shell.hxx`:37 - `BRepCheck_Shell::InContext()`
     pub fn BRepCheck_Shell_in_context(
         self_: *mut BRepCheck_Shell,
         ContextShape: *const TopoDS_Shape,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepCheck_Shell.hxx`:40 - `BRepCheck_Shell::Minimum()`
+    /// **Source:** `BRepCheck_Shell.hxx`:39 - `BRepCheck_Shell::Minimum()`
     pub fn BRepCheck_Shell_minimum(self_: *mut BRepCheck_Shell) -> *const std::ffi::c_char;
-    /// **Source:** `BRepCheck_Shell.hxx`:42 - `BRepCheck_Shell::Blind()`
+    /// **Source:** `BRepCheck_Shell.hxx`:41 - `BRepCheck_Shell::Blind()`
     pub fn BRepCheck_Shell_blind(self_: *mut BRepCheck_Shell) -> *const std::ffi::c_char;
-    /// **Source:** `BRepCheck_Shell.hxx`:48 - `BRepCheck_Shell::Closed()`
+    /// **Source:** `BRepCheck_Shell.hxx`:47 - `BRepCheck_Shell::Closed()`
     pub fn BRepCheck_Shell_closed(
         self_: *mut BRepCheck_Shell,
         Update: bool,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `BRepCheck_Shell.hxx`:54 - `BRepCheck_Shell::Orientation()`
+    /// **Source:** `BRepCheck_Shell.hxx`:53 - `BRepCheck_Shell::Orientation()`
     pub fn BRepCheck_Shell_orientation(
         self_: *mut BRepCheck_Shell,
         Update: bool,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `BRepCheck_Shell.hxx`:56 - `BRepCheck_Shell::SetUnorientable()`
+    /// **Source:** `BRepCheck_Shell.hxx`:55 - `BRepCheck_Shell::SetUnorientable()`
     pub fn BRepCheck_Shell_set_unorientable(self_: *mut BRepCheck_Shell)
         -> *const std::ffi::c_char;
-    /// **Source:** `BRepCheck_Shell.hxx`:58 - `BRepCheck_Shell::IsUnorientable()`
+    /// **Source:** `BRepCheck_Shell.hxx`:57 - `BRepCheck_Shell::IsUnorientable()`
     pub fn BRepCheck_Shell_is_unorientable(
         self_: *const BRepCheck_Shell,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BRepCheck_Shell.hxx`:60 - `BRepCheck_Shell::NbConnectedSet()`
+    /// **Source:** `BRepCheck_Shell.hxx`:59 - `BRepCheck_Shell::NbConnectedSet()`
     pub fn BRepCheck_Shell_nb_connected_set(
         self_: *mut BRepCheck_Shell,
-        theSets: *mut TopTools_ListOfShape,
+        theSets: *mut NCollection_List_TopoDS_Shape,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `BRepCheck_Shell.hxx`:62 - `BRepCheck_Shell::DynamicType()`
+    /// **Source:** `BRepCheck_Shell.hxx`:61 - `BRepCheck_Shell::DynamicType()`
     pub fn BRepCheck_Shell_dynamic_type(
         self_: *const BRepCheck_Shell,
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// **Source:** `BRepCheck_Shell.hxx`:62 - `BRepCheck_Shell::get_type_name()`
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
+    /// **Source:** `BRepCheck_Shell.hxx`:61 - `BRepCheck_Shell::get_type_name()`
     pub fn BRepCheck_Shell_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
-    /// **Source:** `BRepCheck_Shell.hxx`:62 - `BRepCheck_Shell::get_type_descriptor()`
-    pub fn BRepCheck_Shell_get_type_descriptor() -> crate::OcctResult<*const HandleStandardType>;
+    /// **Source:** `BRepCheck_Shell.hxx`:61 - `BRepCheck_Shell::get_type_descriptor()`
+    pub fn BRepCheck_Shell_get_type_descriptor() -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast BRepCheck_Shell to BRepCheck_Result
     pub fn BRepCheck_Shell_as_BRepCheck_Result(
         self_: *const BRepCheck_Shell,
@@ -5228,136 +5238,140 @@ unsafe extern "C" {
     /// Wrap BRepCheck_Shell in a Handle
     pub fn BRepCheck_Shell_to_handle(
         obj: *mut BRepCheck_Shell,
-    ) -> crate::OcctResult<*mut HandleBRepCheckShell>;
+    ) -> crate::OcctResult<*mut Handle_BRepCheck_Shell>;
     /// Destroy Handle<BRepCheck_Shell>
-    pub fn HandleBRepCheckShell_destructor(self_: *mut HandleBRepCheckShell);
+    pub fn Handle_BRepCheck_Shell_destructor(self_: *mut Handle_BRepCheck_Shell);
     /// Clone Handle<BRepCheck_Shell> (increments reference count)
-    pub fn HandleBRepCheckShell_clone(
-        self_: *const HandleBRepCheckShell,
-    ) -> crate::OcctResult<*mut HandleBRepCheckShell>;
+    pub fn Handle_BRepCheck_Shell_clone(
+        self_: *const Handle_BRepCheck_Shell,
+    ) -> crate::OcctResult<*mut Handle_BRepCheck_Shell>;
     /// Check if Handle<BRepCheck_Shell> is null
-    pub fn HandleBRepCheckShell_is_null(self_: *const HandleBRepCheckShell) -> bool;
+    pub fn Handle_BRepCheck_Shell_is_null(self_: *const Handle_BRepCheck_Shell) -> bool;
     /// Dereference Handle to get *const BRepCheck_Shell
-    pub fn HandleBRepCheckShell_get(
-        handle: *const HandleBRepCheckShell,
+    pub fn Handle_BRepCheck_Shell_get(
+        handle: *const Handle_BRepCheck_Shell,
     ) -> crate::OcctResult<*const BRepCheck_Shell>;
     /// Dereference Handle to get *mut BRepCheck_Shell
-    pub fn HandleBRepCheckShell_get_mut(
-        handle: *mut HandleBRepCheckShell,
+    pub fn Handle_BRepCheck_Shell_get_mut(
+        handle: *mut Handle_BRepCheck_Shell,
     ) -> crate::OcctResult<*mut BRepCheck_Shell>;
     /// Upcast Handle<BRepCheck_Shell> to Handle<BRepCheck_Result>
-    pub fn HandleBRepCheckShell_to_HandleBRepCheckResult(
-        self_: *const HandleBRepCheckShell,
-    ) -> crate::OcctResult<*mut HandleBRepCheckResult>;
+    pub fn Handle_BRepCheck_Shell_to_Handle_BRepCheck_Result(
+        self_: *const Handle_BRepCheck_Shell,
+    ) -> crate::OcctResult<*mut Handle_BRepCheck_Result>;
     /// Upcast Handle<BRepCheck_Shell> to Handle<Standard_Transient>
-    pub fn HandleBRepCheckShell_to_HandleStandardTransient(
-        self_: *const HandleBRepCheckShell,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
-    /// Inherited: **Source:** `BRepCheck_Result.hxx`:33 - `BRepCheck_Result::Init()`
+    pub fn Handle_BRepCheck_Shell_to_Handle_Standard_Transient(
+        self_: *const Handle_BRepCheck_Shell,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
+    /// Inherited: **Source:** `BRepCheck_Result.hxx`:35 - `BRepCheck_Result::Init()`
     pub fn BRepCheck_Shell_inherited_Init(
         self_: *mut BRepCheck_Shell,
         S: *const TopoDS_Shape,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BRepCheck_Result.hxx`:41 - `BRepCheck_Result::SetFailStatus()`
+    /// Inherited: **Source:** `BRepCheck_Result.hxx`:43 - `BRepCheck_Result::SetFailStatus()`
     pub fn BRepCheck_Shell_inherited_SetFailStatus(
         self_: *mut BRepCheck_Shell,
         S: *const TopoDS_Shape,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BRepCheck_Result.hxx`:43 - `BRepCheck_Result::Status()`
+    /// Inherited: **Source:** `BRepCheck_Result.hxx`:45 - `BRepCheck_Result::Status()`
     pub fn BRepCheck_Shell_inherited_Status(
         self_: *const BRepCheck_Shell,
-    ) -> crate::OcctResult<*const BRepCheck_ListOfStatus>;
-    /// Inherited: **Source:** `BRepCheck_Result.hxx`:45 - `BRepCheck_Result::IsMinimum()`
+    ) -> crate::OcctResult<*const NCollection_List_BRepCheck_Status>;
+    /// Inherited: **Source:** `BRepCheck_Result.hxx`:47 - `BRepCheck_Result::IsMinimum()`
     pub fn BRepCheck_Shell_inherited_IsMinimum(
         self_: *const BRepCheck_Shell,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `BRepCheck_Result.hxx`:47 - `BRepCheck_Result::IsBlind()`
+    /// Inherited: **Source:** `BRepCheck_Result.hxx`:49 - `BRepCheck_Result::IsBlind()`
     pub fn BRepCheck_Shell_inherited_IsBlind(
         self_: *const BRepCheck_Shell,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `BRepCheck_Result.hxx`:49 - `BRepCheck_Result::InitContextIterator()`
+    /// Inherited: **Source:** `BRepCheck_Result.hxx`:51 - `BRepCheck_Result::InitContextIterator()`
     pub fn BRepCheck_Shell_inherited_InitContextIterator(
         self_: *mut BRepCheck_Shell,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BRepCheck_Result.hxx`:51 - `BRepCheck_Result::MoreShapeInContext()`
+    /// Inherited: **Source:** `BRepCheck_Result.hxx`:53 - `BRepCheck_Result::MoreShapeInContext()`
     pub fn BRepCheck_Shell_inherited_MoreShapeInContext(
         self_: *const BRepCheck_Shell,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `BRepCheck_Result.hxx`:53 - `BRepCheck_Result::ContextualShape()`
+    /// Inherited: **Source:** `BRepCheck_Result.hxx`:55 - `BRepCheck_Result::ContextualShape()`
     pub fn BRepCheck_Shell_inherited_ContextualShape(
         self_: *const BRepCheck_Shell,
     ) -> crate::OcctResult<*const TopoDS_Shape>;
-    /// Inherited: **Source:** `BRepCheck_Result.hxx`:55 - `BRepCheck_Result::StatusOnShape()`
+    /// Inherited: **Source:** `BRepCheck_Result.hxx`:57 - `BRepCheck_Result::StatusOnShape()`
     pub fn BRepCheck_Shell_inherited_StatusOnShape(
         self_: *const BRepCheck_Shell,
-    ) -> crate::OcctResult<*const BRepCheck_ListOfStatus>;
-    /// Inherited: **Source:** `BRepCheck_Result.hxx`:57 - `BRepCheck_Result::NextShapeInContext()`
+    ) -> crate::OcctResult<*const NCollection_List_BRepCheck_Status>;
+    /// Inherited: **Source:** `BRepCheck_Result.hxx`:59 - `BRepCheck_Result::NextShapeInContext()`
     pub fn BRepCheck_Shell_inherited_NextShapeInContext(
         self_: *mut BRepCheck_Shell,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BRepCheck_Result.hxx`:59 - `BRepCheck_Result::SetParallel()`
+    /// Inherited: **Source:** `BRepCheck_Result.hxx`:62 - `BRepCheck_Result::SetParallel()`
     pub fn BRepCheck_Shell_inherited_SetParallel(
         self_: *mut BRepCheck_Shell,
         theIsParallel: bool,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BRepCheck_Result.hxx`:61 - `BRepCheck_Result::IsStatusOnShape()`
+    /// Inherited: **Source:** `BRepCheck_Result.hxx`:65 - `BRepCheck_Result::IsParallel()`
+    pub fn BRepCheck_Shell_inherited_IsParallel(
+        self_: *const BRepCheck_Shell,
+    ) -> crate::OcctResult<bool>;
+    /// Inherited: **Source:** `BRepCheck_Result.hxx`:67 - `BRepCheck_Result::IsStatusOnShape()`
     pub fn BRepCheck_Shell_inherited_IsStatusOnShape(
         self_: *const BRepCheck_Shell,
         theShape: *const TopoDS_Shape,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn BRepCheck_Shell_inherited_IsInstance(
         self_: *const BRepCheck_Shell,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn BRepCheck_Shell_inherited_IsKind(
         self_: *const BRepCheck_Shell,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn BRepCheck_Shell_inherited_This(
         self_: *const BRepCheck_Shell,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn BRepCheck_Shell_inherited_GetRefCount(
         self_: *const BRepCheck_Shell,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn BRepCheck_Shell_inherited_IncrementRefCounter(
         self_: *mut BRepCheck_Shell,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn BRepCheck_Shell_inherited_DecrementRefCounter(
         self_: *mut BRepCheck_Shell,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn BRepCheck_Shell_inherited_Delete(
         self_: *const BRepCheck_Shell,
     ) -> *const std::ffi::c_char;
     // ======================== BRepCheck_Solid ========================
     pub fn BRepCheck_Solid_destructor(self_: *mut BRepCheck_Solid);
-    /// **Source:** `BRepCheck_Solid.hxx`:35 - `BRepCheck_Solid::BRepCheck_Solid()`
+    /// **Source:** `BRepCheck_Solid.hxx`:32 - `BRepCheck_Solid::BRepCheck_Solid()`
     pub fn BRepCheck_Solid_ctor_solid(
         theS: *const TopoDS_Solid,
     ) -> crate::OcctResult<*mut BRepCheck_Solid>;
-    /// **Source:** `BRepCheck_Solid.hxx`:39 - `BRepCheck_Solid::InContext()`
+    /// **Source:** `BRepCheck_Solid.hxx`:36 - `BRepCheck_Solid::InContext()`
     pub fn BRepCheck_Solid_in_context(
         self_: *mut BRepCheck_Solid,
         theContextShape: *const TopoDS_Shape,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepCheck_Solid.hxx`:59 - `BRepCheck_Solid::Minimum()`
+    /// **Source:** `BRepCheck_Solid.hxx`:56 - `BRepCheck_Solid::Minimum()`
     pub fn BRepCheck_Solid_minimum(self_: *mut BRepCheck_Solid) -> *const std::ffi::c_char;
-    /// **Source:** `BRepCheck_Solid.hxx`:62 - `BRepCheck_Solid::Blind()`
+    /// **Source:** `BRepCheck_Solid.hxx`:59 - `BRepCheck_Solid::Blind()`
     pub fn BRepCheck_Solid_blind(self_: *mut BRepCheck_Solid) -> *const std::ffi::c_char;
-    /// **Source:** `BRepCheck_Solid.hxx`:64 - `BRepCheck_Solid::DynamicType()`
+    /// **Source:** `BRepCheck_Solid.hxx`:61 - `BRepCheck_Solid::DynamicType()`
     pub fn BRepCheck_Solid_dynamic_type(
         self_: *const BRepCheck_Solid,
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// **Source:** `BRepCheck_Solid.hxx`:64 - `BRepCheck_Solid::get_type_name()`
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
+    /// **Source:** `BRepCheck_Solid.hxx`:61 - `BRepCheck_Solid::get_type_name()`
     pub fn BRepCheck_Solid_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
-    /// **Source:** `BRepCheck_Solid.hxx`:64 - `BRepCheck_Solid::get_type_descriptor()`
-    pub fn BRepCheck_Solid_get_type_descriptor() -> crate::OcctResult<*const HandleStandardType>;
+    /// **Source:** `BRepCheck_Solid.hxx`:61 - `BRepCheck_Solid::get_type_descriptor()`
+    pub fn BRepCheck_Solid_get_type_descriptor() -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast BRepCheck_Solid to BRepCheck_Result
     pub fn BRepCheck_Solid_as_BRepCheck_Result(
         self_: *const BRepCheck_Solid,
@@ -5377,138 +5391,142 @@ unsafe extern "C" {
     /// Wrap BRepCheck_Solid in a Handle
     pub fn BRepCheck_Solid_to_handle(
         obj: *mut BRepCheck_Solid,
-    ) -> crate::OcctResult<*mut HandleBRepCheckSolid>;
+    ) -> crate::OcctResult<*mut Handle_BRepCheck_Solid>;
     /// Destroy Handle<BRepCheck_Solid>
-    pub fn HandleBRepCheckSolid_destructor(self_: *mut HandleBRepCheckSolid);
+    pub fn Handle_BRepCheck_Solid_destructor(self_: *mut Handle_BRepCheck_Solid);
     /// Clone Handle<BRepCheck_Solid> (increments reference count)
-    pub fn HandleBRepCheckSolid_clone(
-        self_: *const HandleBRepCheckSolid,
-    ) -> crate::OcctResult<*mut HandleBRepCheckSolid>;
+    pub fn Handle_BRepCheck_Solid_clone(
+        self_: *const Handle_BRepCheck_Solid,
+    ) -> crate::OcctResult<*mut Handle_BRepCheck_Solid>;
     /// Check if Handle<BRepCheck_Solid> is null
-    pub fn HandleBRepCheckSolid_is_null(self_: *const HandleBRepCheckSolid) -> bool;
+    pub fn Handle_BRepCheck_Solid_is_null(self_: *const Handle_BRepCheck_Solid) -> bool;
     /// Dereference Handle to get *const BRepCheck_Solid
-    pub fn HandleBRepCheckSolid_get(
-        handle: *const HandleBRepCheckSolid,
+    pub fn Handle_BRepCheck_Solid_get(
+        handle: *const Handle_BRepCheck_Solid,
     ) -> crate::OcctResult<*const BRepCheck_Solid>;
     /// Dereference Handle to get *mut BRepCheck_Solid
-    pub fn HandleBRepCheckSolid_get_mut(
-        handle: *mut HandleBRepCheckSolid,
+    pub fn Handle_BRepCheck_Solid_get_mut(
+        handle: *mut Handle_BRepCheck_Solid,
     ) -> crate::OcctResult<*mut BRepCheck_Solid>;
     /// Upcast Handle<BRepCheck_Solid> to Handle<BRepCheck_Result>
-    pub fn HandleBRepCheckSolid_to_HandleBRepCheckResult(
-        self_: *const HandleBRepCheckSolid,
-    ) -> crate::OcctResult<*mut HandleBRepCheckResult>;
+    pub fn Handle_BRepCheck_Solid_to_Handle_BRepCheck_Result(
+        self_: *const Handle_BRepCheck_Solid,
+    ) -> crate::OcctResult<*mut Handle_BRepCheck_Result>;
     /// Upcast Handle<BRepCheck_Solid> to Handle<Standard_Transient>
-    pub fn HandleBRepCheckSolid_to_HandleStandardTransient(
-        self_: *const HandleBRepCheckSolid,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
-    /// Inherited: **Source:** `BRepCheck_Result.hxx`:33 - `BRepCheck_Result::Init()`
+    pub fn Handle_BRepCheck_Solid_to_Handle_Standard_Transient(
+        self_: *const Handle_BRepCheck_Solid,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
+    /// Inherited: **Source:** `BRepCheck_Result.hxx`:35 - `BRepCheck_Result::Init()`
     pub fn BRepCheck_Solid_inherited_Init(
         self_: *mut BRepCheck_Solid,
         S: *const TopoDS_Shape,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BRepCheck_Result.hxx`:41 - `BRepCheck_Result::SetFailStatus()`
+    /// Inherited: **Source:** `BRepCheck_Result.hxx`:43 - `BRepCheck_Result::SetFailStatus()`
     pub fn BRepCheck_Solid_inherited_SetFailStatus(
         self_: *mut BRepCheck_Solid,
         S: *const TopoDS_Shape,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BRepCheck_Result.hxx`:43 - `BRepCheck_Result::Status()`
+    /// Inherited: **Source:** `BRepCheck_Result.hxx`:45 - `BRepCheck_Result::Status()`
     pub fn BRepCheck_Solid_inherited_Status(
         self_: *const BRepCheck_Solid,
-    ) -> crate::OcctResult<*const BRepCheck_ListOfStatus>;
-    /// Inherited: **Source:** `BRepCheck_Result.hxx`:45 - `BRepCheck_Result::IsMinimum()`
+    ) -> crate::OcctResult<*const NCollection_List_BRepCheck_Status>;
+    /// Inherited: **Source:** `BRepCheck_Result.hxx`:47 - `BRepCheck_Result::IsMinimum()`
     pub fn BRepCheck_Solid_inherited_IsMinimum(
         self_: *const BRepCheck_Solid,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `BRepCheck_Result.hxx`:47 - `BRepCheck_Result::IsBlind()`
+    /// Inherited: **Source:** `BRepCheck_Result.hxx`:49 - `BRepCheck_Result::IsBlind()`
     pub fn BRepCheck_Solid_inherited_IsBlind(
         self_: *const BRepCheck_Solid,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `BRepCheck_Result.hxx`:49 - `BRepCheck_Result::InitContextIterator()`
+    /// Inherited: **Source:** `BRepCheck_Result.hxx`:51 - `BRepCheck_Result::InitContextIterator()`
     pub fn BRepCheck_Solid_inherited_InitContextIterator(
         self_: *mut BRepCheck_Solid,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BRepCheck_Result.hxx`:51 - `BRepCheck_Result::MoreShapeInContext()`
+    /// Inherited: **Source:** `BRepCheck_Result.hxx`:53 - `BRepCheck_Result::MoreShapeInContext()`
     pub fn BRepCheck_Solid_inherited_MoreShapeInContext(
         self_: *const BRepCheck_Solid,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `BRepCheck_Result.hxx`:53 - `BRepCheck_Result::ContextualShape()`
+    /// Inherited: **Source:** `BRepCheck_Result.hxx`:55 - `BRepCheck_Result::ContextualShape()`
     pub fn BRepCheck_Solid_inherited_ContextualShape(
         self_: *const BRepCheck_Solid,
     ) -> crate::OcctResult<*const TopoDS_Shape>;
-    /// Inherited: **Source:** `BRepCheck_Result.hxx`:55 - `BRepCheck_Result::StatusOnShape()`
+    /// Inherited: **Source:** `BRepCheck_Result.hxx`:57 - `BRepCheck_Result::StatusOnShape()`
     pub fn BRepCheck_Solid_inherited_StatusOnShape(
         self_: *const BRepCheck_Solid,
-    ) -> crate::OcctResult<*const BRepCheck_ListOfStatus>;
-    /// Inherited: **Source:** `BRepCheck_Result.hxx`:57 - `BRepCheck_Result::NextShapeInContext()`
+    ) -> crate::OcctResult<*const NCollection_List_BRepCheck_Status>;
+    /// Inherited: **Source:** `BRepCheck_Result.hxx`:59 - `BRepCheck_Result::NextShapeInContext()`
     pub fn BRepCheck_Solid_inherited_NextShapeInContext(
         self_: *mut BRepCheck_Solid,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BRepCheck_Result.hxx`:59 - `BRepCheck_Result::SetParallel()`
+    /// Inherited: **Source:** `BRepCheck_Result.hxx`:62 - `BRepCheck_Result::SetParallel()`
     pub fn BRepCheck_Solid_inherited_SetParallel(
         self_: *mut BRepCheck_Solid,
         theIsParallel: bool,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BRepCheck_Result.hxx`:61 - `BRepCheck_Result::IsStatusOnShape()`
+    /// Inherited: **Source:** `BRepCheck_Result.hxx`:65 - `BRepCheck_Result::IsParallel()`
+    pub fn BRepCheck_Solid_inherited_IsParallel(
+        self_: *const BRepCheck_Solid,
+    ) -> crate::OcctResult<bool>;
+    /// Inherited: **Source:** `BRepCheck_Result.hxx`:67 - `BRepCheck_Result::IsStatusOnShape()`
     pub fn BRepCheck_Solid_inherited_IsStatusOnShape(
         self_: *const BRepCheck_Solid,
         theShape: *const TopoDS_Shape,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn BRepCheck_Solid_inherited_IsInstance(
         self_: *const BRepCheck_Solid,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn BRepCheck_Solid_inherited_IsKind(
         self_: *const BRepCheck_Solid,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn BRepCheck_Solid_inherited_This(
         self_: *const BRepCheck_Solid,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn BRepCheck_Solid_inherited_GetRefCount(
         self_: *const BRepCheck_Solid,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn BRepCheck_Solid_inherited_IncrementRefCounter(
         self_: *mut BRepCheck_Solid,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn BRepCheck_Solid_inherited_DecrementRefCounter(
         self_: *mut BRepCheck_Solid,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn BRepCheck_Solid_inherited_Delete(
         self_: *const BRepCheck_Solid,
     ) -> *const std::ffi::c_char;
     // ======================== BRepCheck_Vertex ========================
     pub fn BRepCheck_Vertex_destructor(self_: *mut BRepCheck_Vertex);
-    /// **Source:** `BRepCheck_Vertex.hxx`:34 - `BRepCheck_Vertex::BRepCheck_Vertex()`
+    /// **Source:** `BRepCheck_Vertex.hxx`:31 - `BRepCheck_Vertex::BRepCheck_Vertex()`
     pub fn BRepCheck_Vertex_ctor_vertex(
         V: *const TopoDS_Vertex,
     ) -> crate::OcctResult<*mut BRepCheck_Vertex>;
-    /// **Source:** `BRepCheck_Vertex.hxx`:36 - `BRepCheck_Vertex::InContext()`
+    /// **Source:** `BRepCheck_Vertex.hxx`:33 - `BRepCheck_Vertex::InContext()`
     pub fn BRepCheck_Vertex_in_context(
         self_: *mut BRepCheck_Vertex,
         ContextShape: *const TopoDS_Shape,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepCheck_Vertex.hxx`:38 - `BRepCheck_Vertex::Minimum()`
+    /// **Source:** `BRepCheck_Vertex.hxx`:35 - `BRepCheck_Vertex::Minimum()`
     pub fn BRepCheck_Vertex_minimum(self_: *mut BRepCheck_Vertex) -> *const std::ffi::c_char;
-    /// **Source:** `BRepCheck_Vertex.hxx`:40 - `BRepCheck_Vertex::Blind()`
+    /// **Source:** `BRepCheck_Vertex.hxx`:37 - `BRepCheck_Vertex::Blind()`
     pub fn BRepCheck_Vertex_blind(self_: *mut BRepCheck_Vertex) -> *const std::ffi::c_char;
-    /// **Source:** `BRepCheck_Vertex.hxx`:42 - `BRepCheck_Vertex::Tolerance()`
+    /// **Source:** `BRepCheck_Vertex.hxx`:39 - `BRepCheck_Vertex::Tolerance()`
     pub fn BRepCheck_Vertex_tolerance(self_: *mut BRepCheck_Vertex) -> crate::OcctResult<f64>;
-    /// **Source:** `BRepCheck_Vertex.hxx`:44 - `BRepCheck_Vertex::DynamicType()`
+    /// **Source:** `BRepCheck_Vertex.hxx`:41 - `BRepCheck_Vertex::DynamicType()`
     pub fn BRepCheck_Vertex_dynamic_type(
         self_: *const BRepCheck_Vertex,
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// **Source:** `BRepCheck_Vertex.hxx`:44 - `BRepCheck_Vertex::get_type_name()`
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
+    /// **Source:** `BRepCheck_Vertex.hxx`:41 - `BRepCheck_Vertex::get_type_name()`
     pub fn BRepCheck_Vertex_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
-    /// **Source:** `BRepCheck_Vertex.hxx`:44 - `BRepCheck_Vertex::get_type_descriptor()`
-    pub fn BRepCheck_Vertex_get_type_descriptor() -> crate::OcctResult<*const HandleStandardType>;
+    /// **Source:** `BRepCheck_Vertex.hxx`:41 - `BRepCheck_Vertex::get_type_descriptor()`
+    pub fn BRepCheck_Vertex_get_type_descriptor() -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast BRepCheck_Vertex to BRepCheck_Result
     pub fn BRepCheck_Vertex_as_BRepCheck_Result(
         self_: *const BRepCheck_Vertex,
@@ -5528,110 +5546,114 @@ unsafe extern "C" {
     /// Wrap BRepCheck_Vertex in a Handle
     pub fn BRepCheck_Vertex_to_handle(
         obj: *mut BRepCheck_Vertex,
-    ) -> crate::OcctResult<*mut HandleBRepCheckVertex>;
+    ) -> crate::OcctResult<*mut Handle_BRepCheck_Vertex>;
     /// Destroy Handle<BRepCheck_Vertex>
-    pub fn HandleBRepCheckVertex_destructor(self_: *mut HandleBRepCheckVertex);
+    pub fn Handle_BRepCheck_Vertex_destructor(self_: *mut Handle_BRepCheck_Vertex);
     /// Clone Handle<BRepCheck_Vertex> (increments reference count)
-    pub fn HandleBRepCheckVertex_clone(
-        self_: *const HandleBRepCheckVertex,
-    ) -> crate::OcctResult<*mut HandleBRepCheckVertex>;
+    pub fn Handle_BRepCheck_Vertex_clone(
+        self_: *const Handle_BRepCheck_Vertex,
+    ) -> crate::OcctResult<*mut Handle_BRepCheck_Vertex>;
     /// Check if Handle<BRepCheck_Vertex> is null
-    pub fn HandleBRepCheckVertex_is_null(self_: *const HandleBRepCheckVertex) -> bool;
+    pub fn Handle_BRepCheck_Vertex_is_null(self_: *const Handle_BRepCheck_Vertex) -> bool;
     /// Dereference Handle to get *const BRepCheck_Vertex
-    pub fn HandleBRepCheckVertex_get(
-        handle: *const HandleBRepCheckVertex,
+    pub fn Handle_BRepCheck_Vertex_get(
+        handle: *const Handle_BRepCheck_Vertex,
     ) -> crate::OcctResult<*const BRepCheck_Vertex>;
     /// Dereference Handle to get *mut BRepCheck_Vertex
-    pub fn HandleBRepCheckVertex_get_mut(
-        handle: *mut HandleBRepCheckVertex,
+    pub fn Handle_BRepCheck_Vertex_get_mut(
+        handle: *mut Handle_BRepCheck_Vertex,
     ) -> crate::OcctResult<*mut BRepCheck_Vertex>;
     /// Upcast Handle<BRepCheck_Vertex> to Handle<BRepCheck_Result>
-    pub fn HandleBRepCheckVertex_to_HandleBRepCheckResult(
-        self_: *const HandleBRepCheckVertex,
-    ) -> crate::OcctResult<*mut HandleBRepCheckResult>;
+    pub fn Handle_BRepCheck_Vertex_to_Handle_BRepCheck_Result(
+        self_: *const Handle_BRepCheck_Vertex,
+    ) -> crate::OcctResult<*mut Handle_BRepCheck_Result>;
     /// Upcast Handle<BRepCheck_Vertex> to Handle<Standard_Transient>
-    pub fn HandleBRepCheckVertex_to_HandleStandardTransient(
-        self_: *const HandleBRepCheckVertex,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
-    /// Inherited: **Source:** `BRepCheck_Result.hxx`:33 - `BRepCheck_Result::Init()`
+    pub fn Handle_BRepCheck_Vertex_to_Handle_Standard_Transient(
+        self_: *const Handle_BRepCheck_Vertex,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
+    /// Inherited: **Source:** `BRepCheck_Result.hxx`:35 - `BRepCheck_Result::Init()`
     pub fn BRepCheck_Vertex_inherited_Init(
         self_: *mut BRepCheck_Vertex,
         S: *const TopoDS_Shape,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BRepCheck_Result.hxx`:41 - `BRepCheck_Result::SetFailStatus()`
+    /// Inherited: **Source:** `BRepCheck_Result.hxx`:43 - `BRepCheck_Result::SetFailStatus()`
     pub fn BRepCheck_Vertex_inherited_SetFailStatus(
         self_: *mut BRepCheck_Vertex,
         S: *const TopoDS_Shape,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BRepCheck_Result.hxx`:43 - `BRepCheck_Result::Status()`
+    /// Inherited: **Source:** `BRepCheck_Result.hxx`:45 - `BRepCheck_Result::Status()`
     pub fn BRepCheck_Vertex_inherited_Status(
         self_: *const BRepCheck_Vertex,
-    ) -> crate::OcctResult<*const BRepCheck_ListOfStatus>;
-    /// Inherited: **Source:** `BRepCheck_Result.hxx`:45 - `BRepCheck_Result::IsMinimum()`
+    ) -> crate::OcctResult<*const NCollection_List_BRepCheck_Status>;
+    /// Inherited: **Source:** `BRepCheck_Result.hxx`:47 - `BRepCheck_Result::IsMinimum()`
     pub fn BRepCheck_Vertex_inherited_IsMinimum(
         self_: *const BRepCheck_Vertex,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `BRepCheck_Result.hxx`:47 - `BRepCheck_Result::IsBlind()`
+    /// Inherited: **Source:** `BRepCheck_Result.hxx`:49 - `BRepCheck_Result::IsBlind()`
     pub fn BRepCheck_Vertex_inherited_IsBlind(
         self_: *const BRepCheck_Vertex,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `BRepCheck_Result.hxx`:49 - `BRepCheck_Result::InitContextIterator()`
+    /// Inherited: **Source:** `BRepCheck_Result.hxx`:51 - `BRepCheck_Result::InitContextIterator()`
     pub fn BRepCheck_Vertex_inherited_InitContextIterator(
         self_: *mut BRepCheck_Vertex,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BRepCheck_Result.hxx`:51 - `BRepCheck_Result::MoreShapeInContext()`
+    /// Inherited: **Source:** `BRepCheck_Result.hxx`:53 - `BRepCheck_Result::MoreShapeInContext()`
     pub fn BRepCheck_Vertex_inherited_MoreShapeInContext(
         self_: *const BRepCheck_Vertex,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `BRepCheck_Result.hxx`:53 - `BRepCheck_Result::ContextualShape()`
+    /// Inherited: **Source:** `BRepCheck_Result.hxx`:55 - `BRepCheck_Result::ContextualShape()`
     pub fn BRepCheck_Vertex_inherited_ContextualShape(
         self_: *const BRepCheck_Vertex,
     ) -> crate::OcctResult<*const TopoDS_Shape>;
-    /// Inherited: **Source:** `BRepCheck_Result.hxx`:55 - `BRepCheck_Result::StatusOnShape()`
+    /// Inherited: **Source:** `BRepCheck_Result.hxx`:57 - `BRepCheck_Result::StatusOnShape()`
     pub fn BRepCheck_Vertex_inherited_StatusOnShape(
         self_: *const BRepCheck_Vertex,
-    ) -> crate::OcctResult<*const BRepCheck_ListOfStatus>;
-    /// Inherited: **Source:** `BRepCheck_Result.hxx`:57 - `BRepCheck_Result::NextShapeInContext()`
+    ) -> crate::OcctResult<*const NCollection_List_BRepCheck_Status>;
+    /// Inherited: **Source:** `BRepCheck_Result.hxx`:59 - `BRepCheck_Result::NextShapeInContext()`
     pub fn BRepCheck_Vertex_inherited_NextShapeInContext(
         self_: *mut BRepCheck_Vertex,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BRepCheck_Result.hxx`:59 - `BRepCheck_Result::SetParallel()`
+    /// Inherited: **Source:** `BRepCheck_Result.hxx`:62 - `BRepCheck_Result::SetParallel()`
     pub fn BRepCheck_Vertex_inherited_SetParallel(
         self_: *mut BRepCheck_Vertex,
         theIsParallel: bool,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BRepCheck_Result.hxx`:61 - `BRepCheck_Result::IsStatusOnShape()`
+    /// Inherited: **Source:** `BRepCheck_Result.hxx`:65 - `BRepCheck_Result::IsParallel()`
+    pub fn BRepCheck_Vertex_inherited_IsParallel(
+        self_: *const BRepCheck_Vertex,
+    ) -> crate::OcctResult<bool>;
+    /// Inherited: **Source:** `BRepCheck_Result.hxx`:67 - `BRepCheck_Result::IsStatusOnShape()`
     pub fn BRepCheck_Vertex_inherited_IsStatusOnShape(
         self_: *const BRepCheck_Vertex,
         theShape: *const TopoDS_Shape,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn BRepCheck_Vertex_inherited_IsInstance(
         self_: *const BRepCheck_Vertex,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn BRepCheck_Vertex_inherited_IsKind(
         self_: *const BRepCheck_Vertex,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn BRepCheck_Vertex_inherited_This(
         self_: *const BRepCheck_Vertex,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn BRepCheck_Vertex_inherited_GetRefCount(
         self_: *const BRepCheck_Vertex,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn BRepCheck_Vertex_inherited_IncrementRefCounter(
         self_: *mut BRepCheck_Vertex,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn BRepCheck_Vertex_inherited_DecrementRefCounter(
         self_: *mut BRepCheck_Vertex,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn BRepCheck_Vertex_inherited_Delete(
         self_: *const BRepCheck_Vertex,
     ) -> *const std::ffi::c_char;
@@ -5661,13 +5683,13 @@ unsafe extern "C" {
         F: *const TopoDS_Face,
         Update: bool,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `BRepCheck_Wire.hxx`:86 - `BRepCheck_Wire::Orientation()`
+    /// **Source:** `BRepCheck_Wire.hxx`:85 - `BRepCheck_Wire::Orientation()`
     pub fn BRepCheck_Wire_orientation(
         self_: *mut BRepCheck_Wire,
         F: *const TopoDS_Face,
         Update: bool,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `BRepCheck_Wire.hxx`:100 - `BRepCheck_Wire::SelfIntersect()`
+    /// **Source:** `BRepCheck_Wire.hxx`:98 - `BRepCheck_Wire::SelfIntersect()`
     pub fn BRepCheck_Wire_self_intersect(
         self_: *mut BRepCheck_Wire,
         F: *const TopoDS_Face,
@@ -5675,28 +5697,28 @@ unsafe extern "C" {
         E2: *mut TopoDS_Edge,
         Update: bool,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `BRepCheck_Wire.hxx`:106 - `BRepCheck_Wire::GeometricControls()`
+    /// **Source:** `BRepCheck_Wire.hxx`:104 - `BRepCheck_Wire::GeometricControls()`
     pub fn BRepCheck_Wire_geometric_controls(
         self_: *const BRepCheck_Wire,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BRepCheck_Wire.hxx`:109 - `BRepCheck_Wire::GeometricControls()`
+    /// **Source:** `BRepCheck_Wire.hxx`:107 - `BRepCheck_Wire::GeometricControls()`
     pub fn BRepCheck_Wire_geometric_controls_bool(
         self_: *mut BRepCheck_Wire,
         B: bool,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepCheck_Wire.hxx`:112 - `BRepCheck_Wire::SetStatus()`
+    /// **Source:** `BRepCheck_Wire.hxx`:110 - `BRepCheck_Wire::SetStatus()`
     pub fn BRepCheck_Wire_set_status(
         self_: *mut BRepCheck_Wire,
         theStatus: i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepCheck_Wire.hxx`:114 - `BRepCheck_Wire::DynamicType()`
+    /// **Source:** `BRepCheck_Wire.hxx`:112 - `BRepCheck_Wire::DynamicType()`
     pub fn BRepCheck_Wire_dynamic_type(
         self_: *const BRepCheck_Wire,
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// **Source:** `BRepCheck_Wire.hxx`:114 - `BRepCheck_Wire::get_type_name()`
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
+    /// **Source:** `BRepCheck_Wire.hxx`:112 - `BRepCheck_Wire::get_type_name()`
     pub fn BRepCheck_Wire_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
-    /// **Source:** `BRepCheck_Wire.hxx`:114 - `BRepCheck_Wire::get_type_descriptor()`
-    pub fn BRepCheck_Wire_get_type_descriptor() -> crate::OcctResult<*const HandleStandardType>;
+    /// **Source:** `BRepCheck_Wire.hxx`:112 - `BRepCheck_Wire::get_type_descriptor()`
+    pub fn BRepCheck_Wire_get_type_descriptor() -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast BRepCheck_Wire to BRepCheck_Result
     pub fn BRepCheck_Wire_as_BRepCheck_Result(
         self_: *const BRepCheck_Wire,
@@ -5716,156 +5738,160 @@ unsafe extern "C" {
     /// Wrap BRepCheck_Wire in a Handle
     pub fn BRepCheck_Wire_to_handle(
         obj: *mut BRepCheck_Wire,
-    ) -> crate::OcctResult<*mut HandleBRepCheckWire>;
+    ) -> crate::OcctResult<*mut Handle_BRepCheck_Wire>;
     /// Destroy Handle<BRepCheck_Wire>
-    pub fn HandleBRepCheckWire_destructor(self_: *mut HandleBRepCheckWire);
+    pub fn Handle_BRepCheck_Wire_destructor(self_: *mut Handle_BRepCheck_Wire);
     /// Clone Handle<BRepCheck_Wire> (increments reference count)
-    pub fn HandleBRepCheckWire_clone(
-        self_: *const HandleBRepCheckWire,
-    ) -> crate::OcctResult<*mut HandleBRepCheckWire>;
+    pub fn Handle_BRepCheck_Wire_clone(
+        self_: *const Handle_BRepCheck_Wire,
+    ) -> crate::OcctResult<*mut Handle_BRepCheck_Wire>;
     /// Check if Handle<BRepCheck_Wire> is null
-    pub fn HandleBRepCheckWire_is_null(self_: *const HandleBRepCheckWire) -> bool;
+    pub fn Handle_BRepCheck_Wire_is_null(self_: *const Handle_BRepCheck_Wire) -> bool;
     /// Dereference Handle to get *const BRepCheck_Wire
-    pub fn HandleBRepCheckWire_get(
-        handle: *const HandleBRepCheckWire,
+    pub fn Handle_BRepCheck_Wire_get(
+        handle: *const Handle_BRepCheck_Wire,
     ) -> crate::OcctResult<*const BRepCheck_Wire>;
     /// Dereference Handle to get *mut BRepCheck_Wire
-    pub fn HandleBRepCheckWire_get_mut(
-        handle: *mut HandleBRepCheckWire,
+    pub fn Handle_BRepCheck_Wire_get_mut(
+        handle: *mut Handle_BRepCheck_Wire,
     ) -> crate::OcctResult<*mut BRepCheck_Wire>;
     /// Upcast Handle<BRepCheck_Wire> to Handle<BRepCheck_Result>
-    pub fn HandleBRepCheckWire_to_HandleBRepCheckResult(
-        self_: *const HandleBRepCheckWire,
-    ) -> crate::OcctResult<*mut HandleBRepCheckResult>;
+    pub fn Handle_BRepCheck_Wire_to_Handle_BRepCheck_Result(
+        self_: *const Handle_BRepCheck_Wire,
+    ) -> crate::OcctResult<*mut Handle_BRepCheck_Result>;
     /// Upcast Handle<BRepCheck_Wire> to Handle<Standard_Transient>
-    pub fn HandleBRepCheckWire_to_HandleStandardTransient(
-        self_: *const HandleBRepCheckWire,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
-    /// Inherited: **Source:** `BRepCheck_Result.hxx`:33 - `BRepCheck_Result::Init()`
+    pub fn Handle_BRepCheck_Wire_to_Handle_Standard_Transient(
+        self_: *const Handle_BRepCheck_Wire,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
+    /// Inherited: **Source:** `BRepCheck_Result.hxx`:35 - `BRepCheck_Result::Init()`
     pub fn BRepCheck_Wire_inherited_Init(
         self_: *mut BRepCheck_Wire,
         S: *const TopoDS_Shape,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BRepCheck_Result.hxx`:41 - `BRepCheck_Result::SetFailStatus()`
+    /// Inherited: **Source:** `BRepCheck_Result.hxx`:43 - `BRepCheck_Result::SetFailStatus()`
     pub fn BRepCheck_Wire_inherited_SetFailStatus(
         self_: *mut BRepCheck_Wire,
         S: *const TopoDS_Shape,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BRepCheck_Result.hxx`:43 - `BRepCheck_Result::Status()`
+    /// Inherited: **Source:** `BRepCheck_Result.hxx`:45 - `BRepCheck_Result::Status()`
     pub fn BRepCheck_Wire_inherited_Status(
         self_: *const BRepCheck_Wire,
-    ) -> crate::OcctResult<*const BRepCheck_ListOfStatus>;
-    /// Inherited: **Source:** `BRepCheck_Result.hxx`:45 - `BRepCheck_Result::IsMinimum()`
+    ) -> crate::OcctResult<*const NCollection_List_BRepCheck_Status>;
+    /// Inherited: **Source:** `BRepCheck_Result.hxx`:47 - `BRepCheck_Result::IsMinimum()`
     pub fn BRepCheck_Wire_inherited_IsMinimum(
         self_: *const BRepCheck_Wire,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `BRepCheck_Result.hxx`:47 - `BRepCheck_Result::IsBlind()`
+    /// Inherited: **Source:** `BRepCheck_Result.hxx`:49 - `BRepCheck_Result::IsBlind()`
     pub fn BRepCheck_Wire_inherited_IsBlind(
         self_: *const BRepCheck_Wire,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `BRepCheck_Result.hxx`:49 - `BRepCheck_Result::InitContextIterator()`
+    /// Inherited: **Source:** `BRepCheck_Result.hxx`:51 - `BRepCheck_Result::InitContextIterator()`
     pub fn BRepCheck_Wire_inherited_InitContextIterator(
         self_: *mut BRepCheck_Wire,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BRepCheck_Result.hxx`:51 - `BRepCheck_Result::MoreShapeInContext()`
+    /// Inherited: **Source:** `BRepCheck_Result.hxx`:53 - `BRepCheck_Result::MoreShapeInContext()`
     pub fn BRepCheck_Wire_inherited_MoreShapeInContext(
         self_: *const BRepCheck_Wire,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `BRepCheck_Result.hxx`:53 - `BRepCheck_Result::ContextualShape()`
+    /// Inherited: **Source:** `BRepCheck_Result.hxx`:55 - `BRepCheck_Result::ContextualShape()`
     pub fn BRepCheck_Wire_inherited_ContextualShape(
         self_: *const BRepCheck_Wire,
     ) -> crate::OcctResult<*const TopoDS_Shape>;
-    /// Inherited: **Source:** `BRepCheck_Result.hxx`:55 - `BRepCheck_Result::StatusOnShape()`
+    /// Inherited: **Source:** `BRepCheck_Result.hxx`:57 - `BRepCheck_Result::StatusOnShape()`
     pub fn BRepCheck_Wire_inherited_StatusOnShape(
         self_: *const BRepCheck_Wire,
-    ) -> crate::OcctResult<*const BRepCheck_ListOfStatus>;
-    /// Inherited: **Source:** `BRepCheck_Result.hxx`:57 - `BRepCheck_Result::NextShapeInContext()`
+    ) -> crate::OcctResult<*const NCollection_List_BRepCheck_Status>;
+    /// Inherited: **Source:** `BRepCheck_Result.hxx`:59 - `BRepCheck_Result::NextShapeInContext()`
     pub fn BRepCheck_Wire_inherited_NextShapeInContext(
         self_: *mut BRepCheck_Wire,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BRepCheck_Result.hxx`:59 - `BRepCheck_Result::SetParallel()`
+    /// Inherited: **Source:** `BRepCheck_Result.hxx`:62 - `BRepCheck_Result::SetParallel()`
     pub fn BRepCheck_Wire_inherited_SetParallel(
         self_: *mut BRepCheck_Wire,
         theIsParallel: bool,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `BRepCheck_Result.hxx`:61 - `BRepCheck_Result::IsStatusOnShape()`
+    /// Inherited: **Source:** `BRepCheck_Result.hxx`:65 - `BRepCheck_Result::IsParallel()`
+    pub fn BRepCheck_Wire_inherited_IsParallel(
+        self_: *const BRepCheck_Wire,
+    ) -> crate::OcctResult<bool>;
+    /// Inherited: **Source:** `BRepCheck_Result.hxx`:67 - `BRepCheck_Result::IsStatusOnShape()`
     pub fn BRepCheck_Wire_inherited_IsStatusOnShape(
         self_: *const BRepCheck_Wire,
         theShape: *const TopoDS_Shape,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn BRepCheck_Wire_inherited_IsInstance(
         self_: *const BRepCheck_Wire,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn BRepCheck_Wire_inherited_IsKind(
         self_: *const BRepCheck_Wire,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn BRepCheck_Wire_inherited_This(
         self_: *const BRepCheck_Wire,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn BRepCheck_Wire_inherited_GetRefCount(
         self_: *const BRepCheck_Wire,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn BRepCheck_Wire_inherited_IncrementRefCounter(
         self_: *mut BRepCheck_Wire,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn BRepCheck_Wire_inherited_DecrementRefCounter(
         self_: *mut BRepCheck_Wire,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn BRepCheck_Wire_inherited_Delete(self_: *const BRepCheck_Wire)
         -> *const std::ffi::c_char;
     // ======================== BRepClass_Edge ========================
     pub fn BRepClass_Edge_destructor(self_: *mut BRepClass_Edge);
-    /// **Source:** `BRepClass_Edge.hxx`:36 - `BRepClass_Edge::BRepClass_Edge()`
+    /// **Source:** `BRepClass_Edge.hxx`:39 - `BRepClass_Edge::BRepClass_Edge()`
     pub fn BRepClass_Edge_ctor() -> crate::OcctResult<*mut BRepClass_Edge>;
-    /// **Source:** `BRepClass_Edge.hxx`:38 - `BRepClass_Edge::BRepClass_Edge()`
+    /// **Source:** `BRepClass_Edge.hxx`:41 - `BRepClass_Edge::BRepClass_Edge()`
     pub fn BRepClass_Edge_ctor_edge_face(
         E: *const TopoDS_Edge,
         F: *const TopoDS_Face,
     ) -> crate::OcctResult<*mut BRepClass_Edge>;
-    /// **Source:** `BRepClass_Edge.hxx`:41 - `BRepClass_Edge::Edge()`
+    /// **Source:** `BRepClass_Edge.hxx`:44 - `BRepClass_Edge::Edge()`
     pub fn BRepClass_Edge_edge_mut(
         self_: *mut BRepClass_Edge,
     ) -> crate::OcctResult<*mut TopoDS_Edge>;
-    /// **Source:** `BRepClass_Edge.hxx`:42 - `BRepClass_Edge::Edge()`
+    /// **Source:** `BRepClass_Edge.hxx`:46 - `BRepClass_Edge::Edge()`
     pub fn BRepClass_Edge_edge(
         self_: *const BRepClass_Edge,
     ) -> crate::OcctResult<*const TopoDS_Edge>;
-    /// **Source:** `BRepClass_Edge.hxx`:45 - `BRepClass_Edge::Face()`
+    /// **Source:** `BRepClass_Edge.hxx`:49 - `BRepClass_Edge::Face()`
     pub fn BRepClass_Edge_face_mut(
         self_: *mut BRepClass_Edge,
     ) -> crate::OcctResult<*mut TopoDS_Face>;
-    /// **Source:** `BRepClass_Edge.hxx`:46 - `BRepClass_Edge::Face()`
+    /// **Source:** `BRepClass_Edge.hxx`:51 - `BRepClass_Edge::Face()`
     pub fn BRepClass_Edge_face(
         self_: *const BRepClass_Edge,
     ) -> crate::OcctResult<*const TopoDS_Face>;
-    /// **Source:** `BRepClass_Edge.hxx`:49 - `BRepClass_Edge::NextEdge()`
+    /// **Source:** `BRepClass_Edge.hxx`:54 - `BRepClass_Edge::NextEdge()`
     pub fn BRepClass_Edge_next_edge(
         self_: *const BRepClass_Edge,
     ) -> crate::OcctResult<*const TopoDS_Edge>;
-    /// **Source:** `BRepClass_Edge.hxx`:52 - `BRepClass_Edge::SetNextEdge()`
+    /// **Source:** `BRepClass_Edge.hxx`:57 - `BRepClass_Edge::SetNextEdge()`
     pub fn BRepClass_Edge_set_next_edge(
         self_: *mut BRepClass_Edge,
-        theMapVE: *const TopTools_IndexedDataMapOfShapeListOfShape,
+        theMapVE: *const NCollection_IndexedDataMap_TopoDS_Shape_NCollection_List_TopoDS_Shape_TopTools_ShapeMapHasher,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepClass_Edge.hxx`:55 - `BRepClass_Edge::MaxTolerance()`
+    /// **Source:** `BRepClass_Edge.hxx`:63 - `BRepClass_Edge::MaxTolerance()`
     pub fn BRepClass_Edge_max_tolerance(self_: *const BRepClass_Edge) -> crate::OcctResult<f64>;
-    /// **Source:** `BRepClass_Edge.hxx`:59 - `BRepClass_Edge::SetMaxTolerance()`
+    /// **Source:** `BRepClass_Edge.hxx`:67 - `BRepClass_Edge::SetMaxTolerance()`
     pub fn BRepClass_Edge_set_max_tolerance(
         self_: *mut BRepClass_Edge,
         theValue: f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepClass_Edge.hxx`:63 - `BRepClass_Edge::UseBndBox()`
+    /// **Source:** `BRepClass_Edge.hxx`:71 - `BRepClass_Edge::UseBndBox()`
     pub fn BRepClass_Edge_use_bnd_box(self_: *const BRepClass_Edge) -> crate::OcctResult<bool>;
-    /// **Source:** `BRepClass_Edge.hxx`:67 - `BRepClass_Edge::SetUseBndBox()`
+    /// **Source:** `BRepClass_Edge.hxx`:75 - `BRepClass_Edge::SetUseBndBox()`
     pub fn BRepClass_Edge_set_use_bnd_box(
         self_: *mut BRepClass_Edge,
         theValue: bool,
@@ -5925,27 +5951,27 @@ unsafe extern "C" {
         P: *const gp_Pnt2d,
         Tol: f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepClass_FClassifier.hxx`:55 - `BRepClass_FClassifier::State()`
+    /// **Source:** `BRepClass_FClassifier.hxx`:53 - `BRepClass_FClassifier::State()`
     pub fn BRepClass_FClassifier_state(
         self_: *const BRepClass_FClassifier,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `BRepClass_FClassifier.hxx`:59 - `BRepClass_FClassifier::Rejected()`
+    /// **Source:** `BRepClass_FClassifier.hxx`:57 - `BRepClass_FClassifier::Rejected()`
     pub fn BRepClass_FClassifier_rejected(
         self_: *const BRepClass_FClassifier,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BRepClass_FClassifier.hxx`:63 - `BRepClass_FClassifier::NoWires()`
+    /// **Source:** `BRepClass_FClassifier.hxx`:61 - `BRepClass_FClassifier::NoWires()`
     pub fn BRepClass_FClassifier_no_wires(
         self_: *const BRepClass_FClassifier,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BRepClass_FClassifier.hxx`:68 - `BRepClass_FClassifier::Edge()`
+    /// **Source:** `BRepClass_FClassifier.hxx`:66 - `BRepClass_FClassifier::Edge()`
     pub fn BRepClass_FClassifier_edge(
         self_: *const BRepClass_FClassifier,
     ) -> crate::OcctResult<*const BRepClass_Edge>;
-    /// **Source:** `BRepClass_FClassifier.hxx`:72 - `BRepClass_FClassifier::EdgeParameter()`
+    /// **Source:** `BRepClass_FClassifier.hxx`:70 - `BRepClass_FClassifier::EdgeParameter()`
     pub fn BRepClass_FClassifier_edge_parameter(
         self_: *const BRepClass_FClassifier,
     ) -> crate::OcctResult<f64>;
-    /// **Source:** `BRepClass_FClassifier.hxx`:76 - `BRepClass_FClassifier::Position()`
+    /// **Source:** `BRepClass_FClassifier.hxx`:74 - `BRepClass_FClassifier::Position()`
     pub fn BRepClass_FClassifier_position(
         self_: *const BRepClass_FClassifier,
     ) -> crate::OcctResult<i32>;
@@ -6001,116 +6027,116 @@ unsafe extern "C" {
     pub fn BRepClass_FaceClassifier_as_BRepClass_FClassifier_mut(
         self_: *mut BRepClass_FaceClassifier,
     ) -> crate::OcctResult<*mut BRepClass_FClassifier>;
-    /// Inherited: **Source:** `BRepClass_FClassifier.hxx`:55 - `BRepClass_FClassifier::State()`
+    /// Inherited: **Source:** `BRepClass_FClassifier.hxx`:53 - `BRepClass_FClassifier::State()`
     pub fn BRepClass_FaceClassifier_inherited_State(
         self_: *const BRepClass_FaceClassifier,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `BRepClass_FClassifier.hxx`:59 - `BRepClass_FClassifier::Rejected()`
+    /// Inherited: **Source:** `BRepClass_FClassifier.hxx`:57 - `BRepClass_FClassifier::Rejected()`
     pub fn BRepClass_FaceClassifier_inherited_Rejected(
         self_: *const BRepClass_FaceClassifier,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `BRepClass_FClassifier.hxx`:63 - `BRepClass_FClassifier::NoWires()`
+    /// Inherited: **Source:** `BRepClass_FClassifier.hxx`:61 - `BRepClass_FClassifier::NoWires()`
     pub fn BRepClass_FaceClassifier_inherited_NoWires(
         self_: *const BRepClass_FaceClassifier,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `BRepClass_FClassifier.hxx`:68 - `BRepClass_FClassifier::Edge()`
+    /// Inherited: **Source:** `BRepClass_FClassifier.hxx`:66 - `BRepClass_FClassifier::Edge()`
     pub fn BRepClass_FaceClassifier_inherited_Edge(
         self_: *const BRepClass_FaceClassifier,
     ) -> crate::OcctResult<*const BRepClass_Edge>;
-    /// Inherited: **Source:** `BRepClass_FClassifier.hxx`:72 - `BRepClass_FClassifier::EdgeParameter()`
+    /// Inherited: **Source:** `BRepClass_FClassifier.hxx`:70 - `BRepClass_FClassifier::EdgeParameter()`
     pub fn BRepClass_FaceClassifier_inherited_EdgeParameter(
         self_: *const BRepClass_FaceClassifier,
     ) -> crate::OcctResult<f64>;
-    /// Inherited: **Source:** `BRepClass_FClassifier.hxx`:76 - `BRepClass_FClassifier::Position()`
+    /// Inherited: **Source:** `BRepClass_FClassifier.hxx`:74 - `BRepClass_FClassifier::Position()`
     pub fn BRepClass_FaceClassifier_inherited_Position(
         self_: *const BRepClass_FaceClassifier,
     ) -> crate::OcctResult<i32>;
     // ======================== BRepClass_FaceExplorer ========================
     pub fn BRepClass_FaceExplorer_destructor(self_: *mut BRepClass_FaceExplorer);
-    /// **Source:** `BRepClass_FaceExplorer.hxx`:39 - `BRepClass_FaceExplorer::BRepClass_FaceExplorer()`
+    /// **Source:** `BRepClass_FaceExplorer.hxx`:42 - `BRepClass_FaceExplorer::BRepClass_FaceExplorer()`
     pub fn BRepClass_FaceExplorer_ctor_face(
         F: *const TopoDS_Face,
     ) -> crate::OcctResult<*mut BRepClass_FaceExplorer>;
-    /// **Source:** `BRepClass_FaceExplorer.hxx`:45 - `BRepClass_FaceExplorer::CheckPoint()`
+    /// **Source:** `BRepClass_FaceExplorer.hxx`:48 - `BRepClass_FaceExplorer::CheckPoint()`
     pub fn BRepClass_FaceExplorer_check_point(
         self_: *mut BRepClass_FaceExplorer,
         thePoint: *mut gp_Pnt2d,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BRepClass_FaceExplorer.hxx`:49 - `BRepClass_FaceExplorer::Reject()`
+    /// **Source:** `BRepClass_FaceExplorer.hxx`:52 - `BRepClass_FaceExplorer::Reject()`
     pub fn BRepClass_FaceExplorer_reject(
         self_: *const BRepClass_FaceExplorer,
         P: *const gp_Pnt2d,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BRepClass_FaceExplorer.hxx`:54 - `BRepClass_FaceExplorer::Segment()`
+    /// **Source:** `BRepClass_FaceExplorer.hxx`:57 - `BRepClass_FaceExplorer::Segment()`
     pub fn BRepClass_FaceExplorer_segment(
         self_: *mut BRepClass_FaceExplorer,
         P: *const gp_Pnt2d,
         L: *mut gp_Lin2d,
         Par: *mut f64,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BRepClass_FaceExplorer.hxx`:59 - `BRepClass_FaceExplorer::OtherSegment()`
+    /// **Source:** `BRepClass_FaceExplorer.hxx`:62 - `BRepClass_FaceExplorer::OtherSegment()`
     pub fn BRepClass_FaceExplorer_other_segment(
         self_: *mut BRepClass_FaceExplorer,
         P: *const gp_Pnt2d,
         L: *mut gp_Lin2d,
         Par: *mut f64,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BRepClass_FaceExplorer.hxx`:62 - `BRepClass_FaceExplorer::InitWires()`
+    /// **Source:** `BRepClass_FaceExplorer.hxx`:65 - `BRepClass_FaceExplorer::InitWires()`
     pub fn BRepClass_FaceExplorer_init_wires(
         self_: *mut BRepClass_FaceExplorer,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepClass_FaceExplorer.hxx`:65 - `BRepClass_FaceExplorer::MoreWires()`
+    /// **Source:** `BRepClass_FaceExplorer.hxx`:68 - `BRepClass_FaceExplorer::MoreWires()`
     pub fn BRepClass_FaceExplorer_more_wires(
         self_: *const BRepClass_FaceExplorer,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BRepClass_FaceExplorer.hxx`:68 - `BRepClass_FaceExplorer::NextWire()`
+    /// **Source:** `BRepClass_FaceExplorer.hxx`:71 - `BRepClass_FaceExplorer::NextWire()`
     pub fn BRepClass_FaceExplorer_next_wire(
         self_: *mut BRepClass_FaceExplorer,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepClass_FaceExplorer.hxx`:72 - `BRepClass_FaceExplorer::RejectWire()`
+    /// **Source:** `BRepClass_FaceExplorer.hxx`:75 - `BRepClass_FaceExplorer::RejectWire()`
     pub fn BRepClass_FaceExplorer_reject_wire(
         self_: *const BRepClass_FaceExplorer,
         L: *const gp_Lin2d,
         Par: f64,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BRepClass_FaceExplorer.hxx`:76 - `BRepClass_FaceExplorer::InitEdges()`
+    /// **Source:** `BRepClass_FaceExplorer.hxx`:79 - `BRepClass_FaceExplorer::InitEdges()`
     pub fn BRepClass_FaceExplorer_init_edges(
         self_: *mut BRepClass_FaceExplorer,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepClass_FaceExplorer.hxx`:79 - `BRepClass_FaceExplorer::MoreEdges()`
+    /// **Source:** `BRepClass_FaceExplorer.hxx`:82 - `BRepClass_FaceExplorer::MoreEdges()`
     pub fn BRepClass_FaceExplorer_more_edges(
         self_: *const BRepClass_FaceExplorer,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BRepClass_FaceExplorer.hxx`:82 - `BRepClass_FaceExplorer::NextEdge()`
+    /// **Source:** `BRepClass_FaceExplorer.hxx`:85 - `BRepClass_FaceExplorer::NextEdge()`
     pub fn BRepClass_FaceExplorer_next_edge(
         self_: *mut BRepClass_FaceExplorer,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepClass_FaceExplorer.hxx`:86 - `BRepClass_FaceExplorer::RejectEdge()`
+    /// **Source:** `BRepClass_FaceExplorer.hxx`:89 - `BRepClass_FaceExplorer::RejectEdge()`
     pub fn BRepClass_FaceExplorer_reject_edge(
         self_: *const BRepClass_FaceExplorer,
         L: *const gp_Lin2d,
         Par: f64,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BRepClass_FaceExplorer.hxx`:89 - `BRepClass_FaceExplorer::CurrentEdge()`
+    /// **Source:** `BRepClass_FaceExplorer.hxx`:92 - `BRepClass_FaceExplorer::CurrentEdge()`
     pub fn BRepClass_FaceExplorer_current_edge(
         self_: *const BRepClass_FaceExplorer,
         E: *mut BRepClass_Edge,
         Or: &mut i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepClass_FaceExplorer.hxx`:92 - `BRepClass_FaceExplorer::MaxTolerance()`
+    /// **Source:** `BRepClass_FaceExplorer.hxx`:95 - `BRepClass_FaceExplorer::MaxTolerance()`
     pub fn BRepClass_FaceExplorer_max_tolerance(
         self_: *const BRepClass_FaceExplorer,
     ) -> crate::OcctResult<f64>;
-    /// **Source:** `BRepClass_FaceExplorer.hxx`:96 - `BRepClass_FaceExplorer::SetMaxTolerance()`
+    /// **Source:** `BRepClass_FaceExplorer.hxx`:99 - `BRepClass_FaceExplorer::SetMaxTolerance()`
     pub fn BRepClass_FaceExplorer_set_max_tolerance(
         self_: *mut BRepClass_FaceExplorer,
         theValue: f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepClass_FaceExplorer.hxx`:100 - `BRepClass_FaceExplorer::UseBndBox()`
+    /// **Source:** `BRepClass_FaceExplorer.hxx`:103 - `BRepClass_FaceExplorer::UseBndBox()`
     pub fn BRepClass_FaceExplorer_use_bnd_box(
         self_: *const BRepClass_FaceExplorer,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BRepClass_FaceExplorer.hxx`:104 - `BRepClass_FaceExplorer::SetUseBndBox()`
+    /// **Source:** `BRepClass_FaceExplorer.hxx`:107 - `BRepClass_FaceExplorer::SetUseBndBox()`
     pub fn BRepClass_FaceExplorer_set_use_bnd_box(
         self_: *mut BRepClass_FaceExplorer,
         theValue: bool,
@@ -6190,33 +6216,33 @@ unsafe extern "C" {
     pub fn BRepClass_Intersector_as_IntRes2d_Intersection_mut(
         self_: *mut BRepClass_Intersector,
     ) -> crate::OcctResult<*mut IntRes2d_Intersection>;
-    /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:39 - `IntRes2d_Intersection::IsDone()`
+    /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:40 - `IntRes2d_Intersection::IsDone()`
     pub fn BRepClass_Intersector_inherited_IsDone(
         self_: *const BRepClass_Intersector,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:44 - `IntRes2d_Intersection::IsEmpty()`
+    /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:45 - `IntRes2d_Intersection::IsEmpty()`
     pub fn BRepClass_Intersector_inherited_IsEmpty(
         self_: *const BRepClass_Intersector,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:49 - `IntRes2d_Intersection::NbPoints()`
+    /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:50 - `IntRes2d_Intersection::NbPoints()`
     pub fn BRepClass_Intersector_inherited_NbPoints(
         self_: *const BRepClass_Intersector,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:56 - `IntRes2d_Intersection::Point()`
+    /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:57 - `IntRes2d_Intersection::Point()`
     pub fn BRepClass_Intersector_inherited_Point(
         self_: *const BRepClass_Intersector,
         N: i32,
     ) -> crate::OcctResult<*const IntRes2d_IntersectionPoint>;
-    /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:61 - `IntRes2d_Intersection::NbSegments()`
+    /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:62 - `IntRes2d_Intersection::NbSegments()`
     pub fn BRepClass_Intersector_inherited_NbSegments(
         self_: *const BRepClass_Intersector,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:68 - `IntRes2d_Intersection::Segment()`
+    /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:69 - `IntRes2d_Intersection::Segment()`
     pub fn BRepClass_Intersector_inherited_Segment(
         self_: *const BRepClass_Intersector,
         N: i32,
     ) -> crate::OcctResult<*const IntRes2d_IntersectionSegment>;
-    /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:70 - `IntRes2d_Intersection::SetReversedParameters()`
+    /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:71 - `IntRes2d_Intersection::SetReversedParameters()`
     pub fn BRepClass_Intersector_inherited_SetReversedParameters(
         self_: *mut BRepClass_Intersector,
         Reverseflag: bool,
@@ -6226,8 +6252,8 @@ unsafe extern "C" {
         self_: *mut BRepClass3d_BndBoxTreeSelectorPoint,
     );
     /// **Source:** `BRepClass3d_BndBoxTree.hxx`:36 - `BRepClass3d_BndBoxTreeSelectorPoint::BRepClass3d_BndBoxTreeSelectorPoint()`
-    pub fn BRepClass3d_BndBoxTreeSelectorPoint_ctor_indexedmapofshape(
-        theMapOfShape: *const TopTools_IndexedMapOfShape,
+    pub fn BRepClass3d_BndBoxTreeSelectorPoint_ctor_imap_shape(
+        theMapOfShape: *const NCollection_IndexedMap_TopoDS_Shape_TopTools_ShapeMapHasher,
     ) -> crate::OcctResult<*mut BRepClass3d_BndBoxTreeSelectorPoint>;
     /// **Source:** `BRepClass3d_BndBoxTree.hxx`:42 - `BRepClass3d_BndBoxTreeSelectorPoint::Reject()`
     pub fn BRepClass3d_BndBoxTreeSelectorPoint_reject(
@@ -6248,27 +6274,27 @@ unsafe extern "C" {
     pub fn BRepClass3d_BndBoxTreeSelectorLine_destructor(
         self_: *mut BRepClass3d_BndBoxTreeSelectorLine,
     );
-    /// **Source:** `BRepClass3d_BndBoxTree.hxx`:76 - `BRepClass3d_BndBoxTreeSelectorLine::BRepClass3d_BndBoxTreeSelectorLine()`
-    pub fn BRepClass3d_BndBoxTreeSelectorLine_ctor_indexedmapofshape(
-        theMapOfShape: *const TopTools_IndexedMapOfShape,
+    /// **Source:** `BRepClass3d_BndBoxTree.hxx`:78 - `BRepClass3d_BndBoxTreeSelectorLine::BRepClass3d_BndBoxTreeSelectorLine()`
+    pub fn BRepClass3d_BndBoxTreeSelectorLine_ctor_imap_shape(
+        theMapOfShape: *const NCollection_IndexedMap_TopoDS_Shape_TopTools_ShapeMapHasher,
     ) -> crate::OcctResult<*mut BRepClass3d_BndBoxTreeSelectorLine>;
-    /// **Source:** `BRepClass3d_BndBoxTree.hxx`:83 - `BRepClass3d_BndBoxTreeSelectorLine::Reject()`
+    /// **Source:** `BRepClass3d_BndBoxTree.hxx`:85 - `BRepClass3d_BndBoxTreeSelectorLine::Reject()`
     pub fn BRepClass3d_BndBoxTreeSelectorLine_reject(
         self_: *const BRepClass3d_BndBoxTreeSelectorLine,
         theBox: *const Bnd_Box,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BRepClass3d_BndBoxTree.hxx`:85 - `BRepClass3d_BndBoxTreeSelectorLine::Accept()`
+    /// **Source:** `BRepClass3d_BndBoxTree.hxx`:87 - `BRepClass3d_BndBoxTreeSelectorLine::Accept()`
     pub fn BRepClass3d_BndBoxTreeSelectorLine_accept(
         self_: *mut BRepClass3d_BndBoxTreeSelectorLine,
         theObj: *const i32,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BRepClass3d_BndBoxTree.hxx`:88 - `BRepClass3d_BndBoxTreeSelectorLine::SetCurrentLine()`
+    /// **Source:** `BRepClass3d_BndBoxTree.hxx`:90 - `BRepClass3d_BndBoxTreeSelectorLine::SetCurrentLine()`
     pub fn BRepClass3d_BndBoxTreeSelectorLine_set_current_line(
         self_: *mut BRepClass3d_BndBoxTreeSelectorLine,
         theL: *const gp_Lin,
         theMaxParam: f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepClass3d_BndBoxTree.hxx`:94 - `BRepClass3d_BndBoxTreeSelectorLine::GetEdgeParam()`
+    /// **Source:** `BRepClass3d_BndBoxTree.hxx`:96 - `BRepClass3d_BndBoxTreeSelectorLine::GetEdgeParam()`
     pub fn BRepClass3d_BndBoxTreeSelectorLine_get_edge_param(
         self_: *const BRepClass3d_BndBoxTreeSelectorLine,
         i: i32,
@@ -6276,26 +6302,26 @@ unsafe extern "C" {
         theOutParam: *mut f64,
         outLParam: *mut f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepClass3d_BndBoxTree.hxx`:105 - `BRepClass3d_BndBoxTreeSelectorLine::GetVertParam()`
+    /// **Source:** `BRepClass3d_BndBoxTree.hxx`:104 - `BRepClass3d_BndBoxTreeSelectorLine::GetVertParam()`
     pub fn BRepClass3d_BndBoxTreeSelectorLine_get_vert_param(
         self_: *const BRepClass3d_BndBoxTreeSelectorLine,
         i: i32,
         theOutV: *mut TopoDS_Vertex,
         outLParam: *mut f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepClass3d_BndBoxTree.hxx`:114 - `BRepClass3d_BndBoxTreeSelectorLine::GetNbEdgeParam()`
+    /// **Source:** `BRepClass3d_BndBoxTree.hxx`:111 - `BRepClass3d_BndBoxTreeSelectorLine::GetNbEdgeParam()`
     pub fn BRepClass3d_BndBoxTreeSelectorLine_get_nb_edge_param(
         self_: *const BRepClass3d_BndBoxTreeSelectorLine,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `BRepClass3d_BndBoxTree.hxx`:116 - `BRepClass3d_BndBoxTreeSelectorLine::GetNbVertParam()`
+    /// **Source:** `BRepClass3d_BndBoxTree.hxx`:113 - `BRepClass3d_BndBoxTreeSelectorLine::GetNbVertParam()`
     pub fn BRepClass3d_BndBoxTreeSelectorLine_get_nb_vert_param(
         self_: *const BRepClass3d_BndBoxTreeSelectorLine,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `BRepClass3d_BndBoxTree.hxx`:118 - `BRepClass3d_BndBoxTreeSelectorLine::ClearResults()`
+    /// **Source:** `BRepClass3d_BndBoxTree.hxx`:115 - `BRepClass3d_BndBoxTreeSelectorLine::ClearResults()`
     pub fn BRepClass3d_BndBoxTreeSelectorLine_clear_results(
         self_: *mut BRepClass3d_BndBoxTreeSelectorLine,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepClass3d_BndBoxTree.hxx`:126 - `BRepClass3d_BndBoxTreeSelectorLine::IsCorrect()`
+    /// **Source:** `BRepClass3d_BndBoxTree.hxx`:123 - `BRepClass3d_BndBoxTreeSelectorLine::IsCorrect()`
     pub fn BRepClass3d_BndBoxTreeSelectorLine_is_correct(
         self_: *const BRepClass3d_BndBoxTreeSelectorLine,
     ) -> crate::OcctResult<bool>;
@@ -6378,25 +6404,25 @@ unsafe extern "C" {
         P: *const gp_Pnt,
         Tol: f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepClass3d_SClassifier.hxx`:52 - `BRepClass3d_SClassifier::PerformInfinitePoint()`
+    /// **Source:** `BRepClass3d_SClassifier.hxx`:50 - `BRepClass3d_SClassifier::PerformInfinitePoint()`
     pub fn BRepClass3d_SClassifier_perform_infinite_point(
         self_: *mut BRepClass3d_SClassifier,
         S: *mut BRepClass3d_SolidExplorer,
         Tol: f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepClass3d_SClassifier.hxx`:57 - `BRepClass3d_SClassifier::Rejected()`
+    /// **Source:** `BRepClass3d_SClassifier.hxx`:55 - `BRepClass3d_SClassifier::Rejected()`
     pub fn BRepClass3d_SClassifier_rejected(
         self_: *const BRepClass3d_SClassifier,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BRepClass3d_SClassifier.hxx`:60 - `BRepClass3d_SClassifier::State()`
+    /// **Source:** `BRepClass3d_SClassifier.hxx`:58 - `BRepClass3d_SClassifier::State()`
     pub fn BRepClass3d_SClassifier_state(
         self_: *const BRepClass3d_SClassifier,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `BRepClass3d_SClassifier.hxx`:63 - `BRepClass3d_SClassifier::IsOnAFace()`
+    /// **Source:** `BRepClass3d_SClassifier.hxx`:61 - `BRepClass3d_SClassifier::IsOnAFace()`
     pub fn BRepClass3d_SClassifier_is_on_a_face(
         self_: *const BRepClass3d_SClassifier,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BRepClass3d_SClassifier.hxx`:70 - `BRepClass3d_SClassifier::Face()`
+    /// **Source:** `BRepClass3d_SClassifier.hxx`:68 - `BRepClass3d_SClassifier::Face()`
     pub fn BRepClass3d_SClassifier_face(
         self_: *const BRepClass3d_SClassifier,
     ) -> crate::OcctResult<*mut TopoDS_Face>;
@@ -6442,19 +6468,19 @@ unsafe extern "C" {
     pub fn BRepClass3d_SolidClassifier_as_BRepClass3d_SClassifier_mut(
         self_: *mut BRepClass3d_SolidClassifier,
     ) -> crate::OcctResult<*mut BRepClass3d_SClassifier>;
-    /// Inherited: **Source:** `BRepClass3d_SClassifier.hxx`:57 - `BRepClass3d_SClassifier::Rejected()`
+    /// Inherited: **Source:** `BRepClass3d_SClassifier.hxx`:55 - `BRepClass3d_SClassifier::Rejected()`
     pub fn BRepClass3d_SolidClassifier_inherited_Rejected(
         self_: *const BRepClass3d_SolidClassifier,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `BRepClass3d_SClassifier.hxx`:60 - `BRepClass3d_SClassifier::State()`
+    /// Inherited: **Source:** `BRepClass3d_SClassifier.hxx`:58 - `BRepClass3d_SClassifier::State()`
     pub fn BRepClass3d_SolidClassifier_inherited_State(
         self_: *const BRepClass3d_SolidClassifier,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `BRepClass3d_SClassifier.hxx`:63 - `BRepClass3d_SClassifier::IsOnAFace()`
+    /// Inherited: **Source:** `BRepClass3d_SClassifier.hxx`:61 - `BRepClass3d_SClassifier::IsOnAFace()`
     pub fn BRepClass3d_SolidClassifier_inherited_IsOnAFace(
         self_: *const BRepClass3d_SolidClassifier,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `BRepClass3d_SClassifier.hxx`:70 - `BRepClass3d_SClassifier::Face()`
+    /// Inherited: **Source:** `BRepClass3d_SClassifier.hxx`:68 - `BRepClass3d_SClassifier::Face()`
     pub fn BRepClass3d_SolidClassifier_inherited_Face(
         self_: *const BRepClass3d_SolidClassifier,
     ) -> crate::OcctResult<*mut TopoDS_Face>;
@@ -6476,7 +6502,7 @@ unsafe extern "C" {
         self_: *const BRepClass3d_SolidExplorer,
         P: *const gp_Pnt,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BRepClass3d_SolidExplorer.hxx`:86 - `BRepClass3d_SolidExplorer::PointInTheFace()`
+    /// **Source:** `BRepClass3d_SolidExplorer.hxx`:82 - `BRepClass3d_SolidExplorer::PointInTheFace()`
     pub fn BRepClass3d_SolidExplorer_point_in_the_face_face_pnt_real3_int(
         self_: *const BRepClass3d_SolidExplorer,
         F: *const TopoDS_Face,
@@ -6486,7 +6512,7 @@ unsafe extern "C" {
         Param: *mut f64,
         Index: *mut i32,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BRepClass3d_SolidExplorer.hxx`:93 - `BRepClass3d_SolidExplorer::PointInTheFace()`
+    /// **Source:** `BRepClass3d_SolidExplorer.hxx`:89 - `BRepClass3d_SolidExplorer::PointInTheFace()`
     pub fn BRepClass3d_SolidExplorer_point_in_the_face_face_pnt_real3_int_handlebrepadaptorsurface_real4(
         self_: *const BRepClass3d_SolidExplorer,
         F: *const TopoDS_Face,
@@ -6495,13 +6521,13 @@ unsafe extern "C" {
         v: *mut f64,
         Param: *mut f64,
         Index: *mut i32,
-        surf: *const HandleBRepAdaptorSurface,
+        surf: *const Handle_BRepAdaptor_Surface,
         u1: f64,
         v1: f64,
         u2: f64,
         v2: f64,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BRepClass3d_SolidExplorer.hxx`:107 - `BRepClass3d_SolidExplorer::PointInTheFace()`
+    /// **Source:** `BRepClass3d_SolidExplorer.hxx`:103 - `BRepClass3d_SolidExplorer::PointInTheFace()`
     pub fn BRepClass3d_SolidExplorer_point_in_the_face_face_pnt_real3_int_handlebrepadaptorsurface_real4_vec2(
         self_: *const BRepClass3d_SolidExplorer,
         F: *const TopoDS_Face,
@@ -6510,7 +6536,7 @@ unsafe extern "C" {
         v: *mut f64,
         Param: *mut f64,
         Index: *mut i32,
-        surf: *const HandleBRepAdaptorSurface,
+        surf: *const Handle_BRepAdaptor_Surface,
         u1: f64,
         v1: f64,
         u2: f64,
@@ -6518,67 +6544,67 @@ unsafe extern "C" {
         theVecD1U: *mut gp_Vec,
         theVecD1V: *mut gp_Vec,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BRepClass3d_SolidExplorer.hxx`:122 - `BRepClass3d_SolidExplorer::InitShell()`
+    /// **Source:** `BRepClass3d_SolidExplorer.hxx`:118 - `BRepClass3d_SolidExplorer::InitShell()`
     pub fn BRepClass3d_SolidExplorer_init_shell(
         self_: *mut BRepClass3d_SolidExplorer,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepClass3d_SolidExplorer.hxx`:125 - `BRepClass3d_SolidExplorer::MoreShell()`
+    /// **Source:** `BRepClass3d_SolidExplorer.hxx`:121 - `BRepClass3d_SolidExplorer::MoreShell()`
     pub fn BRepClass3d_SolidExplorer_more_shell(
         self_: *const BRepClass3d_SolidExplorer,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BRepClass3d_SolidExplorer.hxx`:128 - `BRepClass3d_SolidExplorer::NextShell()`
+    /// **Source:** `BRepClass3d_SolidExplorer.hxx`:124 - `BRepClass3d_SolidExplorer::NextShell()`
     pub fn BRepClass3d_SolidExplorer_next_shell(
         self_: *mut BRepClass3d_SolidExplorer,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepClass3d_SolidExplorer.hxx`:131 - `BRepClass3d_SolidExplorer::CurrentShell()`
+    /// **Source:** `BRepClass3d_SolidExplorer.hxx`:127 - `BRepClass3d_SolidExplorer::CurrentShell()`
     pub fn BRepClass3d_SolidExplorer_current_shell(
         self_: *const BRepClass3d_SolidExplorer,
     ) -> crate::OcctResult<*mut TopoDS_Shell>;
-    /// **Source:** `BRepClass3d_SolidExplorer.hxx`:134 - `BRepClass3d_SolidExplorer::RejectShell()`
+    /// **Source:** `BRepClass3d_SolidExplorer.hxx`:130 - `BRepClass3d_SolidExplorer::RejectShell()`
     pub fn BRepClass3d_SolidExplorer_reject_shell(
         self_: *const BRepClass3d_SolidExplorer,
         L: *const gp_Lin,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BRepClass3d_SolidExplorer.hxx`:137 - `BRepClass3d_SolidExplorer::InitFace()`
+    /// **Source:** `BRepClass3d_SolidExplorer.hxx`:133 - `BRepClass3d_SolidExplorer::InitFace()`
     pub fn BRepClass3d_SolidExplorer_init_face(
         self_: *mut BRepClass3d_SolidExplorer,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepClass3d_SolidExplorer.hxx`:140 - `BRepClass3d_SolidExplorer::MoreFace()`
+    /// **Source:** `BRepClass3d_SolidExplorer.hxx`:136 - `BRepClass3d_SolidExplorer::MoreFace()`
     pub fn BRepClass3d_SolidExplorer_more_face(
         self_: *const BRepClass3d_SolidExplorer,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BRepClass3d_SolidExplorer.hxx`:143 - `BRepClass3d_SolidExplorer::NextFace()`
+    /// **Source:** `BRepClass3d_SolidExplorer.hxx`:139 - `BRepClass3d_SolidExplorer::NextFace()`
     pub fn BRepClass3d_SolidExplorer_next_face(
         self_: *mut BRepClass3d_SolidExplorer,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepClass3d_SolidExplorer.hxx`:146 - `BRepClass3d_SolidExplorer::CurrentFace()`
+    /// **Source:** `BRepClass3d_SolidExplorer.hxx`:142 - `BRepClass3d_SolidExplorer::CurrentFace()`
     pub fn BRepClass3d_SolidExplorer_current_face(
         self_: *const BRepClass3d_SolidExplorer,
     ) -> crate::OcctResult<*mut TopoDS_Face>;
-    /// **Source:** `BRepClass3d_SolidExplorer.hxx`:149 - `BRepClass3d_SolidExplorer::RejectFace()`
+    /// **Source:** `BRepClass3d_SolidExplorer.hxx`:145 - `BRepClass3d_SolidExplorer::RejectFace()`
     pub fn BRepClass3d_SolidExplorer_reject_face(
         self_: *const BRepClass3d_SolidExplorer,
         L: *const gp_Lin,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BRepClass3d_SolidExplorer.hxx`:154 - `BRepClass3d_SolidExplorer::Segment()`
+    /// **Source:** `BRepClass3d_SolidExplorer.hxx`:150 - `BRepClass3d_SolidExplorer::Segment()`
     pub fn BRepClass3d_SolidExplorer_segment(
         self_: *mut BRepClass3d_SolidExplorer,
         P: *const gp_Pnt,
         L: *mut gp_Lin,
         Par: *mut f64,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `BRepClass3d_SolidExplorer.hxx`:164 - `BRepClass3d_SolidExplorer::OtherSegment()`
+    /// **Source:** `BRepClass3d_SolidExplorer.hxx`:160 - `BRepClass3d_SolidExplorer::OtherSegment()`
     pub fn BRepClass3d_SolidExplorer_other_segment(
         self_: *mut BRepClass3d_SolidExplorer,
         P: *const gp_Pnt,
         L: *mut gp_Lin,
         Par: *mut f64,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `BRepClass3d_SolidExplorer.hxx`:168 - `BRepClass3d_SolidExplorer::GetFaceSegmentIndex()`
+    /// **Source:** `BRepClass3d_SolidExplorer.hxx`:164 - `BRepClass3d_SolidExplorer::GetFaceSegmentIndex()`
     pub fn BRepClass3d_SolidExplorer_get_face_segment_index(
         self_: *const BRepClass3d_SolidExplorer,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `BRepClass3d_SolidExplorer.hxx`:170 - `BRepClass3d_SolidExplorer::DumpSegment()`
+    /// **Source:** `BRepClass3d_SolidExplorer.hxx`:166 - `BRepClass3d_SolidExplorer::DumpSegment()`
     pub fn BRepClass3d_SolidExplorer_dump_segment(
         self_: *const BRepClass3d_SolidExplorer,
         P: *const gp_Pnt,
@@ -6586,28 +6612,24 @@ unsafe extern "C" {
         Par: f64,
         S: i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepClass3d_SolidExplorer.hxx`:175 - `BRepClass3d_SolidExplorer::Box()`
-    pub fn BRepClass3d_SolidExplorer_box_(
-        self_: *const BRepClass3d_SolidExplorer,
-    ) -> crate::OcctResult<*const Bnd_Box>;
-    /// **Source:** `BRepClass3d_SolidExplorer.hxx`:177 - `BRepClass3d_SolidExplorer::GetShape()`
+    /// **Source:** `BRepClass3d_SolidExplorer.hxx`:171 - `BRepClass3d_SolidExplorer::GetShape()`
     pub fn BRepClass3d_SolidExplorer_get_shape(
         self_: *const BRepClass3d_SolidExplorer,
     ) -> crate::OcctResult<*const TopoDS_Shape>;
-    /// **Source:** `BRepClass3d_SolidExplorer.hxx`:179 - `BRepClass3d_SolidExplorer::Intersector()`
+    /// **Source:** `BRepClass3d_SolidExplorer.hxx`:173 - `BRepClass3d_SolidExplorer::Intersector()`
     pub fn BRepClass3d_SolidExplorer_intersector(
         self_: *mut BRepClass3d_SolidExplorer,
         F: *const TopoDS_Face,
     ) -> crate::OcctResult<*mut IntCurvesFace_Intersector>;
-    /// **Source:** `BRepClass3d_SolidExplorer.hxx`:182 - `BRepClass3d_SolidExplorer::GetTree()`
+    /// **Source:** `BRepClass3d_SolidExplorer.hxx`:176 - `BRepClass3d_SolidExplorer::GetTree()`
     pub fn BRepClass3d_SolidExplorer_get_tree(
         self_: *mut BRepClass3d_SolidExplorer,
-    ) -> crate::OcctResult<*const BRepClass3d_BndBoxTree>;
-    /// **Source:** `BRepClass3d_SolidExplorer.hxx`:185 - `BRepClass3d_SolidExplorer::GetMapEV()`
+    ) -> crate::OcctResult<*const NCollection_UBTree_int_Bnd_Box>;
+    /// **Source:** `BRepClass3d_SolidExplorer.hxx`:179 - `BRepClass3d_SolidExplorer::GetMapEV()`
     pub fn BRepClass3d_SolidExplorer_get_map_ev(
         self_: *mut BRepClass3d_SolidExplorer,
-    ) -> crate::OcctResult<*const TopTools_IndexedMapOfShape>;
-    /// **Source:** `BRepClass3d_SolidExplorer.hxx`:187 - `BRepClass3d_SolidExplorer::Destroy()`
+    ) -> crate::OcctResult<*const NCollection_IndexedMap_TopoDS_Shape_TopTools_ShapeMapHasher>;
+    /// **Source:** `BRepClass3d_SolidExplorer.hxx`:184 - `BRepClass3d_SolidExplorer::Destroy()`
     pub fn BRepClass3d_SolidExplorer_destroy(
         self_: *mut BRepClass3d_SolidExplorer,
     ) -> *const std::ffi::c_char;
@@ -6617,7 +6639,7 @@ unsafe extern "C" {
         P: *mut gp_Pnt,
         Param: *mut f64,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BRepClass3d_SolidExplorer.hxx`:61 - `BRepClass3d_SolidExplorer::FindAPointInTheFace()`
+    /// **Source:** `BRepClass3d_SolidExplorer.hxx`:59 - `BRepClass3d_SolidExplorer::FindAPointInTheFace()`
     pub fn BRepClass3d_SolidExplorer_find_a_point_in_the_face_face_pnt_real3(
         F: *const TopoDS_Face,
         P: *mut gp_Pnt,
@@ -6625,7 +6647,7 @@ unsafe extern "C" {
         v: *mut f64,
         Param: *mut f64,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BRepClass3d_SolidExplorer.hxx`:67 - `BRepClass3d_SolidExplorer::FindAPointInTheFace()`
+    /// **Source:** `BRepClass3d_SolidExplorer.hxx`:65 - `BRepClass3d_SolidExplorer::FindAPointInTheFace()`
     pub fn BRepClass3d_SolidExplorer_find_a_point_in_the_face_face_pnt_real3_vec2(
         F: *const TopoDS_Face,
         P: *mut gp_Pnt,
@@ -6635,19 +6657,19 @@ unsafe extern "C" {
         theVecD1U: *mut gp_Vec,
         theVecD1V: *mut gp_Vec,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BRepClass3d_SolidExplorer.hxx`:75 - `BRepClass3d_SolidExplorer::FindAPointInTheFace()`
+    /// **Source:** `BRepClass3d_SolidExplorer.hxx`:73 - `BRepClass3d_SolidExplorer::FindAPointInTheFace()`
     pub fn BRepClass3d_SolidExplorer_find_a_point_in_the_face_face_pnt_real2(
         F: *const TopoDS_Face,
         P: *mut gp_Pnt,
         u: *mut f64,
         v: *mut f64,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BRepClass3d_SolidExplorer.hxx`:80 - `BRepClass3d_SolidExplorer::FindAPointInTheFace()`
+    /// **Source:** `BRepClass3d_SolidExplorer.hxx`:78 - `BRepClass3d_SolidExplorer::FindAPointInTheFace()`
     pub fn BRepClass3d_SolidExplorer_find_a_point_in_the_face_face_pnt(
         F: *const TopoDS_Face,
         P: *mut gp_Pnt,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BRepClass3d_SolidExplorer.hxx`:82 - `BRepClass3d_SolidExplorer::FindAPointInTheFace()`
+    /// **Source:** `BRepClass3d_SolidExplorer.hxx`:80 - `BRepClass3d_SolidExplorer::FindAPointInTheFace()`
     pub fn BRepClass3d_SolidExplorer_find_a_point_in_the_face_face_real2(
         F: *const TopoDS_Face,
         u: *mut f64,
@@ -6691,9 +6713,9 @@ unsafe extern "C" {
     ) -> crate::OcctResult<i32>;
     // ======================== BRepExtrema_DistShapeShape ========================
     pub fn BRepExtrema_DistShapeShape_destructor(self_: *mut BRepExtrema_DistShapeShape);
-    /// **Source:** `BRepExtrema_DistShapeShape.hxx`:37 - `BRepExtrema_DistShapeShape::BRepExtrema_DistShapeShape()`
+    /// **Source:** `BRepExtrema_DistShapeShape.hxx`:39 - `BRepExtrema_DistShapeShape::BRepExtrema_DistShapeShape()`
     pub fn BRepExtrema_DistShapeShape_ctor() -> crate::OcctResult<*mut BRepExtrema_DistShapeShape>;
-    /// **Source:** `BRepExtrema_DistShapeShape.hxx`:46 - `BRepExtrema_DistShapeShape::BRepExtrema_DistShapeShape()`
+    /// **Source:** `BRepExtrema_DistShapeShape.hxx`:48 - `BRepExtrema_DistShapeShape::BRepExtrema_DistShapeShape()`
     pub fn BRepExtrema_DistShapeShape_ctor_shape2_extflag_extalgo_progressrange(
         Shape1: *const TopoDS_Shape,
         Shape2: *const TopoDS_Shape,
@@ -6701,7 +6723,7 @@ unsafe extern "C" {
         A: i32,
         theRange: *const Message_ProgressRange,
     ) -> crate::OcctResult<*mut BRepExtrema_DistShapeShape>;
-    /// **Source:** `BRepExtrema_DistShapeShape.hxx`:60 - `BRepExtrema_DistShapeShape::BRepExtrema_DistShapeShape()`
+    /// **Source:** `BRepExtrema_DistShapeShape.hxx`:62 - `BRepExtrema_DistShapeShape::BRepExtrema_DistShapeShape()`
     pub fn BRepExtrema_DistShapeShape_ctor_shape2_real_extflag_extalgo_progressrange(
         Shape1: *const TopoDS_Shape,
         Shape2: *const TopoDS_Shape,
@@ -6710,125 +6732,125 @@ unsafe extern "C" {
         A: i32,
         theRange: *const Message_ProgressRange,
     ) -> crate::OcctResult<*mut BRepExtrema_DistShapeShape>;
-    /// **Source:** `BRepExtrema_DistShapeShape.hxx`:69 - `BRepExtrema_DistShapeShape::SetDeflection()`
+    /// **Source:** `BRepExtrema_DistShapeShape.hxx`:71 - `BRepExtrema_DistShapeShape::SetDeflection()`
     pub fn BRepExtrema_DistShapeShape_set_deflection(
         self_: *mut BRepExtrema_DistShapeShape,
         theDeflection: f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepExtrema_DistShapeShape.hxx`:72 - `BRepExtrema_DistShapeShape::LoadS1()`
+    /// **Source:** `BRepExtrema_DistShapeShape.hxx`:74 - `BRepExtrema_DistShapeShape::LoadS1()`
     pub fn BRepExtrema_DistShapeShape_load_s1(
         self_: *mut BRepExtrema_DistShapeShape,
         Shape1: *const TopoDS_Shape,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepExtrema_DistShapeShape.hxx`:75 - `BRepExtrema_DistShapeShape::LoadS2()`
+    /// **Source:** `BRepExtrema_DistShapeShape.hxx`:77 - `BRepExtrema_DistShapeShape::LoadS2()`
     pub fn BRepExtrema_DistShapeShape_load_s2(
         self_: *mut BRepExtrema_DistShapeShape,
         Shape1: *const TopoDS_Shape,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepExtrema_DistShapeShape.hxx`:84 - `BRepExtrema_DistShapeShape::Perform()`
+    /// **Source:** `BRepExtrema_DistShapeShape.hxx`:85 - `BRepExtrema_DistShapeShape::Perform()`
     pub fn BRepExtrema_DistShapeShape_perform(
         self_: *mut BRepExtrema_DistShapeShape,
         theRange: *const Message_ProgressRange,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BRepExtrema_DistShapeShape.hxx`:87 - `BRepExtrema_DistShapeShape::IsDone()`
+    /// **Source:** `BRepExtrema_DistShapeShape.hxx`:88 - `BRepExtrema_DistShapeShape::IsDone()`
     pub fn BRepExtrema_DistShapeShape_is_done(
         self_: *const BRepExtrema_DistShapeShape,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BRepExtrema_DistShapeShape.hxx`:90 - `BRepExtrema_DistShapeShape::NbSolution()`
+    /// **Source:** `BRepExtrema_DistShapeShape.hxx`:91 - `BRepExtrema_DistShapeShape::NbSolution()`
     pub fn BRepExtrema_DistShapeShape_nb_solution(
         self_: *const BRepExtrema_DistShapeShape,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `BRepExtrema_DistShapeShape.hxx`:93 - `BRepExtrema_DistShapeShape::Value()`
+    /// **Source:** `BRepExtrema_DistShapeShape.hxx`:94 - `BRepExtrema_DistShapeShape::Value()`
     pub fn BRepExtrema_DistShapeShape_value(
         self_: *const BRepExtrema_DistShapeShape,
     ) -> crate::OcctResult<f64>;
-    /// **Source:** `BRepExtrema_DistShapeShape.hxx`:97 - `BRepExtrema_DistShapeShape::InnerSolution()`
+    /// **Source:** `BRepExtrema_DistShapeShape.hxx`:98 - `BRepExtrema_DistShapeShape::InnerSolution()`
     pub fn BRepExtrema_DistShapeShape_inner_solution(
         self_: *const BRepExtrema_DistShapeShape,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BRepExtrema_DistShapeShape.hxx`:100 - `BRepExtrema_DistShapeShape::PointOnShape1()`
+    /// **Source:** `BRepExtrema_DistShapeShape.hxx`:101 - `BRepExtrema_DistShapeShape::PointOnShape1()`
     pub fn BRepExtrema_DistShapeShape_point_on_shape1(
         self_: *const BRepExtrema_DistShapeShape,
         N: i32,
     ) -> crate::OcctResult<*const gp_Pnt>;
-    /// **Source:** `BRepExtrema_DistShapeShape.hxx`:106 - `BRepExtrema_DistShapeShape::PointOnShape2()`
+    /// **Source:** `BRepExtrema_DistShapeShape.hxx`:104 - `BRepExtrema_DistShapeShape::PointOnShape2()`
     pub fn BRepExtrema_DistShapeShape_point_on_shape2(
         self_: *const BRepExtrema_DistShapeShape,
         N: i32,
     ) -> crate::OcctResult<*const gp_Pnt>;
-    /// **Source:** `BRepExtrema_DistShapeShape.hxx`:116 - `BRepExtrema_DistShapeShape::SupportTypeShape1()`
+    /// **Source:** `BRepExtrema_DistShapeShape.hxx`:111 - `BRepExtrema_DistShapeShape::SupportTypeShape1()`
     pub fn BRepExtrema_DistShapeShape_support_type_shape1(
         self_: *const BRepExtrema_DistShapeShape,
         N: i32,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `BRepExtrema_DistShapeShape.hxx`:126 - `BRepExtrema_DistShapeShape::SupportTypeShape2()`
+    /// **Source:** `BRepExtrema_DistShapeShape.hxx`:121 - `BRepExtrema_DistShapeShape::SupportTypeShape2()`
     pub fn BRepExtrema_DistShapeShape_support_type_shape2(
         self_: *const BRepExtrema_DistShapeShape,
         N: i32,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `BRepExtrema_DistShapeShape.hxx`:133 - `BRepExtrema_DistShapeShape::SupportOnShape1()`
+    /// **Source:** `BRepExtrema_DistShapeShape.hxx`:128 - `BRepExtrema_DistShapeShape::SupportOnShape1()`
     pub fn BRepExtrema_DistShapeShape_support_on_shape1(
         self_: *const BRepExtrema_DistShapeShape,
         N: i32,
     ) -> crate::OcctResult<*mut TopoDS_Shape>;
-    /// **Source:** `BRepExtrema_DistShapeShape.hxx`:137 - `BRepExtrema_DistShapeShape::SupportOnShape2()`
+    /// **Source:** `BRepExtrema_DistShapeShape.hxx`:132 - `BRepExtrema_DistShapeShape::SupportOnShape2()`
     pub fn BRepExtrema_DistShapeShape_support_on_shape2(
         self_: *const BRepExtrema_DistShapeShape,
         N: i32,
     ) -> crate::OcctResult<*mut TopoDS_Shape>;
-    /// **Source:** `BRepExtrema_DistShapeShape.hxx`:141 - `BRepExtrema_DistShapeShape::ParOnEdgeS1()`
+    /// **Source:** `BRepExtrema_DistShapeShape.hxx`:136 - `BRepExtrema_DistShapeShape::ParOnEdgeS1()`
     pub fn BRepExtrema_DistShapeShape_par_on_edge_s1(
         self_: *const BRepExtrema_DistShapeShape,
         N: i32,
         t: *mut f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepExtrema_DistShapeShape.hxx`:145 - `BRepExtrema_DistShapeShape::ParOnEdgeS2()`
+    /// **Source:** `BRepExtrema_DistShapeShape.hxx`:140 - `BRepExtrema_DistShapeShape::ParOnEdgeS2()`
     pub fn BRepExtrema_DistShapeShape_par_on_edge_s2(
         self_: *const BRepExtrema_DistShapeShape,
         N: i32,
         t: *mut f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepExtrema_DistShapeShape.hxx`:149 - `BRepExtrema_DistShapeShape::ParOnFaceS1()`
+    /// **Source:** `BRepExtrema_DistShapeShape.hxx`:144 - `BRepExtrema_DistShapeShape::ParOnFaceS1()`
     pub fn BRepExtrema_DistShapeShape_par_on_face_s1(
         self_: *const BRepExtrema_DistShapeShape,
         N: i32,
         u: *mut f64,
         v: *mut f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepExtrema_DistShapeShape.hxx`:155 - `BRepExtrema_DistShapeShape::ParOnFaceS2()`
+    /// **Source:** `BRepExtrema_DistShapeShape.hxx`:148 - `BRepExtrema_DistShapeShape::ParOnFaceS2()`
     pub fn BRepExtrema_DistShapeShape_par_on_face_s2(
         self_: *const BRepExtrema_DistShapeShape,
         N: i32,
         u: *mut f64,
         v: *mut f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepExtrema_DistShapeShape.hxx`:160 - `BRepExtrema_DistShapeShape::Dump()`
+    /// **Source:** `BRepExtrema_DistShapeShape.hxx`:151 - `BRepExtrema_DistShapeShape::Dump()`
     pub fn BRepExtrema_DistShapeShape_dump(
         self_: *const BRepExtrema_DistShapeShape,
         o: *mut Standard_OStream,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepExtrema_DistShapeShape.hxx`:164 - `BRepExtrema_DistShapeShape::SetFlag()`
+    /// **Source:** `BRepExtrema_DistShapeShape.hxx`:155 - `BRepExtrema_DistShapeShape::SetFlag()`
     pub fn BRepExtrema_DistShapeShape_set_flag(
         self_: *mut BRepExtrema_DistShapeShape,
         F: i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepExtrema_DistShapeShape.hxx`:168 - `BRepExtrema_DistShapeShape::SetAlgo()`
+    /// **Source:** `BRepExtrema_DistShapeShape.hxx`:159 - `BRepExtrema_DistShapeShape::SetAlgo()`
     pub fn BRepExtrema_DistShapeShape_set_algo(
         self_: *mut BRepExtrema_DistShapeShape,
         A: i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepExtrema_DistShapeShape.hxx`:171 - `BRepExtrema_DistShapeShape::SetMultiThread()`
+    /// **Source:** `BRepExtrema_DistShapeShape.hxx`:162 - `BRepExtrema_DistShapeShape::SetMultiThread()`
     pub fn BRepExtrema_DistShapeShape_set_multi_thread(
         self_: *mut BRepExtrema_DistShapeShape,
         theIsMultiThread: bool,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepExtrema_DistShapeShape.hxx`:175 - `BRepExtrema_DistShapeShape::IsMultiThread()`
+    /// **Source:** `BRepExtrema_DistShapeShape.hxx`:166 - `BRepExtrema_DistShapeShape::IsMultiThread()`
     pub fn BRepExtrema_DistShapeShape_is_multi_thread(
         self_: *const BRepExtrema_DistShapeShape,
     ) -> crate::OcctResult<bool>;
     // ======================== BRepExtrema_DistanceSS ========================
     pub fn BRepExtrema_DistanceSS_destructor(self_: *mut BRepExtrema_DistanceSS);
-    /// **Source:** `BRepExtrema_DistanceSS.hxx`:49 - `BRepExtrema_DistanceSS::BRepExtrema_DistanceSS()`
+    /// **Source:** `BRepExtrema_DistanceSS.hxx`:50 - `BRepExtrema_DistanceSS::BRepExtrema_DistanceSS()`
     pub fn BRepExtrema_DistanceSS_ctor_shape2_box2_real2_extflag_extalgo(
         theS1: *const TopoDS_Shape,
         theS2: *const TopoDS_Shape,
@@ -6839,27 +6861,27 @@ unsafe extern "C" {
         theExtFlag: i32,
         theExtAlgo: i32,
     ) -> crate::OcctResult<*mut BRepExtrema_DistanceSS>;
-    /// **Source:** `BRepExtrema_DistanceSS.hxx`:68 - `BRepExtrema_DistanceSS::IsDone()`
+    /// **Source:** `BRepExtrema_DistanceSS.hxx`:69 - `BRepExtrema_DistanceSS::IsDone()`
     pub fn BRepExtrema_DistanceSS_is_done(
         self_: *const BRepExtrema_DistanceSS,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BRepExtrema_DistanceSS.hxx`:71 - `BRepExtrema_DistanceSS::DistValue()`
+    /// **Source:** `BRepExtrema_DistanceSS.hxx`:72 - `BRepExtrema_DistanceSS::DistValue()`
     pub fn BRepExtrema_DistanceSS_dist_value(
         self_: *const BRepExtrema_DistanceSS,
     ) -> crate::OcctResult<f64>;
-    /// **Source:** `BRepExtrema_DistanceSS.hxx`:74 - `BRepExtrema_DistanceSS::Seq1Value()`
+    /// **Source:** `BRepExtrema_DistanceSS.hxx`:75 - `BRepExtrema_DistanceSS::Seq1Value()`
     pub fn BRepExtrema_DistanceSS_seq1_value(
         self_: *const BRepExtrema_DistanceSS,
-    ) -> crate::OcctResult<*const BRepExtrema_SeqOfSolution>;
-    /// **Source:** `BRepExtrema_DistanceSS.hxx`:77 - `BRepExtrema_DistanceSS::Seq2Value()`
+    ) -> crate::OcctResult<*const NCollection_Sequence_BRepExtrema_SolutionElem>;
+    /// **Source:** `BRepExtrema_DistanceSS.hxx`:78 - `BRepExtrema_DistanceSS::Seq2Value()`
     pub fn BRepExtrema_DistanceSS_seq2_value(
         self_: *const BRepExtrema_DistanceSS,
-    ) -> crate::OcctResult<*const BRepExtrema_SeqOfSolution>;
+    ) -> crate::OcctResult<*const NCollection_Sequence_BRepExtrema_SolutionElem>;
     // ======================== BRepExtrema_ElementFilter ========================
     pub fn BRepExtrema_ElementFilter_destructor(self_: *mut BRepExtrema_ElementFilter);
     /// **Source:** `BRepExtrema_ElementFilter.hxx` - `BRepExtrema_ElementFilter::BRepExtrema_ElementFilter()`
     pub fn BRepExtrema_ElementFilter_ctor() -> crate::OcctResult<*mut BRepExtrema_ElementFilter>;
-    /// **Source:** `BRepExtrema_ElementFilter.hxx`:41 - `BRepExtrema_ElementFilter::PreCheckElements()`
+    /// **Source:** `BRepExtrema_ElementFilter.hxx`:38 - `BRepExtrema_ElementFilter::PreCheckElements()`
     pub fn BRepExtrema_ElementFilter_pre_check_elements(
         self_: *mut BRepExtrema_ElementFilter,
         arg0: i32,
@@ -6931,113 +6953,113 @@ unsafe extern "C" {
     ) -> *const std::ffi::c_char;
     // ======================== BRepExtrema_ExtCF ========================
     pub fn BRepExtrema_ExtCF_destructor(self_: *mut BRepExtrema_ExtCF);
-    /// **Source:** `BRepExtrema_ExtCF.hxx`:34 - `BRepExtrema_ExtCF::BRepExtrema_ExtCF()`
+    /// **Source:** `BRepExtrema_ExtCF.hxx`:32 - `BRepExtrema_ExtCF::BRepExtrema_ExtCF()`
     pub fn BRepExtrema_ExtCF_ctor() -> crate::OcctResult<*mut BRepExtrema_ExtCF>;
-    /// **Source:** `BRepExtrema_ExtCF.hxx`:37 - `BRepExtrema_ExtCF::BRepExtrema_ExtCF()`
+    /// **Source:** `BRepExtrema_ExtCF.hxx`:35 - `BRepExtrema_ExtCF::BRepExtrema_ExtCF()`
     pub fn BRepExtrema_ExtCF_ctor_edge_face(
         E: *const TopoDS_Edge,
         F: *const TopoDS_Face,
     ) -> crate::OcctResult<*mut BRepExtrema_ExtCF>;
-    /// **Source:** `BRepExtrema_ExtCF.hxx`:39 - `BRepExtrema_ExtCF::Initialize()`
+    /// **Source:** `BRepExtrema_ExtCF.hxx`:37 - `BRepExtrema_ExtCF::Initialize()`
     pub fn BRepExtrema_ExtCF_initialize(
         self_: *mut BRepExtrema_ExtCF,
         E: *const TopoDS_Edge,
         F: *const TopoDS_Face,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepExtrema_ExtCF.hxx`:42 - `BRepExtrema_ExtCF::Perform()`
+    /// **Source:** `BRepExtrema_ExtCF.hxx`:40 - `BRepExtrema_ExtCF::Perform()`
     pub fn BRepExtrema_ExtCF_perform(
         self_: *mut BRepExtrema_ExtCF,
         E: *const TopoDS_Edge,
         F: *const TopoDS_Face,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepExtrema_ExtCF.hxx`:45 - `BRepExtrema_ExtCF::IsDone()`
+    /// **Source:** `BRepExtrema_ExtCF.hxx`:43 - `BRepExtrema_ExtCF::IsDone()`
     pub fn BRepExtrema_ExtCF_is_done(self_: *const BRepExtrema_ExtCF) -> crate::OcctResult<bool>;
-    /// **Source:** `BRepExtrema_ExtCF.hxx`:48 - `BRepExtrema_ExtCF::NbExt()`
+    /// **Source:** `BRepExtrema_ExtCF.hxx`:46 - `BRepExtrema_ExtCF::NbExt()`
     pub fn BRepExtrema_ExtCF_nb_ext(self_: *const BRepExtrema_ExtCF) -> crate::OcctResult<i32>;
-    /// **Source:** `BRepExtrema_ExtCF.hxx`:51 - `BRepExtrema_ExtCF::SquareDistance()`
+    /// **Source:** `BRepExtrema_ExtCF.hxx`:49 - `BRepExtrema_ExtCF::SquareDistance()`
     pub fn BRepExtrema_ExtCF_square_distance(
         self_: *const BRepExtrema_ExtCF,
         N: i32,
     ) -> crate::OcctResult<f64>;
-    /// **Source:** `BRepExtrema_ExtCF.hxx`:54 - `BRepExtrema_ExtCF::IsParallel()`
+    /// **Source:** `BRepExtrema_ExtCF.hxx`:52 - `BRepExtrema_ExtCF::IsParallel()`
     pub fn BRepExtrema_ExtCF_is_parallel(
         self_: *const BRepExtrema_ExtCF,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BRepExtrema_ExtCF.hxx`:57 - `BRepExtrema_ExtCF::ParameterOnEdge()`
+    /// **Source:** `BRepExtrema_ExtCF.hxx`:55 - `BRepExtrema_ExtCF::ParameterOnEdge()`
     pub fn BRepExtrema_ExtCF_parameter_on_edge(
         self_: *const BRepExtrema_ExtCF,
         N: i32,
     ) -> crate::OcctResult<f64>;
-    /// **Source:** `BRepExtrema_ExtCF.hxx`:63 - `BRepExtrema_ExtCF::ParameterOnFace()`
+    /// **Source:** `BRepExtrema_ExtCF.hxx`:58 - `BRepExtrema_ExtCF::ParameterOnFace()`
     pub fn BRepExtrema_ExtCF_parameter_on_face(
         self_: *const BRepExtrema_ExtCF,
         N: i32,
         U: *mut f64,
         V: *mut f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepExtrema_ExtCF.hxx`:69 - `BRepExtrema_ExtCF::PointOnEdge()`
+    /// **Source:** `BRepExtrema_ExtCF.hxx`:64 - `BRepExtrema_ExtCF::PointOnEdge()`
     pub fn BRepExtrema_ExtCF_point_on_edge(
         self_: *const BRepExtrema_ExtCF,
         N: i32,
     ) -> crate::OcctResult<*mut gp_Pnt>;
-    /// **Source:** `BRepExtrema_ExtCF.hxx`:72 - `BRepExtrema_ExtCF::PointOnFace()`
+    /// **Source:** `BRepExtrema_ExtCF.hxx`:67 - `BRepExtrema_ExtCF::PointOnFace()`
     pub fn BRepExtrema_ExtCF_point_on_face(
         self_: *const BRepExtrema_ExtCF,
         N: i32,
     ) -> crate::OcctResult<*mut gp_Pnt>;
     // ======================== BRepExtrema_ExtFF ========================
     pub fn BRepExtrema_ExtFF_destructor(self_: *mut BRepExtrema_ExtFF);
-    /// **Source:** `BRepExtrema_ExtFF.hxx`:31 - `BRepExtrema_ExtFF::BRepExtrema_ExtFF()`
+    /// **Source:** `BRepExtrema_ExtFF.hxx`:30 - `BRepExtrema_ExtFF::BRepExtrema_ExtFF()`
     pub fn BRepExtrema_ExtFF_ctor() -> crate::OcctResult<*mut BRepExtrema_ExtFF>;
-    /// **Source:** `BRepExtrema_ExtFF.hxx`:34 - `BRepExtrema_ExtFF::BRepExtrema_ExtFF()`
+    /// **Source:** `BRepExtrema_ExtFF.hxx`:33 - `BRepExtrema_ExtFF::BRepExtrema_ExtFF()`
     pub fn BRepExtrema_ExtFF_ctor_face2(
         F1: *const TopoDS_Face,
         F2: *const TopoDS_Face,
     ) -> crate::OcctResult<*mut BRepExtrema_ExtFF>;
-    /// **Source:** `BRepExtrema_ExtFF.hxx`:36 - `BRepExtrema_ExtFF::Initialize()`
+    /// **Source:** `BRepExtrema_ExtFF.hxx`:35 - `BRepExtrema_ExtFF::Initialize()`
     pub fn BRepExtrema_ExtFF_initialize(
         self_: *mut BRepExtrema_ExtFF,
         F2: *const TopoDS_Face,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepExtrema_ExtFF.hxx`:39 - `BRepExtrema_ExtFF::Perform()`
+    /// **Source:** `BRepExtrema_ExtFF.hxx`:38 - `BRepExtrema_ExtFF::Perform()`
     pub fn BRepExtrema_ExtFF_perform(
         self_: *mut BRepExtrema_ExtFF,
         F1: *const TopoDS_Face,
         F2: *const TopoDS_Face,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepExtrema_ExtFF.hxx`:42 - `BRepExtrema_ExtFF::IsDone()`
+    /// **Source:** `BRepExtrema_ExtFF.hxx`:41 - `BRepExtrema_ExtFF::IsDone()`
     pub fn BRepExtrema_ExtFF_is_done(self_: *const BRepExtrema_ExtFF) -> crate::OcctResult<bool>;
-    /// **Source:** `BRepExtrema_ExtFF.hxx`:45 - `BRepExtrema_ExtFF::IsParallel()`
+    /// **Source:** `BRepExtrema_ExtFF.hxx`:44 - `BRepExtrema_ExtFF::IsParallel()`
     pub fn BRepExtrema_ExtFF_is_parallel(
         self_: *const BRepExtrema_ExtFF,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BRepExtrema_ExtFF.hxx`:48 - `BRepExtrema_ExtFF::NbExt()`
+    /// **Source:** `BRepExtrema_ExtFF.hxx`:47 - `BRepExtrema_ExtFF::NbExt()`
     pub fn BRepExtrema_ExtFF_nb_ext(self_: *const BRepExtrema_ExtFF) -> crate::OcctResult<i32>;
-    /// **Source:** `BRepExtrema_ExtFF.hxx`:51 - `BRepExtrema_ExtFF::SquareDistance()`
+    /// **Source:** `BRepExtrema_ExtFF.hxx`:50 - `BRepExtrema_ExtFF::SquareDistance()`
     pub fn BRepExtrema_ExtFF_square_distance(
         self_: *const BRepExtrema_ExtFF,
         N: i32,
     ) -> crate::OcctResult<f64>;
-    /// **Source:** `BRepExtrema_ExtFF.hxx`:54 - `BRepExtrema_ExtFF::ParameterOnFace1()`
+    /// **Source:** `BRepExtrema_ExtFF.hxx`:53 - `BRepExtrema_ExtFF::ParameterOnFace1()`
     pub fn BRepExtrema_ExtFF_parameter_on_face1(
         self_: *const BRepExtrema_ExtFF,
         N: i32,
         U: *mut f64,
         V: *mut f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepExtrema_ExtFF.hxx`:60 - `BRepExtrema_ExtFF::ParameterOnFace2()`
+    /// **Source:** `BRepExtrema_ExtFF.hxx`:59 - `BRepExtrema_ExtFF::ParameterOnFace2()`
     pub fn BRepExtrema_ExtFF_parameter_on_face2(
         self_: *const BRepExtrema_ExtFF,
         N: i32,
         U: *mut f64,
         V: *mut f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepExtrema_ExtFF.hxx`:66 - `BRepExtrema_ExtFF::PointOnFace1()`
+    /// **Source:** `BRepExtrema_ExtFF.hxx`:65 - `BRepExtrema_ExtFF::PointOnFace1()`
     pub fn BRepExtrema_ExtFF_point_on_face1(
         self_: *const BRepExtrema_ExtFF,
         N: i32,
     ) -> crate::OcctResult<*mut gp_Pnt>;
-    /// **Source:** `BRepExtrema_ExtFF.hxx`:69 - `BRepExtrema_ExtFF::PointOnFace2()`
+    /// **Source:** `BRepExtrema_ExtFF.hxx`:68 - `BRepExtrema_ExtFF::PointOnFace2()`
     pub fn BRepExtrema_ExtFF_point_on_face2(
         self_: *const BRepExtrema_ExtFF,
         N: i32,
@@ -7133,63 +7155,63 @@ unsafe extern "C" {
         U: *mut f64,
         V: *mut f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepExtrema_ExtPF.hxx`:64 - `BRepExtrema_ExtPF::Point()`
+    /// **Source:** `BRepExtrema_ExtPF.hxx`:61 - `BRepExtrema_ExtPF::Point()`
     pub fn BRepExtrema_ExtPF_point(
         self_: *const BRepExtrema_ExtPF,
         N: i32,
     ) -> crate::OcctResult<*mut gp_Pnt>;
-    /// **Source:** `BRepExtrema_ExtPF.hxx`:66 - `BRepExtrema_ExtPF::SetFlag()`
+    /// **Source:** `BRepExtrema_ExtPF.hxx`:63 - `BRepExtrema_ExtPF::SetFlag()`
     pub fn BRepExtrema_ExtPF_set_flag(
         self_: *mut BRepExtrema_ExtPF,
         F: i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepExtrema_ExtPF.hxx`:68 - `BRepExtrema_ExtPF::SetAlgo()`
+    /// **Source:** `BRepExtrema_ExtPF.hxx`:65 - `BRepExtrema_ExtPF::SetAlgo()`
     pub fn BRepExtrema_ExtPF_set_algo(
         self_: *mut BRepExtrema_ExtPF,
         A: i32,
     ) -> *const std::ffi::c_char;
     // ======================== BRepExtrema_OverlapTool ========================
     pub fn BRepExtrema_OverlapTool_destructor(self_: *mut BRepExtrema_OverlapTool);
-    /// **Source:** `BRepExtrema_OverlapTool.hxx`:42 - `BRepExtrema_OverlapTool::BRepExtrema_OverlapTool()`
+    /// **Source:** `BRepExtrema_OverlapTool.hxx`:43 - `BRepExtrema_OverlapTool::BRepExtrema_OverlapTool()`
     pub fn BRepExtrema_OverlapTool_ctor() -> crate::OcctResult<*mut BRepExtrema_OverlapTool>;
-    /// **Source:** `BRepExtrema_OverlapTool.hxx`:45 - `BRepExtrema_OverlapTool::BRepExtrema_OverlapTool()`
+    /// **Source:** `BRepExtrema_OverlapTool.hxx`:46 - `BRepExtrema_OverlapTool::BRepExtrema_OverlapTool()`
     pub fn BRepExtrema_OverlapTool_ctor_handlebrepextrematriangleset2(
-        theSet1: *const HandleBRepExtremaTriangleSet,
-        theSet2: *const HandleBRepExtremaTriangleSet,
+        theSet1: *const Handle_BRepExtrema_TriangleSet,
+        theSet2: *const Handle_BRepExtrema_TriangleSet,
     ) -> crate::OcctResult<*mut BRepExtrema_OverlapTool>;
-    /// **Source:** `BRepExtrema_OverlapTool.hxx`:50 - `BRepExtrema_OverlapTool::LoadTriangleSets()`
+    /// **Source:** `BRepExtrema_OverlapTool.hxx`:51 - `BRepExtrema_OverlapTool::LoadTriangleSets()`
     pub fn BRepExtrema_OverlapTool_load_triangle_sets(
         self_: *mut BRepExtrema_OverlapTool,
-        theSet1: *const HandleBRepExtremaTriangleSet,
-        theSet2: *const HandleBRepExtremaTriangleSet,
+        theSet1: *const Handle_BRepExtrema_TriangleSet,
+        theSet2: *const Handle_BRepExtrema_TriangleSet,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepExtrema_OverlapTool.hxx`:54 - `BRepExtrema_OverlapTool::Perform()`
+    /// **Source:** `BRepExtrema_OverlapTool.hxx`:55 - `BRepExtrema_OverlapTool::Perform()`
     pub fn BRepExtrema_OverlapTool_perform(
         self_: *mut BRepExtrema_OverlapTool,
         theTolerance: f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepExtrema_OverlapTool.hxx`:57 - `BRepExtrema_OverlapTool::IsDone()`
+    /// **Source:** `BRepExtrema_OverlapTool.hxx`:58 - `BRepExtrema_OverlapTool::IsDone()`
     pub fn BRepExtrema_OverlapTool_is_done(
         self_: *const BRepExtrema_OverlapTool,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BRepExtrema_OverlapTool.hxx`:60 - `BRepExtrema_OverlapTool::MarkDirty()`
+    /// **Source:** `BRepExtrema_OverlapTool.hxx`:61 - `BRepExtrema_OverlapTool::MarkDirty()`
     pub fn BRepExtrema_OverlapTool_mark_dirty(
         self_: *mut BRepExtrema_OverlapTool,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepExtrema_OverlapTool.hxx`:63 - `BRepExtrema_OverlapTool::OverlapSubShapes1()`
+    /// **Source:** `BRepExtrema_OverlapTool.hxx`:64 - `BRepExtrema_OverlapTool::OverlapSubShapes1()`
     pub fn BRepExtrema_OverlapTool_overlap_sub_shapes1(
         self_: *const BRepExtrema_OverlapTool,
-    ) -> crate::OcctResult<*const BRepExtrema_MapOfIntegerPackedMapOfInteger>;
-    /// **Source:** `BRepExtrema_OverlapTool.hxx`:69 - `BRepExtrema_OverlapTool::OverlapSubShapes2()`
+    ) -> crate::OcctResult<*const NCollection_DataMap_int_TColStd_PackedMapOfInteger>;
+    /// **Source:** `BRepExtrema_OverlapTool.hxx`:70 - `BRepExtrema_OverlapTool::OverlapSubShapes2()`
     pub fn BRepExtrema_OverlapTool_overlap_sub_shapes2(
         self_: *const BRepExtrema_OverlapTool,
-    ) -> crate::OcctResult<*const BRepExtrema_MapOfIntegerPackedMapOfInteger>;
-    /// **Source:** `BRepExtrema_OverlapTool.hxx`:83 - `BRepExtrema_OverlapTool::SetElementFilter()`
+    ) -> crate::OcctResult<*const NCollection_DataMap_int_TColStd_PackedMapOfInteger>;
+    /// **Source:** `BRepExtrema_OverlapTool.hxx`:84 - `BRepExtrema_OverlapTool::SetElementFilter()`
     pub fn BRepExtrema_OverlapTool_set_element_filter(
         self_: *mut BRepExtrema_OverlapTool,
         theFilter: *mut BRepExtrema_ElementFilter,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepExtrema_OverlapTool.hxx`:87 - `BRepExtrema_OverlapTool::RejectNode()`
+    /// **Source:** `BRepExtrema_OverlapTool.hxx`:88 - `BRepExtrema_OverlapTool::RejectNode()`
     pub fn BRepExtrema_OverlapTool_reject_node(
         self_: *const BRepExtrema_OverlapTool,
         theCornerMin1: *const BVH_Vec3d,
@@ -7198,7 +7220,7 @@ unsafe extern "C" {
         theCornerMax2: *const BVH_Vec3d,
         arg4: *mut f64,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BRepExtrema_OverlapTool.hxx`:93 - `BRepExtrema_OverlapTool::Accept()`
+    /// **Source:** `BRepExtrema_OverlapTool.hxx`:94 - `BRepExtrema_OverlapTool::Accept()`
     pub fn BRepExtrema_OverlapTool_accept(
         self_: *mut BRepExtrema_OverlapTool,
         theLeaf1: i32,
@@ -7218,42 +7240,42 @@ unsafe extern "C" {
     ) -> crate::OcctResult<bool>;
     // ======================== BRepExtrema_ProximityDistTool ========================
     pub fn BRepExtrema_ProximityDistTool_destructor(self_: *mut BRepExtrema_ProximityDistTool);
-    /// **Source:** `BRepExtrema_ProximityDistTool.hxx`:92 - `BRepExtrema_ProximityDistTool::BRepExtrema_ProximityDistTool()`
+    /// **Source:** `BRepExtrema_ProximityDistTool.hxx`:93 - `BRepExtrema_ProximityDistTool::BRepExtrema_ProximityDistTool()`
     pub fn BRepExtrema_ProximityDistTool_ctor(
     ) -> crate::OcctResult<*mut BRepExtrema_ProximityDistTool>;
-    /// **Source:** `BRepExtrema_ProximityDistTool.hxx`:95 - `BRepExtrema_ProximityDistTool::BRepExtrema_ProximityDistTool()`
-    pub fn BRepExtrema_ProximityDistTool_ctor_handlebrepextrematriangleset_int_array3d_vector_proxpnt_status_handlebrepextrematriangleset_shapelist2(
-        theSet1: *const HandleBRepExtremaTriangleSet,
+    /// **Source:** `BRepExtrema_ProximityDistTool.hxx`:96 - `BRepExtrema_ProximityDistTool::BRepExtrema_ProximityDistTool()`
+    pub fn BRepExtrema_ProximityDistTool_ctor_handlebrepextrematriangleset_int_array3d_dynamicarray_proxpnt_status_handlebrepextrematriangleset_dynamicarray_topods_shape2(
+        theSet1: *const Handle_BRepExtrema_TriangleSet,
         theNbSamples1: i32,
         theAddVertices1: *const BVH_Array3d,
-        theAddStatus1: *const NCollection_Vector_ProxPnt_Status,
-        theSet2: *const HandleBRepExtremaTriangleSet,
-        theShapeList1: *const BRepExtrema_ShapeList,
-        theShapeList2: *const BRepExtrema_ShapeList,
+        theAddStatus1: *const NCollection_DynamicArray_ProxPnt_Status,
+        theSet2: *const Handle_BRepExtrema_TriangleSet,
+        theShapeList1: *const NCollection_DynamicArray_TopoDS_Shape,
+        theShapeList2: *const NCollection_DynamicArray_TopoDS_Shape,
     ) -> crate::OcctResult<*mut BRepExtrema_ProximityDistTool>;
-    /// **Source:** `BRepExtrema_ProximityDistTool.hxx`:106 - `BRepExtrema_ProximityDistTool::LoadTriangleSets()`
+    /// **Source:** `BRepExtrema_ProximityDistTool.hxx`:107 - `BRepExtrema_ProximityDistTool::LoadTriangleSets()`
     pub fn BRepExtrema_ProximityDistTool_load_triangle_sets(
         self_: *mut BRepExtrema_ProximityDistTool,
-        theSet1: *const HandleBRepExtremaTriangleSet,
-        theSet2: *const HandleBRepExtremaTriangleSet,
+        theSet1: *const Handle_BRepExtrema_TriangleSet,
+        theSet2: *const Handle_BRepExtrema_TriangleSet,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepExtrema_ProximityDistTool.hxx`:110 - `BRepExtrema_ProximityDistTool::LoadShapeLists()`
+    /// **Source:** `BRepExtrema_ProximityDistTool.hxx`:111 - `BRepExtrema_ProximityDistTool::LoadShapeLists()`
     pub fn BRepExtrema_ProximityDistTool_load_shape_lists(
         self_: *mut BRepExtrema_ProximityDistTool,
-        theShapeList1: *const BRepExtrema_ShapeList,
-        theShapeList2: *const BRepExtrema_ShapeList,
+        theShapeList1: *const NCollection_DynamicArray_TopoDS_Shape,
+        theShapeList2: *const NCollection_DynamicArray_TopoDS_Shape,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepExtrema_ProximityDistTool.hxx`:114 - `BRepExtrema_ProximityDistTool::LoadAdditionalPointsFirstSet()`
+    /// **Source:** `BRepExtrema_ProximityDistTool.hxx`:115 - `BRepExtrema_ProximityDistTool::LoadAdditionalPointsFirstSet()`
     pub fn BRepExtrema_ProximityDistTool_load_additional_points_first_set(
         self_: *mut BRepExtrema_ProximityDistTool,
         theAddVertices1: *const BVH_Array3d,
-        theAddStatus1: *const NCollection_Vector_ProxPnt_Status,
+        theAddStatus1: *const NCollection_DynamicArray_ProxPnt_Status,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepExtrema_ProximityDistTool.hxx`:118 - `BRepExtrema_ProximityDistTool::Perform()`
+    /// **Source:** `BRepExtrema_ProximityDistTool.hxx`:119 - `BRepExtrema_ProximityDistTool::Perform()`
     pub fn BRepExtrema_ProximityDistTool_perform(
         self_: *mut BRepExtrema_ProximityDistTool,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepExtrema_ProximityDistTool.hxx`:122 - `BRepExtrema_ProximityDistTool::RejectNode()`
+    /// **Source:** `BRepExtrema_ProximityDistTool.hxx`:123 - `BRepExtrema_ProximityDistTool::RejectNode()`
     pub fn BRepExtrema_ProximityDistTool_reject_node(
         self_: *const BRepExtrema_ProximityDistTool,
         theCornerMin: *const BVH_Vec3d,
@@ -7266,112 +7288,112 @@ unsafe extern "C" {
         theSgmIdx: i32,
         arg1: *const f64,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BRepExtrema_ProximityDistTool.hxx`:145 - `BRepExtrema_ProximityDistTool::ProximityPoints()`
+    /// **Source:** `BRepExtrema_ProximityDistTool.hxx`:143 - `BRepExtrema_ProximityDistTool::ProximityPoints()`
     pub fn BRepExtrema_ProximityDistTool_proximity_points(
         self_: *const BRepExtrema_ProximityDistTool,
         thePoint1: *mut BVH_Vec3d,
         thePoint2: *mut BVH_Vec3d,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepExtrema_ProximityDistTool.hxx`:152 - `BRepExtrema_ProximityDistTool::ProximityPointsStatus()`
+    /// **Source:** `BRepExtrema_ProximityDistTool.hxx`:150 - `BRepExtrema_ProximityDistTool::ProximityPointsStatus()`
     pub fn BRepExtrema_ProximityDistTool_proximity_points_status(
         self_: *const BRepExtrema_ProximityDistTool,
         thePointStatus1: *mut BRepExtrema_ProximityDistTool_ProxPnt_Status,
         thePointStatus2: *mut BRepExtrema_ProximityDistTool_ProxPnt_Status,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepExtrema_ProximityDistTool.hxx`:159 - `BRepExtrema_ProximityDistTool::ProximityDistance()`
+    /// **Source:** `BRepExtrema_ProximityDistTool.hxx`:157 - `BRepExtrema_ProximityDistTool::ProximityDistance()`
     pub fn BRepExtrema_ProximityDistTool_proximity_distance(
         self_: *const BRepExtrema_ProximityDistTool,
     ) -> crate::OcctResult<f64>;
-    /// **Source:** `BRepExtrema_ProximityDistTool.hxx`:133 - `BRepExtrema_ProximityDistTool::IsNodeOnBorder()`
+    /// **Source:** `BRepExtrema_ProximityDistTool.hxx`:132 - `BRepExtrema_ProximityDistTool::IsNodeOnBorder()`
     pub fn BRepExtrema_ProximityDistTool_is_node_on_border(
         theNodeIdx: i32,
-        theTr: *const HandlePolyTriangulation,
+        theTr: *const Handle_Poly_Triangulation,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BRepExtrema_ProximityDistTool.hxx`:137 - `BRepExtrema_ProximityDistTool::IsEdgeOnBorder()`
+    /// **Source:** `BRepExtrema_ProximityDistTool.hxx`:136 - `BRepExtrema_ProximityDistTool::IsEdgeOnBorder()`
     pub fn BRepExtrema_ProximityDistTool_is_edge_on_border(
         theTrgIdx: i32,
         theFirstEdgeNodeIdx: i32,
         theSecondEdgeNodeIdx: i32,
-        theTr: *const HandlePolyTriangulation,
+        theTr: *const Handle_Poly_Triangulation,
     ) -> crate::OcctResult<bool>;
     // ======================== BRepExtrema_ProximityDistTool_PrjState ========================
     pub fn BRepExtrema_ProximityDistTool_PrjState_destructor(
         self_: *mut BRepExtrema_ProximityDistTool_PrjState,
     );
-    /// **Source:** `BRepExtrema_ProximityDistTool.hxx`:54 - `BRepExtrema_ProximityDistTool_PrjState::BRepExtrema_ProximityDistTool_PrjState()`
+    /// **Source:** `BRepExtrema_ProximityDistTool.hxx`:55 - `BRepExtrema_ProximityDistTool_PrjState::BRepExtrema_ProximityDistTool_PrjState()`
     pub fn BRepExtrema_ProximityDistTool_PrjState_ctor(
     ) -> crate::OcctResult<*mut BRepExtrema_ProximityDistTool_PrjState>;
-    /// **Source:** `BRepExtrema_ProximityDistTool.hxx`:62 - `BRepExtrema_ProximityDistTool_PrjState::BRepExtrema_ProximityDistTool_PrjState()`
+    /// **Source:** `BRepExtrema_ProximityDistTool.hxx`:63 - `BRepExtrema_ProximityDistTool_PrjState::BRepExtrema_ProximityDistTool_PrjState()`
     pub fn BRepExtrema_ProximityDistTool_PrjState_ctor_int_prjstate_int2(
         theTrgIdx: i32,
         thePrjState: *const BRepExtrema_ProximityDistTool_BVH_PrjState,
         theNumberOfFirstNode: i32,
         theNumberOfLastNode: i32,
     ) -> crate::OcctResult<*mut BRepExtrema_ProximityDistTool_PrjState>;
-    /// **Source:** `BRepExtrema_ProximityDistTool.hxx`:73 - `BRepExtrema_ProximityDistTool_PrjState::GetTrgIdx()`
+    /// **Source:** `BRepExtrema_ProximityDistTool.hxx`:74 - `BRepExtrema_ProximityDistTool_PrjState::GetTrgIdx()`
     pub fn BRepExtrema_ProximityDistTool_PrjState_get_trg_idx(
         self_: *const BRepExtrema_ProximityDistTool_PrjState,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `BRepExtrema_ProximityDistTool.hxx`:75 - `BRepExtrema_ProximityDistTool_PrjState::GetPrjState()`
+    /// **Source:** `BRepExtrema_ProximityDistTool.hxx`:76 - `BRepExtrema_ProximityDistTool_PrjState::GetPrjState()`
     pub fn BRepExtrema_ProximityDistTool_PrjState_get_prj_state(
         self_: *const BRepExtrema_ProximityDistTool_PrjState,
     ) -> crate::OcctResult<*mut BRepExtrema_ProximityDistTool_BVH_PrjState>;
-    /// **Source:** `BRepExtrema_ProximityDistTool.hxx`:77 - `BRepExtrema_ProximityDistTool_PrjState::GetNumberOfFirstNode()`
+    /// **Source:** `BRepExtrema_ProximityDistTool.hxx`:78 - `BRepExtrema_ProximityDistTool_PrjState::GetNumberOfFirstNode()`
     pub fn BRepExtrema_ProximityDistTool_PrjState_get_number_of_first_node(
         self_: *const BRepExtrema_ProximityDistTool_PrjState,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `BRepExtrema_ProximityDistTool.hxx`:79 - `BRepExtrema_ProximityDistTool_PrjState::GetNumberOfLastNode()`
+    /// **Source:** `BRepExtrema_ProximityDistTool.hxx`:80 - `BRepExtrema_ProximityDistTool_PrjState::GetNumberOfLastNode()`
     pub fn BRepExtrema_ProximityDistTool_PrjState_get_number_of_last_node(
         self_: *const BRepExtrema_ProximityDistTool_PrjState,
     ) -> crate::OcctResult<i32>;
     // ======================== BRepExtrema_ProximityValueTool ========================
     pub fn BRepExtrema_ProximityValueTool_destructor(self_: *mut BRepExtrema_ProximityValueTool);
-    /// **Source:** `BRepExtrema_ProximityValueTool.hxx`:85 - `BRepExtrema_ProximityValueTool::BRepExtrema_ProximityValueTool()`
+    /// **Source:** `BRepExtrema_ProximityValueTool.hxx`:91 - `BRepExtrema_ProximityValueTool::BRepExtrema_ProximityValueTool()`
     pub fn BRepExtrema_ProximityValueTool_ctor(
     ) -> crate::OcctResult<*mut BRepExtrema_ProximityValueTool>;
-    /// **Source:** `BRepExtrema_ProximityValueTool.hxx`:88 - `BRepExtrema_ProximityValueTool::BRepExtrema_ProximityValueTool()`
-    pub fn BRepExtrema_ProximityValueTool_ctor_handlebrepextrematriangleset2_shapelist2(
-        theSet1: *const HandleBRepExtremaTriangleSet,
-        theSet2: *const HandleBRepExtremaTriangleSet,
-        theShapeList1: *const BRepExtrema_ShapeList,
-        theShapeList2: *const BRepExtrema_ShapeList,
+    /// **Source:** `BRepExtrema_ProximityValueTool.hxx`:94 - `BRepExtrema_ProximityValueTool::BRepExtrema_ProximityValueTool()`
+    pub fn BRepExtrema_ProximityValueTool_ctor_handlebrepextrematriangleset2_dynamicarray_topods_shape2(
+        theSet1: *const Handle_BRepExtrema_TriangleSet,
+        theSet2: *const Handle_BRepExtrema_TriangleSet,
+        theShapeList1: *const NCollection_DynamicArray_TopoDS_Shape,
+        theShapeList2: *const NCollection_DynamicArray_TopoDS_Shape,
     ) -> crate::OcctResult<*mut BRepExtrema_ProximityValueTool>;
-    /// **Source:** `BRepExtrema_ProximityValueTool.hxx`:95 - `BRepExtrema_ProximityValueTool::LoadTriangleSets()`
+    /// **Source:** `BRepExtrema_ProximityValueTool.hxx`:102 - `BRepExtrema_ProximityValueTool::LoadTriangleSets()`
     pub fn BRepExtrema_ProximityValueTool_load_triangle_sets(
         self_: *mut BRepExtrema_ProximityValueTool,
-        theSet1: *const HandleBRepExtremaTriangleSet,
-        theSet2: *const HandleBRepExtremaTriangleSet,
+        theSet1: *const Handle_BRepExtrema_TriangleSet,
+        theSet2: *const Handle_BRepExtrema_TriangleSet,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepExtrema_ProximityValueTool.hxx`:99 - `BRepExtrema_ProximityValueTool::LoadShapeLists()`
+    /// **Source:** `BRepExtrema_ProximityValueTool.hxx`:106 - `BRepExtrema_ProximityValueTool::LoadShapeLists()`
     pub fn BRepExtrema_ProximityValueTool_load_shape_lists(
         self_: *mut BRepExtrema_ProximityValueTool,
-        theShapeList1: *const BRepExtrema_ShapeList,
-        theShapeList2: *const BRepExtrema_ShapeList,
+        theShapeList1: *const NCollection_DynamicArray_TopoDS_Shape,
+        theShapeList2: *const NCollection_DynamicArray_TopoDS_Shape,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepExtrema_ProximityValueTool.hxx`:104 - `BRepExtrema_ProximityValueTool::SetNbSamplePoints()`
+    /// **Source:** `BRepExtrema_ProximityValueTool.hxx`:111 - `BRepExtrema_ProximityValueTool::SetNbSamplePoints()`
     pub fn BRepExtrema_ProximityValueTool_set_nb_sample_points(
         self_: *mut BRepExtrema_ProximityValueTool,
         theSamples1: i32,
         theSamples2: i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepExtrema_ProximityValueTool.hxx`:108 - `BRepExtrema_ProximityValueTool::Perform()`
+    /// **Source:** `BRepExtrema_ProximityValueTool.hxx`:114 - `BRepExtrema_ProximityValueTool::Perform()`
     pub fn BRepExtrema_ProximityValueTool_perform(
         self_: *mut BRepExtrema_ProximityValueTool,
         theTolerance: *mut f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepExtrema_ProximityValueTool.hxx`:111 - `BRepExtrema_ProximityValueTool::IsDone()`
+    /// **Source:** `BRepExtrema_ProximityValueTool.hxx`:117 - `BRepExtrema_ProximityValueTool::IsDone()`
     pub fn BRepExtrema_ProximityValueTool_is_done(
         self_: *const BRepExtrema_ProximityValueTool,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BRepExtrema_ProximityValueTool.hxx`:114 - `BRepExtrema_ProximityValueTool::MarkDirty()`
+    /// **Source:** `BRepExtrema_ProximityValueTool.hxx`:120 - `BRepExtrema_ProximityValueTool::MarkDirty()`
     pub fn BRepExtrema_ProximityValueTool_mark_dirty(
         self_: *mut BRepExtrema_ProximityValueTool,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepExtrema_ProximityValueTool.hxx`:117 - `BRepExtrema_ProximityValueTool::Distance()`
+    /// **Source:** `BRepExtrema_ProximityValueTool.hxx`:123 - `BRepExtrema_ProximityValueTool::Distance()`
     pub fn BRepExtrema_ProximityValueTool_distance(
         self_: *const BRepExtrema_ProximityValueTool,
     ) -> crate::OcctResult<f64>;
-    /// **Source:** `BRepExtrema_ProximityValueTool.hxx`:120 - `BRepExtrema_ProximityValueTool::ProximityPoints()`
+    /// **Source:** `BRepExtrema_ProximityValueTool.hxx`:126 - `BRepExtrema_ProximityValueTool::ProximityPoints()`
     pub fn BRepExtrema_ProximityValueTool_proximity_points(
         self_: *const BRepExtrema_ProximityValueTool,
         thePoint1: *mut gp_Pnt,
@@ -7413,7 +7435,7 @@ unsafe extern "C" {
     /// **Source:** `BRepExtrema_SelfIntersection.hxx`:63 - `BRepExtrema_SelfIntersection::OverlapElements()`
     pub fn BRepExtrema_SelfIntersection_overlap_elements(
         self_: *const BRepExtrema_SelfIntersection,
-    ) -> crate::OcctResult<*const BRepExtrema_MapOfIntegerPackedMapOfInteger>;
+    ) -> crate::OcctResult<*const NCollection_DataMap_int_TColStd_PackedMapOfInteger>;
     /// **Source:** `BRepExtrema_SelfIntersection.hxx`:69 - `BRepExtrema_SelfIntersection::GetSubShape()`
     pub fn BRepExtrema_SelfIntersection_get_sub_shape(
         self_: *const BRepExtrema_SelfIntersection,
@@ -7422,7 +7444,7 @@ unsafe extern "C" {
     /// **Source:** `BRepExtrema_SelfIntersection.hxx`:75 - `BRepExtrema_SelfIntersection::ElementSet()`
     pub fn BRepExtrema_SelfIntersection_element_set(
         self_: *const BRepExtrema_SelfIntersection,
-    ) -> crate::OcctResult<*const HandleBRepExtremaTriangleSet>;
+    ) -> crate::OcctResult<*const Handle_BRepExtrema_TriangleSet>;
     /// Upcast BRepExtrema_SelfIntersection to BRepExtrema_ElementFilter
     pub fn BRepExtrema_SelfIntersection_as_BRepExtrema_ElementFilter(
         self_: *const BRepExtrema_SelfIntersection,
@@ -7437,84 +7459,84 @@ unsafe extern "C" {
     pub fn BRepExtrema_ShapeProximity_ctor_real(
         theTolerance: f64,
     ) -> crate::OcctResult<*mut BRepExtrema_ShapeProximity>;
-    /// **Source:** `BRepExtrema_ShapeProximity.hxx`:57 - `BRepExtrema_ShapeProximity::BRepExtrema_ShapeProximity()`
+    /// **Source:** `BRepExtrema_ShapeProximity.hxx`:56 - `BRepExtrema_ShapeProximity::BRepExtrema_ShapeProximity()`
     pub fn BRepExtrema_ShapeProximity_ctor_shape2_real(
         theShape1: *const TopoDS_Shape,
         theShape2: *const TopoDS_Shape,
         theTolerance: f64,
     ) -> crate::OcctResult<*mut BRepExtrema_ShapeProximity>;
-    /// **Source:** `BRepExtrema_ShapeProximity.hxx`:64 - `BRepExtrema_ShapeProximity::Tolerance()`
+    /// **Source:** `BRepExtrema_ShapeProximity.hxx`:62 - `BRepExtrema_ShapeProximity::Tolerance()`
     pub fn BRepExtrema_ShapeProximity_tolerance(
         self_: *const BRepExtrema_ShapeProximity,
     ) -> crate::OcctResult<f64>;
-    /// **Source:** `BRepExtrema_ShapeProximity.hxx`:67 - `BRepExtrema_ShapeProximity::SetTolerance()`
+    /// **Source:** `BRepExtrema_ShapeProximity.hxx`:65 - `BRepExtrema_ShapeProximity::SetTolerance()`
     pub fn BRepExtrema_ShapeProximity_set_tolerance(
         self_: *mut BRepExtrema_ShapeProximity,
         theTolerance: f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepExtrema_ShapeProximity.hxx`:70 - `BRepExtrema_ShapeProximity::Proximity()`
+    /// **Source:** `BRepExtrema_ShapeProximity.hxx`:68 - `BRepExtrema_ShapeProximity::Proximity()`
     pub fn BRepExtrema_ShapeProximity_proximity(
         self_: *const BRepExtrema_ShapeProximity,
     ) -> crate::OcctResult<f64>;
-    /// **Source:** `BRepExtrema_ShapeProximity.hxx`:73 - `BRepExtrema_ShapeProximity::LoadShape1()`
+    /// **Source:** `BRepExtrema_ShapeProximity.hxx`:71 - `BRepExtrema_ShapeProximity::LoadShape1()`
     pub fn BRepExtrema_ShapeProximity_load_shape1(
         self_: *mut BRepExtrema_ShapeProximity,
         theShape1: *const TopoDS_Shape,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BRepExtrema_ShapeProximity.hxx`:76 - `BRepExtrema_ShapeProximity::LoadShape2()`
+    /// **Source:** `BRepExtrema_ShapeProximity.hxx`:74 - `BRepExtrema_ShapeProximity::LoadShape2()`
     pub fn BRepExtrema_ShapeProximity_load_shape2(
         self_: *mut BRepExtrema_ShapeProximity,
         theShape2: *const TopoDS_Shape,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BRepExtrema_ShapeProximity.hxx`:80 - `BRepExtrema_ShapeProximity::SetNbSamples1()`
+    /// **Source:** `BRepExtrema_ShapeProximity.hxx`:78 - `BRepExtrema_ShapeProximity::SetNbSamples1()`
     pub fn BRepExtrema_ShapeProximity_set_nb_samples1(
         self_: *mut BRepExtrema_ShapeProximity,
         theNbSamples: i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepExtrema_ShapeProximity.hxx`:84 - `BRepExtrema_ShapeProximity::SetNbSamples2()`
+    /// **Source:** `BRepExtrema_ShapeProximity.hxx`:82 - `BRepExtrema_ShapeProximity::SetNbSamples2()`
     pub fn BRepExtrema_ShapeProximity_set_nb_samples2(
         self_: *mut BRepExtrema_ShapeProximity,
         theNbSamples: i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepExtrema_ShapeProximity.hxx`:87 - `BRepExtrema_ShapeProximity::Perform()`
+    /// **Source:** `BRepExtrema_ShapeProximity.hxx`:85 - `BRepExtrema_ShapeProximity::Perform()`
     pub fn BRepExtrema_ShapeProximity_perform(
         self_: *mut BRepExtrema_ShapeProximity,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepExtrema_ShapeProximity.hxx`:90 - `BRepExtrema_ShapeProximity::IsDone()`
+    /// **Source:** `BRepExtrema_ShapeProximity.hxx`:88 - `BRepExtrema_ShapeProximity::IsDone()`
     pub fn BRepExtrema_ShapeProximity_is_done(
         self_: *const BRepExtrema_ShapeProximity,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BRepExtrema_ShapeProximity.hxx`:93 - `BRepExtrema_ShapeProximity::OverlapSubShapes1()`
+    /// **Source:** `BRepExtrema_ShapeProximity.hxx`:91 - `BRepExtrema_ShapeProximity::OverlapSubShapes1()`
     pub fn BRepExtrema_ShapeProximity_overlap_sub_shapes1(
         self_: *const BRepExtrema_ShapeProximity,
-    ) -> crate::OcctResult<*const BRepExtrema_MapOfIntegerPackedMapOfInteger>;
-    /// **Source:** `BRepExtrema_ShapeProximity.hxx`:99 - `BRepExtrema_ShapeProximity::OverlapSubShapes2()`
+    ) -> crate::OcctResult<*const NCollection_DataMap_int_TColStd_PackedMapOfInteger>;
+    /// **Source:** `BRepExtrema_ShapeProximity.hxx`:97 - `BRepExtrema_ShapeProximity::OverlapSubShapes2()`
     pub fn BRepExtrema_ShapeProximity_overlap_sub_shapes2(
         self_: *const BRepExtrema_ShapeProximity,
-    ) -> crate::OcctResult<*const BRepExtrema_MapOfIntegerPackedMapOfInteger>;
-    /// **Source:** `BRepExtrema_ShapeProximity.hxx`:105 - `BRepExtrema_ShapeProximity::GetSubShape1()`
+    ) -> crate::OcctResult<*const NCollection_DataMap_int_TColStd_PackedMapOfInteger>;
+    /// **Source:** `BRepExtrema_ShapeProximity.hxx`:103 - `BRepExtrema_ShapeProximity::GetSubShape1()`
     pub fn BRepExtrema_ShapeProximity_get_sub_shape1(
         self_: *const BRepExtrema_ShapeProximity,
         theID: i32,
     ) -> crate::OcctResult<*const TopoDS_Shape>;
-    /// **Source:** `BRepExtrema_ShapeProximity.hxx`:111 - `BRepExtrema_ShapeProximity::GetSubShape2()`
+    /// **Source:** `BRepExtrema_ShapeProximity.hxx`:106 - `BRepExtrema_ShapeProximity::GetSubShape2()`
     pub fn BRepExtrema_ShapeProximity_get_sub_shape2(
         self_: *const BRepExtrema_ShapeProximity,
         theID: i32,
     ) -> crate::OcctResult<*const TopoDS_Shape>;
-    /// **Source:** `BRepExtrema_ShapeProximity.hxx`:117 - `BRepExtrema_ShapeProximity::ElementSet1()`
+    /// **Source:** `BRepExtrema_ShapeProximity.hxx`:109 - `BRepExtrema_ShapeProximity::ElementSet1()`
     pub fn BRepExtrema_ShapeProximity_element_set1(
         self_: *const BRepExtrema_ShapeProximity,
-    ) -> crate::OcctResult<*const HandleBRepExtremaTriangleSet>;
-    /// **Source:** `BRepExtrema_ShapeProximity.hxx`:120 - `BRepExtrema_ShapeProximity::ElementSet2()`
+    ) -> crate::OcctResult<*const Handle_BRepExtrema_TriangleSet>;
+    /// **Source:** `BRepExtrema_ShapeProximity.hxx`:112 - `BRepExtrema_ShapeProximity::ElementSet2()`
     pub fn BRepExtrema_ShapeProximity_element_set2(
         self_: *const BRepExtrema_ShapeProximity,
-    ) -> crate::OcctResult<*const HandleBRepExtremaTriangleSet>;
-    /// **Source:** `BRepExtrema_ShapeProximity.hxx`:124 - `BRepExtrema_ShapeProximity::ProximityPoint1()`
+    ) -> crate::OcctResult<*const Handle_BRepExtrema_TriangleSet>;
+    /// **Source:** `BRepExtrema_ShapeProximity.hxx`:116 - `BRepExtrema_ShapeProximity::ProximityPoint1()`
     pub fn BRepExtrema_ShapeProximity_proximity_point1(
         self_: *const BRepExtrema_ShapeProximity,
     ) -> crate::OcctResult<*const gp_Pnt>;
-    /// **Source:** `BRepExtrema_ShapeProximity.hxx`:128 - `BRepExtrema_ShapeProximity::ProximityPoint2()`
+    /// **Source:** `BRepExtrema_ShapeProximity.hxx`:120 - `BRepExtrema_ShapeProximity::ProximityPoint2()`
     pub fn BRepExtrema_ShapeProximity_proximity_point2(
         self_: *const BRepExtrema_ShapeProximity,
     ) -> crate::OcctResult<*const gp_Pnt>;
@@ -7583,17 +7605,17 @@ unsafe extern "C" {
     ) -> *const std::ffi::c_char;
     // ======================== BRepExtrema_TriangleSet ========================
     pub fn BRepExtrema_TriangleSet_destructor(self_: *mut BRepExtrema_TriangleSet);
-    /// **Source:** `BRepExtrema_TriangleSet.hxx`:33 - `BRepExtrema_TriangleSet::BRepExtrema_TriangleSet()`
+    /// **Source:** `BRepExtrema_TriangleSet.hxx`:34 - `BRepExtrema_TriangleSet::BRepExtrema_TriangleSet()`
     pub fn BRepExtrema_TriangleSet_ctor() -> crate::OcctResult<*mut BRepExtrema_TriangleSet>;
-    /// **Source:** `BRepExtrema_TriangleSet.hxx`:36 - `BRepExtrema_TriangleSet::BRepExtrema_TriangleSet()`
-    pub fn BRepExtrema_TriangleSet_ctor_shapelist(
-        theFaces: *const BRepExtrema_ShapeList,
+    /// **Source:** `BRepExtrema_TriangleSet.hxx`:37 - `BRepExtrema_TriangleSet::BRepExtrema_TriangleSet()`
+    pub fn BRepExtrema_TriangleSet_ctor_dynamicarray_topods_shape(
+        theFaces: *const NCollection_DynamicArray_TopoDS_Shape,
     ) -> crate::OcctResult<*mut BRepExtrema_TriangleSet>;
-    /// **Source:** `BRepExtrema_TriangleSet.hxx`:43 - `BRepExtrema_TriangleSet::Size()`
+    /// **Source:** `BRepExtrema_TriangleSet.hxx`:44 - `BRepExtrema_TriangleSet::Size()`
     pub fn BRepExtrema_TriangleSet_size(
         self_: *const BRepExtrema_TriangleSet,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `BRepExtrema_TriangleSet.hxx`:46 - `BRepExtrema_TriangleSet::Box()`
+    /// **Source:** `BRepExtrema_TriangleSet.hxx`:47 - `BRepExtrema_TriangleSet::Box()`
     pub fn BRepExtrema_TriangleSet_box_(
         self_: *const BRepExtrema_TriangleSet,
         theIndex: i32,
@@ -7604,26 +7626,26 @@ unsafe extern "C" {
         theIndex: i32,
         theAxis: i32,
     ) -> crate::OcctResult<f64>;
-    /// **Source:** `BRepExtrema_TriangleSet.hxx`:57 - `BRepExtrema_TriangleSet::Swap()`
+    /// **Source:** `BRepExtrema_TriangleSet.hxx`:56 - `BRepExtrema_TriangleSet::Swap()`
     pub fn BRepExtrema_TriangleSet_swap(
         self_: *mut BRepExtrema_TriangleSet,
         theIndex1: i32,
         theIndex2: i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepExtrema_TriangleSet.hxx`:62 - `BRepExtrema_TriangleSet::Clear()`
+    /// **Source:** `BRepExtrema_TriangleSet.hxx`:60 - `BRepExtrema_TriangleSet::Clear()`
     pub fn BRepExtrema_TriangleSet_clear(
         self_: *mut BRepExtrema_TriangleSet,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepExtrema_TriangleSet.hxx`:65 - `BRepExtrema_TriangleSet::Init()`
+    /// **Source:** `BRepExtrema_TriangleSet.hxx`:63 - `BRepExtrema_TriangleSet::Init()`
     pub fn BRepExtrema_TriangleSet_init(
         self_: *mut BRepExtrema_TriangleSet,
-        theShapes: *const BRepExtrema_ShapeList,
+        theShapes: *const NCollection_DynamicArray_TopoDS_Shape,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BRepExtrema_TriangleSet.hxx`:68 - `BRepExtrema_TriangleSet::GetVertices()`
+    /// **Source:** `BRepExtrema_TriangleSet.hxx`:66 - `BRepExtrema_TriangleSet::GetVertices()`
     pub fn BRepExtrema_TriangleSet_get_vertices(
         self_: *const BRepExtrema_TriangleSet,
     ) -> crate::OcctResult<*const BVH_Array3d>;
-    /// **Source:** `BRepExtrema_TriangleSet.hxx`:71 - `BRepExtrema_TriangleSet::GetVertices()`
+    /// **Source:** `BRepExtrema_TriangleSet.hxx`:69 - `BRepExtrema_TriangleSet::GetVertices()`
     pub fn BRepExtrema_TriangleSet_get_vertices_int_vec3d3(
         self_: *const BRepExtrema_TriangleSet,
         theIndex: i32,
@@ -7631,103 +7653,78 @@ unsafe extern "C" {
         theVertex2: *mut BVH_Vec3d,
         theVertex3: *mut BVH_Vec3d,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepExtrema_TriangleSet.hxx`:77 - `BRepExtrema_TriangleSet::GetVtxIndices()`
+    /// **Source:** `BRepExtrema_TriangleSet.hxx`:75 - `BRepExtrema_TriangleSet::GetVtxIndices()`
     pub fn BRepExtrema_TriangleSet_get_vtx_indices(
         self_: *const BRepExtrema_TriangleSet,
         theIndex: i32,
-        theVtxIndices: *mut TColStd_Array1OfInteger,
+        theVtxIndices: *mut NCollection_Array1_int,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepExtrema_TriangleSet.hxx`:81 - `BRepExtrema_TriangleSet::GetFaceID()`
+    /// **Source:** `BRepExtrema_TriangleSet.hxx`:79 - `BRepExtrema_TriangleSet::GetFaceID()`
     pub fn BRepExtrema_TriangleSet_get_face_id(
         self_: *const BRepExtrema_TriangleSet,
         theIndex: i32,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `BRepExtrema_TriangleSet.hxx`:84 - `BRepExtrema_TriangleSet::GetShapeIDOfVtx()`
+    /// **Source:** `BRepExtrema_TriangleSet.hxx`:82 - `BRepExtrema_TriangleSet::GetShapeIDOfVtx()`
     pub fn BRepExtrema_TriangleSet_get_shape_id_of_vtx(
         self_: *const BRepExtrema_TriangleSet,
         theIndex: i32,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `BRepExtrema_TriangleSet.hxx`:88 - `BRepExtrema_TriangleSet::GetVtxIdxInShape()`
+    /// **Source:** `BRepExtrema_TriangleSet.hxx`:86 - `BRepExtrema_TriangleSet::GetVtxIdxInShape()`
     pub fn BRepExtrema_TriangleSet_get_vtx_idx_in_shape(
         self_: *const BRepExtrema_TriangleSet,
         theIndex: i32,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `BRepExtrema_TriangleSet.hxx`:92 - `BRepExtrema_TriangleSet::GetTrgIdxInShape()`
+    /// **Source:** `BRepExtrema_TriangleSet.hxx`:90 - `BRepExtrema_TriangleSet::GetTrgIdxInShape()`
     pub fn BRepExtrema_TriangleSet_get_trg_idx_in_shape(
         self_: *const BRepExtrema_TriangleSet,
         theIndex: i32,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `BRepExtrema_TriangleSet.hxx`:127 - `BRepExtrema_TriangleSet::DynamicType()`
+    /// **Source:** `BRepExtrema_TriangleSet.hxx`:125 - `BRepExtrema_TriangleSet::DynamicType()`
     pub fn BRepExtrema_TriangleSet_dynamic_type(
         self_: *const BRepExtrema_TriangleSet,
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// **Source:** `BRepExtrema_TriangleSet.hxx`:127 - `BRepExtrema_TriangleSet::get_type_name()`
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
+    /// **Source:** `BRepExtrema_TriangleSet.hxx`:125 - `BRepExtrema_TriangleSet::get_type_name()`
     pub fn BRepExtrema_TriangleSet_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
-    /// **Source:** `BRepExtrema_TriangleSet.hxx`:127 - `BRepExtrema_TriangleSet::get_type_descriptor()`
+    /// **Source:** `BRepExtrema_TriangleSet.hxx`:125 - `BRepExtrema_TriangleSet::get_type_descriptor()`
     pub fn BRepExtrema_TriangleSet_get_type_descriptor(
-    ) -> crate::OcctResult<*const HandleStandardType>;
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Wrap BRepExtrema_TriangleSet in a Handle
     pub fn BRepExtrema_TriangleSet_to_handle(
         obj: *mut BRepExtrema_TriangleSet,
-    ) -> crate::OcctResult<*mut HandleBRepExtremaTriangleSet>;
+    ) -> crate::OcctResult<*mut Handle_BRepExtrema_TriangleSet>;
     /// Destroy Handle<BRepExtrema_TriangleSet>
-    pub fn HandleBRepExtremaTriangleSet_destructor(self_: *mut HandleBRepExtremaTriangleSet);
+    pub fn Handle_BRepExtrema_TriangleSet_destructor(self_: *mut Handle_BRepExtrema_TriangleSet);
     /// Clone Handle<BRepExtrema_TriangleSet> (increments reference count)
-    pub fn HandleBRepExtremaTriangleSet_clone(
-        self_: *const HandleBRepExtremaTriangleSet,
-    ) -> crate::OcctResult<*mut HandleBRepExtremaTriangleSet>;
+    pub fn Handle_BRepExtrema_TriangleSet_clone(
+        self_: *const Handle_BRepExtrema_TriangleSet,
+    ) -> crate::OcctResult<*mut Handle_BRepExtrema_TriangleSet>;
     /// Check if Handle<BRepExtrema_TriangleSet> is null
-    pub fn HandleBRepExtremaTriangleSet_is_null(self_: *const HandleBRepExtremaTriangleSet)
-        -> bool;
+    pub fn Handle_BRepExtrema_TriangleSet_is_null(
+        self_: *const Handle_BRepExtrema_TriangleSet,
+    ) -> bool;
     /// Dereference Handle to get *const BRepExtrema_TriangleSet
-    pub fn HandleBRepExtremaTriangleSet_get(
-        handle: *const HandleBRepExtremaTriangleSet,
+    pub fn Handle_BRepExtrema_TriangleSet_get(
+        handle: *const Handle_BRepExtrema_TriangleSet,
     ) -> crate::OcctResult<*const BRepExtrema_TriangleSet>;
     /// Dereference Handle to get *mut BRepExtrema_TriangleSet
-    pub fn HandleBRepExtremaTriangleSet_get_mut(
-        handle: *mut HandleBRepExtremaTriangleSet,
+    pub fn Handle_BRepExtrema_TriangleSet_get_mut(
+        handle: *mut Handle_BRepExtrema_TriangleSet,
     ) -> crate::OcctResult<*mut BRepExtrema_TriangleSet>;
     // ======================== BRepExtrema_UnCompatibleShape ========================
     pub fn BRepExtrema_UnCompatibleShape_destructor(self_: *mut BRepExtrema_UnCompatibleShape);
-    /// **Source:** `BRepExtrema_UnCompatibleShape.hxx`:36 - `BRepExtrema_UnCompatibleShape::BRepExtrema_UnCompatibleShape()`
-    pub fn BRepExtrema_UnCompatibleShape_ctor(
-    ) -> crate::OcctResult<*mut BRepExtrema_UnCompatibleShape>;
-    /// **Source:** `BRepExtrema_UnCompatibleShape.hxx`:36 - `BRepExtrema_UnCompatibleShape::BRepExtrema_UnCompatibleShape()`
+    /// **Source:** `BRepExtrema_UnCompatibleShape.hxx`:32 - `BRepExtrema_UnCompatibleShape::BRepExtrema_UnCompatibleShape()`
     pub fn BRepExtrema_UnCompatibleShape_ctor_charptr(
         theMessage: *const std::ffi::c_char,
     ) -> crate::OcctResult<*mut BRepExtrema_UnCompatibleShape>;
-    /// **Source:** `BRepExtrema_UnCompatibleShape.hxx`:36 - `BRepExtrema_UnCompatibleShape::BRepExtrema_UnCompatibleShape()`
+    /// **Source:** `BRepExtrema_UnCompatibleShape.hxx`:32 - `BRepExtrema_UnCompatibleShape::BRepExtrema_UnCompatibleShape()`
     pub fn BRepExtrema_UnCompatibleShape_ctor_charptr2(
         theMessage: *const std::ffi::c_char,
         theStackTrace: *const std::ffi::c_char,
     ) -> crate::OcctResult<*mut BRepExtrema_UnCompatibleShape>;
-    /// **Source:** `BRepExtrema_UnCompatibleShape.hxx`:36 - `BRepExtrema_UnCompatibleShape::DynamicType()`
-    pub fn BRepExtrema_UnCompatibleShape_dynamic_type(
+    /// **Source:** `BRepExtrema_UnCompatibleShape.hxx`:32 - `BRepExtrema_UnCompatibleShape::ExceptionType()`
+    pub fn BRepExtrema_UnCompatibleShape_exception_type(
         self_: *const BRepExtrema_UnCompatibleShape,
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// **Source:** `BRepExtrema_UnCompatibleShape.hxx`:36 - `BRepExtrema_UnCompatibleShape::Raise()`
-    pub fn BRepExtrema_UnCompatibleShape_raise_charptr(
-        theMessage: *const std::ffi::c_char,
-    ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepExtrema_UnCompatibleShape.hxx`:36 - `BRepExtrema_UnCompatibleShape::Raise()`
-    pub fn BRepExtrema_UnCompatibleShape_raise_sstream(
-        theMessage: *mut Standard_SStream,
-    ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepExtrema_UnCompatibleShape.hxx`:36 - `BRepExtrema_UnCompatibleShape::NewInstance()`
-    pub fn BRepExtrema_UnCompatibleShape_new_instance_charptr(
-        theMessage: *const std::ffi::c_char,
-    ) -> crate::OcctResult<*mut HandleBRepExtremaUnCompatibleShape>;
-    /// **Source:** `BRepExtrema_UnCompatibleShape.hxx`:36 - `BRepExtrema_UnCompatibleShape::NewInstance()`
-    pub fn BRepExtrema_UnCompatibleShape_new_instance_charptr2(
-        theMessage: *const std::ffi::c_char,
-        theStackTrace: *const std::ffi::c_char,
-    ) -> crate::OcctResult<*mut HandleBRepExtremaUnCompatibleShape>;
-    /// **Source:** `BRepExtrema_UnCompatibleShape.hxx`:36 - `BRepExtrema_UnCompatibleShape::get_type_name()`
-    pub fn BRepExtrema_UnCompatibleShape_get_type_name(
     ) -> crate::OcctResult<*const std::ffi::c_char>;
-    /// **Source:** `BRepExtrema_UnCompatibleShape.hxx`:36 - `BRepExtrema_UnCompatibleShape::get_type_descriptor()`
-    pub fn BRepExtrema_UnCompatibleShape_get_type_descriptor(
-    ) -> crate::OcctResult<*const HandleStandardType>;
     /// Upcast BRepExtrema_UnCompatibleShape to Standard_DomainError
     pub fn BRepExtrema_UnCompatibleShape_as_Standard_DomainError(
         self_: *const BRepExtrema_UnCompatibleShape,
@@ -7744,92 +7741,10 @@ unsafe extern "C" {
     pub fn BRepExtrema_UnCompatibleShape_as_Standard_Failure_mut(
         self_: *mut BRepExtrema_UnCompatibleShape,
     ) -> crate::OcctResult<*mut Standard_Failure>;
-    /// Upcast BRepExtrema_UnCompatibleShape to Standard_Transient
-    pub fn BRepExtrema_UnCompatibleShape_as_Standard_Transient(
-        self_: *const BRepExtrema_UnCompatibleShape,
-    ) -> crate::OcctResult<*const Standard_Transient>;
-    /// Upcast BRepExtrema_UnCompatibleShape to Standard_Transient (mutable)
-    pub fn BRepExtrema_UnCompatibleShape_as_Standard_Transient_mut(
-        self_: *mut BRepExtrema_UnCompatibleShape,
-    ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Wrap BRepExtrema_UnCompatibleShape in a Handle
-    pub fn BRepExtrema_UnCompatibleShape_to_handle(
-        obj: *mut BRepExtrema_UnCompatibleShape,
-    ) -> crate::OcctResult<*mut HandleBRepExtremaUnCompatibleShape>;
-    /// Destroy Handle<BRepExtrema_UnCompatibleShape>
-    pub fn HandleBRepExtremaUnCompatibleShape_destructor(
-        self_: *mut HandleBRepExtremaUnCompatibleShape,
-    );
-    /// Clone Handle<BRepExtrema_UnCompatibleShape> (increments reference count)
-    pub fn HandleBRepExtremaUnCompatibleShape_clone(
-        self_: *const HandleBRepExtremaUnCompatibleShape,
-    ) -> crate::OcctResult<*mut HandleBRepExtremaUnCompatibleShape>;
-    /// Check if Handle<BRepExtrema_UnCompatibleShape> is null
-    pub fn HandleBRepExtremaUnCompatibleShape_is_null(
-        self_: *const HandleBRepExtremaUnCompatibleShape,
-    ) -> bool;
-    /// Dereference Handle to get *const BRepExtrema_UnCompatibleShape
-    pub fn HandleBRepExtremaUnCompatibleShape_get(
-        handle: *const HandleBRepExtremaUnCompatibleShape,
-    ) -> crate::OcctResult<*const BRepExtrema_UnCompatibleShape>;
-    /// Dereference Handle to get *mut BRepExtrema_UnCompatibleShape
-    pub fn HandleBRepExtremaUnCompatibleShape_get_mut(
-        handle: *mut HandleBRepExtremaUnCompatibleShape,
-    ) -> crate::OcctResult<*mut BRepExtrema_UnCompatibleShape>;
-    /// Upcast Handle<BRepExtrema_UnCompatibleShape> to Handle<Standard_DomainError>
-    pub fn HandleBRepExtremaUnCompatibleShape_to_HandleStandardDomainError(
-        self_: *const HandleBRepExtremaUnCompatibleShape,
-    ) -> crate::OcctResult<*mut HandleStandardDomainError>;
-    /// Upcast Handle<BRepExtrema_UnCompatibleShape> to Handle<Standard_Failure>
-    pub fn HandleBRepExtremaUnCompatibleShape_to_HandleStandardFailure(
-        self_: *const HandleBRepExtremaUnCompatibleShape,
-    ) -> crate::OcctResult<*mut HandleStandardFailure>;
-    /// Upcast Handle<BRepExtrema_UnCompatibleShape> to Handle<Standard_Transient>
-    pub fn HandleBRepExtremaUnCompatibleShape_to_HandleStandardTransient(
-        self_: *const HandleBRepExtremaUnCompatibleShape,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
-    /// Inherited: **Source:** `Standard_Failure.hxx`:58 - `Standard_Failure::Print()`
+    /// Inherited: **Source:** `Standard_Failure.hxx`:73 - `Standard_Failure::Print()`
     pub fn BRepExtrema_UnCompatibleShape_inherited_Print(
         self_: *const BRepExtrema_UnCompatibleShape,
         theStream: *mut Standard_OStream,
-    ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Failure.hxx`:72 - `Standard_Failure::Reraise()`
-    pub fn BRepExtrema_UnCompatibleShape_inherited_Reraise(
-        self_: *mut BRepExtrema_UnCompatibleShape,
-    ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Failure.hxx`:112 - `Standard_Failure::Jump()`
-    pub fn BRepExtrema_UnCompatibleShape_inherited_Jump(
-        self_: *mut BRepExtrema_UnCompatibleShape,
-    ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn BRepExtrema_UnCompatibleShape_inherited_IsInstance(
-        self_: *const BRepExtrema_UnCompatibleShape,
-        theType: *const HandleStandardType,
-    ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn BRepExtrema_UnCompatibleShape_inherited_IsKind(
-        self_: *const BRepExtrema_UnCompatibleShape,
-        theType: *const HandleStandardType,
-    ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
-    pub fn BRepExtrema_UnCompatibleShape_inherited_This(
-        self_: *const BRepExtrema_UnCompatibleShape,
-    ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
-    pub fn BRepExtrema_UnCompatibleShape_inherited_GetRefCount(
-        self_: *const BRepExtrema_UnCompatibleShape,
-    ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
-    pub fn BRepExtrema_UnCompatibleShape_inherited_IncrementRefCounter(
-        self_: *mut BRepExtrema_UnCompatibleShape,
-    ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
-    pub fn BRepExtrema_UnCompatibleShape_inherited_DecrementRefCounter(
-        self_: *mut BRepExtrema_UnCompatibleShape,
-    ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
-    pub fn BRepExtrema_UnCompatibleShape_inherited_Delete(
-        self_: *const BRepExtrema_UnCompatibleShape,
     ) -> *const std::ffi::c_char;
     // ======================== BRepGProp_Cinert ========================
     pub fn BRepGProp_Cinert_destructor(self_: *mut BRepGProp_Cinert);
@@ -7858,41 +7773,41 @@ unsafe extern "C" {
     pub fn BRepGProp_Cinert_as_GProp_GProps_mut(
         self_: *mut BRepGProp_Cinert,
     ) -> crate::OcctResult<*mut GProp_GProps>;
-    /// Inherited: **Source:** `GProp_GProps.hxx`:164 - `GProp_GProps::Add()`
+    /// Inherited: **Source:** `GProp_GProps.hxx`:157 - `GProp_GProps::Add()`
     pub fn BRepGProp_Cinert_inherited_Add(
         self_: *mut BRepGProp_Cinert,
         Item: *const GProp_GProps,
         Density: f64,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `GProp_GProps.hxx`:190 - `GProp_GProps::Mass()`
+    /// Inherited: **Source:** `GProp_GProps.hxx`:180 - `GProp_GProps::Mass()`
     pub fn BRepGProp_Cinert_inherited_Mass(
         self_: *const BRepGProp_Cinert,
     ) -> crate::OcctResult<f64>;
-    /// Inherited: **Source:** `GProp_GProps.hxx`:196 - `GProp_GProps::CentreOfMass()`
+    /// Inherited: **Source:** `GProp_GProps.hxx`:186 - `GProp_GProps::CentreOfMass()`
     pub fn BRepGProp_Cinert_inherited_CentreOfMass(
         self_: *const BRepGProp_Cinert,
     ) -> crate::OcctResult<*mut gp_Pnt>;
-    /// Inherited: **Source:** `GProp_GProps.hxx`:215 - `GProp_GProps::MatrixOfInertia()`
+    /// Inherited: **Source:** `GProp_GProps.hxx`:204 - `GProp_GProps::MatrixOfInertia()`
     pub fn BRepGProp_Cinert_inherited_MatrixOfInertia(
         self_: *const BRepGProp_Cinert,
     ) -> crate::OcctResult<*mut gp_Mat>;
-    /// Inherited: **Source:** `GProp_GProps.hxx`:220 - `GProp_GProps::StaticMoments()`
+    /// Inherited: **Source:** `GProp_GProps.hxx`:213 - `GProp_GProps::StaticMoments()`
     pub fn BRepGProp_Cinert_inherited_StaticMoments(
         self_: *const BRepGProp_Cinert,
         Ix: *mut f64,
         Iy: *mut f64,
         Iz: *mut f64,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `GProp_GProps.hxx`:224 - `GProp_GProps::MomentOfInertia()`
+    /// Inherited: **Source:** `GProp_GProps.hxx`:217 - `GProp_GProps::MomentOfInertia()`
     pub fn BRepGProp_Cinert_inherited_MomentOfInertia(
         self_: *const BRepGProp_Cinert,
         A: *const gp_Ax1,
     ) -> crate::OcctResult<f64>;
-    /// Inherited: **Source:** `GProp_GProps.hxx`:239 - `GProp_GProps::PrincipalProperties()`
+    /// Inherited: **Source:** `GProp_GProps.hxx`:231 - `GProp_GProps::PrincipalProperties()`
     pub fn BRepGProp_Cinert_inherited_PrincipalProperties(
         self_: *const BRepGProp_Cinert,
     ) -> crate::OcctResult<*mut GProp_PrincipalProps>;
-    /// Inherited: **Source:** `GProp_GProps.hxx`:242 - `GProp_GProps::RadiusOfGyration()`
+    /// Inherited: **Source:** `GProp_GProps.hxx`:236 - `GProp_GProps::RadiusOfGyration()`
     pub fn BRepGProp_Cinert_inherited_RadiusOfGyration(
         self_: *const BRepGProp_Cinert,
         A: *const gp_Ax1,
@@ -7947,84 +7862,84 @@ unsafe extern "C" {
         P: *mut gp_Pnt,
         V1: *mut gp_Vec,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepGProp_EdgeTool.hxx`:66 - `BRepGProp_EdgeTool::NbIntervals()`
+    /// **Source:** `BRepGProp_EdgeTool.hxx`:63 - `BRepGProp_EdgeTool::NbIntervals()`
     pub fn BRepGProp_EdgeTool_nb_intervals(
         C: *const BRepAdaptor_Curve,
         S: i32,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `BRepGProp_EdgeTool.hxx`:74 - `BRepGProp_EdgeTool::Intervals()`
+    /// **Source:** `BRepGProp_EdgeTool.hxx`:70 - `BRepGProp_EdgeTool::Intervals()`
     pub fn BRepGProp_EdgeTool_intervals(
         C: *const BRepAdaptor_Curve,
-        T: *mut TColStd_Array1OfReal,
+        T: *mut NCollection_Array1_double,
         S: i32,
     ) -> *const std::ffi::c_char;
     // ======================== BRepGProp_Face ========================
     pub fn BRepGProp_Face_destructor(self_: *mut BRepGProp_Face);
-    /// **Source:** `BRepGProp_Face.hxx`:47 - `BRepGProp_Face::BRepGProp_Face()`
+    /// **Source:** `BRepGProp_Face.hxx`:50 - `BRepGProp_Face::BRepGProp_Face()`
     pub fn BRepGProp_Face_ctor_bool(IsUseSpan: bool) -> crate::OcctResult<*mut BRepGProp_Face>;
-    /// **Source:** `BRepGProp_Face.hxx`:54 - `BRepGProp_Face::BRepGProp_Face()`
+    /// **Source:** `BRepGProp_Face.hxx`:57 - `BRepGProp_Face::BRepGProp_Face()`
     pub fn BRepGProp_Face_ctor_face_bool(
         F: *const TopoDS_Face,
         IsUseSpan: bool,
     ) -> crate::OcctResult<*mut BRepGProp_Face>;
-    /// **Source:** `BRepGProp_Face.hxx`:56 - `BRepGProp_Face::Load()`
+    /// **Source:** `BRepGProp_Face.hxx`:59 - `BRepGProp_Face::Load()`
     pub fn BRepGProp_Face_load_face(
         self_: *mut BRepGProp_Face,
         F: *const TopoDS_Face,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepGProp_Face.hxx`:58 - `BRepGProp_Face::VIntegrationOrder()`
+    /// **Source:** `BRepGProp_Face.hxx`:61 - `BRepGProp_Face::VIntegrationOrder()`
     pub fn BRepGProp_Face_v_integration_order(
         self_: *const BRepGProp_Face,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `BRepGProp_Face.hxx`:61 - `BRepGProp_Face::NaturalRestriction()`
+    /// **Source:** `BRepGProp_Face.hxx`:64 - `BRepGProp_Face::NaturalRestriction()`
     pub fn BRepGProp_Face_natural_restriction(
         self_: *const BRepGProp_Face,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BRepGProp_Face.hxx`:64 - `BRepGProp_Face::GetFace()`
+    /// **Source:** `BRepGProp_Face.hxx`:67 - `BRepGProp_Face::GetFace()`
     pub fn BRepGProp_Face_get_face(
         self_: *const BRepGProp_Face,
     ) -> crate::OcctResult<*const TopoDS_Face>;
-    /// **Source:** `BRepGProp_Face.hxx`:67 - `BRepGProp_Face::Value2d()`
+    /// **Source:** `BRepGProp_Face.hxx`:70 - `BRepGProp_Face::Value2d()`
     pub fn BRepGProp_Face_value2d(
         self_: *const BRepGProp_Face,
         U: f64,
     ) -> crate::OcctResult<*mut gp_Pnt2d>;
-    /// **Source:** `BRepGProp_Face.hxx`:69 - `BRepGProp_Face::SIntOrder()`
+    /// **Source:** `BRepGProp_Face.hxx`:72 - `BRepGProp_Face::SIntOrder()`
     pub fn BRepGProp_Face_s_int_order(
         self_: *const BRepGProp_Face,
         Eps: f64,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `BRepGProp_Face.hxx`:71 - `BRepGProp_Face::SVIntSubs()`
+    /// **Source:** `BRepGProp_Face.hxx`:74 - `BRepGProp_Face::SVIntSubs()`
     pub fn BRepGProp_Face_sv_int_subs(self_: *const BRepGProp_Face) -> crate::OcctResult<i32>;
-    /// **Source:** `BRepGProp_Face.hxx`:73 - `BRepGProp_Face::SUIntSubs()`
+    /// **Source:** `BRepGProp_Face.hxx`:76 - `BRepGProp_Face::SUIntSubs()`
     pub fn BRepGProp_Face_su_int_subs(self_: *const BRepGProp_Face) -> crate::OcctResult<i32>;
-    /// **Source:** `BRepGProp_Face.hxx`:75 - `BRepGProp_Face::UKnots()`
+    /// **Source:** `BRepGProp_Face.hxx`:78 - `BRepGProp_Face::UKnots()`
     pub fn BRepGProp_Face_u_knots(
         self_: *const BRepGProp_Face,
-        Knots: *mut TColStd_Array1OfReal,
+        Knots: *mut NCollection_Array1_double,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepGProp_Face.hxx`:77 - `BRepGProp_Face::VKnots()`
+    /// **Source:** `BRepGProp_Face.hxx`:80 - `BRepGProp_Face::VKnots()`
     pub fn BRepGProp_Face_v_knots(
         self_: *const BRepGProp_Face,
-        Knots: *mut TColStd_Array1OfReal,
+        Knots: *mut NCollection_Array1_double,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepGProp_Face.hxx`:79 - `BRepGProp_Face::LIntOrder()`
+    /// **Source:** `BRepGProp_Face.hxx`:82 - `BRepGProp_Face::LIntOrder()`
     pub fn BRepGProp_Face_l_int_order(
         self_: *const BRepGProp_Face,
         Eps: f64,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `BRepGProp_Face.hxx`:81 - `BRepGProp_Face::LIntSubs()`
+    /// **Source:** `BRepGProp_Face.hxx`:84 - `BRepGProp_Face::LIntSubs()`
     pub fn BRepGProp_Face_l_int_subs(self_: *const BRepGProp_Face) -> crate::OcctResult<i32>;
-    /// **Source:** `BRepGProp_Face.hxx`:83 - `BRepGProp_Face::LKnots()`
+    /// **Source:** `BRepGProp_Face.hxx`:86 - `BRepGProp_Face::LKnots()`
     pub fn BRepGProp_Face_l_knots(
         self_: *const BRepGProp_Face,
-        Knots: *mut TColStd_Array1OfReal,
+        Knots: *mut NCollection_Array1_double,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepGProp_Face.hxx`:88 - `BRepGProp_Face::UIntegrationOrder()`
+    /// **Source:** `BRepGProp_Face.hxx`:91 - `BRepGProp_Face::UIntegrationOrder()`
     pub fn BRepGProp_Face_u_integration_order(
         self_: *const BRepGProp_Face,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `BRepGProp_Face.hxx`:91 - `BRepGProp_Face::Bounds()`
+    /// **Source:** `BRepGProp_Face.hxx`:94 - `BRepGProp_Face::Bounds()`
     pub fn BRepGProp_Face_bounds(
         self_: *const BRepGProp_Face,
         U1: *mut f64,
@@ -8040,26 +7955,26 @@ unsafe extern "C" {
         P: *mut gp_Pnt,
         VNor: *mut gp_Vec,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepGProp_Face.hxx`:105 - `BRepGProp_Face::Load()`
+    /// **Source:** `BRepGProp_Face.hxx`:102 - `BRepGProp_Face::Load()`
     pub fn BRepGProp_Face_load_edge(
         self_: *mut BRepGProp_Face,
         E: *const TopoDS_Edge,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BRepGProp_Face.hxx`:109 - `BRepGProp_Face::FirstParameter()`
+    /// **Source:** `BRepGProp_Face.hxx`:106 - `BRepGProp_Face::FirstParameter()`
     pub fn BRepGProp_Face_first_parameter(self_: *const BRepGProp_Face) -> crate::OcctResult<f64>;
-    /// **Source:** `BRepGProp_Face.hxx`:113 - `BRepGProp_Face::LastParameter()`
+    /// **Source:** `BRepGProp_Face.hxx`:110 - `BRepGProp_Face::LastParameter()`
     pub fn BRepGProp_Face_last_parameter(self_: *const BRepGProp_Face) -> crate::OcctResult<f64>;
-    /// **Source:** `BRepGProp_Face.hxx`:117 - `BRepGProp_Face::IntegrationOrder()`
+    /// **Source:** `BRepGProp_Face.hxx`:114 - `BRepGProp_Face::IntegrationOrder()`
     pub fn BRepGProp_Face_integration_order(self_: *const BRepGProp_Face)
         -> crate::OcctResult<i32>;
-    /// **Source:** `BRepGProp_Face.hxx`:121 - `BRepGProp_Face::D12d()`
+    /// **Source:** `BRepGProp_Face.hxx`:118 - `BRepGProp_Face::D12d()`
     pub fn BRepGProp_Face_d12d(
         self_: *const BRepGProp_Face,
         U: f64,
         P: *mut gp_Pnt2d,
         V1: *mut gp_Vec2d,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepGProp_Face.hxx`:132 - `BRepGProp_Face::Load()`
+    /// **Source:** `BRepGProp_Face.hxx`:129 - `BRepGProp_Face::Load()`
     pub fn BRepGProp_Face_load_bool_isotype(
         self_: *mut BRepGProp_Face,
         IsFirstParam: bool,
@@ -8070,15 +7985,13 @@ unsafe extern "C" {
         self_: *const BRepGProp_Face,
         theUMin: f64,
         theUMax: f64,
-        theUKnots: *mut HandleTColStdHArray1OfReal,
-    ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepGProp_Face.hxx`:153 - `BRepGProp_Face::GetTKnots()`
+    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_double>;
+    /// **Source:** `BRepGProp_Face.hxx`:162 - `BRepGProp_Face::GetTKnots()`
     pub fn BRepGProp_Face_get_t_knots(
         self_: *const BRepGProp_Face,
         theTMin: f64,
         theTMax: f64,
-        theTKnots: *mut HandleTColStdHArray1OfReal,
-    ) -> *const std::ffi::c_char;
+    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_double>;
     // ======================== BRepGProp_Gauss ========================
     pub fn BRepGProp_Gauss_destructor(self_: *mut BRepGProp_Gauss);
     /// **Source:** `BRepGProp_Gauss.hxx`:73 - `BRepGProp_Gauss::BRepGProp_Gauss()`
@@ -8153,23 +8066,22 @@ unsafe extern "C" {
     ) -> crate::OcctResult<f64>;
     // ======================== BRepGProp_MeshCinert ========================
     pub fn BRepGProp_MeshCinert_destructor(self_: *mut BRepGProp_MeshCinert);
-    /// **Source:** `BRepGProp_MeshCinert.hxx`:37 - `BRepGProp_MeshCinert::BRepGProp_MeshCinert()`
+    /// **Source:** `BRepGProp_MeshCinert.hxx`:38 - `BRepGProp_MeshCinert::BRepGProp_MeshCinert()`
     pub fn BRepGProp_MeshCinert_ctor() -> crate::OcctResult<*mut BRepGProp_MeshCinert>;
-    /// **Source:** `BRepGProp_MeshCinert.hxx`:39 - `BRepGProp_MeshCinert::SetLocation()`
+    /// **Source:** `BRepGProp_MeshCinert.hxx`:40 - `BRepGProp_MeshCinert::SetLocation()`
     pub fn BRepGProp_MeshCinert_set_location(
         self_: *mut BRepGProp_MeshCinert,
         CLocation: *const gp_Pnt,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepGProp_MeshCinert.hxx`:43 - `BRepGProp_MeshCinert::Perform()`
+    /// **Source:** `BRepGProp_MeshCinert.hxx`:44 - `BRepGProp_MeshCinert::Perform()`
     pub fn BRepGProp_MeshCinert_perform(
         self_: *mut BRepGProp_MeshCinert,
-        theNodes: *const TColgp_Array1OfPnt,
+        theNodes: *const NCollection_Array1_gp_Pnt,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepGProp_MeshCinert.hxx`:48 - `BRepGProp_MeshCinert::PreparePolygon()`
+    /// **Source:** `BRepGProp_MeshCinert.hxx`:50 - `BRepGProp_MeshCinert::PreparePolygon()`
     pub fn BRepGProp_MeshCinert_prepare_polygon(
         theE: *const TopoDS_Edge,
-        thePolyg: *mut HandleTColgpHArray1OfPnt,
-    ) -> *const std::ffi::c_char;
+    ) -> crate::OcctResult<*mut Handle_NCollection_HArray1_gp_Pnt>;
     /// Upcast BRepGProp_MeshCinert to GProp_GProps
     pub fn BRepGProp_MeshCinert_as_GProp_GProps(
         self_: *const BRepGProp_MeshCinert,
@@ -8178,74 +8090,74 @@ unsafe extern "C" {
     pub fn BRepGProp_MeshCinert_as_GProp_GProps_mut(
         self_: *mut BRepGProp_MeshCinert,
     ) -> crate::OcctResult<*mut GProp_GProps>;
-    /// Inherited: **Source:** `GProp_GProps.hxx`:164 - `GProp_GProps::Add()`
+    /// Inherited: **Source:** `GProp_GProps.hxx`:157 - `GProp_GProps::Add()`
     pub fn BRepGProp_MeshCinert_inherited_Add(
         self_: *mut BRepGProp_MeshCinert,
         Item: *const GProp_GProps,
         Density: f64,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `GProp_GProps.hxx`:190 - `GProp_GProps::Mass()`
+    /// Inherited: **Source:** `GProp_GProps.hxx`:180 - `GProp_GProps::Mass()`
     pub fn BRepGProp_MeshCinert_inherited_Mass(
         self_: *const BRepGProp_MeshCinert,
     ) -> crate::OcctResult<f64>;
-    /// Inherited: **Source:** `GProp_GProps.hxx`:196 - `GProp_GProps::CentreOfMass()`
+    /// Inherited: **Source:** `GProp_GProps.hxx`:186 - `GProp_GProps::CentreOfMass()`
     pub fn BRepGProp_MeshCinert_inherited_CentreOfMass(
         self_: *const BRepGProp_MeshCinert,
     ) -> crate::OcctResult<*mut gp_Pnt>;
-    /// Inherited: **Source:** `GProp_GProps.hxx`:215 - `GProp_GProps::MatrixOfInertia()`
+    /// Inherited: **Source:** `GProp_GProps.hxx`:204 - `GProp_GProps::MatrixOfInertia()`
     pub fn BRepGProp_MeshCinert_inherited_MatrixOfInertia(
         self_: *const BRepGProp_MeshCinert,
     ) -> crate::OcctResult<*mut gp_Mat>;
-    /// Inherited: **Source:** `GProp_GProps.hxx`:220 - `GProp_GProps::StaticMoments()`
+    /// Inherited: **Source:** `GProp_GProps.hxx`:213 - `GProp_GProps::StaticMoments()`
     pub fn BRepGProp_MeshCinert_inherited_StaticMoments(
         self_: *const BRepGProp_MeshCinert,
         Ix: *mut f64,
         Iy: *mut f64,
         Iz: *mut f64,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `GProp_GProps.hxx`:224 - `GProp_GProps::MomentOfInertia()`
+    /// Inherited: **Source:** `GProp_GProps.hxx`:217 - `GProp_GProps::MomentOfInertia()`
     pub fn BRepGProp_MeshCinert_inherited_MomentOfInertia(
         self_: *const BRepGProp_MeshCinert,
         A: *const gp_Ax1,
     ) -> crate::OcctResult<f64>;
-    /// Inherited: **Source:** `GProp_GProps.hxx`:239 - `GProp_GProps::PrincipalProperties()`
+    /// Inherited: **Source:** `GProp_GProps.hxx`:231 - `GProp_GProps::PrincipalProperties()`
     pub fn BRepGProp_MeshCinert_inherited_PrincipalProperties(
         self_: *const BRepGProp_MeshCinert,
     ) -> crate::OcctResult<*mut GProp_PrincipalProps>;
-    /// Inherited: **Source:** `GProp_GProps.hxx`:242 - `GProp_GProps::RadiusOfGyration()`
+    /// Inherited: **Source:** `GProp_GProps.hxx`:236 - `GProp_GProps::RadiusOfGyration()`
     pub fn BRepGProp_MeshCinert_inherited_RadiusOfGyration(
         self_: *const BRepGProp_MeshCinert,
         A: *const gp_Ax1,
     ) -> crate::OcctResult<f64>;
     // ======================== BRepGProp_MeshProps ========================
     pub fn BRepGProp_MeshProps_destructor(self_: *mut BRepGProp_MeshProps);
-    /// **Source:** `BRepGProp_MeshProps.hxx`:42 - `BRepGProp_MeshProps::BRepGProp_MeshProps()`
+    /// **Source:** `BRepGProp_MeshProps.hxx`:43 - `BRepGProp_MeshProps::BRepGProp_MeshProps()`
     pub fn BRepGProp_MeshProps_ctor_meshobjtype(
         theType: *const BRepGProp_MeshProps_BRepGProp_MeshObjType,
     ) -> crate::OcctResult<*mut BRepGProp_MeshProps>;
-    /// **Source:** `BRepGProp_MeshProps.hxx`:48 - `BRepGProp_MeshProps::SetLocation()`
+    /// **Source:** `BRepGProp_MeshProps.hxx`:49 - `BRepGProp_MeshProps::SetLocation()`
     pub fn BRepGProp_MeshProps_set_location(
         self_: *mut BRepGProp_MeshProps,
         theLocation: *const gp_Pnt,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepGProp_MeshProps.hxx`:55 - `BRepGProp_MeshProps::Perform()`
+    /// **Source:** `BRepGProp_MeshProps.hxx`:56 - `BRepGProp_MeshProps::Perform()`
     pub fn BRepGProp_MeshProps_perform_handlepolytriangulation_location_orientation(
         self_: *mut BRepGProp_MeshProps,
-        theMesh: *const HandlePolyTriangulation,
+        theMesh: *const Handle_Poly_Triangulation,
         theLoc: *const TopLoc_Location,
         theOri: i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepGProp_MeshProps.hxx`:59 - `BRepGProp_MeshProps::Perform()`
+    /// **Source:** `BRepGProp_MeshProps.hxx`:60 - `BRepGProp_MeshProps::Perform()`
     pub fn BRepGProp_MeshProps_perform_handlepolytriangulation_orientation(
         self_: *mut BRepGProp_MeshProps,
-        theMesh: *const HandlePolyTriangulation,
+        theMesh: *const Handle_Poly_Triangulation,
         theOri: i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepGProp_MeshProps.hxx`:76 - `BRepGProp_MeshProps::GetMeshObjType()`
+    /// **Source:** `BRepGProp_MeshProps.hxx`:77 - `BRepGProp_MeshProps::GetMeshObjType()`
     pub fn BRepGProp_MeshProps_get_mesh_obj_type(
         self_: *const BRepGProp_MeshProps,
     ) -> crate::OcctResult<*mut BRepGProp_MeshProps_BRepGProp_MeshObjType>;
-    /// **Source:** `BRepGProp_MeshProps.hxx`:66 - `BRepGProp_MeshProps::CalculateProps()`
+    /// **Source:** `BRepGProp_MeshProps.hxx`:67 - `BRepGProp_MeshProps::CalculateProps()`
     pub fn BRepGProp_MeshProps_calculate_props(
         p1: *const gp_Pnt,
         p2: *const gp_Pnt,
@@ -8264,41 +8176,41 @@ unsafe extern "C" {
     pub fn BRepGProp_MeshProps_as_GProp_GProps_mut(
         self_: *mut BRepGProp_MeshProps,
     ) -> crate::OcctResult<*mut GProp_GProps>;
-    /// Inherited: **Source:** `GProp_GProps.hxx`:164 - `GProp_GProps::Add()`
+    /// Inherited: **Source:** `GProp_GProps.hxx`:157 - `GProp_GProps::Add()`
     pub fn BRepGProp_MeshProps_inherited_Add(
         self_: *mut BRepGProp_MeshProps,
         Item: *const GProp_GProps,
         Density: f64,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `GProp_GProps.hxx`:190 - `GProp_GProps::Mass()`
+    /// Inherited: **Source:** `GProp_GProps.hxx`:180 - `GProp_GProps::Mass()`
     pub fn BRepGProp_MeshProps_inherited_Mass(
         self_: *const BRepGProp_MeshProps,
     ) -> crate::OcctResult<f64>;
-    /// Inherited: **Source:** `GProp_GProps.hxx`:196 - `GProp_GProps::CentreOfMass()`
+    /// Inherited: **Source:** `GProp_GProps.hxx`:186 - `GProp_GProps::CentreOfMass()`
     pub fn BRepGProp_MeshProps_inherited_CentreOfMass(
         self_: *const BRepGProp_MeshProps,
     ) -> crate::OcctResult<*mut gp_Pnt>;
-    /// Inherited: **Source:** `GProp_GProps.hxx`:215 - `GProp_GProps::MatrixOfInertia()`
+    /// Inherited: **Source:** `GProp_GProps.hxx`:204 - `GProp_GProps::MatrixOfInertia()`
     pub fn BRepGProp_MeshProps_inherited_MatrixOfInertia(
         self_: *const BRepGProp_MeshProps,
     ) -> crate::OcctResult<*mut gp_Mat>;
-    /// Inherited: **Source:** `GProp_GProps.hxx`:220 - `GProp_GProps::StaticMoments()`
+    /// Inherited: **Source:** `GProp_GProps.hxx`:213 - `GProp_GProps::StaticMoments()`
     pub fn BRepGProp_MeshProps_inherited_StaticMoments(
         self_: *const BRepGProp_MeshProps,
         Ix: *mut f64,
         Iy: *mut f64,
         Iz: *mut f64,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `GProp_GProps.hxx`:224 - `GProp_GProps::MomentOfInertia()`
+    /// Inherited: **Source:** `GProp_GProps.hxx`:217 - `GProp_GProps::MomentOfInertia()`
     pub fn BRepGProp_MeshProps_inherited_MomentOfInertia(
         self_: *const BRepGProp_MeshProps,
         A: *const gp_Ax1,
     ) -> crate::OcctResult<f64>;
-    /// Inherited: **Source:** `GProp_GProps.hxx`:239 - `GProp_GProps::PrincipalProperties()`
+    /// Inherited: **Source:** `GProp_GProps.hxx`:231 - `GProp_GProps::PrincipalProperties()`
     pub fn BRepGProp_MeshProps_inherited_PrincipalProperties(
         self_: *const BRepGProp_MeshProps,
     ) -> crate::OcctResult<*mut GProp_PrincipalProps>;
-    /// Inherited: **Source:** `GProp_GProps.hxx`:242 - `GProp_GProps::RadiusOfGyration()`
+    /// Inherited: **Source:** `GProp_GProps.hxx`:236 - `GProp_GProps::RadiusOfGyration()`
     pub fn BRepGProp_MeshProps_inherited_RadiusOfGyration(
         self_: *const BRepGProp_MeshProps,
         A: *const gp_Ax1,
@@ -8324,43 +8236,43 @@ unsafe extern "C" {
         SLocation: *const gp_Pnt,
         Eps: f64,
     ) -> crate::OcctResult<*mut BRepGProp_Sinert>;
-    /// **Source:** `BRepGProp_Sinert.hxx`:50 - `BRepGProp_Sinert::BRepGProp_Sinert()`
+    /// **Source:** `BRepGProp_Sinert.hxx`:48 - `BRepGProp_Sinert::BRepGProp_Sinert()`
     pub fn BRepGProp_Sinert_ctor_face_domain_pnt_real(
         S: *mut BRepGProp_Face,
         D: *mut BRepGProp_Domain,
         SLocation: *const gp_Pnt,
         Eps: f64,
     ) -> crate::OcctResult<*mut BRepGProp_Sinert>;
-    /// **Source:** `BRepGProp_Sinert.hxx`:55 - `BRepGProp_Sinert::SetLocation()`
+    /// **Source:** `BRepGProp_Sinert.hxx`:53 - `BRepGProp_Sinert::SetLocation()`
     pub fn BRepGProp_Sinert_set_location(
         self_: *mut BRepGProp_Sinert,
         SLocation: *const gp_Pnt,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepGProp_Sinert.hxx`:57 - `BRepGProp_Sinert::Perform()`
+    /// **Source:** `BRepGProp_Sinert.hxx`:55 - `BRepGProp_Sinert::Perform()`
     pub fn BRepGProp_Sinert_perform_face(
         self_: *mut BRepGProp_Sinert,
         S: *const BRepGProp_Face,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepGProp_Sinert.hxx`:59 - `BRepGProp_Sinert::Perform()`
+    /// **Source:** `BRepGProp_Sinert.hxx`:57 - `BRepGProp_Sinert::Perform()`
     pub fn BRepGProp_Sinert_perform_face_domain(
         self_: *mut BRepGProp_Sinert,
         S: *mut BRepGProp_Face,
         D: *mut BRepGProp_Domain,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepGProp_Sinert.hxx`:61 - `BRepGProp_Sinert::Perform()`
+    /// **Source:** `BRepGProp_Sinert.hxx`:59 - `BRepGProp_Sinert::Perform()`
     pub fn BRepGProp_Sinert_perform_face_real(
         self_: *mut BRepGProp_Sinert,
         S: *mut BRepGProp_Face,
         Eps: f64,
     ) -> crate::OcctResult<f64>;
-    /// **Source:** `BRepGProp_Sinert.hxx`:63 - `BRepGProp_Sinert::Perform()`
+    /// **Source:** `BRepGProp_Sinert.hxx`:61 - `BRepGProp_Sinert::Perform()`
     pub fn BRepGProp_Sinert_perform_face_domain_real(
         self_: *mut BRepGProp_Sinert,
         S: *mut BRepGProp_Face,
         D: *mut BRepGProp_Domain,
         Eps: f64,
     ) -> crate::OcctResult<f64>;
-    /// **Source:** `BRepGProp_Sinert.hxx`:69 - `BRepGProp_Sinert::GetEpsilon()`
+    /// **Source:** `BRepGProp_Sinert.hxx`:65 - `BRepGProp_Sinert::GetEpsilon()`
     pub fn BRepGProp_Sinert_get_epsilon(self_: *mut BRepGProp_Sinert) -> crate::OcctResult<f64>;
     /// Upcast BRepGProp_Sinert to GProp_GProps
     pub fn BRepGProp_Sinert_as_GProp_GProps(
@@ -8370,41 +8282,41 @@ unsafe extern "C" {
     pub fn BRepGProp_Sinert_as_GProp_GProps_mut(
         self_: *mut BRepGProp_Sinert,
     ) -> crate::OcctResult<*mut GProp_GProps>;
-    /// Inherited: **Source:** `GProp_GProps.hxx`:164 - `GProp_GProps::Add()`
+    /// Inherited: **Source:** `GProp_GProps.hxx`:157 - `GProp_GProps::Add()`
     pub fn BRepGProp_Sinert_inherited_Add(
         self_: *mut BRepGProp_Sinert,
         Item: *const GProp_GProps,
         Density: f64,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `GProp_GProps.hxx`:190 - `GProp_GProps::Mass()`
+    /// Inherited: **Source:** `GProp_GProps.hxx`:180 - `GProp_GProps::Mass()`
     pub fn BRepGProp_Sinert_inherited_Mass(
         self_: *const BRepGProp_Sinert,
     ) -> crate::OcctResult<f64>;
-    /// Inherited: **Source:** `GProp_GProps.hxx`:196 - `GProp_GProps::CentreOfMass()`
+    /// Inherited: **Source:** `GProp_GProps.hxx`:186 - `GProp_GProps::CentreOfMass()`
     pub fn BRepGProp_Sinert_inherited_CentreOfMass(
         self_: *const BRepGProp_Sinert,
     ) -> crate::OcctResult<*mut gp_Pnt>;
-    /// Inherited: **Source:** `GProp_GProps.hxx`:215 - `GProp_GProps::MatrixOfInertia()`
+    /// Inherited: **Source:** `GProp_GProps.hxx`:204 - `GProp_GProps::MatrixOfInertia()`
     pub fn BRepGProp_Sinert_inherited_MatrixOfInertia(
         self_: *const BRepGProp_Sinert,
     ) -> crate::OcctResult<*mut gp_Mat>;
-    /// Inherited: **Source:** `GProp_GProps.hxx`:220 - `GProp_GProps::StaticMoments()`
+    /// Inherited: **Source:** `GProp_GProps.hxx`:213 - `GProp_GProps::StaticMoments()`
     pub fn BRepGProp_Sinert_inherited_StaticMoments(
         self_: *const BRepGProp_Sinert,
         Ix: *mut f64,
         Iy: *mut f64,
         Iz: *mut f64,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `GProp_GProps.hxx`:224 - `GProp_GProps::MomentOfInertia()`
+    /// Inherited: **Source:** `GProp_GProps.hxx`:217 - `GProp_GProps::MomentOfInertia()`
     pub fn BRepGProp_Sinert_inherited_MomentOfInertia(
         self_: *const BRepGProp_Sinert,
         A: *const gp_Ax1,
     ) -> crate::OcctResult<f64>;
-    /// Inherited: **Source:** `GProp_GProps.hxx`:239 - `GProp_GProps::PrincipalProperties()`
+    /// Inherited: **Source:** `GProp_GProps.hxx`:231 - `GProp_GProps::PrincipalProperties()`
     pub fn BRepGProp_Sinert_inherited_PrincipalProperties(
         self_: *const BRepGProp_Sinert,
     ) -> crate::OcctResult<*mut GProp_PrincipalProps>;
-    /// Inherited: **Source:** `GProp_GProps.hxx`:242 - `GProp_GProps::RadiusOfGyration()`
+    /// Inherited: **Source:** `GProp_GProps.hxx`:236 - `GProp_GProps::RadiusOfGyration()`
     pub fn BRepGProp_Sinert_inherited_RadiusOfGyration(
         self_: *const BRepGProp_Sinert,
         A: *const gp_Ax1,
@@ -8451,7 +8363,7 @@ unsafe extern "C" {
         X: f64,
         F: *mut f64,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BRepGProp_TFunction.hxx`:102 - `BRepGProp_TFunction::GetStateNumber()`
+    /// **Source:** `BRepGProp_TFunction.hxx`:101 - `BRepGProp_TFunction::GetStateNumber()`
     pub fn BRepGProp_TFunction_get_state_number(
         self_: *mut BRepGProp_TFunction,
     ) -> crate::OcctResult<i32>;
@@ -8515,53 +8427,53 @@ unsafe extern "C" {
         VLocation: *const gp_Pnt,
         Eps: f64,
     ) -> crate::OcctResult<*mut BRepGProp_Vinert>;
-    /// **Source:** `BRepGProp_Vinert.hxx`:74 - `BRepGProp_Vinert::BRepGProp_Vinert()`
+    /// **Source:** `BRepGProp_Vinert.hxx`:72 - `BRepGProp_Vinert::BRepGProp_Vinert()`
     pub fn BRepGProp_Vinert_ctor_face_pnt2(
         S: *const BRepGProp_Face,
         O: *const gp_Pnt,
         VLocation: *const gp_Pnt,
     ) -> crate::OcctResult<*mut BRepGProp_Vinert>;
-    /// **Source:** `BRepGProp_Vinert.hxx`:85 - `BRepGProp_Vinert::BRepGProp_Vinert()`
+    /// **Source:** `BRepGProp_Vinert.hxx`:83 - `BRepGProp_Vinert::BRepGProp_Vinert()`
     pub fn BRepGProp_Vinert_ctor_face_pnt2_real(
         S: *mut BRepGProp_Face,
         O: *const gp_Pnt,
         VLocation: *const gp_Pnt,
         Eps: f64,
     ) -> crate::OcctResult<*mut BRepGProp_Vinert>;
-    /// **Source:** `BRepGProp_Vinert.hxx`:97 - `BRepGProp_Vinert::BRepGProp_Vinert()`
+    /// **Source:** `BRepGProp_Vinert.hxx`:95 - `BRepGProp_Vinert::BRepGProp_Vinert()`
     pub fn BRepGProp_Vinert_ctor_face_pln_pnt(
         S: *const BRepGProp_Face,
         Pl: *const gp_Pln,
         VLocation: *const gp_Pnt,
     ) -> crate::OcctResult<*mut BRepGProp_Vinert>;
-    /// **Source:** `BRepGProp_Vinert.hxx`:108 - `BRepGProp_Vinert::BRepGProp_Vinert()`
+    /// **Source:** `BRepGProp_Vinert.hxx`:106 - `BRepGProp_Vinert::BRepGProp_Vinert()`
     pub fn BRepGProp_Vinert_ctor_face_pln_pnt_real(
         S: *mut BRepGProp_Face,
         Pl: *const gp_Pln,
         VLocation: *const gp_Pnt,
         Eps: f64,
     ) -> crate::OcctResult<*mut BRepGProp_Vinert>;
-    /// **Source:** `BRepGProp_Vinert.hxx`:120 - `BRepGProp_Vinert::BRepGProp_Vinert()`
+    /// **Source:** `BRepGProp_Vinert.hxx`:118 - `BRepGProp_Vinert::BRepGProp_Vinert()`
     pub fn BRepGProp_Vinert_ctor_face_domain_pnt(
         S: *mut BRepGProp_Face,
         D: *mut BRepGProp_Domain,
         VLocation: *const gp_Pnt,
     ) -> crate::OcctResult<*mut BRepGProp_Vinert>;
-    /// **Source:** `BRepGProp_Vinert.hxx`:128 - `BRepGProp_Vinert::BRepGProp_Vinert()`
+    /// **Source:** `BRepGProp_Vinert.hxx`:126 - `BRepGProp_Vinert::BRepGProp_Vinert()`
     pub fn BRepGProp_Vinert_ctor_face_domain_pnt_real(
         S: *mut BRepGProp_Face,
         D: *mut BRepGProp_Domain,
         VLocation: *const gp_Pnt,
         Eps: f64,
     ) -> crate::OcctResult<*mut BRepGProp_Vinert>;
-    /// **Source:** `BRepGProp_Vinert.hxx`:140 - `BRepGProp_Vinert::BRepGProp_Vinert()`
+    /// **Source:** `BRepGProp_Vinert.hxx`:138 - `BRepGProp_Vinert::BRepGProp_Vinert()`
     pub fn BRepGProp_Vinert_ctor_face_domain_pnt2(
         S: *mut BRepGProp_Face,
         D: *mut BRepGProp_Domain,
         O: *const gp_Pnt,
         VLocation: *const gp_Pnt,
     ) -> crate::OcctResult<*mut BRepGProp_Vinert>;
-    /// **Source:** `BRepGProp_Vinert.hxx`:152 - `BRepGProp_Vinert::BRepGProp_Vinert()`
+    /// **Source:** `BRepGProp_Vinert.hxx`:150 - `BRepGProp_Vinert::BRepGProp_Vinert()`
     pub fn BRepGProp_Vinert_ctor_face_domain_pnt2_real(
         S: *mut BRepGProp_Face,
         D: *mut BRepGProp_Domain,
@@ -8569,14 +8481,14 @@ unsafe extern "C" {
         VLocation: *const gp_Pnt,
         Eps: f64,
     ) -> crate::OcctResult<*mut BRepGProp_Vinert>;
-    /// **Source:** `BRepGProp_Vinert.hxx`:165 - `BRepGProp_Vinert::BRepGProp_Vinert()`
+    /// **Source:** `BRepGProp_Vinert.hxx`:163 - `BRepGProp_Vinert::BRepGProp_Vinert()`
     pub fn BRepGProp_Vinert_ctor_face_domain_pln_pnt(
         S: *mut BRepGProp_Face,
         D: *mut BRepGProp_Domain,
         Pl: *const gp_Pln,
         VLocation: *const gp_Pnt,
     ) -> crate::OcctResult<*mut BRepGProp_Vinert>;
-    /// **Source:** `BRepGProp_Vinert.hxx`:177 - `BRepGProp_Vinert::BRepGProp_Vinert()`
+    /// **Source:** `BRepGProp_Vinert.hxx`:175 - `BRepGProp_Vinert::BRepGProp_Vinert()`
     pub fn BRepGProp_Vinert_ctor_face_domain_pln_pnt_real(
         S: *mut BRepGProp_Face,
         D: *mut BRepGProp_Domain,
@@ -8584,69 +8496,69 @@ unsafe extern "C" {
         VLocation: *const gp_Pnt,
         Eps: f64,
     ) -> crate::OcctResult<*mut BRepGProp_Vinert>;
-    /// **Source:** `BRepGProp_Vinert.hxx`:183 - `BRepGProp_Vinert::SetLocation()`
+    /// **Source:** `BRepGProp_Vinert.hxx`:181 - `BRepGProp_Vinert::SetLocation()`
     pub fn BRepGProp_Vinert_set_location(
         self_: *mut BRepGProp_Vinert,
         VLocation: *const gp_Pnt,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepGProp_Vinert.hxx`:185 - `BRepGProp_Vinert::Perform()`
+    /// **Source:** `BRepGProp_Vinert.hxx`:183 - `BRepGProp_Vinert::Perform()`
     pub fn BRepGProp_Vinert_perform_face(
         self_: *mut BRepGProp_Vinert,
         S: *const BRepGProp_Face,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepGProp_Vinert.hxx`:187 - `BRepGProp_Vinert::Perform()`
+    /// **Source:** `BRepGProp_Vinert.hxx`:185 - `BRepGProp_Vinert::Perform()`
     pub fn BRepGProp_Vinert_perform_face_real(
         self_: *mut BRepGProp_Vinert,
         S: *mut BRepGProp_Face,
         Eps: f64,
     ) -> crate::OcctResult<f64>;
-    /// **Source:** `BRepGProp_Vinert.hxx`:189 - `BRepGProp_Vinert::Perform()`
+    /// **Source:** `BRepGProp_Vinert.hxx`:187 - `BRepGProp_Vinert::Perform()`
     pub fn BRepGProp_Vinert_perform_face_pnt(
         self_: *mut BRepGProp_Vinert,
         S: *const BRepGProp_Face,
         O: *const gp_Pnt,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepGProp_Vinert.hxx`:191 - `BRepGProp_Vinert::Perform()`
+    /// **Source:** `BRepGProp_Vinert.hxx`:189 - `BRepGProp_Vinert::Perform()`
     pub fn BRepGProp_Vinert_perform_face_pnt_real(
         self_: *mut BRepGProp_Vinert,
         S: *mut BRepGProp_Face,
         O: *const gp_Pnt,
         Eps: f64,
     ) -> crate::OcctResult<f64>;
-    /// **Source:** `BRepGProp_Vinert.hxx`:195 - `BRepGProp_Vinert::Perform()`
+    /// **Source:** `BRepGProp_Vinert.hxx`:191 - `BRepGProp_Vinert::Perform()`
     pub fn BRepGProp_Vinert_perform_face_pln(
         self_: *mut BRepGProp_Vinert,
         S: *const BRepGProp_Face,
         Pl: *const gp_Pln,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepGProp_Vinert.hxx`:197 - `BRepGProp_Vinert::Perform()`
+    /// **Source:** `BRepGProp_Vinert.hxx`:193 - `BRepGProp_Vinert::Perform()`
     pub fn BRepGProp_Vinert_perform_face_pln_real(
         self_: *mut BRepGProp_Vinert,
         S: *mut BRepGProp_Face,
         Pl: *const gp_Pln,
         Eps: f64,
     ) -> crate::OcctResult<f64>;
-    /// **Source:** `BRepGProp_Vinert.hxx`:201 - `BRepGProp_Vinert::Perform()`
+    /// **Source:** `BRepGProp_Vinert.hxx`:195 - `BRepGProp_Vinert::Perform()`
     pub fn BRepGProp_Vinert_perform_face_domain(
         self_: *mut BRepGProp_Vinert,
         S: *mut BRepGProp_Face,
         D: *mut BRepGProp_Domain,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepGProp_Vinert.hxx`:203 - `BRepGProp_Vinert::Perform()`
+    /// **Source:** `BRepGProp_Vinert.hxx`:197 - `BRepGProp_Vinert::Perform()`
     pub fn BRepGProp_Vinert_perform_face_domain_real(
         self_: *mut BRepGProp_Vinert,
         S: *mut BRepGProp_Face,
         D: *mut BRepGProp_Domain,
         Eps: f64,
     ) -> crate::OcctResult<f64>;
-    /// **Source:** `BRepGProp_Vinert.hxx`:207 - `BRepGProp_Vinert::Perform()`
+    /// **Source:** `BRepGProp_Vinert.hxx`:199 - `BRepGProp_Vinert::Perform()`
     pub fn BRepGProp_Vinert_perform_face_domain_pnt(
         self_: *mut BRepGProp_Vinert,
         S: *mut BRepGProp_Face,
         D: *mut BRepGProp_Domain,
         O: *const gp_Pnt,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepGProp_Vinert.hxx`:209 - `BRepGProp_Vinert::Perform()`
+    /// **Source:** `BRepGProp_Vinert.hxx`:201 - `BRepGProp_Vinert::Perform()`
     pub fn BRepGProp_Vinert_perform_face_domain_pnt_real(
         self_: *mut BRepGProp_Vinert,
         S: *mut BRepGProp_Face,
@@ -8654,14 +8566,14 @@ unsafe extern "C" {
         O: *const gp_Pnt,
         Eps: f64,
     ) -> crate::OcctResult<f64>;
-    /// **Source:** `BRepGProp_Vinert.hxx`:214 - `BRepGProp_Vinert::Perform()`
+    /// **Source:** `BRepGProp_Vinert.hxx`:206 - `BRepGProp_Vinert::Perform()`
     pub fn BRepGProp_Vinert_perform_face_domain_pln(
         self_: *mut BRepGProp_Vinert,
         S: *mut BRepGProp_Face,
         D: *mut BRepGProp_Domain,
         Pl: *const gp_Pln,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepGProp_Vinert.hxx`:216 - `BRepGProp_Vinert::Perform()`
+    /// **Source:** `BRepGProp_Vinert.hxx`:208 - `BRepGProp_Vinert::Perform()`
     pub fn BRepGProp_Vinert_perform_face_domain_pln_real(
         self_: *mut BRepGProp_Vinert,
         S: *mut BRepGProp_Face,
@@ -8669,7 +8581,7 @@ unsafe extern "C" {
         Pl: *const gp_Pln,
         Eps: f64,
     ) -> crate::OcctResult<f64>;
-    /// **Source:** `BRepGProp_Vinert.hxx`:223 - `BRepGProp_Vinert::GetEpsilon()`
+    /// **Source:** `BRepGProp_Vinert.hxx`:215 - `BRepGProp_Vinert::GetEpsilon()`
     pub fn BRepGProp_Vinert_get_epsilon(self_: *mut BRepGProp_Vinert) -> crate::OcctResult<f64>;
     /// Upcast BRepGProp_Vinert to GProp_GProps
     pub fn BRepGProp_Vinert_as_GProp_GProps(
@@ -8679,41 +8591,41 @@ unsafe extern "C" {
     pub fn BRepGProp_Vinert_as_GProp_GProps_mut(
         self_: *mut BRepGProp_Vinert,
     ) -> crate::OcctResult<*mut GProp_GProps>;
-    /// Inherited: **Source:** `GProp_GProps.hxx`:164 - `GProp_GProps::Add()`
+    /// Inherited: **Source:** `GProp_GProps.hxx`:157 - `GProp_GProps::Add()`
     pub fn BRepGProp_Vinert_inherited_Add(
         self_: *mut BRepGProp_Vinert,
         Item: *const GProp_GProps,
         Density: f64,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `GProp_GProps.hxx`:190 - `GProp_GProps::Mass()`
+    /// Inherited: **Source:** `GProp_GProps.hxx`:180 - `GProp_GProps::Mass()`
     pub fn BRepGProp_Vinert_inherited_Mass(
         self_: *const BRepGProp_Vinert,
     ) -> crate::OcctResult<f64>;
-    /// Inherited: **Source:** `GProp_GProps.hxx`:196 - `GProp_GProps::CentreOfMass()`
+    /// Inherited: **Source:** `GProp_GProps.hxx`:186 - `GProp_GProps::CentreOfMass()`
     pub fn BRepGProp_Vinert_inherited_CentreOfMass(
         self_: *const BRepGProp_Vinert,
     ) -> crate::OcctResult<*mut gp_Pnt>;
-    /// Inherited: **Source:** `GProp_GProps.hxx`:215 - `GProp_GProps::MatrixOfInertia()`
+    /// Inherited: **Source:** `GProp_GProps.hxx`:204 - `GProp_GProps::MatrixOfInertia()`
     pub fn BRepGProp_Vinert_inherited_MatrixOfInertia(
         self_: *const BRepGProp_Vinert,
     ) -> crate::OcctResult<*mut gp_Mat>;
-    /// Inherited: **Source:** `GProp_GProps.hxx`:220 - `GProp_GProps::StaticMoments()`
+    /// Inherited: **Source:** `GProp_GProps.hxx`:213 - `GProp_GProps::StaticMoments()`
     pub fn BRepGProp_Vinert_inherited_StaticMoments(
         self_: *const BRepGProp_Vinert,
         Ix: *mut f64,
         Iy: *mut f64,
         Iz: *mut f64,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `GProp_GProps.hxx`:224 - `GProp_GProps::MomentOfInertia()`
+    /// Inherited: **Source:** `GProp_GProps.hxx`:217 - `GProp_GProps::MomentOfInertia()`
     pub fn BRepGProp_Vinert_inherited_MomentOfInertia(
         self_: *const BRepGProp_Vinert,
         A: *const gp_Ax1,
     ) -> crate::OcctResult<f64>;
-    /// Inherited: **Source:** `GProp_GProps.hxx`:239 - `GProp_GProps::PrincipalProperties()`
+    /// Inherited: **Source:** `GProp_GProps.hxx`:231 - `GProp_GProps::PrincipalProperties()`
     pub fn BRepGProp_Vinert_inherited_PrincipalProperties(
         self_: *const BRepGProp_Vinert,
     ) -> crate::OcctResult<*mut GProp_PrincipalProps>;
-    /// Inherited: **Source:** `GProp_GProps.hxx`:242 - `GProp_GProps::RadiusOfGyration()`
+    /// Inherited: **Source:** `GProp_GProps.hxx`:236 - `GProp_GProps::RadiusOfGyration()`
     pub fn BRepGProp_Vinert_inherited_RadiusOfGyration(
         self_: *const BRepGProp_Vinert,
         A: *const gp_Ax1,
@@ -8853,111 +8765,111 @@ unsafe extern "C" {
     pub fn BRepGProp_VinertGK_as_GProp_GProps_mut(
         self_: *mut BRepGProp_VinertGK,
     ) -> crate::OcctResult<*mut GProp_GProps>;
-    /// Inherited: **Source:** `GProp_GProps.hxx`:164 - `GProp_GProps::Add()`
+    /// Inherited: **Source:** `GProp_GProps.hxx`:157 - `GProp_GProps::Add()`
     pub fn BRepGProp_VinertGK_inherited_Add(
         self_: *mut BRepGProp_VinertGK,
         Item: *const GProp_GProps,
         Density: f64,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `GProp_GProps.hxx`:190 - `GProp_GProps::Mass()`
+    /// Inherited: **Source:** `GProp_GProps.hxx`:180 - `GProp_GProps::Mass()`
     pub fn BRepGProp_VinertGK_inherited_Mass(
         self_: *const BRepGProp_VinertGK,
     ) -> crate::OcctResult<f64>;
-    /// Inherited: **Source:** `GProp_GProps.hxx`:196 - `GProp_GProps::CentreOfMass()`
+    /// Inherited: **Source:** `GProp_GProps.hxx`:186 - `GProp_GProps::CentreOfMass()`
     pub fn BRepGProp_VinertGK_inherited_CentreOfMass(
         self_: *const BRepGProp_VinertGK,
     ) -> crate::OcctResult<*mut gp_Pnt>;
-    /// Inherited: **Source:** `GProp_GProps.hxx`:215 - `GProp_GProps::MatrixOfInertia()`
+    /// Inherited: **Source:** `GProp_GProps.hxx`:204 - `GProp_GProps::MatrixOfInertia()`
     pub fn BRepGProp_VinertGK_inherited_MatrixOfInertia(
         self_: *const BRepGProp_VinertGK,
     ) -> crate::OcctResult<*mut gp_Mat>;
-    /// Inherited: **Source:** `GProp_GProps.hxx`:220 - `GProp_GProps::StaticMoments()`
+    /// Inherited: **Source:** `GProp_GProps.hxx`:213 - `GProp_GProps::StaticMoments()`
     pub fn BRepGProp_VinertGK_inherited_StaticMoments(
         self_: *const BRepGProp_VinertGK,
         Ix: *mut f64,
         Iy: *mut f64,
         Iz: *mut f64,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `GProp_GProps.hxx`:224 - `GProp_GProps::MomentOfInertia()`
+    /// Inherited: **Source:** `GProp_GProps.hxx`:217 - `GProp_GProps::MomentOfInertia()`
     pub fn BRepGProp_VinertGK_inherited_MomentOfInertia(
         self_: *const BRepGProp_VinertGK,
         A: *const gp_Ax1,
     ) -> crate::OcctResult<f64>;
-    /// Inherited: **Source:** `GProp_GProps.hxx`:239 - `GProp_GProps::PrincipalProperties()`
+    /// Inherited: **Source:** `GProp_GProps.hxx`:231 - `GProp_GProps::PrincipalProperties()`
     pub fn BRepGProp_VinertGK_inherited_PrincipalProperties(
         self_: *const BRepGProp_VinertGK,
     ) -> crate::OcctResult<*mut GProp_PrincipalProps>;
-    /// Inherited: **Source:** `GProp_GProps.hxx`:242 - `GProp_GProps::RadiusOfGyration()`
+    /// Inherited: **Source:** `GProp_GProps.hxx`:236 - `GProp_GProps::RadiusOfGyration()`
     pub fn BRepGProp_VinertGK_inherited_RadiusOfGyration(
         self_: *const BRepGProp_VinertGK,
         A: *const gp_Ax1,
     ) -> crate::OcctResult<f64>;
     // ======================== BRepIntCurveSurface_Inter ========================
     pub fn BRepIntCurveSurface_Inter_destructor(self_: *mut BRepIntCurveSurface_Inter);
-    /// **Source:** `BRepIntCurveSurface_Inter.hxx`:60 - `BRepIntCurveSurface_Inter::BRepIntCurveSurface_Inter()`
+    /// **Source:** `BRepIntCurveSurface_Inter.hxx`:63 - `BRepIntCurveSurface_Inter::BRepIntCurveSurface_Inter()`
     pub fn BRepIntCurveSurface_Inter_ctor() -> crate::OcctResult<*mut BRepIntCurveSurface_Inter>;
-    /// **Source:** `BRepIntCurveSurface_Inter.hxx`:64 - `BRepIntCurveSurface_Inter::Init()`
+    /// **Source:** `BRepIntCurveSurface_Inter.hxx`:67 - `BRepIntCurveSurface_Inter::Init()`
     pub fn BRepIntCurveSurface_Inter_init_shape_curve_real(
         self_: *mut BRepIntCurveSurface_Inter,
         theShape: *const TopoDS_Shape,
         theCurve: *const GeomAdaptor_Curve,
         theTol: f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepIntCurveSurface_Inter.hxx`:70 - `BRepIntCurveSurface_Inter::Init()`
+    /// **Source:** `BRepIntCurveSurface_Inter.hxx`:73 - `BRepIntCurveSurface_Inter::Init()`
     pub fn BRepIntCurveSurface_Inter_init_shape_lin_real(
         self_: *mut BRepIntCurveSurface_Inter,
         theShape: *const TopoDS_Shape,
         theLine: *const gp_Lin,
         theTol: f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepIntCurveSurface_Inter.hxx`:76 - `BRepIntCurveSurface_Inter::Load()`
+    /// **Source:** `BRepIntCurveSurface_Inter.hxx`:79 - `BRepIntCurveSurface_Inter::Load()`
     pub fn BRepIntCurveSurface_Inter_load(
         self_: *mut BRepIntCurveSurface_Inter,
         theShape: *const TopoDS_Shape,
         theTol: f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepIntCurveSurface_Inter.hxx`:79 - `BRepIntCurveSurface_Inter::Init()`
+    /// **Source:** `BRepIntCurveSurface_Inter.hxx`:82 - `BRepIntCurveSurface_Inter::Init()`
     pub fn BRepIntCurveSurface_Inter_init_curve(
         self_: *mut BRepIntCurveSurface_Inter,
         theCurve: *const GeomAdaptor_Curve,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepIntCurveSurface_Inter.hxx`:82 - `BRepIntCurveSurface_Inter::More()`
+    /// **Source:** `BRepIntCurveSurface_Inter.hxx`:85 - `BRepIntCurveSurface_Inter::More()`
     pub fn BRepIntCurveSurface_Inter_more(
         self_: *const BRepIntCurveSurface_Inter,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BRepIntCurveSurface_Inter.hxx`:85 - `BRepIntCurveSurface_Inter::Next()`
+    /// **Source:** `BRepIntCurveSurface_Inter.hxx`:88 - `BRepIntCurveSurface_Inter::Next()`
     pub fn BRepIntCurveSurface_Inter_next(
         self_: *mut BRepIntCurveSurface_Inter,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepIntCurveSurface_Inter.hxx`:88 - `BRepIntCurveSurface_Inter::Point()`
+    /// **Source:** `BRepIntCurveSurface_Inter.hxx`:91 - `BRepIntCurveSurface_Inter::Point()`
     pub fn BRepIntCurveSurface_Inter_point(
         self_: *const BRepIntCurveSurface_Inter,
     ) -> crate::OcctResult<*mut IntCurveSurface_IntersectionPoint>;
-    /// **Source:** `BRepIntCurveSurface_Inter.hxx`:91 - `BRepIntCurveSurface_Inter::Pnt()`
+    /// **Source:** `BRepIntCurveSurface_Inter.hxx`:94 - `BRepIntCurveSurface_Inter::Pnt()`
     pub fn BRepIntCurveSurface_Inter_pnt(
         self_: *const BRepIntCurveSurface_Inter,
     ) -> crate::OcctResult<*const gp_Pnt>;
-    /// **Source:** `BRepIntCurveSurface_Inter.hxx`:95 - `BRepIntCurveSurface_Inter::U()`
+    /// **Source:** `BRepIntCurveSurface_Inter.hxx`:98 - `BRepIntCurveSurface_Inter::U()`
     pub fn BRepIntCurveSurface_Inter_u(
         self_: *const BRepIntCurveSurface_Inter,
     ) -> crate::OcctResult<f64>;
-    /// **Source:** `BRepIntCurveSurface_Inter.hxx`:99 - `BRepIntCurveSurface_Inter::V()`
+    /// **Source:** `BRepIntCurveSurface_Inter.hxx`:102 - `BRepIntCurveSurface_Inter::V()`
     pub fn BRepIntCurveSurface_Inter_v(
         self_: *const BRepIntCurveSurface_Inter,
     ) -> crate::OcctResult<f64>;
-    /// **Source:** `BRepIntCurveSurface_Inter.hxx`:103 - `BRepIntCurveSurface_Inter::W()`
+    /// **Source:** `BRepIntCurveSurface_Inter.hxx`:106 - `BRepIntCurveSurface_Inter::W()`
     pub fn BRepIntCurveSurface_Inter_w(
         self_: *const BRepIntCurveSurface_Inter,
     ) -> crate::OcctResult<f64>;
-    /// **Source:** `BRepIntCurveSurface_Inter.hxx`:106 - `BRepIntCurveSurface_Inter::State()`
+    /// **Source:** `BRepIntCurveSurface_Inter.hxx`:109 - `BRepIntCurveSurface_Inter::State()`
     pub fn BRepIntCurveSurface_Inter_state(
         self_: *const BRepIntCurveSurface_Inter,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `BRepIntCurveSurface_Inter.hxx`:109 - `BRepIntCurveSurface_Inter::Transition()`
+    /// **Source:** `BRepIntCurveSurface_Inter.hxx`:112 - `BRepIntCurveSurface_Inter::Transition()`
     pub fn BRepIntCurveSurface_Inter_transition(
         self_: *const BRepIntCurveSurface_Inter,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `BRepIntCurveSurface_Inter.hxx`:112 - `BRepIntCurveSurface_Inter::Face()`
+    /// **Source:** `BRepIntCurveSurface_Inter.hxx`:115 - `BRepIntCurveSurface_Inter::Face()`
     pub fn BRepIntCurveSurface_Inter_face(
         self_: *const BRepIntCurveSurface_Inter,
     ) -> crate::OcctResult<*const TopoDS_Face>;
@@ -9035,7 +8947,7 @@ unsafe extern "C" {
     /// **Source:** `BRepLib_FindSurface.hxx`:83 - `BRepLib_FindSurface::Surface()`
     pub fn BRepLib_FindSurface_surface(
         self_: *const BRepLib_FindSurface,
-    ) -> crate::OcctResult<*mut HandleGeomSurface>;
+    ) -> crate::OcctResult<*mut Handle_Geom_Surface>;
     /// **Source:** `BRepLib_FindSurface.hxx`:85 - `BRepLib_FindSurface::Tolerance()`
     pub fn BRepLib_FindSurface_tolerance(
         self_: *const BRepLib_FindSurface,
@@ -9054,43 +8966,43 @@ unsafe extern "C" {
     ) -> crate::OcctResult<*mut TopLoc_Location>;
     // ======================== BRepLib_FuseEdges ========================
     pub fn BRepLib_FuseEdges_destructor(self_: *mut BRepLib_FuseEdges);
-    /// **Source:** `BRepLib_FuseEdges.hxx`:50 - `BRepLib_FuseEdges::BRepLib_FuseEdges()`
+    /// **Source:** `BRepLib_FuseEdges.hxx`:49 - `BRepLib_FuseEdges::BRepLib_FuseEdges()`
     pub fn BRepLib_FuseEdges_ctor_shape_bool(
         theShape: *const TopoDS_Shape,
         PerformNow: bool,
     ) -> crate::OcctResult<*mut BRepLib_FuseEdges>;
-    /// **Source:** `BRepLib_FuseEdges.hxx`:54 - `BRepLib_FuseEdges::AvoidEdges()`
+    /// **Source:** `BRepLib_FuseEdges.hxx`:52 - `BRepLib_FuseEdges::AvoidEdges()`
     pub fn BRepLib_FuseEdges_avoid_edges(
         self_: *mut BRepLib_FuseEdges,
-        theMapEdg: *const TopTools_IndexedMapOfShape,
+        theMapEdg: *const NCollection_IndexedMap_TopoDS_Shape_TopTools_ShapeMapHasher,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepLib_FuseEdges.hxx`:58 - `BRepLib_FuseEdges::SetConcatBSpl()`
+    /// **Source:** `BRepLib_FuseEdges.hxx`:57 - `BRepLib_FuseEdges::SetConcatBSpl()`
     pub fn BRepLib_FuseEdges_set_concat_b_spl(
         self_: *mut BRepLib_FuseEdges,
         theConcatBSpl: bool,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepLib_FuseEdges.hxx`:63 - `BRepLib_FuseEdges::Edges()`
+    /// **Source:** `BRepLib_FuseEdges.hxx`:62 - `BRepLib_FuseEdges::Edges()`
     pub fn BRepLib_FuseEdges_edges(
         self_: *mut BRepLib_FuseEdges,
-        theMapLstEdg: *mut TopTools_DataMapOfIntegerListOfShape,
+        theMapLstEdg: *mut NCollection_DataMap_int_NCollection_List_TopoDS_Shape,
     ) -> *const std::ffi::c_char;
     /// **Source:** `BRepLib_FuseEdges.hxx`:70 - `BRepLib_FuseEdges::ResultEdges()`
     pub fn BRepLib_FuseEdges_result_edges(
         self_: *mut BRepLib_FuseEdges,
-        theMapEdg: *mut TopTools_DataMapOfIntegerShape,
+        theMapEdg: *mut NCollection_DataMap_int_TopoDS_Shape,
     ) -> *const std::ffi::c_char;
     /// **Source:** `BRepLib_FuseEdges.hxx`:73 - `BRepLib_FuseEdges::Faces()`
     pub fn BRepLib_FuseEdges_faces(
         self_: *mut BRepLib_FuseEdges,
-        theMapFac: *mut TopTools_DataMapOfShapeShape,
+        theMapFac: *mut NCollection_DataMap_TopoDS_Shape_TopoDS_Shape_TopTools_ShapeMapHasher,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepLib_FuseEdges.hxx`:77 - `BRepLib_FuseEdges::Shape()`
+    /// **Source:** `BRepLib_FuseEdges.hxx`:78 - `BRepLib_FuseEdges::Shape()`
     pub fn BRepLib_FuseEdges_shape(
         self_: *mut BRepLib_FuseEdges,
     ) -> crate::OcctResult<*mut TopoDS_Shape>;
-    /// **Source:** `BRepLib_FuseEdges.hxx`:80 - `BRepLib_FuseEdges::NbVertices()`
+    /// **Source:** `BRepLib_FuseEdges.hxx`:81 - `BRepLib_FuseEdges::NbVertices()`
     pub fn BRepLib_FuseEdges_nb_vertices(self_: *mut BRepLib_FuseEdges) -> crate::OcctResult<i32>;
-    /// **Source:** `BRepLib_FuseEdges.hxx`:84 - `BRepLib_FuseEdges::Perform()`
+    /// **Source:** `BRepLib_FuseEdges.hxx`:85 - `BRepLib_FuseEdges::Perform()`
     pub fn BRepLib_FuseEdges_perform(self_: *mut BRepLib_FuseEdges) -> *const std::ffi::c_char;
     // ======================== BRepLib_MakeEdge ========================
     pub fn BRepLib_MakeEdge_destructor(self_: *mut BRepLib_MakeEdge);
@@ -9136,271 +9048,271 @@ unsafe extern "C" {
         p1: f64,
         p2: f64,
     ) -> crate::OcctResult<*mut BRepLib_MakeEdge>;
-    /// **Source:** `BRepLib_MakeEdge.hxx`:96 - `BRepLib_MakeEdge::BRepLib_MakeEdge()`
+    /// **Source:** `BRepLib_MakeEdge.hxx`:94 - `BRepLib_MakeEdge::BRepLib_MakeEdge()`
     pub fn BRepLib_MakeEdge_ctor_circ_pnt2(
         L: *const gp_Circ,
         P1: *const gp_Pnt,
         P2: *const gp_Pnt,
     ) -> crate::OcctResult<*mut BRepLib_MakeEdge>;
-    /// **Source:** `BRepLib_MakeEdge.hxx`:98 - `BRepLib_MakeEdge::BRepLib_MakeEdge()`
+    /// **Source:** `BRepLib_MakeEdge.hxx`:96 - `BRepLib_MakeEdge::BRepLib_MakeEdge()`
     pub fn BRepLib_MakeEdge_ctor_circ_vertex2(
         L: *const gp_Circ,
         V1: *const TopoDS_Vertex,
         V2: *const TopoDS_Vertex,
     ) -> crate::OcctResult<*mut BRepLib_MakeEdge>;
-    /// **Source:** `BRepLib_MakeEdge.hxx`:102 - `BRepLib_MakeEdge::BRepLib_MakeEdge()`
+    /// **Source:** `BRepLib_MakeEdge.hxx`:100 - `BRepLib_MakeEdge::BRepLib_MakeEdge()`
     pub fn BRepLib_MakeEdge_ctor_elips(
         L: *const gp_Elips,
     ) -> crate::OcctResult<*mut BRepLib_MakeEdge>;
-    /// **Source:** `BRepLib_MakeEdge.hxx`:104 - `BRepLib_MakeEdge::BRepLib_MakeEdge()`
+    /// **Source:** `BRepLib_MakeEdge.hxx`:102 - `BRepLib_MakeEdge::BRepLib_MakeEdge()`
     pub fn BRepLib_MakeEdge_ctor_elips_real2(
         L: *const gp_Elips,
         p1: f64,
         p2: f64,
     ) -> crate::OcctResult<*mut BRepLib_MakeEdge>;
-    /// **Source:** `BRepLib_MakeEdge.hxx`:108 - `BRepLib_MakeEdge::BRepLib_MakeEdge()`
+    /// **Source:** `BRepLib_MakeEdge.hxx`:104 - `BRepLib_MakeEdge::BRepLib_MakeEdge()`
     pub fn BRepLib_MakeEdge_ctor_elips_pnt2(
         L: *const gp_Elips,
         P1: *const gp_Pnt,
         P2: *const gp_Pnt,
     ) -> crate::OcctResult<*mut BRepLib_MakeEdge>;
-    /// **Source:** `BRepLib_MakeEdge.hxx`:110 - `BRepLib_MakeEdge::BRepLib_MakeEdge()`
+    /// **Source:** `BRepLib_MakeEdge.hxx`:106 - `BRepLib_MakeEdge::BRepLib_MakeEdge()`
     pub fn BRepLib_MakeEdge_ctor_elips_vertex2(
         L: *const gp_Elips,
         V1: *const TopoDS_Vertex,
         V2: *const TopoDS_Vertex,
     ) -> crate::OcctResult<*mut BRepLib_MakeEdge>;
-    /// **Source:** `BRepLib_MakeEdge.hxx`:114 - `BRepLib_MakeEdge::BRepLib_MakeEdge()`
+    /// **Source:** `BRepLib_MakeEdge.hxx`:110 - `BRepLib_MakeEdge::BRepLib_MakeEdge()`
     pub fn BRepLib_MakeEdge_ctor_hypr(
         L: *const gp_Hypr,
     ) -> crate::OcctResult<*mut BRepLib_MakeEdge>;
-    /// **Source:** `BRepLib_MakeEdge.hxx`:116 - `BRepLib_MakeEdge::BRepLib_MakeEdge()`
+    /// **Source:** `BRepLib_MakeEdge.hxx`:112 - `BRepLib_MakeEdge::BRepLib_MakeEdge()`
     pub fn BRepLib_MakeEdge_ctor_hypr_real2(
         L: *const gp_Hypr,
         p1: f64,
         p2: f64,
     ) -> crate::OcctResult<*mut BRepLib_MakeEdge>;
-    /// **Source:** `BRepLib_MakeEdge.hxx`:120 - `BRepLib_MakeEdge::BRepLib_MakeEdge()`
+    /// **Source:** `BRepLib_MakeEdge.hxx`:114 - `BRepLib_MakeEdge::BRepLib_MakeEdge()`
     pub fn BRepLib_MakeEdge_ctor_hypr_pnt2(
         L: *const gp_Hypr,
         P1: *const gp_Pnt,
         P2: *const gp_Pnt,
     ) -> crate::OcctResult<*mut BRepLib_MakeEdge>;
-    /// **Source:** `BRepLib_MakeEdge.hxx`:122 - `BRepLib_MakeEdge::BRepLib_MakeEdge()`
+    /// **Source:** `BRepLib_MakeEdge.hxx`:116 - `BRepLib_MakeEdge::BRepLib_MakeEdge()`
     pub fn BRepLib_MakeEdge_ctor_hypr_vertex2(
         L: *const gp_Hypr,
         V1: *const TopoDS_Vertex,
         V2: *const TopoDS_Vertex,
     ) -> crate::OcctResult<*mut BRepLib_MakeEdge>;
-    /// **Source:** `BRepLib_MakeEdge.hxx`:126 - `BRepLib_MakeEdge::BRepLib_MakeEdge()`
+    /// **Source:** `BRepLib_MakeEdge.hxx`:120 - `BRepLib_MakeEdge::BRepLib_MakeEdge()`
     pub fn BRepLib_MakeEdge_ctor_parab(
         L: *const gp_Parab,
     ) -> crate::OcctResult<*mut BRepLib_MakeEdge>;
-    /// **Source:** `BRepLib_MakeEdge.hxx`:128 - `BRepLib_MakeEdge::BRepLib_MakeEdge()`
+    /// **Source:** `BRepLib_MakeEdge.hxx`:122 - `BRepLib_MakeEdge::BRepLib_MakeEdge()`
     pub fn BRepLib_MakeEdge_ctor_parab_real2(
         L: *const gp_Parab,
         p1: f64,
         p2: f64,
     ) -> crate::OcctResult<*mut BRepLib_MakeEdge>;
-    /// **Source:** `BRepLib_MakeEdge.hxx`:132 - `BRepLib_MakeEdge::BRepLib_MakeEdge()`
+    /// **Source:** `BRepLib_MakeEdge.hxx`:124 - `BRepLib_MakeEdge::BRepLib_MakeEdge()`
     pub fn BRepLib_MakeEdge_ctor_parab_pnt2(
         L: *const gp_Parab,
         P1: *const gp_Pnt,
         P2: *const gp_Pnt,
     ) -> crate::OcctResult<*mut BRepLib_MakeEdge>;
-    /// **Source:** `BRepLib_MakeEdge.hxx`:134 - `BRepLib_MakeEdge::BRepLib_MakeEdge()`
+    /// **Source:** `BRepLib_MakeEdge.hxx`:126 - `BRepLib_MakeEdge::BRepLib_MakeEdge()`
     pub fn BRepLib_MakeEdge_ctor_parab_vertex2(
         L: *const gp_Parab,
         V1: *const TopoDS_Vertex,
         V2: *const TopoDS_Vertex,
     ) -> crate::OcctResult<*mut BRepLib_MakeEdge>;
-    /// **Source:** `BRepLib_MakeEdge.hxx`:138 - `BRepLib_MakeEdge::BRepLib_MakeEdge()`
+    /// **Source:** `BRepLib_MakeEdge.hxx`:130 - `BRepLib_MakeEdge::BRepLib_MakeEdge()`
     pub fn BRepLib_MakeEdge_ctor_handlegeomcurve(
-        L: *const HandleGeomCurve,
+        L: *const Handle_Geom_Curve,
     ) -> crate::OcctResult<*mut BRepLib_MakeEdge>;
-    /// **Source:** `BRepLib_MakeEdge.hxx`:140 - `BRepLib_MakeEdge::BRepLib_MakeEdge()`
+    /// **Source:** `BRepLib_MakeEdge.hxx`:132 - `BRepLib_MakeEdge::BRepLib_MakeEdge()`
     pub fn BRepLib_MakeEdge_ctor_handlegeomcurve_real2(
-        L: *const HandleGeomCurve,
+        L: *const Handle_Geom_Curve,
         p1: f64,
         p2: f64,
     ) -> crate::OcctResult<*mut BRepLib_MakeEdge>;
-    /// **Source:** `BRepLib_MakeEdge.hxx`:144 - `BRepLib_MakeEdge::BRepLib_MakeEdge()`
+    /// **Source:** `BRepLib_MakeEdge.hxx`:136 - `BRepLib_MakeEdge::BRepLib_MakeEdge()`
     pub fn BRepLib_MakeEdge_ctor_handlegeomcurve_pnt2(
-        L: *const HandleGeomCurve,
+        L: *const Handle_Geom_Curve,
         P1: *const gp_Pnt,
         P2: *const gp_Pnt,
     ) -> crate::OcctResult<*mut BRepLib_MakeEdge>;
-    /// **Source:** `BRepLib_MakeEdge.hxx`:146 - `BRepLib_MakeEdge::BRepLib_MakeEdge()`
+    /// **Source:** `BRepLib_MakeEdge.hxx`:140 - `BRepLib_MakeEdge::BRepLib_MakeEdge()`
     pub fn BRepLib_MakeEdge_ctor_handlegeomcurve_vertex2(
-        L: *const HandleGeomCurve,
+        L: *const Handle_Geom_Curve,
         V1: *const TopoDS_Vertex,
         V2: *const TopoDS_Vertex,
     ) -> crate::OcctResult<*mut BRepLib_MakeEdge>;
-    /// **Source:** `BRepLib_MakeEdge.hxx`:150 - `BRepLib_MakeEdge::BRepLib_MakeEdge()`
+    /// **Source:** `BRepLib_MakeEdge.hxx`:144 - `BRepLib_MakeEdge::BRepLib_MakeEdge()`
     pub fn BRepLib_MakeEdge_ctor_handlegeomcurve_pnt2_real2(
-        L: *const HandleGeomCurve,
+        L: *const Handle_Geom_Curve,
         P1: *const gp_Pnt,
         P2: *const gp_Pnt,
+        p1: f64,
+        p2: f64,
+    ) -> crate::OcctResult<*mut BRepLib_MakeEdge>;
+    /// **Source:** `BRepLib_MakeEdge.hxx`:150 - `BRepLib_MakeEdge::BRepLib_MakeEdge()`
+    pub fn BRepLib_MakeEdge_ctor_handlegeomcurve_vertex2_real2(
+        L: *const Handle_Geom_Curve,
+        V1: *const TopoDS_Vertex,
+        V2: *const TopoDS_Vertex,
         p1: f64,
         p2: f64,
     ) -> crate::OcctResult<*mut BRepLib_MakeEdge>;
     /// **Source:** `BRepLib_MakeEdge.hxx`:156 - `BRepLib_MakeEdge::BRepLib_MakeEdge()`
-    pub fn BRepLib_MakeEdge_ctor_handlegeomcurve_vertex2_real2(
-        L: *const HandleGeomCurve,
-        V1: *const TopoDS_Vertex,
-        V2: *const TopoDS_Vertex,
+    pub fn BRepLib_MakeEdge_ctor_handlegeom2dcurve_handlegeomsurface(
+        L: *const Handle_Geom2d_Curve,
+        S: *const Handle_Geom_Surface,
+    ) -> crate::OcctResult<*mut BRepLib_MakeEdge>;
+    /// **Source:** `BRepLib_MakeEdge.hxx`:159 - `BRepLib_MakeEdge::BRepLib_MakeEdge()`
+    pub fn BRepLib_MakeEdge_ctor_handlegeom2dcurve_handlegeomsurface_real2(
+        L: *const Handle_Geom2d_Curve,
+        S: *const Handle_Geom_Surface,
         p1: f64,
         p2: f64,
-    ) -> crate::OcctResult<*mut BRepLib_MakeEdge>;
-    /// **Source:** `BRepLib_MakeEdge.hxx`:162 - `BRepLib_MakeEdge::BRepLib_MakeEdge()`
-    pub fn BRepLib_MakeEdge_ctor_handlegeom2dcurve_handlegeomsurface(
-        L: *const HandleGeom2dCurve,
-        S: *const HandleGeomSurface,
     ) -> crate::OcctResult<*mut BRepLib_MakeEdge>;
     /// **Source:** `BRepLib_MakeEdge.hxx`:164 - `BRepLib_MakeEdge::BRepLib_MakeEdge()`
-    pub fn BRepLib_MakeEdge_ctor_handlegeom2dcurve_handlegeomsurface_real2(
-        L: *const HandleGeom2dCurve,
-        S: *const HandleGeomSurface,
-        p1: f64,
-        p2: f64,
+    pub fn BRepLib_MakeEdge_ctor_handlegeom2dcurve_handlegeomsurface_pnt2(
+        L: *const Handle_Geom2d_Curve,
+        S: *const Handle_Geom_Surface,
+        P1: *const gp_Pnt,
+        P2: *const gp_Pnt,
     ) -> crate::OcctResult<*mut BRepLib_MakeEdge>;
     /// **Source:** `BRepLib_MakeEdge.hxx`:169 - `BRepLib_MakeEdge::BRepLib_MakeEdge()`
-    pub fn BRepLib_MakeEdge_ctor_handlegeom2dcurve_handlegeomsurface_pnt2(
-        L: *const HandleGeom2dCurve,
-        S: *const HandleGeomSurface,
-        P1: *const gp_Pnt,
-        P2: *const gp_Pnt,
+    pub fn BRepLib_MakeEdge_ctor_handlegeom2dcurve_handlegeomsurface_vertex2(
+        L: *const Handle_Geom2d_Curve,
+        S: *const Handle_Geom_Surface,
+        V1: *const TopoDS_Vertex,
+        V2: *const TopoDS_Vertex,
     ) -> crate::OcctResult<*mut BRepLib_MakeEdge>;
     /// **Source:** `BRepLib_MakeEdge.hxx`:174 - `BRepLib_MakeEdge::BRepLib_MakeEdge()`
-    pub fn BRepLib_MakeEdge_ctor_handlegeom2dcurve_handlegeomsurface_vertex2(
-        L: *const HandleGeom2dCurve,
-        S: *const HandleGeomSurface,
-        V1: *const TopoDS_Vertex,
-        V2: *const TopoDS_Vertex,
-    ) -> crate::OcctResult<*mut BRepLib_MakeEdge>;
-    /// **Source:** `BRepLib_MakeEdge.hxx`:179 - `BRepLib_MakeEdge::BRepLib_MakeEdge()`
     pub fn BRepLib_MakeEdge_ctor_handlegeom2dcurve_handlegeomsurface_pnt2_real2(
-        L: *const HandleGeom2dCurve,
-        S: *const HandleGeomSurface,
+        L: *const Handle_Geom2d_Curve,
+        S: *const Handle_Geom_Surface,
         P1: *const gp_Pnt,
         P2: *const gp_Pnt,
         p1: f64,
         p2: f64,
     ) -> crate::OcctResult<*mut BRepLib_MakeEdge>;
-    /// **Source:** `BRepLib_MakeEdge.hxx`:186 - `BRepLib_MakeEdge::BRepLib_MakeEdge()`
+    /// **Source:** `BRepLib_MakeEdge.hxx`:181 - `BRepLib_MakeEdge::BRepLib_MakeEdge()`
     pub fn BRepLib_MakeEdge_ctor_handlegeom2dcurve_handlegeomsurface_vertex2_real2(
-        L: *const HandleGeom2dCurve,
-        S: *const HandleGeomSurface,
+        L: *const Handle_Geom2d_Curve,
+        S: *const Handle_Geom_Surface,
         V1: *const TopoDS_Vertex,
         V2: *const TopoDS_Vertex,
         p1: f64,
         p2: f64,
     ) -> crate::OcctResult<*mut BRepLib_MakeEdge>;
-    /// **Source:** `BRepLib_MakeEdge.hxx`:193 - `BRepLib_MakeEdge::Init()`
+    /// **Source:** `BRepLib_MakeEdge.hxx`:188 - `BRepLib_MakeEdge::Init()`
     pub fn BRepLib_MakeEdge_init_handlegeomcurve(
         self_: *mut BRepLib_MakeEdge,
-        C: *const HandleGeomCurve,
+        C: *const Handle_Geom_Curve,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepLib_MakeEdge.hxx`:195 - `BRepLib_MakeEdge::Init()`
+    /// **Source:** `BRepLib_MakeEdge.hxx`:190 - `BRepLib_MakeEdge::Init()`
     pub fn BRepLib_MakeEdge_init_handlegeomcurve_real2(
         self_: *mut BRepLib_MakeEdge,
-        C: *const HandleGeomCurve,
+        C: *const Handle_Geom_Curve,
         p1: f64,
         p2: f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepLib_MakeEdge.hxx`:199 - `BRepLib_MakeEdge::Init()`
+    /// **Source:** `BRepLib_MakeEdge.hxx`:192 - `BRepLib_MakeEdge::Init()`
     pub fn BRepLib_MakeEdge_init_handlegeomcurve_pnt2(
         self_: *mut BRepLib_MakeEdge,
-        C: *const HandleGeomCurve,
+        C: *const Handle_Geom_Curve,
         P1: *const gp_Pnt,
         P2: *const gp_Pnt,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepLib_MakeEdge.hxx`:201 - `BRepLib_MakeEdge::Init()`
+    /// **Source:** `BRepLib_MakeEdge.hxx`:194 - `BRepLib_MakeEdge::Init()`
     pub fn BRepLib_MakeEdge_init_handlegeomcurve_vertex2(
         self_: *mut BRepLib_MakeEdge,
-        C: *const HandleGeomCurve,
+        C: *const Handle_Geom_Curve,
         V1: *const TopoDS_Vertex,
         V2: *const TopoDS_Vertex,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepLib_MakeEdge.hxx`:205 - `BRepLib_MakeEdge::Init()`
+    /// **Source:** `BRepLib_MakeEdge.hxx`:198 - `BRepLib_MakeEdge::Init()`
     pub fn BRepLib_MakeEdge_init_handlegeomcurve_pnt2_real2(
         self_: *mut BRepLib_MakeEdge,
-        C: *const HandleGeomCurve,
+        C: *const Handle_Geom_Curve,
         P1: *const gp_Pnt,
         P2: *const gp_Pnt,
         p1: f64,
         p2: f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepLib_MakeEdge.hxx`:211 - `BRepLib_MakeEdge::Init()`
+    /// **Source:** `BRepLib_MakeEdge.hxx`:204 - `BRepLib_MakeEdge::Init()`
     pub fn BRepLib_MakeEdge_init_handlegeomcurve_vertex2_real2(
         self_: *mut BRepLib_MakeEdge,
-        C: *const HandleGeomCurve,
+        C: *const Handle_Geom_Curve,
         V1: *const TopoDS_Vertex,
         V2: *const TopoDS_Vertex,
+        p1: f64,
+        p2: f64,
+    ) -> *const std::ffi::c_char;
+    /// **Source:** `BRepLib_MakeEdge.hxx`:210 - `BRepLib_MakeEdge::Init()`
+    pub fn BRepLib_MakeEdge_init_handlegeom2dcurve_handlegeomsurface(
+        self_: *mut BRepLib_MakeEdge,
+        C: *const Handle_Geom2d_Curve,
+        S: *const Handle_Geom_Surface,
+    ) -> *const std::ffi::c_char;
+    /// **Source:** `BRepLib_MakeEdge.hxx`:212 - `BRepLib_MakeEdge::Init()`
+    pub fn BRepLib_MakeEdge_init_handlegeom2dcurve_handlegeomsurface_real2(
+        self_: *mut BRepLib_MakeEdge,
+        C: *const Handle_Geom2d_Curve,
+        S: *const Handle_Geom_Surface,
         p1: f64,
         p2: f64,
     ) -> *const std::ffi::c_char;
     /// **Source:** `BRepLib_MakeEdge.hxx`:217 - `BRepLib_MakeEdge::Init()`
-    pub fn BRepLib_MakeEdge_init_handlegeom2dcurve_handlegeomsurface(
-        self_: *mut BRepLib_MakeEdge,
-        C: *const HandleGeom2dCurve,
-        S: *const HandleGeomSurface,
-    ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepLib_MakeEdge.hxx`:219 - `BRepLib_MakeEdge::Init()`
-    pub fn BRepLib_MakeEdge_init_handlegeom2dcurve_handlegeomsurface_real2(
-        self_: *mut BRepLib_MakeEdge,
-        C: *const HandleGeom2dCurve,
-        S: *const HandleGeomSurface,
-        p1: f64,
-        p2: f64,
-    ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepLib_MakeEdge.hxx`:224 - `BRepLib_MakeEdge::Init()`
     pub fn BRepLib_MakeEdge_init_handlegeom2dcurve_handlegeomsurface_pnt2(
         self_: *mut BRepLib_MakeEdge,
-        C: *const HandleGeom2dCurve,
-        S: *const HandleGeomSurface,
+        C: *const Handle_Geom2d_Curve,
+        S: *const Handle_Geom_Surface,
         P1: *const gp_Pnt,
         P2: *const gp_Pnt,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepLib_MakeEdge.hxx`:229 - `BRepLib_MakeEdge::Init()`
+    /// **Source:** `BRepLib_MakeEdge.hxx`:222 - `BRepLib_MakeEdge::Init()`
     pub fn BRepLib_MakeEdge_init_handlegeom2dcurve_handlegeomsurface_vertex2(
         self_: *mut BRepLib_MakeEdge,
-        C: *const HandleGeom2dCurve,
-        S: *const HandleGeomSurface,
+        C: *const Handle_Geom2d_Curve,
+        S: *const Handle_Geom_Surface,
         V1: *const TopoDS_Vertex,
         V2: *const TopoDS_Vertex,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepLib_MakeEdge.hxx`:234 - `BRepLib_MakeEdge::Init()`
+    /// **Source:** `BRepLib_MakeEdge.hxx`:227 - `BRepLib_MakeEdge::Init()`
     pub fn BRepLib_MakeEdge_init_handlegeom2dcurve_handlegeomsurface_pnt2_real2(
         self_: *mut BRepLib_MakeEdge,
-        C: *const HandleGeom2dCurve,
-        S: *const HandleGeomSurface,
+        C: *const Handle_Geom2d_Curve,
+        S: *const Handle_Geom_Surface,
         P1: *const gp_Pnt,
         P2: *const gp_Pnt,
         p1: f64,
         p2: f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepLib_MakeEdge.hxx`:241 - `BRepLib_MakeEdge::Init()`
+    /// **Source:** `BRepLib_MakeEdge.hxx`:234 - `BRepLib_MakeEdge::Init()`
     pub fn BRepLib_MakeEdge_init_handlegeom2dcurve_handlegeomsurface_vertex2_real2(
         self_: *mut BRepLib_MakeEdge,
-        C: *const HandleGeom2dCurve,
-        S: *const HandleGeomSurface,
+        C: *const Handle_Geom2d_Curve,
+        S: *const Handle_Geom_Surface,
         V1: *const TopoDS_Vertex,
         V2: *const TopoDS_Vertex,
         p1: f64,
         p2: f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepLib_MakeEdge.hxx`:249 - `BRepLib_MakeEdge::Error()`
+    /// **Source:** `BRepLib_MakeEdge.hxx`:242 - `BRepLib_MakeEdge::Error()`
     pub fn BRepLib_MakeEdge_error(self_: *const BRepLib_MakeEdge) -> crate::OcctResult<i32>;
-    /// **Source:** `BRepLib_MakeEdge.hxx`:251 - `BRepLib_MakeEdge::Edge()`
+    /// **Source:** `BRepLib_MakeEdge.hxx`:244 - `BRepLib_MakeEdge::Edge()`
     pub fn BRepLib_MakeEdge_edge(
         self_: *mut BRepLib_MakeEdge,
     ) -> crate::OcctResult<*const TopoDS_Edge>;
-    /// **Source:** `BRepLib_MakeEdge.hxx`:255 - `BRepLib_MakeEdge::Vertex1()`
+    /// **Source:** `BRepLib_MakeEdge.hxx`:248 - `BRepLib_MakeEdge::Vertex1()`
     pub fn BRepLib_MakeEdge_vertex1(
         self_: *const BRepLib_MakeEdge,
     ) -> crate::OcctResult<*const TopoDS_Vertex>;
-    /// **Source:** `BRepLib_MakeEdge.hxx`:258 - `BRepLib_MakeEdge::Vertex2()`
+    /// **Source:** `BRepLib_MakeEdge.hxx`:251 - `BRepLib_MakeEdge::Vertex2()`
     pub fn BRepLib_MakeEdge_vertex2(
         self_: *const BRepLib_MakeEdge,
     ) -> crate::OcctResult<*const TopoDS_Vertex>;
@@ -9438,15 +9350,15 @@ unsafe extern "C" {
         self_: *const BRepLib_MakeEdge,
         F: *const TopoDS_Face,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `BRepLib_MakeShape.hxx`:60 - `BRepLib_MakeShape::NbSurfaces()`
+    /// Inherited: **Source:** `BRepLib_MakeShape.hxx`:61 - `BRepLib_MakeShape::NbSurfaces()`
     pub fn BRepLib_MakeEdge_inherited_NbSurfaces(
         self_: *const BRepLib_MakeEdge,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `BRepLib_MakeShape.hxx`:63 - `BRepLib_MakeShape::NewFaces()`
+    /// Inherited: **Source:** `BRepLib_MakeShape.hxx`:64 - `BRepLib_MakeShape::NewFaces()`
     pub fn BRepLib_MakeEdge_inherited_NewFaces(
         self_: *mut BRepLib_MakeEdge,
         I: i32,
-    ) -> crate::OcctResult<*const TopTools_ListOfShape>;
+    ) -> crate::OcctResult<*const NCollection_List_TopoDS_Shape>;
     /// Inherited: **Source:** `BRepLib_Command.hxx`:42 - `BRepLib_Command::IsDone()`
     pub fn BRepLib_MakeEdge_inherited_IsDone(
         self_: *const BRepLib_MakeEdge,
@@ -9477,199 +9389,199 @@ unsafe extern "C" {
         p1: f64,
         p2: f64,
     ) -> crate::OcctResult<*mut BRepLib_MakeEdge2d>;
-    /// **Source:** `BRepLib_MakeEdge2d.hxx`:82 - `BRepLib_MakeEdge2d::BRepLib_MakeEdge2d()`
+    /// **Source:** `BRepLib_MakeEdge2d.hxx`:80 - `BRepLib_MakeEdge2d::BRepLib_MakeEdge2d()`
     pub fn BRepLib_MakeEdge2d_ctor_lin2d_pnt2d2(
         L: *const gp_Lin2d,
         P1: *const gp_Pnt2d,
         P2: *const gp_Pnt2d,
     ) -> crate::OcctResult<*mut BRepLib_MakeEdge2d>;
-    /// **Source:** `BRepLib_MakeEdge2d.hxx`:84 - `BRepLib_MakeEdge2d::BRepLib_MakeEdge2d()`
+    /// **Source:** `BRepLib_MakeEdge2d.hxx`:82 - `BRepLib_MakeEdge2d::BRepLib_MakeEdge2d()`
     pub fn BRepLib_MakeEdge2d_ctor_lin2d_vertex2(
         L: *const gp_Lin2d,
         V1: *const TopoDS_Vertex,
         V2: *const TopoDS_Vertex,
     ) -> crate::OcctResult<*mut BRepLib_MakeEdge2d>;
-    /// **Source:** `BRepLib_MakeEdge2d.hxx`:88 - `BRepLib_MakeEdge2d::BRepLib_MakeEdge2d()`
+    /// **Source:** `BRepLib_MakeEdge2d.hxx`:86 - `BRepLib_MakeEdge2d::BRepLib_MakeEdge2d()`
     pub fn BRepLib_MakeEdge2d_ctor_circ2d(
         L: *const gp_Circ2d,
     ) -> crate::OcctResult<*mut BRepLib_MakeEdge2d>;
-    /// **Source:** `BRepLib_MakeEdge2d.hxx`:90 - `BRepLib_MakeEdge2d::BRepLib_MakeEdge2d()`
+    /// **Source:** `BRepLib_MakeEdge2d.hxx`:88 - `BRepLib_MakeEdge2d::BRepLib_MakeEdge2d()`
     pub fn BRepLib_MakeEdge2d_ctor_circ2d_real2(
         L: *const gp_Circ2d,
         p1: f64,
         p2: f64,
     ) -> crate::OcctResult<*mut BRepLib_MakeEdge2d>;
-    /// **Source:** `BRepLib_MakeEdge2d.hxx`:94 - `BRepLib_MakeEdge2d::BRepLib_MakeEdge2d()`
+    /// **Source:** `BRepLib_MakeEdge2d.hxx`:90 - `BRepLib_MakeEdge2d::BRepLib_MakeEdge2d()`
     pub fn BRepLib_MakeEdge2d_ctor_circ2d_pnt2d2(
         L: *const gp_Circ2d,
         P1: *const gp_Pnt2d,
         P2: *const gp_Pnt2d,
     ) -> crate::OcctResult<*mut BRepLib_MakeEdge2d>;
-    /// **Source:** `BRepLib_MakeEdge2d.hxx`:96 - `BRepLib_MakeEdge2d::BRepLib_MakeEdge2d()`
+    /// **Source:** `BRepLib_MakeEdge2d.hxx`:92 - `BRepLib_MakeEdge2d::BRepLib_MakeEdge2d()`
     pub fn BRepLib_MakeEdge2d_ctor_circ2d_vertex2(
         L: *const gp_Circ2d,
         V1: *const TopoDS_Vertex,
         V2: *const TopoDS_Vertex,
     ) -> crate::OcctResult<*mut BRepLib_MakeEdge2d>;
-    /// **Source:** `BRepLib_MakeEdge2d.hxx`:100 - `BRepLib_MakeEdge2d::BRepLib_MakeEdge2d()`
+    /// **Source:** `BRepLib_MakeEdge2d.hxx`:96 - `BRepLib_MakeEdge2d::BRepLib_MakeEdge2d()`
     pub fn BRepLib_MakeEdge2d_ctor_elips2d(
         L: *const gp_Elips2d,
     ) -> crate::OcctResult<*mut BRepLib_MakeEdge2d>;
-    /// **Source:** `BRepLib_MakeEdge2d.hxx`:102 - `BRepLib_MakeEdge2d::BRepLib_MakeEdge2d()`
+    /// **Source:** `BRepLib_MakeEdge2d.hxx`:98 - `BRepLib_MakeEdge2d::BRepLib_MakeEdge2d()`
     pub fn BRepLib_MakeEdge2d_ctor_elips2d_real2(
         L: *const gp_Elips2d,
         p1: f64,
         p2: f64,
     ) -> crate::OcctResult<*mut BRepLib_MakeEdge2d>;
-    /// **Source:** `BRepLib_MakeEdge2d.hxx`:106 - `BRepLib_MakeEdge2d::BRepLib_MakeEdge2d()`
+    /// **Source:** `BRepLib_MakeEdge2d.hxx`:100 - `BRepLib_MakeEdge2d::BRepLib_MakeEdge2d()`
     pub fn BRepLib_MakeEdge2d_ctor_elips2d_pnt2d2(
         L: *const gp_Elips2d,
         P1: *const gp_Pnt2d,
         P2: *const gp_Pnt2d,
     ) -> crate::OcctResult<*mut BRepLib_MakeEdge2d>;
-    /// **Source:** `BRepLib_MakeEdge2d.hxx`:108 - `BRepLib_MakeEdge2d::BRepLib_MakeEdge2d()`
+    /// **Source:** `BRepLib_MakeEdge2d.hxx`:102 - `BRepLib_MakeEdge2d::BRepLib_MakeEdge2d()`
     pub fn BRepLib_MakeEdge2d_ctor_elips2d_vertex2(
         L: *const gp_Elips2d,
         V1: *const TopoDS_Vertex,
         V2: *const TopoDS_Vertex,
     ) -> crate::OcctResult<*mut BRepLib_MakeEdge2d>;
-    /// **Source:** `BRepLib_MakeEdge2d.hxx`:112 - `BRepLib_MakeEdge2d::BRepLib_MakeEdge2d()`
+    /// **Source:** `BRepLib_MakeEdge2d.hxx`:106 - `BRepLib_MakeEdge2d::BRepLib_MakeEdge2d()`
     pub fn BRepLib_MakeEdge2d_ctor_hypr2d(
         L: *const gp_Hypr2d,
     ) -> crate::OcctResult<*mut BRepLib_MakeEdge2d>;
-    /// **Source:** `BRepLib_MakeEdge2d.hxx`:114 - `BRepLib_MakeEdge2d::BRepLib_MakeEdge2d()`
+    /// **Source:** `BRepLib_MakeEdge2d.hxx`:108 - `BRepLib_MakeEdge2d::BRepLib_MakeEdge2d()`
     pub fn BRepLib_MakeEdge2d_ctor_hypr2d_real2(
         L: *const gp_Hypr2d,
         p1: f64,
         p2: f64,
     ) -> crate::OcctResult<*mut BRepLib_MakeEdge2d>;
-    /// **Source:** `BRepLib_MakeEdge2d.hxx`:118 - `BRepLib_MakeEdge2d::BRepLib_MakeEdge2d()`
+    /// **Source:** `BRepLib_MakeEdge2d.hxx`:110 - `BRepLib_MakeEdge2d::BRepLib_MakeEdge2d()`
     pub fn BRepLib_MakeEdge2d_ctor_hypr2d_pnt2d2(
         L: *const gp_Hypr2d,
         P1: *const gp_Pnt2d,
         P2: *const gp_Pnt2d,
     ) -> crate::OcctResult<*mut BRepLib_MakeEdge2d>;
-    /// **Source:** `BRepLib_MakeEdge2d.hxx`:120 - `BRepLib_MakeEdge2d::BRepLib_MakeEdge2d()`
+    /// **Source:** `BRepLib_MakeEdge2d.hxx`:112 - `BRepLib_MakeEdge2d::BRepLib_MakeEdge2d()`
     pub fn BRepLib_MakeEdge2d_ctor_hypr2d_vertex2(
         L: *const gp_Hypr2d,
         V1: *const TopoDS_Vertex,
         V2: *const TopoDS_Vertex,
     ) -> crate::OcctResult<*mut BRepLib_MakeEdge2d>;
-    /// **Source:** `BRepLib_MakeEdge2d.hxx`:124 - `BRepLib_MakeEdge2d::BRepLib_MakeEdge2d()`
+    /// **Source:** `BRepLib_MakeEdge2d.hxx`:116 - `BRepLib_MakeEdge2d::BRepLib_MakeEdge2d()`
     pub fn BRepLib_MakeEdge2d_ctor_parab2d(
         L: *const gp_Parab2d,
     ) -> crate::OcctResult<*mut BRepLib_MakeEdge2d>;
-    /// **Source:** `BRepLib_MakeEdge2d.hxx`:126 - `BRepLib_MakeEdge2d::BRepLib_MakeEdge2d()`
+    /// **Source:** `BRepLib_MakeEdge2d.hxx`:118 - `BRepLib_MakeEdge2d::BRepLib_MakeEdge2d()`
     pub fn BRepLib_MakeEdge2d_ctor_parab2d_real2(
         L: *const gp_Parab2d,
         p1: f64,
         p2: f64,
     ) -> crate::OcctResult<*mut BRepLib_MakeEdge2d>;
-    /// **Source:** `BRepLib_MakeEdge2d.hxx`:130 - `BRepLib_MakeEdge2d::BRepLib_MakeEdge2d()`
+    /// **Source:** `BRepLib_MakeEdge2d.hxx`:120 - `BRepLib_MakeEdge2d::BRepLib_MakeEdge2d()`
     pub fn BRepLib_MakeEdge2d_ctor_parab2d_pnt2d2(
         L: *const gp_Parab2d,
         P1: *const gp_Pnt2d,
         P2: *const gp_Pnt2d,
     ) -> crate::OcctResult<*mut BRepLib_MakeEdge2d>;
-    /// **Source:** `BRepLib_MakeEdge2d.hxx`:132 - `BRepLib_MakeEdge2d::BRepLib_MakeEdge2d()`
+    /// **Source:** `BRepLib_MakeEdge2d.hxx`:122 - `BRepLib_MakeEdge2d::BRepLib_MakeEdge2d()`
     pub fn BRepLib_MakeEdge2d_ctor_parab2d_vertex2(
         L: *const gp_Parab2d,
         V1: *const TopoDS_Vertex,
         V2: *const TopoDS_Vertex,
     ) -> crate::OcctResult<*mut BRepLib_MakeEdge2d>;
-    /// **Source:** `BRepLib_MakeEdge2d.hxx`:136 - `BRepLib_MakeEdge2d::BRepLib_MakeEdge2d()`
+    /// **Source:** `BRepLib_MakeEdge2d.hxx`:126 - `BRepLib_MakeEdge2d::BRepLib_MakeEdge2d()`
     pub fn BRepLib_MakeEdge2d_ctor_handlegeom2dcurve(
-        L: *const HandleGeom2dCurve,
+        L: *const Handle_Geom2d_Curve,
     ) -> crate::OcctResult<*mut BRepLib_MakeEdge2d>;
-    /// **Source:** `BRepLib_MakeEdge2d.hxx`:138 - `BRepLib_MakeEdge2d::BRepLib_MakeEdge2d()`
+    /// **Source:** `BRepLib_MakeEdge2d.hxx`:128 - `BRepLib_MakeEdge2d::BRepLib_MakeEdge2d()`
     pub fn BRepLib_MakeEdge2d_ctor_handlegeom2dcurve_real2(
-        L: *const HandleGeom2dCurve,
+        L: *const Handle_Geom2d_Curve,
         p1: f64,
         p2: f64,
     ) -> crate::OcctResult<*mut BRepLib_MakeEdge2d>;
-    /// **Source:** `BRepLib_MakeEdge2d.hxx`:142 - `BRepLib_MakeEdge2d::BRepLib_MakeEdge2d()`
+    /// **Source:** `BRepLib_MakeEdge2d.hxx`:132 - `BRepLib_MakeEdge2d::BRepLib_MakeEdge2d()`
     pub fn BRepLib_MakeEdge2d_ctor_handlegeom2dcurve_pnt2d2(
-        L: *const HandleGeom2dCurve,
+        L: *const Handle_Geom2d_Curve,
         P1: *const gp_Pnt2d,
         P2: *const gp_Pnt2d,
+    ) -> crate::OcctResult<*mut BRepLib_MakeEdge2d>;
+    /// **Source:** `BRepLib_MakeEdge2d.hxx`:136 - `BRepLib_MakeEdge2d::BRepLib_MakeEdge2d()`
+    pub fn BRepLib_MakeEdge2d_ctor_handlegeom2dcurve_vertex2(
+        L: *const Handle_Geom2d_Curve,
+        V1: *const TopoDS_Vertex,
+        V2: *const TopoDS_Vertex,
+    ) -> crate::OcctResult<*mut BRepLib_MakeEdge2d>;
+    /// **Source:** `BRepLib_MakeEdge2d.hxx`:140 - `BRepLib_MakeEdge2d::BRepLib_MakeEdge2d()`
+    pub fn BRepLib_MakeEdge2d_ctor_handlegeom2dcurve_pnt2d2_real2(
+        L: *const Handle_Geom2d_Curve,
+        P1: *const gp_Pnt2d,
+        P2: *const gp_Pnt2d,
+        p1: f64,
+        p2: f64,
     ) -> crate::OcctResult<*mut BRepLib_MakeEdge2d>;
     /// **Source:** `BRepLib_MakeEdge2d.hxx`:146 - `BRepLib_MakeEdge2d::BRepLib_MakeEdge2d()`
-    pub fn BRepLib_MakeEdge2d_ctor_handlegeom2dcurve_vertex2(
-        L: *const HandleGeom2dCurve,
-        V1: *const TopoDS_Vertex,
-        V2: *const TopoDS_Vertex,
-    ) -> crate::OcctResult<*mut BRepLib_MakeEdge2d>;
-    /// **Source:** `BRepLib_MakeEdge2d.hxx`:150 - `BRepLib_MakeEdge2d::BRepLib_MakeEdge2d()`
-    pub fn BRepLib_MakeEdge2d_ctor_handlegeom2dcurve_pnt2d2_real2(
-        L: *const HandleGeom2dCurve,
-        P1: *const gp_Pnt2d,
-        P2: *const gp_Pnt2d,
-        p1: f64,
-        p2: f64,
-    ) -> crate::OcctResult<*mut BRepLib_MakeEdge2d>;
-    /// **Source:** `BRepLib_MakeEdge2d.hxx`:156 - `BRepLib_MakeEdge2d::BRepLib_MakeEdge2d()`
     pub fn BRepLib_MakeEdge2d_ctor_handlegeom2dcurve_vertex2_real2(
-        L: *const HandleGeom2dCurve,
+        L: *const Handle_Geom2d_Curve,
         V1: *const TopoDS_Vertex,
         V2: *const TopoDS_Vertex,
         p1: f64,
         p2: f64,
     ) -> crate::OcctResult<*mut BRepLib_MakeEdge2d>;
-    /// **Source:** `BRepLib_MakeEdge2d.hxx`:162 - `BRepLib_MakeEdge2d::Init()`
+    /// **Source:** `BRepLib_MakeEdge2d.hxx`:152 - `BRepLib_MakeEdge2d::Init()`
     pub fn BRepLib_MakeEdge2d_init_handlegeom2dcurve(
         self_: *mut BRepLib_MakeEdge2d,
-        C: *const HandleGeom2dCurve,
+        C: *const Handle_Geom2d_Curve,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepLib_MakeEdge2d.hxx`:164 - `BRepLib_MakeEdge2d::Init()`
+    /// **Source:** `BRepLib_MakeEdge2d.hxx`:154 - `BRepLib_MakeEdge2d::Init()`
     pub fn BRepLib_MakeEdge2d_init_handlegeom2dcurve_real2(
         self_: *mut BRepLib_MakeEdge2d,
-        C: *const HandleGeom2dCurve,
+        C: *const Handle_Geom2d_Curve,
         p1: f64,
         p2: f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepLib_MakeEdge2d.hxx`:168 - `BRepLib_MakeEdge2d::Init()`
+    /// **Source:** `BRepLib_MakeEdge2d.hxx`:156 - `BRepLib_MakeEdge2d::Init()`
     pub fn BRepLib_MakeEdge2d_init_handlegeom2dcurve_pnt2d2(
         self_: *mut BRepLib_MakeEdge2d,
-        C: *const HandleGeom2dCurve,
+        C: *const Handle_Geom2d_Curve,
         P1: *const gp_Pnt2d,
         P2: *const gp_Pnt2d,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepLib_MakeEdge2d.hxx`:170 - `BRepLib_MakeEdge2d::Init()`
+    /// **Source:** `BRepLib_MakeEdge2d.hxx`:160 - `BRepLib_MakeEdge2d::Init()`
     pub fn BRepLib_MakeEdge2d_init_handlegeom2dcurve_vertex2(
         self_: *mut BRepLib_MakeEdge2d,
-        C: *const HandleGeom2dCurve,
+        C: *const Handle_Geom2d_Curve,
         V1: *const TopoDS_Vertex,
         V2: *const TopoDS_Vertex,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepLib_MakeEdge2d.hxx`:174 - `BRepLib_MakeEdge2d::Init()`
+    /// **Source:** `BRepLib_MakeEdge2d.hxx`:164 - `BRepLib_MakeEdge2d::Init()`
     pub fn BRepLib_MakeEdge2d_init_handlegeom2dcurve_pnt2d2_real2(
         self_: *mut BRepLib_MakeEdge2d,
-        C: *const HandleGeom2dCurve,
+        C: *const Handle_Geom2d_Curve,
         P1: *const gp_Pnt2d,
         P2: *const gp_Pnt2d,
         p1: f64,
         p2: f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepLib_MakeEdge2d.hxx`:180 - `BRepLib_MakeEdge2d::Init()`
+    /// **Source:** `BRepLib_MakeEdge2d.hxx`:170 - `BRepLib_MakeEdge2d::Init()`
     pub fn BRepLib_MakeEdge2d_init_handlegeom2dcurve_vertex2_real2(
         self_: *mut BRepLib_MakeEdge2d,
-        C: *const HandleGeom2dCurve,
+        C: *const Handle_Geom2d_Curve,
         V1: *const TopoDS_Vertex,
         V2: *const TopoDS_Vertex,
         p1: f64,
         p2: f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepLib_MakeEdge2d.hxx`:187 - `BRepLib_MakeEdge2d::Error()`
+    /// **Source:** `BRepLib_MakeEdge2d.hxx`:177 - `BRepLib_MakeEdge2d::Error()`
     pub fn BRepLib_MakeEdge2d_error(self_: *const BRepLib_MakeEdge2d) -> crate::OcctResult<i32>;
-    /// **Source:** `BRepLib_MakeEdge2d.hxx`:189 - `BRepLib_MakeEdge2d::Edge()`
+    /// **Source:** `BRepLib_MakeEdge2d.hxx`:179 - `BRepLib_MakeEdge2d::Edge()`
     pub fn BRepLib_MakeEdge2d_edge(
         self_: *mut BRepLib_MakeEdge2d,
     ) -> crate::OcctResult<*const TopoDS_Edge>;
-    /// **Source:** `BRepLib_MakeEdge2d.hxx`:193 - `BRepLib_MakeEdge2d::Vertex1()`
+    /// **Source:** `BRepLib_MakeEdge2d.hxx`:183 - `BRepLib_MakeEdge2d::Vertex1()`
     pub fn BRepLib_MakeEdge2d_vertex1(
         self_: *const BRepLib_MakeEdge2d,
     ) -> crate::OcctResult<*const TopoDS_Vertex>;
-    /// **Source:** `BRepLib_MakeEdge2d.hxx`:196 - `BRepLib_MakeEdge2d::Vertex2()`
+    /// **Source:** `BRepLib_MakeEdge2d.hxx`:186 - `BRepLib_MakeEdge2d::Vertex2()`
     pub fn BRepLib_MakeEdge2d_vertex2(
         self_: *const BRepLib_MakeEdge2d,
     ) -> crate::OcctResult<*const TopoDS_Vertex>;
@@ -9707,15 +9619,15 @@ unsafe extern "C" {
         self_: *const BRepLib_MakeEdge2d,
         F: *const TopoDS_Face,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `BRepLib_MakeShape.hxx`:60 - `BRepLib_MakeShape::NbSurfaces()`
+    /// Inherited: **Source:** `BRepLib_MakeShape.hxx`:61 - `BRepLib_MakeShape::NbSurfaces()`
     pub fn BRepLib_MakeEdge2d_inherited_NbSurfaces(
         self_: *const BRepLib_MakeEdge2d,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `BRepLib_MakeShape.hxx`:63 - `BRepLib_MakeShape::NewFaces()`
+    /// Inherited: **Source:** `BRepLib_MakeShape.hxx`:64 - `BRepLib_MakeShape::NewFaces()`
     pub fn BRepLib_MakeEdge2d_inherited_NewFaces(
         self_: *mut BRepLib_MakeEdge2d,
         I: i32,
-    ) -> crate::OcctResult<*const TopTools_ListOfShape>;
+    ) -> crate::OcctResult<*const NCollection_List_TopoDS_Shape>;
     /// Inherited: **Source:** `BRepLib_Command.hxx`:42 - `BRepLib_Command::IsDone()`
     pub fn BRepLib_MakeEdge2d_inherited_IsDone(
         self_: *const BRepLib_MakeEdge2d,
@@ -9752,7 +9664,7 @@ unsafe extern "C" {
     ) -> crate::OcctResult<*mut BRepLib_MakeFace>;
     /// **Source:** `BRepLib_MakeFace.hxx`:89 - `BRepLib_MakeFace::BRepLib_MakeFace()`
     pub fn BRepLib_MakeFace_ctor_handlegeomsurface_real(
-        S: *const HandleGeomSurface,
+        S: *const Handle_Geom_Surface,
         TolDegen: f64,
     ) -> crate::OcctResult<*mut BRepLib_MakeFace>;
     /// **Source:** `BRepLib_MakeFace.hxx`:92 - `BRepLib_MakeFace::BRepLib_MakeFace()`
@@ -9797,7 +9709,7 @@ unsafe extern "C" {
     ) -> crate::OcctResult<*mut BRepLib_MakeFace>;
     /// **Source:** `BRepLib_MakeFace.hxx`:129 - `BRepLib_MakeFace::BRepLib_MakeFace()`
     pub fn BRepLib_MakeFace_ctor_handlegeomsurface_real5(
-        S: *const HandleGeomSurface,
+        S: *const Handle_Geom_Surface,
         UMin: f64,
         UMax: f64,
         VMin: f64,
@@ -9809,83 +9721,83 @@ unsafe extern "C" {
         W: *const TopoDS_Wire,
         OnlyPlane: bool,
     ) -> crate::OcctResult<*mut BRepLib_MakeFace>;
-    /// **Source:** `BRepLib_MakeFace.hxx`:144 - `BRepLib_MakeFace::BRepLib_MakeFace()`
+    /// **Source:** `BRepLib_MakeFace.hxx`:143 - `BRepLib_MakeFace::BRepLib_MakeFace()`
     pub fn BRepLib_MakeFace_ctor_pln_wire_bool(
         P: *const gp_Pln,
         W: *const TopoDS_Wire,
         Inside: bool,
     ) -> crate::OcctResult<*mut BRepLib_MakeFace>;
-    /// **Source:** `BRepLib_MakeFace.hxx`:149 - `BRepLib_MakeFace::BRepLib_MakeFace()`
+    /// **Source:** `BRepLib_MakeFace.hxx`:146 - `BRepLib_MakeFace::BRepLib_MakeFace()`
     pub fn BRepLib_MakeFace_ctor_cylinder_wire_bool(
         C: *const gp_Cylinder,
         W: *const TopoDS_Wire,
         Inside: bool,
     ) -> crate::OcctResult<*mut BRepLib_MakeFace>;
-    /// **Source:** `BRepLib_MakeFace.hxx`:154 - `BRepLib_MakeFace::BRepLib_MakeFace()`
+    /// **Source:** `BRepLib_MakeFace.hxx`:151 - `BRepLib_MakeFace::BRepLib_MakeFace()`
     pub fn BRepLib_MakeFace_ctor_cone_wire_bool(
         C: *const gp_Cone,
         W: *const TopoDS_Wire,
         Inside: bool,
     ) -> crate::OcctResult<*mut BRepLib_MakeFace>;
-    /// **Source:** `BRepLib_MakeFace.hxx`:159 - `BRepLib_MakeFace::BRepLib_MakeFace()`
+    /// **Source:** `BRepLib_MakeFace.hxx`:156 - `BRepLib_MakeFace::BRepLib_MakeFace()`
     pub fn BRepLib_MakeFace_ctor_sphere_wire_bool(
         S: *const gp_Sphere,
         W: *const TopoDS_Wire,
         Inside: bool,
     ) -> crate::OcctResult<*mut BRepLib_MakeFace>;
-    /// **Source:** `BRepLib_MakeFace.hxx`:164 - `BRepLib_MakeFace::BRepLib_MakeFace()`
+    /// **Source:** `BRepLib_MakeFace.hxx`:161 - `BRepLib_MakeFace::BRepLib_MakeFace()`
     pub fn BRepLib_MakeFace_ctor_torus_wire_bool(
         C: *const gp_Torus,
         W: *const TopoDS_Wire,
         Inside: bool,
     ) -> crate::OcctResult<*mut BRepLib_MakeFace>;
-    /// **Source:** `BRepLib_MakeFace.hxx`:169 - `BRepLib_MakeFace::BRepLib_MakeFace()`
+    /// **Source:** `BRepLib_MakeFace.hxx`:166 - `BRepLib_MakeFace::BRepLib_MakeFace()`
     pub fn BRepLib_MakeFace_ctor_handlegeomsurface_wire_bool(
-        S: *const HandleGeomSurface,
+        S: *const Handle_Geom_Surface,
         W: *const TopoDS_Wire,
         Inside: bool,
     ) -> crate::OcctResult<*mut BRepLib_MakeFace>;
-    /// **Source:** `BRepLib_MakeFace.hxx`:174 - `BRepLib_MakeFace::BRepLib_MakeFace()`
+    /// **Source:** `BRepLib_MakeFace.hxx`:171 - `BRepLib_MakeFace::BRepLib_MakeFace()`
     pub fn BRepLib_MakeFace_ctor_face_wire(
         F: *const TopoDS_Face,
         W: *const TopoDS_Wire,
     ) -> crate::OcctResult<*mut BRepLib_MakeFace>;
-    /// **Source:** `BRepLib_MakeFace.hxx`:177 - `BRepLib_MakeFace::Init()`
+    /// **Source:** `BRepLib_MakeFace.hxx`:174 - `BRepLib_MakeFace::Init()`
     pub fn BRepLib_MakeFace_init_face(
         self_: *mut BRepLib_MakeFace,
         F: *const TopoDS_Face,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepLib_MakeFace.hxx`:183 - `BRepLib_MakeFace::Init()`
+    /// **Source:** `BRepLib_MakeFace.hxx`:180 - `BRepLib_MakeFace::Init()`
     pub fn BRepLib_MakeFace_init_handlegeomsurface_bool_real(
         self_: *mut BRepLib_MakeFace,
-        S: *const HandleGeomSurface,
+        S: *const Handle_Geom_Surface,
         Bound: bool,
         TolDegen: f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepLib_MakeFace.hxx`:190 - `BRepLib_MakeFace::Init()`
+    /// **Source:** `BRepLib_MakeFace.hxx`:187 - `BRepLib_MakeFace::Init()`
     pub fn BRepLib_MakeFace_init_handlegeomsurface_real5(
         self_: *mut BRepLib_MakeFace,
-        S: *const HandleGeomSurface,
+        S: *const Handle_Geom_Surface,
         UMin: f64,
         UMax: f64,
         VMin: f64,
         VMax: f64,
         TolDegen: f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepLib_MakeFace.hxx`:198 - `BRepLib_MakeFace::Add()`
+    /// **Source:** `BRepLib_MakeFace.hxx`:195 - `BRepLib_MakeFace::Add()`
     pub fn BRepLib_MakeFace_add(
         self_: *mut BRepLib_MakeFace,
         W: *const TopoDS_Wire,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepLib_MakeFace.hxx`:200 - `BRepLib_MakeFace::Error()`
+    /// **Source:** `BRepLib_MakeFace.hxx`:197 - `BRepLib_MakeFace::Error()`
     pub fn BRepLib_MakeFace_error(self_: *const BRepLib_MakeFace) -> crate::OcctResult<i32>;
-    /// **Source:** `BRepLib_MakeFace.hxx`:203 - `BRepLib_MakeFace::Face()`
+    /// **Source:** `BRepLib_MakeFace.hxx`:200 - `BRepLib_MakeFace::Face()`
     pub fn BRepLib_MakeFace_face(
         self_: *const BRepLib_MakeFace,
     ) -> crate::OcctResult<*const TopoDS_Face>;
-    /// **Source:** `BRepLib_MakeFace.hxx`:211 - `BRepLib_MakeFace::IsDegenerated()`
+    /// **Source:** `BRepLib_MakeFace.hxx`:208 - `BRepLib_MakeFace::IsDegenerated()`
     pub fn BRepLib_MakeFace_is_degenerated(
-        theCurve: *const HandleGeomCurve,
+        theCurve: *const Handle_Geom_Curve,
         theMaxTol: f64,
         theActTol: *mut f64,
     ) -> crate::OcctResult<bool>;
@@ -9923,15 +9835,15 @@ unsafe extern "C" {
         self_: *const BRepLib_MakeFace,
         F: *const TopoDS_Face,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `BRepLib_MakeShape.hxx`:60 - `BRepLib_MakeShape::NbSurfaces()`
+    /// Inherited: **Source:** `BRepLib_MakeShape.hxx`:61 - `BRepLib_MakeShape::NbSurfaces()`
     pub fn BRepLib_MakeFace_inherited_NbSurfaces(
         self_: *const BRepLib_MakeFace,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `BRepLib_MakeShape.hxx`:63 - `BRepLib_MakeShape::NewFaces()`
+    /// Inherited: **Source:** `BRepLib_MakeShape.hxx`:64 - `BRepLib_MakeShape::NewFaces()`
     pub fn BRepLib_MakeFace_inherited_NewFaces(
         self_: *mut BRepLib_MakeFace,
         I: i32,
-    ) -> crate::OcctResult<*const TopTools_ListOfShape>;
+    ) -> crate::OcctResult<*const NCollection_List_TopoDS_Shape>;
     /// Inherited: **Source:** `BRepLib_Command.hxx`:42 - `BRepLib_Command::IsDone()`
     pub fn BRepLib_MakeFace_inherited_IsDone(
         self_: *const BRepLib_MakeFace,
@@ -10048,15 +9960,15 @@ unsafe extern "C" {
         self_: *const BRepLib_MakePolygon,
         F: *const TopoDS_Face,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `BRepLib_MakeShape.hxx`:60 - `BRepLib_MakeShape::NbSurfaces()`
+    /// Inherited: **Source:** `BRepLib_MakeShape.hxx`:61 - `BRepLib_MakeShape::NbSurfaces()`
     pub fn BRepLib_MakePolygon_inherited_NbSurfaces(
         self_: *const BRepLib_MakePolygon,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `BRepLib_MakeShape.hxx`:63 - `BRepLib_MakeShape::NewFaces()`
+    /// Inherited: **Source:** `BRepLib_MakeShape.hxx`:64 - `BRepLib_MakeShape::NewFaces()`
     pub fn BRepLib_MakePolygon_inherited_NewFaces(
         self_: *mut BRepLib_MakePolygon,
         I: i32,
-    ) -> crate::OcctResult<*const TopTools_ListOfShape>;
+    ) -> crate::OcctResult<*const NCollection_List_TopoDS_Shape>;
     /// Inherited: **Source:** `BRepLib_Command.hxx`:42 - `BRepLib_Command::IsDone()`
     pub fn BRepLib_MakePolygon_inherited_IsDone(
         self_: *const BRepLib_MakePolygon,
@@ -10087,20 +9999,20 @@ unsafe extern "C" {
     pub fn BRepLib_MakeShape_descendant_faces(
         self_: *mut BRepLib_MakeShape,
         F: *const TopoDS_Face,
-    ) -> crate::OcctResult<*const TopTools_ListOfShape>;
-    /// **Source:** `BRepLib_MakeShape.hxx`:60 - `BRepLib_MakeShape::NbSurfaces()`
+    ) -> crate::OcctResult<*const NCollection_List_TopoDS_Shape>;
+    /// **Source:** `BRepLib_MakeShape.hxx`:61 - `BRepLib_MakeShape::NbSurfaces()`
     pub fn BRepLib_MakeShape_nb_surfaces(self_: *const BRepLib_MakeShape)
         -> crate::OcctResult<i32>;
-    /// **Source:** `BRepLib_MakeShape.hxx`:63 - `BRepLib_MakeShape::NewFaces()`
+    /// **Source:** `BRepLib_MakeShape.hxx`:64 - `BRepLib_MakeShape::NewFaces()`
     pub fn BRepLib_MakeShape_new_faces(
         self_: *mut BRepLib_MakeShape,
         I: i32,
-    ) -> crate::OcctResult<*const TopTools_ListOfShape>;
-    /// **Source:** `BRepLib_MakeShape.hxx`:67 - `BRepLib_MakeShape::FacesFromEdges()`
+    ) -> crate::OcctResult<*const NCollection_List_TopoDS_Shape>;
+    /// **Source:** `BRepLib_MakeShape.hxx`:68 - `BRepLib_MakeShape::FacesFromEdges()`
     pub fn BRepLib_MakeShape_faces_from_edges(
         self_: *mut BRepLib_MakeShape,
         E: *const TopoDS_Edge,
-    ) -> crate::OcctResult<*const TopTools_ListOfShape>;
+    ) -> crate::OcctResult<*const NCollection_List_TopoDS_Shape>;
     /// Upcast BRepLib_MakeShape to BRepLib_Command
     pub fn BRepLib_MakeShape_as_BRepLib_Command(
         self_: *const BRepLib_MakeShape,
@@ -10123,31 +10035,31 @@ unsafe extern "C" {
     pub fn BRepLib_MakeShell_ctor() -> crate::OcctResult<*mut BRepLib_MakeShell>;
     /// **Source:** `BRepLib_MakeShell.hxx`:42 - `BRepLib_MakeShell::BRepLib_MakeShell()`
     pub fn BRepLib_MakeShell_ctor_handlegeomsurface_bool(
-        S: *const HandleGeomSurface,
+        S: *const Handle_Geom_Surface,
         Segment: bool,
     ) -> crate::OcctResult<*mut BRepLib_MakeShell>;
-    /// **Source:** `BRepLib_MakeShell.hxx`:45 - `BRepLib_MakeShell::BRepLib_MakeShell()`
+    /// **Source:** `BRepLib_MakeShell.hxx`:44 - `BRepLib_MakeShell::BRepLib_MakeShell()`
     pub fn BRepLib_MakeShell_ctor_handlegeomsurface_real4_bool(
-        S: *const HandleGeomSurface,
+        S: *const Handle_Geom_Surface,
         UMin: f64,
         UMax: f64,
         VMin: f64,
         VMax: f64,
         Segment: bool,
     ) -> crate::OcctResult<*mut BRepLib_MakeShell>;
-    /// **Source:** `BRepLib_MakeShell.hxx`:54 - `BRepLib_MakeShell::Init()`
+    /// **Source:** `BRepLib_MakeShell.hxx`:53 - `BRepLib_MakeShell::Init()`
     pub fn BRepLib_MakeShell_init(
         self_: *mut BRepLib_MakeShell,
-        S: *const HandleGeomSurface,
+        S: *const Handle_Geom_Surface,
         UMin: f64,
         UMax: f64,
         VMin: f64,
         VMax: f64,
         Segment: bool,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepLib_MakeShell.hxx`:61 - `BRepLib_MakeShell::Error()`
+    /// **Source:** `BRepLib_MakeShell.hxx`:60 - `BRepLib_MakeShell::Error()`
     pub fn BRepLib_MakeShell_error(self_: *const BRepLib_MakeShell) -> crate::OcctResult<i32>;
-    /// **Source:** `BRepLib_MakeShell.hxx`:64 - `BRepLib_MakeShell::Shell()`
+    /// **Source:** `BRepLib_MakeShell.hxx`:63 - `BRepLib_MakeShell::Shell()`
     pub fn BRepLib_MakeShell_shell(
         self_: *const BRepLib_MakeShell,
     ) -> crate::OcctResult<*const TopoDS_Shell>;
@@ -10185,15 +10097,15 @@ unsafe extern "C" {
         self_: *const BRepLib_MakeShell,
         F: *const TopoDS_Face,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `BRepLib_MakeShape.hxx`:60 - `BRepLib_MakeShape::NbSurfaces()`
+    /// Inherited: **Source:** `BRepLib_MakeShape.hxx`:61 - `BRepLib_MakeShape::NbSurfaces()`
     pub fn BRepLib_MakeShell_inherited_NbSurfaces(
         self_: *const BRepLib_MakeShell,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `BRepLib_MakeShape.hxx`:63 - `BRepLib_MakeShape::NewFaces()`
+    /// Inherited: **Source:** `BRepLib_MakeShape.hxx`:64 - `BRepLib_MakeShape::NewFaces()`
     pub fn BRepLib_MakeShell_inherited_NewFaces(
         self_: *mut BRepLib_MakeShell,
         I: i32,
-    ) -> crate::OcctResult<*const TopTools_ListOfShape>;
+    ) -> crate::OcctResult<*const NCollection_List_TopoDS_Shape>;
     /// Inherited: **Source:** `BRepLib_Command.hxx`:42 - `BRepLib_Command::IsDone()`
     pub fn BRepLib_MakeShell_inherited_IsDone(
         self_: *const BRepLib_MakeShell,
@@ -10277,15 +10189,15 @@ unsafe extern "C" {
         self_: *const BRepLib_MakeSolid,
         F: *const TopoDS_Face,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `BRepLib_MakeShape.hxx`:60 - `BRepLib_MakeShape::NbSurfaces()`
+    /// Inherited: **Source:** `BRepLib_MakeShape.hxx`:61 - `BRepLib_MakeShape::NbSurfaces()`
     pub fn BRepLib_MakeSolid_inherited_NbSurfaces(
         self_: *const BRepLib_MakeSolid,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `BRepLib_MakeShape.hxx`:63 - `BRepLib_MakeShape::NewFaces()`
+    /// Inherited: **Source:** `BRepLib_MakeShape.hxx`:64 - `BRepLib_MakeShape::NewFaces()`
     pub fn BRepLib_MakeSolid_inherited_NewFaces(
         self_: *mut BRepLib_MakeSolid,
         I: i32,
-    ) -> crate::OcctResult<*const TopTools_ListOfShape>;
+    ) -> crate::OcctResult<*const NCollection_List_TopoDS_Shape>;
     /// Inherited: **Source:** `BRepLib_Command.hxx`:42 - `BRepLib_Command::IsDone()`
     pub fn BRepLib_MakeSolid_inherited_IsDone(
         self_: *const BRepLib_MakeSolid,
@@ -10338,15 +10250,15 @@ unsafe extern "C" {
         self_: *const BRepLib_MakeVertex,
         F: *const TopoDS_Face,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `BRepLib_MakeShape.hxx`:60 - `BRepLib_MakeShape::NbSurfaces()`
+    /// Inherited: **Source:** `BRepLib_MakeShape.hxx`:61 - `BRepLib_MakeShape::NbSurfaces()`
     pub fn BRepLib_MakeVertex_inherited_NbSurfaces(
         self_: *const BRepLib_MakeVertex,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `BRepLib_MakeShape.hxx`:63 - `BRepLib_MakeShape::NewFaces()`
+    /// Inherited: **Source:** `BRepLib_MakeShape.hxx`:64 - `BRepLib_MakeShape::NewFaces()`
     pub fn BRepLib_MakeVertex_inherited_NewFaces(
         self_: *mut BRepLib_MakeVertex,
         I: i32,
-    ) -> crate::OcctResult<*const TopTools_ListOfShape>;
+    ) -> crate::OcctResult<*const NCollection_List_TopoDS_Shape>;
     /// Inherited: **Source:** `BRepLib_Command.hxx`:42 - `BRepLib_Command::IsDone()`
     pub fn BRepLib_MakeVertex_inherited_IsDone(
         self_: *const BRepLib_MakeVertex,
@@ -10357,65 +10269,65 @@ unsafe extern "C" {
     ) -> *const std::ffi::c_char;
     // ======================== BRepLib_MakeWire ========================
     pub fn BRepLib_MakeWire_destructor(self_: *mut BRepLib_MakeWire);
-    /// **Source:** `BRepLib_MakeWire.hxx`:84 - `BRepLib_MakeWire::BRepLib_MakeWire()`
+    /// **Source:** `BRepLib_MakeWire.hxx`:86 - `BRepLib_MakeWire::BRepLib_MakeWire()`
     pub fn BRepLib_MakeWire_ctor() -> crate::OcctResult<*mut BRepLib_MakeWire>;
-    /// **Source:** `BRepLib_MakeWire.hxx`:87 - `BRepLib_MakeWire::BRepLib_MakeWire()`
+    /// **Source:** `BRepLib_MakeWire.hxx`:89 - `BRepLib_MakeWire::BRepLib_MakeWire()`
     pub fn BRepLib_MakeWire_ctor_edge(
         E: *const TopoDS_Edge,
     ) -> crate::OcctResult<*mut BRepLib_MakeWire>;
-    /// **Source:** `BRepLib_MakeWire.hxx`:90 - `BRepLib_MakeWire::BRepLib_MakeWire()`
+    /// **Source:** `BRepLib_MakeWire.hxx`:92 - `BRepLib_MakeWire::BRepLib_MakeWire()`
     pub fn BRepLib_MakeWire_ctor_edge2(
         E1: *const TopoDS_Edge,
         E2: *const TopoDS_Edge,
     ) -> crate::OcctResult<*mut BRepLib_MakeWire>;
-    /// **Source:** `BRepLib_MakeWire.hxx`:93 - `BRepLib_MakeWire::BRepLib_MakeWire()`
+    /// **Source:** `BRepLib_MakeWire.hxx`:95 - `BRepLib_MakeWire::BRepLib_MakeWire()`
     pub fn BRepLib_MakeWire_ctor_edge3(
         E1: *const TopoDS_Edge,
         E2: *const TopoDS_Edge,
         E3: *const TopoDS_Edge,
     ) -> crate::OcctResult<*mut BRepLib_MakeWire>;
-    /// **Source:** `BRepLib_MakeWire.hxx`:98 - `BRepLib_MakeWire::BRepLib_MakeWire()`
+    /// **Source:** `BRepLib_MakeWire.hxx`:100 - `BRepLib_MakeWire::BRepLib_MakeWire()`
     pub fn BRepLib_MakeWire_ctor_edge4(
         E1: *const TopoDS_Edge,
         E2: *const TopoDS_Edge,
         E3: *const TopoDS_Edge,
         E4: *const TopoDS_Edge,
     ) -> crate::OcctResult<*mut BRepLib_MakeWire>;
-    /// **Source:** `BRepLib_MakeWire.hxx`:104 - `BRepLib_MakeWire::BRepLib_MakeWire()`
+    /// **Source:** `BRepLib_MakeWire.hxx`:106 - `BRepLib_MakeWire::BRepLib_MakeWire()`
     pub fn BRepLib_MakeWire_ctor_wire(
         W: *const TopoDS_Wire,
     ) -> crate::OcctResult<*mut BRepLib_MakeWire>;
-    /// **Source:** `BRepLib_MakeWire.hxx`:107 - `BRepLib_MakeWire::BRepLib_MakeWire()`
+    /// **Source:** `BRepLib_MakeWire.hxx`:109 - `BRepLib_MakeWire::BRepLib_MakeWire()`
     pub fn BRepLib_MakeWire_ctor_wire_edge(
         W: *const TopoDS_Wire,
         E: *const TopoDS_Edge,
     ) -> crate::OcctResult<*mut BRepLib_MakeWire>;
-    /// **Source:** `BRepLib_MakeWire.hxx`:110 - `BRepLib_MakeWire::Add()`
+    /// **Source:** `BRepLib_MakeWire.hxx`:112 - `BRepLib_MakeWire::Add()`
     pub fn BRepLib_MakeWire_add_edge(
         self_: *mut BRepLib_MakeWire,
         E: *const TopoDS_Edge,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepLib_MakeWire.hxx`:113 - `BRepLib_MakeWire::Add()`
+    /// **Source:** `BRepLib_MakeWire.hxx`:115 - `BRepLib_MakeWire::Add()`
     pub fn BRepLib_MakeWire_add_wire(
         self_: *mut BRepLib_MakeWire,
         W: *const TopoDS_Wire,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepLib_MakeWire.hxx`:118 - `BRepLib_MakeWire::Add()`
-    pub fn BRepLib_MakeWire_add_listofshape(
+    /// **Source:** `BRepLib_MakeWire.hxx`:120 - `BRepLib_MakeWire::Add()`
+    pub fn BRepLib_MakeWire_add_list_shape(
         self_: *mut BRepLib_MakeWire,
-        L: *const TopTools_ListOfShape,
+        L: *const NCollection_List_TopoDS_Shape,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepLib_MakeWire.hxx`:120 - `BRepLib_MakeWire::Error()`
+    /// **Source:** `BRepLib_MakeWire.hxx`:122 - `BRepLib_MakeWire::Error()`
     pub fn BRepLib_MakeWire_error(self_: *const BRepLib_MakeWire) -> crate::OcctResult<i32>;
-    /// **Source:** `BRepLib_MakeWire.hxx`:123 - `BRepLib_MakeWire::Wire()`
+    /// **Source:** `BRepLib_MakeWire.hxx`:125 - `BRepLib_MakeWire::Wire()`
     pub fn BRepLib_MakeWire_wire(
         self_: *mut BRepLib_MakeWire,
     ) -> crate::OcctResult<*const TopoDS_Wire>;
-    /// **Source:** `BRepLib_MakeWire.hxx`:127 - `BRepLib_MakeWire::Edge()`
+    /// **Source:** `BRepLib_MakeWire.hxx`:129 - `BRepLib_MakeWire::Edge()`
     pub fn BRepLib_MakeWire_edge(
         self_: *const BRepLib_MakeWire,
     ) -> crate::OcctResult<*const TopoDS_Edge>;
-    /// **Source:** `BRepLib_MakeWire.hxx`:130 - `BRepLib_MakeWire::Vertex()`
+    /// **Source:** `BRepLib_MakeWire.hxx`:132 - `BRepLib_MakeWire::Vertex()`
     pub fn BRepLib_MakeWire_vertex(
         self_: *const BRepLib_MakeWire,
     ) -> crate::OcctResult<*const TopoDS_Vertex>;
@@ -10453,15 +10365,15 @@ unsafe extern "C" {
         self_: *const BRepLib_MakeWire,
         F: *const TopoDS_Face,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `BRepLib_MakeShape.hxx`:60 - `BRepLib_MakeShape::NbSurfaces()`
+    /// Inherited: **Source:** `BRepLib_MakeShape.hxx`:61 - `BRepLib_MakeShape::NbSurfaces()`
     pub fn BRepLib_MakeWire_inherited_NbSurfaces(
         self_: *const BRepLib_MakeWire,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `BRepLib_MakeShape.hxx`:63 - `BRepLib_MakeShape::NewFaces()`
+    /// Inherited: **Source:** `BRepLib_MakeShape.hxx`:64 - `BRepLib_MakeShape::NewFaces()`
     pub fn BRepLib_MakeWire_inherited_NewFaces(
         self_: *mut BRepLib_MakeWire,
         I: i32,
-    ) -> crate::OcctResult<*const TopTools_ListOfShape>;
+    ) -> crate::OcctResult<*const NCollection_List_TopoDS_Shape>;
     /// Inherited: **Source:** `BRepLib_Command.hxx`:42 - `BRepLib_Command::IsDone()`
     pub fn BRepLib_MakeWire_inherited_IsDone(
         self_: *const BRepLib_MakeWire,
@@ -10472,48 +10384,48 @@ unsafe extern "C" {
     ) -> *const std::ffi::c_char;
     // ======================== BRepLib_PointCloudShape ========================
     pub fn BRepLib_PointCloudShape_destructor(self_: *mut BRepLib_PointCloudShape);
-    /// **Source:** `BRepLib_PointCloudShape.hxx`:41 - `BRepLib_PointCloudShape::Shape()`
+    /// **Source:** `BRepLib_PointCloudShape.hxx`:43 - `BRepLib_PointCloudShape::Shape()`
     pub fn BRepLib_PointCloudShape_shape(
         self_: *const BRepLib_PointCloudShape,
     ) -> crate::OcctResult<*const TopoDS_Shape>;
-    /// **Source:** `BRepLib_PointCloudShape.hxx`:44 - `BRepLib_PointCloudShape::SetShape()`
+    /// **Source:** `BRepLib_PointCloudShape.hxx`:46 - `BRepLib_PointCloudShape::SetShape()`
     pub fn BRepLib_PointCloudShape_set_shape(
         self_: *mut BRepLib_PointCloudShape,
         theShape: *const TopoDS_Shape,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepLib_PointCloudShape.hxx`:47 - `BRepLib_PointCloudShape::Tolerance()`
+    /// **Source:** `BRepLib_PointCloudShape.hxx`:49 - `BRepLib_PointCloudShape::Tolerance()`
     pub fn BRepLib_PointCloudShape_tolerance(
         self_: *const BRepLib_PointCloudShape,
     ) -> crate::OcctResult<f64>;
-    /// **Source:** `BRepLib_PointCloudShape.hxx`:50 - `BRepLib_PointCloudShape::SetTolerance()`
+    /// **Source:** `BRepLib_PointCloudShape.hxx`:52 - `BRepLib_PointCloudShape::SetTolerance()`
     pub fn BRepLib_PointCloudShape_set_tolerance(
         self_: *mut BRepLib_PointCloudShape,
         theTol: f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepLib_PointCloudShape.hxx`:54 - `BRepLib_PointCloudShape::GetDistance()`
+    /// **Source:** `BRepLib_PointCloudShape.hxx`:56 - `BRepLib_PointCloudShape::GetDistance()`
     pub fn BRepLib_PointCloudShape_get_distance(
         self_: *const BRepLib_PointCloudShape,
     ) -> crate::OcctResult<f64>;
-    /// **Source:** `BRepLib_PointCloudShape.hxx`:58 - `BRepLib_PointCloudShape::SetDistance()`
+    /// **Source:** `BRepLib_PointCloudShape.hxx`:60 - `BRepLib_PointCloudShape::SetDistance()`
     pub fn BRepLib_PointCloudShape_set_distance(
         self_: *mut BRepLib_PointCloudShape,
         theDist: f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepLib_PointCloudShape.hxx`:61 - `BRepLib_PointCloudShape::NbPointsByDensity()`
+    /// **Source:** `BRepLib_PointCloudShape.hxx`:63 - `BRepLib_PointCloudShape::NbPointsByDensity()`
     pub fn BRepLib_PointCloudShape_nb_points_by_density(
         self_: *mut BRepLib_PointCloudShape,
         theDensity: f64,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `BRepLib_PointCloudShape.hxx`:64 - `BRepLib_PointCloudShape::NbPointsByTriangulation()`
+    /// **Source:** `BRepLib_PointCloudShape.hxx`:66 - `BRepLib_PointCloudShape::NbPointsByTriangulation()`
     pub fn BRepLib_PointCloudShape_nb_points_by_triangulation(
         self_: *const BRepLib_PointCloudShape,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `BRepLib_PointCloudShape.hxx`:71 - `BRepLib_PointCloudShape::GeneratePointsByDensity()`
+    /// **Source:** `BRepLib_PointCloudShape.hxx`:73 - `BRepLib_PointCloudShape::GeneratePointsByDensity()`
     pub fn BRepLib_PointCloudShape_generate_points_by_density(
         self_: *mut BRepLib_PointCloudShape,
         theDensity: f64,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BRepLib_PointCloudShape.hxx`:74 - `BRepLib_PointCloudShape::GeneratePointsByTriangulation()`
+    /// **Source:** `BRepLib_PointCloudShape.hxx`:76 - `BRepLib_PointCloudShape::GeneratePointsByTriangulation()`
     pub fn BRepLib_PointCloudShape_generate_points_by_triangulation(
         self_: *mut BRepLib_PointCloudShape,
     ) -> crate::OcctResult<bool>;
@@ -10525,20 +10437,20 @@ unsafe extern "C" {
     /// **Source:** `BRepLib_ToolTriangulatedShape.hxx`:31 - `BRepLib_ToolTriangulatedShape::ComputeNormals()`
     pub fn BRepLib_ToolTriangulatedShape_compute_normals_face_handlepolytriangulation(
         theFace: *const TopoDS_Face,
-        theTris: *const HandlePolyTriangulation,
+        theTris: *const Handle_Poly_Triangulation,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepLib_ToolTriangulatedShape.hxx`:42 - `BRepLib_ToolTriangulatedShape::ComputeNormals()`
+    /// **Source:** `BRepLib_ToolTriangulatedShape.hxx`:43 - `BRepLib_ToolTriangulatedShape::ComputeNormals()`
     pub fn BRepLib_ToolTriangulatedShape_compute_normals_face_handlepolytriangulation_connect(
         theFace: *const TopoDS_Face,
-        theTris: *const HandlePolyTriangulation,
+        theTris: *const Handle_Poly_Triangulation,
         thePolyConnect: *mut Poly_Connect,
     ) -> *const std::ffi::c_char;
     // ======================== BRepLib_ValidateEdge ========================
     pub fn BRepLib_ValidateEdge_destructor(self_: *mut BRepLib_ValidateEdge);
     /// **Source:** `BRepLib_ValidateEdge.hxx`:30 - `BRepLib_ValidateEdge::BRepLib_ValidateEdge()`
     pub fn BRepLib_ValidateEdge_ctor_handleadaptor3dcurve_handleadaptor3dcurveonsurface_bool(
-        theReferenceCurve: *const HandleAdaptor3dCurve,
-        theOtherCurve: *const HandleAdaptor3dCurveOnSurface,
+        theReferenceCurve: *const Handle_Adaptor3d_Curve,
+        theOtherCurve: *const Handle_Adaptor3d_CurveOnSurface,
         theSameParameter: bool,
     ) -> crate::OcctResult<*mut BRepLib_ValidateEdge>;
     /// **Source:** `BRepLib_ValidateEdge.hxx`:39 - `BRepLib_ValidateEdge::SetExactMethod()`
@@ -10593,9 +10505,9 @@ unsafe extern "C" {
     ) -> *const std::ffi::c_char;
     // ======================== BRepMAT2d_BisectingLocus ========================
     pub fn BRepMAT2d_BisectingLocus_destructor(self_: *mut BRepMAT2d_BisectingLocus);
-    /// **Source:** `BRepMAT2d_BisectingLocus.hxx`:78 - `BRepMAT2d_BisectingLocus::BRepMAT2d_BisectingLocus()`
+    /// **Source:** `BRepMAT2d_BisectingLocus.hxx`:79 - `BRepMAT2d_BisectingLocus::BRepMAT2d_BisectingLocus()`
     pub fn BRepMAT2d_BisectingLocus_ctor() -> crate::OcctResult<*mut BRepMAT2d_BisectingLocus>;
-    /// **Source:** `BRepMAT2d_BisectingLocus.hxx`:84 - `BRepMAT2d_BisectingLocus::Compute()`
+    /// **Source:** `BRepMAT2d_BisectingLocus.hxx`:85 - `BRepMAT2d_BisectingLocus::Compute()`
     pub fn BRepMAT2d_BisectingLocus_compute(
         self_: *mut BRepMAT2d_BisectingLocus,
         anExplo: *mut BRepMAT2d_Explorer,
@@ -10604,24 +10516,24 @@ unsafe extern "C" {
         aJoinType: i32,
         IsOpenResult: bool,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepMAT2d_BisectingLocus.hxx`:91 - `BRepMAT2d_BisectingLocus::IsDone()`
+    /// **Source:** `BRepMAT2d_BisectingLocus.hxx`:92 - `BRepMAT2d_BisectingLocus::IsDone()`
     pub fn BRepMAT2d_BisectingLocus_is_done(
         self_: *const BRepMAT2d_BisectingLocus,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BRepMAT2d_BisectingLocus.hxx`:94 - `BRepMAT2d_BisectingLocus::Graph()`
+    /// **Source:** `BRepMAT2d_BisectingLocus.hxx`:95 - `BRepMAT2d_BisectingLocus::Graph()`
     pub fn BRepMAT2d_BisectingLocus_graph(
         self_: *const BRepMAT2d_BisectingLocus,
-    ) -> crate::OcctResult<*mut HandleMATGraph>;
-    /// **Source:** `BRepMAT2d_BisectingLocus.hxx`:97 - `BRepMAT2d_BisectingLocus::NumberOfContours()`
+    ) -> crate::OcctResult<*mut Handle_MAT_Graph>;
+    /// **Source:** `BRepMAT2d_BisectingLocus.hxx`:98 - `BRepMAT2d_BisectingLocus::NumberOfContours()`
     pub fn BRepMAT2d_BisectingLocus_number_of_contours(
         self_: *const BRepMAT2d_BisectingLocus,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `BRepMAT2d_BisectingLocus.hxx`:101 - `BRepMAT2d_BisectingLocus::NumberOfElts()`
+    /// **Source:** `BRepMAT2d_BisectingLocus.hxx`:102 - `BRepMAT2d_BisectingLocus::NumberOfElts()`
     pub fn BRepMAT2d_BisectingLocus_number_of_elts(
         self_: *const BRepMAT2d_BisectingLocus,
         IndLine: i32,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `BRepMAT2d_BisectingLocus.hxx`:106 - `BRepMAT2d_BisectingLocus::NumberOfSections()`
+    /// **Source:** `BRepMAT2d_BisectingLocus.hxx`:107 - `BRepMAT2d_BisectingLocus::NumberOfSections()`
     pub fn BRepMAT2d_BisectingLocus_number_of_sections(
         self_: *const BRepMAT2d_BisectingLocus,
         IndLine: i32,
@@ -10632,21 +10544,21 @@ unsafe extern "C" {
         self_: *const BRepMAT2d_BisectingLocus,
         IndLine: i32,
         Index: i32,
-    ) -> crate::OcctResult<*mut HandleMATBasicElt>;
-    /// **Source:** `BRepMAT2d_BisectingLocus.hxx`:116 - `BRepMAT2d_BisectingLocus::GeomElt()`
+    ) -> crate::OcctResult<*mut Handle_MAT_BasicElt>;
+    /// **Source:** `BRepMAT2d_BisectingLocus.hxx`:115 - `BRepMAT2d_BisectingLocus::GeomElt()`
     pub fn BRepMAT2d_BisectingLocus_geom_elt_handlematbasicelt(
         self_: *const BRepMAT2d_BisectingLocus,
-        aBasicElt: *const HandleMATBasicElt,
-    ) -> crate::OcctResult<*mut HandleGeom2dGeometry>;
+        aBasicElt: *const Handle_MAT_BasicElt,
+    ) -> crate::OcctResult<*mut Handle_Geom2d_Geometry>;
     /// **Source:** `BRepMAT2d_BisectingLocus.hxx`:120 - `BRepMAT2d_BisectingLocus::GeomElt()`
     pub fn BRepMAT2d_BisectingLocus_geom_elt_handlematnode(
         self_: *const BRepMAT2d_BisectingLocus,
-        aNode: *const HandleMATNode,
+        aNode: *const Handle_MAT_Node,
     ) -> crate::OcctResult<*mut gp_Pnt2d>;
     /// **Source:** `BRepMAT2d_BisectingLocus.hxx`:126 - `BRepMAT2d_BisectingLocus::GeomBis()`
     pub fn BRepMAT2d_BisectingLocus_geom_bis(
         self_: *const BRepMAT2d_BisectingLocus,
-        anArc: *const HandleMATArc,
+        anArc: *const Handle_MAT_Arc,
         Reverse: *mut bool,
     ) -> crate::OcctResult<*mut Bisector_Bisec>;
     // ======================== BRepMAT2d_Explorer ========================
@@ -10685,16 +10597,11 @@ unsafe extern "C" {
     /// **Source:** `BRepMAT2d_Explorer.hxx`:69 - `BRepMAT2d_Explorer::Value()`
     pub fn BRepMAT2d_Explorer_value(
         self_: *const BRepMAT2d_Explorer,
-    ) -> crate::OcctResult<*mut HandleGeom2dCurve>;
+    ) -> crate::OcctResult<*mut Handle_Geom2d_Curve>;
     /// **Source:** `BRepMAT2d_Explorer.hxx`:71 - `BRepMAT2d_Explorer::Shape()`
     pub fn BRepMAT2d_Explorer_shape(
         self_: *const BRepMAT2d_Explorer,
     ) -> crate::OcctResult<*mut TopoDS_Shape>;
-    /// **Source:** `BRepMAT2d_Explorer.hxx`:73 - `BRepMAT2d_Explorer::Contour()`
-    pub fn BRepMAT2d_Explorer_contour(
-        self_: *const BRepMAT2d_Explorer,
-        IndexContour: i32,
-    ) -> crate::OcctResult<*const TColGeom2d_SequenceOfCurve>;
     /// **Source:** `BRepMAT2d_Explorer.hxx`:76 - `BRepMAT2d_Explorer::IsModified()`
     pub fn BRepMAT2d_Explorer_is_modified(
         self_: *const BRepMAT2d_Explorer,
@@ -10708,71 +10615,71 @@ unsafe extern "C" {
     /// **Source:** `BRepMAT2d_Explorer.hxx`:81 - `BRepMAT2d_Explorer::GetIsClosed()`
     pub fn BRepMAT2d_Explorer_get_is_closed(
         self_: *const BRepMAT2d_Explorer,
-    ) -> crate::OcctResult<*const TColStd_SequenceOfBoolean>;
+    ) -> crate::OcctResult<*const NCollection_Sequence_bool>;
     // ======================== BRepMAT2d_LinkTopoBilo ========================
     pub fn BRepMAT2d_LinkTopoBilo_destructor(self_: *mut BRepMAT2d_LinkTopoBilo);
-    /// **Source:** `BRepMAT2d_LinkTopoBilo.hxx`:40 - `BRepMAT2d_LinkTopoBilo::BRepMAT2d_LinkTopoBilo()`
+    /// **Source:** `BRepMAT2d_LinkTopoBilo.hxx`:42 - `BRepMAT2d_LinkTopoBilo::BRepMAT2d_LinkTopoBilo()`
     pub fn BRepMAT2d_LinkTopoBilo_ctor() -> crate::OcctResult<*mut BRepMAT2d_LinkTopoBilo>;
-    /// **Source:** `BRepMAT2d_LinkTopoBilo.hxx`:45 - `BRepMAT2d_LinkTopoBilo::BRepMAT2d_LinkTopoBilo()`
+    /// **Source:** `BRepMAT2d_LinkTopoBilo.hxx`:47 - `BRepMAT2d_LinkTopoBilo::BRepMAT2d_LinkTopoBilo()`
     pub fn BRepMAT2d_LinkTopoBilo_ctor_explorer_bisectinglocus(
         Explo: *const BRepMAT2d_Explorer,
         BiLo: *const BRepMAT2d_BisectingLocus,
     ) -> crate::OcctResult<*mut BRepMAT2d_LinkTopoBilo>;
-    /// **Source:** `BRepMAT2d_LinkTopoBilo.hxx`:51 - `BRepMAT2d_LinkTopoBilo::Perform()`
+    /// **Source:** `BRepMAT2d_LinkTopoBilo.hxx`:53 - `BRepMAT2d_LinkTopoBilo::Perform()`
     pub fn BRepMAT2d_LinkTopoBilo_perform(
         self_: *mut BRepMAT2d_LinkTopoBilo,
         Explo: *const BRepMAT2d_Explorer,
         BiLo: *const BRepMAT2d_BisectingLocus,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepMAT2d_LinkTopoBilo.hxx`:58 - `BRepMAT2d_LinkTopoBilo::Init()`
+    /// **Source:** `BRepMAT2d_LinkTopoBilo.hxx`:60 - `BRepMAT2d_LinkTopoBilo::Init()`
     pub fn BRepMAT2d_LinkTopoBilo_init(
         self_: *mut BRepMAT2d_LinkTopoBilo,
         S: *const TopoDS_Shape,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepMAT2d_LinkTopoBilo.hxx`:61 - `BRepMAT2d_LinkTopoBilo::More()`
+    /// **Source:** `BRepMAT2d_LinkTopoBilo.hxx`:63 - `BRepMAT2d_LinkTopoBilo::More()`
     pub fn BRepMAT2d_LinkTopoBilo_more(
         self_: *mut BRepMAT2d_LinkTopoBilo,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BRepMAT2d_LinkTopoBilo.hxx`:64 - `BRepMAT2d_LinkTopoBilo::Next()`
+    /// **Source:** `BRepMAT2d_LinkTopoBilo.hxx`:66 - `BRepMAT2d_LinkTopoBilo::Next()`
     pub fn BRepMAT2d_LinkTopoBilo_next(
         self_: *mut BRepMAT2d_LinkTopoBilo,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepMAT2d_LinkTopoBilo.hxx`:67 - `BRepMAT2d_LinkTopoBilo::Value()`
+    /// **Source:** `BRepMAT2d_LinkTopoBilo.hxx`:69 - `BRepMAT2d_LinkTopoBilo::Value()`
     pub fn BRepMAT2d_LinkTopoBilo_value(
         self_: *const BRepMAT2d_LinkTopoBilo,
-    ) -> crate::OcctResult<*mut HandleMATBasicElt>;
-    /// **Source:** `BRepMAT2d_LinkTopoBilo.hxx`:70 - `BRepMAT2d_LinkTopoBilo::GeneratingShape()`
+    ) -> crate::OcctResult<*mut Handle_MAT_BasicElt>;
+    /// **Source:** `BRepMAT2d_LinkTopoBilo.hxx`:72 - `BRepMAT2d_LinkTopoBilo::GeneratingShape()`
     pub fn BRepMAT2d_LinkTopoBilo_generating_shape(
         self_: *const BRepMAT2d_LinkTopoBilo,
-        aBE: *const HandleMATBasicElt,
+        aBE: *const Handle_MAT_BasicElt,
     ) -> crate::OcctResult<*mut TopoDS_Shape>;
     // ======================== BRepTopAdaptor_FClass2d ========================
     pub fn BRepTopAdaptor_FClass2d_destructor(self_: *mut BRepTopAdaptor_FClass2d);
-    /// **Source:** `BRepTopAdaptor_FClass2d.hxx`:34 - `BRepTopAdaptor_FClass2d::BRepTopAdaptor_FClass2d()`
+    /// **Source:** `BRepTopAdaptor_FClass2d.hxx`:36 - `BRepTopAdaptor_FClass2d::BRepTopAdaptor_FClass2d()`
     pub fn BRepTopAdaptor_FClass2d_ctor_face_real(
         F: *const TopoDS_Face,
         Tol: f64,
     ) -> crate::OcctResult<*mut BRepTopAdaptor_FClass2d>;
-    /// **Source:** `BRepTopAdaptor_FClass2d.hxx`:36 - `BRepTopAdaptor_FClass2d::PerformInfinitePoint()`
+    /// **Source:** `BRepTopAdaptor_FClass2d.hxx`:38 - `BRepTopAdaptor_FClass2d::PerformInfinitePoint()`
     pub fn BRepTopAdaptor_FClass2d_perform_infinite_point(
         self_: *const BRepTopAdaptor_FClass2d,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `BRepTopAdaptor_FClass2d.hxx`:39 - `BRepTopAdaptor_FClass2d::Perform()`
+    /// **Source:** `BRepTopAdaptor_FClass2d.hxx`:40 - `BRepTopAdaptor_FClass2d::Perform()`
     pub fn BRepTopAdaptor_FClass2d_perform(
         self_: *const BRepTopAdaptor_FClass2d,
         Puv: *const gp_Pnt2d,
         RecadreOnPeriodic: bool,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `BRepTopAdaptor_FClass2d.hxx`:41 - `BRepTopAdaptor_FClass2d::Destroy()`
+    /// **Source:** `BRepTopAdaptor_FClass2d.hxx`:43 - `BRepTopAdaptor_FClass2d::Destroy()`
     pub fn BRepTopAdaptor_FClass2d_destroy(
         self_: *mut BRepTopAdaptor_FClass2d,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepTopAdaptor_FClass2d.hxx`:45 - `BRepTopAdaptor_FClass2d::Copy()`
+    /// **Source:** `BRepTopAdaptor_FClass2d.hxx`:47 - `BRepTopAdaptor_FClass2d::Copy()`
     pub fn BRepTopAdaptor_FClass2d_copy(
         self_: *const BRepTopAdaptor_FClass2d,
         Other: *const BRepTopAdaptor_FClass2d,
     ) -> crate::OcctResult<*const BRepTopAdaptor_FClass2d>;
-    /// **Source:** `BRepTopAdaptor_FClass2d.hxx`:56 - `BRepTopAdaptor_FClass2d::TestOnRestriction()`
+    /// **Source:** `BRepTopAdaptor_FClass2d.hxx`:57 - `BRepTopAdaptor_FClass2d::TestOnRestriction()`
     pub fn BRepTopAdaptor_FClass2d_test_on_restriction(
         self_: *const BRepTopAdaptor_FClass2d,
         Puv: *const gp_Pnt2d,
@@ -10781,51 +10688,51 @@ unsafe extern "C" {
     ) -> crate::OcctResult<i32>;
     // ======================== BRepTopAdaptor_HVertex ========================
     pub fn BRepTopAdaptor_HVertex_destructor(self_: *mut BRepTopAdaptor_HVertex);
-    /// **Source:** `BRepTopAdaptor_HVertex.hxx`:36 - `BRepTopAdaptor_HVertex::BRepTopAdaptor_HVertex()`
+    /// **Source:** `BRepTopAdaptor_HVertex.hxx`:33 - `BRepTopAdaptor_HVertex::BRepTopAdaptor_HVertex()`
     pub fn BRepTopAdaptor_HVertex_ctor_vertex_handlebrepadaptorcurve2d(
         Vtx: *const TopoDS_Vertex,
-        Curve: *const HandleBRepAdaptorCurve2d,
+        Curve: *const Handle_BRepAdaptor_Curve2d,
     ) -> crate::OcctResult<*mut BRepTopAdaptor_HVertex>;
-    /// **Source:** `BRepTopAdaptor_HVertex.hxx`:39 - `BRepTopAdaptor_HVertex::Vertex()`
+    /// **Source:** `BRepTopAdaptor_HVertex.hxx`:36 - `BRepTopAdaptor_HVertex::Vertex()`
     pub fn BRepTopAdaptor_HVertex_vertex(
         self_: *const BRepTopAdaptor_HVertex,
     ) -> crate::OcctResult<*const TopoDS_Vertex>;
-    /// **Source:** `BRepTopAdaptor_HVertex.hxx`:41 - `BRepTopAdaptor_HVertex::ChangeVertex()`
+    /// **Source:** `BRepTopAdaptor_HVertex.hxx`:38 - `BRepTopAdaptor_HVertex::ChangeVertex()`
     pub fn BRepTopAdaptor_HVertex_change_vertex(
         self_: *mut BRepTopAdaptor_HVertex,
     ) -> crate::OcctResult<*mut TopoDS_Vertex>;
-    /// **Source:** `BRepTopAdaptor_HVertex.hxx`:43 - `BRepTopAdaptor_HVertex::Value()`
+    /// **Source:** `BRepTopAdaptor_HVertex.hxx`:40 - `BRepTopAdaptor_HVertex::Value()`
     pub fn BRepTopAdaptor_HVertex_value(
         self_: *mut BRepTopAdaptor_HVertex,
     ) -> crate::OcctResult<*mut gp_Pnt2d>;
-    /// **Source:** `BRepTopAdaptor_HVertex.hxx`:45 - `BRepTopAdaptor_HVertex::Parameter()`
+    /// **Source:** `BRepTopAdaptor_HVertex.hxx`:42 - `BRepTopAdaptor_HVertex::Parameter()`
     pub fn BRepTopAdaptor_HVertex_parameter(
         self_: *mut BRepTopAdaptor_HVertex,
-        C: *const HandleAdaptor2dCurve2d,
+        C: *const Handle_Adaptor2d_Curve2d,
     ) -> crate::OcctResult<f64>;
-    /// **Source:** `BRepTopAdaptor_HVertex.hxx`:49 - `BRepTopAdaptor_HVertex::Resolution()`
+    /// **Source:** `BRepTopAdaptor_HVertex.hxx`:45 - `BRepTopAdaptor_HVertex::Resolution()`
     pub fn BRepTopAdaptor_HVertex_resolution(
         self_: *mut BRepTopAdaptor_HVertex,
-        C: *const HandleAdaptor2dCurve2d,
+        C: *const Handle_Adaptor2d_Curve2d,
     ) -> crate::OcctResult<f64>;
-    /// **Source:** `BRepTopAdaptor_HVertex.hxx`:52 - `BRepTopAdaptor_HVertex::Orientation()`
+    /// **Source:** `BRepTopAdaptor_HVertex.hxx`:47 - `BRepTopAdaptor_HVertex::Orientation()`
     pub fn BRepTopAdaptor_HVertex_orientation(
         self_: *mut BRepTopAdaptor_HVertex,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `BRepTopAdaptor_HVertex.hxx`:54 - `BRepTopAdaptor_HVertex::IsSame()`
+    /// **Source:** `BRepTopAdaptor_HVertex.hxx`:49 - `BRepTopAdaptor_HVertex::IsSame()`
     pub fn BRepTopAdaptor_HVertex_is_same(
         self_: *mut BRepTopAdaptor_HVertex,
-        Other: *const HandleAdaptor3dHVertex,
+        Other: *const Handle_Adaptor3d_HVertex,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BRepTopAdaptor_HVertex.hxx`:57 - `BRepTopAdaptor_HVertex::DynamicType()`
+    /// **Source:** `BRepTopAdaptor_HVertex.hxx`:51 - `BRepTopAdaptor_HVertex::DynamicType()`
     pub fn BRepTopAdaptor_HVertex_dynamic_type(
         self_: *const BRepTopAdaptor_HVertex,
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// **Source:** `BRepTopAdaptor_HVertex.hxx`:57 - `BRepTopAdaptor_HVertex::get_type_name()`
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
+    /// **Source:** `BRepTopAdaptor_HVertex.hxx`:51 - `BRepTopAdaptor_HVertex::get_type_name()`
     pub fn BRepTopAdaptor_HVertex_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
-    /// **Source:** `BRepTopAdaptor_HVertex.hxx`:57 - `BRepTopAdaptor_HVertex::get_type_descriptor()`
+    /// **Source:** `BRepTopAdaptor_HVertex.hxx`:51 - `BRepTopAdaptor_HVertex::get_type_descriptor()`
     pub fn BRepTopAdaptor_HVertex_get_type_descriptor(
-    ) -> crate::OcctResult<*const HandleStandardType>;
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast BRepTopAdaptor_HVertex to Adaptor3d_HVertex
     pub fn BRepTopAdaptor_HVertex_as_Adaptor3d_HVertex(
         self_: *const BRepTopAdaptor_HVertex,
@@ -10845,58 +10752,60 @@ unsafe extern "C" {
     /// Wrap BRepTopAdaptor_HVertex in a Handle
     pub fn BRepTopAdaptor_HVertex_to_handle(
         obj: *mut BRepTopAdaptor_HVertex,
-    ) -> crate::OcctResult<*mut HandleBRepTopAdaptorHVertex>;
+    ) -> crate::OcctResult<*mut Handle_BRepTopAdaptor_HVertex>;
     /// Destroy Handle<BRepTopAdaptor_HVertex>
-    pub fn HandleBRepTopAdaptorHVertex_destructor(self_: *mut HandleBRepTopAdaptorHVertex);
+    pub fn Handle_BRepTopAdaptor_HVertex_destructor(self_: *mut Handle_BRepTopAdaptor_HVertex);
     /// Clone Handle<BRepTopAdaptor_HVertex> (increments reference count)
-    pub fn HandleBRepTopAdaptorHVertex_clone(
-        self_: *const HandleBRepTopAdaptorHVertex,
-    ) -> crate::OcctResult<*mut HandleBRepTopAdaptorHVertex>;
+    pub fn Handle_BRepTopAdaptor_HVertex_clone(
+        self_: *const Handle_BRepTopAdaptor_HVertex,
+    ) -> crate::OcctResult<*mut Handle_BRepTopAdaptor_HVertex>;
     /// Check if Handle<BRepTopAdaptor_HVertex> is null
-    pub fn HandleBRepTopAdaptorHVertex_is_null(self_: *const HandleBRepTopAdaptorHVertex) -> bool;
+    pub fn Handle_BRepTopAdaptor_HVertex_is_null(
+        self_: *const Handle_BRepTopAdaptor_HVertex,
+    ) -> bool;
     /// Dereference Handle to get *const BRepTopAdaptor_HVertex
-    pub fn HandleBRepTopAdaptorHVertex_get(
-        handle: *const HandleBRepTopAdaptorHVertex,
+    pub fn Handle_BRepTopAdaptor_HVertex_get(
+        handle: *const Handle_BRepTopAdaptor_HVertex,
     ) -> crate::OcctResult<*const BRepTopAdaptor_HVertex>;
     /// Dereference Handle to get *mut BRepTopAdaptor_HVertex
-    pub fn HandleBRepTopAdaptorHVertex_get_mut(
-        handle: *mut HandleBRepTopAdaptorHVertex,
+    pub fn Handle_BRepTopAdaptor_HVertex_get_mut(
+        handle: *mut Handle_BRepTopAdaptor_HVertex,
     ) -> crate::OcctResult<*mut BRepTopAdaptor_HVertex>;
     /// Upcast Handle<BRepTopAdaptor_HVertex> to Handle<Adaptor3d_HVertex>
-    pub fn HandleBRepTopAdaptorHVertex_to_HandleAdaptor3dHVertex(
-        self_: *const HandleBRepTopAdaptorHVertex,
-    ) -> crate::OcctResult<*mut HandleAdaptor3dHVertex>;
+    pub fn Handle_BRepTopAdaptor_HVertex_to_Handle_Adaptor3d_HVertex(
+        self_: *const Handle_BRepTopAdaptor_HVertex,
+    ) -> crate::OcctResult<*mut Handle_Adaptor3d_HVertex>;
     /// Upcast Handle<BRepTopAdaptor_HVertex> to Handle<Standard_Transient>
-    pub fn HandleBRepTopAdaptorHVertex_to_HandleStandardTransient(
-        self_: *const HandleBRepTopAdaptorHVertex,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn Handle_BRepTopAdaptor_HVertex_to_Handle_Standard_Transient(
+        self_: *const Handle_BRepTopAdaptor_HVertex,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn BRepTopAdaptor_HVertex_inherited_IsInstance(
         self_: *const BRepTopAdaptor_HVertex,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn BRepTopAdaptor_HVertex_inherited_IsKind(
         self_: *const BRepTopAdaptor_HVertex,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn BRepTopAdaptor_HVertex_inherited_This(
         self_: *const BRepTopAdaptor_HVertex,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn BRepTopAdaptor_HVertex_inherited_GetRefCount(
         self_: *const BRepTopAdaptor_HVertex,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn BRepTopAdaptor_HVertex_inherited_IncrementRefCounter(
         self_: *mut BRepTopAdaptor_HVertex,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn BRepTopAdaptor_HVertex_inherited_DecrementRefCounter(
         self_: *mut BRepTopAdaptor_HVertex,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn BRepTopAdaptor_HVertex_inherited_Delete(
         self_: *const BRepTopAdaptor_HVertex,
     ) -> *const std::ffi::c_char;
@@ -10911,7 +10820,7 @@ unsafe extern "C" {
     ) -> crate::OcctResult<*mut BRepTopAdaptor_Tool>;
     /// **Source:** `BRepTopAdaptor_Tool.hxx`:34 - `BRepTopAdaptor_Tool::BRepTopAdaptor_Tool()`
     pub fn BRepTopAdaptor_Tool_ctor_handleadaptor3dsurface_real(
-        Surface: *const HandleAdaptor3dSurface,
+        Surface: *const Handle_Adaptor3d_Surface,
         Tol2d: f64,
     ) -> crate::OcctResult<*mut BRepTopAdaptor_Tool>;
     /// **Source:** `BRepTopAdaptor_Tool.hxx`:37 - `BRepTopAdaptor_Tool::Init()`
@@ -10923,165 +10832,165 @@ unsafe extern "C" {
     /// **Source:** `BRepTopAdaptor_Tool.hxx`:39 - `BRepTopAdaptor_Tool::Init()`
     pub fn BRepTopAdaptor_Tool_init_handleadaptor3dsurface_real(
         self_: *mut BRepTopAdaptor_Tool,
-        Surface: *const HandleAdaptor3dSurface,
+        Surface: *const Handle_Adaptor3d_Surface,
         Tol2d: f64,
     ) -> *const std::ffi::c_char;
     /// **Source:** `BRepTopAdaptor_Tool.hxx`:41 - `BRepTopAdaptor_Tool::GetTopolTool()`
     pub fn BRepTopAdaptor_Tool_get_topol_tool(
         self_: *mut BRepTopAdaptor_Tool,
-    ) -> crate::OcctResult<*mut HandleBRepTopAdaptorTopolTool>;
+    ) -> crate::OcctResult<*mut Handle_BRepTopAdaptor_TopolTool>;
     /// **Source:** `BRepTopAdaptor_Tool.hxx`:43 - `BRepTopAdaptor_Tool::SetTopolTool()`
     pub fn BRepTopAdaptor_Tool_set_topol_tool(
         self_: *mut BRepTopAdaptor_Tool,
-        TT: *const HandleBRepTopAdaptorTopolTool,
+        TT: *const Handle_BRepTopAdaptor_TopolTool,
     ) -> *const std::ffi::c_char;
     /// **Source:** `BRepTopAdaptor_Tool.hxx`:45 - `BRepTopAdaptor_Tool::GetSurface()`
     pub fn BRepTopAdaptor_Tool_get_surface(
         self_: *mut BRepTopAdaptor_Tool,
-    ) -> crate::OcctResult<*mut HandleAdaptor3dSurface>;
+    ) -> crate::OcctResult<*mut Handle_Adaptor3d_Surface>;
     /// **Source:** `BRepTopAdaptor_Tool.hxx`:47 - `BRepTopAdaptor_Tool::Destroy()`
     pub fn BRepTopAdaptor_Tool_destroy(self_: *mut BRepTopAdaptor_Tool) -> *const std::ffi::c_char;
     // ======================== BRepTopAdaptor_TopolTool ========================
     pub fn BRepTopAdaptor_TopolTool_destructor(self_: *mut BRepTopAdaptor_TopolTool);
-    /// **Source:** `BRepTopAdaptor_TopolTool.hxx`:41 - `BRepTopAdaptor_TopolTool::BRepTopAdaptor_TopolTool()`
+    /// **Source:** `BRepTopAdaptor_TopolTool.hxx`:39 - `BRepTopAdaptor_TopolTool::BRepTopAdaptor_TopolTool()`
     pub fn BRepTopAdaptor_TopolTool_ctor() -> crate::OcctResult<*mut BRepTopAdaptor_TopolTool>;
-    /// **Source:** `BRepTopAdaptor_TopolTool.hxx`:43 - `BRepTopAdaptor_TopolTool::BRepTopAdaptor_TopolTool()`
+    /// **Source:** `BRepTopAdaptor_TopolTool.hxx`:41 - `BRepTopAdaptor_TopolTool::BRepTopAdaptor_TopolTool()`
     pub fn BRepTopAdaptor_TopolTool_ctor_handleadaptor3dsurface(
-        Surface: *const HandleAdaptor3dSurface,
+        Surface: *const Handle_Adaptor3d_Surface,
     ) -> crate::OcctResult<*mut BRepTopAdaptor_TopolTool>;
-    /// **Source:** `BRepTopAdaptor_TopolTool.hxx`:45 - `BRepTopAdaptor_TopolTool::Initialize()`
+    /// **Source:** `BRepTopAdaptor_TopolTool.hxx`:43 - `BRepTopAdaptor_TopolTool::Initialize()`
     pub fn BRepTopAdaptor_TopolTool_initialize(
         self_: *mut BRepTopAdaptor_TopolTool,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepTopAdaptor_TopolTool.hxx`:47 - `BRepTopAdaptor_TopolTool::Initialize()`
+    /// **Source:** `BRepTopAdaptor_TopolTool.hxx`:45 - `BRepTopAdaptor_TopolTool::Initialize()`
     pub fn BRepTopAdaptor_TopolTool_initialize_handleadaptor3dsurface(
         self_: *mut BRepTopAdaptor_TopolTool,
-        S: *const HandleAdaptor3dSurface,
+        S: *const Handle_Adaptor3d_Surface,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepTopAdaptor_TopolTool.hxx`:49 - `BRepTopAdaptor_TopolTool::Initialize()`
+    /// **Source:** `BRepTopAdaptor_TopolTool.hxx`:47 - `BRepTopAdaptor_TopolTool::Initialize()`
     pub fn BRepTopAdaptor_TopolTool_initialize_handleadaptor2dcurve2d(
         self_: *mut BRepTopAdaptor_TopolTool,
-        Curve: *const HandleAdaptor2dCurve2d,
+        Curve: *const Handle_Adaptor2d_Curve2d,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepTopAdaptor_TopolTool.hxx`:51 - `BRepTopAdaptor_TopolTool::Init()`
+    /// **Source:** `BRepTopAdaptor_TopolTool.hxx`:49 - `BRepTopAdaptor_TopolTool::Init()`
     pub fn BRepTopAdaptor_TopolTool_init(
         self_: *mut BRepTopAdaptor_TopolTool,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepTopAdaptor_TopolTool.hxx`:53 - `BRepTopAdaptor_TopolTool::More()`
+    /// **Source:** `BRepTopAdaptor_TopolTool.hxx`:51 - `BRepTopAdaptor_TopolTool::More()`
     pub fn BRepTopAdaptor_TopolTool_more(
         self_: *mut BRepTopAdaptor_TopolTool,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BRepTopAdaptor_TopolTool.hxx`:55 - `BRepTopAdaptor_TopolTool::Value()`
+    /// **Source:** `BRepTopAdaptor_TopolTool.hxx`:53 - `BRepTopAdaptor_TopolTool::Value()`
     pub fn BRepTopAdaptor_TopolTool_value(
         self_: *mut BRepTopAdaptor_TopolTool,
-    ) -> crate::OcctResult<*mut HandleAdaptor2dCurve2d>;
-    /// **Source:** `BRepTopAdaptor_TopolTool.hxx`:57 - `BRepTopAdaptor_TopolTool::Next()`
+    ) -> crate::OcctResult<*mut Handle_Adaptor2d_Curve2d>;
+    /// **Source:** `BRepTopAdaptor_TopolTool.hxx`:55 - `BRepTopAdaptor_TopolTool::Next()`
     pub fn BRepTopAdaptor_TopolTool_next(
         self_: *mut BRepTopAdaptor_TopolTool,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepTopAdaptor_TopolTool.hxx`:59 - `BRepTopAdaptor_TopolTool::Edge()`
+    /// **Source:** `BRepTopAdaptor_TopolTool.hxx`:57 - `BRepTopAdaptor_TopolTool::Edge()`
     pub fn BRepTopAdaptor_TopolTool_edge(
         self_: *const BRepTopAdaptor_TopolTool,
     ) -> crate::OcctResult<*mut std::ffi::c_void>;
-    /// **Source:** `BRepTopAdaptor_TopolTool.hxx`:61 - `BRepTopAdaptor_TopolTool::InitVertexIterator()`
+    /// **Source:** `BRepTopAdaptor_TopolTool.hxx`:59 - `BRepTopAdaptor_TopolTool::InitVertexIterator()`
     pub fn BRepTopAdaptor_TopolTool_init_vertex_iterator(
         self_: *mut BRepTopAdaptor_TopolTool,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepTopAdaptor_TopolTool.hxx`:63 - `BRepTopAdaptor_TopolTool::MoreVertex()`
+    /// **Source:** `BRepTopAdaptor_TopolTool.hxx`:61 - `BRepTopAdaptor_TopolTool::MoreVertex()`
     pub fn BRepTopAdaptor_TopolTool_more_vertex(
         self_: *mut BRepTopAdaptor_TopolTool,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BRepTopAdaptor_TopolTool.hxx`:65 - `BRepTopAdaptor_TopolTool::Vertex()`
+    /// **Source:** `BRepTopAdaptor_TopolTool.hxx`:63 - `BRepTopAdaptor_TopolTool::Vertex()`
     pub fn BRepTopAdaptor_TopolTool_vertex(
         self_: *mut BRepTopAdaptor_TopolTool,
-    ) -> crate::OcctResult<*mut HandleAdaptor3dHVertex>;
-    /// **Source:** `BRepTopAdaptor_TopolTool.hxx`:67 - `BRepTopAdaptor_TopolTool::NextVertex()`
+    ) -> crate::OcctResult<*mut Handle_Adaptor3d_HVertex>;
+    /// **Source:** `BRepTopAdaptor_TopolTool.hxx`:65 - `BRepTopAdaptor_TopolTool::NextVertex()`
     pub fn BRepTopAdaptor_TopolTool_next_vertex(
         self_: *mut BRepTopAdaptor_TopolTool,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepTopAdaptor_TopolTool.hxx`:69 - `BRepTopAdaptor_TopolTool::Classify()`
+    /// **Source:** `BRepTopAdaptor_TopolTool.hxx`:67 - `BRepTopAdaptor_TopolTool::Classify()`
     pub fn BRepTopAdaptor_TopolTool_classify(
         self_: *mut BRepTopAdaptor_TopolTool,
         P2d: *const gp_Pnt2d,
         Tol: f64,
         RecadreOnPeriodic: bool,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `BRepTopAdaptor_TopolTool.hxx`:75 - `BRepTopAdaptor_TopolTool::IsThePointOn()`
+    /// **Source:** `BRepTopAdaptor_TopolTool.hxx`:72 - `BRepTopAdaptor_TopolTool::IsThePointOn()`
     pub fn BRepTopAdaptor_TopolTool_is_the_point_on(
         self_: *mut BRepTopAdaptor_TopolTool,
         P2d: *const gp_Pnt2d,
         Tol: f64,
         RecadreOnPeriodic: bool,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BRepTopAdaptor_TopolTool.hxx`:85 - `BRepTopAdaptor_TopolTool::Orientation()`
+    /// **Source:** `BRepTopAdaptor_TopolTool.hxx`:81 - `BRepTopAdaptor_TopolTool::Orientation()`
     pub fn BRepTopAdaptor_TopolTool_orientation_handleadaptor2dcurve2d(
         self_: *mut BRepTopAdaptor_TopolTool,
-        C: *const HandleAdaptor2dCurve2d,
+        C: *const Handle_Adaptor2d_Curve2d,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `BRepTopAdaptor_TopolTool.hxx`:93 - `BRepTopAdaptor_TopolTool::Orientation()`
+    /// **Source:** `BRepTopAdaptor_TopolTool.hxx`:88 - `BRepTopAdaptor_TopolTool::Orientation()`
     pub fn BRepTopAdaptor_TopolTool_orientation_handleadaptor3dhvertex(
         self_: *mut BRepTopAdaptor_TopolTool,
-        C: *const HandleAdaptor3dHVertex,
+        C: *const Handle_Adaptor3d_HVertex,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `BRepTopAdaptor_TopolTool.hxx`:96 - `BRepTopAdaptor_TopolTool::Destroy()`
+    /// **Source:** `BRepTopAdaptor_TopolTool.hxx`:90 - `BRepTopAdaptor_TopolTool::Destroy()`
     pub fn BRepTopAdaptor_TopolTool_destroy(
         self_: *mut BRepTopAdaptor_TopolTool,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepTopAdaptor_TopolTool.hxx`:102 - `BRepTopAdaptor_TopolTool::Has3d()`
+    /// **Source:** `BRepTopAdaptor_TopolTool.hxx`:96 - `BRepTopAdaptor_TopolTool::Has3d()`
     pub fn BRepTopAdaptor_TopolTool_has3d(
         self_: *const BRepTopAdaptor_TopolTool,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BRepTopAdaptor_TopolTool.hxx`:105 - `BRepTopAdaptor_TopolTool::Tol3d()`
+    /// **Source:** `BRepTopAdaptor_TopolTool.hxx`:99 - `BRepTopAdaptor_TopolTool::Tol3d()`
     pub fn BRepTopAdaptor_TopolTool_tol3d_handleadaptor2dcurve2d(
         self_: *const BRepTopAdaptor_TopolTool,
-        C: *const HandleAdaptor2dCurve2d,
+        C: *const Handle_Adaptor2d_Curve2d,
     ) -> crate::OcctResult<f64>;
-    /// **Source:** `BRepTopAdaptor_TopolTool.hxx`:109 - `BRepTopAdaptor_TopolTool::Tol3d()`
+    /// **Source:** `BRepTopAdaptor_TopolTool.hxx`:102 - `BRepTopAdaptor_TopolTool::Tol3d()`
     pub fn BRepTopAdaptor_TopolTool_tol3d_handleadaptor3dhvertex(
         self_: *const BRepTopAdaptor_TopolTool,
-        V: *const HandleAdaptor3dHVertex,
+        V: *const Handle_Adaptor3d_HVertex,
     ) -> crate::OcctResult<f64>;
-    /// **Source:** `BRepTopAdaptor_TopolTool.hxx`:113 - `BRepTopAdaptor_TopolTool::Pnt()`
+    /// **Source:** `BRepTopAdaptor_TopolTool.hxx`:105 - `BRepTopAdaptor_TopolTool::Pnt()`
     pub fn BRepTopAdaptor_TopolTool_pnt(
         self_: *const BRepTopAdaptor_TopolTool,
-        V: *const HandleAdaptor3dHVertex,
+        V: *const Handle_Adaptor3d_HVertex,
     ) -> crate::OcctResult<*mut gp_Pnt>;
-    /// **Source:** `BRepTopAdaptor_TopolTool.hxx`:115 - `BRepTopAdaptor_TopolTool::ComputeSamplePoints()`
+    /// **Source:** `BRepTopAdaptor_TopolTool.hxx`:107 - `BRepTopAdaptor_TopolTool::ComputeSamplePoints()`
     pub fn BRepTopAdaptor_TopolTool_compute_sample_points(
         self_: *mut BRepTopAdaptor_TopolTool,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepTopAdaptor_TopolTool.hxx`:118 - `BRepTopAdaptor_TopolTool::NbSamplesU()`
+    /// **Source:** `BRepTopAdaptor_TopolTool.hxx`:110 - `BRepTopAdaptor_TopolTool::NbSamplesU()`
     pub fn BRepTopAdaptor_TopolTool_nb_samples_u(
         self_: *mut BRepTopAdaptor_TopolTool,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `BRepTopAdaptor_TopolTool.hxx`:121 - `BRepTopAdaptor_TopolTool::NbSamplesV()`
+    /// **Source:** `BRepTopAdaptor_TopolTool.hxx`:113 - `BRepTopAdaptor_TopolTool::NbSamplesV()`
     pub fn BRepTopAdaptor_TopolTool_nb_samples_v(
         self_: *mut BRepTopAdaptor_TopolTool,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `BRepTopAdaptor_TopolTool.hxx`:124 - `BRepTopAdaptor_TopolTool::NbSamples()`
+    /// **Source:** `BRepTopAdaptor_TopolTool.hxx`:116 - `BRepTopAdaptor_TopolTool::NbSamples()`
     pub fn BRepTopAdaptor_TopolTool_nb_samples(
         self_: *mut BRepTopAdaptor_TopolTool,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `BRepTopAdaptor_TopolTool.hxx`:126 - `BRepTopAdaptor_TopolTool::SamplePoint()`
+    /// **Source:** `BRepTopAdaptor_TopolTool.hxx`:118 - `BRepTopAdaptor_TopolTool::SamplePoint()`
     pub fn BRepTopAdaptor_TopolTool_sample_point(
         self_: *mut BRepTopAdaptor_TopolTool,
         Index: i32,
         P2d: *mut gp_Pnt2d,
         P3d: *mut gp_Pnt,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepTopAdaptor_TopolTool.hxx`:130 - `BRepTopAdaptor_TopolTool::DomainIsInfinite()`
+    /// **Source:** `BRepTopAdaptor_TopolTool.hxx`:120 - `BRepTopAdaptor_TopolTool::DomainIsInfinite()`
     pub fn BRepTopAdaptor_TopolTool_domain_is_infinite(
         self_: *mut BRepTopAdaptor_TopolTool,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BRepTopAdaptor_TopolTool.hxx`:132 - `BRepTopAdaptor_TopolTool::DynamicType()`
+    /// **Source:** `BRepTopAdaptor_TopolTool.hxx`:122 - `BRepTopAdaptor_TopolTool::DynamicType()`
     pub fn BRepTopAdaptor_TopolTool_dynamic_type(
         self_: *const BRepTopAdaptor_TopolTool,
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// **Source:** `BRepTopAdaptor_TopolTool.hxx`:132 - `BRepTopAdaptor_TopolTool::get_type_name()`
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
+    /// **Source:** `BRepTopAdaptor_TopolTool.hxx`:122 - `BRepTopAdaptor_TopolTool::get_type_name()`
     pub fn BRepTopAdaptor_TopolTool_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
-    /// **Source:** `BRepTopAdaptor_TopolTool.hxx`:132 - `BRepTopAdaptor_TopolTool::get_type_descriptor()`
+    /// **Source:** `BRepTopAdaptor_TopolTool.hxx`:122 - `BRepTopAdaptor_TopolTool::get_type_descriptor()`
     pub fn BRepTopAdaptor_TopolTool_get_type_descriptor(
-    ) -> crate::OcctResult<*const HandleStandardType>;
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast BRepTopAdaptor_TopolTool to Adaptor3d_TopolTool
     pub fn BRepTopAdaptor_TopolTool_as_Adaptor3d_TopolTool(
         self_: *const BRepTopAdaptor_TopolTool,
@@ -11101,94 +11010,94 @@ unsafe extern "C" {
     /// Wrap BRepTopAdaptor_TopolTool in a Handle
     pub fn BRepTopAdaptor_TopolTool_to_handle(
         obj: *mut BRepTopAdaptor_TopolTool,
-    ) -> crate::OcctResult<*mut HandleBRepTopAdaptorTopolTool>;
+    ) -> crate::OcctResult<*mut Handle_BRepTopAdaptor_TopolTool>;
     /// Destroy Handle<BRepTopAdaptor_TopolTool>
-    pub fn HandleBRepTopAdaptorTopolTool_destructor(self_: *mut HandleBRepTopAdaptorTopolTool);
+    pub fn Handle_BRepTopAdaptor_TopolTool_destructor(self_: *mut Handle_BRepTopAdaptor_TopolTool);
     /// Clone Handle<BRepTopAdaptor_TopolTool> (increments reference count)
-    pub fn HandleBRepTopAdaptorTopolTool_clone(
-        self_: *const HandleBRepTopAdaptorTopolTool,
-    ) -> crate::OcctResult<*mut HandleBRepTopAdaptorTopolTool>;
+    pub fn Handle_BRepTopAdaptor_TopolTool_clone(
+        self_: *const Handle_BRepTopAdaptor_TopolTool,
+    ) -> crate::OcctResult<*mut Handle_BRepTopAdaptor_TopolTool>;
     /// Check if Handle<BRepTopAdaptor_TopolTool> is null
-    pub fn HandleBRepTopAdaptorTopolTool_is_null(
-        self_: *const HandleBRepTopAdaptorTopolTool,
+    pub fn Handle_BRepTopAdaptor_TopolTool_is_null(
+        self_: *const Handle_BRepTopAdaptor_TopolTool,
     ) -> bool;
     /// Dereference Handle to get *const BRepTopAdaptor_TopolTool
-    pub fn HandleBRepTopAdaptorTopolTool_get(
-        handle: *const HandleBRepTopAdaptorTopolTool,
+    pub fn Handle_BRepTopAdaptor_TopolTool_get(
+        handle: *const Handle_BRepTopAdaptor_TopolTool,
     ) -> crate::OcctResult<*const BRepTopAdaptor_TopolTool>;
     /// Dereference Handle to get *mut BRepTopAdaptor_TopolTool
-    pub fn HandleBRepTopAdaptorTopolTool_get_mut(
-        handle: *mut HandleBRepTopAdaptorTopolTool,
+    pub fn Handle_BRepTopAdaptor_TopolTool_get_mut(
+        handle: *mut Handle_BRepTopAdaptor_TopolTool,
     ) -> crate::OcctResult<*mut BRepTopAdaptor_TopolTool>;
     /// Upcast Handle<BRepTopAdaptor_TopolTool> to Handle<Adaptor3d_TopolTool>
-    pub fn HandleBRepTopAdaptorTopolTool_to_HandleAdaptor3dTopolTool(
-        self_: *const HandleBRepTopAdaptorTopolTool,
-    ) -> crate::OcctResult<*mut HandleAdaptor3dTopolTool>;
+    pub fn Handle_BRepTopAdaptor_TopolTool_to_Handle_Adaptor3d_TopolTool(
+        self_: *const Handle_BRepTopAdaptor_TopolTool,
+    ) -> crate::OcctResult<*mut Handle_Adaptor3d_TopolTool>;
     /// Upcast Handle<BRepTopAdaptor_TopolTool> to Handle<Standard_Transient>
-    pub fn HandleBRepTopAdaptorTopolTool_to_HandleStandardTransient(
-        self_: *const HandleBRepTopAdaptorTopolTool,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
-    /// Inherited: **Source:** `Adaptor3d_TopolTool.hxx`:92 - `Adaptor3d_TopolTool::Identical()`
+    pub fn Handle_BRepTopAdaptor_TopolTool_to_Handle_Standard_Transient(
+        self_: *const Handle_BRepTopAdaptor_TopolTool,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
+    /// Inherited: **Source:** `Adaptor3d_TopolTool.hxx`:88 - `Adaptor3d_TopolTool::Identical()`
     pub fn BRepTopAdaptor_TopolTool_inherited_Identical(
         self_: *mut BRepTopAdaptor_TopolTool,
-        V1: *const HandleAdaptor3dHVertex,
-        V2: *const HandleAdaptor3dHVertex,
+        V1: *const Handle_Adaptor3d_HVertex,
+        V2: *const Handle_Adaptor3d_HVertex,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Adaptor3d_TopolTool.hxx`:121 - `Adaptor3d_TopolTool::UParameters()`
+    /// Inherited: **Source:** `Adaptor3d_TopolTool.hxx`:117 - `Adaptor3d_TopolTool::UParameters()`
     pub fn BRepTopAdaptor_TopolTool_inherited_UParameters(
         self_: *const BRepTopAdaptor_TopolTool,
-        theArray: *mut TColStd_Array1OfReal,
+        theArray: *mut NCollection_Array1_double,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Adaptor3d_TopolTool.hxx`:125 - `Adaptor3d_TopolTool::VParameters()`
+    /// Inherited: **Source:** `Adaptor3d_TopolTool.hxx`:121 - `Adaptor3d_TopolTool::VParameters()`
     pub fn BRepTopAdaptor_TopolTool_inherited_VParameters(
         self_: *const BRepTopAdaptor_TopolTool,
-        theArray: *mut TColStd_Array1OfReal,
+        theArray: *mut NCollection_Array1_double,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Adaptor3d_TopolTool.hxx`:141 - `Adaptor3d_TopolTool::SamplePnts()`
+    /// Inherited: **Source:** `Adaptor3d_TopolTool.hxx`:135 - `Adaptor3d_TopolTool::SamplePnts()`
     pub fn BRepTopAdaptor_TopolTool_inherited_SamplePnts(
         self_: *mut BRepTopAdaptor_TopolTool,
         theDefl: f64,
         theNUmin: i32,
         theNVmin: i32,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Adaptor3d_TopolTool.hxx`:150 - `Adaptor3d_TopolTool::BSplSamplePnts()`
+    /// Inherited: **Source:** `Adaptor3d_TopolTool.hxx`:144 - `Adaptor3d_TopolTool::BSplSamplePnts()`
     pub fn BRepTopAdaptor_TopolTool_inherited_BSplSamplePnts(
         self_: *mut BRepTopAdaptor_TopolTool,
         theDefl: f64,
         theNUmin: i32,
         theNVmin: i32,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Adaptor3d_TopolTool.hxx`:155 - `Adaptor3d_TopolTool::IsUniformSampling()`
+    /// Inherited: **Source:** `Adaptor3d_TopolTool.hxx`:149 - `Adaptor3d_TopolTool::IsUniformSampling()`
     pub fn BRepTopAdaptor_TopolTool_inherited_IsUniformSampling(
         self_: *const BRepTopAdaptor_TopolTool,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn BRepTopAdaptor_TopolTool_inherited_IsInstance(
         self_: *const BRepTopAdaptor_TopolTool,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn BRepTopAdaptor_TopolTool_inherited_IsKind(
         self_: *const BRepTopAdaptor_TopolTool,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn BRepTopAdaptor_TopolTool_inherited_This(
         self_: *const BRepTopAdaptor_TopolTool,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn BRepTopAdaptor_TopolTool_inherited_GetRefCount(
         self_: *const BRepTopAdaptor_TopolTool,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn BRepTopAdaptor_TopolTool_inherited_IncrementRefCounter(
         self_: *mut BRepTopAdaptor_TopolTool,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn BRepTopAdaptor_TopolTool_inherited_DecrementRefCounter(
         self_: *mut BRepTopAdaptor_TopolTool,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn BRepTopAdaptor_TopolTool_inherited_Delete(
         self_: *const BRepTopAdaptor_TopolTool,
     ) -> *const std::ffi::c_char;
@@ -11199,8 +11108,8 @@ unsafe extern "C" {
     /// **Source:** `Bisector_Bisec.hxx`:62 - `Bisector_Bisec::Perform()`
     pub fn Bisector_Bisec_perform_handlegeom2dcurve2_pnt2d_vec2d2_real_jointype_real_bool(
         self_: *mut Bisector_Bisec,
-        Cu1: *const HandleGeom2dCurve,
-        Cu2: *const HandleGeom2dCurve,
+        Cu1: *const Handle_Geom2d_Curve,
+        Cu2: *const Handle_Geom2d_Curve,
         P: *const gp_Pnt2d,
         V1: *const gp_Vec2d,
         V2: *const gp_Vec2d,
@@ -11212,8 +11121,8 @@ unsafe extern "C" {
     /// **Source:** `Bisector_Bisec.hxx`:75 - `Bisector_Bisec::Perform()`
     pub fn Bisector_Bisec_perform_handlegeom2dcurve_handlegeom2dpoint_pnt2d_vec2d2_real2_bool(
         self_: *mut Bisector_Bisec,
-        Cu: *const HandleGeom2dCurve,
-        Pnt: *const HandleGeom2dPoint,
+        Cu: *const Handle_Geom2d_Curve,
+        Pnt: *const Handle_Geom2d_Point,
         P: *const gp_Pnt2d,
         V1: *const gp_Vec2d,
         V2: *const gp_Vec2d,
@@ -11224,8 +11133,8 @@ unsafe extern "C" {
     /// **Source:** `Bisector_Bisec.hxx`:87 - `Bisector_Bisec::Perform()`
     pub fn Bisector_Bisec_perform_handlegeom2dpoint_handlegeom2dcurve_pnt2d_vec2d2_real2_bool(
         self_: *mut Bisector_Bisec,
-        Pnt: *const HandleGeom2dPoint,
-        Cu: *const HandleGeom2dCurve,
+        Pnt: *const Handle_Geom2d_Point,
+        Cu: *const Handle_Geom2d_Curve,
         P: *const gp_Pnt2d,
         V1: *const gp_Vec2d,
         V2: *const gp_Vec2d,
@@ -11236,8 +11145,8 @@ unsafe extern "C" {
     /// **Source:** `Bisector_Bisec.hxx`:98 - `Bisector_Bisec::Perform()`
     pub fn Bisector_Bisec_perform_handlegeom2dpoint2_pnt2d_vec2d2_real2_bool(
         self_: *mut Bisector_Bisec,
-        Pnt1: *const HandleGeom2dPoint,
-        Pnt2: *const HandleGeom2dPoint,
+        Pnt1: *const Handle_Geom2d_Point,
+        Pnt2: *const Handle_Geom2d_Point,
         P: *const gp_Pnt2d,
         V1: *const gp_Vec2d,
         V2: *const gp_Vec2d,
@@ -11248,20 +11157,20 @@ unsafe extern "C" {
     /// **Source:** `Bisector_Bisec.hxx`:108 - `Bisector_Bisec::Value()`
     pub fn Bisector_Bisec_value(
         self_: *const Bisector_Bisec,
-    ) -> crate::OcctResult<*const HandleGeom2dTrimmedCurve>;
+    ) -> crate::OcctResult<*const Handle_Geom2d_TrimmedCurve>;
     /// **Source:** `Bisector_Bisec.hxx`:111 - `Bisector_Bisec::ChangeValue()`
     pub fn Bisector_Bisec_change_value(
         self_: *mut Bisector_Bisec,
-    ) -> crate::OcctResult<*const HandleGeom2dTrimmedCurve>;
+    ) -> crate::OcctResult<*const Handle_Geom2d_TrimmedCurve>;
     // ======================== Bisector_BisecAna ========================
     pub fn Bisector_BisecAna_destructor(self_: *mut Bisector_BisecAna);
-    /// **Source:** `Bisector_BisecAna.hxx`:47 - `Bisector_BisecAna::Bisector_BisecAna()`
+    /// **Source:** `Bisector_BisecAna.hxx`:44 - `Bisector_BisecAna::Bisector_BisecAna()`
     pub fn Bisector_BisecAna_ctor() -> crate::OcctResult<*mut Bisector_BisecAna>;
-    /// **Source:** `Bisector_BisecAna.hxx`:53 - `Bisector_BisecAna::Perform()`
+    /// **Source:** `Bisector_BisecAna.hxx`:50 - `Bisector_BisecAna::Perform()`
     pub fn Bisector_BisecAna_perform_handlegeom2dcurve2_pnt2d_vec2d2_real_jointype_real_bool(
         self_: *mut Bisector_BisecAna,
-        Cu1: *const HandleGeom2dCurve,
-        Cu2: *const HandleGeom2dCurve,
+        Cu1: *const Handle_Geom2d_Curve,
+        Cu2: *const Handle_Geom2d_Curve,
         P: *const gp_Pnt2d,
         V1: *const gp_Vec2d,
         V2: *const gp_Vec2d,
@@ -11270,11 +11179,11 @@ unsafe extern "C" {
         Tolerance: f64,
         oncurve: bool,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `Bisector_BisecAna.hxx`:66 - `Bisector_BisecAna::Perform()`
+    /// **Source:** `Bisector_BisecAna.hxx`:63 - `Bisector_BisecAna::Perform()`
     pub fn Bisector_BisecAna_perform_handlegeom2dcurve_handlegeom2dpoint_pnt2d_vec2d2_real2_bool(
         self_: *mut Bisector_BisecAna,
-        Cu: *const HandleGeom2dCurve,
-        Pnt: *const HandleGeom2dPoint,
+        Cu: *const Handle_Geom2d_Curve,
+        Pnt: *const Handle_Geom2d_Point,
         P: *const gp_Pnt2d,
         V1: *const gp_Vec2d,
         V2: *const gp_Vec2d,
@@ -11282,11 +11191,11 @@ unsafe extern "C" {
         Tolerance: f64,
         oncurve: bool,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `Bisector_BisecAna.hxx`:78 - `Bisector_BisecAna::Perform()`
+    /// **Source:** `Bisector_BisecAna.hxx`:75 - `Bisector_BisecAna::Perform()`
     pub fn Bisector_BisecAna_perform_handlegeom2dpoint_handlegeom2dcurve_pnt2d_vec2d2_real2_bool(
         self_: *mut Bisector_BisecAna,
-        Pnt: *const HandleGeom2dPoint,
-        Cu: *const HandleGeom2dCurve,
+        Pnt: *const Handle_Geom2d_Point,
+        Cu: *const Handle_Geom2d_Curve,
         P: *const gp_Pnt2d,
         V1: *const gp_Vec2d,
         V2: *const gp_Vec2d,
@@ -11294,11 +11203,11 @@ unsafe extern "C" {
         Tolerance: f64,
         oncurve: bool,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `Bisector_BisecAna.hxx`:89 - `Bisector_BisecAna::Perform()`
+    /// **Source:** `Bisector_BisecAna.hxx`:86 - `Bisector_BisecAna::Perform()`
     pub fn Bisector_BisecAna_perform_handlegeom2dpoint2_pnt2d_vec2d2_real2_bool(
         self_: *mut Bisector_BisecAna,
-        Pnt1: *const HandleGeom2dPoint,
-        Pnt2: *const HandleGeom2dPoint,
+        Pnt1: *const Handle_Geom2d_Point,
+        Pnt2: *const Handle_Geom2d_Point,
         P: *const gp_Pnt2d,
         V1: *const gp_Vec2d,
         V2: *const gp_Vec2d,
@@ -11306,148 +11215,138 @@ unsafe extern "C" {
         Tolerance: f64,
         oncurve: bool,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `Bisector_BisecAna.hxx`:98 - `Bisector_BisecAna::Init()`
+    /// **Source:** `Bisector_BisecAna.hxx`:95 - `Bisector_BisecAna::Init()`
     pub fn Bisector_BisecAna_init(
         self_: *mut Bisector_BisecAna,
-        bisector: *const HandleGeom2dTrimmedCurve,
+        bisector: *const Handle_Geom2d_TrimmedCurve,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `Bisector_BisecAna.hxx`:100 - `Bisector_BisecAna::IsExtendAtStart()`
+    /// **Source:** `Bisector_BisecAna.hxx`:97 - `Bisector_BisecAna::IsExtendAtStart()`
     pub fn Bisector_BisecAna_is_extend_at_start(
         self_: *const Bisector_BisecAna,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `Bisector_BisecAna.hxx`:102 - `Bisector_BisecAna::IsExtendAtEnd()`
+    /// **Source:** `Bisector_BisecAna.hxx`:99 - `Bisector_BisecAna::IsExtendAtEnd()`
     pub fn Bisector_BisecAna_is_extend_at_end(
         self_: *const Bisector_BisecAna,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `Bisector_BisecAna.hxx`:107 - `Bisector_BisecAna::SetTrim()`
+    /// **Source:** `Bisector_BisecAna.hxx`:104 - `Bisector_BisecAna::SetTrim()`
     pub fn Bisector_BisecAna_set_trim_handlegeom2dcurve(
         self_: *mut Bisector_BisecAna,
-        Cu: *const HandleGeom2dCurve,
+        Cu: *const Handle_Geom2d_Curve,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `Bisector_BisecAna.hxx`:110 - `Bisector_BisecAna::SetTrim()`
+    /// **Source:** `Bisector_BisecAna.hxx`:107 - `Bisector_BisecAna::SetTrim()`
     pub fn Bisector_BisecAna_set_trim_real2(
         self_: *mut Bisector_BisecAna,
         uf: f64,
         ul: f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `Bisector_BisecAna.hxx`:112 - `Bisector_BisecAna::Reverse()`
+    /// **Source:** `Bisector_BisecAna.hxx`:109 - `Bisector_BisecAna::Reverse()`
     pub fn Bisector_BisecAna_reverse(self_: *mut Bisector_BisecAna) -> *const std::ffi::c_char;
-    /// **Source:** `Bisector_BisecAna.hxx`:114 - `Bisector_BisecAna::ReversedParameter()`
+    /// **Source:** `Bisector_BisecAna.hxx`:111 - `Bisector_BisecAna::ReversedParameter()`
     pub fn Bisector_BisecAna_reversed_parameter(
         self_: *const Bisector_BisecAna,
         U: f64,
     ) -> crate::OcctResult<f64>;
-    /// **Source:** `Bisector_BisecAna.hxx`:118 - `Bisector_BisecAna::IsCN()`
+    /// **Source:** `Bisector_BisecAna.hxx`:115 - `Bisector_BisecAna::IsCN()`
     pub fn Bisector_BisecAna_is_cn(
         self_: *const Bisector_BisecAna,
         N: i32,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `Bisector_BisecAna.hxx`:120 - `Bisector_BisecAna::Copy()`
+    /// **Source:** `Bisector_BisecAna.hxx`:117 - `Bisector_BisecAna::Copy()`
     pub fn Bisector_BisecAna_copy(
         self_: *const Bisector_BisecAna,
-    ) -> crate::OcctResult<*mut HandleGeom2dGeometry>;
-    /// **Source:** `Bisector_BisecAna.hxx`:122 - `Bisector_BisecAna::Transform()`
+    ) -> crate::OcctResult<*mut Handle_Geom2d_Geometry>;
+    /// **Source:** `Bisector_BisecAna.hxx`:119 - `Bisector_BisecAna::Transform()`
     pub fn Bisector_BisecAna_transform(
         self_: *mut Bisector_BisecAna,
         T: *const gp_Trsf2d,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `Bisector_BisecAna.hxx`:124 - `Bisector_BisecAna::FirstParameter()`
+    /// **Source:** `Bisector_BisecAna.hxx`:121 - `Bisector_BisecAna::FirstParameter()`
     pub fn Bisector_BisecAna_first_parameter(
         self_: *const Bisector_BisecAna,
     ) -> crate::OcctResult<f64>;
-    /// **Source:** `Bisector_BisecAna.hxx`:126 - `Bisector_BisecAna::LastParameter()`
+    /// **Source:** `Bisector_BisecAna.hxx`:123 - `Bisector_BisecAna::LastParameter()`
     pub fn Bisector_BisecAna_last_parameter(
         self_: *const Bisector_BisecAna,
     ) -> crate::OcctResult<f64>;
-    /// **Source:** `Bisector_BisecAna.hxx`:128 - `Bisector_BisecAna::IsClosed()`
+    /// **Source:** `Bisector_BisecAna.hxx`:125 - `Bisector_BisecAna::IsClosed()`
     pub fn Bisector_BisecAna_is_closed(self_: *const Bisector_BisecAna) -> crate::OcctResult<bool>;
-    /// **Source:** `Bisector_BisecAna.hxx`:130 - `Bisector_BisecAna::IsPeriodic()`
+    /// **Source:** `Bisector_BisecAna.hxx`:127 - `Bisector_BisecAna::IsPeriodic()`
     pub fn Bisector_BisecAna_is_periodic(
         self_: *const Bisector_BisecAna,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `Bisector_BisecAna.hxx`:132 - `Bisector_BisecAna::Continuity()`
+    /// **Source:** `Bisector_BisecAna.hxx`:129 - `Bisector_BisecAna::Continuity()`
     pub fn Bisector_BisecAna_continuity(self_: *const Bisector_BisecAna) -> crate::OcctResult<i32>;
-    /// **Source:** `Bisector_BisecAna.hxx`:134 - `Bisector_BisecAna::D0()`
-    pub fn Bisector_BisecAna_d0(
+    /// **Source:** `Bisector_BisecAna.hxx`:131 - `Bisector_BisecAna::EvalD0()`
+    pub fn Bisector_BisecAna_eval_d0(
         self_: *const Bisector_BisecAna,
         U: f64,
-        P: *mut gp_Pnt2d,
-    ) -> *const std::ffi::c_char;
-    /// **Source:** `Bisector_BisecAna.hxx`:136 - `Bisector_BisecAna::D1()`
-    pub fn Bisector_BisecAna_d1(
+    ) -> crate::OcctResult<*mut gp_Pnt2d>;
+    /// **Source:** `Bisector_BisecAna.hxx`:133 - `Bisector_BisecAna::EvalD1()`
+    pub fn Bisector_BisecAna_eval_d1(
         self_: *const Bisector_BisecAna,
         U: f64,
-        P: *mut gp_Pnt2d,
-        V1: *mut gp_Vec2d,
-    ) -> *const std::ffi::c_char;
-    /// **Source:** `Bisector_BisecAna.hxx`:138 - `Bisector_BisecAna::D2()`
-    pub fn Bisector_BisecAna_d2(
+    ) -> crate::OcctResult<*mut Geom2d_Curve_ResD1>;
+    /// **Source:** `Bisector_BisecAna.hxx`:135 - `Bisector_BisecAna::EvalD2()`
+    pub fn Bisector_BisecAna_eval_d2(
         self_: *const Bisector_BisecAna,
         U: f64,
-        P: *mut gp_Pnt2d,
-        V1: *mut gp_Vec2d,
-        V2: *mut gp_Vec2d,
-    ) -> *const std::ffi::c_char;
-    /// **Source:** `Bisector_BisecAna.hxx`:143 - `Bisector_BisecAna::D3()`
-    pub fn Bisector_BisecAna_d3(
+    ) -> crate::OcctResult<*mut Geom2d_Curve_ResD2>;
+    /// **Source:** `Bisector_BisecAna.hxx`:137 - `Bisector_BisecAna::EvalD3()`
+    pub fn Bisector_BisecAna_eval_d3(
         self_: *const Bisector_BisecAna,
         U: f64,
-        P: *mut gp_Pnt2d,
-        V1: *mut gp_Vec2d,
-        V2: *mut gp_Vec2d,
-        V3: *mut gp_Vec2d,
-    ) -> *const std::ffi::c_char;
-    /// **Source:** `Bisector_BisecAna.hxx`:149 - `Bisector_BisecAna::DN()`
-    pub fn Bisector_BisecAna_dn(
+    ) -> crate::OcctResult<*mut Geom2d_Curve_ResD3>;
+    /// **Source:** `Bisector_BisecAna.hxx`:139 - `Bisector_BisecAna::EvalDN()`
+    pub fn Bisector_BisecAna_eval_dn(
         self_: *const Bisector_BisecAna,
         U: f64,
         N: i32,
     ) -> crate::OcctResult<*mut gp_Vec2d>;
-    /// **Source:** `Bisector_BisecAna.hxx`:152 - `Bisector_BisecAna::Geom2dCurve()`
+    /// **Source:** `Bisector_BisecAna.hxx`:141 - `Bisector_BisecAna::Geom2dCurve()`
     pub fn Bisector_BisecAna_geom2d_curve(
         self_: *const Bisector_BisecAna,
-    ) -> crate::OcctResult<*mut HandleGeom2dCurve>;
-    /// **Source:** `Bisector_BisecAna.hxx`:154 - `Bisector_BisecAna::Parameter()`
+    ) -> crate::OcctResult<*mut Handle_Geom2d_Curve>;
+    /// **Source:** `Bisector_BisecAna.hxx`:143 - `Bisector_BisecAna::Parameter()`
     pub fn Bisector_BisecAna_parameter(
         self_: *const Bisector_BisecAna,
         P: *const gp_Pnt2d,
     ) -> crate::OcctResult<f64>;
-    /// **Source:** `Bisector_BisecAna.hxx`:156 - `Bisector_BisecAna::ParameterOfStartPoint()`
+    /// **Source:** `Bisector_BisecAna.hxx`:145 - `Bisector_BisecAna::ParameterOfStartPoint()`
     pub fn Bisector_BisecAna_parameter_of_start_point(
         self_: *const Bisector_BisecAna,
     ) -> crate::OcctResult<f64>;
-    /// **Source:** `Bisector_BisecAna.hxx`:158 - `Bisector_BisecAna::ParameterOfEndPoint()`
+    /// **Source:** `Bisector_BisecAna.hxx`:147 - `Bisector_BisecAna::ParameterOfEndPoint()`
     pub fn Bisector_BisecAna_parameter_of_end_point(
         self_: *const Bisector_BisecAna,
     ) -> crate::OcctResult<f64>;
-    /// **Source:** `Bisector_BisecAna.hxx`:163 - `Bisector_BisecAna::NbIntervals()`
+    /// **Source:** `Bisector_BisecAna.hxx`:152 - `Bisector_BisecAna::NbIntervals()`
     pub fn Bisector_BisecAna_nb_intervals(
         self_: *const Bisector_BisecAna,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `Bisector_BisecAna.hxx`:167 - `Bisector_BisecAna::IntervalFirst()`
+    /// **Source:** `Bisector_BisecAna.hxx`:156 - `Bisector_BisecAna::IntervalFirst()`
     pub fn Bisector_BisecAna_interval_first(
         self_: *const Bisector_BisecAna,
         Index: i32,
     ) -> crate::OcctResult<f64>;
-    /// **Source:** `Bisector_BisecAna.hxx`:171 - `Bisector_BisecAna::IntervalLast()`
+    /// **Source:** `Bisector_BisecAna.hxx`:160 - `Bisector_BisecAna::IntervalLast()`
     pub fn Bisector_BisecAna_interval_last(
         self_: *const Bisector_BisecAna,
         Index: i32,
     ) -> crate::OcctResult<f64>;
-    /// **Source:** `Bisector_BisecAna.hxx`:173 - `Bisector_BisecAna::Dump()`
+    /// **Source:** `Bisector_BisecAna.hxx`:162 - `Bisector_BisecAna::Dump()`
     pub fn Bisector_BisecAna_dump(
         self_: *const Bisector_BisecAna,
         Deep: i32,
         Offset: i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `Bisector_BisecAna.hxx`:176 - `Bisector_BisecAna::DynamicType()`
+    /// **Source:** `Bisector_BisecAna.hxx`:164 - `Bisector_BisecAna::DynamicType()`
     pub fn Bisector_BisecAna_dynamic_type(
         self_: *const Bisector_BisecAna,
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// **Source:** `Bisector_BisecAna.hxx`:176 - `Bisector_BisecAna::get_type_name()`
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
+    /// **Source:** `Bisector_BisecAna.hxx`:164 - `Bisector_BisecAna::get_type_name()`
     pub fn Bisector_BisecAna_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
-    /// **Source:** `Bisector_BisecAna.hxx`:176 - `Bisector_BisecAna::get_type_descriptor()`
-    pub fn Bisector_BisecAna_get_type_descriptor() -> crate::OcctResult<*const HandleStandardType>;
+    /// **Source:** `Bisector_BisecAna.hxx`:164 - `Bisector_BisecAna::get_type_descriptor()`
+    pub fn Bisector_BisecAna_get_type_descriptor() -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast Bisector_BisecAna to Bisector_Curve
     pub fn Bisector_BisecAna_as_Bisector_Curve(
         self_: *const Bisector_BisecAna,
@@ -11483,229 +11382,265 @@ unsafe extern "C" {
     /// Wrap Bisector_BisecAna in a Handle
     pub fn Bisector_BisecAna_to_handle(
         obj: *mut Bisector_BisecAna,
-    ) -> crate::OcctResult<*mut HandleBisectorBisecAna>;
+    ) -> crate::OcctResult<*mut Handle_Bisector_BisecAna>;
     /// Destroy Handle<Bisector_BisecAna>
-    pub fn HandleBisectorBisecAna_destructor(self_: *mut HandleBisectorBisecAna);
+    pub fn Handle_Bisector_BisecAna_destructor(self_: *mut Handle_Bisector_BisecAna);
     /// Clone Handle<Bisector_BisecAna> (increments reference count)
-    pub fn HandleBisectorBisecAna_clone(
-        self_: *const HandleBisectorBisecAna,
-    ) -> crate::OcctResult<*mut HandleBisectorBisecAna>;
+    pub fn Handle_Bisector_BisecAna_clone(
+        self_: *const Handle_Bisector_BisecAna,
+    ) -> crate::OcctResult<*mut Handle_Bisector_BisecAna>;
     /// Check if Handle<Bisector_BisecAna> is null
-    pub fn HandleBisectorBisecAna_is_null(self_: *const HandleBisectorBisecAna) -> bool;
+    pub fn Handle_Bisector_BisecAna_is_null(self_: *const Handle_Bisector_BisecAna) -> bool;
     /// Dereference Handle to get *const Bisector_BisecAna
-    pub fn HandleBisectorBisecAna_get(
-        handle: *const HandleBisectorBisecAna,
+    pub fn Handle_Bisector_BisecAna_get(
+        handle: *const Handle_Bisector_BisecAna,
     ) -> crate::OcctResult<*const Bisector_BisecAna>;
     /// Dereference Handle to get *mut Bisector_BisecAna
-    pub fn HandleBisectorBisecAna_get_mut(
-        handle: *mut HandleBisectorBisecAna,
+    pub fn Handle_Bisector_BisecAna_get_mut(
+        handle: *mut Handle_Bisector_BisecAna,
     ) -> crate::OcctResult<*mut Bisector_BisecAna>;
     /// Upcast Handle<Bisector_BisecAna> to Handle<Bisector_Curve>
-    pub fn HandleBisectorBisecAna_to_HandleBisectorCurve(
-        self_: *const HandleBisectorBisecAna,
-    ) -> crate::OcctResult<*mut HandleBisectorCurve>;
+    pub fn Handle_Bisector_BisecAna_to_Handle_Bisector_Curve(
+        self_: *const Handle_Bisector_BisecAna,
+    ) -> crate::OcctResult<*mut Handle_Bisector_Curve>;
     /// Upcast Handle<Bisector_BisecAna> to Handle<Geom2d_Curve>
-    pub fn HandleBisectorBisecAna_to_HandleGeom2dCurve(
-        self_: *const HandleBisectorBisecAna,
-    ) -> crate::OcctResult<*mut HandleGeom2dCurve>;
+    pub fn Handle_Bisector_BisecAna_to_Handle_Geom2d_Curve(
+        self_: *const Handle_Bisector_BisecAna,
+    ) -> crate::OcctResult<*mut Handle_Geom2d_Curve>;
     /// Upcast Handle<Bisector_BisecAna> to Handle<Geom2d_Geometry>
-    pub fn HandleBisectorBisecAna_to_HandleGeom2dGeometry(
-        self_: *const HandleBisectorBisecAna,
-    ) -> crate::OcctResult<*mut HandleGeom2dGeometry>;
+    pub fn Handle_Bisector_BisecAna_to_Handle_Geom2d_Geometry(
+        self_: *const Handle_Bisector_BisecAna,
+    ) -> crate::OcctResult<*mut Handle_Geom2d_Geometry>;
     /// Upcast Handle<Bisector_BisecAna> to Handle<Standard_Transient>
-    pub fn HandleBisectorBisecAna_to_HandleStandardTransient(
-        self_: *const HandleBisectorBisecAna,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
-    /// Inherited: **Source:** `Geom2d_Curve.hxx`:83 - `Geom2d_Curve::TransformedParameter()`
+    pub fn Handle_Bisector_BisecAna_to_Handle_Standard_Transient(
+        self_: *const Handle_Bisector_BisecAna,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
+    /// Inherited: **Source:** `Geom2d_Curve.hxx`:105 - `Geom2d_Curve::TransformedParameter()`
     pub fn Bisector_BisecAna_inherited_TransformedParameter(
         self_: *const Bisector_BisecAna,
         U: f64,
         T: *const gp_Trsf2d,
     ) -> crate::OcctResult<f64>;
-    /// Inherited: **Source:** `Geom2d_Curve.hxx`:94 - `Geom2d_Curve::ParametricTransformation()`
+    /// Inherited: **Source:** `Geom2d_Curve.hxx`:115 - `Geom2d_Curve::ParametricTransformation()`
     pub fn Bisector_BisecAna_inherited_ParametricTransformation(
         self_: *const Bisector_BisecAna,
         T: *const gp_Trsf2d,
     ) -> crate::OcctResult<f64>;
-    /// Inherited: **Source:** `Geom2d_Curve.hxx`:105 - `Geom2d_Curve::Reversed()`
+    /// Inherited: **Source:** `Geom2d_Curve.hxx`:126 - `Geom2d_Curve::Reversed()`
     pub fn Bisector_BisecAna_inherited_Reversed(
         self_: *const Bisector_BisecAna,
-    ) -> crate::OcctResult<*mut HandleGeom2dCurve>;
-    /// Inherited: **Source:** `Geom2d_Curve.hxx`:149 - `Geom2d_Curve::Period()`
+    ) -> crate::OcctResult<*mut Handle_Geom2d_Curve>;
+    /// Inherited: **Source:** `Geom2d_Curve.hxx`:170 - `Geom2d_Curve::Period()`
     pub fn Bisector_BisecAna_inherited_Period(
         self_: *const Bisector_BisecAna,
     ) -> crate::OcctResult<f64>;
-    /// Inherited: **Source:** `Geom2d_Curve.hxx`:219 - `Geom2d_Curve::Value()`
+    /// Inherited: **Source:** `Geom2d_Curve.hxx`:207 - `Geom2d_Curve::D0()`
+    pub fn Bisector_BisecAna_inherited_D0(
+        self_: *const Bisector_BisecAna,
+        U: f64,
+        P: *mut gp_Pnt2d,
+    ) -> *const std::ffi::c_char;
+    /// Inherited: **Source:** `Geom2d_Curve.hxx`:210 - `Geom2d_Curve::D1()`
+    pub fn Bisector_BisecAna_inherited_D1(
+        self_: *const Bisector_BisecAna,
+        U: f64,
+        P: *mut gp_Pnt2d,
+        V1: *mut gp_Vec2d,
+    ) -> *const std::ffi::c_char;
+    /// Inherited: **Source:** `Geom2d_Curve.hxx`:218 - `Geom2d_Curve::D2()`
+    pub fn Bisector_BisecAna_inherited_D2(
+        self_: *const Bisector_BisecAna,
+        U: f64,
+        P: *mut gp_Pnt2d,
+        V1: *mut gp_Vec2d,
+        V2: *mut gp_Vec2d,
+    ) -> *const std::ffi::c_char;
+    /// Inherited: **Source:** `Geom2d_Curve.hxx`:227 - `Geom2d_Curve::D3()`
+    pub fn Bisector_BisecAna_inherited_D3(
+        self_: *const Bisector_BisecAna,
+        U: f64,
+        P: *mut gp_Pnt2d,
+        V1: *mut gp_Vec2d,
+        V2: *mut gp_Vec2d,
+        V3: *mut gp_Vec2d,
+    ) -> *const std::ffi::c_char;
+    /// Inherited: **Source:** `Geom2d_Curve.hxx`:237 - `Geom2d_Curve::DN()`
+    pub fn Bisector_BisecAna_inherited_DN(
+        self_: *const Bisector_BisecAna,
+        U: f64,
+        N: i32,
+    ) -> crate::OcctResult<*mut gp_Vec2d>;
+    /// Inherited: **Source:** `Geom2d_Curve.hxx`:240 - `Geom2d_Curve::Value()`
     pub fn Bisector_BisecAna_inherited_Value(
         self_: *const Bisector_BisecAna,
         U: f64,
     ) -> crate::OcctResult<*mut gp_Pnt2d>;
-    /// Inherited: **Source:** `Geom2d_Geometry.hxx`:63 - `Geom2d_Geometry::Mirror()`
+    /// Inherited: **Source:** `Geom2d_Geometry.hxx`:60 - `Geom2d_Geometry::Mirror()`
     pub fn Bisector_BisecAna_inherited_Mirror(
         self_: *mut Bisector_BisecAna,
         P: *const gp_Pnt2d,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Geom2d_Geometry.hxx`:71 - `Geom2d_Geometry::Rotate()`
+    /// Inherited: **Source:** `Geom2d_Geometry.hxx`:68 - `Geom2d_Geometry::Rotate()`
     pub fn Bisector_BisecAna_inherited_Rotate(
         self_: *mut Bisector_BisecAna,
         P: *const gp_Pnt2d,
         Ang: f64,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Geom2d_Geometry.hxx`:74 - `Geom2d_Geometry::Scale()`
+    /// Inherited: **Source:** `Geom2d_Geometry.hxx`:71 - `Geom2d_Geometry::Scale()`
     pub fn Bisector_BisecAna_inherited_Scale(
         self_: *mut Bisector_BisecAna,
         P: *const gp_Pnt2d,
         S: f64,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Geom2d_Geometry.hxx`:77 - `Geom2d_Geometry::Translate()`
+    /// Inherited: **Source:** `Geom2d_Geometry.hxx`:74 - `Geom2d_Geometry::Translate()`
     pub fn Bisector_BisecAna_inherited_Translate(
         self_: *mut Bisector_BisecAna,
         V: *const gp_Vec2d,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Geom2d_Geometry.hxx`:92 - `Geom2d_Geometry::Mirrored()`
+    /// Inherited: **Source:** `Geom2d_Geometry.hxx`:89 - `Geom2d_Geometry::Mirrored()`
     pub fn Bisector_BisecAna_inherited_Mirrored(
         self_: *const Bisector_BisecAna,
         P: *const gp_Pnt2d,
-    ) -> crate::OcctResult<*mut HandleGeom2dGeometry>;
-    /// Inherited: **Source:** `Geom2d_Geometry.hxx`:96 - `Geom2d_Geometry::Rotated()`
+    ) -> crate::OcctResult<*mut Handle_Geom2d_Geometry>;
+    /// Inherited: **Source:** `Geom2d_Geometry.hxx`:93 - `Geom2d_Geometry::Rotated()`
     pub fn Bisector_BisecAna_inherited_Rotated(
         self_: *const Bisector_BisecAna,
         P: *const gp_Pnt2d,
         Ang: f64,
-    ) -> crate::OcctResult<*mut HandleGeom2dGeometry>;
-    /// Inherited: **Source:** `Geom2d_Geometry.hxx`:99 - `Geom2d_Geometry::Scaled()`
+    ) -> crate::OcctResult<*mut Handle_Geom2d_Geometry>;
+    /// Inherited: **Source:** `Geom2d_Geometry.hxx`:96 - `Geom2d_Geometry::Scaled()`
     pub fn Bisector_BisecAna_inherited_Scaled(
         self_: *const Bisector_BisecAna,
         P: *const gp_Pnt2d,
         S: f64,
-    ) -> crate::OcctResult<*mut HandleGeom2dGeometry>;
-    /// Inherited: **Source:** `Geom2d_Geometry.hxx`:102 - `Geom2d_Geometry::Transformed()`
+    ) -> crate::OcctResult<*mut Handle_Geom2d_Geometry>;
+    /// Inherited: **Source:** `Geom2d_Geometry.hxx`:99 - `Geom2d_Geometry::Transformed()`
     pub fn Bisector_BisecAna_inherited_Transformed(
         self_: *const Bisector_BisecAna,
         T: *const gp_Trsf2d,
-    ) -> crate::OcctResult<*mut HandleGeom2dGeometry>;
-    /// Inherited: **Source:** `Geom2d_Geometry.hxx`:104 - `Geom2d_Geometry::Translated()`
+    ) -> crate::OcctResult<*mut Handle_Geom2d_Geometry>;
+    /// Inherited: **Source:** `Geom2d_Geometry.hxx`:101 - `Geom2d_Geometry::Translated()`
     pub fn Bisector_BisecAna_inherited_Translated(
         self_: *const Bisector_BisecAna,
         V: *const gp_Vec2d,
-    ) -> crate::OcctResult<*mut HandleGeom2dGeometry>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    ) -> crate::OcctResult<*mut Handle_Geom2d_Geometry>;
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn Bisector_BisecAna_inherited_IsInstance(
         self_: *const Bisector_BisecAna,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn Bisector_BisecAna_inherited_IsKind(
         self_: *const Bisector_BisecAna,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn Bisector_BisecAna_inherited_This(
         self_: *const Bisector_BisecAna,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn Bisector_BisecAna_inherited_GetRefCount(
         self_: *const Bisector_BisecAna,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn Bisector_BisecAna_inherited_IncrementRefCounter(
         self_: *mut Bisector_BisecAna,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn Bisector_BisecAna_inherited_DecrementRefCounter(
         self_: *mut Bisector_BisecAna,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn Bisector_BisecAna_inherited_Delete(
         self_: *const Bisector_BisecAna,
     ) -> *const std::ffi::c_char;
     // ======================== Bisector_BisecCC ========================
     pub fn Bisector_BisecCC_destructor(self_: *mut Bisector_BisecCC);
-    /// **Source:** `Bisector_BisecCC.hxx`:42 - `Bisector_BisecCC::Bisector_BisecCC()`
+    /// **Source:** `Bisector_BisecCC.hxx`:39 - `Bisector_BisecCC::Bisector_BisecCC()`
     pub fn Bisector_BisecCC_ctor() -> crate::OcctResult<*mut Bisector_BisecCC>;
-    /// **Source:** `Bisector_BisecCC.hxx`:55 - `Bisector_BisecCC::Bisector_BisecCC()`
+    /// **Source:** `Bisector_BisecCC.hxx`:52 - `Bisector_BisecCC::Bisector_BisecCC()`
     pub fn Bisector_BisecCC_ctor_handlegeom2dcurve2_real2_pnt2d_real(
-        Cu1: *const HandleGeom2dCurve,
-        Cu2: *const HandleGeom2dCurve,
+        Cu1: *const Handle_Geom2d_Curve,
+        Cu2: *const Handle_Geom2d_Curve,
         Side1: f64,
         Side2: f64,
         Origin: *const gp_Pnt2d,
         DistMax: f64,
     ) -> crate::OcctResult<*mut Bisector_BisecCC>;
-    /// **Source:** `Bisector_BisecCC.hxx`:74 - `Bisector_BisecCC::Perform()`
+    /// **Source:** `Bisector_BisecCC.hxx`:71 - `Bisector_BisecCC::Perform()`
     pub fn Bisector_BisecCC_perform(
         self_: *mut Bisector_BisecCC,
-        Cu1: *const HandleGeom2dCurve,
-        Cu2: *const HandleGeom2dCurve,
+        Cu1: *const Handle_Geom2d_Curve,
+        Cu2: *const Handle_Geom2d_Curve,
         Side1: f64,
         Side2: f64,
         Origin: *const gp_Pnt2d,
         DistMax: f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `Bisector_BisecCC.hxx`:81 - `Bisector_BisecCC::IsExtendAtStart()`
+    /// **Source:** `Bisector_BisecCC.hxx`:78 - `Bisector_BisecCC::IsExtendAtStart()`
     pub fn Bisector_BisecCC_is_extend_at_start(
         self_: *const Bisector_BisecCC,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `Bisector_BisecCC.hxx`:83 - `Bisector_BisecCC::IsExtendAtEnd()`
+    /// **Source:** `Bisector_BisecCC.hxx`:80 - `Bisector_BisecCC::IsExtendAtEnd()`
     pub fn Bisector_BisecCC_is_extend_at_end(
         self_: *const Bisector_BisecCC,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `Bisector_BisecCC.hxx`:85 - `Bisector_BisecCC::Reverse()`
+    /// **Source:** `Bisector_BisecCC.hxx`:82 - `Bisector_BisecCC::Reverse()`
     pub fn Bisector_BisecCC_reverse(self_: *mut Bisector_BisecCC) -> *const std::ffi::c_char;
-    /// **Source:** `Bisector_BisecCC.hxx`:87 - `Bisector_BisecCC::ReversedParameter()`
+    /// **Source:** `Bisector_BisecCC.hxx`:84 - `Bisector_BisecCC::ReversedParameter()`
     pub fn Bisector_BisecCC_reversed_parameter(
         self_: *const Bisector_BisecCC,
         U: f64,
     ) -> crate::OcctResult<f64>;
-    /// **Source:** `Bisector_BisecCC.hxx`:91 - `Bisector_BisecCC::IsCN()`
+    /// **Source:** `Bisector_BisecCC.hxx`:88 - `Bisector_BisecCC::IsCN()`
     pub fn Bisector_BisecCC_is_cn(
         self_: *const Bisector_BisecCC,
         N: i32,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `Bisector_BisecCC.hxx`:96 - `Bisector_BisecCC::ChangeGuide()`
+    /// **Source:** `Bisector_BisecCC.hxx`:93 - `Bisector_BisecCC::ChangeGuide()`
     pub fn Bisector_BisecCC_change_guide(
         self_: *const Bisector_BisecCC,
-    ) -> crate::OcctResult<*mut HandleBisectorBisecCC>;
-    /// **Source:** `Bisector_BisecCC.hxx`:98 - `Bisector_BisecCC::Copy()`
+    ) -> crate::OcctResult<*mut Handle_Bisector_BisecCC>;
+    /// **Source:** `Bisector_BisecCC.hxx`:95 - `Bisector_BisecCC::Copy()`
     pub fn Bisector_BisecCC_copy(
         self_: *const Bisector_BisecCC,
-    ) -> crate::OcctResult<*mut HandleGeom2dGeometry>;
-    /// **Source:** `Bisector_BisecCC.hxx`:104 - `Bisector_BisecCC::Transform()`
+    ) -> crate::OcctResult<*mut Handle_Geom2d_Geometry>;
+    /// **Source:** `Bisector_BisecCC.hxx`:101 - `Bisector_BisecCC::Transform()`
     pub fn Bisector_BisecCC_transform(
         self_: *mut Bisector_BisecCC,
         T: *const gp_Trsf2d,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `Bisector_BisecCC.hxx`:106 - `Bisector_BisecCC::FirstParameter()`
+    /// **Source:** `Bisector_BisecCC.hxx`:103 - `Bisector_BisecCC::FirstParameter()`
     pub fn Bisector_BisecCC_first_parameter(
         self_: *const Bisector_BisecCC,
     ) -> crate::OcctResult<f64>;
-    /// **Source:** `Bisector_BisecCC.hxx`:108 - `Bisector_BisecCC::LastParameter()`
+    /// **Source:** `Bisector_BisecCC.hxx`:105 - `Bisector_BisecCC::LastParameter()`
     pub fn Bisector_BisecCC_last_parameter(
         self_: *const Bisector_BisecCC,
     ) -> crate::OcctResult<f64>;
-    /// **Source:** `Bisector_BisecCC.hxx`:110 - `Bisector_BisecCC::Continuity()`
+    /// **Source:** `Bisector_BisecCC.hxx`:107 - `Bisector_BisecCC::Continuity()`
     pub fn Bisector_BisecCC_continuity(self_: *const Bisector_BisecCC) -> crate::OcctResult<i32>;
-    /// **Source:** `Bisector_BisecCC.hxx`:115 - `Bisector_BisecCC::NbIntervals()`
+    /// **Source:** `Bisector_BisecCC.hxx`:112 - `Bisector_BisecCC::NbIntervals()`
     pub fn Bisector_BisecCC_nb_intervals(self_: *const Bisector_BisecCC) -> crate::OcctResult<i32>;
-    /// **Source:** `Bisector_BisecCC.hxx`:119 - `Bisector_BisecCC::IntervalFirst()`
+    /// **Source:** `Bisector_BisecCC.hxx`:116 - `Bisector_BisecCC::IntervalFirst()`
     pub fn Bisector_BisecCC_interval_first(
         self_: *const Bisector_BisecCC,
         Index: i32,
     ) -> crate::OcctResult<f64>;
-    /// **Source:** `Bisector_BisecCC.hxx`:123 - `Bisector_BisecCC::IntervalLast()`
+    /// **Source:** `Bisector_BisecCC.hxx`:120 - `Bisector_BisecCC::IntervalLast()`
     pub fn Bisector_BisecCC_interval_last(
         self_: *const Bisector_BisecCC,
         Index: i32,
     ) -> crate::OcctResult<f64>;
-    /// **Source:** `Bisector_BisecCC.hxx`:125 - `Bisector_BisecCC::IntervalContinuity()`
+    /// **Source:** `Bisector_BisecCC.hxx`:122 - `Bisector_BisecCC::IntervalContinuity()`
     pub fn Bisector_BisecCC_interval_continuity(
         self_: *const Bisector_BisecCC,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `Bisector_BisecCC.hxx`:127 - `Bisector_BisecCC::IsClosed()`
+    /// **Source:** `Bisector_BisecCC.hxx`:124 - `Bisector_BisecCC::IsClosed()`
     pub fn Bisector_BisecCC_is_closed(self_: *const Bisector_BisecCC) -> crate::OcctResult<bool>;
-    /// **Source:** `Bisector_BisecCC.hxx`:129 - `Bisector_BisecCC::IsPeriodic()`
+    /// **Source:** `Bisector_BisecCC.hxx`:126 - `Bisector_BisecCC::IsPeriodic()`
     pub fn Bisector_BisecCC_is_periodic(self_: *const Bisector_BisecCC) -> crate::OcctResult<bool>;
-    /// **Source:** `Bisector_BisecCC.hxx`:136 - `Bisector_BisecCC::ValueAndDist()`
+    /// **Source:** `Bisector_BisecCC.hxx`:133 - `Bisector_BisecCC::ValueAndDist()`
     pub fn Bisector_BisecCC_value_and_dist(
         self_: *const Bisector_BisecCC,
         U: f64,
@@ -11713,7 +11648,7 @@ unsafe extern "C" {
         U2: *mut f64,
         Distance: *mut f64,
     ) -> crate::OcctResult<*mut gp_Pnt2d>;
-    /// **Source:** `Bisector_BisecCC.hxx`:146 - `Bisector_BisecCC::ValueByInt()`
+    /// **Source:** `Bisector_BisecCC.hxx`:143 - `Bisector_BisecCC::ValueByInt()`
     pub fn Bisector_BisecCC_value_by_int(
         self_: *const Bisector_BisecCC,
         U: f64,
@@ -11721,82 +11656,72 @@ unsafe extern "C" {
         U2: *mut f64,
         Distance: *mut f64,
     ) -> crate::OcctResult<*mut gp_Pnt2d>;
-    /// **Source:** `Bisector_BisecCC.hxx`:151 - `Bisector_BisecCC::D0()`
-    pub fn Bisector_BisecCC_d0(
+    /// **Source:** `Bisector_BisecCC.hxx`:148 - `Bisector_BisecCC::EvalD0()`
+    pub fn Bisector_BisecCC_eval_d0(
         self_: *const Bisector_BisecCC,
         U: f64,
-        P: *mut gp_Pnt2d,
-    ) -> *const std::ffi::c_char;
-    /// **Source:** `Bisector_BisecCC.hxx`:153 - `Bisector_BisecCC::D1()`
-    pub fn Bisector_BisecCC_d1(
+    ) -> crate::OcctResult<*mut gp_Pnt2d>;
+    /// **Source:** `Bisector_BisecCC.hxx`:150 - `Bisector_BisecCC::EvalD1()`
+    pub fn Bisector_BisecCC_eval_d1(
         self_: *const Bisector_BisecCC,
         U: f64,
-        P: *mut gp_Pnt2d,
-        V: *mut gp_Vec2d,
-    ) -> *const std::ffi::c_char;
-    /// **Source:** `Bisector_BisecCC.hxx`:155 - `Bisector_BisecCC::D2()`
-    pub fn Bisector_BisecCC_d2(
+    ) -> crate::OcctResult<*mut Geom2d_Curve_ResD1>;
+    /// **Source:** `Bisector_BisecCC.hxx`:152 - `Bisector_BisecCC::EvalD2()`
+    pub fn Bisector_BisecCC_eval_d2(
         self_: *const Bisector_BisecCC,
         U: f64,
-        P: *mut gp_Pnt2d,
-        V1: *mut gp_Vec2d,
-        V2: *mut gp_Vec2d,
-    ) -> *const std::ffi::c_char;
-    /// **Source:** `Bisector_BisecCC.hxx`:160 - `Bisector_BisecCC::D3()`
-    pub fn Bisector_BisecCC_d3(
+    ) -> crate::OcctResult<*mut Geom2d_Curve_ResD2>;
+    /// **Source:** `Bisector_BisecCC.hxx`:154 - `Bisector_BisecCC::EvalD3()`
+    pub fn Bisector_BisecCC_eval_d3(
         self_: *const Bisector_BisecCC,
         U: f64,
-        P: *mut gp_Pnt2d,
-        V1: *mut gp_Vec2d,
-        V2: *mut gp_Vec2d,
-        V3: *mut gp_Vec2d,
-    ) -> *const std::ffi::c_char;
-    /// **Source:** `Bisector_BisecCC.hxx`:166 - `Bisector_BisecCC::DN()`
-    pub fn Bisector_BisecCC_dn(
+    ) -> crate::OcctResult<*mut Geom2d_Curve_ResD3>;
+    /// **Source:** `Bisector_BisecCC.hxx`:156 - `Bisector_BisecCC::EvalDN()`
+    pub fn Bisector_BisecCC_eval_dn(
         self_: *const Bisector_BisecCC,
         U: f64,
         N: i32,
     ) -> crate::OcctResult<*mut gp_Vec2d>;
-    /// **Source:** `Bisector_BisecCC.hxx`:169 - `Bisector_BisecCC::IsEmpty()`
+    /// **Source:** `Bisector_BisecCC.hxx`:158 - `Bisector_BisecCC::IsEmpty()`
     pub fn Bisector_BisecCC_is_empty(self_: *const Bisector_BisecCC) -> crate::OcctResult<bool>;
-    /// **Source:** `Bisector_BisecCC.hxx`:173 - `Bisector_BisecCC::LinkBisCurve()`
+    /// **Source:** `Bisector_BisecCC.hxx`:162 - `Bisector_BisecCC::LinkBisCurve()`
     pub fn Bisector_BisecCC_link_bis_curve(
         self_: *const Bisector_BisecCC,
         U: f64,
     ) -> crate::OcctResult<f64>;
-    /// **Source:** `Bisector_BisecCC.hxx`:176 - `Bisector_BisecCC::LinkCurveBis()`
+    /// **Source:** `Bisector_BisecCC.hxx`:165 - `Bisector_BisecCC::LinkCurveBis()`
     pub fn Bisector_BisecCC_link_curve_bis(
         self_: *const Bisector_BisecCC,
         U: f64,
     ) -> crate::OcctResult<f64>;
-    /// **Source:** `Bisector_BisecCC.hxx`:178 - `Bisector_BisecCC::Parameter()`
+    /// **Source:** `Bisector_BisecCC.hxx`:167 - `Bisector_BisecCC::Parameter()`
     pub fn Bisector_BisecCC_parameter(
         self_: *const Bisector_BisecCC,
         P: *const gp_Pnt2d,
     ) -> crate::OcctResult<f64>;
-    /// **Source:** `Bisector_BisecCC.hxx`:180 - `Bisector_BisecCC::Curve()`
+    /// **Source:** `Bisector_BisecCC.hxx`:169 - `Bisector_BisecCC::Curve()`
     pub fn Bisector_BisecCC_curve(
         self_: *const Bisector_BisecCC,
         IndCurve: i32,
-    ) -> crate::OcctResult<*mut HandleGeom2dCurve>;
-    /// **Source:** `Bisector_BisecCC.hxx`:182 - `Bisector_BisecCC::Polygon()`
+    ) -> crate::OcctResult<*mut Handle_Geom2d_Curve>;
+    /// **Source:** `Bisector_BisecCC.hxx`:171 - `Bisector_BisecCC::Polygon()`
     pub fn Bisector_BisecCC_polygon(
         self_: *const Bisector_BisecCC,
     ) -> crate::OcctResult<*const Bisector_PolyBis>;
-    /// **Source:** `Bisector_BisecCC.hxx`:184 - `Bisector_BisecCC::Dump()`
+    /// **Source:** `Bisector_BisecCC.hxx`:173 - `Bisector_BisecCC::Dump()`
     pub fn Bisector_BisecCC_dump(
         self_: *const Bisector_BisecCC,
         Deep: i32,
         Offset: i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `Bisector_BisecCC.hxx`:187 - `Bisector_BisecCC::DynamicType()`
+    /// **Source:** `Bisector_BisecCC.hxx`:175 - `Bisector_BisecCC::DynamicType()`
     pub fn Bisector_BisecCC_dynamic_type(
         self_: *const Bisector_BisecCC,
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// **Source:** `Bisector_BisecCC.hxx`:187 - `Bisector_BisecCC::get_type_name()`
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
+    /// **Source:** `Bisector_BisecCC.hxx`:175 - `Bisector_BisecCC::get_type_name()`
     pub fn Bisector_BisecCC_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
-    /// **Source:** `Bisector_BisecCC.hxx`:187 - `Bisector_BisecCC::get_type_descriptor()`
-    pub fn Bisector_BisecCC_get_type_descriptor() -> crate::OcctResult<*const HandleStandardType>;
+    /// **Source:** `Bisector_BisecCC.hxx`:175 - `Bisector_BisecCC::get_type_descriptor()`
+    pub fn Bisector_BisecCC_get_type_descriptor() -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast Bisector_BisecCC to Bisector_Curve
     pub fn Bisector_BisecCC_as_Bisector_Curve(
         self_: *const Bisector_BisecCC,
@@ -11832,300 +11757,326 @@ unsafe extern "C" {
     /// Wrap Bisector_BisecCC in a Handle
     pub fn Bisector_BisecCC_to_handle(
         obj: *mut Bisector_BisecCC,
-    ) -> crate::OcctResult<*mut HandleBisectorBisecCC>;
+    ) -> crate::OcctResult<*mut Handle_Bisector_BisecCC>;
     /// Destroy Handle<Bisector_BisecCC>
-    pub fn HandleBisectorBisecCC_destructor(self_: *mut HandleBisectorBisecCC);
+    pub fn Handle_Bisector_BisecCC_destructor(self_: *mut Handle_Bisector_BisecCC);
     /// Clone Handle<Bisector_BisecCC> (increments reference count)
-    pub fn HandleBisectorBisecCC_clone(
-        self_: *const HandleBisectorBisecCC,
-    ) -> crate::OcctResult<*mut HandleBisectorBisecCC>;
+    pub fn Handle_Bisector_BisecCC_clone(
+        self_: *const Handle_Bisector_BisecCC,
+    ) -> crate::OcctResult<*mut Handle_Bisector_BisecCC>;
     /// Check if Handle<Bisector_BisecCC> is null
-    pub fn HandleBisectorBisecCC_is_null(self_: *const HandleBisectorBisecCC) -> bool;
+    pub fn Handle_Bisector_BisecCC_is_null(self_: *const Handle_Bisector_BisecCC) -> bool;
     /// Dereference Handle to get *const Bisector_BisecCC
-    pub fn HandleBisectorBisecCC_get(
-        handle: *const HandleBisectorBisecCC,
+    pub fn Handle_Bisector_BisecCC_get(
+        handle: *const Handle_Bisector_BisecCC,
     ) -> crate::OcctResult<*const Bisector_BisecCC>;
     /// Dereference Handle to get *mut Bisector_BisecCC
-    pub fn HandleBisectorBisecCC_get_mut(
-        handle: *mut HandleBisectorBisecCC,
+    pub fn Handle_Bisector_BisecCC_get_mut(
+        handle: *mut Handle_Bisector_BisecCC,
     ) -> crate::OcctResult<*mut Bisector_BisecCC>;
     /// Upcast Handle<Bisector_BisecCC> to Handle<Bisector_Curve>
-    pub fn HandleBisectorBisecCC_to_HandleBisectorCurve(
-        self_: *const HandleBisectorBisecCC,
-    ) -> crate::OcctResult<*mut HandleBisectorCurve>;
+    pub fn Handle_Bisector_BisecCC_to_Handle_Bisector_Curve(
+        self_: *const Handle_Bisector_BisecCC,
+    ) -> crate::OcctResult<*mut Handle_Bisector_Curve>;
     /// Upcast Handle<Bisector_BisecCC> to Handle<Geom2d_Curve>
-    pub fn HandleBisectorBisecCC_to_HandleGeom2dCurve(
-        self_: *const HandleBisectorBisecCC,
-    ) -> crate::OcctResult<*mut HandleGeom2dCurve>;
+    pub fn Handle_Bisector_BisecCC_to_Handle_Geom2d_Curve(
+        self_: *const Handle_Bisector_BisecCC,
+    ) -> crate::OcctResult<*mut Handle_Geom2d_Curve>;
     /// Upcast Handle<Bisector_BisecCC> to Handle<Geom2d_Geometry>
-    pub fn HandleBisectorBisecCC_to_HandleGeom2dGeometry(
-        self_: *const HandleBisectorBisecCC,
-    ) -> crate::OcctResult<*mut HandleGeom2dGeometry>;
+    pub fn Handle_Bisector_BisecCC_to_Handle_Geom2d_Geometry(
+        self_: *const Handle_Bisector_BisecCC,
+    ) -> crate::OcctResult<*mut Handle_Geom2d_Geometry>;
     /// Upcast Handle<Bisector_BisecCC> to Handle<Standard_Transient>
-    pub fn HandleBisectorBisecCC_to_HandleStandardTransient(
-        self_: *const HandleBisectorBisecCC,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
-    /// Inherited: **Source:** `Geom2d_Curve.hxx`:83 - `Geom2d_Curve::TransformedParameter()`
+    pub fn Handle_Bisector_BisecCC_to_Handle_Standard_Transient(
+        self_: *const Handle_Bisector_BisecCC,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
+    /// Inherited: **Source:** `Geom2d_Curve.hxx`:105 - `Geom2d_Curve::TransformedParameter()`
     pub fn Bisector_BisecCC_inherited_TransformedParameter(
         self_: *const Bisector_BisecCC,
         U: f64,
         T: *const gp_Trsf2d,
     ) -> crate::OcctResult<f64>;
-    /// Inherited: **Source:** `Geom2d_Curve.hxx`:94 - `Geom2d_Curve::ParametricTransformation()`
+    /// Inherited: **Source:** `Geom2d_Curve.hxx`:115 - `Geom2d_Curve::ParametricTransformation()`
     pub fn Bisector_BisecCC_inherited_ParametricTransformation(
         self_: *const Bisector_BisecCC,
         T: *const gp_Trsf2d,
     ) -> crate::OcctResult<f64>;
-    /// Inherited: **Source:** `Geom2d_Curve.hxx`:105 - `Geom2d_Curve::Reversed()`
+    /// Inherited: **Source:** `Geom2d_Curve.hxx`:126 - `Geom2d_Curve::Reversed()`
     pub fn Bisector_BisecCC_inherited_Reversed(
         self_: *const Bisector_BisecCC,
-    ) -> crate::OcctResult<*mut HandleGeom2dCurve>;
-    /// Inherited: **Source:** `Geom2d_Curve.hxx`:149 - `Geom2d_Curve::Period()`
+    ) -> crate::OcctResult<*mut Handle_Geom2d_Curve>;
+    /// Inherited: **Source:** `Geom2d_Curve.hxx`:170 - `Geom2d_Curve::Period()`
     pub fn Bisector_BisecCC_inherited_Period(
         self_: *const Bisector_BisecCC,
     ) -> crate::OcctResult<f64>;
-    /// Inherited: **Source:** `Geom2d_Curve.hxx`:219 - `Geom2d_Curve::Value()`
-    pub fn Bisector_BisecCC_inherited_Value(
+    /// Inherited: **Source:** `Geom2d_Curve.hxx`:207 - `Geom2d_Curve::D0()`
+    pub fn Bisector_BisecCC_inherited_D0(
         self_: *const Bisector_BisecCC,
-        U: f64,
-    ) -> crate::OcctResult<*mut gp_Pnt2d>;
-    /// Inherited: **Source:** `Geom2d_Geometry.hxx`:63 - `Geom2d_Geometry::Mirror()`
-    pub fn Bisector_BisecCC_inherited_Mirror(
-        self_: *mut Bisector_BisecCC,
-        P: *const gp_Pnt2d,
-    ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Geom2d_Geometry.hxx`:71 - `Geom2d_Geometry::Rotate()`
-    pub fn Bisector_BisecCC_inherited_Rotate(
-        self_: *mut Bisector_BisecCC,
-        P: *const gp_Pnt2d,
-        Ang: f64,
-    ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Geom2d_Geometry.hxx`:74 - `Geom2d_Geometry::Scale()`
-    pub fn Bisector_BisecCC_inherited_Scale(
-        self_: *mut Bisector_BisecCC,
-        P: *const gp_Pnt2d,
-        S: f64,
-    ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Geom2d_Geometry.hxx`:77 - `Geom2d_Geometry::Translate()`
-    pub fn Bisector_BisecCC_inherited_Translate(
-        self_: *mut Bisector_BisecCC,
-        V: *const gp_Vec2d,
-    ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Geom2d_Geometry.hxx`:92 - `Geom2d_Geometry::Mirrored()`
-    pub fn Bisector_BisecCC_inherited_Mirrored(
-        self_: *const Bisector_BisecCC,
-        P: *const gp_Pnt2d,
-    ) -> crate::OcctResult<*mut HandleGeom2dGeometry>;
-    /// Inherited: **Source:** `Geom2d_Geometry.hxx`:96 - `Geom2d_Geometry::Rotated()`
-    pub fn Bisector_BisecCC_inherited_Rotated(
-        self_: *const Bisector_BisecCC,
-        P: *const gp_Pnt2d,
-        Ang: f64,
-    ) -> crate::OcctResult<*mut HandleGeom2dGeometry>;
-    /// Inherited: **Source:** `Geom2d_Geometry.hxx`:99 - `Geom2d_Geometry::Scaled()`
-    pub fn Bisector_BisecCC_inherited_Scaled(
-        self_: *const Bisector_BisecCC,
-        P: *const gp_Pnt2d,
-        S: f64,
-    ) -> crate::OcctResult<*mut HandleGeom2dGeometry>;
-    /// Inherited: **Source:** `Geom2d_Geometry.hxx`:102 - `Geom2d_Geometry::Transformed()`
-    pub fn Bisector_BisecCC_inherited_Transformed(
-        self_: *const Bisector_BisecCC,
-        T: *const gp_Trsf2d,
-    ) -> crate::OcctResult<*mut HandleGeom2dGeometry>;
-    /// Inherited: **Source:** `Geom2d_Geometry.hxx`:104 - `Geom2d_Geometry::Translated()`
-    pub fn Bisector_BisecCC_inherited_Translated(
-        self_: *const Bisector_BisecCC,
-        V: *const gp_Vec2d,
-    ) -> crate::OcctResult<*mut HandleGeom2dGeometry>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn Bisector_BisecCC_inherited_IsInstance(
-        self_: *const Bisector_BisecCC,
-        theType: *const HandleStandardType,
-    ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn Bisector_BisecCC_inherited_IsKind(
-        self_: *const Bisector_BisecCC,
-        theType: *const HandleStandardType,
-    ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
-    pub fn Bisector_BisecCC_inherited_This(
-        self_: *const Bisector_BisecCC,
-    ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
-    pub fn Bisector_BisecCC_inherited_GetRefCount(
-        self_: *const Bisector_BisecCC,
-    ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
-    pub fn Bisector_BisecCC_inherited_IncrementRefCounter(
-        self_: *mut Bisector_BisecCC,
-    ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
-    pub fn Bisector_BisecCC_inherited_DecrementRefCounter(
-        self_: *mut Bisector_BisecCC,
-    ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
-    pub fn Bisector_BisecCC_inherited_Delete(
-        self_: *const Bisector_BisecCC,
-    ) -> *const std::ffi::c_char;
-    // ======================== Bisector_BisecPC ========================
-    pub fn Bisector_BisecPC_destructor(self_: *mut Bisector_BisecPC);
-    /// **Source:** `Bisector_BisecPC.hxx`:42 - `Bisector_BisecPC::Bisector_BisecPC()`
-    pub fn Bisector_BisecPC_ctor() -> crate::OcctResult<*mut Bisector_BisecPC>;
-    /// **Source:** `Bisector_BisecPC.hxx`:51 - `Bisector_BisecPC::Bisector_BisecPC()`
-    pub fn Bisector_BisecPC_ctor_handlegeom2dcurve_pnt2d_real2(
-        Cu: *const HandleGeom2dCurve,
-        P: *const gp_Pnt2d,
-        Side: f64,
-        DistMax: f64,
-    ) -> crate::OcctResult<*mut Bisector_BisecPC>;
-    /// **Source:** `Bisector_BisecPC.hxx`:62 - `Bisector_BisecPC::Bisector_BisecPC()`
-    pub fn Bisector_BisecPC_ctor_handlegeom2dcurve_pnt2d_real3(
-        Cu: *const HandleGeom2dCurve,
-        P: *const gp_Pnt2d,
-        Side: f64,
-        UMin: f64,
-        UMax: f64,
-    ) -> crate::OcctResult<*mut Bisector_BisecPC>;
-    /// **Source:** `Bisector_BisecPC.hxx`:75 - `Bisector_BisecPC::Perform()`
-    pub fn Bisector_BisecPC_perform(
-        self_: *mut Bisector_BisecPC,
-        Cu: *const HandleGeom2dCurve,
-        P: *const gp_Pnt2d,
-        Side: f64,
-        DistMax: f64,
-    ) -> *const std::ffi::c_char;
-    /// **Source:** `Bisector_BisecPC.hxx`:81 - `Bisector_BisecPC::IsExtendAtStart()`
-    pub fn Bisector_BisecPC_is_extend_at_start(
-        self_: *const Bisector_BisecPC,
-    ) -> crate::OcctResult<bool>;
-    /// **Source:** `Bisector_BisecPC.hxx`:84 - `Bisector_BisecPC::IsExtendAtEnd()`
-    pub fn Bisector_BisecPC_is_extend_at_end(
-        self_: *const Bisector_BisecPC,
-    ) -> crate::OcctResult<bool>;
-    /// **Source:** `Bisector_BisecPC.hxx`:91 - `Bisector_BisecPC::Reverse()`
-    pub fn Bisector_BisecPC_reverse(self_: *mut Bisector_BisecPC) -> *const std::ffi::c_char;
-    /// **Source:** `Bisector_BisecPC.hxx`:95 - `Bisector_BisecPC::ReversedParameter()`
-    pub fn Bisector_BisecPC_reversed_parameter(
-        self_: *const Bisector_BisecPC,
-        U: f64,
-    ) -> crate::OcctResult<f64>;
-    /// **Source:** `Bisector_BisecPC.hxx`:97 - `Bisector_BisecPC::Copy()`
-    pub fn Bisector_BisecPC_copy(
-        self_: *const Bisector_BisecPC,
-    ) -> crate::OcctResult<*mut HandleGeom2dGeometry>;
-    /// **Source:** `Bisector_BisecPC.hxx`:103 - `Bisector_BisecPC::Transform()`
-    pub fn Bisector_BisecPC_transform(
-        self_: *mut Bisector_BisecPC,
-        T: *const gp_Trsf2d,
-    ) -> *const std::ffi::c_char;
-    /// **Source:** `Bisector_BisecPC.hxx`:107 - `Bisector_BisecPC::IsCN()`
-    pub fn Bisector_BisecPC_is_cn(
-        self_: *const Bisector_BisecPC,
-        N: i32,
-    ) -> crate::OcctResult<bool>;
-    /// **Source:** `Bisector_BisecPC.hxx`:110 - `Bisector_BisecPC::FirstParameter()`
-    pub fn Bisector_BisecPC_first_parameter(
-        self_: *const Bisector_BisecPC,
-    ) -> crate::OcctResult<f64>;
-    /// **Source:** `Bisector_BisecPC.hxx`:113 - `Bisector_BisecPC::LastParameter()`
-    pub fn Bisector_BisecPC_last_parameter(
-        self_: *const Bisector_BisecPC,
-    ) -> crate::OcctResult<f64>;
-    /// **Source:** `Bisector_BisecPC.hxx`:115 - `Bisector_BisecPC::Continuity()`
-    pub fn Bisector_BisecPC_continuity(self_: *const Bisector_BisecPC) -> crate::OcctResult<i32>;
-    /// **Source:** `Bisector_BisecPC.hxx`:120 - `Bisector_BisecPC::NbIntervals()`
-    pub fn Bisector_BisecPC_nb_intervals(self_: *const Bisector_BisecPC) -> crate::OcctResult<i32>;
-    /// **Source:** `Bisector_BisecPC.hxx`:124 - `Bisector_BisecPC::IntervalFirst()`
-    pub fn Bisector_BisecPC_interval_first(
-        self_: *const Bisector_BisecPC,
-        Index: i32,
-    ) -> crate::OcctResult<f64>;
-    /// **Source:** `Bisector_BisecPC.hxx`:128 - `Bisector_BisecPC::IntervalLast()`
-    pub fn Bisector_BisecPC_interval_last(
-        self_: *const Bisector_BisecPC,
-        Index: i32,
-    ) -> crate::OcctResult<f64>;
-    /// **Source:** `Bisector_BisecPC.hxx`:130 - `Bisector_BisecPC::IntervalContinuity()`
-    pub fn Bisector_BisecPC_interval_continuity(
-        self_: *const Bisector_BisecPC,
-    ) -> crate::OcctResult<i32>;
-    /// **Source:** `Bisector_BisecPC.hxx`:132 - `Bisector_BisecPC::IsClosed()`
-    pub fn Bisector_BisecPC_is_closed(self_: *const Bisector_BisecPC) -> crate::OcctResult<bool>;
-    /// **Source:** `Bisector_BisecPC.hxx`:134 - `Bisector_BisecPC::IsPeriodic()`
-    pub fn Bisector_BisecPC_is_periodic(self_: *const Bisector_BisecPC) -> crate::OcctResult<bool>;
-    /// **Source:** `Bisector_BisecPC.hxx`:138 - `Bisector_BisecPC::Distance()`
-    pub fn Bisector_BisecPC_distance(
-        self_: *const Bisector_BisecPC,
-        U: f64,
-    ) -> crate::OcctResult<f64>;
-    /// **Source:** `Bisector_BisecPC.hxx`:140 - `Bisector_BisecPC::D0()`
-    pub fn Bisector_BisecPC_d0(
-        self_: *const Bisector_BisecPC,
         U: f64,
         P: *mut gp_Pnt2d,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `Bisector_BisecPC.hxx`:142 - `Bisector_BisecPC::D1()`
-    pub fn Bisector_BisecPC_d1(
-        self_: *const Bisector_BisecPC,
+    /// Inherited: **Source:** `Geom2d_Curve.hxx`:210 - `Geom2d_Curve::D1()`
+    pub fn Bisector_BisecCC_inherited_D1(
+        self_: *const Bisector_BisecCC,
         U: f64,
         P: *mut gp_Pnt2d,
-        V: *mut gp_Vec2d,
+        V1: *mut gp_Vec2d,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `Bisector_BisecPC.hxx`:144 - `Bisector_BisecPC::D2()`
-    pub fn Bisector_BisecPC_d2(
-        self_: *const Bisector_BisecPC,
+    /// Inherited: **Source:** `Geom2d_Curve.hxx`:218 - `Geom2d_Curve::D2()`
+    pub fn Bisector_BisecCC_inherited_D2(
+        self_: *const Bisector_BisecCC,
         U: f64,
         P: *mut gp_Pnt2d,
         V1: *mut gp_Vec2d,
         V2: *mut gp_Vec2d,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `Bisector_BisecPC.hxx`:149 - `Bisector_BisecPC::D3()`
-    pub fn Bisector_BisecPC_d3(
-        self_: *const Bisector_BisecPC,
+    /// Inherited: **Source:** `Geom2d_Curve.hxx`:227 - `Geom2d_Curve::D3()`
+    pub fn Bisector_BisecCC_inherited_D3(
+        self_: *const Bisector_BisecCC,
         U: f64,
         P: *mut gp_Pnt2d,
         V1: *mut gp_Vec2d,
         V2: *mut gp_Vec2d,
         V3: *mut gp_Vec2d,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `Bisector_BisecPC.hxx`:155 - `Bisector_BisecPC::DN()`
-    pub fn Bisector_BisecPC_dn(
+    /// Inherited: **Source:** `Geom2d_Curve.hxx`:237 - `Geom2d_Curve::DN()`
+    pub fn Bisector_BisecCC_inherited_DN(
+        self_: *const Bisector_BisecCC,
+        U: f64,
+        N: i32,
+    ) -> crate::OcctResult<*mut gp_Vec2d>;
+    /// Inherited: **Source:** `Geom2d_Curve.hxx`:240 - `Geom2d_Curve::Value()`
+    pub fn Bisector_BisecCC_inherited_Value(
+        self_: *const Bisector_BisecCC,
+        U: f64,
+    ) -> crate::OcctResult<*mut gp_Pnt2d>;
+    /// Inherited: **Source:** `Geom2d_Geometry.hxx`:60 - `Geom2d_Geometry::Mirror()`
+    pub fn Bisector_BisecCC_inherited_Mirror(
+        self_: *mut Bisector_BisecCC,
+        P: *const gp_Pnt2d,
+    ) -> *const std::ffi::c_char;
+    /// Inherited: **Source:** `Geom2d_Geometry.hxx`:68 - `Geom2d_Geometry::Rotate()`
+    pub fn Bisector_BisecCC_inherited_Rotate(
+        self_: *mut Bisector_BisecCC,
+        P: *const gp_Pnt2d,
+        Ang: f64,
+    ) -> *const std::ffi::c_char;
+    /// Inherited: **Source:** `Geom2d_Geometry.hxx`:71 - `Geom2d_Geometry::Scale()`
+    pub fn Bisector_BisecCC_inherited_Scale(
+        self_: *mut Bisector_BisecCC,
+        P: *const gp_Pnt2d,
+        S: f64,
+    ) -> *const std::ffi::c_char;
+    /// Inherited: **Source:** `Geom2d_Geometry.hxx`:74 - `Geom2d_Geometry::Translate()`
+    pub fn Bisector_BisecCC_inherited_Translate(
+        self_: *mut Bisector_BisecCC,
+        V: *const gp_Vec2d,
+    ) -> *const std::ffi::c_char;
+    /// Inherited: **Source:** `Geom2d_Geometry.hxx`:89 - `Geom2d_Geometry::Mirrored()`
+    pub fn Bisector_BisecCC_inherited_Mirrored(
+        self_: *const Bisector_BisecCC,
+        P: *const gp_Pnt2d,
+    ) -> crate::OcctResult<*mut Handle_Geom2d_Geometry>;
+    /// Inherited: **Source:** `Geom2d_Geometry.hxx`:93 - `Geom2d_Geometry::Rotated()`
+    pub fn Bisector_BisecCC_inherited_Rotated(
+        self_: *const Bisector_BisecCC,
+        P: *const gp_Pnt2d,
+        Ang: f64,
+    ) -> crate::OcctResult<*mut Handle_Geom2d_Geometry>;
+    /// Inherited: **Source:** `Geom2d_Geometry.hxx`:96 - `Geom2d_Geometry::Scaled()`
+    pub fn Bisector_BisecCC_inherited_Scaled(
+        self_: *const Bisector_BisecCC,
+        P: *const gp_Pnt2d,
+        S: f64,
+    ) -> crate::OcctResult<*mut Handle_Geom2d_Geometry>;
+    /// Inherited: **Source:** `Geom2d_Geometry.hxx`:99 - `Geom2d_Geometry::Transformed()`
+    pub fn Bisector_BisecCC_inherited_Transformed(
+        self_: *const Bisector_BisecCC,
+        T: *const gp_Trsf2d,
+    ) -> crate::OcctResult<*mut Handle_Geom2d_Geometry>;
+    /// Inherited: **Source:** `Geom2d_Geometry.hxx`:101 - `Geom2d_Geometry::Translated()`
+    pub fn Bisector_BisecCC_inherited_Translated(
+        self_: *const Bisector_BisecCC,
+        V: *const gp_Vec2d,
+    ) -> crate::OcctResult<*mut Handle_Geom2d_Geometry>;
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
+    pub fn Bisector_BisecCC_inherited_IsInstance(
+        self_: *const Bisector_BisecCC,
+        theType: *const Handle_Standard_Type,
+    ) -> crate::OcctResult<bool>;
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
+    pub fn Bisector_BisecCC_inherited_IsKind(
+        self_: *const Bisector_BisecCC,
+        theType: *const Handle_Standard_Type,
+    ) -> crate::OcctResult<bool>;
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
+    pub fn Bisector_BisecCC_inherited_This(
+        self_: *const Bisector_BisecCC,
+    ) -> crate::OcctResult<*mut Standard_Transient>;
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
+    pub fn Bisector_BisecCC_inherited_GetRefCount(
+        self_: *const Bisector_BisecCC,
+    ) -> crate::OcctResult<i32>;
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
+    pub fn Bisector_BisecCC_inherited_IncrementRefCounter(
+        self_: *mut Bisector_BisecCC,
+    ) -> *const std::ffi::c_char;
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
+    pub fn Bisector_BisecCC_inherited_DecrementRefCounter(
+        self_: *mut Bisector_BisecCC,
+    ) -> crate::OcctResult<i32>;
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
+    pub fn Bisector_BisecCC_inherited_Delete(
+        self_: *const Bisector_BisecCC,
+    ) -> *const std::ffi::c_char;
+    // ======================== Bisector_BisecPC ========================
+    pub fn Bisector_BisecPC_destructor(self_: *mut Bisector_BisecPC);
+    /// **Source:** `Bisector_BisecPC.hxx`:39 - `Bisector_BisecPC::Bisector_BisecPC()`
+    pub fn Bisector_BisecPC_ctor() -> crate::OcctResult<*mut Bisector_BisecPC>;
+    /// **Source:** `Bisector_BisecPC.hxx`:48 - `Bisector_BisecPC::Bisector_BisecPC()`
+    pub fn Bisector_BisecPC_ctor_handlegeom2dcurve_pnt2d_real2(
+        Cu: *const Handle_Geom2d_Curve,
+        P: *const gp_Pnt2d,
+        Side: f64,
+        DistMax: f64,
+    ) -> crate::OcctResult<*mut Bisector_BisecPC>;
+    /// **Source:** `Bisector_BisecPC.hxx`:59 - `Bisector_BisecPC::Bisector_BisecPC()`
+    pub fn Bisector_BisecPC_ctor_handlegeom2dcurve_pnt2d_real3(
+        Cu: *const Handle_Geom2d_Curve,
+        P: *const gp_Pnt2d,
+        Side: f64,
+        UMin: f64,
+        UMax: f64,
+    ) -> crate::OcctResult<*mut Bisector_BisecPC>;
+    /// **Source:** `Bisector_BisecPC.hxx`:72 - `Bisector_BisecPC::Perform()`
+    pub fn Bisector_BisecPC_perform(
+        self_: *mut Bisector_BisecPC,
+        Cu: *const Handle_Geom2d_Curve,
+        P: *const gp_Pnt2d,
+        Side: f64,
+        DistMax: f64,
+    ) -> *const std::ffi::c_char;
+    /// **Source:** `Bisector_BisecPC.hxx`:78 - `Bisector_BisecPC::IsExtendAtStart()`
+    pub fn Bisector_BisecPC_is_extend_at_start(
+        self_: *const Bisector_BisecPC,
+    ) -> crate::OcctResult<bool>;
+    /// **Source:** `Bisector_BisecPC.hxx`:81 - `Bisector_BisecPC::IsExtendAtEnd()`
+    pub fn Bisector_BisecPC_is_extend_at_end(
+        self_: *const Bisector_BisecPC,
+    ) -> crate::OcctResult<bool>;
+    /// **Source:** `Bisector_BisecPC.hxx`:88 - `Bisector_BisecPC::Reverse()`
+    pub fn Bisector_BisecPC_reverse(self_: *mut Bisector_BisecPC) -> *const std::ffi::c_char;
+    /// **Source:** `Bisector_BisecPC.hxx`:92 - `Bisector_BisecPC::ReversedParameter()`
+    pub fn Bisector_BisecPC_reversed_parameter(
+        self_: *const Bisector_BisecPC,
+        U: f64,
+    ) -> crate::OcctResult<f64>;
+    /// **Source:** `Bisector_BisecPC.hxx`:94 - `Bisector_BisecPC::Copy()`
+    pub fn Bisector_BisecPC_copy(
+        self_: *const Bisector_BisecPC,
+    ) -> crate::OcctResult<*mut Handle_Geom2d_Geometry>;
+    /// **Source:** `Bisector_BisecPC.hxx`:100 - `Bisector_BisecPC::Transform()`
+    pub fn Bisector_BisecPC_transform(
+        self_: *mut Bisector_BisecPC,
+        T: *const gp_Trsf2d,
+    ) -> *const std::ffi::c_char;
+    /// **Source:** `Bisector_BisecPC.hxx`:104 - `Bisector_BisecPC::IsCN()`
+    pub fn Bisector_BisecPC_is_cn(
+        self_: *const Bisector_BisecPC,
+        N: i32,
+    ) -> crate::OcctResult<bool>;
+    /// **Source:** `Bisector_BisecPC.hxx`:107 - `Bisector_BisecPC::FirstParameter()`
+    pub fn Bisector_BisecPC_first_parameter(
+        self_: *const Bisector_BisecPC,
+    ) -> crate::OcctResult<f64>;
+    /// **Source:** `Bisector_BisecPC.hxx`:110 - `Bisector_BisecPC::LastParameter()`
+    pub fn Bisector_BisecPC_last_parameter(
+        self_: *const Bisector_BisecPC,
+    ) -> crate::OcctResult<f64>;
+    /// **Source:** `Bisector_BisecPC.hxx`:112 - `Bisector_BisecPC::Continuity()`
+    pub fn Bisector_BisecPC_continuity(self_: *const Bisector_BisecPC) -> crate::OcctResult<i32>;
+    /// **Source:** `Bisector_BisecPC.hxx`:117 - `Bisector_BisecPC::NbIntervals()`
+    pub fn Bisector_BisecPC_nb_intervals(self_: *const Bisector_BisecPC) -> crate::OcctResult<i32>;
+    /// **Source:** `Bisector_BisecPC.hxx`:121 - `Bisector_BisecPC::IntervalFirst()`
+    pub fn Bisector_BisecPC_interval_first(
+        self_: *const Bisector_BisecPC,
+        Index: i32,
+    ) -> crate::OcctResult<f64>;
+    /// **Source:** `Bisector_BisecPC.hxx`:125 - `Bisector_BisecPC::IntervalLast()`
+    pub fn Bisector_BisecPC_interval_last(
+        self_: *const Bisector_BisecPC,
+        Index: i32,
+    ) -> crate::OcctResult<f64>;
+    /// **Source:** `Bisector_BisecPC.hxx`:127 - `Bisector_BisecPC::IntervalContinuity()`
+    pub fn Bisector_BisecPC_interval_continuity(
+        self_: *const Bisector_BisecPC,
+    ) -> crate::OcctResult<i32>;
+    /// **Source:** `Bisector_BisecPC.hxx`:129 - `Bisector_BisecPC::IsClosed()`
+    pub fn Bisector_BisecPC_is_closed(self_: *const Bisector_BisecPC) -> crate::OcctResult<bool>;
+    /// **Source:** `Bisector_BisecPC.hxx`:131 - `Bisector_BisecPC::IsPeriodic()`
+    pub fn Bisector_BisecPC_is_periodic(self_: *const Bisector_BisecPC) -> crate::OcctResult<bool>;
+    /// **Source:** `Bisector_BisecPC.hxx`:135 - `Bisector_BisecPC::Distance()`
+    pub fn Bisector_BisecPC_distance(
+        self_: *const Bisector_BisecPC,
+        U: f64,
+    ) -> crate::OcctResult<f64>;
+    /// **Source:** `Bisector_BisecPC.hxx`:137 - `Bisector_BisecPC::EvalD0()`
+    pub fn Bisector_BisecPC_eval_d0(
+        self_: *const Bisector_BisecPC,
+        U: f64,
+    ) -> crate::OcctResult<*mut gp_Pnt2d>;
+    /// **Source:** `Bisector_BisecPC.hxx`:139 - `Bisector_BisecPC::EvalD1()`
+    pub fn Bisector_BisecPC_eval_d1(
+        self_: *const Bisector_BisecPC,
+        U: f64,
+    ) -> crate::OcctResult<*mut Geom2d_Curve_ResD1>;
+    /// **Source:** `Bisector_BisecPC.hxx`:141 - `Bisector_BisecPC::EvalD2()`
+    pub fn Bisector_BisecPC_eval_d2(
+        self_: *const Bisector_BisecPC,
+        U: f64,
+    ) -> crate::OcctResult<*mut Geom2d_Curve_ResD2>;
+    /// **Source:** `Bisector_BisecPC.hxx`:143 - `Bisector_BisecPC::EvalD3()`
+    pub fn Bisector_BisecPC_eval_d3(
+        self_: *const Bisector_BisecPC,
+        U: f64,
+    ) -> crate::OcctResult<*mut Geom2d_Curve_ResD3>;
+    /// **Source:** `Bisector_BisecPC.hxx`:145 - `Bisector_BisecPC::EvalDN()`
+    pub fn Bisector_BisecPC_eval_dn(
         self_: *const Bisector_BisecPC,
         U: f64,
         N: i32,
     ) -> crate::OcctResult<*mut gp_Vec2d>;
-    /// **Source:** `Bisector_BisecPC.hxx`:158 - `Bisector_BisecPC::Dump()`
+    /// **Source:** `Bisector_BisecPC.hxx`:147 - `Bisector_BisecPC::Dump()`
     pub fn Bisector_BisecPC_dump(
         self_: *const Bisector_BisecPC,
         Deep: i32,
         Offset: i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `Bisector_BisecPC.hxx`:163 - `Bisector_BisecPC::LinkBisCurve()`
+    /// **Source:** `Bisector_BisecPC.hxx`:151 - `Bisector_BisecPC::LinkBisCurve()`
     pub fn Bisector_BisecPC_link_bis_curve(
         self_: *const Bisector_BisecPC,
         U: f64,
     ) -> crate::OcctResult<f64>;
-    /// **Source:** `Bisector_BisecPC.hxx`:166 - `Bisector_BisecPC::LinkCurveBis()`
+    /// **Source:** `Bisector_BisecPC.hxx`:154 - `Bisector_BisecPC::LinkCurveBis()`
     pub fn Bisector_BisecPC_link_curve_bis(
         self_: *const Bisector_BisecPC,
         U: f64,
     ) -> crate::OcctResult<f64>;
-    /// **Source:** `Bisector_BisecPC.hxx`:169 - `Bisector_BisecPC::Parameter()`
+    /// **Source:** `Bisector_BisecPC.hxx`:157 - `Bisector_BisecPC::Parameter()`
     pub fn Bisector_BisecPC_parameter(
         self_: *const Bisector_BisecPC,
         P: *const gp_Pnt2d,
     ) -> crate::OcctResult<f64>;
-    /// **Source:** `Bisector_BisecPC.hxx`:172 - `Bisector_BisecPC::IsEmpty()`
+    /// **Source:** `Bisector_BisecPC.hxx`:160 - `Bisector_BisecPC::IsEmpty()`
     pub fn Bisector_BisecPC_is_empty(self_: *const Bisector_BisecPC) -> crate::OcctResult<bool>;
-    /// **Source:** `Bisector_BisecPC.hxx`:174 - `Bisector_BisecPC::DynamicType()`
+    /// **Source:** `Bisector_BisecPC.hxx`:162 - `Bisector_BisecPC::DynamicType()`
     pub fn Bisector_BisecPC_dynamic_type(
         self_: *const Bisector_BisecPC,
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// **Source:** `Bisector_BisecPC.hxx`:174 - `Bisector_BisecPC::get_type_name()`
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
+    /// **Source:** `Bisector_BisecPC.hxx`:162 - `Bisector_BisecPC::get_type_name()`
     pub fn Bisector_BisecPC_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
-    /// **Source:** `Bisector_BisecPC.hxx`:174 - `Bisector_BisecPC::get_type_descriptor()`
-    pub fn Bisector_BisecPC_get_type_descriptor() -> crate::OcctResult<*const HandleStandardType>;
+    /// **Source:** `Bisector_BisecPC.hxx`:162 - `Bisector_BisecPC::get_type_descriptor()`
+    pub fn Bisector_BisecPC_get_type_descriptor() -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast Bisector_BisecPC to Bisector_Curve
     pub fn Bisector_BisecPC_as_Bisector_Curve(
         self_: *const Bisector_BisecPC,
@@ -12161,176 +12112,212 @@ unsafe extern "C" {
     /// Wrap Bisector_BisecPC in a Handle
     pub fn Bisector_BisecPC_to_handle(
         obj: *mut Bisector_BisecPC,
-    ) -> crate::OcctResult<*mut HandleBisectorBisecPC>;
+    ) -> crate::OcctResult<*mut Handle_Bisector_BisecPC>;
     /// Destroy Handle<Bisector_BisecPC>
-    pub fn HandleBisectorBisecPC_destructor(self_: *mut HandleBisectorBisecPC);
+    pub fn Handle_Bisector_BisecPC_destructor(self_: *mut Handle_Bisector_BisecPC);
     /// Clone Handle<Bisector_BisecPC> (increments reference count)
-    pub fn HandleBisectorBisecPC_clone(
-        self_: *const HandleBisectorBisecPC,
-    ) -> crate::OcctResult<*mut HandleBisectorBisecPC>;
+    pub fn Handle_Bisector_BisecPC_clone(
+        self_: *const Handle_Bisector_BisecPC,
+    ) -> crate::OcctResult<*mut Handle_Bisector_BisecPC>;
     /// Check if Handle<Bisector_BisecPC> is null
-    pub fn HandleBisectorBisecPC_is_null(self_: *const HandleBisectorBisecPC) -> bool;
+    pub fn Handle_Bisector_BisecPC_is_null(self_: *const Handle_Bisector_BisecPC) -> bool;
     /// Dereference Handle to get *const Bisector_BisecPC
-    pub fn HandleBisectorBisecPC_get(
-        handle: *const HandleBisectorBisecPC,
+    pub fn Handle_Bisector_BisecPC_get(
+        handle: *const Handle_Bisector_BisecPC,
     ) -> crate::OcctResult<*const Bisector_BisecPC>;
     /// Dereference Handle to get *mut Bisector_BisecPC
-    pub fn HandleBisectorBisecPC_get_mut(
-        handle: *mut HandleBisectorBisecPC,
+    pub fn Handle_Bisector_BisecPC_get_mut(
+        handle: *mut Handle_Bisector_BisecPC,
     ) -> crate::OcctResult<*mut Bisector_BisecPC>;
     /// Upcast Handle<Bisector_BisecPC> to Handle<Bisector_Curve>
-    pub fn HandleBisectorBisecPC_to_HandleBisectorCurve(
-        self_: *const HandleBisectorBisecPC,
-    ) -> crate::OcctResult<*mut HandleBisectorCurve>;
+    pub fn Handle_Bisector_BisecPC_to_Handle_Bisector_Curve(
+        self_: *const Handle_Bisector_BisecPC,
+    ) -> crate::OcctResult<*mut Handle_Bisector_Curve>;
     /// Upcast Handle<Bisector_BisecPC> to Handle<Geom2d_Curve>
-    pub fn HandleBisectorBisecPC_to_HandleGeom2dCurve(
-        self_: *const HandleBisectorBisecPC,
-    ) -> crate::OcctResult<*mut HandleGeom2dCurve>;
+    pub fn Handle_Bisector_BisecPC_to_Handle_Geom2d_Curve(
+        self_: *const Handle_Bisector_BisecPC,
+    ) -> crate::OcctResult<*mut Handle_Geom2d_Curve>;
     /// Upcast Handle<Bisector_BisecPC> to Handle<Geom2d_Geometry>
-    pub fn HandleBisectorBisecPC_to_HandleGeom2dGeometry(
-        self_: *const HandleBisectorBisecPC,
-    ) -> crate::OcctResult<*mut HandleGeom2dGeometry>;
+    pub fn Handle_Bisector_BisecPC_to_Handle_Geom2d_Geometry(
+        self_: *const Handle_Bisector_BisecPC,
+    ) -> crate::OcctResult<*mut Handle_Geom2d_Geometry>;
     /// Upcast Handle<Bisector_BisecPC> to Handle<Standard_Transient>
-    pub fn HandleBisectorBisecPC_to_HandleStandardTransient(
-        self_: *const HandleBisectorBisecPC,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
-    /// Inherited: **Source:** `Geom2d_Curve.hxx`:83 - `Geom2d_Curve::TransformedParameter()`
+    pub fn Handle_Bisector_BisecPC_to_Handle_Standard_Transient(
+        self_: *const Handle_Bisector_BisecPC,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
+    /// Inherited: **Source:** `Geom2d_Curve.hxx`:105 - `Geom2d_Curve::TransformedParameter()`
     pub fn Bisector_BisecPC_inherited_TransformedParameter(
         self_: *const Bisector_BisecPC,
         U: f64,
         T: *const gp_Trsf2d,
     ) -> crate::OcctResult<f64>;
-    /// Inherited: **Source:** `Geom2d_Curve.hxx`:94 - `Geom2d_Curve::ParametricTransformation()`
+    /// Inherited: **Source:** `Geom2d_Curve.hxx`:115 - `Geom2d_Curve::ParametricTransformation()`
     pub fn Bisector_BisecPC_inherited_ParametricTransformation(
         self_: *const Bisector_BisecPC,
         T: *const gp_Trsf2d,
     ) -> crate::OcctResult<f64>;
-    /// Inherited: **Source:** `Geom2d_Curve.hxx`:105 - `Geom2d_Curve::Reversed()`
+    /// Inherited: **Source:** `Geom2d_Curve.hxx`:126 - `Geom2d_Curve::Reversed()`
     pub fn Bisector_BisecPC_inherited_Reversed(
         self_: *const Bisector_BisecPC,
-    ) -> crate::OcctResult<*mut HandleGeom2dCurve>;
-    /// Inherited: **Source:** `Geom2d_Curve.hxx`:149 - `Geom2d_Curve::Period()`
+    ) -> crate::OcctResult<*mut Handle_Geom2d_Curve>;
+    /// Inherited: **Source:** `Geom2d_Curve.hxx`:170 - `Geom2d_Curve::Period()`
     pub fn Bisector_BisecPC_inherited_Period(
         self_: *const Bisector_BisecPC,
     ) -> crate::OcctResult<f64>;
-    /// Inherited: **Source:** `Geom2d_Curve.hxx`:219 - `Geom2d_Curve::Value()`
+    /// Inherited: **Source:** `Geom2d_Curve.hxx`:207 - `Geom2d_Curve::D0()`
+    pub fn Bisector_BisecPC_inherited_D0(
+        self_: *const Bisector_BisecPC,
+        U: f64,
+        P: *mut gp_Pnt2d,
+    ) -> *const std::ffi::c_char;
+    /// Inherited: **Source:** `Geom2d_Curve.hxx`:210 - `Geom2d_Curve::D1()`
+    pub fn Bisector_BisecPC_inherited_D1(
+        self_: *const Bisector_BisecPC,
+        U: f64,
+        P: *mut gp_Pnt2d,
+        V1: *mut gp_Vec2d,
+    ) -> *const std::ffi::c_char;
+    /// Inherited: **Source:** `Geom2d_Curve.hxx`:218 - `Geom2d_Curve::D2()`
+    pub fn Bisector_BisecPC_inherited_D2(
+        self_: *const Bisector_BisecPC,
+        U: f64,
+        P: *mut gp_Pnt2d,
+        V1: *mut gp_Vec2d,
+        V2: *mut gp_Vec2d,
+    ) -> *const std::ffi::c_char;
+    /// Inherited: **Source:** `Geom2d_Curve.hxx`:227 - `Geom2d_Curve::D3()`
+    pub fn Bisector_BisecPC_inherited_D3(
+        self_: *const Bisector_BisecPC,
+        U: f64,
+        P: *mut gp_Pnt2d,
+        V1: *mut gp_Vec2d,
+        V2: *mut gp_Vec2d,
+        V3: *mut gp_Vec2d,
+    ) -> *const std::ffi::c_char;
+    /// Inherited: **Source:** `Geom2d_Curve.hxx`:237 - `Geom2d_Curve::DN()`
+    pub fn Bisector_BisecPC_inherited_DN(
+        self_: *const Bisector_BisecPC,
+        U: f64,
+        N: i32,
+    ) -> crate::OcctResult<*mut gp_Vec2d>;
+    /// Inherited: **Source:** `Geom2d_Curve.hxx`:240 - `Geom2d_Curve::Value()`
     pub fn Bisector_BisecPC_inherited_Value(
         self_: *const Bisector_BisecPC,
         U: f64,
     ) -> crate::OcctResult<*mut gp_Pnt2d>;
-    /// Inherited: **Source:** `Geom2d_Geometry.hxx`:63 - `Geom2d_Geometry::Mirror()`
+    /// Inherited: **Source:** `Geom2d_Geometry.hxx`:60 - `Geom2d_Geometry::Mirror()`
     pub fn Bisector_BisecPC_inherited_Mirror(
         self_: *mut Bisector_BisecPC,
         P: *const gp_Pnt2d,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Geom2d_Geometry.hxx`:71 - `Geom2d_Geometry::Rotate()`
+    /// Inherited: **Source:** `Geom2d_Geometry.hxx`:68 - `Geom2d_Geometry::Rotate()`
     pub fn Bisector_BisecPC_inherited_Rotate(
         self_: *mut Bisector_BisecPC,
         P: *const gp_Pnt2d,
         Ang: f64,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Geom2d_Geometry.hxx`:74 - `Geom2d_Geometry::Scale()`
+    /// Inherited: **Source:** `Geom2d_Geometry.hxx`:71 - `Geom2d_Geometry::Scale()`
     pub fn Bisector_BisecPC_inherited_Scale(
         self_: *mut Bisector_BisecPC,
         P: *const gp_Pnt2d,
         S: f64,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Geom2d_Geometry.hxx`:77 - `Geom2d_Geometry::Translate()`
+    /// Inherited: **Source:** `Geom2d_Geometry.hxx`:74 - `Geom2d_Geometry::Translate()`
     pub fn Bisector_BisecPC_inherited_Translate(
         self_: *mut Bisector_BisecPC,
         V: *const gp_Vec2d,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Geom2d_Geometry.hxx`:92 - `Geom2d_Geometry::Mirrored()`
+    /// Inherited: **Source:** `Geom2d_Geometry.hxx`:89 - `Geom2d_Geometry::Mirrored()`
     pub fn Bisector_BisecPC_inherited_Mirrored(
         self_: *const Bisector_BisecPC,
         P: *const gp_Pnt2d,
-    ) -> crate::OcctResult<*mut HandleGeom2dGeometry>;
-    /// Inherited: **Source:** `Geom2d_Geometry.hxx`:96 - `Geom2d_Geometry::Rotated()`
+    ) -> crate::OcctResult<*mut Handle_Geom2d_Geometry>;
+    /// Inherited: **Source:** `Geom2d_Geometry.hxx`:93 - `Geom2d_Geometry::Rotated()`
     pub fn Bisector_BisecPC_inherited_Rotated(
         self_: *const Bisector_BisecPC,
         P: *const gp_Pnt2d,
         Ang: f64,
-    ) -> crate::OcctResult<*mut HandleGeom2dGeometry>;
-    /// Inherited: **Source:** `Geom2d_Geometry.hxx`:99 - `Geom2d_Geometry::Scaled()`
+    ) -> crate::OcctResult<*mut Handle_Geom2d_Geometry>;
+    /// Inherited: **Source:** `Geom2d_Geometry.hxx`:96 - `Geom2d_Geometry::Scaled()`
     pub fn Bisector_BisecPC_inherited_Scaled(
         self_: *const Bisector_BisecPC,
         P: *const gp_Pnt2d,
         S: f64,
-    ) -> crate::OcctResult<*mut HandleGeom2dGeometry>;
-    /// Inherited: **Source:** `Geom2d_Geometry.hxx`:102 - `Geom2d_Geometry::Transformed()`
+    ) -> crate::OcctResult<*mut Handle_Geom2d_Geometry>;
+    /// Inherited: **Source:** `Geom2d_Geometry.hxx`:99 - `Geom2d_Geometry::Transformed()`
     pub fn Bisector_BisecPC_inherited_Transformed(
         self_: *const Bisector_BisecPC,
         T: *const gp_Trsf2d,
-    ) -> crate::OcctResult<*mut HandleGeom2dGeometry>;
-    /// Inherited: **Source:** `Geom2d_Geometry.hxx`:104 - `Geom2d_Geometry::Translated()`
+    ) -> crate::OcctResult<*mut Handle_Geom2d_Geometry>;
+    /// Inherited: **Source:** `Geom2d_Geometry.hxx`:101 - `Geom2d_Geometry::Translated()`
     pub fn Bisector_BisecPC_inherited_Translated(
         self_: *const Bisector_BisecPC,
         V: *const gp_Vec2d,
-    ) -> crate::OcctResult<*mut HandleGeom2dGeometry>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    ) -> crate::OcctResult<*mut Handle_Geom2d_Geometry>;
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn Bisector_BisecPC_inherited_IsInstance(
         self_: *const Bisector_BisecPC,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn Bisector_BisecPC_inherited_IsKind(
         self_: *const Bisector_BisecPC,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn Bisector_BisecPC_inherited_This(
         self_: *const Bisector_BisecPC,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn Bisector_BisecPC_inherited_GetRefCount(
         self_: *const Bisector_BisecPC,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn Bisector_BisecPC_inherited_IncrementRefCounter(
         self_: *mut Bisector_BisecPC,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn Bisector_BisecPC_inherited_DecrementRefCounter(
         self_: *mut Bisector_BisecPC,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn Bisector_BisecPC_inherited_Delete(
         self_: *const Bisector_BisecPC,
     ) -> *const std::ffi::c_char;
     // ======================== Bisector_Curve ========================
     pub fn Bisector_Curve_destructor(self_: *mut Bisector_Curve);
-    /// **Source:** `Bisector_Curve.hxx`:35 - `Bisector_Curve::Parameter()`
+    /// **Source:** `Bisector_Curve.hxx`:32 - `Bisector_Curve::Parameter()`
     pub fn Bisector_Curve_parameter(
         self_: *const Bisector_Curve,
         P: *const gp_Pnt2d,
     ) -> crate::OcctResult<f64>;
-    /// **Source:** `Bisector_Curve.hxx`:37 - `Bisector_Curve::IsExtendAtStart()`
+    /// **Source:** `Bisector_Curve.hxx`:34 - `Bisector_Curve::IsExtendAtStart()`
     pub fn Bisector_Curve_is_extend_at_start(
         self_: *const Bisector_Curve,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `Bisector_Curve.hxx`:39 - `Bisector_Curve::IsExtendAtEnd()`
+    /// **Source:** `Bisector_Curve.hxx`:36 - `Bisector_Curve::IsExtendAtEnd()`
     pub fn Bisector_Curve_is_extend_at_end(self_: *const Bisector_Curve)
         -> crate::OcctResult<bool>;
-    /// **Source:** `Bisector_Curve.hxx`:44 - `Bisector_Curve::NbIntervals()`
+    /// **Source:** `Bisector_Curve.hxx`:41 - `Bisector_Curve::NbIntervals()`
     pub fn Bisector_Curve_nb_intervals(self_: *const Bisector_Curve) -> crate::OcctResult<i32>;
-    /// **Source:** `Bisector_Curve.hxx`:48 - `Bisector_Curve::IntervalFirst()`
+    /// **Source:** `Bisector_Curve.hxx`:45 - `Bisector_Curve::IntervalFirst()`
     pub fn Bisector_Curve_interval_first(
         self_: *const Bisector_Curve,
         Index: i32,
     ) -> crate::OcctResult<f64>;
-    /// **Source:** `Bisector_Curve.hxx`:52 - `Bisector_Curve::IntervalLast()`
+    /// **Source:** `Bisector_Curve.hxx`:49 - `Bisector_Curve::IntervalLast()`
     pub fn Bisector_Curve_interval_last(
         self_: *const Bisector_Curve,
         Index: i32,
     ) -> crate::OcctResult<f64>;
-    /// **Source:** `Bisector_Curve.hxx`:54 - `Bisector_Curve::DynamicType()`
+    /// **Source:** `Bisector_Curve.hxx`:51 - `Bisector_Curve::DynamicType()`
     pub fn Bisector_Curve_dynamic_type(
         self_: *const Bisector_Curve,
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// **Source:** `Bisector_Curve.hxx`:54 - `Bisector_Curve::get_type_name()`
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
+    /// **Source:** `Bisector_Curve.hxx`:51 - `Bisector_Curve::get_type_name()`
     pub fn Bisector_Curve_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
-    /// **Source:** `Bisector_Curve.hxx`:54 - `Bisector_Curve::get_type_descriptor()`
-    pub fn Bisector_Curve_get_type_descriptor() -> crate::OcctResult<*const HandleStandardType>;
+    /// **Source:** `Bisector_Curve.hxx`:51 - `Bisector_Curve::get_type_descriptor()`
+    pub fn Bisector_Curve_get_type_descriptor() -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast Bisector_Curve to Geom2d_Curve
     pub fn Bisector_Curve_as_Geom2d_Curve(
         self_: *const Bisector_Curve,
@@ -12356,108 +12343,134 @@ unsafe extern "C" {
         self_: *mut Bisector_Curve,
     ) -> crate::OcctResult<*mut Standard_Transient>;
     /// Destroy Handle<Bisector_Curve>
-    pub fn HandleBisectorCurve_destructor(self_: *mut HandleBisectorCurve);
+    pub fn Handle_Bisector_Curve_destructor(self_: *mut Handle_Bisector_Curve);
     /// Clone Handle<Bisector_Curve> (increments reference count)
-    pub fn HandleBisectorCurve_clone(
-        self_: *const HandleBisectorCurve,
-    ) -> crate::OcctResult<*mut HandleBisectorCurve>;
+    pub fn Handle_Bisector_Curve_clone(
+        self_: *const Handle_Bisector_Curve,
+    ) -> crate::OcctResult<*mut Handle_Bisector_Curve>;
     /// Check if Handle<Bisector_Curve> is null
-    pub fn HandleBisectorCurve_is_null(self_: *const HandleBisectorCurve) -> bool;
+    pub fn Handle_Bisector_Curve_is_null(self_: *const Handle_Bisector_Curve) -> bool;
     /// Dereference Handle to get *const Bisector_Curve
-    pub fn HandleBisectorCurve_get(
-        handle: *const HandleBisectorCurve,
+    pub fn Handle_Bisector_Curve_get(
+        handle: *const Handle_Bisector_Curve,
     ) -> crate::OcctResult<*const Bisector_Curve>;
     /// Dereference Handle to get *mut Bisector_Curve
-    pub fn HandleBisectorCurve_get_mut(
-        handle: *mut HandleBisectorCurve,
+    pub fn Handle_Bisector_Curve_get_mut(
+        handle: *mut Handle_Bisector_Curve,
     ) -> crate::OcctResult<*mut Bisector_Curve>;
     /// Upcast Handle<Bisector_Curve> to Handle<Geom2d_Curve>
-    pub fn HandleBisectorCurve_to_HandleGeom2dCurve(
-        self_: *const HandleBisectorCurve,
-    ) -> crate::OcctResult<*mut HandleGeom2dCurve>;
+    pub fn Handle_Bisector_Curve_to_Handle_Geom2d_Curve(
+        self_: *const Handle_Bisector_Curve,
+    ) -> crate::OcctResult<*mut Handle_Geom2d_Curve>;
     /// Upcast Handle<Bisector_Curve> to Handle<Geom2d_Geometry>
-    pub fn HandleBisectorCurve_to_HandleGeom2dGeometry(
-        self_: *const HandleBisectorCurve,
-    ) -> crate::OcctResult<*mut HandleGeom2dGeometry>;
+    pub fn Handle_Bisector_Curve_to_Handle_Geom2d_Geometry(
+        self_: *const Handle_Bisector_Curve,
+    ) -> crate::OcctResult<*mut Handle_Geom2d_Geometry>;
     /// Upcast Handle<Bisector_Curve> to Handle<Standard_Transient>
-    pub fn HandleBisectorCurve_to_HandleStandardTransient(
-        self_: *const HandleBisectorCurve,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
+    pub fn Handle_Bisector_Curve_to_Handle_Standard_Transient(
+        self_: *const Handle_Bisector_Curve,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
     /// Downcast Handle<Bisector_Curve> to Handle<Bisector_BisecAna> (returns null on failure)
-    pub fn HandleBisectorCurve_downcast_to_HandleBisectorBisecAna(
-        self_: *const HandleBisectorCurve,
-    ) -> crate::OcctResult<*mut HandleBisectorBisecAna>;
+    pub fn Handle_Bisector_Curve_downcast_to_Handle_Bisector_BisecAna(
+        self_: *const Handle_Bisector_Curve,
+    ) -> crate::OcctResult<*mut Handle_Bisector_BisecAna>;
     /// Downcast Handle<Bisector_Curve> to Handle<Bisector_BisecCC> (returns null on failure)
-    pub fn HandleBisectorCurve_downcast_to_HandleBisectorBisecCC(
-        self_: *const HandleBisectorCurve,
-    ) -> crate::OcctResult<*mut HandleBisectorBisecCC>;
+    pub fn Handle_Bisector_Curve_downcast_to_Handle_Bisector_BisecCC(
+        self_: *const Handle_Bisector_Curve,
+    ) -> crate::OcctResult<*mut Handle_Bisector_BisecCC>;
     /// Downcast Handle<Bisector_Curve> to Handle<Bisector_BisecPC> (returns null on failure)
-    pub fn HandleBisectorCurve_downcast_to_HandleBisectorBisecPC(
-        self_: *const HandleBisectorCurve,
-    ) -> crate::OcctResult<*mut HandleBisectorBisecPC>;
-    /// Inherited: **Source:** `Geom2d_Curve.hxx`:70 - `Geom2d_Curve::Reverse()`
+    pub fn Handle_Bisector_Curve_downcast_to_Handle_Bisector_BisecPC(
+        self_: *const Handle_Bisector_Curve,
+    ) -> crate::OcctResult<*mut Handle_Bisector_BisecPC>;
+    /// Inherited: **Source:** `Geom2d_Curve.hxx`:92 - `Geom2d_Curve::Reverse()`
     pub fn Bisector_Curve_inherited_Reverse(self_: *mut Bisector_Curve) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Geom2d_Curve.hxx`:77 - `Geom2d_Curve::ReversedParameter()`
+    /// Inherited: **Source:** `Geom2d_Curve.hxx`:99 - `Geom2d_Curve::ReversedParameter()`
     pub fn Bisector_Curve_inherited_ReversedParameter(
         self_: *const Bisector_Curve,
         U: f64,
     ) -> crate::OcctResult<f64>;
-    /// Inherited: **Source:** `Geom2d_Curve.hxx`:83 - `Geom2d_Curve::TransformedParameter()`
+    /// Inherited: **Source:** `Geom2d_Curve.hxx`:105 - `Geom2d_Curve::TransformedParameter()`
     pub fn Bisector_Curve_inherited_TransformedParameter(
         self_: *const Bisector_Curve,
         U: f64,
         T: *const gp_Trsf2d,
     ) -> crate::OcctResult<f64>;
-    /// Inherited: **Source:** `Geom2d_Curve.hxx`:94 - `Geom2d_Curve::ParametricTransformation()`
+    /// Inherited: **Source:** `Geom2d_Curve.hxx`:115 - `Geom2d_Curve::ParametricTransformation()`
     pub fn Bisector_Curve_inherited_ParametricTransformation(
         self_: *const Bisector_Curve,
         T: *const gp_Trsf2d,
     ) -> crate::OcctResult<f64>;
-    /// Inherited: **Source:** `Geom2d_Curve.hxx`:105 - `Geom2d_Curve::Reversed()`
+    /// Inherited: **Source:** `Geom2d_Curve.hxx`:126 - `Geom2d_Curve::Reversed()`
     pub fn Bisector_Curve_inherited_Reversed(
         self_: *const Bisector_Curve,
-    ) -> crate::OcctResult<*mut HandleGeom2dCurve>;
-    /// Inherited: **Source:** `Geom2d_Curve.hxx`:111 - `Geom2d_Curve::FirstParameter()`
+    ) -> crate::OcctResult<*mut Handle_Geom2d_Curve>;
+    /// Inherited: **Source:** `Geom2d_Curve.hxx`:132 - `Geom2d_Curve::FirstParameter()`
     pub fn Bisector_Curve_inherited_FirstParameter(
         self_: *const Bisector_Curve,
     ) -> crate::OcctResult<f64>;
-    /// Inherited: **Source:** `Geom2d_Curve.hxx`:117 - `Geom2d_Curve::LastParameter()`
+    /// Inherited: **Source:** `Geom2d_Curve.hxx`:138 - `Geom2d_Curve::LastParameter()`
     pub fn Bisector_Curve_inherited_LastParameter(
         self_: *const Bisector_Curve,
     ) -> crate::OcctResult<f64>;
-    /// Inherited: **Source:** `Geom2d_Curve.hxx`:128 - `Geom2d_Curve::IsClosed()`
+    /// Inherited: **Source:** `Geom2d_Curve.hxx`:149 - `Geom2d_Curve::IsClosed()`
     pub fn Bisector_Curve_inherited_IsClosed(
         self_: *const Bisector_Curve,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Geom2d_Curve.hxx`:145 - `Geom2d_Curve::IsPeriodic()`
+    /// Inherited: **Source:** `Geom2d_Curve.hxx`:166 - `Geom2d_Curve::IsPeriodic()`
     pub fn Bisector_Curve_inherited_IsPeriodic(
         self_: *const Bisector_Curve,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Geom2d_Curve.hxx`:149 - `Geom2d_Curve::Period()`
+    /// Inherited: **Source:** `Geom2d_Curve.hxx`:170 - `Geom2d_Curve::Period()`
     pub fn Bisector_Curve_inherited_Period(self_: *const Bisector_Curve) -> crate::OcctResult<f64>;
-    /// Inherited: **Source:** `Geom2d_Curve.hxx`:159 - `Geom2d_Curve::Continuity()`
+    /// Inherited: **Source:** `Geom2d_Curve.hxx`:180 - `Geom2d_Curve::Continuity()`
     pub fn Bisector_Curve_inherited_Continuity(
         self_: *const Bisector_Curve,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Geom2d_Curve.hxx`:163 - `Geom2d_Curve::IsCN()`
+    /// Inherited: **Source:** `Geom2d_Curve.hxx`:184 - `Geom2d_Curve::IsCN()`
     pub fn Bisector_Curve_inherited_IsCN(
         self_: *const Bisector_Curve,
         N: i32,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Geom2d_Curve.hxx`:174 - `Geom2d_Curve::D0()`
+    /// Inherited: **Source:** `Geom2d_Curve.hxx`:188 - `Geom2d_Curve::EvalD0()`
+    pub fn Bisector_Curve_inherited_EvalD0(
+        self_: *const Bisector_Curve,
+        U: f64,
+    ) -> crate::OcctResult<*mut gp_Pnt2d>;
+    /// Inherited: **Source:** `Geom2d_Curve.hxx`:192 - `Geom2d_Curve::EvalD1()`
+    pub fn Bisector_Curve_inherited_EvalD1(
+        self_: *const Bisector_Curve,
+        U: f64,
+    ) -> crate::OcctResult<*mut Geom2d_Curve_ResD1>;
+    /// Inherited: **Source:** `Geom2d_Curve.hxx`:196 - `Geom2d_Curve::EvalD2()`
+    pub fn Bisector_Curve_inherited_EvalD2(
+        self_: *const Bisector_Curve,
+        U: f64,
+    ) -> crate::OcctResult<*mut Geom2d_Curve_ResD2>;
+    /// Inherited: **Source:** `Geom2d_Curve.hxx`:200 - `Geom2d_Curve::EvalD3()`
+    pub fn Bisector_Curve_inherited_EvalD3(
+        self_: *const Bisector_Curve,
+        U: f64,
+    ) -> crate::OcctResult<*mut Geom2d_Curve_ResD3>;
+    /// Inherited: **Source:** `Geom2d_Curve.hxx`:204 - `Geom2d_Curve::EvalDN()`
+    pub fn Bisector_Curve_inherited_EvalDN(
+        self_: *const Bisector_Curve,
+        U: f64,
+        N: i32,
+    ) -> crate::OcctResult<*mut gp_Vec2d>;
+    /// Inherited: **Source:** `Geom2d_Curve.hxx`:207 - `Geom2d_Curve::D0()`
     pub fn Bisector_Curve_inherited_D0(
         self_: *const Bisector_Curve,
         U: f64,
         P: *mut gp_Pnt2d,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Geom2d_Curve.hxx`:178 - `Geom2d_Curve::D1()`
+    /// Inherited: **Source:** `Geom2d_Curve.hxx`:210 - `Geom2d_Curve::D1()`
     pub fn Bisector_Curve_inherited_D1(
         self_: *const Bisector_Curve,
         U: f64,
         P: *mut gp_Pnt2d,
         V1: *mut gp_Vec2d,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Geom2d_Curve.hxx`:183 - `Geom2d_Curve::D2()`
+    /// Inherited: **Source:** `Geom2d_Curve.hxx`:218 - `Geom2d_Curve::D2()`
     pub fn Bisector_Curve_inherited_D2(
         self_: *const Bisector_Curve,
         U: f64,
@@ -12465,7 +12478,7 @@ unsafe extern "C" {
         V1: *mut gp_Vec2d,
         V2: *mut gp_Vec2d,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Geom2d_Curve.hxx`:191 - `Geom2d_Curve::D3()`
+    /// Inherited: **Source:** `Geom2d_Curve.hxx`:227 - `Geom2d_Curve::D3()`
     pub fn Bisector_Curve_inherited_D3(
         self_: *const Bisector_Curve,
         U: f64,
@@ -12474,109 +12487,109 @@ unsafe extern "C" {
         V2: *mut gp_Vec2d,
         V3: *mut gp_Vec2d,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Geom2d_Curve.hxx`:206 - `Geom2d_Curve::DN()`
+    /// Inherited: **Source:** `Geom2d_Curve.hxx`:237 - `Geom2d_Curve::DN()`
     pub fn Bisector_Curve_inherited_DN(
         self_: *const Bisector_Curve,
         U: f64,
         N: i32,
     ) -> crate::OcctResult<*mut gp_Vec2d>;
-    /// Inherited: **Source:** `Geom2d_Curve.hxx`:219 - `Geom2d_Curve::Value()`
+    /// Inherited: **Source:** `Geom2d_Curve.hxx`:240 - `Geom2d_Curve::Value()`
     pub fn Bisector_Curve_inherited_Value(
         self_: *const Bisector_Curve,
         U: f64,
     ) -> crate::OcctResult<*mut gp_Pnt2d>;
-    /// Inherited: **Source:** `Geom2d_Geometry.hxx`:63 - `Geom2d_Geometry::Mirror()`
+    /// Inherited: **Source:** `Geom2d_Geometry.hxx`:60 - `Geom2d_Geometry::Mirror()`
     pub fn Bisector_Curve_inherited_Mirror(
         self_: *mut Bisector_Curve,
         P: *const gp_Pnt2d,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Geom2d_Geometry.hxx`:71 - `Geom2d_Geometry::Rotate()`
+    /// Inherited: **Source:** `Geom2d_Geometry.hxx`:68 - `Geom2d_Geometry::Rotate()`
     pub fn Bisector_Curve_inherited_Rotate(
         self_: *mut Bisector_Curve,
         P: *const gp_Pnt2d,
         Ang: f64,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Geom2d_Geometry.hxx`:74 - `Geom2d_Geometry::Scale()`
+    /// Inherited: **Source:** `Geom2d_Geometry.hxx`:71 - `Geom2d_Geometry::Scale()`
     pub fn Bisector_Curve_inherited_Scale(
         self_: *mut Bisector_Curve,
         P: *const gp_Pnt2d,
         S: f64,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Geom2d_Geometry.hxx`:77 - `Geom2d_Geometry::Translate()`
+    /// Inherited: **Source:** `Geom2d_Geometry.hxx`:74 - `Geom2d_Geometry::Translate()`
     pub fn Bisector_Curve_inherited_Translate(
         self_: *mut Bisector_Curve,
         V: *const gp_Vec2d,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Geom2d_Geometry.hxx`:90 - `Geom2d_Geometry::Transform()`
+    /// Inherited: **Source:** `Geom2d_Geometry.hxx`:87 - `Geom2d_Geometry::Transform()`
     pub fn Bisector_Curve_inherited_Transform(
         self_: *mut Bisector_Curve,
         T: *const gp_Trsf2d,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Geom2d_Geometry.hxx`:92 - `Geom2d_Geometry::Mirrored()`
+    /// Inherited: **Source:** `Geom2d_Geometry.hxx`:89 - `Geom2d_Geometry::Mirrored()`
     pub fn Bisector_Curve_inherited_Mirrored(
         self_: *const Bisector_Curve,
         P: *const gp_Pnt2d,
-    ) -> crate::OcctResult<*mut HandleGeom2dGeometry>;
-    /// Inherited: **Source:** `Geom2d_Geometry.hxx`:96 - `Geom2d_Geometry::Rotated()`
+    ) -> crate::OcctResult<*mut Handle_Geom2d_Geometry>;
+    /// Inherited: **Source:** `Geom2d_Geometry.hxx`:93 - `Geom2d_Geometry::Rotated()`
     pub fn Bisector_Curve_inherited_Rotated(
         self_: *const Bisector_Curve,
         P: *const gp_Pnt2d,
         Ang: f64,
-    ) -> crate::OcctResult<*mut HandleGeom2dGeometry>;
-    /// Inherited: **Source:** `Geom2d_Geometry.hxx`:99 - `Geom2d_Geometry::Scaled()`
+    ) -> crate::OcctResult<*mut Handle_Geom2d_Geometry>;
+    /// Inherited: **Source:** `Geom2d_Geometry.hxx`:96 - `Geom2d_Geometry::Scaled()`
     pub fn Bisector_Curve_inherited_Scaled(
         self_: *const Bisector_Curve,
         P: *const gp_Pnt2d,
         S: f64,
-    ) -> crate::OcctResult<*mut HandleGeom2dGeometry>;
-    /// Inherited: **Source:** `Geom2d_Geometry.hxx`:102 - `Geom2d_Geometry::Transformed()`
+    ) -> crate::OcctResult<*mut Handle_Geom2d_Geometry>;
+    /// Inherited: **Source:** `Geom2d_Geometry.hxx`:99 - `Geom2d_Geometry::Transformed()`
     pub fn Bisector_Curve_inherited_Transformed(
         self_: *const Bisector_Curve,
         T: *const gp_Trsf2d,
-    ) -> crate::OcctResult<*mut HandleGeom2dGeometry>;
-    /// Inherited: **Source:** `Geom2d_Geometry.hxx`:104 - `Geom2d_Geometry::Translated()`
+    ) -> crate::OcctResult<*mut Handle_Geom2d_Geometry>;
+    /// Inherited: **Source:** `Geom2d_Geometry.hxx`:101 - `Geom2d_Geometry::Translated()`
     pub fn Bisector_Curve_inherited_Translated(
         self_: *const Bisector_Curve,
         V: *const gp_Vec2d,
-    ) -> crate::OcctResult<*mut HandleGeom2dGeometry>;
-    /// Inherited: **Source:** `Geom2d_Geometry.hxx`:109 - `Geom2d_Geometry::Copy()`
+    ) -> crate::OcctResult<*mut Handle_Geom2d_Geometry>;
+    /// Inherited: **Source:** `Geom2d_Geometry.hxx`:106 - `Geom2d_Geometry::Copy()`
     pub fn Bisector_Curve_inherited_Copy(
         self_: *const Bisector_Curve,
-    ) -> crate::OcctResult<*mut HandleGeom2dGeometry>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    ) -> crate::OcctResult<*mut Handle_Geom2d_Geometry>;
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn Bisector_Curve_inherited_IsInstance(
         self_: *const Bisector_Curve,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn Bisector_Curve_inherited_IsKind(
         self_: *const Bisector_Curve,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn Bisector_Curve_inherited_This(
         self_: *const Bisector_Curve,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn Bisector_Curve_inherited_GetRefCount(
         self_: *const Bisector_Curve,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn Bisector_Curve_inherited_IncrementRefCounter(
         self_: *mut Bisector_Curve,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn Bisector_Curve_inherited_DecrementRefCounter(
         self_: *mut Bisector_Curve,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn Bisector_Curve_inherited_Delete(self_: *const Bisector_Curve)
         -> *const std::ffi::c_char;
     // ======================== Bisector_FunctionH ========================
     pub fn Bisector_FunctionH_destructor(self_: *mut Bisector_FunctionH);
     /// **Source:** `Bisector_FunctionH.hxx`:39 - `Bisector_FunctionH::Bisector_FunctionH()`
     pub fn Bisector_FunctionH_ctor_handlegeom2dcurve_pnt2d_vec2d(
-        C2: *const HandleGeom2dCurve,
+        C2: *const Handle_Geom2d_Curve,
         P1: *const gp_Pnt2d,
         T1: *const gp_Vec2d,
     ) -> crate::OcctResult<*mut Bisector_FunctionH>;
@@ -12625,16 +12638,16 @@ unsafe extern "C" {
     pub fn Bisector_FunctionInter_ctor() -> crate::OcctResult<*mut Bisector_FunctionInter>;
     /// **Source:** `Bisector_FunctionInter.hxx`:37 - `Bisector_FunctionInter::Bisector_FunctionInter()`
     pub fn Bisector_FunctionInter_ctor_handlegeom2dcurve_handlebisectorcurve2(
-        C: *const HandleGeom2dCurve,
-        Bis1: *const HandleBisectorCurve,
-        Bis2: *const HandleBisectorCurve,
+        C: *const Handle_Geom2d_Curve,
+        Bis1: *const Handle_Bisector_Curve,
+        Bis2: *const Handle_Bisector_Curve,
     ) -> crate::OcctResult<*mut Bisector_FunctionInter>;
     /// **Source:** `Bisector_FunctionInter.hxx`:41 - `Bisector_FunctionInter::Perform()`
     pub fn Bisector_FunctionInter_perform(
         self_: *mut Bisector_FunctionInter,
-        C: *const HandleGeom2dCurve,
-        Bis1: *const HandleBisectorCurve,
-        Bis2: *const HandleBisectorCurve,
+        C: *const Handle_Geom2d_Curve,
+        Bis1: *const Handle_Bisector_Curve,
+        Bis2: *const Handle_Bisector_Curve,
     ) -> *const std::ffi::c_char;
     /// **Source:** `Bisector_FunctionInter.hxx`:46 - `Bisector_FunctionInter::Value()`
     pub fn Bisector_FunctionInter_value(
@@ -12708,32 +12721,32 @@ unsafe extern "C" {
     pub fn Bisector_Inter_as_IntRes2d_Intersection_mut(
         self_: *mut Bisector_Inter,
     ) -> crate::OcctResult<*mut IntRes2d_Intersection>;
-    /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:39 - `IntRes2d_Intersection::IsDone()`
+    /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:40 - `IntRes2d_Intersection::IsDone()`
     pub fn Bisector_Inter_inherited_IsDone(self_: *const Bisector_Inter)
         -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:44 - `IntRes2d_Intersection::IsEmpty()`
+    /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:45 - `IntRes2d_Intersection::IsEmpty()`
     pub fn Bisector_Inter_inherited_IsEmpty(
         self_: *const Bisector_Inter,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:49 - `IntRes2d_Intersection::NbPoints()`
+    /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:50 - `IntRes2d_Intersection::NbPoints()`
     pub fn Bisector_Inter_inherited_NbPoints(
         self_: *const Bisector_Inter,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:56 - `IntRes2d_Intersection::Point()`
+    /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:57 - `IntRes2d_Intersection::Point()`
     pub fn Bisector_Inter_inherited_Point(
         self_: *const Bisector_Inter,
         N: i32,
     ) -> crate::OcctResult<*const IntRes2d_IntersectionPoint>;
-    /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:61 - `IntRes2d_Intersection::NbSegments()`
+    /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:62 - `IntRes2d_Intersection::NbSegments()`
     pub fn Bisector_Inter_inherited_NbSegments(
         self_: *const Bisector_Inter,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:68 - `IntRes2d_Intersection::Segment()`
+    /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:69 - `IntRes2d_Intersection::Segment()`
     pub fn Bisector_Inter_inherited_Segment(
         self_: *const Bisector_Inter,
         N: i32,
     ) -> crate::OcctResult<*const IntRes2d_IntersectionSegment>;
-    /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:70 - `IntRes2d_Intersection::SetReversedParameters()`
+    /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:71 - `IntRes2d_Intersection::SetReversedParameters()`
     pub fn Bisector_Inter_inherited_SetReversedParameters(
         self_: *mut Bisector_Inter,
         Reverseflag: bool,
@@ -12844,104 +12857,104 @@ unsafe extern "C" {
     ) -> *const std::ffi::c_char;
     // ======================== IntCurvesFace_Intersector ========================
     pub fn IntCurvesFace_Intersector_destructor(self_: *mut IntCurvesFace_Intersector);
-    /// **Source:** `IntCurvesFace_Intersector.hxx`:62 - `IntCurvesFace_Intersector::IntCurvesFace_Intersector()`
+    /// **Source:** `IntCurvesFace_Intersector.hxx`:61 - `IntCurvesFace_Intersector::IntCurvesFace_Intersector()`
     pub fn IntCurvesFace_Intersector_ctor_face_real_bool2(
         F: *const TopoDS_Face,
         aTol: f64,
         aRestr: bool,
         UseBToler: bool,
     ) -> crate::OcctResult<*mut IntCurvesFace_Intersector>;
-    /// **Source:** `IntCurvesFace_Intersector.hxx`:44 - `IntCurvesFace_Intersector::DynamicType()`
+    /// **Source:** `IntCurvesFace_Intersector.hxx`:43 - `IntCurvesFace_Intersector::DynamicType()`
     pub fn IntCurvesFace_Intersector_dynamic_type(
         self_: *const IntCurvesFace_Intersector,
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// **Source:** `IntCurvesFace_Intersector.hxx`:75 - `IntCurvesFace_Intersector::Perform()`
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
+    /// **Source:** `IntCurvesFace_Intersector.hxx`:74 - `IntCurvesFace_Intersector::Perform()`
     pub fn IntCurvesFace_Intersector_perform_lin_real2(
         self_: *mut IntCurvesFace_Intersector,
         L: *const gp_Lin,
         PInf: f64,
         PSup: f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `IntCurvesFace_Intersector.hxx`:79 - `IntCurvesFace_Intersector::Perform()`
+    /// **Source:** `IntCurvesFace_Intersector.hxx`:78 - `IntCurvesFace_Intersector::Perform()`
     pub fn IntCurvesFace_Intersector_perform_handleadaptor3dcurve_real2(
         self_: *mut IntCurvesFace_Intersector,
-        HCu: *const HandleAdaptor3dCurve,
+        HCu: *const Handle_Adaptor3d_Curve,
         PInf: f64,
         PSup: f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `IntCurvesFace_Intersector.hxx`:84 - `IntCurvesFace_Intersector::SurfaceType()`
+    /// **Source:** `IntCurvesFace_Intersector.hxx`:83 - `IntCurvesFace_Intersector::SurfaceType()`
     pub fn IntCurvesFace_Intersector_surface_type(
         self_: *const IntCurvesFace_Intersector,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `IntCurvesFace_Intersector.hxx`:87 - `IntCurvesFace_Intersector::IsDone()`
+    /// **Source:** `IntCurvesFace_Intersector.hxx`:86 - `IntCurvesFace_Intersector::IsDone()`
     pub fn IntCurvesFace_Intersector_is_done(
         self_: *const IntCurvesFace_Intersector,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `IntCurvesFace_Intersector.hxx`:89 - `IntCurvesFace_Intersector::NbPnt()`
+    /// **Source:** `IntCurvesFace_Intersector.hxx`:88 - `IntCurvesFace_Intersector::NbPnt()`
     pub fn IntCurvesFace_Intersector_nb_pnt(
         self_: *const IntCurvesFace_Intersector,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `IntCurvesFace_Intersector.hxx`:93 - `IntCurvesFace_Intersector::UParameter()`
+    /// **Source:** `IntCurvesFace_Intersector.hxx`:92 - `IntCurvesFace_Intersector::UParameter()`
     pub fn IntCurvesFace_Intersector_u_parameter(
         self_: *const IntCurvesFace_Intersector,
         I: i32,
     ) -> crate::OcctResult<f64>;
-    /// **Source:** `IntCurvesFace_Intersector.hxx`:97 - `IntCurvesFace_Intersector::VParameter()`
+    /// **Source:** `IntCurvesFace_Intersector.hxx`:96 - `IntCurvesFace_Intersector::VParameter()`
     pub fn IntCurvesFace_Intersector_v_parameter(
         self_: *const IntCurvesFace_Intersector,
         I: i32,
     ) -> crate::OcctResult<f64>;
-    /// **Source:** `IntCurvesFace_Intersector.hxx`:101 - `IntCurvesFace_Intersector::WParameter()`
+    /// **Source:** `IntCurvesFace_Intersector.hxx`:100 - `IntCurvesFace_Intersector::WParameter()`
     pub fn IntCurvesFace_Intersector_w_parameter(
         self_: *const IntCurvesFace_Intersector,
         I: i32,
     ) -> crate::OcctResult<f64>;
-    /// **Source:** `IntCurvesFace_Intersector.hxx`:105 - `IntCurvesFace_Intersector::Pnt()`
+    /// **Source:** `IntCurvesFace_Intersector.hxx`:104 - `IntCurvesFace_Intersector::Pnt()`
     pub fn IntCurvesFace_Intersector_pnt(
         self_: *const IntCurvesFace_Intersector,
         I: i32,
     ) -> crate::OcctResult<*const gp_Pnt>;
-    /// **Source:** `IntCurvesFace_Intersector.hxx`:108 - `IntCurvesFace_Intersector::Transition()`
+    /// **Source:** `IntCurvesFace_Intersector.hxx`:107 - `IntCurvesFace_Intersector::Transition()`
     pub fn IntCurvesFace_Intersector_transition(
         self_: *const IntCurvesFace_Intersector,
         I: i32,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `IntCurvesFace_Intersector.hxx`:115 - `IntCurvesFace_Intersector::State()`
+    /// **Source:** `IntCurvesFace_Intersector.hxx`:114 - `IntCurvesFace_Intersector::State()`
     pub fn IntCurvesFace_Intersector_state(
         self_: *const IntCurvesFace_Intersector,
         I: i32,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `IntCurvesFace_Intersector.hxx`:120 - `IntCurvesFace_Intersector::IsParallel()`
+    /// **Source:** `IntCurvesFace_Intersector.hxx`:119 - `IntCurvesFace_Intersector::IsParallel()`
     pub fn IntCurvesFace_Intersector_is_parallel(
         self_: *const IntCurvesFace_Intersector,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `IntCurvesFace_Intersector.hxx`:124 - `IntCurvesFace_Intersector::Face()`
+    /// **Source:** `IntCurvesFace_Intersector.hxx`:123 - `IntCurvesFace_Intersector::Face()`
     pub fn IntCurvesFace_Intersector_face(
         self_: *const IntCurvesFace_Intersector,
     ) -> crate::OcctResult<*const TopoDS_Face>;
-    /// **Source:** `IntCurvesFace_Intersector.hxx`:126 - `IntCurvesFace_Intersector::ClassifyUVPoint()`
+    /// **Source:** `IntCurvesFace_Intersector.hxx`:125 - `IntCurvesFace_Intersector::ClassifyUVPoint()`
     pub fn IntCurvesFace_Intersector_classify_uv_point(
         self_: *const IntCurvesFace_Intersector,
         Puv: *const gp_Pnt2d,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `IntCurvesFace_Intersector.hxx`:128 - `IntCurvesFace_Intersector::Bounding()`
+    /// **Source:** `IntCurvesFace_Intersector.hxx`:127 - `IntCurvesFace_Intersector::Bounding()`
     pub fn IntCurvesFace_Intersector_bounding(
         self_: *const IntCurvesFace_Intersector,
     ) -> crate::OcctResult<*mut Bnd_Box>;
-    /// **Source:** `IntCurvesFace_Intersector.hxx`:131 - `IntCurvesFace_Intersector::SetUseBoundToler()`
+    /// **Source:** `IntCurvesFace_Intersector.hxx`:130 - `IntCurvesFace_Intersector::SetUseBoundToler()`
     pub fn IntCurvesFace_Intersector_set_use_bound_toler(
         self_: *mut IntCurvesFace_Intersector,
         UseBToler: bool,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `IntCurvesFace_Intersector.hxx`:134 - `IntCurvesFace_Intersector::GetUseBoundToler()`
+    /// **Source:** `IntCurvesFace_Intersector.hxx`:133 - `IntCurvesFace_Intersector::GetUseBoundToler()`
     pub fn IntCurvesFace_Intersector_get_use_bound_toler(
         self_: *const IntCurvesFace_Intersector,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `IntCurvesFace_Intersector.hxx`:44 - `IntCurvesFace_Intersector::get_type_name()`
+    /// **Source:** `IntCurvesFace_Intersector.hxx`:43 - `IntCurvesFace_Intersector::get_type_name()`
     pub fn IntCurvesFace_Intersector_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
-    /// **Source:** `IntCurvesFace_Intersector.hxx`:44 - `IntCurvesFace_Intersector::get_type_descriptor()`
+    /// **Source:** `IntCurvesFace_Intersector.hxx`:43 - `IntCurvesFace_Intersector::get_type_descriptor()`
     pub fn IntCurvesFace_Intersector_get_type_descriptor(
-    ) -> crate::OcctResult<*const HandleStandardType>;
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast IntCurvesFace_Intersector to Standard_Transient
     pub fn IntCurvesFace_Intersector_as_Standard_Transient(
         self_: *const IntCurvesFace_Intersector,
@@ -12953,231 +12966,233 @@ unsafe extern "C" {
     /// Wrap IntCurvesFace_Intersector in a Handle
     pub fn IntCurvesFace_Intersector_to_handle(
         obj: *mut IntCurvesFace_Intersector,
-    ) -> crate::OcctResult<*mut HandleIntCurvesFaceIntersector>;
+    ) -> crate::OcctResult<*mut Handle_IntCurvesFace_Intersector>;
     /// Destroy Handle<IntCurvesFace_Intersector>
-    pub fn HandleIntCurvesFaceIntersector_destructor(self_: *mut HandleIntCurvesFaceIntersector);
+    pub fn Handle_IntCurvesFace_Intersector_destructor(
+        self_: *mut Handle_IntCurvesFace_Intersector,
+    );
     /// Clone Handle<IntCurvesFace_Intersector> (increments reference count)
-    pub fn HandleIntCurvesFaceIntersector_clone(
-        self_: *const HandleIntCurvesFaceIntersector,
-    ) -> crate::OcctResult<*mut HandleIntCurvesFaceIntersector>;
+    pub fn Handle_IntCurvesFace_Intersector_clone(
+        self_: *const Handle_IntCurvesFace_Intersector,
+    ) -> crate::OcctResult<*mut Handle_IntCurvesFace_Intersector>;
     /// Check if Handle<IntCurvesFace_Intersector> is null
-    pub fn HandleIntCurvesFaceIntersector_is_null(
-        self_: *const HandleIntCurvesFaceIntersector,
+    pub fn Handle_IntCurvesFace_Intersector_is_null(
+        self_: *const Handle_IntCurvesFace_Intersector,
     ) -> bool;
     /// Dereference Handle to get *const IntCurvesFace_Intersector
-    pub fn HandleIntCurvesFaceIntersector_get(
-        handle: *const HandleIntCurvesFaceIntersector,
+    pub fn Handle_IntCurvesFace_Intersector_get(
+        handle: *const Handle_IntCurvesFace_Intersector,
     ) -> crate::OcctResult<*const IntCurvesFace_Intersector>;
     /// Dereference Handle to get *mut IntCurvesFace_Intersector
-    pub fn HandleIntCurvesFaceIntersector_get_mut(
-        handle: *mut HandleIntCurvesFaceIntersector,
+    pub fn Handle_IntCurvesFace_Intersector_get_mut(
+        handle: *mut Handle_IntCurvesFace_Intersector,
     ) -> crate::OcctResult<*mut IntCurvesFace_Intersector>;
     /// Upcast Handle<IntCurvesFace_Intersector> to Handle<Standard_Transient>
-    pub fn HandleIntCurvesFaceIntersector_to_HandleStandardTransient(
-        self_: *const HandleIntCurvesFaceIntersector,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn Handle_IntCurvesFace_Intersector_to_Handle_Standard_Transient(
+        self_: *const Handle_IntCurvesFace_Intersector,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn IntCurvesFace_Intersector_inherited_IsInstance(
         self_: *const IntCurvesFace_Intersector,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn IntCurvesFace_Intersector_inherited_IsKind(
         self_: *const IntCurvesFace_Intersector,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn IntCurvesFace_Intersector_inherited_This(
         self_: *const IntCurvesFace_Intersector,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn IntCurvesFace_Intersector_inherited_GetRefCount(
         self_: *const IntCurvesFace_Intersector,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn IntCurvesFace_Intersector_inherited_IncrementRefCounter(
         self_: *mut IntCurvesFace_Intersector,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn IntCurvesFace_Intersector_inherited_DecrementRefCounter(
         self_: *mut IntCurvesFace_Intersector,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn IntCurvesFace_Intersector_inherited_Delete(
         self_: *const IntCurvesFace_Intersector,
     ) -> *const std::ffi::c_char;
     // ======================== IntCurvesFace_ShapeIntersector ========================
     pub fn IntCurvesFace_ShapeIntersector_destructor(self_: *mut IntCurvesFace_ShapeIntersector);
-    /// **Source:** `IntCurvesFace_ShapeIntersector.hxx`:45 - `IntCurvesFace_ShapeIntersector::IntCurvesFace_ShapeIntersector()`
+    /// **Source:** `IntCurvesFace_ShapeIntersector.hxx`:44 - `IntCurvesFace_ShapeIntersector::IntCurvesFace_ShapeIntersector()`
     pub fn IntCurvesFace_ShapeIntersector_ctor(
     ) -> crate::OcctResult<*mut IntCurvesFace_ShapeIntersector>;
-    /// **Source:** `IntCurvesFace_ShapeIntersector.hxx`:47 - `IntCurvesFace_ShapeIntersector::Load()`
+    /// **Source:** `IntCurvesFace_ShapeIntersector.hxx`:46 - `IntCurvesFace_ShapeIntersector::Load()`
     pub fn IntCurvesFace_ShapeIntersector_load(
         self_: *mut IntCurvesFace_ShapeIntersector,
         Sh: *const TopoDS_Shape,
         Tol: f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `IntCurvesFace_ShapeIntersector.hxx`:57 - `IntCurvesFace_ShapeIntersector::Perform()`
+    /// **Source:** `IntCurvesFace_ShapeIntersector.hxx`:56 - `IntCurvesFace_ShapeIntersector::Perform()`
     pub fn IntCurvesFace_ShapeIntersector_perform_lin_real2(
         self_: *mut IntCurvesFace_ShapeIntersector,
         L: *const gp_Lin,
         PInf: f64,
         PSup: f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `IntCurvesFace_ShapeIntersector.hxx`:67 - `IntCurvesFace_ShapeIntersector::PerformNearest()`
+    /// **Source:** `IntCurvesFace_ShapeIntersector.hxx`:66 - `IntCurvesFace_ShapeIntersector::PerformNearest()`
     pub fn IntCurvesFace_ShapeIntersector_perform_nearest(
         self_: *mut IntCurvesFace_ShapeIntersector,
         L: *const gp_Lin,
         PInf: f64,
         PSup: f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `IntCurvesFace_ShapeIntersector.hxx`:73 - `IntCurvesFace_ShapeIntersector::Perform()`
+    /// **Source:** `IntCurvesFace_ShapeIntersector.hxx`:70 - `IntCurvesFace_ShapeIntersector::Perform()`
     pub fn IntCurvesFace_ShapeIntersector_perform_handleadaptor3dcurve_real2(
         self_: *mut IntCurvesFace_ShapeIntersector,
-        HCu: *const HandleAdaptor3dCurve,
+        HCu: *const Handle_Adaptor3d_Curve,
         PInf: f64,
         PSup: f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `IntCurvesFace_ShapeIntersector.hxx`:78 - `IntCurvesFace_ShapeIntersector::IsDone()`
+    /// **Source:** `IntCurvesFace_ShapeIntersector.hxx`:75 - `IntCurvesFace_ShapeIntersector::IsDone()`
     pub fn IntCurvesFace_ShapeIntersector_is_done(
         self_: *const IntCurvesFace_ShapeIntersector,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `IntCurvesFace_ShapeIntersector.hxx`:81 - `IntCurvesFace_ShapeIntersector::NbPnt()`
+    /// **Source:** `IntCurvesFace_ShapeIntersector.hxx`:78 - `IntCurvesFace_ShapeIntersector::NbPnt()`
     pub fn IntCurvesFace_ShapeIntersector_nb_pnt(
         self_: *const IntCurvesFace_ShapeIntersector,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `IntCurvesFace_ShapeIntersector.hxx`:85 - `IntCurvesFace_ShapeIntersector::UParameter()`
+    /// **Source:** `IntCurvesFace_ShapeIntersector.hxx`:82 - `IntCurvesFace_ShapeIntersector::UParameter()`
     pub fn IntCurvesFace_ShapeIntersector_u_parameter(
         self_: *const IntCurvesFace_ShapeIntersector,
         I: i32,
     ) -> crate::OcctResult<f64>;
-    /// **Source:** `IntCurvesFace_ShapeIntersector.hxx`:93 - `IntCurvesFace_ShapeIntersector::VParameter()`
+    /// **Source:** `IntCurvesFace_ShapeIntersector.hxx`:90 - `IntCurvesFace_ShapeIntersector::VParameter()`
     pub fn IntCurvesFace_ShapeIntersector_v_parameter(
         self_: *const IntCurvesFace_ShapeIntersector,
         I: i32,
     ) -> crate::OcctResult<f64>;
-    /// **Source:** `IntCurvesFace_ShapeIntersector.hxx`:101 - `IntCurvesFace_ShapeIntersector::WParameter()`
+    /// **Source:** `IntCurvesFace_ShapeIntersector.hxx`:98 - `IntCurvesFace_ShapeIntersector::WParameter()`
     pub fn IntCurvesFace_ShapeIntersector_w_parameter(
         self_: *const IntCurvesFace_ShapeIntersector,
         I: i32,
     ) -> crate::OcctResult<f64>;
-    /// **Source:** `IntCurvesFace_ShapeIntersector.hxx`:109 - `IntCurvesFace_ShapeIntersector::Pnt()`
+    /// **Source:** `IntCurvesFace_ShapeIntersector.hxx`:106 - `IntCurvesFace_ShapeIntersector::Pnt()`
     pub fn IntCurvesFace_ShapeIntersector_pnt(
         self_: *const IntCurvesFace_ShapeIntersector,
         I: i32,
     ) -> crate::OcctResult<*const gp_Pnt>;
-    /// **Source:** `IntCurvesFace_ShapeIntersector.hxx`:116 - `IntCurvesFace_ShapeIntersector::Transition()`
+    /// **Source:** `IntCurvesFace_ShapeIntersector.hxx`:113 - `IntCurvesFace_ShapeIntersector::Transition()`
     pub fn IntCurvesFace_ShapeIntersector_transition(
         self_: *const IntCurvesFace_ShapeIntersector,
         I: i32,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `IntCurvesFace_ShapeIntersector.hxx`:127 - `IntCurvesFace_ShapeIntersector::State()`
+    /// **Source:** `IntCurvesFace_ShapeIntersector.hxx`:124 - `IntCurvesFace_ShapeIntersector::State()`
     pub fn IntCurvesFace_ShapeIntersector_state(
         self_: *const IntCurvesFace_ShapeIntersector,
         I: i32,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `IntCurvesFace_ShapeIntersector.hxx`:135 - `IntCurvesFace_ShapeIntersector::Face()`
+    /// **Source:** `IntCurvesFace_ShapeIntersector.hxx`:132 - `IntCurvesFace_ShapeIntersector::Face()`
     pub fn IntCurvesFace_ShapeIntersector_face(
         self_: *const IntCurvesFace_ShapeIntersector,
         I: i32,
     ) -> crate::OcctResult<*const TopoDS_Face>;
-    /// **Source:** `IntCurvesFace_ShapeIntersector.hxx`:143 - `IntCurvesFace_ShapeIntersector::SortResult()`
+    /// **Source:** `IntCurvesFace_ShapeIntersector.hxx`:140 - `IntCurvesFace_ShapeIntersector::SortResult()`
     pub fn IntCurvesFace_ShapeIntersector_sort_result(
         self_: *mut IntCurvesFace_ShapeIntersector,
     ) -> *const std::ffi::c_char;
     // ======================== MAT_Arc ========================
     pub fn MAT_Arc_destructor(self_: *mut MAT_Arc);
-    /// **Source:** `MAT_Arc.hxx`:37 - `MAT_Arc::MAT_Arc()`
+    /// **Source:** `MAT_Arc.hxx`:34 - `MAT_Arc::MAT_Arc()`
     pub fn MAT_Arc_ctor_int2_handlematbasicelt2(
         ArcIndex: i32,
         GeomIndex: i32,
-        FirstElement: *const HandleMATBasicElt,
-        SecondElement: *const HandleMATBasicElt,
+        FirstElement: *const Handle_MAT_BasicElt,
+        SecondElement: *const Handle_MAT_BasicElt,
     ) -> crate::OcctResult<*mut MAT_Arc>;
-    /// **Source:** `MAT_Arc.hxx`:43 - `MAT_Arc::Index()`
+    /// **Source:** `MAT_Arc.hxx`:40 - `MAT_Arc::Index()`
     pub fn MAT_Arc_index(self_: *const MAT_Arc) -> crate::OcctResult<i32>;
-    /// **Source:** `MAT_Arc.hxx`:47 - `MAT_Arc::GeomIndex()`
+    /// **Source:** `MAT_Arc.hxx`:44 - `MAT_Arc::GeomIndex()`
     pub fn MAT_Arc_geom_index(self_: *const MAT_Arc) -> crate::OcctResult<i32>;
-    /// **Source:** `MAT_Arc.hxx`:50 - `MAT_Arc::FirstElement()`
+    /// **Source:** `MAT_Arc.hxx`:47 - `MAT_Arc::FirstElement()`
     pub fn MAT_Arc_first_element(
         self_: *const MAT_Arc,
-    ) -> crate::OcctResult<*mut HandleMATBasicElt>;
-    /// **Source:** `MAT_Arc.hxx`:53 - `MAT_Arc::SecondElement()`
+    ) -> crate::OcctResult<*mut Handle_MAT_BasicElt>;
+    /// **Source:** `MAT_Arc.hxx`:50 - `MAT_Arc::SecondElement()`
     pub fn MAT_Arc_second_element(
         self_: *const MAT_Arc,
-    ) -> crate::OcctResult<*mut HandleMATBasicElt>;
-    /// **Source:** `MAT_Arc.hxx`:56 - `MAT_Arc::FirstNode()`
-    pub fn MAT_Arc_first_node(self_: *const MAT_Arc) -> crate::OcctResult<*mut HandleMATNode>;
-    /// **Source:** `MAT_Arc.hxx`:59 - `MAT_Arc::SecondNode()`
-    pub fn MAT_Arc_second_node(self_: *const MAT_Arc) -> crate::OcctResult<*mut HandleMATNode>;
-    /// **Source:** `MAT_Arc.hxx`:65 - `MAT_Arc::TheOtherNode()`
+    ) -> crate::OcctResult<*mut Handle_MAT_BasicElt>;
+    /// **Source:** `MAT_Arc.hxx`:53 - `MAT_Arc::FirstNode()`
+    pub fn MAT_Arc_first_node(self_: *const MAT_Arc) -> crate::OcctResult<*mut Handle_MAT_Node>;
+    /// **Source:** `MAT_Arc.hxx`:56 - `MAT_Arc::SecondNode()`
+    pub fn MAT_Arc_second_node(self_: *const MAT_Arc) -> crate::OcctResult<*mut Handle_MAT_Node>;
+    /// **Source:** `MAT_Arc.hxx`:62 - `MAT_Arc::TheOtherNode()`
     pub fn MAT_Arc_the_other_node(
         self_: *const MAT_Arc,
-        aNode: *const HandleMATNode,
-    ) -> crate::OcctResult<*mut HandleMATNode>;
-    /// **Source:** `MAT_Arc.hxx`:70 - `MAT_Arc::HasNeighbour()`
+        aNode: *const Handle_MAT_Node,
+    ) -> crate::OcctResult<*mut Handle_MAT_Node>;
+    /// **Source:** `MAT_Arc.hxx`:67 - `MAT_Arc::HasNeighbour()`
     pub fn MAT_Arc_has_neighbour(
         self_: *const MAT_Arc,
-        aNode: *const HandleMATNode,
+        aNode: *const Handle_MAT_Node,
         aSide: i32,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `MAT_Arc.hxx`:76 - `MAT_Arc::Neighbour()`
+    /// **Source:** `MAT_Arc.hxx`:72 - `MAT_Arc::Neighbour()`
     pub fn MAT_Arc_neighbour(
         self_: *const MAT_Arc,
-        aNode: *const HandleMATNode,
+        aNode: *const Handle_MAT_Node,
         aSide: i32,
-    ) -> crate::OcctResult<*mut HandleMATArc>;
-    /// **Source:** `MAT_Arc.hxx`:79 - `MAT_Arc::SetIndex()`
+    ) -> crate::OcctResult<*mut Handle_MAT_Arc>;
+    /// **Source:** `MAT_Arc.hxx`:75 - `MAT_Arc::SetIndex()`
     pub fn MAT_Arc_set_index(self_: *mut MAT_Arc, anInteger: i32) -> *const std::ffi::c_char;
-    /// **Source:** `MAT_Arc.hxx`:81 - `MAT_Arc::SetGeomIndex()`
+    /// **Source:** `MAT_Arc.hxx`:77 - `MAT_Arc::SetGeomIndex()`
     pub fn MAT_Arc_set_geom_index(self_: *mut MAT_Arc, anInteger: i32) -> *const std::ffi::c_char;
-    /// **Source:** `MAT_Arc.hxx`:83 - `MAT_Arc::SetFirstElement()`
+    /// **Source:** `MAT_Arc.hxx`:79 - `MAT_Arc::SetFirstElement()`
     pub fn MAT_Arc_set_first_element(
         self_: *mut MAT_Arc,
-        aBasicElt: *const HandleMATBasicElt,
+        aBasicElt: *const Handle_MAT_BasicElt,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `MAT_Arc.hxx`:85 - `MAT_Arc::SetSecondElement()`
+    /// **Source:** `MAT_Arc.hxx`:81 - `MAT_Arc::SetSecondElement()`
     pub fn MAT_Arc_set_second_element(
         self_: *mut MAT_Arc,
-        aBasicElt: *const HandleMATBasicElt,
+        aBasicElt: *const Handle_MAT_BasicElt,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `MAT_Arc.hxx`:87 - `MAT_Arc::SetFirstNode()`
+    /// **Source:** `MAT_Arc.hxx`:83 - `MAT_Arc::SetFirstNode()`
     pub fn MAT_Arc_set_first_node(
         self_: *mut MAT_Arc,
-        aNode: *const HandleMATNode,
+        aNode: *const Handle_MAT_Node,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `MAT_Arc.hxx`:89 - `MAT_Arc::SetSecondNode()`
+    /// **Source:** `MAT_Arc.hxx`:85 - `MAT_Arc::SetSecondNode()`
     pub fn MAT_Arc_set_second_node(
         self_: *mut MAT_Arc,
-        aNode: *const HandleMATNode,
+        aNode: *const Handle_MAT_Node,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `MAT_Arc.hxx`:91 - `MAT_Arc::SetFirstArc()`
+    /// **Source:** `MAT_Arc.hxx`:87 - `MAT_Arc::SetFirstArc()`
     pub fn MAT_Arc_set_first_arc(
         self_: *mut MAT_Arc,
         aSide: i32,
-        anArc: *const HandleMATArc,
+        anArc: *const Handle_MAT_Arc,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `MAT_Arc.hxx`:93 - `MAT_Arc::SetSecondArc()`
+    /// **Source:** `MAT_Arc.hxx`:89 - `MAT_Arc::SetSecondArc()`
     pub fn MAT_Arc_set_second_arc(
         self_: *mut MAT_Arc,
         aSide: i32,
-        anArc: *const HandleMATArc,
+        anArc: *const Handle_MAT_Arc,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `MAT_Arc.hxx`:95 - `MAT_Arc::SetNeighbour()`
+    /// **Source:** `MAT_Arc.hxx`:91 - `MAT_Arc::SetNeighbour()`
     pub fn MAT_Arc_set_neighbour(
         self_: *mut MAT_Arc,
         aSide: i32,
-        aNode: *const HandleMATNode,
-        anArc: *const HandleMATArc,
+        aNode: *const Handle_MAT_Node,
+        anArc: *const Handle_MAT_Arc,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `MAT_Arc.hxx`:99 - `MAT_Arc::DynamicType()`
+    /// **Source:** `MAT_Arc.hxx`:95 - `MAT_Arc::DynamicType()`
     pub fn MAT_Arc_dynamic_type(
         self_: *const MAT_Arc,
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// **Source:** `MAT_Arc.hxx`:99 - `MAT_Arc::get_type_name()`
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
+    /// **Source:** `MAT_Arc.hxx`:95 - `MAT_Arc::get_type_name()`
     pub fn MAT_Arc_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
-    /// **Source:** `MAT_Arc.hxx`:99 - `MAT_Arc::get_type_descriptor()`
-    pub fn MAT_Arc_get_type_descriptor() -> crate::OcctResult<*const HandleStandardType>;
+    /// **Source:** `MAT_Arc.hxx`:95 - `MAT_Arc::get_type_descriptor()`
+    pub fn MAT_Arc_get_type_descriptor() -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast MAT_Arc to Standard_Transient
     pub fn MAT_Arc_as_Standard_Transient(
         self_: *const MAT_Arc,
@@ -13187,86 +13202,89 @@ unsafe extern "C" {
         self_: *mut MAT_Arc,
     ) -> crate::OcctResult<*mut Standard_Transient>;
     /// Wrap MAT_Arc in a Handle
-    pub fn MAT_Arc_to_handle(obj: *mut MAT_Arc) -> crate::OcctResult<*mut HandleMATArc>;
+    pub fn MAT_Arc_to_handle(obj: *mut MAT_Arc) -> crate::OcctResult<*mut Handle_MAT_Arc>;
     /// Destroy Handle<MAT_Arc>
-    pub fn HandleMATArc_destructor(self_: *mut HandleMATArc);
+    pub fn Handle_MAT_Arc_destructor(self_: *mut Handle_MAT_Arc);
     /// Clone Handle<MAT_Arc> (increments reference count)
-    pub fn HandleMATArc_clone(self_: *const HandleMATArc) -> crate::OcctResult<*mut HandleMATArc>;
+    pub fn Handle_MAT_Arc_clone(
+        self_: *const Handle_MAT_Arc,
+    ) -> crate::OcctResult<*mut Handle_MAT_Arc>;
     /// Check if Handle<MAT_Arc> is null
-    pub fn HandleMATArc_is_null(self_: *const HandleMATArc) -> bool;
+    pub fn Handle_MAT_Arc_is_null(self_: *const Handle_MAT_Arc) -> bool;
     /// Dereference Handle to get *const MAT_Arc
-    pub fn HandleMATArc_get(handle: *const HandleMATArc) -> crate::OcctResult<*const MAT_Arc>;
+    pub fn Handle_MAT_Arc_get(handle: *const Handle_MAT_Arc) -> crate::OcctResult<*const MAT_Arc>;
     /// Dereference Handle to get *mut MAT_Arc
-    pub fn HandleMATArc_get_mut(handle: *mut HandleMATArc) -> crate::OcctResult<*mut MAT_Arc>;
+    pub fn Handle_MAT_Arc_get_mut(handle: *mut Handle_MAT_Arc) -> crate::OcctResult<*mut MAT_Arc>;
     /// Upcast Handle<MAT_Arc> to Handle<Standard_Transient>
-    pub fn HandleMATArc_to_HandleStandardTransient(
-        self_: *const HandleMATArc,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn Handle_MAT_Arc_to_Handle_Standard_Transient(
+        self_: *const Handle_MAT_Arc,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn MAT_Arc_inherited_IsInstance(
         self_: *const MAT_Arc,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn MAT_Arc_inherited_IsKind(
         self_: *const MAT_Arc,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn MAT_Arc_inherited_This(
         self_: *const MAT_Arc,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn MAT_Arc_inherited_GetRefCount(self_: *const MAT_Arc) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn MAT_Arc_inherited_IncrementRefCounter(self_: *mut MAT_Arc) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn MAT_Arc_inherited_DecrementRefCounter(self_: *mut MAT_Arc) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn MAT_Arc_inherited_Delete(self_: *const MAT_Arc) -> *const std::ffi::c_char;
     // ======================== MAT_BasicElt ========================
     pub fn MAT_BasicElt_destructor(self_: *mut MAT_BasicElt);
-    /// **Source:** `MAT_BasicElt.hxx`:37 - `MAT_BasicElt::MAT_BasicElt()`
+    /// **Source:** `MAT_BasicElt.hxx`:34 - `MAT_BasicElt::MAT_BasicElt()`
     pub fn MAT_BasicElt_ctor_int(anInteger: i32) -> crate::OcctResult<*mut MAT_BasicElt>;
-    /// **Source:** `MAT_BasicElt.hxx`:41 - `MAT_BasicElt::StartArc()`
+    /// **Source:** `MAT_BasicElt.hxx`:38 - `MAT_BasicElt::StartArc()`
     pub fn MAT_BasicElt_start_arc(
         self_: *const MAT_BasicElt,
-    ) -> crate::OcctResult<*mut HandleMATArc>;
-    /// **Source:** `MAT_BasicElt.hxx`:45 - `MAT_BasicElt::EndArc()`
-    pub fn MAT_BasicElt_end_arc(self_: *const MAT_BasicElt)
-        -> crate::OcctResult<*mut HandleMATArc>;
-    /// **Source:** `MAT_BasicElt.hxx`:48 - `MAT_BasicElt::Index()`
+    ) -> crate::OcctResult<*mut Handle_MAT_Arc>;
+    /// **Source:** `MAT_BasicElt.hxx`:42 - `MAT_BasicElt::EndArc()`
+    pub fn MAT_BasicElt_end_arc(
+        self_: *const MAT_BasicElt,
+    ) -> crate::OcctResult<*mut Handle_MAT_Arc>;
+    /// **Source:** `MAT_BasicElt.hxx`:45 - `MAT_BasicElt::Index()`
     pub fn MAT_BasicElt_index(self_: *const MAT_BasicElt) -> crate::OcctResult<i32>;
-    /// **Source:** `MAT_BasicElt.hxx`:51 - `MAT_BasicElt::GeomIndex()`
+    /// **Source:** `MAT_BasicElt.hxx`:48 - `MAT_BasicElt::GeomIndex()`
     pub fn MAT_BasicElt_geom_index(self_: *const MAT_BasicElt) -> crate::OcctResult<i32>;
-    /// **Source:** `MAT_BasicElt.hxx`:53 - `MAT_BasicElt::SetStartArc()`
+    /// **Source:** `MAT_BasicElt.hxx`:50 - `MAT_BasicElt::SetStartArc()`
     pub fn MAT_BasicElt_set_start_arc(
         self_: *mut MAT_BasicElt,
-        anArc: *const HandleMATArc,
+        anArc: *const Handle_MAT_Arc,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `MAT_BasicElt.hxx`:55 - `MAT_BasicElt::SetEndArc()`
+    /// **Source:** `MAT_BasicElt.hxx`:52 - `MAT_BasicElt::SetEndArc()`
     pub fn MAT_BasicElt_set_end_arc(
         self_: *mut MAT_BasicElt,
-        anArc: *const HandleMATArc,
+        anArc: *const Handle_MAT_Arc,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `MAT_BasicElt.hxx`:57 - `MAT_BasicElt::SetIndex()`
+    /// **Source:** `MAT_BasicElt.hxx`:54 - `MAT_BasicElt::SetIndex()`
     pub fn MAT_BasicElt_set_index(
         self_: *mut MAT_BasicElt,
         anInteger: i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `MAT_BasicElt.hxx`:59 - `MAT_BasicElt::SetGeomIndex()`
+    /// **Source:** `MAT_BasicElt.hxx`:56 - `MAT_BasicElt::SetGeomIndex()`
     pub fn MAT_BasicElt_set_geom_index(
         self_: *mut MAT_BasicElt,
         anInteger: i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `MAT_BasicElt.hxx`:61 - `MAT_BasicElt::DynamicType()`
+    /// **Source:** `MAT_BasicElt.hxx`:58 - `MAT_BasicElt::DynamicType()`
     pub fn MAT_BasicElt_dynamic_type(
         self_: *const MAT_BasicElt,
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// **Source:** `MAT_BasicElt.hxx`:61 - `MAT_BasicElt::get_type_name()`
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
+    /// **Source:** `MAT_BasicElt.hxx`:58 - `MAT_BasicElt::get_type_name()`
     pub fn MAT_BasicElt_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
-    /// **Source:** `MAT_BasicElt.hxx`:61 - `MAT_BasicElt::get_type_descriptor()`
-    pub fn MAT_BasicElt_get_type_descriptor() -> crate::OcctResult<*const HandleStandardType>;
+    /// **Source:** `MAT_BasicElt.hxx`:58 - `MAT_BasicElt::get_type_descriptor()`
+    pub fn MAT_BasicElt_get_type_descriptor() -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast MAT_BasicElt to Standard_Transient
     pub fn MAT_BasicElt_as_Standard_Transient(
         self_: *const MAT_BasicElt,
@@ -13278,177 +13296,177 @@ unsafe extern "C" {
     /// Wrap MAT_BasicElt in a Handle
     pub fn MAT_BasicElt_to_handle(
         obj: *mut MAT_BasicElt,
-    ) -> crate::OcctResult<*mut HandleMATBasicElt>;
+    ) -> crate::OcctResult<*mut Handle_MAT_BasicElt>;
     /// Destroy Handle<MAT_BasicElt>
-    pub fn HandleMATBasicElt_destructor(self_: *mut HandleMATBasicElt);
+    pub fn Handle_MAT_BasicElt_destructor(self_: *mut Handle_MAT_BasicElt);
     /// Clone Handle<MAT_BasicElt> (increments reference count)
-    pub fn HandleMATBasicElt_clone(
-        self_: *const HandleMATBasicElt,
-    ) -> crate::OcctResult<*mut HandleMATBasicElt>;
+    pub fn Handle_MAT_BasicElt_clone(
+        self_: *const Handle_MAT_BasicElt,
+    ) -> crate::OcctResult<*mut Handle_MAT_BasicElt>;
     /// Check if Handle<MAT_BasicElt> is null
-    pub fn HandleMATBasicElt_is_null(self_: *const HandleMATBasicElt) -> bool;
+    pub fn Handle_MAT_BasicElt_is_null(self_: *const Handle_MAT_BasicElt) -> bool;
     /// Dereference Handle to get *const MAT_BasicElt
-    pub fn HandleMATBasicElt_get(
-        handle: *const HandleMATBasicElt,
+    pub fn Handle_MAT_BasicElt_get(
+        handle: *const Handle_MAT_BasicElt,
     ) -> crate::OcctResult<*const MAT_BasicElt>;
     /// Dereference Handle to get *mut MAT_BasicElt
-    pub fn HandleMATBasicElt_get_mut(
-        handle: *mut HandleMATBasicElt,
+    pub fn Handle_MAT_BasicElt_get_mut(
+        handle: *mut Handle_MAT_BasicElt,
     ) -> crate::OcctResult<*mut MAT_BasicElt>;
     /// Upcast Handle<MAT_BasicElt> to Handle<Standard_Transient>
-    pub fn HandleMATBasicElt_to_HandleStandardTransient(
-        self_: *const HandleMATBasicElt,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn Handle_MAT_BasicElt_to_Handle_Standard_Transient(
+        self_: *const Handle_MAT_BasicElt,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn MAT_BasicElt_inherited_IsInstance(
         self_: *const MAT_BasicElt,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn MAT_BasicElt_inherited_IsKind(
         self_: *const MAT_BasicElt,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn MAT_BasicElt_inherited_This(
         self_: *const MAT_BasicElt,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn MAT_BasicElt_inherited_GetRefCount(self_: *const MAT_BasicElt)
         -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn MAT_BasicElt_inherited_IncrementRefCounter(
         self_: *mut MAT_BasicElt,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn MAT_BasicElt_inherited_DecrementRefCounter(
         self_: *mut MAT_BasicElt,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn MAT_BasicElt_inherited_Delete(self_: *const MAT_BasicElt) -> *const std::ffi::c_char;
     // ======================== MAT_Bisector ========================
     pub fn MAT_Bisector_destructor(self_: *mut MAT_Bisector);
-    /// **Source:** `MAT_Bisector.hxx`:36 - `MAT_Bisector::MAT_Bisector()`
+    /// **Source:** `MAT_Bisector.hxx`:33 - `MAT_Bisector::MAT_Bisector()`
     pub fn MAT_Bisector_ctor() -> crate::OcctResult<*mut MAT_Bisector>;
-    /// **Source:** `MAT_Bisector.hxx`:38 - `MAT_Bisector::AddBisector()`
+    /// **Source:** `MAT_Bisector.hxx`:35 - `MAT_Bisector::AddBisector()`
     pub fn MAT_Bisector_add_bisector(
         self_: *const MAT_Bisector,
-        abisector: *const HandleMATBisector,
+        abisector: *const Handle_MAT_Bisector,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `MAT_Bisector.hxx`:40 - `MAT_Bisector::List()`
+    /// **Source:** `MAT_Bisector.hxx`:37 - `MAT_Bisector::List()`
     pub fn MAT_Bisector_list(
         self_: *const MAT_Bisector,
-    ) -> crate::OcctResult<*mut HandleMATListOfBisector>;
-    /// **Source:** `MAT_Bisector.hxx`:42 - `MAT_Bisector::FirstBisector()`
+    ) -> crate::OcctResult<*mut Handle_MAT_ListOfBisector>;
+    /// **Source:** `MAT_Bisector.hxx`:39 - `MAT_Bisector::FirstBisector()`
     pub fn MAT_Bisector_first_bisector(
         self_: *const MAT_Bisector,
-    ) -> crate::OcctResult<*mut HandleMATBisector>;
-    /// **Source:** `MAT_Bisector.hxx`:44 - `MAT_Bisector::LastBisector()`
+    ) -> crate::OcctResult<*mut Handle_MAT_Bisector>;
+    /// **Source:** `MAT_Bisector.hxx`:41 - `MAT_Bisector::LastBisector()`
     pub fn MAT_Bisector_last_bisector(
         self_: *const MAT_Bisector,
-    ) -> crate::OcctResult<*mut HandleMATBisector>;
-    /// **Source:** `MAT_Bisector.hxx`:46 - `MAT_Bisector::BisectorNumber()`
+    ) -> crate::OcctResult<*mut Handle_MAT_Bisector>;
+    /// **Source:** `MAT_Bisector.hxx`:43 - `MAT_Bisector::BisectorNumber()`
     pub fn MAT_Bisector_bisector_number_int(
         self_: *mut MAT_Bisector,
         anumber: i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `MAT_Bisector.hxx`:48 - `MAT_Bisector::IndexNumber()`
+    /// **Source:** `MAT_Bisector.hxx`:45 - `MAT_Bisector::IndexNumber()`
     pub fn MAT_Bisector_index_number_int(
         self_: *mut MAT_Bisector,
         anumber: i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `MAT_Bisector.hxx`:50 - `MAT_Bisector::FirstEdge()`
+    /// **Source:** `MAT_Bisector.hxx`:47 - `MAT_Bisector::FirstEdge()`
     pub fn MAT_Bisector_first_edge_handlematedge(
         self_: *mut MAT_Bisector,
-        anedge: *const HandleMATEdge,
+        anedge: *const Handle_MAT_Edge,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `MAT_Bisector.hxx`:52 - `MAT_Bisector::SecondEdge()`
+    /// **Source:** `MAT_Bisector.hxx`:49 - `MAT_Bisector::SecondEdge()`
     pub fn MAT_Bisector_second_edge_handlematedge(
         self_: *mut MAT_Bisector,
-        anedge: *const HandleMATEdge,
+        anedge: *const Handle_MAT_Edge,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `MAT_Bisector.hxx`:54 - `MAT_Bisector::IssuePoint()`
+    /// **Source:** `MAT_Bisector.hxx`:51 - `MAT_Bisector::IssuePoint()`
     pub fn MAT_Bisector_issue_point_int(
         self_: *mut MAT_Bisector,
         apoint: i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `MAT_Bisector.hxx`:56 - `MAT_Bisector::EndPoint()`
+    /// **Source:** `MAT_Bisector.hxx`:53 - `MAT_Bisector::EndPoint()`
     pub fn MAT_Bisector_end_point_int(
         self_: *mut MAT_Bisector,
         apoint: i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `MAT_Bisector.hxx`:58 - `MAT_Bisector::DistIssuePoint()`
+    /// **Source:** `MAT_Bisector.hxx`:55 - `MAT_Bisector::DistIssuePoint()`
     pub fn MAT_Bisector_dist_issue_point_real(
         self_: *mut MAT_Bisector,
         areal: f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `MAT_Bisector.hxx`:60 - `MAT_Bisector::FirstVector()`
+    /// **Source:** `MAT_Bisector.hxx`:57 - `MAT_Bisector::FirstVector()`
     pub fn MAT_Bisector_first_vector_int(
         self_: *mut MAT_Bisector,
         avector: i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `MAT_Bisector.hxx`:62 - `MAT_Bisector::SecondVector()`
+    /// **Source:** `MAT_Bisector.hxx`:59 - `MAT_Bisector::SecondVector()`
     pub fn MAT_Bisector_second_vector_int(
         self_: *mut MAT_Bisector,
         avector: i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `MAT_Bisector.hxx`:64 - `MAT_Bisector::Sense()`
+    /// **Source:** `MAT_Bisector.hxx`:61 - `MAT_Bisector::Sense()`
     pub fn MAT_Bisector_sense_real(
         self_: *mut MAT_Bisector,
         asense: f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `MAT_Bisector.hxx`:66 - `MAT_Bisector::FirstParameter()`
+    /// **Source:** `MAT_Bisector.hxx`:63 - `MAT_Bisector::FirstParameter()`
     pub fn MAT_Bisector_first_parameter_real(
         self_: *mut MAT_Bisector,
         aparameter: f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `MAT_Bisector.hxx`:68 - `MAT_Bisector::SecondParameter()`
+    /// **Source:** `MAT_Bisector.hxx`:65 - `MAT_Bisector::SecondParameter()`
     pub fn MAT_Bisector_second_parameter_real(
         self_: *mut MAT_Bisector,
         aparameter: f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `MAT_Bisector.hxx`:70 - `MAT_Bisector::BisectorNumber()`
+    /// **Source:** `MAT_Bisector.hxx`:67 - `MAT_Bisector::BisectorNumber()`
     pub fn MAT_Bisector_bisector_number(self_: *const MAT_Bisector) -> crate::OcctResult<i32>;
-    /// **Source:** `MAT_Bisector.hxx`:72 - `MAT_Bisector::IndexNumber()`
+    /// **Source:** `MAT_Bisector.hxx`:69 - `MAT_Bisector::IndexNumber()`
     pub fn MAT_Bisector_index_number(self_: *const MAT_Bisector) -> crate::OcctResult<i32>;
-    /// **Source:** `MAT_Bisector.hxx`:74 - `MAT_Bisector::FirstEdge()`
+    /// **Source:** `MAT_Bisector.hxx`:71 - `MAT_Bisector::FirstEdge()`
     pub fn MAT_Bisector_first_edge(
         self_: *const MAT_Bisector,
-    ) -> crate::OcctResult<*mut HandleMATEdge>;
-    /// **Source:** `MAT_Bisector.hxx`:76 - `MAT_Bisector::SecondEdge()`
+    ) -> crate::OcctResult<*mut Handle_MAT_Edge>;
+    /// **Source:** `MAT_Bisector.hxx`:73 - `MAT_Bisector::SecondEdge()`
     pub fn MAT_Bisector_second_edge(
         self_: *const MAT_Bisector,
-    ) -> crate::OcctResult<*mut HandleMATEdge>;
-    /// **Source:** `MAT_Bisector.hxx`:78 - `MAT_Bisector::IssuePoint()`
+    ) -> crate::OcctResult<*mut Handle_MAT_Edge>;
+    /// **Source:** `MAT_Bisector.hxx`:75 - `MAT_Bisector::IssuePoint()`
     pub fn MAT_Bisector_issue_point(self_: *const MAT_Bisector) -> crate::OcctResult<i32>;
-    /// **Source:** `MAT_Bisector.hxx`:80 - `MAT_Bisector::EndPoint()`
+    /// **Source:** `MAT_Bisector.hxx`:77 - `MAT_Bisector::EndPoint()`
     pub fn MAT_Bisector_end_point(self_: *const MAT_Bisector) -> crate::OcctResult<i32>;
-    /// **Source:** `MAT_Bisector.hxx`:82 - `MAT_Bisector::DistIssuePoint()`
+    /// **Source:** `MAT_Bisector.hxx`:79 - `MAT_Bisector::DistIssuePoint()`
     pub fn MAT_Bisector_dist_issue_point(self_: *const MAT_Bisector) -> crate::OcctResult<f64>;
-    /// **Source:** `MAT_Bisector.hxx`:84 - `MAT_Bisector::FirstVector()`
+    /// **Source:** `MAT_Bisector.hxx`:81 - `MAT_Bisector::FirstVector()`
     pub fn MAT_Bisector_first_vector(self_: *const MAT_Bisector) -> crate::OcctResult<i32>;
-    /// **Source:** `MAT_Bisector.hxx`:86 - `MAT_Bisector::SecondVector()`
+    /// **Source:** `MAT_Bisector.hxx`:83 - `MAT_Bisector::SecondVector()`
     pub fn MAT_Bisector_second_vector(self_: *const MAT_Bisector) -> crate::OcctResult<i32>;
-    /// **Source:** `MAT_Bisector.hxx`:88 - `MAT_Bisector::Sense()`
+    /// **Source:** `MAT_Bisector.hxx`:85 - `MAT_Bisector::Sense()`
     pub fn MAT_Bisector_sense(self_: *const MAT_Bisector) -> crate::OcctResult<f64>;
-    /// **Source:** `MAT_Bisector.hxx`:90 - `MAT_Bisector::FirstParameter()`
+    /// **Source:** `MAT_Bisector.hxx`:87 - `MAT_Bisector::FirstParameter()`
     pub fn MAT_Bisector_first_parameter(self_: *const MAT_Bisector) -> crate::OcctResult<f64>;
-    /// **Source:** `MAT_Bisector.hxx`:92 - `MAT_Bisector::SecondParameter()`
+    /// **Source:** `MAT_Bisector.hxx`:89 - `MAT_Bisector::SecondParameter()`
     pub fn MAT_Bisector_second_parameter(self_: *const MAT_Bisector) -> crate::OcctResult<f64>;
-    /// **Source:** `MAT_Bisector.hxx`:94 - `MAT_Bisector::Dump()`
+    /// **Source:** `MAT_Bisector.hxx`:91 - `MAT_Bisector::Dump()`
     pub fn MAT_Bisector_dump(
         self_: *const MAT_Bisector,
         ashift: i32,
         alevel: i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `MAT_Bisector.hxx`:96 - `MAT_Bisector::DynamicType()`
+    /// **Source:** `MAT_Bisector.hxx`:93 - `MAT_Bisector::DynamicType()`
     pub fn MAT_Bisector_dynamic_type(
         self_: *const MAT_Bisector,
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// **Source:** `MAT_Bisector.hxx`:96 - `MAT_Bisector::get_type_name()`
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
+    /// **Source:** `MAT_Bisector.hxx`:93 - `MAT_Bisector::get_type_name()`
     pub fn MAT_Bisector_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
-    /// **Source:** `MAT_Bisector.hxx`:96 - `MAT_Bisector::get_type_descriptor()`
-    pub fn MAT_Bisector_get_type_descriptor() -> crate::OcctResult<*const HandleStandardType>;
+    /// **Source:** `MAT_Bisector.hxx`:93 - `MAT_Bisector::get_type_descriptor()`
+    pub fn MAT_Bisector_get_type_descriptor() -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast MAT_Bisector to Standard_Transient
     pub fn MAT_Bisector_as_Standard_Transient(
         self_: *const MAT_Bisector,
@@ -13460,105 +13478,105 @@ unsafe extern "C" {
     /// Wrap MAT_Bisector in a Handle
     pub fn MAT_Bisector_to_handle(
         obj: *mut MAT_Bisector,
-    ) -> crate::OcctResult<*mut HandleMATBisector>;
+    ) -> crate::OcctResult<*mut Handle_MAT_Bisector>;
     /// Destroy Handle<MAT_Bisector>
-    pub fn HandleMATBisector_destructor(self_: *mut HandleMATBisector);
+    pub fn Handle_MAT_Bisector_destructor(self_: *mut Handle_MAT_Bisector);
     /// Clone Handle<MAT_Bisector> (increments reference count)
-    pub fn HandleMATBisector_clone(
-        self_: *const HandleMATBisector,
-    ) -> crate::OcctResult<*mut HandleMATBisector>;
+    pub fn Handle_MAT_Bisector_clone(
+        self_: *const Handle_MAT_Bisector,
+    ) -> crate::OcctResult<*mut Handle_MAT_Bisector>;
     /// Check if Handle<MAT_Bisector> is null
-    pub fn HandleMATBisector_is_null(self_: *const HandleMATBisector) -> bool;
+    pub fn Handle_MAT_Bisector_is_null(self_: *const Handle_MAT_Bisector) -> bool;
     /// Dereference Handle to get *const MAT_Bisector
-    pub fn HandleMATBisector_get(
-        handle: *const HandleMATBisector,
+    pub fn Handle_MAT_Bisector_get(
+        handle: *const Handle_MAT_Bisector,
     ) -> crate::OcctResult<*const MAT_Bisector>;
     /// Dereference Handle to get *mut MAT_Bisector
-    pub fn HandleMATBisector_get_mut(
-        handle: *mut HandleMATBisector,
+    pub fn Handle_MAT_Bisector_get_mut(
+        handle: *mut Handle_MAT_Bisector,
     ) -> crate::OcctResult<*mut MAT_Bisector>;
     /// Upcast Handle<MAT_Bisector> to Handle<Standard_Transient>
-    pub fn HandleMATBisector_to_HandleStandardTransient(
-        self_: *const HandleMATBisector,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn Handle_MAT_Bisector_to_Handle_Standard_Transient(
+        self_: *const Handle_MAT_Bisector,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn MAT_Bisector_inherited_IsInstance(
         self_: *const MAT_Bisector,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn MAT_Bisector_inherited_IsKind(
         self_: *const MAT_Bisector,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn MAT_Bisector_inherited_This(
         self_: *const MAT_Bisector,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn MAT_Bisector_inherited_GetRefCount(self_: *const MAT_Bisector)
         -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn MAT_Bisector_inherited_IncrementRefCounter(
         self_: *mut MAT_Bisector,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn MAT_Bisector_inherited_DecrementRefCounter(
         self_: *mut MAT_Bisector,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn MAT_Bisector_inherited_Delete(self_: *const MAT_Bisector) -> *const std::ffi::c_char;
     // ======================== MAT_Edge ========================
     pub fn MAT_Edge_destructor(self_: *mut MAT_Edge);
-    /// **Source:** `MAT_Edge.hxx`:34 - `MAT_Edge::MAT_Edge()`
+    /// **Source:** `MAT_Edge.hxx`:31 - `MAT_Edge::MAT_Edge()`
     pub fn MAT_Edge_ctor() -> crate::OcctResult<*mut MAT_Edge>;
-    /// **Source:** `MAT_Edge.hxx`:36 - `MAT_Edge::EdgeNumber()`
+    /// **Source:** `MAT_Edge.hxx`:33 - `MAT_Edge::EdgeNumber()`
     pub fn MAT_Edge_edge_number_int(self_: *mut MAT_Edge, anumber: i32) -> *const std::ffi::c_char;
-    /// **Source:** `MAT_Edge.hxx`:38 - `MAT_Edge::FirstBisector()`
+    /// **Source:** `MAT_Edge.hxx`:35 - `MAT_Edge::FirstBisector()`
     pub fn MAT_Edge_first_bisector_handlematbisector(
         self_: *mut MAT_Edge,
-        abisector: *const HandleMATBisector,
+        abisector: *const Handle_MAT_Bisector,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `MAT_Edge.hxx`:40 - `MAT_Edge::SecondBisector()`
+    /// **Source:** `MAT_Edge.hxx`:37 - `MAT_Edge::SecondBisector()`
     pub fn MAT_Edge_second_bisector_handlematbisector(
         self_: *mut MAT_Edge,
-        abisector: *const HandleMATBisector,
+        abisector: *const Handle_MAT_Bisector,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `MAT_Edge.hxx`:42 - `MAT_Edge::Distance()`
+    /// **Source:** `MAT_Edge.hxx`:39 - `MAT_Edge::Distance()`
     pub fn MAT_Edge_distance_real(self_: *mut MAT_Edge, adistance: f64) -> *const std::ffi::c_char;
-    /// **Source:** `MAT_Edge.hxx`:44 - `MAT_Edge::IntersectionPoint()`
+    /// **Source:** `MAT_Edge.hxx`:41 - `MAT_Edge::IntersectionPoint()`
     pub fn MAT_Edge_intersection_point_int(
         self_: *mut MAT_Edge,
         apoint: i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `MAT_Edge.hxx`:46 - `MAT_Edge::EdgeNumber()`
+    /// **Source:** `MAT_Edge.hxx`:43 - `MAT_Edge::EdgeNumber()`
     pub fn MAT_Edge_edge_number(self_: *const MAT_Edge) -> crate::OcctResult<i32>;
-    /// **Source:** `MAT_Edge.hxx`:48 - `MAT_Edge::FirstBisector()`
+    /// **Source:** `MAT_Edge.hxx`:45 - `MAT_Edge::FirstBisector()`
     pub fn MAT_Edge_first_bisector(
         self_: *const MAT_Edge,
-    ) -> crate::OcctResult<*mut HandleMATBisector>;
-    /// **Source:** `MAT_Edge.hxx`:50 - `MAT_Edge::SecondBisector()`
+    ) -> crate::OcctResult<*mut Handle_MAT_Bisector>;
+    /// **Source:** `MAT_Edge.hxx`:47 - `MAT_Edge::SecondBisector()`
     pub fn MAT_Edge_second_bisector(
         self_: *const MAT_Edge,
-    ) -> crate::OcctResult<*mut HandleMATBisector>;
-    /// **Source:** `MAT_Edge.hxx`:52 - `MAT_Edge::Distance()`
+    ) -> crate::OcctResult<*mut Handle_MAT_Bisector>;
+    /// **Source:** `MAT_Edge.hxx`:49 - `MAT_Edge::Distance()`
     pub fn MAT_Edge_distance(self_: *const MAT_Edge) -> crate::OcctResult<f64>;
-    /// **Source:** `MAT_Edge.hxx`:54 - `MAT_Edge::IntersectionPoint()`
+    /// **Source:** `MAT_Edge.hxx`:51 - `MAT_Edge::IntersectionPoint()`
     pub fn MAT_Edge_intersection_point(self_: *const MAT_Edge) -> crate::OcctResult<i32>;
-    /// **Source:** `MAT_Edge.hxx`:56 - `MAT_Edge::Dump()`
+    /// **Source:** `MAT_Edge.hxx`:53 - `MAT_Edge::Dump()`
     pub fn MAT_Edge_dump(
         self_: *const MAT_Edge,
         ashift: i32,
         alevel: i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `MAT_Edge.hxx`:58 - `MAT_Edge::DynamicType()`
+    /// **Source:** `MAT_Edge.hxx`:55 - `MAT_Edge::DynamicType()`
     pub fn MAT_Edge_dynamic_type(
         self_: *const MAT_Edge,
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// **Source:** `MAT_Edge.hxx`:58 - `MAT_Edge::get_type_name()`
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
+    /// **Source:** `MAT_Edge.hxx`:55 - `MAT_Edge::get_type_name()`
     pub fn MAT_Edge_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
-    /// **Source:** `MAT_Edge.hxx`:58 - `MAT_Edge::get_type_descriptor()`
-    pub fn MAT_Edge_get_type_descriptor() -> crate::OcctResult<*const HandleStandardType>;
+    /// **Source:** `MAT_Edge.hxx`:55 - `MAT_Edge::get_type_descriptor()`
+    pub fn MAT_Edge_get_type_descriptor() -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast MAT_Edge to Standard_Transient
     pub fn MAT_Edge_as_Standard_Transient(
         self_: *const MAT_Edge,
@@ -13568,81 +13586,85 @@ unsafe extern "C" {
         self_: *mut MAT_Edge,
     ) -> crate::OcctResult<*mut Standard_Transient>;
     /// Wrap MAT_Edge in a Handle
-    pub fn MAT_Edge_to_handle(obj: *mut MAT_Edge) -> crate::OcctResult<*mut HandleMATEdge>;
+    pub fn MAT_Edge_to_handle(obj: *mut MAT_Edge) -> crate::OcctResult<*mut Handle_MAT_Edge>;
     /// Destroy Handle<MAT_Edge>
-    pub fn HandleMATEdge_destructor(self_: *mut HandleMATEdge);
+    pub fn Handle_MAT_Edge_destructor(self_: *mut Handle_MAT_Edge);
     /// Clone Handle<MAT_Edge> (increments reference count)
-    pub fn HandleMATEdge_clone(
-        self_: *const HandleMATEdge,
-    ) -> crate::OcctResult<*mut HandleMATEdge>;
+    pub fn Handle_MAT_Edge_clone(
+        self_: *const Handle_MAT_Edge,
+    ) -> crate::OcctResult<*mut Handle_MAT_Edge>;
     /// Check if Handle<MAT_Edge> is null
-    pub fn HandleMATEdge_is_null(self_: *const HandleMATEdge) -> bool;
+    pub fn Handle_MAT_Edge_is_null(self_: *const Handle_MAT_Edge) -> bool;
     /// Dereference Handle to get *const MAT_Edge
-    pub fn HandleMATEdge_get(handle: *const HandleMATEdge) -> crate::OcctResult<*const MAT_Edge>;
+    pub fn Handle_MAT_Edge_get(
+        handle: *const Handle_MAT_Edge,
+    ) -> crate::OcctResult<*const MAT_Edge>;
     /// Dereference Handle to get *mut MAT_Edge
-    pub fn HandleMATEdge_get_mut(handle: *mut HandleMATEdge) -> crate::OcctResult<*mut MAT_Edge>;
+    pub fn Handle_MAT_Edge_get_mut(
+        handle: *mut Handle_MAT_Edge,
+    ) -> crate::OcctResult<*mut MAT_Edge>;
     /// Upcast Handle<MAT_Edge> to Handle<Standard_Transient>
-    pub fn HandleMATEdge_to_HandleStandardTransient(
-        self_: *const HandleMATEdge,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn Handle_MAT_Edge_to_Handle_Standard_Transient(
+        self_: *const Handle_MAT_Edge,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn MAT_Edge_inherited_IsInstance(
         self_: *const MAT_Edge,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn MAT_Edge_inherited_IsKind(
         self_: *const MAT_Edge,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn MAT_Edge_inherited_This(
         self_: *const MAT_Edge,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn MAT_Edge_inherited_GetRefCount(self_: *const MAT_Edge) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn MAT_Edge_inherited_IncrementRefCounter(self_: *mut MAT_Edge) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn MAT_Edge_inherited_DecrementRefCounter(self_: *mut MAT_Edge) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn MAT_Edge_inherited_Delete(self_: *const MAT_Edge) -> *const std::ffi::c_char;
     // ======================== MAT_Graph ========================
     pub fn MAT_Graph_destructor(self_: *mut MAT_Graph);
-    /// **Source:** `MAT_Graph.hxx`:43 - `MAT_Graph::MAT_Graph()`
+    /// **Source:** `MAT_Graph.hxx`:41 - `MAT_Graph::MAT_Graph()`
     pub fn MAT_Graph_ctor() -> crate::OcctResult<*mut MAT_Graph>;
-    /// **Source:** `MAT_Graph.hxx`:52 - `MAT_Graph::Perform()`
+    /// **Source:** `MAT_Graph.hxx`:50 - `MAT_Graph::Perform()`
     pub fn MAT_Graph_perform(
         self_: *mut MAT_Graph,
         SemiInfinite: bool,
-        TheRoots: *const HandleMATListOfBisector,
+        TheRoots: *const Handle_MAT_ListOfBisector,
         NbBasicElts: i32,
         NbArcs: i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `MAT_Graph.hxx`:58 - `MAT_Graph::Arc()`
+    /// **Source:** `MAT_Graph.hxx`:56 - `MAT_Graph::Arc()`
     pub fn MAT_Graph_arc(
         self_: *const MAT_Graph,
         Index: i32,
-    ) -> crate::OcctResult<*mut HandleMATArc>;
-    /// **Source:** `MAT_Graph.hxx`:61 - `MAT_Graph::BasicElt()`
+    ) -> crate::OcctResult<*mut Handle_MAT_Arc>;
+    /// **Source:** `MAT_Graph.hxx`:59 - `MAT_Graph::BasicElt()`
     pub fn MAT_Graph_basic_elt(
         self_: *const MAT_Graph,
         Index: i32,
-    ) -> crate::OcctResult<*mut HandleMATBasicElt>;
-    /// **Source:** `MAT_Graph.hxx`:64 - `MAT_Graph::Node()`
+    ) -> crate::OcctResult<*mut Handle_MAT_BasicElt>;
+    /// **Source:** `MAT_Graph.hxx`:62 - `MAT_Graph::Node()`
     pub fn MAT_Graph_node(
         self_: *const MAT_Graph,
         Index: i32,
-    ) -> crate::OcctResult<*mut HandleMATNode>;
-    /// **Source:** `MAT_Graph.hxx`:67 - `MAT_Graph::NumberOfArcs()`
+    ) -> crate::OcctResult<*mut Handle_MAT_Node>;
+    /// **Source:** `MAT_Graph.hxx`:65 - `MAT_Graph::NumberOfArcs()`
     pub fn MAT_Graph_number_of_arcs(self_: *const MAT_Graph) -> crate::OcctResult<i32>;
-    /// **Source:** `MAT_Graph.hxx`:70 - `MAT_Graph::NumberOfNodes()`
+    /// **Source:** `MAT_Graph.hxx`:68 - `MAT_Graph::NumberOfNodes()`
     pub fn MAT_Graph_number_of_nodes(self_: *const MAT_Graph) -> crate::OcctResult<i32>;
-    /// **Source:** `MAT_Graph.hxx`:73 - `MAT_Graph::NumberOfBasicElts()`
+    /// **Source:** `MAT_Graph.hxx`:71 - `MAT_Graph::NumberOfBasicElts()`
     pub fn MAT_Graph_number_of_basic_elts(self_: *const MAT_Graph) -> crate::OcctResult<i32>;
-    /// **Source:** `MAT_Graph.hxx`:76 - `MAT_Graph::NumberOfInfiniteNodes()`
+    /// **Source:** `MAT_Graph.hxx`:74 - `MAT_Graph::NumberOfInfiniteNodes()`
     pub fn MAT_Graph_number_of_infinite_nodes(self_: *const MAT_Graph) -> crate::OcctResult<i32>;
-    /// **Source:** `MAT_Graph.hxx`:94 - `MAT_Graph::FusionOfBasicElts()`
+    /// **Source:** `MAT_Graph.hxx`:92 - `MAT_Graph::FusionOfBasicElts()`
     pub fn MAT_Graph_fusion_of_basic_elts(
         self_: *mut MAT_Graph,
         IndexElt1: i32,
@@ -13654,28 +13676,23 @@ unsafe extern "C" {
         GeomIndexArc3: *mut i32,
         GeomIndexArc4: *mut i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `MAT_Graph.hxx`:103 - `MAT_Graph::CompactArcs()`
+    /// **Source:** `MAT_Graph.hxx`:101 - `MAT_Graph::CompactArcs()`
     pub fn MAT_Graph_compact_arcs(self_: *mut MAT_Graph) -> *const std::ffi::c_char;
-    /// **Source:** `MAT_Graph.hxx`:105 - `MAT_Graph::CompactNodes()`
+    /// **Source:** `MAT_Graph.hxx`:103 - `MAT_Graph::CompactNodes()`
     pub fn MAT_Graph_compact_nodes(self_: *mut MAT_Graph) -> *const std::ffi::c_char;
-    /// **Source:** `MAT_Graph.hxx`:107 - `MAT_Graph::ChangeBasicElts()`
-    pub fn MAT_Graph_change_basic_elts(
-        self_: *mut MAT_Graph,
-        NewMap: *const MAT_DataMapOfIntegerBasicElt,
-    ) -> *const std::ffi::c_char;
-    /// **Source:** `MAT_Graph.hxx`:109 - `MAT_Graph::ChangeBasicElt()`
+    /// **Source:** `MAT_Graph.hxx`:108 - `MAT_Graph::ChangeBasicElt()`
     pub fn MAT_Graph_change_basic_elt(
         self_: *mut MAT_Graph,
         Index: i32,
-    ) -> crate::OcctResult<*mut HandleMATBasicElt>;
-    /// **Source:** `MAT_Graph.hxx`:111 - `MAT_Graph::DynamicType()`
+    ) -> crate::OcctResult<*mut Handle_MAT_BasicElt>;
+    /// **Source:** `MAT_Graph.hxx`:110 - `MAT_Graph::DynamicType()`
     pub fn MAT_Graph_dynamic_type(
         self_: *const MAT_Graph,
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// **Source:** `MAT_Graph.hxx`:111 - `MAT_Graph::get_type_name()`
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
+    /// **Source:** `MAT_Graph.hxx`:110 - `MAT_Graph::get_type_name()`
     pub fn MAT_Graph_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
-    /// **Source:** `MAT_Graph.hxx`:111 - `MAT_Graph::get_type_descriptor()`
-    pub fn MAT_Graph_get_type_descriptor() -> crate::OcctResult<*const HandleStandardType>;
+    /// **Source:** `MAT_Graph.hxx`:110 - `MAT_Graph::get_type_descriptor()`
+    pub fn MAT_Graph_get_type_descriptor() -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast MAT_Graph to Standard_Transient
     pub fn MAT_Graph_as_Standard_Transient(
         self_: *const MAT_Graph,
@@ -13685,146 +13702,148 @@ unsafe extern "C" {
         self_: *mut MAT_Graph,
     ) -> crate::OcctResult<*mut Standard_Transient>;
     /// Wrap MAT_Graph in a Handle
-    pub fn MAT_Graph_to_handle(obj: *mut MAT_Graph) -> crate::OcctResult<*mut HandleMATGraph>;
+    pub fn MAT_Graph_to_handle(obj: *mut MAT_Graph) -> crate::OcctResult<*mut Handle_MAT_Graph>;
     /// Destroy Handle<MAT_Graph>
-    pub fn HandleMATGraph_destructor(self_: *mut HandleMATGraph);
+    pub fn Handle_MAT_Graph_destructor(self_: *mut Handle_MAT_Graph);
     /// Clone Handle<MAT_Graph> (increments reference count)
-    pub fn HandleMATGraph_clone(
-        self_: *const HandleMATGraph,
-    ) -> crate::OcctResult<*mut HandleMATGraph>;
+    pub fn Handle_MAT_Graph_clone(
+        self_: *const Handle_MAT_Graph,
+    ) -> crate::OcctResult<*mut Handle_MAT_Graph>;
     /// Check if Handle<MAT_Graph> is null
-    pub fn HandleMATGraph_is_null(self_: *const HandleMATGraph) -> bool;
+    pub fn Handle_MAT_Graph_is_null(self_: *const Handle_MAT_Graph) -> bool;
     /// Dereference Handle to get *const MAT_Graph
-    pub fn HandleMATGraph_get(handle: *const HandleMATGraph)
-        -> crate::OcctResult<*const MAT_Graph>;
+    pub fn Handle_MAT_Graph_get(
+        handle: *const Handle_MAT_Graph,
+    ) -> crate::OcctResult<*const MAT_Graph>;
     /// Dereference Handle to get *mut MAT_Graph
-    pub fn HandleMATGraph_get_mut(handle: *mut HandleMATGraph)
-        -> crate::OcctResult<*mut MAT_Graph>;
+    pub fn Handle_MAT_Graph_get_mut(
+        handle: *mut Handle_MAT_Graph,
+    ) -> crate::OcctResult<*mut MAT_Graph>;
     /// Upcast Handle<MAT_Graph> to Handle<Standard_Transient>
-    pub fn HandleMATGraph_to_HandleStandardTransient(
-        self_: *const HandleMATGraph,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn Handle_MAT_Graph_to_Handle_Standard_Transient(
+        self_: *const Handle_MAT_Graph,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn MAT_Graph_inherited_IsInstance(
         self_: *const MAT_Graph,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn MAT_Graph_inherited_IsKind(
         self_: *const MAT_Graph,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn MAT_Graph_inherited_This(
         self_: *const MAT_Graph,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn MAT_Graph_inherited_GetRefCount(self_: *const MAT_Graph) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn MAT_Graph_inherited_IncrementRefCounter(
         self_: *mut MAT_Graph,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn MAT_Graph_inherited_DecrementRefCounter(self_: *mut MAT_Graph)
         -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn MAT_Graph_inherited_Delete(self_: *const MAT_Graph) -> *const std::ffi::c_char;
     // ======================== MAT_ListOfBisector ========================
     pub fn MAT_ListOfBisector_destructor(self_: *mut MAT_ListOfBisector);
-    /// **Source:** `MAT_ListOfBisector.hxx`:35 - `MAT_ListOfBisector::MAT_ListOfBisector()`
+    /// **Source:** `MAT_ListOfBisector.hxx`:32 - `MAT_ListOfBisector::MAT_ListOfBisector()`
     pub fn MAT_ListOfBisector_ctor() -> crate::OcctResult<*mut MAT_ListOfBisector>;
-    /// **Source:** `MAT_ListOfBisector.hxx`:39 - `MAT_ListOfBisector::First()`
+    /// **Source:** `MAT_ListOfBisector.hxx`:36 - `MAT_ListOfBisector::First()`
     pub fn MAT_ListOfBisector_first(self_: *mut MAT_ListOfBisector) -> *const std::ffi::c_char;
-    /// **Source:** `MAT_ListOfBisector.hxx`:41 - `MAT_ListOfBisector::Last()`
+    /// **Source:** `MAT_ListOfBisector.hxx`:38 - `MAT_ListOfBisector::Last()`
     pub fn MAT_ListOfBisector_last(self_: *mut MAT_ListOfBisector) -> *const std::ffi::c_char;
-    /// **Source:** `MAT_ListOfBisector.hxx`:43 - `MAT_ListOfBisector::Init()`
+    /// **Source:** `MAT_ListOfBisector.hxx`:40 - `MAT_ListOfBisector::Init()`
     pub fn MAT_ListOfBisector_init(
         self_: *mut MAT_ListOfBisector,
-        aniten: *const HandleMATBisector,
+        aniten: *const Handle_MAT_Bisector,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `MAT_ListOfBisector.hxx`:45 - `MAT_ListOfBisector::Next()`
+    /// **Source:** `MAT_ListOfBisector.hxx`:42 - `MAT_ListOfBisector::Next()`
     pub fn MAT_ListOfBisector_next(self_: *mut MAT_ListOfBisector) -> *const std::ffi::c_char;
-    /// **Source:** `MAT_ListOfBisector.hxx`:47 - `MAT_ListOfBisector::Previous()`
+    /// **Source:** `MAT_ListOfBisector.hxx`:44 - `MAT_ListOfBisector::Previous()`
     pub fn MAT_ListOfBisector_previous(self_: *mut MAT_ListOfBisector) -> *const std::ffi::c_char;
-    /// **Source:** `MAT_ListOfBisector.hxx`:49 - `MAT_ListOfBisector::More()`
+    /// **Source:** `MAT_ListOfBisector.hxx`:46 - `MAT_ListOfBisector::More()`
     pub fn MAT_ListOfBisector_more(self_: *const MAT_ListOfBisector) -> crate::OcctResult<bool>;
-    /// **Source:** `MAT_ListOfBisector.hxx`:51 - `MAT_ListOfBisector::Current()`
+    /// **Source:** `MAT_ListOfBisector.hxx`:48 - `MAT_ListOfBisector::Current()`
     pub fn MAT_ListOfBisector_current(
         self_: *const MAT_ListOfBisector,
-    ) -> crate::OcctResult<*mut HandleMATBisector>;
-    /// **Source:** `MAT_ListOfBisector.hxx`:53 - `MAT_ListOfBisector::Current()`
+    ) -> crate::OcctResult<*mut Handle_MAT_Bisector>;
+    /// **Source:** `MAT_ListOfBisector.hxx`:50 - `MAT_ListOfBisector::Current()`
     pub fn MAT_ListOfBisector_current_handlematbisector(
         self_: *const MAT_ListOfBisector,
-        anitem: *const HandleMATBisector,
+        anitem: *const Handle_MAT_Bisector,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `MAT_ListOfBisector.hxx`:55 - `MAT_ListOfBisector::FirstItem()`
+    /// **Source:** `MAT_ListOfBisector.hxx`:52 - `MAT_ListOfBisector::FirstItem()`
     pub fn MAT_ListOfBisector_first_item(
         self_: *const MAT_ListOfBisector,
-    ) -> crate::OcctResult<*mut HandleMATBisector>;
-    /// **Source:** `MAT_ListOfBisector.hxx`:57 - `MAT_ListOfBisector::LastItem()`
+    ) -> crate::OcctResult<*mut Handle_MAT_Bisector>;
+    /// **Source:** `MAT_ListOfBisector.hxx`:54 - `MAT_ListOfBisector::LastItem()`
     pub fn MAT_ListOfBisector_last_item(
         self_: *const MAT_ListOfBisector,
-    ) -> crate::OcctResult<*mut HandleMATBisector>;
-    /// **Source:** `MAT_ListOfBisector.hxx`:59 - `MAT_ListOfBisector::PreviousItem()`
+    ) -> crate::OcctResult<*mut Handle_MAT_Bisector>;
+    /// **Source:** `MAT_ListOfBisector.hxx`:56 - `MAT_ListOfBisector::PreviousItem()`
     pub fn MAT_ListOfBisector_previous_item(
         self_: *const MAT_ListOfBisector,
-    ) -> crate::OcctResult<*mut HandleMATBisector>;
-    /// **Source:** `MAT_ListOfBisector.hxx`:61 - `MAT_ListOfBisector::NextItem()`
+    ) -> crate::OcctResult<*mut Handle_MAT_Bisector>;
+    /// **Source:** `MAT_ListOfBisector.hxx`:58 - `MAT_ListOfBisector::NextItem()`
     pub fn MAT_ListOfBisector_next_item(
         self_: *const MAT_ListOfBisector,
-    ) -> crate::OcctResult<*mut HandleMATBisector>;
-    /// **Source:** `MAT_ListOfBisector.hxx`:63 - `MAT_ListOfBisector::Number()`
+    ) -> crate::OcctResult<*mut Handle_MAT_Bisector>;
+    /// **Source:** `MAT_ListOfBisector.hxx`:60 - `MAT_ListOfBisector::Number()`
     pub fn MAT_ListOfBisector_number(self_: *const MAT_ListOfBisector) -> crate::OcctResult<i32>;
-    /// **Source:** `MAT_ListOfBisector.hxx`:65 - `MAT_ListOfBisector::Index()`
+    /// **Source:** `MAT_ListOfBisector.hxx`:62 - `MAT_ListOfBisector::Index()`
     pub fn MAT_ListOfBisector_index(self_: *const MAT_ListOfBisector) -> crate::OcctResult<i32>;
-    /// **Source:** `MAT_ListOfBisector.hxx`:67 - `MAT_ListOfBisector::Brackets()`
+    /// **Source:** `MAT_ListOfBisector.hxx`:64 - `MAT_ListOfBisector::Brackets()`
     pub fn MAT_ListOfBisector_brackets(
         self_: *mut MAT_ListOfBisector,
         anindex: i32,
-    ) -> crate::OcctResult<*mut HandleMATBisector>;
-    /// **Source:** `MAT_ListOfBisector.hxx`:71 - `MAT_ListOfBisector::Unlink()`
+    ) -> crate::OcctResult<*mut Handle_MAT_Bisector>;
+    /// **Source:** `MAT_ListOfBisector.hxx`:68 - `MAT_ListOfBisector::Unlink()`
     pub fn MAT_ListOfBisector_unlink(self_: *mut MAT_ListOfBisector) -> *const std::ffi::c_char;
-    /// **Source:** `MAT_ListOfBisector.hxx`:73 - `MAT_ListOfBisector::LinkBefore()`
+    /// **Source:** `MAT_ListOfBisector.hxx`:70 - `MAT_ListOfBisector::LinkBefore()`
     pub fn MAT_ListOfBisector_link_before(
         self_: *mut MAT_ListOfBisector,
-        anitem: *const HandleMATBisector,
+        anitem: *const Handle_MAT_Bisector,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `MAT_ListOfBisector.hxx`:75 - `MAT_ListOfBisector::LinkAfter()`
+    /// **Source:** `MAT_ListOfBisector.hxx`:72 - `MAT_ListOfBisector::LinkAfter()`
     pub fn MAT_ListOfBisector_link_after(
         self_: *mut MAT_ListOfBisector,
-        anitem: *const HandleMATBisector,
+        anitem: *const Handle_MAT_Bisector,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `MAT_ListOfBisector.hxx`:77 - `MAT_ListOfBisector::FrontAdd()`
+    /// **Source:** `MAT_ListOfBisector.hxx`:74 - `MAT_ListOfBisector::FrontAdd()`
     pub fn MAT_ListOfBisector_front_add(
         self_: *mut MAT_ListOfBisector,
-        anitem: *const HandleMATBisector,
+        anitem: *const Handle_MAT_Bisector,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `MAT_ListOfBisector.hxx`:79 - `MAT_ListOfBisector::BackAdd()`
+    /// **Source:** `MAT_ListOfBisector.hxx`:76 - `MAT_ListOfBisector::BackAdd()`
     pub fn MAT_ListOfBisector_back_add(
         self_: *mut MAT_ListOfBisector,
-        anitem: *const HandleMATBisector,
+        anitem: *const Handle_MAT_Bisector,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `MAT_ListOfBisector.hxx`:81 - `MAT_ListOfBisector::Permute()`
+    /// **Source:** `MAT_ListOfBisector.hxx`:78 - `MAT_ListOfBisector::Permute()`
     pub fn MAT_ListOfBisector_permute(self_: *mut MAT_ListOfBisector) -> *const std::ffi::c_char;
-    /// **Source:** `MAT_ListOfBisector.hxx`:83 - `MAT_ListOfBisector::Loop()`
+    /// **Source:** `MAT_ListOfBisector.hxx`:80 - `MAT_ListOfBisector::Loop()`
     pub fn MAT_ListOfBisector_loop_(self_: *const MAT_ListOfBisector) -> *const std::ffi::c_char;
-    /// **Source:** `MAT_ListOfBisector.hxx`:85 - `MAT_ListOfBisector::IsEmpty()`
+    /// **Source:** `MAT_ListOfBisector.hxx`:82 - `MAT_ListOfBisector::IsEmpty()`
     pub fn MAT_ListOfBisector_is_empty(self_: *const MAT_ListOfBisector)
         -> crate::OcctResult<bool>;
-    /// **Source:** `MAT_ListOfBisector.hxx`:87 - `MAT_ListOfBisector::Dump()`
+    /// **Source:** `MAT_ListOfBisector.hxx`:84 - `MAT_ListOfBisector::Dump()`
     pub fn MAT_ListOfBisector_dump(
         self_: *mut MAT_ListOfBisector,
         ashift: i32,
         alevel: i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `MAT_ListOfBisector.hxx`:89 - `MAT_ListOfBisector::DynamicType()`
+    /// **Source:** `MAT_ListOfBisector.hxx`:86 - `MAT_ListOfBisector::DynamicType()`
     pub fn MAT_ListOfBisector_dynamic_type(
         self_: *const MAT_ListOfBisector,
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// **Source:** `MAT_ListOfBisector.hxx`:89 - `MAT_ListOfBisector::get_type_name()`
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
+    /// **Source:** `MAT_ListOfBisector.hxx`:86 - `MAT_ListOfBisector::get_type_name()`
     pub fn MAT_ListOfBisector_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
-    /// **Source:** `MAT_ListOfBisector.hxx`:89 - `MAT_ListOfBisector::get_type_descriptor()`
-    pub fn MAT_ListOfBisector_get_type_descriptor() -> crate::OcctResult<*const HandleStandardType>;
+    /// **Source:** `MAT_ListOfBisector.hxx`:86 - `MAT_ListOfBisector::get_type_descriptor()`
+    pub fn MAT_ListOfBisector_get_type_descriptor() -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast MAT_ListOfBisector to Standard_Transient
     pub fn MAT_ListOfBisector_as_Standard_Transient(
         self_: *const MAT_ListOfBisector,
@@ -13836,152 +13855,152 @@ unsafe extern "C" {
     /// Wrap MAT_ListOfBisector in a Handle
     pub fn MAT_ListOfBisector_to_handle(
         obj: *mut MAT_ListOfBisector,
-    ) -> crate::OcctResult<*mut HandleMATListOfBisector>;
+    ) -> crate::OcctResult<*mut Handle_MAT_ListOfBisector>;
     /// Destroy Handle<MAT_ListOfBisector>
-    pub fn HandleMATListOfBisector_destructor(self_: *mut HandleMATListOfBisector);
+    pub fn Handle_MAT_ListOfBisector_destructor(self_: *mut Handle_MAT_ListOfBisector);
     /// Clone Handle<MAT_ListOfBisector> (increments reference count)
-    pub fn HandleMATListOfBisector_clone(
-        self_: *const HandleMATListOfBisector,
-    ) -> crate::OcctResult<*mut HandleMATListOfBisector>;
+    pub fn Handle_MAT_ListOfBisector_clone(
+        self_: *const Handle_MAT_ListOfBisector,
+    ) -> crate::OcctResult<*mut Handle_MAT_ListOfBisector>;
     /// Check if Handle<MAT_ListOfBisector> is null
-    pub fn HandleMATListOfBisector_is_null(self_: *const HandleMATListOfBisector) -> bool;
+    pub fn Handle_MAT_ListOfBisector_is_null(self_: *const Handle_MAT_ListOfBisector) -> bool;
     /// Dereference Handle to get *const MAT_ListOfBisector
-    pub fn HandleMATListOfBisector_get(
-        handle: *const HandleMATListOfBisector,
+    pub fn Handle_MAT_ListOfBisector_get(
+        handle: *const Handle_MAT_ListOfBisector,
     ) -> crate::OcctResult<*const MAT_ListOfBisector>;
     /// Dereference Handle to get *mut MAT_ListOfBisector
-    pub fn HandleMATListOfBisector_get_mut(
-        handle: *mut HandleMATListOfBisector,
+    pub fn Handle_MAT_ListOfBisector_get_mut(
+        handle: *mut Handle_MAT_ListOfBisector,
     ) -> crate::OcctResult<*mut MAT_ListOfBisector>;
     /// Upcast Handle<MAT_ListOfBisector> to Handle<Standard_Transient>
-    pub fn HandleMATListOfBisector_to_HandleStandardTransient(
-        self_: *const HandleMATListOfBisector,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn Handle_MAT_ListOfBisector_to_Handle_Standard_Transient(
+        self_: *const Handle_MAT_ListOfBisector,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn MAT_ListOfBisector_inherited_IsInstance(
         self_: *const MAT_ListOfBisector,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn MAT_ListOfBisector_inherited_IsKind(
         self_: *const MAT_ListOfBisector,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn MAT_ListOfBisector_inherited_This(
         self_: *const MAT_ListOfBisector,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn MAT_ListOfBisector_inherited_GetRefCount(
         self_: *const MAT_ListOfBisector,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn MAT_ListOfBisector_inherited_IncrementRefCounter(
         self_: *mut MAT_ListOfBisector,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn MAT_ListOfBisector_inherited_DecrementRefCounter(
         self_: *mut MAT_ListOfBisector,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn MAT_ListOfBisector_inherited_Delete(
         self_: *const MAT_ListOfBisector,
     ) -> *const std::ffi::c_char;
     // ======================== MAT_ListOfEdge ========================
     pub fn MAT_ListOfEdge_destructor(self_: *mut MAT_ListOfEdge);
-    /// **Source:** `MAT_ListOfEdge.hxx`:35 - `MAT_ListOfEdge::MAT_ListOfEdge()`
+    /// **Source:** `MAT_ListOfEdge.hxx`:32 - `MAT_ListOfEdge::MAT_ListOfEdge()`
     pub fn MAT_ListOfEdge_ctor() -> crate::OcctResult<*mut MAT_ListOfEdge>;
-    /// **Source:** `MAT_ListOfEdge.hxx`:39 - `MAT_ListOfEdge::First()`
+    /// **Source:** `MAT_ListOfEdge.hxx`:36 - `MAT_ListOfEdge::First()`
     pub fn MAT_ListOfEdge_first(self_: *mut MAT_ListOfEdge) -> *const std::ffi::c_char;
-    /// **Source:** `MAT_ListOfEdge.hxx`:41 - `MAT_ListOfEdge::Last()`
+    /// **Source:** `MAT_ListOfEdge.hxx`:38 - `MAT_ListOfEdge::Last()`
     pub fn MAT_ListOfEdge_last(self_: *mut MAT_ListOfEdge) -> *const std::ffi::c_char;
-    /// **Source:** `MAT_ListOfEdge.hxx`:43 - `MAT_ListOfEdge::Init()`
+    /// **Source:** `MAT_ListOfEdge.hxx`:40 - `MAT_ListOfEdge::Init()`
     pub fn MAT_ListOfEdge_init(
         self_: *mut MAT_ListOfEdge,
-        aniten: *const HandleMATEdge,
+        aniten: *const Handle_MAT_Edge,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `MAT_ListOfEdge.hxx`:45 - `MAT_ListOfEdge::Next()`
+    /// **Source:** `MAT_ListOfEdge.hxx`:42 - `MAT_ListOfEdge::Next()`
     pub fn MAT_ListOfEdge_next(self_: *mut MAT_ListOfEdge) -> *const std::ffi::c_char;
-    /// **Source:** `MAT_ListOfEdge.hxx`:47 - `MAT_ListOfEdge::Previous()`
+    /// **Source:** `MAT_ListOfEdge.hxx`:44 - `MAT_ListOfEdge::Previous()`
     pub fn MAT_ListOfEdge_previous(self_: *mut MAT_ListOfEdge) -> *const std::ffi::c_char;
-    /// **Source:** `MAT_ListOfEdge.hxx`:49 - `MAT_ListOfEdge::More()`
+    /// **Source:** `MAT_ListOfEdge.hxx`:46 - `MAT_ListOfEdge::More()`
     pub fn MAT_ListOfEdge_more(self_: *const MAT_ListOfEdge) -> crate::OcctResult<bool>;
-    /// **Source:** `MAT_ListOfEdge.hxx`:51 - `MAT_ListOfEdge::Current()`
+    /// **Source:** `MAT_ListOfEdge.hxx`:48 - `MAT_ListOfEdge::Current()`
     pub fn MAT_ListOfEdge_current(
         self_: *const MAT_ListOfEdge,
-    ) -> crate::OcctResult<*mut HandleMATEdge>;
-    /// **Source:** `MAT_ListOfEdge.hxx`:53 - `MAT_ListOfEdge::Current()`
+    ) -> crate::OcctResult<*mut Handle_MAT_Edge>;
+    /// **Source:** `MAT_ListOfEdge.hxx`:50 - `MAT_ListOfEdge::Current()`
     pub fn MAT_ListOfEdge_current_handlematedge(
         self_: *const MAT_ListOfEdge,
-        anitem: *const HandleMATEdge,
+        anitem: *const Handle_MAT_Edge,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `MAT_ListOfEdge.hxx`:55 - `MAT_ListOfEdge::FirstItem()`
+    /// **Source:** `MAT_ListOfEdge.hxx`:52 - `MAT_ListOfEdge::FirstItem()`
     pub fn MAT_ListOfEdge_first_item(
         self_: *const MAT_ListOfEdge,
-    ) -> crate::OcctResult<*mut HandleMATEdge>;
-    /// **Source:** `MAT_ListOfEdge.hxx`:57 - `MAT_ListOfEdge::LastItem()`
+    ) -> crate::OcctResult<*mut Handle_MAT_Edge>;
+    /// **Source:** `MAT_ListOfEdge.hxx`:54 - `MAT_ListOfEdge::LastItem()`
     pub fn MAT_ListOfEdge_last_item(
         self_: *const MAT_ListOfEdge,
-    ) -> crate::OcctResult<*mut HandleMATEdge>;
-    /// **Source:** `MAT_ListOfEdge.hxx`:59 - `MAT_ListOfEdge::PreviousItem()`
+    ) -> crate::OcctResult<*mut Handle_MAT_Edge>;
+    /// **Source:** `MAT_ListOfEdge.hxx`:56 - `MAT_ListOfEdge::PreviousItem()`
     pub fn MAT_ListOfEdge_previous_item(
         self_: *const MAT_ListOfEdge,
-    ) -> crate::OcctResult<*mut HandleMATEdge>;
-    /// **Source:** `MAT_ListOfEdge.hxx`:61 - `MAT_ListOfEdge::NextItem()`
+    ) -> crate::OcctResult<*mut Handle_MAT_Edge>;
+    /// **Source:** `MAT_ListOfEdge.hxx`:58 - `MAT_ListOfEdge::NextItem()`
     pub fn MAT_ListOfEdge_next_item(
         self_: *const MAT_ListOfEdge,
-    ) -> crate::OcctResult<*mut HandleMATEdge>;
-    /// **Source:** `MAT_ListOfEdge.hxx`:63 - `MAT_ListOfEdge::Number()`
+    ) -> crate::OcctResult<*mut Handle_MAT_Edge>;
+    /// **Source:** `MAT_ListOfEdge.hxx`:60 - `MAT_ListOfEdge::Number()`
     pub fn MAT_ListOfEdge_number(self_: *const MAT_ListOfEdge) -> crate::OcctResult<i32>;
-    /// **Source:** `MAT_ListOfEdge.hxx`:65 - `MAT_ListOfEdge::Index()`
+    /// **Source:** `MAT_ListOfEdge.hxx`:62 - `MAT_ListOfEdge::Index()`
     pub fn MAT_ListOfEdge_index(self_: *const MAT_ListOfEdge) -> crate::OcctResult<i32>;
-    /// **Source:** `MAT_ListOfEdge.hxx`:67 - `MAT_ListOfEdge::Brackets()`
+    /// **Source:** `MAT_ListOfEdge.hxx`:64 - `MAT_ListOfEdge::Brackets()`
     pub fn MAT_ListOfEdge_brackets(
         self_: *mut MAT_ListOfEdge,
         anindex: i32,
-    ) -> crate::OcctResult<*mut HandleMATEdge>;
-    /// **Source:** `MAT_ListOfEdge.hxx`:71 - `MAT_ListOfEdge::Unlink()`
+    ) -> crate::OcctResult<*mut Handle_MAT_Edge>;
+    /// **Source:** `MAT_ListOfEdge.hxx`:68 - `MAT_ListOfEdge::Unlink()`
     pub fn MAT_ListOfEdge_unlink(self_: *mut MAT_ListOfEdge) -> *const std::ffi::c_char;
-    /// **Source:** `MAT_ListOfEdge.hxx`:73 - `MAT_ListOfEdge::LinkBefore()`
+    /// **Source:** `MAT_ListOfEdge.hxx`:70 - `MAT_ListOfEdge::LinkBefore()`
     pub fn MAT_ListOfEdge_link_before(
         self_: *mut MAT_ListOfEdge,
-        anitem: *const HandleMATEdge,
+        anitem: *const Handle_MAT_Edge,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `MAT_ListOfEdge.hxx`:75 - `MAT_ListOfEdge::LinkAfter()`
+    /// **Source:** `MAT_ListOfEdge.hxx`:72 - `MAT_ListOfEdge::LinkAfter()`
     pub fn MAT_ListOfEdge_link_after(
         self_: *mut MAT_ListOfEdge,
-        anitem: *const HandleMATEdge,
+        anitem: *const Handle_MAT_Edge,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `MAT_ListOfEdge.hxx`:77 - `MAT_ListOfEdge::FrontAdd()`
+    /// **Source:** `MAT_ListOfEdge.hxx`:74 - `MAT_ListOfEdge::FrontAdd()`
     pub fn MAT_ListOfEdge_front_add(
         self_: *mut MAT_ListOfEdge,
-        anitem: *const HandleMATEdge,
+        anitem: *const Handle_MAT_Edge,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `MAT_ListOfEdge.hxx`:79 - `MAT_ListOfEdge::BackAdd()`
+    /// **Source:** `MAT_ListOfEdge.hxx`:76 - `MAT_ListOfEdge::BackAdd()`
     pub fn MAT_ListOfEdge_back_add(
         self_: *mut MAT_ListOfEdge,
-        anitem: *const HandleMATEdge,
+        anitem: *const Handle_MAT_Edge,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `MAT_ListOfEdge.hxx`:81 - `MAT_ListOfEdge::Permute()`
+    /// **Source:** `MAT_ListOfEdge.hxx`:78 - `MAT_ListOfEdge::Permute()`
     pub fn MAT_ListOfEdge_permute(self_: *mut MAT_ListOfEdge) -> *const std::ffi::c_char;
-    /// **Source:** `MAT_ListOfEdge.hxx`:83 - `MAT_ListOfEdge::Loop()`
+    /// **Source:** `MAT_ListOfEdge.hxx`:80 - `MAT_ListOfEdge::Loop()`
     pub fn MAT_ListOfEdge_loop_(self_: *const MAT_ListOfEdge) -> *const std::ffi::c_char;
-    /// **Source:** `MAT_ListOfEdge.hxx`:85 - `MAT_ListOfEdge::IsEmpty()`
+    /// **Source:** `MAT_ListOfEdge.hxx`:82 - `MAT_ListOfEdge::IsEmpty()`
     pub fn MAT_ListOfEdge_is_empty(self_: *const MAT_ListOfEdge) -> crate::OcctResult<bool>;
-    /// **Source:** `MAT_ListOfEdge.hxx`:87 - `MAT_ListOfEdge::Dump()`
+    /// **Source:** `MAT_ListOfEdge.hxx`:84 - `MAT_ListOfEdge::Dump()`
     pub fn MAT_ListOfEdge_dump(
         self_: *mut MAT_ListOfEdge,
         ashift: i32,
         alevel: i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `MAT_ListOfEdge.hxx`:89 - `MAT_ListOfEdge::DynamicType()`
+    /// **Source:** `MAT_ListOfEdge.hxx`:86 - `MAT_ListOfEdge::DynamicType()`
     pub fn MAT_ListOfEdge_dynamic_type(
         self_: *const MAT_ListOfEdge,
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// **Source:** `MAT_ListOfEdge.hxx`:89 - `MAT_ListOfEdge::get_type_name()`
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
+    /// **Source:** `MAT_ListOfEdge.hxx`:86 - `MAT_ListOfEdge::get_type_name()`
     pub fn MAT_ListOfEdge_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
-    /// **Source:** `MAT_ListOfEdge.hxx`:89 - `MAT_ListOfEdge::get_type_descriptor()`
-    pub fn MAT_ListOfEdge_get_type_descriptor() -> crate::OcctResult<*const HandleStandardType>;
+    /// **Source:** `MAT_ListOfEdge.hxx`:86 - `MAT_ListOfEdge::get_type_descriptor()`
+    pub fn MAT_ListOfEdge_get_type_descriptor() -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast MAT_ListOfEdge to Standard_Transient
     pub fn MAT_ListOfEdge_as_Standard_Transient(
         self_: *const MAT_ListOfEdge,
@@ -13993,101 +14012,91 @@ unsafe extern "C" {
     /// Wrap MAT_ListOfEdge in a Handle
     pub fn MAT_ListOfEdge_to_handle(
         obj: *mut MAT_ListOfEdge,
-    ) -> crate::OcctResult<*mut HandleMATListOfEdge>;
+    ) -> crate::OcctResult<*mut Handle_MAT_ListOfEdge>;
     /// Destroy Handle<MAT_ListOfEdge>
-    pub fn HandleMATListOfEdge_destructor(self_: *mut HandleMATListOfEdge);
+    pub fn Handle_MAT_ListOfEdge_destructor(self_: *mut Handle_MAT_ListOfEdge);
     /// Clone Handle<MAT_ListOfEdge> (increments reference count)
-    pub fn HandleMATListOfEdge_clone(
-        self_: *const HandleMATListOfEdge,
-    ) -> crate::OcctResult<*mut HandleMATListOfEdge>;
+    pub fn Handle_MAT_ListOfEdge_clone(
+        self_: *const Handle_MAT_ListOfEdge,
+    ) -> crate::OcctResult<*mut Handle_MAT_ListOfEdge>;
     /// Check if Handle<MAT_ListOfEdge> is null
-    pub fn HandleMATListOfEdge_is_null(self_: *const HandleMATListOfEdge) -> bool;
+    pub fn Handle_MAT_ListOfEdge_is_null(self_: *const Handle_MAT_ListOfEdge) -> bool;
     /// Dereference Handle to get *const MAT_ListOfEdge
-    pub fn HandleMATListOfEdge_get(
-        handle: *const HandleMATListOfEdge,
+    pub fn Handle_MAT_ListOfEdge_get(
+        handle: *const Handle_MAT_ListOfEdge,
     ) -> crate::OcctResult<*const MAT_ListOfEdge>;
     /// Dereference Handle to get *mut MAT_ListOfEdge
-    pub fn HandleMATListOfEdge_get_mut(
-        handle: *mut HandleMATListOfEdge,
+    pub fn Handle_MAT_ListOfEdge_get_mut(
+        handle: *mut Handle_MAT_ListOfEdge,
     ) -> crate::OcctResult<*mut MAT_ListOfEdge>;
     /// Upcast Handle<MAT_ListOfEdge> to Handle<Standard_Transient>
-    pub fn HandleMATListOfEdge_to_HandleStandardTransient(
-        self_: *const HandleMATListOfEdge,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn Handle_MAT_ListOfEdge_to_Handle_Standard_Transient(
+        self_: *const Handle_MAT_ListOfEdge,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn MAT_ListOfEdge_inherited_IsInstance(
         self_: *const MAT_ListOfEdge,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn MAT_ListOfEdge_inherited_IsKind(
         self_: *const MAT_ListOfEdge,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn MAT_ListOfEdge_inherited_This(
         self_: *const MAT_ListOfEdge,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn MAT_ListOfEdge_inherited_GetRefCount(
         self_: *const MAT_ListOfEdge,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn MAT_ListOfEdge_inherited_IncrementRefCounter(
         self_: *mut MAT_ListOfEdge,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn MAT_ListOfEdge_inherited_DecrementRefCounter(
         self_: *mut MAT_ListOfEdge,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn MAT_ListOfEdge_inherited_Delete(self_: *const MAT_ListOfEdge)
         -> *const std::ffi::c_char;
     // ======================== MAT_Node ========================
     pub fn MAT_Node_destructor(self_: *mut MAT_Node);
-    /// **Source:** `MAT_Node.hxx`:38 - `MAT_Node::MAT_Node()`
+    /// **Source:** `MAT_Node.hxx`:36 - `MAT_Node::MAT_Node()`
     pub fn MAT_Node_ctor_int_handlematarc_real(
         GeomIndex: i32,
-        LinkedArc: *const HandleMATArc,
+        LinkedArc: *const Handle_MAT_Arc,
         Distance: f64,
     ) -> crate::OcctResult<*mut MAT_Node>;
-    /// **Source:** `MAT_Node.hxx`:44 - `MAT_Node::GeomIndex()`
+    /// **Source:** `MAT_Node.hxx`:42 - `MAT_Node::GeomIndex()`
     pub fn MAT_Node_geom_index(self_: *const MAT_Node) -> crate::OcctResult<i32>;
-    /// **Source:** `MAT_Node.hxx`:47 - `MAT_Node::Index()`
+    /// **Source:** `MAT_Node.hxx`:45 - `MAT_Node::Index()`
     pub fn MAT_Node_index(self_: *const MAT_Node) -> crate::OcctResult<i32>;
-    /// **Source:** `MAT_Node.hxx`:50 - `MAT_Node::LinkedArcs()`
-    pub fn MAT_Node_linked_arcs(
-        self_: *const MAT_Node,
-        S: *mut MAT_SequenceOfArc,
-    ) -> *const std::ffi::c_char;
-    /// **Source:** `MAT_Node.hxx`:54 - `MAT_Node::NearElts()`
-    pub fn MAT_Node_near_elts(
-        self_: *const MAT_Node,
-        S: *mut MAT_SequenceOfBasicElt,
-    ) -> *const std::ffi::c_char;
-    /// **Source:** `MAT_Node.hxx`:56 - `MAT_Node::Distance()`
+    /// **Source:** `MAT_Node.hxx`:54 - `MAT_Node::Distance()`
     pub fn MAT_Node_distance(self_: *const MAT_Node) -> crate::OcctResult<f64>;
-    /// **Source:** `MAT_Node.hxx`:60 - `MAT_Node::PendingNode()`
+    /// **Source:** `MAT_Node.hxx`:58 - `MAT_Node::PendingNode()`
     pub fn MAT_Node_pending_node(self_: *const MAT_Node) -> crate::OcctResult<bool>;
-    /// **Source:** `MAT_Node.hxx`:63 - `MAT_Node::OnBasicElt()`
+    /// **Source:** `MAT_Node.hxx`:61 - `MAT_Node::OnBasicElt()`
     pub fn MAT_Node_on_basic_elt(self_: *const MAT_Node) -> crate::OcctResult<bool>;
-    /// **Source:** `MAT_Node.hxx`:66 - `MAT_Node::Infinite()`
+    /// **Source:** `MAT_Node.hxx`:64 - `MAT_Node::Infinite()`
     pub fn MAT_Node_infinite(self_: *const MAT_Node) -> crate::OcctResult<bool>;
-    /// **Source:** `MAT_Node.hxx`:69 - `MAT_Node::SetIndex()`
+    /// **Source:** `MAT_Node.hxx`:67 - `MAT_Node::SetIndex()`
     pub fn MAT_Node_set_index(self_: *mut MAT_Node, anIndex: i32) -> *const std::ffi::c_char;
-    /// **Source:** `MAT_Node.hxx`:71 - `MAT_Node::SetLinkedArc()`
+    /// **Source:** `MAT_Node.hxx`:69 - `MAT_Node::SetLinkedArc()`
     pub fn MAT_Node_set_linked_arc(
         self_: *mut MAT_Node,
-        anArc: *const HandleMATArc,
+        anArc: *const Handle_MAT_Arc,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `MAT_Node.hxx`:73 - `MAT_Node::DynamicType()`
+    /// **Source:** `MAT_Node.hxx`:71 - `MAT_Node::DynamicType()`
     pub fn MAT_Node_dynamic_type(
         self_: *const MAT_Node,
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// **Source:** `MAT_Node.hxx`:73 - `MAT_Node::get_type_name()`
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
+    /// **Source:** `MAT_Node.hxx`:71 - `MAT_Node::get_type_name()`
     pub fn MAT_Node_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
-    /// **Source:** `MAT_Node.hxx`:73 - `MAT_Node::get_type_descriptor()`
-    pub fn MAT_Node_get_type_descriptor() -> crate::OcctResult<*const HandleStandardType>;
+    /// **Source:** `MAT_Node.hxx`:71 - `MAT_Node::get_type_descriptor()`
+    pub fn MAT_Node_get_type_descriptor() -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast MAT_Node to Standard_Transient
     pub fn MAT_Node_as_Standard_Transient(
         self_: *const MAT_Node,
@@ -14097,95 +14106,99 @@ unsafe extern "C" {
         self_: *mut MAT_Node,
     ) -> crate::OcctResult<*mut Standard_Transient>;
     /// Wrap MAT_Node in a Handle
-    pub fn MAT_Node_to_handle(obj: *mut MAT_Node) -> crate::OcctResult<*mut HandleMATNode>;
+    pub fn MAT_Node_to_handle(obj: *mut MAT_Node) -> crate::OcctResult<*mut Handle_MAT_Node>;
     /// Destroy Handle<MAT_Node>
-    pub fn HandleMATNode_destructor(self_: *mut HandleMATNode);
+    pub fn Handle_MAT_Node_destructor(self_: *mut Handle_MAT_Node);
     /// Clone Handle<MAT_Node> (increments reference count)
-    pub fn HandleMATNode_clone(
-        self_: *const HandleMATNode,
-    ) -> crate::OcctResult<*mut HandleMATNode>;
+    pub fn Handle_MAT_Node_clone(
+        self_: *const Handle_MAT_Node,
+    ) -> crate::OcctResult<*mut Handle_MAT_Node>;
     /// Check if Handle<MAT_Node> is null
-    pub fn HandleMATNode_is_null(self_: *const HandleMATNode) -> bool;
+    pub fn Handle_MAT_Node_is_null(self_: *const Handle_MAT_Node) -> bool;
     /// Dereference Handle to get *const MAT_Node
-    pub fn HandleMATNode_get(handle: *const HandleMATNode) -> crate::OcctResult<*const MAT_Node>;
+    pub fn Handle_MAT_Node_get(
+        handle: *const Handle_MAT_Node,
+    ) -> crate::OcctResult<*const MAT_Node>;
     /// Dereference Handle to get *mut MAT_Node
-    pub fn HandleMATNode_get_mut(handle: *mut HandleMATNode) -> crate::OcctResult<*mut MAT_Node>;
+    pub fn Handle_MAT_Node_get_mut(
+        handle: *mut Handle_MAT_Node,
+    ) -> crate::OcctResult<*mut MAT_Node>;
     /// Upcast Handle<MAT_Node> to Handle<Standard_Transient>
-    pub fn HandleMATNode_to_HandleStandardTransient(
-        self_: *const HandleMATNode,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn Handle_MAT_Node_to_Handle_Standard_Transient(
+        self_: *const Handle_MAT_Node,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn MAT_Node_inherited_IsInstance(
         self_: *const MAT_Node,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn MAT_Node_inherited_IsKind(
         self_: *const MAT_Node,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn MAT_Node_inherited_This(
         self_: *const MAT_Node,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn MAT_Node_inherited_GetRefCount(self_: *const MAT_Node) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn MAT_Node_inherited_IncrementRefCounter(self_: *mut MAT_Node) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn MAT_Node_inherited_DecrementRefCounter(self_: *mut MAT_Node) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn MAT_Node_inherited_Delete(self_: *const MAT_Node) -> *const std::ffi::c_char;
     // ======================== MAT_TListNodeOfListOfBisector ========================
     pub fn MAT_TListNodeOfListOfBisector_destructor(self_: *mut MAT_TListNodeOfListOfBisector);
-    /// **Source:** `MAT_TListNodeOfListOfBisector.hxx`:34 - `MAT_TListNodeOfListOfBisector::MAT_TListNodeOfListOfBisector()`
+    /// **Source:** `MAT_TListNodeOfListOfBisector.hxx`:31 - `MAT_TListNodeOfListOfBisector::MAT_TListNodeOfListOfBisector()`
     pub fn MAT_TListNodeOfListOfBisector_ctor(
     ) -> crate::OcctResult<*mut MAT_TListNodeOfListOfBisector>;
-    /// **Source:** `MAT_TListNodeOfListOfBisector.hxx`:36 - `MAT_TListNodeOfListOfBisector::MAT_TListNodeOfListOfBisector()`
+    /// **Source:** `MAT_TListNodeOfListOfBisector.hxx`:33 - `MAT_TListNodeOfListOfBisector::MAT_TListNodeOfListOfBisector()`
     pub fn MAT_TListNodeOfListOfBisector_ctor_handlematbisector(
-        anitem: *const HandleMATBisector,
+        anitem: *const Handle_MAT_Bisector,
     ) -> crate::OcctResult<*mut MAT_TListNodeOfListOfBisector>;
-    /// **Source:** `MAT_TListNodeOfListOfBisector.hxx`:38 - `MAT_TListNodeOfListOfBisector::GetItem()`
+    /// **Source:** `MAT_TListNodeOfListOfBisector.hxx`:35 - `MAT_TListNodeOfListOfBisector::GetItem()`
     pub fn MAT_TListNodeOfListOfBisector_get_item(
         self_: *const MAT_TListNodeOfListOfBisector,
-    ) -> crate::OcctResult<*mut HandleMATBisector>;
-    /// **Source:** `MAT_TListNodeOfListOfBisector.hxx`:40 - `MAT_TListNodeOfListOfBisector::Next()`
+    ) -> crate::OcctResult<*mut Handle_MAT_Bisector>;
+    /// **Source:** `MAT_TListNodeOfListOfBisector.hxx`:37 - `MAT_TListNodeOfListOfBisector::Next()`
     pub fn MAT_TListNodeOfListOfBisector_next(
         self_: *const MAT_TListNodeOfListOfBisector,
-    ) -> crate::OcctResult<*mut HandleMATTListNodeOfListOfBisector>;
-    /// **Source:** `MAT_TListNodeOfListOfBisector.hxx`:42 - `MAT_TListNodeOfListOfBisector::Previous()`
+    ) -> crate::OcctResult<*mut Handle_MAT_TListNodeOfListOfBisector>;
+    /// **Source:** `MAT_TListNodeOfListOfBisector.hxx`:39 - `MAT_TListNodeOfListOfBisector::Previous()`
     pub fn MAT_TListNodeOfListOfBisector_previous(
         self_: *const MAT_TListNodeOfListOfBisector,
-    ) -> crate::OcctResult<*mut HandleMATTListNodeOfListOfBisector>;
-    /// **Source:** `MAT_TListNodeOfListOfBisector.hxx`:44 - `MAT_TListNodeOfListOfBisector::SetItem()`
+    ) -> crate::OcctResult<*mut Handle_MAT_TListNodeOfListOfBisector>;
+    /// **Source:** `MAT_TListNodeOfListOfBisector.hxx`:41 - `MAT_TListNodeOfListOfBisector::SetItem()`
     pub fn MAT_TListNodeOfListOfBisector_set_item(
         self_: *mut MAT_TListNodeOfListOfBisector,
-        anitem: *const HandleMATBisector,
+        anitem: *const Handle_MAT_Bisector,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `MAT_TListNodeOfListOfBisector.hxx`:46 - `MAT_TListNodeOfListOfBisector::Next()`
+    /// **Source:** `MAT_TListNodeOfListOfBisector.hxx`:43 - `MAT_TListNodeOfListOfBisector::Next()`
     pub fn MAT_TListNodeOfListOfBisector_next_handlemattlistnodeoflistofbisector(
         self_: *mut MAT_TListNodeOfListOfBisector,
-        atlistnode: *const HandleMATTListNodeOfListOfBisector,
+        atlistnode: *const Handle_MAT_TListNodeOfListOfBisector,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `MAT_TListNodeOfListOfBisector.hxx`:48 - `MAT_TListNodeOfListOfBisector::Previous()`
+    /// **Source:** `MAT_TListNodeOfListOfBisector.hxx`:45 - `MAT_TListNodeOfListOfBisector::Previous()`
     pub fn MAT_TListNodeOfListOfBisector_previous_handlemattlistnodeoflistofbisector(
         self_: *mut MAT_TListNodeOfListOfBisector,
-        atlistnode: *const HandleMATTListNodeOfListOfBisector,
+        atlistnode: *const Handle_MAT_TListNodeOfListOfBisector,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `MAT_TListNodeOfListOfBisector.hxx`:50 - `MAT_TListNodeOfListOfBisector::Dummy()`
+    /// **Source:** `MAT_TListNodeOfListOfBisector.hxx`:47 - `MAT_TListNodeOfListOfBisector::Dummy()`
     pub fn MAT_TListNodeOfListOfBisector_dummy(
         self_: *const MAT_TListNodeOfListOfBisector,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `MAT_TListNodeOfListOfBisector.hxx`:52 - `MAT_TListNodeOfListOfBisector::DynamicType()`
+    /// **Source:** `MAT_TListNodeOfListOfBisector.hxx`:49 - `MAT_TListNodeOfListOfBisector::DynamicType()`
     pub fn MAT_TListNodeOfListOfBisector_dynamic_type(
         self_: *const MAT_TListNodeOfListOfBisector,
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// **Source:** `MAT_TListNodeOfListOfBisector.hxx`:52 - `MAT_TListNodeOfListOfBisector::get_type_name()`
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
+    /// **Source:** `MAT_TListNodeOfListOfBisector.hxx`:49 - `MAT_TListNodeOfListOfBisector::get_type_name()`
     pub fn MAT_TListNodeOfListOfBisector_get_type_name(
     ) -> crate::OcctResult<*const std::ffi::c_char>;
-    /// **Source:** `MAT_TListNodeOfListOfBisector.hxx`:52 - `MAT_TListNodeOfListOfBisector::get_type_descriptor()`
+    /// **Source:** `MAT_TListNodeOfListOfBisector.hxx`:49 - `MAT_TListNodeOfListOfBisector::get_type_descriptor()`
     pub fn MAT_TListNodeOfListOfBisector_get_type_descriptor(
-    ) -> crate::OcctResult<*const HandleStandardType>;
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast MAT_TListNodeOfListOfBisector to Standard_Transient
     pub fn MAT_TListNodeOfListOfBisector_as_Standard_Transient(
         self_: *const MAT_TListNodeOfListOfBisector,
@@ -14197,109 +14210,109 @@ unsafe extern "C" {
     /// Wrap MAT_TListNodeOfListOfBisector in a Handle
     pub fn MAT_TListNodeOfListOfBisector_to_handle(
         obj: *mut MAT_TListNodeOfListOfBisector,
-    ) -> crate::OcctResult<*mut HandleMATTListNodeOfListOfBisector>;
+    ) -> crate::OcctResult<*mut Handle_MAT_TListNodeOfListOfBisector>;
     /// Destroy Handle<MAT_TListNodeOfListOfBisector>
-    pub fn HandleMATTListNodeOfListOfBisector_destructor(
-        self_: *mut HandleMATTListNodeOfListOfBisector,
+    pub fn Handle_MAT_TListNodeOfListOfBisector_destructor(
+        self_: *mut Handle_MAT_TListNodeOfListOfBisector,
     );
     /// Clone Handle<MAT_TListNodeOfListOfBisector> (increments reference count)
-    pub fn HandleMATTListNodeOfListOfBisector_clone(
-        self_: *const HandleMATTListNodeOfListOfBisector,
-    ) -> crate::OcctResult<*mut HandleMATTListNodeOfListOfBisector>;
+    pub fn Handle_MAT_TListNodeOfListOfBisector_clone(
+        self_: *const Handle_MAT_TListNodeOfListOfBisector,
+    ) -> crate::OcctResult<*mut Handle_MAT_TListNodeOfListOfBisector>;
     /// Check if Handle<MAT_TListNodeOfListOfBisector> is null
-    pub fn HandleMATTListNodeOfListOfBisector_is_null(
-        self_: *const HandleMATTListNodeOfListOfBisector,
+    pub fn Handle_MAT_TListNodeOfListOfBisector_is_null(
+        self_: *const Handle_MAT_TListNodeOfListOfBisector,
     ) -> bool;
     /// Dereference Handle to get *const MAT_TListNodeOfListOfBisector
-    pub fn HandleMATTListNodeOfListOfBisector_get(
-        handle: *const HandleMATTListNodeOfListOfBisector,
+    pub fn Handle_MAT_TListNodeOfListOfBisector_get(
+        handle: *const Handle_MAT_TListNodeOfListOfBisector,
     ) -> crate::OcctResult<*const MAT_TListNodeOfListOfBisector>;
     /// Dereference Handle to get *mut MAT_TListNodeOfListOfBisector
-    pub fn HandleMATTListNodeOfListOfBisector_get_mut(
-        handle: *mut HandleMATTListNodeOfListOfBisector,
+    pub fn Handle_MAT_TListNodeOfListOfBisector_get_mut(
+        handle: *mut Handle_MAT_TListNodeOfListOfBisector,
     ) -> crate::OcctResult<*mut MAT_TListNodeOfListOfBisector>;
     /// Upcast Handle<MAT_TListNodeOfListOfBisector> to Handle<Standard_Transient>
-    pub fn HandleMATTListNodeOfListOfBisector_to_HandleStandardTransient(
-        self_: *const HandleMATTListNodeOfListOfBisector,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn Handle_MAT_TListNodeOfListOfBisector_to_Handle_Standard_Transient(
+        self_: *const Handle_MAT_TListNodeOfListOfBisector,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn MAT_TListNodeOfListOfBisector_inherited_IsInstance(
         self_: *const MAT_TListNodeOfListOfBisector,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn MAT_TListNodeOfListOfBisector_inherited_IsKind(
         self_: *const MAT_TListNodeOfListOfBisector,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn MAT_TListNodeOfListOfBisector_inherited_This(
         self_: *const MAT_TListNodeOfListOfBisector,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn MAT_TListNodeOfListOfBisector_inherited_GetRefCount(
         self_: *const MAT_TListNodeOfListOfBisector,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn MAT_TListNodeOfListOfBisector_inherited_IncrementRefCounter(
         self_: *mut MAT_TListNodeOfListOfBisector,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn MAT_TListNodeOfListOfBisector_inherited_DecrementRefCounter(
         self_: *mut MAT_TListNodeOfListOfBisector,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn MAT_TListNodeOfListOfBisector_inherited_Delete(
         self_: *const MAT_TListNodeOfListOfBisector,
     ) -> *const std::ffi::c_char;
     // ======================== MAT_TListNodeOfListOfEdge ========================
     pub fn MAT_TListNodeOfListOfEdge_destructor(self_: *mut MAT_TListNodeOfListOfEdge);
-    /// **Source:** `MAT_TListNodeOfListOfEdge.hxx`:34 - `MAT_TListNodeOfListOfEdge::MAT_TListNodeOfListOfEdge()`
+    /// **Source:** `MAT_TListNodeOfListOfEdge.hxx`:31 - `MAT_TListNodeOfListOfEdge::MAT_TListNodeOfListOfEdge()`
     pub fn MAT_TListNodeOfListOfEdge_ctor() -> crate::OcctResult<*mut MAT_TListNodeOfListOfEdge>;
-    /// **Source:** `MAT_TListNodeOfListOfEdge.hxx`:36 - `MAT_TListNodeOfListOfEdge::MAT_TListNodeOfListOfEdge()`
+    /// **Source:** `MAT_TListNodeOfListOfEdge.hxx`:33 - `MAT_TListNodeOfListOfEdge::MAT_TListNodeOfListOfEdge()`
     pub fn MAT_TListNodeOfListOfEdge_ctor_handlematedge(
-        anitem: *const HandleMATEdge,
+        anitem: *const Handle_MAT_Edge,
     ) -> crate::OcctResult<*mut MAT_TListNodeOfListOfEdge>;
-    /// **Source:** `MAT_TListNodeOfListOfEdge.hxx`:38 - `MAT_TListNodeOfListOfEdge::GetItem()`
+    /// **Source:** `MAT_TListNodeOfListOfEdge.hxx`:35 - `MAT_TListNodeOfListOfEdge::GetItem()`
     pub fn MAT_TListNodeOfListOfEdge_get_item(
         self_: *const MAT_TListNodeOfListOfEdge,
-    ) -> crate::OcctResult<*mut HandleMATEdge>;
-    /// **Source:** `MAT_TListNodeOfListOfEdge.hxx`:40 - `MAT_TListNodeOfListOfEdge::Next()`
+    ) -> crate::OcctResult<*mut Handle_MAT_Edge>;
+    /// **Source:** `MAT_TListNodeOfListOfEdge.hxx`:37 - `MAT_TListNodeOfListOfEdge::Next()`
     pub fn MAT_TListNodeOfListOfEdge_next(
         self_: *const MAT_TListNodeOfListOfEdge,
-    ) -> crate::OcctResult<*mut HandleMATTListNodeOfListOfEdge>;
-    /// **Source:** `MAT_TListNodeOfListOfEdge.hxx`:42 - `MAT_TListNodeOfListOfEdge::Previous()`
+    ) -> crate::OcctResult<*mut Handle_MAT_TListNodeOfListOfEdge>;
+    /// **Source:** `MAT_TListNodeOfListOfEdge.hxx`:39 - `MAT_TListNodeOfListOfEdge::Previous()`
     pub fn MAT_TListNodeOfListOfEdge_previous(
         self_: *const MAT_TListNodeOfListOfEdge,
-    ) -> crate::OcctResult<*mut HandleMATTListNodeOfListOfEdge>;
-    /// **Source:** `MAT_TListNodeOfListOfEdge.hxx`:44 - `MAT_TListNodeOfListOfEdge::SetItem()`
+    ) -> crate::OcctResult<*mut Handle_MAT_TListNodeOfListOfEdge>;
+    /// **Source:** `MAT_TListNodeOfListOfEdge.hxx`:41 - `MAT_TListNodeOfListOfEdge::SetItem()`
     pub fn MAT_TListNodeOfListOfEdge_set_item(
         self_: *mut MAT_TListNodeOfListOfEdge,
-        anitem: *const HandleMATEdge,
+        anitem: *const Handle_MAT_Edge,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `MAT_TListNodeOfListOfEdge.hxx`:46 - `MAT_TListNodeOfListOfEdge::Next()`
+    /// **Source:** `MAT_TListNodeOfListOfEdge.hxx`:43 - `MAT_TListNodeOfListOfEdge::Next()`
     pub fn MAT_TListNodeOfListOfEdge_next_handlemattlistnodeoflistofedge(
         self_: *mut MAT_TListNodeOfListOfEdge,
-        atlistnode: *const HandleMATTListNodeOfListOfEdge,
+        atlistnode: *const Handle_MAT_TListNodeOfListOfEdge,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `MAT_TListNodeOfListOfEdge.hxx`:48 - `MAT_TListNodeOfListOfEdge::Previous()`
+    /// **Source:** `MAT_TListNodeOfListOfEdge.hxx`:45 - `MAT_TListNodeOfListOfEdge::Previous()`
     pub fn MAT_TListNodeOfListOfEdge_previous_handlemattlistnodeoflistofedge(
         self_: *mut MAT_TListNodeOfListOfEdge,
-        atlistnode: *const HandleMATTListNodeOfListOfEdge,
+        atlistnode: *const Handle_MAT_TListNodeOfListOfEdge,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `MAT_TListNodeOfListOfEdge.hxx`:50 - `MAT_TListNodeOfListOfEdge::Dummy()`
+    /// **Source:** `MAT_TListNodeOfListOfEdge.hxx`:47 - `MAT_TListNodeOfListOfEdge::Dummy()`
     pub fn MAT_TListNodeOfListOfEdge_dummy(
         self_: *const MAT_TListNodeOfListOfEdge,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `MAT_TListNodeOfListOfEdge.hxx`:52 - `MAT_TListNodeOfListOfEdge::DynamicType()`
+    /// **Source:** `MAT_TListNodeOfListOfEdge.hxx`:49 - `MAT_TListNodeOfListOfEdge::DynamicType()`
     pub fn MAT_TListNodeOfListOfEdge_dynamic_type(
         self_: *const MAT_TListNodeOfListOfEdge,
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// **Source:** `MAT_TListNodeOfListOfEdge.hxx`:52 - `MAT_TListNodeOfListOfEdge::get_type_name()`
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
+    /// **Source:** `MAT_TListNodeOfListOfEdge.hxx`:49 - `MAT_TListNodeOfListOfEdge::get_type_name()`
     pub fn MAT_TListNodeOfListOfEdge_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
-    /// **Source:** `MAT_TListNodeOfListOfEdge.hxx`:52 - `MAT_TListNodeOfListOfEdge::get_type_descriptor()`
+    /// **Source:** `MAT_TListNodeOfListOfEdge.hxx`:49 - `MAT_TListNodeOfListOfEdge::get_type_descriptor()`
     pub fn MAT_TListNodeOfListOfEdge_get_type_descriptor(
-    ) -> crate::OcctResult<*const HandleStandardType>;
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast MAT_TListNodeOfListOfEdge to Standard_Transient
     pub fn MAT_TListNodeOfListOfEdge_as_Standard_Transient(
         self_: *const MAT_TListNodeOfListOfEdge,
@@ -14311,91 +14324,93 @@ unsafe extern "C" {
     /// Wrap MAT_TListNodeOfListOfEdge in a Handle
     pub fn MAT_TListNodeOfListOfEdge_to_handle(
         obj: *mut MAT_TListNodeOfListOfEdge,
-    ) -> crate::OcctResult<*mut HandleMATTListNodeOfListOfEdge>;
+    ) -> crate::OcctResult<*mut Handle_MAT_TListNodeOfListOfEdge>;
     /// Destroy Handle<MAT_TListNodeOfListOfEdge>
-    pub fn HandleMATTListNodeOfListOfEdge_destructor(self_: *mut HandleMATTListNodeOfListOfEdge);
+    pub fn Handle_MAT_TListNodeOfListOfEdge_destructor(
+        self_: *mut Handle_MAT_TListNodeOfListOfEdge,
+    );
     /// Clone Handle<MAT_TListNodeOfListOfEdge> (increments reference count)
-    pub fn HandleMATTListNodeOfListOfEdge_clone(
-        self_: *const HandleMATTListNodeOfListOfEdge,
-    ) -> crate::OcctResult<*mut HandleMATTListNodeOfListOfEdge>;
+    pub fn Handle_MAT_TListNodeOfListOfEdge_clone(
+        self_: *const Handle_MAT_TListNodeOfListOfEdge,
+    ) -> crate::OcctResult<*mut Handle_MAT_TListNodeOfListOfEdge>;
     /// Check if Handle<MAT_TListNodeOfListOfEdge> is null
-    pub fn HandleMATTListNodeOfListOfEdge_is_null(
-        self_: *const HandleMATTListNodeOfListOfEdge,
+    pub fn Handle_MAT_TListNodeOfListOfEdge_is_null(
+        self_: *const Handle_MAT_TListNodeOfListOfEdge,
     ) -> bool;
     /// Dereference Handle to get *const MAT_TListNodeOfListOfEdge
-    pub fn HandleMATTListNodeOfListOfEdge_get(
-        handle: *const HandleMATTListNodeOfListOfEdge,
+    pub fn Handle_MAT_TListNodeOfListOfEdge_get(
+        handle: *const Handle_MAT_TListNodeOfListOfEdge,
     ) -> crate::OcctResult<*const MAT_TListNodeOfListOfEdge>;
     /// Dereference Handle to get *mut MAT_TListNodeOfListOfEdge
-    pub fn HandleMATTListNodeOfListOfEdge_get_mut(
-        handle: *mut HandleMATTListNodeOfListOfEdge,
+    pub fn Handle_MAT_TListNodeOfListOfEdge_get_mut(
+        handle: *mut Handle_MAT_TListNodeOfListOfEdge,
     ) -> crate::OcctResult<*mut MAT_TListNodeOfListOfEdge>;
     /// Upcast Handle<MAT_TListNodeOfListOfEdge> to Handle<Standard_Transient>
-    pub fn HandleMATTListNodeOfListOfEdge_to_HandleStandardTransient(
-        self_: *const HandleMATTListNodeOfListOfEdge,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn Handle_MAT_TListNodeOfListOfEdge_to_Handle_Standard_Transient(
+        self_: *const Handle_MAT_TListNodeOfListOfEdge,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn MAT_TListNodeOfListOfEdge_inherited_IsInstance(
         self_: *const MAT_TListNodeOfListOfEdge,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn MAT_TListNodeOfListOfEdge_inherited_IsKind(
         self_: *const MAT_TListNodeOfListOfEdge,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn MAT_TListNodeOfListOfEdge_inherited_This(
         self_: *const MAT_TListNodeOfListOfEdge,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn MAT_TListNodeOfListOfEdge_inherited_GetRefCount(
         self_: *const MAT_TListNodeOfListOfEdge,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn MAT_TListNodeOfListOfEdge_inherited_IncrementRefCounter(
         self_: *mut MAT_TListNodeOfListOfEdge,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn MAT_TListNodeOfListOfEdge_inherited_DecrementRefCounter(
         self_: *mut MAT_TListNodeOfListOfEdge,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn MAT_TListNodeOfListOfEdge_inherited_Delete(
         self_: *const MAT_TListNodeOfListOfEdge,
     ) -> *const std::ffi::c_char;
     // ======================== MAT_Zone ========================
     pub fn MAT_Zone_destructor(self_: *mut MAT_Zone);
-    /// **Source:** `MAT_Zone.hxx`:42 - `MAT_Zone::MAT_Zone()`
+    /// **Source:** `MAT_Zone.hxx`:40 - `MAT_Zone::MAT_Zone()`
     pub fn MAT_Zone_ctor() -> crate::OcctResult<*mut MAT_Zone>;
-    /// **Source:** `MAT_Zone.hxx`:45 - `MAT_Zone::MAT_Zone()`
+    /// **Source:** `MAT_Zone.hxx`:43 - `MAT_Zone::MAT_Zone()`
     pub fn MAT_Zone_ctor_handlematbasicelt(
-        aBasicElt: *const HandleMATBasicElt,
+        aBasicElt: *const Handle_MAT_BasicElt,
     ) -> crate::OcctResult<*mut MAT_Zone>;
-    /// **Source:** `MAT_Zone.hxx`:48 - `MAT_Zone::Perform()`
+    /// **Source:** `MAT_Zone.hxx`:46 - `MAT_Zone::Perform()`
     pub fn MAT_Zone_perform(
         self_: *mut MAT_Zone,
-        aBasicElt: *const HandleMATBasicElt,
+        aBasicElt: *const Handle_MAT_BasicElt,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `MAT_Zone.hxx`:51 - `MAT_Zone::NumberOfArcs()`
+    /// **Source:** `MAT_Zone.hxx`:49 - `MAT_Zone::NumberOfArcs()`
     pub fn MAT_Zone_number_of_arcs(self_: *const MAT_Zone) -> crate::OcctResult<i32>;
-    /// **Source:** `MAT_Zone.hxx`:55 - `MAT_Zone::ArcOnFrontier()`
+    /// **Source:** `MAT_Zone.hxx`:53 - `MAT_Zone::ArcOnFrontier()`
     pub fn MAT_Zone_arc_on_frontier(
         self_: *const MAT_Zone,
         Index: i32,
-    ) -> crate::OcctResult<*mut HandleMATArc>;
-    /// **Source:** `MAT_Zone.hxx`:58 - `MAT_Zone::NoEmptyZone()`
+    ) -> crate::OcctResult<*mut Handle_MAT_Arc>;
+    /// **Source:** `MAT_Zone.hxx`:56 - `MAT_Zone::NoEmptyZone()`
     pub fn MAT_Zone_no_empty_zone(self_: *const MAT_Zone) -> crate::OcctResult<bool>;
-    /// **Source:** `MAT_Zone.hxx`:61 - `MAT_Zone::Limited()`
+    /// **Source:** `MAT_Zone.hxx`:59 - `MAT_Zone::Limited()`
     pub fn MAT_Zone_limited(self_: *const MAT_Zone) -> crate::OcctResult<bool>;
-    /// **Source:** `MAT_Zone.hxx`:63 - `MAT_Zone::DynamicType()`
+    /// **Source:** `MAT_Zone.hxx`:61 - `MAT_Zone::DynamicType()`
     pub fn MAT_Zone_dynamic_type(
         self_: *const MAT_Zone,
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// **Source:** `MAT_Zone.hxx`:63 - `MAT_Zone::get_type_name()`
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
+    /// **Source:** `MAT_Zone.hxx`:61 - `MAT_Zone::get_type_name()`
     pub fn MAT_Zone_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
-    /// **Source:** `MAT_Zone.hxx`:63 - `MAT_Zone::get_type_descriptor()`
-    pub fn MAT_Zone_get_type_descriptor() -> crate::OcctResult<*const HandleStandardType>;
+    /// **Source:** `MAT_Zone.hxx`:61 - `MAT_Zone::get_type_descriptor()`
+    pub fn MAT_Zone_get_type_descriptor() -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast MAT_Zone to Standard_Transient
     pub fn MAT_Zone_as_Standard_Transient(
         self_: *const MAT_Zone,
@@ -14405,44 +14420,48 @@ unsafe extern "C" {
         self_: *mut MAT_Zone,
     ) -> crate::OcctResult<*mut Standard_Transient>;
     /// Wrap MAT_Zone in a Handle
-    pub fn MAT_Zone_to_handle(obj: *mut MAT_Zone) -> crate::OcctResult<*mut HandleMATZone>;
+    pub fn MAT_Zone_to_handle(obj: *mut MAT_Zone) -> crate::OcctResult<*mut Handle_MAT_Zone>;
     /// Destroy Handle<MAT_Zone>
-    pub fn HandleMATZone_destructor(self_: *mut HandleMATZone);
+    pub fn Handle_MAT_Zone_destructor(self_: *mut Handle_MAT_Zone);
     /// Clone Handle<MAT_Zone> (increments reference count)
-    pub fn HandleMATZone_clone(
-        self_: *const HandleMATZone,
-    ) -> crate::OcctResult<*mut HandleMATZone>;
+    pub fn Handle_MAT_Zone_clone(
+        self_: *const Handle_MAT_Zone,
+    ) -> crate::OcctResult<*mut Handle_MAT_Zone>;
     /// Check if Handle<MAT_Zone> is null
-    pub fn HandleMATZone_is_null(self_: *const HandleMATZone) -> bool;
+    pub fn Handle_MAT_Zone_is_null(self_: *const Handle_MAT_Zone) -> bool;
     /// Dereference Handle to get *const MAT_Zone
-    pub fn HandleMATZone_get(handle: *const HandleMATZone) -> crate::OcctResult<*const MAT_Zone>;
+    pub fn Handle_MAT_Zone_get(
+        handle: *const Handle_MAT_Zone,
+    ) -> crate::OcctResult<*const MAT_Zone>;
     /// Dereference Handle to get *mut MAT_Zone
-    pub fn HandleMATZone_get_mut(handle: *mut HandleMATZone) -> crate::OcctResult<*mut MAT_Zone>;
+    pub fn Handle_MAT_Zone_get_mut(
+        handle: *mut Handle_MAT_Zone,
+    ) -> crate::OcctResult<*mut MAT_Zone>;
     /// Upcast Handle<MAT_Zone> to Handle<Standard_Transient>
-    pub fn HandleMATZone_to_HandleStandardTransient(
-        self_: *const HandleMATZone,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn Handle_MAT_Zone_to_Handle_Standard_Transient(
+        self_: *const Handle_MAT_Zone,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn MAT_Zone_inherited_IsInstance(
         self_: *const MAT_Zone,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn MAT_Zone_inherited_IsKind(
         self_: *const MAT_Zone,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn MAT_Zone_inherited_This(
         self_: *const MAT_Zone,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn MAT_Zone_inherited_GetRefCount(self_: *const MAT_Zone) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn MAT_Zone_inherited_IncrementRefCounter(self_: *mut MAT_Zone) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn MAT_Zone_inherited_DecrementRefCounter(self_: *mut MAT_Zone) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn MAT_Zone_inherited_Delete(self_: *const MAT_Zone) -> *const std::ffi::c_char;
     // ======================== MAT2d_BiInt ========================
     pub fn MAT2d_BiInt_destructor(self_: *mut MAT2d_BiInt);
@@ -14467,55 +14486,47 @@ unsafe extern "C" {
     ) -> crate::OcctResult<bool>;
     // ======================== MAT2d_Circuit ========================
     pub fn MAT2d_Circuit_destructor(self_: *mut MAT2d_Circuit);
-    /// **Source:** `MAT2d_Circuit.hxx`:47 - `MAT2d_Circuit::MAT2d_Circuit()`
+    /// **Source:** `MAT2d_Circuit.hxx`:43 - `MAT2d_Circuit::MAT2d_Circuit()`
     pub fn MAT2d_Circuit_ctor_jointype_bool(
         aJoinType: i32,
         IsOpenResult: bool,
     ) -> crate::OcctResult<*mut MAT2d_Circuit>;
-    /// **Source:** `MAT2d_Circuit.hxx`:50 - `MAT2d_Circuit::Perform()`
-    pub fn MAT2d_Circuit_perform(
-        self_: *mut MAT2d_Circuit,
-        aFigure: *mut MAT2d_SequenceOfSequenceOfGeometry,
-        IsClosed: *const TColStd_SequenceOfBoolean,
-        IndRefLine: i32,
-        Trigo: bool,
-    ) -> *const std::ffi::c_char;
-    /// **Source:** `MAT2d_Circuit.hxx`:56 - `MAT2d_Circuit::NumberOfItems()`
+    /// **Source:** `MAT2d_Circuit.hxx`:53 - `MAT2d_Circuit::NumberOfItems()`
     pub fn MAT2d_Circuit_number_of_items(self_: *const MAT2d_Circuit) -> crate::OcctResult<i32>;
-    /// **Source:** `MAT2d_Circuit.hxx`:59 - `MAT2d_Circuit::Value()`
+    /// **Source:** `MAT2d_Circuit.hxx`:56 - `MAT2d_Circuit::Value()`
     pub fn MAT2d_Circuit_value(
         self_: *const MAT2d_Circuit,
         Index: i32,
-    ) -> crate::OcctResult<*mut HandleGeom2dGeometry>;
-    /// **Source:** `MAT2d_Circuit.hxx`:62 - `MAT2d_Circuit::LineLength()`
+    ) -> crate::OcctResult<*mut Handle_Geom2d_Geometry>;
+    /// **Source:** `MAT2d_Circuit.hxx`:59 - `MAT2d_Circuit::LineLength()`
     pub fn MAT2d_Circuit_line_length(
         self_: *const MAT2d_Circuit,
         IndexLine: i32,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `MAT2d_Circuit.hxx`:67 - `MAT2d_Circuit::RefToEqui()`
+    /// **Source:** `MAT2d_Circuit.hxx`:64 - `MAT2d_Circuit::RefToEqui()`
     pub fn MAT2d_Circuit_ref_to_equi(
         self_: *const MAT2d_Circuit,
         IndLine: i32,
         IndCurve: i32,
-    ) -> crate::OcctResult<*const TColStd_SequenceOfInteger>;
-    /// **Source:** `MAT2d_Circuit.hxx`:71 - `MAT2d_Circuit::Connexion()`
+    ) -> crate::OcctResult<*const NCollection_Sequence_int>;
+    /// **Source:** `MAT2d_Circuit.hxx`:68 - `MAT2d_Circuit::Connexion()`
     pub fn MAT2d_Circuit_connexion(
         self_: *const MAT2d_Circuit,
         Index: i32,
-    ) -> crate::OcctResult<*mut HandleMAT2dConnexion>;
-    /// **Source:** `MAT2d_Circuit.hxx`:75 - `MAT2d_Circuit::ConnexionOn()`
+    ) -> crate::OcctResult<*mut Handle_MAT2d_Connexion>;
+    /// **Source:** `MAT2d_Circuit.hxx`:72 - `MAT2d_Circuit::ConnexionOn()`
     pub fn MAT2d_Circuit_connexion_on(
         self_: *const MAT2d_Circuit,
         Index: i32,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `MAT2d_Circuit.hxx`:77 - `MAT2d_Circuit::DynamicType()`
+    /// **Source:** `MAT2d_Circuit.hxx`:74 - `MAT2d_Circuit::DynamicType()`
     pub fn MAT2d_Circuit_dynamic_type(
         self_: *const MAT2d_Circuit,
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// **Source:** `MAT2d_Circuit.hxx`:77 - `MAT2d_Circuit::get_type_name()`
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
+    /// **Source:** `MAT2d_Circuit.hxx`:74 - `MAT2d_Circuit::get_type_name()`
     pub fn MAT2d_Circuit_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
-    /// **Source:** `MAT2d_Circuit.hxx`:77 - `MAT2d_Circuit::get_type_descriptor()`
-    pub fn MAT2d_Circuit_get_type_descriptor() -> crate::OcctResult<*const HandleStandardType>;
+    /// **Source:** `MAT2d_Circuit.hxx`:74 - `MAT2d_Circuit::get_type_descriptor()`
+    pub fn MAT2d_Circuit_get_type_descriptor() -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast MAT2d_Circuit to Standard_Transient
     pub fn MAT2d_Circuit_as_Standard_Transient(
         self_: *const MAT2d_Circuit,
@@ -14527,60 +14538,60 @@ unsafe extern "C" {
     /// Wrap MAT2d_Circuit in a Handle
     pub fn MAT2d_Circuit_to_handle(
         obj: *mut MAT2d_Circuit,
-    ) -> crate::OcctResult<*mut HandleMAT2dCircuit>;
+    ) -> crate::OcctResult<*mut Handle_MAT2d_Circuit>;
     /// Destroy Handle<MAT2d_Circuit>
-    pub fn HandleMAT2dCircuit_destructor(self_: *mut HandleMAT2dCircuit);
+    pub fn Handle_MAT2d_Circuit_destructor(self_: *mut Handle_MAT2d_Circuit);
     /// Clone Handle<MAT2d_Circuit> (increments reference count)
-    pub fn HandleMAT2dCircuit_clone(
-        self_: *const HandleMAT2dCircuit,
-    ) -> crate::OcctResult<*mut HandleMAT2dCircuit>;
+    pub fn Handle_MAT2d_Circuit_clone(
+        self_: *const Handle_MAT2d_Circuit,
+    ) -> crate::OcctResult<*mut Handle_MAT2d_Circuit>;
     /// Check if Handle<MAT2d_Circuit> is null
-    pub fn HandleMAT2dCircuit_is_null(self_: *const HandleMAT2dCircuit) -> bool;
+    pub fn Handle_MAT2d_Circuit_is_null(self_: *const Handle_MAT2d_Circuit) -> bool;
     /// Dereference Handle to get *const MAT2d_Circuit
-    pub fn HandleMAT2dCircuit_get(
-        handle: *const HandleMAT2dCircuit,
+    pub fn Handle_MAT2d_Circuit_get(
+        handle: *const Handle_MAT2d_Circuit,
     ) -> crate::OcctResult<*const MAT2d_Circuit>;
     /// Dereference Handle to get *mut MAT2d_Circuit
-    pub fn HandleMAT2dCircuit_get_mut(
-        handle: *mut HandleMAT2dCircuit,
+    pub fn Handle_MAT2d_Circuit_get_mut(
+        handle: *mut Handle_MAT2d_Circuit,
     ) -> crate::OcctResult<*mut MAT2d_Circuit>;
     /// Upcast Handle<MAT2d_Circuit> to Handle<Standard_Transient>
-    pub fn HandleMAT2dCircuit_to_HandleStandardTransient(
-        self_: *const HandleMAT2dCircuit,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn Handle_MAT2d_Circuit_to_Handle_Standard_Transient(
+        self_: *const Handle_MAT2d_Circuit,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn MAT2d_Circuit_inherited_IsInstance(
         self_: *const MAT2d_Circuit,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn MAT2d_Circuit_inherited_IsKind(
         self_: *const MAT2d_Circuit,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn MAT2d_Circuit_inherited_This(
         self_: *const MAT2d_Circuit,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn MAT2d_Circuit_inherited_GetRefCount(
         self_: *const MAT2d_Circuit,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn MAT2d_Circuit_inherited_IncrementRefCounter(
         self_: *mut MAT2d_Circuit,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn MAT2d_Circuit_inherited_DecrementRefCounter(
         self_: *mut MAT2d_Circuit,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn MAT2d_Circuit_inherited_Delete(self_: *const MAT2d_Circuit) -> *const std::ffi::c_char;
     // ======================== MAT2d_Connexion ========================
     pub fn MAT2d_Connexion_destructor(self_: *mut MAT2d_Connexion);
-    /// **Source:** `MAT2d_Connexion.hxx`:38 - `MAT2d_Connexion::MAT2d_Connexion()`
+    /// **Source:** `MAT2d_Connexion.hxx`:35 - `MAT2d_Connexion::MAT2d_Connexion()`
     pub fn MAT2d_Connexion_ctor() -> crate::OcctResult<*mut MAT2d_Connexion>;
-    /// **Source:** `MAT2d_Connexion.hxx`:40 - `MAT2d_Connexion::MAT2d_Connexion()`
+    /// **Source:** `MAT2d_Connexion.hxx`:37 - `MAT2d_Connexion::MAT2d_Connexion()`
     pub fn MAT2d_Connexion_ctor_int4_real3_pnt2d2(
         LineA: i32,
         LineB: i32,
@@ -14592,109 +14603,109 @@ unsafe extern "C" {
         PointA: *const gp_Pnt2d,
         PointB: *const gp_Pnt2d,
     ) -> crate::OcctResult<*mut MAT2d_Connexion>;
-    /// **Source:** `MAT2d_Connexion.hxx`:51 - `MAT2d_Connexion::IndexFirstLine()`
+    /// **Source:** `MAT2d_Connexion.hxx`:48 - `MAT2d_Connexion::IndexFirstLine()`
     pub fn MAT2d_Connexion_index_first_line(
         self_: *const MAT2d_Connexion,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `MAT2d_Connexion.hxx`:54 - `MAT2d_Connexion::IndexSecondLine()`
+    /// **Source:** `MAT2d_Connexion.hxx`:51 - `MAT2d_Connexion::IndexSecondLine()`
     pub fn MAT2d_Connexion_index_second_line(
         self_: *const MAT2d_Connexion,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `MAT2d_Connexion.hxx`:57 - `MAT2d_Connexion::IndexItemOnFirst()`
+    /// **Source:** `MAT2d_Connexion.hxx`:54 - `MAT2d_Connexion::IndexItemOnFirst()`
     pub fn MAT2d_Connexion_index_item_on_first(
         self_: *const MAT2d_Connexion,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `MAT2d_Connexion.hxx`:60 - `MAT2d_Connexion::IndexItemOnSecond()`
+    /// **Source:** `MAT2d_Connexion.hxx`:57 - `MAT2d_Connexion::IndexItemOnSecond()`
     pub fn MAT2d_Connexion_index_item_on_second(
         self_: *const MAT2d_Connexion,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `MAT2d_Connexion.hxx`:63 - `MAT2d_Connexion::ParameterOnFirst()`
+    /// **Source:** `MAT2d_Connexion.hxx`:60 - `MAT2d_Connexion::ParameterOnFirst()`
     pub fn MAT2d_Connexion_parameter_on_first(
         self_: *const MAT2d_Connexion,
     ) -> crate::OcctResult<f64>;
-    /// **Source:** `MAT2d_Connexion.hxx`:66 - `MAT2d_Connexion::ParameterOnSecond()`
+    /// **Source:** `MAT2d_Connexion.hxx`:63 - `MAT2d_Connexion::ParameterOnSecond()`
     pub fn MAT2d_Connexion_parameter_on_second(
         self_: *const MAT2d_Connexion,
     ) -> crate::OcctResult<f64>;
-    /// **Source:** `MAT2d_Connexion.hxx`:69 - `MAT2d_Connexion::PointOnFirst()`
+    /// **Source:** `MAT2d_Connexion.hxx`:66 - `MAT2d_Connexion::PointOnFirst()`
     pub fn MAT2d_Connexion_point_on_first(
         self_: *const MAT2d_Connexion,
     ) -> crate::OcctResult<*mut gp_Pnt2d>;
-    /// **Source:** `MAT2d_Connexion.hxx`:72 - `MAT2d_Connexion::PointOnSecond()`
+    /// **Source:** `MAT2d_Connexion.hxx`:69 - `MAT2d_Connexion::PointOnSecond()`
     pub fn MAT2d_Connexion_point_on_second(
         self_: *const MAT2d_Connexion,
     ) -> crate::OcctResult<*mut gp_Pnt2d>;
-    /// **Source:** `MAT2d_Connexion.hxx`:75 - `MAT2d_Connexion::Distance()`
+    /// **Source:** `MAT2d_Connexion.hxx`:72 - `MAT2d_Connexion::Distance()`
     pub fn MAT2d_Connexion_distance(self_: *const MAT2d_Connexion) -> crate::OcctResult<f64>;
-    /// **Source:** `MAT2d_Connexion.hxx`:77 - `MAT2d_Connexion::IndexFirstLine()`
+    /// **Source:** `MAT2d_Connexion.hxx`:74 - `MAT2d_Connexion::IndexFirstLine()`
     pub fn MAT2d_Connexion_index_first_line_int(
         self_: *mut MAT2d_Connexion,
         anIndex: i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `MAT2d_Connexion.hxx`:79 - `MAT2d_Connexion::IndexSecondLine()`
+    /// **Source:** `MAT2d_Connexion.hxx`:76 - `MAT2d_Connexion::IndexSecondLine()`
     pub fn MAT2d_Connexion_index_second_line_int(
         self_: *mut MAT2d_Connexion,
         anIndex: i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `MAT2d_Connexion.hxx`:81 - `MAT2d_Connexion::IndexItemOnFirst()`
+    /// **Source:** `MAT2d_Connexion.hxx`:78 - `MAT2d_Connexion::IndexItemOnFirst()`
     pub fn MAT2d_Connexion_index_item_on_first_int(
         self_: *mut MAT2d_Connexion,
         anIndex: i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `MAT2d_Connexion.hxx`:83 - `MAT2d_Connexion::IndexItemOnSecond()`
+    /// **Source:** `MAT2d_Connexion.hxx`:80 - `MAT2d_Connexion::IndexItemOnSecond()`
     pub fn MAT2d_Connexion_index_item_on_second_int(
         self_: *mut MAT2d_Connexion,
         anIndex: i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `MAT2d_Connexion.hxx`:85 - `MAT2d_Connexion::ParameterOnFirst()`
+    /// **Source:** `MAT2d_Connexion.hxx`:82 - `MAT2d_Connexion::ParameterOnFirst()`
     pub fn MAT2d_Connexion_parameter_on_first_real(
         self_: *mut MAT2d_Connexion,
         aParameter: f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `MAT2d_Connexion.hxx`:87 - `MAT2d_Connexion::ParameterOnSecond()`
+    /// **Source:** `MAT2d_Connexion.hxx`:84 - `MAT2d_Connexion::ParameterOnSecond()`
     pub fn MAT2d_Connexion_parameter_on_second_real(
         self_: *mut MAT2d_Connexion,
         aParameter: f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `MAT2d_Connexion.hxx`:89 - `MAT2d_Connexion::PointOnFirst()`
+    /// **Source:** `MAT2d_Connexion.hxx`:86 - `MAT2d_Connexion::PointOnFirst()`
     pub fn MAT2d_Connexion_point_on_first_pnt2d(
         self_: *mut MAT2d_Connexion,
         aPoint: *const gp_Pnt2d,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `MAT2d_Connexion.hxx`:91 - `MAT2d_Connexion::PointOnSecond()`
+    /// **Source:** `MAT2d_Connexion.hxx`:88 - `MAT2d_Connexion::PointOnSecond()`
     pub fn MAT2d_Connexion_point_on_second_pnt2d(
         self_: *mut MAT2d_Connexion,
         aPoint: *const gp_Pnt2d,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `MAT2d_Connexion.hxx`:93 - `MAT2d_Connexion::Distance()`
+    /// **Source:** `MAT2d_Connexion.hxx`:90 - `MAT2d_Connexion::Distance()`
     pub fn MAT2d_Connexion_distance_real(
         self_: *mut MAT2d_Connexion,
         aDistance: f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `MAT2d_Connexion.hxx`:98 - `MAT2d_Connexion::Reverse()`
+    /// **Source:** `MAT2d_Connexion.hxx`:95 - `MAT2d_Connexion::Reverse()`
     pub fn MAT2d_Connexion_reverse(
         self_: *const MAT2d_Connexion,
-    ) -> crate::OcctResult<*mut HandleMAT2dConnexion>;
-    /// **Source:** `MAT2d_Connexion.hxx`:105 - `MAT2d_Connexion::IsAfter()`
+    ) -> crate::OcctResult<*mut Handle_MAT2d_Connexion>;
+    /// **Source:** `MAT2d_Connexion.hxx`:102 - `MAT2d_Connexion::IsAfter()`
     pub fn MAT2d_Connexion_is_after(
         self_: *const MAT2d_Connexion,
-        aConnexion: *const HandleMAT2dConnexion,
+        aConnexion: *const Handle_MAT2d_Connexion,
         aSense: f64,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `MAT2d_Connexion.hxx`:109 - `MAT2d_Connexion::Dump()`
+    /// **Source:** `MAT2d_Connexion.hxx`:106 - `MAT2d_Connexion::Dump()`
     pub fn MAT2d_Connexion_dump(
         self_: *const MAT2d_Connexion,
         Deep: i32,
         Offset: i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `MAT2d_Connexion.hxx`:112 - `MAT2d_Connexion::DynamicType()`
+    /// **Source:** `MAT2d_Connexion.hxx`:108 - `MAT2d_Connexion::DynamicType()`
     pub fn MAT2d_Connexion_dynamic_type(
         self_: *const MAT2d_Connexion,
-    ) -> crate::OcctResult<*const HandleStandardType>;
-    /// **Source:** `MAT2d_Connexion.hxx`:112 - `MAT2d_Connexion::get_type_name()`
+    ) -> crate::OcctResult<*const Handle_Standard_Type>;
+    /// **Source:** `MAT2d_Connexion.hxx`:108 - `MAT2d_Connexion::get_type_name()`
     pub fn MAT2d_Connexion_get_type_name() -> crate::OcctResult<*const std::ffi::c_char>;
-    /// **Source:** `MAT2d_Connexion.hxx`:112 - `MAT2d_Connexion::get_type_descriptor()`
-    pub fn MAT2d_Connexion_get_type_descriptor() -> crate::OcctResult<*const HandleStandardType>;
+    /// **Source:** `MAT2d_Connexion.hxx`:108 - `MAT2d_Connexion::get_type_descriptor()`
+    pub fn MAT2d_Connexion_get_type_descriptor() -> crate::OcctResult<*const Handle_Standard_Type>;
     /// Upcast MAT2d_Connexion to Standard_Transient
     pub fn MAT2d_Connexion_as_Standard_Transient(
         self_: *const MAT2d_Connexion,
@@ -14706,90 +14717,90 @@ unsafe extern "C" {
     /// Wrap MAT2d_Connexion in a Handle
     pub fn MAT2d_Connexion_to_handle(
         obj: *mut MAT2d_Connexion,
-    ) -> crate::OcctResult<*mut HandleMAT2dConnexion>;
+    ) -> crate::OcctResult<*mut Handle_MAT2d_Connexion>;
     /// Destroy Handle<MAT2d_Connexion>
-    pub fn HandleMAT2dConnexion_destructor(self_: *mut HandleMAT2dConnexion);
+    pub fn Handle_MAT2d_Connexion_destructor(self_: *mut Handle_MAT2d_Connexion);
     /// Clone Handle<MAT2d_Connexion> (increments reference count)
-    pub fn HandleMAT2dConnexion_clone(
-        self_: *const HandleMAT2dConnexion,
-    ) -> crate::OcctResult<*mut HandleMAT2dConnexion>;
+    pub fn Handle_MAT2d_Connexion_clone(
+        self_: *const Handle_MAT2d_Connexion,
+    ) -> crate::OcctResult<*mut Handle_MAT2d_Connexion>;
     /// Check if Handle<MAT2d_Connexion> is null
-    pub fn HandleMAT2dConnexion_is_null(self_: *const HandleMAT2dConnexion) -> bool;
+    pub fn Handle_MAT2d_Connexion_is_null(self_: *const Handle_MAT2d_Connexion) -> bool;
     /// Dereference Handle to get *const MAT2d_Connexion
-    pub fn HandleMAT2dConnexion_get(
-        handle: *const HandleMAT2dConnexion,
+    pub fn Handle_MAT2d_Connexion_get(
+        handle: *const Handle_MAT2d_Connexion,
     ) -> crate::OcctResult<*const MAT2d_Connexion>;
     /// Dereference Handle to get *mut MAT2d_Connexion
-    pub fn HandleMAT2dConnexion_get_mut(
-        handle: *mut HandleMAT2dConnexion,
+    pub fn Handle_MAT2d_Connexion_get_mut(
+        handle: *mut Handle_MAT2d_Connexion,
     ) -> crate::OcctResult<*mut MAT2d_Connexion>;
     /// Upcast Handle<MAT2d_Connexion> to Handle<Standard_Transient>
-    pub fn HandleMAT2dConnexion_to_HandleStandardTransient(
-        self_: *const HandleMAT2dConnexion,
-    ) -> crate::OcctResult<*mut HandleStandardTransient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn Handle_MAT2d_Connexion_to_Handle_Standard_Transient(
+        self_: *const Handle_MAT2d_Connexion,
+    ) -> crate::OcctResult<*mut Handle_Standard_Transient>;
+    /// Inherited: **Source:** `Standard_Transient.hxx`:82 - `Standard_Transient::IsInstance()`
     pub fn MAT2d_Connexion_inherited_IsInstance(
         self_: *const MAT2d_Connexion,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:90 - `Standard_Transient::IsKind()`
     pub fn MAT2d_Connexion_inherited_IsKind(
         self_: *const MAT2d_Connexion,
-        theType: *const HandleStandardType,
+        theType: *const Handle_Standard_Type,
     ) -> crate::OcctResult<bool>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:101 - `Standard_Transient::This()`
     pub fn MAT2d_Connexion_inherited_This(
         self_: *const MAT2d_Connexion,
     ) -> crate::OcctResult<*mut Standard_Transient>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::GetRefCount()`
     pub fn MAT2d_Connexion_inherited_GetRefCount(
         self_: *const MAT2d_Connexion,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:112 - `Standard_Transient::IncrementRefCounter()`
     pub fn MAT2d_Connexion_inherited_IncrementRefCounter(
         self_: *mut MAT2d_Connexion,
     ) -> *const std::ffi::c_char;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:123 - `Standard_Transient::DecrementRefCounter()`
     pub fn MAT2d_Connexion_inherited_DecrementRefCounter(
         self_: *mut MAT2d_Connexion,
     ) -> crate::OcctResult<i32>;
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    /// Inherited: **Source:** `Standard_Transient.hxx`:134 - `Standard_Transient::Delete()`
     pub fn MAT2d_Connexion_inherited_Delete(
         self_: *const MAT2d_Connexion,
     ) -> *const std::ffi::c_char;
     // ======================== MAT2d_CutCurve ========================
     pub fn MAT2d_CutCurve_destructor(self_: *mut MAT2d_CutCurve);
-    /// **Source:** `MAT2d_CutCurve.hxx`:38 - `MAT2d_CutCurve::MAT2d_CutCurve()`
+    /// **Source:** `MAT2d_CutCurve.hxx`:39 - `MAT2d_CutCurve::MAT2d_CutCurve()`
     pub fn MAT2d_CutCurve_ctor() -> crate::OcctResult<*mut MAT2d_CutCurve>;
-    /// **Source:** `MAT2d_CutCurve.hxx`:40 - `MAT2d_CutCurve::MAT2d_CutCurve()`
+    /// **Source:** `MAT2d_CutCurve.hxx`:41 - `MAT2d_CutCurve::MAT2d_CutCurve()`
     pub fn MAT2d_CutCurve_ctor_handlegeom2dcurve(
-        C: *const HandleGeom2dCurve,
+        C: *const Handle_Geom2d_Curve,
     ) -> crate::OcctResult<*mut MAT2d_CutCurve>;
-    /// **Source:** `MAT2d_CutCurve.hxx`:44 - `MAT2d_CutCurve::Perform()`
+    /// **Source:** `MAT2d_CutCurve.hxx`:45 - `MAT2d_CutCurve::Perform()`
     pub fn MAT2d_CutCurve_perform_handlegeom2dcurve(
         self_: *mut MAT2d_CutCurve,
-        C: *const HandleGeom2dCurve,
+        C: *const Handle_Geom2d_Curve,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `MAT2d_CutCurve.hxx`:48 - `MAT2d_CutCurve::Perform()`
+    /// **Source:** `MAT2d_CutCurve.hxx`:49 - `MAT2d_CutCurve::Perform()`
     pub fn MAT2d_CutCurve_perform_handlegeom2dcurve_side(
         self_: *mut MAT2d_CutCurve,
-        C: *const HandleGeom2dCurve,
+        C: *const Handle_Geom2d_Curve,
         aSide: i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `MAT2d_CutCurve.hxx`:51 - `MAT2d_CutCurve::PerformInf()`
+    /// **Source:** `MAT2d_CutCurve.hxx`:52 - `MAT2d_CutCurve::PerformInf()`
     pub fn MAT2d_CutCurve_perform_inf(
         self_: *mut MAT2d_CutCurve,
-        C: *const HandleGeom2dCurve,
+        C: *const Handle_Geom2d_Curve,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `MAT2d_CutCurve.hxx`:54 - `MAT2d_CutCurve::UnModified()`
+    /// **Source:** `MAT2d_CutCurve.hxx`:55 - `MAT2d_CutCurve::UnModified()`
     pub fn MAT2d_CutCurve_un_modified(self_: *const MAT2d_CutCurve) -> crate::OcctResult<bool>;
-    /// **Source:** `MAT2d_CutCurve.hxx`:60 - `MAT2d_CutCurve::NbCurves()`
+    /// **Source:** `MAT2d_CutCurve.hxx`:61 - `MAT2d_CutCurve::NbCurves()`
     pub fn MAT2d_CutCurve_nb_curves(self_: *const MAT2d_CutCurve) -> crate::OcctResult<i32>;
-    /// **Source:** `MAT2d_CutCurve.hxx`:64 - `MAT2d_CutCurve::Value()`
+    /// **Source:** `MAT2d_CutCurve.hxx`:65 - `MAT2d_CutCurve::Value()`
     pub fn MAT2d_CutCurve_value(
         self_: *const MAT2d_CutCurve,
         Index: i32,
-    ) -> crate::OcctResult<*mut HandleGeom2dTrimmedCurve>;
+    ) -> crate::OcctResult<*mut Handle_Geom2d_TrimmedCurve>;
     // ======================== MAT2d_Mat2d ========================
     pub fn MAT2d_Mat2d_destructor(self_: *mut MAT2d_Mat2d);
     /// **Source:** `MAT2d_Mat2d.hxx`:42 - `MAT2d_Mat2d::MAT2d_Mat2d()`
@@ -14815,7 +14826,7 @@ unsafe extern "C" {
     /// **Source:** `MAT2d_Mat2d.hxx`:67 - `MAT2d_Mat2d::Bisector()`
     pub fn MAT2d_Mat2d_bisector(
         self_: *const MAT2d_Mat2d,
-    ) -> crate::OcctResult<*mut HandleMATBisector>;
+    ) -> crate::OcctResult<*mut Handle_MAT_Bisector>;
     /// **Source:** `MAT2d_Mat2d.hxx`:71 - `MAT2d_Mat2d::SemiInfinite()`
     pub fn MAT2d_Mat2d_semi_infinite(self_: *const MAT2d_Mat2d) -> crate::OcctResult<bool>;
     /// **Source:** `MAT2d_Mat2d.hxx`:74 - `MAT2d_Mat2d::NumberOfBisectors()`
@@ -14824,68 +14835,52 @@ unsafe extern "C" {
     pub fn MAT2d_MiniPath_destructor(self_: *mut MAT2d_MiniPath);
     /// **Source:** `MAT2d_MiniPath.hxx`:49 - `MAT2d_MiniPath::MAT2d_MiniPath()`
     pub fn MAT2d_MiniPath_ctor() -> crate::OcctResult<*mut MAT2d_MiniPath>;
-    /// **Source:** `MAT2d_MiniPath.hxx`:55 - `MAT2d_MiniPath::Perform()`
-    pub fn MAT2d_MiniPath_perform(
-        self_: *mut MAT2d_MiniPath,
-        Figure: *const MAT2d_SequenceOfSequenceOfGeometry,
-        IndStart: i32,
-        Sense: bool,
-    ) -> *const std::ffi::c_char;
-    /// **Source:** `MAT2d_MiniPath.hxx`:71 - `MAT2d_MiniPath::RunOnConnexions()`
+    /// **Source:** `MAT2d_MiniPath.hxx`:72 - `MAT2d_MiniPath::RunOnConnexions()`
     pub fn MAT2d_MiniPath_run_on_connexions(self_: *mut MAT2d_MiniPath) -> *const std::ffi::c_char;
-    /// **Source:** `MAT2d_MiniPath.hxx`:75 - `MAT2d_MiniPath::Path()`
-    pub fn MAT2d_MiniPath_path(
-        self_: *const MAT2d_MiniPath,
-    ) -> crate::OcctResult<*const MAT2d_SequenceOfConnexion>;
-    /// **Source:** `MAT2d_MiniPath.hxx`:79 - `MAT2d_MiniPath::IsConnexionsFrom()`
+    /// **Source:** `MAT2d_MiniPath.hxx`:80 - `MAT2d_MiniPath::IsConnexionsFrom()`
     pub fn MAT2d_MiniPath_is_connexions_from(
         self_: *const MAT2d_MiniPath,
         Index: i32,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `MAT2d_MiniPath.hxx`:83 - `MAT2d_MiniPath::ConnexionsFrom()`
-    pub fn MAT2d_MiniPath_connexions_from(
-        self_: *mut MAT2d_MiniPath,
-        Index: i32,
-    ) -> crate::OcctResult<*mut MAT2d_SequenceOfConnexion>;
-    /// **Source:** `MAT2d_MiniPath.hxx`:87 - `MAT2d_MiniPath::IsRoot()`
+    /// **Source:** `MAT2d_MiniPath.hxx`:89 - `MAT2d_MiniPath::IsRoot()`
     pub fn MAT2d_MiniPath_is_root(
         self_: *const MAT2d_MiniPath,
         Index: i32,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `MAT2d_MiniPath.hxx`:91 - `MAT2d_MiniPath::Father()`
+    /// **Source:** `MAT2d_MiniPath.hxx`:93 - `MAT2d_MiniPath::Father()`
     pub fn MAT2d_MiniPath_father(
         self_: *mut MAT2d_MiniPath,
         Index: i32,
-    ) -> crate::OcctResult<*mut HandleMAT2dConnexion>;
+    ) -> crate::OcctResult<*mut Handle_MAT2d_Connexion>;
     // ======================== MAT2d_Tool2d ========================
     pub fn MAT2d_Tool2d_destructor(self_: *mut MAT2d_Tool2d);
-    /// **Source:** `MAT2d_Tool2d.hxx`:46 - `MAT2d_Tool2d::MAT2d_Tool2d()`
+    /// **Source:** `MAT2d_Tool2d.hxx`:47 - `MAT2d_Tool2d::MAT2d_Tool2d()`
     pub fn MAT2d_Tool2d_ctor() -> crate::OcctResult<*mut MAT2d_Tool2d>;
-    /// **Source:** `MAT2d_Tool2d.hxx`:49 - `MAT2d_Tool2d::Sense()`
+    /// **Source:** `MAT2d_Tool2d.hxx`:50 - `MAT2d_Tool2d::Sense()`
     pub fn MAT2d_Tool2d_sense(self_: *mut MAT2d_Tool2d, aside: i32) -> *const std::ffi::c_char;
-    /// **Source:** `MAT2d_Tool2d.hxx`:51 - `MAT2d_Tool2d::SetJoinType()`
+    /// **Source:** `MAT2d_Tool2d.hxx`:52 - `MAT2d_Tool2d::SetJoinType()`
     pub fn MAT2d_Tool2d_set_join_type(
         self_: *mut MAT2d_Tool2d,
         aJoinType: i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `MAT2d_Tool2d.hxx`:56 - `MAT2d_Tool2d::InitItems()`
+    /// **Source:** `MAT2d_Tool2d.hxx`:57 - `MAT2d_Tool2d::InitItems()`
     pub fn MAT2d_Tool2d_init_items(
         self_: *mut MAT2d_Tool2d,
-        aCircuit: *const HandleMAT2dCircuit,
+        aCircuit: *const Handle_MAT2d_Circuit,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `MAT2d_Tool2d.hxx`:59 - `MAT2d_Tool2d::NumberOfItems()`
+    /// **Source:** `MAT2d_Tool2d.hxx`:60 - `MAT2d_Tool2d::NumberOfItems()`
     pub fn MAT2d_Tool2d_number_of_items(self_: *const MAT2d_Tool2d) -> crate::OcctResult<i32>;
-    /// **Source:** `MAT2d_Tool2d.hxx`:62 - `MAT2d_Tool2d::ToleranceOfConfusion()`
+    /// **Source:** `MAT2d_Tool2d.hxx`:63 - `MAT2d_Tool2d::ToleranceOfConfusion()`
     pub fn MAT2d_Tool2d_tolerance_of_confusion(
         self_: *const MAT2d_Tool2d,
     ) -> crate::OcctResult<f64>;
-    /// **Source:** `MAT2d_Tool2d.hxx`:68 - `MAT2d_Tool2d::FirstPoint()`
+    /// **Source:** `MAT2d_Tool2d.hxx`:69 - `MAT2d_Tool2d::FirstPoint()`
     pub fn MAT2d_Tool2d_first_point(
         self_: *mut MAT2d_Tool2d,
         anitem: i32,
         dist: *mut f64,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `MAT2d_Tool2d.hxx`:73 - `MAT2d_Tool2d::TangentBefore()`
+    /// **Source:** `MAT2d_Tool2d.hxx`:74 - `MAT2d_Tool2d::TangentBefore()`
     pub fn MAT2d_Tool2d_tangent_before(
         self_: *mut MAT2d_Tool2d,
         anitem: i32,
@@ -14897,75 +14892,75 @@ unsafe extern "C" {
         anitem: i32,
         IsOpenResult: bool,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `MAT2d_Tool2d.hxx`:85 - `MAT2d_Tool2d::Tangent()`
+    /// **Source:** `MAT2d_Tool2d.hxx`:84 - `MAT2d_Tool2d::Tangent()`
     pub fn MAT2d_Tool2d_tangent(self_: *mut MAT2d_Tool2d, bisector: i32) -> crate::OcctResult<i32>;
-    /// **Source:** `MAT2d_Tool2d.hxx`:88 - `MAT2d_Tool2d::CreateBisector()`
+    /// **Source:** `MAT2d_Tool2d.hxx`:87 - `MAT2d_Tool2d::CreateBisector()`
     pub fn MAT2d_Tool2d_create_bisector(
         self_: *mut MAT2d_Tool2d,
-        abisector: *const HandleMATBisector,
+        abisector: *const Handle_MAT_Bisector,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `MAT2d_Tool2d.hxx`:94 - `MAT2d_Tool2d::TrimBisector()`
+    /// **Source:** `MAT2d_Tool2d.hxx`:93 - `MAT2d_Tool2d::TrimBisector()`
     pub fn MAT2d_Tool2d_trim_bisector_handlematbisector(
         self_: *mut MAT2d_Tool2d,
-        abisector: *const HandleMATBisector,
+        abisector: *const Handle_MAT_Bisector,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `MAT2d_Tool2d.hxx`:100 - `MAT2d_Tool2d::TrimBisector()`
+    /// **Source:** `MAT2d_Tool2d.hxx`:99 - `MAT2d_Tool2d::TrimBisector()`
     pub fn MAT2d_Tool2d_trim_bisector_handlematbisector_int(
         self_: *mut MAT2d_Tool2d,
-        abisector: *const HandleMATBisector,
+        abisector: *const Handle_MAT_Bisector,
         apoint: i32,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `MAT2d_Tool2d.hxx`:109 - `MAT2d_Tool2d::IntersectBisector()`
+    /// **Source:** `MAT2d_Tool2d.hxx`:107 - `MAT2d_Tool2d::IntersectBisector()`
     pub fn MAT2d_Tool2d_intersect_bisector(
         self_: *mut MAT2d_Tool2d,
-        bisectorone: *const HandleMATBisector,
-        bisectortwo: *const HandleMATBisector,
+        bisectorone: *const Handle_MAT_Bisector,
+        bisectortwo: *const Handle_MAT_Bisector,
         intpnt: *mut i32,
     ) -> crate::OcctResult<f64>;
-    /// **Source:** `MAT2d_Tool2d.hxx`:115 - `MAT2d_Tool2d::Distance()`
+    /// **Source:** `MAT2d_Tool2d.hxx`:113 - `MAT2d_Tool2d::Distance()`
     pub fn MAT2d_Tool2d_distance(
         self_: *const MAT2d_Tool2d,
-        abisector: *const HandleMATBisector,
+        abisector: *const Handle_MAT_Bisector,
         param1: f64,
         param2: f64,
     ) -> crate::OcctResult<f64>;
-    /// **Source:** `MAT2d_Tool2d.hxx`:121 - `MAT2d_Tool2d::Dump()`
+    /// **Source:** `MAT2d_Tool2d.hxx`:119 - `MAT2d_Tool2d::Dump()`
     pub fn MAT2d_Tool2d_dump(
         self_: *const MAT2d_Tool2d,
         bisector: i32,
         erease: i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `MAT2d_Tool2d.hxx`:125 - `MAT2d_Tool2d::GeomBis()`
+    /// **Source:** `MAT2d_Tool2d.hxx`:123 - `MAT2d_Tool2d::GeomBis()`
     pub fn MAT2d_Tool2d_geom_bis(
         self_: *const MAT2d_Tool2d,
         Index: i32,
     ) -> crate::OcctResult<*const Bisector_Bisec>;
-    /// **Source:** `MAT2d_Tool2d.hxx`:128 - `MAT2d_Tool2d::GeomElt()`
+    /// **Source:** `MAT2d_Tool2d.hxx`:126 - `MAT2d_Tool2d::GeomElt()`
     pub fn MAT2d_Tool2d_geom_elt(
         self_: *const MAT2d_Tool2d,
         Index: i32,
-    ) -> crate::OcctResult<*mut HandleGeom2dGeometry>;
-    /// **Source:** `MAT2d_Tool2d.hxx`:131 - `MAT2d_Tool2d::GeomPnt()`
+    ) -> crate::OcctResult<*mut Handle_Geom2d_Geometry>;
+    /// **Source:** `MAT2d_Tool2d.hxx`:129 - `MAT2d_Tool2d::GeomPnt()`
     pub fn MAT2d_Tool2d_geom_pnt(
         self_: *const MAT2d_Tool2d,
         Index: i32,
     ) -> crate::OcctResult<*const gp_Pnt2d>;
-    /// **Source:** `MAT2d_Tool2d.hxx`:135 - `MAT2d_Tool2d::GeomVec()`
+    /// **Source:** `MAT2d_Tool2d.hxx`:133 - `MAT2d_Tool2d::GeomVec()`
     pub fn MAT2d_Tool2d_geom_vec(
         self_: *const MAT2d_Tool2d,
         Index: i32,
     ) -> crate::OcctResult<*const gp_Vec2d>;
-    /// **Source:** `MAT2d_Tool2d.hxx`:137 - `MAT2d_Tool2d::Circuit()`
+    /// **Source:** `MAT2d_Tool2d.hxx`:135 - `MAT2d_Tool2d::Circuit()`
     pub fn MAT2d_Tool2d_circuit(
         self_: *const MAT2d_Tool2d,
-    ) -> crate::OcctResult<*mut HandleMAT2dCircuit>;
-    /// **Source:** `MAT2d_Tool2d.hxx`:139 - `MAT2d_Tool2d::BisecFusion()`
+    ) -> crate::OcctResult<*mut Handle_MAT2d_Circuit>;
+    /// **Source:** `MAT2d_Tool2d.hxx`:137 - `MAT2d_Tool2d::BisecFusion()`
     pub fn MAT2d_Tool2d_bisec_fusion(
         self_: *mut MAT2d_Tool2d,
         Index1: i32,
         Index2: i32,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `MAT2d_Tool2d.hxx`:143 - `MAT2d_Tool2d::ChangeGeomBis()`
+    /// **Source:** `MAT2d_Tool2d.hxx`:141 - `MAT2d_Tool2d::ChangeGeomBis()`
     pub fn MAT2d_Tool2d_change_geom_bis(
         self_: *mut MAT2d_Tool2d,
         Index: i32,
@@ -14998,36 +14993,42 @@ unsafe extern "C" {
     ) -> *const std::ffi::c_char;
     /// **Source:** `BRepBuilderAPI.hxx`:91 - `BRepBuilderAPI::Plane`
     pub fn BRepBuilderAPI_plane_handlegeomplane(
-        P: *const HandleGeomPlane,
+        P: *const Handle_Geom_Plane,
     ) -> *const std::ffi::c_char;
     /// **Source:** `BRepBuilderAPI.hxx`:94 - `BRepBuilderAPI::Plane`
-    pub fn BRepBuilderAPI_plane() -> crate::OcctResult<*mut HandleGeomPlane>;
+    pub fn BRepBuilderAPI_plane() -> crate::OcctResult<*mut Handle_Geom_Plane>;
     /// **Source:** `BRepBuilderAPI.hxx`:98 - `BRepBuilderAPI::Precision`
     pub fn BRepBuilderAPI_precision_real(P: f64) -> *const std::ffi::c_char;
     /// **Source:** `BRepBuilderAPI.hxx`:101 - `BRepBuilderAPI::Precision`
     pub fn BRepBuilderAPI_precision() -> crate::OcctResult<f64>;
-    /// **Source:** `BRepCheck.hxx`:39 - `BRepCheck::Print`
+    /// **Source:** `BRepCheck.hxx`:38 - `BRepCheck::Add`
+    pub fn BRepCheck_add_list_brepcheck_status_status(
+        List: *mut NCollection_List_BRepCheck_Status,
+        Stat: i32,
+    ) -> *const std::ffi::c_char;
+    /// **Source:** `BRepCheck.hxx`:41 - `BRepCheck::Print`
     pub fn BRepCheck_print_status_ostream(
         Stat: i32,
         OS: *mut Standard_OStream,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepCheck.hxx`:41 - `BRepCheck::SelfIntersection`
+    /// **Source:** `BRepCheck.hxx`:43 - `BRepCheck::SelfIntersection`
     pub fn BRepCheck_self_intersection(
         W: *const TopoDS_Wire,
         F: *const TopoDS_Face,
         E1: *mut TopoDS_Edge,
         E2: *mut TopoDS_Edge,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BRepCheck.hxx`:47 - `BRepCheck::PrecCurve`
+    /// **Source:** `BRepCheck.hxx`:49 - `BRepCheck::PrecCurve`
     pub fn BRepCheck_prec_curve(aAC3D: *const Adaptor3d_Curve) -> crate::OcctResult<f64>;
-    /// **Source:** `BRepCheck.hxx`:50 - `BRepCheck::PrecSurface`
-    pub fn BRepCheck_prec_surface(aAHSurf: *const HandleAdaptor3dSurface)
-        -> crate::OcctResult<f64>;
+    /// **Source:** `BRepCheck.hxx`:52 - `BRepCheck::PrecSurface`
+    pub fn BRepCheck_prec_surface(
+        aAHSurf: *const Handle_Adaptor3d_Surface,
+    ) -> crate::OcctResult<f64>;
     /// **Source:** `BRepClass3d.hxx`:35 - `BRepClass3d::OuterShell`
     pub fn BRepClass3d_outer_shell_solid(
         S: *const TopoDS_Solid,
     ) -> crate::OcctResult<*mut TopoDS_Shell>;
-    /// **Source:** `BRepGProp.hxx`:87 - `BRepGProp::LinearProperties`
+    /// **Source:** `BRepGProp.hxx`:88 - `BRepGProp::LinearProperties`
     pub fn BRepGProp_linear_properties(
         S: *const TopoDS_Shape,
         LProps: *mut GProp_GProps,
@@ -15041,14 +15042,14 @@ unsafe extern "C" {
         SkipShared: bool,
         UseTriangulation: bool,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepGProp.hxx`:151 - `BRepGProp::SurfaceProperties`
+    /// **Source:** `BRepGProp.hxx`:150 - `BRepGProp::SurfaceProperties`
     pub fn BRepGProp_surface_properties_shape_gprops_real_bool(
         S: *const TopoDS_Shape,
         SProps: *mut GProp_GProps,
         Eps: f64,
         SkipShared: bool,
     ) -> crate::OcctResult<f64>;
-    /// **Source:** `BRepGProp.hxx`:198 - `BRepGProp::VolumeProperties`
+    /// **Source:** `BRepGProp.hxx`:196 - `BRepGProp::VolumeProperties`
     pub fn BRepGProp_volume_properties_shape_gprops_bool3(
         S: *const TopoDS_Shape,
         VProps: *mut GProp_GProps,
@@ -15056,7 +15057,7 @@ unsafe extern "C" {
         SkipShared: bool,
         UseTriangulation: bool,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepGProp.hxx`:219 - `BRepGProp::VolumeProperties`
+    /// **Source:** `BRepGProp.hxx`:216 - `BRepGProp::VolumeProperties`
     pub fn BRepGProp_volume_properties_shape_gprops_real_bool2(
         S: *const TopoDS_Shape,
         VProps: *mut GProp_GProps,
@@ -15064,7 +15065,7 @@ unsafe extern "C" {
         OnlyClosed: bool,
         SkipShared: bool,
     ) -> crate::OcctResult<f64>;
-    /// **Source:** `BRepGProp.hxx`:241 - `BRepGProp::VolumePropertiesGK`
+    /// **Source:** `BRepGProp.hxx`:237 - `BRepGProp::VolumePropertiesGK`
     pub fn BRepGProp_volume_properties_gk_shape_gprops_real_bool5(
         S: *const TopoDS_Shape,
         VProps: *mut GProp_GProps,
@@ -15075,7 +15076,7 @@ unsafe extern "C" {
         IFlag: bool,
         SkipShared: bool,
     ) -> crate::OcctResult<f64>;
-    /// **Source:** `BRepGProp.hxx`:251 - `BRepGProp::VolumePropertiesGK`
+    /// **Source:** `BRepGProp.hxx`:246 - `BRepGProp::VolumePropertiesGK`
     pub fn BRepGProp_volume_properties_gk_shape_gprops_pln_real_bool5(
         S: *const TopoDS_Shape,
         VProps: *mut GProp_GProps,
@@ -15092,9 +15093,9 @@ unsafe extern "C" {
     /// **Source:** `BRepLib.hxx`:60 - `BRepLib::Precision`
     pub fn BRepLib_precision_2() -> crate::OcctResult<f64>;
     /// **Source:** `BRepLib.hxx`:63 - `BRepLib::Plane`
-    pub fn BRepLib_plane_handlegeomplane_2(P: *const HandleGeomPlane) -> *const std::ffi::c_char;
+    pub fn BRepLib_plane_handlegeomplane_2(P: *const Handle_Geom_Plane) -> *const std::ffi::c_char;
     /// **Source:** `BRepLib.hxx`:66 - `BRepLib::Plane`
-    pub fn BRepLib_plane_2() -> crate::OcctResult<*mut HandleGeomPlane>;
+    pub fn BRepLib_plane_2() -> crate::OcctResult<*mut Handle_Geom_Plane>;
     /// **Source:** `BRepLib.hxx`:72 - `BRepLib::CheckSameRange`
     pub fn BRepLib_check_same_range(
         E: *const TopoDS_Edge,
@@ -15105,7 +15106,7 @@ unsafe extern "C" {
         E: *const TopoDS_Edge,
         Tolerance: f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepLib.hxx`:91 - `BRepLib::BuildCurve3d`
+    /// **Source:** `BRepLib.hxx`:90 - `BRepLib::BuildCurve3d`
     pub fn BRepLib_build_curve3d_edge_real_shape_int2(
         E: *const TopoDS_Edge,
         Tolerance: f64,
@@ -15113,7 +15114,7 @@ unsafe extern "C" {
         MaxDegree: i32,
         MaxSegment: i32,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BRepLib.hxx`:100 - `BRepLib::BuildCurves3d`
+    /// **Source:** `BRepLib.hxx`:99 - `BRepLib::BuildCurves3d`
     pub fn BRepLib_build_curves3d_shape_real_shape_int2(
         S: *const TopoDS_Shape,
         Tolerance: f64,
@@ -15121,116 +15122,122 @@ unsafe extern "C" {
         MaxDegree: i32,
         MaxSegment: i32,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BRepLib.hxx`:108 - `BRepLib::BuildCurves3d`
+    /// **Source:** `BRepLib.hxx`:107 - `BRepLib::BuildCurves3d`
     pub fn BRepLib_build_curves3d_shape(S: *const TopoDS_Shape) -> crate::OcctResult<bool>;
-    /// **Source:** `BRepLib.hxx`:111 - `BRepLib::BuildPCurveForEdgeOnPlane`
+    /// **Source:** `BRepLib.hxx`:110 - `BRepLib::BuildPCurveForEdgeOnPlane`
     pub fn BRepLib_build_p_curve_for_edge_on_plane_edge_face(
         theE: *const TopoDS_Edge,
         theF: *const TopoDS_Face,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepLib.hxx`:116 - `BRepLib::BuildPCurveForEdgeOnPlane`
+    /// **Source:** `BRepLib.hxx`:115 - `BRepLib::BuildPCurveForEdgeOnPlane`
     pub fn BRepLib_build_p_curve_for_edge_on_plane_edge_face_handlegeom2dcurve_bool(
         theE: *const TopoDS_Edge,
         theF: *const TopoDS_Face,
-        aC2D: *mut HandleGeom2dCurve,
+        aC2D: *mut Handle_Geom2d_Curve,
         bToUpdate: *mut bool,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepLib.hxx`:141 - `BRepLib::UpdateEdgeTol`
+    /// **Source:** `BRepLib.hxx`:140 - `BRepLib::UpdateEdgeTol`
     pub fn BRepLib_update_edge_tol(
         E: *const TopoDS_Edge,
         MinToleranceRequest: f64,
         MaxToleranceToCheck: f64,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BRepLib.hxx`:154 - `BRepLib::UpdateEdgeTolerance`
+    /// **Source:** `BRepLib.hxx`:153 - `BRepLib::UpdateEdgeTolerance`
     pub fn BRepLib_update_edge_tolerance(
         S: *const TopoDS_Shape,
         MinToleranceRequest: f64,
         MaxToleranceToCheck: f64,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BRepLib.hxx`:163 - `BRepLib::SameParameter`
+    /// **Source:** `BRepLib.hxx`:161 - `BRepLib::SameParameter`
     pub fn BRepLib_same_parameter_edge_real(
         theEdge: *const TopoDS_Edge,
         Tolerance: f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepLib.hxx`:175 - `BRepLib::SameParameter`
+    /// **Source:** `BRepLib.hxx`:173 - `BRepLib::SameParameter`
     pub fn BRepLib_same_parameter_edge_real2_bool(
         theEdge: *const TopoDS_Edge,
         theTolerance: f64,
         theNewTol: *mut f64,
         IsUseOldEdge: bool,
     ) -> crate::OcctResult<*mut TopoDS_Edge>;
-    /// **Source:** `BRepLib.hxx`:184 - `BRepLib::SameParameter`
+    /// **Source:** `BRepLib.hxx`:182 - `BRepLib::SameParameter`
     pub fn BRepLib_same_parameter_shape_real_bool(
         S: *const TopoDS_Shape,
         Tolerance: f64,
         forced: bool,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepLib.hxx`:196 - `BRepLib::SameParameter`
+    /// **Source:** `BRepLib.hxx`:194 - `BRepLib::SameParameter`
     pub fn BRepLib_same_parameter_shape_reshape_real_bool(
         S: *const TopoDS_Shape,
         theReshaper: *mut BRepTools_ReShape,
         Tolerance: f64,
         forced: bool,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepLib.hxx`:205 - `BRepLib::UpdateTolerances`
+    /// **Source:** `BRepLib.hxx`:203 - `BRepLib::UpdateTolerances`
     pub fn BRepLib_update_tolerances_shape_bool(
         S: *const TopoDS_Shape,
         verifyFaceTolerance: bool,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepLib.hxx`:217 - `BRepLib::UpdateTolerances`
+    /// **Source:** `BRepLib.hxx`:214 - `BRepLib::UpdateTolerances`
     pub fn BRepLib_update_tolerances_shape_reshape_bool(
         S: *const TopoDS_Shape,
         theReshaper: *mut BRepTools_ReShape,
         verifyFaceTolerance: bool,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepLib.hxx`:224 - `BRepLib::UpdateInnerTolerances`
+    /// **Source:** `BRepLib.hxx`:220 - `BRepLib::UpdateInnerTolerances`
     pub fn BRepLib_update_inner_tolerances(S: *const TopoDS_Shape) -> *const std::ffi::c_char;
-    /// **Source:** `BRepLib.hxx`:229 - `BRepLib::OrientClosedSolid`
+    /// **Source:** `BRepLib.hxx`:225 - `BRepLib::OrientClosedSolid`
     pub fn BRepLib_orient_closed_solid(solid: *mut TopoDS_Solid) -> crate::OcctResult<bool>;
-    /// **Source:** `BRepLib.hxx`:233 - `BRepLib::ContinuityOfFaces`
+    /// **Source:** `BRepLib.hxx`:229 - `BRepLib::ContinuityOfFaces`
     pub fn BRepLib_continuity_of_faces(
         theEdge: *const TopoDS_Edge,
         theFace1: *const TopoDS_Face,
         theFace2: *const TopoDS_Face,
         theAngleTol: f64,
     ) -> crate::OcctResult<i32>;
-    /// **Source:** `BRepLib.hxx`:242 - `BRepLib::EncodeRegularity`
+    /// **Source:** `BRepLib.hxx`:238 - `BRepLib::EncodeRegularity`
     pub fn BRepLib_encode_regularity_shape_real(
         S: *const TopoDS_Shape,
         TolAng: f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepLib.hxx`:249 - `BRepLib::EncodeRegularity`
-    pub fn BRepLib_encode_regularity_shape_listofshape_real(
+    /// **Source:** `BRepLib.hxx`:245 - `BRepLib::EncodeRegularity`
+    pub fn BRepLib_encode_regularity_shape_list_shape_real(
         S: *const TopoDS_Shape,
-        LE: *const TopTools_ListOfShape,
+        LE: *const NCollection_List_TopoDS_Shape,
         TolAng: f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepLib.hxx`:257 - `BRepLib::EncodeRegularity`
+    /// **Source:** `BRepLib.hxx`:253 - `BRepLib::EncodeRegularity`
     pub fn BRepLib_encode_regularity_edge_face2_real(
         E: *mut TopoDS_Edge,
         F1: *const TopoDS_Face,
         F2: *const TopoDS_Face,
         TolAng: f64,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepLib.hxx`:265 - `BRepLib::SortFaces`
+    /// **Source:** `BRepLib.hxx`:261 - `BRepLib::SortFaces`
     pub fn BRepLib_sort_faces(
         S: *const TopoDS_Shape,
-        LF: *mut TopTools_ListOfShape,
+        LF: *mut NCollection_List_TopoDS_Shape,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepLib.hxx`:270 - `BRepLib::ReverseSortFaces`
+    /// **Source:** `BRepLib.hxx`:266 - `BRepLib::ReverseSortFaces`
     pub fn BRepLib_reverse_sort_faces(
         S: *const TopoDS_Shape,
-        LF: *mut TopTools_ListOfShape,
+        LF: *mut NCollection_List_TopoDS_Shape,
     ) -> *const std::ffi::c_char;
-    /// **Source:** `BRepLib.hxx`:276 - `BRepLib::EnsureNormalConsistency`
+    /// **Source:** `BRepLib.hxx`:273 - `BRepLib::EnsureNormalConsistency`
     pub fn BRepLib_ensure_normal_consistency(
         S: *const TopoDS_Shape,
         theAngTol: f64,
         ForceComputeNormals: bool,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BRepLib.hxx`:283 - `BRepLib::UpdateDeflection`
+    /// **Source:** `BRepLib.hxx`:279 - `BRepLib::UpdateDeflection`
     pub fn BRepLib_update_deflection(S: *const TopoDS_Shape) -> *const std::ffi::c_char;
-    /// **Source:** `BRepLib.hxx`:298 - `BRepLib::FindValidRange`
+    /// **Source:** `BRepLib.hxx`:285 - `BRepLib::BoundingVertex`
+    pub fn BRepLib_bounding_vertex(
+        theLV: *const NCollection_List_TopoDS_Shape,
+        theNewCenter: *mut gp_Pnt,
+        theNewTol: *mut f64,
+    ) -> *const std::ffi::c_char;
+    /// **Source:** `BRepLib.hxx`:294 - `BRepLib::FindValidRange`
     pub fn BRepLib_find_valid_range_curve_real2_pnt_real2_pnt_real3(
         theCurve: *const Adaptor3d_Curve,
         theTolE: f64,
@@ -15243,13 +15250,13 @@ unsafe extern "C" {
         theFirst: *mut f64,
         theLast: *mut f64,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BRepLib.hxx`:312 - `BRepLib::FindValidRange`
+    /// **Source:** `BRepLib.hxx`:308 - `BRepLib::FindValidRange`
     pub fn BRepLib_find_valid_range_edge_real2(
         theEdge: *const TopoDS_Edge,
         theFirst: *mut f64,
         theLast: *mut f64,
     ) -> crate::OcctResult<bool>;
-    /// **Source:** `BRepLib.hxx`:324 - `BRepLib::ExtendFace`
+    /// **Source:** `BRepLib.hxx`:320 - `BRepLib::ExtendFace`
     pub fn BRepLib_extend_face(
         theF: *const TopoDS_Face,
         theExtVal: f64,
@@ -15260,16 +15267,12 @@ unsafe extern "C" {
         theFExtended: *mut TopoDS_Face,
     ) -> *const std::ffi::c_char;
     /// **Source:** `Bisector.hxx`:35 - `Bisector::IsConvex`
-    pub fn Bisector_is_convex(Cu: *const HandleGeom2dCurve, Sign: f64) -> crate::OcctResult<bool>;
+    pub fn Bisector_is_convex(Cu: *const Handle_Geom2d_Curve, Sign: f64)
+        -> crate::OcctResult<bool>;
 
     // Nested type & typedef type destructors
-    pub fn BRepCheck_ListOfStatus_destructor(self_: *mut BRepCheck_ListOfStatus);
-    pub fn BRepClass3d_BndBoxTree_destructor(self_: *mut BRepClass3d_BndBoxTree);
     pub fn BRepExtrema_ElementFilter_FilterResult_destructor(
         self_: *mut BRepExtrema_ElementFilter_FilterResult,
-    );
-    pub fn BRepExtrema_MapOfIntegerPackedMapOfInteger_destructor(
-        self_: *mut BRepExtrema_MapOfIntegerPackedMapOfInteger,
     );
     pub fn BRepExtrema_ProximityDistTool_BVH_PrjState_destructor(
         self_: *mut BRepExtrema_ProximityDistTool_BVH_PrjState,
@@ -15277,20 +15280,10 @@ unsafe extern "C" {
     pub fn BRepExtrema_ProximityDistTool_ProxPnt_Status_destructor(
         self_: *mut BRepExtrema_ProximityDistTool_ProxPnt_Status,
     );
-    pub fn BRepExtrema_SeqOfSolution_destructor(self_: *mut BRepExtrema_SeqOfSolution);
-    pub fn BRepExtrema_ShapeList_destructor(self_: *mut BRepExtrema_ShapeList);
     pub fn BRepGProp_Gauss_BRepGProp_GaussType_destructor(
         self_: *mut BRepGProp_Gauss_BRepGProp_GaussType,
     );
     pub fn BRepGProp_MeshProps_BRepGProp_MeshObjType_destructor(
         self_: *mut BRepGProp_MeshProps_BRepGProp_MeshObjType,
     );
-    pub fn BRepTopAdaptor_MapOfShapeTool_destructor(self_: *mut BRepTopAdaptor_MapOfShapeTool);
-    pub fn MAT2d_SequenceOfConnexion_destructor(self_: *mut MAT2d_SequenceOfConnexion);
-    pub fn MAT2d_SequenceOfSequenceOfGeometry_destructor(
-        self_: *mut MAT2d_SequenceOfSequenceOfGeometry,
-    );
-    pub fn MAT_DataMapOfIntegerBasicElt_destructor(self_: *mut MAT_DataMapOfIntegerBasicElt);
-    pub fn MAT_SequenceOfArc_destructor(self_: *mut MAT_SequenceOfArc);
-    pub fn MAT_SequenceOfBasicElt_destructor(self_: *mut MAT_SequenceOfBasicElt);
 }
